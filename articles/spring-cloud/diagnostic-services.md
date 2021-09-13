@@ -1,18 +1,18 @@
 ---
 title: Analysieren von Protokollen und Metriken in Azure Spring Cloud | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Diagnosedaten in Azure Spring Cloud analysieren.
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: 7e2042294ebaefa2640873bb1ce941d9a60c7834
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: e2d903f781e86670139347930289599bec6ee7e7
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128989"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122350072"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Analysieren von Protokollen und Metriken mit Diagnoseeinstellungen
 
@@ -56,9 +56,10 @@ Zum Einstieg aktivieren Sie einen dieser Dienste, um die Daten empfangen zu kön
 
 > [!NOTE]
 > 1. Zwischen der Ausgabe der Protokolle oder Metriken und der Anzeige in Ihrem Speicherkonto, Ihrem Event Hub oder in Log Analytics kann eine Verzögerung von bis zu 15 Minuten liegen.
-> 1. Wenn die Azure Spring Cloud-Instanz gelöscht oder verschoben wurde, wird der Vorgang nicht an die **Diagnoseeinstellungen**-Ressourcen übergeben. Die **Diagnoseeinstellungen**-Ressourcen müssen manuell gelöscht werden, bevor der Vorgang für das übergeordnete Element (die Azure Spring Cloud-Instanz) ausgeführt werden kann. Wenn andernfalls eine neue Azure Spring Cloud-Instanz mit derselben Ressourcen-ID wie die gelöschte Instanz bereitgestellt oder die Azure Spring Cloud-Instanz zurück verschoben wird, erweitern die vorherigen **Diagnoseeinstellungen**-Ressourcen diese weiterhin.
+> 1. Wenn die Azure Spring Cloud-Instanz gelöscht oder verschoben wurde, wird der Vorgang nicht an die **Diagnoseeinstellungen**-Ressourcen übergeben. Die Ressourcen für **Diagnoseeinstellungen** müssen manuell gelöscht werden, bevor der Vorgang für das übergeordnete Element (die Azure Spring Cloud-Instanz) ausgeführt werden kann. Wenn andernfalls eine neue Azure Spring Cloud-Instanz mit derselben Ressourcen-ID wie die gelöschte Instanz bereitgestellt oder die Azure Spring Cloud-Instanz zurück verschoben wird, erweitern die vorherigen **Diagnoseeinstellungen**-Ressourcen diese weiterhin.
 
 ## <a name="view-the-logs-and-metrics"></a>Anzeigen der Protokolle und Metriken
+
 Es gibt verschiedene Methoden zum Anzeigen von Protokollen und Metriken, wie in den folgenden Abschnitten beschrieben.
 
 ### <a name="use-the-logs-blade"></a>Verwenden des Blatts „Protokolle“
@@ -72,12 +73,14 @@ Es gibt verschiedene Methoden zum Anzeigen von Protokollen und Metriken, wie in 
     AppPlatformLogsforSpring
     | limit 50
     ```
+
    * Geben Sie zum Anzeigen von Metriken eine einfache Abfrage ein, z. B. die folgende:
 
     ```sql
     AzureMetrics
     | limit 50
     ```
+
 1. Um das Suchergebnis anzuzeigen, wählen Sie **Ausführen** aus.
 
 ### <a name="use-log-analytics"></a>Verwenden von Log Analytics
@@ -92,6 +95,7 @@ Es gibt verschiedene Methoden zum Anzeigen von Protokollen und Metriken, wie in 
     AppPlatformLogsforSpring
     | limit 50
     ```
+
     * Geben Sie zum Anzeigen von Metriken eine einfache Abfrage ein, z. B. die folgende:
 
     ```sql
@@ -107,8 +111,9 @@ Es gibt verschiedene Methoden zum Anzeigen von Protokollen und Metriken, wie in 
     | where ServiceName == "YourServiceName" and AppName == "YourAppName" and InstanceName == "YourInstanceName"
     | limit 50
     ```
-> [!NOTE]
-> Für `==` wird Groß-/Kleinschreibung beachtet, für `=~` jedoch nicht.
+
+    > [!NOTE]
+    > Für `==` wird Groß-/Kleinschreibung beachtet, für `=~` jedoch nicht.
 
 Weitere Informationen zu der in Log Analytics verwendeten Abfragesprache erhalten Sie unter [Azure Monitor-Protokollabfragen](/azure/data-explorer/kusto/query/). Wenn Sie alle Log Analytics-Protokolle über einen zentralisierten Client abfragen möchten, lesen Sie die Informationen unter [Abfragen von Daten in Azure Monitor mit Azure Data Explorer](/azure/data-explorer/query-monitor-data).
 
@@ -198,12 +203,14 @@ Es gibt eine Möglichkeit, Ihre mehrzeiligen Stapelüberwachungen in eine einzel
     </root>
 </configuration>
 ```
+
 In Log Analytics können Sie das Token dann wieder durch Zeilenvorschubzeichen ersetzen, wie hier zu sehen:
 
 ```sql
 AppPlatformLogsforSpring
 | extend Log = array_strcat(split(Log, '\\n'), '\n')
 ```
+
 Die gleiche Strategie kann ggf. auch für andere Java-Protokollbibliotheken verwendet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte

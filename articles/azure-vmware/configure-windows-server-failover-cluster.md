@@ -3,12 +3,12 @@ title: Konfigurieren von Windows Server Failover Cluster in Azure VMware Solutio
 description: Hier erfahren Sie, wie Sie Windows Server Failover Cluster (WSFC) in Azure VMware Solution vSAN mit nativen freigegebenen Datenträgern einrichten.
 ms.topic: how-to
 ms.date: 05/04/2021
-ms.openlocfilehash: f2fc9e712d3f56aeddc6e66c12837794dceb9abe
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: fcde65b98b3774ee1ef9b15bfa6da3836aaa8a1b
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111954497"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351339"
 ---
 # <a name="configure-windows-server-failover-cluster-on-azure-vmware-solution-vsan"></a>Konfigurieren von Windows Server Failover Cluster in Azure VMware Solution vSAN
 
@@ -31,9 +31,9 @@ Sie können den WSFC-Cluster in verschiedenen Azure VMware Solution-Instanzen ho
 
 Dabei ist es wichtig, eine unterstützte WSFC-Konfiguration bereitzustellen. Die Lösung muss in vSphere und mit Azure VMware Solution unterstützt werden. Für VMware ist ein ausführliches Dokument zu WSFC in vSphere 6.7 erhältlich: [Setup for Failover Clustering and Microsoft Cluster Service](https://docs.vmware.com/en/VMware-vSphere/6.7/vsphere-esxi-vcenter-server-67-setup-mscs.pdf) (Einrichten von Failoverclustering und Microsoft Cluster Service).
 
-Dieser Artikel bezieht sich auf WSFC unter Windows Server 2016 und Windows Server 2019. Ältere Windows Server-Versionen unterliegen nicht mehr dem [grundlegenden Support](https://support.microsoft.com/lifecycle/search?alpha=windows%20server) und werden daher hier nicht berücksichtigt.
+Dieser Artikel bezieht sich auf WSFC unter Windows Server 2016 und Windows Server 2019. Ältere Windows Server-Versionen unterliegen leider nicht mehr dem [grundlegenden Support](https://support.microsoft.com/lifecycle/search?alpha=windows%20server) und werden daher hier nicht berücksichtigt.
 
-Sie müssen zunächst [eine WSFC-Instanz](/windows-server/failover-clustering/create-failover-cluster) erstellen. Verwenden Sie die Informationen in diesem Artikel für die Besonderheiten einer WSFC-Bereitstellung in Azure VMware Solution.
+Sie müssen zunächst einen [WSFC erstellen](/windows-server/failover-clustering/create-failover-cluster). Verwenden Sie anschließend die in diesem Artikel enthaltenen Informationen, um eine WSFC-Bereitstellung in Azure VMware Solution anzugeben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -42,11 +42,11 @@ Sie müssen zunächst [eine WSFC-Instanz](/windows-server/failover-clustering/cr
 
 ## <a name="reference-architecture"></a>Referenzarchitektur
 
-Azure VMware Solution bietet native Unterstützung für das virtualisierte WSFC. Der Dienst unterstützt SCSI3PR (SCSI-3 Persistent Reservations) auf der Ebene virtueller Datenträger. Diese Unterstützung ist für WSFC erforderlich, um den Zugriff auf einen freigegebenen Datenträger zwischen Knoten zu regeln. Die Unterstützung von SCSI3PRs ermöglicht die Konfiguration von WSFC mit einer Datenträgerressource, die nativ für vSAN-Datenspeicher zwischen VMs freigegeben wird.
+Azure VMware Solution bietet native Unterstützung für das virtualisierte WSFC. Der Dienst unterstützt SCSI3PR (SCSI-3 Persistent Reservations) auf der Ebene virtueller Datenträger. WSFC benötigt diese Unterstützung, um den Zugriff auf einen freigegebenen Datenträger zwischen Knoten zu vermitteln. Die Unterstützung von SCSI3PRs ermöglicht die Konfiguration von WSFC mit einer Datenträgerressource, die nativ für vSAN-Datenspeicher zwischen VMs freigegeben wird.
 
 Die folgende Abbildung veranschaulicht die Architektur von virtuellen WSFC-Knoten in einer privaten Azure VMware Solution-Cloud. Sie zeigt, wo sich Azure VMware Solution, einschließlich der virtuellen WSFC-Server (roter Kasten), relativ zur umfassenderen Azure-Plattform befindet. In der Abbildung ist eine typische Hub-Spoke-Architektur dargestellt. Eine vergleichbare Konfiguration ist jedoch auch bei Verwendung von Azure Virtual WAN möglich. Beide bieten alle Vorteile, die auch andere Azure-Dienste bieten.
 
-:::image type="content" source="media/windows-server-failover-cluster/windows-server-failover-architecture.svg" alt-text="Diagramm: Architektur der virtuellen WSFC-Knoten in einer privaten Azure VMware Solution-Cloud" border="false" lightbox="media/windows-server-failover-cluster/windows-server-failover-architecture.svg":::
+:::image type="content" source="media/windows-server-failover-cluster/windows-server-failover-architecture.svg" alt-text="Diagramm: Virtuelle WSFC-Knoten in einer privaten Azure VMware Solution-Cloud" border="false" lightbox="media/windows-server-failover-cluster/windows-server-failover-architecture.svg":::
 
 ## <a name="supported-configurations"></a>Unterstützte Konfigurationen
 
@@ -94,7 +94,7 @@ Dies sind die aktuell unterstützten Konfigurationen:
 | Multi-writer-Flag | Nicht verwendet |
 | Datenträgerformat | Vollständige (thick) Bereitstellung. (Eager Zeroed Thick (EZT) ist für vSAN nicht erforderlich.) |
 
-:::image type="content" source="media/windows-server-failover-cluster/edit-settings-virtual-hardware.png" alt-text="Screenshot der Seite „Einstellungen bearbeiten“ für virtuelle Hardware":::
+:::image type="content" source="media/windows-server-failover-cluster/edit-settings-virtual-hardware.png" alt-text="Screenshot: Seite „Einstellungen bearbeiten“ für virtuelle Hardware":::
 
 ## <a name="non-supported-scenarios"></a>Nicht unterstützte Szenarien
 
@@ -132,7 +132,7 @@ Die folgenden Aktivitäten werden nicht unterstützt und führen möglicherweise
 6. Konfigurieren Sie einen Clusterzeugen für das Quorum (ein Dateifreigabezeuge funktioniert gut).
 7. Schalten Sie alle Knoten des WSFC-Clusters aus.
 8. Fügen Sie jedem VM-Teil des WSFC-Clusters einen oder mehrere (maximal vier) Paravirtual SCSI-Controller hinzu. Verwenden Sie die Einstellungen entsprechend den Angaben in den vorherigen Abschnitten.
-9. Fügen Sie im ersten Clusterknoten über **Neues Gerät hinzufügen** > **Festplatte** alle erforderlichen freigegebenen Datenträger hinzu. Behalten Sie die Datenträgerfreigabe als **Nicht angegeben** (Standardwert) und den Datenträgermodus als **Unabhängig, persistent** bei. Fügen Sie ihn an die Controller an, die Sie in den vorherigen Schritten erstellt haben.
+9. Fügen Sie im ersten Clusterknoten über **Neues Gerät hinzufügen** > **Festplatte** alle erforderlichen freigegebenen Datenträger hinzu. Belassen Sie für die Datenträgerfreigabe die Option **Nicht angegeben** (Standardwert) und für den Datenträgermodus die Option **Unabhängig, persistent**. Fügen Sie ihn dann an die Controller an, die Sie in den vorherigen Schritten erstellt haben.
 10. Konfigurieren Sie dann die übrigen WSFC-Knoten. Fügen Sie die im vorherigen Schritt erstellten Datenträger hinzu, indem Sie **Neues Gerät hinzufügen** > **Existing Hard Disk** (Vorhandene Festplatte) auswählen. Achten Sie darauf, dass Sie für alle WSFC-Knoten die gleichen SCSI-IDs der Datenträger beibehalten.
 11. Schalten Sie den ersten WSFC-Knoten ein. Melden Sie sich an, und öffnen Sie die Datenträgerverwaltungskonsole (MMC). Stellen Sie sicher, dass die hinzugefügten freigegebenen Datenträger über das Betriebssystem verwaltet werden können und initialisiert werden. Formatieren Sie die Datenträger, und weisen Sie einen Laufwerkbuchstaben zu.
 12. Schalten Sie die anderen WSFC-Knoten ein.
@@ -165,5 +165,5 @@ Nachdem Sie sich mit dem Einrichten von WSFC in Azure VMware Solution vertraut g
 
 - Einrichten der neuen WSFC-Instanz durch Hinzufügen weiterer Anwendungen, die WSFC-Funktionen erfordern, z. B. SQL Server und SAP ASCS
 - Einrichten einer Sicherungslösung:
-  - [Einrichten von Azure Backup Server für Azure VMware Solution](../backup/backup-azure-microsoft-azure-backup.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext)
-  - [Sicherungslösungen für virtuelle Azure VMware Solution-Computer](../backup/backup-azure-backup-server-vmware.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext)
+  - [Einrichten von Azure Backup Server für Azure VMware Solution](set-up-backup-server-for-azure-vmware-solution.md)
+  - [Sicherungslösungen für virtuelle Azure VMware Solution-Computer](backup-azure-vmware-solution-virtual-machines.md)

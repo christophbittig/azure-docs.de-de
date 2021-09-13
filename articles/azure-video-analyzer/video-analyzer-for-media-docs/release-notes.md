@@ -1,22 +1,23 @@
 ---
 title: Versionshinweise zu Azure Video Analyzer for Media (früher Video Indexer) | Microsoft-Dokumentation
 description: Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben, bietet dieser Artikel Informationen zu Azure Video Analyzer for Media (früher Video Indexer).
-services: media-services
+services: azure-video-analyzer
 documentationcenter: ''
 author: Juliako
 manager: femila
 editor: ''
 ms.workload: na
 ms.topic: article
+ms.subservice: azure-video-analyzer-media
 ms.custom: references_regions
-ms.date: 05/06/2021
+ms.date: 08/01/2021
 ms.author: juliako
-ms.openlocfilehash: d67d8dba31a453f4a42982519d619f294d47e04f
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: 69d0190454a1b5948e894c5bc5a03a235daca78d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111813817"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340327"
 ---
 # <a name="video-analyzer-for-media-release-notes"></a>Versionshinweise zu Video Analyzer for Media
 
@@ -29,6 +30,18 @@ Damit Sie bei den aktuellen Entwicklungen in Bezug auf Azure Video Analyzer for 
 * Behebung von Programmfehlern
 * Veraltete Funktionen
 
+## <a name="july-2021"></a>Juli 2021
+
+### <a name="automatic-scaling-of-media-reserved-units"></a>Automatische Skalierung reservierter Einheiten für Medien
+ 
+Seit dem 1. August 2021 ermöglicht Azure Video Analyzer for Media (ehemals Video Indexer) die automatische Skalierung von [reservierten Einheiten für Medien](../../media-services/latest/concept-media-reserved-units.md)(Media Reservced Units, MRUs) durch [Azure Media Services](../../media-services/latest/media-services-overview.md), sodass Sie diese nicht mehr über Azure Video Analyzer for Media verwalten müssen. Dies ermöglicht eine Preisoptimierung, z. B. in vielen Fällen eine Preissenkung, die sich an den Anforderungen Ihres Unternehmens orientiert, während es automatisch skaliert wird.
+
+## <a name="june-2021"></a>Juni 2021
+ 
+### <a name="video-analyzer-for-media-deployed-in-six-new-regions"></a>Video Analyzer for Media wurde in sechs neuen Regionen bereitgestellt
+ 
+Sie können jetzt ein kostenpflichtiges Video Analyzer for Media-Konto in den Regionen „Frankreich, Mitte“, „USA, Mitte“, „Brasilien, Süden“, „USA, Westen-Mitte“, „Südkorea, Mitte“ und „Japan, Westen“ erstellen.
+  
 ## <a name="may-2021"></a>Mai 2021
 
 ### <a name="new-source-languages-support-for-speech-to-text-stt-translation-and-search"></a>Unterstützung neuer Quellsprachen für Sprache-in-Text (STT), Übersetzung und Suche
@@ -51,13 +64,19 @@ Drei neue GitHub-Projekte sind in unserem [GitHub-Repository](https://github.com
  
 ### <a name="new-option-to-toggle-bounding-boxes-for-observed-people-on-the-player"></a>Neue Option zum Umschalten von Begrenzungsrahmen (für beobachtete Personen) für den Player  
 
-Wenn Sie ein Video über unsere erweiterten Videoeinstellungen indizieren, werden unsere neuen Funktionen für beobachtete Personen angezeigt.
-
-Wenn in Ihrer Mediendatei Personen erkannt werden, können Sie über den Media Player einen Begrenzungsrahmen für die erkannte Person aktivieren.
+Wenn Sie ein Video über unsere erweiterten Videoeinstellungen indizieren, werden unsere neuen Funktionen für beobachtete Personen angezeigt. Wenn in Ihrer Mediendatei Personen erkannt werden, können Sie über den Media Player einen Begrenzungsrahmen für die erkannte Person aktivieren.
 
 ## <a name="april-2021"></a>April 2021
 
 Der Video Indexer-Dienst wurde in Azure Video Analyzer for Media umbenannt.
+
+### <a name="improved-upload-experience-in-the-portal"></a>Verbesserte Uploadfunktionalität im Portal
+ 
+Video Analyzer for Media verfügt über eine neue Uploadfunktionalität im [Portal](https://www.videoindexer.ai): Um Ihre Mediendatei hochzuladen, klicken Sie auf der Registerkarte **Mediendateien** auf die Schaltfläche **Hochladen**.
+
+### <a name="new-developer-portal-in-available-in-gov-cloud"></a>Neues Entwicklerportal in gov-cloud verfügbar
+ 
+Das [Video Analyzer for Media-Entwicklerportal](https://api-portal.videoindexer.ai) ist jetzt auch in Azure für die US-Regierung verfügbar.
 
 ### <a name="observed-people-tracing-preview"></a>Verfolgung von beobachteten Personen (Vorschau)  
 
@@ -76,14 +95,6 @@ Das Feature ist auch in der JSON-Datei verfügbar, die von Video Analyzer for Me
 Sie können jetzt die erkannten Akustikereignisse in der Untertiteldatei sehen. Die Datei kann vom Video Analyzer for Media-Portal heruntergeladen werden und ist als Artefakt in der GetArtifact-API verfügbar.
 
 Die Komponente **Erkennung von Audioeffekten** (Vorschau) erkennt verschiedene Akustikereignisse und klassifiziert sie in verschiedene Akustikkategorien (z. B. Schüsse, Schreie, Reaktionen einer Menschenmenge usw.). Weitere Informationen finden Sie im Artikel zum [Erkennen von Audioeffekten.](audio-effects-detection.md)
-
-### <a name="improved-upload-experience-in-the-portal"></a>Verbesserte Uploadfunktionalität im Portal
-
-Video Analyzer for Media verfügt über eine neue Uploadfunktionalität im Portal:
-
-* Neues Entwicklerportal in Fairfax verfügbar
-
-Das neue Video Analyzer for Media-[Entwicklerportal](https://api-portal.videoindexer.ai) ist jetzt auch in Gov-cloud verfügbar.
 
 ## <a name="march-2021"></a>März 2021
 

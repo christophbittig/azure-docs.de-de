@@ -3,12 +3,12 @@ title: Bereitstellen der Notfallwiederherstellung mit VMware Site Recovery Manag
 description: Stellen Sie die Notfallwiederherstellung mit VMware Site Recovery Manager (SRM) in Ihrer privaten Azure VMware Solution Cloud bereit.
 ms.topic: how-to
 ms.date: 08/18/2021
-ms.openlocfilehash: 7c4f518623801e8cb489452dbeb3be76e1104e62
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: cc3d1183ab294834572dd5edc9c4509287c502ee
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122608065"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444993"
 ---
 # <a name="deploy-disaster-recovery-with-vmware-site-recovery-manager"></a>Bereitstellen der Notfallwiederherstellung mit VMware Site Recovery Manager
 
@@ -233,6 +233,7 @@ Skalierungseinschränkungen gelten pro privater Cloud.
 \* Informationen zu RPOs (Recovery Point Objective) von unter 15 Minuten finden Sie unter [Funktionsweise von 5-Minuten-RPOs](https://docs.vmware.com/en/vSphere-Replication/8.3/com.vmware.vsphere.replication-admin.doc/GUID-9E17D567-A947-49CD-8A84-8EA2D676B55A.html) im _vSphere Replication-Verwaltungshandbuch_.
 
 
+Weitere Informationen finden Sie unter [Betriebsgrenzwerte für VMware Site Recovery](https://docs.vmware.com/en/VMware-Site-Recovery/services/com.vmware.srmaas.install_config.doc/GUID-D4EE4AE4-FF80-4355-977A-CF211EEC5E1F.html) 
 
 ## <a name="srm-licenses"></a>SRM-Lizenzen
 

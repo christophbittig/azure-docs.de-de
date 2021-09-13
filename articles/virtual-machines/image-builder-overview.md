@@ -9,14 +9,16 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: references_regions
 ms.reviewer: cynthn
-ms.openlocfilehash: 7289d9d814385f31a71cbd598889e564958a0140
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 805b2a8bf29edfd76804aec3607acc11155edd16
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111441814"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697069"
 ---
 # <a name="azure-image-builder-overview"></a>Übersicht über Azure Image Builder
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Standardisierte VM-Images ermöglichen es Organisationen, in die Cloud zu migrieren und die Konsistenz der Bereitstellung sicherzustellen. Die Images beinhalten üblicherweise vordefinierte Sicherheits- und Konfigurationseinstellungen und die notwendige Software. Das Einrichten einer eigenen Imaging-Pipeline erfordert Zeit, Infrastruktur und Aufwand. Mit Azure VM Image Builder müssen Sie lediglich eine Konfiguration bereitstellen, die Ihr Image beschreibt, und an den Dienst senden. Dann wird das Image erstellt und verteilt.
  
@@ -28,7 +30,7 @@ Mit Azure VM Image Builder (Azure Image Builder) können Sie mit einem Windows- 
 Azure Image Builder unterstützt die folgenden Funktionen:
 
 - Erstellung von Basisimages, die Ihre minimalen Sicherheits- und Unternehmenskonfigurationen umfassen und die die Abteilungen weiter anpassen können
-- Integration von Kernanwendungen, sodass Workloads nach der Erstellung auf VMs verwendet werden oder Konfigurationen zur Unterstützung von Windows Virtual Desktop-Images hinzugefügt werden können.
+- Integration von Kernanwendungen, sodass Workloads nach der Erstellung auf VMs verwendet werden oder Konfigurationen zur Unterstützung von Azure Virtual Desktop-Images hinzugefügt werden können
 - Patchen von vorhandenen Images: Image Builder ermöglicht es Ihnen, bestehende benutzerdefinierte Images kontinuierlich zu patchen.
 - Verbinden Sie Image Builder mit Ihren vorhandenen virtuellen Netzwerken, damit Sie eine Verbindung mit vorhandenen Konfigurationsservern (DSC, Chef, Puppet usw.), Dateifreigaben oder anderen routingfähigen Servern/Diensten herstellen können.
 - Die Integration mit dem Azure-Katalog mit freigegebenen Images ermöglicht es Ihnen, Images global zu verteilen, zu versionieren und zu skalieren, und bietet Ihnen ein System für die Imageverwaltung.
@@ -52,6 +54,8 @@ AIB unterstützt Basisbetriebssystem-Images aus dem Azure Marketplace:
 - Windows 10 RS5 Enterprise/Enterprise (mehrere Sitzungen)/Professional
 - Windows 2016
 - Windows 2019
+
+Hier sind die Betriebssysteme aufgelistet, die getestet wurden und mit Azure Image Builder funktionieren. Der Azure Image Builder sollte jedoch mit jedem Linux- oder Windows-Image im Marketplace funktionieren.
 
 ## <a name="how-it-works"></a>Funktionsweise
 

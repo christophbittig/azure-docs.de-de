@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/18/2021
 ms.author: duau
-ms.openlocfilehash: ca91e7298486cc92ae8a4444869f0b71c91ae2ab
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: be1ffdecb727426f914a74970a720f4f19e51824
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112034227"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351292"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-standardpremium-preview"></a>Häufig gestellte Fragen zu Azure Front Door Standard/Premium (Vorschauversion)
 
@@ -63,9 +63,12 @@ Azure Front Door unterstützt HTTP, HTTPS und HTTP/2.
 
 Die Unterstützung des HTTP/2-Protokolls ist nur für Clients verfügbar, die mit Azure Front Door verbunden sind. Die Kommunikation mit den Back-Ends im Back-End-Pool erfolgt über HTTP/1.1. Die HTTP/2-Unterstützung ist standardmäßig aktiviert.
 
-### <a name="what-resources-are-supported-today-as-part-of-origin-group"></a>Welche Ressourcen werden derzeit als Teil der Ursprungsgruppe unterstützt?
+### <a name="what-resources-are-supported-today-as-part-of-an-origin-group"></a>Welche Ressourcen werden derzeit als Teil einer Ursprungsgruppe unterstützt?
 
-Die Ursprungsgruppe kann aus Storage, Web App, Kubernetes-Instanzen oder einem beliebigen anderen benutzerdefinierten Hostnamen mit öffentlicher Konnektivität bestehen. Für Azure Front Door ist es erforderlich, dass die Ursprünge entweder über eine öffentliche IP-Adresse oder einen öffentlich auflösbaren DNS-Hostnamen definiert werden. Mitglieder der Ursprungsgruppe können auf mehrere Zonen und Regionen verteilt sein oder sich sogar außerhalb von Azure befinden, sofern sie über öffentliche Konnektivität verfügen.
+Ursprungsgruppen können sich aus zwei Arten von Ursprüngen zusammensetzen:
+
+- Öffentliche Ursprünge umfassen Speicherkonten, App Service-Apps, Kubernetes-Instanzen sowie jeden anderen benutzerdefinierten Hostnamen mit öffentlicher Konnektivität. Diese Ursprünge müssen entweder über eine öffentliche IP-Adresse oder einen öffentlich auflösbaren DNS-Hostnamen definiert sein. Mitglieder von Ursprungsgruppen können über Verfügbarkeitszonen und Regionen hinweg und sogar außerhalb von Azure bereitgestellt werden, sofern sie über öffentliche Konnektivität verfügen. Öffentliche Ursprünge werden für die Standard- und Premium-Tarife von Azure Front Door unterstützt.
+- [Private Link-Ursprünge](concept-private-link.md) sind verfügbar, wenn Sie Azure Front Door (Premium) nutzen.
 
 ### <a name="what-regions-is-the-service-available-in"></a>In welchen Regionen ist der Dienst verfügbar?
 
@@ -141,7 +144,7 @@ Ja. Azure Front Door unterstützt die Header „X-Forwarded-For“, „X-Forward
 Die meisten Konfigurationsupdates der Regel-Engine werden in weniger als 20 Minuten abgeschlossen. Sie können erwarten, dass die Regel wirksam wird, sobald das Update abgeschlossen ist. 
 
  > [!Note]  
-  > Bei benutzerdefinierten TLS/SSL-Zertifikatupdates dauert die globale Bereitstellung etwa 30 Minuten.
+  > Bei den meisten benutzerdefinierten TLS/SSL-Zertifikatupdates dauert die globale Bereitstellung einige Minuten bis hin zu einer Stunde.
 
 Alle Aktualisierungen von Routen oder Back-End-Pools erfolgen nahtlos und verursachen keine Ausfallzeiten (wenn die neue Konfiguration korrekt ist). Durch Zertifikatupdates kommt es nicht zu Ausfällen, sofern Sie nicht von „Verwalteter Azure Front Door-Dienst“ zu Ihrem eigenen Zertifikat (oder umgekehrt) wechseln.
 
@@ -150,7 +153,9 @@ Alle Aktualisierungen von Routen oder Back-End-Pools erfolgen nahtlos und verurs
 
 ### <a name="can-azure-front-door-load-balance-or-route-traffic-within-a-virtual-network"></a>Kann Azure Front Door für den Datenverkehr in einem virtuellen Netzwerk einen Lastenausgleich vornehmen oder den Datenverkehr weiterleiten?
 
-Azure Front Door (AFD) erfordert eine öffentliche IP-Adresse oder einen öffentlich auflösbaren DNS-Namen, um den Datenverkehr weiterzuleiten. Für Azure Front Door ist keine direkte Weiterleitung an Ressourcen in einem virtuellen Netzwerk möglich. Sie können eine Application Gateway- oder Azure Load Balancer-Instanz mit einer öffentlichen IP-Adresse verwenden, um dieses Problem zu beheben.
+Azure Front Door (Standard) erfordert eine öffentliche IP-Adresse oder einen öffentlich auflösbaren DNS-Namen, um Datenverkehr weiterzuleiten. Für Azure Front Door ist keine direkte Weiterleitung an Ressourcen in einem virtuellen Netzwerk möglich. Sie können eine Application Gateway- oder Azure Load Balancer-Instanz mit einer öffentlichen IP-Adresse verwenden, um dieses Problem zu beheben.
+
+Azure Front Door (Premium) unterstützt das Weiterleiten von Datenverkehr an [Private Link-Ursprünge](concept-private-link.md).
 
 ### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door"></a>Welche Timeouts und Grenzwerte gelten für Azure Front Door?
 

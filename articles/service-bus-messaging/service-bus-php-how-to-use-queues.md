@@ -1,21 +1,24 @@
 ---
 title: Verwenden von Azure Service Bus-Warteschlangen mit PHP
-description: In diesem Tutorial erfahren Sie, wie Sie PHP-Anwendungen erstellen, um Nachrichten an eine Service Bus-Warteschlange zu senden und Antworten zu empfangen.
+description: In diesem Artikel erfahren Sie, wie Sie PHP-Anwendungen erstellen, um Nachrichten an eine Service Bus-Warteschlange zu senden und Antworten zu empfangen.
 services: service-bus-messaging
 ms.devlang: PHP
-ms.topic: quickstart
-ms.date: 06/23/2020
-ms.openlocfilehash: a7e0d1fa321f1b7c1295b5a640fe78b46adf1c72
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: how-to
+ms.date: 07/23/2021
+ms.openlocfilehash: d0909c4e2ea5ef53a1438ce05f5ddad485c80248
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85341127"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725126"
 ---
-# <a name="quickstart-how-to-use-service-bus-queues-with-php"></a>Schnellstart: Verwenden von Service Bus-Warteschlangen mit PHP
-[!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
+# <a name="how-to-use-service-bus-queues-with-php"></a>Verwenden von Service Bus-Warteschlangen mit PHP
+[!INCLUDE [service-bus-selector-queues](./includes/service-bus-selector-queues.md)]
 
-In diesem Tutorial erfahren Sie, wie Sie PHP-Anwendungen erstellen, um Nachrichten an eine Service Bus-Warteschlange zu senden und Antworten zu empfangen. 
+In diesem Artikel erfahren Sie, wie Sie PHP-Anwendungen erstellen, um Nachrichten an eine Service Bus-Warteschlange zu senden und Antworten zu empfangen. 
+
+> [!IMPORTANT]
+> Seit Februar 2021 befindet sich das Azure SDK für PHP in der Deaktivierungsphase und wird von Microsoft nicht mehr offiziell unterstützt. Weitere Informationen dazu, finden Sie in [dieser Ankündigung](https://github.com/Azure/azure-sdk-for-php#important-annoucement) auf GitHub. Dieser Artikel wird bald deaktiviert. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 1. Ein Azure-Abonnement. Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Sie können Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF) registrieren.
@@ -25,7 +28,7 @@ In diesem Tutorial erfahren Sie, wie Sie PHP-Anwendungen erstellen, um Nachricht
     3. Rufen Sie die **Verbindungszeichenfolge** ab. 
 
         > [!NOTE]
-        > In diesem Tutorial erstellen Sie eine **Warteschlange** im Service Bus-Namespace mithilfe von PHP. 
+        > In diesem Artikel erstellen Sie eine **Warteschlange** im Service Bus-Namespace mithilfe von PHP. 
 3. [Azure SDK für PHP](https://github.com/Azure/azure-sdk-for-php)
 
 ## <a name="create-a-php-application"></a>Erstellen einer PHP-Anwendung

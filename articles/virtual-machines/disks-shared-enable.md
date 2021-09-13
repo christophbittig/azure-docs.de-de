@@ -2,24 +2,33 @@
 title: Aktivieren von freigegebenen Datenträgern für verwaltete Azure-Datenträger
 description: Konfigurieren eines verwalteten Azure-Datenträgers mit freigegebenen Datenträgern, um ihn für mehrere virtuelle Computer freigeben zu können
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: how-to
-ms.date: 05/10/2021
+ms.date: 08/16/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 9061e3621d8232c82a126a60bebe16bb32ce6d29
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: d2a770dd007c801d2192ff08349966ff915bdd0a
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673361"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351043"
 ---
 # <a name="enable-shared-disk"></a>Aktivieren freigegebener Datenträger
 
 In diesem Artikel erfahren Sie, wie Sie das Feature für freigegebene Datenträger für verwaltete Azure-Datenträger aktivieren. Freigegebene Azure-Datenträger sind ein neues Feature für verwaltete Azure-Datenträger, mit dem Sie einen verwalteten Datenträger gleichzeitig an mehrere virtuelle Computer (Virtual Machines, VMs) anfügen können. Durch das Anfügen eines verwalteten Datenträgers an mehrere virtuelle Computer können Sie entweder neue gruppierte Anwendungen in Azure bereitstellen oder bereits vorhandene gruppierte Anwendungen zu Azure migrieren. 
 
 Informationen zum Konzept verwalteter Datenträger mit aktivierten freigegebenen Datenträgern finden Sie unter [Freigegebene Azure-Datenträger](disks-shared.md).
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Für die Skripte und Befehle in diesem Artikel ist Folgendes erforderlich:
+
+- Version 6.0.0 oder höher des Azure PowerShell-Moduls
+
+oder
+- Die aktuelle Version der Azure-Befehlszeilenschnittstelle
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -41,6 +50,27 @@ Um einen verwalteten Datenträger mit aktivierter Funktion freigegebener Datentr
 
 > [!IMPORTANT]
 > Der Wert von `maxShares` kann nur festgelegt oder geändert werden, wenn die Einbindung eines Datenträgers auf allen VMs aufgehoben wird. Informationen zu den zulässigen Werten für `maxShares` finden Sie unter [Datenträgergrößen](#disk-sizes).
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1. Melden Sie sich beim Azure-Portal an. 
+1. Suchen Sie nach **Datenträger**, und wählen Sie diese Option aus.
+1. Wählen Sie **+ Erstellen** aus, um einen neuen Datenträger zu erstellen.
+1. Geben Sie die Details ein, wählen Sie eine geeignete Region aus, und wählen Sie dann **Größe ändern** aus.
+
+    :::image type="content" source="media/disks-shared-enable/create-shared-disk-basics-pane.png" alt-text="Screenshot: Bereich „Verwalteten Datenträger erstellen“ mit hervorgehobener Option „Größe ändern“" lightbox="media/disks-shared-enable/create-shared-disk-basics-pane.png":::
+
+1. Wählen Sie die gewünschte SSD Premium-Größe und dann **OK** aus.
+
+    :::image type="content" source="media/disks-shared-enable/select-premium-shared-disk.png" alt-text="Screenshot: Datenträger-SKU, SSD Premium hervorgehoben" lightbox="media/disks-shared-enable/select-premium-shared-disk.png":::
+
+1. Fahren Sie mit der Bereitstellung fort, bis Sie zum Bereich **Erweitert** gelangen.
+1. Wählen Sie **Ja** für **Freigegebenen Datenträger aktivieren** aus, und wählen Sie die Anzahl **Maximaler Freigaben** aus, die Sie zulassen möchten.
+
+    :::image type="content" source="media/disks-shared-enable/enable-premium-shared-disk.png" alt-text="Screenshot: Bereich „Erweitert“ mit hervorgehobener Option „Freigegebenen Datenträger aktivieren“ auf „Ja“" lightbox="media/disks-shared-enable/enable-premium-shared-disk.png":::
+
+1. Klicken Sie auf **Überprüfen + erstellen**.
+
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
@@ -64,6 +94,76 @@ Bevor Sie die folgende Vorlage verwenden, ersetzen Sie `[parameters('dataDiskNam
 
 ---
 
+### <a name="deploy-a-standard-ssd-as-a-shared-disk"></a>Bereitstellen einer SSD Standard als freigegebenen Datenträger
+
+Um einen verwalteten Datenträger mit aktivierter Funktion freigegebener Datenträger bereitzustellen, verwenden Sie die neue Eigenschaft `maxShares`, und definieren Sie einen Wert, der größer als 1 ist. Dadurch kann der Datenträger für mehrere VMs freigegeben werden.
+
+> [!IMPORTANT]
+> Der Wert von `maxShares` kann nur festgelegt oder geändert werden, wenn die Einbindung eines Datenträgers auf allen VMs aufgehoben wird. Informationen zu den zulässigen Werten für `maxShares` finden Sie unter [Datenträgergrößen](#disk-sizes).
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+Sie können derzeit keine freigegebene SSD Standard über das Azure-Portal bereitstellen. Verwenden Sie entweder die Azure CLI, das Azure PowerShell-Modul oder eine Azure Resource Manager-Vorlage.
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+```azurecli
+az disk create -g myResourceGroup -n mySharedDisk --size-gb 1024 -l westcentralus --sku StandardSSD_LRS --max-shares 2
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+$dataDiskConfig = New-AzDiskConfig -Location 'WestCentralUS' -DiskSizeGB 1024 -AccountType StandardSSD_LRS -CreateOption Empty -MaxSharesCount 2
+
+New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $dataDiskConfig
+```
+
+# <a name="resource-manager-template"></a>[Resource Manager-Vorlage](#tab/azure-resource-manager)
+
+Ersetzen Sie die Werte in dieser Azure Resource Manager-Vorlage durch Ihre eigenen, bevor Sie sie verwenden:
+
+```rest
+{ 
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "dataDiskName": {
+      "type": "string",
+      "defaultValue": "mySharedDisk"
+    },
+    "dataDiskSizeGB": {
+      "type": "int",
+      "defaultValue": 1024
+    },
+    "maxShares": {
+      "type": "int",
+      "defaultValue": 2
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Compute/disks",
+      "name": "[parameters('dataDiskName')]",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2019-07-01",
+      "sku": {
+        "name": "StandardSSD_LRS"
+      },
+      "properties": {
+        "creationData": {
+          "createOption": "Empty"
+        },
+        "diskSizeGB": "[parameters('dataDiskSizeGB')]",
+        "maxShares": "[parameters('maxShares')]"
+      }
+    }
+  ] 
+}
+```
+
+---
+
 ### <a name="deploy-an-ultra-disk-as-a-shared-disk"></a>Bereitstellen einer Disk Ultra als freigegebenen Datenträger
 
 Um einen verwalteten Datenträger mit aktiviertem Feature für freigegebene Datenträger bereitzustellen, ändern Sie den Parameter `maxShares` in einen Wert, der größer als 1 ist. Dadurch kann der Datenträger für mehrere VMs freigegeben werden.
@@ -71,6 +171,22 @@ Um einen verwalteten Datenträger mit aktiviertem Feature für freigegebene Date
 > [!IMPORTANT]
 > Der Wert von `maxShares` kann nur festgelegt oder geändert werden, wenn die Einbindung eines Datenträgers auf allen VMs aufgehoben wird. Informationen zu den zulässigen Werten für `maxShares` finden Sie unter [Datenträgergrößen](#disk-sizes).
 
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1. Melden Sie sich beim Azure-Portal an. 
+1. Suchen Sie nach **Datenträger**, und wählen Sie diese Option aus.
+1. Wählen Sie **+ Erstellen** aus, um einen neuen Datenträger zu erstellen.
+1. Geben Sie die Details ein, und wählen Sie dann **Größe ändern**.
+1. Wählen Sie für die **Datenträger-SKU** Disk Ultra aus.
+
+    :::image type="content" source="media/disks-shared-enable/select-ultra-shared-disk.png" alt-text="Screenshot der Datenträger-SKU, Disk Ultra hervorgehoben" lightbox="media/disks-shared-enable/select-ultra-shared-disk.png":::
+
+1. Wählen Sie die gewünschte Datenträgergröße und dann **OK** aus.
+1. Fahren Sie mit der Bereitstellung fort, bis Sie zum Bereich **Erweitert** gelangen.
+1. Wählen Sie **Ja** für **Freigegebenen Datenträger aktivieren** aus, und wählen Sie die Anzahl **Maximaler Freigaben** aus, die Sie zulassen möchten.
+1. Klicken Sie auf **Überprüfen + erstellen**.
+
+    :::image type="content" source="media/disks-shared-enable/enable-ultra-shared-disk.png" alt-text="Screenshot: Bereich „Erweitert“ mit hervorgehobener Option „Freigegebenen Datenträger aktivieren“" lightbox="media/disks-shared-enable/enable-ultra-shared-disk.png":::
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 

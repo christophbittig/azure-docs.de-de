@@ -8,12 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.collection: linux
 ms.date: 06/01/2021
-ms.openlocfilehash: 97f557ec45530de3f42dd61ee1cded57fd7c33a0
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: ce4b7ee2fea9d5b2b7c92b5ade1b3ad146382214
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110793744"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355696"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>Azure Monitor Dependency-VM-Erweiterung für Linux
 
@@ -27,7 +27,7 @@ Die Azure VM Dependency-Agent-Erweiterung für Linux kann für die unterstützte
 
 ## <a name="extension-schema"></a>Erweiterungsschema
 
-Das folgende JSON zeigt das Schema für die Azure VM Dependency-Agent-Erweiterung auf einem virtuellen Azure Linux-Computer. 
+Das folgende JSON zeigt das Schema für die Azure VM Dependency-Agent-Erweiterung auf einem virtuellen Azure Linux-Computer.
 
 ```json
 {
@@ -101,7 +101,7 @@ Im folgenden Beispiel wird davon ausgegangen, dass die Dependency-Agent-Erweiter
 }
 ```
 
-Wenn Sie den JSON-Code für die Erweiterung auf der Stammebene der Vorlage platzieren, enthält der Ressourcenname einen Verweis auf den übergeordneten virtuellen Computer. Der Typ spiegelt die geschachtelte Konfiguration wider. 
+Wenn Sie den JSON-Code für die Erweiterung auf der Stammebene der Vorlage platzieren, enthält der Ressourcenname einen Verweis auf den übergeordneten virtuellen Computer. Der Typ spiegelt die geschachtelte Konfiguration wider.
 
 ```json
 {
@@ -132,31 +132,22 @@ az vm extension set \
     --vm-name myVM \
     --name DependencyAgentLinux \
     --publisher Microsoft.Azure.Monitoring.DependencyAgent \
-    --version 9.5 
+    --version 9.5
 ```
 
-## <a name="automatic-upgrade-preview"></a>Automatisches Upgrade (Vorschau)
-Ein neues Feature zum automatischen Aktualisieren von Nebenversionen der Dependency-Erweiterung ist jetzt als öffentliche Vorschau verfügbar. Zum Aktivieren dieses Features müssen Sie die folgenden Konfigurationsänderungen vornehmen.
+## <a name="automatic-extension-upgrade"></a>Automatisches Erweiterungsupgrade
+Ein neues Feature für [automatische Upgrades für Nebenversionen](../automatic-extension-upgrade.md) der Dependency-Erweiterung ist jetzt verfügbar.
 
--   Verwenden Sie eine der Methoden unter [Aktivieren des Vorschauzugriffs](../automatic-extension-upgrade.md#enabling-preview-access), um das Feature für Ihr Abonnement zu aktivieren.
-- Fügen Sie der Vorlage das Attribut `enableAutomaticUpgrade` hinzu.
+Sie müssen sicherstellen, dass die Eigenschaft `enableAutomaticUpgrade` auf `true` festgelegt ist und der Erweiterungsvorlage hinzugefügt wird, um automatische Erweiterungsupgrades für eine Erweiterung zu aktivieren. Diese Eigenschaft muss für jede VM oder VM-Skalierungsgruppe einzeln aktiviert werden. Verwenden Sie eine der im Abschnitt [Aktivieren des automatischen Erweiterungsupgrades](../automatic-extension-upgrade.md#enabling-automatic-extension-upgrade) beschriebenen Methoden, um das Feature für Ihre VM oder VM-Skalierungsgruppe zu aktivieren.
 
-Für das Schema der Versionsverwaltung der Dependency-Agent-Erweiterung gilt das folgende Format:
+Wenn das automatische Erweiterungsupgrade für eine VM oder VM-Skalierungsgruppe aktiviert ist, wird für die Erweiterung automatisch ein Upgrade ausgeführt, sobald der Erweiterungsherausgeber eine neue Version für diese Erweiterung freigibt. Das Upgrade wird wie [hier](../automatic-extension-upgrade.md#how-does-automatic-extension-upgrade-work) beschrieben gemäß den verfügbarkeitsbasierten Prinzipien sicher angewendet.
 
-```
-<MM.mm.bb.rr> where M = Major version number, m = minor version number, b = bug number, r = revision number.
-```
+Die Funktionalität des `enableAutomaticUpgrade`-Attributs unterscheidet sich von jener des `autoUpgradeMinorVersion`-Attributs. Das `autoUpgradeMinorVersion`-Attribut löst nicht automatisch ein Update für eine Nebenversion aus, wenn der Herausgeber der Erweiterung eine neue Version veröffentlicht. Das `autoUpgradeMinorVersion`-Attribut gibt an, ob die Erweiterung eine neuere Nebenversion verwenden sollte, falls zum Bereitstellungszeitpunkt eine verfügbar ist. Abgesehen von erneuten Bereitstellungen führt die Erweiterung nach der Bereitstellung jedoch keine Upgrades für Nebenversionen aus, selbst wenn diese Eigenschaft auf „true“ festgelegt ist.
 
-Die Attribute `enableAutomaticUpgrade` und `autoUpgradeMinorVersion` bestimmen gemeinsam, wie Upgrades für virtuelle Computer im Abonnement behandelt werden.
-
-| enableAutomaticUpgrade | autoUpgradeMinorVersion | Wirkung |
-|:---|:---|:---|
-| true | false | Aktualisierung des Dependency-Agents, falls eine neuere Version von „bb.rr“ vorhanden ist. Wenn Sie beispielsweise Version 9.6.0.1355 ausführen und die neuere Version 9.6.2.1366 lautet, werden Ihre virtuellen Computer in aktivierten Abonnements auf 9.6.2.1366 aktualisiert. |
-| true | true |  Dadurch wird der Dependency-Agent aktualisiert, wenn eine neuere Version von „mm.bb.rr“ oder „bb.rr“ vorhanden ist. Wenn Sie beispielsweise Version 9.6.0.1355 ausführen und die neuere Version 9.7.1.1416 lautet, werden Ihre virtuellen Computer in aktivierten Abonnements auf 9.7.1.1416 aktualisiert. Wenn Sie beispielsweise Version 9.6.0.1355 ausführen und die neuere Version 9.6.2.1366 lautet, werden Ihre virtuellen Computer in aktivierten Abonnements ebenfalls auf 9.6.2.1366 aktualisiert. |
-| false | true oder false | Das automatische Upgrade ist deaktiviert.
+Es wird empfohlen, `enableAutomaticUpgrade` für Ihre Erweiterungsbereitstellung zu verwenden, damit Ihre Erweiterungsversion aktualisiert wird.
 
 > [!IMPORTANT]
-> Wenn Sie Ihrer Vorlage `enableAutomaticUpgrade` hinzufügen, stellen Sie sicher, dass Sie mindestens die API-Version 2019-12-01 verwenden.
+> Wenn Sie Ihrer Vorlage `enableAutomaticUpgrade` hinzufügen, stellen Sie sicher, dass Sie die API-Version 2019-12-01 oder höher verwenden.
 
 ## <a name="troubleshoot-and-support"></a>Problembehandlung und Support
 
@@ -171,7 +162,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 Die Ausgabe der Erweiterungsausführung wird in der folgenden Datei protokolliert:
 
 ```
-/opt/microsoft/dependency-agent/log/install.log 
+/opt/microsoft/dependency-agent/log/install.log
 ```
 
 ### <a name="support"></a>Support

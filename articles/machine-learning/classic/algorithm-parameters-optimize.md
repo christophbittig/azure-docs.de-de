@@ -9,20 +9,20 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: a133f9b8d1ae22114a78be8e4d22d6293c94c7cd
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 5af1923ea0747b3e75614ce2b4d6c7915390ac3d
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112582976"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695037"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-machine-learning-studio-classic"></a>Auswählen von Parametern zur Optimierung von Algorithmen in Azure Machine Learning Studio (Classic)
 
 **GILT FÜR:**  ![Gilt für ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Gilt nicht für ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
+
 In diesem Thema wird das Auswählen der richtigen Hyperparameter für einen Algorithmus im Azure Machine Learning Studio (Classic) beschrieben. Für die meisten Machine Learning-Algorithmen müssen Parameter festgelegt werden. Wenn Sie ein Modell trainieren, müssen Sie Werte für diese Parameter bereitstellen. Die Wirksamkeit des trainierten Modells ist abhängig von den gewählten Parametern. Das Ermitteln des optimalen Parametersatzes wird als *Modellauswahl* bezeichnet.
-
-
 
 Es gibt verschiedene Möglichkeiten zur Modellauswahl. Beim maschinellen Lernen ist die Kreuzvalidierung eine der am häufigsten verwendeten Methoden für die Modellauswahl und der Standardmechanismus für die Modellauswahl im Azure Machine Learning Studio (Classic). Da das Azure Machine Learning Studio (Classic) sowohl R als auch Python unterstützt, können Sie mithilfe von R oder Python Ihren eigenen Modellauswahlmechanismus implementieren.
 

@@ -8,19 +8,19 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 09/22/2020
-ms.openlocfilehash: fcf222573ac16be54ae98777749306fee0847109
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.date: 07/27/2021
+ms.openlocfilehash: d5d2d3a844d417b12ae2899cd5ce3d998731aab6
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108749589"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356092"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Was ist ein Azure Machine Learning-Arbeitsbereich?
 
 Der Arbeitsbereich ist die Ressource der obersten Ebene für Azure Machine Learning und ein zentraler Ort für die Arbeit mit allen Artefakten, die Sie während der Nutzung von Azure Machine Learning erstellen.  Im Arbeitsbereich wird der Verlauf aller Trainingsläufe gespeichert, einschließlich Protokollen, Metriken, Ausgabe und einer Momentaufnahme Ihrer Skripts. Anhand dieser Informationen ermitteln Sie, welcher Trainingslauf das beste Modell ergibt.  
 
-Sobald Sie ein fertiges Modell haben, registrieren Sie es im Arbeitsbereich. Anschließend verwenden Sie das registrierte Modell und die Bewertungsskripts, um das Modell in Azure Container Instances, in Azure Kubernetes Service oder in einem FPGA (Field Programmable Gate Array) als REST-basierten HTTP-Endpunkt bereitzustellen. Sie können das Modell auch als Modul auf einem Azure IoT Edge-Gerät bereitstellen.
+Sobald Sie ein fertiges Modell haben, registrieren Sie es im Arbeitsbereich. Anschließend verwenden Sie das registrierte Modell und die Bewertungsskripts, um das Modell in Azure Container Instances, in Azure Kubernetes Service oder in einem FPGA (Field Programmable Gate Array) als REST-basierten HTTP-Endpunkt bereitzustellen.
 
 ## <a name="taxonomy"></a>Taxonomie 
 
@@ -53,7 +53,6 @@ Sie können auf folgende Arten mit Ihrem Arbeitsbereich arbeiten:
     + [Azure Machine Learning-Studio](https://ml.azure.com) 
     + [Azure Machine Learning-Designer](concept-designer.md) 
 + In jeder Python-Umgebung mit dem [Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/intro)
-+ In jeder R-Umgebung mit dem [Azure Machine Learning SDK für R (Vorschau)](https://azure.github.io/azureml-sdk-for-r/reference/index.html)
 + Über die Befehlszeile mit der [CLI-Erweiterung](./reference-azure-machine-learning-cli.md) für Azure Machine Learning
 + [Azure Machine Learning-VS Code-Erweiterung](how-to-manage-resources-vscode.md#workspaces)
 
@@ -74,7 +73,7 @@ Für Aufgaben für maschinelles Lernen werden Artefakte aus Ihrem Arbeitsbereich
 
 Sie können auch die folgenden Arbeitsbereichsverwaltungsaufgaben ausführen:
 
-| Arbeitsbereichsverwaltungsaufgabe   | Portal              | Studio | Python SDK / R SDK       | Befehlszeilenschnittstelle (CLI)        | VS-Code
+| Arbeitsbereichsverwaltungsaufgabe   | Portal              | Studio | Python SDK      | Azure CLI        | VS-Code
 |---------------------------|---------|---------|------------|------------|------------|
 | Erstellen eines Arbeitsbereichs        | **&check;**     | | **&check;** | **&check;** | **&check;** |
 | Verwalten des Arbeitsbereichszugriffs    | **&check;**   || |  **&check;**    ||
@@ -96,6 +95,15 @@ Es gibt mehrere Möglichkeiten zum Erstellen eines Arbeitsbereichs:
 > [!NOTE]
 > Für den Namen des Arbeitsbereichs wird die Groß-/Kleinschreibung nicht beachtet.
 
+## <a name="sub-resources"></a><a name="sub-resources"></a>Unterressourcen
+
+Bei den folgenden Unterressourcen handelt es sich um die Hauptressourcen, die im AML-Arbeitsbereich erstellt werden.
+
+* Virtuelle Computer: Sie stellen Rechenleistung für den AML-Arbeitsbereich bereit und sind wesentlicher Bestandteil bei der Bereitstellung und Schulung von Modellen.
+* Lastenausgleich: Für jede Compute-Instanz und jeden Computecluster wird ein Netzwerklastenausgleich erstellt, über den der Datenverkehr auch dann abgewickelt wird, wenn die Compute-Instanz bzw. der Computecluster angehalten wurde.
+* Virtuelles Netzwerk: Ein virtuelles Netzwerk unterstützt Azure-Ressourcen bei der Kommunikation mit anderen Azure-Ressourcen, mit dem Internet und anderen lokalen Netzwerken.
+* Bandbreite: Kapselt regionsübergreifend alle Datenübertragungen.
+
 ## <a name="associated-resources"></a><a name="resources"></a> Zugeordnete Ressourcen
 
 Wenn Sie einen neuen Arbeitsbereich erstellen, werden darin automatisch mehrere Azure-Ressourcen erstellt, die vom Arbeitsbereich verwendet werden:
@@ -114,7 +122,7 @@ Wenn Sie einen neuen Arbeitsbereich erstellen, werden darin automatisch mehrere 
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): Speichert Geheimnisse, die von Computezielen verwendet werden, sowie andere vertrauliche Informationen, die vom Arbeitsbereich benötigt werden.
 
 > [!NOTE]
-> Sie können stattdessen vorhandene Azure-Ressourceninstanzen verwenden, wenn Sie den Arbeitsbereich mit dem [Python SDK](how-to-manage-workspace.md?tabs=python#create-a-workspace), dem [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/create_workspace.html) oder der Azure Machine Learning-CLI [unter Verwendung einer ARM-Vorlage](how-to-create-workspace-template.md) erstellen.
+> Sie können stattdessen vorhandene Azure-Ressourceninstanzen verwenden, wenn Sie den Arbeitsbereich mit dem [Python SDK](how-to-manage-workspace.md?tabs=python#create-a-workspace) oder der Azure Machine Learning-CLI [unter Verwendung einer ARM-Vorlage](how-to-create-workspace-template.md) erstellen.
 
 <a name="wheres-enterprise"></a>
 
@@ -128,9 +136,11 @@ In beiden Editionen sind Kunden für die Kosten der verbrauchten Azure-Ressource
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+Weitere Informationen zum Planen eines Arbeitsbereichs für die Anforderungen Ihrer Organisation finden Sie unter [Organisieren und Einrichten von Azure Machine Learning](/azure/cloud-adoption-framework/ready/azure-best-practices/ai-machine-learning-resource-organization).
+
 Informationen zu den ersten Schritten mit Azure Machine Learning finden Sie unter:
 
-+ [Azure Machine Learning – Übersicht](overview-what-is-azure-ml.md)
++ [Was ist Azure Machine Learning?](overview-what-is-azure-machine-learning.md)
 + [Erstellen und Verwalten eines Arbeitsbereichs](how-to-manage-workspace.md)
 + [Tutorial: Erste Schritte mit Azure Machine Learning](quickstart-create-resources.md)
 + [Tutorial: Erstellen Ihres ersten Klassifizierungsmodells mit automatisiertem maschinellen Lernen](tutorial-first-experiment-automated-ml.md) 

@@ -1,18 +1,20 @@
 ---
 title: Transformieren von Daten mit der Aktivität „Gespeicherte Prozedur“
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Informationen, wie Sie die SQL Server-Aktivität „Gespeicherte Prozedur“ in einer Data Factory-Pipeline zum Aufrufen einer gespeicherten Prozedur in einer Azure SQL-Datenbank-Instanz oder Azure SQL Data Warehouse-Instanz verwenden können.
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 11/27/2018
-ms.openlocfilehash: b9ba2f9de82522d4348fa341ad0b41d43c3eebcc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c3815bfca83d6dcf789a780a2d82ff1d4bb62285
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100375645"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351219"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Transformieren von Daten mit der SQL Server-Aktivität „Gespeicherte Prozedur“ in Azure Data Factory | Microsoft-Dokumentation
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -74,17 +76,12 @@ In der folgenden Tabelle werden diese JSON-Eigenschaften beschrieben:
 | storedProcedureParameters | Geben Sie die Werte für Parameter der gespeicherten Prozedur an. Verwenden Sie `"param1": { "value": "param1Value","type":"param1Type" }` zum Übergeben von Parameterwerten und deren Typ, der von der Datenquelle unterstützt wird. Wenn Sie für einen Parameter „null“ übergeben müssen, verwenden Sie die folgende Syntax: `"param1": { "value": null }` (nur Kleinbuchstaben). | Nein       |
 
 ## <a name="parameter-data-type-mapping"></a>Zuordnen des Parameterdatentyps
-Der Datentyp, den Sie für den Parameter angeben, ist der Azure Data Factory-Typ, der dem Datentyp in der verwendeten Datenquelle zugeordnet ist. Sie finden die Datentypzuordnungen für Ihre Datenquelle im Bereich „Connectors“. Einige Beispiele:
+Der Datentyp, den Sie für den Parameter angeben, ist der Azure Data Factory-Typ, der dem Datentyp in der verwendeten Datenquelle zugeordnet ist. Sie finden die Datentypzuordnungen für Ihre Datenquelle in der Dokumentation zu Connectors. Zum Beispiel:
 
-| Data source          | Datentypzuordnung |
-| ---------------------|-------------------|
-| Azure Synapse Analytics | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#data-type-mapping-for-azure-sql-data-warehouse |
-| Azure SQL-Datenbank   | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#data-type-mapping-for-azure-sql-database | 
-| Oracle               | https://docs.microsoft.com/azure/data-factory/connector-oracle#data-type-mapping-for-oracle |
-| SQL Server           | https://docs.microsoft.com/azure/data-factory/connector-sql-server#data-type-mapping-for-sql-server |
-
-
-
+- [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#data-type-mapping-for-azure-synapse-analytics)
+- [Zuordnung von Azure SQL-Datenbank-Datentypen](connector-azure-sql-database.md#data-type-mapping-for-azure-sql-database)
+- [Oracle-Datentypzuordnung](connector-oracle.md#data-type-mapping-for-oracle)
+- [SQL Server-Datentypzuordnung](connector-sql-server.md#data-type-mapping-for-sql-server)
 
 ## <a name="next-steps"></a>Nächste Schritte
 In den folgenden Artikeln erfahren Sie, wie Daten auf andere Weisen transformiert werden: 
@@ -96,5 +93,5 @@ In den folgenden Artikeln erfahren Sie, wie Daten auf andere Weisen transformier
 * [Hadoop-Streamingaktivität](transform-data-using-hadoop-streaming.md)
 * [Spark-Aktivität](transform-data-using-spark.md)
 * [Benutzerdefinierte .NET-Aktivität](transform-data-using-dotnet-custom-activity.md)
-* [Batchausführungsaktivität für Azure Machine Learning Studio (klassisch)](transform-data-using-machine-learning.md)
+* [Batchausführungsaktivität für ML Studio (Classic)](transform-data-using-machine-learning.md)
 * [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md)

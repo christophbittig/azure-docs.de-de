@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: 1fb18deaa4a9cbb43aa75fb21ab8d58fd8976791
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: dbb2834d6d51f2555da05863c606b4678b9a17b7
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114293478"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772285"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Verwenden von kundenseitig verwalteten Verschlüsselungsschlüsseln für Azure HPC Cache
 
@@ -122,7 +122,7 @@ Der Benutzer, der den Cache erstellt, muss über Berechtigungen verfügen, die d
 
 Diese Einstellungen sind optional.
 
-* Aktivieren Sie das Kontrollkästchen **Immer aktuelle Schlüsselversion verwenden**, wenn Sie [automatische Schlüsselrotation](../virtual-machines/disk-encryption.md#automatic-key-rotation-of-customer-managed-keys-preview) wünschen.
+* Aktivieren Sie das Kontrollkästchen **Immer aktuelle Schlüsselversion verwenden**, wenn Sie [automatische Schlüsselrotation](../virtual-machines/disk-encryption.md#automatic-key-rotation-of-customer-managed-keys) wünschen.
 
 * Wenn Sie eine bestimmte verwaltete Identität für diesen Cache verwenden möchten, wählen Sie im Abschnitt **Verwaltete Identitäten** die Option **Benutzerseitig zugewiesen** aus, und wählen Sie die zu verwendende Identität aus. Weitere Informationen finden Sie in der [Dokumentation zu verwalteten Identitäten](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types).
 

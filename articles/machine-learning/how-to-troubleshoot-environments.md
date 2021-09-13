@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 author: saachigopal
 ms.author: sagopal
-ms.date: 12/3/2020
+ms.date: 07/27/2021
 ms.topic: troubleshooting
 ms.custom: devx-track-python
-ms.openlocfilehash: ec0c7d64f2145cdaf594cb903c072984f4d376a9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e88637f67e8e9db01c46b6de5518c95ad4290ee9
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519128"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419203"
 ---
 # <a name="troubleshoot-environment-image-builds"></a>Problembehandlung für Buildvorgänge für Umgebungsimages
 
@@ -23,7 +23,7 @@ Es wird beschrieben, wie Sie die Problembehandlung durchführen, wenn Probleme m
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) aus.
+* Ein Azure-Abonnement. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://azure.microsoft.com/free/) aus.
 * Das [Azure Machine Learning SDK](/python/api/overview/azure/ml/install).
 * Die [Azure CLI](/cli/azure/install-azure-cli)
 * Die [CLI-Erweiterung für Azure Machine Learning](reference-azure-machine-learning-cli.md).
@@ -145,6 +145,25 @@ Fehler im pip-Unterprozess:
 
 Die pip-Installation kann auch in einer unendlichen Schleife hängen bleiben, falls für die Abhängigkeiten unlösbare Konflikte bestehen. Wenn Sie lokal arbeiten, sollten Sie für die pip-Version ein Downgrade auf eine frühere Version als 20.3 durchführen. In einer Conda-Umgebung, die aus einer YAML-Datei erstellt wurde, tritt dieses Problem nur auf, wenn „conda-forge“ der Kanal mit der höchsten Priorität ist. Geben Sie zum Beheben des Problems in der Conda-Spezifikationsdatei explizit „pip < 20.3“ (!=20.3 oder =20.2.4-Anheftung an andere Version) als Conda-Abhängigkeit an.
 
+### <a name="modulenotfounderror-no-module-named-distutilsdir_util"></a>ModuleNotFoundError: Kein Modul mit dem Namen "distutils.dir_util"
+
+Beim Einrichten einer Umgebung tritt manchmal das Problem **ModuleNotFoundError: Kein Modul mit dem Namen "distutils.dir_util"** auf. Führen Sie den folgenden Befehl aus, um dies zu beheben:
+
+```bash
+apt-get install -y --no-install-recommends python3 python3-distutils && \
+ln -sf /usr/bin/python3 /usr/bin/python
+```
+
+Wenn Sie mit einem Dockerfile arbeiten, führen Sie den Befehl innerhalb eines RUN-Befehls aus.
+
+```dockerfile
+RUN apt-get update && \
+  apt-get install -y --no-install-recommends python3 python3-distutils && \
+  ln -sf /usr/bin/python3 /usr/bin/python
+```
+
+Durch Ausführung dieses Befehls werden die richtigen Modulabhängigkeiten für die Konfiguration Ihrer Umgebung installiert. 
+
 ## <a name="service-side-failures"></a>Dienstseitige Fehler
 
 In den folgenden Szenarien finden Sie Informationen zur Problembehandlung bei dienstseitigen Fehlern.
@@ -188,9 +207,6 @@ Wenn Sie Docker-Standardimages nutzen und vom Benutzer verwaltete Abhängigkeite
 
  Weitere Informationen finden Sie unter [Aktivieren virtueller Netzwerke](./how-to-network-security-overview.md).
 
-### <a name="you-need-to-create-an-icm"></a>Erstellen eines ICM-Tickets erforderlich
-
-Fügen Sie beim Erstellen bzw. Zuweisen eines ICM-Tickets zu Metastore das CSS-Supportticket hinzu, damit wir das Problem besser verstehen können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

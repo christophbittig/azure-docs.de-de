@@ -4,13 +4,13 @@ description: In diesem Artikel werden gängige Probleme mit Azure Monitor-Metrik
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 06/03/2021
-ms.openlocfilehash: cbbecb49acf556dc7a8ce6285d4b1b3581c39b3d
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.date: 08/15/2021
+ms.openlocfilehash: 5aa39240b87f86dfaa1fbd44de8b6889939ec64f
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111412898"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122343142"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Behandeln von Problemen mit Azure Monitor-Metrikwarnungen 
 
@@ -287,6 +287,21 @@ Wenn eine Metrik große Schwankungen aufweist, wird durch dynamische Schwellenwe
 3. Die Metrik weist ein irreguläres Verhalten mit hoher Varianz auf (es gibt Spitzen oder Abfälle in den Daten).
 
 Wenn die untere Grenze einen negativen Wert aufweist, bedeutet dies, dass die Metrik aufgrund des unregelmäßigen Verhaltens der Metrik vermutlich einen Nullwert erreichen kann. Sie können erwägen, eine höhere Empfindlichkeit oder eine größere *Aggregationsgranularität (Zeitraum)* auszuwählen, um das Modell weniger sensibel zu machen. Sie können auch die Option *Vor dem folgenden Datum liegende Daten ignorieren* verwenden, um kürzliche Unregelmäßigkeiten aus den Verlaufsdaten für das Erstellen des Modells auszuschließen.
+
+## <a name="the-dynamic-thresholds-alert-rule-is-too-noisy-fires-too-much"></a>Die Warnungsregel für dynamische Schwellwerte ist zu empfindlich (wird zu häufig ausgelöst).
+Verwenden Sie eine der folgenden Optionen, um die Empfindlichkeit Ihrer Warnungsregel für dynamische Schwellwerte zu reduzieren:
+1. Schwellwertempfindlichkeit: Legen Sie die Empfindlichkeit auf *Niedrig* fest, um bei Abweichungen toleranter zu sein.
+2. Anzahl von Verstößen (unter *Erweiterte Einstellungen*): Konfigurieren Sie die Warnungsregel so, dass sie nur ausgelöst wird, wenn innerhalb eines bestimmten Zeitraums eine bestimmte Anzahl von Abweichungen auftritt. Dadurch wird die Regel weniger anfällig für vorübergehende Abweichungen.
+
+
+## <a name="the-dynamic-thresholds-alert-rule-is-too-insensitive-doesnt-fire"></a>Die Warnungsregel für dynamische Schwellwerte ist zu unempfindlich (wird nicht ausgelöst).
+Manchmal wird eine Warnungsregel auch dann nicht ausgelöst, wenn eine hohe Empfindlichkeit konfiguriert ist. Dies geschieht in der Regel, wenn die Verteilung der Metrik sehr unregelmäßig ist.
+Erwägen Sie eine der folgenden Optionen:
+* Wechseln Sie zur Überwachung einer ergänzenden Metrik, die für Ihr Szenario geeignet ist (falls zutreffend). Überprüfen Sie beispielsweise die Änderungen der Erfolgsrate statt Änderungen der Fehlerrate.
+* Versuchen Sie, eine andere Aggregationsgranularität (Zeitraum) auszuwählen. 
+* Überprüfen Sie, ob sich das Metrikverhalten in den letzten 10 Tagen drastisch geändert hat (ein Ausfall). Eine plötzliche Änderung kann sich auf die oberen und unteren Schwellenwerte auswirken, die für die Metrik berechnet werden, und sie weiter machen. Warten Sie einige Tage, bis der Ausfall nicht mehr in die Schwellenwertberechnung einbezogen wird, oder verwenden Sie die Option *Daten ignorieren vor* (unter *Erweiterte Einstellungen*).
+* Wenn Ihre Daten wöchentlich saisonabhängig sind, aber nicht genügend Verlauf für die Metrik verfügbar ist, können die berechneten Schwellenwerte zu breiteren Ober- und Untergrenzen führen. Beispielsweise kann die Berechnung Wochentage und Wochenenden auf die gleiche Weise behandeln und breite Rahmen erstellen, die nicht immer den Daten entsprechen. Dieses Problem sollte sich selbst lösen, sobald genügend Metrikverlauf verfügbar ist. An diesem Punkt wird die richtige Saisonalität erkannt, und die berechneten Schwellenwerte werden entsprechend aktualisiert.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

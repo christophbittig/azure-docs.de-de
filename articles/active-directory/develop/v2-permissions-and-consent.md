@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/25/2021
+ms.date: 07/06/2021
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
-ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: fed830833e9f68bcf734be65cba16f1cc84c8f89
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40, has-adal-ref
+ms.openlocfilehash: fca6234742958f363d45c02780c2d01246ac58a9
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110494350"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122428843"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt
 
@@ -46,6 +46,8 @@ Die Unterteilung der Funktionen einer Ressource in kleinere Berechtigungssätze 
 In OAuth 2.0 werden diese Arten von Berechtigungssätzen *Bereiche* genannt. Oftmals werden sie auch als *Berechtigungen* bezeichnet. In Microsoft Identity Platform wird eine Berechtigung als Zeichenfolgenwert dargestellt. Eine App fordert die erforderlichen Berechtigungen an, indem sie die Berechtigung im `scope` -Anforderungsparameter angibt. Identity Platform unterstützt mehrere klar definierte OpenID Connect-Bereiche sowie ressourcenbasierte Berechtigungen (jede Berechtigung wird durch Anfügen des [Berechtigungswerts](#openid-connect-scopes) an den Bezeichner oder Anwendungs-ID-URI der Ressource angegeben). Beispielsweise wird die `https://graph.microsoft.com/Calendars.Read`-Berechtigungszeichenfolge verwendet, um die Berechtigung zum Lesen von Benutzerkalendern in der Microsoft Graph anzufordern.
 
 Eine App fordert diese Berechtigungen meist durch Angabe der Bereiche in Anforderungen an den Microsoft Identity Platform-Autorisierungsendpunkt an. Bestimmte erhöhte Berechtigungen können jedoch nur mit der Einwilligung des Administrators gewährt werden. Sie können unter Verwendung des [Endpunkts für die Administratoreinwilligung](#admin-restricted-permissions) angefordert/gewährt werden. Lesen Sie weiter, um mehr zu erfahren.
+
+Wenn bei Anforderungen an die Autorisierungs-, Token- oder Zustimmungsendpunkte für die Microsoft Identity Platform der Ressourcenbezeichner im Bereichsparameter weggelassen wird, wird angenommen, dass Microsoft Graph die Ressource ist. `scope=User.Read` entspricht beispielsweise `https://graph.microsoft.com/User.Read`.
 
 ## <a name="permission-types"></a>Berechtigungstypen
 
@@ -106,12 +108,36 @@ Das Zugriffstoken ist für eine kurze Zeit gültig. Es läuft in der Regel nach 
 
 Weitere Informationen zum Abrufen und Verwenden von Aktualisierungstoken finden Sie in der [Microsoft Identity Platform-Protokollreferenz](active-directory-v2-protocols.md).
 
-## <a name="incremental-and-dynamic-consent"></a>Inkrementelle und dynamische Zustimmung
+## <a name="consent-types"></a>Einwilligungstypen
+
+Anwendungen in der Microsoft Identity Platform benötigen eine Zustimmung, um Zugriff auf benötigte Ressourcen oder APIs zu erhalten. Es gibt verschiedene Arten von Zustimmungen, über die Ihre App ggf. Informationen benötigt, um erfolgreich arbeiten zu können. Beim Definieren von Berechtigungen müssen Sie auch wissen, wie Ihre Benutzer Zugriff auf Ihre App oder die API erhalten.
+
+### <a name="static-user-consent"></a>Statische Benutzerzustimmung 
+
+Beim Szenario mit statischer Benutzerzustimmung müssen Sie im Azure-Portal in der Konfiguration der App alle erforderlichen Berechtigungen angeben. Wenn der Benutzer (bzw. Administrator) die Zustimmung für diese App nicht erteilt hat, wird der Benutzer von der Microsoft Identity Platform aufgefordert, die Zustimmung jetzt zu erteilen.
+
+Mit statischen Berechtigungen können Administratoren auch [im Namen aller Benutzer in der Organisation zustimmen](#requesting-consent-for-an-entire-tenant).
+
+Statische Berechtigungen der Anwendung werden im Azure-Portal definiert und sorgen dafür, dass der Code klar und einfach ist, aber für Entwickler kann dies ggf. zu Problemen führen:
+
+- Die Anwendung muss alle Berechtigungen anfordern, die nach der ersten Anmeldung des Benutzers jemals benötigt werden. Dies kann zu einer langen Liste von Berechtigungen führen, was Endbenutzer davon abhielt, bei der ersten Anmeldung den Zugriff der Anwendung zu genehmigen.
+
+- Die Anwendung muss frühzeitig alle Ressourcen kennen, auf die sie jemals zugreifen muss. Es ist schwierig, Apps zu erstellen, die auf eine beliebige Anzahl von Ressourcen zugreifen könnten.
+
+### <a name="incremental-and-dynamic-user-consent"></a>Inkrementelle und dynamische Benutzerzustimmung
+
 Mit dem Microsoft Identity Platform-Endpunkt können Sie die in den App-Registrierungsinformationen im Azure-Portal definierten statischen Berechtigungen ignorieren und stattdessen Berechtigungen schrittweise anfordern.  Sie können zunächst nach einem absoluten Minimum an Berechtigungen fragen und im Lauf der Zeit mehr anfordern, wenn der Kunde zusätzliche Anwendungsfunktionen verwendet. Hierzu können Sie die Bereiche angeben, die für Ihre Anwendung zu beliebigen Zeitpunkten benötigt werden, indem Sie die neuen Bereiche in den Parameter `scope` einfügen, wenn Sie ein [Zugriffstoken anfordern](#requesting-individual-user-consent). Es ist nicht erforderlich, sie in den Informationen der Anwendungsregistrierung vorab zu definieren. Wenn der Benutzer noch nicht seine Zustimmung zu den neuen Bereichen gegeben hat, die der Anforderung hinzugefügt wurden, wird er aufgefordert, seine Zustimmung nur für die neuen Berechtigungen zu erteilen. Die inkrementelle oder dynamische Einwilligung gilt nur für delegierte Berechtigungen und nicht für Anwendungsberechtigungen.
 
 Wenn es für eine App zugelassen wird, Berechtigungen dynamisch über den `scope`-Parameter anzufordern, erhalten Entwickler die vollständige Kontrolle über die Erfahrung des Benutzers. Sie können die Zustimmungserfahrung auch vorziehen und alle Berechtigungen in einer anfänglichen Autorisierungsanforderung erfragen. Wenn Ihre Anwendung eine große Anzahl von Berechtigungen erfordert, können Sie die Berechtigungen des Benutzers inkrementell erfassen, während er über die Zeit bestimmte Features der Anwendung verwendet.
 
-Die [Administratoreinwilligung](#using-the-admin-consent-endpoint) im Namen einer Organisation erfordert weiterhin, dass die für die Anwendung registrierten statischen Berechtigungen verwendet werden. Sie sollten diese Berechtigungen für die Anwendungen im Anwendungsregistrierungsportal festzulegen, falls ein Administrator die Zustimmung im Namen der gesamten Organisation erteilen muss. Hierdurch werden die Zyklen reduziert, die der Administrator der Organisation zum Einrichten der Anwendung benötigt.
+> [!IMPORTANT]
+> Die dynamische Zustimmung kann komfortabel sein. Sie stellt aber eine große Herausforderung in Bezug auf Berechtigungen dar, für die die Zustimmung durch einen Administrator erforderlich ist, da diese Berechtigungen in der Umgebung für die Administratorzustimmung zum Zustimmungszeitpunkt nicht bekannt sind. Falls Sie Administratorberechtigungen benötigen oder Ihre App eine dynamische Zustimmung verwendet, müssen Sie alle Berechtigungen im Azure-Portal registrieren (nicht nur die Berechtigungen, für die eine Administratoreinwilligung erforderlich ist). Dadurch können Mandantenadministratoren im Namen aller ihrer Benutzer zustimmen.
+
+### <a name="admin-consent"></a>Administratorzustimmung
+
+[Zustimmung des Administrators](#using-the-admin-consent-endpoint) Ist erforderlich, wenn Ihre App Zugriff auf bestimmte hochrangige Berechtigungen benötigt. Mit der Zustimmung des Administrators wird sichergestellt, dass Administratoren über einige zusätzliche Steuerelemente verfügen, bevor sie für Apps oder Benutzer den Zugriff auf Organisationsdaten mit hoher Berechtigungsebene autorisieren.
+
+Die [im Namen einer Organisation erteilte Administratorgenehmigung](#requesting-consent-for-an-entire-tenant) erfordert weiterhin die für die App registrierten statischen Berechtigungen. Legen Sie diese Berechtigungen für Apps im Portal für die App-Registrierung fest, wenn ein Administrator die Zustimmung im Namen der gesamten Organisation erteilen muss. Hierdurch werden die Zyklen reduziert, die der Administrator der Organisation zum Einrichten der Anwendung benötigt.
 
 ## <a name="requesting-individual-user-consent"></a>Anfordern der Zustimmung einzelner Benutzer
 
@@ -143,7 +169,9 @@ Wenn der Benutzer die Berechtigungsanforderung genehmigt, wird die Einwilligung 
 
 Organisationen, die Lizenzen oder Abonnements für eine Anwendung erwerben, möchten die Anwendung oft proaktiv zur Verwendung durch alle Mitglieder der Organisation einrichten. Im Rahmen dieses Prozesses kann ein Administrator der Anwendung die Einwilligung erteilen, im Auftrag beliebiger Benutzer im Mandanten zu agieren. Wenn der Administrator eine Einwilligung für den gesamten Mandanten erteilt, wird den Benutzern der Organisation keine Einwilligungsseite für die Anwendung angezeigt.
 
-Um die Einwilligung für delegierte Berechtigungen für alle Benutzer in einem Mandanten anzufordern, kann Ihre App den Endpunkt für die Administratoreinwilligung verwenden.
+Die im Namen einer Organisation erteilte Administratorgenehmigung erfordert weiterhin die für die App registrierten statischen Berechtigungen. Legen Sie diese Berechtigungen für Apps im Portal für die App-Registrierung fest, wenn ein Administrator die Zustimmung im Namen der gesamten Organisation erteilen muss.
+
+Um die Einwilligung für delegierte Berechtigungen für alle Benutzer in einem Mandanten anzufordern, kann Ihre App den Endpunkt für die [Administratoreinwilligung](#using-the-admin-consent-endpoint) verwenden.
 
 Darüber hinaus müssen Anwendungen den Endpunkt für die Administratoreinwilligung zum Anfordern von Anwendungsberechtigungen verwenden.
 
@@ -220,7 +248,7 @@ https://graph.microsoft.com/mail.send
 ```
 
 
-| Parameter        | Bedingung        | Beschreibung                                                                                |
+| Parameter        | Bedingung        | BESCHREIBUNG                                                                                |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
 | `tenant` | Erforderlich | Der Verzeichnismandant, von dem Sie die Berechtigung anfordern möchten. Er kann als GUID oder als Anzeigename bereitgestellt werden. Alternativ kann er generisch mit Organisationen referenziert werden, wie im Beispiel zu sehen. Verwenden Sie nicht „Allgemein“, da persönliche Konten die Administratoreinwilligung nur im Kontext eines Mandanten bereitstellen können. Verwenden Sie nach Möglichkeit die Mandanten-ID, um die bestmögliche Kompatibilität mit persönlichen Konten zu gewährleisten, die Mandanten verwalten. |
 | `client_id` | Erforderlich | Die Anwendungs-ID (Client-ID), die Ihrer App [im Azure-Portal unter „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |

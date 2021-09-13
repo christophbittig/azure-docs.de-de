@@ -2,17 +2,17 @@
 title: Migrieren von Azure-Datenbankressourcen – Azure Deutschland zu Azure weltweit
 description: Dieser Artikel enthält Informationen zum Migrieren von Azure-Datenbankressourcen von Azure Deutschland zu Azure weltweit.
 ms.topic: article
-ms.date: 02/16/2021
+ms.date: 03/29/2021
 author: gitralf
 ms.author: ralfwi
 ms.service: germany
-ms.custom: bfmigrate
-ms.openlocfilehash: 0e540237a89e9bd4ede4bc565f7f2d95bcd888ad
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.custom: bfmigrate, devx-track-azurepowershell
+ms.openlocfilehash: 6fe6d653712e034c13f3b755e906de491b4dd49a
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635174"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110696907"
 ---
 # <a name="migrate-database-resources-to-global-azure"></a>Migrieren von Datenbankressourcen zu Azure weltweit
 
@@ -48,6 +48,9 @@ Für Datenbanken, die für BACPAC-Dateien zu groß sind oder von einer Cloud zu 
 
 > [!IMPORTANT]
 > Das Konfigurieren der aktiven Georeplikation zum Migrieren von Datenbanken zur globalen Azure-Umgebung wird nur mit Transact-SQL (T-SQL) unterstützt. Außerdem müssen Sie vor der Migration die Aktivierung Ihres Abonnements anfordern, damit die Migration zur globalen Azure-Umgebung unterstützt wird. Zum Übermitteln der Anforderung müssen Sie [diesen Supportanfragelink](#requesting-access) verwenden. 
+
+> [!Note]
+> Die globalen Azure-Cloudregionen Deutschland, Westen-Mitte und Deutschland, Norden sind die unterstützten Regionen für die aktive Georeplikation mit der Azure Deutschland Cloud. Wenn eine alternative globale Azure-Region als endgültiges Ziel der Datenbank(en) gewünscht wird, empfiehlt es sich nach Abschluss der Migration zu Azure, eine zusätzliche Georeplikationsverbindung von „Deutschland, Westen-Mitte“ oder „Deutschland, Norden“ zur erforderlichen globalen Azure-Cloudregion zu konfigurieren.
 
 Ausführliche Informationen zu den Kosten für die aktive Georeplikation finden Sie in [Preise für Azure SQL-Datenbank](https://azure.microsoft.com/pricing/details/sql-database/single/) im Abschnitt **Aktive Georeplikation**.
 
@@ -95,11 +98,17 @@ So migrieren Sie eine Datenbank von Azure Deutschland zur globalen Azure-Umgebun
     ALTER DATABASE [azuregermanydb] FAILOVER;
     ```
 
-5.  Verwenden Sie den folgenden T-SQL-Befehl, um die aktive Georeplikation zu beenden. Wenn dieser Befehl nach dem geplanten Failover ausgeführt wird, beendet er die Georeplikationsverbindung mit der Datenbank in der globalen Azure-Umgebung, bei der es sich um die Kopie mit Lese-/Schreibzugriff handelt. Dadurch wird der Migrationsprozess abgeschlossen. Wenn der Befehl jedoch vor dem geplanten Failover ausgeführt wird, wird der Migrationsprozess beendet, und die Datenbank in Azure Deutschland bleibt die Kopie mit Lese-/Schreibzugriff. Dieser T-SQL-Befehl sollte vor dem geplanten Failover auf dem logischen Server der aktuellen primären Datenbank der Georeplikation ausgeführt werden, z. B. auf dem Server in Azure Deutschland, und nach dem geplanten Failover auf dem globalen Azure-Server.
+5.  Der aktive Georeplikationslink kann vor oder nach dem Failoverprozess beendet werden. Durch Ausführen des folgenden T-SQL-Befehls nach dem geplanten Failover wird der Georeplikationslink zur Datenbank, die die Kopie mit Lese-/Schreibzugriff ist, in Azure global entfernt. Sie sollte auf dem logischen Server der aktuellen geo-primären Datenbank (d. h. auf dem globalen Azure-Server) ausgeführt werden. Dadurch wird der Migrationsprozess abgeschlossen.
 
+    ```sql
+    ALTER DATABASE [azuregermanydb] REMOVE SECONDARY ON SERVER [azuregermanyserver];
+    ```
 
-    `ALTER DATABASE [azuregermanydb] REMOVE SECONDARY ON SERVER [azuregermanyserver];` oder `ALTER DATABASE [azuregermanydb] REMOVE SECONDARY ON SERVER [globalazureserver];`
+    Der folgende T-SQL-Befehl, wenn er vor dem geplanten Failover ausgeführt wird, beendet auch den Migrationsprozess. In diesem Fall bleibt die Datenbank in Azure Deutschland jedoch die Kopie mit Lese-/Schreibzugriff. Dieser T-SQL-Befehl sollte ebenfalls auf dem logischen Server der aktuellen geo-primären Datenbank, in diesem Fall auf dem Azure Deutschland-Server, ausgeführt werden.
 
+    ```sql
+    ALTER DATABASE [azuregermanydb] REMOVE SECONDARY ON SERVER [globalazureserver];
+    ```
 
 Diese Schritte zum Migrieren von Azure SQL-Datenbanken von Azure Deutschland zu einer globalen Azure-Umgebung können auch mithilfe der aktiven Georeplikation durchgeführt werden.
 
@@ -122,6 +131,19 @@ In den folgenden Tabellen sind T-SQL-Befehle zum Verwalten des Failovers aufgef�
 |[sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync?view=azuresqldb-current&preserve-view=true) | Bewirkt, dass die Anwendung wartet, bis alle Transaktionen mit erfolgtem Commit repliziert und von der aktiven sekundären Datenbank bestätigt wurden. |
  
 
+## <a name="migrate-sql-database-long-term-retention-backups"></a>Migrieren von Azure SQL-Datenbanksicherungen zur Langzeitaufbewahrung
+
+Beim Migrieren einer Datenbank mit Georeplikation oder BACPAC-Datei werden die Sicherungen zur langfristigen Aufbewahrung, die die Datenbank möglicherweise in Azure Deutschland hat, nicht kopiert. Sie können das Verfahren „Sicherungen zur langfristigen Aufbewahrung KOPIEREN“ verwenden, um derartige vorhandene Sicherungen in die globale Azure-Zielregion zu migrieren 
+
+>[!Note]
+>Die hier dokumentierten LTR-Sicherungskopiermethoden können nur die LTR-Sicherungen aus Azure Deutschland in Azure weltweit kopieren. Das Kopieren von PITR-Sicherungen mit diesen Methoden wird nicht unterstützt. 
+>
+
+### <a name="pre-requisites"></a>Voraussetzungen
+
+1. Die Zieldatenbank, in die Sie die LTR-Sicherungen kopieren, muss in Azure weltweit vorhanden sein, bevor Sie mit dem Kopieren der Sicherungen beginnen. Es wird empfohlen, zuerst die Quelldatenbank mithilfe der [aktiven Georeplikation](#migrate-sql-database-using-active-geo-replication) zu migrieren und dann die LTR-Sicherungskopie zu initiieren. Dadurch wird sichergestellt, dass die Datenbanksicherungen in die richtige Zieldatenbank kopiert werden. Dieser Schritt ist nicht erforderlich, wenn Sie LTR-Sicherungen einer gelöschten Datenbank kopieren. Beim Kopieren von LTR-Sicherungen einer gelöschten Datenbank wird eine Platzhalterdatenbank-ID in der Zielregion erstellt. 
+2. Installieren Sie dieses [PowerShell Az-Modul](https://www.powershellgallery.com/packages/Az.Sql/3.0.0-preview)
+3. Stellen Sie vor dem Beginn sicher, dass die erforderlichen [Azure RBAC-Rollen](../azure-sql/database/long-term-backup-retention-configure.md#azure-roles-to-manage-long-term-retention) im Bereich **Abonnement** oder **Ressourcengruppe** erteilt werden. Hinweis: Für den Zugriff auf LTR-Sicherungen, die zu einem gelöschten Server gehören, muss die Berechtigung jedoch im Bereich Abonnement dieses Servers erteilt werden. . 
 
 
 ### <a name="limitations"></a>Einschränkungen  
@@ -132,8 +154,68 @@ In den folgenden Tabellen sind T-SQL-Befehle zum Verwalten des Failovers aufgef�
 - Die Erstellung einer georeplizierten sekundären Datenbank muss in der Region „Azure Deutschland“ initiiert werden.
 - Kunden können Datenbanken aus Azure Deutschland nur zur globalen Azure-Umgebung migrieren. Zurzeit wird keine andere cloudübergreifende Migration unterstützt. 
 - Azure AD Benutzer in Azure Deutschland-Benutzerdatenbanken werden migriert, sind jedoch im neuen Azure AD-Mandanten, auf dem sich die migrierte Datenbank befindet, nicht verfügbar. Um diese Benutzer zu aktivieren, müssen sie manuell gelöscht und unter Verwendung der aktuellen Azure AD-Benutzer, die in dem neuen Azure AD-Mandanten verfügbar sind, in dem sich die neu migrierte Datenbank befindet, neu erstellt werden.  
+
+
+### <a name="copy-long-term-retention-backups-using-powershell"></a>Kopieren von Sicherungen mit langfristiger Aufbewahrung mit PowerShell
+
+Ein neuer PowerShell-Befehl **Copy-AzSqlDatabaseLongTermRetentionBackup** wurde eingeführt, der zum Kopieren der von Sicherungen mit langfristiger Aufbewahrung aus Azure Deutschland in globale Azure-Regionen verwendet werden kann. 
+
+1. **Kopieren der LTR-Sicherung mithilfe des Sicherungsnamens** Das folgende Beispiel zeigt, wie Sie eine LTR-Sicherung mithilfe des Sicherungsnamens aus Azure Deutschland in die globale Azure-Region kopieren können.  
+
+```powershell
+# Source database and target database info
+$location = "<location>"
+$sourceRGName = "<source resourcegroup name>"
+$sourceServerName = "<source server name>"
+$sourceDatabaseName = "<source database name>"
+$backupName = "<backup name>"
+$targetDatabaseName = "<target database name>"
+$targetSubscriptionId = "<target subscriptionID>"
+$targetRGName = "<target resource group name>"
+$targetServerFQDN = "<targetservername.database.windows.net>"
+
+Copy-AzSqlDatabaseLongTermRetentionBackup 
+    -Location $location 
+    -ResourceGroupName $sourceRGName 
+    -ServerName $sourceServerName 
+    -DatabaseName $sourceDatabaseName
+    -BackupName $backupName
+    -TargetDatabaseName $targetDatabaseName 
+    -TargetSubscriptionId $targetSubscriptionId
+    -TargetResourceGroupName $targetRGName
+    -TargetServerFullyQualifiedDomainName $targetServerFQDN 
+```
+
+2. **Kopieren der LTR-Sicherung mithilfe der Sicherungsressourcen-ID** Das folgende Beispiel zeigt, wie Sie eine LTR-Sicherung mithilfe der Sicherungsressourcen-ID aus Azure Deutschland in die globale Azure-Region kopieren können. Dieses Beispiel kann auch zum Kopieren von Sicherungen einer gelöschten Datenbank verwendet werden. 
+
+```powershell
+$location = "<location>"
+# list LTR backups for All databases (you have option to choose All/Live/Deleted)
+$ltrBackups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $location -DatabaseState All
+
+# select the LTR backup you want to copy
+$ltrBackup = $ltrBackups[0]
+$resourceID = $ltrBackup.ResourceId
+
+# Source Database and target database info
+$targetDatabaseName = "<target database name>"
+$targetSubscriptionId = "<target subscriptionID>"
+$targetRGName = "<target resource group name>"
+$targetServerFQDN = "<targetservername.database.windows.net>"
+
+Copy-AzSqlDatabaseLongTermRetentionBackup 
+    -ResourceId $resourceID 
+    -TargetDatabaseName $targetDatabaseName 
+    -TargetSubscriptionId $targetSubscriptionId
+    -TargetResourceGroupName $targetRGName
+    -TargetServerFullyQualifiedDomainName $targetServerFQDN
+```
+
+
+### <a name="limitations"></a>Einschränkungen  
+
 - [PITR-Sicherungen (Point-in-Time Restore)](../azure-sql/database/recovery-using-backups.md#point-in-time-restore) erfolgen nur in der primären Datenbank. Dies ist beabsichtigt. Beim Migrieren von Datenbanken aus Azure Deutschland mithilfe von georedundanter Notfallwiederherstellung werden nach dem Failover die PITR-Sicherungen in der neuen primären Datenbank ausgeführt. Die vorhandenen PITR-Sicherungen (in der vorherigen primären Datenbank in Azure Deutschland) werden jedoch nicht migriert. Wenn Sie zur Unterstützung von Zeitpunktwiederherstellungen PITR-Sicherungen benötigen, müssen Sie die Datenbank aus den PITR-Sicherungen in Azure Deutschland wiederherstellen und dann die wiederhergestellte Datenbank zu einer globalen Azure-Umgebung migrieren. 
-- Richtlinien für die Langzeitaufbewahrung werden nicht mit der Datenbank migriert. Wenn Sie über eine Richtlinie für die [Langzeitaufbewahrung (Long-term retention, LTR)](../azure-sql/database/long-term-retention-overview.md) für Ihre Datenbank in Azure Deutschland verfügen, müssen Sie die LTR-Richtlinie nach der Migration manuell kopieren und in der neuen Datenbank neu erstellen. Die Funktionalität zum Migrieren von LTR-Sicherungen von Azure Deutschland zur globalen Azure-Umgebung ist zurzeit nicht verfügbar.
+- Richtlinien für die Langzeitaufbewahrung werden nicht mit der Datenbank migriert. Wenn Sie über eine Richtlinie für die [Langzeitaufbewahrung (Long-term retention, LTR)](../azure-sql/database/long-term-retention-overview.md) für Ihre Datenbank in Azure Deutschland verfügen, müssen Sie die LTR-Richtlinie nach der Migration manuell kopieren und in der neuen Datenbank neu erstellen. 
 
 
 ### <a name="requesting-access"></a>Anfordern des Zugriffs

@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 04/21/2021
+ms.date: 06/20/2021
 ms.author: v-jansk
-ms.openlocfilehash: 46348fe35f425811e2ff03208feeae6ab7a112bd
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: eb8411717d0229b13571284176da7ccc113cf828
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110453578"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112540738"
 ---
 # <a name="cancel-translation"></a>Abbrechen der Übersetzung
 
-Brechen Sie den derzeit ausgeführten oder einen in die Warteschlange eingereihten Auftrag ab. Ein Vorgang wird nicht abgebrochen, wenn er bereits abgeschlossen oder fehlgeschlagen ist oder abgebrochen wurde. Eine ungültige Anforderung wird zurückgegeben. Alle Dokumente, die übersetzt sind, werden nicht abgebrochen und werden in Rechnung gestellt. Alle ausstehenden Dokumente werden abgebrochen, wenn möglich.
+Brechen Sie den derzeit ausgeführten oder einen in die Warteschlange eingereihten Auftrag ab. Ein Vorgang wird nicht abgebrochen, wenn er bereits abgeschlossen wurde, ein Fehler aufgetreten ist oder der Vorgang abgebrochen wird. Eine ungültige Anforderung wird zurückgegeben. Alle Dokumente, die übersetzt sind, werden nicht abgebrochen und werden in Rechnung gestellt. Alle ausstehenden Dokumente werden abgebrochen, wenn möglich.
 
 ## <a name="request-url"></a>Anfrage-URL
 
@@ -70,7 +70,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
 
 Die folgenden Informationen werden bei erfolgreicher Antwort zurückgegeben.
 
-|Name|Typ|BESCHREIBUNG|
+|Name|type|BESCHREIBUNG|
 |--- |--- |--- |
 |id|Zeichenfolge|ID des Vorgangs.|
 |createdDateTimeUtc|Zeichenfolge|Das Datum und die Uhrzeit des Vorgangs.|
@@ -87,7 +87,7 @@ Die folgenden Informationen werden bei erfolgreicher Antwort zurückgegeben.
 
 ### <a name="error-response"></a>Fehlerantwort
 
-|Name|Typ|Beschreibung|
+|Name|type|BESCHREIBUNG|
 |--- |--- |--- |
 |code|Zeichenfolge|Enumerationen, die High-Level-Fehlercodes enthalten. Mögliche Werte:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Nicht autorisiert</li></ul>|
 |message|Zeichenfolge|Ruft High-Level-Fehlermeldung ab.|

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/22/2021
+ms.date: 08/17/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 25371e04e4e229786ca96fbc0f72b4bea0dccd96
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: edaecb8d3969d251f8ff7c4e6525912a0c199089
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107896409"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351287"
 ---
 # <a name="set-up-a-sign-up-and-sign-in-flow-in-azure-active-directory-b2c"></a>Einrichten eines Registrierungs- und Anmeldeflows in Azure Active Directory B2C
 
@@ -50,7 +50,7 @@ Der Benutzerflow für Registrierung und Anmeldung verarbeitet die Benutzeroberfl
 1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
 1. Wählen Sie unter **Richtlinien** die Option **Benutzerflows** und dann **Neuer Benutzerflow** aus.
 
-    ![Seite „Benutzerflows“ im Portal mit hervorgehobener Schaltfläche „Neuer Benutzerflow“](./media/add-sign-up-and-sign-in-policy/signup-signin-user-flow.png)
+    ![Seite „Benutzerflows“ im Portal mit hervorgehobener Schaltfläche „Neuer Benutzerflow“](./media/add-sign-up-and-sign-in-policy/sign-up-sign-in-user-flow.png)
 
 1. Wählen Sie auf der Seite **Benutzerflow erstellen** den Benutzerflow **Registrierung und Anmeldung** aus.
 
@@ -61,13 +61,21 @@ Der Benutzerflow für Registrierung und Anmeldung verarbeitet die Benutzeroberfl
     ![Seite „Benutzerflow erstellen“ im Azure-Portal mit hervorgehobenen Eigenschaften](./media/add-sign-up-and-sign-in-policy/select-version.png)
 
 1. Geben Sie unter **Name** einen Namen für den Benutzerflow ein. Beispiel: *signupsignin1*.
-1. Klicken Sie unter **Identitätsanbieter** auf **E-Mail-Registrierung**.
-1. Wählen Sie für **Benutzerattribute und Ansprüche** die Ansprüche und Attribute aus, die Sie bei der Registrierung vom Benutzer sammeln und senden möchten. Wählen Sie z.B. **Mehr anzeigen** und dann Attribute und Ansprüche für **Land/Region**, **Anzeigename** und **Postleitzahl** aus. Klicken Sie auf **OK**.
+1. Wählen Sie unter **Identitätsanbieter** mindestens einen Identitätsanbieter aus:
+
+   * Wählen Sie unter **Lokale Konten** eins der folgenden Konten aus: **E-Mail-Registrierung**, **Benutzer-ID-Registrierung**, **Registrierung per Telefon**, **Registrierung per Telefon/E-Mail** oder **Keins**. [Weitere Informationen](sign-in-options.md)
+   * Wählen Sie unter **Anbieter für soziale Identitäten** einen der externen Anbieter für soziale oder Unternehmensidentitäten aus, die Sie eingerichtet haben. [Weitere Informationen](add-identity-provider.md)
+1. Wenn Sie unter **Mehrstufige Authentifizierung** festlegen möchten, dass Benutzer ihre Identität mit einer zweiten Authentifizierungsmethode überprüfen müssen, wählen Sie den Methodentyp aus und den Zeitpunkt, an dem die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) erzwungen werden soll. [Weitere Informationen](multi-factor-authentication.md)
+1. Wenn Sie unter **Bedingter Zugriff** Richtlinien für den bedingten Zugriff für Ihren Azure AD B2C-Mandanten konfiguriert haben und diese für diesen Benutzerflow aktivieren möchten, aktivieren Sie das Kontrollkästchen **Richtlinien für bedingten Zugriff erzwingen**. Sie müssen keinen Richtliniennamen angeben. [Weitere Informationen](conditional-access-user-flow.md?pivots=b2c-user-flow)
+1. Wählen Sie unter **Benutzerattribute und Tokenansprüche** die Attribute aus, die Sie vom Benutzer während der Registrierung erfassen möchten. Wählen Sie außerdem die Ansprüche aus, die im Token zurückgegeben werden sollen. Um eine vollständige Liste der Werte zu erhalten, wählen Sie **Mehr anzeigen** aus, wählen Sie die Werte aus, und wählen Sie dann **OK**.
+
+   > [!NOTE]
+   > Sie können auch [benutzerdefinierte Attribute erstellen](user-flow-custom-attributes.md?pivots=b2c-user-flow), die in Ihrem Azure AD B2C-Mandanten verwendet werden sollen.
 
     ![Auswahlseite für Attribute und Ansprüche mit drei ausgewählten Ansprüchen](./media/add-sign-up-and-sign-in-policy/signup-signin-attributes.png)
 
-1. Klicken Sie auf **Erstellen**, um den Benutzerflow hinzuzufügen. Dem Namen wird automatisch das Präfix *B2C_1* vorangestellt.
-2. Führen Sie die Schritte für die [Verarbeitung des Ablaufs für "Kennwort vergessen?"](add-password-reset-policy.md?pivots=b2c-user-flow.md#self-service-password-reset-recommended) in der Registrierungs- oder Anmelderichtlinie aus.
+1. Wählen Sie **Erstellen** aus, um den Benutzerflow hinzuzufügen. Dem Namen wird automatisch das Präfix *B2C_1* vorangestellt.
+1. Führen Sie die Schritte für die [Verarbeitung des Ablaufs für "Kennwort vergessen?"](add-password-reset-policy.md?pivots=b2c-user-flow.md#self-service-password-reset-recommended) in der Registrierungs- oder Anmelderichtlinie aus.
 
 ### <a name="test-the-user-flow"></a>Testen des Benutzerflows
 

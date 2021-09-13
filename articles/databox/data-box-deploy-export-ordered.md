@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
-ms.date: 12/18/2020
+ms.date: 08/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 42476e2689cc503edc19e8e299a01ce922f1bf42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d9506ce3f01f5500bab81e8e90c57761bef75805
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98789194"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123254596"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box"></a>Tutorial: Erstellen eines Exportauftrags für Azure Data Box
 
@@ -274,6 +274,11 @@ Data Box kopiert Daten aus den Quellspeicherkonten. Nachdem das Kopieren der Dat
 
 ![Data Box-Exportreihenfolge, Datenvorgang abgeschlossen](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-copy-complete.png)
 
+Beim Datenexport von Azure Storage in Ihre Data Box kann manchmal ein Fehler auftreten. Stellen Sie sicher, dass die Blobs keine Archivblobs sind, da der Export dieser Blobs nicht unterstützt wird. 
+
+> [!NOTE]
+> Für Archivblobs müssen Sie diese Blobs wieder aktivieren, bevor sie aus ihrem Azure Storage-Konto in Ihre Data Box exportiert werden können. Weitere Informationen finden Sie unter [Übersicht über die Aktivierung von Blobs aus der Archivebene]( ../storage/blobs/storage-blob-rehydration.md).
+
 Sollte das Gerät nicht verfügbar sein, erhalten Sie eine entsprechende Benachrichtigung. Wenn das Gerät verfügbar ist, identifiziert Microsoft das Gerät für den Versand und bereitet den Versand vor. Während der Vorbereitung des Geräts werden folgende Aktionen ausgeführt:
 
 * Für jedes mit dem Gerät verknüpfte Speicherkonto werden SMB-Freigaben erstellt.
@@ -311,7 +316,7 @@ Der folgende XML-Code ist ein Beispiel für Blobnamen, Blobpräfixe und Azure Fi
       <BlobPathPrefix>/8mbfiles/</BlobPathPrefix>
       <BlobPathPrefix>/64mbfiles/</BlobPathPrefix>
    </BlobList>
-   <!-- FileList/prefix/Share list for Azure File storage for export  -->
+   <!-- FileList/prefix/Share list for Azure Files for export  -->
    <AzureFileList>
       <FilePathPrefix>/64mbfiles/</FilePathPrefix>
       <FilePathPrefix>/4mbfiles/prefix2/subprefix</FilePathPrefix>

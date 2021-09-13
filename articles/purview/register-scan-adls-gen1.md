@@ -3,16 +3,16 @@ title: Registrieren und Überprüfen von Azure Data Lake Storage (ADLS) Gen1
 description: In diesem Tutorial wird beschrieben, wie Sie Daten aus Azure Data Lake Storage Gen1 in Azure Purview überprüfen.
 author: shsandeep123
 ms.author: sandeepshah
-ms.service: data-catalog
-ms.subservice: data-catalog-gen2
+ms.service: purview
+ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 05/08/2021
-ms.openlocfilehash: 98de0156eca9269b2a274aa3ca2027112b7b4043
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: 1c4801814e77efdb681f32ea35d4dfb68618900b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109655484"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346502"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen1"></a>Registrieren und Überprüfen von Azure Data Lake Storage Gen1
 
@@ -28,6 +28,12 @@ Die Datenquelle vom Typ „Azure Data Lake Storage Gen1“ unterstützt die folg
 - **Vollständige und inkrementelle Überprüfungen** zum Erfassen von Metadaten und Klassifizierungen in Azure Data Lake Storage Gen1
 
 - **Herkunft** zwischen Datenobjekten für Copy-/Dataflow-Aktivitäten von ADF
+
+Für Dateitypen wie CSV, TSV, PSV und SSV wird das Schema extrahiert, wenn die folgenden Logiken vorhanden sind:
+
+1. Werte in der ersten Zeile sind nicht leer.
+2. Werte in der ersten Zeile sind eindeutig.
+3. Werte in der ersten Zeile sind weder ein Datum noch eine Zahl.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -47,7 +53,7 @@ Für mehr Benutzerfreundlichkeit und Sicherheit sollten Sie die MSI von Purview 
 
 Wenn Sie eine Überprüfung mithilfe der MSI des Datenkatalogs einrichten, müssen Sie Ihrem Purview-Konto zunächst die Berechtigung zum Überprüfen der Datenquelle erteilen. Dieser Schritt muss *vor* dem Einrichten der Überprüfung durchgeführt werden, andernfalls tritt bei der Überprüfung ein Fehler auf.
 
-#### <a name="adding-the-data-catalog-msi-to-an-azure-data-lake-storage-gen1-account"></a>Hinzufügen der Datenkatalog-MSI zu einem Azure Data Lake Storage Gen1-Konto
+#### <a name="adding-the-purview-msi-to-an-azure-data-lake-storage-gen1-account"></a>Hinzufügen der Purview-MSI zu einem Azure Data Lake Storage Gen1-Konto
 
 Sie können die Katalog-MSI auf der Ebene des Abonnements, der Ressourcengruppe oder der Ressource hinzufügen, je nachdem, wofür die Berechtigungen zum Überprüfen erteilt werden sollen.
 
@@ -64,12 +70,23 @@ Sie können die Katalog-MSI auf der Ebene des Abonnements, der Ressourcengruppe 
 
    :::image type="content" source="./media/register-scan-adls-gen1/access.png" alt-text="Klicken auf „Zugriff“":::
 
-4. Klicken Sie auf **Hinzufügen**. Fügen Sie den **Purview-Katalog** unter „Benutzer oder Gruppen auswählen“ aus. Wählen Sie die Berechtigungen **Lesen** und **Ausführen** aus. Wählen Sie unter „Hinzufügen zu“ unbedingt **Diesen Ordner und alle untergeordneten Ordner** wie im folgenden Screenshot gezeigt aus, und klicken Sie auf **OK**
-    :::image type="content" source="./media/register-scan-adls-gen1/managed-instance-authentication.png" alt-text="Details zur MSI-Authentifizierung":::
+4. Klicken Sie auf **Hinzufügen**. Fügen Sie den **Purview-Katalog** unter „Benutzer oder Gruppen auswählen“ aus. Wählen Sie die Berechtigungen **Lesen** und **Ausführen** aus. Achten Sie darauf, dass Sie in den Hinzufügeoptionen **Diesen Ordner und alle untergeordneten Ordner** sowie **Ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** auswählen, wie im folgenden Screenshot zu sehen. Klicken Sie auf **OK**.
+   :::image type="content" source="./media/register-scan-adls-gen1/gen1-managed-service-identity-authentication.png" alt-text="MSI-Authentifizierungsdetails":::
+   
+> [!Tip]
+> Ein **Zugriffsberechtigungseintrag** ist ein Berechtigungseintrag für *aktuelle* Dateien und Ordner.
+> Ein **Standardberechtigungseintrag** ist ein Berechtigungseintrag, der von neuen Dateien und Ordnern *geerbt* wird.
+> 
+> Wenn Sie Berechtigungen nur für aktuell vorhandene Dateien erteilen möchten, **wählen Sie einen Zugriffsberechtigungseintrag aus**.
+> 
+> Wenn Sie die Berechtigung zum Überprüfen von zukünftig hinzugefügten Dateien und Ordnern erteilen möchten, **schließen Sie einen Standardberechtigungseintrag ein**.
+> 
+> Weitere Informationen finden Sie in der [Dokumentation zu Berechtigungen](../data-lake-store/data-lake-store-access-control.md#default-permissions-on-new-files-and-folders).
 
 5. Falls für Ihren Schlüsseltresor noch keine Verbindung mit Purview hergestellt wurde, müssen Sie eine [neue Schlüsseltresorverbindung erstellen](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account).
 
 6. [Erstellen Sie abschließend neue Anmeldeinformationen](manage-credentials.md#create-a-new-credential), indem Sie den Dienstprinzipal zum Einrichten Ihrer Überprüfung verwenden.
+
 > [!Note]
 > Nachdem Sie die Katalog-MSI in der Datenquelle hinzugefügt haben, warten Sie bis zu 15 Minuten, bis die Berechtigungen angewandt wurden, bevor Sie eine Überprüfung einrichten.
 
@@ -97,7 +114,8 @@ Wenn Sie einen Dienstprinzipal verwenden möchten, müssen Sie zunächst anhand 
 
 9. Kopieren Sie die Werte für den Anzeigenamen und die Anwendungs-ID.
 
-#### <a name="adding-the-data-catalog-service-principal-to-an-azure-data-lake-storage-gen1-account"></a>Hinzufügen des Datenkatalog-Dienstprinzipals zu einem Azure Data Lake Storage Gen1-Konto
+#### <a name="adding-the-purview-service-principal-to-an-azure-data-lake-storage-gen1-account"></a>Hinzufügen des Purview-Dienstprinzipals zu einem Azure Data Lake Storage Gen1-Konto
+
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com) das Abonnement, die Ressourcengruppe oder die Ressource (z. B. ein Azure Data Lake Storage Gen1-Speicherkonto), das den Katalog überprüfen soll.
 
 2. Klicken Sie auf **Übersicht**, und wählen Sie dann **Daten-Explorer** aus.
@@ -108,8 +126,18 @@ Wenn Sie einen Dienstprinzipal verwenden möchten, müssen Sie zunächst anhand 
 
    :::image type="content" source="./media/register-scan-adls-gen1/access.png" alt-text="Klicken auf „Zugriff“":::
 
-4. Klicken Sie auf **Hinzufügen**. Fügen Sie unter „Benutzer oder Gruppe auswählen“ die **Dienstprinzipalanwendung** hinzu. Wählen Sie die Berechtigungen **Lesen** und **Ausführen** aus. Wählen Sie unter „Hinzufügen zu“ unbedingt **Diesen Ordner und alle untergeordneten Ordner** wie im folgenden Screenshot gezeigt aus, und klicken Sie auf **OK**
-   :::image type="content" source="./media/register-scan-adls-gen1/service-principal-authentication.png" alt-text="Details zur Dienstprinzipalauthentifizierung":::
+4. Klicken Sie auf **Hinzufügen**. Fügen Sie unter „Benutzer oder Gruppe auswählen“ die **Dienstprinzipalanwendung** hinzu. Wählen Sie die Berechtigungen **Lesen** und **Ausführen** aus. Achten Sie darauf, dass Sie in den Hinzufügeoptionen **Diesen Ordner und alle untergeordneten Ordner** sowie **Ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** auswählen, wie im folgenden Screenshot zu sehen. Klicken Sie auf **OK**.
+   :::image type="content" source="./media/register-scan-adls-gen1/gen1-service-principal-permissions.png" alt-text="Details zur Dienstprinzipalauthentifizierung":::
+
+> [!Tip]
+> Ein **Zugriffsberechtigungseintrag** ist ein Berechtigungseintrag für *aktuelle* Dateien und Ordner.
+> Ein **Standardberechtigungseintrag** ist ein Berechtigungseintrag, der von neuen Dateien und Ordnern *geerbt* wird.
+>
+> Wenn Sie Berechtigungen nur für aktuell vorhandene Dateien erteilen möchten, **wählen Sie einen Zugriffsberechtigungseintrag aus**.
+>
+> Wenn Sie die Berechtigung zum Überprüfen von zukünftig hinzugefügten Dateien und Ordnern erteilen möchten, **schließen Sie einen Standardberechtigungseintrag ein**.
+>
+> Weitere Informationen finden Sie in der [Dokumentation zu Berechtigungen](../data-lake-store/data-lake-store-access-control.md#default-permissions-on-new-files-and-folders).
 
 5. Falls für Ihren Schlüsseltresor noch keine Verbindung mit Purview hergestellt wurde, müssen Sie eine [neue Schlüsseltresorverbindung erstellen](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account).
 
@@ -120,10 +148,10 @@ Wenn Sie einen Dienstprinzipal verwenden möchten, müssen Sie zunächst anhand 
 Gehen Sie wie folgt vor, um in Ihrem Datenkatalog ein neues ADLS Gen1-Konto zu registrieren:
 
 1. Navigieren Sie zu Ihrem Purview-Datenkatalog.
-2. Wählen Sie im linken Navigationsbereich die Option **Quellen** aus.
+2. Wählen Sie im linken Navigationsbereich **Data Map** aus.
 3. Wählen Sie **Registrieren** aus.
 4. Wählen Sie unter **Register sources** (Quellen registrieren) die Option **Azure Data Lake Storage Gen1** aus. 
-5. Wählen Sie **Weiter**.
+5. Wählen Sie **Weiter** aus.
 
 Führen Sie auf dem Bildschirm „Register sources (Azure Data Lake Storage Gen1)“ (Quellen registrieren (Azure Data Lake Storage Gen1)) die folgenden Schritte aus:
 
@@ -135,7 +163,35 @@ Führen Sie auf dem Bildschirm „Register sources (Azure Data Lake Storage Gen1
 
 :::image type="content" source="media/register-scan-adls-gen1/register-sources.png" alt-text="Optionen für die Quellenregistrierung" border="true":::
 
-[!INCLUDE [create and manage scans](includes/manage-scans.md)]
+## <a name="creating-and-running-a-scan"></a>Erstellen und Ausführen einer Überprüfung
+
+Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
+
+1. Wählen Sie im linken Bereich in Purview Studio die Registerkarte **Data Map** aus.
+
+1. Wählen Sie die Azure Data Lake Storage Gen1-Quelle aus, die Sie registriert haben.
+
+1. Wählen Sie **Neue Überprüfung** aus.
+
+1. Wählen Sie die Anmeldeinformationen für die Verbindungsherstellung mit Ihrer Datenquelle aus.
+
+   :::image type="content" source="media/register-scan-adls-gen1/set-up-scan-adls-gen1.png" alt-text="Einrichten der Überprüfung":::
+
+1. Sie können den Bereich für Ihre Überprüfung auf bestimmte Ordner und Unterordner festlegen, indem Sie die entsprechenden Elemente in der Liste auswählen.
+
+   :::image type="content" source="media/register-scan-adls-gen1/gen1-scope-your-scan.png" alt-text="Festlegen des Bereichs für Ihre Überprüfung":::
+
+1. Wählen Sie dann einen Überprüfungsregelsatz aus. Sie können zwischen der Standardeinstellung des Systems, den vorhandenen benutzerdefinierten Regelsätzen und der Inlineerstellung eines neuen Regelsatzes wählen.
+
+   :::image type="content" source="media/register-scan-adls-gen1/select-scan-rule-set.png" alt-text="Überprüfungsregelsatz":::
+
+1. Wählen Sie den Auslöser für die Überprüfung. Sie können einen Zeitplan einrichten oder die Überprüfung einmalig ausführen.
+
+   :::image type="content" source="media/register-scan-adls-gen1/trigger-scan.png" alt-text="trigger":::
+
+1. Sehen Sie sich Ihre Überprüfung noch einmal an, und wählen Sie dann **Speichern und ausführen** aus.
+
+[!INCLUDE [view and manage scans](includes/view-and-manage-scans.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

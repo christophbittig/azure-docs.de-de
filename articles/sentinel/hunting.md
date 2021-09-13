@@ -14,128 +14,145 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/27/2021
+ms.date: 07/14/2021
 ms.author: yelevin
-ms.openlocfilehash: a8bf6ec24a67327d715b4a5d09b1d0d633b980c5
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: 78662bf6dbc6d4be4f0ea0890993530f772d2114
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109810370"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355765"
 ---
 # <a name="hunt-for-threats-with-azure-sentinel"></a>Suchen nach Bedrohungen mit Azure Sentinel
 
 > [!IMPORTANT]
 >
-> - Upgrades für das **Bedrohungssuche-Dashboard** befinden sich derzeit in der **VORSCHAU**. Die folgenden Elemente im Zusammenhang mit diesem Upgrade werden als „(Vorschau)“ markiert. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+> Die ressourcenübergreifenden Abfragefunktionen sowie Upgrades für das **Hunting-Dashboard** (markierte Elemente im Anschluss) befinden sich derzeit in der **VORSCHAUPHASE**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+>
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 Als Sicherheitsanalysten und Prüfer möchten Sie proaktiv nach Sicherheitsbedrohungen suchen, aber Ihre verschiedenen Systeme und Sicherheits-Appliances generieren eine Menge von Daten, deren Analyse und Filterung in aussagekräftige Ereignisse schwierig sein können. Azure Sentinel verfügt über leistungsstarke Such- und Abfragetools zum Aufspüren von Sicherheitsbedrohungen in den Datenquellen Ihrer Organisation. Um Sicherheitsanalysten dabei zu unterstützen, proaktiv nach neuen Anomalien zu suchen, die von Ihren Sicherheits-Apps oder auch Ohren Regeln zur geplanten Analyse nicht erkannt wurden, werden Sie von den in Azure Sentinel integrierten Bedrohungssuchabfragen dazu geführt, die richtigen Fragen zu stellen, um Probleme in den Daten zu finden, die bereits in Ihrem Netzwerk vorhanden sind. 
 
-Zum Beispiel liefert eine integrierte Abfrage Daten über die ungewöhnlichsten Prozesse, die in Ihrer Infrastruktur ausgeführt werden. Sie möchten nicht, dass bei jeder Ausführung eines solchen Prozesse eine Benachrichtigung erfolgt, denn er könnte völlig unproblematisch sein, aber Sie möchten die Abfrage gelegentlich ausführen, um zu sehen, ob es etwas Ungewöhnliches gibt. 
+Zum Beispiel liefert eine integrierte Abfrage Daten über die ungewöhnlichsten Prozesse, die in Ihrer Infrastruktur ausgeführt werden. Sie möchten nicht, dass bei jeder Ausführung eines solchen Prozesse eine Benachrichtigung erfolgt, denn er könnte völlig unproblematisch sein, aber Sie möchten die Abfrage gelegentlich ausführen, um zu sehen, ob es etwas Ungewöhnliches gibt.
 
-Mit Azure Sentinel-Bedrohungssuche (Ermittlung) können Sie die folgenden Funktionen nutzen:
+## <a name="use-built-in-queries"></a>Verwenden integrierter Abfragen
 
-- **Integrierte Abfragen**: Die Hauptseite für die Bedrohungssuche, auf die über das Azure Sentinel-Navigationsmenü zugegriffen werden kann, enthält vorgefertigte Abfragebeispiele, die Ihnen den Einstieg erleichtern und Sie mit den Tabellen und der Abfragesprache vertraut machen. Diese integrierten Bedrohungssuchabfragen werden von Microsoft-Sicherheitsexperten kontinuierlich weiterentwickelt. Dies geschieht durch Hinzufügen neuer Abfragen und Optimieren vorhandener Abfragen, um Ihnen einen Einstiegspunkt für die Suche nach neuen Erkennungen bereitzustellen und Ihnen zu ermöglichen zu bestimmen, wo Sie nach den Anfängen neuer Angriffe suchen sollten. 
+Das [Hunting-Dashboard](#use-the-hunting-dashboard-public-preview) bietet vorgefertigte Abfragebeispiele, um Ihnen den Einstieg zu erleichtern und Sie an die Tabellen und die Abfragesprache heranzuführen. Abfragen werden für in Protokolltabellen gespeicherte Daten ausgeführt – beispielsweise für die Prozesserstellung, für DNS-Ereignisse oder für andere Ereignistypen.
 
-- **Leistungsstarke Abfragesprache mit IntelliSense**: Bedrohungssuchabfragen sind in die [Kusto-Abfragesprache (KQL)](/azure/data-explorer/kusto/query/) integriert, eine Abfragesprache, die Ihnen die Leistungsfähigkeit und Flexibilität bietet, die Sie für die nächste Stufe der Bedrohungssuche benötigen. Es ist dieselbe Sprache, die von den Abfragen in Ihren Analyseregeln und an anderer Stelle in Azure Sentinel verwendet wird.
+Integrierte Hunting-Abfragen werden von Microsoft-Sicherheitsexperten kontinuierlich weiterentwickelt. Sie fügen neue Abfragen hinzu und optimieren bereits vorhandene Abfragen, um Ihnen einen Einstiegspunkt für die Suche nach neuen Erkennungen zu bieten und Sie bei der Entscheidung zu unterstützen, wo mit der Suche nach den Anfängen neuer Angriffe begonnen werden sollte.
 
-- **Bedrohungssuche-Dashboard (Vorschau)** : Mit diesem Upgrade der Hauptseite können Sie alle Ihre Abfragen oder eine ausgewählte Teilmenge mit einem einzigen Klick ausführen. Ermitteln Sie, wo mit der Suche begonnen werden soll, indem Sie sich die Ergebnisanzahl, Spitzen oder die Änderung der Ergebnisanzahl über einen Zeitraum von 24 Stunden ansehen. Sie können auch nach Favoriten, Datenquelle, MITRE ATT&CK-Taktik und --Verfahren, Ergebnissen oder Ergebnisdelta sortieren und filtern. Zeigen Sie die Abfragen an, mit denen die erforderlichen Datenquellen noch nicht verbunden sind, und erhalten Sie Empfehlungen zum Aktivieren dieser Abfragen.
+Verwenden Sie Abfragen vor, während und nach einer Kompromittierung, um die folgenden Aktionen durchzuführen:
 
-- **Erstellen Sie Ihre eigenen Lesezeichen**: Während des Bedrohungssuchprozesses stoßen Sie möglicherweise auf Abfrageergebnisse, die ungewöhnlich oder verdächtig aussehen. Sie können diese Elemente mit einem „Lesezeichen“ versehen und sie speichern und beiseitelegen, um in Zukunft darauf zurückgreifen zu können. Sie können Ihre mit Lesezeichen gekennzeichneten Elemente verwenden, um einen Incident zur Untersuchung zu erstellen oder anzureichern. Weitere Informationen zu Lesezeichen finden Sie unter [Verwenden von Lesezeichen bei der Bedrohungssuche](bookmarks.md).
+- **Vor einem Incident:** Es reicht nicht aus, auf Erkennungen zu warten. Ergreifen Sie proaktive Maßnahmen, indem Sie mindestens einmal pro Woche alle Abfragen für die Bedrohungssuche im Zusammenhang mit den Daten ausführen, die Sie in Ihrem Arbeitsbereich erfassen.
 
-- **Verwenden Sie Notebooks, um die Untersuchung zu ermöglichen**: Notebooks bieten Ihnen eine Art virtuelle Sandboxumgebung mit eigenem Kernel. Sie können Notebooks verwenden, um Ihre Bedrohungssuche und Untersuchungen durch maschinelles Lernen, Visualisierung und Datenanalyse zu verbessern. Sie können eine vollständige Untersuchung in einem Notebook durchführen, die Rohdaten, den Code, den Sie darauf ausführen, die Ergebnisse und ihre Visualisierungen kapseln und das Ganze speichern, damit es für andere Benutzer in Ihrer Organisation freigegeben und wiederverwendet werden kann. 
+    Die Ergebnisse Ihrer proaktiven Suche geben frühzeitig Aufschluss über Ereignisse, die unter Umständen eine aktuelle Kompromittierung bestätigen oder zumindest Schwachpunkte in Ihrer Umgebung aufzeigen, die gefährdet sind und behandelt werden müssen.
 
-- **Fragen Sie die gespeicherten Daten ab**: Die Daten sind in Tabellen zugänglich, die Sie abfragen können. Beispielsweise können Sie Prozesserstellung, DNS-Ereignisse und viele andere Ereignistypen abfragen.
+- **Während einer Kompromittierung:** Verwenden Sie einen [Livestream](livestream.md), um eine bestimmte Abfrage kontinuierlich auszuführen und eingehende Ergebnisse umgehend anzuzeigen. Livestreams können verwendet werden, wenn Sie Benutzerereignisse aktiv überwachen müssen – beispielsweise, um zu überprüfen, ob eine bestimmte Kompromittierung noch besteht, um die nächste Aktion eines Bedrohungsakteurs zu bestimmen oder um sich gegen Ende einer Untersuchung zu vergewissern, dass die Kompromittierung tatsächlich vorbei ist.
 
-- **Links zur Community**: Nutzen Sie die Leistungsfähigkeit der größeren Community, um weitere Abfragen und Datenquellen zu finden.
- 
-## <a name="get-started-hunting"></a>Beginnen mit der Bedrohungssuche (Hunting)
+- **Nach einer Kompromittierung:** Verbessern Sie nach einer Kompromittierung oder nach einem Incident Ihre Abdeckung und Erkenntnisse, um ähnliche Incidents in Zukunft zu verhindern.
 
-Klicken Sie im Azure Sentinel-Portal auf **Suche** (Hunting).
+    - Ändern Sie Ihre vorhandenen Abfragen, oder erstellen Sie neue, die Sie bei der frühzeitigen Erkennung unterstützen. Orientieren Sie sich dabei an den Erkenntnissen, die Sie durch die Kompromittierung oder den Incident gewonnen haben.
 
-   :::image type="content" source="media/hunting/hunting-start.png" alt-text="Azure Sentinel beginnt mit der Bedrohungssuche" lightbox="media/hunting/hunting-start.png":::
+    - Wenn Sie eine Hunting-Abfrage entdeckt oder erstellt haben, die wertvolle Erkenntnisse zu möglichen Angriffen liefert, können Sie auf der Grundlage der Abfrage benutzerdefinierte Erkennungsregeln erstellen und diese Erkenntnisse als Warnungen in Ihren Antwortdiensten für Sicherheitsvorfälle verfügbar machen.
 
-- Wenn Sie die Seite **Suche** (Hunting) öffnen, werden alle Bedrohungssuchabfragen in einer einzelnen Tabelle angezeigt. In der Tabelle werden alle Abfragen, die von Microsofts Team der Sicherheitsanalysten geschrieben wurden, sowie alle weiteren Abfragen aufgelistet, die Sie erstellt oder geändert haben. Jede Abfrage enthält eine Beschreibung dazu, nach welcher Bedrohung mit ihr gesucht wird und für welche Art von Daten sie ausgeführt wird. Diese Vorlagen sind nach ihren verschiedene Taktiken gruppiert: Die Symbole auf der rechten Seite kategorisieren den Typ der Bedrohung, etwa Erstzugriff, Persistenz und Exfiltration.
+        Zeigen Sie die Ergebnisse der Abfrage an, und wählen Sie **Neue Warnungsregel** > **Azure Sentinel-Warnung erstellen** aus. Verwenden Sie den **Analyseregel-Assistenten**, um eine neue, auf Ihrer Abfrage basierende Regel zu erstellen. Weitere Informationen finden Sie unter [Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen](detect-threats-custom.md).
 
-- (Vorschau) Um zu sehen, wie die Abfragen für Ihre Umgebung gelten, klicken Sie auf die Schaltfläche **Alle Abfragen ausführen (Vorschau)** , oder wählen Sie mithilfe der Kontrollkästchen links neben den einzelnen Zeilen eine Teilmenge von Abfragen und dann die Schaltfläche **Ausgewählte Abfragen ausführen (Vorschau)** aus. Die Ausführung der Abfragen kann von wenigen Sekunden bis zu mehreren Minuten dauern. Dies hängt von der Anzahl der ausgewählten Abfragen, des Zeitraums und der abgefragten Datenmenge ab.
 
-- (Vorschau) Sobald Ihre Abfragen ausgeführt wurden, können Sie mit dem Filter **Ergebnisse** anzeigen, welche Abfragen Ergebnisse zurückgegeben haben. Anschließend können Sie diese sortieren, um zu sehen, welche Abfragen die meisten oder die wenigsten Ergebnisse lieferten. Sie können auch sehen, welche Abfragen in Ihrer Umgebung nicht aktiv sind, indem Sie im Filter **Ergebnisse** die Option *Nicht zutreffend* auswählen. Bewegen Sie den Mauszeiger über das Infosymbol (i) neben *Nicht zutreffend*, um zu sehen, welche Datenquellen erforderlich sind, um diese Abfrage zu aktivieren.
+> [!TIP]
+> - Während der Public Preview-Phase können nun auch Hunting- und Livestreamabfragen für gespeicherte Daten in Azure Data Explorer erstellt werden. Weitere Informationen finden Sie in der Dokumentation zu Azure Monitor unter [Ressourcenübergreifende Abfrage: Azure Data Explorer mithilfe von Azure Monitor](../azure-monitor/logs/azure-monitor-data-explorer-proxy.md).
+>
+> - Weitere Abfragen und Datenquellen finden Sie in Communityressourcen wie dem [GitHub-Repository für Azure Sentinel](https://github.com/Azure/Azure-Sentinel/tree/master/Hunting%20Queries).
+>
 
-- (Vorschau) Sie können Datenspitzen identifizieren, indem Sie nach **Ergebnisse – Delta** sortieren oder filtern. Dadurch werden die Ergebnisse der letzten 24 Stunden mit den Ergebnissen der vorherigen 24 bis 48 Stunden verglichen, um große Volumenunterschiede besser zu erkennen.
+## <a name="use-the-hunting-dashboard-public-preview"></a>Verwenden des Hunting-Dashboards (Public Preview)
 
-- (Vorschau) Die **MITRE ATT&CK-Taktikleiste** oben in der Tabelle zeigt an, wie viele Abfragen jeder MITRE ATT&CK-Taktik zugeordnet sind. Die Taktikleiste wird basierend auf dem aktuellen Satz angewendeter Filter dynamisch aktualisiert. Dies ist eine einfache Möglichkeit zu sehen, welche MITRE ATT&CK-Taktiken angezeigt werden, wenn Sie nach einer bestimmten Ergebnisanzahl, einem hohen Ergebnisdelta, *Nicht zutreffend*-Ergebnissen oder einem anderen Satz von Filtern filtern.
+Mit dem Hunting-Dashboard können Sie alle Ihre Abfragen oder eine ausgewählte Teilmenge mit einer einzigen Auswahl ausführen. Wählen Sie im Azure Sentinel-Portal die Option **Hunting** aus.
 
-- (Vorschau) Die Abfragen können auch MITRE ATT&CK-Techniken zugeordnet werden. Sie können mithilfe des Filters **Technik** nach MITRE ATT&CK-Techniken filtern oder sortieren. Wenn Sie eine Abfrage öffnen, können Sie auf die Technik klicken, um die MITRE ATT&CK-Beschreibung der Technik anzuzeigen.
+Die daraufhin angezeigte Tabelle enthält alle Abfragen, die von den Sicherheitsanalysten von Microsoft geschrieben wurden, sowie alle weiteren Abfragen, die Sie selbst erstellt oder geändert haben. Jede Abfrage enthält eine Beschreibung dazu, nach welcher Bedrohung mit ihr gesucht wird und für welche Art von Daten sie ausgeführt wird. Diese Vorlagen sind nach ihren verschiedene Taktiken gruppiert: Die Symbole auf der rechten Seite kategorisieren den Typ der Bedrohung, etwa Erstzugriff, Persistenz und Exfiltration.
 
-- Sie können jede Abfrage in Ihren Favoriten speichern. In Ihren Favoriten gespeicherte Abfragen werden jedes Mal automatisch ausgeführt, wenn auf die **Bedrohungssuche-Seite** zugegriffen wird. Sie können eine eigene Bedrohungssuchabfrage erstellen oder eine vorhandene Vorlage für Bedrohungssuchabfragen klonen oder anpassen.
- 
-- Indem Sie auf der Seite mit den Details der Bedrohungssuchabfrage auf **Abfrage ausführen** klicken, können Sie eine Abfrage ausführen, ohne die Bedrohungssuchseite zu verlassen. Die Anzahl der Übereinstimmungen wird in der Tabelle in der Spalte **Ergebnisse** angezeigt. Überprüfen Sie die Liste der Bedrohungssuchabfragen und deren Übereinstimmungen.
+:::image type="content" source="media/hunting/hunting-start.png" alt-text="Azure Sentinel beginnt mit der Bedrohungssuche" lightbox="media/hunting/hunting-start.png":::
 
-- Sie können eine schnelle Überprüfung der zugrunde liegenden Abfrage im Bereich mit den Abfragedetails durchführen. Sie können die Ergebnisse anzeigen, indem Sie auf den Link **Abfrageergebnisse anzeigen** (unterhalb des Abfragefensters) oder auf die Schaltfläche **Ergebnisse anzeigen** (unten im Bereich) klicken. Die Abfrage wird auf dem Blatt **Protokolle** (Log Analytics) geöffnet, und unterhalb der Abfrage können Sie die Übereinstimmungen für die Abfrage überprüfen.
+Verwenden Sie das Hunting-Dashboard, um zu ermitteln, wo mit der Suche begonnen werden soll. Betrachten Sie dazu die Ergebnisanzahl, Spitzen oder die Veränderung der Ergebnisanzahl über einen Zeitraum von 24 Stunden. Sortieren und filtern Sie nach Favoriten, Datenquelle, MITRE ATT&CK-Taktik und -Verfahren, Ergebnissen oder Ergebnisdelta. Zeigen Sie Abfragen an, für die noch eine Verbindung mit Datenquellen hergestellt werden muss**, und erhalten Sie Empfehlungen zum Aktivieren dieser Abfragen.
 
-- Um verdächtige oder interessante Ergebnisse aus einer Abfrage in Log Analytics aufzubewahren, markieren Sie die Kontrollkästchen der Zeilen, die Sie beibehalten möchten, und wählen Sie **Lesezeichen hinzufügen** aus. Dadurch wird für jede markierte Zeile ein Datensatz (ein Lesezeichen) erstellt, das die Zeilenergebnisse, die Abfrage, die die Ergebnisse erstellt hat, sowie Entitätszuordnungen zum Extrahieren von Benutzern, Hosts und IP-Adressen enthält. Sie können jedem Lesezeichen Ihre eigenen Tags (siehe unten) und Notizen hinzufügen.
+In der folgenden Tabelle werden detaillierte Aktionen beschrieben, die über das Hunting-Dashboard verfügbar sind:
 
-- Sie können alle mit Lesezeichen markierten Ergebnisse anzeigen, indem Sie auf der Hauptseite der **Bedrohungssuche** auf die Registerkarte **Lesezeichen** klicken. Sie können Tags zu Lesezeichen hinzufügen, um sie für die Filterung zu klassifizieren. Wenn Sie beispielsweise eine Angriffskampagne untersuchen, können Sie ein Tag für die Kampagne erstellen, das Tag allen relevanten Lesezeichen hinzufügen und dann alle Lesezeichen auf Basis der Kampagne filtern.
+|Aktion  |BESCHREIBUNG  |
+|---------|---------|
+|**Ermitteln, inwiefern Abfragen für Ihre Umgebung geeignet sind**     |   Wählen Sie die Schaltfläche **Run all queries (Preview)** (Alle Abfragen ausführen (Vorschau)) aus, oder wählen Sie mithilfe der Kontrollkästchen links neben den einzelnen Zeilen einen Teil der Abfragen und anschließend die Schaltfläche **Run selected queries (Preview)** (Ausgewählte Abfragen ausführen (Vorschau)) aus. <br><br>Die Abfrageausführung kann wenige Sekunden, aber auch mehrere Minuten dauern. Dies hängt von der Anzahl ausgewählter Abfragen, vom Zeitbereich und von der abgefragten Datenmenge ab.      |
+|**Anzeigen der Abfragen, von denen Ergebnisse zurückgegeben wurden**    |      Nach Abschluss Ihrer Abfragen können Sie mithilfe des Filters **Ergebnisse** die Abfragen anzeigen, von denen Ergebnisse zurückgegeben wurden: <br>- Sortieren Sie sie, um zu sehen, welche Abfragen die meisten oder wenigsten Ergebnisse hatten. <br>- Wählen im Filter **Ergebnisse** die Option *Nicht zutreffend* aus, um die Abfragen anzuzeigen, die in Ihrer Umgebung nicht aktiv sind. <br>- Bewegen Sie den Mauszeiger auf das Infosymbol (**i**) neben *Nicht zutreffend*, um zu sehen, welche Datenquellen erforderlich sind, um diese Abfrage zu aktivieren.  |
+|**Identifizieren von Spitzen in Ihren Daten**     |   Sie können Datenspitzen identifizieren, indem Sie nach **Ergebnis Delta** sortieren oder filtern. <br><br>Dadurch werden die Ergebnisse der letzten 24 Stunden mit den Ergebnissen der vorherigen 24 bis 48 Stunden verglichen und alle signifikanten Volumenunterschiede hervorgehoben.     |
+|**Anzeigen von Abfragen, die der MITRE Att&CK-Taktik zugeordnet sind**     | Die **MITRE ATT&CK-Taktikleiste** im oberen Bereich der Tabelle gibt an, wie viele Abfragen der jeweiligen MITRE ATT&CK-Taktik zugeordnet sind. Die Taktikleiste wird basierend auf dem aktuellen Satz angewendeter Filter dynamisch aktualisiert. <br><br>Dadurch sehen Sie, welche MITRE ATT&CK-Taktiken erscheinen, wenn Sie nach einer bestimmten Ergebnisanzahl, einem hohen Ergebnisdelta, nach Ergebnissen vom Typ *Nicht zutreffend* oder nach etwas anderem filtern.        |
+|**Anzeigen von Abfragen, die MITRE Att&CK-Techniken zugeordnet sind**     | Abfragen können auch MITRE ATT&CK-Techniken zugeordnet werden. Sie können mithilfe des Filters **Technik** nach MITRE ATT&CK-Techniken filtern oder sortieren. Wenn Sie eine Abfrage öffnen, können Sie die Technik auswählen, um die MITRE ATT&CK-Beschreibung der Technik anzuzeigen.        |
+|**Speichern einer Abfrage in Ihren Favoriten**     |   In Ihren Favoriten gespeicherte Abfragen werden jedes Mal automatisch ausgeführt, wenn auf die **Bedrohungssuche-Seite** zugegriffen wird. Sie können eine eigene Bedrohungssuchabfrage erstellen oder eine vorhandene Vorlage für Bedrohungssuchabfragen klonen oder anpassen.      |
+|**Ausführen von Abfragen**     |   Wählen Sie auf der Seite mit den Details der Hunting-Abfrage die Option **Abfrage ausführen** aus, um die Abfrage direkt über die Seite „Hunting“ auszuführen. Die Anzahl der Übereinstimmungen wird in der Tabelle in der Spalte **Ergebnisse** angezeigt. Überprüfen Sie die Liste der Bedrohungssuchabfragen und deren Übereinstimmungen.     |
+|**Überprüfen einer zugrunde liegenden Abfrage**     | Im Bereich mit den Abfragedetails können Sie eine schnelle Überprüfung der zugrunde liegenden Abfrage durchführen. Sie können die Ergebnisse anzeigen, indem Sie auf den Link **Abfrageergebnisse anzeigen** (unterhalb des Abfragefensters) oder auf die Schaltfläche **Ergebnisse anzeigen** (unten im Bereich) klicken. Die Abfrage wird auf dem Blatt **Protokolle** (Log Analytics) geöffnet, und unterhalb der Abfrage können Sie die Übereinstimmungen für die Abfrage überprüfen.         |
+|     |         |
 
-- Sie können ein einzelnes, mit Lesezeichen markiertes Ergebnis untersuchen, indem Sie das Lesezeichen auswählen und dann im Detailbereich auf **Untersuchen** klicken, um die Untersuchungserfahrung zu öffnen. Sie können einen Incident auch aus einem oder mehreren Lesezeichen erstellen oder einem vorhandenen Incident ein oder mehrere Lesezeichen hinzufügen, indem Sie die Kontrollkästchen links neben den gewünschten Lesezeichen aktivieren und dann im Dropdownmenü **Incidentaktionen** am oberen Rand des Bildschirms entweder **Neuen Incident erstellen** oder **Zu vorhandenem Incident hinzufügen** auswählen. Anschließend können Sie den Incident wie jeden anderen selektieren und untersuchen.
 
-- Nachdem Sie eine Bedrohungssuchabfrage ermittelt oder erstellt haben, die wertvolle Erkenntnisse über mögliche Angriffe liefert, können Sie basierend auf der Abfrage benutzerdefinierte Erkennungsregeln erstellen und diese Erkenntnisse als Warnungen in Ihren Antwortdiensten für Sicherheitsvorfälle anzeigen. Zeigen Sie die Ergebnisse der Abfrage in Log Analytics an (siehe oben), klicken Sie anschließend oben im Bereich auf die Schaltfläche **Neue Warnungsregel**, und wählen Sie dann **Azure Sentinel-Warnung erstellen** aus. Der **Assistent für Analyseregel** wird geöffnet. Führen Sie die erforderlichen Schritte aus, wie unter [Tutorial: Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen](tutorial-detect-threats-custom.md) erläutert.
+## <a name="create-your-own-bookmarks"></a>Erstellen eigener Lesezeichen
 
-## <a name="query-language"></a>Abfragesprache 
+Während des Hunting- und Untersuchungsprozesses stoßen Sie möglicherweise auf ungewöhnlich oder verdächtig aussehende Abfrageergebnisse. Versehen Sie diese Elemente mit einem Lesezeichen, um später auf sie zurückzukommen – etwa beim Erstellen oder Anreichern eines Incidents für die Untersuchung.
 
-Hunting (Bedrohungssuche) in Azure Sentinel basiert auf der Kusto-Abfragesprache. Weitere Informationen zu der Abfragesprache und den unterstützten Operatoren finden Sie unter [Erste Schritte mit Azure Monitor-Protokollabfragen](../azure-monitor/logs/get-started-queries.md).
+- Aktivieren Sie in Ihren Ergebnissen die Kontrollkästchen aller Zeilen, die Sie speichern möchten, und wählen Sie **Lesezeichen hinzufügen** aus. Dadurch wird für jede markierte Zeile ein Datensatz (Lesezeichen) erstellt, der die Zeilenergebnisse, die Abfrage, die die Ergebnisse erstellt hat, sowie Entitätszuordnungen zum Extrahieren von Benutzern, Hosts und IP-Adressen enthält. Sie können jedem Lesezeichen Ihre eigenen Tags und Notizen hinzufügen.
 
-## <a name="public-hunting-query-github-repository"></a>Öffentliches GitHub-Repository für Bedrohungssuchabfragen (Hunting-Abfragen)
+- Klicken Sie auf der Hauptseite **Hunting** auf die Registerkarte **Lesezeichen**, um alle mit Lesezeichen versehenen Ergebnisse anzuzeigen. Fügen Sie Lesezeichen Tags hinzu, um sie für die Filterung zu klassifizieren. Wenn Sie beispielsweise eine Angriffskampagne untersuchen, können Sie ein Tag für die Kampagne erstellen, das Tag allen relevanten Lesezeichen hinzufügen und dann alle Lesezeichen auf Basis der Kampagne filtern.
 
-Sehen Sie sich das [Repository für Bedrohungssuchabfragen](https://github.com/Azure/Azure-Sentinel/tree/master/Hunting%20Queries) an. Tragen Sie eigene Abfragen bei, und verwenden Sie Beispielabfragen, die von unseren Kunden geteilt wurden.
+- Untersuchen Sie ein einzelnes, mit Lesezeichen versehenes Ergebnis, indem Sie das Lesezeichen auswählen und anschließend im Detailbereich auf **Untersuchen** klicken, um die Untersuchungsumgebung zu öffnen.
 
- ## <a name="sample-query"></a>Beispielabfrage
+    Sie können auch einen Incident auf der Grundlage eines oder mehrerer Lesezeichen erstellen oder einem bereits vorhandenen Incident ein oder mehrere Lesezeichen hinzufügen. Aktivieren Sie das Kontrollkästchen links neben den Lesezeichen, die Sie verwenden möchten, und wählen Sie anschließend **Incidentaktionen** > **Neuen Incident erstellen** oder **Zu vorhandenem Incident hinzufügen** aus. Selektieren und untersuchen Sie den Incident wie gewohnt.
 
-Eine typische Abfrage beginnt mit einem Tabellennamen, gefolgt von einer Reihe von Operatoren, die durch \| getrennt sind.
 
-Beginnen Sie im obigen Beispiel mit dem Tabellennamen „SecurityEvent“, und fügen Sie nach Bedarf über Pipes verkettete Elemente hinzu.
+> [!TIP]
+> Lesezeichen stellen beachtenswerte Schlüsselereignisse dar, die zu Incidents eskaliert werden sollten, wenn sie schwerwiegend genug sind, um eine Untersuchung zu erfordern. Ereignisse wie potenzielle Grundursachen, Anzeichen einer Kompromittierung oder andere wichtige Ereignisse sollten mit einem Lesezeichen versehen werden.
+>
 
-1. Definieren Sie einen Zeitfilter, um nur Datensätze aus den letzten sieben Tagen zu überprüfen.
+Weitere Informationen zu Lesezeichen finden Sie unter [Behalten des Überblicks über Daten beim Hunting mit Azure Sentinel](bookmarks.md).
 
-1. Fügen Sie der Abfrage einen Filter hinzu, um nur Ereignisse mit der ID 4688 anzuzeigen.
+## <a name="use-notebooks-to-power-investigations"></a>Verwenden von Notebooks für Untersuchungen
 
-1. Fügen Sie der Abfrage einen Filter für die Befehlszeile (CommandLine) hinzu, sodass nur Instanzen von „cscript.exe“ enthalten sind.
+Notebooks bieten eine Art virtuelle Sandbox mit eigenem Kernel. Sie können Notebooks verwenden, um Ihre Bedrohungssuche und Untersuchungen durch maschinelles Lernen, Visualisierung und Datenanalyse zu verbessern. Sie können eine vollständige Untersuchung in einem Notebook durchführen, die Rohdaten, den Code, den Sie darauf ausführen, die Ergebnisse und ihre Visualisierungen kapseln und das Ganze speichern, damit es für andere Benutzer in Ihrer Organisation freigegeben und wiederverwendet werden kann.
 
-1. Wählen Sie über „project“ nur die Spalten aus, Sie untersuchen möchten, begrenzen Sie die Ergebnisse auf 1000, und klicken Sie auf **Abfrage ausführen**.
+Weitere Informationen finden Sie unter [Aufspüren von Sicherheitsrisiken mit Jupyter Notebook](notebooks.md).
 
-1. Klicken Sie auf das grüne Dreieck, um die Abfrage auszuführen. Sie können die Abfrage testen, und sie ausführen, um nach anormalem Verhalten zu suchen.
 
-## <a name="useful-operators"></a>Hilfreiche Operatoren
+## <a name="useful-operators-and-functions"></a>Praktische Operatoren und Funktionen
 
-Die Abfragesprache ist leistungsstark und hat zahlreiche Operatoren, von denen einige besonders nützliche hier aufgeführt sind:
+Hunting-Abfragen werden in der [Kusto-Abfragesprache (KQL)](/azure/data-explorer/kusto/query/) erstellt. Diese leistungsstarke Abfragesprache mit IntelliSense bietet die Leistungsfähigkeit und Flexibilität, die Sie für die nächste Hunting-Stufe benötigen.
 
-**where**: Filtert eine Tabelle auf die Teilmenge von Zeilen, die ein Prädikat erfüllen.
+Es ist dieselbe Sprache, die von den Abfragen in Ihren Analyseregeln und an anderer Stelle in Azure Sentinel verwendet wird. Weitere Informationen finden Sie unter [Erste Schritte mit Protokollabfragen in Azure Monitor](../azure-monitor/logs/get-started-queries.md).
 
-**summarize**: Erzeugt eine Tabelle, in der der Inhalt der Eingabetabelle aggregiert ist.
+Die folgenden Operatoren sind bei Hunting-Abfragen für Azure Sentinel besonders hilfreich:
 
-**join**: Führt die Zeilen zweier Tabellen zusammen, um eine neue Tabelle zu erzeugen, indem Werte aus den angegebenen Spalten aus beiden Tabellen zugeordnet werden.
+- **where**: Filtert eine Tabelle auf die Teilmenge von Zeilen, die ein Prädikat erfüllen.
 
-**count**: Gibt die Anzahl von Datensätzen in der Eingabedatensatzgruppe zurück.
+- **summarize**: Erzeugt eine Tabelle, in der der Inhalt der Eingabetabelle aggregiert ist.
 
-**top**: Gibt die ersten N Datensätze zurück, wobei diese nach den angegebenen Spalten sortiert sind.
+- **join**: Führt die Zeilen zweier Tabellen zusammen, um eine neue Tabelle zu erzeugen, indem Werte aus den angegebenen Spalten aus beiden Tabellen zugeordnet werden.
 
-**limit**: Gibt maximal die angegebene Anzahl von Zeilen zurück.
+- **count**: Gibt die Anzahl von Datensätzen in der Eingabedatensatzgruppe zurück.
 
-**project**: Wählt die Spalten aus, die einbezogen, umbenannt oder gelöscht werden sollen, und fügt neue berechnete Spalten ein.
+- **top**: Gibt die ersten N Datensätze zurück, wobei diese nach den angegebenen Spalten sortiert sind.
 
-**extend**: Erstellt berechnete Spalten und fügt diese an das Resultset an.
+- **limit**: Gibt maximal die angegebene Anzahl von Zeilen zurück.
 
-**makeset**: Gibt ein dynamisches(JSON) Array der Menge unterschiedlicher Werte zurück, die ein Ausdruck (Expr) in der Gruppe annimmt.
+- **project**: Wählt die Spalten aus, die einbezogen, umbenannt oder gelöscht werden sollen, und fügt neue berechnete Spalten ein.
 
-**find**: Sucht nach Zeilen, die einem Prädikat in einer Gruppe von Tabellen entsprechen.
+- **extend**: Erstellt berechnete Spalten und fügt diese an das Resultset an.
+
+- **makeset**: Gibt ein dynamisches(JSON) Array der Menge unterschiedlicher Werte zurück, die ein Ausdruck (Expr) in der Gruppe annimmt.
+
+- **find**: Sucht nach Zeilen, die einem Prädikat in einer Gruppe von Tabellen entsprechen.
+
+- **adx() (Vorschauversion)** : Diese Funktion führt ressourcenübergreifende Abfragen für Azure Data Explorer-Datenquellen über die Hunting-Umgebung von Azure Sentinel und über Log Analytics aus. Weitere Informationen finden Sie unter [Ressourcenübergreifende Abfrage: Azure Data Explorer mithilfe von Azure Monitor](../azure-monitor/logs/azure-monitor-data-explorer-proxy.md).
 
 ## <a name="save-a-query"></a>Speichern einer Abfrage
 
-Sie können eine Abfrage erstellen oder ändern, und Sie können sie als Ihre eigene Abfrage speichern oder für Benutzer freigeben, die sich im selben Mandanten befinden.
+Erstellen oder ändern Sie eine Abfrage, und speichern Sie sie als Ihre eigene Abfrage, oder teilen Sie sie mit Benutzern im gleichen Mandanten.
 
 :::image type="content" source="./media/hunting/save-query.png" alt-text="Speichern der Abfrage" lightbox="./media/hunting/save-query.png":::
 
-### <a name="create-a-new-hunting-query"></a>Erstellen einer neuen Bedrohungssuchabfrage
+**So erstellen Sie eine neue Abfrage:**
 
 1. Klicken Sie auf **Neue Abfrage**.
 
@@ -143,7 +160,7 @@ Sie können eine Abfrage erstellen oder ändern, und Sie können sie als Ihre ei
 
     :::image type="content" source="./media/hunting/new-query.png" alt-text="Neue Abfrage" lightbox="./media/hunting/new-query.png":::
 
-### <a name="clone-and-modify-an-existing-hunting-query"></a>Klonen und Ändern einer vorhandenen Bedrohungssuchabfrage
+**So klonen und ändern Sie eine vorhandene Abfrage:**
 
 1. Wählen Sie in der Tabelle die Bedrohungssuchabfrage aus, die Sie ändern möchten.
 
@@ -155,9 +172,32 @@ Sie können eine Abfrage erstellen oder ändern, und Sie können sie als Ihre ei
 
     :::image type="content" source="./media/hunting/custom-query.png" alt-text="Benutzerdefinierte Abfrage" lightbox="./media/hunting/custom-query.png":::
 
+
+
+## <a name="sample-query"></a>Beispielabfrage
+
+Eine typische Abfrage beginnt mit einem Tabellennamen, gefolgt von einer Reihe von Operatoren, die durch \| getrennt sind.
+
+Beginnen Sie im obigen Beispiel mit dem Tabellennamen „SecurityEvent“, und fügen Sie nach Bedarf über Pipes verkettete Elemente hinzu.
+
+1. Definieren Sie einen Zeitfilter, um nur Datensätze aus den letzten sieben Tagen zu überprüfen.
+
+1. Fügen Sie der Abfrage einen Filter hinzu, um nur Ereignisse mit der ID 4688 anzuzeigen.
+
+1. Fügen Sie der Abfrage einen Filter für die Befehlszeile (CommandLine) hinzu, sodass nur Instanzen von „cscript.exe“ enthalten sind.
+
+1. Bilden Sie nur die Spalten ab, die Sie untersuchen möchten, begrenzen Sie die Ergebnisse auf 1.000, und wählen Sie anschließend **Abfrage ausführen** aus.
+
+1. Wählen Sie das grüne Dreieck aus, um die Abfrage auszuführen. Sie können die Abfrage testen, und sie ausführen, um nach anormalem Verhalten zu suchen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie Sie eine Bedrohungsuntersuchung mit Azure Sentinel ausführen. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
+In diesem Artikel haben Sie erfahren, wie Sie eine Bedrohungsuntersuchung mit Azure Sentinel ausführen. 
+
+Weitere Informationen finden Sie unter:
 
 - [Verwenden von Notebooks zur Ermittlung von Anomalien](notebooks.md)
 - [Behalten des Überblicks über Daten bei einer Bedrohungssuche](bookmarks.md)
+
+Erfahren Sie anhand eines Beispiels, wie benutzerdefinierte Analyseregeln bei der [Überwachung von Zoom](https://techcommunity.microsoft.com/t5/azure-sentinel/monitoring-zoom-with-azure-sentinel/ba-p/1341516) mit einem [benutzerdefinierten Connector](create-custom-connector.md) eingesetzt werden.
+

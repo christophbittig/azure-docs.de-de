@@ -9,12 +9,12 @@ metadata:
   author: yegu-ms
   ms.author: yegu
   ms.date: 12/16/2019
-  ms.openlocfilehash: 4960c8b24740a16b6bf8e914a3aee9bd8fc1add0
-  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+  ms.openlocfilehash: a0ace54c73054eba059d268f21526fcaf44e6120
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/03/2021
-  ms.locfileid: "123428972"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124828790"
 landingContent:
 - title: Informationen zu Azure Cache for Redis
   linkLists:
@@ -64,26 +64,6 @@ landingContent:
     links:
     - text: Beispiele
       url: cache-redis-samples.md
-- title: SDKs und Befehlszeilen
-  linkLists:
-  - linkListType: reference
-    links:
-    - text: .NET
-      url: /dotnet/api/microsoft.azure.management.redis
-    - text: Java
-      url: /java/api/com.microsoft.azure.management.redis.rediscache
-    - text: REST-API
-      url: /rest/api/redis/
-    - text: Redis-Client
-      url: https://redis.io/clients
-    - text: Redis-Befehle
-      url: https://redis.io/commands
-  - linkListType: reference
-    links:
-    - text: Azure PowerShell
-      url: /powershell/module/az.rediscache
-    - text: Azure CLI
-      url: /cli/azure/redis
 - title: Empfehlungen
   linkLists:
   - linkListType: learn
@@ -102,6 +82,26 @@ landingContent:
       url: cache-best-practices-kubernetes.md
     - text: Leistungstests
       url: cache-best-practices-performance.md
+- title: SDKs und Befehlszeilen
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: .NET
+      url: /dotnet/api/microsoft.azure.management.redis
+    - text: Java
+      url: /java/api/com.microsoft.azure.management.redis.rediscache
+    - text: REST-API
+      url: /rest/api/redis/
+    - text: Redis-Client
+      url: https://redis.io/clients
+    - text: Redis-Befehle
+      url: https://redis.io/commands
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: /powershell/module/az.rediscache
+    - text: Azure-Befehlszeilenschnittstelle
+      url: /cli/azure/redis
 - title: Problembehandlung
   linkLists:
   - linkListType: how-to-guide

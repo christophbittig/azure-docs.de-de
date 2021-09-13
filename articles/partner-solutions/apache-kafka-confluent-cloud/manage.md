@@ -3,19 +3,19 @@ title: 'Verwalten einer Confluent Cloud-Ressource: Azure-Partnerlösungen'
 description: In diesem Artikel wird die Verwaltung einer Confluent Cloud-Ressource im Azure-Portal beschrieben. Hier erfahren Sie, wie Sie das einmalige Anmelden einrichten, eine Confluent-Organisation löschen und Support anfordern.
 ms.service: partner-services
 ms.topic: conceptual
-ms.date: 02/08/2021
+ms.date: 06/07/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: f8a54096ecda4729f7070120a02be3055f933cea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c1e53382b6f399bccac53a75595eda4e61a915a4
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99989134"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112520994"
 ---
 # <a name="manage-the-confluent-cloud-resource"></a>Verwalten der Confluent Cloud-Ressource
 
-In diesem Artikel wird beschrieben, wie Sie Ihre Instanz von Apache Kafka für Confluent Cloud in Azure verwalten. Es wird gezeigt, wie Sie das einmalige Anmelden (Single Sign-on, SSO) einrichten, eine Confluent-Organisation löschen und eine Supportanfrage erstellen.
+In diesem Artikel wird beschrieben, wie Sie Ihre Instanz von Apache Kafka für Confluent Cloud in Azure verwalten. Sie erfahren, wie Sie das einmalige Anmelden (SSO) einrichten und eine Confluent-Organisation löschen.
 
 ## <a name="single-sign-on"></a>Einmaliges Anmelden
 
@@ -27,9 +27,12 @@ Gehen Sie folgendermaßen vor, um das einmalige Anmelden zu aktivieren:
 1. Navigieren Sie zur **Übersicht** für Ihre Instanz der Confluent Cloud-Ressource.
 1. Wählen Sie den Link **Manage on Confluent Cloud** (In Confluent Cloud verwalten) aus.
 
-   :::image type="content" source="media/sso-link.png" alt-text="Einmaliges Anmelden im Confluent-Portal":::
+   :::image type="content" source="media/manage/sso-link.png" alt-text="Einmaliges Anmelden im Confluent-Portal":::
 
 1. Wenn der Mandantenadministrator die Kataloganwendung für die Zustimmung zum einmaligen Anmelden nicht importiert hat, gewähren Sie Berechtigungen und erteilen eine Zustimmung. Dieser Schritt wird nur benötigt, wenn Sie zum ersten Mal auf den Link **Manage on Confluent Cloud** zugreifen.
+
+   :::image type="content" source="media/manage/permissions-requested.png" alt-text="Erteilen von Berechtigungen":::
+
 1. Wählen Sie ein Azure AD-Konto für das einmalige Anmelden beim Confluent Cloud-Portal aus.
 1. Nachdem die Zustimmung erteilt wurde, werden Sie zum Confluent Cloud-Portal weitergeleitet.
 
@@ -40,6 +43,8 @@ Weitere Informationen zum Einrichten des Clusters finden Sie in der Confluent-Do
 ## <a name="delete-confluent-organization"></a>Löschen einer Confluent-Organisation
 
 Wenn Sie Ihre Confluent Cloud-Ressource nicht mehr benötigen, löschen Sie die Ressource in Azure und in Confluent Cloud.
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 So löschen Sie die Ressourcen in Azure:
 
@@ -53,37 +58,34 @@ So löschen Sie die Ressourcen in Azure:
 
     :::image type="content" source="media/delete-resources-prompt.png" alt-text="Aufforderung, die Löschung der Ressource zu bestätigen":::
 
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Bereiten Sie zunächst Ihre Umgebung für die Azure-Befehlszeilenschnittstelle vor:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Verwenden Sie nach der Anmeldung den Befehl [az confluent organization delete](/cli/azure/confluent#az_confluent_organization_delete), um die Organisationsressource anhand des Namens zu löschen:
+
+```azurecli
+az confluent organization delete --name "myOrganization" --resource-group "myResourceGroup"
+```
+
+Alternativ ist das Löschen anhand der Ressourcen-ID möglich:
+
+```azurecli
+az confluent organization delete --id "/subscriptions/{SubID}/resourceGroups/{myResourceGroup}/providers/Microsoft.Confluent/organizations/{myOrganization}"
+```
+
+---
+
 Informationen zum Löschen der Ressource in Confluent Cloud finden Sie in der Confluent-Dokumentation unter [Confluent Cloud Environments](https://docs.confluent.io/current/cloud/using/environments.html) (Confluent Cloud-Umgebungen) und unter [Confluent Cloud Basics](https://docs.confluent.io/current/cloud/using/cloud-basics.html) (Grundlagen zu Confluent Cloud).
 
 Der Cluster und alle Daten im Cluster werden dauerhaft gelöscht. Wenn Ihr Vertrag eine Klausel für die Datenaufbewahrung enthält, werden Ihre Daten von Confluent für den Zeitraum beibehalten, der in der Confluent-Dokumentation unter [Terms of Service](https://www.confluent.io/confluent-cloud-tos) (Vertragsbedingungen) angegeben ist.
 
 Die Nutzung wird Ihnen anteilig bis zum Zeitpunkt der Clusterlöschung in Rechnung gestellt. Nachdem der Cluster dauerhaft gelöscht wurde, erhalten Sie von Confluent eine Bestätigung per E-Mail.
 
-## <a name="get-support"></a>Support
-
-Um eine Supportanfrage an Confluent zu übermitteln, wenden Sie sich entweder an den [Confluent-Support](https://support.confluent.io) oder übermitteln eine Anfrage über das Portal, wie unten dargestellt.
-
-> [!NOTE]
-> Für erstmalige Benutzer: Setzen Sie Ihr Kennwort zurück, bevor Sie sich beim Confluent-Supportportal anmelden. Wenn Sie kein Confluent Cloud-Konto haben, senden Sie eine E-Mail an `cloud-support@confluent.io`, um weitere Unterstützung zu erhalten.
-
-Im Portal können Sie eine Anforderung entweder über „Hilfe und Support“ oder direkt über Ihre Instanz von Apache Kafka on Confluent Cloud in Azure übermitteln.
-
-So übermitteln Sie eine Anforderung über „Hilfe und Support“:
-
-1. Wählen Sie **Hilfe und Support**.
-1. Klicken Sie auf **Supportanfrage erstellen**.
-1. Wählen Sie im Formular für **Problemtyp** die Option **Technisch** aus. Wählen Sie Ihr Abonnement aus. Wählen Sie in der Liste der Dienste **Confluent on Azure** aus.
-
-    :::image type="content" source="media/support-request-help.png" alt-text="Erstellen einer Supportanfrage über „Hilfe und Support“":::
-
-Führen Sie die folgenden Schritte aus, um eine Anforderung von Ihrer Ressource zu übermitteln:
-
-1. Wählen Sie im Azure-Portal Ihre Confluent-Organisation aus.
-1. Wählen Sie im Menü links im Bildschirm **Neue Supportanfrage** aus.
-1. Um eine Supportanfrage zu erstellen, wählen Sie den Link zum **Confluent-Portal** aus.
-
-    :::image type="content" source="media/support-request.png" alt-text="Erstellen einer Supportanfrage über eine Instanz":::
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 Hilfe bei der Problembehandlung finden Sie unter [Troubleshooting Apache Kafka for Confluent Cloud solutions](troubleshoot.md) (Problembehandlung in Apache Kafka für Confluent Cloud-Lösungen).
+
+Wenn Sie sich an den Support wenden müssen, finden Sie weitere Informationen unter [Anfordern von Support für Confluent Cloud-Ressourcen](get-support.md).

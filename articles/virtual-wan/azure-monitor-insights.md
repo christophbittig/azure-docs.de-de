@@ -1,18 +1,18 @@
 ---
 title: Überwachen von Virtual WAN mithilfe von Azure Monitor Insights
-description: Dieser Artikel erläutert das Überwachen von Azure Virtual WAN mithilfe von Azure Monitor Insights.
+description: Hier erfahren Sie mehr über die Überwachung von Azure Virtual WAN mithilfe von Azure Monitor Insights.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
-ms.date: 09/22/2020
+ms.topic: how-to
+ms.date: 06/22/2021
 ms.author: cherylmc
-ms.openlocfilehash: 6ead00a0979d81ef11ac81fb13a1abe31317691d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 73209f93e2b7fd96dc6ebb540d62624249db5be8
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100571323"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112539230"
 ---
 # <a name="azure-monitor-insights-for-virtual-wan"></a>Azure Monitor-Erkenntnisse für Virtual WAN
 
@@ -88,4 +88,4 @@ Sie können **Detaillierte Metriken anzeigen** auswählen, um die Seite mit den 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen finden Sie unter [Metriken in Azure Monitor](../azure-monitor/essentials/data-platform-metrics.md).
-* Eine umfassende Beschreibung aller Virtual WAN-Metriken finden Sie unter [Virtual WAN-Protokolle und -Metriken](logs-metrics.md).
+* Eine umfassende Beschreibung aller Virtual WAN-Metriken finden Sie unter [Virtual WAN-Überwachung](monitor-virtual-wan.md).

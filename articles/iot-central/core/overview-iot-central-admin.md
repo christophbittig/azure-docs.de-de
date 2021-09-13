@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Central – Administratorhandbuch
 description: Azure IoT Central ist eine IoT-Anwendungsplattform, die die Erstellung von IoT-Lösungen vereinfacht. Dieser Artikel bietet einen Überblick über die Administratorrolle in IoT Central.
-author: philmea
-ms.author: philmea
+author: dominicbetts
+ms.author: dobett
 ms.date: 03/25/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: c355902eae6aed1504b64dd12d056c6059771e57
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 4ff2ea374768189881c9e1ff28511bc403dd6306
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108759417"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122350076"
 ---
 # <a name="iot-central-administrator-guide"></a>IoT Central – Administratorhandbuch
 
@@ -48,7 +48,7 @@ Der Administrator kann das Verhalten und Erscheinungsbild einer IoT Central-Anwe
 
 - [Ändern von Anwendungsnamen und -URLs](howto-administer.md#change-application-name-and-url)
 - [Anpassen der Benutzeroberfläche](howto-customize-ui.md)
-- [Verschieben einer Anwendung in einen anderen Tarif](howto-view-bill.md)
+- [Verschieben einer Anwendung in einen anderen Tarif](howto-faq.yml#how-do-i-move-from-a-free-to-a-standard-pricing-plan-)
 - [Konfigurieren von Dateiuploads](howto-configure-file-uploads.md)
 
 ## <a name="export-an-application"></a>Exportieren einer Anwendung
@@ -58,7 +58,7 @@ Ein Administrator kann folgende Aufgaben ausführen:
 - Eine Kopie einer Anwendung erstellen, wenn Sie nur eine doppelte Kopie Ihrer Anwendung benötigen. So benötigen Sie beispielsweise vielleicht eine doppelte Kopie zum Testen.
 - Eine Anwendungsvorlage aus einer vorhandenen Anwendung erstellen, wenn Sie vorhaben, mehrere Kopien zu erstellen.
 
-Weitere Informationen finden Sie unter [Exportieren Ihrer Azure IoT-Anwendung](howto-use-app-templates.md).
+Weitere Informationen finden Sie unter [Erstellen und Verwenden einer benutzerdefinierten Anwendungsvorlage](howto-create-iot-central-application.md#create-and-use-a-custom-application-template).
 
 ## <a name="migrate-to-a-new-version"></a>Migrieren zu einer neuen Version
 
@@ -72,14 +72,17 @@ Ein Administrator kann die Integrität von verbundenen Geräten und die Integrit
 
 Zum Anzeigen der Metriken kann ein Administrator Diagramme im Azure-Portal, in einer REST-API oder aber in PowerShell oder Azure CLI-Abfragen verwenden.
 
-Weitere Informationen finden Sie unter [Überwachen der Gesamtintegrität einer IoT Central-Anwendung](howto-monitor-application-health.md).
+Weitere Informationen finden Sie unter [Überwachen der Anwendungsintegrität](howto-manage-iot-central-from-portal.md#monitor-application-health).
+
+## <a name="monitor-connected-iot-edge-devices"></a>Überwachen von verbundenen IoT Edge-Geräten
+
+Wenn Sie erfahren möchten, wie Sie Ihre IoT Edge-Flotte mithilfe von Azure Monitor und integrierten Metriken überwachen können, lesen Sie [Sammeln und Transportieren von Metriken](../../iot-edge/how-to-collect-and-transport-metrics.md).
 
 ## <a name="tools"></a>Tools
 
 Viele der Tools, die Sie als Administrator verwenden, stehen in jeder IoT Central Anwendung im Abschnitt **Verwaltung** zur Verfügung. Sie können auch die folgenden Tools zur Ausführung von einigen administrativen Aufgaben verwenden:
 
-- [Azure-Befehlszeilenschnittstelle](howto-manage-iot-central-from-cli.md)
-- [Azure PowerShell](howto-manage-iot-central-from-powershell.md)
+- [Azure-Befehlszeile](howto-manage-iot-central-from-cli.md)
 - [Azure portal](howto-manage-iot-central-from-portal.md)
 
 ## <a name="next-steps"></a>Nächste Schritte

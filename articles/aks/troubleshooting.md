@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie allgemeine Probleme bei der Verwendung von Az
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 257f3473da4284080d7977021cb97c6dbce0fbde
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 6b115971104699775e9a58a7b25addefe4d12d1d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110535165"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346201"
 ---
 # <a name="aks-troubleshooting"></a>AKS-Problembehandlung
 
@@ -62,7 +62,7 @@ Es kann verschiedene Gründe dafür geben, dass der Pod in diesem Modus hängen 
 * Den Pod selbst mithilfe von `kubectl describe pod <pod-name>`
 * Die Protokolle mit `kubectl logs <pod-name>`
 
-Weitere Informationen zur Behandlung von Podproblemen finden Sie unter [Debuggen von Anwendungen](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods).
+Weitere Informationen zur Behandlung von Podproblemen finden Sie unter [Debuggen von Pods](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods) in der Kubernetes-Dokumentation.
 
 ## <a name="im-receiving-tcp-timeouts-when-using-kubectl-or-other-third-party-tools-connecting-to-the-api-server"></a>`TCP timeouts` wird ausgegeben, wenn ich über `kubectl` oder andere Drittanbietertools eine Verbindung mit dem API-Server herstelle.
 AKS verfügt über Steuerungsebenen mit Hochverfügbarkeit, die vertikal nach der Anzahl der Kerne skaliert werden, um die Servicelevelziele (Service Level Objectives, SLOs) und Vereinbarungen zum Servicelevel (Service Level Agreements, SLAs) sicherstellen zu können. Wenn beim Herstellen der Verbindung ein Timeout auftritt, überprüfen Sie Folgendes:
@@ -89,7 +89,7 @@ Eine Aktivierung der rollenbasierten Zugriffssteuerung in Kubernetes (Kubernetes
 
 Stellen Sie sicher, dass die Ports 22, 9000 und 1194 für die Verbindung mit dem API-Server offen sind. Überprüfen Sie mit dem `kubectl get pods --namespace kube-system`-Befehl, ob der `tunnelfront`- oder `aks-link`-Pod im *kube-system*-Namespace ausgeführt wird. Falls nicht, erzwingen Sie das Löschen des Pods. Er wird anschließend neu gestartet.
 
-## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>Beim Herstellen einer Verbindung mit der AKS-API erhalte ich von meinem Client die Meldung `"tls: client offered only unsupported versions"`.   Wie sollte ich vorgehen?
+## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>Beim Herstellen einer Verbindung mit der AKS-API erhalte ich von meinem Client die Meldung `"tls: client offered only unsupported versions"`. Wie sollte ich vorgehen?
 
 Die unterstützte TLS-Mindestversion in AKS ist TLS 1.2.
 
@@ -456,5 +456,5 @@ AKS untersucht derzeit, ob aktive Bezeichnungen in einem Knotenpool mutiert werd
 
 
 <!-- LINKS - internal -->
-[view-master-logs]: ./view-control-plane-logs.md
+[view-master-logs]: monitor-aks-reference.md#resource-logs
 [cluster-autoscaler]: cluster-autoscaler.md

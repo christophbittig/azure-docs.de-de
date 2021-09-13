@@ -6,12 +6,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 04/12/2021
 ms.custom: devx-track-terraform, devx-track-azurepowershell
-ms.openlocfilehash: b1f40ff5175de88e101bfe8f22f9593502e7d6d0
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 9536002cb5c3e30f32479b74e761d7128090af26
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112005877"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339222"
 ---
 # <a name="azure-customer-usage-attribution"></a>Zuordnung der Azure-Nutzung durch Kunden
 
@@ -33,6 +33,11 @@ Außerhalb des kommerziellen Marketplace gibt es sekundäre Anwendungsfälle fü
 ## <a name="commercial-marketplace-azure-apps"></a>Azure-Apps aus dem kommerziellen Marketplace
 
 Die Nachverfolgung der Azure-Nutzung von Azure-Apps, die im kommerziellen Marketplace veröffentlicht wurden, erfolgt größtenteils automatisch. Wenn Sie eine Resource Manager-Vorlage im Rahmen der [technischen Konfiguration des Marketplace-Plans Ihrer Azure-App](./azure-app-solution.md#define-the-technical-configuration) hochladen, fügt Partner Center eine Nachverfolgungs-ID hinzu, die von Azure Resource Manager gelesen werden kann.
+
+>[!NOTE]
+>So stellen Sie sicher, dass die Nutzung Ihrer Anwendung in unseren Systemen ordnungsgemäß attributiert wird:
+>1. Wenn Sie die Nachverfolgungs-ID im Ressourcentyp „Microsoft.Resources/deployment“ mit einer Variablen definieren, ersetzen Sie die Variable durch die Nachverfolgungs-ID, die im Partner Center auf der Seite **Technische Konfiguration** des Plans angezeigt wird (Informationen hierzu finden Sie weiter unten unter [Hinzufügen einer GUID zu einer Resource Manager-Vorlage](#add-a-guid-to-a-resource-manager-template)).
+>2. Wenn für die Resource Manager-Vorlage Ressourcen vom Typ „Microsoft.Resources/deployments“ für andere Zwecke als für die Zuordnung der Nutzung durch Kunden verwendet werden, kann von Microsoft keine Nachverfolgungs-ID für die Zuordnung der Nutzung durch Kunden in Ihrem Namen hinzugefügt werden. Fügen Sie eine neue Ressource vom Typ „Microsoft.Resources/deployments“ und die Nachverfolgungs-ID hinzu, die im Partner Center auf der Seite **Technische Konfiguration** des Plans angezeigt wird (Informationen hierzu finden Sie weiter unten unter [Hinzufügen einer GUID zu einer Resource Manager-Vorlage](#add-a-guid-to-a-resource-manager-template)).
 
 Wenn Sie Azure Resource Manager-APIs verwenden, müssen Sie Ihre Nachverfolgungs-ID gemäß der [Anweisungen unten](#use-resource-manager-apis) hinzufügen, um sie an Azure Resource Manager zu übergeben, während der Code Ihre Ressourcen bereitstellt. Diese ID wird in Partner Center auf der Seite „Technische Konfiguration“ Ihres Plans angezeigt. 
 

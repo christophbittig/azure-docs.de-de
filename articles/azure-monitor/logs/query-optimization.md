@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 7b5412b2ca738f5d2099521062e37afcff90e938
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6612d365250a48d9532c0ef331d011c719b95666
+ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102047331"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112321646"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Optimieren von Protokollabfragen in Azure Monitor
 Azure Monitor-Protokolle verwendet [Azure Data Explorer (ADX)](/azure/data-explorer/), um Protokolldaten zu speichern und Abfragen zum Analysieren dieser Daten auszuführen. Es werden die ADX-Cluster für Sie erstellt, verwaltet und gepflegt sowie für Ihre Protokollanalyse-Workload optimiert. Wenn Sie eine Abfrage ausführen, wird diese optimiert und an den entsprechenden ADX-Cluster weitergeleitet, der die Arbeitsbereichsdaten speichert. Sowohl Azure Monitor-Protokolle als auch Azure Data Explorer nutzen eine Vielzahl automatischer Mechanismen zur Abfrageoptimierung. Automatische Optimierungen bieten bereits eine deutliche Steigerung, aber in einigen Fällen können Sie die Abfrageleistung erheblich verbessern. In diesem Artikel werden Leistungsaspekte sowie verschiedene Verfahren zur Behebung von Leistungsproblemen erläutert.
@@ -23,6 +23,10 @@ Optimierte Abfragen bieten folgende Vorteile:
 - Die Wahrscheinlichkeit einer Drosselung oder Ablehnung ist geringer.
 
 Beachten Sie insbesondere Abfragen, die für die wiederholte Verwendung und die Nutzung mit Spitzen eingesetzt werden, wie z. B. Dashboards, Warnungen, Logic Apps und Power BI. Die Auswirkung einer ineffektiven Abfrage ist in diesen Fällen beträchtlich.
+
+Dies ist ein ausführliches Video mit einer exemplarischen Vorgehensweise zum Optimieren von Abfragen.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4NUH0]
 
 ## <a name="query-performance-pane"></a>Abfrageleistungsbereich
 Nachdem Sie eine Abfrage in Log Analytics ausgeführt haben, klicken Sie über den Abfrageergebnissen auf den Pfeil nach unten, um den Abfrageleistungsbereich anzuzeigen, in dem die Ergebnisse mehrerer Leistungsindikatoren für die Abfrage angezeigt werden. Diese Leistungsindikatoren werden im folgenden Abschnitt beschrieben.

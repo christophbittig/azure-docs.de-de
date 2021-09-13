@@ -4,20 +4,20 @@ description: Es wird beschrieben, wie Sie auf Ihre Azure Data Lake Storage Gen1-
 author: jejiang
 ms.service: data-lake-store
 ms.topic: how-to
-ms.date: 02/05/2018
+ms.date: 06/04/2021
 ms.author: jejiang
-ms.openlocfilehash: 7f251e6ba2d94c0fcede3387ac12461951de40f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ef06e1b13141e3b5c342842a63e8e520e3e03e9
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92108744"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111589865"
 ---
-# <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>Verwalten von Azure Data Lake Storage Gen1-Ressourcen mit Storage-Explorer
+# <a name="manage-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>Verwalten von Data Lake Storage Gen1-Ressourcen mit Storage-Explorer
 
 [Azure Data Lake Storage Gen1](./data-lake-store-overview.md) ist ein Dienst zum Speichern großer Mengen von unstrukturierten Daten, z.B. als Text- oder Binärdaten. Sie können per HTTP oder HTTPS von jedem Ort aus auf die Daten zugreifen. Mit Data Lake Storage Gen1 in Azure Storage-Explorer können Sie auf Data Lake Storage Gen1-Daten und -Ressourcen sowie andere Azure-Entitäten wie Blobs und Warteschlangen zugreifen und diese verwalten. Nun können Sie mit demselben Tool Ihre verschiedenen Azure-Entitäten an einem Ort verwalten.
 
-Ein weiterer Vorteil besteht darin, dass Sie keine Abonnementberechtigung zum Verwalten von Data Lake Storage Gen1-Daten benötigen. In Storage-Explorer können Sie den Data Lake Storage Gen1-Pfad an den Knoten **Local and Attached** (Lokal und angefügt) anfügen, sofern Ihnen die Berechtigung gewährt wird.
+Ein weiterer Vorteil besteht darin, dass Sie keine Abonnementberechtigung zum Verwalten von Data Lake Storage Gen1-Daten benötigen. In Storage-Explorer können Sie den Data Lake Storage Gen1-Pfad an den Knoten **Lokal & angefügt** anfügen, sofern Ihnen die Berechtigung erteilt wurde.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -32,58 +32,47 @@ Installieren Sie die neuesten Azure Storage-Explorer-Komponenten von der [Produk
 
 ## <a name="connect-to-an-azure-subscription"></a>Herstellen einer Verbindung mit einem Azure-Abonnement
 
-1. Wähen Sie in Storage-Explorer links das Plug-In-Symbol.
+1. Wählen Sie in Storage-Explorer links das Plug-In-Symbol aus.
 
-   ![Plug-In-Symbol](./media/data-lake-store-in-storage-explorer/plug-in-icon.png)
+   ![Screenshot: Position des Plug-In-Symbols auf der Benutzeroberfläche](./media/data-lake-store-in-storage-explorer/plug-in-icon.png)
 
-1. Wählen Sie **Azure-Konto hinzufügen** und dann **Anmelden**.
+   Das Dialogfeld **Verbindung mit Azure Storage herstellen** wird dadurch geöffnet.
+1. Wählen Sie auf der Seite **Ressource auswählen** die Option **Abonnement** aus.
+1. Wählen Sie auf der Seite **Azure-Umgebung auswählen** die Azure-Umgebung aus, bei der Sie sich anmelden möchten, und wählen Sie dann **Weiter** aus.
+1. Geben Sie im Dialogfeld **Anmelden** Ihre Azure-Anmeldeinformationen ein, und wählen Sie dann **Weiter** aus.
 
-   ![Dialogfeld „Verbindung mit Azure-Speicher herstellen“](./media/data-lake-store-in-storage-explorer/connect-to-azure-subscription.png)
+1. Wählen Sie im Storage-Explorer im Bereich **KONTOVERWALTUNG** das Abonnement aus, das das zu verwaltende Data Lake Storage Gen1-Konto enthält, und wählen Sie dann **Explorer öffnen** aus.
+1. Erweitern Sie im Bereich **EXPLORER** Ihr Abonnement. Der Bereich wird aktualisiert und zeigt die Konten im ausgewählten Abonnement an. Dies schließt alle Data Lake Storage Gen1-Konten ein, z. B.:
 
-1. Geben Sie im Dialogfeld **Bei Ihrem Konto anmelden** Ihre Azure-Anmeldeinformationen ein.
-
-    ![Dialogfeld für Azure-Anmeldung](./media/data-lake-store-in-storage-explorer/sign-in.png)
-
-1. Wählen Sie Ihr Abonnement in der Liste aus, und wählen Sie anschließend **Übernehmen**.
-
-    ![Abonnementinformationen und Schaltfläche „Übernehmen“](./media/data-lake-store-in-storage-explorer/apply-subscription.png)
-
-    Der Bereich **EXPLORER** wird aktualisiert, und die Konten im ausgewählten Abonnement werden angezeigt.
-
-    ![Kontoliste](./media/data-lake-store-in-storage-explorer/account-list.png)
-
-Sie haben die Data Lake Storage Gen1-Instanz nun mit Ihrem Azure-Abonnement verbunden.
+     ![Screenshot: Beispielkonto im Data Lake Storage Gen1-Knoten](./media/data-lake-store-in-storage-explorer/account-list.png)
 
 ## <a name="connect-to-data-lake-storage-gen1"></a>Herstellen der Verbindung mit Data Lake Storage Gen1
 
 Sie können auf Ressourcen zugreifen, die in Ihrem Abonnement nicht vorhanden sind, wenn Sie den URI für die Ressourcen erhalten. Anschließend können Sie eine Verbindung mit Data Lake Storage Gen1 herstellen, indem Sie nach der Anmeldung den URI verwenden.
 
 1. Öffnen Sie den Storage-Explorer.
-2. Erweitern Sie im linken Bereich die Option **Local and Attached** (Lokal und angefügt).
-3. Klicken Sie mit der rechten Maustaste auf **Data Lake Store**, und wählen Sie die Option **Connect to Data Lake Store** (Verbindung mit Data Lake Store herstellen).
+1. Erweitern Sie **Lokal & angefügt**.
+1. Klicken Sie mit der rechten Maustaste auf **Data Lake Storage Gen1 (Vorschau)** , und wählen Sie **Connect to Data Lake Storage Gen1** (Mit Data Lake Storage Gen1 verbinden) aus.
+1. Geben Sie den URI ein, z. B.:
 
-      ![Option „Connect to Data Lake Store“ (Verbindung mit Data Lake Store herstellen) im Kontextmenü](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-uri-attach.png)
+      ![Screenshot: Dialogfeld „Connect to Data Lake Storage“ (Verbindung mit Data Lake Storage herstellen) mit dem Textfeld für die URI-Eingabe](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-uri-attach-dialog.png)
 
-4. Geben Sie den URI ein. Das Tool greift auf den URL-Speicherort zu, den Sie gerade eingegeben haben.
+   Das Tool greift auf den URL-Speicherort zu, den Sie gerade eingegeben haben.
 
-      ![Dialogfeld „Connect to Data Lake Store“ (Verbindung mit Data Lake Store herstellen) mit dem Textfeld für die URI-Eingabe](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-uri-attach-dialog.png)
+      ![Data Lake Storage Gen1-Konto unter dem Knoten „Data Lake Storage Gen1 (Vorschau)“ auf der Benutzeroberfläche](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-attach-finish.png)
 
-      ![Ergebnis der Verbindungsherstellung mit Data Lake Storage Gen1](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-attach-finish.png)
+## <a name="view-the-contents-of-a-data-lake-storage-gen1-account"></a>Anzeigen der Inhalte eines Data Lake Storage Gen1-Kontos
 
-## <a name="view-a-data-lake-storage-gen1-accounts-contents"></a>Anzeigen des Inhalts eines Data Lake Storage Gen1-Kontos
-
-Zu den Ressourcen eines Data Lake Storage Gen1-Kontos gehören Ordner und Dateien.
-
-Die folgenden Schritte veranschaulichen, wie Sie den Inhalt eines Data Lake Storage Gen1-Kontos in Storage-Explorer anzeigen:
+Zu den Ressourcen eines Data Lake Storage Gen1-Kontos gehören Ordner und Dateien. Die folgenden Schritte veranschaulichen, wie Sie den Inhalt eines Data Lake Storage Gen1-Kontos in Storage-Explorer anzeigen.
 
 1. Öffnen Sie den Storage-Explorer.
-2. Erweitern Sie im linken Bereich das Abonnement mit dem Data Lake Storage Gen1-Konto, das Sie anzeigen möchten.
-3. Erweitern Sie **Data Lake Store**.
-4. Klicken Sie mit der rechten Maustaste auf den Data Lake Storage Gen1-Kontoknoten, den Sie anzeigen möchten, und wählen Sie **Öffnen**. Sie können auch auf das Data Lake Storage Gen1-Konto doppelklicken, um es zu öffnen.
+1. Erweitern Sie das Abonnement mit dem Data Lake Storage Gen1-Konto, das Sie anzeigen möchten.
+1. Erweitern Sie **Data Lake Storage Gen1 (Vorschau)** .
+1. Wählen Sie das Data Lake Storage Gen1-Konto aus, das Sie anzeigen möchten.
 
-   Im Hauptfenster wird der Inhalt des Data Lake Storage Gen1-Kontos angezeigt.
+   Im Hauptbereich werden die Inhalte des Data Lake Storage Gen1-Kontos angezeigt.
 
-   ![Hauptfenster mit einer Ordnerliste](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-toolbar-mainpane.png)
+   ![Hauptbereich mit ausgewähltem Data Lake Storage Gen1-Konto und Liste der Ordner im Konto](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-toolbar-mainpane.png)
 
 ## <a name="manage-resources-in-data-lake-storage-gen1"></a>Verwalten von Ressourcen in Data Lake Storage Gen1
 
@@ -91,11 +80,11 @@ Sie können Data Lake Storage Gen1-Ressourcen verwalten, indem Sie die folgenden
 
 * Durchsuchen Sie die Data Lake Storage Gen1-Ressourcen mehrerer Data Lake Storage Gen1-Konten.  
 * Verwenden Sie eine Verbindungszeichenfolge, um eine direkte Verbindung mit Data Lake Storage Gen1 herzustellen und die Daten zu verwalten.
-* Zeigen Sie Data Lake Storage Gen1-Ressourcen, die von anderen Benutzern per ACL freigegeben wurden, unter **Local and Attached** (Lokal und angefügt) an.
+* Zeigen Sie Data Lake Storage Gen1-Ressourcen, die von anderen Benutzern per ACL freigegeben wurden, unter **Lokal & angefügt** an.
 * Führen Sie CRUD-Vorgänge für Dateien und Ordner durch: Unterstützung von rekursiven Ordnern und Mehrfachauswahl von Dateien.
 * Sie können Ordner per Drag & Drop verschieben und hinzufügen, um schnell auf die letzten Speicherorte zuzugreifen. Dieser Vorgang ähnelt der Verwendung des Datei-Explorers auf dem Desktop.
 * Kopieren und öffnen Sie einen Data Lake Storage Gen1-Hyperlink in Storage-Explorer mit nur einem Klick.
-* Zeigen Sie das Aktivitätsprotokoll im unteren rechten Bereich an, um den Aktivitätsstatus einzublenden.
+* Öffnen Sie das **Aktivitätsprotokoll** im unteren Bereich, um den Aktivitätsstatus anzuzeigen.
 * Zeigen Sie die Ordnerstatistiken und Dateieigenschaften an.
 
 ## <a name="manage-resources-in-azure-storage-explorer"></a>Verwalten von Ressourcen in Azure Storage-Explorer
@@ -106,96 +95,75 @@ Wenn Sie ein Data Lake Storage Gen1-Konto erstellt haben, haben Sie folgende Mö
 * Führen Sie das Anheften an den **Schnellzugriff** durch, erstellen Sie einen neuen Ordner, kopieren Sie eine URL, und wählen Sie alles aus.
 * Sie können kopieren und einfügen, umbenennen, löschen, Ordnerstatistiken abrufen und aktualisieren.
 
-Im Folgenden wird veranschaulicht, wie Sie Ressourcen in einem Data Lake Storage Gen1-Konto verwalten. Führen Sie die Schritte für die Aufgabe aus, die Sie durchführen möchten.
+Im Folgenden wird veranschaulicht, wie Sie Ressourcen in einem Data Lake Storage Gen1-Konto verwalten. Führen Sie die Schritte für den gewünschten Task durch.
 
 ### <a name="upload-files"></a>Hochladen von Dateien
 
-1. Wählen Sie in der Symbolleiste des Hauptbereichs die Option **Hochladen** und im Dropdownmenü dann die Option **Dateien hochladen**.
+1. Wählen Sie in der Symbolleiste des Hauptbereichs die Option **Hochladen** und dann **Dateien hochladen** aus.
+1. Wählen Sie im Dialogfeld **Select files to upload** (Dateien zum Hochladen auswählen) die Dateien aus, die Sie hochladen möchten.
+1. Wählen Sie **Öffnen**, um den Upload zu starten.
 
-   ![Menüelement „Dateien hochladen“](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-upload-files-menu.png)
-
-2. Wählen Sie im Dialogfeld **Select files to upload** (Dateien zum Hochladen auswählen) die Dateien aus, die Sie hochladen möchten.
-
-   ![Dialogfeld zum Hochladen von Dateien](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-upload-files-dialog.png)
-
-3. Wählen Sie **Öffnen**, um den Upload zu starten.
+> [!NOTE]
+> Sie können Dateien von einem lokalen Computer auch direkt dorthin ziehen, um den Uploadvorgang zu starten.
 
 ### <a name="upload-a-folder"></a>Hochladen eines Ordners
 
-1. Wählen Sie in der Symbolleiste des Hauptbereichs die Option **Hochladen** und dann im Dropdownmenü die Option **Upload Folder** (Ordner hochladen).
-
-   ![Menüelement „Upload folder“ (Ordner hochladen)](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-upload-folder-menu.png)
-
-2. Wählen Sie im Dialogfeld **Select folder to upload** (Ordner für Upload auswählen) einen Ordner aus, den Sie hochladen möchten. Klicken Sie anschließend auf **Ordner auswählen**.
-
-   ![Dialogfeld zum Hochladen von Ordnern](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-upload-folder-dialog.png)
-
-   Der Upload wird gestartet.
-
-   ![Dialogfeld mit aktivem Uploadvorgang](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-upload-folder-drag.png)
+1. Wählen Sie in der Symbolleiste des Hauptbereichs die Option **Hochladen** und dann **Ordner hochladen** aus.
+1. Wählen Sie im Dialogfeld **Ordner zum Hochladen auswählen** einen Ordner aus, den Sie hochladen möchten.
+1. Wählen Sie die Option **Ordner auswählen** aus, um den Upload zu starten.
 
 > [!NOTE]
-> Sie können die Ordner und Dateien direkt auf einen lokalen Computer ziehen, um den Uploadvorgang zu starten.
+> Sie können Ordner von einem lokalen Computer auch direkt dorthin ziehen, um den Uploadvorgang zu starten.
 
 ### <a name="download-folders-or-files-to-your-local-computer"></a>Herunterladen von Ordnern oder Dateien auf Ihren lokalen Computer
 
 1. Wählen Sie die Ordner oder Dateien aus, die Sie herunterladen möchten.
-2. Wählen Sie in der Symbolleiste des Hauptbereichs die Option **Herunterladen**.
-3. Geben Sie im Dialogfeld **Select a folder to save the downloaded files into** (Ordner zum Speichern heruntergeladener Dateien auswählen) den Speicherort und den Namen an.
-4. Wählen Sie **Speichern** aus.
+1. Wählen Sie in der Symbolleiste des Hauptbereichs die Option **Herunterladen**.
+1. Geben Sie im Dialogfeld **Select a folder to save the downloaded files into** (Ordner zum Speichern heruntergeladener Dateien auswählen) den Speicherort und den Namen an.
+1. Wählen Sie **Speichern** aus.
 
 ### <a name="open-a-folder-or-file-from-your-local-computer"></a>Öffnen eines Ordners oder einer Datei von Ihrem lokalen Computer
 
 1. Wählen Sie den Ordner oder die Datei aus, der bzw. die geöffnet werden soll.
-2. Wählen Sie in der Symbolleiste des Hauptbereichs die Option **Öffnen**. Oder klicken Sie mit der rechten Maustaste auf den ausgewählten Ordner bzw. die Datei, und wählen Sie im Kontextmenü dann die Option **Öffnen**.
+1. Wählen Sie in der Symbolleiste des Hauptbereichs die Option **Öffnen**. Klicken Sie alternativ mit der rechten Maustaste auf den ausgewählten Ordner bzw. die Datei, und wählen Sie im Kontextmenü dann die Option **Öffnen** aus.
 
-Die Datei wird heruntergeladen und mit der Anwendung geöffnet, die dem zugrunde liegenden Dateityp zugeordnet ist. Ein Ordner wird im Hauptbereich geöffnet.
-
-![Geöffnete Datei](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-open.png)
+Die Datei wird heruntergeladen und mit der Anwendung geöffnet, die dem zugrunde liegenden Dateityp zugeordnet ist. Alternativ wird ein Ordner im Hauptbereich geöffnet.
 
 ### <a name="copy-folders-or-files-to-the-clipboard"></a>Kopieren von Ordnern oder Dateien in die Zwischenablage
 
-1. Wählen Sie die Ordner oder Dateien aus, die Sie kopieren möchten.
-2. Wählen Sie in der Symbolleiste des Hauptbereichs die Option **Kopieren**. Oder klicken Sie mit der rechten Maustaste auf die ausgewählten Ordner oder Dateien, und wählen Sie im Kontextmenü dann die Option **Kopieren**.
-3. Navigieren Sie im linken Bereich zu einem anderen Data Lake Storage Gen1-Konto, und doppelklicken Sie darauf, um es im Hauptbereich anzuzeigen.
-4. Wählen Sie in der Symbolleiste des Hauptbereichs die Option **Einfügen**, um eine Kopie zu erstellen. Oder wählen Sie im Kontextmenü des Ziels die Option **Einfügen**.
+Sie können Data Lake Storage Gen1-Ordner oder -Dateien kopieren und in ein anderes Data Lake Storage Gen1-Konto einfügen. Kopier- und Einfügevorgänge für mehrere Speichertypen werden nicht unterstützt. Es ist beispielsweise nicht möglich, Data Lake Storage Gen1-Ordner oder -Dateien zu kopieren und in Azure Blob Storage einzufügen (oder umgekehrt).
 
-![Auswahl zum Kopieren eines Ordners](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-copy-paste.png)
+1. Wählen Sie die Ordner oder Dateien aus, die Sie kopieren möchten.
+1. Wählen Sie in der Symbolleiste des Hauptbereichs die Option **Kopieren**. Klicken Sie alternativ mit der rechten Maustaste auf die ausgewählten Ordner oder Dateien, und wählen Sie im Kontextmenü dann die Option **Kopieren** aus.
+1. Navigieren Sie im linken Navigationsbereich zu einem anderen Data Lake Storage Gen1-Konto, und wählen Sie es aus, um es im Hauptbereich anzuzeigen.
+1. Wählen Sie in der Symbolleiste des Hauptbereichs die Option **Einfügen**, um eine Kopie zu erstellen. Wählen Sie alternativ im Kontextmenü des Ziels die Option **Einfügen** aus.
 
 > [!NOTE]
-> Kopier- bzw. Einfügevorgänge über mehrere Speichertypen hinweg werden nicht unterstützt. Sie können Data Lake Storage Gen1-Ordner oder -Dateien kopieren und in ein anderes Data Lake Storage Gen1-Konto einfügen. Es ist aber *nicht* möglich, Data Lake Storage Gen1-Ordner oder -Dateien zu kopieren und in Azure-Blobspeicher einzufügen (oder umgekehrt).
->
-> Der Kopier- bzw. Einfügevorgang funktioniert, indem die Ordner oder Dateien auf den lokalen Computer heruntergeladen und dann auf das Ziel hochgeladen werden. Mit dem Tool wird die Aktion *nicht* auf dem Back-End durchgeführt. Der Kopier- bzw. Einfügevorgang für große Dateien ist langsam. Das Kopieren und Verschieben von Dateien mit hoher Leistung wird derzeit optimiert.
+> Der Kopier- bzw. Einfügevorgang funktioniert, indem die Ordner oder Dateien auf den lokalen Computer heruntergeladen und dann auf das Ziel hochgeladen werden. Mit dem Tool wird die Aktion nicht auf dem Back-End durchgeführt. Der Kopier- bzw. Einfügevorgang für große Dateien ist langsam.
 
 ### <a name="delete-folders-or-files"></a>Löschen von Ordnern oder Dateien
 
 1. Wählen Sie die Ordner oder Dateien aus, die Sie löschen möchten.
-2. Wählen Sie in der Symbolleiste des Hauptbereichs die Option **Löschen**. Oder klicken Sie mit der rechten Maustaste auf die ausgewählten Ordner oder Dateien, und wählen Sie im Kontextmenü dann die Option **Löschen**.
-3. Wählen Sie im Bestätigungsdialogfeld die Option **Ja**.
-
-![Auswahl für das Löschen eines Ordners](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-delete.png)
+1. Wählen Sie in der Symbolleiste des Hauptbereichs die Option **Löschen**. Klicken Sie alternativ mit der rechten Maustaste auf die ausgewählten Ordner oder Dateien, und wählen Sie im Kontextmenü dann die Option **Löschen** aus.
+1. Wählen Sie im Bestätigungsdialogfeld die Option **Ja**.
 
 ### <a name="pin-to-quick-access"></a>Anheften an Schnellzugriff
 
-1. Wählen Sie den Ordner aus, den Sie anheften möchten.
-2. Wählen Sie in der Symbolleiste im Hauptbereich die Option **An Schnellzugriff anheften**.
+1. Wählen Sie den Ordner aus, den Sie anheften möchten, damit Sie problemlos auf die Ressourcen zugreifen können.
+1. Wählen Sie in der Symbolleiste im Hauptbereich die Option **An Schnellzugriff anheften**.
 
-   Im linken Bereich wird der ausgewählte Ordner dem Knoten **Schnellzugriff** hinzugefügt.
+   Im linken Navigationsbereich wird der ausgewählte Ordner dem Knoten **Schnellzugriff** hinzugefügt.
 
-   ![Auswahl für das Anheften eines Ordners an „Schnellzugriff“](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-quick-access.png)
-
-Nachdem Sie einen Ordner an den Knoten **Schnellzugriff** angeheftet haben, können Sie leicht auf Ressourcen zugreifen.
+   ![Ordnerliste unter dem Knoten „Schnellzugriff“ auf der Benutzeroberfläche](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-quick-access.png)
 
 ### <a name="use-deep-links"></a>Verwenden von Deep-Links
 
-Wenn Sie über eine URL verfügen, können Sie sie im Datei-Explorer oder Browser in den Adresspfad eingeben. „Storage Explorer.exe“ wird automatisch ausgeführt, um auf den URL-Speicherort zuzugreifen.
+Wenn Sie über eine URL verfügen, können Sie sie im Datei-Explorer oder Browser in den Adresspfad eingeben. Der Storage-Explorer wird dann automatisch geöffnet und navigiert zur URL.
 
-![Deep-Link im Datei-Explorer](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-deep-link.png)
+![URL eines Ordners in einem Data Lake Storage Gen1-Konto, die in das Fenster „Datei-Explorer“ kopiert wurde](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-deep-link.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Sehen Sie sich die [neuesten Versionsanmerkungen und Videos zum Storage-Explorer](https://www.storageexplorer.com) an.
-* Erfahren Sie, wie Sie [Azure Cosmos DB in Azure Storage-Explorer verwalten](../cosmos-db/storage-explorer.md).
-* [Erste Schritte mit dem Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).
+* [Erste Schritte mit dem Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [Erste Schritte mit Azure Data Lake Storage Gen1](./data-lake-store-overview.md)
-* Sehen Sie sich ein [YouTube-Video zur Verwendung von Azure Cosmos DB in Azure Storage-Explorer](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be) an.

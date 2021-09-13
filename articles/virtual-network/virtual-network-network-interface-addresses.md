@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: allensu
-ms.openlocfilehash: 1df132e558421d2ec6e26c3883c89457716dfc42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c22465ab66e1425139a8440a2b4ca9e0e5e539a
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419013"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397355"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Hinzufügen, Ändern oder Entfernen von IP-Adressen für Azure-Netzwerkschnittstellen
 
@@ -136,16 +136,14 @@ Die privaten [IPv4](#ipv4)- oder IPv6-Adressen ermöglichen einem virtuellen Com
 
 Standardmäßig weisen die Azure-DHCP-Server der Netzwerkschnittstelle die private IPv4-Adresse für die [primäre IP-Konfiguration](#primary) der Azure-Netzwerkschnittstelle innerhalb des Betriebssystems des virtuellen Computers zu. Sofern dies nicht unbedingt erforderlich ist, sollten Sie die IP-Adresse einer Netzwerkschnittstelle nie manuell im Betriebssystem des virtuellen Computers festlegen.
 
-> [!WARNING]
-> Wenn sich die als primäre IP-Adresse einer Netzwerkschnittstelle im Betriebssystem des virtuellen Computers festgelegte IPv4-Adresse je von der privaten IPv4-Adresse unterscheiden sollte, die der primären IP-Konfiguration der primären Netzwerkschnittstelle eines virtuellen Computers in Azure zugewiesen ist, verlieren Sie die Konnektivität mit dem virtuellen Computer.
+Es gibt Situationen, in denen die IP-Adresse einer Netzwerkschnittstelle im Betriebssystem des virtuellen Computers manuell festgelegt werden muss. Dies gilt beispielsweise für das manuelle Festlegen der primären und sekundären IP-Adressen eines Windows-Betriebssystems beim Hinzufügen mehrerer IP-Adressen zu einem virtuellen Azure-Computer. Bei einem virtuellen Linux-Computer müssen Sie nur die sekundären IP-Adressen manuell festlegen. Weitere Informationen finden Sie unter [Hinzufügen von IP-Adressen zu einem VM-Betriebssystem](virtual-network-multiple-ip-addresses-portal.md#os-config). Wenn Sie die einer IP-Konfiguration zugewiesene Adresse einmal ändern müssen, beachten Sie folgende Empfehlungen:
 
-Es gibt Situationen, in denen die IP-Adresse einer Netzwerkschnittstelle im Betriebssystem des virtuellen Computers manuell festgelegt werden muss. Dies gilt beispielsweise für das manuelle Festlegen der primären und sekundären IP-Adressen eines Windows-Betriebssystems beim Hinzufügen mehrerer IP-Adressen zu einem virtuellen Azure-Computer. Bei einem virtuellen Linux-Computer müssen Sie möglicherweise nur die sekundären IP-Adressen manuell festlegen. Weitere Informationen finden Sie unter [Hinzufügen von IP-Adressen zu einem VM-Betriebssystem](virtual-network-multiple-ip-addresses-portal.md#os-config). Wenn Sie die einer IP-Konfiguration zugewiesene Adresse einmal ändern müssen, beachten Sie folgende Empfehlungen:
-
-1. Vergewissern Sie sich, dass der virtuelle Computer eine Adresse von den Azure DHCP-Servern empfängt. Sobald dies erfolgt ist, ändern Sie die Zuweisung der IP-Adresse im Betriebssystem wieder zurück zu DHCP, und führen Sie einen Neustart des virtuellen Computers aus.
-2. Beenden Sie den virtuellen Computer (und heben die Zuordnung auf).
-3. Ändern Sie die IP-Adresse für die IP-Konfiguration in Azure.
-4. Starten Sie den virtuellen Computer.
-5. [Konfigurieren Sie manuell](virtual-network-multiple-ip-addresses-portal.md#os-config) die sekundären IP-Adressen innerhalb des Betriebssystems (und auch die primäre IP-Adresse in Windows), damit diese mit Ihren Einstellungen in Azure übereinstimmen.
+1. Vergewissern Sie sich, dass der virtuelle Computer eine primäre IP-Adresse von den Azure DHCP-Servern empfängt. Legen Sie diese Adresse nicht im Betriebssystem fest, wenn Sie eine Linux-VM betreiben.
+2. Löschen Sie die zu ändernde IP-Konfiguration.
+3. Erstellen Sie eine neue IP-Konfiguration mit der neuen Adresse, die Sie festlegen möchten.
+4. [Konfigurieren Sie manuell](virtual-network-multiple-ip-addresses-portal.md#os-config) die sekundären IP-Adressen innerhalb des Betriebssystems (und auch die primäre IP-Adresse in Windows), damit diese mit Ihren Einstellungen in Azure übereinstimmen. Legen Sie die primäre IP-Adresse in der Netzwerkkonfiguration des Betriebssystems unter Linux nicht manuell fest, da sonst beim erneuten Laden der Konfiguration möglicherweise keine Verbindung zum Internet hergestellt werden kann.
+5. Laden Sie die Netzwerkkonfiguration auf dem Gastbetriebssystem neu. Dies kann durch einen einfachen Neustart des Systems oder durch die Ausführung von 'nmcli con down "System eth0 && nmcli con up "System eth0"' in Linux-Systemen mit NetworkManager erfolgen.
+6. Überprüfen Sie, ob das Netzwerk wie gewünscht eingerichtet ist. Testen Sie die Konnektivität für alle IP-Adressen des Systems.
 
 Wenn Sie die angegebenen Schritte befolgen, bleibt die zugewiesene private IP-Adresse der Netzwerkschnittstelle in Azure und im Betriebssystem des virtuellen Computers unverändert. Zum Nachverfolgen der virtuelle Computer innerhalb Ihres Abonnements, für die Sie manuell IP-Adressen im Betriebssystem festgelegt haben, sollten Sie den virtuellen Computern ein Azure-[Tag](../azure-resource-manager/management/tag-resources.md) hinzufügen. Sie können beispielsweise „IP-Adresszuweisung: statisch“ verwenden. Auf diese Weise können Sie problemlos die virtuellen Computer in Ihrem Abonnement finden, für die Sie manuell die IP-Adresse innerhalb des Betriebssystems festgelegt haben.
 

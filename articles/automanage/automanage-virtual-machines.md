@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 00ee1b6e9772100cbc4abf9c79260a231bbd27af
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 73fb4adaf1c14256beef23cc9ce7ec53bd020937
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111755139"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345809"
 ---
 # <a name="preview-azure-automanage-for-virtual-machines"></a>Vorschau: Automatische Azure-Verwaltung (Azure Automanage) für virtuelle Computer
 
@@ -35,6 +35,9 @@ Die automatische Azure-Verwaltung überwacht auch automatisch den Datendrift und
 
 Bei der automatischen Verarbeitung werden Kundendaten nicht außerhalb des geografischen Standorts gespeichert bzw. verarbeitet, in dem sich Ihre virtuellen Computer befinden. In der Region Südostasien speichert bzw. verarbeitet die automatische Verarbeitung keine Daten außerhalb von Südostasien.
 
+> [!NOTE]
+> Die automatische Verwaltung kann auf virtuellen Azure-Computern und auf Arc-fähigen Servern aktiviert werden. Die automatische Verwaltung ist in der US Government Cloud derzeit nicht verfügbar.
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Es gibt mehrere Voraussetzungen zu beachten, bevor Sie versuchen, die automatische Azure-Verwaltung auf Ihren virtuellen Computern zu aktivieren.
@@ -43,6 +46,7 @@ Es gibt mehrere Voraussetzungen zu beachten, bevor Sie versuchen, die automatisc
 - VMs müssen sich in einer unterstützten Region befinden (siehe unten).
 - Benutzer muss über die richtigen Berechtigungen verfügen (siehe unten).
 - Automatische Verwaltung unterstützt zurzeit keine Sandboxabonnements.
+- Windows 10 wird von der automatischen Verwaltung derzeit nicht unterstützt.
 
 ### <a name="supported-regions"></a>Unterstützte Regionen
 Automanage unterstützt nur VMs in den folgenden Regionen:

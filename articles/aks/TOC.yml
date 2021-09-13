@@ -61,7 +61,7 @@
           href: ./security-controls-policy.md
     - name: Netzwerk
       href: concepts-network.md
-    - name: Storage
+    - name: Speicher
       href: concepts-storage.md
     - name: Skalieren
       href: concepts-scale.md
@@ -125,10 +125,10 @@
           href: /azure/developer/java/migration/migrate-jboss-eap-to-wildfly-on-azure-kubernetes-service
           maintainContext: false
         - name: Containerisieren und Migrieren von Java-Web-Apps
-          href: /azure/migrate/tutorial-app-containerization-java-kubernetes
+          href: ../migrate/tutorial-app-containerization-java-kubernetes.md
           maintainContext: false
         - name: Containerisieren und Migrieren von ASP.NET-Apps
-          href: /azure/migrate/tutorial-app-containerization-aspnet-kubernetes
+          href: ../migrate/tutorial-app-containerization-aspnet-kubernetes.md
           maintainContext: false
     - name: Unterstützte Kubernetes-Version
       href: supported-kubernetes-versions.md
@@ -414,7 +414,7 @@
           href: aks-resource-health.md
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/aks
     - name: REST
       href: /rest/api/aks

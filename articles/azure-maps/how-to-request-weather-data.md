@@ -7,14 +7,13 @@ ms.date: 04/26/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 77bc1b435e92861cdabce7b0ce0ac7e9b4212138
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: ed0985778f27f17292428dddadaf4d0dedc9cd46
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326703"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355458"
 ---
 # <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services"></a>Anfordern von Echtzeit- und prognostizierten Wetterdaten mit Azure Maps-Wetterinfodiensten
 
@@ -50,17 +49,15 @@ Mit der [Get Current Conditions-API](/rest/api/maps/weather/getcurrentconditions
 
 In diesem Beispiel verwenden Sie die [Get Current Conditions-API](/rest/api/maps/weather/getcurrentconditions), um die aktuellen Wetterbedingungen für einen Koordinatenstandort in Seattle (WA) abzurufen.
 
-1. Öffnen Sie die Postman-App. Wählen Sie oben in der Postman-App **New** (Neu) aus. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Collection** (Sammlung) aus.  Geben Sie einen Namen für die Sammlung ein, und klicken Sie dann auf **Create** (Erstellen). Sie verwenden diese Sammlung für alle weiteren Beispiele in diesem Dokument.
+1. Öffnen Sie die Postman-App. Wählen Sie **Neu** aus, um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **HTTP Request** (HTTP-Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein. 
 
-2. Klicken Sie erneut auf **New** (Neu), um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein. Wählen Sie die im vorherigen Schritt erstellte Sammlung und anschließend **Save** (Speichern) aus.
-
-3. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein. Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel.
+2. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein. Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel.
 
     ```http
     https://atlas.microsoft.com/weather/currentConditions/json?api-version=1.0&query=47.60357,-122.32945&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-4. Klicken Sie auf die Schaltfläche **Send** (Senden). Der Text der Antwort enthält die aktuellen Wetterinformationen.
+3. Klicken Sie auf die Schaltfläche **Send** (Senden). Der Text der Antwort enthält die aktuellen Wetterinformationen.
 
     ```json
     {
@@ -242,7 +239,7 @@ In diesem Beispiel verwenden Sie die [Get Severe Weather Alerts-API](/rest/api/m
 >[!NOTE]
 >Dieses Beispiel veranschaulicht das Abrufen von Unwetterwarnungen, die bei der Erstellung dieses Dokuments bestanden haben. Wahrscheinlich gelten für den angeforderten Standort mittlerweile keine Unwetterwarnungen mehr. Wenn Sie bei der Ausführung dieses Beispiels aktuelle Unwetterdaten abrufen möchten, müssen Sie die Daten eines anderen Koordinatenstandorts verwenden.
 
-1. Öffnen Sie die Postman-App, klicken Sie auf **New** „Neu“, und wählen Sie **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein. Wählen Sie die im vorherigen Abschnitt oder eine neu erstellte Sammlung aus, und klicken Sie dann auf **Save** (Speichern).
+1. Wählen Sie in der Postman-App **Neu** aus, um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **HTTP Request** (HTTP-Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein.
 
 2. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein. Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel.
 
@@ -294,7 +291,7 @@ Mit der [Get Daily Forecast-API](/rest/api/maps/weather/getdailyforecast) werden
 
 In diesem Beispiel verwenden Sie die [Get Daily Forecast-API](/rest/api/maps/weather/getdailyforecast), um die 5-Tage-Wettervorhersage für einen Koordinatenstandort in Seattle (WA) abzurufen.
 
-1. Öffnen Sie die Postman-App, klicken Sie auf **New** „Neu“, und wählen Sie **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein. Wählen Sie die im vorherigen Abschnitt oder eine neu erstellte Sammlung aus, und klicken Sie dann auf **Save** (Speichern).
+1. Wählen Sie in der Postman-App **Neu** aus, um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **HTTP Request** (HTTP-Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein.
 
 2. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein. Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel.
 
@@ -542,7 +539,7 @@ Mit der [Get Hourly Forecast-API](/rest/api/maps/weather/gethourlyforecast) wird
 
 In diesem Beispiel verwenden Sie die [Get Hourly Forecast-API](/rest/api/maps/weather/gethourlyforecast), um die stündliche Wettervorhersage für die nächsten zwölf Stunden für einen Koordinatenstandort in Seattle (WA) abzurufen.
 
-1. Öffnen Sie die Postman-App, klicken Sie auf **New** „Neu“, und wählen Sie **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein. Wählen Sie die im vorherigen Abschnitt oder eine neu erstellte Sammlung aus, und klicken Sie dann auf **Save** (Speichern).
+1. Wählen Sie in der Postman-App **Neu** aus, um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **HTTP Request** (HTTP-Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein.
 
 2. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein. Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel.
 
@@ -643,13 +640,14 @@ In diesem Beispiel verwenden Sie die [Get Hourly Forecast-API](/rest/api/maps/we
     ]
     }
     ```
+
 ## <a name="request-minute-by-minute-weather-forecast-data"></a>Anfordern von minütlichen Wettervorhersagedaten
 
  Mit der [Get Minute Forecast-API](/rest/api/maps/weather/getminuteforecast) werden die minütlichen Vorhersagen für einen bestimmten Standort für die nächsten 120 Minuten zurückgegeben. Benutzer können Wettervorhersagen in Intervallen von 1, 5 und 15 Minuten anfordern. Die Antwort enthält Details wie die Niederschlagsart (z. B. Regen, Schnee oder Schneeregen), die Startzeit und den Wert für die Niederschlagsintensität.
 
 In diesem Beispiel verwenden Sie die [Get Minute Forecast-API](/rest/api/maps/weather/getminuteforecast), um die minütliche Wettervorhersage für einen Koordinatenstandort in Seattle (WA) abzurufen. Die Wettervorhersagedaten werden für die nächsten 120 Minuten zurückgegeben. Mit unserer Abfrage fordern wir an, dass die Vorhersage in Intervallen von 15 Minuten erfolgen soll, aber Sie können den Parameter auch anpassen und auf 1 oder 5 Minuten festlegen.
 
-1. Öffnen Sie die Postman-App, klicken Sie auf **New** „Neu“, und wählen Sie **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein. Wählen Sie die im vorherigen Abschnitt oder eine neu erstellte Sammlung aus, und klicken Sie dann auf **Save** (Speichern).
+1. Wählen Sie in der Postman-App **Neu** aus, um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **HTTP Request** (HTTP-Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein.
 
 2. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein. Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel.
 

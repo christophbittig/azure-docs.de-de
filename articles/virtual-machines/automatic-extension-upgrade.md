@@ -6,22 +6,24 @@ ms.service: virtual-machines
 ms.subservice: automatic-extension-upgrade
 ms.workload: infrastructure
 ms.topic: how-to
-ms.date: 02/12/2020
+ms.date: 08/10/2021
 ms.author: manayar
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a239b362cc7d85b45a5ae0c4f102471ae46cc450
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 120171f77f9b9895cf58bbadd2f475110d068ffd
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673582"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698224"
 ---
-# <a name="preview-automatic-extension-upgrade-for-vms-and-scale-sets-in-azure"></a>Vorschau: Automatisches Erweiterungsupgrade für VMs und Skalierungsgruppen in Azure
+# <a name="automatic-extension-upgrade-for-vms-and-scale-sets-in-azure"></a>Automatisches Erweiterungsupgrade für VMs und Skalierungsgruppen in Azure
 
-Das automatische Erweiterungsupgrade ist als Vorschau für Azure-VMs und Azure Virtual Machine Scale Sets verfügbar. Wenn das automatische Erweiterungsupgrade für eine VM oder eine Skalierungsgruppe aktiviert ist, wird die Erweiterung automatisch aktualisiert, sobald der Erweiterungsherausgeber eine neue Version für diese Erweiterung freigibt.
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
+
+Das automatische Erweiterungsupgrade ist für Azure-VMs und Azure Virtual Machine Scale Sets verfügbar. Wenn das automatische Erweiterungsupgrade für eine VM oder eine Skalierungsgruppe aktiviert ist, wird die Erweiterung automatisch aktualisiert, sobald der Erweiterungsherausgeber eine neue Version für diese Erweiterung freigibt.
 
  Das automatische Erweiterungsupgrade verfügt über die folgenden Features:
-- Wird für Azure-VMs und Azure-Virtual Machine Scale Sets unterstützt. Service Fabric Virtual Machine Scale Sets werden derzeit nicht unterstützt.
+- Wird für Azure-VMs und Azure-Virtual Machine Scale Sets unterstützt.
 - Upgrades werden in einem verfügbarkeitsbasierten Bereitstellungsmodell angewendet (siehe unten).
 - Für eine VM-Skalierungsgruppe werden maximal 20 Prozent der virtuellen Computer in Skalierungsgruppen in einem einzelnen Batch aktualisiert. Die minimale Batchgröße ist ein virtueller Computer.
 - Unterstützt alle VM-Größen und sowohl Windows- als auch Linux-Erweiterungen.
@@ -30,20 +32,13 @@ Das automatische Erweiterungsupgrade ist als Vorschau für Azure-VMs und Azure V
 - Jede unterstützte Erweiterung wird einzeln registriert, und Sie können auswählen, welche Erweiterungen automatisch aktualisiert werden sollen.
 - Wird in allen Regionen der öffentlichen Cloud unterstützt.
 
-
-> [!IMPORTANT]
-> Das automatische Erweiterungsupgrade ist derzeit als Public Preview verfügbar. Es ist ein Opt-in-Verfahren erforderlich, um die unten beschriebenen Funktionen der öffentlichen Vorschauversion zu nutzen.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-
 ## <a name="how-does-automatic-extension-upgrade-work"></a>Wie funktioniert das automatische Erweiterungsupgrade?
 Der Erweiterungsupgradeprozess ersetzt die vorhandene Erweiterungsversion auf einer VM bei Veröffentlichung durch den Erweiterungsherausgeber durch eine neue Version derselben Erweiterung. Die Integrität der VM wird überwacht, nachdem die neue Erweiterung installiert wurde. Wenn sich die VM innerhalb von 5 Minuten nach dem Upgrade nicht in einem fehlerfreien Zustand befindet, wird für die Erweiterungsversion ein Rollback auf die vorherige Version ausgeführt.
 
 Ein fehlerhaftes Erweiterungsupdate wird automatisch wiederholt. Ein Wiederholungsversuch wird regelmäßig nach einigen Tagen ohne Benutzereingriff automatisch durchgeführt.
 
 ### <a name="availability-first-updates"></a>Verfügbarkeitsupdates
-Das Verfügbarkeitsmodell für plattformorchestrierte Updates stellt sicher, dass die Verfügbarkeitskonfigurationen in Azure über mehrere Verfügbarkeitsstufen hinweg berücksichtigt werden.
+Mit dem Verfügbarkeitsmodell für plattformorchestrierte Updates wird sichergestellt, dass die Verfügbarkeitskonfigurationen in Azure über mehrere Verfügbarkeitsstufen hinweg berücksichtigt werden.
 
 Für eine Gruppe von virtuellen Computern, die ein Update durchlaufen, orchestriert die Azure-Plattform Updates wie folgt:
 
@@ -54,7 +49,7 @@ Für eine Gruppe von virtuellen Computern, die ein Update durchlaufen, orchestri
 - Der Erfolg eines Updates wird durch die Nachverfolgung der Integrität nach dem Update einer VM gemessen. Die VM-Integrität wird durch Integritätsindikatoren der Plattform für die VM nachverfolgt. Für Virtual Machine Scale Sets wird die Integrität der VM durch Anwendungsintegritätstests oder die Anwendungsintegritätserweiterung nachverfolgt, wenn diese auf die Skalierungsgruppe angewendet werden.
 
 **Innerhalb einer Region:**
-- VMs in verschiedenen Verfügbarkeitszonen werden nicht gleichzeitig aktualisiert.
+- VMs in verschiedenen Verfügbarkeitszonen werden nicht gleichzeitig mit demselben Update aktualisiert.
 - Einzelne VMs, die nicht Teil einer Verfügbarkeitsgruppe sind, werden nach bestem Wissen in einem Batch zusammengefasst, um gleichzeitige Updates für alle VMs in einem Abonnement zu vermeiden.  
 
 **Innerhalb einer „Gruppe“:**
@@ -76,75 +71,16 @@ Das oben beschriebene Verfahren wird fortgesetzt, bis alle Instanzen in der Skal
 Der Upgradeorchestrator für die Skalierungsgruppe überprüft die allgemeine Skalierungsgruppenintegrität, bevor die einzelnen Batches aktualisiert werden. Beim Aktualisieren eines Batches finden eventuell andere gleichzeitige geplante oder nicht geplante Wartungsaktivitäten statt, die die Integrität Ihrer Skalierungsgruppen-VMs beeinträchtigen könnten. Wenn in solchen Fällen mehr als 20 % der Instanzen der Skalierungsgruppe fehlerhaft werden, endet das Upgrade der Skalierungsgruppe am Ende des aktuellen Batches.
 
 ## <a name="supported-extensions"></a>Unterstützte Erweiterungen
-Die Vorschau der automatischen Erweiterungsupgrades unterstützt die folgenden Erweiterungen (weitere werden regelmäßig hinzugefügt):
-- Dependency-Agent: [Windows](./extensions/agent-dependency-windows.md) und [Linux](./extensions/agent-dependency-linux.md)
-- [Anwendungsintegritätserweiterung](../virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension.md): Windows und Linux
-
-
-## <a name="enabling-preview-access"></a>Aktivieren des Vorschauzugriffs
-Zum Aktivieren der Vorschaufunktion ist ein einmaliges Opt-in für das Feature **AutomaticExtensionUpgradePreview** pro Abonnement erforderlich, wie unten beschrieben.
-
-### <a name="rest-api"></a>REST-API
-Im folgenden Beispiel wird beschrieben, wie Sie die Vorschauversion für Ihr Abonnement aktivieren:
-
-```
-POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/AutomaticExtensionUpgradePreview/register?api-version=2015-12-01`
-```
-
-Die Featureregistrierung kann bis zu 15 Minuten dauern. So überprüfen Sie den Registrierungsstatus:
-
-```
-GET on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/AutomaticExtensionUpgradePreview?api-version=2015-12-01`
-```
-
-Schließen Sie den Opt-in-Prozess ab, nachdem Sie das Feature für Ihr Abonnement registriert haben, indem Sie die Änderung an den Computeressourcenanbieter weitergeben.
-
-```
-POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?api-version=2020-06-01`
-```
-
-### <a name="azure-powershell"></a>Azure PowerShell
-Verwenden Sie das Cmdlet [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature), um die Vorschauversion für Ihr Abonnement zu aktivieren.
-
-```azurepowershell-interactive
-Register-AzProviderFeature -FeatureName AutomaticExtensionUpgradePreview -ProviderNamespace Microsoft.Compute
-```
-
-Die Featureregistrierung kann bis zu 15 Minuten dauern. So überprüfen Sie den Registrierungsstatus:
-
-```azurepowershell-interactive
-Get-AzProviderFeature -FeatureName AutomaticExtensionUpgradePreview -ProviderNamespace Microsoft.Compute
-```
-
-Schließen Sie den Opt-in-Prozess ab, nachdem Sie das Feature für Ihr Abonnement registriert haben, indem Sie die Änderung an den Computeressourcenanbieter weitergeben.
-
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-```
-
-### <a name="azure-cli"></a>Azure CLI
-Verwenden Sie [az feature register](/cli/azure/feature#az_feature_register), um die Vorschauversion für Ihr Abonnement zu aktivieren.
-
-```azurecli-interactive
-az feature register --namespace Microsoft.Compute --name AutomaticExtensionUpgradePreview
-```
-
-Die Featureregistrierung kann bis zu 15 Minuten dauern. So überprüfen Sie den Registrierungsstatus:
-
-```azurecli-interactive
-az feature show --namespace Microsoft.Compute --name AutomaticExtensionUpgradePreview
-```
-
-Schließen Sie den Opt-in-Prozess ab, nachdem Sie das Feature für Ihr Abonnement registriert haben, indem Sie die Änderung an den Computeressourcenanbieter weitergeben.
-
-```azurecli-interactive
-az provider register --namespace Microsoft.Compute
-```
+Das automatische Erweiterungsupgrade unterstützt die folgenden Erweiterungen (weitere werden regelmäßig hinzugefügt):
+- Dependency-Agent: [Linux](./extensions/agent-dependency-linux.md) und [Windows](./extensions/agent-dependency-windows.md)
+- [Anwendungsintegritätserweiterung](../virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension.md): Linux und Windows
+- [Gastkonfigurationserweiterung](./extensions/guest-configuration.md): Linux und Windows
+- Key Vault: [Linux](./extensions/key-vault-linux.md) und [Windows](./extensions/key-vault-windows.md)
 
 
 ## <a name="enabling-automatic-extension-upgrade"></a>Aktivieren des automatischen Erweiterungsupgrades
-Um das automatische Erweiterungs Upgrade für eine Erweiterung zu aktivieren, müssen Sie sicherstellen, dass die Eigenschaft *enableAutomaticUpgrade* auf *true* festgelegt ist und jeder Erweiterungsdefinition einzeln hinzugefügt wird.
 
+Um das automatische Erweiterungsupgrade für eine Erweiterung zu aktivieren, müssen Sie sicherstellen, dass die Eigenschaft `enableAutomaticUpgrade` auf `true` festgelegt ist und jeder Erweiterungsdefinition einzeln hinzugefügt wird.
 
 ### <a name="rest-api-for-virtual-machines"></a>REST-API für Virtual Machines
 Verwenden Sie Folgendes, um das automatische Erweiterungsupgrade für eine Erweiterung (in diesem Beispiel die Dependency-Agent-Erweiterung) auf einer Azure-VM zu aktivieren:

@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 04/21/2021
+ms.date: 06/22/2021
 ms.author: v-jansk
-ms.openlocfilehash: 2896c5c78acb98c798f85684ef6f800f82549b06
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: ae867a4383b5644eca2cabf2651c2c40797ed49a
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111412707"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112540598"
 ---
 # <a name="start-translation"></a>Starten der Übersetzung
 
-Verwenden Sie diese API, um eine Massenübersetzungsanforderung (Batch) mit dem Document Translation Service zu starten. Jede Anforderung kann mehrere Dokumente enthalten und muss einen Quell- und einen Zielcontainer für jedes Dokument enthalten.
+Verwenden Sie diese API, um eine Übersetzungsanforderung mit dem Dokumentübersetzungsdienst zu starten. Jede Anforderung kann mehrere Dokumente enthalten und muss einen Quell- und einen Zielcontainer für jedes Dokument enthalten.
 
 Der Präfix- und Suffixfilter (falls angegeben) wird zum Filtern von Ordnern verwendet. Das Präfix wird auf den Unterpfad nach dem Containernamen angewendet.
 
@@ -51,7 +51,7 @@ Anforderungsheader:
 
 ## <a name="request-body-batch-submission-request"></a>Anforderungstext: Batchübermittlungsanforderung
 
-|Name|Typ|Beschreibung|
+|Name|type|Beschreibung|
 |--- |--- |--- |
 |inputs|BatchRequest[]|Batchanforderung unten aufgeführt. Die Eingabeliste der Dokumente oder Ordner, die Dokumente enthalten. Medientypen: „application/json“, „text/json“, „application/*+json“.|
 
@@ -59,7 +59,7 @@ Anforderungsheader:
 
 Definition für die Eingabe Batchübersetzungsanforderung.
 
-|Name|Typ|Erforderlich|Beschreibung|
+|Name|type|Erforderlich|Beschreibung|
 |--- |--- |--- |--- |
 |source|SourceInput[]|Richtig|inputs.source unten aufgeführt. Quelle der Eingabedokumente.|
 |Speichertyp|StorageInputType[]|Falsch|inputs.storageType unten aufgeführt. Der Speichertyp der Quellzeichenfolge der Eingabedokumente. Nur für die Übersetzung einzelner Dokumente erforderlich.|
@@ -69,7 +69,7 @@ Definition für die Eingabe Batchübersetzungsanforderung.
 
 Quelle der Eingabedokumente.
 
-|Name|Typ|Erforderlich|Beschreibung|
+|Name|type|Erforderlich|Beschreibung|
 |--- |--- |--- |--- |
 |filter|DocumentFilter[]|Falsch|DocumentFilter[] unten aufgeführt.|
 |filter.prefix|Zeichenfolge|Falsch|Eine Präfixzeichenfolge mit Beachtung der Groß-/Kleinschreibung zum Filtern von Dokumenten im Quellpfad für die Übersetzung. Wenn Sie beispielsweise einen Azure Storage-Blob-URI verwenden, können Sie das Präfix nutzen, um Unterordner die Übersetzung einzuschränken.|
@@ -92,7 +92,7 @@ Der Speichertyp der Quellzeichenfolge der Eingabedokumente.
 
 Das Ziel für die abgeschlossenen übersetzten Dokumente.
 
-|Name|Typ|Erforderlich|Beschreibung|
+|Name|type|Erforderlich|Beschreibung|
 |--- |--- |--- |--- |
 |category|Zeichenfolge|Falsch|Kategorie/benutzerdefiniertes System für Übersetzungsanforderung.|
 |Glossare|Glossary[]|Falsch|Glossar unten aufgeführt. Liste der Glossare.|
@@ -229,7 +229,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
 
 ## <a name="error-response"></a>Fehlerantwort
 
-|Name|Typ|Beschreibung|
+|Name|type|BESCHREIBUNG|
 |--- |--- |--- |
 |code|Zeichenfolge|Enumerationen, die High-Level-Fehlercodes enthalten. Mögliche Werte:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Nicht autorisiert</li></ul>|
 |message|Zeichenfolge|Ruft High-Level-Fehlermeldung ab.|

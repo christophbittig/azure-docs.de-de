@@ -13,32 +13,35 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 06/11/2021
+ms.date: 07/09/2021
 ms.author: markvi
 ms.reviewer: besiler
+ms.custom: has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c29b631d3002f0c79fb2dd1b1f26dfa65051368c
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: 44599666f6da3fddcd6c3df36daf25faac807e6e
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112018955"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429313"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Integrieren von Azure AD-Protokollen in Azure Monitor-Protokolle
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+Führen Sie die Schritte in diesem Artikel aus, um Azure Active Directory-Protokolle (Azure AD) in Azure Monitor zu integrieren.
 
-Mit Azure Monitor-Protokollen können Sie Daten abfragen, um bestimmte Ereignisse zu finden, Trends zu analysieren und datenquellenübergreifende Korrelationen vorzunehmen. Durch die Integration von Azure AD-Aktivitätsprotokollen in Azure Monitor-Protokolle können Sie nun unter anderem folgende Aufgaben ausführen:
+Durch die Integration von Azure AD-Aktivitätsprotokollen in Azure Monitor-Protokolle können Sie folgende Aufgaben ausführen:
 
- * Vergleichen Ihrer Azure AD-Anmeldeprotokolle mit von Azure Security Center veröffentlichten Sicherheitsprotokollen
+ * Vergleichen Ihrer Azure AD-Anmeldeprotokolle mit von Azure Security Center veröffentlichten Sicherheitsprotokollen.
+  
+ * Behandeln von Leistungsengpässen auf der Anmeldeseite Ihrer Anwendung durch Korrelieren von Anwendungsleistungsdaten aus Azure Application Insights
 
- * Behandeln von Leistungsengpässen auf der Anmeldeseite Ihrer Anwendung durch Korrelieren von Anwendungsleistungsdaten aus Azure Application Insights  
+ * Analysieren von Benutzern, die von Identity Protection als Risikobenutzer werden, und von Protokollen der Risikoerkennung, um Bedrohungen Ihrer Umgebung zu erkennen (öffentliche Vorschau).
+ 
+ * Identifizieren von Anmeldungen aus Anwendungen, die die Active Directory-Authentifizierungsbibliothek (Active Directory Authentication Library, ADAL) zur Authentifizierung verwenden. [ADAL nähert sich dem Supportende](../develop/msal-migration.md).
 
-Das folgende Video einer Ignite-Sitzung veranschaulicht die Vorteile der Verwendung von Azure Monitor-Protokollen für Azure AD-Protokolle in praktischen Benutzerszenarien.
+Dieses Video einer Microsoft Ignite-Sitzung veranschaulicht die Vorteile von Azure Monitor-Protokollen für Azure AD-Protokolle anhand von Szenarien aus der Praxis:
 
 > [!VIDEO https://www.youtube.com/embed/MP5IaCTwkQg?start=1894]
-
-In diesem Artikel erfahren Sie, wie Sie Azure Active Directory-Protokolle (Azure AD) in Azure Monitor integrieren.
 
 ## <a name="supported-reports"></a>Unterstützte Berichte
 
@@ -47,10 +50,9 @@ Sie können Überwachungs- und Anmeldeaktivitätsprotokolle zur weiteren Analyse
 * **Überwachungsprotokolle**: Mit dem [Aktivitätsbericht zu Überwachungsprotokollen](concept-audit-logs.md) erhalten Sie Zugriff auf den Verlauf aller Aufgaben, die in Ihrem Mandanten durchgeführt werden.
 * **Anmeldeprotokolle**: Mit dem [Aktivitätsbericht zu Anmeldungen](concept-sign-ins.md) können Sie ermitteln, von wem die Aufgaben durchgeführt wurden, die in den Überwachungsprotokollen aufgeführt sind.
 * **Bereitstellungsprotokolle:** Mithilfe von [Bereitstellungsprotokollen](../app-provisioning/application-provisioning-log-analytics.md) können Sie überwachen, welche Benutzer in allen Ihren Anwendungen von Drittanbietern erstellt, aktualisiert und gelöscht wurden. 
+* **Protokolle zu Risikobenutzern (öffentliche Vorschau)** : Mit [Protokollen zu Risikobenutzern](../identity-protection/howto-identity-protection-investigate-risk.md#risky-users) können Sie Änderungen an der Risikostufe von Benutzern überwachen und Korrekturmaßnahmen ergreifen. 
+* **Protokolle zur Risikoerkennung (öffentliche Vorschau)** : Mit [Protokollen zur Risikoerkennung](../identity-protection/howto-identity-protection-investigate-risk.md#risk-detections) können Sie Risikoerkennungen pro Benutzer überwachen und Trends der in Ihrer Organisation erkannten Risikoaktivität analysieren. 
 
-> [!NOTE]
-> B2C-bezogene Aktivitätsprotokolle für Überwachungen und Anmeldungen werden derzeit nicht unterstützt.
->
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
@@ -79,9 +81,16 @@ Wenn Sie wissen möchten, wie lange die Aktivitätsdaten in einem Premium-Mandan
 
 4. Wählen Sie den Log Analytics-Arbeitsbereich aus, an den Sie die Protokolle senden möchten, oder erstellen Sie einen neuen Arbeitsbereich im dafür vorgesehenen Dialogfeld.  
 
-5. Führen Sie einen oder beide der folgenden Schritte aus:
+5. Führen Sie eine oder alle der folgenden Maßnahmen aus:
     * Aktivieren Sie das Kontrollkästchen **AuditLogs**, um Überwachungsprotokolle an den Log Analytics-Arbeitsbereich zu senden. 
     * Aktivieren Sie das Kontrollkästchen **SignInLogs**, um Anmeldeprotokolle an den Log Analytics-Arbeitsbereich zu senden.
+    * Aktivieren Sie das Kontrollkästchen **NonInteractiveUserSignInLogs**, um Protokolle zu nicht interaktiven Benutzeranmeldungen an den Log Analytics-Arbeitsbereich zu senden.
+    * Aktivieren Sie das Kontrollkästchen **ServicePrincipalSignInLogs**, um Protokolle zu Anmeldungen durch Dienstprinzipale an den Log Analytics-Arbeitsbereich zu senden.
+    * Aktivieren Sie das Kontrollkästchen **ManagedIdentitySignInLogs**, um Protokolle zu Anmeldungen durch verwaltete Identitäten an den Log Analytics-Arbeitsbereich zu senden.
+    * Aktivieren Sie das Kontrollkästchen **ProvisioningLogs**, um Bereitstellungsprotokolle an den Log Analytics-Arbeitsbereich zu senden.
+    * Aktivieren Sie das Kontrollkästchen **ADFSSignInLogs**, um Protokolle zu Anmeldungen über Active Directory-Verbunddienste (AD FS) an den Log Analytics-Arbeitsbereich zu senden.
+    * Aktivieren Sie das Kontrollkästchen **RiskyUsers**, um Protokolle zu Risikobenutzern an den Log Analytics-Arbeitsbereich zu senden (öffentliche Vorschau).
+    * Aktivieren Sie das Kontrollkästchen **UserRiskEvents**, um Protokolle zu Risikoerkennungen an den Log Analytics-Arbeitsbereich zu senden (öffentliche Vorschau).
 
 6. Klicken Sie auf **Speichern**, um die Einstellung zu speichern.
 

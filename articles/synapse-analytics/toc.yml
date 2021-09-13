@@ -57,7 +57,7 @@ items:
               - name: Azure-Portal
                 href: quickstart-create-workspace.md
                 displayName: quickstart
-              - name: Azure CLI
+              - name: Azure-Befehlszeilenschnittstelle
                 href: quickstart-create-workspace-cli.md
                 displayName: quickstart
               - name: Azure PowerShell
@@ -756,7 +756,7 @@ items:
               - name: Übersicht über Datenflüsse
                 href: concepts-data-flow-overview.md
               - name: Debugmodus
-                href: ../data-factory/concepts-data-flow-debug-mode.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
+                href: ../data-factory/concepts-data-flow-debug-mode.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&tabs=synapse-analytics
               - name: Schemaabweichung
                 href: ../data-factory/concepts-data-flow-schema-drift.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: Spaltenmuster
@@ -996,7 +996,7 @@ items:
               - name: Löschen von Dateien mit der Delete-Aktivität
                 href: ../data-factory/delete-activity.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: Tool zum Kopieren von Daten
-                href: ../data-factory/copy-data-tool.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
+                href: ../data-factory/copy-data-tool.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&tabs=synapse-analytics
               - name: Unterstützung für Format und Komprimierung
                 href: ../data-factory/supported-file-formats-and-compression-codecs.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: Handbuch zur Leistung und Optimierung der Kopieraktivität
@@ -1171,7 +1171,7 @@ items:
               - name: Continuous Integration und Continuous Deployment
                 href: ../data-factory/ci-cd-github-troubleshoot-guide.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: Sicherheit und Zugriffssteuerung
-                href: ../data-factory/security-and-access-control-troubleshoot-guide.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
+                href: ../data-factory/security-and-access-control-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&tabs=synapse-analytics
               - name: Problembehandlung für selbstgehostete Integration Runtimes
                 href: ../data-factory/self-hosted-integration-runtime-troubleshoot-guide.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
   - name: Machine Learning

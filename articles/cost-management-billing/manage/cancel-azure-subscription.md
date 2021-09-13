@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 05/20/2021
 ms.author: banders
-ms.openlocfilehash: b0c7f1ee4daea871cfdc9e92908cd287a49997da
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 71070f56eaa8b9e1d0a4bef42d609b10ac28b7e5
+ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110481082"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112321628"
 ---
 # <a name="cancel-your-azure-subscription"></a>Kündigen Ihres Azure-Abonnements
 
@@ -70,18 +70,22 @@ Nach der Kündigung werden Ihre Dienste deaktiviert. Dies bedeutet, dass die Zuo
 
 Nach der Kündigung Ihres Abonnements warten wir noch 30 bis 90 Tage mit der endgültigen Löschung Ihrer Daten, falls Sie doch noch einmal darauf zugreifen müssen oder Ihre Meinung ändern sollten. Für die Aufbewahrung der Daten rechnen wir keine Gebühr ab. Weitere Informationen finden Sie in [Microsoft Trust Center – Wie wir Ihre Daten verwalten](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
 
-## <a name="delete-free-trial-subscription"></a>Löschen eines kostenlosen Testabonnements
+## <a name="delete-free-account-or-pay-as-you-go-subscription"></a>Löschen eines kostenlosen Kontos oder eines Abonnements nutzungsbasierter Bezahlung
 
-Wenn Sie über ein kostenloses Testabonnement verfügen, müssen Sie nicht 30 Tage warten, bis das Abonnement automatisch gelöscht wird. Sie können Ihr Abonnement *drei Tage* nach der Kündigung löschen. Die Option **Abonnement löschen** wird erst drei Tage nach der Kündigung Ihres Abonnements verfügbar.
+Wenn Sie über ein kostenloses Konto oder ein Abonnement mit nutzungsbasierter Bezahlung verfügen, müssen Sie nicht 30 bis 90 Tage warten, bis das Abonnement automatisch gelöscht wird. Die Option **Löschen** ist 3 Tage nach dem Kündigen eines Abonnements verfügbar. Wenn Sie nach 3 Tagen keine Ressourcen unter dem stornierten Abonnement haben, können Sie das Abonnement löschen.
 
-1. Warten Sie drei Tage, nachdem Sie das Abonnement gekündigt haben.
-1. Wählen Sie im Azure-Portal auf der Seite [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) Ihr Abonnement aus.
-1. Wählen Sie das Abonnement aus, das Sie löschen möchten.
-1. Wählen Sie **Übersicht** und anschließend **Abonnement löschen** aus.
+Führen Sie die folgenden Schritte aus, um ein Abonnement zu löschen:
+
+1. Warten Sie 3 Tage, nachdem Sie das Abonnement gekündigt haben.
+2. Stellen Sie sicher, dass das Abonnement keine Ressourcen enthält, bevor Sie versuchen, es zu löschen.
+3. Navigieren Sie im Azure-Portal zu [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+4. Wählen Sie das Abonnement aus, das Sie löschen möchten.
+5. Wählen Sie **Übersicht** und anschließend **Löschen** aus.
+6. Geben Sie den Abonnementnamen in die Bestätigungsaufforderung ein, und wählen Sie dann **Abonnement löschen** aus.
 
 ## <a name="delete-other-subscriptions"></a>Löschen anderer Abonnements
 
-Das kostenlose Testabonnement ist der einzige Abonnementtyp, den Sie manuell löschen können. Alle anderen Abonnementtypen, einschließlich Abonnements mit nutzungsbasierter Bezahlung, werden ausschließlich über den Prozess zur [Abonnementkündigung](#cancel-subscription-in-the-azure-portal) gelöscht. Anders ausgedrückt: Sie können ein Abonnement nicht direkt löschen, es sei denn, es handelt sich um ein kostenloses Testabonnement. Nachdem Sie ein Abonnement gekündigt haben, können Sie jedoch eine [Azure-Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458) erstellen, um die sofortige Löschung des Abonnements anzufordern.
+Die einzigen Abonnementtypen, die Sie manuell löschen können, sind ein kostenloses Konto oder ein Abonnement mit nutzungsbasierter Bezahlung. Alle anderen Abonnementtypen werden ausschließlich über den Prozess zur [Abonnementkündigung](#cancel-subscription-in-the-azure-portal) gelöscht. Anders ausgedrückt: Sie können ein Abonnement nicht direkt löschen, es sei denn, es handelt sich um ein kostenloses Konto oder ein Abonnement mit nutzungsbasierter Bezahlung. Nachdem Sie ein Abonnement gekündigt haben, können Sie jedoch eine [Azure-Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458) erstellen, um die sofortige Löschung des Abonnements anzufordern.
 
 ## <a name="reactivate-a-subscription"></a>Reaktivieren eines Abonnements
 

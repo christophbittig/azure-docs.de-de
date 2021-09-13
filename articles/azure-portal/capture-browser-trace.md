@@ -1,24 +1,27 @@
 ---
 title: Erfassen einer Browserablaufverfolgung zur Problembehandlung
 description: Erfassen Sie Netzwerkinformationen aus einer Browserablaufverfolgung, um Probleme mit dem Azure-Portal zu beheben.
-ms.date: 03/25/2021
+ms.date: 08/16/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 63bc3e93187274db607b5f60216de461729801dc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d1db82c9671879c435a6dba73929d9a4eb183f7f
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563485"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122350892"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>Erfassen einer Browserablaufverfolgung zur Problembehandlung
 
 Wenn Sie ein Problem mit dem Azure-Portal beheben und sich an den Microsoft-Support wenden müssen, empfiehlt es sich, zuerst eine Browserablaufverfolgung und einige zusätzliche Informationen zu erfassen. Die erfassten Informationen können zu dem Zeitpunkt, an dem das Problem auftritt, wichtige Details zum Portal bereitstellen. Befolgen Sie die Schritte in diesem Artikel für die Entwicklertools in dem Browser, den Sie verwenden: Google Chrome oder Microsoft Edge (Chromium), Microsoft Edge (EdgeHTML), Apple Safari oder Firefox.
 
+> [!IMPORTANT]
+> Der Microsoft-Support verwendet diese Ablaufverfolgungen nur zu Problembehandlungszwecken. Achten Sie darauf, mit welchen Personen Sie Ihre Ablaufverfolgungen teilen, da diese vertrauliche Informationen über Ihre Umgebung enthalten können.
+
 ## <a name="google-chrome-and-microsoft-edge-chromium"></a>Google Chrome und Microsoft Edge (Chromium)
 
 Google Chrome und Microsoft Edge (Chromium) basieren auf dem [Open-Source-Projekt Chromium](https://www.chromium.org/Home). In den folgenden Schritten wird gezeigt, wie die Entwicklertools verwendet werden, die in den beiden Browsern sehr ähnlich sind. Weitere Informationen finden Sie unter [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) und [Microsoft Edge-Entwicklertools (Chromium)](/microsoft-edge/devtools-guide-chromium).
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Es ist wichtig, sich anzumelden, _bevor_ Sie die Ablaufverfolgung starten, damit die Ablaufverfolgung keine vertraulichen Informationen im Zusammenhang mit Ihrer Anmeldung enthält. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Es ist wichtig, sich anzumelden, _bevor_ Sie die Ablaufverfolgung starten, damit die Ablaufverfolgung keine vertraulichen Informationen im Zusammenhang mit Ihrer Anmeldung enthält.
 
 1. Beginnen Sie mit der Aufzeichnung der Schritte, die Sie im Portal durchführen, mithilfe der [Schrittaufzeichnung](https://support.microsoft.com/help/22878/windows-10-record-steps).
 
@@ -164,7 +167,7 @@ In den folgenden Schritten wird gezeigt, wie die Entwicklertools in Apple Safari
 
 In den folgenden Schritten wird das Verwenden der Entwicklertools in Firefox gezeigt. Weitere Informationen finden Sie unter [Firefox-Entwicklertools](https://developer.mozilla.org/docs/Tools).
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Es ist wichtig, sich anzumelden, _bevor_ Sie die Ablaufverfolgung starten, damit die Ablaufverfolgung keine vertraulichen Informationen im Zusammenhang mit Ihrer Anmeldung enthält. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Es ist wichtig, sich anzumelden, _bevor_ Sie die Ablaufverfolgung starten, damit die Ablaufverfolgung keine vertraulichen Informationen im Zusammenhang mit Ihrer Anmeldung enthält.
 
 1. Beginnen Sie mit der Aufzeichnung der Schritte, die Sie im Portal durchführen. Verwenden Sie die [Schrittaufzeichnung](https://support.microsoft.com/help/22878/windows-10-record-steps) unter Windows, oder lesen Sie [So machst du eine Aufnahme deines Mac-Bildschirms](https://support.apple.com/HT208721).
 
@@ -204,4 +207,5 @@ In den folgenden Schritten wird das Verwenden der Entwicklertools in Firefox gez
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Azure-Portal – Übersicht](azure-portal-overview.md)
+- Informieren Sie sich über das [Azure-Portal](azure-portal-overview.md).
+- Lernen Sie, wie Sie [eine Supportanfrage im Azure-Portal eröffnen](supportability/how-to-create-azure-support-request.md).

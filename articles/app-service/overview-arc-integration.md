@@ -2,13 +2,13 @@
 title: App Service in Azure Arc
 description: Eine Einführung in App Service Integration in Azure Arc für Azure-Betreiber.
 ms.topic: article
-ms.date: 05/03/2021
-ms.openlocfilehash: bbdb7fb1426a5c63e579929806caa1b2008f11eb
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.date: 08/17/2021
+ms.openlocfilehash: bd5e257d48ec009ccb79696f4c299fd93568f1c9
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111590088"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397332"
 ---
 # <a name="app-service-functions-and-logic-apps-on-azure-arc-preview"></a>App Service, Funktionen und Logic Apps in Azure Arc (Vorschau)
 
@@ -62,7 +62,7 @@ In der folgenden Tabelle wird die Rolle der einzelnen Pods beschrieben, die stan
 
 Die App Service Kubernetes-Umgebungsressource ist erforderlich, bevor Apps erstellt werden können. Sie ermöglicht die Konfiguration, die für Apps am benutzerdefinierten Speicherort üblich ist, z. B. das DNS-Standardsuffix.
 
-Es kann nur eine Kubernetes-Umgebungsressource an einem benutzerdefinierten Speicherort erstellt werden. In den meisten Fällen muss ein Entwickler, der Apps erstellt und bereitstellt, die Ressource nicht direkt kennen. Sie kann direkt aus der angegebenen benutzerdefinierten Speicherort-ID abgeleitet werden. Wenn Sie jedoch Azure Resource Manager Vorlagen definieren, muss jede Plan-Ressource direkt auf die Ressourcen-ID der Umgebung verweisen. Die benutzerdefinierten Speicherortwerte des Plans und der angegebenen Umgebung müssen übereinstimmen.
+An einem benutzerdefinierten Speicherort kann nur eine Kubernetes-Umgebungsressource erstellt werden. In den meisten Fällen muss ein Entwickler, der Apps erstellt und bereitstellt, die Ressource nicht direkt kennen. Sie kann direkt aus der angegebenen benutzerdefinierten Speicherort-ID abgeleitet werden. Wenn Sie jedoch Azure Resource Manager Vorlagen definieren, muss jede Plan-Ressource direkt auf die Ressourcen-ID der Umgebung verweisen. Die benutzerdefinierten Speicherortwerte des Plans und der angegebenen Umgebung müssen übereinstimmen.
 
 ## <a name="faq-for-app-service-functions-and-logic-apps-on-azure-arc-preview"></a>FAQs zu App Service, Funktionen und Logic Apps in Azure Arc (Vorschau)
 
@@ -73,8 +73,10 @@ Es kann nur eine Kubernetes-Umgebungsressource an einem benutzerdefinierten Spei
 - [Welche App Service Funktionen werden unterstützt?](#which-app-service-features-are-supported)
 - [Werden Netzwerkfunktionen unterstützt?](#are-networking-features-supported)
 - [Werden verwaltete Identitäten unterstützt?](#are-managed-identities-supported)
+- [Gibt es Grenzen in Bezug auf die Skalierung?](#are-there-any-scaling-limits)
 - [Welche Protokolle werden gesammelt?](#what-logs-are-collected)
 - [Was kann ich tun, wenn ein Anbieterregistrierungsfehler angezeigt wird?](#what-do-i-do-if-i-see-a-provider-registration-error)
+- [Kann ich die Anwendungsdiensterweiterung in einem ARM64-basierten Cluster bereitstellen?](#can-i-deploy-the-application-services-extension-on-an-arm64-based-cluster)
 
 ### <a name="how-much-does-it-cost"></a>Wie viel kostet es?
 
@@ -104,6 +106,10 @@ Nein. Netzwerkfunktionen wie Hybridverbindungen, Virtual Network Integration ode
 
 Nein. Apps können keine verwalteten Identitäten zugewiesen werden, wenn sie in Azure Arc ausgeführt werden. Wenn Ihre App eine Identität für die Arbeit mit einer anderen Azure-Ressource benötigt, sollten Sie stattdessen einen [Anwendungsdienstprinzipal](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) verwenden.
 
+### <a name="are-there-any-scaling-limits"></a>Gibt es Grenzen in Bezug auf die Skalierung?
+
+Alle mit Azure App Service in Kubernetes bereitgestellten Anwendungen mit Azure Arc lassen sich innerhalb der Grenzwerte des zugrunde liegenden Kubernetes-Clusters skalieren.  Wenn die Computeressourcen (hauptsächlich CPU und Arbeitsspeicher) des zugrunde liegenden Kubernetes-Clusters zur Neige gehen, können Anwendungen nur auf die Anzahl von Anwendungsinstanzen skaliert werden, die Kubernetes mit den verfügbaren Ressourcen planen kann.
+
 ### <a name="what-logs-are-collected"></a>Welche Protokolle werden gesammelt?
 
 Protokolle für Systemkomponenten und Ihre Anwendungen werden in die Standardausgabe geschrieben. Beide Protokolltypen können für die Analyse mithilfe von Kubernetes-Standardtools gesammelt werden. Sie können die App Service Clustererweiterung auch mit einem [Log Analytics-Arbeitsbereich](../azure-monitor/logs/log-analytics-overview.md) konfigurieren, und alle Protokolle werden an diesen Arbeitsbereich gesendet.
@@ -113,6 +119,10 @@ Standardmäßig werden Protokolle von Systemkomponenten an das Azure-Team gesend
 ### <a name="what-do-i-do-if-i-see-a-provider-registration-error"></a>Was kann ich tun, wenn ein Anbieterregistrierungsfehler angezeigt wird?
 
 Beim Erstellen einer Kubernetes-Umgebungsressource wird für einige Abonnements möglicherweise der Fehler „Keinen registrierten Ressourcenanbieter gefunden“ angezeigt. Die Fehlerdetails können eine Reihe von Speicherorten und API-Versionen enthalten, die als gültig betrachtet werden. In diesem Fall muss das Abonnement möglicherweise erneut beim „Microsoft.Web“-Anbieter registriert werden. Dies ist ein Vorgang, der keine Auswirkungen auf vorhandene Anwendungen oder APIs hat. Verwenden Sie zum erneuten Registrieren die Azure CLI, um `az provider register --namespace Microsoft.Web --wait` auszuführen. Versuchen Sie dann erneut, den Kubernetes-Umgebungsbefehl auszuführen.
+
+### <a name="can-i-deploy-the-application-services-extension-on-an-arm64-based-cluster"></a>Kann ich die Anwendungsdiensterweiterung in einem ARM64-basierten Cluster bereitstellen?
+
+ARM64-basierte Cluster werden derzeit nicht unterstützt.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

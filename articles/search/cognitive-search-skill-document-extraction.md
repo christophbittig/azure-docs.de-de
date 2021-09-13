@@ -1,28 +1,28 @@
 ---
 title: Kognitive Qualifikation „Dokumentextrahierung“
 titleSuffix: Azure Cognitive Search
-description: Extrahiert Inhalt aus einer Datei innerhalb der Anreicherungspipeline. Diese Qualifikation ist zurzeit als öffentliche Vorschauversion verfügbar.
+description: Extrahiert Inhalt aus einer Datei innerhalb der Anreicherungspipeline.
 manager: nitinme
 author: careyjmac
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/17/2020
+ms.date: 08/12/2021
 ms.author: chalton
-ms.openlocfilehash: 681900e2d2175e3e52a906072ae0b31a835cd1c8
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 02d3431ecc7a5c460be75885fd786b3b4c4d276f
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109483657"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340353"
 ---
 # <a name="document-extraction-cognitive-skill"></a>Kognitive Qualifikation „Dokumentextrahierung“
 
 Die Qualifikation **Dokumentextrahierung** extrahiert Inhalt aus einer Datei innerhalb der Anreicherungspipeline. Auf diese Weise können Sie die Vorteile des Schritts der Dokumentextrahierung nutzen, der normalerweise vor der Ausführung des Skillsets mit Dateien erfolgt, die möglicherweise durch andere Qualifikationen generiert werden.
 
 > [!NOTE]
-> Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie [eine kostenpflichtige Cognitive Services-Ressource anfügen](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumentaufschlüsselungsphase bei der Indizierung an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
+> Dieser Skill ist nicht an Cognitive Services gebunden und verfügt über keine Cognitive Services-Schlüsselanforderung.
+> Dieser Skill extrahiert Text und Bilder. Die Textextraktion ist kostenlos. Die Bildextraktion wird über [Azure Cognitive Search](https://azure.microsoft.com/pricing/details/search/) abgerechnet. Bei einem kostenlosen Suchdienst werden die Kosten für 20 Transaktionen pro Indexer am Tag übernommen, sodass Sie Schnellstarts, Tutorials und kleine Vorgänge kostenlos abschließen können. Bei den Tarifen „Basic“ und „Standard“ sowie bei höheren Tarifen ist die Bildextraktion gebührenpflichtig.
 >
-> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion werden auf der [Preisseite](https://azure.microsoft.com/pricing/details/search/) beschrieben.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.DocumentExtractionSkill
@@ -45,7 +45,7 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 
 | Konfigurationsparameter   | Zulässige Werte | BESCHREIBUNG |
 |-------------------------|----------------|-------------|
-| `imageAction`           | `none`<br/> `generateNormalizedImages`<br/> `generateNormalizedImagePerPage` | Legen Sie diesen Parameter auf `none` fest, um eingebettete Bilder oder Bilddateien im Dataset zu ignorieren. Dies ist die Standardoption. <br/>Legen Sie diesen Parameter für die [Bildanalyse mithilfe von kognitiven Qualifikationen](cognitive-search-concept-image-scenarios.md) auf `generateNormalizedImages` fest, damit die Qualifikation bei der Dokumententschlüsselung ein Array von normalisierten Bildern erstellt. Für diese Aktion ist es erforderlich, `parsingMode` auf `default` und `dataToExtract` auf `contentAndMetadata` festzulegen. Ein normalisiertes Bild bezieht sich auf eine zusätzliche Verarbeitung, die zu einer einheitlichen Bildausgabe führt. Für die Ausgabe wird die Größe angepasst, und sie wird gedreht, um das einheitliche Rendern zu fördern, wenn Sie Bilder in visuelle Suchergebnisse einbinden (z.B. Fotos gleicher Größe für ein Graphsteuerelement wie in der [JFK-Demo](https://github.com/Microsoft/AzureSearch_JFK_Files)). Diese Informationen werden bei Verwendung dieser Option für jedes Bild generiert.  <br/>Wenn Sie diesen Parameter auf `generateNormalizedImagePerPage` festlegen, werden PDF-Dateien anders behandelt. Anstatt eingebettete Bilder zu extrahieren, wird jede Seite als Bild gerendert und entsprechend normalisiert.  Nicht-PDF-Dateitypen werden genauso behandelt, als ob der Parameter auf `generateNormalizedImages` festgelegt worden wäre.
+| `imageAction`           | `none`<br/> `generateNormalizedImages`<br/> `generateNormalizedImagePerPage` | Legen Sie diesen Parameter auf `none` fest, um eingebettete Bilder oder Bilddateien im Dataset zu ignorieren. Dies ist die Standardoption. <br/>Legen Sie diesen Parameter für die [Bildanalyse mithilfe von kognitiven Skills](cognitive-search-concept-image-scenarios.md) auf `generateNormalizedImages` fest, damit der Skill bei der [Dokumententschlüsselung](search-indexer-overview.md#document-cracking) ein Array von normalisierten Bildern erstellt. Für diese Aktion ist es erforderlich, `parsingMode` auf `default` und `dataToExtract` auf `contentAndMetadata` festzulegen. Ein normalisiertes Bild bezieht sich auf eine zusätzliche Verarbeitung, die zu einer einheitlichen Bildausgabe führt. Für die Ausgabe wird die Größe angepasst, und sie wird gedreht, um das einheitliche Rendern zu fördern, wenn Sie Bilder in visuelle Suchergebnisse einbinden (z.B. Fotos gleicher Größe für ein Graphsteuerelement wie in der [JFK-Demo](https://github.com/Microsoft/AzureSearch_JFK_Files)). Diese Informationen werden bei Verwendung dieser Option für jedes Bild generiert.  <br/>Wenn Sie diesen Parameter auf `generateNormalizedImagePerPage` festlegen, werden PDF-Dateien anders behandelt. Anstatt eingebettete Bilder zu extrahieren, wird jede Seite als Bild gerendert und entsprechend normalisiert.  Nicht-PDF-Dateitypen werden genauso behandelt, als ob der Parameter auf `generateNormalizedImages` festgelegt worden wäre.
 | `normalizedImageMaxWidth` | Eine beliebige ganze Zahl zwischen 50-10000 | Die maximale Breite (in Pixel) für generierte normalisierte Bilder. Der Standardwert ist „2000“. | 
 | `normalizedImageMaxHeight` | Eine beliebige ganze Zahl zwischen 50-10000 | Die maximale Höhe (in Pixel) für generierte normalisierte Bilder. Der Standardwert ist „2000“. |
 

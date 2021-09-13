@@ -7,18 +7,18 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/14/2019
+ms.date: 07/19/2021
 ms.author: erhopf
-ms.openlocfilehash: 4a78e233a41bf3b6682f52bac912528d6bcab76c
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: deb5db6f205c02812330539c403fbe7b80d4784c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816331"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347195"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>Aktivieren der Diagnoseprotokollierung für Azure Cognitive Services
 
-Diese Anleitung enthält ausführliche Anweisungen zum Aktivieren der Diagnoseprotokollierung für Azure Cognitive Services. Diese Protokolle stellen umfassende, häufig verwendete Daten zu den Vorgängen einer Ressource bereit, die für die Ermittlung von Problemen und das Debuggen verwendet werden. Bevor Sie fortfahren, benötigen Sie ein Azure-Konto mit einem Abonnement, das mindestens einen der Cognitive Services-Dienste enthält, z. B. [Bing-Websuche](./bing-web-search/overview.md), [Speech-Dienste](./speech-service/overview.md) oder [LUIS](./luis/what-is-luis.md).
+Diese Anleitung enthält ausführliche Anweisungen zum Aktivieren der Diagnoseprotokollierung für Azure Cognitive Services. Diese Protokolle stellen umfassende, häufig verwendete Daten zu den Vorgängen einer Ressource bereit, die für die Ermittlung von Problemen und das Debuggen verwendet werden. Bevor Sie fortfahren, benötigen Sie ein Azure-Konto mit einem Abonnement, das mindestens einen der Cognitive Services-Dienste enthält, z. B. [Speech-Dienste](./speech-service/overview.md) oder [LUIS](./luis/what-is-luis.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -28,7 +28,8 @@ Sie benötigen zum Aktivieren der Diagnoseprotokollierung einen Speicherort für
 * [Log Analytics](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) ist ein flexibles Tool für die Protokollsuche und -analyse, mit dem Sie die unformatierten Protokolle von einer Azure-Ressource analysieren können.
 
 > [!NOTE]
-> Es stehen noch weitere Konfigurationsoptionen zur Verfügung. Weitere Informationen finden Sie unter [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../azure-monitor/essentials/platform-logs-overview.md).
+> * Es stehen noch weitere Konfigurationsoptionen zur Verfügung. Weitere Informationen finden Sie unter [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../azure-monitor/essentials/platform-logs-overview.md).
+> * „Trace“ ist in der Diagnoseprotokollierung nur für [benutzerdefinierte Fragen und Antworten](./qnamaker/how-to/get-analytics-knowledge-base.md?tabs=v2) verfügbar.
 
 ## <a name="enable-diagnostic-log-collection"></a>Aktivieren der Diagnoseprotokollierung  
 
@@ -37,7 +38,7 @@ Beginnen Sie mit dem Aktivieren der Diagnoseprotokollierung im Azure-Portal.
 > [!NOTE]
 > Um dieses Feature mithilfe von PowerShell oder der Azure-Befehlszeilenschnittstelle zu aktivieren, gehen Sie anhand der Anweisungen unter [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../azure-monitor/essentials/platform-logs-overview.md) vor.
 
-1. Navigieren Sie zum Azure-Portal. Suchen Sie anschließend eine Cognitive Services-Ressource, und wählen Sie sie aus. Sie können z. B. Ihr Abonnement für die Bing-Websuche verwenden.   
+1. Navigieren Sie zum Azure-Portal. Suchen Sie anschließend eine Cognitive Services-Ressource, und wählen Sie sie aus. Beispiel: Ihr Abonnement für Speech-Dienste.   
 2. Suchen Sie danach im Navigationsmenü auf der linken Seite nach **Überwachung**, und wählen Sie **Diagnoseeinstellungen** aus. Dieser Bildschirm enthält alle zuvor erstellten Diagnoseeinstellungen für diese Ressource.
 3. Wenn Sie eine zuvor erstellte Ressource verwenden möchten, können Sie diese nun auswählen. Wählen Sie andernfalls **+ Diagnoseeinstellung hinzufügen** aus.
 4. Geben Sie einen Namen für die Einstellung ein. Wählen Sie **In einem Speicherkonto archivieren** und dann **An Log Analytics senden** aus.

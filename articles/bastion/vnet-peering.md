@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 12/09/2020
+ms.date: 07/13/2021
 ms.author: cherylmc
-ms.openlocfilehash: d7f888c5bbb47a3690aee9b139d2516eb956a35f
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: ccbee86e8f5ae2ab514c8ec7ece4d41e1e890e4e
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110540383"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113733284"
 ---
 # <a name="vnet-peering-and-azure-bastion"></a>VNET-Peering und Azure Bastion
 
@@ -48,7 +48,7 @@ In dieser Abbildung ist die Architektur einer Azure Bastion-Bereitstellung in ei
 3. Damit Bastion im Dropdownmenü **Verbinden** angezeigt wird, müssen Sie unter **Subscription > global subscription** (Abonnement > Globales Abonnement) die Abonnements auswählen, auf die Sie Zugriff haben.
 4. Wählen Sie die VM aus, mit der Sie eine Verbindung herstellen möchten.
 5. Azure Bastion wird nahtlos über das Peering-VNET erkannt.
-6. Mit nur einem Klick wird die RDP- oder SSH-Sitzung im Browser geöffnet. Informationen zu den Grenzwerten für gleichzeitige RDP- und SSH-Sitzungen finden Sie unter [RDP- und SSH-Sitzungen](bastion-faq.md#limits).
+6. Mit nur einem Klick wird die RDP- oder SSH-Sitzung im Browser geöffnet.
 
   :::image type="content" source="../../includes/media/bastion-vm-rdp/connect-vm.png" alt-text="Herstellen einer Verbindung":::
 
@@ -59,7 +59,7 @@ In dieser Abbildung ist die Architektur einer Azure Bastion-Bereitstellung in ei
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 
-[!INCLUDE [FAQ for VNet peering](../../includes/bastion-faq-peering-include.md)]
+Häufig gestellte Fragen zum VNet-Peering finden Sie unter [Häufig gestellte Fragen zu Azure Bastion](bastion-faq.md#peering).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

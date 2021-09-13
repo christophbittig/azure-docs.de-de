@@ -25,25 +25,25 @@
   items:
     - name: '1: Erstellen/Verwalten einer Skalierungsgruppe'
       items:
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: tutorial-create-and-manage-cli.md
         - name: Azure PowerShell
           href: tutorial-create-and-manage-powershell.md
     - name: '2: Verwenden von Datenträgern'
       items:
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: tutorial-use-disks-cli.md
         - name: Azure PowerShell
           href: tutorial-use-disks-powershell.md
     - name: '3: Verwenden eines benutzerdefinierten VM-Images'
       items:
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: tutorial-use-custom-image-cli.md
         - name: Azure PowerShell
           href: tutorial-use-custom-image-powershell.md
     - name: '4: Bereitstellen von Apps in einer Skalierungsgruppe'
       items:
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: tutorial-install-apps-cli.md
         - name: Azure PowerShell
           href: tutorial-install-apps-powershell.md
@@ -51,7 +51,7 @@
           href: tutorial-install-apps-template.md
     - name: '5: Automatisches Skalieren einer Skalierungsgruppe'
       items:
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: tutorial-autoscale-cli.md
         - name: Azure PowerShell
           href: tutorial-autoscale-powershell.md
@@ -203,7 +203,7 @@
           href: ../virtual-machines/backup-and-disaster-recovery-for-azure-iaas-disks.md
           maintainContext: true
     - name: Netzwerk
-      href: ../virtual-machines/network-overview.md
+      href: ../virtual-network/network-overview.md
       maintainContext: true
     - name: Infrastrukturautomatisierung
       href: ../virtual-machines/infrastructure-automation.md
@@ -392,7 +392,7 @@
           maintainContext: true
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/vmss
     - name: Azure PowerShell
       href: /powershell/azure/

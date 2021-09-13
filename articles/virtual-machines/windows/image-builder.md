@@ -9,14 +9,16 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
-ms.openlocfilehash: 651a67414c34bcfae45663dd1bcfbd9d97e63598
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 32ed525aec3d7a6b9a223deb8aad0617751f61da
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444297"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123309996"
 ---
 # <a name="create-a-windows-vm-with-azure-image-builder"></a>Erstellen eines virtuellen Windows-Computers mit Azure Image Builder
+
+**Gilt für**: :heavy_check_mark: Windows VMs 
 
 In diesem Artikel erfahren Sie, wie Sie mit Azure VM Image Builder ein benutzerdefiniertes Windows-Image erstellen können. Im Beispiel in diesem Artikel werden [Anpassungen](../linux/image-builder-json.md#properties-customize) für das Image verwendet:
 - PowerShell (ScriptUri): lädt ein [PowerShell-Skript](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/testPsScript.ps1) herunter und führt es aus.
@@ -82,10 +84,10 @@ runOutputName=aibWindows
 imageName=aibWinImage
 ```
 
-Erstellen Sie eine Variable für Ihre Abonnement-ID. Diese können Sie mit `az account show | grep id` abrufen.
+Erstellen Sie eine Variable für Ihre Abonnement-ID.
 
 ```azurecli-interactive
-subscriptionID=<Your subscription ID>
+subscriptionID=$(az account show --query id --output tsv)
 ```
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 Diese Ressourcengruppe wird verwendet, um das Artefakt und Image der Imagekonfigurationsvorlage zu speichern.
@@ -101,11 +103,11 @@ Image Builder verwendet die angegebene [Benutzeridentität](../../active-directo
 ## <a name="create-user-assigned-managed-identity-and-grant-permissions"></a>Erstellen einer benutzerseitig zugewiesenen verwalteten Identität und Gewähren von Berechtigungen 
 ```bash
 # create user assigned identity for image builder to access the storage account where the script is located
-idenityName=aibBuiUserId$(date +'%s')
-az identity create -g $imageResourceGroup -n $idenityName
+identityName=aibBuiUserId$(date +'%s')
+az identity create -g $imageResourceGroup -n $identityName
 
 # get identity id
-imgBuilderCliId=$(az identity show -g $imageResourceGroup -n $idenityName | grep "clientId" | cut -c16- | tr -d '",')
+imgBuilderCliId=$(az identity show -g $imageResourceGroup -n $identityName --query clientId -o tsv)
 
 # get the user identity URI, needed for the template
 imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$idenityName
@@ -186,7 +188,7 @@ Gehen Sie folgendermaßen vor, wenn der Dienst während der Übermittlung der Im
 az resource delete \
     --resource-group $imageResourceGroup \
     --resource-type Microsoft.VirtualMachineImages/imageTemplates \
-    -n helloImageTemplateLinux01
+    -n helloImageTemplateWin01
 ```
 
 ## <a name="start-the-image-build"></a>Starten des Imagebuilds

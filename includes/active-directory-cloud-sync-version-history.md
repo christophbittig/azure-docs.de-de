@@ -1,14 +1,22 @@
 ---
-ms.openlocfilehash: 5208f497fc5423cd0e9c2343af2a5757088399b1
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: d7780da3ad23c0c157284839c5063c6c015a42a6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111449680"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121801195"
 ---
 In diesem Artikel werden die veröffentlichten Versionen und Features des Azure Active Directory Connect-Bereitstellungs-Agent aufgeführt. Das Azure AD-Team aktualisiert den Bereitstellungs-Agent regelmäßig mit neuen Features und Funktionen. 
 
 Microsoft stellt direkte Unterstützung für die neueste Agent-Version und die unmittelbare Vorgängerversion bereit.
+
+## <a name="115820"></a>1.1.582.0
+
+8\. August 2021 – Für den Download veröffentlicht
+
+>[!NOTE] 
+>Dies ist ein Sicherheitsupdaterelease von Azure AD Connect. Mit diesem Release soll wie in [diesem CVE-Bericht](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36949) dokumentiert ein Sicherheitsrisiko behoben werden. Weitere Informationen zu diesem Sicherheitsrisiko finden Sie im CVE-Bericht.
+>Sie können dieses Release über [diesen Link](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/provisioningAgentInstaller) herunterladen.
 
 ## <a name="113590"></a>1.1.359.0
 

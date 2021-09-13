@@ -4,18 +4,21 @@ description: Bearbeiten von Azure HPC Cache-Speicherzielen
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/29/2021
+ms.date: 06/30/2021
 ms.author: v-erkel
-ms.openlocfilehash: ebf68c1eb06984e2de8114c53e1bb55d52aed70a
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: e0100c9e184d1704d127e1ef5a33c2144e721a89
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107862631"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113587089"
 ---
 # <a name="edit-storage-targets"></a>Bearbeiten von Speicherzielen
 
-Sie können Speicherziele mithilfe des Azure-Portals oder der Azure CLI entfernen oder ändern.
+Sie können Speicherziele mithilfe des Azure-Portals oder der Azure CLI ändern. Beispielsweise können Sie Zugriffsrichtlinien, Nutzungsmodelle und Namespacepfade für ein vorhandenes Speicherziel ändern.
+
+> [!TIP]
+> Lesen Sie [Verwalten von Speicherzielen](manage-storage-targets.md), um zu erfahren, wie Sie Speicherziele löschen oder anhalten oder zwischengespeicherte Daten in den Back-End-Speicher schreiben lassen.
 
 Je nach Speichertyp können Sie die folgenden Werte für Speicherziele ändern:
 
@@ -30,53 +33,26 @@ Je nach Speichertyp können Sie die folgenden Werte für Speicherziele ändern:
 
 * Bei ADLS-NFS-Speicherzielen können Sie den Namespacepfad, die Zugriffsrichtlinie und das Nutzungsmodell ändern.
 
-Sie können den Namen, den Typ oder das Back-End-Speichersystem eines Speicherziels (Blobcontainer oder NFS-Hostname/IP-Adresse) nicht bearbeiten. Wenn Sie diese Eigenschaften ändern müssen, müssen Sie das Speicherziel löschen und einen Ersatz mit dem neuen Wert erstellen.
+Sie können den Namen, Typ oder das Back-End-Speichersystem eines Speicherziels nicht bearbeiten. Wenn Sie diese Eigenschaften ändern müssen, müssen Sie das Speicherziel löschen und einen Ersatz mit dem neuen Wert erstellen.
 
-> [!TIP]
-> Im [Video zur Verwaltung von Azure HPC Cache](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) wird gezeigt, wie Sie ein Speicherziel im Azure-Portal bearbeiten.
+Im [Video zur Verwaltung von Azure HPC Cache](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) wird gezeigt, wie Sie ein Speicherziel im Azure-Portal bearbeiten.
 
-## <a name="remove-a-storage-target"></a>Entfernen eines Speicherziels
-
-### <a name="portal"></a>[Portal](#tab/azure-portal)
-
-Wenn Sie ein Speicherziel entfernen möchten, öffnen Sie die Seite **Speicherziele**. Wählen Sie das Speicherziel aus der Liste aus, und klicken Sie auf die Schaltfläche **Löschen**.
-
-### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-
-[Einrichten der Azure CLI für Azure HPC Cache](./az-cli-prerequisites.md).
-
-Verwenden Sie [az hpc-cache storage-target remove](/cli/azure/hpc-cache/storage-target#az_hpc_cache_storage_target_remove), um ein Speicherziel aus dem Cache zu löschen.
-
-```azurecli
-$ az hpc-cache storage-target remove --resource-group cache-rg --cache-name doc-cache0629 --name blob1
-
-{- Finished ..
-  "endTime": "2020-07-09T21:45:06.1631571+00:00",
-  "name": "2f95eac1-aded-4860-b19c-3f089531a7ec",
-  "startTime": "2020-07-09T21:43:38.5461495+00:00",
-  "status": "Succeeded"
-}
-```
-
----
-
-Durch das Löschen eines Speicherziels wird die Zuordnung des Speichersystems zu diesem Azure HPC Cache-System entfernt, das Back-End-Speichersystem wird jedoch nicht geändert. Wenn Sie beispielsweise einen Azure Blob Storage-Container verwendet haben, sind der Container und sein Inhalt nach dem Löschen aus dem Cache weiterhin vorhanden. Im Azure-Portal können Sie den Container einer anderen Azure HPC Cache-Instanz hinzufügen, ihn erneut diesem Cache hinzufügen oder löschen.
-
-Alle im Cache gespeicherten Dateiänderungen werden in das Back-End-Speichersystem geschrieben, bevor das Speicherziel entfernt wird. Dieser Vorgang kann eine Stunde oder länger dauern, wenn sich viele geänderte Daten im Cache befinden.
-
-## <a name="change-a-blob-storage-targets-namespace-path"></a>Ändern des Namespacepfads eines Blobspeicherziels
+## <a name="change-a-blob-storage-targets-namespace-path-or-access-policy"></a>Ändern des Namespacepfads oder der Zugriffsrichtlinie eines Blobspeicherziels
 
 Bei Namespacepfaden handelt es sich um die Pfade, die Clients verwenden, um dieses Speicherziel einzubinden. Weitere Informationen finden Sie unter [Planen des aggregierten Namespace](hpc-cache-namespace.md) und [Einrichten des aggregierten Namespace](add-namespace-paths.md).
 
-Der Namespacepfad ist die einzige Aktualisierung, die Sie für ein Blobspeicherziel in Azure vornehmen können. Sie können das Azure-Portal oder die Azure CLI verwenden, um die Änderung vorzunehmen.
+Ändern Sie mit Azure-Portal oder Azure CLI den Namespacepfad oder die Zugriffsrichtlinie.
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Verwenden Sie die Seite **Namespace** für Ihre Azure HPC Cache-Instanz. Die Seite „Namespace“ wird im Artikel [Einrichten des aggregierten Namespace](add-namespace-paths.md) im Detail beschrieben.
+Aktualisieren Sie mit der Seite **Namespace** für Ihre Azure HPC Cache-Instanz den Namespacepfad oder die Clientzugriffsrichtlinie. Die Seite „Namespace“ wird im Artikel [Einrichten des aggregierten Namespace](add-namespace-paths.md) im Detail beschrieben.
 
-Klicken Sie auf den Namen des Pfads, den Sie ändern möchten, und erstellen Sie den neuen Pfad im Bearbeitungsfenster, das angezeigt wird.
+1. Klicken Sie auf den Pfad, den Sie ändern möchten.
+   ![Screenshot der Seite „Namespace“ mit dem Cursor über einem Element in der Spalte „Namespacepfad“ (erste Spalte links). Der Name ist als Link formatiert, und der Cursor gibt an, dass darauf geklickt werden kann.](media/edit-select-namespace.png)
 
-![Screenshot der Seite „Namespace“ nach dem Klicken auf einen Blob-Namespacepfad. Die Bearbeitungsfelder werden rechts in einem Bereich angezeigt.](media/update-namespace-blob.png)
+1. Verwenden Sie das Bearbeitungsfenster, um den neuen virtuellen Pfad einzugeben oder die Zugriffsrichtlinie zu aktualisieren.
+
+   ![Screenshot der Seite „Namespace“ nach dem Klicken auf einen Blobnamespacepfad. Die Bearbeitungsfelder werden rechts in einem Bereich angezeigt.](media/update-namespace-blob.png)
 
 Klicken Sie auf **OK**, nachdem Sie die Änderungen vorgenommen haben, um das Speicherziel zu aktualisieren, oder klicken Sie auf **Abbrechen**, um die Änderungen zu verwerfen.
 
@@ -97,23 +73,22 @@ Verwenden Sie den Befehl [az hpc-cache blob-storage-target update](/cli/azure/hp
 
 Bei NFS-Speicherzielen können Sie virtuelle Namespacepfade ändern oder hinzufügen, die Werte für den NFS-Export oder das Unterverzeichnis ändern, auf den ein Namespacepfad verweist, und das Nutzungsmodell ändern.
 
-Speicherziele in Caches mit bestimmten Typen von benutzerdefinierten DNS-Einstellungen verfügen auch über ein Steuerelement zum Aktualisieren Ihrer IP-Adressen. (Diese Art der Konfiguration ist selten.)
+Speicherziele in Caches mit bestimmten Typen von benutzerdefinierten DNS-Einstellungen verfügen auch über ein Steuerelement zum Aktualisieren Ihrer IP-Adressen. (Diese Art von Konfiguration ist selten.) Erfahren Sie, wie Sie die DNS-Einstellungen unter [Verwalten von Speicherzielen](manage-storage-targets.md#update-ip-address-custom-dns-configurations-only) aktualisieren.
 
 Details finden Sie unten:
 
 * [Ändern aggregierter Namespacewerte](#change-aggregated-namespace-values) (virtueller Namespacepfad, Zugriffsrichtlinie, Export und Exportunterverzeichnis)
 * [Ändern des Nutzungsmodells](#change-the-usage-model)
-* [DNS aktualisieren](#update-ip-address-custom-dns-configurations-only)
 
 ### <a name="change-aggregated-namespace-values"></a>Ändern aggregierter Namespacewerte
 
-Sie können das Azure-Portal oder die Azure CLI verwenden, um den clientseitigen Namespacepfad, den Speicherexport und das Exportunterverzeichnis (wenn verwendet) zu ändern.
+Sie können das Azure-Portal oder die Azure CLI verwenden, um den clientseitigen Namespacepfad, den Speicherexport und das Exportunterverzeichnis (wenn verwendet) zu ändern. Wenn Sie die Zugriffsrichtlinie ändern müssen, verwenden Sie das Azure-Portal.
 
 Lesen Sie die Anleitung unter [NFS-Namespacepfade](add-namespace-paths.md#nfs-namespace-paths), wenn Sie wissen möchten, wie Sie mehrere gültige Pfade für ein Speicherziel erstellen.
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Verwenden Sie die Seite **Namespace** für Ihre Azure HPC Cache-Instanz, um Namespacewerte zu aktualisieren. Diese Seite wird im Artikel [Einrichten des aggregierten Namespace](add-namespace-paths.md) im Detail beschrieben.
+Aktualisieren Sie mit der Seite **Namespace** für Ihre Azure HPC Cache-Instanz die Namespacewerte inklusive der Clientzugriffsrichtlinie. Diese Seite wird im Artikel [Einrichten des aggregierten Namespace](add-namespace-paths.md) im Detail beschrieben.
 
 ![Screenshot der Seite „Namespace“ im Portal mit der geöffneten NFS-Aktualisierungsseite rechts](media/update-namespace-nfs.png)
 
@@ -154,13 +129,13 @@ az hpc-cache nfs-storage-target update --cache-name mycache \
 Das Nutzungsmodell beeinflusst, wie Daten im Cache gespeichert werden. Weitere Informationen finden Sie unter [Grundlegendes zu Cache-Verwendungsmodellen](cache-usage-models.md).
 
 > [!NOTE]
-> Wenn Sie Verwendungsmodelle ändern, müssen Clients möglicherweise neu eingebunden werden, um NLM-Fehler zu vermeiden. Weitere Informationen finden Sie unter [Wissen, wann Clients für NLM erneut bereitgestellt werden müssen](cache-usage-models.md#know-when-to-remount-clients-for-nlm).
+> Sie können nicht zwischen **Umfangreiche, seltene Schreibvorgänge lesen** und anderen Nutzungsmodellen wechseln. Weitere Informationen finden Sie unter [Ändern von Nutzungsmodellen](cache-usage-models.md#change-usage-models).
 
 Wenn Sie das Nutzungsmodell für ein NFS-Speicherziel ändern möchten, verwenden Sie eine der folgenden Methoden.
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Ändern Sie das Nutzungsmodell auf der Seite **Speicherziele** im Azure-Portal. Klicken Sie auf den Namen des Speicherziels, das Sie ändern möchten.
+Öffnen Sie die Seite **Speicherziele** im Azure-Portal. Klicken Sie auf den Namen eines Speicherziels in der Liste, um die Bearbeitungsseite zu öffnen.
 
 ![Screenshot der Bearbeitungsseite für ein NFS-Speicherziel](media/edit-storage-nfs.png)
 
@@ -184,19 +159,7 @@ Wenn der Cache beendet wurde oder sich nicht in einem fehlerfreien Zustand befin
 
 ---
 
-### <a name="update-ip-address-custom-dns-configurations-only"></a>Aktualisieren der IP-Adresse (nur benutzerdefinierte DNS-Konfigurationen)
-
-Wenn im Cache eine nicht standardmäßige DNS-Konfiguration verwendet wird, wird möglicherweise die IP-Adresse Ihres NFS-Speicherziels aufgrund von Back-End-DNS-Änderungen geändert. Wenn die IP-Adresse des Back-End-Speichersystems vom DNS-Server geändert wird, verliert Azure HPC Cache möglicherweise den Zugriff auf das Speichersystem.
-
-Im Idealfall sollten Sie mit dem Manager des benutzerdefinierten DNS-Systems für Ihren Cache gemeinsam Updates planen, da der Speicher während dieser Änderungen nicht verfügbar ist.
-
-Wenn Sie die vom DNS bereitgestellte IP-Adresse eines Speicherziels aktualisieren müssen, finden Sie eine entsprechende Schaltfläche in der Liste der Speicherziele. Klicken Sie auf **DNS aktualisieren**, um beim benutzerdefinierten DNS-Server eine neue IP-Adresse abzufragen.
-
-![Screenshot der Liste der Speicherziele. Bei einem Speicherziel ist das Menü mit den drei Punkten in der letzten Spalte geöffnet und enthält die beiden Optionen „Löschen“ und „DNS aktualisieren“.](media/refresh-dns.png)
-
-Bei erfolgreicher Ausführung sollte das Update weniger als zwei Minuten dauern. Es kann immer nur ein Speicherziel gleichzeitig aktualisiert werden. Warten Sie, bis der vorherige Vorgang beendet wurde, bevor Sie den nächsten starten.
-
-## <a name="update-an-adls-nfs-storage-target-preview"></a>Aktualisieren eines ADLS-NFS-Speicherziels (VORSCHAU)
+## <a name="update-an-adls-nfs-storage-target"></a>Aktualisieren eines ADLS-NFS-Speicherziels
 
 Ähnlich wie bei NFS-Speicherzielen können Sie bei ADLS-NFS-Speicherzielen den Namespacepfad, die Zugriffsrichtlinie und das Nutzungsmodell ändern.
 
@@ -214,8 +177,8 @@ Verwenden Sie die Seite **Namespace** für Ihre Azure HPC Cache-Instanz, um Name
 
 Die Konfiguration für ADLS-NFS-Nutzungsmodelle ist mit der Auswahl des NFS-Nutzungsmodells identisch. Lesen Sie die Anleitung für das Portal unter [Ändern des Nutzungsmodells](#change-the-usage-model) im Abschnitt „NFS“ weiter oben. Weitere Tools zum Aktualisieren von ADLS-NFS-Speicherzielen sind in Entwicklung.
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu diesen Optionen finden Sie unter [Hinzufügen von Speicherzielen](hpc-cache-add-storage.md).
+* Informationen zum Beenden, Löschen und Leeren einzelner Speicherziele finden Sie unter [Verwalten von Speicherzielen](manage-storage-targets.md).
+* Weitere Informationen zu Speicherzieloptionen finden Sie unter [Hinzufügen von Speicherzielen](hpc-cache-add-storage.md).
 * Weitere Tipps zur Verwendung virtueller Pfade finden Sie unter [Planen des aggregierten Namespace](hpc-cache-namespace.md).

@@ -1,35 +1,31 @@
 ---
-title: Skript zum Aktivieren von Kdump in SAP HANA (große Instanzen) | Microsoft-Dokumentation
-description: Skript zum Aktivieren von Kdump in SAP HANA (große Instanzen) HLI-Typ I und HLI-Typ II
+title: Skript zum Aktivieren von kdump in SAP HANA (große Instanzen) | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie den kdump-Dienst in Azure HANA (große Instanzen) vom Typ I und Typ II aktivieren.
 services: virtual-machines-linux
 documentationcenter: ''
-author: prtyag
-manager: hrushib
+author: Ajayan1008
+manager: juergent
 editor: ''
 ms.service: virtual-machines-sap
 ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/30/2020
-ms.author: prtyag
+ms.date: 06/22/2021
+ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c33288f80a6375b6a0c5e77d928e4314147efe0a
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: 272ac309629c62ee9fc7d12236aac4b2c3106b8a
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110577308"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112540922"
 ---
-# <a name="kdump-for-sap-hana-on-azure-large-instances-hli"></a>Kdump für SAP HANA in Azure (große Instanzen) (HLI)
+# <a name="kdump-for-sap-hana-on-azure-large-instances"></a>kdump für SAP HANA in Azure (große Instanzen)
 
-Das Konfigurieren und Aktivieren von Kdump ist ein Schritt, der erforderlich ist, um Probleme mit Systemabstürzen zu beheben, die keine klare Ursache haben.
-Manchmal stürzt ein System unerwartet ab, ohne dass dies durch Hardware- oder Infrastrukturprobleme erklärt werden kann.
-In diesen Fällen kann es sich um ein Betriebssystem- oder Anwendungsproblem handeln. Mit Kdump unter SUSE kann ermittelt werden, warum ein System abgestürzt ist.
+In diesem Artikel erfahren Sie den kdump-Dienst in Azure HANA (große Instanzen) (HLI) vom **Typ I und Typ II** aktivieren.
 
-## <a name="enable-kdump-service"></a>Aktivieren des Kdump-Diensts
-
-In diesem Artikel wird das Aktivieren des Kdump-Diensts für große Azure HANA-Instanzen (**Typ I und Typ II**) behandelt.
+Das Konfigurieren und Aktivieren von Kdump ist erforderlich, um Probleme mit Systemabstürzen zu beheben, die keine klare Ursache haben. Manchmal kann ein Systemabsturz nicht durch Hardware- oder Infrastrukturprobleme erklärt werden. In solchen Fällen hat möglicherweise ein Betriebssystem oder eine Anwendung das Problem verursacht. Mit kdump kann SUSE den Grund für den Systemabsturz ermitteln.
 
 ## <a name="supported-skus"></a>Unterstützte SKUs
 
@@ -64,17 +60,18 @@ In diesem Artikel wird das Aktivieren des Kdump-Diensts für große Azure HANA-I
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Der Kdump-Dienst verwendet das `/var/crash`-Verzeichnis zum Schreiben von Absturzabbildern. Stellen Sie sicher, dass die Partition, die diesem Verzeichnis entspricht, über ausreichend Speicherplatz verfügt, um Absturzabbilder zu speichern.
+- Der kdump-Dienst verwendet das Verzeichnis `/var/crash` zum Schreiben von Absturzabbildern. Stellen Sie sicher, dass die Partition, die diesem Verzeichnis entspricht, über ausreichend Speicherplatz verfügt, um Absturzabbilder zu speichern.
 
 ## <a name="setup-details"></a>Details zur Konfiguration
 
-- Das Skript zum Aktivieren von Kdump finden Sie [hier](https://github.com/Azure/sap-hana-tools/blob/master/tools/enable-kdump.sh).
-> [!NOTE]
-> Dieses Skript wurde auf Grundlage unserer Lab-Einrichtung erstellt. Der Kunde muss sich zur weiteren Optimierung an den Betriebssystemhersteller wenden.
-> Für die neuen und vorhandenen Server wird eine separate LUN zum Speichern der Abbilder bereitgestellt, und das Skript übernimmt die Konfiguration des Dateisystems aus der LUN.
-> Microsoft ist nicht für die Analyse des Abbilds verantwortlich. Der Kunde muss ein Ticket beim Hersteller des Betriebssystems öffnen, um die Analyse durchführen zu lassen.
+- Das Skript zum Aktivieren von kdump finden Sie unter [Azure sap-hana-tools auf GitHub](https://github.com/Azure/sap-hana-tools/blob/master/tools/enable-kdump.sh).
 
-- Führen Sie dieses Skript mithilfe des folgenden Befehls in einer großen HANA-Instanz aus.
+> [!NOTE]
+> Dieses Skript basiert auf unserem Lab-Setup. Sie müssen sich an Ihren Betriebssystemanbieter wenden, um weitere Optimierungen zu erhalten.
+> Eine separate logische Einheitennummer (LUN) wird für neue und vorhandene Server zum Speichern der Absturzabbilder bereitgestellt. Ein Skript übernimmt die Konfiguration des Dateisystems aus der LUN.
+> Microsoft ist nicht für die Analyse des Abbilds verantwortlich. Sie müssen ein Ticket bei Ihrem Betriebssystemanbieter eröffnen, um es analysieren zu lassen.
+
+- Führen Sie dieses Skript mithilfe des folgenden Befehls in Ihrer großen HANA-Instanz aus.
 
     > [!NOTE]
     > Zur Ausführung dieses Befehls ist die sudo-Berechtigung erforderlich.
@@ -83,11 +80,11 @@ In diesem Artikel wird das Aktivieren des Kdump-Diensts für große Azure HANA-I
     sudo bash enable-kdump.sh
     ```
 
-- Wenn der Befehl ausgibt, dass Kdump erfolgreich aktiviert wurde, müssen Sie das System neu starten, damit die Änderungen übernommen werden.
+- Wenn die Ausgabe des Befehls anzeigt, dass kdump erfolgreich aktiviert ist, starten Sie das System neu, um die Änderungen zu übernehmen.
 
-- Wenn die Befehlsausgabe einen Fehlschlag angibt, wurde der Kdump-Dienst nicht aktiviert. In diesem Fall finden Sie weitere Informationen im Abschnitt [Supportprobleme](#support-issue).
+- Wenn in der Ausgabe des Befehls ein Vorgang fehlgeschlagen ist, ist der kdump-Dienst nicht aktiviert. In diesem Fall finden Sie weitere Informationen im folgenden Abschnitt [Probleme mit der Unterstützung](#support-issues).
 
-## <a name="test-kdump"></a>Testen von Kdump
+## <a name="test-kdump"></a>Testen von kdump
 
 > [!NOTE]
 >  Mit dem folgenden Vorgang werden ein Kernel-Absturz und ein Systemneustart ausgelöst.
@@ -100,11 +97,11 @@ In diesem Artikel wird das Aktivieren des Kdump-Diensts für große Azure HANA-I
 
 - Überprüfen Sie nach erfolgreichem Systemneustart, ob das `/var/crash`-Verzeichnis Kernel-Absturzprotokolle enthält.
 
-- Wenn `/var/crash` ein Verzeichnis mit dem aktuellen Datum enthält, wurde Kdump erfolgreich aktiviert.
+- Wenn `/var/crash` ein Verzeichnis mit dem aktuellen Datum enthält, wurde kdump erfolgreich aktiviert.
 
-## <a name="support-issue"></a>Supportprobleme
+## <a name="support-issues"></a>Probleme mit der Unterstützung
 
-Wenn das Skript mit einem Fehler fehlschlägt oder Kdump nicht aktiviert wurde, wenden Sie sich mit einem Service Request und den folgenden Informationen an das Microsoft-Supportteam.
+Wenn das Skript mit einem Fehler fehlschlägt oder kdump nicht aktiviert wurde, wenden Sie sich mit einem Service Request das Microsoft-Supportteam. Geben Sie die folgenden Details an:
 
 * HLI-Abonnement-ID
 
@@ -116,5 +113,11 @@ Wenn das Skript mit einem Fehler fehlschlägt oder Kdump nicht aktiviert wurde, 
 
 * Kernelversion
 
-## <a name="related-documents"></a>Verwandte Dokumente
-- Weitere Informationen zum [Konfigurieren von Kdump](https://www.suse.com/support/kb/doc/?id=3374462)
+Weitere Informationen finden Sie unter [Konfigurieren von kdump](https://www.suse.com/support/kb/doc/?id=3374462).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Erfahren Sie mehr über Betriebssystemupgrades auf HANA (große Instanzen).
+
+> [!div class="nextstepaction"]
+> [Betriebssystemupgrades](os-upgrade-hana-large-instance.md)

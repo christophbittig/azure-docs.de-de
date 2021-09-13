@@ -5,17 +5,17 @@ ms.topic: how-to
 manager: nitinme
 ms.author: lajanuar
 author: laujan
-ms.date: 03/05/2021
-ms.openlocfilehash: 32ad688a2b42f2699933f2e26aed44122f36ff40
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.date: 08/09/2021
+ms.openlocfilehash: 82070e6b10a1b0bffddb511545f54d369f6f99b8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111409575"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340000"
 ---
 # <a name="get-started-with-document-translation"></a>Erste Schritte bei der Dokumentübersetzung
 
- In diesem Artikel wird beschrieben, wie Sie die Dokumentübersetzung mit HTTP-REST-API-Methoden verwenden. Die Dokumentübersetzung ist ein cloudbasiertes Feature des [Azure-Textübersetzungsdiensts](../translator-info-overview.md).  Die API für die Dokumentübersetzung ermöglicht die Übersetzung gesamter Dokumente unter Beibehaltung der Struktur und Textformatierung des Quelldokuments.
+ In diesem Artikel wird beschrieben, wie Sie die Dokumentübersetzung mit HTTP-REST-API-Methoden verwenden. Die Dokumentübersetzung ist ein cloudbasiertes Feature des [Azure-Textübersetzungsdiensts](../translator-overview.md).  Die API für die Dokumentübersetzung ermöglicht die Übersetzung gesamter Dokumente unter Beibehaltung der Struktur und Textformatierung des Quelldokuments.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -29,11 +29,11 @@ Zunächst benötigen Sie Folgendes:
 
 * Ein aktives [**Azure-Konto**](https://azure.microsoft.com/free/cognitive-services/).  Falls Sie noch kein Konto haben, können Sie ein [**kostenloses Konto erstellen**](https://azure.microsoft.com/free/).
 
-* Eine [**Textübersetzungsdienst**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)-Ressource (**keine** Cognitive Services-Ressource).
+* Eine [**Textübersetzungsressource in Form eines einzelnen Diensts**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) (**keine** Cognitive Services-Ressource mit mehreren Diensten)
 
 * Ein [**Azure Blob Storage-Konto**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Sie erstellen Container zum Speichern und Organisieren Ihrer Blobdaten unter Ihrem Speicherkonto.
 
-## <a name="get-your-custom-domain-name-and-subscription-key"></a>Beschaffen des Namens Ihrer benutzerdefinierten Domäne und des Abonnementschlüssels
+## <a name="custom-domain-name-and-subscription-key"></a>Der Name Ihrer benutzerdefinierten Domäne und der Abonnementschlüssel
 
 > [!IMPORTANT]
 >
@@ -65,13 +65,15 @@ Für Anforderungen, die an den Textübersetzungsdienst gesendet werden, wird ein
 
 :::image type="content" source="../media/translator-keys.png" alt-text="Abbildung: Feld „Abonnementschlüssel“ im Azure-Portal":::
 
-## <a name="create-your-azure-blob-storage-containers"></a>Erstellen Ihrer Azure-Blobspeichercontainer
+## <a name="create-azure-blob-storage-containers"></a>Erstellen des Azure Blob Storage-Containers
 
-Sie müssen für Quell-, Ziel- und optionale Glossardateien unter Ihrem [**Azure-Blobspeicherkonto**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM) [**Container erstellen**](../../../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container).
+Für Quell- und Zieldateien müssen Sie in Ihrem [**Azure-Blobspeicherkonto**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM) [**Container erstellen**](../../../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container).
 
 * **Quellcontainer**: In diesen Container laden Sie Ihre Dateien für die Übersetzung hoch (erforderlich).
-* **Zielcontainer**: In diesem Container werden Ihre übersetzten Dateien gespeichert (erforderlich).  
-* **Glossarcontainer**: In diesen Container laden Sie Ihre Glossardateien hoch (optional).  
+* **Zielcontainer**: In diesem Container werden Ihre übersetzten Dateien gespeichert (erforderlich).
+
+> [!NOTE]
+> Die Dokumentübersetzung unterstützt Glossare als Blobs in Zielcontainern (keine separaten Glossarcontainer). Wenn Sie ein benutzerdefiniertes Glossar hinzufügen möchten, fügen Sie es dem Zielcontainer hinzu, und fügen Sie das ` glossaryUrl` in die Anforderung ein.  Wenn das Übersetzungssprachpaar nicht im Glossar vorhanden ist, wird es nicht angewendet. *Siehe dazu* [Übersetzen von Dokumenten mithilfe von benutzerdefinierten Glossaren](#translate-documents-using-a-custom-glossary).
 
 ### <a name="create-sas-access-tokens-for-document-translation"></a>**Erstellen von SAS-Zugriffstoken für die Dokumentübersetzung**
 
@@ -79,15 +81,123 @@ Die URLs `sourceUrl`, `targetUrl` und `glossaryUrl` (optional) müssen ein SAS-T
 
 * Ihr **Quellcontainer** oder Blob muss über Zugriff vom Typ **Lesen** und **Auflisten** verfügen.
 * Ihr **Zielcontainer** oder Blob muss über Zugriff vom Typ **Schreiben** und **Auflisten** verfügen.
-* Ihr **Glossarcontainer** oder Blob muss über Zugriff vom Typ **Lesen** und **Auflisten** verfügen.
+* Ihr **Glossar**-Blob muss über Zugriff vom Typ **Lesen** und **Auflisten** verfügen.
 
 > [!TIP]
 >
-> * Falls Sie **mehrere** Dateien (Blobs) während eines Vorgangs übersetzen, sollten Sie den **SAS-Zugriff auf Containerebene delegieren**.  
-> * Falls Sie **nur eine** Datei (Blob) während eines Vorgangs übersetzen, sollten Sie den **SAS-Zugriff auf Blobebene delegieren**.  
+> * Falls Sie **mehrere** Dateien (Blobs) während eines Vorgangs übersetzen, sollten Sie den **SAS-Zugriff auf Containerebene delegieren**.
+> * Falls Sie **nur eine** Datei (Blob) während eines Vorgangs übersetzen, sollten Sie den **SAS-Zugriff auf Blobebene delegieren**.
 >
 
-## <a name="set-up-your-coding-platform"></a>Einrichten der Codierungsplattform
+## <a name="document-translation-http-requests"></a>Dokumentübersetzung: HTTP-Anforderungen
+
+Eine Batchanforderung für die Dokumentübersetzung wird als POST-Anforderung an Ihren Endpunkt mit dem Textübersetzungsdienst gesendet. Wenn der Vorgang erfolgreich ist, gibt die POST-Methode den Antwortcode `202 Accepted` zurück, und die Batchanforderung wird vom Dienst erstellt.
+
+### <a name="http-headers"></a>HTTP-Header
+
+Jede Anforderung der API für die Dokumentübersetzung enthält die folgenden Header:
+
+|HTTP-Header|BESCHREIBUNG|
+|---|--|
+|Ocp-Apim-Subscription-Key|**Erforderlich**: Dieser Wert ist der Azure-Abonnementschlüssel für Ihre Textübersetzungs- oder Cognitive Services-Ressource.|
+|Content-Type|**Erforderlich**: Gibt den Inhaltstyp der Nutzdaten an. „application/json“ oder „charset=UTF-8“ werden als Werte akzeptiert.|
+|Content-Length|**Erforderlich**: Steht für die Länge des Anforderungstexts.|
+
+### <a name="post-request-body-properties"></a>Eigenschaften des POST-Anforderungstexts
+
+* Die URL für die POST-Anforderung lautet: POST `https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0/batches`.
+* Der POST-Anforderungstext ist ein JSON-Objekt mit dem Namen `inputs`.
+* Das Objekt `inputs` enthält die beiden Containeradressen für `sourceURL` und `targetURL` für Ihre Quell- und Zielsprachpaare.
+* Die Felder `prefix` und `suffix` (optional) werden verwendet, um Dokumente im Container zu filtern (einschließlich der Ordner).
+* Ein Wert für das Feld `glossaries` (optional) wird angewendet, wenn das Dokument übersetzt wird.
+* Die `targetUrl` für die einzelnen Zielsprachen muss jeweils eindeutig sein.
+
+>[!NOTE]
+> Wenn am Ziel bereits eine Datei mit dem gleichen Namen vorhanden ist, wird sie überschrieben.
+
+<!-- markdownlint-disable MD024 -->
+### <a name="translate-all-documents-in-a-container"></a>Übersetzen aller Dokumente in einem Container
+
+```json
+{
+    "inputs": [
+        {
+            "source": {
+                "sourceUrl": "https://my.blob.core.windows.net/source-en?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=SDRPMjE4nfrH3csmKLILkT%2Fv3e0Q6SWpssuuQl1NmfM%3D"
+            },
+            "targets": [
+                {
+                    "targetUrl": "https://my.blob.core.windows.net/target-fr?sv=2019-12-12&st=2021-03-05T17%3A49%3A02Z&se=2021-03-13T17%3A49%3A00Z&sr=c&sp=wdl&sig=Sq%2BYdNbhgbq4hLT0o1UUOsTnQJFU590sWYo4BOhhQhs%3D",
+                    "language": "fr"
+                }
+            ]
+        }
+    ]
+}
+```
+
+### <a name="translate-a-specific-document-in-a-container"></a>Übersetzen eines bestimmten Dokuments in einen Container
+
+* Stellen Sie sicher, dass Sie „storageType“: „File“ angegeben haben.
+* Stellen Sie sicher, dass Sie Glossar-URL- und SAS-Token für das spezifische Blob/Dokument (nicht für den Container) erstellt haben.
+* Stellen Sie sicher, dass Sie den Zieldateinamen als Teil der Ziel-URL angegeben haben – obwohl das SAS-Token für den Container noch immer vorhanden ist.
+* Die Beispielanforderung unten zeigt, wie ein einzelnes Dokument in zwei Zielsprachen übersetzt wird.
+
+```json
+{
+    "inputs": [
+        {
+            "storageType": "File",
+            "source": {
+                "sourceUrl": "https://my.blob.core.windows.net/source-en/source-english.docx?sv=2019-12-12&st=2021-01-26T18%3A30%3A20Z&se=2021-02-05T18%3A30%3A00Z&sr=c&sp=rl&sig=d7PZKyQsIeE6xb%2B1M4Yb56I%2FEEKoNIF65D%2Fs0IFsYcE%3D"
+            },
+            "targets": [
+                {
+                    "targetUrl": "https://my.blob.core.windows.net/target/try/Target-Spanish.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D",
+                    "language": "es"
+                },
+                {
+                    "targetUrl": "https://my.blob.core.windows.net/target/try/Target-German.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D",
+                    "language": "de"
+                }
+            ]
+        }
+    ]
+}
+```
+
+### <a name="translate-documents-using-a-custom-glossary"></a>Übersetzen von Dokumente mithilfe von benutzerdefinierten Glossaren
+
+```json
+{
+    "inputs": [
+        {
+            "source": {
+                "sourceUrl": "https://myblob.blob.core.windows.net/source",
+                "filter": {
+                    "prefix": "myfolder/"
+                }
+            },
+            "targets": [
+                {
+                    "targetUrl": "https://myblob.blob.core.windows.net/target",
+                    "language": "es",
+                    "glossaries": [
+                        {
+                            "glossaryUrl": "https:// myblob.blob.core.windows.net/glossary/en-es.xlf",
+                            "format": "xliff"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+```
+
+## <a name="use-code-to-submit-document-translation-requests"></a>Senden von Dokumentübersetzungsanforderungen mithilfe von Code
+
+### <a name="set-up-your-coding-platform"></a>Einrichten der Codierungsplattform
 
 ### <a name="c"></a>[C#](#tab/csharp)
 
@@ -105,7 +215,7 @@ Die URLs `sourceUrl`, `targetUrl` und `glossaryUrl` (optional) müssen ein SAS-T
 * Legen Sie Ihre URL-Werte für den Endpunkt, Abonnementschlüssel und Container fest.
 * Sie führen das Programm aus.
 
-### <a name="python"></a>[Python](#tab/python)  
+### <a name="python"></a>[Python](#tab/python)
 
 * Erstellen Sie ein neues Projekt.
 * Kopieren Sie den Code aus einem der Beispiele, und fügen Sie ihn in Ihr Projekt ein.
@@ -120,7 +230,7 @@ Die URLs `sourceUrl`, `targetUrl` und `glossaryUrl` (optional) müssen ein SAS-T
 mkdir sample-project
 ```
 
-* Erstellen Sie in Ihrem Projektverzeichnis die folgende Struktur mit Unterverzeichnissen:  
+* Erstellen Sie in Ihrem Projektverzeichnis die folgende Struktur mit Unterverzeichnissen:
 
   src</br>
 &emsp; └ main</br>
@@ -167,7 +277,7 @@ gradle build
 gradle run
 ```
 
-### <a name="go"></a>[Go](#tab/go)  
+### <a name="go"></a>[Go](#tab/go)
 
 * Erstellen Sie ein neues Go-Projekt.
 * Fügen Sie den unten stehenden Code hinzu.
@@ -178,87 +288,6 @@ gradle run
 * Führen Sie die Datei aus, beispielsweise mit „example-code“.
 
  ---
-
-## <a name="make-document-translation-requests"></a>Senden von Anforderungen an die Dokumentübersetzung
-
-Eine Batchanforderung für die Dokumentübersetzung wird als POST-Anforderung an Ihren Endpunkt mit dem Textübersetzungsdienst gesendet. Wenn der Vorgang erfolgreich ist, gibt die POST-Methode den Antwortcode `202 Accepted` zurück, und die Batchanforderung wird vom Dienst erstellt.
-
-### <a name="http-headers"></a>HTTP-Header
-
-Jede Anforderung der API für die Dokumentübersetzung enthält die folgenden Header:
-
-|HTTP-Header|BESCHREIBUNG|
-|---|--|
-|Ocp-Apim-Subscription-Key|**Erforderlich**: Dieser Wert ist der Azure-Abonnementschlüssel für Ihre Textübersetzungs- oder Cognitive Services-Ressource.|
-|Content-Type|**Erforderlich**: Gibt den Inhaltstyp der Nutzdaten an. „application/json“ oder „charset=UTF-8“ werden als Werte akzeptiert.|
-|Content-Length|**Erforderlich**: Steht für die Länge des Anforderungstexts.|
-
-### <a name="post-request-body-properties"></a>Eigenschaften des POST-Anforderungstexts
-
-* Die URL für die POST-Anforderung lautet: POST `https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0/batches`.
-* Der POST-Anforderungstext ist ein JSON-Objekt mit dem Namen `inputs`.
-* Das Objekt `inputs` enthält die beiden Containeradressen für `sourceURL` und `targetURL` für Ihre Quell- und Zielsprachpaare und kann optional auch eine Containeradresse für `glossaryURL` enthalten.
-* Die Felder `prefix` und `suffix` (optional) werden verwendet, um Dokumente im Container zu filtern (einschließlich der Ordner).
-* Ein Wert für das Feld `glossaries` (optional) wird angewendet, wenn das Dokument übersetzt wird.
-* Die `targetUrl` für die einzelnen Zielsprachen muss jeweils eindeutig sein.
-
->[!NOTE]
-> Wenn am Ziel bereits eine Datei mit dem gleichen Namen vorhanden ist, wird sie überschrieben.
-
-## <a name="post-a-translation-request"></a>Senden einer Übersetzungsanforderung (POST)
-
-<!-- markdownlint-disable MD024 -->
-### <a name="post-request-body-to-translate-all-documents-in-a-container"></a>POST-Anforderungstext zum Übersetzen aller Dokumente in einem Container
-
-```json
-{
-    "inputs": [
-        {
-            "source": {
-                "sourceUrl": "https://my.blob.core.windows.net/source-en?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=SDRPMjE4nfrH3csmKLILkT%2Fv3e0Q6SWpssuuQl1NmfM%3D"
-            },
-            "targets": [
-                {
-                    "targetUrl": "https://my.blob.core.windows.net/target-fr?sv=2019-12-12&st=2021-03-05T17%3A49%3A02Z&se=2021-03-13T17%3A49%3A00Z&sr=c&sp=wdl&sig=Sq%2BYdNbhgbq4hLT0o1UUOsTnQJFU590sWYo4BOhhQhs%3D",
-                    "language": "fr"
-                }
-            ]
-        }
-    ]
-}
-```
-
-
-### <a name="post-request-body-to-translate-a-specific-document-in-a-container"></a>POST-Anforderungs Text zum Übersetzen eines bestimmten Dokuments in einem Container
-
-* Stellen Sie sicher, dass Sie „storageType“: „File“ angegeben haben.
-* Stellen Sie sicher, dass Sie Glossar-URL- und SAS-Token für das spezifische Blob/Dokument (nicht für den Container) erstellt haben. 
-* Stellen Sie sicher, dass Sie den Zieldateinamen als Teil der Ziel-URL angegeben haben – obwohl das SAS-Token für den Container noch immer vorhanden ist.
-* Die Beispielanforderung unten zeigt, wie ein einzelnes Dokument in zwei Zielsprachen übersetzt wird.
-
-```json
-{
-    "inputs": [
-        {
-            "storageType": "File",
-            "source": {
-                "sourceUrl": "https://my.blob.core.windows.net/source-en/source-english.docx?sv=2019-12-12&st=2021-01-26T18%3A30%3A20Z&se=2021-02-05T18%3A30%3A00Z&sr=c&sp=rl&sig=d7PZKyQsIeE6xb%2B1M4Yb56I%2FEEKoNIF65D%2Fs0IFsYcE%3D"
-            },
-            "targets": [
-                {
-                    "targetUrl": "https://my.blob.core.windows.net/target/try/Target-Spanish.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D",
-                    "language": "es"
-                },
-                {
-                    "targetUrl": "https://my.blob.core.windows.net/target/try/Target-German.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D",
-                    "language": "de"
-                }
-            ]
-        }
-    ]
-}
-```
-
 
 > [!IMPORTANT]
 >
@@ -286,9 +315,7 @@ Operation-Location   | https://<<span>NAME-OF-YOUR-RESOURCE>.cognitiveservices.a
 
 >
 
-## <a name="_post-document-translation_-request"></a>Anforderung für _Dokumentübersetzung (POST)_
-
-Übermitteln Sie eine Batchanforderung für die Dokumentübersetzung an den Übersetzungsdienst.
+ ## <a name="translate-documents"></a>Übersetzen von Dokumenten
 
 ### <a name="c"></a>[C#](#tab/csharp)
 
@@ -298,7 +325,7 @@ Operation-Location   | https://<<span>NAME-OF-YOUR-RESOURCE>.cognitiveservices.a
     using System.Net.Http;
     using System.Threading.Tasks;
     using System.Text;
-    
+
 
     class Program
     {
@@ -310,27 +337,27 @@ Operation-Location   | https://<<span>NAME-OF-YOUR-RESOURCE>.cognitiveservices.a
         private static readonly string subscriptionKey = "<YOUR-SUBSCRIPTION-KEY>";
 
         static readonly string json = ("{\"inputs\": [{\"source\": {\"sourceUrl\": \"https://YOUR-SOURCE-URL-WITH-READ-LIST-ACCESS-SAS\",\"storageSource\": \"AzureBlob\",\"language\": \"en\",\"filter\":{\"prefix\": \"Demo_1/\"} }, \"targets\": [{\"targetUrl\": \"https://YOUR-TARGET-URL-WITH-WRITE-LIST-ACCESS-SAS\",\"storageSource\": \"AzureBlob\",\"category\": \"general\",\"language\": \"es\"}]}]}");
-        
+
         static async Task Main(string[] args)
         {
             using HttpClient client = new HttpClient();
             using HttpRequestMessage request = new HttpRequestMessage();
             {
-            
+
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 request.Method = HttpMethod.Post;
                 request.RequestUri = new Uri(endpoint + route);
                 request.Headers.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
                 request.Content = content;
-                
+
                 HttpResponseMessage  response = await client.SendAsync(request);
                 string result = response.Content.ReadAsStringAsync().Result;
                 if (response.IsSuccessStatusCode)
                 {
                     Console.WriteLine($"Status code: {response.StatusCode}");
                     Console.WriteLine();
-                    Console.WriteLine($"Response Headers:"); 
+                    Console.WriteLine($"Response Headers:");
                     Console.WriteLine(response.Headers);
                 }
                 else
@@ -519,14 +546,14 @@ if err != nil {
 
 ---
 
-## <a name="_get-file-formats_"></a>_Abrufen von Dateiformaten (GET)_ 
+## <a name="get-file-formats"></a>Abrufen von Dateiformaten
 
 Rufen Sie eine Liste mit den unterstützten Dateiformaten ab. Wenn der Vorgang erfolgreich ist, wird mit dieser Methode der Antwortcode `200 OK` zurückgegeben.
 
 ### <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
-   
+
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -577,7 +604,7 @@ let route = '/documents/formats';
 let config = {
   method: 'get',
   url: endpoint + route,
-  headers: { 
+  headers: {
     'Ocp-Apim-Subscription-Key': subscriptionKey
   }
 };
@@ -610,7 +637,7 @@ public class GetFileFormats {
     public void get() throws IOException {
         Request request = new Request.Builder().url(
                 url).method("GET", null).addHeader("Ocp-Apim-Subscription-Key", subscriptionKey).build();
-        Response response = client.newCall(request).execute(); 
+        Response response = client.newCall(request).execute();
             System.out.println(response.body().string());
         }
 
@@ -696,7 +723,7 @@ func main() {
 
 ---
 
-## <a name="_get-job-status_"></a>_Abrufen des Auftragsstatus (GET)_ 
+## <a name="get-job-status"></a>Abrufen des Auftragsstatus
 
 Rufen Sie den aktuellen Status für einen bestimmten Auftrag und eine Zusammenfassung aller Aufträge in einer Anforderung der Dokumentübersetzung ab. Wenn der Vorgang erfolgreich ist, wird mit dieser Methode der Antwortcode `200 OK` zurückgegeben.
 <!-- markdownlint-disable MD024 -->
@@ -704,7 +731,7 @@ Rufen Sie den aktuellen Status für einen bestimmten Auftrag und eine Zusammenfa
 ### <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
-   
+
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -755,7 +782,7 @@ let route = '/batches/{id}';
 let config = {
   method: 'get',
   url: endpoint + route,
-  headers: { 
+  headers: {
     'Ocp-Apim-Subscription-Key': subscriptionKey
   }
 };
@@ -789,7 +816,7 @@ public class GetJobStatus {
     public void get() throws IOException {
         Request request = new Request.Builder().url(
                 url).method("GET", null).addHeader("Ocp-Apim-Subscription-Key", subscriptionKey).build();
-        Response response = client.newCall(request).execute(); 
+        Response response = client.newCall(request).execute();
             System.out.println(response.body().string());
         }
 
@@ -875,7 +902,7 @@ func main() {
 
 ---
 
-## <a name="_get-document-status_"></a>_Abrufen des Dokumentstatus (GET)_
+## <a name="get-document-status"></a>Abrufen des Dokumentstatus
 
 ### <a name="brief-overview"></a>Kurze Übersicht
 
@@ -884,7 +911,7 @@ Rufen Sie den Status eines bestimmten Dokuments in einer Anforderung der Dokumen
 ### <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
-   
+
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -935,7 +962,7 @@ let route = '/{id}/document/{documentId}';
 let config = {
   method: 'get',
   url: endpoint + route,
-  headers: { 
+  headers: {
     'Ocp-Apim-Subscription-Key': subscriptionKey
   }
 };
@@ -969,7 +996,7 @@ public class GetDocumentStatus {
     public void get() throws IOException {
         Request request = new Request.Builder().url(
                 url).method("GET", null).addHeader("Ocp-Apim-Subscription-Key", subscriptionKey).build();
-        Response response = client.newCall(request).execute(); 
+        Response response = client.newCall(request).execute();
             System.out.println(response.body().string());
         }
 
@@ -1055,7 +1082,7 @@ func main() {
 
 ---
 
-## <a name="_delete-job_"></a>_Löschen des Auftrags (DELETE)_ 
+## <a name="delete-job"></a>Auftrag löschen
 
 ### <a name="brief-overview"></a>Kurze Übersicht
 
@@ -1064,7 +1091,7 @@ Brechen Sie den derzeit ausgeführten oder einen in die Warteschlange eingereiht
 ### <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
-   
+
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -1115,7 +1142,7 @@ let route = '/batches/{id}';
 let config = {
   method: 'delete',
   url: endpoint + route,
-  headers: { 
+  headers: {
     'Ocp-Apim-Subscription-Key': subscriptionKey
   }
 };
@@ -1149,7 +1176,7 @@ public class DeleteJob {
     public void get() throws IOException {
         Request request = new Request.Builder().url(
                 url).method("DELETE", null).addHeader("Ocp-Apim-Subscription-Key", subscriptionKey).build();
-        Response response = client.newCall(request).execute(); 
+        Response response = client.newCall(request).execute();
             System.out.println(response.body().string());
         }
 
@@ -1248,6 +1275,18 @@ In der folgenden Tabelle sind die Grenzwerte für Daten aufgelistet, die Sie an 
 |Größe der Übersetzungsspeicherdatei| ≤ 10 MB|
 
 Die Dokumentübersetzung kann nicht verwendet werden, um geschützte Dokumente zu übersetzen, z. B. Dokumente mit einem verschlüsselten Kennwort oder eingeschränktem Zugriff zum Kopieren von Inhalten.
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+### <a name="common-http-status-codes"></a>Allgemeine HTTP-Statuscodes
+
+| HTTP-Statuscode | BESCHREIBUNG | Mögliche Ursache |
+|------------------|-------------|-----------------|
+| 200 | OK | Die Anforderung wurde erfolgreich gesendet. |
+| 400 | Ungültige Anforderung | Ein erforderlicher Parameter fehlt, ist leer oder Null. Oder der an einen erforderlichen oder optionalen Parameter übergebene Wert ist ungültig. Ein häufiges Problem sind zu lange Kopfzeilen. |
+| 401 | Nicht autorisiert | Die Anforderung ist nicht autorisiert. Stellen Sie sicher, dass Ihr Abonnementschlüssel oder -token gültig ist und sich in der richtigen Region befindet. Achten Sie bei der Verwaltung Ihres Abonnements im Azure-Portal darauf, dass Sie die **Textübersetzungsressource** (einzelner Dienst) nutzen und _nicht_ die **Cognitive Services-Ressource** (mehrere Dienste).
+| 429 | Zu viele Anforderungen | Sie haben das Kontingent oder die Rate der Anforderungen überschritten, das bzw. die für Ihr Abonnement zulässig ist. |
+| 502 | Ungültiges Gateway    | Netzwerk- oder serverseitiges Problem. Kann auch auf ungültige Header hinweisen. |
 
 ## <a name="learn-more"></a>Erfahren Sie mehr
 

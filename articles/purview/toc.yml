@@ -28,18 +28,6 @@ items:
             href: tutorial-data-sources-readiness.md
           - name: Azure Purview MSI-Konfiguration im großen Stil
             href: tutorial-msi-configuration.md
-      - name: "Starter\_Kit"
-        items:
-          - name: Daten scannen
-            href: tutorial-scan-data.md
-          - name: Auf der Startseite navigieren und suchen
-            href: tutorial-asset-search.md
-          - name: Ressourcen durchsuchen und Herkunft anzeigen
-            href: tutorial-browse-and-view-lineage.md
-          - name: 'Ressourcensätze, Ressourcen, Schemas, Klassifizierungen erkunden'
-            href: tutorial-schemas-and-classifications.md
-          - name: Glossarbegriffe erstellen
-            href: tutorial-import-create-glossary-terms.md
       - name: Lokalen SQL-Server registrieren und scannen
         href: register-scan-on-premises-sql-server.md
       - name: Aufrufen der REST-APIs für den Katalog

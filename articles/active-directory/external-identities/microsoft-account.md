@@ -1,26 +1,23 @@
 ---
-title: Microsoft-Konto (MSA)-Identitätsanbieter in Azure AD
+title: „Microsoft-Konto“-Identitätsanbieter (MSA) in Azure AD
 description: Verwenden Sie Azure AD, um es einem externen Benutzer (Gast) zu ermöglichen, sich mit seinem Microsoft-Konto (MSA) bei Ihren Azure AD-Apps anzumelden.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 08/09/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25d3380277d0e653fd5cb03069b7d91cb363dd95
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2333ba6aec10d124d960dfc746bc9df2c449f3bb
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101692900"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122342706"
 ---
-# <a name="microsoft-account-msa-identity-provider-for-external-identities-preview"></a>Microsoft-Konto (MSA)-Identitätsanbieter für External Identities (Vorschauversion)
-
-> [!NOTE]
-> Der Microsoft-Konto-Identitätsanbieter ist eine öffentliche Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="microsoft-account-msa-identity-provider-for-external-identities"></a>„Microsoft-Konto“-Identitätsanbieter (MSA) für External Identities
 
 Ihre B2B-Gastbenutzer können ihre eigenen persönlichen Microsoft-Konten ohne weitere Konfiguration für B2B Collaboration verwenden. Gastbenutzer können Ihre B2B Collaboration-Einladungen einlösen oder Ihre Benutzerflows zur Registrierung mit ihrem persönlichen Microsoft-Konto durchführen.
 
@@ -43,6 +40,14 @@ Wenn Sie einen [Gastbenutzer zu B2B Collaboration einladen](add-users-administr
 „Microsoft-Konto“ ist einer der verfügbaren Identitätsanbieter für Ihre Benutzerflows für die Self-Service-Registrierung. Benutzer können sich mit ihren eigenen Microsoft-Konten für Ihre Anwendungen registrieren. Zunächst müssen Sie für Ihren Mandanten die [Self-Service-Registrierung aktivieren](self-service-sign-up-user-flow.md). Danach können Sie einen Benutzerflow für die Anwendung einrichten und „Microsoft-Konto“ als eine der Anmeldeoptionen auswählen.
 
 ![„Microsoft-Konto“ in einem Benutzerflow für die Self-Service-Registrierung](media/microsoft-account/microsoft-account-user-flow.png)
+
+## <a name="verifying-the-applications-publisher-domain"></a>Überprüfen der Herausgeberdomäne einer Anwendung
+Ab November 2020 werden neue Anwendungsregistrierungen in der Benutzereinwilligungsaufforderung als nicht überprüft angezeigt, es sei denn, [die Herausgeberdomäne der Anwendung wurde überprüft](../develop/howto-configure-publisher-domain.md) ***und*** die Identität des Unternehmens wurde durch das Microsoft Partner Network überprüft und der Anwendung zugeordnet. ([Weitere Informationen](../develop/publisher-verification-overview.md) zu diesen Änderungen) Beachten Sie, dass für Azure AD-Benutzerflows die Domäne des Herausgebers nur angezeigt wird, wenn ein Microsoft-Konto oder ein anderer [Azure AD-Mandant](azure-ad-account.md) als Identitätsanbieter verwendet wird. Gehen Sie wie folgt vor, um diese neuen Anforderungen zu erfüllen:
+
+1. [Überprüfen Sie Ihre Unternehmensidentität mit ihrem Microsoft Partner Network-Konto (MPN)](/partner-center/verification-responses). Bei diesem Prozess werden Informationen zu Ihrem Unternehmen und zum primären Kontakt Ihres Unternehmens überprüft.
+1. Schließen Sie die Herausgeberüberprüfung ab, um mithilfe einer der folgenden Optionen Ihr MPN-Konto Ihrer App-Registrierung zuzuordnen:
+   - Wenn die App-Registrierung für den Microsoft-Konto-Identitätsanbieter in einem Azure AD-Mandanten ist, [überprüfen Sie Ihre App im App-Registrierungsportal.](../develop/mark-app-as-publisher-verified.md)
+   - Wenn sich Ihre App-Registrierung für den Microsoft-Konto-Identitätsanbieter in einem Azure AD B2C-Mandanten befindet, [markieren Sie Ihre App mithilfe von Microsoft Graph-APIs als vom Herausgeber verifiziert](../develop/troubleshoot-publisher-verification.md#making-microsoft-graph-api-calls) (z. B. mithilfe von Graph-Tester).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

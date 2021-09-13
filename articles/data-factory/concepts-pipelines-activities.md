@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
-ms.openlocfilehash: 135d9235a94dd22311a804ee8c20046d2608a95c
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 06/19/2021
+ms.openlocfilehash: b86ae322999441fb4411854e8e11879907ed514f
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822220"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351235"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory-and-azure-synapse-analytics"></a>Pipelines und Aktivitäten in Azure Data Factory und Azure Synapse Analytics
 
@@ -106,7 +106,7 @@ Eine Pipeline wird wie folgt im JSON-Format definiert:
 }
 ```
 
-Tag | BESCHREIBUNG | Typ | Erforderlich
+Tag | BESCHREIBUNG | type | Erforderlich
 --- | ----------- | ---- | --------
 name | Name der Pipeline. Geben Sie einen Namen an, der die Aktion darstellt, die die Pipeline durchführt. <br/><ul><li>Maximale Anzahl von Zeichen: 140</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (\_) beginnen.</li><li>Folgende Zeichen sind nicht zulässig: “.”, “+”, “?”, “/”, “<”,”>”,”*”,”%”,”&”,”:”,” \" </li></ul> | String | Ja
 description | Geben Sie den Text an, der beschreibt, wofür die Pipeline verwendet wird. | String | Nein

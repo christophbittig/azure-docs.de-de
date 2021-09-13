@@ -1,7 +1,7 @@
 ---
 title: Konzepte der Gesichtserkennung
 titleSuffix: Azure Cognitive Services
-description: In diesem Artikel werden Konzepte der Vorgänge Verify, Find Similar, Group und Identify für die Gesichtserkennung und die zugrunde liegenden Datenstrukturen erläutert.
+description: In diesem Artikel werden das Konzept der Gesichtserkennung, die zugehörigen Vorgänge und die zugrunde liegenden Datenstrukturen erläutert.
 services: cognitive-services
 author: PatrickFarley
 manager: nitime
@@ -10,18 +10,18 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pafarley
-ms.openlocfilehash: 00dadf8a91b7ed01ab9f91933d296744305a95af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f22e48c869ebc2cf4101127f3d87cc7836da35d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "92518805"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340099"
 ---
 # <a name="face-recognition-concepts"></a>Konzepte der Gesichtserkennung
 
-In diesem Artikel werden Konzepte der Vorgänge Verify, Find Similar, Group und Identify für die Gesichtserkennung und die zugrunde liegenden Datenstrukturen erläutert. Ganz allgemein beschreibt die Erkennung den Vergleich von zwei unterschiedlichen Gesichtern, um zu ermitteln, ob sie sich ähneln oder zu derselben Person gehören.
+In diesem Artikel werden das Konzept der Gesichtserkennung, die zugehörigen Vorgänge und die zugrunde liegenden Datenstrukturen erläutert. Im Allgemeinen bezieht sich die Gesichtserkennung auf die Methode zum Überprüfen oder Identifizieren einer Person anhand ihres Gesichts. Bei der Überprüfung handelt es sich um einen 1:1-Abgleich, der zwei Gesichter erfasst und zurückgibt, ob es sich um das gleiche Gesicht handelt. Die Identifizierung ist ein 1:n-Abgleich, der ein einzelnes Gesicht als Eingabe annimmt und eine Reihe übereinstimmender Kandidaten zurückgibt. Die Gesichtserkennung ist wichtig bei der Implementierung des Identitätsüberprüfungsszenarios, das Unternehmen und Apps verwenden, um zu überprüfen, ob ein (Remote-)Benutzer die Person ist, die er zu sein angibt.
 
-## <a name="recognition-related-data-structures"></a>Erkennungsbezogene Datenstrukturen
+## <a name="related-data-structures"></a>Verwandte Datenstrukturen
 
 Bei den Erkennungsvorgängen werden hauptsächlich die folgenden Datenstrukturen verwendet. Diese Objekte werden in der Cloud gespeichert und durch ihre ID-Zeichenfolgen referenziert. Die ID-Zeichenfolgen sind innerhalb eines Abonnements immer eindeutig. Namensfelder können doppelt vorkommen.
 
@@ -35,23 +35,23 @@ Bei den Erkennungsvorgängen werden hauptsächlich die folgenden Datenstrukturen
 
 ## <a name="recognition-operations"></a>Erkennungsvorgänge
 
-In diesem Abschnitt wird beschrieben, wie die vier Erkennungsvorgänge die zuvor beschriebenen Datenstrukturen verwenden. Eine umfassende Beschreibung der einzelnen Erkennungsvorgänge finden Sie in der [Übersicht](../Overview.md).
+In diesem Abschnitt wird erläutert, wie die zugrunde liegenden Vorgänge die zuvor beschriebenen Datenstrukturen verwenden, um ein Gesicht zu identifizieren und zu überprüfen.
 
-### <a name="verify"></a>Überprüfen
+### <a name="persongroup-creation-and-training"></a>Erstellen und Trainieren von PersonGroups
 
-Der Vorgang [Verify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) akzeptiert eine Gesichtserkennungs-ID von DetectedFace oder PersistedFace und entweder eine andere Gesichtserkennungs-ID oder ein Person-Objekt und ermittelt, ob sie zu derselben Person gehören. Wenn Sie ein Person-Objekt übergeben, können Sie optional eine PersonGroup übergeben, zu der diese Person gehört, um die Leistung zu verbessern.
+Sie müssen eine [PersonGroup](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) oder [LargePersonGroup](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d) erstellen, um die Personen zu speichern, mit denen ein Abgleich durchgeführt werden soll. PersonGroups enthalten [Person](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)-Objekte, die jeweils eine einzelne Person darstellen und Gesichtsdaten enthalten, die zu dieser Person gehören.
 
-### <a name="find-similar"></a>Suchen von Ähnlichem
+Der [Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249)-Vorgang bereitet das DataSet für die Verwendung in Gesichtsdatenvergleichen vor.
 
-Der Vorgang [Find similar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) akzeptiert eine Gesichtserkennungs-ID von DetectedFace oder PersistedFace und entweder eine FaceList oder ein Array von anderen Gesichtserkennungs-IDs. Mit einer FaceList wird eine kleinere FaceList von Gesichtern zurückgegeben, die dem angegebenen Gesicht ähneln. Mit einem Array von Gesichtserkennungs-IDs wird ebenfalls ein kleineres Array zurückgegeben.
+### <a name="identification"></a>Identifikation
 
-### <a name="group"></a>Group
+Der [Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)-Vorgang nimmt eine oder mehrere Quellgesichts-IDs (aus einem DetectedFace- oder PersistedFace-Objekt) und eine PersonGroup oder LargePersonGroup an. Es wird eine Liste der Person-Objekte zurückgegeben, zu denen jedes Quellgesichtsobjekt gehören kann. Die zurückgegebenen Person-Objekte werden als Candidate-Objekte umschlossen und erhalten einen Zuverlässigkeitswert für die Vorhersage.
 
-Der Vorgang [Group](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238) akzeptiert ein Array von verschiedenen Gesichtserkennungs-IDs von DetectedFace oder PersistedFace und gibt die gleichen IDs gruppiert in mehreren kleineren Arrays zurück. Jedes gruppierte Array enthält Gesichtserkennungs-IDs, die ähnlich erscheinen. Ein einzelnes messyGroup-Array enthält Gesichtserkennungs-IDs, für die keine Ähnlichkeiten gefunden wurden.
 
-### <a name="identify"></a>Identify
+### <a name="verification"></a>Überprüfung
 
-Der Vorgang [Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) akzeptiert eine oder mehrere Gesichtserkennungs-IDs von DetectedFace oder PersistedFace und eine PersonGroup und gibt eine Liste von Person-Objekten zurück, zu denen jedes Gesicht gehören könnte. Die zurückgegebenen Person-Objekte werden als Candidate-Objekte umschlossen und erhalten einen Zuverlässigkeitswert für die Vorhersage.
+Der [Verify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)-Vorgang nimmt eine Quellgesichts-ID (aus einem DetectedFace- oder PersistedFace-Objekt) und ein Person-Objekt an. Er bestimmt, ob das Gesicht zu derselben Person gehört. Die Verifizierung ist ein 1:1-Abgleich und kann als abschließende Überprüfung der Ergebnisse des Identify-API-Aufrufs verwendet werden. Sie können jedoch optional die PersonGroup übergeben, zu der die Person gehört, um die API-Leistung zu verbessern.
+
 
 ## <a name="input-data"></a>Eingabedaten
 

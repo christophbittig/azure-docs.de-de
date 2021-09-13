@@ -3,19 +3,19 @@ title: Vorbereiten von Daten für Custom Speech – Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: Wenn Sie die Genauigkeit der Spracherkennung von Microsoft testen oder Ihre benutzerdefinierten Modelle trainieren möchten, benötigen Sie Audio- und Textdaten. Auf dieser Seite werden die einzelnen Datentypen, ihre Verwendung und ihre Verwaltung beschrieben.
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
-ms.author: trbye
-ms.openlocfilehash: 991268aff1b74f8e1990c106fa40b3f3fadd4145
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.author: lajanuar
+ms.openlocfilehash: e4c5efc165c864576191b6d74030d1dc2f5dc2a5
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108769271"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122343674"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Vorbereiten von Daten für Custom Speech
 
@@ -49,9 +49,9 @@ Die folgende Tabelle enthält die zulässigen Datentypen, gibt an, wann der jewe
 | Datentyp | Zum Testen verwendet | Empfohlene Menge | Für Training verwendet | Empfohlene Menge |
 |-----------|-----------------|----------|-------------------|----------|
 | [Audio](#audio-data-for-testing) | Ja<br>Zur visuellen Prüfung verwendet | Mindestens 5 Audiodateien | Nein | – |
-| [Audio + menschenmarkierte Transkripte](#audio-and-human-labeled-transcript-data) | Ja<br>Zur Bewertung der Genauigkeit verwendet | 0,5 – 5 Stunden Audio | Ja | 1–20 Stunden Audiodaten |
 | [Nur-Text](#plain-text-data-for-training) | Nein | Nicht zutreffend | Ja | 1 – 200 MB zugehöriger Text |
 | [Aussprache](#pronunciation-data-for-training) | Nein | Nicht zutreffend | Ja | 1 KB – 1 MB Aussprachetext |
+| [Audio + menschenmarkierte Transkripte](#audio-and-human-labeled-transcript-data) | Ja<br>Zur Bewertung der Genauigkeit verwendet | 0,5 – 5 Stunden Audio | Ja | 1–20 Stunden Audiodaten |
 
 Dateien sollten nach Typ in einem Dataset gruppiert und als ZIP-Datei hochgeladen werden. Jedes Dataset darf nur einen einzelnen Datentyp enthalten.
 
@@ -78,53 +78,6 @@ Nach dem Hochladen des Datasets haben Sie verschiedene Möglichkeiten:
 * Sie können zur Registerkarte **Benutzerdefinierte Modelle trainieren** navigieren, um ein benutzerdefiniertes Modell zu trainieren.
 * Sie können zur Registerkarte **Testmodelle** navigieren, um die Qualität nur mit Audiodaten visuell zu überprüfen oder die Genauigkeit mit Audio- und Humantranskriptionsdaten auszuwerten.
 
-
-## <a name="audio-and-human-labeled-transcript-data"></a>Audio- und Humantranskriptionsdaten
-
-Audio- und Humantranskriptionsdaten können sowohl zu Trainings- als auch zu Testzwecken verwendet werden. Um die akustischen Aspekte wie geringfügige Akzente, Sprechweisen, Hintergrundgeräusche oder die Genauigkeit der Spracherkennung von Microsoft bei der Verarbeitung Ihrer Audiodateien zu verbessern, müssen Sie Humantranskriptionen (Wort für Wort) für den Vergleich bereitstellen. Zwar ist das Erstellen einer menschenmarkierten Transkription oft sehr zeitaufwendig, doch wird sie benötigt, um die Genauigkeit zu bewerten und das Modell für Ihre Anwendungsfälle zu trainieren. Denken Sie daran, dass die Verbesserung der Erkennung nur so gut ist wie die bereitgestellten Daten. Aus diesem Grund ist es wichtig, dass nur qualitativ hochwertige Transkripte hochgeladen werden.
-
-Audiodateien können am Anfang und am Ende der Aufzeichnung Stille aufweisen. Schließen Sie nach Möglichkeit in jeder Beispieldatei mindestens eine halbe Sekunde Stille vor und nach Sprache ein. Auch wenn Audiodaten mit geringer Aufzeichnungslautstärke oder störenden Hintergrundgeräuschen nicht hilfreich sind, sollte dies keine negativen Auswirkungen auf Ihr benutzerdefiniertes Modell haben. Sie sollten immer ein Upgrade Ihrer Mikrofone und Signalverarbeitungshardware in Erwägung ziehen, bevor Sie Audiostichproben sammeln.
-
-| Eigenschaft                 | Wert                               |
-|--------------------------|-------------------------------------|
-| Dateiformat              | RIFF (WAV)                          |
-| Samplingrate              | 8\.000 Hz oder 16.000 Hz               |
-| Kanäle                 | 1 (Mono)                            |
-| Maximale Länge pro Audioaufnahme | 2 Stunden (Tests)/60 s (Training) |
-| Beispielformat            | PCM, 16 Bit                         |
-| Archivierungsformat           | .zip                                |
-| Maximale ZIP-Dateigröße         | 2 GB                                |
-
-[!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
-
-> [!NOTE]
-> Beim Hochladen von Trainings- und Testdaten darf die ZIP-Datei maximal 2 GB groß sein. Sie können nur aus *einem* Dataset testen. Achten Sie darauf, dass dieses die geeignete Dateigröße einhält. Darüber hinaus dürfen die einzelnen Trainingsdateien 60 Sekunden nicht überschreiten, andernfalls tritt ein Fehler auf.
-
-In Hinsicht auf Probleme wie die Löschung oder Ersetzung von Wörtern sind erhebliche Datenmengen erforderlich, um die Erkennung zu verbessern. Im Allgemeinen wird empfohlen, wortwörtliche Transkriptionen für 1 bis 20 Stunden Audiodaten bereitzustellen. Aber auch schon 30 Minuten können helfen, die Erkennungsergebnisse zu verbessern. Die Transkriptionen für sämtliche WAV-Dateien sollten in einer einzelnen Textdatei enthalten sein. Jede Zeile der Transkriptionsdatei muss den Namen einer der Audiodateien enthalten – gefolgt von der jeweiligen Transkription. Der Dateiname und die Transkription sollten durch ein Tabulatorzeichen (\t) getrennt werden.
-
-Beispiel:
-
-<!-- The following example contains tabs. Don't accidentally convert these into spaces. -->
-
-```input
-speech01.wav    speech recognition is awesome
-speech02.wav    the quick brown fox jumped all over the place
-speech03.wav    the lazy dog was not amused
-```
-
-> [!IMPORTANT]
-> Die Transkription muss als UTF-8-Bytereihenfolge-Marke (byte order mark, BOM) codiert sein.
-
-Der Text der Transkriptionen wird normalisiert, damit diese vom System verarbeitet werden können. Einige wichtige Normalisierungen müssen jedoch noch vor dem Hochladen der Daten in Speech Studio vorgenommen werden. Informationen dazu, welche Sprache bei der Vorbereitung Ihrer Transkriptionen verwendet werden muss, finden Sie unter [Erstellen einer menschenmarkierten Transkription](how-to-custom-speech-human-labeled-transcriptions.md).
-
-Wenn Sie die Audiodateien und die entsprechenden Transkriptionen zusammengetragen haben, packen Sie sie in eine gemeinsame ZIP-Datei, bevor Sie sie in <a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio</a> hochladen. Im Folgenden sehen Sie ein Beispieldataset mit drei Audiodateien und einer von einer Person markierten Transkriptionsdatei:
-
-> [!div class="mx-imgBorder"]
-> ![Auswählen von Audio im Speech-Portal](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
-
-Unter [Einrichten Ihres Azure-Kontos](custom-speech-overview.md#set-up-your-azure-account) finden Sie eine Liste der empfohlenen Regionen für Ihre Speech-Dienstabonnements. Durch das Einrichten des Speech-Abonnements in einer dieser Regionen verringert sich die für das Trainieren des Modells erforderliche Zeit. In diesen Regionen können beim Training zehn Stunden an Audiodaten pro Tag im Vergleich zu gerade einmal einer Stunde pro Tag in anderen Regionen verarbeitet werden. Wenn das Modelltraining nicht innerhalb einer Woche abgeschlossen werden kann, wird für das Modell ein Fehler angezeigt.
-
-Nicht alle Basismodelle unterstützen das Training mit Audiodaten. Wenn das Basismodell das Training mit Audiodaten nicht unterstützt, ignoriert der Dienst die Audiodaten und nutzt nur den Text der Transkriptionen für das Training. In diesem Fall ist das Training identisch mit dem Training mit zugehörigem Text. Eine Liste mit Basismodellen, die das Training mit Audiodaten unterstützen, finden Sie unter [Sprachunterstützung](language-support.md#speech-to-text).
 
 ## <a name="plain-text-data-for-training"></a>Nur-Text-Daten für das Training
 
@@ -180,6 +133,60 @@ Stellen Sie anhand der folgenden Tabelle sicher, dass die zugehörige Datendatei
 | Textcodierung | UTF-8 BOM (ANSI wird für Englisch ebenfalls unterstützt) |
 | Anzahl der Aussprachen pro Zeile | 1 |
 | Maximale Dateigröße | 1 MB (1 KB für Free-Tarif) |
+
+## <a name="audio-and-human-labeled-transcript-data"></a>Audio- und Humantranskriptionsdaten
+
+Audio- und Humantranskriptionsdaten können sowohl zu Trainings- als auch zu Testzwecken verwendet werden. Um die akustischen Aspekte wie geringfügige Akzente, Sprechweisen, Hintergrundgeräusche oder die Genauigkeit der Spracherkennung von Microsoft bei der Verarbeitung Ihrer Audiodateien zu verbessern, müssen Sie Humantranskriptionen (Wort für Wort) für den Vergleich bereitstellen. Zwar ist das Erstellen einer menschenmarkierten Transkription oft sehr zeitaufwendig, doch wird sie benötigt, um die Genauigkeit zu bewerten und das Modell für Ihre Anwendungsfälle zu trainieren. Denken Sie daran, dass die Verbesserung der Erkennung nur so gut ist wie die bereitgestellten Daten. Aus diesem Grund ist es wichtig, dass nur qualitativ hochwertige Transkripte hochgeladen werden.
+
+Audiodateien können am Anfang und am Ende der Aufzeichnung Stille aufweisen. Schließen Sie nach Möglichkeit in jeder Beispieldatei mindestens eine halbe Sekunde Stille vor und nach Sprache ein. Auch wenn Audiodaten mit geringer Aufzeichnungslautstärke oder störenden Hintergrundgeräuschen nicht hilfreich sind, sollte dies keine negativen Auswirkungen auf Ihr benutzerdefiniertes Modell haben. Sie sollten immer ein Upgrade Ihrer Mikrofone und Signalverarbeitungshardware in Erwägung ziehen, bevor Sie Audiostichproben sammeln.
+
+| Eigenschaft                 | Wert                               |
+|--------------------------|-------------------------------------|
+| Dateiformat              | RIFF (WAV)                          |
+| Samplingrate              | 8\.000 Hz oder 16.000 Hz               |
+| Kanäle                 | 1 (Mono)                            |
+| Maximale Länge pro Audioaufnahme | 2 Stunden (Tests)/60 s (Training) |
+| Beispielformat            | PCM, 16 Bit                         |
+| Archivierungsformat           | .zip                                |
+| Maximale ZIP-Dateigröße         | 2 GB                                |
+
+[!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
+
+> [!TIP]
+> Haben Sie nicht einmal echte Audiodaten? Sie können auch eine Textdatei (TXT) hochladen, indem Sie den Typ **Transkript (automatische Audiosynthese)** als **Testdaten** auswählen, um ein ungefähres Gefühl für die aktuellen Genauigkeitsgrade zu bekommen. Die Audiopaare für jede gesprochene Äußerung werden automatisch mithilfe der [Sprachsynthese](text-to-speech.md) synthetisiert. 
+> 
+> Beachten Sie, dass die synthetisierten Audiodaten in der Regel **NICHT** zur Verwendung als **Trainingsdaten** empfohlen werden.
+> 
+> Die maximale Dateigröße beträgt 500 KB. Für jede Zeile wird ein Ton synthetisiert, und die maximale Größe jeder Zeile beträgt 65535 Byte.
+
+> [!NOTE]
+> Beim Hochladen von Trainings- und Testdaten darf die ZIP-Datei maximal 2 GB groß sein. Sie können nur aus *einem* Dataset testen. Achten Sie darauf, dass dieses die geeignete Dateigröße einhält. Darüber hinaus dürfen die einzelnen Trainingsdateien 60 Sekunden nicht überschreiten, andernfalls tritt ein Fehler auf.
+
+In Hinsicht auf Probleme wie die Löschung oder Ersetzung von Wörtern sind erhebliche Datenmengen erforderlich, um die Erkennung zu verbessern. Im Allgemeinen wird empfohlen, wortwörtliche Transkriptionen für 1 bis 20 Stunden Audiodaten bereitzustellen. Aber auch schon 30 Minuten können helfen, die Erkennungsergebnisse zu verbessern. Die Transkriptionen für sämtliche WAV-Dateien sollten in einer einzelnen Textdatei enthalten sein. Jede Zeile der Transkriptionsdatei muss den Namen einer der Audiodateien enthalten – gefolgt von der jeweiligen Transkription. Der Dateiname und die Transkription sollten durch ein Tabulatorzeichen (\t) getrennt werden.
+
+Beispiel:
+
+<!-- The following example contains tabs. Don't accidentally convert these into spaces. -->
+
+```input
+speech01.wav    speech recognition is awesome
+speech02.wav    the quick brown fox jumped all over the place
+speech03.wav    the lazy dog was not amused
+```
+
+> [!IMPORTANT]
+> Die Transkription muss als UTF-8-Bytereihenfolge-Marke (byte order mark, BOM) codiert sein.
+
+Der Text der Transkriptionen wird normalisiert, damit diese vom System verarbeitet werden können. Einige wichtige Normalisierungen müssen jedoch noch vor dem Hochladen der Daten in Speech Studio vorgenommen werden. Informationen dazu, welche Sprache bei der Vorbereitung Ihrer Transkriptionen verwendet werden muss, finden Sie unter [Erstellen einer menschenmarkierten Transkription](how-to-custom-speech-human-labeled-transcriptions.md).
+
+Wenn Sie die Audiodateien und die entsprechenden Transkriptionen zusammengetragen haben, packen Sie sie in eine gemeinsame ZIP-Datei, bevor Sie sie in <a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio</a> hochladen. Im Folgenden sehen Sie ein Beispieldataset mit drei Audiodateien und einer von einer Person markierten Transkriptionsdatei:
+
+> [!div class="mx-imgBorder"]
+> ![Auswählen von Audio im Speech-Portal](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
+
+Unter [Einrichten Ihres Azure-Kontos](custom-speech-overview.md#set-up-your-azure-account) finden Sie eine Liste der empfohlenen Regionen für Ihre Speech-Dienstabonnements. Durch das Einrichten des Speech-Abonnements in einer dieser Regionen verringert sich die für das Trainieren des Modells erforderliche Zeit. In diesen Regionen können beim Training zehn Stunden an Audiodaten pro Tag im Vergleich zu gerade einmal einer Stunde pro Tag in anderen Regionen verarbeitet werden. Wenn das Modelltraining nicht innerhalb einer Woche abgeschlossen werden kann, wird für das Modell ein Fehler angezeigt.
+
+Nicht alle Basismodelle unterstützen das Training mit Audiodaten. Wenn das Basismodell das Training mit Audiodaten nicht unterstützt, ignoriert der Dienst die Audiodaten und nutzt nur den Text der Transkriptionen für das Training. In diesem Fall ist das Training identisch mit dem Training mit zugehörigem Text. Eine Liste mit Basismodellen, die das Training mit Audiodaten unterstützen, finden Sie unter [Sprachunterstützung](language-support.md#speech-to-text).
 
 ## <a name="audio-data-for-testing"></a>Audiodaten für Tests
 

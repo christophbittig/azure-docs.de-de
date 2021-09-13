@@ -1,26 +1,27 @@
 ---
 title: Erstellen und Hochladen einer Ubuntu-Linux-VHD in Azure
 description: Erfahren Sie, wie Sie eine virtuelle Azure-Festplatte (Virtual Hard Disk, VHD) erstellen und hochladen, die ein Ubuntu-Linux-Betriebssystem enthält.
-author: danielsollondon
+author: srijang
 ms.service: virtual-machines
 ms.collection: linux
 ms.topic: how-to
-ms.date: 06/06/2020
-ms.author: danis
-ms.openlocfilehash: 92ceecd16a428593764fe5ab6478cc4ea7ab91d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/28/2021
+ms.author: srijangupta
+ms.openlocfilehash: 2079e50d92c7253c7c4f642c9a51e56aa1bfae2c
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102554614"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689799"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Vorbereiten eines virtuellen Ubuntu-Computers für Azure
 
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
 Ubuntu veröffentlicht jetzt auf [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/) offizielle Azure-VHDs zum Herunterladen. Wenn Sie Ihr eigenes spezialisiertes Ubuntu-Image für Azure erstellen müssen, empfiehlt es sich, mit diesen bekannten, funktionierenden VHDs zu beginnen und sie nach Bedarf anzupassen statt das manuelle Verfahren unten anzuwenden. Die neuesten Versionen des Images können sich immer an folgenden Speicherorten befinden:
 
-* Ubuntu 16.04/Xenial: [ubuntu-16.04-server-cloudimg-amd64-disk1.vmdk](https://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.vmdk)
-* Ubuntu 18.04/Bionic: [bionic-server-cloudimg-amd64.vmdk](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vmdk)
+* Ubuntu 18.04/Bionic: [bionic-server-cloudimg-amd64-azure.vhd.zip](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64-azure.vhd.zip)
+* Ubuntu 20.04/Focal: [focal-server-cloudimg-amd64-azure.vhd.zip](https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64-azure.vhd.zip)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 In diesem Artikel wird davon ausgegangen, dass Sie bereits ein Ubuntu-Linux-Betriebssystem auf einer virtuellen Festplatte installiert haben. Sie können VHD-Dateien mit unterschiedlichen Tools erstellen, beispielsweise mit einer Virtualisierungslösung wie Hyper-V. Anweisungen hierzu finden Sie unter [Installieren der Hyper-V-Rolle und Konfigurieren eines virtuellen Computers](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11)).
@@ -51,7 +52,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie bereits ein Ubuntu-Linux-Betr
     # sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
     ```
 
-    Ubuntu 16.04 und Ubuntu 18.04:
+    Ubuntu 18.04 und Ubuntu 20.04:
 
     ```console
     # sudo sed -i 's/http:\/\/archive\.ubuntu\.com\/ubuntu\//http:\/\/azure\.archive\.ubuntu\.com\/ubuntu\//g' /etc/apt/sources.list
@@ -61,7 +62,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie bereits ein Ubuntu-Linux-Betr
 
 4. Die Ubuntu Azure-Images verwenden jetzt den [für Azure angepassten Kernel](https://ubuntu.com/blog/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel). Aktualisieren Sie das Betriebssystem auf den neuesten, für Azure angepassten Kernel, und installieren Sie Azure Linux-Tools (einschließlich Hyper-V-Abhängigkeiten), indem Sie die folgenden Befehle ausführen:
 
-    Ubuntu 16.04 und Ubuntu 18.04:
+    Ubuntu 18.04 und Ubuntu 20.04:
 
     ```console
     # sudo apt update
@@ -81,7 +82,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie bereits ein Ubuntu-Linux-Betr
 
 6. Stellen Sie sicher, dass der SSH-Server installiert und konfiguriert ist, damit er beim Booten hochfährt.  Dies ist für gewöhnlich die Standardeinstellung.
 
-7. Installieren Sie die Cloudinitialisierung (den Bereitstellungs-Agent) und den Azure Linux-Agent (den Handler für Gasterweiterungen). Die Cloudinitialisierung konfiguriert mit netplan die Systemnetzwerk-Konfiguration während der Bereitstellung und jedem nachfolgenden Start.
+7. Installieren Sie die Cloudinitialisierung (den Bereitstellungs-Agent) und den Azure Linux-Agent (den Handler für Gasterweiterungen). Die Cloudinitialisierung konfiguriert mit `netplan` die Konfiguration des Systemnetzwerks während der Bereitstellung und jedem nachfolgenden Start.
 
     ```console
     # sudo apt update
@@ -91,17 +92,17 @@ In diesem Artikel wird davon ausgegangen, dass Sie bereits ein Ubuntu-Linux-Betr
    > [!Note]
    >  Das Paket `walinuxagent` entfernt unter Umständen die Pakete `NetworkManager` und `NetworkManager-gnome`, falls sie installiert sind.
 
-8. Entfernen Sie die Standardkonfigurationen der Cloudinitialisierung und die restlichen netplan-Artefakte, die möglicherweise mit der Bereitstellung der Cloudinitialisierung in Azure in Konflikt stehen:
+8. Entfernen Sie die Standardkonfigurationen für cloud-init und die restlichen `netplan`-Artefakte, die möglicherweise mit der cloud-init-Bereitstellung in Azure in Konflikt stehen:
 
     ```console
-    # rm -f /etc/cloud/cloud.cfg.d/50-curtin-networking.cfg /etc/cloud/cloud.cfg.d/curtin-preserve-sources.cfg
+    # rm -f /etc/cloud/cloud.cfg.d/50-curtin-networking.cfg /etc/cloud/cloud.cfg.d/curtin-preserve-sources.cfg /etc/cloud/cloud.cfg.d/99-installer.cfg /etc/cloud/cloud.cfg.d/subiquity-disable-cloudinit-networking.cfg
     # rm -f /etc/cloud/ds-identify.cfg
     # rm -f /etc/netplan/*.yaml
     ```
 
 9. Konfigurieren Sie die Cloudinitialisierung, um das System mithilfe der Azure-Datenquelle bereitzustellen:
 
-    ```console
+    ```bash
     # cat > /etc/cloud/cloud.cfg.d/90_dpkg.cfg << EOF
     datasource_list: [ Azure ]
     EOF
@@ -163,7 +164,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie bereits ein Ubuntu-Linux-Betr
 12. Führen Sie die folgenden Befehle aus, um den virtuellen Computer zurückzusetzen und ihn für die Bereitstellung in Azure vorzubereiten:
 
     > [!NOTE]
-    > Der `sudo waagent -force -deprovision+user`-Befehl versucht, das System zu bereinigen und für eine erneute Bereitstellung vorzubereiten. Die `+user`-Option löscht das zuletzt bereitgestellte Benutzerkonto und die zugehörigen Daten.
+    > Der Befehl `sudo waagent -force -deprovision+user` generalisiert das Image, indem versucht wird, das System zu bereinigen und für die erneute Bereitstellung vorzubereiten. Die `+user`-Option löscht das zuletzt bereitgestellte Benutzerkonto und die zugehörigen Daten.
 
     > [!WARNING]
     > Die Aufhebung der Bereitstellung mit obigem Befehl garantiert nicht, dass alle vertraulichen Informationen aus dem Image gelöscht werden und das Image für eine weitere Verteilung geeignet ist.

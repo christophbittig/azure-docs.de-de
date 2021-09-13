@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
-ms.openlocfilehash: 24a1ed0d3146b695995182f8a9236ca48ee4fe81
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 768bcc39505671c452d99dc1d8d1d50ec3f3b9e5
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114290929"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259647"
 ---
 # <a name="java-web-app-containerization-and-migration-to-azure-app-service"></a>Das Containerisieren und Migrieren von Java-Web-Apps zu Azure App Service
 
@@ -30,7 +30,7 @@ Das App-Containerisierungstool von Azure Migrate unterstützt Sie bei den folgen
 
 - **App analysieren:** Das Tool stellt eine Remoteverbindung mit den Anwendungsservern her, auf denen Ihre Java-Web-App ausgeführt wird (Apache Tomcat), und ermittelt die App-Komponenten. Dann erstellt das Tool ein Dockerfile, das zum Erstellen eines Containerimages für die App verwendet werden kann.
 - **Containerimage erstellen:** Sie können das Dockerfile ansehen, an die Anforderungen der App anpassen und es anschließend verwenden, um das Containerimage für die App zu erstellen. Das Containerimage für die App wird an eine von Ihnen festgelegte Azure Container Registry-Instanz gepusht.
-- **Bereitstellung in Azure App Service:** Das Tool generiert dann die Bereitstellungsdateien, die zum Bereitstellen der containerisierten Anwendung in Azure App Service erforderlich sind.
+- **Das Bereitstellen in Azure App Service**: Das Tool generiert dann die Bereitstellungsdateien, die zum Bereitstellen der containerisierten Anwendung in Azure App Service erforderlich sind.
 
 > [!NOTE]
 > Das App-Containerisierungstool von Azure Migrate ermittelt die App-Typen (ASP.NET- und Java-Web-Apps unter Apache Tomcat) und die App-Komponenten auf einem Anwendungsserver. Verwenden Sie die Ermittlungs- und Bewertungsfunktion von Azure Migrate, um Server sowie den Bestand an Apps, Rollen und Features zu ermitteln, die auf lokalen Computern ausgeführt werden. [Weitere Informationen](./tutorial-discover-vmware.md)
@@ -39,7 +39,7 @@ Nicht alle Apps profitieren von einer Umstellung auf Container ohne erhebliche �
 
 - **Verbesserte Infrastrukturauslastung:** Mithilfe von Containern können mehrere Apps dieselben Ressourcen nutzen und in derselben Infrastruktur gehostet werden. Dadurch können Sie die Infrastruktur konsolidieren und die Auslastung verbessern.
 - **Vereinfachte Verwaltung:** Indem Sie Ihre Anwendungen auf einer modernen verwalteten Plattform wie AKS und App Service hosten, können Sie Ihre Verwaltungspraktiken vereinfachen. Das können Sie erreichen, indem Sie Wartungs- und Verwaltungsvorgänge für die Infrastruktur einstellen oder reduzieren, die Sie für Ihre eigene Infrastruktur normalerweise durchführen würden.
-- **Anwendungsportabilität:** Durch die zunehmende Nutzung und Standardisierung von Containerspezifikationsformaten und -plattformen stellt die Anwendungsportabilität keine Herausforderung mehr dar.
+- **Anwendungsportabilität:** Durch die zunehmende Nutzung und Standardisierung von Containerspezifikationsformaten und -plattformen stellt die Anwendungsportabilität keine Herausforderungen mehr dar.
 - **Moderne Verwaltung mit DevOps**: Dies ermöglicht Ihnen die Einführung und Standardisierung moderner Verwaltungs- und Sicherheitsverfahren sowie den Übergang zu DevOps.
 
 
@@ -50,7 +50,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Installieren des App-Containerisierungstools von Azure Migrate
 > * Analysieren Ihrer Java-Web-Apps
 > * Erstellen des Containerimages
-> * Bereitstellen der containerisierten Anwendung in App Service
+> * Das Bereitstellen der containerisierten Anwendung in App Service.
 
 > [!NOTE]
 > In den Tutorials wird der einfachste Bereitstellungspfad für ein Szenario erläutert, damit Sie schnell einen Proof of Concept einrichten können. Die Tutorials verwenden nach Möglichkeit Standardoptionen und zeigen nicht alle möglichen Einstellungen und Pfade.
@@ -179,7 +179,7 @@ Durch das Parametrisieren der Konfiguration steht diese zur Bereitstellungszeit 
 
 ### <a name="externalize-file-system-dependencies"></a>Externalisieren von Dateisystemabhängigkeiten
 
- Sie können weitere Ordner hinzufügen, die von der Anwendung verwendet werden. Legen Sie fest, ob sie Teil des Containerimages sein sollen oder über Azure-Datenfreigabe in den persistenten Speicher ausgelagert werden sollen. Die Verwendung von externem persistentem Speicher ist für zustandsbehaftete Anwendungen ideal, die den Zustand außerhalb des Containers speichern oder statische Inhalte im Dateisystem gespeichert haben.
+ Sie können weitere Ordner hinzufügen, die von der Anwendung verwendet werden. Legen Sie fest, ob sie Teil des Container-Images sein sollen oder über Azure-Datenfreigabe in den persistenten Speicher ausgelagert werden sollen. Die Verwendung von externem persistentem Speicher ist für zustandsbehaftete Anwendungen ideal, die den Zustand außerhalb des Containers speichern oder statische Inhalte im Dateisystem gespeichert haben.
 
 1. Klicken Sie unter „App-Ordner“ auf **Bearbeiten**, um die erkannten Anwendungsordner anzuzeigen. Bei den erkannten Anwendungsordnern handelt es sich um für die Anwendung erforderliche Artefakte, deshalb werden sie ins Containerimage kopiert.
 
@@ -199,7 +199,7 @@ Durch das Parametrisieren der Konfiguration steht diese zur Bereitstellungszeit 
     ![Screenshot: ACR-Auswahl für die App](./media/tutorial-containerize-apps-aks/build-java-app.png)
 
 > [!NOTE]
-> Es werden nur Azure-Containerregistrierungen mit aktiviertem Administratorbenutzer angezeigt. Das Administratorkonto ist derzeit für die Bereitstellung eines Images aus einer Azure-Containerregistrierung für Azure App Service erforderlich. [Weitere Informationen](../container-registry/container-registry-authentication.md#admin-account)
+> Es werden nur Azure-Containerregister mit aktiviertem Administratorbenutzer angezeigt. Das Administratorkonto ist derzeit für die Bereitstellung eines Images aus einer Azure-Containerregistrierung für Azure App Service erforderlich. [Weitere Informationen](../container-registry/container-registry-authentication.md#admin-account)
 
 2. **Dockerfile überprüfen**: Das Dockerfile, das für die Erstellung der Containerimage für die ausgewählten Apps benötigt wird, wird zu Beginn des Buildschritts generiert. Klicken Sie auf **Überprüfen**, um das Dockerfile zu öffnen. Im Überprüfungsschritt können Sie auch sämtliche notwendigen Anpassungen am Dockerfile vornehmen und die Änderung speichern, bevor Sie den Buildprozess einleiten.
 
@@ -213,13 +213,13 @@ Durch das Parametrisieren der Konfiguration steht diese zur Bereitstellungszeit 
 
     ![Screenshot: Abschluss des Buildprozesses für App-Containerimages](./media/tutorial-containerize-apps-aks/build-java-app-completed.png)
 
-## <a name="deploy-the-containerized-app-on-azure-app-service"></a>Das Bereitstellen der containerisierten App in Azure App Service
+## <a name="deploy-the-containerized-app-on-azure-app-service"></a>Das Bereitstellen der containerisierten App auf dem Azure App Service
 
-Nachdem das Containerimage erstellt wurde, besteht der nächste Schritt darin, die Anwendung als einen Container in [Azure App Service](https://azure.microsoft.com/services/app-service/) bereitzustellen.
+Nachdem das Containerimage erstellt wurde, ist der nächste Schritt, die Anwendung als einen Container in [Azure App Service](https://azure.microsoft.com/services/app-service/) bereitzustellen.
 
-1. **Auswahl des Azure App Service-Plans:** Geben Sie den Azure App Service-Plan an, den die Anwendung verwenden soll.
+1. **Wählen Sie den Azure App Service Plan aus**: Geben Sie den Azure App Service Plan an, den die Anwendung verwenden soll.
 
-     - Wenn Sie über keinen App Service-Plan verfügen oder einen neuen App Service-Plan erstellen möchten, können Sie einen über das Tool erstellen, indem Sie auf die Funkion **Neuen App Service-Plan erstellen** klicken.      
+     - Wenn Sie über keinen App Service Plan verfügen oder einen neuen App Service Plan erstellen möchten, können Sie einen über das Tool erstellen, indem Sie auf die Funkion **Neuen App Service Plan erstellen** klicken.      
      - Wählen Sie den App Service-Plan aus, und klicken Sie dann auf **Weiter**.
 
 2. **Angeben des Geheimnisspeichers und des Überwachungsarbeitsbereichs:** Wenn Sie sich für die Parametrisierung von Anwendungskonfigurationen entschieden haben, geben Sie den Geheimnisspeicher an, der für die Anwendung verwendet werden soll. Sie können Azure Key Vault oder die App Service-Anwendungseinstellungen auswählen, um Ihre Anwendungsgeheimnisse zu verwalten. [Weitere Informationen](../app-service/configure-common.md#configure-connection-strings)
@@ -231,14 +231,14 @@ Nachdem das Containerimage erstellt wurde, besteht der nächste Schritt darin, d
     - **Überwachungsarbeitsbereich:** Wenn Sie die Überwachung mit Application Insights aktiviert haben, geben Sie die Application Insights-Ressource an, die Sie verwenden möchten. Diese Option ist nicht sichtbar, wenn Sie die Überwachungsintegration deaktiviert haben.
          - Wenn Sie über keine Application Insights-Ressource verfügen oder eine neue Ressource erstellen möchten, können Sie diese über das Tool erstellen, indem Sie auf **Neu erstellen** klicken.
 
-3. **Angeben der Azure-Dateifreigabe:** Wenn Sie mehrere Verzeichnisse/Ordner hinzugefügt haben und die Option „Azure-Datenfreigabe“ als persistenten Speicher ausgewählt haben, geben Sie nun die Azure-Dateifreigabe an, die das App-Containerisierungstool von Azure Migrate während des Bereitstellungsprozesses verwenden soll. Das Tool kopiert die Anwendungsverzeichnisse/Ordner, die für den Dateispeicher in Azure konfiguriert sind und bindet sie während der Bereitstellung in den Anwendungscontainer ein. 
+3. **Angeben der Azure-Dateifreigabe:** Wenn Sie mehrere Verzeichnisse/Ordner hinzugefügt haben und die Option „Azure-Datenfreigabe“ als persistenten Speicher ausgewählt haben, geben Sie nun die Azure-Dateifreigabe an, die das App-Containerisierungstool von Azure Migrate während des Bereitstellungsprozesses verwenden soll. Das Tool kopiert die Anwendungsverzeichnisse/Ordner, die für den Azure Files konfiguriert sind, und bindet sie bei der Bereitstellung in den Anwendungscontainer ein. 
 
      - Wenn Sie keine Azure-Dateifreigabe besitzen oder eine neue erstellen möchten, können Sie hierzu im Tool auf **Create new Storage Account and file share** (Neues Speicherkonto und neue Dateifreigabe erstellen) klicken.  
 
 4. **Konfiguration für die Anwendungsbereitstellung**: Nachdem Sie die obigen Schritte abgeschlossen haben, müssen Sie die Bereitstellungskonfiguration für die App festlegen. Klicken Sie auf **Konfigurieren**, um die Bereitstellung der App anzupassen. Im Konfigurationsschritt können Sie die folgenden Anpassungen vornehmen:
-     - **Name:** Geben Sie einen eindeutigen App-Namen für die Anwendung an. Dieser Name wird zum Generieren der Anwendungs-URL und als Präfix für andere Ressourcen verwendet, die im Rahmen dieser Bereitstellung erstellt werden.
-     - **Anwendungskonfiguration:** Geben Sie für alle parametrisierten Anwendungskonfigurationen die Werte an, die für die aktuelle Bereitstellung verwendet werden sollen.
-     - **Speicherkonfiguration:** Überprüfen Sie die Informationen für alle Anwendungsverzeichnisse/Ordner, die für den persistenten Speicher konfiguriert wurden.
+     - **Name**: Geben Sie einen eindeutigen App-Namen für die Anwendung an. Dieser Name wird zum Generieren der Anwendungs-URL und als Präfix für andere Ressourcen verwendet, die im Rahmen dieser Bereitstellung erstellt werden.
+     - **Anwendungskonfiguration**: Geben Sie für alle parametrisierte Anwendungskonfigurationen die Werte an, die für die aktuelle Bereitstellung verwendet werden sollen.
+     - **Speicherkonfiguration**: Überprüfen Sie die Informationen für alle Anwendungsverzeichnisse/Ordner, die für den persistenten Speicher konfiguriert wurden.
 
     ![Screenshot: Bereitstellungskonfiguration für die App](./media/tutorial-containerize-apps-aks/deploy-java-app-config.png)
 

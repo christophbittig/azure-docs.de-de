@@ -9,17 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: b47a8e50245df652db1c0c43aa0dddd6f8a5a0c8
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: f038cf653b4efc15c70aa566fc76e484a47472f2
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112580762"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688427"
 ---
 # <a name="perform-analytics-with-machine-learning-studio-classic-using-a-sql-server-database"></a>Durchführen von Analysen mit Machine Learning Studio (Classic) unter Verwendung einer SQL Server-Datenbank
 
 **GILT FÜR:**  ![Gilt für ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Gilt nicht für ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 Unternehmen, die mit lokalen Daten arbeiten, möchten häufig die Vorteile der Skalierung und Flexibilität der Cloud für ihre Machine Learning-Workloads nutzen. Sie möchten jedoch nicht ihre aktuellen Geschäftsprozesse und Workflows durch Verschieben ihrer lokalen Daten in die Cloud unterbrechen. Machine Learning Studio (Classic) unterstützt jetzt das Lesen von Daten aus einer SQL Server-Datenbank und das anschließende Trainieren und Bewerten von Modellen mit diesen Daten. Sie müssen die Daten zwischen der Cloud und dem lokalen Server nicht mehr manuell kopieren und synchronisieren. Stattdessen kann das Modul **Daten importieren** in Machine Learning Studio (Classic) Daten jetzt direkt aus einer SQL Server-Datenbank für Ihre Trainings- und Bewertungsaufträge lesen.
 

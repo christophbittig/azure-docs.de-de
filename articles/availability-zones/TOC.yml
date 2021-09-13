@@ -51,7 +51,7 @@
                 - name: Erstellen eines zonalen öffentlichen Lastenausgleichs im Standard-Tarif (CLI)
                   href: ../load-balancer/quickstart-load-balancer-standard-public-cli.md
             - name: Durchführen eines verfügbarkeitszonenübergreifenden Lastenausgleichs für virtuelle Computer
-              href: ../load-balancer/tutorial-load-balancer-standard-public-zone-redundant-portal.md
+              href: ../load-balancer/quickstart-load-balancer-standard-public-portal.md
               items:
                 - name: Lastenausgleich für virtuelle Computer über Verfügbarkeitszonen hinweg mit Azure (CLI)
                   href: ../load-balancer/quickstart-load-balancer-standard-public-cli.md

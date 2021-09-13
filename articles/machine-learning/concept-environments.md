@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: larryfr
 author: BlackMist
 ms.date: 11/16/2020
-ms.openlocfilehash: 648dbe6b8d275c832f219cb6f3119ac0bc518a54
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2364f0c029b57649ed56fa9ba93ed3978db2ca41
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102508468"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444699"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Was sind Azure Machine Learning-Umgebungen?
 
@@ -78,7 +78,7 @@ Wenn die Umgebungsdefinition nicht bereits in der ACR des Arbeitsbereichs vorhan
  1. Herunterladen eines Basisimages und Ausführen beliebiger Docker-Schritte
  2. Erstellen einer Conda-Umgebung gemäß den in der Umgebungsdefinition angegebenen Conda-Abhängigkeiten.
 
-Der zweite Schritt entfällt, wenn Sie [vom Benutzer verwaltete Abhängigkeiten](/python/api/azureml-core/azureml.core.environment.pythonsection) angeben. In diesem Fall sind Sie für die Installation von Python-Paketen verantwortlich, indem Sie diese in Ihr Basisimage einbeziehen oder im ersten Schritt benutzerdefinierte Docker-Schritte festlegen. Sie sind auch dafür verantwortlich, den richtigen Speicherort für die ausführbare Python-Datei anzugeben. Es ist auch möglich, ein [benutzerdefiniertes Docker-Basisimage](how-to-deploy-custom-docker-image.md) zu verwenden.
+Der zweite Schritt entfällt, wenn Sie [vom Benutzer verwaltete Abhängigkeiten](/python/api/azureml-core/azureml.core.environment.pythonsection) angeben. In diesem Fall sind Sie für die Installation von Python-Paketen verantwortlich, indem Sie diese in Ihr Basisimage einbeziehen oder im ersten Schritt benutzerdefinierte Docker-Schritte festlegen. Sie sind auch dafür verantwortlich, den richtigen Speicherort für die ausführbare Python-Datei anzugeben. Es ist auch möglich, ein [benutzerdefiniertes Docker-Basisimage](./how-to-deploy-custom-container.md) zu verwenden.
 
 ### <a name="image-caching-and-reuse"></a>Zwischenspeicherung und Wiederverwendung von Images
 
@@ -102,9 +102,11 @@ Das folgende Diagramm zeigt drei Umgebungsdefinitionen. Zwei von ihnen haben unt
 ![Diagramm zur Zwischenspeicherung der Umgebung als Docker-Images](./media/concept-environments/environment-caching.png)
 
 >[!IMPORTANT]
-> Wenn Sie eine Umgebung mit losgelöster Paketabhängigkeit erstellen, z. B. ```numpy```, wird diese Umgebung weiterhin die Paketversion verwenden, _die zum Zeitpunkt der Erstellung der Umgebung installiert war_. Außerdem wird jede zukünftige Umgebung mit passender Definition weiterhin die alte Version verwenden. 
-
-Geben Sie zum Aktualisieren des Pakets eine Versionsnummer an, um eine Neuerstellung des Images zu erzwingen, z. B. ```numpy==1.18.1```. Neue Abhängigkeiten, einschließlich geschachtelter Abhängigkeiten, werden installiert, die ein zuvor funktionierendes Szenario beeinträchtigen könnten. 
+> * Wenn Sie eine Umgebung mit einer getrennten Paketabhängigkeit erstellen – z. B. `numpy` –, verwendet die Umgebung die Paketversion, die *beim Erstellen der Umgebung installiert wurde*. Auch jede zukünftige Umgebung, die eine entsprechende Definition verwendet, nutzt die ursprüngliche Version. 
+>
+>   Geben Sie zum Aktualisieren des Pakets eine Versionsnummer an, um eine Neuerstellung des Images zu erzwingen, z. B. `numpy==1.18.1`. Neue Abhängigkeiten, einschließlich geschachtelter Abhängigkeiten, werden installiert, und können ein zuvor funktionierendes Szenario unterbrechen.
+>
+> * Wenn Sie ein getrenntes Basisimage wie `mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04` in Ihrer Umgebungsdefinition verwenden, wird die Umgebung bei jeder Aktualisierung des latest-Tags aktualisiert. Es wird davon ausgegangen, dass Sie aus verschiedenen Gründen, beispielsweise aufgrund von Sicherheitslücken, Systemupdates und Patches, immer auf die neueste Version aktualisieren möchten. 
 
 > [!WARNING]
 >  Die Methode [Environment.build](/python/api/azureml-core/azureml.core.environment.environment#build-workspace--image-build-compute-none-) erstellt das zwischengespeicherte Image neu, mit dem möglichen Nebeneffekt, dass losgelöste Pakete aktualisiert werden und die Reproduzierbarkeit für alle Umgebungsdefinitionen, die diesem zwischengespeicherten Image entsprechen, unterbrochen wird.
@@ -113,4 +115,3 @@ Geben Sie zum Aktualisieren des Pakets eine Versionsnummer an, um eine Neuerstel
 
 * Erfahren Sie, wie Sie [Umgebungen in Azure Machine Learning erstellen und verwenden](how-to-use-environments.md).
 * Die [Umgebungsklasse](/python/api/azureml-core/azureml.core.environment%28class%29) finden Sie in der Referenzdokumentation des Python SDK.
-* [Umgebungen](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-environments) finden Sie in der Referenzdokumentation des R SDK.

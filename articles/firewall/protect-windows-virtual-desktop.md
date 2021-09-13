@@ -7,12 +7,12 @@ services: firewall
 ms.topic: how-to
 ms.date: 08/09/2021
 ms.author: victorh
-ms.openlocfilehash: 2b6e923bf7645e89434b461da47408be23f65f86
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: a23c02a406b7329f7c7cdbecba1e0c92b05d1e19
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634760"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340358"
 ---
 # <a name="use-azure-firewall-to-protect-azure-virtual-desktop-deployments"></a>Verwenden von Azure Firewall zum Schutz von Azure Virtual Desktop-Bereitstellungen
 
@@ -40,16 +40,16 @@ Sie müssen eine Azure-Firewallrichtlinie und Regelsammlungen für Netzwerkregel
 
 ### <a name="create-network-rules"></a>Erstellen von Netzwerkregeln
 
-| name | Quellentyp | `Source` | Protokoll | Zielports | Zieltyp | Destination 
+| name | Quellentyp | `Source` | Protocol | Zielports | Zieltyp | Destination 
 --- | --- | --- | --- | --- | --- | ---
 | Regelname | IP-Adresse | VNet- oder Subnetz-IP-Adresse | 80 | TCP |  IP-Adresse | 169.254.169.254, 168.63.129.16
 | Regelname | IP-Adresse | VNet- oder Subnetz-IP-Adresse | 443 | TCP | Diensttag | AzureCloud, WindowsVirtualDesktop
-| Regelname | IP-Adresse | VNet- oder Subnetz-IP-Adresse | 53 | TCP, UDP | IP-Adresse | *
+| Regelname | IP-Adresse | VNet- oder Subnetz-IP-Adresse | 52 | TCP, UDP | IP-Adresse | *
 
 
 ### <a name="create-application-rules"></a>Erstellen von Anwendungsregeln 
 
-| name | Quellentyp | `Source` | Protokoll | TLS-Inspektion (optional) | Zieltyp | Destination 
+| name | Quellentyp | `Source` | Protocol | TLS-Inspektion (optional) | Zieltyp | Destination 
 --- | --- | --- | --- | --- | --- | ---
 | Regelname | IP-Adresse | VNet- oder Subnetz-IP-Adresse | Https:443 | | FQDN-Tag | WindowsVirtualDesktop, WindowsUpdate, Windows-Diagnose, MicrosoftActiveProtectionService |
 | Regelname | IP-Adresse | VNet- oder Subnetz-IP-Adresse | Https:1688 | | FQDN | kms.core.windows.net 

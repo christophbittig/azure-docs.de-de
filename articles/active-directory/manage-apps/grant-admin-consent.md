@@ -2,22 +2,22 @@
 title: 'Azure AD: Erteilen einer mandantenweiten Administratoreinwilligung für eine Anwendung'
 description: Erfahren Sie, wie Sie eine mandantenweite Einwilligung für eine Anwendung erteilen, sodass die Endbenutzer beim Anmelden bei der Anwendung keine Einwilligung erteilen müssen.
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 11/04/2019
-ms.author: mtillman
-ms.reviewer: phsignor
+ms.author: davidmu
+ms.reviewer: ergreenl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 836636dfa5cc817685ca815485aa4dba980f1e5a
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 397b55bccde5781de5b9e53922e31281b3ec855c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081351"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340189"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Erteilen einer mandantenweiten Administratoreinwilligung für eine Anwendung
 
@@ -27,7 +27,7 @@ Weitere Informationen zur Einwilligung für Anwendungen finden Sie unter [Azure 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Erteilen einer mandantenweiten Administratoreinwilligung müssen Sie sich als Benutzer anmelden, der zum Zustimmen im Namen der Organisation autorisiert ist. Hierzu zählen die Rollen [Globaler Administrator](../roles/permissions-reference.md#global-administrator) und [Administrator für privilegierte Rollen](../roles/permissions-reference.md#privileged-role-administrator) sowie für einige Anwendungen [Anwendungsadministrator](../roles/permissions-reference.md#application-administrator) und [Cloudanwendungsadministrator](../roles/permissions-reference.md#cloud-application-administrator). Ein Benutzer kann auch für die mandantenweite Einwilligung autorisiert sein, wenn ihm eine [benutzerdefinierte Verzeichnisrolle](../roles/custom-create.md) zugewiesen ist, die die [Berechtigung zum Erteilen von Berechtigungen für Anwendungen](../roles/custom-consent-permissions.md) enthält.
+Zum Erteilen einer mandantenweiten Administratoreinwilligung müssen Sie sich als Benutzer anmelden, der zum Zustimmen im Namen der Organisation autorisiert ist. Dazu gehören die Rollen [Globaler Administrator](../roles/permissions-reference.md#global-administrator) und [Administrator für privilegierte Rollen](../roles/permissions-reference.md#privileged-role-administrator). Bei Anwendungen, die keine Anwendungsberechtigungen für Microsoft Graph oder den Microsoft Azure AD Graph erfordern, zählen hierzu die Rollen [Anwendungsadministrator](../roles/permissions-reference.md#application-administrator) und [Cloudanwendungsadministrator](../roles/permissions-reference.md#cloud-application-administrator). Ein Benutzer kann auch für die mandantenweite Einwilligung autorisiert sein, wenn ihm eine [benutzerdefinierte Verzeichnisrolle](../roles/custom-create.md) zugewiesen ist, die die [Berechtigung zum Erteilen von Berechtigungen für Anwendungen](../roles/custom-consent-permissions.md) enthält.
 
 > [!WARNING]
 > Durch das Erteilen der mandantenweiten Administratoreinwilligung für eine Anwendung erhält die App und der Herausgeber der App Zugriff auf die Daten Ihrer Organisation. Überprüfen Sie vor dem Erteilen einer Einwilligung sorgfältig die Berechtigungen, die von der Anwendung angefordert werden.
@@ -43,7 +43,7 @@ Sie können die mandantenweite Administratoreinwilligung über *Unternehmensanwe
 
 So erteilen Sie die mandantenweite Administratoreinwilligung für eine in **Unternehmensanwendungen** aufgeführte Anwendung:
 
-1. Melden Sie sich als [globaler Administrator](../roles/permissions-reference.md#global-administrator), als [Anwendungsadministrator](../roles/permissions-reference.md#application-administrator) oder als [Cloudanwendungsadministrator](../roles/permissions-reference.md#cloud-application-administrator) beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) mit einer Rolle an, die das Erteilen der Administratoreinwilligung ermöglicht (siehe [Voraussetzungen](#prerequisites)).
 2. Klicken Sie auf **Azure Active Directory** und anschließend auf **Unternehmensanwendungen**.
 3. Wählen Sie die Anwendung aus, der Sie eine mandantenweite Administratoreinwilligung erteilen möchten.
 4. Wählen Sie **Berechtigungen** aus, und klicken Sie dann auf **Administratoreinwilligung gewähren**.
@@ -51,7 +51,7 @@ So erteilen Sie die mandantenweite Administratoreinwilligung für eine in **Unte
 6. Erteilen Sie die Einwilligung, wenn Sie mit den angeforderten Berechtigungen der Anwendung einverstanden sind. Klicken Sie andernfalls auf **Abbrechen**, oder schließen Sie das Fenster.
 
 > [!WARNING]
-> Durch das Erteilen der mandantenweiten Administratorzustimmung über **Unternehmens-Apps** werden alle Berechtigungen widerrufen, die zuvor mandantenweit erteilt wurden. Berechtigungen, die zuvor von Benutzern im eigenen Auftrag erteilt wurden, sind nicht betroffen. 
+> Durch das Erteilen der mandantenweiten Administratorzustimmung über **Unternehmens-Apps** werden alle Berechtigungen widerrufen, die zuvor mandantenweit erteilt wurden. Berechtigungen, die zuvor von Benutzern im eigenen Auftrag erteilt wurden, sind nicht betroffen.
 
 ### <a name="grant-admin-consent-in-app-registrations"></a>Erteilen der Administratoreinwilligung in App-Registrierungen
 
@@ -59,7 +59,7 @@ Bei Anwendungen, die Ihre Organisation entwickelt hat, oder die direkt in Ihrem 
 
 So erteilen Sie die mandantenweite Administratoreinwilligung in **App-Registrierungen**:
 
-1. Melden Sie sich als [globaler Administrator](../roles/permissions-reference.md#global-administrator), als [Anwendungsadministrator](../roles/permissions-reference.md#application-administrator) oder als [Cloudanwendungsadministrator](../roles/permissions-reference.md#cloud-application-administrator) beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) mit einer Rolle an, die das Erteilen der Administratoreinwilligung ermöglicht (siehe [Voraussetzungen](#prerequisites)).
 2. Klicken Sie auf **Azure Active Directory** und anschließend auf **App-Registrierungen**.
 3. Wählen Sie die Anwendung aus, der Sie eine mandantenweite Administratoreinwilligung erteilen möchten.
 4. Wählen Sie **API-Berechtigungen** aus, und klicken Sie dann auf **Administratoreinwilligung erteilen**.
@@ -67,7 +67,7 @@ So erteilen Sie die mandantenweite Administratoreinwilligung in **App-Registrier
 6. Erteilen Sie die Einwilligung, wenn Sie mit den angeforderten Berechtigungen der Anwendung einverstanden sind. Klicken Sie andernfalls auf **Abbrechen**, oder schließen Sie das Fenster.
 
 > [!WARNING]
-> Durch das Erteilen der mandantenweiten Administratorzustimmung über **App-Registrierungen** werden alle Berechtigungen widerrufen, die zuvor mandantenweit erteilt wurden. Berechtigungen, die zuvor von Benutzern im eigenen Auftrag erteilt wurden, sind nicht betroffen. 
+> Durch das Erteilen der mandantenweiten Administratorzustimmung über **App-Registrierungen** werden alle Berechtigungen widerrufen, die zuvor mandantenweit erteilt wurden. Berechtigungen, die zuvor von Benutzern im eigenen Auftrag erteilt wurden, sind nicht betroffen.
 
 ## <a name="construct-the-url-for-granting-tenant-wide-admin-consent"></a>Erstellen der URL zum Erteilen der mandantenweiten Administratoreinwilligung
 
@@ -87,7 +87,7 @@ Dabei gilt:
 Überprüfen Sie vor dem Erteilen einer Einwilligung wie immer sorgfältig die Berechtigungen, die von einer Anwendung angefordert werden.
 
 > [!WARNING]
-> Durch das Erteilen der mandantenweiten Administratorzustimmung über diese URL werden alle Berechtigungen widerrufen, die zuvor mandantenweit erteilt wurden. Berechtigungen, die zuvor von Benutzern im eigenen Auftrag erteilt wurden, sind nicht betroffen. 
+> Durch das Erteilen der mandantenweiten Administratorzustimmung über diese URL werden alle Berechtigungen widerrufen, die zuvor mandantenweit erteilt wurden. Berechtigungen, die zuvor von Benutzern im eigenen Auftrag erteilt wurden, sind nicht betroffen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

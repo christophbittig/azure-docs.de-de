@@ -7,18 +7,17 @@ ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 95a04d763fa5982181cc1c797bce969d9857ae4b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e9bb7ac183873c0fc4d97bd883ddd85110f9188
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92890631"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340107"
 ---
 # <a name="use-the-drawing-tools-module"></a>Verwenden des Zeichentools-Moduls
 
-Das Web SDK für Azure Maps stellt ein *Zeichentools-Modul* bereit. Dieses Modul vereinfacht das Zeichnen und Bearbeiten von Formen auf der Karte mit einem Eingabegerät wie einer Maus oder einem Touchscreen. Die Kernklasse dieses Moduls ist der [Zeichnungs-Manager](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-). Der Zeichnungs-Manager stellt alle Funktionen zur Verfügung, die zum Zeichnen und Bearbeiten von Formen auf der Karte benötigt werden. Er kann direkt verwendet werden und ist in eine benutzerdefinierte Symbolleisten-Benutzeroberfläche integriert. Sie können auch die integrierte [Zeichnen-Symbolleisten](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)-Klasse verwenden. 
+Das Web SDK für Azure Maps stellt ein *Zeichentools-Modul* bereit. Dieses Modul vereinfacht das Zeichnen und Bearbeiten von Formen auf der Karte mit einem Eingabegerät wie einer Maus oder einem Touchscreen. Die Kernklasse dieses Moduls ist der [Zeichnungs-Manager](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-). Der Zeichnungs-Manager stellt alle Funktionen zur Verfügung, die zum Zeichnen und Bearbeiten von Formen auf der Karte benötigt werden. Er kann direkt verwendet werden und ist in eine benutzerdefinierte Symbolleisten-Benutzeroberfläche integriert. Sie können auch die integrierte [Zeichnen-Symbolleisten](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)-Klasse verwenden.
 
 ## <a name="loading-the-drawing-tools-module-in-a-webpage"></a>Laden des Zeichentools-Moduls auf eine Webseite
 
@@ -27,14 +26,14 @@ Das Web SDK für Azure Maps stellt ein *Zeichentools-Modul* bereit. Dieses Modul
     - Verwenden Sie die global gehostete Azure Content Delivery Network-Version des Azure Maps-Moduls „Dienste“. Fügen Sie einen Verweis auf das JavaScript und das CSS-Stylesheet im `<head>`-Element der Datei hinzu:
 
         ```html
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/drawing/0/atlas-drawing.min.css" type="text/css" />
-        <script src="https://atlas.microsoft.com/sdk/javascript/drawing/0/atlas-drawing.min.js"></script>
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/drawing/1/atlas-drawing.min.css" type="text/css" />
+        <script src="https://atlas.microsoft.com/sdk/javascript/drawing/1/atlas-drawing.min.js"></script>
         ```
 
     - Alternativ können Sie das Zeichentools-Modul für den Quellcode des Azure Maps Web SDK lokal mithilfe des npm-Pakets [azure-maps-drawing-tools](https://www.npmjs.com/package/azure-maps-drawing-tools) laden und es anschließend zusammen mit Ihrer App hosten. Dieses Paket enthält außerdem TypeScript-Definitionen. Verwenden Sie diesen Befehl:
-    
+
         > **npm install azure-maps-drawing-tools**
-    
+
         Fügen Sie anschließend einen Verweis auf das JavaScript und das CSS-Stylesheet im `<head>`-Element der Datei hinzu:
 
          ```html
@@ -102,6 +101,64 @@ In den vorherigen Beispielen wurde gezeigt, wie Zeichnungsoptionen beim Instanzi
 <iframe height="685" title="Anpassen des Zeichnungs-Managers" src="//codepen.io/azuremaps/embed/LYPyrxR/?height=600&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/LYPyrxR/'>Get shape data</a> (Abrufen von Formdaten) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
+
+### <a name="put-a-shape-into-edit-mode"></a>Eine Form in den Bearbeitungsmodus setzen
+
+Sie können eine bestehende Form programmgesteuert in den Bearbeitungsmodus setzen, indem Sie diese an die `edit`-Funktion des Zeichnungs-Managers übergeben. Wenn die Form ein GeoJSON-Feature ist, sollten Sie vor der Übergabe die Klasse `atls.Shape` als Wrapper verwenden.
+
+Setzen Sie den Modus des Zeichnungs-Managers auf `idle`, um eine Form programmgesteuert aus dem Bearbeitungsmodus zu nehmen.
+
+```javascript
+//If you are starting with a GeoJSON feature, wrap it with the atlas.Shape class.
+var feature = { 
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": [0,0]
+        },
+    "properties":  {}
+};
+
+var shape = new atlas.Shape(feature);
+
+//Pass the shape into the edit function of the drawing manager.
+drawingManager.edit(shape);
+
+//Later, to programmatically take shape out of edit mode, set mode to idle. 
+drawingManager.setOptions({ mode: 'idle' });
+```
+
+> [!NOTE]
+> Wenn eine Form an die `edit`-Funktion des Zeichnungs-Managers übergeben wird, wird sie zur Datenquelle hinzugefügt, die vom Zeichnungs-Manager gepflegt wird. Wenn die Form zuvor in einer anderen Datenquelle war, wird sie aus dieser Datenquelle entfernt.
+
+Wenn Sie Formen zum Zeichnungs-Manager hinzufügen möchten, damit Endbenutzer diese aufrufen und bearbeiten können, die Formen aber nicht programmgesteuert in den Bearbeitungsmodus setzen möchten, müssen Sie die Datenquelle vom Zeichnungs-Manager abrufen und Ihre Formen der Quelle hinzufügen.
+
+```javascript
+//The shape(s) you want to add to the drawing manager so 
+var shape = new atlas.Shape(feature);
+
+//Retrieve the data source from the drawing manager.
+var source = drawingManager.getSource();
+
+//Add your shape.
+source.add(shape);
+
+//Alternatively, load in a GeoJSON feed using the sources importDataFromUrl function.
+source.importDataFromUrl('yourFeatures.json');
+```
+
+In der folgenden Tabelle werden die jeweiligen verschiedenen Bearbeitungsarten für Formfeatures aufgelistet.
+
+| Formfeature | Bearbeitungspunkte | Rotate | Form löschen |
+|---------------|:-----------:|:------:|:------------:|
+| Point         | ✓           |        | ✓           |
+| LineString    | ✓           | ✓      | ✓           |
+| Polygon       | ✓           | ✓      | ✓           |
+| MultiPoint    |             | ✓      | ✓           |
+| MultiLineString |           | ✓      | ✓           |
+| MultiPolygon  |             | ✓      | ✓           |
+| Circle        | ✓           |        | ✓           |
+| Rechteck     | ✓           | ✓      | ✓           |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

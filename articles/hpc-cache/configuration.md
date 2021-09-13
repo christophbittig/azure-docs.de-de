@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 04/08/2021
 ms.author: v-erkel
-ms.openlocfilehash: 0b3996df3c75ff31d0825be1d332dbd055305963
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: dcff46bb93d09d086000dad6e983275d87bc8950
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259760"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113587371"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>Konfigurieren zusätzlicher Azure HPC Cache-Einstellungen
 
@@ -81,7 +81,7 @@ Verwenden Sie einen Test-Cache, um das DNS-Setup zu überprüfen und zu verfeine
 
 ### <a name="refresh-storage-target-dns"></a>Aktualisieren des Speicherziel-DNS
 
-Wenn Ihr DNS-Server IP-Adressen aktualisiert, sind die zugehörigen NFS-Speicherziele vorübergehend nicht verfügbar. Informationen zum Aktualisieren der IP-Adressen Ihres benutzerdefinierten DNS-Systems finden Sie unter [Bearbeiten von Speicherzielen](hpc-cache-edit-storage.md#update-ip-address-custom-dns-configurations-only).
+Wenn Ihr DNS-Server IP-Adressen aktualisiert, sind die zugehörigen NFS-Speicherziele vorübergehend nicht verfügbar. Informationen zum Aktualisieren der IP-Adressen Ihres benutzerdefinierten DNS-Systems finden Sie unter [Verwalten von Speicherzielen](manage-storage-targets.md#update-ip-address-custom-dns-configurations-only).
 
 ## <a name="view-snapshots-for-blob-storage-targets"></a>Anzeigen von Momentaufnahmen für Blobspeicherziele
 

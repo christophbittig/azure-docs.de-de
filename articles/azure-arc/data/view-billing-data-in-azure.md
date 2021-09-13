@@ -7,28 +7,27 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 03/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 7ef1cd43d2efbc5ab92cc2b4cba4d237805d8921
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2c4e25aebf46ea13b69b8ca24d1336c4ba5521ad
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102202653"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340290"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>Hochladen von Abrechnungsdaten in Azure und Anzeigen im Azure-Portal
 
 > [!IMPORTANT] 
 >  Während des Vorschauzeitraums fallen keine Kosten für die Nutzung von Azure Arc-fähigen Datendiensten an. Obwohl das Abrechnungssystem end-to-end funktioniert, ist die Verbrauchseinheit für die Abrechnung auf 0 USD festgelegt.  Wenn Sie diesem Szenario folgen, sehen Sie in Ihrer Abrechnung Einträge für einen Dienst mit dem Namen **hybrid data services** und für Ressourcen eines Typs mit dem Namen **Microsoft.AzureArcData/`<resource type>`** . Es wird ein Datensatz für jeden Datendienst in Azure Arc angezeigt, den Sie erstellen. Jeder Datensatz wird jedoch mit 0 USD berechnet.
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="connectivity-modes---implications-for-billing-data"></a>Konnektivitätsmodi: Auswirkungen auf Abrechnungsdaten
 
 In Zukunft gibt es zwei Modi, in denen Sie Ihre Azure Arc-fähigen Datendienste ausführen können:
 
-- **Indirekt verbunden**: Es gibt keine direkte Verbindung mit Azure. Daten werden nur über einen Export-/Uploadprozess an Azure gesendet. Alle Bereitstellungen der Azure Arc-Datendienste arbeiten heute während der Vorschauphase in diesem Modus.
-- **Direkt verbunden**: In diesem Modus besteht eine Abhängigkeit vom Azure Arc-fähigen Kubernetes-Dienst, um eine direkte Verbindung zwischen Azure und dem Kubernetes-Cluster bereitzustellen, auf dem die Azure Arc-fähigen Datendienste ausgeführt werden. Dies ermöglicht mehr Funktionen und erlaubt es Ihnen auch, das Azure-Portal und die Azure CLI zu nutzen, um Ihre Azure Arc-fähigen Datendienste so zu verwalten, wie Sie Ihre Datendienste in Azure PaaS verwalten.  Dieser Konnektivitätsmodus ist in der Vorschau noch nicht verfügbar, wird jedoch in Kürze bereitgestellt werden.
+- **Indirekt verbunden**: Es gibt keine direkte Verbindung mit Azure. Daten werden nur über einen Export-/Uploadprozess an Azure gesendet.
+- **Direkt verbunden:** In diesem Modus besteht eine Abhängigkeit vom Azure Arc-fähigen Kubernetes-Dienst, um eine direkte Verbindung zwischen Azure und dem Kubernetes-Cluster bereitzustellen, in dem die Azure Arc-fähigen Datendienste ausgeführt werden. Dies ermöglicht mehr Funktionen und erlaubt es Ihnen auch, das Azure-Portal und die Azure CLI zu nutzen, um Ihre Azure Arc-fähigen Datendienste so zu verwalten, wie Sie Ihre Datendienste in Azure PaaS verwalten.  Dieser Konnektivitätsmodus ist in der Vorschau noch nicht verfügbar, wird jedoch in Kürze bereitgestellt werden.
 
 Sie können mehr über den Unterschied zwischen den [Verbindungsmodi](./connectivity.md) erfahren.
 
@@ -38,7 +37,7 @@ Im indirekt verbundenen Modus werden Abrechnungsdaten regelmäßig aus dem Azure
 
 Um Abrechnungsdaten in Azure hochzuladen, sollte zunächst Folgendes geschehen:
 
-1. Erstellen Sie einen Azure Arc-fähigen Datendienst, wenn dies noch nicht geschehen ist. Erstellen Sie beispielsweise Folgendes:
+1. Erstellen Sie bei Bedarf einen Azure Arc-fähigen Datendienst. Erstellen Sie beispielsweise Folgendes:
    - [Erstellen einer verwalteten Azure SQL-Instanz in Azure Arc](create-sql-managed-instance.md)
    - [Erstellen einer Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppe](create-postgresql-hyperscale-server-group.md)
 1. [Laden Sie Ressourcenbestandsdaten, Nutzungsdaten, Metriken und Protokolle in Azure Monitor hoch](upload-metrics-and-logs-to-azure-monitor.md), falls dies noch nicht geschehen ist.
@@ -46,8 +45,8 @@ Um Abrechnungsdaten in Azure hochzuladen, sollte zunächst Folgendes geschehen:
 
 Führen Sie den folgenden Befehl aus, um die Abrechnungsdaten zu exportieren:
 
-```console
-azdata arc dc export -t usage -p usage.json
+```azurecli
+az arcdata dc export -t usage -p usage.json --k8s-namespace <namespace> --use-k8s
 ```
 
 Vorerst ist die Datei nicht verschlüsselt, sodass der Inhalt angezeigt werden kann. Sie können sie in einem Text-Editor öffnen, um den Inhalt anzuzeigen.
@@ -103,8 +102,8 @@ Beispiel für einen `data`-Eintrag:
 
 Führen Sie den folgenden Befehl aus, um die Datei „usage.json“ in Azure hochzuladen.
 
-```console
-azdata arc dc upload -p usage.json
+```azurecli
+az arcdata dc upload -p usage.json
 ```
 
 ## <a name="view-billing-data-in-azure-portal"></a>Anzeigen von Abrechnungsdaten im Azure-Portal

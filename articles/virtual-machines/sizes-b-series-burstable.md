@@ -8,14 +8,16 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: risverma
-ms.openlocfilehash: cdfb44518c75dbb57d184fa72eb7639fd56f738c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e0fbe4b02ac0cf2978bba69a9e7e6eafb36b0f84
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339212"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697948"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Größen von virtuellen Burstable-Computern der B-Serie
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 VMs der B-Serie können auf vielen verschiedenen Hardwaretypen und Prozessoren bereitgestellt werden, sodass eine wettbewerbsfähige Bandbreitenzuteilung gegeben ist. Virtuelle Computer der B-Serie eignen sich ideal für Workloads, die nicht kontinuierlich die volle Leistung der CPU benötigen. Hierzu zählen beispielsweise Webserver, Proofs of Concept, kleine Datenbanken sowie Entwicklungsbuildumgebungen. Diese Workloads haben in der Regel kurzfristige Leistungsanforderungen. Fragen Sie die virtuelle Hardware über die VM ab, um die physische Hardware zu ermitteln, auf der diese Größe bereitgestellt wird. Mit der B-Serie können Sie eine VM-Größe mit einer Grundleistung erwerben, die Guthaben erstellen kann, wenn sie weniger als die Grundleistung beansprucht. Wenn für den virtuellen Computer Guthaben gebildet wurde, kann Leistung genutzt werden, die über die Grundleistung hinausgeht. Dabei können bis zu 100 % der vCPU verwendet werden, wenn Ihre Anwendung mehr CPU-Leistung benötigt.
 

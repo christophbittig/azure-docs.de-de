@@ -2,13 +2,13 @@
 title: Verwenden von Bicep zum Bereitstellen von Ressourcen für den Mandanten
 description: Hier erfahren Sie, wie Sie Ressourcen im Mandantenbereich in einer Bicep-Datei bereitstellen.
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: af1ca550a6443fa7791d4f5ac496ae2d0626b176
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.date: 07/19/2021
+ms.openlocfilehash: 3f446670cd85daa5b541cc9b5858ab768ac8411d
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111371755"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114453407"
 ---
 # <a name="tenant-deployments-with-bicep-file"></a>Mandantenbereitstellungen mit Bicep-Datei
 
@@ -146,7 +146,7 @@ resource mgName_resource 'Microsoft.Management/managementGroups@2020-02-01' = {
 
 ### <a name="scope-to-management-group"></a>Bereich: Verwaltungsgruppe
 
-Um eine Verwaltungsgruppe innerhalb des Mandanten als Bereitstellungsziel zu verwenden, fügen Sie ein Modul hinzu. Verwenden Sie die [managementGroup-Funktion](bicep-functions-scope.md#managementgroup), um ihre Eigenschaft `scope` festzulegen. Geben Sie den Namen der Verwaltungsgruppe an.
+Fügen Sie ein [Modul](modules.md) hinzu, um eine Verwaltungsgruppe innerhalb des Mandanten als Bereitstellungsziel zu verwenden. Verwenden Sie die [managementGroup-Funktion](bicep-functions-scope.md#managementgroup), um ihre Eigenschaft `scope` festzulegen. Geben Sie den Namen der Verwaltungsgruppe an.
 
 ```bicep
 targetScope = 'tenant'

@@ -4,12 +4,12 @@ description: Lernen Sie die Konzepte und Techniken der Azure Functions kennen, d
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: 4e5d239416a14d2d769020283f43f2dbcf150e64
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 93ac3458e2d9954c9ec17294fe89199d11cc765f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111539799"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346819"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure Functions: Entwicklerhandbuch
 In Azure Functions nutzen bestimmte Funktionen einige wichtige technische Konzepte und Komponenten gemeinsam, unabhängig von der verwendeten Sprache oder Bindung. Bevor Sie sich mit den spezifischen Details einer bestimmten Sprache oder Bindung beschäftigen, sollten Sie diese Übersicht lesen, die für alle Funktionen gilt.
@@ -97,7 +97,7 @@ Haben Sie Probleme mit Fehlern, die aus den Bindungen stammen? Lesen Sie die Dok
 
 Ihr Funktionsprojekt verweist anhand des Namens auf Verbindungsinformationen aus seinem Konfigurationsanbieter. Die Verbindungsdetails werden nicht direkt akzeptiert, sodass sie in verschiedenen Umgebungen geändert werden können. Eine Triggerdefinition kann z. B. eine `connection`-Eigenschaft enthalten. Dies kann sich auf eine Verbindungszeichenfolge beziehen, aber Sie können die Verbindungszeichenfolge nicht direkt in einer Datei `function.json` festlegen. Stattdessen würden Sie `connection` auf den Namen einer Umgebungsvariablen festlegen, die die Verbindungszeichenfolge enthält.
 
-Der Standardkonfigurationsanbieter verwendet Umgebungsvariablen. Diese werden möglicherweise von [Anwendungseinstellungen](./functions-how-to-use-azure-function-app-settings.md?tabs=portal#settings) festgelegt, wenn Sie im Azure Functions-Dienst ausgeführt werden, oder aus der [lokalen Einstellungsdatei](functions-run-local.md#local-settings-file) bei der lokalen Entwicklung.
+Der Standardkonfigurationsanbieter verwendet Umgebungsvariablen. Diese werden möglicherweise von [Anwendungseinstellungen](./functions-how-to-use-azure-function-app-settings.md?tabs=portal#settings) festgelegt, wenn Sie im Azure Functions-Dienst ausgeführt werden, oder aus der [lokalen Einstellungsdatei](functions-develop-local.md#local-settings-file) bei der lokalen Entwicklung.
 
 ### <a name="connection-values"></a>Verbindungswerte
 
@@ -126,7 +126,7 @@ Identitätsbasierte Verbindungen werden bei allen Plänen von den folgenden Trig
 
 Die von der Functions-Runtime (`AzureWebJobsStorage`) verwendeten Speicherverbindungen können auch mithilfe einer identitätsbasierten Verbindung konfiguriert werden. Weitere Informationen finden Sie weiter unten unter [Verbinden zum Hostspeicher mit einer Identität](#connecting-to-host-storage-with-an-identity).
 
-Identitätsbasierte Verbindungen verwenden eine [verwaltete Identität](../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json), wenn sie im Azure Functions-Dienst gehostet werden. Die vom System zugewiesene Identität wird standardmäßig verwendet. Bei Ausführung in anderen Kontexten (z. B. bei der lokalen Entwicklung) wird stattdessen Ihre Entwickleridentität verwendet, obwohl dies mithilfe alternativer Verbindungsparameter angepasst werden kann.
+Identitätsbasierte Verbindungen verwenden eine [verwaltete Identität](../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json), wenn sie im Azure Functions-Dienst gehostet werden. Standardmäßig wird eine vom System zugewiesene Identität verwendet, auch wenn mit den Eigenschaften `credential` und `clientID` eine vom Benutzer zugewiesene Identität angegeben werden kann. Bei Ausführung in anderen Kontexten (z. B. bei der lokalen Entwicklung) wird stattdessen Ihre Entwickleridentität verwendet, obwohl dies mithilfe alternativer Verbindungsparameter angepasst werden kann.
 
 #### <a name="grant-permission-to-the-identity"></a>Erteilen der Berechtigung für die Identität
 
@@ -151,12 +151,14 @@ Eine identitätsbasierte Verbindung für einen Azure-Dienst akzeptiert die folge
 |---|---|---|---|
 | Dienst-URI | Azure Blob<sup>1</sup>, Azure Warteschlange | `<CONNECTION_NAME_PREFIX>__serviceUri` | Der URI der Datenebene des Diensts, mit dem Sie eine Verbindung herstellen. |
 | Vollqualifizierter Namespace | Event Hubs, Service Bus | `<CONNECTION_NAME_PREFIX>__fullyQualifiedNamespace` | Der vollqualifizierte Event Hubs- und Service Bus-Namespace. |
+| Token-Anmeldeinformationen | (Optional) | `<CONNECTION_NAME_PREFIX>__credential` | Damit wird festgelegt, wie für die Verbindung ein Token abgerufen werden soll. Wird nur empfohlen, wenn eine vom Benutzer zugewiesene Identität angegeben wird. Dann muss sie auf „managedidentity“ festgelegt werden. Dies gilt nur, wenn sie im Azure Functions-Dienst gehostet wird. |
+| Client-ID | (Optional) | `<CONNECTION_NAME_PREFIX>__clientId` | Wenn `credential` auf „managedidentity“ festgelegt ist, wird mit dieser Eigenschaft die vom Benutzer zugewiesene Identität angegeben, die beim Abrufen eines Tokens verwendet werden soll. Die Eigenschaft akzeptiert eine Client-ID, die einer vom Benutzer zugewiesenen Identität entspricht, die der Anwendung zugeordnet ist. Wenn nichts angegeben wird, wird die vom System zugewiesene Identität verwendet. Diese Eigenschaft wird in [Szenarios für die lokale Entwicklung](#local-development-with-identity-based-connections) anders verwendet, wenn `credential` nicht festgelegt werden darf. |
 
 <sup>1</sup> Für Azure Blob sind sowohl Blob- als auch Warteschlangendienst-URIs erforderlich.
 
 Für einen bestimmten Verbindungstyp können weitere Optionen unterstützt werden. Weitere Informationen finden Sie in der Dokumentation zu der Komponente, die die Verbindung herstellt.
 
-##### <a name="local-development"></a>Lokale Entwicklung
+##### <a name="local-development-with-identity-based-connections"></a>Lokale Entwicklung mit identitätsbasierten Verbindungen
 
 Bei lokaler Ausführung weist die Konfiguration oben die Laufzeit an, Ihre lokale Entwickleridentität zu verwenden. Die Verbindung versucht, ein Token von den folgenden Speicherorten in der angegebenen Reihenfolge abzurufen:
 

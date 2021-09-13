@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa9a7b08f792c36ecf0f65e37f2f9e9c551bca8c
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: c824ee3a8365261fa6409bf79904cde1b409fc26
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110088136"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346427"
 ---
 # <a name="add-and-manage-groups-in-an-administrative-unit-in-azure-active-directory"></a>Hinzufügen und Verwalten von Gruppen in einer Verwaltungseinheit in Azure Active Directory
 
@@ -45,21 +45,29 @@ Sie können Gruppen einer Verwaltungseinheit nur einzeln zuweisen. Eine Option z
 
 * Im Bereich **Gruppen**:
 
-  1. Navigieren Sie im Azure-Portal zu **Azure AD**.
-  1. Wählen Sie die Option **Gruppen** und dann die Gruppe aus, die Sie der Verwaltungseinheit zuweisen möchten. 
+  1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder bei [Azure AD Admin Center](https://aad.portal.azure.com) an.
+
+  1. Klicken Sie auf **Azure Active Directory** > **Gruppen**.
+
+  1. Wählen Sie die Gruppe aus, die Sie einer Verwaltungseinheit zuweisen möchten.
+
   1. Wählen Sie im linken Bereich die Option **Verwaltungseinheiten** aus, um eine Liste mit den Verwaltungseinheiten anzuzeigen, denen die Gruppe zugewiesen ist. 
 
      ![Screenshot: Link „Der Verwaltungseinheit zuweisen“ im Bereich „Verwaltungseinheiten“](./media/admin-units-add-manage-groups/assign-to-group-1.png)
 
   1. Wählen Sie die Option **Der Verwaltungseinheit zuweisen** aus.
+
   1. Wählen Sie im rechten Bereich die Verwaltungseinheit aus.
 
-* Im Bereich **Verwaltungseinheiten** > **Alle Gruppen**:
+* Im Bereich **Verwaltungseinheiten** > **Gruppen**:
 
-  1. Navigieren Sie im Azure-Portal zu **Azure AD**.
+  1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder bei [Azure AD Admin Center](https://aad.portal.azure.com) an.
+
+  1. Klicken Sie auf **Azure Active Directory** > **Verwaltungseinheiten**.
   
-  1. Wählen Sie im linken Bereich die Option **Verwaltungseinheiten** und dann **Alle Gruppen** aus. 
-     Alle Gruppen, die der Verwaltungseinheit bereits zugewiesen sind, werden im rechten Bereich angezeigt. 
+  1. Wählen Sie eine Verwaltungseinheit aus, der Sie eine Gruppe hinzufügen möchten.
+  
+  1. Wählen Sie **Gruppen** aus. Alle Gruppen, die der Verwaltungseinheit bereits zugewiesen sind, werden im rechten Bereich angezeigt. 
 
   1. Wählen Sie im Bereich **Gruppen** die Option **Hinzufügen** aus.
     Im rechten Bereich sind alle verfügbaren Gruppen Ihrer Azure AD-Organisation aufgeführt. 

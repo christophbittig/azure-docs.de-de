@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: sstein
-ms.date: 4/16/2021
-ms.openlocfilehash: 514e7e229ba1b72f2c357f6cefdd272889ed46b9
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.reviewer: mathoma, wiassaf
+ms.date: 7/29/2021
+ms.openlocfilehash: ac1241b28ae85f19aa4bfdbc1a92310b64d88462
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591006"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347096"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL-Datenbank – Serverlos
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -97,7 +97,7 @@ Im Gegensatz zu bereitgestellten Computedatenbanken wird der Speicher aus dem SQ
 
 Sowohl in serverlosen als auch in bereitgestellten Computedatenbanken können Cacheeinträge entfernt werden, wenn der gesamte verfügbare Arbeitsspeicher verwendet wird.
 
-Beachten Sie, dass die aktive Cachenutzung je nach Verwendungsmuster trotz geringer CPU-Auslastung hoch bleiben und die Speicherfreigabe verhindern kann.  Außerdem kann es nach Ende der Benutzeraktivität zu zusätzlichen Verzögerungen kommen, bevor die Speicherfreigabe aufgrund von periodischen Hintergrundprozessen erfolgt, die auf vorherige Benutzeraktivitäten reagieren.  Beispielsweise werden bei Löschvorgängen und QDS-Bereinigungstasks inaktive Datensätze generiert, die zum Löschen markiert sind. Physisch werden sie jedoch erst gelöscht, wenn der inaktive Bereinigungsprozess inaktiver Datensätze ausgeführt wird, der das Lesen von Datenseiten in den Cache umfassen kann.
+Die aktive Cachenutzung kann je nach Verwendungsmuster trotz geringer CPU-Auslastung hoch bleiben und die Speicherfreigabe verhindern.  Außerdem kann es nach Ende der Benutzeraktivität zu weiteren Verzögerungen kommen, bevor die Speicherfreigabe aufgrund von periodischen Hintergrundprozessen erfolgt, die auf vorherige Benutzeraktivitäten reagieren.  Beispielsweise werden bei Löschvorgängen und Abfragespeicher-Bereinigungstasks inaktive Datensätze generiert, die zum Löschen markiert sind. Physisch werden sie jedoch erst gelöscht, wenn der Bereinigungsprozess inaktiver Datensätze ausgeführt wird. Die Bereinigung inaktiver Datensätze kann das Lesen zusätzlicher Datenseiten in den Cache umfassen.
 
 #### <a name="cache-hydration"></a>Cachehydration
 
@@ -109,20 +109,59 @@ Der SQL-Cache wächst an, während Daten auf die gleiche Weise und mit der gleic
 
 Automatisches Anhalten wird ausgelöst, wenn die folgenden Bedingungen für die Dauer der Verzögerung für automatisches Anhalten erfüllt sind:
 
-- Anzahl der Sitzungen = 0
-- CPU = 0 für Benutzerworkload im Benutzerpool
+- Anzahl von Sitzungen: 0
+- CPU = 0 für Benutzerworkload im Benutzerressourcenpool
 
 Es ist eine Option verfügbar, mit der AutoAnhalten ggf. deaktiviert werden kann.
 
-Die folgenden Features unterstützen AutoAnhalten nicht, sondern nur automatische Skalierung.  Bei Verwendung eines der folgenden Features muss AutoAnhalten deaktiviert werden, und die Datenbank bleibt online (ungeachtet der Dauer der Inaktivität der Datenbank):
+Die folgenden Features unterstützen AutoAnhalten nicht, sondern nur automatische Skalierung. Bei Verwendung eines der folgenden Features muss AutoAnhalten deaktiviert werden, und die Datenbank bleibt online (ungeachtet der Dauer der Inaktivität der Datenbank):
 
-- Georeplikation (aktive Georeplikation und Gruppen für automatisches Failover).
-- Langzeitaufbewahrung (Long-Term Retention, LTR) von Sicherungen.
-- In SQL-Datensynchronisierung verwendete Synchronisierungsdatenbank  Im Gegensatz zu Synchronisierungsdatenbanken unterstützen Hub-Datenbanken und Mitgliedsdatenbanken AutoAnhalten.
-- DNS-Aliasing
-- die in elastischen Aufträgen (Vorschauversion) verwendete Auftragsdatenbank
+- Georeplikation ([aktive Georeplikation](active-geo-replication-overview.md) und [Gruppen für automatisches Failover](auto-failover-group-overview.md))
+- [Langzeitaufbewahrung von Sicherungen](long-term-retention-overview.md) (LTR)
+- In [SQL-Datensynchronisierung](sql-data-sync-data-sql-server-sql-database.md) verwendete Synchronisierungsdatenbank  Im Gegensatz zu Synchronisierungsdatenbanken unterstützen Hub-Datenbanken und Mitgliedsdatenbanken AutoAnhalten.
+- [DNS-Alias](dns-alias-overview.md), der für den logischen Server erstellt wurde, der eine serverlose Datenbank enthält
+- [Elastische Aufträge (Vorschauversion)](elastic-jobs-overview.md), wenn die Auftragsdatenbank eine serverlose Datenbank ist. Datenbanken für elastische Aufträge unterstützen AutoAnhalten und werden von Auftragsverbindungen fortgesetzt.
 
 AutoAnhalten wird während der Bereitstellung bestimmter Dienstupdates vorübergehend verhindert, die erfordern, dass die Datenbank online ist.  In solchen Fällen ist AutoAnhalten wieder zulässig, sobald das Dienstupdate abgeschlossen ist.
+
+#### <a name="auto-pause-troubleshooting"></a>Problembehandlung beim AutoAnhalten
+
+Wenn AutoAnhalten aktiviert ist, eine Datenbank jedoch nach dem Verzögerungszeitraum nicht automatisch angehalten wird und die oben aufgeführten Funktionen nicht verwendet werden, verhindern Anwendungs- oder Benutzersitzungen möglicherweise das AutoAnhalten. Stellen Sie mithilfe eines beliebigen Clienttools eine Verbindung mit der Datenbank her, und führen Sie die folgende Abfrage aus, um herauszufinden, ob derzeit Anwendungs- oder Benutzersitzungen mit der Datenbank verbunden sind:
+
+```sql
+SELECT session_id,
+       host_name,
+       program_name,
+       client_interface_name,
+       login_name,
+       status,
+       login_time,
+       last_request_start_time,
+       last_request_end_time
+FROM sys.dm_exec_sessions AS s
+INNER JOIN sys.dm_resource_governor_workload_groups AS wg
+ON s.group_id = wg.group_id
+WHERE s.session_id <> @@SPID
+      AND
+      (
+      (
+      wg.name like 'UserPrimaryGroup.DB%'
+      AND
+      TRY_CAST(RIGHT(wg.name, LEN(wg.name) - LEN('UserPrimaryGroup.DB') - 2) AS int) = DB_ID()
+      )
+      OR
+      wg.name = 'DACGroup'
+      );
+```
+
+> [!TIP]
+> Stellen Sie nach dem Ausführen der Abfrage sicher, dass Sie die Verbindung mit der Datenbank trennen. Andernfalls verhindert die von der Abfrage verwendete geöffnete Sitzung das AutoAnhalten.
+
+Wenn das Ergebnisset nicht leer ist, bedeutet dies, dass derzeit Sitzungen das AutoAnhalten verhindern. 
+
+Wenn das Ergebnisset leer ist, ist es dennoch möglich, dass Sitzungen zu einem bestimmten Zeitpunkt während des Verzögerungszeitraums beim AutoAnhalten geöffnet waren, möglicherweise für kurze Zeit. Sie können [Azure SQL Auditing](auditing-overview.md) verwenden und Überwachungsdaten für den relevanten Zeitraum untersuchen, um zu überprüfen, ob solche Aktivitäten während des Verzögerungszeitraums aufgetreten sind.
+
+Das Vorhandensein von offenen Sitzungen mit oder ohne gleichzeitige CPU-Auslastung im Benutzerressourcenpool ist der häufigste Grund dafür, dass eine serverlose Datenbank nicht wie erwartet automatisch angehalten wird. Einige [Features](#auto-pausing) unterstützen AutoAnhalten nicht, sondern nur automatische Skalierung.
 
 ### <a name="auto-resuming"></a>Automatisches Fortsetzen
 
@@ -142,7 +181,7 @@ Automatisches Fortsetzen wird ausgelöst, wenn eine der folgenden Bedingungen er
 |Automatische Optimierung|Anwendung und Überprüfung von Empfehlungen für automatische Optimierung, z. B. automatische Indizierung|
 |Kopieren von Datenbanken|Erstellen von Datenbanken als Kopie.<br>Exportieren in eine BACPAC-Datei.|
 |SQL-Datensynchronisierung|Die Synchronisierung zwischen Hub- und Mitgliedsdatenbanken, die nach einem konfigurierbaren Zeitplan oder manuell ausgeführt werden|
-|Ändern bestimmter Datenbankmetadaten|Hinzufügen von neuen Datenbanktags.<br>Ändern der Mindest- und Höchstwerte für virtuelle Kerne oder der Verzögerung für das automatische Anhalten.|
+|Ändern bestimmter Datenbankmetadaten|Hinzufügen von neuen Datenbanktags.<br>Ändern der Mindest- und Höchstwerte für virtuelle Kerne oder der Verzögerung für AutoAnhalten|
 |SQL Server Management Studio (SSMS)|Durch Verwenden von SSMS-Versionen vor 18.1 und Öffnen eines neuen Abfragefensters für eine Datenbank auf dem Server wird jede automatisch angehaltene Datenbank auf dem betreffenden Server fortgesetzt. Dieses Verhalten tritt nicht auf, wenn mindestens Version 18.1 von SSMS verwendet wird.|
 
 Überwachung und Verwaltung sowie andere Lösungen, die einen der oben aufgeführten Vorgänge ausführen, lösen eine automatische Fortsetzung aus.
@@ -155,11 +194,11 @@ Wenn eine serverlose Datenbank angehalten wird, wird die Datenbank bei der erste
 
 ### <a name="latency"></a>Latency
 
-Die Wartezeit für automatisches Fortsetzen und AutoAnhalten einer serverlosen Datenbank liegt normalerweise im Bereich von 1 für automatisches Fortsetzen und zwischen 1 und 10 Minuten für AutoAnhalten.
+Die Wartezeit für automatisches Fortsetzen und AutoAnhalten einer serverlosen Datenbank liegt normalerweise im Bereich von 1 für automatisches Fortsetzen und zwischen 1 und 10 Minuten nach Ablauf des Verzögerungszeitraums für AutoAnhalten.
 
 ### <a name="customer-managed-transparent-data-encryption-byok"></a>Vom Kunden verwaltete transparente Datenverschlüsselung (BYOK)
 
-Falls die [vom Kunden verwaltete transparente Datenverschlüsselung](transparent-data-encryption-byok-overview.md) (BYOK) verwendet und die serverlose Datenbank automatisch angehalten wird, wenn ein Schlüssel gelöscht oder widerrufen wird, verbleibt die Datenbank im automatisch angehaltenen Zustand.  Nach dem nächsten Fortsetzen der Datenbank kann in diesem Fall innerhalb von ungefähr 10 Minuten nicht mehr auf die Datenbank zugegriffen werden.  Sobald der Zugriff auf die Datenbank nicht mehr möglich ist, ist der Wiederherstellungsvorgang identisch mit dem für bereitgestellte Computedatenbanken.  Wenn die serverlose Datenbank zum Zeitpunkt des Löschens oder Widerrufens von Schlüsseln online ist, ist der Zugriff auf die Datenbank auch nach etwa 10 Minuten nicht mehr möglich, wie dies auch bei bereitgestellten Computedatenbanken der Fall ist.
+Falls die [vom Kunden verwaltete transparente Datenverschlüsselung](transparent-data-encryption-byok-overview.md) (BYOK) verwendet und die serverlose Datenbank automatisch angehalten wird, wenn ein Schlüssel gelöscht oder widerrufen wird, verbleibt die Datenbank im automatisch angehaltenen Zustand.  Nach dem nächsten Fortsetzen der Datenbank kann in diesem Fall innerhalb von ungefähr 10 Minuten nicht mehr auf die Datenbank zugegriffen werden. Sobald der Zugriff auf die Datenbank nicht mehr möglich ist, ist der Wiederherstellungsvorgang identisch mit dem für bereitgestellte Computedatenbanken. Wenn die serverlose Datenbank zum Zeitpunkt des Löschens oder Widerrufens von Schlüsseln online ist, ist der Zugriff auf die Datenbank auch nach etwa 10 Minuten nicht mehr möglich, wie dies auch bei bereitgestellten Computedatenbanken der Fall ist.
 
 ## <a name="onboarding-into-serverless-compute-tier"></a>Integration in die serverlose Computeebene
 
@@ -168,7 +207,7 @@ Beim Erstellen einer neuen Datenbank bzw. Verschieben einer vorhandenen Datenban
 1. Geben Sie das Dienstziel an. Das Dienstziel schreibt die Dienstebene, die Hardwaregeneration und die maximale Anzahl von virtuellen Kernen vor. Weitere Informationen zu Optionen für Dienstziele finden Sie unter [Limits für serverlose Ressourcen](resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5)
 
 
-2. Geben Sie optional die Mindestanzahl virtueller Kerne und die Verzögerung für das automatische Anhalten an, um deren Standardwerte zu ändern. In der folgenden Tabelle werden die verfügbaren Werte für diese Parameter aufgeführt.
+2. Geben Sie optional die Mindestanzahl virtueller Kerne und die Verzögerung für AutoAnhalten an, um deren Standardwerte zu ändern. In der folgenden Tabelle werden die verfügbaren Werte für diese Parameter aufgeführt.
 
    |Parameter|Auswahlmöglichkeiten für Werte|Standardwert|
    |---|---|---|---|
@@ -180,7 +219,7 @@ Beim Erstellen einer neuen Datenbank bzw. Verschieben einer vorhandenen Datenban
 
 Die folgenden Beispiele erstellen eine neue Datenbank in der serverlosen Computeebene.
 
-#### <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
+#### <a name="use-azure-portal"></a>Verwenden des Azure-Portals
 
 Weitere Informationen finden Sie unter [Schnellstart: Erstellen einer Einzeldatenbank in Azure SQL-Datenbank über das Azure-Portal](single-database-create-quickstart.md).
 
@@ -192,7 +231,7 @@ New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName 
   -ComputeModel Serverless -Edition GeneralPurpose -ComputeGeneration Gen5 `
   -MinVcore 0.5 -MaxVcore 2 -AutoPauseDelayInMinutes 720
 ```
-#### <a name="use-the-azure-cli"></a>Verwenden der Azure-CLI
+#### <a name="use-azure-cli"></a>Mithilfe der Azure-Befehlszeilenschnittstelle
 
 ```azurecli
 az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
@@ -202,7 +241,7 @@ az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>Verwenden von Transact-SQL (T-SQL)
 
-Bei Verwendung von T-SQL werden Standardwerte für die Mindestanzahl virtueller Kerne und die automatische Pausenverzögerung angewendet.
+Bei Verwendung von T-SQL werden Standardwerte für die Mindestanzahl virtueller Kerne und die automatische Pausenverzögerung angewendet. Sie können später über das Portal oder über andere Verwaltungs-APIs (PowerShell, Azure CLI, REST-API) geändert werden.
 
 ```sql
 CREATE DATABASE testdb
@@ -217,24 +256,22 @@ In den folgenden Beispielen wird eine Datenbank aus der bereitgestellten Compute
 
 #### <a name="use-powershell"></a>Verwenden von PowerShell
 
-
 ```powershell
 Set-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName `
   -Edition GeneralPurpose -ComputeModel Serverless -ComputeGeneration Gen5 `
   -MinVcore 1 -MaxVcore 4 -AutoPauseDelayInMinutes 1440
 ```
 
-#### <a name="use-the-azure-cli"></a>Verwenden der Azure-CLI
+#### <a name="use-azure-cli"></a>Mithilfe der Azure-Befehlszeilenschnittstelle
 
 ```azurecli
 az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
   --edition GeneralPurpose --min-capacity 1 --capacity 4 --family Gen5 --compute-model Serverless --auto-pause-delay 1440
 ```
 
-
 #### <a name="use-transact-sql-t-sql"></a>Verwenden von Transact-SQL (T-SQL)
 
-Bei Verwendung von T-SQL werden Standardwerte für die Mindestanzahl virtueller Kerne und die AutoAnhalten-Verzögerung angewendet.
+Bei Verwendung von T-SQL werden Standardwerte für die Mindestanzahl virtueller Kerne und die AutoAnhalten-Verzögerung angewendet. Sie können später über das Portal oder über andere Verwaltungs-APIs (PowerShell, Azure CLI, REST-API) geändert werden.
 
 ```sql
 ALTER DATABASE testdb 
@@ -253,10 +290,9 @@ Eine serverlose Datenbank kann auf die gleiche Weise in eine bereitgestellte Com
 
 Führen Sie zum Ändern der Ober- oder Untergrenze für V-Kerne sowie der Verzögerung für das automatische Anhalten den PowerShell-Befehl [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) mit den Argumenten `MaxVcore`, `MinVcore` und `AutoPauseDelayInMinutes` aus.
 
-### <a name="use-the-azure-cli"></a>Verwenden der Azure-CLI
+### <a name="use-azure-cli"></a>Mithilfe der Azure-Befehlszeilenschnittstelle
 
 Führen Sie zum Ändern der Ober- oder Untergrenze für V-Kerne sowie der Verzögerung für das automatische Anhalten den Azure CLI-Befehl [az sql db update](/cli/azure/sql/db#az_sql_db_update) mit den Argumenten `capacity`, `min-capacity` und `auto-pause-delay` aus.
-
 
 ## <a name="monitoring"></a>Überwachung
 
@@ -270,22 +306,22 @@ Das App-Paket ist die „Außengrenze“ der Ressourcenverwaltung für eine Date
 
 #### <a name="user-resource-pool"></a>Benutzerressourcenpool
 
-Der Benutzerressourcenpool ist die „Innengrenze“ der Ressourcenverwaltung für eine Datenbank, wobei es keine Rolle spielt, ob sich die Datenbank auf einer serverlosen oder einer bereitgestellten Computeebene befindet. Der Benutzerressourcenpool beschränkt CPU und E/A für Benutzerworkload, die von DDL-Abfragen (z.B. CREATE und ALTER) und DML-Abfragen (z.B. SELECT, INSERT, UPDATE und DELETE) generiert wird. Diese Abfragen sind im Allgemeinen für den Großteil der Auslastung des App-Pakets verantwortlich.
+Der Benutzerressourcenpool ist eine „Innengrenze“ der Ressourcenverwaltung für eine Datenbank, wobei es keine Rolle spielt, ob sich die Datenbank auf einer serverlosen oder einer bereitgestellten Computeebene befindet. Der Benutzerressourcenpool beschränkt CPU und E/A für Benutzerworkload, die von DDL-Abfragen (z. B. CREATE und ALTER), DML-Abfragen (z. B. INSERT, UPDATE, DELETE, MERGE und SELECT) generiert wird. Diese Abfragen sind im Allgemeinen für den Großteil der Auslastung des App-Pakets verantwortlich.
 
 ### <a name="metrics"></a>Metriken
 
-Metriken für die Überwachung des Ressourcenverbrauchs des App-Pakets und Benutzerpools einer serverlosen Datenbank sind in der folgenden Tabelle aufgeführt:
+Metriken für die Überwachung des Ressourcenverbrauchs des App-Pakets und Benutzerressourcenpools einer serverlosen Datenbank sind in der folgenden Tabelle aufgeführt:
 
 |Entität|Metrik|BESCHREIBUNG|Units|
 |---|---|---|---|
 |App-Paket|app_cpu_percent|Prozentsatz der von der App genutzten virtuellen Kerne, bezogen auf die maximal zulässigen virtuellen Kerne für die App.|Prozentwert|
 |App-Paket|app_cpu_billed|Die Menge der Computeressourcen, die im Berichtszeitraum für die App abgerechnet wurden. Der während dieses Zeitraums zu zahlende Betrag ist das Produkt aus dieser Metrik und dem Einzelpreis für virtuelle Kerne. <br><br>Werte dieser Metrik werden bestimmt, indem der maximal genutzte Arbeitsspeicher und der pro Sekunde genutzte Speicher über einen Zeitraum aggregiert werden. Liegt die genutzte Menge unter der bereitgestellten Mindestmenge (festgelegt durch Mindestanzahl virtueller Kerne und Minimalwert für Speicher), wird die bereitgestellte Mindestmenge berechnet. Der Arbeitsspeicher wird in Einheiten aus virtuellen Kernen normalisiert, indem der Arbeitsspeicher in GB nach 3 GB pro virtuellem Kern neu skaliert wird. So kann die CPU bei der Abrechnung mit dem Arbeitsspeicher verglichen werden.|Virtueller Kern – Sekunden|
 |App-Paket|app_memory_percent|Prozentsatz des von der App genutzten Speichers, bezogen auf den maximal zulässigen Speicher für die App.|Prozentwert|
-|Benutzerpool|cpu_percent|Prozentsatz der von der Benutzerworkload genutzten virtuellen Kerne, bezogen auf die maximal zulässigen virtuellen Kerne für die Benutzerworkload.|Prozentwert|
-|Benutzerpool|data_IO_percent|Prozentsatz der von der Benutzerworkload genutzten Daten-IOPS, bezogen auf die maximal zulässige Daten-IOPS für die Benutzerworkload.|Prozentwert|
-|Benutzerpool|log_IO_percent|Prozentsatz der von der Benutzerworkload genutzten Protokollrate (MB/s), bezogen auf die maximal zulässige Protokollrate (MB/s) für die Benutzerworkload.|Prozentwert|
-|Benutzerpool|workers_percent|Prozentsatz der von der Benutzerworkload genutzten Worker, bezogen auf die maximal zulässige Anzahl von Workern für die Benutzerworkload.|Prozentwert|
-|Benutzerpool|sessions_percent|Prozentsatz der von der Benutzerworkload genutzten Sitzungen, bezogen auf die maximal zulässige Anzahl von Sitzungen für die Benutzerworkload.|Prozentwert|
+|Benutzerressourcenpool|cpu_percent|Prozentsatz der von der Benutzerworkload genutzten virtuellen Kerne, bezogen auf die maximal zulässigen virtuellen Kerne für die Benutzerworkload.|Prozentwert|
+|Benutzerressourcenpool|data_IO_percent|Prozentsatz der von der Benutzerworkload genutzten Daten-IOPS, bezogen auf die maximal zulässige Daten-IOPS für die Benutzerworkload.|Prozentwert|
+|Benutzerressourcenpool|log_IO_percent|Prozentsatz der von der Benutzerworkload genutzten Protokollrate (MB/s), bezogen auf die maximal zulässige Protokollrate (MB/s) für die Benutzerworkload.|Prozentwert|
+|Benutzerressourcenpool|workers_percent|Prozentsatz der von der Benutzerworkload genutzten Worker, bezogen auf die maximal zulässige Anzahl von Workern für die Benutzerworkload.|Prozentwert|
+|Benutzerressourcenpool|sessions_percent|Prozentsatz der von der Benutzerworkload genutzten Sitzungen, bezogen auf die maximal zulässige Anzahl von Sitzungen für die Benutzerworkload.|Prozentwert|
 
 ### <a name="pause-and-resume-status"></a>Status für Anhalten und Fortsetzen
 
@@ -300,12 +336,11 @@ Get-AzSqlDatabase -ResourceGroupName $resourcegroupname -ServerName $servername 
   | Select -ExpandProperty "Status"
 ```
 
-#### <a name="use-the-azure-cli"></a>Verwenden der Azure-CLI
+#### <a name="use-azure-cli"></a>Mithilfe der Azure-Befehlszeilenschnittstelle
 
 ```azurecli
 az sql db show --name $databasename --resource-group $resourcegroupname --server $servername --query 'status' -o json
 ```
-
 
 ## <a name="resource-limits"></a>Ressourceneinschränkungen
 
@@ -356,7 +391,7 @@ Die genaue Berechnung der Computekosten für dieses Beispiel lautet:
 |8:00 - 24:00|0|0|Keine Berechnung von Computeleistung während des Anhaltens|0 Sekunden für virtuelle Kerne|
 |Gesamte berechnete Sekunden für virtuelle Kerne in 24 Stunden||||50.400 Sekunden für virtuelle Kerne|
 
-Angenommen, der Compute-Einheitenpreis beträgt 0,000145 USD/V-Kern/Sekunde.  Die Computeleistung, die für diesen 24-Stunden-Zeitraum berechnet wird, ist dann das Produkt aus dem Preis der Compute-Einheit und den berechneten Sekunden für virtuelle Kerne: 0,000145 USD/V-Kern/Sekunde * 50400 Sekunden für virtuelle Kerne ~ 7,31 USD
+Angenommen, der Compute-Einheitenpreis beträgt 0,000145 USD/V-Kern/Sekunde.  Die Computeleistung, die für diesen 24-Stunden-Zeitraum berechnet wird, ist dann das Produkt aus dem Preis der Compute-Einheit und den berechneten Sekunden für virtuelle Kerne: 0,000145 USD/V-Kern/Sekunde * 50400 Sekunden für virtuelle Kerne ~ 7,31 USD.
 
 ### <a name="azure-hybrid-benefit-and-reserved-capacity"></a>Azure-Hybridvorteil und reservierte Kapazität
 

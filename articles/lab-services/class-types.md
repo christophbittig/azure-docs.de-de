@@ -3,12 +3,12 @@ title: Beispielklassentypen für Azure Lab Services | Microsoft-Dokumentation
 description: In diesem Artikel sind einige Typen von Klassen aufgeführt, für die Sie mithilfe von Azure Lab Services Labs einrichten können.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 81b3426446894b9dd7bfccc942e04c3d9a7ea492
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 0bdbca13fa699d12b566d9943e9e14efa3f37d51
+ms.sourcegitcommit: 40dfa64d5e220882450d16dcc2ebef186df1699f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108278756"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113037506"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>Übersicht über Klassentypen: Azure Lab Services
 
@@ -25,7 +25,7 @@ Ausführliche Informationen zum Einrichten dieser Art von Lab finden Sie unter [
 Ausführliche Informationen zum Einrichten dieser Art von Lab finden Sie unter [Einrichten eines Labs für ArcMap\ArcGIS Desktop](class-type-arcgis.md).
 
 ## <a name="autodesk"></a>Autodesk
-[AutoDesk](https://www.autodesk.com/) bietet Softwarelösungen für Architektur, Ingenieurwesen, Baugewerbe, Planung, Fertigung und mehr.  Diese Lösungen werden häufig in Engineeringkursen und im Lehrplan des [Projekts „Lead the Way“](class-type-pltw.md) verwendet.
+[Autodesk](https://www.autodesk.com/) bietet Softwarelösungen für Architektur, Ingenieurwesen, Baugewerbe, Planung, Fertigung und mehr.  Diese Lösungen werden häufig in Engineeringkursen und im Lehrplan des [Projekts „Lead the Way“](class-type-pltw.md) verwendet.
 
 Ausführliche Informationen zum Einrichten derartiger Labs finden Sie unter [Autodesk](class-type-autodesk.md).
 
@@ -44,12 +44,19 @@ Sie können ein Lab mit Schwerpunkt auf Deep Learning mit Verarbeitung natürlic
 
 Ausführliche Informationen zum Einrichten derartiger Labs finden Sie unter [Einrichten eines Labs mit Schwerpunkt auf Deep Learning mit Verarbeitung natürlicher Sprache mithilfe von Azure Lab Services](class-type-deep-learning-natural-language-processing.md).
 
-## <a name="ethical-hacking"></a>„Ethisches“ Hacken
+## <a name="ethical-hacking-with-hyper-v"></a>Ethisches Hacken mit Hyper-V
 Sie können ein Lab für eine Klasse einrichten, die sich auf die forensischen Aspekte des ethischen Hackens konzentriert. Bei Penetrationstests, eine von der Community für ethisches Hacken verwendete Vorgehensweise, versucht eine Person, auf das System oder Netzwerk zuzugreifen, um Schwachstellen zu demonstrieren, die ein böswilliger Angreifer ausnutzen könnte.
 
 In einem Kurs für ethisches Hacken erlernen die Kursteilnehmer moderne Techniken zum Schützen vor Schwachstellen kennen. Jeder Kursteilnehmer erhält einen virtuellen Windows Server-Hostcomputer mit zwei geschachtelten virtuellen Computern: einem virtuellen Computer mit einem [Metaspoiltable3](https://github.com/rapid7/metasploitable3)-Image und einem anderen Computer mit einem [Kali Linux](https://www.kali.org/)-Image. Der virtuelle Metasploitable-Computer wird angegriffen.  Der virtuelle Kali-Computer stellt die Tools zur Verfügung, die zum Ausführen forensischer Aufgaben erforderlich sind.
 
 Ausführliche Informationen zum Einrichten derartiger Labs finden Sie unter [Einrichten eines Labs zum Vermitteln von Kursen für ethisches Hacken](class-type-ethical-hacking.md).
+
+## <a name="ethical-hacking-with-virtualbox"></a>Ethisches Hacken mit VirtualBox
+Sie können ein Lab für eine Klasse einrichten, die sich auf die forensischen Aspekte des ethischen Hackens konzentriert. Bei Penetrationstests, eine von der Community für ethisches Hacken verwendete Vorgehensweise, versucht eine Person, auf das System oder Netzwerk zuzugreifen, um Schwachstellen zu demonstrieren, die ein böswilliger Angreifer ausnutzen könnte.
+
+In einem Kurs für ethisches Hacken erlernen die Kursteilnehmer moderne Techniken zum Schützen vor Schwachstellen kennen. Jeder Kursteilnehmer erhält einen virtuellen Windows Server-Hostcomputer mit zwei geschachtelten virtuellen Computern: einem virtuellen Computer mit einem [SEED-Labs](https://seedsecuritylabs.org/)-Image und einem anderen Computer mit einem [Kali Linux](https://www.kali.org/)-Image. Der virtuelle SEED-Computer wird angegriffen.  Der virtuelle Kali-Computer stellt die Tools zur Verfügung, die zum Ausführen forensischer Aufgaben erforderlich sind.
+
+Ausführliche Informationen zum Einrichten derartiger Labs finden Sie unter [Einrichten eines Labs zum Vermitteln von Kursen für ethisches Hacken](class-type-ethical-hacking-virtualbox.md).
 
 ## <a name="matlab"></a>MATLAB
 [MATLAB](https://www.mathworks.com/products/matlab.html) steht für „Matrix Laboratory“ und bezeichnet eine Programmierplattform von [MathWorks](https://www.mathworks.com/).  Sie kombiniert Rechenleistung und Visualisierung, was sie in den Bereichen Mathematik, Ingenieurwesen, Physik und Chemie zu einem beliebten Tool macht.
@@ -74,7 +81,7 @@ Ausführliche Informationen zum Einrichten derartiger Labs finden Sie unter [Ein
 ## <a name="shell-scripting-on-linux"></a>Shellskripts unter Linux
 Sie können ein Lab zur Schulung in Shellskripts unter Linux einrichten. Die Skripterstellung empfiehlt sich bei der Systemverwaltung, um Administratoren sich wiederholende Aufgaben abzunehmen. In diesem beispielhaften Kurs geht es um klassische Bash-Skripts und erweiterte Skripts. Erweiterte Skripts sind Skripts, die Bash-Befehle und Ruby kombinieren. Dieser Ansatz ermöglicht Ruby das Weiterleiten von Daten, während Bash-Befehle mit der Shell interagieren können.
 
-Kursteilnehmer bekommen einen virtuellen Linux-Computer zugewiesen, um die Grundlagen von Linux zu erlernen und sich mit der Erstellung von Bash-Skripts vertraut zu machen. Bei dem virtuellen Linux-Computer ist der Remotedesktopzugriff aktiviert und die Text-Editoren [gedit](https://help.gnome.org/users/gedit/stable/) und [Visual Studio Code](https://code.visualstudio.com/) sind installiert.
+Kursteilnehmer bekommen einen virtuellen Linux-Computer zugewiesen, um die Grundlagen von Linux zu erlernen und sich mit der Erstellung von Bash-Skripts vertraut zu machen. Bei dem virtuellen Linux-Computer ist der Remotedesktopzugriff aktiviert und die Text-Editoren [Gedit](https://help.gnome.org/users/gedit/stable/) und [Visual Studio Code](https://code.visualstudio.com/) sind installiert.
 
 Ausführliche Informationen zum Einrichten derartiger Labs finden Sie unter [Einrichten eines Labs zur Schulung in Shellskripts unter Linux](class-type-shell-scripting-linux.md).
 

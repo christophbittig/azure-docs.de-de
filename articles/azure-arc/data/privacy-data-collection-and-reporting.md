@@ -1,26 +1,25 @@
 ---
-title: Die Datensammlung und Berichterstellung | Azure Arc-fähige Datendienste
+title: Datensammlung und Berichterstellung | Azure Arc-fähige Datendienste
 description: Hier wird der Datentyp, der von Arc-fähigen Datendiensten an Microsoft übertragen wird erläutert.
-author: MikeRayMSFT
-ms.author: mikeray
+author: dnethi
+ms.author: dinethi
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.topic: conceptual
-ms.date: 04/27/2021
+ms.date: 07/30/2021
 ms.custom: template-concept
-ms.openlocfilehash: dcaf900164e3d9d4b9b3b54e27a79fdae937abc5
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 189021997362da8508d2e60c23cc3acb1238ca55
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110472767"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346061"
 ---
 # <a name="azure-arc-data-services-data-collection-and-reporting"></a>Die Azure Arc Datendienste-Datensammlung und Berichterstellung
 
 In diesem Artikel werden die Daten beschrieben, die Azure Arc-fähige Datendienste an Microsoft übertragen. 
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="related-products"></a>Verwandte Produkte
 
@@ -29,6 +28,9 @@ Die Azure Arc-fähigen Datendienste können einige oder alle der folgenden Produ
 - SQL MI – Azure Arc 
 - PostgreSQL Hyperscale – Azure Arc
 - Azure Data Studio
+
+   [!INCLUDE [use-insider-azure-data-studio](includes/use-insider-azure-data-studio.md)]
+
 - Azure CLI (az)
 - Azure Data CLI (`azdata`) 
 
@@ -86,12 +88,12 @@ Es gibt drei Typen von Ressourcen:
 
 - Die Arc-fähige SQL verwaltete Instanz 
 - Die Arc-fähige PostgreSQL Hyperscale Servergruppen 
-- Der Arc-fähige SQL Server 
+- SQL Server auf Azure Arc-fähigen Servern 
 - Datencontroller 
 
 In den folgenden Abschnitten werden die Eigenschaften, Typen und Beschreibungen gezeigt, die über jeden Ressourcentyp gesammelt und gespeichert werden: 
 
-### <a name="arc-enabled-sql-server"></a>Der Arc-fähige SQL Server 
+### <a name="sql-server-on-azure-arc-enabled-servers"></a>SQL Server auf Azure Arc-fähigen Servern 
 - Die SQL Server-Edition. 
    - `string: Edition` 
 - Die Ressourcen-ID der Containerressource (Azure Arc für Server). 
@@ -256,10 +258,6 @@ In Support-Situationen werden Sie möglicherweise aufgefordert, Ihre Datenbankin
 |Ansichten    |Die Ansichten können Kundendaten enthalten, sie sind jedoch eingeschränkt und werden nur vom Benutzer freigegeben     |
 |Absturzabbilder – Kundendaten | Die maximale Aufbewahrungsdauer für die Absturzabbilder ist 30 Tage – sie kann Zugriffssteuerungsdaten enthalten <br/><br/> Es können sich Statistikobjekte, Datenwerte in Zeilen und Abfragetexte in Kundenabsturzabbildern befinden    |
 |Absturzabbilder – personenbezogene Daten | Computer, Anmeldungen/Benutzernamen, E-Mails, Standortinformationen, Kundenidentifikation – erfordern die Zustimmung des Benutzers  |
-
-### <a name="customer-experience-improvement-program-ceip-telemetry"></a>Ein Programm zur Verbesserung der Benutzerfreundlichkeit (Customer Experience Improvement Program, CEIP) (Telemetrie) 
-
-Die Telemetriedaten werden verwendet, um die Produktnutzungsmetriken und die Umgebungsinformationen nachzuverfolgen. Weitere Informationen hierzu finden Sie unter [Ergänzende Datenschutzbestimmungen für SQL Server](/sql/sql-server/sql-server-privacy/). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Hochladen von Nutzungsdaten in Azure Monitor](upload-usage-data.md)

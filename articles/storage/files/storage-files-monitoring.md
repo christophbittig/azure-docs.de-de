@@ -10,16 +10,23 @@ ms.date: 3/02/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 37f3d7a8ff56ea16f6004516c43ac33989263023
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 465109f42a0f5608c6b0a4b030476c915c3514df
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110669840"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122353648"
 ---
 # <a name="monitoring-azure-files"></a>Überwachen von Azure Files
 
 Wenn Sie über unternehmenskritische Anwendungen und Geschäftsprozesse verfügen, die auf Azure-Ressourcen basieren, sollten Sie diese Ressourcen auf Verfügbarkeit, Leistung und Betrieb überwachen. In diesem Artikel wird das Überwachen von Daten beschrieben, die von Azure Files generiert wurden. Außerdem wird erläutert, wie Sie die Funktionen von Azure Monitor verwenden können, um Warnungen für diese Daten zu analysieren.
+
+## <a name="applies-to"></a>Gilt für:
+| Dateifreigabetyp | SMB | NFS |
+|-|:-:|:-:|
+| Standard-Dateifreigaben (GPv2), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Standard-Dateifreigaben (GPv2), GRS/GZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Premium-Dateifreigaben (FileStorage), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) |
 
 ## <a name="monitor-overview"></a>Azure Monitor: Übersicht
 
@@ -62,7 +69,7 @@ Wie Sie die Liste der protokollierten SMB- und REST-Vorgänge abrufen, erfahren 
 
 ## <a name="creating-a-diagnostic-setting"></a>Erstellen einer Diagnoseeinstellung
 
-Sie können eine Diagnoseeinstellung über das Azure-Portal, PowerShell, die Azure-Befehlszeilenschnittstelle oder eine Azure Resource Manager-Vorlage erstellen.
+Sie können eine Diagnoseeinstellung über das Azure-Portal, PowerShell, die Azure CLI, eine Azure Resource Manager-Vorlage oder Azure Policy erstellen.
 
 > [!NOTE]
 > Azure Storage-Protokolle in Azure Monitor befinden sich in der öffentlichen Vorschauphase und stehen in allen Regionen für die öffentliche Cloud für Vorschautests zur Verfügung. Diese Vorschau unterstützt Protokolle für Blobdateien (einschließlich Azure Data Lake Storage Gen2), Dateien, Warteschlangen und Tabellen. Dieses Feature ist für alle Speicherkonten verfügbar, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden. Weitere Informationen finden Sie in der [Speicherkontoübersicht](../common/storage-account-overview.md).
@@ -263,6 +270,10 @@ Hier sehen Sie ein Beispiel:
 ### <a name="template"></a>[Vorlage](#tab/template)
 
 Eine Azure Resource Manager-Vorlage zum Erstellen einer Diagnoseeinstellung finden Sie unter [Diagnoseeinstellung für Azure Storage](../../azure-monitor/essentials/resource-manager-diagnostic-settings.md#diagnostic-setting-for-azure-storage).
+
+### <a name="azure-policy"></a>[Azure Policy](#tab/policy)
+
+Sie können eine Diagnoseeinstellung mithilfe einer Richtliniendefinition erstellen. Auf diese Weise können Sie sicherstellen, dass für jedes erstellte oder aktualisierte Konto eine Diagnoseeinstellung erstellt wird. Siehe hierzu [Integrierte Azure Policy-Definitionen für Azure Storage](../common/policy-reference.md).
 
 ---
 
@@ -465,6 +476,10 @@ Im folgenden Beispiel wird gezeigt, wie Metrikdaten bei Metriken mit Unterstütz
 ```
 
 # <a name="template"></a>[Vorlage](#tab/template)
+
+N/V.
+
+### <a name="azure-policy"></a>[Azure Policy](#tab/policy)
 
 N/V.
 

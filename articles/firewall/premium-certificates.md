@@ -1,28 +1,24 @@
 ---
-title: Zertifikate der Vorschauversion von Azure Firewall Premium
-description: Zum ordnungsgemäßen Konfigurieren der TLS-Inspektion für die Vorschauversion von Azure Firewall Premium müssen Sie Zertifikate von Zwischenzertifizierungsstellen konfigurieren und installieren.
+title: Azure Firewall Premium-Zertifikate
+description: Zum ordnungsgemäßen Konfigurieren der TLS-Inspektion für Azure Firewall Premium müssen Zertifikate von Zwischenzertifizierungsstellen konfiguriert und installiert werden.
 author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 03/09/2021
+ms.date: 08/02/2021
 ms.author: victorh
-ms.openlocfilehash: 47ebc752dedd72bbdedc02908911f1686584acda
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0826e58f4b61e0a99064226a8488f1c3fb499cd7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102615498"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346587"
 ---
-# <a name="azure-firewall-premium-preview-certificates"></a>Zertifikate der Vorschauversion von Azure Firewall Premium 
+# <a name="azure-firewall-premium-certificates"></a>Azure Firewall Premium-Zertifikate 
 
-> [!IMPORTANT]
-> Azure Firewall Premium ist zurzeit als öffentliche Vorschauversion verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Um die TLS-Inspektion für Azure Firewall Premium ordnungsgemäß zu konfigurieren, muss ein gültiges Zertifikat der Zwischenzertifizierungsstelle bereitgestellt und in Azure Key Vault gespeichert werden.
 
- Um die TLS-Inspektion für die Vorschauversion von Azure Firewall Premium ordnungsgemäßen zu konfigurieren, müssen Sie ein Zertifikat der Zwischenzertifizierungsstelle bereitstellen und es in Azure Key Vault speichern.
-
-## <a name="certificates-used-by-azure-firewall-premium-preview"></a>Von der Vorschauversion von Azure Firewall Premium verwendete Zertifikate
+## <a name="certificates-used-by-azure-firewall-premium"></a>Von Azure Firewall Premium verwendete Zertifikate
 
 Es gibt drei Arten von Zertifikaten, die in einer typischen Bereitstellung verwendet werden:
 
@@ -42,7 +38,7 @@ Es gibt drei Arten von Zertifikaten, die in einer typischen Bereitstellung verwe
 
    Eine Zertifizierungsstelle kann mehrere Zertifikate in Form einer Baumstruktur ausstellen. Ein Stammzertifikat ist das oberste Zertifikat der Baumstruktur.
 
-Die Vorschauversion von Azure Firewall Premium kann ausgehenden HTTP/S-Datenverkehr abfangen und automatisch ein Serverzertifikat für `www.website.com` generieren. Dieses Zertifikat wird mit dem von Ihnen bereitgestellten Zertifikat der Zwischenzertifizierungsstelle generiert. Browser- und Clientanwendungen der Endbenutzer müssen dem Zertifikat der Stammzertifizierungsstelle oder dem Zertifikat der Zwischenzertifizierungsstelle Ihrer Organisation vertrauen, damit dieses Verfahren funktioniert. 
+Azure Firewall Premium kann ausgehenden HTTP/S-Datenverkehr abfangen und automatisch ein Serverzertifikat für `www.website.com` generieren. Dieses Zertifikat wird mit dem von Ihnen bereitgestellten Zertifikat der Zwischenzertifizierungsstelle generiert. Browser- und Clientanwendungen der Endbenutzer müssen dem Zertifikat der Stammzertifizierungsstelle oder dem Zertifikat der Zwischenzertifizierungsstelle Ihrer Organisation vertrauen, damit dieses Verfahren funktioniert. 
 
 :::image type="content" source="media/premium-certificates/certificate-process.png" alt-text="Zertifikatprozess":::
 
@@ -82,7 +78,7 @@ Sie können entweder eine benutzerseitig zugewiesene verwaltete Identität erste
 
 ## <a name="configure-a-certificate-in-your-policy"></a>Konfigurieren eines Zertifikats in der Richtlinie
 
-Um ein Zertifikat der Zertifizierungsstelle in Ihrer Firewall Premium-Richtlinie zu konfigurieren, wählen Sie Ihre Richtlinie und dann **TLS-Inspektion (Vorschau)** aus. Wählen Sie **Aktiviert** auf der Seite **TLS-Inspektion** aus. Wählen Sie dann Ihr Zertifizierungsstellenzertifikat in Azure Key Vault aus, wie in der folgenden Abbildung gezeigt:
+Um ein Zertifikat der Zertifizierungsstelle in Ihrer Firewall Premium-Richtlinie zu konfigurieren, wählen Sie Ihre Richtlinie und dann **TLS-Inspektion** aus. Wählen Sie **Aktiviert** auf der Seite **TLS-Inspektion** aus. Wählen Sie dann Ihr Zertifizierungsstellenzertifikat in Azure Key Vault aus, wie in der folgenden Abbildung gezeigt:
 
 :::image type="content" source="media/premium-certificates/tls-inspection.png" alt-text="Azure Firewall Premium: Übersichtsdiagramm":::
  
@@ -90,13 +86,12 @@ Um ein Zertifikat der Zertifizierungsstelle in Ihrer Firewall Premium-Richtlinie
 > Wenn Sie ein Zertifikat aus dem Azure-Portal anzeigen und konfigurieren möchten, müssen Sie Ihr Azure-Benutzerkonto zur Key Vault-Zugriffsrichtlinie hinzufügen. Weisen Sie Ihrem Benutzerkonto die Rechte zum **Abrufen** und **Auflisten** unter **Geheimnisberechtigungen** zu.
    :::image type="content" source="media/premium-certificates/secret-permissions.png" alt-text="Azure Key Vault-Zugriffsrichtlinie":::
 
-
 ## <a name="create-your-own-self-signed-ca-certificate"></a>Erstellen Ihres eigenen selbstsignierten Zertifizierungsstellenzertifikats
 
-Zum Testen und Überprüfen der TLS-Überprüfung können Sie mithilfe der folgenden Skripts Ihre eigene selbstsignierte Stammzertifizierungsstelle und Zwischenzertifizierungsstelle erstellen.
+Wenn Sie zum Testen und Überprüfen der TLS-Inspektion Ihre eigenen Zertifikate erstellen möchten, können Sie mithilfe der folgenden Skripts Ihre eigene selbstsignierte Stammzertifizierungsstelle und Zwischenzertifizierungsstelle erstellen.
 
 > [!IMPORTANT]
-> Für die Produktion sollten Sie Ihre Unternehmens-PKI zum Erstellen eines Zertifikats der Zwischenzertifizierungsstelle verwenden. Eine Unternehmens-PKI nutzt die vorhandene Infrastruktur und erledigt die Stammzertifizierungsstellenverteilung an alle Endpunktcomputer. Weitere Informationen finden Sie unter [Bereitstellen und Konfigurieren von Enterprise ZS-Zertifikaten für Azure Firewall (Vorschau)](premium-deploy-certificates-enterprise-ca.md).
+> Für die Produktion sollten Sie Ihre Unternehmens-PKI zum Erstellen eines Zertifikats der Zwischenzertifizierungsstelle verwenden. Eine Unternehmens-PKI nutzt die vorhandene Infrastruktur und erledigt die Stammzertifizierungsstellenverteilung an alle Endpunktcomputer. Weitere Informationen finden Sie unter [Bereitstellen und Konfigurieren von Zertifikaten der Unternehmenszertifizierungsstelle für Azure Firewall](premium-deploy-certificates-enterprise-ca.md).
 
 Es gibt zwei Versionen dieses Skripts:
 - ein Bash-Skript `cert.sh` 
@@ -202,6 +197,18 @@ Write-Host "   - interCA.pfx - Intermediate CA pkcs12 package which could be upl
 Write-Host "================"
 
 ```
+
+## <a name="certificate-auto-generation-preview"></a>Automatische Zertifikatgenerierung (Vorschau)
+
+Für Bereitstellungen außerhalb der Produktion können Sie die automatische Zertifikatgenerierung von Azure Firewall Premium verwenden. Durch diesen Mechanismus werden die drei folgenden Ressourcen automatisch für Sie erstellt:
+
+- Verwaltete Identität
+- Key Vault
+- Selbstsigniertes Stammzertifikat
+
+Wählen Sie einfach die neue verwaltete Vorschauidentität aus. Daraufhin werden die drei Ressourcen in Ihrer Premium-Richtlinie miteinander verknüpft, und die TLS-Inspektion wird eingerichtet. 
+
+:::image type="content" source="media/premium-certificates/auto-gen-certs.png" alt-text="Automatisch generierte Zertifikate":::
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

@@ -7,12 +7,12 @@ ms.date: 05/25/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: f1c44f32d27f19f71703d0061412bea1ac0f460f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: eb7309f067c350eac0d9455767b137377caf588b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110482586"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346499"
 ---
 # <a name="identify-vulnerable-container-images-in-your-cicd-workflows"></a>Identifizieren anfälliger Containerimages in CI/CD-Workflows
 
@@ -20,7 +20,7 @@ Auf dieser Seite wird erläutert, wie Sie Ihre Azure Container Registry-basierte
 
 Sie müssen zum Einrichten des Scanners **Azure Defender für Containerregistrierungen** und die CI/CD-Integration aktivieren. Wenn Ihre CI/CD-Workflows Images an Ihre Registrierungen pushen, können Sie die Ergebnisse der Registrierungsüberprüfung und eine Zusammenfassung der CI/CD-Überprüfungsergebnisse anzeigen.
 
-Die Ergebnisse der CI/CD-Überprüfungen sind eine Erweiterung der vorhandenen Registrierungsüberprüfungsergebnisse von Qualys. Die CI/CD-Überprüfung von Azure Defender wird von [Trivy](https://0x1.gitlab.io/security/Trivy/) unterstützt.
+Die Ergebnisse der CI/CD-Überprüfungen sind eine Erweiterung der vorhandenen Registrierungsüberprüfungsergebnisse von Qualys. Die CI/CD-Überprüfung von Azure Defender wird von [Aqua Trivy](https://github.com/aquasecurity/trivy) unterstützt.
 
 Sie erhalten Nachverfolgbarkeitsinformationen wie den GitHub-Workflow und die GitHub-Ausführungs-URL, um die Workflows zu identifizieren, die zu anfälligen Images führen.
 
@@ -31,9 +31,9 @@ Sie erhalten Nachverfolgbarkeitsinformationen wie den GitHub-Workflow und die Gi
 
 |Aspekt|Details|
 |----|:----|
-|Status des Release:| **Diese CI/CD-Integration befindet sich in der Vorschauphase.**<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]|
+|Status des Release:| **Diese CI/CD-Integration befindet sich in der Vorschauphase.**<br>Sie sollten daher nur mit Workflows experimentieren, die keine Produktionsworkflows sind.<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]|
 |Preise:|**Azure Defender für Containerregistrierungen** wird gemäß den Angaben in der [Preisübersicht für Security Center](https://azure.microsoft.com/pricing/details/security-center/) abgerechnet.|
-|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Nein](./media/icons/no-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)|
+|Clouds:|:::image type="icon" source="./media/icons/yes-icon.png"::: Kommerzielle Clouds<br>:::image type="icon" source="./media/icons/no-icon.png"::: National/Sovereign (Azure Government, Azure China 21Vianet)|
 |||
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -101,7 +101,7 @@ So aktivieren Sie Sicherheitsrisikoüberprüfungen von Images in Ihren GitHub-Wo
 
 1. Auf der Seite **Empfehlungen** können Sie sich die Ergebnisse ansehen. Wenn Probleme gefunden wurden, wird die Empfehlung **Sicherheitsrisiken in Azure Container Registry-Images müssen behoben werden** angezeigt.
 
-    ![Empfehlung zum Beheben von Problemen ](media/monitor-container-security/acr-finding.png)
+    ![Empfehlung zum Behandeln von Problemen](media/monitor-container-security/acr-finding.png)
 
 1. Wählen Sie die Empfehlung aus. 
 

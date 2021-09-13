@@ -1,23 +1,22 @@
 ---
-title: Benutzer-, Sitzungs- und Ereignisanalyse in Azure Application Insights
+title: Benutzer-, Sitzungs- und Ereignisanalyse in Application Insights
 description: Demografische Analyse der Benutzer Ihrer Web-App.
 ms.topic: conceptual
-author: NumberByColors
-ms.author: daviste
-ms.date: 01/24/2018
-ms.reviewer: mbullwin
-ms.openlocfilehash: 6eb91734afac81e103cebea48865793fa687ad71
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: lgayhardt
+ms.author: lagayhar
+ms.date: 07/30/2021
+ms.openlocfilehash: 09dc9ba915b0ecf99219aadd9214192b9f4b1e19
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105024828"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347206"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Benutzer-, Sitzungs- und Ereignisanalyse in Azure Application Insights
 
-Ermitteln Sie, wann Personen Ihre Web-App verwenden, für welche Seiten sie sich am meisten interessieren, wo sich die Benutzer befinden, und welche Browser und Betriebssysteme sie verwenden. Analysieren Sie Geschäfts- und Nutzungstelemetriedaten mithilfe von [Azure Application Insights](./app-insights-overview.md).
+Ermitteln Sie, wann Personen Ihre Web-App verwenden, für welche Seiten sie sich am meisten interessieren, wo sich die Benutzer befinden, und welche Browser und Betriebssysteme sie verwenden. Analysieren Sie Geschäfts- und Nutzungstelemetriedaten mithilfe von [Application Insights](./app-insights-overview.md).
 
-![Screenshot der Application Insights-Benutzer](./media/usage-segmentation/0001-users.png)
+:::image type="content" source="./media/usage-segmentation/users.png" alt-text="Die Bildschirmaufnahme zeigt die Registerkarte „Benutzer“ mit einem Flächendiagramm." lightbox="./media/usage-overview/users.png":::
 
 ## <a name="get-started"></a>Erste Schritte
 
@@ -31,29 +30,23 @@ Drei der Nutzungsblätter verwenden dasselbe Tool zum Aufteilen von Telemetrieda
 * **Sitzungstool:** Bei wie vielen Benutzeraktivitätssitzungen wurden bestimmte Seiten und Funktionen der App verwendet? Eine Sitzung wird nach einer halben Stunde der Benutzerinaktivität oder nach 24 Stunden ununterbrochener Nutzung gezählt.
 * **Ereignistool:** Wie oft werden bestimmte Seiten und Funktionen der App verwendet? Eine Seitenansicht wird gezählt, wenn eine Seite Ihrer App in einem Browser geladen wird, vorausgesetzt, Sie haben sie [instrumentiert](./javascript.md). 
 
-    Ein benutzerdefiniertes Ereignis stellt eine Aktion in Ihrer App dar, häufig eine Benutzerinteraktion wie das Klicken auf eine Schaltfläche oder den Abschluss einer Aufgabe. Sie fügen Code in Ihre App ein, um [benutzerdefinierte Ereignisse zu generieren](./api-custom-events-metrics.md#trackevent).
+    Ein benutzerdefiniertes Ereignis stellt eine Aktion in Ihrer App dar, häufig eine Benutzerinteraktion wie die Auswahl einer Schaltfläche oder den Abschluss einer Aufgabe. Sie fügen Code in Ihre App ein, um [benutzerdefinierte Ereignisse zu generieren](./api-custom-events-metrics.md#trackevent).
 
 ## <a name="querying-for-certain-users"></a>Abfragen für bestimmte Benutzer
 
 Untersuchen Sie verschiedene Benutzergruppen, indem Sie die Abfrageoptionen oben im Benutzertools anpassen:
 
-* Anzeigen: Wählen Sie eine Kohorte von Benutzern für die Analyse aus.
-* die Folgendes verwendet haben: Wählen Sie benutzerdefinierte Ereignisse und Seitenansichten aus.
-* Während: Wählen Sie einen Zeitbereich aus.
-* Von: Wählen Sie aus, wie Datenbuckets erstellt werden, entweder anhand einer Zeitspanne oder einer anderen Eigenschaft, z.B. Browser oder Ort.
-* Aufteilen nach: Wählen Sie eine Eigenschaft aus, anhand derer die Daten aufgeteilt oder segmentiert werden. 
-* Filter hinzufügen: Beschränken Sie die Abfrage auf bestimmte Benutzer, Sitzungen oder Ereignisse basierend auf deren Eigenschaften, z.B. Browser oder Ort. 
+- Während: Wählen Sie einen Zeitbereich aus.
+- Anzeigen: Wählen Sie eine Kohorte von Benutzern für die Analyse aus.
+- Verwendet von: Wählen Sie benutzerdefinierte Ereignisse, Anforderungen und Seitenaufrufe.
+- Ereignisse: Wählen Sie mehrere Ereignisse, Anforderungen und Seitenaufrufe aus, die Benutzer anzeigen, die mindestens eine, aber nicht unbedingt alle der ausgewählten Aktionen durchgeführt haben.
+- Nach Wert auf der X-Achse: Wählen Sie, wie Datenbuckets erstellt werden, entweder anhand einer Zeitspanne oder einer anderen Eigenschaft, z.B. Browser oder Ort.
+- Aufteilen nach: Wählen Sie eine Eigenschaft aus, anhand derer die Daten aufgeteilt oder segmentiert werden. 
+- Filter hinzufügen: Beschränken Sie die Abfrage auf bestimmte Benutzer, Sitzungen oder Ereignisse basierend auf deren Eigenschaften, z.B. Browser oder Ort. 
  
-## <a name="saving-and-sharing-reports"></a>Speichern und Freigeben von Berichten 
-Sie können Benutzerberichte entweder privat nur für Sie selbst im Abschnitt „Meine Berichte“ oder im Abschnitt „Freigegebene Berichte“ für alle Benutzer speichern, die Zugriff auf diese Application Insights-Ressource haben.
-
-Wenn Sie einen Link zu einem Benutzer-, Sitzungs oder Ereignisbericht teilen möchten, klicken Sie auf der Symbolleiste auf **Teilen**, und kopieren Sie den Link.
-
-Wenn Sie eine Kopie der Daten eines Benutzer-, Sitzungs- oder Ereignisberichts teilen möchten, klicken Sie auf der Symbolleiste auf **Teilen** und anschließend auf das **Word**-Symbol, um ein Word-Dokument mit den Daten zu erstellen. Oder klicken Sie über dem Hauptdiagramm auf das Symbol für **Word**.
-
 ## <a name="meet-your-users"></a>Informationen zu Benutzern
 
-Der Abschnitt **Meet your users** (Informationen zu Benutzern) enthält Informationen zu fünf Beispielbenutzern, die der aktuellen Abfrage entsprechen. Das Berücksichtigen und Untersuchen des Verhaltens einzelner Personen neben Aggregaten kann Erkenntnisse über die tatsächliche Verwendung Ihrer App durch Benutzer bieten.
+Der Abschnitt **Meet your users** (Informationen zu Benutzern) enthält Informationen zu fünf Beispielbenutzern, die der aktuellen Abfrage entsprechen. Das Untersuchen des Verhaltens von einzelnen Personen sowie von Aggregaten kann Erkenntnisse über die tatsächliche Verwendung Ihrer App durch Benutzer bieten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

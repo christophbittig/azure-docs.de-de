@@ -1,19 +1,19 @@
 ---
 title: Quellcodeverwaltung in Synapse Studio
 description: Erfahren Sie, wie Sie Quellcodeverwaltung in Azure Synapse Studio konfigurieren.
-author: liud
+author: liudan66
 ms.service: synapse-analytics
 ms.subservice: cicd
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 7371bc023cc13278c0d1382ac1ac60ee42a39f0b
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: 10df7f8db2a787300787f8995ac0ea3a33736e68
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109809138"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355701"
 ---
 # <a name="source-control-in-synapse-studio"></a>Quellcodeverwaltung in Synapse Studio
 
@@ -57,7 +57,7 @@ Wenn Sie eine Verbindung mit dem Git-Repository herstellen, wählen Sie zuerst A
 
 Im Konfigurationsbereich werden die folgenden Azure DevOps-Git-Einstellungen angezeigt:
 
-| Einstellung | Beschreibung | Wert |
+| Einstellung | BESCHREIBUNG | Wert |
 |:--- |:--- |:--- |
 | **Repositorytyp** | Der Typ des Coderepositorys für Azure Repos.<br/> | Azure DevOps Git oder GitHub |
 | **Azure Active Directory** | Ihr Name des Azure AD-Mandanten. | `<your tenant name>` |
@@ -100,7 +100,10 @@ Die GitHub-Integration in Synapse Studio unterstützt sowohl das öffentliche Gi
 
 ### <a name="github-settings"></a>GitHub-Einstellungen
 
-Wenn Sie eine Verbindung mit dem Git-Repository herstellen, wählen Sie zuerst GitHub als Ihren Repositorytyp aus, und geben Sie dann Ihr GitHub-Konto oder eine GitHub Enterprise Server-URL an, wenn Sie GitHub Enterprise Server verwenden, und klicken Sie auf **Weiter**.
+Wenn Sie eine Verbindung mit dem Git-Repository herstellen, wählen Sie zuerst GitHub als Repositorytyp aus, und geben Sie dann Ihr GitHub-Konto oder eine GitHub Enterprise Server-URL an, wenn Sie GitHub Enterprise Server verwenden. Geben Sie Ihren GitHub Enterprise-Organisationsnamen an, wenn Sie GitHub Enterprise Cloud verwenden. Wählen Sie **Weiter**.
+
+> [!NOTE]
+> Lassen Sie das Kontrollkästchen **Use GitHub Enterprise Server** (GitHub Enterprise Server verwenden) deaktiviert, wenn Sie GitHub Enterprise Cloud verwenden. 
 
 ![GitHub-Repositoryeinstellungen](media/connect-with-github-repo-1.png)
 
@@ -128,7 +131,7 @@ Wenn Sie zum ersten Mal von Synapse Studio aus eine Verbindung mit GitHub herste
 
 1. Geben Sie im Bereich für die Git-Konfiguration den Namen der Organisation im Feld *GitHub-Konto* ein. Es wird eine Eingabeaufforderung zur Anmeldung bei GitHub angezeigt. 
 
-1. Melden Sie sich mit Ihren Benutzeranmeldeinformationen an.
+1. Melden Sie sich mit Ihren Benutzeranmeldeinformationen an. 
 
 1. Sie werden aufgefordert, Synapse als Anwendung namens *Azure Synapse* zu autorisieren. Auf diesem Bildschirm sehen Sie eine Option, mit der Sie Synapse die Berechtigung zum Zugriff auf die Organisation erteilen können. Wenn diese Option nicht angezeigt wird, bitten Sie einen Administrator, die Berechtigung manuell über GitHub zu erteilen.
 
@@ -190,7 +193,7 @@ Ein Seitenbereich wird geöffnet, in dem Sie bestätigen, dass der Branch für d
 ![Überprüfen des Branch für die Veröffentlichung](media/publish-change.png)
 
 > [!IMPORTANT]
-> Der Kollaborationsbranch ist nicht repräsentativ für das, was im Dienst bereitgestellt wird. Die Änderungen im Kollaborationsbranch *müssen* manuell im Dienst veröffentlicht werden.
+> Der Kollaborationsbranch ist nicht repräsentativ für das, was im Dienst bereitgestellt wird. Die Änderungen im Kollaborationsbranch *müssen* manuell veröffentlicht werden.
 
 ## <a name="switch-to-a-different-git-repository"></a>Wechseln zu einem anderen Git-Repository
 

@@ -4,32 +4,33 @@ description: Erfahren Sie, wie Sie auf Downloadanforderungen für Ihre Marketpla
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 08/21/2020
 author: shganesh-dev
 ms.author: shganesh
-ms.openlocfilehash: b014fd1a63865b8faac82a72dae25cadeadef280
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.reviewer: sroy
+ms.date: 08/21/2020
+ms.openlocfilehash: b0771ee85fc486d4fbcc4fb181b1ce0b7b7d47dd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111542359"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339278"
 ---
 # <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Downloads“ in Analysen für den kommerziellen Marketplace
 
 Dieser Artikel enthält Informationen zum Dashboard „Downloads“ im Partner Center. In diesem Dashboard wird eine Liste Ihrer Downloadanforderungen über die letzten 30 Tage angezeigt.
 
-Um auf das Dashboard „Downloads“ zuzugreifen, öffnen Sie das Dashboard **[Analyse](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** im kommerziellen Marketplace.
-
 >[!NOTE]
-> Ausführliche Definitionen der Analyseterminologie finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen und Terminologie](analytics-faq.md).
+> Ausführliche Definitionen der Analyseterminologie finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen und Terminologie](analytics-faq.yml).
 
 ## <a name="downloads-dashboard"></a>Dashboard „Downloads“
 
-Das Dashboard **Downloads** im Menü **Analyse** zeigt Anforderungen von Downloads mit mehr als 1000 Kunden- oder Bestelldatenzeilen an.
+Das [Dashboard „Downloads“](https://go.microsoft.com/fwlink/?linkid=2165766) zeigt Anforderungen von Downloads mit mehr als 1000 Kunden- oder Bestelldatenzeilen an.
 
 Sie erhalten eine Popupbenachrichtigung mit einem Link zum Dashboard **Downloads**, wenn Sie einen Download mit mehr als 1.000 Datenzeilen anfordern. Diese Datendownloads stehen für einen Zeitraum von 30 Tagen zur Verfügung, und werden dann entfernt.
 
 ## <a name="lifetime-export-of-commercial-marketplace-analytics-reports"></a>Lebensdauerexport von Analytics-Berichten zum kommerziellen Marketplace
+
+Um auf das Dashboard „Downloads“ zuzugreifen, öffnen Sie das Dashboard **[Analyse](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** im kommerziellen Marketplace.
 
 Auf der Seite „Downloads“ kann der Endbenutzer folgende Aktionen ausführen:
 
@@ -59,4 +60,4 @@ Ein Benutzer kann asynchrone Downloads von Berichten aus dem Abschnitt „Downlo
 - Informationen zu Metriken zur Nutzung und zur getakteten Abrechnung für VM-Angebote finden Sie unter [Dashboard „Nutzung“ in Analysen für den kommerziellen Marketplace](usage-dashboard.md).
 - Ausführliche Informationen zu Ihren Kunden, einschließlich Wachstumstrends, finden Sie unter [Dashboard „Kunde“ in Analysen für den kommerziellen Marketplace](customer-dashboard.md).
 - Eine konsolidierte Ansicht des Kundenfeedbacks für Angebote in Azure Marketplace und AppSource finden Sie unter [Dashboard „Bewertungen und Prüfungen“ in Analysen für den kommerziellen Marketplace](ratings-reviews.md).
-- Häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace und ein umfassendes Wörterbuch mit Datenbegriffen finden Sie unter [Häufig gestellte Fragen und Terminologie zu Analysen für den kommerziellen Marketplace](analytics-faq.md).
+- Häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace und ein umfassendes Wörterbuch mit Datenbegriffen finden Sie unter [Häufig gestellte Fragen und Terminologie zu Analysen für den kommerziellen Marketplace](analytics-faq.yml).
