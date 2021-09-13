@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 5f6fbcb73b4139c0a80ea8352071d8683c401d6e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: dc13cd4eeaa1fba3d96a0f3ccbe439a2463bce99
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104782944"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396513"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory-version-1"></a>Von Azure Data Factory Version 1 unterstützte Compute-Umgebungen
 > [!NOTE]
@@ -26,7 +26,7 @@ Die folgende Tabelle enthält eine Liste mit Compute-Umgebungen, die von Data Fa
 | ---------------------------------------- | ---------------------------------------- |
 | [Bedarfsgesteuerter Azure HDInsight-Cluster](#azure-hdinsight-on-demand-linked-service) oder [eigener HDInsight-Cluster](#azure-hdinsight-linked-service) | [DotNet](data-factory-use-custom-activities.md), [Hive](data-factory-hive-activity.md), [Pig](data-factory-pig-activity.md), [MapReduce](data-factory-map-reduce.md), [Hadoop Streaming](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](#azure-batch-linked-service) | [DotNet](data-factory-use-custom-activities.md) |
-| [Azure Machine Learning Studio (klassisch)](#azure-machine-learning-studio-classic-linked-service) | [Aktivitäten in Studio (klassisch): Batchausführung und Ressourcenaktualisierung](data-factory-azure-ml-batch-execution-activity.md) |
+| [ML Studio (klassisch)](#ml-studio-classic-linked-service) | [Aktivitäten in Studio (klassisch): Batchausführung und Ressourcenaktualisierung](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
 | [Azure SQL](#azure-sql-linked-service), [Azure Synapse Analytics](#azure-synapse-analytics-linked-service), [SQL Server](#sql-server-linked-service) | [Aktivität „Gespeicherte Prozedur“](data-factory-stored-proc-activity.md) |
 
@@ -45,7 +45,7 @@ Die Liste der unterstützten HDInsight-Versionen wird von Microsoft mit den neue
 Nach dem 15. Dezember 2017:
 
 - Sie können keine Linux-basierten HDInsight-Cluster der Version 3.3 (oder einer älteren Version) mit einem bedarfsgesteuerten verknüpften HDInsight-Dienst in der Data Factory-Version 1 mehr erstellen. 
-- Wenn die [Eigenschaften **osType** und **Version**](#azure-hdinsight-on-demand-linked-service) in der JSON-Definition nicht explizit für einen vorhandenen bedarfsgesteuerten verknüpften HDInsight-Dienst in Data Factory Version 1 angegeben werden, wird der Standardwert von **Version=3.1, osType=Windows** in **Version=\<latest HDI default version\>(https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning) , osType=Linux** geändert.
+- Wenn die [Eigenschaften **osType** und **Version**](#azure-hdinsight-on-demand-linked-service) in der JSON-Definition nicht explizit für einen vorhandenen bedarfsgesteuerten verknüpften HDInsight-Dienst in Data Factory Version 1 angegeben werden, wird der Standardwert von **Version=3.1, osType=Windows** in **Version=\<latest HDI default version\>, osType=Linux** geändert.
 
 Nach dem 31. Juli 2018:
 
@@ -115,7 +115,7 @@ Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsig
 > 
 
 ### <a name="properties"></a>Eigenschaften
-| Eigenschaft                     | Beschreibung                              | Erforderlich |
+| Eigenschaft                     | BESCHREIBUNG                              | Erforderlich |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | Legen Sie die Typeigenschaft auf **HDInsightOnDemand** fest. | Ja      |
 | clusterSize                  | Die Anzahl von Worker- und Datenknoten im Cluster. Der HDInsight-Cluster wird mit zwei Hauptknoten und der Anzahl von Workerknoten erstellt, die Sie für diese Eigenschaft angeben. Die Knoten haben jeweils die Größe „Standard_D3“ und verfügen somit über vier Kerne. Ein Cluster mit vier Workerknoten besitzt also 24 Kerne (4 \* 4 = 16 für die Workerknoten plus 2 \* 4 = 8 für die Hauptknoten). Ausführliche Informationen zum Tarif „Standard_D3“ finden Sie unter [Einrichten von Clustern in HDInsight mit Hadoop, Spark, Kafka usw](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md). | Ja      |
@@ -138,7 +138,7 @@ Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsig
 ### <a name="advanced-properties"></a>Erweiterte Eigenschaften
 Für eine präzisere Konfiguration des bedarfsgesteuerten HDInsight-Clusters können Sie die folgenden Eigenschaften angeben:
 
-| Eigenschaft               | Beschreibung                              | Erforderlich |
+| Eigenschaft               | BESCHREIBUNG                              | Erforderlich |
 | :--------------------- | :--------------------------------------- | :------- |
 | coreConfiguration      | Gibt die Core-Konfigurationsparameter (core-site.xml) für den HDInsight-Cluster an, der erstellt werden soll. | Nein       |
 | hBaseConfiguration     | Gibt die HBase-Konfigurationsparameter (hbase-site.xml) für den HDInsight-Cluster an. | Nein       |
@@ -191,7 +191,7 @@ Für eine präzisere Konfiguration des bedarfsgesteuerten HDInsight-Clusters kö
 ### <a name="node-sizes"></a>Knotengrößen
 Verwenden Sie die folgenden Eigenschaften, um die Größe der Haupt-, Daten- und Zookeeper-Knoten anzugeben: 
 
-| Eigenschaft          | Beschreibung                              | Erforderlich |
+| Eigenschaft          | BESCHREIBUNG                              | Erforderlich |
 | :---------------- | :--------------------------------------- | :------- |
 | headNodeSize      | Gibt die Größe des Hauptknotens an. Standardwert: **Standard_D3**. Weitere Informationen finden Sie unter [Angeben von Knotengrößen](#specify-node-sizes). | Nein       |
 | dataNodeSize      | Legt die Größe des Datenknotens fest. Standardwert: **Standard_D3**. | Nein       |
@@ -226,7 +226,7 @@ Diese Art von Konfiguration wird für die folgenden Compute-Umgebungen unterstü
 
 * Azure HDInsight
 * Azure Batch
-* Azure Machine Learning Studio (klassisch)
+* ML Studio (klassisch)
 * Azure Data Lake Analytics
 * Azure SQL-Datenbank, Azure Synapse Analytics, SQL Server
 
@@ -251,7 +251,7 @@ Sie können einen verknüpften HDInsight-Dienst erstellen, um Ihren eigenen HDIn
 ```
 
 ### <a name="properties"></a>Eigenschaften
-| Eigenschaft          | Beschreibung                              | Erforderlich |
+| Eigenschaft          | BESCHREIBUNG                              | Erforderlich |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | Legen Sie die Typeigenschaft auf **HDInsight** fest. | Ja      |
 | clusterUri        | Der URI des HDInsight-Clusters.        | Ja      |
@@ -299,7 +299,7 @@ Eine weitere Möglichkeit ist die Angabe des Endpunkts **batchUri**. Beispiel:
 ```
 
 ### <a name="properties"></a>Eigenschaften
-| Eigenschaft          | Beschreibung                              | Erforderlich |
+| Eigenschaft          | BESCHREIBUNG                              | Erforderlich |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | Legen Sie die Typeigenschaft auf **AzureBatch** fest. | Ja      |
 | .<Name der Region       | Der Name des Batch-Kontos.         | Ja      |
@@ -307,8 +307,8 @@ Eine weitere Möglichkeit ist die Angabe des Endpunkts **batchUri**. Beispiel:
 | poolName          | Der Name des VM-Pools.    | Ja      |
 | linkedServiceName | Der Name des verknüpften Speicherdiensts, der diesem verknüpften Batch-Dienst zugeordnet ist. Dieser verknüpfte Dienst wird für das Staging von Dateien, die für die Ausführung der Aktivität benötigt werden, sowie für die Speicherung der Aktivitätsausführungsprotokolle verwendet. | Ja      |
 
-## <a name="azure-machine-learning-studio-classic-linked-service"></a>Verknüpfter Azure Machine Learning Studio (Classic)-Dienst
-Sie können einen mit Azure Machine Learning Studio (klassisch) verknüpften Dienst erstellen, um einen Batchbewertungsendpunkt von Studio (klassisch) für eine Data Factory zu registrieren.
+## <a name="ml-studio-classic-linked-service"></a>Verknüpfter Dienst von ML Studio (Classic)
+Sie können einen mit ML Studio (Classic) verknüpften Dienst erstellen, um einen Batchbewertungsendpunkt von Studio (klassisch) für eine Data Factory zu registrieren.
 
 ### <a name="example"></a>Beispiel
 
@@ -326,7 +326,7 @@ Sie können einen mit Azure Machine Learning Studio (klassisch) verknüpften Die
 ```
 
 ### <a name="properties"></a>Eigenschaften
-| Eigenschaft   | Beschreibung                              | Erforderlich |
+| Eigenschaft   | BESCHREIBUNG                              | Erforderlich |
 | ---------- | ---------------------------------------- | -------- |
 | type       | Legen Sie die Typeigenschaft auf **AzureML** fest. | Ja      |
 | mlEndpoint | Die Batchbewertungs-URL.                   | Ja      |
@@ -337,7 +337,7 @@ Sie können einen verknüpften Data Lake Analytics-Dienst erstellen, um einen Da
 
 In der folgenden Tabelle werden die allgemeinen Eigenschaften beschrieben, die in der JSON-Definition verwendet werden:
 
-| Eigenschaft                 | Beschreibung                              | Erforderlich                                 |
+| Eigenschaft                 | BESCHREIBUNG                              | Erforderlich                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
 | type                 | Legen Sie die Typeigenschaft auf **AzureDataLakeAnalytics** fest. | Ja                                      |
 | .<Name der Region          | Der Name des Data Lake Analytics-Kontos.  | Ja                                      |
@@ -356,7 +356,7 @@ Wenn Sie die Dienstprinzipalauthentifizierung verwenden möchten, registrieren S
 
 Verwenden Sie die Dienstprinzipalauthentifizierung, indem Sie die folgenden Eigenschaften angeben:
 
-| Eigenschaft                | Beschreibung                              | Erforderlich |
+| Eigenschaft                | BESCHREIBUNG                              | Erforderlich |
 | :---------------------- | :--------------------------------------- | :------- |
 | servicePrincipalId  | Die Client-ID der Anwendung.     | Ja      |
 | servicePrincipalKey | Der Schlüssel der Anwendung.           | Ja      |
@@ -384,7 +384,7 @@ Verwenden Sie die Dienstprinzipalauthentifizierung, indem Sie die folgenden Eige
 #### <a name="user-credential-authentication"></a>Authentifizierung mit Benutzeranmeldeinformationen
 Geben Sie für die Authentifizierung mit Benutzeranmeldeinformationen für Data Lake Analytics folgende Eigenschaften an:
 
-| Eigenschaft          | Beschreibung                              | Erforderlich |
+| Eigenschaft          | BESCHREIBUNG                              | Erforderlich |
 | :---------------- | :--------------------------------------- | :------- |
 | authorization | Klicken Sie im Data Factory-Editor auf die Schaltfläche **Autorisieren**. Geben Sie die Anmeldeinformationen ein, die die automatisch generierte URL dieser Eigenschaft zuweist. | Ja      |
 | sessionID     | Die OAuth-Sitzungs-ID aus der OAuth-Autorisierungssitzung. Jede Sitzungs-ID ist eindeutig und darf nur einmal verwendet werden. Diese Einstellung wird automatisch generiert, wenn Sie den Data Factory-Editor verwenden. | Ja      |

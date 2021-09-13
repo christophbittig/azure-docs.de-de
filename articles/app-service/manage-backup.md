@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7aca099b4396237a80255a24149d9977c96b87cd
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: aed7e341cf190e6daac237b87f17254c5c65bbab
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110794101"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345810"
 ---
 # <a name="back-up-your-app-in-azure"></a>Sichern einer App in Azure
 
@@ -50,7 +50,6 @@ Die folgenden Datenbanklösungen werden von der Sicherungsfunktion unterstützt:
 * Sicherungen von Azure Database for PostgreSQL mit aktiviertem TLS werden nicht unterstützt. Wenn eine Sicherung konfiguriert ist, treten Sicherungsfehler auf.
 * In-App-MySQL-Datenbanken werden automatisch ohne Konfiguration gesichert. Wenn Sie manuell Einstellungen für In-App-MySQL-Datenbanken festlegen (beispielsweise durch Hinzufügen von Verbindungszeichenfolgen), funktionieren die Sicherungen unter Umständen nicht ordnungsgemäß.
 * Die Verwendung eines Speicherkontos mit aktivierter Firewall als Ziel für Ihre Sicherungen wird nicht unterstützt. Wenn eine Sicherung konfiguriert ist, treten Sicherungsfehler auf.
-* Derzeit können Sie die Sicherungs- und Wiederherstellungsfunktion nicht mit der Azure App Service-Funktion für die VNet-Integration verwenden. 
 * Derzeit können Sie die Sicherungs- und Wiederherstellungsfunktion nicht mit Azure-Speicherkonten verwenden, die für die Verwendung des privaten Endpunkts konfiguriert sind.
 
 <a name="manualbackup"></a>
@@ -161,6 +160,24 @@ Die Datenbanksicherung für die App wird im Stammverzeichnis der ZIP-Datei gespe
 
 > [!WARNING]
 > Wenn Sie die Dateien im Container **websitebackups** ändern, kann die Sicherung ungültig werden und nicht mehr wiederhergestellt werden.
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+Auf der Seite **Sicherungen** wird der Status der einzelnen Sicherungen angezeigt. Wenn Sie auf eine fehlerhafte Sicherung klicken, können Sie Protokolldetails zum Fehler anzeigen. Verwenden Sie die folgende Tabelle als Hilfe beim Behandeln von Problemen mit Ihrer Sicherung. Falls der Fehler nicht in der Tabelle dokumentiert ist, sollten Sie ein Supportticket erstellen.
+
+| Fehler | Behebung |
+| - | - |
+| Fehler beim Speicherzugriff. | Löschen Sie den Sicherungszeitplan, und konfigurieren Sie ihn neu. Oder konfigurieren Sie den Sicherungsspeicher neu. |
+| Die gemeinsame Größe der Website und der Datenbank überschreitet den GB-Grenzwert von {0} für Sicherungen. Die Größe Ihrer Inhalte beträgt {1} GB. | [Schließen Sie einige Dateien aus der Sicherung aus](#configure-partial-backups), oder entfernen Sie den Datenbankteil der Sicherung, und verwenden Sie stattdessen extern angebotene Sicherungen. |
+| Fehler beim Herstellen einer Verbindung mit der Datenbank {0} auf dem Server {1}: Bei der Authentifizierung des Hosts „{1}“ für den Benutzer „\<username>“ mit der Methode „mysql_native_password“ ist ein Fehler mit der folgenden Meldung aufgetreten: Unbekannte Datenbank „\<db-name>“. | Aktualisieren Sie die Datenbankverbindungszeichenfolge. |
+| {0} kann nicht aufgelöst werden. {1} (CannotResolveStorageAccount) | Löschen Sie den Sicherungszeitplan, und konfigurieren Sie ihn neu. |
+| Fehler bei der Anmeldung für den Benutzer „{0}“. | Aktualisieren Sie die Datenbank-Verbindungszeichenfolge. |
+| Beim Erstellen einer Datenbankkopie von {0} ({1}) wurde eine Ausnahme ausgelöst. Fehler beim Erstellen der Datenbankkopie. | Verwenden Sie in der Verbindungszeichenfolge einen Administrator. |
+| Der Serverprinzipal „\<name>“ kann im aktuellen Sicherheitskontext nicht auf die „Master“-Datenbank zugreifen. Der von der Anmeldung angeforderte „Master“ der Datenbank kann nicht geöffnet werden. Fehler bei der Anmeldung. Fehler bei der Anmeldung für den Benutzer „\<name>“. | Verwenden Sie in der Verbindungszeichenfolge einen Administrator. |
+| Netzwerkbezogener oder instanzspezifischer Fehler beim Herstellen einer Verbindung mit SQL Server. Der Server wurde nicht gefunden, oder auf ihn kann nicht zugegriffen werden. Stellen Sie sicher, dass der Instanzname richtig und SQL Server so konfiguriert ist, das Remoteverbindungen zulässig sind. (Anbieter: Named Pipes-Anbieter, Fehler: 40 – Es konnte keine Verbindung zu SQL Server hergestellt werden. | Überprüfen Sie, ob die Verbindungszeichenfolge gültig ist. Lassen Sie in den Einstellungen des Datenbankservers die [IP-Adressen für die ausgehende Richtung](overview-inbound-outbound-ips.md) zu. |
+| In Anmeldung angeforderter Server „\<name>“ kann nicht geöffnet werden. Fehler bei der Anmeldung. | Überprüfen Sie, ob die Verbindungszeichenfolge gültig ist. |
+| Erforderliche Parameter für gültige SAS (Shared Access Signature) fehlen. | Löschen Sie den Sicherungszeitplan, und konfigurieren Sie ihn neu. |
+| SSL-Verbindung ist erforderlich. Geben Sie SSL-Optionen an, und wiederholen Sie den Vorgang bei der Verbindungsherstellung. | Verwenden Sie stattdessen das integrierte Sicherungsfeature in Azure MySQL oder Azure PostgresSQL. |
 
 ## <a name="automate-with-scripts"></a>Automatisieren mit Skripts
 

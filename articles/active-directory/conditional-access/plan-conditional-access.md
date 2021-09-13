@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13460fad0ed106f5c0590df961ceca54cb04cd7b
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 17b69d4473529f585d6a0c997bafca42516e91a2
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102427180"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114203160"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Planen einer Bereitstellung für bedingten Zugriff
 
@@ -50,7 +50,7 @@ Die Bereitstellung bedingten Zugriffs bietet folgende Vorteile:
 
 Weitere Informationen finden Sie unter [Lizenzanforderungen für bedingten Zugriff](overview.md).
 
-Sollten zusätzliche Features erforderlich sein, benötigen Sie ggf. auch entsprechende Lizenzen. Weitere Informationen finden Sie unter [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/).
+Sollten zusätzliche Features erforderlich sein, benötigen Sie ggf. auch entsprechende Lizenzen. Weitere Informationen finden Sie unter [Azure Active Directory – Preise](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing).
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
@@ -316,7 +316,7 @@ Mit Richtlinien für bedingten Zugriff können Sie automatisierte Reaktionen auf
 
 * [Festlegen, dass sich Benutzer bei der Anmeldung für MFA registrieren müssen](howto-conditional-access-policy-risk.md)
 
-* [Festlegen, dass Benutzer, die ein hohes Risiko darstellen, ihr Kennwort ändern müssen](howto-conditional-access-policy-risk.md)
+* [Festlegen, dass Benutzer, die ein hohes Risiko darstellen, ihr Kennwort ändern müssen](howto-conditional-access-policy-risk-user.md)
 
 * [Festlegen, dass Benutzer mit einem mittleren oder hohen Anmelderisiko MFA verwenden müssen](howto-conditional-access-policy-risk.md)
 
@@ -326,7 +326,7 @@ Die zunehmende Verbreitung unterstützter Geräte für den Zugriff auf Ihre Clou
 
 ### <a name="require-approved-client-apps"></a>Vorschreiben der Verwendung genehmigter Client-Apps
 
-Mitarbeiter verwenden ihre mobilen Geräte sowohl für private als auch für berufliche Zwecke. Bei BYOD-Szenarien müssen Sie entscheiden, ob Sie das gesamte Gerät oder nur die darin enthaltenen Daten verwalten möchten. Wenn Sie nur Daten und Zugriff verwalten, können Sie [genehmigte Cloud-Apps vorschreiben](app-based-conditional-access.md), die Ihre Unternehmensdaten schützen können. Beispielsweise können Sie vorschreiben, dass auf E-Mails nur über Outlook Mobile zugegriffen werden darf und nicht über ein generisches E-Mail-Programm.
+Mitarbeiter verwenden ihre mobilen Geräte sowohl für private als auch für berufliche Zwecke. Bei BYOD-Szenarien müssen Sie entscheiden, ob Sie das gesamte Gerät oder nur die darin enthaltenen Daten verwalten möchten. Wenn Sie nur Daten und den Zugriff verwalten, können Sie [genehmigte Cloud-Apps vorschreiben](app-based-conditional-access.md), die Ihre Unternehmensdaten schützen können. Beispielsweise können Sie vorschreiben, dass auf E-Mails nur über Outlook Mobile zugegriffen werden darf und nicht über ein generisches E-Mail-Programm.
 
 ### <a name="block-access"></a>Zugriff blockieren
 

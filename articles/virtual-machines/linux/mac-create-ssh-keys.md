@@ -8,16 +8,18 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: c5e683e1f5af42a69fac45c20f52169834967649
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c618ae7f63c1191bf440b5629057660531dd3d7c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788131"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122353646"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Kurzanleitung: Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure
 
-Mit einem SSH-Schlüsselpaar (Secure Shell) können Sie virtuelle Computer (VMs) in Azure erstellen, bei deren Authentifizierung SSH-Schlüssel verwendet werden. In diesem Artikel erfahren Sie, wie Sie für virtuelle Linux-Computer schnell eine Datei mit einem SSH-Schlüsselpaar (ein öffentlicher und ein privater Schlüssel) generieren. Sie können diese Schritte mit Azure Cloud Shell, einem macOS- oder einem Linux-Host Linux ausführen. 
+Mit einem SSH-Schlüsselpaar (Secure Shell) können Sie virtuelle Computer (VMs) in Azure erstellen, bei deren Authentifizierung SSH-Schlüssel verwendet werden. In diesem Artikel erfahren Sie, wie Sie für virtuelle Linux-Computer schnell eine Datei mit einem SSH-Schlüsselpaar (ein öffentlicher und ein privater Schlüssel) generieren. Sie können diese Schritte mit Azure Cloud Shell, einem macOS- oder einem Linux-Host ausführen. 
+
+Hilfreiche Informationen zur Behandlung von SSH-Problemen finden Sie unter [Behandeln von Problemen, Fehlern oder Ablehnungen im Zusammenhang mit der SSH-Verbindung mit einem virtuellen Azure Linux-Computer](/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection).
 
 > [!NOTE]
 > Mit SSH-Schlüsseln erstellte VMs sind standardmäßig mit deaktivierten Kennwörtern konfiguriert, was die Schwierigkeit für Brute-Force-Angriffe wesentlich erhöht. 
@@ -88,6 +90,12 @@ Stellen Sie mit dem auf Ihrer Azure-VM bereitgestellten öffentlichen Schlüssel
 ```bash
 ssh azureuser@myvm.westus.cloudapp.azure.com
 ```
+
+Wenn Sie zum ersten Mal eine Verbindung mit diesem virtuellen Computer herstellen, werden Sie aufgefordert, den Fingerabdruck des Hosts zu überprüfen. Es ist zwar verlockend, den angebotenen Fingerabdruck einfach zu akzeptieren, aber mit dieser Vorgehensweise setzen Sie sich einem möglichen „Person-in-the-Middle“-Angriff aus. Sie sollten den Fingerabdruck des Hosts immer überprüfen. Dies ist nur erforderlich, wenn Sie zum ersten Mal von einem Client aus eine Verbindung herstellen. Verwenden Sie das Feature für die Skriptausführung zum Ausführen des Befehls `ssh-keygen -lf /etc/ssh/ssh_host_ecdsa_key.pub | awk '{print $2}'`, um den Hostfingerabdruck über das Portal abzurufen.
+
+:::image type="content" source="media/ssh-from-windows/run-command-validate-host-fingerprint.png" alt-text="Screenshot: Verwenden der Skriptausführung zum Überprüfen des Hostfingerabdrucks":::
+
+Verwenden Sie [`az vm run-command invoke`](/cli/azure/vm/run-command), um den Befehl über die CLI auszuführen.
 
 Falls Sie beim Erstellen des Schlüsselpaars eine Passphrase angegeben haben, müssen Sie diese Passphrase eingeben, wenn Sie während des Anmeldeprozesses dazu aufgefordert werden. Die VM wird Ihrer Datei „~/.ssh/known_hosts“ hinzugefügt, und Sie werden erst wieder zum Herstellen der Verbindung aufgefordert, wenn sich der öffentliche Schlüssel auf Ihrer Azure-VM ändert oder der Servername aus „~/.ssh/known_hosts“ entfernt wird.
 

@@ -1,30 +1,25 @@
 ---
-title: Hochladen von Nutzungsdaten, Metriken und Protokollen in Azure Monitor
-description: Hochladen von Ressourcenbestandsdaten, Nutzungsdaten, Metriken und Protokollen in Azure Monitor
+title: Hochladen von Nutzungsdaten, Metriken und Protokollen in Azure
+description: Hochladen von Ressourcenbestandsdaten, Nutzungsdaten, Metriken und Protokollen in Azure
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: a522a650413be056ff64d26e90b6c15cf88d9a7d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f314b8918b415c0449722d1229c6de47af1cac5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101643489"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346828"
 ---
-# <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>Hochladen von Nutzungsdaten, Metriken und Protokollen in Azure Monitor
+# <a name="upload-usage-data-metrics-and-logs-to-azure"></a>Hochladen von Nutzungsdaten, Metriken und Protokollen in Azure
 
 Sie können in regelmäßigen Abständen Nutzungsinformationen zu Abrechnungszwecken, Überwachungsmetriken und Protokolle exportieren und dann in Azure hochladen. Beim Exportieren und Hochladen dieser drei Datentypen werden auch die Ressourcen des Datencontrollers, der verwalteten SQL-Instanz und der PostgreSQL Hyperscale-Servergruppe in Azure erstellt und aktualisiert.
-
-> [!NOTE] 
-> Während der Vorschauphase fallen keine Kosten für die Verwendung Azure Arc-fähiger Datendienste an.
-
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 Bevor Sie Nutzungsdaten, Metriken oder Protokolle hochladen können, müssen Sie folgende Schritte ausführen:
 
@@ -36,7 +31,7 @@ Bevor Sie Nutzungsdaten, Metriken oder Protokolle hochladen können, müssen Sie
 
 Erforderliche Tools: 
 * Azure CLI (az) 
-* [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 
+* `arcdata`-Erweiterung 
 
 Informationen finden Sie unter [Installieren von Clienttools zum Bereitstellen und Verwalten von Azure Arc-fähigen Datendiensten](./install-client-tools.md).
 
@@ -68,7 +63,7 @@ Führen Sie die folgenden Befehle aus, um den Dienstprinzipal für den Metrikupl
 Aktualisieren Sie zum Erstellen eines Dienstprinzipals das folgende Beispiel. Ersetzen Sie `<ServicePrincipalName>`, `SubscriptionId` und `resourcegroup` durch Ihre eigenen Werte, und führen Sie folgenden Befehl aus:
 
 ```azurecli
-az ad sp create-for-rbac --name <ServicePrincipalName> --role Contributor --scopes /subscriptions/{SubscriptionId}/resourceGroups/{resourcegroup}
+az ad sp create-for-rbac --name <ServicePrincipalName> --role Contributor --scopes /subscriptions/<SubscriptionId>/resourceGroups/<resourcegroup>
 ```
 
 Wenn Sie den Dienstprinzipal zuvor erstellt haben und nur die aktuellen Anmeldeinformationen abrufen müssen, führen Sie den folgenden Befehl aus, um die Anmeldeinformationen zurückzusetzen:
@@ -137,7 +132,7 @@ Führen Sie den folgenden Befehl aus, um dem Dienstprinzipal die Rolle `Monitori
 > Bei der Ausführung in einer Windows-Umgebung müssen Sie für Rollennamen doppelte Anführungszeichen verwenden.
 
 ```azurecli
-az role assignment create --assignee <appId> --role "Monitoring Metrics Publisher" --scope subscriptions/{SubscriptionID}/resourceGroups/{resourcegroup}
+az role assignment create --assignee <appId> --role "Monitoring Metrics Publisher" --scope subscriptions/<SubscriptionID>/resourceGroups/<resourcegroup>
 
 ```
 ::: zone-end
@@ -145,7 +140,7 @@ az role assignment create --assignee <appId> --role "Monitoring Metrics Publishe
 ::: zone pivot="client-operating-system-macos-and-linux"
 
 ```azurecli
-az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/{SubscriptionID}/resourceGroups/{resourcegroup}
+az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/<SubscriptionID>/resourceGroups/<resourcegroup>
 ```
 
 ::: zone-end
@@ -153,7 +148,7 @@ az role assignment create --assignee <appId> --role 'Monitoring Metrics Publishe
 ::: zone pivot="client-operating-system-powershell"
 
 ```powershell
-az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/{SubscriptionID}/resourceGroups/{resourcegroup}
+az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/<SubscriptionID>/resourceGroups/<resourcegroup>
 ```
 
 ::: zone-end
@@ -173,23 +168,31 @@ Beispielausgabe:
 }
 ```
 
+## <a name="verify-service-principal-role"></a>Überprüfen der Dienstprinzipalrolle
+
+```azurecli
+az role assignment list -o table
+```
+
 Nachdem der Dienstprinzipal der entsprechenden Rolle zugewiesen wurde, können Sie mit dem Hochladen von Metriken oder Benutzerdaten fortfahren. 
 
-## <a name="upload-logs-metrics-or-user-data"></a>Hochladen von Protokollen, Metriken oder Benutzerdaten
 
-Welche Schritte zum Hochladen von Protokollen, Metriken oder Benutzerdaten erforderlich sind, hängt davon ab, welche Art von Informationen Sie hochladen. 
+
+## <a name="upload-logs-metrics-or-usage-data"></a>Hochladen von Protokollen, Metriken oder Nutzungsdaten
+
+Welche Schritte zum Hochladen von Protokollen, Metriken oder Nutzungsdaten erforderlich sind, hängt davon ab, welche Art von Informationen Sie hochladen. 
 
 [Hochladen von Protokollen in Azure Monitor](upload-logs.md)
 
 [Hochladen von Metriken in Azure Monitor](upload-metrics.md)
 
-[Hochladen von Nutzungsdaten in Azure Monitor](upload-usage-data.md)
+[Hochladen von Nutzungsdaten in Azure](upload-usage-data.md)
 
-## <a name="general-guidance-on-exporting-and-uploading-usage-metrics"></a>Allgemeine Anleitung zum Exportieren und Hochladen von Nutzungsdaten und Metriken
+## <a name="general-guidance-on-exporting-and-uploading-usage-and-metrics"></a>Allgemeine Anleitung zum Exportieren und Hochladen von Nutzungsdaten und Metriken
 
 Erstellungs-, Lese-, Aktualisierungs- und Löschvorgänge – sogenannte CRUD-Vorgänge (Create, Read, Update, Delete) – in Azure Arc-fähigen Datendiensten werden zu Abrechnungs- und Überwachungszwecken protokolliert. Hintergrunddienste überwachen diese CRUD-Vorgänge und berechnen den Verbrauch entsprechend. Die tatsächliche Berechnung der Nutzung oder des Verbrauchs erfolgt nach einem Zeitplan und wird im Hintergrund durchgeführt. 
 
-Während der Vorschauphase erfolgt dieser Vorgang in der Nacht. Allgemein wird empfohlen, die Nutzungsdaten nur einmal täglich hochzuladen. Wenn Nutzungsinformationen innerhalb desselben 24-Stunden-Zeitraums mehrmals exportiert und hochgeladen werden, wird nur der Ressourcenbestand im Azure-Portal aktualisiert, jedoch nicht der Ressourcenverbrauch.
+Laden Sie die Nutzung nur einmal pro Tag hoch. Wenn Nutzungsinformationen innerhalb desselben 24-Stunden-Zeitraums mehrmals exportiert und hochgeladen werden, wird nur der Ressourcenbestand im Azure-Portal aktualisiert, jedoch nicht der Ressourcenverbrauch.
 
 Beim Hochladen von Metriken können in Azure Monitor nur die Daten der letzten 30 Minuten hochgeladen werden ([weitere Informationen](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting)). Beim Hochladen von Metriken wird empfohlen, die Metriken unmittelbar nach dem Erstellen der Exportdatei hochzuladen, damit Sie das gesamte Dataset im Azure-Portal anzeigen können. Beispiel: Sie haben die Metriken um 14:00 Uhr exportiert und den Befehl für den Upload um 14:50 Uhr ausgeführt. Da in Azure Monitor nur die Daten der letzten 30 Minuten akzeptiert werden, werden im Portal möglicherweise keine Daten angezeigt. 
 

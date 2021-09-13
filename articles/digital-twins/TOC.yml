@@ -197,6 +197,8 @@
           href: reference-query-functions.md
         - name: Operatoren
           href: reference-query-operators.md
+        - name: Reservierte Schlüsselwörter
+          href: reference-query-reserved.md
 - name: Ressourcen
   items:
     - name: Grenzwerte des Digital Twins-Diensts

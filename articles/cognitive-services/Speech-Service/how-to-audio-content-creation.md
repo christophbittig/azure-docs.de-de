@@ -3,19 +3,19 @@ title: 'Speech-Dienst: Audio Content Creation'
 titleSuffix: Azure Cognitive Services
 description: Audio Content Creation ist ein Onlinetool, mit dem Sie die Sprachsynthese von Microsoft an Ihre Apps und Produkte anpassen und optimieren können.
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
-ms.author: trbye
-ms.openlocfilehash: 94e060176b921529a42e28e8c735b0f1cdda5293
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.author: lajanuar
+ms.openlocfilehash: 087459b5831aa69c6e30e1dbe824d1902facbc2d
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110075076"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419197"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>Verbessern der Synthese mit dem Audio Content Creation-Tool
 
@@ -103,7 +103,7 @@ Welcome to use Audio Content Creation to customize audio output for your product
 
 ```xml
 <speak xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="http://www.w3.org/2001/mstts" version="1.0" xml:lang="en-US">
-    <voice name="Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)">
+    <voice name="Microsoft Server Speech Text to Speech Voice (en-US, ChristopherNeural)">
     Welcome to use Audio Content Creation <break time="10ms" />to customize audio output for your products.
     </voice>
 </speak>
@@ -141,9 +141,10 @@ Führen Sie diese Schritte aus, um einen Benutzer zu einer Sprachressource hinzu
 2. Klicken Sie auf **Zugriffssteuerung (IAM)** . Klicken Sie auf die Registerkarte **Rollenzuweisungen**, um alle Rollenzuweisungen für dieses Abonnement anzuzeigen.
     :::image type="content" source="media/audio-content-creation/access-control-roles.png" alt-text="Registerkarte „Rollenzuweisung“":::
 3. Klicken Sie auf **Hinzufügen** > **Rollenzuweisung hinzufügen**, um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen. Wählen Sie in der Dropdownliste „Rolle“ die Rolle **Cognitive Service-Benutzer** aus. Wenn Sie den Benutzer zum Besitzer dieser Sprachressource machen möchten, können Sie die Rolle **Besitzer** auswählen.
-4. Wählen Sie in der Liste einen Benutzer aus. Wenn Sie den Benutzer nicht in der Liste sehen, können Sie ihn im Feld „Auswählen“ eingeben, um das Verzeichnis nach Anzeigenamen und E-Mail-Adressen zu durchsuchen. Wenn sich der Benutzer nicht im Verzeichnis befindet, können Sie das [Microsoft-Konto](https://account.microsoft.com/account) des Benutzers eingeben (das in Azure Active Directory als vertrauenswürdig eingestuft ist).
-5. Klicken Sie auf **Speichern**, um die Rolle zuzuweisen. Der Benutzer erhält eine E-Mail-Einladung. Akzeptieren Sie die Einladung, indem Sie in der E-Mail auf **Einladung annehmen** > **Beitritt zu Azure akzeptieren** klicken. Anschließend wird der Benutzer zum Azure-Portal weitergeleitet. Der Benutzer muss keine weiteren Aktionen im Azure-Portal durchführen.
-6. Nach einigen Augenblicken wird dem Benutzer die Rolle Cognitive Service-Benutzer im Umfang der Sprachressource zugewiesen. Der Benutzer kann die Seite [Audioinhaltserstellung](https://aka.ms/audiocontentcreation) aufrufen oder aktualisieren und die Speech-Ressource auswählen, um die ersten Schritte durchzuführen. 
+4. Geben Sie die E-Mail-Adresse des Benutzers ein, und wählen Sie den Benutzer im Verzeichnis aus. Bei der E-Mail-Adresse muss es sich um ein **Microsoft-Konto** handeln, dem Azure Active Directory vertraut. Benutzer können sich ganz einfach mit einer persönlichen E-Mail-Adresse für ein [Microsoft-Konto](https://account.microsoft.com/account) registrieren. 
+5. Klicken Sie auf **Speichern**, um die Rolle zuzuweisen. 
+6. Der Benutzer erhält eine E-Mail-Einladung. Akzeptieren Sie die Einladung, indem Sie in der E-Mail auf **Einladung annehmen** > **Beitritt zu Azure akzeptieren** klicken. Anschließend wird der Benutzer zum Azure-Portal weitergeleitet. Der Benutzer muss keine weiteren Aktionen im Azure-Portal durchführen. Nach wenigen Augenblicken wird dem Benutzer die Rolle im Bereich der Speech-Ressource zugewiesen, und er erhält Zugriff auf diese Ressource. Wenn der Benutzer keine E-Mail-Einladung erhält, können Sie unter „Rollenzuweisungen“ nach dem Benutzerkonto suchen und das Benutzerprofil öffnen. Suchen Sie nach „Identität“ -> „Einladung angenommen“, und klicken Sie auf **Verwalten**, um die E-Mail-Einladung erneut zu senden. Sie können den Einladungslink auch für Benutzer kopieren. 
+7. Der Benutzer besucht oder aktualisiert die Produktseite [Audioinhaltserstellung](https://aka.ms/audiocontentcreation), und meldet sich mit dem Microsoft-Konto an. Wählen Sie den Block **Audioinhaltserstellung** aus den Speech-Produkten aus. Wählen Sie die Speech-Ressource im Popupfenster oder in den Einstellungen rechts oben auf der Seite aus. Wenn keine Speech-Ressource zu finden ist, überprüfen Sie, ob Sie sich im richtigen Verzeichnis befinden. Klicken Sie dazu auf das Kontoprofil in der oberen rechten Ecke, und klicken Sie neben dem aktuellen Verzeichnis auf **Wechseln**. Wenn mehr als ein Verzeichnis verfügbar ist, bedeutet dies, dass Sie Zugriff auf mehrere Verzeichnisse haben. Wechseln Sie zu einem anderen Verzeichnis, und öffnen Sie die Einstellungen, um zu ermitteln, ob die richtige Speech-Ressource verfügbar ist. 
 
     :::image type="content" source="media/audio-content-creation/add-role-first.png" alt-text="Dialogfeld „Rolle hinzufügen“":::
 
@@ -162,9 +163,9 @@ Benutzer, die sich in der gleichen Sprachressource befinden, sehen ihre Arbeit g
 Wenn einer der Benutzer imstande sein soll, anderen Benutzern Zugriff zu erteilen, müssen Sie dem Benutzer die Besitzerrolle für die Sprachressource übertragen und ihn als leseberechtigt für das Azure-Verzeichnis festlegen.
 1. Fügen Sie den Benutzer als Besitzer der Sprachressource hinzu. Weitere Informationen dazu finden Sie unter [Hinzufügen von Benutzern zu einer Sprachressource](#add-users-to-a-speech-resource).
     :::image type="content" source="media/audio-content-creation/add-role.png" alt-text="Feld „Rollenbesitzer“":::
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) oben links das reduzierte Menü aus. Klicken Sie auf **Azure Active Directory** und dann auf **Benutzer**.
-1. Durchsuchen Sie das Microsoft-Konto des Benutzers, und navigieren Sie zur Detailseite des Benutzers. Klicken Sie auf **Zugewiesene Rollen**.
-1. Klicken Sie auf **Zuweisungen hinzufügen** -> **Verzeichnisleseberechtigte**.
+2. Wählen Sie im [Azure-Portal](https://portal.azure.com/) oben links das reduzierte Menü aus. Klicken Sie auf **Azure Active Directory** und dann auf **Benutzer**.
+3. Durchsuchen Sie das Microsoft-Konto des Benutzers, und navigieren Sie zur Detailseite des Benutzers. Klicken Sie auf **Zugewiesene Rollen**.
+4. Klicken Sie auf **Zuweisungen hinzufügen** -> **Verzeichnisleseberechtigte**. Wenn die Schaltfläche „Zuweisungen hinzufügen“ abgeblendet ist, bedeutet das, dass Sie keinen Zugriff haben. Nur der globale Administrator dieses Verzeichnisses kann Benutzern Zuweisungen hinzufügen.
 
 ## <a name="see-also"></a>Weitere Informationen
 

@@ -4,19 +4,20 @@ description: Hier werden die Funktionen beschrieben, die in einer Bicep-Datei zu
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: e52f46cf6b29af491f3542d13e360ef936251af6
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 08/16/2021
+ms.openlocfilehash: 9b97170e3ff434d40007e46952a52335e5f900b3
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026359"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122356457"
 ---
 # <a name="resource-functions-for-bicep"></a>Ressourcenfunktionen für Bicep
 
 Resource Manager stellt die folgenden Funktionen zum Abrufen von Ressourcenwerten in Ihrer Bicep-Datei bereit:
 
 * [extensionResourceId](#extensionresourceid)
+* [getSecret](#getsecret)
 * [list*](#list)
 * [pickZones](#pickzones)
 * [Referenz](#reference)
@@ -112,13 +113,15 @@ Integrierte Richtliniendefinitionen sind Ressourcen auf Mandantenebene. Ein Beis
 
 ## <a name="getsecret"></a>getSecret
 
-`getSecret([secretName])`
+`keyVaultName.getSecret(secretName)`
 
-Gibt den Wert des Geheimnisses zurück, das in Azure Key Vault gespeichert ist. Sie können die getSecret-Funktion verwenden, um ein Schlüsseltresorgeheimnis abzurufen und den Rückgabewert an einen Zeichenfolgenparameter eines Bicep-Moduls zu übergeben. Die getSecret-Funktion kann nur für eine `Microsoft.KeyVault/vaults`-Ressource aufgerufen und nur mit einem Parameter mit dem `@secure()`-Decorator verwendet werden.
+Gibt ein Geheimnis aus Azure Key Vault zurück. Die `getSecret`-Funktion kann nur für eine `Microsoft.KeyVault/vaults`-Ressource aufgerufen werden. Verwenden Sie diese Funktion, um ein Geheimnis an einen sicheren Zeichenfolgenparameter eines Bicep-Moduls zu übergeben. Die Funktion kann nur mit einem Parameter verwendet werden, der über den `@secure()`-Decorator verfügt.
+
+Für den Schlüsseltresor muss `enabledForTemplateDeployment` auf `true` gesetzt sein. Der Benutzer, der die Bicep-Datei bereitstellt, muss über Zugriff auf das Geheimnis verfügen. Weitere Informationen finden Sie unter [Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bicep-Bereitstellung](key-vault-parameter.md).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | type | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | secretName | Ja | Zeichenfolge | Der Name des Geheimnisses, das in einem Schlüsseltresor gespeichert ist. |
 
@@ -172,16 +175,19 @@ module sql './sql.bicep' = {
 
 ## <a name="list"></a>list*
 
-`list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)`
+`resourceName.list([apiVersion], [functionValues])`
 
-Die Syntax für diese Funktion variiert je nach dem Namen der Auflistungsvorgänge. Jede Implementierung gibt Werte für den Ressourcentyp zurück, der einen Auflistungsvorgang unterstützt. Der Name des Vorgangs muss mit `list` beginnen und kann ein Suffix aufweisen. Häufig werden `list`, `listKeys`, `listKeyValue` und `listSecrets` verwendet.
+Sie können eine Listenfunktion für jeden Ressourcentyp mit einem Vorgang aufrufen, der mit `list` beginnt. Häufig werden `list`, `listKeys`, `listKeyValue` und `listSecrets` verwendet. 
+
+Die Syntax für diese Funktion variiert je nach dem Namen des Auflistungsvorgangs. Die zurückgegebenen Werte variieren auch je nach Vorgang. Bicep unterstützt derzeit keine Vervollständigungen und Validierungen für `list*`-Funktionen.
+
+**Ab Bicep-Version 0.4.412** rufen Sie die Listenfunktion mit dem [Accessor-Operator](operators-access.md#function-accessor) auf. Beispiel: `stg.listKeys()`. 
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| resourceName oder resourceIdentifier |Ja |Zeichenfolge |Eindeutiger Bezeichner für die Ressource. |
-| apiVersion |Ja |Zeichenfolge |API-Version eines Ressourcen-Laufzeitstatus. In der Regel im Format **jjjj-mm-tt**. |
+| apiVersion |Nein |Zeichenfolge |Wenn Sie diesen Parameter nicht angeben, wird die API-Version für die Ressource verwendet. Stellen Sie nur dann eine benutzerdefinierte API-Version bereit, wenn Sie die Funktion mit einer bestimmten Version ausführen müssen. Verwenden Sie das Format **jjjj-mm-tt**. |
 | functionValues |Nein |Objekt (object) | Ein Objekt, das über Werte für die Funktion verfügt. Geben Sie dieses Objekt nur für Funktionen an, die den Empfang eines Objekts mit Parameterwerten unterstützen – z.B. **listAccountSas** für ein Speicherkonto. Ein Beispiel für die Übergabe von Funktionswerten wird in diesem Artikel gezeigt. |
 
 ### <a name="valid-uses"></a>Gültige Verwendungen
@@ -189,6 +195,75 @@ Die Syntax für diese Funktion variiert je nach dem Namen der Auflistungsvorgän
 Die list-Funktionen können in den Eigenschaften einer Ressourcendefinition verwendet werden. Verwenden Sie keine list-Funktionen, die im Abschnitt „outputs“ einer Bicep-Datei vertrauliche Informationen offenlegen. Ausgabewerte werden im Bereitstellungsverlauf gespeichert und könnten von einem böswilligen Benutzer abgerufen werden.
 
 Wenn sie mit einer [Eigenschaftenschleife](./loop-properties.md) verwendet werden, können Sie die list-Funktionen für `input` verwenden, da der Ausdruck der resource-Eigenschaft zugewiesen wird. Sie können sie nicht mit `count` verwenden, weil die Anzahl bestimmt werden muss, bevor die Listenfunktion aufgelöst wird.
+
+Bei Verwendung einer **list**-Funktion mit einer Ressource mit bedingter Bereitstellung wird die Funktion auch dann ausgewertet, wenn die Ressource nicht bereitgestellt wird. Es wird eine Fehlermeldung angezeigt, wenn die **list**-Funktion auf eine nicht vorhandene Ressource verweist. Verwenden Sie den [Operator bedingter Ausdruck **?:**](./operators-logical.md#conditional-expression--), um sicherzustellen, dass die Funktion nur ausgewertet wird, wenn die Ressource bereitgestellt wird.
+
+### <a name="return-value"></a>Rückgabewert
+
+Das zurückgegebene Objekt ist abhängig von der list-Funktion, die Sie verwenden, unterschiedlich. Die Funktion listKeys für ein Speicherkonto wird z.B. im folgenden Format zurückgegeben:
+
+```json
+{
+  "keys": [
+    {
+      "keyName": "key1",
+      "permissions": "Full",
+      "value": "{value}"
+    },
+    {
+      "keyName": "key2",
+      "permissions": "Full",
+      "value": "{value}"
+    }
+  ]
+}
+```
+
+Andere list-Funktionen weisen andere Rückgabeformate auf. Um das Format einer Funktion anzuzeigen, geben Sie es wie in der Bicep-Beispieldatei dargestellt im Abschnitt „outputs“ an.
+
+### <a name="list-example"></a>list-Beispiel
+
+Im folgenden Beispiel wird ein Speicherkonto bereitgestellt und dann listKeys für dieses Speicherkonto aufgerufen. Der Schlüssel wird verwendet, wenn ein Wert für [Bereitstellungsskripte](../templates/deployment-script-template.md) festgelegt wird.
+
+```bicep
+resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
+  name: 'dscript${uniqueString(resourceGroup().id)}'
+  location: location
+  kind: 'StorageV2'
+  sku: {
+    name: 'Standard_LRS'
+  }
+}
+
+resource dScript 'Microsoft.Resources/deploymentScripts@2019-10-01-preview' = {
+  name: 'scriptWithStorage'
+  location: location
+  ...
+  properties: {
+    azCliVersion: '2.0.80'
+    storageAccountSettings: {
+      storageAccountName: stg.name
+      storageAccountKey: stg.listKeys().keys[0].value
+    }
+    ...
+  }
+}
+```
+
+Das nächste Beispiel zeigt eine list-Funktion, die einen Parameter verwendet. In diesem Fall handelt es sich um die Funktion **listAccountSas**. Übergeben Sie ein Objekt für die Ablaufzeit. Die Ablaufzeit muss in der Zukunft liegen.
+
+```bicep
+param accountSasProperties object {
+  default: {
+    signedServices: 'b'
+    signedPermission: 'r'
+    signedExpiry: '2020-08-20T11:00:00Z'
+    signedResourceTypes: 's'
+  }
+}
+...
+sasToken: stg.listAccountSas('2021-04-01', accountSasProperties).accountSasToken
+```
 
 ### <a name="implementations"></a>Implementierungen
 
@@ -198,23 +273,23 @@ Die Verwendungsmöglichkeiten von list* werden in der folgenden Tabelle gezeigt.
 | ------------- | ------------- |
 | Microsoft.Addons/supportProviders | listsupportplaninfo |
 | Microsoft.AnalysisServices/servers | [listGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
-| Microsoft.ApiManagement/service/authorizationServers | [listSecrets](/rest/api/apimanagement/2019-12-01/authorizationserver/listsecrets) |
-| Microsoft.ApiManagement/service/gateways | [listKeys](/rest/api/apimanagement/2019-12-01/gateway/listkeys) |
-| Microsoft.ApiManagement/service/identityProviders | [listSecrets](/rest/api/apimanagement/2019-12-01/identityprovider/listsecrets) |
-| Microsoft.ApiManagement/service/namedValues | [listValue](/rest/api/apimanagement/2019-12-01/namedvalue/listvalue) |
-| Microsoft.ApiManagement/service/openidConnectProviders | [listSecrets](/rest/api/apimanagement/2019-12-01/openidconnectprovider/listsecrets) |
-| Microsoft.ApiManagement/service/subscriptions | [listSecrets](/rest/api/apimanagement/2019-12-01/subscription/listsecrets) |
+| Microsoft.ApiManagement/service/authorizationServers | [listSecrets](/rest/api/apimanagement/2020-06-01-preview/authorization-server/list-secrets) |
+| Microsoft.ApiManagement/service/gateways | [listKeys](/rest/api/apimanagement/2020-06-01-preview/gateway/list-keys) |
+| Microsoft.ApiManagement/service/identityProviders | [listSecrets](/rest/api/apimanagement/2020-06-01-preview/identity-provider/list-secrets) |
+| Microsoft.ApiManagement/service/namedValues | [listValue](/rest/api/apimanagement/2020-06-01-preview/named-value/list-value) |
+| Microsoft.ApiManagement/service/openidConnectProviders | [listSecrets](/rest/api/apimanagement/2020-06-01-preview/openid-connect-provider/list-secrets) |
+| Microsoft.ApiManagement/service/subscriptions | [listSecrets](/rest/api/apimanagement/2020-06-01-preview/subscription/list-secrets) |
 | Microsoft.AppConfiguration/configurationStores | [ListKeys](/rest/api/appconfiguration/configurationstores/listkeys) |
 | Microsoft.AppPlatform/Spring | [listTestKeys](/rest/api/azurespringcloud/services/listtestkeys) |
 | Microsoft.Automation/automationAccounts | [listKeys](/rest/api/automation/keys/listbyautomationaccount) |
 | Microsoft.Batch/batchAccounts | [listkeys](/rest/api/batchmanagement/batchaccount/getkeys) |
-| Microsoft.BatchAI/workspaces/experiments/jobs | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
+| Microsoft.BatchAI/workspaces/experiments/jobs | listoutputfiles |
 | Microsoft.Blockchain/blockchainMembers | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/blockchainmembers/listapikeys) |
 | Microsoft.Blockchain/blockchainMembers/transactionNodes | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/transactionnodes/listapikeys) |
 | Microsoft.BotService/botServices/channels | [listChannelWithKeys](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/botservice/resource-manager/Microsoft.BotService/stable/2020-06-02/botservice.json#L553) |
 | Microsoft.Cache/redis | [listKeys](/rest/api/redis/redis/listkeys) |
 | Microsoft.CognitiveServices/accounts | [listKeys](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
-| Microsoft.ContainerRegistry/registries | [listBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
+| Microsoft.ContainerRegistry/registries | [listBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/get-build-source-upload-url) |
 | Microsoft.ContainerRegistry/registries | [listCredentials](/rest/api/containerregistry/registries/listcredentials) |
 | Microsoft.ContainerRegistry/registries | [listUsages](/rest/api/containerregistry/registries/listusages) |
 | Microsoft.ContainerRegistry/registries/agentpools | listQueueStatus |
@@ -244,9 +319,9 @@ Die Verwendungsmöglichkeiten von list* werden in der folgenden Tabelle gezeigt.
 | Microsoft.DevTestLab/labs/schedules | [ListApplicable](/rest/api/dtl/schedules/listapplicable) |
 | Microsoft.DevTestLab/labs/users/serviceFabrics | [ListApplicableSchedules](/rest/api/dtl/servicefabrics/listapplicableschedules) |
 | Microsoft.DevTestLab/labs/virtualMachines | [ListApplicableSchedules](/rest/api/dtl/virtualmachines/listapplicableschedules) |
-| Microsoft.DocumentDB/databaseAccounts | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/databaseaccounts/listconnectionstrings) |
-| Microsoft.DocumentDB/databaseAccounts | [listKeys](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/databaseaccounts/listkeys) |
-| Microsoft.DocumentDB/databaseAccounts/notebookWorkspaces | [listConnectionInfo](/rest/api/cosmos-db-resource-provider/2021-03-15/notebookworkspaces/listconnectioninfo) |
+| Microsoft.DocumentDB/databaseAccounts | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/2021-04-15/database-accounts/list-connection-strings) |
+| Microsoft.DocumentDB/databaseAccounts | [listKeys](/rest/api/cosmos-db-resource-provider/2021-04-15/database-accounts/list-keys) |
+| Microsoft.DocumentDB/databaseAccounts/notebookWorkspaces | [listConnectionInfo](/rest/api/cosmos-db-resource-provider/2021-04-15/notebook-workspaces/list-connection-info) |
 | Microsoft.DomainRegistration | [listDomainRecommendations](/rest/api/appservice/domains/listrecommendations) |
 | Microsoft.DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
 | Microsoft.EventGrid/domains | [listKeys](/rest/api/eventgrid/version2020-06-01/domains/listsharedaccesskeys) |
@@ -273,9 +348,9 @@ Die Verwendungsmöglichkeiten von list* werden in der folgenden Tabelle gezeigt.
 | Microsoft.Logic/workflows/versions/triggers | [listCallbackUrl](/rest/api/logic/workflowversions/listcallbackurl) |
 | Microsoft.MachineLearning/webServices | [listkeys](/rest/api/machinelearning/webservices/listkeys) |
 | Microsoft.MachineLearning/Workspaces | listworkspacekeys |
-| Microsoft.MachineLearningServices/workspaces/computes | [listKeys](/rest/api/azureml/workspacesandcomputes/machinelearningcompute/listkeys) |
-| Microsoft.MachineLearningServices/workspaces/computes | [listNodes](/rest/api/azureml/workspacesandcomputes/machinelearningcompute/listnodes) |
-| Microsoft.MachineLearningServices/workspaces | [listKeys](/rest/api/azureml/workspacesandcomputes/workspaces/listkeys) |
+| Microsoft.MachineLearningServices/workspaces/computes | [listKeys](/rest/api/azureml/compute/list-keys) |
+| Microsoft.MachineLearningServices/workspaces/computes | [listNodes](/rest/api/azureml/compute/list-nodes) |
+| Microsoft.MachineLearningServices/workspaces | [listKeys](/rest/api/azureml/workspaces/list-keys) |
 | Microsoft.Maps/accounts | [listKeys](/rest/api/maps-management/accounts/listkeys) |
 | Microsoft.Media/mediaservices/assets | [listContainerSas](/rest/api/media/assets/listcontainersas) |
 | Microsoft.Media/mediaservices/assets | [listStreamingLocators](/rest/api/media/assets/liststreaminglocators) |
@@ -292,12 +367,12 @@ Die Verwendungsmöglichkeiten von list* werden in der folgenden Tabelle gezeigt.
 | Microsoft.Relay/namespaces/disasterRecoveryConfigs/authorizationRules | listkeys |
 | Microsoft.Relay/namespaces/HybridConnections/authorizationRules | [listkeys](/rest/api/relay/hybridconnections/listkeys) |
 | Microsoft.Relay/namespaces/WcfRelays/authorizationRules | [listkeys](/rest/api/relay/wcfrelays/listkeys) |
-| Microsoft.Search/searchServices | [listAdminKeys](/rest/api/searchmanagement/adminkeys/get) |
-| Microsoft.Search/searchServices | [listQueryKeys](/rest/api/searchmanagement/querykeys/listbysearchservice) |
-| Microsoft.ServiceBus/namespaces/authorizationRules | [listkeys](/rest/api/servicebus/stable/namespaces%20-%20authorization%20rules/listkeys) |
+| Microsoft.Search/searchServices | [listAdminKeys](/rest/api/searchmanagement/2021-04-01-preview/admin-keys/get) |
+| Microsoft.Search/searchServices | [listQueryKeys](/rest/api/searchmanagement/2021-04-01-preview/query-keys/list-by-search-service) |
+| Microsoft.ServiceBus/namespaces/authorizationRules | [listkeys](/rest/api/servicebus/stable/namespaces-authorization-rules/list-keys) |
 | Microsoft.ServiceBus/namespaces/disasterRecoveryConfigs/authorizationRules | [listkeys](/rest/api/servicebus/stable/disasterrecoveryconfigs/listkeys) |
-| Microsoft.ServiceBus/namespaces/queues/authorizationRules | [listkeys](/rest/api/servicebus/stable/queues%20-%20authorization%20rules/listkeys) |
-| Microsoft.ServiceBus/namespaces/topics/authorizationRules | [listkeys](/rest/api/servicebus/stable/topics%20–%20authorization%20rules/listkeys) |
+| Microsoft.ServiceBus/namespaces/queues/authorizationRules | [listkeys](/rest/api/servicebus/preview/queues-authorization-rules/list-keys) |
+| Microsoft.ServiceBus/namespaces/topics/authorizationRules | [listkeys](/rest/api/servicebus/stable/topics%20%E2%80%93%20authorization%20rules/list-keys) |
 | Microsoft.SignalRService/SignalR | [listkeys](/rest/api/signalr/signalr/listkeys) |
 | Microsoft.Storage/storageAccounts | [listAccountSas](/rest/api/storagerp/storageaccounts/listaccountsas) |
 | Microsoft.Storage/storageAccounts | [listkeys](/rest/api/storagerp/storageaccounts/listkeys) |
@@ -339,61 +414,6 @@ Um zu bestimmen, welche Ressourcentypen einen list-Vorgang aufweisen, stehen die
   az provider operation show --namespace Microsoft.Storage --query "resourceTypes[?name=='storageAccounts'].operations[].name | [?contains(@, 'list')]"
   ```
 
-### <a name="return-value"></a>Rückgabewert
-
-Das zurückgegebene Objekt ist abhängig von der list-Funktion, die Sie verwenden, unterschiedlich. Die Funktion listKeys für ein Speicherkonto wird z.B. im folgenden Format zurückgegeben:
-
-```json
-{
-  "keys": [
-    {
-      "keyName": "key1",
-      "permissions": "Full",
-      "value": "{value}"
-    },
-    {
-      "keyName": "key2",
-      "permissions": "Full",
-      "value": "{value}"
-    }
-  ]
-}
-```
-
-Andere list-Funktionen weisen andere Rückgabeformate auf. Um das Format einer Funktion anzuzeigen, geben Sie es wie in der Bicep-Beispieldatei dargestellt im Abschnitt „outputs“ an.
-
-### <a name="remarks"></a>Bemerkungen
-
-Geben Sie die Ressource entweder mithilfe des Ressourcennamens oder der [resourceId-Funktion](#resourceid) an. Wenn Sie eine list-Funktion in der gleichen Bicep-Datei verwenden, die auch die referenzierte Ressource bereitstellt, verwenden Sie den Ressourcennamen.
-
-Bei Verwendung einer **list**-Funktion mit einer Ressource mit bedingter Bereitstellung wird die Funktion auch dann ausgewertet, wenn die Ressource nicht bereitgestellt wird. Es wird eine Fehlermeldung angezeigt, wenn die **list**-Funktion auf eine nicht vorhandene Ressource verweist. Verwenden Sie den [Operator bedingter Ausdruck **?:** ](./operators-logical.md#conditional-expression--), um sicherzustellen, dass die Funktion nur ausgewertet wird, wenn die Ressource bereitgestellt wird.
-
-### <a name="list-example"></a>list-Beispiel
-
-Im folgenden Beispiel wird listKeys beim Festlegen eines Werts für [Bereitstellungsskripts](../templates/deployment-script-template.md) verwendet.
-
-```bicep
-storageAccountSettings: {
-  storageAccountName: storageAccountName
-  storageAccountKey: listKeys(resourceId('Microsoft.Storage/storageAccounts', storageAccountName), '2019-06-01').keys[0].value
-}
-```
-
-Das nächste Beispiel zeigt eine list-Funktion, die einen Parameter verwendet. In diesem Fall handelt es sich um die Funktion **listAccountSas**. Übergeben Sie ein Objekt für die Ablaufzeit. Die Ablaufzeit muss in der Zukunft liegen.
-
-```bicep
-param accountSasProperties object {
-  default: {
-    signedServices: 'b'
-    signedPermission: 'r'
-    signedExpiry: '2020-08-20T11:00:00Z'
-    signedResourceTypes: 's'
-  }
-}
-...
-sasToken: listAccountSas(storagename, '2018-02-01', accountSasProperties).accountSasToken
-```
-
 ## <a name="pickzones"></a>pickZones
 
 `pickZones(providerNamespace, resourceType, location, [numberOfZones], [offset])`
@@ -402,7 +422,7 @@ Bestimmt, ob ein Ressourcentyp Zonen für eine Region unterstützt.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | providerNamespace | Ja | Zeichenfolge | Der Ressourcenanbieternamespace für den Ressourcentyp, der auf Zonenunterstützung überprüft werden soll. |
 | resourceType | Ja | Zeichenfolge | Der Ressourcentyp, der auf Zonenunterstützung überprüft werden soll. |
@@ -449,7 +469,7 @@ output notSupportedType array = pickZones('Microsoft.Cdn', 'profiles', 'westus2'
 
 Die Ausgabe aus den vorherigen Beispielen gibt drei Arrays zurück.
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | Unterstützt | array | [ "1" ] |
 | notSupportedRegion | array | [] |
@@ -577,12 +597,6 @@ param builtInRoleType string {
       'description': 'Built-in role to assign'
   }
 }
-param roleNameGuid string {
-  default: newGuid()
-  metadata: {
-    'description': 'A new GUID used to identify the role assignment'
-  }
-}
 
 var roleDefinitionId = {
   Owner: {
@@ -597,7 +611,7 @@ var roleDefinitionId = {
 }
 
 resource myRoleAssignment 'Microsoft.Authorization/roleAssignments@2018-09-01-preview' = {
-  name: roleNameGuid
+  name: guid(resourceGroup().id, principalId, roleDefinitionId[builtInRoleType].id)
   properties: {
     roleDefinitionId: roleDefinitionId[builtInRoleType].id
     principalId: principalId

@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/25/2021
 ms.custom: mvc
-ms.openlocfilehash: f461778f988fafeacc480e100b00be7d4c165dfb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7bdc0008baa1ee03c11aeeba03485fd7cd09e6f9
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612516"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122969814"
 ---
 # <a name="tutorial-discover-servers-running-on-hyper-v-with-azure-migrate-discovery-and-assessment"></a>Tutorial: Ermitteln von Servern in Hyper-V mit der Ermittlung und Bewertung von Azure Migrate
 
@@ -138,7 +138,8 @@ Richten Sie ein neues Projekt ein.
 Von Azure Migrate wird eine einfache Azure Migrate-Appliance verwendet. Die Appliance führt die Serverermittlung durch und sendet Metadaten zur Serverkonfiguration und -leistung an Azure Migrate. Die Appliance kann durch Bereitstellen einer VHD-Datei eingerichtet werden, die aus dem Projekt heruntergeladen werden kann.
 
 > [!NOTE]
-> Wenn Sie die Appliance aus irgendeinem Grund nicht mithilfe der Vorlage einrichten können, können Sie für die Einrichtung ein PowerShell-Skript auf einem vorhandenen Windows Server 2016-Server verwenden. [Weitere Informationen](deploy-appliance-script.md#set-up-the-appliance-for-hyper-v)
+> Wenn Sie die Appliance aus irgendeinem Grund nicht mithilfe der Vorlage einrichten können, können Sie für die Einrichtung ein PowerShell-Skript auf einem vorhandenen Windows Server 2016-Server verwenden. [Weitere Informationen](deploy-appliance-script.md#set-up-the-appliance-for-hyper-v)<br/>
+> Die Option zum Bereitstellen einer Appliance mithilfe einer Vorlage wird in Azure Government Cloud nicht unterstützt. [Erfahren Sie mehr](/azure/migrate/deploy-appliance-script-government) über das Bereitstellen einer Appliance für Azure Government Cloud.
 
 In diesem Tutorial wird die Appliance wie folgt auf einem Server in einer Hyper-V-Umgebung eingerichtet:
 
@@ -224,7 +225,7 @@ Führen Sie die Ersteinrichtung der Appliance durch.
       - Es werden nur HTTP-Proxys unterstützt.
       - Wenn Sie Proxydetails hinzugefügt oder den Proxy und/oder die Authentifizierung deaktiviert haben, klicken Sie auf **Speichern**, um die Konnektivitätsprüfung erneut auszulösen.
     - **Uhrzeitsynchronisierung**: Die Uhrzeit wird überprüft. Die Uhrzeit der Appliance muss mit der Internetzeit synchronisiert werden, damit die Ermittlung ordnungsgemäß funktioniert.
-    - **Updates installieren**: „Azure Migrate: Ermittlung und Bewertung“ überprüft, ob auf der Appliance die neuesten Updates installiert sind. Nachdem die Prüfung abgeschlossen ist, können Sie auf **Appliancedienste anzeigen** klicken, um den Status und die Versionen der auf der Appliance ausgeführten Komponenten anzuzeigen.
+    - **Updates installieren**: Das Tool „Azure Migrate: Ermittlung und Bewertung“ überprüft, ob auf der Appliance die neuesten Updates installiert sind. Nachdem die Prüfung abgeschlossen ist, können Sie auf **Appliancedienste anzeigen** klicken, um den Status und die Versionen der auf der Appliance ausgeführten Komponenten anzuzeigen.
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>Registrieren der Appliance bei Azure Migrate
 

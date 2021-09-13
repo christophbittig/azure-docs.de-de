@@ -3,17 +3,18 @@ title: Erstellen eines virtuellen Windows-Computers mit Azure Image Builder
 description: Erstellen Sie mit Azure Image Builder einen virtuellen Windows-Computer.
 author: kof-f
 ms.author: kofiforson
+ms.reviewer: cynthn
 ms.date: 04/23/2021
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
-ms.openlocfilehash: 6eaa59521a864b3d93d4c79706ca8ec7ff100d70
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 651a67414c34bcfae45663dd1bcfbd9d97e63598
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112030969"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444297"
 ---
 # <a name="create-a-windows-vm-with-azure-image-builder"></a>Erstellen eines virtuellen Windows-Computers mit Azure Image Builder
 
@@ -28,7 +29,7 @@ In diesem Artikel erfahren Sie, wie Sie mit Azure VM Image Builder ein benutzerd
 - identity: Geben Sie eine Identität an, die Azure Image Builder während des Buildprozesses verwendet.
 
 
-Sie können auch `buildTimeoutInMinutes` angeben. Der Standardwert ist 240 Minuten, und Sie können die Buildzeit vergrößern, um zeitintensive Builds zuzulassen.
+Sie können auch `buildTimeoutInMinutes` angeben. Der Standardwert ist 240 Minuten, und Sie können die Buildzeit vergrößern, um zeitintensive Builds zuzulassen. Der zulässige Mindestwert beträgt sechs Minuten. Kürzere Werte führen zu Fehlern.
 
 Wir verwenden zum Konfigurieren des Images eine JSON-Beispielvorlage. Wir verwenden die JSON-Datei [helloImageTemplateWin.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json). 
 
@@ -125,7 +126,7 @@ az role definition create --role-definition ./aibRoleImageCreation.json
 # grant role definition to the user assigned identity
 az role assignment create \
     --assignee $imgBuilderCliId \
-    --role $imageRoleDefName \
+    --role "$imageRoleDefName" \
     --scope /subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup
 ```
 

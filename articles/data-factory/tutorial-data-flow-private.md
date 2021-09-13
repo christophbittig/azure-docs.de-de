@@ -5,15 +5,16 @@ author: ssabat
 ms.author: susabat
 ms.reviewer: makromer
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/14/2021
-ms.openlocfilehash: ac868fdf3ca80d489d479b5be0c57bd14a90ccbb
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 06/04/2021
+ms.openlocfilehash: e73b2a96d2b051dbb208bb9614569c423f99d8f0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905700"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349496"
 ---
 # <a name="transform-data-securely-by-using-mapping-data-flow"></a>Sicheres Transformieren von Daten mithilfe von Zuordnungsdatenflüssen
 
@@ -86,7 +87,7 @@ In diesem Schritt erstellen Sie eine Azure Integration Runtime-Instanz und aktiv
 
 In diesem Schritt erstellen Sie eine Pipeline mit einer Datenflussaktivität.
 
-1. Wählen Sie auf der Seite **Erste Schritte** die Option **Pipeline erstellen** aus.
+1. Klicken Sie auf der Startseite von Azure Data Factory auf **Orchestrate** (Orchestrieren).
 
    ![Screenshot, der das Erstellen einer Pipeline zeigt.](./media/doc-common-process/get-started-page.png)
 

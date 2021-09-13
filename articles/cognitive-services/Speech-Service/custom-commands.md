@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: e4ae8a09a554afe232091b68888af17dfa096771
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: db0f78f2f3aef3295837d921d7d70866ed8b8769
+ms.sourcegitcommit: d01c2b2719e363178720003b67b968ac2a640204
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102426468"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122455812"
 ---
 # <a name="what-is-custom-commands"></a>Was sind benutzerdefinierte Befehle?
 
@@ -23,10 +23,7 @@ Anwendungen, wie etwa [Sprachassistenten](voice-assistants.md), hören den Benut
 
 Mit **benutzerdefinierten Befehlen** ist es einfach, funktionsreiche Apps mit Sprachsteuerung zu erstellen, die für Voice-First-Interaktionserfahrungen optimiert sind. Sie bieten eine einheitliche Benutzeroberfläche für die Erstellung, ein automatisches Hostingmodell und eine relativ geringe Komplexität, sodass Sie sich auf die Entwicklung der besten Lösung für Ihre Szenarien mit Sprachsteuerung konzentrieren können.
 
-Benutzerdefinierte Befehle eignen sich am besten für die Erledigung von Aufgaben oder für Befehl-und-Steuerung-Szenarien (Command-and-Control), besonders gut geeignet für IoT-Geräte (Internet der Dinge), Ambient- und monitorlose Geräte. Beispiele hierfür sind Lösungen für das Hotel- und Gaststättengewerbe, den Einzelhandel und die Automobilindustrie, die es Ihnen ermöglichen, die besten sprachgesteuerten Benutzeroberflächen für Ihre Gäste in Räumen zu schaffen, den Bestand in Ihrem Geschäft zu verwalten und die Funktionalität unterwegs im Auto zu steuern.
-
-> [!TIP]
-> Sehen Sie sich unsere Beispieldemos auf unserer Landing Page unter [https://speech.microsoft.com/customcommands](https://speech.microsoft.com/customcommands) an.
+Benutzerdefinierte Befehle eignen sich am besten für die Erledigung von Aufgaben oder für Befehl-und-Steuerung-Szenarien (Command-and-Control) und sind ideal für IoT-Geräte (Internet der Dinge), Umgebungs- und monitorlose Geräte. Beispiele hierfür sind Lösungen für Hotel- und Gaststättengewerbe, Einzelhandel und Automobilindustrie, wo Sie sprachgesteuerte Funktionalität für Ihre Gäste, Bestandsverwaltung im Geschäft oder Funktionalität im Auto wünschen.
 
 Wenn Sie daran interessiert sind, komplexe Konversations-Apps zu erstellen, sollten Sie das Bot-Framework mit der [Lösung für virtuelle Assistenten](/azure/bot-service/bot-builder-enterprise-template-overview) ausprobieren. Mit Direct Line Speech können Sie jedem Bot des Bot-Frameworks eine Stimme hinzufügen.
 

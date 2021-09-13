@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 08/12/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47898b1708ebecc43ace9888dfd237fa72079c6b
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 93f5af54992189d553c9e5c5c141a6ca08b7018e
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111590358"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356087"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-ad-multi-factor-authentication"></a>Optimieren von Aufforderungen zur erneuten Authentifizierung und Grundlegendes zur Sitzungslebensdauer für Azure AD Multi-Factor Authentication
 
@@ -35,7 +35,7 @@ Damit Sie Ihren Benutzern die richtige Balance zwischen Sicherheit und Benutzerf
 * Wenn Sie Azure AD Premium haben:
     * Aktivieren Sie das einmalige Anmelden (Single Sign-on, SSO) über mehrere Anwendungen hinweg mithilfe von [verwalteten Geräten](../devices/overview.md) oder [nahtlosem einmaligem Anmelden](../hybrid/how-to-connect-sso.md).
     * Wenn eine erneute Authentifizierung erforderlich ist, verwenden Sie eine Richtlinie für bedingten Zugriff für die [Anmeldehäufigkeit](../conditional-access/howto-conditional-access-session-lifetime.md).
-    * Verwenden Sie für Benutzer, die sich über nicht verwaltete oder mobile Geräte anmelden, den bedingten Zugriff, um persistente Browsersitzungen und Richtlinien für die Anmeldehäufigkeit zu aktivieren.
+    * Für Benutzer, die sich von nicht verwalteten Geräten oder über mobile Geräte anmelden, sind persistente Browsersitzungen möglicherweise nicht geeignet. Alternativ können Sie den bedingten Zugriff verwenden, um persistente Browsersitzungen mit Richtlinien für die Anmeldehäufigkeit zu aktivieren. Begrenzen Sie die Dauer auf einen geeigneten Zeitraum basierend auf dem Anmelderisiko, bei dem ein Benutzer mit geringerem Risiko über eine längere Sitzungsdauer verfügt.
 * Wenn Sie über Lizenzen für Microsoft 365-Apps oder den kostenlosen Azure AD-Tarif verfügen:
     * Aktivieren Sie das einmalige Anmelden (Single Sign-on, SSO) über mehrere Anwendungen hinweg mithilfe von [verwalteten Geräten](../devices/overview.md) oder [nahtlosem einmaligem Anmelden](../hybrid/how-to-connect-sso.md).
     * Lassen Sie die Option *Remain signed-in* (Angemeldet bleiben) aktiviert, und weisen Sie Ihre Benutzer an, sie zu akzeptieren.

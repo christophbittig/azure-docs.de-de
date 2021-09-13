@@ -1,21 +1,22 @@
 ---
-title: Erstellen einer neuen Imageversion aus einer vorhandenen Imageversion mit Azure Image Builder
-description: Erstellen einer neuen VM-Imageversion aus einer vorhandenen Imageversion mit Azure Image Builder unter Windows.
-author: cynthn
-ms.author: cynthn
+title: Erstellen einer neuen Imageversion aus einer vorhandenen Imageversion mit Azure Image Builder unter Windows
+description: Hier erfahren Sie mehr über das Erstellen einer neuen VM-Imageversion aus einer vorhandenen Imageversion mit Azure Image Builder unter Windows.
+author: kof-f
+ms.author: kofiforson
+ms.reviewer: cynthn
 ms.date: 03/02/2021
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subervice: image-builder
 ms.collection: windows
-ms.openlocfilehash: 619821c87c4897c93e6a0344a98335cf4f95a53b
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 08cc123df4d0b4af0d5a0e94d5ef0e4826b0681c
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112070829"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113594803"
 ---
-# <a name="create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-windows"></a>Erstellen einer neuen VM-Imageversion aus einer vorhandenen Imageversion mit Azure Image Builder unter Windows
+# <a name="create-a-new-windows-vm-image-version-from-an-existing-image-version-using-azure-image-builder"></a>Erstellen einer neuen VM-Imageversion aus einer vorhandenen Imageversion mit Azure Image Builder unter Windows
 
 In diesem Artikel erfahren Sie, wie Sie eine vorhandene Imageversion in einem [Katalog mit freigegebenen Images](../shared-image-galleries.md) aktualisieren und als neue Imageversion im Katalog veröffentlichen.
 
@@ -123,6 +124,7 @@ Senden Sie die Imagekonfiguration an den VM-Image Builder-Dienst.
 ```azurecli-interactive
 az resource create \
     --resource-group $sigResourceGroup \
+    --location $location \
     --properties @helloImageTemplateforSIGfromWinSIG.json \
     --is-full-object \
     --resource-type Microsoft.VirtualMachineImages/imageTemplates \

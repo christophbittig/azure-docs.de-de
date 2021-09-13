@@ -1,5 +1,5 @@
 ---
-title: Verschlüsselung ruhender Daten mit kundenseitig verwalteten Schlüsseln
+title: Verschlüsseln von Daten mit kundenseitig verwalteten Schlüsseln
 titleSuffix: Azure Cognitive Search
 description: Ergänzung der serverseitigen Verschlüsselung über Indizes und Synonymzuordnungen in Azure Cognitive Search durch Schlüssel, die Sie in Azure Key Vault erstellen und verwalten.
 manager: nitinme
@@ -7,31 +7,30 @@ author: NatiNimni
 ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/28/2021
+ms.date: 07/02/2021
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 3e45a2ff5db3a3ebbc0f9e2c5d9c66af43915463
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 5513e4f26f6b2fed17f406f43110eb358179ce79
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110786837"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113232824"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für die Datenverschlüsselung in Azure Cognitive Search
 
-In Azure Cognitive Search werden ruhende indizierte Inhalte automatisch mit [dienstseitig verwalteten Schlüsseln](../security/fundamentals/encryption-atrest.md#azure-encryption-at-rest-components) verschlüsselt. Wenn ein weiterer Schutz erforderlich ist, können Sie die Standardverschlüsselung durch eine zusätzliche Verschlüsselungsebene ergänzen, indem Sie Schlüssel verwenden, die Sie in Azure Key Vault erstellen und verwalten. In diesem Artikel finden Sie die Schritte zum Einrichten der Verschlüsselung mit kundenseitig verwalteten Schlüsseln.
+In Azure Cognitive Search werden Inhalte automatisch mit [dienstseitig verwalteten Schlüsseln](../security/fundamentals/encryption-atrest.md#azure-encryption-at-rest-components) verschlüsselt. Wenn ein weiterer Schutz erforderlich ist, können Sie die Standardverschlüsselung durch eine zusätzliche Verschlüsselungsebene ergänzen, indem Sie Schlüssel verwenden, die Sie in Azure Key Vault erstellen und verwalten. Zu den Objekten, die verschlüsselt werden können, gehören Indizes, Synonymlisten, Indexer, Datenquellen und Skillsets.
 
-Die Verschlüsselung mit kundenseitig verwalteten Schlüsseln erfordert [Azure Key Vault](../key-vault/general/overview.md). Sie können Ihre eigenen Verschlüsselungsschlüssel erstellen und in einem Schlüsseltresor speichern oder mit Azure Key Vault-APIs Verschlüsselungsschlüssel generieren. Mit Azure Key Vault können Sie auch die Schlüsselverwendung überwachen, wenn Sie die [Protokollierung aktivieren](../key-vault/general/logging.md).  
+In diesem Artikel finden Sie die Schritte zum Einrichten der Verschlüsselung mit kundenseitig verwalteten Schlüsseln. Die folgenden Punkte müssen Sie beachten:
 
-Die Verschlüsselung mit kundenseitig verwalteten Schlüsseln wird auf der Ebene einzelner Indizes oder Synonymzuordnungen angewandt, wenn diese Objekte erstellt werden, und nicht auf der Ebene des Suchdiensts selbst angegeben. Nur neue Objekte können verschlüsselt werden. Bereits vorhandene Inhalte können nicht verschlüsselt werden.
++ Die Verschlüsselung mit kundenseitig verwalteten Schlüsseln erfordert [Azure Key Vault](../key-vault/general/overview.md). Sie können Ihre eigenen Verschlüsselungsschlüssel erstellen und in einem Schlüsseltresor speichern oder mit Azure Key Vault-APIs Verschlüsselungsschlüssel generieren.
 
-Die Schlüssel müssen sich nicht alle im selben Schlüsseltresor befinden. Ein einzelner Suchdienst kann mehrere verschlüsselte Indizes oder Synonymzuordnungen hosten, die jeweils mit ihren eigenen kundenseitig verwalteten Verschlüsselungsschlüsseln verschlüsselt werden, die in verschiedenen Schlüsseltresoren gespeichert sind. Im gleichen Dienst können auch Indizes und Synonymzuordnungen enthalten sein, die nicht mit kundenseitig verwalteten Schlüsseln verschlüsselt wurden.
++ Die Verschlüsselung mit kundenseitig verwalteten Schlüsseln wird beim Erstellen von Objekten jeweils pro Objekt aktiviert. Bereits vorhandene Inhalte können nicht verschlüsselt werden.
 
->[!Important]
-> Wenn Sie kundenseitig verwaltete Schlüssel implementieren, achten Sie darauf, dass Sie bei der Routinerotation von Key Vault-Schlüsseln und Active Directory-Anwendungsgeheimnissen und der Registrierung strikte Verfahren befolgen. Aktualisieren Sie immer den gesamten verschlüsselten Inhalt, um neue Geheimnisse und Schlüssel zu verwenden, bevor Sie die alten löschen. Wenn Sie diesen Schritt nicht ausführen, können Ihre Inhalte nicht entschlüsselt werden.
+Weil das Entschlüsseln der Verschlüsselung sehr rechenintensiv ist, werden nur sensible Inhalte verschlüsselt. Dies schließt den gesamten Inhalt in Indizes und Synonymlisten ein. Für Indexer, Datenquellen und Skillsets werden nur die Felder verschlüsselt, in denen Verbindungszeichenfolgen, Beschreibungen, Schlüssel und Benutzereingaben gespeichert sind. Skillsets verfügen beispielsweise über Cognitive Services-Schlüssel, und einige Skills akzeptieren Benutzereingaben, z. B. benutzerdefinierte Entitäten. Schlüssel und Benutzereingaben in Skills werden verschlüsselt.
 
 ## <a name="double-encryption"></a>Doppelte Verschlüsselung
 
-Die Mehrfachverschlüsselung ist eine Erweiterung von kundenseitig verwalteten Schlüsseln (CMK). Es handelt sich dabei um eine umfangreiche zweifache Verschlüsselung (einmal durch CMK und einmal durch dienstseitig verwaltete Schlüssel), die sowohl eine langfristige Speicherung auf einem Datenträger als auch eine kurzfristige Speicherung auf temporären Datenträgern umfasst. Es ist keine Konfiguration erforderlich. Wenn Sie CMK auf Objekte anwenden, wird die Mehrfachverschlüsselung automatisch aufgerufen.
+Die doppelte Verschlüsselung ist eine Erweiterung von kundenseitig verwalteten Schlüsseln (CMK). Die CMK-Verschlüsselung gilt für die langfristige Speicherung, die auf einen Datenträger geschrieben wird. Der Begriff *doppelte Verschlüsselung* bezieht sich auf die zusätzliche Verschlüsselung der kurzfristigen Speicherung (von Inhalten, die auf temporäre Datenträger geschrieben werden). Es ist keine Konfiguration erforderlich. Wenn Sie CMK auf Objekte anwenden, wird die Mehrfachverschlüsselung automatisch aufgerufen.
 
 Obwohl die Mehrfachverschlüsselung in allen Regionen verfügbar ist, wurde die Unterstützung in zwei Phasen eingeführt. Der erste Rollout erfolgte im August 2020 und umfasste die fünf unten aufgeführten Regionen. Beim zweiten Rollout im Mai 2021 wurde die Mehrfachverschlüsselung auf alle verbleibenden Regionen erweitert. Wenn Sie CMK für einen älteren Dienst verwenden und eine Mehrfachverschlüsselung wünschen, müssen Sie einen neuen Suchdienst in Ihrer bevorzugten Region erstellen.
 
@@ -55,11 +54,23 @@ In diesem Szenario werden die folgenden Tools und Dienste verwendet.
 Sie sollten über eine Suchanwendung verfügen, mit der das verschlüsselte Objekt erstellt werden kann. In diesem Code verweisen Sie auf einen Key Vault-Schlüssel und Active Directory-Registrierungsinformationen. Bei diesem Code kann es sich um eine funktionierende App oder einen Prototypcode wie das [C#-Codebeispiel „DotNetHowToEncryptionUsingCMK“](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK) handeln.
 
 > [!TIP]
-> Sie können [Postman](search-get-started-rest.md), [Visual Studio Code](search-get-started-vs-code.md) oder [Azure PowerShell](./search-get-started-powershell.md) verwenden, um die REST-APIs aufzurufen, mit denen Indizes und Synonymzuordnungen erstellt werden, die einen Parameter für den Verschlüsselungsschlüssel enthalten. Derzeit wird das Hinzufügen eines Schlüssels zu Indizes oder Synonymzuordnungen über das Portal nicht unterstützt.
+> Sie können [Postman](search-get-started-rest.md), [Visual Studio Code](search-get-started-vs-code.md) oder [Azure PowerShell](search-get-started-powershell.md) verwenden, um die REST-APIs aufzurufen, mit denen Indizes und Synonymzuordnungen erstellt werden, die einen Parameter für den Verschlüsselungsschlüssel enthalten. Sie können auch Azure SDKs verwenden. Das Hinzufügen eines Schlüssels zu Indizes oder Synonymzuordnungen über das Portal wird nicht unterstützt.
 
-## <a name="1---enable-key-recovery"></a>1: Aktivieren der Schlüsselwiederherstellung
+## <a name="key-vault-tips"></a>Tipps zu Key Vault
 
-Aufgrund der Art der Verschlüsselung mit kundenseitig verwalteten Schlüsseln können Ihre Daten nicht abgerufen werden, wenn der Azure Key Vault-Schlüssel gelöscht wird. Um Datenverluste aufgrund versehentlich gelöschter Key Vault-Schlüssel zu vermeiden, müssen im Schlüsseltresor die Optionen „Vorläufiges Löschen“ und „Löschschutz“ aktiviert werden. Vorläufiges Löschen ist standardmäßig aktiviert, sodass nur dann Probleme auftreten, wenn Sie das Feature absichtlich deaktiviert haben. Der Löschschutz ist standardmäßig nicht aktiviert, er ist aber für die Verschlüsselung mit kundenseitig verwalteten Schlüsseln in Cognitive Search erforderlich. Weitere Informationen finden Sie in den Übersichten zum [vorläufigen Löschen](../key-vault/general/soft-delete-overview.md) und zum [Löschschutz](../key-vault/general/soft-delete-overview.md#purge-protection).
+Wenn Sie noch nicht mit Azure Key Vault arbeiten, finden Sie in dieser Schnellstartanleitung Informationen zu grundlegenden Aufgaben: [Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe von PowerShell](../key-vault/secrets/quick-create-powershell.md). Im Folgenden finden Sie einige Tipps zur Verwendung von Key Vault:
+
++ Verwenden Sie beliebig viele Schlüsseltresore. Verwaltete Schlüssel können in verschiedenen Schlüsseltresoren gespeichert werden. Ein Suchdienst kann mehrere verschlüsselte Objekte haben, die jeweils mit anderen kundenseitig verwalteten Verschlüsselungsschlüsseln verschlüsselt werden, die in verschiedenen Schlüsseltresoren gespeichert sind.
+
++ [Aktivieren Sie die Protokollierung](../key-vault/general/logging.md) in Key Vault, damit Sie die Schlüsselverwendung überwachen können.
+
++ Halten Sie bei der Routinerotation von Schlüsseltresorschlüsseln und Active Directory-Anwendungsgeheimnissen und der Registrierung unbedingt strikte Verfahren ein. Aktualisieren Sie immer den gesamten [verschlüsselten Inhalt](search-security-get-encryption-keys.md), um neue Geheimnisse und Schlüssel zu verwenden, bevor Sie die alten löschen. Wenn Sie diesen Schritt nicht ausführen, können Ihre Inhalte nicht entschlüsselt werden.
+
+## <a name="1---enable-purge-protection"></a>1: Aktivieren des Löschschutzes
+
+Vergewissern Sie sich zunächst, dass [vorläufiges Löschen](../key-vault/general/soft-delete-overview.md) und [Löschschutz](../key-vault/general/soft-delete-overview.md#purge-protection) auf dem Schlüsseltresor aktiviert sind. Aufgrund der Art der Verschlüsselung mit kundenseitig verwalteten Schlüsseln können Ihre Daten nicht abgerufen werden, wenn der Azure Key Vault-Schlüssel gelöscht wird. 
+
+Um Datenverluste aufgrund versehentlich gelöschter Key Vault-Schlüssel zu vermeiden, müssen im Schlüsseltresor die Optionen „Vorläufiges Löschen“ und „Löschschutz“ aktiviert werden. Vorläufiges Löschen ist standardmäßig aktiviert, sodass nur dann Probleme auftreten, wenn Sie das Feature absichtlich deaktiviert haben. Der Löschschutz ist standardmäßig nicht aktiviert, er ist aber für die Verschlüsselung mit kundenseitig verwalteten Schlüsseln in Cognitive Search erforderlich. 
 
 Sie können beide Eigenschaften mithilfe von Azure-Portal-, PowerShell- oder Azure CLI-Befehlen festlegen.
 
@@ -107,7 +118,7 @@ Sie können beide Eigenschaften mithilfe von Azure-Portal-, PowerShell- oder Azu
 
 ## <a name="2---create-a-key-in-key-vault"></a>2: Erstellen eines Schlüssels in Key Vault
 
-Überspringen Sie diesen Schritt, wenn Sie bereits über einen Schlüssel in Azure Key Vault verfügen.
+Überspringen Sie die Schlüsselgenerierung, wenn Sie bereits über einen Schlüssel in Azure Key Vault verfügen, den Sie verwenden möchten, aber notieren Sie den Schlüsselbezeichner. Sie benötigen diese Informationen, wenn Sie ein verschlüsseltes Objekt erstellen.
 
 1. [Melden Sie sich beim Azure-Portal an](https://portal.azure.com), und öffnen Sie die Übersichtsseite Ihrer Key Vault-Instanz.
 
@@ -123,7 +134,7 @@ Sie können beide Eigenschaften mithilfe von Azure-Portal-, PowerShell- oder Azu
 
    :::image type="content" source="media/search-manage-encryption-keys/cmk-key-identifier.png" alt-text="Erstellen eines neuen Key Vault-Schlüssels":::
 
-## <a name="3---register-an-app-in-active-directory"></a>3: Registrieren einer App in Active Directory
+## <a name="3---register-an-app"></a>3: Registrieren einer App
 
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach der Azure Active Directory-Ressource für Ihr Abonnement.
 
@@ -145,7 +156,7 @@ Sie können beide Eigenschaften mithilfe von Azure-Portal-, PowerShell- oder Azu
 
    :::image type="content" source="media/search-manage-encryption-keys/cmk-application-secret.png" alt-text="Anwendungsgeheimnis":::
 
-## <a name="4---grant-key-access-permissions"></a>4: Erteilen von Zugriffsberechtigungen für den Schlüssel
+## <a name="4---grant-permissions"></a>4: Erteilen von Berechtigungen
 
 In diesem Schritt erstellen Sie eine Zugriffsrichtlinie in Key Vault. Diese Richtlinie gewährt der registrierten Anwendung die Active Directory-Berechtigung zur Verwendung Ihres kundenseitig verwalteten Schlüssels.
 
@@ -176,36 +187,42 @@ Die Zugriffsberechtigungen können jederzeit aufgehoben werden. Nach dem Aufhebe
 
 ## <a name="5---encrypt-content"></a>5: Verschlüsseln von Inhalten
 
-Wenn Sie einen kundenseitig verwalteten Schlüssel für einen Index, eine Datenquelle, ein Skillset, einen Indexer oder eine Synonymzuordnung hinzufügen möchten, müssen Sie die [Search-REST-API](/rest/api/searchservice/) oder ein SDK verwenden. Das Portal macht keine Synonymzuordnungen oder Verschlüsselungseigenschaften verfügbar. Wenn Sie eine gültige API verwenden, unterstützen Indizes, Datenquellen, Skillsets, Indexer oder Synonymzuordnungen eine **encryptionKey**-Eigenschaft auf oberster Ebene.
+Um einen kundenseitig verwalteten Schlüssel einem Index, einer Synonymzuordnung, einem Indexer, einer Datenquelle oder einem Skillset hinzuzufügen, verwenden Sie die [Search-REST-API](/rest/api/searchservice/) oder ein Azure SDK, um ein Objekt zu erstellen, für das die Verschlüsselung aktiviert ist. Das Portal macht keine Synonymzuordnungen oder Verschlüsselungseigenschaften verfügbar. 
 
-In diesem Beispiel wird die REST-API mit den folgenden Werten für Azure Key Vault und Azure Active Directory verwendet:
+1. Rufen Sie die Create-APIs auf, um die Eigenschaft **encryptionKey** anzugeben:
 
-```json
-{
-  "encryptionKey": {
-    "keyVaultUri": "https://demokeyvault.vault.azure.net",
-    "keyVaultKeyName": "myEncryptionKey",
-    "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
-    "accessCredentials": {
-      "applicationId": "00000000-0000-0000-0000-000000000000",
-      "applicationSecret": "myApplicationSecret"
+   + [Index erstellen](/rest/api/searchservice/create-index)
+   + [Erstellen einer Synonymzuordnung](/rest/api/searchservice/create-synonym-map)
+   + [Create Indexer](/rest/api/searchservice/create-indexer)
+   + [Erstellen der Datenquelle](/rest/api/searchservice/create-data-source)
+   + [Erstellen eines Skillsets](/rest/api/searchservice/create-skillset).
+
+1. Fügen Sie das encryptionKey-Konstrukt in die Objektdefinition ein. Diese Eigenschaft ist eine Eigenschaft der ersten Ebene auf der gleichen Ebene wie Name und Beschreibung. Die [folgenden Beispiele](#rest-examples) zeigen die Platzierung der Eigenschaft. Wenn Sie denselben Schlüsseltresor, Schlüssel und dieselbe Version verwenden, können Sie dasselbe encryptionKey-Konstrukt in jedes Objekt einfügen, für das Sie die Verschlüsselung aktivieren.
+
+   Das folgende JSON-Beispiel zeigt einen encryptionKey mit Platzhalterwerten für Azure Key Vault und Anwendungsregistrierung in Azure Active Directory:
+
+    ```json
+    {
+      "encryptionKey": {
+        "keyVaultUri": "https://demokeyvault.vault.azure.net",
+        "keyVaultKeyName": "myEncryptionKey",
+        "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
+        "accessCredentials": {
+          "applicationId": "00000000-0000-0000-0000-000000000000",
+          "applicationSecret": "myApplicationSecret"
+        }
+      }
     }
-  }
-}
-```
+    ```
 
-> [!Note]
-> Keine dieser Key Vault-Details gelten als geheim. Diese Angaben können durch Navigieren zu der entsprechenden Seite des Azure Key Vault-Schlüssels im Azure-Portal einfach abgerufen werden.
+Nachdem Sie das verschlüsselte Objekt im Suchdienst erstellt haben, können Sie es wie jedes andere Objekt seines Typs verwenden. Die Verschlüsselung ist für Benutzer und Entwickler transparent.
 
-## <a name="example-index-encryption"></a>Beispiel: Indexverschlüsselung
-
-Erstellen Sie einen verschlüsselten Index mit der [Azure Cognitive Search-REST-API „Index erstellen“](/rest/api/searchservice/create-index). Verwenden Sie die `encryptionKey`-Eigenschaft, um den zu verwendenden Verschlüsselungsschlüssel anzugeben.
 > [!Note]
 > Keine dieser Key Vault-Details gelten als geheim. Diese Angaben können durch Navigieren zu der entsprechenden Seite des Azure Key Vault-Schlüssels im Azure-Portal einfach abgerufen werden.
 
 ## <a name="rest-examples"></a>REST-Beispiele
 
-Dieser Abschnitt zeigt den vollständigen JSON-Code für einen verschlüsselten Index und eine Synonymzuordnung.
+In diesem Abschnitt wird der JSON-Code für mehrere Objekte angezeigt, damit Sie sehen können, wo `encryptionKey` in einer Objektdefinition zu finden ist.
 
 ### <a name="index-encryption"></a>Indexverschlüsselung
 
@@ -224,7 +241,7 @@ Die Angaben zum Erstellen eines neuen Index über die REST-API finden Sie unter 
   {"name": "ParkingIncluded", "type": "Edm.Boolean", "filterable": true, "sortable": true, "facetable": true},
   {"name": "LastRenovationDate", "type": "Edm.DateTimeOffset", "filterable": true, "sortable": true, "facetable": true},
   {"name": "Rating", "type": "Edm.Double", "filterable": true, "sortable": true, "facetable": true},
-  {"name": "Location", "type": "Edm.GeographyPoint", "filterable": true, "sortable": true},
+  {"name": "Location", "type": "Edm.GeographyPoint", "filterable": true, "sortable": true}
  ],
   "encryptionKey": {
     "keyVaultUri": "https://demokeyvault.vault.azure.net",
@@ -264,9 +281,9 @@ Erstellen Sie eine verschlüsselte Synonymzuordnung mit der [Azure Cognitive Sea
 
 Dann können Sie die Anforderung zum Erstellen der Synonymzuordnung senden und anschließend die Synonymzuordnung normal verwenden.
 
-## <a name="example-data-source-encryption"></a>Beispiel: Datenquellenverschlüsselung
+### <a name="data-source-encryption"></a>Datenquellenverschlüsselung
 
-Erstellen Sie eine verschlüsselte Datenquelle mit der [Azure Cognitive Search-REST-API „Datenquelle erstellen“](/rest/api/searchservice/create-data-source). Verwenden Sie die `encryptionKey`-Eigenschaft, um den zu verwendenden Verschlüsselungsschlüssel anzugeben.
+Erstellen Sie eine verschlüsselte Datenquelle mit der [Azure Cognitive Search-REST-API zum Erstellen einer Datenquelle](/rest/api/searchservice/create-data-source). Verwenden Sie die `encryptionKey`-Eigenschaft, um den zu verwendenden Verschlüsselungsschlüssel anzugeben.
 
 ```json
 {
@@ -290,35 +307,32 @@ Erstellen Sie eine verschlüsselte Datenquelle mit der [Azure Cognitive Search-R
 
 Dann können Sie die Anforderung zum Erstellen der Datenquelle senden und anschließend die Datenquelle normal verwenden.
 
-## <a name="example-skillset-encryption"></a>Beispiel: Skillsetverschlüsselung
+### <a name="skillset-encryption"></a>Skillsetverschlüsselung
 
-Erstellen Sie ein verschlüsseltes Skillset mit der [Azure Cognitive Search-REST-API „Skillset erstellen“](/rest/api/searchservice/create-skillset). Verwenden Sie die `encryptionKey`-Eigenschaft, um den zu verwendenden Verschlüsselungsschlüssel anzugeben.
+Erstellen Sie ein verschlüsseltes Skillset mit der [Azure Cognitive Search-REST-API zum Erstellen eines Skillsets](/rest/api/searchservice/create-skillset). Verwenden Sie die `encryptionKey`-Eigenschaft, um den zu verwendenden Verschlüsselungsschlüssel anzugeben.
 
 ```json
 {
-  "name" : "datasource1",
-  "type" : "azureblob",
-  "credentials" :
-  { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=datasource;AccountKey=accountkey;EndpointSuffix=core.windows.net"
-  },
-  "container" : { "name" : "containername" },
-  "encryptionKey": {
-    "keyVaultUri": "https://demokeyvault.vault.azure.net",
-    "keyVaultKeyName": "myEncryptionKey",
-    "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
-    "accessCredentials": {
-      "applicationId": "00000000-0000-0000-0000-000000000000",
-      "applicationSecret": "myApplicationSecret"
+    "name": "skillset1",
+    "skills":  [ omitted for brevity ],
+    "cognitiveServices": { omitted for brevity },
+      "knowledgeStore":  { omitted for brevity  },
+    "encryptionKey": (optional) { 
+        "keyVaultKeyName": "myEncryptionKey",
+        "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
+        "keyVaultUri": "https://demokeyvault.vault.azure.net",
+        "accessCredentials": {
+            "applicationId": "00000000-0000-0000-0000-000000000000",
+            "applicationSecret": "myApplicationSecret"}
     }
-  }
 }
 ```
 
 Dann können Sie die Anforderung zum Erstellen des Skillsets senden und anschließend das Skillset normal verwenden.
 
-## <a name="example-indexer-encryption"></a>Beispiel: Indexerverschlüsselung
+### <a name="indexer-encryption"></a>Indexerverschlüsselung
 
-Erstellen Sie einen verschlüsselten Indexer mit der [Azure Cognitive Search-REST-API „Indexer erstellen“](/rest/api/searchservice/create-indexer). Verwenden Sie die `encryptionKey`-Eigenschaft, um den zu verwendenden Verschlüsselungsschlüssel anzugeben.
+Erstellen Sie einen verschlüsselten Indexer mit der [Azure Cognitive Search-REST-API zum Erstellen eines Indexers](/rest/api/searchservice/create-indexer). Verwenden Sie die `encryptionKey`-Eigenschaft, um den zu verwendenden Verschlüsselungsschlüssel anzugeben.
 
 ```json
 {
@@ -349,9 +363,11 @@ Dann können Sie die Anforderung zum Erstellen des Indexers senden und anschlie�
 
 ## <a name="simpler-alternative-trusted-service"></a>Einfachere Alternative: Vertrauenswürdiger Dienst
 
-Abhängig von der Mandantenkonfiguration und den Authentifizierungsanforderungen können Sie möglicherweise einen einfacheren Ansatz für den Zugriff auf einen Key Vault-Schlüssel implementieren. Anstatt eine Active Directory-Anwendung zu erstellen und zu verwenden, können Sie einen Suchdienst zu einem vertrauenswürdigen Dienst machen, indem Sie eine vom System verwaltete Identität dafür aktivieren. Danach verwenden Sie anstelle einer bei AD registrierten Anwendung den vertrauenswürdigen Suchdienst als Sicherheitsprinzipal für den Zugriff auf den Key Vault-Schlüssel.
+Abhängig von der Mandantenkonfiguration und den Authentifizierungsanforderungen können Sie möglicherweise einen einfacheren Ansatz für den Zugriff auf einen Key Vault-Schlüssel implementieren. Anstatt eine Active Directory-Anwendung zu erstellen und zu verwenden, können Sie entweder einen Suchdienst zu einem vertrauenswürdigen Dienst machen, indem Sie eine vom System verwaltete Identität dafür aktivieren, oder Ihrem Suchdienst eine benutzerseitig zugewiesene verwaltete Identität zuweisen. Danach verwenden Sie entweder den vertrauenswürdigen Suchdienst oder die benutzerseitig zugewiesene verwaltete Identität anstelle einer bei AD registrierten Anwendung als Sicherheitsprinzipal für den Zugriff auf den Key Vault-Schlüssel.
 
-Mit diesem Ansatz können Sie die Schritte für die Anwendungsregistrierung und Anwendungsgeheimnisse weglassen. Außerdem wird die Verschlüsselungsschlüsseldefinition vereinfacht, die nur für die Key Vault-Komponenten gilt (URI, Tresorname, Schlüsselversion).
+Mit beiden Ansätzen können Sie die Schritte zur Anwendungsregistrierung und Anwendungsgeheimnisse weglassen und die Definition des Verschlüsselungsschlüssels vereinfachen.
+
+### <a name="system-assigned-managed-identity"></a>Systemseitig zugewiesene verwaltete Identität
 
 Im Allgemeinen kann der Suchdienst über eine verwaltete Identität bei Azure Key Vault authentifiziert werden, ohne dass Anmeldeinformationen (ApplicationID oder ApplicationSecret) im Code gespeichert werden. Der Lebenszyklus dieses Typs einer verwalteten Identität ist an den Lebenszyklus des Suchdiensts gebunden, der nur eine verwaltete Identität enthalten kann. Weitere Informationen zur Funktion verwalteter Identitäten finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md).
 
@@ -377,6 +393,74 @@ Folgende Bedingungen verhindern, dass Sie diesen vereinfachten Ansatz anwenden:
 + Sie können für Ihren Suchdienst nicht direkt Zugriffsberechtigungen für die Key Vault-Instanz erteilen (z. B. wenn der Suchdienst sich in einem anderen Active Directory-Mandanten befindet als die Azure Key Vault-Instanz).
 
 + Ein einzelner Suchdienst ist erforderlich, um mehrere verschlüsselte Indizes oder Synonymzuordnungen zu hosten, die jeweils einen anderen Schlüssel aus einem anderen Schlüsselspeicher verwenden, wobei jeder Schlüsselspeicher **eine andere Identität** zur Authentifizierung verwenden muss. Da ein Suchdienst nur über eine verwaltete Identität verfügen kann, ist der vereinfachte Ansatz für Ihr Szenario aufgrund der Anforderungen für mehrere Identitäten nicht geeignet.  
+
+### <a name="user-assigned-managed-identity-preview"></a>Benutzerseitig zugewiesene verwaltete Identität (Vorschau)
+
+> [!IMPORTANT] 
+> Die Unterstützung von benutzerseitig zugewiesenen verwalteten Identitäten befindet sich unter [zusätzlichen Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) in der öffentlichen Vorschau.
+> 
+> Dieses Feature steht in der REST-API-Version 2021-04-30-Preview und [Verwaltungs-REST-API 2021-04-01-Preview](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update) zur Verfügung.
+
+Das Zuweisen einer benutzerseitig zugewiesenen verwalteten Identität zu Ihrem Suchdienst ermöglicht dem Suchdienst, sich bei Azure Key Vault zu authentifizieren, ohne dass Anmeldeinformationen (ApplicationID oder ApplicationSecret) im Code gespeichert werden. Der Lebenszyklus dieses Typs einer verwalteten Identität ist vom Lebenszyklus Ihres Suchdiensts unabhängig. Weitere Informationen zur Funktion verwalteter Identitäten finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md).
+
+1. Wenn Sie noch keine benutzerseitig zugewiesene verwaltete Identität erstellt haben, müssen Sie sie erstellen. Führen Sie die folgenden Schritte aus, um eine benutzerseitig zugewiesene verwaltete Identität zu erstellen:
+
+    1. Melden Sie sich im [Azure-Portal](https://portal.azure.com/) an.
+    1. Wählen Sie **+ Neue Ressource erstellen** aus.
+    1. Suchen Sie in der Suchleiste „Dienste und Marketplace durchsuchen“ nach „Vom Benutzer zugewiesene verwaltete Identität“, und wählen Sie dann **Erstellen** aus.
+    1. Geben Sie einen beschreibenden Namen für die Identität ein.
+
+1. Weisen Sie dann dem Suchdienst eine benutzerseitig zugewiesene verwaltete Identität zu. Dies kann mithilfe der Verwaltungs-API [2021-04-01-preview](/rest/api/searchmanagement/management-api-versions) erfolgen.
+
+    Die Identitätseigenschaft verwendet einen Typ und mindestens eine vollqualifizierte vom Benutzer zugewiesene Identität:
+    
+    * **type** ist der für die Ressource verwendete Identitätstyp. Der Typ „SystemAssigned, UserAssigned“ umfasst sowohl eine vom System erstellte Identität als auch einen Satz benutzerseitig zugewiesener Identitäten. Der Typ „None“ entfernt alle Identitäten aus dem Dienst.
+    * **userAssignedIdentities** enthält die Details der benutzerseitig zugewiesenen verwalteten Identität.
+        * Format der benutzerseitig zugewiesenen verwalteten Identität: 
+            * „/subscriptions/**Abonnement-ID**/resourcegroups/**Name der Ressourcengruppe**/providers/Microsoft.ManagedIdentity/userAssignedIdentities/**Name der verwalteten Identität**“
+    
+    Beispiel für das Zuweisen einer benutzerseitig zugewiesenen verwalteten Identität zu einem Suchdienst:
+    
+    ```http
+    PUT https://management.azure.com/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Search/searchServices/[search service name]?api-version=2021-04-01-preview
+    Content-Type: application/json
+
+    {
+      "location": "[region]",
+      "sku": {
+        "name": "[sku]"
+      },
+      "properties": {
+        "replicaCount": [replica count],
+        "partitionCount": [partition count],
+        "hostingMode": "default"
+      },
+      "identity": {
+        "type": "UserAssigned",
+        "userAssignedIdentities": {
+          "/subscriptions/[subscription ID]/resourcegroups/[resource group name]/providers/Microsoft.ManagedIdentity/userAssignedIdentities/[managed identity name]": {}
+        }
+      }
+    } 
+    ```
+
+1. Wenn Sie eine Zugriffsrichtlinie in Azure Key Vault einrichten, wählen Sie die benutzerseitig zugewiesene verwaltete Identität als Prinzipal aus (anstelle der bei AD registrierten Anwendung). Weisen Sie wie im Schritt zum Gewähren von Zugriffsschlüsselberechtigungen die gleichen Berechtigungen zu (mehrere GETs, WRAP, UNWRAP).
+
+1. Verwenden Sie eine vereinfachte Konstruktion von `encryptionKey`, die die Active Directory-Eigenschaften auslässt, und fügen Sie eine Identitätseigenschaft hinzu. Verwenden Sie unbedingt die REST-API-Version 2021-04-30-preview.
+
+    ```json
+    {
+      "encryptionKey": {
+        "keyVaultUri": "https://[key vault name].vault.azure.net",
+        "keyVaultKeyName": "[key vault key name]",
+        "keyVaultKeyVersion": "[key vault key version]",
+        "identity" : { 
+            "@odata.type": "#Microsoft.Azure.Search.DataUserAssignedIdentity",
+            "userAssignedIdentity" : "/subscriptions/[subscription ID]/resourceGroups/[resource group name]/providers/Microsoft.ManagedIdentity/userAssignedIdentities/[managed identity name]"
+        }
+      }
+    }
+    ```
 
 ## <a name="work-with-encrypted-content"></a>Arbeiten mit verschlüsselten Inhalten
 

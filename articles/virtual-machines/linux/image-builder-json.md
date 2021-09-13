@@ -3,19 +3,18 @@ title: Erstellen einer Azure Image Builder-Vorlage
 description: Erfahren Sie, wie Sie eine Vorlage für die Verwendung mit Azure Image Builder erstellen.
 author: kof-f
 ms.author: kofiforson
+ms.reviewer: cynthn
 ms.date: 05/24/2021
 ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.collection: linux
-ms.reviewer: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 07dfd9eb2dab9ae8c7e7a024bbf09c641e0910e4
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 0c8869bbe2751ee945ab05c5daf8bcf07cc4c3f4
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967242"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444810"
 ---
 # <a name="create-an-azure-image-builder-template"></a>Erstellen einer Azure Image Builder-Vorlage 
 
@@ -98,18 +97,8 @@ Standardmäßig verwendet Image Builder eine „Standard_D1_v2“-Build-VM. Dies
 2. Wenn Sie Windows-Builds ausführen, sollten Sie „Standard_D2_v2“ oder eine gleichmäßige VM-Größe verwenden.
 3. Forderung nach [VM-Isolation](../isolation.md).
 4. Passen Sie ein Image an, das bestimmte Hardware erfordert, z. B. für eine GPU-VM benötigen Sie eine GPU-VM-Größe. 
-5. Fordern Sie End-to-end-Verschlüsselung im Ruhespeicher des virtuellen Buildcomputers an. Sie müssen die [Größe des virtuellen Buildcomputers](../azure-vms-no-temp-disk.md) angeben, für den keine lokalen temporären Datenträger verwendet werden.
+5. Fordern Sie End-to-end-Verschlüsselung im Ruhespeicher des virtuellen Buildcomputers an. Sie müssen die [Größe des virtuellen Buildcomputers](../azure-vms-no-temp-disk.yml) angeben, für den keine lokalen temporären Datenträger verwendet werden.
  
-Diese Eingabe ist optional.
-
-
-## <a name="proxy-vm-size"></a>Proxy-VM-Größe
-Die Proxy-VM wird zum Senden von Befehlen zwischen dem Azure Image Builder-Dienst und der Build-VM verwendet. Diese wird nur bereitgestellt, wenn ein vorhandenes VNET angegeben wird. Weitere Informationen finden Sie in der [Dokumentation](image-builder-networking.md#why-deploy-a-proxy-vm) zu Netzwerkoptionen.
-```json
- {
-    "proxyVmSize": "Standard A1_v2"
- },
-```
 Diese Eingabe ist optional.
 
 ## <a name="osdisksizegb"></a>osDiskSizeGB
@@ -181,7 +170,7 @@ Die API erfordert eine SourceType-Eigenschaft, die die Quelle für die Imageerst
 > Wenn Sie vorhandene benutzerdefinierte Windows-Images verwenden, können Sie den Sysprep-Befehl bis zu dreimal für ein einzelnes Windows 7- oder Windows Server 2008 R2-Image oder 1001-mal für ein einzelnes Windows-Image für spätere Versionen ausführen. Weitere Informationen finden Sie in der [sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)-Dokumentation.
 
 ### <a name="platformimage-source"></a>PlatformImage-Quelle 
-Azure Image Builder unterstützt Windows Server- und -Client- sowie Azure Marketplace Linux-Images. Die vollständige Liste finden Sie [hier](../image-builder-overview.md#os-support). 
+Azure Image Builder unterstützt Windows Server- und -Client- sowie Azure Marketplace Linux-Images. Die vollständige Liste finden Sie unter [Weitere Informationen zu Azure Image Builder](../image-builder-overview.md#os-support). 
 
 ```json
         "source": {
@@ -264,6 +253,8 @@ Wenn Sie keinen buildTimeoutInMinutes-Wert angeben oder diesen Wert auf „0“ 
 
 Wenn Sie mehr Zeit zum Abschließen der Anpassung benötigen, legen Sie die Einstellung auf die geschätzte benötigte Zeit plus einen kleinen Puffer fest. Wählen Sie aber keinen zu hohen Wert, da ein Fehler erst bei einem Timeout angezeigt wird. 
 
+> [!NOTE]
+> Wenn Sie den Wert nicht auf 0 festlegen, beträgt der unterstützte Mindestwert sechs Minuten. Die Verwendung der Werte 1 bis 5 führt zu einem Fehler.
 
 ## <a name="properties-customize"></a>Eigenschaften: customize
 
@@ -725,3 +716,4 @@ az resource invoke-action \
 ## <a name="next-steps"></a>Nächste Schritte
 
 JSON-Beispieldateien für verschiedene Szenarios finden Sie im [GitHub-Repository für Azure Image Builder](https://github.com/azure/azvmimagebuilder).
+

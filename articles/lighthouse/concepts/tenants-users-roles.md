@@ -1,14 +1,14 @@
 ---
 title: Mandanten, Benutzer und Rollen in Azure Lighthouse-Szenarien
 description: Informationen zur Verwendung von Azure Active Directory-Mandanten, -Benutzern und -Rollen in Azure Lighthouse-Szenarien.
-ms.date: 05/11/2021
+ms.date: 06/23/2021
 ms.topic: conceptual
-ms.openlocfilehash: bcb3c250d0973174e7356bd489b84938238af6e7
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: cdf8c10d52e0add4513d42a99d2054e1af0ed796
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112074825"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112542254"
 ---
 # <a name="tenants-users-and-roles-in-azure-lighthouse-scenarios"></a>Mandanten, Benutzer und Rollen in Azure Lighthouse-Szenarien
 
@@ -47,6 +47,12 @@ Für die Azure Lighthouse werden aktuell alle [integrierten Rollen](../../role-b
 
 > [!NOTE]
 > Nachdem Azure eine passende neue integrierte Rolle hinzugefügt wurde, kann sie beim [Onboarding eines Kunden mithilfe von Azure Resource Manager-Vorlagen](../how-to/onboard-customer.md) zugewiesen werden. Es kann zu einer Verzögerung kommen, bevor die neu hinzugefügte Rolle beim [Veröffentlichen eines verwalteten Dienstangebots](../how-to/publish-managed-services-offers.md) im Partner Center verfügbar wird.
+
+## <a name="transferring-delegated-subscriptions-between-azure-ad-tenants"></a>Übertragen von delegierten Abonnements zwischen Azure AD-Mandanten
+
+Wenn ein Abonnement [zu einem anderen Azure AD-Mandantenkonto übertragen](../../cost-management-billing/manage/billing-subscription-transfer.md#transfer-a-subscription-to-another-azure-ad-tenant-account) wird, bleiben die beim [Azure Lighthouse Onboardingprozess](architecture.md#delegation-resources-created-in-the-customer-tenant) erstellte [Registrierungsdefinition und die Registrierungszuordnungsressourcen](../how-to/onboard-customer.md) erhalten. Das bedeutet, dass der durch Azure Lighthouse gewährte Zugang zur Mandantenverwaltung für dieses Abonnement (oder für delegierte Ressourcengruppen innerhalb dieses Abonnements) gültig bleibt.
+
+Die einzige Ausnahme ist, wenn das Abonnement an einen Azure AD-Mandanten übertragen wird, dem es bereits delegiert wurde. In diesem Fall werden die Delegationsressourcen für diesen Mandanten entfernt und der durch Azure Lighthouse gewährte Zugang gilt nicht mehr, da das Abonnement jetzt direkt zu diesem Mandanten gehört (und ihm nicht mehr durch Azure Lighthouse delegiert wird). Wenn dieses Abonnement jedoch auch anderen verwaltenden Mandanten delegiert wurde, behalten diese anderen verwaltenden Mandanten denselben Zugang zum Abonnement.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

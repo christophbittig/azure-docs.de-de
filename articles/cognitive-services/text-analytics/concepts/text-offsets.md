@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/18/2021
 ms.author: aahi
 ms.reviewer: jdesousa
-ms.openlocfilehash: 348805670187f2362eb17dae40aa94e70f1daa24
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 89091f8914acea62370290e25a2f98f5bcb220a7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110084680"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347075"
 ---
 # <a name="text-offsets-in-the-text-analytics-api-output"></a>Textversätze in der Ausgabe der Textanalyse-API
 
@@ -40,7 +40,7 @@ Verwenden Sie in .NET ggf. die [StringInfo](/dotnet/api/system.globalization.str
 
 Die Textanalyse-API gibt diese Textelemente aus Gründen der Einfachheit ebenfalls zurück.
 
-## <a name="offsets-in-api-version-31-preview"></a>Offsets in API-Version 3.1-preview
+## <a name="offsets-in-api-version-31"></a>Versätze in der API-Version 3.1
 
 In Version 3.1 der API unterstützen alle Textanalyse-API-Endpunkte, die einen Offset zurückgeben, den `stringIndexType`-Parameter. Mit diesem Parameter werden die `offset`- und `length`-Attribute in der API-Ausgabe an das angeforderte Zeichenfolgeniterationsschema angepasst. Derzeit werden drei Typen unterstützt:
 

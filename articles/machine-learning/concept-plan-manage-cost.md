@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/08/2021
-ms.openlocfilehash: 01c985b0554fe5955010c1c8c286f81f8de6d3ee
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: e48cdb3792a314166a29ced4d3828ba77de46621
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112006003"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346867"
 ---
 # <a name="plan-to-manage-costs-for-azure-machine-learning"></a>Planen der Kostenverwaltung für Azure Machine Learning
 
@@ -51,10 +51,6 @@ Weitere Informationen finden Sie unter [Azure Machine Learning – Preise](https
 Azure Machine Learning wird in einer Azure-Infrastruktur ausgeführt, in der beim Bereitstellen der neuen Ressource Kosten für Azure Machine Learning anfallen. Es ist wichtig zu verstehen, dass die zusätzliche Infrastruktur Kosten verursachen kann. Sie müssen diese Kosten verwalten, wenn Sie Änderungen an bereitgestellten Ressourcen vornehmen. 
 
 
-
-
-
-
 ### <a name="costs-that-typically-accrue-with-azure-machine-learning"></a>Häufig anfallende Kosten für Azure Machine Learning
 
 Wenn Sie Ressourcen für einen Azure Machine Learning-Arbeitsbereich erstellen, werden auch Ressourcen für andere Azure-Dienste erstellt. Sie lauten wie folgt:
@@ -62,8 +58,21 @@ Wenn Sie Ressourcen für einen Azure Machine Learning-Arbeitsbereich erstellen, 
 * Konto vom Typ „Basic“ für [Azure Container Registry](https://azure.microsoft.com/pricing/details/container-registry?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
 * [Azure-Blockblobspeicher](https://azure.microsoft.com/pricing/details/storage/blobs?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) (Universell V1)
 * [Schlüsseltresor](https://azure.microsoft.com/pricing/details/key-vault?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
-* [Application Insights](https://azure.microsoft.com/en-us/pricing/details/monitor?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+* [Application Insights](https://azure.microsoft.com/pricing/details/monitor?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+
+Wenn Sie eine [Compute-Instanz](concept-compute-instance.md) erstellen, bleibt die VM eingeschaltet, damit sie für Ihre Arbeit verfügbar ist.  [Richten Sie einen Zeitplan ein](how-to-create-manage-compute-instance.md#schedule), um die Compute-Instanz automatisch zu starten und zu beenden (Vorschau), wenn Sie nicht planen, sie zu verwenden, und damit Kosten zu sparen.
  
+### <a name="costs-might-accrue-before-resource-deletion"></a>Vor dem Löschen von Ressourcen möglicherweise anfallende Kosten
+
+Bevor Sie einen Azure Machine Learning-Arbeitsbereich im Azure-Portal oder mit der Azure CLI löschen, sollten Sie wissen, dass die folgenden Unterressourcen allgemeine Kosten darstellen, die auch dann anfallen, wenn Sie nicht aktiv im Arbeitsbereich arbeiten. Wenn Sie planen, zu einem späteren Zeitpunkt zu Ihrem Azure Machine Learning-Arbeitsbereich zurückzukehren, können für diese Ressourcen weiterhin Kosten anfallen.
+
+* VMs
+* Load Balancer
+* Virtual Network
+* Bandbreite
+
+Jede VM wird pro Stunde abgerechnet, die sie ausgeführt wird. Die Kosten hängen von den VM-Spezifikationen ab. VMs, die ausgeführt werden, aber nicht aktiv an einem Dataset arbeiten, werden weiterhin über den Lastenausgleich in Rechnung gestellt. Für jede Compute-Instanz wird pro Tag ein Lastenausgleich abgerechnet. Für alle 50 Knoten eines Computeclusters wird ein Standardlastenausgleich abgerechnet. Jeder Lastenausgleich wird mit ca. 0,33 USD pro Tag berechnet. Löschen Sie die Computeressource, um Kosten für den Lastenausgleich bei beendeten Compute-Instanzen und Computeclustern zu vermeiden. Pro Abonnement und Region wird ein virtuelles Netzwerk abgerechnet. Virtuelle Netzwerke können sich nicht über Regionen oder Abonnements erstrecken. Beim Einrichten privater Endpunkte in Setups von virtuellen Netzwerken können auch Kosten anfallen. Die Bandbreite wird nach Nutzung berechnet. Je mehr Daten übertragen werden, desto höher die Kosten.
+
 ### <a name="costs-might-accrue-after-resource-deletion"></a>Nach dem Löschen von Ressourcen möglicherweise anfallende Kosten
 
 Nachdem Sie im Azure-Portal oder mit der Azure CLI einen Azure Machine Learning-Arbeitsbereich gelöscht haben, sind die folgenden Ressourcen weiterhin vorhanden. Hierfür fallen weiter Kosten an, bis Sie sie löschen.
@@ -153,11 +162,13 @@ Verwenden Sie die folgenden Tipps, um Ihre Kosten für Computeressourcen zu verw
 - Legen Sie Kontingente für Ihr Abonnement und Ihre Arbeitsbereiche fest
 - Legen Sie Terminierungsrichtlinien für Ihre Trainingsläufe fest
 - Verwenden Sie virtuelle Computer (VMs) mit niedriger Priorität
+- Planen Sie das automatische Herunterfahren und Starten von Compute-Instanzen.
 - Verwenden Sie eine reservierte Azure-VM-Instanz
 - Trainieren Sie lokal
 - Parallelisieren Sie das Training
 - Legen Sie Richtlinien für die Aufbewahrung und das Löschen von Daten fest
 - Stellen Sie Ressourcen in derselben Region bereit
+- Löschen Sie Instanzen und Cluster, wenn Sie nicht planen, sie in naher Zukunft zu verwenden.
 
 Weitere Informationen finden Sie unter [Verwalten und Optimieren von Kosten in Azure Machine Learning](how-to-manage-optimize-cost.md).
 

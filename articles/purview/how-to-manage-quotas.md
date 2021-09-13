@@ -8,12 +8,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 57cb1c405e00acb346421d64190a71e9211d21ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 422c096533e8b470446a29b6d45f9127d963f913
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96938833"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396530"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-purview"></a>Verwalten und Erhöhen der Kontingente für Ressourcen mit Azure Purview
  
@@ -27,8 +27,10 @@ Azure Purview ist ein Clouddienst, der von Datenbenutzern verwendet werden kann.
 |Zum Scannen verfügbare virtuelle Kerne pro Konto*|160|160|
 |Gleichzeitige Scans pro Konto an einem bestimmten Punkt. Der Grenzwert basiert auf dem Typ der überprüften Datenquellen*|5 | 10 |
 |Maximale Zeit, für die eine Überprüfung ausgeführt werden kann|7 Tage|7 Tage|
-|API-Aufrufe pro Konto|10 Mio. APIs/Monat für eine Plattformgröße von 4 Kapazitätseinheiten. <br>40 Mio. APIs/Monat für eine Plattformgröße von 16 Kapazitätseinheiten. |10 Mio. APIs/Monat für eine Plattformgröße von 4 Kapazitätseinheiten. <br>40 Mio. APIs/Monat für eine Plattformgröße von 16 Kapazitätseinheiten.|
-|Speicher pro Konto|10 GB für eine Plattformgröße von 4 Kapazitätseinheiten. <br>40 GB für eine Plattformgröße von 16 Kapazitätseinheiten. |10 GB für eine Plattformgröße von 4 Kapazitätseinheiten. <br> 40 GB für eine Plattformgröße von 16 Kapazitätseinheiten. |
+|[Data Map-Kapazitätseinheit](concept-elastic-data-map.md) (Capacity Unit, CU) |1 CU (25 Vorgänge/Sekunde Durchsatz und 2 GB Metadatenspeicher) | 100 CUs (wenden Sie sich an den Support, wenn Sie eine höhere CU-Anzahl benötigen)|
+|Durchsatz für Data Map-Vorgänge |25 Vorgänge/Sekunde für jede Kapazitätseinheit | 2\.500 Vorgänge/Sekunde für 100 CUs (wenden Sie sich an den Support, wenn Sie mehr Durchsatz benötigen)| 
+|Data Map-Speicher |2 GB für jede Kapazitätseinheit | 200 GB für 100 CUs (wenden Sie sich an den Support, wenn Sie mehr Speicher benötigen) |
+|Data Map-Elastizitätsfenster | 1–8 CUs (Data Map kann basierend auf dem Durchsatz innerhalb des Elastizitätsfensters-hoch- und herunterskaliert werden) | Wenden Sie sich an den Support, um ein größeres Elastizitätsfenster zu erhalten. |
 |Ressourcenumfang pro Konto|100 Mio. physische Ressourcen |Kontaktieren des Supports|
 |Maximale Größe einer Ressource in einem Katalog|2 MB|2 MB|
 |Maximale Länge eines Ressourcennamens und Klassifizierungsnamens|4 KB|4 KB|
@@ -40,6 +42,9 @@ Azure Purview ist ein Clouddienst, der von Datenbenutzern verwendet werden kann.
  
 ## <a name="next-steps"></a>Nächste Schritte
  
+> [!div class="nextstepaction"]
+>[Konzept: elastische Data Map in Azure Purview](concept-elastic-data-map.md)
+
 > [!div class="nextstepaction"]
 >[Tutorial: Überprüfen von Daten mit Azure Purview](tutorial-scan-data.md)
 

@@ -10,16 +10,18 @@ ms.date: 11/12/2020
 ms.author: cynthn
 ms.reviewer: zivr
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d6b6ad9f6b74af06f693dd90bca8949061e90f21
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 3f2511874324a6fafff1170f8764c57a466a7e62
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114437381"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693425"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Bereitstellen von VMs auf dedizierten Hosts über Azure PowerShell
 
-Dieser Artikel führt Sie durch die Erstellung eines [dedizierten Azure-Hosts](../dedicated-hosts.md) zum Hosten Ihrer virtuellen Computer (VMs).
+**Gilt für**: :heavy_check_mark: Windows VMs 
+
+Dieser Artikel führt Sie durch die Erstellung eines [dedizierten Azure-Hosts](../dedicated-hosts.md) zum Hosten Ihrer virtuellen Computer (VMs). 
 
 Vergewissern Sie sich, dass die Azure PowerShell-Version 2.8.0 oder höher installiert ist und Sie mithilfe von `Connect-AzAccount` bei einem Azure-Konto angemeldet wurden.
 

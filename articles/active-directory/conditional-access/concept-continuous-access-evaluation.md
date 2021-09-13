@@ -10,13 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
+ms.custom: has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c615c3b57d0c4ebfdbffdc1461f2289d4b8c4256
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 7889bca19bc24b8f0c0f83b9c7e3b8bf310cf3d1
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111438268"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418957"
 ---
 # <a name="continuous-access-evaluation"></a>Fortlaufende Zugriffsevaluierung
 
@@ -50,14 +51,14 @@ Die fortlaufende Zugriffsevaluierung wird implementiert, indem für Dienste wie 
 - Administrator sperrt explizit alle Aktualisierungstoken für einen Benutzer.
 - Azure AD Identity Protection hat ein hohes Benutzerrisiko erkannt.
 
-Dies ermöglicht ein Szenario, bei dem Benutzer innerhalb von wenigen Minuten nach einem dieser kritischen Ereignisse den Zugriff auf SharePoint Online-Dateien, E-Mails, Kalender oder Aufgaben der Organisation und Teams aus Microsoft 365-Client-Apps verlieren. 
+Durch diesen Prozess wird ein Szenario ermöglicht, bei dem Benutzer innerhalb von wenigen Minuten nach einem dieser kritischen Ereignisse den Zugriff auf SharePoint Online-Dateien, E-Mails, Kalender, Aufgaben und Teams über Microsoft 365-Client-Apps verlieren. 
 
 > [!NOTE] 
 > Benutzerrisikoereignisse werden von Teams und SharePoint Online noch nicht unterstützt.
 
 ### <a name="conditional-access-policy-evaluation-preview"></a>Auswertung von Richtlinien für bedingten Zugriff (Vorschau)
 
-In Exchange und SharePoint können wichtige Richtlinien für bedingten Zugriff synchronisiert werden, sodass sie im Dienst selbst ausgewertet werden können.
+In Exchange Online, SharePoint Online, Teams und Microsoft Graph können wichtige Richtlinien für bedingten Zugriff synchronisiert werden, sodass sie im Dienst selbst ausgewertet werden können.
 
 Dies ermöglicht ein Szenario, bei dem Benutzer unmittelbar nach Änderungen der Netzwerkadresse den Zugriff auf Dateien, E-Mails, Kalender oder Aufgaben der Organisation aus Microsoft 365-Client-Apps oder SharePoint Online verlieren.
 
@@ -77,6 +78,12 @@ Dies ermöglicht ein Szenario, bei dem Benutzer unmittelbar nach Änderungen der
 | | OneDrive Web | OneDrive Win32 | OneDrive iOS | OneDrive Android | OneDrive Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
 | **SharePoint Online** | Unterstützt | Unterstützt | Unterstützt | Unterstützt | Unterstützt |
+
+| | Teams (Webversion) | Teams (Win32) | Teams iOS | Teams Android | Teams Mac |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Teams-Dienst** | Unterstützt | Unterstützt | Unterstützt | Unterstützt | Unterstützt |
+| **SharePoint Online** | Unterstützt | Unterstützt | Unterstützt | Unterstützt | Unterstützt |
+| **Exchange Online** | Unterstützt | Unterstützt | Unterstützt | Unterstützt | Unterstützt |
 
 ### <a name="client-side-claim-challenge"></a>Clientseitige Anspruchsaufforderung
 

@@ -21,7 +21,7 @@ items:
               - name: Azure-Portal
                 href: storage-quickstart-blobs-portal.md
               - name: Storage-Explorer
-                href: storage-quickstart-blobs-storage-explorer.md
+                href: quickstart-storage-explorer.md
               - name: PowerShell
                 href: storage-quickstart-blobs-powershell.md
               - name: Befehlszeilenschnittstelle (CLI)
@@ -366,7 +366,7 @@ items:
                     items:
                       - name: PowerShell
                         href: storage-blob-user-delegation-sas-create-powershell.md
-                      - name: Azure CLI
+                      - name: Azure-Befehlszeilenschnittstelle
                         href: storage-blob-user-delegation-sas-create-cli.md
                       - name: .NET
                         href: storage-blob-user-delegation-sas-create-dotnet.md

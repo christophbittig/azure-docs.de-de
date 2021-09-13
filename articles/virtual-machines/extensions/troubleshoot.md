@@ -9,12 +9,12 @@ ms.author: amjads
 ms.collection: windows
 ms.date: 03/29/2016
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d8aad654fce1b62bdc51e6cd15f5836742b772f2
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 49e0edf880efbf07e541d935e9b111b037a1f08d
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110669562"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114292794"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Problembehandlung bei Fehlern im Zusammenhang mit Azure Windows-VM-Erweiterungen
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -59,6 +59,30 @@ Extensions:  {
 
 ## <a name="troubleshooting-extension-failures"></a>Problembehandlung bei Erweiterungsfehlern
 
+### <a name="verify-that-the-vm-agent-is-running-and-ready"></a>Überprüfen Sie, ob der VM-Agent ausgeführt wird und bereit ist.
+Der VM-Agent ist zum Verwalten, Installieren und Ausführen von Erweiterungen erforderlich. Wenn der VM-Agent nicht ausgeführt wird oder nicht den Status Bereit an die Azure-Plattform melden kann, funktionieren die Erweiterungen nicht ordnungsgemäß.
+
+Informationen zur Problembehandlung für den VM-Agent finden Sie auf den folgenden Seiten:
+- [Problembehandlung beim Microsoft Azure-Gast-Agent](/troubleshoot/azure/virtual-machines/windows-azure-guest-agent) für eine Windows-VM
+- [Behandeln von Problemen mit dem Azure Linux-Agent](/troubleshoot/azure/virtual-machines/linux-azure-guest-agent) für eine Linux-VM
+
+### <a name="check-for-your-specific-extension-troubleshooting-guide"></a>Suchen Sie nach ihrem spezifischen Leitfaden zur Problembehandlung für Erweiterungen.
+Einige Erweiterungen verfügen über eine bestimmte Seite, auf der die Problembehandlung beschrieben wird. Die Liste dieser Erweiterungen und Seiten finden Sie unter [Problembehandlung bei Erweiterungen](./overview.md#troubleshoot-extensions).
+
+### <a name="view-the-extensions-status"></a>Anzeigen des Erweiterungsstatus
+Wie oben erläutert wurde, kann der Status der Erweiterung durch Ausführen des PowerShell-Cmdlets:
+```azurepowershell
+Get-AzVM -ResourceGroupName $RGName -Name $vmName -Status
+```
+
+oder des CLI-Befehls:
+```azurecli
+az vm extension show -g <RG Name> --vm-name <VM Name>  --name <Extension Name>
+```
+
+oder im Azure-Portal ermittelt werden, indem Sie zum VM-Blatt /Einstellungen/Erweiterungen navigieren. Sie können dann auf die Erweiterung klicken und deren Status und Meldung überprüfen.
+
+
 ### <a name="rerun-the-extension-on-the-vm"></a>Erneutes Ausführen der Erweiterung auf dem virtuellen Computer
 Wenn Sie mithilfe der benutzerdefinierten Skripterweiterung Skripts auf dem virtuellen Computer ausführen, könnten ab und an Fehler auftreten, bei denen der virtuelle Computer erfolgreich erstellt wurde, das Skript jedoch fehlgeschlagen ist. Unter diesen Bedingungen empfiehlt es sich, die Erweiterung zu entfernen und die Vorlage erneut auszuführen, um den Fehler zu beheben.
 Hinweis: In Zukunft wird diese Funktionalität verbessert, damit es nicht mehr notwendig ist, die Erweiterung zu deinstallieren.
@@ -99,3 +123,44 @@ az vm reapply -g <RG Name> -n <VM Name>
 ```
 
 Wenn ein „VM Reapply“ nicht funktioniert, können Sie der VM einen neuen leeren Datenträger für Daten aus dem Azure-Verwaltungsportal hinzufügen und diesen später entfernen, nachdem das Zertifikat wieder hinzugefügt wurde.
+
+
+### <a name="look-at-the-extension-logs-inside-the-vm"></a>Ansehen der Erweiterungsprotokolle auf dem virtuellen Computer
+
+Wenn die vorherigen Schritte nicht funktioniert haben und sich Ihre Erweiterung weiterhin in einem fehlerhaften Zustand befindet, besteht der nächste Schritt darin, die zugehörigen Protokolle auf dem virtuellen Computer anzuzeigen.
+
+Auf einer **Windows**-VM befinden sich die Erweiterungsprotokolle in der Regel in 
+```
+C:\WindowsAzure\Logs\Plugins
+```
+Die Erweiterungseinstellungen und Statusdateien befinden sich in 
+```
+C:\Packages\Plugins
+```
+<br/>
+
+Auf einer **Linux**-VM befinden sich die Erweiterungsprotokolle in der Regel in 
+```
+/var/log/azure/
+```
+Die Erweiterungseinstellungen und Statusdateien befinden sich in 
+```
+/var/lib/waagent/
+```
+
+
+Jede Erweiterung ist anders, aber sie folgen in der Regel ähnlichen Prinzipien:
+
+Erweiterungspakete und Binärdateien werden auf den virtuellen Computer heruntergeladen (z. B. _„/var/lib/waagent/custom-script/download/1“_ für Linux oder _„C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.10.12\Downloads\0“_ für Windows). 
+
+Ihre Konfiguration und Einstellungen werden über den VM-Agent von der Azure-Plattform an den Erweiterungsbehandler übergeben (z. B. _„/var/lib/waagent/Microsoft.Azure.Extensions.CustomScript-2.1.3/config“_ für Linux oder _„C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.10.12\RuntimeSettings“_ für Windows)
+
+Erweiterungsbehandler innerhalb des virtuellen Computers schreiben in eine Statusdatei (z. B. _„/var/lib/waagent/Microsoft.Azure.Extensions.CustomScript-2.1.3/status/1.status“_ für Linux oder _„C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.10.12\Status“_ für Windows), die dann an die Azure-Plattform gemeldet wird. Dieser Status wird über PowerShell, die CLI oder auf dem Blatt „Erweiterung“ des virtuellen Computers im Azure-Portal gemeldet.
+
+Außerdem schreiben sie detaillierte Protokolle ihrer Ausführung (z. B. _„/var/log/azure/custom-script/handler.log“_ für Linux oder _„C:\WindowsAzure\Logs\Plugins\Microsoft.Compute.CustomScriptExtension\1.10.12\CustomScriptHandler.log“_ für Windows).
+
+
+### <a name="if-the-vm-is-recreated-from-an-existing-vm"></a>Wenn der virtuelle Computer von einem vorhandenen virtuellen Computer neu erstellt wird
+
+Es kann vorkommen, dass Sie eine Azure-VM erstellen, die auf einem spezialisierten Datenträger basiert, der von einem anderen virtuellen Azure-Computer stammt. In diesem Fall ist es möglich, dass die alte VM Erweiterungen enthält und daher Binärdateien, Protokolle und Statusdateien übrig bleiben. Das neue VM-Modell erkennt die Erweiterungsstatus des vorherigen virtuellen Computers nicht und meldet möglicherweise einen falschen Status für diese Erweiterungen. Es wird dringend empfohlen, die Erweiterungen vom alten virtuellen Computer zu entfernen, bevor Sie die neue erstellen, und diese Erweiterungen neu zu installieren, sobald die neue VM erstellt wurde.
+Dasselbe kann passieren, wenn Sie ein generalisiertes Image aus einer vorhandenen Azure-VM erstellen. Sie sollten Erweiterungen entfernen, um inkonsistente Status aus den Erweiterungen zu vermeiden.

@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: d61314dc89d341e376de7d3904568825ad3cfb04
-ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
+ms.openlocfilehash: ffea4e8edd9cc6c11644017e972db3ce3202c766
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2021
-ms.locfileid: "106293871"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355826"
 ---
 # <a name="about-azure-cloud-services-extended-support"></a>Grundlegendes zu Azure Cloud Services (erweiterter Support)
 
@@ -21,9 +21,12 @@ Clouddienste (erweiterter Support) ist ein neues Bereitstellungsmodell für [A
 
 Aufgrund dieser Änderung wird das auf Azure Service Manager basierende Bereitstellungsmodell für Cloud Services in [Cloud Services (klassisch)](../cloud-services/cloud-services-choose-me.md) umbenannt. Sie haben weiterhin die Möglichkeit, Ihre Web- und Cloudanwendungen und -dienste zu entwickeln und schnell bereitzustellen. Sie können Ihre Infrastruktur für Clouddienste bedarfsabhängig skalieren und sicherstellen, dass die Leistung Ihrer Anwendungen ausreicht, während gleichzeitig die Kosten reduziert werden.  
 
+:::image type="content" source="media/inside-azure-for-iot.png" alt-text="YouTube-Video zu Cloud Services (erweiterter Support)" link="https://youtu.be/H4K9xTUvNdw":::
+
+
 ## <a name="what-does-not-change"></a>Nicht von der Änderung betroffene Bereiche 
 - Sie erstellen den Code, definieren die Konfigurationen und führen die Bereitstellung in Azure durch. Azure richtet die Compute-Umgebung ein, führt Ihren Code aus und übernimmt dann die Überwachung und Verwaltung für Sie.
-- Bei Cloud Services (erweiterter Support) werden auch zwei Arten von Rollen unterstützt: [Web und Worker](../cloud-services/cloud-services-choose-me.md). Es wurden keine Änderungen am Entwurf, an der Architektur oder den Komponenten von Web- und Workerrollen vorgenommen. 
+- Bei Cloud Services (erweiterter Support) werden auch zwei Arten von Rollen unterstützt: [Web und Worker](../cloud-services/cloud-services-choose-me.md). Es werden keine Änderungen am Entwurf, an der Architektur oder den Komponenten von Web- und Workerrollen vorgenommen. 
 - Die drei Komponenten eines Clouddiensts, also die Dienstdefinition (.csdef), die Dienstkonfiguration (.cscfg) und das Dienstpaket (.cspkg), sind weiterhin ohne Änderung des [Formats](cloud-services-model-and-package.md) vorhanden. 
 - Es müssen keine Änderungen am Runtimecode vorgenommen werden, da die Datenebene identisch ist und nur die Steuerungsebene geändert wurde. 
 - Ausrichtung der Releases von Azure-Gastbetriebssystemen und der zugehörigen Updates auf Cloud Services (klassisch)
@@ -63,4 +66,4 @@ Je nach Anwendung ist der Aufwand für die Umstellung auf Azure Resource Manager
 ## <a name="next-steps"></a>Nächste Schritte
 - Überprüfen Sie die [Bereitstellungsvoraussetzungen](deploy-prerequisite.md) für Cloud Services (erweiterter Support).
 - Stellen Sie eine Cloud Service-Instanz (erweiterter Support) über das [Azure-Portal](deploy-portal.md), mit [PowerShell](deploy-powershell.md), einer [Vorlage](deploy-template.md) oder [Visual Studio](deploy-visual-studio.md) bereit.
-- Sehen Sie sich die [häufig gestellten Fragen](faq.md) zu Cloud Services (erweiterter Support) an.
+- Sehen Sie sich die [häufig gestellten Fragen](faq.yml) zu Cloud Services (erweiterter Support) an.

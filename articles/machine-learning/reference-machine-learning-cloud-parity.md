@@ -9,14 +9,14 @@ ms.topic: reference
 ms.reviewer: larryfr
 ms.author: andzha
 author: Anurzeuii
-ms.date: 06/10/2021
+ms.date: 08/24/2021
 ms.custom: references_regions
-ms.openlocfilehash: 0e8c63827ba6e2e022e0d7876952b0a159c1e569
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: eef2a1eb5f17864074ac346ac7a89a59d1d59778
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111984624"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123037289"
 ---
 # <a name="azure-machine-learning-feature-availability-across-clouds-regions"></a>Verfügbarkeit von Azure Machine Learning-Features über Cloudregionen hinweg
 
@@ -57,15 +57,14 @@ Die Informationen im übrigen Teil dieses Dokuments enthalten Informationen dazu
 | Jupyter, JupyterLab-Integration                                            | Allgemein verfügbar                   | YES                | YES         |
 | Unterstützung von virtuellen Netzwerken (VNETs)                                             | Öffentliche Vorschau       | YES                | YES         |
 | **SDK-Unterstützung** |  |  | | 
-| [R SDK-Unterstützung](https://azure.github.io/azureml-sdk-for-r/reference/index.html)                                                              | Öffentliche Vorschau       | YES                | YES         |
 | [Python SDK-Unterstützung](/python/api/overview/azure/ml/)                                                         | Allgemein verfügbar                   | YES                | YES         |
 | **[Security](concept-enterprise-security.md)** |   | | | 
 | VNET-Unterstützung (virtuelles Netzwerk) zu Trainingszwecken                                | Allgemein verfügbar                   | YES                | YES         |
 | VNET-Unterstützung (virtuelles Netzwerk) für Rückschlüsse                               | Allgemein verfügbar                   | YES                | YES         |
 | Bewerten der Endpunktauthentifizierung                                            | Öffentliche Vorschau       | YES                | YES         |
-| Privater Endpunkt am Arbeitsplatz                                                 | Öffentliche Vorschau       | Nein                 | Nein          |
+| Privater Endpunkt am Arbeitsplatz                                                 | Allgemein verfügbar  |  Allgemein verfügbar  |  Allgemein verfügbar |
 | ACI hinter VNET                                                            | Öffentliche Vorschau       | Nein                 | Nein          |
-| ACR hinter VNET                                                            | Öffentliche Vorschau       | Nein                 | Nein          |
+| ACR hinter VNET                                                            | Allgemein verfügbar       | YES                 | YES          |
 | Private IP-Adresse des AKS-Clusters                                                  | Öffentliche Vorschau       | Nein                 | Nein          |
 | **Compute** |   | | |
 | [Arbeitsbereichsübergreifende Kontingentverwaltung](how-to-manage-quotas.md)                                         | Allgemein verfügbar                   | YES                | YES         |
@@ -101,9 +100,8 @@ Die Informationen im übrigen Teil dieses Dokuments enthalten Informationen dazu
 | [Batchrückschluss](tutorial-pipeline-batch-scoring-classification.md)                                                          | Allgemein verfügbar                   | YES                | YES         |
 | [Data Box Edge mit FPGA](how-to-deploy-fpga-web-service.md#deploy-to-a-local-edge-server)                                                    | Öffentliche Vorschau       | Nein                 | Nein          |
 | **Andere** |   | | |
-| [Open Datasets](/azure/open-datasets/samples)                                                              | Öffentliche Vorschau       | YES                | YES         |
+| [Open Datasets](../open-datasets/samples.md)                                                              | Öffentliche Vorschau       | YES                | YES         |
 | [Benutzerdefinierte Cognitive Search-Instanz](how-to-deploy-model-cognitive-search.md)                                                    | Öffentliche Vorschau       | YES                | YES         |
-| [Solution Accelerator für zahlreiche Modelle](https://github.com/microsoft/solution-accelerator-many-models)                                                                | Öffentliche Vorschau       | Nein                 | Nein          |
 
 
 ### <a name="azure-government-scenarios"></a>Azure Government-Szenarien
@@ -111,15 +109,14 @@ Die Informationen im übrigen Teil dieses Dokuments enthalten Informationen dazu
 | Szenario                                                    | US-Virginia | US-Arizona| Einschränkungen  |
 |----------------------------------------------------------------------------|:----------------------:|:--------------------:|-------------|
 | **Allgemeines Sicherheits-Setup** |   | | |
-| Private Netzwerkkommunikation zwischen Diensten                                     | Nein | Nein | Derzeit kein Private Link | 
-| Deaktivieren/Steuern des Internetzugriffs (eingehend und ausgehend) und bestimmtes VNET | PARTIAL| PARTIAL   | ACR hinter VNET ist in Azure Government nicht verfügbar. (Wird für ACI noch geprüft.) | 
+| Deaktivieren/Steuern des Internetzugriffs (eingehend und ausgehend) und bestimmtes VNET | PARTIAL| PARTIAL   |  | 
 | Platzierung für alle zugeordneten Ressourcen/Dienste  | YES | YES |  |
 | Verschlüsselung von ruhenden Daten und während der Übertragung                                                 | YES | YES |  |
 | Root- und SSH-Zugriff auf Computeressourcen                                          | YES | YES |  |
-| Gewährleisten der Sicherheit bereitgestellter Systeme (Instanzen, Endpunkte usw.) – einschließlich Endpunktschutz, Patches und Protokollierung |  PARTIAL|  PARTIAL |ACI hinter VNET und privatem Endpunkt derzeit nicht verfügbar |                                  
-| Steuern (Deaktivieren/Einschränken/Beschränken) der Nutzung der ACI-/AKS-Integration                    | PARTIAL| PARTIAL |ACI hinter VNET und privatem Endpunkt derzeit nicht verfügbar|
+| Gewährleisten der Sicherheit bereitgestellter Systeme (Instanzen, Endpunkte usw.) – einschließlich Endpunktschutz, Patches und Protokollierung |  PARTIAL|  PARTIAL |ACI hinter VNet derzeit nicht verfügbar |                                  
+| Steuern (Deaktivieren/Einschränken/Beschränken) der Nutzung der ACI-/AKS-Integration                    | PARTIAL| PARTIAL |ACI hinter VNet derzeit nicht verfügbar|
 | Rollenbasierte Zugriffssteuerung in Azure (Azure RBAC): Erstellung benutzerdefinierter Rollen                           | YES | YES |  |
-| Steuern des Zugriffs auf die vom ML-Dienst verwendeten ACR-Images (von Azure bereitgestellt/verwaltet versus benutzerdefiniert)  |PARTIAL|  PARTIAL | ACR hinter privatem Endpunkt und VNET wird in Azure Government nicht unterstützt. |
+| Steuern des Zugriffs auf die vom ML-Dienst verwendeten ACR-Images (von Azure bereitgestellt/verwaltet versus benutzerdefiniert)  |PARTIAL|  PARTIAL |  |
 | **Allgemeine Verwendung des Machine Learning-Diensts** |  | | |
 | Möglichkeit zur Verwendung einer Entwicklungsumgebung, um ein Modell zu erstellen, zu trainieren, als Endpunkt zu hosten und über eine Web-App zu nutzen     | YES | YES |  |
 | Möglichkeit zum Pullen von Daten aus ADLS (Data Lake Storage)                                 |YES | YES |  |
@@ -132,7 +129,7 @@ Die Informationen im übrigen Teil dieses Dokuments enthalten Informationen dazu
 * Für Azure Machine Learning-Compute-Instanzen können in Azure Government keine Token mit einer Gültigkeitsdauer von mehr 24 Stunden aktualisiert werden.
 * Von der Modellprofilerstellung werden in der Region „US-Arizona“ keine vier CPUs unterstützt.   
 * Beispielnotebooks funktionieren in Azure Government möglicherweise nicht, wenn sie Zugriff auf öffentliche Daten benötigen.
-* IP-Adressen: Von dem CLI-Befehl, der in der [Anleitung für VNET und Tunnelerzwingung](how-to-secure-training-vnet.md#forced-tunneling) verwendet wird, werden keine IP-Adressbereiche zurückgegeben. Verwenden Sie stattdessen die [Azure-IP-Adressbereiche und -Diensttags für Azure Government](https://www.microsoft.com/download/details.aspx?id=57063).
+* IP-Adressen: Der CLI-Befehl, der in den Anweisungen für den [erforderlichen öffentlichen Internetzugriff](how-to-secure-training-vnet.md#required-public-internet-access) verwendet wurde, gibt keine IP-Adressbereiche zurück. Verwenden Sie stattdessen die [Azure-IP-Adressbereiche und -Diensttags für Azure Government](https://www.microsoft.com/download/details.aspx?id=57063).
 * Für geplante Pipelines steht auch ein blobbasierter Triggermechanismus zur Verfügung. Dieser Mechanismus wird für CMK-Arbeitsbereiche nicht unterstützt. Wenn Sie einen blobbasierten Trigger für CMK-Arbeitsbereiche aktivieren möchten, sind zusätzliche Setupschritte erforderlich. Weitere Informationen finden Sie unter [Auslösen der Ausführung einer Machine Learning-Pipeline aus einer Logik-App](how-to-trigger-published-pipeline.md).
 * Firewalls: Fügen Sie Ihrer Firewalleinstellung bei Verwendung einer Azure Government-Region die folgenden Hosts hinzu:
 
@@ -166,19 +163,18 @@ Die Informationen im übrigen Teil dieses Dokuments enthalten Informationen dazu
 | R- und Python-Unterstützung                                                       | Allgemein verfügbar               | YES       | –        |
 | Unterstützung von Virtual Network                                                    | Öffentliche Vorschau   | Nein        | –        |
 | **Compute-Instanz** |    | | |
-| Verwaltete Compute-Instanzen für integrierte Notebooks                         | Allgemein verfügbar               | Nein        | –        |
+| Verwaltete Compute-Instanzen für integrierte Notebooks                         | Allgemein verfügbar               | YES        | –        |
 | Jupyter, JupyterLab-Integration                                            | Allgemein verfügbar               | YES       | –        |
 | Unterstützung von virtuellen Netzwerken (VNETs)                                             | Öffentliche Vorschau   | YES       | –        |
 | **SDK-Unterstützung** |    | | |
-| R SDK-Unterstützung                                                              | Öffentliche Vorschau   | YES       | –        |
 | Python SDK-Unterstützung                                                         | Allgemein verfügbar               | YES       | –        |
 | **Security** |   | | |
 | VNET-Unterstützung (virtuelles Netzwerk) zu Trainingszwecken                                | Allgemein verfügbar               | YES       | –        |
 | VNET-Unterstützung (virtuelles Netzwerk) für Rückschlüsse                               | Allgemein verfügbar               | YES       | –        |
 | Bewerten der Endpunktauthentifizierung                                            | Öffentliche Vorschau   | YES       | –        |
-| Private Link für Arbeitsplätze                                                     | Allgemein verfügbar               | Nein        | –        |
+| Privater Endpunkt am Arbeitsplatz                                                 | Allgemein verfügbar               | Nein        | –        |
 | ACI hinter VNET                                                            | Öffentliche Vorschau   | Nein        | –        |
-| ACR hinter VNET                                                            | Öffentliche Vorschau   | Nein        | –        |
+| ACR hinter VNET                                                            | Allgemein verfügbar   | YES       | –        |
 | Private IP-Adresse des AKS-Clusters                                                  | Öffentliche Vorschau   | Nein        | –        |
 | **Compute** |   | | |
 | Arbeitsbereichsübergreifende Kontingentverwaltung                                         | Allgemein verfügbar               | YES       | –        |
@@ -216,7 +212,6 @@ Die Informationen im übrigen Teil dieses Dokuments enthalten Informationen dazu
 | **Andere** |    | | |
 | Open Datasets                                                              | Öffentliche Vorschau   | YES       | –        |
 | Benutzerdefinierte Cognitive Search-Instanz                                                    | Öffentliche Vorschau   | YES       | –        |
-| Viele Modelle                                                                | Öffentliche Vorschau   | Nein        | –        |
 
 
 
@@ -232,8 +227,8 @@ Die Informationen im übrigen Teil dieses Dokuments enthalten Informationen dazu
     | Azure Active Directory              | `https://login.microsoftonline.com`          | `https://login.chinacloudapi.cn`             |
 
 * Beispielnotebooks funktionieren möglicherweise nicht, wenn sie Zugriff auf öffentliche Daten benötigen.
-* IP-Adressbereiche: Von dem CLI-Befehl, der in der [Anleitung für die VNET-Tunnelerzwingung](how-to-secure-training-vnet.md#forced-tunneling) verwendet wird, werden keine IP-Adressbereiche zurückgegeben. Verwenden Sie stattdessen die [Azure-IP-Adressbereiche und -Diensttags für Azure China](https://www.microsoft.com//download/details.aspx?id=57062).
-* Die Vorschauversion von Azure Machine Learning-Compute-Instanzen wird in Arbeitsbereichen, in denen Private Link aktiviert ist, vorerst nicht unterstützt. CIs werden jedoch in der nächsten Bereitstellung für die Diensterweiterung auf alle AML-Regionen unterstützt.
+* IP-Adressbereiche: Der CLI-Befehl, der in den Anweisungen für den [erforderlichen öffentlichen Internetzugriff](how-to-secure-training-vnet.md#required-public-internet-access) verwendet wurde, gibt keine IP-Adressbereiche zurück. Verwenden Sie stattdessen die [Azure-IP-Adressbereiche und -Diensttags für Azure China](https://www.microsoft.com//download/details.aspx?id=57062).
+* Die Vorschauversion von Azure Machine Learning-Compute-Instanzen wird in Arbeitsbereichen, in denen private Endpunkte aktiviert sind, vorerst nicht unterstützt. Compute-Instanzen werden jedoch in der nächsten Bereitstellung für die Diensterweiterung auf alle AML-Regionen unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

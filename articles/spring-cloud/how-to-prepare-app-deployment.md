@@ -1,31 +1,31 @@
 ---
 title: 'Vorgehensweise: Vorbereiten einer Anwendung für die Bereitstellung in Azure Spring Cloud'
 description: Erfahren Sie, wie Sie eine Anwendung für die Bereitstellung in Azure Spring Cloud vorbereiten.
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: how-to
-ms.date: 09/08/2020
-ms.author: brendm
+ms.date: 07/06/2021
+ms.author: karler
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 5afdc2e46e4c234204a27261ae87061a3631071c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: faa4c57a4fc5e75d0e6262833c27833e9069fb30
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108134751"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418710"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Vorbereiten einer Anwendung für die Bereitstellung in Azure Spring Cloud
 
 ::: zone pivot="programming-language-csharp"
-Azure Spring Cloud bietet robuste Dienste zum Hosten, Überwachen, Skalieren und Aktualisieren einer Steeltoe-App. In diesem Artikel wird gezeigt, wie Sie eine vorhandene Steeltoe-Anwendung für die Bereitstellung in Azure Spring Cloud vorbereiten. 
+Azure Spring Cloud bietet robuste Dienste zum Hosten, Überwachen, Skalieren und Aktualisieren einer Steeltoe-App. In diesem Artikel wird gezeigt, wie Sie eine vorhandene Steeltoe-Anwendung für die Bereitstellung in Azure Spring Cloud vorbereiten.
 
 In diesem Artikel werden die Abhängigkeiten, die Konfiguration und der Code erläutert, die zum Ausführen einer .NET Core-Steeltoe-App in Azure Spring Cloud erforderlich sind. Informationen zum Bereitstellen einer Anwendung in Azure Spring Cloud finden Sie unter [Bereitstellen Ihrer ersten Azure Spring Cloud-Anwendung](./quickstart.md).
 
 >[!Note]
 > Steeltoe-Unterstützung für Azure Spring Cloud wird zurzeit als öffentliche Vorschau angeboten. Angebote der Public Preview ermöglichen Kunden das Experimentieren mit neuen Funktionen vor der offiziellen Veröffentlichung.  Funktionen und Dienste in der Public Preview sind nicht zur Verwendung in der Produktion bestimmt.  Weitere Informationen zum Support während der Vorschauphase finden Sie in den [häufig gestellten Fragen](https://azure.microsoft.com/support/faq/). Sie können auch eine [Supportanfrage](../azure-portal/supportability/how-to-create-azure-support-request.md) einreichen.
 
-##  <a name="supported-versions"></a>Unterstützte Versionen
+## <a name="supported-versions"></a>Unterstützte Versionen
 
 Azure Spring Cloud unterstützt Folgendes:
 
@@ -119,6 +119,7 @@ using (var client = new HttpClient(discoveryHandler, false))
     };
 }
 ```
+
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
@@ -126,7 +127,8 @@ In diesem Thema wird gezeigt, wie Sie eine vorhandene Java Spring-Anwendung fü
 
 Bevor Sie dieses Beispiel ausführen, können Sie den [grundlegenden Schnellstart](./quickstart.md) ausprobieren.
 
-In anderen Beispielen wird erläutert, wie eine Anwendung in Azure Spring Cloud bereitgestellt wird, wenn die POM-Datei konfiguriert ist. 
+In anderen Beispielen wird erläutert, wie eine Anwendung in Azure Spring Cloud bereitgestellt wird, wenn die POM-Datei konfiguriert ist.
+
 * [Starten Ihrer ersten App](./quickstart.md)
 * [Erstellen und Ausführen von Microservices](./quickstart-sample-app-introduction.md)
 
@@ -142,16 +144,18 @@ Azure Spring Cloud unterstützt sowohl Java 8 als auch Java 11. Die Hostingumg
 
 Wenn Sie eine vorhandene Spring Boot-Anwendung für die Bereitstellung in Azure Spring Cloud vorbereiten möchten, nehmen Sie die Abhängigkeiten von Spring Boot und Spring Cloud in die POM-Datei der Anwendung auf, wie in den folgenden Abschnitten gezeigt wird.
 
-Azure Spring Cloud unterstützt die Spring Boot-Versionen 2.2, 2.3 und 2.4. Die folgende Tabelle enthält die unterstützten Spring Boot- und Spring Cloud-Kombinationen:
+Azure Spring Cloud unterstützt das neueste Spring Boot- oder Spring Cloud-Release innerhalb eines Monats nach der Veröffentlichung. Sie können unterstützte Spring Boot-Versionen von [Spring Boot-Releases](https://github.com/spring-projects/spring-boot/wiki/Supported-Versions#releases) und Spring Cloud-Versionen von [Spring Cloud-Releases](https://github.com/spring-projects/spring-boot/wiki/Supported-Versions#releases) erhalten. 
+
+Die folgende Tabelle enthält die unterstützten Spring Boot- und Spring Cloud-Kombinationen:
 
 Spring Boot-Version | Spring Cloud-Version
 ---|---
-2.2 | Hoxton.SR8
-2.3 | Hoxton.SR8
-2.4.1 oder höher | 2020.0.0
+2.3.x | Hoxton.SR8+
+2.4.x, 2.5.x | 2020.0 aka Ilford +
 
 > [!NOTE]
-> Wir haben ein Problem mit Spring Boot 2.4.0 bei der TLS-Authentifizierung zwischen ihren Apps und Eureka identifiziert. Verwenden Sie Version 2.4.1 oder höher. Eine Problemumgehung finden Sie in unseren [häufig gestellten Fragen](./faq.md?pivots=programming-language-java#development), wenn Sie unbedingt Version 2.4.0 verwenden möchten.
+> - Aktualisieren Sie Spring Boot auf 2.5.2 oder 2.4.8 als Reaktion auf den CVE-Bericht zum folgenden Thema: [CVE-2021-22119: Denial-of-Service-Angriff mit „spring-security-oauth2-client“](https://tanzu.vmware.com/security/cve-2021-22119). Wenn Sie Spring Security verwenden, aktualisieren Sie es auf 5.5.1, 5.4.7, 5.3.10 oder 5.2.11.
+> - Ein Problem mit Spring Boot 2.4.0 bei der TLS-Authentifizierung zwischen Apps und Spring Cloud Service Registry wurde identifiziert. Verwenden Sie Version 2.4.1 oder höher. Eine Problemumgehung finden Sie in den [häufig gestellten Fragen](./faq.md?pivots=programming-language-java#development), wenn Sie unbedingt Version 2.4.0 verwenden möchten.
 
 ### <a name="dependencies-for-spring-boot-version-2223"></a>Abhängigkeiten für die Spring Boot-Version 2.2/2.3
 
@@ -188,7 +192,7 @@ Für Spring Boot-Version 2.2 fügen Sie die folgenden Abhängigkeiten zur POM-Da
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.4.1.RELEASE</version>
+        <version>2.4.8</version>
     </parent>
 
     <!-- Spring Cloud dependencies -->
@@ -197,7 +201,7 @@ Für Spring Boot-Version 2.2 fügen Sie die folgenden Abhängigkeiten zur POM-Da
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>2020.0.0</version>
+                <version>2020.0.2</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -225,14 +229,16 @@ Schließen Sie die Abhängigkeit `spring-cloud-starter-netflix-eureka-client` in
 
 Der Endpunkt des Dienstregistrierungsservers wird automatisch in Form von Umgebungsvariablen mit Ihrer App eingefügt. Anwendungen können sich selbst beim Dienstregistrierungsserver registrieren und andere abhängige Microservices ermitteln.
 
-
 #### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient-Anmerkung
 
 Fügen Sie dem Quellcode der Anwendung die folgende Anmerkung hinzu.
+
 ```java
 @EnableDiscoveryClient
 ```
+
 Informationen hierzu finden Sie beispielsweise in der piggymetrics-Anwendung aus früheren Beispielen:
+
 ```java
 package com.piggymetrics.gateway;
 
@@ -261,6 +267,10 @@ Schließen Sie zum Aktivieren der verteilten Konfiguration die folgende Abhängi
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-config-client</artifactId>
 </dependency>
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-bootstrap</artifactId>
+</dependency>
 ```
 
 > [!WARNING]
@@ -287,6 +297,7 @@ Schließen Sie die Abhängigkeit `spring-boot-starter-actuator` in den Abhängig
 Darüber hinaus müssen Sie eine Azure Application Insights-Instanz für die Verwendung mit der Azure Spring Cloud-Dienstinstanz aktivieren. Informationen zur Verwendung von Application Insights mit Azure Spring Cloud finden Sie in der [Dokumentation zur verteilten Ablaufverfolgung](./how-to-distributed-tracing.md).
 
 #### <a name="spring-boot-2223"></a>Spring Boot 2.2/2.3
+
 Schließen Sie die folgenden Abhängigkeiten vom Typ `spring-cloud-starter-sleuth` und `spring-cloud-starter-zipkin` in den Abhängigkeitenabschnitt der Datei „pom.xml“ ein:
 
 ```xml
@@ -301,7 +312,8 @@ Schließen Sie die folgenden Abhängigkeiten vom Typ `spring-cloud-starter-sleut
 ```
 
 #### <a name="spring-boot-24"></a>Spring Boot 2.4
-Schließen Sie die folgende Abhängigkeit `spring-cloud-sleuth-zipkin` in den Abschnitt „dependencies“ der Datei „pom.xml“ ein:
+
+Schließen Sie die folgende Abhängigkeit `spring-cloud-sleuth-zipkin` in den Abschnitt „dependencies“ der Datei *pom.xml* ein:
 
 ```xml
 <dependency>
@@ -311,6 +323,7 @@ Schließen Sie die folgende Abhängigkeit `spring-cloud-sleuth-zipkin` in den Ab
 ```
 
 ## <a name="see-also"></a>Weitere Informationen
+
 * [Analysieren von Anwendungsprotokollen und -metriken](./diagnostic-services.md)
 * [Einrichten Ihres Konfigurationsservers](./how-to-config-server.md)
 * [Verwenden der verteilten Ablaufverfolgung mit Azure Spring Cloud](./how-to-distributed-tracing.md)

@@ -6,12 +6,12 @@ ms.service: azure
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 8a67cb97487e1082aed976712ded5383008531b1
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: ae3f62141fdcdb1185f493eceeef7124fe11f869
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111957128"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346046"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Anleitung mit den ersten Schritten für Azure-Entwickler
 
@@ -130,7 +130,7 @@ Die meisten Anwendungen müssen Daten speichern, daher spielt es keine Rolle, wi
 
   > **Einsatzgebiete**: Wenn Ihre App nicht relationale Daten speichert, wie Schlüssel-Wert-Paare (Tabellen), Blobs, Dateifreigaben oder Meldungen (Warteschlangen).
   >
-  > **Erste Schritte**: Wählen Sie einen Typ aus den folgenden Speichertypen aus: [Blobs](../../storage/blobs/storage-quickstart-blobs-dotnet.md), [Tabellen](../../cosmos-db/tutorial-develop-table-dotnet.md), [Warteschlangen](../../storage/queues/storage-dotnet-how-to-use-queues.md) oder [Dateien](../../storage/files/storage-dotnet-how-to-use-files.md).
+  > **Erste Schritte:** Wählen Sie aus den folgenden Speichertypen aus: [Blobs](../../storage/blobs/storage-quickstart-blobs-dotnet.md), [Tabellen](../../cosmos-db/tutorial-develop-table-dotnet.md), [Warteschlangen](../../storage/queues/storage-dotnet-how-to-use-queues.md) oder [Dateien](../../storage/files/storage-dotnet-how-to-use-files.md).
 
 * **Azure SQL-Datenbank**: Eine auf Azure basierende Version der Microsoft SQL Server-Engine zum Speichern relationaler Tabellendaten in der Cloud. SQL-Datenbank bietet vorhersagbare Leistung, Skalierbarkeit ohne Downtime, Geschäftskontinuität, und Datenschutz.
 
@@ -244,7 +244,9 @@ Das [Azure-Portal](https://portal.azure.com) ist eine webbasierte Anwendung, die
 
 * Ein konfigurierbares Dashboard
 * Tools zur Ressourcenverwaltung in Azure
-* Zugriff auf die Abonnementeinstellungen und Abrechnungsinformationen Weitere Informationen finden Sie unter [Azure-Portal – Übersicht](https://azure.microsoft.com/features/azure-portal/).
+* Zugriff auf die Abonnementeinstellungen und Abrechnungsinformationen
+
+Weitere Informationen finden Sie unter [Azure-Portal – Übersicht](https://azure.microsoft.com/features/azure-portal/).
 
 ### <a name="rest-apis"></a>REST-APIs
 
@@ -338,4 +340,4 @@ Azure bietet eine Reihe von Abrechnungs-REST-APIs, die den Zugriff auf den Resso
 
 Es ist zwar schwierig, die Kosten im Voraus zu schätzen, aber Azure bietet Ihnen einige hilfreiche Tools. Sie können zum Beispiel einen [Preisrechner](https://azure.microsoft.com/pricing/calculator/) nutzen, um die Kosten der bereitgestellten Ressourcen einzuschätzen. Darüber hinaus können Sie die Abrechnungsressourcen im Portal und die Abrechnungs-REST-APIs verwenden, um die künftigen Kosten basierend auf der aktuellen Nutzung vorherzusagen.
 
->**Erste Schritte**: Weitere Informationen finden Sie unter [Azure-Nutzungs-API: Übersicht](../../cost-management-billing/manage/consumption-api-overview.md).
+>**Erste Schritte:** Weitere Informationen finden Sie unter [Azure-Nutzungs-API: Übersicht](../../cost-management-billing/manage/consumption-api-overview.md).

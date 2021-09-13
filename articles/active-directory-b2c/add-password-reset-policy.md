@@ -8,43 +8,55 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/24/2021
+ms.date: 07/01/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 81bdc8550f57a7c1c4992825cd231a9bb3cad4ce
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 1c7d4eeaf7df1764b021cd5914d6f4f4a88a9a1c
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110457474"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113213469"
 ---
 # <a name="set-up-a-password-reset-flow-in-azure-active-directory-b2c"></a>Einrichten eines Kennwortzurücksetzungsflows in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-## <a name="password-reset-flow"></a>Kennwortzurücksetzungsflow
+## <a name="overview"></a>Übersicht
 
-Im Rahmen des [Registrierungs- und Anmeldeflows](add-sign-up-and-sign-in-policy.md) können Benutzer ihr eigenes Kennwort über den Link **Kennwort vergessen?** zurücksetzen. Der Kennwortzurücksetzungsflow umfasst folgende Schritte:
+Im Rahmen des [Registrierungs- und Anmeldevorgangs](add-sign-up-and-sign-in-policy.md) können Benutzer ihr eigenes Kennwort über den Link **Kennwort vergessen?** zurücksetzen. Dieser Flow für die Self-Service-Kennwortzurücksetzung wird für lokale Konten in Azure AD B2C verwendet, bei denen für die Anmeldung eine [E-Mail-Adresse](sign-in-options.md#email-sign-in) oder ein [Benutzername](sign-in-options.md#username-sign-in) und ein Kennwort verwendet werden.
 
-1. Der Benutzer klickt auf der Registrierungs- und Anmeldeseite auf den Link **Kennwort vergessen?** . Daraufhin wird von Azure AD B2C der Kennwortzurücksetzungsflow initiiert.
-2. Der Benutzer gibt seine E-Mail-Adresse ein und wählt dann den **Prüfcode senden** aus. Das Azure AD B2C sendet dem Benutzer dann einen Überprüfungscode.
-
-* Der Benutzer muss das Postfach öffnen und den Überprüfungscode kopieren. Der Benutzer gibt dann den Überprüfungscode auf der Seite Azure AD B2C Kennwortzurücksetzung ein und wählt die Option **Code überprüfen** aus.
-
-> [!NOTE]
-> Nachdem die E-Mail überprüft wurde, kann der Benutzer weiterhin die Option **E-Mail ändern** auswählen, die andere E-Mail eingeben und die E-Mail-Überprüfung von Anfang an wiederholen.
-3. Anschließend kann der Benutzer ein neues Kennwort eingeben.
+Der Kennwortzurücksetzungsflow umfasst folgende Schritte:
 
 ![Kennwortzurücksetzungsflow](./media/add-password-reset-policy/password-reset-flow.png)
 
-Der Kennwortzurücksetzungsflow wird für lokale Konten in Azure AD B2C verwendet, bei denen für die Anmeldung eine [E-Mail-Adresse](identity-provider-local.md#email-sign-in) oder ein [Benutzername](identity-provider-local.md#username-sign-in) und ein Kennwort verwendet werden.
+**1.** Der Benutzer klickt auf der Registrierungs- und Anmeldeseite auf den Link **Kennwort vergessen?** . Daraufhin wird von Azure AD B2C der Kennwortzurücksetzungsflow initiiert.
+
+**2.** Der Benutzer gibt seine E-Mail-Adresse ein und klickt dann auf **Prüfcode senden**. Azure AD B2C sendet den Prüfcode an das Postfach des Benutzers. Der Benutzer kopiert den Prüfcode aus der E-Mail, gibt den Code auf der Seite für die Azure AD B2C-Kennwortzurücksetzung ein und klickt dann auf **Code überprüfen**.
+
+**3.** Anschließend kann der Benutzer ein neues Kennwort eingeben. (Nach der Überprüfung der E-Mail-Adresse kann der Benutzer weiterhin auf die Schaltfläche **E-Mail-Adresse ändern** klicken (siehe folgender Abschnitt [Ausblenden der Schaltfläche zum Ändern der E-Mail-Adresse](#hiding-the-change-email-button)).)
 
 > [!TIP]
-> Mithilfe der Schritte zur Self-Service-Kennwortzurücksetzung können Benutzer, die ihr Kennwort vergessen haben und es zurücksetzen möchten, ihr Kennwort ändern. Konfigurieren Sie ggf. einen [Kennwortänderungsflow](add-password-change-policy.md) für Fälle, in denen ein Benutzer sein Kennwort zwar nicht vergessen hat, es aber ändern möchte.
+> Mithilfe der Schritte zur Self-Service-Kennwortzurücksetzung können Benutzer, die ihr Kennwort vergessen haben und es zurücksetzen möchten, ihr Kennwort ändern. 
+> - Wenn ein Benutzer sein Kennwort kennt und dieses ändern möchte, sollte ein [Kennwortänderungsflow](add-password-change-policy.md) verwendet werden. 
+> - In Fällen, in denen Sie erzwingen möchten, dass Benutzer ihr Kennwort zurücksetzen (z. B. bei der erstmaligen Anmeldung, nach der Zurücksetzung des Kennworts durch einen Administrator oder nach der Migration zu Azure AD B2C mit einem zufälligen Kennwort), verwenden Sie einen [Flow zum Erzwingen der Kennwortzurücksetzung](force-password-reset.md).
 
-Nach einer Benutzermigration zu Azure AD B2C mit zufallsbasierten Kennwörtern ist es gängige Praxis, dass die Benutzer bei der ersten Anmeldung ihre E-Mail-Adresse verifizieren und ihr Kennwort zurücksetzen. Darüber hinaus müssen Benutzer üblicherweise ihr Kennwort zurücksetzen, wenn ihr Kennwort von einem Administrator geändert wurde. Weitere Informationen zur Aktivierung dieses Features finden Sie unter [Einrichten eines Flows zur Erzwingung der Kennwortzurücksetzung in Azure Active Directory B2C](force-password-reset.md).
+### <a name="hiding-the-change-email-button"></a>Ausblenden der Schaltfläche zum Ändern der E-Mail-Adresse
+
+Nachdem die E-Mail-Adresse überprüft wurde, kann der Benutzer weiterhin die Option **E-Mail-Adresse ändern** auswählen, die andere E-Mail-Adresse eingeben und die Überprüfung der E-Mail-Adresse von Anfang an wiederholen. Wenn Sie die Schaltfläche **E-Mail-Adresse ändern** ausblenden möchten, können Sie die CSS ändern, um die zugehörigen HTML-Elemente auf der Seite auszublenden. Sie können beispielsweise den folgenden CSS-Eintrag zu „selfAsserted.HTML“ hinzufügen und [die Benutzeroberfläche mit HTML-Vorlagen anpassen](customize-ui-with-html.md).
+
+```html
+<style type="text/css">
+   .changeClaims
+   {
+     visibility: hidden;
+   }
+</style>
+```
+
+Beachten Sie, dass der Standardname der Schaltfläche **E-Mail-Adresse ändern** auf der Seite „selfasserted.html“ `changeclaims` lautet. Sie können den Namen der Schaltfläche ermitteln, indem Sie mithilfe eines Browsertools (z. B. Inspect) die Seitenquelle der Anmeldeseite überprüfen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -303,8 +315,10 @@ Damit Benutzer Ihrer Anwendung ihr eigenes Kennwort zurücksetzten können, erst
 1. Wählen Sie auf der Seite **Benutzerflow erstellen** den Benutzerflow **Kennwortzurücksetzung** aus. 
 1. Wählen Sie unter **Version auswählen** die Option **Empfohlen** und dann **Erstellen** aus.
 1. Geben Sie unter **Name** einen Namen für den Benutzerflow ein. Beispiel *passwordreset1*.
-1. Aktivieren Sie unter **Identitätsanbieter** die Option **Kennwort mittels E-Mail-Adresse zurücksetzen**.
-1. Wählen Sie unter **Anwendungsansprüche** die Option **Mehr anzeigen**, und wählen Sie die Ansprüche aus, die in den an Ihre Anwendung gesendeten Autorisierungstoken zurückgegeben werden sollen. Wählen Sie beispielsweise **Objekt-ID des Benutzers**.
+1. Aktivieren Sie für **Identitätsanbieter** die Option **Reset password using username** (Kennwort mithilfe des Benutzernamens zurücksetzen) oder **Reset password using email address** (Kennwort mithilfe der E-Mail-Adresse zurücksetzen).
+1. Wenn Sie unter **Mehrstufige Authentifizierung** festlegen möchten, dass Benutzer ihre Identität mit einer zweiten Authentifizierungsmethode überprüfen müssen, wählen Sie den Methodentyp und den Zeitpunkt aus, an dem die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) erzwungen werden soll. [Weitere Informationen](multi-factor-authentication.md)
+1. Wenn Sie unter **Bedingter Zugriff** Richtlinien für den bedingten Zugriff für Ihren Azure AD B2C-Mandanten konfiguriert haben und diese für diesen Benutzerflow aktivieren möchten, aktivieren Sie das Kontrollkästchen **Enforce conditional access policies** (Richtlinien für bedingten Zugriff erzwingen). Sie müssen keinen Richtliniennamen angeben. [Weitere Informationen](conditional-access-user-flow.md?pivots=b2c-user-flow)
+1. 1. Wählen Sie unter **Anwendungsansprüche** die Option **Mehr anzeigen**, und wählen Sie die Ansprüche aus, die in den an Ihre Anwendung gesendeten Autorisierungstoken zurückgegeben werden sollen. Wählen Sie beispielsweise **Objekt-ID des Benutzers**.
 1. Klicken Sie auf **OK**.
 1. Wählen Sie **Erstellen** aus, um den Benutzerflow hinzuzufügen. Dem Namen wird automatisch das Präfix *B2C_1* vorangestellt.
 

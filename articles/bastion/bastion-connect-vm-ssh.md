@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.author: cherylmc
-ms.openlocfilehash: a6f9add11b6632d1ee26041ade0ade45ec58716d
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 56cbcf841d26cc7f8f26235728ef0dd1c596daa0
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110538079"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114289191"
 ---
 # <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion"></a>Herstellen einer SSH-Verbindung mit einem virtuellen Linux-Computer über Azure Bastion
 
@@ -83,10 +83,6 @@ Zum Herstellen einer Verbindung mit dem virtuellen Linux-Computer über SSH müs
 
 ## <a name="connect-using-a-private-key-stored-in-azure-key-vault"></a><a name="akv"></a>Verbinden: Verwenden eines in Azure Key Vault gespeicherten privaten Schlüssels
 
->[!NOTE]
->Das Rollout des Portalaktualisierungen für dieses Feature erfolgt derzeit in verschiedenen Regionen.
->
-
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). Navigieren Sie zu dem virtuellen Computer, mit dem Sie eine Verbindung herstellen möchten, klicken Sie dann auf **Verbinden**, und wählen Sie **Bastion** aus der Dropdownliste aus.
 
    :::image type="content" source="./media/bastion-connect-vm-ssh/connect.png" alt-text="Der Screenshot zeigt die Übersicht für einen virtuellen Computer im Azure-Portal bei ausgewähltem „Verbinden“.":::
@@ -94,14 +90,18 @@ Zum Herstellen einer Verbindung mit dem virtuellen Linux-Computer über SSH müs
 1. Geben Sie auf der Seite **Verbindung über Azure Bastion herstellen** in **Benutzername** und **Privater SSH-Schlüssel aus Azure Key Vault** die entsprechenden Informationen ein.
 
    :::image type="content" source="./media/bastion-connect-vm-ssh/ssh-key-vault.png" alt-text="Privater SSH-Schlüssel aus Azure Key Vault":::
-1. Wählen Sie im Dropdownmenü **Azure Key Vault** die Ressource aus, in der Sie Ihren privaten SSH-Schlüssel gespeichert haben. Wenn Sie keine Azure Key Vault-Ressource eingerichtet haben, ziehen Sie [Erstellen eines Key Vault](../key-vault/general/quick-create-portal.md) zurate, und speichern Sie Ihren privaten SSH-Schlüssel als Wert eines neuen Key Vault-Geheimnisses.
+1. Wählen Sie im Dropdownmenü **Azure Key Vault** die Ressource aus, in der Sie Ihren privaten SSH-Schlüssel gespeichert haben. Wenn Sie keine Azure Key Vault-Ressource eingerichtet haben, ziehen Sie [Erstellen eines Key Vault](../key-vault/secrets/quick-create-powershell.md) zurate, und speichern Sie Ihren privaten SSH-Schlüssel als Wert eines neuen Key Vault-Geheimnisses.
+
+   >[!NOTE]
+   >Speichern Sie mithilfe von **PowerShell** oder der **Azure CLI** Ihren privaten SSH-Schlüssel als Geheimnis. Wenn Sie Ihren privaten Schlüssel über das Azure Key Vault-Portal speichern, wird dadurch die Formatierung beeinträchtigt und die Anmeldung schlägt fehl. Für den Fall, dass Sie Ihren privaten Schlüssel über das Portal als Geheimnis gespeichert und keinen Zugriff mehr auf die ursprüngliche private Schlüsseldatei haben, finden Sie unter [Aktualisieren eines SSH-Schlüssels](../virtual-machines/extensions/vmaccess.md#update-ssh-key) Informationen zum Aktualisieren des Zugriffs auf den virtuellen Zielcomputer mit einem neuen SSH-Schlüsselpaar.
+   >
 
    :::image type="content" source="./media/bastion-connect-vm-ssh/key-vault.png" alt-text="Azure Key Vault":::
 
    Stellen Sie sicher, dass Sie über die Zugriffsrechte **Auflisten** und **Abrufen** für die in der Key Vault-Ressource gespeicherten Geheimnisse verfügen. Um Zugriffsrichtlinien für Ihre Key Vault-Ressource zuzuweisen und zu ändern, lesen Sie [Zuweisen einer Key Vault-Zugriffsrichtlinie](../key-vault/general/assign-access-policy-portal.md).
 1. Wählen Sie im Dropdownmenü **Azure Key Vault-Geheimnis** das Key Vault-Geheimnis aus, das den Wert Ihres privaten SSH-Schlüssels enthält.
-1. Wählen Sie **Verbinden** aus, um die Verbindung zum virtuellen Computer herzustellen. Sobald Sie auf **Verbinden** klicken, wird die SSH-Verbindung mit diesem virtuellen Computer direkt im Azure-Portal geöffnet. Die Verbindung erfolgt über HTML5 mit Port 443 im Bastion-Dienst und über die private IP-Adresse Ihres virtuellen Computers.
+3. Wählen Sie **Verbinden** aus, um die Verbindung zum virtuellen Computer herzustellen. Sobald Sie auf **Verbinden** klicken, wird die SSH-Verbindung mit diesem virtuellen Computer direkt im Azure-Portal geöffnet. Die Verbindung erfolgt über HTML5 mit Port 443 im Bastion-Dienst und über die private IP-Adresse Ihres virtuellen Computers.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure Bastion finden Sie in den [häufig gestellten Fragen zu Bastion](bastion-faq.md). 
+Weitere Informationen zu Azure Bastion finden Sie in den [häufig gestellten Fragen zu Bastion](bastion-faq.md).

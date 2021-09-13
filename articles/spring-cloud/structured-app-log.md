@@ -1,18 +1,18 @@
 ---
 title: Strukturiertes Anwendungsprotokoll für Azure Spring Cloud | Microsoft-Dokumentation
 description: In diesem Artikel wird erläutert, wie strukturierte Anwendungsprotokolldaten in Azure Spring Cloud generiert und erfasst werden.
-author: MikeDodaro
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 02/05/2021
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: ef51fc0c67c938a2d0933b6032072acc24e42dd3
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: 8d84462d38c00e3788e424bd7cac6742d8b0e408
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110494627"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122350083"
 ---
 # <a name="structured-application-log-for-azure-spring-cloud"></a>Strukturiertes Anwendungsprotokoll für Azure Spring Cloud
 
@@ -43,11 +43,11 @@ Um die Protokollabfrage zu verbessern, muss ein Anwendungsprotokoll im JSON-Form
 
 * Das Feld „timestamp“ ist erforderlich und sollte im UTC-Format vorliegen. Alle anderen Felder sind optional.
 * „traceid“ und „spanid“ im Feld „mdc“ werden für die Ablaufverfolgungszwecke verwendet.
-* Protokolliert jeden JSON-Datensatz in einer Zeile. 
+* Protokolliert jeden JSON-Datensatz in einer Zeile.
 
-**Beispiel für Protokolldatensatz** 
+**Beispiel für Protokolldatensatz**
 
- ```
+```log
 {"timestamp":"2021-01-08T09:23:51.280Z","logger":"com.example.demo.HelloController","level":"ERROR","thread":"http-nio-1456-exec-4","mdc":{"traceId":"c84f8a897041f634","spanId":"c84f8a897041f634"},"stackTrace":"java.lang.RuntimeException: get an exception\r\n\tat com.example.demo.HelloController.throwEx(HelloController.java:54)\r\n\","message":"Got an exception","exceptionClass":"RuntimeException"}
 ```
 
@@ -57,17 +57,17 @@ Jede Zeile von JSON-Protokollen darf max. **16.000 Bytes** enthalten. Wenn die J
 
 Im Allgemeinen geschieht dies bei der Ausnahmeprotokollierung mit „deep stacktrace“, insbesondere wenn der [AppInsights-In-Process-Agent](./how-to-application-insights.md) aktiviert ist.  Wenden Sie Grenzwerteinstellungen auf die Stacktrace-Ausgabe an (siehe die folgenden Konfigurationsbeispiele), um sicherzustellen, dass die endgültige Ausgabe ordnungsgemäß analysiert wird.
 
-## <a name="generate-schema-compliant-json-log"></a>Generieren eines schemakompatiblen JSON-Protokolls  
+## <a name="generate-schema-compliant-json-log"></a>Generieren eines schemakompatiblen JSON-Protokolls
 
-Für Spring-Anwendungen können Sie das erwartete JSON-Protokollformat mithilfe allgemeiner [Protokollierungsframeworks](https://docs.spring.io/spring-boot/docs/2.1.13.RELEASE/reference/html/boot-features-logging.html#boot-features-custom-log-configuration) generieren, z. B. mit [logback](http://logback.qos.ch/) und [log4j2](https://logging.apache.org/log4j/2.x/). 
+Für Spring-Anwendungen können Sie das erwartete JSON-Protokollformat mithilfe allgemeiner [Protokollierungsframeworks](https://docs.spring.io/spring-boot/docs/2.1.13.RELEASE/reference/html/boot-features-logging.html#boot-features-custom-log-configuration) generieren, z. B. mit [logback](http://logback.qos.ch/) und [log4j2](https://logging.apache.org/log4j/2.x/).
 
-### <a name="log-with-logback"></a>Protokollieren mit logback 
+### <a name="log-with-logback"></a>Protokollieren mit logback
 
-Bei Verwendung von Spring Boot Starter wird standardmäßig logback verwendet. Verwenden Sie für logback-Apps [logstash-encoder](https://github.com/logstash/logstash-logback-encoder), um ein JSON-formatiertes Protokoll zu generieren. Diese Methode wird in Spring Boot, Version 2.1 und höher, unterstützt. 
+Bei Verwendung von Spring Boot Starter wird standardmäßig logback verwendet. Verwenden Sie für logback-Apps [logstash-encoder](https://github.com/logstash/logstash-logback-encoder), um ein JSON-formatiertes Protokoll zu generieren. Diese Methode wird in Spring Boot, Version 2.1 und höher, unterstützt.
 
 Die Prozedur:
 
-1. Fügen Sie eine logstash-Abhängigkeit in Ihrer Datei `pom.xml` hinzu. 
+1. Fügen Sie eine logstash-Abhängigkeit in Ihrer Datei `pom.xml` hinzu.
 
     ```xml
     <dependency>
@@ -76,7 +76,9 @@ Die Prozedur:
         <version>6.5</version>
     </dependency>
     ```
+
 1. Aktualisieren Sie die Konfigurationsdatei `logback-spring.xml`, um das JSON-Format festzulegen.
+
     ```xml
     <configuration>
         <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
@@ -122,6 +124,7 @@ Die Prozedur:
         </root>
     </configuration>
     ```
+
 1. Wenn Sie die Protokollierungskonfigurationsdatei mit einem `-spring`-Suffix wie `logback-spring.xml` verwenden, können Sie die Protokollierungskonfiguration basierend auf dem aktiven Spring-Profil festlegen.
 
     ```xml
@@ -141,10 +144,10 @@ Die Prozedur:
         </springProfile>
     </configuration>
     ```
-    
+
     Führen Sie für die lokale Entwicklung die Spring Cloud-Anwendung mit dem JVM-Argument `-Dspring.profiles.active=dev` aus. Anschließend werden lesbare Protokolle anstelle von Zeilen im JSON-Format angezeigt.
 
-### <a name="log-with-log4j2"></a>Protokollieren mit log4j2 
+### <a name="log-with-log4j2"></a>Protokollieren mit log4j2
 
 Verwenden Sie für log4j2-Apps [json-template-layout](https://logging.apache.org/log4j/2.x/manual/json-template-layout.html), um das JSON-formatierte Protokoll zu generieren. Diese Methode wird in Spring Boot, Version 2.1 und höher, unterstützt.
 
@@ -216,7 +219,7 @@ Die Prozedur:
     }
     ```
 
-3. Verwenden Sie diese JSON-Layoutvorlage in Ihrer Konfigurationsdatei `log4j2-spring.xml`. 
+3. Verwenden Sie diese JSON-Layoutvorlage in Ihrer Konfigurationsdatei `log4j2-spring.xml`.
 
     ```xml
     <configuration>
@@ -243,10 +246,10 @@ Nachdem Ihre Anwendung ordnungsgemäß eingerichtet wurde, wird das Anwendungsko
 Gehen Sie dazu wie folgt vor:
 
 1. Navigieren Sie zur Dienstübersichtsseite Ihrer Dienstinstanz.
-2. Klicken Sie im Abschnitt `Monitoring` auf den Eintrag `Logs`.
+2. Wählen Sie den Eintrag **Protokolle** im Abschnitt **Überwachung** aus.
 3. Führen Sie die folgende Abfrage aus.
 
-   ```
+   ```query
    AppPlatformLogsforSpring
    | where TimeGenerated > ago(1h)
    | project AppTimestamp, Logger, CustomLevel, Thread, Message, ExceptionClass, StackTrace, TraceId, SpanId
@@ -256,29 +259,28 @@ Gehen Sie dazu wie folgt vor:
 
    ![Anzeigen des JSON-Protokolls](media/spring-cloud-structured-app-log/json-log-query.png)
 
-
 ### <a name="show-log-entries-containing-errors"></a>Anzeigen von Protokolleinträgen mit Fehlern
 
 Um Protokolleinträge mit einem Fehler zu überprüfen, führen Sie die folgende Abfrage aus:
 
-```
+```query
 AppPlatformLogsforSpring
-| where TimeGenerated > ago(1h) and CustomLevel == "ERROR" 
-| project AppTimestamp, Logger, ExceptionClass, StackTrace, Message, AppName 
+| where TimeGenerated > ago(1h) and CustomLevel == "ERROR"
+| project AppTimestamp, Logger, ExceptionClass, StackTrace, Message, AppName
 | sort by AppTimestamp
 ```
 
-Verwenden Sie diese Abfrage, um Fehler zu finden, oder ändern Sie die Abfragebedingungen, um eine bestimmte Ausnahmeklasse oder Fehlercodes zu ermitteln. 
+Verwenden Sie diese Abfrage, um Fehler zu finden, oder ändern Sie die Abfragebedingungen, um eine bestimmte Ausnahmeklasse oder Fehlercodes zu ermitteln.
 
 ### <a name="show-log-entries-for-a-specific-traceid"></a>Anzeigen von Protokolleinträgen für eine bestimmte traceId
 
 Zum Überprüfen von Protokolleinträgen für eine bestimmte Ablaufverfolgungs-ID „trace_id“ führen Sie die folgende Abfrage aus:
 
-```
+```query
 AppPlatformLogsforSpring
 | where TimeGenerated > ago(1h)
-| where TraceId == "trace_id" 
-| project AppTimestamp, Logger, TraceId, SpanId, StackTrace, Message, AppName 
+| where TraceId == "trace_id"
+| project AppTimestamp, Logger, TraceId, SpanId, StackTrace, Message, AppName
 | sort by AppTimestamp
 ```
 

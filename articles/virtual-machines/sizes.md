@@ -8,14 +8,19 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 07/21/2020
 ms.author: jushiman
-ms.openlocfilehash: 8bc6c76ac02de4832597c46e2d8c54081b96b216
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: b3309677cef2684768f272a53267ea19ee47ebb5
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112072467"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695417"
 ---
 # <a name="sizes-for-virtual-machines-in-azure"></a>Größen für virtuelle Computer in Azure
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
+
+> [!TIP]
+> Probieren Sie das **[Auswahltool für virtuelle Computer](https://aka.ms/vm-selector)** aus, um andere Größen zu ermitteln, die für Ihre Workload optimal sind.
 
 In diesem Artikel werden die verfügbaren Größen und Optionen für die virtuellen Azure-Computer beschrieben, die Sie zum Ausführen Ihrer Apps und Workloads verwenden können. Darüber hinaus werden Überlegungen zur Bereitstellung angestellt, die Sie berücksichtigen sollten, wenn Sie eine Verwendung dieser Ressourcen planen. 
 

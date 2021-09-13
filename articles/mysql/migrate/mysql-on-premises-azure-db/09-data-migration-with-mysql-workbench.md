@@ -1,5 +1,5 @@
 ---
-title: 'Leitfaden zur Migration einer lokalen MySQL-Instanz zu Azure Database for MySQL: Datenmigration mit MySQL Workbench'
+title: 'Migrieren einer lokalen MySQL-Instanz zu Azure Database for MySQL: Datenmigration mit MySQL Workbench'
 description: Führen Sie alle Schritte in der Setupanleitung aus, um eine Umgebung zu erstellen, die die folgenden Schritte unterstützt.
 ms.service: mysql
 ms.subservice: migration-guide
@@ -8,15 +8,17 @@ author: arunkumarthiags
 ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
-ms.date: 06/11/2021
-ms.openlocfilehash: 485a377decee390701cb43a99bd47e96f29f1f55
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 06/21/2021
+ms.openlocfilehash: 2b3dc8702251a6fcc53386cb17cbe44a45e59db2
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082756"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114292971"
 ---
-# <a name="mysql-on-premises-to-azure-database-for-mysql-migration-guide-data-migration-with-mysql-workbench"></a>Leitfaden zur Migration einer lokalen MySQL-Instanz zu Azure Database for MySQL: Datenmigration mit MySQL Workbench
+# <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-data-migration-with-mysql-workbench"></a>Migrieren einer lokalen MySQL-Instanz zu Azure Database for MySQL: Datenmigration mit MySQL Workbench
+
+[!INCLUDE[applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -32,7 +34,7 @@ Abhängig vom ausgewählten Migrationstyp (offline oder online) möchten Sie fes
 
 ## <a name="configuring-server-parameters-target"></a>Konfigurieren von Serverparametern (Ziel)
 
-Überprüfen Sie die Serverparameter, bevor Sie den Importvorgang in Azure Database for MySQL starten. Serverparameter können im [Azure-Portal](/azure/mysql/howto-server-parameters) oder durch Aufrufen der [Azure PowerShell für MySQL-Cmdlets](/azure/mysql/howto-configure-server-parameters-using-powershell) zum Durchführen der Änderungen abgerufen und festgelegt werden.
+Überprüfen Sie die Serverparameter, bevor Sie den Importvorgang in Azure Database for MySQL starten. Serverparameter können im [Azure-Portal](../../howto-server-parameters.md) oder durch Aufrufen der [Azure PowerShell für MySQL-Cmdlets](../../howto-configure-server-parameters-using-powershell.md) zum Durchführen der Änderungen abgerufen und festgelegt werden.
 
 Führen Sie das folgende PowerShell-Skript aus, um alle Parameter abzurufen:
 
@@ -47,10 +49,10 @@ $serverName = "{SERVER\_NAME}";
 Get-AzMySqlConfiguration -ResourceGroupName $rgName -ServerName $serverName
 ```
 
-- Laden Sie das [Stammzertifikat für die Zertifizierungsstelle](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) nach c:\\temp herunter (erstellen Sie dieses Verzeichnis), wenn Sie das mysql-Tool verwenden möchten.
+- Falls Sie das mysql-Tool verwenden möchten, laden Sie das [Stammzertifikat für die Zertifizierungsstelle](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) in „c:\\temp“ herunter. (Das Verzeichnis muss erstellt werden.)
 
     > [!NOTE]
-    > Änderung des Zertifikats vorbehalten. Informationen zum aktuellen Zertifikat finden Sie unter [Konfigurieren von SSL-Verbindungen in der Anwendung für eine sichere Verbindung mit Azure Database for MySQL](/azure/mysql/howto-configure-ssl).
+    > Das Zertifikat kann sich ändern. Informationen zum aktuellen Zertifikat finden Sie unter [Konfigurieren von SSL-Verbindungen in der Anwendung für eine sichere Verbindung mit Azure Database for MySQL](../../howto-configure-ssl.md).
     
 - Führen Sie folgenden Befehl an einer Eingabeaufforderung aus, und vergewissern Sie sich, dass die Token aktualisiert wurden:
 
@@ -66,11 +68,11 @@ Um die Migration zu unterstützen, legen Sie die MySQL-Zielinstanzparameter so f
 
 - `max\_allowed\_packet`: Legen Sie den Parameter auf `1073741824` (d. h. 1 GB) oder die größte Größe einer Zeile in der Datenbank fest, um Überlaufprobleme aufgrund langer Zeilen zu vermeiden. Passen Sie diesen Parameter ggf. an, wenn große BLOB-Zeilen abgerufen (oder gelesen) werden müssen.
 
-- `innodb\_buffer\_pool\_size`: Skalieren Sie den Server im Portal auf der Tarifseite während der Migration auf die arbeitsspeicheroptimierte SKU mit 32 virtuellen Kernen hoch, um die innodb\_buffer\_pool\_size zu erhöhen. Innodb\_buffer\_pool\_size kann nur durch Hochskalieren von Computeressourcen für Azure Database for MySQL-Server erhöht werden. Informationen zum maximalen Wert für den Tarif finden Sie unter [Serverparameter in Azure Database for MySQL](/azure/mysql/concepts-server-parameters#innodb_buffer_pool_size). Der maximale Wert in einem arbeitsspeicheroptimiertem System mit 32 virtuellen Kernen ist `132070244352`.
+- `innodb\_buffer\_pool\_size`: Skalieren Sie den Server im Portal auf der Tarifseite während der Migration auf die arbeitsspeicheroptimierte SKU mit 32 virtuellen Kernen hoch, um „innodb\_buffer\_pool\_size“ zu erhöhen. „Innodb\_buffer\_pool\_size“ kann nur durch Hochskalieren von Computeressourcen für den Azure Database for MySQL-Server erhöht werden. Informationen zum maximalen Wert für den Tarif finden Sie unter [Serverparameter in Azure Database for MySQL](../../concepts-server-parameters.md#innodb_buffer_pool_size). Der maximale Wert in einem arbeitsspeicheroptimiertem System mit 32 virtuellen Kernen ist `132070244352`.
 
 - `innodb\_io\_capacity` & `innodb\_io\_capacity\_max`: Ändern Sie den Parameter in `9000`, um die E/A-Nutzung zu verbessern und die Migrationsgeschwindigkeit zu optimieren.
 
-- `max\_connections`: Wenn Sie ein Tool verwenden, das mehrere Threads generiert, um den Durchsatz zu erhöhen, erhöhen Sie die Anzahl der Verbindungen, damit dieses Tool unterstützt wird. Der Standardwert ist `151`, der maximale Wert ist `5000`.
+- `max\_connections`: Wenn Sie ein Tool verwenden, das mehrere Threads generiert, um den Durchsatz zu erhöhen, erhöhen Sie die Anzahl von Verbindungen, um das Tool zu unterstützen. Der Standardwert ist `151`, der maximale Wert ist `5000`.
 
     > [!NOTE]
     > Führen Sie die Skalierung mit Bedacht durch. Einige Vorgänge können nicht rückgängig gemacht werden, z. B. die Speicherskalierung.
@@ -107,15 +109,15 @@ Nachdem die Datenbankobjekte und Benutzer aus dem Quellsystem migriert wurden, k
 
 - Öffnen Sie MySQL Workbench, und stellen Sie eine Verbindung als Stammbenutzer der lokalen Datenbank her.
 
-- Wählen Sie unter \*\*Verwaltung\*\* die Option \*\*Datenexport\*\* aus. Wählen Sie das Schema der **reg\_app** aus.
+- Wählen Sie unter \*\*Verwaltung\*\* die Option \*\*Datenexport\*\* aus. Wählen Sie das Schema „**reg\_app**“ aus.
 
-- Wählen Sie unter **Zu exportierende Objekte** die Option **Gespeicherte Prozeduren und Funktionen sichern**, **Ereignisse sichern** und **Trigger sichern** aus.
+- Wählen Sie unter **Zu exportierende Objekte** die Optionen **Gespeicherte Prozeduren und Funktionen sichern**, **Ereignisse sichern** und **Trigger sichern** aus.
 
 - Wählen Sie unter **Exportoptionen** die Option **In eigenständige Datei exportieren** aus.
 
-- Aktivieren Sie außerdem das Kontrollkästchen **Erstellungsschema einschließen**. Die folgende Abbildung veranschaulicht die richtige mysqldump-Konfiguration.
+- Aktivieren Sie außerdem das Kontrollkästchen **Erstellungsschema einschließen**. Die folgende Abbildung zeigt die korrekte mysqldump-Konfiguration:
 
-    ![Erstellungsschema einschließen](./media/image6.jpg)
+    ![Einschließen des Erstellungsschemas](./media/image6.jpg)
 
     **Test**
 
@@ -127,22 +129,22 @@ Nachdem die Datenbankobjekte und Benutzer aus dem Quellsystem migriert wurden, k
 
 - Wählen Sie die Registerkarte **Exportfortschritt** aus.
 
-- Wählen Sie **Export starten** aus, und beachten Sie, dass MySQL Workbench Aufrufe an das `mysqldump`-Tool ausführt.
+- Wählen Sie **Export starten** aus. Daraufhin werden von MySQL Workbench Aufrufe an das Tool `mysqldump` übermittelt.
 
 - Öffnen Sie das neu erstellte Exportskript.
 
-- Suchen Sie alle `DEFINER`-Anweisungen, und ändern Sie sie entweder in einen gültigen Benutzer, oder entfernen Sie sie vollständig.
+- Ändern Sie alle Anweisungen vom Typ `DEFINER` entweder in einen gültigen Benutzer, oder entfernen Sie sie vollständig.
 
 > [!NOTE]
 > Dies kann erreicht werden, indem `--skip-definer` im mysqldump-Befehl übergeben wird. Dies ist keine Option in der MySQL Workbench. Daher müssen die Zeilen in den Exportbefehlen manuell entfernt werden. Wir weisen hier zwar auf vier Elemente hin, die entfernt werden müssen. Es kann aber auch andere Elemente geben, die bei der Migration von einer MySQL-Version zu einer anderen Fehler verursachen können (z. B. neue reservierte Wörter).
 
-- Suchen Sie `SET GLOBAL`-Anweisungen, und ändern Sie sie entweder in einen gültigen Benutzer, oder entfernen Sie sie vollständig.
+- Ändern Sie Anweisungen vom Typ `SET GLOBAL` entweder in einen gültigen Benutzer, oder entfernen Sie sie vollständig.
 
 - Achten Sie darauf, dass `sql\_mode` nicht auf `NO\_AUTO\_CREATE\_USER` festgelegt ist.
 
-- Entfernen Sie die `hello\_world`-Funktion.
+- Entfernen Sie die Funktion `hello\_world`.
 
-- Erstellen Sie in MySQL Workbench eine neue Verbindung zu Azure Database for MySQL.
+- Erstellen Sie in MySQL Workbench eine neue Verbindung mit Azure Database for MySQL.
 
     - Geben Sie als Hostnamen den vollständigen Server-DNS ein (z. B. `servername.mysql.database.azure.com`).
 
@@ -152,7 +154,7 @@ Nachdem die Datenbankobjekte und Benutzer aus dem Quellsystem migriert wurden, k
 
     - Navigieren Sie für die SSL-Zertifizierungsstellendatei zur Schlüsseldatei **BaltimoreCyberTrustRoot.crt.cer**.
 
-    - Wählen Sie **Verbindung testen** aus, und vergewissern Sie sich, dass die Verbindung hergestellt wird.
+    - Wählen Sie **Verbindung testen** aus, und vergewissern Sie sich, dass die Verbindung erfolgreich hergestellt wird.
 
     - Klicken Sie auf **OK**.
 
@@ -160,7 +162,7 @@ Nachdem die Datenbankobjekte und Benutzer aus dem Quellsystem migriert wurden, k
 
         **Das Dialogfeld „MySQL-Verbindung“ wird angezeigt.**
 
-- Wählen Sie **Datei–\>SQL-Skript öffnen** aus.
+- Wählen Sie **Datei \> SQL-Skript öffnen** aus.
 
 - Navigieren Sie zur Sicherungsdatei, und wählen Sie **Öffnen** aus.
 
@@ -180,7 +182,7 @@ Nachdem die Datenbankobjekte und Benutzer aus dem Quellsystem migriert wurden, k
 
 ## <a name="revert-server-parameters"></a>Ändern von Serverparametern
 
-Die folgenden Parameter können in der Azure Database for MySQL Zielinstanz geändert werden. Diese Parameter können über das Azure-Portal oder mithilfe der [Azure PowerShell für MySQL-Cmdlets](/azure/mysql/howto-configure-server-parameters-using-powershell) festgelegt werden.
+Die folgenden Parameter können in der Azure Database for MySQL Zielinstanz geändert werden. Diese Parameter können über das Azure-Portal oder mithilfe der [Azure PowerShell für MySQL-Cmdlets](../../howto-configure-server-parameters-using-powershell.md) festgelegt werden.
 
 ```
 $rgName = "YourRGName";
@@ -206,7 +208,7 @@ az webapp config appsettings set -g $rgName -n $app_name
 ```
 
 > [!NOTE]
-> Denken Sie daran, dass Sie die Verbindungszeichenfolge im Portal festlegen können.
+> Denken Sie daran, dass Sie die Verbindungszeichenfolge über das Portal festlegen können.
 
 - Starten Sie die App Service-API neu.
 
@@ -215,6 +217,8 @@ az webapp restart -g $rgName -n $app\_name
 ```
 Sie haben erfolgreich eine Migration einer lokalen Instanz zu Azure Database for MySQL durchgeführt\!  
 
+
+## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
 > [Verwaltung nach der Migration](./10-post-migration-management.md)

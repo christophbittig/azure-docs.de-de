@@ -3,14 +3,15 @@ metadata:
   title: 'Häufig gestellte Fragen: Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern'
   description: Enthält Antworten auf häufig gestellte Fragen zur Sicherung von SQL Server-Datenbanken auf Azure-VMs mit Azure Backup.
   ms.reviewer: vijayts
-  ms.topic: conceptual
-  ms.date: 05/07/2021
-  ms.openlocfilehash: 0c53b52f38103790ae5439e33d81c268756b5eec
-  ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+  ms.topic: article
+  ms.service: backup
+  ms.date: 08/20/2021
+  ms.openlocfilehash: d8c04eead12e3c0e96cf72e7492c52ccdb49686e
+  ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 05/07/2021
-  ms.locfileid: "111907235"
+  ms.lasthandoff: 08/27/2021
+  ms.locfileid: "123108915"
 title: Häufig gestellte Fragen zu SQL Server-Datenbanken, die auf einer Azure VM-Sicherungsinstanz ausgeführt werden
 summary: >
   In diesem Artikel werden häufige Fragen zum Sichern von SQL Server-Datenbanken beantwortet, die auf virtuellen Azure-Computern (VMs) ausgeführt werden und für die der Dienst [Azure Backup](backup-overview.md) genutzt wird.
@@ -75,18 +76,6 @@ sections:
 
       > Auf der Benutzeroberfläche können Sie weiterhin jederzeit eine beliebige Anzahl von Sicherungen planen. Diese werden allerdings in einem gleitenden Fenster von beispielsweise jeweils 5 verarbeitet, wie im obigen Beispiel gezeigt.
   - question: >
-      Kann ich eine vollständige Sicherung aus einem sekundären Replikat ausführen?
-    answer: >
-      Gemäß den SQL-Einschränkungen können Sie für das sekundäre Replikat eine Sicherung vom Typ „Nur vollständig kopieren“ ausführen. Eine vollständige Sicherung ist jedoch nicht zulässig.
-  - question: >
-      Kann ich Verfügbarkeitsgruppen lokal schützen?
-    answer: >
-      Nein. Azure Backup schützt SQL Server-Datenbanken, die in Azure ausgeführt werden. Wenn eine Verfügbarkeitsgruppe auf Azure und lokale Computer verteilt ist, kann die Verfügbarkeitsgruppe nur geschützt werden, sofern das primäre Replikat in Azure ausgeführt wird. Außerdem werden mit Azure Backup nur die Knoten geschützt, die in derselben Azure-Region wie der Recovery Services-Tresor ausgeführt werden.
-  - question: >
-      Kann ich Verfügbarkeitsgruppen regionsübergreifend schützen?
-    answer: >
-      Der Recovery Services-Tresor von Azure Backup kann alle Knoten erkennen und schützen, die sich in derselben Region wie der Tresor befinden. Wenn sich Ihre SQL Server Always On-Verfügbarkeitsgruppe über mehrere Azure-Regionen erstreckt, richten Sie die Sicherung über die Region ein, die über den primären Knoten verfügt. Azure Backup kann alle Datenbanken in der Verfügbarkeitsgruppe gemäß Ihrer Sicherungseinstellung erkennen und schützen. Wenn Ihre Sicherungseinstellung nicht erfüllt wird, tritt für Sicherungen ein Fehler auf, und die entsprechende Warnung wird angezeigt.
-  - question: >
       Erstellen erfolgreiche Sicherungsaufträge Warnungen?
     answer: >
       Nein. Erfolgreiche Sicherungsaufträge generieren keine Warnungen. Warnungen werden nur für Sicherungsaufträge gesendet, bei denen ein Fehler aufgetreten ist. Ausführliche Informationen zum Verhalten von Portalwarnungen finden Sie [hier](backup-azure-monitoring-built-in-monitor.md). Falls Sie aber daran interessiert sind, Benachrichtigungen auch für erfolgreiche Aufträge zu erhalten, können Sie Sicherungen [über Azure Monitor überwachen](backup-azure-monitoring-use-azuremonitor.md).
@@ -117,7 +106,7 @@ sections:
   - question: >
       Warum kann ich eine hinzugefügte Datenbank für eine Instanz mit automatischem Schutz nicht sehen?
     answer: >
-      Eine Datenbank, die Sie [einer automatisch geschützten Instanz hinzufügen](backup-sql-server-database-azure-vms.md#enable-auto-protection), wird ggf. nicht sofort unter den geschützten Elementen angezeigt. Dies liegt daran, dass die Ermittlung in der Regel alle 8 Stunden ausgeführt wird. Sie können neue Datenbanken aber sofort erkennen und schützen, wenn Sie manuell eine Ermittlung durchführen, indem Sie **Datenbanken neu ermitteln**  auswählen. Dies ist in der folgenden Abbildung dargestellt:
+      Eine Datenbank, die Sie [einer automatisch geschützten Instanz hinzufügen](backup-sql-server-database-azure-vms.md#enable-auto-protection), wird ggf. nicht sofort unter den geschützten Elementen angezeigt. Dies liegt daran, dass der Ermittlungsvorgang in der Regel alle acht Stunden ausgeführt wird und für den tatsächlichen Systemschutz zusätzliche Zeit benötigt wird, was von der Größe der VM abhängt. Sie können neue Datenbanken aber sofort erkennen, wenn Sie manuell eine Ermittlung durchführen, indem Sie wie in der folgenden Abbildung dargestellt auf **Datenbanken neu ermitteln** klicken:
 
         ![Manuelles Ermitteln einer neu hinzugefügten Datenbank](./media/backup-azure-sql-database/view-newly-added-database.png)
   - question: >

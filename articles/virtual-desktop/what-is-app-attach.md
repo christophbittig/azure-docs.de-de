@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 3da80de79490ce21ae99a4dd7dd36c08054cd666
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: d55308876db0928bef4fdf3b89ace10305f7c47d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111751575"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339068"
 ---
 # <a name="what-is-msix-app-attach"></a>Was ist das MSIX-Feature zum Anfügen von Apps?
 
@@ -56,4 +56,4 @@ Die folgende Tabelle vergleicht die wichtigsten Funktionen des MSIX-Features zum
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Mehr über das MSIX-Feature zum Anfügen von Apps erfahren Sie in unserem [Glossar](app-attach-glossary.md) und den [häufig gestellten Fragen](app-attach-faq.md). Oder legen Sie direkt mit dem [Einrichten des MSIX-Features zum Anfügen von Apps](app-attach.md) los.
+Mehr über das MSIX-Feature zum Anfügen von Apps erfahren Sie in unserem [Glossar](app-attach-glossary.md) und den [häufig gestellten Fragen](app-attach-faq.yml). Oder legen Sie direkt mit dem [Einrichten des MSIX-Features zum Anfügen von Apps](app-attach.md) los.

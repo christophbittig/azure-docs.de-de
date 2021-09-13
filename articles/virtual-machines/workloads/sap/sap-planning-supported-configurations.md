@@ -13,18 +13,18 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/11/2020
+ms.date: 08/17/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 274db058f9f291d720fc350bb23f7bfdde2791e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3975f23ad184ec04849fca57ef37d5fe57c2b48f
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101670939"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122343467"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>SAP-Workload in Szenarien mit Unterstützung von virtuellen Azure-Computern
-Der Entwurf einer SAP NetWeaver-, Business One-, `Hybris`- oder S/4HANA-Systemarchitektur in Azure eröffnet eine Vielzahl von Möglichkeiten für verschiedene Architekturen und Werkzeuge, um zu einer skalierbaren, effizienten und hochverfügbaren Bereitstellung zu gelangen. Abhängig vom verwendeten Betriebssystem oder DBMS gelten jedoch Einschränkungen. Darüber hinaus werden nicht alle Szenarien, die lokal unterstützt werden, in gleicher Weise auch in Azure unterstützt. Das vorliegende Dokument stellt die unterstützten Nicht-Hochverfügbarkeitskonfigurationen und Hochverfügbarkeitskonfigurationen sowie Architekturen vor, die ausschließlich Azure-VMs verwenden. Informationen zu unterstützten Szenarien mit [großen HANA-Instanzen](./hana-overview-architecture.md) finden Sie im Artikel [Unterstützte Szenarien für große HANA-Instanzen](./hana-supported-scenario.md). 
+Der Entwurf einer SAP NetWeaver-, Business One-, `Hybris`- oder S/4HANA-Systemarchitektur in Azure eröffnet viele Möglichkeiten für verschiedene Architekturen und Tools, um zu einer skalierbaren, effizienten und hochverfügbaren Bereitstellung zu gelangen. Abhängig vom verwendeten Betriebssystem oder DBMS gelten jedoch Einschränkungen. Darüber hinaus werden nicht alle Szenarien, die lokal unterstützt werden, in gleicher Weise auch in Azure unterstützt. Das vorliegende Dokument stellt die unterstützten Nicht-Hochverfügbarkeitskonfigurationen und Hochverfügbarkeitskonfigurationen sowie Architekturen vor, die ausschließlich Azure-VMs verwenden. Informationen zu unterstützten Szenarien mit [großen HANA-Instanzen](./hana-overview-architecture.md) finden Sie im Artikel [Unterstützte Szenarien für große HANA-Instanzen](./hana-supported-scenario.md). 
 
 
 ## <a name="2-tier-configuration"></a>Konfiguration mit 2 Ebenen
@@ -90,7 +90,7 @@ Zur Vereinfachung haben wir in der SAP-Anwendungsschicht nicht zwischen SAP Cent
 ## <a name="high-availability-protection-for-the-sap-dbms-layer"></a>Hochverfügbarkeitsschutz für die SAP-DBMS-Ebene
 Bei der Bereitstellung von SAP-Produktionssystemen sollten Sie den unmittelbar betriebsbereiten Standbytyp für Hochverfügbarkeitskonfigurationen in Betracht ziehen. Insbesondere bei SAP HANA-Systemen, bei denen Daten in den Arbeitsspeicher geladen werden müssen, bevor erneut die volle Leistung und Skalierbarkeit erreicht werden kann, ist die Azure-Dienstreparatur zur Sicherstellung von Hochverfügbarkeit nicht ideal. 
 
-Im Allgemeinen unterstützt Microsoft nur Hochverfügbarkeitskonfigurationen und Softwarepakete, die im Abschnitt zur SAP-Workload auf docs.microsoft.com beschrieben sind. Sie können diese Informationen auch im SAP-Hinweis [Nr. 1928533](https://launchpad.support.sap.com/#/notes/1928533) nachlesen. Microsoft bietet keine Unterstützung für Hochverfügbarkeits-Softwareframeworks von Drittanbietern, die von Microsoft in Verbindung mit der SAP-Workload nicht dokumentiert sind. In diesen Fällen muss die Unterstützung der Hochverfügbarkeitskonfiguration durch den Drittanbieter des Hochverfügbarkeitsframeworks erfolgen, der von Ihnen als Kunde in den Prozess eingebunden werden muss. Ausnahmen werden in diesem Artikel genannt. 
+Im Allgemeinen unterstützt Microsoft nur Hochverfügbarkeitskonfigurationen und Softwarepakete, die im Abschnitt zur SAP-Workload auf docs.microsoft.com beschrieben sind. Sie können diese Informationen auch im SAP-Hinweis [Nr. 1928533](https://launchpad.support.sap.com/#/notes/1928533) nachlesen. Microsoft bietet keine Unterstützung für Hochverfügbarkeits-Softwareframeworks von Drittanbietern, die von Microsoft mit der SAP-Workload nicht dokumentiert sind. In diesen Fällen muss die Unterstützung der Hochverfügbarkeitskonfiguration durch den Drittanbieter des Hochverfügbarkeitsframeworks erfolgen, der von Ihnen als Kunde in den Prozess eingebunden werden muss. Ausnahmen werden in diesem Artikel genannt. 
 
 Im Allgemeinen unterstützt Microsoft eine begrenzte Anzahl von Hochverfügbarkeitskonfigurationen für Azure-VMs oder große HANA-Instanzen. Informationen zu den unterstützten Szenarien mit großen HANA-Instanzen finden Sie im Artikel [Unterstützte Szenarien für große HANA-Instanzen](./hana-supported-scenario.md).
 
@@ -177,7 +177,7 @@ In der gezeigten Liste wird das Betriebssystem Oracle Linux nicht erwähnt. Orac
 
 
 ### <a name="supported-storage-with-the-sap-central-services-scenarios-listed-above"></a>Unterstützter Speicher für die oben aufgeführten Szenarien mit SAP Central Services
-Da nur eine Teilmenge der Azure-Speichertypen hochverfügbare NFS- oder SMB-Freigaben bieten, die für den Einsatz in unseren SAP Central Services Cluster-Szenarien geeignet sind, finden Sie nachfolgend eine Liste der unterstützten Speichertypen.
+Da nur eine Teilmenge der Azure-Speichertypen hochverfügbare NFS- oder SMB-Freigaben bieten, die für den Einsatz in unseren SAP Central Services Cluster-Szenarios geeignet sind, finden Sie nachfolgend eine Liste der unterstützten Speichertypen.
 
 - Ein Windows Server-Failovercluster mit Windows-Dateiserver für das Aufskalieren kann – mit Ausnahme von Azure NetApp Files – für alle nativen Azure-Speichertypen bereitgestellt werden. Es wird jedoch empfohlen, aufgrund von überlegenen Service-Level-Vereinbarungen in Bezug auf Durchsatz und IOPS Storage Premium zu nutzen.
 - Ein Windows Server-Failovercluster mit SMB in Azure NetApp Files wird für Azure NetApp Files unterstützt. SMB-Freigaben werden in Azure-Dateidiensten aktuell **NICHT** unterstützt.
@@ -246,7 +246,7 @@ In der Region für die Notfallwiederherstellung wird die Verwendung einer kleine
 - Eine Größenänderung zwischen VM-Familien kann ein Problem darstellen, wenn die verschiedenen VMs in einer Verfügbarkeitsgruppe zusammengefasst sind oder wenn die Größenänderung zwischen VMs der M-Serie und der Mv2-Familie erfolgen soll.
 - Es muss ausreichend CPU-Kapazität und Arbeitsspeicher vorhanden sein, damit die Datenbankinstanz den Änderungsstream mit minimaler Verzögerung empfangen und diese Änderungen mit minimaler Verzögerung auf die Daten anwenden kann.  
 
-Weitere Details zu den Beschränkungen für verschiedene VM-Größen finden Sie [hier](../../sizes.md). 
+Weitere Details zu den Beschränkungen für verschiedene VM-Größen finden Sie [hier](../../sizes.md).
 
 Eine weitere unterstützte Methode zur Bereitstellung eines Notfallwiederherstellungsziels ist die Installation einer zweiten DBMS-Instanz auf einer VM, die eine nicht in der Produktion eingesetzte DBMS-Instanz einer nicht in der Produktion eingesetzten SAP-Instanz ausführt. Dies kann eine Herausforderung darstellen, da Sie herausfinden müssen, welche Mengen an Arbeitsspeicher, CPU-Ressourcen, Netzwerkbandbreite und Speicherbandbreite für die jeweiligen Zielinstanzen benötigt werden, die im Notfallwiederherstellungsszenario als Hauptinstanz fungieren sollen. Insbesondere in HANA wird dringend empfohlen, die als Notfallwiederherstellungsziel verwendete Instanz auf einem gemeinsam genutzten Host zu konfigurieren, damit die Daten nicht vorab in die Zielinstanz für die Notfallwiederherstellung geladen werden.
 
@@ -269,7 +269,7 @@ Informationen zu Notfallwiederherstellungsszenarien für große HANA-Instanzen f
 ## <a name="non-dbms-layer"></a>Nicht-DBMS-Ebene
 Für die SAP-Anwendungsschicht und eventuell benötigte Freigaben oder Speicherorte nutzen Kunden hauptsächlich diese beiden Szenarien:
 
-- Die Notfallwiederherstellungsziele in der zweiten Azure-Region werden weder für Produktions- noch für Nicht-Produktionszwecke genutzt. In diesem Szenario werden die VMs, die als Notfallwiederherstellungsziel fungieren, idealerweise nicht bereitgestellt, und das Image sowie Änderungen an den Images der SAP-Anwendungsschicht aus der Produktion werden in die Region für die Notfallwiederherstellung repliziert. Diese Aufgabe kann beispielsweise durch [Azure Site Recovery](../../../site-recovery/azure-to-azure-move-overview.md) erfüllt werden. Azure Site Recovery bietet Unterstützung für Azure-zu-Azure-Replikationsszenarien wie diese. 
+- Die Notfallwiederherstellungsziele in der zweiten Azure-Region werden weder für Produktions- noch für Nicht-Produktionszwecke genutzt. In diesem Szenario werden die VMs, die als Notfallwiederherstellungsziel fungieren, idealerweise nicht bereitgestellt, und das Image sowie Änderungen an den Images der SAP-Anwendungsschicht aus der Produktion werden in die Region für die Notfallwiederherstellung repliziert. Diese Aufgabe kann beispielsweise durch [Azure Site Recovery](../../../site-recovery/azure-to-azure-move-overview.md) erfüllt werden. Azure Site Recovery bietet Unterstützung für ein Azure-zu-Azure-Replikationsszenario wie dieses. 
 - Die Notfallwiederherstellungsziele sind VMs, die tatsächlich von Nicht-Produktionssystemen verwendet werden. Die gesamte SAP-Landschaft verteilt sich auf zwei verschiedene Azure-Regionen, von denen die eine Region in der Regel Produktionssysteme und die andere Region Nicht-Produktionssysteme enthält. Bei vielen Kundenbereitstellungen verfügt der Kunde über ein Nicht-Produktionssystem, das einem Produktionssystem entspricht. Der Kunde hat Produktionsanwendungsinstanzen in der Anwendungsschicht der Nicht-Produktionssysteme vorinstalliert. Im Falle eines Failovers werden in diesem Szenario die nicht produktionsbezogenen Instanzen heruntergefahren, die virtuellen Namen der Produktions-VMs in die Nicht-Produktions-VMs verschoben (nach Zuweisung neuer IP-Adressen in DNS) und anschließend die vorinstallierten Produktionsinstanzen in Betrieb genommen.
 
 ### <a name="sap-central-services-clusters"></a>SAP Central Services-Cluster
@@ -278,7 +278,7 @@ SAP Central Services-Cluster, die gemeinsam genutzte Datenträger (Windows), SMB
 
 
 ## <a name="non-supported-scenario"></a>Nicht unterstützte Szenarien
-Nachfolgend finden Sie eine Liste der Szenarien, die für die SAP-Workload in Azure-Architekturen nicht unterstützt werden. **Nicht unterstützt** bedeutet, dass SAP und Microsoft nicht in der Lage sind, diese Konfigurationen zu unterstützen und auf einen eventuell beteiligten Drittanbieter zurückgreifen müssen, der die Software zur Einrichtung solcher Architekturen bereitstellt. Zwei der Kategorien sind:
+Nachfolgend finden Sie eine Liste der Szenarios, die für die SAP-Workload in Azure-Architekturen nicht unterstützt werden. **Nicht unterstützt** bedeutet, dass SAP und Microsoft nicht in der Lage sind, diese Konfigurationen zu unterstützen und auf einen eventuell beteiligten Drittanbieter zurückgreifen müssen, der die Software zur Einrichtung solcher Architekturen bereitstellt. Zwei der Kategorien sind:
 
 - Speichersoftwareappliances: Im Azure Marketplace werden verschiedene Speichersoftwareappliances angeboten. Einige Anbieter stellen eine eigene Dokumentation zur Verwendung dieser Speichersoftwareappliances in Azure im Zusammenhang mit SAP-Software bereit. Die Unterstützung von Konfigurationen oder Bereitstellungen, die solche Speichersoftwareappliances beinhalten, muss vom Anbieter dieser Speichersoftwareappliances bereitgestellt werden. Dies wird auch im [SAP-Supporthinweis Nr. 2015553](https://launchpad.support.sap.com/#/notes/2015553) erläutert.
 - Hochverfügbarkeitsframeworks: Nur Pacemaker und Windows Server-Failovercluster werden als Hochverfügbarkeitsframeworks für die SAP-Workload in Azure unterstützt. Wie bereits erwähnt, wird die SIOS-Lösung `Datakeeper` von Microsoft beschrieben und dokumentiert. Dennoch müssen die Komponenten von SIOS `Datakeeper` durch SIOS als Anbieter dieser Komponenten unterstützt werden. SAP hat in verschiedenen SAP-Hinweisen auch andere zertifizierte Hochverfügbarkeitsframeworks aufgeführt. Einige dieser Frameworks wurden vom jeweiligen Drittanbieter auch für Azure zertifiziert. Trotzdem muss die Unterstützung für Konfigurationen, die diese Produkte verwenden, durch den Produktanbieter bereitgestellt werden. Verschiedene Anbieter integrieren ihre Produkte auf unterschiedliche Weise in die SAP-Unterstützungsprozesse. Sie sollten klären, welcher Unterstützungsprozess für den jeweiligen Anbieter am besten funktioniert, bevor Sie sich für die Verwendung des Produkts in SAP-Konfigurationen entscheiden, die in Azure eingesetzt werden.
@@ -295,7 +295,7 @@ Weitere Szenarien, die nicht unterstützt werden, sind folgende:
     - Bereitstellung der beiden Ebenen mit zwei verschiedenen Cloudanbietern. Dies wäre z. B. der Fall, wenn die DBMS-Ebene in einer Oracle-Cloudinfrastruktur und die Anwendungsschicht in Azure bereitgestellt würde.
 - HANA-Pacemaker-Clusterkonfigurationen mit mehreren Instanzen
 - Windows-Clusterkonfigurationen mit gemeinsam genutzten Datenträgern über SOFS oder SMB in Azure NetApp Files für unter Windows unterstützte SAP-Datenbanken. Stattdessen wird die Verwendung einer nativen Hochverfügbarkeitsreplikation der jeweiligen Datenbanken und die Verwendung separater Speicherstapel empfohlen.
-- Bereitstellung von unter Linux unterstützten SAP-Datenbanken mit Datenbankdateien in NFS-Freigaben zusätzlich zu Azure NetApp Files, ausgenommen ist SAP HANA.
+- Bereitstellung von unter Linux unterstützten SAP-Datenbanken mit Datenbankdateien in NFS-Freigaben zusätzlich zu Azure NetApp Files, ausgenommen ist SAP HANA, Oracle auf Oracle Linux und Db2 auf SUSE und Red Hat.
 - Bereitstellung von Oracle DBMS auf einem anderen Gastbetriebssystem als Windows und Oracle Linux. Siehe auch [SAP-Supporthinweis Nr. 2039619](https://launchpad.support.sap.com/#/notes/2039619)
 
 Szenarien, die nicht getestet wurden und für die deshalb keine Erfahrungswerte vorliegen:

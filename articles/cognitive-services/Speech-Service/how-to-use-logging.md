@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 73e42ac1f076b67d31cbad0823ea63db40045c1e
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 584e200beac484ea742d51341a9cb93f0cfc4a41
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746031"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340001"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>Aktivieren der Protokollierung im Speech SDK
 
@@ -47,6 +47,12 @@ config.set_property(speechsdk.PropertyId.Speech_LogFilename, "LogfilePathAndName
 
 ```objc
 [config setPropertyTo:@"LogfilePathAndName" byId:SPXSpeechLogFilename];
+```
+
+```go
+import ("github.com/Microsoft/cognitive-services-speech-sdk-go/common")
+
+config.SetProperty(common.SpeechLogFilename, "LogfilePathAndName")
 ```
 
 Sie können über das Konfigurationsobjekt eine Erkennung erstellen. Dies aktiviert die Protokollierung für alle Erkennungen.
@@ -141,6 +147,31 @@ self.speechConfig!.setPropertyTo(logFilePath!.absoluteString, by: SPXPropertyId.
 ```
 
 Weitere Informationen zum iOS-Dateisystem finden Sie [hier](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html).
+
+## <a name="logging-with-multiple-recognizers"></a>Protokollierung mit mehreren Erkennungsmodulen
+
+Obwohl ein Protokolldatei-Ausgabepfad als Konfigurationseigenschaft in einem `SpeechRecognizer` oder einem anderen SDK-Objekt angegeben wird, ist die SDK-Protokollierung eine *prozessweite* Singleton-Einrichtung ohne Konzept einzelner Instanzen. Sie können dies als `SpeechRecognizer`-Konstruktor (oder ähnlich) einordnen, der implizit eine statische und interne „Configure Global Logging“-Routine mit den in der entsprechenden verfügbaren `SpeechConfig` aufruft.
+
+Dies bedeutet, dass Sie beispielsweise nicht sechs parallele Erkennungsmodule für die gleichzeitige Ausgabe in sechs separate Dateien konfigurieren können. Stattdessen konfiguriert das neueste erstellte Erkennungsmodul die globale Protokollierungsinstanz für die Ausgabe in der Datei, die in ihren Konfigurationseigenschaften angegeben ist, und die ganze SDK-Protokollierung wird in diese Datei ausgegeben.
+
+Dies bedeutet auch, dass die Lebensdauer des Objekts, für das die Protokollierung konfiguriert wurde, nicht an die Dauer der Protokollierung gebunden ist. Die Protokollierung wird als Reaktion auf die Veröffentlichung eines SDK-Objekts nicht angehalten und fortgesetzt, solange keine neue Protokollierungskonfiguration bereitgestellt wird. Nach dem Start kann die prozessweite Protokollierung beendet werden, indem der Protokolldateipfad beim Erstellen eines neuen Objekts auf eine leere Zeichenfolge festgelegt wird.
+
+Um potenzielle Verwirrung bei der Konfiguration der Protokollierung für mehrere Instanzen zu reduzieren, kann es hilfreich sein, die Steuerung der Protokollierung von Objekten zu abstrahieren, die wirkliche Arbeit verrichten. Ein Beispielpaar von Hilfsroutinen:
+
+```cpp
+void EnableSpeechSdkLogging(const char* relativePath)
+{
+    auto configForLogging = SpeechConfig::FromSubscription("unused_key", "unused_region");
+    configForLogging->SetProperty(PropertyId::Speech_LogFilename, relativePath);
+    auto emptyAudioConfig = AudioConfig::FromStreamInput(AudioInputStream::CreatePushStream());
+    auto temporaryRecognizer = SpeechRecognizer::FromConfig(configForLogging, emptyAudioConfig);
+}
+
+void DisableSpeechSdkLogging()
+{
+    EnableSpeechSdkLogging("");
+}
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

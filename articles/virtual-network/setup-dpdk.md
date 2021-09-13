@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: f2771284925e35cea975febdabe2ca377a192df8
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 10639653c00fc5e781a9edd2b49c60f659d00966
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108127117"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355759"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Einrichten des DPDK auf einem virtuellen Linux-Computer
 
@@ -46,6 +46,7 @@ Die folgenden Distributionen aus dem Azure Marketplace werden unterstützt:
 | SLES 15 SP1  | 4.12.14-8.19-azure+          | 
 | RHEL 7.5     | 3.10.0-862.11.6.el7.x86_64+  | 
 | CentOS 7.5   | 3.10.0-862.11.6.el7.x86_64+  | 
+| Debian 10    | 4.19.0-1-cloud und höher              |
 
 Die aufgeführten Versionen sind die Mindestanforderungen. Neuere Versionen werden ebenfalls unterstützt.
 
@@ -61,7 +62,7 @@ Alle Azure-Regionen unterstützen DPDK.
 
 Auf der Linux-VM muss der beschleunigte Netzwerkbetrieb aktiviert sein. Die VM sollte mindestens zwei Netzwerkschnittstellen haben, davon eine für die Verwaltung. Die Aktivierung des beschleunigten Netzwerks auf der Verwaltungsschnittstelle wird nicht empfohlen. Weitere Informationen finden Sie unter [Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb](create-vm-accelerated-networking-cli.md).
 
-## <a name="install-dpdk"></a>Installieren von DPDK
+## <a name="install-dpdk-via-system-package-recommended"></a>Installieren von DPDK über das Systempaket (empfohlen)
 
 ### <a name="ubuntu-1804"></a>Ubuntu 18.04
 
@@ -83,15 +84,39 @@ sudo apt-get install -y dpdk
 sudo apt-get install -y dpdk
 ```
 
-### <a name="rhel75centos-75"></a>RHEL7.5/CentOS 7.5
+## <a name="install-dpdk-manually-not-recommended"></a>Manuelles Installieren von DPDK (nicht empfohlen)
+
+### <a name="install-build-dependencies"></a>Installieren von Buildabhängigkeiten
+
+#### <a name="ubuntu-1804"></a>Ubuntu 18.04
+
+```bash
+sudo add-apt-repository ppa:canonical-server/server-backports -y
+sudo apt-get update
+sudo apt-get install -y build-essential librdmacm-dev libnuma-dev libmnl-dev meson
+```
+
+#### <a name="ubuntu-2004-and-newer"></a>Ubuntu 20.04 und höher
+
+```bash
+sudo apt-get install -y build-essential librdmacm-dev libnuma-dev libmnl-dev meson
+```
+
+#### <a name="debian-10-and-newer"></a>Debian 10 und höher
+
+```bash
+sudo apt-get install -y build-essential librdmacm-dev libnuma-dev libmnl-dev meson
+```
+
+#### <a name="rhel75centos-75"></a>RHEL7.5/CentOS 7.5
 
 ```bash
 yum -y groupinstall "Infiniband Support"
 sudo dracut --add-drivers "mlx4_en mlx4_ib mlx5_ib" -f
-yum install -y gcc kernel-devel-`uname -r` numactl-devel.x86_64 librdmacm-devel libmnl-devel
+yum install -y gcc kernel-devel-`uname -r` numactl-devel.x86_64 librdmacm-devel libmnl-devel meson
 ```
 
-### <a name="sles-15-sp1"></a>SLES 15 SP1
+#### <a name="sles-15-sp1"></a>SLES 15 SP1
 
 **Azure-Kernel**
 
@@ -99,7 +124,7 @@ yum install -y gcc kernel-devel-`uname -r` numactl-devel.x86_64 librdmacm-devel 
 zypper  \
   --no-gpg-checks \
   --non-interactive \
-  --gpg-auto-import-keys install kernel-azure kernel-devel-azure gcc make libnuma-devel numactl librdmacm1 rdma-core-devel
+  --gpg-auto-import-keys install kernel-azure kernel-devel-azure gcc make libnuma-devel numactl librdmacm1 rdma-core-devel meson
 ```
 
 **Standardkernel**
@@ -108,16 +133,15 @@ zypper  \
 zypper \
   --no-gpg-checks \
   --non-interactive \
-  --gpg-auto-import-keys install kernel-default-devel gcc make libnuma-devel numactl librdmacm1 rdma-core-devel
+  --gpg-auto-import-keys install kernel-default-devel gcc make libnuma-devel numactl librdmacm1 rdma-core-devel meson
 ```
 
-## <a name="set-up-the-virtual-machine-environment-once"></a>Einmaliges Einrichten der VM-Umgebung
+### <a name="compile-and-install-dpdk-manually"></a>Manuelles Kompilieren und Installieren von DPDK
 
-1. [Laden Sie das aktuellste DPDK herunter.](https://core.dpdk.org/download) Für Azure ist Version 18.11 LTS oder 19.11 LTS erforderlich.
-2. Erstellen Sie die Standardkonfiguration mit `make config T=x86_64-native-linuxapp-gcc`.
-3. Aktivieren Sie Mellanox PMDs in der generierten Konfiguration mit `sed -ri 's,(MLX._PMD=)n,\1y,' build/.config`.
-4. Kompilieren Sie mit `make`.
-5. Installieren Sie mit `make install DESTDIR=<output folder>`.
+1. [Laden Sie das aktuellste DPDK herunter.](https://core.dpdk.org/download) Für Azure ist die Version 19.11 LTS oder höher erforderlich.
+2. Erstellen Sie die Standardkonfiguration mit `meson builddir`.
+3. Kompilieren Sie mit `ninja -C builddir`.
+4. Installieren Sie mit `DESTDIR=<output folder> ninja -C builddir install`.
 
 ## <a name="configure-the-runtime-environment"></a>Konfigurieren der Laufzeitumgebung
 

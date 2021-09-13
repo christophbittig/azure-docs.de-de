@@ -4,12 +4,12 @@ description: In diesem Artikel wird beschrieben, wie Sie Container Insights aktu
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: edca7e4e8f6a9ea8dd9efdaafab8c906efd671b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1921a0cc0aa15a5e877d64cbe2c7ad094f9e144f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101708270"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347106"
 ---
 # <a name="how-to-update-container-insights-to-enable-metrics"></a>Aktualisieren von Container Insights zum Aktivieren von Metriken
 
@@ -33,7 +33,7 @@ Ein Agent in Containern ist im Release der Version **microsoft/oms:ciprod0526202
 Bei beiden Prozessen wird die Rolle **Überwachungsmetriken veröffentlichen** dem Dienstprinzipal des Clusters oder der benutzerseitig zugewiesenen MSI für das Überwachungs-Add-On zugewiesen, sodass die vom Agent erfassten Daten für Ihre Clusterressource veröffentlicht werden können. Die Rolle „Überwachungsmetriken veröffentlichen“ verfügt nur über die Berechtigung zum Übertragen von Metriken per Pushvorgang an die Ressource. Das Ändern eines Zustands, Aktualisieren der Ressource oder Lesen von Daten ist nicht möglich. Weitere Informationen zur Rolle finden Sie unter [Herausgeber von Überwachungsmetriken](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher). Die Anforderung der Rolle „Herausgeber von Überwachungsmetriken“ gilt nicht für Kubernetes-Cluster mit Azure Arc-Aktivierung.
 
 > [!IMPORTANT]
-> Das Upgrade ist für Kubernetes-Cluster mit Azure Arc-Aktivierung nicht erforderlich, da sie bereits über die mindestens erforderliche Agent-Version verfügen.
+> Das Upgrade ist für Kubernetes-Cluster mit Azure Arc-Aktivierung nicht erforderlich, da sie bereits über die mindestens erforderliche Agent-Version verfügen. Das Zuweisen der Rolle **Überwachungsmetriken veröffentlichen** zum Dienstprinzipal des Clusters oder der vom Benutzer zugewiesenen MSI für das Überwachungs-Add-On wird automatisch durchgeführt, wenn Sie das Azure-Portal, Azure PowerShell oder die Azure CLI verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

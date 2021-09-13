@@ -10,12 +10,12 @@ ms.date: 02/03/2021
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 13491735f73cb1696f3c36f3434cc781a1e2b739
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 80c02416f5e1fb232d84b1311d261122dc7b9a35
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99526804"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113733662"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-directory-or-blob-with-net"></a>Erstellen einer SAS für die Benutzerdelegierung für einen Container, ein Verzeichnis oder ein Blob mit .NET
 
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie unter Verwendung von Azure AD-Anmeldein
 
 ## <a name="assign-azure-roles-for-access-to-data"></a>Zuweisen von Azure-Rollen für den Datenzugriff
 
-Wenn ein Azure AD-Sicherheitsprinzipal versucht, auf Blobdaten zuzugreifen, muss dieser Sicherheitsprinzipal über Berechtigungen für die Ressource verfügen. Dem Sicherheitsprinzipal muss eine Azure-Rolle zugewiesen werden, die den Zugriff auf Blobdaten in Azure Storage ermöglicht. Dabei spielt es keine Rolle, ob es sich bei dem Sicherheitsprinzipal um eine verwaltete Identität in Azure oder um ein Azure AD-Benutzerkonto handelt, mit dem Code in der Entwicklungsumgebung ausgeführt wird. Informationen zur Zuweisung von Berechtigungen per Azure RBAC finden Sie unter **Autorisieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory** im Abschnitt [Zuweisen von Azure-Rollen für Zugriffsrechte](../common/storage-auth-aad.md#assign-azure-roles-for-access-rights).
+Wenn ein Azure AD-Sicherheitsprinzipal versucht, auf Blobdaten zuzugreifen, muss dieser Sicherheitsprinzipal über Berechtigungen für die Ressource verfügen. Dem Sicherheitsprinzipal muss eine Azure-Rolle zugewiesen werden, die den Zugriff auf Blobdaten in Azure Storage ermöglicht. Dabei spielt es keine Rolle, ob es sich bei dem Sicherheitsprinzipal um eine verwaltete Identität in Azure oder um ein Azure AD-Benutzerkonto handelt, mit dem Code in der Entwicklungsumgebung ausgeführt wird. Weitere Informationen zum Zuweisen von Berechtigungen über die rollenbasierte Zugriffssteuerung in Azure finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blobdaten](assign-azure-role-data-access.md).
 
 [!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
 

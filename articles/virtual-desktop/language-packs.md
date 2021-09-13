@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/03/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 63565af9775779d89c44384e0bd45c8d01e4147c
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 1da0ca79af5569a7a6018c69441e0d33e9a5732f
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112006543"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122350092"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Hinzufügen von Language Packs zu einem Image für Windows 10 (mehrere Sitzungen)
 
@@ -58,6 +58,7 @@ Sie benötigen folgende Komponenten, um die Images für Windows 10 Enterprise (
           - [Windows 10, Version 2004, 20H2 oder 21H1 **2C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2102C.iso)
           - [Windows 10, Version 2004, 20H2 oder 21H1 **4B** LXP ISO](https://software-download.microsoft.com/download/sg/LanguageExperiencePack.2104B.iso)
           - [Windows 10, Version 2004, 20H2 oder 21H1 **5C** LXP ISO](https://software-download.microsoft.com/download/sg/LanguageExperiencePack.2105C.iso)
+          - [Windows 10, Version 2004, 20H2 oder 21H1 **7C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2107C.iso)
 
 - Eine Azure Files-Freigabe oder eine Dateifreigabe auf einer Windows-Dateiserver-VM
 

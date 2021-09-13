@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: b61e1e0b185355c06d10648f267895e819162318
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 522cf0ad115e1149d7746ecadef96ae9494a1d8c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111969709"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339953"
 ---
 # <a name="enable-zone-redundancy-for-azure-cache-for-redis"></a>Aktivieren der Zonenredundanz für Azure Cache for Redis
 In diesem Artikel erfahren Sie, wie Sie eine zonenredundante Azure Cache-Instanz über das Azure-Portal konfigurieren.
@@ -35,7 +35,7 @@ Führen Sie die folgenden Schritte aus, um einen Cache zu erstellen:
    
 1. Konfigurieren Sie auf der Seite **Grundlagen** die Einstellungen für den neuen Cache.
    
-    | Einstellung      | Vorgeschlagener Wert  | Beschreibung |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Abonnement** | Wählen Sie Ihr Abonnement aus. | Das Abonnement, unter dem diese neue Azure Cache for Redis-Instanz erstellt wird. | 
     | **Ressourcengruppe** | Wählen Sie eine Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für eine neue Ressourcengruppe ein. | Der Name der Ressourcengruppe, in der Ihr Cache und weitere Ressourcen erstellt werden. Wenn Sie alle Ihre App-Ressourcen in einer Ressourcengruppe zusammenfassen, können Sie sie einfacher gemeinsam verwalten oder löschen. | 
@@ -51,7 +51,7 @@ Führen Sie die folgenden Schritte aus, um einen Cache zu erstellen:
    
     :::image type="content" source="media/cache-how-to-zone-redundancy/create-zones.png" alt-text="Verfügbarkeitszonen":::
 
-1. Behalten Sie bei den anderen Optionen die Standardeinstellungen bei. 
+1. Konfigurieren Sie Ihre Einstellungen für das Clustering und/oder die RDB-Persistenz.  
 
     > [!NOTE]
     > Bei der Zonenredundanz wird derzeit keine AOF-Persistenz unterstützt, und sie funktioniert nicht zusammen mit der Georeplikation.
@@ -62,7 +62,7 @@ Führen Sie die folgenden Schritte aus, um einen Cache zu erstellen:
     Es dauert eine Weile, bis der Cache erstellt wird. Sie können den Fortschritt auf der Seite **Übersicht** von Azure Cache for Redis überwachen. Wenn **Wird ausgeführt** als **Status** angezeigt wird, ist der Cache einsatzbereit.
    
     > [!NOTE]
-    > Verfügbarkeitszonen können nicht mehr geändert werden, nachdem ein Cache erstellt wurde.
+    > Verfügbarkeitszonen können nicht mehr geändert oder aktiviert werden, nachdem ein Cache erstellt wurde. 
     >
 
 ## <a name="zone-redundancy-faq"></a>Häufig gestellte Fragen zur Zonenredundanz

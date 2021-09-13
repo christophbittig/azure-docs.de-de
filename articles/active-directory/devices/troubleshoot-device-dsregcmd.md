@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea502deee0caf5418bf5554473180eb405792567
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: ff1c0d1e552ad26832b2c142f5ca1506654a9a0c
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108287048"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114219536"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Problembehandlung von Geräten mit dem Befehl „dsregcmd“
 
@@ -56,7 +56,7 @@ In diesem Abschnitt werden die Statusparameter für den Geräte-Join aufgelistet
 
 ## <a name="device-details"></a>Gerätedetails
 
-Wird nur angezeigt, wenn das Gerät in Azure AD oder Azure AD Hybrid eingebunden ist (nicht bei Azure AD registriert). In diesem Abschnitt werden die in der Cloud gespeicherten Gerätedetails aufgelistet.
+Wird nur angezeigt, wenn das Gerät in Azure AD oder Azure AD Hybrid eingebunden ist (nicht bei Azure AD registriert). In diesem Abschnitt werden die in Azure AD gespeicherten Gerätedetails aufgelistet.
 
 - **DeviceId:** Eindeutige ID des Geräts im Azure AD-Mandanten.
 - **Thumbprint:** Fingerabdruck des Gerätezertifikats.
@@ -64,6 +64,14 @@ Wird nur angezeigt, wenn das Gerät in Azure AD oder Azure AD Hybrid eingebunden
 - **KeyContainerId:** Container-ID des privaten Schlüssels des Geräts, der dem Gerätezertifikat zugeordnet ist.
 - **KeyProvider:** KeyProvider (Hardware/Software), der zum Speichern des privaten Schlüssels des Geräts verwendet wird.
 - **TpmProtected:** „JA“, wenn der private Schlüssel des Geräts in einem Hardware-TPM gespeichert ist.
+
+> [!NOTE]
+> Das Feld **DeviceAuthStatus** wurde in **Windows 10 Update vom 10. Mai 2021 (Version 21H1)** hinzugefügt.
+
+- **DeviceAuthStatus:** Führt eine Überprüfung aus, um die Integrität des Geräts in Azure AD zu bestimmen.  
+„SUCCESS“, wenn das Gerät in Azure AD vorhanden und aktiviert ist  
+„FAILED. Device is either disabled or deleted.“, wenn das Gerät entweder deaktiviert oder gelöscht ist, [weitere Informationen](faq.yml#why-do-my-users-see-an-error-message-saying--your-organization-has-deleted-the-device--or--your-organization-has-disabled-the-device--on-their-windows-10-devices)  
+„FAILED. ERROR“, wenn der Test nicht ausgeführt werden konnte. Für diesen Test ist eine Netzwerkverbindung zu Azure AD erforderlich.  
 
 ### <a name="sample-device-details-output"></a>Beispieldetailausgabe des Geräts
 
@@ -78,6 +86,7 @@ Wird nur angezeigt, wenn das Gerät in Azure AD oder Azure AD Hybrid eingebunden
             KeyContainerId : 13e68a58-xxxx-xxxx-xxxx-a20a2411xxxx
                KeyProvider : Microsoft Software Key Storage Provider
               TpmProtected : NO
+          DeviceAuthStatus : SUCCESS
 +----------------------------------------------------------------------+
 ```
 
@@ -134,7 +143,7 @@ In diesem Abschnitt wird der Status verschiedener Attribute für den aktuell am 
 - **CanReset:** Gibt an, ob die Windows Hello-Taste vom Benutzer zurückgesetzt werden kann.
 - **Mögliche Werte:** „DestructiveOnly“, „NonDestructiveOnly“, „DestructiveAndNonDestructive“ oder „Unknown“ bei einem Fehler.
 - **WorkplaceJoined:** Auf „JA“ festlegen, wenn für Azure AD registrierte Konten im aktuellen NTUSER-Kontext zum Gerät hinzugefügt wurden.
-- **WamDefaultSet:** Auf „JA“ festlegen, wenn für den angemeldeten Benutzer ein standardmäßiges WAM-WebAccount erstellt wird. In diesem Feld wird u.U. ein Fehler angezeigt, wenn „dsreg /status“ von einer Eingabeaufforderung mit erhöhten Rechten ausgeführt wird.
+- **WamDefaultSet:** Auf „JA“ festlegen, wenn für den angemeldeten Benutzer ein standardmäßiges WAM-WebAccount erstellt wird. In diesem Feld wird u.U. ein Fehler angezeigt, wenn „dsregcmd /status“ von einer Eingabeaufforderung mit erhöhten Rechten ausgeführt wird.
 - **WamDefaultAuthority:** Für Azure AD auf „organizations“ (Organisationen) festgelegt.
 - **WamDefaultId:** Immer „https://login.microsoft.com“ für Azure AD.
 - **WamDefaultGUID:** Die GUID des WAM-Anbieters (Azure AD/Microsoft-Konto) für das standardmäßige WAM-WebAccount.
@@ -174,6 +183,34 @@ Dieser Abschnitt kann für in Azure AD registrierte Geräte ignoriert werden.
 - **EnterprisePrtExpiryTime:** Wird auf die Zeit in UTC festgelegt, wann das PRT abläuft, wenn es nicht erneuert wird.
 - **EnterprisePrtAuthority:** Autoritäts-URL für ADFS.
 
+>[!NOTE]
+> Die folgenden PRT-Diagnosefelder wurden in **Windows 10 Update vom 10. Mai 2021 (Version 21H1)** hinzugefügt.
+
+>[!NOTE]
+> Diagnoseinformationen, die im Feld **AzureAdPrt** angezeigt werden, gelten für AzureAD PRT-Erwerb/-Aktualisierung und Diagnoseinformationen, die unter **EnterprisePrt** bzw. für Enterprise PRT-Abruf/-Aktualisierung angezeigt werden.
+
+>[!NOTE]
+>Diagnoseinformationen werden nur angezeigt, wenn der Abruf-/Aktualisierungsfehler nach der letzten erfolgreichen PRT-Updatezeit (AzureAdPrtUpdateTime/EnterprisePrtUpdateTime) erfolgt ist.  
+>Auf einem freigegebenen Gerät können diese Diagnoseinformationen vom Anmeldeversuch eines anderen Benutzers stammen.
+
+- **AcquirePrtDiagnostics:** Legen Sie diese Einstellung auf „PRESENT“ fest, wenn in den Protokollen Abruf-PRT-Diagnoseinformationen vorhanden sind.  
+Dieses Feld wird übersprungen, wenn keine Diagnoseinformationen verfügbar sind.
+- **Previos Prt Attempt:** Ortszeit in UTC, zu der der fehlgeschlagene PRT-Versuch aufgetreten ist  
+- **Attempt Status:** Der zurückgegebene Clientfehlercode (HRESULT)
+- **User Identity:** UPN des Benutzers, für den der PRT-Versuch stattgefunden hat
+- **Credential Type:** Anmeldeinformationen, die zum Abrufen/Aktualisieren von PRT verwendet wurden Gängige Anmeldeinformationstypen sind Password und NGC (Windows Hello).
+- **Correlation ID:** Korrelations-ID, die vom Server für den fehlgeschlagenen PRT-Versuch gesendet wurde
+- **Endpoint URI:** Letzter Zugriff auf den Endpunkt vor dem Fehler
+- **HTTP Method:** HTTP-Methode, die für den Zugriff auf den Endpunkt verwendet wurde
+- **HTTP-Fehler:** WinHttp-Transportfehlercode WinHttp-Fehler finden Sie [hier](/windows/win32/winhttp/error-messages).
+- **HTTP Status:** Der vom Endpunkt zurückgegebene HTTP-Status
+- **Server Error Code:** Fehlercode vom Server  
+- **Server Error Description:** Fehlermeldung vom Server
+- **RefreshPrtDiagnostics:** Legen Sie diese Einstellung auf „PRESENT“ fest, wenn in den Protokollen Abruf-PRT-Diagnoseinformationen vorhanden sind.  
+Dieses Feld wird übersprungen, wenn keine Diagnoseinformationen verfügbar sind.
+Die Diagnoseinformationsfelder sind identisch mit **AcquirePrtDiagnostics**.
+
+
 ### <a name="sample-sso-state-output"></a>Beispielausgabe für den SSO-Status
 
 ```
@@ -181,10 +218,20 @@ Dieser Abschnitt kann für in Azure AD registrierte Geräte ignoriert werden.
 | SSO State                                                            |
 +----------------------------------------------------------------------+
 
-                AzureAdPrt : YES
-      AzureAdPrtUpdateTime : 2019-01-24 19:15:26.000 UTC
-      AzureAdPrtExpiryTime : 2019-02-07 19:15:26.000 UTC
+                AzureAdPrt : NO
        AzureAdPrtAuthority : https://login.microsoftonline.com/96fa76d0-xxxx-xxxx-xxxx-eb60cc22xxxx
+     AcquirePrtDiagnostics : PRESENT
+      Previous Prt Attempt : 2020-07-18 20:10:33.789 UTC
+            Attempt Status : 0xc000006d
+             User Identity : john@contoso.com
+           Credential Type : Password
+            Correlation ID : 63648321-fc5c-46eb-996e-ed1f3ba7740f
+              Endpoint URI : https://login.microsoftonline.com/96fa76d0-xxxx-xxxx-xxxx-eb60cc22xxxx/oauth2/token/
+               HTTP Method : POST
+                HTTP Error : 0x0
+               HTTP status : 400
+         Server Error Code : invalid_grant
+  Server Error Description : AADSTS50126: Error validating credentials due to invalid username or password.
              EnterprisePrt : YES
    EnterprisePrtUpdateTime : 2019-01-24 19:15:33.000 UTC
    EnterprisePrtExpiryTime : 2019-02-07 19:15:33.000 UTC
@@ -313,7 +360,7 @@ In diesem Abschnitt werden die Voraussetzungen für die Bereitstellung von Windo
 > Wenn der Benutzer WHFB bereits erfolgreich konfiguriert hat, werden in „dsregcmd/status“ möglicherweise keine Details zur Überprüfung der NGC-Voraussetzung angezeigt.
 
 - **IsDeviceJoined:** „YES“ (JA), wenn das Gerät in Azure AD eingebunden ist.
-- **IsUserAzureAD:** „YES“ (JA), wenn der angemeldete Benutzer in Azure AD vorhanden ist.
+- **IsUserAzureAD:** „YES“ (JA), wenn der angemeldete Benutzer in Azure AD vorhanden ist
 - **PolicyEnabled:** „YES“ (JA), wenn die WHFB-Richtlinie auf dem Gerät aktiviert ist.
 - **PostLogonEnabled:** „YES“ (JA), wenn die WHFB-Registrierung nativ durch die Plattform ausgelöst wird. „NO“ (NEIN) gibt an, dass die Registrierung für Windows Hello for Business durch einen benutzerdefinierten Mechanismus ausgelöst wird.
 - **DeviceEligible:** „YES“ (JA), wenn das Gerät die Hardwareanforderungen für die WHFB-Registrierung erfüllt.

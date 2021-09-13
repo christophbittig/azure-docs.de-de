@@ -4,17 +4,20 @@ description: Erfahren Sie, wie Sie mithilfe der Azure Firewall-Integration inner
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 03/25/2021
+ms.date: 07/07/2021
 ms.author: ccompy
 ms.custom: seodec18, references_regions
-ms.openlocfilehash: b930412508753ba2025e8126b9720d9a519d9281
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: f2ac32c304365ba5f833df904d11400c89249c45
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220061"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113651141"
 ---
 # <a name="locking-down-an-app-service-environment"></a>Sperren einer App Service-Umgebung
+> [!NOTE]
+> In diesem Artikel wird die App Service-Umgebung v2 beschrieben, die mit isolierten App Service-Plänen verwendet wird
+> 
 
 Die App Service-Umgebung verfügt über externe Abhängigkeiten, auf die sie Zugriff benötigt, um ordnungsgemäß zu funktionieren. Die App Service-Umgebung befindet sich in der Azure Virtual Network-Instanz (VNET) des Benutzers. Benutzer müssen den Datenverkehr für Abhängigkeiten der App Service-Umgebung zulassen. Dies ist jedoch problematisch, wenn sie den gesamten ausgehenden Datenverkehr ihres VNET sperren wollen.
 
@@ -241,6 +244,7 @@ Mit einer Azure Firewall-Instanz erhalten Sie automatisch alle der unten aufgef�
 | \*.identity.azure.net:443 |
 | \*.ctldl.windowsupdate.com:80 |
 | \*.ctldl.windowsupdate.com:443 |
+| \*.prod.microsoftmetrics.com:443 |
 
 #### <a name="linux-dependencies"></a>Linux-Abhängigkeiten 
 
@@ -374,6 +378,7 @@ Linux ist in Regionen des Typs US Gov nicht verfügbar und wird daher nicht als 
 |\*ctldl.windowsupdate.com:443 |
 |\*.management.usgovcloudapi.net:443 |
 |\*.update.microsoft.com:443 |
+|\*.prod.microsoftmetrics.com:443 |
 |admin.core.usgovcloudapi.net:443 |
 |azperfmerges.blob.core.windows.net:443 |
 |azperfmerges.blob.core.windows.net:443 |
@@ -404,6 +409,7 @@ Linux ist in Regionen des Typs US Gov nicht verfügbar und wird daher nicht als 
 |gcwsprodgmdm2billing.queue.core.usgovcloudapi.net:443 |
 |gcwsprodgmdm2billing.table.core.usgovcloudapi.net:443 |
 |global.metrics.nsatc.net:443 |
+|prod.microsoftmetrics.com:443 |
 |go.microsoft.com:443 |
 |gr-gcws-prod-bd3.usgovcloudapp.net:443 |
 |gr-gcws-prod-bn1.usgovcloudapp.net:443 |

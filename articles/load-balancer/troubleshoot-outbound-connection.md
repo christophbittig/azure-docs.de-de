@@ -2,21 +2,27 @@
 title: Problembehandlung bei ausgehenden Verbindungen in Azure Load Balancer
 description: Hier finden Sie Lösungen für häufige Probleme mit der ausgehenden Konnektivität über Azure Load Balancer.
 services: load-balancer
-author: erichrt
+author: anavinahar
 ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 05/7/2020
-ms.author: errobin
-ms.openlocfilehash: 1f52900086afef09d69b80bf44474d5514e25235
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.author: anavin
+ms.openlocfilehash: 71472a89b2aa3138c83dac1f5c2dfc5649c9b9ce
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107748878"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112583165"
 ---
 # <a name="troubleshooting-outbound-connections-failures"></a><a name="obconnecttsg"></a> Problembehandlung für Fehler bei ausgehenden Verbindungen
 
-Dieser Artikel beschreibt Lösungen für häufige Probleme, die bei ausgehenden Azure Load Balancer-Verbindungen auftreten können. Die meisten Probleme mit der ausgehenden Konnektivität, die bei Kunden auftreten, sind auf die SNAT-Portauslastung und Verbindungstimeouts zurückzuführen, die zu verworfenen Paketen führen. Dieser Artikel enthält Schritte zur Behebung dieser Probleme.
+Dieser Artikel beschreibt Lösungen für häufige Probleme, die bei ausgehenden Azure Load Balancer-Verbindungen auftreten können. Die meisten bei Kunden auftretenden Probleme mit der ausgehenden Konnektivität sind auf die SNAT-Portauslastung (Source Network Address Translation, Quellnetzwerkadressen-Übersetzung) und Verbindungstimeouts zurückzuführen, aus denen verworfene Pakete resultieren. Dieser Artikel enthält Schritte zur Behebung dieser Probleme.
+
+## <a name="avoid-snat"></a>Vermeiden von SNAT
+
+Der beste Weg, die SNAT-Portauslastung zu vermeiden, besteht darin, SNAT überflüssig zu machen. In manchen Fällen ist dies eventuell nicht möglich. Ein solcher Fall ist beispielsweise das Herstellen einer Verbindung mit öffentlichen Endpunkten. In einigen Fällen ist dies jedoch möglich und kann durch Herstellen einer privaten Verbindung mit Ressourcen erreicht werden. Wenn Sie eine Verbindung mit Azure-Diensten wie Storage, SQL, Cosmos DB oder einem anderen der [hier aufgeführten Azure-Dienste](../private-link/availability.md) herstellen, macht die Verwendung von Azure Private Link SNAT überflüssig. Dann riskieren Sie kein potenzielles Konnektivitätsproblem aufgrund einer SNAT-Portauslastung.
+
+Der Private Link-Dienst wird auch von Snowflake, MongoDB, Confluent, Elastic und anderen solchen Diensten unterstützt.
 
 ## <a name="managing-snat-pat-port-exhaustion"></a><a name="snatexhaust"></a> Verwalten der SNAT-Portauslastung (PAT)
 Wie unter [Eigenständiger virtueller Computer ohne öffentliche IP-Adresse](load-balancer-outbound-connections.md) und [Virtueller Computer mit Lastenausgleich ohne öffentliche IP-Adresse](load-balancer-outbound-connections.md) beschrieben wird, sind für [PAT](load-balancer-outbound-connections.md) verwendete [kurzlebige Ports](load-balancer-outbound-connections.md) eine begrenzte Ressource. Sie können Ihre Nutzung von kurzlebigen Ports überwachen und mit Ihrer aktuellen Zuordnung vergleichen, um das Risiko zu ermitteln oder die SNAT-Auslastung anhand [dieses Leitfadens](./load-balancer-standard-diagnostics.md#how-do-i-check-my-snat-port-usage-and-allocation) zu bestätigen.

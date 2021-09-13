@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über die erforderlichen Schritte zum Aktualisier
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3d6092d694d1c99ff7755dfcbec5c0edbfb7567f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 3eea51b69bbb1138ac7c5418370759d1777b482c
+ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110077300"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114361835"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>Migrieren zu arbeitsbereichsbasierten Application Insights-Ressourcen
 
@@ -26,7 +26,7 @@ Mithilfe des arbeitsbereichsbasierten Application Insights können Sie die neues
 * [CMK (Customer-Managed Keys, kundenseitig verwaltete Schlüssel)](../logs/customer-managed-keys.md) bietet Verschlüsselung im Ruhezustand für Ihre Daten mit Verschlüsselungsschlüsseln, auf die nur Sie Zugriff haben.
 * Mit [Azure Private Link](../logs/private-link-security.md) können Sie Azure-PaaS-Dienste über private Endpunkte sicher mit Ihrem virtuellen Netzwerk verknüpfen.
 * [Bring your own Storage (BYOS) für Profiler und Momentaufnahmedebugger](./profiler-bring-your-own-storage.md) verleiht Ihnen vollständige Kontrolle über die Richtlinie zur Verschlüsselung ruhender Daten, die Richtlinie zur Lebensdauerverwaltung und den Netzwerkzugriff auf alle Daten, die Application Insights Profiler und dem Momentaufnahmedebugger zugeordnet sind. 
-* Mit [Kapazitätsreservierungsstufen](../logs/manage-cost-storage.md#pricing-model) können Sie im Vergleich zur nutzungsbasierten Zahlung bis zu 25 % sparen. 
+* Mit [Mindestabnahmen](../logs/manage-cost-storage.md#pricing-model) können Sie im Vergleich zur nutzungsbasierten Zahlung bis zu 30 Prozent sparen. 
 * Schnellere Datenerfassung über Log Analytics-Streamingerfassung.
 
 ## <a name="migration-process"></a>Migrationsprozess
@@ -49,8 +49,11 @@ Wenn Sie eine vorhandene Ressource nicht migrieren müssen und stattdessen eine 
 
     - Wenn Sie noch nicht über einen Log Analytics-Arbeitsbereich verfügen, [sehen Sie sich die Dokumentation zur Erstellung von Log Analytics-Arbeitsbereichen an](../logs/quick-create-workspace.md).
     
-- Der fortlaufende Export wird für arbeitsbereichsbasierte Ressourcen nicht unterstützt und muss deaktiviert werden.
+- **Der fortlaufende Export wird für arbeitsbereichsbasierte Ressourcen nicht unterstützt** und muss deaktiviert werden.
 Nachdem die Migration durchgeführt wurde, können Sie mit [Diagnoseeinstellungen](../essentials/diagnostic-settings.md) die Datenarchivierung in einem Speicherkonto oder das Streaming an Azure Event Hub konfigurieren.  
+
+    > [!CAUTION]
+    > Diagnoseeinstellungen verwenden ein anderes Exportformat/-schema als fortlaufender Export. Die Migration unterbricht alle vorhandenen Integrationen in Stream Analytics.
 
 - Überprüfen Sie die aktuellen Aufbewahrungseinstellungen unter **Allgemein** > **Nutzung und geschätzte Kosten** > **Datenaufbewahrung** für den Log Analytics-Arbeitsbereich. Diese Einstellung wirkt sich darauf aus, wie lange neue erfasste Daten gespeichert werden, nachdem Sie Ihre Application Insights-Ressource migriert haben. Wenn Sie Application Insights-Daten zurzeit länger als die standardmäßigen 90 Tage speichern und diesen längeren Aufbewahrungszeitraum beibehalten möchten, müssen Sie möglicherweise die Aufbewahrungseinstellungen für den Arbeitsbereich anpassen.
 

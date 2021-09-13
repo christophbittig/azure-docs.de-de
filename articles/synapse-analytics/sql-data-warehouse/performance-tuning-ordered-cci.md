@@ -11,12 +11,12 @@ ms.date: 04/13/2021
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ab94a83a64ca9770f0c216ddf42145b262629c6d
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 8a05599efd58acb71534bef41a881de9170811af
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107598991"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122428808"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Leistungsoptimierung mit einem sortierten gruppierten Columnstore-Index  
 
@@ -59,7 +59,6 @@ Der Leistungsgewinn einer Abfrage aus einer geordneten CCI-Tabelle hängt von de
 Abfragen mit all diesen Mustern werden normalerweise schneller mit einer geordneten CCI-Tabelle ausgeführt.  
 1. Die Abfragen verfügen über Gleichheits-, Ungleichheits- oder Bereichsprädikate.
 1. Die Prädikatspalten und die geordneten CCI-Spalten sind identisch.  
-1. Die Prädikatspalten werden in derselben Reihenfolge wie die Spaltenordnungszahl geordneter CCI-Spalten verwendet.  
  
 In diesem Beispiel verfügt die Tabelle T1 über einen gruppierten Columnstore-Index, der in der Reihenfolge Col_C, Col_B und Col_A sortiert ist.
 
@@ -70,7 +69,7 @@ ORDER (Col_C, Col_B, Col_A);
 
 ```
 
-Die Leistung von Abfrage 1 kann mehr von geordneten CCI-Tabellen als die anderen drei Abfragen profitieren. 
+Abfrage 1 und Abfrage 2 kann ein geordneter CCI einen größeren Leistungsvorteil bieten als den anderen Abfragen, da sie alle auf die geordneten CCI-Spalten verweisen. 
 
 ```sql
 -- Query #1: 

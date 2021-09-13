@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 2d474033bbcc3fbc5852cd95da31eaebd33c25ad
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 6fc966fc61893fb05185a15e7149e8a132aecb04
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110095282"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113125886"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekannte Probleme mit Azure Data Lake Storage Gen2
 
@@ -54,6 +54,7 @@ Diese Blob-Rest-APIs werden nicht unterstützt:
 * [Get Page Ranges](/rest/api/storageservices/get-page-ranges)
 * [Incremental Copy Blob](/rest/api/storageservices/incremental-copy-blob)
 * [Put Page from URL](/rest/api/storageservices/put-page-from-url)
+* [Put Block List](/rest/api/storageservices/put-block-list)
 
 Nicht verwaltete VM-Datenträger werden für Konten, die über einen hierarchischen Namespace verfügen, nicht unterstützt. Wenn Sie einen hierarchischen Namespace für ein Speicherkonto aktivieren möchten, sollten Sie verwaltete VM-Datenträger in einem Speicherkonto anordnen, für das die Funktion für hierarchische Namespaces nicht aktiviert ist.
 
@@ -61,7 +62,7 @@ Nicht verwaltete VM-Datenträger werden für Konten, die über einen hierarchisc
 
 ## <a name="support-for-setting-access-control-lists-acls-recursively"></a>Unterstützung für das rekursive Festlegen von Zugriffssteuerungslisten (Access Control Lists, ACLs)
 
-Die Möglichkeit, ACL-Änderungen aus dem übergeordneten Verzeichnis rekursiv auf untergeordnete Elemente anzuwenden, ist allgemein verfügbar. Im aktuellen Release dieser Funktion können Sie ACL-Änderungen mithilfe von PowerShell und der Azure-Befehlszeilenschnittstelle sowie mit dem .NET SDK, dem Java SDK und dem Python SDK anwenden. Unterstützung für das Azure-Portal oder Azure Storage-Explorer ist noch nicht verfügbar.
+Die Möglichkeit, ACL-Änderungen aus dem übergeordneten Verzeichnis rekursiv auf untergeordnete Elemente anzuwenden, ist allgemein verfügbar. Im aktuellen Release dieser Funktion können Sie ACL-Änderungen mithilfe von Azure Storage-Explorer, PowerShell, der Azure-Befehlszeilenschnittstelle sowie mit dem .NET SDK, dem Java SDK und dem Python SDK anwenden. Unterstützung für das Azure-Portal ist noch nicht verfügbar.
 
 <a id="known-issues-tools"></a>
 
@@ -105,3 +106,7 @@ Daten, die im Premium-Tarif gespeichert sind, können nicht zwischen den Ebenen 
 Derzeit treten beim WASB-Treiber, der nur für die Verwendung mit der Blob-API entwickelt wurde, in einigen gängigen Szenarien Probleme auf. Dies gilt insbesondere, wenn es sich um einen Client für ein Speicherkonto mit aktiviertem hierarchischen Namespace handelt. Durch einen Multiprotokollzugriff für Data Lake Storage lassen sich diese Probleme nicht beheben. 
 
 Zum gegenwärtigen Zeitpunkt (und wahrscheinlich auch in absehbarer Zukunft) werden Kunden, die den WASB-Treiber als Client für ein Speicherkonto mit aktiviertem hierarchischen Namespace verwenden, nicht unterstützt. Stattdessen wird empfohlen, den [ABFS](data-lake-storage-abfs-driver.md)-Treiber (Azure Blob File System) in der Hadoop-Umgebung zu verwenden. Wenn Sie versuchen, eine Migration von einer lokalen Hadoop-Umgebung mit einer früheren Version als Hadoop Branch-3 durchzuführen, öffnen Sie ein Azure-Supportticket, damit wir uns mit Ihnen in Verbindung setzen können, um den richtigen Weg für Sie und Ihre Organisation zu finden.
+
+## <a name="soft-delete-for-blobs-capability-currently-in-preview"></a>Vorläufiges Löschen für Blobsfunktion (derzeit in der Vorschauversion)
+
+Wenn übergeordnete Verzeichnisse für vorläufig gelöschte Dateien oder Verzeichnisse umbenannt werden, werden die vorläufig gelöschten Elemente möglicherweise nicht ordnungsgemäß im Azure-Portal angezeigt. In solchen Fällen können Sie [PowerShell](soft-delete-blob-manage.md?tabs=dotnet#restore-soft-deleted-blobs-and-directories-by-using-powershell) oder [Azure CLI](soft-delete-blob-manage.md?tabs=dotnet#restore-soft-deleted-blobs-and-directories-by-using-azure-cli) verwenden, um die vorläufig gelöschten Elemente aufzulisten und wiederherzustellen. 

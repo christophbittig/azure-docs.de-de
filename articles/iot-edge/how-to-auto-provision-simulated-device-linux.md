@@ -2,18 +2,17 @@
 title: Bereitstellen von Geräten mit einem virtuellen TPM auf Linux-VMs – Azure IoT Edge
 description: Verwenden eines simulierten TPM auf einem virtuellen Linux-Computer, um den Azure Device Provisioning Service für Azure IoT Edge zu testen
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 04/09/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 79fe8acd06084c58b0cf9b47bf93e933c648510c
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: d667b2429c7911353df98795f7116d47f8f15d8a
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481989"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397430"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Erstellen und Bereitstellen eines IoT Edge-Geräts mit einem TPM unter Linux
 
@@ -228,7 +227,13 @@ Sobald die Runtime auf Ihrem Gerät installiert wurde, konfigurieren Sie es mit 
 
 1. Ermitteln Sie Ihren DPS-**ID-Bereich** und die **Registrierungs-ID** des Geräts, die in den vorhergehenden Abschnitten erfasst wurden.
 
-1. Öffnen Sie die Konfigurationsdatei auf dem IoT Edge-Gerät.
+1. Erstellen Sie eine Konfigurationsdatei für Ihr Gerät basierend auf einer Vorlagendatei, die im Rahmen der IoT Edge-Installation bereitgestellt wird.
+
+   ```bash
+   sudo cp /etc/aziot/config.toml.edge.template /etc/aziot/config.toml
+   ```
+
+1. Öffnen Sie die Konfigurationsdatei auf dem IoT Edge-Gerät.
 
    ```bash
    sudo nano /etc/aziot/config.toml
@@ -265,49 +270,45 @@ Für die automatische Gerätebereitstellung benötigt die IoT Edge-Runtime Zugr
 
 Sie können TPM-Zugriff auf die IoT Edge-Runtime gewähren, indem Sie die Systemeinstellungen überschreiben, sodass der Dienst `iotedge` über Stammrechte verfügt. Wenn Sie die Dienstberechtigungen nicht erhöhen möchten, können Sie auch die folgenden Schritte ausführen, um den TPM-Zugriff manuell bereitzustellen.
 
-1. Suchen Sie den Pfad zum TPM-Hardwaremodul auf Ihrem Gerät, und speichern Sie ihn als lokale Variable.
-
-   ```bash
-   tpm=$(sudo find /sys -name dev -print | fgrep tpm | sed 's/.\{4\}$//')
-   ```
-
-2. Erstellen Sie eine neue Regel, damit die IoT Edge-Runtime Zugriff auf tpm0 erhält.
+1. Erstellen Sie eine neue Regel, damit die IoT Edge-Runtime Zugriff auf tpm0 und tpmrm0 erhält. 
 
    ```bash
    sudo touch /etc/udev/rules.d/tpmaccess.rules
    ```
 
-3. Öffnen Sie die Regeldatei.
+2. Öffnen Sie die Regeldatei.
 
    ```bash
    sudo nano /etc/udev/rules.d/tpmaccess.rules
    ```
 
-4. Kopieren Sie die folgenden Informationen, in die Regeldatei.
+3. Kopieren Sie die folgenden Informationen, in die Regeldatei. `tpmrm0` ist unter Umständen nicht auf Geräten vorhanden, die eine ältere Kernel-Version als 4.12 verwenden. Geräte ohne tpmrm0 ignorieren diese Regel.
 
    ```input
    # allow iotedge access to tpm0
    KERNEL=="tpm0", SUBSYSTEM=="tpm", OWNER="iotedge", MODE="0600"
+   KERNEL=="tpmrm0", SUBSYSTEM=="tpmrm", OWNER="iotedge", MODE="0600"
    ```
 
-5. Speichern und beenden Sie die Datei.
+4. Speichern und beenden Sie die Datei.
 
-6. Lösen Sie das Udev-System aus, um die neue Regel ausgewertet.
+5. Lösen Sie das Udev-System aus, um die neue Regel ausgewertet.
 
    ```bash
-   /bin/udevadm trigger $tpm
+   /bin/udevadm trigger --subsystem-match=tpm --subsystem-match=tpmrm
    ```
 
-7. Vergewissern Sie sich, dass die Regel erfolgreich angewendet wurde.
+6. Vergewissern Sie sich, dass die Regel erfolgreich angewendet wurde.
 
    ```bash
-   ls -l /dev/tpm0
+   ls -l /dev/tpm*
    ```
 
    Die erfolgreiche Ausgabe sieht wie folgt aus:
 
    ```output
-   crw-rw---- 1 root iotedge 10, 224 Jul 20 16:27 /dev/tpm0
+   crw------- 1 iotedge root 10, 224 Jul 20 16:27 /dev/tpm0
+   crw------- 1 iotedge root 10, 224 Jul 20 16:27 /dev/tpmrm0
    ```
 
    Wenn Sie nicht sehen, dass die richtigen Berechtigungen angewendet wurden, versuchen Sie, Ihren Computer neu zu starten, um Udev zu aktualisieren.
@@ -320,52 +321,48 @@ Die IoT Edge-Runtime basiert auf einem TPM-Dienst, der den Zugriff eines Brokers
 
 Sie können Zugriff auf das TPM gewähren, indem Sie die Systemeinstellungen überschreiben, sodass der Dienst `aziottpm` Stammrechte hat. Wenn Sie die Dienstberechtigungen nicht erhöhen möchten, können Sie auch die folgenden Schritte ausführen, um den TPM-Zugriff manuell bereitzustellen.
 
-1. Suchen Sie den Pfad zum TPM-Hardwaremodul auf Ihrem Gerät, und speichern Sie ihn als lokale Variable.
-
-   ```bash
-   tpm=$(sudo find /sys -name dev -print | fgrep tpm | sed 's/.\{4\}$//')
-   ```
-
-2. Erstellen Sie eine neue Regel, damit die IoT Edge-Runtime Zugriff auf tpm0 erhält.
+1. Erstellen Sie eine neue Regel, damit die IoT Edge-Runtime Zugriff auf tpm0 und tpmrm0 erhält. 
 
    ```bash
    sudo touch /etc/udev/rules.d/tpmaccess.rules
    ```
 
-3. Öffnen Sie die Regeldatei.
+2. Öffnen Sie die Regeldatei.
 
    ```bash
    sudo nano /etc/udev/rules.d/tpmaccess.rules
    ```
 
-4. Kopieren Sie die folgenden Informationen, in die Regeldatei.
+3. Kopieren Sie die folgenden Informationen, in die Regeldatei. `tpmrm0` ist unter Umständen nicht auf Geräten vorhanden, die eine ältere Kernel-Version als 4.12 verwenden. Geräte ohne tpmrm0 ignorieren diese Regel.
 
    ```input
-   # allow aziottpm access to tpm0
-   KERNEL=="tpm0", SUBSYSTEM=="tpm", OWNER="aziottpm", MODE="0600"
+   # allow aziottpm access to tpm0 and tpmrm0
+   KERNEL=="tpm0", SUBSYSTEM=="tpm", OWNER="aziottpm", MODE="0660"
+   KERNEL=="tpmrm0", SUBSYSTEM=="tpmrm", OWNER="aziottpm", MODE="0660"
    ```
 
-5. Speichern und beenden Sie die Datei.
+4. Speichern und beenden Sie die Datei.
 
-6. Lösen Sie das Udev-System aus, um die neue Regel ausgewertet.
+5. Lösen Sie das Udev-System aus, um die neue Regel ausgewertet.
 
    ```bash
-   /bin/udevadm trigger $tpm
+   /bin/udevadm trigger --subsystem-match=tpm --subsystem-match=tpmrm
    ```
 
-7. Vergewissern Sie sich, dass die Regel erfolgreich angewendet wurde.
+6. Vergewissern Sie sich, dass die Regel erfolgreich angewendet wurde.
 
    ```bash
-   ls -l /dev/tpm0
+   ls -l /dev/tpm*
    ```
 
    Die erfolgreiche Ausgabe sieht wie folgt aus:
 
    ```output
-   crw-rw---- 1 root aziottpm 10, 224 Jul 20 16:27 /dev/tpm0
+   crw-rw---- 1 aziottpm root 10, 224 Jul 20 16:27 /dev/tpm0
+   crw-rw---- 1 aziottpm root 10, 224 Jul 20 16:27 /dev/tpmrm0
    ```
 
-   Wenn Sie nicht sehen, dass die richtigen Berechtigungen angewendet wurden, versuchen Sie, Ihren Computer neu zu starten, um Udev zu aktualisieren.
+   Wenn Sie nicht sehen, dass die richtigen Berechtigungen angewendet wurden, versuchen Sie, Ihren Computer neu zu starten, um Udev zu aktualisieren. 
 :::moniker-end
 <!-- end 1.2 -->
 

@@ -1,69 +1,71 @@
 ---
-title: Verwenden von Azure Firewall zum Schutz von Windows Virtual Desktop
-description: Informationen zur Verwendung von Azure Firewall zum Schutz von Windows Virtual Desktop-Bereitstellungen
+title: Verwenden von Azure Firewall zum Schutz von Azure Virtual Desktop
+description: Informationen zur Verwendung von Azure Firewall zum Schutz von Azure Virtual Desktop-Bereitstellungen
 author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 05/06/2020
+ms.date: 08/09/2021
 ms.author: victorh
-ms.openlocfilehash: 7b9de22a3209a75cec680ae3ea04d2e1f54c956c
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 2b6e923bf7645e89434b461da47408be23f65f86
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110453265"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634760"
 ---
-# <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Verwenden von Azure Firewall zum Schutz von Windows Virtual Desktop-Bereitstellungen
+# <a name="use-azure-firewall-to-protect-azure-virtual-desktop-deployments"></a>Verwenden von Azure Firewall zum Schutz von Azure Virtual Desktop-Bereitstellungen
 
-Bei Windows Virtual Desktop handelt es sich um einen Dienst für die Desktop- und App-Virtualisierung, der unter Azure ausgeführt wird. Wenn ein Endbenutzer eine Verbindung mit einer WVD-Umgebung herstellt, wird die Sitzung von einem Hostpool ausgeführt. Ein Hostpool ist eine Sammlung von virtuellen Azure-Computern, die unter WVP als Sitzungshosts registriert werden. Diese virtuellen Computer werden in Ihrem virtuellen Netzwerk ausgeführt und unterliegen dessen Sicherheitskontrollen. Sie benötigen ausgehenden Zugriff auf das Internet, damit der Windows Virtual Desktop-Dienst ordnungsgemäß arbeiten kann, und benötigen möglicherweise zudem ausgehenden Internetzugriff für Endbenutzer. Mithilfe von Azure Firewall können Sie Ihre Umgebung sperren und ausgehenden Datenverkehr filtern.
+Bei Azure Virtual Desktop handelt es sich um einen Dienst für die Desktop- und App-Virtualisierung, der unter Azure ausgeführt wird. Wenn ein Endbenutzer eine Verbindung mit einer Azure Virtual Desktop-Umgebung herstellt, wird die Sitzung von einem Hostpool ausgeführt. Ein Hostpool ist eine Sammlung von virtuellen Azure-Computern, die unter Azure Virtual Desktop als Sitzungshosts registriert werden. Diese virtuellen Computer werden in Ihrem virtuellen Netzwerk ausgeführt und unterliegen dessen Sicherheitskontrollen. Sie benötigen ausgehenden Zugriff auf das Internet, damit der Azure Virtual Desktop-Dienst ordnungsgemäß arbeiten kann, und benötigen möglicherweise zudem ausgehenden Internetzugriff für Endbenutzer. Mithilfe von Azure Firewall können Sie Ihre Umgebung sperren und ausgehenden Datenverkehr filtern.
 
-[ ![Windows Virtual Desktop-Architektur](media/protect-windows-virtual-desktop/windows-virtual-desktop-architecture-diagram.png) ](media/protect-windows-virtual-desktop/windows-virtual-desktop-architecture-diagram.png#lightbox)
+[ ![Azure Virtual Desktop-Architektur](media/protect-windows-virtual-desktop/windows-virtual-desktop-architecture-diagram.png) ](media/protect-windows-virtual-desktop/windows-virtual-desktop-architecture-diagram.png#lightbox)
 
-Beachten Sie die Richtlinien in diesem Artikel, um mithilfe von Azure Firewall zusätzlichen Schutz für Ihren Windows Virtual Desktop-Hostpool bereitzustellen.
+Beachten Sie die Richtlinien in diesem Artikel, um mithilfe von Azure Firewall zusätzlichen Schutz für Ihren Azure Virtual Desktop-Hostpool bereitzustellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 
- - Eine bereitgestellte Windows Virtual Desktop-Umgebung und ein Hostpool.
+ - Eine bereitgestellte Azure Virtual Desktop-Umgebung und ein Hostpool
+ - Ein Azure Firewall, die mit mindestens einer Firewall Manager-Richtlinie bereitgestellt ist 
 
-   Weitere Informationen finden Sie im [Tutorial: Erstellen eines Hostpools mit dem Azure Marketplace](../virtual-desktop/create-host-pools-azure-marketplace.md) und [Erstellen eines Hostpools mit einer Azure Resource Manager-Vorlage](../virtual-desktop/virtual-desktop-fall-2019/create-host-pools-arm-template.md).
+   Weitere Informationen finden Sie unter [Tutorial: Erstellen eines Hostpools mithilfe des Azure-Portals](../virtual-desktop/create-host-pools-azure-marketplace.md)
 
-Weitere Informationen zu Windows Virtual Desktop-Umgebungen finden Sie unter [Windows Virtual Desktop-Umgebung](../virtual-desktop/environment-setup.md).
+Weitere Informationen zu Azure Virtual Desktop-Umgebungen finden Sie unter [Azure Virtual Desktop-Umgebung](../virtual-desktop/environment-setup.md).
 
-## <a name="host-pool-outbound-access-to-windows-virtual-desktop"></a>Ausgehender Zugriff für den Hostpool auf Windows Virtual Desktop
+## <a name="host-pool-outbound-access-to-azure-virtual-desktop"></a>Ausgehender Zugriff für den Hostpool auf Azure Virtual Desktop
 
-Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, müssen Zugriff auf mehrere vollqualifizierte Domänennamen (Fully Qualified Domain Names, FQDNs) haben, um ordnungsgemäß funktionieren zu können. Azure Firewall bietet ein FQDN-Tag für WVD, um diese Konfiguration zu vereinfachen. Führen Sie die folgenden Schritte aus, um ausgehenden Plattformdatenverkehr für Windows Virtual Desktop zuzulassen:
+Die virtuellen Azure-Computer, die Sie für Azure Virtual Desktop erstellen, müssen Zugriff auf mehrere vollqualifizierte Domänennamen (Fully Qualified Domain Names, FQDNs) haben, um ordnungsgemäß funktionieren zu können. Azure Firewall bietet ein FQDN-Tag für Azure Virtual Desktop, um diese Konfiguration zu vereinfachen. Führen Sie die folgenden Schritte aus, um ausgehenden Plattformdatenverkehr für Azure Virtual Desktop zuzulassen:
 
-- Stellen Sie Azure Firewall bereit, und konfigurieren Sie die benutzerdefinierte Route (User Defined Route, UDR) für das Subnetz des Windows Virtual Desktop-Hostpools, um den Standarddatenverkehr (0.0.0.0/0) über Azure Firewall zu leiten. Die Standardroute zeigt nun auf die Firewall.
-- Erstellen Sie eine Sammlung für Anwendungsregeln, und fügen Sie eine Regel hinzu, um das FQDN-Tag *WindowsVirtualDesktop* zu aktivieren. Der Quell-IP-Adressbereich ist das virtuelle Netzwerk des Hostpools, das Protokoll ist **https**, und das Ziel ist **WindowsVirtualDesktop**.
+Sie müssen eine Azure-Firewallrichtlinie und Regelsammlungen für Netzwerkregeln und Anwendungsregeln erstellen. Weisen Sie der Regelsammlung eine Priorität und eine Aktion zum Zulassen oder Verweigern zu. 
 
-- Aufgrund des erforderlichen Speichers und der erforderlichen Service Bus-Instanzen muss Ihr Windows Virtual Desktop-Hostpool bereitstellungsspezifisch sein. Deshalb ist er noch nicht im FQDN-Tag „WindowsVirtualDesktop“ enthalten. Sie haben die folgenden Möglichkeiten, um dies zu ändern:
+### <a name="create-network-rules"></a>Erstellen von Netzwerkregeln
 
-   - Lassen Sie HTTPS-Zugriff aus Ihrem Hostpoolsubnetz auf *xt.blob.core.windows.net und *eh.servicebus.windows.net zu. Diese Platzhalter-FQDNs ermöglichen den erforderlichen Zugriff, sind aber weniger restriktiv.
-   - Verwenden Sie die folgende Log Analytics-Abfrage, um die erforderlichen FQDNs nach der Bereitstellung des WVD-Hostpools aufzulisten, und lassen Sie sie dann explizit in den Firewallanwendungsregeln zu:
-   ```
-   AzureDiagnostics
-   | where Category == "AzureFirewallApplicationRule"
-   | search "Deny"
-   | search "gsm*eh.servicebus.windows.net" or "gsm*xt.blob.core.windows.net"
-   | parse msg_s with Protocol " request from " SourceIP ":" SourcePort:int " to " FQDN ":" *
-   | project TimeGenerated,Protocol,FQDN
-   ```
+| name | Quellentyp | `Source` | Protokoll | Zielports | Zieltyp | Destination 
+--- | --- | --- | --- | --- | --- | ---
+| Regelname | IP-Adresse | VNet- oder Subnetz-IP-Adresse | 80 | TCP |  IP-Adresse | 169.254.169.254, 168.63.129.16
+| Regelname | IP-Adresse | VNet- oder Subnetz-IP-Adresse | 443 | TCP | Diensttag | AzureCloud, WindowsVirtualDesktop
+| Regelname | IP-Adresse | VNet- oder Subnetz-IP-Adresse | 53 | TCP, UDP | IP-Adresse | *
 
-- Erstellen Sie eine Netzwerkregelsammlung mit den folgenden Regeln:
 
-   - DNS zulassen: Lassen Sie Datenverkehr von Ihrer privaten ADDS-IP-Adresse auf * für den TCP- und den UDP-Port 53 zu.
-   - KMS zulassen: Lassen Sie Datenverkehr von Ihren virtuellen Windows Virtual Desktop-Computern an den TCP-Port 1688 für Windows Activation Service zu. Weitere Informationen zu den Ziel-IP-Adressen finden Sie unter [Fehler bei der Windows-Aktivierung in einem Szenario mit Tunnelerzwingung](/troubleshoot/azure/virtual-machines/custom-routes-enable-kms-activation#solution).
+### <a name="create-application-rules"></a>Erstellen von Anwendungsregeln 
+
+| name | Quellentyp | `Source` | Protokoll | TLS-Inspektion (optional) | Zieltyp | Destination 
+--- | --- | --- | --- | --- | --- | ---
+| Regelname | IP-Adresse | VNet- oder Subnetz-IP-Adresse | Https:443 | | FQDN-Tag | WindowsVirtualDesktop, WindowsUpdate, Windows-Diagnose, MicrosoftActiveProtectionService |
+| Regelname | IP-Adresse | VNet- oder Subnetz-IP-Adresse | Https:1688 | | FQDN | kms.core.windows.net 
 
 > [!NOTE]
-> Für einige Bereitstellungen sind möglicherweise keine DNS-Regeln erforderlich, z. B. leiten Azure Active Directory-Domänencontroller DNS-Abfragen unter 168.63.129.16 an Azure DNS weiter.
+> Für einige Bereitstellungen sind möglicherweise keine DNS-Regeln erforderlich. Azure Active Directory Domain Controller leiten beispielsweise DNS-Abfragen an Azure DNS unter 168.63.129.16 weiter.
 
 ## <a name="host-pool-outbound-access-to-the-internet"></a>Ausgehender Zugriff für Hostpools auf das Internet
 
-Je nach Anforderungen Ihrer Organisation sollten Sie sicheren ausgehenden Zugriff auf das Internet für Ihre Endbenutzer aktivieren. In Fällen, in denen die Liste der zulässigen Ziele klar definiert ist (z. B. beim [Zugriff auf Microsoft 365](/microsoft-365/enterprise/microsoft-365-ip-web-service)), können Sie die Anwendungs- und Netzwerkregeln für Azure Firewall verwenden, um den erforderlichen Zugriff zu konfigurieren. Dadurch wird der Endbenutzerdatenverkehr direkt an das Internet geleitet, um eine optimale Leistung zu erzielen.
+Je nach Anforderungen Ihrer Organisation möchten Sie möglicherweise sicheren ausgehenden Internetzugriff für Ihre Endbenutzer ermöglichen. Wenn die Liste der zulässigen Ziele klar definiert ist (z. B. beim [Zugriff auf Microsoft 365](/microsoft-365/enterprise/microsoft-365-ip-web-service)), können Sie die Anwendungs- und Netzwerkregeln für Azure Firewall verwenden, um den erforderlichen Zugriff zu konfigurieren. Dadurch wird der Endbenutzerdatenverkehr direkt an das Internet geleitet, um eine optimale Leistung zu erzielen. Wenn Sie die Netzwerkkonnektivität für Windows 365 oder Intune zulassen müssen, finden Sie weitere Informationen unter [Netzwerkanforderungen für Windows 365](/windows-365/requirements-network#allow-network-connectivity) und [Netzwerkendpunkte für Intune](/mem/intune/fundamentals/intune-endpoints).
 
-Wenn Sie den ausgehenden Internetdatenverkehr von Benutzern mithilfe eines vorhandenen lokalen, sicheren Webgateways filtern möchten, können Sie Webbrowser oder andere Anwendungen, die auf dem Windows Virtual Desktop-Hostpool ausgeführt werden, mithilfe einer expliziten Proxykonfiguration konfigurieren. Weitere Informationen hierzu finden Sie beispielsweise unter [So verwenden Sie Microsoft Edge-Befehlszeilenoptionen zum Konfigurieren von Proxyeinstellungen](/deployedge/edge-learnmore-cmdline-options-proxy-settings). Diese Proxyeinstellungen beeinflussen nur den Internetzugriff für Endbenutzer, wodurch der ausgehende Datenverkehr der Windows Virtual Desktop-Plattform direkt über Azure Firewall ermöglicht wird.
+Wenn Sie den ausgehenden Internetdatenverkehr von Benutzern mithilfe eines vorhandenen lokalen, sicheren Webgateways filtern möchten, können Sie Webbrowser oder andere Anwendungen, die auf dem Azure Virtual Desktop-Hostpool ausgeführt werden, mithilfe einer expliziten Proxykonfiguration konfigurieren. Weitere Informationen hierzu finden Sie beispielsweise unter [So verwenden Sie Microsoft Edge-Befehlszeilenoptionen zum Konfigurieren von Proxyeinstellungen](/deployedge/edge-learnmore-cmdline-options-proxy-settings). Diese Proxyeinstellungen beeinflussen nur den Internetzugriff für Endbenutzer, wodurch der ausgehende Datenverkehr der Azure Virtual Desktop-Plattform direkt über Azure Firewall ermöglicht wird. 
+
+## <a name="control-user-access-to-the-web"></a>Steuern des Benutzerzugriffs auf das Web
+
+Administratoren können den Benutzerzugriff auf verschiedene Websitekategorien zulassen oder verweigern. Fügen Sie Ihrer Anwendungssammlung eine Regel von Ihrer spezifischen IP-Adresse zu Webkategorien hinzu, die Sie zulassen oder ablehnen möchten. Überprüfen Sie alle [Webkategorien](web-categories.md). 
 
 ## <a name="additional-considerations"></a>Weitere Überlegungen
 
@@ -71,9 +73,8 @@ Je nach Anforderungen müssen Sie möglicherweise zusätzliche Firewallregeln ko
 
 - NTP-Serverzugriff
 
-   Standardmäßig wird für virtuelle Computer unter Windows über den UDP-Port 123 zur Zeitsynchronisierung eine Verbindung mit time.windows.com hergestellt. Erstellen Sie eine Netzwerkregel, um diesen Zugriff zuzulassen, oder erstellen Sie eine solche Regel für einen Zeitserver, den Sie in Ihrer Umgebung verwenden.
-
+  Standardmäßig wird für virtuelle Computer unter Windows über den UDP-Port 123 zur Zeitsynchronisierung eine Verbindung mit `time.windows.com` hergestellt. Erstellen Sie eine Netzwerkregel, um diesen Zugriff zuzulassen, oder erstellen Sie eine solche Regel für einen Zeitserver, den Sie in Ihrer Umgebung verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu Windows Virtual Desktop: [Was ist Windows Virtual Desktop?](../virtual-desktop/overview.md)
+- Weitere Informationen zu Azure Virtual Desktop: [Was ist Azure Virtual Desktop?](../virtual-desktop/overview.md)

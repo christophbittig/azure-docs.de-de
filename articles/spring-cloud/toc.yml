@@ -64,6 +64,8 @@
   items:
     - name: Sicherheitskontrollen
       href: concept-security-controls.md
+    - name: Sicherheitsbaseline
+      href: /security/benchmark/azure/baselines/spring-cloud-security-baseline?toc=/azure/spring-cloud/toc.json
     - name: Sicherheitskontrollen von Azure Policy
       href: ./security-controls-policy.md
     - name: Verstehen des App-Status

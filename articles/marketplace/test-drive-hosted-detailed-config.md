@@ -7,22 +7,22 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 04/20/2021
-ms.openlocfilehash: f11f1d5601a61bbd9b8729b478c278db8d3e73dc
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: d3458d456793a3853fc2277bc1443c6fdfbc5865
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812412"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340514"
 ---
 # <a name="detailed-configuration-for-hosted-test-drives"></a>Detaillierte Konfigurationsschritte für gehostete Testversionen
 
-In diesem Artikel wird beschrieben, wie Sie eine gehostete Testversion für Dynamics 365 for Customer Engagement oder Dynamics 365 for Operations konfigurieren.
+In diesem Artikel wird beschrieben, wie Sie eine gehostete Testversion für Dynamics 365 for Customer Engagement und Power Apps oder Dynamics 365 for Operations konfigurieren.
 
-## <a name="configure-for-dynamics-365-customer-engagement"></a>Konfiguration für Dynamics 365 Customer Engagement
+## <a name="configure-for-dynamics-365-customer-engagement--power-apps"></a>Konfiguration für Dynamics 365 Customer Engagement und Power Apps
 
-1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/) an.
+1. Melden Sie sich bei [Partner Center](https://go.microsoft.com/fwlink/?linkid=2165507) an.
 2. Wenn Sie auf den obigen Link nicht zugreifen können, müssen Sie [hier](https://appsource.microsoft.com/partners/list-an-app) eine Anforderung senden, um Ihre Anwendung zu veröffentlichen. Nachdem wir die Anforderung überprüft haben, erhalten Sie Zugriff, um den Veröffentlichungsprozess zu starten.
-3. Suchen Sie ein bestehendes **Dynamics 365 for Customer Engagement**-Angebot, oder erstellen Sie ein neues **Dynamics 365 for Customer Engagement**-Angebot.
+3. Suchen Sie ein bestehendes **Dynamics 365 for Customer Engagement & Power Apps**-Angebot, oder erstellen Sie ein neues **Dynamics 365 for Customer Engagement & Power Apps**-Angebot.
 4. Aktivieren Sie das Kontrollkästchen **Testversion aktivieren**, wählen Sie den **Typ der Testversion** (siehe den folgenden Gliederungspunkt) aus, und klicken Sie auf **Speichern**.
 
     [![Auswählen des Kontrollkästchens „Testversion aktivieren“](media/test-drive/enable-test-drive-check-box.png)](media/test-drive/enable-test-drive-check-box.png#lightbox)
@@ -36,15 +36,29 @@ In diesem Artikel wird beschrieben, wie Sie eine gehostete Testversion für Dyna
 
     - **Maximale Anzahl gleichzeitiger Testversionen**: Die Anzahl der Benutzer, die gleichzeitig eine aktive Testversion verwenden können. Jeder Benutzer verwendet eine Dynamics-Lizenz, während seine Testversion aktiv ist. Folglich müssen Sie sicherstellen, dass Sie mindestens so viele Dynamics-Lizenzen für die Benutzer der Testversionen zur Verfügung stellen. Wie empfehlen drei bis fünf Lizenzen.
     - **Dauer der Testversion** – Die maximale Anzahl von Stunden, für die die Testversion des Benutzers aktiv ist. Nach Ablauf dieser Zeit wird die Bereitstellung des Benutzers für Ihren Mandanten aufgehoben. Je nach Komplexität der App empfehlen wir zwei bis 24 Stunden. Der Benutzer kann jederzeit eine weitere Testversion anfordern, wenn die Zeit abgelaufen ist und er erneut auf die Testversion zugreifen möchte.
-    - **Instanz-URL**: Die URL, die an den Benutzer der Testversion gesendet wird, wenn er die Testversion startet. Dies ist in der Regel die URL der Dynamics 365-Instanz, auf der Ihre App und die Beispieldaten installiert sind. Beispielwert: `https://testdrive.crm.dynamics.com`.
-    - **Web-API-URL der Instanz**: Geben Sie die Web-API-URL für Ihre Dynamics 365-Instanz an. Sie können diesen Wert abrufen, indem Sie sich bei Ihrer Microsoft Dynamics 365-Instanz anmelden und zu **Einstellungen** > **Anpassung** > **Entwicklerressourcen** > **Instanz-Web-API** navigieren und die Adresse (URL) kopieren. Beispielwert:
+    - **Instanz-URL**
+        - *Customer Engangement*: Die URL, die an den Benutzer der Testversion gesendet wird, wenn er die Testversion startet. Dies ist in der Regel die URL der Dynamics 365-Instanz, auf der Ihre App und die Beispieldaten installiert sind. Beispielwert: `https://testdrive.crm.dynamics.com`.
+        - *Canvas-App (Power Apps)*
+            1. Öffnen Sie die Portalseite **PowerApps**, und melden Sie sich an.
+            2. Wählen Sie **Apps** und dann die Auslassungspunkte neben der App aus.
+            4. Wählen Sie **Details** aus.
+            5. Kopieren Sie den **Weblink** aus der Registerkarte **Details**.
 
-        :::image type="content" source="./media/test-drive/sample-web-api-url.png" alt-text="Ein Beispiel für eine Instanz-Web-API.":::
+                :::image type="content" source="./media/test-drive/testdrive-canvas-app.png" alt-text="Zeigt das Fenster TestDrive Canvas-App an":::
 
-    - **Rollenname**: Geben Sie den Namen der benutzerdefinierten Dynamics 365-Sicherheitsrolle an, die Sie für die Testversion erstellt haben, oder verwenden Sie eine bestehende Rolle. Einer neuen Rolle sollten mindestens die erforderlichen Berechtigungen zugeteilt werden, die der Rolle zum Anmelden bei einer Customer Engagement-Instanz hinzugefügt wurden. Weitere Informationen finden Sie unter [Mindestens erforderliche Berechtigungen für die Anmeldung bei Microsoft Dynamics 365](https://community.dynamics.com/crm/b/crminogic/archive/2016/11/24/minimum-privileges-required-to-login-microsoft-dynamics-365). Dies ist die Rolle, die den Benutzern während der Nutzung der Testversion zugewiesen wird. Beispielwert: `testdriverole`.
+    - **Web-API-URL der Instanz**
+        - *Customer Engagement*: Geben Sie die Web-API-URL für Ihre Dynamics 365-Instanz an. Sie können diesen Wert abrufen, indem Sie sich bei Ihrer Microsoft Dynamics 365-Instanz anmelden, **Einstellungen** > **Anpassung** > **Entwicklerressourcen** > **Instanz-Web-API** auswählen und die Adresse (URL) kopieren. Beispielwert:
+
+            :::image type="content" source="./media/test-drive/sample-web-api-url.png" alt-text="Ein Beispiel für eine Instanz-Web-API.":::
+
+        - *Canvas-App (Power Apps)* : Wenn Sie CE/Dataverse nicht als Back-End für Ihre Canvas-App verwenden, verwenden Sie `https://localhost` als Platzhalter.
+
+    - **Rollenname**
+        - *Customer Engagement*: Geben Sie den Namen der benutzerdefinierten Dynamics 365-Sicherheitsrolle an, die Sie für die Testversion erstellt haben, oder verwenden Sie eine bestehende Rolle. Einer neuen Rolle sollten mindestens die erforderlichen Berechtigungen zugeteilt werden, die der Rolle zum Anmelden bei einer Customer Engagement-Instanz hinzugefügt wurden. Weitere Informationen finden Sie unter [Mindestens erforderliche Berechtigungen für die Anmeldung bei Microsoft Dynamics 365](https://community.dynamics.com/crm/b/crminogic/archive/2016/11/24/minimum-privileges-required-to-login-microsoft-dynamics-365). Dies ist die Rolle, die den Benutzern während der Nutzung der Testversion zugewiesen wird. Beispielwert: `testdriverole`.
+        - *Canvas-App (Power Apps)* : Verwenden Sie „NA“, wenn CE/Dataverse nicht als Back-End-Datenquelle verwendet wird.
     
-        > [!IMPORTANT]
-        > Stellen Sie sicher, dass die Überprüfung von Sicherheitsgruppen nicht hinzugefügt wird. Dadurch kann der Benutzer mit der Customer Engagement-Instanz synchronisiert werden.
+    > [!IMPORTANT]
+    > Stellen Sie sicher, dass die Überprüfung von Sicherheitsgruppen nicht hinzugefügt wird. Dadurch kann der Benutzer mit der Customer Engagement-Instanz synchronisiert werden.
 
     - **Azure Active Directory-Mandanten-ID**: Geben Sie die ID des Azure-Mandanten für Ihre Dynamics 365-Instanz an. Um diesen Wert abzurufen, melden Sie sich beim Azure-Portal an, und navigieren Sie zu **Azure Active Directory** > **Eigenschaften**. Kopieren Sie anschließend die Verzeichnis-ID. Beispielwert: 172f988bf-86f1-41af-91ab-2d7cd01112341.
     - **Azure Active Directory-Mandantenname**: Der Name des Azure-Mandanten für Ihre Dynamics 365-Instanz. Verwenden Sie das Format `<tenantname>.onmicrosoft.com`. Beispielwert: `testdrive.onmicrosoft.com`.
@@ -61,9 +75,10 @@ In diesem Artikel wird beschrieben, wie Sie eine gehostete Testversion für Dyna
 
 ## <a name="configure-for-dynamics-365-operations"></a>Konfiguration für Dynamics 365 Operations
 
+1. Melden Sie sich bei [Partner Center](https://go.microsoft.com/fwlink/?linkid=2165507) an.
 2. Wenn Sie auf den obigen Link nicht zugreifen können, müssen Sie [hier](https://appsource.microsoft.com/partners/list-an-app) eine Anforderung senden, um Ihre Anwendung zu veröffentlichen. Nachdem wir die Anforderung überprüft haben, erhalten Sie Zugriff, um den Veröffentlichungsprozess zu starten.
 3. Suchen Sie nach einem vorhandenen **Dynamics 365 for Operations**-Angebot, oder erstellen Sie ein neues **Dynamics 365 for Operations**-Angebot.
-4. Aktivieren Sie das Kontrollkästchen **Testversion aktivieren**, wählen Sie den **Typ der Testversion** (siehe den folgenden Gliederungspunkt) aus, und klicken Sie auf **Speichern**.
+4. Aktivieren Sie das Kontrollkästchen **Testversion aktivieren**, wählen Sie den **Typ der Testversion** (siehe den folgenden Gliederungspunkt) aus, und klicken Sie auf **Entwurf speichern**.
 
     [![Auswählen des Kontrollkästchens „Testversion aktivieren“](media/test-drive/enable-test-drive-check-box-operations.png)](media/test-drive/enable-test-drive-check-box-operations.png#lightbox)
 

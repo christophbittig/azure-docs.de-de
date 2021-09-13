@@ -1,19 +1,21 @@
 ---
 title: Senkentransformation in einem Zuordnungsdatenfluss
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Hier erfahren Sie, wie Sie im Zuordnungsdatenfluss eine Senkentransformation konfigurieren.
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/06/2021
-ms.openlocfilehash: 8996e7a30756877b5329ef959b86529bdfcbd943
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 07/27/2021
+ms.openlocfilehash: e74e4f6eca483a9d250cd3ade4687f6279f6f8af
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110789660"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418923"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Senkentransformation in einem Zuordnungsdatenfluss
 
@@ -21,7 +23,7 @@ ms.locfileid: "110789660"
 
 Nachdem Sie die Datentransformation abgeschlossen haben, schreiben Sie sie mithilfe der Senkentransformation in einen Zielspeicher. Jeder Datenfluss erfordert mindestens eine Senkentransformation. Sie können aber so viele Senken wie erforderlich hinzufügen, um Ihren Transformationsfluss zu realisieren. Um in weitere Senken zu schreiben, erstellen Sie über neue Verzweigungen und bedingte Teilungen neue Datenströme.
 
-Jede Senkentransformation ist genau einem Azure Data Factory-Datasetobjekt oder einem verknüpften Dienst zugeordnet. Die Form und Position der Daten, in die geschrieben werden soll, richtet sich nach der Senkentransformation.
+Jede Senkentransformation ist genau einem Datasetobjekt oder einem verknüpften Dienst zugeordnet. Die Form und Position der Daten, in die geschrieben werden soll, richtet sich nach der Senkentransformation.
 
 ## <a name="inline-datasets"></a>Inlinedatasets
 
@@ -34,6 +36,15 @@ Inlinedatasets werden empfohlen, wenn flexible Schemas, einmalig genutzte Senken
 Um ein Inline-Dataset zu verwenden, wählen Sie das gewünschte Format im Selektor **Senkentyp** aus. Anstatt ein Senkendataset auszuwählen, wählen Sie den verknüpften Dienst aus, mit dem Sie eine Verbindung herstellen möchten.
 
 ![Screenshot mit hervorgehobener Auswahl von „Inline“.](media/data-flow/inline-selector.png "Screenshot mit hervorgehobener Auswahl von „Inline“")
+
+## <a name="workspace-db-synapse-workspaces-only"></a>Workspace DB (nur Synapse-Arbeitsbereiche)
+
+Bei Verwendung von Datenflüssen in Azure Synapse-Arbeitsbereichen verfügen Sie über eine zusätzliche Option, um Ihre Daten direkt in einen Datenbanktyp umzuwandeln, der in Ihrem Synapse-Arbeitsbereich vorhanden ist. Es ist dann nicht mehr erforderlich, für diese Datenbanken verknüpfte Dienste oder Datasets hinzuzufügen.
+
+> [!NOTE]
+> Der Workspace DB-Connector von Azure Synapse befindet sich derzeit in der öffentlichen Vorschauphase und funktioniert nur bei Spark Lake-Datenbanken.
+
+![Screenshot: Hervorgehobene Auswahl von „Workspace DB“](media/data-flow/syms-sink.png "Screenshot mit hervorgehobener Auswahl von „Inline“")
 
 ##  <a name="supported-sink-types"></a><a name="supported-sinks"></a> Unterstützte Senkentypen
 
@@ -55,7 +66,7 @@ Der Zuordnungsdatenfluss folgt einem Ansatz zum Extrahieren, Laden und Transform
 
 Die für diese Connectors spezifischen Einstellungen befinden sich auf der Registerkarte **Einstellungen**. Informationen und Beispiele zu Datenflussskripts zu diesen Einstellungen finden Sie in der Connectordokumentation.
 
-Azure Data Factory hat Zugriff auf mehr als [90 native Connectors](connector-overview.md). Um Daten aus Ihrem Datenfluss in diese anderen Quellen zu schreiben, verwenden Sie die Kopieraktivität zum Laden der Daten aus einer unterstützten Senke.
+Der Dienst hat Zugriff auf mehr als [90 native Connectors](connector-overview.md). Um Daten aus Ihrem Datenfluss in diese anderen Quellen zu schreiben, verwenden Sie die Kopieraktivität zum Laden der Daten aus einer unterstützten Senke.
 
 ## <a name="sink-settings"></a>Senkeneinstellungen
 
@@ -67,7 +78,7 @@ Im folgenden Video werden verschiedene Senkenoptionen für Dateitypen mit Texttr
 
 ![Screenshot mit Hervorhebung von „Senkeneinstellungen“.](media/data-flow/sink-settings.png "Screenshot mit Hervorhebung von „Senkeneinstellungen“.")
 
-**Schemaabweichung**: [Schemaabweichung](concepts-data-flow-schema-drift.md) ist die Fähigkeit von Data Factory, flexible Schemas in Ihren Datenflüssen nativ zu verarbeiten, ohne Spaltenänderungen explizit definieren zu müssen. Aktivieren Sie **Schemaabweichung zulassen**, wenn Sie zusätzliche Spalten zusätzlich zur Definition im Datenschema der Senke schreiben möchten.
+**Schemaabweichung**: [Schemaabweichung](concepts-data-flow-schema-drift.md) ist die Fähigkeit des Diensts, flexible Schemas in Ihren Datenflüssen nativ zu verarbeiten, ohne Spaltenänderungen explizit definieren zu müssen. Aktivieren Sie **Schemaabweichung zulassen**, wenn Sie zusätzliche Spalten zusätzlich zur Definition im Datenschema der Senke schreiben möchten.
 
 **Schema überprüfen**: Wenn „Schema überprüfen“ ausgewählt ist, führt der Datenfluss zu einem Fehler, wenn eine der Spalten des Eingangsquellschemas in der Quellprojektion nicht gefunden wird oder wenn die Datentypen nicht übereinstimmen. Verwenden Sie diese Einstellung, um eine Übereinstimmung der Quelldaten mit dem Vertrag Ihrer definierten Projektion zu erzwingen. Dies ist in Szenarien mit Datenbankquellen nützlich, um anzugeben, dass die Spaltennamen oder -typen geändert wurden.
 
@@ -111,11 +122,11 @@ Standardmäßig werden Daten ohne festgeschriebene Reihenfolge in mehrere Senken
 
 ### <a name="sink-groups"></a>Senkengruppen
 
-Sie können Senken gruppieren, indem Sie für eine Reihe von Senken die gleiche Auftragsnummer anwenden. ADF behandelt diese Senken als Gruppen, die parallel ausgeführt werden können. Optionen für die parallele Ausführung werden in der Pipeline-Datenflussaktivität angezeigt.
+Sie können Senken gruppieren, indem Sie für eine Reihe von Senken die gleiche Auftragsnummer anwenden. Der Dienst behandelt diese Senken als Gruppen, die parallel ausgeführt werden können. Optionen für die parallele Ausführung werden in der Pipeline-Datenflussaktivität angezeigt.
 
 ## <a name="error-row-handling"></a>Fehlerzeilenbehandlung
 
-Beim Schreiben in Datenbanken können aufgrund von Einschränkungen durch das Ziel Fehler bei bestimmten Datenzeilen auftreten. Standardmäßig scheitert eine Datenflussausführung beim ersten erhaltenen Fehler. In bestimmten Connectors können Sie eine Option **Bei Fehler fortsetzen** auswählen, die einen Abschluss des Datenflusses auch dann ermöglicht, wenn einzelne Zeilen Fehler aufweisen. Diese Funktion ist derzeit nur in Azure SQL-Datenbank verfügbar. Weitere Informationen finden Sie unter [Fehlerzeilenbehandlung in Azure SQL-Datenbank](connector-azure-sql-database.md#error-row-handling).
+Beim Schreiben in Datenbanken können aufgrund von Einschränkungen durch das Ziel Fehler bei bestimmten Datenzeilen auftreten. Standardmäßig scheitert eine Datenflussausführung beim ersten erhaltenen Fehler. In bestimmten Connectors können Sie eine Option **Bei Fehler fortsetzen** auswählen, die einen Abschluss des Datenflusses auch dann ermöglicht, wenn einzelne Zeilen Fehler aufweisen. Diese Funktion ist derzeit nur in Azure SQL-Datenbank und Azure Synapse verfügbar. Weitere Informationen finden Sie unter [Fehlerzeilenbehandlung in Azure SQL-Datenbank](connector-azure-sql-database.md#error-row-handling).
 
 Es folgt ein Videotutorial zur automatischen Verwendung der Fehlerzeilenbehandlung für Datenbanken in Ihrer Senkentransformation.
 

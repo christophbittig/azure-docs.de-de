@@ -1,24 +1,37 @@
 ---
 title: Problembehandlung für den Azure Image Builder-Dienst
 description: Beheben von häufigen Problemen und Fehlern bei der Verwendung des Azure VM Image Builder-Diensts
-author: cynthn
-ms.author: danis
+author: kof-f
+ms.author: kofiforson
+ms.reviewer: cynthn
 ms.date: 10/02/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.collection: linux
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 85296a7b7de8e1bce03d39ab8c96c8444fe1dffb
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 6ef288e776daaf7aa266d13068647bea1c5a4c27
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111440950"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691887"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>Problembehandlung für den Azure Image Builder-Dienst
 
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
+
 Dieser Artikel hilft Ihnen, häufige Probleme zu beheben, die beim Verwenden des Azure Image Builder-Diensts auftreten können.
+
+## <a name="prerequisites"></a>Voraussetzungen
+Stellen Sie beim Erstellen eines Builds sicher, dass Ihr Build die folgenden Voraussetzungen erfüllt:
+    
+- Der Image Builder-Dienst kommuniziert mit dem virtuellen Buildcomputer über WinRM oder SSH. Deaktivieren Sie diese Einstellungen NICHT als Teil des Builds.
+- Image Builder erstellt Ressourcen als Teil des Builds. Stellen Sie sicher, dass Azure Policy AIB nicht daran hindert, erforderliche Ressourcen zu erstellen oder zu verwenden.
+  - Erstellen der IT_-Ressourcengruppe
+  - Erstellen eines Speicherkontos ohne Firewall
+- Stellen Sie sicher, dass Azure Policy keine unbeabsichtigten Features wie Azure-Erweiterungen auf der Build-VM installiert.
+-   Stellen Sie sicher, dass Image Builder über die richtigen Berechtigungen zum Lesen/Schreiben von Images und zum Herstellen einer Verbindung mit Azure Storage verfügt. Bitte lesen Sie die Dokumentation zu den Berechtigungen für [CLI](./image-builder-permissions-cli.md) oder [PowerShell](./image-builder-permissions-powershell.md).
+- Image Builder kann den Build nicht erstellen, wenn bei den Skript-/Inlinebefehlen Fehler auftreten (Exitcodes ungleich 0). Testen und überprüfen Sie unbedingt, ob benutzerdefinierte Skripts fehlerfrei ausgeführt werden (Exitcode 0) oder Benutzereingaben erfordern. Weitere Informationen finden Sie in der folgenden [Dokumentation](../windows/image-builder-virtual-desktop.md#tips-for-building-windows-images).
 
 AIB-Fehler können in zwei Bereichen auftreten:
 - Übermittlung von Imagevorlagen
@@ -525,6 +538,25 @@ Der Image Builder-Dienst verwendet Port 22 (Linux) oder Port 5986 (Windows), um 
 
 #### <a name="solution"></a>Lösung
 Überprüfen Sie Ihre Skripts auf Firewalländerungen/-aktivierung oder Änderungen an SSH oder WinRM, und stellen Sie sicher, dass alle Änderungen eine konstante Konnektivität zwischen dem Dienst und der Build-VM an den oben genannten Ports zulassen. Weitere Informationen zu Image Builder-Netzwerken finden Sie im Artikel zu den [Anforderungen](./image-builder-networking.md).
+
+### <a name="jwt-errors-in-log-early-in-the-build"></a>JWT-Fehler im Protokoll früh im Build
+
+#### <a name="error"></a>Fehler
+Früh im Buildprozess tritt ein Fehler auf, und das Protokoll weist auf einen JWT-Fehler hin:
+
+```text
+PACKER OUT Error: Failed to prepare build: "azure-arm"
+PACKER ERR 
+PACKER OUT 
+PACKER ERR * client_jwt will expire within 5 minutes, please use a JWT that is valid for at least 5 minutes
+PACKER OUT 1 error(s) occurred:
+```
+
+#### <a name="cause"></a>Ursache
+Der `buildTimeoutInMinutes`-Wert in der Vorlage ist auf 1 bis 5 Minuten festgelegt.
+
+#### <a name="solution"></a>Lösung
+Wie unter [Erstellen einer Azure Image Builder-Vorlage](./image-builder-json.md) beschrieben, muss das Timeout auf 0 festgelegt werden, um den Standardwert zu verwenden, oder mehr als 5 Minuten, um den Standardwert zu überschreiben.  Ändern Sie das Timeout in Ihrer Vorlage in 0, um den Standardwert oder mindestens 6 Minuten zu verwenden.
 
 ## <a name="devops-task"></a>DevOps-Task 
 

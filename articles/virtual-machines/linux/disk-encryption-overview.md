@@ -9,14 +9,16 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5b84526f6f3193fc47bc211fcdec71bb5e27390f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 564593dd6c3fe7e30d1e3a362f4c11c52adbc82c
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110077678"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689718"
 ---
-# <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption für Linux-VMs 
+# <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption für Linux-VMs
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
 Azure Disk Encryption unterstützt Sie beim Schutz Ihrer Daten gemäß den Sicherheits- und Complianceanforderungen Ihrer Organisation. Der Dienst stellt mithilfe des [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt)-Features von Linux Volumeverschlüsselung für das Betriebssystem und die Datenträger von virtuellen Azure-Computern (VMs) bereit und ist in [Azure Key Vault](../../key-vault/index.yml) integriert, damit Sie die Verschlüsselungsschlüssel und Geheimnisse für Datenträger steuern und verwalten können.
 
@@ -38,7 +40,7 @@ Die Grundlagen von Azure Disk Encryption für Linux können Sie in den Schnellst
 
 Linux-VMs sind in [verschiedenen Größen](../sizes.md) verfügbar. Azure Disk Encryption wird für virtuelle Computer der 1. und 2. Generation unterstützt. Azure Disk Encryption ist auch für virtuelle Computer mit Storage Premium verfügbar.
 
-Weitere Informationen finden Sie unter [Azure-VM-Größen ohne lokalen temporären Datenträger](../azure-vms-no-temp-disk.md).
+Weitere Informationen finden Sie unter [Azure-VM-Größen ohne lokalen temporären Datenträger](../azure-vms-no-temp-disk.yml).
 
 Azure Disk Encryption ist außerdem nicht verfügbar auf [Basic-VMs der A-Serie](https://azure.microsoft.com/pricing/details/virtual-machines/series/) und auf virtuellen Computern, die die folgenden Mindestanforderungen an den Arbeitsspeicher nicht erfüllen:
 
@@ -63,6 +65,10 @@ Nicht von Azure zugelassene Linux-Serverdistributionen unterstützen Azure Disk 
 
 | Herausgeber | Angebot | SKU | URN | Für die Verschlüsselung unterstützter Volumetyp |
 | --- | --- |--- | --- |
+| Canonical | Ubuntu | 20.04-LTS | Canonical:0001-com-ubuntu-server-focal:20_04-lts:latest | Betriebssystem- und andere Datenträger |
+| Canonical | Ubuntu | 20.04-DAILY-LTS | Canonical:0001-com-ubuntu-server-focal-daily:20_04-daily-lts:latest | Betriebssystem- und andere Datenträger |
+| Canonical | Ubuntu | 20.04-LTS Gen2 | Canonical:0001-com-ubuntu-server-focal:20_04-lts-gen2:latest | Betriebssystem- und andere Datenträger |
+| Canonical | Ubuntu | 20.04-DAILY-LTS Gen2 |Canonical:0001-com-ubuntu-server-focal-daily:20_04-daily-lts-gen2:latest | Betriebssystem- und andere Datenträger |
 | Canonical | Ubuntu | 18.04-LTS | Canonical:UbuntuServer:18.04-LTS:latest | Betriebssystem- und andere Datenträger |
 | Canonical | Ubuntu 18.04 | 18.04-DAILY-LTS | Canonical:UbuntuServer:18.04-DAILY-LTS:latest | Betriebssystem- und andere Datenträger |
 | Canonical | Ubuntu 16.04 | 16.04-DAILY-LTS | Canonical:UbuntuServer:16.04-DAILY-LTS:latest | Betriebssystem- und andere Datenträger |

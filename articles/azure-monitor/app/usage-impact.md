@@ -1,23 +1,20 @@
 ---
-title: Azure Application Insights – Auswirkungen der Nutzung | Microsoft-Dokumentation
+title: Application Insights-Nutzung (Impact) – Azure Monitor
 description: Analysieren Sie, wie verschiedene Eigenschaften potenziell die Konvertierungsraten für Teile Ihrer Apps beeinflussen.
 ms.topic: conceptual
-author: NumberByColors
-ms.author: daviste
-ms.date: 01/08/2019
-ms.reviewer: mbullwin
-ms.openlocfilehash: 8ce49488124f07f05b8df2d9f4eae41e041aa0aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: lgayhardt
+ms.author: lagayhar
+ms.date: 07/30/2021
+ms.openlocfilehash: 3e484cb0f083292ba22c7a30c79202d01d1b10eb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105026188"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355252"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Auswirkungsanalyse mit Application Insights
 
 Impact analysiert, wie Ladezeiten und andere Eigenschaften Konvertierungsraten für verschiedene Teile Ihrer App beeinflussen. Genauer gesagt, wird ermittelt, wie **eine beliebige Dimension** einer **Seitenansicht**, eines **benutzerdefinierten Ereignisses** oder einer **Anforderung** sich auf die Verwendung anderer **Seitenansichten** oder **benutzerdefinierter Ereignisse** auswirkt. 
-
-![Impact-Tool](./media/usage-impact/0001-impact.png)
 
 ## <a name="still-not-sure-what-impact-does"></a>Sie wissen noch nicht, was Impact macht?
 
@@ -25,26 +22,36 @@ Betrachten Sie Impact als ultimatives Tool zur Beilegung der Meinungsverschieden
 
 Die Leistungsanalyse ist jedoch nur ein Teilbereich der Funktionen von Impact. Da Impact benutzerdefinierte Ereignisse und Dimensionen unterstützt, werden Fragen der Art „Wie korreliert die Browserauswahl des Benutzers mit unterschiedlichen Konvertierungsraten?“ mit ein paar Mausklicks beantwortet.
 
-![Screenshot der Konvertierung nach Browsern](./media/usage-impact/0004-browsers.png)
-
 > [!NOTE]
-> Ihre Application Insights-Ressource muss Seitenaufrufe oder benutzerdefinierte Ereignisse enthalten, damit das Impact-Tool eingesetzt werden kann. [Informieren Sie sich darüber, wie Sie Ihre App so einrichten können, dass Seitenansichten automatisch mit dem Application Insights-JavaScript-SDK erfasst werden](./javascript.md). Bedenken Sie auch, dass die Beispielgröße von Bedeutung ist, weil Sie die Korrelation analysieren.
->
->
+> Ihre Application Insights-Ressource muss Seitenaufrufe oder benutzerdefinierte Ereignisse enthalten, damit die Impact-Analysearbeitsmappe genutzt werden kann. [Informieren Sie sich darüber, wie Sie Ihre App so einrichten können, dass Seitenansichten automatisch mit dem Application Insights-JavaScript-SDK erfasst werden](./javascript.md). Bedenken Sie auch, dass die Beispielgröße von Bedeutung ist, weil Sie die Korrelation analysieren.
+
+## <a name="impact-analytics-workbook"></a>Impact-Analysearbeitsmappe 
+
+Navigieren Sie in Ihren Application Insights-Ressourcen zu **Verwendung** > **Auswirkung**, und klicken Sie auf **Impact Analysis Workbook** (Impact-Analysearbeitsmappe). Alternativ können Sie auf der Registerkarte **Arbeitsmappen** auf **Öffentliche Vorlagen** und dann unter *Verwendung* auf **Analyse der Benutzerauswirkungen** klicken.
+
+:::image type="content" source="./media/usage-impact/workbooks-gallery.png" alt-text="Screenshot: Arbeitsmappenkatalog für öffentliche Vorlagen" lightbox="./media/usage-impact/workbooks-gallery.png":::
+
+
+### <a name="using-the-workbook"></a>Verwenden der Arbeitsmappe
+
+:::image type="content" source="./media/usage-impact/selected-event.png" alt-text="Screenshot der Auswahloptionen für eine erste Seitenansicht, ein benutzerdefiniertes Ereignis oder eine Anforderung" lightbox="./media/usage-impact/selected-event.png":::
+
+1. Wählen Sie ein Ereignis aus dem Dropdownmenü **Ausgewähltes Ereignis** aus.
+2. Wählen Sie eine Metrik aus dem Dropdownmenü **Analysieren der Auswirkungen von** aus.
+3. Wählen Sie ein Ereignis aus dem Dropdownmenü **Impacting event** (Beeinflussendes Ereignis) aus. 
+1. Wenn Sie einen Filter hinzufügen möchten, nutzen Sie die Funktion **Add selected event filters** (Ausgewählte Filter hinzufügen) und/oder **Add impacting event filters** (Beeinflussende Ereignisfilter hinzufügen).
+
 
 ## <a name="is-page-load-time-impacting-how-many-people-convert-on-my-page"></a>Beeinflusst die Seitenladezeit, wie viele Personen zu meiner Seite konvertieren?
 
-Beginnen Sie, Fragen mit dem Impact-Tool zu beantworten, indem Sie eine erste Seitenansicht, ein benutzerdefiniertes Ereignis oder eine Anforderung auswählen.
+Beginnen Sie, Fragen mit der Impact-Arbeitsmappe zu beantworten, indem Sie eine erste Seitenansicht, ein benutzerdefiniertes Ereignis oder eine Anforderung auswählen.
 
-![Screenshot der Auswahloptionen für eine erste Seitenansicht, ein benutzerdefiniertes Ereignis oder eine Anforderung](./media/usage-impact/0002-dropdown.png)
-
-1. Wählen Sie eine Seitenansicht aus der Dropdownliste **Für die Seitenansicht**.
+1. Wählen Sie ein Ereignis aus dem Dropdownmenü **Ausgewähltes Ereignis** aus.
 2. Behalten Sie für die Dropdownliste **Analysieren der Auswirkungen von** die Standardauswahl **Dauer** bei (in diesem Kontext ist **Dauer** ein Alias für **Seitenladezeit**).
-3. Wählen Sie für die Dropdownliste **auf die Verwendung von** ein benutzerdefiniertes Ereignis aus. Dieses Ereignis sollte einem Element der Benutzeroberfläche auf der Seitenansicht entsprechen, die Sie in Schritt 1 ausgewählt haben.
+3. Wählen Sie im Dropdownmenü **Impacting event** (Beeinflussendes Ereignis) ein benutzerdefiniertes Ereignis aus. Dieses Ereignis sollte einem Element der Benutzeroberfläche auf der Seitenansicht entsprechen, die Sie in Schritt 1 ausgewählt haben.
 
-![Screenshot der Ergebnisse](./media/usage-impact/0003-results.png)
 
-In dieser Instanz sinkt mit wachsender Ladezeit der **Produktseite** die Rate der Konvertierung zu **Angeklicktes Produkt kaufen**. Basierend auf der obigen Verteilung könnte eine optimale Seitenladedauer von 3,5 Sekunden angestrebt werden, um eine potenzielle Konvertierungsrate von 55 % zu erreichen. Weitere Leistungsverbesserungen zur Reduzierung der Ladezeit unter 3,5 Sekunden korrelieren derzeit nicht mit zusätzlichen Konvertierungsvorteilen.
+:::image type="content" source="./media/usage-impact/impact.png" alt-text="Screenshot: Beispiel mit ausgewähltem Ereignis als Startseite, analysiert nach Dauer" lightbox="./media/usage-impact/impact.png":::
 
 ## <a name="what-if-im-tracking-page-views-or-load-times-in-custom-ways"></a>Kann ich Seitenansichten oder Ladezeiten auf benutzerdefinierte Weise nachverfolgen?
 
@@ -52,20 +59,19 @@ Impact unterstützt sowohl standardmäßige als auch benutzerdefinierte Eigensch
 
 ## <a name="do-users-from-different-countries-or-regions-convert-at-different-rates"></a>Unterscheiden sich die Konvertierungsraten von Benutzern aus unterschiedlichen Ländern oder Regionen?
 
-1. Wählen Sie eine Seitenansicht aus der Dropdownliste **Für die Seitenansicht**.
+1. Wählen Sie im Dropdownmenü **Ausgewähltes Ereignis** ein Ereignis aus.
 2. Wählen Sie in der Dropdownliste **Analysieren der Auswirkungen von** „Land oder Region“.
-3. Wählen Sie für die Dropdownliste **auf die Verwendung von** ein benutzerdefiniertes Ereignis aus, das einem Element der Benutzeroberfläche in der Seitenansicht entspricht, die Sie in Schritt 1 ausgewählt haben.
+3. Wählen Sie für die Dropdownliste **Beeinflussendes Ereignis** ein benutzerdefiniertes Ereignis aus, das einem Element der Benutzeroberfläche in der Seitenansicht entspricht, die Sie in Schritt 1 ausgewählt haben.
 
-In diesem Fall passen die Ergebnisse nicht mehr wie im ersten Beispiel in ein Modell mit fortlaufender X-Achse. Stattdessen wird eine Visualisierung dargestellt, die einem segmentierten Trichter ähnelt. Sortieren Sie nach **Verwendung**, um die Variation der Konvertierung zu Ihrem benutzerdefinierten Ereignis auf Länder-/Regionsbasis anzuzeigen.
+:::image type="content" source="./media/usage-impact/regions.png" alt-text="Screenshot: Beispiel mit ausgewähltem Ereignis als GET, analysiert nach Land und Region" lightbox="./media/usage-impact/regions.png":::
 
+## <a name="how-does-the-impact-analysis-workbook-calculate-these-conversion-rates"></a>Wie berechnet die Impact-Analysearbeitsmappe diese Konvertierungsraten?
 
-## <a name="how-does-the-impact-tool-calculate-these-conversion-rates"></a>Wie berechnet das Impact-Tool diese Konvertierungsraten?
-
-Im Hintergrund nutzt das Impact-Tool den [Pearson-Korrelationskoeffizienten](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient). Ergebnisse werden zwischen -1 und 1 berechnet, wobei -1 eine negative lineare Korrelation und 1 eine positive lineare Korrelation darstellt.
+Die Impact-Analysearbeitsmappe ist unter der Haube abhängig vom [Pearson-Korrelationskoeffizienten](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient). Ergebnisse werden zwischen -1 und 1 berechnet, wobei -1 eine negative lineare Korrelation und 1 eine positive lineare Korrelation darstellt.
 
 Die grundlegende Aufschlüsselung der Funktionsweise der Auswirkungsanalyse lautet wie folgt:
 
-_A_ = Hauptseitenansicht/benutzerdefiniertes Ereignis/Anforderung Ihrer Wahl in der ersten Dropdownliste. (**Für die Seitenansicht**).
+_A_ = Hauptseitenansicht/benutzerdefiniertes Ereignis/Anforderung Ihrer Wahl in der ersten Dropdownliste. **(Ausgewähltes Ereignis)**
 
 _B_ = sekundäre Seitenansicht/sekundäres benutzerdefiniertes Ereignis Ihrer Wahl (**auf die Verwendung von**).
 
@@ -80,6 +86,7 @@ Wie die Auswirkung letztlich berechnet wird, hängt davon ab, ob wir nach Metrik
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- Weitere Informationen zu Arbeitsmappen finden Sie in der [Übersicht über Arbeitsmappen](../visualize/workbooks-overview.md).
 - Um mit der Nutzung zu beginnen, senden Sie [benutzerdefinierte Ereignisse](./api-custom-events-metrics.md#trackevent) oder [Seitenansichten](./api-custom-events-metrics.md#page-views).
 - Wenn Sie bereits benutzerdefinierte Ereignisse oder Seitenansichten senden, finden Sie mithilfe der Nutzungstools heraus, wie Benutzer den Dienst verwenden.
     - [Trichter](usage-funnels.md)

@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: pafarley
-ms.openlocfilehash: cb005621a3439d5c7976221d816536b46efb986c
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 3fe90f5c9038c37e3ac3e9fba357ea27ca089679
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111744993"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340100"
 ---
 # <a name="face-detection-and-attributes"></a>Gesichtserkennung und -attribute
 
@@ -90,4 +90,4 @@ Wenn Sie Gesichter in einem Videofeed ermitteln möchten, können Sie die Leistu
 
 Nachdem Sie nun mit den Konzepten der Gesichtserkennung vertraut sind, erfahren Sie, wie Sie ein Skript schreiben, das Gesichter in einem vorgegebenen Bild erkennt.
 
-* [Gesichtserkennung in einem Bild](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)
+* [Aufrufen der Erkennungs-API](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)

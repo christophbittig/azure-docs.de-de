@@ -6,12 +6,12 @@ ms.author: bwren
 ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: a800f78df26ce76144994bb9da2cac6271323eb4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 498fc101f257b05d24826cead8906b513ec34ccd
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419421"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122343666"
 ---
 # <a name="cross-resource-query-azure-data-explorer-by-using-azure-monitor"></a>Ressourcenübergreifende Abfrage: Azure Data Explorer mithilfe von Azure Monitor
 Azure Monitor unterstützt dienstübergreifende Abfragen zwischen Azure Data Explorer, [Application Insights](../app/app-insights-overview.md) und [Log Analytics](../logs/data-platform-logs.md). Anschließend können Sie den Azure Data Explorer-Cluster mit Log Analytics/Application Insights-Tools abfragen und in einer dienstübergreifenden Abfrage darauf verweisen. Der Artikel zeigt, wie eine dienstübergreifende Abfrage durchgeführt wird.
@@ -55,6 +55,15 @@ union customEvents, CL1 | take 10
 
 > [!Tip]
 > Kurzform ist zulässig: *ClusterName*/*InitialCatalog*. Beispielsweise wird `adx('help/Samples')` in `adx('help.kusto.windows.net/Samples')` übersetzt.
+
+>[!Note]
+> 
+>* Wenn Sie anstelle von „union“ den [`join`-Operator](/azure/data-explorer/kusto/query/joinoperator) nutzen, müssen Sie einen [`hint`](/azure/data-explorer/kusto/query/joinoperator#join-hints) zum Kombinieren der Daten im Azure Data Explorer-Cluster mit dem Log Analytics-Arbeitsbereich verwenden.
+>* Verwenden Sie „hint.remote={Richtung des Log Analytics-Arbeitsbereichs}“. Beispiel:
+>```kusto
+>AzureDiagnostics
+>| join hint.remote=left adx("cluster=ClusterURI").AzureDiagnostics on (ColumnName)
+>```
 
 ## <a name="join-data-from-an-azure-data-explorer-cluster-in-one-tenant-with-an-azure-monitor-resource-in-another"></a>Verknüpfen von Daten eines Azure Data Explorer-Clusters in einem Mandanten mit einer Azure Monitor-Ressource in einem anderen Mandanten
 

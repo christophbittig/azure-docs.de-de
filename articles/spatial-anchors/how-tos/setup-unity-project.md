@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 03/30/2021
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: fe9160f22754c62888b2a61ce9751f596842604e
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: d87c789b4c5f1decc468838ccabd136cec32cabc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076695"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345763"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-unity-project"></a>Konfigurieren von Azure Spatial Anchors in einem Unity-Projekt
 
@@ -32,6 +32,13 @@ Bevor Sie das Azure Spatial Anchors SDK in Ihr Unity-Projekt einschließen, stel
 
 ### <a name="import-asa-packages"></a>Importieren von ASA-Paketen
 [!INCLUDE [Import Unity Packages](../../../includes/spatial-anchors-unity-import-packages.md)]
+
+### <a name="hololens-only-configure-your-unity-project-xr-settings"></a>Nur HoloLens: Konfigurieren der XR-Einstellungen Ihres Unity-Projekts
+Bei der Entwicklung von MixedReality-Apps auf HoloLens müssen Sie die XR-Konfiguration in Unity einrichten. Weitere Informationen dazu finden Sie hier: [Einrichten Ihrer XR-Konfiguration - Mixed Reality | Microsoft-Dokumentation](https://docs.microsoft.com/windows/mixed-reality/develop/unity/xr-project-setup?tabs=openxr)     und [Auswählen einer Unity-Version und eines XR-Plugins - Mixed Reality | Microsoft-Dokumentation](https://docs.microsoft.com/windows/mixed-reality/develop/unity/choosing-unity-version).
+
+Das Azure Spatial Anchors SDK 2.9 (oder älter) unterstützt nur das Windows-XR-Plugin (com.unity.xr.windowsmr). Daher weist das Unity-Paket für Azure Spatial Anchor HoloLens eine explizite Abhängigkeit vom Paket com.unity.xr.windowsmr auf.
+
+Das Azure Spatial Anchors SDK Version 2.10.0 (oder höher) unterstützt sowohl das Mixed Reality OpenXR-Plugin ([com.microsoft.mixedreality.openxr](https://dev.azure.com/aipmr/MixedReality-Unity-Packages/_packaging?_a=package&feed=Unity-packages&view=overview&package=com.microsoft.mixedreality.openxr&protocolType=Npm)) als auch das Windows-XR-Plugin ([com.unity.xr.windowsmr](https://docs.unity3d.com/Manual/com.unity.xr.windowsmr.html)). Sie müssen entweder das com.microsoft.mixedreality.openxr- oder das com.unity.xr.windowsmr-Paket in ein Projekt Ihrer Wahl integrieren.
 
 ### <a name="android-only-configure-the-maintemplategradle-file"></a>Nur Android: Konfigurieren der Datei „maintemplate. gradle“
 

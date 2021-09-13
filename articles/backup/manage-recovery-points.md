@@ -2,13 +2,13 @@
 title: Verwalten von Wiederherstellungspunkten
 description: Hier erfahren Sie, wie der Azure Backup-Dienst Wiederherstellungspunkte für virtuelle Computer verwaltet.
 ms.topic: conceptual
-ms.date: 11/08/2020
-ms.openlocfilehash: 256df693aba0f799c24bcba6defe846e5c37ccaa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/17/2021
+ms.openlocfilehash: 2dd33b430d5aa117f35f74ff92bb3655a9002803
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94428488"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112300667"
 ---
 # <a name="manage-recovery-points"></a>Verwalten von Wiederherstellungspunkten
 
@@ -121,6 +121,12 @@ Anhand des folgenden Szenarios wird veranschaulicht, wie sich die Änderungsrate
 |Änderungsrate der Sicherungsdaten    |   A1: 4 TB      | B1: 1 TB; B2: 1 TB <br> B3: 1 TB; B4: 1 TB  |   C1: 2 TB; C4: 2 TB      |
 
 Die Reihenfolge der Sicherungsleistung ist VM2 > VM3 > VM1. Dies liegt daran, dass die geänderten Daten auf die verschiedenen Datenträger verteilt sind. Da die Sicherung von Datenträgern parallel erfolgt, weist VM2 die beste Leistung auf.
+
+## <a name="frequently-asked-question"></a>Häufig gestellte Fragen
+
+### <a name="how-can-i-find-the-retention-period-of-an-on-demand-backup"></a>Wie kann ich den Aufbewahrungszeitraum einer bedarfsgesteuerten Sicherung ermitteln?
+
+Im Feld **Ablaufzeit des Wiederherstellungspunkts (UTC)** in den Sicherungsaufträgen einer bedarfsgesteuerten Sicherung wird der Aufbewahrungszeitraum des Wiederherstellungspunkts angezeigt. Weitere Informationen finden Sie unter [Ausführen einer On-Demand-Sicherung](backup-azure-manage-vms.md#run-an-on-demand-backup). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

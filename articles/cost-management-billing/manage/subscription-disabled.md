@@ -8,14 +8,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 03/30/2021
+ms.date: 07/15/2021
 ms.author: banders
-ms.openlocfilehash: aad194babdf539584f3e349e8050105ed801bbf0
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 1e669a794abe848d326a6d08156621dcf3883ec5
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331734"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114292234"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>Reaktivieren eines deaktivierten Azure-Abonnements
 
@@ -60,6 +60,10 @@ Wenn Sie der Kontoadministrator sind und versehentlich ein Abonnement mit nutzun
 ## <a name="after-reactivation"></a>Nach der Reaktivierung
 
 Nach der erneuten Aktivierung Ihres Abonnements kann es zu einer Verzögerung beim Erstellen oder Verwalten von Ressourcen kommen. Sollte die Verzögerung 30 Minuten übersteigen, wenden Sie sich an den [Azure-Abrechnungssupport](https://go.microsoft.com/fwlink/?linkid=2083458), um Hilfe zu erhalten. Die meisten Azure-Ressourcen werden automatisch fortgesetzt, sodass keine Aktion erforderlich ist. Es wird jedoch empfohlen, die Azure-Dienstressourcen zu überprüfen und alle Ressourcen, die nicht automatisch fortgesetzt werden, neu zu starten.
+
+## <a name="upgrade-a-disabled-free-account"></a>Durchführen eines Upgrades für ein deaktiviertes kostenloses Konto
+
+Wenn Sie kostenpflichtige Ressourcen verwenden und Ihr Abonnement deaktiviert wird, weil Ihnen kein Guthaben mehr zur Verfügung steht, und Sie dann ein Upgrade für Ihr Abonnement durchführen, werden die Ressourcen nach dem Upgrade aktiviert. Dies führt dazu, dass Ihnen die verwendeten Ressourcen in Rechnung gestellt werden. Weitere Informationen zum Durchführen eines Upgrades für ein kostenloses Konto finden Sie unter [Durchführen eines Upgrades für Ihr kostenloses Azure-Konto oder Ihr Azure for Students Starter-Konto](upgrade-azure-subscription.md).
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 

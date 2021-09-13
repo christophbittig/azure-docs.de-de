@@ -9,17 +9,18 @@ ms.service: machine-learning
 ms.subservice: studio-classic
 ms.topic: how-to
 ms.date: 06/15/2017
-ms.openlocfilehash: 1042b33dd0e753b8706bed8ab77a57d65c63fb4b
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 16ee5957336a271b0b5cd58ed7576f104de7b85e
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112583336"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689514"
 ---
 # <a name="enable-logging-for-machine-learning-studio-classic-web-services"></a>Aktivieren der Protokollierung für (klassische) Machine Learning Studio-Webdienste
 
 **GILT FÜR:**  ![Gilt für ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Gilt nicht für ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 Dieses Dokument enthält Informationen zur Protokollierungsfunktion von (klassischen) Machine Learning Studio-Webdiensten. Durch die Protokollierung erhalten Sie zusätzliche Informationen, die über die Fehlernummer und eine Meldung hinausgehen und die Ihnen helfen können, Probleme beim Aufrufen der (klassischen) Machine Learning Studio-APIs zu beheben.  
 

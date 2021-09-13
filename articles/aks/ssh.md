@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 05/17/2021
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: 7ca318a21e4b3f764060757e1102e6e4665aec3e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 87e548cd39c7c064b11131c28790d8335bd942fb
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110467826"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418411"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Herstellen einer SSH-Verbindung mit Azure Kubernetes Service-Clusterknoten (AKS) zur Wartung oder Problembehandlung
 
@@ -75,13 +75,17 @@ node-debugger-aks-nodepool1-12345678-vmss000000-bkmmx   1/1     Running   0     
 
 Im obigen Beispiel ist *node-debugger-aks-nodepool1-12345678-vmss000000-bkmmx* der Name des Pods, der von `kubectl debug` gestartet wurde.
 
-Nun kopieren Sie Ihren privaten SSH-Schlüssel in den Pod, der von `kubectl debug` erstellt wurde. Dieser private Schlüssel wird verwendet, um die SSH-Verbindung mit dem Windows Server AKS-Knoten herzustellen. Ändern Sie bei Bedarf `~/.ssh/id_rsa` in den Speicherort Ihres privaten SSH-Schlüssels:
+Mit `kubectl port-forward` können Sie eine Verbindung mit dem bereitgestellten Pod öffnen:
 
-```azurecli-interactive
-kubectl cp ~/.ssh/id_rsa node-debugger-aks-nodepool1-12345678-vmss000000-bkmmx:/id_rsa
+```
+$ kubectl port-forward node-debugger-aks-nodepool1-12345678-vmss000000-bkmmx 2022:22
+Forwarding from 127.0.0.1:2022 -> 22
+Forwarding from [::1]:2022 -> 22
 ```
 
-Zeiten Sie mit `kubectl get nodes` die interne IP-Adresse des Windows Server-Knotens an:
+Im obigen Beispiel wird der Netzwerkdatenverkehr von Port 2022 auf Ihrem Entwicklungscomputer an Port 22 auf dem bereitgestellten Pod weitergeleitet. Wenn Sie mit `kubectl port-forward` eine Verbindung öffnen und den Netzwerkdatenverkehr weiterleiten, bleibt die Verbindung offen, bis Sie den Befehl `kubectl port-forward` beenden.
+
+Öffnen Sie ein neues Terminal, und zeigen Sie mit `kubectl get nodes` die interne IP-Adresse des Windows Server-Knotens an:
 
 ```output
 $ kubectl get nodes -o wide
@@ -94,16 +98,10 @@ aksnpwin000000                      Ready    agent   87s     v1.19.9   10.240.0.
 
 Im obigen Beispiel ist *10.240.0.67* die interne IP-Adresse des Windows Server-Knotens.
 
-Kehren Sie zum Terminal zurück, das von `kubectl debug` gestartet wurde, und aktualisieren Sie die Berechtigung für den privaten SSH-Schlüssel, den Sie in den Pod kopiert haben.
-
-```azurecli-interactive
-chmod 0400 id_rsa
-```
-
 Erstellen Sie mithilfe der internen IP-Adresse eine SSH-Verbindung mit dem Windows Server-Knoten. Auch hier lautet der Standardbenutzername für AKS-Knoten *azureuser*. Bestätigen Sie die Aufforderung zum Fortsetzen der Verbindungsherstellung. Sie erhalten dann die Bash-Eingabeaufforderung Ihres Windows Server-Knotens:
 
 ```output
-$ ssh -i id_rsa azureuser@10.240.0.67
+$ ssh -o 'ProxyCommand ssh -p 2022 -W %h:%p azureuser@127.0.0.1' azureuser@10.240.0.67
 
 The authenticity of host '10.240.0.67 (10.240.0.67)' can't be established.
 ECDSA key fingerprint is SHA256:1234567890abcdefghijklmnopqrstuvwxyzABCDEFG.
@@ -117,9 +115,18 @@ Microsoft Windows [Version 10.0.17763.1935]
 azureuser@aksnpwin000000 C:\Users\azureuser>
 ```
 
+Im obigen Beispiel wird über Port 2022 auf Ihrem Entwicklungscomputer eine Verbindung mit Port 22 auf dem Windows Server-Knoten hergestellt.
+
+> [!NOTE]
+> Wenn Sie die Kennwortauthentifizierung bevorzugen, verwenden Sie `-o PreferredAuthentications=password`. Zum Beispiel:
+>
+> ```console
+>  ssh -o 'ProxyCommand ssh -p 2022 -W %h:%p azureuser@127.0.0.1' -o PreferredAuthentications=password azureuser@10.240.0.67
+> ```
+
 ## <a name="remove-ssh-access"></a>Entfernen des SSH-Zugriffs
 
-Wenn Sie fertig sind, führen Sie `exit` für die SSH-Sitzung und dann `exit` für die interaktive Containersitzung aus. Beim Schließen dieser Containersitzung wird der Pod, der für den SSH-Zugriff vom AKS-Cluster verwendet wurde, gelöscht.
+Wenn Sie fertig sind, führen Sie `exit` für die SSH-Sitzung aus, beenden Sie jegliche Portweiterleitung, und führen Sie dann `exit` für die interaktive Containersitzung aus. Nach dem Schließen dieser interaktiven Containersitzung wird der Pod gelöscht, der für den SSH-Zugriff vom AKS-Cluster verwendet wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -128,7 +135,7 @@ Falls Sie weitere Daten für die Problembehandlung benötigen, können Sie [die 
 
 <!-- INTERNAL LINKS -->
 [view-kubelet-logs]: kubelet-logs.md
-[view-master-logs]: ./view-control-plane-logs.md
+[view-master-logs]: monitor-aks-reference.md#resource-logs
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli

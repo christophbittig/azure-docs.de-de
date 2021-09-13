@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie das Upgrade eines Azure Kubernetes Service-Cl
 services: container-service
 ms.topic: article
 ms.date: 12/17/2020
-ms.openlocfilehash: 772cb9d33c9bf9307ca0dc16536933fc9123de4b
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 9dcbe21ccddb13037cbd7633127880320da9ff2b
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110085796"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349887"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Durchführen eines Upgrades für einen Azure Kubernetes Service-Cluster (AKS)
 
@@ -66,7 +66,7 @@ Für den maximalen Anstieg akzeptiert AKS sowohl ganzzahlige Werte als auch eine
 Während eines Upgrades kann der maximale Anstiegswert mindestens „1“ betragen und maximal der Anzahl von Knoten in Ihrem Knotenpool entsprechen. Sie können größere Werte festlegen, aber die maximale Anzahl von Knoten, die für den maximalen Anstieg verwendet wird, ist nicht größer als die Anzahl der Knoten im Pool zum Zeitpunkt des Upgrades.
 
 > [!Important]
-> Die Einstellung des maximalen Anstiegs für einen Knotenpools ist permanent.  Diese Einstellung wird bei nachfolgenden Kubernetes-Upgrades oder bei Knotenversionsupgrades verwendet. Sie können den maximalen Anstiegswert für Ihre Knotenpools jederzeit ändern. Für Produktionsknotenpools wird ein maximaler Anstiegswert von 33 % empfohlen.
+> Die Einstellung des maximalen Anstiegs für einen Knotenpools ist persistent.  Diese Einstellung wird bei nachfolgenden Kubernetes-Upgrades oder bei Knotenversionsupgrades verwendet. Sie können den maximalen Anstiegswert für Ihre Knotenpools jederzeit ändern. Für Produktionsknotenpools wird ein maximaler Anstiegswert von 33 % empfohlen.
 
 Verwenden Sie die folgenden Befehle, um Werte für den maximalen Anstieg für neue oder vorhandene Knotenpools festzulegen.
 
@@ -136,6 +136,12 @@ Automatische Clusterupgrades folgen demselben Prozess wie manuelle Upgrades. Wei
 Das automatische Clusterupgrade für AKS-Cluster ist eine Previewfunktion.
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+Fügen Sie die folgende Erweiterung für `az cli` hinzu.
+
+```azurecli-interactive
+az extension add --name aks-preview
+```
 
 Registrieren Sie das Featureflag `AutoUpgradePreview` mithilfe des Befehls [az feature register][az-feature-register], wie im folgenden Beispiel gezeigt:
 

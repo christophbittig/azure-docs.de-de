@@ -3,12 +3,12 @@ title: Hinzufügen einer verwalteten Identität zu einer Rolle am Azure Event Gr
 description: In diesem Artikel wird beschrieben, wie Sie Azure-Rollen verwaltete Identitäten an Zielen wie Azure Service Bus und Azure Event Hubs hinzufügen.
 ms.topic: how-to
 ms.date: 03/25/2021
-ms.openlocfilehash: 1578e4c24201614ce89351b3c3cee52a09cadc30
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: c2bfc10f0019b6753e9290d20c84ba5e2bbb59fe
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280478"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347149"
 ---
 # <a name="grant-managed-identity-the-access-to-event-grid-destination"></a>Gewähren des Zugriffs auf ein Event Grid-Ziel für die verwaltete Identität
 In diesem Abschnitt wird beschrieben, wie Sie die Identität für das Systemthema, das benutzerdefinierte Thema oder die benutzerdefinierte Domäne einer Azure-Rolle hinzufügen. 
@@ -28,9 +28,8 @@ Derzeit unterstützt Azure Event Grid benutzerdefinierte Themen oder Domänen, d
 | ----------- | --------- | 
 | Service Bus-Warteschlangen und -Themen | [Azure Service Bus-Datensender](../service-bus-messaging/authenticate-application.md#azure-built-in-roles-for-azure-service-bus) |
 | Azure Event Hubs | [Azure Event Hubs-Datensender](../event-hubs/authorize-access-azure-active-directory.md#azure-built-in-roles-for-azure-event-hubs) | 
-| Azure Blob Storage | [Mitwirkender an Speicherblobdaten](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues) |
-| Azure Queue Storage |[Absender der Speicherwarteschlangen-Datennachricht](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues) | 
-
+| Azure Blob Storage | [Mitwirkender an Speicherblobdaten](../storage/blobs/assign-azure-role-data-access.md) |
+| Azure Queue Storage |[Absender der Speicherwarteschlangen-Datennachricht](../storage/blobs/assign-azure-role-data-access.md) | 
 
 ## <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
 Sie können das Azure-Portal verwenden, um die Identität des benutzerdefinierten Themas bzw. der benutzerdefinierten Domäne einer entsprechenden Rolle zuzuweisen, damit das Thema/die Domäne Ereignisse an das Ziel weiterleiten kann. 
@@ -39,11 +38,24 @@ Im folgenden Beispiel wird eine verwaltete Identität für ein benutzerdefiniert
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem **Service Bus-Namespace**. 
 1. Klicken Sie im linken Bereich auf **Zugriffssteuerung**. 
-1. Klicken Sie im Bereich **Rollenzuweisung hinzufügen** auf **Hinzufügen**. 
-1. Führen Sie die folgenden Schritte auf der Seite **Rollenzuweisung hinzufügen** durch:
-    1. Wählen Sie die Rolle aus. In diesem Fall wird die Rolle **Azure Service Bus-Datensender** verwendet. 
-    1. Wählen Sie die **Identität** für das benutzerdefinierte Event Grid-Thema bzw. die benutzerdefinierte Event Grid-Domäne aus. 
-    1. Wählen Sie zum Speichern der Konfiguration **Speichern** aus.
+1. Wählen Sie im Abschnitt **Rollenzuweisung hinzufügen (Vorschau)** die Option **Hinzufügen** aus. 
+
+    :::image type="content" source="./media/add-identity-roles/add-role-assignment-menu.png" alt-text="Abbildung: Auswahl des Menüs „Rollenzuweisung hinzufügen (Vorschau)“":::
+1. Wählen Sie auf der Seite **Rollenzuweisung hinzufügen** die Option **Azure Service Bus-Datensender** und dann **Weiter** aus.  
+    
+    :::image type="content" source="./media/add-identity-roles/select-role.png" alt-text="Abbildung: Auswahl der Rolle „Azure Service Bus-Datensender“":::
+1. Führen Sie auf der Registerkarte **Mitglieder** die folgenden Schritte aus: 
+    1. Wählen Sie die Option **Benutzer, Gruppe oder Dienstprinzipal** aus, und klicken Sie auf **+ Mitglieder auswählen**. Für die Option **Verwaltete Identität** werden Event Grid-Identitäten noch nicht unterstützt. 
+    1. Suchen Sie im Fenster **Mitglieder auswählen** nach dem Dienstprinzipal, der den gleichen Namen wie Ihr benutzerdefiniertes Thema hat, und wählen Sie ihn aus. Im folgenden Beispiel ist dies **spcustomtopic0728**.
+    
+        :::image type="content" source="./media/add-identity-roles/select-managed-identity-option.png" alt-text="Abbildung: Auswahl der Option „Benutzer, Gruppe oder Dienstprinzipal“":::    
+    1. Klicken Sie im Fenster **Mitglieder auswählen** auf **Auswählen**. 
+
+        :::image type="content" source="./media/add-identity-roles/managed-identity-selected.png" alt-text="Abbildung: Auswahl der Option „Verwaltete Identität“":::            
+1. Wählen Sie auf der Registerkarte **Mitglieder** die Option **Weiter** aus. 
+
+    :::image type="content" source="./media/add-identity-roles/members-select-next.png" alt-text="Abbildung: Auswahl der Schaltfläche „Weiter“ auf der Seite „Mitglieder“":::                
+1. Wählen Sie auf der Seite **Überprüfen und zuweisen** die Option **Überprüfen und zuweisen** aus, nachdem Sie die Einstellungen überprüft haben. 
 
 Die Schritte entsprechen dem Hinzufügen einer Identität zu anderen Rollen, die in der Tabelle aufgeführt sind. 
 
@@ -90,5 +102,3 @@ az role assignment create --role "$role" --assignee "$topic_pid" --scope "$sbust
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sie haben dem Systemthema, dem benutzerdefinierten Thema oder der benutzerdefinierten Domäne eine systemseitig zugewiesene Identität zugewiesen und die Identität den entsprechenden Rollen an Zielen hinzugefügt. Lesen Sie nun die Informationen unter [Ereignisübermittlung mit einer verwalteten Identität](managed-service-identity.md), um zu erfahren, wie Sie mithilfe der Identität Ereignisse an Ziele übermitteln.
-
-

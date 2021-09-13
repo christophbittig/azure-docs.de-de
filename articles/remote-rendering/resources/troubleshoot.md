@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 2478ec3f0e8608e1dd868745fca2c323677fadce
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: bef6439ae51c6e15f7be997758acbbd3722ae4ff
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113729846"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223258"
 ---
 # <a name="troubleshoot"></a>Problembehandlung
 
@@ -253,7 +253,7 @@ Koplanare Oberflächen können eine Reihe verschiedener Ursachen haben:
 
 ## <a name="graphics-artifacts-using-multi-pass-stereo-rendering-in-native-c-apps"></a>Grafikartefakte mit Stereorendering mit mehreren Durchläufen in nativen C++-Apps
 
-In einigen Fällen können benutzerdefinierte native C++-Apps, die nach dem Aufruf von [**BlitRemoteFrame**](../concepts/graphics-bindings.md#render-remote-image) einen Stereorenderingmodus mit mehreren Durchläufen für lokale Inhalte verwenden (Rendering für das linke und rechte Auge in getrennten Durchläufen), einen Treiberfehler auslösen. Der Fehler führt zu nicht deterministischen Rasterungsfehlern, die dazu führen, dass einzelne Dreiecke oder Teile von Dreiecken des lokalen Inhalts zufällig verschwinden. Aus Leistungsgründen wird ohnehin empfohlen, lokale Inhalte mit einem moderneren Stereorenderingverfahren mit einzelnem Durchlauf zu rendern, z. B. mithilfe von **SV_RenderTargetArrayIndex**.
+In einigen Fällen können benutzerdefinierte native C++-Apps, die nach dem Aufruf von [**BlitRemoteFrame**](../concepts/graphics-bindings.md#render-remote-image-openxr) einen Stereorenderingmodus mit mehreren Durchläufen für lokale Inhalte verwenden (Rendering für das linke und rechte Auge in getrennten Durchläufen), einen Treiberfehler auslösen. Der Fehler führt zu nicht deterministischen Rasterungsfehlern, die dazu führen, dass einzelne Dreiecke oder Teile von Dreiecken des lokalen Inhalts zufällig verschwinden. Aus Leistungsgründen wird ohnehin empfohlen, lokale Inhalte mit einem moderneren Stereorenderingverfahren mit einzelnem Durchlauf zu rendern, z. B. mithilfe von **SV_RenderTargetArrayIndex**.
 
 ## <a name="conversion-file-download-errors"></a>Fehler beim Herunterladen der Konvertierungsdatei
 

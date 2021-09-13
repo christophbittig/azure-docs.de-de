@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 8/11/2020
+ms.date: 8/16/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: ce4917f968ef1664a1d41f4eaff162df116bda4f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7277f3751abd528862021a72e77a631f4bb0d5da
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102035083"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351040"
 ---
 # <a name="signing-key-rollover-in-the-microsoft-identity-platform"></a>Rollover von Signaturschlüsseln in Microsoft Identity Platform
 In diesem Artikel wird erläutert, was Sie über die öffentlichen Schlüssel wissen müssen, die in Microsoft Identity Platform zum Signieren von Sicherheitstoken verwendet werden. Es sollte beachtet werden, dass für diese Schlüssel regelmäßig ein Rollover durchgeführt wird und dass in einem Notfall sofort ein Rollover erfolgen kann. Alle Anwendungen, die Microsoft Identity Platform verwenden, müssen den Schlüsselrollovervorgang programmgesteuert verarbeiten können. In diesem Artikel erfahren Sie, wie die Schlüssel funktionieren, wie Sie die Auswirkung des Rollovers auf Ihre Anwendung bewerten und wie Sie Ihre Anwendung bei Bedarf aktualisieren oder einen regelmäßigen manuellen Rolloverprozess für Schlüssel einrichten.
@@ -25,7 +25,7 @@ In diesem Artikel wird erläutert, was Sie über die öffentlichen Schlüssel wi
 ## <a name="overview-of-signing-keys-in-the-microsoft-identity-platform"></a>Übersicht über Signaturschlüssel in Microsoft Identity Platform
 Microsoft Identity Platform verwendet die auf Branchenstandards basierende Verschlüsselung mit öffentlichem Schlüssel zum Einrichten einer Vertrauensstellung zwischen sich selbst und den Anwendungen, die Microsoft Identity Platform verwenden. In der Praxis funktioniert dies wie folgt: Microsoft Identity Platform verwendet einen Signaturschlüssel, der aus einem Paar mit einem öffentlichen und einem privaten Schlüssel besteht. Wenn sich ein Benutzer bei einer Anwendung anmeldet, die Microsoft Identity Platform für die Authentifizierung verwendet, erstellt Microsoft Identity Platform ein Sicherheitstoken, das Informationen zum Benutzer enthält. Das Token wird von Microsoft Identity Platform mit dessen privatem Schlüssel signiert, bevor es zur Anwendung zurückgesendet wird. Um zu überprüfen, ob das Token gültig ist und von Microsoft Identity Platform stammt, muss die Anwendung die Signatur des Tokens überprüfen. Hierzu wird der öffentliche, von Microsoft Identity Platform verfügbar gemachte Schlüssel verwendet, der im [OpenID Connect-Ermittlungsdokument](https://openid.net/specs/openid-connect-discovery-1_0.html) oder im SAML/WS-Fed-[Verbundmetadaten-Dokument](../azuread-dev/azure-ad-federation-metadata.md) des Mandanten enthalten ist.
 
-Aus Sicherheitsgründen führt Microsoft Identity Platform regelmäßig ein Rollover für den Signaturschlüssel durch, das im Notfall auch sofort erfolgen kann. Es gibt keine festgelegte oder garantierte Zeit zwischen diesen Schlüsselrollovern. Jede in Microsoft Identity Platform integrierte Anwendung muss darauf vorbereitet sein, unabhängig von der Häufigkeit ein Schlüsselrolloverereignis zu verarbeiten. Wenn dies nicht der Fall ist und die Anwendung versucht, einen abgelaufenen Schlüssel zum Überprüfen der Signatur auf einem Token zu verwenden, schlägt die Anmeldeanforderung fehl.  Es hat sich bewährt, alle 24 Stunden eine Überprüfung auf Updates durchzuführen und dabei gedrosselte (maximal alle fünf Minuten) sofortige Aktualisierungen des Schlüsseldokuments auszuführen, wenn ein Token mit einem unbekannten Schlüsselbezeichner gefunden wird. 
+Aus Sicherheitsgründen führt Microsoft Identity Platform regelmäßig ein Rollover für den Signaturschlüssel durch, das im Notfall auch sofort erfolgen kann. Es gibt keine festgelegte oder garantierte Zeit zwischen diesen Schlüsselrollovern. Jede in Microsoft Identity Platform integrierte Anwendung muss darauf vorbereitet sein, unabhängig von der Häufigkeit ein Schlüsselrolloverereignis zu verarbeiten. Wenn von Ihrer Anwendung plötzliche Aktualisierungen nicht verarbeitet werden und ein abgelaufener Schlüssel zum Überprüfen der Signatur in einem Token verwendet wird, wird das Token von der Anwendung fälschlicherweise abgelehnt.  Es hat sich bewährt, alle 24 Stunden eine Überprüfung auf Updates durchzuführen und dabei gedrosselte (maximal alle fünf Minuten) sofortige Aktualisierungen des Schlüsseldokuments auszuführen, wenn ein Token gefunden wird, das nicht mit den Schlüsseln im Cache Ihrer Anwendung übereinstimmt. 
 
 Im OpenID Connect Discovery-Dokument und Verbundmetadaten-Dokument ist immer mehr als ein gültiger Schlüssel verfügbar. Ihre Anwendung sollte einen oder alle der im Dokument angegebenen Schlüssel verwenden können, da ein Schlüssel z. B. geändert oder durch einen anderen ersetzt werden kann usw.  Die Anzahl der vorhandenen Schlüssel kann sich im Lauf der Zeit je nach der interne Architektur von Microsoft Identity Platform ändern, wenn neue Plattformen, neue Clouds oder neue Authentifizierungsprotokolle unterstützt werden. Weder die Reihenfolge der Schlüssel in der JSON-Antwort noch die Reihenfolge, in der sie verfügbar gemacht wurden, sollten in Ihrer App berücksichtigt werden. 
 
@@ -152,7 +152,7 @@ Wenn Sie eine Web-API-Anwendung mithilfe der Web-API-Vorlage in Visual Studio 20
 
 Wenn Sie die Authentifizierung manuell konfiguriert haben, gehen Sie folgendermaßen vor, um zu erfahren, wie Sie Ihre Web-API konfigurieren, damit die Schlüsselinformationen automatisch aktualisiert werden.
 
-Der folgende Codeausschnitt veranschaulicht, wie die neuesten Schlüssel aus dem Verbundmetadaten-Dokument abgerufen werden. Verwenden Sie anschließend den [JWT-Tokenhandler](/previous-versions/dotnet/framework/security/json-web-token-handler), um das Token zu überprüfen. Bei diesem Codeausschnitt wird davon ausgegangen, dass Sie Ihre eigenen Verfahren zum Zwischenspeichern verwenden, um den Schlüssel zum Überprüfen zukünftiger Token von Microsoft Identity Platform in einer Datenbank, Konfigurationsdatei usw. dauerhaft zu aufzubewahren.
+Der folgende Codeausschnitt veranschaulicht, wie die neuesten Schlüssel aus dem Verbundmetadaten-Dokument abgerufen werden. Verwenden Sie anschließend den [JWT-Tokenhandler](/previous-versions/dotnet/framework/windows-identity-foundation/json-web-token-handler), um das Token zu überprüfen. Bei diesem Codeausschnitt wird davon ausgegangen, dass Sie Ihre eigenen Verfahren zum Zwischenspeichern verwenden, um den Schlüssel zum Überprüfen zukünftiger Token von Microsoft Identity Platform in einer Datenbank, Konfigurationsdatei usw. dauerhaft zu aufzubewahren.
 
 ```
 using System;
@@ -243,7 +243,7 @@ namespace JWTValidation
 ```
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2012"></a><a name="vs2012"></a>Mit Visual Studio 2012 erstellte Webanwendungen zum Schutz von Ressourcen
-Wenn Ihre Anwendung in Visual Studio 2012 erstellt wurde, haben Sie wahrscheinlich das Identitäts- und Zugriffstool zum Konfigurieren Ihrer Anwendung verwendet. Möglicherweise verwenden Sie auch die [Validierung der Ausstellernamenregistration (VINR)](/previous-versions/dotnet/framework/security/validating-issuer-name-registry). Die VINR ist für die Verwaltung von Informationen zu vertrauenswürdigen Identitätsanbietern (Microsoft Identity Platform) und den Schlüsseln, die zum Überprüfen der von ihnen ausgestellten Token verwendet werden, zuständig. Die VINR erleichtert es zudem, die in einer „Web.config“-Datei gespeicherten Schlüsselinformationen automatisch zu aktualisieren, indem das aktuelle Ihrem Verzeichnis zugeordnete Verbundmetadaten-Dokument heruntergeladen wird. Mit dem aktuellen Dokument wird geprüft, ob die Konfiguration veraltet ist, und bei Bedarf wird die Anwendung aktualisiert, sodass der neue Schlüssel verwendet wird.
+Wenn Ihre Anwendung in Visual Studio 2012 erstellt wurde, haben Sie wahrscheinlich das Identitäts- und Zugriffstool zum Konfigurieren Ihrer Anwendung verwendet. Möglicherweise verwenden Sie auch die [Validierung der Ausstellernamenregistration (VINR)](/previous-versions/dotnet/framework/windows-identity-foundation/validating-issuer-name-registry). Die VINR ist für die Verwaltung von Informationen zu vertrauenswürdigen Identitätsanbietern (Microsoft Identity Platform) und den Schlüsseln, die zum Überprüfen der von ihnen ausgestellten Token verwendet werden, zuständig. Die VINR erleichtert es zudem, die in einer „Web.config“-Datei gespeicherten Schlüsselinformationen automatisch zu aktualisieren, indem das aktuelle Ihrem Verzeichnis zugeordnete Verbundmetadaten-Dokument heruntergeladen wird. Mit dem aktuellen Dokument wird geprüft, ob die Konfiguration veraltet ist, und bei Bedarf wird die Anwendung aktualisiert, sodass der neue Schlüssel verwendet wird.
 
 Wenn Sie die Anwendung mithilfe eines der Codebeispiele oder der von Microsoft bereitgestellten Dokumentation zur exemplarischen Vorgehensweise erstellt haben, ist die Logik für das Schlüsselrollover in Ihrem Projekt bereits enthalten. Beachten Sie, dass der folgende Code in Ihrem Projekt bereits vorhanden ist. Wenn Ihre Anwendung diese Logik noch nicht enthält, führen Sie die folgenden Schritte aus, um sie hinzuzufügen und um sicherzustellen, dass sie korrekt funktioniert.
 
@@ -292,7 +292,7 @@ Gehen Sie folgendermaßen vor, um sicherzustellen, dass die Logik für das Schl�
 Wenn Sie eine Anwendung auf WIF v1. 0 erstellt haben, gibt es keine automatische Aktualisierung der Konfiguration Ihrer Anwendung, um einen neuen Schlüssel zu verwenden.
 
 * *Einfachste Möglichkeit:* Verwenden Sie das im WIF SDK enthaltene Tool „FedUtil“. Dieses Tool kann das neueste Metadatendokument abrufen und Ihre Konfiguration aktualisieren.
-* Aktualisieren Sie Ihre Anwendung auf .NET 4.5, das die aktuelle Version von WIF im System-Namespace enthält. Verwenden Sie anschließend die [Validierung der Ausstellernamenregistration (VINR)](/previous-versions/dotnet/framework/security/validating-issuer-name-registry) , um automatische Aktualisierungen der Anwendungskonfiguration durchzuführen.
+* Aktualisieren Sie Ihre Anwendung auf .NET 4.5, das die aktuelle Version von WIF im System-Namespace enthält. Verwenden Sie anschließend die [Validierung der Ausstellernamenregistration (VINR)](/previous-versions/dotnet/framework/windows-identity-foundation/validating-issuer-name-registry) , um automatische Aktualisierungen der Anwendungskonfiguration durchzuführen.
 * Führen Sie gemäß den Anweisungen am Ende dieses Anleitungsdokuments einen manuellen Rollover durch.
 
 Anweisungen zum Aktualisieren Ihrer Konfiguration mithilfe des FedUtil-Tools:

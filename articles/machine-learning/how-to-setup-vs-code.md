@@ -9,12 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 05/25/2021
 ms.topic: how-to
-ms.openlocfilehash: 80f6849bb4989692e8cd29a3288f9b104bf250bb
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.custom: devplatv2
+ms.openlocfilehash: 6e0975a61ff5b36eb5ffbe5737be614a70150796
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110460084"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419481"
 ---
 # <a name="set-up-the-visual-studio-code-azure-machine-learning-extension-preview"></a>Einrichten der Azure Machine Learning-Erweiterung für Visual Studio Code (Vorschauversion)
 
@@ -34,10 +35,10 @@ Die Azure Machine Learning-Erweiterung für VS Code bietet eine Benutzeroberfl�
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Azure-Abonnement. Wenn Sie keins besitzen, können Sie sich für die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) registrieren.
+- Azure-Abonnement. Wenn Sie keins besitzen, können Sie sich für die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://azure.microsoft.com/free/) registrieren.
 - Visual Studio Code. Sollte diese Komponente noch nicht vorhanden sein, [installieren Sie sie](https://code.visualstudio.com/docs/setup/setup-overview).
 - [Python](https://www.python.org/downloads/)
-- (Optional) Sie müssen die 2.0 CLI installieren, wenn Sie Ressourcen mithilfe der Erweiterung erstellen möchten. Anweisungen zur Einrichtung finden Sie unter [Installieren, Einrichten und Verwenden der 2.0 CLI (Vorschau)](how-to-configure-cli.md).
+- (Optional) Sie müssen die CLI (v2) installieren, wenn Sie Ressourcen mithilfe der Erweiterung erstellen möchten. Anweisungen zur Einrichtung finden Sie unter [Installieren, Einrichten und Verwenden der CLI (v2) (Vorschau)](how-to-configure-cli.md).
 
 ## <a name="install-the-extension"></a>Installieren der Erweiterung
 
@@ -55,7 +56,7 @@ Die Azure Machine Learning-Erweiterung für VS Code bietet eine Benutzeroberfl�
 Die restlichen Schritte dieses Tutorials wurden mit der aktuellen Version der Erweiterung getestet.
 
 > [!NOTE]
-> Die Azure Machine Learning-Erweiterung für VS Code verwendet standardmäßig die Cli 2.0. Wenn Sie zu 1.0 CLI wechseln möchten, legen Sie die Einstellung `azureML.CLI Compatibility Mode` in Visual Studio Code auf `1.0` fest. Weitere Informationen zum Ändern Ihrer Einstellungen in Visual Studio finden Sie in der [Dokumentation zu Benutzer- und Arbeitsbereichseinstellungen](https://code.visualstudio.com/docs/getstarted/settings).
+> Die Azure Machine Learning-VS Code-Erweiterung verwendet standardmäßig die CLI (v2). Wenn Sie zu CLI 1.0 wechseln möchten, legen Sie die Einstellung `azureML.CLI Compatibility Mode` in Visual Studio Code auf `1.0` fest. Weitere Informationen zum Ändern Ihrer Einstellungen in Visual Studio finden Sie in der [Dokumentation zu Benutzer- und Arbeitsbereichseinstellungen](https://code.visualstudio.com/docs/getstarted/settings).
 
 ## <a name="sign-in-to-your-azure-account"></a>Anmelden bei Ihrem Azure-Konto
 
@@ -70,7 +71,7 @@ Alternativ können Sie die Befehlspalette verwenden:
 
 ## <a name="choose-your-default-workspace"></a>Auswählen des Standardarbeitsbereichs
 
-Die Auswahl eines Azure Machine Learning-Standardarbeitsbereichs ermöglicht Folgendes beim Erstellen von YAML-Spezifikationsdateien für die 2.0 CLI:
+Die Auswahl eines Azure Machine Learning-Standardarbeitsbereichs ermöglicht Folgendes beim Erstellen von YAML-Spezifikationsdateien für die CLI (v2):
 
 - Schemavalidierung
 - Automatische Vervollständigung

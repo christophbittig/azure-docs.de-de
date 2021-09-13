@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/05/2021
 ms.author: yluiu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: da05251dab17aeb086be53a8583110dd5f12d7b3
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: b933829ec9cfdb322cf0498c10966b9c244ac98e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111541639"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346054"
 ---
 # <a name="specify-a-face-detection-model"></a>Angeben eines Gesichtserkennungsmodells
 
@@ -33,7 +33,7 @@ Wenn Sie nicht sicher sind, ob Sie das neueste Modell verwenden sollten, gehen S
 Sie sollten mit den Konzepten der KI-Gesichtserkennung vertraut sein. Falls nicht, informieren Sie sich im konzeptionellen Leitfaden oder in der Schrittanleitung:
 
 * [Konzepte der Gesichtserkennung](../concepts/face-detection.md)
-* [Gewusst wie: Gesichtserkennung in Bildern](HowtoDetectFacesinImage.md)
+* [Aufrufen der Erkennungs-API](HowtoDetectFacesinImage.md)
 
 ## <a name="detect-faces-with-specified-model"></a>Erkennen von Gesichtern mit dem angegebenen Modell
 
@@ -109,7 +109,7 @@ Am besten lassen sich die Ergebnisse der Erkennungsmodelle anhand eines Beispiel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie gelernt, wie Sie das Erkennungsmodell angeben, das für verschiedene Gesichtserkennungs-APIs verwendet werden soll. Als nächstes befolgen Sie einen Schnellstart zu den ersten Schritten mit der Gesichtserkennung.
+In diesem Artikel haben Sie gelernt, wie Sie das Erkennungsmodell angeben, das für verschiedene Gesichtserkennungs-APIs verwendet werden soll. Durchlaufen Sie als Nächstes eine Schnellstartanleitung zu den ersten Schritten mit der Gesichtserkennung und der Analyse.
 
 * [.NET SDK zur Gesichtserkennung](../quickstarts/client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)
 * [Python SDK zur Gesichtserkennung](../quickstarts/client-libraries.md?pivots=programming-language-python%253fpivots%253dprogramming-language-python)

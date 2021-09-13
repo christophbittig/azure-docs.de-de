@@ -3,16 +3,16 @@ title: Reservierte Instanzen von Azure VMware Solution
 description: Es wird beschrieben, wie Sie eine reservierte Instanz für Azure VMware Solution erwerben. Die reservierte Instanz deckt nur den Computebereich Ihrer Nutzung ab und schließt die Softwarelizenzierungskosten ein.
 ms.topic: how-to
 ms.date: 05/13/2021
-ms.openlocfilehash: 8407d4e85718660bfcf17b3597710ed5237b41e1
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 6204e7cade66ee60885db20226981980f4741a76
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745815"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351396"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>Sparen von Kosten mit Azure VMware Solution
 
-Wenn Sie sich für eine reservierte Instanz von [Azure VMware Solution](introduction.md) entscheiden, sparen Sie Kosten.  Der Reservierungsrabatt wird automatisch auf die ausgeführten Azure VMware Solution-Hosts angewendet, die dem Reservierungsbereich und den Reservierungsattributen entsprechen. Bei Erwerb reservierter Instanzen wird nur der Computebereich Ihrer Nutzung abgedeckt, und es werden Softwarelizenzierungskosten berücksichtigt. 
+Wenn Sie sich für eine reservierte Instanz von [Azure VMware Solution](introduction.md) entscheiden, sparen Sie Kosten. Der Reservierungsrabatt wird automatisch auf die ausgeführten Azure VMware Solution-Hosts angewendet, die dem Reservierungsbereich und den Reservierungsattributen entsprechen. Zudem wird bei Erwerb reservierter Instanzen nur der Computebereich Ihrer Nutzung abgedeckt, und es werden Softwarelizenzierungskosten berücksichtigt. 
 
 ## <a name="purchase-restriction-considerations"></a>Überlegungen zu Kaufeinschränkungen
 
@@ -38,7 +38,7 @@ Diese Anforderungen gelten für den Erwerb einer reservierten Instanz eines dedi
 
 -   Bei EA-Abonnements muss im [EA-Portal](https://ea.azure.com/) die Option **Reservierte Instanzen hinzufügen** aktiviert werden. Wenn diese Option deaktiviert ist, müssen Sie ein EA-Administrator für das Abonnement sein, um sie zu aktivieren.
 
--   Bei Abonnements mit einem Azure-Plan für Cloud Solution Provider (CSP) muss der Partner die reservierten Instanzen im Azure-Portal für den Kunden erwerben. 
+-   Bei Abonnements mit einem Azure-Plan für Cloud Solution Provider (CSP) muss der Partner die reservierten Instanzen des Kunden im Azure-Portal erwerben. 
 
 ### <a name="buy-reserved-instances-for-an-ea-subscription"></a>Erwerben von reservierten Instanzen für ein EA-Abonnement
 
@@ -55,7 +55,7 @@ Diese Anforderungen gelten für den Erwerb einer reservierten Instanz eines dedi
    | Feld        |  BESCHREIBUNG |
    | ------------ | ------------ |
    | Subscription | Das zum Bezahlen für die Reservierung verwendete Abonnement. Die Zahlungsmethode für das Abonnement wird mit Zahlungen für die Reservierung belastet. Der Abonnementtyp muss „Enterprise Agreement“ (Angebotsnummern: MS-AZR-0017P oder MS-AZR-0148P) „Microsoft-Kundenvereinbarung“ oder ein einzelnes Abonnement mit Sätzen für nutzungsbasierte Bezahlung (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P) sein. Die Gebühren werden ggf. von der Azure-Vorauszahlung (zuvor als „Mindestverbrauch“ bezeichnet) abgezogen oder als Überschreitung belastet. Bei einem Abonnement mit Sätzen für nutzungsbasierte Zahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für Zahlung auf Rechnung in Rechnung gestellt. |
-   | `Scope`        | Der Bereich der Reservierung kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen:<br><ul><li><b>Einzelne Ressourcengruppe</b>: Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.</li><li><b>Einzelabonnement</b>: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.</li><li><b>Gemeinsam genutzt</b>: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für EA-Kunden ist der Abrechnungskontext die Registrierung. Für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator erstellt wurden.</li></ul>       |
+   | `Scope`        | Der Bereich der Reservierung kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen:<br><ul><li><b>Einzelne Ressourcengruppe</b>: Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.</li><li><b>Einzelabonnement</b>: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.</li><li><b>Gemeinsam genutzt</b>: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für EA-Kunden ist der Abrechnungskontext die Registrierung. Daher handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen erstellt wurden.</li></ul>       |
    | Region       | Die Azure-Region, die durch die Reservierung abgedeckt wird   |
    | Hostgröße    | AV36    |
    | Begriff         | Ein Jahr oder drei Jahre  |
@@ -71,20 +71,20 @@ CSPs, die reservierte Instanzen für ihre Kunden erwerben möchten, müssen die 
 
 3. Erweitern Sie die Kundendetails, und wählen Sie **Microsoft Azure-Verwaltungsportal** aus. 
 
-   :::image type="content" source="media/reserved-instances/csp-partner-center-aobo.png" alt-text="Microsoft Partner Center, Kundenbereich" lightbox="media/reserved-instances/csp-partner-center-aobo.png":::
+   :::image type="content" source="media/reserved-instances/csp-partner-center-aobo.png" alt-text="Screenshot: Darstellung des Microsoft Partner Center-Kundenbereichs, in dem das Microsoft Azure-Verwaltungsportal ausgewählt ist" lightbox="media/reserved-instances/csp-partner-center-aobo.png":::
 
 4. Wählen Sie im Azure-Portal die Option **Alle Dienste** > **Reservierungen** aus.
 
 5. Wählen Sie **Jetzt kaufen** und dann **Azure VMware Solution** aus.
 
-   :::image type="content" source="media/reserved-instances/csp-buy-reserved-instance-azure-portal.png" alt-text="Microsoft Azure-Portal, Reservierungen" lightbox="media/reserved-instances/csp-buy-reserved-instance-azure-portal.png":::
+   :::image type="content" source="media/reserved-instances/csp-buy-reserved-instance-azure-portal.png" alt-text="Screenshot, der zeigt, an welcher Stelle im Microsoft Azure-Portal Azure VMware Solution-Reservierungen erworben werden können" lightbox="media/reserved-instances/csp-buy-reserved-instance-azure-portal.png":::
 
 6. Füllen Sie die Pflichtfelder aus. Die ausgewählten Attribute, die ausgeführten Azure VMware Solution-Hosts entsprechen, führen zur Berechtigung für den Reservierungsrabatt.  Zu den Attributen zählen die SKU, Regionen (falls zutreffend) und der Bereich. Mit dem Reservierungsbereich wird ausgewählt, wo die Reservierungseinsparungen gelten.
 
    | Feld        |  BESCHREIBUNG |
    | ------------ | ------------ |
-   | Subscription | Das zum Bezahlen für die Reservierung verwendete Abonnement. Die Zahlungsmethode für das Abonnement wird mit Zahlungen für die Reservierung belastet. Der Abonnementtyp muss berechtigt sein, wie in diesem Fall ein CSP-Abonnement.|
-   | `Scope`        | Der Bereich der Reservierung kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen:<br><ul><li><b>Einzelne Ressourcengruppe</b>: Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.</li><li><b>Einzelabonnement</b>: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.</li><li><b>Gemeinsam genutzt</b>: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für EA-Kunden ist der Abrechnungskontext die Registrierung. Für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator erstellt wurden.</li></ul>       |
+   | Subscription | Das Abonnement, mit dem die Reservierung finanziert wird. Die Zahlungsmethode für das Abonnement wird mit Zahlungen für die Reservierung belastet. Der Abonnementtyp muss berechtigt sein, wie in diesem Fall ein CSP-Abonnement.|
+   | `Scope`        | Der Bereich der Reservierung kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen:<br><ul><li><b>Einzelne Ressourcengruppe</b>: Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.</li><li><b>Einzelabonnement</b>: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.</li><li><b>Gemeinsam genutzt</b>: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für EA-Kunden ist der Abrechnungskontext die Registrierung. Daher handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen erstellt wurden.</li></ul>       |
    | Region       | Die Azure-Region, die durch die Reservierung abgedeckt wird   |
    | Hostgröße    | AV36    |
    | Begriff         | Ein Jahr oder drei Jahre  |

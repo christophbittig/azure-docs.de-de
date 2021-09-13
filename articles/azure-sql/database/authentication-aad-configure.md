@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: GithubMirek
 ms.author: mireks
-ms.reviewer: vanto, sstein
-ms.date: 05/11/2021
-ms.openlocfilehash: 4d06ec600f71e682c9faadf3760ee76bb41c40b2
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.reviewer: vanto
+ms.date: 08/11/2021
+ms.openlocfilehash: 29479aa35146630162226ff392f3924bc59ea8ae
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112020995"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346474"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit Azure SQL
 
@@ -302,7 +302,7 @@ Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Serve
 Der Eingabeparameter **DisplayName** akzeptiert entweder den Azure AD-Anzeigenamen oder den Benutzerprinzipalnamen (UPN). Beispiel: ``DisplayName="John Smith"`` und ``DisplayName="johns@contoso.com"``. Für Azure AD-Gruppen wird nur der Azure AD-Anzeigename unterstützt.
 
 > [!NOTE]
-> Der Azure PowerShell-Befehl ```Set-AzSqlServerActiveDirectoryAdministrator``` hindert Sie nicht daran, nicht unterstützte Benutzer als Azure AD-Administratoren bereitzustellen. Ein nicht unterstützter Benutzer kann bereitgestellt werden, jedoch keine Verbindung mit einer Datenbank herstellen.
+> Der Azure PowerShell-Befehl `Set-AzSqlServerActiveDirectoryAdministrator` hindert Sie nicht daran, nicht unterstützte Benutzer als Azure AD-Administratoren bereitzustellen. Ein nicht unterstützter Benutzer kann bereitgestellt werden, jedoch keine Verbindung mit einer Datenbank herstellen.
 
 Im folgenden Beispiel wird der optionale Wert für **ObjectID** verwendet:
 
@@ -386,10 +386,14 @@ Die Verwendung der Azure Active Directory-Authentifizierung bei SQL-Datenbank un
 > [!WARNING]
 > In den T-SQL-Anweisungen `CREATE LOGIN` und `CREATE USER` werden Sonderzeichen wie Doppelpunkt (`:`) oder kaufmännisches Und-Zeichen (`&`) in Benutzernamen nicht unterstützt.
 
+> [!IMPORTANT]
+> Azure AD-Benutzern und -Dienstprinzipalen (Azure AD-Anwendungen), die Mitglieder von mehr als 2.048 Azure AD-Sicherheitsgruppen sind, ist die Anmeldung bei der Datenbank in SQL-Datenbank, Managed Instance oder Azure Synapse nicht möglich.
+
+
 Um einen Azure AD-basierten eigenständigen Datenbankbenutzer zu erstellen (bei dem es sich nicht um den Serveradministrator handelt, der Besitzer der Datenbank ist), stellen Sie mit einer Azure AD-Identität, die mindestens über die Berechtigung **BELIEBIGEN BENUTZER ÄNDERN** verfügt, eine Verbindung mit der Datenbank her. Verwenden Sie anschließend die folgende Transact-SQL-Syntax:
 
 ```sql
-CREATE USER <Azure_AD_principal_name> FROM EXTERNAL PROVIDER;
+CREATE USER [<Azure_AD_principal_name>] FROM EXTERNAL PROVIDER;
 ```
 
 *Azure_AD_principal_name* kann der Benutzerprinzipalname (UPN) eines Azure AD-Benutzers oder der Anzeigename einer Azure AD-Gruppe sein.

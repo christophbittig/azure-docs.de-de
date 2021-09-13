@@ -1,27 +1,27 @@
 ---
 title: Digest-Verwaltung und Datenbanküberprüfung
 description: Dieser Artikel enthält Informationen zur Digest-Verwaltung und Datenbanküberprüfung für eine Ledgerdatenbank in Azure SQL-Datenbank.
-ms.custom: ''
-ms.date: 05/25/2021
+ms.custom: references_regions
+ms.date: 07/23/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: conceptual
 author: JasonMAnderson
 ms.author: janders
-ms.openlocfilehash: e133ee1c8492bf63cbfd4702e795743009abfdc7
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 8e6fbbdcb4b6db8ed7e9549b8776010cf01894e4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112080091"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355686"
 ---
 # <a name="digest-management-and-database-verification"></a>Digest-Verwaltung und Datenbanküberprüfung
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Der Azure SQL-Datenbank-Ledger befindet sich derzeit in der öffentlichen Vorschauphase und ist in der Region „USA, Westen-Mitte“ verfügbar.
+> Der Azure SQL-Datenbank-Ledger befindet sich derzeit in der öffentlichen Vorschauphase und ist in den Regionen West „Europa, Westen“, „Brasilien, Süden“ und „USA, Westen-Mitte“ verfügbar.
 
 Der Azure SQL-Datenbank-Ledger ermöglicht eine Form der Datenintegrität, die als *Forward Integrity* („Vorwärtsintegrität“) bezeichnet wird und einen Beweis für die Manipulation von Daten in Ihren Ledgertabellen liefern kann. Wenn beispielsweise eine Banktransaktion in einer Ledgertabelle auftritt, in der ein Saldo auf den Wert `x` aktualisiert wurde, und ein Angreifer die Daten später ändert (Änderung des Saldos von `x` in `y`), wird diese Manipulationsaktivität durch die Datenbanküberprüfung erkannt.  
 
@@ -39,14 +39,14 @@ Der Überprüfungsprozess und die Integrität der Datenbank hängen von der Inte
 
 ### <a name="automatic-generation-and-storage-of-database-digests"></a>Automatisches Generieren und Speichern von Datenbank-Digests
 
-Der Azure SQL-Datenbank-Ledger ist mit dem [Feature „Unveränderlicher Speicher“ von Azure Blob Storage](../../storage/blobs/storage-blob-immutable-storage.md) und mit [Azure Confidential Ledger](../../confidential-ledger/index.yml) integriert. Im Rahmen dieser Integration werden sichere Speicherdienste in Azure bereitgestellt, um die Datenbank-Digests vor potenziellen Manipulationen zu schützen. Diese Integration bietet Benutzern eine einfache und kostengünstige Möglichkeit, die Digest-Verwaltung zu automatisieren, ohne sich um ihre Verfügbarkeit und geografische Replikation kümmern zu müssen. 
+Der Azure SQL-Datenbank-Ledger ist mit dem [Feature „Unveränderlicher Speicher“ von Azure Blob Storage](../../storage/blobs/immutable-storage-overview.md) und mit [Azure Confidential Ledger](../../confidential-ledger/index.yml) integriert. Im Rahmen dieser Integration werden sichere Speicherdienste in Azure bereitgestellt, um die Datenbank-Digests vor potenziellen Manipulationen zu schützen. Diese Integration bietet Benutzern eine einfache und kostengünstige Möglichkeit, die Digest-Verwaltung zu automatisieren, ohne sich um ihre Verfügbarkeit und geografische Replikation kümmern zu müssen. 
 
 Sie können die automatische Generierung und Speicherung von Datenbank-Digests über das Azure-Portal, PowerShell oder die Azure CLI konfigurieren. Beim Konfigurieren der automatischen Generierung und Speicherung werden Datenbank-Digests nach einem vordefinierten Intervall von 30 Sekunden generiert und in den ausgewählten Speicherdienst hochgeladen. Falls im System während des 30-Sekunden-Intervalls keine Transaktionen erfolgen, wird kein Datenbank-Digest generiert und hochgeladen. Mit diesem Mechanismus wird sichergestellt, dass Datenbank-Digests nur generiert werden, wenn Daten in Ihrer Datenbank aktualisiert wurden.
 
 :::image type="content" source="media/ledger/automatic-digest-management.png" alt-text="Screenshot: Auswahl für die Aktivierung des Digest-Speichers"::: 
 
 > [!IMPORTANT]
-> Konfigurieren Sie nach der Bereitstellung in Ihrem Container eine [Unveränderlichkeitsrichtlinie](../../storage/blobs/storage-blob-immutability-policies-manage.md), um sicherzustellen, dass die Datenbank-Digests vor Manipulationen geschützt sind.
+> Konfigurieren Sie nach der Bereitstellung in Ihrem Container eine [Unveränderlichkeitsrichtlinie](../../storage/blobs/immutable-policy-configure-version-scope.md), um sicherzustellen, dass die Datenbank-Digests vor Manipulationen geschützt sind.
 
 ### <a name="manual-generation-and-storage-of-database-digests"></a>Manuelles Generieren und Speichern von Datenbank-Digests
 
@@ -134,6 +134,7 @@ EXECUTE sp_verify_database_ledger N'
         "digest_time":  "2020-11-12T18:43:30.4701575"
     }
 ]
+'
 ```
 
 Die Rückgabecodes für `sp_verify_database_ledger` und `sp_verify_database_ledger_from_digest_storage` lauten `0` (Erfolg) und `1` (Fehler).
@@ -142,5 +143,5 @@ Die Rückgabecodes für `sp_verify_database_ledger` und `sp_verify_database_ledg
 
 - [Azure SQL-Datenbank-Ledger – Übersicht](ledger-overview.md)
 - [Aktualisierbare Ledger-Tabellen](ledger-updatable-ledger-tables.md)   
-- [Ledger-Tabellen, die nur Anfügevorgänge unterstützen](ledger-append-only-ledger-tables.md)   
+- [Ledgertabellen, die nur Anfügevorgänge unterstützen](ledger-append-only-ledger-tables.md)   
 - [Datenbank-Ledger](ledger-database-ledger.md)

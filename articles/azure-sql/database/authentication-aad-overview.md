@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: GithubMirek
 ms.author: mireks
-ms.reviewer: vanto, sstein
-ms.date: 04/23/2020
-ms.openlocfilehash: a636c0e2a41b636f30ada14d4f16a022f2890b71
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: vanto
+ms.date: 08/11/2021
+ms.openlocfilehash: 51494c02ea56c68945377b50869a1bad2be6718f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96454290"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355320"
 ---
 # <a name="use-azure-active-directory-authentication"></a>Verwenden der Azure Active Directory-Authentifizierung
 
@@ -152,6 +152,7 @@ Die folgenden Authentifizierungsmethoden werden für Azure AD-Serverprinzipale (
 - Es kann immer nur ein einzelner Azure AD-Administrator (Benutzer oder Gruppe) für einen Server in SQL-Datenbank oder Azure Synapse konfiguriert werden.
   - Das Hinzufügen von Azure AD-Serverprinzipalen (Anmeldungen) für SQL Managed Instance ermöglicht es, mehrere Azure AD-Serverprinzipale (Anmeldungen) zu erstellen, die der Rolle `sysadmin` hinzugefügt werden können.
 - Nur ein Azure AD-Administrator für den Server kann unter Verwendung eines Azure Active Directory-Kontos anfangs eine Verbindung mit dem Server oder der verwalteten Instanz herstellen. Der Active Directory-Administrator kann weitere Azure AD-Datenbankbenutzer konfigurieren.
+- Azure AD-Benutzern und -Dienstprinzipalen (Azure AD-Anwendungen), die Mitglieder von mehr als 2.048 Azure AD-Sicherheitsgruppen sind, ist die Anmeldung bei der Datenbank in SQL-Datenbank, einer verwalteten Instanz oder Azure Synapse nicht möglich.
 - Es wird empfohlen, das Verbindungstimeout auf 30 Sekunden festzulegen.
 - SQL Server 2016 Management Studio und SQL Server Data Tools für Visual Studio 2015 (ab Version 14.0.60311.1April 2016) unterstützen die Azure Active Directory-Authentifizierung. (Die Azure AD-Authentifizierung wird vom **.NET Framework-Datenanbieter für SqlServer** ab .NET Framework 4.6 unterstützt.) Daher können die neuesten Versionen dieser Tools und Datenebenenanwendungen (DAC und BACPAC) die Azure AD-Authentifizierung verwenden.
 - Ab Version 15.0.1 unterstützen das [SQLCMD-Hilfsprogramm](/sql/tools/sqlcmd-utility) und das [BCP-Hilfsprogramm](/sql/tools/bcp-utility) die interaktive Active Directory-Authentifizierung mit Multi-Factor Authentication.

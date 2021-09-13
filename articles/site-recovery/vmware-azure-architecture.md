@@ -1,24 +1,26 @@
 ---
-title: Architektur der Notfallwiederherstellung für VMware-VMs in Azure Site Recovery
-description: Dieser Artikel enthält eine Übersicht über die Komponenten und Architektur, die beim Einrichten der Notfallwiederherstellung von lokalen virtuellen VMware-Computern in Azure mit Azure Site Recovery verwendet werden.
+title: Architektur der Notfallwiederherstellung für VMware-VMs in Azure Site Recovery (klassisch)
+description: Dieser Artikel enthält eine Übersicht über die Komponenten und Architektur, die beim Einrichten der Notfallwiederherstellung von lokalen virtuellen VMware-Computern in Azure mit Azure Site Recovery (klassisch) verwendet werden.
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/06/2019
-ms.openlocfilehash: 24333ccc5096e7f04f016444de2b0a7e13ae7bfa
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.date: 08/19/2021
+ms.openlocfilehash: 87bfbad2993bb1eee4c20990082a892cf8e46fd1
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106579807"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445405"
 ---
-# <a name="vmware-to-azure-disaster-recovery-architecture"></a>Architektur der Notfallwiederherstellung von VMware zu Azure
+# <a name="vmware-to-azure-disaster-recovery-architecture---classic"></a>Architektur der Notfallwiederherstellung von VMware zu Azure (klassisch)
 
-Dieser Artikel beschreibt die Architektur und Prozesse, die mithilfe des Diensts [Azure Site Recovery](site-recovery-overview.md) beim Bereitstellen der Replikation für die Notfallwiederherstellung, bei der Ausführung eines Failovers und beim Wiederherstellen von virtuellen VMware-Computern (VMs) zwischen einem lokalen VMware-Standort und Azure verwendet werden.
+Dieser Artikel beschreibt die Architektur und Prozesse, die mithilfe des Diensts [Azure Site Recovery](site-recovery-overview.md) (klassisch) beim Bereitstellen der Replikation für die Notfallwiederherstellung, bei der Ausführung eines Failovers und beim Wiederherstellen von virtuellen VMware-Computern (VMs) zwischen einem lokalen VMware-Standort und Azure verwendet werden.
+
+Informationen zu Architekturdetails in der Vorschau [finden Sie in diesem Artikel](vmware-azure-architecture-preview.md).
 
 
 ## <a name="architectural-components"></a>Komponenten der Architektur
 
-Die folgende Tabelle und Grafik enthält eine Übersicht über die Komponenten, die für die VMware-Notfallwiederherstellung in Azure verwendet werden.
+Die folgende Tabelle und Grafik enthält eine Übersicht über die Komponenten, die für die Notfallwiederherstellung für VMware-VMs/physische Computer in Azure verwendet werden.
 
 **Komponente** | **Anforderung** | **Details**
 --- | --- | ---
@@ -55,7 +57,7 @@ Eine vollständige Liste der URLs, die für die Kommunikation zwischen der lokal
     - Bei VMware-VMs erfolgt die Replikation auf Blockebene und nahezu kontinuierlich mithilfe des Mobility Service-Agents, der auf dem virtuellen Computer ausgeführt wird.
     - Es werden alle festgelegten Replikationsrichtlinieneinstellungen angewendet:
         - **RPO-Schwellenwert**: Diese Einstellung hat keine Auswirkungen auf die Replikation. Sie unterstützt bei der Überwachung. Ein Ereignis wird ausgelöst, und optional wird eine E-Mail gesendet, wenn das aktuelle RPO den von Ihnen angegebenen Schwellenwert überschreitet.
-        - **Aufbewahrung des Wiederherstellungspunkts**. Diese Einstellung gibt an, wie weit Sie zurückgehen möchten, wenn es zu einer Unterbrechung kommt. Bei Premium-Speicher beträgt die maximale Aufbewahrungsdauer 24 Stunden. Bei Standardspeicher beträgt sie 72 Stunden. 
+        - **Aufbewahrung des Wiederherstellungspunkts**. Diese Einstellung gibt an, wie weit Sie zurückgehen möchten, wenn es zu einer Unterbrechung kommt. Bei Premium-Speicher beträgt die maximale Aufbewahrungsdauer 24 Stunden. Bei Standardspeicher beträgt sie 72 Stunden.
         - **App-konsistente Momentaufnahmen**: Abhängig von Ihren App-Anforderungen können alle 1 bis 12 Stunden App-konsistente Momentaufnahmen erstellt werden. Bei den Momentaufnahmen handelt es sich um Azure-Blob-Standardmomentaufnahmen. Der auf einem virtuellen Computer ausgeführte Mobility Service-Agent fordert eine VSS-Momentaufnahme in Übereinstimmung mit dieser Einstellung an und markiert diesen Zeitpunkt als anwendungskonsistenten Punkt im Replikationsstrom.
 
 2. Der Datenverkehr wird über das Internet auf öffentliche Endpunkte von Azure Storage repliziert. Alternativ hierzu können Sie Azure ExpressRoute mit [Microsoft-Peering](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) verwenden. Das Replizieren von Datenverkehr über ein virtuelles privates Site-to-Site-Netzwerk (VPN) von einem lokalen Standort nach Azure wird nicht unterstützt.
@@ -66,7 +68,7 @@ Eine vollständige Liste der URLs, die für die Kommunikation zwischen der lokal
     - Der Konfigurationsserver orchestriert die Replikation mit Azure über Port HTTPS 443 für ausgehenden Datenverkehr.
     - Virtuelle Computer senden Replikationsdaten an den Prozessserver (der auf dem Konfigurationsserver ausgeführt wird) über Port HTTPS 9443 für eingehenden Datenverkehr. Dieser Port kann geändert werden.
     - Der Prozessserver empfängt Replikationsdaten, optimiert und verschlüsselt sie und sendet sie über den ausgehenden Port 443 an Azure Storage.
-5. Die Replikationsdatenprotokolle werden zunächst in einem Cachespeicherkonto in Azure gespeichert. Diese Protokolle werden dann verarbeitet, und die Daten werden auf einem verwalteten Azure-Datenträger (als asr-Seed-Datenträger bezeichnet) gespeichert. Die Wiederherstellungspunkte werden auf diesem Datenträger erstellt.
+5. Die Replikationsdatenprotokolle werden zunächst in einem Cachespeicherkonto in Azure gespeichert. Diese Protokolle werden dann verarbeitet, und die Daten werden auf einem (als Azure Site Recovery-Seed-Datenträger bezeichneten) verwalteten Azure-Datenträger gespeichert. Die Wiederherstellungspunkte werden auf diesem Datenträger erstellt.
 
 ![Diagramm des Replikationsvorgangs von VMware zu Azure](./media/vmware-azure-architecture/v2a-architecture-henry.png)
 
@@ -82,7 +84,7 @@ Eine vollständige Liste der URLs, die für die Kommunikation zwischen der lokal
 6. Wenn die standardmäßige Neusynchronisierung außerhalb der Geschäftszeiten fehlschlägt und ein manueller Eingriff erforderlich ist, wird ein Fehler auf dem jeweiligen Computer im Azure-Portal generiert. Sie können den Fehler beheben und die Neusynchronisierung manuell auslösen.
 7. Nach Abschluss der Neusynchronisierung wird die Replikation der Deltaänderungen fortgesetzt.
 
-## <a name="replication-policy"></a>Replikationsrichtlinie 
+## <a name="replication-policy"></a>Replikationsrichtlinie
 
 Wenn Sie die Replikation von Azure-VMs aktivieren, erstellt Site Recovery standardmäßig eine neue Replikationsrichtlinie mit den Standardeinstellungen, die in der Tabelle zusammengefasst sind.
 
@@ -99,7 +101,7 @@ Sie können die Standardrichtlinien für die Replikation wie folgt verwalten und
 
 ### <a name="multi-vm-consistency"></a>Multi-VM-Konsistenz
 
-Wenn Sie virtuelle Computer gemeinsam replizieren möchten und beim Failover über gemeinsame absturz- und App-konsistente Wiederherstellungspunkte verfügen, können Sie sie in einer Replikationsgruppe zusammenfassen. Multi-VM-Konsistenz wirkt sich auf die Leistung einer Workload aus und sollte nur für virtuelle Computer mit Workloads verwendet werden, bei denen Konsistenz auf sämtlichen Computern erforderlich ist. 
+Wenn Sie virtuelle Computer gemeinsam replizieren möchten und beim Failover über gemeinsame absturz- und App-konsistente Wiederherstellungspunkte verfügen, können Sie sie in einer Replikationsgruppe zusammenfassen. Multi-VM-Konsistenz wirkt sich auf die Leistung einer Workload aus und sollte nur für virtuelle Computer mit Workloads verwendet werden, bei denen Konsistenz auf sämtlichen Computern erforderlich ist.
 
 
 
@@ -128,7 +130,7 @@ Eine absturzkonsistente Momentaufnahme erfasst Daten, die sich zum Zeitpunkt der
 
 **Beschreibung** | **Details** | **Empfehlung**
 --- | --- | ---
-App-konsistente Wiederherstellungspunkte werden aus App-konsistenten Momentaufnahmen erstellt.<br/><br/> Eine App-konsistente Momentaufnahme enthält alle Informationen in einer absturzkonsistenten Momentaufnahme sowie darüber hinaus alle Daten im Arbeitsspeicher und alle gerade bearbeiteten Transaktionen. | App-konsistente Momentaufnahmen verwenden den Volumeschattenkopie-Dienst (Volume Shadow Copy Service, VSS):<br/><br/>   1) Azure Site Recovery nutzt die Methode „Kopiesicherung“ (VSS_BT_COPY), bei der Uhrzeit und Sequenznummer der Microsoft SQL-Transaktionsprotokollsicherung nicht geändert werden. </br></br> 2) Wenn eine Momentaufnahme initiiert wird, führt VSS einen COW-Vorgang (Copy-On-Write) auf dem Volume aus.<br/><br/>   3) Vor der Ausführung des COW-Vorgangs informiert VSS jede App auf dem Computer darüber, dass die speicherresidenten Daten auf den Datenträger übertragen werden müssen.<br/><br/>   4) VSS erlaubt dann der Sicherungs-/Notfallwiederherstellungs-App (in diesem Fall Site Recovery) das Lesen der Momentaufnahmedaten und das Fortsetzen des Vorgangs. | App-konsistente Momentaufnahmen werden mit der von Ihnen angegebenen Häufigkeit erstellt. Diese Häufigkeit sollte immer kleiner sein als der Wert für die Beibehaltung von Wiederherstellungspunkten. Wenn Sie beispielsweise Wiederherstellungspunkte gemäß der Standardeinstellung von 24 Stunden beibehalten, sollten Sie die Häufigkeit auf weniger als 24 Stunden festlegen.<br/><br/>Sie sind komplexer und dauern daher länger als absturzkonsistente Momentaufnahmen.<br/><br/> Sie haben auch Auswirkungen auf die Leistung von Apps, die auf einem virtuellen Computer, für den die Replikation aktiviert wurde, ausgeführt werden. 
+App-konsistente Wiederherstellungspunkte werden aus App-konsistenten Momentaufnahmen erstellt.<br/><br/> Eine App-konsistente Momentaufnahme enthält alle Informationen in einer absturzkonsistenten Momentaufnahme sowie darüber hinaus alle Daten im Arbeitsspeicher und alle gerade bearbeiteten Transaktionen. | App-konsistente Momentaufnahmen verwenden den Volumeschattenkopie-Dienst (Volume Shadow Copy Service, VSS):<br/><br/>   1) Azure Site Recovery nutzt die Methode „Kopiesicherung“ (VSS_BT_COPY), bei der Uhrzeit und Sequenznummer der Microsoft SQL-Transaktionsprotokollsicherung nicht geändert werden. </br></br> 2) Wenn eine Momentaufnahme initiiert wird, führt VSS einen COW-Vorgang (Copy-On-Write) auf dem Volume aus.<br/><br/>   3) Vor der Ausführung des COW-Vorgangs informiert VSS jede App auf dem Computer darüber, dass die speicherresidenten Daten auf den Datenträger übertragen werden müssen.<br/><br/>   4) VSS erlaubt dann der Sicherungs-/Notfallwiederherstellungs-App (in diesem Fall Site Recovery) das Lesen der Momentaufnahmedaten und das Fortsetzen des Vorgangs. | App-konsistente Momentaufnahmen werden mit der von Ihnen angegebenen Häufigkeit erstellt. Diese Häufigkeit sollte immer kleiner sein als der Wert für die Beibehaltung von Wiederherstellungspunkten. Wenn Sie beispielsweise Wiederherstellungspunkte gemäß der Standardeinstellung von 24 Stunden beibehalten, sollten Sie die Häufigkeit auf weniger als 24 Stunden festlegen.<br/><br/>Sie sind komplexer und dauern daher länger als absturzkonsistente Momentaufnahmen.<br/><br/> Sie haben auch Auswirkungen auf die Leistung von Apps, die auf einem virtuellen Computer, für den die Replikation aktiviert wurde, ausgeführt werden.
 
 ## <a name="failover-and-failback-process"></a>Failover- und Failbackprozesse
 
@@ -149,8 +151,8 @@ Nachdem die Replikation eingerichtet ist und Sie einen Notfallwiederherstellungs
     - Phase 1: Schützen Sie die Azure-VMs erneut, sodass sie die Replikation von Azure zurück zu den lokalen VMware-VMs durchführen.
     -  Phase 2: Führen Sie ein Failover zum lokalen Standort aus.
     - Phase 3: Nachdem für Workloads ein Failback ausgeführt wurde, aktivieren Sie erneut die Replikation für die lokalen VMs.
-    
- 
+
+
 
 ![Diagramm des VMware-Failbacks von Azure](./media/vmware-azure-architecture/enhanced-failback.png)
 

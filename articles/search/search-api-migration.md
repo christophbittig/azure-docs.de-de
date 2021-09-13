@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: d7734fde529c24e8113ea3b019d343b7223f0122
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95e774b1f10f07a447ec168aa7716bab799acd73
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91929641"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355142"
 ---
 # <a name="upgrade-to-the-latest-rest-api-in-azure-cognitive-search"></a>Ausführen eines Upgrades auf die aktuelle Version der REST-API in Azure Cognitive Search
 
@@ -85,7 +85,7 @@ Ab den API-Versionen 2019-05-06 und 2019-05-06-Preview gibt die Datenquellen-AP
 
 #### <a name="named-entity-recognition-cognitive-skill-is-now-discontinued"></a>Kognitive Qualifikation „Benannte Entität erkennen“ wird nicht mehr verwendet
 
-Wenn Sie die Qualifikation [Benannte Entität erkennen](cognitive-search-skill-named-entity-recognition.md) im Code aufgerufen haben, treten beim Aufruf Fehler auf. Die Ersatzfunktion ist [Entitätserkennung](cognitive-search-skill-entity-recognition.md). Die Referenz der Qualifikation sollte sich ohne weitere Änderungen ersetzen lassen. Die API-Signatur ist für beide Versionen identisch. 
+Wenn Sie die Qualifikation [Benannte Entität erkennen](cognitive-search-skill-named-entity-recognition.md) im Code aufgerufen haben, treten beim Aufruf Fehler auf. Die Ersatzfunktion ist [Skill „Entitätserkennung“ (V3)](cognitive-search-skill-entity-recognition-v3.md). Führen Sie unter Berücksichtigung der Empfehlungen unter [Veraltete Qualifikationen für die kognitive Suche](cognitive-search-skill-deprecated.md) eine Migration zu einer unterstützten Qualifikation durch.
 
 ### <a name="upgrading-complex-types"></a>Aktualisieren von komplexen Typen
 

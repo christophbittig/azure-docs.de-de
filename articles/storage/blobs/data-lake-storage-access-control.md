@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 14a357bf5f7fece43ce72b58142aa0047213bfab
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 41afd3cf3720c5fa86acf75acadc07e60fa2f3cc
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346574"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122968844"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Zugriffssteuerungslisten (ACLs) in Azure Data Lake Storage Gen2
 
@@ -343,7 +343,7 @@ Wenn Sie über die richtige OID für den Dienstprinzipal verfügen, wechseln Sie
 
 ### <a name="can-i-set-the-acl-of-a-container"></a>Kann ich die ACL eines Containers festlegen?
 
-Nein. Ein Container verfügt nicht über eine ACL. Sie können aber die ACL für das Stammverzeichnis des Containers festlegen. Jeder Container verfügt über ein Stammverzeichnis, das den gleichen Namen wie der Container hat. Wenn der Container beispielsweise den Namen `my-container` hat, lautet das Stammverzeichnis `myContainer/`. 
+Nein. Ein Container verfügt nicht über eine ACL. Sie können aber die ACL für das Stammverzeichnis des Containers festlegen. Jeder Container verfügt über ein Stammverzeichnis, das den gleichen Namen wie der Container hat. Wenn der Container beispielsweise den Namen `my-container` hat, lautet das Stammverzeichnis `my-container/`. 
 
 Die Azure Storage-REST-API enthält einen Vorgang mit dem Namen [Set Container ACL](/rest/api/storageservices/set-container-acl), der aber nicht verwendet werden kann, um die ACL oder das Stammverzeichnis eines Containers festzulegen. Stattdessen wird dieser Vorgang verwendet, um anzugeben, ob auf Blobs in einem Container [öffentlich zugegriffen werden kann](anonymous-read-access-configure.md). 
 

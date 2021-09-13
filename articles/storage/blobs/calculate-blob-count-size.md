@@ -4,16 +4,17 @@ description: Erfahren Sie, wie Sie die Anzahl und Gesamtgröße von Blobs pro Co
 services: storage
 author: normesta
 ms.author: normesta
-ms.date: 03/10/2021
+ms.date: 08/16/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: 8365c4873165b5a8040bc3def5743eca435cb7e9
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: ffdb6dd0d998cfe12b50dab85f49f06e30903d6f
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110653935"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122356537"
 ---
 # <a name="calculate-blob-count-and-total-size-per-container-using-azure-storage-inventory"></a>Berechnen der Anzahl und Gesamtgröße von Blobs pro Container mit dem Azure Storage-Bestand
 
@@ -21,25 +22,11 @@ In diesem Artikel werden der Azure Blob Storage-Bestand und Azure Synapse verwen
 
 Die Blobmetadaten werden bei dieser Methode nicht einbezogen. Bei der Funktion für den Azure Blob Storage-Bestand wird die REST-API [List Blobs](/rest/api/storageservices/list-blobs) mit Standardparametern verwendet. Daher werden in diesem Beispiel keine Momentaufnahmen, „$“-Container usw. unterstützt.
 
-> [!IMPORTANT]
-> Der Blobbestand befindet sich derzeit in der **VORSCHAU**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten rechtliche Bedingungen. Sie gelten für diejenigen Azure-Features, die sich in der Beta- oder Vorschauversion befinden oder aber anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
-
 ## <a name="enable-inventory-reports"></a>Aktivieren von Bestandsberichten
 
-Im ersten Schritt dieser Methode werden in Ihrem Speicherkonto [Bestandsberichte aktiviert](blob-inventory.md#enable-inventory-reports). Möglicherweise müssen Sie nach dem Aktivieren von Bestandsberichten bis zu 24 Stunden warten, bis der erste Bericht generiert werden kann.
+Im ersten Schritt dieser Methode werden in Ihrem Speicherkonto [Bestandsberichte aktiviert](blob-inventory.md#enabling-inventory-reports). Möglicherweise müssen Sie nach dem Aktivieren von Bestandsberichten bis zu 24 Stunden warten, bis der erste Bericht generiert werden kann.
 
-Wenn Sie einen Bestandsbericht analysieren möchten, müssen Sie sich Lesezugriff für Blobs in dem Container gewähren, in dem sich die CSV-Datei des Berichts befindet.
-
-1. Navigieren Sie zu dem Container mit der CSV-Berichtsdatei für den Bestand.
-1. Wählen Sie **Zugriffssteuerung (IAM)** und dann **Add role assignments** (Rollenzuweisungen hinzufügen) aus.
-
-    :::image type="content" source="media/calculate-blob-count-size/access.png" alt-text="Auswählen von „Add role assignments“ (Rollenzuweisungen hinzufügen)":::
-
-1. Wählen Sie in der Dropdownliste **Rolle** die Option **Storage-Blobdatenleser** aus.
-
-    :::image type="content" source="media/calculate-blob-count-size/add-role-assignment.png" alt-text="Hinzufügen von „Storage-Blobdatenleser“ über die Dropdownliste":::
-
-1. Geben Sie im Feld **Auswählen** die E-Mail-Adresse des Kontos ein, das Sie zum Ausführen des Berichts verwenden.
+Wenn Sie einen Bestandsbericht analysieren möchten, weisen Sie sich für den Container, in dem sich die CSV-Datei des Berichts befindet, die Rolle **Storage-Blobdatenleser** zu. Verwenden Sie die E-Mail-Adresse des Kontos, mit dem Sie den Bericht ausführen. Weitere Informationen zum Zuweisen einer Azure-Rolle zu einem Benutzer mit rollenbasierter Zugriffssteuerung in Azure (Azure RBAC) finden Sie in den Anweisungen unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="create-an-azure-synapse-workspace"></a>Erstellen eines Azure Synapse-Arbeitsbereichs
 

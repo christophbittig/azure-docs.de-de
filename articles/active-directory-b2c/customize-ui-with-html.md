@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/19/2021
+ms.date: 06/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8f9f6dc1abd08c5e53f3d44a8f6ec1b3e20786ed
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 76832f02f1c1337a705f33d26de97b0b5823c2c1
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107717439"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112981107"
 ---
 # <a name="customize-the-user-interface-with-html-templates-in-azure-active-directory-b2c"></a>Anpassen der Benutzeroberfläche mit HTML-Vorlagen in Azure Active Directory B2C
 
@@ -91,6 +91,10 @@ Wenn Sie eigene HTML- und CSS-Dateien zum Anpassen der Benutzeroberfläche verwe
 ## <a name="localize-content"></a>Lokalisieren von Inhalt
 
 Sie lokalisieren Ihren HTML-Inhalt, indem Sie die [Sprachanpassung](language-customization.md) in Ihrem Azure AD B2C-Mandanten aktivieren. Wenn Sie dieses Feature aktivieren, kann Azure AD B2C den Open ID Connect-Parameter `ui_locales` an Ihren Endpunkt weiterleiten. Ihr Inhaltsserver kann diesen Parameter verwenden, um benutzerdefinierte, sprachspezifische HTML-Seiten bereitzustellen.
+
+> [!NOTE]
+> Azure AD B2C übergibt keine OpenID Connect-Parameter wie `ui_locales` an die [Seite mit Ausnahmen](page-layout.md#exception-page-globalexception).
+
 
 Inhalt kann auf Grundlage des verwendeten Gebietsschemas aus unterschiedlichen Quellen abgerufen werden. Richten Sie in Ihrem CORS-fähigen Endpunkt eine Ordnerstruktur zum Hosten von Inhalten für bestimmte Sprachen ein. Wenn Sie den Platzhalterwert `{Culture:RFC5646}` verwenden, wird der passende Inhalt abgerufen.
 
@@ -376,7 +380,7 @@ So verwenden Sie das Beispiel
 
 1. Klonen Sie das Repository auf Ihrem lokalen Computer. Wählen Sie den Vorlagenordner `/AzureBlue`, `/MSA` oder `/classic` aus.
 1. Laden Sie alle Dateien aus dem Vorlagenordner und dem Ordner `/src` in den Blob-Speicher hoch, wie in den vorherigen Abschnitten beschrieben.
-1. Öffnen Sie dann die einzelnen `\*.html`-Dateien im Vorlagenordner. Ersetzen Sie anschließend alle Instanzen von `https://login.microsoftonline.com`-URLs durch die URL, die Sie in Schritt 2 hochgeladen haben. Beispiel:
+1. Öffnen Sie dann die einzelnen `\*.html`-Dateien im Vorlagenordner. Ersetzen Sie anschließend alle Instanzen von `https://login.microsoftonline.com`-URLs durch die URL, die Sie in Schritt 2 hochgeladen haben. Zum Beispiel:
     
     Von:
     ```html

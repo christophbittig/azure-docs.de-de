@@ -3,19 +3,21 @@ title: Worum handelt es sich bei der BareMetal-Infrastruktur in Azure?
 description: Hier finden Sie eine Übersicht über die BareMetal-Infrastruktur in Azure.
 ms.custom: references_regions
 ms.topic: conceptual
-ms.date: 05/27/2021
-ms.openlocfilehash: c0f3303f02332e9fc7766b1c73c9bbfa607a30c1
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.date: 07/13/2021
+ms.openlocfilehash: 135de43f26b969d3df79f6ec7348d295493e5134
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110653271"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113765814"
 ---
 #  <a name="what-is-baremetal-infrastructure-on-azure"></a>Worum handelt es sich bei der BareMetal-Infrastruktur in Azure?
 
 Zur Erfüllung Ihrer geschäftlichen Anforderungen bietet Microsoft Azure eine Cloudinfrastruktur mit einer breiten Palette an integrierten Clouddiensten. Manchmal müssen Dienste jedoch unter Umständen auf Bare-Metal-Servern ohne Virtualisierungsebene ausgeführt werden. Möglicherweise benötigen Sie Root-Zugriff und die Kontrolle über das Betriebssystem (Operating System, OS). Für diese Fälle bietet Azure eine BareMetal-Infrastruktur für mehrere hochwertige und unternehmenskritische Anwendungen.
 
-Die BareMetal-Infrastruktur besteht aus dedizierten BareMetal-Instanzen (Compute-Instanzen). Sie umfasst geeignete Hochleistungsspeicher für Anwendungen (NFS, ISCSI und Fibre Channel) und mehrere funktionsspezifische virtuelle LANs (VLANs) in einer isolierten Umgebung. Speicher kann von BareMetal-Instanzen gemeinsam genutzt werden, um Features wie Cluster mit horizontaler Skalierung oder Hochverfügbarkeitspaare mit STONITH zu ermöglichen.
+Die BareMetal-Infrastruktur besteht aus dedizierten BareMetal-Instanzen (Compute-Instanzen). Es stehen folgende Funktionen zur Verfügung:
+- Hochleistungsspeicher entsprechend der Anwendung (NFS, ISCSI und Fibre Channel) Speicher kann auch von BareMetal-Instanzen gemeinsam genutzt werden, um Features wie Cluster mit horizontaler Skalierung oder Hochverfügbarkeitspaare mit STONITH zu ermöglichen. 
+- Mehrere funktionsspezifische virtuelle LANs (VLANs) in einer isolierten Umgebung 
  
 Darüber hinaus verfügt diese Umgebung über spezielle VLANs, auf die Sie zugreifen können, wenn Sie virtuelle Computer (Virtual Machines, VMs) in einem oder mehreren virtuellen Azure-Netzwerken (VNETs) in Ihrem Azure-Abonnement ausführen möchten. Die gesamte Umgebung wird als Ressourcengruppe in Ihrem Azure-Abonnement dargestellt.
 
@@ -23,13 +25,13 @@ Die BareMetal-Infrastruktur wird in über 30 SKUs angeboten. Dadurch stehen Ser
 
 ## <a name="why-baremetal-infrastructure"></a>Gründe für eine BareMetal-Infrastruktur  
 
-Einige zentrale Workloads im Unternehmen umfassen Technologien, die einfach nicht für die Ausführung in einer typischen virtualisierten Cloudumgebung gedacht sind. Sie erfordern eine spezielle Architektur, zertifizierte Hardware oder Sondergrößen. Die Technologien bieten zwar hochentwickelte Datenschutz- und Geschäftskontinuitätsfeatures, diese sind jedoch nicht für die virtualisierte Cloud konzipiert. Sie reagieren empfindlicher auf Wartezeiten und Noisy Neighbors und erfordern deutlich mehr Kontrolle über Change Management- und Wartungsaktivitäten.
+Einige Workloads im Unternehmen umfassen Technologien, die einfach nicht für die Ausführung in einer typischen virtualisierten Cloudumgebung gedacht sind. Sie erfordern eine spezielle Architektur, zertifizierte Hardware oder Sondergrößen. Die Technologien bieten zwar hochentwickelte Datenschutz- und Geschäftskontinuitätsfeatures, diese sind jedoch nicht für die virtualisierte Cloud konzipiert. Sie reagieren empfindlicher auf Wartezeiten und Noisy Neighbors und erfordern mehr Kontrolle über Change Management- und Wartungsaktivitäten.
 
 Die BareMetal-Infrastruktur wurde für einen gewissen Teil solcher Anwendungen entwickelt, zertifiziert und getestet. Azure war der erste Anbieter solcher Lösungen und bietet als Marktführer das größte Portfolio und die ausgereiftesten Systeme.
 
 ### <a name="baremetal-benefits"></a>Bare-Metal-Vorteile  
 
-Die Bare-Metal-Infrastruktur ist für unternehmenskritische Workloads vorgesehen, die eine Zertifizierung erfordern, um Ihre Unternehmensanwendungen auszuführen. Die Bare-Metal-Instanzen sind ausschließlich für Sie dediziert, und Sie haben Vollzugriff (Root-Zugriff) auf das Betriebssystem (OS). Sie können die Betriebssystem- und Anwendungsinstallation gemäß Ihren Anforderungen verwalten. Aus Sicherheitsgründen werden die Instanzen in Ihrem Azure Virtual Network (VNet) ohne Internetkonnektivität bereitgestellt. Nur Dienste, die auf Ihren virtuellen Computern (virtual machines, VMs) ausgeführt werden, sowie andere Azure-Dienste im gleichen Netzwerk der Ebene 2 können mit Ihren Bare-Metal-Instanzen kommunizieren.  
+Die BareMetal-Infrastruktur ist für kritische Workloads vorgesehen, die eine Zertifizierung erfordern, um Ihre Unternehmensanwendungen auszuführen. Die Bare-Metal-Instanzen sind ausschließlich für Sie dediziert, und Sie haben Vollzugriff (Root-Zugriff) auf das Betriebssystem (OS). Sie können die Betriebssystem- und Anwendungsinstallation gemäß Ihren Anforderungen verwalten. Aus Sicherheitsgründen werden die Instanzen in Ihrem Azure Virtual Network (VNet) ohne Internetkonnektivität bereitgestellt. Nur Dienste, die auf Ihren virtuellen Computern (virtual machines, VMs) ausgeführt werden, sowie andere Azure-Dienste im gleichen Netzwerk der Ebene 2 können mit Ihren Bare-Metal-Instanzen kommunizieren.  
 
 Vorteile der BareMetal-Infrastruktur:
 
@@ -53,7 +55,7 @@ Vorteile der BareMetal-Infrastruktur:
 BareMetal Infrastructure bietet verschiedene SKUs, die für spezialisierte Workloads zertifiziert sind. Nutzen Sie die workloadspezifischen SKUs, um Ihre Anforderungen zu erfüllen.
 
 - Große Instanzen: Systeme mit zwei bis vier Sockets  
-- Sehr große Instanzen: Systeme mit vier bis 24 Sockets 
+- Sehr große Instanzen: Systeme mit vier bis zwanzig Sockets 
 
 Die BareMetal-Infrastruktur für spezialisierte Workloads ist in den folgenden Azure-Regionen verfügbar:
 - Europa, Westen
@@ -70,7 +72,7 @@ Die BareMetal-Infrastruktur für spezialisierte Workloads ist in den folgenden A
 
 ## <a name="managing-baremetal-instances-in-azure"></a>Verwalten von BareMetal-Instanzen in Azure 
 
-Die Anwendungstopologien der BareMetal-Infrastruktur können abhängig von Ihren Anforderungen durchaus komplex sein. Sie können mehrere Instanzen an einem oder mehreren Standorten mit freigegebenem oder dediziertem Speicher sowie mit speziellen LAN- und WAN-Verbindungen bereitstellen. Daher bietet Azure für die BareMetal-Infrastruktur eine Erfassung dieser Informationen zu Beratungszwecken durch einen Außendienstmitarbeiter (CSA/GBB) in einem Bereitstellungsportal. 
+Die Anwendungstopologien der BareMetal-Infrastruktur können abhängig von Ihren Anforderungen durchaus komplex sein. Sie können mehrere Instanzen an einem oder mehreren Standorten bereitstellen. Die Instanzen können freigegebenen oder dedizierten Speicher sowie spezielle LAN- und WAN-Verbindungen aufweisen. Daher bietet Azure für die BareMetal-Infrastruktur eine Beratung durch einen Außendienstmitarbeiter (CSA/GBB) zur Zusammenarbeit mit Ihnen. 
 
 Zum Zeitpunkt der Bereitstellung Ihrer Bare-Metal-Infrastruktur sind Betriebssystem, Netzwerke, Speichervolumes, Platzierungen in Zonen und Regionen sowie WAN-Verbindungen zwischen Standorten bereits vorkonfiguriert. Sie können Ihre Betriebssystemlizenzen (BYOL) registrieren, das Betriebssystem konfigurieren und die Anwendungsschicht installieren.
 
@@ -158,7 +160,7 @@ Die dargestellte Architektur ist in drei Abschnitte unterteilt:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im nächsten Schritt erfahren Sie, wie Sie BareMetal-Instanzen im Azure-Portal identifizieren und mit ihnen interagieren.
+Hier erfahren Sie, wie Sie BareMetal-Instanzen über das Azure-Portal identifizieren und mit ihnen interagieren.
 
 > [!div class="nextstepaction"]
 > [Herstellen von Verbindungen mit BareMetal-Instanzeinheiten in Azure](connect-baremetal-infrastructure.md)

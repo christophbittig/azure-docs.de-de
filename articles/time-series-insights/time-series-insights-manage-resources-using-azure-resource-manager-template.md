@@ -3,20 +3,21 @@ title: Verwalten Ihrer Umgebung mit Azure Resource Manager-Vorlagen – Azure Ti
 description: Erfahren Sie, wie Sie Ihre Azure Time Series Insights-Umgebung mit dem Azure Resource Manager programmgesteuert verwalten.
 ms.service: time-series-insights
 services: time-series-insights
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: tedvilutis
+ms.author: tvilutis
+manager: cnovak
+ms.reviewer: orspodek
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 493750e69b1fdc935b04d6dc705cfd046b6b086e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 23b7906a7035ebb8af0558dcd28952aa3fb71c0b
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96011658"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113136182"
 ---
 # <a name="create-azure-time-series-insights-gen-1-resources-using-azure-resource-manager-templates"></a>Erstellen von Azure Time Series Insights Gen1-Ressourcen mit Azure Resource Manager-Vorlagen
 
@@ -40,7 +41,7 @@ Eine Resource Manager-Vorlage ist eine JSON-Datei, mit der die Infrastruktur und
 - [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 - [Microsoft.TimeSeriesInsights-Ressourcentypen](/azure/templates/microsoft.timeseriesinsights/allversions)
 
-Die Schnellstartvorlage [201-timeseriesinsights-environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-timeseriesinsights-environment-with-eventhub) ist auf GitHub verfügbar. Mit dieser Vorlage werden eine Azure Time Series Insights-Umgebung, eine untergeordnete Ereignisquelle, die für die Nutzung von Ereignissen von einem Event Hub konfiguriert ist, und Zugriffsrichtlinien erstellt, mit denen Zugriff auf die Daten der Umgebung gewährt wird. Wenn Sie keinen vorhandenen Event Hub angeben, wird einer für die Bereitstellung erstellt.
+Die Schnellstartvorlage [timeseriesinsights-environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.timeseriesinsights/timeseriesinsights-environment-with-eventhub) ist auf GitHub verfügbar. Mit dieser Vorlage werden eine Azure Time Series Insights-Umgebung, eine untergeordnete Ereignisquelle, die für die Nutzung von Ereignissen von einem Event Hub konfiguriert ist, und Zugriffsrichtlinien erstellt, mit denen Zugriff auf die Daten der Umgebung gewährt wird. Wenn Sie keinen vorhandenen Event Hub angeben, wird einer für die Bereitstellung erstellt.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -50,13 +51,13 @@ Im folgenden Verfahren wird beschrieben, wie Sie PowerShell zum Bereitstellen ei
 
 1. Installieren Sie Azure PowerShell gemäß den Anweisungen unter [Erste Schritte mit Azure PowerShell-Cmdlets](/powershell/azure/get-started-azureps).
 
-1. Klonen oder kopieren Sie die Vorlage [201-timeseriesinsights-environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/blob/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.json) von GitHub.
+1. Klonen oder kopieren Sie die Vorlage [timeseriesinsights-environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.timeseriesinsights/timeseriesinsights-environment-with-eventhub/azuredeploy.json) von GitHub.
 
    - Erstellen einer Parameterdatei
 
-     Kopieren Sie die Datei [201-timeseriesinsights-environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/blob/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.parameters.json), um eine Parameterdatei zu erstellen.
+     Kopieren Sie die Datei [timeseriesinsights-environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.timeseriesinsights/timeseriesinsights-environment-with-eventhub/azuredeploy.parameters.json), um eine Parameterdatei zu erstellen.
 
-      [!code-json[deployment-parameters](~/quickstart-templates/201-timeseriesinsights-environment-with-eventhub/azuredeploy.parameters.json)]
+      [!code-json[deployment-parameters](~/quickstart-templates/quickstarts/microsoft.timeseriesinsights/timeseriesinsights-environment-with-eventhub/azuredeploy.parameters.json)]
 
     <div id="required-parameters"></div>
 
@@ -80,7 +81,7 @@ Im folgenden Verfahren wird beschrieben, wie Sie PowerShell zum Bereitstellen ei
      | environmentDisplayName | Ein optionaler Anzeigenamen, der in Tools oder Benutzeroberflächen anstelle des Umgebungsnamens angezeigt wird. |
      | environmentSkuName | Der Name der SKU. Weitere Informationen finden Sie auf der Seite [Azure Time Series Insights – Preise](https://azure.microsoft.com/pricing/details/time-series-insights/).  |
      | environmentSkuCapacity | Die Einheitenkapazität der SKU. Weitere Informationen finden Sie auf der Seite [Azure Time Series Insights – Preise](https://azure.microsoft.com/pricing/details/time-series-insights/).|
-     | environmentDataRetentionTime | Die Mindestzeitspanne der Ereignisse einer Umgebung ist für Abfragen verfügbar. Der Wert muss im ISO 8601-Format angegeben werden, z.B. `P30D` für eine Aufbewahrungsrichtlinie von 30 Tagen. |
+     | environmentDataRetentionTime | Die Mindestzeitspanne der Ereignisse der Umgebung ist für Abfragen verfügbar. Der Wert muss im ISO 8601-Format angegeben werden, z.B. `P30D` für eine Aufbewahrungsrichtlinie von 30 Tagen. |
      | eventSourceDisplayName | Ein optionaler Anzeigename, der in Tools oder Benutzeroberflächen anstelle des Ereignisquellennamens angezeigt wird. |
      | eventSourceTimestampPropertyName | Die Ereigniseigenschaft, die als Zeitstempel der Ereignisquelle verwendet wird. Wenn für timestampPropertyName kein Name oder wenn Null oder eine leere Zeichenfolge angegeben wird, wird der Zeitpunkt der Ereigniserstellung verwendet. |
      | eventSourceKeyName | Der Name des freigegebenen Zugriffsschlüssels, der vom Azure Time Series Insights-Dienst verwendet wird, um eine Verbindung mit dem Event Hub herzustellen. |
@@ -249,7 +250,7 @@ Im folgenden Verfahren wird beschrieben, wie Sie PowerShell zum Bereitstellen ei
    - Die Startseite der Schnellstartvorlage auf GitHub enthält auch die Schaltfläche **Deploy to Azure** (In Azure bereitstellen). Wenn Sie darauf klicken, wird im Azure-Portal die Seite „Benutzerdefinierte Bereitstellung“ geöffnet. Auf dieser Seite können Sie Werte für jeden Parameter aus der Tabelle mit den [erforderlichen Parametern](#required-parameters) oder den [optionalen Parametern](#optional-parameters) eingeben oder auswählen. Wenn Sie nach dem Angeben der Einstellungen auf die Schaltfläche **Kauf** klicken, wird die Vorlagenbereitstellung initiiert.
     </br>
     </br>
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-timeseriesinsights-environment-with-eventhub%2Fazuredeploy.json" target="_blank">
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.timeseriesinsights%2Ftimeseriesinsights-environment-with-eventhub%2Fazuredeploy.json" target="_blank">
        <img src="https://azuredeploy.net/deploybutton.png" alt="The Deploy to Azure button."/>
     </a>
 

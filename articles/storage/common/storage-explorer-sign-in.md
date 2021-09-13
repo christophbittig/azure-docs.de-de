@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/01/2021
 ms.author: chuye
-ms.openlocfilehash: 26ce15bfe474f96aaef17f186f56e36ce42b7239
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 7ef07280d65f3533e1def6475e40a65b16f0f6c3
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107950530"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122356680"
 ---
 # <a name="sign-in-to-storage-explorer"></a>Anmelden bei Storage-Explorer
 
@@ -50,7 +50,7 @@ Die Anmeldung erfolgt standardmäßig im **Standardwebbrowser** Ihres Betriebssy
 
 Suchen Sie in den **Einstellungen (Zahnradsymbol auf der linken Seite) unter**  > **Anwendung** > **Anmelden** nach der Einstellung **Anmelden mit**. Drei Optionen stehen zur Verfügung:
 - **Standardwebbrowser:** Die Anmeldung erfolgt im **Standardwebbrowser** Ihres Betriebssystems. Diese Option wird empfohlen.
-- **Integrierte Anmeldung:** Die Anmeldung erfolgt in einem Storage-Explorer-Fenster. Diese Option kann nützlich sein, wenn Sie versuchen, sich mit mehreren Microsoft-Konten (MSAs) gleichzeitig anzumelden. Unter Umständen treten Probleme mit einigen CA-Richtlinien auf, wenn Sie diese Option auswählen.
+- **Integrierte Anmeldung:** Die Anmeldung erfolgt in einem Storage-Explorer-Fenster. Diese Option kann nützlich sein, wenn Probleme bei der Anmeldung mithilfe Ihres **Standardwebbrowsers** auftreten.
 - **Gerätecodeflow:** Sie erhalten einen Code von Storage-Explorer, den Sie in ein Browserfenster eingeben können. Von der Verwendung dieser Option wird abgeraten. Der Gerätecodeflow ist mit vielen CA-Richtlinien nicht kompatibel.
 
 ## <a name="troubleshooting-sign-in-issues"></a>Behandeln von Problemen bei der Anmeldung

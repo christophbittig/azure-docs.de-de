@@ -17,12 +17,12 @@ ms.date: 04/05/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d0428f73c4df3d97002def03823ff8cced1d647
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 6570e378aa75843c525cb21ed58c9da5fd4fb574
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552630"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445852"
 ---
 # <a name="license-requirements-to-use-privileged-identity-management"></a>Lizenzanforderungen für die Verwendung von Privileged Identity Management
 
@@ -30,7 +30,7 @@ Damit Sie Azure Active Directory (Azure AD) Privileged Identity Management (PIM)
 
 ## <a name="valid-licenses"></a>Gültige Lizenzen
 
-Sie benötigen [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)], um PIM und alle zugehörigen Einstellungen zu verwenden. Derzeit können Sie eine Zugriffsüberprüfung auf Dienstprinzipale mit Zugriff auf Azure AD und Azure-Ressourcenrollen (Vorschauversion) mit einer aktiven Azure Active Directory Premium P2-Edition in Ihrem Mandanten beschränken. Das Lizenzierungsmodell für Dienstprinzipale wird für die allgemeine Verfügbarkeit dieses Features fertig gestellt, und es sind möglicherweise zusätzliche Lizenzen erforderlich.
+Sie benötigen eine Azure AD-Lizenz, um PIM und alle zugehörigen Einstellungen zu verwenden. Derzeit können Sie eine Zugriffsüberprüfung auf Dienstprinzipale mit Zugriff auf Azure AD und Azure-Ressourcenrollen (Vorschau) mit einer in Ihrem Anker aktiven Azure Active Directory Premium P2-Edition durchführen. Das Lizenzierungsmodell für Dienstprinzipale wird für die allgemeine Verfügbarkeit dieses Features fertig gestellt, und es sind möglicherweise zusätzliche Lizenzen erforderlich. [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
 ## <a name="licenses-you-must-have"></a>Lizenzen, die Sie benötigen
 

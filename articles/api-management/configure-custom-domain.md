@@ -12,12 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: a7032c64efa486c65830e013373239647a368540
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d0e8dfaf4c03ee3cfd47271b2044a7d0d9480643
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92311136"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351228"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-api-management-instance"></a>Konfigurieren eines benutzerdefinierten Domänennamens für Ihre Azure API Management-Instanz
 
@@ -59,7 +59,7 @@ Zum Ausführen der in diesem Artikel beschriebenen Schritte benötigen Sie Folge
     > Nur der **Gatewayendpunkt** kann im Tarif „Consumption“ konfiguriert werden.
     > Sie können alle oder nur bestimmte Endpunkte aktualisieren. Kunden aktualisieren üblicherweise **Gateway** (URL zum Aufrufen der über API Management verfügbar gemachten API) und **Portal** (URL des Entwicklerportals).
     > Die Endpunkte **Verwaltung** und **SCM** werden nur intern von Besitzern der API Management-Instanz verwendet, weshalb ihnen seltener ein benutzerdefinierter Domänenname zugewiesen wird.
-    > Der **Premium**-Tarif unterstützt mehrere Hostnamen für den **Gateway** endpunkt.
+    > In den Tarifen **Premium** und **Developer** können mehrere Hostnamen für den Endpunkt **Gateway** festgelegt werden.
 
 1. Wählen Sie den Endpunkt aus, den Sie aktualisieren möchten.
 1. Klicken Sie im Fenster auf der rechten Seite auf **Benutzerdefiniert**.
@@ -93,7 +93,7 @@ Bei der DNS-Konfiguration für Ihren benutzerdefinierten Domänennamen haben Sie
 -   Konfigurieren eines A-Eintrags, der auf die Gateway-IP-Adresse für API Management verweist
 
 > [!NOTE]
-> Die IP-Adresse der API Management-Instanz ist zwar statisch, kann sich aber dennoch in bestimmten Szenarien ändern. Daher empfiehlt es sich, beim Konfigurieren der benutzerdefinierten Domäne CNAME zu verwenden. Berücksichtigen Sie dies bei der Wahl der DNS-Konfigurationsmethode. Weitere Informationen finden Sie im [IP-Dokumentationsartikel](api-management-howto-ip-addresses.md#changes-to-the-ip-addresses) und im [API Management-FAQ](api-management-faq.md#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services).
+> Die IP-Adresse der API Management-Instanz ist zwar statisch, kann sich aber dennoch in bestimmten Szenarien ändern. Daher empfiehlt es sich, beim Konfigurieren der benutzerdefinierten Domäne CNAME zu verwenden. Berücksichtigen Sie dies bei der Wahl der DNS-Konfigurationsmethode. Weitere Informationen finden Sie im [IP-Dokumentationsartikel](api-management-howto-ip-addresses.md#changes-to-the-ip-addresses) und im [API Management-FAQ](api-management-faq.yml#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services-).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

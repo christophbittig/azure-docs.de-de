@@ -1,19 +1,19 @@
 ---
 title: Grundlegendes zu den erforderlichen Rollen zum Ausführen allgemeiner Aufgaben in Synapse
 description: In diesem Artikel wird beschrieben, welche integrierten Synapse RBAC-Rollen für bestimmte Aufgaben erforderlich sind.
-author: RonyMSFT
+author: meenalsri
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: security
 ms.date: 12/1/2020
-ms.author: ronytho
+ms.author: mesrivas
 ms.reviewer: jrasnick
-ms.openlocfilehash: 87156914769c2cb76b7509b74ebfeb13b15af95e
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 2d913d0312b75542fa52e73e68170e9a3b91cf5d
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110784193"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823344"
 ---
 # <a name="understand-the-roles-required-to-perform-common-tasks-in-synapse"></a>Grundlegendes zu den erforderlichen Rollen zum Ausführen allgemeiner Aufgaben in Synapse
 
@@ -76,7 +76,7 @@ Verwalten (Anhalten, Skalieren oder Löschen) eines dedizierten SQL-Pools|Azure-
 Erstellen eines SQL-Skripts</br>|Synapse-Benutzer oder </br>Azure-Besitzer oder Mitwirkender im Arbeitsbereich. </br>*Zum Ausführen eines SQL-Skripts und zum Veröffentlichen oder Committen von Änderungen sind zusätzliche SQL-Berechtigungen erforderlich.*|
 Auflisten und Öffnen veröffentlichter SQL-Skripts| Benutzer von Synapse-Artefakten, Herausgeber von Synapse-Artefakten, Synapse-Mitwirkender|artifacts/read
 Ausführen eines SQL-Skripts in einem serverlosen SQL-Pool|SQL-Berechtigungen für den Pool (werden Synapse-Administratoren automatisch gewährt)|Keine
-Ausführen eines SQL-Skripts in einem dedizierten SQL-Pool|SQL-Berechtigungen für den Pool|none
+Ausführen eines SQL-Skripts in einem dedizierten SQL-Pool|SQL-Berechtigungen für den Pool (werden Synapse-Administratoren automatisch gewährt)|Keine
 Veröffentlichen neuer, aktualisierter oder gelöschter SQL-Skripts|Herausgeber von Synapse-Artefakten, Synapse-Mitwirkender|sqlScripts/write, delete
 Committen von Änderungen an einem SQL-Skript im Git-Repository|Erfordert Git-Berechtigungen für das Repository|
 Zuweisen eines Active Directory-Administrators für den Arbeitsbereich (über die Arbeitsbereichseigenschaften im Azure-Portal)|Azure-Besitzer oder Mitwirkender im Arbeitsbereich |
@@ -92,7 +92,7 @@ Veröffentlichen oder Löschen einer Notebook- oder Auftragsdefinition (einschli
 Committen von Änderungen an einer Notebook- oder Auftragsdefinition im Git-Repository|Git-Berechtigungen|none
 PIPELINES, INTEGRATION RUNTIMES, DATENFLÜSSE, DATASETS UND TRIGGER|
 Erstellen, Aktualisieren oder Löschen einer Integration Runtime|Azure-Besitzer oder Mitwirkender im Arbeitsbereich|
-Überwachen des Integration Runtime-Status|Synapse-Benutzer|read, pipelines/viewOutputs
+Überwachen des Integration Runtime-Status|Operator von Synapse-Computeressourcen|read, integrationRuntimes/viewLogs
 Überprüfen von Pipelineausführungen|Herausgeber von Synapse-Artefakten, Synapse-Mitwirkender|read, pipelines/viewOutputs 
 Erstellen einer Pipeline |Synapse-Benutzer</br>*Zum Debuggen, Hinzufügen von Triggern und Veröffentlichen oder Committen von Änderungen sind zusätzliche Synapse-Berechtigungen erforderlich.*|Lesen
 Erstellen von Datenflüssen oder Datasets |Synapse-Benutzer</br>*Zum Veröffentlichen oder Committen von Änderungen sind zusätzliche Synapse-Berechtigungen erforderlich.*|Lesen

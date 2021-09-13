@@ -7,14 +7,16 @@ ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 71a4cebcc11657566f65f53508df18efe822c409
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: d10ef37931b748b11cbbce96393aff3c3917178a
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107514783"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687991"
 ---
 # <a name="dv2-and-dsv2-series"></a>Dv2- und DSv2-Serie
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Die Serien Dv2 und DSv2, Nachfolger der ursprünglichen D-Serie, sind mit schnellen CPUs und einer optimalen CPU-zu-Arbeitsspeicher-Konfiguration ausgestattet und eignen sich daher für die meisten Produktionsworkloads. Die Dv2-Serie ist ca. 35 % schneller als die D-Serie. Die Dv2-Serie wird auf dem Intel® Xeon® Platinum 8272CL-Prozessor (Cascade Lake), dem Intel® Xeon® 8171M-Prozessor mit 2,1 GHz (Skylake), dem Intel® Xeon® E5-2673 v4-Prozessor mit 2,3 GHz (Broadwell) oder dem Intel® Xeon® E5-2673 v3-Prozessor mit 2,4 GHz (Haswell) mit Intel Turbo Boost Technology 2.0 ausgeführt. Der Dv2-Serie hat die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die D-Serie.
 
@@ -28,17 +30,19 @@ Die Dv2-Serie wird auf dem Intel® Xeon® Platinum 8272CL-Prozessor (Cascade Lak
 [Livemigration](maintenance-and-updates.md): Unterstützt<br>
 [Updates mit Speicherbeibehaltung](maintenance-and-updates.md): Unterstützt<br>
 [Unterstützung von VM-Generationen](generation-2.md): Generation 1<br>
-[Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt (*erfordert mindestens 2 vCPUs*)<br>
+[Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt <br>
 [Kurzlebige Betriebssystemdatenträger:](ephemeral-os-disks.md) Nicht unterstützt <br>
 <br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Maximaler Durchsatz (temporärer Speicher): IOPS/MBit/s Lesen/MBit/s Schreiben | Max. Anzahl Datenträger | Durchsatz: IOPS | Maximale Anzahl NICs | Erwartete Netzwerkbandbreite (MBit/s) |
 |---|---|---|---|---|---|---|---|---|
-| Standard_D1_v2 | 1  | 3,5 | 50  | 3000/46/23    | 4  | 4 x 500  | 2|750   |
+| Standard_D1_v2<sup>1</sup> | 1  | 3,5 | 50  | 3000/46/23    | 4  | 4 x 500  | 2|750   |
 | Standard_D2_v2 | 2  | 7   | 100 | 6000/93/46    | 8  | 8 x 500  | 2|1500  |
 | Standard_D3_v2 | 4  | 14  | 200 | 12000/187/93  | 16 | 16 x 500 | 4|3000  |
 | Standard_D4_v2 | 8  | 28  | 400 | 24000/375/187 | 32 | 32 x 500 | 8|6000  |
 | Standard_D5_v2 | 16 | 56  | 800 | 48000/750/375 | 64 | 64 x 500 | 8|12000 |
+
+<sup>1</sup> Beschleunigter Netzwerkbetrieb kann nur auf eine einzelne NIC angewendet werden. 
 
 ## <a name="dsv2-series"></a>DSv2-Serie
 
@@ -50,17 +54,19 @@ Die DSv2-Serie wird auf dem Intel® Xeon® Platinum 8272CL-Prozessor (Cascade La
 [Livemigration](maintenance-and-updates.md): Unterstützt<br>
 [Updates mit Speicherbeibehaltung](maintenance-and-updates.md): Unterstützt<br>
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
-[Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt (*erfordert mindestens 2 vCPUs*)<br>
+[Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt <br>
 [Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt <br>
 <br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs|Erwartete Netzwerkbandbreite (MBit/s) |
 |---|---|---|---|---|---|---|---|---|
-| Standard_DS1_v2 | 1  | 3,5 | 7   | 4  | 4000/32 (43)    | 3200/48   | 2|750   |
+| Standard_DS1_v2<sup>1</sup> | 1  | 3,5 | 7   | 4  | 4000/32 (43)    | 3200/48   | 2|750   |
 | Standard_DS2_v2 | 2  | 7   | 14  | 8  | 8000/64 (86)    | 6400/96   | 2|1500  |
 | Standard_DS3_v2 | 4  | 14  | 28  | 16 | 16000/128 (172) | 12800/192 | 4|3000  |
 | Standard_DS4_v2 | 8  | 28  | 56  | 32 | 32.000/256 (344) | 25600/384 | 8|6000  |
 | Standard_DS5_v2 | 16 | 56  | 112 | 64 | 64.000/512 (688) | 51200/768 | 8|12000 |
+
+<sup>1</sup> Beschleunigter Netzwerkbetrieb kann nur auf eine einzelne NIC angewendet werden. 
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

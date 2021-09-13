@@ -2,25 +2,27 @@
 title: 'Erkunden kuratierter Visualisierungen: Azure IoT Edge'
 description: Hier erfahren Sie, wie Sie integrierte IoT Edge-Metriken mithilfe von Azure-Arbeitsmappen visualisieren und erkunden.
 author: veyalla
-manager: philmea
 ms.author: veyalla
-ms.date: 06/08/2021
+ms.date: 08/11/2021
 ms.topic: conceptual
 ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0ca0d1fb7890f1a1a94419f58587f3a98957f41c
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 7be7260e993f9cc95b542406767d6794f18836f8
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111904421"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122350095"
 ---
 # <a name="explore-curated-visualizations-preview"></a>Erkunden kuratierter Visualisierungen (Vorschau)
 
 [!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
-Die vom IoT Edge-Gerät gesammelten Metriken können mithilfe von Azure Monitor-Arbeitsmappen direkt im Azure-Portal visualisiert und erkundet werden. Kuratierte Überwachungsarbeitsmappen für IoT Edge-Geräte werden in Form von öffentlichen Vorlagen bereitgestellt, die auf dem Blatt **IoT Hub** der Seite **Arbeitsmappen** (im Abschnitt „Überwachung“) zur Verfügung stehen.
+Die vom IoT Edge-Gerät gesammelten Metriken können mithilfe von Azure Monitor-Arbeitsmappen direkt im Azure-Portal visualisiert und erkundet werden. Kuratierte Überwachungsarbeitsmappen für IoT Edge-Geräte werden in Form von öffentlichen Vorlagen bereitgestellt:
+
+* Navigieren Sie für mit IoT Hub verbundene Geräte über das Blatt **IoT Hub** im Azure-Portal zur Seite **Arbeitsmappen** im Abschnitt **Überwachung**.
+* Navigieren Sie für mit IoT Central verbundene Geräte über das Blatt **IoT Central** im Azure-Portal zur Seite **Arbeitsmappen** im Abschnitt **Überwachung**.
 
 Die kuratierten Arbeitsmappen nutzen [integrierte Metriken](how-to-access-built-in-metrics.md) aus der IoT Edge-Runtime. Für diese Ansichten ist keinerlei Metrikinstrumentierung aus den Workloadmodulen erforderlich.
 
@@ -30,15 +32,15 @@ Bei den Azure Monitor-Arbeitsmappen für IoT handelt es sich um eine Reihe von 
 
 Gehen Sie wie folgt vor, um auf die kuratierten Arbeitsmappen zuzugreifen:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu Ihrem IoT Hub.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu Ihrer IoT Hub- oder IoT Central-Anwendung.
 
 1. Wählen Sie im Menüabschnitt **Überwachung** die Option **Arbeitsmappen** aus.
 
 1. Wählen Sie in der Liste mit den öffentlichen Vorlagen die Arbeitsmappe aus, die Sie erkunden möchten:
 
-   * **IoT Edge-Bestandsansicht (Vorschau)**: Überwachen Sie Ihren Gerätebestand, und zeigen Sie Detailinformationen zu bestimmten Geräten an, um eine Integritätsmomentaufnahme zu erhalten.
-   * **IoT Edge-Gerätedetails (Vorschau)**: Visualisieren Sie Gerätedetails zu Messaging, Modulen und Hostkomponenten eines IoT Edge-Geräts.
-   * **IoT Edge-Integritätsmomentaufnahme (Vorschau)**: Zeigen Sie die Integrität eines Geräts basierend auf sechs gängigen Leistungsmetriken an. Um auf die Arbeitsmappe für Integritätsmomentaufnahmen zuzugreifen, beginnen Sie in der Arbeitsmappe mit der Bestandsansicht, und wählen Sie das Gerät aus, das Sie anzeigen möchten. Von der Arbeitsmappe mit der Bestandsansicht werden einige erforderliche Parameter an die Ansicht für Integritätsmomentaufnahmen übergeben.
+  * **IoT Edge-Bestandsansicht (Vorschau)**: Überwachen Sie Ihren Gerätebestand, und zeigen Sie Detailinformationen zu bestimmten Geräten an, um eine Integritätsmomentaufnahme zu erhalten.
+  * **IoT Edge-Gerätedetails (Vorschau)**: Visualisieren Sie Gerätedetails zu Messaging, Modulen und Hostkomponenten eines IoT Edge-Geräts.
+  * **IoT Edge-Integritätsmomentaufnahme (Vorschau)**: Zeigen Sie die Integrität eines Geräts basierend auf sechs gängigen Leistungsmetriken an. Um auf die Arbeitsmappe für Integritätsmomentaufnahmen zuzugreifen, beginnen Sie in der Arbeitsmappe mit der Bestandsansicht, und wählen Sie das Gerät aus, das Sie anzeigen möchten. Von der Arbeitsmappe mit der Bestandsansicht werden einige erforderliche Parameter an die Ansicht für Integritätsmomentaufnahmen übergeben.
 
 Sie können die Arbeitsmappen selbst erkunden oder sich anhand der folgenden Abschnitte einen Überblick über die Arten von Daten und Visualisierungen der einzelnen Arbeitsmappen verschaffen.
 
@@ -55,7 +57,7 @@ Verwenden Sie die Registerkarten am oberen Rand der Arbeitsmappe, um zwischen de
 
 :::image type="content" source="./media/how-to-explore-curated-visualizations/how-to-explore-fleet-view.gif" alt-text="Abschnitt „Geräte“ der Arbeitsmappe mit der Bestandsansicht" lightbox="./media/how-to-explore-curated-visualizations/how-to-explore-fleet-view.gif":::
 
-Bei der Ansicht **Geräte** handelt es sich um eine Übersicht über aktive Geräte, die Metriken senden. In dieser Ansicht werden Geräte angezeigt, die der aktuellen IoT Hub-Instanz zugeordnet sind.
+Bei der Ansicht **Geräte** handelt es sich um eine Übersicht über aktive Geräte, die Metriken senden. In dieser Ansicht werden Geräte aufgeführt, die der aktuellen IoT Hub- oder IoT Central-Anwendung zugeordnet sind.
 
 Auf der rechten Seite befindet sich die Geräteliste mit zusammengesetzten Säulen für gesendete Nachrichten (lokal und Upstream). Sie können die Liste nach Gerätename filtern und auf den als Link dargestellten Gerätenamen klicken, um ausführliche Metriken für das Gerät anzuzeigen.
 
@@ -65,7 +67,7 @@ Auf der linken Seite gibt die Hive-Zellenvisualisierung Aufschluss darüber, wel
 
 :::image type="content" source="./media/how-to-explore-curated-visualizations/how-to-explore-alerts.gif" alt-text="Abschnitt „Warnungen“ der Arbeitsmappe mit der Bestandsansicht" lightbox="./media/how-to-explore-curated-visualizations/how-to-explore-alerts.gif":::
 
-Die Ansicht **Warnungen** enthält die Warnungen, die auf der Grundlage [vorab erstellter Warnungsregeln](how-to-create-alerts.md) generiert wurden. In dieser Ansicht können Warnungen mehrerer IoT Hub-Instanzen angezeigt werden.
+Die Ansicht **Warnungen** enthält die Warnungen, die auf der Grundlage [vorab erstellter Warnungsregeln](how-to-create-alerts.md) generiert wurden. In dieser Ansicht werden Warnungen von mehreren IoT Hub- oder IoT Central-Anwendungen angezeigt.
 
 Auf der linken Seite befindet sich eine Liste mit Warnungsschweregraden und der jeweiligen Anzahl. Auf der rechten Seite befindet sich eine Karte mit der Gesamtanzahl von Warnungen pro Region.
 
@@ -147,7 +149,7 @@ Diese Signale werden mit konfigurierbaren Schwellenwerten abgeglichen, um zu erm
 
 ## <a name="customize-workbooks"></a>Anpassen von Arbeitsmappen
 
-[Azure Monitor-Arbeitsmappen](../azure-monitor/visualize/workbooks-overview.md) sind hochgradig anpassbar. Sie können die öffentlichen Vorlagen bearbeiten, um sie an Ihre Anforderungen anzupassen. Alle Visualisierungen werden durch ressourcenbezogene [KQL](https://aka.ms/kql)-Abfragen für die Tabelle [InsightsMetrics](/azure/azure-monitor/reference/tables/insightsmetrics) gesteuert. Im folgenden Beispiel werden die Integritätsschwellenwerte bearbeitet.
+[Azure Monitor-Arbeitsmappen](../azure-monitor/visualize/workbooks-overview.md) sind hochgradig anpassbar. Sie können die öffentlichen Vorlagen bearbeiten, um sie an Ihre Anforderungen anzupassen. Alle Visualisierungen werden durch ressourcenbezogene [KQL](/azure/data-explorer/kusto/query/)-Abfragen für die Tabelle [InsightsMetrics](/azure/azure-monitor/reference/tables/insightsmetrics) gesteuert. Im folgenden Beispiel werden die Integritätsschwellenwerte bearbeitet.
 
 Wechseln Sie zur Anpassung einer Arbeitsmappe zunächst in den Bearbeitungsmodus. Wählen Sie auf der Menüleiste der Arbeitsmappe die Schaltfläche **Bearbeiten** aus.
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/28/2021
 ms.author: v-demjoh
-ms.openlocfilehash: 268f248c879d1a6872713159bfb1aa44879d21ad
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 364ceacaea122e7ffda58ef0c7d4db072c8fee13
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114730385"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122262342"
 ---
 ## <a name="download-and-install"></a>Herunterladen und Installieren
 
@@ -68,8 +68,11 @@ Geben Sie `spx` ein, um die Hilfe für die Speech-Befehlszeilenschnittstelle anz
 
 #### <a name="docker-install-windows-linux-macos"></a>[Docker-Installation (Windows, Linux, macOS)](#tab/dockerinstall)
 
-> [!WARNING]
+> [!IMPORTANT]
 > Wenn Sie die Speech-CLI in einem Docker-Container ausführen, können Sie das Mikrofon Ihres Computers nicht verwenden. Sie können jedoch aus Ihrem lokal eingebundenen Verzeichnis lesen und Audiodateien darin speichern. 
+
+> [!NOTE]
+> Im folgenden Beispiel wird ein öffentliches Container-Image von Docker Hub abgerufen. Es wird empfohlen, dass Sie sich zuerst mit Ihrem Docker Hub Konto (`docker login`) authentifizieren, anstatt eine anonyme Abrufanforderung zu erstellen. Um die Zuverlässigkeit bei der Verwendung öffentlicher Inhalte zu verbessern, sollten Sie das Image in einer privaten Azure-Containerregistrierung importieren und verwalten. Weitere Informationen zur Verwendung öffentlicher Images finden Sie [hier](../../../container-registry/buffer-gate-public-content.md).
 
 Führen Sie die folgenden Schritte aus, um die Speech-CLI in einem Docker-Container zu installieren:
 

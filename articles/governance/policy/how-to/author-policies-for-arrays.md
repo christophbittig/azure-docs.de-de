@@ -1,14 +1,14 @@
 ---
 title: Erstellen von Richtlinien für Arrayeigenschaften für Ressourcen
 description: Erfahren Sie, wie Sie mit Arrayparametern und Arrayausdrücken arbeiten, den [*]-Alias auswerten und Elemente mit Azure Policy-Definitionsregeln anfügen.
-ms.date: 03/31/2021
+ms.date: 08/17/2021
 ms.topic: how-to
-ms.openlocfilehash: 26fdc6c5b5dd09e77413285a8632d91e580e7162
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: aefa5439e7176457494d6c21ffb9aa79acc4fd3c
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108752631"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351423"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Erstellen von Richtlinien für Arrayeigenschaften für Azure-Ressourcen
 
@@ -236,7 +236,7 @@ Die field-Bedingung weist ein implizites „alle von“-Verhalten auf. Wenn der 
 
 ### <a name="referencing-array-fields"></a>Verweisen auf Arrayfelder
 
-Arrayeigenschaften in Ressourcen werden normalerweise durch zwei unterschiedliche Typen von Aliasen dargestellt. Durch einen „normalen“ Alias und [Arrayaliase](../concepts/definition-structure.md#understanding-the--alias), an die `[*]` angefügt ist:
+Arrayeigenschaften in Ressourcen werden durch zwei unterschiedliche Typen von Aliasen dargestellt. Durch einen „normalen“ Alias und [Arrayaliase](../concepts/definition-structure.md#understanding-the--alias), an die `[*]` angefügt ist:
 
 - `Microsoft.Test/resourceType/stringArray`
 - `Microsoft.Test/resourceType/stringArray[*]`

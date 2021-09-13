@@ -2,19 +2,20 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 07/16/2021
+ms.date: 09/03/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 8f13e768d1265faeb5cf758f74a56ffc96dcb7d6
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 59bbaa4a41df59ba303be3d0f219bf9d68f81f21
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114388698"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123476973"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Azure SignalR Service muss den Zugriff über öffentliche Netzwerke deaktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F21a9766a-82a5-4747-abb5-650b6dbba6d0) |Stellen Sie zum Verbessern der Sicherheit Ihrer Azure SignalR Service-Ressource sicher, dass diese nicht über das öffentliche Internet, sondern nur über einen privaten Endpunkt zugänglich ist. Deaktivieren Sie die Eigenschaft für den Zugriff über öffentliche Netzwerke wie unter [https://aka.ms/asrs/networkacls](../../../../articles/azure-signalr/howto-network-access-control.md) beschrieben. Darüber hinaus werden alle Anmeldungen abgelehnt, die Firewallregeln auf Basis von IP-Adressen oder virtuellen Netzwerken entsprechen. Dadurch wird das Risiko von Datenlecks verringert. |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_PublicNetworkAccessDisabled_AuditDeny.json) |
+|[Für Azure SignalR Service sollten die lokalen Authentifizierungsmethoden deaktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff70eecba-335d-4bbc-81d5-5b17b03d498f) |Das Deaktivieren lokaler Authentifizierungsmethoden verbessert die Sicherheit, da hierdurch sichergestellt wird, dass Azure SignalR Service ausschließlich Azure Active Directory-Identitäten für die Authentifizierung anfordert. |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_DisableLocalAuth_AuditDeny.json) |
 |[Azure SignalR Service muss eine SKU mit Private Link-Unterstützung verwenden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F464a1620-21b5-448d-8ce6-d4ac6d1bc49a) |Mit Azure Private Link können Sie Ihr virtuelles Netzwerk mit Azure-Diensten verbinden, ohne dass eine öffentliche IP-Adresse an der Quelle oder am Ziel vorhanden ist. Auf diese Weise werden Ihre Ressourcen vor dem Risiko von Datenlecks geschützt. Die Richtlinie ist auf SKUs für Azure SignalR Service beschränkt, die Private Link unterstützen. Weitere Informationen zu privaten Verbindungen finden Sie unter [https://aka.ms/asrs/privatelink](../../../../articles/azure-signalr/howto-private-endpoints.md). |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_AllowedSKU_AuditDeny.json) |
 |[Azure SignalR Service muss Private Link verwenden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F53503636-bcc9-4748-9663-5348217f160f) |Mit Azure Private Link können Sie Ihr virtuelles Netzwerk mit Azure-Diensten verbinden, ohne auf der Quelle oder auf dem Ziel eine öffentliche IP-Adresse zu verwenden. Die Private Link-Plattform verarbeitet die Konnektivität zwischen dem Consumer und den Diensten über das Azure-Backbone-Netzwerk. Indem Sie private Endpunkte nicht dem gesamten Dienst, sondern Ihrer Azure SignalR Service-Ressource zuordnen, wird das Risiko von Datenlecks verringert. Weitere Informationen zu privaten Verbindungen finden Sie unter [https://aka.ms/asrs/privatelink](../../../../articles/azure-signalr/howto-private-endpoints.md). |Audit, Deny, Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_PrivateEndpointEnabled_Audit.json) |
 |[Private Endpunkte für Azure SignalR Service konfigurieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fef45854f-b33f-49a3-8041-9057e915d88f) |Private Endpunkte verbinden Ihr virtuelles Netzwerk ohne eine öffentliche IP-Adresse an Quelle oder Ziel mit Azure-Diensten. Durch das Zuordnen privater Endpunkte zu Azure SignalR Service-Ressourcen können Sie das Risiko von Datenlecks verringern. Weitere Informationen finden Sie unter [https://aka.ms/asrs/privatelink](../../../../articles/azure-signalr/howto-private-endpoints.md). |DeployIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_PrivateEndpointEnabled_DeployIfNotExists.json) |

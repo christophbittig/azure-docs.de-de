@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: bagol
-ms.openlocfilehash: a02be0938b1ab925fb0343351ce1c414cc59c615
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 82d406521ad534c77fc48c095631e07a74bfd080
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044837"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122356482"
 ---
 # <a name="audit-azure-sentinel-queries-and-activities"></a>Überwachen von Azure Sentinel-Abfragen und -Aktivitäten
 
@@ -226,8 +226,35 @@ LAQueryLogs
 ```
 
 
+## <a name="monitor-azure-sentinel-with-workbooks-rules-and-playbooks"></a>Überwachen von Azure Sentinel mit Arbeitsmappen, Regeln und Playbooks
+
+Verwenden Sie die eigenen Features von Azure Sentinel, um Ereignisse und Aktionen zu überwachen, die in Azure Sentinel auftreten.
+
+- **Überwachen mit Arbeitsmappen**. Die folgenden Arbeitsmappen wurden zum Überwachen der Arbeitsbereichsaktivität erstellt:
+
+    - **Arbeitsbereichsüberwachung**. Enthält Informationen darüber, welche Benutzer in der Umgebung Aktionen ausführen, welche Aktionen sie ausgeführt haben und mehr.
+    - **Analyseeffizienz**. Bietet Erkenntnisse darüber, welche Analyseregeln verwendet, welche MITRE-Taktiken am häufigsten behandelt und welche Incidents aus den Regeln generiert werden.
+    - **Effizienz von Sicherheitsvorgängen**. Zeigt Metriken zur Leistung des SOC-Teams, geöffneten Incidents, geschlossenen Incidents und mehr an. Diese Arbeitsmappe kann verwendet werden, um die Leistung des Teams zu zeigen und alle möglicherweise fehlenden, Aufmerksamkeit erfordernden Bereiche hervorzuheben.
+    - **Überwachung der Datenerfassungsintegrität**. Hilft bei der Suche nach angehaltenen oder beendeten Erfassungen. 
+
+    Weitere Informationen finden Sie unter [Häufig verwendete Azure Sentinel-Arbeitsmappen](top-workbooks.md).
+
+- **Achten auf Erfassungsverzögerungen**.  Wenn Sie Bedenken wegen der Erfassungsverzögerung haben, [legen Sie eine Variable in einer Analyseregel fest](https://techcommunity.microsoft.com/t5/azure-sentinel/handling-ingestion-delay-in-azure-sentinel-scheduled-alert-rules/ba-p/2052851), um die Verzögerung darzustellen. 
+
+    Die folgende Analyseregel kann beispielsweise dazu beitragen, sicherzustellen, dass die Ergebnisse keine Duplikate enthalten, und dass Protokolle beim Ausführen der Regeln nicht ignoriert werden:
+
+    ```kusto
+    let ingestion_delay= 2min;let rule_look_back = 5min;CommonSecurityLog| where TimeGenerated >= ago(ingestion_delay + rule_look_back)| where ingestion_time() > (rule_look_back)
+    -   Calculating ingestion delay
+    CommonSecurityLog| extend delay = ingestion_time() - TimeGenerated| summarize percentiles(delay,95,99) by DeviceVendor, DeviceProduct
+    ```
+
+    Weitere Informationen finden Sie unter [Automatisierung der Vorfallbehandlung in Azure Sentinel mit Automatisierungsregeln](automate-incident-handling-with-automation-rules.md).
+
+- **Überwachen Sie die Integrität des Datenconnectors** mithilfe des Playbooks [Connector Health Push Notification Solution](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Send-ConnectorHealthStatus) (Pushbenachrichtigungslösung zur Connectorintegrität), um auf eine angehaltene oder beendete Erfassung zu achten und Benachrichtigungen zu senden, wenn ein Connector das Erfassen von Daten beendet hat oder Computer die Berichterstellung beendet haben.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Verwenden Sie in Azure Sentinel die Arbeitsmappe **Arbeitsbereichsüberwachung**, um die Aktivitäten in Ihrer SOC-Umgebung zu überwachen.
 
-Weitere Informationen finden Sie unter [Tutorial: Visualisieren und Überwachen Ihrer Daten](tutorial-monitor-your-data.md).
+Weitere Informationen finden Sie unter [Visualisieren und Überwachen Ihrer Daten](monitor-your-data.md).
