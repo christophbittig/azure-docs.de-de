@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 04/09/2021
+ms.date: 06/17/2021
 ms.author: cshoe
-ms.openlocfilehash: 693a102c988d87dc4ed6ac9f0f4cb2176ec78ca5
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 210618ba5c49fbe0e53bd5b3fb2fe808b6b6aa03
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112059992"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346072"
 ---
 # <a name="configure-azure-static-web-apps"></a>Konfigurieren von Azure Static Web Apps
 
@@ -25,13 +25,16 @@ Die Konfiguration für Azure Static Web Apps erfolgt in der Datei _staticwebapp.
 - Außerkraftsetzungen von HTTP-Antworten
 - Globale HTTP-Headerdefinitionen
 - Benutzerdefinierte MIME-Typen
+- Netzwerk
 
 > [!NOTE]
 > Die Datei [_routes.json_](https://github.com/Azure/static-web-apps/wiki/routes.json-reference-(deprecated)), die bisher für die Konfiguration des Routings genutzt wurde, wurde als veraltet eingestuft. Verwenden Sie _staticwebapp.config.json_ gemäß der Beschreibung in diesem Artikel, um das Routing und andere Einstellungen für Ihre statische Web-App zu konfigurieren.
+> 
+> In diesem Dokument wird Azure Static Web Apps behandelt – ein eigenständiges Produkt, das nicht zum [Hosten von statischen Websites in Azure Storage](../storage/blobs/storage-blob-static-website.md) gehört.
 
 ## <a name="file-location"></a>Dateispeicherort
 
-Der für die Datei _staticwebapp.config.json_ empfohlene Speicherort ist der Ordner, der in der [Workflowdatei](./github-actions-workflow.md) als `app_location` festgelegt wurde. Die Datei kann jedoch an einem beliebigen Ort im Quellcodeordner Ihrer Anwendung abgelegt werden.
+Der für die Datei _staticwebapp.config.json_ empfohlene Speicherort ist der Ordner, der in der [Workflowdatei](./github-actions-workflow.md) als `app_location` festgelegt wurde. Die Datei kann jedoch in einem beliebigen Unterordner innerhalb des als `app_location` festgelegten Ordners platziert werden.
 
 Details finden Sie unter [Beispielkonfigurationsdatei](#example-configuration-file).
 
@@ -76,9 +79,9 @@ Jede Eigenschaft hat in der Anforderungs-/Antwortpipeline einen bestimmten Zweck
 
 ## <a name="securing-routes-with-roles"></a>Schützen von Routen mit Rollen
 
-Routen werden durch Hinzufügen eines oder mehrerer Rollennamen zum Array `allowedRoles` einer Regel abgesichert. Benutzer werden benutzerdefinierten Rollen über [Einladungen](./authentication-authorization.md) zugeordnet. Beispiele der Nutzung finden Sie unter [Beispielkonfigurationsdatei](#example-configuration-file).
+Routen werden geschützt, indem dem Array `allowedRoles` einer Regel mindestens ein Rollenname hinzugefügt wird. Beispiele der Nutzung finden Sie unter [Beispielkonfigurationsdatei](#example-configuration-file).
 
-Standardmäßig gehört jeder Benutzer zur integrierten Rolle `anonymous`, und alle angemeldeten Benutzer sind Mitglieder der Rolle `authenticated`.
+Standardmäßig gehört jeder Benutzer zur integrierten Rolle `anonymous`, und alle angemeldeten Benutzer sind Mitglieder der Rolle `authenticated`. Optional werden Benutzer über [Einladungen](./authentication-authorization.md) benutzerdefinierten Rollen zugeordnet.
 
 Wenn Sie eine Route beispielsweise nur auf authentifizierte Benutzer beschränken möchten, fügen Sie die integrierte Rolle `authenticated` dem Array `allowedRoles` hinzu.
 
@@ -149,7 +152,17 @@ Gängige Anwendungsfälle für Platzhalterrouten sind z. B.:
 
 Single-Page-Anwendungen basieren häufig auf clientseitigem Routing. Diese clientseitigen Routingregeln aktualisieren den Fensterspeicherort des Browsers, ohne Anforderungen zurück an den Servern zu senden. Wenn Sie die Seite aktualisieren oder direkt zu URLs navigieren, die mit clientseitigen Routingregeln generiert wurden, ist eine serverseitige Fallbackroute erforderlich, um die richtige HTML-Seite bereitzustellen (die im Allgemeinen für Ihre clientseitige App _index.html_ ist).
 
-Sie können Ihre Anwendung so konfigurieren, dass sie Regeln verwendet, die eine Fallbackroute implementieren, wie im folgenden Beispiel gezeigt, in dem ein Pfadplatzhalter mit Dateifilter verwendet wird:
+Sie können eine Fallbackregel definieren, indem Sie einen Abschnitt vom Typ `navigationFallback` hinzufügen. Im folgenden Beispiel wird _/index.html_ für alle statischen Dateianforderungen zurückgegeben, die keiner bereitgestellten Datei entsprechen.
+
+```json
+{
+  "navigationFallback": {
+    "rewrite": "/index.html"
+  }
+}
+```
+
+Sie können einen Filter definieren, um zu steuern, für welche Anforderungen die Fallbackdatei zurückgegeben wird. Im folgenden Beispiel werden Anforderungen für bestimmte Routen im Ordner _/images_ und alle Dateien im Ordner _/css_ von der Rückgabe der Fallbackdatei ausgeschlossen.
 
 ```json
 {
@@ -184,6 +197,9 @@ Die nachstehende Beispieldateistruktur zeigt, dass die folgenden Ergebnisse mit 
 | _/css/global.css_                                      | Die Stylesheetdatei                                                                                           | `200`              |
 | Alle anderen Dateien außerhalb der Ordner _/images_ und _/css_ | Die Datei _/index.html_                                                                                        | `200`              |
 
+> [!IMPORTANT]
+> Schließen Sie im Falle einer Migration von der veralteten Datei [_routes.json_](https://github.com/Azure/static-web-apps/wiki/routes.json-reference-(deprecated)) die Legacyfallbackroute (`"route": "/*"`) nicht in die [Routingregeln](#routes) ein.
+
 ## <a name="global-headers"></a>Globale Header
 
 Der Abschnitt `globalHeaders` stellt eine Gruppe von [HTTP-Headern](https://developer.mozilla.org/docs/Web/HTTP/Headers) bereit, die auf jede Antwort angewendet werden, es sei denn, sie werden durch eine Regel für [Routenheader](#route-headers) überschrieben. Andernfalls wird die Vereinigung sowohl der Header aus der Route als auch der globalen Header zurückgegeben.
@@ -217,24 +233,44 @@ Die folgende Beispielkonfiguration zeigt, wie Sie einen Fehlercode überschreibe
 {
   "responseOverrides": {
     "400": {
-      "rewrite": "/invalid-invitation-error.html",
-      "statusCode": 200
+      "rewrite": "/invalid-invitation-error.html"
     },
     "401": {
       "statusCode": 302,
       "redirect": "/login"
     },
     "403": {
-      "rewrite": "/custom-forbidden-page.html",
-      "statusCode": 200
+      "rewrite": "/custom-forbidden-page.html"
     },
     "404": {
-      "rewrite": "/custom-404.html",
-      "statusCode": 200
+      "rewrite": "/custom-404.html"
     }
   }
 }
 ```
+
+## <a name="networking"></a>Netzwerk
+
+Der Abschnitt `networking` dient zum Steuern der Netzwerkkonfiguration Ihrer statischen Web-App. Wenn Sie den Zugriff auf Ihre App einschränken möchten, geben Sie in `allowedIpRanges` eine Liste zulässiger IP-Adressblöcke an.
+
+> [!NOTE]
+> Die Netzwerkkonfiguration ist nur im Standardplan für Azure Static Web Apps verfügbar.
+
+Definieren Sie jeden IPv4-Adressblock in CIDR-Notation (Classless Inter-Domain Routing). Weitere Informationen zur CIDR-Notation finden Sie unter [Classless Inter-Domain Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). Jeder IPv4-Adressblock kann entweder einen öffentlichen oder einen privaten Adressraum darstellen. Wenn Sie nur Zugriff über eine einzelne IP-Adresse zulassen möchten, können Sie den CIDR-Block `/32` verwenden.
+
+```json
+{
+  "networking": {
+    "allowedIpRanges": [
+      "10.0.0.0/24",
+      "100.0.0.0/32",
+      "192.168.100.0/22"
+    ]
+  }
+}
+```
+
+Bei Angabe mindestens eines IP-Adressblocks wird Anforderungen, die von IP-Adressen stammen, die keinem Wert in `allowedIpRanges` entsprechen, der Zugriff verweigert.
 
 ## <a name="example-configuration-file"></a>Beispielkonfigurationsdatei
 
@@ -345,7 +381,7 @@ Die folgende Beispielkonfiguration zeigt, wie Sie einen Fehlercode überschreibe
 
 ## <a name="restrictions"></a>Beschränkungen
 
-Die folgenden Einschränkungen gelten für die Datei _staticwebapps.config.json_.
+Die folgenden Einschränkungen gelten für die Datei _staticwebapp.config.json_:
 
 - Maximale Dateigröße: 100 KB
 - Maximal 50 verschiedene Rollen

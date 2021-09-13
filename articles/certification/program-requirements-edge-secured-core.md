@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: Edge Secured-core Certification Requirements
 ms.service: certification
-ms.openlocfilehash: 6a4e969c592e844164d2f031914740e24fdc8f99
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 81e9bc60a7749cdc155fc6997c198e834476dbf0
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111540257"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113031929"
 ---
 # <a name="edge-secured-core-certification-requirements-preview"></a>Edge Secured-Core: Zertifizierungsanforderungen (Vorschau) #
 
@@ -49,7 +49,7 @@ Edge Secured-Core ist eine inkrementelle Zertifizierung im Azure Certified Devic
 |Gilt für|Jedes Gerät|
 |Betriebssystem|Agnostisch|
 |Überprüfungstyp|Manuell/Tools|
-|Überprüfen|Das Gerät muss über das Toolset validiert werden, um sicherzustellen, dass die Speicherverschlüsselung aktiviert ist und der Standardalgorithmus XTS-AES mit einer Schlüssellänge von 128 Bit oder höher ist.|
+|Überprüfen|Das Gerät muss über das Toolset validiert werden, um sicherzustellen, dass die Speicherverschlüsselung aktiviert ist und der Standardalgorithmus XTS-AES mit einer Schlüssellänge von 128 Bit oder höher ist. </br></br>Hinweis: In der Vorschauversion vom Juni 2021 wird nur überprüft, ob DM-Crypt auf dem Gerät installiert ist und ob das Gerät über eine verschlüsselte Partition verfügt.|
 |Ressourcen||
 
 ---
@@ -85,7 +85,7 @@ Edge Secured-Core ist eine inkrementelle Zertifizierung im Azure Certified Devic
 |Gilt für|Jedes Gerät|
 |Betriebssystem|Agnostisch|
 |Überprüfungstyp|Manuell/Tools|
-|Überprüfen|Bestätigung des Partners, dass er ein Update über Microsoft Update, Azure Device Update oder andere genehmigte Dienste an das Gerät senden konnte.|
+|Überprüfen|Bestätigung des Partners, dass er ein Update über Microsoft Update an das Gerät senden konnte. Weitere Informationen finden Sie unter [Device Update for IoT Hub (ADU)](../iot-hub-device-update/understand-device-update.md). Bei Linux-Geräten, die Device Update for IoT Hub verwenden, müssen zur Zertifizierung beim Testprozess für den geschützten Kern eine SWU-Updatedatei sowie gerätespezifische Informationen für den Zertifizierungsdienst bereitgestellt werden, um eine [Updatemanifestdatei](../iot-hub-device-update/update-manifest.md) zu generieren.|
 |Ressourcen|[Device Update für IoT Hub](../iot-hub-device-update/index.yml)|
 
 ---
@@ -182,7 +182,7 @@ Edge Secured-Core ist eine inkrementelle Zertifizierung im Azure Certified Devic
 |Gilt für|Jedes Gerät|
 |Betriebssystem|Agnostisch|
 |Überprüfungstyp|Manuell/Tools|
-|Überprüfen|Das Gerät muss durch das Toolset validiert werden, um sicherzustellen, dass die Firmware- und Kernel-Signaturen bei jedem Start des Geräts validiert werden. <ul><li>UEFI: Sicherer Start ist aktiviert</li><li>Uboot: Überprüfter Start ist aktiviert</li></ul>|
+|Überprüfen|Das Gerät muss durch das Toolset validiert werden, um sicherzustellen, dass die Firmware- und Kernel-Signaturen bei jedem Start des Geräts validiert werden. <ul><li>UEFI: Sicherer Start ist aktiviert</li><li>Uboot: Überprüfter Start ist aktiviert</li></ul> </br> </br>Hinweis: In der Vorschauversion vom Juni 2021 wird nur das Vorhandensein von UEFI überprüft.|
 |Ressourcen||
 
 ---

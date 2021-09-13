@@ -4,22 +4,22 @@ description: Herstellen einer privaten Verbindung mit einer Web-App mithilfe ein
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 04/27/2021
+ms.date: 07/01/2021
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 6bb8343ae6281120d8bfef549946f47d8658cbba
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: da26939d6973792c237c84777daf2254ae27699d
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111890157"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113105631"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>Verwenden von Private Endpoint für eine Azure-Web-App
 
 > [!IMPORTANT]
-> Private Endpoint ist für Windows- und Linux-Web-Apps ggf. in Containern verfügbar und wird unter den folgenden App Service-Plänen gehostet: **Isolated**, **PremiumV2**, **PremiumV3**, **Functions Premium** (gelegentlich als elastischer Premium-Plan bezeichnet). 
+> Der private Endpunkt ist für Windows- und Linux-Web-Apps unabhängig von der Containerisierung verfügbar und wird unter den folgenden App Service-Plänen gehostet: **PremiumV2**, **PremiumV3**, **Functions Premium** (gelegentlich als elastischer Premium-Plan bezeichnet). 
 
 Sie können private Endpunkte für Ihre Azure-Web-App verwenden, um Clients in Ihrem privaten Netzwerk den sicheren Zugriff auf die App über Private Link zu ermöglichen. Der private Endpunkt verwendet eine IP-Adresse aus dem Adressraum Ihres virtuellen Azure-Netzwerks. Der Netzwerkdatenverkehr zwischen einem Client in Ihrem privaten Netzwerk und der Web-App wird über das virtuelle Netzwerk und Private Link im Microsoft-Backbonenetzwerk geleitet, sodass keine Verfügbarmachung im öffentlichen Internet erfolgt.
 
@@ -38,6 +38,8 @@ Weitere Informationen finden Sie unter [Dienstendpunkte][serviceendpoint].
 Ein privater Endpunkt ist eine spezielle Netzwerkschnittstelle (NIC, Netzwerkadapter) für Ihre Azure-Web-App in einem Subnetz in Ihrem virtuellen Netzwerk (VNet).
 Wenn Sie einen privaten Endpunkt für Ihre Web-App erstellen, stellt dieser eine sichere Verbindung zwischen Clients in Ihrem privaten Netzwerk und Ihrer Web-App bereit. Dem privaten Endpunkt wird eine IP-Adresse aus dem IP-Adressbereich Ihres VNet zugewiesen.
 Für die Verbindung zwischen dem privaten Endpunkt und der Web-App wird ein sicherer [Private Link][privatelink] verwendet. Der private Endpunkt wird nur für eingehende Flows in Ihre Web-App verwendet. Ausgehende Flows verwenden diesen privaten Endpunkt nicht, aber Sie können ausgehende Flows über die [VNet-Integrationsfunktion][vnetintegrationfeature] in Ihr Netzwerk in einem anderen Subnetz einfügen.
+
+Jeder Slot einer App wird separat konfiguriert. Sie können bis zu 100 private Endpunkte pro Slot einrichten. Ein privater Endpunkt kann nicht gemeinsam von mehreren Slots verwendet werden.
 
 Das Subnetz, in dem Sie den privaten Endpunkt einbinden, kann über andere Ressourcen verfügen. Sie benötigen also kein dediziertes leeres Subnetz.
 Sie können den privaten Endpunkt auch in einer anderen Region als der der Web-App bereitstellen. 
@@ -61,6 +63,7 @@ In den Web-HTTP-Protokollen Ihrer Web-App finden Sie die Clientquell-IP. Dieses 
   > [!div class="mx-imgBorder"]
   > ![Privater Web-App-Endpunkt – globale Übersicht](media/private-endpoint/global-schema-web-app.png)
 
+
 ## <a name="dns"></a>DNS
 
 Wenn Sie einen privaten Endpunkt für die Web-App verwenden, muss die angeforderte URL dem Namen Ihrer Web-App entsprechen. Der Standardname lautet mywebappname.azurewebsites.net.
@@ -68,7 +71,7 @@ Wenn Sie einen privaten Endpunkt für die Web-App verwenden, muss die angeforder
 Standardmäßig ist der öffentliche Name Ihrer Web-App ohne einen privaten Endpunkt ein kanonischer Name für den Cluster.
 Der Name wird beispielsweise wie folgt aufgelöst:
 
-|Name |Typ |Wert |
+|Name |type |Wert |
 |-----|-----|------|
 |mywebapp.azurewebsites.net|CNAME|clustername.azurewebsites.windows.net|
 |clustername.azurewebsites.windows.net|CNAME|cloudservicename.cloudapp.net|
@@ -78,7 +81,7 @@ Der Name wird beispielsweise wie folgt aufgelöst:
 Wenn Sie einen privaten Endpunkt bereitstellen, wird der DNS-Eintrag so aktualisiert, dass er auf den kanonischen Namen mywebapp.privatelink.azurewebsites.net verweist.
 Der Name wird beispielsweise wie folgt aufgelöst:
 
-|Name |Typ |Wert |Anmerkung |
+|Name |type |Wert |Anmerkung |
 |-----|-----|------|-------|
 |mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
 |mywebapp.privatelink.azurewebsites.net|CNAME|clustername.azurewebsites.windows.net|
@@ -89,7 +92,7 @@ Sie müssen einen privaten DNS-Server oder eine private Azure DNS-Zone einrichte
 Die DNS-Zone, die Sie erstellen müssen, ist: **privatelink.azurewebsites.net**. Registrieren Sie den Eintrag für Ihre Web-App mit einem A-Eintrag und der IP des privaten Endpunkts.
 Der Name wird beispielsweise wie folgt aufgelöst:
 
-|Name |Typ |Wert |Anmerkung |
+|Name |type |Wert |Anmerkung |
 |-----|-----|------|-------|
 |mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|<--Azure erstellt diesen Eintrag im öffentlichen Azure-DNS, um die App auf die private Verbindung zu verweisen. Dies wird von uns verwaltet.|
 |mywebapp.privatelink.azurewebsites.net|Ein|10.10.10.8|<– Sie verwalten diesen Eintrag in Ihrem DNS-System, sodass er auf die IP-Adresse Ihres privaten Endpunkts verweist|
@@ -101,7 +104,7 @@ Wenn Sie einen benutzerdefinierten DNS-Namen verwenden müssen, müssen Sie den 
 
 Für die Kudu-Konsole oder die Kudu-REST-API (z. B. zusammen mit selbstgehosteten DevOps-Agents bereitgestellt) müssen Sie zwei Einträge in Ihrer privaten Azure DNS-Zone oder auf Ihrem benutzerdefinierten DNS-Server erstellen. 
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 |-----|-----|-----|
 | mywebapp.privatelink.azurewebsites.net | Ein | PrivateEndpointIP | 
 | mywebapp.scm.privatelink.azurewebsites.net | Ein | PrivateEndpointIP | 
@@ -121,8 +124,6 @@ Sie können bis zu 100 private Endpunkte mit einer bestimmten Web-App verbinden
 Die Funktion „Remotedebuggen“ ist nicht verfügbar, wenn Private Endpoint für die Web-App aktiviert wurde. Daher wird empfohlen, den Code für ein Einschubfach bereitzustellen und dort ein Remotedebugging durchzuführen.
 
 FTP-Zugriff wird über die eingehende öffentliche IP-Adresse gewährt. Der private Endpunkt unterstützt keinen FTP-Zugriff auf die Web-App.
-
-Es gibt eine bekannte Einschränkung, die sich auf private Endpunkte und das Datenverkehrsrouting mit Slots (auch als [Test-in-Produktion][TiP]-Feature (TiP) bekannt) auswirkt. Ab April 2021 führt das automatische und manuelle Anforderungsrouting zwischen Slots zu „403 Zugriff verweigert“. Diese Einschränkung wird in einer späteren Version aufgehoben.
 
 Wir verbessern regelmäßig die Funktionen private Verbindung (Private Link) und privater Endpunkt. Aktuelle Informationen zu Einschränkungen finden Sie in [diesem Artikel][pllimitations].
 

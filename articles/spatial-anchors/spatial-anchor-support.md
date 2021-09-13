@@ -8,33 +8,33 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: troubleshooting
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f47f07fee70d2fc0ee445c6788a8ccb522b7774e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9c5b35e84d0e16b70b4abba8f784ba9c779c0169
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95494708"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112380120"
 ---
 # <a name="azure-spatial-anchors-support-options"></a>Supportoptionen für Azure Spatial Anchors
 
 ## <a name="open-a-tech-support-ticket"></a>Öffnen eines technischen Supporttickets
 
-So öffnen Sie ein technisches Supportticket für Azure Spatial Anchors im Azure-Portal
+So erstellen Sie ein technisches Supportticket für Azure Spatial Anchors im Azure-Portal:
 
 1. Wählen Sie im [Azure-Portal](https://azure.microsoft.com/account/) auf der oberen Menüleiste das Symbol „Hilfe“ und dann die Schaltfläche **Hilfe und Support** aus.
 
-![Azure-Portal: Hilfe und Support](./media/spatial-anchor-support.png)
+   ![Azure-Portal: Hilfe und Support](./media/spatial-anchor-support.png)
 
 1. Wählen Sie auf der Seite „Hilfe und Support“ die Option **+ Neue Supportanfrage** aus.
 
-![Azure-Portal: Neue Supportanfrage](./media/spatial-anchor-support2.png)
+   ![Azure-Portal: Neue Supportanfrage](./media/spatial-anchor-support2.png)
 
 1. Beim Ausfüllen der Felder im Supportticket:
 
-- Problemtyp: Technisch
-- Dienst: Spatial Anchors
+   - Problemtyp: Technisch
+   - Dienst: Spatial Anchors
 
-![Felder im Supportticket im Azure-Portal](./media/spatial-anchor-support3.png)
+   ![Felder im Supportticket im Azure-Portal](./media/spatial-anchor-support3.png)
 
 ## <a name="community-support"></a>Communityunterstützung
 
@@ -50,4 +50,4 @@ Als Feedback können Sie eine Idee oder Anregung für den Azure Spatial Anchors-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Häufig gestellte Fragen zu Azure Spatial Anchors finden Sie auf der Seite [FAQ](spatial-anchor-faq.md).
+Häufig gestellte Fragen zu Azure Spatial Anchors finden Sie auf der Seite [FAQ](spatial-anchor-faq.yml).

@@ -9,12 +9,13 @@ ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: d440940d98b33ae5906fe5a4a112939682196e57
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.custom: has-adal-ref
+ms.openlocfilehash: 1b69aed711100eead6e7669c7d57e2f8faac25ad
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110467410"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429182"
 ---
 # <a name="manage-python-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Verwalten von Python-Bibliotheken für Apache Spark in Azure Synapse Analytics
 
@@ -42,7 +43,7 @@ Es gibt zwei Hauptmethoden zum Installieren einer Bibliothek auf einem Cluster:
 > [!IMPORTANT]
 > - Wenn das Paket, das Sie installieren, groß ist oder seine Installation lange dauert, wirkt sich dies auf die Startzeit der Spark-Instanz aus.
 > - Das Ändern der Version von PySpark, Python, Scala/Java, .NET oder Spark wird nicht unterstützt.
-> - Das Installieren von Paketen aus externen Repositorys wie PyPI, Conda-Forge oder den standardmäßigen Conda-Kanälen wird in DEP-fähigen Arbeitsbereichen nicht unterstützt.
+> - Das Installieren von Paketen aus externen Repositorys wie PyPI, Conda-Forge oder den Conda-Standardkanälen wird in DEP-fähigen Arbeitsbereichen (Data Exfiltration Protection, Schutz vor Datenexfiltration) nicht unterstützt.
 
 ### <a name="install-python-packages"></a>Installieren von Python-Paketen
 Python-Pakete können aus Repositorys wie PyPI und Conda-Forge durch Bereitstellen einer Umgebungsspezifikationsdatei installiert werden. 
@@ -52,7 +53,7 @@ Python-Pakete können aus Repositorys wie PyPI und Conda-Forge durch Bereitstell
 ##### <a name="pip-requirementstxt"></a>PIP-Datei „requirements.txt“
 Sie können eine Datei *requirements.txt* (Ausgabe des Befehls `pip freeze`) verwenden, um ein Upgrade der Umgebung durchzuführen. Bei der Aktualisierung eines Pools werden die in dieser Datei aufgeführten Pakete aus PyPI heruntergeladen. Die vollständigen Abhängigkeiten werden dann zwischengespeichert und zur späteren Wiederverwendung des Pools gespeichert. 
 
-Der folgende Codeausschnitt zeigt das Format für die Anforderungsdatei. Der Name des PyPI-Pakets wird zusammen mit einer exakten Version aufgeführt. Diese Datei hält das Format ein, das in der Referenzdokumentation zu [pip freeze](https://pip.pypa.io/en/stable/reference/pip_freeze/) beschrieben wird. 
+Der folgende Codeausschnitt zeigt das Format für die Anforderungsdatei. Der Name des PyPI-Pakets wird zusammen mit einer exakten Version aufgeführt. Diese Datei hält das Format ein, das in der Referenzdokumentation zu [pip freeze](https://pip.pypa.io/en/stable/cli/pip_freeze/) beschrieben wird. 
 
 Dieses Beispiel verwendet eine bestimmte Version. 
 ```

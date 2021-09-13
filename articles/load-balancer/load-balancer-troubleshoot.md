@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: cddaf1bde84d7e60eb59bd4c58c65fa889e06ae3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ab256d58284e79323b988b2b81f4c664fa3fc16
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98028810"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114456666"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Beheben von Problemen mit Azure Load Balancer
 
@@ -35,7 +35,7 @@ Wenn die externen Clients für die Back-End-VMs den Load Balancer durchlaufen, w
 
 **Überprüfung und Lösung**
 
-Standard-ILBs sind **standardmäßig sicher**. Basic-ILBs erlaubten eine Verbindung mit dem Internet über eine *ausgeblendete* öffentliche IP-Adresse. Dies wird für Produktionsworkloads nicht empfohlen, da die IP-Adresse weder statisch noch über Netzwerksicherheitsgruppen in Ihrem Besitz gesperrt ist. Wenn Sie vor Kurzem von einem Basic-ILB zu einem Standard-ILB gewechselt sind, sollten Sie eine öffentliche IP-Adresse explizit über die Konfiguration [Nur ausgehend](egress-only.md) erstellen, die die IP-Adresse über Netzwerksicherheitsgruppen sperrt. Sie können in Ihrem Subnetz auch eine [NAT Gateway](../virtual-network/nat-overview.md)-Instanz verwenden.
+Standard-ILBs sind **standardmäßig sicher**. Basic-ILBs erlaubten eine Verbindung mit dem Internet über eine *verborgene* öffentliche IP-Adresse (Standard-IP-Adresse für den ausgehenden Zugriff). Dies wird für Produktionsworkloads nicht empfohlen, da die IP-Adresse weder statisch noch über Netzwerksicherheitsgruppen in Ihrem Besitz gesperrt ist. Wenn Sie vor Kurzem von einem Basic-ILB zu einem Standard-ILB gewechselt sind, sollten Sie eine öffentliche IP-Adresse explizit über die Konfiguration [Nur ausgehend](egress-only.md) erstellen, die die IP-Adresse über Netzwerksicherheitsgruppen sperrt. Sie können in Ihrem Subnetz auch eine [NAT Gateway](../virtual-network/nat-gateway/nat-overview.md)-Instanz verwenden. NAT Gateway ist die empfohlene Lösung für ausgehenden Datenverkehr.
 
 ## <a name="cant-change-backend-port-for-existing-lb-rule-of-a-load-balancer-that-has-virtual-machine-scale-set-deployed-in-the-backend-pool"></a>Der Back-End-Port für die vorhandene LB-Regel eines Lastenausgleichs, der eine VM-Skalierungsgruppe im Back-End-Pool bereitgestellt hat, kann nicht geändert werden.
 

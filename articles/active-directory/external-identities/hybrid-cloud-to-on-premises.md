@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8ac1d8d10407347dac5889e9270e623e0abbeb9
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: efe7a8d1969f457a70326edb99652eb8f25d27b8
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968509"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113213883"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Gewähren des Zugriffs auf lokale Anwendungen für B2B-Benutzer in Azure AD
 
@@ -24,16 +24,17 @@ Wenn Ihr Unternehmen Funktionen der Azure Active Directory B2B-Zusammenarbeit (A
 
 ## <a name="access-to-saml-apps"></a>Zugriff auf SAML-Apps
 
-Wenn Ihre lokalen Apps die SAML-basierte Authentifizierung verwenden, können Sie diese Apps ganz einfach über das Azure-Portal für Ihre Benutzer in Azure AD B2B-Zusammenarbeit verfügbar machen.
+Wenn Ihre lokalen Apps die SAML-basierte Authentifizierung verwenden, können Sie diese Apps ganz einfach über das Azure-Portal mithilfe eines Azure AD-Anwendungsproxys für Ihre Benutzer für Azure AD B2B-Zusammenarbeit verfügbar machen.
 
-Dazu müssen Sie die folgenden zwei Schritte ausführen:
+Führen Sie folgende Schritte aus:
 
-- Integrieren Sie die App unter Verwendung von SAML, wie unter [Konfigurieren des SAML-basierten einmaligen Anmeldens](../manage-apps/configure-saml-single-sign-on.md) beschrieben. Notieren Sie unbedingt den Wert, den Sie für **Anmelde-URL** angeben.
--  Verwenden Sie den Azure AD-Anwendungsproxy, um die lokale App mit **Azure Active Directory** als Authentifizierungsquelle zu veröffentlichen. Anweisungen dazu finden Sie unter [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](../app-proxy/application-proxy-add-on-premises-application.md). 
+- Aktivieren des Anwendungsproxy und Installieren eines Connectors. Anweisungen dazu finden Sie unter [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](../app-proxy/application-proxy-add-on-premises-application.md).
+- Veröffentlichen der lokalen SAML-basierten Anwendung über einen Azure AD-Anwendungsproxy. Befolgen Sie dazu die Anweisungen unter [SAML-SSO (Single Sign-On, einmaliges Anmelden) für lokale Anwendungen mit dem Anwendungsproxy](../app-proxy/application-proxy-configure-single-sign-on-on-premises-apps.md).
+- Zuweisen von Azure AD B2B-Benutzern zur SAML-Anwendung
 
-   Verwenden Sie beim Konfigurieren der Einstellung **Interne URL** die Anmelde-URL, die Sie in der Vorlage „Nicht-Kataloganwendung“ angegeben haben. Auf diese Weise können Benutzer außerhalb der Unternehmensgrenzen auf die App zugreifen. Der Anwendungsproxy führt das SAML-basierte einmalige Anmelden für die lokale App aus.
- 
-   ![Zeigt die Einstellungen der lokalen App für die interne URL und Authentifizierung](media/hybrid-cloud-to-on-premises/OnPremAppSettings.PNG)
+Wenn Sie die obigen Schritte abgeschlossen haben, sollte Ihre App betriebsbereit sein. So testen Sie den Azure AD B2B-Zugriff:
+1.  Öffnen Sie einen Browser, und navigieren Sie zur externen URL, die Sie erstellt haben, als Sie die App veröffentlicht haben.
+2.  Melden Sie sich mit dem Azure AD B2B-Konto an, das Sie der App zugewiesen haben. Sie sollten die App öffnen und mit einmaligem Anmelden darauf zugreifen können.
 
 ## <a name="access-to-iwa-and-kcd-apps"></a>Zugriff auf IWA- und KCD-Apps
 

@@ -5,15 +5,15 @@ author: nanditavalsan
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: security
-ms.date: 11/19/2020
+ms.date: 07/14/2021
 ms.author: nanditav
-ms.reviewer: jrasnick
-ms.openlocfilehash: 71249534c6a088088213659b5a45e042229721c7
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.reviewer: jrasnick, wiassaf
+ms.openlocfilehash: cc57f4af28aad79b9348cbbb4e939825daba06ea
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107813180"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114203560"
 ---
 # <a name="encryption-for-azure-synapse-analytics-workspaces"></a>Verschlüsselung für Azure Synapse Analytics-Arbeitsbereiche
 
@@ -49,11 +49,11 @@ Bei der Erstellung können Arbeitsbereiche so konfiguriert werden, dass die dopp
 > [!IMPORTANT]
 > Die Konfigurationseinstellung für die doppelte Verschlüsselung kann nach der Einstellung des Arbeitsbereichs nicht mehr geändert werden.
 
-:::image type="content" source="./media/workspaces-encryption/workspaces-encryption.png" alt-text="In diesem Diagramm sehen Sie die Option, die ausgewählt werden muss, um einen Arbeitsbereich für die doppelte Verschlüsselung mit einem vom Kunden verwalteten Schlüssel zu aktivieren.":::
+:::image type="content" source="./media/workspaces-encryption/workspaces-encryption.png" alt-text="In diesem Diagramm sehen Sie die Option, die ausgewählt werden muss, um einen Arbeitsbereich für die doppelte Verschlüsselung mit einem vom Kunden verwalteten Schlüssel zu aktivieren." lightbox="./media/workspaces-encryption/workspaces-encryption.png":::
 
 ### <a name="key-access-and-workspace-activation"></a>Schlüsselzugriff und Arbeitsbereichsaktivierung
 
-Beim Azure Synapse-Verschlüsselungsmodell mit vom Kunden verwalteten Schlüsseln greift der Arbeitsbereich auf die Schlüssel in Azure Key Vault zu, um nach Bedarf Ver- und Entschlüsselungsvorgänge auszuführen. Die Schlüssel werden dem Arbeitsbereich entweder über eine Zugriffsrichtlinie oder den [Azure Key Vault-RBAC-Zugriff](../../key-vault/general/rbac-guide.md) zugänglich gemacht. Wenn Sie Berechtigungen über eine Azure Key Vault-Zugriffsrichtlinie erteilen, wählen Sie während der Richtlinienerstellung die Option [„Nur Anwendung“](../../key-vault/general/security-features.md#key-vault-authentication-options) aus (wählen Sie die verwaltete Identität des Arbeitsbereichs aus, und fügen Sie diese nicht als autorisierte Anwendung hinzu).
+Beim Azure Synapse-Verschlüsselungsmodell mit vom Kunden verwalteten Schlüsseln greift der Arbeitsbereich auf die Schlüssel in Azure Key Vault zu, um nach Bedarf Ver- und Entschlüsselungsvorgänge auszuführen. Die Schlüssel werden dem Arbeitsbereich entweder über eine Zugriffsrichtlinie oder den [Azure Key Vault-RBAC-Zugriff](../../key-vault/general/rbac-guide.md) zugänglich gemacht. Wenn Sie Berechtigungen über eine Azure Key Vault-Zugriffsrichtlinie erteilen, wählen Sie während der Richtlinienerstellung die Option [Nur Anwendung](../../key-vault/general/security-features.md#key-vault-authentication-options) aus. (Wählen Sie die verwaltete Identität des Arbeitsbereichs aus, und fügen Sie diese nicht als autorisierte Anwendung hinzu.)
 
  Der verwalteten Identität des Arbeitsbereichs müssen die erforderlichen Berechtigungen für den Schlüsseltresor erteilt werden, bevor der Arbeitsbereich aktiviert werden kann. Durch diesen phasenbasierten Ansatz für die Arbeitsbereichsaktivierung wird sichergestellt, dass die Daten im Arbeitsbereich mit dem vom Kunden verwalteten Schlüssel verschlüsselt werden. Beachten Sie, dass die Verschlüsselung für dedizierte SQL-Pools aktiviert oder deaktiviert werden kann. Nicht jeder Pool ist standardmäßig für die Verschlüsselung aktiviert.
 
@@ -68,14 +68,14 @@ Um ruhende Daten verschlüsseln oder entschlüsseln zu können, muss die verwalt
 
 Nachdem Ihr Arbeitsbereich (mit aktivierter doppelter Verschlüsselung) erstellt wurde, behält er den Status „Ausstehend“, bis die Aktivierung erfolgreich ist. Der Arbeitsbereich muss aktiviert werden, damit Sie alle Funktionen vollständig nutzen können. Beispielsweise können Sie erst nach erfolgreicher Aktivierung einen neuen dedizierten SQL-Pool erstellen. Gewähren Sie der verwalteten Identität des Arbeitsbereichs Zugriff auf den Schlüsseltresor, und klicken Sie im Azure-Portal auf dem Arbeitsbereichsbanner auf den Aktivierungslink. Nachdem die Aktivierung erfolgreich abgeschlossen wurde, kann Ihr Arbeitsbereich mit der Gewissheit verwendet werden, dass alle darin enthaltenen Daten durch Ihren vom Kunden verwalteten Schlüssel geschützt sind. Wie bereits erwähnt, muss für den Schlüsseltresor der Löschschutz aktiviert sein, damit die Aktivierung erfolgreich durchgeführt werden kann.
 
-:::image type="content" source="./media/workspaces-encryption/workspace-activation.png" alt-text="In diesem Diagramm ist das Banner mit dem Aktivierungslink für den Arbeitsbereich dargestellt.":::
+:::image type="content" source="./media/workspaces-encryption/workspace-activation.png" alt-text="In diesem Diagramm ist das Banner mit dem Aktivierungslink für den Arbeitsbereich dargestellt." lightbox="./media/workspaces-encryption/workspace-activation.png":::
 
 
 ### <a name="manage-the-workspace-customer-managed-key"></a>Verwalten des vom Kunden verwalteten Schlüssels für den Arbeitsbereich 
 
 Sie können den vom Kunden verwalteten Schlüssel, der zum Verschlüsseln von Daten verwendet wird, im Azure-Portal auf der Seite **Verschlüsselung** ändern. Hier können Sie auch einen neuen Schlüssel mithilfe eines Schlüsselbezeichners auswählen oder einen Schlüssel aus Schlüsseltresoren auswählen, auf die Sie Zugriff haben und die sich in derselben Region befinden wie der Arbeitsbereich. Wenn Sie einen Schlüssel in einem anderen Schlüsseltresor als den zuvor verwendeten auswählen, erteilen Sie der verwalteten Identität des Arbeitsbereichs die Berechtigungen zum Abrufen, Packen und Entpacken von Schlüsseln für den neuen Schlüsseltresor. Der Arbeitsbereich überprüft den Zugriff auf den neuen Schlüsseltresor, und alle Daten im Arbeitsbereich werden mit dem neuen Schlüssel erneut verschlüsselt.
 
-:::image type="content" source="./media/workspaces-encryption/workspace-encryption-management.png" alt-text="In diesem Diagramm sehen Sie den Bereich „Verschlüsselung“ für den Arbeitsbereich im Azure-Portal.":::
+:::image type="content" source="./media/workspaces-encryption/workspace-encryption-management.png" alt-text="In diesem Diagramm sehen Sie den Bereich „Verschlüsselung“ für den Arbeitsbereich im Azure-Portal." lightbox="./media/workspaces-encryption/workspace-encryption-management.png":::
 
 >[!IMPORTANT]
 >Wenn Sie den Verschlüsselungsschlüssel eines Arbeitsbereichs ändern, behalten Sie den Schlüssel bei, bis Sie ihn im Arbeitsbereich durch einen neuen Schlüssel ersetzen. Dies ermöglicht das Entschlüsseln von Daten mit dem alten Schlüssel, bevor sie mit dem neuen Schlüssel erneut verschlüsselt werden.

@@ -1,5 +1,5 @@
 ---
-title: 'Aktualisieren einer IPv4-Anwendung auf IPv6 in Azure Virtual Network: PowerShell'
+title: 'Hinzufügen einer IPv4-Anwendung zu IPv6 in Azure Virtual Network: PowerShell'
 titlesuffix: Azure Virtual Network
 description: In diesem Artikel erfahren Sie, wie Sie IPv6-Adressen für eine vorhandene Anwendung in Azure Virtual Network mit Azure PowerShell bereitstellen.
 services: virtual-network
@@ -14,18 +14,18 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 771d108bc3a3262c46ab13127727eddce2abaeb8
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 5d4982fac67b0d5bde5e0c68f64da634f01a9eab
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110675800"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113435648"
 ---
-# <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell"></a>Aktualisieren einer IPv4-Anwendung auf IPv6 in Azure Virtual Network: PowerShell
+# <a name="add-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell"></a>Hinzufügen einer IPv4-Anwendung zu IPv6 in einem virtuellen Azure-Netzwerk: PowerShell
 
 Dieser Artikel zeigt Ihnen, wie Sie einer vorhandenen IPv4-Anwendung IPv6-Konnektivität in einem virtuellen Azure-Netzwerk mit einem Load Balancer Standard und öffentlicher IP-Adresse hinzufügen. Das direkte Upgrade umfasst Folgendes:
 - IPv6-Adressraum für das virtuelle Netzwerk und das Subnetz
-- Einen Load Balancer Standard mit IPv4- und IPV6-Front-End-Konfigurationen
+- Load Balancer Standard mit IPv4- und IPV6-Front-End-Konfigurationen
 - Virtuelle Computer mit NICs, die sowohl eine IPv4- als auch eine IPv6-Konfiguration besitzen
 - Öffentliche IPv6-IP-Adresse, sodass das Lastenausgleichsmodul über eine internetfähige IPv6-Konnektivität verfügt.
 

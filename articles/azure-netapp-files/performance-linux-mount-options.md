@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/01/2021
 ms.author: b-juche
-ms.openlocfilehash: f62c22c5615b1494ad8c1ebb966db9f1c25a8df7
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 445920e1846e668f0baa3567111f169fd6dd7508
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111441999"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113232518"
 ---
 # <a name="linux-nfs-mount-options-best-practices-for-azure-netapp-files"></a>Einbindungsoptionen für NFS unter Linux: bewährte Methoden für Azure NetApp Files
 
-Erfahren Sie mehr zu Einbindungsoptionen und bewährten Methoden zu ihrer Nutzung mit Azure NetApp Files.
+Dieser Artikel enthält Informationen zum besseren Verständnis von Einbindungsoptionen sowie bewährte Methoden für deren Verwendung mit Azure NetApp Files.
 
 ## `Nconnect` 
 
@@ -36,7 +36,7 @@ Wenn Sie eine SAS-GRID-Umgebung mit mehreren Knoten für die Produktion vorberei
 | Ohne `nconnect` | 8 Stunden |
 | `nconnect=8`  | 5,5 Stunden | 
 
-Bei beiden Testreihen wurden dieselbe E32-8_v4-VM und RHEL 8.3 verwendet, wobei Read-Ahead auf 15 MiB festgelegt war.
+Bei beiden Testreihen wurden der gleiche virtuelle Computer (E32-8_v4) und RHEL 8.3 verwendet, wobei Read-Ahead auf 15 MiB festgelegt war.
 
 Beachten Sie bei Verwenden von `nconnect` die folgenden Regeln:
 
@@ -90,7 +90,7 @@ sudo vi /etc/fstab
 10.23.1.4:/HN1-shared/shared /hana/shared  nfs   rw,vers=4,minorversion=1,hard,timeo=600,rsize=262144,wsize=262144,intr,noatime,lock,_netdev,sec=sys  0  0
 ```
  
-Außerdem wird für SAS Viya beispielsweise eine Lese- und Schreibgröße von 256 KiB empfohlen. [SAS GRID](https://communities.sas.com/t5/Administration-and-Deployment/Azure-NetApp-Files-A-shared-file-system-to-use-with-SAS-Grid-on/m-p/606973/highlight/true#M17740) schränkt `r/wsize` auf 64 KiB ein, während die Leseleistung durch Erhöhen von Read-Ahead für die NFS-Einbindungen verbessert wird.  <!-- For more information on readahead, see the article “NFS Readahead”. --> 
+Außerdem wird für SAS Viya beispielsweise eine Lese- und Schreibgröße von 256 KiB empfohlen. [SAS GRID](https://communities.sas.com/t5/Administration-and-Deployment/Azure-NetApp-Files-A-shared-file-system-to-use-with-SAS-Grid-on/m-p/606973/highlight/true#M17740) beschränkt `r/wsize` auf 64 KiB, während die Leseleistung durch Erhöhen von Read-Ahead für die NFS-Einbindungen verbessert wird. Ausführliche Informationen finden Sie unter [Bewährte Methoden für NFS-Read-Ahead unter Linux für Azure NetApp Files](performance-linux-nfs-read-ahead.md).
 
 Die folgenden Überlegungen gelten für die Verwendung von `rsize` und `wsize`:
 
@@ -138,5 +138,9 @@ Ohne Close-to-Open-Konsistenz (`nocto`) vertraut der Client auf die Aktualität 
 
 ## <a name="next-steps"></a>Nächste Schritte  
 
+* [Bewährte Methoden in Bezug auf direkte E/A unter Linux für Azure NetApp Files](performance-linux-direct-io.md)
+* [Bewährte Methoden in Bezug auf den Linux-Dateisystemcache für Azure NetApp Files](performance-linux-filesystem-cache.md)
 * [Bewährte Methoden für Linux-Parallelität für Azure NetApp Files](performance-linux-concurrency-session-slots.md)
+* [Bewährte Methoden für NFS-Read-Ahead unter Linux](performance-linux-nfs-read-ahead.md)
+* [Bewährte Methoden für SKUs für virtuelle Azure-Computer](performance-virtual-machine-sku.md) 
 * [Leistungsbenchmarks für Linux](performance-benchmarks-linux.md) 

@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: mathoma
 ms.date: 3/23/2021
-ms.openlocfilehash: 7de0db8245908e8342abbbe6a8f7cc4f2359e7f5
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: a697c0a3095963760d6a95159790c02cbab14d71
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112017863"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112121628"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>Planen von Azure-Wartungsereignissen in Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -40,6 +40,10 @@ Wenn Sie sicherstellen, dass Ihre Clientanwendung vor der Bereitstellung in der 
 ## <a name="retry-logic"></a>Wiederholungslogik
 
 Jede Clientproduktionsanwendung, die eine Verbindung mit einem Clouddatenbankdienst herstellt, sollte eine stabile [Wiederholungslogik](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors) für Verbindungen implementieren. Dies wird dazu beitragen, Neukonfigurationen für die Endbenutzer transparent zu gestalten oder wenigstens negative Auswirkungen zu minimieren.
+
+### <a name="service-health-alert"></a>Service Health-Warnung
+
+Wenn Sie Warnungen im Zusammenhang mit Dienstproblemen oder geplanten Wartungsaktivitäten erhalten möchten, können Sie im Azure-Portal Service Health-Warnungen mit entsprechenden Ereignistypen und Aktionsgruppen verwenden. Weitere Informationen finden Sie unter [Erstellen einer Service Health-Warnung über das Azure-Portal](../../service-health/alerts-activity-log-service-notifications-portal.md#create-service-health-alert-using-azure-portal).
 
 ## <a name="resource-health"></a>Ressourcenintegrität
 

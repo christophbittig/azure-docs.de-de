@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 1c28f549cf93d77f6aef6bcde6a2225345a79cc9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 500cc23f2091c38006f7e58e150fb246f2a9ca64
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91612947"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113586903"
 ---
 # <a name="plan-the-aggregated-namespace"></a>Planen des aggregierten Namespace
 
@@ -48,7 +48,7 @@ Um den komfortablen Zugriff über den Cache zu ermöglichen, sollten Sie das Ers
 | /goldline/templates/acme2017/sku980     | /templates/sku980      |
 | sourcecollection                        | /source/               |
 
-Ein NFS-Speicherziel kann mehrere virtuelle Namespacepfade aufweisen, sofern jeder von ihnen auf einen eindeutigen Exportpfad verweist. (Lesen Sie [NFS-Namespacepfade](add-namespace-paths.md#nfs-namespace-paths), um die empfohlene maximale Anzahl von Namespacepfaden pro NFS-Speicherziel zu erfahren.)
+Ein NFS-Speicherziel kann mehrere virtuelle Namespacepfade aufweisen, sofern jeder von ihnen auf einen eindeutigen Exportpfad verweist. (Unter [NFS-Namespacepfade](add-namespace-paths.md#nfs-namespace-paths) erfahren Sie mehr über die Verwendung mehrerer Namespacepfade mit einem NFS-Speicherziel.)
 
 Da es sich bei den NFS-Quellpfaden um Unterverzeichnisse des gleichen Exports handelt, müssen Sie für das gleiche Speicherziel mehrere Namespacepfade definieren.
 

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: how-to
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 04/08/2021
-ms.openlocfilehash: 534becdfcba1ccc992daadc5007e2eb56337a45e
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 07/15/2021
+ms.openlocfilehash: b3e30a4914ac52c9d9661d3b6d6e07f54f0afdc6
+ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110379266"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114230413"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>Herstellen einer Verbindung mit einer Azure Machine Learning-Compute-Instanz in Visual Studio Code (Vorschau)
 
@@ -35,25 +35,10 @@ Um eine Remotecompute-Instanz für die Entwicklung zu konfigurieren, sind ein pa
 * Einen Azure Machine Learning-Arbeitsbereich. [Verwenden Sie die Azure Machine Learning-Erweiterung für Visual Studio Code, um einen neuen Arbeitsbereich zu erstellen](how-to-manage-resources-vscode.md#create-a-workspace), wenn Sie noch nicht über einen verfügen.
 * Azure Machine Learning-Compute-Instanz. [Verwenden Sie die Azure Machine Learning-Erweiterung für Visual Studio Code, um eine neue Compute-Instanz zu erstellen](how-to-manage-resources-vscode.md#create-compute-instance), wenn Sie keine besitzen.
 
+> [!IMPORTANT]
+> Informationen zum Herstellen einer Verbindung mit einer Compute-Instanz hinter einer Firewall finden Sie unter [Verwenden des Arbeitsbereichs hinter einer Firewall für Azure Machine Learning](how-to-access-azureml-behind-firewall.md#visual-studio-code-hosts).
+
 So stellen Sie eine Verbindung mit Ihrer Remotecompute-Instanz her
-
-# <a name="vs-code"></a>[VS-Code](#tab/extension)
-
-### <a name="azure-machine-learning-extension"></a>Azure Machine Learning-Erweiterung
-
-1. Starten Sie in VS Code die Azure Machine Learning-Erweiterung.
-1. Erweitern Sie den Knoten **Compute-Instanzen** in Ihrer Erweiterung.
-1. Klicken Sie mit der rechten Maustaste auf die Compute-Instanz, mit der Sie eine Verbindung herstellen möchten, und wählen Sie **Connect to Compute Instance** (Mit Compute-Instanz verbinden) aus.
-
-:::image type="content" source="media/how-to-set-up-vs-code-remote/vs-code-compute-instance-launch.png" alt-text="Herstellen einer Verbindung mit einer Compute-Instanz: Azure ML-Erweiterung von Visual Studio Code" lightbox="media/how-to-set-up-vs-code-remote/vs-code-compute-instance-launch.png":::
-
-### <a name="command-palette"></a>Befehlspalette
-
-1. Öffnen Sie in VS Code die Befehlspalette, indem Sie **Ansicht > Befehlspalette** auswählen.
-1. Geben Sie in das Textfeld **Azure ML: Connect to Compute Instance** (Mit Compute-Instanz verbinden) ein.
-1. Wählen Sie Ihr Abonnement aus.
-1. Wählen Sie Ihren Arbeitsbereich aus.
-1. Wählen Sie Ihre Compute-Instanz aus oder erstellen Sie eine neue.
 
 # <a name="studio"></a>[Studio](#tab/studio)
 
@@ -76,6 +61,24 @@ Navigieren Sie zu [ml.azure.com](https://ml.azure.com).
 1. Wählen Sie **Editors > Edit in VS Code (Vorschau)** (Editoren > In VS Code bearbeiten) aus.
 
 :::image type="content" source="media/how-to-set-up-vs-code-remote/studio-notebook-compute-instance-vs-code-launch.png" alt-text="Herstellen einer Verbindung mit einer Compute-Instanz: VS Code Azure ML Notebook" lightbox="media/how-to-set-up-vs-code-remote/studio-notebook-compute-instance-vs-code-launch.png":::
+
+# <a name="vs-code"></a>[VS-Code](#tab/extension)
+
+### <a name="azure-machine-learning-extension"></a>Azure Machine Learning-Erweiterung
+
+1. Starten Sie in VS Code die Azure Machine Learning-Erweiterung.
+1. Erweitern Sie den Knoten **Compute-Instanzen** in Ihrer Erweiterung.
+1. Klicken Sie mit der rechten Maustaste auf die Compute-Instanz, mit der Sie eine Verbindung herstellen möchten, und wählen Sie **Connect to Compute Instance** (Mit Compute-Instanz verbinden) aus.
+
+:::image type="content" source="media/how-to-set-up-vs-code-remote/vs-code-compute-instance-launch.png" alt-text="Herstellen einer Verbindung mit einer Compute-Instanz: Azure ML-Erweiterung von Visual Studio Code" lightbox="media/how-to-set-up-vs-code-remote/vs-code-compute-instance-launch.png":::
+
+### <a name="command-palette"></a>Befehlspalette
+
+1. Öffnen Sie in VS Code die Befehlspalette, indem Sie **Ansicht > Befehlspalette** auswählen.
+1. Geben Sie in das Textfeld **Azure ML: Connect to Compute Instance** (Mit Compute-Instanz verbinden) ein.
+1. Wählen Sie Ihr Abonnement aus.
+1. Wählen Sie Ihren Arbeitsbereich aus.
+1. Wählen Sie Ihre Compute-Instanz aus oder erstellen Sie eine neue.
 
 ---
 

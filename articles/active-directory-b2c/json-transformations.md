@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2021
+ms.date: 06/27/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c5c8e21f2ce3f6907547bf1b2fe4681eb937864b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8d6381b6355f22ab5b60fe734b0b100c29bd6505
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102119874"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112981032"
 ---
 # <a name="json-claims-transformations"></a>Transformationen von JSON-Ansprüchen
 
@@ -175,6 +175,28 @@ Im folgenden Beispiel hat die Anspruchstransformation das `emailAddress`-Element
 - Ausgabeansprüche:
   - **extractedClaim**: someone@example.com
 
+Die Anspruchstransformation „GetClaimFromJson“ ruft ein einzelnes Element aus JSON-Daten ab. Im vorherigen Beispiel war das die E-Mail-Adresse (emailAddress). Zum Abrufen des Anzeigenamens (displayName) muss eine weitere Anspruchstransformation erstellt werden. Zum Beispiel:
+
+```xml
+<ClaimsTransformation Id="GetDispalyNameClaimFromJson" TransformationMethod="GetClaimFromJson">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="customUserData" TransformationClaimType="inputJson" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="claimToExtract" DataType="string" Value="displayName" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="displayName" TransformationClaimType="extractedClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+- Eingabeansprüche:
+  - **inputJson**: {"emailAddress": "someone@example.com", "displayName": "Someone"}
+- Eingabeparameter:
+    - **claimToExtract**: displayName
+- Ausgabeansprüche:
+  - **extractedClaim**: Someone
 
 ## <a name="getclaimsfromjsonarray"></a>GetClaimsFromJsonArray
 

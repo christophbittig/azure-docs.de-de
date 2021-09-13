@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 704697a88a723182c2dbbcb2f25eb18df7be34c1
-ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
+ms.openlocfilehash: b8ada581eabe0a2fedda08d0fbb1fa9585da0cca
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111430384"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121801814"
 ---
 **Umfang und Aufbewahrung der Datensammlung** 
 
@@ -47,7 +47,7 @@ ms.locfileid: "111430384"
 | Maximale Größe für einen einzelnen Beitrag | 30 MB | Teilen Sie größere Volumen auf mehrere Beiträge auf. |
 | Maximale Größe für Feldwerte  | 32 KB | Felder mit einer Länge von mehr als 32 KB werden abgeschnitten. |
 
-**Search-API**
+**Abfrage-API**
 
 | Category | Begrenzung | Kommentare |
 |:---|:---|:---|
@@ -60,8 +60,8 @@ ms.locfileid: "111430384"
 
 | Category | Begrenzung | Kommentare |
 |:---|:---|:---|
+| Maximale Datengröße | ~16,7 MB (~16 MiB) | Aufgrund der Connectorinfrastruktur muss dieser Grenzwert niedriger sein als der Grenzwert für die Abfrage-API. |
 | Maximale Anzahl von Datensätzen | 500.000 | |
-| Maximale Größe der zurückgegebenen Daten | ~104 MB (~100 MiB) | |
 | Maximales Abfragetimeout | 110 Sekunden | |
 | Diagramme | | Die Visualisierung auf der Seite „Protokolle“ und der Connector nutzen unterschiedliche Diagrammbibliotheken, und einige Funktionen sind derzeit im Connector nicht verfügbar. |
 

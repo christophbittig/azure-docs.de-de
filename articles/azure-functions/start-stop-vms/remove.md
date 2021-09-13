@@ -3,14 +3,14 @@ title: 'Entfernen von „VMs starten/beenden v2 (Vorschau)“: Übersicht'
 description: In diesem Artikel wird beschrieben, wie Sie das Feature „VMs starten/beenden v2 (Vorschau)“ entfernen.
 services: azure-functions
 ms.subservice: start-stop-vms
-ms.date: 03/30/2021
+ms.date: 06/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: fd24de679781cda37ba9489eb7acad6332896659
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 1a22faba480eb9c130cc7c883abfc3e53ef58fe5
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110076850"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112970155"
 ---
 # <a name="how-to-remove-startstop-vms-v2-preview"></a>Vorgehensweise zum Entfernen von „VMs starten/beenden v2 (Vorschau)“
 
@@ -20,6 +20,9 @@ Nachdem das Feature „VMs starten/beenden v2 (Vorschau)“ aktiviert wurde, um
 - Zeitpläne in Azure Logic Apps
 - Die Application Insights-Instanz
 - Azure Storage-Konto
+
+> [!NOTE]
+> Falls bei der Bereitstellung bzw. Verwendung von „VMs starten/beenden v2 (Vorschau)“ Probleme auftreten oder Sie eine Frage haben, können Sie auf [GitHub](https://github.com/microsoft/startstopv2-deployments/issues) ein Problem melden. Das Erstellen eines Azure-Supportvorfalls über die [Azure-Supportwebsite](https://azure.microsoft.com/support/options/) ist für diese Vorschauversion nicht verfügbar. 
 
 ## <a name="delete-the-dedicated-resource-group"></a>Löschen der dedizierten Ressourcengruppe
 

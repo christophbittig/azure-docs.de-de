@@ -3,12 +3,12 @@ title: Bereitstellen GPU-fähiger Containerinstanzen
 description: Erfahren Sie, wie Sie Azure-Containerinstanzen zur Ausführung rechenintensiver Container-Apps unter Verwendung von GPU-Ressourcen bereitstellen.
 ms.topic: article
 ms.date: 07/22/2020
-ms.openlocfilehash: 6ffe4840d024c1e1f551966d05673c4ba83e1259
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: cff887f434230fbc24dfbe27b1f14a463d00cf5d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764061"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339176"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Bereitstellen von Containerinstanzen, die GPU-Ressourcen verwenden
 
@@ -63,9 +63,12 @@ Wenn Sie GPU-Ressourcen bereitstellen, legen Sie die für die Workload geeignete
 
 * **CUDA-Treiber**: Containerinstanzen mit GPU-Ressourcen werden vorab mit NVIDIA-CUDA-Treibern und Containerlaufzeiten bereitgestellt, damit Sie die für CUDA-Workloads entwickelten Containerimages verwenden können.
 
-  Wir unterstützen in dieser Phase nur CUDA 9.0. Beispielsweise können Sie die folgenden Basisimages für Ihre Docker-Datei verwenden:
+  Wir unterstützen in dieser Phase nur CUDA 9.0. Sie können beispielsweise die folgenden Basisimages für Ihr Dockerfile verwenden:
   * [nvidia/cuda:9.0-base-ubuntu16.04](https://hub.docker.com/r/nvidia/cuda/)
   * [tensorflow/tensorflow: 1.12.0-gpu-py3](https://hub.docker.com/r/tensorflow/tensorflow)
+
+  > [!NOTE]
+  > Um die Zuverlässigkeit bei der Verwendung eines öffentlichen Containerimages aus Docker Hub zu verbessern, importieren und verwalten Sie das Image in einer privaten Azure-Containerregistrierung, und aktualisieren Sie Ihr Dockerfile so, dass es Ihr privat verwaltetes Basisimage verwendet. Weitere Informationen zur Verwendung öffentlicher Images finden Sie [hier](../container-registry/buffer-gate-public-content.md).
     
 ## <a name="yaml-example"></a>Beispiel mit YAML-Datei
 

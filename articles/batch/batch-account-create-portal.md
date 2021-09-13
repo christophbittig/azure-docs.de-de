@@ -1,15 +1,15 @@
 ---
 title: Erstellen eines Kontos über das Azure-Portal
-description: Erfahren Sie, wie Sie ein Azure Batch-Konto im Azure-Portal erstellen, um umfangreiche parallele Workloads in der Cloud auszuführen.
+description: Hier erfahren Sie, wie Sie ein Azure Batch-Konto im Azure-Portal erstellen, um umfangreiche parallele Workloads in der Cloud auszuführen.
 ms.topic: how-to
-ms.date: 02/23/2021
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 36759a0caef41af9307bf621a1b6b634ddf586cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/01/2021
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: 745a2fc2e1279d05fa380b7bc053171d20a3fa4c
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101703663"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113213271"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Erstellen eines Batch-Kontos mit dem Azure-Portal
 
@@ -83,13 +83,11 @@ Wenn Sie Ihr erstes Batch-Konto im Modus „Benutzerabonnement“ erstellen, mü
 
     :::image type="content" source="media/batch-account-create-portal/register_provider.png" alt-text="Screenshot: Microsoft.Batch-Ressourcenanbieter.":::
 
-1. Kehren Sie zur Seite **Abonnement** zurück, und wählen Sie dann **Zugriffssteuerung (IAM)**  > **Rollenzuweisungen** > **Hinzufügen** > **Rollenzuweisung hinzufügen** aus.
+1. Navigieren Sie zurück zur Seite **Abonnement**, und wählen Sie dann **Zugriffssteuerung (IAM)** aus.
 
-    :::image type="content" source="media/batch-account-create-portal/subscription_iam.png" alt-text="Screenshot: Seite „Rollenzuweisungen“ für ein Abonnement.":::
+1. Weisen Sie der Batch-API die Rolle **Mitwirkender** oder **Besitzer** zu. Sie können nach **Microsoft Azure Batch** oder **MicrosoftAzureBatch** suchen, um dieses Konto zu finden. (Die Objekt-ID für die Batch-API lautet **f520d84c-3fd3-4cc8-88d4-2ed25b00d27a**, und die Anwendungs-ID lautet **ddbf3205-c6bd-46ae-8127-60eb93363864**.)
 
-1. Wählen Sie auf der Seite **Rollenzuweisung hinzufügen** die Rolle **Mitwirkender** oder **Besitzer** aus, und suchen Sie die Batch-API. Suchen Sie nach **Microsoft Azure Batch** oder **MicrosoftAzureBatch** um die API zu finden. (**ddbf3205-c6bd-46ae-8127-60eb93363864** ist die Anwendungs-ID für die Batch-API.)
-
-1. Wenn Sie die Batch-API gefunden haben, wählen Sie diese aus, und klicken Sie auf **Speichern**.
+   Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="create-a-key-vault"></a>Erstellen eines Schlüsseltresors
 

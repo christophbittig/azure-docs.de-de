@@ -3,12 +3,12 @@ title: Konfigurieren Ihres eigenen Schlüssels zum Verschlüsseln ruhender Azure
 description: Dieser Artikel enthält Informationen dazu, wie Sie einen eigenen Schlüssel für die Verschlüsselung ruhender Azure Service Bus-Daten konfigurieren.
 ms.topic: conceptual
 ms.date: 02/10/2021
-ms.openlocfilehash: 0ebce2d9b5d02f12f9f2ab363b225519fcc838d7
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 586d8d477a27b44bf530ae52acbbe088eefe02c5
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854358"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113031670"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für die Verschlüsselung ruhender Azure Service Bus-Daten mithilfe des Azure-Portals
 Azure Service Bus Premium ermöglicht die Verschlüsselung ruhender Daten mit der Azure-Speicherdienstverschlüsselung (Azure Storage Service Encryption, SSE). Service Bus Premium verwendet Azure Storage, um die Daten zu speichern. Alle in Azure Storage gespeicherten Daten werden mit von Microsoft verwalteten Schlüsseln verschlüsselt. Wenn Sie einen eigenen Schlüssel verwenden – Bring Your Own Key (BYOK) oder kundenseitig verwalteter Schlüssel –, werden die Daten trotzdem mit dem von Microsoft verwalteten Schlüssel verschlüsselt. Zusätzlich wird der von Microsoft verwaltete Schlüssel jedoch mit dem kundenseitig verwalteten Schlüssel verschlüsselt. Mit dieser Funktion können Sie kundenseitig verwaltete Schlüssel, die zum Verschlüsseln der von Microsoft verwalteten Schlüssel verwendet werden, erstellen, rotieren, deaktivieren und den Zugriff darauf widerrufen. Die Aktivierung der BYOK-Funktion ist ein einmaliger Setupvorgang für Ihren Namespace.
@@ -274,7 +274,7 @@ In diesem Schritt aktualisieren Sie den Service Bus-Namespace mit Schlüsseltres
              },
              "properties":{
                 "encryption":{
-                   "keySource":"Microsoft.KeyVault",
+                   "keySource":"Microsoft.KeyVault",             
                    "keyVaultProperties":[
                       {
                          "keyName":"[parameters('keyName')]",
@@ -322,6 +322,28 @@ In diesem Schritt aktualisieren Sie den Service Bus-Namespace mit Schlüsseltres
     ```powershell
     New-AzResourceGroupDeployment -Name UpdateServiceBusNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateServiceBusNamespaceWithEncryption.json -TemplateParameterFile ./UpdateServiceBusNamespaceWithEncryptionParams.json
     ```
+
+#### <a name="enable-infrastructure-encryption-for-double-encryption-of-data-inazure-service-bus-data"></a>Aktivieren der Infrastrukturverschlüsselung für die Mehrfachverschlüsselung von Daten in Azure Service Bus 
+Wenn Sie Ihre Daten noch besser schützen möchten, können Sie die Verschlüsselung auf Infrastrukturebene (auch Mehrfachverschlüsselung genannt) aktivieren. 
+
+Bei aktivierter Infrastrukturverschlüsselung werden Daten in Azure Service Bus zweimal (einmal auf Dienstebene und einmal auf Infrastrukturebene) mit zwei unterschiedlichen Verschlüsselungsalgorithmen und zwei verschiedenen Schlüsseln verschlüsselt. Somit schützt die Infrastrukturverschlüsselung von Azure Service Bus-Daten vor Szenarien, in denen einer der Verschlüsselungsalgorithmen oder Schlüssel kompromittiert wurde.
+
+Sie können die Infrastrukturverschlüsselung aktivieren, indem Sie die ARM-Vorlage in der weiter oben erwähnten Datei **UpdateServiceBusNamespaceWithEncryption.json** mit der Eigenschaft `requireInfrastructureEncryption` aktualisieren, wie hier gezeigt: 
+
+```json
+"properties":{
+   "encryption":{
+      "keySource":"Microsoft.KeyVault",    
+      "requireInfrastructureEncryption":true,         
+      "keyVaultProperties":[
+         {
+            "keyName":"[parameters('keyName')]",
+            "keyVaultUri":"[parameters('keyVaultUri')]"
+         }
+      ]
+   }
+}
+```
     
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 02/10/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: a6fcb3b3fece367ab950426c29df2d1b39735957
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 0daf5cab1627819093514833667606758707f17a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108228721"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346075"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory"></a>Untersuchen und Verwalten Ihrer Ressourcen mit dem Ressourcenbestand und Verwaltungstools
 
@@ -42,14 +42,14 @@ Die Ressourcenverwaltungsfunktionen dieses Tools sind umfassend und wachsen weit
 |Status des Release:|Allgemeine Verfügbarkeit (General Availability, GA)|
 |Preise:|Kostenlos|
 |Erforderliche Rollen und Berechtigungen:|Alle Benutzer|
-|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)|
+|Clouds:|:::image type="icon" source="./media/icons/yes-icon.png"::: Kommerzielle Clouds<br>:::image type="icon" source="./media/icons/yes-icon.png"::: National/Sovereign (Azure Government, Azure China 21Vianet)|
 |||
 
 
 ## <a name="what-are-the-key-features-of-asset-inventory"></a>Welche sind die wichtigsten Features des Ressourcenbestands?
 Auf der Bestandsseite werden die folgenden Tools angezeigt:
 
-:::image type="content" source="media/asset-inventory/highlights-of-inventory.png" alt-text="Hauptfunktionen auf der Ressourcenbestandsseite in Azure Security Center" lightbox="media/asset-inventory/highlights-of-inventory.png":::
+:::image type="content" source="media/asset-inventory/highlights-of-inventory.png" alt-text="Hauptfeatures auf der Ressourcenbestandsseite in Azure Security Center" lightbox="media/asset-inventory/highlights-of-inventory.png":::
 
 
 ### <a name="1---summaries"></a>1: Zusammenfassungen
@@ -116,7 +116,7 @@ Mit Hilfe der [Kusto Query Language (KQL)](/azure/data-explorer/kusto/query/) ka
 
     - **Aus:** Ressourcen, die nicht durch einen Azure Defender-Plan geschützt sind. Sie können mit der rechten Maustaste auf eine dieser Ressourcen klicken und ein Upgrade ausführen:
 
-        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="Upgrade einer Ressource zu Azure Defender durch Klicken mit der rechten Maustaste" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
+        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="Upgraden einer Ressource zu Azure Defender über das Kontextmenü" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
 
     - **Ein:** Ressourcen, die durch einen Azure Defender-Plan geschützt sind
     - **Partiell:** Dies gilt für **Abonnements**, bei denen einige, aber nicht alle Azure Defender-Pläne deaktiviert sind. Für das folgende Abonnement sind z. B. fünf Azure Defender-Pläne deaktiviert. 
@@ -127,7 +127,7 @@ Mit Hilfe der [Kusto Query Language (KQL)](/azure/data-explorer/kusto/query/) ka
 
 1. Um die zurzeit ausgewählten Filteroptionen als Abfrage im Resource Graph-Explorer anzuzeigen, wählen Sie **Abfrage öffnen** aus.
 
-    ![Ressourcenbestandabfrage in ARG](./media/asset-inventory/inventory-query-in-resource-graph-explorer.png)
+    ![Bestandsabfrage in ARG](./media/asset-inventory/inventory-query-in-resource-graph-explorer.png)
 
 1. Wenn Sie einige Filter definiert und die Seite offen gelassen haben, aktualisiert Security Center die Ergebnisse nicht automatisch. Änderungen an den Ressourcen wirken sich nicht auf die angezeigten Ergebnisse aus, es sei denn, Sie laden die Seite manuell neu oder wählen **Aktualisieren** aus.
 
@@ -140,7 +140,7 @@ In der Bestandsansicht werden Ihre mit Security Center verbundenen Ressourcen au
 
 Der folgende Screenshot zeigt z. B. einen Benutzer mit Zugriff auf 38 Abonnements, von denen jedoch nur 10 Empfehlungen aufweisen. Wenn Sie also nach **Ressourcentyp = Abonnements** filtern, werden nur die 10 Abonnements mit aktiven Empfehlungen im Bestand angezeigt:
 
-:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="Es werden nicht alle Abonnements zurückgegeben, wenn keine aktiven Empfehlungen vorliegen":::
+:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="Es werden nicht alle Abonnements zurückgegeben, wenn keine aktiven Empfehlungen vorliegen.":::
 
 ### <a name="why-do-some-of-my-resources-show-blank-values-in-the-azure-defender-or-agent-monitoring-columns"></a>Warum werden für einige meiner Ressourcen in den Spalten für Azure Defender- oder Agent-Überwachung leere Werte angezeigt?
 
@@ -148,7 +148,7 @@ Nicht alle von Security Center überwachten Ressourcen verfügen über Agents. D
 
 Wenn Preise oder Agent-Überwachung für eine Ressource nicht relevant sind, wird in diesen Ressourcenbestandspalten nichts angezeigt.
 
-:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="Für einige Ressourcen werden leere Informationen in den Spalten für Agent- oder Azure Defender-Überwachung angezeigt":::.
+:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="Für einige Ressourcen werden leere Informationen in den Spalten für Agent-Überwachung oder Azure Defender angezeigt.":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

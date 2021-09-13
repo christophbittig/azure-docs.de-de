@@ -5,16 +5,16 @@ author: emaher
 ms.topic: article
 ms.date: 05/16/2021
 ms.author: enewman
-ms.openlocfilehash: 60ac7c3a95564fad5c271c543beac875334b05a1
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 96154718ce8e0ecff0ccdce0ded70272cdda828e
+ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110482776"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112991764"
 ---
 # <a name="set-up-lab-for-react-on-linux"></a>Einrichten eines Labs für React unter Linux
 
-[React](https://reactjs.org/) ist eine beliebte JavaScript-Bibliothek zum Erstellen von Benutzeroberflächen (UI). React ist eine deklarative Möglichkeit, wiederverwendbare Komponenten für Ihre Website zu erstellen.  Es gibt viele weitere beliebte Bibliotheken für JavaScript-basierte Front-End-Entwicklung.  Wir verwenden einige dieser Bibliotheken beim Erstellen des Labs.  [Redux](https://redux.js.org/) ist eine Bibliothek, die einen vorhersagbaren Zustandscontainer für JavaScript-Apps bereitstellt und häufig als Ergänzung zu React verwendet wird. [JSX](https://reactjs.org/docs/introducing-jsx.html) ist eine Bibliothekssyntaxerweiterung für JavaScript, die häufig mit React verwendet wird, um zu beschreiben, wie die Benutzeroberfläche aussehen sollte.  [NodeJS](https://nodejs.org/) ist eine bequeme Möglichkeit, einen Webserver für Ihre React-Anwendung auszuführen.
+[React](https://reactjs.org/) ist eine beliebte JavaScript-Bibliothek zum Erstellen von Benutzeroberflächen (UI). React ist eine deklarative Möglichkeit, wiederverwendbare Komponenten für Ihre Website zu erstellen.  Es gibt viele weitere beliebte Bibliotheken für die JavaScript-basierte Front-End-Entwicklung.  Beim Erstellen des Labs werden einige dieser Bibliotheken verwendet.  [Redux](https://redux.js.org/) ist eine Bibliothek, die einen vorhersagbaren Zustandscontainer für JavaScript-Apps bereitstellt und häufig als Ergänzung zu React verwendet wird. [JSX](https://reactjs.org/docs/introducing-jsx.html) ist eine Bibliothekssyntaxerweiterung für JavaScript, die häufig mit React verwendet wird, um zu beschreiben, wie die Benutzeroberfläche aussehen sollte.  [NodeJS](https://nodejs.org/) ist eine bequeme Möglichkeit, einen Webserver für Ihre React-Anwendung auszuführen.
 
 In diesem Artikel erfahren Sie, wie Sie [Visual Studio Code](https://code.visualstudio.com/) für Ihre Entwicklungsumgebung, die Tools und die Bibliotheken installieren, die für einen React-Webentwicklungskurs erforderlich sind.
 
@@ -38,15 +38,15 @@ Die empfohlene VM-Größe hängt von den Arten der Workloads ab, die Ihre Kurste
 | ------------ | ------------------ |
 | VM-Größe | **Klein**.|
 
-Es wird empfohlen, Ihre Workloads zu testen, um festzustellen, ob eine größere Dimensionierung erforderlich ist.  Weitere Informationen zu den einzelnen Größen finden Sie unter [VM-Größen](administrator-guide.md#vm-sizing).
+Es wird empfohlen, Ihre Workloads zu testen, um festzustellen, ob eine größere Dimensionierung erforderlich ist.  Weitere Informationen zu den einzelnen Größen finden Sie unter [Festlegen der VM-Größe](administrator-guide.md#vm-sizing).
 
 ## <a name="template-machine-configuration"></a>Konfiguration des Vorlagencomputers
 
 Die Schritte in diesem Abschnitt zeigen, wie Sie Folgendes ausführen, um die Vorlagen-VM einzurichten:
 
-1. Installieren von Entwicklungstools.
-1. Installieren von Debuggererweiterungen für Ihren Webbrowser.
-1. Aktualisieren der Firewalleinstellungen.
+1. Installieren von Entwicklungstools
+1. Installieren von Debuggererweiterungen für Ihren Webbrowser
+1. Aktualisieren der Firewalleinstellungen
 
 ### <a name="install-development-tools"></a>Installieren von Entwicklungstools
 
@@ -80,18 +80,26 @@ npm install react-jsx
 
 Installieren Sie die Erweiterungen für React-Entwicklertools für Ihren Browser, damit Sie React-Komponenten untersuchen und Leistungsinformationen aufzeichnen können.  
 
-- [Add-On „React-Entwicklertools Edge“](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil)
-- [Add-On „React-Entwicklertools Chrome“](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
+- [Edge-Add-On „React Developer Tools“ (React-Entwicklertools)](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil)
+- [Chrome-Erweiterung „React Developer Tools“ (React-Entwicklertools)](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
 - [Add-On „React-Entwicklertools FireFox“](https://addons.mozilla.org/firefox/addon/react-devtools/)
 
 Verwenden Sie den integrierten Befehl `npm start`, um die App im Entwicklungsmodus auszuführen.  Die lokalen und Netzwerk-URLs werden in der Befehlsausgabe aufgeführt.  Informationen zur Verwendung von HTTPS anstelle von HTTP finden Sie unter [Erstellen einer React-App mit HTTPS in der Entwicklung](https://create-react-app.dev/docs/using-https-in-development).
 
+### <a name="update-firewall-settings"></a>Aktualisieren der Firewalleinstellungen
+
+Bei offiziellen Ubuntu-Builds ist [Iptables](https://help.ubuntu.com/community/IptablesHowTo) installiert, und es wird standardmäßig sämtlicher eingehender Datenverkehr zugelassen.  Wenn Sie allerdings einen virtuellen Computer mit einer restriktiveren Firewall verwenden, fügen Sie eine Eingangsregel hinzu, um Datenverkehr an den NodeJS-Server zuzulassen.  Im folgenden Beispiel wird [Iptables](https://help.ubuntu.com/community/IptablesHowTo) verwendet, um Datenverkehr am Port 3000 zuzulassen:
+
+```bash
+sudo iptables -I INPUT -p tcp -m tcp --dport 3000 -j ACCEPT
+```
+
 >[!IMPORTANT]
->Dozenten müssen die Vorlagen-VM oder eine andere Lab-VM verwenden, um auf die Website eines Kursteilnehmers zuzugreifen.
+>Kursleiter müssen die Vorlagen-VM oder eine andere Lab-VM verwenden, um auf die Website eines Kursteilnehmers zuzugreifen.
 
 ## <a name="cost"></a>Cost
 
-Sehen wir uns eine Beispielkostenschätzung für diesen Kurs an.  Angenommen, Sie haben einen Kurs mit 25 Kursteilnehmern. Jeder Kursteilnehmer verfügt über eine geplante Kurszeit von 20 Stunden.  Zudem erhält jeder Kursteilnehmer ein Kontingent von 10 zusätzlichen Stunden für Hausaufgaben und Arbeitsaufträge außerhalb der geplanten Kurszeit.  Als Größe des virtuellen Computers wurde **Klein** ausgewählt, was 20 Lab-Einheiten entspricht.
+Sehen wir uns eine Beispielkostenschätzung für diesen Kurs an.  Angenommen, Sie haben einen Kurs mit 25 Kursteilnehmern. Für jeden Kursteilnehmer ist eine Kurszeit von 20 Stunden geplant.  Zudem erhält jeder Kursteilnehmer ein Kontingent von 10 zusätzlichen Stunden für Hausaufgaben und Arbeitsaufträge außerhalb der geplanten Kurszeit.  Als Größe des virtuellen Computers wurde **Klein** ausgewählt, was 20 Lab-Einheiten entspricht.
 
 - 25 Kursteilnehmer &times; (20 geplante Stunden + 10 Kontingentstunden) &times; 20 Lab-Einheiten &times; 0,01 USD pro Stunde = 150,00 USD
 
@@ -100,7 +108,7 @@ Sehen wir uns eine Beispielkostenschätzung für diesen Kurs an.  Angenommen, Si
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Das Vorlagenimage kann jetzt im Lab veröffentlicht werden. Weitere Anweisungen finden Sie unter [Veröffentlichen der Vorlagen-VM](how-to-create-manage-template.md#publish-the-template-vm).
+Das Vorlagenimage kann jetzt im Lab veröffentlicht werden. Weitere Anweisungen finden Sie unter [Veröffentlichen der Vorlage für virtuelle Computer](how-to-create-manage-template.md#publish-the-template-vm).
 
 Lesen Sie folgende Artikel zum Einrichten des Labs:
 

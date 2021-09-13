@@ -1,67 +1,56 @@
 ---
-title: Durchsuchen von Azure SQL-Daten
+title: Indizieren von Daten aus Azure SQL
 titleSuffix: Azure Cognitive Search
-description: Hier erfahren Sie, wie Sie Daten aus Azure SQL-Datenbank oder SQL Managed Instance mithilfe von Indexern für die Volltextsuche in Azure Cognitive Search importieren. Dieser Artikel behandelt Verbindungen, Indexerkonfiguration und Datenerfassung.
+description: Richten Sie einen Azure SQL-Indexer ein, um die Indizierung von Inhalten und Metadaten für die Volltextsuche in Azure Cognitive Search zu automatisieren.
 manager: nitinme
 author: mgottein
 ms.author: magottei
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.openlocfilehash: 04e4801c26b0ac8ef91af0b028d9dc2bb9a3cd1c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/26/2021
+ms.openlocfilehash: 27cebeb9eaff63d9acb7976cac5a8837cca5e702
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94358625"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112983282"
 ---
-# <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Verbinden und Indizieren von Azure SQL-Inhalten mithilfe eines Azure Cognitive Search-Indexers
+# <a name="index-data-from-azure-sql"></a>Indizieren von Daten aus Azure SQL
 
-Bevor Sie einen [Index der kognitiven Azure-Suche](search-what-is-an-index.md) abfragen können, müssen Sie ihn mit Daten auffüllen. Wenn sich die Daten in Azure SQL-Datenbank oder SQL Managed Instance befinden, können Sie mit einem **Azure Cognitive Search-Indexer für Azure SQL-Datenbank** (oder kurz **Azure SQL-Indexer**) den Indizierungsprozess automatisieren. Dadurch müssen Sie weniger Code schreiben und sich um weniger Infrastruktur kümmern.
+In diesem Artikel erfahren Sie, wie Sie einen Azure SQL-Indexer zum Extrahieren von Inhalten konfigurieren und dafür sorgen, dass er in Azure Cognitive Search durchsucht werden kann. Dieser Workflow erstellt einen Suchindex für Azure Cognitive Search und lädt ihn mit vorhandenem Inhalt, der aus Azure SQL-Datenbank und verwalteten Azure SQL-Instanzen extrahiert wurde.
 
-In diesem Artikel erfahren Sie mehr über die Funktionsweise von [Indexern](search-indexer-overview.md) sowie über Funktionen, die nur für Azure SQL-Datenbank oder SQL Managed Instance verfügbar sind (wie etwa die integrierte Änderungsnachverfolgung). 
+In diesem Artikel erfahren Sie mehr über die Funktionsweise von [Indexern](search-indexer-overview.md) sowie über Funktionen, die nur für Azure SQL-Datenbank oder SQL Managed Instance verfügbar sind (wie etwa die integrierte Änderungsnachverfolgung).
 
-Zusätzlich zu Azure SQL-Datenbank und SQL Managed Instance umfasst Azure Cognitive Search Indexer für [Azure Cosmos DB](search-howto-index-cosmosdb.md), [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) und [Azure Table Storage](search-howto-indexing-azure-tables.md). Wenn Sie Unterstützung für andere Datenquellen wünschen, geben Sie dazu im [Feedbackforum für die kognitive Azure-Suche](https://feedback.azure.com/forums/263029-azure-search/) Feedback.
+Sie können einen Azure SQL-Indexer mit einem der folgenden Clients einrichten:
 
-## <a name="indexers-and-data-sources"></a>Indexer und Datenquellen
-
-Eine **Datenquelle** gibt an, welche Daten indiziert werden müssen. Sie legt außerdem die Anmeldeinformationen für den Datenzugriff sowie die Richtlinien fest, mit denen Änderungen an den Daten effizient identifiziert werden können (z.B. neue, geänderte oder gelöschte Zeilen). Die Datenquelle wird als unabhängige Ressource definiert, sodass sie von mehreren Indexern verwendet werden kann.
-
-Ein **Indexer** ist eine Ressource, die eine einzelne Datenquelle mit einem Zielsuchindex verbindet. Ein Indexer kann folgendermaßen verwendet werden:
-
-* Eine einmalige Kopie der Daten zum Auffüllen eines Indexes ausführen.
-* Einen Index mit Änderungen an der Datenquelle nach einem Zeitplan aktualisieren.
-* Ausführung bei Bedarf, um den Index je nach Notwendigkeit zu aktualisieren.
-
-Ein einzelner Indexer kann nur eine Tabelle oder Sicht verwenden, aber Sie können mehrere Indexer erstellen, wenn Sie mehrere Suchindizes auffüllen möchten. Weitere Informationen zu Konzepten finden Sie unter [Indexer-Vorgänge: Typischer Workflow](/rest/api/searchservice/Indexer-operations#typical-workflow).
-
-Sie können einen Azure SQL-Indexer wie folgt einrichten und konfigurieren:
-
-* Mit dem Datenimport-Assistenten im [Azure-Portal](https://portal.azure.com)
+* [Azure portal](https://ms.portal.azure.com)
+* [REST-API](/rest/api/searchservice/Indexer-operations) für die kognitive Azure-Suche
 * [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer) für die kognitive Azure-Suche
-* [REST-API](/rest/api/searchservice/indexer-operations) für die kognitive Azure-Suche
 
-In diesem Artikel wird die REST-API verwendet, um **Indexer** und **Datenquellen** zu erstellen.
+In diesem Artikel werden die REST-APIs verwendet. 
 
-## <a name="when-to-use-azure-sql-indexer"></a>Gründe für die Verwendung von Azure SQL-Indexern
-Abhängig von verschiedenen Faktoren, die mit den Daten zusammenhängen, kann die Verwendung von Azure SQL-Indexern angebracht oder nicht angebracht sein. Wenn Ihre Daten die folgenden Anforderungen erfüllen, können Sie Azure SQL-Indexer verwenden.
+## <a name="prerequisites"></a>Voraussetzungen
 
-| Kriterien | Details |
-|----------|---------|
-| Die Daten stammen aus einer einzelnen Tabelle oder Sicht. | Wenn die Daten auf mehrere Tabellen verteilt sind, können Sie eine Sicht der Daten erstellen. Bei Verwendung einer Sicht können Sie jedoch nicht die in SQL Server integrierte Änderungserkennung nutzen, um einen Index mit inkrementellen Änderungen zu aktualisieren. Weitere Informationen finden Sie unter [Erfassen geänderter und gelöschter Zeilen](#CaptureChangedRows) weiter unten. |
-| Datentypen sind kompatibel | In einem Index der kognitiven Azure-Suche werden die meisten, aber nicht alle SQL-Typen unterstützt. Eine Liste finden Sie unter [Zuordnen von Datentypen](#TypeMapping). |
-| Synchronisierung von Daten in Echtzeit ist nicht erforderlich | Ein Indexer kann die Tabelle höchstens alle fünf Minuten erneut indizieren. Wenn sich Ihre Daten häufig ändern und die Änderungen innerhalb von Sekunden oder weniger Minuten im Index widergespiegelt werden müssen, sollten Sie die [REST-API](/rest/api/searchservice/AddUpdate-or-Delete-Documents) oder das [.NET SDK](./search-get-started-dotnet.md) verwenden, um aktualisierte Zeilen direkt zu übertragen. |
-| Inkrementelle Indizierung ist möglich | Wenn Sie bei einem großen Dataset den Indexer nach einem Zeitplan ausführen möchten, muss es in der kognitiven Azure-Suche möglich sein, effizient neue, geänderte oder gelöschte Zeilen zu identifizieren. Eine nicht inkrementelle Indizierung ist nur zulässig, wenn Sie bei Bedarf indizieren (nicht gemäß Zeitplan) oder wenn Sie weniger als 100.000 Zeilen indizieren. Weitere Informationen finden Sie unter [Erfassen geänderter und gelöschter Zeilen](#CaptureChangedRows) weiter unten. |
+* Die Daten stammen aus einer einzelnen Tabelle oder Ansicht. Wenn die Daten auf mehrere Tabellen verteilt sind, können Sie eine Sicht der Daten erstellen. Ein Nachteil bei der Verwendung einer Ansicht ist, dass Sie nicht die in SQL Server integrierte Änderungserkennung nutzen können, um einen Index mit inkrementellen Änderungen zu aktualisieren. Weitere Informationen finden Sie unter [Erfassen geänderter und gelöschter Zeilen](#CaptureChangedRows) weiter unten.
 
-> [!NOTE] 
-> Die kognitive Azure-Suche unterstützt nur die SQL Server-Authentifizierung. Sollten Sie die Azure Active Directory-Kennwortauthentifizierung benötigen, stimmen Sie bitte für [diesen UserVoice-Vorschlag](https://feedback.azure.com/forums/263029-azure-search/suggestions/33595465-support-azure-active-directory-password-authentica) ab.
+* Datentypen müssen kompatibel sein. In einen Suchindex werden die meisten, aber nicht alle SQL-Typen unterstützt. Eine Liste finden Sie unter [Zuordnen von Datentypen](#TypeMapping).
+
+* Verbindungen mit einer Instanz von SQL Managed Instance müssen über einen öffentlichen Endpunkt hergestellt werden. Weitere Informationen finden Sie unter [Indexerverbindungen mit Azure SQL Managed Instance über einen öffentlichen Endpunkt](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md).
+
+* Für Verbindungen mit SQL Server auf einem virtuellen Azure-Computer ist die manuelle Einrichtung eines Sicherheitszertifikats erforderlich. Weitere Informationen finden Sie unter [Konfigurieren einer Verbindung eines Indexers von Azure Cognitive Search mit SQL Server auf einer Azure-VM](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md).
+
+Die Datensynchronisierung in Echtzeit darf keine Anwendungsanforderung sein. Ein Indexer kann die Tabelle höchstens alle fünf Minuten erneut indizieren. Wenn sich Ihre Daten häufig ändern und diese Änderungen innerhalb von Sekunden oder weniger Minuten im Index widergespiegelt werden müssen, sollten Sie die [REST-API](/rest/api/searchservice/AddUpdate-or-Delete-Documents) oder das [.NET SDK](search-get-started-dotnet.md) verwenden, um aktualisierte Zeilen direkt zu übertragen.
+
+Inkrementelle Indizierung ist möglich. Wenn Sie bei einem großen Dataset den Indexer nach einem Zeitplan ausführen möchten, muss es in der kognitiven Azure-Suche möglich sein, effizient neue, geänderte oder gelöschte Zeilen zu identifizieren. Eine nicht inkrementelle Indizierung ist nur zulässig, wenn Sie bei Bedarf indizieren (nicht gemäß Zeitplan) oder wenn Sie weniger als 100.000 Zeilen indizieren. Weitere Informationen finden Sie unter [Erfassen geänderter und gelöschter Zeilen](#CaptureChangedRows) weiter unten.
+
+Azure Cognitive Search unterstützt SQL Server-Authentifizierung, bei der Benutzername und Kennwort in der Verbindungszeichenfolge angegeben werden. Alternativ können Sie eine verwaltete Identität einrichten und Azure-Rollen verwenden, um Anmeldeinformationen für die Verbindung auszulassen. Weitere Informationen finden Sie unter [Einrichten einer Indexerverbindung mit Azure SQL-Datenbank mithilfe einer verwalteten Identität](search-howto-managed-identities-sql.md).
 
 ## <a name="create-an-azure-sql-indexer"></a>Erstellen eines Azure SQL-Indexers
 
 1. Erstellen Sie die Datenquelle:
 
-   ```
+   ```http
     POST https://myservice.search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: admin-key
@@ -82,7 +71,7 @@ Abhängig von verschiedenen Faktoren, die mit den Daten zusammenhängen, kann di
 
 3. Erstellen Sie den Indexer, indem Sie ihm einen Namen geben und einen Verweis auf die Datenquelle und den Zielindex hinzufügen:
 
-   ```
+   ```http
     POST https://myservice.search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: admin-key
@@ -96,7 +85,7 @@ Abhängig von verschiedenen Faktoren, die mit den Daten zusammenhängen, kann di
 
 Ein auf diese Weise erstellter Indexer verfügt über keinen Zeitplan. Er wird automatisch einmal ausgeführt, wenn er erstellt wird. Sie können ihn jederzeit mithilfe der Anforderung **run indexer** erneut ausführen:
 
-```
+```http
     POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2020-06-30
     api-key: admin-key
 ```
@@ -107,16 +96,16 @@ Möglicherweise müssen Sie Azure Services erlauben, eine Verbindung mit der Dat
 
 Verwenden Sie zum Überwachen des Indexerstatus und Ausführungsverlaufs (Anzahl der indizierten Elemente, Fehler usw.) die Anforderung **indexer status** :
 
-```
+```http
     GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2020-06-30
     api-key: admin-key
 ```
 
 Die Antwort sollte etwa wie folgt aussehen:
 
-```
+```json
     {
-        "\@odata.context":"https://myservice.search.windows.net/$metadata#Microsoft.Azure.Search.V2015_02_28.IndexerExecutionInfo",
+        "@odata.context":"https://myservice.search.windows.net/$metadata#Microsoft.Azure.Search.V2015_02_28.IndexerExecutionInfo",
         "status":"running",
         "lastResult": {
             "status":"success",
@@ -151,9 +140,10 @@ Der Ausführungsverlauf enthält bis zu 50 der zuletzt abgeschlossenen Ausführu
 Weitere Informationen zur Antwort finden Sie unter [Abrufen des Indexerstatus](/rest/api/searchservice/get-indexer-status).
 
 ## <a name="run-indexers-on-a-schedule"></a>Ausführen von Indexern nach einem Zeitplan
+
 Sie können den Indexer auch so konfigurieren, dass er regelmäßig nach einem Zeitplan ausgeführt wird. Dazu fügen Sie die **schedule**-Eigenschaft beim Erstellen oder Aktualisieren des Indexers hinzu. Das folgende Beispiel zeigt eine PUT-Anforderung den Indexer, um den zu aktualisieren:
 
-```
+```http
     PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2020-06-30
     Content-Type: application/json
     api-key: admin-key
@@ -176,6 +166,7 @@ Weitere Informationen zum Definieren von Indexerzeitplänen finden Sie unter [Fe
 In der kognitiven Azure-Suche wird eine **inkrementelle Indizierung** verwendet, um zu vermeiden, dass die gesamte Tabelle oder Ansicht jedes Mal neu indiziert wird, wenn ein Indexer ausgeführt wird. Die kognitive Azure-Suche umfasst zwei Richtlinien zur Erkennung von Änderungen, um die inkrementelle Indizierung zu unterstützen. 
 
 ### <a name="sql-integrated-change-tracking-policy"></a>Richtlinie für die integrierte SQL-Änderungsnachverfolgung
+
 Wenn die SQL-Datenbank die [Änderungsnachverfolgung](/sql/relational-databases/track-changes/about-change-tracking-sql-server)unterstützt, wird empfohlen, die **Richtlinie für die integrierte SQL-Änderungsnachverfolgung** zu verwenden. Dies ist die effizienteste Richtlinie. Außerdem sorgt sie dafür, dass in der kognitiven Azure-Suche gelöschte Zeilen identifiziert werden, ohne dass Sie eine explizite „Vorläufig löschen“-Spalte in der Tabelle angeben müssen.
 
 #### <a name="requirements"></a>Requirements (Anforderungen) 

@@ -1,21 +1,19 @@
 ---
-title: Übersicht über das selbstgehostete Gateway | Microsoft-Dokumentation
+title: Übersicht über das selbstgehostete Gateway | Azure API Management
 description: Erfahren Sie, wie die Funktion „selbstgehostetes Gateway“ von Azure API Management Organisationen beim Verwalten von APIs in Hybridumgebungen und Umgebungen mit mehreren Clouds unterstützt.
 services: api-management
 documentationcenter: ''
 author: vlvinogr
-manager: gwallace
-editor: ''
 ms.service: api-management
 ms.topic: article
 ms.date: 05/25/2021
 ms.author: apimpm
-ms.openlocfilehash: 946a2707e68e2f3ce6f78df997d102eeb0c7c450
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 2c8688660540f965f25038298c996511901405cb
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110376968"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111810125"
 ---
 # <a name="self-hosted-gateway-overview"></a>Übersicht über das selbstgehostete Gateway
 
@@ -49,7 +47,7 @@ Die folgende, in verwalteten Gateways zu findende Funktionalität ist im selbstg
 
 - Azure Monitor-Protokolle
 - Upstreamverwaltung (Back-End-seitig) von TLS-Version und Verschlüsselung
-- Überprüfung von Server- und Clientzertifikaten mithilfe von [Stammzertifikaten der Zertifizierungsstelle](api-management-howto-ca-certificates.md), die in den API Management-Dienst hochgeladen wurden. Weitere Informationen finden Sie unter [Zertifikatsüberprüfung in selbstgehostetem Gateway](api-management-howto-mutual-certificates-for-clients.md#certificate-validation-in-self-hosted-gateway).
+- Überprüfung von Server- und Clientzertifikaten mithilfe von [Stammzertifikaten der Zertifizierungsstelle](api-management-howto-ca-certificates.md), die in den API Management-Dienst hochgeladen wurden. Sie können [benutzerdefinierte Zertifizierungsstellen](api-management-howto-ca-certificates.md#create-custom-ca-for-self-hosted-gateway) für Ihre selbstgehosteten Gateways sowie Richtlinien für die [Clientzertifikatüberprüfung](api-management-access-restriction-policies.md#validate-client-certificate) konfigurieren, um sie zu erzwingen.
 - Integration in [Service Fabric](../service-fabric/service-fabric-api-management-overview.md)
 - TLS-Sitzungswiederaufnahme
 - Erneute Aushandlung des Clientzertifikats. Dies bedeutet, dass API-Consumer, damit die [Clientzertifikatauthentifizierung](api-management-howto-mutual-certificates-for-clients.md) funktioniert, ihre Zertifikate als Teil des ersten TLS-Handshakes präsentieren müssen. Um dies sicherzustellen, aktivieren Sie die Einstellung „Clientzertifikat aushandeln“, wenn Sie den benutzerdefinierten Hostnamen eines selbstgehosteten Gateways konfigurieren.

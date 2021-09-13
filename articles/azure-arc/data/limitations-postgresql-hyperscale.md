@@ -1,6 +1,6 @@
 ---
-title: Einschränkungen für PostgreSQL Hyperscale mit Azure Arc-Unterstützung
-description: Einschränkungen für PostgreSQL Hyperscale mit Azure Arc-Unterstützung
+title: Einschränkungen für PostgreSQL Hyperscale mit Azure Arc-Unterstützung
+description: Einschränkungen für PostgreSQL Hyperscale mit Azure Arc-Unterstützung
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,16 +9,16 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: b1a56c8acf1789690c01f1c16b7c37a237720e39
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4fdcf88200b3c2a6b5371633c10d9246cfbf4c31
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564873"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113730242"
 ---
-# <a name="limitations-of-azure-arc-enabled-postgresql-hyperscale"></a>Einschränkungen für PostgreSQL Hyperscale mit Azure Arc-Unterstützung
+# <a name="limitations-of-azure-arc-enabled-postgresql-hyperscale"></a>Einschränkungen für PostgreSQL Hyperscale mit Azure Arc-Unterstützung
 
-Dieser Artikel enthält eine Beschreibung der Einschränkungen für PostgreSQL Hyperscale mit Azure Arc-Unterstützung. 
+Dieser Artikel enthält eine Beschreibung der Einschränkungen für PostgreSQL Hyperscale mit Azure Arc-Unterstützung. 
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -39,7 +39,7 @@ Das Verwalten von Benutzern und Rollen wird nicht unterstützt. Verwenden Sie vo
 
 ## <a name="roles-and-responsibilities"></a>Rollen und Zuständigkeiten
 
-Die Rollen und Zuständigkeiten zwischen Microsoft und seinen Kunden unterscheiden sich für Azure PaaS-Dienste (Platform-as-a-Service) und Azure-Hybriddienste (z. B. PostgreSQL Hyperscale mit Azure Arc-Unterstützung). 
+Die Rollen und Zuständigkeiten zwischen Microsoft und seinen Kunden unterscheiden sich für Azure PaaS-Dienste (Platform-as-a-Service) und Azure-Hybriddienste (z. B. PostgreSQL Hyperscale mit Azure Arc-Unterstützung). 
 
 ### <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -67,5 +67,5 @@ __Warum werden von Microsoft keine SLAs zu Azure Arc-Hybriddiensten bereitgestel
    3. [Erstellen einer Azure Database for PostgreSQL Hyperscale-Servergruppe in Azure Arc](create-postgresql-hyperscale-server-group.md) 
 
 - **Learn**
-   - [Weitere Informationen zu Azure Arc-fähigen Datendiensten](https://azure.microsoft.com/services/azure-arc/hybrid-data-services)
+   - [Weitere Informationen zu Datendiensten mit Azure Arc-Unterstützung](https://azure.microsoft.com/services/azure-arc/hybrid-data-services)
    - [Weitere Informationen zu Azure Arc](https://aka.ms/azurearc)

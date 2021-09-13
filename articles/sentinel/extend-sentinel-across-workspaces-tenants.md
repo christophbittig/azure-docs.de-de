@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: f491681c8054c800e15c3c77516ff22e3c70dbac
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: 917bcf74adaaec4e354662ec25816bcad471025d
+ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108001500"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112991908"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Erweitern von Azure Sentinel auf Arbeitsbereiche und Mandanten
 
@@ -96,10 +96,13 @@ Anschließend können Sie eine Abfrage über beide Arbeitsbereiche schreiben, in
 
 #### <a name="cross-workspace-analytics-rules"></a>Arbeitsbereichsübergreifende Analyseregeln<a name="scheduled-alerts"></a>
 <!-- Bookmark added for backward compatibility with old heading -->
-Arbeitsbereiche übergreifende Abfragen können jetzt in geplante Analyseregeln einbezogen werden, unterliegen aber den folgenden Beschränkungen:
+Arbeitsbereichsübergreifende Abfragen können jetzt in geplante Analyseregeln einbezogen werden. Sie können arbeitsbereichsübergreifende Analyseregeln in einem zentralen SOC-Team und mandantenübergreifend (mit Azure Lighthouse) wie bei einem MSSP verwenden. Dabei gelten allerdings folgende Einschränkungen:
 
-- Es können bis zu 20 Arbeitsbereiche in einer einzelnen Abfrage enthalten sein.
-- Azure Sentinel muss in jedem Arbeitsbereich bereitgestellt sein, auf den in der Abfrage verwiesen wird.
+- In einer einzelnen Abfrage können **bis zu 20 Arbeitsbereiche** enthalten sein.
+- Azure Sentinel muss **in jedem Arbeitsbereich bereitgestellt sein**, auf den in der Abfrage verwiesen wird.
+- Von einer arbeitsbereichsübergreifenden Analyseregel generierte Warnungen und die auf dieser Grundlage erstellten Incidents sind **nur in dem Arbeitsbereich vorhanden, in dem die Regel definiert wurde**. Sie werden in keinem der anderen Arbeitsbereiche angezeigt, auf die in der Abfrage verwiesen wird.
+
+Von arbeitsbereichsübergreifenden Analyseregeln erstellte Warnungen und Incidents enthalten alle zugehörigen Entitäten – einschließlich Entitäten aus allen Arbeitsbereichen, auf die verwiesen wird, sowie aus dem ursprünglichen Arbeitsbereich (in dem die Regel definiert wurde). Dadurch können sich Analysten ein umfassendes Bild von Warnungen und Vorfällen machen.
 
 > [!NOTE] 
 > Werden in derselben Abfrage mehrere Arbeitsbereiche abgefragt, kann sich dies negativ auf die Leistung auswirken. Diese Vorgehensweise wird daher nur empfohlen, wenn diese Funktionalität von der Logik vorausgesetzt wird.

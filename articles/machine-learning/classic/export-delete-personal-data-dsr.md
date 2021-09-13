@@ -1,6 +1,6 @@
 ---
 title: 'ML Studio (Classic): Exportieren und Löschen Ihrer Daten (Azure)'
-description: Im Produkt enthaltene und von Azure Machine Learning Studio (klassisch) gespeicherte Daten stehen über das Azure-Portal sowie über authentifizierte REST-APIs zum Exportieren und Löschen zur Verfügung. Auf Telemetriedaten können Sie über das Azure Privacy-Portal zugreifen. In diesem Artikel erfahren Sie, welche Schritte erforderlich sind.
+description: Produktinterne, von Machine Learning Studio (Classic) gespeicherte Daten können über das Azure-Portal sowie über authentifizierte REST-APIs exportiert und gelöscht werden. Auf Telemetriedaten können Sie über das Azure Privacy-Portal zugreifen. In diesem Artikel erfahren Sie, welche Schritte erforderlich sind.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,21 +9,21 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: b2d797cc6cb45a76a61a235e7c4c66ac6f243580
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 47ca53ac4fa6aa30ae67fdaf9be3cf6eb3f489bb
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100519863"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112581500"
 ---
-# <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio-classic"></a>Exportieren und Löschen von im Produkt enthaltenen Benutzerdaten aus Azure Machine Learning Studio (klassisch)
+# <a name="export-and-delete-in-product-user-data-from-machine-learning-studio-classic"></a>Exportieren und Löschen produktinterner Benutzerdaten aus Machine Learning Studio (Classic)
 
 **GILT FÜR:**  ![Gilt für ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Gilt nicht für ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 
 
-Daten, die im Produkt enthalten sind und von Azure Machine Learning Studio (klassisch) gespeichert wurden, können Sie über das Azure-Portal, die (klassische) Studio-Schnittstelle, PowerShell sowie authentifizierte REST-APIs löschen oder exportieren. In diesem Artikel erfahren Sie, wie das geht. 
+Produktinterne, von Machine Learning Studio (Classic) gespeicherte Daten können über das Azure-Portal, über die Benutzeroberfläche von Studio (Classic), per PowerShell sowie über authentifizierte REST-APIs gelöscht oder exportiert werden. In diesem Artikel erfahren Sie, wie das geht. 
 
 Auf Telemetriedaten können Sie über das Azure Privacy-Portal zugreifen. 
 
@@ -74,8 +74,8 @@ Benutzer können auch ihren gesamten Arbeitsbereich löschen:
 ![Löschen eines kostenlosen Arbeitsbereichs in Machine Learning Studio (klassisch)](./media/export-delete-personal-data-dsr/delete-studio-data-workspace.png)
  
 ## <a name="export-studio-classic-data-with-powershell"></a>Exportieren von Studio (klassisch)-Daten mit PowerShell
-Verwenden Sie PowerShell, um alle Informationen aus Azure Machine Learning Studio (klassisch) mithilfe von Befehlen in ein portables Format zu exportieren. Informationen hierzu finden Sie im Artikel [PowerShell-Modul für Azure Machine Learning Studio (klassisch)](powershell-module.md).
+Verwenden Sie PowerShell, um alle Informationen aus Machine Learning Studio (Classic) mithilfe von Befehlen in ein portables Format zu exportieren. Weitere Informationen finden Sie im Artikel [PowerShell-Module für Azure Machine Learning Studio (klassisch)](powershell-module.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine Dokumentation zur Abrechnung von Webdiensten und Vertragsplänen finden Sie in der Referenz zur [ (klassischen) Azure Machine Learning Studio-REST-API](/rest/api/machinelearning/).
+Eine Dokumentation zur Abrechnung von Webdiensten und Vertragsplänen finden Sie in der [Referenz zu REST-APIs für die Verwaltung von Machine Learning Studio (Classic)](/rest/api/machinelearning/).

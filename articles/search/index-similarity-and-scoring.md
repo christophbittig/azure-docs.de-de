@@ -2,24 +2,24 @@
 title: Übersicht über Ähnlichkeit und Bewertung
 titleSuffix: Azure Cognitive Search
 description: In diesem Artikel werden die Konzepte „Ähnlichkeit“ und „Bewertung“ erläutert sowie Arten, auf die Entwickler Bewertungsergebnisse anpassen können.
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: puneet-hariharan-MSFT
+ms.author: puhariharan
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
-ms.openlocfilehash: 72243f896b2cf7dbab61a42514bee634da28d4c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cacf6097234a5a2c7ec5261623fe653e509b8d9f
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676325"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112981428"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Ähnlichkeit und Bewertung in Azure Cognitive Search
 
-In diesem Artikel werden die beiden Ähnlichkeitsrangfolge-Algorithmen in Azure Cognitive Search beschrieben. Außerdem werden zwei verwandte Features eingeführt: *Bewertungsprofile* (Kriterien zur Anpassung einer Suchbewertung) und der Parameter *featuresMode* (entpackt eine Suchbewertung, um mehr Details anzuzeigen). 
+In diesem Artikel werden die beiden Ähnlichkeitsalgorithmen für die Rangfolge beschrieben, die von Azure Cognitive Search verwendet werden, um zu bestimmen, welche passenden Dokumente für die Abfrage am relevantesten sind. Außerdem werden in diesem Artikel zwei verwandte Features eingeführt: *Bewertungsprofile* (Kriterien zur Anpassung einer Suchbewertung) und der Parameter *featuresMode* (entpackt eine Suchbewertung, um mehr Details anzuzeigen).
 
-Ein dritter Algorithmus zur Neuerstellung der semantischen Rangfolge ist zurzeit als öffentliche Vorschauversion verfügbar. Wenn Sie weitere Informationen benötigen, lesen Sie zunächst [Übersicht über die semantische Suche](semantic-search-overview.md).
+> [!NOTE]
+> Ein dritter [Algorithmus zur Neuerstellung der semantischen Rangfolge](semantic-ranking.md) befindet sich gerade in der Public Preview-Phase. Wenn Sie weitere Informationen benötigen, lesen Sie zunächst [Übersicht über die semantische Suche](semantic-search-overview.md).
 
 ## <a name="similarity-ranking-algorithms"></a>Ähnlichkeitsalgorithmus für die Rangfolge
 

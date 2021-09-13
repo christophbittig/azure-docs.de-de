@@ -11,19 +11,19 @@ ms.date: 05/25/2021
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt
-ms.openlocfilehash: 3bc18e02345915c5446895a9acc5a33bd0b33431
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 0548b309f84f46d7e1a8c904115167d59cc6f10e
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746805"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112417395"
 ---
 # <a name="prebuilt-docker-images-for-inference-preview"></a>Vordefinierte Docker-Images für Rückschlüsse (Vorschau)
 
 Vordefinierte Docker-Containerimages für Rückschlüsse [(Vorschau)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) werden beim Bereitstellen eines Modells mit Azure Machine Learning verwendet.  Die Images sind mit gängigen Frameworks für maschinelles Lernen und Python-Paketen vordefiniert. Sie können die Pakete auch erweitern, um andere Pakete hinzuzufügen. Verwenden Sie dazu eine der folgenden Methoden:
 
 * [Hinzufügen von Python-Paketen](how-to-prebuilt-docker-images-inference-python-extensibility.md)
-* [Verwenden des vordefinierten Pakets als Basis für ein neues Dockerfile](how-to-extend-prebuilt-docker-image-inference.md) Mit dieser Methode können Sie sowohl **Python-Pakete als auch apt-Pakete installieren.**
+* [Verwenden eines vordefinierten Rückschlussimages als Grundlage für ein neues Dockerfile.](how-to-extend-prebuilt-docker-image-inference.md) Mit dieser Methode können Sie sowohl **Python-Pakete als auch apt-Pakete installieren.**
 
 ## <a name="why-should-i-use-prebuilt-images"></a>Was spricht für die Verwendung vordefinierter Images?
 
@@ -31,7 +31,6 @@ Vordefinierte Docker-Containerimages für Rückschlüsse [(Vorschau)](https://az
 * Verbessern der Erfolgsrate bei der Modellbereitstellung
 * Vermeiden unnötiger Imageerstellungen während der Modellbereitstellung
 * Sicherstellen, dass nur erforderliche Abhängigkeiten und Zugriffsrechte im Image/Container bereitgestellt werden 
-* Der Rückschlussprozess in der Bereitstellung wird ohne Root-Berechtigung ausgeführt.
 
 ## <a name="list-of-prebuilt-docker-images-for-inference"></a>Liste der vordefinierten Docker-Images für Rückschlüsse 
 

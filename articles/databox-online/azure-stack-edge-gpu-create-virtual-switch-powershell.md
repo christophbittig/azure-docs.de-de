@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 04/06/2021
+ms.date: 06/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 1ad86695510a8fe93bbeeab27db53f5afbef92fd
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 9910ac4d817879812803cd41f6b184846e1b02be
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106555924"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113106243"
 ---
 # <a name="create-a-new-virtual-switch-in-azure-stack-edge-pro-gpu-via-powershell"></a>Erstellen eines neuen virtuellen Switches auf der Azure Stack Edge Pro-GPU über PowerShell
 
@@ -52,7 +52,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
     ```
     Beispielausgabe:
     
-    ```powershell
+    ```output
         [10.100.10.10]: PS>Get-NetAdapter -Physical
         
         Name                      InterfaceDescription                    ifIndex Status       MacAddress       LinkSpeed
@@ -70,13 +70,13 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 2. Wählen Sie eine Netzwerkschnittstelle mit folgenden Eigenschaften aus:
 
     - Im Status **Up**. 
-    - Wird nicht von vorhandenen virtuellen Switches verwendet. Zurzeit kann nur ein virtueller Switch pro Netzwerkschnittstelle konfiguriert werden. 
+    - Wird nicht von vorhandenen virtuellen Switches verwendet. Aktuell kann nur ein einzelner virtueller Switch pro Netzwerkschnittstelle konfiguriert werden. 
     
     Um den vorhandenen virtuellen Switch und die Zuordnung der Netzwerkschnittstelle zu überprüfen, führen Sie den Befehl `Get-HcsExternalVirtualSwitch` aus.
  
     Hier sehen Sie eine Beispielausgabe.
 
-    ```powershell
+    ```output
     [10.100.10.10]: PS>Get-HcsExternalVirtualSwitch
 
     Name                          : vSwitch1
@@ -106,8 +106,8 @@ Identifizieren Sie den neu erstellten Switch mithilfe des Befehls `Get-HcsExtern
 
 Beispielausgabe:
 
-```powershell
-[10.100.10.10]: P> Add-HcsExternalVirtualSwitch -InterfaceAlias Port5 -WaitForSwitchCreation $true
+```output
+[10.100.10.10]: PS> Add-HcsExternalVirtualSwitch -InterfaceAlias Port5 -WaitForSwitchCreation $true
 [10.100.10.10]: PS>Get-HcsExternalVirtualSwitch
 
 Name                          : vSwitch1
@@ -135,11 +135,69 @@ Type                          : External
 [10.100.10.10]: PS>
 ```
 
-## <a name="verify-network-subnet"></a>Überprüfen von Netzwerk und Subnetz 
+## <a name="verify-network-subnet-for-switch"></a>Überprüfen des Netzwerks und des Subnetzes für den Switch
 
 Nachdem Sie den neuen virtuellen Switch erstellt haben, erstellt die Azure Stack Edge Pro-GPU automatisch ein virtuelles Netzwerk und Subnetz, das ihm entspricht. Sie können dieses virtuelle Netzwerk verwenden, wenn Sie virtuelle Computer erstellen.
 
-<!--To identify the virtual network and subnet associated with the new switch that you created, use the `Get-HcsVirtualNetwork` command. This cmdlet will be released in April some time. -->
+Verwenden Sie das Cmdlet `Get-HcsVirtualNetwork`, um das virtuelle Netzwerk und das Subnetz zu identifizieren, die dem neu erstellten Switch zugeordnet sind. 
+
+## <a name="create-virtual-lans"></a>Erstellen virtueller LANs
+
+Verwenden Sie das folgende Cmdlet, um eine VLAN-Konfiguration (Virtual Local Area Network, virtuelles lokales Netzwerk) für einen virtuellen Switch hinzuzufügen:
+
+```powershell
+Add-HcsVirtualNetwork-VirtualSwitchName <Virtual Switch name> -VnetName <Virtual Network Name> –VlanId <Vlan Id> –AddressSpace <Address Space> –GatewayIPAddress <Gateway IP>–DnsServers <Dns Servers List> -DnsSuffix <Dns Suffix name>
+``` 
+
+Für das Cmdlet `Add-HcsVirtualNetwork-VirtualSwitchName` können folgende Parameter verwendet werden:
+
+
+|Parameter  |BESCHREIBUNG  |
+|---------|---------|
+|VNetName     |Name für das virtuelle LAN         |
+|VirtualSwitchName    |Name des virtuellen Switchs, dem Sie die VLAN-Konfiguration hinzufügen möchten         |
+|AddressSpace     |Subnetzadressraum für das virtuelle LAN         |
+|GatewayIPAddress     |Gateway für das virtuelle Netzwerk         |
+|DnsServers     |Liste mit IP-Adressen des DNS-Servers         |
+|DnsSuffix     |DNS-Name ohne Hostteil für das Subnetz des virtuellen LAN         |
+
+
+
+Hier sehen Sie eine Beispielausgabe.
+
+```output
+[10.100.10.10]: PS> Add-HcsVirtualNetwork -VirtualSwitchName vSwitch1 -VnetName vlanNetwork100 -VlanId 100 -AddressSpace 5.5.0.0/16 -GatewayIPAddress 5.5.0.1 -DnsServers "5.5.50.50&quot;,&quot;5.5.50.100&quot; -DnsSuffix &quot;name.domain.com"
+
+[10.100.10.10]: PS> Get-HcsVirtualNetwork
+ 
+Name             : vnet2015
+AddressSpace     : 10.128.48.0/22
+SwitchName       : vSwitch1
+GatewayIPAddress : 10.128.48.1
+DnsServers       : {}
+DnsSuffix        :
+VlanId           : 2015
+ 
+Name             : vnet3011
+AddressSpace     : 10.126.64.0/22
+SwitchName       : vSwitch1
+GatewayIPAddress : 10.126.64.1
+DnsServers       : {}
+DnsSuffix        :
+VlanId           : 3011
+```
+ 
+> [!NOTE]
+> - Sie können mehrere virtuelle LANs für den gleichen virtuellen Switch konfigurieren. 
+> - Die Gateway-IP-Adresse muss sich im gleichen Subnetz befinden wie der als Adressraum übergebene Parameter.
+> - Sie können einen virtuellen Switch nicht entfernen, wenn virtuelle LANs konfiguriert sind. Wenn Sie diesen virtuellen Switch löschen möchten, müssen Sie zuerst das virtuelle LAN und dann den virtuellen Switch löschen.
+
+## <a name="verify-network-subnet-for-virtual-lan"></a>Überprüfen des Netzwerks und des Subnetzes für das virtuelle LAN
+
+Nachdem Sie das virtuelle LAN erstellt haben, werden automatisch ein virtuelles Netzwerk und ein entsprechendes Subnetz erstellt. Sie können dieses virtuelle Netzwerk verwenden, wenn Sie virtuelle Computer erstellen.
+
+Verwenden Sie das Cmdlet `Get-HcsVirtualNetwork`, um das virtuelle Netzwerk und das Subnetz zu identifizieren, die dem neu erstellten Switch zugeordnet sind.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -3,12 +3,12 @@ title: Konfigurieren Ihres eigenen Schlüssels zum Verschlüsseln ruhender Azure
 description: Dieser Artikel enthält Informationen dazu, wie Sie einen eigenen Schlüssel für die Verschlüsselung ruhender Azure Event Hubs-Daten konfigurieren.
 ms.topic: conceptual
 ms.date: 05/04/2021
-ms.openlocfilehash: 89d12079195406e4b3c6da77105dc359cc1dacae
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: cddeb2e11dc631e6eb9b43f6606d7ca4b41a6e35
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110377241"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113032865"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für die Verschlüsselung ruhender Azure Event Hubs-Daten mithilfe des Azure-Portals
 Azure Event Hubs ermöglicht die Verschlüsselung ruhender Daten mit Azure Storage Service Encryption (Azure SSE). Der Event Hubs-Dienst verwendet zum Speichern der Daten Azure Storage. Alle in Azure Storage gespeicherten Daten werden mit von Microsoft verwalteten Schlüsseln verschlüsselt. Wenn Sie einen eigenen Schlüssel verwenden – Bring Your Own Key (BYOK) oder kundenseitig verwalteter Schlüssel –, werden die Daten trotzdem mit dem von Microsoft verwalteten Schlüssel verschlüsselt. Zusätzlich wird der von Microsoft verwaltete Schlüssel jedoch mit dem kundenseitig verwalteten Schlüssel verschlüsselt. Mit dieser Funktion können Sie kundenseitig verwaltete Schlüssel, die zum Verschlüsseln der von Microsoft verwalteten Schlüssel verwendet werden, erstellen, rotieren, deaktivieren und den Zugriff darauf widerrufen. Die Aktivierung der BYOK-Funktion ist ein einmaliger Setupvorgang für Ihren Namespace.
@@ -337,7 +337,7 @@ In diesem Schritt aktualisieren Sie den Event Hubs-Namespace mit Schlüsseltres
                 "maximumThroughputUnits":0,
                 "clusterArmId":"[resourceId('Microsoft.EventHub/clusters', parameters('clusterName'))]",
                 "encryption":{
-                   "keySource":"Microsoft.KeyVault",
+                   "keySource":"Microsoft.KeyVault",                   
                    "keyVaultProperties":[
                       {
                          "keyName":"[parameters('keyName')]",
@@ -389,6 +389,31 @@ In diesem Schritt aktualisieren Sie den Event Hubs-Namespace mit Schlüsseltres
     ```powershell
     New-AzResourceGroupDeployment -Name UpdateEventHubNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateEventHubClusterAndNamespace.json -TemplateParameterFile ./UpdateEventHubClusterAndNamespaceParams.json 
     ```
+
+#### <a name="enable-infrastructure-encryption-for-double-encryption-of-data-in-event-hubs-namespace"></a>Aktivieren der Infrastrukturverschlüsselung für die Mehrfachverschlüsselung von Daten im Event Hubs-Namespace
+Wenn Sie Ihre Daten noch besser schützen möchten, können Sie die Verschlüsselung auf Infrastrukturebene (auch Mehrfachverschlüsselung genannt) aktivieren. 
+
+Bei aktivierter Infrastrukturverschlüsselung werden Daten im Event Hubs-Namespacekonto zweimal (einmal auf Dienstebene und einmal auf Infrastrukturebene) mit zwei unterschiedlichen Verschlüsselungsalgorithmen und zwei verschiedenen Schlüsseln verschlüsselt. Somit schützt die Infrastrukturverschlüsselung von Event Hubs-Daten vor Szenarien, in denen einer der Verschlüsselungsalgorithmen oder Schlüssel kompromittiert wurde.
+
+Sie können die Infrastrukturverschlüsselung aktivieren, indem Sie die ARM-Vorlage in der weiter oben erwähnten Datei **CreateEventHubClusterAndNamespace.json** mit der Eigenschaft `requireInfrastructureEncryption` aktualisieren, wie hier gezeigt: 
+
+```json
+"properties":{
+   "isAutoInflateEnabled":false,
+   "maximumThroughputUnits":0,
+   "clusterArmId":"[resourceId('Microsoft.EventHub/clusters', parameters('clusterName'))]",
+   "encryption":{
+      "keySource":"Microsoft.KeyVault",
+      "requireInfrastructureEncryption":true,
+      "keyVaultProperties":[
+         {
+            "keyName":"[parameters('keyName')]",
+            "keyVaultUri":"[parameters('keyVaultUri')]"
+         }
+      ]
+   }
+}
+```
 
 ## <a name="troubleshoot"></a>Problembehandlung
 Es wird empfohlen, Protokolle immer wie im vorherigen Abschnitt gezeigt zu aktivieren. Dies hilft dabei, die Aktivitäten nachzuverfolgen, wenn die BYOK-Verschlüsselung aktiviert ist. Außerdem können dadurch Probleme eingegrenzt werden.
