@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: justinha
-ms.openlocfilehash: 9a126fe4676f340fb45677382a3aeeed79291f0b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a5aab12a0d3c24ef7bef9eee6c02b244e33c11e9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100574204"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346041"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Überprüfen von Sicherheitsüberwachungsereignissen in Azure Active Directory Domain Services mithilfe von Azure Monitor-Arbeitsmappen
 
@@ -54,7 +54,7 @@ Damit Sie die Nutzung besser verstehen und potenzielle Sicherheitsbedrohungen er
 
 Führen Sie die folgenden Schritte aus, um auf die Arbeitsmappenvorlage für „Security Overview Report“ (Sicherheitsübersichtsbericht) zuzugreifen:
 
-1. Suchen Sie im Azure-Portal die Option **Azure Active Directory Domain Services**, und wählen Sie sie aus.
+1. Suchen Sie im Azure-Portal nach dem Eintrag **Azure AD Domain Services**, und wählen Sie ihn aus.
 1. Wählen Sie Ihre verwaltete Domäne (z. B. *aaddscontoso.com*) aus.
 1. Wählen Sie im Menü auf der linken Seite **Überwachung > Arbeitsmappen** aus.
 
@@ -83,7 +83,7 @@ Zur Unterstützung bei der Behandlung von Problemen bei einem spezifischen Benut
 
 Führen Sie die folgenden Schritte aus, um auf die Arbeitsmappenvorlage für „Account Activity Report“ (Bericht zur Kontoaktivität) zuzugreifen:
 
-1. Suchen Sie im Azure-Portal die Option **Azure Active Directory Domain Services**, und wählen Sie sie aus.
+1. Suchen Sie im Azure-Portal nach dem Eintrag **Azure AD Domain Services**, und wählen Sie ihn aus.
 1. Wählen Sie Ihre verwaltete Domäne (z. B. *aaddscontoso.com*) aus.
 1. Wählen Sie im Menü auf der linken Seite **Überwachung > Arbeitsmappen** aus.
 1. Wählen Sie **Account Activity Report** (Bericht zur Kontoaktivität) aus.

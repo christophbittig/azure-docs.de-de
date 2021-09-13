@@ -2,13 +2,13 @@
 title: 'Azure Monitor-Ressourcenprotokolle: unterstützte Dienste und Kategorien'
 description: 'Referenz zu Azure Monitor: Erläuterung der unterstützten Dienste und Ereignisschemas für Azure-Ressourcenprotokolle.'
 ms.topic: reference
-ms.date: 05/26/2021
-ms.openlocfilehash: b45e478b11290002cb2445b1a57662bacba407dd
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.date: 08/04/2021
+ms.openlocfilehash: 2cbe701f3fbedacf29124c823743966be1f7ba32
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110534425"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122343083"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Unterstützte Kategorien für Azure-Ressourcenprotokolle
 
@@ -23,9 +23,9 @@ Ein Schema wird mit einer Kombination aus dem Ressourcentyp (in der `resourceId`
 
 ## <a name="costs"></a>Kosten
 
-Das Senden und Speichern von Daten an und in Log Analytics, Azure Storage und/oder Event Hub ist mit Kosten verbunden. Sie können die Kosten bezahlen, um die Daten an diese Speicherorte zu senden und dort zu speichern.  Ressourcenprotokolle sind ein Datentyp, den Sie an diese Speicherorte senden können. 
+Bei [Azure Monitor Log Analytics](https://azure.microsoft.com/pricing/details/monitor/), [Azure Storage](https://azure.microsoft.com/product-categories/storage/), [Event Hub](https://azure.microsoft.com/pricing/details/event-hubs/) und Partnern, die direkt mit Azure Monitor integrieren ([z. B. Datadog](../../partner-solutions/datadog/overview.md)), fallen Kosten für das Erfassen und Speichern von Daten an. Nutzen Sie die vorherigen Links zu Preisseiten für diese Dienste, um die Kosten nachvollziehen zu können. Ressourcenprotokolle sind nur ein Datentyp, den Sie an diese Speicherorte senden können. 
 
-Beim Exportieren einiger Kategorien von Ressourcenprotokollen an diese Speicherorte entstehen zusätzliche Kosten. Die Protokolle, die Exportkosten verursachen, sind in der folgenden Tabelle aufgeführt. Weitere Informationen zu den Preisen finden Sie im Abschnitt „Plattformprotokolle“ auf der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/).
+Zusätzlich fallen möglicherweise Kosten für den Export von einigen Kategorien von Ressourcenprotokollen in diese Speicherorte an. Die Protokolle, die eventuell Exportkosten verursachen, sind in der folgenden Tabelle aufgeführt. Weitere Informationen zu den Preisen für das Exportieren finden Sie im Abschnitt *Plattformprotokolle* auf der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/).
 
 ## <a name="supported-log-categories-per-resource-type"></a>Unterstützte Protokollkategorien pro Ressourcentyp
 
@@ -34,6 +34,7 @@ Es folgt eine Liste der Arten von Protokollen, die für jeden Ressourcentyp verf
 Einige Kategorien werden möglicherweise nur für bestimmte Ressourcentypen unterstützt. Wenn Sie der Meinung sind, dass eine Ressource fehlt, lesen Sie die ressourcenspezifische Dokumentation. Beispielsweise sind Kategorien des Typs „Microsoft.Sql/servers/databases“ nicht für alle Datenbanktypen verfügbar. Weitere Informationen finden Sie unter den [Informationen zur SQL-Datenbank-Diagnoseprotokollierung](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md). 
 
 Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Artikel einen GitHub-Kommentar öffnen.
+
 
 ## <a name="microsoftaaddomainservices"></a>Microsoft.AAD/DomainServices
 
@@ -113,6 +114,7 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |---|---|---|
 |Audit|Audit|Ja|
 |Bei Betrieb|Bei Betrieb|Ja|
+|Anforderung|Anforderung|Ja|
 
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
@@ -120,15 +122,6 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
 |ServiceLog|Dienstprotokolle|Nein|
-
-
-## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/workspaces
-
-|Category|Anzeigename der Kategorie|Exportkosten|
-|---|---|---|
-|BaiClusterEvent|BaiClusterEvent|Nein|
-|BaiClusterNodeEvent|BaiClusterNodeEvent|Nein|
-|BaiJobEvent|BaiJobEvent|Nein|
 
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft.Blockchain/blockchainMembers
@@ -200,6 +193,8 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
 |AuthOperational|Protokolle zum Authentifizierungsbetrieb|Ja|
+|CallDiagnosticsPRIVATEPREVIEW|Anrufdiagnoseprotokolle – PRIVATE VORSCHAU|Ja|
+|CallSummaryPRIVATEPREVIEW|Anrufzusammenfassungsprotokolle – PRIVATE VORSCHAU|Ja|
 |ChatOperational|Protokolle zum Chatbetrieb|Nein|
 |SMSOperational|Protokolle zum SMS-Betrieb|Nein|
 |Verwendung|Verwendungsdatensätze|Nein|
@@ -255,10 +250,18 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |accounts|Databricks-Konten|Nein|
 |clusters|Databricks-Cluster|Nein|
 |dbfs|Databricks-Dateisystem|Nein|
+|featureStore|Featurespeicher von Databricks|Ja|
+|genie|Databricks-Genie|Ja|
+|globalInitScripts|Globale Databricks-Init-Skripts|Ja|
+|iamRole|Databricks-IAM-Rolle|Ja|
 |instancePools|Instanzenpools|Nein|
 |jobs|Databricks-Aufträge|Nein|
+|mlflowAcledArtifact|Databricks-MLFlow-Artefakt in ACL|Ja|
+|mlflowExperiment|Databricks-MLFlow-Experiment|Ja|
 |Notebook|Databricks-Notebook|Nein|
+|RemoteHistoryService|Databricks-Remoteverlaufsdienst|Ja|
 |secrets|Databricks-Geheimnisse|Nein|
+|sqlanalytics|Databricks-SQL-Analysen|Ja|
 |sqlPermissions|Databricks-SQL-Berechtigungen|Nein|
 |ssh|Databricks-SSH|Nein|
 |Arbeitsbereich|Databricks-Arbeitsbereich|Nein|
@@ -462,7 +465,7 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |ResourceProviderOperation|ResourceProviderOperation|Ja|
 
 
-## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
+## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/DatabaseAccounts
 
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
@@ -535,11 +538,18 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |Anforderung|Anforderung|Nein|
 
 
-## <a name="microsofthealthcareapisservices"></a>Microsoft.HealthcareApis/services
+## <a name="microsofthealthcareapisworkspacesdicomservices"></a>Microsoft.HealthcareApis/workspaces/dicomservices
 
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
-|AuditLogs|Überwachungsprotokolle|Nein|
+|AuditLogs|Überwachungsprotokolle|Ja|
+
+
+## <a name="microsofthealthcareapisworkspacesfhirservices"></a>Microsoft.HealthcareApis/workspaces/fhirservices
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|AuditLogs|FHIR-Überwachungsprotokolle|Ja|
 
 
 ## <a name="microsoftinsightsautoscalesettings"></a>microsoft.insights/autoscalesettings
@@ -594,14 +604,14 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |TableUsageStatistics|Tabellenverwendungsstatistik|Nein|
 
 
-## <a name="microsoftlogicintegrationaccounts"></a>Microsoft.Logic/integrationAccounts
+## <a name="microsoftlogicintegrationaccounts"></a>Microsoft.Logic/IntegrationAccounts
 
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
 |IntegrationAccountTrackingEvents|Integrationskonto –Nachverfolgen von Ereignissen|Nein|
 
 
-## <a name="microsoftlogicworkflows"></a>Microsoft.Logic/workflows
+## <a name="microsoftlogicworkflows"></a>Microsoft.Logic/Workflows
 
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
@@ -617,6 +627,27 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |AmlComputeCpuGpuUtilization|AmlComputeCpuGpuUtilization|Nein|
 |AmlComputeJobEvent|AmlComputeJobEvent|Nein|
 |AmlRunStatusChangedEvent|AmlRunStatusChangedEvent|Nein|
+|ComputeInstanceEvent|ComputeInstanceEvent|Ja|
+|DataLabelChangeEvent|DataLabelChangeEvent|Ja|
+|DataLabelReadEvent|DataLabelReadEvent|Ja|
+|DataSetChangeEvent|DataSetChangeEvent|Ja|
+|DataSetReadEvent|DataSetReadEvent|Ja|
+|DataStoreChangeEvent|DataStoreChangeEvent|Ja|
+|DataStoreReadEvent|DataStoreReadEvent|Ja|
+|DeploymentEventACI|DeploymentEventACI|Ja|
+|DeploymentEventAKS|DeploymentEventAKS|Ja|
+|DeploymentReadEvent|DeploymentReadEvent|Ja|
+|EnvironmentChangeEvent|EnvironmentChangeEvent|Ja|
+|EnvironmentReadEvent|EnvironmentReadEvent|Ja|
+|InferencingOperationACI|InferencingOperationACI|Ja|
+|InferencingOperationAKS|InferencingOperationAKS|Ja|
+|ModelsActionEvent|ModelsActionEvent|Ja|
+|ModelsChangeEvent|ModelsChangeEvent|Ja|
+|ModelsReadEvent|ModelsReadEvent|Ja|
+|PipelineChangeEvent|PipelineChangeEvent|Ja|
+|PipelineReadEvent|PipelineReadEvent|Ja|
+|RunEvent|RunEvent|Ja|
+|RunReadEvent|RunReadEvent|Ja|
 
 
 ## <a name="microsoftmediamediaservices"></a>Microsoft.Media/mediaservices
@@ -624,6 +655,7 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
 |KeyDeliveryRequests|Schlüsselübermittlungsanforderungen|Nein|
+|MediaAccount|Integritätsstatus des Medienkontos|Ja|
 
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationgateways
@@ -644,7 +676,7 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |AzureFirewallNetworkRule|Azure Firewall-Netzwerkregel|Nein|
 
 
-## <a name="microsoftnetworkbastionhosts"></a>Microsoft.Network/bastionHosts
+## <a name="microsoftnetworkbastionhosts"></a>microsoft.network/bastionHosts
 
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
@@ -683,7 +715,7 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |NetworkSecurityGroupRuleCounter|Regelzähler der Netzwerksicherheitsgruppe|Nein|
 
 
-## <a name="microsoftnetworkp2svpngateways"></a>Microsoft.Network/p2sVpnGateways
+## <a name="microsoftnetworkp2svpngateways"></a>microsoft.network/p2svpngateways
 
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
@@ -708,7 +740,7 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |ProbeHealthStatusEvents|Traffic Manager-Testintegritätsergebnisse (Ereignis)|Nein|
 
 
-## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.Network/virtualNetworkGateways
+## <a name="microsoftnetworkvirtualnetworkgateways"></a>microsoft.network/virtualnetworkgateways
 
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
@@ -726,7 +758,7 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |VMProtectionAlerts|VM-Schutz-Warnungen|Nein|
 
 
-## <a name="microsoftnetworkvpngateways"></a>Microsoft.Network/vpnGateways
+## <a name="microsoftnetworkvpngateways"></a>microsoft.network/vpngateways
 
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
@@ -747,7 +779,7 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
-|Audit|Überwachungsprotokolle|Nein|
+|Audit|Audit|Ja|
 
 
 ## <a name="microsoftpowerbitenants"></a>Microsoft.PowerBI/tenants
@@ -755,7 +787,6 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
 |Engine|Engine|Nein|
-
 
 ## <a name="microsoftpowerbitenantsworkspaces"></a>Microsoft.PowerBI/tenants/workspaces
 
@@ -775,6 +806,7 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
+|DataSensitivityLogEvent|DataSensitivity|Ja|
 |ScanStatusLogEvent|ScanStatus|Nein|
 
 
@@ -939,19 +971,6 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |BigDataPoolAppsEnded|Big Data-Pool, beendete Anwendungen|Nein|
 
 
-## <a name="microsoftsynapseworkspaceskustopools"></a>Microsoft.Synapse/workspaces/kustoPools
-
-|Category|Anzeigename der Kategorie|Exportkosten|
-|---|---|---|
-|Befehl|Befehl|Ja|
-|FailedIngestion|Fehlgeschlagene Erfassungsvorgänge|Ja|
-|IngestionBatching|Batchverarbeitung der Datenerfassung|Ja|
-|Abfrage|Abfrage|Ja|
-|SucceededIngestion|Erfolgreiche Erfassungsvorgänge|Ja|
-|TableDetails|Tabellendetails|Ja|
-|TableUsageStatistics|Tabellenverwendungsstatistik|Ja|
-
-
 ## <a name="microsoftsynapseworkspacessqlpools"></a>Microsoft.Synapse/workspaces/sqlPools
 
 |Category|Anzeigename der Kategorie|Exportkosten|
@@ -980,7 +999,7 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |Verwaltung|Verwaltung|Nein|
 
 
-## <a name="microsoftwebhostingenvironments"></a>microsoft.web/hostingenvironments
+## <a name="microsoftwebhostingenvironments"></a>Microsoft.Web/hostingEnvironments
 
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
@@ -1010,6 +1029,7 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |AppServiceAppLogs|App Service-Anwendungsprotokolle|Nein|
 |AppServiceAuditLogs|Zugriffsüberwachungsprotokolle|Nein|
 |AppServiceConsoleLogs|App Service-Konsolenprotokolle|Nein|
+|AppServiceDiagnosticToolsLogs|Protokolle des Berichtsdiagnosetools|Ja|
 |AppServiceFileAuditLogs|Überwachungsprotokolle für Website-Inhaltsänderungen|Nein|
 |AppServiceHTTPLogs|HTTP-Protokolle|Nein|
 |AppServiceIPSecAuditLogs|IPSecurity-Überwachungsprotokolle|Nein|
@@ -1023,4 +1043,3 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 * [Streamen von Ressourcenprotokollen an **Event Hubs**](./resource-logs.md#send-to-azure-event-hubs)
 * [Ändern der Diagnoseeinstellungen für Ressourcenprotokolle mithilfe der Azure Monitor-REST-API](/rest/api/monitor/diagnosticsettings)
 * [Analysieren von Protokollen aus Azure Storage mit Log Analytics](./resource-logs.md#send-to-log-analytics-workspace)
-

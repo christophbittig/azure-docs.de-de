@@ -5,26 +5,26 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/20/2021
+ms.date: 06/15/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99da9afc9afb3c6eb19caf696c6b9802aed6a2dd
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 6ec4457eeb60029783981824b93d2eadfaa1271b
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111953664"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866319"
 ---
-# <a name="conditional-access-cloud-apps-actions-and-authentication--context"></a>Bedingter Zugriff: Cloud-Apps, Aktionen und Authentifizierungskontext
+# <a name="conditional-access-cloud-apps-actions-and-authentication-context"></a>Bedingter Zugriff: Cloud-Apps, Aktionen und Authentifizierungskontext
 
 Cloud-Apps, -Aktionen und -Authentifizierungskontext sind wichtige Signale in einer Richtlinie für bedingten Zugriff. Richtlinien für bedingten Zugriff ermöglichen Administratoren das Zuweisen von Steuerelementen zu bestimmten Anwendungen, Aktionen oder Authentifizierungskontext.
 
 - Administratoren stehen eine Reihe von Anwendungen zur Auswahl. Dazu zählen integrierte Microsoft-Anwendungen und alle [in Azure AD integrierten Anwendungen](../manage-apps/what-is-application-management.md) (Katalog- und Nicht-Kataloganwendungen) sowie über den [Anwendungsproxy](../app-proxy/what-is-application-proxy.md) veröffentlichte Anwendungen.
-- Administratoren können sich entscheiden, die Richtlinie nicht basierend auf einer Cloudanwendung zu definieren, sondern basierend auf einer [Benutzeraktion](#user-actions) wie etwa **Sicherheitsinformationen registrieren** oder **Geräte registrieren oder beitreten (Vorschauversion)** , sodass der bedingte Zugriff Kontrollmaßnahmen bezüglich dieser Aktionen durchsetzen kann.
-- Administratoren können den [Authentifizierungskontext](#authentication-context-preview) verwenden, um eine zusätzliche Sicherheitsebene innerhalb von Anwendungen zu schaffen. 
+- Administratoren können sich entscheiden, die Richtlinie nicht basierend auf einer Cloudanwendung zu definieren, sondern basierend auf einer [Benutzeraktion](#user-actions) wie etwa **Sicherheitsinformationen registrieren** oder **Geräte registrieren oder beitreten**, sodass der bedingte Zugriff Kontrollmaßnahmen bezüglich dieser Aktionen durchsetzen kann.
+- Administratoren können den [Authentifizierungskontext](#authentication-context-preview) verwenden, um eine zusätzliche Sicherheitsebene in Anwendungen zu schaffen. 
 
 ![Definieren einer Richtlinie für bedingten Zugriff und Angeben von Cloud-Apps](./media/concept-conditional-access-cloud-apps/conditional-access-cloud-apps-or-actions.png)
 
@@ -40,7 +40,7 @@ Administratoren können den folgenden Cloud-Apps von Microsoft eine Richtlinie f
 - Azure Event Hubs
 - Azure Service Bus
 - [Azure SQL Database und Azure Synapse Analytics](../../azure-sql/database/conditional-access-configure.md)
-- Dynamics CRM Online
+- Common Data Service
 - Microsoft Application Insights Analytics
 - [Microsoft Azure Information Protection](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
 - [Microsoft Azure Management](#microsoft-azure-management)
@@ -48,12 +48,12 @@ Administratoren können den folgenden Cloud-Apps von Microsoft eine Richtlinie f
 - Microsoft Cloud App Security
 - Portal für die Zugriffssteuerung auf Microsoft Commerce-Tools
 - Authentifizierungsdienst für Microsoft Commerce-Tools
-- Microsoft Flow
 - Microsoft Forms
 - Microsoft Intune
 - [Microsoft Intune-Registrierung](/intune/enrollment/multi-factor-authentication)
 - Microsoft Planner
-- Microsoft PowerApps
+- Microsoft Power Apps
+- Microsoft Power Automate
 - Microsoft-Suche in Bing
 - Microsoft StaffHub
 - Microsoft Stream
@@ -70,19 +70,21 @@ Administratoren können den folgenden Cloud-Apps von Microsoft eine Richtlinie f
 - Virtuelles privates Netzwerk (VPN):
 - Windows Defender ATP
 
-Anwendungen, die für den bedingten Zugriff verfügbar sind, haben einen Onboarding- und Validierungsprozess durchlaufen. Diese Liste schließt nicht alle Microsoft-Apps ein, da viele Back-End-Dienste sind und nicht vorgesehen ist, Richtlinien direkt auf sie anzuwenden. Wenn Sie eine fehlende Anwendung suchen, können Sie sich an das jeweilige Anwendungsteam wenden oder eine Anforderung an [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=167259) senden.
+> [!IMPORTANT]
+> Anwendungen, die für den bedingten Zugriff verfügbar sind, haben einen Onboarding- und Validierungsprozess durchlaufen. Diese Liste schließt nicht alle Microsoft-Apps ein, da viele Back-End-Dienste sind und nicht vorgesehen ist, Richtlinien direkt auf sie anzuwenden. Wenn Sie eine fehlende Anwendung suchen, können Sie sich an das jeweilige Anwendungsteam wenden oder eine Anforderung an [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=167259) senden.
 
 ### <a name="office-365"></a>Office 365
 
 Microsoft 365 stellt cloudbasierte Dienste für Produktivität und Zusammenarbeit wie Exchange, SharePoint und Microsoft Teams bereit. Microsoft 365-Clouddienste sind umfassend integriert, um nahtlose Funktionen für die Zusammenarbeit zu gewährleisten. Diese Integration kann beim Erstellen von Richtlinien zu Verwirrung führen, da einige Apps wie Microsoft Teams Abhängigkeiten von anderen Apps wie SharePoint oder Exchange aufweisen.
 
-Mit der Office 365-App können Sie gleichzeitig auf all diese Dienste abzielen. Wir empfehlen die Verwendung der neuen Office 365-App, statt auf einzelne Cloud-Apps abzuzielen, um Probleme mit [Dienstabhängigkeiten](service-dependencies.md) zu vermeiden. Eine Ausrichtung auf diese Gruppe von Anwendungen trägt dazu bei, Probleme zu vermeiden, die aufgrund inkonsistenter Richtlinien und Abhängigkeiten auftreten können.
+Mit der Office 365-Suite können Sie gleichzeitig auf all diese Dienste abzielen. Wir empfehlen die Verwendung der neuen Office 365-Suite, statt auf einzelne Cloud-Apps abzuzielen, um Probleme mit [Dienstabhängigkeiten](service-dependencies.md) zu vermeiden. 
 
-Administratoren können wahlweise bestimmte Apps von der Richtlinie ausschließen, indem sie die Office 365-App einbeziehen und bestimmte Apps ihrer Wahl in der Richtlinie ausschließen.
+Eine Ausrichtung auf diese Gruppe von Anwendungen trägt dazu bei, Probleme zu vermeiden, die aufgrund inkonsistenter Richtlinien und Abhängigkeiten auftreten können. Beispiel: Die Exchange Online-App ist an herkömmliche Exchange Online-Daten wie E-Mail-, Kalender- und Kontaktinformationen gebunden. Zugehörige Metadaten können über verschiedene Ressourcen wie die Suche verfügbar gemacht werden. Administratoren sollten der Office 365-Suite Richtlinien zuweisen, um sicherzustellen, dass alle Metadaten wie beabsichtigt durch geschützt werden.
 
-Die Client-App von Office 365 enthält u.a. die folgenden wichtigen Anwendungen:
+Administratoren können bestimmte Apps von der Richtlinie ausschließen, indem sie die Office 365-Suite einbeziehen und bestimmte Apps in der Richtlinie ausschließen.
 
-   - Microsoft Flow
+Die Client-App von Office 365 enthält u. a. die folgenden wichtigen Anwendungen:
+
    - Microsoft Forms
    - Microsoft Stream
    - Microsoft To-Do
@@ -95,13 +97,14 @@ Die Client-App von Office 365 enthält u.a. die folgenden wichtigen Anwendungen
    - Office Online
    - Office.com
    - OneDrive
-   - PowerApps
+   - Power Automate
+   - Power Apps
    - Skype for Business Online
    - Sway
 
 ### <a name="microsoft-azure-management"></a>Microsoft Azure Management
 
-Die Microsoft Azure Management-Anwendung enthält mehrere zugrundeliegende Dienste. 
+Die Microsoft Azure Management-Anwendung enthält mehrere Dienste. 
 
    - Azure-Portal
    - Azure Resource Manager-Anbieter
@@ -117,7 +120,7 @@ Die Microsoft Azure Management-Anwendung enthält mehrere zugrundeliegende Diens
 
 ### <a name="other-applications"></a>Andere Anwendungen
 
-Neben den Microsoft-Apps können Administratoren jede für Azure AD registrierte Anwendung zu Richtlinien für bedingten Zugriff hinzufügen. Dazu zählen u.a. die folgenden Anwendungen: 
+Administratoren können jede für Azure AD registrierte Anwendung zu Richtlinien für bedingten Zugriff hinzufügen. Dazu zählen u.a. die folgenden Anwendungen: 
 
 - Über den [Azure AD-Anwendungsproxy](../app-proxy/what-is-application-proxy.md) veröffentlichte Anwendungen
 - [Aus dem Katalog hinzugefügte Anwendungen](../manage-apps/add-application-portal.md)
@@ -134,9 +137,9 @@ Benutzeraktionen sind Aufgaben, die von einem Benutzer ausgeführt werden könne
 
 - **Sicherheitsinformationen registrieren**: Mit dieser Benutzeraktion kann eine Richtlinie für bedingten Zugriff erzwungen werden, wenn Benutzer, für die die kombinierte Registrierung aktiviert ist, versuchen, ihre Sicherheitsinformationen zu registrieren. Weitere Informationen finden Sie im Artikel [Kombinierte Registrierung von Sicherheitsinformationen](../authentication/concept-registration-mfa-sspr-combined.md).
 
-- **Geräte registrieren oder verknüpfen (Vorschau)** : Mit dieser Benutzeraktion können Administratoren eine Richtlinie für bedingten Zugriff erzwingen, wenn Benutzer Geräte in Azure AD [registrieren](../devices/concept-azure-ad-register.md) oder mit Azure AD [verknüpfen](../devices/concept-azure-ad-join.md). Sie bietet Granularität bei der Konfiguration der Multi-Factor Authentication für das Registrieren oder Einbinden von Geräten anstelle einer derzeit vorhandenen mandantenweiten Richtlinie. Bei dieser Benutzeraktion sind drei wichtige Punkte zu beachten: 
+- **Geräte registrieren oder verknüpfen**: Mit dieser Benutzeraktion können Administratoren eine Richtlinie für bedingten Zugriff erzwingen, wenn Benutzer Geräte in Azure AD [registrieren](../devices/concept-azure-ad-register.md) oder mit Azure AD [verknüpfen](../devices/concept-azure-ad-join.md). Sie bietet Granularität bei der Konfiguration der Multi-Factor Authentication für das Registrieren oder Einbinden von Geräten anstelle einer derzeit vorhandenen mandantenweiten Richtlinie. Bei dieser Benutzeraktion sind drei wichtige Punkte zu beachten: 
    - `Require multi-factor authentication` ist die einzige Zugriffssteuerung, die bei dieser Benutzeraktion verfügbar ist. Alle anderen Zugriffssteuerungen sind deaktiviert. Durch diese Einschränkung werden Konflikte mit Zugriffssteuerungen verhindert, die entweder von der Azure AD-Geräteregistrierung abhängig sind oder nicht für die Azure AD-Geräteregistrierung gelten. 
-   - Die Bedingungen `Client apps` und `Device state` sind bei dieser Benutzeraktion nicht verfügbar, da sie zum Erzwingen von Richtlinien für den bedingten Zugriff von der Azure AD-Geräteregistrierung abhängig sind.
+   - Die Bedingungen `Client apps`, `Filters for devices` und `Device state` sind bei dieser Benutzeraktion nicht verfügbar, da sie zum Erzwingen von Richtlinien für den bedingten Zugriff von der Azure AD-Geräteregistrierung abhängig sind.
    - Wenn bei dieser Benutzeraktion eine Richtlinie für bedingten Zugriff aktiviert ist, muss **Azure Active Directory** > **Geräte** > **Geräteeinstellungen** - `Devices to be Azure AD joined or Azure AD registered require Multi-Factor Authentication` auf **Nein** festgelegt werden. Anderenfalls wird die Richtlinie für den bedingten Zugriff bei dieser Benutzeraktion nicht ordnungsgemäß erzwungen. Weitere Informationen zu dieser Geräteeinstellung finden Sie unter [Konfigurieren von Geräteeinstellungen](../devices/device-management-azure-portal.md#configure-device-settings). 
 
 ## <a name="authentication-context-preview"></a>Authentifizierungskontext (Vorschau)
@@ -162,15 +165,19 @@ Erstellen Sie neue Authentifizierungskontextdefinitionen, indem Sie im Azure-Por
 - Wenn das Kontrollkästchen **In Apps veröffentlichen** aktiviert ist, wird der Authentifizierungskontext für Apps ankündigen und zur Zuweisung zur Verfügung gestellt. Wenn es nicht aktiviert ist, ist der Authentifizierungskontext für Downstream-Ressourcen nicht verfügbar. 
 - Die **ID** ist schreibgeschützt und wird in Token und Apps für anforderungsspezifische Authentifizierungskontextdefinitionen verwendet. Sie ist hier zu Zwecken der Problembehandlung und für die Entwicklung aufgeführt. 
 
-Administratoren können dann veröffentlichte Authentifizierungskontexte in ihren Richtlinien für bedingten Zugriff unter **Zuweisungen** > **Cloud-Apps oder -Aktionen** > **Authentifizierungskontext** auswählen.
+#### <a name="add-to-conditional-access-policy"></a>Hinzufügen zur Richtlinie für bedingten Zugriff
+
+Administratoren können veröffentlichte Authentifizierungskontexte in ihren Richtlinien für bedingten Zugriff unter **Zuweisungen** > **Cloud-Apps oder -Aktionen** **Authentifizierungskontext** im Menü **Auswählen, wofür diese Richtlinie gilt** auswählen.
+
+:::image type="content" source="media/concept-conditional-access-cloud-apps/conditional-access-authentication-context-in-policy.png" alt-text="Hinzufügen eines Authentifizierungskontexts für bedingten Zugriff zu einer Richtlinie":::
 
 ### <a name="tag-resources-with-authentication-contexts"></a>Ressourcen mit Authentifizierungskontexten markieren 
 
 Weitere Informationen zur Verwendung des Authentifizierungskontexts in Anwendungen finden Sie in den folgenden Artikeln.
 
-- [SharePoint Online](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide#more-information-about-the-dependencies-for-the-authentication-context-option)
+- [Microsoft Information Protection Vertraulichkeitsbezeichnungen zum Schützen SharePoint Websites](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide#more-information-about-the-dependencies-for-the-authentication-context-option&preserve-view=true)
 - [Microsoft Cloud App Security](/cloud-app-security/session-policy-aad?branch=pr-en-us-2082#require-step-up-authentication-authentication-context)
-- Benutzerdefinierte Anwendungen
+- [Benutzerdefinierte Anwendungen](../develop/developer-guide-conditional-access-authentication-context.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

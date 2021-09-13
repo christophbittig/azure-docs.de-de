@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2021
+ms.date: 06/27/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 05307fe2ad9e0a59fa11c30f2dc7154ba5076603
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ee0fbab517a34f6986d20ea3271cb4325bf6aabd
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102174664"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112981014"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -38,6 +38,7 @@ Das **UserJourney**-Element enthält das folgende Attribut:
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Id | Ja | Ein Bezeichner einer User Journey, der verwendet werden kann, um über andere Elemente in der Richtlinie auf sie zu verweisen. Das **DefaultUserJourney**-Element der [Richtlinie der vertrauenden Seite](relyingparty.md) zeigt auf dieses Attribut. |
+| DefaultCpimIssuerTechnicalProfileReferenceId| Nein | Die Standardverweis-ID für das technische Profil des Tokenausstellers. Beispiel: [JWT-Tokenaussteller](userjourneys.md), [SAML-Tokenaussteller](saml-issuer-technical-profile.md) oder [benutzerdefinierter OAuth2-Fehler](oauth2-error-technical-profile.md). Wenn Ihre User Journey oder untergeordnete Journey bereits über einen anderen `SendClaims`-Orchestrierungsschritt verfügt, legen Sie das Attribut `DefaultCpimIssuerTechnicalProfileReferenceId` auf das technische Profil des Tokenausstellers fest. |
 
 Das **UserJourney**-Element enthält die folgenden Elemente:
 
@@ -92,7 +93,7 @@ Das **OrchestrationSteps**-Element enthält das folgende Element:
 
 Das **OrchestrationStep**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | `Order` | Ja | Die Reihenfolge der Orchestrierungsschritte. |
 | `Type` | Ja | Der Typ des Orchestrierungsschritts. Mögliche Werte: <ul><li>**ClaimsProviderSelection:** Gibt an, dass der Orchestrierungsschritt verschiedene Anspruchsanbieter darstellt, von denen der Benutzer einen auswählen kann.</li><li>**CombinedSignInAndSignUp:** Gibt an, dass der Orchestrierungsschritt eine kombinierte Seite für die Anmeldung eines Social Media-Anbieters und die Registrierung eines lokalen Kontos darstellt.</li><li>**ClaimsExchange:** Gibt an, dass der Orchestrierungsschritt Ansprüche mit einem Anspruchsanbieter austauscht.</li><li>**GetClaims:** Gibt an, dass der Orchestrierungsschritt Anspruchsdaten verarbeiten soll, die von der vertrauenden Seite über ihre `InputClaims`-Konfiguration an Azure AD B2C gesendet werden.</li><li>**InvokeSubJourney**: Gibt an, dass der Orchestrierungsschritt Ansprüche mit einer [untergeordneten Journey](subjourneys.md) (in der öffentlichen Vorschau) austauscht.</li><li>**SendClaims:** Gibt an, dass der Orchestrierungsschritt die Ansprüche an die vertrauende Seite mit einem Token übermittelt, das von einem Anspruchsaussteller ausgestellt wurde.</li></ul> |
@@ -110,33 +111,36 @@ Das **OrchestrationStep**-Element kann die folgenden Elemente enthalten:
 
 ### <a name="preconditions"></a>Preconditions
 
+Orchestrierungsschritte können anhand von Voraussetzungen, die im Orchestrierungsschritt definiert werden, bedingungsabhängig ausgeführt werden. Das `Preconditions`-Element enthält eine Liste der auszuwertenden Vorbedingungen. Wenn die Vorbedingungsauswertung erfüllt ist, wird der zugeordnete Orchestrierungsschritt mit dem nächsten Orchestrierungsschritt übersprungen. 
+
+Jede Vorbedingung wertet einen einzelnen Anspruch aus. Es gibt zwei Arten von Vorbedingungen:
+ 
+- **Claims exist** (Ansprüche sind vorhanden): Gibt an, dass die Aktionen ausgeführt werden sollen, wenn der aktuelle Anspruchsbehälter des Benutzers die angegebenen Ansprüche enthält.
+- **Claim equals** (Anspruch entspricht): Gibt an, dass die Aktionen ausgeführt werden sollen, wenn der angegebene Anspruch vorhanden ist und dessen Wert dem angegebenen Wert entspricht. Bei der Überprüfung wird ein Ordinalvergleich unter Beachtung der Groß-/Kleinschreibung durchgeführt. Verwenden Sie bei der Überprüfung eines booleschen Anspruchstyps `True` oder `False`.
+
+Azure AD B2C wertet die Vorbedingungen in Listenreihenfolge aus. Mit den auf der Reihenfolge basierenden Vorbedingungen können Sie die Reihenfolge festlegen, in der die Vorbedingungen angewendet werden. Die erste erfüllte Vorbedingung überschreibt alle nachfolgenden Vorbedingungen. Der Orchestrierungsschritt wird nur ausgeführt, wenn nicht alle Vorbedingungen erfüllt sind. 
+
 Das **Preconditions**-Element enthält das folgende Element:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
-| Precondition | 1:n | Abhängig vom verwendeten technischen Profil, wird der Client entweder gemäß der Anspruchsanbieterauswahl weitergeleitet oder ein Serveraufruf wird zum Austauschen von Ansprüchen ausgeführt. |
-
+| Precondition | 1:n | Eine auszuwertende Vorbedingung. |
 
 #### <a name="precondition"></a>Precondition
-
-Orchestrierungsschritte können anhand von Voraussetzungen, die im Orchestrierungsschritt definiert werden, bedingungsabhängig ausgeführt werden. Es gibt zwei Arten von Vorbedingungen:
- 
-- **Claims exist** (Ansprüche sind vorhanden): Gibt an, dass die Aktionen ausgeführt werden sollen, wenn der aktuelle Anspruchsbehälter des Benutzers die angegebenen Ansprüche enthält.
-- **Claim equals** (Anspruch entspricht): Gibt an, dass die Aktionen ausgeführt werden sollen, wenn der angegebene Anspruch vorhanden ist und dessen Wert dem angegebenen Wert entspricht. Bei der Überprüfung wird ein Ordinalvergleich unter Beachtung der Groß-/Kleinschreibung durchgeführt. Verwenden Sie bei der Überprüfung eines booleschen Anspruchstyps `True` oder `False`.
 
 Das **Precondition**-Element enthält die folgenden Attribute:
 
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | `Type` | Ja | Der Typ der Überprüfung oder Abfrage, die für diese Voraussetzung ausgeführt werden soll. Dieser Wert kann **ClaimsExist** sein, wodurch festgelegt wird, dass die Aktionen durchgeführt werden sollen, wenn die angegebenen Ansprüche in den aktuellen Ansprüchen des Benutzers vorhanden sind. Alternativ kann der Wert **ClaimEquals** sein, wodurch festgelegt wird, dass die Aktionen durchgeführt werden sollen, wenn der angegebene Anspruch vorhanden ist und sein Wert dem angegebenen Wert gleicht. |
-| `ExecuteActionsIf` | Ja | Verwenden Sie einen Test vom Typ `true` oder `false`, um zu entscheiden, ob die Aktionen in der Vorbedingung ausgeführt werden sollen. |
+| `ExecuteActionsIf` | Ja | Entscheidet, wie die Vorbedingung als erfüllt betrachtet wird. Mögliche Werte: `true` (Standard) oder `false`. Wenn der Wert auf `true` festgelegt ist, wird sie als erfüllt betrachtet, wenn der Anspruch mit der Vorbedingung übereinstimmt.  Wenn der Wert auf `false` festgelegt ist, wird sie als erfüllt betrachtet, wenn der Anspruch nicht mit der Vorbedingung übereinstimmt.  |
 
 Das **Precondition**-Element enthält die folgenden Elemente:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | Wert | 1:2 | Der Bezeichner eines Anspruchstyps. Der Anspruch ist bereits im Abschnitt für das Anspruchsschema in der Richtliniendatei oder der übergeordneten Richtliniendatei definiert. Bei Verwendung einer Vorbedingung vom Typ `ClaimEquals` enthält ein zweites Element vom Typ `Value` den zu überprüfenden Wert. |
-| Aktion | 1:1 | Die Aktion, die ausgeführt werden soll, wenn die Überprüfung der Voraussetzungen innerhalb eines Orchestrierungsschritts TRUE ergibt. Wenn der Wert von `Action` auf `SkipThisOrchestrationStep` festgelegt ist, wird das zugeordnete `OrchestrationStep`-Element nicht ausgeführt. |
+| Aktion | 1:1 | Die Aktion, die ausgeführt werden soll, wenn die Auswertung der Vorbedingung erfüllt ist. Möglicher Wert: `SkipThisOrchestrationStep`. Der zugeordnete Orchestrierungsschritt wird mit dem nächsten Schritt übersprungen. |
 
 #### <a name="preconditions-examples"></a>Beispiele für Voraussetzungen
 

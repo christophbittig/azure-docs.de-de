@@ -10,12 +10,13 @@ ms.author: petrodeg
 ms.reviewer: laobri
 ms.date: 05/13/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: f493cfc21ff3f5e2aa122bbbc08f24e1a759558e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.custom: devplatv2
+ms.openlocfilehash: 8a68538657762417c5b6e23e455efa43fed0450a
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110480943"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419409"
 ---
 # <a name="troubleshooting-managed-online-endpoints-deployment-and-scoring-preview"></a>Problembehandlung für die Bereitstellung und Bewertung verwalteter Onlineendpunkte (Vorschau)
 
@@ -33,9 +34,9 @@ Im Abschnitt [HTTP-Statuscodes](#http-status-codes) wird beschrieben, welche Auf
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein **Azure-Abonnement**. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) aus.
+* Ein **Azure-Abonnement**. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://azure.microsoft.com/free/) aus.
 * Die [Azure CLI](/cli/azure/install-azure-cli)
-* Schritte unter [Installieren, Einrichten und Verwenden der 2.0 CLI (Vorschau)](how-to-configure-cli.md).
+* Schritte unter [Installieren, Einrichten und Verwenden der CLI (v2) (Vorschau)](how-to-configure-cli.md).
 
 ## <a name="deploy-locally"></a>Lokale Bereitstellung
 
@@ -51,7 +52,7 @@ Im Rahmen der lokalen Bereitstellung werden die folgenden Schritte ausgeführt:
 - Docker erstellt entweder ein neues Containerimage oder pullt ein vorhandenes Image aus dem lokalen Docker-Cache. Ein vorhandenes Image wird verwendet, falls für ein Image eine Übereinstimmung mit dem Umgebungsteil der Spezifikationsdatei besteht.
 - Docker startet einen neuen Container mit bereitgestellten lokalen Artefakten, z. B. Modell- und Codedateien.
 
-Weitere Informationen finden Sie unter „Lokales Bereitstellen“ in [Bereitstellen und Bewerten eines Machine Learning-Modells mit einem verwalteten Onlineendpunkt (Vorschau)](how-to-deploy-managed-online-endpoints.md#deploy-and-debug-locally-using-local-endpoints).
+Weitere Informationen finden Sie unter „Lokales Bereitstellen“ in [Bereitstellen und Bewerten eines Machine Learning-Modells mit einem verwalteten Onlineendpunkt (Vorschau)](how-to-deploy-managed-online-endpoints.md#deploy-and-debug-locally-by-using-local-endpoints).
 
 ## <a name="get-container-logs"></a>Abrufen von Containerprotokollen
 
@@ -96,6 +97,10 @@ Unten ist eine Liste mit häufigen Bereitstellungsfehlern angegeben, die im Rahm
 Vor der Bereitstellung eines Modells müssen Sie über ein ausreichendes Computekontingent verfügen. Anhand dieses Kontingents wird definiert, wie viele virtuelle Kerne pro Abonnement, Arbeitsbereich, SKU und Region verfügbar sind. Bei jeder Bereitstellung wird das verfügbare Kontingent reduziert und je nach Typ der SKU nach dem Löschen wieder erhöht.
 
 Eine mögliche Lösung ist die Durchführung einer Überprüfung darauf, ob ungenutzte Bereitstellungen vorhanden sind, die gelöscht werden können. Alternativ können Sie auch eine [Anforderung für eine Kontingenterhöhung](./how-to-manage-quotas.md) übermitteln.
+
+### <a name="err_1101-out-of-capacity"></a>ERR_1101: Out of capacity (Keine weitere Kapazität verfügbar)
+
+Die angegebene VM-Größe konnte aufgrund einer nicht ausreichenden Azure Machine Learning-Kapazität nicht bereitgestellt werden. Versuchen Sie es später erneut, oder stellen Sie in einer anderen Region bereit.
 
 ### <a name="err_1200-unable-to-download-user-container-image"></a>ERR_1200: Unable to download user container image (Benutzercontainerimage kann nicht heruntergeladen werden)
 
@@ -150,6 +155,10 @@ Führen Sie Folgendes aus, um weitere Details zu diesem Fehler abzurufen:
 az ml endpoint get-logs -n <endpoint-name> --deployment <deployment-name> --lines 100
 ```
 
+### <a name="err_1350-unable-to-download-user-model-not-enough-space-on-the-disk"></a>ERR_1350: Unable to download user model, not enough space on the disk (Benutzermodell kann nicht heruntergeladen werden, nicht genügend Speicherplatz auf dem Datenträger verfügbar)
+
+Dieses Problem tritt auf, wenn die Größe des Modells größer als der verfügbare Speicherplatz ist. Probieren Sie eine SKU mit mehr Speicherplatz aus.
+
 ### <a name="err_2100-unable-to-start-user-container"></a>ERR_2100: Unable to start user container (Benutzercontainer kann nicht gestartet werden)
 
 Um die bei der Bereitstellung angegebene Datei `score.py` auszuführen, wird von Azure ein Container mit allen Ressourcen erstellt, die für `score.py` benötigt werden, und das Bewertungsskript für den Container ausgeführt.
@@ -196,8 +205,7 @@ Wenn Sie auf verwaltete Onlineendpunkte mit REST-Anforderungen zugreifen, sind d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Bereitstellung finden Sie hier:
-
-* [Bereitstellen und Bewerten eines Machine Learning-Modells mit einem verwalteten Onlineendpunkt (Vorschau)](how-to-deploy-managed-online-endpoints.md)
-* [Sicherer Rollout für Onlineendpunkte (Vorschau)](how-to-safely-rollout-managed-endpoints.md)
+- [Bereitstellen und Bewerten eines Machine Learning-Modells mit einem verwalteten Onlineendpunkt (Vorschau)](how-to-deploy-managed-online-endpoints.md)
+- [Sicherer Rollout für Onlineendpunkte (Vorschau)](how-to-safely-rollout-managed-endpoints.md)
+- [YAML-Referenz zu verwalteten Onlineendpunkten (Vorschauversion)](reference-yaml-endpoint-managed-online.md)
 

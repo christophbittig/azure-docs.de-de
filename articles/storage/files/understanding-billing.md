@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie die Abrechnungsmodelle „Bereitgestellt“ u
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/11/2021
+ms.date: 08/17/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9d0079ac85980f97a0241780b23e639e2359c65d
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 7f133600f800881f462583ca5bee2972a5c914fa
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787219"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122343610"
 ---
 # <a name="understand-azure-files-billing"></a>Grundlegendes zur Abrechnung für Azure Files
 Für Azure Files gibt es zwei Abrechnungsmodelle: „Bereitgestellt“ und „Nutzungsbasierte Zahlung“. Das Modell „Bereitgestellt“ ist nur für Premium-Dateifreigaben verfügbar, d. h. für Dateifreigaben, die in einem Speicherkonto des Typs **FileStorage** bereitgestellt werden. Das Modell „Nutzungsbasierte Zahlung“ ist nur für Standarddateifreigaben verfügbar, d. h. für Dateifreigaben, die in einem Speicherkonto des Typs **Universell, Version 2** bereitgestellt werden. In diesem Artikel wird die Funktionsweise beider Modelle erklärt, um Ihnen zu helfen, Ihre monatliche Azure Files-Rechnung zu verstehen.
@@ -27,6 +27,13 @@ Für Azure Files gibt es zwei Abrechnungsmodelle: „Bereitgestellt“ und „Nu
 :::row-end:::
 
 Preisinformationen zu Azure Files finden Sie auf der [Seite „Azure Files – Preise“](https://azure.microsoft.com/pricing/details/storage/files/).
+
+## <a name="applies-to"></a>Gilt für:
+| Dateifreigabetyp | SMB | NFS |
+|-|:-:|:-:|
+| Standard-Dateifreigaben (GPv2), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Standard-Dateifreigaben (GPv2), GRS/GZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Premium-Dateifreigaben (FileStorage), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) |
 
 ## <a name="storage-units"></a>Speichereinheiten    
 In Azure Files werden Basis 2-Maßeinheiten zur Darstellung der Speicherkapazität verwendet: KiB, MiB, GiB und TiB. Bei Ihrem Betriebssystem wird möglicherweise dieselbe Maßeinheit oder dasselbe Zählsystem verwendet.
@@ -52,7 +59,7 @@ Azure Files unterstützt Speicherkapazitätsreservierungen, mit denen Sie einen 
 
 - **Kapazitätsgröße**: Kapazitätsreservierungen können für entweder 10 TiB oder 100 TiB mit größeren Rabatten für den Erwerb einer Reservierung mit höherer Kapazität erfolgen. Sie können mehrere Reservierungen erwerben, einschließlich Reservierungen mit unterschiedlichen Kapazitätsgrößen, um Ihre Workload-Anforderungen zu erfüllen. Wenn Ihre Produktionsbereitstellung beispielsweise über 120 TiB Dateifreigaben verfügt, können Sie eine 100 TiB-Reservierung und zwei 10 TiB-Reservierungen erwerben, um die Gesamtkapazitätsanforderungen zu erfüllen.
 - **Laufzeit:** Reservierungen können für eine Laufzeit von einem Jahr oder drei Jahren erworben werden, mit erheblichen Rabatten für den Erwerb einer längeren Reservierungslaufzeit. 
-- **Ebene**: Die Ebene der Azure-Files für die Kapazitätsreservierung. Reservierungen für Azure Files sind derzeit für die Hot- und Cool- Ebenen verfügbar.
+- **Ebene**: Die Ebene der Azure-Files für die Kapazitätsreservierung. Reservierungen für Azure Files sind derzeit für die Tarife „Premium“, „Heiß“ und „Kalt“ verfügbar.
 - **Standort**: Die Azure-Region der Kapazitätsreservierung. Kapazitätsreservierungen sind in einer Teilmenge der Azure-Regionen verfügbar.
 - **Redundanz**: Die Speicherredundanz der Kapazitätsreservierung. Reservierungen werden für alle von Azure Files unterstützten Redundanzen unterstützt, einschließlich LRS, ZRS, GRS und GZRS.
 
@@ -63,29 +70,34 @@ Weitere Informationen zum Erwerb von Speicherreservierungen finden Sie unter [Op
 ## <a name="provisioned-model"></a>Bereitgestelltes Modell
 Azure Files verwendet für Premium-Dateifreigaben das Modell „Bereitgestellt“. Beim diesem Geschäftsmodell geben Sie dem Azure Files-Dienst aktiv an, wie hoch Ihr Speicherbedarf ist, anstatt nach Inanspruchnahme abgerechnet zu werden. Dies ist vergleichbar mit dem Kauf lokaler Hardware. Wenn Sie eine Azure-Dateifreigabe mit einer bestimmten Menge Speicherplatz bereitstellen, zahlen Sie für diesen Speicher unabhängig davon, ob Sie ihn nutzen oder nicht, genauso wie Sie nicht anfangen, Kosten für lokale physische Medien zu zahlen, wenn Sie beginnen, Speicherplatz zu belegen. Im Gegensatz zum Kauf lokaler physischer Medien können bereitgestellte Dateifreigaben je nach Speicher- und E/A-Leistungsmerkmalen dynamisch hoch- oder herunterskaliert werden.
 
-Wenn Sie eine Premium-Dateifreigabe bereitstellen, geben Sie an, wie viele GiBs Ihre Workload benötigt. Jedes GiB, das Sie bereitstellen, berechtigt Sie zu mehr IOPS und Durchsatz in einem festen Verhältnis. Zusätzlich zum garantierten IOPS-Grundwert unterstützt jede Premium-Dateifreigabe Bursting nach dem Prinzip der bestmöglichen Leistung. Die Formeln für IOPS und Durchsatz sind wie folgt:
-
-- IOPS-Grundwert = 400 + 1 * bereitgestellte GiB. (Bis zu 100.000 IOPS).
-- Burstgrenzwert = MAX(4000, 3 * IOPS-Grundwert).
-- Ausgangsrate = 60 MiB/s + 0,06 * bereitgestellte GiB.
-- Eingangsrate = 40 MiB/s + 0,04 * bereitgestellte GiB.
-
 Die bereitgestellte Größe der Dateifreigabe kann jederzeit heraufgesetzt, jedoch erst 24 Stunden nach der letzten Heraufsetzung herabgesetzt werden. Wenn in einer 24-stündigen Wartezeit keine Heraufsetzung aufgetreten ist, können Sie das Freigabekontingent beliebig oft herabsetzen, bis Sie es erneut heraufsetzen. Änderungen an IOPS und Durchsatz werden innerhalb weniger Minuten nach Änderung der bereitgestellten Größe wirksam.
 
 Es ist möglich, die Größe Ihrer bereitgestellten Freigabe unter Ihre verbrauchten GiB zu reduzieren. Wenn Sie dies tun, gehen Ihnen keine Daten verloren, sondern es wird Ihnen weiterhin die verwendete Größe in Rechnung gestellt. Sie erhalten die Leistung (IOPS-Grundwert, Durchsatz und Burst-IOPS) der bereitgestellten Freigabe, nicht die der verwendeten Größe.
 
+### <a name="provisioning-method"></a>Bereitstellungsmethode
+Wenn Sie eine Premium-Dateifreigabe bereitstellen, geben Sie an, wie viele GiBs Ihre Workload benötigt. Jedes GiB, das Sie bereitstellen, berechtigt Sie zu mehr IOPS und Durchsatz in einem festen Verhältnis. Zusätzlich zum garantierten IOPS-Grundwert unterstützt jede Premium-Dateifreigabe Bursting nach dem Prinzip der bestmöglichen Leistung. Die Formeln für IOPS und Durchsatz sind wie folgt:
+
+| Element | Wert |
+|-|-|
+| Mindestgröße einer Dateifreigabe | 100 GB |
+| Bereitstellungseinheit | 1 GiB |
+| Baseline-IOPS-Formel | `MIN(400 + 1 * ProvisionedGiB, 100000)` |
+| Burstgrenzwert | `MIN(MAX(4000, 3 * BaselineIOPS), 100000)` |
+| Eingangsrate | `40 MiB/sec + 0.04 * ProvisionedGiB` |
+| Ausgangsrate | `60 MiB/sec + 0.06 * ProvisionedGiB` |
+
 Die folgende Tabelle zeigt einige Beispiele dieser Formeln für die bereitgestellten Freigabengrößen:
 
-|Kapazität (GiB) | IOPS-Grundwert | Burst-IOPS | Ausgehend (MiB/s) | Eingehend (MiB/s) |
-|---------|---------|---------|---------|---------|
-|100         | 500     | Bis zu 4.000     | 66   | 44   |
-|500         | 900     | Bis zu 4.000  | 90   | 60   |
-|1\.024       | 1\.424   | Bis zu 4.000   | 122   | 81   |
-|5\.120       | 5\.520   | Bis zu 15.360  | 368   | 245   |
-|10.240      | 10.640  | Bis zu 30.720  | 675   | 450   |
-|33.792      | 34.192  | Bis zu 100.000 | 2\.088 | 1\.392   |
-|51.200      | 51.600  | Bis zu 100.000 | 3\.132 | 2\.088   |
-|102.400     | 100.000 | Bis zu 100.000 | 6\.204 | 4\.136   |
+| Kapazität (GiB) | IOPS-Grundwert | Burst-IOPS | Ausgehend (MiB/s) | Eingehend (MiB/s) |
+|-|-|-|-|-|
+| 100 | 500 | Bis zu 4.000 | 66 | 44 |
+| 500 | 900 | Bis zu 4.000 | 90 | 60 |
+| 1\.024 | 1\.424 | Bis zu 4.000 | 122 | 81 |
+| 5\.120 | 5\.520 | Bis zu 15.360 | 368 | 245 |
+| 10.240 | 10.640 | Bis zu 30.720 | 675 | 450 |
+| 33.792 | 34.192 | Bis zu 100.000 | 2\.088 | 1\.392 |
+| 51.200 | 51.600 | Bis zu 100.000 | 3\.132 | 2\.088 |
+| 102.400 | 100.000 | Bis zu 100.000 | 6\.204 | 4\.136 |
 
 Die effektive Leistung der Dateifreigabe hängt u. a. von den Grenzwerten des Computernetzwerks, der verfügbaren Netzwerkbandbreite, den E/A-Größen und der Parallelität ab. Beispielsweise kann ein einzelner virtueller Windows-Computer ohne aktivierte Funktion SMB Multichannel namens *Standard F16s_v2*, der mit einer Premium-Dateifreigabe über SMB verbunden ist, laut internen Tests mit Lese-/Schreibvorgängen mit einer E/A-Größe von 8 KiB 20 K Lese-IOPS und 15 K Schreib-IOPS erzielen. Bei Lese-/Schreibvorgängen mit einer E/A-Größe von 512 MiB kann derselbe virtuelle Computer einen Durchsatz von 1,1 GiB/s ausgehend und 370 MiB/s eingehend erzielen. Der gleiche Client kann eine bis zu \~dreifache Leistung erzielen, wenn SMB Multichannel für die Premium-Freigaben aktiviert ist. Um eine maximale Leistung zu erreichen, [aktivieren Sie SMB Multichannel](storage-files-enable-smb-multichannel.md), und verteilen Sie die Last auf mehrere VMs. Weitere Informationen zur [Leistung von SMB Multichannel](storage-troubleshooting-files-performance.md) und zu gängigen Leistungsproblemen sowie deren Lösungen finden Sie im [Leitfaden zur Problembehandlung](storage-files-smb-multichannel-performance.md).
 
@@ -127,8 +139,8 @@ Es gibt fünf grundlegende Transaktionskategorien: „Schreiben“, „Auflisten
 
 | Vorgangsart | Schreibtransaktionen | Listentransaktionen | Lesetransaktionen | Sonstige Transaktionen | Löschtransaktionen |
 |-|-|-|-|-|-|
-| Verwaltungsvorgänge | <ul><li>`CreateShare`</li><li>`SetFileServiceProperties`</li><li>`SetShareMetadata`</li><li>`SetShareProperties`</li></ul> | <ul><li>`ListShares`</li></ul> | <ul><li>`GetFileServiceProperties`</li><li>`GetShareAcl`</li><li>`GetShareMetadata`</li><li>`GetShareProperties`</li><li>`GetShareStats`</li></ul> | | <ul><li>`DeleteShare`</li></ul> |
-| Datenvorgänge | <ul><li>`CopyFile`</li><li>`Create`</li><li>`CreateDirectory`</li><li>`CreateFile`</li><li>`PutRange`</li><li>`PutRangeFromURL`</li><li>`SetDirectoryMetadata`</li><li>`SetFileMetadata`</li><li>`SetFileProperties`</li><li>`SetInfo`</li><li>`SetShareACL`</li><li>`Write`</li><li>`PutFilePermission`</li></ul> | <ul><li>`ListFileRanges`</li><li>`ListFiles`</li><li>`ListHandles`</li></ul>  | <ul><li>`FilePreflightRequest`</li><li>`GetDirectoryMetadata`</li><li>`GetDirectoryProperties`</li><li>`GetFile`</li><li>`GetFileCopyInformation`</li><li>`GetFileMetadata`</li><li>`GetFileProperties`</li><li>`QueryDirectory`</li><li>`QueryInfo`</li><li>`Read`</li><li>`GetFilePermission`</li></ul> | <ul><li>`AbortCopyFile`</li><li>`Cancel`</li><li>`ChangeNotify`</li><li>`Close`</li><li>`Echo`</li><li>`Ioctl`</li><li>`Lock`</li><li>`Logoff`</li><li>`Negotiate`</li><li>`OplockBreak`</li><li>`SessionSetup`</li><li>`TreeConnect`</li><li>`TreeDisconnect`</li><li>`CloseHandles`</li><li>`AcquireFileLease`</li><li>`BreakFileLease`</li><li>`ChangeFileLease`</li><li>`ReleaseFileLease`</li></ul> | <ul><li>`ClearRange`</li><li>`DeleteDirectory`</li></li>`DeleteFile`</li></ul> |
+| Verwaltungsvorgänge | <ul><li>`CreateShare`</li><li>`SetFileServiceProperties`</li><li>`SetShareMetadata`</li><li>`SetShareProperties`</li><li>`SetShareACL`</li></ul> | <ul><li>`ListShares`</li></ul> | <ul><li>`GetFileServiceProperties`</li><li>`GetShareAcl`</li><li>`GetShareMetadata`</li><li>`GetShareProperties`</li><li>`GetShareStats`</li></ul> | | <ul><li>`DeleteShare`</li></ul> |
+| Datenvorgänge | <ul><li>`CopyFile`</li><li>`Create`</li><li>`CreateDirectory`</li><li>`CreateFile`</li><li>`PutRange`</li><li>`PutRangeFromURL`</li><li>`SetDirectoryMetadata`</li><li>`SetFileMetadata`</li><li>`SetFileProperties`</li><li>`SetInfo`</li><li>`Write`</li><li>`PutFilePermission`</li></ul> | <ul><li>`ListFileRanges`</li><li>`ListFiles`</li><li>`ListHandles`</li></ul>  | <ul><li>`FilePreflightRequest`</li><li>`GetDirectoryMetadata`</li><li>`GetDirectoryProperties`</li><li>`GetFile`</li><li>`GetFileCopyInformation`</li><li>`GetFileMetadata`</li><li>`GetFileProperties`</li><li>`QueryDirectory`</li><li>`QueryInfo`</li><li>`Read`</li><li>`GetFilePermission`</li></ul> | <ul><li>`AbortCopyFile`</li><li>`Cancel`</li><li>`ChangeNotify`</li><li>`Close`</li><li>`Echo`</li><li>`Ioctl`</li><li>`Lock`</li><li>`Logoff`</li><li>`Negotiate`</li><li>`OplockBreak`</li><li>`SessionSetup`</li><li>`TreeConnect`</li><li>`TreeDisconnect`</li><li>`CloseHandles`</li><li>`AcquireFileLease`</li><li>`BreakFileLease`</li><li>`ChangeFileLease`</li><li>`ReleaseFileLease`</li></ul> | <ul><li>`ClearRange`</li><li>`DeleteDirectory`</li></li>`DeleteFile`</li></ul> |
 
 > [!Note]  
 > NFS 4.1 ist nur für Premium-Dateifreigaben mit dem Abrechnungsmodell „Bereitgestellt“ verfügbar. Transaktionen haben keinen Einfluss auf die Abrechnung für Premium-Dateifreigaben.

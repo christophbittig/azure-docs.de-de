@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: f666cc2f9d11b1e05d11ba266897e6fca3cd287e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: db4b08b4403345d7926ec07e94f75cc779fce843
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92057619"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346580"
 ---
 # <a name="debug-sessions-in-azure-cognitive-search"></a>Debugsitzungen in Azure Cognitive Search
 
@@ -33,7 +33,7 @@ Wenn die Anreicherungspipeline keine Fehler enthält, kann eine Debugsitzung ver
 
 ## <a name="creating-a-debug-session"></a>Erstellen einer Debugsitzung
 
-Sie müssen über eine vorhandene KI-Anreicherungspipeline einschließlich einer Datenquelle, eines Skillsets, eines Indexers und eines Index verfügen, um eine Debugsitzung starten zu können. Zum Konfigurieren einer Debugsitzung müssen Sie die Sitzung benennen und ein universelles Speicherkonto bereitstellen, das zum Zwischenspeichern der Ausführungen von Skills während der Indexerausführung verwendet wird. Außerdem müssen Sie den auszuführenden Indexer auswählen. Der Indexer verweist auf die Datenquelle, das Skillset und den Index. Die Debugsitzung verwendet standardmäßig das erste Dokument in der Datenquelle. Alternativ können Sie ein zu durchlaufendes Dokument in der Datenquelle angeben.
+Sie können im Azure-Portal auf der Seite **Übersicht** Ihres Suchdiensts eine Debugsitzung erstellen. Sie müssen über eine vorhandene KI-Anreicherungspipeline einschließlich einer Datenquelle, eines Skillsets, eines Indexers und eines Index verfügen, um eine Debugsitzung starten zu können. Zum Konfigurieren einer Debugsitzung müssen Sie die Sitzung benennen und ein universelles Speicherkonto bereitstellen, das zum Zwischenspeichern der Ausführungen von Skills während der Indexerausführung verwendet wird. Außerdem müssen Sie den auszuführenden Indexer auswählen. Der Indexer verweist auf die Datenquelle, das Skillset und den Index. Die Debugsitzung verwendet standardmäßig das erste Dokument in der Datenquelle. Alternativ können Sie ein zu durchlaufendes Dokument in der Datenquelle angeben.
 
 > :::image type="content" source="media/cognitive-search-debug/debug-session-new.png" alt-text="Erstellen einer Debugsitzung":::
 
@@ -85,7 +85,7 @@ In diesem Fenster werden alle Fehler und Warnungen angezeigt, die das Skillset a
 
 ## <a name="limitations"></a>Einschränkungen
 
-Debugsitzungen funktionieren mit allen allgemein verfügbaren Datenquellen und den meisten Vorschaudatenquellen. Die MongoDB API (Vorschau) und die Cassandra API (Vorschau) von Cosmos DB werden aktuell nicht unterstützt.
+Debugsitzungen funktionieren mit allen allgemein verfügbaren Datenquellen und den meisten Vorschaudatenquellen. Die MongoDB-API (Vorschau) von Cosmos DB wird aktuell nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

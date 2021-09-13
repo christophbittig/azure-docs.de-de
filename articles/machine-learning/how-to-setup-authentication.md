@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 05/27/2021
 ms.topic: how-to
-ms.custom: has-adal-ref, devx-track-js, contperf-fy21q2
-ms.openlocfilehash: 5f8f2c1f6d48a5c1b128643258af083b1811570e
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.custom: has-adal-ref, devx-track-js, contperf-fy21q2, subject-rbac-steps
+ms.openlocfilehash: dcd4b21214439e03d3c2ba9bc9d46474bdadc48f
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854628"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351431"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Einrichten der Authentifizierung für Azure Machine Learning-Ressourcen und -Workflows
 
@@ -140,9 +140,17 @@ Die einfachste Art der Erstellung eines Dienstprinzipals und Gewährung von Zugr
 
 1. Aktivieren Sie eine vom [System zugewiesene verwaltete Identität für Azure-Ressourcen auf dem virtuellen Computer](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity).
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) Ihren Arbeitsbereich und dann __Zugriffssteuerung (IAM)__ und __Rollenzuweisung hinzufügen__ aus. Wählen Sie anschließend __Virtueller Computer__ aus der Dropdownliste __Zugriff zuweisen zu__ aus. Wählen Sie schließlich die Identität Ihrer VM aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) Ihren Arbeitsbereich und dann __Zugriffssteuerung (IAM)__ aus.
+1. Wählen Sie __Hinzufügen__ und dann __Rollenzuweisung hinzufügen__ aus, um die Seite __Rollenzuweisung hinzufügen__ zu öffnen.
+1. Weisen Sie die folgende Rolle zu. Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).
 
-1. Wählen Sie die Rolle aus, die dieser Identität zugewiesen werden soll. Beispiel: Mitwirkender oder eine benutzerdefinierte Rolle. Weitere Informationen finden Sie unter [Steuern des Zugriffs auf Ressourcen](how-to-assign-roles.md).
+    | Einstellung | Wert |
+    | ----- | ----- |
+    | Role | Die Rolle, die Sie zuweisen möchten |
+    | Zugriff zuweisen zu | Verwaltete Identität |
+    | Members | Die verwaltete Identität, die Sie zuvor erstellt haben |
+
+    ![Seite „Rollenzuweisung hinzufügen“ im Azure-Portal](../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
 ### <a name="managed-identity-with-compute-cluster"></a>Verwaltete Identität mit Computecluster
 
@@ -229,7 +237,8 @@ from azureml.core import Workspace
 
 ws = Workspace.get(name="ml-example",
                    auth=sp,
-                   subscription_id="your-sub-id")
+                   subscription_id="your-sub-id",
+                   resource_group="your-rg-name")
 ws.get_details()
 ```
 

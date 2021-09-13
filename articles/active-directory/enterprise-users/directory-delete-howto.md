@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/02/2020
+ms.date: 07/14/2021
 ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2edc6fb98359c5360836bc369e5ae1928464df92
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a7d889db98030394e27763122b3df4bdde942575
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96861029"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114219604"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>Löschen eines Mandanten in Azure Active Directory
 
@@ -29,7 +29,7 @@ Beim Löschen einer Azure AD-Organisation (Mandant) werden auch alle in der Orga
 
 Sie können eine Organisation in Azure AD erst löschen, nachdem sie mehrere Prüfungen bestanden hat. Diese Prüfungen verringern das Risiko, dass das Löschen einer Azure AD-Organisation den Benutzerzugriff beeinträchtigt, z. B. die Möglichkeit, sich bei Microsoft 365 anzumelden oder auf Ressourcen in Azure zuzugreifen. Wenn beispielsweise die einem Abonnement zugeordnete Organisation versehentlich gelöscht wird, können Benutzer auf die Azure-Ressourcen für dieses Abonnement nicht mehr zugreifen. Die folgenden Bedingungen werden überprüft:
 
-* Es darf keine Benutzer in der Azure AD-Organisation (Mandant) geben, außer einem globalen Administrator, der die Organisation löschen soll. Alle anderen Benutzer müssen gelöscht werden, bevor die Organisation gelöscht werden kann. Wenn Benutzer aus der lokalen Umgebung synchronisiert werden, muss die Synchronisierung zuerst deaktiviert werden, und die Benutzer müssen in der Cloudorganisation über das Azure-Portal oder mithilfe von Azure PowerShell-Cmdlets gelöscht werden.
+* Abgesehen von einem globalen Administrator, der die Organisation löschen soll, dürfen sich keine Benutzer im Azure AD-Mandanten befinden. Alle anderen Benutzer müssen gelöscht werden, bevor die Organisation gelöscht werden kann. Wenn Benutzer aus der lokalen Umgebung synchronisiert werden, muss die Synchronisierung zuerst deaktiviert werden, und die Benutzer müssen in der Cloudorganisation über das Azure-Portal oder mithilfe von Azure PowerShell-Cmdlets gelöscht werden.
 * Es dürfen keine Anwendungen in der Organisation vorhanden sein. Alle Anwendungen müssen entfernt werden, bevor die Organisation gelöscht werden kann.
 * Mit der Organisation dürfen keine Anbieter für mehrstufige Authentifizierung verknüpft sein.
 * Der Organisation dürfen keine Abonnements für Microsoft Online Services (z. B. Microsoft Azure, Microsoft 365 oder Azure AD Premium) zugeordnet sein. Falls für Sie in Azure beispielsweise eine Azure AD-Standardorganisation erstellt wurde, dürfen Sie diese Organisation nicht löschen, wenn sie vom Azure-Abonnement noch für die Authentifizierung benötigt wird. Analog dazu dürfen Sie auch keine Organisation löschen, wenn ein anderer Benutzer dieser ein Abonnement zugeordnet hat.
@@ -94,6 +94,15 @@ Sie können ein Abonnement im Microsoft 365 Admin Center in den Status **Bereits
 8. Sobald Sie eine Organisation in Ihrem Verzeichnis gelöscht haben und 72 Stunden verstrichen sind, können Sie sich wieder in Azure AD Admin Center anmelden. Dort sollten keine Aktionen erforderlich sein und keine Abonnements das Löschen Ihrer Organisation blockieren. Sie sollten Ihre Azure AD-Organisation nun erfolgreich löschen können.
   
    ![Bildschirm mit bestandener Abonnementprüfung bei Löschung](./media/directory-delete-howto/delete-checks-passed.png)
+
+## <a name="enterprise-apps-with-no-way-to-delete"></a>Unternehmens-Apps ohne Möglichkeit zum Löschen
+
+Wenn im Portal noch immer Unternehmensanwendungen vorhanden sind, die Sie nicht löschen können, haben Sie die Möglichkeit, die folgenden PowerShell-Befehle zum Löschen zu verwenden. Weitere Informationen zu diesem PowerShell-Befehl finden Sie unter [Remove-AzureADServicePrincipal](/powershell/module/azuread/remove-azureadserviceprincipal?view=azureadps-2.0&preserve-view=true).
+
+1. Öffnen Sie PowerShell als Administrator.
+1. Ausführen von `Connect-AzAccount -tenant <TENANT_ID>`
+1. Melden Sie sich mit der Azure AD-Rolle „Globaler Administrator“ an.
+1. Ausführen von `Get-AzADServicePrincipal | ForEach-Object { Remove-AzADServicePrincipal -ObjectId $_.Id -Force}`
 
 ## <a name="i-have-a-trial-subscription-that-blocks-deletion"></a>Ich habe ein Testabonnement, das die Löschung blockiert
 

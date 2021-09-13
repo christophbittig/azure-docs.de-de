@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2020
+ms.date: 08/17/2021
 ms.author: memildin
-ms.openlocfilehash: 432729417a65376533d9ecc201f2f6f52376cc58
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 86edda1fa9aff73a5f6daca1494a81ab94aa9e3b
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102099402"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351311"
 ---
 # <a name="sql-information-protection-policy-in-azure-security-center"></a>SQL Information Protection-Richtlinie in Azure Security Center
  
@@ -30,9 +30,6 @@ Der Klassifizierungsmechanismus basiert auf den folgenden beiden Elementen:
 - **Informationstypen**: Bieten zusätzliche Granularität für den *Typ* der in der Spalte gespeicherten Daten.
 
 Die Information Protection-Richtlinienoptionen in Security Center bieten vordefinierte Bezeichnungen und Informationstypen, die als Standardwerte für die Klassifizierungs-Engine dienen. Sie können die Richtlinie wie unten beschrieben an die Anforderungen Ihrer Organisation anpassen.
-
-> [!IMPORTANT]
-> Um die Information Protection-Richtlinie für Ihren Azure-Mandanten anpassen zu können, benötigen Sie Administratorrechte für die Stammverwaltungsgruppe des Mandanten. Weitere Informationen finden Sie unter [Erteilen und Anfordern der mandantenweiten Sichtbarkeit](tenant-wide-permissions-management.md).
 
 :::image type="content" source="./media/security-center-info-protection-policy/sql-information-protection-policy-page.png" alt-text="Seite mit Ihrer SQL Information Protection-Richtlinie":::
  
@@ -134,6 +131,14 @@ Sie können eine JSON-Datei mit Ihren definierten Bezeichnungen und Informations
 > [!NOTE]
 > Sie benötigen Berechtigungen auf Mandantenebene, um eine Richtliniendatei zu importieren. 
 
+
+## <a name="permissions"></a>Berechtigungen
+
+Um die Information Protection-Richtlinie für Ihren Azure-Mandanten anpassen zu können, benötigen Sie die folgenden Aktionen in der Stammverwaltungsgruppe des Mandanten:
+  - Microsoft.Security/informationProtectionPolicies/read
+  - Microsoft.Security/informationProtectionPolicies/write 
+
+Weitere Informationen finden Sie unter [Erteilen und Anfordern der mandantenweiten Sichtbarkeit](tenant-wide-permissions-management.md).
 
 ## <a name="manage-sql-information-protection-using-azure-powershell"></a>Verwalten von SQL Information Protection mit Azure PowerShell
 

@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/12/2021
 ms.author: esarroyo
-ms.openlocfilehash: 51ab68d77e6d5f7e69701b7bc36eaf58f51bf48d
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 769db1b447c6f5ce31a1ed23ddf5d7ef973bcad5
+ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111966367"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112553142"
 ---
 # <a name="troubleshoot-issues-with-diagnostics-queries"></a> Problembehandlung mit Diagnoseabfragen
 
@@ -21,7 +21,7 @@ In diesem Artikel erfahren Sie, wie Sie einfache Abfragen schreiben, um Probleme
 
 Bei AzureDiagnostics-Tabellen werden alle Daten in eine einzelne Tabelle geschrieben, und Benutzer müssen angeben, welche Kategorie sie abfragen möchten.
 
-Bei ressourcenspezifischen Tabellen (derzeit in der Vorschauversion für die SQL-API) werden Daten für jede Kategorie der Ressource in einzelne Tabellen geschrieben. Wir empfehlen diesen Modus, da die Bearbeitung der Daten erheblich erleichert wird, eine bessere Erkennbarkeit der Schemas ermöglicht wird und die Leistung in Bezug auf Erfassungslatenz sowie Abfragezeiten verbessert wird.
+Bei ressourcenspezifischen Tabellen werden Daten in einzelne Tabellen für die jeweilige Kategorie der Ressource geschrieben (nicht verfügbar für die Tabellen-API). Wir empfehlen diesen Modus, da die Bearbeitung der Daten erheblich erleichert wird, eine bessere Erkennbarkeit der Schemas ermöglicht wird und die Leistung in Bezug auf Erfassungslatenz sowie Abfragezeiten verbessert wird.
 
 ## <a name="azurediagnostics-queries"></a><a id="azure-diagnostics-queries"></a> AzureDiagnostics-Abfragen
 
@@ -328,7 +328,7 @@ Bei ressourcenspezifischen Tabellen (derzeit in der Vorschauversion für die SQL
    | summarize by OperationName 
    ```
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte 
 * Weitere Informationen zum Erstellen von Diagnoseeinstellungen für Cosmos DB finden Sie im Artikel zum [Erstellen von Diagnoseeinstellungen](cosmosdb-monitor-resource-logs.md).
 
 * Ausführliche Informationen zum Erstellen einer Diagnoseeinstellung über das Azure-Portal, die Befehlszeilenschnittstelle oder PowerShell finden Sie unter [Erstellen einer Diagnoseeinstellung zum Sammeln von Plattformprotokollen und Metriken in Azure](../azure-monitor/essentials/diagnostic-settings.md).

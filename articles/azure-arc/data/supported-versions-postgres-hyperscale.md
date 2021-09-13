@@ -1,6 +1,6 @@
 ---
-title: Mit Azure Arc-fähigem PostgreSQL Hyperscale unterstützte Postgres-Versionen
-description: Mit Azure Arc-fähigem PostgreSQL Hyperscale unterstützte Postgres-Versionen
+title: Unterstützte Postgres-Versionen mit Azure Arc-fähigem PostgreSQL Hyperscale
+description: Unterstützte Postgres-Versionen mit Azure Arc-fähigem PostgreSQL Hyperscale
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,14 +9,14 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 0f3f9e7f4566800bdea6871cae1c5bafb3b37b95
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a00475eacdeb741eca20d4a6c43282df9cfd17d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90931325"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346829"
 ---
-# <a name="supported-versions-of-postgres-with-azure-arc-enabled-postgresql-hyperscale"></a>Mit Azure Arc-fähigem PostgreSQL Hyperscale unterstützte Postgres-Versionen
+# <a name="supported-versions-of-postgres-with-azure-arc-enabled-postgresql-hyperscale"></a>Unterstützte Postgres-Versionen mit Azure Arc-fähigem PostgreSQL Hyperscale
 
 In diesem Artikel wird erläutert, welche Versionen von Postgres mit Azure Arc-fähigem PostgreSQL Hyperscale verfügbar sind.
 Die Liste der unterstützten Versionen wird im Laufe der Zeit erweitert. Aktuell werden die folgenden Hauptversionen unterstützt:
@@ -33,7 +33,7 @@ Es wird empfohlen, zu ermitteln, für welche Versionen Ihre Anwendungen ausgeleg
 ## <a name="how-to-create-a-particular-version-in-azure-arc-enabled-postgresql-hyperscale"></a>Wie wird eine bestimmte Version in Azure Arc-fähigem PostgreSQL Hyperscale erstellt?
 Zum Zeitpunkt der Erstellung können Sie angeben, welche Version erstellt werden soll, indem Sie den Parameter _--engine-version_ übergeben. Wenn Sie keine Versionsinformationen angeben, wird standardmäßig eine Servergruppe mit Postgres-Version 12 erstellt.
 
-## <a name="how-do-be-notified-when-other-versions-are-available"></a>Wie werden Sie benachrichtigt, wenn andere Versionen verfügbar sind?
+## <a name="how-can-i-be-notified-when-other-versions-are-available"></a>Wie werde ich benachrichtigt, wenn andere Versionen verfügbar sind?
 Sie sollten diesen Artikel häufiger prüfen, da er ggf. aktualisiert wird. Sie können auch die Arten von benutzerdefinierten Ressourcendefinitionen (Custom Resource Definitions, CRDs) im Arc-Datencontroller in Ihrem Kubernetes-Cluster auflisten.
 Führen Sie den folgenden Befehl aus:
 ```console
@@ -57,5 +57,5 @@ Dabei handelt es sich um CRDs, nicht um Servergruppen. Das Vorhandensein einer C
 Die CRD gibt Aufschluss darüber, welche Art von Ressourcen erstellt werden können.
 
 ## <a name="next-steps"></a>Nächste Schritte:
-- [Informationen zum Erstellen von Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppen](create-postgresql-hyperscale-server-group.md)
+- [Informationen zum Erstellen von PostgreSQL Hyperscale mit Azure Arc-Unterstützung](create-postgresql-hyperscale-server-group.md)
 - [Informationen zum Abrufen einer Liste Azure Arc-fähiger PostgreSQL Hyperscale-Servergruppen, die in Ihrem Arc-Datencontroller erstellt wurden](list-server-groups-postgres-hyperscale.md)

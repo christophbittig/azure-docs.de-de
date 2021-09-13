@@ -8,22 +8,19 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 08/14/2020
-ms.openlocfilehash: d764c6b6cff6a0ba23d659d4fda63e21aac9b155
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 07/30/2021
+ms.openlocfilehash: 738338c4f3931e97965e697ca1bf316018a495c8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105644185"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355321"
 ---
 # <a name="directory-readers-role-in-azure-active-directory-for-azure-sql"></a>Rolle „Verzeichnisleseberechtigte“ in Azure Active Directory für Azure SQL
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-> [!NOTE]
-> Dieses Feature in diesem Artikel befindet sich in der **öffentlichen Vorschau**.
-
-Azure Active Directory (Azure AD) hat die [Verwendung von Cloudgruppen zum Verwalten von Rollenzuweisungen in Azure Active Directory (Vorschau)](../../active-directory/roles/groups-concept.md) eingeführt. Dadurch können Azure AD-Rollen Gruppen zugewiesen werden.
+In Azure Active Directory (Azure AD) wurde die [Verwendung von Azure AD-Gruppen zum Verwalten von Rollenzuweisungen](../../active-directory/roles/groups-concept.md) eingeführt. Dadurch können Azure AD-Rollen Gruppen zugewiesen werden.
 
 Wenn Sie eine [verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) für Azure SQL-Datenbank, Azure SQL Managed Instance oder Azure Synapse Analytics aktivieren, muss der Identität die Azure AD-Rolle [**Verzeichnisleseberechtigte**](../../active-directory/roles/permissions-reference.md#directory-readers) zugewiesen werden, um Lesezugriff auf die [Azure AD Graph-API](/graph/migrate-azure-ad-graph-planning-checklist) zu ermöglichen. Die verwaltete Identität von SQL-Datenbank und Azure Synapse wird als Serveridentität bezeichnet. Die verwaltete Identität von SQL Managed Instance wird als verwaltete Instanzidentität bezeichnet und automatisch zugewiesen, wenn die Instanz erstellt wird. Weitere Informationen zum Zuweisen einer Serveridentität zu SQL-Datenbank oder Azure Synapse finden Sie unter [Aktivieren von Dienstprinzipalen zum Erstellen von Azure AD-Benutzern](authentication-aad-service-principal.md#enable-service-principals-to-create-azure-ad-users).
 
@@ -45,7 +42,7 @@ Bei SQL-Datenbank und Azure Synapse ist die Zuweisung der Rolle **Verzeichnisles
 
 ## <a name="granting-the-directory-readers-role-to-an-azure-ad-group"></a>Erteilen der Rolle „Verzeichnisleseberechtigter“ für eine Azure AD-Gruppe
 
-In der **öffentlichen Vorschau** kann jetzt ein [Globaler Administrator](../../active-directory/roles/permissions-reference.md#global-administrator) oder [Administrator für privilegierte Rollen](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) eine Azure AD-Gruppe erstellen und der Gruppe die Berechtigung [**Verzeichnisleseberechtigter**](../../active-directory/roles/permissions-reference.md#directory-readers) zuweisen. Dadurch wird der Zugriff auf die Azure AD Graph-API für Mitglieder dieser Gruppe ermöglicht. Außerdem können Azure AD-Benutzer, die Besitzer dieser Gruppe sind, neue Mitglieder für diese Gruppe zuweisen, einschließlich Identitäten der logischen Azure SQL-Server.
+Ein [globaler Administrator](../../active-directory/roles/permissions-reference.md#global-administrator) oder ein [Administrator für privilegierte Rollen](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) kann eine Azure AD-Gruppe erstellen und dieser die Berechtigung [**Verzeichnisleseberechtigter**](../../active-directory/roles/permissions-reference.md#directory-readers) zuweisen. Dadurch wird der Zugriff auf die Azure AD Graph-API für Mitglieder dieser Gruppe ermöglicht. Außerdem können Azure AD-Benutzer, die Besitzer dieser Gruppe sind, neue Mitglieder für diese Gruppe zuweisen, einschließlich Identitäten der logischen Azure SQL-Server.
 
 Diese Lösung erfordert immer noch einen hochprivilegierten Benutzer („Globaler Administrator“ oder „Administrator für privilegierte Rollen“), um eine Gruppe zu erstellen und Benutzer als eine einmalige Aktivität zuzuweisen, aber die Azure AD-Gruppenbesitzer können in Zukunft weitere Mitglieder zuweisen. Damit entfällt in Zukunft die Notwendigkeit, einen Benutzer mit hohen Privilegien in die Konfiguration aller SQL-Datenbanken, SQL Managed Instances oder Azure Synapse-Server in ihrem Azure AD-Mandanten einzubeziehen.
 

@@ -3,12 +3,12 @@ title: Datei einfügen
 description: include file
 services: cosmos-db
 ms.custom: include file
-ms.openlocfilehash: 06bbeb2cfe39cdb29bc6182d849d000734c01346
-ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
+ms.openlocfilehash: e81f5ef294fd798f720bff06e8fd5f8bc1075ff0
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113279939"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195800"
 ---
 1. Melden Sie sich in einem neuen Browserfenster beim [Azure-Portal](https://portal.azure.com/) an.
 
@@ -20,18 +20,23 @@ ms.locfileid: "113279939"
    
    :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-1.png" alt-text="Der Bereich „Datenbanken“ im Azure-Portal":::
    
-3. Geben Sie auf der Seite **Azure Cosmos DB-Konto erstellen** die Einstellungen für das neue Azure Cosmos DB-Konto ein: 
+4. Wählen Sie auf der Seite **API-Option auswählen** **Azure Cosmos DB-API für MongoDB** > **Erstellen** aus.
 
-   |Einstellung|Wert|Beschreibung |
+   Die API bestimmt den Typ des zu erstellenden Kontos. Wählen Sie **Azure Cosmos DB-API für MongoDB** aus, denn in diesem Schnellstart erstellen Sie eine Sammlung, für die MongoDB verwendet wird. Weitere Informationen finden Sie unter [Übersicht über die Azure Cosmos DB-API für MongoDB](../mongodb-introduction.md).
+
+   :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/azure-cosmos-db-select-api.png" alt-text="Der Bereich „API-Option auswählen“":::
+
+5. Geben Sie auf der Seite **Azure Cosmos DB-Konto erstellen** die Einstellungen für das neue Azure Cosmos DB-Konto ein:
+
+   |Einstellung|Wert|BESCHREIBUNG |
    |---|---|---|
-   |Subscription|Abonnementname|Wählen Sie das Azure-Abonnement aus, das Sie für dieses Azure Cosmos-Konto verwenden möchten. |
+   |Subscription|Abonnementname|Wählen Sie das Azure-Abonnement aus, das Sie für dieses Azure Cosmos DB-Konto verwenden möchten. |
    |Ressourcengruppe|Ressourcengruppenname|Wählen Sie eine Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, und geben Sie einen eindeutigen Namen für die Ressourcengruppe ein. |
    |Kontoname|Geben Sie einen eindeutigen Namen ein.|Geben Sie einen eindeutigen Namen ein, der Ihr Azure Cosmos DB-Konto identifiziert. Der Konto-URI lautet *mongo.cosmos.azure.com* und wird an Ihren eindeutigen Kontonamen angehängt.<br><br>Der Kontoname darf nur Kleinbuchstaben, Ziffern und Bindestriche (-) enthalten und muss zwischen 3 und 44 Zeichen lang sein.|
-   API|Azure Cosmos DB-API für Mongo DB|Die API bestimmt den Typ des zu erstellenden Kontos. Azure Cosmos DB stellt fünf APIs bereit: Kern-API (SQL) für Dokumentdatenbanken, Gremlin-API für Graphdatenbanken, API für Mongo DB von Azure Cosmos DB für Dokumentdatenbanken, Azure-Tabellen-API und Cassandra-API. Derzeit müssen Sie ein separates Konto für jede API erstellen. <br><br>Wählen Sie **Azure Cosmos DB-API für Mongo DB** aus, da Sie in dieser Schnellstartanleitung eine Sammlung erstellen, die mit MongoDB verwendet werden kann.<br><br>[Weitere Informationen zur Azure Cosmos DB-API für MongoDB](../mongodb-introduction.md)|
-   |Position|Die Region, die Ihren Benutzern am nächsten liegt|Wählen Sie einen geografischen Standort aus, an dem Ihr Azure Cosmos DB-Konto gehostet werden soll. Verwenden Sie den Standort, der Ihren Benutzern am nächsten ist, damit sie möglichst schnell auf die Daten zugreifen können.|
-   |Kapazitätsmodus|Bereitgestellter Durchsatz oder serverlos|Wählen Sie **Bereitgestellter Durchsatz** aus, um ein Konto im Modus [Bereitgestellter Durchsatz](../set-throughput.md) zu erstellen. Wählen Sie **Serverlos** aus, um ein Konto im Modus [Serverlos](../serverless.md) zu erstellen. .<br><br>**Hinweis**: Nur Version 3.6 der MongoDB-API wird von serverlosen Konten unterstützt. Wenn Sie 3.2 als Version auswählen, wird das Konto im Modus für bereitgestellten Durchsatz erzwungen.|
+   |Standort|Die Region, die Ihren Benutzern am nächsten liegt|Wählen Sie einen geografischen Standort aus, an dem Ihr Azure Cosmos DB-Konto gehostet werden soll. Verwenden Sie den Standort, der Ihren Benutzern am nächsten ist, damit sie möglichst schnell auf die Daten zugreifen können.|
+   |Kapazitätsmodus|Bereitgestellter Durchsatz oder serverlos|Wählen Sie **Bereitgestellter Durchsatz** aus, um ein Konto im Modus [Bereitgestellter Durchsatz](../set-throughput.md) zu erstellen. Wählen Sie **Serverlos** aus, um ein Konto im Modus [Serverlos](../serverless.md) zu erstellen.<br><br>**Hinweis**: Von serverlosen Konten werden nur die MongoDB-API-Versionen 4 und 3.6 unterstützt. Wenn Sie 3.2 als Version auswählen, wird das Konto im Modus für bereitgestellten Durchsatz erzwungen.|
    |Anwenden des Rabatts für den Free-Tarif von Azure Cosmos DB|**Anwenden** oder **Nicht anwenden**|Mit dem Azure Cosmos DB-Tarif „Free“ erhalten Sie die ersten 1000 RUs/Sek. sowie 25 GB Speicher kostenlos in einem Konto. Weitere Informationen zum [Tarif „Free“](https://azure.microsoft.com/pricing/details/cosmos-db/)|
-   | Version | Auswählen der erforderlichen Serverversion | Die Azure Cosmos DB-API für MongoDB ist mit der Serverversion 4.0, 3.6 und 3.2 kompatibel. Sie können ein Konto [upgraden oder herabstufen](../mongodb-version-upgrade.md), nachdem es erstellt wurde. |
+   | Version | Auswählen der erforderlichen Serverversion | Die Azure Cosmos DB-API für MongoDB ist mit der Serverversion 4.0, 3.6 und 3.2 kompatibel. Sie können ein Konto [upgraden oder herabstufen](../mongodb/upgrade-mongodb-version.md), nachdem es erstellt wurde. |
 
    > [!NOTE]
    > Sie können pro Azure-Abonnement maximal ein Azure Cosmos DB-Konto im Free-Tarif einrichten und müssen sich beim Erstellen des Kontos anmelden. Wird die Option zum Anwenden des tarifspezifischen Rabatts für den Free-Tarif nicht angezeigt, bedeutet dies, dass bereits ein anderes Konto im Abonnement mit dem Free-Tarif aktiviert wurde.
@@ -54,12 +59,12 @@ ms.locfileid: "113279939"
 1. Optional können Sie auf den folgenden Registerkarten zusätzliche Details konfigurieren:
 
    * **Netzwerk**: Konfigurieren Sie den [Zugriff über ein virtuelles Netzwerk](../how-to-configure-vnet-service-endpoint.md).
-   * **Sicherungsrichtlinie**: Konfigurieren Sie eine Richtlinie für [regelmäßige](../configure-periodic-backup-restore.md) oder [fortlaufende](../continuous-backup-restore-portal.md) Sicherungen.
+   * **Sicherungsrichtlinie**: Konfigurieren Sie eine Richtlinie für [regelmäßige](../configure-periodic-backup-restore.md) oder [fortlaufende](../provision-account-continuous-backup.md) Sicherungen.
    * **Verschlüsselung**: Verwenden Sie entweder einen vom Dienst verwalteten Schlüssel oder einen [kundenseitig verwalteten Schlüssel](../how-to-setup-cmk.md#create-a-new-azure-cosmos-account).
    * **Tags**: Tags sind Name-Wert-Paare, mit denen Sie Ressourcen kategorisieren und eine konsolidierte Abrechnung anzeigen können, indem Sie dasselbe Tag auf mehrere Ressourcen und Ressourcengruppen anwenden.
 
 1. Klicken Sie auf **Überprüfen + erstellen**.
 
-4. Die Kontoerstellung dauert einige Minuten. Warten Sie, bis das Portal die Seite **Herzlichen Glückwunsch! Ihr Azure Cosmos DB für Mongo DB-API-Konto ist jetzt bereit.** anzeigt.
+4. Die Kontoerstellung dauert einige Minuten. Warten Sie, bis im Portal die Seite **Congratulations! Ihr Azure Cosmos DB API for MongoDB account is ready** (Herzlichen Glückwunsch! Ihre Azure Cosmos DB-API für das MongoDB-Konto ist bereit) angezeigt wird.
 
    :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/azure-cosmos-db-account-created.png" alt-text="Der Bereich „Benachrichtigungen“ im Azure-Portal"::: 

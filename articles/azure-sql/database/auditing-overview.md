@@ -5,17 +5,17 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.topic: conceptual
-author: DavidTrigano
-ms.author: datrigan
+author: Rupp29
+ms.author: arupp
 ms.reviewer: vanto
-ms.date: 08/01/2021
+ms.date: 08/25/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 9abb17c1be9c862cb0d67110c88386a9c0e7313d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5750192116b9d6008bf1bb903dd36875b6939ffb
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122338974"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866481"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Überwachen von Azure SQL-Datenbank und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -272,9 +272,9 @@ Ein Skriptbeispiel finden Sie unter [Konfigurieren von Überwachung von SQL-Date
 **REST-API**:
 
 - [Erstellen oder Aktualisieren einer Richtlinie für die Überwachung von Datenbanken](/rest/api/sql/database%20auditing%20settings/createorupdate)
-- [Erstellen oder Aktualisieren einer Richtlinie für die Überwachung von Servern](/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [Erstellen oder Aktualisieren einer Richtlinie für die Überwachung von Servern](/rest/api/sql/2017-03-01-preview/server-auditing-settings/create-or-update)
 - [Abrufen einer Richtlinie für die Überwachung von Datenbanken](/rest/api/sql/database%20auditing%20settings/get)
-- [Abrufen einer Richtlinie für die Überwachung von Servern](/rest/api/sql/server%20auditing%20settings/get)
+- [Abrufen einer Richtlinie für die Überwachung von Servern](/rest/api/sql/2017-03-01-preview/server-auditing-settings/get)
 
 Erweiterte Richtlinie mit Unterstützung der WHERE-Klausel für zusätzliche Filterung:
 

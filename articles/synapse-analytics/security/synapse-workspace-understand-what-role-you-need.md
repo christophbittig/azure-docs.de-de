@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: mesrivas
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2d913d0312b75542fa52e73e68170e9a3b91cf5d
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 56337e349cf2cfad792cecbec11503a4fd866095
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122823344"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351123"
 ---
 # <a name="understand-the-roles-required-to-perform-common-tasks-in-synapse"></a>Grundlegendes zu den erforderlichen Rollen zum Ausführen allgemeiner Aufgaben in Synapse
 
@@ -76,7 +76,7 @@ Verwalten (Anhalten, Skalieren oder Löschen) eines dedizierten SQL-Pools|Azure-
 Erstellen eines SQL-Skripts</br>|Synapse-Benutzer oder </br>Azure-Besitzer oder Mitwirkender im Arbeitsbereich. </br>*Zum Ausführen eines SQL-Skripts und zum Veröffentlichen oder Committen von Änderungen sind zusätzliche SQL-Berechtigungen erforderlich.*|
 Auflisten und Öffnen veröffentlichter SQL-Skripts| Benutzer von Synapse-Artefakten, Herausgeber von Synapse-Artefakten, Synapse-Mitwirkender|artifacts/read
 Ausführen eines SQL-Skripts in einem serverlosen SQL-Pool|SQL-Berechtigungen für den Pool (werden Synapse-Administratoren automatisch gewährt)|Keine
-Ausführen eines SQL-Skripts in einem dedizierten SQL-Pool|SQL-Berechtigungen für den Pool (werden Synapse-Administratoren automatisch gewährt)|Keine
+Ausführen eines SQL-Skripts in einem dedizierten SQL-Pool|SQL-Berechtigungen für den Pool|none
 Veröffentlichen neuer, aktualisierter oder gelöschter SQL-Skripts|Herausgeber von Synapse-Artefakten, Synapse-Mitwirkender|sqlScripts/write, delete
 Committen von Änderungen an einem SQL-Skript im Git-Repository|Erfordert Git-Berechtigungen für das Repository|
 Zuweisen eines Active Directory-Administrators für den Arbeitsbereich (über die Arbeitsbereichseigenschaften im Azure-Portal)|Azure-Besitzer oder Mitwirkender im Arbeitsbereich |

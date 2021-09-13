@@ -5,12 +5,12 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: de7b112540d332216e361d5694f22d21c724ca36
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 27d00d137c2fb178b2bd96732664c08965ce3073
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111960404"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634494"
 ---
 # <a name="deploy-resources-with-bicep-and-azure-powershell"></a>Bereitstellen von Ressourcen mit Bicep und Azure PowerShell
 
@@ -25,7 +25,7 @@ Sie benötigen eine einfache Bicep-Datei zum Bereitstellen. Der Name der lokalen
 Sie müssen Azure PowerShell installieren und eine Verbindung zu Azure herstellen:
 
 - **Installieren Sie Azure PowerShell-Cmdlets auf Ihrem lokalen Computer.** Weitere Informationen finden Sie unter [Erste Schritte mit Azure PowerShell](/powershell/azure/get-started-azureps).
-- **Stellen Sie mithilfe von [Connect-AZAccount](/powershell/module/az.accounts/connect-azaccount) eine Verbindung mit Azure her**. Wenn Sie über mehrere Azure-Abonnements verfügen, müssen Sie möglicherweise auch [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext) ausführen. Weitere Informationen finden Sie unter [Verwenden mehrerer Azure-Abonnements](/powershell/azure/manage-subscriptions-azureps).
+- **Stellen Sie mithilfe von [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) eine Verbindung mit Azure her**. Wenn Sie über mehrere Azure-Abonnements verfügen, müssen Sie möglicherweise auch [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext) ausführen. Weitere Informationen finden Sie unter [Verwenden mehrerer Azure-Abonnements](/powershell/azure/manage-subscriptions-azureps).
 
 Wenn PowerShell nicht installiert ist, können Sie Azure Cloud Shell verwenden. Weitere Informationen finden Sie unter [Bereitstellen von Bicep-Dateien über Azure Cloud Shell](./deploy-cloud-shell.md).
 
@@ -50,7 +50,7 @@ Sie können als Ziel für Ihre Bereitstellung eine Ressourcengruppe, ein Abonnem
 - Verwenden Sie zum Bereitstellen in einer **Verwaltungsgruppe** das Cmdlet [New-AzManagementGroupDeployment](/powershell/module/az.resources/New-AzManagementGroupDeployment).
 
   ```azurepowershell
-  New-AzManagementGroupDeployment -Location <location> -TemplateFile <path-to-bicep>
+  New-AzManagementGroupDeployment -ManagementGroupId <management-group-id> -Location <location> -TemplateFile <path-to-bicep>
   ```
 
   Weitere Informationen zu Bereitstellungen auf Verwaltungsgruppenebene finden Sie unter [Erstellen von Ressourcen auf der Verwaltungsgruppenebene](deploy-to-management-group.md).
@@ -75,7 +75,7 @@ Wenn eine Bereitstellung in einer Ressourcengruppe erfolgen soll, die nicht vorh
 New-AzResourceGroup -Name ExampleGroup -Location "Central US"
 ```
 
-Verwenden Sie zum Bereitstellen einer lokalen Bicep-Datei im Bereitstellungsbefehl den Parameter `-TemplateFile`. Das folgende Beispiel zeigt auch, wie ein Parameterwert festgelegt wird, der aus der Bicep-Datei stammt.
+Verwenden Sie zum Bereitstellen einer lokalen Bicep-Datei im Bereitstellungsbefehl den Parameter `-TemplateFile`.
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -157,7 +157,7 @@ Vor dem Bereitstellen der Bicep-Datei können Sie die Änderungen, die von der B
 
 ## <a name="deploy-template-specs"></a>Bereitstellen von Vorlagenspezifikationen
 
-Azure PowerShell unterstützt das Erstellen von Vorlagenspezifikationen durch Bereitstellen von BICEP-Dateien derzeit nicht. Sie können jedoch eine BICEP-Datei mit der [Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs)-Ressource erstellen, um eine Vorlagenspezifikation bereitzustellen. Dies ist ein [Beispiel](https://github.com/Azure/azure-docs-json-samples/blob/master/create-template-spec-using-template/azuredeploy.bicep) hierfür. Sie können Ihre Bicep-Datei auch mithilfe der Bicep-Befehlszeilenschnittstelle in Form einer ARM-Vorlagen-JSON-Datei erstellen und dann eine Vorlagenspezifikation mit der JSON-Vorlage erstellen.
+Azure PowerShell unterstützt das Erstellen von Vorlagenspezifikationen durch Bereitstellen von BICEP-Dateien derzeit nicht. Sie können jedoch eine BICEP-Datei mit der [Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs)-Ressource erstellen, um eine Vorlagenspezifikation bereitzustellen. Dies ist ein [Beispiel](https://github.com/Azure/azure-docs-bicep-samples/blob/main/create-template-spec-using-bicep/azuredeploy.bicep) hierfür. Sie können Ihre Bicep-Datei auch mithilfe der Bicep-Befehlszeilenschnittstelle in Form einer ARM-Vorlagen-JSON-Datei erstellen und dann eine Vorlagenspezifikation mit der JSON-Vorlage erstellen.
 
 ## <a name="deployment-name"></a>„Deployment name“ (Bereitstellungsname)
 
@@ -190,5 +190,5 @@ Geben Sie jeder Bereitstellung einen eindeutigen Namen, um Konflikte mit gleichz
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zum Rollback zu einer erfolgreiche Bereitstellung, wenn ein Fehler auftritt, finden Sie unter [Rollback bei Fehler zu erfolgreicher Bereitstellung](../templates/rollback-on-error.md).
-- Um zu verstehen, wie Parameter in der Vorlage definiert werden, lesen Sie [Verstehen der Struktur und Syntax von ARM-Vorlagen](../templates/syntax.md).
+- Um zu verstehen, wie Parameter in der Vorlage definiert werden, lesen Sie [Verstehen der Struktur und Syntax von ARM-Vorlagen](file.md).
 - Informationen zum Bereitstellen einer Vorlage, die ein SAS-Token erfordert, finden Sie unter [Bereitstellen einer privaten ARM-Vorlage mit SAS-Token](../templates/secure-template-with-sas-token.md).

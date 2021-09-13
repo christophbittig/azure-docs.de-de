@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/28/2021
 ms.author: cherylmc
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1fe78687b8cd200bce6eb0ce75f54fb603aa13ae
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: d4eef7e7470e9dbdd37613165f0ea5cb3b295762
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110671855"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346131"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>Konfigurieren des VPN-Gatewaytransits für ein Peering virtueller Netzwerke
 
@@ -22,7 +22,7 @@ In diesem Artikel erfahren Sie mehr zum Konfigurieren des VPN-Gatewaytransits f�
 
 ![Diagramm des Gatewaytransits](./media/vpn-gateway-peering-gateway-transit/gatewaytransit.png)
 
-Im Diagramm ermöglicht der Gatewaytransit dem virtuellen Netzwerk mit Peeringbeziehung die Nutzung des Azure-VPN-Gateways in „Hub-RM“. Die im VPN-Gateway verfügbare Konnektivität, einschließlich S2S-, P2S- und VNET-zu-VNET-Verbindungen, gilt für alle drei virtuellen Netzwerke. Die Transitoption ist für Peering zwischen den gleichen oder verschiedenen Bereitstellungsmodellen verfügbar. Wenn Sie den Transit zwischen verschiedenen Bereitstellungsmodellen konfigurieren, müssen das Hub-VNET und das Gateway des virtuellen Netzwerks das Resource Manager-Bereitstellungsmodell und nicht das klassische Bereitstellungsmodell aufweisen.
+Im Diagramm ermöglicht der Gatewaytransit dem virtuellen Netzwerk mit Peeringbeziehung die Nutzung des Azure-VPN-Gateways in „Hub-RM“. Die im VPN-Gateway verfügbare Konnektivität, einschließlich S2S-, P2S- und VNET-zu-VNET-Verbindungen, gilt für alle drei virtuellen Netzwerke. Die Transitoption ist für Peering zwischen den gleichen oder verschiedenen Bereitstellungsmodellen verfügbar. Wenn Sie den Transit zwischen verschiedenen Bereitstellungsmodellen konfigurieren, müssen das Hub-VNet und das Gateway für virtuelle Netzwerke das [Resource Manager-Bereitstellungsmodell](../azure-resource-manager/management/deployment-models.md) und nicht das klassische Bereitstellungsmodell aufweisen.
 >
 
 In der Hub-Spoke-Netzwerkarchitektur ermöglicht der Gatewaytransit die gemeinsame Nutzung des VPN-Gateways im Hub, anstatt VPN-Gateways in jedem virtuellen Spoke-Netzwerk bereitzustellen. Routen zu den mit dem Gateway verbundenen virtuellen Netzwerken oder lokalen Netzwerken werden über den Gatewaytransit an die Routingtabellen für die virtuellen Netzwerke mit Peeringbeziehung verteilt. Sie können die automatische Routenverteilung im VPN-Gateway deaktivieren. Erstellen Sie eine Routingtabelle mit der Option **BGP-Routenverteilung deaktivieren**, und ordnen Sie die Routingtabelle den Subnetzen zu, um die Verteilung der Route an diese Subnetze zu verhindern. Weitere Informationen finden Sie unter [Erstellen, Ändern oder Löschen einer Routingtabelle](../virtual-network/manage-route-table.md).

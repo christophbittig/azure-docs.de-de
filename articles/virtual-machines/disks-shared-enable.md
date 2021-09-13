@@ -8,14 +8,16 @@ ms.date: 08/16/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: d2a770dd007c801d2192ff08349966ff915bdd0a
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 594800dcd75de3e5539873f327b5b64b81a8cb1f
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351043"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698186"
 ---
 # <a name="enable-shared-disk"></a>Aktivieren freigegebener Datenträger
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 In diesem Artikel erfahren Sie, wie Sie das Feature für freigegebene Datenträger für verwaltete Azure-Datenträger aktivieren. Freigegebene Azure-Datenträger sind ein neues Feature für verwaltete Azure-Datenträger, mit dem Sie einen verwalteten Datenträger gleichzeitig an mehrere virtuelle Computer (Virtual Machines, VMs) anfügen können. Durch das Anfügen eines verwalteten Datenträgers an mehrere virtuelle Computer können Sie entweder neue gruppierte Anwendungen in Azure bereitstellen oder bereits vorhandene gruppierte Anwendungen zu Azure migrieren. 
 

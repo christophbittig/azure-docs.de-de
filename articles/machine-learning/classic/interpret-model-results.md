@@ -8,20 +8,22 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 11/29/2017
-ms.openlocfilehash: f824cf6e30ed795ef0fe4468542ae16c801bd61b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 882939a08a3a90cffd0b4eb25711d71159a91eb9
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100516123"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689682"
 ---
-# <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Interpretieren von Modellergebnissen in Azure Machine Learning Studio (klassisch)
+# <a name="interpret-model-results-in-machine-learning-studio-classic"></a>Interpretieren von Modellergebnissen im Azure Machine Learning Studio (Classic)
 
-**GILT FÜR:**  ![Dies ist ein Häkchen, d. h., dieser Artikel bezieht sich auf Machine Learning Studio (Classic). ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic)   ![Dies ist ein X, d. h., dieser Artikel bezieht sich auf Azure Machine Learning. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**GILT FÜR:**  ![Dies ist ein Häkchen, d. h., dieser Artikel bezieht sich auf Machine Learning Studio (Classic).](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic)   ![Dies ist ein X, d. h., dieser Artikel bezieht sich nicht auf Azure Machine Learning.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-In diesem Thema werden die Visualisierung und das Interpretieren der Vorhersageergebnisse in Azure Machine Learning Studio (klassisch) erläutert. Nachdem Sie ein Modell trainiert und darauf basierend Vorhersagen erstellt (das Modell ausgewertet) haben, müssen Sie das Vorhersageergebnis verstehen und interpretieren.
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
-Es gibt vier Hauptarten von Machine Learning-Modellen in Azure Machine Learning Studio (klassisch):
+In diesem Artikel werden das Visualisieren und Interpretieren der Vorhersageergebnisse im Azure Machine Learning Studio (Classic) erläutert. Nachdem Sie ein Modell trainiert und darauf basierend Vorhersagen erstellt (das Modell ausgewertet) haben, müssen Sie das Vorhersageergebnis verstehen und interpretieren.
+
+Es gibt vier Hauptarten von Machine Learning-Modellen im Azure Machine Learning Studio (Classic):
 
 * Klassifizierung
 * Clustering
@@ -46,12 +48,12 @@ Es gibt zwei Unterkategorien von Klassifizierungsproblemen:
 * Probleme mit nur zwei Klassen (Zwei-Klassen- oder binäre Klassifizierung)
 * Probleme mit mehr als zwei Klassen (Klassifizierung mit mehreren Klassen)
 
-Azure Machine Learning Studio (klassisch) bietet unterschiedliche Module für den Umgang mit den einzelnen Klassifizierungstypen, die Methoden zur Interpretation der Vorhersageergebnisse sind aber ähnlich.
+Das Azure Machine Learning Studio (Classic) bietet unterschiedliche Module für den Umgang mit den einzelnen Klassifizierungstypen, die Methoden zur Interpretation der Vorhersageergebnisse sind aber ähnlich.
 
 ### <a name="two-class-classification"></a>Klassifizierung mit zwei Klassen
 **Beispielexperiment**
 
-Ein Beispiel für ein Zwei-Klassen-Klassifizierungsproblem ist die Klassifizierung der Schwertlilien. Schwertlilien sollen gemäß ihrer Features klassifiziert werden. Das in Azure Machine Learning Studio (klassisch) bereitgestellte Iris-Dataset ist eine Teilmenge des beliebten [Iris-Datasets](https://en.wikipedia.org/wiki/Iris_flower_data_set) und enthält nur Instanzen von zwei Blumenarten (Klasse 0 und 1). Es gibt vier Features für jede Blume (Länge und Breite des Kelchblatts sowie Länge und Breite des Kronblatts).
+Ein Beispiel für ein Zwei-Klassen-Klassifizierungsproblem ist die Klassifizierung der Schwertlilien. Schwertlilien sollen gemäß ihrer Features klassifiziert werden. Das im Azure Machine Learning Studio (Classic) bereitgestellte Iris-Dataset ist eine Teilmenge des beliebten [Iris-Datasets](https://en.wikipedia.org/wiki/Iris_flower_data_set) und enthält nur Instanzen von zwei Blumenarten (Klasse 0 und 1). Es gibt vier Features für jede Blume (Länge und Breite des Kelchblatts sowie Länge und Breite des Kronblatts).
 
 ![Screenshot des Irisexperiments](./media/interpret-model-results/1.png)
 
@@ -225,7 +227,7 @@ Für Empfehlungssysteme verwenden Sie das Restaurantempfehlungsproblem als Beisp
 * Kundenfeaturedaten
 * Daten zu Restaurantmerkmalen
 
-Mit dem Modul [Train Matchbox Recommender][train-matchbox-recommender] in Azure Machine Learning Studio (klassisch) können Sie verschiedene Aufgaben durchführen:
+Mit dem Modul [Train Matchbox Recommender][train-matchbox-recommender] im Azure Machine Learning Studio (Classic) können Sie verschiedene Aufgaben durchführen:
 
 * Vorhersagen von Bewertungen für einen bestimmten Benutzer und ein bestimmtes Element
 * Empfehlen von Elementen für einen bestimmten Benutzer
@@ -236,7 +238,7 @@ Im Menü **Recommender prediction kind** können Sie zwischen vier Optionen wäh
 
 ![Matchbox Recommender](./media/interpret-model-results/19_1.png)
 
-Ein typisches Experiment für Empfehlungssysteme in Azure Machine Learning Studio (klassisch) sieht wie in Abbildung 20 aus. Ausführliche Informationen zur Verwendung dieser Empfehlungssystemmodule finden Sie in der Hilfe zu [Train Matchbox Recommender][train-matchbox-recommender] und [Score Matchbox Recommender][score-matchbox-recommender].
+Ein typisches Experiment für Empfehlungssysteme im Azure Machine Learning Studio (Classic) sieht wie in Abbildung 20 aus. Ausführliche Informationen zur Verwendung dieser Empfehlungssystemmodule finden Sie in der Hilfe zu [Train Matchbox Recommender][train-matchbox-recommender] und [Score Matchbox Recommender][score-matchbox-recommender].
 
 ![Empfehlungssystemexperiment](./media/interpret-model-results/20.png)
 

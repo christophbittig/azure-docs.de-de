@@ -2,13 +2,13 @@
 title: Wiederherstellen von SQL Server-Datenbanken auf einem virtuellen Azure-Computer
 description: In diesem Artikel erfahren Sie, wie Sie SQL Server-Datenbanken wiederherstellen, die auf einem virtuellen Azure-Computer ausgeführt und mit Azure Backup gesichert werden. Zum Wiederherstellen von Datenbanken in einer sekundären Region können Sie auch die regionsübergreifende Wiederherstellung verwenden.
 ms.topic: conceptual
-ms.date: 05/22/2019
-ms.openlocfilehash: 7dd8d8d54fa7d33bb4a0935357597d19dd2368c5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/06/2021
+ms.openlocfilehash: 312cf2918356c44b010097de4abf66be03f172a2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97734401"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122338971"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Wiederherstellen von SQL Server-Datenbanken auf virtuellen Azure-Computern
 
@@ -173,7 +173,7 @@ Wenn die gesamte Zeichenfolgegröße von Dateien in einer Datenbank einen [besti
 
 Als eine der Wiederherstellungsoptionen ermöglicht die regionsübergreifende Wiederherstellung die Wiederherstellung von auf virtuellen Azure-Computern gehosteten SQL-Datenbanken in einer sekundären Region, bei der es sich um eine gekoppelte Azure-Region handelt.
 
-Informationen zum Integrieren des Features während der Vorschau finden Sie im Abschnitt [Bevor Sie beginnen](./backup-create-rs-vault.md#set-cross-region-restore).
+Lesen Sie den Abschnitt [Bevor Sie beginnen](./backup-create-rs-vault.md#set-cross-region-restore), um das Onboarding für das Feature durchzuführen.
 
 Um festzustellen, ob CRR aktiviert ist, befolgen Sie die Anweisungen unter [Konfigurieren der regionsübergreifenden Wiederherstellung](backup-create-rs-vault.md#configure-cross-region-restore).
 
@@ -193,19 +193,15 @@ Wenn CRR aktiviert ist, können Sie die Sicherungselemente in der sekundären Re
 
 ### <a name="restore-in-secondary-region"></a>Wiederherstellen in der sekundären Region
 
-Die Benutzeroberfläche zur Wiederherstellung in der sekundären Region ähnelt der Benutzerumgebung für die Wiederherstellung in der primären Region. Wenn Sie Details im Bereich „Wiederherstellungskonfiguration“ festlegen, um Ihre Wiederherstellung zu konfigurieren, werden Sie aufgefordert, nur die Parameter der sekundären Region anzugeben.
+Die Benutzeroberfläche zur Wiederherstellung in der sekundären Region ähnelt der Benutzerumgebung für die Wiederherstellung in der primären Region. Wenn Sie Details im Bereich „Wiederherstellungskonfiguration“ festlegen, um Ihre Wiederherstellung zu konfigurieren, werden Sie aufgefordert, nur die Parameter der sekundären Region anzugeben. In der sekundären Region sollte ein Tresor vorhanden sein, und die SQL Server-Instanz sollte beim Tresor in der sekundären Region registriert werden.
 
 ![Ziel und Art der Wiederherstellung](./media/backup-azure-sql-database/restore-secondary-region.png)
-
->[!NOTE]
->Das virtuelle Netzwerk in der sekundären Region muss eindeutig zugewiesen werden und kann nicht für andere VMs in dieser Ressourcengruppe verwendet werden.
 
 ![Auslösen der Benachrichtigung „Wiederherstellung wird ausgeführt“](./media/backup-azure-arm-restore-vms/restorenotifications.png)
 
 >[!NOTE]
->
 >- Nachdem die Wiederherstellung ausgelöst wurde und sich in der Datenübertragungsphase befindet, kann der Wiederherstellungsauftrag nicht abgebrochen werden.
->- Die für die Wiederherstellung in der Sekundärregion erforderlichen Azure-Rollen sind die gleichen wie in der Primärregion.
+>- Für die regionsübergreifende Durchführung von Wiederherstellungsvorgängen sind die folgende Rolle und Zugriffsebene erforderlich: die Rolle _Sicherungsoperator_ im Abonnement und die Zugriffsberechtigung _Mitwirkender (Schreiben)_ für die virtuellen Quell- und Zielcomputer. Zum Anzeigen von Sicherungsaufträgen ist „Sicherungsleseberechtigter“ die minimale Berechtigung, die im Abonnement erforderlich ist.
 
 ### <a name="monitoring-secondary-region-restore-jobs"></a>Überwachen von Wiederherstellungsaufträgen für die sekundäre Regionen
 

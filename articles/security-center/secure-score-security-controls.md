@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: article
-ms.date: 05/05/2021
+ms.date: 08/17/2021
 ms.author: memildin
-ms.openlocfilehash: e6582aedbc8357715f4e49cc8d5a780859ef3929
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: a3dc221ff4fa1caebad9dea601e208280b928558
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112062069"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122343563"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Secure Score in Azure Security Center
 
@@ -124,12 +124,13 @@ In einigen Fällen wird als maximale Bewertung für ein Kontrollelement ein Wert
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel wurden Secure Score und die damit eingeführten Sicherheitskontrollen beschrieben. Weitere Informationen finden Sie in den folgenden Artikeln:
+In diesem Artikel wurden die Sicherheitsbewertung und die darin enthaltenen Sicherheitskontrollen beschrieben. 
+
+> [!div class="nextstepaction"]
+> [Zugreifen auf Ihre Sicherheitsbewertung und Nachverfolgen dieser Bewertung](secure-score-access-and-track.md)
+
+Weitere Informationen finden Sie in den folgenden Artikeln:
 
 - [Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md)
 - [Umsetzen von Empfehlungen in Azure Security Center](security-center-remediate-recommendations.md)
 - [Anzeigen der GitHub-basierten Tools für die programmgesteuerte Arbeit mit Sicherheitsbewertungen](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)
-
-
-> [!div class="nextstepaction"]
-> [Zugreifen auf Ihre Sicherheitsbewertung und Nachverfolgen dieser Bewertung](secure-score-access-and-track.md)

@@ -3,22 +3,26 @@ title: Integrierte Trigger und Aktionen für Azure Logic Apps
 description: Verwenden Sie integrierte Trigger und Aktionen, um automatisierte Workflows zu erstellen, die Apps, Daten, Dienste und Systeme integrieren, Workflows zu steuern sowie Daten mithilfe von Azure Logic Apps zu verwalten.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, logicappspm, azla
+ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 04/20/2021
-ms.openlocfilehash: a718e7c7b771f66ed8337e53fec49e5939ab0442
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.date: 06/16/2021
+ms.openlocfilehash: c98263500651447ddc4a9962f2e1ac10d9927502
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315757"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113664933"
 ---
 # <a name="built-in-triggers-and-actions-for-logic-apps"></a>Integrierte Trigger und Aktionen für Azure Logic Apps
 
+Mithilfe von [integrierten Triggern und Aktionen](apis-list.md) können Sie den [Zeitplan und die Struktur Ihres Workflows steuern](#control-workflow), [eigenen Code ausführen](#run-code-from-workflows), [Daten verwalten oder bearbeiten](#manage-or-manipulate-data) und andere Aufgaben in Ihren Workflows ausführen. Anders als [verwaltete Connectors](managed.md) sind viele integrierte Vorgänge nicht an einen bestimmten Dienst, ein System oder ein Protokoll gebunden. Beispielsweise können Sie mithilfe des Triggers „Serie“ fast jeden Workflow basierend auf einem Zeitplan starten. Sie können auch den Trigger „Anforderung“ verwenden, damit Ihr Workflow erst gestartet wird, wenn er aufgerufen wird. Alle integrierten Vorgänge werden nativ im Logic Apps-Dienst ausgeführt, und die meisten dieser Vorgänge erfordern nicht, dass Sie vor ihrer Verwendung eine Verbindung erstellen.
 
-Mithilfe von [integrierten Triggern und Aktionen](apis-list.md) können Sie den [Zeitplan und die Struktur Ihres Workflows steuern](#control-workflow), [eigenen Code ausführen](#run-code-from-workflows), [Daten verwalten oder bearbeiten](#manage-or-manipulate-data) und andere Aufgaben in Ihren Workflows ausführen. Anders als [verwaltete Connectors](managed.md) sind viele integrierte Vorgänge nicht an einen bestimmten Dienst, ein System oder ein Protokoll gebunden. Beispielsweise können Sie mithilfe des Triggers „Serie“ fast jeden Workflow basierend auf einem Zeitplan starten. Sie können auch den Trigger „Anforderung“ verwenden, damit Ihr Workflow erst gestartet wird, wenn er aufgerufen wird. Alle integrierten Vorgänge werden nativ im Logic Apps-Dienst ausgeführt, und die meisten dieser Vorgänge erfordern nicht, dass Sie vor ihrer Verwendung eine Verbindung erstellen. 
+Für eine kleinere Anzahl von Diensten, Systemen und Protokollen, wie z. B. Azure Service Bus, Azure Functions, Azure Blob, Azure App Services, Azure API Management, SQL, AS2 usw. bietet Logic Apps auch integrierte Vorgänge. Die Anzahl und der Bereich variieren abhängig davon, ob Sie eine Logik-App mit mehreren oder einem einzigen Mandanten erstellen. In einigen Fällen sind sowohl eine integrierte Version als auch eine verwaltete Connectorversion verfügbar. In den meisten Fällen bietet die integrierte Version eine höhere Leistung, bessere Funktionen, niedrigere Preise usw. Zum [Austauschen von B2B-Nachrichten mithilfe des AS2-Protokolls](../logic-apps/logic-apps-enterprise-integration-as2.md) sollten Sie beispielsweise die integrierte Version auswählen, es sei denn, Sie benötigen Nachverfolgungsfunktionen, die nur in der (veralteten) verwalteten Connectorversion verfügbar sind.
 
-Logic Apps bietet auch integrierte Vorgänge für eine kleinere Anzahl von Diensten, Systemen und Protokollen wie z. B. Azure Functions, Azure App Services, Azure API Management, AS2 usw. Diese Auswahl variiert abhängig davon, ob Sie eine Logik-App mit mehreren oder einem einzigen Mandanten erstellen. Wenn Sie beispielsweise eine Logik-App mit nur einem Mandanten erstellen, stehen integrierte Vorgänge für Azure Service Bus, Azure Event Hubs, SQL Server und MQ zur Verfügung. In einigen Fällen sind sowohl eine integrierte Version als auch eine verwaltete Connectorversion verfügbar. In den meisten Fällen bietet die integrierte Version eine höhere Leistung, bessere Funktionen, niedrigere Preise usw. Zum [Austauschen von B2B-Nachrichten mithilfe des AS2-Protokolls](../logic-apps/logic-apps-enterprise-integration-as2.md) sollten Sie beispielsweise die integrierte Version auswählen, es sei denn, Sie benötigen Nachverfolgungsfunktionen, die nur in der (veralteten) verwalteten Connectorversion verfügbar sind.
+Die Anzahl und der Bereich variieren abhängig davon, ob Sie eine Logik-App mit mehreren oder einem einzigen Mandanten erstellen. In einigen Fällen sind sowohl eine integrierte Version als auch eine verwaltete Connectorversion verfügbar. In den meisten Fällen bietet die integrierte Version eine höhere Leistung, bessere Funktionen, niedrigere Preise usw. Zum [Austauschen von B2B-Nachrichten mithilfe des AS2-Protokolls](../logic-apps/logic-apps-enterprise-integration-as2.md) sollten Sie beispielsweise die integrierte Version auswählen, es sei denn, Sie benötigen Nachverfolgungsfunktionen, die nur in der (veralteten) verwalteten Connectorversion verfügbar sind.
+
+
+Wenn Sie beispielsweise eine Logik-App mit nur einem Mandanten erstellen, stehen integrierte Vorgänge für Azure Service Bus, Azure Event Hubs, SQL Server und MQ zur Verfügung. In einigen Fällen sind sowohl eine integrierte Version als auch eine verwaltete Connectorversion verfügbar. In den meisten Fällen bietet die integrierte Version eine höhere Leistung, bessere Funktionen, niedrigere Preise usw. Zum [Austauschen von B2B-Nachrichten mithilfe des AS2-Protokolls](../logic-apps/logic-apps-enterprise-integration-as2.md) sollten Sie beispielsweise die integrierte Version auswählen, es sei denn, Sie benötigen Nachverfolgungsfunktionen, die nur in der (veralteten) verwalteten Connectorversion verfügbar sind.
 
 In der folgenden Liste werden nur einige der Aufgaben beschrieben, die Sie mit [integrierten Triggern und Aktionen](#understand-triggers-and-actions) ausführen können:
 
@@ -53,18 +57,6 @@ Logic Apps bietet die folgenden integrierten Trigger und Aktionen:
         [**Verzögern bis**][schedule-delay-until-doc]: Anhalten des Workflows bis zur angegebenen Zeit (Datum und Uhrzeit).
     :::column-end:::
     :::column:::
-        [![Symbol „Batch“ in Logic Apps][batch-icon]][batch-doc]
-        \
-        \
-        [**Batch**][batch-doc]
-        \
-        \
-        [**Batchnachrichten**][batch-doc]: Auslösen eines Workflows, der Nachrichten in Batches verarbeitet.
-        \
-        \
-        [**Nachrichten an Batch senden**][batch-doc]: Aufrufen eines vorhandenen Workflows, der aktuell mit einem Trigger **Batchnachrichten** gestartet wird.
-    :::column-end:::
-    :::column:::
         [![Symbol „HTTP“ in Logic Apps][http-icon]][http-doc]
         \
         \
@@ -89,6 +81,18 @@ Logic Apps bietet die folgenden integrierten Trigger und Aktionen:
         \
         \
         [**Antwort**][http-request-doc]: Antworten auf eine Anforderung, die vom Trigger **Beim Empfang einer HTTP-Anforderung** im gleichen Workflow empfangen wurde.
+    :::column-end:::
+    :::column:::
+        [![Symbol „Batch“ in Logic Apps][batch-icon]][batch-doc]
+        \
+        \
+        [**Batch**][batch-doc]
+        \
+        \
+        [**Batchnachrichten**][batch-doc]: Auslösen eines Workflows, der Nachrichten in Batches verarbeitet.
+        \
+        \
+        [**Nachrichten an Batch senden**][batch-doc]: Aufrufen eines vorhandenen Workflows, der aktuell mit einem Trigger **Batchnachrichten** gestartet wird.
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -123,6 +127,12 @@ Logic Apps bietet die folgenden integrierten Trigger und Aktionen:
         Aufrufen anderer Workflows, die mit dem Anforderungstrigger **Beim Empfang einer HTTP-Anforderung** gestartet werden.
     :::column-end:::
     :::column:::
+        [![SQL Server-Symbol in Logic Apps][sql-server-icon]][sql-server-doc]
+        \
+        \
+        [**SQL Server**][sql-server-doc] <br>(*nur Einzelmandanten*)     \
+        \
+        Herstellen einer Verbindung mit Ihrer lokalen SQL Server-Instanz oder einer Azure SQL-Datenbank in der Cloud, sodass Sie Datensätze verwalten, gespeicherte Prozeduren ausführen oder Abfragen ausführen können. <p>**Hinweis**: Azure Logic Apps für Einzelmandanten bietet sowohl SQL-integrierte Vorgänge als auch Vorgänge des verwalteten Connectors, während mehrinstanzenfähiges Azure Logic Apps nur Vorgänge des verwalteten Connectors bietet. <p>Weitere Informationen finden Sie unter [Vergleich zwischen Umgebungen mit einem Mandanten und mehreren Mandanten bzw. Integrationsdienstumgebung für Azure Logic Apps](../logic-apps/single-tenant-overview-compare.md).
     :::column-end:::
 :::row-end:::
 
@@ -320,9 +330,10 @@ Logic Apps bietet integrierte Aktionen zur Verwendung von Datenausgaben mit den 
 > [!div class="nextstepaction"]
 > [Erstellen benutzerdefinierter APIs, die über Azure Logic Apps aufgerufen werden können](../logic-apps/logic-apps-create-api-app.md)
 
-<!-- Built-ins icons -->
+<!-- Built-in icons -->
 [azure-api-management-icon]: ./media/apis-list/azure-api-management.png
 [azure-app-services-icon]: ./media/apis-list/azure-app-services.png
+[azure-blob-storage-icon]: ./media/apis-list/azure-blob-storage.png
 [azure-functions-icon]: ./media/apis-list/azure-functions.png
 [azure-logic-apps-icon]: ./media/apis-list/azure-logic-apps.png
 [batch-icon]: ./media/apis-list/batch.png
@@ -338,18 +349,20 @@ Logic Apps bietet integrierte Aktionen zur Verwendung von Datenausgaben mit den 
 [inline-code-icon]: ./media/apis-list/inline-code.png
 [schedule-icon]: ./media/apis-list/recurrence.png
 [scope-icon]: ./media/apis-list/scope.png
+[sql-server-icon]: ./media/apis-list/sql.png
 [switch-icon]: ./media/apis-list/switch.png
 [terminate-icon]: ./media/apis-list/terminate.png
 [until-icon]: ./media/apis-list/until.png
 [variables-icon]: ./media/apis-list/variables.png
 
-
 <!--Built-in doc links-->
 [azure-api-management-doc]: ../api-management/get-started-create-service-instance.md "Erstellen einer Azure API Management-Dienstinstanz zum Verwalten und Veröffentlichen von APIs"
 [azure-app-services-doc]: ../logic-apps/logic-apps-custom-api-host-deploy-call.md "Integration von Logik-Apps in App Service-API-Apps"
+[azure-blob-storage-doc]: ./connectors-create-api-azureblobstorage.md "Verwalten von Dateien in Ihrem Blobcontainer mit Azure Blob Storage-Connector"
 [azure-functions-doc]: ../logic-apps/logic-apps-azure-functions.md "Integration von Logik-Apps in Azure Functions"
 [batch-doc]: ../logic-apps/logic-apps-batch-process-send-receive-messages.md "Verarbeiten von Nachrichten in Gruppen oder als Batches"
 [condition-doc]: ../logic-apps/logic-apps-control-flow-conditional-statement.md "Auswerten einer Bedingung und Ausführen unterschiedlicher Aktionen abhängig davon, ob die Bedingung TRUE oder FALSE ist"
+[data-operations-doc]: ../logic-apps/logic-apps-perform-data-operations.md "Ausführen von Datenvorgängen, z.B. das Filtern von Arrays oder das Erstellen von CSV- und HTML-Tabellen"
 [for-each-doc]: ../logic-apps/logic-apps-control-flow-loops.md#foreach-loop "Ausführen der gleichen Aktionen für jedes Element in einem Array"
 [http-doc]: ./connectors-native-http.md "Aufrufen von HTTP- oder HTTPS-Endpunkten aus Ihren Logik-Apps"
 [http-request-doc]: ./connectors-native-reqres.md "Empfangen von HTTP-Anforderungen in Ihren Logik-Apps"
@@ -365,8 +378,8 @@ Logic Apps bietet integrierte Aktionen zur Verwendung von Datenausgaben mit den 
 [schedule-recurrence-doc]:  ./connectors-native-recurrence.md "Ausführen von Logik-Apps nach einem sich wiederholenden Zeitplan"
 [schedule-sliding-window-doc]: ./connectors-native-sliding-window.md "Ausführen von Logik-Apps, die Daten in zusammenhängenden Blöcken verarbeiten müssen"
 [scope-doc]: ../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md "Organisieren von Aktionen in Gruppen, die einen eigenen Status erhalten, nachdem die Ausführung der Aktionen in der Gruppe beendet ist"
+[sql-server-doc]: ./connectors-create-api-sqlazure.md "Stellen Sie eine Verbindung mit Azure SQL-Datenbank oder SQL Server her. Erstellten, Aktualisieren, Abrufen und Löschen von Einträgen in einer SQL-Datenbanktabelle"
 [switch-doc]: ../logic-apps/logic-apps-control-flow-switch-statement.md "Organisieren von Aktionen in Fälle, denen eindeutige Werte zugewiesen werden. Es wird nur der Fall ausgeführt, dessen Wert mit dem Ergebnis eines Ausdrucks, Objekts oder Token übereinstimmt. Wenn keine Übereinstimmungen vorhanden sind, wird der Standardfall ausgeführt."
 [terminate-doc]: ../logic-apps/logic-apps-workflow-actions-triggers.md#terminate-action "Beenden oder Abbrechen eines aktiv ausgeführten Workflows für Ihre Logik-App"
 [until-doc]: ../logic-apps/logic-apps-control-flow-loops.md#until-loop "Wiederholen von Aktionen, bis die angegebene Bedingung TRUE ist oder sich ein Status geändert hat"
-[data-operations-doc]: ../logic-apps/logic-apps-perform-data-operations.md "Ausführen von Datenvorgängen, z.B. das Filtern von Arrays oder das Erstellen von CSV- und HTML-Tabellen"
 [variables-doc]: ../logic-apps/logic-apps-create-variables-store-values.md "Ausführen von Vorgängen mit Variablen, z.B. Initialisieren, Festlegen, Erhöhen oder Verringern in einzelnen Schritten sowie Anfügen an Arrayvariable oder Zeichenfolgenvariable"

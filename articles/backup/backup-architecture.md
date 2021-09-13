@@ -2,13 +2,13 @@
 title: Übersicht über die Architektur
 description: Übersicht über die Architektur, die Komponenten und die Prozesse des Azure Backup-Diensts.
 ms.topic: conceptual
-ms.date: 02/19/2019
-ms.openlocfilehash: 8fca05f8718fc5e44da33b19447895f5daafc905
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.date: 06/23/2021
+ms.openlocfilehash: 532ca138a9f003f38dac9245f4478b81e2d827f7
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107716744"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112541660"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup-Architektur und -Komponenten
 
@@ -91,6 +91,17 @@ Speicherverbrauch, RTO (Recovery Time Objective) und Netzwerkauslastung variiere
 - Bei inkrementellen Sicherungen werden die Blöcke A2, A3, A4 und A9 im zweiten Monat als geändert gekennzeichnet und übertragen. Im dritten Monat wird nur der geänderte Block A5 gekennzeichnet und übertragen.
 
 ![Vergleichsdarstellung von Sicherungsmethoden](./media/backup-architecture/backup-method-comparison.png)
+
+## <a name="sap-hana-backup-types"></a>SAP HANA-Sicherungstypen
+
+In der folgenden Tabelle werden die verschiedenen für SAP HANA-Datenbanken verwendeten Sicherungstypen und die Häufigkeit von deren Verwendung erläutert:
+
+| Sicherungstyp | Details | Verwendung |
+| --- | --- | --- |
+| **Vollständige Sicherung** | Die gesamte Datenbank wird gesichert. Dieser Sicherungstyp kann einzeln zum Wiederherstellen eines bestimmten Zeitpunkts verwendet werden. | Pro Tag kann höchstens eine vollständige Sicherung geplant werden. <br><br> Sie können auswählen, ob eine vollständige Sicherung täglich oder wöchentlich ausgeführt werden soll. |
+| **Differenzielle Sicherung** | Eine differenzielle Sicherung basiert auf der letzten vollständigen Datensicherung. <br><br> Damit werden nur die Daten erfasst, die seit der letzten vollständigen Sicherung geändert wurden. | Pro Tag kann höchstens eine differenzielle Sicherung geplant werden.  <br><br> Sie können eine vollständige Sicherung und eine differenzielle Sicherung nicht am gleichen Tag konfigurieren. |
+| **Inkrementelle Sicherung** | Eine inkrementelle Sicherung basiert auf der letzten vollständigen/differenziellen/inkrementellen Datensicherung. <br><br> Damit werden nur die Daten erfasst, die seit der letzten Datensicherung geändert wurden. | Pro Tag kann höchstens eine inkrementelle Sicherung geplant werden. <br><br> Für eine Datenbank können nicht gleichzeitig differenzielle und inkrementelle Sicherungen geplant werden, sondern nur Deltasicherungen. <br><br> Sie können eine vollständige Sicherung und eine differenzielle Sicherung nicht am gleichen Tag konfigurieren. |k
+| **Sicherung des Transaktionsprotokolls** | Eine Zeitpunktwiederherstellung ist bis zu einer bestimmten Sekunde möglich. | Transaktionsprotokollsicherungen können höchstens alle 15 Minuten durchgeführt werden. |
 
 ## <a name="backup-features"></a>Sicherungsfeatures
 

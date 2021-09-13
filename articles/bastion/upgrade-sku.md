@@ -6,14 +6,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 08/30/2021
+ms.date: 07/13/2021
 ms.author: cherylmc
-ms.openlocfilehash: 5ed0dd6ad86b5f7758f0e1972867876eedc3b51a
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 8a2c35f2ef4dafe9024deab1c26116c0ca20e01e
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123225945"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113733302"
 ---
 # <a name="upgrade-a-sku-preview"></a>Durchführen eines Upgrades für eine SKU (Vorschau)
 
@@ -21,7 +21,8 @@ In diesem Artikel erfahren Sie, wie Sie den Tarif einer SKU von „Basic“ in �
 
 ## <a name="configuration-steps"></a>Konfigurationsschritte
 
-1. Melden Sie sich beim [Azure-Portal](https://ms.portal.azure.com) an.
+[!INCLUDE [Azure Bastion preview portal](../../includes/bastion-preview-portal-note.md)]
+
 1. Navigieren Sie im Azure-Portal zu Ihrem Bastionhost.
 1. Wählen Sie auf der Seite **Konfiguration** in der Dropdownliste **Tarif** die Option **Standard** aus.
 

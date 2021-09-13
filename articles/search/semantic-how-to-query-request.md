@@ -7,18 +7,18 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/27/2021
-ms.openlocfilehash: b87f36b755037519d29881eeaefddfa8c92f6a3f
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.date: 07/21/2021
+ms.openlocfilehash: e3ae63b202d826e48789bd8d15a197048d5566b7
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111744933"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122356240"
 ---
 # <a name="create-a-query-that-invokes-semantic-ranking-and-returns-semantic-captions"></a>Erstellen einer Abfrage zum Aufrufen der semantischen Rangfolge und zum Zurückgeben semantischer Beschriftungen
 
 > [!IMPORTANT]
-> Die semantische Suche befindet sich in der öffentlichen Vorschau gemäß [zusätzlichen Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Sie ist über das Azure-Portal, die Vorschau-REST-API und Beta-SDKs verfügbar. Diese Features sind abrechenbar. Weitere Informationen finden Sie unter [Verfügbarkeit und Preise](semantic-search-overview.md#availability-and-pricing).
+> Die semantische Suche befindet sich in der öffentlichen Vorschau und unterliegt [zusätzlichen Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Sie ist über das Azure-Portal, die Vorschau-REST-API und Beta-SDKs verfügbar. Diese Features sind abrechenbar. Weitere Informationen finden Sie unter [Verfügbarkeit und Preise](semantic-search-overview.md#availability-and-pricing).
 
 Die semantische Suche ist ein Premium-Feature in Azure Cognitive Search, das einen semantischen Rangfolgealgorithmus für ein Resultset aufruft und semantische Beschriftungen (und optional [semantische Antworten](semantic-answers.md)) zurückgibt. Die relevantesten Begriffe und Ausdrücke werden dabei hervorgehoben. Beschriftungen und Antworten werden in Abfrageanforderungen zurückgegeben, die mit dem Abfragetyp „Semantik“ formuliert werden.
 
@@ -30,7 +30,7 @@ Sowohl Beschriftungen als auch Antworten werden wörtlich aus dem Text im Suchdo
 
 + [Registrieren Sie sich hier für die Vorschau.](https://aka.ms/SemanticSearchPreviewSignup) Die erwartete Verarbeitungszeit beträgt etwa zwei Werktage.
 
-+ Ein vorhandener Suchindex mit Inhalt in einer [unterstützten Sprache](/rest/api/searchservice/preview-api/search-documents#queryLanguage)
++ Ein vorhandener Suchindex mit Inhalt in einer [unterstützten Sprache](/rest/api/searchservice/preview-api/search-documents#queryLanguage) Die semantische Suche funktioniert am besten für informatorische oder beschreibende Inhalte.
 
 + Ein Suchclient zum Senden von Abfragen
 
@@ -98,13 +98,13 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 In der folgenden Tabelle werden die in einer Semantikabfrage verwendeten Parameter zusammengefasst. Eine Liste aller Parameter finden Sie unter [Dokumente durchsuchen (Vorschau-REST-API)](/rest/api/searchservice/preview-api/search-documents).
 
-| Parameter | Typ | BESCHREIBUNG |
+| Parameter | type | BESCHREIBUNG |
 |-----------|-------|-------------|
 | queryType | String | Gültige Werte sind „simple“, „full“ und „semantic“. Der Wert „semantic“ wird für Semantikabfragen benötigt. |
 | queryLanguage | String | Für Semantikabfragen erforderlich. Das von Ihnen angegebene Lexikon gilt gleichermaßen für die semantische Rangfolge, Beschriftungen, Antworten und die Rechtschreibprüfung. Weitere Informationen finden Sie unter [Unterstützte Sprachen (REST-API-Referenz)](/rest/api/searchservice/preview-api/search-documents#queryLanguage). |
 | searchFields | String | Hierbei handelt es sich um eine durch Trennzeichen getrennte Liste mit durchsuchbaren Feldern. Gibt die Felder an, für die eine semantische Rangfolge auftritt, von der Beschriftungen und Antworten extrahiert werden. </br></br>Im Gegensatz zu einfachen und vollständigen Abfragetypen bestimmt die Reihenfolge, in der Felder aufgeführt sind, welches Feld Vorrang hat. Weitere Anweisungen zur Verwendung finden Sie unter [Schritt 2: Festlegen von searchFields](#searchfields). |
 | speller | String | Dies ist ein optionaler Parameter und nicht spezifisch für semantische Abfragen. Er korrigiert falsch geschriebene Begriffe, bevor diese die Suchmaschine erreichen. Weitere Informationen finden Sie unter [Hinzufügen von Rechtschreibkorrekturen zu Abfragen](speller-how-to-add.md). |
-| answers |String | Dies sind optionale Parameter, um anzugeben, ob semantische Antworten in das Ergebnis einbezogen werden sollen. Derzeit wird nur „extractive“ implementiert. Antworten können so konfiguriert werden, dass maximal fünf Werte zurückgegeben werden. Der Standardwert ist 1. In diesem Beispiel ist die Anzahl der semantischen Antworten 3: „extractive\|count3“. Weitere Informationen finden Sie unter [Rückgabe von semantischen Antworten](semantic-answers.md).|
+| answers |String | Dies sind optionale Parameter, um anzugeben, ob semantische Antworten in das Ergebnis einbezogen werden sollen. Derzeit wird nur „extractive“ implementiert. Antworten können so konfiguriert werden, dass maximal zehn Werte zurückgegeben werden. Der Standardwert ist 1. Dieses Beispiel zeigt drei Antworten: `extractive\|count-3`. Weitere Informationen finden Sie unter [Rückgabe von semantischen Antworten](semantic-answers.md).|
 
 ### <a name="formulate-the-request"></a>Formulieren der Anforderung
 
@@ -163,9 +163,13 @@ Die Feldreihenfolge ist entscheidend, da vom Semantikbewerter die Menge an Inhal
 
   + Lassen Sie den obigen Feldern andere beschreibende Felder folgen, in denen die Antworten auf Semantikabfragen gefunden werden können, z. B. der Hauptinhalt eines Dokuments.
 
-#### <a name="step-3-remove-orderby-clauses"></a>Schritt 3: Entfernen der orderBy-Klauseln
+#### <a name="step-3-remove-or-bracket-query-features-that-bypass-relevance-scoring"></a>Schritt 3: Entfernen oder Ausklammern von Abfragefeatures, die die Relevanzbewertung umgehen
 
-Entfernen Sie alle orderBy-Klauseln aus vorhandenem Abfragecode. Die semantische Bewertung dient zum Sortieren der Ergebnisse, und wenn Sie eine explizite Sortierlogik hinzufügen, wird ein HTTP 400-Fehler zurückgegeben.
+Einige Abfragefunktionen in Cognitive Search unterliegen keiner Relevanzbewertung, und einige umgehen die Volltextsuchmaschine völlig. Wenn Ihre Abfragelogik die folgenden Features umfasst, erhalten Sie keine Relevanzwerte oder semantische Rangfolgen für Ihre Ergebnisse:
+
++ Filter, Fuzzysuchabfragen und reguläre Ausdrücke durchlaufen nicht mit Token versehenen Text und suchen nach wörtlichen Übereinstimmungen im Inhalt. Suchbewertungen für alle oben genannten Abfrageformen erhalten einheitlich den Wert 1,0 und bieten keine sinnvollen Eingaben für eine semantische Rangfolge.
+
++ Auch eine Sortierung (orderby-Klausel) nach bestimmten Feldern überschreibt Suchbewertungen und semantische Rangfolge. Da die semantische Rangfolge zum Sortieren der Ergebnisse verwendet wird, führt eine explizite Sortierungslogik zur Rückgabe eines HTTP-400-Fehlers.
 
 #### <a name="step-4-add-answers"></a>Schritt 4: Hinzufügen von Antworten
 
@@ -190,6 +194,17 @@ Legen Sie alle anderen Parameter fest, die in der Anforderung enthalten sein sol
 ```
 
 Hervorhebungsstile werden auf Beschriftungen in der Antwort angewendet. Sie können den Standardstil verwenden oder optional den auf Beschriftungen angewendeten Hervorhebungsstil anpassen. Beschriftungen stellen eine Hervorhebung der Formatierung für Schlüsselpassagen im Dokument dar, die die Antwort zusammenfassen. Der Standardwert lautet `<em>`. Wenn Sie den Formatierungstyp angeben möchten (beispielsweise gelber Hintergrund), können Sie „highlightPreTag“ und „highlightPostTag“ festlegen.
+
+## <a name="query-using-azure-sdks"></a>Abfragen mithilfe von Azure-SDKs
+
+Betaversionen der Azure-SDKs bieten Unterstützung für die semantische Suche. Da es sich bei diesen SDKs um Betaversionen handelt, gibt es weder eine Dokumentation noch Beispiele, aber Sie können den Abschnitt zur REST-API oben zurate ziehen, um zu erfahren, wie die APIs funktionieren sollten.
+
+| Azure SDK | Paket |
+|-----------|---------|
+| .NET | [Azure.Search.Documents package 11.3.0-beta.2](https://www.nuget.org/packages/Azure.Search.Documents/11.3.0-beta.2)  |
+| Java | [com.azure:azure-search-documents 11.4.0-beta.2](https://search.maven.org/artifact/com.azure/azure-search-documents/11.4.0-beta.2/jar)  |
+| JavaScript | [azure/search-documents 11.2.0-beta.2](https://www.npmjs.com/package/@azure/search-documents/v/11.2.0-beta.2)|
+| Python | [azure-search-documents 11.2.0b3](https://pypi.org/project/azure-search-documents/11.2.0b3/) |
 
 ## <a name="evaluate-the-response"></a>Auswertung der Antwort
 

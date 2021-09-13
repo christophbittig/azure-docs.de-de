@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: c0694e7d136b7fd339362145179939d350eb23ef
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 1040c05b081c6edb181d349d00468d1ba0aac3a7
+ms.sourcegitcommit: d01c2b2719e363178720003b67b968ac2a640204
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475963"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122455917"
 ---
 # <a name="custom-commands-concepts-and-definitions"></a>Konzepte und Definitionen für benutzerdefinierte Befehle
 
@@ -51,12 +51,24 @@ Wenn Sie einen **erforderlichen Parameter** so konfiguriert haben, dass er einen
 ### <a name="type"></a>Typ
 Von benutzerdefinierten Befehlen werden folgende Parametertypen unterstützt:
 
-* Datum/Uhrzeit
-* Geografie
+* Age
+* Währung
+* Datetime
+* Dimension
+* Email
+* Gebiet
 * Number
+* Ordinal
+* Prozentwert
+* PersonName
+* PhoneNumber
 * String
+* Temperatur
+* url
 
-Alle diese Parametertypen unterstützen mit Ausnahme der Geografie die Konfiguration von Standardwerten, die Sie über das Portal konfigurieren können.
+Jedes Gebietsschema unterstützt den Parametertyp „String“, aber die Verfügbarkeit aller anderen Typen unterscheidet sich je nach Gebietsschema. „Benutzerdefinierte Befehle“ verwendet die vordefinierte Entitätsauflösung von LUIS, sodass die Verfügbarkeit eines Parametertyps in einem Gebietsschema von der vordefinierten Entitätsauflösung von LUIS in diesem Gebietsschema abhängt. Weitere Informationen zur Unterstützung der vordefinierten Entitäten von LUIS pro Gebietsschema finden Sie [hier](/azure/cognitive-services/luis/luis-reference-prebuilt-entities).
+
+Einige Parametertypen wie Number, String und DateTime unterstützen die Konfiguration von Standardwerten, die Sie über das Portal konfigurieren können.
 
 ### <a name="configuration"></a>Konfiguration
 Konfiguration ist eine Parametereigenschaft, die nur für den Zeichenfolgentyp definiert ist. Die folgenden Werte werden unterstützt:

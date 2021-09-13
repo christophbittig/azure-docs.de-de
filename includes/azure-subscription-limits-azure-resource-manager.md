@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/04/2021
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 12571cb0a34df67eab67eb9ebb45c64a95e90bf5
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 1197b15f313746c0a8542bfadeb4e0123818fca8
+ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111761623"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112575632"
 ---
 | Resource | Begrenzung |
 | --- | --- |
@@ -24,6 +24,7 @@ ms.locfileid: "111761623"
 | Tags pro Abonnement<sup>1</sup> |50 |
 | Eindeutige Tag-Berechnungen pro Abonnement<sup>1</sup> | 80.000 |
 | [Bereitstellungen auf Abonnementebene](../articles/azure-resource-manager/templates/deploy-to-subscription.md) pro Standort | 800<sup>2</sup> |
+| Speicherorte von [Bereitstellungen auf Abonnementebene](../articles/azure-resource-manager/templates/deploy-to-subscription.md) | 10 |
 
 <sup>1</sup> Sie können bis zu 50 Tags direkt auf ein Abonnement anwenden. Das Abonnement kann jedoch eine unbegrenzte Anzahl von Tags enthalten, die auf Ressourcengruppen und Ressourcen innerhalb des Abonnements angewendet werden. Die Anzahl von Tags pro Ressource oder Ressourcengruppe ist auf 50 beschränkt. Resource Manager gibt nur eine [Liste mit eindeutigen Tagnamen und Werten](/rest/api/resources/tags) im Abonnement zurück, wenn die Anzahl der Tags maximal 80.000 beträgt. Sie können eine Ressource jedoch auch anhand des Tags finden, wenn die Anzahl 80.000 überschreitet.
 

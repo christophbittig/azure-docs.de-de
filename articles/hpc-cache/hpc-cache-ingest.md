@@ -4,32 +4,36 @@ description: Auffüllen von Azure Blob Storage für die Verwendung mit Azure HPC
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 10/30/2019
+ms.date: 06/30/2021
 ms.author: v-erkel
-ms.openlocfilehash: 0da8a4fc1b59976c50cd96f2155715a4cb178cc9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ccb052a9eacacdc18d954fedd940bcc6792fb361
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87072769"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113586922"
 ---
 # <a name="move-data-to-azure-blob-storage"></a>Verschieben von Daten in Azure-Blobspeicher
 
 Wenn Ihr Workflow das Verschieben von Daten in Azure Blob Storage beinhaltet, achten Sie darauf, eine effiziente Strategie zu verwenden. Sie können entweder Daten vorab in einen neuen Blobcontainer laden, bevor Sie ihn als Speicherziel definieren, oder den Container hinzufügen und dann Ihre Daten mithilfe von Azure HPC Cache kopieren.
 
-Dieser Artikel erläutert die besten Verfahren zum Verschieben von Daten in Blobspeicher für die Verwendung mit Azure HPC Cache.
+In diesem Artikel werden die besten Verfahren zum Verschieben von Daten in Blobspeicher für die Verwendung mit Azure HPC Cache erläutert.
+
+> [!TIP]
+>
+> Dieser Artikel gilt nicht für in NFS eingebundenen Blobspeicher (ADLS-NFS-Speicherziele). Sie können eine beliebige NFS-basierte Methode verwenden, um einen ADLS-NFS-Blobcontainer aufzufüllen, bevor Sie ihn der HPC Cache-Instanz hinzufügen. Weitere Informationen finden Sie unter [Im Voraus Laden von Daten mit dem NFS-Protokoll](nfs-blob-considerations.md#pre-load-data-with-nfs-protocol).
 
 Beachten Sie dabei Folgendes:
 
-* Azure HPC Cache verwendet ein spezielles Speicherformat zum Strukturieren der Daten in Blobspeicher. Aus diesem Grund muss ein Blob Storage-Ziel entweder ein neuer, leerer Container oder ein Blobcontainer sein, der zuvor für Azure HPC Cache-Daten verwendet wurde.
+* Azure HPC Cache verwendet ein spezielles Speicherformat zum Strukturieren von Daten im Blobspeicher. Aus diesem Grund muss ein Blobspeicherziel entweder ein neuer, leerer Container oder ein Blobcontainer sein, der zuvor für Azure HPC Cache-Daten verwendet wurde.
 
 * Das Kopieren von Daten über Azure HPC Cache in ein Back-End-Speicherziel ist effizienter, wenn Sie mehrere Clients und parallele Operationen verwenden. Ein einfacher Kopierbefehl von einem Client verschiebt Daten langsam.
 
-Es steht ein Python-basiertes Hilfsprogramm zum Laden von Inhalten in einen Blobspeichercontainer zur Verfügung. Weitere Informationen finden Sie unter [Vorabladen von Daten in Blob Storage](#pre-load-data-in-blob-storage-with-clfsload).
+Es steht ein Python-basiertes Hilfsprogramm zum Laden von Inhalten in einen Blobspeichercontainer zur Verfügung. Weitere Informationen finden Sie unter [Vorabladen von Daten in Blob Storage mit CLFSLoad](#pre-load-data-in-blob-storage-with-clfsload).
 
 Wenn Sie das Hilfsprogramm zum Laden nicht verwenden oder Inhalte zu einem vorhandenen Speicherziel hinzufügen möchten, befolgen Sie die Tipps zur parallelen Datenerfassung in [Kopieren von Daten über den Azure HPC Cache](#copy-data-through-the-azure-hpc-cache).
 
-## <a name="pre-load-data-in-blob-storage-with-clfsload"></a>Vorabladen von Daten in Blob Storage mit CLFSLoad
+## <a name="pre-load-data-in-blob-storage-with-clfsload"></a>Vorabladen von Daten in Blobspeicher mit CLFSLoad
 
 Sie können das Hilfsprogramm Avere CLFSLoad verwenden, um Daten in einen neuen Blobspeichercontainer zu kopieren, bevor Sie ihn als Speicherziel hinzufügen. Dieses Hilfsprogramm wird in auf einem einzelnen Linux-System ausgeführt und schreibt Daten in dem proprietären Format, das für Azure HPC Cache erforderlich ist. CLFSLoad ist die effizienteste Methode zum Auffüllen eines Blobspeichercontainers für die Verwendung mit dem Cache.
 
@@ -56,11 +60,11 @@ Das Avere CLFSLoad-Hilfsprogramm benötigt die folgenden Informationen:
 
 Wenn Sie das Avere CLFSLoad-Hilfsprogramm nicht verwenden oder einem vorhandenen Blobspeicherziel eine große Datenmenge hinzufügen möchten, können Sie die Daten über den Cache kopieren. Azure HPC Cache wurde dafür ausgelegt, mehrere Clients gleichzeitig zu bedienen, daher sollten Sie zum Kopieren von Daten über den Cache parallele Schreibvorgänge von mehreren Clients verwenden.
 
-![Diagramm der Datenverschiebung mit mehreren Clients und mehreren Threads: Oben links befindet sich ein Symbol für den lokalen Hardwarespeicher, von dem mehrere Pfeile ausgehen. Die Pfeile zeigen auf vier Clientcomputer. Von jedem Clientcomputer zeigen drei Pfeile auf den Azure HPC Cache. Vom Azure HPC Cache zeigen mehrere Pfeile zum Blobspeicher.](media/hpc-cache-parallel-ingest.png)
+![Diagramm der Datenverschiebung mit mehreren Clients und mehreren Threads: Oben links befindet sich ein Symbol für den lokalen Hardwarespeicher, von dem mehrere Pfeile ausgehen. Die Pfeile zeigen auf vier Clientcomputer. Von jedem Clientcomputer zeigen drei Pfeile auf den Azure HPC Cache. Von Azure HPC Cache zeigen mehrere Pfeile zum Blobspeicher.](media/hpc-cache-parallel-ingest.png)
 
 Die Befehle ``cp`` oder ``copy``, die normalerweise verwendet werden, um Daten von einem Speichersystem zu einem anderen zu übertragen, sind Singlethread-Prozesse, die jeweils nur eine Datei zugleich kopieren. Das bedeutet, dass der Dateiserver immer nur eine Datei auf einmal erfasst, was eine Verschwendung der Ressourcen des Cache darstellt.
 
-In diesem Abschnitt werden Strategien zur Erstellung eines Dateikopiersystems mit mehreren Clients und mehreren Threads erläutert, um Daten mithilfe von Azure HPC Cache in Blobspeicher zu verschieben. Es werden Konzepte für die Dateiübertragung und Entscheidungspunkte erläutert, die für eine effiziente Datenkopie mit mehreren Clients und einfachen Kopierbefehlen verwendet werden können.
+In diesem Abschnitt werden Strategien zum Erstellen eines Dateikopiersystems mit mehreren Clients und Threads erläutert, um Daten mithilfe von Azure HPC Cache in Blobspeicher zu verschieben. Es werden Konzepte für die Dateiübertragung und Entscheidungspunkte erläutert, die für eine effiziente Datenkopie mit mehreren Clients und einfachen Kopierbefehlen verwendet werden können.
 
 Es werden auch einige Hilfsprogramme erläutert, die hilfreich sein können. Das Hilfsprogramm ``msrsync`` kann verwendet werden, um den Prozess der Aufteilung eines Datasets in Buckets und der Verwendung von rsync-Befehlen teilweise zu automatisieren. Das ``parallelcp``-Skript ist ein weiteres Hilfsprogramm, das das Quellverzeichnis liest und automatisch Kopierbefehle ausgibt.
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: duau
-ms.openlocfilehash: 50ae89aefda00f21d07a19051c9aaa6e85726f8a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 108c7c30ad84c83e895cade79bc8a6ad30029199
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108741381"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351247"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – FAQ
 
@@ -60,7 +60,9 @@ Das ExpressRoute-Gateway kündigt die *Adressräume* des virtuellen Azure-Netzwe
 
 ### <a name="how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering"></a>Wie viele Präfixe können beim privaten Peering in ExpressRoute von einem virtuellen Netzwerk zu den lokalen Standorten angekündigt werden?
 
-Es werden maximal 1.000 Präfixe für eine einzelne ExpressRoute-Verbindung oder über VNet-Peering mit Gatewaytransit angekündigt. Wenn Sie z. B. über 999 Adressräume in einem einzelnen virtuellen Netzwerk verfügen, die mit einer ExpressRoute-Leitung verbunden sind, werden alle 999 Präfixe lokal angekündigt. Wenn Sie ein virtuelles Netzwerk aktiviert haben, das den Gatewaytransit mit einem Adressraum zulässt, und 500 virtuelle Spoke-Netzwerke über die Option „Remotegateway zulassen“ aktiviert haben, wird das mit dem Gateway bereitgestellte virtuelle Netzwerk 501 Präfixe für lokale Standorte ankündigen.
+Es werden maximal 1000 IPv4-Präfixe für eine einzelne ExpressRoute-Verbindung oder über VNet-Peering mit Gatewaytransit angekündigt. Wenn Sie z. B. über 999 Adressräume in einem einzelnen virtuellen Netzwerk verfügen, die mit einer ExpressRoute-Leitung verbunden sind, werden alle 999 Präfixe lokal angekündigt. Wenn Sie ein virtuelles Netzwerk aktiviert haben, das den Gatewaytransit mit einem Adressraum zulässt, und 500 virtuelle Spoke-Netzwerke über die Option „Remotegateway zulassen“ aktiviert haben, wird das mit dem Gateway bereitgestellte virtuelle Netzwerk 501 Präfixe für lokale Standorte ankündigen.
+
+Wenn Sie eine zweischichtige Leitung verwenden, gibt es maximal 100 IPv6-Präfixe für eine einzelnen ExpressRoute-Verbindung oder über VNet-Peering mit Gatewaytransit. Dies gilt zusätzlich zu den oben beschriebenen Einschränkungen.
 
 ### <a name="what-happens-if-i-exceed-the-prefix-limit-on-an-expressroute-connection"></a>Was passiert, wenn ich das Präfixlimit für eine ExpressRoute-Verbindung überschreite?
 
@@ -240,7 +242,7 @@ Nein. Aus Routingsicht sind alle virtuellen Netzwerke, die mit derselben Express
 
 ### <a name="can-i-have-one-virtual-network-connected-to-more-than-one-expressroute-circuit"></a>Kann mehr als ein virtuelles Netzwerk mit mehr als einer ExpressRoute-Verbindung verbunden sein?
 
-Ja. Sie können ein virtuelles Netzwerk mit bis zu vier ExpressRoute-Verbindungen an demselben oder an verschiedenen Peeringstandorten verknüpfen. 
+Ja. Sie können ein einzelnes virtuelles Netzwerk mit bis zu vier ExpressRoute-Leitungen am selben Standort oder mit bis zu 16 ExpressRoute-Leitungen an verschiedenen Peeringstandorten verbinden. 
 
 ### <a name="can-i-access-the-internet-from-my-virtual-networks-connected-to-expressroute-circuits"></a>Kann ich von meinen virtuellen Netzwerken aus, die mit ExpressRoute-Verbindungen verbunden sind, ins Internet gehen?
 
@@ -297,7 +299,7 @@ Wenden Sie sich auch an Ihren Konnektivitätsanbieter, um sicherzustellen, dass 
 
 ### <a name="how-do-i-change-the-bandwidth-of-an-expressroute-circuit"></a>Wie kann ich die Bandbreite einer ExpressRoute-Verbindung ändern?
 
-Sie können die Bandbreite der ExpressRoute-Verbindung mithilfe der REST-API oder des PowerShell-Cmdlets aktualisieren.
+Sie können die Bandbreite der ExpressRoute-Leitung über das Azure-Portal, eine REST-API, PowerShell oder die Azure CLI aktualisieren.
 
 ### <a name="i-received-a-notification-about-maintenance-on-my-expressroute-circuit-what-is-the-technical-impact-of-this-maintenance"></a>Ich habe eine Benachrichtigung über die Wartung meiner ExpressRoute-Verbindung erhalten. Welche technischen Auswirkungen hat diese Wartung?
 

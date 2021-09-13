@@ -3,14 +3,14 @@ title: Verwalten von „VMs starten/beenden v2 (Vorschau)“
 description: In diesem Artikel wird beschrieben, wie Sie den Status Ihrer virtuellen Azure-Computer überwachen, die über das Feature „VMs starten/beenden v2 (Vorschau)“ verwaltet werden, und andere Verwaltungsaufgaben ausführen.
 services: azure-functions
 ms.subservice: start-stop-vms
-ms.date: 03/16/2021
+ms.date: 06/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: e9d6f7a93f2bd59b120be059d7f9c254d1bde56b
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 40c3d2dba3d41c7651846d09d01dd7afdce15af9
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110073160"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112967059"
 ---
 # <a name="how-to-manage-startstop-vms-v2-preview"></a>Verwalten von „VMs starten/beenden v2 (Vorschau)“
 
@@ -21,6 +21,9 @@ ms.locfileid: "110073160"
 Die Protokolldaten, die auf jeder Kachel im Dashboard angezeigt werden, werden stündlich aktualisiert, können mit einer Option für die manuelle Aktualisierung bei Bedarf aktualisiert werden (durch Klicken auf das Symbol **Aktualisieren** für eine bestimmte Visualisierung) oder werden durch eine Aktualisierung des gesamten Dashboards aktualisiert.
 
 Weitere Informationen zum Arbeiten mit einem protokollbasierten Dashboard finden Sie im folgenden [Tutorial](../../azure-monitor/visualize/tutorial-logs-dashboards.md).
+
+> [!NOTE]
+> Wenn Probleme während der Bereitstellung bzw. Verwendung von „VMs starten/beenden v2 (Vorschau)“ auftreten oder Sie eine Frage hierzu haben, können Sie ein Issue unter [GitHub](https://github.com/microsoft/startstopv2-deployments/issues) senden. Das Erstellen eines Azure-Supportvorfalls über die [Azure-Supportwebsite](https://azure.microsoft.com/support/options/) ist für diese Vorschauversion nicht verfügbar. 
 
 ## <a name="configure-email-notifications"></a>Konfigurieren von E-Mail-Benachrichtigungen
 

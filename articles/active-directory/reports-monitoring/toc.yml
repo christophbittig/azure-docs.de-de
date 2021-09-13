@@ -106,6 +106,6 @@
     - name: Wartezeiten bei der Berichterstellung
       href: reference-reports-latencies.md
     - name: Häufig gestellte Fragen
-      href: reports-faq.md
+      href: reports-faq.yml
     - name: Anmeldeprotokollschema
       href: reference-azure-monitor-sign-ins-log-schema.md

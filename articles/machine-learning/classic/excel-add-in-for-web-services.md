@@ -1,6 +1,6 @@
 ---
 title: 'ML Studio (Classic): Excel-Add-In für Webdienste – Azure'
-description: Hier wird erläutert, wie Sie Azure Machine Learning-Webdienste direkt in Excel ohne Erstellung von Code verwenden.
+description: Hier wird erläutert, wie Sie Machine Learning-Webdienste direkt in Excel ohne Schreiben von Code verwenden.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,17 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 45d9e494b9f885cfa0680bec595aefcd4074d41e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e915f6a713df68dba539d3e5aeb31501eea6ed8e
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100519999"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688871"
 ---
-# <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Excel-Add-In für (klassische) Azure Machine Learning Studio-Webdienste
+# <a name="excel-add-in-for-machine-learning-studio-classic-web-services"></a>Excel-Add-In für Webdienste im Azure Machine Learning Studio (Classic)
 
 **GILT FÜR:**  ![Gilt für ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Gilt nicht für ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 Mit Excel können Webdienste auf einfache Weise direkt aufgerufen werden, ohne dafür Code erstellen zu müssen.
 
@@ -29,7 +30,7 @@ Mit Excel können Webdienste auf einfache Weise direkt aufgerufen werden, ohne d
  
     > [!NOTE]
     > - Es wird eine Liste der Webdienste angezeigt, die der Datei zugeordnet sind, und unten ein Kontrollkästchen für die automatische Vorhersage. Wenn Sie die automatische Vorhersage aktivieren, werden die Vorhersagen **aller** Ihrer Dienste bei jeder Änderung in den Eingaben aktualisiert. Wenn die Option nicht aktiviert ist, müssen Sie zum Aktualisieren auf "Predict All" (Alle vorhersagen) klicken. Informationen zum Aktivieren der automatischen Vorhersage auf Dienstebene finden Sie unter Schritt 6.
-    > - Das Azure Machine Learning-Add-In für Excel ruft beim Laden den Office Store für Add-Ins auf. Wenn Ihre Organisation den Zugriff auf den Office Store für Add-Ins untersagt, wird beim Laden des Add-Ins ein Fehler angezeigt. Stellen Sie in diesem Fall das Azure Machine Learning-Add-In für Excel über Microsoft 365 Admin Center bereit. Rufen Sie dann das Add-In auf, und fügen Sie den Webdienst manuell hinzu, indem Sie die URL und den API-Schlüssel einfügen.
+    > - Das Machine Learning-Add-In für Excel ruft beim Laden den Office Store für Add-Ins auf. Wenn Ihre Organisation den Zugriff auf den Office Store für Add-Ins untersagt, wird beim Laden des Add-Ins ein Fehler angezeigt. Stellen Sie in diesem Fall das Machine Learning-Add-In für Excel über Microsoft 365 Admin Center bereit. Rufen Sie dann das Add-In auf, und fügen Sie den Webdienst manuell hinzu, indem Sie die URL und den API-Schlüssel einfügen.
 
  
 
@@ -59,13 +60,13 @@ Rufen Sie den API-Schlüssel Ihres Webdiensts ab. Wo diese Aktion durchgeführt 
 4. Wechseln Sie zum Abschnitt **Request URI** .  Kopieren und speichern Sie die URL.
 
 > [!NOTE]
-> Es ist jetzt möglich, sich beim Portal [Azure Machine Learning Web Services](https://services.azureml.net) anzumelden, um den API-Schlüssel für einen klassischen Machine Learning-Webdienst abzurufen.
+> Es ist jetzt möglich, sich beim [Machine Learning-Webdienstportal](https://services.azureml.net) anzumelden, um den API-Schlüssel für einen klassischen Machine Learning-Webdienst abzurufen.
 > 
 > 
 
 **Verwenden eines neuen Webdiensts**
 
-1. Klicken Sie im [Azure Machine Learning Web Services](https://services.azureml.net)-Portal auf **Web Services** (Webdienste), und wählen Sie Ihren Webdienst aus. 
+1. Klicken Sie im [Machine Learning-Webdienstportal](https://services.azureml.net) auf **Web Services** (Webdienste), und wählen Sie Ihren Webdienst aus. 
 2. Klicken Sie auf **Consume**.
 3. Wechseln Sie zum Abschnitt **Basic consumption info** . Kopieren und speichern Sie den **Primary Key** und die URL für **Request-Response**.
 

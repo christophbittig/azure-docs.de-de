@@ -16,14 +16,19 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: 08a14a1c97a1eae9c07c50334929fb16304e635a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bde62a7b25f5c367b5fadb5881ab889a95dc2354
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102556518"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688937"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Arbeitsspeicheroptimierte Größen virtueller Computer
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
+
+> [!TIP]
+> Probieren Sie das **[VM-Auswahltool](https://aka.ms/vm-selector)** aus, um andere Größen zu ermitteln, die für Ihre Workload optimal sind.
 
 Arbeitsspeicheroptimierte VM-Größen bieten ein hohes Arbeitsspeicher-zu-CPU-Verhältnis und eignen sich hervorragend für relationale Datenbankserver, mittelgroße bis große Caches und In-Memory-Analysen. Dieser Artikel enthält Informationen zur Anzahl von vCPUs, Datenträgern und NICs sowie zum Speicherdurchsatz und zur Netzwerkbandbreite der einzelnen Größen in dieser Gruppe.
 
@@ -35,7 +40,7 @@ Arbeitsspeicheroptimierte VM-Größen bieten ein hohes Arbeitsspeicher-zu-CPU-Ve
 
 - Die [Serien Ev3 und Esv3](ev3-esv3-series.md) bieten den Intel&reg; Xeon&reg;-Prozessor 8171M mit 2,1 GHz (Skylake) oder den Intel&reg; Xeon&reg;-Prozessor E5-2673 v4 mit 2,3 GHz (Broadwell) in einer Hyperthreadkonfiguration und somit ein besseres Preis-Leistungs-Verhältnis für die meisten universellen Workloads und besseren Einklang von Ev3 mit den universellen VMs der meisten anderen Clouds. Der Speicher wurde erweitert (von 7 GiB/vCPU auf 8 GiB/vCPU), während die Datenträger- und Netzwerkgrenzwerte pro Kern angepasst wurden, um auf den Übergang zum Hyperthreading vorbereitet zu sein. Die Ev3-Serie ist der Nachfolger für die VMs mit großen Arbeitsspeichergrößen der D/Dv2-Familien.
 
-- [Die Ev4- und die Esv4-Serie](ev4-esv4-series.md) werden auf Intel&reg; Xeon&reg; Platinum 8272CL-Prozessoren der zweiten Generation (Cascade Lake) in einer Hyperthreadkonfiguration ausgeführt, eignen sich optimal für verschiedene arbeitsspeicherintensive Unternehmensanwendungen und unterstützen zu bis zu 504 GiB RAM. Sie verfügen über [Intel&reg; Turbo Boost Technology 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel&reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) und [Intel&reg; Advanced Vector Extensions 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). Die Ev4- und die Esv4-Serie enthalten keinen lokalen temporären Datenträger. Weitere Informationen finden Sie unter [Azure-VM-Größen ohne lokale temporäre Datenträger](azure-vms-no-temp-disk.md).
+- [Die Ev4- und die Esv4-Serie](ev4-esv4-series.md) werden auf Intel&reg; Xeon&reg; Platinum 8272CL-Prozessoren der zweiten Generation (Cascade Lake) in einer Hyperthreadkonfiguration ausgeführt, eignen sich optimal für verschiedene arbeitsspeicherintensive Unternehmensanwendungen und unterstützen zu bis zu 504 GiB RAM. Sie verfügen über [Intel&reg; Turbo Boost Technology 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel&reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) und [Intel&reg; Advanced Vector Extensions 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). Die Ev4- und die Esv4-Serie enthalten keinen lokalen temporären Datenträger. Weitere Informationen finden Sie unter [Azure-VM-Größen ohne lokale temporäre Datenträger](azure-vms-no-temp-disk.yml).
 
 - Die [Edv4- und die Edsv4-Serie](edv4-edsv4-series.md) werden auf Intel&reg; Xeon&reg; Platinum 8272CL-Prozessoren der zweiten Generation (Cascade Lake) ausgeführt und eignen sich optimal für besonders große Datenbanken oder andere Anwendungen, die von einer hohen vCPU-Anzahl und umfangreichem Speicher profitieren. Darüber hinaus umfassen diese VM-Größen einen schnellen, größeren lokalen SSD-Speicher für Anwendungen, die von lokalem Hochgeschwindigkeitsspeicher mit geringer Latenz profitieren. Sie verfügen über eine Turbo-Taktfrequenz von 3,4 GHz für alle Kerne, [Intel&reg; Turbo Boost Technology 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel&reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) und [Intel&reg; Advanced Vector Extensions 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html).
 
@@ -58,4 +63,4 @@ Azure Compute bietet VM-Größen, die für einen bestimmten Hardwaretyp isoliert
 
 Weitere Informationen dazu, wie Sie mit [Azure-Computeeinheiten (ACU)](acu.md) die Computeleistung von Azure-SKUs vergleichen können.
 
-Weitere Informationen zur Benennung von VMs in Azure finden Sie unter [Namenskonventionen für Azure-VM-Größen](./vm-naming-conventions.md).
+Weitere Informationen dazu, wie VM-Namen in Azure zugewiesen werden, finden Sie unter [Namenskonventionen für Azure-VM-Größen](./vm-naming-conventions.md).

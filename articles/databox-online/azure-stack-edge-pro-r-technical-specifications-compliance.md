@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 04/12/2021
+ms.date: 07/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 3b323bf920bd884e821d03bf2def37471775e720
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: cb0a7ede9ee4b4a5f6fbb2312026211784fa486c
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107312704"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113301562"
 ---
 # <a name="azure-stack-edge-pro-r-technical-specifications"></a>Azure Stack Edge Pro R: Technische Spezifikationen
 
@@ -31,7 +31,7 @@ Das Azure Stack Edge Pro R-Gerät verfügt über die folgenden Spezifikatione
 | CPU: nutzbar    | 32 vCPUs                                          |
 | Arbeitsspeichertyp    | Dell-kompatibles 16 GB RDIMM, 2.666 MT/s, Dual Rank |
 | Arbeitsspeicher: unformatiert    | 256 GB RAM (16 x 16 GB)                           |
-| Arbeitsspeicher: nutzbar | 230 GB RAM                                        |
+| Arbeitsspeicher: nutzbar | 217 GB RAM                                        |
 
 ## <a name="compute-acceleration-specifications"></a>Spezifikationen zur Computebeschleunigung
 

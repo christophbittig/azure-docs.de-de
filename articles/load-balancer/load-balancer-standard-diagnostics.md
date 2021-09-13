@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2021
 ms.author: allensu
-ms.openlocfilehash: d66b9cb314ee9cf200a18949f774ff8a8b4a1f6b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d044ddbde293721e26ed491e237aa5b89075f72a
+ms.sourcegitcommit: d01c2b2719e363178720003b67b968ac2a640204
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339018"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122455836"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Load Balancer Standard-Diagnose mit Metriken, Warnungen und Ressourcenintegrität
 
@@ -65,6 +65,8 @@ So zeigen Sie die Metriken für Ihre Standard Load Balancer-Ressourcen an
 
   >[!NOTE] 
   >Die Zeitaggregation ist bei der Interpretation bestimmter Metriken wichtig, da die Daten einmal pro Minute erfasst werden. Wenn die Zeitaggregation auf fünf Minuten eingestellt ist und der Metrikaggregationstyp „Summe“ für Metriken wie die SNAT-Zuordnung verwendet wird, zeigt Ihr Diagramm das Fünffache der insgesamt zugeordneten SNAT-Ports an. 
+  >
+  >Empfehlung: Bei der Analyse der Metrikaggregationstypen „Sum“ und „Count“ sollten Sie einen Zeitaggregationswert verwenden, der höher als eine Minute ist.
 
 ![Metriken für Standard Load Balancer](./media/load-balancer-standard-diagnostics/lbmetrics1anew.png)
 

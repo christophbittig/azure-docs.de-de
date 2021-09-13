@@ -1,14 +1,14 @@
 ---
 title: Funktionsweise von Auswirkungen
 description: Die Azure Policy-Definitionen haben verschiedene Auswirkungen, mit denen festgelegt wird, wie die Konformität verwaltet und gemeldet wird.
-ms.date: 04/19/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6025451779ba04b3a20307d35ca8a939c7762d64
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 22838cd661e64d4a85debfb4c5ce556a142dc2c2
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110474368"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351524"
 ---
 # <a name="understand-azure-policy-effects"></a>Grundlegendes zu Azure Policy-Auswirkungen
 
@@ -172,6 +172,12 @@ Die **details**-Eigenschaft der Auswirkung „AuditIfNotExists“ umfasst die fo
   - Für _ResourceGroup_ bedeutet dies eine Beschränkung auf die Ressourcengruppe der **if** -Bedingungsressource oder die in **ResourceGroupName** angegebene Ressourcengruppe.
   - Für _Subscription_ wird das gesamte Abonnement nach der entsprechenden Ressource abgefragt.
   - Die Standardeinstellung ist _ResourceGroup_.
+- **EvaluationDelay** (optional)
+  - Hiermit wird angegeben, wann die Existenz der zugehörigen Ressourcen ausgewertet werden soll. Die Verzögerung wird nur bei Auswertungen verwendet, die das Ergebnis einer Erstell- oder Aktualisierungsanforderung für die Ressource sind.
+  - Zu den zulässigen Werten zählen `AfterProvisioning`, `AfterProvisioningSuccess` und `AfterProvisioningFailure` sowie eine Dauer gemäß ISO 8601 zwischen 10 und 360 Minuten.
+  - Die _AfterProvisioning_-Werte untersuchen die Bereitstellungsergebnisse der Ressource, die in der IF-Bedingung der Richtlinienregel ausgewertet wurde. `AfterProvisioning` wird unabhängig vom Ergebnis nach der Bereitstellung ausgeführt. Wenn für die Bereitstellung mehr als sechs Stunden benötigt werden, wird diese bei Festlegung von _AfterProvisioning_-Auswertungsverzögerungen als Fehler behandelt.
+  - Der Standardwert ist `PT10M` (zehn Minuten).
+  - Das Festlegen einer langen Auswertungsverzögerung kann dazu führen, dass der aufgezeichnete Compliancestatus der Ressource bis zur nächsten [Auswertungsauslösung](../how-to/get-compliance-data.md#evaluation-triggers) nicht aktualisiert wird.
 - **ExistenceCondition** (optional)
   - Sofern nicht angegeben, erfüllt jede Ressource mit entsprechendem **type** die Bedingung der Auswirkung und löst keine Überwachung aus.
   - Verwendet dieselbe Sprachsyntax wie die Richtlinienregel für die **if**-Bedingung, wird jedoch für jede entsprechende Ressource einzeln ausgeführt.
@@ -267,7 +273,7 @@ Beispiel 2: Verwenden der Auswirkung „deny“ für den Ressourcenanbietermodus
 
 ### <a name="deployifnotexists-evaluation"></a>Auswertung von „DeployIfNotExists“
 
-„DeployIfNotExists“ wird mit einem zeitlichen Abstand von etwa 15 Minuten ausgeführt, nachdem ein Ressourcenanbieter eine Anforderung zum Erstellen oder Aktualisieren eines Abonnements oder einer Ressource verarbeitet hat und ein Erfolgsstatuscode zurückgegeben wurde. Eine Vorlagenbereitstellung findet statt, wenn keine entsprechenden Ressourcen vorhanden sind oder wenn die über **ExistenceCondition** definierten Ressourcen nicht als TRUE ausgewertet werden. Die Dauer der Bereitstellung hängt von der Komplexität der in der Vorlage enthaltenen Ressourcen ab.
+„DeployIfNotExists“ wird nach einer konfigurierbaren Verzögerung ausgeführt, wenn ein Ressourcenanbieter eine Anforderung zum Erstellen oder Aktualisieren eines Abonnements oder einer Ressource verarbeitet hat und ein Erfolgsstatuscode zurückgegeben wurde. Eine Vorlagenbereitstellung findet statt, wenn keine entsprechenden Ressourcen vorhanden sind oder wenn die über **ExistenceCondition** definierten Ressourcen nicht als TRUE ausgewertet werden. Die Dauer der Bereitstellung hängt von der Komplexität der in der Vorlage enthaltenen Ressourcen ab.
 
 Während eines Auswertungszyklus führen Richtliniendefinitionen mit der Auswirkung „DeployIfNotExists“ dazu, dass übereinstimmende Ressourcen als nicht konform markiert werden. Es wird aber keine Aktion für diese Ressource ausgeführt. Bestehende, nicht konforme Ressourcen können mit einem [Wartungstask](../how-to/remediate-resources.md) bereinigt werden.
 
@@ -293,6 +299,12 @@ Die **details**-Eigenschaft der Auswirkung „DeployIfNotExists“ umfasst alle 
   - Für _ResourceGroup_ bedeutet dies eine Beschränkung auf die Ressourcengruppe der **if** -Bedingungsressource oder die in **ResourceGroupName** angegebene Ressourcengruppe.
   - Für _Subscription_ wird das gesamte Abonnement nach der entsprechenden Ressource abgefragt.
   - Die Standardeinstellung ist _ResourceGroup_.
+- **EvaluationDelay** (optional)
+  - Hiermit wird angegeben, wann die Existenz der zugehörigen Ressourcen ausgewertet werden soll. Die Verzögerung wird nur bei Auswertungen verwendet, die das Ergebnis einer Erstell- oder Aktualisierungsanforderung für die Ressource sind.
+  - Zu den zulässigen Werten zählen `AfterProvisioning`, `AfterProvisioningSuccess` und `AfterProvisioningFailure` sowie eine Dauer gemäß ISO 8601 zwischen 0 und 360 Minuten.
+  - Die _AfterProvisioning_-Werte untersuchen die Bereitstellungsergebnisse der Ressource, die in der IF-Bedingung der Richtlinienregel ausgewertet wurde. `AfterProvisioning` wird unabhängig vom Ergebnis nach der Bereitstellung ausgeführt. Wenn für die Bereitstellung mehr als sechs Stunden benötigt werden, wird diese bei Festlegung von _AfterProvisioning_-Auswertungsverzögerungen als Fehler behandelt.
+  - Der Standardwert ist `PT10M` (zehn Minuten).
+  - Das Festlegen einer langen Auswertungsverzögerung kann dazu führen, dass der aufgezeichnete Compliancestatus der Ressource bis zur nächsten [Auswertungsauslösung](../how-to/get-compliance-data.md#evaluation-triggers) nicht aktualisiert wird.
 - **ExistenceCondition** (optional)
   - Sofern nicht angegeben, erfüllt jede entsprechende Ressource mit **type** die Bedingung der Auswirkung und löst keine Bereitstellung aus.
   - Verwendet dieselbe Sprachsyntax wie die Richtlinienregel für die **if**-Bedingung, wird jedoch für jede entsprechende Ressource einzeln ausgeführt.
@@ -308,6 +320,7 @@ Die **details**-Eigenschaft der Auswirkung „DeployIfNotExists“ umfasst alle 
   - Die Standardeinstellung ist _ResourceGroup_.
 - **Deployment** (erforderlich)
   - Diese Eigenschaft muss die vollständige Vorlagenbereitstellung enthalten, so wie sie an die PUT-API `Microsoft.Resources/deployments` übergeben würde. Weitere Informationen finden Sie im Artikel zur [REST-API für die Bereitstellung](/rest/api/resources/deployments).
+  - Geschachtelte `Microsoft.Resources/deployments`-Elemente innerhalb der Vorlage sollten eindeutige Namen verwenden, um Konflikte zwischen mehreren Richtlinienauswertungen zu vermeiden. Der Name der übergeordneten Bereitstellung kann über `[concat('NestedDeploymentName-', uniqueString(deployment().name))]` als Teil des Namens der geschachtelte Bereitstellung verwendet werden.
 
   > [!NOTE]
   > Alle Funktionen innerhalb der **Deployment**-Eigenschaft werden als Komponenten der Vorlage – nicht der Richtlinie – ausgewertet. Eine Ausnahme ist die Eigenschaft **parameters**, die Werte von der Richtlinie an die Vorlage übergibt. Der in diesem Abschnitt unter einem Vorlagenparameternamen angegebene Wert für **value** wird verwendet, um diese Wertübergabe durchzuführen (siehe _fullDbName_ im DeployIfNotExists-Beispiel).
@@ -327,6 +340,7 @@ Falls nicht, wird eine Bereitstellung zur Aktivierung dieser Option durchgeführ
     "details": {
         "type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
         "name": "current",
+        "evaluationDelay": "AfterProvisioning",
         "roleDefinitionIds": [
             "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
             "/providers/Microsoft.Authorization/roleDefinitions/{builtinroleGUID}"
@@ -489,7 +503,7 @@ Die folgenden Vorgänge werden von „Modify“ unterstützt:
 
 - Hinzufügen, Ersetzen oder Entfernen von Ressourcentags. Für Tags sollte `mode` bei einer Modify-Richtlinie auf _Indexed_ festgelegt sein, es sei denn, die Zielressource ist eine Ressourcengruppe.
 - Hinzufügen oder Ersetzen des Werts eines verwalteten Identitätstyps (`identity.type`) von virtuellen Computern und VM-Skalierungsgruppen
-- Hinzufügen oder Ersetzen der Werte bestimmter Aliase (Vorschau)
+- Hinzufügen oder Ersetzen der Werte bestimmter Aliase
   - Verwenden Sie `Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }`
     in Azure PowerShell **4.6.0** oder höher, um eine Liste der Aliase abzurufen, die mit „Modify“ verwendet werden können.
 

@@ -9,14 +9,16 @@ ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0c8869bbe2751ee945ab05c5daf8bcf07cc4c3f4
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: e1af8651ac8b1031190249205d0a0f7f436711c4
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444810"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696180"
 ---
 # <a name="create-an-azure-image-builder-template"></a>Erstellen einer Azure Image Builder-Vorlage 
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
 Azure Image Builder verwendet eine JSON-Datei, um Informationen an den Image Builder-Dienst zu übermitteln. In diesem Artikel werden die einzelnen Abschnitte der JSON-Datei erläutert, sodass Sie Ihre eigene erstellen können. Vollständige JSON-Beispieldateien finden Sie im [GitHub-Repository für Azure Image Builder](https://github.com/Azure/azvmimagebuilder/tree/main/quickquickstarts).
 

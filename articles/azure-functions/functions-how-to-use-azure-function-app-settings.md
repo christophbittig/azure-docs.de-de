@@ -3,14 +3,14 @@ title: Konfigurieren der Einstellungen einer Funktions-App in Azure Functions
 description: Erfahren Sie, wie Sie die Einstellungen einer Funktions-App in Azure Functions konfigurieren.
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 01/21/2021
 ms.custom: cc996988-fb4f-47, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 6775fdf8d5174600344f3c7177a3130ef63e8f76
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 760408d05c5ad8ff621d13697e94522829781308
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107832678"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418807"
 ---
 # <a name="manage-your-function-app"></a>Verwalten Ihrer Funktions-App 
 
@@ -32,9 +32,11 @@ Auf der Übersichtsseite können Sie zu allen Punkten navigieren, die Sie zur Ve
 
 ## <a name="work-with-application-settings"></a><a name="settings"></a>Verwenden von Anwendungseinstellungen
 
-Anwendungseinstellungen können über das [Azure-Portal](functions-how-to-use-azure-function-app-settings.md?tabs=portal#settings) und mithilfe der [Azure CLI](functions-how-to-use-azure-function-app-settings.md?tabs=azurecli#settings) und [Azure PowerShell](functions-how-to-use-azure-function-app-settings.md?tabs=powershell#settings)verwaltet werden. Sie können Anwendungseinstellungen auch über [Visual Studio Code](functions-develop-vs-code.md#application-settings-in-azure) und [Visual Studio](functions-develop-vs.md#function-app-settings) verwalten. 
+Sie können eine beliebige Anzahl von Anwendungseinstellungen erstellen, die für Ihren Funktionscode erforderlich sind. Es gibt auch vordefinierte Anwendungseinstellungen, die von Functions verwendet werden. Weitere Informationen finden Sie unter [Referenz zu App-Einstellungen für Azure Functions](functions-app-settings.md).
 
 Diese Einstellungen werden verschlüsselt gespeichert. Weitere Informationen finden Sie unter [Anwendungseinstellungen](security-concepts.md#application-settings).
+
+Anwendungseinstellungen können über das [Azure-Portal](functions-how-to-use-azure-function-app-settings.md?tabs=portal#settings) und mithilfe der [Azure CLI](functions-how-to-use-azure-function-app-settings.md?tabs=azurecli#settings) und [Azure PowerShell](functions-how-to-use-azure-function-app-settings.md?tabs=powershell#settings)verwaltet werden. Sie können Anwendungseinstellungen auch über [Visual Studio Code](functions-develop-vs-code.md#application-settings-in-azure) und [Visual Studio](functions-develop-vs.md#function-app-settings) verwalten. 
 
 # <a name="portal"></a>[Portal](#tab/portal)
 
@@ -82,7 +84,7 @@ Update-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOUR
 
 [!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
 
-Wenn Sie eine Funktions-App lokal entwickeln, müssen Sie lokale Kopien dieser Werte in der Projektdatei „local.settings.json“ speichern. Weitere Informationen finden Sie unter [Datei für lokale Einstellungen](functions-run-local.md#local-settings-file).
+Wenn Sie eine Funktions-App lokal entwickeln, müssen Sie lokale Kopien dieser Werte in der Projektdatei „local.settings.json“ speichern. Weitere Informationen finden Sie unter [Datei für lokale Einstellungen](functions-develop-local.md#local-settings-file).
 
 ## <a name="hosting-plan-type"></a>Typ des Hostingplans
 

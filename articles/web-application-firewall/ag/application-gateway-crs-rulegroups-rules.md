@@ -5,23 +5,28 @@ description: Diese Seite enthält Informationen zu CRS-Regelgruppen und -Regeln 
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/14/2019
+ms.date: 07/06/2021
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: e2c88091072921f1ca674868e401c34d354418de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9aa4277c3d13419a4083193c07d807decea21c59
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98746508"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355029"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>CRS-Regelgruppen und -Regeln der Web Application Firewall
 
-Mit der Application Gateway Web Application Firewall (WAF) werden Webanwendungen vor allgemeinen Sicherheitsrisiken und Exploits geschützt. Hierfür werden Regeln verwendet, die basierend auf den OWASP-Kernregelsätzen 3.1, 3.0 oder 2.2.9 definiert sind. Diese Regeln können einzeln deaktiviert werden. In diesem Artikel sind die aktuellen Regeln und Regelsätze enthalten.
+Mit der Application Gateway Web Application Firewall (WAF) werden Webanwendungen vor allgemeinen Sicherheitsrisiken und Exploits geschützt. Hierfür werden Regeln verwendet, die basierend auf den OWASP-Kernregelsätzen 3.2, 3.1, 3.0 oder 2.2.9 definiert sind. Diese Regeln können einzeln deaktiviert werden. In diesem Artikel sind die aktuellen Regeln und Regelsätze enthalten.
 
 ## <a name="core-rule-sets"></a>Kernregelsätze
 
-Die Application Gateway-WAF wird standardmäßig mit CRS 3.0 vorkonfiguriert. Aber Sie können stattdessen auch CRS 3.1 oder CRS 2.2.9 verwenden. CRS 3.1 bietet neue Regelsätze, die Java-Infektionen abwehren, einen anfänglichen Satz von Überprüfungen beim Hochladen von Dateien enthalten, falsch positive Ergebnisse beheben und vieles mehr. Verglichen mit 2.2.9 liefert CRS 3.0 weniger falsch positive Ergebnisse. Sie können auch [Regeln Ihren Anforderungen entsprechend anpassen](application-gateway-customize-waf-rules-portal.md).
+Die Application Gateway-WAF wird standardmäßig mit CRS 3.0 vorkonfiguriert. Aber Sie können stattdessen auch CRS 3.2, 3.1 oder 2.2.9 verwenden.
+ 
+
+CRS 3.2 (öffentliche Vorschau) bietet ein neues Modul und neue Regelsätze, die Java-Infektionen abwehren, anfängliche Überprüfungen beim Hochladen von Dateien enthalten, falsch positive Ergebnisse beheben und vieles mehr. 
+
+Verglichen mit 3.0 und 2.2.9 liefert CRS 3.1 weniger falsch positive Ergebnisse. Sie können auch [Regeln Ihren Anforderungen entsprechend anpassen](application-gateway-customize-waf-rules-portal.md).
 
 > [!div class="mx-imgBorder"]
 > ![Verwalten von Regeln](../media/application-gateway-crs-rulegroups-rules/managed-rules-01.png)
@@ -36,6 +41,30 @@ Die WAF schützt vor folgenden Websicherheitslücken:
 - Bots, Crawler und Scanner
 - Häufige Fehler bei der Anwendungskonfiguration (z.B. Apache und IIS)
 
+### <a name="owasp-crs-32-public-preview"></a>OWASP CRS 3.2 (öffentliche Vorschau)
+
+CRS 3.2 umfasst 13 Regelgruppen, die in der folgenden Tabelle gezeigt werden. Jede dieser Gruppen enthält mehrere Regeln, die deaktivierbar sind.
+
+> [!NOTE]
+> CRS 3.2 ist nur für die WAF_v2-SKU verfügbar.
+
+|Regelgruppe|BESCHREIBUNG|
+|---|---|
+|**[Allgemein](#general-32)**|Allgemeine Gruppe|
+|**[REQUEST-911-METHOD-ENFORCEMENT](#crs911-32)**|Sperren von Methoden (PUT, PATCH)|
+|**[REQUEST-913-SCANNER-DETECTION](#crs913-32)**|Schutz vor Port- und Umgebungsscannern|
+|**[REQUEST-920-PROTOCOL-ENFORCEMENT](#crs920-32)**|Schutz vor Protokoll- und Codierungsproblemen|
+|**[REQUEST-921-PROTOCOL-ATTACK](#crs921-32)**|Schutz vor Header Injection, Request Smuggling und Response Splitting|
+|**[REQUEST-930-APPLICATION-ATTACK-LFI](#crs930-32)**|Schutz vor Datei- und Pfadangriffen|
+|**[REQUEST-931-APPLICATION-ATTACK-RFI](#crs931-32)**|Schutz vor RFI-Angriffen (Remote File Inclusion)|
+|**[REQUEST-932-APPLICATION-ATTACK-RCE](#crs932-32)**|Schutz vor der Remoteausführung von Code|
+|**[REQUEST-933-APPLICATION-ATTACK-PHP](#crs933-32)**|Schutz vor Angriffen mit Einschleusung von PHP-Befehlen|
+|**[REQUEST-941-APPLICATION-ATTACK-XSS](#crs941-32)**|Schutz vor Angriffen durch websiteübergreifendes Skripting|
+|**[REQUEST-942-APPLICATION-ATTACK-SQLI](#crs942-32)**|Schutz vor Angriffen mit Einschleusung von SQL-Befehlen|
+|**[REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION](#crs943-32)**|Schutz vor Session Fixation-Angriffen|
+|**[REQUEST-944-APPLICATION-ATTACK-SESSION-JAVA](#crs944-32)**|Schutz vor Java-Angriffen|
+
+
 ### <a name="owasp-crs-31"></a>OWASP CRS 3.1
 
 CRS 3.1 umfasst 13 Regelgruppen, wie in der folgenden Tabelle gezeigt. Jede dieser Gruppen enthält mehrere Regeln, die deaktivierbar sind.
@@ -48,7 +77,7 @@ CRS 3.1 umfasst 13 Regelgruppen, wie in der folgenden Tabelle gezeigt. Jede dies
 |**[Allgemein](#general-31)**|Allgemeine Gruppe|
 |**[REQUEST-911-METHOD-ENFORCEMENT](#crs911-31)**|Sperren von Methoden (PUT, PATCH)|
 |**[REQUEST-913-SCANNER-DETECTION](#crs913-31)**|Schutz vor Port- und Umgebungsscannern|
-|**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920-31)**|Schutz vor Protokoll- und Codierungsproblemen|
+|**[REQUEST-920-PROTOCOL-ENFORCEMENT](#crs920-31)**|Schutz vor Protokoll- und Codierungsproblemen|
 |**[REQUEST-921-PROTOCOL-ATTACK](#crs921-31)**|Schutz vor Header Injection, Request Smuggling und Response Splitting|
 |**[REQUEST-930-APPLICATION-ATTACK-LFI](#crs930-31)**|Schutz vor Datei- und Pfadangriffen|
 |**[REQUEST-931-APPLICATION-ATTACK-RFI](#crs931-31)**|Schutz vor RFI-Angriffen (Remote File Inclusion)|
@@ -68,7 +97,7 @@ CRS 3.0 umfasst 12 Regelgruppen, wie in der folgenden Tabelle gezeigt. Jede die
 |**[Allgemein](#general-30)**|Allgemeine Gruppe|
 |**[REQUEST-911-METHOD-ENFORCEMENT](#crs911-30)**|Sperren von Methoden (PUT, PATCH)|
 |**[REQUEST-913-SCANNER-DETECTION](#crs913-30)**|Schutz vor Port- und Umgebungsscannern|
-|**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920-30)**|Schutz vor Protokoll- und Codierungsproblemen|
+|**[REQUEST-920-PROTOCOL-ENFORCEMENT](#crs920-30)**|Schutz vor Protokoll- und Codierungsproblemen|
 |**[REQUEST-921-PROTOCOL-ATTACK](#crs921-30)**|Schutz vor Header Injection, Request Smuggling und Response Splitting|
 |**[REQUEST-930-APPLICATION-ATTACK-LFI](#crs930-30)**|Schutz vor Datei- und Pfadangriffen|
 |**[REQUEST-931-APPLICATION-ATTACK-RFI](#crs931-30)**|Schutz vor RFI-Angriffen (Remote File Inclusion)|
@@ -97,9 +126,244 @@ CRS 2.2.9 umfasst 10 Regelgruppen, wie in der folgenden Tabelle gezeigt. Jede di
 
 Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Firewall auf Application Gateway verfügbar.
 
+# <a name="owasp-32-public-preview"></a>[OWASP 3.2 (öffentliche Vorschau)](#tab/owasp32)
+
+## <a name="32-rule-sets"></a><a name="owasp32"></a> 3.2-Regelsätze
+
+### <a name="p-x-ms-format-detectionnonegeneralp"></a><a name="general-32"></a> <p x-ms-format-detection="none">Allgemein</p>
+|RuleId|BESCHREIBUNG|
+|---|---|
+|200004|Mehrteiliger Parser hat eine mögliche fehlende Übereinstimmung für eine Grenze erkannt.|
+
+### <a name="p-x-ms-format-detectionnonerequest-911-method-enforcementp"></a><a name="crs911-32"></a> <p x-ms-format-detection="none">REQUEST-911-METHOD-ENFORCEMENT</p>
+|RuleId|BESCHREIBUNG|
+|---|---|
+|911100|Methode ist gemäß Richtlinie nicht zulässig|
+
+### <a name="p-x-ms-format-detectionnonerequest-913-scanner-detectionp"></a><a name="crs913-32"></a> <p x-ms-format-detection="none">REQUEST-913-SCANNER-DETECTION</p>
+|RuleId|BESCHREIBUNG|
+|---|---|
+|913100|Benutzer-Agent mit Zuordnung zu Sicherheitsscanner gefunden|
+|913101|Benutzer-Agent mit Zuordnung zu Skripterstellungs- bzw. generischem HTTP-Client gefunden|
+|913102|Benutzer-Agent mit Zuordnung zu Webcrawler/Bot gefunden|
+|913110|Anforderungsheader mit Zuordnung zu Sicherheitsscanner gefunden|
+|913120|Anforderungsdateiname/-argument mit Zuordnung zu Sicherheitsscanner gefunden|
+
+### <a name="p-x-ms-format-detectionnonerequest-920-protocol-enforcementp"></a><a name="crs920-32"></a> <p x-ms-format-detection="none">REQUEST-920-PROTOCOL-ENFORCEMENT</p>
+|RuleId|BESCHREIBUNG|
+|---|---|
+|920100|Ungültige HTTP-Anforderungszeile|
+|920120|Versuchte „multipart/form-data“-Umgehung|
+|920121|Versuchte „multipart/form-data“-Umgehung|
+|920160|Content-Length-HTTP-Header ist nicht numerisch.|
+|920170|GET- oder HEAD-Anforderung mit Textinhalt|
+|920171|GET- oder HEAD-Anforderung mit Transfer-Encoding.|
+|920180|POST-Anforderung mit fehlendem Content-Length-Header|
+|920190|Bereich: Ungültiger Wert für letztes Byte|
+|920200|Bereich: Zu viele Felder (mehr als 6)|
+|920201|Bereich: Zu viele Felder für PDF-Anforderung (mehr als 35)|
+|920202|Bereich: Zu viele Felder für PDF-Anforderung (mehr als 6)|
+|920210|Mehrere bzw. in Konflikt stehende Verbindungsheaderdaten gefunden|
+|920220|Versuchter Missbrauch der URL-Codierung|
+|920230|Mehrere URL-Codierungen erkannt|
+|920240|Versuchter Missbrauch der URL-Codierung|
+|920250|Versuchter Missbrauch der UTF8-Codierung|
+|920260|Versuchter Missbrauch: Unicode (volle/halbe Breite)|
+|920270|Ungültiges Zeichen in der Anforderung (Zeichen NULL)|
+|920271|Ungültiges Zeichen in der Anforderung (nicht druckbare Zeichen)|
+|920272|Ungültiges Zeichen in der Anforderung (außerhalb des Bereichs von druckbaren Zeichen unterhalb von ASCII 127)|
+|920273|Ungültiges Zeichen in der Anforderung (außerhalb des sehr strengen Satzes)|
+|920274|Ungültiges Zeichen in Anforderungsheadern (außerhalb des sehr strengen Satzes)|
+|920280|Fehlender Hostheader in Anforderung|
+|920290|Leerer Hostheader|
+|920310|Anforderung hat einen leeren Accept-Header|
+|920311|Anforderung hat einen leeren Accept-Header|
+|920320|Benutzer-Agent-Header fehlt|
+|920330|Leerer Benutzer-Agent-Header|
+|920340|Anforderung enthält Inhalt, aber keinen Content-Type-Header|
+|920341|Anforderung mit Inhalt erfordert Content-Type-Header|
+|920350|Hostheader ist eine numerische IP-Adresse|
+|920420|Anforderungsinhaltstyp ist gemäß Richtlinie nicht zulässig|
+|920430|HTTP-Protokollversion ist gemäß Richtlinie nicht zulässig|
+|920440|URL-Dateierweiterung wird durch Richtlinie eingeschränkt|
+|920450|HTTP-Header ist durch Richtlinie eingeschränkt (%{MATCHED_VAR})|
+|920460|Ungewöhnliche Escapezeichen|
+|920470|Illegaler Content-Type-Header|
+|920480|Einschränken des Zeichensatzparameters im Content-Type-Header|
+
+### <a name="p-x-ms-format-detectionnonerequest-921-protocol-attackp"></a><a name="crs921-32"></a> <p x-ms-format-detection="none">REQUEST-921-PROTOCOL-ATTACK</p>
+
+|RuleId|BESCHREIBUNG|
+|---|---|
+|921110|HTTP Request Smuggling-Angriff|
+|921120|HTTP Response Splitting-Angriff|
+|921130|HTTP Response Splitting-Angriff|
+|921140|HTTP Header Injection-Angriff über Header|
+|921150|HTTP Header Injection-Angriff über Nutzlast (CR/LF erkannt)|
+|921151|HTTP Header Injection-Angriff über Nutzlast (CR/LF erkannt)|
+|921160|HTTP Header Injection-Angriff über Nutzlast (CR/LF und Headername erkannt)|
+|921170|HTTP-Parameterverunreinigung|
+|921180|HTTP-Parameterverunreinigung (%{TX.1})|
+
+### <a name="p-x-ms-format-detectionnonerequest-930-application-attack-lfip"></a><a name="crs930-32"></a> <p x-ms-format-detection="none">REQUEST-930-APPLICATION-ATTACK-LFI</p>
+|RuleId|BESCHREIBUNG|
+|---|---|
+|930100|Path Traversal-Angriff (/../)|
+|930110|Path Traversal-Angriff (/../)|
+|930120|Zugriffsversuch auf Betriebssystemdatei|
+|930130|Zugriffsversuch auf Datei mit eingeschränktem Zugriff|
+
+### <a name="p-x-ms-format-detectionnonerequest-931-application-attack-rfip"></a><a name="crs931-32"></a> <p x-ms-format-detection="none">REQUEST-931-APPLICATION-ATTACK-RFI</p>
+|RuleId|BESCHREIBUNG|
+|---|---|
+|931100|Möglicher RFI-Angriff (Remote File Inclusion): Verwendung von IP-Adresse für URL-Parameter|
+|931110|Möglicher RFI-Angriff (Remote File Inclusion): Verwendung eines häufigen und für RFI anfälligen Parameternamens mit URL-Nutzlast|
+|931120|Möglicher RFI-Angriff (Remote File Inclusion): Verwendung von URL-Nutzlast mit nachgestelltem Fragezeichen (?)|
+|931130|Möglicher RFI-Angriff (Remote File Inclusion): Domänenexterner Verweis/Link|
+
+### <a name="p-x-ms-format-detectionnonerequest-932-application-attack-rcep"></a><a name="crs932-32"></a> <p x-ms-format-detection="none">REQUEST-932-APPLICATION-ATTACK-RCE</p>
+|RuleId|BESCHREIBUNG|
+|---|---|
+|932100|Remotebefehlsausführung: Einschleusung von Unix-Befehl|
+|932105|Remotebefehlsausführung: Einschleusung von Unix-Befehl|
+|932106|Remotebefehlsausführung: Einschleusung von Unix-Befehl|
+|932110|Remotebefehlsausführung: Einschleusung von Windows-Befehl|
+|932115|Remotebefehlsausführung: Einschleusung von Windows-Befehl|
+|932120|Ausführung eines Remotebefehls: Windows PowerShell-Befehl gefunden|
+|932130|Remotebefehlsausführung: Unix Shell-Ausdruck gefunden|
+|932140|Remotebefehlsausführung: Windows-FOR/IF-Befehl gefunden|
+|932150|Remotebefehlsausführung: Direkte Ausführung von UNIX-Befehlen|
+|932160|Remotebefehlsausführung: Unix Shell-Code gefunden|
+|932170|Remotebefehlsausführung: Shellshock (CVE-2014-6271)|
+|932171|Remotebefehlsausführung: Shellshock (CVE-2014-6271)|
+|932180|Eingeschränkter Dateiuploadversuch|
+|932190|Remotebefehlsausführung: Platzhalterumgehungstechnik-Versuch|
+
+### <a name="p-x-ms-format-detectionnonerequest-933-application-attack-phpp"></a><a name="crs933-32"></a> <p x-ms-format-detection="none">REQUEST-933-APPLICATION-ATTACK-PHP</p>
+|RuleId|BESCHREIBUNG|
+|---|---|
+|933100|PHP Injection-Angriff: Öffnendes/schließendes Tag gefunden|
+|933110|Angriff mit PHP-Einschleusung: PHP-Skriptdateiupload gefunden|
+|933111|Angriff mit PHP-Einschleusung: PHP-Skriptdateiupload gefunden|
+|933120|PHP Injection-Angriff: Konfigurationsanweisung gefunden|
+|933130|Angriff mit PHP-Einschleusung: Variable gefunden|
+|933131|Angriff mit PHP-Einschleusung: Variable gefunden|
+|933140|Angriff mit PHP-Einschleusung: E/A-Datenstrom gefunden|
+|933150|PHP Injection-Angriff: PHP-Funktionsname mit hohem Risikofaktor gefunden|
+|933151|Angriff mit PHP-Einschleusung: PHP-Funktionsname mit mittlerem Risikofaktor gefunden|
+|933160|PHP Injection-Angriff: PHP-Funktionsaufruf mit hohem Risikofaktor gefunden|
+|933161|Angriff mit PHP-Einschleusung: PHP-Funktionsaufruf mit niedrigem Wert gefunden|
+|933170|Angriff mit PHP-Einschleusung: Einschleusung von serialisiertem Objekt|
+|933180|PHP Injection-Angriff: Aufruf einer Variablenfunktion gefunden|
+|933190|Angriff mit PHP-Einschleusung: PHP-Schließtag gefunden|
+|933200|PHP Injection-Angriff: Wrapperschema erkannt|
+|933210|PHP Injection-Angriff: Aufruf einer Variablenfunktion gefunden|
+
+### <a name="p-x-ms-format-detectionnonerequest-941-application-attack-xssp"></a><a name="crs941-32"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
+|RuleId|BESCHREIBUNG|
+|---|---|
+|941100|XSS-Angriff per libinjection erkannt|
+|941101|XSS-Angriff per libinjection erkannt|
+|941110|XSS-Filter – Kategorie 1: Skripttagvektor|
+|941120|XSS-Filter – Kategorie 2: Ereignishandlervektor|
+|941130|XSS-Filter – Kategorie 3: Attributvektor|
+|941140|XSS-Filter – Kategorie 4: JavaScript-URI-Vektor|
+|941150|XSS-Filter – Kategorie 5: Unzulässige HTML-Attribute|
+|941160|NoScript XSS InjectionChecker: HTML-Einschleusung|
+|941170|NoScript XSS InjectionChecker: Attributeinschleusung|
+|941180|Schlüsselwörter von Sperrliste für Knotenvalidierung|
+|941190|XSS mit Stylesheets|
+|941200|XSS mit VML-Frames|
+|941210|XSS mit verschleiertem JavaScript|
+|941220|XSS mit verschleiertem VBScript|
+|941230|XSS mit Tag 'embed'|
+|941240|XSS mit Attribut 'import' oder 'implementation'|
+|941250|IE-XSS-Filter – Angriff erkannt|
+|941260|XSS mit Tag 'meta'|
+|941270|XSS mit Href 'link'|
+|941280|XSS mit Tag 'base'|
+|941290|XSS mit Tag 'applet'|
+|941300|XSS mit Tag 'object'|
+|941310|Falsch formatierte US-ASCII-Codierung für XSS-Filter – Angriff erkannt|
+|941320|Möglicher XSS-Angriff erkannt – HTML-Taghandler|
+|941330|IE-XSS-Filter – Angriff erkannt|
+|941340|IE-XSS-Filter – Angriff erkannt|
+|941350|UTF-7-Codierung – IE XSS – Angriff erkannt|
+|941360|JavaScript-Obfuskation erkannt|
+
+### <a name="p-x-ms-format-detectionnonerequest-942-application-attack-sqlip"></a><a name="crs942-32"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
+|RuleId|BESCHREIBUNG|
+|---|---|
+|942100|SQL Injection-Angriff per libinjection erkannt|
+|942110|Angriff mit Einschleusung von SQL-Befehlen: Allgemeine Tests auf Einschleusung von SQL-Befehlen erkannt|
+|942120|Angriff mit Einschleusung von SQL-Befehlen: SQL-Operator ermittelt|
+|942130|Angriff mit Einschleusung von SQL-Befehlen: SQL-Tautologie erkannt.|
+|942140|SQL Injection-Angriff: Häufige Datenbanknamen erkannt|
+|942150|Angriff mit Einschleusung von SQL-Befehlen|
+|942160|Erkennt Blind SQLI-Tests per sleep() oder benchmark().|
+|942170|Erkennt SQL Benchmark- und Sleep Injection-Angriffsversuche, einschließlich bedingter Abfragen.|
+|942180|Erkennt Versuche der Umgehung der einfachen SQL-Authentifizierung 1/3|
+|942190|Erkennt die Ausführung von MSSQL-Code und Versuche, Informationen auszulesen|
+|942200|Erkennt durch MySQL-Kommentare oder -Leerzeichen verschleierte Einschleusungen und die Terminierung per Backtick|
+|942210|Erkennt verkette Angriffsversuche SQL-Einschleusung 1/2|
+|942220|Suche nach Ganzzahlüberlauf-Angriffen, diese werden von Skipfish übernommen, mit Ausnahme von 3.0.00738585072007e-308 (Absturz wegen ungültiger „magischer Zahl“)|
+|942230|Erkennt Angriffsversuche mit bedingter SQL-Einschleusung.|
+|942240|Erkennt MySQL-Zeichensatzwechsel und MSSQL-DoS-Angriffsversuche|
+|942250|Erkennt MATCH AGAINST-, MERGE- und EXECUTE IMMEDIATE-Einschleusungen|
+|942251|Erkennt HAVING-Einschleusungen.|
+|942260|Erkennt Versuche der Umgehung der einfachen SQL-Authentifizierung, 2/3|
+|942270|Suche nach grundlegender SQL-Einschleusung. Häufig verwendete Angriffszeichenfolge für MySQL, Oracle und andere|
+|942280|Erkennt Postgres pg_sleep-Einschleusung, WAITFOR DELAY-Angriffe und Versuche des Herunterfahrens von Datenbanken|
+|942290|Ermittelt Angriffsversuche mit grundlegender MongoDB SQL-Einschleusung.|
+|942300|Erkennt MySQL-Kommentare, Bedingungen und Einschleusungen von „ch(ar)“|
+|942310|Erkennt verkette Angriffsversuche SQL-Einschleusung 2/2.|
+|942320|Erkennt Einschleusungen von gespeicherten Prozeduren/Funktionen für MySQL und PostgreSQL.|
+|942330|Erkennt Probings von klassischen Einschleusungen von SQL-Befehlen, 1/2|
+|942340|Erkennt Versuche der Umgehung der einfachen SQL-Authentifizierung, 3/3|
+|942350|Erkennt MySQL-UDF-Einschleusung und andere Versuche der Manipulation von Daten bzw. der Struktur.|
+|942360|Erkennt Versuche des Verkettens einfacher eingeschleuster SQL-Befehle und von SQL/LFI|
+|942361|Erkennt grundlegende SQL-Einschleusung basierend auf Schlüsselwort „Alter“ oder „Union“|
+|942370|Erkennt Probings von klassischen Einschleusungen von SQL-Befehlen, 2/2|
+|942380|Angriff mit Einschleusung von SQL-Befehlen|
+|942390|Angriff mit Einschleusung von SQL-Befehlen|
+|942400|Angriff mit Einschleusung von SQL-Befehlen|
+|942410|Angriff mit Einschleusung von SQL-Befehlen|
+|942420|Eingeschränkte Anomalieerkennung für SQL-Zeichen (Cookies): Anzahl von Sonderzeichen überschritten (8)|
+|942421|Eingeschränkte Anomalieerkennung für SQL-Zeichen (Cookies): Anzahl von Sonderzeichen überschritten (3)|
+|942430|Eingeschränkte Anomalieerkennung für SQL-Zeichen (Argumente): Anzahl von Sonderzeichen überschritten (12)|
+|942431|Eingeschränkte Anomalieerkennung für SQL-Zeichen (Argumente): Anzahl von Sonderzeichen überschritten (6)|
+|942432|Eingeschränkte Anomalieerkennung für SQL-Zeichen (Argumente): Anzahl von Sonderzeichen überschritten (2)|
+|942440|SQL-Kommentarsequenz erkannt|
+|942450|Hexadezimale SQL-Codierung identifiziert|
+|942460|Warnung: Erkennung einer Metazeichenanomalie – Wiederholte Non-Word-Zeichen|
+|942470|Angriff mit Einschleusung von SQL-Befehlen|
+|942480|Angriff mit Einschleusung von SQL-Befehlen|
+|942490|Erkennt Probings von klassischen Einschleusungen von SQL-Befehlen 3/3|
+|942500|MySQL-Inlinekommentar erkannt|
+
+### <a name="p-x-ms-format-detectionnonerequest-943-application-attack-session-fixationp"></a><a name="crs943-32"></a> <p x-ms-format-detection="none">REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION</p>
+|RuleId|BESCHREIBUNG|
+|---|---|
+|943100|Möglicher Session Fixation-Angriff: Festlegung von Cookiewerten in HTML|
+|943110|Möglicher Session Fixation-Angriff: SessionID-Parametername mit domänenexternem Verweiser|
+|943120|Möglicher Session Fixation-Angriff: SessionID-Parametername ohne Verweiser|
+
+### <a name="p-x-ms-format-detectionnonerequest-944-application-attack-javap"></a><a name="crs944-32"></a> <p x-ms-format-detection="none">REQUEST-944-APPLICATION-ATTACK-JAVA</p>
+|RuleId|BESCHREIBUNG|
+|---|---|
+|944100|Remotebefehlsausführung: Apache Struts, Oracle WebLogic|
+|944110|Erkennt potenzielle Payloadausführung|
+|944120|Mögliche Nutzlastausführung und Remotebefehlsausführung|
+|944130|Verdächtige Java-Klassen|
+|944200|Ausnutzung der Java-Deserialisierung (Apache Commons)|
+|944210|Mögliche Verwendung von Java-Serialisierung|
+|944240|Remotebefehlsausführung: Java-Serialisierung|
+|944250|Remotebefehlsausführung: Verdächtige Java-Methode erkannt|
+|944300|Base64-codierte Zeichenfolge stimmt mit verdächtigem Schlüsselwort überein|
+
 # <a name="owasp-31"></a>[OWASP 3.1](#tab/owasp31)
 
-## <a name="rule-sets"></a><a name="owasp31"></a>-Regelsätze
+## <a name="31-rule-sets"></a><a name="owasp31"></a> 3.1-Regelsätze
 
 ### <a name="p-x-ms-format-detectionnonegeneralp"></a><a name="general-31"></a> <p x-ms-format-detection="none">Allgemein</p>
 
@@ -255,7 +519,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |941101|XSS-Angriff per libinjection erkannt|
 |941110|XSS-Filter – Kategorie 1 = Skripttagvektor|
 |941130|XSS-Filter – Kategorie 3 = Attributvektor|
-|941140|XSS-Filter – Kategorie 4 = JavaScript-URI-Vektor|
+|941140|XSS-Filter – Kategorie 4: JavaScript-URI-Vektor|
 |941150|XSS-Filter – Kategorie 5 = Unzulässige HTML-Attribute|
 |941160|NoScript XSS InjectionChecker: HTML-Einschleusung|
 |941170|NoScript XSS InjectionChecker: Attributeinschleusung|
@@ -347,7 +611,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 
 # <a name="owasp-30"></a>[OWASP 3.0](#tab/owasp30)
 
-## <a name="rule-sets"></a><a name="owasp30"></a>-Regelsätze
+## <a name="30-rule-sets"></a><a name="owasp30"></a> 3.0-Regelsätze
 
 ### <a name="p-x-ms-format-detectionnonegeneralp"></a><a name="general-30"></a> <p x-ms-format-detection="none">Allgemein</p>
 
@@ -485,7 +749,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |941100|XSS-Angriff per libinjection erkannt|
 |941110|XSS-Filter – Kategorie 1 = Skripttagvektor|
 |941130|XSS-Filter – Kategorie 3 = Attributvektor|
-|941140|XSS-Filter – Kategorie 4 = JavaScript-URI-Vektor|
+|941140|XSS-Filter – Kategorie 4: JavaScript-URI-Vektor|
 |941150|XSS-Filter – Kategorie 5 = Unzulässige HTML-Attribute|
 |941180|Schlüsselwörter von Sperrliste für Knotenvalidierung|
 |941190|XSS mit Stylesheets|
@@ -547,7 +811,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 
 # <a name="owasp-229"></a>[OWASP 2.2.9](#tab/owasp2)
 
-## <a name="rule-sets"></a><a name="owasp229"></a>-Regelsätze
+## <a name="29-rule-sets"></a><a name="owasp229"></a> 2.9-Regelsätze
 
 ### <a name="crs_20_protocol_violations"></a><a name="crs20"></a> crs_20_protocol_violations
 
@@ -689,7 +953,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |RuleId|BESCHREIBUNG|
 |---|---|
 |973336|XSS-Filter – Kategorie 1 = Skripttagvektor|
-|973338|XSS-Filter – Kategorie 3 = JavaScript-URI-Vektor|
+|973338|XSS-Filter – Kategorie 3: JavaScript-URI-Vektor|
 |981136|Regel 981136|
 |981018|Regel 981018|
 |958016|XSS-Angriff (Cross-Site Scripting)|

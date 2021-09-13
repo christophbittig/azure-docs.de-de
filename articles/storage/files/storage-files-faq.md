@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 47400f8e359f8f5f7a05119eb91106b318a0e798
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 34a8d0d732863f5fe40056f25460269f131fbf7c
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113729576"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866499"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Häufig gestellte Fragen (FAQ) zu Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll [Server Message Block (SMB)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) sowie über das [Network File System-Protokoll (NFS)](https://en.wikipedia.org/wiki/Network_File_System) (Vorschau) zugegriffen werden kann. Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem die Azure-Dateisynchronisierung verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
@@ -440,9 +440,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
 * <a id="share-snapshot-price"></a>
 **Wie viel kosten Freigabemomentaufnahmen?**  
-     Während der Vorschauphase fallen keine Gebühren für die Kapazität von Freigabemomentaufnahmen an. Für regulären ausgehenden Speicher und Transaktionen fallen die üblichen Kosten an. Wenn die allgemeine Verfügbarkeit erreicht ist, werden für Abonnements sowohl die Kapazität als auch Transaktionen für Freigabemomentaufnahmen berechnet.
-     
-     Freigabemomentaufnahmen sind in der Regel inkrementell. Bei der Basisfreigabemomentaufnahme handelt es sich um die Freigabe selbst. Alle nachfolgenden Freigabemomentaufnahmen sind inkrementell und enthalten nur die Differenzdaten gegenüber der vorherigen Freigabemomentaufnahme. Ihnen wird nur der geänderte Inhalt in Rechnung gestellt. Wenn Sie über eine Freigabe mit 100 GiB an Daten verfügen, aber nur 5 GiB nach Ihrer letzten Freigabemomentaufnahme geändert wurden, belegt die Freigabemomentaufnahme nur zusätzliche 5 GiB, und Ihnen werden 105 GiB berechnet. Weitere Informationen zu Gebühren für Transaktionen und Standardausgangsgebühren finden Sie auf der Seite [Azure Files – Preise](https://azure.microsoft.com/pricing/details/storage/files/).
+    Freigabemomentaufnahmen sind in der Regel inkrementell. Bei der Basisfreigabemomentaufnahme handelt es sich um die Freigabe selbst. Alle nachfolgenden Freigabemomentaufnahmen sind inkrementell und enthalten nur die Differenzdaten gegenüber der vorherigen Freigabemomentaufnahme. Ihnen wird nur der geänderte Inhalt in Rechnung gestellt. Wenn Sie über eine Freigabe mit 100 GiB an Daten verfügen, aber nur 5 GiB nach Ihrer letzten Freigabemomentaufnahme geändert wurden, belegt die Freigabemomentaufnahme nur zusätzliche 5 GiB, und Ihnen werden 105 GiB berechnet. Weitere Informationen zu Gebühren für Transaktionen und Standardausgangsgebühren finden Sie auf der Seite [Azure Files – Preise](https://azure.microsoft.com/pricing/details/storage/files/).
 
 ## <a name="scale-and-performance"></a>Skalierung und Leistung
 * <a id="files-scale-limits"></a>

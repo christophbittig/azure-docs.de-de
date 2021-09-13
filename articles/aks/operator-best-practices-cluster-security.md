@@ -5,12 +5,12 @@ description: Lernen Sie die Best Practices für den Clusteroperator zum Verwalte
 services: container-service
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.openlocfilehash: 5cb103d843aafbb7f72c03d65b45fe3a84f8d1cd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 7560e9aaabf8b21729e1e9d8e008c0b6a0e8cefb
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107782979"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112453320"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Best Practices für Clustersicherheit und Upgrades in Azure Kubernetes Service (AKS)
 
@@ -279,38 +279,19 @@ Anschließend können Sie Ihren AKS-Cluster mithilfe des Befehls [az aks upgrade
 
 Weitere Informationen zu Upgrades in AKS finden Sie unter [Unterstützte Kubernetes-Versionen in Azure Kubernetes Service (AKS)][aks-supported-versions] und [Durchführen eines Upgrades für einen Azure Kubernetes Service-Cluster (AKS)][aks-upgrade].
 
-## <a name="process-linux-node-updates-and-reboots-using-kured"></a>Verarbeiten von Updates und Neustarts von Linux-Knoten mithilfe von kured
+## <a name="process-linux-node-updates"></a>Verarbeiten von Linux-Knotenupdates
 
-> **Best Practices-Leitfaden** 
-> 
-> AKS lädt zwar automatisch Behebungen von Sicherheitsproblemen für jeden einzelnen Linux-Knoten herunter und installiert sie, führt aber keinen automatischen Neustart durch. 
-> 1. Verwenden Sie `kured`, um auf ausstehende Neustarts zu achten.
-> 1. Sperren Sie den Knoten sicher ab, und gleichen Sie ihn aus, damit er neu gestartet werden kann.
-> 1. Wenden Sie die Updates an.
-> 1. Gehen Sie so umsichtig wie möglich mit Ihrem Betriebssystem um. 
+Jeden Abend werden über die Updateverteilungskanäle Sicherheitspatches für Linux-Knoten in AKS zur Verfügung gestellt. Dieses Verhalten wird im Rahmen der Bereitstellung von Knoten in einem AKS-Cluster automatisch konfiguriert. Neustarts werden für Knoten nicht automatisch ausgeführt, wenn ein Sicherheitspatch oder Kernelupdate es erfordern würde, um Störungen und eventuelle negative Einflüsse auf ausgeführte Workloads zu minimieren. Weitere Informationen zum Umgang mit Knotenneustarts finden Sie im Artikel [Anwenden von Sicherheits- und Kernelupdates auf Linux-Knoten in Azure Kubernetes Service (AKS)][aks-kured].
 
-Führen Sie für Windows Server-Knoten regelmäßig ein AKS-Upgrade durch, um die Pods sicher abzusperren und zu leeren und aktualisierte Knoten bereitzustellen.
+### <a name="node-image-upgrades"></a>Upgrades für Knotenimages
 
-Jeden Abend werden über die Updateverteilungskanäle Sicherheitspatches für Linux-Knoten in AKS zur Verfügung gestellt. Dieses Verhalten wird im Rahmen der Bereitstellung von Knoten in einem AKS-Cluster automatisch konfiguriert. Neustarts werden für Knoten nicht automatisch ausgeführt, wenn ein Sicherheitspatch oder Kernelupdate es erfordern würde, um Störungen und eventuelle negative Einflüsse auf ausgeführte Workloads zu minimieren.
+Unbeaufsichtigte Upgrades wenden Updates auf das Betriebssystem des Linux-Knotens an, aber das Image, das zum Erstellen von Knoten für Ihren Cluster verwendet wird, bleibt unverändert. Wenn Ihrem Cluster ein neuer Linux-Knoten hinzugefügt wird, wird das ursprüngliche Image zum Erstellen des Knotens verwendet. Dieser neue Knoten empfängt alle Sicherheits- und Kernelupdates, die während der automatischen Überprüfung jede Nacht verfügbar sind, bleibt jedoch ungepatcht, bis alle Überprüfungen und Neustarts abgeschlossen sind. Sie können das Knotenimageupgrade verwenden, um nach Knotenimages zu suchen und diese zu aktualisieren, die von Ihrem Cluster verwendet werden. Ausführlichere Informationen zu Knotenimageupgrades finden Sie unter [Upgrade für AKS-Knotenimages (Azure Kubernetes Service)][node-image-upgrade].
 
-Das Open-Source-Projekt [kured (KUbernetes REboot Daemon)][kured] von Weaveworks überwacht ausstehende Neustarts für Knoten. Wenn ein Linux-Knoten Updates implementiert, die einen Neustart erfordern, wird der Knoten sicher abgesperrt und geleert, um Pods in andere Knoten des Clusters zu verschieben und einen Zeitplan für sie festzulegen. Nach dem Neustart des Knotens wird er wieder dem Cluster hinzugefügt, und die Podplanung von Kubernetes wird fortgesetzt. Immer nur ein Knoten auf einmal kann durch `kured` neu gestartet werden, um Störungen so gering wie möglich zu halten.
+## <a name="process-windows-server-node-updates"></a>Verarbeiten von Windows Server-Knotenupdates
 
-![Der Neustartvorgang eines AKS-Knotens mithilfe von kured.](media/operator-best-practices-cluster-security/node-reboot-process.png)
-
-Falls Sie noch mehr Kontrolle über Neustarts benötigen, kann `kured` in Prometheus integriert werden, um Neustarts zu verhindern, wenn gleichzeitig andere Wartungsereignisse stattfinden oder Clusterprobleme vorliegen. Diese Integration minimiert durch Neustarts von Knoten hervorgerufene Komplikationen, wenn Sie gerade andere Probleme behandeln.
-
-Weitere Informationen zum Umgang mit Knotenneustarts finden Sie im Artikel [Anwenden von Sicherheits- und Kernelupdates auf Linux-Knoten in Azure Kubernetes Service (AKS)][aks-kured].
-
-## <a name="next-steps"></a>Nächste Schritte
-
-In diesem Artikel wurde erläutert, wie AKS-Cluster gesichert werden. Wenn Sie einige dieser Best Practices implementieren möchten, lesen Sie folgende Artikel:
-
-* [Integrieren von Azure Active Directory in AKS][aks-aad]
-* [Durchführen eines Upgrades für einen Azure Kubernetes Service-Cluster (AKS)][aks-upgrade]
-* [Anwenden von Sicherheits- und Kernelupdates auf Knoten in Azure Kubernetes Service (AKS)][aks-kured]
+Führen Sie für Windows Server-Knoten regelmäßig ein Knotenimageupgrade durch, um die Pods sicher abzusperren und zu leeren und aktualisierte Knoten bereitzustellen.
 
 <!-- EXTERNAL LINKS -->
-[kured]: https://github.com/weaveworks/kured
 [k8s-apparmor]: https://kubernetes.io/docs/tutorials/clusters/apparmor/
 [seccomp]: https://kubernetes.io/docs/concepts/policy/pod-security-policy/#seccomp
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
@@ -330,3 +311,4 @@ In diesem Artikel wurde erläutert, wie AKS-Cluster gesichert werden. Wenn Sie e
 [pod-security-contexts]: developer-best-practices-pod-security.md#secure-pod-access-to-resources
 [aks-ssh]: ssh.md
 [security-center-aks]: ../security-center/defender-for-kubernetes-introduction.md
+[node-image-upgrade]: node-image-upgrade.md

@@ -7,13 +7,13 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
-ms.date: 03/17/2021
-ms.openlocfilehash: 586d2f8a887f6da39111d2e3f01744952cd9a1c3
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 07/13/2021
+ms.openlocfilehash: 3d2048f643da5f9cdd77b95f2a992efef74a77e9
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133311"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114388077"
 ---
 # <a name="verify-co-sell-status-of-a-commercial-marketplace-offer"></a>Überprüfen des Co-Selling-Status für ein Angebot im kommerziellen Marketplace
 
@@ -33,11 +33,11 @@ In der folgenden Tabelle sind alle möglichen Co-Selling-Status aufgeführt: Inf
 | ------------ | ------------- |
 | Not Co-Sell Ready (Nicht für Co-Selling bereit) | Die [Mindestanforderungen für den Status „Co-Sell Ready“](co-sell-requirements.md#requirements-for-co-sell-ready-status) (Bereit für Co-Selling) wurden nicht erfüllt. |
 | Co-Sell Ready | Alle [Anforderungen für den Status „Co-Sell Ready“](co-sell-requirements.md#requirements-for-co-sell-ready-status) wurden erfüllt. |
-| Azure IP Co-Sell Incentivized | Die Anforderungen für den Status „Co-Sell Ready“ sowie [diese zusätzlichen Anforderungen](co-sell-requirements.md#requirements-for-azure-ip-co-sell-incentivized-status) wurden erfüllt. |
-| Business Applications – Co-Sell Incentivized | Dieser Status gilt für Dynamics 365- und Power Apps-Angebote im [ISV Connect Program](business-applications-isv-program.md) und gibt an, dass alle [Anforderungen für diesen Status](co-sell-requirements.md#requirements-for-business-applications-co-sell-incentivized-status) erfüllt wurden. |
+| Azure IP Co-sell incentive (Azure IP-Co-Selling-Incentive) | Die Anforderungen für den Status „Co-Sell Ready“ sowie [diese zusätzlichen Anforderungen](co-sell-requirements.md#requirements-for-azure-ip-co-sell-incentive-status) wurden erfüllt. |
+| Business Applications Co-sell incentive (Business Applications-Co-Selling-Incentive) | Dieser Status gilt für Dynamics 365- und Power Apps-Angebote im [ISV Connect Program](business-applications-isv-program.md) und gibt an, dass alle [Anforderungen für diesen Status](co-sell-requirements.md#requirements-for-business-applications-co-sell-incentive-status) erfüllt wurden. |
 |||
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zu Co-Selling-Anforderungen finden Sie unter [Co-Selling-Anforderungen](co-sell-requirements.md).
-- Hilfe zum Konfigurieren eines Angebots für Co-Selling finden Sie unter [Konfigurieren von Co-Selling für ein Angebot im kommerziellen Marketplace](./co-sell-configure.md).
+- Hilfe zum Konfigurieren eines Angebots für Co-Selling finden Sie unter [Konfigurieren von Co-Selling für ein Angebot im kommerziellen Marketplace](co-sell-configure.md).

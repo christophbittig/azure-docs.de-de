@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 4624a33b12afc5eff033fe2d57bf25f812c9e667
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: b1be9681246711cfd722bdc4d4806d75875f3429
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107891300"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122342730"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Blob Storage-Trigger für Azure Functions
 
@@ -43,6 +43,8 @@ Der [Event Grid-Trigger](functions-bindings-event-grid.md) bietet auch integrier
 - **Reine Blobspeicherkonten**: [Reine Blobspeicherkonten](../storage/common/storage-account-overview.md#types-of-storage-accounts) werden für die Blobeingabe- und -ausgabebindungen, jedoch nicht für Blobtrigger unterstützt.
 
 - **Hohe Anzahl**: Als „hohe Anzahl“ können Container mit mehr als 100.000 Blobs oder Speicherkonten mit mehr als 100 Blobupdates pro Sekunde lose definiert werden.
+
+- **Vorhandene Blobs:** Der Blobtrigger verarbeitet alle vorhandenen Blobs im Container, wenn Sie den Trigger einrichten. Wenn Sie über einen Container mit vorhandenen Blobs verfügen und nur Trigger für neue Blobs verwenden möchten, nutzen Sie den Event Grid-Trigger.
 
 - **Minimieren der Latenzzeit**: Wenn Ihre Funktions-App im Verbrauchsplan enthalten ist, kann es möglicherweise bis zu 10 Minuten dauern, bis neue Blobs verarbeitet werden, nachdem eine Funktionen-App in den Leerlauf gewechselt ist. Um dies Wartezeit zu vermeiden, können Sie zu einem App Service-Plan wechseln, für den „Always On“ aktiviert ist. Sie können auch einen [Event Grid-Trigger](functions-bindings-event-grid.md) mit Ihrem Blobspeicherkonto verwenden. Ein Beispiel finden Sie im [Event Grid-Tutorial](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json).
 

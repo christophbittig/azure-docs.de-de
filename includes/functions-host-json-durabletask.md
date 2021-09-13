@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: e0605b5a882dcfa09b2435476a37d116f8c47286
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 2c49bfee8f3b694ea635c836e06bfbe99ba9d758
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111350681"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112425948"
 ---
 Konfigurationseinstellungen für [Durable Functions](../articles/azure-functions/durable/durable-functions-overview.md).
 
@@ -110,7 +110,7 @@ Aufgabenhubnamen müssen mit einem Buchstaben beginnen und bestehen nur aus Buch
 |maxConcurrentActivityFunctions | **Verbrauchsplan:** 10 <br> **Dedicated-/Premium-Plan:** 10-fache Anzahl von Prozessoren auf dem aktuellen Computer|Die maximale Anzahl von Aktivitätsfunktionen, die gleichzeitig auf einer einzelnen Hostinstanz verarbeitet werden können.|
 |maxConcurrentOrchestratorFunctions | **Verbrauchsplan:** 5 <br> **Dedicated-/Premium-Plan:** 10-fache Anzahl von Prozessoren auf dem aktuellen Computer |Die maximale Anzahl von Orchestratorfunktionen, die gleichzeitig auf einer einzelnen Hostinstanz verarbeitet werden können.|
 |maxQueuePollingInterval|30 Sekunden|Das maximale Abrufintervall der Steuerelement- und Arbeitselement-Warteschlangen im Format *hh:mm:ss*. Höhere Werte können zu höherer Latenz bei der Nachrichtenverarbeitung führen. Niedrigere Werte können aufgrund verstärkter Speichertransaktionen zu höheren Speicherkosten führen.|
-|azureStorageConnectionStringName |AzureWebJobsStorage|Der Name der App-Einstellung mit der Azure Storage-Verbindungszeichenfolge, die zum Verwalten der zugrunde liegenden Azure Storage-Ressourcen verwendet wird.|
+|connectionStringName (2.x)<br/>azureStorageConnectionStringName (1.x) |AzureWebJobsStorage|Der Name der App-Einstellung mit der Azure Storage-Verbindungszeichenfolge, die zum Verwalten der zugrunde liegenden Azure Storage-Ressourcen verwendet wird.|
 |trackingStoreConnectionStringName||Der Name einer Verbindungszeichenfolge, die für die Verlaufs- und Instanzentabellen verwendet wird. Wird kein Wert angegeben, wird die Verbindung `connectionStringName` (Durable 2.x) oder `azureStorageConnectionStringName` (Durable 1.x) verwendet.|
 |trackingStoreNamePrefix||Das für die Verlaufs- und Instanzentabellen zu verwendende Präfix, wenn `trackingStoreConnectionStringName` angegeben ist. Wenn diese Eigenschaft nicht festgelegt ist, wird `DurableTask` als Standardwert für das Präfix verwendet. Wenn `trackingStoreConnectionStringName` nicht angegeben ist, wird in den Verlaufs- und Instanzentabellen der Wert `hubName` als Präfix verwendet und jede Einstellung für `trackingStoreNamePrefix` wird ignoriert.|
 |traceInputsAndOutputs |false|Ein Wert, der angibt, ob die Eingaben und Ausgaben von Funktionsaufrufen nachverfolgt werden. Das Standardverhalten beim Nachverfolgen von Ereignissen zur Funktionsausführung besteht darin, die Anzahl der Bytes in die serialisierten Eingaben und Ausgaben für Funktionsaufrufe einzuschließen. Dieses Verhalten ermöglicht minimale Informationen zu den Eingaben und Ausgaben, ohne die Protokolle zu überfrachten oder irrtümlich vertrauliche Informationen verfügbar zu machen. Wenn diese Eigenschaft auf TRUE festgelegt wird, werden bei der standardmäßigen Funktionsprotokollierung die gesamten Inhalte der Eingaben und Ausgaben der Funktionen protokolliert.|

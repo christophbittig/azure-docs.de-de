@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 974bff2502fd93527653b7e1fb5890f2c916521c
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 936e26aa82d963a906cf134aeab83d4876a5c4fd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109683423"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346656"
 ---
 # <a name="ddv4-and-ddsv4-series"></a>Ddv4- und Ddsv4-Serie
 
@@ -34,13 +34,13 @@ Die neuen Ddv4-VM-Größen umfassen schnellen, größeren lokalen SSD-Speicher (
 [Livemigration](maintenance-and-updates.md): Unterstützt<br>
 [Updates mit Speicherbeibehaltung](maintenance-and-updates.md): Unterstützt<br>
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
-[Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt (*erfordert mindestens 4 vCPU*)<br>
+[Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt<br>
 [Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt <br>
 <br> 
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | <sup>**</sup> Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s | Maximale Anzahl NICs|Erwartete Netzwerkbandbreite (MBit/s) |
 |---|---|---|---|---|---|---|---|
-| Standard_D2d_v4 | 2 | 8 | 75 | 4 | 19.000/120 | 2|1000 |
+| Standard_D2d_v4<sup>1</sup> | 2 | 8 | 75 | 4 | 19.000/120 | 2|1000 |
 | Standard_D4d_v4 | 4 | 16 | 150 | 8 | 38.500/242 | 2|2000 |
 | Standard_D8d_v4 | 8 | 32 | 300 | 16 | 77.000/485 | 4|4000 |
 | Standard_D16d_v4 | 16 | 64 | 600 | 32 | 154.000/968 | 8|8.000 |
@@ -48,7 +48,8 @@ Die neuen Ddv4-VM-Größen umfassen schnellen, größeren lokalen SSD-Speicher (
 | Standard_D48d_v4 | 48 | 192 | 1800 | 32 | 462.000/2.904 | 8|24.000 |
 | Standard_D64d_v4 | 64 | 256 | 2400 | 32 | 615.000/3.872 | 8|30.000 |
 
-<sup>**</sup> Diese IOPS-Werte können mithilfe von [Gen2-VMs](generation-2.md) erzielt werden.
+<sup>**</sup> Diese IOPS-Werte können mithilfe von [Gen2-VMs](generation-2.md) erzielt werden.<br>
+<sup>1</sup> Beschleunigter Netzwerkbetrieb kann nur auf eine einzelne NIC angewendet werden. 
 
 ## <a name="ddsv4-series"></a>Ddsv4-Serie
 
@@ -65,21 +66,23 @@ Die neuen Ddsv4-VM-Größen umfassen schnellen, größeren lokalen SSD-Speicher 
 [Livemigration](maintenance-and-updates.md): Unterstützt<br>
 [Updates mit Speicherbeibehaltung](maintenance-and-updates.md): Unterstützt<br>
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
-[Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt (*erfordert mindestens 4 vCPU*)<br>
+[Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt<br>
 [Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt <br>
 <br> 
 
-| Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | <sup>**</sup> Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs|Erwartete Netzwerkbandbreite (MBit/s) |
-|---|---|---|---|---|---|---|---|---|
-| Standard_D2ds_v4 | 2 | 8 | 75 | 4 | 19.000/120(50) | 3200/48 | 2|1000 |
-| Standard_D4ds_v4 | 4 | 16 | 150 | 8 | 38.500/242(100) | 6400/96 | 2|2000 |
-| Standard_D8ds_v4 | 8 | 32 | 300 | 16 | 77.000/485(200) | 12800/192 | 4|4000 |
-| Standard_D16ds_v4 | 16 | 64 | 600 | 32 | 154.000/968(400) | 25600/384 | 8|8.000 |
-| Standard_D32ds_v4 | 32 | 128 | 1200 | 32 | 308.000/1.936(800) | 51200/768 | 8|16000 |
-| Standard_D48ds_v4 | 48 | 192 | 1800 | 32 | 462.000/2.904(1.200) | 76800/1152 | 8|24.000 |
-| Standard_D64ds_v4 | 64 | 256 | 2400 | 32 | 615.000/3.872(1.600) | 80000/1200 | 8|30.000 |
+| Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | <sup>**</sup> Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s |  Durchsatz des Datenträgers mit maximalem Burst ohne Cache: IOPS/MBit/s<sup>1</sup> | Maximale Anzahl NICs|Erwartete Netzwerkbandbreite (MBit/s) |
+|---|---|---|---|---|---|---|---|---|---|
+| Standard_D2ds_v4<sup>2</sup> | 2 | 8 | 75 | 4 | 19.000/120(50) | 3200/48 | 4000/200 | 2|1000 |
+| Standard_D4ds_v4 | 4 | 16 | 150 | 8 | 38.500/242(100) | 6400/96 | 8000/200 | 2|2000 |
+| Standard_D8ds_v4 | 8 | 32 | 300 | 16 | 77.000/485(200) | 12800/192 | 16000/400 | 4|4000 |
+| Standard_D16ds_v4 | 16 | 64 | 600 | 32 | 154.000/968(400) | 25600/384 | 32000/800 | 8|8.000 |
+| Standard_D32ds_v4 | 32 | 128 | 1200 | 32 | 308.000/1.936(800) | 51200/768 | 64000/1600 | 8|16000 |
+| Standard_D48ds_v4 | 48 | 192 | 1800 | 32 | 462.000/2.904(1.200) | 76800/1152 | 80.000/2.000 | 8|24.000 |
+| Standard_D64ds_v4 | 64 | 256 | 2400 | 32 | 615.000/3.872(1.600) | 80000/1200 | 80.000/2.000 | 8|30.000 |
 
-<sup>**</sup> Diese IOPS-Werte können mithilfe von [Gen2-VMs](generation-2.md) erzielt werden.
+<sup>**</sup> Diese IOPS-Werte können mithilfe von [Gen2-VMs](generation-2.md) erzielt werden.<br>
+<sup>1</sup> VMs der Ddsv4-Serie können mit einem [Burst](./disk-bursting.md) ihre Datenträgerleistung für jeweils bis zu 30 Minuten auf das maximale Bursting verbessern.<br>
+<sup>2</sup> Beschleunigter Netzwerkbetrieb kann nur auf eine einzelne NIC angewendet werden. 
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

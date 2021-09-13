@@ -2,22 +2,22 @@
 title: Verwalten von Verbundzertifikaten in Azure AD | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie das Ablaufdatum für Verbundzertifikate anpassen und Zertifikate erneuern, die in Kürze ablaufen.
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.author: mtillman
-ms.reviewer: jeedes
+ms.author: davidmu
+ms.reviewer: saumadan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 538307a4ffe9970960a4f8cea32ed8052bb87bf9
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 5217f358e7977d8414204c48d82dd6b4f1554b1c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112080613"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349411"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Verwalten von Zertifikaten für die einmalige Verbundanmeldung in Azure Active Directory
 
@@ -60,7 +60,7 @@ Zuerst müssen Sie ein neues Zertifikat mit einem anderen Ablaufdatum erstellen 
 1. Wählen Sie **Neues Zertifikat** aus. Unterhalb der Zertifikatliste wird eine neue Zeile angezeigt, in der das Ablaufdatum standardmäßig auf genau drei Jahre nach dem aktuellen Datum festgelegt ist. (Da Ihre Änderungen noch nicht gespeichert wurden, können Sie das Ablaufdatum noch ändern.)
 1. Zeigen Sie in der neuen Zertifikatzeile mit dem Mauszeiger auf die Spalte „Ablaufdatum“, und wählen Sie das Symbol **Datum auswählen** (einen Kalender) aus. Daraufhin wird ein Kalendersteuerelement mit den Tagen eines Monats des aktuellen Ablaufdatums in der neuen Zeile angezeigt.
 1. Verwenden Sie das Kalendersteuerelement, um ein neues Datum festzulegen. Sie können ein beliebiges Datum zwischen dem aktuellen Datum und drei Jahre nach dem aktuellen Datum festlegen.
-1. Wählen Sie **Speichern** aus. Das neue Zertifikat wird jetzt mit dem Status **Inaktiv**, dem von Ihnen ausgewählten Ablaufdatum und einem Fingerabdruck angezeigt.
+1. Wählen Sie **Speichern** aus. Das neue Zertifikat wird jetzt mit dem Status **Inaktiv**, dem von Ihnen ausgewählten Ablaufdatum und einem Fingerabdruck angezeigt. **Hinweis**: Wenn Ihr vorhandenes Zertifikat abgelaufen ist und Sie ein neues Zertifikat generieren, dann wird dieses neue Zertifikat beim Signieren von Token berücksichtigt, auch wenn Sie es noch nicht aktiviert haben.
 1. Wählen Sie das **X** aus, um zur Seite **Einmaliges Anmelden (SSO) mit SAML einrichten – Vorschau** zurückzukehren.
 
 ### <a name="upload-and-activate-a-certificate"></a>Hochladen und Aktivieren eines Zertifikats
@@ -77,6 +77,8 @@ Als Nächstes müssen Sie das neue Zertifikat im richtigen Format herunterladen,
 1. Wenn Sie einen Rollover auf das neue Zertifikat ausführen möchten, wechseln Sie zurück zur Seite **SAML-Signaturzertifikat**, und wählen Sie in der neu gespeicherten Zertifikatzeile die Auslassungspunkte (**...**) aus, und wählen Sie dann **Zertifikat als aktiv festlegen** aus. Der Status des neuen Zertifikats ändert sich in **Aktiv**, und der Status des zuvor aktiven Zertifikats ändert sich in **Inaktiv**.
 1. Fahren Sie mit den zuvor angezeigten Konfigurationsanweisungen für die SAML-basierte Anmeldung für die Anwendung fort, um das SAML-Signaturzertifikat im richtigen Codierungsformat hochzuladen.
 
+Wenn Ihre Anwendung das Ablaufdatum des Zertifikats nicht überprüft und das Zertifikat sowohl in Azure Active Directory als auch in Ihrer Anwendung übereinstimmt, ist Ihre Anwendung trotz des abgelaufenen Zertifikats weiterhin zugänglich. Stellen Sie sicher, dass Ihre Anwendung das Ablaufdatum des Zertifikats überprüft.
+
 ## <a name="add-email-notification-addresses-for-certificate-expiration"></a>Hinzufügen von E-Mail-Adressen für Benachrichtigungen für den Zertifikatablauf
 
 Azure AD sendet 60, 30 und 7 Tage vor Ablauf des SAML-Zertifikats eine Benachrichtigung per E-Mail. Sie können mehrere E-Mail-Adressen für den Empfang von Benachrichtigungen hinzufügen. Gehen Sie wie folgt vor, um die E-Mail-Adressen anzugeben, an die Benachrichtigungen gesendet werden sollen:
@@ -89,7 +91,7 @@ Azure AD sendet 60, 30 und 7 Tage vor Ablauf des SAML-Zertifikats eine Benachric
 
 Sie können der Benachrichtigungsliste bis zu 5 E-Mail-Adressen hinzufügen (einschließlich der E-Mail-Adresse des Administrators, der die Anwendung hinzugefügt hat). Wenn Sie mehr Personen Benachrichtigen möchten, verwenden Sie die E-Mail-Verteilerliste.
 
-Sie erhalten die Benachrichtigungs-E-Mail von aadnotification@microsoft.com. Um zu verhindern, dass die E-Mail in Ihrem Spamordner landet, müssen Sie die E-Mail-Adresse zu Ihren Kontakten hinzufügen.
+Sie erhalten die Benachrichtigungs-E-Mail von azure-noreply@microsoft.com. Um zu verhindern, dass die E-Mail in Ihrem Spamordner landet, müssen Sie die E-Mail-Adresse zu Ihren Kontakten hinzufügen.
 
 ## <a name="renew-a-certificate-that-will-soon-expire"></a>Erneuern eines in Kürze ablaufenden Zertifikats
 
@@ -102,8 +104,10 @@ Wenn ein Zertifikat in Kürze abläuft, können Sie es mithilfe eines Verfahrens
    1. Überspringen Sie die nächsten zwei Schritte.
 
 1. Wenn die App jeweils nur ein Zertifikat verarbeiten kann, wählen Sie ein Intervall für Ausfallzeiten aus, um den nächsten Schritt ausführen zu können. (Andernfalls, wenn die Anwendung das neue Zertifikat nicht automatisch übernimmt, aber mehrere Signaturzertifikate gleichzeitig verarbeiten kann, können Sie den nächsten Schritt jederzeit auszuführen.)
-1. Führen Sie vor Ablauf des alten Zertifikats die weiter oben im Abschnitt [Hochladen und Aktivieren eines Zertifikats](#upload-and-activate-a-certificate) beschriebenen Schritte aus.
+1. Führen Sie vor Ablauf des alten Zertifikats die weiter oben im Abschnitt [Hochladen und Aktivieren eines Zertifikats](#upload-and-activate-a-certificate) beschriebenen Schritte aus. Wenn Sie das Zertifikat Ihrer Anwendung nach dem Aktualisieren eines neuen Zertifikats in Azure Active Directory nicht ebenfalls aktualisieren, wird die Authentifizierung bei Ihrer Anwendung möglicherweise fehlschlagen.
 1. Melden Sie sich bei der Anwendung an, um sicherzustellen, dass das Zertifikat ordnungsgemäß funktioniert.
+
+Wenn Ihre Anwendung das in Azure AD konfigurierte Ablaufdatum des Zertifikats nicht überprüft und das Zertifikat sowohl in Azure Active Directory als auch in Ihrer Anwendung übereinstimmt, dann ist Ihre Anwendung trotz des abgelaufenen Zertifikats weiterhin zugänglich. Stellen Sie sicher, dass Ihre Anwendung das Ablaufdatum des Zertifikats überprüft.
 
 ## <a name="related-articles"></a>Verwandte Artikel
 

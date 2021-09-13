@@ -3,13 +3,13 @@ title: Rotieren von Zertifikaten in Azure Kubernetes Service (AKS)
 description: Erfahren Sie, wie Sie Ihre Zertifikate in einem Azure Kubernetes Service-Cluster (AKS) rotieren.
 services: container-service
 ms.topic: article
-ms.date: 11/15/2019
-ms.openlocfilehash: b3ab6074dcbf79df8b2b0ff3369b94006343a2a6
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 7/13/2021
+ms.openlocfilehash: ea488e281e52949eeb53fdeffb1dc26afb5a9b5e
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110089864"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122350103"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Rotieren von Zertifikaten in Azure Kubernetes Service (AKS)
 
@@ -33,17 +33,32 @@ AKS generiert und verwendet die folgenden Zertifikate, Zertifizierungsstellen un
 * Der `kubectl`-Client verfügt über ein Zertifikat für die Kommunikation mit dem AKS-Cluster.
 
 > [!NOTE]
-> AKS-Cluster, die vor März 2019 erstellt wurden, besitzen Zertifikate, die nach zwei Jahren ablaufen. Cluster, die nach März 2019 erstellt wurden, sowie Cluster mit Zertifikatrotation besitzen Zertifikate der Clusterzertifizierungsstelle, die nach 30 Jahren ablaufen. Alle anderen Zertifikate laufen nach zwei Jahren ab. Um zu überprüfen, wann Ihr Cluster erstellt wurde, verwenden Sie `kubectl get nodes`, um das *Alter* Ihrer Knotenpools anzuzeigen.
+> AKS-Cluster, die vor dem Mai 2019 erstellt wurden, besitzen Zertifikate, die nach zwei Jahren ablaufen. Cluster, die nach dem Mai 2019 erstellt wurden, sowie Cluster mit Zertifikatrotation besitzen Zertifikate der Clusterzertifizierungsstelle, die nach 30 Jahren ablaufen. Alle anderen AKS-Zertifikate, die die Clusterzertifizierungsstelle zum Signieren verwenden, laufen nach zwei Jahren ab und rotieren während des AKS-Versionsupgrades automatisch. Um zu überprüfen, wann Ihr Cluster erstellt wurde, verwenden Sie `kubectl get nodes`, um das *Alter* Ihrer Knotenpools anzuzeigen.
 > 
-> Darüber hinaus können Sie das Ablaufdatum des Zertifikats Ihres Clusters überprüfen. Beispielsweise zeigt der folgende Bash-Befehl die Zertifikatdetails für den Cluster *myAKSCluster* an.
+> Darüber hinaus können Sie das Ablaufdatum des Zertifikats Ihres Clusters überprüfen. Beispielsweise werden mit dem folgenden Bash-Befehl die Details des Clientzertifikats für den Cluster *myAKSCluster* in der Ressourcengruppe *rg* angezeigt.
 > ```console
-> kubectl config view --raw -o jsonpath="{.clusters[?(@.name == 'myAKSCluster')].cluster.certificate-authority-data}" | base64 -d | openssl x509 -text | grep -A2 Validity
+> kubectl config view --raw -o jsonpath="{.users[?(@.name == 'clusterUser_rg_myAKSCluster')].user.client-certificate-data}" | base64 -d | openssl x509 -text | grep -A2 Validity
 > ```
+
+* Überprüfen des Ablaufdatums des „apiserver“-Zertifikats
+```console
+curl https://{apiserver-fqdn} -k -v 2>&1 |grep expire
+```
+
+* Überprüfen des Ablaufdatums des Zertifikats auf dem VMAS-Agentknoten
+```console
+az vm run-command invoke -g MC_rg_myAKSCluster_region -n vm-name --command-id RunShellScript --query 'value[0].message' -otsv --scripts "openssl x509 -in /etc/kubernetes/certs/apiserver.crt -noout -enddate"
+```
+
+* Überprüfen des Ablaufdatums des Zertifikats auf einem VMSS-Agentknoten
+```console
+az vmss run-command invoke -g MC_rg_myAKSCluster_region -n vmss-name --instance-id 0 --command-id RunShellScript --query 'value[0].message' -otsv --scripts "openssl x509 -in /etc/kubernetes/certs/apiserver.crt -noout -enddate"
+```
 
 ## <a name="rotate-your-cluster-certificates"></a>Rotieren Ihrer Clusterzertifikate
 
 > [!WARNING]
-> Das Rotieren Ihrer Zertifikate mithilfe von `az aks rotate-certs` kann zu einer Ausfallzeit von bis zu 30 Minuten für Ihren AKS-Cluster führen.
+> Beim Rotieren von Zertifikaten mithilfe von `az aks rotate-certs` werden alle Knoten neu erstellt. Das kann dazu führen, dass der AKS-Cluster bis zu 30 Minuten ausfällt.
 
 Verwenden Sie [az aks get-credentials][az-aks-get-credentials], um sich bei Ihrem AKS-Cluster anzumelden. Mit diesem Befehl wird auch das `kubectl`-Clientzertifikat auf Ihren lokalen Computer heruntergeladen und konfiguriert.
 

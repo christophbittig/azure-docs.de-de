@@ -4,17 +4,17 @@ description: Abonnieren Sie Blob Storage-Ereignisse mit Azure Event Grid. Senden
 author: normesta
 ms.author: normesta
 ms.reviewer: dineshm
-ms.date: 03/05/2020
+ms.date: 08/11/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: be726ea6722dca1e44d6e33883a5bb22e6783431
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d05f6086bcf4bc59e9bc7f680139ccaf7660578
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889313"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122340585"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>Schnellstart: Weiterleiten von Speicherereignissen an einen Webendpunkt per Azure CLI
 
@@ -160,3 +160,4 @@ Sie haben gelernt, wie Sie Themen und Ereignisabonnements erstellen. Nun können
 
 - [Reacting to Blob storage events (preview)](storage-blob-event-overview.md) (Reagieren auf Blob Storage-Ereignisse (Vorschauversion))
 - [Einführung in Azure Event Grid](../../event-grid/overview.md)
+- [Ausführen einer Azure-Funktion als Reaktion auf ein Blobaktivierungsereignis](archive-rehydrate-handle-event.md)

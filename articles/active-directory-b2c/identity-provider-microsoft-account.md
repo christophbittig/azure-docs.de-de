@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/17/2021
+ms.date: 08/09/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 60a846d72c1760c7f9dddac891f36e834b8364f3
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 324e494271287824c09030eaf918cd7f3881bc01
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028161"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122356234"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem Microsoft-Konto mithilfe von Azure Active Directory B2C
 
@@ -33,6 +33,14 @@ ms.locfileid: "107028161"
 ## <a name="prerequisites"></a>Voraussetzungen
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
+
+### <a name="verify-the-applications-publisher-domain"></a>Überprüfen der Herausgeberdomäne einer Anwendung
+Ab November 2020 werden neue Anwendungsregistrierungen in der Benutzereinwilligungsaufforderung als nicht überprüft angezeigt, es sei denn, [die Herausgeberdomäne der Anwendung wurde überprüft](../active-directory/develop/howto-configure-publisher-domain.md) ***und*** die Identität des Unternehmens wurde durch das Microsoft Partner Network überprüft und der Anwendung zugeordnet. ([Erfahren Sie mehr](../active-directory/develop/publisher-verification-overview.md) über diese Änderung.) Beachten Sie, dass für Azure AD B2C-Benutzerflows die Domäne des Herausgebers nur angezeigt wird, wenn ein Microsoft-Konto oder ein anderer [Azure AD](../active-directory-b2c/identity-provider-azure-ad-single-tenant.md)-Mandant als Identitätsanbieter verwendet wird. Gehen Sie wie folgt vor, um diese neuen Anforderungen zu erfüllen:
+
+1. [Überprüfen Sie Ihre Unternehmensidentität mit Ihrem Microsoft Partner Network-Konto (MPN-Konto)](/partner-center/verification-responses). Bei diesem Prozess werden Informationen zu Ihrem Unternehmen und zum primären Kontakt Ihres Unternehmens überprüft.
+1. Schließen Sie mithilfe einer der folgenden Optionen die Herausgeberüberprüfung ab, um Ihr MPN-Konto Ihrer App-Registrierung zuzuordnen:
+   - Wenn sich die App-Registrierung für den Identitätsanbieter „Microsoft-Konto“ in einem Azure AD-Mandanten befindet, [überprüfen Sie Ihre App im App-Registrierungsportal](../active-directory/develop/mark-app-as-publisher-verified.md).
+   - Wenn sich Ihre App-Registrierung für den Identitätsanbieter „Microsoft-Konto“ in einem Azure AD B2C-Mandanten befindet, [markieren Sie Ihre App mithilfe einer Microsoft Graph-API als vom Herausgeber verifiziert](../active-directory/develop/troubleshoot-publisher-verification.md#making-microsoft-graph-api-calls) (z. B. mithilfe von Graph Explorer). Die Benutzeroberfläche zum Festlegen des verifizierten Herausgebers einer App ist derzeit für Azure AD B2C-Mandanten deaktiviert.
 
 ## <a name="create-a-microsoft-account-application"></a>Erstellen einer Microsoft-Kontoanwendung
 

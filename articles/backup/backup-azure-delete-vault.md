@@ -3,12 +3,12 @@ title: Löschen eines Microsoft Azure Recovery Services-Tresors
 description: In diesem Artikel erfahren Sie, wie Sie die Abhängigkeiten eines Azure Backup-Recovery Services-Tresors aufheben und ihn dann löschen.
 ms.topic: conceptual
 ms.date: 06/07/2021
-ms.openlocfilehash: 022297407200f6045cd0cf4c0922a83c41333a04
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 0eb5e7c48bf15583e96a5bf30149ba01ee7c2e33
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111752751"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340103"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Löschen eines Azure Backup-Recovery Services-Tresors
 
@@ -52,7 +52,7 @@ Zum ordnungsgemäßen Löschen eines Tresors müssen Sie die Schritte in dieser 
 
 Nachdem Sie diese Schritte abgeschlossen haben, können Sie mit dem [Löschen des Tresors](#delete-the-recovery-services-vault) fortfahren.
 
-Wenn Sie lokal oder in der Cloud über keine geschützten Elemente verfügen, aber immer noch den Tresorlöschfehler erhalten, führen Sie die Schritte unter[Löschen des Recovery Services-Tresors mit Azure Resource Manager](#delete-the-recovery-services-vault-by-using-azure-resource-manager) aus.
+Führen Sie die unter [**Löschen des Recovery Services-Tresors mit Azure Resource Manager**](#delete-the-recovery-services-vault-by-using-azure-resource-manager) beschriebenen Schritte aus, wenn Sie den **Tresor ohne Abhängigkeiten noch immer nicht löschen können**.
 
 ## <a name="delete-protected-items-in-the-cloud"></a>Löschen von geschützten Elementen in der Cloud
 
