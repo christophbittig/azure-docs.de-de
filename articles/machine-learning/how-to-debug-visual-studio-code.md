@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: how-to
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 05/25/2021
-ms.openlocfilehash: 8cabf22e909b5e3e891c0265f952ec6476732ca6
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 08/11/2021
+ms.openlocfilehash: 4488670a5dfbedf22fa2880d6e4093c4fbfa52b9
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110462695"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419155"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Interaktives Debuggen mit Visual Studio Code
 
@@ -29,7 +29,7 @@ Verwenden Sie die Azure Machine Learning-Erweiterung zum Überprüfen, Ausführe
 * Azure Machine Learning-Erweiterung für VS Code (Vorschau). Weitere Informationen finden Sie unter [Einrichten der Azure Machine Learning-Erweiterung für VS Code](how-to-setup-vs-code.md).
 
     > [!IMPORTANT]
-    > Die Azure Machine Learning-VS Code-Erweiterung verwendet standardmäßig die CLI 2.0. In den Anweisungen in diesem Leitfaden wird die CLI 1.0 verwendet. Wenn Sie zu CLI 1.0 wechseln möchten, legen Sie die Einstellung `azureML.CLI Compatibility Mode` in Visual Studio Code auf `1.0` fest. Weitere Informationen zum Ändern Ihrer Einstellungen in Visual Studio finden Sie in der [Dokumentation zu Benutzer- und Arbeitsbereichseinstellungen](https://code.visualstudio.com/docs/getstarted/settings).
+    > Die Azure Machine Learning-VS Code-Erweiterung verwendet standardmäßig die CLI (v2). In den Anweisungen in diesem Leitfaden wird die CLI 1.0 verwendet. Wenn Sie zu CLI 1.0 wechseln möchten, legen Sie die Einstellung `azureML.CLI Compatibility Mode` in Visual Studio Code auf `1.0` fest. Weitere Informationen zum Ändern Ihrer Einstellungen in Visual Studio finden Sie in der [Dokumentation zu Benutzer- und Arbeitsbereichseinstellungen](https://code.visualstudio.com/docs/getstarted/settings).
 
 * [Docker](https://www.docker.com/get-started)
   * Docker Desktop für Mac und Windows
@@ -462,7 +462,7 @@ Bereitstellungen lokaler Webdienste erfordern eine funktionierende Installation 
 
     myenv = Environment.from_conda_specification(name="env", file_path="myenv.yml")
     myenv.docker.base_image = None
-    myenv.docker.base_dockerfile = "FROM mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04"
+    myenv.docker.base_dockerfile = "FROM mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20210615.v1"
     inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
     package = Model.package(ws, [model], inference_config)
     package.wait_for_creation(show_output=True)  # Or show_output=False to hide the Docker build logs.

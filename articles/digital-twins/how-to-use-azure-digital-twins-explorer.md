@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/20/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9d029c3392ad5b5472173d17db17a113526d4f3a
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: 22ad40dadf36b711bde4b7af7e8b24b09610ab89
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111811504"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459502"
 ---
 # <a name="use-azure-digital-twins-explorer-preview"></a>Verwenden von Azure Digital Twins-Explorer (Vorschau)
 
@@ -485,7 +485,7 @@ Hier sehen Sie ein Beispiel für eine URL mit den ausgefüllten Platzhalterwerte
 
 `https://explorer.digitaltwins.azure.net/?tid=00a000aa-00a0-00aa-0a0aa000aa00&eid=ADT-instance.api.wcus.digitaltwins.azure.net`
 
-Damit der Empfänger die Instanz im sich ergebenden Azure Digital Twins-Explorer-Fenster anzeigen kann, muss er sich bei seinem Azure-Konto anmelden und über **Azure Digital Twins-Datenleserzugriff** auf die Instanz verfügen (mehr über Azure Digital Twins-Rollen erfahren Sie unter [Konzepte: Sicherheit](concepts-security.md)). Damit der Empfänger Änderungen am Graphen und an den Daten vornehmen kann, muss er die Rolle **Azure Digital Twins-Datenbesitzer** für die Instanz innehaben.
+Damit der Empfänger die Instanz im sich ergebenden Azure Digital Twins-Explorer-Fenster anzeigen kann, muss er sich bei seinem Azure-Konto anmelden und über **Azure Digital Twins-Datenleserzugriff** auf die Instanz verfügen (mehr über Azure Digital Twins-Rollen erfahren Sie unter [Sicherheit](concepts-security.md)). Damit der Empfänger Änderungen am Graphen und an den Daten vornehmen kann, muss er die Rolle **Azure Digital Twins-Datenbesitzer** für die Instanz innehaben.
 
 ### <a name="link-with-a-query"></a>Verknüpfen mit einer Abfrage
 
@@ -524,5 +524,5 @@ Durch Klicken auf das Einstellungszahnrad in der oberen rechten Ecke können die
 ## <a name="next-steps"></a>Nächste Schritte 
 
 Erfahren Sie mehr über das Schreiben von Abfragen für den Azure Digital Twins-Zwillingsgraphen: 
-* [Konzepte: Abfragesprache](concepts-query-language.md)
-* [Gewusst wie: Abfragen des Zwillingsgraphen](how-to-query-graph.md)
+* [Abfragesprache](concepts-query-language.md)
+* [Abfragen des Zwillingsgraphen](how-to-query-graph.md)

@@ -2,19 +2,19 @@
 title: Verwenden direkter Methoden in Azure Video Analyzer – Azure
 description: Azure Video Analyzer stellt mehrere direkte Methoden zur Verfügung. Die direkten Methoden basieren auf den in diesem Thema beschriebenen Konventionen.
 ms.topic: conceptual
-ms.date: 05/06/2021
-ms.openlocfilehash: 06d19047ae20fc752a09a28b2508cfdd2b08eb8d
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 7b56404a371b0e50fe129d0fc5c2edb46b0c0f06
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385821"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122338973"
 ---
 # <a name="azure-video-analyzer-direct-methods"></a>Direkte Methoden in Azure Video Analyzer
 
 Live Video Analytics in IoT Edge `avaedge` stellt verschiedene direkte Methoden zur Verfügung, die von IoT Hub aufgerufen werden können. Direkte Methoden stellen eine Anforderung-Antwort-Interaktion mit einem Gerät dar, die einem HTTP-Aufruf darin ähnelt, dass sie unverzüglich (nach einem vom Benutzer angegebenen Timeout) zu einem Erfolg oder Fehler führt. Dieser Ansatz eignet sich für Szenarien, in denen die Vorgehensweise bei sofortigen Aktionen unterschiedlich ist, je nachdem, ob das Gerät reagieren konnte oder nicht. Weitere Informationen finden Sie unter [Verstehen und Aufrufen direkter Methoden von IoT Hub](../../iot-hub/iot-hub-devguide-direct-methods.md).
 
-In diesem Thema werden diese Methoden und Konventionen beschrieben.
+In diesem Artikel werden diese Methoden, Konventionen und das Schema der Methoden beschrieben.
 
 ## <a name="conventions"></a>Konventionen
 
@@ -107,7 +107,7 @@ Im Folgenden finden Sie einige Fehlercodes, die auf Detailebene verwendet werden
 |409|   ResourceValidationError|    Die referenzierte Ressource (Beispiel: Videoressource) befindet sich nicht in einem gültigen Zustand.|
 
 ## <a name="supported-direct-methods"></a>Unterstützte direkte Methoden  
-Im Folgenden finden Sie die direkten Methoden, die vom Video Analyzer-Edgemodul verfügbar gemacht werden.
+Im Folgenden finden Sie die direkten Methoden, die vom Video Analyzer-Edgemodul verfügbar gemacht werden. Das Schema für die direkten Methoden finden Sie [hier](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/videoanalyzer/data-plane/VideoAnalyzer.Edge/preview/1.0.0/AzureVideoAnalyzerSdkDefinitions.json).
 
 ### <a name="pipelinetopologylist"></a>pipelineTopologyList
 

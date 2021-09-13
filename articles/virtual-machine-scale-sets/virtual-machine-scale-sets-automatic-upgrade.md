@@ -9,14 +9,16 @@ ms.subservice: automatic-os-upgrade
 ms.date: 07/29/2021
 ms.reviewer: jushiman
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b080c741276233e671d5724b3ee72cc7b4738446
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e9e814ad43d157d69fee2b70eaaccbadf23f4fa2
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349756"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690515"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatische Betriebssystemimageupgrades mit Azure-VM-Skalierungsgruppen
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Das Aktivieren der automatischen Betriebssystemimage-Upgrades auf Ihrer Skalierungsgruppe vereinfacht die Updateverwaltung durch sicheres und automatisches Aktualisieren des Betriebssystem-Datenträgers für alle Instanzen in der Skalierungsgruppe.
 

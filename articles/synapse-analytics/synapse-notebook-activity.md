@@ -10,12 +10,12 @@ ms.date: 05/19/2021
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: d103e52ec4a2ba105c6eb5c756ac450a15d7538e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9c021b8b0aec025458179ffb4859c351572762ee
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122347011"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123186981"
 ---
 # <a name="transform-data-by-running-a-synapse-notebook"></a>Weitere Informationen finden Sie unter Transformieren von Daten durch Ausführen eines Synapse-Notebooks
 
@@ -57,7 +57,7 @@ Um Ihr Notebook zu parametrisieren, wählen Sie die Auslassungspunkte (...) aus,
 
 ---
 
-Azure Data Factory sucht nach der Parameterzelle und verwendet deren Werte als Standardwerte für die Parameter, die zur Ausführungszeit übergeben werden. Die Ausführungs-Engine fügt eine neue Zelle mit Eingabeparametern unter der Parameterzelle hinzu, um die Standardwerte zu überschreiben. Wenn keine Parameterzelle angegeben ist, wird die Zelle ganz oben im Notebook eingefügt.
+Azure Data Factory sucht nach der Parameterzelle und verwendet deren Werte als Standardwerte für die Parameter, die zur Ausführungszeit übergeben werden. Die Ausführungs-Engine fügt eine neue Zelle mit Eingabeparametern unter der Parameterzelle hinzu, um die Standardwerte zu überschreiben. 
 
 
 ### <a name="assign-parameters-values-from-a-pipeline"></a>Zuweisen von Parameterwerten über eine Pipeline

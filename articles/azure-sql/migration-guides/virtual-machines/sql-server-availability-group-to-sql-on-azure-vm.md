@@ -8,12 +8,12 @@ manager: bsiva
 ms.topic: how-to
 ms.date: 4/25/2021
 ms.author: rahugup
-ms.openlocfilehash: 96ee2422bad6e15e37e01c33d2724300a7a8f230
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 26c068450b93272986a1a3c82af0530adfa30ebb
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108776705"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113766468"
 ---
 # <a name="migrate-availability-group-to-sql-server-on-azure-vm"></a>Migrieren einer Always On-Verfügbarkeitsgruppe zu SQL Server auf Azure-VMs
 
@@ -49,7 +49,7 @@ Bereiten Sie Azure für die Migration mit dem [Tool für die Servermigration](..
 |--- | ---
 |**Erstellen eines Azure Migrate-Projekts** | Ihr Azure-Konto benötigt zum [Erstellen eines neuen Projekts](../../../migrate/create-manage-projects.md) Berechtigungen vom Typ „Mitwirkender“ oder „Besitzer“.|
 |**Überprüfen der Berechtigungen für Ihr Azure-Konto** | Ihr Azure-Konto benötigt Berechtigungen vom Typ „Mitwirkender“ oder „Besitzer“ für das Azure-Abonnement, Berechtigungen zum Registrieren von AAD-Apps (Azure Active Directory) und Berechtigungen vom Typ „Benutzerzugriffsadministrator“ für das Azure-Abonnement, um eine Key Vault-Instanz zu erstellen, einen virtuellen Computer zu erstellen und auf einen verwalteten Azure-Datenträger zu schreiben. |
-|**Einrichten eines virtuellen Azure-Netzwerks** | Führen Sie die [Einrichtung](/virtual-network/manage-virtual-network.md#create-a-virtual-network) eines virtuelles Azure-Netzwerks (VNET) durch. Wenn Sie die Replikation in Azure durchführen, werden virtuelle Azure-Computer erstellt und in das Azure-VNET eingebunden, das Sie beim Einrichten der Migration angeben.|
+|**Einrichten eines virtuellen Azure-Netzwerks** | Führen Sie die [Einrichtung](../../../virtual-network/virtual-networks-overview.md) eines virtuelles Azure-Netzwerks (VNET) durch. Wenn Sie die Replikation in Azure durchführen, werden virtuelle Azure-Computer erstellt und in das Azure-VNET eingebunden, das Sie beim Einrichten der Migration angeben.|
 
 
 Führen Sie die folgenden Schritte aus, um zu überprüfen, ob Sie über die richtigen Berechtigungen verfügen: 
@@ -138,7 +138,7 @@ Führen Sie die folgenden Schritte aus, um den Mobilitätsdienst zu installieren
 
 1. Melden Sie sich an der Replikationsappliance an.
 1. Navigieren Sie zu **%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository**.
-1. Suchen Sie nach dem richtigen Installationsprogramm für das Betriebssystem und die Version des Computers. Lesen Sie den Artikel zu den [unterstützten Betriebssystemen](/site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines). 
+1. Suchen Sie nach dem richtigen Installationsprogramm für das Betriebssystem und die Version des Computers. Lesen Sie den Artikel zu den [unterstützten Betriebssystemen](../../../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines). 
 1. Kopieren Sie die Installationsdatei auf den Computer, den Sie migrieren möchten.
 1. Stellen Sie sicher, dass Sie über die Passphrase verfügen, die bei der Bereitstellung des Geräts generiert wurde.
     - Speichern Sie die Datei in einer temporären Textdatei auf dem Computer.
@@ -246,7 +246,7 @@ Führen Sie die folgenden Schritte aus, um Computer zu replizieren
     - Mehrfachverschlüsselung mit plattformseitig und kundenseitig verwalteten Schlüsseln
 
     > [!NOTE]
-    > Um VMs mit CMK zu replizieren, müssen Sie unter der Zielressourcengruppe einen [Datenträgerverschlüsselungssatz erstellen](https://go.microsoft.com/fwlink/?linkid=2151800). Ein Datenträgerverschlüsselungssatz-Objekt ordnet verwaltete Datenträger einer Key Vault-Instanz zu, die den für SSE zu verwendenden CMK enthält.
+    > Um VMs mit CMK zu replizieren, müssen Sie unter der Zielressourcengruppe einen [Datenträgerverschlüsselungssatz erstellen](../../../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set). Ein Datenträgerverschlüsselungssatz-Objekt ordnet verwaltete Datenträger einer Key Vault-Instanz zu, die den für SSE zu verwendenden CMK enthält.
   
 1. Wählen Sie unter **Azure-Hybridvorteil**
 
@@ -297,7 +297,7 @@ Nachdem die Computer repliziert wurden, sind sie für die Migration bereit. Füh
 
     ![Replizieren der Server](../../../migrate/media/tutorial-migrate-physical-virtual-machines/replicate-servers.png)
 
-2. Beenden Sie den SQL Server-Dienst auf jedem Replikat in der Verfügbarkeitsgruppe, um sicherzustellen, dass der migrierte Server mit dem Quellserver synchronisiert wird. Beginnen Sie dabei mit sekundären Replikaten (in **SQL Server-Konfigurations-Manager** > **Dienste), und stellen Sie dabei sicher, dass die Datenträger, die SQL-Daten hosten, online sind.   
+2. Beenden Sie den SQL Server-Dienst auf jedem Replikat in der Verfügbarkeitsgruppe, um sicherzustellen, dass der migrierte Server mit dem Quellserver synchronisiert wird. Beginnen Sie dabei mit sekundären Replikaten (in **SQL Server-Konfigurations-Manager** > **Dienste**), und stellen Sie sicher, dass die Datenträger, die SQL-Daten hosten, online sind.   
 3. Wählen Sie unter **Aktuell replizierte Computer** >Servername > **Übersicht** aus, und stellen Sie sicher, dass der letzte synchronisierte Zeitstempel nach dem Beenden des SQL Server-Diensts auf den zu migrierenden Servern durchgeführt wurde, bevor Sie mit dem nächsten Schritt fortfahren. Dieser Vorgang sollte nur wenige Minuten dauern. 
 2. Klicken Sie unter **Aktuell replizierte Computer** mit der rechten Maustaste auf die VM und dann auf **Migrieren**.
 3. Wählen Sie unter **Migrieren** > **Virtuelle Computer herunterfahren und eine geplante Migration ohne Datenverlust durchführen?** die Option **Nein** >  und anschließend **OK** aus.
@@ -328,7 +328,7 @@ Die Always On-Verfügbarkeitsgruppe ist bereit.
     - Beendet die Replikation für den lokalen Computer.
     - Entfernt den Computer aus dem Zähler **Server werden repliziert.** in Azure Migrate: Servermigration.
     - Bereinigt die Replikationsstatusinformationen für den Computer.
-2. Installieren Sie den [Windows](/virtual-machines/extensions/agent-windows.md)-Agent für die Azure-VM auf den migrierten Computern.
+2. Installieren Sie den [Windows](../../../virtual-machines/extensions/agent-windows.md)-Agent für die Azure-VM auf den migrierten Computern.
 3. Führen Sie App-Anpassungen nach der Migration durch, z.B. die Aktualisierung von Datenbankverbindungszeichenfolgen und Webserverkonfigurationen.
 4. Führen Sie endgültige Anwendungs- und Migrationsakzeptanztests für die migrierte Anwendung durch, die nun in Azure ausgeführt wird.
 5. Leiten Sie den Datenverkehr auf die migrierte Instanz der Azure-VM um.
@@ -351,7 +351,7 @@ Die Always On-Verfügbarkeitsgruppe ist bereit.
     - Stellen Sie [Azure Disk Encryption](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) bereit, um Datenträger und Daten vor Diebstahl und unbefugtem Zugriff zu schützen.
     - Erfahren Sie mehr über das [Sichern von IaaS-Ressourcen](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/), und besuchen Sie die Website [Azure Security Center](https://azure.microsoft.com/services/security-center/).
 - Beachten Sie zur Überwachung und Verwaltung Folgendes:
-    - Ziehen Sie die Bereitstellung von [Azure Cost Management](../../../cost-management-billing/cloudyn/overview.md) in Erwägung, um den Ressourceneinsatz und die Ausgaben zu überwachen.
+    - Ziehen Sie die Bereitstellung von [Azure Cost Management](../../../cost-management-billing/cost-management-billing-overview.md) in Erwägung, um den Ressourceneinsatz und die Ausgaben zu überwachen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

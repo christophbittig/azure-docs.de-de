@@ -36,19 +36,6 @@ items:
         href: Face-API-How-to-Topics/HowtoAnalyzeVideo_Face.md
       - name: Migrieren von Gesichtserkennungsdaten
         href: Face-API-How-to-Topics/how-to-migrate-face-data.md
-      - name: Verwenden des Gesichtserkennungscontainers
-        items:
-          - name: Übersicht über Container
-            href: ../cognitive-services-container-support.md?context=%2fazure%2fcognitive-services%2fface%2fcontext%2fcontext
-          - name: Installieren und Ausführen von Containern
-            href: face-how-to-install-containers.md
-          - name: Konfigurieren von Containern
-            href: face-resource-container-config.md
-          - name: Verwenden von Containerinstanzen
-            href: ../containers/azure-container-instance-recipe.md?context=%2fazure%2fcognitive-services%2fface%2fcontext%2fcontext
-          - name: "Gesamte Dokumentation zu Cognitive\_Services-Containern"
-            href: ../containers/index.yml
-            maintainContext: true
       - name: Unternehmensfähigkeit
         items:
           - name: Einrichten von virtuellen Netzwerken

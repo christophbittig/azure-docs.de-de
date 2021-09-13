@@ -1,14 +1,14 @@
 ---
 title: Reagieren auf Azure Policy-Ereignisse vom Typ „Richtlinienzustandsänderung“
 description: Verwenden Sie Azure Event Grid, um App Policy-Ereignisse zu abonnieren, mit denen Anwendungen auf Zustandsänderungen reagieren können, ohne dass komplizierter Code erforderlich ist.
-ms.date: 03/29/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 197dfbe410874541c38334b169c526bac63a614e
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 4cd443882b3d1f9ffdcf0c317b6012654e0780c2
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108752901"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351520"
 ---
 # <a name="reacting-to-azure-policy-state-change-events"></a>Reagieren auf Azure Policy-Ereignisse vom Typ „Richtlinienzustandsänderung“
 
@@ -41,7 +41,7 @@ Event Grid verwendet [Ereignisabonnements](../../../event-grid/concepts.md#event
 Azure-Richtlinienereignisse enthalten alle Informationen, die Sie benötigen, um auf Änderungen an Ihren Daten zu reagieren. Sie können ein Azure Richtlinien-Ereignis identifizieren, `eventType` wenn die Eigenschaft mit „Microsoft.PolicyInsights“ beginnt.
 Weitere Informationen zur Verwendung von Event Grid-Ereigniseigenschaften finden Sie unter [Event Grid-Ereignisschema](../../../event-grid/event-schema.md).
 
-| Eigenschaft | type | Beschreibung |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | `id` | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
 | `topic` | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |

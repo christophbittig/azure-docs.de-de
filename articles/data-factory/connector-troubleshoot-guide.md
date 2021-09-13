@@ -1,24 +1,26 @@
 ---
-title: Problembehandlung für Azure Data Factory-Connectors
-description: Es wird beschrieben, wie Sie in Azure Data Factory Connectorprobleme beheben.
+title: Problembehandlung für Connectors
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Hier wird beschrieben, wie Sie Connectorprobleme in Azure Data Factory und Azure Synapse Analytics behandeln.
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: troubleshooting
-ms.date: 06/07/2021
+ms.date: 08/16/2021
 ms.author: jianleishen
-ms.custom: has-adal-ref
-ms.openlocfilehash: 7407a28c442ce2ddc7fe9df3fdd71c5af4c488bc
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.custom: has-adal-ref, synapse
+ms.openlocfilehash: 02bb677438a4139fb67b335b9e6cbbf43f8a2600
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971895"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351215"
 ---
-# <a name="troubleshoot-azure-data-factory-connectors"></a>Problembehandlung für Azure Data Factory-Connectors
+# <a name="troubleshoot-azure-data-factory-and-azure-synapse-analytics-connectors"></a>Problembehandlung für Connectors in Azure Data Factory und Azure Synapse Analytics
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure Data Factory-Connectors behandelt.
+In diesem Artikel werden gängige Methoden zum Behandeln von Problemen bei Azure Data Factory- und Azure Synapse-Connectors behandelt.
 
 ## <a name="azure-blob-storage"></a>Azure Blob Storage
 
@@ -39,6 +41,31 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
 - **Lösung:** Bearbeiten Sie die JSON-Definition für das Dataset oder die Pipeline, um die Typen zu vereinheitlichen, und führen Sie die Bereitstellung dann erneut aus.
 
+### <a name="error-code-fipsmodeisnotsupport"></a>Fehlercode: FIPSModeIsNotSupport
+
+- **Meldung**: `Fail to read data form Azure Blob Storage for Azure Blob connector needs MD5 algorithm which can't co-work with FIPS mode. Please change diawp.exe.config in self-hosted integration runtime install directory to disable FIPS policy following https://docs.microsoft.com/en-us/dotnet/framework/configure-apps/file-schema/runtime/enforcefipspolicy-element.`
+
+- **Ursache**: Die FIPS-Richtlinie ist auf dem virtuellen Computer aktiviert, auf dem die selbstgehostete Integration Runtime installiert wurde.
+
+- **Empfehlung**: Deaktivieren Sie den FIPS-Modus auf dem virtuellen Computer, auf dem die selbstgehostete Integration Runtime installiert wurde. Unter Windows wird der FIPS-Modus nicht empfohlen.
+
+### <a name="error-code-azureblobinvalidblocksize"></a>Fehlercode: AzureBlobInvalidBlockSize
+
+- **Meldung**: `Block size should between %minSize; MB and 100 MB.`
+
+- **Ursache**: Die Blockgröße überschreitet die maximale Blobgröße.
+
+### <a name="error-code-azurestorageoperationfailedconcurrentwrite"></a>Fehlercode: AzureStorageOperationFailedConcurrentWrite
+
+- **Meldung**: `Error occurred when trying to upload a file. It's possible because you have multiple concurrent copy activities runs writing to the same file '%name;'. Check your ADF configuration.`
+
+- **Ursache**: Sie verfügen über mehrere gleichzeitige Kopieraktivitätsausführungen oder Anwendungen, die in dieselbe Datei schreiben.
+
+### <a name="error-code-azureappendblobconcurrentwriteconflict"></a>Fehlercode: AzureAppendBlobConcurrentWriteConflict
+
+- **Meldung**: `Detected concurrent write to the same append blob file, it's possible because you have multiple concurrent copy activities runs or applications writing to the same file '%name;'. Please check your ADF configuration and retry.`
+
+- **Ursache**: Es treten mehrere gleichzeitige Schreibanforderungen auf, die Konflikte beim Dateiinhalt verursachen.
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
@@ -85,7 +112,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
 - **Symptome:** Beim Importieren eines Schemas für Azure Cosmos DB für die Spaltenzuordnung fehlen einige Spalten. 
 
-- **Ursache:** Data Factory leitet das Schema aus den ersten zehn Cosmos DB-Dokumenten ab. Wenn einige Dokumentspalten oder -eigenschaften keine Werte enthalten, wird das Schema nicht von Data Factory erkannt und folglich auch nicht angezeigt.
+- **Ursache**: Azure Data Factory- und Synapse-Pipelines leiten das Schema von den ersten 10 Azure Cosmos DB-Dokumenten ab. Wenn einige Dokumentspalten oder -eigenschaften keine Werte enthalten, wird das Schema nicht erkannt und folglich nicht angezeigt.
 
 - **Lösung:** Sie können die Abfrage wie im folgenden Code gezeigt optimieren, um zu erzwingen, dass die Spaltenwerte im Resultset mit leeren Werten angezeigt werden. Nehmen Sie an, dass die Spalte *impossible* in den ersten zehn Dokumenten fehlt. Alternativ können Sie die Spalte auch manuell für die Zuordnung hinzufügen.
 
@@ -139,7 +166,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
 - **Ursache:** Eine mögliche Ursache ist, dass der von Ihnen verwendete Dienstprinzipal oder die verwaltete Identität nicht über die Berechtigung zum Zugreifen auf bestimmte Ordner oder Dateien verfügt.
 
-- **Lösung:** Gewähren Sie die entsprechenden Berechtigungen für alle Ordner und Unterordner, die Sie kopieren müssen. Weitere Informationen finden Sie unter [Kopieren von Daten nach und aus Azure Data Lake Storage Gen1 mithilfe von Azure Data Factory](connector-azure-data-lake-store.md#linked-service-properties).
+- **Lösung:** Gewähren Sie die entsprechenden Berechtigungen für alle Ordner und Unterordner, die Sie kopieren müssen. Weitere Informationen finden Sie unter [Kopieren von Daten nach und aus Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties).
 
 ### <a name="error-message-failed-to-get-access-token-by-using-service-principal-adal-error-service_unavailable"></a>Fehlermeldung: Fehler beim Abrufen des Zugriffstokens mit dem Dienstprinzipal. ADAL-Fehler: service_unavailable
 
@@ -164,7 +191,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
   | Ursachenanalyse                                               | Empfehlung                                               |
   | :----------------------------------------------------------- | :----------------------------------------------------------- |
   | Wenn Azure Data Lake Storage Gen2 diesen Fehler auslöst, ist für einen Vorgang ein Fehler aufgetreten.| Überprüfen Sie die von Azure Data Lake Storage Gen2 ausgegebene detaillierte Fehlermeldung. Wenn der Fehler ein vorübergehender Fehler ist, wiederholen Sie den Vorgang. Um weitere Hilfe zu erhalten, wenden Sie sich an den Azure Storage-Support, und geben Sie die Anforderungs-ID in der Fehlermeldung an. |
-  | Wenn die Fehlermeldung die Zeichenfolge „Forbidden“ (Verboten) enthält, verfügt der von Ihnen verwendete Dienstprinzipal oder die verwaltete Identität möglicherweise nicht über die erforderliche Berechtigung, um auf Azure Data Lake Storage Gen2 zuzugreifen. | Um diesen Fehler zu beheben, lesen Sie [Kopieren und Transformieren von Daten in Azure Data Lake Storage Gen2 mithilfe von Azure Data Factory](./connector-azure-data-lake-storage.md#service-principal-authentication). |
+  | Wenn die Fehlermeldung die Zeichenfolge „Forbidden“ (Verboten) enthält, verfügt der von Ihnen verwendete Dienstprinzipal oder die verwaltete Identität möglicherweise nicht über die erforderliche Berechtigung, um auf Azure Data Lake Storage Gen2 zuzugreifen. | Informationen zum Behandeln dieses Fehlers finden Sie unter [Kopieren und Transformieren von Daten in Azure Data Lake Storage Gen2](./connector-azure-data-lake-storage.md#service-principal-authentication). |
   | Wenn die Fehlermeldung die Zeichenfolge „InternalServerError“ enthält, wird der Fehler von Azure Data Lake Storage Gen2 zurückgegeben. | Dieser Fehler wird möglicherweise durch einen vorübergehenden Fehler verursacht. Wenn dies so ist, wiederholen Sie den Vorgang. Wenden Sie sich an den Azure Storage-Support, und geben Sie die Anforderungs-ID aus der Fehlermeldung an, wenn das Problem weiterhin besteht. |
 
 ### <a name="request-to-azure-data-lake-storage-gen2-account-caused-a-timeout-error"></a>Timeoutfehler bei der Anforderung des Azure Data Lake Storage Gen2-Kontos
@@ -195,6 +222,20 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
         }
         ```
 
+        
+## <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
+
+### <a name="error-code-azurepostgresqlnpgsqldatatypenotsupported"></a>Fehlercode: AzurePostgreSqlNpgsqlDataTypeNotSupported
+
+- **Meldung**: `The data type of the chosen Partition Column, '%partitionColumn;', is '%dataType;' and this data type is not supported for partitioning.`
+
+- **Empfehlung**: Wählen Sie eine Partitionsspalte mit dem Datentyp „int“, „bigint“, „smallint“, „serial“, „bigserial“, „smallserial“, „timestamp with time zone“, „timestamp without time zone“, „time without time zone“ oder „date“.
+
+### <a name="error-code-azurepostgresqlnpgsqlpartitioncolumnnamenotprovided"></a>Fehlercode: AzurePostgreSqlNpgsqlPartitionColumnNameNotProvided
+
+- **Meldung**: `Partition column name must be specified.`
+
+- **Ursache**: Es wurde kein Partitionsspaltenname angegeben, und es konnte nicht automatisch entschieden werden.
                   
 ## <a name="azure-files-storage"></a>Azure Files-Speicher
 
@@ -220,7 +261,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
     | Wenn die Fehlermeldung bei Azure SQL einen SQL-Fehlercode wie „SqlErrorNumber=[errorcode]“ enthält, finden Sie weitere Informationen im Leitfaden zur Problembehandlung von Azure SQL. | Eine Empfehlung finden Sie unter [Beheben von Konnektivitätsproblemen und anderen Fehlern mit Azure SQL-Datenbank und Azure SQL Managed Instance](../azure-sql/database/troubleshoot-common-errors-issues.md). |
     | Überprüfen Sie, ob Port 1433 in der Positivliste der Firewall enthalten ist. | Weitere Informationen finden Sie unter [Von SQL Server verwendete Ports](/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access#ports-used-by-). |
     | Wenn die Fehlermeldung die Zeichenfolge „SqlException“ enthält, bedeutet dies für SQL-Datenbank, dass für einen bestimmten Vorgang ein Fehler aufgetreten ist. | Um weitere Informationen dazu zu erhalten, suchen Sie in [Datenbank-Engine-Fehler](/sql/relational-databases/errors-events/database-engine-events-and-errors) nach dem SQL-Fehlercode. Wenn Sie weitere Hilfe benötigen, wenden Sie sich an den Azure SQL-Support. |
-    | Wenn dies ein vorübergehendes Problem ist (z. B. eine instabile Netzwerkverbindung), fügen Sie zur Behebung in der Aktivitätsrichtlinie einen Wiederholungsversuch hinzu. | Weitere Informationen finden Sie unter [Pipelines und Aktivitäten in Azure Data Factory](./concepts-pipelines-activities.md#activity-policy). |
+    | Wenn dies ein vorübergehendes Problem ist (z. B. eine instabile Netzwerkverbindung), fügen Sie zur Behebung in der Aktivitätsrichtlinie einen Wiederholungsversuch hinzu. | Weitere Informationen finden Sie unter [Pipelines und Aktivitäten](./concepts-pipelines-activities.md#activity-policy). |
     | Wenn die Fehlermeldung die Zeichenfolge „Client with IP address '…' is not allowed to access the server“ enthält und Sie versuchen, eine Verbindung zu Azure SQL-Datenbank herzustellen, wird dieser Fehler in der Regel durch ein Problem mit der Firewall von Azure SQL-Datenbank verursacht. | Aktivieren Sie in der Azure SQL Server-Firewallkonfiguration die Option **Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten**. Weitere Informationen finden Sie unter [IP-Firewallregeln für Azure SQL-Datenbank und Azure Synapse](../azure-sql/database/firewall-configure.md). |
     
 ### <a name="error-code-sqloperationfailed"></a>Fehlercode: SqlOperationFailed
@@ -233,7 +274,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
     | :----------------------------------------------------------- | :----------------------------------------------------------- |
     | Wenn die Fehlermeldung die Zeichenfolge „SqlException“ enthält, löst SQL-Datenbank einen Fehler aus, der angibt, dass für einen bestimmten Vorgang ein Fehler aufgetreten ist. | Wenn der SQL-Fehler nicht eindeutig ist, versuchen Sie, die Datenbank auf den aktuellen Kompatibilitätsgrad „150“ zu ändern. Es können SQL-Fehler der neuesten Version ausgelöst werden. Weitere Informationen finden Sie in der [Dokumentation](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat). <br/> Um weitere Informationen zur Problembehandlung von SQL-Problemen zu erhalten, suchen Sie in [Datenbank-Engine-Fehler](/sql/relational-databases/errors-events/database-engine-events-and-errors) nach dem SQL-Fehlercode. Wenn Sie weitere Hilfe benötigen, wenden Sie sich an den Azure SQL-Support. |
     | Wenn die Fehlermeldung die Zeichenfolge „PdwManagedToNativeInteropException“ enthält, wird der Fehler in der Regel durch einen Konflikt zwischen den Spaltengrößen von Quelle und Senke verursacht. | Überprüfen Sie die Größe der Quell- und Senkenspalten. Wenn Sie weitere Hilfe benötigen, wenden Sie sich an den Azure SQL-Support. |
-    | Wenn die Fehlermeldung die Zeichenfolge „InvalidOperationException“ enthält, wird der Fehler normalerweise durch ungültige Eingabedaten verursacht. | Wenn Sie ermitteln möchten, in welcher Zeile das Problem auftritt, aktivieren Sie die Fehlertoleranzfunktion für die Kopieraktivität, die problematische Zeilen zur weiteren Untersuchung in den Speicher umleiten kann. Weitere Informationen finden Sie unter [Fehlertoleranz der Kopieraktivität in Azure Data Factory](./copy-activity-fault-tolerance.md). |
+    | Wenn die Fehlermeldung die Zeichenfolge „InvalidOperationException“ enthält, wird der Fehler normalerweise durch ungültige Eingabedaten verursacht. | Wenn Sie ermitteln möchten, in welcher Zeile das Problem auftritt, aktivieren Sie die Fehlertoleranzfunktion für die Kopieraktivität, die problematische Zeilen zur weiteren Untersuchung in den Speicher umleiten kann. Weitere Informationen finden Sie unter [Fehlertoleranz der Kopieraktivität](./copy-activity-fault-tolerance.md). |
 
 
 ### <a name="error-code-sqlunauthorizedaccess"></a>Fehlercode: SqlUnauthorizedAccess
@@ -331,7 +372,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
 - **Ursache:** Es ist ein Fehler beim SQL-Massenkopiervorgang aufgetreten, da vom BCP-Client (Massenkopierhilfsprogramm) eine ungültige Spaltenlänge empfangen wurde.
 
-- **Empfehlung**:  Um zu ermitteln, in welcher Zeile das Problem aufgetreten ist, aktivieren Sie die Funktion für Fehlertoleranz für die Kopieraktivität. Dadurch können problematische Zeilen zur weiteren Untersuchung an den Speicher umgeleitet werden. Weitere Informationen finden Sie unter [Fehlertoleranz der Kopieraktivität in Azure Data Factory](./copy-activity-fault-tolerance.md).
+- **Empfehlung**:  Um zu ermitteln, in welcher Zeile das Problem aufgetreten ist, aktivieren Sie die Funktion für Fehlertoleranz für die Kopieraktivität. Dadurch können problematische Zeilen zur weiteren Untersuchung an den Speicher umgeleitet werden. Weitere Informationen finden Sie unter [Fehlertoleranz der Kopieraktivität](./copy-activity-fault-tolerance.md).
 
 
 ### <a name="error-code-sqlconnectionisclosed"></a>Fehlercode: SqlConnectionIsClosed
@@ -342,6 +383,37 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
 - **Empfehlung**:  Wiederholen Sie den Verbindungsversuch. Sollte das Problem weiterhin bestehen, wenden Sie sich an den Azure SQL-Support.
 
+### <a name="error-code-sqlserverinvalidlinkedservicecredentialmissing"></a>Fehlercode: SqlServerInvalidLinkedServiceCredentialMissing
+
+- **Meldung**: `The SQL Server linked service is invalid with its credential being missing.`
+
+- **Ursache**: Der verknüpfte Dienst wurde nicht ordnungsgemäß konfiguriert.
+
+- **Empfehlung**: Überprüfen Sie den mit SQL Server verknüpften Dienst, und behandeln Sie mögliche Probleme. 
+
+### <a name="error-code-sqlparallelfailedtodetectpartitioncolumn"></a>Fehlercode: SqlParallelFailedToDetectPartitionColumn
+
+- **Meldung**: `Failed to detect the partition column with command '%command;', %message;.`
+
+- **Ursache**: Die Tabelle enthält keinen Primärschlüssel oder eindeutigen Schlüssel.
+
+- **Empfehlung**: Überprüfen Sie die Tabelle, um sicherzustellen, dass ein Primärschlüssel oder ein eindeutiger Index erstellt wird. 
+
+### <a name="error-code-sqlparallelfailedtodetectphysicalpartitions"></a>Fehlercode: SqlParallelFailedToDetectPhysicalPartitions
+
+- **Meldung**: `Failed to detect the physical partitions with command '%command;', %message;.`
+
+- **Ursache**: Für die Tabelle werden keine physischen Partitionen erstellt. Überprüfen Sie Ihre Datenbank.
+
+- **Empfehlung**: Informationen zum Behandeln dieses Problems finden Sie unter [Erstellen partitionierter Tabellen und Indizes](/sql/relational-databases/partitions/create-partitioned-tables-and-indexes?view=sql-server-ver15&preserve-view=true).
+
+### <a name="error-code-sqlparallelfailedtogetpartitionrangesynapse"></a>Fehlercode: SqlParallelFailedToGetPartitionRangeSynapse
+
+- **Meldung**: `Failed to get the partitions for azure synapse with command '%command;', %message;.`
+
+- **Ursache**: Für die Tabelle werden keine physischen Partitionen erstellt. Überprüfen Sie Ihre Datenbank.
+
+- **Empfehlung**: Informationen zum Behandeln dieses Problems finden Sie unter [Partitioning tables in dedicated SQL pool](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-partition.md) (Partitionieren von Tabellen in einem dedizierten SQL-Pool).
 
 ### <a name="error-message-conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier"></a>Fehlermeldung: Fehler beim Konvertieren einer Zeichenfolge in „uniqueidentifier“.
 
@@ -450,6 +522,12 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
     3. Aktualisieren Sie das Tabellenschema entsprechend.
 
+### <a name="error-code-faileddboperation"></a>Fehlercode: FailedDbOperation
+
+- **Meldung**: `User does not have permission to perform this action.`
+
+- **Empfehlung**: Stellen Sie sicher, dass der im Azure Synapse Analytics-Connector konfigurierte Benutzer über die CONTROL-Berechtigung für die Zieldatenbank verfügen muss, wenn PolyBase zum Laden von Daten verwendet wird. Nähere Informationen finden Sie in diesem [Dokument](./connector-azure-sql-data-warehouse.md#required-database-permission).
+
 
 ## <a name="azure-table-storage"></a>Azure Table Storage
 
@@ -470,7 +548,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
 - **Meldung**: `Error thrown from driver. Sql code: '%code;'`
 
-- **Ursache:** Wenn die Fehlermeldung die Zeichenfolge „SQLSTATE=51002 SQLCODE=-805“ enthält, verwenden Sie den „Tipp“ unter [Eigenschaften des verknüpften Diensts](./connector-db2.md#linked-service-properties).
+- **Ursache**: Wenn die Fehlermeldung die Zeichenfolge „SQLSTATE=51002 SQLCODE=-805“ enthält, befolgen Sie den Tipp unter [Copy data from DB2](./connector-db2.md#linked-service-properties) (Kopieren von Daten aus DB2).
 
 - **Empfehlung**:  Versuchen Sie, „NULLID“ in der `packageCollection`-Eigenschaft festzulegen.
 
@@ -495,7 +573,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
   | Ursachenanalyse                                               | Empfehlung                                               |
   | :----------------------------------------------------------- | :----------------------------------------------------------- |
   | Die Spaltenanzahl der problematischen Zeile ist größer als die Spaltenanzahl der ersten Zeile. Dies kann durch ein Datenproblem oder falsche Einstellungen für Spaltentrennzeichen oder Anführungszeichen verursacht werden. | Rufen Sie die Zeilenanzahl aus der Fehlermeldung ab, überprüfen Sie die Spalte in der Zeile, und korrigieren Sie die Daten. |
-  | Wenn die erwartete Spaltenanzahl in einer Fehlermeldung „1“ lautet, haben Sie möglicherweise falsche Komprimierungs- oder Formateinstellungen angegeben, sodass Azure Data Factory Ihre Dateien falsch analysiert hat. | Überprüfen Sie die Formateinstellungen, um sicherzustellen, dass sie mit Ihren Quelldateien übereinstimmen. |
+  | Wenn die erwartete Spaltenanzahl in einer Fehlermeldung „1“ lautet, haben Sie möglicherweise falsche Komprimierungs- oder Formateinstellungen angegeben, sodass die Dateien falsch analysiert wurden. | Überprüfen Sie die Formateinstellungen, um sicherzustellen, dass sie mit Ihren Quelldateien übereinstimmen. |
   | Wenn Ihre Quelle ein Ordner ist, weisen die Dateien im angegebenen Ordner möglicherweise ein anderes Schema auf. | Stellen Sie sicher, dass die Dateien im angegebenen Ordner ein identisches Schema aufweisen. |
 
 
@@ -514,7 +592,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
 - **Symptome:** Einige Spalten fehlen beim Importieren eines Schemas oder von Vorschaudaten. Fehlermeldung: `The valid structure information (column name and type) are required for Dynamics source.`
 
-- **Ursache:** Dieses Problem ist beabsichtigt, weil Data Factory keine Spalten anzeigen kann, die keine Werte in den ersten 10 Datensätzen enthalten. Stellen Sie sicher, dass die hinzugefügten Spalten das richtige Format aufweisen. 
+- **Ursache**: Dieses Problem ist beabsichtigt, weil Data Factory- und Synapse-Pipelines keine Spalten anzeigen können, die keine Werte in den ersten 10 Datensätzen enthalten. Stellen Sie sicher, dass die hinzugefügten Spalten das richtige Format aufweisen. 
 
 - **Empfehlung**: Fügen Sie die Spalten auf der Registerkarte „Zuordnung“ manuell hinzu.
 
@@ -680,6 +758,14 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
 - **Empfehlung**:  Überprüfen Sie den Port des Zielservers. FTP verwendet Port 21.
 
+### <a name="error-code-ftpfailedtoreadftpdata"></a>Fehlercode: FtpFailedToReadFtpData
+
+- **Meldung**: `Failed to read data from ftp: The remote server returned an error: 227 Entering Passive Mode (*,*,*,*,*,*).`
+
+- **Ursache**: Der Portbereich zwischen 1024 und 65535 ist nicht für die Datenübertragung im passiven Modus geöffnet, der von der Data Factory- oder Synapse-Pipeline unterstützt wird.
+
+- **Empfehlung**: Überprüfen Sie die Firewalleinstellungen des Zielservers. Öffnen Sie Port 1024-65535 oder den auf dem FTP-Server festgelegten Portbereich für die IP-Adresse der selbstgehosteten Integration Runtime/Azure IR.
+
 
 ## <a name="http"></a>HTTP
 
@@ -687,7 +773,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
 - **Meldung**: `Failed to read data from http server. Check the error from http server：%message;`
 
-- **Ursache:** Dieser Fehler tritt auf, wenn Azure Data Factory mit dem HTTP-Server kommuniziert, beim HTTP-Anforderungsvorgang jedoch ein Fehler auftritt.
+- **Ursache**: Dieser Fehler tritt auf, wenn eine Data Factory- oder Synapse-Pipeline mit dem HTTP-Server kommuniziert, beim HTTP-Anforderungsvorgang jedoch ein Fehler auftritt.
 
 - **Empfehlung**:  Überprüfen Sie den HTTP-Statuscode in der Fehlermeldung, und beheben Sie das Remoteserverproblem.
 
@@ -698,11 +784,11 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
 - **Meldung**: `Hour, Minute, and Second parameters describe an un-representable DateTime.`
 
-- **Ursache:** In Data Factory werden DateTime-Werte im Bereich von 0001-01-01 00:00:00 bis 9999-12-31 23:59:59 unterstützt. Oracle unterstützt jedoch einen größeren Bereich von DateTime-Werten (z. B. Jahreszahlen vor unserer Zeitrechnung oder Minuten-/Sekundenangaben > 59). Dies kann in Data Factory zu einem Fehler führen.
+- **Ursache**: In Azure Data Factory- und Synapse-Pipelines werden DateTime-Werte im Bereich von 0001-01-01 00:00:00 bis 9999-12-31 23:59:59 unterstützt. Oracle unterstützt jedoch einen größeren Bereich von DateTime-Werten (z. B. Jahreszahlen vor unserer Zeitrechnung oder Minuten-/Sekundenangaben > 59). Dies kann zu einem Fehler führen.
 
 - **Empfehlung**: 
 
-    Um zu ermitteln, ob sich der Wert in Oracle im Bereich von Data Factory befindet, führen Sie `select dump(<column name>)` aus. 
+    Führen Sie `select dump(<column name>)` aus, um zu ermitteln, ob sich der Wert in Oracle im unterstützten Datumsbereich befindet. 
 
     Wenn Sie die Bytereihenfolge im Ergebnis ermitteln möchten, lesen Sie [Wie werden Daten in Oracle gespeichert?](https://stackoverflow.com/questions/13568193/how-are-dates-stored-in-oracle)
 
@@ -758,9 +844,9 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
 - **Meldung**: `Unsupported Parquet type. PrimitiveType: %primitiveType; OriginalType: %originalType;.`
 
-- **Ursache:** Das Parquet-Format wird in Azure Data Factory nicht unterstützt.
+- **Ursache**: Das Parquet-Format wird in Azure Data Factory- und Synapse-Pipelines nicht unterstützt.
 
-- **Empfehlung**:  Überprüfen Sie die Quelldaten erneut anhand von [Von der Copy-Aktivität unterstützte Dateiformate und Komprimierungscodecs in Azure Data Factory](./supported-file-formats-and-compression-codecs.md).
+- **Empfehlung**: Überprüfen Sie die Quelldaten erneut. Verwenden Sie dazu die Informationen unter [Von der Copy-Aktivität unterstützte Dateiformate und Komprimierungscodecs](./supported-file-formats-and-compression-codecs.md).
 
 
 ### <a name="error-code-parquetmisseddecimalprecisionscale"></a>Fehlercode: ParquetMissedDecimalPrecisionScale
@@ -796,7 +882,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
 - **Ursache:** Die Daten können nicht in den in „mappings.source“ angegebenen Typ konvertiert werden.
 
-- **Empfehlung**:  Überprüfen Sie die Quelldaten erneut, oder geben Sie den richtigen Datentyp für diese Spalte in der Spaltenzuordnung der Kopieraktivität an. Weitere Informationen finden Sie unter [Von der Copy-Aktivität unterstützte Dateiformate und Komprimierungscodecs in Azure Data Factory](./supported-file-formats-and-compression-codecs.md).
+- **Empfehlung**:  Überprüfen Sie die Quelldaten erneut, oder geben Sie den richtigen Datentyp für diese Spalte in der Spaltenzuordnung der Kopieraktivität an. Weitere Informationen finden Sie unter [Von der Copy-Aktivität unterstützte Dateiformate und Komprimierungscodecs](./supported-file-formats-and-compression-codecs.md).
 
 
 ### <a name="error-code-parquetdatacountnotmatchcolumncount"></a>Fehlercode: ParquetDataCountNotMatchColumnCount
@@ -881,6 +967,21 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
     - Die erste Spalte mit Leerzeichen wird als Spaltenname verwendet.
     - Der Typ „OriginalType“ wird unterstützt. Versuchen Sie, diese Sonderzeichen zu vermeiden: `,;{}()\n\t=`. 
 
+### <a name="error-code-parquetdatetimeexceedlimit"></a>Fehlercode: ParquetDateTimeExceedLimit
+
+- **Meldung**: `The Ticks value '%ticks;' for the datetime column must be between valid datetime ticks range -621355968000000000 and 2534022144000000000.`
+
+- **Ursache:** Wenn der DateTime-Wert „0001-01-01 00:00:00“ lautet, kann dies durch den Unterschied zwischen julianischem Kalender und gregorianischem Kalender verursacht werden. Weitere Informationen finden Sie unter [Difference between Julian and proleptic Gregorian calendar dates](https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar#Difference_between_Julian_and_proleptic_Gregorian_calendar_dates) (Unterschiede zwischen den Datumsangaben im julianischen und proleptischen gregorianischen Kalender).
+
+- **Lösung**: Überprüfen Sie den Taktwert, und vermeiden Sie den DateTime-Wert „0001-01-01 00:00:00“.
+
+### <a name="error-code-parquetinvalidcolumnname"></a>Fehlercode: ParquetInvalidColumnName
+
+- **Meldung**: `The column name is invalid. Column name cannot contain these character:[,;{}()\n\t=]`
+
+- **Ursache**: Der Spaltenname enthält ungültige Zeichen.
+
+- **Lösung**: Fügen Sie die Spaltenzuordnung hinzu, oder ändern Sie sie, um den Namen der Senkenspalte gültig zu machen.
 
 ## <a name="rest"></a>REST
 
@@ -888,9 +989,23 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
 - **Meldung**: `Rest Endpoint responded with Failure from server. Check the error from server:%message;`
 
+- **Ursache**: Dieser Fehler tritt auf, wenn eine Data Factory- oder Synapse-Pipeline mit dem REST-Endpunkt über das HTTP-Protokoll kommuniziert und beim Anforderungsvorgang ein Fehler auftritt.
+
+- **Empfehlung**: Überprüfen Sie den HTTP-Statuscode bzw. die HTTP-Statusnachricht in der Fehlermeldung, und beheben Sie das Problem mit dem Remoteserver.
+
+### <a name="error-code-restsourcecallfailed"></a>Fehlercode: RestSourceCallFailed
+
+- **Meldung**: `The HttpStatusCode %statusCode; indicates failure.&#xA;Request URL: %requestUri;&#xA;Response payload:%payload;`
+
 - **Ursache:** Dieser Fehler tritt auf, wenn Azure Data Factory mit dem REST-Endpunkt über das HTTP-Protokoll kommuniziert und beim Anforderungsvorgang ein Fehler auftritt.
 
-- **Empfehlung**:  Überprüfen Sie den HTTP-Statuscode bzw. die HTTP-Statusnachricht in der Fehlermeldung, und beheben Sie das Remoteserverproblem.
+- **Empfehlung**: Überprüfen Sie den HTTP-Statuscode bzw. die Anforderungs-URL oder Antwortpayload in der Fehlermeldung, und beheben Sie das Problem mit dem Remoteserver.
+
+### <a name="error-code-restsinkunsupportedcompressiontype"></a>Fehlercode: RestSinkUNSupportedCompressionType
+
+- **Meldung**: `User Configured CompressionType is Not Supported By Azure Data Factory：%message;`
+
+- **Empfehlung**: Überprüfen Sie die unterstützten Komprimierungstypen für die REST-Senke.
 
 ### <a name="unexpected-network-response-from-the-rest-connector"></a>Unerwartete Netzwerkantwort vom REST-Connector
 
@@ -907,7 +1022,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
       Sie können auch „curl--help“ verwenden, um Informationen zu den erweiterten Optionen des Befehls anzuzeigen.
 
-    - Falls nur vom Data Factory-REST-Connector eine unerwartete Antwort zurückgegeben wird, wenden Sie sich für die weitere Problembehandlung an den Microsoft-Support.
+    - Falls nur vom REST-Connector eine unerwartete Antwort zurückgegeben wird, wenden Sie sich für die weitere Problembehandlung an den Microsoft-Support.
     
     - Beachten Sie, dass „curl“ ggf. nicht geeignet ist, um ein Problem bei der Überprüfung des SSL-Zertifikats zu reproduzieren. In einigen Szenarien war die Ausführung des Befehls „curl“ erfolgreich, ohne dass Probleme bei der Überprüfung des SSL-Zertifikats aufgetreten sind. Wenn dieselbe URL dann im Browser ausgeführt wird, wird für den Client aber kein SSL-Zertifikat zurückgegeben, mit dem eine Vertrauensstellung mit dem Server eingerichtet werden kann.
 
@@ -944,7 +1059,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
     Wenn der Inhalt des privaten Schlüssels aus Ihrem Schlüsseltresor stammt, kann die ursprüngliche Schlüsseldatei funktionieren, wenn Sie sie direkt in den verknüpften SFTP-Dienst hochladen.
 
-    Weitere Informationen finden Sie unter [Kopieren von Daten von einem und auf einen SFTP-Server mithilfe von Azure Data Factory](./connector-sftp.md#use-ssh-public-key-authentication). Der Inhalt des privaten Schlüssels ist der base64-codierte Inhalt eines privaten SSH-Schlüssels.
+    Weitere Informationen finden Sie unter [Copy data from and to the SFTP server by using data factory or Synapse pipelines](./connector-sftp.md#use-ssh-public-key-authentication) (Kopieren von Daten von einem und auf einen SFTP-Server mithilfe von Data Factory- oder Synapse-Pipelines). Der Inhalt des privaten Schlüssels ist der base64-codierte Inhalt eines privaten SSH-Schlüssels.
 
     Codieren Sie den *gesamten* Inhalt der ursprünglichen Datei mit dem privaten Schlüssel mit base64, und speichern Sie die codierte Zeichenfolge in Ihrem Schlüsseltresor. Die ursprüngliche Datei mit dem privaten Schlüssel funktioniert bei einem verknüpften SFTP-Dienst, wenn Sie **Hochladen** in der Datei auswählen.
 
@@ -973,7 +1088,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
 - **Empfehlung**:  
 
-    Private SSH-Schlüssel im PKCS#8-Format (beginnend mit „-----BEGIN ENCRYPTED PRIVATE KEY-----“) werden derzeit nicht für den Zugriff auf den SFTP-Server in Data Factory unterstützt. 
+    Private SSH-Schlüssel im PKCS#8-Format (beginnt mit „-----BEGIN ENCRYPTED PRIVATE KEY-----“) werden derzeit nicht für den Zugriff auf den SFTP-Server unterstützt. 
 
     Führen Sie die folgenden Befehle aus, um den Schlüssel in ein herkömmliches SSH-Schlüsselformat zu konvertieren (beginnend mit „-----BEGIN RSA PRIVATE KEY-----“):
 
@@ -1006,7 +1121,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
 - **Empfehlung**:  Überprüfen Sie den Port des Zielservers. Standardmäßig verwendet SFTP Port 22.
 
-- **Ursache:** Wenn die Fehlermeldung die Zeichenfolge „Server response does not contain SSH protocol identification“ enthält, ist eine mögliche Ursache, dass der SFTP-Server die Verbindung gedrosselt hat. Data Factory erstellt mehrere Verbindungen, um parallele Downloads vom SFTP-Server durchführen zu können. Manchmal tritt dabei SFTP-Serverdrosselung auf. Normalerweise geben verschiedene Server unterschiedliche Fehler zurück, wenn Drosselung auftritt.
+- **Ursache:** Wenn die Fehlermeldung die Zeichenfolge „Server response does not contain SSH protocol identification“ enthält, ist eine mögliche Ursache, dass der SFTP-Server die Verbindung gedrosselt hat. Es werden mehrere Verbindungen erstellt, um parallele Downloads vom SFTP-Server durchführen zu können. Manchmal tritt dabei eine SFTP-Serverdrosselung auf. Normalerweise geben verschiedene Server unterschiedliche Fehler zurück, wenn Drosselung auftritt.
 
 - **Empfehlung**:  
 
@@ -1017,6 +1132,40 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
     * Fügen Sie bei Verwendung der selbstgehosteten IR der Positivliste die IP-Adresse des selbstgehosteten IR-Computers hinzu.
     * Wenn Sie Azure IR verwenden, fügen Sie [IP-Adressen von Azure Integration Runtime](./azure-integration-runtime-ip-addresses.md) hinzu. Wenn Sie der Positivliste des SFTP-Servers keinen Bereich von IP-Adressen hinzufügen möchten, verwenden Sie stattdessen die selbstgehostete IR.
 
+
+#### <a name="error-code-sftppermissiondenied"></a>Fehlercode: SftpPermissionDenied
+
+- **Meldung**: `Permission denied to access '%path;'`
+
+- **Ursache**: Der angegebene Benutzer hat beim Betrieb keine Lese- oder Schreibberechtigung für den Ordner oder die Datei.
+
+- **Empfehlung**: Erteilen Sie dem Benutzer die Berechtigung zum Lesen oder Schreiben in den Ordner oder die Dateien auf dem SFTP-Server.
+ 
+### <a name="error-code-sftpauthenticationfailure"></a>Fehlercode: SftpAuthenticationFailure
+
+- **Meldung**: `Meet authentication failure when connect to Sftp server '%server;' using '%type;' authentication type. Please make sure you are using the correct authentication type and the credential is valid. For more details, see our troubleshooting docs.`
+
+- **Ursache**: Die angegebenen Anmeldeinformationen (Ihr Kennwort oder Ihr privater Schlüssel) sind ungültig.
+
+- **Empfehlung**: Überprüfen Sie Ihre Anmeldeinformationen.
+
+- **Ursache**: Der angegebene Authentifizierungstyp ist nicht zulässig oder reicht nicht aus, um die Authentifizierung auf Ihrem SFTP-Server abzuschließen.
+
+- **Empfehlung**: Verwenden Sie die folgenden Optionen, um den richtigen Authentifizierungstyp zu verwenden:
+    - Wenn Ihr Server ein Kennwort erfordert, verwenden Sie „Standard“.
+    - Wenn Ihr Server einen privaten Schlüssel erfordert, verwenden Sie „Authentifizierung mit öffentlichem SSH-Schlüssel“.
+    - Wenn Ihr Server sowohl ein Kennwort als auch einen privaten Schlüssel erfordert, verwenden Sie „Mehrstufige Authentifizierung“.
+
+- **Ursache**: Ihr SFTP-Server erfordert eine Tastaturinteraktion für die Authentifizierung, aber Sie haben „Kennwort“ angegeben.
+
+- **Empfehlung**: 
+
+    Die Tastaturinteraktion (keyboard-interactive) ist eine spezielle Authentifizierungsmethode, die sich von der Methode „Kennwort“ unterscheidet. Dies bedeutet, dass Sie bei der Anmeldung bei einem Server das Kennwort manuell eingeben müssen und nicht das zuvor gespeicherte Kennwort verwenden können. Azure Data Factory (ADF) ist jedoch ein Dienst für geplante Datenübertragungen, bei dem kein Popupeingabefeld geöffnet wird, in das Sie das Kennwort zur Laufzeit eingeben können. <br/> 
+    
+    Eine mögliche Problemumgehung ist, die Eingabe im Hintergrund zu simulieren, sodass keine tatsächliche manuelle Eingabe erfolgt. Dies entspricht dem Ändern der Methode mit Tastaturinteraktion in die Kennwortmethode. Wenn dieses Sicherheitsrisiko für Sie akzeptabel ist, befolgen Sie die folgenden Schritte:<br/> 
+    1. Zeigen Sie im ADF-Portal auf den verknüpften SFTP-Dienst, und öffnen Sie die zugehörigen Nutzdaten über die Codeschaltfläche.
+    1. Fügen Sie `"allowKeyboardInteractiveAuth": true` im Abschnitt „typeProperties“ hinzu.
+ 
 ## <a name="sharepoint-online-list"></a>SharePoint Online-Liste
 
 ### <a name="error-code-sharepointonlineauthfailed"></a>Fehlercode: SharePointOnlineAuthFailed
@@ -1094,7 +1243,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
 - **Lösung:** Informieren Sie sich, [warum wir den „FIPS-Modus“ nicht mehr empfehlen](https://techcommunity.microsoft.com/t5/microsoft-security-baselines/why-we-8217-re-not-recommending-8220-fips-mode-8221-anymore/ba-p/701037), und ermitteln Sie, ob Sie FIPS auf Ihrem selbstgehosteten IR-Computer deaktivieren können.
 
-    Wenn Sie jedoch nur Azure Data Factory die Umgehung von FIPS und erfolgreiche Aktivitätsausführungen ermöglichen möchten, können Sie folgendermaßen vorgehen:
+    Wenn Sie jedoch nur FIPS umgehen und erfolgreiche Aktivitätsausführungen ermöglichen möchten, können Sie folgendermaßen vorgehen:
 
     1. Öffnen Sie den Ordner, in dem die selbstgehostete IR installiert ist. Der Pfad lautet in der Regel *C:\Programme\Microsoft Integration Runtime \<IR version>\Shared*.
 
@@ -1104,6 +1253,163 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
     3. Speichern Sie die Datei, und starten Sie den Computer mit der selbstgehosteten IR neu.
 
+### <a name="error-code-jniexception"></a>Fehlercode: JniException
+
+- **Meldung**: `An error occurred when invoking Java Native Interface.`
+
+- **Ursache**: Wenn die Fehlermeldung „Cannot create JVM: JNI return code [-6][JNI call failed: Invalid arguments.]“ (JVM kann nicht erstellt werden: JNI-Rückgabecode [-6][Fehler bei JNI-Aufruf: ungültige Argumente.]) enthält, ist die mögliche Ursache, dass JVM nicht erstellt werden kann, da einige ungültige (globale) Argumente festgelegt sind.
+
+- **Empfehlung**: Melden Sie sich beim Computer an, auf dem die *einzelnen Knoten* Ihrer selbstgehosteten Integration Runtime gehostet werden. Stellen Sie wie folgt sicher, dass die Systemvariable ordnungsgemäß festgelegt ist: `_JAVA_OPTIONS "-Xms256m -Xmx16g" with memory bigger than 8G`. Starten Sie alle Integration Runtime-Knoten neu, und führen Sie dann die Pipeline erneut aus.
+
+### <a name="error-code-getoauth2accesstokenerrorresponse"></a>Fehlercode: GetOAuth2AccessTokenErrorResponse
+
+- **Meldung**: `Failed to get access token from your token endpoint. Error returned from your authorization server: %errorResponse;.`
+
+- **Ursache**: Ihre Client-ID oder Ihr geheimer Clientschlüssel ist ungültig, und bei der Authentifizierung auf dem Autorisierungsserver ist ein Fehler aufgetreten.
+
+- **Empfehlung**: Korrigieren Sie alle Floweinstellungen für OAuth2-Clientanmeldeinformationen Ihres Autorisierungsservers.
+
+### <a name="error-code-failedtogetoauth2accesstoken"></a>Fehlercode: FailedToGetOAuth2AccessToken
+
+- **Meldung**: `Failed to get access token from your token endpoint. Error message: %errorMessage;.`
+
+- **Ursache**: Die Floweinstellungen für OAuth2-Clientanmeldeinformationen sind ungültig.
+
+- **Empfehlung**: Korrigieren Sie alle Floweinstellungen für OAuth2-Clientanmeldeinformationen Ihres Autorisierungsservers.
+
+### <a name="error-code-oauth2accesstokentypenotsupported"></a>Fehlercode: OAuth2AccessTokenTypeNotSupported
+
+- **Meldung**: `The toke type '%tokenType;' from your authorization server is not supported, supported types: '%tokenTypes;'.`
+
+- **Ursache**: Ihr Autorisierungsserver wird nicht unterstützt.
+
+- **Empfehlung**: Verwenden Sie einen Autorisierungsserver, der Token mit unterstützten Tokentypen zurückgeben kann.
+
+### <a name="error-code-oauth2clientidcolonnotallowed"></a>Fehlercode: OAuth2ClientIdColonNotAllowed
+
+- **Meldung**: `The character colon(:) is not allowed in clientId for OAuth2ClientCredential authentication.`
+
+- **Ursache**: Ihre Client-ID enthält einen Doppelpunkt (`:`). Dies ist ein ungültiges Zeichen.
+
+- **Empfehlung**: Verwenden Sie eine gültige Client-ID.
+
+### <a name="error-code-managedidentitycredentialobjectnotsupported"></a>Fehlercode: ManagedIdentityCredentialObjectNotSupported
+
+- **Meldung**: `Managed identity credential is not supported in this version ('%version;') of Self Hosted Integration Runtime.`
+
+- **Empfehlung**: Überprüfen Sie die unterstützte Version, und führen Sie für die Integration Runtime ein Upgrade auf eine höhere Version durch.
+
+### <a name="error-code-querymissingformatsettingsindataset"></a>Fehlercode: QueryMissingFormatSettingsInDataset
+
+- **Meldung**: `The format settings are missing in dataset %dataSetName;.`
+
+- **Ursache**: Es ist ein binärer Datasettyp festgelegt. Dieser Typ wird nicht unterstützt.
+
+- **Empfehlung**: Verwenden Sie stattdessen das DelimitedText-, Json-, Avro-, Orc- oder Parquet-Dataset.
+
+- **Ursache**: Für den Dateispeicher fehlen die Formateinstellungen im Dataset.
+
+- **Empfehlung**: Deaktivieren Sie die Option „Binärkopie“ im Dataset, und legen Sie die richtigen Formateinstellungen fest.
+
+### <a name="error-code-queryunsupportedcommandbehavior"></a>Fehlercode: QueryUnsupportedCommandBehavior
+
+- **Meldung**: `The command behavior "%behavior;" is not supported.`
+
+- **Empfehlung**: Fügen Sie das Befehlsverhalten nicht als Parameter für die Vorschau- oder GetSchema-API-Anforderungs-URL hinzu.
+
+### <a name="error-code-dataconsistencyfailedtogetsourcefilemetadata"></a>Fehlercode: DataConsistencyFailedToGetSourceFileMetadata
+
+- **Meldung**: `Failed to retrieve source file ('%name;') metadata to validate data consistency.`
+
+- **Ursache**: Es liegt ein vorübergehendes Problem im Senkendatenspeicher vor, oder das Abrufen von Metadaten aus dem Senkendatenspeicher ist nicht zulässig.
+
+### <a name="error-code-dataconsistencyfailedtogetsinkfilemetadata"></a>Fehlercode: DataConsistencyFailedToGetSinkFileMetadata
+
+- **Meldung**: `Failed to retrieve sink file ('%name;') metadata to validate data consistency.`
+
+- **Ursache**: Es liegt ein vorübergehendes Problem im Senkendatenspeicher vor, oder das Abrufen von Metadaten aus dem Senkendatenspeicher ist nicht zulässig.
+
+### <a name="error-code-dataconsistencyvalidationnotsupportedfornondirectbinarycopy"></a>Fehlercode: DataConsistencyValidationNotSupportedForNonDirectBinaryCopy
+
+- **Meldung**: `Data consistency validation is not supported in current copy activity settings.`
+
+- **Ursache**: Die Datenkonsistenzüberprüfung wird nur im direkten Binärkopierszenario unterstützt.
+
+- **Empfehlung**: Entfernen Sie die Eigenschaft „validateDataConsistency“ in den Nutzdaten der Kopieraktivität.
+
+### <a name="error-code-dataconsistencyvalidationnotsupportedforlowversionselfhostedintegrationruntime"></a>Fehlercode: DataConsistencyValidationNotSupportedForLowVersionSelfHostedIntegrationRuntime
+
+- **Meldung**: `'validateDataConsistency' is not supported in this version ('%version;') of Self Hosted Integration Runtime.`
+
+- **Empfehlung**: Überprüfen Sie die unterstützte Integration Runtime-Version, und führen Sie ein Upgrade auf eine höhere Version durch, oder entfernen Sie die Eigenschaft „validateDataConsistency“ aus Kopieraktivitäten.
+
+### <a name="error-code-skipmissingfilenotsupportedfornondirectbinarycopy"></a>Fehlercode: SkipMissingFileNotSupportedForNonDirectBinaryCopy
+
+- **Meldung**: `Skip missing file is not supported in current copy activity settings, it's only supported with direct binary copy with folder.`
+
+- **Empfehlung**: Entfernen Sie „fileMissing“ der skipErrorFile-Einstellung in den Nutzdaten der Kopieraktivität.
+
+### <a name="error-code-skipinconsistencydatanotsupportedfornondirectbinarycopy"></a>Fehlercode: SkipInconsistencyDataNotSupportedForNonDirectBinaryCopy
+
+- **Meldung**: `Skip inconsistency is not supported in current copy activity settings, it's only supported with direct binary copy when validateDataConsistency is true.`
+
+- **Empfehlung**: Entfernen Sie „dataInconsistency“ der skipErrorFile-Einstellung in den Nutzdaten der Kopieraktivität.
+
+### <a name="error-code-skipforbiddenfilenotsupportedfornondirectbinarycopy"></a>Fehlercode: SkipForbiddenFileNotSupportedForNonDirectBinaryCopy
+
+- **Meldung**: `Skip forbidden file is not supported in current copy activity settings, it's only supported with direct binary copy with folder.`
+
+- **Empfehlung**: Entfernen Sie „fileForbidden“ der skipErrorFile-Einstellung in den Nutzdaten der Kopieraktivität.
+
+### <a name="error-code-skipforbiddenfilenotsupportedforthisconnector"></a>Fehlercode: SkipForbiddenFileNotSupportedForThisConnector
+
+- **Meldung**: `Skip forbidden file is not supported for this connector: ('%connectorName;').`
+
+- **Empfehlung**: Entfernen Sie „fileForbidden“ der skipErrorFile-Einstellung in den Nutzdaten der Kopieraktivität.
+
+### <a name="error-code-skipinvalidfilenamenotsupportedfornondirectbinarycopy"></a>Fehlercode: SkipInvalidFileNameNotSupportedForNonDirectBinaryCopy
+
+- **Meldung**: `Skip invalid file name is not supported in current copy activity settings, it's only supported with direct binary copy with folder.`
+
+- **Empfehlung**: Entfernen Sie „invalidFileName“ der skipErrorFile-Einstellung in den Nutzdaten der Kopieraktivität.
+
+### <a name="error-code-skipinvalidfilenamenotsupportedforsource"></a>Fehlercode: SkipInvalidFileNameNotSupportedForSource
+
+- **Meldung**: `Skip invalid file name is not supported for '%connectorName;' source.`
+
+- **Empfehlung**: Entfernen Sie „invalidFileName“ der skipErrorFile-Einstellung in den Nutzdaten der Kopieraktivität.
+
+### <a name="error-code-skipinvalidfilenamenotsupportedforsink"></a>Fehlercode: SkipInvalidFileNameNotSupportedForSink
+
+- **Meldung**: `Skip invalid file name is not supported for '%connectorName;' sink.`
+
+- **Empfehlung**: Entfernen Sie „invalidFileName“ der skipErrorFile-Einstellung in den Nutzdaten der Kopieraktivität.
+
+### <a name="error-code-skipallerrorfilenotsupportedfornonbinarycopy"></a>Fehlercode: SkipAllErrorFileNotSupportedForNonBinaryCopy
+
+- **Meldung**: `Skip all error file is not supported in current copy activity settings, it's only supported with binary copy with folder.`
+
+- **Empfehlung**: Entfernen Sie „allErrorFile“ der skipErrorFile-Einstellung in den Nutzdaten der Kopieraktivität.
+
+### <a name="error-code-deletefilesaftercompletionnotsupportedfornondirectbinarycopy"></a>Fehlercode: DeleteFilesAfterCompletionNotSupportedForNonDirectBinaryCopy
+
+- **Meldung**: `'deleteFilesAfterCompletion' is not support in current copy activity settings, it's only supported with direct binary copy.`
+
+- **Empfehlung**: Entfernen Sie die Einstellung „deleteFilesAfterCompletion“, oder verwenden Sie eine direkte Binärkopie.
+
+### <a name="error-code-deletefilesaftercompletionnotsupportedforthisconnector"></a>Fehlercode: DeleteFilesAfterCompletionNotSupportedForThisConnector
+
+- **Meldung**: `'deleteFilesAfterCompletion' is not supported for this connector: ('%connectorName;').`
+
+- **Empfehlung**: Entfernen Sie die Einstellung „deleteFilesAfterCompletion“ in den Nutzdaten der Kopieraktivität.
+
+### <a name="error-code-failedtodownloadcustomplugins"></a>Fehlercode: FailedToDownloadCustomPlugins
+
+- **Meldung**: `Failed to download custom plugins.`
+
+- **Ursache**: Ungültige Downloadlinks oder vorübergehende Konnektivitätsprobleme.
+
+- **Empfehlung**: Wiederholen Sie den Vorgang, wenn in der Meldung angezeigt wird, dass es sich um ein vorübergehendes Problem handelt. Sollte das Problem weiterhin bestehen, wenden Sie sich an das Supportteam.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

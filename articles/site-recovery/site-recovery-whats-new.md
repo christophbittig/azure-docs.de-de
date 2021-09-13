@@ -2,13 +2,13 @@
 title: Neuerungen in Azure Site Recovery
 description: Enthält eine Übersicht über die neuen Features und die neuesten Updates im Azure Site Recovery-Dienst.
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: 23cc7c98b4d45adf9507ef857bda1c605eb6d558
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.date: 07/28/2021
+ms.openlocfilehash: a9e0d9c462c494fdc1d0c50bc4faf3694f3b4cd7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112026775"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122353652"
 ---
 # <a name="whats-new-in-site-recovery"></a>Neuerungen in Site Recovery
 
@@ -22,6 +22,7 @@ Für Site Recovery-Komponenten werden N-4 Versionen unterstützt, wobei N die zu
 
 **Aktualisieren** |  **Einheitliches Setup** | **OVA-Datei des Konfigurationsservers** | **Mobilitätsdienst-Agent** | **Site Recovery-Anbieter** | **Recovery Services-Agent**
 --- | --- | --- | --- | --- | ---
+[Rollup 56](https://support.microsoft.com/en-us/topic/update-rollup-56-for-azure-site-recovery-kb5005376-33f27950-1a07-43e5-bf40-4b380a270ef6)  | 9.43.6040.1  | 5.1.6853.0 | 9.43.6040.1| 5.1.6853.0 | 2.0.9226.0
 [.Rollup 55](https://support.microsoft.com/topic/b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8)  | .9.42.5941.1 | .5.1.6692.0 | .9.42.5941.1 | .5.1.6692.0  | .2.0.9208.0
 [Rollup 54](https://support.microsoft.com/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533)  | 9.41.5888.1 | 5.1.6620.0 | 9.41.5888.1 | 5.1.6620.0  | 2.0.9202.0
 [Rollup 53](https://support.microsoft.com/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)  | 9.40.5850.1 | 5.1.6537.0 | 9.40.5850.1 | 5.1.6537.0  | 2.0.9202.0
@@ -33,6 +34,21 @@ Für Site Recovery-Komponenten werden N-4 Versionen unterstützt, wobei N die zu
 
 [Weitere Informationen](service-updates-how-to.md) zur Updateinstallation und -unterstützung
 
+## <a name="updates-july-2021"></a>Updates (Juli 2021)
+
+### <a name="update-rollup-56"></a>Updaterollup 56
+
+Das [Updaterollup 56](https://support.microsoft.com/en-us/topic/update-rollup-56-for-azure-site-recovery-kb5005376-33f27950-1a07-43e5-bf40-4b380a270ef6) umfasst die folgenden Aktualisierungen:
+
+**Update** | **Details**
+--- | ---
+**Anbieter und Agents** | Updates für Site Recovery-Agents und -Anbieter (wie im KB-Artikel zum Rollup beschrieben).
+**Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen, wie im KB-Artikel zum Rollup beschrieben.
+
+**Azure Site Recovery-Dienst** | Verbesserungen vorgenommen, um Vorgänge zum Aktivieren der Replikation und des erneuten Schutzes um 46 % zu beschleunigen.
+**Azure Site Recovery-Portal** | Die Replikation kann jetzt zwischen zwei beliebigen weltweiten Azure-Regionen aktiviert werden. Sie sind nicht mehr darauf beschränkt, die Replikation innerhalb Ihres Kontinents zu aktivieren.
+
+
 ## <a name="updates-april-2021"></a>Aktualisierungen (April 2021)
 
 ### <a name="update-rollup-55"></a>Aktualisierungs-Rollup 55
@@ -42,7 +58,7 @@ Das [Aktualisierungs-Rollup 55](https://support.microsoft.com/topic/b19c8190-5f
 **Aktualisieren** | **Details**
 --- | ---
 **Anbieter und Agents** | Updates für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben).
-**Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen, wie im Rollup beschrieben. 
+**Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen, wie im Rollup beschrieben.
 **Notfallwiederherstellung für virtuelle Azure-Computer** | Unterstützung für die kontinentübergreifende Notfallwiederherstellung von Azure-VMs wurde hinzugefügt.<br/><br/> Rest-API-Unterstützung für den Schutz von VMSS Flex.<br/><br/> Wird jetzt für VMs, die Oracle Linux 8.2 und 8.3 ausführen, unterstützt.
 **Notfallwiederherstellung für VMware-VMs/physische Computer auf Azure** | Unterstützung für die Verwendung von Ubuntu-20.04 beim Einrichten des Masterzielservers hinzugefügt.<br/><br/> Wird jetzt für VMs, die Oracle Linux 8.2 und 8.3 ausführen, unterstützt.
 
@@ -56,7 +72,7 @@ Das [Updaterollup 54](https://support.microsoft.com/topic/update-rollup-54-for-
 **Aktualisieren** | **Details**
 --- | ---
 **Anbieter und Agents** | Updates für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben).
-**Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen, wie im Rollup beschrieben. 
+**Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen, wie im Rollup beschrieben.
 **Notfallwiederherstellung für virtuelle Azure-Computer** | Die Notfallwiederherstellung zwischen Zonen mit Azure Site Recovery ist nun in 4 weiteren Regionen allgemein verfügbar: „Europa, Norden“, „USA, Osten“, „USA, Mitte“ und „USA, Westen 2“.<br/>
 **Notfallwiederherstellung für VMware-VMs/physische Computer auf Azure** | Das Update umfasst Portalunterstützung für das Auswählen von Näherungsplatzierungsgruppen für VMware-/physische Computer nach dem Aktivieren der Replikation.<br/><br/> Der Schutz von VMware-Computern mit einer Datenträgergröße von bis zu 32 TB wird jetzt unterstützt.
 **Hyper-V-Notfallwiederherstellung in Azure** | Das Update umfasst Portalunterstützung für das Auswählen von Näherungsplatzierungsgruppen für Hyper-V-Computer nach dem Aktivieren der Replikation.
@@ -71,7 +87,7 @@ Das [Updaterollup 53](https://support.microsoft.com/topic/update-rollup-53-for-
 **Aktualisieren** | **Details**
 --- | ---
 **Anbieter und Agents** | Updates für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben).
-**Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen, wie im Rollup beschrieben. 
+**Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen, wie im Rollup beschrieben.
 **Notfallwiederherstellung für virtuelle Azure-Computer** | Replikation wird jetzt für Tags unterstützt. Alle Tags, die Azure-VMs, Datenträgern und NICs in der Quellregion hinzugefügt werden, werden auf Computern in der Zielregion repliziert.<br/><br/> Azure-VMs mit Debian 10 werden jetzt für die Replikation unterstützt.
 **Notfallwiederherstellung für VMware-VMs/physische Computer auf Azure** | Das Update umfasst Protokollierungserweiterungen für die VMware-VM-Replikation in Azure und verbesserte Fehlermeldungen.<br/><br/> VMware-VMs und physische Computer mit Debian 10 werden jetzt für die Replikation unterstützt.
 
@@ -151,7 +167,7 @@ Das [Updaterollup 48](https://support.microsoft.com/help/4573888/update-rollup-
 
 [Updaterollup 46](https://support.microsoft.com/help/4564347/update-rollup-46-for-azure-site-recovery) umfasst folgende Updates:
 
-**Aktualisieren** | **Details**
+**Update** | **Details**
 --- | ---
 **Anbieter und Agents** | Updates für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben).
 **Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen, wie im Rollup beschrieben.

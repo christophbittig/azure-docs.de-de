@@ -5,14 +5,14 @@ author: nkuntjoro
 ms.author: nikuntjo
 ms.service: certification
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 06/22/2021
 ms.custom: template-concept
-ms.openlocfilehash: 262616ca82e9c06baec0d7a1b81a0e3dff2ed8db
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 7786cd64ebf46038cc4d41f13ef76bb4d543752f
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304510"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112970119"
 ---
 # <a name="marketing-properties"></a>Marketingeigenschaften
 
@@ -50,13 +50,16 @@ Im oberen Bereich der Produktbeschreibungsseite werden die wichtigsten Merkmale 
 | Zielbranchen  | Die 3 wichtigsten Branchen, für die Ihr Gerät optimiert ist  | Marketingdetails |
 | Produktbeschreibung  | Freies Textfeld, in das Sie die Marketingbeschreibung Ihres Produkts schreiben können. Hier können Details angegeben werden, die nicht im Portal aufgeführt sind, oder zusätzlicher Kontext für den Nutzen der Verwendung Ihres Geräts hinzugefügt werden. | Marketingdetails|
 
-Der Rest der Seite konzentriert sich auf die Darstellung der technischen Spezifikationen Ihres Geräts in Form einer Tabelle, die Ihrem Kunden hilft, Ihr Produkt besser zu verstehen. Der Einfachheit halber werden die oben auf der Seite angezeigten Informationen auch hier aufgeführt. Der Rest der Tabelle ist von den im Portal angegebenen Komponenten getrennt.
+Der Rest der Seite konzentriert sich auf die Darstellung der technischen Spezifikationen Ihres Geräts in Form einer Tabelle, die Ihrem Kunden hilft, Ihr Produkt besser zu verstehen. Der Einfachheit halber werden die oben auf der Seite angezeigten Informationen auch hier aufgeführt und durch zusätzliche Geräteinformationen ergänzt. Der Rest der Tabelle ist von den im Portal angegebenen Komponenten getrennt.
 
 ![PDP – Seite unten](./media/concepts-marketing/pdp-bottom.png)
 
 | Feld | BESCHREIBUNG                  | Einfügeposition im Portal                |
 |---------------|-------------------------|----------------------------------|
-| Komponententyp | Klassifizierung von Formfaktor und Hauptzweck Ihres Geräts ([Weitere Informationen](./resources-glossary.md))       | Produktdetails in den Gerätedetails|
+| Umgebungszertifizierungen | Offizielle Zertifizierungen, die für die Leistung in verschiedenen Umgebungen vergeben werden     | Details zur Gerätehardware  |
+| Betriebsbedingungen | Eingangsschutzwert oder Temperaturbereiche, für die sich das Gerät eignet     | Details zur Gerätesoftware  |
+| Azure-Softwareeinrichtung | Klassifizierung des Einrichtungsprozesses zum Herstellen einer Verbindung zwischen dem Gerät und Azure ([Weitere Informationen](./how-to-software-levels.md))     | Details zur Gerätesoftware  |
+| Komponententyp | Klassifizierung von Formfaktor und Hauptzweck Ihres Geräts ([Weitere Informationen](./resources-glossary.md))       | Details zur Gerätehardware|
 | Komponentenname| Der Name der Komponente, die Sie beschreiben. | Produktdetails in den Gerätedetails |
 | Zusätzliche Komponenteninformationen | Zusätzliche Hardwarespezifikationen, wie z. B. enthaltene Sensoren, Konnektivität, Beschleuniger usw.  | Zusätzliche Komponenteninformationen in den Gerätedetails ([Weitere Informationen](./how-to-using-the-components-feature.md))  |
 | Text zur Geräteabhängigkeit | Vom Partner bereitgestellter Text, in dem die verschiedenen Abhängigkeiten beschrieben werden, die das Produkt für die Herstellung von Verbindungen mit Azure benötigt ([Weitere Informationen](./how-to-indirectly-connected-devices.md))   | Für den Kunden sichtbarer Kommentarabschnitt der Registerkarte „Abhängigkeiten“ in den Gerätedetails |
@@ -73,6 +76,7 @@ Sowohl auf der Seite mit der Produktkachel als auch auf der Seite mit der Produk
 | Get Device| Link zu einer externen Website, auf der der Kunde das Gerät erwerben (oder ein Angebot vom Vertriebspartner anfordern) kann. Dies kann die gleiche Seite wie die des Herstellers sein, wenn der Händler mit dem Gerätehersteller identisch ist. Wenn keine Kaufseite verfügbar ist, bewirkt dies eine Weiterleitung an die Seite des Vertriebspartners, damit der Kunde sich direkt an ihn wenden kann.  | URL der Produktseite des Vertriebspartners in den Marketingdetails. Wenn keine Kaufseite verfügbar ist, ist der Standardwert für den Link die URL des Vertriebspartners in den Marketingdetails. |
 
 ## <a name="external-links"></a>Externe Links
+
 Außerdem befinden sich auf der Produktbeschreibungsseite Links, die zu von Partnern bereitgestellten Seiten oder Dateien führen, die dem Kunden helfen, das Produkt besser zu verstehen. Sie werden im oberen Bereich der Seite unterhalb des Texts zur Produktbeschreibung angezeigt. Die angezeigten Links unterscheiden sich für verschiedene Gerätetypen und Zertifizierungsprogramme.
 
 | Link | BESCHREIBUNG                  | Einfügeposition im Portal                |

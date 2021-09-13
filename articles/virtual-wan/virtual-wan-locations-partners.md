@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: references_regions
-ms.openlocfilehash: bdcb675e379b5ab94f8404966477f4d2df56400c
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: ff6e928c5f50c2f0a15936b190f0191da67b81c3
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108163929"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419445"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Standorte von Virtual WAN-Partnern und -Hubs
 
@@ -21,7 +21,7 @@ Dieser Artikel enthält Informationen über die von Virtual WAN unterstützten R
 
 Der Netzwerkdienst Azure Virtual WAN bietet optimierte und automatisierte Konnektivität zwischen Branches über Azure. Per Virtual WAN können Sie Branchgeräte für die Kommunikation mit Azure verbinden und konfigurieren. Verbindung und Konfiguration können entweder manuell oder mit Anbietergeräten über einen Virtual WAN-Partner hergestellt werden. Die Nutzung von Geräten eines Partners ermöglicht eine einfache Verwendung, die Vereinfachung der Verbindungsherstellung und die Konfigurationsverwaltung.
 
-Konnektivität auf dem lokalen Gerät wird auf automatisierte Weise mit dem virtuellen Hub hergestellt. Ein virtueller Hub ist ein von Microsoft verwaltetes virtuelles Netzwerk. Der Hub enthält verschiedene Dienstendpunkte zum Aktivieren der Konnektivität über Ihr lokales Netzwerk (vpnsite). Pro Region ist nur ein Hub möglich.
+Konnektivität auf dem lokalen Gerät wird auf automatisierte Weise mit dem virtuellen Hub hergestellt. Ein virtueller Hub ist ein von Microsoft verwaltetes virtuelles Netzwerk. Der Hub enthält verschiedene Dienstendpunkte zum Aktivieren der Konnektivität über Ihr lokales Netzwerk (vpnsite). 
 
 ## <a name="branch-ipsec-connectivity-automation-from-partners"></a><a name="automation"></a>Branches: Automatisierung der IPsec-Konnektivität durch Partner
 
@@ -60,7 +60,7 @@ Diese Partner verfügen über Angebote für **verwaltete Anwendungen**, die jetz
 |Partner|Konfiguration/Anleitung/Bereitstellungsleitfaden|
 |---|---|
 |[Barracuda Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overviewus/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overview)| [Bereitstellungshandbuch für Barracuda CloudGen WAN](https://campus.barracuda.com/product/cloudgenwan/doc/91980640/deployment/)|
-|[Cisco Cloud Service Router (CSR) vWAN](https://aka.ms/ciscoMarketPlaceOffer)| Während der Public Preview von Cisco Cloud Services (CSR) WAN in VWAN-Hub verlangt Cisco, dass sich der Endkunde als Cisco EFT-Kunde (Early Field Trial) registrieren muss, indem er eine E-Mail an vwan_public_preview@external.cisco.com sendet und das Bereitstellungshandbuch für vManage anfordert. 
+|[Cisco Cloud Service Router (CSR) vWAN](https://aka.ms/ciscoMarketPlaceOffer)| Die Integration der Cisco SD-WAN-Lösung in Azure Virtual WAN erweitert Cloud OnRamp für Multicloudbereitstellungen und ermöglicht die Konfiguration von Cisco Catalyst 8000V Edge Software (Cisco Catalyst 8000V) als virtuelles Netzwerkgerät (Network Virtual Appliance, NVA) in Azure Virtual WAN-Hubs. Sehen Sie sich den [Konfigurationsleitfaden für Cisco SD-WAN Cloud OnRamp, Cisco IOS XE Release 17.x](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) an. 
 |[VMware SD-WAN im Virtual WAN-Hub](https://sdwan.vmware.com/partners/microsoft) | Während der Public Preview von VMware SD-WAN im VWAN-Hub muss sich der Kunde bei VMware registrieren, indem er eine E-Mail an vhubsupport@vmware.com sendet. [Bereitstellungshandbuch für VMware SD-WAN im Virtual WAN-Hub](https://kb.vmware.com/s/article/82746)|
 
 Es ist vorgesehen, dass die folgenden Partner in naher Zukunft Angebote für NVAs im virtuellen Hub bereitstellen: Aviatrix, Citrix und Versa Networks.

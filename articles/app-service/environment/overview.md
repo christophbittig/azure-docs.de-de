@@ -4,20 +4,19 @@ description: Übersicht über die Azure App Service-Umgebung
 author: ccompy
 ms.assetid: 3d37f007-d6f2-4e47-8e26-b844e47ee919
 ms.topic: article
-ms.date: 03/02/2021
+ms.date: 08/05/2021
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 23b23340550ded3642d19500270f06cfb6faf8cb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: references_regions
+ms.openlocfilehash: 848b7ce830c91cffaaaa39ed2102255f0adc3b7f
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735096"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445681"
 ---
 # <a name="app-service-environment-overview"></a>Übersicht über die App Service-Umgebung 
-
 > [!NOTE]
-> In diesem Artikel wird die App Service-Umgebung v3 (Vorschau) behandelt.
+> In diesem Artikel wird die App Service-Umgebung V3 beschrieben, die mit App Service-Plänen vom Typ „Isoliert V2“ verwendet wird.
 > 
 
 Die Azure App Service-Umgebung ist ein Feature von Azure App Service, das eine vollständig isolierte und dedizierte Umgebung zur sicheren Ausführung von App Service-Apps mit umfangreicher Skalierung bereitstellt. Über diese Funktion können folgende Elemente gehostet werden:
@@ -32,13 +31,9 @@ App Service-Umgebungen (App Service Environments, ASEs) sind ideal geeignet für
 - Großes Ausmaß.
 - Isolierung und sicherer Netzwerkzugriff
 - Hohe Speicherauslastung
-- Viele Anforderungen pro Sekunde (Requests Per Second, RPS). Sie können mehrere ASEs innerhalb einer einzelnen Azure-Region oder über mehrere Azure-Regionen verteilt einrichten. Durch diese Flexibilität eignen sich ASEs hervorragend für die horizontale Skalierung zustandsloser Anwendungen mit vielen Anforderungen pro Sekunde (RPS).
+- Viele Anforderungen pro Sekunde (Requests Per Second, RPS). Sie können mehrere ASEs innerhalb einer einzelnen Azure-Region oder über mehrere Azure-Regionen verteilt einrichten. Durch diese Flexibilität eignet sich eine ASE hervorragend für die horizontale Skalierung zustandsloser Anwendungen mit vielen Anforderungen pro Sekunde (RPS).
 
 ASEs hosten Anwendungen von nur einem Kunden in einem seiner VNETs. Kunden haben präzise Kontrolle über den eingehenden und ausgehenden Netzwerkdatenverkehr der Anwendung. Anwendungen können schnelle, sichere Verbindungen über VPNs mit lokalen Unternehmensressourcen einrichten.
-
-ASEv3 verfügt über einen eigenen Tarif, Isolated v2.
-App Service-Umgebungen v3 bieten eine Umgebung zum Schutz Ihrer Apps in einem Subnetz Ihres Netzwerks sowie eine eigene private Azure App Service-Bereitstellung.
-Für die horizontale Skalierung können mehrere ASEs verwendet werden. Der Zugriff von Apps in ASEs kann durch Upstreamgeräte wie z.B. Web Application Firewalls (WAFs) abgegrenzt werden. Weitere Informationen finden Sie unter Web Application Firewall (WAF).
 
 ## <a name="usage-scenarios"></a>Verwendungsszenarios
 
@@ -50,43 +45,85 @@ Die App Service-Umgebung umfasst viele Anwendungsfälle, einschließlich:
 - Netzwerkisoliertes Hosten von Anwendungen
 - Multi-Tier-Anwendungen
 
-Es gibt eine Reihe von Netzwerkfeatures, mit denen Apps im mehrinstanzenfähigen App Service netzwerkisolierte Ressourcen erreichen oder selbst netzwerkisoliert werden können. Diese Features werden auf Anwendungsebene aktiviert.  Bei einer ASE ist keine zusätzliche Konfiguration für die Apps erforderlich, damit sie im VNET vorhanden sein können. Die Apps werden in einer netzwerkisolierten Umgebung bereitgestellt, die sich bereits in einem VNET befindet. Die ASE hostet nicht nur netzwerkisolierte Apps, sie ist auch ein System mit nur einem Mandanten. Es gibt keine anderen Kunden, die die ASE verwenden. Wenn Sie wirklich eine vollständige Isolation benötigen, können Sie Ihre ASE auch auf dedizierter Hardware bereitstellen lassen. Zwischen netzwerkisoliertem Hosten von Anwendungen, Einzelmandant und der Fähigkeit 
+Es gibt viele Netzwerkfeatures, mit denen Apps im mehrinstanzenfähigen App Service netzwerkisolierte Ressourcen erreichen oder selbst netzwerkisoliert werden können. Diese Features werden auf Anwendungsebene aktiviert.  Bei einer ASE ist keine zusätzliche Konfiguration für die Apps erforderlich, damit sie im VNET vorhanden sein können. Die Apps werden in einer netzwerkisolierten Umgebung bereitgestellt, die sich bereits in einem VNET befindet. Die ASE hostet nicht nur netzwerkisolierte Apps, sie ist auch ein System mit nur einem Mandanten. Es gibt keine anderen Kunden, die die ASE verwenden. Wenn Sie wirklich eine vollständige Isolation benötigen, können Sie Ihre ASE auch auf dedizierter Hardware bereitstellen lassen. 
 
 ## <a name="dedicated-environment"></a>Dedizierte Umgebung
-Eine ASE ist exklusiv für ein Einzelabonnement dediziert und kann insgesamt 200 App Service Plan-Instanzen für mehrere App Service-Pläne hosten. Das Wort „Instanz“ bezieht sich dabei auf die horizontale Skalierung für App Service-Plan. Jede Instanz ist äquivalent zu einer Workerrolle. Während eine ASE über insgesamt 200 Instanzen verfügen kann, kann ein einzelner Plan für App Service (isoliert, v2) 100 Instanzen enthalten. Die ASE kann zwei App Service-Pläne mit 100 Instanzen jeweils, 200 App Service-Pläne für eine Einzelinstanz oder einen beliebigen dazwischen liegenden Wert beinhalten.
 
-Eine ASE besteht aus Front-Ends und Worker. Front-Ends sind für die HTTP/HTTPS-Beendigung und den automatischen Lastenausgleich von App-Anforderungen in einer ASE zuständig. Front-Ends werden automatisch hinzugefügt, wenn die App Service-Pläne in der ASE horizontal hochskaliert werden.
+Die ASE ist eine Bereitstellung von Azure App Service für einen einzelnen Mandanten, die in Ihrem virtuellen Netzwerk ausgeführt wird. 
 
-Worker sind Rollen, die Kunden-Apps hosten. Worker sind in drei festen Größen verfügbar:
-
-- Zwei vCPUs/8 GB RAM
-- Vier vCPUs/16 GB RAM
-- Acht vCPUs/32 GB RAM
-
-Kunden müssen keine Front-Ends und Worker verwalten. Die gesamte Infrastruktur ist automatisch. Wenn App Service-Pläne erstellt oder in einer ASE skaliert werden, wird die erforderliche Infrastruktur nach Bedarf hinzugefügt bzw. entfernt.
-
-Es gibt eine Gebühr für Isolated V2-App Service-Plan-Instanzen. Wenn in Ihrer ASE keine App Service-Pläne vorliegen, werden Ihnen Gebühren wie für einen App Service-Plan mit einer Instanz der Zwei-Kern-Worker in Rechnung gestellt.
+Anwendungen werden in App Service-Plänen gehostet, die in einer App Service-Umgebung erstellt werden. Der App Service-Plan ist im Wesentlichen ein Bereitstellungsprofil für einen Anwendungshost. Wenn Sie Ihren App Service-Plan aufskalieren, erstellen Sie auf jedem Host mit allen Apps in diesem App Service-Plan mehr Anwendungshosts. Eine einzelne ASEv3 kann insgesamt bis zu 200 App Service-Planinstanzen in allen App Service-Plänen zusammen haben. Ein einzelner isolierter v2-App Service-Plan kann selbst bis zu 100 Instanzen enthalten. 
 
 ## <a name="virtual-network-support"></a>Unterstützung für virtuelle Netzwerke
-Das ASE-Feature ist eine Bereitstellung von Azure App Service direkt im virtuellen Azure Resource Manager-Netzwerk eines Kunden. Eine ASE ist immer in einem Subnetz eines virtuellen Netzwerks vorhanden. Mithilfe der Sicherheitsfunktionen virtueller Netzwerke können Sie ein- und ausgehende Netzwerkkommunikation für Ihre Apps steuern.
 
-Mithilfe von Netzwerksicherheitsgruppen können Sie die eingehende Netzwerkkommunikation mit dem Subnetz einschränken, das eine ASE enthält. Durch NSGs können Sie Apps hinter Upstreamgeräten und -diensten ausführen, wie WAFs und Netzwerk-SaaS-Anbietern.
+Das ASE-Feature ist eine Bereitstellung von Azure App Service in einem einzelnen Subnetz im virtuellen Azure Resource Manager-Netzwerk (VNET) eines Kunden. Wenn Sie eine App in einer ASE bereitstellen, wird die App über die Eingangsadresse verfügbar gemacht, die der ASE zugewiesen ist. Wenn Ihre ASE mit einer internen VIP bereitgestellt wird, ist die Eingangsadresse für alle Apps eine Adresse im ASE-Subnetz. Wenn Ihre ASE mit einer externen VIP bereitgestellt wird, ist die Eingangsadresse eine Internetadresse, und Ihre Apps befinden sich im öffentlichem DNS. 
 
-Apps müssen häufig auch auf Unternehmensressourcen wie interne Datenbanken und Webdienste zugreifen. Wenn Sie die ASE in einem virtuellen Netzwerk bereitstellen, das über eine VPN-Verbindung mit dem lokalen Netzwerk verfügt, können die Apps in der ASE auf die lokalen Ressourcen zugreifen. Diese Funktion besteht unabhängig davon, ob es sich um ein Site-to-Site-VPN oder ein Azure ExpressRoute-VPN handelt.
+Die Anzahl der von einer ASEv3-Instanz in ihrem Subnetz verwendeten Adressen hängt davon ab, wie viele Instanzen Ihnen für wie viel Datenverkehr zur Verfügung stehen. Es gibt Infrastrukturrollen, die abhängig von der Anzahl der App Service-Pläne und der Last automatisch skaliert werden. Die empfohlene Größe für Ihr ASEv3-Subnetz ist ein /24-CIDR-Block mit 256 Adressen, da dieser eine bis zu ihrem Grenzwert aufskalierte ASEv3-Instanz hosten kann.
 
-## <a name="preview"></a>Vorschau
-Die App Service-Umgebung v3 ist als öffentliche Vorschauversion verfügbar.  Einige Features werden im Verlauf der Vorschauphase hinzugefügt. Die aktuellen Einschränkungen von ASEv3 umfassen Folgendes:
+Für die Apps in einer ASE sind keine Funktionen erforderlich, die für den Zugriff auf Ressourcen in demselben VNET aktiviert sind, in dem sich die ASE befindet. Wenn das ASE-VNET mit einem anderen Netzwerk verbunden ist, können die Apps in der ASE auf Ressourcen in diesen erweiterten Netzwerken zugreifen. Der Datenverkehr kann durch die Benutzerkonfiguration im Netzwerk blockiert werden. 
 
-- App Service-Pläne können nicht über fünfzig Instanzen hinaus skaliert werden.
-- Es kann kein Container aus einer privaten Registrierung abgerufen werden.
-- Derzeit nicht unterstützte App Service-Features können im Kunden-VNET nicht genutzt werden.
-- Kein externes Bereitstellungsmodell mit einem Endpunkt, auf den über das Internet zugegriffen werden kann.
-- Keine Befehlszeilenunterstützung (AZ CLI und PowerShell)
-- Keine Funktion für das Upgrade von ASEv2 auf ASEv3
-- Keine FTP-Unterstützung
-- Einige App Service-Features können im Kunden-VNET nicht genutzt werden. Sicherung/Wiederherstellung, Key Vault-Verweise in App-Einstellungen, die Verwendung einer privaten Containerregistrierung und die Diagnoseprotokollierung im Speicher funktionieren nicht mit Dienstendpunkten oder privaten Endpunkten.
-    
-### <a name="asev3-preview-architecture"></a>Architektur der ASEv3-Vorschau
-In der ASEv3-Vorschau verwendet die ASE private Endpunkte, um eingehenden Datenverkehr zu unterstützen. Der private Endpunkt wird in der allgemeinen Verfügbarkeit durch Lastenausgleichsmodule ersetzt. In der Vorschauversion verfügt die ASE nicht über integrierte Unterstützung für einen Endpunkt, auf den über das Internet zugegriffen werden kann. Sie könnten für diesen Zweck ein Application Gateway hinzufügen. Die ASE benötigt Ressourcen in zwei Subnetzen.  Eingehender Datenverkehr wird über einen privaten Endpunkt geleitet. Der private Endpunkt kann in einem beliebigen Subnetz platziert werden, sofern er eine verfügbare Adresse hat, die von privaten Endpunkten verwendet werden kann.  Das Ausgangssubnetz muss leer sein und an Microsoft.Web/hostingEnvironments delegiert werden. Während der Verwendung durch die ASE kann das ausgehende Subnetz für nichts anderes verwendet werden.
+Die mehrinstanzenfähige Version von Azure App Service enthält zahlreiche Features, mit denen Ihre Apps eine Verbindung mit Ihren verschiedenen Netzwerken herstellen können. Mit diesen Netzwerkfeatures können Ihre Apps so agieren, als würden sie in einem VNET bereitgestellt. Die Apps in einer ASEv3-Instanz benötigen keine Konfiguration im VNET. Die Verwendung einer ASE hat gegenüber dem mehrinstanzenfähigen Dienst den Vorteil, dass alle Steuerungen des Netzwerkzugriffs auf die gehosteten ASE-Apps außerhalb der Anwendungskonfiguration ausgeführt werden. Im mehrinstanzenfähigen Dienst müssen Sie die Features für die Apps auf App-Basis aktivieren und RBAC oder Richtlinien verwenden, um Konfigurationsänderungen zu verhindern. 
 
-Bei ASEv3 gibt es keine Netzwerkanforderungen hinsichtlich Eingang oder Ausgang im ASE-Subnetz. Sie können den Datenverkehr mit Netzwerksicherheitsgruppen und Routingtabellen steuern, und dies wirkt sich nur auf den Anwendungsdatenverkehr aus. Löschen Sie nicht den privaten Endpunkt, der Ihrer ASE zugeordnet ist, da diese Aktion nicht rückgängig gemacht werden kann. Der für die ASE verwendete private Endpunkt wird für alle Apps in der ASE verwendet. 
+## <a name="feature-differences"></a>Featureunterschiede
+
+ASEv3 unterscheidet sich in einigen Punkten von früheren ASE-Versionen. Für ASEv3 gilt:
+
+- Es gibt keine Netzwerkabhängigkeiten im Kunden-VNET. Sie können den gesamten eingehenden und ausgehenden Datenverkehr nach Bedarf schützen. Ausgehender Datenverkehr kann auch nach Bedarf weitergeleitet werden. 
+- Die für Zonenredundanz aktivierte Bereitstellung ist möglich. Zonenredundanz kann nur während der ASEv3-Erstellung und nur in Regionen festgelegt werden, in denen alle ASEv3-Abhängigkeiten zonenredundant sind. 
+- Die Bereitstellung für eine dedizierte Hostgruppe ist möglich. Hostgruppenbereitstellungen sind nicht zonenredundant. 
+- Die Skalierung ist viel schneller als mit ASEv2. Die Skalierung erfolgt zwar nicht sofort wie im mehrinstanzenfähigen Dienst, ist aber viel schneller.
+- Front-End-Skalierungsanpassungen sind nicht mehr erforderlich. Die ASEv3-Front-Ends werden automatisch skaliert, um die Anforderungen zu erfüllen, und werden auf besseren Hosts bereitgestellt. 
+- Die Skalierung blockiert nicht mehr andere Skalierungsvorgänge innerhalb der ASEv3-Instanz. Für eine Kombination aus Betriebssystem und Größe kann nur ein einziger Skalierungsvorgang wirksam sein. Während Ihr Windows Small- App Service-Plan skaliert wird, könnten Sie z. B. einen Skalierungsvorgang starten, der gleichzeitig auf einem Windows Medium-System oder einem beliebigen anderen als einem Windows Small-System ausgeführt wird. 
+- Apps in einer internen VIP-ASEv3 können über globales Peering erreicht werden. Der Zugriff über globales Peering war mit ASEv2 nicht möglich. 
+
+Einige in früheren Versionen der ASE verfügbare Features sind in ASEv3 nicht verfügbar. Folgendes ist in ASEv3 nicht möglich:
+
+- Senden von SMTP-Datenverkehr. Sie können weiterhin Warnungen per E-Mail auslösen, Ihre App kann jedoch keinen ausgehenden Datenverkehr auf Port 25 senden.
+- Bereitstellen Ihrer Apps mit FTP
+- Verwenden des Remotedebuggens mit Ihren Apps
+- Upgrade noch von ASEv2
+- Überwachen Ihres Datenverkehrs mit Network Watcher oder NSG-Flow
+- Konfigurieren einer IP-basierten TLS/SSL-Bindung mit Ihren Apps
+
+## <a name="pricing"></a>Preise 
+
+Bei ASEv3 gibt es je nach Art der ASE-Bereitstellung ein anderes Preismodell. Es gibt drei verschiedene Preismodelle: 
+
+- **ASEv3**: Wenn die ASE leer ist, fällt eine Gebühr an, als ob Sie einen ASP mit einer Instanz von Windows I1v2 hätten. Die Gebühr für eine Instanz ist keine additive Gebühr, Sie wird jedoch nur angewendet, wenn die ASE leer ist.
+- **Verfügbarkeitszone ASEv3**: Es gibt eine Gebühr für eine Mindestanzahl von neun Windows I1v2-Instanzen. Wenn Sie über neun oder mehr App Service Planinstanzen verfügen, fällt keine zusätzliche Gebühr für die Unterstützung von Verfügbarkeitszonen an. Alle App Service-Pläne in einer AZ-ASEv3-Instanz haben auch eine Mindestanzahl von 3 Instanzen, um sicherzustellen, dass in jeder Verfügbarkeitszone eine Instanz vorhanden ist. Wenn die Pläne hochskaliert werden, werden sie auf die Verfügbarkeitszonen verteilt. 
+- **Dedizierter Host-ASEv3**: Bei der Bereitstellung eines dedizierten Hosts werden Ihnen zwei dedizierte Hosts gemäß unserer Preisgestaltung bei der ASEv3-Erstellung in Rechnung gestellt. Bei der Skalierung wird dann ein kleiner Prozentsatz des isolierten V2-Tarifs pro Core berechnet.
+
+Die Preise für reservierte Instanzen für isolierte V2 sind verfügbar und werden unter [Anwenden von Reservierungsrabatten auf Azure App Service][reservedinstances] beschrieben. Die Preisgestaltung, zusammen mit der Preisgestaltung für reservierte Instanzen, ist bei der [App Service Preisgestaltung][pricing] unter dem **Plan für isolierte V2** verfügbar. 
+
+## <a name="regions"></a>Regions
+
+Die ASEv3 ist in den folgenden Regionen verfügbar. 
+
+|Normale und dedizierte ASEv3-Regionen|   AZ-ASEv3-Regionen|
+|---------------------------------------|------------------|
+|Australien (Osten)|    Australien (Osten)|
+|Australien, Südosten|Brasilien Süd|
+|Brasilien Süd   |Kanada, Mitte|
+|Kanada, Mitte|USA (Mitte)|
+|Indien, Mitte  |East US|
+|USA (Mitte) |USA (Ost) 2|
+|Asien, Osten  | Frankreich, Mitte|
+|East US    | Deutschland, Westen-Mitte|
+|USA (Ost) 2| Nordeuropa|
+|Frankreich, Mitte | USA Süd Mitte|
+|Deutschland, Westen-Mitte   |   Asien, Südosten|
+|Korea, Mitte  | UK, Süden|
+|Nordeuropa   | Europa, Westen|
+|Norwegen, Osten    | USA, Westen 2 |
+|USA Süd Mitte   | |
+|Asien, Südosten| |
+|Schweiz, Norden  | | 
+|UK, Süden| |    
+|UK, Westen| |
+|USA, Westen-Mitte    | | 
+|Europa, Westen    | |
+|USA (Westen)    | | 
+|USA, Westen 2| |
+
+<!--Links-->
+[reservedinstances]: https://docs.microsoft.com/azure/cost-management-billing/reservations/reservation-discount-app-service#how-reservation-discounts-apply-to-isolated-v2-instances
+[pricing]: https://azure.microsoft.com/pricing/details/app-service/windows/

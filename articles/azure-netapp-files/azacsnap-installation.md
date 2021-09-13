@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/19/2021
+ms.date: 08/03/2021
 ms.author: phjensen
-ms.openlocfilehash: 0eae929d60ce852e7a98f12430de796aa664d86f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 5eae527b288570053e1e899bc776d541ffa9e60b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110481448"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346115"
 ---
 # <a name="install-azure-application-consistent-snapshot-tool"></a>Installieren des Tools für konsistente Momentaufnahmen
 
@@ -69,9 +69,13 @@ Befolgen Sie die Richtlinien zum Einrichten und Ausführen der Befehle für Mome
 
 ## <a name="enable-communication-with-storage"></a>Aktivieren der Kommunikation mit dem Speicher
 
-In diesem Abschnitt wird erläutert, wie Sie die Kommunikation mit dem Speicher aktivieren.
+In diesem Abschnitt wird erläutert, wie Sie die Kommunikation mit dem Speicher aktivieren.  
 
-### <a name="azure-netapp-files"></a>Azure NetApp Files
+Befolgen Sie die Anweisungen zum Konfigurieren des Speichers für Ihre Konfiguration:
+1. [Azure NetApp Files (mit Virtual Machine)](#azure-netapp-files-with-virtual-machine) 
+1. [Azure (große Instanz) (Bare-Metal)](#azure-large-instance-bare-metal)
+
+### <a name="azure-netapp-files-with-virtual-machine"></a>Azure NetApp Files (mit Virtual Machine)
 
 Erstellen eines RBAC-Dienstprinzipals
 
@@ -114,7 +118,7 @@ Erstellen eines RBAC-Dienstprinzipals
 
 1. Schneiden Sie den Inhalt der Ausgabe aus, und fügen Sie ihn in eine Datei namens `azureauth.json` ein, die im selben System wie der Befehl `azacsnap` gespeichert ist. Sichern Sie die Datei mit geeigneten Systemberechtigungen.
 
-### <a name="azure-large-instance"></a>Azure (große Instanz)
+### <a name="azure-large-instance-bare-metal"></a>Azure (große Instanz) (Bare-Metal)
 
 Die Kommunikation mit dem Speicher-Back-End erfolgt über einen verschlüsselten SSH-Kanal. Die folgenden Beispielschritte dienen als Anleitung für die Einrichtung von SSH für diese Kommunikation.
 

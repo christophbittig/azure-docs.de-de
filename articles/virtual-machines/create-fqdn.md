@@ -9,14 +9,14 @@ ms.workload: infrastructure-services
 ms.date: 05/07/2021
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c63bb64cac0642c0472862a9c3272b9939f39bb9
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 8567097258305bab622fe8aa46d6a6a95be33d68
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109732612"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346659"
 ---
-# <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>Erstellen eines vollqualifizierten Domänennamens im Azure-Portal für eine Linux-VM
+# <a name="create-a-fully-qualified-domain-name-for-a-vm-in-the-azure-portal"></a>Erstellen eines vollqualifizierten Domänennamens für eine VM im Azure-Portal
 
 Beim Erstellen eines virtuellen Computers (Virtual Machine, VM) im [Azure-Portal](https://portal.azure.com) wird automatisch eine öffentliche IP als Ressource für den virtuellen Computer erstellt. Mit dieser öffentlichen IP-Adresse greifen Sie per Remotezugriff auf den virtuellen Computer zu. Obwohl das Portal standardmäßig keinen [vollqualifizierten Domänennamen](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (Fully Qualified Domain Name, FQDN) erstellt, können Sie nach der Erstellung des virtuellen Computers einen solchen hinzufügen. Dieser Artikel demonstriert die einzelnen Schritte, um einen DNS-Namen oder einen FQDN zu erstellen. Wenn Sie einen virtuellen Computer ohne öffentliche IP-Adresse erstellen, können Sie keinen FQDN erstellen.
 

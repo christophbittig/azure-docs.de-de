@@ -3,20 +3,20 @@ title: Verwenden der Sprachenerkennung
 titleSuffix: Azure Cognitive Services
 description: Die Sprachenerkennung wird verwendet, um aufgrund eines Vergleichs anhand einer Liste bereitgestellter Sprachen die gesprochene Sprache mit der an das Speech SDK übergebenen Audioeingabe zu ermitteln.
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/21/2021
-ms.author: trbye
+ms.author: lajanuar
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: 2c9adacbb9e333c81c4f90868a69f8a23a3c15a7
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: e24a24b54d31a98497bfba453b6677ebf0f560a9
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111962934"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122343554"
 ---
 # <a name="how-to-use-language-identification"></a>Verwenden der Sprachenerkennung
 
@@ -33,7 +33,7 @@ Dieser Artikel setzt voraus, dass Sie über ein Azure-Abonnement und eine Sprach
 Für die Sprachenerkennung gilt derzeit ein Grenzwert von **vier Sprachen** für die Einzelerkennung und **zehn Sprachen** für die kontinuierliche Erkennung. Beachten Sie diese Einschränkung bei der Erstellung des `AutoDetectSourceLanguageConfig`-Objekts. In den folgenden Beispielen verwenden Sie `AutoDetectSourceLanguageConfig`, um eine Liste möglicher Sprachen zu definieren, die Sie erkennen möchten. Sie können dann beim Ausführen der Spracherkennung auf diese Sprachen verweisen.
 
 > [!IMPORTANT]
-> Die kontinuierliche Sprachenerkennung befindet sich derzeit in der **Vorschauversion** und wird nur in C# und C++ unterstützt.
+> Die kontinuierliche Sprachenerkennung wird nur in C#, C++ und Python unterstützt.
 
 ::: zone pivot="programming-language-csharp"
 
@@ -155,14 +155,11 @@ using (var audioInput = AudioConfig.FromWavFileInput(@"path-to-your-audio-file.w
 ```
 
 > [!NOTE]
-> Die Modi `Latency` und `Accuracy` sowie die mehrsprachige kontinuierliche Erkennung werden derzeit nur in C# und C++ unterstützt.
+> Die Modi `Latency` und `Accuracy` sowie die mehrsprachige kontinuierliche Erkennung werden derzeit nur in C#, C++ und Python unterstützt.
  
 ::: zone-end
 
 ::: zone pivot="programming-language-cpp"
-
-> [!IMPORTANT]
-> Dieses Feature, wie unten gezeigt, befindet sich derzeit in der **Vorschauversion**.
 
 Im folgenden Beispiel wird die Einzelerkennung ausgeführt und `Latency` priorisiert. Diese Eigenschaft kann je nach Priorität für Ihren Anwendungsfall auch auf `Accuracy` festgelegt werden. `Latency` ist die beste Option, die Sie verwenden können, wenn Sie ein latenzarmes Ergebnis benötigen (z. B. für einen Livestreamingfall), aber die Sprache im Audiobeispiel nicht kennen. 
 
@@ -265,7 +262,7 @@ recognizer->StopContinuousRecognitionAsync().get();
 ```
 
 > [!NOTE]
-> Die Modi `Latency` und `Accuracy` sowie die mehrsprachige kontinuierliche Erkennung werden derzeit nur in C# und C++ unterstützt.
+> Die Modi `Latency` und `Accuracy` sowie die mehrsprachige kontinuierliche Erkennung werden derzeit nur in C#, C++ und Python unterstützt.
 
 ::: zone-end
 
@@ -406,22 +403,22 @@ Im [Beispiel auf GitHub](https://github.com/Azure-Samples/cognitive-services-spe
 
 ::: zone pivot="programming-language-java"
 > [!IMPORTANT]
-> Dieses Feature wird derzeit nur in C# und C++ unterstützt.
+> Dieses Feature wird derzeit nur in C#, C++ und Python unterstützt.
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
 > [!IMPORTANT]
-> Dieses Feature wird derzeit nur in C# und C++ unterstützt.
+> Dieses Feature wird derzeit nur in C#, C++ und Python unterstützt.
 ::: zone-end
 
 ::: zone pivot="programming-language-objectivec"
 > [!IMPORTANT]
-> Dieses Feature wird derzeit nur in C# und C++ unterstützt.
+> Dieses Feature wird derzeit nur in C#, C++ und Python unterstützt.
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript"
 > [!IMPORTANT]
-> Dieses Feature wird derzeit nur in C# und C++ unterstützt.
+> Dieses Feature wird derzeit nur in C#, C++ und Python unterstützt.
 ::: zone-end
 
 ## <a name="use-a-custom-model-for-language-identification"></a>Verwenden eines benutzerdefinierten Modells für die Sprachenerkennung

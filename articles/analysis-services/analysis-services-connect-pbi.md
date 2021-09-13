@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie mithilfe von Power BI eine Verbindung mit ein
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 5/25/2021
+ms.date: 06/30/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 579f97deaadf8005d7a7986ff3b032909c28972e
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: a956d5e3be0a5f92e22dcd1536339ff5244e19dc
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110496559"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113213349"
 ---
 # <a name="connect-with-power-bi"></a>Herstellen einer Verbindung mit Power BI
 
@@ -37,10 +37,12 @@ Sobald Sie in Azure einen Server erstellt, und ein tabellarisches Modell bereitg
     
     Wenn Sie über ein Power BI-Modell im [gemischten Speichermodus](/power-bi/transform-model/desktop-composite-models) verfügen,wird die Option **Live verbinden** durch die Option **[DirectQuery](/power-bi/connect-data/desktop-directquery-datasets-azure-analysis-services)** ersetzt. Liveverbindungen werden auch automatisch auf DirectQuery aktualisiert, wenn das Modell vom Import- in den gemischten Speichermodus gewechselt wird.
 
-5. Geben Sie bei der entsprechenden Aufforderung Ihre Anmeldeinformationen ein. 
+5. Wenn Sie aufgefordert werden, Ihre Anmeldeinformationen einzugeben, klicken Sie auf **Microsoft-Konto** und dann auf **Anmelden**. 
+
+    :::image type="content" source="media/analysis-services-connect-pbi/aas-sign-in.png" alt-text="Anmelden bei Azure AS":::
 
    > [!NOTE]
-   > Konten mit Einmalkennung (One-Time Passcode, OTP) werden nicht unterstützt. 
+   > Die Windows-Authentifizierung und die Standardauthentifizierung werden nicht unterstützt. 
 
 6. Erweitern Sie in **Navigator** den Server, wählen Sie das Modell oder die Perspektive aus, mit dem/der Sie eine Verbindung herstellen möchten, und klicken Sie dann auf **Verbinden**. Klicken Sie auf ein Modell oder eine Perspektive, um alle Objekte für diese Ansicht anzuzeigen.
 
@@ -55,7 +57,7 @@ Sobald Sie in Azure einen Server erstellt, und ein tabellarisches Modell bereitg
 
 Um die Leistung des Systems zu schützen, wird ein Arbeitsspeicherlimit für alle Abfragen erzwungen, die von Power BI-Berichten an Azure Analysis Services ausgegeben werden, unabhängig vom auf dem Azure Analysis Services-Server konfigurierten [Abfragespeicherlimit](/analysis-services/server-properties/memory-properties?view=azure-analysis-services-current&preserve-view=true). Bei zu speicherintensiven Abfragen sollten Benutzer in Erwägung ziehen, die Abfrage oder die zugehörigen Berechnungen zu vereinfachen.
 
-|                                                           | Anforderungsspeicherlimit |
+|Abfragetyp| Anforderungsspeicherlimit |
 |-----------------------------------------------------------|----------------------|
 | Herstellen einer Liveverbindung von Power BI                            | 10 GB  |
 | DirectQuery von Power BI-Bericht im freigegebenen Arbeitsbereich  | 1 GB   |

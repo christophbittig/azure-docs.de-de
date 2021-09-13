@@ -3,12 +3,12 @@ title: Ändern von Azure Service Fabric-Clustereinstellungen
 description: Dieser Artikel beschreibt die Fabric-Einstellungen und Fabric-Upgraderichtlinien, die Sie anpassen können.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: ef89cb50770eecb7b61798562ba6228f0ecd0071
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 5d6f15f4178b9f026be7205832a1f40c3dc01bab
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110479819"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114720674"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Anpassen von Service Fabric-Clustereinstellungen
 Dieser Artikel beschreibt die verschiedenen Fabric-Einstellungen, die Sie für Ihren Service Fabric-Cluster anpassen können. Für in Azure gehostete Cluster können Sie Einstellungen über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage anpassen. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines Azure-Clusters](service-fabric-cluster-config-upgrade-azure.md). Für eigenständige Cluster passen Sie die Einstellungen durch Aktualisieren der Datei *ClusterConfig.json* und ein Konfigurationsupgrade in Ihrem Cluster an. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines eigenständigen Clusters](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -65,6 +65,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |DeployedState |wstring, Standardwert „Disabled“ |Statisch |Zweistufige Entfernung von CSS |
+|UpdateEncryptionCertificateTimeout |TimeSpan, Standardwert ist Common::TimeSpan::MaxValue |statischen |Geben Sie die Zeitspanne in Sekunden an. Der Standardwert wurde in TimeSpan::MaxValue geändert. Außerkraftsetzungen werden jedoch weiterhin beachtet. Kann in Zukunft als veraltet eingestuft werden. |
 
 ## <a name="clustermanager"></a>ClusterManager
 
@@ -102,6 +103,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |AllowCreateUpdateMultiInstancePerNodeServices |Boolesch, Standardwert „false“ |Dynamisch|Ermöglicht das Erstellen mehrerer zustandsloser Instanzen eines Diensts pro Knoten. Diese Funktion steht derzeit als Vorschau zur Verfügung. |
+|EnableAuxiliaryReplicas |Boolesch, Standardwert „false“ |Dynamisch|Aktivieren Sie die Erstellung oder Aktualisierung von zusätzlichen Replikaten für Dienste. Wenn der Wert „true“ lautet, werden Upgrades von SF Version 8.1 und höher auf „lower targetVersion“ blockiert. |
 |PerfMonitorInterval |Zeit in Sekunden, Standardwert 1 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Intervall für die Leistungsüberwachung. Mit 0 oder einem negativen Wert wird die Überwachung deaktiviert. |
 
 ## <a name="defragmentationemptynodedistributionpolicy"></a>DefragmentationEmptyNodeDistributionPolicy
@@ -144,11 +146,14 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 | **Parameter** | **Zulässige Werte** |**Upgraderichtlinie**| **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |EnablePartitionedQuery|Boolesch, Standardwert FALSE|statischen|Das Flag zum Aktivieren der Unterstützung für DNS-Abfragen bei partitionierten Diensten. Dieses Feature ist standardmäßig deaktiviert. Weitere Informationen finden Sie unter [DNS-Dienst in Azure Service Fabric](service-fabric-dnsservice.md).|
+|ForwarderPoolSize|Ganze Zahl, Standardwert 20|statischen|Die Anzahl der Weiterleitungen im Weiterleitungspool.|
+|ForwarderPoolStartPort|Ganze Zahl, Standardwert ist „16700“|Statisch|Die Startadresse für den Weiterleitungspool, der für rekursive Abfragen verwendet wird.|
 |InstanceCount|Ganze Zahl, Standardwert -1|statischen|Der Standardwert ist -1. Das bedeutet, dass DnsService auf jedem Knoten ausgeführt wird. Für OneBox muss diese Option auf 1 festgelegt werden, da DnsService den bekannten Port 53 verwendet, damit nicht mehrere Instanzen auf dem gleichen Computer auftreten.|
 |isEnabled|Boolesch, Standardwert FALSE|statischen|Aktiviert/deaktiviert DnsService. DnsService ist standardmäßig deaktiviert, und diese Konfiguration muss zur Aktivierung festgelegt werden. |
 |PartitionPrefix|Zeichenfolge, Standardwert „--“|statischen|Steuert den Wert der Partitionspräfix-Zeichenfolge in DNS-Abfragen für partitionierte Dienste. Der Wert: <ul><li>Muss RFC-kompatibel sein, da er Teil einer DNS-Abfrage ist.</li><li>Darf keinen Punkt („.“) enthalten, weil Punkte das Verhalten von DNS-Suffixen beeinträchtigen.</li><li>Darf nicht länger als 5 Zeichen sein.</li><li>Darf keine leere Zeichenfolge sein.</li><li>Wenn die PartitionPrefix-Einstellung überschrieben wird, muss auch PartitionSuffix überschrieben werden – und umgekehrt.</li></ul>Weitere Informationen finden Sie unter [DNS-Dienst in Azure Service Fabric](service-fabric-dnsservice.md).|
 |PartitionSuffix|string, Standardwert ""|statischen|Steuert den Wert der Partitionssuffix-Zeichenfolge in DNS-Abfragen für partitionierte Dienste. Der Wert: <ul><li>Muss RFC-kompatibel sein, da er Teil einer DNS-Abfrage ist.</li><li>Darf keinen Punkt („.“) enthalten, weil Punkte das Verhalten von DNS-Suffixen beeinträchtigen.</li><li>Darf nicht länger als 5 Zeichen sein.</li><li>Wenn die PartitionPrefix-Einstellung überschrieben wird, muss auch PartitionSuffix überschrieben werden – und umgekehrt.</li></ul>Weitere Informationen finden Sie unter [DNS-Dienst in Azure Service Fabric](service-fabric-dnsservice.md). |
-|RetryTransientFabricErrors|Boolesch, Standardwert „true“|statischen|Die Einstellung steuert die Wiederholungsfunktionen beim Aufrufen von Service Fabric-APIs aus DnsService. Wenn diese Option aktiviert ist, werden bis zu drei Mal Wiederholungsversuche ausgeführt, wenn ein vorübergehender Fehler auftritt.|
+|TransientErrorMaxRetryCount|Ganze Zahl, Standardwert 3|statischen|Steuert, wie oft SF DNS wiederholt wird, wenn beim Aufrufen von SF-APIs ein vorübergehender Fehler auftritt (z. B. beim Abrufen von Namen und Endpunkten).|
+|TransientErrorRetryIntervalInMillis|Ganze Zahl, Standardwert 0|statischen|Legt die Verzögerung in Millisekunden zwischen Wiederholungen fest, wenn SF DNS Aufrufe an SF-APIs ausführt.|
 
 ## <a name="eventstoreservice"></a>EventStoreService
 
@@ -356,6 +361,8 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |DeploymentRetryBackoffInterval| TimeSpan, Standardwert Common::TimeSpan::FromSeconds(10)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Backoffintervall für den Fehler bei der Bereitstellung. Bei jedem Continuous Deployment-Fehler wiederholt das System die Bereitstellung bis zu MaxDeploymentFailureCount Mal. Das Wiederholungsintervall ist das Produkt aus dem Continuous Deployment-Fehler und dem Backoffintervall der Bereitstellung. |
 |DisableContainers|Boolesch, Standardwert FALSE|statischen|Konfiguration für das Deaktivieren von Containern – wird anstelle von „DisableContainerServiceStartOnContainerActivatorOpen“ verwendet, der veralteten Konfigurationsoption. |
 |DisableDockerRequestRetry|Boolesch, Standardwert FALSE |Dynamisch| Standardmäßig kommuniziert SF mit dem DD (Docker-Daemon) mit dem Timeout „DockerRequestTimeout“ für jede an ihn gesendete HTTP-Anforderung. Reagiert der DD nicht innerhalb dieses Zeitraums, sendet SF die Anforderung erneut, sofern für den übergeordneten Vorgang noch Zeit bleibt.  Bei Hyper-V-Containern benötigt der DD manchmal erheblich mehr Zeit zum Aufrufen oder Deaktivieren des Containers. In diesem Fall fordert der DD aus Sicht von SF ein Timeout an, und SF wiederholt den Vorgang. Manchmal scheint dies den Druck auf den DD zu erhöhen. Diese Konfiguration ermöglicht es, die Wiederholung zu deaktivieren und auf eine Reaktion des DD zu warten. |
+|DisableLivenessProbes | wstring, Standardwert L"" | Statisch | Konfiguration zum Deaktivieren von Livetests im Cluster Sie können einen beliebigen nicht leeren Wert für SF angeben, um Tests zu deaktivieren. |
+|DisableReadinessProbes | wstring, Standardwert L"" | Statisch | Konfiguration zum Deaktivieren von Bereitschaftstests im Cluster. Sie können einen beliebigen nicht leeren Wert für SF angeben, um Tests zu deaktivieren. |
 |DnsServerListTwoIps | Boolesch, Standardwert ist „false“ | statischen | Durch diese Flags wird der lokale DNS-Server zwei Mal hinzugefügt, um zeitweilig auftretende Probleme zu beheben. |
 | DockerTerminateOnLastHandleClosed | Boolesch, Standardwert TRUE | statischen | Wenn in der Standardeinstellung FabricHost „dockerd“ verwaltet (basierend auf: SkipDockerProcessManagement = FALSE), wird mit dieser Einstellung konfiguriert, welche Aktion nach einem Absturz von FabricHost oder „dockerd“ ausgeführt werden soll. Bei Festlegung auf `true` werden im Fall eines Absturzes eines der beiden Prozesse alle ausgeführten Container von HCS beendet. Bei Festlegung auf `false` werden die Container weiter ausgeführt. Hinweis: Vor Version 8.0 war dieses Verhalten die unbeabsichtigte Entsprechung von `false`. Die Standardeinstellung `true` entspricht der erwarteten Standardvorgehensweise, bei der die Bereinigungslogik weiter durchlaufen wird, um beim Neustart dieser Prozesse wirksam zu werden. |
 | DoNotInjectLocalDnsServer | Boolesch, Standardwert FALSE | statischen | Verhindert, dass die Runtime die lokale IP-Adresse als DNS-Server für Container einbindet. |
@@ -536,6 +543,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |ConstraintFixPartialDelayAfterNewNode | Zeit in Sekunden, Standardwert 120 |Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Beheben Sie keine FaultDomain- und UpgradeDomain-Einschränkungsverletzungen innerhalb dieses Zeitraums nach dem Hinzufügen eines neuen Knotens. |
 |ConstraintFixPartialDelayAfterNodeDown | Zeit in Sekunden, Standardwert 120 |Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Beheben Sie keine FaultDomain- und UpgradeDomain-Einschränkungsverletzungen innerhalb dieses Zeitraums nach einem Knotenausfall. |
 |ConstraintViolationHealthReportLimit | Ganze Zahl, Standardwert 50 |Dynamisch| Definiert, wie häufig ein Einschränkungen verletzendes Replikat dauerhaft nicht korrigiert bleiben muss, bevor eine Diagnose durchgeführt wird und Integritätsberichte ausgegeben werden. |
+|DecisionOperationalTracingEnabled | Boolesch, Standardwert FALSE |Dynamisch| Konfiguration, die die operative Ablaufverfolgung des CRM-Entscheidungsvorgangs im Ereignisspeicher ermöglicht. |
 |DetailedConstraintViolationHealthReportLimit | Ganze Zahl, Standardwert 200 |Dynamisch| Definiert, wie häufig ein Einschränkungen verletzendes Replikat dauerhaft nicht korrigiert bleiben muss, bevor eine Diagnose durchgeführt wird und detaillierte Integritätsberichte ausgegeben werden. |
 |DetailedDiagnosticsInfoListLimit | Ganze Zahl, Standardwert 15 |Dynamisch| Definiert die Anzahl von Diagnoseeinträgen (mit detaillierten Informationen) pro Einschränkung, die vor der Kürzung in die Diagnose aufgenommen werden.|
 |DetailedNodeListLimit | Ganze Zahl, Standardwert 15 |Dynamisch| Definiert die Anzahl von Knoten pro Einschränkung, die vor der Kürzung in Berichte zu nicht platzierten Replikaten aufgenommen werden. |
@@ -581,6 +589,8 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |TraceCRMReasons |Boolesch, Standardwert „true“ |Dynamisch|Gibt an, ob Gründe für von CRM ausgegebene Datenverschiebungen zum Kanal für Betriebsereignisse verfolgt werden sollen. |
 |UpgradeDomainConstraintPriority | Ganze Zahl, Standardwert 1| Dynamisch|Bestimmt die Priorität der Einschränkung für die Upgradedomäne: 0: Stark; 1: Schwach; negativ: Ignorieren. |
 |UseMoveCostReports | Boolesch, Standardwert „false“ | Dynamisch|Weist LB an, das Kostenelement der Bewertungsfunktion zu ignorieren. Dies führt möglicherweise zu mehr Datenverschiebungen für eine Platzierung mit besserem Lastenausgleich. |
+|UseSeparateAuxiliaryLoad | Boolesch, Standardwert „true“ | Dynamisch|Einstellung, die bestimmt, ob PLB auf jedem Knoten unterschiedliche Last für Hilfsknoten verwenden soll. Wenn UseSeparateAuxiliaryLoad deaktiviert ist: – Die gemeldete Last für Erweiterungen führt zu einer Überschreibung der Last für jede Erweiterung (auf allen anderen Knoten). Wenn UseSeparateAuxiliaryLoad aktiviert ist: – Die gemeldete Last für Erweiterungen wird nur auf dieser Erweiterung wirksam (keine Auswirkung auf Erweiterungen auf anderen Knoten). Wenn ein Replikatabsturz auftritt: – Es wird ein neues Replikat mit durchschnittlicher Last aller anderen Erweiterungen erstellt. – Wenn PLB ein vorhandenes Replikat verschiebt: – wird die Last mit ihm verbunden. |
+|UseSeparateAuxiliaryMoveCost | Boolesch, Standardwert „false“ | Dynamisch|Einstellung, die bestimmt, ob PLB auf jedem Knoten unterschiedliche Verschiebungskosten für Erweiterungen verwenden soll. Wenn UseSeparateAuxiliaryMoveCost deaktiviert ist: – Die gemeldeten Verschiebungskosten für Erweiterungen führen zu einer Überschreibung der Verschiebungskosten für jede Erweiterung (auf allen anderen Knoten). Wenn UseSeparateAuxiliaryMoveCost aktiviert ist: – Die gemeldeten Verschiebungskosten für Erweiterungen werden nur auf dieser Erweiterung wirksam (keine Auswirkung auf Erweiterungen auf anderen Knoten). Wenn ein Replikatabsturz auftritt: – Es wird ein neues Replikat mit den auf Dienstebene angegebenen Standardverschiebungskosten erstellt. – Wenn PLB ein vorhandenes Replikat verschiebt: – werden die Verschiebungskosten mit ihm verbunden. |
 |UseSeparateSecondaryLoad | Boolesch, Standardwert „true“ | Dynamisch|Hierbei handelt es sich um eine Einstellung, die festlegt, ob für sekundäre Replikate eine separate Auslastung verwendet werden soll. |
 |UseSeparateSecondaryMoveCost | Boolesch, Standardwert „true“ | Dynamisch|Einstellung, die steuert, ob von PLB unterschiedliche Verschiebungskosten für das sekundäre Replikat auf jedem Knoten verwendet werden sollen. Wenn „UseSeparateSecondaryMoveCost“ deaktiviert ist, gilt: - Die gemeldeten Verschiebungskosten für das sekundäre Replikat auf einem Knoten haben die Überschreibung der Kosten für jedes sekundäre Replikat (auf allen anderen Knoten) zur Folge. Wenn „UseSeparateSecondaryMoveCost“ aktiviert ist, gilt: - Die gemeldeten Verschiebungskosten für das sekundäre Replikat auf einem Knoten haben nur Auswirkungen auf dieses sekundäre Replikat und keine Auswirkungen auf sekundäre Replikate auf anderen Knoten. - Im Falle von Replikatausfällen gilt: - Das neue Replikat wird mit den auf Dienstebene angegebenen Standardverschiebungskosten erstellt. - Wenn das vorhandene Replikat von PLB verschoben wird, gilt: - Die Verschiebungskosten werden ebenfalls übertragen. |
 |ValidatePlacementConstraint | Boolesch, Standardwert „true“ |Dynamisch| Gibt an, ob der PlacementConstraint-Ausdruck für einen Dienst überprüft wird, wenn ServiceDescription für einen Dienst aktualisiert wird. |
@@ -883,6 +893,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |MaxSecondaryReplicationQueueMemorySize |Uint, Standardwert 0 | statischen |Dies ist der maximale Wert für die sekundäre Replikationswarteschlange in Bytes. |
 |MaxSecondaryReplicationQueueSize |Uint, Standardwert 16384 | statischen |Dies ist die maximale Anzahl von Vorgängen, die in der sekundären Replikationswarteschlange vorhanden sein können. Beachten Sie, dass der Wert eine Potenz von 2 sein muss. |
 |ReplicatorAddress |string, Standardwert „localhost:0“ | statischen | Der Endpunkt in Form einer Zeichenfolge – „IP:Port“. Wird vom Windows Fabric-Replikator verwendet, um Verbindungen mit anderen Replikaten herzustellen, um Vorgänge zu senden/zu empfangen. |
+|ShouldAbortCopyForTruncation |Boolesch, Standardwert FALSE | statischen | Lässt zu, dass das ausstehende Protokoll während des Kopiervorgangs abgeschnitten wird. Wenn diese Option aktiviert ist, kann die Kopierphase von Builds abgebrochen werden, wenn das Protokoll voll ist und sie auf „block truncation“ gesetzt sind. |
 
 ## <a name="transport"></a>Transport
 | **Parameter** | **Zulässige Werte** |**Upgraderichtlinie** |**Anleitung oder Kurzbeschreibung** |

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/10/2021
+ms.date: 08/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2f983027c142eb9e1325f7673b8d888f15dcdf18
-ms.sourcegitcommit: 19dfdfa85e92c6a34933bdd54a7c94e8b00eacfd
+ms.openlocfilehash: a3c8b3d97a117e88c323253134be383fb0766355
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109664580"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345832"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -104,7 +104,7 @@ Das **DataUri**-Element wird verwendet, um den Seitenbezeichner anzugeben. Azure
 | `globalexception` | Zeigt eine Fehlerseite an, wenn eine Ausnahme oder ein Fehler auftreten. |
 | `providerselection`, `idpselection` | Listet die Identitätsanbieter auf, unter denen Benutzer bei der Registrierung auswählen können.  |
 | `unifiedssp` | Zeigt ein Formular für die Anmeldung mit einem lokalen Konto, das auf einer E-Mail-Adresse oder einem Benutzernamen basiert, an. Dieser Wert stellt auch die Funktion „Angemeldet bleiben“ und die Verknüpfung „Kennwort vergessen?“ bereit . |
-| `unifiedssd` | Zeigt ein Formular für die Anmeldung mit einem lokalen Konto, das auf einer E-Mail-Adresse oder einem Benutzernamen basiert, an. |
+| `unifiedssd` | Zeigt ein Formular für die Anmeldung mit einem lokalen Konto, das auf einer E-Mail-Adresse oder einem Benutzernamen basiert, an. Dieser Seitenbezeichner ist veraltet. Nutzen Sie stattdessen den Seitenbezeichner `unifiedssp`.  |
 | `multifactor` | Überprüft während der Registrierung oder Anmeldung (per SMS oder Sprachnachricht) die Telefonnummern. |
 | `selfasserted` | Zeigt ein Formular zum Sammeln von Daten eines Benutzers an. Hier können Benutzer beispielsweise ihr Profil erstellen oder aktualisieren. |
 
@@ -144,15 +144,15 @@ Um vom alten **DataUri-Wert** (ohne Seitenvertrag) zur Seitenlayoutversion zu mi
 | `urn:com:microsoft:aad:b2c:elements:globalexception:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.1` |
 | `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.1` |
 | `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.1` |
-| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.4` |
-| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.4` |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssd:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssd:2.1.4` |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:2.1.4` |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:2.1.4` |
-| `urn:com:microsoft:aad:b2c:elements:multifactor:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.0` |
-| `urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.7` |
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.7` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssd:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssd:1.2.1` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:2.1.5` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:2.1.5` |
+| `urn:com:microsoft:aad:b2c:elements:multifactor:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.5` |
+| `urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.5` |
 
-Im folgenden Beispiel werden die Inhaltsdefinitions-IDs mit dem zugehörigen **DataUri** für die aktuelle Seitenversion gezeigt: 
+Im folgenden Beispiel werden die Inhaltsdefinitions-IDs mit dem zugehörigen **DataUri** für die [aktuelle Seitenversion](page-layout.md) gezeigt: 
 
 ```xml
 <!-- 
@@ -168,22 +168,23 @@ Im folgenden Beispiel werden die Inhaltsdefinitions-IDs mit dem zugehörigen **D
       <DataUri>urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.1</DataUri>
     </ContentDefinition>
     <ContentDefinition Id="api.signuporsignin">
-      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:2.1.4</DataUri>
+      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:2.1.5</DataUri>
     </ContentDefinition>
     <ContentDefinition Id="api.selfasserted">
-      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.4</DataUri>
+      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.7</DataUri>
     </ContentDefinition>
     <ContentDefinition Id="api.selfasserted.profileupdate">
-      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.4</DataUri>
+      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.7</DataUri>
     </ContentDefinition>
     <ContentDefinition Id="api.localaccountsignup">
-      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.4</DataUri>
+      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.7</DataUri>
     </ContentDefinition>
     <ContentDefinition Id="api.localaccountpasswordreset">
-      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.4</DataUri>
+      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.7</DataUri>
     </ContentDefinition>
     <ContentDefinition Id="api.phonefactor">
-      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.2</DataUri>
+      <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.5</DataUri>
     </ContentDefinition>
   </ContentDefinitions>
 <!-- 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/02/2021
-ms.openlocfilehash: 44efb85ae2101ee1f35bd82b739e87103ad228bd
-ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
+ms.openlocfilehash: 1324c26491e8c6f6368700d41f7f0aa8b12de8c6
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122681350"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351208"
 ---
 # <a name="monitor-virtual-machines-with-azure-monitor"></a>Überwachen von VMs mit Azure Monitor
 In diesem Szenario wird beschrieben, wie Sie mithilfe von Azure Monitor die Integrität und Leistung von VMs und deren Workloads überwachen. Es umfasst die Sammlung wichtiger Telemetriedaten für die Überwachung, die Analyse und Visualisierung der gesammelten Daten, um Trends zu identifizieren, sowie die Konfiguration von Warnungen, um proaktiv über kritische Probleme informiert zu werden.
@@ -39,11 +39,11 @@ Dieses Szenario beinhaltet die Überwachung der folgenden Computertypen mit Azur
 ## <a name="layers-of-monitoring"></a>Überwachungsebenen
 Ein virtueller Computer verfügt grundsätzlich über vier Ebenen, die überwacht werden müssen. Jede Ebene verfügt über einen eigenen Satz von Telemetriedaten und Überwachungsanforderungen. 
 
-| Ebene | Beschreibung |
+| Ebene | BESCHREIBUNG |
 |:---|:---|
 | VM-Host | Der Host für virtuelle Computer in Azure. Azure Monitor hat keinen Zugriff auf den Host in anderen Clouds, sondern muss sich auf die Informationen verlassen, die vom Gastbetriebssystem gesammelt werden. Der Host kann für das Nachverfolgen von bestimmten Aktivitäten, wie z. B. Konfigurationsänderungen, nützlich sein. Er wird in der Regel jedoch nicht für bedeutende Warnungen verwendet. |
 | Gastbetriebssystem | Das Betriebssystem, das auf dem virtuellen Computer ausgeführt wird. Dabei handelt es sich um eine Windows- oder Linux-Version. Das Gastbetriebssystem verfügt über eine beträchtliche Menge an Überwachungsdaten, z. B. Leistungsdaten und Ereignisse. VM Insights in Azure Monitor verfügt über vielfältige Logikoptionen zur Überwachung der Integrität und Leistung des Gastbetriebssystems. |
-| Workloads | Workloads, die in dem Gastbetriebssystem ausgeführt werden und Ihre Geschäftsanwendungen unterstützen. Azure Monitor bietet eine vordefinierte Überwachung für bestimmte Workloads. In der Regel müssen Sie die Datensammlung und Warnungen für andere Workloads konfigurieren, indem Sie die von diesen Workloads generierten Überwachungsdaten verwenden. |
+| Arbeitsauslastungen | Workloads, die in dem Gastbetriebssystem ausgeführt werden und Ihre Geschäftsanwendungen unterstützen. Azure Monitor bietet eine vordefinierte Überwachung für bestimmte Workloads. In der Regel müssen Sie die Datensammlung und Warnungen für andere Workloads konfigurieren, indem Sie die von diesen Workloads generierten Überwachungsdaten verwenden. |
 | Application | Die Geschäftsanwendung, die von Ihren virtuellen Computern abhängt, kann mithilfe von [Application Insights](../app/app-insights-overview.md) überwacht werden. 
 
 :::image type="content" source="media/monitor-virtual-machines/monitoring-layers.png" alt-text="Diagramm der Überwachungsebenen" lightbox="media/monitor-virtual-machines/monitoring-layers.png":::
@@ -61,7 +61,7 @@ Jedes Überwachungstool (z. B. Azure Monitor) erfordert, dass ein Agent auf dem 
 > [!NOTE]
 > Der Azure Monitor-Agent wird den Log Analytics-Agent, die Diagnoseerweiterung und den Telegraf-Agent vollständig ersetzen, sobald er die erforderliche Funktionalität erreicht. Diese anderen Agents sind jedoch weiterhin für Features wie VM Insights, Azure Security Center und Azure Sentinel erforderlich.
 
-- [Azure Monitor-Agent](../agents/agents-overview.md#azure-monitor-agent): Unterstützt virtuelle Computer in Azure, anderen Cloudumgebungen und lokal. Sendet Daten an Azure Monitor Metrics und Azure Monitor Logs. Wenn der Agent VM Insights, Azure Security Center und Azure Sentinel vollständig unterstützt, kann er den Log Analytics-Agent und die Diagnoseerweiterung vollständig ersetzen.
+- [Azure Monitor-Agent](../agents/agents-overview.md#log-analytics-agent): Unterstützt virtuelle Computer in Azure, anderen Cloudumgebungen und lokal. Sendet Daten an Azure Monitor Metrics und Azure Monitor Logs. Wenn der Agent VM Insights, Azure Security Center und Azure Sentinel vollständig unterstützt, kann er den Log Analytics-Agent und die Diagnoseerweiterung vollständig ersetzen.
 - [Log Analytics-Agent](../agents/agents-overview.md#log-analytics-agent): Unterstützt virtuelle Computer in Azure, anderen Cloudumgebungen und lokal. Sendet Daten an Azure Monitor Logs. Unterstützt VM Insights-Lösungen und Überwachungslösungen Derselbe Agent wird für den System Center Operations Manager verwendet.
 - [Dependency-Agent](../agents/agents-overview.md#dependency-agent): Sammelt Daten über Prozesse, die auf dem virtuellen Computer ausgeführt werden, und über ihre Abhängigkeiten. Basiert auf dem Log Analytics-Agent zum Übertragen von Daten in Azure und unterstützt VM Insights, Dienstzuordnung und Wire Data 2.0-Lösungen.
 - [Azure-Diagnose-Erweiterung](../agents/agents-overview.md#azure-diagnostics-extension): Nur für Azure Monitor-VMs verfügbar. Kann Daten an Azure Event Hubs und Azure Storage senden.

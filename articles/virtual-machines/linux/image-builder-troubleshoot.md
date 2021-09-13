@@ -9,17 +9,14 @@ ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6ef288e776daaf7aa266d13068647bea1c5a4c27
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 32de7c963a7b82c70f4225e35a4e9acb8d429717
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122691887"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444538"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>Problembehandlung für den Azure Image Builder-Dienst
-
-**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
-
 Dieser Artikel hilft Ihnen, häufige Probleme zu beheben, die beim Verwenden des Azure Image Builder-Diensts auftreten können.
 
 ## <a name="prerequisites"></a>Voraussetzungen

@@ -932,7 +932,7 @@
         - name: Übersicht
           displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
           href: availability-set-overview.md
-        - name: CLI
+        - name: Befehlszeilenschnittstelle (CLI)
           displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
           href: ./linux/tutorial-availability-sets.md
         - name: PowerShell
@@ -960,7 +960,7 @@
         - name: Übersicht
           displayName: 'proximity placement groups, ppg'
           href: co-location.md
-        - name: CLI
+        - name: Befehlszeilenschnittstelle (CLI)
           displayName: 'proximity placement groups, ppg'
           href: ./linux/proximity-placement-groups.md
         - name: PowerShell
@@ -1208,10 +1208,8 @@
               href: ../backup/restore-managed-disks.md?context=/azure/virtual-machines/context/context
         - name: Sicherung und Notfallwiederherstellung für verwaltete Datenträger
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
-        - name: 'Erstellen einer Momentaufnahme eines Datenträgers: CLI'
-          href: ./linux/snapshot-copy-managed-disk.md
-        - name: 'Erstellen einer Momentaufnahme eines Datenträgers: PowerShell'
-          href: ./windows/snapshot-copy-managed-disk.md
+        - name: Erstellen einer Momentaufnahme eines Datenträgers
+          href: snapshot-copy-managed-disk.md
         - name: Sichern nicht verwalteter Datenträger
           href: ./linux/incremental-snapshots.md
         - name: Sicherung und Notfallwiederherstellung für nicht verwaltete Datenträger
@@ -1387,7 +1385,7 @@
           href: ../virtual-network/virtual-network-deploy-static-pip-arm-portal.md?context=/azure/virtual-machines/context/context
         - name: Azure PowerShell
           href: ../virtual-network/virtual-network-deploy-static-pip-arm-ps.md?context=/azure/virtual-machines/context/context
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: ../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?context=/azure/virtual-machines/context/context
         - name: Hinzufügen einer öffentlichen IP-Adresse zu einem vorhanden virtuellen Computer
           href: ../virtual-network/associate-public-ip-address-vm.md?context=/azure/virtual-machines/context/context
@@ -1407,7 +1405,7 @@
           href: ../virtual-network/virtual-network-multiple-ip-addresses-portal.md?context=/azure/virtual-machines/context/context
         - name: Azure PowerShell
           href: ../virtual-network/virtual-network-multiple-ip-addresses-powershell.md?context=/azure/virtual-machines/context/context
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: ../virtual-network/virtual-network-multiple-ip-addresses-cli.md?context=/azure/virtual-machines/context/context
         - name: Hinzufügen oder Entfernen von Netzwerkschnittstellen
           href: ../virtual-network/virtual-network-network-interface-vm.md?context=/azure/virtual-machines/context/context
@@ -1415,7 +1413,7 @@
           items:
             - name: Azure PowerShell
               href: ./windows/multiple-nics.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: ./linux/multiple-nics.md
     - name: 'Erstellen eines virtuellen Computers: beschleunigter Netzwerkbetrieb'
       items:

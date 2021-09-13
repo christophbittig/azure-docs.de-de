@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 author: jpe316
 ms.author: jordane
-ms.date: 03/17/2020
+ms.date: 07/08/2021
 ms.custom: seodec18
-ms.openlocfilehash: 88a2dc2e38861cff540cfa1fcdc0b3f6e9651b04
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 0ef4715bb854905f8076ee116f672eee2d33a059
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111439906"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349880"
 ---
 # <a name="mlops-model-management-deployment-lineage-and-monitoring-with-azure-machine-learning"></a>MLOps: Verwaltung, Bereitstellung, Nachverfolgung der Herkunft und Überwachung von Modellen mit Azure Machine Learning
 
@@ -39,6 +39,7 @@ Azure Machine Learning bietet die folgenden MLOps-Features:
 - **Überwachen von ML-Anwendungen auf betriebs- und ML-bezogene Probleme**. Vergleichen Sie Modelleingaben zwischen Trainings- und Inferenzphase, untersuchen Sie modellspezifische Metriken, und stellen Sie Überwachungsfunktionen und Warnungen für Ihre ML-Infrastruktur bereit.
 - **Automatisieren des End-to-End-ML-Lebenszyklus mit Azure Machine Learning und Azure Pipelines**. Mithilfe von Pipelines können Sie Modelle regelmäßig aktualisieren, neue Modelle testen und fortlaufende Rollouts von neuen ML-Modellen zusätzlich zu Ihren anderen Anwendungen und Diensten durchführen.
 
+Weitere Informationen zu MLOps finden Sie unter [DevOps für maschinelles Lernen (MLOps) – ein Leitfaden](/azure/cloud-adoption-framework/ready/azure-best-practices/ai-machine-learning-mlops).
 ## <a name="create-reproducible-ml-pipelines"></a>Erstellen reproduzierbarer ML-Pipelines
 
 Verwenden Sie ML-Pipelines aus Azure Machine Learning, um alle Schritte zu verbinden, die am Trainingsprozess Ihres Modells beteiligt sind.
@@ -94,9 +95,9 @@ Weitere Informationen zu ONNX mit Azure Machine Learning finden Sie im Artikel [
 
 ### <a name="use-models"></a>Verwenden von Modellen
 
-Trainierte Machine Learning-Modelle werden als Webdienste in der Cloud oder lokal bereitgestellt. Sie können Modelle auch auf Azure IoT Edge-Geräten bereitstellen. Bereitstellungen verwenden CPUs, GPUs oder Field Programmable Gate Arrays (FPGAs) für das Ziehen von Rückschlüssen. Sie können auch Modelle aus Power BI verwenden.
+Trainierte Machine Learning-Modelle werden als Webdienste in der Cloud oder lokal bereitgestellt. Bereitstellungen verwenden CPUs, GPUs oder Field Programmable Gate Arrays (FPGAs) für das Ziehen von Rückschlüssen. Sie können auch Modelle aus Power BI verwenden.
 
-Wenn Sie ein Modell als Webdienst oder auf einem IoT Edge-Gerät verwenden, stellen Sie die folgenden Elemente bereit:
+Wenn Sie ein Modell als Webdienst verwenden, stellen Sie die folgenden Elemente bereit:
 
 * Die Modelle, die zum Bewerten der Daten dienen, die an den Dienst bzw. das Gerät übermittelt werden.
 * Ein Eingabeskript. Dieses Skript akzeptiert Anforderungen, verwendet die Modelle zum Bewerten der Daten und gibt eine Antwort zurück.
@@ -105,7 +106,7 @@ Wenn Sie ein Modell als Webdienst oder auf einem IoT Edge-Gerät verwenden, stel
 
 Sie stellen auch die Konfiguration der Zielbereitstellungsplattform bereit. Beispielsweise den Typ der VM-Familie, den verfügbaren Arbeitsspeicher und die Anzahl von Kernen bei der Bereitstellung in Azure Kubernetes Service.
 
-Wenn das Image erstellt wird, werden auch die Komponenten hinzugefügt, die von Azure Machine Learning benötigt werden. Beispielsweise die Ressourcen, die erforderlich sind, um den Webdienst auszuführen und mit IoT Edge zu interagiere.
+Wenn das Image erstellt wird, werden auch die Komponenten hinzugefügt, die von Azure Machine Learning benötigt werden. Beispielsweise die Ressourcen, die zum Ausführen des Webdiensts erforderlich sind.
 
 #### <a name="batch-scoring"></a>Batchbewertung
 Die Batchbewertung durch ML-Pipelines wird unterstützt. Weitere Informationen finden Sie im Artikel [Batchvorhersagen für Big Data](./tutorial-pipeline-batch-scoring-classification.md).
@@ -135,12 +136,6 @@ Bei der Bereitstellung in Azure Kubernetes Service können Sie einen kontrollier
 * Wechsel zwischen Endpunktversionen durch Aktualisierung des Prozentsatzes an Datenverkehr in der Endpunktkonfiguration
 
 Weitere Informationen finden Sie unter [Kontrollierter Rollout von ML-Modellen](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview).
-
-#### <a name="iot-edge-devices"></a>IoT Edge-Geräte
-
-Sie können Modelle mit IoT-Geräten über **Azure IoT Edge-Module** verwenden. IoT Edge-Module werden auf einem Hardwaregerät bereitgestellt, wodurch Rückschlüsse bzw. Modellbewertungen auf dem Gerät ermöglicht werden.
-
-Weitere Informationen finden Sie unter [Bereitstellen von Modellen](how-to-deploy-and-where.md).
 
 ### <a name="analytics"></a>Analytics
 

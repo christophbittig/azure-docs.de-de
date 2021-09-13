@@ -9,12 +9,12 @@ ms.subservice: pipeline
 ms.date: 11/03/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: 79f0b1a6942f141f0a2d2d38adc5875d82e86d50
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: aa11979d205693cb730cda64debd4430dbb0b43f
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567620"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112541966"
 ---
 # <a name="ingest-data-into-a-dedicated-sql-pool"></a>Erfassen von Daten in einem dedizierten SQL-Pool
 
@@ -22,9 +22,11 @@ In diesem Artikel erfahren Sie, wie Daten aus einem Azure Data Lake Gen 2-Speic
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Azure-Abonnement**: Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-* **Azure-Speicherkonto**: Sie verwenden Azure Data Lake Storage Gen 2 als *Quelldatenspeicher*. Wenn Sie kein Speicherkonto haben, finden Sie unter [Erstellen eines Azure Storage-Kontos](../../storage/common/storage-account-create.md) die erforderlichen Schritte zum Erstellen eines solchen Kontos.
-* **Azure Synapse Analytics**: Sie verwenden einen dedizierten SQL-Pool als *Senkendatenspeicher*. Wenn Sie keine Azure Synapse Analytics-Instanz haben, finden Sie unter [Erstellen eines dedizierten SQL-Pools](../../azure-sql/database/single-database-create-quickstart.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) die erforderlichen Schritte zum Erstellen einer solchen Instanz.
+- **Azure-Abonnement**: Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+- **Azure-Speicherkonto**: Sie verwenden Azure Data Lake Storage Gen 2 als *Quelldatenspeicher*. Wenn Sie kein Speicherkonto haben, finden Sie unter [Erstellen eines Azure Storage-Kontos](../../storage/common/storage-account-create.md) die erforderlichen Schritte zum Erstellen eines solchen Kontos.
+- **Azure Synapse Analytics**: Sie verwenden einen dedizierten SQL-Pool als *Senkendatenspeicher*. 
+    - Wenn Sie über keinen vorhandenen Synapse-Arbeitsbereich verfügen, finden Sie Informationen unter [Erstellen eines Synapse-Arbeitsbereichs](../get-started-create-workspace.md).
+    - Wenn Sie über keinen vorhandenen dedizierten SQL-Pool verfügen, lesen Sie den Abschnitt [Erstellen eines dedizierten SQL-Pools](../get-started-analyze-sql-pool.md#create-a-dedicated-sql-pool).
 
 ## <a name="create-linked-services"></a>Erstellen von verknüpften Diensten
 

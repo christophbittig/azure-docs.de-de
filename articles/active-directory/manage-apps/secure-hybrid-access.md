@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 8/17/2021
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2dcba2b9435cb20cc112da1355cc31cbcb8dff2
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 3a1447b059409a278850fccde31f43b4dad2dca8
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123029810"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418645"
 ---
 # <a name="secure-hybrid-access-secure-legacy-apps-with-azure-active-directory"></a>Sicherer Hybridzugriff: Schützen von Legacy-Anwendungen mit Azure Active Directory
 
@@ -44,7 +44,7 @@ Die folgenden Partner bieten vorgefertigte Lösungen zur Unterstützung von Rich
 
 - [Citrix Application Delivery Controller (ADC)](https://docs.microsoft.com/azure/active-directory/saas-apps/citrix-netscaler-tutorial)  
 
-- [Datawiza Access Broker](datawiza-with-azure-ad.md)
+- [Datawiza Access Broker](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal-setup-oidc-sso)
 
 - [F5 Big-IP APM ADC](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-integration)
 

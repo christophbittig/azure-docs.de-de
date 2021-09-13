@@ -8,14 +8,16 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 1875f43203735707a1bf49ac4e2d008abf898828
-ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
+ms.openlocfilehash: b24f24547e45b8ef580715828839ec1b1e5b4618
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113664471"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692692"
 ---
 # <a name="redundancy-options-for-managed-disks"></a>Redundanzoptionen für verwaltete Datenträger
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Verwaltete Azure-Datenträger bieten zwei Optionen für die Speicherredundanz: zonenredundanten Speicher (ZRS) als Vorschau und lokal redundanten Speicher. Zonenredundanter Speicher (ZRS) bietet eine höhere Verfügbarkeit für verwaltete Datenträger als lokal redundanter Speicher (LRS). Allerdings ist die Wartezeit beim Schreiben bei LRS-Datenträgern besser als bei ZRS-Datenträgern, da LRS-Datenträger Daten synchron auf drei Kopien in einem einzelnen Rechenzentrum schreiben.
 

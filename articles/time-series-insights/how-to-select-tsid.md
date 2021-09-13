@@ -1,21 +1,21 @@
 ---
 title: Bewährte Methoden für die Auswahl einer Time Series-ID – Azure Time Series Insights | Microsoft-Dokumentation
 description: Erfahren Sie die bewährten Methoden bei der Auswahl einer Time Series-ID in Azure Time Series Insights Gen2.
-author: shipramishra
-ms.author: shmishr
-manager: diviso
+author: tedvilutis
+ms.author: tvilutis
+manager: cnovak
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 03/23/2021
 ms.custom: seodec18
-ms.openlocfilehash: 8aefa6efa5f10dae8a28e7126b91b7b5f6ac77a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3a15b0c74ebe9a4696c2b61b6dd3b16d9f4b9d10
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104950738"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346205"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Bewährte Methoden für die Auswahl einer Time Series-ID
 
@@ -37,7 +37,7 @@ Sehen Sie sich das Tutorial zur Umgebungsbereitstellung an, das eine ausführlic
 > * Sie sind *unveränderliche* Eigenschaften: Nach dem Erstellen können sie nicht mehr geändert werden.
 
 > [!TIP]
-> Wenn es sich bei Ihrer Ereignisquelle um einen IoT-Hub handelt, lautet Ihre Zeitreihen-ID wahrscheinlich ***iothub-connection-device-id***.
+> Wenn es sich bei Ihrer Ereignisquelle um einen IoT-Hub handelt, lautet Ihre Zeitreihen-ID wahrscheinlich ***iothub-connection-device-id***. Wenn Sie IoT Plug & Play-Gerätemodelle oder keine Komponenten verwenden möchten, sollten Sie ***dt-subject*** im zusammengesetzten Schlüssel angeben, falls Sie dies später benötigen.
 
 Zu den wichtigsten bewährten Methoden gehören:
 

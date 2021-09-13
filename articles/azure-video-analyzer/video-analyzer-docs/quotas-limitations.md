@@ -3,13 +3,13 @@ title: Azure Video Analyzer-Kontingente und -Einschränkungen – Azure
 description: Dieser Artikel beschreibt die Kontingente und Einschränkungen von Azure Video Analyzer.
 ms.service: azure-video-analyzer
 ms.topic: conceptual
-ms.date: 05/26/2021
-ms.openlocfilehash: d4bc488411319832b59540fb1392b5d3259cef69
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.date: 06/01/2021
+ms.openlocfilehash: a94ebd36728519b7ae73d9cc48c82097dcfdbb21
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110652185"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114602083"
 ---
 # <a name="video-analyzer-quotas-and-limitations"></a>Video Analyzer-Kontingente und -Einschränkungen
 
@@ -60,7 +60,9 @@ Im Folgenden sind die Einschränkungen aufgeführt, wie verschiedene Knoten in e
 ### <a name="supported-cameras"></a>Unterstützte Kameras
 Es können nur IP-Kameras verwendet werden, die das RTSP-Protokoll unterstützen. IP-Kameras, die RTSP unterstützen, finden Sie auf der [Seite mit den ONVIF-konformen Produkten](https://www.onvif.org/conformant-products). Suchen Sie nach Geräten, die mit den Profilen G, S oder T konform sind.
 
-Außerdem sollten diese Kameras für die Verwendung von H.264-Video und AAC-Audio konfiguriert werden. Andere Codecs werden zurzeit nicht unterstützt.
+Sie sollten diese Kameras so konfigurieren, dass H.264-Videos und AAC-Audios verwendet werden. Andere Codecs werden zurzeit nicht unterstützt.
+
+Azure Video Analyzer unterstützt das RTSP nur mit [ineinander verzahnten RTP-Streams]( https://datatracker.ietf.org/doc/html/rfc2326#section-10.12). In diesem Modus wird RTP-Datenverkehr über die RTSP-TCP-Verbindung getunnelt. RTP-Datenverkehr über UDP wird nicht unterstützt.
 
 ### <a name="support-for-video-ai"></a>Unterstützung für Video-KI
 Die Erweiterungsprozessoren HTTP oder gRPC unterstützen nur das Senden von Bild-/Videobilddaten mit einem externen KI-Modul. Aufgrund dessen wird das Rückschließen auf Audiodaten nicht unterstützt. Daher verwenden Prozessorknoten in Pipeline-Topologien, zu denen ein RTSP-Quellknoten als `inputs` gehört, ebenfalls eine `outputSelectors`-Eigenschaft, um sicherzustellen, dass nur Video in den Prozessor geleitet wird. Sehen Sie sich diese [Topologie](https://github.com/Azure/video-analyzer/blob/main/pipelines/live/topologies/evr-grpcExtension-video-sink/topology.json) als Beispiel an.

@@ -4,24 +4,24 @@ description: Integrieren Sie eine Log Analytics-Abfrage in Excel, und aktualisie
 ms.topic: conceptual
 author: roygalMS
 ms.author: roygal
-ms.date: 11/03/2020
-ms.openlocfilehash: f2834e9bd91ecbbf32e0321179c2359862a5b605
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 06/10/2021
+ms.openlocfilehash: 7cfe8ac2badd292b73b77dd13d7e7ca4bf24a428
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102041109"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114474123"
 ---
 # <a name="integrate-log-analytics-and-excel"></a>Integrieren von Log Analytics und Excel
 
-Sie können Azure Monitor Log Analytics und Microsoft Excel mithilfe der M-Abfrage und der Log Analytics-API integrieren. Diese Integration ermöglicht Ihnen, bis zu 500.000 Datensätze an Excel zu senden, solange die Gesamtmenge der Ergebnisse 61 MiB nicht überschreitet.
+Sie können Azure Monitor Log Analytics und Microsoft Excel mithilfe der M-Abfrage und der Log Analytics-API integrieren. Diese Integration ermöglicht Ihnen das Senden einer bestimmten Anzahl von Datensätzen und MB an Daten. Diese Grenzwerte werden im Abschnitt zu den [Log Analytics-Arbeitsbereichsgrenzwerten für Azure Monitor](../service-limits.md#log-analytics-workspaces) im Abschnitt zum Azure-Portal dokumentiert. 
 
 > [!NOTE]
 > Da es sich bei Excel um eine lokale Clientanwendung handelt, wirken sich lokale Hardware- und Softwareeinschränkungen auf die Leistung und die Fähigkeit aus, große Datenmengen zu verarbeiten.
 
 ## <a name="create-your-m-query-in-log-analytics"></a>Erstellen Ihrer M-Abfrage in Log Analytics 
 
-1. **Erstellen und führen Sie Ihre Abfrage** wie gewohnt in Log Analytics aus. Machen Sie sich keine Sorgen, wenn Sie die Einschränkung von 10.000 Datensätzen in der Benutzeroberfläche erreichen  Es wird empfohlen, relative Datumsangaben wie die „ago“-Funktion oder die Zeitauswahl auf der Benutzeroberfläche zu verwenden, damit Excel die richtigen Datensätze aktualisiert.
+1. **Erstellen und führen Sie Ihre Abfrage** wie gewohnt in Log Analytics aus. Machen Sie sich keine Sorgen, wenn Sie die maximale Anzahl der zulässigen Datensätze auf der Benutzeroberfläche erreichen.  Es wird empfohlen, relative Datumsangaben wie die „ago“-Funktion oder die Zeitauswahl auf der Benutzeroberfläche zu verwenden, damit Excel die richtigen Datensätze aktualisiert.
   
 2. **Abfrage exportieren:** Sobald Sie mit der Abfrage und den Ergebnissen zufrieden sind, exportieren Sie die Abfrage über die Log Analytics-Menüauswahl **In Power BI exportieren (M-Abfrage)** im Menü *Exportieren* nach M:
 

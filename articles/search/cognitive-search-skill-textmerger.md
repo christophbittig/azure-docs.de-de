@@ -2,25 +2,24 @@
 title: Der kognitive Skill „Text zusammenführen“
 titleSuffix: Azure Cognitive Search
 description: Führen Sie Text aus einer Sammlung von Feldern in einem konsolidierten Feld zusammen. Verwenden Sie diesen kognitiven Skill in einer KI-Anreicherungspipeline in der kognitiven Azure-Suche.
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: b364655f26c6ac29c14d387d69d7b4277d6aeb86
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/12/2021
+ms.openlocfilehash: 4ea7681a28cf8f17c53e42e9ad05ddf12b5d2f9b
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88924638"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356089"
 ---
 #   <a name="text-merge-cognitive-skill"></a>Der kognitive Skill „Text zusammenführen“
 
 Der Skill **Text zusammenführen** konsolidiert Text aus einer Sammlung von Feldern in einem einzigen Feld. 
 
 > [!NOTE]
-> Dieser Skill ist nicht an eine Cognitive Services-API gebunden, und Ihnen entstehen für seine Nutzung keine Kosten. Es wird jedoch empfohlen, dennoch eine [Cognitive Services-Ressource anzufügen](cognitive-search-attach-cognitive-services.md), um die Ressourcenoption **Free** außer Kraft zu setzen, durch die Sie auf eine geringe Anzahl von Anreicherungen pro Tag beschränkt werden.
+> Dieser Skill ist nicht an Cognitive Services gebunden. Er ist nicht gebührenpflichtig und weist keine Cognitive Services-Schlüsselanforderungen auf.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.MergeSkill

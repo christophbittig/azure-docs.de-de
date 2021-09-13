@@ -6,15 +6,15 @@ metadata:
   services: storage
   ms.service: storage
   ms.topic: conceptual
-  ms.date: 01/14/2021
+  ms.date: 08/24/2021
   ms.author: alkohli
   ms.subservice: common
-  ms.openlocfilehash: 51af880897564851750dccd756601d86a1dab889
-  ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+  ms.openlocfilehash: bfdbb966783e4f95945933c074265d8c45ee1f61
+  ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/30/2021
-  ms.locfileid: "113094833"
+  ms.lasthandoff: 08/25/2021
+  ms.locfileid: "122867609"
 title: 'Azure Import/Export-Dienst: Häufig gestellte Fragen'
 summary: >
   Es folgen Fragen, die Sie möglicherweise stellen, wenn Sie Ihren Azure Import/Export-Dienst zum Übertragen von Daten in Azure Storage verwenden, und die zugehörigen Antworten.
@@ -124,6 +124,10 @@ sections:
       Beim Versand der Festplatte fragt der Kurierdienst nach der Anschrift und der Telefonnummer des Rechenzentrums. Was muss ich hier angeben?
     answer: >
       Die Telefonnummer und die Adresse des Rechenzentrums werden beim Erstellen des Auftrags angegeben.
+  - question: >
+      Warum ist mein Bestellstatus weiterhin Versand, obwohl mein Gerät bereits geliefert wurde?
+    answer: >
+      Nachdem der Spediteur ein physisches Gerät zugestellt hat, dauert es 1 bis 3 Werktage, bis die Lieferung in Azure Import/Export verarbeitet wird. Nach Abschluss der Verarbeitung ändert sich der Status des Auftrags in „Empfangen“.
 - name: Sonstiges
   questions:
   - question: >

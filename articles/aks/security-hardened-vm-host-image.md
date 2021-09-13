@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/29/2021
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: b0866905d0228d2304ebf5c8ef930a629979d2da
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: fbdfec42038f48eefb707c85e54c1788841dd42d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012076"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339264"
 ---
 # <a name="security-hardening-for-aks-agent-node-host-os"></a>Sicherheitshärtung beim AKS-Hostbetriebssystem für Agent-Knoten
 
@@ -21,7 +21,7 @@ Da es sich bei Azure Kubernetes Service (AKS) um einen sicheren Dienst handelt, 
 > [!Note]
 > Dieses Dokument bezieht sich nur auf Linux-Agents in AKS.
 
-AKS-Cluster werden auf virtuellen Hostcomputern mit einem sicherheitsoptimierten Betriebssystem bereitgestellt, das für in AKS ausgeführte Container verwendet wird. Dieses Hostbetriebssystem basiert auf einem Image vom Typ **Ubuntu 16.04.LTS**, auf das zusätzliche [Sicherheitshärtung](#security-hardening-features) und Optimierungen angewendet werden.
+AKS-Cluster werden auf virtuellen Hostcomputern mit einem sicherheitsoptimierten Betriebssystem bereitgestellt, das für in AKS ausgeführte Container verwendet wird. Dieses Hostbetriebssystem basiert auf einem Image vom Typ **Ubuntu 18.04.5 LTS**, auf das zusätzliche die [Sicherheitshärtung](#security-hardening-features) und Optimierungen angewendet werden.
 
 Das Ziel des sicherheitsgehärteten Hostbetriebssystems ist es, die Angriffsfläche zu verringern und die Bereitstellung von Containern auf sichere Weise zu optimieren.
 

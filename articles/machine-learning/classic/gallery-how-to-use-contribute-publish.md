@@ -9,19 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 935d0149a4a6b33c5272e57aab5f1cc9c3bb2924
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42327bc0d3acd8f3afbd99814fa2687372a564d1
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100519846"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688826"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Freigeben und Entdecken von Ressourcen im Azure KI-Katalog
 
-**GILT FÜR:**  ![Dies ist ein Häkchen, d. h., dieser Artikel bezieht sich auf Machine Learning Studio (Classic). ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic)   ![Dies ist ein X, d. h., dieser Artikel bezieht sich auf Azure Machine Learning. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**GILT FÜR:**  ![Dies ist ein Häkchen, d. h., dieser Artikel bezieht sich auf Machine Learning Studio (Classic).](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic)   ![Dies ist ein X, d. h., dieser Artikel bezieht sich nicht auf Azure Machine Learning.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-
-
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 **[Azure AI Gallery](https://gallery.azure.ai)** ist eine communitybasierte Website zum Entdecken und Teilen von Lösungen, die mit Azure-KI-Diensten erstellt wurden.
 Der Katalog enthält viele Ressourcen, mit denen Sie Ihre eigenen Analytics-Lösungen entwickeln können.
@@ -30,7 +29,7 @@ Der Katalog enthält viele Ressourcen, mit denen Sie Ihre eigenen Analytics-Lös
 
 Der Azure KI-Katalog enthält verschiedene Ressourcen, die von Microsoft und Mitgliedern der Data Science-Community bereitgestellt wurden. Dazu gehören:
 
-* **Experimente**: Die Gallery enthält eine Vielzahl von Experimenten, die in Azure Machine Learning Studio (klassisch) entwickelt wurden. Diese reichen von kurzen Machbarkeitsexperimenten, bei denen ein bestimmtes Machine Learning-Verfahren veranschaulicht wird, bis zu vollständig entwickelten Lösungen für komplexe Machine Learning-Probleme.
+* **Experimente**: Der Katalog enthält eine Vielzahl von Experimenten, die in Machine Learning Studio (Classic) entwickelt wurden. Diese reichen von kurzen Machbarkeitsexperimenten, bei denen ein bestimmtes Machine Learning-Verfahren veranschaulicht wird, bis zu vollständig entwickelten Lösungen für komplexe Machine Learning-Probleme.
 * **Tutorials**: Es sind mehrere Tutorials verfügbar, in denen Machine Learning-Technologien und -Konzepte oder erweiterte Methoden zum Lösen verschiedener Machine Learning-Probleme beschrieben werden.
 * **Sammlungen**: Mit einer Sammlung können Sie Experimente, APIs und andere Ressourcen gruppieren, die eine bestimmte Lösung oder ein Konzept betreffen.
 * **Benutzerdefinierte Module**: Sie können benutzerdefinierte Module in Ihren (klassischen) Studio-Arbeitsbereich herunterladen und in Ihren eigenen Experimenten verwenden.
