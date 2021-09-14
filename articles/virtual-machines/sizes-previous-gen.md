@@ -8,17 +8,19 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/01/2020
 ms.author: mimckitt
-ms.openlocfilehash: f02c9699dc59db30f2291be1817f564dbc394998
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 6b2a2370f6b98184a48c370c929b948ebc72a84e
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343283"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698671"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Vorherige Generationen von Größen virtueller Computer
 
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
+
 > [!TIP]
-> Probieren Sie das **[Auswahltool für virtuelle Computer](https://aka.ms/vm-selector)** aus, um andere Größen zu ermitteln, die für Ihre Workload optimal sind.
+> Probieren Sie das **[VM-Auswahltool](https://aka.ms/vm-selector)** aus, um andere Größen zu ermitteln, die für Ihre Workload optimal sind.
 
 Dieser Abschnitt enthält Informationen zu den vorherigen Generationen von VM-Größen. Diese Größen können weiterhin verwendet werden, es sind jedoch neuere Generationen verfügbar.
 

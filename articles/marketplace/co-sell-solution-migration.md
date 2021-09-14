@@ -1,19 +1,19 @@
 ---
-title: Migrieren von Co-Selling-Lösungen von OCP GTM zum Partner Center für Microsoft AppSource
-description: Erfahren Sie, wie Sie Co-Selling-Lösungen von OCP GTM zum Partner Center für Microsoft AppSource migrieren.
+title: Migrieren von Co-Selling-Lösungen von OCP GTM zu Partner Center für Microsoft AppSource
+description: Hier erfahren Sie mehr über das Migrieren von Co-Selling-Lösungen von OCP GTM zu Partner Center (Azure Marketplace).
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
-ms.date: 05/18/2021
-ms.openlocfilehash: d4eb677b0f55a8ccd2cda33e6026e01238deb9b3
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 07/13/2021
+ms.openlocfilehash: 6ca8c75e5cf6f5290736cf01a20db63a8fb2d077
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971523"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114389081"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>Migrieren von Co-Selling-Lösungen von OCP GTM zum kommerziellen Marketplace
 
@@ -36,7 +36,7 @@ Stellen Sie sicher, dass Sie über eine aktive Microsoft Partner Network-Mitglie
 
 ## <a name="publishing-updates-for-attaining-co-sell-ready-status"></a>Veröffentlichen von Updates zum Erreichen des Co-Sell Ready-Status
 
-Damit Ihre Lösung für Verkäufer und Partner von Microsoft sichtbar ist, muss sie die [Co-Sell Ready-Anforderungen](./co-sell-overview.md) erfüllen. Damit ein Microsoft-Verkäufer Incentives erhalten kann, muss Ihre Lösung die [Anforderungen für Incentiveberechtigungen](./co-sell-overview.md) erfüllen. Geben Sie die erforderlichen Informationen auf der Registerkarte „Co-Selling“ im Partner Center an. (Weitere Informationen finden Sie in [dieser Abbildung](#action-2-merge) weiter unten in diesem Artikel).
+Damit Ihre Lösung für Verkäufer und Partner von Microsoft sichtbar ist, muss sie die [Co-Sell Ready-Anforderungen](./co-sell-overview.md) erfüllen. Damit ein Microsoft-Verkäufer Co-Selling-Incentives erhalten kann, muss Ihre Lösung die [Anforderungen für Incentiveberechtigungen](./co-sell-overview.md) erfüllen. Geben Sie die erforderlichen Informationen auf der Registerkarte „Co-Selling“ im Partner Center an. (Weitere Informationen finden Sie in [dieser Abbildung](#action-2-merge) weiter unten in diesem Artikel).
 
 > [!NOTE]
 > Im kommerziellen Marketplace werden Ihre Lösungen in der gesamten Umgebung für Veröffentlichungen als „Angebote“ bezeichnet.
@@ -45,8 +45,8 @@ Nachdem Sie sich im kommerziellen Marketplace registriert haben, bereiten Sie di
 
 Führen Sie die folgenden Schritte aus, bevor Sie Ihre Lösungen aus OCP GTM importieren:
 
-1. Besuchen Sie die [Herausgeberliste](https://partner.microsoft.com/dashboard/account/v3/publishers/list) Ihres Unternehmens. Sie umfasst den Kontobesitzer, Manager und Entwickler, die über Veröffentlichungszugriff verfügen. Erfahren Sie mehr über [Partner Center-Benutzerrollen](user-roles.md).
-2. Bitten Sie einen der aufgelisteten Kontakte, dem kommerziellen Marketplace Benutzer als *Manager* oder *Entwickler* [hinzuzufügen](https://partner.microsoft.com/dashboard/account/usermanagement), da Lösungen nur von Inhabern dieser Rollen bearbeitet und veröffentlicht werden können.
+1. Besuchen Sie die [Herausgeberliste](https://go.microsoft.com/fwlink/?linkid=2165704) Ihres Unternehmens. Sie umfasst den Kontobesitzer, Manager und Entwickler, die über Veröffentlichungszugriff verfügen. Erfahren Sie mehr über [Partner Center-Benutzerrollen](user-roles.md).
+2. Bitten Sie einen der aufgelisteten Kontakte, dem kommerziellen Marketplace Benutzer als *Manager* oder *Entwickler* [hinzuzufügen](https://go.microsoft.com/fwlink/?linkid=2166003), da Lösungen nur von Inhabern dieser Rollen bearbeitet und veröffentlicht werden können.
 3. Arbeiten Sie mit Ihren Entwicklern zusammen, um Ihre Lösungen aus dem OCP GTM-Konto in den kommerziellen Marketplace zu migrieren.
 4. Entscheiden Sie, welche der folgenden Aktionen Sie ausführen möchten:
     1. Wenn Sie über eine Lösung in OCP GTM verfügen, die Sie zu Partner Center migrieren möchten, stehen Ihnen *zum Beibehalten von Empfehlungspipeline, Begleitmaterialien, Co-Selling-Status und Incentives* zwei Szenarien zur Auswahl:
@@ -66,7 +66,7 @@ Führen Sie die folgenden Schritte aus, bevor Sie Ihre Lösungen aus OCP GTM imp
 
 ## <a name="begin-the-migration-of-your-solutions-from-ocp-gtm"></a>Beginn der Migration Ihrer Lösungen von OCP GTM
 
-1. Beginnen Sie [hier](https://partner.microsoft.com/solutions/migration#) mit der Migration.
+1. Beginnen Sie [hier](https://go.microsoft.com/fwlink/?linkid=2165807) mit der Migration.
 2. Wählen Sie die Seite **Übersicht** aus, und klicken Sie dann auf **Klicken Sie hier, um zu beginnen**.
 
     :::image type="content" source="media/co-sell-migrate/welcome-overveiw.png" alt-text="Anzeige der Übersichtsseite":::
@@ -98,7 +98,7 @@ Wenn im kommerziellen Marketplace noch kein Angebot vorhanden ist, mit dem eine 
 
 1. Erstellen Sie einen Angebotsentwurf im kommerziellen Marketplace.
 
-   1. Wählen Sie **+Neues Angebot** aus.
+   1. Klicken Sie auf **+ Neues Angebot**.
 
         :::image type="content" source="media/co-sell-migrate/new-offer.png" alt-text="Anzeige für neues Angebot":::
 
@@ -152,7 +152,7 @@ Wählen Sie diese Option aus, wenn die Lösung bereits im kommerziellen Marketpl
 
 ### <a name="discard-this-solution"></a>Verwerfen dieser Lösung
 
-Es wird empfohlen, sich die Zeit zu nehmen, die Verwendbarkeit und Relevanz Ihrer Lösungen zu bewerten. Dadurch können Sie Ihre Präsenz und Auffindbarkeit im kommerziellen Marketplace mit qualitativ hochwertigen Angeboten, die den Kundenanforderungen entsprechen, optimieren.
+Es wird empfohlen, sich die Zeit zu nehmen, die Verwendbarkeit und Relevanz Ihrer Lösungen zu bewerten. Dadurch können Sie Ihre Präsenz und Auffindbarkeit im kommerziellen Marketplace mit qualitativ hochwertigen Angeboten optimieren, die den Kundenanforderungen entsprechen.
 
 Wählen Sie diese Option aus, wenn eine Lösung aus den OCP GTM-Lösungen nicht mehr relevant ist. Sie werden aufgefordert, das Verwerfen zu bestätigen, und Sie können den Vorgang später auch rückgängig machen.
 

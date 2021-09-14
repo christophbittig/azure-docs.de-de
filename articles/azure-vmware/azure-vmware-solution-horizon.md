@@ -3,12 +3,12 @@ title: Bereitstellen von Horizon in Azure VMware Solution
 description: Es wird beschrieben, wie Sie VMware Horizon in Azure VMware Solution bereitstellen.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: c34d0ac7806f8284e893cf3ad4f3c82dd404ff41
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: d99c8dc76dcab1866d0c536be7fc505c2eec0cb6
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181396"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122356637"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Bereitstellen von Horizon in Azure VMware Solution 
 
@@ -27,9 +27,9 @@ Hier geht es speziell um die Bereitstellung von Horizon unter Azure VMware Solut
 
 Nach der Einführung von Horizon für Azure VMware Solution gibt es auf der Azure Platform nun zwei VDI-Lösungen (Virtuelle Desktopinfrastruktur). Das folgende Diagramm enthält eine allgemeine Zusammenfassung der wichtigsten Unterschiede.
 
-:::image type="content" source="media/horizon/difference-horizon-azure-vmware-solution-horizon-cloud-azure.png" alt-text="Horizon unter Azure VMware Solution und Horizon Cloud unter Azure" border="false":::
+:::image type="content" source="media/vmware-horizon/difference-horizon-azure-vmware-solution-horizon-cloud-azure.png" alt-text="Diagramm, dass die Unterschiede zwischen Horizon unter Azure VMware Solution und Horizon Cloud unter Azure zeigt." border="false":::
 
-Horizon 2006 und höhere Versionen der Horizon 8 Release Line unterstützen sowohl die lokale Bereitstellung als auch die Azure VMware Solution-Bereitstellung. Es gibt einige Horizon-Features, die lokal unterstützt werden, aber nicht unter Azure VMware Solution. Weitere Produkte des Horizon-Ökosystems werden ebenfalls unterstützt. Weitere Informationen finden Sie im Artikel zur [Featureparität und Interoperabilität](https://kb.vmware.com/s/article/80850).
+Horizon 2006 und höhere Versionen der Horizon 8 Release Line unterstützen sowohl die lokale als auch die Azure VMware Solution-Bereitstellung. Es gibt einige Horizon-Features, die lokal unterstützt werden, aber nicht unter Azure VMware Solution. Weitere Produkte des Horizon-Ökosystems werden ebenfalls unterstützt. Weitere Informationen finden Sie im Artikel zur [Featureparität und Interoperabilität](https://kb.vmware.com/s/article/80850).
 
 ## <a name="deploy-horizon-in-a-hybrid-cloud"></a>Bereitstellen von Horizon in einer Hybrid Cloud
 
@@ -38,11 +38,11 @@ Sie können Horizon in einer Hybrid Cloud-Umgebung bereitstellen, wenn Sie die H
 >[!IMPORTANT]
 >Die CPA ist keine gestreckte Bereitstellung. Jeder Horizon-Pod ist einzeln vorhanden. Alle Verbindungsserver, die zu den einzelnen Pods gehören, müssen an demselben Standort angeordnet sein und aus Netzwerksicht in derselben Broadcastdomäne ausgeführt werden.
 
-Wie ein lokales oder privates Rechenzentrum auch, kann Horizon in einer privaten Azure VMware Solution-Cloud bereitgestellt werden. Die wichtigsten Unterschiede bei der Bereitstellung von Horizon in einer lokalen Umgebung und unter Azure VMware Solution sind in den folgenden Abschnitten beschrieben.
+Wie ein lokales oder privates Rechenzentrum können Sie Horizon in einer privaten Azure VMware Solution-Cloud bereitstellen. Die wichtigsten Unterschiede bei der Bereitstellung von Horizon in einer lokalen Umgebung und unter Azure VMware Solution sind in den folgenden Abschnitten beschrieben.
 
-Die private Azure-Cloud entspricht im Wesentlichen dem VMware SDDC. Dieser Begriff wird in der Horizon-Dokumentation normalerweise verwendet. Im restlichen Teil dieses Dokuments werden die Begriffe „Private Azure-Cloud“ und „VMware SDDC“ synonym genutzt.
+Die _private Azure-Cloud_ entspricht im Wesentlichen dem _VMware SDDC_. Dieser Begriff wird in der Horizon-Dokumentation normalerweise verwendet. Im restlichen Teil dieses Dokuments werden beide Begriffe austauschbar verwendet.
 
-Der Horizon Cloud Connector ist für Horizon unter Azure VMware Solution erforderlich, um Abonnementlizenzen zu verwalten. Der Cloud Connector kann in einem Azure Virtual Network parallel zu Horizon-Verbindungsservern bereitgestellt werden.
+Der Horizon Cloud Connector ist für Horizon unter Azure VMware Solution erforderlich, um Abonnementlizenzen zu verwalten. Sie können den Cloud Connector in einer Azure Virtual Network-Instanz parallel zu Horizon-Verbindungsservern bereitstellen.
 
 >[!IMPORTANT]
 >Die Unterstützung der Horizon-Steuerungsebene für Horizon unter Azure VMware Solution ist noch nicht verfügbar. Achten Sie darauf, dass Sie die VHD-Version von Horizon Cloud Connector herunterladen.
@@ -86,7 +86,7 @@ Aufgrund der Obergrenze für die private Azure-Cloud und das SDDC empfehlen wir 
 
 Die Verbindung des Azure Virtual Network mit den privaten Azure-Clouds bzw. SDDCs sollte mit ExpressRoute FastPath konfiguriert werden. Im folgenden Diagramm ist eine grundlegende Bereitstellung eines Horizon-Pods dargestellt.
 
-:::image type="content" source="media/horizon/horizon-pod-deployment-expresspath-fast-path.png" alt-text="Typische Bereitstellung eines Horizon-Pods mit ExpressRoute FastPath" border="false":::
+:::image type="content" source="media/vmware-horizon/horizon-pod-deployment-expresspath-fast-path.png" alt-text="Diagramm der typischen Bereitstellung eines Horizon-Pods mit ExpressRoute FastPath." border="false":::
 
 ## <a name="network-connectivity-to-scale-horizon-on-azure-vmware-solution"></a>Netzwerkkonnektivität für die Skalierung von Horizon in Azure VMware Solution
 
@@ -94,7 +94,7 @@ In diesem Abschnitt wird die allgemeine Netzwerkarchitektur für die Skalierung 
 
 ### <a name="single-horizon-pod-on-azure-vmware-solution"></a>Einzelner Horizon-Pod unter Azure VMware Solution
 
-:::image type="content" source="media/horizon/single-horizon-pod-azure-vmware-solution.png" alt-text="Einzelner Horizon-Pod unter Azure VMware Solution" border="false":::
+:::image type="content" source="media/vmware-horizon/single-horizon-pod-azure-vmware-solution.png" alt-text="Diagramm eines einzelnen Horizon-Pods unter Azure VMware Solution." border="false":::
 
 Ein einzelner Horizon-Pod ist das einfachste Bereitstellungsszenario, weil Sie nur einen Horizon-Pod in der Region „USA, Osten“ bereitstellen.  Da jede private Cloud und jedes SDDC schätzungsweise 4.000 Desktopsitzungen verarbeiten kann, stellen Sie den Horizon-Pod mit der maximalen Größe bereit.  Sie können die Bereitstellung von bis zu drei privaten Clouds bzw. SDDCs planen.
 
@@ -112,7 +112,7 @@ Eine mögliche Variante dieses einfachen Beispiels ist die Unterstützung der Ko
 
 Diagramm: Unterstützung der Konnektivität für lokale Ressourcen Sie benötigen eine ExpressRoute-Leitung, um Ihr Unternehmensnetzwerk mit dem Azure Virtual Network zu verbinden.  Darüber hinaus müssen Sie Ihr Unternehmensnetzwerk per ExpressRoute Global Reach mit den einzelnen privaten Clouds und SDDCs verbinden.  Dies ermöglicht die Konnektivität zwischen dem SDDC und der ExpressRoute-Leitung sowie lokalen Ressourcen. 
 
-:::image type="content" source="media/horizon/connect-corporate-network-azure-virtual-network.png" alt-text="Verbinden Ihres Unternehmensnetzwerks mit einem Azure Virtual Network" border="false":::
+:::image type="content" source="media/vmware-horizon/connect-corporate-network-azure-virtual-network.png" alt-text="Diagramm der Verbindung eines Unternehmensnetzwerks mit einer Azure Virtual Network-Instanz." border="false":::
 
 ### <a name="multiple-horizon-pods-on-azure-vmware-solution-across-multiple-regions"></a>Mehrere Horizon-Pods unter Azure VMware Solution in mehreren Regionen
 
@@ -122,7 +122,7 @@ Sie verbinden das Azure Virtual Network in jeder Region mit den privaten Clouds/
 
 Dasselbe Prinzip gilt, wenn Sie zwei Horizon-Pods in derselben Region bereitstellen.  Stellen Sie hierbei sicher, dass Sie den zweiten Horizon-Pod in einem *separaten Azure Virtual Network* bereitstellen. Wie auch im Beispiel mit nur einem Pod, können Sie für Ihr Unternehmensnetzwerk und den lokalen Pod eine Verbindung mit mehreren Pods bzw. Regionen herstellen, indem Sie ExpressRoute und Global Reach verwenden. 
 
-:::image type="content" source="media/horizon/multiple-horizon-pod-azure-vmware-solution.png" alt-text="Mehrere Horizon-Pods unter Azure VMware Solution in mehreren Regionen" border="false":::
+:::image type="content" source="media/vmware-horizon/multiple-horizon-pod-azure-vmware-solution.png" alt-text="Diagramm mehrerer Horizon-Pods unter Azure VMware Solution in mehreren Regionen." border="false":::
 
 ## <a name="size-azure-vmware-solution-hosts-for-horizon-deployments"></a>Dimensionieren von Azure VMware Solution-Hosts für Horizon-Bereitstellungen 
 
@@ -205,13 +205,13 @@ Für die Verwendung mit Azure VMware Solution sind zwei Lizenzen verfügbar (ent
 
 Falls Sie Horizon unter Azure VMware Solution nur auf absehbare Zeit bereitstellen möchten, sollten Sie die einfache Lizenz für ein Horizon-Abonnement nutzen, weil die Kosten hierfür niedriger sind.
 
-Wählen Sie bei der Bereitstellung sowohl unter Azure VMware Solution als auch lokal (wie beim Anwendungsfall mit der Notfallwiederherstellung) die Lizenz für ein universelles Horizon-Abonnement aus. Da hierin eine vSphere-Lizenz für die lokale Bereitstellung enthalten ist, sind die Kosten höher.
+Wählen Sie bei der Bereitstellung sowohl unter Azure VMware Solution als auch lokal die Lizenz für ein universelles Horizon-Abonnement als Notfallwiederherstellungs-Anwendungsfall aus. Da hierin jedoch eine vSphere-Lizenz für die lokale Bereitstellung enthalten ist, sind die Kosten höher.
 
 Arbeiten Sie mit Ihrem VMware EUC-Vertriebsteam zusammen, um die Kosten für die Horizon-Lizenzierung zu ermitteln, die sich für Ihre Anforderungen ergeben.
 
 ### <a name="azure-instance-types"></a>Azure-Instanztypen
 
-Informationen zu den Größen von virtuellen Azure-Computern, die für die Horizont-Infrastruktur erforderlich sind, finden Sie [hier](https://techzone.vmware.com/resource/horizon-on-azure-vmware-solution-configuration#horizon-installation-on-azure-vmware-solution) in den VMware-Richtlinien.
+Informationen zu den Azure-VM-Größen, die für die Horizon-Infrastruktur erforderlich sind, finden Sie unter [Horizon-Installation auf Azure VMware Solution](https://techzone.vmware.com/resource/horizon-on-azure-vmware-solution-configuration#horizon-installation-on-azure-vmware-solution).
 
 ## <a name="references"></a>References
 [Systemanforderungen für den Horizon-Agent für Linux](https://docs.vmware.com/en/VMware-Horizon/2012/linux-desktops-setup/GUID-E268BDBF-1D89-492B-8563-88936FD6607A.html)

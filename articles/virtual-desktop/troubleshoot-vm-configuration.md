@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 8931103305d85b50a76dab001b37612a6c50a5cf
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: d32ea2a26bfcf4f1186cc93f65d67ed10b1eb4e9
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028611"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340360"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Konfiguration des virtuellen Sitzungshostcomputers
 
@@ -22,9 +22,9 @@ In diesem Artikel erfahren Sie, wie Sie Probleme behandeln, die bei der Konfigur
 
 ## <a name="provide-feedback"></a>Feedback geben
 
-In der [Azure Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) können Sie sich mit dem Produktteam und aktiven Communitymitgliedern über den Azure Virtual Desktop-Dienst austauschen.
+In der [Azure Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/bd-p/AzureVirtualDesktopForum) können Sie sich mit dem Produktteam und aktiven Communitymitgliedern über den Azure Virtual Desktop-Dienst austauschen.
 
-## <a name="vms-are-not-joined-to-the-domain"></a>Virtuelle Computer werden der Domäne nicht hinzugefügt
+## <a name="vms-arent-joined-to-the-domain"></a>Virtuelle Computer werden der Domäne nicht hinzugefügt.
 
 Gehen Sie wie hier beschrieben vor, wenn Sie Probleme beim Einbinden von virtuellen Computern in die Domäne haben.
 
@@ -44,7 +44,7 @@ Gehen Sie wie hier beschrieben vor, wenn Sie Probleme beim Einbinden von virtuel
 
 ### <a name="error-timeout-waiting-for-user-input"></a>Error: Timeout beim Warten auf eine Benutzereingabe.
 
-**Ursache:** Das Konto, dar zum Abschließen des Domänenbeitritts verwendet wird, nutzt möglicherweise Multi-Factor Authentication (MFA).
+**Ursache:** Das Konto, dar zum Abschließen des Domänenbeitritts verwendet wird, nutzt möglicherweise mehrstufige Authentifizierung (MFA).
 
 **Behebung:** Führen Sie eine der folgenden Aktionen aus, um dieses Problem zu beheben.
 
@@ -76,7 +76,7 @@ Gehen Sie wie hier beschrieben vor, wenn Sie Probleme beim Einbinden von virtuel
 - Ändern Sie die DNS-Servereinstellungen der Netzwerkschnittstelle anhand der Schritte unter [Ändern von DNS-Servern](../virtual-network/virtual-network-network-interface.md#change-dns-servers) in **Benutzerdefiniert**, und geben Sie die privaten IP-Adressen der DNS-Server im virtuellen Netzwerk an.
 - Ändern Sie die DNS-Servereinstellungen der Netzwerkschnittstelle über die Schritte unter [Ändern von DNS-Servern](../virtual-network/virtual-network-network-interface.md#change-dns-servers) so, dass sie **vom virtuellen Netzwerk geerbt werden**, und ändern Sie dann die DNS-Servereinstellungen des virtuellen Netzwerks anhand der Schritte unter [Ändern von DNS-Servern](../virtual-network/manage-virtual-network.md#change-dns-servers).
 
-## <a name="azure-virtual-desktop-agent-and-azure-virtual-desktop-boot-loader-are-not-installed"></a>Der Azure Virtual Desktop-Agent und das Azure Virtual Desktop-Startladeprogramm sind nicht installiert.
+## <a name="azure-virtual-desktop-agent-and-azure-virtual-desktop-boot-loader-arent-installed"></a>Der Azure Virtual Desktop-Agent und das Azure Virtual Desktop-Startladeprogramm sind nicht installiert.
 
 Die empfohlene Methode zur Bereitstellung virtueller Computer ist die Verwendung der Erstellungsvorlage aus dem Azure-Portal. Die Vorlage installiert automatisch den Azure Virtual Desktop-Agent und das Azure Virtual Desktop-Agent-Startladeprogramm.
 
@@ -86,7 +86,7 @@ Befolgen Sie diese Anweisungen, um die Installation der Komponenten zu bestätig
 2. Öffnen Sie den **Datei-Explorer**, und navigieren Sie zu **C:\Windows\Temp\ScriptLog.log**. Wenn die Datei nicht vorhanden ist, zeigt dies an, dass die PowerShell-DSC, die die beiden Komponenten installiert hat, nicht in der Lage war, im bereitgestellten Sicherheitskontext ausgeführt zu werden.
 3. Wenn die Datei **C:\Windows\Temp\ScriptLog.log** vorhanden ist, öffnen Sie sie, und suchen Sie nach Fehlermeldungen.
 
-### <a name="error-azure-virtual-desktop-agent-and-azure-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptloglog-is-also-missing"></a>Fehler: Der Azure Virtual Desktop-Agent und das Azure Virtual Desktop-Agent-Startladeprogramm sind nicht vorhanden. „C:\Windows\Temp\ScriptLog.log“ fehlt ebenfalls.
+### <a name="error-azure-virtual-desktop-agent-and-azure-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptloglog-is-also-missing"></a>Fehler: Der Azure Virtual Desktop-Agent und der Azure Virtual Desktop-Agent-Bootloader sind nicht vorhanden. „C:\Windows\Temp\ScriptLog.log“ fehlt ebenfalls.
 
 **Ursache 1:** Die bei der Eingabe für die Azure Resource Manager-Vorlage angegebenen Anmeldeinformationen waren falsch, oder die Berechtigungen waren unzureichend.
 
@@ -110,7 +110,7 @@ Befolgen Sie diese Anweisungen, um die Installation der Komponenten zu bestätig
 - Vergewissern Sie sich, dass das für die Verbindung mit Azure Virtual Desktop verwendete Konto im Azure-Abonnement oder in der Ressourcengruppe über Berechtigungen zum Erstellen von Hostpools verfügt.
 - Bestätigen Sie, dass das Konto keine MFA verwendet.
 
-## <a name="azure-virtual-desktop-agent-is-not-registering-with-the-azure-virtual-desktop-service"></a>Der Azure Virtual Desktop-Agent ist nicht beim Azure Virtual Desktop-Dienst registriert.
+## <a name="azure-virtual-desktop-agent-isnt-registering-with-the-azure-virtual-desktop-service"></a>Der Azure Virtual Desktop-Agent ist nicht beim Azure Virtual Desktop-Dienst registriert.
 
 Wenn der Azure Virtual Desktop-Agent zum ersten Mal auf Sitzungshost-VMs installiert wird (entweder manuell oder über die Azure Resource Manager-Vorlage und PowerShell DSC), stellt er ein Registrierungstoken bereit. Im folgenden Abschnitt wird die Behandlung von Problemen im Zusammenhang mit dem Azure Virtual Desktop-Agent und dem Token beschrieben.
 
@@ -176,7 +176,7 @@ Wenn der Azure Virtual Desktop-Agent zum ersten Mal auf Sitzungshost-VMs install
     Minimum = 2.12ms, Maximum = 3.83ms, Average = 2.58ms
     ```
 
-## <a name="troubleshooting-issues-with-the-azure-virtual-desktop-side-by-side-stack"></a>Problembehandlung mit dem parallelen Stapel für Azure Virtual Desktop
+## <a name="troubleshooting-issues-with-the-azure-virtual-desktop-side-by-side-stack"></a>Problembehandlung beim parallelen Stapel für Azure Virtual Desktop
 
 Der parallele Stapel für Azure Virtual Desktop wird automatisch mit Windows Server 2019 installiert. Verwenden Sie Microsoft Installer (MSI), um den parallelen Stapel unter Microsoft Windows Server 2016 oder Windows Server 2012 R2 zu installieren. Für Microsoft Windows 10 wird der parallele Stapel für Azure Virtual Desktop mit **enablesxstackrs.ps1** aktiviert.
 
@@ -186,7 +186,7 @@ Es gibt drei Hauptmethoden, wie der parallele Stapel auf Sitzungshostpool-VMs in
 - Durch Einbinden in das und Aktivieren im Masterimage.
 - Durch manuelles Installieren oder Aktivieren auf jeder VM (oder mit Erweiterungen/PowerShell).
 
-Wenn Sie Probleme mit dem parallelen Stapel von Azure Virtual Desktop haben, geben Sie den Befehl **qwinsta** an der Eingabeaufforderung ein, um zu bestätigen, dass der parallele Stapel installiert oder aktiviert ist.
+Wenn Sie Probleme mit dem parallelen Stapel von Azure Virtual Desktop haben, geben Sie den Befehl **qwinsta** in die Eingabeaufforderung ein, um zu bestätigen, dass der parallele Stapel installiert oder aktiviert ist.
 
 Die Ausgabe von **qwinsta** listet **rdp-sxs** in der Ausgabe auf, wenn der parallele Stapel installiert und aktiviert ist.
 
@@ -215,7 +215,7 @@ Untersuchen Sie die unten aufgeführten Registrierungseinträge und bestätigen 
 1. Verwenden Sie RDP (Remote Desktop Protocol), um als lokaler Administrator direkt in die Sitzungshost-VM zu gelangen.
 2. Installieren Sie den parallelen Stapel mithilfe von [Erstellen eines Hostpools mit PowerShell](create-host-pools-powershell.md).
 
-## <a name="how-to-fix-a-azure-virtual-desktop-side-by-side-stack-that-malfunctions"></a>Beheben von Fehlfunktionen eines parallelen Stapels für Azure Virtual Desktop
+## <a name="how-to-fix-an-azure-virtual-desktop-side-by-side-stack-that-malfunctions"></a>Beheben von Fehlfunktionen eines parallelen Stapels für Azure Virtual Desktop
 
 Es sind Umstände bekannt, die zu einer Fehlfunktion des parallelen Stapels führen können:
 
@@ -225,7 +225,7 @@ Es sind Umstände bekannt, die zu einer Fehlfunktion des parallelen Stapels füh
 - Mehrmaliges Ausführen von Enablesxsstackrc.ps1
 - Ausführen von Enablesxsstackrc.ps1 in einem Konto, das nicht über lokale Administratorrechte verfügt
 
-Die Anweisungen in diesem Abschnitt können Ihnen helfen, den parallelen Stapel für Azure Virtual Desktop zu deinstallieren. Nachdem Sie den parallelen Stapel deinstalliert haben, finden Sie unter „Registrieren der VM beim Azure Virtual Desktop-Hostpool“ in [Erstellen eines Hostpools mit PowerShell](create-host-pools-powershell.md) Informationen dazu, wie Sie den parallelen Stapel erneut installieren.
+Mit den Anweisungen in diesem Abschnitt deinstallieren Sie den parallelen Stapel für Azure Virtual Desktop. Nachdem Sie den parallelen Stapel deinstalliert haben, finden Sie unter „Registrieren der VM beim Azure Virtual Desktop-Hostpool“ in [Erstellen eines Hostpools mit PowerShell](create-host-pools-powershell.md) Informationen dazu, wie Sie den parallelen Stapel erneut installieren.
 
 Die VM, mit der die Wiederherstellung durchgeführt wird, muss sich im gleichen Subnetz und in derselben Domäne befinden wie die VM mit dem fehlerhaften parallelen Stapel.
 
@@ -343,11 +343,15 @@ Wenn für Ihre Benutzer ein Fehler mit folgender Aussage angezeigt wird: „Aufg
 
 Weitere Informationen zu dieser Richtlinie finden Sie unter [Anmeldung über Remotedesktopdienste zulassen](/windows/security/threat-protection/security-policy-settings/allow-log-on-through-remote-desktop-services).
 
+## <a name="i-cant-deploy-the-golden-image"></a>Ich kann das goldene Image nicht bereitstellen.
+
+Goldene Images dürfen den Azure Virtual Desktop-Agent nicht enthalten. Sie können den Agent erst nach dem Bereitstellen des goldenen Image installieren.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Eine Übersicht über die Problembehandlung von Azure Virtual Desktop und die Eskalationspfade finden Sie unter [Problembehandlung: Übersicht, Feedback und Support](troubleshoot-set-up-overview.md).
+- Eine Übersicht über die Problembehandlung von Azure Virtual Desktop und die Eskalationspfade finden Sie unter [Überblick über Problembehandlung, Feedback und Support](troubleshoot-set-up-overview.md).
 - Informationen zur Problembehandlung beim Erstellen eines Hostpools in einer Azure Virtual Desktop-Umgebung finden Sie unter [Mandanten- und Hostpoolerstellung](troubleshoot-set-up-issues.md).
-- Informationen zur Problembehandlung bei der Konfiguration einer VM in Azure Virtual Desktop finden Sie unter [Konfiguration von Sitzungshost-VMs](troubleshoot-vm-configuration.md).
+- Informationen zur Problembehandlung bei der Konfiguration eines virtuellen Computers (VM) in Azure Virtual Desktop finden Sie unter [Konfiguration des virtuellen Sitzungshostcomputers](troubleshoot-vm-configuration.md).
 - Informationen zur Problembehandlung beim Azure Virtual Desktop-Agent oder der Sitzungskonnektivität finden Sie unter [Beheben häufiger Probleme mit dem Azure Virtual Desktop-Agent](troubleshoot-agent.md).
 - Informationen zur Behebung von Problemen bei Azure Virtual Desktop-Clientverbindungen finden Sie unter [Azure Virtual Desktop – Clientverbindungen](troubleshoot-service-connection.md).
 - Informationen zur Behebung von Problemen bei Remotedesktop-Clients finden Sie unter [Problembehandlung für den Remotedesktop-Client](troubleshoot-client.md).

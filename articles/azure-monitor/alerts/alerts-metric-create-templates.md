@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 10/7/2020
+ms.date: 8/02/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7c0fa91b62696729cba1895f69ee1f36eb661f17
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: a4c1d014e6b6c096df4e2dd943131ac6d1de7548
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111972017"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347210"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Erstellen einer Metrikwarnung anhand einer Resource Manager-Vorlage
 
@@ -95,7 +95,6 @@ Speichern Sie den JSON-Code unten als „simplestaticmetricalert.json“ für di
             "defaultValue": "GreaterThan",
             "allowedValues": [
                 "Equals",
-                "NotEquals",
                 "GreaterThan",
                 "GreaterThanOrEqual",
                 "LessThan",
@@ -1018,6 +1017,10 @@ az deployment group create \
     --parameters @multidimensionalstaticmetricalert.parameters.json
 ```
 
+> [!NOTE]
+>
+> Die Verwendung von „All“ als Dimensionswert entspricht der Auswahl von „\*“ („Alle aktuellen und zukünftigen Werte“).
+
 
 ## <a name="template-for-a-dynamic-thresholds-metric-alert-that-monitors-multiple-dimensions"></a>Vorlage für eine Metrikwarnung mit dynamischem Schwellenwert, mit der mehrere Dimensionen überwacht werden
 
@@ -1319,7 +1322,6 @@ Speichern Sie den JSON-Code unten für diese exemplarische Vorgehensweise als �
             "defaultValue": "GreaterThan",
             "allowedValues": [
                 "Equals",
-                "NotEquals",
                 "GreaterThan",
                 "GreaterThanOrEqual",
                 "LessThan",
@@ -1650,7 +1652,6 @@ Speichern Sie den unten angegebenen JSON-Code für diese exemplarische Vorgehens
             "defaultValue": "GreaterThan",
             "allowedValues": [
                 "Equals",
-                "NotEquals",
                 "GreaterThan",
                 "GreaterThanOrEqual",
                 "LessThan",
@@ -2297,7 +2298,6 @@ Speichern Sie den unten angegebenen JSON-Code für diese exemplarische Vorgehens
             "defaultValue": "GreaterThan",
             "allowedValues": [
                 "Equals",
-                "NotEquals",
                 "GreaterThan",
                 "GreaterThanOrEqual",
                 "LessThan",
@@ -2939,7 +2939,6 @@ Speichern Sie den unten angegebenen JSON-Code für diese exemplarische Vorgehens
             "defaultValue": "GreaterThan",
             "allowedValues": [
                 "Equals",
-                "NotEquals",
                 "GreaterThan",
                 "GreaterThanOrEqual",
                 "LessThan",

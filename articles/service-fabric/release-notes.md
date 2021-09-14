@@ -5,12 +5,12 @@ ms.date: 04/13/2021
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 0e5b4d17b0c0ccaa4c839338e0656c0a8eda3bd5
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 11615d48bb1331e068c685a507670f0add883344
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078022"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122353651"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric-Versionen
 
@@ -22,6 +22,24 @@ Die folgenden Ressourcen stehen ebenfalls zur Verfügung:
 - <a href="/azure/service-fabric/service-fabric-support" target="blank">Supportoptionen</a> 
 - <a href="/azure/service-fabric/service-fabric-versions" target="blank">Unterstützte Versionen</a> 
 - <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">Codebeispiele</a>
+
+
+## <a name="service-fabric-81"></a>Service Fabric 8.1
+
+Wir freuen uns, Ihnen mitteilen zu können, dass die Einführung von Release 8.1 der Service Fabric-Runtime zusammen mit Tools und SDK-Updates in den verschiedenen Azure-Regionen begonnen hat. Die Updates für .NET SDK, Java SDK und Service Fabric-Runtime sind über den Webplattform-Installer, NuGet-Pakete und Maven-Repositorys verfügbar.
+
+### <a name="key-announcements"></a>Wichtige Ankündigungen
+- Unterstützung für Hilfsreplikat hinzugefügt
+- **Vorschau** Unterstützung für .NET 6.0-Service Fabric-Anwendungen hinzugefügt
+- API-Unterstützung für die Aktualisierung von Anwendungsbeschreibungen hinzugefügt
+- Periodischen Pingvorgang zwischen Reconfiguration Agent (RA) und Reconfiguration Agent-Proxy (RAP) hinzugefügt, um IPC-Fehler und nicht reagierende Prozesse erkennen zu können
+- Unterstützung für Live- und Bereitschaftstests für Nicht-Containeranwendungen hinzugefügt
+- Clusterupgrade für Aktualisierungen der Knotenkapazität so geändert, dass sich keine Beeinträchtigungen ergeben
+
+### <a name="service-fabric-81-releases"></a>Service Fabric 8.1-Releases
+| Veröffentlichungsdatum | Release | Weitere Informationen |
+|---|---|---|
+| 28. Juli 2021 | [Azure Service Fabric 8.1](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-1-release/ba-p/2594194)  | [Versionshinweise](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_81.md)|
 
 
 ## <a name="service-fabric-80"></a>Service Fabric 8.0
@@ -46,11 +64,13 @@ Wir freuen uns, Ihnen mitteilen zu können, dass die Einführung von Release 8.
 - StateManager wurde korrigiert, um den Verweis freizugeben, sobald die Freigabe sicher ist
 - Entfernen des zentralen Geheimnisdiensts beim Speichern von Benutzergeheimnissen blockieren
 
-
 ### <a name="service-fabric-80-releases"></a>Service Fabric 8.0-Releases
 | Veröffentlichungsdatum | Release | Weitere Informationen |
 |---|---|---|
 | 08. April 2021 | [Azure Service Fabric 8.0](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-0-release/ba-p/2260016)  | [Versionshinweise](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_80.md)|
+| 17. Mai 2021 | [Azure Service Fabric 8.0 First Refresh Release](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-0-first-refresh-release/ba-p/2362556) | [Versionshinweise](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_80CU1.md) |
+| 17. Juni 2021 | [Azure Service Fabric 8.0 Second Refresh Release](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-0-second-refresh-release/ba-p/2462979) | [Versionshinweise](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_80CU2.md) |
+| 28. Juli 2021 | [Azure Service Fabric 8.0 Third Refresh Release](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-0-third-refresh-release/ba-p/2594180) | [Versionshinweise](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_80CU3.md) |
 
 
 ## <a name="previous-versions"></a>Vorgängerversionen

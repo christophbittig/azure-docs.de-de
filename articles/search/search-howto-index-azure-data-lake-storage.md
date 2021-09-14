@@ -1,25 +1,24 @@
 ---
-title: Konfigurieren eines Indexers zum Pullen von Inhalten und Metadaten aus Azure Data Lake Storage Gen2
+title: Indizieren von Daten aus Azure Data Lake Storage Gen2
 titleSuffix: Azure Cognitive Search
-description: Erfahren Sie, wie Sie Inhalte und Metadaten in Azure Data Lake Storage Gen2 indizieren.
-manager: luisca
+description: Richten Sie einen Azure Data Lake Storage Gen2-Indexer ein, um die Indizierung von Inhalten und Metadaten für die Volltextsuche in Azure Cognitive Search zu automatisieren.
 author: markheff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/17/2021
-ms.openlocfilehash: 0d5feeb8098016e126e243305babab9746343504
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: e0364b3242a0be3e4704ade75f2514c8c63aa779
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111752475"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112983228"
 ---
-# <a name="how-to-configure-an-indexer-to-pull-content-and-metadata-from-azure-data-lake-storage-gen2"></a>Konfigurieren eines Indexers zum Pullen von Inhalten und Metadaten aus Azure Data Lake Storage Gen2
+# <a name="index-data-from-azure-data-lake-storage-gen2"></a>Indizieren von Daten aus Azure Data Lake Storage Gen2
 
-Beim Einrichten eines Azure-Speicherkontos haben Sie die Möglichkeit, einen [hierarchischen Namespace](../storage/blobs/data-lake-storage-namespace.md) zu aktivieren. Auf diese Weise kann die Sammlung von Inhalten in einem Konto in einer Hierarchie von Verzeichnissen und geschachtelten Unterverzeichnissen organisiert werden. Durch das Aktivieren eines hierarchischen Namespace aktivieren Sie [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md).
+In diesem Artikel erfahren Sie, wie Sie einen Azure Data Lake Storage Gen2-Indexer zum Extrahieren von Inhalten konfigurieren und dafür sorgen, dass er in Azure Cognitive Search durchsucht werden kann. Dieser Workflow erstellt einen Suchindex für Azure Cognitive Search und lädt ihn mit vorhandenem Inhalt, der aus Azure Data Lake Storage Gen2 extrahiert wurde.
 
-In diesem Artikel wird beschrieben, wie Sie mit dem Indizieren von Dokumenten beginnen, die in Azure Data Lake Storage Gen2 vorliegen.
+Azure Data Lake Storage Gen2 ist über Azure Storage verfügbar. Beim Einrichten eines Azure-Speicherkontos haben Sie die Möglichkeit, einen [hierarchischen Namespace](../storage/blobs/data-lake-storage-namespace.md) zu aktivieren. Auf diese Weise kann die Sammlung von Inhalten in einem Konto in einer Hierarchie von Verzeichnissen und geschachtelten Unterverzeichnissen organisiert werden. Durch das Aktivieren eines hierarchischen Namespace aktivieren Sie [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md).
 
 ## <a name="supported-access-tiers"></a>Unterstützte Zugriffsebenen
 
@@ -338,7 +337,7 @@ Um mehrere Indexer parallel auszuführen, skalieren Sie Ihren Suchdienst auf, in
 
 Zu häufigen Fehlern bei der Indizierung gehören nicht unterstützte Inhaltstypen, fehlende Inhalte oder übergroße Blobs.
 
-Der Blobindexer wird standardmäßig beendet, sobald ein Blob mit einem nicht unterstützten Inhaltstyp (z.B. ein Bild) gefunden wird. Sie könnten mithilfe des Parameters `excludedFileNameExtensions` bestimmte Inhaltstypen überspringen. Möglicherweise möchten Sie jedoch, dass die Indizierung auch dann fortgesetzt wird, wenn Fehler auftreten, und dann später einzelne Dokumente debuggen. Weitere Informationen zu Indexerfehlern finden Sie unter [Beheben von häufigen Problemen bei Suchindexern](search-indexer-troubleshooting.md) und [Beheben von häufigen Fehlern und Warnungen bei Suchindexern](cognitive-search-common-errors-warnings.md).
+Der Blobindexer wird standardmäßig beendet, sobald ein Blob mit einem nicht unterstützten Inhaltstyp (z.B. ein Bild) gefunden wird. Sie könnten mithilfe des Parameters `excludedFileNameExtensions` bestimmte Inhaltstypen überspringen. Möglicherweise möchten Sie jedoch, dass die Indizierung auch dann fortgesetzt wird, wenn Fehler auftreten, und dann später einzelne Dokumente debuggen. Weitere Informationen zu Indexerfehlern finden Sie unter [Beheben von häufigen Problemen bei Suchindexern in Azure Cognitive Search](search-indexer-troubleshooting.md) und [Beheben von häufigen Fehlern und Warnungen bei Suchindexern in Azure Cognitive Search](cognitive-search-common-errors-warnings.md).
 
 ### <a name="respond-to-errors"></a>Reagieren auf Fehler
 

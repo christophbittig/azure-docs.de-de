@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: duau
-ms.openlocfilehash: 3602c3944e8731263fbb55f024c276783950329f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5dcf58dce7b87862c2f01ad76db8aff66366ee4b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92202360"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339417"
 ---
 # <a name="designing-for-high-availability-with-expressroute"></a>Entwurf für Hochverfügbarkeit mit ExpressRoute
 
@@ -50,23 +50,31 @@ Wenn die primären und sekundären Verbindungen einer ExpressRoute-Verbindung im
 
 Alternativ führt das Betreiben der primären und sekundären Verbindungen einer ExpressRoute-Verbindung im Aktiv-Aktiv-Modus dazu, dass nur etwa die Hälfte der Datenflüsse fehlschlägt und nach einem Ausfall der ExpressRoute-Verbindung umleitet wird. Somit wird der Aktiv-Aktiv-Modus wesentlich dazu beitragen, die mittlere Wiederherstellungszeit (Mean Time To Recover, MTTR) zu verbessern.
 
+> [!NOTE]
+> Während einer Wartungsaktivität oder bei ungeplanten Ereignissen, die sich auf eine der Verbindungen auswirken, bevorzugt Microsoft die AS-Pfadpräfigierung, um Datenverkehr zum Ausgleich auf die fehlerfreie Verbindung umzuleiten. Sie müssen sicherstellen, dass der Datenverkehr zum fehlerfreien Pfad umgeleitet werden kann, wenn Microsoft die Pfadpräfigierung konfiguriert hat, und dass erforderliche Umleitungsankündigungen entsprechend konfiguriert sind, um Dienstunterbrechungen zu vermeiden. 
+> 
+
 ### <a name="nat-for-microsoft-peering"></a>NAT für Microsoft-Peering 
 
 Microsoft-Peering dient der Kommunikation zwischen öffentlichen Endpunkten. So sind lokale private Endpunkte häufig netzwerkadressenübersetzt (Network Address Translated, NATed) mit öffentlicher IP-Adresse für das Kunden- oder Partnernetzwerk, bevor sie über Microsoft-Peering kommunizieren. Angenommen, Sie verwenden sowohl die primäre als auch die sekundäre Verbindung im Aktiv-Aktiv-Modus, in dem Ihre NAT einen Einfluss darauf besitzt, wie schnell die Wiederherstellung nach einem Ausfall in einer der ExpressRoute-Verbindungen erfolgt. Zwei verschiedene NAT-Optionen werden in der folgenden Abbildung gezeigt:
 
 [![3]][3]
 
-In Option 1 wird NAT angewendet, nachdem der Datenverkehr zwischen der primären Verbindung und den sekundären Verbindungen von ExpressRoute aufgeteilt wurde. Um die zustandsbehafteten Anforderungen von NAT zu erfüllen, werden unabhängige NAT-Pools zwischen dem primären Gerät und den sekundären Geräten verwendet, sodass der zurückkommende Datenverkehr am gleichen Edge-Gerät empfangen würde, von dem der Datenstrom ausgegangen ist.
+#### <a name="option-1"></a>Option 1:
 
-In Option 2 wird ein allgemeiner NAT-Pool verwendet, bevor der Datenverkehr zwischen der primären Verbindung und den sekundären Verbindungen von ExpressRoute aufgeteilt wird. Es ist wichtig zu unterscheiden, dass der gemeinsame NAT-Pool vor der Aufteilung des Datenverkehrs nicht die Einführung einer einzelnen Fehlerquelle bedeutet und damit die Hochverfügbarkeit beeinträchtigt.
+NAT wird angewendet, nachdem der Datenverkehr zwischen der primären Verbindung und den sekundären Verbindungen der ExpressRoute-Leitung aufgeteilt wurde. Um die zustandsbehafteten Anforderungen von NAT zu erfüllen, werden unabhängige NAT-Pools für die primären und sekundären Geräte verwendet. Der zurückgegebene Datenverkehr wird auf demselben Edgegerät eintreffen, über das der Datenfluss ausgegangen ist.
 
-Mit Option 1 wird nach einem Ausfall der ExpressRoute-Verbindung keine Möglichkeit mehr, den entsprechenden NAT-Pool zu erreichen. Daher müssen alle unterbrochenen Datenflüsse entweder durch TCP oder über die Anwendungsschicht nach dem entsprechenden Fenstertimeout erneut eingerichtet werden. Wenn einer der NAT-Pools als Front-End eines der lokalen Server verwendet wird und die entsprechende Konnektivität ausfällt, können die lokalen Server aus Azure nicht erreicht werden, bis die Konnektivität wiederhergestellt wurde.
+Wenn bei der ExpressRoute-Verbindung ein Fehler auftritt, ist die Erreichbarkeit des entsprechenden NAT-Pools unterbrochen. Deshalb müssen alle unterbrochenen Netzwerkdatenflüsse entweder durch TCP oder über die Anwendungsschicht nach dem entsprechenden Fenstertimeout erneut eingerichtet werden. Während des Fehlers kann Azure die lokalen Server nicht über die entsprechende NAT erreichen, bis die Konnektivität für die primären oder sekundären Verbindungen der ExpressRoute-Leitung wiederhergestellt wurde.
 
-Während bei Option 2 die NAT auch nach einem primären oder sekundären Verbindungsausfall erreichbar ist. Daher kann die Netzwerkschicht selbst die Pakete umleiten und eine schnellere Wiederherstellung nach dem Fehler ermöglichen. 
+#### <a name="option-2"></a>Option 2:
+
+Es wird ein allgemeiner NAT-Pool verwendet, bevor der Datenverkehr zwischen der primären Verbindung und den sekundären Verbindungen der ExpressRoute-Leitung aufgeteilt wird. Es ist wichtig zu unterscheiden, dass der gemeinsame NAT-Pool vor der Aufteilung des Datenverkehrs nicht die Einführung einer einzelnen Fehlerquelle bedeutet und damit die Hochverfügbarkeit beeinträchtigt.
+
+Der NAT-Pool ist auch nach einem Fehler bei der primären oder sekundären Verbindung erreichbar. Aus diesem Grund kann die Netzwerkebene selbst die Pakete umleiten und bei der schnelleren Wiederherstellung nach einem Fehler helfen. 
 
 > [!NOTE]
-> Wenn Sie NAT-Option 1 (unabhängige NAT-Pools für primäre und sekundäre ExpressRoute-Verbindungen) verwenden und einen Port einer IP-Adresse von einem der NAT-Pools einem lokalen Server zuordnen, ist der Server über die ExpressRoute-Verbindung nicht erreichbar, wenn die entsprechende Verbindung ausfällt.
-> 
+> * Wenn Sie NAT-Option 1 (unabhängige NAT-Pools für primäre und sekundäre ExpressRoute-Verbindungen) verwenden und einen Port einer IP-Adresse von einem der NAT-Pools einem lokalen Server zuordnen, ist der Server über die ExpressRoute-Verbindung nicht erreichbar, wenn die entsprechende Verbindung ausfällt.
+> * Das Beenden von ExpressRoute-BGP-Verbindungen auf zustandsbehafteten Geräten kann bei geplanten oder ungeplanten Wartungen durch Microsoft oder Ihren ExpressRoute-Anbieter zu Problemen beim Failover führen. Sie sollten Ihre Einrichtung testen, um das ordnungsgemäße Failover Ihres Datenverkehrs sicherzustellen, und nach Möglichkeit BGP-Sitzungen auf zustandslosen Geräten beenden.
 
 ## <a name="fine-tuning-features-for-private-peering"></a>Optimieren von Funktionen für privates Peering
 

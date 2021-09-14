@@ -1,6 +1,6 @@
 ---
 title: 'ML Studio (Classic): Data Science für Einsteiger – Azure'
-description: Data Science für Anfänger erläutert die grundlegenden Konzepte in fünf kurzen Videos, beginnend mit den fünf Fragen, die Data Science beantwortet. Aus Azure Machine Learning.
+description: Data Science für Anfänger erläutert die grundlegenden Konzepte in fünf kurzen Videos, beginnend mit den fünf Fragen, die Data Science beantwortet.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,14 +9,16 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: e9bbadc95be3479da82d91e9a4a4f712fbc32c57
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef1d8586dc79d529df56e5d0e3101ba69e7a2cab
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100520390"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695001"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Data Science für Einsteiger – Video 1: Die 5 Fragen, die Data Science beantwortet
+
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 In den fünf kurzen Videos der Reihe *Data Science für Einsteiger* von einem Data Science-Experten erhalten Sie eine kurze Einführung in Data Science. In diesen Videos werden zwar nur die Grundlagen behandelt, sie sind aber hilfreich, wenn Sie sich selbst mit Data Science beschäftigen möchten oder mit Data Scientists arbeiten.
 
@@ -136,4 +138,4 @@ Das sind sie also: Die 5 Fragen, die Data Science beantworten kann.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Durchführen eines ersten Data Science-Experiments mit Machine Learning Studio (klassisch)](create-experiment.md)
-* [Einführung in Machine Learning in Microsoft Azure](../overview-what-is-azure-ml.md)
+* [Einführung in Azure Machine Learning](../overview-what-is-azure-machine-learning.md)

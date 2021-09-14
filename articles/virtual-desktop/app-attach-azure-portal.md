@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 0fe61e5ef36064234b65da4d059f02beed18f9a6
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: ec462d04402f20d801c43cebd7f4561eb6177f1c
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745707"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707119"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>Einrichten des MSIX-Features zum Anfügen von Apps mit dem Azure-Portal
 
@@ -22,7 +22,7 @@ In diesem Artikel wird erläutert, wie Sie das MSIX-Feature zum Anfügen von App
 Folgendes benötigen Sie, um das MSIX-Feature zum Anfügen von Apps zu konfigurieren:
 
 - Eine funktionierende Azure Virtual Desktop-Bereitstellung. Informationen zur Bereitstellung von Azure Virtual Desktop (klassisch) finden Sie unter [Erstellen eines Mandanten in Azure Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Informationen zum Bereitstellen von Azure Virtual Desktop mit Azure Resource Manager-Integration finden Sie unter [Erstellen eines Hostpools mit dem Azure-Portal](./create-host-pools-azure-marketplace.md).
-- Ein Azure Virtual Desktop-Hostpool mit mindestens einem aktiven Sitzungshost.
+- Ein Azure Virtual Desktop-Hostpool mit mindestens einem aktiven Sitzungshost.
 - Das MSIX-Pakettool.
 - Eine MSIX-gepackte Anwendung, die in ein MSIX-Image erweitert wurde, das in eine Dateifreigabe hochgeladen wird.
 - Eine Dateifreigabe in der Azure Virtual Desktop-Bereitstellung, in der das MSIX-Paket gespeichert wird.
@@ -215,11 +215,11 @@ So entfernen Sie einzelne MSIX-Apps aus dem Paket
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Stellen Sie unserer Community unter [Azure Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) Ihre Fragen zu dieser Funktion.
+Stellen Sie unserer [Azure Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) Fragen zu dieser Funktion.
 
-Sie können Ihr Feedback bezüglich Azure Virtual Desktop auch im [Azure Virtual Desktop-Feedback-Hub](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app) hochladen.
+Sie können auch Feedback zu Azure Virtual Desktop im [Azure Virtual Desktop-Feedback-Hub](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app) bereitstellen.
 
 Folgende Artikel sind eventuell hilfreich:
 
 - [Glossar des MSIX-Features zum Anfügen von Apps](app-attach-glossary.md)
-- [Häufig gestellte Fragen zum MSIX-Feature zum Anfügen von Apps](app-attach-faq.md)
+- [Häufig gestellte Fragen zum MSIX-Feature zum Anfügen von Apps](app-attach-faq.yml)

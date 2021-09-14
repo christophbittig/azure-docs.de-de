@@ -3,14 +3,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 02/21/2021
+ms.date: 08/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 112c30fdd242c20f11c43f42ba54e3717e074bbb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 092484b09af008770260c64cd6b7e0ea15265811
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101706033"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121803384"
 ---
 Im Folgenden finden Sie eine Liste der unterstützten Speicherkonten und Speichertypen für ein Data Box-Gerät. Eine vollständige Liste aller Funktionen für alle Typen von Speicherkonten finden Sie unter [Speicherkontotypen](../articles/storage/common/storage-account-overview.md#types-of-storage-accounts).
 
@@ -49,3 +49,4 @@ Die folgende Tabelle zeigt die unterstützten Speicherkonten für Exportaufträg
 > - In Seitenblobs hochgeladene Daten müssen einem ganzzahligen Vielfachen von 512 Byte entsprechen, z. B. VHDs.
 > - Es können maximal 80 TB exportiert werden.
 > - Dateiverlauf und Blobmomentaufnahmen werden nicht exportiert.
+> - Archivblobs werden für den Export nicht unterstützt. Aktivieren Sie die Blobs auf der Archivebene, bevor Sie den Export durchführen. Weitere Informationen finden Sie in der [Übersicht über die Aktivierung von Blobs aus der Archivebene](../articles/storage/blobs/storage-blob-rehydration.md#rehydrate-an-archived-blob-to-an-online-tier).

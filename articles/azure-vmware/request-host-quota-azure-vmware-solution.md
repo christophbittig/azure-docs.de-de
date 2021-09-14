@@ -3,27 +3,30 @@ title: Anfordern des Hostkontingents für Azure VMware Solution
 description: Erfahren Sie, wie Sie das Hostkontingent bzw. die Hostkapazität für Azure VMware Solution anfordern. Sie können auch weitere Hosts in einer vorhandenen privaten Azure VMware Solution-Cloud anfordern.
 ms.topic: how-to
 ms.custom: contperf-fy21q3
-ms.date: 05/13/2021
-ms.openlocfilehash: ceb32d7e09e6c595a6cddf844c713093253b8994
-ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
+ms.date: 08/06/2021
+ms.openlocfilehash: 92ebc79193525802c1e7c7ede9287e3300799a10
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111421650"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122356594"
 ---
 # <a name="request-host-quota-for-azure-vmware-solution"></a>Anfordern des Hostkontingents für Azure VMware Solution
 
-In dieser Vorgehensweise fordern Sie das Hostkontingent bzw. die Hostkapazität für [Azure VMware Solution](introduction.md) an. Sie übermitteln ein Supportticket, damit die Hosts zugeordnet werden. Wenn Sie über eine vorhandene private Azure VMware Solution-Cloud verfügen und weitere Hosts zugeordnet werden sollen, müssen Sie auf die gleiche Weise vorgehen.
+In dieser Vorgehensweise fordern Sie das Hostkontingent bzw. die Hostkapazität für [Azure VMware Solution](introduction.md) an. Sie übermitteln ein Supportticket, damit Ihre Hosts zugeordnet werden, unabhängig davon, ob es sich um eine neue oder eine vorhandene Bereitstellung handelt. 
+
+Wenn Sie über eine vorhandene private Azure VMware Solution-Cloud verfügen und weitere Hosts zugeordnet werden sollen, müssen Sie auf die gleiche Weise vorgehen.
 
 >[!IMPORTANT]
->Das Zuordnen der Hosts kann abhängig von der angeforderten Anzahl einige Tage dauern.  Fordern Sie also an, was für die Bereitstellung erforderlich ist, damit weniger häufig eine Kontingenterhöhung angefordert werden muss.
+>Das Zuordnen der Hosts kann abhängig von der angeforderten Anzahl bis zu fünf Werktage dauern.  Fordern Sie also an, was für die Bereitstellung erforderlich ist, damit weniger häufig eine Kontingenterhöhung angefordert werden muss.
 
 ## <a name="eligibility-criteria"></a>Wer kann Azure Government erwerben?
 
-Sie benötigen ein Azure-Konto in einem Azure-Abonnement. Das Azure-Abonnement muss eines der folgenden Kriterien erfüllen:
+Sie benötigen ein Azure-Konto in einem Azure-Abonnement, das einem der folgenden Kriterien entspricht:
 
 - Abonnement unter einem [Azure Konzernvertrag (Enterprise Agreement, EA)](../cost-management-billing/manage/ea-portal-agreements.md) mit Microsoft
 - Von einem Cloudlösungsanbieter (Cloud Solution Provider, CSP) verwaltetes Abonnement unter einem CSP-Angebotsvertrag in Azure oder einem Azure-Plan
+- Eine [Vereinbarung zu „Modern Commerce“](../cost-management-billing/understand/mca-overview.md) mit Microsoft.
 
 ## <a name="request-host-quota-for-ea-customers"></a>Anfordern des Hostkontingents für EA-Kunden
 
@@ -62,11 +65,11 @@ Greifen Sie unter Verwendung der Prozedur **Administrator im Namen von** (Admin 
 
    1. Wählen Sie in **Partner Center** die Option **CSP** aus, um auf den Bereich **Kunden** zuzugreifen.
    
-      :::image type="content" source="media/enable-azure-vmware-solution/csp-customers-screen.png" alt-text="Kundenbereich in Microsoft Partner Center" lightbox="media/enable-azure-vmware-solution/csp-customers-screen.png":::
+      :::image type="content" source="media/pre-deployment/csp-customers-screen.png" alt-text="Screenshot: Kundenbereich „Microsoft Partner Center“" lightbox="media/pre-deployment/csp-customers-screen.png":::
    
    1. Wählen Sie Ihren Kunden und anschließend **Produkte hinzufügen** aus.
    
-      :::image type="content" source="media/enable-azure-vmware-solution/csp-partner-center.png" alt-text="Microsoft Partner Center" lightbox="media/enable-azure-vmware-solution/csp-partner-center.png":::
+      :::image type="content" source="media/pre-deployment/csp-partner-center.png" alt-text="Screenshot: Im Microsoft Partner Center ausgewählter Azure-Plan" lightbox="media/pre-deployment/csp-partner-center.png":::
    
    1. Wählen Sie **Azure-Plan** und anschließend **Zu Warenkorb hinzufügen** aus. 
    
@@ -105,5 +108,4 @@ Greifen Sie unter Verwendung der Prozedur **Administrator im Namen von** (Admin 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Dasmit Sie Azure VMware Solution bereitstellen können, müssen Sie für Ihr Abonnement zunächst [den Ressourcenanbieter registrieren](deploy-azure-vmware-solution.md#step-1-register-the-microsoftavs-resource-provider), um den Dienst zu aktivieren.   
-
+Vor der Bereitstellung von Azure VMware Solution müssen Sie zunächst den [Ressourcenanbieter mit Ihrem Abonnement registrieren](deploy-azure-vmware-solution.md#register-the-microsoftavs-resource-provider), um den Dienst zu aktivieren.   

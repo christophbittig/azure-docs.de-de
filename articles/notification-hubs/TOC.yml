@@ -119,6 +119,8 @@
       href: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
     - name: Exportieren und Importieren von Registrierungen in einem Massenvorgang
       href: export-modify-registrations-bulk.md
+    - name: Verschieben von Ressourcen zwischen Regionen
+      href: move-registrations.md
     - name: Erstellen eines Notification Hub mithilfe von SDKs
       items:
         - name: 'Erstellen eines Notification Hub: .NET'
@@ -159,7 +161,7 @@
   items:
     - name: .NET
       href: /dotnet/api/microsoft.azure.notificationhubs
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/notification-hub
     - name: PowerShell
       href: /powershell/module/az.notificationhubs

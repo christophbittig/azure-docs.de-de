@@ -6,19 +6,19 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: reference
 ms.date: 08/16/2021
-ms.openlocfilehash: 74bfdabbbd145e7409d070e9bb432ad4f62759d5
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 78267781c552f46952babea9704eca8d62b3b5ea
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866580"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122356529"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Referenzhandbuch für die Verwendung von Funktionen in Ausdrücken für Azure Logic Apps und Power Automate
 
-Bei Workflowdefinitionen in [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und [Power Automate](/power-automate/getting-started) erhalten einige [Ausdrücke](../logic-apps/logic-apps-workflow-definition-language.md#expressions) ihre Werte von Laufzeitaktionen, die zu Beginn der Ausführung Ihres Workflows möglicherweise noch nicht vorhanden sind. Sie können mithilfe von *Funktionen*, die von der [Definitionssprache für Workflows](../logic-apps/logic-apps-workflow-definition-language.md) bereitgestellt werden, auf diese Werte in diesen Ausdrücken verweisen oder diese Werte in diesen Ausdrücken verarbeiten.
+Bei Workflowdefinitionen in [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und [Power Automate](/flow/getting-started) erhalten einige [Ausdrücke](../logic-apps/logic-apps-workflow-definition-language.md#expressions) ihre Werte von Laufzeitaktionen, die zu Beginn der Ausführung Ihres Workflows möglicherweise noch nicht vorhanden sind. Sie können mithilfe von *Funktionen*, die von der [Definitionssprache für Workflows](../logic-apps/logic-apps-workflow-definition-language.md) bereitgestellt werden, auf diese Werte in diesen Ausdrücken verweisen oder diese Werte in diesen Ausdrücken verarbeiten.
 
 > [!NOTE]
-> Diese Referenzseite gilt sowohl für Azure Logic Apps als auch für Power Automate, wird aber in der Dokumentation zu Azure Logic Apps angezeigt. Obwohl sich diese Seite speziell auf Logik-App-Workflows bezieht, funktionieren diese Funktionen sowohl mit Flows als auch mit Logik-App-Workflows. Weitere Informationen zu Funktionen und Ausdrücken in Power Automate finden Sie unter [Verwenden von Ausdrücken in Bedingungen](/power-automate/use-expressions-in-conditions).
+> Diese Referenzseite gilt sowohl für Azure Logic Apps als auch für Power Automate, wird aber in der Dokumentation zu Azure Logic Apps angezeigt. Obwohl sich diese Seite speziell auf Logik-App-Workflows bezieht, funktionieren diese Funktionen sowohl mit Flows als auch mit Logik-App-Workflows. Weitere Informationen zu Funktionen und Ausdrücken in Power Automate finden Sie unter [Verwenden von Ausdrücken in Bedingungen](/flow/use-expressions-in-conditions).
 
 Beispielsweise können Sie Werte berechnen, indem Sie mathematische Funktionen wie die [add()](../logic-apps/workflow-definition-language-functions-reference.md#add)-Funktion verwenden, wenn Sie die Summe aus Integer- oder Gleitkommazahlen erhalten möchten. Im Folgenden finden Sie weitere Beispielaufgaben, die Sie mit Funktionen ausführen können:
 

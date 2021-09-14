@@ -2,13 +2,13 @@
 title: Übermitteln von Ereignissen mithilfe einer privaten Verbindung
 description: In diesem Artikel wird beschrieben, wie Sie die Einschränkung umgehen, dass Ereignisse nicht mithilfe einer privaten Verbindung übertragen werden können.
 ms.topic: how-to
-ms.date: 02/12/2021
-ms.openlocfilehash: 75ae8ff2c341048c39156e43da3615788e9d0f0a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 07/01/2021
+ms.openlocfilehash: 0672b2b93cf7413ac9a3d46e8d824354276ba89f
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309430"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114286120"
 ---
 # <a name="deliver-events-using-private-link-service"></a>Übermitteln von Ereignissen mithilfe einer privaten Verbindung
 Derzeit ist es nicht möglich, Ereignisse über [private Endpunkte](../private-link/private-endpoint-overview.md) zu übermitteln. Das heißt, es gibt keine Unterstützung, wenn Sie strikte Anforderungen an die Netzwerkisolation haben, bei denen der Datenverkehr der übermittelten Ereignisse den privaten IP-Adressraum nicht verlassen darf. 
@@ -44,9 +44,9 @@ Führen Sie die folgenden Schritte aus, um Ereignisse an Service Bus-Warteschlan
 Gehen Sie folgendermaßen vor, um Ereignisse mithilfe der verwalteten Identität an Storage-Warteschlangen zu übermitteln:
 
 1. Aktivieren der vom System zugewiesenen Identität: [Systemthemen](enable-identity-system-topics.md), [benutzerdefinierte Themen und Domänen](enable-identity-custom-topics-domains.md). 
-1. [Fügen Sie die Identität der Rolle **Absender der Speicherwarteschlangen-Datennachricht**](../storage/common/storage-auth-aad-rbac-portal.md) in der Azure Storage-Warteschlange hinzu.
-1. [Konfigurieren Sie das Ereignisabonnement](managed-service-identity.md#create-event-subscriptions-that-use-an-identity), das eine Service Bus-Warteschlange oder ein -Thema als Endpunkt verwendet, um die vom System zugewiesene Identität zu verwenden.
+1. [Fügen Sie die Identität der Rolle **Absender der Speicherwarteschlangen-Datennachricht**](../storage/blobs/assign-azure-role-data-access.md) in der Azure Storage-Warteschlange hinzu.
+1. [Konfigurieren Sie dann das Ereignisabonnement](managed-service-identity.md#create-event-subscriptions-that-use-an-identity), das eine Storage-Warteschlange als Endpunkt verwendet, um die vom System zugewiesene Identität zu verwenden.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Übermitteln von Ereignissen mit einer verwalteten Identität finden Sie unter [Ereignisübermittlung mit einer verwalteten Identität](managed-service-identity.md). 
+Weitere Informationen zum Übermitteln von Ereignissen mit einer verwalteten Identität finden Sie unter [Ereignisübermittlung mit einer verwalteten Identität](managed-service-identity.md).

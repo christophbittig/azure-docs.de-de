@@ -5,14 +5,15 @@ ms.author: makromer
 author: kromerm
 ms.reviewer: daperlov
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: troubleshooting
-ms.date: 04/22/2021
-ms.openlocfilehash: 82f6d69629f397cb5222a82677bf27ed880aa20f
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.date: 08/18/2021
+ms.openlocfilehash: 56a59d4acd9c1f8ed51f16e7c39cfb5cba949b6b
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107988008"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446836"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Problembehandlung bei Zuordnungsdatenflüssen in Azure Data Factory
 
@@ -67,7 +68,7 @@ In diesem Artikel werden die gängigen Problembehandlungsmethoden für Zuordnung
 - **Empfehlung**: Weitere Informationen zu diesem Problem erhalten Sie vom Microsoft-Produktteam.
 
 ### <a name="error-code-df-executor-partitiondirectoryerror"></a>Fehlercode: DF-Executor-PartitionDirectoryError
-- **Meldung**: Der angegebene Quellpfad weist entweder mehrere partitionierte Verzeichnisse (z. B. <Source Path>/<Partitionsstammverzeichnis 1>/a=10/b=20, <Source Path>/<Partitionsstammverzeichnis 2>/c=10/d=30) oder ein partitioniertes Verzeichnis mit einer anderen Datei oder einem nicht partitionierten Verzeichnis auf (z. B. <Source Path>/<Partitionsstammverzeichnis 1>/a=10/b=20, <Source Path>/Verzeichnis 2/Datei1). Entfernen Sie das Partitionsstammverzeichnis aus dem Quellpfad, und lesen Sie es durch eine separate Quelltransformation.
+- **Meldung**: Der angegebene Quellpfad weist entweder mehrere partitionierte Verzeichnisse (z. B. &lt;Quellpfad&gt;/<Partitionsstammverzeichnis 1>/a=10/b=20, &lt;Quellpfad&gt;/&lt;Partitionsstammverzeichnis 2&gt;/c=10/d=30) oder ein partitioniertes Verzeichnis mit einer anderen Datei oder einem nicht partitionierten Verzeichnis auf (z. B. &lt;Quellpfad&gt;/&lt;Partitionsstammverzeichnis 1&gt;/a=10/b=20, &lt;Quellpfad&gt;/Verzeichnis 2/Datei1). Entfernen Sie das Partitionsstammverzeichnis aus dem Quellpfad, und lesen Sie es durch eine separate Quelltransformation.
 - **Ursache**: Der Quellpfad enthält entweder mehrere partitionierte Verzeichnisse oder ein partitioniertes Verzeichnis mit einer anderen Datei oder einem nicht partitionierten Verzeichnis.
 - **Empfehlung**: Entfernen Sie das partitionierte Stammverzeichnis aus dem Quellpfad, und lesen Sie es durch eine separate Quelltransformation.
 
@@ -125,6 +126,10 @@ In diesem Artikel werden die gängigen Problembehandlungsmethoden für Zuordnung
 - **Ursache**: Auf der Integration Runtime wird eine große Anzahl von Datenflussaktivitäten gleichzeitig ausgeführt. Weitere Informationen finden Sie unter [Data Factory-Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits).
 - **Empfehlung**: Wenn Sie weitere Datenflussaktivitäten parallel ausführen möchten, verteilen Sie sie auf mehrere Integration Runtime-Instanzen.
 
+### <a name="error-code-4510"></a>Fehlercode: 4510
+- **Meldung**: Unerwarteter Fehler während der Ausführung. 
+- **Ursache**: Da Debugcluster anders funktionieren als Auftragscluster, können übermäßige Debugläufe den Cluster im Laufe der Zeit verschleißen, was zu Arbeitsspeicherproblemen und plötzlichen Neustarts führen kann.
+- **Empfehlung**: Starten Sie den Debugcluster neu. Wenn Sie während der Debugsitzung mehrere Dataflows ausführen, verwenden Sie stattdessen Aktivitätsläufe, da die Ausführung auf Aktivitätsebene eine separate Sitzung erstellt, ohne den Hauptdebuggingcluster zu besteuern.
 
 ### <a name="error-code-invalidtemplate"></a>Fehlercode: InvalidTemplate
 - **Meldung:** The pipeline expression cannot be evaluated. (Der Pipelineausdruck kann nicht ausgewertet werden.)
@@ -243,7 +248,7 @@ In diesem Artikel werden die gängigen Problembehandlungsmethoden für Zuordnung
 - **Empfehlung**: Aktualisieren Sie die Snowflake-Stagingeinstellungen, sodass nur der verknüpfte Azure-Blobdienst verwendet wird.
 
 ### <a name="error-code-df-snowflake-invalidstageconfiguration"></a>Fehlercode: DF-Snowflake-InvalidStageConfiguration
-- **Meldung:** Die Snowflake-Phaseneigenschaften müssen mit der Azure Blob- und SAS-Authentifizierung angegeben werden.
+- **Meldung**: Die Snowflake-Phaseneigenschaften müssen mit der Azure Blob- und SAS-Authentifizierung angegeben werden.
 - **Ursache**: In Snowflake ist eine ungültige Stagingkonfiguration angegeben.
 - **Empfehlung**: Stellen Sie sicher, dass in den Snowflake-Stagingeinstellungen nur die Azure-Blob- und die SAS-Authentifizierung angegeben ist.
 
@@ -401,10 +406,10 @@ In diesem Artikel werden die gängigen Problembehandlungsmethoden für Zuordnung
 - **Empfehlung**: Führen Sie die folgenden Aktionen aus, um dieses Problem zu beheben:
     1. Wenn ein 404-Fehler vorliegt, stellen Sie sicher, dass die zugehörigen Zeilendaten in der Cosmos-Sammlung vorhanden sind. 
     1. Wenn der Fehler durch eine Drosselung verursacht wird, erhöhen Sie den Durchsatz für die Cosmos-Sammlung, oder legen Sie die automatische Skalierung fest.
+    1. Wenn bei der Anforderung ein Time out auftritt, legen Sie „Batch size“ in der Cosmos-Senke auf einen kleineren Wert fest, z. B. 1000.
 
 ### <a name="error-code-df-sqldw-errorrowsfound"></a>Fehlercode: DF-SQLDW-ErrorRowsFound
-- **Meldung**: Beim Schreiben in die SQL-Senke wurden Fehler festgestellt oder ungültige Zeilen gefunden. Sofern konfiguriert, werden fehlerhafte/ungültige Zeilen in den Speicherort für abgelehnte Daten geschrieben.
-- **Ursache**: Beim Schreiben in die SQL-Senke wurden Fehler festgestellt oder ungültige Zeilen gefunden.
+- **Ursache**: Beim Schreiben in die Azure Synapse-Senke wurden Fehler festgestellt / ungültige Zeilen gefunden.
 - **Empfehlung**: Suchen Sie am Speicherort für abgelehnte Daten (falls konfiguriert) nach den Fehlerzeilen.
 
 ### <a name="error-code-df-sqldw-exporterrorrowfailed"></a>Fehlercode: DF-SQLDW-ExportErrorRowFailed
@@ -478,9 +483,93 @@ In diesem Artikel werden die gängigen Problembehandlungsmethoden für Zuordnung
 - **Empfehlung**: Aktualisieren Sie die AdobeIntegration-Einstellungen, sodass der Partitionstyp „RoundRobin“ lautet.
 
 ### <a name="error-code-df-adobeintegration-invalidprivacyregulation"></a>Fehlercode: DF-AdobeIntegration-InvalidPrivacyRegulation
-- **Meldung:** Derzeit wird nur „gdpr“ für die Datenschutz-Grundverordnung (DSGVO) als Datenschutzbestimmung unterstützt.
+- **Meldung**: Derzeit wird nur „GDPR“ für die Datenschutz-Grundverordnung (DSGVO) als Datenschutzbestimmung unterstützt.
 - **Ursache**: Es wurden ungültige Datenschutzkonfigurationen angegeben.
 - **Empfehlung**: Aktualisieren Sie die AdobeIntegration-Einstellungen. Es wird nur die Datenschutzoption „GDPR“ unterstützt.
+
+### <a name="error-code-df-executor-remoterpcclientdisassociated"></a>Fehlercode: DF-Executor-RemoteRPCClientDisassociated
+- **Meldung**: Zuordnung des Remote-RPC-Clients wurde aufgehoben. Mögliche Ursachen sind die Überschreitung von Schwellenwerten durch Container oder Netzwerkprobleme.
+- **Ursache**: Fehler bei der Datenflussaktivität aufgrund des vorübergehenden Netzwerkproblems oder weil für einen Knoten im Spark-Cluster nicht genügend Arbeitsspeicher verfügbar ist.
+- **Empfehlung**: Verwenden Sie die folgenden Optionen, um dieses Problem zu lösen:
+  - Option-1: Verwenden Sie einen leistungsstarken Cluster (sowohl Laufwerks- als auch Executor-Knoten verfügen über genügend Arbeitsspeicher für die Verarbeitung von Big Data), um Datenflusspipelines mit der Einstellung „Computetyp“ auf „arbeitsspeicheroptimiert“ ausführen zu können. Die Einstellungen sind in der folgenden Abbildung dargestellt.
+        
+      :::image type="content" source="media/data-flow-troubleshoot-guide/configure-compute-type.png" alt-text="Screenshot: Konfiguration des Compute-Typs":::   
+
+  - Option 2: Verwenden Sie eine größere Clustergröße (z. B. 48 Kerne), um Ihre Datenflusspipelines ausführen. Weitere Informationen zur Clustergröße finden Sie in diesem Dokument: [Clustergröße](./concepts-data-flow-performance.md#cluster-size).
+  
+  - Option-3: Neupartitionierung Ihrer Eingabedaten. Bei Aufgaben, die im Datenfluss-Spark-Cluster ausgeführt werden, stellt eine Aufgabe eine Partition dar, die auf einem Knoten ausgeführt wird. Wenn die Daten in einer Partition zu groß sind, verbraucht die zugehörige Aufgabe, die auf dem Knoten ausgeführt wird, mehr Arbeitsspeicher als der Knoten selbst, wodurch ein Fehler auftritt. Sie können die Neupartitionierung verwenden, um Datenschiefe zu vermeiden und sicherzustellen, dass die Datengröße in jeder Partition durchschnittlich groß ist, während der Arbeitsspeicherverbrauch nicht zu hoch ist.
+    
+      :::image type="content" source="media/data-flow-troubleshoot-guide/configure-partition.png" alt-text="Screenshot: Konfiguration der Partitionen":::
+
+    > [!NOTE]
+    >  Sie müssen die Datengröße oder die Partitionsnummer der Eingabedaten auswerten und dann unter „Optimieren“ eine passende Partitionsnummer festlegen. Beispielsweise hat der Cluster, den Sie in der Datenflusspipelineausführung verwenden, 8 Kerne und der Arbeitsspeicher jedes Kerns hat 20 GB; die Eingabedaten haben allerdings 1.000 GB bei 10 Partitionen. Wenn Sie den Datenfluss direkt ausführen, wird das OOM-Problem auftreten (1.000 GB/10 > 20 GB). Deshalb ist es besser, die neue Partitionsnummer auf 100 festzulegen (1000GB/100 < 20GB).
+    
+  - Option-4: Anpassen und Optimieren von Quell-/Senken-/Transformationseinstellungen. Versuchen Sie z. B. alle Dateien in einem Container zu kopieren und verwenden Sie nicht das Platzhaltermuster. Ausführlichere Informationen finden Sie unter [Leistungs- und Optimierungshandbuch für Zuordnungsdatenflüsse)](./concepts-data-flow-performance.md).
+
+### <a name="error-code-df-mssql-errorrowsfound"></a>Fehlercode: DF-MSSQL-ErrorRowsFound
+- **Ursache**: Beim Schreiben in der Azure SQL-Datenbanksenke wurden Fehler/Ungültige Zeilen gefunden.
+- **Empfehlung**: Suchen Sie am Speicherort für abgelehnte Daten (falls konfiguriert) nach den Fehlerzeilen.
+
+### <a name="error-code-df-mssql-exporterrorrowfailed"></a>Fehlercode: DF-MSSQL-ExportErrorRowFailed
+- **Meldung**: Ausnahme beim Schreiben von Fehlerzeilen in den Speicher.
+- **Ursache**: Beim Schreiben von Fehlerzeilen in den Speicher ist eine Ausnahme aufgetreten.
+- **Empfehlung**: Überprüfen Sie die Konfiguration des abgelehnten verknüpften Datendiensts.
+
+### <a name="error-code-df-synapse-invaliddatabasetype"></a>Fehlercode: DF-Synapse-InvalidDatabaseType
+- **Meldung**: Datenbanktyp wird nicht unterstützt.
+- **Ursache**: Dieser Datenbanktyp wird nicht unterstützt.
+- **Empfehlung**: Überprüfen Sie den Datenbanktyp und ändern Sie ihn in den richtigen.
+
+### <a name="error-code-df-synapse-invalidformat"></a>Fehlercode: DF-Synapse-InvalidFormat
+- **Meldung**: Format wird nicht unterstützt.
+- **Ursache**: Dieses Format wird nicht unterstützt. 
+- **Empfehlung**: Überprüfen Sie das Format und ändern Sie es in das richtige.
+
+### <a name="error-code-df-synapse-invalidtabledbname"></a>Fehlercode: DF-Synapse-InvalidTableDBName
+- **Ursache**: Der Name der Tabelle/Datenbank ist ungültig.
+- **Empfehlung**: Geben Sie einen gültigen Namen für die Tabelle/Datenbank ein. Gültige Namen enthalten nur alphabetische Zeichen, Zahlen und `_`.
+
+### <a name="error-code-df-synapse-invalidoperation"></a>Fehlercode: DF-Synapse-InvalidOperation
+- **Ursache**: Der Vorgang wird nicht unterstützt.
+- **Empfehlung**: Nutzen Sie einen gültigen Vorgang.
+
+### <a name="error-code-df-synapse-dbnotexist"></a>Fehlercode: DF-Synapse-DBNotExist
+- **Ursache**: Die Datenbank ist nicht vorhanden.
+- **Empfehlung**: Überprüfen Sie, ob die Datenbank vorhanden ist.
+
+### <a name="error-code-df-synapse-storedprocedurenotsupported"></a>Fehlercode: DF-Synapse-StoredProcedureNotSupported
+- **Meldung**: Verwenden Sie „Gespeicherte Prozedur“ als Quelle wird für serverlosen (bedarfsbasierten) Pool nicht unterstützt.
+- **Ursache**: Der serverlose Pool hat Beschränkungen.
+- **Empfehlung**: Versuchen Sie erneut, „Abfrage“ als Quelle zu verwenden oder die gespeicherte Prozedur als Ansicht zu speichern, und verwenden Sie dann „Tabelle“ als Quelle, um direkt aus der Ansicht zu lesen.
+
+### <a name="error-code-df-executor-broadcastfailure"></a>Fehlercode: DF-Executor-BroadcastFailure
+- **Meldung**: Fehler bei der Ausführung des Datenflusses während des Übertragungsaustauschs. Mögliche Ursachen sind falsch konfigurierte Quellen-Verbindungen oder ein Broadcastjoin-Timeoutfehler. Um sicherzustellen, dass die Quellen ordnungsgemäß konfiguriert sind, testen Sie die Verbindung oder führen Sie eine Quelldatenvorschau in einer Dataflow-Debugsitzung aus. Um das Broadcastjoin-Timeout zu vermeiden, können Sie die Broadcastoption „Aus“ in den Join/Exists/Lookup-Transformationen auswählen. Wenn Sie die Broadcastoption nutzen möchten, um die Leistung zu verbessern, müssen Sie sicherstellen, dass die Broadcast-Datenströme innerhalb von 60 Sekunden Daten für Debugausführungen und innerhalb von 300 Sekunden Daten für Auftragsausführungen erzeugen können. Falls das Problem weiterhin besteht, wenden Sie sich an Kundensupport.
+
+- **Ursache**:  
+    1. Der Fehler bei der Quellverbindung/Konfiguration kann zu einem Übertragungsfehler bei Join/Exists/Lookup-Transformationen führen.
+    2. Für Übertragungen gilt bei Debugausführungen ein Standardtimeout von 60 Sekunden und bei Auftragsausführungen ein Standardtimeout von 300 Sekunden. Der bei einem Broadcastjoin für die Übertragung ausgewählte Datenstrom ist anscheinend zu groß, um innerhalb dieser Zeitspanne Daten zu erzeugen. Wenn kein Broadcastjoin verwendet wird, kann die vom Datenfluss durchgeführte Standardübertragung denselben Grenzwert erreichen.
+
+- **Empfehlung**:
+    1. Verwenden Sie für die Quellen eine Datenvorschau, um zu bestätigen, dass die Quellen gut konfiguriert sind. 
+    1. Deaktivieren Sie die Übertragungsoption oder vermeiden Sie die Übertragung von großen Datenströmen, deren Verarbeitung länger als 60 Sekunden dauern kann. Wählen Sie stattdessen einen kleineren Datenstrom für die Übertragung. 
+    1. Große SQL-/Data Warehouse-Tabellen und Quelldateien sind hierfür eher ungeeignet. 
+    1. Sofern kein Broadcastjoin vorhanden ist, verwenden Sie einen größeren Cluster, wenn dieser Fehler auftritt. 
+    1. Falls das Problem weiterhin besteht, wenden Sie sich an den Kundensupport.
+
+### <a name="error-code-df-cosmos-shorttypenotsupport"></a>Fehlercode: DF-Cosmos-ShortTypeNotSupport
+- **Meldung**: Short-Datentypen werden in der Cosmos DB nicht unterstützt.
+- **Ursache**: Der Short-Datentyp wird in der Cosmos DB nicht unterstützt.
+- **Empfehlung**: Fügen Sie eine abgeleitete Transformation hinzu, um verknüpfte Spalten von Short in Integer zu konvertieren, bevor sie in der Cosmos-Senke verwendet werden.
+
+### <a name="error-code-df-blob-functionnotsupport"></a>Fehlercode: DF-Blob-FunctionNotSupport
+- **Meldung**: Dieser Endpunkt unterstützt BlobStorageEvents, SoftDelete oder AutomaticSnapshot nicht. Deaktivieren Sie diese Kontofeatures, wenn Sie diesen Endpunkt verwenden möchten.
+- **Ursache**: Azure Blob Storage-Ereignisse, das vorläufige Löschen oder die automatische Momentaufnahme werden in Datenflüssen nicht unterstützt, wenn der verknüpfte Azure Blob Storage-Dienst mit Dienstprinzipal- oder verwalteter Identitätsauthentifizierung erstellt wird.
+- **Empfehlung**: Deaktivieren Sie Azure Blob Storage-Ereignisse, das Feature für das vorläufige Löschen oder die automatische Momentaufnahme im Azure Blob-Konto oder verwenden Sie die Schlüsselauthentifizierung, um den verknüpften Dienst zu erstellen.
+
+### <a name="error-code-df-cosmos-invalidaccountkey"></a>Fehlercode: DF-Cosmos-InvalidAccountKey
+- **Meldung**: Das Eingabeautorisierungstoken kann die Anforderung nicht verarbeiten. Please check that the expected payload is built as per the protocol, and check the key being used. (Das Eingabeautorisierungstoken kann die Anforderung nicht verarbeiten. Vergewissern Sie sich, dass die erwartete Nutzlast protokollgemäß erstellt wurde, und überprüfen Sie den verwendeten Schlüssel.)
+- **Ursache**: Es gibt nicht genügend Berechtigungen zum Lesen/Schreiben von Azure Cosmos DB-Daten.
+- **Empfehlung**: Verwenden Sie den Lese-/Schreibschlüssel für den Zugriff auf Azure Cosmos DB.
 
 ## <a name="miscellaneous-troubleshooting-tips"></a>Verschiedene Tipps zur Problembehandlung
 - **Problem**: Unerwartete Ausnahme und Fehler bei der Ausführung.
@@ -521,7 +610,7 @@ Die folgenden Probleme können vor der Verbesserung auftreten, die Probleme wurd
 
  Vor der Verbesserung kann das Standardzeilen Trennzeichen `\n` unerwartet verwendet werden, um durch Trennzeichen getrennte Textdateien zu analysieren, denn wenn die mehrzeilige Einstellung auf True festgelegt ist, wird die Zeilentrennzeichen-Einstellung ungültig, und das Zeilentrennzeichen wird automatisch basierend auf den ersten 128 Zeichen erkannt. Wenn Sie das tatsächliche Zeilentrennzeichen nicht ermitteln können, greift es auf `\n` zurück.  
 
- Nach der Verbesserung sollte eines der drei Zeilentrennzeichen: `\r`, `\n`, `\r\n` bearbeitet werden.
+ Nach der Verbesserung sollte eines der drei Zeilentrennzeichen `\r`, `\n`, `\r\n` funktioniert haben.
  
  Das folgende Beispiel zeigt Ihnen eine Pipeline-Verhaltensänderung nach der Verbesserung an:
 
@@ -609,6 +698,27 @@ Die folgenden Probleme können vor der Verbesserung auftreten, die Probleme wurd
  Nach der Verbesserung sollte das Ergebnis der geparsten Spalte sein:<br/>
   `A "" (empty string) B "" (empty string)`<br/>
 
+###  <a name="internal-server-errors"></a>Interne Serverfehler
+
+Im Folgenden finden Sie spezifische Szenarien, die interne Serverfehler verursachen können.
+
+#### <a name="scenario-1-not-choosing-the-appropriate-compute-sizetype-and-other-factors"></a>Szenario 1: Es wurde eine ungeeignete Auswahl bzgl. Computegröße/-typ und anderer Faktoren getroffen
+
+  Die erfolgreiche Ausführung eines Datenflusses hängt von vielen Faktoren ab. Hierzu zählen unter anderem die/der Computegröße/-typ, die Anzahl der zu verarbeitenden Quellen/Senken, die Partitionsspezifikation, die erforderlichen Transformationen,die Größe von Datasets sowie die Datenschiefe.<br/>
+  
+  Weitere Hinweise finden Sie unter [Optimieren der Azure Integration Runtime](concepts-data-flow-performance.md#ir).
+
+#### <a name="scenario-2-using-debug-sessions-with-parallel-activities"></a>Szenario 2: Verwenden von Debugsitzungen mit parallelen Aktivitäten
+
+  Wenn eine Ausführung mithilfe einer Datenflussdebugsitzung mit Konstrukten wie „ForEach“ in der Pipeline ausgelöst wird, können mehrere parallele Ausführungen an den gleichen Cluster übermittelt werden. Diese Situation kann zu Clusterfehlern führen, z. B. weil nicht genügend Arbeitsspeicher zur Verfügung steht oder ein anderes Ressourcenproblemen vorliegt.<br/>
+  
+  Um eine Ausführung mit der entsprechenden in der Pipeline-Aktivität definierten Integration Runtime-Konfiguration zu übermitteln, wählen Sie nach der Veröffentlichung der Änderungen **Jetzt auslösen** oder **Debuggen** >  **Aktivitätslaufzeit verwenden**.
+
+#### <a name="scenario-3-transient-issues"></a>Szenario 3: Vorübergehende Probleme
+
+  Vorübergehende Probleme mit an der Ausführung beteiligten Microservices können dazu führen, dass die Ausführung nicht erfolgreich ist.<br/>
+  
+  Schwierigkeiten infolge von vorübergehenden Problemen lassen sich ggf. durch das Konfigurieren von Wiederholungen in der Pipelineaktivität beheben. Sie finden weitere Anleitungen in der Dokumentation zur [Aktivitätsrichtlinie](concepts-pipelines-activities.md#activity-json).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

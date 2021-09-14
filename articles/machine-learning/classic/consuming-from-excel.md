@@ -1,6 +1,6 @@
 ---
 title: 'ML Studio (Classic): Nutzen des Webdiensts in Excel – Azure'
-description: Mit Azure Machine Learning Studio (klassisch) können Webdienste auf einfache Weise direkt von Excel aus aufgerufen werden, ohne einen Code schreiben zu müssen.
+description: Mit dem Azure Machine Learning Studio (Classic) können Webdienste auf einfache Weise direkt von Excel aus aufgerufen werden, ohne Code schreiben zu müssen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,22 +9,22 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: e8e7404a2b643cf90866253e5a7453381b66f73e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b5394302d3b1028ff6746e9a655028fdb82d9142
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100517857"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695019"
 ---
-# <a name="consuming-an-azure-machine-learning-studio-classic-web-service-from-excel"></a>Nutzen eines (klassischen) Azure Machine Learning Studio-Webdiensts aus Excel
+# <a name="consuming-an-machine-learning-studio-classic-web-service-from-excel"></a>Nutzen eines Webdiensts aus Excel im Azure Machine Learning Studio (Classic)
 
 **GILT FÜR:**  ![Gilt für ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Gilt nicht für ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-Mit Azure Machine Learning Studio (klassisch) können Webdienste auf einfache Weise direkt von Excel aus aufgerufen werden, ohne einen Code schreiben zu müssen.
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
+
+Mit dem Azure Machine Learning Studio (Classic) können Webdienste auf einfache Weise direkt von Excel aus aufgerufen werden, ohne Code schreiben zu müssen.
 
 Wenn Sie Excel 2013 (oder höher) oder Excel Online verwenden, empfehlen wir die Verwendung des [Excel-Add-Ins](excel-add-in-for-web-services.md).
-
-
 
 ## <a name="steps"></a>Schritte
 Veröffentlichen eines Webdiensts. [Tutorial 3: Bereitstellen eines Kreditrisikomodells](tutorial-part3-credit-risk-deploy.md) erläutert diesen Vorgang. Die Excel-Arbeitsmappenfunktion wird derzeit nur für Antwort-/Anfrage-Dienste unterstützt, die eine einzelne Ausgabe aufweisen (d. h. eine einzelne Bewertungsbezeichnung). 
@@ -40,7 +40,7 @@ Wenn Sie einen Webdienst haben, klicken Sie auf den Bereich **WEB SERVICES** der
 
 **Neuer Webdienst**
 
-1. Wählen Sie im Azure Machine Learning Web Service-Portal **Consume** aus.
+1. Klicken Sie im Machine Learning-Webdienstportal auf **Consume** (Verbrauch).
 2. Klicken Sie auf der Seite „Consume“ im Abschnitt **Web service consumption options** auf das Excel-Symbol.
 
 **Verwenden der Arbeitsmappe**

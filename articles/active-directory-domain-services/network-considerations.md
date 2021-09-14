@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/16/2020
+ms.date: 08/12/2021
 ms.author: justinha
-ms.openlocfilehash: d1a3ab5face03754bf84f442ac0fa73768b0fc80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 533d663b478ddd362ef18f81528afbe1b9393095
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97615816"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356183"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Überlegungen zum Entwurf virtueller Netzwerke und Konfigurationsoptionen für Azure Active Directory Domain Services
 
@@ -94,9 +94,9 @@ Eine verwaltete Domäne erstellt während der Bereitstellung einige Netzwerkress
 | Azure-Ressource                          | BESCHREIBUNG |
 |:----------------------------------------|:---|
 | Netzwerkschnittstellenkarte                  | Azure AD DS hostet die verwaltete Domäne auf zwei Domänencontrollern (DCs), die auf Windows Server als virtuelle Azure-Computer ausgeführt werden. Jeder virtuelle Computer verfügt über eine virtuelle Netzwerkschnittstelle, die sich mit Ihrem virtuellen Subnetz verbindet. |
-| Dynamische öffentliche Standard-IP-Adresse      | Azure AD DS kommuniziert mit dem Synchronisierungs- und Verwaltungsdienst über eine standardmäßige öffentliche SKU-IP-Adresse. Weitere Informationen zu öffentlichen IP-Adressen finden Sie unter [IP-Adresstypen und Zuordnungsmethoden in Azure](../virtual-network/public-ip-addresses.md). |
-| Azure Load Balancer Standard            | Azure AD DS verwendet einen SKU-Load Balancer vom Typ „Standard“ für die Netzwerkadressübersetzung (NAT) und den Lastenausgleich (bei Verwendung mit sicherem LDAP). Weitere Informationen zu Azure Load Balancer finden Sie unter [Was versteht man unter Azure Load Balancer?](../load-balancer/load-balancer-overview.md). |
-| Regeln für die Netzwerkadressübersetzung (NAT) | Azure AD DS erstellt und verwendet drei NAT-Regeln auf dem Load Balancer – eine Regel für sicheren HTTP-Datenverkehr und zwei Regeln für sicheres PowerShell-Remoting. |
+| Dynamische öffentliche Standard-IP-Adresse      | Azure AD DS kommuniziert mit dem Synchronisierungs- und Verwaltungsdienst über eine öffentliche IP-Adresse der Standard-SKU. Weitere Informationen zu öffentlichen IP-Adressen finden Sie unter [IP-Adresstypen und Zuordnungsmethoden in Azure](../virtual-network/public-ip-addresses.md). |
+| Azure Load Balancer Standard            | Azure AD DS verwendet einen Lastenausgleich mit Standard-SKU für die Netzwerkadressenübersetzung (NAT) und den Lastenausgleiche (bei Verwendung mit sicherem LDAP). Weitere Informationen zu Azure Load Balancer finden Sie unter [Was versteht man unter Azure Load Balancer?](../load-balancer/load-balancer-overview.md). |
+| Regeln für die Netzwerkadressübersetzung (NAT) | Azure AD DS erstellt und verwendet zwei NAT-Regeln für eingehenden Datenverkehr für den Lastenausgleich für das sichere PowerShell-Remoting. Wenn ein Lastenausgleich mit Standard-SKU verwendet wird, wird ebenfalls eine NAT-Regel für ausgehenden Datenverkehr genutzt. Für den Lastenausgleich der Basic-SKU ist keine NAT-Regel für ausgehenden Datenverkehr erforderlich. |
 | Lastenausgleichsregeln                     | Wenn eine verwaltete Domäne für sicheres LDAP am TCP-Port 636 konfiguriert ist, werden drei Regeln erstellt und für einen Lastenausgleich verwendet, um den Datenverkehr zu verteilen. |
 
 > [!WARNING]
@@ -104,11 +104,15 @@ Eine verwaltete Domäne erstellt während der Bereitstellung einige Netzwerkress
 
 ## <a name="network-security-groups-and-required-ports"></a>Netzwerksicherheitsgruppen und erforderliche Ports
 
-Eine [Netzwerksicherheitsgruppe (NSG)](../virtual-network/network-security-groups-overview.md) enthält eine Liste von Regeln, die den Netzwerkdatenverkehr für den Datenverkehr in einem virtuellen Azure-Netzwerk gestatten oder ablehnen. Eine Netzwerksicherheitsgruppe wird erstellt, wenn Sie eine verwaltete Domäne bereitstellen, die einen Satz von Regeln enthält, mit denen der Dienst Authentifizierungs- und Verwaltungsfunktionen bereitstellen kann. Diese standardmäßige Netzwerksicherheitsgruppe ist dem virtuellen Subnetz zugeordnet, in dem Ihre verwaltete Domäne bereitgestellt wird.
+Eine [Netzwerksicherheitsgruppe (NSG)](../virtual-network/network-security-groups-overview.md) enthält eine Liste von Regeln, die den Netzwerkdatenverkehr in einem virtuellen Azure-Netzwerk gestatten oder ablehnen. Wenn Sie eine verwaltete Domäne bereitstellen, wird eine Netzwerksicherheitsgruppe mit mehreren Regeln erstellt, mit denen der Dienst Authentifizierungs- und Verwaltungsfunktionen bereitstellen kann. Diese standardmäßige Netzwerksicherheitsgruppe ist dem virtuellen Subnetz zugeordnet, in dem Ihre verwaltete Domäne bereitgestellt wird.
 
-Die folgenden Regeln für die Netzwerksicherheitsgruppe sind erforderlich, damit die verwaltete Domäne Authentifizierungs- und Verwaltungsdienste bereitstellen kann. Bearbeiten oder löschen Sie diese Regeln für die Netzwerksicherheitsgruppe nicht für das virtuelle Subnetz, in dem Ihre verwaltete Domäne bereitgestellt wird.
+Die folgenden Abschnitte decken Netzwerksicherheitsgruppen und Anforderungen für eingehende und ausgehende Ports ab.
 
-| Portnummer | Protocol | `Source`                             | Destination | Aktion | Erforderlich | Zweck |
+### <a name="inbound-connectivity"></a>Eingehende Konnektivität
+
+Die folgenden Regeln für eingehenden Datenverkehr für die Netzwerksicherheitsgruppe sind erforderlich, damit die verwaltete Domäne Authentifizierungs- und Verwaltungsdienste bereitstellen kann. Bearbeiten oder löschen Sie diese Regeln für die Netzwerksicherheitsgruppe nicht für das virtuelle Subnetz, in dem Ihre verwaltete Domäne bereitgestellt wird.
+
+| Nummer des eingehenden Ports | Protocol | `Source`                             | Destination | Aktion | Erforderlich | Zweck |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
 | 5986        | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | Ja      | Verwaltung Ihrer Domäne |
 | 3389        | TCP      | CorpNetSaw                         | Any         | Allow  | Optional      | Debuggen für den Support |
@@ -118,13 +122,29 @@ Ein Azure-Standard-Load Balancer wird erstellt, der diese Regeln erfordert. Dies
 Falls erforderlich, können Sie [die erforderliche Netzwerksicherheitsgruppe und Regeln mithilfe Azure PowerShell erstellen](powershell-create-instance.md#create-a-network-security-group).
 
 > [!WARNING]
-> Bearbeiten Sie diese Netzwerkressourcen und Konfigurationen nicht manuell. Wenn Sie eine falsch konfigurierte Netzwerksicherheitsgruppe oder eine benutzerdefinierte Routingtabelle mit dem Subnetz verknüpfen, in dem die verwaltete Domäne bereitgestellt wird, werden die Möglichkeiten von Microsoft zur Wartung und Verwaltung der Domäne möglicherweise beeinträchtigt. Die Synchronisierung zwischen Ihrem Azure AD-Mandanten und Ihrer verwalteten Domäne wird ebenfalls beeinträchtigt.
+> Wenn Sie eine falsch konfigurierte Netzwerksicherheitsgruppe oder eine benutzerdefinierte Routingtabelle mit dem Subnetz verknüpfen, in dem die verwaltete Domäne bereitgestellt wird, werden die Möglichkeiten von Microsoft zur Wartung und Verwaltung der Domäne möglicherweise beeinträchtigt. Die Synchronisierung zwischen Ihrem Azure AD-Mandanten und Ihrer verwalteten Domäne wird ebenfalls beeinträchtigt. Beachten Sie alle aufgeführten Anforderungen, um eine nicht unterstützte Konfiguration zu vermeiden, die Probleme beim Synchronisieren, Patchen oder Verwalten zur Folge haben könnte.
 >
 > Wenn Sie Secure LDAP verwenden, können Sie bei Bedarf eine Regel für den erforderlichen TCP-Port 636 hinzufügen, um externen Datenverkehr zuzulassen. Das Hinzufügen dieser Regel hat nicht zur Folge, dass Ihre NSG-Regeln in einen nicht unterstützten Zustand versetzt werden. Weitere Informationen finden Sie unter [Beschränken des Secure LDAP-Zugriffs über das Internet](tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet).
 >
-> Standardregeln für *AllowVnetInBound*, *AllowAzureLoadBalancerInBound*, *DenyAllInBound*, *AllowVnetOutBound*, *AllowInternetOutBound* und *DenyAllOutBound* sind auch für die Netzwerksicherheitsgruppe vorhanden. Diese Standardregeln sollten nicht bearbeitet oder gelöscht werden.
->
-> Die Azure-SLA gilt nicht für Bereitstellungen, bei denen eine falsch konfigurierte Netzwerksicherheitsgruppe und/oder benutzerdefinierte Routingtabellen angewendet wurden, die verhindern, dass Azure AD DS Ihre Domäne aktualisiert und verwaltet.
+> Die Azure-SLA gilt nicht für Bereitstellungen, bei denen eine nicht ordnungsgemäß konfigurierte Netzwerksicherheitsgruppe oder benutzerdefinierte Routingtabelle das Durchführen von Updates oder die Verwaltung blockiert. Eine fehlerhafte Netzwerkkonfiguration kann auch die Anwendung von Sicherheitspatches verhindern.
+
+### <a name="outbound-connectivity"></a>Ausgehende Konnektivität
+
+Für die ausgehende Konnektivität können Sie entweder weiterhin **AllowVnetOutbound** und **AllowInternetOutBound** verwenden oder den ausgehenden Datenverkehr mithilfe der in der folgenden Tabelle aufgeführten Diensttags einschränken. Das Diensttag für AzureUpdateDelivery muss über [PowerShell](powershell-create-instance.md) hinzugefügt werden.
+
+Gefilterter ausgehender Datenverkehr wird bei klassischen Bereitstellungen nicht unterstützt.
+
+
+| Nummer des ausgehenden Ports | Protocol | `Source` | Destination   | Aktion | Erforderlich | Zweck |
+|:--------------------:|:--------:|:------:|:-------------:|:------:|:--------:|:-------:|
+| 443 | TCP   | Any    | AzureActiveDirectoryDomainServices| Allow  | Ja      | Kommunikation mit dem Azure AD Domain Services-Verwaltungsdienst. |
+| 443 | TCP   | Any    | AzureMonitor                      | Allow  | Ja      | Überwachung der VMs |
+| 443 | TCP   | Any    | Speicher                           | Allow  | Ja      | Kommunikation mit Azure Storage   | 
+| 443 | TCP   | Any    | AzureActiveDirectory              | Allow  | Ja      | Kommunikation mit Azure Active Directory  |
+| 443 | TCP   | Any    | AzureUpdateDelivery               | Allow  | Ja      | Kommunikation mit Windows Update  | 
+| 80  | TCP   | Any    | AzureFrontDoor.FirstParty         | Allow  | Ja      | Herunterladen von Patches über Windows Update    |
+| 443 | TCP   | Any    | GuestAndHybridManagement          | Allow  | Ja      | Automatisierte Verwaltung von Sicherheitspatches   |
+
 
 ### <a name="port-5986---management-using-powershell-remoting"></a>Port 5986 (Verwaltung mit PowerShell-Remoting)
 
@@ -146,12 +166,14 @@ Falls erforderlich, können Sie [die erforderliche Netzwerksicherheitsgruppe und
     * Der Zugriff ist nur mit geschäftlicher Begründung gestattet, z. B. für Verwaltungs- oder Problembehandlungsszenarien.
 * Diese Regel kann auf *Ablehnen* festgelegt werden, um dann nur bei Bedarf auf *Zulassen* festgelegt zu werden. Die meisten Verwaltungs- und Überwachungsaufgaben werden mit PowerShell-Remoting durchgeführt. RDP wird nur in dem seltenen Fall verwendet, dass Microsoft zur erweiterten Problembehandlung eine Remoteverbindung mit Ihrer verwalteten Domäne herstellen muss.
 
-> [!NOTE]
-> Sie können das Diensttag *CorpNetSaw* nicht manuell über das Portal auswählen, wenn Sie versuchen, diese Regel für Netzwerksicherheitsgruppen zu bearbeiten. Sie müssen Azure PowerShell oder die Azure CLI verwenden, um eine Regel manuell zu konfigurieren, die das Diensttag *CorpNetSaw* verwendet.
->
-> Beispielsweise können Sie das folgende Skript verwenden, um eine Regel zu erstellen, die RDP zulässt: 
->
-> `Get-AzureRmNetworkSecurityGroup -Name "nsg-name" -ResourceGroupName "resource-group-name" | Add-AzureRmNetworkSecurityRuleConfig -Name "new-rule-name" -Access "Allow" -Protocol "TCP" -Direction "Inbound" -Priority "priority-number" -SourceAddressPrefix "CorpNetSaw" -SourcePortRange "" -DestinationPortRange "3389" -DestinationAddressPrefix "" | Set-AzureRmNetworkSecurityGroup`
+
+Sie können das Diensttag *CorpNetSaw* nicht manuell über das Portal auswählen, wenn Sie versuchen, diese Regel für Netzwerksicherheitsgruppen zu bearbeiten. Sie müssen Azure PowerShell oder die Azure CLI verwenden, um eine Regel manuell zu konfigurieren, die das Diensttag *CorpNetSaw* verwendet.
+
+Beispielsweise können Sie das folgende Skript verwenden, um eine Regel zu erstellen, die RDP zulässt: 
+
+```powershell
+Get-AzNetworkSecurityGroup -Name "nsg-name" -ResourceGroupName "resource-group-name" | Add-AzNetworkSecurityRuleConfig -Name "new-rule-name" -Access "Allow" -Protocol "TCP" -Direction "Inbound" -Priority "priority-number" -SourceAddressPrefix "CorpNetSaw" -SourcePortRange "*" -DestinationPortRange "3389" -DestinationAddressPrefix "*" | Set-AzNetworkSecurityGroup
+```
 
 ## <a name="user-defined-routes"></a>Benutzerdefinierte Routen
 

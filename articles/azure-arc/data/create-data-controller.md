@@ -7,18 +7,17 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 05/05/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 85a5c9f08304c98b544fef2ccb7818d96613b3d4
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 74c41ed89a3980967532955e46d4dade9eaacdb1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108748131"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346063"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Erstellen des Azure Arc-Datencontrollers
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="overview-of-creating-the-azure-arc-data-controller"></a>Übersicht über die Erstellung des Azure Arc-Datencontrollers
 
@@ -27,7 +26,6 @@ Azure Arc-fähige Datendienste können in vielen verschiedenen Typen von Kuberne
 Derzeit werden die folgenden Kubernetes-Dienste und -Distributionen unterstützt:
 
 - Azure Kubernetes Service (AKS)
-- Azure Kubernetes Service Engine (AKS-Engine) in Azure Stack
 - Azure Kubernetes Service in Azure Stack HCI
 - Azure RedHat OpenShift (ARO)
 - OpenShift Container Platform (OCP)
@@ -54,7 +52,7 @@ Unabhängig von der gewählten Option müssen Sie während der Erstellung die fo
 - **Data controller username** (Benutzername für Datencontroller): Ein Benutzername für den Datencontrolleradministrator.
 - **Data controller password** (Kennwort für Datencontroller): Ein Kennwort für den Datencontrolleradministrator.
 - **Name of your Kubernetes namespace** (Name des Kubernetes-Namespace): Der Name des Kubernetes-Namespace, in dem Sie den Datencontroller erstellen möchten.
-- **Connectivity mode** (Konnektivitätsmodus): Der Konnektivitätsmodus bestimmt den Grad der Konnektivität zwischen Ihrer Azure Arc-fähigen Datendienstumgebung und Azure. Von der Vorschauversion werden aktuell nur Modi mit indirekter oder direkter Verbindung unterstützt.  Weitere Informationen finden Sie unter [Konnektivitätsmodi und -anforderungen](./connectivity.md). 
+- **Connectivity mode** (Konnektivitätsmodus): Der Konnektivitätsmodus bestimmt den Grad der Konnektivität zwischen Ihrer Azure Arc-fähigen Datendienstumgebung und Azure. Der indirekte Konnektivitätsmodus ist allgemein verfügbar. Der direkte Konnektivitätsmodus befindet sich in der Vorschauphase.  Weitere Informationen finden Sie unter [Konnektivitätsmodi und -anforderungen](./connectivity.md). 
 - **Azure subscription ID** (Azure-Abonnement-ID): Die Azure-Abonnement-GUID für den Ort, an dem die Datencontrollerressource in Azure erstellt werden soll.
 - **Azure resource group name** (Azure-Ressourcengruppenname): Der Name der Ressourcengruppe, in der die Datencontrollerressource in Azure erstellt werden soll.
 - **Azure Location** (Azure-Standort): Der Azure-Standort, an dem die Metadaten der Datencontrollerressource in Azure gespeichert werden. Eine Liste der verfügbaren Regionen finden Sie unter [Globale Azure-Infrastruktur/Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc). Die Metadaten und Abrechnungsinformationen zu den Azure-Ressourcen, die vom bereitgestellten Datencontroller verwaltet werden, werden nur an dem Speicherort in Azure gespeichert, den Sie als Location-Parameter angeben. Wenn Sie die Bereitstellung im Direktverbindungsmodus durchführen, entspricht der Location-Parameter für den Datencontroller dem Speicherort der benutzerdefinierten Standortressource, die Sie als Ziel verwenden.
@@ -66,8 +64,9 @@ Es gibt mehrere Optionen zum Erstellen des Azure Arc-Datencontrollers:
 > **Möchten Sie es selbst ausprobieren?**  
 > Mit dem [Azure Arc-Schnelleinstieg](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) für Azure Kubernetes Service (AKS), AWS Elastic Kubernetes Service (EKS), Google Cloud Kubernetes Engine (GKE) oder auf einer Azure-VM können Sie schnell die ersten Schritte unternehmen.
 > 
-- [Erstellen eines Datencontrollers mit [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]](create-data-controller-using-azdata.md)
-- [Erstellen eines Datencontrollers mit Azure Data Studio](create-data-controller-azure-data-studio.md)
-- [Erstellen eines Datencontrollers über das Azure-Portal mithilfe eines Jupyter Notebooks in Azure Data Studio](create-data-controller-resource-in-azure-portal.md)
-- [Erstellen eines Datencontrollers mit Kubernetes-Tools wie kubectl oder oc](create-data-controller-using-kubernetes-native-tools.md)
+- [Erstellen eines Datencontrollers im indirekten Konnektivitätsmodus über die CLI](create-data-controller-indirect-cli.md)
+- [Erstellen eines Datencontrollers im indirekten Konnektivitätsmodus über Azure Data Studio](create-data-controller-indirect-azure-data-studio.md)
+- [Erstellen eines Datencontrollers im indirekten Konnektivitätsmodus über das Azure-Portal mithilfe eines Jupyter Notebooks in Azure Data Studio](create-data-controller-indirect-azure-portal.md)
+- [Erstellen eines Datencontrollers im indirekten Konnektivitätsmodus mit Kubernetes-Tools wie kubectl oder oc](create-data-controller-using-kubernetes-native-tools.md)
+- [Erstellen eines Datencontrollers im direkten Konnektivitätsmodus](create-data-controller-direct-prerequisites.md)
 - [Erstellen eines Datencontrollers mit dem Azure Arc-Schnelleinstieg für eine beschleunigte Testbereitstellung](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/)

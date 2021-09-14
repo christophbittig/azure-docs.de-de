@@ -6,14 +6,14 @@ author: IngridAtMicrosoft
 manager: femila
 ms.service: media-services
 ms.topic: conceptual
-ms.date: 03/22/2021
+ms.date: 07/26/2021
 ms.author: inhenkel
-ms.openlocfilehash: 83e739eb643896de710b5179b78a6305adf84465
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: a9a101afad5bfcdd8ca7ec20bc39b3080790a09b
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949280"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114720767"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Analysieren von Video- und Audiodateien mit Azure Media Services
 
@@ -21,7 +21,7 @@ ms.locfileid: "111949280"
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Mit Azure Media Services, Version 3 können Sie Inhalte aus Video- und Audiodateien mit Video Indexer extrahieren. In diesem Artikel werden die Voreinstellungen der Version 3 des Media Services-Analysetools beschrieben, mit denen diese Inhalte extrahiert werden. Wenn Sie detailliertere Erkenntnisse möchten, verwenden Sie Video Indexer direkt. Was für die Verwendung von Video Indexer anstelle von Voreinstellungen des Media Services-Analysetools spricht, erfahren Sie im [Vergleichsdokument](../../azure-video-analyzer/video-analyzer-for-media-docs/compare-video-indexer-with-media-services-presets.md).
+Mit Azure Media Services, Version 3 können Sie Informationen aus Video- und Audiodateien mit Azure Video Analyzer for Media (ehemals Video Indexer) extrahieren. In diesem Artikel werden die Voreinstellungen der Version 3 des Media Services-Analysetools beschrieben, mit denen diese Inhalte extrahiert werden. Wenn Sie ausführlichere Erkenntnisse benötigen, verwenden Sie Video Analyzer für Medien direkt. Was für die Verwendung von Video Analyzer for Media anstelle von Voreinstellungen des Media Services-Analysetools spricht, erfahren Sie im [Vergleichsdokument](../../azure-video-analyzer/video-analyzer-for-media-docs/compare-video-indexer-with-media-services-presets.md).
 
 Es gibt zwei Modi für die Audioanalysevoreinstellung, Basic und Standard. Weitere Informationen finden Sie in der Beschreibung der Unterschiede unten.
 
@@ -29,7 +29,7 @@ Um Ihren Inhalt mit Media Services v3 zu analysieren, erstellen Sie eine **Trans
 
 ## <a name="compliance-privacy-and-security"></a>Compliance, Datenschutz und Sicherheit
 
-Wichtig: Ihre Nutzung von Video Indexer darf nicht gegen geltende Gesetze verstoßen, und weder Video Indexer noch ein anderer Azure-Dienst darf auf eine Weise verwendet werden, die die Rechte Dritter verletzt oder für Dritte schädlich ist. Bevor Sie ein Video mit biometrischen Daten zur Verarbeitung und Speicherung in den Video Indexer-Dienst hochladen, müssen Sie über sämtliche erforderlichen Rechte verfügen (einschließlich entsprechender Einwilligungen von den Personen im Video). Informationen zu Compliance, Datenschutz und Sicherheit in Video Indexer finden Sie in den [Azure Cognitive Services-Bestimmungen](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/). Informationen zu den Datenschutzauflagen und zur Behandlung Ihrer Daten durch Microsoft finden Sie in den [Datenschutzbestimmungen](https://privacy.microsoft.com/PrivacyStatement), in den [Lizenzbedingungen für Onlinedienste](https://www.microsoft.com/licensing/product-licensing/products) (Online Services Terms, OST) und im [Nachtrag zur Datenverarbeitung](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) (Data Processing Addendum, DPA). Weitere Datenschutzinformationen (unter anderem zu Datenaufbewahrung und Datenlöschung/-vernichtung) finden Sie in den Lizenzbedingungen für Onlinedienste und [hier](../../azure-video-analyzer/video-analyzer-for-media-docs/faq.md). Durch die Nutzung von Video Indexer akzeptieren Sie die Cognitive Services-Bestimmungen, die OST, den DPA und die Datenschutzbestimmungen.
+Wichtig: Ihre Nutzung von Video Analyzer for Media darf nicht gegen geltende Gesetze verstoßen, und weder Video Analyzer for Media noch ein anderer Azure-Dienst darf auf eine Weise verwendet werden, die die Rechte Dritter verletzt oder für Dritte schädlich ist. Bevor Sie Videos, einschließlich biometrischer Daten, zur Verarbeitung und Speicherung in den Azure Video Analyzer for Media-Dienst hochladen, müssen Sie über alle erforderlichen Rechte, einschließlich aller entsprechenden Zustimmungen der Person(en) im Video, verfügen. Weitere Informationen zu Compliance, Datenschutz und Sicherheit in Zusammenhang mit dem Azure Video Analyzer for Media finden Sie in den [Azure Cognitive Services-Bestimmungen](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/). Informationen zu den Datenschutzauflagen und zur Behandlung Ihrer Daten durch Microsoft finden Sie in den [Datenschutzbestimmungen](https://privacy.microsoft.com/PrivacyStatement), in den [Lizenzbedingungen für Onlinedienste](https://www.microsoft.com/licensing/product-licensing/products) (Online Services Terms, OST) und im [Nachtrag zur Datenverarbeitung](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) (Data Processing Addendum, DPA). Weitere Datenschutzinformationen (unter anderem zu Datenaufbewahrung und Datenlöschung/-vernichtung) finden Sie in den Lizenzbedingungen für Onlinedienste und [hier](../../azure-video-analyzer/video-analyzer-for-media-docs/faq.md). Wenn Sie den Azure Video Analyzer for Media verwenden, akzeptieren Sie die Cognitive Services-Bedingungen, die OST, die DPA und die Datenschutzbestimmungen.
 
 ## <a name="built-in-presets"></a>Integrierte Voreinstellungen
 
@@ -414,7 +414,7 @@ Stimmungen werden anhand ihres Felds „SentimentType“ (neutral/positiv/negati
 
 #### <a name="visualcontentmoderation"></a>visualContentModeration
 
-Der visualContentModeration-Block enthält Zeitbereiche, für die von Video Indexer Inhalt ermittelt wurde, der unter Umständen nur für Erwachsene geeignet ist. Wenn „visualContentModeration“ leer ist, wurde kein Inhalt als nicht jugendfrei identifiziert.
+Der visualContentModeration-Block enthält Zeitbereiche, für die von Video Analyzer for Media Inhalt ermittelt wurde, der unter Umständen nur für Erwachsene geeignet ist. Wenn „visualContentModeration“ leer ist, wurde kein Inhalt als nicht jugendfrei identifiziert.
 
 Videos, für die nicht jugendfreier bzw. freizügiger Inhalt ermittelt wird, sind unter Umständen nur für die private Wiedergabe verfügbar. Benutzer können die Überprüfung des Inhalts durch einen Menschen anfordern. In diesem Fall enthält das Attribut `IsAdult` das Ergebnis der Überprüfung durch den Menschen.
 

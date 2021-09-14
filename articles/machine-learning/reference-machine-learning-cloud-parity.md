@@ -9,14 +9,14 @@ ms.topic: reference
 ms.reviewer: larryfr
 ms.author: andzha
 author: Anurzeuii
-ms.date: 08/24/2021
+ms.date: 07/16/2021
 ms.custom: references_regions
-ms.openlocfilehash: eef2a1eb5f17864074ac346ac7a89a59d1d59778
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 1c26761fe23fb1a7558100dea3cb74d7b078550d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123037289"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349464"
 ---
 # <a name="azure-machine-learning-feature-availability-across-clouds-regions"></a>Verfügbarkeit von Azure Machine Learning-Features über Cloudregionen hinweg
 
@@ -62,7 +62,7 @@ Die Informationen im übrigen Teil dieses Dokuments enthalten Informationen dazu
 | VNET-Unterstützung (virtuelles Netzwerk) zu Trainingszwecken                                | Allgemein verfügbar                   | YES                | YES         |
 | VNET-Unterstützung (virtuelles Netzwerk) für Rückschlüsse                               | Allgemein verfügbar                   | YES                | YES         |
 | Bewerten der Endpunktauthentifizierung                                            | Öffentliche Vorschau       | YES                | YES         |
-| Privater Endpunkt am Arbeitsplatz                                                 | Allgemein verfügbar  |  Allgemein verfügbar  |  Allgemein verfügbar |
+| Privater Endpunkt am Arbeitsplatz                                                 | Allgemein verfügbar  |  Öffentliche Vorschau  |  Öffentliche Vorschau |
 | ACI hinter VNET                                                            | Öffentliche Vorschau       | Nein                 | Nein          |
 | ACR hinter VNET                                                            | Allgemein verfügbar       | YES                 | YES          |
 | Private IP-Adresse des AKS-Clusters                                                  | Öffentliche Vorschau       | Nein                 | Nein          |

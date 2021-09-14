@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: a040200c5746defcaee84a951521d5919c0c4d28
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 26784222d49e6f48ed324ce345dcb1f2ba7d4cf1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91660675"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339772"
 ---
 # <a name="delete-azure-arc-data-controller"></a>Löschen des Azure Arc-Datencontrollers
 
@@ -22,48 +22,41 @@ Im folgenden Artikel wird beschrieben, wie Sie einen Azure Arc-Datencontroller l
 
 Bevor Sie fortfahren, sollten Sie sicherstellen, dass alle Datendienste, die auf dem Datencontroller erstellt wurden, wie folgt entfernt wurden:
 
-## <a name="log-in-to-the-data-controller"></a>Anmelden beim Datencontroller
-
-Melden Sie sich beim Datencontroller an, den Sie löschen möchten:
-
-```
-azdata login
-```
-
 ## <a name="list--delete-existing-data-services"></a>Auflisten und Löschen vorhandener Datendienste
 
 Führen Sie den folgenden Befehl aus, um zu überprüfen, ob SQL Managed Instance-Instanzen erstellt wurden:
 
-```
-azdata arc sql mi list
+```azurecli
+az sql mi-arc list --k8s-namespace <namespace> --use-k8s
 ```
 
 Führen Sie für jede verwaltete SQL-Instanz aus der obigen Liste den Löschbefehl wie folgt aus:
 
-```
-azdata arc sql mi delete -n <name>
-# for example: azdata arc sql mi delete -n sqlinstance1
+```azurecli
+az sql mi-arc delete -n <name> --k8s-namespace <namespace> --use-k8s
+# for example: az sql mi-arc delete -n sqlinstance1 --k8s-namespace <namespace> --use-k8s
 ```
 
 Führen Sie ebenso für die Suche nach PostgreSQL Hyperscale-Instanzen Folgendes aus:
 
-```
-azdata arc postgres server list
+```azurecli
+az postgres arc-server list --k8s-namespace <namespace> --use-k8s
 ```
 
 Führen Sie zudem für jede PostgreSQL Hyperscale-Instanz den Löschbefehl wie folgt aus:
-```
-azdata arc postgres server delete -n <name>
-# for example: azdata arc postgres server delete -n pg1
+
+```azurecli
+az postgres arc-server delete -n <name> --k8s-namespace <namespace> --use-k8s
+# for example: az postgres arc-server delete -n pg1 --k8s-namespace <namespace> --use-k8s
 ```
 
 ## <a name="delete-controller"></a>Löschen des Controllers
 
 Nachdem alle SQL Managed Instance-Instanzen und PostgreSQL Hyperscale-Instanzen entfernt wurden, kann der Datencontroller wie folgt gelöscht werden:
 
-```
-azdata arc dc delete -n <name> -ns <namespace>
-# for example: azdata arc dc delete -ns arc -n arcdc
+```azurecli
+az arcdata dc delete -n <name> -ns <namespace>
+# for example: az arcdata dc delete -ns arc -n arcdc
 ```
 
 ### <a name="remove-sccs-red-hat-openshift-only"></a>Entfernen Sie die SCCs (nur in Red Hat OpenShift).
@@ -102,4 +95,4 @@ kubectl delete ns <nameSpecifiedDuringCreation>
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Was sind Azure Arc-fähige Datendienste?](overview.md)
+[Was sind Azure Arc-fähige Datendienste (Vorschauversion)?](overview.md)

@@ -1,24 +1,24 @@
 ---
-title: Azure Data Explorer Insights (ADX Insights, Vorschau) | Microsoft-Dokumentation
+title: Azure Data Explorer Insights (ADX Insights) | Microsoft-Dokumentation
 description: Dieser Artikel enthält Informationen zu Azure Data Explorer Insights (ADX Insights).
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/05/2021
 author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: 274d907c4fd8d09e444b938447365a4df64af3e4
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 872c1e29b6c85f24c4e9841dca359a9429b92321
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112061630"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114458115"
 ---
-# <a name="azure-data-explorer-insights-preview"></a>Azure Data Explorer Insights (Vorschau)
+# <a name="azure-data-explorer-insights"></a>Azure Data Explorer Insights
 
-Azure Data Explorer Insights (Vorschau) ermöglicht die umfassende Überwachung Ihrer Cluster mittels einer einheitlichen Ansicht der Leistung, Vorgänge, Nutzung und Fehler Ihres Clusters.
-Dieser Artikel enthält Informationen zum Onboarding und zur Verwendung von Azure Data Explorer Insights (Vorschau).
+Azure Data Explorer Insights ermöglicht die umfassende Überwachung Ihrer Cluster mithilfe einer einheitlichen Ansicht der Leistung, Vorgänge, Nutzung und Fehler Ihres Clusters.
+Dieser Artikel enthält Informationen zum Onboarding und zur Verwendung von Azure Data Explorer Insights.
 
-## <a name="introduction-to-azure-data-explorer-insights-preview"></a>Einführung in Azure Data Explorer Insights (Vorschau)
+## <a name="introduction-to-azure-data-explorer-insights"></a>Einführung in Azure Data Explorer Insights
 
 Bevor Sie sich mit der Umgebung befassen, sollten Sie sich mit der Darstellung und Visualisierung von Informationen vertraut machen.
 -    Eine **Übersichtsperspektive** zeigt eine Momentaufnahme der primären Metriken Ihres Clusters, sodass Sie die Leistung von Abfragen sowie von Erfassungs- und Exportvorgängen ganz einfach nachverfolgen können.
@@ -33,7 +33,7 @@ Führen Sie die folgenden Schritte aus, um die Leistung Ihrer Cluster in all Ihr
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-2. Wählen Sie im linken Bereich des Azure-Portals **Monitor** und im Abschnitt „Insights-Hub“ die Option **Azure Data Explorer-Cluster (Vorschau)** aus.
+2. Wählen Sie im linken Bereich des Azure-Portals **Monitor** und im Abschnitt „Insights-Hub“ die Option **Azure Data Explorer-Cluster** aus.
 
 ![Screenshot: Übersicht mit mehreren Diagrammen](./media/data-explorer/insights-hub.png)
 
@@ -77,7 +77,7 @@ So greifen Sie direkt von einem Azure Data Explorer-Cluster aus auf Azure Data
 
 1. Wählen Sie im Azure-Portal **Azure Data Explorer-Cluster** aus.
 
-2. Wählen Sie einen Azure Data Explorer-Cluster aus der Liste aus. Wählen Sie im Abschnitt „Überwachung“ die Option **Insights (Vorschau)** aus.
+2. Wählen Sie einen Azure Data Explorer-Cluster aus der Liste aus. Wählen Sie im Abschnitt „Überwachung“ die Option **Insights** aus.
 
 Sie können auch auf diese Ansichten zugreifen, indem Sie in der Insights-Ansicht von Azure Monitor den Ressourcennamen eines Azure Data Explorer-Clusters auswählen.
 
@@ -114,7 +114,7 @@ Auf der Registerkarte **Verbrauch** können Benutzer Details zur Leistung der Be
 
 Die Registerkarte **Tabellen** zeigt die neuesten und bisherigen Eigenschaften von Tabellen im Cluster. Sie können feststellen, welche Tabellen den meisten Platz beanspruchen und den Wachstumsverlauf anhand von Tabellengröße, heißen Daten und der Anzahl von Zeilen im Lauf der Zeit nachverfolgen.
 
-Auf der Registerkarte **Cache** können Benutzer die Muster im Rückblickfenster ihrer tatsächlichen Abfragen analysieren und mit der konfigurierten Cacherichtlinie vergleichen (für jede Tabelle). Sie können sowohl Tabellen identifizieren, die von sehr vielen Abfragen verwendet werden, als auch Tabellen, die gar nicht abgefragt werden. Dann können Sie die Cacherichtlinie entsprechend anpassen. Sie können in Azure Advisor bestimmte Empfehlungen zu Cacherichtlinien für bestimmte Tabellen abrufen (derzeit sind Cacheempfehlungen nur auf dem [Hauptdashboard von Azure Advisor](https://docs.microsoft.com/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations) verfügbar). Die Empfehlungen basieren auf dem Rückblickfenster der tatsächlichen Abfragen in den letzten 30 Tagen und einer nicht optimierten Cacherichtlinie für mindestens 95 % der Abfragen. Die Empfehlungen von Azure Advisor zur Cachereduzierung sind für Cluster verfügbar, die „datengebunden“ sind (das bedeutet, dass der Cluster eine geringe CPU- und Erfassungsauslastung aufweist, aufgrund einer hohen Datenkapazität jedoch nicht ab- oder herunterskaliert werden konnte).
+Auf der Registerkarte **Cache** können Benutzer die Muster im Rückblickfenster ihrer tatsächlichen Abfragen analysieren und mit der konfigurierten Cacherichtlinie vergleichen (für jede Tabelle). Sie können sowohl Tabellen identifizieren, die von sehr vielen Abfragen verwendet werden, als auch Tabellen, die gar nicht abgefragt werden. Dann können Sie die Cacherichtlinie entsprechend anpassen. Sie können in Azure Advisor bestimmte Empfehlungen zu Cacherichtlinien für bestimmte Tabellen abrufen (derzeit sind Cacheempfehlungen nur auf dem [Hauptdashboard von Azure Advisor](/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations) verfügbar). Die Empfehlungen basieren auf dem Rückblickfenster der tatsächlichen Abfragen in den letzten 30 Tagen und einer nicht optimierten Cacherichtlinie für mindestens 95 % der Abfragen. Die Empfehlungen von Azure Advisor zur Cachereduzierung sind für Cluster verfügbar, die „datengebunden“ sind (das bedeutet, dass der Cluster eine geringe CPU- und Erfassungsauslastung aufweist, aufgrund einer hohen Datenkapazität jedoch nicht ab- oder herunterskaliert werden konnte).
 
 [![Screenshot von Cachedetails](./media/data-explorer/cache-tab.png)](./media/data-explorer/cache-tab.png#lightbox)
 
@@ -148,7 +148,7 @@ Anpassungen werden in einer benutzerdefinierten Arbeitsmappe gespeichert, um zu 
 
 Allgemeine Anleitungen zur Problembehandlung finden Sie im Artikel zur [Problembehandlung für arbeitsmappenbasierte Erkenntnisse](troubleshoot-workbooks.md).
 
-Dieser Abschnitt unterstützt Sie bei der Diagnose und Behandlung einiger bekannter Probleme, die bei der Verwendung von Azure Data Explorer Insights (Vorschau) auftreten können. In der Liste unten finden Sie die für Ihre spezifische Fragestellung relevanten Informationen.
+Dieser Abschnitt unterstützt Sie bei der Diagnose und Behandlung einiger bekannter Probleme, die bei der Verwendung von Azure Data Explorer Insights auftreten können. In der Liste unten finden Sie die für Ihre spezifische Fragestellung relevanten Informationen.
 
 ### <a name="why-dont-i-see-all-my-subscriptions-in-the-subscription-picker"></a>Warum werden in der Abonnementauswahl nicht alle meine Abonnements angezeigt?
 

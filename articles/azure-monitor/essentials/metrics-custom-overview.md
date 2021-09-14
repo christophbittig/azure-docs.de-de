@@ -5,13 +5,13 @@ author: anirudhcavale
 ms.author: ancav
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 04/13/2021
-ms.openlocfilehash: e6db49d34c39df2e1863dfa51914e30e9f1e1636
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.date: 06/01/2021
+ms.openlocfilehash: a456db938d1607565525aea7ab2e9b43bc368aeb
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897089"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122343147"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Benutzerdefinierte Metriken in Azure Monitor (Vorschau)
 
@@ -192,10 +192,7 @@ Während der öffentlichen Vorschau ist die Möglichkeit, benutzerdefinierte Met
 |Azure-Region |Präfix des regionalen Endpunkts|
 |---|---|
 | Alle öffentlichen Cloudregionen | https://<Azure-Regionscode>.monitoring.azure.com |
-| **Azure Government** | |
-| US Gov Arizona | https:\//usgovarizona.monitoring.azure.us |
-| **China** | |
-| China, Osten 2 | https:\//chinaeast2.monitoring.azure.cn |
+
 
 ## <a name="latency-and-storage-retention"></a>Latenz und Aufbewahrungsdauer im Speicher
 
@@ -234,9 +231,9 @@ Auch hier gilt dieser Grenzwert nicht für eine einzelne Metrik. Dies ist die Su
 
 Wenn Sie eine Variable im Namen oder eine Dimension mit hoher Kardinalität haben, kann Folgendes auftreten:
 - Metriken werden aufgrund von Drosselung unzuverlässig
-- Metrik-Explorer funktioniert nicht
+- Der Metrik-Explorer funktioniert nicht.
 - Warnungen und Benachrichtigungen werden unvorhersehbar
-- Die Kosten können unerwartet steigen. Microsoft erhebt keine Gebühren, wenn sich benutzerdefinierte Metriken mit Dimensionen in der öffentlichen Vorschau befinden. Sobald die Gebühren später erhoben werden, entstehen jedoch unerwartete Gebühren. Der Plan ist, die Nutzung von Metriken basierend auf der Anzahl der überwachten Zeitreihen und der Anzahl der erfolgten API-Aufrufe in Rechnung zu stellen.  
+- Die Kosten können unerwartet steigen. Microsoft erhebt keine Gebühren für benutzerdefinierte Metriken mit entsprechenden Dimensionen, während sich dieses Feature in der Public Preview befindet. Sobald die Gebühren später erhoben werden, entstehen jedoch unerwartete Gebühren. Der Plan ist, die Nutzung von Metriken basierend auf der Anzahl der überwachten Zeitreihen und der Anzahl der erfolgten API-Aufrufe in Rechnung zu stellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Verwenden benutzerdefinierter Metriken von verschiedenen Diensten: 

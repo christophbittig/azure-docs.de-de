@@ -9,14 +9,16 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: c05ab2b89a275b4e33774cca34c0e971657eddb2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a32fdd1da872c45c0e2402cdddd0685ef4296c7a
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349752"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691213"
 ---
 # <a name="dv4-and-dsv4-series"></a>Dv4- und Dsv4-Serie
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Die Dv4- und Dsv4-Serie läuft auf Intel-Prozessoren des Typs Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) mit einer Hyperthreading-Konfiguration ausgeführt, die für die meisten Allzweck-Workloads ein besseres Preis-Leistungs-Verhältnis bieten. Sie verfügt über eine Turbo-Taktfrequenz von 3,4 GHz. 
 

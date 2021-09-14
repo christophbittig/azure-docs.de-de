@@ -2,13 +2,13 @@
 title: Einschränkungen bei Ressourcennamen
 description: Zeigt die Benennungsregeln und -einschränkungen für Azure-Ressourcen
 ms.topic: conceptual
-ms.date: 04/08/2021
-ms.openlocfilehash: a7d0d934549d1dd06099bc02105cf2dcfdaa0109
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.date: 07/08/2021
+ms.openlocfilehash: 4beb484a6f3e81fe6baa7cbeba33c0f18639fb18
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108202855"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444654"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Benennungsregeln und -einschränkungen für Azure-Ressourcen
 
@@ -39,39 +39,39 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > [!div class="mx-tableFixed"]
 > | Entität | `Scope` | Länge | Gültige Zeichen |
 > | --- | --- | --- | --- |
-> | Dienst | Global | 1-50 | Alphanumerische Zeichen und Bindestriche.<br><br>Beginnen Sie mit einem Buchstaben, und enden Sie mit einem alphanumerischen Zeichen. |
-> | service/apis | Dienst | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
-> | service/apis/issues | api | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
-> | service/apis/issues/attachments | Problem | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
-> | service/apis/issues/comments | Problem | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
-> | service/apis/operations | api | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
-> | service/apis/operations/tags | operation | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
+> | Dienst | Global | 1-50 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
+> | service/apis | Dienst | 1-80 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
+> | service/apis/issues | api | 1-80 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
+> | service/apis/issues/attachments | Problem | 1-80 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
+> | service/apis/issues/comments | Problem | 1-80 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
+> | service/apis/operations | api | 1-80 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
+> | service/apis/operations/tags | operation | 1-80 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
 > | service/apis/releases | api | 1-80 | Alphanumerische Zeichen, Unterstriche und Bindestriche.<br><br>Beginnen und enden Sie mit einem alphanumerischen Zeichen oder Unterstrich. |
-> | service/apis/schemas | api | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
-> | service/apis/tagDescriptions | api | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
-> | service/apis/tags | api | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
-> | service/api-version-sets | Dienst | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
-> | service/authorizationServers | Dienst | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
-> | service/backends | Dienst | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
-> | service/certificates | Dienst | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
-> | service/diagnostics | Dienst | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
-> | service/groups | Dienst | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
-> | service/groups/users | group | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
-> | service/identityProviders | Dienst | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
-> | service/loggers | Dienst | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
-> | service/notifications | Dienst | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
-> | service/notifications/recipientEmails | Benachrichtigung | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
-> | service/openidConnectProviders | Dienst | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
-> | service/policies | Dienst | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
-> | service/products | Dienst | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
-> | service/products/apis | product | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
-> | service/products/groups | product | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
-> | service/products/tags | product | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
-> | service/properties | Dienst | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
-> | service/subscriptions | Dienst | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
-> | service/tags | Dienst | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
-> | service/templates | Dienst | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
-> | service/users | Dienst | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
+> | service/apis/schemas | api | 1-80 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
+> | service/apis/tagDescriptions | api | 1-80 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
+> | service/apis/tags | api | 1-80 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
+> | service/api-version-sets | Dienst | 1-80 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
+> | service/authorizationServers | Dienst | 1-80 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
+> | service/backends | Dienst | 1-80 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
+> | service/certificates | Dienst | 1-80 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
+> | service/diagnostics | Dienst | 1-80 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
+> | service/groups | Dienst | 1-80 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
+> | service/groups/users | group | 1-80 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
+> | service/identityProviders | Dienst | 1-80 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
+> | service/loggers | Dienst | 1-80 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
+> | service/notifications | Dienst | 1-80 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
+> | service/notifications/recipientEmails | Benachrichtigung | 1-80 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
+> | service/openidConnectProviders | Dienst | 1-80 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
+> | service/policies | Dienst | 1-80 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
+> | service/products | Dienst | 1-80 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
+> | service/products/apis | product | 1-80 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
+> | service/products/groups | product | 1-80 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
+> | service/products/tags | product | 1-80 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
+> | service/properties | Dienst | 1-80 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
+> | service/subscriptions | Dienst | 1-80 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
+> | service/tags | Dienst | 1-80 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
+> | service/templates | Dienst | 1-80 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
+> | service/users | Dienst | 1-80 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
 
 ## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
 
@@ -95,7 +95,7 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > [!div class="mx-tableFixed"]
 > | Entität | `Scope` | Länge | Gültige Zeichen |
 > | --- | --- | --- | --- |
-> | automationAccounts | Ressourcengruppe und Region <br>(Siehe Hinweis unten) | 6-50 | Alphanumerische Zeichen und Bindestriche.<br><br>Beginnen Sie mit einem Buchstaben, und enden Sie mit einem alphanumerischen Zeichen. |
+> | automationAccounts | Ressourcengruppe und Region <br>(Siehe Hinweis unten) | 6-50 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
 > | automationAccounts/certificates | Automation-Konto | 1–128 | Verwendung nicht möglich:<br> `<>*%&:\?.+/` <br><br>Darf nicht mit einem Leerzeichen enden.  |
 > | automationAccounts/connections | Automation-Konto | 1–128 | Verwendung nicht möglich:<br> `<>*%&:\?.+/` <br><br>Darf nicht mit einem Leerzeichen enden. |
 > | automationAccounts/credentials | Automation-Konto | 1–128 | Verwendung nicht möglich:<br> `<>*%&:\?.+/` <br><br>Darf nicht mit einem Leerzeichen enden. |
@@ -171,6 +171,7 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > | Entität | `Scope` | Länge | Gültige Zeichen |
 > | --- | --- | --- | --- |
 > | availabilitySets | Ressourcengruppe | 1-80 | Alphanumerische Zeichen, Unterstriche, Punkte und Bindestriche.<br><br>Beginnen Sie mit einem alphanumerischen Zeichen. Enden Sie mit einem alphanumerischen Zeichen oder einem Unterstrich. |
+> | cloudservices | Ressourcengruppe | 1-15 <br><br>Siehe Hinweis weiter unten. | Leerzeichen oder die folgenden Zeichen dürfen nicht verwendet werden:<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>Darf nicht mit einem Unterstrich beginnen. Darf nicht mit einem Punkt oder Bindestrich enden. |
 > | diskEncryptionSets | Ressourcengruppe | 1-80 | Alphanumerische Zeichen und Unterstriche. |
 > | disks | Ressourcengruppe | 1-80 | Alphanumerische Zeichen, Unterstriche und Bindestriche. |
 > | galleries | Ressourcengruppe | 1-80 | Alphanumerische Zeichen und Punkte.<br><br>Beginnen und enden Sie mit einem alphanumerischen Zeichen. |
@@ -192,6 +193,13 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > | Entität | `Scope` | Länge | Gültige Zeichen |
 > | --- | --- | --- | --- |
 > | communicationServices | Global | 1 - 63 | Alphanumerische Zeichen, Bindestriche und Unterstriche. |
+
+## <a name="microsoftconsumption"></a>Microsoft.Consumption
+
+> [!div class="mx-tableFixed"]
+> | Entität | `Scope` | Länge | Gültige Zeichen |
+> | --- | --- | --- | --- |
+> | budgets | Abonnement oder Ressourcengruppe | 1 - 63 | Alphanumerische Zeichen, Bindestriche und Unterstriche. |
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
 
@@ -261,7 +269,7 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > [!div class="mx-tableFixed"]
 > | Entität | `Scope` | Länge | Gültige Zeichen |
 > | --- | --- | --- | --- |
-> | workspaces | Ressourcengruppe | 3–30 | Alphanumerische Zeichen, Unterstriche und Bindestriche |
+> | workspaces | Ressourcengruppe | 3–64 | Alphanumerische Zeichen, Unterstriche und Bindestriche |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
@@ -405,7 +413,7 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > [!div class="mx-tableFixed"]
 > | Entität | `Scope` | Länge | Gültige Zeichen |
 > | --- | --- | --- | --- |
-> | actionGroups | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`/&%\?` <br><br>Darf nicht mit einem Leerzeichen oder Punkt enden.  |
+> | actionGroups | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`:<>+/&%\?` <br><br>Darf nicht mit einem Leerzeichen oder Punkt enden.  |
 > | components | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`%&\?/` <br><br>Darf nicht mit einem Leerzeichen oder Punkt enden.  |
 > | scheduledQueryRules | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`*<>%{}&:\\?/#` <br><br>Darf nicht mit einem Leerzeichen oder Punkt enden.  |
 > | metricAlerts | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`*#&+:<>?@%{}\/` <br><br>Darf nicht mit einem Leerzeichen oder Punkt enden.  |

@@ -11,51 +11,49 @@ ms.topic: conceptual
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma
-ms.date: 12/14/2020
-ms.openlocfilehash: 1ccf83fa98ec7024e74bd9829e241b8596b1fbf6
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 7/7/2021
+ms.openlocfilehash: 56bd4dcc121b5ebd2ac48f772bd0793dffccd50d
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110693193"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114289920"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Dienstebenen für Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Azure SQL-Datenbank und Azure SQL Managed Instance basieren auf der an die Cloudumgebung angepasste Architektur der SQL Server-Datenbank-Engine, um selbst bei Infrastrukturausfällen eine Verfügbarkeit von 99,99 Prozent sicherzustellen. Azure SQL-Datenbank und Azure SQL Managed Instance umfassen zwei Dienstebenen, die jeweils unterschiedliche Architekturmodelle aufweisen. Diese Dienstebenen lauten:
+ Sowohl in Azure SQL-Datenbank als auch in Azure SQL Managed Instance sind zwei [V-Kern](service-tiers-vcore.md)-Dienstebenen verfügbar:
 
-- [Universell](service-tier-general-purpose.md) ist für die meisten budgetorientierten Workloads konzipiert.
-- [Unternehmenskritisch](service-tier-business-critical.md) ist für Workloads mit geringer Latenz und hoher Resilienz für Ausfälle und schnelle Failover konzipiert.
+- [Universell](service-tier-general-purpose.md) ist eine budgetfreundliche Ebene, die für die meisten Workloads mit üblichen Leistungs- und Verfügbarkeitsanforderungen konzipiert ist.
+- [Unternehmenskritisch](service-tier-business-critical.md) ist für leistungsabhängige Workloads mit strengen Verfügbarkeitsanforderungen konzipiert.
 
-Azure SQL-Datenbank umfasst eine zusätzliche Dienstebene: 
+Azure SQL-Datenbank bietet auch die Dienstebene „Hyperscale“: 
 
-- [Hyperscale](service-tier-hyperscale.md) ist für die meisten Geschäftsworkloads konzipiert und bietet hochgradig skalierbaren Speicher, horizontale Leseskalierung und schnelle Datenbankwiederherstellungsfunktionen.
-
-In diesem Artikel werden die Unterschiede zwischen den Dienstebenen, die Speicher- und Sicherungsaspekte für die Dienstebenen „Universell“ und „Unternehmenskritisch“ im vCore-basierten Kaufmodell beschrieben.
+- [Hyperscale](service-tier-hyperscale.md) ist für die meisten Geschäftsworkloads konzipiert und bietet hochgradig skalierbaren Speicher, horizontale Leseskalierung, Schnellskalierung und schnelle Datenbankwiederherstellungsfunktionen.
 
 ## <a name="service-tier-comparison"></a>Vergleich der Dienstebenen
 
-In der folgenden Tabelle sind die wichtigsten Unterschiede zwischen den Dienstebenen für die neueste Generation (Gen5) beschrieben. Beachten Sie, dass sich die Merkmale der Dienstebenen zwischen SQL-Datenbank und SQL Managed Instance unterscheiden können.
+In der folgenden Tabelle sind die wichtigsten Unterschiede zwischen den Dienstebenen beschrieben.
 
-|-| Ressourcentyp | Universell |  Hyperscale | Unternehmenskritisch |
+|-| Ressourcentyp | Universell | Hyperscale | Unternehmenskritisch |
 |:---:|:---:|:---:|:---:|:---:|
 | **Am besten geeignet für** | |  Bietet budgetorientierte ausgewogene Compute- und Speicheroptionen. | Die meisten geschäftlichen Workloads. Automatische Skalierung der Speichergröße bis zu 100 TB, fluide vertikale und horizontale Computeskalierung, schnelle Datenbankwiederherstellung. | OLTP-Anwendungen mit hoher Transaktionsrate und geringen Latenzen bei E/A-Vorgängen. Bietet mit mehreren synchron aktualisierten Replikaten höchste Resilienz gegenüber Fehlern und schnelle Failover.|
-|  **Verfügbar in Ressourcentyp:** ||SQL-Datenbank/SQL Managed Instance | Azure SQL-Einzeldatenbank | SQL-Datenbank/SQL Managed Instance |
-| **Computegröße**| SQL-Datenbank | 1 bis 80 virtuelle Kerne | 1 bis 80 virtuelle Kerne | 1 bis 80 virtuelle Kerne |
+| **Verfügbar in Ressourcentyp:** ||SQL-Datenbank/SQL Managed Instance | Azure SQL-Einzeldatenbank | SQL-Datenbank/SQL Managed Instance |
+| **Computegröße**| SQL-Datenbank | 1 bis 80 virtuelle Kerne | 1 bis 80 virtuelle Kerne | 1 bis 128 virtuelle Kerne |
 | | Verwaltete SQL-Instanz | 4, 8, 16, 24, 32, 40, 64, 80 virtuelle Kerne | – | 4, 8, 16, 24, 32, 40, 64, 80 virtuelle Kerne |
 | | SQL Managed Instance-Pools | 2, 4, 8, 16, 24, 32, 40, 64, 80 virtuelle Kerne | – | – |
-| **Speichertyp** | All | Storage Premium (remote, pro Instanz) | Entkoppelter Speicher mit lokalem SSD-Cache (pro Instanz) | Äußerst schneller lokaler SSD-Speicher (pro Instanz) |
-| **Datenbankgröße** | SQL-Datenbank | 5 GB – 4 TB | Bis zu 100 TB | 5 GB – 4 TB |
+| **Speichertyp** | All | Remotespeicher | Mehrstufiger Remotespeicher und lokaler SSD-Speicher | Lokaler SSD-Speicher |
+| **Datenbankgröße** | SQL-Datenbank | 1 GB – 4 TB | 40 GB – 100 TB | 1 GB – 4 TB |
 | | Verwaltete SQL-Instanz  | 32 GB – 8 TB | – | 32 GB – 4 TB |
-| **Speichergröße** | SQL-Datenbank | 5 GB – 4 TB | Bis zu 100 TB | 5 GB – 4 TB |
+| **Speichergröße** | SQL-Datenbank | 1 GB – 4 TB | 40 GB – 100 TB | 1 GB – 4 TB |
 | | Verwaltete SQL-Instanz  | 32 GB – 8 TB | – | 32 GB – 4 TB |
-| **TempDB-Größe** | SQL-Datenbank | [32 GB pro virtuellem Kern](resource-limits-vcore-single-databases.md#general-purpose---provisioned-compute---gen4) | [32 GB pro virtuellem Kern](resource-limits-vcore-single-databases.md#hyperscale---provisioned-compute---gen5) | [32 GB pro virtuellem Kern](resource-limits-vcore-single-databases.md#business-critical---provisioned-compute---gen4) |
+| **TempDB-Größe** | SQL-Datenbank | [32 GB pro virtuellem Kern](resource-limits-vcore-single-databases.md) | [32 GB pro virtuellem Kern](resource-limits-vcore-single-databases.md) | [32 GB pro virtuellem Kern](resource-limits-vcore-single-databases.md) |
 | | Verwaltete SQL-Instanz  | [24 GB pro virtuellem Kern](../managed-instance/resource-limits.md#service-tier-characteristics) | – | Bis zu 4 TB – [begrenzt durch Speichergröße](../managed-instance/resource-limits.md#service-tier-characteristics) |
-| **Protokollschreibdurchsatz** | SQL-Datenbank | [1.875 MB/Sek. pro virtuellem Kern (max. 30 MB/s)](resource-limits-vcore-single-databases.md#general-purpose---provisioned-compute---gen4) | 100 MB/s | [6 MB/Sek. pro virtuellem Kern (max. 96 MB/s)](resource-limits-vcore-single-databases.md#business-critical---provisioned-compute---gen4) |
+| **Protokollschreibdurchsatz** | SQL-Datenbank | Einzeldatenbanken: [4,5 MB/s pro virtuellem Kern (max. 50 MB/s)](resource-limits-vcore-single-databases.md) <br> Pools für elastische Datenbanken: [6 MB/s pro virtuellem Kern (max. 62,5 MB/s)](resource-limits-vcore-elastic-pools.md)| 100 MB/s | Einzeldatenbanken: [12 MB/s pro virtuellem Kern (max. 96 MB/s)](resource-limits-vcore-single-databases.md) <br> Pools für elastische Datenbanken: [15 MB/s pro virtuellem Kern (max. 120 MB/s)](resource-limits-vcore-elastic-pools.md)|
 | | Verwaltete SQL-Instanz | [3 MB/Sek. pro virtuellem Kern (max. 22 MB/s)](../managed-instance/resource-limits.md#service-tier-characteristics) | – | [4 MB/Sek. pro virtuellem Kern (max. 48 MB/s)](../managed-instance/resource-limits.md#service-tier-characteristics) |
-|**Verfügbarkeit**|All| 99,99 % |  [99,95 % mit einem sekundären Replikat, 99,99 % mit weiteren Replikaten](service-tier-hyperscale-frequently-asked-questions-faq.yml#what-slas-are-provided-for-a-hyperscale-database) | 99,99 % <br/> [99,995 % mit zonenredundantem Singleton](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
-|**Sicherungen**|All|RA-GRS, 7–35 Tage (standardmäßig 7 Tage) Die maximale Aufbewahrung bei der Dienstebene „Basic“ ist 7 Tage. | RA-GRS, 7 Tage, konstante Zeitpunktwiederherstellung (Point-in-Time Recovery, PITR) | RA-GRS, 7 - 35 Tage (standardmäßig 7 Tage) |
-|**In-Memory-OLTP** | | – | – | Verfügbar |
+|**Verfügbarkeit**|All| 99,99 % |  [99,95 % mit einem sekundären Replikat, 99,99 % mit weiteren Replikaten](service-tier-hyperscale-frequently-asked-questions-faq.yml#what-slas-are-provided-for-a-hyperscale-database-) | 99,99 % <br/> [99,995 % mit zonenredundantem Singleton](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
+|**Sicherungen**|All|RA-GRS, 1–35 Tage (standardmäßig 7 Tage) | RA-GRS, 7 Tage, schnelle Zeitpunktwiederherstellung (Point-in-Time Recovery, PITR) | RA-GRS, 1–35 Tage (standardmäßig 7 Tage) |
+|**In-Memory-OLTP** | | – | Teilweise unterstützt. Speicheroptimierte Tabellentypen, Tabellenvariablen und nativ kompilierte Module werden unterstützt. | Verfügbar |
 |**Schreibgeschützte Replikate**| | 0: Integriert <br> 0–4: Verwendung von [Georeplikation](active-geo-replication-overview.md) | 0–4: Integriert | 1: Integriert, im Preis inbegriffen <br> 0–4: Verwendung von [Georeplikation](active-geo-replication-overview.md) |
 |**Preise/Abrechnung** | SQL-Datenbank | [Virtueller Kern, reservierter Speicher und Sicherungsspeicher](https://azure.microsoft.com/pricing/details/sql-database/single/) werden in Rechnung gestellt. <br/>IOPS werden nicht in Rechnung gestellt. | [Virtueller Kern für jedes Replikat und den verwendeten Speicher](https://azure.microsoft.com/pricing/details/sql-database/single/) wird in Rechnung gestellt. <br/>IOPS noch nicht in Rechnung gestellt. | [Virtueller Kern, reservierter Speicher und Sicherungsspeicher](https://azure.microsoft.com/pricing/details/sql-database/single/) werden in Rechnung gestellt. <br/>IOPS werden nicht in Rechnung gestellt. |
 || Verwaltete SQL-Instanz | [Virtueller Kern, reservierter Speicher und Sicherungsspeicher](https://azure.microsoft.com/pricing/details/sql-database/managed/) werden in Rechnung gestellt. <br/>IOPS werden nicht in Rechnung gestellt.| – | [Virtueller Kern, reservierter Speicher und Sicherungsspeicher](https://azure.microsoft.com/pricing/details/sql-database/managed/) werden in Rechnung gestellt. <br/>IOPS werden nicht in Rechnung gestellt.| 
@@ -64,42 +62,37 @@ In der folgenden Tabelle sind die wichtigsten Unterschiede zwischen den Diensteb
 Weitere Informationen finden Sie auf den Seiten zu den ausführlichen Unterschieden zwischen den Dienstebenen unter [Azure SQL-Datenbank (virtueller Kern)](resource-limits-vcore-single-databases.md), [Azure SQL-Einzeldatenbank (DTU, Datenbankdurchsatzeinheit)](resource-limits-dtu-single-databases.md), [Azure SQL-Datenbank (DTU) in einem Pool](resource-limits-dtu-single-databases.md) und [Azure SQL Managed Instance](../managed-instance/resource-limits.md).
 
 > [!NOTE]
-> Informationen zur Dienstebene „Hyperscale“ im vCore-basierten Kaufmodell finden Sie unter [Dienstebene „Hyperscale“](service-tier-hyperscale.md). Einen Vergleich zwischen vCore-basiertem Kaufmodell und DTU-basiertem Kaufmodell finden Sie unter [Entscheiden zwischen dem vCore-basierten und dem DTU-basierten Kaufmodell – Azure SQL-Datenbank und SQL Managed Instance](purchasing-models.md).
+> Informationen zur Dienstebene „Hyperscale“ finden Sie unter [Hyperscale-Dienstebene](service-tier-hyperscale.md). Einen Vergleich zwischen vCore-basiertem Kaufmodell und DTU-basiertem Kaufmodell finden Sie unter [Entscheiden zwischen dem vCore-basierten und dem DTU-basierten Kaufmodell – Azure SQL-Datenbank und SQL Managed Instance](purchasing-models.md).
 
 ## <a name="data-and-log-storage"></a>Daten- und Protokollspeicher
 
-Die folgenden Faktoren wirken sich darauf aus, wie viel Speicherplatz für Daten und Protokolldateien verwendet wird. Dies gilt für die Dienstebenen „Universell“ und „Unternehmenskritisch“. Ausführliche Informationen zu Daten und zum Protokollspeicher in Hyperscale finden Sie unter [Hyperscale-Dienstebene](service-tier-hyperscale.md).
+Die folgenden Faktoren wirken sich darauf aus, wie viel Speicherplatz für Daten- und Protokolldateien verwendet wird. Dies gilt für die Dienstebenen „Universell“ und „Unternehmenskritisch“. Ausführliche Informationen zu Daten und zum Protokollspeicher in Hyperscale finden Sie unter [Hyperscale-Dienstebene](service-tier-hyperscale.md).
 
-- Der zugeordnete Speicher wird für Datendateien (MDF) und Protokolldateien (LDF) verwendet.
-- Jede Einzeldatenbank-Computegröße unterstützt eine maximale Datenbankgröße, die standardmäßig bei 32 GB liegt.
-- Wenn Sie die erforderliche Einzeldatenbankgröße (die Größe der MDF-Datei) konfigurieren, werden automatisch 30 Prozent zusätzlicher Speicher hinzugefügt, um LDF-Dateien zu unterstützen.
-- Sie können eine beliebige Einzeldatenbankgröße zwischen 10 GB und dem unterstützten Maximum auswählen.
-  - In den Dienstebenen „Standard“ oder „Universell“ erhöhen oder verringern Sie die Speichergröße in Schritten von 10 GB.
-  - In den Dienstebenen „Premium“ oder „Unternehmenskritisch“ erhöhen oder verringern Sie die Speichergröße in Schritten von 250 GB.
-- In der Dienstebene „Universell“ wird für `tempdb` eine angefügte SSD verwendet, und diese Speicherkosten sind im V-Kern-Preis enthalten.
-- In der Dienstebene „Unternehmenskritisch“ wird für `tempdb` die angefügte SSD für MDF- und LDF-Dateien gemeinsam genutzt, und die `tempdb`-Speicherkosten sind im V-Kern-Preis enthalten.
-- In der DTU-Dienstebene „Premium“ gibt `tempdb` die angefügte SSD mit MDF- und LDF-Dateien frei.
-- Die Speichergröße für eine Instanz von SQL Managed Instance muss als Vielfaches von 32 GB angegeben werden.
-
+- Jede Computegröße unterstützt eine maximale Datengröße, die standardmäßig bei 32 GB liegt.
+- Wenn Sie die maximale Datengröße konfigurieren, werden automatisch 30 Prozent zusätzlicher Speicher für Protokolldateien hinzugefügt.
+- Sie können eine beliebige maximale Datengröße zwischen 1 GB und der unterstützten maximalen Speichergröße in Schritten von 1 GB auswählen.
+- In der Dienstebene „Universell“ wird für `tempdb` lokaler SSD-Speicher verwendet, und diese Speicherkosten sind im V-Kern-Preis enthalten.
+- In der Dienstebene „Unternehmenskritisch“ wird für `tempdb` lokaler SSD-Speicher für Daten- und Protokolldateien gemeinsam genutzt, und `tempdb`-Speicherkosten sind im V-Kern-Preis enthalten.
+- Die maximale Speichergröße für eine Instanz von SQL Managed Instance muss als Vielfaches von 32 GB angegeben werden.
 
 > [!IMPORTANT]
-> Ihnen wird der gesamte Speicher berechnet, der für MDF- und LDF-Dateien zugeordnet ist.
+> In den Dienstebenen „Universell“ und „Unternehmenskritisch“ wird Ihnen die maximale Speichergröße in Rechnung gestellt, die für eine Datenbank, einen Pool für elastische Datenbanken oder eine verwaltete Instanz konfiguriert ist. In der Dienstebene „Hyperscale“ wird Ihnen der zugeordnete Datenspeicher in Rechnung gestellt.
 
-Verwenden Sie [sp_spaceused](/sql/relational-databases/system-stored-procedures/sp-spaceused-transact-sql) zum Überwachen der aktuellen Gesamtgröße Ihrer MDF- und LDF-Dateien. Verwenden Sie [sys.database_files](/sql/relational-databases/system-catalog-views/sys-database-files-transact-sql), um die aktuelle Größe der einzelnen MDF- und LDF-Dateien zu überwachen.
+Wenn Sie die aktuell zugeordnete und verwendete Datenspeichergröße in SQL-Datenbank überwachen möchten, verwenden Sie die Azure Monitor-[Metriken](../../azure-monitor/essentials/metrics-supported.md#microsoftsqlserversdatabases) *allocated_data_storage* bzw. *storage*. Zum Überwachen der insgesamt verbrauchten Instanzspeichergröße für SQL Managed Instance verwenden Sie die [Metrik](../../azure-monitor/essentials/metrics-supported.md#microsoftsqlmanagedinstances) *storage_space_used_mb*. Wenn Sie die aktuell zugeordnete und verwendete Speichergröße einzelner Daten- und Protokolldateien in einer Datenbank mit T-SQL überwachen möchten, verwenden Sie die Ansicht [sys.database_files](/sql/relational-databases/system-catalog-views/sys-database-files-transact-sql) und die Funktion [FILEPROPERTY(... , 'SpaceUsed')](/sql/t-sql/functions/fileproperty-transact-sql).
 
-> [!IMPORTANT]
+> [!TIP]
 > Unter bestimmten Umständen müssen Sie ggf. eine Datenbank verkleinern, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](file-space-manage.md).
 
 ## <a name="backups-and-storage"></a>Sicherungen und Speicher
 
-Der Speicher für Datenbanksicherungen wird zugeordnet, um die Funktionen „Point-in-Time-Wiederherstellung“ (Point in Time Restore, PITR) und [Langzeitaufbewahrung](long-term-retention-overview.md) (Long Term Retention, LTR) von SQL-Datenbank und SQL Managed Instance zu unterstützen. Dieser Speicher wird für jede Datenbank separat zugeordnet und als zwei Arten von getrennten Datenbankgebühren berechnet.
+Der Speicher für Datenbanksicherungen wird zugeordnet, um die Funktionen [Zeitpunktwiederherstellung](recovery-using-backups.md) (Point in Time Restore, PITR) und [Langzeitaufbewahrung](long-term-retention-overview.md) (Long Term Retention, LTR) von SQL-Datenbank und SQL Managed Instance zu unterstützen. Dieser Speicher ist vom Daten- und Protokolldateispeicher getrennt und wird separat abgerechnet.
 
-- **PITR**: Einzelne Datenbanksicherungen werden automatisch in den [georedundanten Speicher mit Lesezugriff](../../storage/common/geo-redundant-design.md) (Read-Access Geo-Redundant, RA-GRS) kopiert. Die Speichergröße wird dynamisch erhöht, wenn neue Sicherungen erstellt werden. Der Speicher wird für wöchentliche vollständige Sicherungen, tägliche differenzielle Sicherungen und im 5-Minuten-Takt kopierte Sicherungen von Transaktionsprotokollen verwendet. Der Speicherverbrauch richtet sich nach der Änderungsrate der Datenbank und nach dem Aufbewahrungszeitraum für Sicherungen. Sie können für jede Datenbank eine separate Aufbewahrungsdauer konfigurieren, die zwischen 7 und 35 Tagen liegt. Eine Mindestspeichermenge, die 100 Prozent (1x) der Datenbankgröße entspricht, wird kostenlos zur Verfügung gestellt. Für die meisten Datenbanken reicht diese Menge aus, um Sicherungen für sieben Tage aufzubewahren.
-- **LTR**: Sie haben für [SQL Managed Instance](long-term-retention-overview.md) auch die Möglichkeit, die Langzeitaufbewahrung von vollständigen Sicherungen für bis zu 10 Jahre zu konfigurieren. Wenn Sie eine LTR-Richtlinie einrichten, werden diese Sicherungen automatisch im RA-GRS-Speicher gespeichert. Sie können jedoch steuern, wie häufig die Sicherungen kopiert werden. Zur Einhaltung unterschiedlicher Konformitätsanforderungen können Sie verschiedene Aufbewahrungszeiträume für wöchentliche, monatliche und/oder jährliche Sicherungen auswählen. Wie viel Speicher für LTR-Sicherungen verwendet wird, richtet sich nach der ausgewählten Konfiguration. Sie können den LTR-Preisrechner verwenden, um die Kosten für LTR-Speicher zu schätzen. Weitere Informationen finden Sie unter dem Thema zur [Langzeitaufbewahrung von SQL-Datenbank](long-term-retention-overview.md).
+- **PITR**: In den Dienstebenen „Universell“ und „Unternehmenskritisch“ werden einzelne Datenbanksicherungen automatisch in den [georedundanten Speicher mit Lesezugriff](../../storage/common/geo-redundant-design.md) (Read-Access Geo-Redundant Storage, RA-GRS) kopiert. Die Speichergröße wird dynamisch erhöht, wenn neue Sicherungen erstellt werden. Der Speicher wird für vollständige, differenzielle und Transaktionsprotokollsicherungen verwendet. Der Speicherverbrauch richtet sich nach der Änderungsrate der Datenbank und nach dem für Sicherungen konfigurierten Aufbewahrungszeitraum. Sie können für jede Datenbank einen separaten Aufbewahrungszeitraum zwischen 1 und 35 Tagen für SQL-Datenbank und zwischen 0 und 35 Tagen für SQL Managed Instance konfigurieren. Eine Sicherungsspeichermenge, die der konfigurierten maximalen Datengröße entspricht, wird ohne Zusatzkosten bereitgestellt.
+- **LTR**: Sie haben auch die Möglichkeit, die Langzeitaufbewahrung von vollständigen Sicherungen für bis zu 10 Jahre zu konfigurieren. Wenn Sie eine LTR-Richtlinie einrichten, werden diese Sicherungen automatisch im RA-GRS-Speicher gespeichert. Sie können jedoch steuern, wie häufig die Sicherungen kopiert werden. Zur Einhaltung unterschiedlicher Konformitätsanforderungen können Sie verschiedene Aufbewahrungszeiträume für wöchentliche, monatliche und/oder jährliche Sicherungen auswählen. Wie viel Speicher für LTR-Sicherungen verwendet wird, richtet sich nach der ausgewählten Konfiguration. Weitere Informationen finden Sie unter [Langfristiges Aufbewahren von Sicherungen](long-term-retention-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Ausführliche Informationen zu den spezifischen Compute- und Speichergrößen der Dienstebenen „Universell“ und „Unternehmenskritisch“ finden Sie unter: 
+Ausführliche Informationen zu den spezifischen Compute- und Speichergrößen, die in V-Kern-Dienstebenen verfügbar sind, finden Sie unter: 
 
 - [Ressourcenlimits des auf virtuellen Kernen basierenden Kaufmodells für Azure SQL-Datenbank](resource-limits-vcore-single-databases.md)
 - [Limits des auf virtuellen Kernen basierenden Kaufmodells für Pooldatenbanken in Azure SQL-Datenbank](resource-limits-vcore-elastic-pools.md)

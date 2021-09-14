@@ -12,22 +12,25 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/12/2019
+ms.date: 08/09/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25d4152783129fa1c5950d6cf6287332bf90d32a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2415ad3109863a9cd80df413723b317e880a7063
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97976876"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349723"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect Sync: Verzeichniserweiterungen
 Sie können Verzeichniserweiterungen verwenden, um das Schema in Azure Active Directory (Azure AD) um Ihre eigenen Attribute aus dem lokalen Active Directory zu erweitern. Dank dieses Features können Sie Branchen-Apps erstellen, indem Sie Attribute nutzen, die Sie weiterhin lokal verwalten. Diese Attribute können über [Erweiterungen](/graph/extensibility-overview
 ) genutzt werden. Sie können die verfügbaren Attribute mithilfe von [Microsoft Graph-Explorer](https://developer.microsoft.com/graph/graph-explorer) anzeigen. Sie können diese Funktion auch zum Erstellen dynamischer Gruppen in Azure AD verwenden.
 
 Derzeit werden diese Attribute von keiner Microsoft 365-Workload genutzt.
+
+>[!IMPORTANT]
+>Wenn Sie eine Konfiguration exportiert haben, die eine benutzerdefinierte Regel zum Synchronisieren von Verzeichniserweiterungsattributen enthält, und Sie versuchen, diese Regel in eine neue oder vorhandene Azure AD Connect-Installation zu importieren, wird die Regel während des Imports erstellt, aber die Verzeichniserweiterungsattribute werden nicht zugeordnet.  Sie müssen erneut die Verzeichniserweiterungsattribute auswählen und der Regel zuordnen oder diese Regel vollständig neu erstellen, um dieses Problem zu beheben.
 
 ## <a name="customize-which-attributes-to-synchronize-with-azure-ad"></a>Anpassen der mit Azure AD zu synchronisierenden Attribute
 

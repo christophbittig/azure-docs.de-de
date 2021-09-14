@@ -2,16 +2,16 @@
 title: Beibehalten von IP-Adressen nach einem Azure-VM-Failover mit Azure Site Recovery
 description: Dieser Artikel beschreibt, wie Sie IP-Adressen beibehalten, wenn bei der Notfallwiederherstellung mit Azure Site Recovery ein Failover für Azure-VMs auf eine sekundäre Region ausgeführt wird.
 ms.service: site-recovery
-ms.date: 4/9/2019
+ms.date: 07/25/2021
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 650fb7f0877a98ef53ed3868550f9c084ecb5885
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 782e6247bb17485e8e654c7e879f477fe531edc4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96023549"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346497"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>Beibehalten von IP-Adressen während eines Failovers
 
@@ -33,6 +33,8 @@ Dieser Artikel enthält einige Beispiele für die Beibehaltung von IP-Adressen i
 Unternehmen A führt alle seine Anwendungen in Azure aus.
 
 ### <a name="before-failover"></a>Vor dem Failover
+
+>[!HINWEIS: Die Replikation kann nun zwischen zwei beliebigen Azure-Regionen auf der ganzen Welt durchgeführt werden. Kunden sind nicht mehr darauf beschränkt, die Replikation nur innerhalb des eigenen Kontinents aktivieren zu können.
 
 Die Architektur vor dem Failover sieht wie folgt aus.
 
@@ -93,7 +95,7 @@ Vor dem Failover sieht die Architektur folgendermaßen aus:
         - **Wiederherstellungs-VNET 1** und **Wiederherstellungs-VNET 2** umfassen jeweils zwei Subnetze, die den Subnetzen in **Quell-VNET 1** und **Quell-VNET 2** entsprechen. - „Asien, Südosten“ verfügt über ein weiteres VNET (**Azure VNET**) mit dem Adressraum 10.3.0.0/16.
         - **Azure VNET** enthält ein Subnetz (**Subnetz 4**) mit dem Adressraum 10.3.4.0/24.
         Die Replikatknoten für SQL Server Always On, Domänencontroller usw. befinden sich in **Subnetz 4**.
-- Es gibt mehrere Site-to-Site-VPN-Verbindungen: 
+- Es gibt mehrere Site-to-Site-VPN-Verbindungen:
     - **Quell-VNET 1** und **Azure VNET**
     - **Quell-VNET 2** und **Azure VNET**
     - **Quell-VNET 1** und **Quell-VNET 2** sind per Site-to-Site-VPN verbunden.
@@ -121,7 +123,7 @@ Bei einem Ausfall oder Problem mit Auswirkungen auf eine einzelne App (im Beispi
 
 ## <a name="hybrid-resources-full-failover"></a>Hybridressourcen: Vollständiges Failover
 
-In diesem Szenario führt **Unternehmen B** eine Hybridbereitstellung aus, bei der ein Teil der Anwendungsinfrastruktur in Azure und die restliche Infrastruktur lokal ausgeführt wird. 
+In diesem Szenario führt **Unternehmen B** eine Hybridbereitstellung aus, bei der ein Teil der Anwendungsinfrastruktur in Azure und die restliche Infrastruktur lokal ausgeführt wird.
 
 ### <a name="before-failover"></a>Vor dem Failover
 

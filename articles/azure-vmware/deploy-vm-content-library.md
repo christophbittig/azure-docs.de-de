@@ -2,55 +2,55 @@
 title: Erstellen einer Inhaltsbibliothek zum Bereitstellen von VMs in Azure VMware Solution
 description: Erstellen Sie eine Inhaltsbibliothek zum Bereitstellen einer VM in einer privaten Azure VMware Solution-Cloud.
 ms.topic: how-to
-ms.date: 02/03/2021
-ms.openlocfilehash: 5ebd60b3c2fc8350478125e756413d0ba750a0ed
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.date: 06/28/2021
+ms.openlocfilehash: ed98d48037df6cfb50c3c94bb6a7187097f5b0e9
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111756831"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122356639"
 ---
 # <a name="create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>Erstellen einer Inhaltsbibliothek zum Bereitstellen von VMs in Azure VMware Solution
 
-In einer Inhaltsbibliothek werden Inhalte in Form von Bibliothekselementen gespeichert und verwaltet. Ein einzelnes Bibliothekselement besteht aus einer oder mehreren Dateien, die Sie zum Bereitstellen virtueller Computer (VMs) verwenden. 
+In einer Inhaltsbibliothek werden Inhalte in Form von Bibliothekselementen gespeichert und verwaltet. Ein einzelnes Bibliothekselement besteht aus Dateien, die Sie zum Bereitstellen virtueller Computer (VMs) verwenden.
 
-In diesem Artikel werden die Schritte zum Erstellen einer Inhaltsbibliothek erläutert.  Anschließend wird die Bereitstellung einer VM mithilfe eines ISO-Images aus der Inhaltsbibliothek erläutert.
+In diesem Artikel erstellen Sie eine Inhaltsbibliothek im vSphere-Client und stellen dann einen virtuellen Computer mithilfe eines ISO-Images aus der Inhaltsbibliothek bereit.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Tutorial sind ein logisches NSX-T-Segment (logischer Switch) und ein verwalteter DHCP-Dienst erforderlich.  Weitere Informationen finden Sie im Artikel [Konfigurieren von DHCP für Azure VMware Solution](configure-dhcp-azure-vmware-solution.md).  
+Für dieses Tutorial sind ein NSX-T-Segment und ein verwalteter DHCP-Dienst erforderlich.  Weitere Informationen finden Sie unter [Konfigurieren von DHCP für Azure VMware Solution](configure-dhcp-azure-vmware-solution.md).  
 
 ## <a name="create-a-content-library"></a>Erstellen einer Inhaltsbibliothek
 
-1. Wählen Sie auf dem lokalen vSphere-Client **Menü > Inhaltsbibliotheken** aus.
+1. Wählen Sie auf dem lokalen vSphere-Client **Menü** > **Inhaltsbibliotheken** aus.
 
-   ![Auswählen von „Menü“ -> „Inhaltsbibliotheken“](./media/content-library/vsphere-menu-content-libraries.png)
+   :::image type="content" source="media/content-library/vsphere-menu-content-libraries.png" alt-text="Screenshot: Menüoption „Inhaltsbibliotheken“ im vSphere-Client":::
 
-1. Wählen Sie die Schaltfläche **Hinzufügen** aus, um eine neue Inhaltsbibliothek zu erstellen.
+1. Wählen Sie zum Erstellen einer neuen Inhaltsbibliothek **Hinzufügen** aus.
 
-   ![Wählen Sie die Schaltfläche „Hinzufügen“ aus, um eine neue Inhaltsbibliothek zu erstellen.](./media/content-library/create-new-content-library.png)
+   :::image type="content" source="media/content-library/create-new-content-library.png" alt-text="Screenshot: Erstellen einer neuen Inhaltsbibliothek in vSphere.":::
 
 1. Geben Sie einen Namen an, und bestätigen Sie die IP-Adresse des vCenter-Servers. Wählen Sie dann **Weiter** aus.
 
-   ![Geben Sie einen Namen und Hinweise Ihrer Wahl an, und wählen Sie „Weiter“ aus.](./media/content-library/new-content-library-step1.png)
+   :::image type="content" source="media/content-library/new-content-library-step-1.png" alt-text="Screenshot: Name und vCenter-Server-IP für die neue Inhaltsbibliothek.":::
 
 1. Wählen Sie **Lokale Inhaltsbibliothek** und dann **Weiter** aus.
 
-   ![In diesem Beispiel wird eine lokale Inhaltsbibliothek erstellt. Wählen Sie „Weiter“ aus.](./media/content-library/new-content-library-step2.png)
+   :::image type="content" source="media/content-library/new-content-library-step-2.png" alt-text="Screenshot: Option „Lokale Inhaltsbibliothek“ für die neue Inhaltsbibliothek ausgewählt.":::
 
 1. Wählen Sie den Datenspeicher zum Speichern der Inhaltsbibliothek und dann **Weiter** aus.
 
-   ![Wählen Sie den gewünschten Datenspeicher zum Hosten der Inhaltsbibliothek und dann „Weiter“ aus.](./media/content-library/new-content-library-step3.png)
+   :::image type="content" source="media/content-library/new-content-library-step-3.png" alt-text="Screenshot des ausgewählten vsanDatastore-Speicherorts.":::
 
 1. Überprüfen Sie die Einstellungen der Inhaltsbibliothek, und wählen Sie dann **Fertig stellen** aus.
 
-   ![Überprüfen Sie die Einstellungen, und wählen Sie „Fertig stellen“ aus.](./media/content-library/new-content-library-step4.png)
+   :::image type="content" source="media/content-library/new-content-library-step-4.png" alt-text="Screenshot, der die Einstellungen für die neue Inhaltsbibliothek zeigt":::.
 
 ## <a name="upload-an-iso-image-to-the-content-library"></a>Hochladen eines ISO-Images in die Inhaltsbibliothek
 
 Nachdem Sie die Inhaltsbibliothek erstellt haben, können Sie ein ISO-Image hinzufügen, um eine VM in einem privaten Cloudcluster bereitzustellen. 
 
-1. Wählen Sie auf dem vSphere-Client **Menü > Inhaltsbibliotheken** aus.
+1. Wählen Sie auf dem vSphere-Client **Menü** > **Inhaltsbibliotheken** aus.
 
 1. Klicken Sie mit der rechten Maustaste auf die Inhaltsbibliothek, die Sie für das neue ISO-Image verwenden möchten, und wählen Sie **Element importieren** aus.
 
@@ -67,21 +67,21 @@ Nachdem Sie die Inhaltsbibliothek erstellt haben, können Sie ein ISO-Image hinz
 
 ## <a name="deploy-a-vm-to-a-private-cloud-cluster"></a>Bereitstellen einer VM in einem privaten Cloudcluster
 
-1. Wählen Sie auf dem vSphere-Client **Menü > Hosts und Cluster** aus.
+1. Wählen Sie auf dem vSphere-Client **Menü** > **Hosts und Cluster** aus.
 
 1. Erweitern Sie die Struktur im linken Bereich, und wählen Sie einen Cluster aus.
 
-1. Wählen Sie **Aktionen > Neuer virtueller Computer** aus.
+1. Wählen Sie **Aktionen** > **Neuer virtueller Computer** aus.
 
 1. Durchlaufen Sie den Assistenten, und ändern Sie die gewünschten Einstellungen.
 
-1. Wählen Sie **Neues CD-/DVD-Laufwerk > Clientgerät > ISO-Datei der Inhaltsbibliothek** aus.
+1. Wählen Sie **Neues CD-/DVD-Laufwerk** > **Clientgerät** > **ISO-Datei der Inhaltsbibliothek** aus.
 
 1. Wählen Sie das im vorherigen Abschnitt hochgeladene ISO-Image und dann **OK** aus.
 
 1. Aktivieren Sie das Kontrollkästchen **Verbinden**, damit das ISO-Image beim Einschalten bereitgestellt wird.
 
-1. Wählen Sie **Neues Netzwerk > Dropdownliste auswählen > Durchsuchen** aus.
+1. Wählen Sie **Neues Netzwerk** > **Dropdownliste auswählen** > **Durchsuchen** aus.
 
 1. Wählen Sie den **logischen Switch (Segment)** und dann **OK** aus.
 
@@ -92,9 +92,9 @@ Nachdem Sie die Inhaltsbibliothek erstellt haben, können Sie ein ISO-Image hinz
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie sich mit dem Erstellen einer Inhaltsbibliothek zum Bereitstellen von VMs in Azure VMware Solution vertraut gemacht haben, informieren Sie sich über die folgenden Themen:
+Nachdem Sie nun eine Inhaltsbibliothek zum Bereitstellen von VMs in Azure VMware Solution erstellt haben, informieren Sie sich über die folgenden Themen:
 
-- [So migrieren Sie VM-Workloads in Ihre Private Cloud](tutorial-deploy-vmware-hcx.md)
+- [Migrieren von VM-Workloads in Ihre Private Cloud](configure-vmware-hcx.md)
 - [Integrieren von nativen Azure-Diensten in Azure VMware Solution](integrate-azure-native-services.md)
 
 <!-- LINKS - external-->

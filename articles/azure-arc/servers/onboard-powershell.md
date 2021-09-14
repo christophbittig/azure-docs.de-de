@@ -1,15 +1,15 @@
 ---
 title: Verbinden von Hybridcomputern mit Azure mithilfe von PowerShell
-description: In diesem Artikel erfahren Sie, wie Sie Azure Arc-fähige Server verwenden, um den Agent zu installieren und einen Computer mit Azure zu verbinden. Hierfür können Sie PowerShell verwenden.
-ms.date: 10/28/2020
+description: In diesem Artikel wird erläutert, wie Sie mithilfe von Azure Arc-fähigen Servern den Agent installieren und einen Computer mit Azure verbinden. Hierfür können Sie PowerShell verwenden.
+ms.date: 07/16/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d6963a53ac14c9d6727a8d53e781bc8b8389b76e
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: e1ca9528af5b529dd844e566905b6aa7f92429d2
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831615"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122343671"
 ---
 # <a name="connect-hybrid-machines-to-azure-by-using-powershell"></a>Verbinden von Hybridcomputern mit Azure mithilfe von PowerShell
 
@@ -25,7 +25,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 - Ein Computer mit Azure PowerShell. Anweisungen hierzu finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/).
 
-Zum Verwalten von VM-Erweiterungen auf Ihren über Azure Arc-fähige Server verwalteten Hybridservern verwenden Sie PowerShell. Installieren Sie vor der Verwendung von PowerShell das Modul `Az.ConnectedMachine`. Führen Sie auf Ihrem Azure Arc-fähigen Server den folgenden Befehl aus:
+Verwenden Sie PowerShell zum Verwalten von VM-Erweiterungen auf Ihren über Azure Arc-fähige Server verwalteten Hybridservern. Installieren Sie vor der Verwendung von PowerShell das Modul `Az.ConnectedMachine`. Führen Sie auf Ihrem Azure Arc-fähigen Server den folgenden Befehl aus:
 
 ```powershell
 Install-Module -Name Az.ConnectedMachine
@@ -54,6 +54,8 @@ Nach Abschluss der Installation wird die folgende Meldung angezeigt:
         ```azurepowershell
         Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -Proxy http://<proxyURL>:<proxyport>
         ```
+
+      Bei dieser Konfiguration kommuniziert der Agent mithilfe des HTTP-Protokolls über den Proxyserver.
 
 Sollte der Agent nach Abschluss des Setups nicht gestartet werden, suchen Sie in den Protokollen nach ausführlichen Fehlerinformationen. Überprüfen Sie unter Windows die Datei *%ProgramData%\AzureConnectedMachineAgent\Log\himds.log*. Überprüfen Sie unter Linux die Datei */var/opt/azcmagent/log/himds.log*.
 
@@ -104,6 +106,6 @@ Gehen Sie wie folgt vor, um einen oder mehrere Windows-Server mit Azure Arc-fäh
 
 * Bei Bedarf finden Sie Informationen im [Leitfaden zur Problembehandlung des Connected Machine-Agents](troubleshoot-agent-onboard.md).
 
-* Erfahren Sie, wie Sie Ihren Computer mit [Azure Policy](../../governance/policy/overview.md) verwalten. Sie können mithilfe der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md) überprüfen, ob der Computer Meldungen an den erwarteten Log Analytics-Arbeitsbereich zurückgibt, und die Überwachung mit [Azure Monitor für VMs](../../azure-monitor/vm/vminsights-enable-policy.md) aktivieren.
+* Lesen Sie den [Planungs- und Bereitstellungsleitfaden](plan-at-scale-deployment.md), um die Bereitstellung von Servern mit Azure Arc-Unterstützung in beliebiger Größenordnung zu planen und eine zentrale Verwaltung und Überwachung zu implementieren.
 
-* Weitere Informationen zum [Log Analytics-Agent](../../azure-monitor/agents/log-analytics-agent.md). Der Log Analytics-Agent für Windows und Linux ist erforderlich, wenn Sie Daten zur Betriebssystem- und Workloadüberwachung erfassen oder diese mithilfe von Azure Automation-Runbooks oder Features wie der Updateverwaltung verwenden möchten. Dieser Agent ist auch für die Verwendung anderer Azure-Dienste wie z. B. [Azure Security Center](../../security-center/security-center-introduction.md) erforderlich.
+* Erfahren Sie, wie Sie Ihren Computer mit [Azure Policy](../../governance/policy/overview.md) verwalten. Sie können mithilfe der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md) überprüfen, ob der Computer Meldungen an den erwarteten Log Analytics-Arbeitsbereich zurückgibt, und die Überwachung mit [VM Insights](../../azure-monitor/vm/vminsights-enable-policy.md) aktivieren.

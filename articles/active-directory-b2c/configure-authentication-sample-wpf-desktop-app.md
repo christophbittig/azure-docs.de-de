@@ -11,16 +11,16 @@ ms.date: 08/04/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: fb9f90e93ed13faf64703cb511cd540f9af685ba
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9e61065e209a22d3ded08cf205350a737f7fe94f
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355131"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770170"
 ---
 # <a name="configure-authentication-in-a-sample-wpf-desktop-application-using-azure-active-directory-b2c"></a>Konfigurieren der Authentifizierung in einer WPF-Beispieldesktopanwendung mit Azure Active Directory B2C
 
-In diesem Artikel wird anhand einer [WPF-Beispieldesktopanwendung](/visualstudio/designers/getting-started-with-wpf.md) veranschaulicht, wie Sie Ihren Desktop-Apps die Authentifizierung mithilfe von Azure Active Directory B2C (Azure AD B2C) hinzufügen.
+In diesem Artikel wird anhand einer [WPF-Beispieldesktopanwendung](/visualstudio/designers/getting-started-with-wpf) veranschaulicht, wie Sie Ihren Desktop-Apps die Authentifizierung mithilfe von Azure Active Directory B2C (Azure AD B2C) hinzufügen.
 
 ## <a name="overview"></a>Übersicht
 
@@ -123,7 +123,7 @@ In diesem Beispiel wird ein Zugriffstoken mit den relevanten Bereichen bezogen, 
 
 Aktualisieren Sie die folgenden Member:
 
-|Key  |Wert  |
+|Schlüssel  |Wert  |
 |---------|---------|
 |`TenantName`|Der erste Teil Ihres Azure AD B2C-[Mandantennamens](tenant-management.md#get-your-tenant-name). Beispielsweise `contoso.b2clogin.com`.|
 |`ClientId`|Die ID der Desktopanwendung aus [Schritt 2.3](#23-register-the-desktop-app).|
@@ -154,7 +154,7 @@ public static string ApiEndpoint = "https://contoso.azurewebsites.net/hello";
 
 ## <a name="step-6-run-and-test-the-desktop-app"></a>Schritt 6: Ausführen und Testen der Desktop-App
 
-1. [Stellen Sie die NuGet-Pakete wieder her.](/nuget/consume-packages/package-restore.md)
+1. [Stellen Sie die NuGet-Pakete wieder her.](/nuget/consume-packages/package-restore)
 1. Drücken Sie **F5**, um das Beispiel zu erstellen und auszuführen.
 1. Wählen Sie **Anmelden** aus. Registrieren Sie sich, oder melden Sie sich mit Ihrem lokalen oder Social Media-Konto für Azure AD B2C an.
 

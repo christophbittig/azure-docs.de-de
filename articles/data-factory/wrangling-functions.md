@@ -4,14 +4,15 @@ description: Übersicht über die verfügbaren Data Wrangling-Funktionen in Azur
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.date: 04/16/2021
-ms.openlocfilehash: 5985db37e6b88dc39ce1ac166c4aaf9ba368240d
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: f75ae0030316fafcc734644d4def4ad94d04b0d8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109737701"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339735"
 ---
 # <a name="transformation-functions-in-power-query-for-data-wrangling"></a>Transformationsfunktionen in Power Query für Data Wrangling
 
@@ -20,7 +21,7 @@ ms.locfileid: "109737701"
 Data Wrangling in Azure Data Factory ermöglicht codefreie agile Datenaufbereitung und Data Wrangling für die Cloud durch Übersetzen von Power Query ```M```-Skripts in Datenflussskripts. ADF wird in [Power Query Online](/powerquery-m/power-query-m-reference) integriert und stellt Power Query ```M```-Funktionen für Data Wrangling über die Spark-Ausführung mithilfe der Datenfluss-Spark-Infrastruktur bereit. 
 
 > [!NOTE]
-> Power Query in ADF ist zurzeit in der öffentlichen Vorschau verfügbar.
+> Power Query in ADF ist zurzeit in der Public Preview verfügbar.
 
 Derzeit werden nicht alle Power Query M-Funktionen für Data Wrangling unterstützt, obwohl sie während der Erstellung verfügbar sind. Beim Erstellen Ihrer Mash-Ups wird die folgende Fehlermeldung angezeigt, wenn eine Funktion nicht unterstützt wird:
 

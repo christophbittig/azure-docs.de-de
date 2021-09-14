@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 6c302b10baad157cd70751d49fe6d50911c2ce75
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: a73965d0ec5d0d3fbcf665d648137e1153506721
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108074788"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340034"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-Datenverschlüsselung ruhender Daten
 
@@ -38,7 +38,7 @@ Verschlüsselung ist die zum Schutz der Vertraulichkeit von Daten verwendete sic
 - Ein symmetrischer Verschlüsselungsschlüssel wird zur Verschlüsselung von Daten verwendet, wenn diese in Speicher geschrieben werden.
 - Derselbe Verschlüsselungsschlüssel wird verwendet, um diese Daten zu entschlüsseln, wenn diese auf den Gebrauch im Arbeitsspeicher vorbereitet werden.
 - Daten können partitioniert werden, und für jede Partition können unterschiedliche Schlüssel verwendet werden.
-- Schlüssel müssen an einem sicheren Standort mit identitätsbasierter Zugriffssteuerung und Überwachungsrichtlinien gespeichert werden. Datenverschlüsselungsschlüssel werden häufig mit einem Schlüssel für die Schlüsselverschlüsselung in Azure Key Vault verschlüsselt, um den Zugriff weiter einzuschränken.
+- Schlüssel müssen an einem sicheren Standort mit identitätsbasierter Zugriffssteuerung und Überwachungsrichtlinien gespeichert werden. Datenverschlüsselungsschlüssel, die außerhalb von sicheren Speicherorten gespeichert werden, werden mit einem Schlüsselverschlüsselungsschlüssel verschlüsselt, der an einem sicheren Speicherort aufbewahrt wird.
 
 In der Praxis erfordern Szenarios der Schlüsselverwaltung und -steuerung sowie die Skalierungs- und Verfügbarkeitssicherstellung zusätzliche Konstrukte. Konzepte und Komponenten der Verschlüsselung ruhender Daten mit Microsoft Azure werden unten beschrieben.
 
@@ -75,7 +75,7 @@ Bei der Implementierung einer Verschlüsselung ruhender Daten wird mehr als ein 
 - **Datenverschlüsselungsschlüssel (DEK)** : Ein symmetrischer AES256-Schlüssel zum Verschlüsseln einer Partition oder eines Datenblocks.  Eine einzelne Ressource kann aus viele Partitionen bestehen und deshalb auch viele DEKs haben. Das Verschlüsseln jedes Datenblocks mit einem anderen Schlüssel erschwert Kryptoanalyseangriffe. Der Ressourcenanbieter oder die Anwendungsinstanz, die einen spezifischen Block ver- oder entschlüsselt, muss Zugriff auf die DEKs gewähren. Wenn ein DEK durch einen neuen Schlüssel ersetzt wird, müssen nur die Daten im verknüpften Block erneut mit dem neuen Schlüssel verschlüsselt werden.
 - **Schlüsselverschlüsselungsschlüssel (KEK)** : Ein Verschlüsselungsschlüssel zur Verschlüsselung der Datenverschlüsselungsschlüssel. Mit einem KEK, der Key Vault nie verlässt, können die DEKs selbst verschlüsselt und gesteuert werden. Die Entität, die auf den KEK zugreifen kann, kann sich von der Entität unterscheiden, die den DEK erfordert. Eine Entität kann den Zugriff auf die DEK aushandeln, um den Zugriff jedes DEK auf eine bestimmte Partition zu begrenzen. Da der KEK erforderlich ist, um DEKs zu entschlüsseln, ist der KEK ein Punkt, an dem DEKs gelöscht werden können, indem der KEK gelöscht wird.
 
-Die DEKs, die mit KEKs verschlüsselt wurden, werden separat gespeichert. Nur eine Entität mit Zugriff auf den KEK kann diese DEKs entschlüsseln. Es werden verschiedene Schlüsselspeichermodelle unterstützt. Weitere Informationen finden Sie unter [Datenverschlüsselungsmodelle](encryption-models.md).
+Ressourcenanbieter und Anwendungsinstanzen speichern die mit den Schlüsselverschlüsselungsschlüsseln verschlüsselten Datenverschlüsselungsschlüssel oft als Metadaten zu den Daten, die durch die Datenverschlüsselungsschlüssel geschützt werden. Nur eine Entität mit Zugriff auf den Schlüsselverschlüsselungsschlüssel kann diese Datenverschlüsselungsschlüssel entschlüsseln. Es werden verschiedene Schlüsselspeichermodelle unterstützt. Weitere Informationen finden Sie unter [Datenverschlüsselungsmodelle](encryption-models.md).
 
 ## <a name="encryption-at-rest-in-microsoft-cloud-services"></a>Verschlüsselung ruhender Daten in Microsoft-Clouddiensten
 

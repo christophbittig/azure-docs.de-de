@@ -1,14 +1,14 @@
 ---
 title: Anzeigen und Verwalten von Kunden und delegierten Ressourcen im Azure-Portal
 description: Als Dienstanbieter oder Unternehmen, der bzw. das Azure Lighthouse verwendet, können Sie alle Ihre delegierten Ressourcen und Abonnements anzeigen, indem Sie im Azure-Portal zu „Meine Kunden“ wechseln.
-ms.date: 03/12/2021
+ms.date: 08/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 78344015ee027b9844b6339fa7cd95d348488a54
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a29f34983bc42d74efd65a45605bb99944897345
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419328"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349912"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources-in-the-azure-portal"></a>Anzeigen und Verwalten von Kunden und delegierten Ressourcen im Azure-Portal
 
@@ -41,6 +41,9 @@ Auf dieser Seite können Sie die folgenden Informationen anzeigen:
 - Um weitere Details zu einem Angebot und seinen Delegierungen anzuzeigen, wählen Sie den Angebotsnamen aus.
 - Um weitere Details zu Rollenzuweisungen für delegierte Abonnements oder Ressourcengruppen anzuzeigen, wählen Sie den Eintrag in der Spalte **Delegierungen** aus.
 
+> [!NOTE]
+> Wenn ein Kunde ein Abonnement nach der Delegierung umbenennt, wird der aktualisierte Abonnementname angezeigt. Wenn der Mandant umbenannt wird, wird an manchen Stellen im Azure-Portal möglicherweise weiterhin der ältere Mandantenname angezeigt.
+
 ## <a name="view-and-manage-delegations"></a>Anzeigen und Verwalten von Delegierungen
 
 Delegierungen zeigen das Abonnement oder die Ressourcengruppe an, das bzw. die delegiert wurde, zusammen mit den Benutzern und Berechtigungen, die Zugriff darauf haben. Um diese Informationen anzuzeigen, wählen Sie im linken Bereich der Seite **Meine Kunden** die Option **Delegierungen** aus.
@@ -67,15 +70,18 @@ Weitere Informationen finden Sie unter [Anzeigen von Delegierungsänderungen im 
 
 Sie können direkt im Kontext eines delegierten Abonnements innerhalb des Azure-Portals arbeiten, ohne das Verzeichnis wechseln zu müssen, bei dem Sie angemeldet sind. Gehen Sie folgendermaßen vor:
 
-1. Wählen Sie das Symbol **Verzeichnis + Abonnement** am oberen Rand des Azure-Portals aus.
-2. Stellen Sie im **Standardabonnementfilter** sicher, dass nur das Kontrollkästchen für das delegierte Abonnement aktiviert ist. Sie können das Dropdownfeld **Aktuell + Delegierte Verzeichnisse** verwenden, um nur Abonnements innerhalb eines bestimmten Verzeichnisses anzuzeigen. (Verwenden Sie nicht die Option **Verzeichnis wechseln**, weil dadurch das Verzeichnis geändert wird, in dem Sie angemeldet sind.)
+1. Klicken Sie auf **Verzeichnisse + Abonnements** oder auf das Symbol **Einstellungen** oben im Azure-Portal.
+1. Stellen Sie auf der Seite [Verzeichnisse + Abonnements](../../azure-portal/set-preferences.md#directories--subscriptions) für Einstellungen sicher, dass die Umschaltfläche **Erweiterte Filter** [deaktiviert](../../azure-portal/set-preferences.md#subscription-filters) ist.
+1. Wählen Sie im Abschnitt **Standardabonnementfilter** das entsprechende Verzeichnis und Abonnement aus.
 
-Wenn Sie dann auf einen Dienst zugreifen, der [mandantenübergreifende Verwaltungserfahrungen](../concepts/cross-tenant-management-experience.md) unterstützt, wird der Dienst standardmäßig den Kontext des delegierten Abonnements verwenden, das Sie ausgewählt haben. Dies können Sie ändern, indem Sie die obigen Schritte ausführen und das Kontrollkästchen **Alle auswählen** aktivieren (oder indem Sie ein oder mehrere Abonnements auswählen, in denen Sie stattdessen arbeiten möchten).
+:::image type="content" source="../media/subscription-filter-delegated.png" alt-text="Screenshot: Filter mit einem delegierten Abonnement":::
+
+Wenn Sie dann auf einen Dienst zugreifen, der [mandantenübergreifende Verwaltungsfunktionen](../concepts/cross-tenant-management-experience.md) unterstützt, wird der Dienst standardmäßig den Kontext des delegierten Abonnements verwenden, das Sie in Ihren Filter eingeschlossen haben. Dies können Sie ändern, indem Sie die obigen Schritte ausführen und das Kontrollkästchen **Alle auswählen** aktivieren (oder indem Sie ein oder mehrere Abonnements auswählen, in denen Sie stattdessen arbeiten möchten).
 
 > [!NOTE]
 > Wenn Ihnen der Zugriff auf eine oder mehrere Ressourcengruppen gewährt wurde, wählen Sie das Abonnement aus, zu dem diese Ressourcengruppe gehört, anstatt auf ein vollständiges Abonnement zuzugreifen. Dann arbeiten Sie im Kontext dieses Abonnements, können aber nur auf die vorgesehenen Ressourcengruppen zugreifen.
 
-Sie können auch auf Funktionen im Zusammenhang mit delegierten Abonnements oder Ressourcengruppen aus Diensten heraus zugreifen, die mandantenübergreifende Verwaltungserfahrungen unterstützen, indem Sie das Abonnement oder die Ressourcengruppe aus diesem Dienst heraus auswählen.
+Sie können auch auf Funktionen im Zusammenhang mit delegierten Abonnements oder Ressourcengruppen aus Diensten heraus zugreifen, die mandantenübergreifende Verwaltungsfunktionen unterstützen, indem Sie das Abonnement oder die Ressourcengruppe aus einem einzelnen Dienst heraus auswählen.
 
 ## <a name="cloud-solution-provider-preview"></a>Cloud Solution Provider (Vorschau)
 

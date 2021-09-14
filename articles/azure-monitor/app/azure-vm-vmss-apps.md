@@ -4,12 +4,12 @@ description: Leistungsüberwachung für Anwendungen auf Azure-VMs und in Azure-V
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d60b06331f10f33fabfb7ef03365ee6ac8689bcf
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 2fc5057826eda1856b5b3671b6a995e9e80468f5
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315163"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114720646"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Bereitstellen des Azure Monitor Application Insights-Agents auf virtuellen Azure-Computern und in Azure-VM-Skalierungsgruppen
 
@@ -20,7 +20,7 @@ Dieser Artikel führt Sie Schritt für Schritt durch das Aktivieren der Applicat
 > **Java**-basierte Anwendungen, die auf Azure-VMs und in VM-Skalierungsgruppen (VMSS) ausgeführt werden, werden mit dem **[Application Insights Java 3.0-Agent](./java-in-process-agent.md)** überwacht, der allgemein verfügbar ist.
 
 > [!IMPORTANT]
-> Der Azure Application Insights-Agent für ASP.NET-Anwendungen, die **auf Azure-VMs und in VM-Skalierungsgruppen** ausgeführt werden, befindet sich derzeit in der Public Preview. Verwenden Sie zum Überwachen Ihrer **lokal** ausgeführten ASP.NET-Anwendungen den [Azure Application Insights-Agent für lokale Server](./status-monitor-v2-overview.md), der allgemein verfügbar ist und vollständig unterstützt wird.
+> Der Azure Application Insights-Agent für ASP.NET- und ASP.NET Core-Anwendungen, die **auf Azure-VMs und in VM-Skalierungsgruppen** ausgeführt werden, befindet sich derzeit in der Public Preview. Verwenden Sie zum Überwachen Ihrer **lokal** ausgeführten ASP.NET-Anwendungen den [Azure Application Insights-Agent für lokale Server](./status-monitor-v2-overview.md), der allgemein verfügbar ist und vollständig unterstützt wird.
 > Die Vorschauversion für Azure-VMs und VM-Skalierungsgruppen wird ohne Vereinbarung zum Servicelevel bereitgestellt und nicht für Produktionsworkloads empfohlen. Einige Features werden möglicherweise nicht unterstützt oder bieten möglicherweise nur eingeschränkte Funktionen.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -35,10 +35,10 @@ Es gibt zwei Methoden, um die Überwachung von Anwendungen zu aktivieren, die au
 * Für virtuelle Azure-Computer und Azure-VM-Skalierungsgruppen wird empfohlen, mindestens diese Überwachungsstufe zu aktivieren. Danach können Sie basierend auf dem jeweiligen Szenario überprüfen, ob eine manuelle Instrumentierung erforderlich ist.
 
 > [!NOTE]
-> Die automatische Instrumentierung ist zurzeit nur für .NET in IIS-gehosteten Anwendungen und für Java verfügbar. Verwenden Sie ein SDK zum Instrumentieren von ASP.NET Core-, Node.js- und Python-Anwendungen, die auf Azure-VMs und in VM-Skalierungsgruppen gehostet werden.
+> Die automatische Instrumentierung ist zurzeit nur für ASP.NET, in IIS-gehostete ASP.NET Core-Anwendungen und für Java verfügbar. Verwenden Sie ein SDK zum Instrumentieren von Node.js- und Python-Anwendungen, die auf Azure-VMs und in VM-Skalierungsgruppen gehostet werden.
 
 
-#### <a name="net"></a>.NET
+#### <a name="aspnet--aspnet-core"></a>ASP.NET / ASP.NET Core
 
   * Der Application Insights-Agent sammelt automatisch die gleichen Abhängigkeitssignale wie das .NET SDK. Weitere Informationen finden Sie unter [Automatisches Sammeln von Abhängigkeiten](./auto-collect-dependencies.md#net).
         
@@ -47,16 +47,13 @@ Es gibt zwei Methoden, um die Überwachung von Anwendungen zu aktivieren, die au
 
 ### <a name="code-based-via-sdk"></a>Codebasiert über SDK
     
-#### <a name="net"></a>.NET
+#### <a name="aspnet--aspnet-core"></a>ASP.NET / ASP.NET Core
   * Für .NET-Apps ermöglicht dieser Ansatz eine wesentlich stärkere Anpassung, erfordert jedoch das [Hinzufügen einer Abhängigkeit von den Application Insights SDK-NuGet-Paketen](./asp-net.md). Diese Methode bedeutet auch, dass Sie die Updates auf die neueste Version der Pakete selbst verwalten müssen.
 
   * Wenn Sie benutzerdefinierte API-Aufrufe zum Nachverfolgen von Ereignissen/Abhängigkeiten ausführen müssen, die bei der Agent-basierten Überwachung nicht standardmäßig erfasst werden, müssen Sie diese Methode verwenden. Weitere Informationen finden Sie im Artikel zur [API für benutzerdefinierte Ereignisse und Metriken](./api-custom-events-metrics.md).
 
     > [!NOTE]
     > Nur für .NET-Apps gilt: Wenn sowohl die Agent-basierte Überwachung als auch die manuelle SDK-basierte Instrumentierung erkannt wird, werden nur die Einstellungen der manuellen Instrumentierung berücksichtigt. Dadurch wird verhindert, dass doppelte Daten gesendet werden. Weitere Informationen dazu finden Sie im [Abschnitt zur Problembehandlung](#troubleshooting) weiter unten.
-
-#### <a name="net-core"></a>.NET Core
-Verwenden Sie zum Überwachen von .NET Core-Anwendungen das [SDK](./asp-net-core.md). 
 
 #### <a name="java"></a>Java 
 

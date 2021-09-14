@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 06/07/2021
+ms.date: 07/26/2021
 ms.author: yushwang
-ms.openlocfilehash: 56f10ec6178281deaa529e5c94f1cd4b565a381c
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 0551cf435b732b621ad5493914251afd67f18882
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746607"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707141"
 ---
 # <a name="vpn-gateway-faq"></a>Häufig gestellte Fragen zum VPN-Gateway
 
@@ -60,7 +60,7 @@ Sie können Ihr virtuelles Netzwerk für die parallele Verwendung von Site-to-Si
 
 ## <a name="privacy"></a><a name="privacy"></a>Datenschutz
 
-### <a name="does-the-vpn-service-store-customer-data"></a>Speichert der VPN-Dienst Kundendaten?
+### <a name="does-the-vpn-service-store-or-process-customer-data"></a>Werden vom VPN-Dienst Kundendaten gespeichert oder verarbeitet?
 
 Nein.
 
@@ -77,6 +77,10 @@ Richtlinienbasierte Gateways implementieren richtlinienbasierte VPNs verwendet. 
 ### <a name="what-is-a-route-based-dynamic-routing-gateway"></a>Was ist ein routebasiertes Gateway mit dynamischem Routing?
 
 Routenbasierte Gateways implementieren die routenbasierten VPNs. Bei routingbasierten VPNs werden Pakete auf der Grundlage der Routen der IP-Weiterleitungs- oder -Routingtabelle an die entsprechenden VPN-Tunnelschnittstellen weitergeleitet. An den Tunnelschnittstellen werden die Pakete dann ver- bzw. entschlüsselt. Die Richtlinie oder Datenverkehrsauswahl für routenbasierte VPNs wird im Any-to-Any-Format (bzw. als Platzhalter) konfiguriert.
+
+### <a name="can-i-specify-my-own-policy-based-traffic-selectors"></a>Kann ich meine eigenen richtlinienbasierten Datenverkehrsselektoren angeben?
+
+Ja. Datenverkehrsselektoren können mithilfe des PowerShell-Befehls [New-AzIpsecTrafficSelectorPolicy](/powershell/module/az.network/new-azipsectrafficselectorpolicy) über das Attribut *trafficSelectorPolicies* für eine Verbindung definiert werden. Achten Sie darauf, dass die Option [Use policy based traffic selectors](vpn-gateway-connect-multiple-policybased-rm-ps.md#enablepolicybased) (Richtlinienbasierte Datenverkehrsselektoren verwenden) aktiviert ist, damit der angegebene Datenverkehrsselektor wirksam wird.
 
 ### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>Kann ich mein richtlinienbasiertes VPN-Gateway zu einem routenbasierten aktualisieren?
 
@@ -245,6 +249,10 @@ Ja, das wird unterstützt. Weitere Informationen finden Sie unter [Konfigurieren
 ### <a name="can-i-configure-forced-tunneling"></a>Kann ich die Tunnelerzwingung konfigurieren?
 
 Ja. Weitere Informationen finden Sie unter [Konfigurieren der Tunnelerzwingung](vpn-gateway-about-forced-tunneling.md).
+
+## <a name="nat"></a><a name="nat"></a>NAT
+
+[!INCLUDE [vpn-gateway-faq-nat-include](../../includes/vpn-gateway-faq-nat-include.md)]
 
 ## <a name="cross-premises-connectivity-and-vms"></a><a name="vms"></a>Standortübergreifende Konnektivität und virtuelle Computer
 

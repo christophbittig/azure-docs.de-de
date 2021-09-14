@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 2744a1dd36751175e7bd421210bdb5b92b53dfe5
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 3eb0ab8ac6ca4c0ceddd9e3ebf84b8c2ddd5a9f4
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110456919"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113301310"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Protokollwarnungen in Azure Monitor
 
@@ -193,7 +193,9 @@ Sehen Sie sich dieses Beispiel für eine zustandslose Auswertung der Warnung an:
 | 00:15 | TRUE  | Die Warnung wird ausgelöst, und Aktionsgruppen werden aufgerufen. Neuer Warnungsstatus lautet AKTIV.
 | 00:20 | FALSE | Warnung wird nicht ausgelöst. Es werden keine Aktionen aufgerufen. Status für vorherige Warnungen lautet weiter AKTIV.
 
-Zustandsbehaftete Warnungen werden einmal pro Vorfall ausgelöst und aufgelöst. Diese Funktion befindet sich derzeit in der Vorschauversion in der öffentlichen Azure-Cloud. Sie können dies im Abschnitt „Warnungsdetails“, mithilfe der Option  **Warnungen automatisch auflösen,** festlegen.
+Zustandsbehaftete Warnungen werden einmal pro Vorfall ausgelöst und aufgelöst. Die Warnungsregel wird aufgelöst, wenn die Warnungsbedingung für einen bestimmten Auswertungszeitraum 30 Minuten lang (zur Berücksichtigung von Verzögerungen bei der Protokollerfassung) und für drei aufeinanderfolgende Auswertungen nicht erfüllt ist, um das Rauschen bei Bedingungsfluktuationen zu reduzieren. Bei einer Häufigkeit von 5 Minuten wird die Warnung beispielsweise nach 40 Minuten oder bei einer Häufigkeit von 1 Minute nach 32 Minuten aufgelöst. Die aufgelöste Benachrichtigung wird über einen Webhook oder eine E-Mail versendet. Zudem wird auch der Status der Warnungsinstanz (Monitorzustand) im Azure-Portal auf „aufgelöst“ festgelegt.
+
+Das Feature „Zustandsbehaftete Warnungen“ befindet sich derzeit in der Vorschauversion in der öffentlichen Azure-Cloud. Sie können dies im Abschnitt „Warnungsdetails“, mithilfe der Option  **Warnungen automatisch auflösen,** festlegen.
 
 ## <a name="location-selection-in-log-alerts"></a>Standortauswahl in den Protokollwarnungen
 

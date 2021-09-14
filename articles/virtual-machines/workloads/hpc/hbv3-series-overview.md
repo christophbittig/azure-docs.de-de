@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/25/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 4119d64dcadd23415cc750e88d560057bda6af8e
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 7e9cdb80f1423076fb222e1d1521117e65bca9bc
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138015"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460570"
 ---
 # <a name="hbv3-series-virtual-machine-overview"></a>Übersicht über virtuelle Computer der HBv3-Serie 
 
@@ -130,7 +130,7 @@ Bei einer Kombination in einem verteilten Array bietet das NVMe-SSD-Gerät bis z
 | Orchestratorunterstützung           | Azure CycleCloud, Azure Batch, AKS; [Cluster-Konfigurationsoptionen](../../sizes-hpc.md#cluster-configuration-options)                      | 
 
 > [!NOTE] 
-> Windows Server 2012 R2 wird auf HBv3 und anderen VMs mit mehr als 64 (virtuellen oder physischen) Kernen nicht unterstützt. Ausführlichere Informationen finden Sie [hier](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows).
+> Windows Server 2012 R2 wird auf HBv3 und anderen VMs mit mehr als 64 (virtuellen oder physischen) Kernen nicht unterstützt. Weitere Informationen finden Sie unter [Unterstützte Windows-Gastbetriebssysteme für Hyper-V in Windows Server](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,19 +1,20 @@
 ---
-title: Senden von Anforderungen mit Postman
+title: Senden von API-Anforderungen mit Postman
 titleSuffix: Azure Digital Twins
-description: Hier erfahren Sie, wie Sie Postman konfigurieren und zum Testen von Azure Digital Twins-APIs verwenden.
+description: Hier erfahren Sie, wie Sie Postman konfigurieren und zum Aufrufen von Azure Digital Twins-APIs verwenden.
 ms.author: baanders
 author: baanders
 ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
-ms.date: 11/10/2020
-ms.openlocfilehash: 839ce4df4a79b34890a19d3beb470b77fef1f19d
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.date: 6/16/2021
+ms.custom: contperf-fy21q4
+ms.openlocfilehash: 3974b080c2a763db4ffa0f344ef18ce129959a53
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110617654"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459451"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>Verwenden von Postman zum Senden von Anforderungen an die Azure Digital Twins-APIs
 
@@ -27,7 +28,7 @@ In diesem Artikel wird beschrieben, wie Sie über die folgenden Schritte den [Po
     1. [Erstellen Ihrer von Grund auf neuen eigenen Sammlung](#create-your-own-collection).
 1. [Hinzufügen von Anforderungen zu Ihrer konfigurierten Sammlung](#add-an-individual-request) und Senden dieser an die Azure Digital Twins-APIs.
 
-Azure Digital Twins bietet zwei Sätze von APIs, mit denen Sie arbeiten können: **Datenebene** und **Steuerungsebene**. Weitere Informationen zu den Unterschieden zwischen diesen API-Sätzen finden Sie unter [Konzepte: Azure Digital Twins-APIs und -SDKs](concepts-apis-sdks.md). Dieser Artikel enthält Informationen für beide API-Sätze.
+Azure Digital Twins bietet zwei Sätze von APIs, mit denen Sie arbeiten können: **Datenebene** und **Steuerungsebene**. Weitere Informationen zu den Unterschieden zwischen diesen APIs finden Sie unter [Azure Digital Twins-APIs und -SDKs](concepts-apis-sdks.md). Dieser Artikel enthält Informationen für beide API-Sätze.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -302,4 +303,4 @@ Sie können auch die Antwort mit den erwarteten Antwortdaten vergleichen, die in
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Digital Twins-APIS finden Sie unter [Konzepte: Azure Digital Twins-APIs und -SDKs](concepts-apis-sdks.md) oder unter der [Referenzdokumentation für die REST-APIs](/rest/api/azure-digitaltwins/).
+Weitere Informationen zu Digital Twins-APIs finden Sie unter [Azure Digital Twins-APIs und -SDKs](concepts-apis-sdks.md) oder in der [Referenzdokumentation für die REST-APIs](/rest/api/azure-digitaltwins/).

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2021
-ms.openlocfilehash: 59df6fa8624a19b611515551839076a511fe717f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ef34ec8531242dfdb20e984c4c6d8f86d08b8fcf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110482446"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122354832"
 ---
 # <a name="query-packs-in-azure-monitor-logs-preview"></a>Die Abfragepakete in Azure Monitor-Protokollen (Vorschau)
 Ein Abfragepaket ist ein Resource Manager-Objekt, das als Container für die Protokollabfragen in Azure Monitor fungiert. Diese bieten die Möglichkeit, die Protokollabfragen zu speichern und sie für mehrere Arbeitsbereiche und andere Kontexte in Log Analytics zu teilen. 

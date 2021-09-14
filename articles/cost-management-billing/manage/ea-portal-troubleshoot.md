@@ -3,23 +3,23 @@ title: Problembehandlung für den Zugriff auf das Azure EA-Portal
 description: In diesem Artikel werden einige häufige Probleme beschrieben, die im Zusammenhang mit einem Azure Enterprise Agreement (EA) im Azure EA-Portal auftreten können.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/26/2021
+ms.date: 07/26/2021
 ms.topic: troubleshooting
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 852fb85607318772870a8b6826c934997b84ff6d
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: e18c4707a0de97c696aa4ca93ce4c3ca818eb929
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726464"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707537"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>Problembehandlung für den Zugriff auf das Azure EA-Portal
 
 In diesem Artikel werden einige häufige Probleme beschrieben, die im Zusammenhang mit einem Azure Enterprise Agreement (EA) auftreten können. Das Azure EA-Portal dient zum Verwalten von Enterprise Agreement-Benutzern und -Kosten. Die folgenden Probleme können auftreten, wenn Sie den Zugriff auf das Azure EA-Portal konfigurieren oder aktualisieren.
 
-## <a name="issues-adding-an-admin-to-an-enrollment"></a>Probleme beim Hinzufügen eines Administrators zu einer Registrierung
+## <a name="issues-adding-a-user-to-an-enrollment"></a>Probleme beim Hinzufügen eines Benutzers zu einer Registrierung
 
 Für Enterprise-Registrierungen stehen verschiedene Arten von Authentifizierungsebenen zur Verfügung. Bei nicht ordnungsgemäßer Anwendung von Authentifizierungsebenen treten möglicherweise Probleme auf, wenn Sie versuchen, sich beim Azure EA-Portal anzumelden.
 

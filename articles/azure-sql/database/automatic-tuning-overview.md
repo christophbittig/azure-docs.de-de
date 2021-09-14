@@ -11,19 +11,19 @@ author: NikaKinska
 ms.author: nnikolic
 ms.reviewer: mathoma, wiassaf
 ms.date: 03/23/2021
-ms.openlocfilehash: ae950029e0e20fb0233cb1ca7905309f9c3e7b2a
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 8ea21993103e5c461a8cea84f7739160338605a4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591276"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347201"
 ---
 # <a name="automatic-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Automatische Optimierung bei Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Die automatische Optimierung von Azure SQL-Datenbank und Azure SQL Managed Instance sorgt dank einer kontinuierlichen Leistungsoptimierung, die auf künstlicher Intelligenz und maschinellem Lernen basiert, für hohe Leistung und stabile Workloads.
 
-Bei der automatischen Optimierung handelt es sich um einen vollständig verwalteten Leistungsdienst mit integrierten intelligenten Funktionen, der kontinuierlich Abfragen für eine Datenbank überwacht und automatisch deren Leistung verbessert. Dies wird durch eine dynamische Anpassung der Datenbank an die unterschiedlichen Workloads sowie durch die Anwendung von Optimierungsempfehlungen erreicht. Dank künstlicher Intelligenz lernt die automatische Optimierung horizontal von allen Datenbanken in Azure und verbessert dynamisch ihre Optimierungsmaßnahmen. Je länger die automatische Optimierung für eine Datenbank verwendet wird, desto besser ist ihre Leistung.
+Bei der automatischen Optimierung handelt es sich um einen vollständig verwalteten Leistungsdienst mit integrierten intelligenten Funktionen, der kontinuierlich Abfragen für eine Datenbank überwacht und automatisch deren Leistung verbessert. Dies wird durch eine dynamische Anpassung einer Datenbank an die unterschiedlichen Workloads sowie durch die Anwendung von Optimierungsempfehlungen erreicht. Dank künstlicher Intelligenz lernt die automatische Optimierung horizontal von allen Datenbanken in Azure und verbessert dynamisch ihre Optimierungsmaßnahmen. Je länger die automatische Optimierung für eine Datenbank verwendet wird, desto besser ist ihre Leistung.
 
 Die automatische Optimierung von Azure SQL-Datenbank und Azure SQL Managed Instance ist vielleicht eines der wichtigsten Features, die Sie aktivieren können, um stabile Datenbankworkloads mit hoher Leistung bereitzustellen.
 

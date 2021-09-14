@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2021
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9cde810bb9f612b0dc84fb4dd7593761b057e722
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: efcbaab63bf6372761e7cd164428a30f68243e2e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142853"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349735"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster per Dateifreigabe in Azure
 
@@ -145,7 +145,7 @@ Um eine Dateifreigabe mit horizontaler Skalierung verwenden zu können, muss Ihr
 * Sie müssen Azure Premium-Datenträger verwenden.
 * Wir empfehlen die Verwendung von Azure Managed Disks.
 * Es wird empfohlen, Volumes mit dem robusten Dateisystem (ReFS) zu formatieren.
-    * Weitere Informationen finden Sie im [SAP-Hinweis 1869038 – SAP-Unterstützung für das ReFS-Dateisystem][1869038] und im Kapitel [Auswählen des Dateisystems][planning-volumes-s2d-choosing-filesystem] des Artikels „Planen von Volumes in Direkte Speicherplätze“.
+    * Weitere Informationen finden Sie im [SAP-Hinweis 1869038 – SAP-Unterstützung für das ReFS-Dateisystem][1869038] und im Kapitel [Auswählen des Dateisystems][planning-volumes-s2d-choosing-filesystem] des Artikels „Planen von Volumes in Direkte Speicherplätze“.
     * Installieren Sie unbedingt das [kumulative Update für Microsoft KB4025334][kb4025334].
 * Sie können als Azure-VM-Größen die DS-Serie oder die DSv2-Serie verwenden.
 * Um eine gute Netzwerkleistung zwischen VMs zu erzielen, die für die Datenträgersynchronisierung mit direkten Speicherplätzen erforderlich ist, sollten Sie einen VM-Typ verwenden, der mindestens über eine „hohe“ Netzwerkbandbreite verfügt.
@@ -153,11 +153,10 @@ Um eine Dateifreigabe mit horizontaler Skalierung verwenden zu können, muss Ihr
 * Es wird empfohlen, eine gewisse nicht zugeordnete Kapazität im Speicherpool zu reservieren. Indem Sie nicht zugeordnete Kapazität im Speicherpool übrig lassen, erhalten Volumes Speicherplatz für „direkte“ Korrekturen, wenn ein Laufwerk ausfällt. Dies verbessert die Datensicherheit und die Leistung.  Weitere Informationen finden Sie unter [Auswählen der Volumegröße][choosing-the-size-of-volumes-s2d].
 * Sie müssen den internen Lastenausgleich von Azure nicht für den Netzwerknamen der Dateifreigabe mit horizontaler Skalierung konfigurieren wie bei \<SAP global host\>. Dies geschieht für den \<ASCS/SCS virtual host name\> der SAP ASCS/SCS-Instanz oder für das DBMS. Eine Dateifreigabe mit horizontaler Skalierung skaliert die Last horizontal auf alle Clusterknoten. \<SAP global host\> verwendet die lokale IP-Adresse für alle Clusterknoten.
 
-
 > [!IMPORTANT]
 > Die SAPMNT-Dateifreigabe, die auf den \<SAP global host\> verweist, kann nicht umbenannt werden. SAP unterstützt ausschließlich den Freigabenamen „sapmnt“.
 >
-> Weitere Informationen finden Sie unter [SAP-Hinweis 2492395 – Kann der Freigabename „sapmnt“ geändert werden?][2492395]
+Weitere Informationen finden Sie unter [SAP-Hinweis 2492395 – Kann der Freigabename „sapmnt“ geändert werden?][2492395]
 
 ### <a name="configure-sap-ascsscs-instances-and-a-scale-out-file-share-in-two-clusters"></a>Konfigurieren von SAP ASCS/SCS-Instanzen und einer Dateifreigabe mit horizontaler Skalierung in zwei Clustern
 
@@ -174,6 +173,35 @@ Sie müssen SAP ASCS/SCS-Instanzen in einem separaten Cluster mit eigener SAP-\<
 ![Abbildung 5: In zwei Clustern bereitgestellte SAP ASCS/SCS-Instanz und eine Dateifreigabe mit horizontaler Skalierung][sap-ha-guide-figure-8007]
 
 _**Abbildung 5:** In zwei Clustern bereitgestellte SAP ASCS/SCS-Instanz und eine Dateifreigabe mit horizontaler Skalierung_
+
+## <a name="optional-configurations"></a>Optionale Konfigurationen
+
+Die folgenden Abbildungen zeigen mehrere SAP-Instanzen auf Azure-VMs, auf denen Microsoft Windows-Failovercluster ausgeführt wird, um die Gesamtzahl der VMs zu reduzieren.
+
+Dies kann entweder ein lokaler SAP-Anwendungsserver in einem SAP ASCS/SCS-Cluster oder eine SAP ASCS/SCS-Clusterrolle auf Microsoft SQL Always-On-Knoten sein.
+
+> [!IMPORTANT]
+> Die Installation eines lokalen SAP-Anwendungsservers auf einem SQL Server Always-On-Knoten wird nicht unterstützt.
+>
+
+Sowohl SAP ASCS/SCS als auch die Microsoft SQL Server-Datenbank sind Single Points of Failure (SPOF). Zum Schutz dieser SPOFs in einer Windows-Umgebung wird WSFC verwendet.
+
+Während der Ressourcenverbrauch von SAP ASCS/SCS relativ gering ist, wird eine Reduzierung der Arbeitsspeicherkonfiguration für SQL Server oder den SAP-Anwendungsserver um 2 GB empfohlen.
+
+### <a name="sap-application-servers-on-wsfc-nodes-using-windows-sofs"></a><a name="86cb3ee0-2091-4b74-be77-64c2e6424f50"></a>SAP-Anwendungsserver auf WSFC-Knoten mit Windows SOFS
+
+![Abbildung 6: Windows Server-Failoverclusteringkonfiguration in Azure mit Windows SOFS und lokal installierten SAP-Anwendungsservern][sap-ha-guide-figure-8007A]
+
+> [!NOTE]
+> Die Abbildung zeigt die Verwendung zusätzlicher lokaler Datenträger. Dies ist optional für Kunden, die keine Anwendungssoftware auf dem Betriebssystemlaufwerk installieren (C:\)
+>
+### <a name="sap-ascsscs-on-sql-server-always-on-nodes-using-windows-sofs"></a><a name="db335e0d-09b4-416b-b240-afa18505f503"></a>SAP ASCS/SCS auf SQL Server Always-On-Knoten mit Windows SOFS
+
+![Abbildung 7: SAP ASCS/SCS auf SQL Server Always-On-Knoten mit Windows SOFS][sap-ha-guide-figure-8007B]
+
+> [!NOTE]
+> Die Abbildung zeigt die Verwendung zusätzlicher lokaler Datenträger. Dies ist optional für Kunden, die keine Anwendungssoftware auf dem Betriebssystemlaufwerk installieren (C:\)
+>
 
 > [!IMPORTANT]
 > In der Azure-Cloud muss jeder Cluster, der für SAP und Dateifreigaben mit horizontaler Skalierung verwendet wird, in einer eigenen Azure-Verfügbarkeitsgruppe oder über Azure-Verfügbarkeitszonen bereitgestellt werden. Dadurch wird eine verteilte Platzierung der Cluster-VMs in der zugrunde liegenden Azure-Infrastruktur sichergestellt. Bei dieser Technologie werden Bereitstellungen über Verfügbarkeitszonen unterstützt.
@@ -204,7 +232,7 @@ In diesem Fall können Sie eine SIOS-Lösung eines Drittanbieters als freigegebe
 [kb4025334]:https://support.microsoft.com/help/4025334/windows-10-update-kb4025334
 
 [dv2-series]:../../dv2-dsv2-series.md
-[ds-series]:https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general
+[ds-series]:/azure/virtual-machines/windows/sizes-general
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
@@ -230,10 +258,10 @@ In diesem Fall können Sie eine SIOS-Lösung eines Drittanbieters als freigegebe
 [sap-hana-ha]:sap-hana-high-availability.md
 [sap-suse-ascs-ha]:high-availability-guide-suse.md
 
-[planning-volumes-s2d-choosing-filesystem]:https://docs.microsoft.com/windows-server/storage/storage-spaces/plan-volumes#choosing-the-filesystem
-[choosing-the-size-of-volumes-s2d]:https://docs.microsoft.com/windows-server/storage/storage-spaces/plan-volumes#choosing-the-size-of-volumes
-[deploy-sofs-s2d-in-azure]:https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment
-[s2d-in-win-2016]:https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview
+[planning-volumes-s2d-choosing-filesystem]:/windows-server/storage/storage-spaces/plan-volumes#choosing-the-filesystem
+[choosing-the-size-of-volumes-s2d]:/windows-server/storage/storage-spaces/plan-volumes#choosing-the-size-of-volumes
+[deploy-sofs-s2d-in-azure]:/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment
+[s2d-in-win-2016]:/windows-server/storage/storage-spaces/storage-spaces-direct-overview
 [deep-dive-volumes-in-s2d]:https://blogs.technet.microsoft.com/filecab/2016/08/29/deep-dive-volumes-in-spaces-direct/
 
 [planning-guide]:planning-guide.md
@@ -340,7 +368,9 @@ In diesem Fall können Sie eine SIOS-Lösung eines Drittanbieters als freigegebe
 [sap-ha-guide-figure-8004]:./media/virtual-machines-shared-sap-high-availability-guide/8004.png
 [sap-ha-guide-figure-8005]:./media/virtual-machines-shared-sap-high-availability-guide/8005.png
 [sap-ha-guide-figure-8006]:./media/virtual-machines-shared-sap-high-availability-guide/8006.png
-[sap-ha-guide-figure-8007]:./media/virtual-machines-shared-sap-high-availability-guide/8007.png
+[sap-ha-guide-figure-8007]:./media/virtual-machines-shared-sap-high-availability-guide/ha-sofs.png
+[sap-ha-guide-figure-8007A]:./media/virtual-machines-shared-sap-high-availability-guide/ha-sofs-as.png
+[sap-ha-guide-figure-8007B]:./media/virtual-machines-shared-sap-high-availability-guide/ha-sql-ascs-sofs.png
 [sap-ha-guide-figure-8008]:./media/virtual-machines-shared-sap-high-availability-guide/8008.png
 [sap-ha-guide-figure-8009]:./media/virtual-machines-shared-sap-high-availability-guide/8009.png
 [sap-ha-guide-figure-8010]:./media/virtual-machines-shared-sap-high-availability-guide/8010.png
@@ -362,11 +392,11 @@ In diesem Fall können Sie eine SIOS-Lösung eines Drittanbieters als freigegebe
 
 
 [sap-templates-3-tier-multisid-xscs-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs%2Fazuredeploy.json
-[sap-templates-3-tier-multisid-xscs-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
+[sap-templates-3-tier-multisid-xscs-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-db-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-db%2Fazuredeploy.json
-[sap-templates-3-tier-multisid-db-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-db-md%2Fazuredeploy.json
+[sap-templates-3-tier-multisid-db-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-db-md%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
-[sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
+[sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
 [virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 

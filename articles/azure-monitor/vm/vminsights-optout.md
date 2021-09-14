@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 2de0dcd52745ebadb02ab8dbb563e28abf2822dc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fbb169924498b30284ea26d172f605596e6a0379
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102046481"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446362"
 ---
 # <a name="disable-monitoring-of-your-vms-in-vm-insights"></a>Deaktivieren der Überwachung Ihrer VMs in VM Insights
 
@@ -23,7 +23,7 @@ VM Insights nutzt die folgenden Komponenten:
 * Einen Log Analytics-Arbeitsbereich, in dem Überwachungsdaten von VMs und anderen Quellen gespeichert werden.
 * Eine Sammlung von Leistungsindikatoren, die im Arbeitsbereich konfiguriert ist. Diese Sammlung aktualisiert die Überwachungskonfiguration auf allen mit dem Arbeitsbereich verbundenen VMs.
 * `VMInsights`, wobei es sich um eine im Arbeitsbereich konfigurierte Überwachungslösung handelt. Diese Lösung aktualisiert die Überwachungskonfiguration auf allen mit dem Arbeitsbereich verbundenen VMs.
-* `MicrosoftMonitoringAgent` und `DependencyAgent`, bei denen es sich um Azure-VM-Erweiterungen handelt. Diese Erweiterungen sammeln Daten und senden diese an den Arbeitsbereich.
+* `MicrosoftMonitoringAgent` (für Windows) oder `OmsAgentForLinux` (für Linux) und `DependencyAgent`, die Azure VM-Erweiterungen sind. Diese Erweiterungen sammeln Daten und senden diese an den Arbeitsbereich.
 
 Beachten Sie bei den Vorbereitungen zum Deaktivieren der Überwachung Ihrer VMs die folgenden Aspekte:
 

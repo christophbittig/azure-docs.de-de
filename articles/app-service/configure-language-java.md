@@ -11,12 +11,12 @@ ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
-ms.openlocfilehash: 1e62937a4240448f85cc7ab147d642b29bb0a2a9
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 75ee1ca92fb687975dabe0011ce8a95b8c03172b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123226068"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122353683"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Konfigurieren einer Java-App für Azure App Service
 
@@ -66,20 +66,20 @@ In allen anderen Fällen hängt Ihre Bereitstellungsmethode von Ihrem Archivtyp 
 
 ### <a name="java-se"></a>Java SE
 
-Um JAR-Dateien in Java SE bereitzustellen, verwenden Sie den `/api/publish/`-Endpunkt der Kudu-Website. Weitere Informationen zu dieser API finden Sie in [dieser Dokumentation](./deploy-zip.md#deploy-warjarear-packages). 
+Um JAR-Dateien in Java SE bereitzustellen, verwenden Sie den `/api/zipdeploy/`-Endpunkt der Kudu-Website. Weitere Informationen zu dieser API finden Sie in [dieser Dokumentation](./deploy-zip.md#rest). 
 
 > [!NOTE]
 >  Ihre JAR-Anwendung muss mit `app.jar` benannt werden, damit App Service die Anwendung identifizieren und ausführen kann. Das oben erwähnte Maven-Plug-In benennt Ihre Anwendung während der Bereitstellung automatisch für Sie um. Wenn Sie Ihre JAR-Datei nicht in *app.jar* umbenennen möchten, können Sie ein Shellskript mit dem Befehl zum Ausführen Ihrer JAR-App hochladen. Fügen Sie den absoluten Pfad zu diesem Skript im Abschnitt „Konfiguration“ des Portals in das Textfeld [Startdatei](/azure/app-service/faq-app-service-linux#built-in-images) ein. Das Startskript wird nicht aus dem Verzeichnis ausgeführt, in dem es abgelegt wurde. Verwenden Sie daher immer absolute Pfade, um auf Dateien in Ihrem Startskript zu verweisen (z. B.: `java -jar /home/myapp/myapp.jar`).
 
 ### <a name="tomcat"></a>Tomcat
 
-Um WAR-Dateien in Tomcat bereitzustellen, verwenden Sie den `/api/wardeploy/`-Endpunkt, um Ihre Archivdatei mit POST zu veröffentlichen. Weitere Informationen zu dieser API finden Sie in [dieser Dokumentation](./deploy-zip.md#deploy-warjarear-packages).
+Um WAR-Dateien in Tomcat bereitzustellen, verwenden Sie den `/api/wardeploy/`-Endpunkt, um Ihre Archivdatei mit POST zu veröffentlichen. Weitere Informationen zu dieser API finden Sie in [dieser Dokumentation](./deploy-zip.md#deploy-war-file).
 
 ::: zone pivot="platform-linux"
 
 ### <a name="jboss-eap"></a>JBoss EAP
 
-Um WAR-Dateien in JBoss bereitzustellen, verwenden Sie den `/api/wardeploy/`-Endpunkt, um Ihre Archivdatei mit POST zu veröffentlichen. Weitere Informationen zu dieser API finden Sie in [dieser Dokumentation](./deploy-zip.md#deploy-warjarear-packages).
+Um WAR-Dateien in JBoss bereitzustellen, verwenden Sie den `/api/wardeploy/`-Endpunkt, um Ihre Archivdatei mit POST zu veröffentlichen. Weitere Informationen zu dieser API finden Sie in [dieser Dokumentation](./deploy-zip.md#deploy-war-file).
 
 Zum Bereitstellen von EAR-Dateien [verwenden Sie FTP](deploy-ftp.md). Ihre EAR-Anwendung wird im Kontextstamm bereitgestellt, der in der Konfiguration Ihrer Anwendung definiert ist. Wenn der Kontextstamm Ihrer App beispielsweise `<context-root>myapp</context-root>` ist, können Sie die Site unter diesem `/myapp`-Pfad durchsuchen: `http://my-app-name.azurewebsites.net/myapp`. Wenn Sie möchten, dass Ihre Web-App im Stammpfad bedient wird, stellen Sie sicher, dass Ihre App den Kontextstamm auf den Stammpfad festlegt: `<context-root>/</context-root>`. Weitere Informationen finden Sie unter [Festlegen des Kontextstamms einer Webanwendung](https://docs.jboss.org/jbossas/guides/webguide/r2/en/html/ch06.html).
 

@@ -1,39 +1,35 @@
 ---
-title: Überprüfen von Amazon S3-Buckets
+title: Amazon S3 Multi-Cloud Scanning Connector für Azure Purview
 description: In dieser Schrittanleitung wird beschrieben, wie Sie Amazon S3-Buckets überprüfen.
 author: batamig
 ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 05/13/2021
+ms.date: 06/17/2021
 ms.custom: references_regions
-ms.openlocfilehash: e339c9847024aa35665b9a8b4114102c8fde22a1
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ad62ff0c7d3e6249ecb8497953501466b5152265
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110470286"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445732"
 ---
-# <a name="azure-purview-connector-for-amazon-s3"></a>Azure Purview-Connector für Amazon S3
+# <a name="amazon-s3-multi-cloud-scanning-connector-for-azure-purview"></a>Amazon S3 Multi-Cloud Scanning Connector für Azure Purview
 
-In dieser Schrittanleitung erfahren Sie, wie Sie Azure Purview verwenden, um Ihre unstrukturierten Daten zu überprüfen, die derzeit in Amazon S3-Standardbuckets gespeichert sind, und ermitteln, welche Typen vertraulicher Informationen in Ihren Daten vorhanden sind. In diesem Leitfaden wird außerdem beschrieben, wie Sie die Amazon S3-Buckets identifizieren, in denen die Daten derzeit gespeichert sind, um Information Protection und Datencompliance zu vereinfachen.
+Mit dem Multi-Cloud Scanning Connector für Azure Purview können Sie Ihre Organisationsdaten Cloudanbieter übergreifend, einschließlich Amazon Web Services, zusätzlich zu Azure-Speicherdiensten untersuchen.
 
-Verwenden Sie für diesen Dienst Purview, um ein Microsoft-Konto mit sicherem Zugriff auf AWS bereitzustellen, wo die Purview-Überprüfung ausgeführt wird. Die Purview-Überprüfung verwendet diesen Zugriff auf Ihre Amazon S3-Buckets, um Ihre Daten zu lesen, und meldet dann die Überprüfungsergebnisse, einschließlich nur der Metadaten und der Klassifizierung, zurück an Azure. Verwenden Sie die Purview-Klassifizierungs- und -Beschriftungsberichte, um die Ergebnisse Ihrer Datenüberprüfungen zu analysieren und zu prüfen.
+In diesem Artikel erfahren Sie, wie Sie Azure Purview verwenden, um Ihre derzeit in Amazon S3-Standardbuckets gespeicherten unstrukturierten Daten zu überprüfen, und zu ermitteln, welche Typen vertraulicher Informationen in Ihren Daten vorhanden sind. In diesem Leitfaden wird außerdem beschrieben, wie Sie die Amazon S3-Buckets identifizieren, in denen die Daten derzeit gespeichert sind, um Information Protection und Datencompliance zu vereinfachen.
 
-In dieser Schrittanleitung erfahren Sie, wie Sie Amazon S3-Buckets als Purview-Ressourcen hinzufügen und eine Überprüfung für Ihre Amazon S3-Daten erstellen.
+Verwenden Sie für diesen Dienst Purview, um ein Microsoft-Konto mit sicherem Zugriff auf AWS bereitzustellen, wo der Multi-Cloud Scanning Connector für Azure Purview ausgeführt wird. Der Multi-Cloud Scanning Connector für Azure Purview verwendet diesen Zugriff auf Ihre Amazon S3-Buckets, um Ihre Daten zu lesen, und meldet dann die Überprüfungsergebnisse, nur einschließlich der Metadaten und der Klassifizierung, zurück an Azure. Verwenden Sie die Purview-Klassifizierungs- und -Beschriftungsberichte, um die Ergebnisse Ihrer Datenüberprüfungen zu analysieren und zu prüfen.
+
+> [!IMPORTANT]
+> Der Multi-Cloud Scanning Connector für Azure Purview ist ein separates Add-On zu Azure Purview. Die Geschäftsbedingungen für den Multi-Cloud Scanning Connector für Azure Purview sind in der Vereinbarung enthalten, unter der Sie Microsoft Azure-Dienste erworben haben. Weitere Informationen finden Sie unter „Rechtliche Hinweise zu Microsoft Azure“ (https://azure.microsoft.com/support/legal/ ).
+>
 
 ## <a name="purview-scope-for-amazon-s3"></a>Purview-Umfang für Amazon S3
 
-Der folgende Umfang ist spezifisch für die Registrierung und Überprüfung von Amazon S3-Buckets als Purview-Datenquellen.
-
-|`Scope`  |Beschreibung  |
-|---------|---------|
-|**Dateitypen**     | Der Purview-Überprüfungsdienst unterstützt derzeit die folgenden Dateitypen: <br><br>.avro, .csv, .doc, .docm, .docx, .dot, .json, .odp, .ods, .odt, .orc, .parquet, .pdf, .pot, .pps, .ppsx, .ppt, .pptm, .pptx, .psv, .ssv, .tsv, .txt, .xlc, .xls, .xlsb, .xlsm, .xlsx, .xlt, .xml        |
-|**Regionen**     | Der Purview-Connector für den Amazon S3-Dienst wird derzeit nur in bestimmten Regionen bereitgestellt. <br><br>Weitere Informationen finden Sie unter [Speicher- und Überprüfungsregionen](#storage-and-scanning-regions).   |
-|     |         |
-
-Weitere Informationen finden Sie in den dokumentierten Purview-Grenzwerten unter:
+Informationen zu Purview-Grenzwerten finden Sie unter:
 
 - [Verwalten und Erhöhen der Kontingente für Ressourcen mit Azure Purview](how-to-manage-quotas.md)
 - [Unterstützte Datenquellen und Dateitypen in Azure Purview](sources-and-scans.md)
@@ -41,7 +37,7 @@ Weitere Informationen finden Sie in den dokumentierten Purview-Grenzwerten unter
 
 ### <a name="storage-and-scanning-regions"></a>Speicher- und Überprüfungsregionen
 
-In der folgenden Tabelle werden die Regionen, in denen Ihre Daten gespeichert sind, der jeweiligen Region zugeordnet, in der sie von Azure Purview überprüft würden.
+Der Purview-Connector für den Amazon S3-Dienst wird derzeit nur in bestimmten Regionen bereitgestellt. In der folgenden Tabelle werden die Regionen, in denen Ihre Daten gespeichert sind, der jeweiligen Region zugeordnet, in der sie von Azure Purview überprüft würden.
 
 > [!IMPORTANT]
 > Kunden werden alle zugehörigen Datenübertragungsgebühren gemäß der Region Ihres Buckets in Rechnung gestellt.
@@ -51,24 +47,24 @@ In der folgenden Tabelle werden die Regionen, in denen Ihre Daten gespeichert si
 | ------------------------------- | ------------------------------------- |
 | USA, Osten (Ohio)                  | USA, Osten (Ohio)                        |
 | USA, Osten (Nord Virginia)           | USA, Osten (Nord Virginia)                       |
-| USA, Westen (Nord Kalifornien)         | USA, Osten (Ohio) oder USA, Westen (N. Kalifornien)                        |
-| USA, Westen (Oregon)                | USA, Osten (Ohio) oder USA, Westen (Oregon)                      |
+| USA, Westen (Nord Kalifornien)         | USA, Westen (Nord Kalifornien)                        |
+| USA, Westen (Oregon)                | USA, Westen (Oregon)                      |
 | Afrika (Kapstadt)              | Europa (Frankfurt)                    |
-| Asien-Pazifik (Hongkong)        | Asien-Pazifik (Sydney) oder Asien-Pazifik (Singapur)                |
-| Asien-Pazifik (Mumbai)           | Asien-Pazifik (Sydney) oder Asien-Pazifik (Singapur)                |
-| Asien-Pazifik (Osaka lokal)      | Asien-Pazifik (Sydney) oder Asien-Pazifik (Tokio)                 |
-| Asien-Pazifik (Seoul)            | Asien-Pazifik (Sydney) oder Asien-Pazifik (Tokio)                 |
-| Asien-Pazifik, (Singapur)        | Asien-Pazifik (Sydney) oder Asien-Pazifik (Singapur)                 |
+| Asien-Pazifik (Hongkong)        | Asien-Pazifik, (Tokio)                |
+| Asien-Pazifik (Mumbai)           | Asien-Pazifik, (Singapur)                |
+| Asien-Pazifik (Osaka lokal)      | Asien-Pazifik, (Tokio)                 |
+| Asien-Pazifik (Seoul)            | Asien-Pazifik, (Tokio)                 |
+| Asien-Pazifik, (Singapur)        | Asien-Pazifik, (Singapur)                 |
 | Asien-Pazifik, (Sydney)           | Asien-Pazifik, (Sydney)                  |
-| Asien-Pazifik, (Tokio)            | Asien-Pazifik (Sydney) oder Asien-Pazifik (Tokio)                |
+| Asien-Pazifik, (Tokio)            | Asien-Pazifik, (Tokio)                |
 | Kanada (Mitte)                | USA, Osten (Ohio)                        |
 | China (Beijing)                 | Nicht unterstützt                    |
 | China (Ningxia)                 | Nicht unterstützt                   |
 | Europa (Frankfurt)              | Europa (Frankfurt)                    |
 | Europa (Irland)                | Europa (Irland)                   |
-| Europa (London)                 | Europa (Irland) oder Europa (London)                 |
-| Europa (Mailand)                  | Europa (Frankfurt)                    |
-| Europa (Paris)                  | Europa (Frankfurt) oder Europa (Paris)                   |
+| Europa (London)                 | Europa (London)                 |
+| Europa (Mailand)                  | Europa (Paris)                    |
+| Europa (Paris)                  | Europa (Paris)                   |
 | Europa (Stockholm)              | Europa (Frankfurt)                    |
 | Naher Osten (Bahrain)           | Europa (Frankfurt)                    |
 | Südamerika (São Paulo)       | USA, Osten (Ohio)                        |
@@ -104,7 +100,7 @@ In diesem Verfahren wird beschrieben, wie Sie neue Purview-Anmeldeinformationen 
 
 1. Wählen Sie **Neu** aus, und verwenden Sie im rechts angezeigten Bereich **Neue Anmeldeinformationen** die folgenden Felder, um Ihre Purview-Anmeldeinformationen zu erstellen:
 
-    |Feld |Beschreibung  |
+    |Feld |BESCHREIBUNG  |
     |---------|---------|
     |**Name**     |Geben Sie einen aussagekräftigen Namen für diese Anmeldeinformationen ein, oder verwenden Sie den Standardwert.        |
     |**Beschreibung**     |Geben Sie eine optionale Beschreibung für diese Anmeldeinformationen ein, z. B. `Used to scan the tutorial S3 buckets` (Zum Überprüfen der Tutorial-S3-Buckets).         |
@@ -305,7 +301,7 @@ Verwenden Sie dieses Verfahren, wenn Sie nur über einen einzigen S3-Bucket verf
 
     ![Starten Sie das Purview-Portal.](./media/register-scan-amazon-s3/purview-portal-amazon-s3.png)
 
-1. Navigieren Sie zur Azure Purview-Seite **Quellen**, und wählen Sie **Registrieren** ![Symbol „Registrieren“](./media/register-scan-amazon-s3/register-button.png) aus. > **Amazon S3** > **Weiter**.
+1. Navigieren Sie zur Azure Purview-Seite **Datenzuordnung**, und wählen Sie **Registrieren** ![Symbol „Registrieren“](./media/register-scan-amazon-s3/register-button.png) aus. > **Amazon S3** > **Weiter**.
 
     ![Fügen Sie einen Amazon AWS-Bucket als Purview-Datenquelle hinzu.](./media/register-scan-amazon-s3/add-s3-datasource-to-purview.png)
 
@@ -315,7 +311,7 @@ Verwenden Sie dieses Verfahren, wenn Sie nur über einen einzigen S3-Bucket verf
 
 1. Geben Sie im Bereich **Quellen registrieren (Amazon S3)** , der geöffnet wird, die folgenden Details ein:
 
-    |Feld  |Beschreibung  |
+    |Feld  |BESCHREIBUNG  |
     |---------|---------|
     |**Name**     |Geben Sie einen aussagekräftigen Namen ein, oder verwenden Sie den bereitgestellten Standardwert.         |
     |**Bucket-URL**     | Geben Sie Ihre AWS-Bucket-URL mit der folgenden Syntax ein: `s3://<bucketName>`     <br><br>**Hinweis**: Stellen Sie sicher, dass Sie nur die Stammebene Ihres Buckets ohne Unterordner verwenden. Weitere Informationen finden Sie unter [Abrufen Ihres Amazon S3-Bucketnamens](#retrieve-your-amazon-s3-bucket-name). |
@@ -337,7 +333,7 @@ Wenn Sie [Ihre Überprüfung konfigurieren](#create-a-scan-for-one-or-more-amazo
 
     ![Starten des Connectors für das dedizierte Purview-Portal von Amazon S3](./media/register-scan-amazon-s3/purview-portal-amazon-s3.png)
 
-1. Navigieren Sie zur Azure Purview-Seite **Quellen**, und wählen Sie **Registrieren** ![Symbol „Registrieren“](./media/register-scan-amazon-s3/register-button.png) aus. > **Amazon-Konten** > **Weiter**.
+1. Navigieren Sie zur Azure Purview-Seite **Datenzuordnung**, und wählen Sie **Registrieren** ![Symbol „Registrieren“](./media/register-scan-amazon-s3/register-button.png) aus. > **Amazon-Konten** > **Weiter**.
 
     ![Fügen Sie ein Amazon-Konto als Purview-Datenquelle hinzu.](./media/register-scan-amazon-s3/add-s3-account-to-purview.png)
 
@@ -347,7 +343,7 @@ Wenn Sie [Ihre Überprüfung konfigurieren](#create-a-scan-for-one-or-more-amazo
 
 1. Geben Sie im Bereich **Quellen registrieren (Amazon S3)** , der geöffnet wird, die folgenden Details ein:
 
-    |Feld  |Beschreibung  |
+    |Feld  |BESCHREIBUNG  |
     |---------|---------|
     |**Name**     |Geben Sie einen aussagekräftigen Namen ein, oder verwenden Sie den bereitgestellten Standardwert.         |
     |**AWS-Konto-ID**     | Geben Sie Ihre AWS-Konto-ID ein. Weitere Informationen finden Sie unter [Auffinden Ihrer AWS-Konto-ID](#locate-your-aws-account-id).|
@@ -362,14 +358,14 @@ Fahren Sie fort mit [Erstellen einer Überprüfung für einen oder mehrere Amazo
 
 Nachdem Sie Ihre Buckets als Purview-Datenquellen hinzugefügt haben, können Sie eine Überprüfung so konfigurieren, dass sie in geplanten Intervallen oder sofort ausgeführt wird.
 
-1. Navigieren Sie zum Azure Purview-Bereich **Quellen**, und führen Sie einen der folgenden Schritte aus:
+1. Wählen Sie im linken Bereich in Purview Studio die Registerkarte **Datenzuordnung** aus.
 
     - Wählen Sie in der **Zuordnungsansicht** die Option **Neue Überprüfung** ![Symbol „Neue Überprüfung“](./media/register-scan-amazon-s3/new-scan-button.png) aus. in Ihrem Feld „Datenquelle“.
     - Zeigen Sie in der **Listenansicht** mit dem Mauszeiger auf die Zeile für Ihre Datenquelle, und wählen Sie **Neue Überprüfung** ![ Symbol „Neue Überprüfung“](./media/register-scan-amazon-s3/new-scan-button.png) aus.
 
 1. Definieren Sie im rechts angezeigten Bereich **Überprüfen** die folgenden Felder, und wählen Sie dann **Weiter** aus:
 
-    |Feld  |Beschreibung  |
+    |Feld  |BESCHREIBUNG  |
     |---------|---------|
     |**Name**     |  Geben Sie einen aussagekräftigen Namen für Ihre Überprüfung ein, oder verwenden Sie den Standardwert.       |
     |**Type** |Wird nur angezeigt, wenn Sie Ihr AWS-Konto hinzugefügt haben, einschließlich aller Buckets. <br><br>Die aktuellen Optionen umfassen nur **Alle** > **Amazon S3**. Bleiben Sie dran, um über weitere auswählbare Optionen auf dem Laufenden zu bleiben, die mit der sich erweiternden Unterstützungsmatrix von Purview entwickelt werden. |
@@ -411,7 +407,7 @@ Weitere Informationen finden Sie unter [Erkunden der Ergebnisse der Purview-Übe
 
 ## <a name="explore-purview-scanning-results"></a>Erkunden der Ergebnisse der Purview-Überprüfung
 
-Wenn eine Purview-Überprüfung Ihrer Amazon S3-Buckets abgeschlossen ist, führen Sie ein Drilldown in den Purview-Bereich **Quellen** aus, um den Überprüfungsverlauf anzuzeigen.
+Wenn eine Purview-Überprüfung Ihrer Amazon S3-Buckets abgeschlossen ist, führen Sie ein Drilldown in den Purview-Bereich **Datenzuordnung** aus, um den Überprüfungsverlauf anzuzeigen.
 
 Wählen Sie eine Datenquelle aus, um deren Details anzuzeigen, und wählen Sie dann die Registerkarte **Überprüfungen** aus, um alle zurzeit ausgeführten oder abgeschlossenen Überprüfungen anzuzeigen.
 Wenn Sie ein AWS-Konto mit mehreren Buckets hinzugefügt haben, wird der Überprüfungsverlauf für jeden Bucket unter dem Konto angezeigt.

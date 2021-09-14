@@ -2,22 +2,22 @@
 title: Herstellen von Verbindungen mit BareMetal-Infrastrukturinstanzen in Azure
 description: Hier erfahren Sie, wie Sie im Azure-Portal oder mithilfe der Azure-Befehlszeilenschnittstelle BareMetal-Instanzen identifizieren und mit ihnen interagieren.
 ms.topic: how-to
-ms.date: 04/06/2021
-ms.openlocfilehash: 5ae1a075254a8bcfd1f5978a5d41190bd34bf84d
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.date: 07/13/2021
+ms.openlocfilehash: b9f5de92ed213d987c7dfac5b3e48f9b565bfff5
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110576415"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113767137"
 ---
 # <a name="connect-baremetal-infrastructure-instances-in-azure"></a>Herstellen von Verbindungen mit BareMetal-Infrastrukturinstanzen in Azure
 
-In diesem Artikel wird die Darstellung von [BareMetal-Instanzen](concepts-baremetal-infrastructure-overview.md) im [Azure-Portal](https://portal.azure.com/) erläutert. Außerdem werden in diesem Artikel die Aktionen beschrieben, die Sie im Azure-Portal für Ihre bereitgestellten BareMetal-Infrastrukturinstanzen ausführen können. 
+In diesem Artikel werden die Aktionen beschrieben, die Sie im [Azure-Portal](https://portal.azure.com/) für Ihre bereitgestellten BareMetal-Infrastrukturinstanzen ausführen können. 
  
 ## <a name="register-the-resource-provider"></a>Registrieren des Ressourcenanbieters
-Ein Azure-Ressourcenanbieter für BareMetal-Instanzen sorgt für die Sichtbarkeit der Instanzen im Azure-Portal. Der *BareMetalInfrastructure*-Ressourcenanbieter wird standardmäßig über das Azure-Abonnement registriert, das Sie für Bereitstellungen von BareMetal-Instanzen verwenden. Wenn Ihre bereitgestellten BareMetal-Instanzen nicht angezeigt werden, müssen Sie den Ressourcenanbieter in Ihrem Abonnement registrieren. 
+Ein Azure-Ressourcenanbieter für BareMetal-Instanzen ermöglicht die Sichtbarkeit der Instanzen im Azure-Portal. Der *BareMetalInfrastructure*-Ressourcenanbieter wird standardmäßig über das Azure-Abonnement registriert, das Sie für Bereitstellungen von BareMetal-Instanzen verwenden. Wenn Ihre bereitgestellten BareMetal-Instanzen nicht angezeigt werden, registrieren Sie den Ressourcenanbieter in Ihrem Abonnement. 
 
-Sie können den Ressourcenanbieter für BareMetal-Instanzen im Azure-Portal oder mithilfe der Azure-Befehlszeilenschnittstelle registrieren.
+Sie können den Ressourcenanbieter für BareMetal-Instanzen im Azure-Portal oder mithilfe der Azure-Befehlszeilenschnittstelle (CLI) registrieren.
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
  
@@ -34,7 +34,7 @@ Sie müssen Ihre Abonnements im Azure-Portal auflisten und dann auf das Abonneme
 1. Wählen Sie die Option **Ressourcenanbieter** aus, und geben Sie **BareMetalInfrastructure** im Suchfenster ein. Der Ressourcenanbieter sollte wie in der Abbildung als **registriert** angezeigt werden.
  
 >[!NOTE]
->Wählen Sie **Registrieren** aus, falls der Ressourcenanbieter nicht registriert ist.
+>Klicken Sie auf **Registrieren**, falls der Ressourcenanbieter nicht registriert ist.
  
 :::image type="content" source="media/connect-baremetal-infrastructure/register-resource-provider-azure-portal.png" alt-text="Screenshot der registrierten BareMetal-Instanzen":::
 
@@ -119,7 +119,7 @@ Mögliche Hardwarerevisionen:
 >Rev 4.2 ist die neueste BareMetal Infrastructure-Revision mit neuem Branding, die die vorhandene Architektur von Rev 4 verwendet. Rev 4 befindet sich näher an den Azure-VM-Hosts (virtuelle Computer). Sie bietet wesentliche Verbesserungen bei der Netzwerklatenz zwischen Azure-VMs und SAP HANA-Instanzen. Sie können über das Azure-Portal auf Ihre BareMetal-Instanzen zugreifen und diese verwalten. Weitere Informationen finden Sie unter [Was ist BareMetal Infrastructure (Vorschau) in Azure?](concepts-baremetal-infrastructure-overview.md).
 
  
-Auf der rechten Seite finden Sie zudem den Namen der [Azure-Näherungsplatzierungsgruppe](../virtual-machines/co-location.md), die für jede bereitgestellte BareMetal-Instanz automatisch erstellt wird. Referenzieren Sie die Näherungsplatzierungsgruppe bei der Bereitstellung der Azure-VMs, die die Anwendungsschicht hosten. Durch die Verwendung der Näherungsplatzierungsgruppe, die der BareMetal-Instanz zugeordnet ist, stellen Sie sicher, dass die Azure-VMs in unmittelbarer Nähe der BareMetal-Instanz bereitgestellt werden.
+Auf der rechten Seite finden Sie zudem den Namen der [Azure-Näherungsplatzierungsgruppe](../virtual-machines/co-location.md). Die Platzierungsgruppe wird für jede bereitgestellte BareMetal-Instanz automatisch erstellt. Referenzieren Sie die Näherungsplatzierungsgruppe bei der Bereitstellung der Azure-VMs, die die Anwendungsschicht hosten. Verwenden Sie die Näherungsplatzierungsgruppe, die der BareMetal-Instanz zugeordnet ist, um sicherzustellen, dass die Azure-VMs in unmittelbarer Nähe der BareMetal-Instanz bereitgestellt werden.
  
 >[!TIP]
 >Informationen darüber, wie Sie die Anwendungsschicht im gleichen Azure-Rechenzentrum wie Revision 4.x unterbringen, finden Sie unter [Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz](../virtual-machines/workloads/sap/sap-proximity-placement-scenarios.md).
@@ -142,7 +142,7 @@ Sie können die Aktivitäten einer einzelnen BareMetal-Instanz überprüfen. Ein
  
 :::image type="content" source="media/connect-baremetal-infrastructure/check-activities-single-baremetal-instance.png" alt-text="Screenshot der Aktivitäten einer BareMetal-Instanz" lightbox="media/connect-baremetal-infrastructure/check-activities-single-baremetal-instance.png":::
  
-Änderungen an den Azure-Metadaten der Instanz werden ebenfalls im Aktivitätsprotokoll aufgezeichnet. Neben dem initiierten Neustart sehen Sie die Aktivität **Write BareMetallnstances**. Bei dieser Aktivität werden an der BareMetal-Instanz selbst keine Änderungen vorgenommen, aber es werden Änderungen an den Azure-Metadaten der Einheit dokumentiert.
+Änderungen an den Azure-Metadaten der Instanz werden ebenfalls im Aktivitätsprotokoll aufgezeichnet. Neben dem Neustart sehen Sie die Aktivität **Write BareMetallnstances**. Bei dieser Aktivität werden an der BareMetal-Instanz selbst keine Änderungen vorgenommen, aber es werden Änderungen an den Azure-Metadaten der Einheit dokumentiert.
  
 Eine weitere Aktivität, die aufgezeichnet wird, ist das Hinzufügen oder Löschen eines [Tags](../azure-resource-manager/management/tag-resources.md) zu bzw. aus einer Instanz.
  
@@ -152,7 +152,7 @@ Eine weitere Aktivität, die aufgezeichnet wird, ist das Hinzufügen oder Lösch
  
 Sie können Azure-Tags zu einer BareMetal-Instanz hinzufügen oder daraus löschen. Die Zuweisung der Tags erfolgt genauso wie bei der Zuweisung von Tags zu VMs. Wie bei VMs befinden sich die Tags in den Azure-Metadaten. Und für die Tags für BareMetal-Instanzen gelten dieselben Einschränkungen wie für Tags für VMs.
  
-Das Löschen von Tags funktioniert auch auf die gleiche Weise wie bei VMs. Das Anwenden und Löschen eines Tags wird im Aktivitätsprotokoll der BareMetal-Instanz aufgeführt.
+Das Löschen von Tags funktioniert auch auf die gleiche Weise wie bei VMs. Sowohl das Anwenden als auch das Löschen eines Tags wird im Aktivitätsprotokoll der BareMetal-Instanz aufgeführt.
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
@@ -174,9 +174,16 @@ az baremetalinstance update --resource-group DSM05a-T550 --instance-name orcllab
 
 ## <a name="check-properties-of-an-instance"></a>Überprüfen von Eigenschaften einer Instanz
  
-Beim Abrufen der Instanzen können Sie zum Abschnitt „Eigenschaften“ navigieren, um die gesammelten Daten zu den Instanzen anzuzeigen. Die gesammelten Daten umfassen die Azure-Konnektivität, das Speicher-Back-End, die ID der ExpressRoute-Verbindung, die eindeutige Ressourcen-ID und die Abonnement-ID. Diese Informationen werden in Supportanfragen oder beim Einrichten einer Speichermomentaufnahme-Konfiguration benötigt.
+Beim Abrufen der Instanzen können Sie zum Abschnitt „Eigenschaften“ navigieren, um die gesammelten Daten zu den Instanzen anzuzeigen. Erfasste Daten umfassen:
+- Azure-Konnektivität
+- Speicher-Back-End
+- ID der ExpressRoute-Leitung
+- Eindeutige Ressourcen-ID
+- Abonnement-ID 
+
+Diese Informationen werden in Supportanfragen oder beim Einrichten einer Speichermomentaufnahme-Konfiguration benötigt.
  
-Die IP-Adresse des Speicher-NFS ist eine weitere wichtige Information. Sie isoliert Ihren Speicher auf Ihren **Mandanten** im BareMetal-Instanzstapel. Sie benötigen diese IP-Adresse auch, wenn Sie die [Konfigurationsdatei für Sicherungen von Speichermomentaufnahmen](../virtual-machines/workloads/sap/hana-backup-restore.md#set-up-storage-snapshots) bearbeiten.
+Die IP-Adresse des Speicher-NFS ist eine weitere wichtige Information. Sie isoliert Ihren Speicher auf Ihren **Mandanten** im BareMetal-Instanzstapel. Sie verwenden diese IP-Adresse, wenn Sie das [Tool zum Konfigurieren anwendungskonsistenter Momentaufnahmen in Azure](../azure-netapp-files/azacsnap-cmd-ref-configure.md) bearbeiten.
  
 :::image type="content" source="media/connect-baremetal-infrastructure/baremetal-instance-properties.png" alt-text="Screenshot der Eigenschafteneinstellungen einer BareMetal-Instanz" lightbox="media/connect-baremetal-infrastructure/baremetal-instance-properties.png":::
  
@@ -240,6 +247,7 @@ Es dauert bis zu fünf Werktage, bis ein Supportmitarbeiter Ihre Anfrage bestät
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über Workloads:
+Erfahren Sie mehr über Workloads für BareMetal-Infrastruktur.
 
-- [Was ist SAP HANA in Azure (große Instanzen)?](../virtual-machines/workloads/sap/hana-overview-architecture.md)
+> [!div class="nextstepaction"]
+> [Was ist SAP HANA in Azure (große Instanzen)?](../virtual-machines/workloads/sap/hana-overview-architecture.md)
