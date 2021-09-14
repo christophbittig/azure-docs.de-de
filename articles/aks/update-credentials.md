@@ -5,12 +5,12 @@ description: Hier erfahren Sie, wie Sie die Dienstprinzipal- oder AAD-Anwendungs
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: 128e2d38b002369381c860dbd94dbd93b278682d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 72cc0c6ab369b035df8c4a29c89be74fa9102cc5
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355666"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123101516"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Aktualisieren oder Rotieren der Anmeldeinformationen für Azure Kubernetes Service (AKS)
 
@@ -97,7 +97,7 @@ Setzen Sie jetzt den Vorgang anhand des Abschnitts [Aktualisieren des AKS-Cluste
 ## <a name="update-aks-cluster-with-new-service-principal-credentials"></a>Aktualisieren des AKS-Clusters mit neuen Dienstprinzipal-Anmeldeinformationen
 
 > [!IMPORTANT]
-> Bei großen Clustern kann die Aktualisierung des AKS-Clusters mit einem neuen Dienstprinzipal viel Zeit in Anspruch nehmen.
+> Bei großen Clustern kann die Aktualisierung des AKS-Clusters mit einem neuen Dienstprinzipal viel Zeit in Anspruch nehmen. Erwägen Sie die Überprüfung und Anpassung der [Upgradeeinstellungen für Knotenspitzen][node-surge-upgrade], um Unterbrechungen während Clusterupdates und -upgrades zu minimieren.
 
 Aktualisieren Sie nun unabhängig davon, ob Sie die Anmeldeinformationen für den vorhandenen Dienstprinzipal aktualisieren oder einen Dienstprinzipal erstellen, den AKS-Cluster mit Ihren neuen Anmeldeinformationen. Verwenden Sie dazu den Befehl[az aks update-credentials][az-aks-update-credentials]. Es werden die Variablen für *--service-principal* und *--client-secret* verwendet:
 
@@ -142,3 +142,4 @@ In diesem Artikel wurden der Dienstprinzipal für den AKS-Cluster selbst und die
 [az-ad-sp-credential-list]: /cli/azure/ad/sp/credential#az_ad_sp_credential_list
 [az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az_ad_sp_credential_reset
 [node-image-upgrade]: ./node-image-upgrade.md
+[node-surge-upgrade]: upgrade-cluster.md#customize-node-surge-upgrade

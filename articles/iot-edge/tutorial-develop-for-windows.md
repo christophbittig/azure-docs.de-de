@@ -9,12 +9,12 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 07cb9d302613c94b72663f7a4b4a46c94dd0209a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e3e4add97b63dc7ed6e375f90eb3d5d48a81ffef
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121726489"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038989"
 ---
 # <a name="tutorial-develop-iot-edge-modules-using-windows-containers"></a>Tutorial: Entwickeln von IoT Edge-Modulen mit Windows-Containern
 
@@ -155,6 +155,20 @@ Nehmen Sie sich nach dem Laden Ihres neuen Projekts im Visual Studio-Fenster etw
 * Ein IoT Edge-Modulprojekt mit dem Namen **IotEdgeModule1**.
   * Die Datei **program.cs** enthält den C#-Standardmodulcode, der in der Projektvorlage enthalten ist. Das Standardmodul leitet die Eingabe einer Quelle an IoT Hub weiter.
   * Die Datei **module.json** enthält Details zum Modul, z. B. vollständiges Imagerepository, Imageversion und die Information, welche Dockerfile für die einzelnen unterstützten Plattformen verwendet werden soll.
+
+### <a name="set-iot-edge-runtime-version"></a>Festlegen der IoT Edge-Runtimeversion
+
+Die IoT Edge-Erweiterung verwendet beim Erstellen der Bereitstellungsressourcen standardmäßig die neueste stabile Version der IoT Edge-Runtime. Derzeit ist Version 1.2 die neueste stabile Version. 
+
+Windows-Container werden nur in Version 1.1 mit langfristigem Support (Long-Term Support, LTS) oder der früheren Version 1.0 unterstützt. Um Module für Geräte zu entwickeln, die Windows-Container verwenden, aktualisieren Sie die IoT Edge-Runtimeversion in Visual Studio auf die IoT Edge-Version dieser Geräte.
+
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Namen Ihres Projekts, und wählen Sie **IoT Edge-Runtimeversion festlegen** aus.
+
+   :::image type="content" source="./media/how-to-visual-studio-develop-module/set-iot-edge-runtime-version.png" alt-text="Klicken Sie mit der rechten Maustaste auf den Projektnamen, und wählen Sie „IoT Edge-Runtimeversion festlegen“ aus.":::
+
+1. Wählen Sie mithilfe des Dropdownmenüs die Runtimeversion aus, die Ihre IoT Edge-Geräte ausführen. Klicken Sie anschließend auf **OK**, um Ihre Änderungen zu speichern.
+
+1. Generieren Sie Ihr Bereitstellungsmanifest mit der neuen Runtimeversion neu. Klicken Sie mit der rechten Maustaste auf den Namen Ihres Projekts, und wählen Sie **Bereitstellung für IoT Edge generieren** aus.
 
 ### <a name="provide-your-registry-credentials-to-the-iot-edge-agent"></a>Angeben Ihrer Anmeldeinformationen für die Registrierung über den IoT Edge-Agent
 

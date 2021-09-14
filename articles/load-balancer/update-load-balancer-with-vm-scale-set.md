@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/29/2020
 ms.author: irenehua
-ms.openlocfilehash: 268993dcdd2250037ebcfa1640bc4e54f82c926f
-ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
+ms.openlocfilehash: f72ac3b3a799b97883586e5c2eebc4a42119ae6f
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112575530"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255697"
 ---
 # <a name="update-or-delete-a-load-balancer-used-by-virtual-machine-scale-sets"></a>Aktualisieren oder Löschen einer von einer VM-Skalierungsgruppe verwendeten Load Balancer-Instanz
 
@@ -109,7 +109,7 @@ So fügen Sie mehrere IP-Konfigurationen hinzu:
 1. Wählen Sie im linken Menü die Option **Alle Ressourcen** aus. Wählen Sie anschließend in der Ressourcenliste **MyLoadBalancer** aus.
 1. Klicken Sie unter **Einstellungen** auf **Front-End-IP-Konfiguration**. Wählen Sie anschließend **Hinzufügen**.
 1. Geben Sie auf der Seite **Front-End-IP-Adresse hinzufügen** die Werte ein, und klicken Sie auf **OK**.
-1. Führen Sie [Schritt 5](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe) und [Schritt 6](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe) in diesem Tutorial aus, wenn neue Lastenausgleichsregeln erforderlich sind.
+1. Informationen, falls neue Lastenausgleichsregeln erforderlich werden, finden Sie unter [Verwalten von Regeln für Azure Load Balancer – Azure-Portal](manage-rules-how-to.md).
 1. Erstellen Sie bei Bedarf unter Verwendung der neu erstellten Front-End-IP-Konfigurationen neue NAT-Regeln für eingehenden Datenverkehr. Ein Beispiel finden Sie im vorherigen Abschnitt.
 
 ## <a name="multiple-virtual-machine-scale-sets-behind-a-single-load-balancer"></a>Mehrere VM-Skalierungsgruppen hinter einem einzelnen Load Balancer

@@ -4,18 +4,21 @@ description: Erfahren Sie, wie Sie Azure Policy-Ressourcen wie Richtliniendefini
 ms.date: 08/17/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7eb7cbfcd568eeebcb03979c51d26e8f6231298f
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 170c619d41a416ac337edabcf3d4c0e0b5f24d4e
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122356692"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965145"
 ---
 # <a name="export-azure-policy-resources"></a>Exportieren von Azure Policy-Ressourcen
 
 Dieser Artikel enthält Informationen zum Exportieren vorhandener Azure Policy-Ressourcen. Das Exportieren Ihrer Ressourcen ist hilfreich und wird für die Sicherung empfohlen. Es ist aber auch ein wichtiger Schritt auf Ihrem Weg mit der Cloud Governance und bei der Behandlung Ihrer Richtlinien im Sinne von [Policy-as-Code](../concepts/policy-as-code.md). Azure Policy-Ressourcen können über das [Azure-Portal](#export-with-azure-portal), [Azure CLI](#export-with-azure-cli), [Azure PowerShell](#export-with-azure-powershell) und jedes der unterstützten SDKs exportiert werden.
 
 ## <a name="export-with-azure-portal"></a>Exportieren mit dem Azure-Portal
+
+> [!NOTE]
+> Das Exportieren von Azure Policy-Ressourcen aus dem Azure-Portal ist für Azure Sovereign Clouds nicht verfügbar.
 
 Führen Sie die folgenden Schritte aus, um eine Richtliniendefinition aus dem Azure-Portal zu exportieren:
 

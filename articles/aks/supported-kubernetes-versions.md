@@ -7,12 +7,12 @@ ms.date: 08/09/2021
 author: palma21
 ms.author: jpalma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8e883c92e2ce8d64c30aeb6c8a747c18935d36e9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 525ae8e08965a63b79ed23a706795472743a00c2
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349396"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222560"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Unterstützte Kubernetes-Versionen in Azure Kubernetes Service (AKS)
 
@@ -101,14 +101,19 @@ Sie können eine relativ zu Ihrer *kube-apiserver*-Version niedrigere oder höhe
 
 Wenn Ihr *kube-apiserver* beispielsweise die Version *1.17* hat, können Sie die Versionen *1.16* bis *1.18* von `kubectl` mit diesem *kube-apiserver* verwenden.
 
+Um `kubectl` zu installieren oder auf die neueste Version zu aktualisieren, führen Sie Folgendes aus:
+
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Um Ihre Version von `kubectl` zu installieren oder zu aktualisieren, führen Sie `az aks install-cli` aus.
+```azurecli
+az aks install-cli
+```
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-Um Ihre Version von `kubectl` zu installieren oder zu aktualisieren, führen Sie [Install-AzAksKubectl][install-azakskubectl] aus.
-
+```powershell
+Install-AzAksKubectl -Version latest
+```
 ---
 
 ## <a name="release-and-deprecation-process"></a>Veröffentlichen und Markieren als veraltet
@@ -252,5 +257,4 @@ Weitere Informationen zum Upgrade Ihres Clusters finden Sie unter [Durchführen 
 [aks-upgrade]: upgrade-cluster.md
 [az-aks-get-versions]: /cli/azure/aks#az_aks_get_versions
 [preview-terms]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
-[install-azakskubectl]: /powershell/module/az.aks/install-azakskubectl
 [get-azaksversion]: /powershell/module/az.aks/get-azaksversion

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 08/09/2021
-ms.openlocfilehash: 63c7a2c79ca5f0d241ddc3727d006bb2befb8163
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.date: 08/23/2021
+ms.openlocfilehash: e83ea29b4894827ac68af6b243ce0e19842f2d87
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349883"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769813"
 ---
 # <a name="usage-metering-billing-and-pricing-models-for-azure-logic-apps"></a>Modelle für Verwendungsmessung, Abrechnung und Preise in den Azure Logic Apps
 
@@ -42,7 +42,7 @@ In der folgenden Tabelle wird zusammengefasst, wie das Verbrauchsmodell die Verb
 
 Mit Ausnahme der anfänglichen Anzahl kostenloser integrierter Vorgangsausführungen pro Azure-Abonnement, die ein Workflow ausführen kann, wird ein Vorgang im Verbrauchsmodell auf Grundlage *jeder Ausführung* gemessen und abgerechnet. Dies ist unabhängig davon, ob der gesamte Workflow erfolgreich ausgeführt, abgeschlossen oder sogar instanziiert wird. Ein Vorgang wird in der Regel einmal ausgeführt, [es sei denn, für den Vorgang wurden Wiederholungsversuche aktiviert](#other-operation-behavior). Umgekehrt wird bei einer Ausführung in der Regel nur ein einzelner Aufruf ausgeführt, [es sei denn, der Vorgang unterstützt und ermöglicht die Blockerstellung oder Paginierung, um große Datenmengen abzurufen](logic-apps-handle-large-messages.md). Wenn Blockerstellung oder Paginierung aktiviert ist, verfügt eine Vorgangsausführung möglicherweise über mehrere Aufrufe. Mit dem Verbrauchsmodell wird ein Vorgang *pro Ausführung und nicht pro Aufruf* gemessen und abgerechnet.
 
-Angenommen, ein Workflow beginnt mit einem Abfragetrigger, der Datensätze abruft, indem regelmäßig ausgehende Aufrufe an einen Endpunkt durchgeführt werden. Der ausgehende Aufruf wird als eine Ausführung gemessen und abgerechnet, unabhängig davon, ob der Trigger ausgelöst oder übersprungen wird. Der Triggerzustand steuert, ob die Workflowinstanz erstellt und ausgeführt wird. Nehmen wir nun an, dass der Vorgang außerdem die Blockerstellung oder Paginierung unterstützt und diese aktiviert ist. Wenn der Vorgang 10 Aufrufe ausführen muss, um alle Daten abzurufen, wird der Vorgang trotz mehrerer Aufrufe weiterhin als *eine einzelne Ausführung* gemessen und abgerechnet.
+Angenommen, ein Workflow beginnt mit einem Abfragetrigger, der Datensätze abruft, indem regelmäßig ausgehende Aufrufe an einen Endpunkt durchgeführt werden. Der ausgehende Aufruf wird gemessen und als einzelne Ausführung abgerechnet, unabhängig davon, ob der Trigger ausgelöst oder übersprungen wird, z. B. wenn ein Trigger einen Endpunkt überprüft, aber keine Daten oder Ereignisse findet. Der Triggerzustand steuert, ob die Workflowinstanz erstellt und ausgeführt wird. Nehmen wir nun an, dass der Vorgang außerdem die Blockerstellung oder Paginierung unterstützt und diese aktiviert ist. Wenn der Vorgang 10 Aufrufe ausführen muss, um alle Daten abzurufen, wird der Vorgang trotz mehrerer Aufrufe weiterhin als *eine einzelne Ausführung* gemessen und abgerechnet.
 
 In der folgenden Tabelle wird zusammengefasst, wie das Verbrauchsmodell die Verbrauchsmessung und Abrechnung für diese Vorgangstypen verarbeitet, wenn es mit einer Logik-App und einem Workflow in Azure Logic Apps mit mehreren Mandanten verwendet wird:
 
@@ -108,7 +108,7 @@ Der Tarif, den Sie für die Messung und Abrechnung Ihrer Logik-App auswählen, u
 >
 > Angenommen, in einer Beispielregion gelten für die folgenden Ressourcen diese Stundensätze:
 >
-> | Ressource | Stundensatz (Beispielregion) |
+> | Resource | Stundensatz (Beispielregion) |
 > |----------|-----------------------------|
 > | **vCPU** | 0,192 USD pro vCPU |
 > | **Arbeitsspeicher** | 0,0137 USD pro GB |

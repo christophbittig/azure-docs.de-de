@@ -3,12 +3,12 @@ title: Verschieben der Containerregistrierung in eine andere Region
 description: Manuelles Verschieben von Azure-Containerregistrierungseinstellungen und -daten in eine andere Azure-Region.
 ms.topic: article
 ms.date: 06/08/2021
-ms.openlocfilehash: 4e0afb418fbb0b33330c3fb82fd04370f0c3ee99
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: e2bc00287923a95e2e4d3698b22c4c2ca65bebc6
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114286316"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835889"
 ---
 # <a name="manually-move-a-container-registry-to-another-region"></a>Manuelles Verschieben der Containerregistrierung in eine andere Region
 
@@ -20,7 +20,6 @@ Obwohl [Azure Resource Mover](../resource-mover/overview.md) das Verschieben fü
 * Verwenden der Vorlage zum Bereitstellen einer Registrierung in einer anderen Azure-Region
 * Importieren des Registrierungsinhalts aus der Quellregistrierung in die Zielregistrierung
 
-
 [!INCLUDE [container-registry-geo-replication-include](../../includes/container-registry-geo-replication-include.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -31,8 +30,10 @@ Azure CLI
 
 ## <a name="considerations"></a>Weitere Überlegungen
 
-* Verwenden Sie die Schritte in diesem Artikel, um die Registrierung in eine andere Region im selben Abonnement zu verschieben. Es sind weitere Konfigurationsarbeiten erforderlich, um eine Registrierung in ein anderes Azure-Abonnement oder einen anderen Active Directory-Mandanten zu verschieben. 
-* Das Exportieren und Verwenden einer Resource Manager Vorlage kann dabei helfen, viele Registrierungseinstellungen wieder zu erstellen. Sie können die Vorlage bearbeiten, um zusätzliche Einstellungen zu konfigurieren oder die Zielregistrierung nach der Erstellung zu aktualisieren.
+* Verwenden Sie die Schritte in diesem Artikel, um die Registrierung in eine andere Region im selben Abonnement zu verschieben. Es sind möglicherweise weitere Konfigurationsarbeiten erforderlich, um eine Registrierung in ein anderes Azure-Abonnement im selben Active Directory-Mandanten zu verschieben.
+* Das Exportieren und Verwenden einer Resource Manager Vorlage kann dabei helfen, viele Registrierungseinstellungen wieder zu erstellen. Sie können die Vorlage bearbeiten, um mehr Einstellungen zu konfigurieren oder die Zielregistrierung nach der Erstellung zu aktualisieren.
+* Derzeit unterstützt Azure Container Registry das Verschieben einer Registrierung in einen anderen Active Directory-Mandanten nicht. Diese Einschränkung gilt sowohl für Registrierungen, die mit einem [kundenseitig verwalteten Schlüssel](container-registry-customer-managed-keys.md) verschlüsselt sind, als auch für unverschlüsselte Registrierungen.
+* Wenn Sie eine Registrierung nicht verschieben können, erstellen Sie, wie in diesem Artikel beschrieben, eine neue Registrierung, erstellen Sie die Einstellungen manuell neu, und [importieren Sie Registrierungsinhalt in die Zielregistrierung](#import-registry-content-in-target-registry).
 
 ## <a name="export-template-from-source-registry"></a>Exportieren der Vorlage aus der Quellregistrierung 
 
@@ -106,7 +107,7 @@ Nachdem Sie die Registrierung in der Zielregion erstellt haben, verwenden Sie de
 * Verwenden Sie die Azure CLI-Befehle [az acr repository list](/cli/azure/acr/repository#az_acr_repository_list) und [az acr repository show-tags](/cli/azure/acr/repository#az_acr_repository_show_tags) oder entsprechende Azure PowerShell-Befehle, um den Inhalt Ihrer Quellregistrierung aufzählen zu können.
 * Führen Sie den Importbefehl für einzelne Artefakte aus, oder erstellen Sie ein Skript damit, um es über eine Liste von Artefakten auszuführen.
 
-Das folgende Azure CLI-Beispielskript zählt die Quellrepositorys und Tags auf und importiert dann die Artefakte in eine Zielregistrierung. Ändern Sie es nach Bedarf, um bestimmte Repositorys oder Tags zu importieren.
+Das folgende Azure CLI-Beispielskript zählt die Quellrepositorys und Tags auf und importiert dann die Artefakte in eine Zielregistrierung im selben Azure-Abonnement. Ändern Sie es nach Bedarf, um bestimmte Repositorys oder Tags zu importieren. Informationen zum Importieren aus einer Registrierung in einem anderen Abonnement oder Mandanten finden Sie in den Beispielen unter [Importieren von Containerimages in eine Containerregistrierung](container-registry-import-images.md).
 
 ```azurecli
 #!/bin/bash
@@ -127,6 +128,8 @@ for repo in $REPO_LIST; do
     done
 done
 ```
+
+
 
 ## <a name="verify-target-registry"></a>Überprüfen der Zielregistrierung
 

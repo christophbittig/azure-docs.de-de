@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 07/02/2021
 ms.author: rahugup
-ms.openlocfilehash: 674fcd1fc7ad6035278448b46528cc939b5e8a6e
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: fd0a7d3e1af6bb0a0dad10f9a92194b495b13b91
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114294644"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123253112"
 ---
 # <a name="aspnet-app-containerization-and-migration-to-azure-app-service"></a>Das Containerisieren und Migrieren von ASP.NET-Apps zum Azure App Service
 
@@ -38,8 +38,8 @@ Nicht alle Apps profitieren von einer Umstellung auf Container ohne erhebliche �
 
 - **Verbesserte Infrastrukturauslastung:** Mithilfe von Containern können mehrere Apps dieselben Ressourcen nutzen und in derselben Infrastruktur gehostet werden. Dadurch können Sie die Infrastruktur konsolidieren und die Auslastung verbessern.
 - **Vereinfachte Verwaltung**: Indem Sie Ihre Anwendungen auf einer modernen verwalteten Plattform wie AKS und App Service hosten, können Sie Ihre Verwaltungspraktiken vereinfachen. Das können Sie erreichen, indem Sie Wartungs- und Verwaltungsvorgänge für die Infrastruktur einstellen oder reduzieren, die Sie für Ihre eigene Infrastruktur normalerweise durchführen würden.
-- **Anwendungsportabilität:** Dank der zunehmenden Einführung und Standardisierung von Container-Spezifikationsformaten und -Plattformen ist die Anwendungsportabilität kein Problem mehr.
-- **Moderne Verwaltung durch DevOps:** Durch den Übergang zu DevOps können Sie moderne Verwaltungs- und Sicherheitsverfahren einführen und als Standard festlegen.
+- **Anwendungsportabilität:** Durch die zunehmende Nutzung und Standardisierung von Containerspezifikationsformaten und -plattformen stellt die Anwendungsportabilität keine Herausforderungen mehr dar.
+- **Moderne Verwaltung mit DevOps**: Dies ermöglicht Ihnen die Einführung und Standardisierung moderner Verwaltungs- und Sicherheitsverfahren sowie den Übergang zu DevOps.
 
 
 In diesem Tutorial lernen Sie Folgendes:
@@ -138,11 +138,11 @@ Wenn Sie gerade erst ein kostenloses Azure-Konto erstellt haben, sind Sie der Be
 Klicken Sie auf **Anmelden**, um sich bei Ihrem Azure-Konto anzumelden.
 
 1. Für die Authentifizierung bei Azure benötigen Sie einen Gerätecode. Wenn Sie auf „Anmelden“ klicken, wird ein modales Dialogfeld mit dem Gerätecode angezeigt.
-2. Klicken Sie auf **Code kopieren und anmelden**, um den Gerätecode zu kopieren und eine Azure-Anmeldeaufforderung in einer neuen Browserregisterkarte zu öffnen. Sollte keine Anmeldung angezeigt werden, vergewissern Sie sich, dass Sie den Popupblocker im Browser deaktiviert haben.
+2. Klicken Sie auf **Code kopieren und anmelden**, um den Gerätecode zu kopieren und eine Azure-Anmeldeaufforderung auf einer neuen Registerkarte im Browser zu öffnen. Sollte keine Aufforderung angezeigt werden, vergewissern Sie sich, dass Sie den Popupblocker im Browser deaktiviert haben.
 
     ![Modales Dialogfeld mit Gerätecode](./media/tutorial-containerize-apps-aks/login-modal.png)
 
-3. Fügen Sie auf der neuen Registerkarte den Gerätecode ein und melden Sie sich mit den Anmeldeinformationen für Ihr Azure-Konto an. Sobald Sie angemeldet sind, können Sie die Registerkarte im Browser schließen und zur Weboberfläche des App-Containerisierungstools zurückkehren.
+3. Fügen Sie auf der neuen Registerkarte den Gerätecode ein, und melden Sie sich mit den Anmeldeinformationen für Ihr Azure-Konto an. Sobald Sie angemeldet sind, können Sie die Registerkarte im Browser schließen und zur Weboberfläche des App-Containerisierungstools zurückkehren.
 4. Wählen Sie den **Azure-Mandanten** aus, den Sie verwenden möchten.
 5. Geben Sie das gewünschte **Azure-Abonnement** an.
 
@@ -222,12 +222,12 @@ Nachdem das Containerimage erstellt wurde, ist der nächste Schritt, die Anwendu
 
 2. **Das Angeben des Geheimnisspeichers**: Wenn Sie sich für die Parametrisierung von Anwendungskonfigurationen entschieden haben, geben Sie den geheimen Speicher an, der für die Anwendung verwendet werden soll. Sie können den Azure Key Vault oder die App Service Anwendungseinstellungen auswählen, um Ihre Anwendungsgeheimnisse zu verwalten. [Weitere Informationen](../app-service/configure-common.md#configure-connection-strings)
 
-     - Wenn Sie App Service Anwendungseinstellungen für die Verwaltung von Geheimnissen ausgewählt haben, klicken Sie auf **Weiter**.
-     - Wenn Sie einen Azure Key Vault zum Verwalten Ihrer Anwendungsgeheimnisse verwenden möchten, geben Sie den Azure Key Vault an, den Sie verwenden möchten.     
+     - Wenn Sie App Service-Anwendungseinstellungen für die Verwaltung von Geheimnissen ausgewählt haben, klicken Sie auf **Weiter**.
+     - Wenn Sie eine Azure Key Vault-Instanz zum Verwalten Ihrer Anwendungsgeheimnisse verwenden möchten, geben Sie die gewünschte Azure Key Vault-Instanz an.     
          - Wenn Sie über keinen Azure Key Vault verfügen oder einen neuen Key Vault erstellen möchten, können Sie ihn über das Tool erstellen, indem Sie auf die Funktion **Neuen Azure Key Vault erstellen** klicken.
          - Das Tool weist automatisch die erforderlichen Berechtigungen zum Verwalten von Geheimnissen über den Key Vault zu.
 
-3. **Angeben der Azure-Dateifreigabe**: Wenn Sie mehrere Verzeichnisse/Ordner hinzugefügt haben und die Option „Azure-Datenfreigabe“ für das persistente Speichern ausgewählt haben, geben Sie nun die Azure-Dateifreigabe an, die das App-Containerisierungstool von Azure Migrate während des Bereitstellungsprozesses verwenden soll. Das Tool kopiert die Anwendungsverzeichnisse/Ordner, die für den Azure Datenspeicher konfiguriert sind und bindet sie während der Bereitstellung in den Anwendungscontainer ein. 
+3. **Angeben der Azure-Dateifreigabe**: Wenn Sie mehrere Verzeichnisse/Ordner hinzugefügt haben und die Option „Azure-Datenfreigabe“ für das persistente Speichern ausgewählt haben, geben Sie nun die Azure-Dateifreigabe an, die das App-Containerisierungstool von Azure Migrate während des Bereitstellungsprozesses verwenden soll. Das Tool kopiert die Anwendungsverzeichnisse/Ordner, die für Azure Files konfiguriert sind, und bindet sie bei der Bereitstellung in den Anwendungscontainer ein. 
 
      - Wenn Sie keine Azure-Dateifreigabe besitzen oder eine neue erstellen möchten, können Sie hierzu im Tool auf **Create new Storage Account and file share** (Neues Speicherkonto und neue Dateifreigabe erstellen) klicken.  
 
@@ -256,4 +256,4 @@ Wenn Sie Probleme mit dem Tool behandeln müssen, sollten Sie sich die Protokoll
 
 - Das Containerisieren von ASP.NET Web-Apps und das Bereitstellen dieser Apps in Windows-Containern in AKS. [Weitere Informationen](./tutorial-app-containerization-aspnet-kubernetes.md)
 - Das Containerisieren von Java-Web-Apps unter Apache Tomcat (auf Linux-Servern) und das Bereitstellen dieser Apps in Linux-Containern in AKS. [Weitere Informationen](./tutorial-app-containerization-java-kubernetes.md)
-- Das Containerisieren von Java-Web-Apps unter Apache Tomcat (auf Linux-Servern) und das Bereitstellen dieser Apps in Linux-Containern in App Service. [Weitere Informationen](./tutorial-app-containerization-java-app-service.md)
+- Containerisieren von Java-Web-Apps unter Apache Tomcat (auf Linux-Servern) und Bereitstellen dieser Apps in Linux-Containern in App Service. [Weitere Informationen](./tutorial-app-containerization-java-app-service.md)

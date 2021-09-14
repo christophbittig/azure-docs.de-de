@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 04/08/2021
 ms.author: amgowda
 ms.custom: contentperf-fy21q3, devx-track-azurecli
-ms.openlocfilehash: e7ff59c3c6ba75321c63db81d34ea4c7d46a841a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: db2eb3bf906ffebe67489ab83cb7e13595b601d5
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748631"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123112752"
 ---
 # <a name="quickstart-deploy-an-aks-cluster-with-confidential-computing-nodes-by-using-the-azure-cli"></a>Schnellstart: Bereitstellen eines AKS-Clusters mit Confidential Computing-Knoten über die Azure CLI
 
@@ -145,6 +145,9 @@ Wenn die Ausgabe wie der obige Code aussieht, ist Ihr AKS-Cluster bereit für di
 Sie können jetzt eine Testanwendung bereitstellen. 
 
 Erstellen Sie eine Datei mit dem Namen *hello-world-enclave.yaml*, und fügen Sie das folgende YAML-Manifest ein. Sie finden diesen Beispielanwendungscode im [Open Enclave-Projekt](https://github.com/openenclave/openenclave/tree/master/samples/helloworld). Bei dieser Bereitstellung wird davon ausgegangen, dass Sie das Add-On *confcom* bereitgestellt haben.
+
+> [!NOTE]
+> Im folgenden Beispiel wird ein öffentliches Container-Image von Docker Hub abgerufen. Es wird empfohlen, ein Pullgeheimnis für die Authentifizierung mithilfe eines Docker Hub-Kontos einrichten, anstatt einen anonymen Pull Request zu verwenden. Um die Zuverlässigkeit bei der Arbeit mit öffentlichen Inhalten zu verbessern, sollten Sie das Image in eine private Azure-Containerregistrierung importieren und dort verwalten. [Erfahren Sie mehr über die Arbeit mit öffentlichen Images](../container-registry/buffer-gate-public-content.md).
 
 ```yaml
 apiVersion: batch/v1

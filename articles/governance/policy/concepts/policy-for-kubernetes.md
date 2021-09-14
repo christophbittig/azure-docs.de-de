@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Rego und Open Policy Agent von Azure Policy 
 ms.date: 08/17/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 20b3362823644ab478e2069fbc610079820302c3
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 615145c7267d580d7a22dd34452e68c9cd905cdc
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351324"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965130"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Grundlegendes zu Azure Policy für Kubernetes-Cluster
 
@@ -407,10 +407,10 @@ Verwenden Sie alternativ [Schnellstart: Erstellen einer Richtlinienzuweisung zum
 Das Add-On prüft alle 15 Minuten mit dem Azure Policy-Dienst, ob sich die Richtlinienzuweisungen geändert haben.
 Während dieses Aktualisierungszyklus nimmt das Add-On eine Prüfung auf Änderungen vor. Diese Änderungen lösen das Erstellen, Aktualisieren oder Löschen der Einschränkungsvorlagen und Einschränkungen aus.
 
-Wenn ein Namespace in einem Kubernetes-Cluster über eine der folgenden Bezeichnungen verfügt, werden Zulassungsanforderungen mit Verstößen nicht verweigert. Die Ergebnisse der Konformitätsbewertung sind weiterhin verfügbar.
+Wenn ein Namespace in einem Kubernetes-Cluster über die dem Cluster entsprechende Bezeichnungen verfügt, werden die Zulassungsanforderungen mit Verstößen nicht verweigert. Die Ergebnisse der Konformitätsbewertung sind weiterhin verfügbar.
 
-- `control-plane`
-- `admission.policy.azure.com/ignore`
+- Kubernetes-Cluster mit Azure Arc-Unterstützung: `admission.policy.azure.com/ignore`
+- Azure Kubernetes Service-Cluster: `control-plane`
 
 > [!NOTE]
 > Ein Clusteradministrator verfügt zwar möglicherweise über die Berechtigung zum Erstellen und Aktualisieren von Einschränkungsvorlagen und -ressourcen, die durch das Azure Policy-Add-On installiert wurden, hierbei handelt es sich jedoch nicht um unterstützte Szenarien, da manuelle Updates überschrieben werden. Richtlinien, die vor der Installation des Add-Ons und vor der Zuweisung von Azure Policy-Richtliniendefinitionen vorhanden waren, werden weiterhin von Gatekeeper ausgewertet.

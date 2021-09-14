@@ -5,14 +5,14 @@ services: api-management
 author: mikebudzynski
 ms.service: api-management
 ms.topic: tutorial
-ms.date: 11/16/2020
+ms.date: 08/31/2021
 ms.author: apimpm
-ms.openlocfilehash: 7c341dee3106530715248355da4412b97ed30980
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: c08fd4635232bdb84ce27fdc7a3e6f0d1791e921
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739618"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123318574"
 ---
 # <a name="tutorial-access-and-customize-the-developer-portal"></a>Tutorial: Zugreifen auf und Anpassen des Entwicklerportals
 
@@ -122,15 +122,49 @@ Bevor Sie Ihr Portal Besuchern zur Verfügung stellen, sollten Sie den automatis
 
 ### <a name="home-page"></a>Startseite
 
-Die Standard-**Startseite** ist mit Platzhalterinhalt gefüllt. Sie können entweder ganze Abschnitte mit diesem Inhalt entfernen oder die Struktur beibehalten und die Elemente einzeln anpassen. Ersetzen Sie die generierten Texte und Bilder durch eigene, und stellen Sie sicher, dass die Links auf die gewünschte Speicherorte zeigen.
+Die Standard-**Startseite** ist mit Platzhalterinhalt gefüllt. Sie können entweder ganze Abschnitte mit diesem Inhalt entfernen oder die Struktur beibehalten und die Elemente einzeln anpassen. Ersetzen Sie die generierten Texte und Bilder durch eigene, und stellen Sie sicher, dass die Links auf die gewünschte Speicherorte zeigen. Sie können Struktur und Inhalt der Startseite wie folgt bearbeiten:
+* Ziehen und Ablegen von Seitenelementen an die gewünschte Position auf der Seite
+* Auswählen von Text- und Überschriftenelementen zum Bearbeiten und Formatieren von Inhalten 
+* Überprüfen, ob Schaltflächen auf die richtigen Ziele verweisen
 
 ### <a name="layouts"></a>Layouts
 
 Ersetzen Sie das automatisch generierte Logo in der Navigationsleiste durch ein eigenes Bild.
 
+1. Wählen Sie im Entwicklerportal oben links auf der Navigationsleiste das **Contoso**-Logo aus. 
+1. Klicken Sie auf das Symbol **Bearbeiten**. 
+1. Wählen Sie unterhalb des **Hauptabschnitts** die Option **Quelle** aus.
+1. Führen Sie im Popupfenster **Medien** eine der folgenden Aufgaben aus:
+    * Wählen Sie ein Bild aus, das bereits in Ihre Bibliothek hochgeladen wurde.
+    * Klicken Sie auf **Datei hochladen**, um eine neue Bilddatei hochzuladen.
+    * Wählen Sie **Keine** aus, um auf die Verwendung eines Logos zu verzichten.
+1. Das Logo wird in Echtzeit aktualisiert.
+1. Klicken Sie auf eine Stelle außerhalb der Popupfenster aus, um die Medienbibliothek zu schließen.
+1. Klicken Sie auf **Speichern**.
+
 ### <a name="styling"></a>Gestaltung
 
-Sie müssen zwar keine Formatvorlagen ändern, aber möglicherweise möchten Sie bestimmte Elemente anpassen. Ändern Sie beispielsweise die primäre Farbe in die Farbe Ihrer Marke.
+Sie müssen zwar keine Formatvorlagen ändern, aber möglicherweise möchten Sie bestimmte Elemente anpassen. Ändern Sie beispielsweise die primäre Farbe in die Farbe Ihrer Marke. Hierzu stehen zwei Möglichkeiten zur Verfügung:
+
+#### <a name="overall-site-style"></a>Allgemeiner Stil der Website
+
+1. Wählen Sie im Entwicklerportal auf der links angezeigten Symbolleiste die Option **Stile** aus.
+1. Wählen Sie im Abschnitt **Farben** das Farbstilelement aus, das Sie bearbeiten möchten.
+1. Klicken Sie für dieses Stilelement auf das Symbol **Bearbeiten**.
+1. Wählen Sie mithilfe der Farbauswahl eine Farbe aus, oder geben Sie den Hexadezimalcode der gewünschten Farbe an.
+1. Fügen Sie ein weiteres Farbelement hinzu, indem Sie auf **Farbe hinzufügen** klicken, und benennen Sie das Farbelement.  
+1. Klicken Sie auf **Speichern**.
+
+#### <a name="container-style"></a>Containerstil
+
+1. Wählen Sie auf der Hauptseite des Entwicklerportals den Containerhintergrund aus.
+1. Klicken Sie auf das Symbol **Bearbeiten**.
+1. Legen Sie im Popupfenster Folgendes fest:
+    * Geben Sie als Hintergrund Transparenz, ein Bild, eine bestimmte Farbe oder einen Verlauf an.
+    * Legen Sie Größe, Rand und Abstände für die Container fest.
+    * Geben Sie die Containerposition und -höhe an.
+1. Klicken Sie auf eine Stelle außerhalb der Popupfenster aus, um die Containereinstellungen zu schließen.
+1. Klicken Sie auf **Speichern**.
 
 ### <a name="customization-example"></a>Anpassungsbeispiel
 

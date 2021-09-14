@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: overview
 author: urosmil
 ms.author: urmilano
-ms.reviewer: mathoma, MashaMSFT
-ms.date: 06/08/2021
-ms.openlocfilehash: 8e33e8271f8b877f20fb3f27885aa518a52ed90e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.reviewer: mathoma
+ms.date: 08/20/2021
+ms.openlocfilehash: 2131f5549c026afdfde1d0ec14a27608a2ffaae8
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751141"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123215226"
 ---
 # <a name="overview-of-azure-sql-managed-instance-management-operations"></a>Übersicht über die Verwaltungsvorgänge für Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -41,16 +41,21 @@ Nachfolgende Verwaltungsvorgänge für verwaltete Instanzen wirken sich möglich
 
 Die Dauer von Vorgängen für den virtuellen Cluster kann variieren. Sie dauern aber in der Regel am längsten. 
 
-Im Anschluss finden Sie einige übliche Werte (basierend auf vorhandenen Diensttelemetriedaten):
+In der folgenden Tabelle werden die zeitintensiven Schritte aufgeführt, die im Rahmen von Erstellungs-, Aktualisierungs- oder Löschvorgängen ausgelöst werden können. Ebenfalls aufgelistet wird die übliche Dauer basierend auf vorhandenen Diensttelemetriedaten:
 
-- **Erstellung von virtuellen Clustern**:  Die Erstellung ist ein synchroner Schritt der Vorgänge für die Instanzverwaltung. <br/> **90 % der Vorgänge werden innerhalb von vier Stunden abgeschlossen**.
-- **Änderung der Größe von virtuellen Clustern (Vergrößerung oder Verkleinerung)** : Die Vergrößerung ist ein synchroner Schritt, und die Verkleinerung wird asynchron durchgeführt (ohne Auswirkung auf die Dauer von Instanzverwaltungsvorgängen). <br/>**90 % der Clustervergrößerungen werden in weniger als 2,5 Stunden abgeschlossen**.
-- **Löschung von virtuellen Clustern**: Der Löschvorgang ist ein asynchroner Schritt, der in einem leeren virtuellen Cluster aber auch [manuell initiiert](virtual-cluster-delete.md) werden kann. In diesem Fall wird der Vorgang synchron durchgeführt. <br/>**90 % der Löschungen virtueller Cluster werden innerhalb von 1,5 Stunden abgeschlossen**.
+|Schritt|BESCHREIBUNG|Geschätzte Dauer|
+|---------|---------|---------|
+|**Erstellung eines virtuellen Clusters**|Die Erstellung ist ein synchroner Schritt der Vorgänge für die Instanzverwaltung.|**90 % der Vorgänge werden innerhalb von 4 Stunden abgeschlossen.**|
+|**Änderung der Größe eines virtuellen Clusters (Vergrößerung oder Verkleinerung)**|Die Vergrößerung ist ein synchroner Schritt, und die Verkleinerung wird asynchron durchgeführt (ohne Auswirkung auf die Dauer von Instanzverwaltungsvorgängen).|**90 % der Clustervergrößerungen werden in weniger als 2,5 Stunden abgeschlossen.**|
+|**Löschung eines virtuellen Clusters**|Das Löschen virtueller Cluster kann synchron oder asynchron erfolgen. Die asynchrone Löschung wird im Hintergrund ausgeführt. Sie wird ausgelöst, wenn mehrere virtuelle Cluster innerhalb desselben Subnetzes vorhanden sind und die letzte Instanz im nicht letzten Cluster im Subnetz gelöscht wird. Die synchrone Löschung des virtuellen Clusters wird im Rahmen der Löschung der letzten Instanz im Subnetz ausgelöst.|**90 % der Löschungen virtueller Cluster werden innerhalb von 1,5 Stunden abgeschlossen.**|
+|**Seeding von Datenbankdateien**<sup>1</sup>|Ein synchroner Schritt, ausgelöst während der Skalierung der Computeressourcen (virtuellen Kerne) oder des Speichers in der Dienstebene „Unternehmenskritisch“ sowie bei Änderung der Dienstebene von „Universell“ in „Unternehmenskritisch“ (oder umgekehrt). Die Dauer dieses Vorgangs ist proportional zur Gesamtgröße der Datenbank sowie zur aktuellen Datenbankaktivität (Anzahl aktiver Transaktionen). Aufgrund der Datenbankaktivität beim Aktualisieren einer Instanz kann die Gesamtdauer erheblich variieren.|**90 % dieser Vorgänge werden mindestens mit 220 GB pro Stunde durchgeführt.**|
 
-Darüber hinaus kann die Verwaltung von Instanzen auch einen der Vorgänge in gehosteten Datenbanken umfassen. Dies führt zu einer längeren Dauer:
+<sup>1</sup> Beim Skalieren der Computeressourcen (virtuellen Kerne) oder des Speichers in der Dienstebene „Unternehmenskritisch“ sowie bei Änderung der Dienstebene von „Universell“ in „Unternehmenskritisch“ umfasst das Seeding auch ein Seeding für Always On-Verfügbarkeitsgruppen.
 
-- **Anfügen von Datenbankdateien aus Azure Storage**:  Ein synchroner Schritt, z. B. das Hoch- oder Herunterskalieren von Computeressourcen (virtuelle Kerne) oder Speicher im Tarif „Universell“. <br/>**90 % dieser Vorgänge werden innerhalb von fünf Minuten abgeschlossen**.
-- **Seeding der Always On-Verfügbarkeitsgruppe**: Ein synchroner Schritt, z. B. Compute (V-Kerne) oder die Skalierung des Speichers im Tarif „Unternehmenskritisch“ sowie die Änderung der Dienstebene von „Universell“ in „Unternehmenskritisch“ (oder umgekehrt). Die Dauer dieses Vorgangs ist proportional zur Gesamtgröße der Datenbank sowie zur aktuellen Datenbankaktivität (Anzahl aktiver Transaktionen). Aufgrund der Datenbankaktivität beim Aktualisieren einer Instanz kann die Gesamtdauer erheblich variieren. <br/>**90 % dieser Vorgänge werden mindestens mit 220 GB pro Stunde durchgeführt.**
+> [!IMPORTANT]
+> Das Hoch- oder Herunterskalieren des Speichers auf die Dienstebene „Universell“ umfasst das Aktualisieren von Metadaten und die Weitergabe der Antwort für die übermittelte Anforderung. Es handelt sich um einen schnellen Vorgang, der ohne Downtime und Failover nach maximal 5 Minuten abgeschlossen ist.
+
+### <a name="management-operations-long-running-segments"></a>Zeitintensive Segmente in Verwaltungsvorgängen
 
 Die folgenden Tabellen enthalten eine Zusammenfassung von Vorgängen und der jeweils üblichen Gesamtdauer auf der Grundlage der Vorgangskategorie:
 
@@ -63,31 +68,34 @@ Die folgenden Tabellen enthalten eine Zusammenfassung von Vorgängen und der jew
 |Nachfolgende Instanzerstellung im nicht leeren Subnetz (2. Instanz, 3. Instanz usw.)|Änderung der Größe eines virtuellen Clusters|90 % der Vorgänge werden innerhalb von 2,5 Stunden abgeschlossen.|
 | | | 
 
-<sup>1</sup> Der virtuelle Cluster wird pro Hardwaregeneration erstellt.
+<sup>1</sup> Der virtuelle Cluster wird gemäß der Hardwaregeneration und der Konfiguration des Wartungsfensters erstellt.
 
 **Kategorie: Aktualisieren**
 
 |Vorgang  |Segment mit langer Ausführungsdauer  |Geschätzte Dauer  |
 |---------|---------|---------|
 |Änderung der Instanzeigenschaft (Administratorkennwort, Azure AD-Anmeldung, Azure-Hybridvorteil-Flag)|–|Bis zu 1 Minute|
-|Zentrales Hoch-/Herunterskalieren des Instanzspeichers (Dienstebene „Universell“)|Kein Segment mit langer Ausführungsdauer<sup>1</sup>|99 Prozent der Vorgänge werden innerhalb von fünf Minuten abgeschlossen.|
+|Zentrales Hoch-/Herunterskalieren des Instanzspeichers (Dienstebene „Universell“)|Kein Segment mit langer Ausführungsdauer|99 Prozent der Vorgänge werden innerhalb von fünf Minuten abgeschlossen.|
 |Zentrales Hoch-/Herunterskalieren des Instanzspeichers (Tarif „Unternehmenskritisch“)|- Änderung der Größe eines virtuellen Clusters<br>- Seeding der Always On-Verfügbarkeitsgruppe|90 % der Vorgänge werden innerhalb von 2,5 Stunden zzgl. der Zeit für das Seeding aller Datenbanken (220 GB/Stunde) abgeschlossen.|
 |Zentrales Hoch-/Herunterskalieren der Computekapazität (V-Kerne) (Universell)|- Änderung der Größe eines virtuellen Clusters<br>- Anfügung von Datenbankdateien|90 % der Vorgänge werden innerhalb von 2,5 Stunden abgeschlossen.|
 |Zentrales Hoch-/Herunterskalieren der Computekapazität (V-Kerne) (Unternehmenskritisch)|- Änderung der Größe eines virtuellen Clusters<br>- Seeding der Always On-Verfügbarkeitsgruppe|90 % der Vorgänge werden innerhalb von 2,5 Stunden zzgl. der Zeit für das Seeding aller Datenbanken (220 GB/Stunde) abgeschlossen.|
 |Änderung der Instanzdienstebene („Universell“ in „Unternehmenskritisch“ und umgekehrt)|- Änderung der Größe eines virtuellen Clusters<br>- Seeding der Always On-Verfügbarkeitsgruppe|90 % der Vorgänge werden innerhalb von 2,5 Stunden zzgl. der Zeit für das Seeding aller Datenbanken (220 GB/Stunde) abgeschlossen.|
 | | | 
 
-<sup>1</sup> Die Skalierung des universellen Speichers der verwalteten Instanz verursacht am Ende des Vorgangs kein Failover. In diesem Fall besteht der Vorgang aus der Aktualisierung von Metadaten und der Weitergabe der Antwort für die übermittelte Anforderung.
-
 **Kategorie: Löschen**
 
 |Vorgang  |Segment mit langer Ausführungsdauer  |Geschätzte Dauer  |
 |---------|---------|---------|
-|Instanzlöschung|Log Tail-Sicherung für alle Datenbanken|90 % der Vorgänge werden innerhalb einer Minute abgeschlossen.<br>Hinweis: Wenn die letzte Instanz im Subnetz gelöscht wird, wird bei diesem Vorgang das Löschen des virtuellen Clusters nach Ablauf von zwölf Stunden geplant.<sup>1</sup>|
-|Löschung eines virtuellen Clusters (als vom Benutzer initiierter Vorgang)|Löschung eines virtuellen Clusters|90 % der Vorgänge werden innerhalb von 1,5 Stunden abgeschlossen.|
+|Löschen einer nicht letzten Instanz|Log Tail-Sicherung für alle Datenbanken|90 % der Vorgänge werden innerhalb von einer Minute abgeschlossen.<sup>1</sup>|
+|Löschen der letzten Instanz |– Protokollfragmentsicherung für alle Datenbanken <br> – Löschung von virtuellen Clustern|90 % der Vorgänge werden innerhalb von 1,5 Stunden abgeschlossen.<sup>2</sup>|
 | | | 
 
-<sup>1</sup> Die aktuelle Konfiguration ist auf 12 Stunden festgelegt. Dies wird jedoch ggf. noch geändert. Falls Sie einen virtuellen Cluster früher löschen müssen (z. B. um das Subnetz freizugeben), helfen Ihnen die Informationen unter [Löschen eines Subnetzes nach Löschen einer verwalteten Instanz](virtual-cluster-delete.md) weiter.
+<sup>1</sup> Wenn mehrere virtuelle Cluster im Subnetz vorhanden sind, löst das Löschen der letzten Instanz im virtuellen Cluster sofort eine **asynchrone** Löschung des virtuellen Clusters aus.
+
+<sup>2</sup> Das Löschen der letzten Instanz im Subnetz löst sofort eine **synchrone** Löschung des virtuellen Clusters aus.
+
+> [!IMPORTANT]
+> Die Abrechnung für SQL Managed Instance wird deaktiviert, sobald der Löschvorgang ausgelöst wurde. Die Dauer des Löschvorgangs hat keine Auswirkung auf die Abrechnung.
 
 ## <a name="instance-availability"></a>Instanzverfügbarkeit
 
@@ -117,15 +125,22 @@ Verwaltungsvorgänge bestehen aus mehreren Schritten. Mit der [Einführung der V
 
 |Schrittname  |Beschreibung des Schritts  |
 |----|---------|
-|Anforderungsvalidierung | Die übermittelten Parameter werden überprüft. Im Falle einer falschen Konfiguration tritt ein Fehler auf, und der Vorgang ist nicht erfolgreich. |
+|Anforderungsvalidierung |Die übermittelten Parameter werden überprüft. Im Falle einer falschen Konfiguration tritt ein Fehler auf, und der Vorgang ist nicht erfolgreich. |
 |Änderung der Größe/Erstellung eines virtuellen Clusters |Je nach Zustand des Subnetzes wird der virtuelle Cluster entweder erstellt, oder seine Größe wird geändert. |
-|Start der neuen SQL-Instanz | Der SQL-Prozess wird im bereitgestellten virtuellen Cluster gestartet. |
+|Start der neuen SQL-Instanz |Der SQL-Prozess wird im bereitgestellten virtuellen Cluster gestartet. |
 |Seeding/Anfügen von Datenbankdateien |Abhängig von der Art des Aktualisierungsvorgangs wird entweder das Seeding der Datenbank oder das Anfügen von Datenbankdateien durchgeführt. |
 |Failovervorbereitung und -durchführung |Nach dem Seeding von Daten oder dem erneuten Anfügen von Datenbankdateien wird das System für das Failover vorbereitet. Anschließend wird das Failover durchgeführt. **Dabei kommt es zu einer kurzen Downtime.** |
 |Bereinigung der alte SQL-Instanz |Der alte SQL-Prozess wird aus dem virtuellen Cluster entfernt. |
 
+### <a name="managed-instance-delete-steps"></a>Schritte zum Löschen einer verwalteten Instanz
+|Schrittname  |Beschreibung des Schritts  |
+|----|---------|
+|Anforderungsvalidierung |Die übermittelten Parameter werden überprüft. Im Falle einer falschen Konfiguration tritt ein Fehler auf, und der Vorgang ist nicht erfolgreich. |
+|Bereinigung der SQL-Instanz |Der SQL-Prozess wird aus dem virtuellen Cluster entfernt. |
+|Löschung eines virtuellen Clusters |Je nachdem, ob die gelöschte Instanz die letzte Instanz im Subnetz ist, wird der virtuelle Cluster in einem letzten Schritt synchron gelöscht. |
+
 > [!NOTE]
-> Sobald die Skalierung der Instanzen abgeschlossen ist, durchläuft der zugrunde liegende virtuelle Cluster den Prozess der Freigabe ungenutzter Kapazität und der möglichen Defragmentierung der Kapazität, was sich auf Instanzen aus demselben Subnetz auswirken kann, die nicht an der Skalierung teilgenommen haben, was zu deren Failover führt. 
+> Infolge der Skalierung von Instanzen durchläuft der zugrunde liegende virtuelle Cluster den Prozess der Freigabe nicht genutzter Kapazität und ggf. eine Kapazitätsdefragmentierung. Dies kann sich auf Instanzen auswirken, die nicht an den Erstellungs-/Skalierungsvorgängen beteiligt waren. 
 
 
 ## <a name="management-operations-cross-impact"></a>Wechselseitige Auswirkungen von Verwaltungsvorgängen

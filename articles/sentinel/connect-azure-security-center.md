@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 07/08/2021
 ms.author: yelevin
-ms.openlocfilehash: 0d348231c28e33b7eaef97a468e7e8a6a8677c32
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 9612b5aaaec10358609abba3878f6f09405ad076
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122342750"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123260110"
 ---
 # <a name="connect-azure-defender-alerts-from-azure-security-center"></a>Verbinden von Azure Defender-Benachrichtigungen aus Azure Security Center
 
@@ -30,7 +30,7 @@ Wenn Azure Defender pro Abonnement aktiviert ist, ist auch der Azure Defender-C
 
 ### <a name="alert-synchronization"></a>Warnungssynchronisierung
 
-- Wenn Sie Azure Defender mit Azure Sentinel verbinden, wird der Status der in den Azure Sentinel-Dienst übernommenen Azure Defender-Warnungen zwischen den beiden Diensten synchronisiert. Wenn also beispielsweise eine Warnung in Azure Defender geschlossen wird, wird diese Warnung auch in Azure Sentinel als geschlossen angezeigt.
+- Wenn Sie Azure Defender mit Azure Sentinel verbinden, wird der Status der in den Azure Sentinel-Dienst übernommenen Azure Defender-Warnungen zwischen den beiden Diensten synchronisiert. Wenn also beispielsweise eine Warnung in einem Azure Defender geschlossen wird, wird diese Warnung auch in Azure Sentinel als geschlossen angezeigt.
 
 - Das Ändern des Status einer Warnung in Azure Defender wirkt sich *nicht* auf den Status von Azure Sentinel-**Incidents** aus, die die Azure Sentinel-Warnung enthalten, sondern nur auf den Status der Warnung selbst.
 
@@ -56,7 +56,7 @@ Wenn Azure Defender pro Abonnement aktiviert ist, ist auch der Azure Defender-C
 
 1. Wählen Sie im Navigationsmenü von Azure Sentinel **Datenconnectors** aus.
 
-1. Wählen Sie im Katalog für Datenconnectors **Azure Defender** aus, und klicken Sie im Detailbereich auf **Connectorseite öffnen**.
+1. Wählen Sie im Katalog für Datenconnectors **Azure Defender** aus, und wählen Sie im Detailbereich **Connectorseite öffnen** aus.
 
 1. Unter **Konfiguration** werden eine Liste der Abonnements im Mandanten und der Status ihrer Verbindung mit Azure Defender angezeigt. Klicken Sie neben jedem Abonnement, dessen Warnungen Sie in Azure Sentinel streamen möchten, auf die Umschaltfläche **Status**. Wenn Sie eine Verbindung mit mehreren Abonnements auf einmal herstellen möchten, aktivieren Sie die Kontrollkästchen neben den relevanten Abonnements, und klicken Sie dann auf der Leiste über der Liste auf die Schaltfläche **Verbinden**.
 

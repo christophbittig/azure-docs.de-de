@@ -2,13 +2,13 @@
 title: Unterstützung des Verschiebevorgangs nach Ressourcentyp
 description: Eine Liste der Azure-Ressourcentypen, die in eine neue Ressourcengruppe, ein neues Abonnement oder eine neue Region verschoben werden können.
 ms.topic: conceptual
-ms.date: 04/23/2021
-ms.openlocfilehash: f00acadf42c3767814850db59c64ab76b30de2ea
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.date: 08/30/2021
+ms.openlocfilehash: 614ef51474f789073f35e722733d255818bf3957
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114297001"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123260889"
 ---
 # <a name="move-operation-support-for-resources"></a>Unterstützung des Verschiebevorgangs für Ressourcen
 
@@ -1598,8 +1598,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
-> [!IMPORTANT]
-> Weitere Informationen finden Sie unter [Verschieben eines Recovery Services-Tresors zwischen Azure-Abonnements und Ressourcengruppen](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).
+>[!IMPORTANT]
+>- Weitere Informationen finden Sie unter [Verschieben eines Recovery Services-Tresors zwischen Azure-Abonnements und Ressourcengruppen](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).
+>- Siehe [Fortsetzen des Sicherns im Recovery Services-Tresor nach dem Verschieben zwischen Regionen](../../backup/azure-backup-move-vaults-across-regions.md?toc=/azure/azure-resource-manager/toc.json).
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
@@ -2022,6 +2023,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | availablestacks | Nein | Nein | Nein |
 > | billingmeters | Nein | Nein | Nein |
 > | certificates | Nein | Ja | Nein |
+> | Zertifikate (verwaltet) | Nein | Nein | Nein |
 > | connectiongateways | Ja | Ja | Nein |
 > | connections | Ja | Ja | Nein |
 > | customapis | Ja | Ja | Nein |

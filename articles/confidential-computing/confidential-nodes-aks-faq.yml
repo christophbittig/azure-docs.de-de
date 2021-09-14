@@ -8,12 +8,12 @@ metadata:
   ms.topic: conceptual
   ms.date: 06/30/2021
   ms.author: amgowda
-  ms.openlocfilehash: b89afc3890d67af877f7b192173e547236fe2981
-  ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
+  ms.openlocfilehash: 21a4b0fdd3a000469339e6ac49df0a43dc56e451
+  ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 07/02/2021
-  ms.locfileid: "113233504"
+  ms.lasthandoff: 08/27/2021
+  ms.locfileid: "123101598"
 title: Häufig gestellte Fragen zu Confidential Computing-Knoten in Azure Kubernetes Service (AKS)
 summary: >
   In diesem Artikel werden häufig gestellte Fragen zu Intel SGX-basierten Confidential Computing-Knoten in Azure Kubernetes Service (AKS) behandelt. Falls Sie weitere Fragen haben, senden Sie eine E-Mail an **acconaks@microsoft.com** .
@@ -69,38 +69,7 @@ sections:
     answer: >
       Nachweis ist der Prozess zur Veranschaulichung und Überprüfung, dass ein Softwareelement auf der jeweiligen Hardwareplattform ordnungsgemäß instanziiert wurde. Außerdem stellt er sicher, dass sein Beweis überprüft werden kann, um zu gewährleisten, dass er auf einer sicheren Plattform ausgeführt wird und nicht manipuliert wurde. [Informieren Sie sich genauer](attestation.md) dazu, wie ein Nachweis bei Enklaven-Apps geführt wird.
   - question: Was geschieht, wenn mein Container größer als der verfügbare EPC-Speicher ist?
-    answer: >
-      Der EPC-Speicher bezieht sich auf den Teil Ihrer Anwendung, der zur Ausführung in der Enklave programmiert wurde. Die Gesamtgröße Ihres Containers ist nicht die richtige Methode für einen Vergleich mit dem maximal verfügbaren EPC-Speicher. Tatsächlich ermöglichen DCSv2-Computer mit SGX einen maximalen VM-Arbeitsspeicher von 32 GB, in dem Ihr nicht vertrauenswürdiger Teil der Anwendung genutzt würde. Wenn Ihr Container aber mehr als den verfügbaren EPC-Speicher verbraucht, könnte die Leistung des Programmteils, der in der Enklave ausgeführt wird, dadurch beeinträchtigt werden.
-
-
-      Zur besseren Verwaltung des EPC-Speichers in den Workerknoten sollten Sie die EPC-speicherbasierte Verwaltung von Grenzwerten über Kubernetes in Erwägung ziehen. Nutzen Sie das folgende Beispiel als Referenz.
-
-
-      ```yaml
-
-      apiVersion: batch/v1
-
-      kind: Job
-
-      metadata:
-        name: sgx-test
-        labels:
-          app: sgx-test
-      spec:
-        template:
-          metadata:
-            labels:
-              app: sgx-test
-          spec:
-            containers:
-            - name: sgxtest
-              image: oeciteam/sgx-test:1.0
-              resources:
-                limits:
-                  sgx.intel.com/sgx_epc_mem_in_MiB: 10 # This limit will automatically place the job into confidential computing node. Alternatively, you can target deployment to nodepools
-            restartPolicy: Never
-        backoffLimit: 0
-      ```
+    answer: "Der EPC-Speicher bezieht sich auf den Teil Ihrer Anwendung, der zur Ausführung in der Enklave programmiert wurde. Die Gesamtgröße Ihres Containers ist nicht die richtige Methode für einen Vergleich mit dem maximal verfügbaren EPC-Speicher. Tatsächlich ermöglichen DCSv2-Computer mit SGX einen maximalen VM-Arbeitsspeicher von 32 GB, in dem Ihr nicht vertrauenswürdiger Teil der Anwendung genutzt würde. Wenn Ihr Container aber mehr als den verfügbaren EPC-Speicher verbraucht, könnte die Leistung des Programmteils, der in der Enklave ausgeführt wird, dadurch beeinträchtigt werden.\n\nZur besseren Verwaltung des EPC-Speichers in den Workerknoten sollten Sie die EPC-speicherbasierte Verwaltung von Grenzwerten über Kubernetes in Erwägung ziehen. Nutzen Sie das folgende Beispiel als Referenz.\n\n> [!NOTE] \n> Im folgenden Beispiel wird ein öffentliches Container-Image von Docker Hub abgerufen. Es wird empfohlen, ein Pullgeheimnis für die Authentifizierung mithilfe eines Docker Hub-Kontos einrichten, anstatt einen anonymen Pull Request zu verwenden. Um die Zuverlässigkeit bei der Arbeit mit öffentlichen Inhalten zu verbessern, sollten Sie das Image in eine private Azure-Containerregistrierung importieren und dort verwalten. [Erfahren Sie mehr über die Arbeit mit öffentlichen Images](../container-registry/buffer-gate-public-content.md).\n\n```yaml\napiVersion: batch/v1\nkind: Job\nmetadata:\n  name: sgx-test\n  labels:\n    app: sgx-test\nspec:\n  template:\n    metadata:\n      labels:\n        app: sgx-test\n    spec:\n      containers:\n      - name: sgxtest\n        image: oeciteam/sgx-test:1.0\n        resources:\n          limits:\n            sgx.intel.com/sgx_epc_mem_in_MiB: 10 # This limit will automatically place the job into confidential computing node. Alternatively, you can target deployment to nodepools\n      restartPolicy: Never\n  backoffLimit: 0\n```\n"
   - question: Was geschieht, wenn meine Enklave mehr als den maximal verfügbaren EPC-Speicher verbraucht?
     answer: "Der gesamte verfügbare EPC-Speicher wird von den Enklavenanwendungen auf denselben VMs oder Workerknoten gemeinsam genutzt. Wenn Ihre Anwendung mehr als den verfügbaren EPC-Speicher nutzt, wirkt sich dies möglicherweise auf ihre Leistung aus. Deshalb empfehlen wir, die Toleranz pro Anwendung in Ihrer YAML-Datei für die Bereitstellung festzulegen, um den verfügbaren EPC-Speicher pro Workerknoten besser verwalten zu können, wie in den vorstehenden Beispielen gezeigt wird. Alternativ können Sie jederzeit wahlweise auf den VM-Größen des Workerknotenpools nach oben navigieren oder weitere Knoten hinzufügen. \n"
   - question: Warum kann ich keine Forks () und „exec“ zur Ausführung mehrerer Prozesse in meiner Enklavenanwendung ausführen?

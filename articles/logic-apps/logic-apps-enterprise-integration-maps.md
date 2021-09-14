@@ -1,78 +1,102 @@
 ---
-title: Transformieren von XML mit XSLT-Zuordnungen
-description: Hinzufügen von XSLT-Zuordnungen zum Transformieren von XML in Azure Logic Apps mit Enterprise Integration Pack
+title: Hinzufügen von XSLT-Zuordnungen für XML-Transformationen
+description: Erstellen und Hinzufügen von XSLT-Zuordnungen zum Transformieren von XML in Azure Logic Apps mit Enterprise Integration Pack.
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, logicappspm
-ms.topic: article
-ms.date: 02/06/2019
-ms.openlocfilehash: 62c3d4533dd04dbb5a2ce0c73afa52b81d433913
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: estfan, azla
+ms.topic: how-to
+ms.date: 08/26/2021
+ms.openlocfilehash: c597a7d44b620ee33acec028812aa2d1651283ff
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91570776"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123100435"
 ---
-# <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>Transformieren von XML mit Zuordnungen in Azure Logic Apps mithilfe von Enterprise Integration Pack
+# <a name="add-xslt-maps-for-xml-transformation-in-azure-logic-apps"></a>Hinzufügen von XSLT-Zuordnungen für XML-Transformationen in Azure Logic Apps
 
-Zur Übertragung von XML-Daten zwischen Formaten für Enterprise Integration-Szenarien in Azure Logic Apps kann Ihre Logik-App Zuordnungen verwenden. Genauer gesagt handelt es sich dabei um XSLT (Extensible Stylesheet Language Transformations)-Zuordnungen. Eine Zuordnung ist ein XML-Dokument, das die Konvertierung von Daten von einem XML-Dokument in ein anderes Format beschreibt. 
+Zur Übertragung von XML-Daten zwischen Formaten für Unternehmensintegrationsszenarien in Azure Logic Apps kann Ihre Logik-App-Ressource Zuordnungen verwenden. Genauer gesagt handelt es sich dabei um XSLT-Zuordnungen (Extensible Stylesheet Language Transformation). Eine Zuordnung ist ein XML-Dokument, das die Konvertierung von Daten von einem XML-Dokument in ein anderes Format beschreibt.
 
-Stellen Sie sich beispielsweise vor, dass Sie regelmäßige B2B-Aufträge oder -Rechnungen von einem Kunden erhalten, der das Format JJJMMTT für Datumsangaben verwendet. Ihre Organisation verwendet jedoch das Datumsformat MMTTJJJ. Mithilfe einer Zuordnung können Sie das Datumsformat JJJMMTT in das Format MMTTJJJ transformieren, bevor Auftrags- oder Rechnungsdetails in Ihrer Kundenaktivitätsdatenbank gespeichert werden.
+Stellen Sie sich beispielsweise vor, dass Sie regelmäßige B2B-Aufträge oder -Rechnungen von einem Kunden erhalten, der das Format „YearMonthDay“ (JahrMonatTag, JJJJMMTT) für Datumsangaben verwendet. Ihre Organisation verwendet jedoch das Datumsformat „MonthDayYear“ (MonatTagJahr,MMTTJJJJ). Mithilfe einer Zuordnung können Sie das Format JJJJMMTT in das Format MMTTJJJJ transformieren, bevor Auftrags- oder Rechnungsdetails in Ihrer Kundenaktivitätsdatenbank gespeichert werden.
 
-Grenzwerte für Integrationskonten und Artefakte wie Zuordnungen finden Sie unter [Grenzwert- und Konfigurationsinformationen für Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits).
+Mit einer Zuordnung können Sie eine einfache Transformation definieren, beispielsweise das Kopieren eines Namen und einer Adresse aus einem Dokument in ein anderes. Oder Sie können mithilfe der standardmäßigen Zuordnungsvorgänge komplexere Transformationen erstellen.
+
+> [!NOTE]
+> Azure Logic Apps ordnet begrenzten Arbeitsspeicher für die Verarbeitung von XML-Transformationen zu. Wenn Sie Logik-Apps basierend auf dem Ressourcentyp **Logik-App (Verbrauch)** erstellen und Ihre Zuordnungs- oder Nutzdatentransformationen einen hohen Arbeitsspeicherverbrauch aufweisen, können solche Transformationen zu Fehlern aufgrund von nicht genügend Arbeitsspeicher führt. Um dieses Szenario zu vermeiden, sollten Sie die folgenden Optionen in Betracht ziehen:
+>
+> * Bearbeiten Sie Ihre Zuordnungen oder Nutzdaten, um den Arbeitsspeicherverbrauch zu senken.
+>
+> * Erstellen Sie Ihre Logik-Apps stattdessen mithilfe des Ressourcentyps **Logik-App (Standard)** .
+>
+>   Diese Workflows werden in einer Azure Logic Apps-Instanz für nur einen Mandanten ausgeführt, die dedizierte und flexible Optionen für Compute- und Arbeitsspeicherressourcen bietet. 
+>   Der Ressourcentyp „Logik-App (Standard)“ unterstützt derzeit jedoch nicht das Verweisen auf externe Assemblys aus Zuordnungen. Außerdem wird derzeit nur XSLT 1.0 (Extensible Stylesheet Language Transformation) unterstützt.
+
+Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen in der folgenden Dokumentation:
+
+* [Was ist Azure Logic Apps: Ressourcentyp und Hostumgebungen](logic-apps-overview.md#resource-type-and-host-environment-differences)
+
+* [Erstellen eines Integrationsworkflows mit der Azure Logic Apps-Einzelmandanteninstanz (Standard)](create-single-tenant-workflows-azure-portal.md)
+
+* [Erstellen eines Logik-App-Workflows mit nur einem Mandanten](create-single-tenant-workflows-azure-portal.md)
+
+* [Modelle für Verbrauchsmessung, Abrechnung und Preise bei Azure Logic Apps](logic-apps-pricing.md)
+
+## <a name="limits"></a>Grenzwerte
+
+* Für Logik-App (**Standard**)-Ressourcen gibt es keine Grenzwerte hinsichtlich der Größen von Zuordnungsdateien.
+
+* Für Logik-App (**Verbrauch**)-Ressourcen gelten Grenzwerte für Integrationskonten und Artefakte wie Zuordnungen. Weitere Informationen finden Sie unter [Grenzwerte und Konfigurationsinformationen für Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* Ein Azure-Konto und ein Azure-Abonnement. Sollten Sie noch kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Ein [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), in dem Sie Ihre Zuordnungen und andere Artefakte für Enterprise Integration- und B2B (Business-to-Business)-Lösungen speichern.
+* Wenn Sie den Ressourcentyp **Logik-App (Standard)** verwenden, benötigen Sie kein Integrationskonto. Stattdessen können Sie Ihrer Logik-App-Ressource Zuordnungen direkt im Azure-Portal oder in Visual Studio Code hinzufügen. Derzeit wird nur XSLT 1.0 unterstützt. Sie können diese Zuordnungen dann in mehreren Workflows innerhalb *derselben Logik-App-Ressource* verwenden.
 
-* Wenn Ihre Zuordnung auf eine externe Assembly verweist, müssen Sie *sowohl die Assembly als auch die Zuordnung* in Ihr Integrationskonto hochladen. Sie müssen die [*Assembly zuerst hochladen*](#add-assembly), bevor Sie den Upload für die Zuordnung durchführen, in der auf die Assembly verwiesen wird.
+* Wenn Sie den Ressourcentyp **Logik-App (Verbrauch)** verwenden, benötigen Sie eine [Integrationskontoressource](logic-apps-enterprise-integration-create-integration-account.md), in der Sie Ihre Zuordnungen und anderen Artefakte für die Verwendung in Unternehmensintegrations- und B2B-Lösungen (Business-to-Business) speichern können. Diese Ressource muss die folgenden Anforderungen erfüllen:
 
-  Wenn Ihre Assembly 2 MB oder kleiner ist, können Sie Ihre Assembly dem Integrationskonto *direkt* über das Azure-Portal hinzufügen. Ist Ihre Assembly oder Zuordnung jedoch größer als 2 MB, ohne jedoch das [Größenlimit für Assemblys oder Zuordnungen](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits) zu überschreiten, haben Sie die folgenden Optionen:
+  * Sie ist demselben Azure-Abonnement zugeordnet wie Ihre Logik-App-Ressource.
 
-  * Für Assemblys benötigen Sie einen Azure-Blobcontainer, in den Sie Ihre Assembly hochladen können, und den Containerspeicherort. Auf diese Weise können Sie diesen Speicherort später bereitstellen, wenn Sie die Assembly Ihrem Integrationskonto hinzufügen. 
-  Für diese Aufgabe benötigen Sie folgende Elemente:
+  * Sie befindet sich am selben Standort oder in derselben Azure-Region wie Ihre Logik-App-Ressource, in der Sie die Aktion **XML transformieren** verwenden möchten.
+
+  * Sie ist mit Ihrer Logik-App-Ressource, in der Sie Zuordnungen verwenden möchten, [verknüpft](logic-apps-enterprise-integration-create-integration-account.md#link-account).
+
+    Zum Erstellen und Hinzufügen von Zuordnungen für die Verwendung in Logik-App (Verbrauch)-Workflows benötigen Sie noch keine Logik-App-Ressource. Wenn Sie jedoch bereit sind, diese Zuordnungen in Ihren Workflows zu verwenden, benötigt Ihre Logik-App-Ressource ein verknüpftes Integrationskonto, das diese Zuordnungen speichert.
+
+* Während **Logik-App (Verbrauch)** das Verweisen auf externe Assemblys aus Zuordnungen unterstützt, unterstützt **Logik-App (Standard)** diese Funktion derzeit nicht. Das Verweisen auf eine Assembly ermöglicht direkte Aufrufe von benutzerdefiniertem .NET-Code aus XSLT-Zuordnungen.
+
+  * Sie benötigen eine 64-Bit-Assembly. Der Transformationsdienst führt einen 64-Bit-Prozess aus, deshalb werden 32-Bit-Assemblys nicht unterstützt. Wenn Ihr Quellcode für eine 32-Bit-Assembly vorgesehen ist, kompilieren Sie den Code erneut in eine 64-Bit-Assembly. Wenn Sie nicht über den Quellcode verfügen, aber die Binärdatei von einem Drittanbieter erhalten haben, wenden Sie sich für die 64-Bit-Version an diesen Anbieter. Einige Anbieter stellen beispielsweise Assemblys in Paketen bereit, die sowohl 32-Bit- als auch 64-Bit-Versionen enthalten. Wenn es die Option gibt, verwenden Sie stattdessen die 64-Bit-Version.
+
+  * Sie müssen *sowohl die Assembly als auch die Zuordnung* in einer bestimmten Reihenfolge in Ihr Integrationskonto hochladen. Sie müssen die [*Assembly zuerst hochladen*](#add-assembly), bevor Sie den Upload für die Zuordnung durchführen, in der auf die Assembly verwiesen wird.
+
+  * Wenn Ihre Assembly [2 MB oder kleiner](#smaller-map) ist, können Sie Ihre Assembly und Zuordnung Ihrem Integrationskonto *direkt* über das Azure-Portal hinzufügen. Wenn Ihre Assembly oder Zuordnung jedoch größer als 2 MB, aber nicht größer als die [Größenbeschränkung für Assemblys oder Zuordnungen](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits) ist, können Sie einen Azure-Blobcontainer verwenden, in den Sie Ihre Assembly und den Speicherort dieses Containers hochladen können. Auf diese Weise können Sie diesen Speicherort später bereitstellen, wenn Sie die Assembly Ihrem Integrationskonto hinzufügen. Für diese Aufgabe benötigen Sie folgende Elemente:
 
     | Element | BESCHREIBUNG |
     |------|-------------|
     | [Azure-Speicherkonto](../storage/common/storage-account-overview.md) | Unter diesem Konto erstellen Sie einen Azure-Blobcontainer für Ihre Assembly. Hier erfahren Sie, wie Sie ein [Speicherkonto erstellen](../storage/common/storage-account-create.md). |
-    | BLOB-Container | In diesen Container können Sie Ihre Assembly hochladen. Außerdem benötigen Sie den Containerspeicherort, wenn Sie die Assembly Ihrem Integrationskonto hinzufügen. Hier erfahren Sie, wie Sie einen [Blobcontainer erstellen](../storage/blobs/storage-quickstart-blobs-portal.md). |
-    | [Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) | Mit diesem Tool lassen sich Speicherkonten und Blobcontainer einfacher verwalten. Eine Möglichkeit zur Verwendung des Storage-Explorers besteht darin, [den Azure Storage-Explorer herunterzuladen und zu installieren](https://www.storageexplorer.com/). Verbinden Sie dann den Storage-Explorer mit Ihrem Speicherkonto, indem Sie die Schritte unter [Erste Schritte mit dem Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) ausführen. Weitere Informationen finden Sie unter [Schnellstart: Verwenden von Azure Storage-Explorer zum Erstellen eines Blobs im Objektspeicher](../storage/blobs/storage-quickstart-blobs-storage-explorer.md). <p>Alternativ können Sie Ihr Speicherkonto im Azure-Portal suchen und auswählen. Wählen Sie im Menü „Speicherkonto“ **Storage-Explorer** aus. |
+    | BLOB-Container | In diesen Container können Sie Ihre Assembly hochladen. Außerdem benötigen Sie den Inhalts-URI und Speicherort dieses Containers, wenn Sie die Assembly Ihrem Integrationskonto hinzufügen. Hier erfahren Sie, wie Sie einen [Blobcontainer erstellen](../storage/blobs/storage-quickstart-blobs-portal.md). |
+    | [Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) | Mit diesem Tool lassen sich Speicherkonten und Blobcontainer einfacher verwalten. Eine Möglichkeit zur Verwendung des Storage-Explorers besteht darin, [den Azure Storage-Explorer herunterzuladen und zu installieren](https://www.storageexplorer.com/). Verbinden Sie dann den Storage-Explorer mit Ihrem Speicherkonto, indem Sie die Schritte unter [Erste Schritte mit dem Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) ausführen. Weitere Informationen finden Sie unter [Schnellstart: Verwenden von Azure Storage-Explorer zum Erstellen eines Blobs im Objektspeicher](../storage/blobs/storage-quickstart-blobs-storage-explorer.md). <p>Sie können auch im Azure-Portal Ihr Speicherkonto auswählen. Wählen Sie im Menü „Speicherkonto“ **Storage-Explorer** aus. |
     |||
 
-  * Im Fall von Zuordnungen lassen sich derzeit größere Zuordnungen mithilfe von [Azure Logic Apps REST API – Zuordnungen](/rest/api/logic/maps/createorupdate) hinzufügen.
-
-Zum Erstellen und Hinzufügen von Zuordnungen benötigen Sie keine Logik-App. Damit Sie eine Zuordnung verwenden können, muss Ihre Logik-App jedoch mit einem Integrationskonto verknüpft sein, in dem diese Zuordnung gespeichert ist. Erfahren Sie, wie Sie [Logik-Apps mit Integrationskonten verknüpfen](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account). Wenn Sie noch nicht über eine Logik-App verfügen, lesen Sie den Artikel zum [Erstellen von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+  * Um größere Zuordnungen für Logik-App (Verbrauch)-Ressourcen hinzuzufügen, können Sie auch die [Azure Logic Apps-REST-API – Zuordnungen](/rest/api/logic/maps/createorupdate) verwenden. Für Logik-App (Standard)-Ressourcen ist die Azure Logic Apps-REST-API derzeit jedoch nicht verfügbar.
 
 <a name="add-assembly"></a>
 
-## <a name="add-referenced-assemblies"></a>Hinzufügen referenzierter Assemblys
+## <a name="add-referenced-assemblies-consumption-resource-only"></a>Hinzufügen von Assemblys, auf die verwiesen wird (nur Verbrauchsressource)
 
-1. Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) mit den Anmeldeinformationen Ihres Azure-Kontos an.
 
-1. Wählen Sie im Azure-Hauptmenü **Alle Dienste** aus, um Ihr Integrationskonto zu suchen und zu öffnen. 
-   Geben Sie im Suchfeld „Integrationskonto“ ein. 
-   Wählen Sie **Integrationskonten** aus.
+1. Geben Sie im Hauptsuchfeld in Azure `integration accounts` ein, und wählen Sie **Integrationskonten** aus.
 
-   ![Suchen von Integrationskonten](./media/logic-apps-enterprise-integration-maps/find-integration-account.png)
+1. Wählen Sie das Integrationskonto aus, dem Sie Ihre Assembly hinzufügen möchten.
 
-1. Wählen Sie das Integrationskonto aus, dem Sie Ihre Assembly hinzufügen möchten. Beispiel:
+1. Wählen Sie im Menü Ihres Integrationskontos die Option **Übersicht** aus. Wählen Sie unter **Einstellungen** die Option **Assemblys** aus.
 
-   ![Auswählen des Integrationskontos](./media/logic-apps-enterprise-integration-maps/select-integration-account.png)
+1. Wählen Sie auf der Symbolleiste des Bereichs **Assemblys** die Option **Hinzufügen** aus.
 
-1. Wählen Sie auf der Seite **Übersicht** Ihres Integrationskontos unter **Komponenten** die Kachel **Assemblys** aus.
-
-   ![Auswählen von „Assemblys“](./media/logic-apps-enterprise-integration-maps/select-assemblies.png)
-
-1. Nachdem die Seite **Assemblys** geöffnet wurde, wählen Sie **Hinzufügen** aus.
-
-   ![Screenshot, der die Schaltfläche „Hinzufügen“ auf der Seite „Assemblys“ hervorhebt.](./media/logic-apps-enterprise-integration-maps/add-assembly.png)
-
-Je nach Größe Ihrer Assemblydatei führen Sie die Schritte zum Upload einer Assembly aus, die entweder [maximal 2 MB](#smaller-assembly) groß oder [größer als 2 MB (maximal 8 MB)](#larger-assembly) ist.
-Die Grenzwerte für die Anzahl von Assemblys in Integrationskonten finden Sie unter [Grenzwerte und Konfiguration für Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits).
+Je nach Größe Ihrer Assemblydatei führen Sie die Schritte zum Upload einer Assembly aus, die entweder [maximal 2 MB](#smaller-assembly) groß oder [größer als 2 MB (maximal 8 MB)](#larger-assembly) ist. Die Grenzwerte für die Anzahl von Assemblys in Integrationskonten finden Sie unter [Grenzwerte und Konfiguration für Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits).
 
 > [!NOTE]
 > Wenn Sie Ihre Assembly ändern, müssen Sie auch Ihre Zuordnung aktualisieren, und zwar unabhängig davon, ob die Zuordnung Änderungen enthält.
@@ -81,21 +105,13 @@ Die Grenzwerte für die Anzahl von Assemblys in Integrationskonten finden Sie un
 
 ### <a name="add-assemblies-up-to-2-mb"></a>Hinzufügen von Assemblys bis zu 2 MB
 
-1. Geben Sie unter **Assembly hinzufügen** einen Namen für Ihre Assembly ein. Lassen Sie **Kleine Datei** ausgewählt. Wählen Sie neben dem Feld **Assembly** das Ordnersymbol aus. Suchen und wählen Sie die Assembly zum Upload aus. Beispiel:
+1. Geben Sie unter **Assembly hinzufügen** einen Namen für Ihre Assembly ein. Lassen Sie **Kleine Datei** ausgewählt. Wählen Sie als Nächstes neben dem Feld **Assembly** das Ordnersymbol aus. Suchen Sie die Assembly für den Upload, und wählen Sie sie aus.
 
-   ![Hochladen kleinerer Assemblys](./media/logic-apps-enterprise-integration-maps/upload-assembly-file.png)
-
-   Nachdem Sie die Assembly ausgewählt haben, wird der Dateiname der Assembly automatisch in der **Assemblyname**-Eigenschaft angezeigt.
+   Nachdem Sie die Assembly ausgewählt haben, wird als **Assemblyname**-Eigenschaft automatisch der Dateiname der Assembly angezeigt.
 
 1. Wählen Sie abschließend **OK** aus.
 
-   Nachdem der Upload Ihrer Assemblydatei abgeschlossen ist, wird die Assembly in der Liste **Assemblys** angezeigt.
-
-   ![Liste der hochgeladenen Assemblys](./media/logic-apps-enterprise-integration-maps/uploaded-assemblies-list.png)
-
-   Auf der Seite **Übersicht** Ihres Integrationskontos wird unter **Komponenten** auf der Kachel **Assemblys** jetzt die Anzahl hochgeladener Assemblys angezeigt. Beispiel:
-
-   ![Hochgeladene Assemblys](./media/logic-apps-enterprise-integration-maps/uploaded-assemblies.png)
+   Nachdem der Upload Ihrer Assemblydatei abgeschlossen ist, wird die Assembly in der Liste **Assemblys** angezeigt. Im Bereich **Übersicht** Ihres Integrationskontos wird unter **Artefakte** ebenfalls Ihre hochgeladene Assembly angezeigt.
 
 <a name="larger-assembly"></a>
 
@@ -111,241 +127,220 @@ Wenn Sie größere Assemblys hinzufügen möchten, können Sie Ihre Assembly in 
 
 1. Wählen Sie im Kontextmenü des Blobcontainers **Öffentliche Zugriffsebene festlegen** aus.
 
-   * Wenn Ihr Blobcontainer mindestens über öffentlichen Zugriff verfügt, wählen Sie **Abbrechen** aus, und folgen Sie den Schritten unten auf dieser Seite: [Hochladen in Container mit öffentlichem Zugriff](#public-access-assemblies)
+   * Wenn Ihr Blobcontainer mindestens über öffentlichen Zugriff verfügt, wählen Sie **Abbrechen** aus, und folgen Sie den Schritten unten auf dieser Seite: [Hochladen in Container mit öffentlichem Zugriff](#public-access-assemblies).
 
-     ![Öffentlicher Zugriff](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
+     ![Öffentlicher Zugriff](media/logic-apps-enterprise-integration-maps/azure-blob-container-public-access.png)
 
-   * Wenn Ihr Blobcontainer nicht über öffentlichen Zugriff verfügt, wählen Sie **Abbrechen** aus, und folgen Sie den Schritten unten auf dieser Seite: [Hochladen in Container ohne öffentlichen Zugriff](#no-public-access-assemblies)
+   * Wenn Ihr Blobcontainer nicht über öffentlichen Zugriff verfügt, wählen Sie **Abbrechen** aus, und folgen Sie den Schritten unten auf dieser Seite: [Hochladen in Container ohne öffentlichen Zugriff](#no-public-access-assemblies).
 
-     ![Kein öffentlicher Zugriff](media/logic-apps-enterprise-integration-schemas/azure-blob-container-no-public-access.png)
+     ![Kein öffentlicher Zugriff](media/logic-apps-enterprise-integration-maps/azure-blob-container-no-public-access.png)
 
 <a name="public-access-assemblies"></a>
 
 #### <a name="upload-to-containers-with-public-access"></a>Hochladen in Container mit öffentlichem Zugriff
 
-1. Laden Sie die Assembly in Ihr Speicherkonto hoch. 
-   Wählen Sie im rechten Fenster **Hochladen** aus.
+1. Laden Sie die Assembly in Ihr Speicherkonto hoch. Wählen Sie im Fenster auf der rechten Seite **Hochladen** aus.
 
 1. Wählen Sie die hochgeladene Assembly aus, nachdem der Upload abgeschlossen ist. Wählen Sie auf der Symbolleiste **URL kopieren** aus, um die URL der Assembly zu kopieren.
 
-1. Kehren Sie zum Azure-Portal zurück, in dem der Bereich **Assembly hinzufügen** geöffnet ist. 
-   Geben Sie einen Namen für Ihre Assembly ein. 
-   Wählen Sie **Große Datei (größer als 2 MB)** aus.
+1. Kehren Sie zum Azure-Portal zurück, in dem der Bereich **Assembly hinzufügen** geöffnet ist. Geben Sie einen Namen für Ihre Assembly ein. Wählen Sie **Große Datei (größer als 2 MB)** aus.
 
    Das Feld **Inhalts-URI** wird jetzt anstelle des Felds **Assembly** angezeigt.
 
-1. Fügen Sie die URL Ihrer Assembly in das Feld **Inhalts-URI** ein. 
-   Schließen Sie das Hinzufügen Ihrer Assembly ab.
+1. Fügen Sie die URL Ihrer Assembly in das Feld **Inhalts-URI** ein. Schließen Sie das Hinzufügen Ihrer Assembly ab.
 
-Nachdem der Upload Ihrer Assembly abgeschlossen ist, wird die Assembly in der Liste **Assemblys** angezeigt.
-Auf der Seite **Übersicht** Ihres Integrationskontos wird unter **Komponenten** auf der Kachel **Assemblys** jetzt die Anzahl hochgeladener Assemblys angezeigt.
+   Nachdem der Upload Ihrer Assembly abgeschlossen ist, wird die Assembly in der Liste **Assemblys** angezeigt. Im Bereich **Übersicht** Ihres Integrationskontos wird unter **Artefakte** ebenfalls Ihre hochgeladene Assembly angezeigt.
 
 <a name="no-public-access-assemblies"></a>
 
 #### <a name="upload-to-containers-without-public-access"></a>Hochladen in Container ohne öffentlichen Zugriff
 
-1. Laden Sie die Assembly in Ihr Speicherkonto hoch. 
-   Wählen Sie im rechten Fenster **Hochladen** aus.
+1. Laden Sie die Assembly in Ihr Speicherkonto hoch. Wählen Sie im Fenster auf der rechten Seite **Hochladen** aus.
 
-1. Nachdem der Upload abgeschlossen ist, generieren Sie eine Shared Access Signature (SAS) für Ihre Assembly. 
-   Wählen Sie im Kontextmenü der Assembly **Shared Access Signature abrufen** aus.
+1. Nachdem der Upload abgeschlossen ist, generieren Sie eine Shared Access Signature (SAS) für Ihre Assembly. Wählen Sie im Kontextmenü der Assembly **Shared Access Signature abrufen** aus.
 
-1. Wählen Sie im Bereich **Shared Access Signature** die Option **URI für Shared Access Signature auf Containerebene generieren** > **Erstellen** aus. 
-   Nachdem die SAS-URL generiert wurde, wählen Sie neben dem Feld **URL** die Option **Kopieren** aus.
+1. Wählen Sie im Bereich **Shared Access Signature** die Option **URI für Shared Access Signature auf Containerebene generieren** > **Erstellen** aus. Nachdem die SAS-URL generiert wurde, wählen Sie neben dem Feld **URL** die Option **Kopieren** aus.
 
-1. Kehren Sie zum Azure-Portal zurück, in dem der Bereich **Assembly hinzufügen** geöffnet ist. 
-   Geben Sie einen Namen für Ihre Assembly ein. 
-   Wählen Sie **Große Datei (größer als 2 MB)** aus.
+1. Kehren Sie zum Azure-Portal zurück, in dem der Bereich **Assembly hinzufügen** geöffnet ist. Geben Sie einen Namen für Ihre Assembly ein. Wählen Sie **Große Datei (größer als 2 MB)** aus.
 
    Das Feld **Inhalts-URI** wird jetzt anstelle des Felds **Assembly** angezeigt.
 
 1. Fügen Sie im Feld **Inhalts-URI** den zuvor generierten SAS-URI ein. Schließen Sie das Hinzufügen Ihrer Assembly ab.
 
-Nachdem der Upload Ihrer Assembly abgeschlossen ist, wird die Assembly in der Liste **Assemblys** angezeigt. Auf der Seite **Übersicht** Ihres Integrationskontos wird unter **Komponenten** auf der Kachel **Assemblys** jetzt die Anzahl hochgeladener Assemblys angezeigt.
+Nachdem der Upload Ihrer Assembly abgeschlossen ist, wird die Assembly in der Liste **Assemblys** angezeigt. Auf der Seite **Übersicht** Ihres Integrationskontos wird unter **Artefakte** ebenfalls Ihre hochgeladene Assembly angezeigt.
+
+<a name="create-maps"></a>
 
 ## <a name="create-maps"></a>Erstellen von Zuordnungen
 
-Zum Erstellen eines XSLT-Dokuments, das als Zuordnung verwendet werden kann, können Sie in Visual Studio 2015 unter Verwendung von [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md) ein BizTalk-Integrationsprojekt anlegen. In diesem Projekt können Sie eine Integrationszuordnungsdatei erstellen, mit deren Hilfe Sie Elemente zwischen zwei XML-Schemadateien visuell zuordnen können. Nachdem Sie dieses Projekt erstellt haben, verfügen Sie über ein XSLT-Dokument.
-Die Grenzwerte für die Anzahl von Zuordnungen in Integrationskonten finden Sie unter [Grenzwerte und Konfiguration für Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits). 
+Sie können zum Erstellen eines XSLT-Dokuments (Extensible Stylesheet Language Transformation), das Sie als Zuordnung verwenden können, Visual Studio 2015 oder 2019 verwenden und mit dem [Unternehmensintegrations-SDK](https://aka.ms/vsmapsandschemas) ein Integrationsprojekt erstellen. In diesem Projekt können Sie eine Integrationszuordnungsdatei erstellen, mit deren Hilfe Sie Elemente zwischen zwei XML-Schemadateien visuell zuordnen können. Nachdem Sie dieses Projekt erstellt haben, verfügen Sie über ein XSLT-Dokument. Die Grenzwerte für die Anzahl von Zuordnungen in Integrationskonten finden Sie unter [Grenzwerte und Konfiguration für Azure Logic Apps](logic-apps-limits-and-config.md#artifact-number-limits).
+
+Ihre Zuordnung muss über die folgenden Attribute und einen `CDATA`-Abschnitt verfügen, der den Aufruf des Assemblycodes enthält:
+
+* `name` ist der Name der benutzerdefinierten Assembly.
+
+* `namespace` ist der Namespace in Ihrer Assembly, der den benutzerdefinierten Code enthält.
+
+Das folgende Beispiel zeigt eine Zuordnung, in der auf eine Assembly mit dem Namen `XslUtilitiesLib` verwiesen und die `circumference`-Methode aus der Assembly aufgerufen wird.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:user="urn:my-scripts">
+<msxsl:script language="C#" implements-prefix="user">
+    <msxsl:assembly name="XsltHelperLib"/>
+    <msxsl:using namespace="XsltHelpers"/>
+    <![CDATA[public double circumference(int radius){ XsltHelper helper = new XsltHelper(); return helper.circumference(radius); }]]>
+</msxsl:script>
+<xsl:template match="data">
+<circles>
+    <xsl:for-each select="circle">
+        <circle>
+            <xsl:copy-of select="node()"/>
+                <circumference>
+                    <xsl:value-of select="user:circumference(radius)"/>
+                </circumference>
+        </circle>
+    </xsl:for-each>
+</circles>
+</xsl:template>
+</xsl:stylesheet>
+```
+
+## <a name="tools-and-capabilities-for-maps"></a>Tools und Funktionen für Zuordnungen
+
+* Wenn Sie eine Zuordnung mit Visual Studio und dem [Unternehmensintegrations-SDK](https://aka.ms/vsmapsandschemas) erstellen, arbeiten Sie mit einer grafischen Darstellung der Zuordnung, die alle Beziehungen und Verknüpfungen zeigt, die Sie erstellen.
+
+* Sie können Daten zwischen den Schemas direkt kopieren. Das [Unternehmensintegrations-SDK](https://aka.ms/vsmapsandschemas) für Visual Studio enthält einen Mapper, der diese Aufgabe so einfach macht wie das Zeichnen einer Linie, die die Elemente im XML-Quellschema mit ihren Gegenstücken im XML-Zielschema verbindet.
+
+* Vorgänge oder Funktionen für mehrere Zuordnungen sind verfügbar, einschließlich Zeichenfolgenfunktionen, Datums-/Uhrzeitfunktionen usw.  
+
+* Um eine XML-Beispielnachricht hinzuzufügen, können Sie die Zuordnungstestfunktion verwenden. Mit nur einem Klick können Sie die erstellte Zuordnung testen und die generierte Ausgabe überprüfen.
 
 ## <a name="add-maps"></a>Hinzufügen von Zuordnungen
 
+### <a name="consumption-resource"></a>[Verbrauchsressource](#tab/consumption-1)
+
 Nachdem Sie alle Assemblys hochgeladen haben, auf die in Ihrer Zuordnung verwiesen wird, können Sie nun Ihre Zuordnung hochladen.
 
-1. Falls Sie noch nicht angemeldet sind, melden Sie sich jetzt mit Ihrem Azure-Kontoanmeldeinformationen beim [Azure-Portal](https://portal.azure.com) an. 
+1. Falls Ihr Integrationskonto im Azure-Portal nicht bereits geöffnet ist, geben Sie im Hauptsuchfeld von Azure `integration accounts` ein, und wählen Sie **Integrationskonten** aus.
 
-1. Wenn Ihr Integrationskonto noch nicht geöffnet ist, wählen Sie im Azure-Hauptmenü **Alle Dienste** aus. 
-   Geben Sie im Suchfeld „Integrationskonto“ ein. 
-   Wählen Sie **Integrationskonten** aus.
+1. Wählen Sie das Integrationskonto aus, dem Sie Ihre Zuordnung hinzufügen möchten.
 
-   ![Suchen von Integrationskonten](./media/logic-apps-enterprise-integration-maps/find-integration-account.png)
+1. Wählen Sie im Menü Ihres Integrationskontos die Option **Übersicht** aus. Wählen Sie unter **Einstellungen** die Option **Zuordnungen** aus.
 
-1. Wählen Sie das Integrationskonto aus, dem Sie Ihre Zuordnung hinzufügen möchten. Beispiel:
+1. Wählen Sie auf der Symbolleiste des Bereichs **Zuordnungen** die Option **Hinzufügen** aus.
 
-   ![Auswählen des Integrationskontos](./media/logic-apps-enterprise-integration-maps/select-integration-account.png)
-
-1. Wählen Sie auf der Seite **Übersicht** Ihres Integrationskontos unter **Komponenten** die Kachel **Zuordnungen** aus.
-
-   ![Auswählen von „Zuordnungen“](./media/logic-apps-enterprise-integration-maps/select-maps.png)
-
-1. Wählen Sie **Hinzufügen** aus, nachdem die Seite **Zuordnungen** geöffnet wurde.
-
-   ![„Hinzufügen“ auswählen](./media/logic-apps-enterprise-integration-maps/add-map.png)  
+1. Fahren Sie damit fort, entweder eine Zuordnung [von bis zu 2 MB](#smaller-map) oder [mehr als 2 MB](#larger-map) hinzuzufügen.
 
 <a name="smaller-map"></a>
 
-### <a name="add-maps-up-to-2-mb"></a>Hinzufügen von Zuordnungen bis zu 2 MB
+#### <a name="add-maps-up-to-2-mb"></a>Hinzufügen von Zuordnungen bis zu 2 MB
 
-1. Geben Sie unter **Zuordnung hinzufügen** einen Namen für Ihre Zuordnung ein. 
+1. Geben Sie unter **Zuordnung hinzufügen** einen eindeutigen Namen für Ihre Zuordnung ein.
 
 1. Wählen Sie unter **Zuordnungstyp** den Typ aus. Beispiel: **Liquid**, **XSLT**, **XSLT 2.0** oder **XSLT 3.0**.
 
-1. Lassen Sie **Kleine Datei** ausgewählt. Wählen Sie neben dem Feld **Zuordnung** das Ordnersymbol aus. Suchen und wählen Sie die Zuordnung zum Upload aus. Beispiel:
+1. Wählen Sie neben dem Feld **Zuordnung** das Ordnersymbol aus. Wählen Sie die hochzuladende Zuordnung aus.
 
-   ![Hochladen der Zuordnung](./media/logic-apps-enterprise-integration-maps/upload-map-file.png)
+   Wenn die **Name**-Eigenschaft nicht angegeben wurde, wird der Dateiname der Zuordnung als Eigenschaftswert angezeigt, nachdem Sie die Zuordnungsdatei ausgewählt haben.
 
-   Wenn die **Name**-Eigenschaft nicht angegeben wurde, wird der Dateiname der Zuordnung automatisch als Eigenschaftswert angezeigt, nachdem Sie die Zuordnungsdatei ausgewählt haben. 
-   Sie können jedoch einen beliebigen eindeutigen Namen verwenden.
+1. Wählen Sie abschließend **OK** aus.
 
-1. Wählen Sie abschließend **OK** aus. 
-   Nachdem der Upload Ihrer Zuordnungsdatei abgeschlossen ist, wird die Zuordnung in der Liste **Zuordnungen** angezeigt.
-
-   ![Liste der hochgeladenen Zuordnungen](./media/logic-apps-enterprise-integration-maps/uploaded-maps-list.png)
-
-   Auf der Seite **Übersicht** Ihres Integrationskontos wird unter **Komponenten** auf der Kachel **Zuordnungen** jetzt die Anzahl hochgeladener Zuordnungen angezeigt. Beispiel:
-
-   ![Hochgeladene Zuordnungen](./media/logic-apps-enterprise-integration-maps/uploaded-maps.png)
+   Nachdem der Upload Ihrer Zuordnungsdatei abgeschlossen ist, wird die Zuordnung in der Liste **Zuordnungen** angezeigt. Auf der Seite **Übersicht** Ihres Integrationskontos wird unter **Artefakte** ebenfalls Ihre hochgeladene Zuordnung angezeigt.
 
 <a name="larger-map"></a>
 
-### <a name="add-maps-more-than-2-mb"></a>Hinzufügen von Zuordnungen mit mehr als 2 MB
+#### <a name="add-maps-more-than-2-mb"></a>Hinzufügen von Zuordnungen mit mehr als 2 MB
 
 Größere Zuordnungen lassen sich derzeit mit [Azure Logic Apps REST API – Zuordnungen](/rest/api/logic/maps/createorupdate) hinzufügen.
 
-<!--
+### <a name="standard-resource"></a>[Standardressource](#tab/standard-1)
 
-To add larger maps, you can upload your map to 
-an Azure blob container in your Azure storage account. 
-Your steps for adding maps differ based whether your 
-blob container has public read access. So first, check 
-whether or not your blob container has public read 
-access by following these steps: 
-[Set public access level for blob container](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
+#### <a name="azure-portal"></a>Azure-Portal
 
-#### Check container access level
+1. Wählen Sie im Menü Ihrer Logik-App-Ressource unter **Einstellungen** die Option **Zuordnungen** aus.
 
-1. Open Azure Storage Explorer. In the Explorer window, 
-   expand your Azure subscription if not already expanded.
+1. Wählen Sie auf der Symbolleiste des Bereichs **Zuordnungen** die Option **Hinzufügen** aus.
 
-1. Expand **Storage Accounts** > {*your-storage-account*} > 
-   **Blob Containers**. Select your blob container.
+1. Geben Sie unter **Zuordnung hinzufügen** einen eindeutigen Namen für Ihre Zuordnung ein, und schließen Sie den Erweiterungsnamen `.xslt` ein.
 
-1. From your blob container's shortcut menu, 
-   select **Set Public Access Level**.
+1. Wählen Sie neben dem Feld **Zuordnung** das Ordnersymbol aus. Wählen Sie die hochzuladende Zuordnung aus.
 
-   * If your blob container has at least public access, choose **Cancel**, 
-   and follow these steps later on this page: 
-   [Upload to containers with public access](#public-access)
+1. Wählen Sie abschließend **OK** aus.
 
-     ![Public access](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
+   Nachdem der Upload Ihrer Zuordnungsdatei abgeschlossen ist, wird die Zuordnung in der Liste **Zuordnungen** angezeigt. Auf der Seite **Übersicht** Ihres Integrationskontos wird unter **Artefakte** ebenfalls Ihre hochgeladene Zuordnung angezeigt.
 
-   * If your blob container doesn't have public access, choose **Cancel**, 
-   and follow these steps later on this page: 
-   [Upload to containers without public access](#public-access)
+#### <a name="visual-studio-code"></a>Visual Studio Code
 
-     ![No public access](media/logic-apps-enterprise-integration-schemas/azure-blob-container-no-public-access.png)
+1. Öffnen Sie in der Struktur Ihres Logik-App-Projekts den Ordner **Artefakte** und dann den Ordner **Zuordnungen**.
 
-<a name="public-access-maps"></a>
+1. Fügen Sie im Ordner **Zuordnungen** Ihre Zuordnung hinzu.
 
-### Add maps to containers with public access
-
-1. Upload the map to your storage account. 
-   In the right-hand window, choose **Upload**. 
-
-1. After you finish uploading, select your 
-   uploaded map. On the toolbar, choose **Copy URL** 
-   so that you copy the map's URL.
-
-1. Return to the Azure portal where the 
-   **Add Map** pane is open. Choose **Large file**. 
-
-   The **Content URI** box now appears, 
-   rather than the **Map** box.
-
-1. In the **Content URI** box, paste your map's URL. 
-   Finish adding your map.
-
-After your map finishes uploading, 
-the map appears in the **Maps** list.
-
-<a name="no-public-access-maps"></a>
-
-### Add maps to containers with no public access
-
-1. Upload the map to your storage account. 
-   In the right-hand window, choose **Upload**.
-
-1. After you finish uploading, generate a 
-   shared access signature (SAS) for your schema. 
-   From your map's shortcut menu, 
-   select **Get Shared Access Signature**.
-
-1. In the **Shared Access Signature** pane, select 
-   **Generate container-level shared access signature URI** > **Create**. 
-   After the SAS URL gets generated, next to the **URL** box, choose **Copy**.
-
-1. Return to the Azure portal where the 
-   **Add Maps** pane is open. Choose **Large file**.
-
-   The **Content URI** box now appears, 
-   rather than the **Map** box.
-
-1. In the **Content URI** box, paste the SAS URI 
-   you previously generated. Finish adding your map.
-
-After your map finishes uploading, 
-the map appears in the **Maps** list.
-
--->
+---
 
 ## <a name="edit-maps"></a>Bearbeiten von Zuordnungen
 
 Wenn Sie eine vorhandene Zuordnung aktualisieren möchten, müssen Sie eine neue Zuordnungsdatei hochladen, die über die gewünschten Änderungen verfügt. Allerdings können Sie zuerst die vorhandene Zuordnung zum Bearbeiten herunterladen.
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com) Ihr Integrationskonto, und öffnen Sie es, falls es noch nicht geöffnet ist.
+### <a name="consumption-resource"></a>[Verbrauchsressource](#tab/consumption-2)
 
-1. Wählen Sie im Azure-Hauptmenü die Option **Alle Dienste** aus. Geben Sie im Suchfeld „Integrationskonto“ ein. Wählen Sie **Integrationskonten** aus.
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) Ihr Integrationskonto, falls es noch nicht geöffnet ist.
 
-1. Wählen Sie das Integrationskonto aus, unter dem Sie Ihre Zuordnung aktualisieren möchten.
+1. Wählen Sie im Menü Ihres Integrationskontos unter **Einstellungen** die Option **Zuordnungen** aus.
 
-1. Wählen Sie auf der Seite **Übersicht** Ihres Integrationskontos unter **Komponenten** die Kachel **Zuordnungen** aus.
+1. Nachdem der Bereich **Zuordnungen** geöffnet wurde, wählen Sie Ihre Zuordnung aus. Um die Zuordnung zunächst herunterzuladen und zu bearbeiten, wählen Sie im Bereich **Zuordnungen** die Option **Herunterladen** aus und speichern die Zuordnung.
 
-1. Nachdem die Seite **Zuordnungen** geöffnet wurde, wählen Sie Ihre Zuordnung aus. 
-   Um die Zuordnung zuerst herunterzuladen und zu bearbeiten, wählen Sie **Herunterladen** aus, und speichern Sie die Zuordnung.
+1. Wenn Sie die aktualisierte Zuordnung wieder hochladen möchten, wählen Sie im Bereich **Zuordnungen** die zu aktualisierende Zuordnung aus. Wählen Sie auf der Symbolleiste des Bereichs **Zuordnungen** die Option **Aktualisieren** aus.
 
-1. Wenn Sie bereit für den Upload der aktualisierten Zuordnung sind, wählen Sie auf der Seite **Zuordnungen** die zu aktualisierende Zuordnung und dann **Aktualisieren** aus.
+1. Suchen und wählen Sie die aktualisierte Zuordnung aus, die Sie hochladen möchten.
 
-1. Suchen und wählen Sie die aktualisierte Zuordnung aus, die Sie hochladen möchten. 
    Nachdem der Upload Ihrer Zuordnungsdatei abgeschlossen ist, wird die aktualisierte Zuordnung in der Liste **Zuordnungen** angezeigt.
+
+### <a name="standard-resource"></a>[Standardressource](#tab/standard-2)
+
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) Ihre Logik-App-Ressource, falls noch nicht geschehen.
+
+1. Wählen Sie im Menü Ihrer Logik-App-Ressource unter **Einstellungen** die Option **Zuordnungen** aus.
+
+1. Nachdem der Bereich **Zuordnungen** geöffnet wurde, wählen Sie Ihre Zuordnung aus. Um die Zuordnung zunächst herunterzuladen und zu bearbeiten, wählen Sie im Bereich **Zuordnungen** die Option **Herunterladen** aus und speichern die Zuordnung.
+
+1. Wählen Sie auf der Symbolleiste des Bereichs **Zuordnungen** die Option **Hinzufügen** aus.
+
+1. Geben Sie unter **Zuordnung hinzufügen** einen eindeutigen Namen für Ihre Zuordnung ein, und schließen Sie den Erweiterungsnamen `.xslt` ein.
+
+1. Wählen Sie neben dem Feld **Zuordnung** das Ordnersymbol aus. Wählen Sie die hochzuladende Zuordnung aus.
+
+1. Wählen Sie abschließend **OK** aus.
+
+   Nachdem der Upload Ihrer Zuordnungsdatei abgeschlossen ist, wird die aktualisierte Zuordnung in der Liste **Zuordnungen** angezeigt.
+
+---
 
 ## <a name="delete-maps"></a>Löschen von Zuordnungen
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com) Ihr Integrationskonto, und öffnen Sie es, falls es noch nicht geöffnet ist.
+### <a name="consumption-resource"></a>[Verbrauchsressource](#tab/consumption-3)
 
-1. Wählen Sie im Azure-Hauptmenü die Option **Alle Dienste** aus. 
-   Geben Sie im Suchfeld „Integrationskonto“ ein. 
-   Wählen Sie **Integrationskonten** aus.
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) Ihr Integrationskonto, falls es noch nicht geöffnet ist.
 
-1. Wählen Sie das Integrationskonto aus, unter dem Sie Ihre Zuordnung löschen möchten.
+1. Wählen Sie im Menü Ihres Integrationskontos unter **Einstellungen** die Option **Zuordnungen** aus.
 
-1. Wählen Sie auf der Seite **Übersicht** Ihres Integrationskontos unter **Komponenten** die Kachel **Zuordnungen** aus.
-
-1. Nachdem die Seite **Zuordnungen** geöffnet wurde, wählen Sie Ihre Zuordnung und dann **Löschen** aus.
+1. Nachdem der Bereich **Zuordnungen** geöffnet wurde, wählen Sie Ihre Zuordnung und dann **Löschen** aus.
 
 1. Um zu bestätigen, dass Sie die Zuordnung löschen möchten, wählen **Ja** aus.
 
+### <a name="standard-resource"></a>[Standardressource](#tab/standard-3)
+
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) Ihre Logik-App-Ressource, falls noch nicht geschehen.
+
+1. Wählen Sie im Menü Ihrer Logik-App-Ressource unter **Einstellungen** die Option **Zuordnungen** aus.
+
+1. Nachdem der Bereich **Zuordnungen** geöffnet wurde, wählen Sie Ihre Zuordnung und dann **Löschen** aus.
+
+1. Um zu bestätigen, dass Sie die Zuordnung löschen möchten, wählen **Ja** aus.
+
+---
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Weitere Informationen zum Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)  
-* [Weitere Informationen zu Schemas](../logic-apps/logic-apps-enterprise-integration-schemas.md)
-* [Weitere Informationen über Transformationen](../logic-apps/logic-apps-enterprise-integration-transform.md)
+* [Transformieren von XML für Workflows in Azure Logic Apps](logic-apps-enterprise-integration-transform.md)
+* [Überprüfen von XML für Workflows in Azure Logic Apps](logic-apps-enterprise-integration-xml-validation.md)

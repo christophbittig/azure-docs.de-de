@@ -10,12 +10,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
-ms.openlocfilehash: 50544507f9d83c216bb6c18e004c5ce7ad1ca346
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d763931e7baec0fb17cfc127834cbfccec51d7d6
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639852"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123256095"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>Tutorial: Sicherheit für verwaltete Azure SQL-Instanz durch Azure AD-Serverprinzipale (Anmeldungen)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -213,8 +213,7 @@ Nachdem der Azure AD-Serverprinzipal (Anmeldung) erstellt und mit Berechtigunge
       GO
       ```
 
-> [!NOTE]
-> Azure AD-Gastbenutzer werden für Anmeldungen für die verwaltete SQL-Instanz nur unterstützt, wenn sie als Teil einer Azure AD-Gruppe hinzugefügt werden. Bei einem Azure AD-Gastbenutzer handelt es sich um ein Konto, das aus einer anderen Azure AD-Instanz in die Azure AD-Instanz eingeladen wird, der die verwaltete Instanz angehört. So kann beispielweise joe@contoso.com (Azure AD-Konto) oder steve@outlook.com (Microsoft-Konto) einer Gruppe in der Azure AD-Instanz „aadsqlmi“ hinzugefügt werden. Nachdem die Benutzer einer Gruppe hinzugefügt wurden, kann für die Gruppe unter Verwendung der Syntax von **CREATE LOGIN** eine Anmeldung in der **Masterdatenbank** der verwalteten SQL-Instanz erstellt werden. Gastbenutzer, die dieser Gruppe angehören, können ihre aktuellen Anmeldungen (beispielsweise joe@contoso.com oder steve@outlook.com) verwenden, um eine Verbindung mit der verwalteten Instanz herzustellen.
+Gastbenutzer werden als individuelle Benutzer unterstützt (ohne einer AAD-Gruppe anzugehören, auch wenn dies möglich ist), und die Anmeldungen können direkt im Master (z. B. joe@contoso.con) unter Verwendung der aktuellen Anmeldesyntax erstellt werden.
 
 ## <a name="create-an-azure-ad-user-from-the-azure-ad-server-principal-login"></a>Erstellen eines Azure AD-Benutzers auf der Grundlage des Azure AD-Serverprinzipals (Anmeldung)
 

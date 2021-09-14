@@ -12,21 +12,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 2e0ab4a22665741abb7ed4ab2569d1b55e090457
-ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
+ms.openlocfilehash: a507f0845fad1e43ce775e5d46f9fa8a548e369f
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113688545"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122607474"
 ---
 # <a name="quickstart-deploy-and-manage-nsg-flow-logs-using-azure-policy"></a>Schnellstart: Bereitstellen und Verwalten von NSG-Datenflussprotokollen mit Azure Policy 
 
 ## <a name="overview"></a>Übersicht
 Azure Policy hilft bei der Durchsetzung von Organisationsstandards und bei der Bewertung der Compliance nach Bedarf. Häufige Anwendungsfälle für Azure Policy sind die Implementierung von Governance für Ressourcenkonsistenz, Einhaltung gesetzlicher Bestimmungen, Sicherheit, Kosten und Verwaltung. In diesem Artikel werden zwei integrierte Richtlinien verwendet, die NSG-Datenflussprotokollen zur Verwaltung Ihrer Datenflussprotokoll-Einrichtung zur Verfügung stehen. Die erste Richtlinie kennzeichnet alle NSGs, für die keine Datenflussprotokolle aktiviert sind. Die zweite Richtlinie stellt automatisch Datenflussprotokolle für NSGs ohne aktivierte Datenflussprotokolle bereit. 
 
-Wenn Sie zum ersten Mal eine Azure-Richtlinie erstellen, können Sie Folgendes lesen: 
+Wenn Sie zum ersten Mal eine Azure Policy-Definition erstellen, können Sie Folgendes lesen: 
 - [Azure Policy – Übersicht](../governance/policy/overview.md) 
-- [Tutorial zum Erstellen einer Richtlinie](../governance/policy/assign-policy-portal.md#create-a-policy-assignment).
+- [Tutorial zum Erstellen einer Azure Policy-Zuweisung](../governance/policy/assign-policy-portal.md#create-a-policy-assignment).
 
 
 ## <a name="locate-the-policies"></a>Suchen der Richtlinien

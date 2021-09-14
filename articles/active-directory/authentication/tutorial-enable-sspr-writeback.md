@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 07/26/2021
+ms.date: 08/25/2021
 ms.author: justinha
 author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: ff3c052e2e9e745c59947cda43d12b46786fbd62
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: ff38cf413f6e1812c72d410c31088b965af1b3dd
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114707589"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123213919"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Tutorial: Aktivieren des Rückschreibens von Azure Active Directory-Self-Service-Kennzurücksetzungen in eine lokale Umgebung
 
@@ -48,11 +48,11 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
     * Absolvieren Sie ggf. das [vorherige Tutorial zum Aktivieren der Self-Service-Kennwortzurücksetzung von Azure AD](tutorial-enable-sspr.md).
 * Eine vorhandene lokale AD DS-Umgebung, die mit einer aktuellen Version von Azure AD Connect konfiguriert ist
     * Konfigurieren Sie ggf. Azure AD Connect unter Verwendung der [Express-Einstellungen](../hybrid/how-to-connect-install-express.md) oder der [benutzerdefinierten Einstellungen](../hybrid/how-to-connect-install-custom.md).
-    * Damit Sie Kennwortrückschreiben verwenden können, müssen Ihre Domänencontroller unter Windows Server 2012 oder höher ausgeführt werden.
+    * Damit Sie Kennwortrückschreiben verwenden können, müssen Ihre Domänencontroller unter Windows Server 2016 oder höher ausgeführt werden.
 
 ## <a name="configure-account-permissions-for-azure-ad-connect"></a>Konfigurieren der Kontoberechtigungen für Azure AD Connect
 
-Mithilfe von Azure AD Connect können Sie Benutzer, Gruppen und Anmeldeinformationen zwischen einer lokalen AD DS-Umgebung und Azure AD synchronisieren. In der Regel installieren Sie Azure AD Connect auf einem Computer mit mindestens Windows Server 2012, der in die lokale AD DS-Domäne eingebunden ist.
+Mithilfe von Azure AD Connect können Sie Benutzer, Gruppen und Anmeldeinformationen zwischen einer lokalen AD DS-Umgebung und Azure AD synchronisieren. In der Regel installieren Sie Azure AD Connect auf einem Computer mit Windows Server 2016 oder höher, der in die lokale AD DS-Domäne eingebunden ist.
 
 Damit Sie das SSPR-Rückschreiben ordnungsgemäß verwenden können, müssen für das in Azure AD Connect angegebene Konto die entsprechenden Berechtigungen und Optionen festgelegt sein. Wenn Sie nicht sicher sind, welches Konto derzeit verwendet wird, öffnen Sie Azure AD Connect, und wählen Sie die Option **Aktuelle Konfiguration anzeigen** aus. Das Konto, dem Sie Berechtigungen hinzufügen müssen, wird unter **Synchronisierte Verzeichnisse** angezeigt. Für das Konto müssen die folgenden Berechtigungen und Optionen festgelegt werden:
 

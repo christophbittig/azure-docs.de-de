@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: ba75af247888a2404619ec0a3db3b0a5d3310502
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 1e909273ae2413a67da6e3975e5a2bc50a68685d
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142421"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123186819"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Problembehandlungsleitfaden für häufig bei Azure SignalR Service auftretende Probleme
 
@@ -73,7 +73,7 @@ services.MapAzureSignalR(GetType().FullName, options =>
 
 * ASP.NET-Fehler „Kein Server verfügbar“[#279](https://github.com/Azure/azure-signalr/issues/279)
 * ASP.NET-Fehler „Die Verbindung ist nicht aktiv. Es können keine Daten an den Dienst gesendet werden.“ [#324](https://github.com/Azure/azure-signalr/issues/324)
-* „Fehler beim Erstellen der HTTP-Anforderung an https://<API endpoint>. Dies könnte daran liegen, dass das Serverzertifikat nicht richtig mit „HTTP.SYS“ im HTTPS-Fall konfiguriert wurde. Eine andere mögliche Ursache kann eine fehlende Übereinstimmung bei der Sicherheitsbindung zwischen Client und Server sein.“
+* „Fehler beim Erstellen der HTTP-Anforderung an `https://<API endpoint>`. Dies könnte daran liegen, dass das Serverzertifikat nicht richtig mit „HTTP.SYS“ im HTTPS-Fall konfiguriert wurde. Eine andere mögliche Ursache kann eine fehlende Übereinstimmung bei der Sicherheitsbindung zwischen Client und Server sein.“
 
 ### <a name="root-cause"></a>Grundursache
 
@@ -428,33 +428,33 @@ So finden Sie die Grundursache einer Threadpoolblockierung:
 
 <a name="view_request"></a>
 
-* Anzeigen ausgehender Anforderungen vom Client
+### <a name="how-to-view-the-outgoing-request-from-the-client"></a>Anzeigen ausgehender Anforderungen vom Client
+
 Als Beispiel wird hier ASP.NET Core verwendet (ASP.NET ist vergleichbar):
-    * Im Browser:
 
-        Wenn Sie beispielsweise Chrome verwenden, können Sie mit **F12** das Konsolenfenster öffnen und zur Registerkarte **Netzwerk** wechseln. Möglicherweise müssen Sie die Seite mit **F5** aktualisieren, um das Netzwerk von Anfang an zu erfassen.
+* Aus dem Browser: Nehmen Sie Chrome als Beispiel. Sie können **F12** verwenden, um das Konsolenfenster zu öffnen und zur Registerkarte **Netzwerk** zu wechseln. Möglicherweise müssen Sie die Seite mit **F5** aktualisieren, um das Netzwerk von Anfang an zu erfassen.
 
-        :::image type="content" source="./media/signalr-howto-troubleshoot-guide/chrome-network.gif" alt-text="Chrome-Ansicht „Netzwerk“":::
+    :::image type="content" source="./media/signalr-howto-troubleshoot-guide/chrome-network.gif" alt-text="Chrome-Ansicht „Netzwerk“":::
 
-    * Im C#-Client:
+* Im C#-Client:
 
-        Sie können lokalen Webdatenverkehr mit [Fiddler](https://www.telerik.com/fiddler) anzeigen. WebSocket-Datenverkehr wird ab Fiddler 4.5 unterstützt.
+    Sie können lokalen Webdatenverkehr mit [Fiddler](https://www.telerik.com/fiddler) anzeigen. WebSocket-Datenverkehr wird ab Fiddler 4.5 unterstützt.
 
-        :::image type="content" source="./media/signalr-howto-troubleshoot-guide/fiddler-view-network-inline.png" alt-text="Fiddler-Ansicht „Netzwerk“" lightbox="./media/signalr-howto-troubleshoot-guide/fiddler-view-network.png":::
+    :::image type="content" source="./media/signalr-howto-troubleshoot-guide/fiddler-view-network-inline.png" alt-text="Fiddler-Ansicht „Netzwerk“" lightbox="./media/signalr-howto-troubleshoot-guide/fiddler-view-network.png":::
 
 <a name="restart_connection"></a>
 
-* Wiederherstellen der Clientverbindung
+### <a name="how-to-restart-client-connection"></a>Wiederherstellen der Clientverbindung
     
-    Im Folgenden finden Sie [Beispielcode](https://github.com/Azure/azure-signalr/tree/dev/samples) mit Logik zum Wiederherstellen von Verbindungen mit der Strategie *Verbindung immer wiederherstellen*:
+Im Folgenden finden Sie [Beispielcode](https://github.com/Azure/azure-signalr/tree/dev/samples) mit Logik zum Wiederherstellen von Verbindungen mit der Strategie *Verbindung immer wiederherstellen*:
 
-    * [ASP.NET Core-C#-Client](https://github.com/Azure/azure-signalr/tree/dev/samples/ChatSample/ChatSample.CSharpClient/Program.cs#L64)
+* [ASP.NET Core-C#-Client](https://github.com/Azure/azure-signalr/tree/dev/samples/ChatSample/ChatSample.CSharpClient/Program.cs#L64)
 
-    * [ASP.NET Core-JavaScript-Client](https://github.com/Azure/azure-signalr/blob/release/1.0.0-preview1/samples/ChatSample/wwwroot/index.html#L164)
+* [ASP.NET Core-JavaScript-Client](https://github.com/Azure/azure-signalr/blob/dev/samples/ChatSample/ChatSample.Net50/wwwroot/index.html#L171)
 
-    * [ASP.NET-C#-Client](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.CSharpClient/Program.cs#L78)
+* [ASP.NET-C#-Client](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.CSharpClient/Program.cs#L78)
 
-    * [ASP.NET-JavaScript-Client](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.JavaScriptClient/wwwroot/index.html#L71)
+* [ASP.NET-JavaScript-Client](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.JavaScriptClient/wwwroot/index.html#L71)
 
 [Haben Sie Probleme oder Feedback zu dieser Problembehandlung? Informieren Sie uns darüber.](https://aka.ms/asrs/survey/troubleshooting)
 

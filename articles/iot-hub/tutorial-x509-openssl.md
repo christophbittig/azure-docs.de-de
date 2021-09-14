@@ -11,12 +11,12 @@ ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 7985879b54fe840ec47d72595d95547aa062938b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: adbb2979fc9e097fa0abf2675759ba1f7aad8a0c
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724300"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123310567"
 ---
 # <a name="tutorial-using-openssl-to-create-test-certificates"></a>Verwenden von OpenSSL zum Erstellen von Testzertifikaten
 
@@ -238,20 +238,27 @@ Sie verfügen nun über ein Zertifikat der Stamm Zertifizierungsstelle und ein u
 
 1. Navigieren Sie im Azure-Portalzu IoTHub und wählen Sie **Einstellungen > Zertifikate**.
 
-1. Wählen Sie **Hinzufügen**, um das neue untergeordnete Zertifizierungsstellen Zertifikat hinzuzufügen.
+2. Wählen Sie **Hinzufügen**, um das neue untergeordnete Zertifizierungsstellen Zertifikat hinzuzufügen.
 
-1. Geben Sie im Feld **Zertifikat Name** einen Anzeigenamen ein, und wählen Sie das hinzu zufügende PEM-Zertifikat aus.
+3. Geben Sie im Feld **Zertifikat Name** einen Anzeigenamen ein, und wählen Sie das hinzu zufügende PEM-Zertifikat aus.
 
-1. Wählen Sie **Speichern** aus. Ihr Zertifikat wird in der Zertifikat Liste mit dem Status nicht überprüft **angezeigt.** Der Überprüfungs Vorgang weist darauf hin, dass Sie das Zertifikat besitzen.
+> [!NOTE]
+> Die oben erstellten CRT-Zertifikate sind identisch mit PEM-Zertifikaten. Sie können die Erweiterung einfach ändern, wenn Sie ein Zertifikat hochladen, um den Besitz nachzuweisen. Alternativ können den folgenden OpenSSL-Befehl verwenden:
+
+```bash
+openssl x509 -in mycert.crt -out mycert.pem -outform PEM
+```
+
+4. Wählen Sie **Speichern** aus. Ihr Zertifikat wird in der Zertifikat Liste mit dem Status nicht überprüft **angezeigt.** Der Überprüfungs Vorgang weist darauf hin, dass Sie das Zertifikat besitzen.
 
    
-1. Wählen Sie das Zertifikat aus, um das Dialogfeld **Zertifikat Details** anzuzeigen.
+5. Wählen Sie das Zertifikat aus, um das Dialogfeld **Zertifikat Details** anzuzeigen.
 
-1. Wählen Sie **Prüfcode generieren**. Weitere Informationen finden Sie unter nach [weisen des Besitzes](tutorial-x509-prove-possession.md)eines ZS-Zertifikats.
+6. Wählen Sie **Prüfcode generieren**. Weitere Informationen finden Sie unter nach [weisen des Besitzes](tutorial-x509-prove-possession.md)eines ZS-Zertifikats.
 
-1. Kopieren Sie den Prüfcode in die Zwischenablage. Sie müssen den Überprüfungs Code als Zertifikat Antragsteller festlegen. Wenn der Überprüfungs Code z. b. BB0C656E69AF75E3FB3C8D922C1760C58C1DA5B05AAA9D0A lautet, fügen Sie diesen als Betreff Ihres Zertifikats hinzu, wie in Schritt 9 gezeigt.
+7. Kopieren Sie den Prüfcode in die Zwischenablage. Sie müssen den Überprüfungs Code als Zertifikat Antragsteller festlegen. Wenn der Überprüfungs Code z. b. BB0C656E69AF75E3FB3C8D922C1760C58C1DA5B05AAA9D0A lautet, fügen Sie diesen als Betreff Ihres Zertifikats hinzu, wie in Schritt 9 gezeigt.
 
-1. Erstellen eines privaten Schlüssels.
+8. Erstellen eines privaten Schlüssels.
 
   ```bash
     $ openssl genpkey -out pop.key -algorithm RSA -pkeyopt rsa_keygen_bits:2048

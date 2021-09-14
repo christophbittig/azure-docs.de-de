@@ -1,5 +1,5 @@
 ---
-title: Interagieren mit Azure Cosmos DB mithilfe von Apache Spark in Azure Synapse Link
+title: Interagieren mit Azure Cosmos DB mithilfe von Apache Spark 2 in Azure Synapse Link
 description: Interagieren mit Azure Cosmos DB mithilfe von Apache Spark in Azure Synapse Link
 services: synapse-analytics
 author: Rodrigossz
@@ -10,16 +10,19 @@ ms.date: 09/15/2020
 ms.author: rosouz
 ms.reviewer: jrasnick
 ms.custom: cosmos-db
-ms.openlocfilehash: e9e211fe3039b85e2807fec159537d32380e9799
-ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
+ms.openlocfilehash: 9ea9d5d34d69b950e3fa80c350c43f12615660ba
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113664987"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123112554"
 ---
-# <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link"></a>Interagieren mit Azure Cosmos DB mithilfe von Apache Spark in Azure Synapse Link
+# <a name="interact-with-azure-cosmos-db-using-apache-spark-2-in-azure-synapse-link"></a>Interagieren mit Azure Cosmos DB mithilfe von Apache Spark 2 in Azure Synapse Link
 
-In diesem Artikel erfahren Sie, wie Sie mit Azure Cosmos DB mithilfe von Synapse Apache Spark interagieren. Synapse Apache Spark bietet vollständige Unterstützung für Scala, Python, SparkSQL und C# und ist essentiell für Analyse-, Datentechnik-, Data-Science-, und Datenerkundungsszenarios in [Azure Synapse Link für Azure Cosmos DB](../../cosmos-db/synapse-link.md).
+> [!NOTE]
+> Informationen zu Synapse Link für Cosmos DB unter Verwendung von Spark 3 finden Sie im Artikel [Azure Synapse Link für Azure Cosmos DB in Spark 3](how-to-query-analytical-store-spark-3.md).
+
+In diesem Artikel erfahren Sie, wie Sie unter Verwendung von Synapse Apache Spark 2 mit Azure Cosmos DB interagieren. Synapse Apache Spark bietet vollständige Unterstützung für Scala, Python, SparkSQL und C# und ist essentiell für Analyse-, Datentechnik-, Data-Science-, und Datenerkundungsszenarios in [Azure Synapse Link für Azure Cosmos DB](../../cosmos-db/synapse-link.md).
 
 Die folgenden Funktionen werden für die Interaktion mit Azure Cosmos DB unterstützt:
 * Mit Synapse Apache Spark können Sie Daten in Ihren Azure Cosmos DB-Containern mit Azure Synapse Link-Aktivierung in Quasi-Echtzeit analysieren, ohne dass sich dies auf die Leistung Ihrer Transaktionsarbeitsauslastungen auswirkt. Die folgenden beiden Optionen stehen zur Verfügung, um den [Analysespeicher](../../cosmos-db/analytical-store-introduction.md) von Azure Cosmos DB in Spark abzufragen:
@@ -48,6 +51,9 @@ Folglich können Sie entscheiden, ob für den Datenrahmen in Spark geladen werde
 
 > [!NOTE]
 > Wenn Sie die Azure Cosmos DB-API von Mongo DB-Konten abfragen möchten, finden Sie [hier](../../cosmos-db/analytical-store-introduction.md#analytical-schema) weitere Informationen zur Schemadarstellung mit vollständiger Genauigkeit im Analysespeicher und den dabei zu verwendenden Namen für erweiterte Eigenschaften.
+
+> [!NOTE]
+> Beachten Sie, dass für alle `options` in den nachstehenden Befehlen die Groß-/Kleinschreibung beachtet werden muss. Beispielsweise müssen Sie `Gateway` verwenden, für `gateway` wird ein Fehler zurückgegeben.
 
 ### <a name="load-to-spark-dataframe"></a>Laden in Datenrahmen in Spark
 
@@ -182,7 +188,7 @@ streamQuery = dfStream\
         .option("checkpointLocation", "/localWriteCheckpointFolder")\
         .option("spark.synapse.linkedService", "<enter linked service name>")\
         .option("spark.cosmos.container", "<enter container name>")\
-        .option("spark.cosmos.connection.mode", "gateway")\
+        .option("spark.cosmos.connection.mode", "Gateway")\
         .start()
 
 streamQuery.awaitTermination()
@@ -201,7 +207,7 @@ val query = dfStream.
             option("checkpointLocation", "/localWriteCheckpointFolder").
             option("spark.synapse.linkedService", "<enter linked service name>").
             option("spark.cosmos.container", "<enter container name>").
-            option("spark.cosmos.connection.mode", "gateway").
+            option("spark.cosmos.connection.mode", "Gateway").
             start()
 
 query.awaitTermination()

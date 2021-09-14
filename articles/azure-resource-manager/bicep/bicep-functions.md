@@ -3,12 +3,12 @@ title: Bicep-Funktionen
 description: Es werden die Funktionen beschrieben, die in einer Bicep-Datei zum Abrufen von Werten, Arbeiten mit Zeichenfolgen und numerischen Werten sowie Abrufen von Bereitstellungsinformationen verwendet werden.
 ms.topic: conceptual
 ms.date: 06/16/2021
-ms.openlocfilehash: 827770c449d144e266022ee1b53c3b10078f605f
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: dcc0e71917431ac2a181ae87374499a89a27482c
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112292931"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123303983"
 ---
 # <a name="bicep-functions"></a>Bicep-Funktionen
 
@@ -89,6 +89,7 @@ Die folgenden Funktionen sind zum Abrufen von Ressourcenwerten verfügbar:
 * [listSecrets](./bicep-functions-resource.md#list)
 * [list*](./bicep-functions-resource.md#list)
 * [pickZones](./bicep-functions-resource.md#pickzones)
+* [providers (veraltet)](./bicep-functions-resource.md#providers)
 * [Referenz](./bicep-functions-resource.md#reference)
 * [resourceId](./bicep-functions-resource.md#resourceid): Kann in jedem Bereich verwendet werden, aber die gültigen Parameter ändern sich je nach Bereich.
 * [subscriptionResourceId](./bicep-functions-resource.md#subscriptionresourceid)

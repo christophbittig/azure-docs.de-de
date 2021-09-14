@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/12/2020
 ms.author: jodowns
 ms.custom: fasttrack-new, devx-track-azurepowershell
-ms.openlocfilehash: bd837faaaa986659ad9b30aa3cf853ea490cec6d
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 16a5dc58a8fddca2cef2c393aaecca61fef61a3c
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812136"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123187719"
 ---
 # <a name="revisions-in-azure-api-management"></a>Revisionen in Azure API Management
 
@@ -56,6 +56,9 @@ Sie können eine Revision im Azure-Portal als aktuelle Revision festlegen. Wenn 
 Wenn Sie eine Revision erstellen, können Sie eine Beschreibung für Ihre eigenen Nachverfolgungszwecke festlegen. Beschreibungen werden für Ihre API-Benutzer nicht wiedergegeben.
 
 Wenn Sie eine Revision als aktuelle Revision festlegen, können Sie optional auch einen öffentlichen Hinweis auf ein Änderungsprotokoll angeben. Das Änderungsprotokoll kann von den API-Benutzern im Entwicklerportal angezeigt werden. Sie können den Hinweis zum Änderungsprotokoll mithilfe des PowerShell-Cmdlets `Update-AzApiManagementApiRelease` ändern.
+
+> [!NOTE]
+> Bestimmte API-Eigenschaften wie **Anzeigename** und das **API-Suffix** können nur in der aktuellen Revision aktualisiert werden.
 
 ## <a name="versions-and-revisions"></a>Versionen und Revisionen
 

@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 08/09/2021
-ms.openlocfilehash: 7c4a2958f8629b224cecf1e92fd0efcff6b1fdd6
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 7f8f9b3a50b5023a217509f62ba2cc3d94da2ee5
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122350596"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123253955"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Neuerungen in Azure Sentinel
 
@@ -33,6 +33,46 @@ Elemente, die älter als sechs Monate sind, finden Sie im [Archiv zu den Neuerun
 > Und auch Sie selbst können sich beteiligen! Werden Sie Teil der [GitHub-Community für Azure Sentinel-Bedrohungsspezialisten](https://github.com/Azure/Azure-Sentinel/wiki).
 >
 
+## <a name="september-2021"></a>September 2021
+
+- [Neu in der Dokumentation: Dokumentation zur Datenconnectorskalierung](#new-in-docs-scaling-data-connector-documentation)
+- [Änderungen am Azure Storage-Kontoconnector](#azure-storage-account-connector-changes)
+
+### <a name="new-in-docs-scaling-data-connector-documentation"></a>Neu in der Dokumentation: Dokumentation zur Datenconnectorskalierung
+
+Da wir immer mehr integrierte Datenconnectors für Azure Sentinel hinzufügen, haben wir unsere Datenconnector-Dokumentation neu organisiert, um diese Skalierung widerzuspiegeln.
+
+Für die meisten Datenconnectors haben wir vollständige Artikel, in denen ein einzelner Connector beschrieben wird, durch eine Reihe generischer Prozeduren und eine vollständige Referenz aller derzeit unterstützten Connectors ersetzt.
+
+Ausführliche Informationen zu Ihrem Connector finden Sie in der [Referenz zu Azure Sentinel-Datenconnectors](data-connectors-reference.md), einschließlich Verweisen auf die relevante generische Prozedur sowie zusätzliche Informationen und Konfigurationen, die erforderlich sind.
+
+Weitere Informationen finden Sie unter:
+
+- **Konzeptionelle Informationen**: [Verbinden von Datenquellen](connect-data-sources.md)
+
+- **Allgemeine Gewusst-wie-Artikel**:
+
+   - [Verbinden mit Azure-, Windows-, Microsoft- und Amazon-Diensten](connect-azure-windows-microsoft-services.md)
+   - [Verbinden Ihrer Datenquelle mit der Datensammler-API von Azure Sentinel zur Datenerfassung](connect-rest-api-template.md)
+   - [Abrufen von Protokollen im CEF-Format von Ihrem Gerät oder Ihrer Appliance in Azure Sentinel](connect-common-event-format.md)
+   - [Sammeln von Daten aus Linux-basierten Quellen mithilfe von Syslog](connect-syslog.md)
+   - [Sammeln von Daten in benutzerdefinierten Protokollformaten für Azure Sentinel mit dem Log Analytics-Agent](connect-custom-logs.md)
+   - [Verwenden von Azure Functions zum Verbinden Ihrer Datenquelle mit Azure Sentinel](connect-azure-functions-template.md)
+   - [Ressourcen zum Erstellen benutzerdefinierter Azure Sentinel-Connectors](create-custom-connector.md)
+
+### <a name="azure-storage-account-connector-changes"></a>Änderungen am Azure Storage-Kontoconnector
+
+Aufgrund einiger Änderungen, die innerhalb der Ressourcenkonfiguration des Azure Storage-Kontos selbst vorgenommen wurden, muss der Connector ebenfalls neu konfiguriert werden.
+Die (übergeordnete) Speicherkontoressource enthält andere (untergeordnete) Ressourcen für jeden Speichertyp: Dateien, Tabellen, Warteschlangen und Blobs.
+
+Beim Konfigurieren von Diagnosen für ein Speicherkonto müssen Sie wiederum Folgendes auswählen und konfigurieren:
+- Die übergeordnete Kontoressource, die die **Transaktions** metrik exportiert.
+- Alle untergeordneten Speichertypressourcen, die alle Protokolle und Metriken exportieren (siehe Tabelle oben).
+
+Es werden nur die Speichertypen angezeigt, für die Sie tatsächlich Ressourcen definiert haben.
+
+:::image type="content" source="media/whats-new/storage-diagnostics.png" alt-text="Screenshot der Azure Storage-Diagnosekonfiguration.":::
+
 ## <a name="august-2021"></a>August 2021
 
 - [Erweiterte Incidentsuche (öffentliche Vorschau)](#advanced-incident-search-public-preview)
@@ -45,7 +85,7 @@ Elemente, die älter als sechs Monate sind, finden Sie im [Archiv zu den Neuerun
 
 Standardmäßig werden Incidentsuchvorgänge nur für die Werte **Incident-ID**, **Titel**, **Tags**, **Besitzer** und **Produktname** ausgeführt. Azure Sentinel bietet jetzt [erweiterte Suchoptionen](investigate-cases.md#search-for-incidents) für die Suche in größeren Datenmengen, einschließlich Warnungsdetails, Beschreibungen, Entitäten, Taktiken und mehr.
 
-Zum Beispiel:
+Beispiel:
 
 :::image type="content" source="media/tutorial-investigate-cases/advanced-search.png" alt-text="Screenshot der Seite „Incidents“ mit erweiterten Suchoptionen":::
 
@@ -436,7 +476,7 @@ Folgende neue Erkennungen sind verfügbar:
 - [Known IRIDIUM IP (Bekannte IRIDIUM-IP-Adresse)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/IridiumIOCs.yaml)
 - [Known Phosphorus group domains/IP (Bekannte Phosphorus-Gruppendomänen/IP-Adressen)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/PHOSPHORUSMarch2019IOCs.yaml)
 - [THALLIUM domains included in DCU takedown (Im DCU-Takedown enthaltene THALLIUM-Domänen)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ThalliumIOCs.yaml)
-- [Known ZINC related maldoc hash (Bekannter mit ZINC zusammenhängender Maldoc-Hash)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ZincJan272021IOCs.yaml)
+- [Known ZINC related malware hash (Bekannter mit ZINC zusammenhängender Malware-Hash)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ZincJan272021IOCs.yaml)
 - [Known STRONTIUM group domains (Bekannte STRONTIUM-Gruppendomänen)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/STRONTIUMJuly2019IOCs.yaml)
 - [NOBELIUM - Domain and IP IOCs - March 2021 (NOBELIUM – Domänen- und IP-IOCs – März 2021)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/NOBELIUM_DomainIOCsMarch2021.yaml)
 

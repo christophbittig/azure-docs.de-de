@@ -3,28 +3,28 @@ title: Datei einfügen
 description: include file
 services: cosmos-db
 ms.custom: include file
-ms.openlocfilehash: e81f5ef294fd798f720bff06e8fd5f8bc1075ff0
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: 3f7a37ce78e49abe1356180818a215488fe82ea3
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122195800"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515616"
 ---
 1. Melden Sie sich in einem neuen Browserfenster beim [Azure-Portal](https://portal.azure.com/) an.
 
 2. Wählen Sie im Menü auf der linken Seite **Ressource erstellen** aus.
    
-   :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-0.png" alt-text="Erstellen einer Ressource im Azure-Portal":::
+   :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-0.png" alt-text="Screenshot: Erstellen einer Ressource im Azure-Portal":::
    
 3. Wählen Sie auf der Seite **Neu** die Optionen **Datenbanken** > **Azure Cosmos DB** aus.
    
-   :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-1.png" alt-text="Der Bereich „Datenbanken“ im Azure-Portal":::
+   :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-1.png" alt-text="Screenshot: Bereich „Datenbanken“ im Azure-Portal":::
    
 4. Wählen Sie auf der Seite **API-Option auswählen** **Azure Cosmos DB-API für MongoDB** > **Erstellen** aus.
 
    Die API bestimmt den Typ des zu erstellenden Kontos. Wählen Sie **Azure Cosmos DB-API für MongoDB** aus, denn in diesem Schnellstart erstellen Sie eine Sammlung, für die MongoDB verwendet wird. Weitere Informationen finden Sie unter [Übersicht über die Azure Cosmos DB-API für MongoDB](../mongodb-introduction.md).
 
-   :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/azure-cosmos-db-select-api.png" alt-text="Der Bereich „API-Option auswählen“":::
+   :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/azure-cosmos-db-select-api.png" alt-text="Screenshot: Bereich „API-Option auswählen“":::
 
 5. Geben Sie auf der Seite **Azure Cosmos DB-Konto erstellen** die Einstellungen für das neue Azure Cosmos DB-Konto ein:
 
@@ -41,7 +41,7 @@ ms.locfileid: "122195800"
    > [!NOTE]
    > Sie können pro Azure-Abonnement maximal ein Azure Cosmos DB-Konto im Free-Tarif einrichten und müssen sich beim Erstellen des Kontos anmelden. Wird die Option zum Anwenden des tarifspezifischen Rabatts für den Free-Tarif nicht angezeigt, bedeutet dies, dass bereits ein anderes Konto im Abonnement mit dem Free-Tarif aktiviert wurde.
 
-   :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/azure-cosmos-db-create-new-account.png" alt-text="Die Seite „Neues Konto“ für Azure Cosmos DB"::: 
+   :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/azure-cosmos-db-create-new-account.png" alt-text="Screenshot: Seite „Neues Konto“ für Azure Cosmos DB"::: 
 
 1. Konfigurieren Sie auf der Registerkarte **Globale Verteilung** die folgenden Details. Für diese Schnellstartanleitung können Sie die Standardwerte übernehmen:
 
@@ -67,4 +67,4 @@ ms.locfileid: "122195800"
 
 4. Die Kontoerstellung dauert einige Minuten. Warten Sie, bis im Portal die Seite **Congratulations! Ihr Azure Cosmos DB API for MongoDB account is ready** (Herzlichen Glückwunsch! Ihre Azure Cosmos DB-API für das MongoDB-Konto ist bereit) angezeigt wird.
 
-   :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/azure-cosmos-db-account-created.png" alt-text="Der Bereich „Benachrichtigungen“ im Azure-Portal"::: 
+   :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/azure-cosmos-db-account-created.png" alt-text="Screenshot: Bereich „Benachrichtigungen“ im Azure-Portal"::: 

@@ -10,16 +10,22 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 05/24/2021
 ms.author: pafarley
-ms.openlocfilehash: ce04187cb513712998b6c4ba26d5210bb56ca5df
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: b7292206aacbbca5c8e76ce573dc6fd0b3e32578
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110453754"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835754"
 ---
 # <a name="whats-new-in-computer-vision"></a>Neuerungen beim maschinellen Sehen
 
 Informieren Sie sich über die Neuerungen im Dienst. Dabei kann es sich um Versionshinweise, Videos, Blogbeiträge und andere Informationen handeln. Legen Sie ein Lesezeichen für diese Seite an, um über den Dienst auf dem Laufenden zu bleiben.
+
+## <a name="august-2021"></a>August 2021
+
+### <a name="image-tagging-language-expansion"></a>Spracherweiterung für die Bildmarkierung
+
+Die [neueste Version (v3.2)](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f200) der Bildmarkierung unterstützt ab sofort Tags in 50 Sprachen. Weitere Informationen finden Sie auf der Seite mit den [unterstützten Sprachen](language-support.md).
 
 ## <a name="may-2021"></a>Mai 2021
 

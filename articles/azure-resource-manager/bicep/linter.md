@@ -3,12 +3,12 @@ title: Verwenden des Bicep-Linters
 description: Erfahren Sie, wie Sie den Bicep-Linter verwenden.
 ms.topic: conceptual
 ms.date: 07/01/2021
-ms.openlocfilehash: 82ab1462ca55a4329370d185aed626ae631e2f2b
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: 6b270a87a67235a6663a697b1329c5f86d570fdf
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113649436"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779727"
 ---
 # <a name="use-bicep-linter"></a>Verwenden des Bicep-Linters
 

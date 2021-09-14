@@ -8,16 +8,16 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 07/21/2021
-ms.openlocfilehash: 30132d08a1094fc2bd4b7423ed787eadf77c2249
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 35b29ae6116e2e040f2383606fa20c5ab6316315
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122350328"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123253447"
 ---
 #  <a name="data-collection-best-practices"></a>Bewährte Methoden für die Datensammlung
 
-In diesem Abschnitt werden bewährte Methoden zum Sammeln von Daten mithilfe von Azure Sentinel-Datenconnectors erläutert. Weitere Informationen finden Sie unter [Verbinden von Datenquellen](connect-data-sources.md), [Azure Sentinel-Partnerdatenconnectors](partner-data-connectors.md) sowie im [Azure Sentinel-Lösungskatalog](sentinel-solutions-catalog.md).
+In diesem Abschnitt werden bewährte Methoden zum Sammeln von Daten mithilfe von Azure Sentinel-Datenconnectors erläutert. Weitere Informationen finden Sie unter [Verbinden von Datenquellen](connect-data-sources.md), [Referenz zu Azure Sentinel-Datenconnectors](data-connectors-reference.md) sowie im [Azure Sentinel-Lösungskatalog](sentinel-solutions-catalog.md).
 
 ## <a name="prioritize-your-data-connectors"></a>Priorisieren Ihrer Datenconnectors
 
@@ -25,7 +25,7 @@ Wenn nicht klar ist, welche Datenconnectors am besten für Ihre Umgebung geeigne
 
 Die kostenlosen Datenconnectors zeigen so bald wie möglich einen Wert aus Azure Sentinel an, während Sie weiterhin andere Datenconnectors und Budgets planen.
 
-Für Ihre [Partner](partner-data-connectors.md)- und [benutzerdefinierten](create-custom-connector.md) Datenconnectors legen Sie zunächst die [Syslog](connect-syslog.md)- und [CEF](connect-common-event-format.md)-Connectors mit der höchsten Priorität fest, ebenso wie alle Linux-basierten Geräte.
+Für Ihre [Partner](data-connectors-reference.md)- und [benutzerdefinierten](create-custom-connector.md) Datenconnectors legen Sie zunächst die [Syslog](connect-syslog.md)- und [CEF](connect-common-event-format.md)-Connectors mit der höchsten Priorität fest, ebenso wie alle Linux-basierten Geräte.
 
 Wenn Ihre Datenerfassung zu schnell zu teuer wird, beenden oder filtern Sie die mit dem [Azure Monitor-Agent](../azure-monitor/agents/azure-monitor-agent-overview.md) weitergeleiteten Protokolle.
 

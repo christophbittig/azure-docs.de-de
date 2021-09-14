@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 06/24/2021
 ms.author: alsin
-ms.openlocfilehash: 87008ec2ba23e642ecbbe1e91c7f87d0cc07012f
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 990cca45c41eef57f1971c866cdbe1e9efd62f6c
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113016361"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772609"
 ---
 # <a name="azure-automanage-for-machines-best-practices---arc-enabled-servers"></a>Bewährte Methoden für Azure Automanage für Computer – Server mit Arc-Unterstützung
 
@@ -52,7 +52,7 @@ Automanage unterstützt die folgenden Betriebssysteme für Server mit Arc-Unters
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Versuchen Sie, die Automanage für Computer im Azure-Portal zu aktivieren.
+Versuchen Sie, Automanage für Computer im Azure-Portal zu aktivieren.
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Aktivieren der automatischen Azure-Verwaltung für virtuelle Computer im Azure-Portal](quick-create-virtual-machines-portal.md)
+> [Aktivieren von Automanage für Computer im Azure-Portal](quick-create-virtual-machines-portal.md)
