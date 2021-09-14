@@ -1,15 +1,15 @@
 ---
 title: Informationen zur Einhaltung der gesetzlichen Bestimmungen gemäß NIST SP 800-171 R2 (Azure Government)
 description: Details zur integrierten Initiative zur Einhaltung der gesetzlichen Bestimmungen gemäß NIST SP 800-171 R2 (Azure Government). Jede Steuerung wird mindestens einer Azure Policy-Definition zugeordnet, die Sie bei der Bewertung unterstützt.
-ms.date: 09/03/2021
+ms.date: 08/27/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: e348ad803560bcfcef46ca08b69544badf24ddbe
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 4743185adc88d68376eca1e3a0c7a958904cb14a
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123474520"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123101874"
 ---
 # <a name="details-of-the-nist-sp-800-171-r2-azure-government-regulatory-compliance-built-in-initiative"></a>Details zur integrierten Initiative zur Einhaltung der gesetzlichen Bestimmungen gemäß NIST SP 800-171 R2 (Azure Government)
 
@@ -335,7 +335,7 @@ Suchen Sie anschließend nach der integrierten Initiativendefinition zur Einhalt
 |---|---|---|---|
 |[Die Endpoint Protection-Lösung sollte für VM-Skalierungsgruppen installiert sein](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F26a828e1-e88f-464e-bbb3-c134a282b9de) |Hiermit überprüfen Sie die Existenz und die Integrität einer Endpoint Protection-Lösung in Ihren VM-Skalierungsgruppen, um sie vor Bedrohungen und Sicherheitsrisiken zu schützen. |AuditIfNotExists, Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_VmssMissingEndpointProtection_Audit.json) |
 |[Die Microsoft IaaSAntimalware-Erweiterung muss auf Windows-Servern bereitgestellt werden](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9b597639-28e4-48eb-b506-56b05d366257) |Diese Richtlinie überwacht alle Windows Server-VMs ohne bereitgestellte Microsoft IaaSAntimalware-Erweiterung. |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/WindowsServers_AntiMalware_AuditIfNotExists.json) |
-|[Fehlenden Endpoint Protection-Schutz in Azure Security Center überwachen](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Faf6cd1bd-1635-48cb-bde7-5b15693900b9) |Hiermit werden Server ohne installierten Endpoint Protection-Agent über Azure Security Center in Form von Empfehlungen überwacht. |AuditIfNotExists, Disabled |[3.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_MissingEndpointProtection_Audit.json) |
+|[Fehlenden Endpoint Protection-Schutz in Azure Security Center überwachen](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Faf6cd1bd-1635-48cb-bde7-5b15693900b9) |Hiermit werden Server ohne installierten Endpoint Protection-Agent über Azure Security Center in Form von Empfehlungen überwacht. |AuditIfNotExists, Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_MissingEndpointProtection_Audit.json) |
 
 ### <a name="monitor-organizational-systems-including-inbound-and-outbound-communications-traffic-to-detect-attacks-and-indicators-of-potential-attacks"></a>Überwachen Sie die Unternehmenssysteme, einschließlich des ein- und ausgehenden Kommunikationsdatenverkehrs, um Angriffe und Anzeichen für potenzielle Angriffe zu erkennen.
 

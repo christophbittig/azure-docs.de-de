@@ -8,18 +8,16 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 11/29/2017
-ms.openlocfilehash: 882939a08a3a90cffd0b4eb25711d71159a91eb9
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 4c824c231c1edfb9dda5df2f668fc4440a50f4e0
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122689682"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112581482"
 ---
 # <a name="interpret-model-results-in-machine-learning-studio-classic"></a>Interpretieren von Modellergebnissen im Azure Machine Learning Studio (Classic)
 
-**GILT FÜR:**  ![Dies ist ein Häkchen, d. h., dieser Artikel bezieht sich auf Machine Learning Studio (Classic).](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic)   ![Dies ist ein X, d. h., dieser Artikel bezieht sich nicht auf Azure Machine Learning.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
-
-[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
+**GILT FÜR:**  ![Dies ist ein Häkchen, d. h., dieser Artikel bezieht sich auf das Azure Machine Learning Studio (Classic).](../../../includes/media/aml-applies-to-skus/yes.png)Azure Machine Learning Studio (Classic)   ![Dies ist ein X, d. h., dieser Artikel bezieht sich nicht auf Azure Machine Learning.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 In diesem Artikel werden das Visualisieren und Interpretieren der Vorhersageergebnisse im Azure Machine Learning Studio (Classic) erläutert. Nachdem Sie ein Modell trainiert und darauf basierend Vorhersagen erstellt (das Modell ausgewertet) haben, müssen Sie das Vorhersageergebnis verstehen und interpretieren.
 

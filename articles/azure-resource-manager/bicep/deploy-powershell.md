@@ -5,12 +5,12 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: 27d00d137c2fb178b2bd96732664c08965ce3073
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: 2b5540d3b45b77cd39e014605780b98b867498fd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634494"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355691"
 ---
 # <a name="deploy-resources-with-bicep-and-azure-powershell"></a>Bereitstellen von Ressourcen mit Bicep und Azure PowerShell
 
@@ -75,7 +75,7 @@ Wenn eine Bereitstellung in einer Ressourcengruppe erfolgen soll, die nicht vorh
 New-AzResourceGroup -Name ExampleGroup -Location "Central US"
 ```
 
-Verwenden Sie zum Bereitstellen einer lokalen Bicep-Datei im Bereitstellungsbefehl den Parameter `-TemplateFile`.
+Verwenden Sie zum Bereitstellen einer lokalen Bicep-Datei im Bereitstellungsbefehl den Parameter `-TemplateFile`. 
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -157,7 +157,7 @@ Vor dem Bereitstellen der Bicep-Datei können Sie die Änderungen, die von der B
 
 ## <a name="deploy-template-specs"></a>Bereitstellen von Vorlagenspezifikationen
 
-Azure PowerShell unterstützt das Erstellen von Vorlagenspezifikationen durch Bereitstellen von BICEP-Dateien derzeit nicht. Sie können jedoch eine BICEP-Datei mit der [Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs)-Ressource erstellen, um eine Vorlagenspezifikation bereitzustellen. Dies ist ein [Beispiel](https://github.com/Azure/azure-docs-bicep-samples/blob/main/create-template-spec-using-bicep/azuredeploy.bicep) hierfür. Sie können Ihre Bicep-Datei auch mithilfe der Bicep-Befehlszeilenschnittstelle in Form einer ARM-Vorlagen-JSON-Datei erstellen und dann eine Vorlagenspezifikation mit der JSON-Vorlage erstellen.
+Azure PowerShell unterstützt das Erstellen von Vorlagenspezifikationen durch Bereitstellen von BICEP-Dateien derzeit nicht. Sie können jedoch eine BICEP-Datei mit der [Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs)-Ressource erstellen, um eine Vorlagenspezifikation bereitzustellen. Dies ist ein [Beispiel](https://github.com/Azure/azure-docs-json-samples/blob/master/create-template-spec-using-template/azuredeploy.bicep) hierfür. Sie können Ihre Bicep-Datei auch mithilfe der Bicep-Befehlszeilenschnittstelle in Form einer ARM-Vorlagen-JSON-Datei erstellen und dann eine Vorlagenspezifikation mit der JSON-Vorlage erstellen.
 
 ## <a name="deployment-name"></a>„Deployment name“ (Bereitstellungsname)
 
