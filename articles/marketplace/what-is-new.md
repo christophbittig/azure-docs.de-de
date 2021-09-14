@@ -6,12 +6,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/06/2021
-ms.openlocfilehash: a1efbf3cdd90b26b8abdfe9dfa7b380d5dd4badb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bab6b3afccb16f49384ec6fd90410e44a4edf268
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340036"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634175"
 ---
 # <a name="whats-new-in-the-microsoft-commercial-marketplace"></a>Neuerungen im kommerziellen Marketplace von Microsoft
 
@@ -34,7 +34,7 @@ Erfahren Sie mehr über wichtige Aktualisierungen im Programm zum kommerziellen 
 | Kategorie | BESCHREIBUNG | Datum |
 | ------------ | ------------- | ------------- |
 | Besteuerung | Die Endkundenbesteuerung in Australien wird von Microsoft verwaltet, mit Ausnahme von Kundenkäufen im Rahmen eines Enterprise Agreement, das vom Herausgeber verwaltet wird. | 01.07.2021 |
-| Besteuerung | Die Länderliste auf der [Seite mit steuerlichen Aspekten](/partner-center/tax-details-marketplace) wurde aktualisiert und enthält nun Folgendes: <ul><li>Argentinien</li><li>Bulgarien</li><li>Hongkong SAR</li><li>Südkorea</li><li>Pakistan</li><li>Palästinensische Autonomiegebiete</li><li>Panama</li><li>Paraguay</li><li>Peru</li><li>Philippinen</li><li>St. Kitts und Nevis</li><li>Senegal</li><li>Sri Lanka</li><li>Tadschikistan</li><li>Tansania</li><li>Thailand</li><li>Trinidad und Tobago</li><li>Tunesien</li><li>Turkmenistan</li><li>Uganda</li><li>Usbekistan</li><li>Simbabwe</li></ul> | 01.07.2021 |
+| Besteuerung | Die Länderliste auf der [Seite mit steuerlichen Aspekten](/partner-center/tax-details-marketplace) wurde aktualisiert und enthält nun Folgendes: <ul><li>Argentinien</li><li>Bulgarien</li><li>Hongkong (SAR)</li><li>Südkorea</li><li>Pakistan</li><li>Palästinensische Autonomiegebiete</li><li>Panama</li><li>Paraguay</li><li>Peru</li><li>Philippinen</li><li>St. Kitts und Nevis</li><li>Senegal</li><li>Sri Lanka</li><li>Tadschikistan</li><li>Tansania</li><li>Thailand</li><li>Trinidad und Tobago</li><li>Tunesien</li><li>Turkmenistan</li><li>Uganda</li><li>Usbekistan</li><li>Simbabwe</li></ul> | 01.07.2021 |
 | Besteuerung | Nigeria wurde von der Liste der „gemeinsam von Herausgebern/Entwicklern verwalteten Länder“ in die Liste der „Endkundenbesteuerung mit Unterschieden in Marketplaces“ verschoben.  | 01.07.2021 |
 | Auszahlungen | Auszahlungsszenarien für den kommerziellen Marketplace wurden der [Seite mit steuerlichen Aspekten](/partner-center/tax-details-marketplace) hinzugefügt. | 26.04.2021 |
 |
@@ -43,6 +43,7 @@ Erfahren Sie mehr über wichtige Aktualisierungen im Programm zum kommerziellen 
 
 | Category | BESCHREIBUNG | Datum |
 | ------------ | ------------- | ------------- |
+| Angebote | Das Thema [Transaktionsfunktionen für den kommerziellen Marketplace](/azure/marketplace/marketplace-commercial-transaction-capabilities-and-considerations) enthält jetzt ein Flussdiagramm, mit dem Sie den geeigneten transaktionsfähigen Angebotstyp und den Tarif für den Verkauf Ihrer Software im kommerziellen Marketplace ermitteln können. | 2021-08-18 |
 | Richtlinie | Eine aktualisierte [Zertifizierungsrichlinie](/legal/marketplace/certification-policies?context=/azure/marketplace/context/context) finden Sie im [Änderungsverlauf](/legal/marketplace/offer-policies-change-history). | 06.08.2021 |
 | Co-Selling | Informationen für das MACC-Programm wurden hinzugefügt, einschließlich Anforderungen, Häufigkeit der Aktualisierung des MACC-Status und Definitionen für „Registriert“ und „Nicht registriert“. Weitere Informationen finden Sie unter [Registrierung für den Prepaidtarif für den Azure-Verbrauch](./azure-consumption-commitment-enrollment.md) oder [Co-Selling mit Microsoft-Vertriebsteams und -Partnern: Übersicht](./co-sell-overview.md). | 03.06.2021 |
 | Angebote | Zusätzliche Informationen zu VM-Preisoptionen und -Beschreibungen. Weitere Informationen finden Sie unter [Planen eines SaaS-Angebots im kommerziellen Marketplace](./plan-saas-offer.md). | 25.05.2021|

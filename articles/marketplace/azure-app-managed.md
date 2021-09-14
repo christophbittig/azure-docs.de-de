@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: 666dfb22036c3d7f1d88515f4b8118eaf133db8c
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: cba8ba5c8c5ff300fe585d75aab98fd4003a475d
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113594953"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122608231"
 ---
 # <a name="configure-a-managed-application-plan"></a>Konfigurieren eines Plans für verwaltete Anwendungen
 
@@ -178,7 +178,7 @@ Sie können maximal fünf Richtlinien und nur eine Instanz jeder einzelnen Richt
 
 1. Wählen Sie unter **Richtlinieneinstellungen** den Link **+ Richtlinie hinzufügen (max. 5)** aus.
 1. Geben Sie im Feld **Name** den Namen der Richtlinienzuweisung ein (max. 50 Zeichen).
-1. Wählen Sie im Listenfeld **Richtlinien** die Azure-Richtlinie aus, die auf von der verwalteten Anwendung im Kundenabonnement erstellte Ressourcen angewandt wird.
+1. Wählen Sie im Listenfeld **Richtlinien** die Azure Policy-Definition aus, die auf von der verwalteten Anwendung im Kundenabonnement erstellte Ressourcen angewandt wird.
 1. Geben Sie im Feld **Richtlinienparameter** den Parameter an, auf den die Richtlinien für Überwachungs- und Diagnoseeinstellungen angewandt werden sollen.
 1. Wählen Sie im Listenfeld **Richtlinien-SKU** den Typ der Richtlinien-SKU aus.
 

@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/06/2020
-ms.openlocfilehash: 4b06a8808826c5b11ecc2c54824db65f37d3b50f
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.date: 08/13/2021
+ms.openlocfilehash: 082b943aef3f82898b80d23d33a90d3f5ec3ebc6
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113431400"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515127"
 ---
 # <a name="plan-an-azure-managed-application-for-an-azure-application-offer"></a>Planen einer von Azure verwalteten Anwendung für ein Azure-Anwendungsangebot
 
@@ -39,6 +39,28 @@ Verwenden einer Azure-Anwendung: Plan für die verwaltete Anwendung, wenn die fo
 
 > [!NOTE]
 > Verwaltete Anwendungen müssen über den Azure Marketplace bereitgestellt werden können. Wenn die Kundenkommunikation von Bedeutung ist, wenden Sie sich an interessierte Kunden, nachdem Sie den gemeinsamen Zugriff auf Leads aktiviert haben.
+
+## <a name="usage-of-azure-kubernetes-service-aks-and-containers-in-managed-application"></a>Verwendung von Azure Kubernetes Service (AKS) und Containern in einer verwalteten Anwendung
+
+### <a name="azure-application-offers-fall-into-two-categories"></a>Azure-Anwendungsangebote lassen sich in zwei Kategorien unterteilen.
+
+- Lösungsvorlage: Zugriff durch den Herausgeber nicht möglich
+- Verwaltete Anwendung: Zugriff durch den Herausgeber über eine vordefinierte Autorisierung, die vom Kunden zum Zeitpunkt der Bereitstellung gewährt wird
+
+**Lösungsvorlagen:** Die Angebote für Lösungsvorlagen können vom Herausgeber nach der Kundenbereitstellung nicht geändert werden. Daher sind Container und Azure Kubernetes Service (AKS)-Ressourcen in dieser Angebotskategorie derzeit nicht zulässig.
+
+**Verwaltete Anwendungen:** Bei den Angeboten für verwaltete Anwendungen kann der Herausgeber auf die während der Bereitstellung im Abonnement des Kunden erstellten Ressourcen zugreifen und diese steuern. Daher sind Container und Azure Kubernetes Service (AKS)-Ressourcen in dieser Angebotskategorie *<u>vorläufig zulässig</u>* .
+
+### <a name="rules-and-known-issues-for-aks-and-containers-in-managed-applications"></a>Regeln für und bekannte Probleme mit AKS und Containern in verwalteten Anwendungen
+
+- Die AKS-Knotenressourcengruppe erbt die Verweigern-Zuweisungen nicht als Teil der von Azure verwalteten Anwendung. Dies bedeutet, dass der Kunde Vollzugriff auf die AKS-Knotenressourcengruppe hat, die von der AKS-Ressource erstellt wird, wenn sie in der verwalteten Anwendung enthalten ist, während die verwaltete Ressourcengruppe über die richtigen Zuweisungen zum Verweigern verfügt.
+ 
+- Der Herausgeber kann Helm-Diagramme und andere Skripts als Teil der von Azure verwalteten Anwendung hinzufügen. Das Angebot wird jedoch wie eine reguläre Bereitstellung verwalteter Anwendungen behandelt, und es erfolgt keine automatische containerspezifische Verarbeitung oder Helm-Diagramminstallation zum Zeitpunkt der Bereitstellung. Es liegt in der Verantwortung des Herausgebers, die relevanten Skripts entweder zur Bereitstellungszeit mit den üblichen Techniken wie der benutzerdefinierten VM-Skripterweiterung oder Azure-Bereitstellungsskripts, oder nach der Bereitstellung auszuführen.
+ 
+- Wie bei der regulären von Azure verwalteten Anwendung liegt es in der Verantwortung des Herausgebers, für die erfolgreiche Bereitstellung der Lösung zu sorgen und sicherzustellen, dass alle Komponenten ordnungsgemäß konfiguriert und geschützt werden und betriebsbereit sind. Herausgeber können beispielsweise ihre eigene Containerregistrierung als Quelle der Images verwenden, sind aber vollständig für die Containersicherheit und die laufende Überprüfung auf Sicherheitsrisiken verantwortlich.
+
+> [!NOTE]
+> Die Unterstützung für Container und AKS im Azure Angebot der von Azure verwalteten Anwendung kann widerrufen werden, wenn ein offizielles Angebot vom Typ „Containeranwendung “ im Marketplace verfügbar gemacht wird. Zu diesem Zeitpunkt kann es erforderlich sein, alle zukünftigen Angebote mithilfe des neuen Angebotstyps zu veröffentlichen, und die vorhandenen Angebote müssen möglicherweise zum neuen Angebotstyp migriert und eingestellt werden.
 
 ## <a name="deployment-package"></a>Bereitstellungspaket
 
