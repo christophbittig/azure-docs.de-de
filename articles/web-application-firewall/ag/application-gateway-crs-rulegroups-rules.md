@@ -5,15 +5,15 @@ description: Diese Seite enthält Informationen zu CRS-Regelgruppen und -Regeln 
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 07/06/2021
+ms.date: 08/23/2021
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 9aa4277c3d13419a4083193c07d807decea21c59
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4a5f1dba6e0e1411a4268b07f6d66788f3aa8c0f
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355029"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772717"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>CRS-Regelgruppen und -Regeln der Web Application Firewall
 
@@ -229,7 +229,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |932106|Remotebefehlsausführung: Einschleusung von Unix-Befehl|
 |932110|Remotebefehlsausführung: Einschleusung von Windows-Befehl|
 |932115|Remotebefehlsausführung: Einschleusung von Windows-Befehl|
-|932120|Ausführung eines Remotebefehls: Windows PowerShell-Befehl gefunden|
+|932120|Remotebefehlsausführung: Windows PowerShell-Befehl gefunden|
 |932130|Remotebefehlsausführung: Unix Shell-Ausdruck gefunden|
 |932140|Remotebefehlsausführung: Windows-FOR/IF-Befehl gefunden|
 |932150|Remotebefehlsausführung: Direkte Ausführung von UNIX-Befehlen|
@@ -242,21 +242,21 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 ### <a name="p-x-ms-format-detectionnonerequest-933-application-attack-phpp"></a><a name="crs933-32"></a> <p x-ms-format-detection="none">REQUEST-933-APPLICATION-ATTACK-PHP</p>
 |RuleId|BESCHREIBUNG|
 |---|---|
-|933100|PHP Injection-Angriff: Öffnendes/schließendes Tag gefunden|
+|933100|Angriff mit PHP-Einschleusung: Öffnendes/schließendes Tag gefunden|
 |933110|Angriff mit PHP-Einschleusung: PHP-Skriptdateiupload gefunden|
 |933111|Angriff mit PHP-Einschleusung: PHP-Skriptdateiupload gefunden|
 |933120|PHP Injection-Angriff: Konfigurationsanweisung gefunden|
 |933130|Angriff mit PHP-Einschleusung: Variable gefunden|
 |933131|Angriff mit PHP-Einschleusung: Variable gefunden|
 |933140|Angriff mit PHP-Einschleusung: E/A-Datenstrom gefunden|
-|933150|PHP Injection-Angriff: PHP-Funktionsname mit hohem Risikofaktor gefunden|
+|933150|Angriff mit PHP-Einschleusung: PHP-Funktionsname mit hohem Risikofaktor gefunden|
 |933151|Angriff mit PHP-Einschleusung: PHP-Funktionsname mit mittlerem Risikofaktor gefunden|
-|933160|PHP Injection-Angriff: PHP-Funktionsaufruf mit hohem Risikofaktor gefunden|
+|933160|Angriff mit PHP-Einschleusung: PHP-Funktionsaufruf mit hohem Risikofaktor gefunden|
 |933161|Angriff mit PHP-Einschleusung: PHP-Funktionsaufruf mit niedrigem Wert gefunden|
 |933170|Angriff mit PHP-Einschleusung: Einschleusung von serialisiertem Objekt|
 |933180|PHP Injection-Angriff: Aufruf einer Variablenfunktion gefunden|
 |933190|Angriff mit PHP-Einschleusung: PHP-Schließtag gefunden|
-|933200|PHP Injection-Angriff: Wrapperschema erkannt|
+|933200|Angriff mit PHP-Einschleusung: Wrapperschema erkannt|
 |933210|PHP Injection-Angriff: Aufruf einer Variablenfunktion gefunden|
 
 ### <a name="p-x-ms-format-detectionnonerequest-941-application-attack-xssp"></a><a name="crs941-32"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
@@ -298,7 +298,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |942110|Angriff mit Einschleusung von SQL-Befehlen: Allgemeine Tests auf Einschleusung von SQL-Befehlen erkannt|
 |942120|Angriff mit Einschleusung von SQL-Befehlen: SQL-Operator ermittelt|
 |942130|Angriff mit Einschleusung von SQL-Befehlen: SQL-Tautologie erkannt.|
-|942140|SQL Injection-Angriff: Häufige Datenbanknamen erkannt|
+|942140|Angriff mit Einschleusung von SQL-Befehlen: Häufige Datenbanknamen erkannt|
 |942150|Angriff mit Einschleusung von SQL-Befehlen|
 |942160|Erkennt Blind SQLI-Tests per sleep() oder benchmark().|
 |942170|Erkennt SQL Benchmark- und Sleep Injection-Angriffsversuche, einschließlich bedingter Abfragen.|
@@ -306,7 +306,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |942190|Erkennt die Ausführung von MSSQL-Code und Versuche, Informationen auszulesen|
 |942200|Erkennt durch MySQL-Kommentare oder -Leerzeichen verschleierte Einschleusungen und die Terminierung per Backtick|
 |942210|Erkennt verkette Angriffsversuche SQL-Einschleusung 1/2|
-|942220|Suche nach Ganzzahlüberlauf-Angriffen, diese werden von Skipfish übernommen, mit Ausnahme von 3.0.00738585072007e-308 (Absturz wegen ungültiger „magischer Zahl“)|
+|942220|Suche nach Ganzzahlüberlauf-Angriffen. Diese werden aus Skipfish übernommen, mit Ausnahme von 3.0.00738585072007e-308 (Absturz wegen ungültiger „magischer Zahl“).|
 |942230|Erkennt Angriffsversuche mit bedingter SQL-Einschleusung.|
 |942240|Erkennt MySQL-Zeichensatzwechsel und MSSQL-DoS-Angriffsversuche|
 |942250|Erkennt MATCH AGAINST-, MERGE- und EXECUTE IMMEDIATE-Einschleusungen|
@@ -427,12 +427,6 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |920340|Anforderung enthält Inhalt, aber keinen Content-Type-Header|
 |920341|Anforderung mit Inhalt erfordert Content-Type-Header|
 |920350|Hostheader ist eine numerische IP-Adresse|
-|920360|Argumentname ist zu lang|
-|920370|Argumentwert ist zu lang|
-|920380|Zu viele Argumente in der Anforderung|
-|920390|Gesamtzahl für Argumente überschritten|
-|920400|Hochgeladene Datei zu groß|
-|920410|Gesamtgröße der hochgeladenen Dateien zu hoch|
 |920420|Anforderungsinhaltstyp ist gemäß Richtlinie nicht zulässig|
 |920430|HTTP-Protokollversion ist gemäß Richtlinie nicht zulässig|
 |920440|URL-Dateierweiterung wird durch Richtlinie eingeschränkt|
