@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 08/10/2021
 ms.author: alkohli
-ms.openlocfilehash: 580e5aab7b7ac1edcfee58345291afcb9eb0e977
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1ef18e29abfc479307aa840d5c0f34ed52227aaf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103562160"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339736"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Verwalten eines Azure Stack Edge Pro-GPU-Geräts mithilfe von Windows PowerShell
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-Azure Stack Edge Pro ist eine Lösung, mit der Sie Daten verarbeiten und über ein Netzwerk an Azure senden können. In diesem Artikel werden einige der Konfigurations- und Verwaltungsaufgaben für Ihr Azure Stack Edge Pro-Gerät beschrieben. Sie können das Azure-Portal, die lokale Webbenutzeroberfläche oder die Windows PowerShell-Schnittstelle verwenden, um Ihr Gerät zu verwalten.
+Azure Stack Edge Pro GPU ist eine Lösung, mit der Sie Daten verarbeiten und über ein Netzwerk an Azure senden können. In diesem Artikel werden einige der Konfigurations- und Verwaltungsaufgaben für Ihr Azure Stack Edge Pro GPU-Gerät beschrieben. Sie können das Azure-Portal, die lokale Webbenutzeroberfläche oder die Windows PowerShell-Schnittstelle verwenden, um Ihr Gerät zu verwalten.
 
 Dieser Artikel befasst sich schwerpunktmäßig damit, wie Sie eine Verbindung mit der PowerShell-Schnittstelle des Geräts herstellen können und welche Aufgaben Sie mithilfe dieser Schnittstelle ausführen können. 
 
@@ -72,6 +72,8 @@ Ein Multiprozessdienst (MPS) auf NVIDIA-GPUs bietet einen Mechanismus, bei dem G
 
 [!INCLUDE [Enable MPS](../../includes/azure-stack-edge-gateway-enable-mps.md)]
 
+> [!NOTE]
+> Wenn die Gerätesoftware und der Kubernetes-Cluster aktualisiert werden, wird die MPS-Einstellung für die Workloads nicht beibehalten. Sie müssen MPS erneut aktivieren.
 
 ## <a name="reset-your-device"></a>Zurücksetzen Ihres Geräts
 
@@ -130,7 +132,7 @@ Bevor Sie beginnen, müssen Sie :
 - Das Computenetzwerk konfiguriert haben. Informieren Sie sich dazu im [Tutorial: Konfigurieren des Netzwerks für Azure Stack Edge Pro mit GPU](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md).
 - Die Computerolle auf Ihrem Gerät konfiguriert haben.
     
-Ein Azure Stack Edge Pro-Gerät, auf dem die Computerolle konfiguriert wurde, können Sie mit zwei verschiedenen Befehlssätzen überwachen oder eine Problembehandlung vornehmen.
+Ein Azure Stack Edge Pro GPU-Gerät, auf dem die Computerolle konfiguriert wurde, können Sie mit zwei verschiedenen Befehlssätzen überwachen oder dafür eine Problembehandlung vornehmen.
 
 - Unter Verwendung von `iotedge`-Befehlen. Diese Befehle sind für grundlegende Vorgänge auf dem Gerät vorgesehen.
 - Unter Verwendung von `kubectl`-Befehlen. Diese Befehle sind für umfangreiche Vorgänge auf dem Gerät vorgesehen.
@@ -239,10 +241,13 @@ Nachfolgend ist eine Beispielausgabe gezeigt.
 <6> 2021-02-25 00:53:05.412 +00:00 [INF] - Plan execution ended for deployment 11
 [10.100.10.10]: PS>
 ```
-
+> [!NOTE]
+> Die direkten Methoden wie GetModuleLogs oder UploadModuleLogs werden für Ihre Azure Stack Edge-Instanz in IoT Edge in Kubernetes nicht unterstützt.
+ 
+ 
 ### <a name="use-kubectl-commands"></a>Verwenden von kubectl-Befehlen
 
-Auf einem Azure Stack Edge Pro-Gerät, für das die Computerolle konfiguriert wurde, stehen alle `kubectl`-Befehle für die Überwachung oder Problembehandlung von Modulen zur Verfügung. Führen Sie `kubectl --help` im Befehlsfenster aus, um eine Liste der verfügbaren Befehle anzuzeigen.
+Auf einem Azure Stack Edge Pro GPU-Gerät, für das die Computerolle konfiguriert wurde, stehen alle `kubectl`-Befehle für die Überwachung oder Problembehandlung von Modulen zur Verfügung. Führen Sie `kubectl --help` im Befehlsfenster aus, um eine Liste der verfügbaren Befehle anzuzeigen.
 
 ```PowerShell
 C:\Users\myuser>kubectl --help
@@ -602,4 +607,4 @@ Schließen Sie das PowerShell-Fenster, um die PowerShell-Remotesitzung zu beende
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Stellen Sie [Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-prep.md) im Azure-Portal bereit.
+- Stellen Sie [Azure Stack Edge Pro GPU](azure-stack-edge-gpu-deploy-prep.md) im Azure-Portal bereit.

@@ -5,20 +5,22 @@ services: virtual-machines
 author: vermagit
 tags: azure-resource-manager
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: hpc
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 03/25/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 7e9cdb80f1423076fb222e1d1521117e65bca9bc
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 1f5442c7ade736c4313812a4cb20e6535492acc3
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114460570"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693407"
 ---
 # <a name="hbv3-series-virtual-machine-overview"></a>Übersicht über virtuelle Computer der HBv3-Serie 
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Ein [Server der HBv3-Serie](../../hbv3-series.md) verfügt über 2 EPYC 7V13-CPUs mit je 64 Kernen für eine Gesamtanzahl von 128 physischen Zen3-Kernen. Das simultane Multithreading (SMT) ist bei HBv3 deaktiviert. Diese 128 Kerne sind in 16 Abschnitte (8 pro Socket) unterteilt, wobei jeder Abschnitt 8 Prozessorkerne mit einheitlichem Zugriff auf einen 32 MB-L3-Cache enthält. Außerdem gelten für Azure-Server der HBv3-Serie die folgenden AMD-BIOS-Einstellungen:
 

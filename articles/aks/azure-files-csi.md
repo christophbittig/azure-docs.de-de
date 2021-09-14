@@ -5,14 +5,14 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 1355f6e6120f77ead063bb9246bf1c2864341373
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: c60b2301e6f0ea2767128224c4e76a677df69e0d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112007569"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355754"
 ---
-# <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Verwenden von Container Storage Interface-Treibern (CSI) von Azure Files in Azure Kubernetes Service (AKS) (Vorschauversion)
+# <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks"></a>Verwenden von Container Storage Interface-Treibern (CSI) von Azure Files in Azure Kubernetes Service (AKS)
 
 Der Container Storage Interface-Treiber (CSI) von Azure Files ist ein mit der [CSI-Spezifikation](https://github.com/container-storage-interface/spec/blob/master/spec.md) konformer Treiber, der von Azure Kubernetes Service (AKS) zum Verwalten des Lebenszyklus von Azure Files-Freigaben verwendet wird.
 
@@ -28,8 +28,6 @@ Informationen zum Erstellen eines AKS-Clusters mit Unterstützung für CSI-Treib
 Ein [persistentes Volume (PV)](concepts-storage.md#persistent-volumes) stellt ein Speicherelement dar, das für die Verwendung mit Kubernetes-Pods bereitgestellt wurde. Ein persistentes Volume kann von einem oder mehreren Pods verwendet und dynamisch oder statisch bereitgestellt werden. Wenn mehrere Pods gleichzeitig Zugriff auf dasselbe Speichervolume benötigen, können Sie Azure Files verwenden, um mithilfe des [SMB-Protokolls (Server Message Block)][smb-overview] eine Verbindung herzustellen. In diesem Artikel wird gezeigt, wie Sie dynamisch eine Azure Files-Freigabe erstellen, die von mehreren Pods in einem AKS-Cluster verwendet wird. Informationen zur statischen Bereitstellung finden Sie unter [Manuelles Erstellen und Verwenden eines Volumes mit Azure Files-Freigabe](azure-files-volume.md).
 
 Weitere Informationen zu Kubernetes-Volumes finden Sie unter [Speicheroptionen für Anwendungen in AKS][concepts-storage].
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes"></a>Dynamisches Erstellen von persistenten Azure Files-Volumes mithilfe der integrierten Speicherklassen
 
@@ -192,13 +190,75 @@ Filesystem                                                                      
 //f149b5a219bd34caeb07de9.file.core.windows.net/pvc-5e5d9980-da38-492b-8581-17e3cad01770  200G  128K  200G   1% /mnt/azurefile
 ```
 
+## <a name="use-a-persistent-volume-with-private-azure-files-storage-private-endpoint"></a>Verwenden eines persistenten Volumes mit privatem Azure Files-Speicher (privater Endpunkt)
+
+Falls Ihre Azure Files-Ressourcen durch einen privaten Endpunkt geschützt sind, müssen Sie Ihre eigene Speicherklasse erstellen, die mit den folgenden Parametern angepasst wurde:
+
+* `resourceGroup`: Die Ressourcengruppe, in der das Speicherkonto bereitgestellt wurde.
+* `storageAccount`: Der Name des Speicherkontos.
+* `server`: Der FQDN des privaten Endpunkts (z. B. `<storage account name>.privatelink.file.core.windows.net`), der für das Speicherkonto verwendet wird.
+
+Erstellen Sie eine Datei mit dem Namen *private-azure-file-sc.yaml*, und fügen Sie dann das folgende Beispielmanifest in die Datei ein. Ersetzen Sie die Werte für `<resourceGroup>` und `<storageAccountName>`.
+
+```yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: private-azurefile-csi
+provisioner: file.csi.azure.com
+allowVolumeExpansion: true
+parameters:
+  resourceGroup: <resourceGroup>
+  storageAccount: <storageAccountName>
+  server: <storageAccountName>.privatelink.file.core.windows.net 
+reclaimPolicy: Delete
+volumeBindingMode: Immediate
+mountOptions:
+  - dir_mode=0777
+  - file_mode=0777
+  - uid=0
+  - gid=0
+  - mfsymlinks
+  - cache=strict  # https://linux.die.net/man/8/mount.cifs
+  - nosharesock  # reduce probability of reconnect race
+  - actimeo=30  # reduce latency for metadata-heavy workload
+```
+
+Verwenden Sie den Befehl [kubectl apply][kubectl-apply], um die Speicherklasse zu erstellen:
+
+```console
+kubectl apply -f private-azure-file-sc.yaml
+
+storageclass.storage.k8s.io/private-azurefile-csi created
+```
+  
+Erstellen Sie eine Datei mit dem Namen *private-pvc.yaml*, und fügen Sie dann das folgende Beispielmanifest in die Datei ein:
+  
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: private-azurefile-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: private-azurefile-csi
+  resources:
+    requests:
+      storage: 100Gi
+```
+  
+Erstellen Sie den Anspruch auf ein persistentes Volume mit dem Befehl [kubectl apply][kubectl-apply]:
+  
+```console
+kubectl apply -f private-pvc.yaml
+```
+
 ## <a name="nfs-file-shares"></a>NFS-Dateifreigaben
 
-[Azure Files unterstützt jetzt das NFS v4.1-Protokoll](../storage/files/storage-files-how-to-create-nfs-shares.md). Die NFS 4.1-Unterstützung in Azure Files bietet ein vollständig verwaltetes NFS-Dateisystem als Dienst, der auf einer hochverfügbaren, extrem robusten, verteilten und resilienten Speicherplattform basiert.
+[Azure Files unterstützt das NFS v4.1-Protokoll](../storage/files/storage-files-how-to-create-nfs-shares.md). Die NFS 4.1-Unterstützung in Azure Files bietet ein vollständig verwaltetes NFS-Dateisystem als Dienst, der auf einer hochverfügbaren, extrem robusten, verteilten und resilienten Speicherplattform basiert.
 
  Diese Option ist für Workloads mit zufälligem Zugriff und direkten Datenaktualisierungen optimiert und bietet vollständige Unterstützung für POSIX-Dateisysteme. In diesem Abschnitt erfahren Sie, wie Sie NFS-Freigaben mit dem Azure Files-CSI-Treiber in einem AKS-Cluster verwenden.
-
-Beachten Sie unbedingt die [Einschränkungen](../storage/files/storage-files-compare-protocols.md#limitations) und die [regionale Verfügbarkeit](../storage/files/storage-files-compare-protocols.md#regional-availability).
 
 ### <a name="create-nfs-file-share-storage-class"></a>Erstellen einer Speicherklasse für die NFS-Dateifreigabe
 

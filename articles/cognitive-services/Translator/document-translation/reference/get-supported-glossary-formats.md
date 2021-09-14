@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: 0185a4b18ed56899de9c235bbd0438ef1dedf7c4
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: ae21b4e510dc7e1f95303c562f58032758717d56
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111412725"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112540701"
 ---
 # <a name="get-supported-glossary-formats"></a>Abrufen unterstützter Glossarformate
 
-Die Methode Unterstützte Glossarformate Abrufen gibt eine Liste der unterstützten Glossarformate zurück, die vom Dokumentübersetzungsdienst unterstützt werden. Die Liste enthält die verwendete allgemeine Dateierweiterung.
+Die unterstützte GET-Glossarformatmethode gibt eine Liste der Glossarformate zurück, die vom Dokumentübersetzungsdienst unterstützt werden. Die Liste enthält die verwendete allgemeine Dateierweiterung.
 
 ## <a name="request-url"></a>Anfrage-URL
 
@@ -62,7 +62,7 @@ Basistyp für die Listenrückgabe in der API Unterstützte Glossarformate abrufe
 
 Basistyp für die Listenrückgabe in der API Unterstützte Glossarformate abrufen.
 
-|Name|Typ|BESCHREIBUNG|
+|Name|type|BESCHREIBUNG|
 |--- |--- |--- |
 |value|FileFormat []|File Format [] enthält die unten aufgeführten Details.|
 |value.contentTypes|string []|Unterstützte Inhaltstypen für dieses Format.|
@@ -73,7 +73,7 @@ Basistyp für die Listenrückgabe in der API Unterstützte Glossarformate abrufe
 
 ### <a name="error-response"></a>Fehlerantwort
 
-|Name|Typ|BESCHREIBUNG|
+|Name|type|BESCHREIBUNG|
 |--- |--- |--- |
 |code|Zeichenfolge|Enumerationen, die High-Level-Fehlercodes enthalten. Mögliche Werte:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Nicht autorisiert</li></ul>|
 |message|Zeichenfolge|Ruft High-Level-Fehlermeldung ab.|

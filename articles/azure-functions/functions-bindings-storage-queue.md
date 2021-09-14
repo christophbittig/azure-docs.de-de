@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: a1b9d03da29b7c89055303fa97fc38c2ef734b23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ea5f9511cd9ae6d569d833ef8f950f1391c30f38
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100381476"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113112183"
 ---
 # <a name="azure-queue-storage-trigger-and-bindings-for-azure-functions-overview"></a>Azure Queue Storage-Trigger und -Bindungen für Azure Functions – Übersicht
 
@@ -36,7 +36,7 @@ Das Arbeiten mit Triggern und Bindungen erfordert, dass Sie auf das entsprechend
 
 #### <a name="storage-extension-5x-and-higher"></a>Storage-Erweiterung 5.x und höher
 
-Eine neue Version der Storage-Bindungserweiterung ist als [NuGet-Vorschaupaket](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/5.0.0-beta.2) verfügbar. Diese Vorschau bietet die Möglichkeit, eine [Verbindung mit einer Identität anstelle eines Geheimnisses](./functions-reference.md#configure-an-identity-based-connection) herzustellen. Für .NET-Anwendungen werden auch die Typen geändert, mit denen eine Bindung erfolgen kann. Dabei werden die Typen aus `WindowsAzure.Storage` und `Microsoft.Azure.Storage` durch neuere Typen aus [Azure.Storage.Queues](/dotnet/api/azure.storage.queues) ersetzt.
+Eine neue Version der Storage-Bindungserweiterung ist als [NuGet-Vorschaupaket](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/5.0.0-beta.3) verfügbar. Diese Vorschau bietet die Möglichkeit, eine [Verbindung mit einer Identität anstelle eines Geheimnisses](./functions-reference.md#configure-an-identity-based-connection) herzustellen. Für .NET-Anwendungen werden auch die Typen geändert, mit denen eine Bindung erfolgen kann. Dabei werden die Typen aus `WindowsAzure.Storage` und `Microsoft.Azure.Storage` durch neuere Typen aus [Azure.Storage.Queues](/dotnet/api/azure.storage.queues) ersetzt.
 
 > [!NOTE]
 > Das Vorschaupaket ist nicht in einem Erweiterungspaket enthalten und muss manuell installiert werden. Fügen Sie für .NET-Apps einen Verweis auf das Paket hinzu. Informationen zu allen anderen App-Typen finden Sie unter [Aktualisieren Ihrer Erweiterungen].
@@ -80,11 +80,11 @@ In diesem Abschnitt werden die verfügbaren globalen Konfigurationseinstellungen
 
 |Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------|
-|maxPollingInterval|00:00:01|Das maximale Intervall zwischen Warteschlangenabfragen. Der Mindestwert lautet 00:00:00.100 (100 ms), er wird bis auf 00:01:00 (1 Min.) erhöht.  Ab Functions 2.x wird der Datentyp `TimeSpan` verwendet. In Version 1.x wird der Wert in Millisekunden angegeben.|
+|maxPollingInterval|00:01:00|Das maximale Intervall zwischen Warteschlangenabfragen. Der Minimalintervall ist 00:00:00,100 (100 ms). Intervalle werden bis `maxPollingInterval` erhöht. Der Standardwert von `maxPollingInterval` lautet 00:01:00 (1 min). `maxPollingInterval` darf nicht unter 00:00:00,100 (100 ms) liegen. In Functions 2.x und höher ist der Datentyp eine `TimeSpan`-Struktur. In Functions 1.x wird diese in Millisekunden angegeben.|
 |visibilityTimeout|00:00:00|Das Zeitintervall zwischen Wiederholungsversuchen, wenn bei der Verarbeitung einer Nachricht ein Fehler auftritt. |
 |batchSize|16|Die Anzahl der Warteschlangennachrichten, die die Functions-Runtime gleichzeitig abruft und parallel verarbeitet. Wenn die zu verarbeitende Anzahl `newBatchThreshold` erreicht, ruft die Runtime einen weiteren Batch ab und beginnt mit der Verarbeitung dieser Nachrichten. Aus diesem Grund beträgt die maximale Anzahl der pro Funktion verarbeiteten Nachrichten `batchSize` plus `newBatchThreshold`. Dieser Grenzwert gilt separat für jede Funktion, die durch die Warteschlange ausgelöst wird. <br><br>Wenn Sie eine parallele Ausführung für in einer Warteschlange empfangene Nachrichten vermeiden möchten, können Sie `batchSize` auf „1“ festlegen. Durch diese Einstellung wird jedoch Parallelität verhindert, solange Ihre Funktions-App nur auf einem einzelnen virtuellen Computer (virtual machine, VM) ausgeführt wird. Wenn die Funktions-App horizontal auf mehrere virtuelle Computer hochskaliert wird, kann jeder virtuelle Computer eine Instanz jeder durch die Warteschlange ausgelösten Funktion ausführen.<br><br>Die maximale `batchSize` beträgt 32. |
 |maxDequeueCount|5|Die Anzahl der Versuche zum Verarbeiten einer Nachricht, bevor diese in die Warteschlange für nicht verarbeitete Nachrichten verschoben wird.|
-|newBatchThreshold|batchSize/2|Wenn die Anzahl der gleichzeitig verarbeiteten Nachrichten auf diesen Wert sinkt, ruft die Runtime einen weiteren Batch ab.|
+|newBatchThreshold|N*batchSize/2|Wenn die Anzahl der gleichzeitig verarbeiteten Nachrichten auf diesen Wert sinkt, ruft die Runtime einen weiteren Batch ab.<br><br>`N` stellt die Anzahl der beim Ausführen in App Service oder Premium-Plänen verfügbaren vCPUs dar. Der zugehörige Wert für den Verbrauchsplan ist `1`.|
 |messageEncoding|base64| Diese Einstellung ist erst [ab der Erweiterungsversion 5.0.0](#storage-extension-5x-and-higher) verfügbar. Sie stellt das Codierungsformat für Nachrichten dar. Gültige Werte sind `base64` und `none`.|
 
 ## <a name="next-steps"></a>Nächste Schritte

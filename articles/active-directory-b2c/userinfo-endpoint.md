@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/09/2021
+ms.date: 07/07/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c060a029b1cdbdd890ced96cab732966cb652de0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 94b00fb293913e5501bd70ecb782304c56314ed9
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102500579"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113430122"
 ---
 # <a name="userinfo-endpoint"></a>UserInfo-Endpunkt
 
@@ -266,6 +266,43 @@ Eine erfolgreiche Antwort sieht wie folgt aus:
     "signInNames.emailAddress": "john.s@contoso.com"
 }
 ```
+
+## <a name="provide-optional-claims"></a>Bereitstellen optionaler Ansprüche
+
+Führen Sie die folgenden Schritte aus, um weitere Ansprüche bereitzustellen:
+
+1. [Fügen Sie Benutzerattribute hinzu und passen Sie die Benutzereingabe an](configure-user-input.md).
+1. Ändern Sie das OutputClaims-Element des [technischen Profils der Richtlinie für die vertrauende Seite](relyingparty.md#technicalprofile) mit den Ansprüchen, die Sie bereitstellen möchten. Verwenden Sie das `DefaultValue`-Attribut, um einen Standardwert festzulegen. Sie können den Standardwert auch auf einen [Anspruchskonfliktlöser](claim-resolver-overview.md) wie `{Context:CorrelationId}` festlegen. Um die Verwendung des Standardwerts zu erzwingen, setzen Sie das `AlwaysUseDefaultValue`-Attribut auf `true`. Das folgende Beispiel fügt den Anspruch „city“ mit einem Standardwert hinzu.
+    
+    ```xml
+    <RelyingParty>
+      ...
+      <TechnicalProfile Id="PolicyProfile">
+        ...
+        <OutputClaims>
+          <OutputClaim ClaimTypeReferenceId="city" DefaultValue="Berlin" />
+        </OutputClaims>
+        ...
+      </TechnicalProfile>
+    </RelyingParty>
+    ```
+  
+1. Ändern Sie das InputClaims-Element des technischen Profils von UserInfoIssuer mit den Ansprüchen, die Sie bereitstellen möchten. Verwenden Sie das `PartnerClaimType`-Attribut, um den Namen der Anspruchsrückgabe an Ihre App zu ändern. Im folgenden Beispiel wird der Anspruch „city“ hinzugefügt und der Name einiger Ansprüche geändert.
+
+    ```xml
+    <TechnicalProfile Id="UserInfoIssuer">
+      ...
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="objectId" />
+        <InputClaim ClaimTypeReferenceId="city" />
+        <InputClaim ClaimTypeReferenceId="givenName" />
+        <InputClaim ClaimTypeReferenceId="surname" PartnerClaimType="familyName" />
+        <InputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
+        <InputClaim ClaimTypeReferenceId="signInNames.emailAddress" PartnerClaimType="email" />
+      </InputClaims>
+      ...
+    </TechnicalProfile>
+    ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

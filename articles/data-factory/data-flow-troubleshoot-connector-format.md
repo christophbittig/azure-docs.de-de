@@ -6,12 +6,12 @@ ms.author: jingwang
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 08/17/2021
-ms.openlocfilehash: 79a64a7eb1e06fef3c9e534a69324faaf9f23107
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: a83b3d772331432cd3c65caeff0144c228c97824
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867534"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444902"
 ---
 # <a name="troubleshoot-connector-and-format-issues-in-mapping-data-flows-in-azure-data-factory"></a>Behandeln von Connector- und Formatproblemen in Zuordnungsdatenflüssen in Azure Data Factory
 
@@ -816,7 +816,7 @@ Weitere Hilfe zur Problembehandlung finden Sie in diesen Ressourcen:
 
 *  [Problembehandlung bei Zuordnungsdatenflüssen in Azure Data Factory](data-flow-troubleshoot-guide.md)
 *  [Data Factory-Blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [Data Factory-Funktionsanfragen](/answers/topics/azure-data-factory.html)
+*  [Data Factory-Funktionsanfragen](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure-Videos](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Stack Overflow-Forum für Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Twitter-Informationen über Data Factory](https://twitter.com/hashtag/DataFactory)

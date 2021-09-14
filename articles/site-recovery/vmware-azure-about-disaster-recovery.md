@@ -3,13 +3,13 @@ title: VMware-Notfallwiederherstellung mit Azure Site Recovery
 description: Dieser Artikel bietet eine Übersicht über die Notfallwiederherstellung von virtuellen VMware-Computern mit dem Dienst Azure Site Recovery.
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.openlocfilehash: 8e72d66bcf8398946b8901ef86666aa9aba34105
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.date: 08/19/2021
+ms.openlocfilehash: 12a8adc3e68f4d4bed2aad6b64b057258fadc2aa
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106579087"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445389"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>Informationen zur Notfallwiederherstellung von virtuellen VMware-Computern in Azure
 
@@ -17,10 +17,10 @@ Dieser Artikel bietet eine Übersicht über die Notfallwiederherstellung von lok
 
 ## <a name="what-is-bcdr"></a>Was ist BCDR?
 
-Eine Strategie für Geschäftskontinuität und Notfallwiederherstellung (Business Continuity and Disaster Recovery, BCDR) hilft Ihnen, Ihren Geschäftsbetrieb am Laufen zu halten. Mit einer BCDR-Strategie bleiben Daten bei geplanten und unerwarteten Ausfallzeiten gesichert und verfügbar. Zudem wird sichergestellt, dass Anwendungen weiter ausgeführt werden. Neben den Features der BCDR-Plattform wie z.B. Regionspaaren und der Speicherung mit Hochverfügbarkeit bietet Azure auch Recovery Services als Bestandteil Ihrer BCDR-Lösung. Recovery Services umfasst Folgendes: 
+Eine Strategie für Geschäftskontinuität und Notfallwiederherstellung (Business Continuity and Disaster Recovery, BCDR) hilft Ihnen, Ihren Geschäftsbetrieb am Laufen zu halten. Mit einer BCDR-Strategie bleiben Daten bei geplanten und unerwarteten Ausfallzeiten gesichert und verfügbar. Zudem wird sichergestellt, dass Anwendungen weiter ausgeführt werden. Neben den Features der BCDR-Plattform wie z.B. Regionspaaren und der Speicherung mit Hochverfügbarkeit bietet Azure auch Recovery Services als Bestandteil Ihrer BCDR-Lösung. Recovery Services umfasst Folgendes:
 
-- [Azure Backup](../backup/backup-overview.md) sichert lokale Daten und Daten von virtuellen Azure-Computern. Sie können Dateien und Ordner, bestimmte Workloads oder einen vollständigen virtuellen Computer sichern. 
-- [Azure Site Recovery](site-recovery-overview.md) bietet Datenresilienz und Notfallwiederherstellung für Anwendungen und Workloads, die auf lokalen Computern oder virtuellen Azure-IaaS-Computern ausgeführt werden. Site Recovery orchestriert die Replikation und führt bei Ausfällen ein Failover in Azure aus. Zudem wird die Wiederherstellung aus Azure an Ihrem primären Standort durchgeführt. 
+- [Azure Backup](../backup/backup-overview.md) sichert lokale Daten und Daten von virtuellen Azure-Computern. Sie können Dateien und Ordner, bestimmte Workloads oder einen vollständigen virtuellen Computer sichern.
+- [Azure Site Recovery](site-recovery-overview.md) bietet Datenresilienz und Notfallwiederherstellung für Anwendungen und Workloads, die auf lokalen Computern oder virtuellen Azure-IaaS-Computern ausgeführt werden. Site Recovery orchestriert die Replikation und führt bei Ausfällen ein Failover in Azure aus. Zudem wird die Wiederherstellung aus Azure an Ihrem primären Standort durchgeführt.
 
 > [!NOTE]
 > Site Recovery speichert Kundendaten nur in der Zielregion, in der die Notfallwiederherstellung für die Quellcomputer eingerichtet wurde, und verschiebt sie nicht aus dieser Region. Kunden können auf Wunsch einen Recovery Services-Tresor aus einer anderen Region auswählen. Der Recovery Services-Tresor enthält Metadaten, aber keine tatsächlichen Kundendaten.
@@ -29,7 +29,7 @@ Eine Strategie für Geschäftskontinuität und Notfallwiederherstellung (Busines
 
 1. Nach der Vorbereitung von Azure und Ihres lokalen Standorts müssen Sie die Replikation für die lokalen Computer einrichten und aktivieren.
 2. Site Recovery orchestriert die erste Replikation des Computers entsprechend Ihren Richtlinieneinstellungen.
-3. Nach der ersten Replikation repliziert Site Recovery Deltaänderungen in Azure. 
+3. Nach der ersten Replikation repliziert Site Recovery Deltaänderungen in Azure.
 4. Nachdem die Replikation wie erwartet durchgeführt wurde, führen Sie ein Notfallwiederherstellungsverfahren durch.
     - Durch dieses Verfahren kann sichergestellt werden, dass das Failover im Realfall wie erwartet durchgeführt wird.
     - Bei dem Verfahren wird ein Testfailover durchgeführt, ohne Ihre Produktionsumgebung zu beeinträchtigen.
@@ -89,16 +89,17 @@ Nachdem Sie die lokale und Azure-Infrastruktur eingerichtet haben, können Sie d
 
 1. Informationen zu den Komponenten, die Sie bereitstellen müssen, finden Sie unter [VMware in der Architektur für die Azure-Replikation](vmware-azure-architecture.md) und [Physische Server in der Architektur für die Azure-Replikation](physical-azure-architecture.md). Es gibt verschiedene Komponenten, daher ist es wichtig, sich damit vertraut zu machen, wie sie miteinander verbunden sind.
 2. **Quellumgebung**: Als ersten Schritt bei der Bereitstellung richten Sie die Quellumgebung für die Replikation ein. Sie geben an, was Sie replizieren möchten und wohin die Daten repliziert werden sollen.
-3. **Konfigurationsserver**: Sie müssen einen Konfigurationsserver in der lokalen Quellumgebung einrichten:
+3. **Konfigurationsserver** (auf „Klassisch“ anwendbar): Sie müssen einen Konfigurationsserver in der lokalen Quellumgebung einrichten:
     - Der Konfigurationsserver ist ein einzelner lokaler Computer. Für die VMware-Notfallwiederherstellung wird empfohlen, diesen als virtuellen VMware-Computer bereitzustellen, der über eine heruntergeladene OVF-Vorlage bereitgestellt werden kann.
     - Der Konfigurationsserver koordiniert die Kommunikation zwischen der lokalen Umgebung und Azure.
     - Auf dem Konfigurationsservercomputer werden verschiedene andere Komponenten ausgeführt.
         - Der Prozessserver empfängt, optimiert und sendet Replikationsdaten an ein Cachespeicherkonto in Azure. Der Prozessserver verarbeitet auch die automatische Installation des Mobility Service auf den Computern, die Sie replizieren möchten, und führt auf VMware-Servern die automatische Ermittlung von virtuellen Computern durch.
         - Der Masterzielserver verarbeitet die Replikationsdaten während des Failbacks von Azure.
     - Die Einrichtung umfasst die Registrierung des Konfigurationsservers im Tresor, das Herunterladen von MySQL Server und VMware PowerCLI sowie die Angabe der für die automatische Ermittlung und die Installation des Mobility Service erstellten Konten.
-4. **Zielumgebung**: Sie richten die Azure-Zielumgebung ein, indem Sie Ihr Azure-Abonnement und die Netzwerkeinstellungen angeben.
-5. **Replikationsrichtlinie**: Sie geben an, wie die Replikation erfolgen soll. Zu den erforderlichen Einstellungen gehört z.B. die Angabe, wie oft Wiederherstellungspunkte erstellt und gespeichert werden und ob anwendungskonsistente Momentaufnahmen erstellt werden sollen.
-6. **Aktivieren Sie die Replikation**. Sie aktivieren die Replikation für lokale Computer. Wenn Sie ein Konto für die Installation des Mobility Service erstellt haben, wird dieser installiert, wenn Sie die Replikation für einen Computer aktivieren. 
+4. **Replikationsappliance für Azure Site Recovery** (gilt für Vorschau): Sie müssen eine Replikationsappliance in Ihrer lokalen Quellumgebung einrichten. Die Appliance ist der grundlegende Baustein der gesamten lokalen Infrastruktur von Azure Site Recovery. Für die VMware-Notfallwiederherstellung [sollten Sie sie als virtuellen VMware-Computer](deploy-vmware-azure-replication-appliance-preview.md#create-azure-site-recovery-replication-appliance) bereitstellen, der über eine heruntergeladene OVF-Vorlage bereitgestellt werden kann.  Weitere Informationen zur Replikationsappliance finden Sie [hier](vmware-azure-architecture-preview.md).   
+5. **Zielumgebung**: Sie richten die Azure-Zielumgebung ein, indem Sie Ihr Azure-Abonnement und die Netzwerkeinstellungen angeben.
+6. **Replikationsrichtlinie**: Sie geben an, wie die Replikation erfolgen soll. Zu den erforderlichen Einstellungen gehört z.B. die Angabe, wie oft Wiederherstellungspunkte erstellt und gespeichert werden und ob anwendungskonsistente Momentaufnahmen erstellt werden sollen.
+7. **Aktivieren Sie die Replikation**. Sie aktivieren die Replikation für lokale Computer. Wenn Sie ein Konto für die Installation des Mobility Service erstellt haben, wird dieser installiert, wenn Sie die Replikation für einen Computer aktivieren.
 
 *Benötigen Sie weitere Hilfe?*
 
@@ -122,4 +123,4 @@ Nachdem Sie die lokale und Azure-Infrastruktur eingerichtet haben, können Sie d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem die Replikation eingerichtet ist, sollten Sie ein [Notfallwiederherstellungsverfahren durchführen](tutorial-dr-drill-azure.md), um sicherzustellen, dass das Failover wie erwartet ausgeführt wird. 
+Nachdem die Replikation eingerichtet ist, sollten Sie ein [Notfallwiederherstellungsverfahren durchführen](tutorial-dr-drill-azure.md), um sicherzustellen, dass das Failover wie erwartet ausgeführt wird.

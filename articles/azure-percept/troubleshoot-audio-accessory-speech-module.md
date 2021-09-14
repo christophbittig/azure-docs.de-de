@@ -1,20 +1,20 @@
 ---
-title: Behandeln von Problemen mit Azure Percept Audio und Speech-Modulen
+title: Problembehandlung für Azure Percept Audio und das Sprachmodul
 description: Tipps zur Problembehandlung für Azure Percept Audio und azureearspeechclientmodule
-author: mimcco
-ms.author: mimcco
+author: tsampige
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 08/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: ded0fe7150fae280bd2d2e33bc314c1cb8add106
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 00f3694201d3aaf876d642e67e5b523f6fb50547
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340546"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222722"
 ---
-# <a name="azure-percept-audio-and-speech-module-troubleshooting"></a>Problembehandlung für Azure Percept-Audio und Speech-Module
+# <a name="troubleshoot-azure-percept-audio-and-speech-module"></a>Problembehandlung für Azure Percept Audio und das Sprachmodul
 
 Beheben Sie Probleme mit dem Sprach-Assistenten mithilfe der folgenden Anweisungen.
 

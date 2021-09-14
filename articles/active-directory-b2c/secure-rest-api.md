@@ -1,7 +1,7 @@
 ---
-title: Schützen eines RESTful-Diensts in Ihrer Azure AD B2C-Instanz
+title: Schützen von APIs, die als API-Connectors in Azure AD B2C verwendet werden
 titleSuffix: Azure AD B2C
-description: Schützen Sie Ihre benutzerdefinierten REST-API-Anspruchsaustauschvorgänge in Ihrer Azure AD B2C-Instanz.
+description: Hier erfahren Sie, wie Sie Ihre benutzerdefinierten RESTful-APIs schützen, die als API-Connectors in Azure AD B2C verwendet werden.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,36 +12,43 @@ ms.date: 04/28/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 55034efe35ae572fb7b2d5d8eeacb6048bcb8e51
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: ef1c747666b2c75567d88f440cef37a631f64064
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175440"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355094"
 ---
-# <a name="secure-your-api-connector"></a>Schützen Ihres API-Connectors 
-
+# <a name="secure-your-api-used-an-api-connector-in-azure-ad-b2c"></a>Schützen Ihrer API, die als API-Connector in Azure AD B2C verwendet wird 
 
 Wenn Sie eine REST-API in einen Azure AD B2C-Benutzerflow integrieren, müssen Sie Ihren REST-API-Endpunkt mittels Authentifizierung schützen. Durch diese REST-API-Authentifizierung wird sichergestellt, dass nur Dienste mit richtigen Anmeldeinformationen, wie z. B. Azure AD B2C, Aufrufe an Ihren Endpunkt tätigen können. In diesem Artikel wird erläutert, wie die REST-API geschützt wird. 
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Führen Sie die Schritte im Leitfaden [Exemplarische Vorgehensweise: Hinzufügen eines API-Connectors zu einem Benutzerflow für die Registrierung](add-api-connector.md) aus.
 
+::: zone pivot="b2c-user-flow"
+
+Sie können Ihren API-Endpunkt entweder mithilfe der HTTP-Standardauthentifizierung oder mithilfe der HTTPS-Clientzertifikatauthentifizierung schützen. In beiden Fällen müssen Sie die Anmeldeinformationen angeben, die Azure AD B2C beim Aufrufen Ihres API-Endpunkts verwenden wird. Der API-Endpunkt überprüft dann die Anmeldeinformationen und führt Autorisierungsentscheidungen aus.
+
+::: zone-end
+
 ## <a name="http-basic-authentication"></a>HTTP-Standardauthentifizierung
 
-Die HTTP-Standardauthentifizierung ist in [RFC 2617](https://tools.ietf.org/html/rfc2617) definiert. Die Standardauthentifizierung funktioniert wie folgt: Azure AD B2C sendet eine HTTP-Anforderung mit den Clientanmeldeinformationen im Autorisierungsheader. Die Anmeldeinformationen werden als Base64-codierte Zeichenfolge im Format „Benutzername:Kennwort“ formatiert.  
+Die HTTP-Standardauthentifizierung ist in [RFC 2617](https://tools.ietf.org/html/rfc2617) definiert. Die Standardauthentifizierung funktioniert wie folgt: Von Azure AD B2C wird eine HTTP-Anforderung mit den Clientanmeldeinformationen (`username` und `password`) im Header `Authorization` gesendet. Die Anmeldeinformationen werden als Base64-codierte Zeichenfolge im Format `username:password` angegeben. Ihre API ist dann für die Überprüfung dieser Werte verantwortlich, um andere Autorisierungsentscheidungen zu treffen.
 
 ::: zone pivot="b2c-user-flow"
 
 Führen Sie die folgenden Schritte aus, um einen API-Connector mit HTTP-Standardauthentifizierung zu konfigurieren:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-1. Wählen Sie unter **Azure-Dienste** die Option **Azure AD B2C** aus.
-1. Wählen Sie **API-Connectors (Vorschau)** und dann den zu konfigurierenden **API-Connector** aus.
-1. Wählen Sie als **Authentifizierungstyp** die Option **Standard** aus.
-1. Geben Sie den **Benutzernamen** und das **Kennwort** für Ihren REST-API-Endpunkt an.
-1. Wählen Sie **Speichern** aus.
+2. Wählen Sie unter **Azure-Dienste** die Option **Azure AD B2C** aus.
+3. Wählen Sie **API-Connectors** und dann den zu konfigurierenden **API-Connector** aus.
+4. Wählen Sie als **Authentifizierungstyp** die Option **Standard** aus.
+5. Geben Sie den **Benutzernamen** und das **Kennwort** für Ihren REST-API-Endpunkt an.
+    :::image type="content" source="media/add-api-connector/api-connector-config.png" alt-text="Konfiguration der Standardauthentifizierung für einen API-Connector":::
+6. Wählen Sie **Speichern** aus.
 
 ::: zone-end
 
@@ -116,9 +123,26 @@ Nachfolgend finden Sie einen XML-Codeausschnitt als Beispiel für ein mit der HT
 
 ## <a name="https-client-certificate-authentication"></a>HTTPS-Clientzertifikatauthentifizierung
 
-Bei der Clientzertifikatauthentifizierung handelt es sich um eine gegenseitige zertifikatbasierte Authentifizierung, bei der der Client (Azure AD B2C) sein Clientzertifikat für den Server bereitstellt, um seine Identität nachzuweisen. Dies erfolgt im Rahmen des SSL-Handshakes. Nur Dienste mit den richtigen Zertifikaten, z. B. Azure AD B2C, können auf Ihren REST-API-Dienst zugreifen. Bei dem Clientzertifikat handelt es sich um ein digitales X.509-Zertifikat. In Produktionsumgebungen muss es von einer Zertifizierungsstelle signiert werden.
+Bei der Clientzertifikatauthentifizierung handelt es sich um eine gegenseitige zertifikatbasierte Authentifizierung, bei der der Client (Azure AD B2C) sein Clientzertifikat für den Server bereitstellt, um seine Identität nachzuweisen. Dies erfolgt im Rahmen des SSL-Handshakes. Ihre API muss überprüfen, ob die Zertifikate zu einem gültigen Client (beispielsweise Azure AD B2C) gehören, und Autorisierungsentscheidungen treffen. Bei dem Clientzertifikat handelt es sich um ein digitales X.509-Zertifikat. 
 
-### <a name="prepare-a-self-signed-certificate-optional"></a>Vorbereiten eines selbstsignierten Zertifikats (optional)
+> [!IMPORTANT]
+> In Produktionsumgebungen muss das Zertifikat von einer Zertifizierungsstelle signiert werden.
+
+### <a name="create-a-certificate"></a>Erstellen eines Zertifikats
+
+#### <a name="option-1-use-azure-key-vault-recommended"></a>Option 1: Verwenden von Azure Key Vault (empfohlen)
+
+Zum Erstellen eines Zertifikats können Sie den [Azure Key Vault](../key-vault/certificates/create-certificate.md) verwenden, der über Optionen für selbstsignierte Zertifikate und Integrationen mit Zertifikatausstelleranbietern für signierte Zertifikate verfügt. Empfohlene Einstellungen umfassen:
+- **Betreff**: `CN=<yourapiname>.<tenantname>.onmicrosoft.com`
+- **Inhaltstyp**: `PKCS #12`
+- **Gültigkeitsdauer Aktionstyp**: `Email all contacts at a given percentage lifetime` oder `Email all contacts a given number of days before expiry`
+- **Schlüsseltyp**: `RSA`
+- **Schlüsselgröße**: `2048`
+- **Exportierbarer privater Schlüssel**: `Yes` (um die Datei vom Typ `.pfx` exportieren zu können)
+
+Sie können dann [das Zertifikat exportieren](../key-vault/certificates/how-to-export-certificate.md).
+
+#### <a name="option-2-prepare-a-self-signed-certificate-using-powershell-module"></a>Option 2: Vorbereiten eines selbstsignierten Zertifikats per PowerShell-Modul
 
 [!INCLUDE [active-directory-b2c-create-self-signed-certificate](../../includes/active-directory-b2c-create-self-signed-certificate.md)]
 
@@ -129,12 +153,24 @@ Bei der Clientzertifikatauthentifizierung handelt es sich um eine gegenseitige z
 Führen Sie die folgenden Schritte aus, um einen API-Connector mit Authentifizierung über ein Clientzertifikat zu konfigurieren:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-1. Wählen Sie unter **Azure-Dienste** die Option **Azure AD B2C** aus.
-1. Wählen Sie **API-Connectors (Vorschau)** und dann den zu konfigurierenden **API-Connector** aus.
-1. Wählen Sie als **Authentifizierungstyp** die Option **Zertifikat** aus.
-1. Wählen Sie im Feld **Zertifikat hochladen** die PFX-Datei Ihres Zertifikats mit einem privaten Schlüssel aus.
-1. Geben Sie im Feld **Kennwort eingeben** das Kennwort des Zertifikats ein.
-1. Wählen Sie **Speichern** aus.
+2. Wählen Sie unter **Azure-Dienste** die Option **Azure AD B2C** aus.
+3. Wählen Sie **API-Connectors** und dann den zu konfigurierenden **API-Connector** aus.
+4. Wählen Sie als **Authentifizierungstyp** die Option **Zertifikat** aus.
+5. Wählen Sie im Feld **Zertifikat hochladen** die PFX-Datei Ihres Zertifikats mit einem privaten Schlüssel aus.
+6. Geben Sie im Feld **Kennwort eingeben** das Kennwort des Zertifikats ein.
+  :::image type="content" source="media/secure-api-connector/api-connector-upload-cert.png" alt-text="Konfiguration der Zertifikatauthentifizierung für einen API-Connector":::
+7. Wählen Sie **Speichern** aus.
+
+### <a name="perform-authorization-decisions"></a>Treffen von Autorisierungsentscheidungen 
+Ihre API muss die Autorisierung basierend auf gesendeten Client-Zertifikaten implementieren, um die API-Endpunkte zu schützen. Für den Azure App Service und die Azure Funktionen finden Sie unter [Konfigurieren der gegenseitigen TLS-Authentifizierung](../app-service/app-service-web-configure-tls-mutual-auth.md) Informationen zum Aktivieren und *Validieren des Zertifikats über Ihren API-Code*.  Alternativ können Sie Azure API Management als Ebene vor einem beliebigen API-Dienst verwenden, um [Clientzertifikateigenschaften auf gewünschte Werte zu überprüfen](
+../api-management/api-management-howto-mutual-certificates-for-clients.md).
+
+### <a name="renewing-certificates"></a>Erneuern von Zertifikaten
+Es wird empfohlen, Erinnerungswarnungen für den Zeitpunkt festzulegen, an dem das Zertifikat abläuft. Wenn die verwendeten Zertifikate ablaufen, müssen Sie ein neues Zertifikat generieren und die obigen Schritte wiederholen. Für den Übergang zu einem neuen Zertifikat kann Ihr API-Dienst während der Bereitstellung des neuen Zertifikats vorübergehend alte und neue Zertifikate akzeptieren. 
+
+Um ein neues Zertifikat in einen bestehenden API-Anschluss hochzuladen, wählen Sie den API-Anschluss unter **API-Anschlüsse** aus und klicken Sie auf **Neues Zertifikat hochladen**. Von Azure AD B2C wird automatisch das zuletzt hochgeladene Zertifikat verwendet, das nicht abgelaufen ist und dessen Startdatum in der Vergangenheit liegt.
+
+  :::image type="content" source="media/secure-api-connector/api-connector-renew-cert.png" alt-text="Bereitstellen eines neuen Zertifikats für einen API-Connector, wenn bereits ein Zertifikat vorhanden ist":::
 
 ::: zone-end
 
@@ -416,7 +452,20 @@ Nachfolgend finden Sie einen XML-Codeausschnitt als Beispiel für ein mit der Be
 </ClaimsProvider>
 ```
 
+::: zone-end
+
+
 ## <a name="api-key-authentication"></a>Authentifizierung mit API-Schlüssel
+
+::: zone pivot="b2c-user-flow"
+
+Von einigen Diensten wird ein API-Schlüsselmechanismus verwendet, um den Zugriff auf Ihre HTTP-Endpunkte während der Entwicklung zu verschleiern. In diesem Fall muss der Aufrufer einen eindeutigen Schlüssel als HTTP-Header oder HTTP-Abfrageparameter einschließen. Für [Azure Functions](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) können Sie dies erreichen, indem Sie `code` als Abfrageparameter in die **Endpunkt-URL** Ihres API-Connectors einschließen. Beispiel: `https://contoso.azurewebsites.net/api/endpoint`<b>`?code=0123456789`</b>. 
+
+Hierbei handelt es sich nicht um einen Mechanismus, der allein in der Produktion verwendet werden sollte. Daher ist die Konfiguration für die Standard- oder Zertifikatauthentifizierung immer erforderlich. Wenn Sie für Entwicklungszwecke keine Authentifizierungsmethode implementieren möchten (nicht empfohlen), können Sie in der API-Connectorkonfiguration die Standardauthentifizierung auswählen und temporäre Werte für `username` und `password` verwenden, die von der API ignoriert werden können, während Sie die ordnungsgemäße Autorisierung implementieren.
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
 
 Ein API-Schlüssel ist ein eindeutiger Bezeichner, der zum Authentifizieren eines Benutzers für den Zugriff auf einen Rest-API-Endpunkt verwendet wird. Der Schlüssel wird in einem benutzerdefinierten HTTP-Header gesendet. Der [HTTP-Trigger in Azure Functions](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) beispielsweise verwendet `x-functions-key` im HTTP-Header, um den Anforderer zu identifizieren.  
 
@@ -478,9 +527,14 @@ Nachfolgend finden Sie einen XML-Codeausschnitt als Beispiel für ein technische
   </TechnicalProfiles>
 </ClaimsProvider>
 ```
+::: zone-end
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zum Element für das [technische RESTful-Profil](restful-technical-profile.md) finden Sie in der Referenz zu benutzerdefinierten Richtlinien.
+::: zone pivot="b2c-user-flow"
+- Erste Schritte mit den [Beispielen](api-connector-samples.md#api-connector-rest-api-samples)
+::: zone-end
 
+::: zone pivot="b2c-custom-policy"
+- Weitere Informationen zum Element für das [technische RESTful-Profil](restful-technical-profile.md) finden Sie in der Referenz zu benutzerdefinierten Richtlinien.
 ::: zone-end

@@ -7,19 +7,22 @@ ms.service: automation
 ms.subservice: dsc
 author: mgoedtel
 ms.author: magoedte
-ms.date: 01/26/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 752d7f86941967c218b3a57fa163698b9f502057
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c40a8b002605b8776ac04d2af0d920b824aaeab0
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98897019"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396654"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Übersicht über Azure Automation State Configuration
 
 Azure Automation State Configuration ist ein Azure-Dienst für die Konfigurationsverwaltung, mit dem Sie PowerShell DSC-[Konfigurationen](/powershell/scripting/dsc/configurations/configurations) (Desired State Configuration) schreiben, verwalten und kompilieren können – für Knoten in der Cloud oder in einem lokalen Rechenzentrum. Darüber hinaus ermöglicht der Dienst in der Cloud einen Import von [DSC-Ressourcen](/powershell/scripting/dsc/resources/resources) und die Zuweisung von Konfigurationen zu Zielknoten. Sie können im Azure-Portal auf Azure Automation State Configuration zugreifen, indem Sie unter **Konfigurationsverwaltung** die Option **State Configuration (DSC)** auswählen.
+
+> [!NOTE]
+> Bevor Sie die Automation State Configuration aktivieren, sollten Sie sich über die [Azure Policy-Gastkonfiguration](../governance/policy/concepts/guest-configuration.md) informieren, die Einstellungen auf Computern überwachen und konfigurieren kann, die in Azure oder außerhalb von Azure über eine Verbindung mit [Servern mit Arc-Unterstützung](../azure-arc/servers/overview.md) ausgeführt werden. Die Azure Policy-Gastkonfiguration bietet ähnliche Funktionen und kann von der neueren Technologie in Azure profitieren.
 
 Mit Azure Automation State Configuration können zahlreiche Computer verwaltet werden:
 

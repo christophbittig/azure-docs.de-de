@@ -8,14 +8,16 @@ ms.topic: article
 ms.date: 04/28/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 7f9a10aca24203b69ff38ff5fab7960681145af5
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: b9277e8ce7c9c3fff748efff42517c6c0baed57a
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108227828"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691474"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>Bekannte Probleme bei virtuellen Computern der H-Serie und der N-Serie
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Dieser Artikel versucht, die jüngsten häufigen Probleme und ihre Lösungen bei der Verwendung der HPC- und GPU-VMs der [H-Serie](../../sizes-hpc.md) und [N-Serie](../../sizes-gpu.md) aufzulisten.
 
@@ -49,7 +51,7 @@ Weitere diesbezügliche Details finden Sie in diesem [TechCommunity-Artikel](htt
 
 ## <a name="infiniband-driver-installation-on-non-sr-iov-vms"></a>InfiniBand-Treiberinstallation auf nicht-SR-IOV-VMs
 
-Derzeit sind H16r, H16mr und NC24r nicht SR-IOV-fähig. Einige Details zur InfiniBand-Stapelverzweigung finden Sie [hier](../../sizes-hpc.md#rdma-capable-instances).
+Derzeit sind H16r, H16mr und NC24r nicht SR-IOV-fähig. Weitere Informationen über die InfiniBand-Stapelverzweigung finden Sie unter [Azure-VM-Größen – HPC](../../sizes-hpc.md#rdma-capable-instances).
 InfiniBand kann für die SR-IOV-fähigen VM-Größen mit den OFED-Treibern konfiguriert werden, während die nicht SR-IOV-fähigen VM-Größen ND-Treiber erfordern. Diese Unterstützung von IB ist für [CentOS, RHEL und Ubuntu](configure.md)angemessen verfügbar.
 
 ## <a name="duplicate-mac-with-cloud-init-with-ubuntu-on-h-series-and-n-series-vms"></a>Doppelte MAC-Adresse mit cloud-init bei Ubuntu auf virtuellen Computern der H-Serie und der N-Serie

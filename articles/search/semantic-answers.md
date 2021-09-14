@@ -8,17 +8,17 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/27/2021
-ms.openlocfilehash: d0390bd70080ea0174a81cce9538396321dec658
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 3a8c00dcb2bf016cf70f02dcfdebc5e55bf5d66c
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111539355"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122356236"
 ---
 # <a name="return-a-semantic-answer-in-azure-cognitive-search"></a>Zurückgeben einer semantischen Antwort in Azure Cognitive Search
 
 > [!IMPORTANT]
-> Die semantische Suche befindet sich in der öffentlichen Vorschau und unterliegt den [zusätzlichen Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Sie ist über das Azure-Portal, die Vorschau-REST-API und Beta-SDKs verfügbar. Diese Features sind abrechenbar. Weitere Informationen finden Sie unter [Verfügbarkeit und Preise](semantic-search-overview.md#availability-and-pricing).
+> Die semantische Suche befindet sich in der öffentlichen Vorschau und unterliegt [zusätzlichen Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Sie ist über das Azure-Portal, die Vorschau-REST-API und Beta-SDKs verfügbar. Diese Features sind abrechenbar. Weitere Informationen finden Sie unter [Verfügbarkeit und Preise](semantic-search-overview.md#availability-and-pricing).
 
 Beim Aufrufen von [semantischen Rangfolgen und Beschriftungen](semantic-how-to-query-request.md) können Sie optional Inhalte aus den am besten passenden Dokumenten extrahieren, die die Abfrage direkt „beantworten“. Das Abfrageergebnis kann aus einer oder mehreren Antworten bestehen, die Sie dann auf einer Suchseite rendern können, um die Benutzeroberfläche Ihrer App zu verbessern.
 
@@ -69,7 +69,7 @@ Der Parameter „searchFields“ ist wichtig, damit in Bezug auf Inhalt und Reih
 
 + „searchFields“ bestimmt, welche Zeichenfolgenfelder Token für das Extraktionsmodell bereitstellen. Die gleichen Felder, die Beschriftungen liefern, liefern auch Antworten. Eine genaue Anleitung zum Festlegen dieses Felds, sodass es für Beschriftungen und Antworten funktioniert, finden Sie unter [Festlegen von searchFields](semantic-how-to-query-request.md#searchfields). 
 
-+ Die grundlegende Struktur für den Parameter „Antworten“ ist `"answers": "extractive"`, wobei standardmäßig eine Antwort zurückgegeben wird. Sie können die Anzahl der Antworten erhöhen, indem Sie wie im obigen Beispiel gezeigt eine Anzahl (`count`) von maximal fünf hinzufügen.  Ob Sie mehr als eine Antwort benötigen, hängt von der Benutzeroberfläche Ihrer App ab sowie davon, wie die Ergebnisse gerendert werden sollen.
++ Die grundlegende Struktur für den Parameter „Antworten“ ist `"answers": "extractive"`, wobei standardmäßig eine Antwort zurückgegeben wird. Sie können die Anzahl der Antworten erhöhen, indem Sie wie im obigen Beispiel gezeigt eine Anzahl (`count`) von maximal zehn hinzufügen.  Ob Sie mehr als eine Antwort benötigen, hängt von der Benutzeroberfläche Ihrer App ab sowie davon, wie die Ergebnisse gerendert werden sollen.
 
 ## <a name="deconstruct-an-answer-from-the-response"></a>Dekonstruieren einer Antwort aus dem Abfrageergebnis
 

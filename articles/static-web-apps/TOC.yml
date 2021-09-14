@@ -16,7 +16,7 @@
           href: getting-started.md
         - name: Azure-Portal
           href: get-started-portal.md
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: get-started-cli.md
 - name: Konzepte
   items:
@@ -30,11 +30,13 @@
           href: functions-bring-your-own.md
     - name: Konfiguration
       items:
+        - name: Konfigurationsübersicht
+          href: configuration-overview.md
         - name: Anwendungskonfiguration
           href: configuration.md
           displayName: 'routing, routes'
         - name: Buildkonfiguration
-          href: github-actions-workflow.md
+          href: build-configuration.md
         - name: App-Einstellungen
           href: application-settings.md
           displayName: environment variables
@@ -106,7 +108,7 @@
       href: publish-azure-resource-manager.md
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/staticwebapp
 - name: Ressourcen
   items:

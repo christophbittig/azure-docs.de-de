@@ -9,24 +9,24 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.custom: inference server, local development, local debugging
+ms.custom: inference server, local development, local debugging, devplatv2
 ms.date: 05/14/2021
-ms.openlocfilehash: d54195829c4f4734d135e3468897711bdaa0421f
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 924995fe9330a44b52a40a8e3eb651efdeb24398
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110538447"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340318"
 ---
 # <a name="azure-machine-learning-inference-http-server-preview"></a>HTTP-Rückschlussserver von Azure Machine Learning (Vorschau)
 
 Der HTTP-Rückschlussserver von Azure Machine Learning [(Vorschau)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) ist ein Python-Paket, mit dem Sie Ihr Einstiegsskript (`score.py`) in einer lokalen Entwicklungsumgebung problemlos überprüfen können. Wenn ein Problem mit dem Bewertungsskript vorliegt, gibt der Server einen Fehler zurück. Außerdem wird die Position zurückgegeben, an der der Fehler aufgetreten ist.
 
-Der Server kann auch verwendet werden, wenn Validierungsgates in einer Pipeline für Continuous Integration und Continuous Deployment erstellt werden. Starten Sie z. B. den Server mit dem Kandidatenskript, und führen Sie die Testsammlung für den lokalen Endpunkt aus.
+Der Server kann auch verwendet werden, wenn Validierungsgates in einer Pipeline für Continuous Integration und Continuous Deployment erstellt werden. Starten Sie beispielsweise den Server mit dem Kandidatenskript, und führen Sie die Testsammlung für den lokalen Endpunkt aus.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Python Version 3.7
+- Erfordert: Python 3.7 oder höher
 
 ## <a name="installation"></a>Installation
 
@@ -55,7 +55,7 @@ python -m pip install azureml-inference-server-http
     source myenv/bin/activate
     ```
 
-1. Installieren Sie das `azureml-inference-server-http`-Paket aus dem [pypi](https://pypi.org/)-Feed:
+1. Installieren Sie das `azureml-inference-server-http`-Paket aus dem [pypi](https://pypi.org/project/azureml-inference-server-http/)-Feed:
 
     ```bash
     python -m pip install azureml-inference-server-http
@@ -84,13 +84,6 @@ python -m pip install azureml-inference-server-http
     > [!NOTE]
     > Der Server wird auf 0.0.0.0 gehostet. Dies bedeutet, dass er auf alle IP-Adressen des Hostcomputers lauscht.
 
-    Der Server lauscht bei diesen Routen an Port 5001.
-
-    | Name | Route|
-    | --- | --- |
-    | Livetest | 127.0.0.1:5001/|
-    | Score | 127.0.0.1:5001/score|
-
 1. Senden Sie eine Bewertungsanforderung mithilfe von `curl` an den Server:
 
     ```bash
@@ -105,6 +98,15 @@ python -m pip install azureml-inference-server-http
 
 Nun können Sie das Bewertungsskript ändern und Ihre Änderungen testen, indem Sie den Server erneut ausführen.
 
+## <a name="server-routes"></a>Serverrouten
+
+Der Server lauscht bei diesen Routen an Port 5001.
+
+| Name | Route|
+| --- | --- |
+| Livetest | 127.0.0.1:5001/|
+| Score | 127.0.0.1:5001/score|
+
 ## <a name="server-parameters"></a>Serverparameter
 
 Die folgende Tabelle enthält die vom Server akzeptierten Parameter:
@@ -115,6 +117,7 @@ Die folgende Tabelle enthält die vom Server akzeptierten Parameter:
 | model_dir | False | – | Der relative oder absolute Pfad zum Verzeichnis mit dem Modell, das für Rückschlüsse verwendet wird.
 | port | Falsch | 5001 | Der bereitstellende Port des Servers.|
 | worker_count | Falsch | 1 | Die Anzahl von Arbeitsthreads, die gleichzeitige Anforderungen verarbeiten. |
+| appinsights_instrumentation_key | False | – | Dies ist der Instrumentierungsschlüssel für Application Insights, wo die Protokolle veröffentlicht werden. |
 
 ## <a name="request-flow"></a>Anforderungsflow
 
@@ -129,6 +132,7 @@ In den folgenden Schritten wird erläutert, wie der HTTP-Rückschlussserver für
 1. Schließlich wird die Anforderung an Ihr Einstiegsskript gesendet. Das Einstiegsskript sendet dann einen Rückschlussaufruf an das geladene Modell und gibt eine Antwort zurück.
 
 :::image type="content" source="./media/how-to-inference-server-http/inference-server-architecture.png" alt-text="Diagramm des HTTP-Serverprozesses":::
+
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
 ### <a name="do-i-need-to-reload-the-server-when-changing-the-score-script"></a>Muss ich den Server neu laden, wenn ich das Bewertungsskript ändere?
@@ -141,4 +145,5 @@ Der Azure Machine Learning-Rückschlussserver wird unter Windows- und Linux-basi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Erstellen eines Einstiegsskripts und zum Bereitstellen von Modellen finden Sie unter [Bereitstellen eines Modells mithilfe von Azure Machine Learning](how-to-deploy-and-where.md).
+* Weitere Informationen zum Erstellen eines Einstiegsskripts und zum Bereitstellen von Modellen finden Sie unter [Bereitstellen eines Modells mithilfe von Azure Machine Learning](how-to-deploy-and-where.md).
+* Weitere Informationen unter [Vordefinierte Docker-Images für Rückschlüsse (Vorschau)](concept-prebuilt-docker-images-inference.md)

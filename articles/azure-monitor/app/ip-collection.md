@@ -1,15 +1,15 @@
 ---
 title: Sammlung von Azure Application Insights-IP-Adressen | Microsoft-Dokumentation
-description: Grundlegendes zur Handhabung von IP-Adressen und der Geolocation mit Azure Application Insights
+description: Vorgehensweise von Application Insights beim Verarbeiten von IP-Adressen und der Geolocation
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.custom: devx-track-js, devx-track-azurepowershell
-ms.openlocfilehash: 8115ea2334d0ea90ef0e31bb857f3e76154912ce
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 28b3fb6242d496be7962961d36db3a85c6187d8e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110082538"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347109"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Geolocation und Verarbeitung von IP-Adressen
 
@@ -19,20 +19,22 @@ In diesem Artikel wird erläutert, wie die Geolocationsuche und die Verarbeitung
 
 IP-Adressen werden standardmäßig temporär gesammelt, aber nicht in Application Insights gespeichert. Der Standardprozess verläuft wie folgt:
 
-Wenn Telemetriedaten an Azure gesendet werden, wird die IP-Adresse genutzt, um eine Geolocationsuche mithilfe von [GeoLite2 von MaxMind](https://dev.maxmind.com/geoip/geoip2/geolite2/) durchzuführen. Die Ergebnisse dieser Suche werden verwendet, um die Felder `client_City`, `client_StateOrProvince` und `client_CountryOrRegion` aufzufüllen. Die Adresse wird dann verworfen, und in das `client_IP`-Feld wird `0.0.0.0` geschrieben.
+Wenn Telemetriedaten an Azure gesendet werden, nutzt Application Insights die IP-Adresse, um eine Geolocationsuche mithilfe von [GeoLite2 von MaxMind](https://dev.maxmind.com/geoip/geoip2/geolite2/) durchzuführen. Application Insights verwendet die Ergebnisse dieser Suche, um die Felder `client_City`, `client_StateOrProvince` und `client_CountryOrRegion` aufzufüllen. Die Adresse wird dann verworfen, und in das `client_IP`-Feld wird `0.0.0.0` geschrieben. 
 
-* Browsertelemetrie: Die IP-Adresse des Absenders wird vorübergehend erfasst. Die IP-Adresse wird vom Erfassungsendpunkt berechnet.
-* Servertelemetrie: Die Client-IP-Adresse wird vorübergehend vom Application Insights-Telemetriemodul erfasst. IP-Adressen werden lokal nicht erfasst, wenn der `X-Forwarded-For`-Header festgelegt wird.
+Die Telemetrietypen sind die folgenden:
+
+* Browsertelemetrie: Application Insights erfasst die IP-Adresse des Absenders. Der Erfassungsendpunkt berechnet die IP-Adresse.
+* Servertelemetrie: Die Client-IP-Adresse wird vorübergehend vom Application Insights-Telemetriemodul erfasst. Die IP-Adressen werden lokal nicht erfasst, wenn der `X-Forwarded-For`-Header festgelegt wird. Wenn die eingehende Liste der IP-Adressen mehr als ein Element enthält, wird die letzte IP-Adresse zum Auffüllen von Geolocationfeldern verwendet.
 
 Dieses Verhalten ist beabsichtigt und soll die unnötige Erfassung persönlicher Daten vermeiden. Die Erfassung persönlicher Daten sollte, wenn möglich, vermieden werden. 
 
-## <a name="overriding-default-behavior"></a>Überschreiben des Standardverhaltens
+> [!NOTE]
+> Obwohl die Standardeinstellung darin besteht, keine IP-Adressen zu erfassen, können Sie dieses Verhalten außer Kraft setzen. Achten Sie darauf, dass die Erfassung nicht gegen Complianceanforderungen oder lokale Regelungen verstößt. 
+>
+> Weitere Informationen zur Behandlung persönlicher Daten in Application Insights finden Sie im [Leitfaden zu persönlichen Daten](../logs/personal-data-mgmt.md).
 
-Laut Standardeinstellung werden IP-Adressen nicht erfasst. Es besteht jedoch weiterhin die Flexibilität, dieses Verhalten zu überschreiben. Sie sollten jedoch darauf achten, dass die Erfassung nicht gegen Complianceanforderungen oder lokale Regelungen verstößt. 
 
-Weitere Informationen zur Behandlung persönlicher Daten in Application Insights finden Sie im [Leitfaden zu persönlichen Daten](../logs/personal-data-mgmt.md).
-
-## <a name="storing-ip-address-data"></a>Speichern von IP-Adressdaten
+## <a name="storage-of-ip-address-data"></a>Speichern von IP-Adressdaten
 
 Die Eigenschaft `DisableIpMasking` der Application Insights-Komponente muss auf `true` festgelegt werden, um das Erfassen und Speichern von IP-Adressen zu aktivieren. Diese Eigenschaft kann entweder durch Azure Resource Manager-Vorlagen oder durch Aufrufen der REST-API festgelegt werden. 
 
@@ -62,27 +64,27 @@ Die Eigenschaft `DisableIpMasking` der Application Insights-Komponente muss auf 
 
 Wenn Sie nur das Verhalten für eine einzelne Application Insights-Ressource ändern müssen, verwenden Sie das Azure-Portal. 
 
-1. Navigieren Sie zu Ihrer Application Insights-Ressource > **Automatisierung** > **Vorlage exportieren**. 
+1. Navigieren Sie zu Ihrer Application Insights-Ressource, und wählen Sie **Automatisierung** > **Vorlage exportieren** aus. 
 
 2. Klicken Sie auf **Bereitstellen**.
 
-    ![Rot hervorgehobene Schaltfläche mit dem Wort „Bereitstellen“](media/ip-collection/deploy.png)
+    ![Screenshot der rot hervorgehobenen Schaltfläche „Bereitstellen“](media/ip-collection/deploy.png)
 
 3. Klicken Sie auf **Vorlage bearbeiten**.
 
-    ![Rot hervorgehobene Schaltfläche mit dem Wort „Bearbeiten“](media/ip-collection/edit-template.png)
+    ![Screenshot: Rot hervorgehobene Schaltfläche „Bearbeiten“ zusammen mit einer Warnung zur Ressourcengruppe](media/ip-collection/edit-template.png)
 
-4. Nehmen Sie die folgenden Änderungen an der JSON-Datei für Ihre Ressource vor, und klicken Sie dann auf **Speichern**:
+    > [!NOTE]
+    > Wenn der folgende Fehler auftritt (wie im Screenshot gezeigt), können Sie ihn beheben: „Die Ressourcengruppe befindet sich an einem Standort, der von mindestens einer Ressource in der Vorlage nicht unterstützt wird. Wählen Sie eine andere Ressourcengruppe.“ Wählen Sie vorübergehend eine andere Ressourcengruppe aus der Dropdownliste aus, und wählen Sie dann erneut die ursprüngliche Ressourcengruppe aus.
 
-    ![Screenshot: Einfügen eines Kommas nach "IbizaAIExtension" und einer neuen Zeile darunter mit "DisableIpMasking": true](media/ip-collection/save.png)
+4. Suchen Sie in der JSON-Vorlage `properties` in `resources`, fügen Sie dem letzten JSON-Feld ein Komma hinzu, und fügen Sie dann die folgende neue Zeile hinzu: `"DisableIpMasking": true`. Klicken Sie dann auf **Speichern**.
 
-    > [!WARNING]
-    > Wenn eine Fehlermeldung mit folgendem Text angezeigt wird: **_The resource group is in a location that is not supported by one or more resources in the template. Please choose a different resource group._** (Die Ressourcengruppe befindet sich an einem Speicherort, der von keiner Ressource in der Vorlage unterstützt wird. Bitte wählen Sie eine andere Ressourcengruppe). Wählen Sie vorübergehend eine andere Ressourcengruppe aus der Dropdownliste aus, und wählen Sie dann erneut die ursprüngliche Ressourcengruppe aus, um den Fehler zu beheben.
+    ![Screenshot, der das Hinzufügen eines Kommas und einer neuen Zeile nach der Eigenschaft für die Anforderungsquelle zeigt.](media/ip-collection/save.png)
 
 5. Wählen Sie **Bewerten + erstellen** > **Erstellen** aus.
 
     > [!NOTE]
-    > Wenn „Fehler bei der Bereitstellung“ angezeigt wird, suchen Sie in den Bereitstellungsdetails nach dem Eintrag mit dem Typ „microsoft.insights/components“, und überprüfen Sie den Status. Wenn dieser als erfolgreich angegeben ist, wurden die an „DisableIpMasking“ vorgenommenen Änderungen bereitgestellt.
+    > Wenn „Fehler bei der Bereitstellung“ angezeigt wird, suchen Sie in den Bereitstellungsdetails nach dem Eintrag mit dem Typ `microsoft.insights/components`, und überprüfen Sie den Status. Wenn dieser als erfolgreich angegeben ist, wurden die an `DisableIpMasking` vorgenommenen Änderungen bereitgestellt.
 
 6. Sobald die Bereitstellung abgeschlossen ist, werden neue Telemetriedaten aufgezeichnet.
 
@@ -90,13 +92,13 @@ Wenn Sie nur das Verhalten für eine einzelne Application Insights-Ressource än
     
     ```powershell
     # Replace `Fabrikam-dev` with the appropriate resource and resource group name.
-    # If you aren't using the cloud shell you will need to connect to your Azure account
+    # If you aren't using Azure Cloud Shell, you need to connect to your Azure account
     # Connect-AzAccount 
     $AppInsights = Get-AzResource -Name 'Fabrikam-dev' -ResourceType 'microsoft.insights/components' -ResourceGroupName 'Fabrikam-dev'
     $AppInsights.Properties
     ```
     
-    Daraufhin wird eine Liste mit den Eigenschaften zurückgegeben. Eine der Eigenschaften sollte `DisableIpMasking: true` beinhalten. Wenn Sie vor dem Bereitstellen der neuen Eigenschaft mit Azure Resource Manager den PowerShell-Befehl ausführen, ist die Eigenschaft nicht vorhanden.
+    Daraufhin wird eine Liste mit den Eigenschaften zurückgegeben. Eine der Eigenschaften sollte `DisableIpMasking: true` beinhalten. Wenn Sie vor dem Bereitstellen der neuen Eigenschaft mit Azure Resource Manager die PowerShell-Befehle ausführen, ist die Eigenschaft nicht vorhanden.
 
 ### <a name="rest-api"></a>REST-API
 
@@ -125,7 +127,7 @@ Wenn Sie eine flexiblere Alternative als `DisableIpMasking` benötigen, können 
 
 # <a name="net"></a>[.NET](#tab/net)
 
-### <a name="aspnet--aspnet-core"></a>ASP.NET / ASP.NET Core
+### <a name="aspnet-or-aspnet-core"></a>ASP.NET oder ASP.NET Core
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -151,9 +153,9 @@ namespace MyWebApp
 ```
 
 > [!NOTE]
-> Wenn Sie auf `ISupportProperties` nicht zugreifen können, stellen Sie sicher, dass Sie die neueste stabile Version des Application Insights SDK ausführen. `ISupportProperties` sind für hohe Kardinalitätswerte gedacht, während `GlobalProperties` für niedrige Kardinalitätswerte wie Regionsname, Umgebungsname usw. besser geeignet sind. 
+> Wenn Sie nicht auf `ISupportProperties` zugreifen können, stellen Sie sicher, dass Sie die neueste stabile Version des Application Insights SDK ausführen. `ISupportProperties` ist für hohe Kardinalitätswerte vorgesehen. `GlobalProperties` eignet sich besser für niedrige Kardinalitätswerte wie den Regionsnamen und Umgebungsnamen.
 
-### <a name="enable-telemetry-initializer-for-aspnet"></a>Aktivieren des Telemetrieinitialisierers für ASP.NET
+### <a name="enable-the-telemetry-initializer-for-aspnet"></a>Aktivieren des Telemetrieinitialisierers für ASP.NET
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility;
@@ -173,9 +175,9 @@ namespace MyWebApp
 
 ```
 
-### <a name="enable-telemetry-initializer-for-aspnet-core"></a>Aktivieren des Telemetrieinitialisierers für ASP.NET Core
+### <a name="enable-the-telemetry-initializer-for-aspnet-core"></a>Aktivieren des Telemetrieinitialisierers für ASP.NET Core
 
-Sie können den Telemetrieinitialisierer für ASP.NET Core auf die gleiche Weise wie für ASP.NET erstellen, müssen zum Aktivieren des Initialisierers aber das folgende Beispiel als Verweis verwenden:
+Sie können Ihren Telemetrieinitialisierer für ASP.NET Core genauso wie für ASP.NET auch erstellen. Verwenden Sie zum Aktivieren des Initialisierers das folgende Beispiel als Referenz:
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -206,9 +208,9 @@ appInsights.defaultClient.addTelemetryProcessor((envelope) => {
 
 Im Gegensatz zu serverseitigen SDKs berechnet das clientseitige JavaScript-SDK keine IP-Adresse. Die IP-Adressenberechnung für clientseitige Telemetriedaten wird standardmäßig am Erfassungsendpunkt in Azure ausgeführt. 
 
-Wenn Sie IP-Adressen direkt auf der Clientseite berechnen möchten, müssen Sie eine eigene benutzerdefinierte Logik hinzufügen und das Ergebnis zum Festlegen des Tags `ai.location.ip` verwenden. Wenn `ai.location.ip` festgelegt ist, wird die IP-Adressenberechnung nicht vom Erfassungsendpunkt durchgeführt, und die angegebene IP-Adresse wird zum Durchführen der Geolocationsuche verwendet. In diesem Szenario wird die IP-Adresse weiterhin standardmäßig zurückgesetzt. 
+Wenn Sie die IP-Adressen direkt auf der Clientseite berechnen möchten, müssen Sie eine eigene benutzerdefinierte Logik hinzufügen und das Ergebnis zum Festlegen des Tags `ai.location.ip` verwenden. Wenn `ai.location.ip` festgelegt ist, wird die IP-Adressenberechnung nicht vom Erfassungsendpunkt durchgeführt, und die angegebene IP-Adresse wird zum Durchführen der Geolocationsuche verwendet. In diesem Szenario wird die IP-Adresse immer noch standardmäßig auf 0 (null) gesetzt. 
 
-Sie können einen Telemetrieinitialisierer verwenden, der die von Ihnen in `ai.location.ip` bereitgestellten IP-Adressdaten in ein separates benutzerdefiniertes Feld kopiert, um die gesamte von der benutzerdefinierten Logik berechnete IP-Adresse beizubehalten. Im Gegensatz zu den serverseitigen SDKs wiederum wird, ohne sich auf Bibliotheken von Drittanbietern oder eine eigene benutzerdefinierte Sammlungslogik zu verlassen, die IP-Adresse vom clientseitigen SDK nicht berechnet.    
+Sie können einen Telemetrieinitialisierer verwenden, der die von Ihnen in `ai.location.ip` bereitgestellten IP-Adressdaten in ein separates benutzerdefiniertes Feld kopiert, um die gesamte von der benutzerdefinierten Logik berechnete IP-Adresse beizubehalten. Im Gegensatz zu den serverseitigen SDKs berechnet das clientseitige SDK nicht die Adresse für Sie, wenn es sich nicht auf Bibliotheken von Drittanbietern oder Ihre eigene benutzerdefinierte Logik verlassen kann.    
 
 
 ```javascript
@@ -224,13 +226,13 @@ appInsights.addTelemetryInitializer((item) => {
 
 ```  
 
-Wenn clientseitige Daten einen Proxy durchlaufen, bevor sie an den Erfassungsendpunkt weitergeleitet werden, könnte die IP-Adressenberechnung die IP-Adresse des Proxys und nicht des Clients anzeigen. 
+Wenn clientseitige Daten einen Proxy durchlaufen, bevor sie an den Erfassungsendpunkt weitergeleitet werden, zeigt die IP-Adressenberechnung möglicherweise die IP-Adresse des Proxys und nicht des Clients an. 
 
 ---
 
 ### <a name="view-the-results-of-your-telemetry-initializer"></a>Anzeigen der Ergebnisse des Telemetrieinitialisierers
 
-Senden Sie neuen Datenverkehr an Ihre Website, und warten Sie dann einige Minuten. Führen Sie dann eine Abfrage aus, um zu überprüfen, ob die Erfassung erfolgreich ist:
+Wenn Sie neuen Datenverkehr an Ihre Website senden und einige Minuten warten, können Sie eine Abfrage ausführen, um zu bestätigen, dass die Sammlung funktioniert:
 
 ```kusto
 requests
@@ -238,12 +240,12 @@ requests
 | project appName, operation_Name, url, resultCode, client_IP, customDimensions.["client-ip"]
 ```
 
-Die neu erfassten IP-Adressen werden in der Spalte `customDimensions_client-ip` angezeigt. Für die Standardspalte `client-ip` werden die vier Oktette dennoch jeweils mit Nullen besetzt angezeigt. 
+Die neu erfassten IP-Adressen werden in der Spalte `customDimensions_client-ip` angezeigt. Für die Standardspalte `client-ip` werden die vier Oktette dennoch mit Nullen besetzt angezeigt. 
 
-Wenn Tests auf dem Localhost ausgeführt werden und der Wert für `customDimensions_client-ip` `::1` lautet, handelt es sich bei diesem Wert um das erwartete Verhalten. `::1` stellt die Loopbackadresse in IPv6 dar. Die Adresse entspricht `127.0.0.1` in IPv4.
+Wenn Tests auf dem Localhost ausgeführt werden und der Wert für `customDimensions_client-ip` `::1` lautet, handelt es sich bei diesem Wert um das erwartete Verhalten. Der Wert `::1` stellt die Loopbackadresse in IPv6 dar. Die Adresse entspricht `127.0.0.1` in IPv4.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zur [Sammlung persönlicher Daten](../logs/personal-data-mgmt.md) finden Sie in Application Insights.
 
-* Erfahren Sie mehr über die Funktionsweise der [IP-Adressensammlung](https://apmtips.com/posts/2016-07-05-client-ip-address/) in Application Insights. (Dieser Artikel ist ein älterer externer Blogbeitrag von einem unserer Techniker. Zwar wurde der Beitrag vor der Implementierung des aktuellen Standardverhaltens verfasst, bei dem die IP-Adresse als `0.0.0.0` aufgezeichnet wird, allerdings wird die Funktionsweise des integrierten `ClientIpHeaderTelemetryInitializer` ausführlicher erklärt.)
+* Erfahren Sie mehr über die Funktionsweise der [IP-Adressensammlung](https://apmtips.com/posts/2016-07-05-client-ip-address/) in Application Insights. Dieser Artikel ist ein älterer externer Blogbeitrag von einem unserer Techniker. Zwar wurde der Beitrag vor der Implementierung des aktuellen Standardverhaltens verfasst, bei dem die IP-Adresse als `0.0.0.0` aufgezeichnet wird, allerdings wird die Funktionsweise des integrierten Telemetrieinitialisierers ausführlicher erklärt.

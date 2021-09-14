@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 08/09/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 4b357213f4e552fd791fb575d8b7a287b924c7f9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6ad2014b8fce21eada9ced1e63a3511daa5e1891
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103489069"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122340562"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-azure-ad-b2c-account-from-another-azure-ad-b2c-tenant"></a>Einrichten der Registrierung und Anmeldung mit einem Azure AD B2C-Konto von einem anderen Azure AD B2C-Mandanten
 
@@ -41,11 +41,19 @@ In diesem Artikel wird beschrieben, wie Sie einen Verbund mit einem anderen Azur
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
+### <a name="verify-the-applications-publisher-domain"></a>Überprüfen der Herausgeberdomäne einer Anwendung
+Ab November 2020 werden neue Anwendungsregistrierungen in der Benutzer-Zustimmungsaufforderung als nicht überprüft angezeigt, es sei denn, [die Herausgeberdomäne der Anwendung wurde überprüft](../active-directory/develop/howto-configure-publisher-domain.md) ***und*** die Identität des Unternehmens wurde durch das Microsoft Partner Network überprüft und der Anwendung zugeordnet. ([Erfahren Sie mehr](../active-directory/develop/publisher-verification-overview.md) über diese Änderung.) Beachten Sie, dass für Azure AD B2C-Benutzerflows die Domäne des Herausgebers nur angezeigt wird, wenn ein Microsoft-Konto oder ein anderer [Azure AD](../active-directory-b2c/identity-provider-microsoft-account.md)-Mandant als Identitätsanbieter verwendet wird. Gehen Sie wie folgt vor, um diese neuen Anforderungen zu erfüllen:
+
+1. [Überprüfen Sie Ihre Unternehmensidentität mit ihrem Microsoft Partner Network-Konto (MPN)](/partner-center/verification-responses). Bei diesem Prozess werden Informationen zu Ihrem Unternehmen und zum primären Kontakt Ihres Unternehmens überprüft.
+1. Schließen Sie die Herausgeberüberprüfung ab, um mithilfe einer der folgenden Optionen Ihr MPN-Konto Ihrer App-Registrierung zuzuordnen:
+   - Wenn die App-Registrierung für den Microsoft-Konto-Identitätsanbieter in einem Azure AD-Mandanten ist, [überprüfen Sie Ihre App im App-Registrierungsportal](../active-directory/develop/mark-app-as-publisher-verified.md).
+   - Wenn sich Ihre App-Registrierung für den Microsoft-Konto-Identitätsanbieter in einem Azure AD B2C-Mandanten befindet, [markieren Sie Ihre App mithilfe von Microsoft Graph-APIs als vom Herausgeber verifiziert](../active-directory/develop/troubleshoot-publisher-verification.md#making-microsoft-graph-api-calls) (z. B. mithilfe von Graph Explorer). Die Benutzeroberfläche zum Festlegen des verifizierten Herausgebers einer App ist derzeit für Azure AD B2C-Mandanten deaktiviert.
+
 ## <a name="create-an-azure-ad-b2c-application"></a>Erstellen einer Azure AD B2C-Anwendung
 
 Gehen Sie wie folgt vor, um die Anmeldung für Benutzer mit einem Konto von einem anderen Azure AD B2C-Mandanten (z. B. Fabrikam) in Ihrem Azure AD B2C-Mandanten (z. B. Contoso) zu ermöglichen:
 
-1. Erstellen Sie einen [Benutzerflow](tutorial-create-user-flows.md)oder eine [benutzerdefinierte Richtlinie](custom-policy-get-started.md).
+1. Erstellen Sie einen [Benutzerflow](tutorial-create-user-flows.md?pivots=b2c-user-flow)oder eine [benutzerdefinierte Richtlinie](tutorial-create-user-flows.md?pivots=b2c-custom-policy).
 1. Erstellen Sie dann eine Anwendung in Azure AD B2C, wie in diesem Abschnitt beschrieben. 
 
 Gehen Sie wie folgt vor, um eine Anwendung zu erstellen.
@@ -229,7 +237,7 @@ Sie können Azure AD B2C als Anspruchsanbieter definieren, indem Sie in der Er
 ## <a name="test-your-custom-policy"></a>Testen der benutzerdefinierten Richtlinie
 
 1. Wählen Sie die Richtliniendatei für die vertrauende Seite aus, z. B. `B2C_1A_signup_signin`.
-1. Wählen Sie für **Anwendung** eine Webanwendung aus, die Sie [zuvor registriert haben](troubleshoot-custom-policies.md#troubleshoot-the-runtime). Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
+1. Wählen Sie für **Anwendung** eine Webanwendung aus, die Sie [zuvor registriert haben](tutorial-register-applications.md). Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
 1. Wählen Sie die Schaltfläche **Jetzt ausführen** aus.
 1. Wählen Sie auf der Registrierungs- oder Anmeldeseite die Option **Fabrikam** aus, um sich mit dem anderen Azure AD B2C-Mandanten anzumelden.
 

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 1ff5ea8c4bb0af326b37d0e4ff2185be22393f16
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 6b54afdb77bd1fc3a958b959dad4fcb030e1fe2f
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745437"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122350884"
 ---
 # <a name="create-powershell-scripts-for-msix-app-attach"></a>Erstellen von PowerShell-Skripts für das MSIX-Feature zum Anfügen von Apps
 
@@ -200,6 +200,9 @@ Dismount-DiskImage -ImagePath $vhdSrc -Confirm:$false
 #endregion
 ```
 
+>[!NOTE]
+>Sie können das Gerät herunterfahren, auch wenn der **$volumeGuid**-Punkt nach Ausführung des Skripts zur Aufhebung des Stagings erhalten bleibt.
+
 ## <a name="set-up-simulation-scripts-for-the-msix-app-attach-agent"></a>Einrichten von Simulationsskripts für den Agent für das Feature zum Anfügen von Apps
 
 Nachdem Sie die Skripts erstellt haben, können Benutzer diese manuell ausführen oder sie so einrichten, dass sie automatisch als Skripts zum Starten, Anmelden, Abmelden und Herunterfahren ausgeführt werden. Weitere Informationen zu diesen Arten von Skripts finden Sie unter [Verwenden von Skripts zum Starten, Herunterfahren, Anmelden und Abmelden in der Gruppenrichtlinie](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)/).
@@ -210,6 +213,9 @@ Jedes dieser automatischen Skripts führt eine Phase der Skripts zum Anfügen vo
 - Das Anmeldeskript führt das Registrierungsskript aus.
 - Das Abmeldeskript führt das Skript zum Aufheben der Registrierung aus.
 - Das Skript zum Herunterfahren führt das Skript zum Aufheben des Stagings aus.
+
+>[!NOTE]
+>Sie können den Aufgabenplaner mit dem Stagingskript ausführen. Legen Sie zum Ausführen des Skripts den Aufgabenauslöser auf **Beim Start des Computers** fest, und aktivieren Sie dann **Mit höchsten Privilegien ausführen**.
 
 ## <a name="use-packages-offline"></a>Offlineverwendung von Paketen
 

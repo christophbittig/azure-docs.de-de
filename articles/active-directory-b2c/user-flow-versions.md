@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/22/2021
+ms.date: 08/17/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4b47a311513a1216555583b64095d4bc46e4b48e
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: ff22ed8c1ef96d1839767ac56a7215737ae18c14
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107895899"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122343618"
 ---
 # <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Benutzerflowversionen in Azure Active Directory B2C
 
@@ -27,7 +27,7 @@ Benutzerflows in Azure Active Directory B2C (Azure AD B2C) helfen Ihnen beim Ein
 >- **Empfohlene** Benutzerflows sind die allgemein verfügbaren Benutzerflows der nächsten Generation mit den neuesten Features. Sie umfassen alle Features der Legacyversionen **V1**, **V1.1** und **V2**. Die **empfohlenen** Benutzerflows werden in Zukunft verwaltet und aktualisiert. Nachdem Sie auf diese neuen empfohlenen Benutzerflows umgestellt haben, erhalten Sie Zugriff auf neue Features, sobald diese veröffentlicht werden.
 >- **Standardbenutzerflows** wurden bisher als **V1** bezeichnet und sind Legacybenutzerflows. Wenn keine bestimmte Geschäftsanforderung besteht, raten wir von der Verwendung dieser Benutzerflowversionen ab, weil sie nicht mehr verwaltet oder aktualisiert werden.
 >
->Alle Benutzerflows der Legacyvorschauversionen (V1.1 und V2) werden zum **1. August 2021** eingestellt. Es wird dringend empfohlen, so bald wie möglich [auf die **empfohlenen** Versionen umzusteigen](#how-to-switch-to-a-recommended-user-flow), damit Sie alle neuen Features und Updates nutzen können. *Diese Änderungen gelten nur für die öffentliche Azure-Cloud. In anderen Umgebungen werden weiterhin die [Legacyversionen der Benutzerflows](user-flow-versions-legacy.md) verwendet.*
+>In der öffentlichen Cloud sind alle Benutzerflows der Legacyvorschauversionen (V1.1 und V2) veraltet. *Diese Änderungen gelten nur für die öffentliche Azure-Cloud. In anderen Umgebungen werden weiterhin die [Legacyversionen der Benutzerflows](user-flow-versions-legacy.md) verwendet.*
 
 ## <a name="recommended-user-flows"></a>Empfohlene Benutzerflows
 
@@ -85,4 +85,4 @@ Wenn Sie einen Legacybenutzerflow mit V2 und V1.1 verwenden, wirkt sich diese Ve
 
 ### <a name="will-microsoft-still-support-my-legacy-v2-or-v11-user-flow-policy"></a>Unterstützt Microsoft weiterhin meine Legacyrichtlinie für Benutzerflows der Versionen V2 oder V1.1?
 
-In der öffentlichen Cloud werden alle Benutzerflows der Legacyvorschauversionen (V1.1 und V2) zum 1. August 2021 eingestellt. Es wird dringend empfohlen, so bald wie möglich [auf die **empfohlenen** Versionen umzusteigen](#how-to-switch-to-a-recommended-user-flow), damit Sie alle neuen Features und Updates nutzen können. *Diese Änderungen gelten nur für die öffentliche Azure-Cloud. In anderen Umgebungen werden weiterhin die [Legacyversionen der Benutzerflows](user-flow-versions-legacy.md) verwendet.*
+In der öffentlichen Cloud sind alle Benutzerflows der Legacyvorschauversionen (V1.1 und V2) veraltet. *Diese Änderungen gelten nur für die öffentliche Azure-Cloud. In anderen Umgebungen werden weiterhin die [Legacyversionen der Benutzerflows](user-flow-versions-legacy.md) verwendet.*

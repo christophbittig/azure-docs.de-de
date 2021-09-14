@@ -2,29 +2,28 @@
 title: Konfigurieren des Workflows für die Administratoreinwilligung – Azure Active Directory | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie für Endbenutzer eine Möglichkeit zur Zugriffsanforderung für Anwendungen konfigurieren, die eine Administratoreinwilligung erfordern.
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/29/2019
-ms.author: mtillman
-ms.reviewer: luleon
+ms.date: 07/08/2021
+ms.author: davidmu
+ms.reviewer: ergreenl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 633505f0a0419bc595ecafc706d41aa6600c63c1
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 5611de6dde5ef1380a819ba3f3a2e6050d79374b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112080667"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346637"
 ---
 # <a name="configure-the-admin-consent-workflow"></a>Konfigurieren des Workflows für die Administratoreinwilligung (Vorschau)
 
 In diesem Artikel wird beschrieben, wie Sie den Workflow für die Administratoreinwilligung aktivieren, mit dem Endbenutzer Zugriff auf Anwendungen anfordern können, für die eine Administratoreinwilligung benötigt wird.
 
 Ohne einen Workflow für die Administratoreinwilligung wird ein Benutzer in einem Mandanten mit deaktivierter Benutzereinwilligung blockiert, wenn er versucht, auf eine Anwendung zuzugreifen, die Berechtigungen für den Zugriff auf Unternehmensdaten erfordert. Der Benutzer wird in einer allgemeinen Fehlermeldung darüber informiert, dass er nicht zum Zugriff auf die App autorisiert ist und sich zwecks Unterstützung an den Administrator wenden soll. Häufig weiß der Benutzer aber nicht, an wen er sich wenden muss, sodass er entweder aufgibt oder ein neues lokales Konto in der Anwendung erstellt. Und selbst wenn ein Administrator benachrichtigt wird, ist nicht immer ein optimierter Prozess vorhanden, mit dem der Administrator den Zugriff gewähren und die Benutzer benachrichtigen kann.
- 
 Der Workflow für die Administratoreinwilligung bietet Administratoren eine sichere Möglichkeit zum Gewähren von Zugriff auf Anwendungen, die eine Administratorgenehmigung erfordern. Wenn ein Benutzer versucht, auf eine Anwendung zuzugreifen, aber selbst keine Einwilligung erteilen kann, kann er eine Anforderung zur Administratorgenehmigung senden. Die Anforderung wird per E-Mail an die Administratoren gesendet, die als Prüfer festgelegt wurden. Ein Prüfer ergreift Maßnahmen im Hinblick auf die Anforderung, und der Benutzer wird über den Vorgang informiert.
 
 Um Anforderungen zu genehmigen, muss ein Prüfer als globaler Administrator, Anwendungsadministrator oder Cloudanwendungsadministrator fungieren. Der Prüfer muss einer dieser Administratorrollen angehören, durch eine einfache Zuweisung als Prüfer werden nicht die erforderlichen Berechtigungen erteilt.
@@ -36,27 +35,27 @@ So aktivieren Sie den Workflow für die Administratoreinwilligung und wählen Pr
 1. Melden Sie sich als globaler Administrator beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie oben im Navigationsmenü auf der linken Seite auf **Alle Dienste**. Die **Azure Active Directory-Erweiterung** wird geöffnet.
 3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
-4. Klicken Sie im Navigationsmenü auf **Unternehmensanwendungen**. 
+4. Klicken Sie im Navigationsmenü auf **Unternehmensanwendungen**.
 5. Wählen Sie unter **Verwalten** die Option **Benutzereinstellungen** aus.
 6. Legen Sie unter **Anforderungen zur Administratoreinwilligung** die Option **Benutzer können Administratoreinwilligungen für Apps anfordern, bei denen sie selbst keine Einwilligung erteilen können** auf **Ja** fest.
 
    ![Konfigurieren von Einstellungen für den Workflow für die Administratoreinwilligung](media/configure-admin-consent-workflow/admin-consent-requests-settings.png)
- 
-6. Konfigurieren Sie die folgenden Einstellungen:
 
-   * **Benutzer zum Überprüfen von Anforderungen zur Administratoreinwilligung auswählen**: Wählen Sie die Prüfer für diesen Workflow aus Benutzern aus, die der Rolle „Globaler Administrator“, „Cloudanwendungsadministrator“ oder „Anwendungsadministrator“ angehören.
+7. Konfigurieren Sie die folgenden Einstellungen:
+
+   * **Benutzer zum Überprüfen von Anforderungen zur Administratoreinwilligung auswählen**: Wählen Sie die Prüfer für diesen Workflow aus Benutzern aus, die der Rolle „Globaler Administrator“, „Cloudanwendungsadministrator“ oder „Anwendungsadministrator“ angehören. **Beachten Sie, dass Sie mindestens einen Prüfer festlegen müssen, bevor der Workflow aktiviert werden kann.**
    * **Die ausgewählten Benutzer erhalten E-Mail-Benachrichtigungen zu Anforderungen**: Aktivieren oder deaktivieren Sie Benachrichtigungen an die Prüfer, wenn eine Anforderung gesendet wird.  
    * **Die ausgewählten Benutzer erhalten Erinnerungen zum Ablauf von Anforderungen**: Aktivieren oder deaktivieren Sie Erinnerungs-E-Mail-Benachrichtigungen an die Prüfer, wenn eine Anforderung bald abläuft.  
    * **Einwilligungsanforderung läuft nach (Tagen) ab**: Geben Sie an, wie lange Anforderungen gültig bleiben.
 
-7. Wählen Sie **Speichern** aus. Die Aktivierung der Funktion kann bis zu einer Stunde dauern.
+8. Wählen Sie **Speichern** aus. Die Aktivierung der Funktion kann bis zu einer Stunde dauern.
 
 > [!NOTE]
 > Sie können Prüfer für diesen Workflow hinzufügen oder entfernen, indem Sie die Liste **Prüfer für Anforderungen zur Administratoreinwilligung** ändern. Beachten Sie, dass aufgrund einer aktuellen Einschränkung dieser Funktion Prüfer auch nach ihrer Entfernung weiterhin Anforderungen überprüfen können, die gesendet wurden, während sie als Prüfer festgelegt waren.
 
 ## <a name="how-users-request-admin-consent"></a>Vorgehensweise zur Anforderung einer Administratoreinwilligung durch die Benutzer
 
-Nachdem der Workflow für die Administratoreinwilligung aktiviert wurde, können die Benutzer eine Administratorgenehmigung für eine Anwendung anfordern, für die sie selbst keine Einwilligung erteilen können. Die folgenden Schritte beschreiben das Vorgehen des Benutzers zum Anfordern der Genehmigung. 
+Nachdem der Workflow für die Administratoreinwilligung aktiviert wurde, können die Benutzer eine Administratorgenehmigung für eine Anwendung anfordern, für die sie selbst keine Einwilligung erteilen können. Die folgenden Schritte beschreiben das Vorgehen des Benutzers zum Anfordern der Genehmigung.
 
 1. Der Benutzer versucht, sich bei der Anwendung anzumelden.
 
@@ -68,7 +67,7 @@ Nachdem der Workflow für die Administratoreinwilligung aktiviert wurde, können
 
    ![Screenshot: Sendebestätigung für die Anforderung](media/configure-admin-consent-workflow/end-user-sent-request.png)
 
- 4. Der Benutzer erhält eine E-Mail-Benachrichtigung, wenn die Anforderung genehmigt, abgelehnt oder blockiert wurde. 
+4. Der Benutzer erhält eine E-Mail-Benachrichtigung, wenn die Anforderung genehmigt, abgelehnt oder blockiert wurde.
 
 ## <a name="review-and-take-action-on-admin-consent-requests"></a>Überprüfen und Ergreifen von Maßnahmen bei Anforderungen zur Administratoreinwilligung
 
@@ -83,8 +82,8 @@ So überprüfen Sie die Anforderungen zur Administratoreinwilligung und ergreife
    > [!NOTE]
    > Prüfer sehen nur die Administratoranforderungen, die nach ihrer Festlegung als Prüfer erstellt wurden.
 
-1. Wählen Sie die Anwendung aus, die angefordert wurde.
-2. Überprüfen Sie die Details der Anforderung:  
+6. Wählen Sie die Anwendung aus, die angefordert wurde.
+7. Überprüfen Sie die Details der Anforderung:  
 
    * Um zu sehen, wer Zugriff beantragt und warum, wählen Sie die Registerkarte **Angefordert von** aus.
    * Um zu sehen, welche Berechtigungen von der Anwendung angefordert werden, wählen Sie **Berechtigungen und Einwilligung überprüfen** aus.
@@ -94,24 +93,24 @@ So überprüfen Sie die Anforderungen zur Administratoreinwilligung und ergreife
    * **Genehmigen Sie die Anforderung**. Um eine Anforderung zu genehmigen, erteilen Sie die Administratoreinwilligung für die Anwendung. Sobald eine Anforderung genehmigt wurde, werden alle Anforderer darüber informiert, dass ihnen der Zugriff gewährt wurde.  
    * **Lehnen Sie die Anforderung ab**. Um eine Anforderung abzulehnen, müssen Sie eine Begründung angeben, die allen Anforderern vorgelegt wird. Sobald eine Anforderung abgelehnt wurde, werden alle Anforderer darüber informiert, dass ihnen der Zugriff verweigert wurde. Das Ablehnen einer Anforderung hindert die Benutzer nicht daran, in Zukunft erneut die Einwilligung des Administrators für die App einzuholen.  
    * **Blockieren Sie die Anforderung**. Um eine Anforderung zu blockieren, müssen Sie eine Begründung angeben, die allen Anforderern vorgelegt wird. Sobald eine Anforderung blockiert wurde, werden alle Anforderer darüber informiert, dass ihnen der Zugriff verweigert wurde. Durch das Blockieren einer Anforderung wird in Ihrem Mandanten ein Dienstprinzipalobjekt für die Anwendung erstellt, das sich in einem deaktivierten Zustand befindet. Benutzer können in Zukunft keine Einwilligung des Administrators für die Anwendung mehr anfordern.
- 
+
 ## <a name="email-notifications"></a>E-Mail-Benachrichtigungen
- 
+
 Sofern konfiguriert, erhalten alle Prüfer in den folgenden Fällen E-Mail-Benachrichtigungen:
 
 * Eine neue Anforderung wurde generiert
 * Eine Anforderung ist abgelaufen
 * Eine Anforderung läuft in Kürze ab  
- 
+
 Anforderer erhalten in folgenden Fällen eine E-Mail-Benachrichtigung:
 
 * Beim Senden einer neuen Zugriffsanforderung
 * Bei Ablauf ihrer Anforderung
 * Bei Ablehnung oder Blockierung ihrer Anforderung
 * Bei Genehmigung ihrer Anforderung
- 
-## <a name="audit-logs"></a>Überwachungsprotokolle 
- 
+
+## <a name="audit-logs"></a>Überwachungsprotokolle
+
 Die folgende Tabelle zeigt die Szenarien und Überwachungswerte, die für den Workflow für die Administratoreinwilligung zur Verfügung stehen.
 
 |Szenario  |Überwachungsdienst  |Überwachungskategorie  |Überwachungsaktivität  |Überwachungsakteur  |Überwachungsprotokolleinschränkungen  |
@@ -123,11 +122,11 @@ Die folgende Tabelle zeigt die Szenarien und Überwachungswerte, die für den Wo
 |Die Prüfer genehmigen eine Anforderung zur Administratoreinwilligung.       |Zugriffsüberprüfungen           |UserManagement           |Alle Anforderungen im Geschäftsflow genehmigen          |App-Kontext            |Aktuell ist eine Ermittlung des Benutzerkontexts oder der App-ID, für die eine Administratoreinwilligung erteilt wurde, nicht möglich.           |
 |Die Prüfer lehnen eine Anforderung zur Administratoreinwilligung ab.       |Zugriffsüberprüfungen           |UserManagement           |Alle Anforderungen im Geschäftsflow genehmigen          |App-Kontext            | Aktuell ist eine Ermittlung des Benutzerkontexts des Akteurs, der eine Anforderung zur Administratoreinwilligung abgelehnt hat, nicht möglich.          |
 
-## <a name="faq"></a>Häufig gestellte Fragen 
+## <a name="faq"></a>Häufig gestellte Fragen
 
 **Ich habe diesen Workflow aktiviert. Warum wird beim Testen der Funktionalität die neue Eingabeaufforderung „Genehmigung erforderlich“ nicht angezeigt, über die ich Zugriff anfordern kann?**
 
-Nach dem Aktivieren der Funktion kann es bis zu 60 Minuten dauern, bis die Endbenutzer das Update sehen. Sie können die ordnungsgemäße Konfiguration überprüfen, indem Sie den Wert **EnableAdminConsentRequests** in der `https://graph.microsoft.com/beta/settings`-API anzeigen.
+Nach dem Aktivieren des Features kann es bis zu 60 Minuten dauern, bis Endbenutzern das Update angezeigt wird, obwohl es in der Regel innerhalb weniger Minuten für alle Benutzer verfügbar ist.
 
 **Warum kann ich als Prüfer nicht alle ausstehenden Anforderungen sehen?**
 
@@ -142,8 +141,12 @@ Wenn ein Anwendungsentwickler seine Anwendung zur Verwendung der statischen und 
 Nein, aktuell erhalten Anforderer Updates nur per E-Mail-Benachrichtigung.
 
 **Habe ich als Prüfer die Möglichkeit, eine Anwendung nicht für alle Benutzer zu genehmigen?**
- 
+
 Wenn Sie Bedenken haben, die Administratoreinwilligung zu erteilen und allen Benutzern im Mandanten die Nutzung der Anwendung zu ermöglichen, empfehlen wir Ihnen, die Anforderung abzulehnen. Erteilen Sie dann manuell die Administratoreinwilligung, indem Sie den Zugriff auf die Anwendung durch die Anforderung einer Benutzerzuweisung einschränken. Anschließend können Sie der Anwendung Benutzer oder Gruppen zuweisen. Weitere Informationen finden Sie unter [Zuweisen von Benutzern und Gruppen zu einer Anwendung in Azure Active Directory](./assign-user-or-group-access-portal.md).
+
+**Ich habe eine App, die eine Benutzerzuweisung erfordert. Ein Benutzer, dem ich eine Anwendung zugewiesen habe, wird aufgefordert, die Administratoreinwilligung anzufordern, anstatt selbst zustimmen zu können. Warum ist das so?**
+
+Wenn der Zugriff auf die Anwendung durch die Option „Benutzerzuweisung erforderlich“ eingeschränkt ist, muss ein Azure AD-Administrator in alle von der Anwendung angeforderten Berechtigungen einwilligen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

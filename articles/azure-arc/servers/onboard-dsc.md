@@ -1,14 +1,14 @@
 ---
 title: Installieren des Connected Machine-Agent mithilfe von Windows PowerShell DSC
 description: In diesem Artikel erfahren Sie, wie Sie Computer mithilfe von Azure Arc-fähigen Servern und Windows PowerShell DSC mit Azure verbinden.
-ms.date: 09/24/2020
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: c0ae9c97afe14559aa36c1b8387f07897aa4c43b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a6e955df43e3589c97091cb111699ce402723d0
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100587640"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351411"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>Installieren des Connected Machine-Agent mithilfe von Windows PowerShell DSC
 
@@ -20,7 +20,7 @@ Mit [Windows PowerShell Desired State Configuration](/powershell/scripting/dsc/g
 
 - Das [AzureConnectedMachineDsc](https://www.powershellgallery.com/packages/AzureConnectedMachineDsc)-DSC-Modul
 
-- Ein Dienstprinzipal zum nicht interaktiven Herstellen einer Verbindung der Computer mit Azure Arc-fähigen Servern. Führen Sie die Schritte im Abschnitt [Erstellen eines Dienstprinzipals für das Onboarding im großen Stil](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) aus, wenn Sie noch keinen Dienstprinzipal für Arc-fähige Server erstellt haben.
+- Ein Dienstprinzipal zum nicht interaktiven Herstellen einer Verbindung der Computer mit Azure Arc-fähigen Servern. Führen Sie die Schritte im Abschnitt [Erstellen eines Dienstprinzipals für flexibles Onboarding](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) aus, wenn Sie noch keinen Dienstprinzipal für Arc-fähige Server erstellt haben.
 
 ## <a name="install-the-connectedmachine-dsc-module"></a>Installieren des ConnectedMachine-DSC-Moduls
 
@@ -44,7 +44,7 @@ Mit [Windows PowerShell Desired State Configuration](/powershell/scripting/dsc/g
 
 Die Ressourcen in diesem Modul sind zum Verwalten der Konfiguration des Azure Connected Machine-Agent konzipiert. Außerdem ist ein PowerShell-Skript `AzureConnectedMachineAgent.ps1` enthalten, das sich im Ordner `AzureConnectedMachineDsc\examples` befindet. Es verwendet Communityressourcen, um den Download und die Installation zu automatisieren und eine Verbindung mit Azure Arc herzustellen. Dieses Skript führt ähnliche Schritte aus, wie im Artikel [Verbinden von Hybridcomputern mit Azure über das Azure-Portal](onboard-portal.md) beschrieben.
 
-Wenn der Computer über einen Proxyserver mit dem Dienst kommunizieren muss, muss nach der Installation des Agent ein [hier](manage-agent.md#update-or-remove-proxy-settings) beschriebener Befehl ausgeführt werden. Dadurch wird die Systemumgebungsvariable `https_proxy` für den Proxyserver festgelegt. Anstatt den Befehl manuell auszuführen, können Sie diesen Schritt mit DSC ausführen, indem Sie das Modul [ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc) verwenden.
+Wenn der Computer über einen Proxyserver mit dem Dienst kommunizieren muss, muss nach der Installation des Agent ein [hier](manage-agent.md#update-or-remove-proxy-settings) beschriebener Befehl ausgeführt werden. Dadurch wird die Systemumgebungsvariable `https_proxy` für den Proxyserver festgelegt. Anstatt den Befehl manuell auszuführen, können Sie diesen Schritt mit DSC ausführen, indem Sie das Modul [ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc) verwenden. Bei dieser Konfiguration kommuniziert der Agent mithilfe des HTTP-Protokolls über den Proxyserver.
 
 >[!NOTE]
 >Damit DSC ausgeführt werden kann, muss Windows für den Empfang von PowerShell-Remotebefehlen konfiguriert werden – selbst dann, wenn Sie eine Localhostkonfiguration ausführen. Um Ihre Umgebung auf einfache Weise ordnungsgemäß zu konfigurieren, rufen Sie einfach `Set-WsManQuickConfig -Force` in einem PowerShell-Terminal mit erhöhten Rechten aus.
@@ -88,6 +88,6 @@ Das [CompositeResource](https://www.powershellgallery.com/packages/compositereso
 
 * Informationen zur Problembehandlung finden Sie im [Handbuch zur Problembehandlung des Connected Machine-Agents](troubleshoot-agent-onboard.md).
 
-* Erfahren Sie, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten, wie z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet, beim Aktivieren der Überwachung mit [Azure Monitor mit VMs](../../azure-monitor/vm/vminsights-enable-policy.md) und vieles mehr.
+* Lesen Sie den [Planungs- und Bereitstellungsleitfaden](plan-at-scale-deployment.md), um die Bereitstellung von Servern mit Azure Arc-Unterstützung in beliebiger Größenordnung zu planen und eine zentrale Verwaltung und Überwachung zu implementieren.
 
-* Weitere Informationen zum [Log Analytics-Agent](../../azure-monitor/agents/log-analytics-agent.md). Der Log Analytics-Agent für Windows und Linux ist erforderlich, wenn Sie das Betriebssystem und die Workloads auf dem Computer proaktiv überwachen, den Computer mithilfe von Automation-Runbooks oder Lösungen wie der Updateverwaltung verwalten oder andere Azure-Dienste wie [Azure Security Center](../../security-center/security-center-introduction.md) verwenden möchten.
+* Informieren Sie sich, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten können, z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet oder beim Aktivieren der Überwachung mit [VM Insights](../../azure-monitor/vm/vminsights-enable-policy.md).
