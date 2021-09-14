@@ -3,19 +3,19 @@ title: Azure IoT Edge und Azure IoT Central | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Azure IoT Edge mit einer IoT Central-Anwendung verwenden.
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/19/2021
+ms.date: 08/31/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom:
 - device-developer
 - iot-edge
-ms.openlocfilehash: 0b1cf7d0dbf7456d01f6530355e6943c8ead54db
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 15d6da6b5fe458e34847469faf230222f20efb38
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340441"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123273137"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Verbinden eines Azure IoT Edge-Geräts mit einer Azure IoT Central-Anwendung
 
@@ -23,6 +23,7 @@ Azure IoT Edge verschiebt Cloudanalysen und benutzerdefinierte Geschäftslogik a
 
 Dieser Artikel beschreibt Folgendes:
 
+* IoT Edge Gatewaymuster mit IoT Central.
 * Wie IoT Edge-Geräte sich mit einer IoT Central-Anwendung verbinden
 * Wie Sie mit IoT Central Ihre IoT Edge-Geräte verwalten
 
@@ -30,33 +31,72 @@ Weitere Informationen zu IoT Edge finden Sie unter [Was ist Azure IoT Edge?](../
 
 ## <a name="iot-edge"></a>IoT Edge
 
+![Azure IoT Central mit Azure IoT Edge](./media/concepts-iot-edge/iotedge.png)
+
 IoT Edge besteht aus drei Komponenten:
 
 * *IoT Edge-Module* sind Container, die Azure-Dienste, Partnerdienste oder Ihren Code ausführen. Module werden auf IoT Edge-Geräten bereitgestellt und lokal auf diesen Geräten ausgeführt. Weitere Informationen hierzu finden Sie unter [Grundlegendes zu Azure IoT Edge-Modulen](../../iot-edge/iot-edge-modules.md).
 * Die *IoT Edge-Runtime* wird auf jedem IoT Edge-Gerät ausgeführt und dient zum Verwalten der Module, die auf einem Gerät jeweils bereitgestellt wurden. Die Runtime besteht aus zwei IoT Edge-Modulen: dem *IoT Edge-Agent* und dem *IoT Edge-Hub*. Weitere Informationen finden Sie unter [Grundlegendes zur Azure IoT Edge-Runtime und ihrer Architektur](../../iot-edge/iot-edge-runtime.md).
 * Mit einer *cloudbasierten Schnittstelle* können Sie für IoT Edge-Geräte die Remoteüberwachung und -verwaltung durchführen. Ein Beispiel für eine Cloudschnittstelle ist IoT Central.
 
+IoT Central bietet die folgenden Funktionen für IoT Edge-Geräte:
+
+* Gerätevorlagen zum Beschreiben der Funktionen eines IoT Edge-Geräts, wie z.B.:
+  * Funktion zum Upload eines Bereitstellungsmanifests, wodurch ein Manifest für eine Geräteflotte verwaltet werden kann
+  * Module, die auf dem IoT Edge-Gerät ausgeführt werden
+  * Die von jedem Modul gesendeten Telemetriedaten
+  * Die von jedem Modul gemeldeten Eigenschaften
+  * Die Befehle, auf die jedes Modul reagiert
+  * Die Beziehungen zwischen einem IoT Edge-Gatewaygerät und dem nachgeschalteten Gerät
+  * Cloudeigenschaften, die auf dem IoT Edge-Gerät nicht gespeichert werden
+  * Anpassungen, die ändern, wie Gerätefunktionen auf der Benutzeroberfläche angezeigt werden.
+  * Geräteansichten und Formulare.
+* Die Funktion zum Bereitstellen von IoT Edge-Geräten nach Maß mit dem Azure IoT-Gerätebereitstellungsdienst.
+* Regeln und Aktionen
+* Benutzerdefinierte Dashboards und Analysen
+* Fortlaufender Datenexport von Telemetriedaten von IoT Edge-Geräten
+
 Ein IoT Edge-Gerät kann eines der folgenden Geräte sein:
 
 * Ein eigenständiges Gerät, das aus Modulen besteht
 * Ein *Gatewaygerät*, mit dem untergeordnete Geräte eine Verbindung herstellen
 
-## <a name="iot-edge-as-a-gateway"></a>IoT Edge als Gateway
+![Übersicht über IoT Central mit IoT Edge](./media/concepts-iot-edge/gatewayedge.png)
 
-Ein IoT Edge-Gerät kann als Gateway fungieren, das eine Verbindung zwischen anderen untergeordneten Geräten im Netzwerk und Ihrer IoT Central-Anwendung bereitstellt.
+Ein Gatewaygerät kann sein:
 
-Es gibt zwei Gatewaymuster:
-
-* Bei *transparenten Gateways* verhält sich das IoT Edge-Hub-Modul wie IoT Central und ist für Verbindungen mit Geräten zuständig, die bei IoT Central registriert sind. Nachrichten werden von untergeordneten Geräten an IoT Central übergeben, als wäre dazwischen kein Gateway.
+* Ein *transparentes Gateway*, bei dem sich das IoT Edge-Hub-Modul wie IoT Central verhält und für Verbindungen mit Geräten zuständig ist, die bei IoT Central registriert sind. Nachrichten werden von untergeordneten Geräten an IoT Central übergeben, als wäre dazwischen kein Gateway.
 
     > [!NOTE]
     > IoT Central unterstützt zurzeit nicht das Verbinden eines IoT Edge Geräts als nachgeschaltetes Gerät mit einem transparenten IoT Edge-Gateway. Der Grund: Alle Geräte, die eine Verbindung mit IoT Central herstellen, werden mit dem Device Provisioning Service (DPS) bereitgestellt, und DPS unterstützt keine geschachtelten IoT Edge-Szenarios.
 
-* Bei *Übersetzungsgateways* hingegen verbinden sich Geräte, die selbst keine Verbindung mit IoT Central herstellen können, stattdessen mit einem benutzerdefinierten IoT Edge-Modul. Das Modul im IoT Edge-Gerät verarbeitet eingehende Nachrichten von untergeordneten Geräten, und leitet sie dann an IoT Central weiter.
+* Ein *Übersetzungsgateway*, bei dem sich Geräte, die selbst keine Verbindung mit IoT Central herstellen können, stattdessen mit einem benutzerdefinierten IoT Edge-Modul verbinden. Das Modul im IoT Edge-Gerät verarbeitet eingehende Nachrichten von untergeordneten Geräten, und leitet sie dann an IoT Central weiter.
 
-Die Gatewaymuster „transparent“ und „Übersetzung“ schließen sich nicht gegenseitig aus. Ein einzelnes IoT Edge-Gerät kann sowohl als transparentes Gateway als auch als Übersetzungsgateway fungieren.
+Ein einzelnes IoT Edge-Gerät kann sowohl als transparentes Gateway als auch als Übersetzungsgateway fungieren.
 
 Weitere Informationen zu den Gatewaymustern in IoT Edge finden Sie unter [Verwendung eines IoT Edge-Geräts als Gateway](../../iot-edge/iot-edge-as-gateway.md).
+
+## <a name="iot-edge-patterns"></a>IoT Edge-Muster
+
+IoT Central unterstützt die folgenden IoT Edge-Gerätemuster:
+
+### <a name="iot-edge-as-leaf-device"></a>IoT Edge als Blattgerät
+
+![IoT Edge als Blattgerät](./media/concepts-iot-edge/edgeasleafdevice.png)
+
+Das IoT Edge-Gerät wird in IoT Central bereitgestellt; alle nachgeschalteten Geräte und deren Telemetriedaten werden so dargestellt, als stammten sie vom IoT Edge-Gerät. Nachgeschaltete Geräte, die mit dem IoT Edge-Gerät verbunden sind, werden in IoT Central nicht bereitgestellt.
+
+### <a name="iot-edge-gateway-device-connected-to-downstream-devices-with-identity"></a>IoT Edge-Gatewaygerät, das mit nachgeschalteten Geräten mit Identität verbunden ist
+
+![IoT Edge mit nachgeschalteter Geräteidentität](./media/concepts-iot-edge/edgewithdownstreamdeviceidentity.png)
+
+Das IoT Edge-Gerät wird in IoT Central zusammen mit den nachgeschalteten Geräten bereitgestellt, die mit ihm verbunden sind. Runtime-Unterstützung für die Bereitstellung von nachgeschalteten Geräten über das Gateway gibt es derzeit nicht.
+
+### <a name="iot-edge-gateway-device-connected-to-downstream-devices-with-identity-provided-by-the-iot-edge-gateway"></a>IoT Edge-Gatewaygerät, das mit nachgeschalteten Geräten mit Identität verbunden ist, die vom IoT Edge-Gateway bereitgestellt wird
+
+![IoT Edge mit nachgeschaltetem Gerät ohne Identität](./media/concepts-iot-edge/edgewithoutdownstreamdeviceidentity.png)
+
+Das IoT Edge-Gerät wird in IoT Central zusammen mit den nachgeschalteten Geräten bereitgestellt, die mit ihm verbunden sind. Derzeit bietet IoT Central keine Runtimeunterstützung für ein Gateway, um eine Identität und nachgeschaltete Geräte bereitstellen zu können. Wenn Sie ein eigenes Modul für die Identitätsübersetzung einsetzen, kann IoT Central dieses Muster unterstützen.
 
 ### <a name="downstream-device-relationships-with-a-gateway-and-modules"></a>Beziehungen nachgeschalteter Geräte mit einem Gateway und Modulen
 

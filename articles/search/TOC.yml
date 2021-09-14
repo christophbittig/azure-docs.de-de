@@ -126,6 +126,8 @@
   items:
     - name: Volltextsuche
       href: search-lucene-query-architecture.md
+    - name: Analysemodule
+      href: search-analyzers.md
     - name: Semantische Suche
       href: semantic-search-overview.md
     - name: Relevanzbewertung
@@ -182,8 +184,6 @@
           href: search-manage-azure-cli.md
         - name: Regionsübergreifendes Verschieben eines Diensts
           href: search-howto-move-across-regions.md
-        - name: "Behandeln von Problemen beim Erstellen einer freigegebenen Private\_Link-Ressource"
-          href: troubleshoot-shared-private-link-resources.md
     - name: Sicherheit
       items:
         - name: Datenverschlüsselung
@@ -202,6 +202,8 @@
               href: service-configure-firewall.md
             - name: Erstellen eines privaten Endpunkts
               href: service-create-private-endpoint.md
+            - name: Problembehandlung bei privaten Verbindungen
+              href: troubleshoot-shared-private-link-resources.md
         - name: Ausgangssicherheit (Indexer)
           items:
             - name: Datenzugriff über einen IP-Adressbereich
@@ -266,8 +268,6 @@
           href: index-sql-relational-data.md
     - name: Analysemodule
       items:
-        - name: Hinzufügen von Analysetools
-          href: search-analyzers.md
         - name: Hinzufügen eines Sprachanalysetools
           href: index-add-language-analyzers.md
         - name: Hinzufügen eines benutzerdefinierten Analysetools
@@ -482,7 +482,7 @@
           href: search-traffic-analytics.md
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/search
     - name: Azure PowerShell
       href: /powershell/module/az.search

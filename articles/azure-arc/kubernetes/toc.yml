@@ -60,7 +60,7 @@
           href: ../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json
         - name: Definitionen für Zugangskontrollrichtlinien mit Azure Policy
           href: ../../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
-        - name: Bereitstellen von Open Service Mesh mit Arc-Unterstützung
+        - name: "Bereitstellen von Open Service Mesh mit Azure\_Arc-Unterstützung"
           href: tutorial-arc-enabled-open-service-mesh.md
         - name: Ortsunabhängiges Herstellen sicherer Verbindungen mit Clustern
           href: cluster-connect.md
@@ -70,7 +70,7 @@
           href: custom-locations.md
         - name: Bereitstellen von IoT-Workloads
           href: deploy-azure-iot-edge-workloads.md
-        - name: Machine Learning mit Arc-Unterstützung
+        - name: Machine Learning mit Azure Arc-Unterstützung
           href: ../../machine-learning/how-to-attach-arc-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
     - name: Problembehandlung
       href: Troubleshooting.md

@@ -2,13 +2,13 @@
 title: Konfigurieren Ihres verwalteten Service Fabric-Clusters
 description: Erfahren Sie, wie Sie Ihren verwalteten Service Fabric-Cluster für automatische Betriebssystemupgrades, NSG-Regeln und mehr konfigurieren.
 ms.topic: how-to
-ms.date: 5/10/2021
-ms.openlocfilehash: 5fd2736917517f20d3d093492c6011d6fcf716cf
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 8/23/2021
+ms.openlocfilehash: 5be6422af6a1611bb8978ff4f0b76122cb146eb7
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110067436"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864353"
 ---
 # <a name="service-fabric-managed-cluster-configuration-options"></a>Konfigurationsoptionen für verwaltete Service Fabric-Cluster
 
@@ -16,7 +16,8 @@ Zusätzlich zur Auswahl der [SKUs für verwaltete Service Fabric-Cluster](overvi
 
 * Hinzufügen einer [VM-Skalierungsgruppenerweiterung](how-to-managed-cluster-vmss-extension.md) zu einem verwalteten Knotentyp
 * Konfigurieren eines [verfügbarkeitszonenübergreifenden](how-to-managed-cluster-availability-zones.md) Clusters
-* Konfigurieren von [NSG-Regeln und anderen Netzwerkoptionen](how-to-managed-cluster-networking.md) für einen Cluster
+* Konfigurieren der [Netzwerkeinstellungen](how-to-managed-cluster-networking.md) für Cluster
+* Konfigurieren eines Knotentyps für [große VM-Skalierungsgruppen](how-to-managed-cluster-large-virtual-machine-scale-sets.md)
 * Konfigurieren der [verwalteten Identität](how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md) für Clusterknotentypen
 * Aktiveren [automatischer Betriebssystemupgrades](how-to-managed-cluster-configuration.md#enable-automatic-os-image-upgrades) für Clusterknoten
 * Aktivieren der [Betriebssystem- und Datenträgerverschlüsselung](how-to-enable-managed-cluster-disk-encryption.md) für Clusterknoten

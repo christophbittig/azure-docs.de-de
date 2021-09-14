@@ -5,7 +5,7 @@
   items:
     - name: Worum handelt es sich bei Azure DB for MySQL?
       href: overview.md
-    - name: Welche MySQL-Option sollte ich auswählen?
+    - name: Auswählen des richtigen MySQL-Bereitstellungstyps
       href: select-right-deployment-type.md
     - name: Neues in Single Server
       href: single-server-whats-new.md
@@ -106,7 +106,7 @@
             - name: Azure-Portal
               href: howto-server-parameters.md
               displayName: server parameters
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: howto-configure-server-parameters-using-cli.md
               displayName: 'server parameters, cli'
             - name: Azure PowerShell
@@ -238,7 +238,7 @@
               items:
                 - name: Azure-Portal
                   href: tutorial-design-database-using-portal.md
-                - name: Azure CLI
+                - name: Azure-Befehlszeilenschnittstelle
                   href: tutorial-design-database-using-cli.md
                 - name: Azure PowerShell
                   href: tutorial-design-database-using-powershell.md
@@ -403,7 +403,7 @@
           items:
             - name: Azure-Portal
               href: flexible-server/quickstart-create-server-portal.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: flexible-server/quickstart-create-server-cli.md
             - name: ARM-Vorlage
               displayName: Resource Manager
@@ -517,7 +517,7 @@
               items:
                 - name: Azure-Portal
                   href: flexible-server/how-to-stop-start-server-portal.md
-                - name: Azure CLI
+                - name: Azure-Befehlszeilenschnittstelle
                   href: flexible-server/how-to-restart-stop-start-server-cli.md
             - name: Neustarten des Servers
               items:
@@ -608,7 +608,10 @@
       displayName: 'import , migrate, export'
     - name: "Migrieren von RDS\_MySQL-Daten mit MySQL Workbench"
       href: how-to-migrate-rds-mysql-workbench.md
-      displayName: 'import , migrate, export'
+      displayName: 'migrate, rds, workbench'
+    - name: "Migrieren von RDS\_MySQL-Daten mithilfe der Datenreplikation"
+      href: how-to-migrate-rds-mysql-data-in-replication.md
+      displayName: 'migrate, rds, data-in replication'
     - name: "Migrieren von Azure\_DB for MySQL (Einzelserver) zu Azure\_DB for MySQL (flexibler Server)"
       href: howto-migrate-single-flexible-minimum-downtime.md
       displayName: 'migrate, Single to Flexible'
@@ -640,7 +643,7 @@
       displayName: corrupt data
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/mysql
     - name: REST-API
       href: /rest/api/mysql

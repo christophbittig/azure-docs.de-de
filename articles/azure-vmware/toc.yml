@@ -16,7 +16,7 @@
       href: tutorial-expressroute-global-reach-private-cloud.md
     - name: 4. Installieren des VMware HCX-Connectors
       href: install-vmware-hcx.md
-    - name: 5. Konfigurieren des lokalen VMware HCX-Connectors
+    - name: 5. Konfigurieren des lokalen HCX-Connectors
       href: configure-vmware-hcx.md
 - name: Tutorials
   items:
@@ -108,12 +108,16 @@
           href: configure-l2-stretched-vmware-hcx-networks.md
         - name: Konfigurieren der DNS-Weiterleitung
           href: configure-dns-azure-vmware-solution.md
+        - name: Konfigurieren der HCX-Netzwerkerweiterung
+          href: configure-hcx-network-extension.md
         - name: Konfigurieren der Portspiegelung
           href: configure-port-mirroring-azure-vmware-solution.md
-        - name: Ermöglichen von öffentlichem Internetzugriff
-          href: enable-public-internet-access.md
         - name: Konfigurieren eines Site-to-Site-VPN in einem vWAN
           href: configure-site-to-site-vpn-gateway.md
+        - name: Ermöglichen von öffentlichem Internetzugriff
+          href: enable-public-internet-access.md
+        - name: Leitfaden zu HCX Mobility Optimized Networking (MON)
+          href: vmware-hcx-mon-guidance.md
     - name: Konfigurieren von Speicherrichtlinien
       href: configure-storage-policy.md
     - name: Konfigurieren von Windows Server-Failoverclustern
@@ -122,10 +126,6 @@
       href: connect-multiple-private-clouds-same-region.md
     - name: Bereitstellen der Notfallwiederherstellung
       items:
-        - name: Bereitstellen der JetStream-Notfallwiederherstellung
-          href: deploy-disaster-recovery-using-jetstream.md
-        - name: Bereitstellen der Zerto-Notfallwiederherstellung
-          href: deploy-zerto-disaster-recovery.md
         - name: Bereitstellen von VMware HCX für die Notfallwiederherstellung
           href: deploy-disaster-recovery-using-vmware-hcx.md
         - name: Bereitstellen von VMware SRM für die Notfallwiederherstellung
@@ -150,6 +150,8 @@
           href: ecosystem-migration-vms.md
     - name: VMware Solutions
       items:
+        - name: Konfigurieren der HCX-Netzwerkerweiterung
+          href: configure-hcx-network-extension.md
         - name: Konfigurieren von vRealize-Vorgängen
           href: vrealize-operations-for-azure-vmware-solution.md
         - name: Bereitstellen von VMware Horizon

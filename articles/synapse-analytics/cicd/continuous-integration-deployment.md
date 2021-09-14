@@ -3,17 +3,17 @@ title: Continuous Integration und Continuous Delivery für Synapse-Arbeitsbereic
 description: Erfahren Sie, wie Sie Continuous Integration und Continuous Delivery verwenden, um Änderungen an einem Arbeitsbereich aus einer Umgebung (Entwicklung, Test, Produktion) in eine andere zu überführen.
 author: liudan66
 ms.service: synapse-analytics
-ms.subservice: ''
+ms.subservice: cicd
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 833478d956560c981bd6cc3ba03b48bb602f563c
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: a590a2a0470710a74a6f1441a1f1859f974c2f97
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739672"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259369"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Continuous Integration und Continuous Delivery für Azure Synapse-Arbeitsbereiche
 
@@ -21,9 +21,9 @@ ms.locfileid: "107739672"
 
 Continuous Integration (CI) ist der Prozess, mit dem das Erstellen und Testen von Code bei jedem Committen von Änderungen durch Teammitglieder an die Versionskontrolle automatisiert werden kann. Continuous Deployment (CD) bezeichnet das Erstellen, Testen, Konfigurieren und Bereitstellen aus mehreren Test- oder Stagingumgebungen in einer Produktionsumgebung.
 
-In einem Azure Synapse Analytics-Arbeitsbereich werden per Continuous Integration und Continuous Delivery (CI/CD) sämtliche Entitäten aus einer Umgebung (Entwicklung, Test, Produktion) in eine andere Umgebung verschoben. Das Höherstufen Ihres Arbeitsbereichs in einen anderen Arbeitsbereich umfasst zwei Schritte. Im ersten Schritt verwenden Sie eine [Azure Resource Manager-Vorlage (ARM-Vorlage)](../../azure-resource-manager/templates/overview.md), um Arbeitsbereichsressourcen (Pools und Arbeitsbereich) zu erstellen oder zu aktualisieren. Anschließend migrieren Sie Artefakte (SQL-Skripts, Notebooks, Spark-Auftragsdefinitionen, Pipelines, Datasets, Datenflüsse usw.) mit Azure Synapse Analytics-CI/CD-Tools in Azure DevOps. 
+In einem Azure Synapse Analytics-Arbeitsbereich werden per Continuous Integration und Continuous Delivery (CI/CD) sämtliche Entitäten aus einer Umgebung (Entwicklung, Test, Produktion) in eine andere Umgebung verschoben. Das Höherstufen Ihres Arbeitsbereichs in einen anderen Arbeitsbereich umfasst zwei Schritte. Im ersten Schritt verwenden Sie eine [Azure Resource Manager-Vorlage (ARM-Vorlage)](../../azure-resource-manager/templates/overview.md), um Arbeitsbereichsressourcen (Pools und Arbeitsbereich) zu erstellen oder zu aktualisieren. Anschließend migrieren Sie Artefakte (SQL-Skripts, Notebooks, Spark-Auftragsdefinitionen, Pipelines, Datasets, Datenflüsse usw.) mit Azure Synapse Analytics-CI/CD-Tools in Azure DevOps oder GitHub. 
 
-In diesem Artikel wird beschrieben, wie Sie eine Azure DevOps-Releasepipeline nutzen, um die Bereitstellung eines Azure Synapse-Arbeitsbereichs in mehreren Umgebungen zu automatisieren.
+In diesem Artikel wird beschrieben, wie Sie eine Azure DevOps-Releasepipeline und GitHub-Aktion nutzen, um die Bereitstellung eines Azure Synapse-Arbeitsbereichs in mehreren Umgebungen zu automatisieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -32,16 +32,22 @@ Für eine Automatisierung der Bereitstellung eines Azure Synapse-Arbeitsbereichs
 ### <a name="azure-devops"></a>Azure DevOps
 
 - Für die Ausführung der Releasepipeline wurde ein Azure DevOps-Projekt vorbereitet.
-- [Gewähren Sie allen Benutzern, die Code einchecken, Basic-Zugriff auf Organisationsebene](/azure/devops/organizations/accounts/add-organization-users?view=azure-devops&tabs=preview-page), damit sie das Repository anzeigen können.
+- [Gewähren Sie allen Benutzern, die Code einchecken, Basic-Zugriff auf Organisationsebene](/azure/devops/organizations/accounts/add-organization-users?view=azure-devops&tabs=preview-page&preserve-view=true), damit sie das Repository anzeigen können.
 - Gewähren Sie Besitzerrechte für das Azure Synapse-Repository.
 - Stellen Sie sicher, dass Sie einen selbstgehosteten Azure DevOps-VM-Agent erstellt haben, oder verwenden Sie einen von Azure DevOps gehosteten Agent.
-- Berechtigungen zum [Erstellen einer Azure Resource Manager-Dienstverbindung (ARM) für die Ressourcengruppe](/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml).
+- Berechtigungen zum [Erstellen einer Azure Resource Manager-Dienstverbindung (ARM) für die Ressourcengruppe](/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml&preserve-view=true).
 - Ein Azure Active Directory-Administrator (Azure AD) muss die [Agent-Erweiterung für die Azure DevOps Synapse-Arbeitsbereichsbereitstellung in der Azure DevOps-Organisation installieren](/azure/devops/marketplace/install-extension).
 - Erstellen Sie ein Dienstkonto für die Pipelineausführung, oder legen Sie für die Ausführung ein vorhandenes Dienstkonto fest. Sie können anstelle eines Dienstkontos ein persönliches Zugriffstoken verwenden, aber Ihre Pipelines funktionieren nicht mehr, wenn das Benutzerkonto gelöscht wird.
 
+### <a name="github"></a>GitHub
+
+- Ein GitHub-Repository mit den Synapse-Arbeitsbereichsartefakten und der Arbeitsbereichsvorlage 
+- Stellen Sie sicher, dass Sie einen selbst gehosteten Runner erstellt haben oder einen von GitHub gehosteten Runner verwenden.
+
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-- Erstellen Sie in Azure AD einen Dienstprinzipal, der für die Bereitstellung verwendet wird. Die Aufgabe zur Synapse-Arbeitsbereichsbereitstellung unterstützt in Version 1* und früheren Versionen keine Verwendung einer verwalteten Identität.
+- Erstellen Sie in Azure AD einen Dienstprinzipal, der für die Bereitstellung verwendet werden soll, wenn Sie einen Dienstprinzipal verwenden. 
+- Für die Verwendung einer verwalteten Identität müssen Sie die vom System zugewiesene verwaltete Identität auf Ihrem virtuellen Computer in Azure als Agent oder Runner aktivieren und als Synapse Admin zu Synapse Studio hinzufügen.
 - Für diese Aktion werden Azure AD-Administratorrechte benötigt.
 
 ### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
@@ -55,27 +61,26 @@ Für eine Automatisierung der Bereitstellung eines Azure Synapse-Arbeitsbereichs
 
   1. Erstellen Sie einen neuen Azure Synapse Analytics-Arbeitsbereich.
   1. Gewähren Sie dem VM-Agent und dem Dienstprinzipal Rechte als Mitwirkender für die Ressourcengruppe, in der der neue Arbeitsbereich gehostet wird.
-  1. Konfigurieren Sie im neuen Arbeitsbereich nicht die Git-Repositoryverbindung.
+  1. Konfigurieren Sie im Zielarbeitsbereich nicht die Git-Repositoryverbindung.
   1. Suchen Sie im Azure-Portal den neuen Azure Synapse Analytics-Arbeitsbereich, und gewähren Sie sich selbst und jedem Benutzer, der die Azure DevOps-Pipeline ausführen wird, Rechte als Azure Synapse Analytics-Arbeitsbereichsbesitzer. 
   1. Fügen Sie den Azure DevOps-VM-Agent und den Dienstprinzipal der Rolle „Mitwirkender“ für den Arbeitsbereich hinzu (diese sollte vererbt worden sein, aber überprüfen Sie, ob dies der Fall ist).
-  1. Wechseln Sie im Azure Synapse Analytics-Arbeitsbereich zu **Studio** > **Verwalten** > **IAM**. Fügen Sie den Azure DevOps-VM-Agent und den Dienstprinzipal der Gruppe der Arbeitsbereichsadministratoren hinzu.
+  1. Wechseln Sie im Azure Synapse Analytics-Arbeitsbereich zu **Studio** > **Verwalten** > **Zugriffssteuerung**. Fügen Sie den Azure DevOps-VM-Agent und den Dienstprinzipal der Gruppe der Arbeitsbereichsadministratoren hinzu.
   1. Öffnen Sie das Speicherkonto, das für den Arbeitsbereich verwendet wird. Fügen Sie in IAM den VM-Agent und den Dienstprinzipal der Rolle „Mitwirkender an Storage-Blobdaten“ hinzu.
   1. Erstellen Sie einen Schlüsseltresor im Supportabonnement, und stellen Sie sicher, dass sowohl der vorhandene Arbeitsbereich als auch der neue Arbeitsbereich mindestens über GET- und LIST-Berechtigungen für den Tresor verfügen.
   1. Damit die automatisierte Bereitstellung funktioniert, stellen Sie sicher, dass alle Verbindungszeichenfolgen, die in Ihren verknüpften Diensten angegeben sind, im Schlüsseltresor vorhanden sind.
 
 ### <a name="additional-prerequisites"></a>Zusätzliche Voraussetzungen
  
- - Spark-Pools und selbstgehostete Integration Runtimes werden nicht in einer Pipeline erstellt. Wenn Sie über einen verknüpften Dienst verfügen, der eine selbstgehostete Integration Runtime verwendet, erstellen Sie diese manuell im neuen Arbeitsbereich.
- - Wenn Sie Notebooks entwickeln und diese mit einem Spark-Pool verbunden sind, erstellen Sie den Spark-Pool im Arbeitsbereich neu.
- - Notebooks, die mit einem Spark-Pool verknüpft sind, der nicht in einer Umgebung vorhanden ist, werden nicht bereitgestellt.
- - Die Namen der Spark-Pools müssen in beiden Arbeitsbereichen identisch sein.
- - Benennen Sie alle Datenbanken, SQL-Pools und weitere Ressourcen in beiden Arbeitsbereichen gleich.
+ - Spark-Pools und selbstgehostete Integration Runtimes werden nicht in einer im Arbeitsbereich bereitgestellten Aufgabe erstellt. Wenn Sie über einen verknüpften Dienst verfügen, der eine selbstgehostete Integration Runtime verwendet, erstellen Sie diese manuell im neuen Arbeitsbereich.
+ - Wenn die Elemente im Entwicklungsarbeitsbereich mit den spezifischen Pools verbunden sind, stellen Sie sicher, dass Sie den gleichen Namen der Pools im Zielarbeitsbereich haben, der in der Parameterdatei erstellt oder parametrisiert wurde.  
  - Wenn Ihre bereitgestellten SQL-Pools zum Zeitpunkt der Bereitstellung angehalten sind, kann die Bereitstellung möglicherweise nicht erfolgreich durchgeführt werden.
 
 Weitere Informationen finden Sie unter [CI CD in Azure Synapse Analytics, Teil 4: Die Releasepipeline](https://techcommunity.microsoft.com/t5/data-architecture-blog/ci-cd-in-azure-synapse-analytics-part-4-the-release-pipeline/ba-p/2034434). 
 
 
-## <a name="set-up-a-release-pipeline"></a>Einrichten einer Releasepipeline
+## <a name="set-up-a-release-pipeline-in-azure-devops"></a>Einrichten einer Releasepipeline in Azure DevOps
+
+In diesem Teil erfahren Sie, wie Sie eine Synapse in einem Azure DevOps bereitstellen können. 
 
 1.  Öffnen Sie in [Azure DevOps](https://dev.azure.com/) das Projekt, das für das Release erstellt wurde.
 
@@ -103,7 +108,7 @@ Weitere Informationen finden Sie unter [CI CD in Azure Synapse Analytics, Teil 
 
     ![Hinzufügen eines Artefakts](media/release-creation-publish-branch.png)
 
-## <a name="set-up-a-stage-task-for-an-arm-template-to-create-and-update-resource"></a>Einrichten einer Stagingaufgabe für eine ARM-Vorlage zum Erstellen und Aktualisieren von Ressourcen 
+### <a name="set-up-a-stage-task-for-an-arm-template-to-create-and-update-resource"></a>Einrichten einer Stagingaufgabe für eine ARM-Vorlage zum Erstellen und Aktualisieren von Ressourcen 
 
 Wenn Sie über eine ARM-Vorlage zum Bereitstellen einer Ressource – z. B. einen Azure Synapse Arbeitsbereich, Spark- und SQL-Pools oder einen Schlüsseltresor – verfügen, fügen Sie eine ARM-Bereitstellungsaufgabe hinzu, um diese Ressourcen zu erstellen oder zu aktualisieren:
 
@@ -134,7 +139,7 @@ Wenn Sie über eine ARM-Vorlage zum Bereitstellen einer Ressource – z. B. ein
  > [!WARNING]
 > Im vollständigen Bereitstellungsmodus werden Ressourcen, die in der Ressourcengruppe vorhanden, aber in der neuen Resource Manager-Vorlage nicht angegeben sind, **gelöscht**. Weitere Informationen finden Sie unter [Azure Resource Manager-Bereitstellungsmodi](../../azure-resource-manager/templates/deployment-modes.md).
 
-## <a name="set-up-a-stage-task-for-synapse-artifacts-deployment"></a>Einrichten einer Stagingaufgabe für die Synapse-Artefaktbereitstellung 
+### <a name="set-up-a-stage-task-for-synapse-artifacts-deployment"></a>Einrichten einer Stagingaufgabe für die Synapse-Artefaktbereitstellung 
 
 Verwenden Sie die Erweiterung für die [Synapse-Arbeitsbereichsbereitstellung](https://marketplace.visualstudio.com/items?itemName=AzureSynapseWorkspace.synapsecicd-deploy), um andere Elemente im Synapse-Arbeitsbereich wie Datasets, SQL-Skripts, Notebooks, Spark-Auftragsdefinitionen, Datenflüsse, Pipelines, verknüpfte Dienste, Anmeldeinformationen und IRs (Integration Runtime) bereitzustellen.  
 
@@ -158,18 +163,113 @@ Verwenden Sie die Erweiterung für die [Synapse-Arbeitsbereichsbereitstellung](h
 
 1. Wählen Sie die Verbindung, die Ressourcengruppe und den Namen des Zielarbeitsbereichs aus. 
 
-1. Wählen Sie **…** neben dem Feld **Vorlagenparameter außer Kraft setzen** aus, und geben Sie die gewünschten Parameterwerte für den Zielarbeitsbereich ein, darunter auch die Verbindungszeichenfolgen und Kontoschlüssel, die in Ihren verknüpften Diensten verwendet werden. [Klicken Sie hier, um weitere Informationen zu erhalten.] (https://techcommunity.microsoft.com/t5/data-architecture-blog/ci-cd-in-azure-synapse-analytics-part-4-the-release-pipeline/ba-p/2034434)
+1. Wählen Sie **…** neben dem Feld **Vorlagenparameter außer Kraft setzen** aus, und geben Sie die gewünschten Parameterwerte für den Zielarbeitsbereich ein, darunter auch die Verbindungszeichenfolgen und Kontoschlüssel, die in Ihren verknüpften Diensten verwendet werden. Weitere Informationen finden Sie unter [CI/CD in Azure Synapse Analytics](https://techcommunity.microsoft.com/t5/data-architecture-blog/ci-cd-in-azure-synapse-analytics-part-4-the-release-pipeline/ba-p/2034434).
 
     ![Synapse-Arbeitsbereichsbereitstellung](media/create-release-artifacts-deployment.png)
 
 > [!IMPORTANT]
 > In CI/CD-Szenarien muss der Typ der Integration Runtime (IR) in unterschiedlichen Umgebungen identisch sein. Wenn sich in Ihrer Entwicklungsumgebung beispielsweise eine selbstgehostete IR befindet, muss diese IR auch in anderen Umgebungen, z. B. Test- und Produktionsumgebungen, den Typ „Selbstgehostet“ aufweisen. Wenn Sie Integration Runtimes in mehreren Stufen freigeben, müssen Sie die Integration Runtimes in allen Umgebungen, z. B. Entwicklungs-, Test- und Produktionsumgebungen, als „Verknüpft selbstgehostet“ konfigurieren.
 
-## <a name="create-release-for-deployment"></a>Erstellen eines Release für die Bereitstellung 
+### <a name="create-release-for-deployment"></a>Erstellen eines Release für die Bereitstellung 
 
 Nachdem alle Änderungen gespeichert wurden, können Sie **Release erstellen** auswählen, um manuell ein Release zu erstellen. Informationen zum Automatisieren der Erstellung von Releases finden Sie unter [Azure DevOps-Releasetrigger](/azure/devops/pipelines/release/triggers).
 
    ![Auswählen von „Release erstellen“](media/release-creation-manually.png)
+
+## <a name="set-up-a-release-with-github-action"></a>Einrichten eines Release mit einer GitHub-Aktion 
+
+In diesem Teil erfahren Sie, wie Sie GitHub-Workflows erstellen, indem Sie GitHub-Aktionen für die Synapse-Arbeitsbereichsbereitstellung verwenden.
+Sie können die [Aktion zum Bereitstellen einer Azure Resource Manager-Vorlage](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template) verwenden, um die Bereitstellung einer Azure Resource Manager-Vorlage (ARM-Vorlage) in Azure für den Arbeitsbereich und Computetools zu automatisieren.
+
+### <a name="workflow-file-overview"></a>Übersicht über die Workflowdatei
+
+Ein GitHub Actions-Workflow wird durch eine YAML-Datei (.yml) im Pfad /.github/workflows/ in Ihrem Repository definiert. Diese Definition enthält die verschiedenen Schritte und Parameter, die den Workflow bilden.
+
+Die Datei besteht aus zwei Abschnitten:
+
+|`Section`  |Aufgaben  |
+|---------|---------|
+|**Authentifizierung** | 1. Definieren eines Dienstprinzipals. <br /> 2. Erstellen eines GitHub-Geheimnisses. |
+|**Bereitstellen** | 1. Bereitstellen der Arbeitsbereichsartefakte. |
+
+### <a name="configure-the-github-secrets"></a>Konfigurieren der GitHub-Geheimnisse
+
+Bei den Geheimnissen handelt es sich um Umgebungsvariablen, die verschlüsselt sind. Jeder Benutzer mit Projektmitarbeiterzugriff auf dieses Repository kann diese Geheimnisse für Aktionen verwenden.
+
+1. Navigieren Sie zum Repository und wählen Sie **Einstellungen** aus, navigieren Sie zu „Geheimnisse“ und klicken Sie dann auf „Neues Geheimnis“.
+
+    ![Erstellen eines neuen Geheimnisses](media/create-secret-new.png)
+
+1. Fügen Sie neue Geheimnisse für die Client-ID und das Clientgeheimnis hinzu, wenn Sie den Dienstprinzipal für die Bereitstellung verwenden. Sie können auch einstellen, dass die Abonnement-ID und die Mandanten-ID als Geheimnisse gespeichert werden. 
+
+### <a name="add-your-workflow"></a>Hinzufügen des Workflows
+
+Navigieren Sie in Ihrem GitHub-Repository zu **Actions** (Aktionen). 
+
+1. Klicken Sie auf **Set up your workflow yourself** (Workflow selbst einrichten). 
+1. Löschen Sie alles nach dem Abschnitt `on:` Ihrer Workflowdatei. Der verbleibende Workflow könnte beispielsweise wie folgt aussehen: 
+
+    ```yaml
+    name: CI
+
+    on:
+    push:
+        branches: [ master ]
+    pull_request:
+        branches: [ master ]
+    ```
+
+1. Benennen Sie Ihren Workflow um, suchen Sie die Bereitstellungsaktion für den Synapse-Arbeitsbereich im Marketplace, und fügen Sie dann die Aktion hinzu. 
+
+     ![Nach der Aktion suchen](media/search-the-action.png)
+
+1. Geben Sie die erforderlichen Werte und die Arbeitsbereichsvorlage an.
+
+    ```yaml
+    name: workspace deployment
+
+    on:
+        push:
+            branches: [ publish_branch ]
+    jobs:
+        release:
+            # You can also use the self-hosted runners
+            runs-on: windows-latest
+            steps:
+            # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+            - uses: actions/checkout@v2
+            - uses: azure/synapse-workspace-deployment@release-1.0
+            with:
+              TargetWorkspaceName: 'target workspace name'
+              TemplateFile: './path of the TemplateForWorkspace.json'
+              ParametersFile: './path of the TemplateParametersForWorkspace.json'
+              OverrideArmParameters: './path of the parameters.yaml'
+              environment: 'Azure Public'
+              resourceGroup: 'target workspace resource group'
+              clientId: ${{secrets.CLIENTID}}
+              clientSecret:  ${{secrets.CLIENTSECRET}}
+              subscriptionId: 'subscriptionId of the target workspace'
+              tenantId: 'tenantId'
+              DeleteArtifactsNotInTemplate: 'true'
+              managedIdentity: 'False'
+    ``` 
+
+1. Nun können Sie ihre Änderungen committen. Wählen Sie „Commit starten“ aus, geben Sie den Titel ein, und fügen Sie dann eine Beschreibung hinzu (optional). Klicken Sie als Nächstes auf „Neue Datei committen“.
+
+    ![Committen des Workflows](media/commit-the-workflow.png)    
+
+
+1. Die Datei wird im Ordner `.github/workflows` Ihres Repositorys angezeigt.
+
+> [!NOTE]
+> Die verwaltete Identität wird nur bei selbst gehosteten VMs in Azure unterstützt. Legen Sie den Runner als selbst gehostet fest. Aktivieren Sie die vom System zugewiesene verwaltete Identität für Ihren VM, und fügen Sie sie Ihrem Synapse Studio als Synapse Administrator hinzu.
+
+### <a name="review-your-deployment"></a>Überprüfen der Bereitstellung
+
+1. Navigieren Sie in Ihrem GitHub-Repository zu „Actions“ (Aktionen).
+1. Öffnen Sie das erste Ergebnis, um ausführliche Protokolle zur Ausführung des Workflows anzuzeigen.
+
+    ![Überprüfen der Bereitstellung](media/review-deploy-status.png)    
 
 ## <a name="use-custom-parameters-of-the-workspace-template"></a>Verwenden von benutzerdefinierten Parametern der Arbeitsbereichsvorlage 
 

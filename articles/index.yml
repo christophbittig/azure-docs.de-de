@@ -10,7 +10,7 @@ metadata:
   ms.topic: hub-page
   author: rolyon
   ms.author: rolyon
-  ms.date: 08/09/2021
+  ms.date: 09/08/2021
   featureFlags:
     - clicktale
 highlightedContent:
@@ -144,7 +144,7 @@ productDirectory:
       imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
       azureCategories:
         - ai-machine-learning
-      url: cognitive-services/form-recognizer/index.yml
+      url: ./applied-ai-services/form-recognizer/index.yml
     - title: Plastischer Reader
       summary: Ermöglichen des Lesens und Verstehens von Text für Benutzer unabhängig von Alter und Fähigkeiten
       imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
@@ -231,6 +231,13 @@ productDirectory:
       azureCategories:
         - ai-machine-learning
       url: cognitive-services/translator/index.yml
+    - title: Azure Video Analyzer (Vorschau)
+      summary: Erstellen Sie intelligente videobasierte Anwendungen mithilfe der KI Ihrer Wahl.
+      imageSrc: ./media/index/video-analyzer.svg
+      azureCategories:
+        - ai-machine-learning
+        - media
+      url: azure-video-analyzer/video-analyzer-docs/overview.md
     - title: Azure Video Analyzer for Media
       summary: Nutzen von wertvollen Videoinformationen
       imageSrc: ./media/index/video-analyzer.svg
@@ -1019,12 +1026,6 @@ productDirectory:
       azureCategories:
         - media
       url: media-services/latest/stream-live-tutorial-with-api.md
-    - title: Azure Video Analyzer (Vorschau)
-      summary: Erstellen Sie intelligente videobasierte Anwendungen mithilfe der KI Ihrer Wahl.
-      imageSrc: ./media/index/video-analyzer.svg
-      azureCategories:
-        - media
-      url: azure-video-analyzer/video-analyzer-docs/overview.md
     - title: Media Services
       summary: 'Audio- und Videoinhalte nach Maß verschlüsseln, speichern und streamen'
       imageSrc: 'https://static.docs.com/ui/media/product/azure/media-services.svg'
@@ -1145,7 +1146,7 @@ productDirectory:
       azureCategories:
         - networking
       url: load-balancer/index.yml
-    - title: Azure Route Server (Vorschauversion)
+    - title: Azure Route Server
       summary: Vereinfachen der Betriebsverwaltung Ihrer Netzwerkgeräte
       imageSrc: ./media/index/azure-route-server.svg
       azureCategories:
@@ -1291,7 +1292,7 @@ tools:
     - title: Azure PowerShell
       imageSrc: 'https://docs.microsoft.com/media/logos/logo_powershell.svg'
       url: /powershell/azure/
-    - title: Azure CLI
+    - title: Azure-Befehlszeilenschnittstelle
       imageSrc: 'https://docs.microsoft.com/media/logos/logo_CLIgeneric.svg'
       url: /cli/azure/
     - title: ARM-Vorlagen

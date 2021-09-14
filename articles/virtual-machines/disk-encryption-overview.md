@@ -8,18 +8,18 @@ ms.author: mbaldwin
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 1acfd3d1a4c358e22b3371960ff358f647afe339
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: efc0626c0c5f2c9333e5459d7fb7ce6aa2865cc4
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112063595"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123105182"
 ---
 # <a name="overview-of-managed-disk-encryption-options"></a>Übersicht über Verschlüsselungsoptionen für verwaltete Datenträger
 
 Für Ihre verwalteten Datenträger stehen verschiedene Arten von Verschlüsselung zur Verfügung, z. B. Azure Disk Encryption (ADE), serverseitige Verschlüsselung (Server-Side Encryption, SSE) und Verschlüsselung auf dem Host.
 
-- **Azure Disk Encryption** unterstützt Sie beim Schutz Ihrer Daten gemäß den Sicherheits- und Complianceanforderungen Ihrer Organisation. Von ADE wird Volumeverschlüsselung für das Betriebssystem und die Datenträger von virtuellen Azure-Computern (VMs) bereitgestellt. Hierfür wird ein Linux-Feature oder das [BitLocker](https://en.wikipedia.org/wiki/BitLocker)-Feature von Windows verwendet. ADE ist in Azure Key Vault integriert, um Ihnen die Steuerung und Verwaltung der Datenträgerverschlüsselungsschlüssel und -geheimnisse zu erleichtern.  Ausführliche Informationen finden Sie unter [Azure Disk Encryption für Linux-VMs](./linux/disk-encryption-overview.md) und [Azure Disk Encryption für virtuelle Windows-Computer](./windows/disk-encryption-overview.md).
+- **Azure Disk Encryption** unterstützt Sie beim Schutz Ihrer Daten gemäß den Sicherheits- und Complianceanforderungen Ihrer Organisation. Von ADE wird Volumeverschlüsselung für das Betriebssystem und die Datenträger von virtuellen Azure-Computern (VMs) bereitgestellt. Hierfür wird das Feature [DM-Crypt](https://wikipedia.org/wiki/Dm-crypt) von Linux oder das [BitLocker](https://wikipedia.org/wiki/BitLocker)-Feature von Windows verwendet. ADE ist in Azure Key Vault integriert, um Ihnen die Steuerung und Verwaltung der Datenträgerverschlüsselungsschlüssel und -geheimnisse zu erleichtern.  Ausführliche Informationen finden Sie unter [Azure Disk Encryption für Linux-VMs](./linux/disk-encryption-overview.md) und [Azure Disk Encryption für virtuelle Windows-Computer](./windows/disk-encryption-overview.md).
 
 - Bei der **serverseitigen Verschlüsselung** (auch als Verschlüsselung ruhender Daten oder Azure Storage-Verschlüsselung bezeichnet) werden Daten, die auf verwalteten Azure-Datenträgern (Betriebssystemdatenträger und Datenträger mit Daten) gespeichert sind, beim Speichern in der Cloud automatisch verschlüsselt.  Ausführliche Informationen finden Sie unter [Serverseitige Verschlüsselung von Azure Disk Storage](./disk-encryption.md).
 

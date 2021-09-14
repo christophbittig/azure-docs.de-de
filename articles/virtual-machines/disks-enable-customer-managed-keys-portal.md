@@ -2,24 +2,23 @@
 title: 'Azure-Portal: Aktivieren kundenseitig verwalteter Schlüssel mit SSE – verwaltete Datenträger'
 description: Aktivieren Sie kundenseitig verwaltete Schlüssel auf Ihren verwalteten Datenträgern über das Azure-Portal.
 author: roygara
-ms.date: 06/29/2021
+ms.date: 08/31/2021
 ms.topic: how-to
 ms.author: rogarana
 ms.service: storage
 ms.subservice: disks
-ms.openlocfilehash: 99a6a94405978cf183c717f2fed34f7eb24d9299
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 2117fc6d425233ee2de4954173981ad5cfda5f18
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113361367"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123318470"
 ---
 # <a name="use-the-azure-portal-to-enable-server-side-encryption-with-customer-managed-keys-for-managed-disks"></a>Verwenden des Azure-Portals zum Aktivieren der serverseitigen Verschlüsselung mit kundenseitig verwalteten Schlüsseln für verwaltete Datenträger
 
-Mit Azure Disk Storage können Sie Ihre eigenen Schlüssel verwalten, wenn Sie die serverseitige Verschlüsselung (Server Side Encryption, SSE) für verwaltete Datenträger verwenden. Informationen zum Konzept der SSE mit kundenseitig verwalteten Schlüsseln sowie weitere Verschlüsselungstypen für verwaltete Datenträger finden Sie im Abschnitt **Vom Kunden verwaltete Schlüssel** in folgenden Artikeln zur Datenträgerverschlüsselung:
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: 
 
-- Linux: [Kundenseitig verwaltete Schlüssel](./disk-encryption.md#customer-managed-keys)
-- Windows: [Kundenseitig verwaltete Schlüssel](./disk-encryption.md#customer-managed-keys)
+Mit Azure Disk Storage können Sie Ihre eigenen Schlüssel verwalten, wenn Sie die serverseitige Verschlüsselung (Server Side Encryption, SSE) für verwaltete Datenträger verwenden. Informationen zum Konzept der SSE mit kundenseitig verwalteten Schlüsseln sowie weitere Verschlüsselungstypen für verwaltete Datenträger finden Sie im Abschnitt **Vom Kunden verwaltete Schlüssel** in folgendem Artikel zur Datenträgerverschlüsselung: [Kundenseitig verwalteter Schlüssel](disk-encryption.md#customer-managed-keys)
 
 ## <a name="restrictions"></a>Beschränkungen
 
@@ -79,6 +78,12 @@ Das Verfahren zur VM-Bereitstellung ähnelt dem Standardbereitstellungsverfahren
 
 > [!IMPORTANT]
 > Von Kunden verwaltete Schlüssel basieren auf verwalteten Identitäten für Azure-Ressourcen, einem Feature von Azure Active Directory (Azure AD). Wenn Sie vom Kunden verwaltete Schlüssel konfigurieren, wird Ihren Ressourcen im Hintergrund automatisch eine verwaltete Identität zugewiesen. Wenn Sie anschließend das Abonnement, die Ressourcengruppe oder den verwalteten Datenträger von einem Azure AD-Verzeichnis in ein anderes Verzeichnis verschieben, wird die den verwalteten Datenträgern zugeordnete verwaltete Identität nicht an den neuen Mandanten übertragen, sodass kundenseitig verwaltete Schlüssel möglicherweise nicht mehr funktionieren. Weitere Informationen finden Sie unter [Übertragen eines Abonnements zwischen Azure AD-Verzeichnissen](../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).
+
+### <a name="enable-automatic-key-rotation-on-an-existing-disk-encryption-set"></a>Aktivieren der automatischen Schlüsselrotation für einen vorhandenen Datenträgerverschlüsselungssatz
+
+1. Navigieren Sie zum Datenträgerverschlüsselungssatz, auf dem Sie die [automatische Schlüsselrotation](disk-encryption.md#automatic-key-rotation-of-customer-managed-keys) aktivieren möchten.
+1. Wählen Sie unter **Einstellungen** die Option **Schlüssel** aus.
+1. Wählen Sie **automatische Schlüsselrotation** und dann **Speichern**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

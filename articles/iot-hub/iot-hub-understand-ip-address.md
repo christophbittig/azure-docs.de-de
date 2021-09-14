@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/21/2021
-ms.openlocfilehash: 053ba5b768e9a09eb50f71a8296d42f85a9e4515
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: a2c500072dfd1137f14d7ae663c6736bf6328c33
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349920"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866310"
 ---
 # <a name="iot-hub-ip-addresses"></a>IP-Adressen von IoT Hub
 
@@ -30,18 +30,18 @@ Sie können mithilfe dieser IP-Adresspräfixe die Konnektivität zwischen IoT Hu
 | Sicherstellen, dass Ihr IoT Hub-Geräteendpunkt Verbindungen nur von Ihren Geräten und Netzwerkressourcen empfängt | [Gerät-zu-Cloud](./iot-hub-devguide-messaging.md)- und [Cloud-zu-Gerät](./iot-hub-devguide-messages-c2d.md)-Messaging, [direkte Methoden](./iot-hub-devguide-direct-methods.md), [Geräte- und Modulzwillinge](./iot-hub-devguide-device-twins.md) sowie [Gerätestreams](./iot-hub-device-streams-overview.md) | Verwenden Sie die [IP-Filterfunktion](iot-hub-ip-filtering.md) von IoT Hub, um Verbindungen zwischen Ihren Geräten und den IP-Adressen der Netzwerkressourcen zu ermöglichen (siehe den Abschnitt zu [Einschränkungen](#limitations-and-workarounds)). | 
 | Sicherstellen, dass die benutzerdefinierten Endpunktressourcen Ihrer Routen (Speicherkonten, Service Bus und Event Hubs) nur von ihren Netzwerkressourcen aus erreichbar sind | [Nachrichtenrouting](./iot-hub-devguide-messages-d2c.md) | Befolgen Sie die Anleitung Ihrer Ressource, um die Konnektivität einzuschränken (z. B. über [Firewallregeln](../storage/common/storage-network-security.md), [private Links](../private-link/private-endpoint-overview.md) oder [Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md)). Verwenden Sie _AzureIoTHub_-Diensttags, um IoT Hub-IP-Adresspräfixe zu ermitteln und Zulassungsregeln für diese IP-Präfixe für die Firewallkonfiguration ihrer Ressource hinzuzufügen (siehe den Abschnitt zu [Einschränkungen](#limitations-and-workarounds)). |
 
-
-
 ## <a name="best-practices"></a>Bewährte Methoden
 
-* Beim Hinzufügen von Zulassungsregeln in der Firewallkonfiguration Ihrer Geräte empfiehlt sich die Bereitstellung bestimmter [Ports, die von anwendbaren Protokollen genutzt werden](./iot-hub-devguide-protocols.md#port-numbers).
+* Die IP-Adresse eines IoT-Hubs kann ohne vorherige Ankündigung geändert werden. Zum Minimieren von Unterbrechungen verwenden Sie für die Netzwerk- und Firewallkonfiguration nach Möglichkeit den IoT Hub-Hostnamen (z. B. „myhub.azure-devices.net“). 
 
-* Die IP-Adresspräfixe von IoT Hub können sich möglicherweise ändern. Solche Änderungen werden regelmäßig mithilfe von Diensttags veröffentlicht, bevor sie in Kraft treten. Daher ist es wichtig, geeignete Prozesse zu entwickeln, um regelmäßig die neuesten Diensttags abzurufen und zu verwenden. Dieser Prozess kann mithilfe der [Diensttagermittlungs-API](../virtual-network/service-tags-overview.md#service-tags-on-premises) automatisiert werden. Beachten Sie, dass sich die Diensttagermittlungs-API noch in der Vorschauphase befindet und in einigen Fällen möglicherweise nicht die vollständige Liste der Tags und IP-Adressen erzeugt. Bis zur allgemeinen Verfügbarkeit der Ermittlungs-API sollten Sie die [Diensttags im herunterladbaren JSON-Format](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) verwenden. 
+* Bei eingeschränkten IoT-Systemen ohne Domänennamenauflösung (DNS) werden IoT Hub-IP-Adressbereiche in regelmäßigen Abständen über Diensttags veröffentlicht, bevor Änderungen wirksam werden. Daher ist es wichtig, geeignete Prozesse zu entwickeln, um regelmäßig die neuesten Diensttags abzurufen und zu verwenden. Dieser Prozess kann mithilfe der [Diensttagermittlungs-API](../virtual-network/service-tags-overview.md#service-tags-on-premises) automatisiert werden. Beachten Sie, dass sich die Diensttagermittlungs-API noch in der Vorschauphase befindet und in einigen Fällen möglicherweise nicht die vollständige Liste der Tags und IP-Adressen erzeugt. Bis zur allgemeinen Verfügbarkeit der Ermittlungs-API sollten Sie die [Diensttags im herunterladbaren JSON-Format](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) verwenden. 
+
 
 * Verwenden Sie das Tag *AzureIoTHub.[Regionsname]* , um die IP-Präfixe zu ermitteln, die von IoT Hub-Endpunkten in einer bestimmten Region verwendet werden. Achten Sie zur Einbeziehung von Rechenzentrums-Notfallwiederherstellung oder [regionalem Failover](iot-hub-ha-dr.md) darauf, dass die Konnektivität mit IP-Präfixen der geografisch gekoppelten Region Ihrer IoT Hub-Instanz ebenfalls aktiviert ist.
 
 * Das Einrichten von Firewallregeln in IoT Hub kann die Konnektivität blockieren, die zum Ausführen von Azure CLI- und PowerShell-Befehlen für Ihre IoT Hub-Instanz erforderlich ist. Um dies zu vermeiden, können Sie Zulassungsregeln für die IP-Adresspräfixe Ihrer Clients hinzufügen, um die Kommunikation mit Ihrem IoT-Hub durch CLI- oder PowerShell-Clients wieder zuzulassen.  
 
+* Beim Hinzufügen von Zulassungsregeln in der Firewallkonfiguration Ihrer Geräte empfiehlt sich die Bereitstellung bestimmter [Ports, die von anwendbaren Protokollen genutzt werden](./iot-hub-devguide-protocols.md#port-numbers).
 
 ## <a name="limitations-and-workarounds"></a>Einschränkungen und Problemumgehungen
 

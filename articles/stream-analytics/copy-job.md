@@ -1,19 +1,20 @@
 ---
-title: Kopieren oder Sichern von Azure Stream Analytics-Aufträgen
-description: In diesem Artikel wird beschrieben, wie Sie einen Azure Stream Analytics-Auftrag kopieren oder sichern.
+title: Kopieren, Sichern und Verschieben Ihrer Azure Stream Analytics-Aufträge zwischen Regionen
+description: In diesem Artikel wird beschrieben, wie Sie einen Azure Stream Analytics-Auftrag verschieben, kopieren und sichern.
 author: su-jie
 ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
+ms.custom: subject-moving-resources
 ms.date: 09/11/2019
-ms.openlocfilehash: 864c5ffc9ed88f438a5be5a1fcb55d0b78df5e07
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b3d203d3d34612b3495fa3eceaf13e357eaa2be
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98016610"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122829406"
 ---
-# <a name="copy-or-back-up-azure-stream-analytics-jobs"></a>Kopieren oder Sichern von Azure Stream Analytics-Aufträgen
+# <a name="copy-back-up-and-move-your-azure-stream-analytics-jobs-between-regions"></a>Kopieren, Sichern und Verschieben Ihrer Azure Stream Analytics-Aufträge zwischen Regionen
 
 Sie können Ihre bereitgestellten Azure Stream Analytics-Aufträge mit Visual Studio Code oder Visual Studio kopieren oder sichern. Beim Kopieren eines Auftrags in eine andere Region wird der letzte Ausgabezeitpunkt nicht mitkopiert. Daher können Sie beim Starten des kopierten Auftrags die Option [**Zeitpunkt der letzten Beendigung**](./start-job.md#start-options) nicht verwenden.
 

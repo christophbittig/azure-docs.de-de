@@ -1,6 +1,6 @@
 ---
 title: include file
-description: include file
+description: Datei einfügen
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/26/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 91b6f1ed06fbf1f5575650f96f4622b3df9ca083
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28c3ccbd7dc0aae27cd64c0c213869cf968c0a9f
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98187279"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122969343"
 ---
 <!-- This is the instructions for creating a simulated device you can use for testing routing.-->
 
@@ -25,7 +25,7 @@ Als Nächstes erstellen Sie eine Geräteidentität und speichern den zugehörige
 
 3. Wählen Sie in der Ressourcenliste Ihre IoT Hub-Instanz aus. In diesem Tutorial wird **ContosoTestHub** verwendet. Wählen Sie im Bereich „Hub“ die Option **IoT-Geräte** aus.
 
-4. Wählen Sie **+ Neu** aus. Geben Sie im Bereich „Gerät hinzufügen“ die Geräte-ID an. In diesem Tutorial wird **Contoso-Test-Device** verwendet. Lassen Sie die Felder für die Schlüssel leer, und aktivieren Sie das Kontrollkästchen **Schlüssel automatisch generieren**. Stellen Sie sicher, dass die Option **Gerät mit IoT Hub verbinden** aktiviert ist. Wählen Sie **Speichern** aus.
+4. Wählen Sie im Bereich **IoT-Geräte** die Option **+Gerät hinzufügen** aus. Geben Sie im Bereich „Gerät hinzufügen“ die Geräte-ID an. In diesem Tutorial wird **Contoso-Test-Device** verwendet. Lassen Sie die Felder für die Schlüssel leer, und aktivieren Sie das Kontrollkästchen **Schlüssel automatisch generieren**. Stellen Sie sicher, dass die Option **Gerät mit IoT Hub verbinden** aktiviert ist. Wählen Sie **Speichern** aus.
 
    ![Bildschirm „Gerät hinzufügen“](./media/iot-hub-include-create-simulated-device-portal/add-device.png)
 

@@ -4,16 +4,16 @@ description: Hier erfahren Sie, wie Sie mit dem Azure-Portal, .NET, Java, Node.j
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 10/16/2020
+ms.date: 08/26/2021
 author: gahl-levy
 ms.author: gahllevy
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 511c629aa0d8ce5388895d4ce56ccee24c7794ba
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 40458740092c7b462683512e3c419eff417019da
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339371"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038522"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-api-for-mongodb"></a>Erstellen eines Containers für die Azure Cosmos DB-API für MongoDB
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -71,3 +71,6 @@ Wenn eine Timeoutausnahme zurückgegeben wird, wenn eine Sammlung erstellt wird,
 * [Anforderungseinheiten in Azure Cosmos DB](../request-units.md)
 * [Bereitstellen des Durchsatzes für Container und Datenbanken](../set-throughput.md)
 * [Arbeiten mit einem Azure Cosmos-Konto](../account-databases-containers-items.md)
+* Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen? Sie können Informationen zu Ihrem vorhandenen Datenbankcluster für die Kapazitätsplanung verwenden.
+    * Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](../convert-vcore-to-request-unit.md) 
+    * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbank-Workload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-capacity-planner.md)

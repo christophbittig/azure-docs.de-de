@@ -1,17 +1,17 @@
 ---
-title: 'Übersicht: Azure Logic Apps-Instanz mit einem Mandanten'
+title: Mit nur einem Mandanten im Vergleich zu mehrinstanzenfähigen Azure Logic Apps
 description: Hier lernen Sie die Unterschiede zwischen einer Umgebung mit einem Mandanten, einer Umgebung mit mehreren Mandanten sowie einer Integrationsdienstumgebung (Integration Service Environment, ISE) für Azure Logic Apps kennen.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, ladolan, azla
+ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 05/25/2021
-ms.openlocfilehash: 0c09d013e3e9e3934702eb512334a33a60044b9d
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.date: 08/18/2021
+ms.openlocfilehash: 61dbf2f83ad135cfdef6fffcc3a8c162d0a4c0cd
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111441238"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123111452"
 ---
 # <a name="single-tenant-versus-multi-tenant-and-integration-service-environment-for-azure-logic-apps"></a>Vergleich zwischen Umgebungen mit einem Mandanten und mehreren Mandanten bzw. Integrationsdienstumgebung für Azure Logic Apps
 
@@ -38,7 +38,7 @@ In der folgenden Tabelle werden die Unterschiede zwischen dem Ressourcentyp **Lo
 
 ## <a name="logic-app-standard-resource"></a>Ressourcentyp „Logik-App (Standard)“
 
-Der Ressourcentyp **Logik-App (Standard)** wird von der neu gestalteten Runtime für Azure Logic Apps-Instanzen mit einem Mandanten unterstützt. Die Containerruntime verwendet das [Azure Functions-Erweiterbarkeitsmodell](../azure-functions/functions-bindings-register.md) und wird als Erweiterung der Azure Functions-Runtime gehostet. Dieser Entwurf bietet Portabilität, Flexibilität und eine höhere Leistung für Ihre Logik-App-Workflows sowie weitere Funktionen und Vorteile der Azure Functions-Plattform und des Azure App Service-Ökosystems.
+Der Ressourcentyp **Logik-App (Standard)** wird von der neu gestalteten Runtime für Azure Logic Apps-Instanzen mit einem Mandanten unterstützt. Die Runtime wendet das [Azure Functions-Erweiterbarkeitsmodell](../azure-functions/functions-bindings-register.md) an und wird als Erweiterung der Azure Functions-Runtime gehostet. Dieser Entwurf bietet Portabilität, Flexibilität und eine höhere Leistung für Ihre Logik-App-Workflows sowie weitere Funktionen und Vorteile der Azure Functions-Plattform und des Azure App Service-Ökosystems.
 
 So können Sie etwa Azure Logic Apps-Instanzen mit einem Mandanten und deren Workflows überall dort ausführen, wo Azure Functions-Apps und deren Funktionen ausgeführt werden können. Mit dem Ressourcentyp „Standard“ wird eine Ressourcenstruktur zum Hosten mehrerer Workflows eingeführt. Dies ist vergleichbar mit einer Azure Functions-App, die mehrere Funktionen hosten kann. Bei einer 1:n-Zuordnung nutzen Workflows in derselben Logik-App und demselben Mandanten Compute- und Verarbeitungsressourcen gemeinsam und bieten aufgrund ihrer Nähe eine bessere Leistung. Diese Struktur stellt einen Unterschied zum Ressourcentyp **Logik-App (Verbrauch)** dar, bei dem zwischen einer Logik-App-Ressource und einem Workflow eine 1:1-Zuordnung besteht.
 
@@ -55,7 +55,7 @@ Weitere Informationen zu Portabilität, Flexibilität und Leistungsverbesserunge
 
 Wenn Sie Logik-Apps mit dem Ressourcentyp **Logik-App (Standard)** erstellen, können Sie Ihre Workflows überall dort ausführen, wo Sie Azure Functions-Apps und die zugehörigen Funktionen ausführen können, nicht nur in der Dienstumgebung des Einzelmandanten.
 
-Wenn Sie beispielsweise Visual Studio Code mit der Erweiterung **Azure Logic Apps (Standard)** verwenden, können Sie Ihre Workflows *lokal* in Ihrer Entwicklungsumgebung entwickeln, erstellen und ausführen, ohne eine Bereitstellung in Azure durchführen zu müssen. Erfordert Ihr Szenario Container, können Sie Logik-Apps containerisieren und als Container bereitstellen.
+Wenn Sie beispielsweise Visual Studio Code mit der Erweiterung **Azure Logic Apps (Standard)** verwenden, können Sie Ihre Workflows *lokal* in Ihrer Entwicklungsumgebung entwickeln, erstellen und ausführen, ohne eine Bereitstellung in Azure durchführen zu müssen. Falls in Ihrem Szenario Container erforderlich sind, [erstellen Sie Logik-Apps mit nur einem Mandanten mithilfe von Logic Apps mit Azure Arc-Unterstützung](azure-arc-enabled-logic-apps-create-deploy-workflows.md). Weitere Informationen finden Sie unter [Was ist Logic Apps mit Azure Arc-Unterstützung?](azure-arc-enabled-logic-apps-overview.md)
 
 Verglichen mit dem mehrinstanzenfähigen Modell, bei dem Sie für eine vorhandene, in Azure ausgeführte Ressource entwickeln müssen, stellen diese Funktionen eine erhebliche Verbesserung und einen entscheidenden Vorteil dar. Zudem basiert das mehrinstanzenfähige Modell für die automatisierte Bereitstellung des Ressourcentyps **Logik-App (Verbrauch)** vollständig auf ARM-Vorlagen (Azure Resource Manager), mit denen die Ressourcenbereitstellung für Apps und die Infrastruktur zusammengeführt und verarbeitet wird.
 
@@ -95,7 +95,7 @@ Zum Erstellen einer Logik-App in der von Ihnen gewünschten Umgebung stehen Ihne
 | Azure-Portal | Ressourcentyp **Logik-App (Verbrauch)** | [Schnellstart: Erstellen von Integrationsworkflows in Azure Logic Apps-Instanzen mit mehreren Mandanten – Azure-Portal](quickstart-create-first-logic-app-workflow.md) |
 | Visual Studio Code | [Erweiterung **Azure Logic Apps (Verbrauch)**](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-logicapps) | [Schnellstart: Erstellen von Integrationsworkflows in Azure Logic Apps-Instanzen mit mehreren Mandanten – Visual Studio Code](quickstart-create-logic-apps-visual-studio-code.md)
 | Azure CLI | [Erweiterung **Logic Apps Azure CLI**](https://github.com/Azure/azure-cli-extensions/tree/master/src/logic) | - [Schnellstart: Erstellen und Verwalten von Integrationsworkflows in Azure Logic Apps-Instanzen mit mehreren Mandanten – Azure CLI](quickstart-logic-apps-azure-cli.md) <p><p>- [az logic](/cli/azure/logic) |
-| Azure Resource Manager | [ARM-Vorlage (Azure Resource Manager) **Erstellen einer Logik-App**](https://azure.microsoft.com/resources/templates/logic-app-create/) | [Schnellstart: Erstellen und Bereitstellen von Integrationsworkflows in Azure Logic Apps-Instanzen mit mehreren Mandanten – ARM-Vorlage](quickstart-create-deploy-azure-resource-manager-template.md) |
+| Azure Resource Manager | [**Erstellen einer** ARM-Vorlage](https://azure.microsoft.com/resources/templates/logic-app-create/) für Logik-App | [Schnellstart: Erstellen und Bereitstellen von Integrationsworkflows in Azure Logic Apps-Instanzen mit mehreren Mandanten – ARM-Vorlage](quickstart-create-deploy-azure-resource-manager-template.md) |
 | Azure PowerShell | [Modul „Az.LogicApp“](/powershell/module/az.logicapp) | [Erste Schritte mit Azure PowerShell](/powershell/azure/get-started-azureps) |
 | Azure-REST-API | [Azure Logic Apps-REST-API](/rest/api/logic) | [Erste Schritte mit der Azure-REST-API-Referenz](/rest/api/azure) |
 ||||
@@ -119,11 +119,14 @@ Mit dem Ressourcentyp **Logik-App (Standard)** können Sie die folgenden Workflo
 
 * *Zustandsbehaftet*
 
-  Erstellen Sie zustandsbehaftete Workflows, wenn Sie Daten von vorherigen Ereignissen beibehalten, überprüfen oder referenzieren müssen. Diese Workflows behalten die Ein- und Ausgabe für jede Aktion und deren Zustände im externen Speicher bei, sodass die Ausführungsdetails und der Ausführungsverlauf nach Abschluss der jeweiligen Ausführung überprüft werden können. Zustandsbehaftete Workflows bieten hohe Resilienz, falls es zu Ausfällen kommen sollte. Nachdem Dienste und Systeme wiederhergestellt wurden, können Sie unterbrochene Ausführungen aus dem gespeicherten Zustand rekonstruieren und die Workflows bis zum Abschluss erneut ausführen. Zustandsbehaftete Workflows können wesentlich länger ausgeführt werden als zustandslose Workflows.
+  Erstellen Sie einen zustandsbehafteten Workflow, wenn Sie Daten von vorherigen Ereignissen beibehalten, überprüfen oder referenzieren müssen. Diese Workflows behalten bei und übertragen sämtliche Ein- und Ausgaben für jede Aktion und deren Zustände im externen Speicher, sodass die Ausführungsdetails und der Ausführungsverlauf nach Abschluss der jeweiligen Ausführung überprüft werden können. Zustandsbehaftete Workflows bieten hohe Resilienz, falls es zu Ausfällen kommen sollte. Nachdem Dienste und Systeme wiederhergestellt wurden, können Sie unterbrochene Ausführungen aus dem gespeicherten Zustand rekonstruieren und die Workflows bis zum Abschluss erneut ausführen. Zustandsbehaftete Workflows können wesentlich länger ausgeführt werden als zustandslose Workflows.
 
 * *Zustandslos*
 
-  Erstellen Sie zustandslose Workflows, wenn Sie Daten von vorherigen Ereignissen nicht zur späteren Überprüfung in externem Speicher speichern, überprüfen oder referenzieren müssen. Diese Workflows speichern die Ein- und Ausgabe für jede Aktion und deren Zustände *nur im Arbeitsspeicher*, anstatt diese Daten in den externen Speicher zu übertragen. Daher sind die Ausführungen zustandsloser Workflows kürzer (in der Regel nicht länger als 5 Minuten), sie bieten eine höhere Leistung mit schnelleren Antwortzeiten, einen höheren Durchsatz und niedrigere Ausführungskosten, da die Ausführungsdetails und der Ausführungsverlauf nicht im externen Speicher aufbewahrt werden. Wenn es aber zu Ausfällen kommen sollte, werden unterbrochene Ausführungen nicht automatisch wiederhergestellt, sodass der Aufrufer unterbrochene Ausführungen manuell erneut übermitteln muss. Diese Workflows können nur synchron ausgeführt werden.
+  Erstellen Sie einen zustandslosen Workflow, wenn Sie Daten von vorherigen Ereignissen nicht zur späteren Überprüfung in externem Speicher sichern, überprüfen oder referenzieren müssen, nachdem jede Ausführung beendet wurde und einer Überprüfung unterzogen werden kann. Diese Workflows speichern sämtliche Ein- und Ausgaben für jede Aktion und deren Zustände nur *im Arbeitsspeicher* und nicht im externen Speicher. Daher sind die Ausführungen zustandsloser Workflows kürzer (in der Regel weniger als 5 Minuten), sie bieten eine höhere Leistung mit schnelleren Antwortzeiten, einen höheren Durchsatz und niedrigere Ausführungskosten, da die Ausführungsdetails und der Ausführungsverlauf nicht im externen Speicher gespeichert werden. Wenn es aber zu Ausfällen kommen sollte, werden unterbrochene Ausführungen nicht automatisch wiederhergestellt, sodass der Aufrufer unterbrochene Ausführungen manuell erneut übermitteln muss. Diese Workflows können nur synchron ausgeführt werden.
+
+  > [!IMPORTANT]
+  > Ein zustandsloser Workflow bietet die beste Leistung bei der Verarbeitung von Daten oder Inhalten, z. B. einer Datei, die *insgesamt* 64 KB nicht überschreitet. Größere Inhalte, z. B. mehrere große Anlagen, können die Leistung Ihres Workflows erheblich beeinträchtigen oder sogar dazu führen, dass Ihr Workflow aufgrund von Ausnahmen wegen nicht genügend Arbeitsspeicher abstürzt. Wenn Ihr Workflow möglicherweise größere Inhalte verarbeiten muss, verwenden Sie stattdessen einen zustandsbehafteten Workflow.
 
   Um das Debuggen zu vereinfachen, können Sie den Ausführungsverlauf für einen zustandslosen Workflow aktivieren und den Ausführungsverlauf wieder deaktivieren, wenn Sie fertig sind, da die Aktivierung die Leistung beeinträchtigt. Weitere Informationen finden Sie unter [Erstellen von Workflows für Instanzen mit einem Mandanten in Visual Studio Code](create-single-tenant-workflows-visual-studio-code.md#enable-run-history-stateless) oder [Erstellen von Workflows für Instanzen mit einem Mandanten im Azure-Portal](create-single-tenant-workflows-visual-studio-code.md#enable-run-history-stateless).
 
@@ -179,20 +182,25 @@ Das Einzelmandantenmodell und der Ressourcentyp **Logik-App (Standard)** enthalt
 
     Die Erstellungsfunktion ist derzeit nur in Visual Studio Code verfügbar, aber nicht standardmäßig aktiviert. Um diese Connectors zu erstellen, [konvertieren Sie Ihr Projekt von erweiterungspaketbasiert (Node.js) in NuGet-Paketbasiert (.NET)](create-single-tenant-workflows-visual-studio-code.md#enable-built-in-connector-authoring). Weitere Informationen finden Sie unter [Azure Logic Apps Running Anywhere: Built-in connector extensibility](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272) (Azure Logic Apps läuft überall: Erweiterbarkeit integrierter Connectors).
 
-  * Sie können die B2B-Aktionen für Liquid- und XML-Vorgänge ohne Integrationskonto verwenden. Um diese Aktionen zu verwenden, benötigen Sie Liquid-Zuordnungen, XML-Zuordnungen oder XML-Schemas, die Sie über die entsprechenden Aktionen im Azure-Portal hochladen können. Sie können sie auch mithilfe der entsprechenden Ordner für **Zuordnungen** und **Schemas** im Ordner für **Artefakte** des Visual Studio Code-Projekts hinzufügen.
+  * Sie können die folgenden Aktionen für Liquid- und XML-Vorgänge ohne Integrationskonto verwenden. Dazu gehören die folgenden Aktionen:
 
-  * Ressourcen vom Typ **Logik-App (Standard)** können überall ausgeführt werden, weil der Azure Logic Apps-Dienst SAS-Verbindungszeichenfolgen (Shared Access Signature) generiert, die diese Logik-Apps zum Senden von Anforderungen an den Runtime-Endpunkt der Cloudverbindung verwenden können. Der Logic Apps-Dienst speichert diese Verbindungszeichenfolgen zusammen mit anderen Anwendungseinstellungen, sodass Sie diese Werte bei einer Bereitstellung in Azure problemlos in Azure Key Vault speichern können.
+    * XML: **Transformieren von XML** und **XML-Überprüfung**
+
+    * Liquid: **Json in JSON transformieren**, **JSON in TEXT transformieren**, **XML in JSON transformieren** und **XML in Text transformieren**
+
+    > [!NOTE]
+    > Um diese Aktionen in einzelmandantenbasierten Azure Logic Apps (Standard) verwenden zu können, benötigen Sie Liquid-Zuordnungen, XML-Zuordnungen oder XML-Schemas. Sie können diese Artefakte im Azure-Portal über das Ressourcenmenü Ihrer Logik-App unter **Artifacts** hochladen, das die Abschnitte **Schemas** und **Karten** enthält. Sie können diese Artefakte auch dem Ordner **Artifacts** ihres Visual Studio Code-Projekts hinzufügen, indem Sie die entsprechenden Ordner **Karten** und **Schemas** verwenden. Sie können diese Artefakte dann in mehreren Workflows innerhalb *derselben Logik-App-Ressource* verwenden.
+
+  * Ressourcen vom Typ **Logik-App (Standard)** können überall ausgeführt werden, weil  Azure Logic Apps SAS-Verbindungszeichenfolgen (Shared Access Signature) generiert, die diese Logik-Apps zum Senden von Anforderungen an den Runtime-Endpunkt der Cloudverbindung verwenden können. Azure Logic Apps speichert diese Verbindungszeichenfolgen zusammen mit anderen Anwendungseinstellungen, sodass Sie diese Werte bei einer Bereitstellung in Azure problemlos in Azure Key Vault speichern können.
 
     > [!NOTE]
     > Standardmäßig wird die [systemseitig zugewiesene verwaltete Identität](../logic-apps/create-managed-service-identity.md) einer Ressource vom Typ **Logik-App (Standard)** automatisch aktiviert, um Verbindungen zur Laufzeit zu authentifizieren. Diese Identität unterscheidet sich von den Anmeldeinformationen für die Authentifizierung oder der Verbindungszeichenfolge, die Sie verwenden, wenn Sie eine Verbindung herstellen. Wenn Sie diese Identität deaktivieren, funktionieren Verbindungen zur Laufzeit nicht. Wählen Sie zum Anzeigen dieser Einstellung im Menü Ihrer Logik-App unter **Einstellungen** die Option **Identität** aus.
-
-* Zustandslose Workflows werden nur im Arbeitsspeicher ausgeführt, damit sie schneller beendet werden, schneller reagieren, einen höheren Durchsatz aufweisen und sich kostengünstiger ausführen lassen. Dies liegt daran, dass die Ausführungsverläufe und -daten zwischen Aktionen nicht dauerhaft im externen Speicher gespeichert werden. Optional können Sie den Ausführungsverlauf für leichteres Debuggen aktivieren. Weitere Informationen finden Sie im Abschnitt [Zustandsbehaftete und zustandslose Workflows](#stateful-stateless).
 
 * Sie können Ihre Logik-Apps und die zugehörigen Workflows in der Visual Studio Code-Entwicklungsumgebung lokal ausführen, testen und debuggen.
 
   Bevor Sie Ihre Logik-App ausführen und testen, können Sie das Debuggen vereinfachen, indem Sie in der Datei **workflow.json** für einen Workflow Breakpoints hinzufügen und verwenden. Breakpoints werden derzeit jedoch nur für Aktionen unterstützt, nicht für Trigger. Weitere Informationen finden Sie unter [Erstellen von Workflows für Instanzen mit einem Mandanten in Visual Studio Code](create-single-tenant-workflows-visual-studio-code.md#manage-breakpoints).
 
-* Veröffentlichen Sie Ihre Logik-Apps und die zugehörigen Workflows direkt aus Visual Studio Code, oder stellen Sie sie in verschiedenen Hostumgebungen bereit, wie z. B. Azure und Container.
+* Veröffentlichen Sie Ihre Logik-Apps und die zugehörigen Workflows direkt aus Visual Studio Code, oder stellen Sie sie in verschiedenen Hostumgebungen bereit, wie z. B. Azure und durch Azure Arc aktivierte Logic Apps.
 
 * Aktivieren Sie die Funktionen zur Diagnoseprotokollierung und Ablaufverfolgung für Ihre Logik-App, indem Sie [Application Insights](../azure-monitor/app/app-insights-overview.md) verwenden, sofern dies von Ihrem Azure-Abonnement und den Einstellungen der Logik-App unterstützt wird.
 
@@ -230,13 +238,15 @@ Für Ressourcen vom Typ **Logik-App (Standard)** wurden die folgenden Funktionen
       >
       > Wie im mehrinstanzenfähigen Modell gilt auch hier: Wenn Sie diesen Schlüssel erneuern (z. B. über die Azure Functions-Benutzeroberfläche im Portal), funktioniert die Funktionsaktion aufgrund eines ungültigen Schlüssels nicht mehr. Um dieses Problem zu beheben, müssen Sie die Verbindung mit der Funktion, die Sie aufrufen möchten, neu erstellen oder die App-Einstellungen mit dem neuen Schlüssel aktualisieren.
 
-    * Der Name der integrierten [Inlinecodeaktion](logic-apps-add-run-inline-code.md) wird in **Inlinecodevorgänge** geändert, es ist kein Integrationskonto mehr erforderlich, und die [Grenzwerte wurden aktualisiert](logic-apps-limits-and-config.md).
+    * Der Name der integrierten Aktion [Inline-Code](logic-apps-add-run-inline-code.md) wird in **Inlinecodevorgänge** geändert, es ist kein Integrationskonto mehr erforderlich, und die [Grenzwerte wurden aktualisiert](logic-apps-limits-and-config.md).
 
     * Die integrierte Aktion [Azure Logic Apps: Logik-App-Workflow auswählen](logic-apps-http-endpoint.md) heißt nun **Workflowvorgänge: Workflow in dieser Workflow-App aufrufen**.
 
-    * Einige [integrierte B2B-Trigger und -Aktionen für Integrationskonten](../connectors/managed.md#integration-account-connectors) sind nicht verfügbar. Dies betrifft z. B. die Aktionen für die Codierung und Decodierung von **Flatfiles**.
+    * Einige [integrierte Trigger und -Aktionen für Integrationskonten](../connectors/managed.md#integration-account-connectors) sind nicht verfügbar. Dies betrifft z. B. die Aktionen für die Codierung und Decodierung von **Flatfiles**.
 
     * [Benutzerdefinierte verwaltete Connectors](../connectors/apis-list.md#custom-apis-and-connectors) werden derzeit nicht unterstützt. Mit Visual Studio Code können Sie jedoch *benutzerdefinierte integrierte Vorgänge* erstellen. Weitere Informationen finden Sie unter [Erstellen von Workflows für Instanzen mit einem Mandanten in Visual Studio Code](create-single-tenant-workflows-visual-studio-code.md#enable-built-in-connector-authoring).
+
+* Für die XML-Transformation ist die Unterstützung für das Verweisen auf Ansammlungen aus Zuordnungen derzeit nicht verfügbar. Außerdem wird derzeit nur XSLT 1.0 unterstützt.
 
 * **Breakpoints für das Debuggen in Visual Studio Code:** Sie können zwar in der Datei **workflow.json** Breakpoints für einen Workflow hinzufügen und verwenden, aber diese Breakpoints werden derzeit nur für Aktionen unterstützt, nicht für Trigger. Weitere Informationen finden Sie unter [Erstellen von Workflows für Instanzen mit einem Mandanten in Visual Studio Code](create-single-tenant-workflows-visual-studio-code.md#manage-breakpoints).
 

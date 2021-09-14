@@ -4,19 +4,19 @@ titleSuffix: Azure Digital Twins
 description: Grundlegendes zum Befehlssatz der Azure Digital Twins-CLI.
 author: baanders
 ms.author: baanders
-ms.date: 04/30/2021
+ms.date: 8/25/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d3e081d4a60b5e4f26e5163d55f2df682b042bca
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 087a7bc7fda1c54e0a9e2c7f896b06dda78fa11e
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110066519"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221147"
 ---
 # <a name="azure-digital-twins-cli-command-set"></a>Befehlssatz der Azure Digital Twins-Befehlszeilenschnittstelle
 
-Zusätzlich zur Verwaltung Ihrer Azure Digital Twins-Instanz im Azure-Portal verfügt Azure Digital Twins über einenBefehlssatz für die [Azure CLI](/cli/azure/what-is-azure-cli) , über den Sie die meisten wichtigen Aktionen mit dem Dienst ausführen können, einschließlich:
+Neben der Verwaltung Ihrer Azure Digital Twins-Instanz im Azure-Portal verfügt Azure Digital Twins auch über einen Befehlssatz für die [Azure-CLI](/cli/azure/what-is-azure-cli), mit dem Sie die meisten wichtigen Aktionen mit dem Dienst durchführen können, darunter:
 * Verwalten einer Azure Digital Twins-Instanz
 * Verwalten von Modellen
 * Verwalten von digitalen Zwillingen
@@ -29,7 +29,7 @@ Der Befehlssatz besitzt die Bezeichnung **az dt** und ist Teil der [Azure IoT-Er
 
 ## <a name="uses-deploy-and-validate"></a>Verwendungen (bereitstellen und validieren)
 
-Zusätzlich zur allgemeinen Verwaltung Ihrer Instanz ist die CLI auch ein nützliches Tool für die Bereitstellung und Validierung.
+Außer der allgemeinen Verwaltung Ihrer Instanz ist die CLI auch ein nützliches Tool für die Bereitstellung und Validierung.
 * Mithilfe der Befehle auf Steuerungsebene kann die Bereitstellung einer neuen Instanz wiederholbar oder automatisiert werden.
 * Mit den Befehlen auf Datenebene können Sie schnell Werte in Ihrer Instanz und den erwartungsgemäßen Abschluss von Vorgängen überprüfen.
 
@@ -39,7 +39,7 @@ Die Azure Digital Twins-Befehle sind Teil der [Azure IoT-Erweiterung für die Az
 
 ### <a name="cli-version-requirements"></a>CLI-Versionsanforderungen
 
-Wenn Sie die Azure CLI mit PowerShell verwenden, erfordert das Erweiterungspaket, dass Ihre Azure CLI-Version **2.3.1** oder höher ist.
+Wenn Sie die Azure CLI mit PowerShell verwenden, sollte Ihre Azure CLI-Version **2.3.1** oder höher als die Anforderung des Erweiterungspakets sein.
 
 Mit diesem CLI-Befehl können Sie die Version Ihrer Azure CLI überprüfen:
 ```azurecli

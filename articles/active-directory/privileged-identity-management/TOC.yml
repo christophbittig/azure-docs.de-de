@@ -69,7 +69,7 @@
           href: pim-resource-roles-renew-extend.md
         - name: Gruppen mit privilegiertem Zugriff
           href: groups-renew-extend.md
-    - name: Festlegen von Standardeinstellungen für Rollen
+    - name: Festlegen von Rolleneinstellungen
       items:
         - name: Azure AD-Rollen
           href: pim-how-to-change-default-settings.md

@@ -167,7 +167,7 @@
         - name: Visualisieren gesammelter Daten
           href: get-visibility.md
         - name: "Verwenden von Azure\_Monitor-Arbeitsmappen"
-          href: /azure/sentinel/monitor-your-data
+          href: ./monitor-your-data.md
     - name: Erkennen von Bedrohungen und Analysieren von Daten
       items:
         - name: Verwenden integrierter Rollen
@@ -283,11 +283,13 @@
             - name: Schema zur Dateiereignisnormalisierung
               href: file-event-normalization-schema.md
             - name: Schema zur Netzwerknormalisierung
-              href: normalization-schema.md
+              href: network-normalization-schema.md
             - name: Schema zur Prozessereignisnormalisierung
               href: process-events-normalization-schema.md
             - name: Schema zur Registrierungsereignisnormalisierung
               href: registry-event-normalization-schema.md
+            - name: Schema zur Legacynetzwerknormalisierung
+              href: normalization-schema-v1.md
     - name: Erkennungs- und Analysereferenzen
       items:
         - name: Wichtigste Azure Sentinel-Arbeitsmappen

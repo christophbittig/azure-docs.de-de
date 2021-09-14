@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Dokumentation zur Gesichtserkennung
-summary: Am 11. Juni 2020 kündigte Microsoft an, dass keine Technologie zur Gesichtserkennung mehr an die Polizeibehörden in den USA verkauft wird, bis es eine strenge, auf den Menschenrechten basierende Regelung gibt. Daher dürfen Kunden keine Gesichtserkennungsfeatures oder in Azure-Diensten enthaltenen Features (wie Gesichtserkennung oder Video Indexer) verwenden, wenn es sich bei dem Kunden um eine Polizeibehörde in den USA handelt oder wenn der Kunde die Nutzung derartiger Dienste durch oder für eine Polizeibehörde zulässt.
+summary: Am 11. Juni 2020 kündigte Microsoft an, dass keine Technologie zur Gesichtserkennung mehr an die Polizeibehörden in den USA verkauft wird, bis es eine strenge, auf den Menschenrechten basierende Regelung gibt. Daher dürfen Kunden keine Gesichtserkennungsfeatures oder in Azure-Diensten enthaltenen Features (wie Gesichtserkennung oder Azure Video Analyzer for Media) verwenden, wenn es sich bei dem Kunden um eine Polizeibehörde in den USA handelt oder wenn der Kunde die Nutzung derartiger Dienste durch oder für eine Polizeibehörde zulässt.
 metadata:
   title: 'Dokumentation zur Gesichtserkennung: Schnellstarts, Tutorials, API-Referenz – Azure Cognitive Services | Microsoft-Dokumentation'
   description: Der cloudbasierte Gesichtserkennungsdienst stellt Entwicklern erweiterte Algorithmen für die Gesichtserkennung zur Verfügung. Gesichtserkennungsalgorithmen von Microsoft ermöglichen die Ermittlung von Gesichtsmerkmalen sowie die Gesichtserkennung. In unseren Schnellstartanleitungen, Tutorials und Beispielen erfahren Sie, wie Sie Inhalte auf unterschiedliche Weise analysieren.
@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 9/01/2020
-  ms.openlocfilehash: 579db900c31992fbb0555a8e19c9b2753f0bde2a
-  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+  ms.openlocfilehash: 145727cb5b6cd9c83e33407cb0cbfb3612066c9d
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/13/2021
-  ms.locfileid: "121744759"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124771914"
 landingContent:
 - title: Informationen zum Gesichtserkennungsdienst
   linkLists:

@@ -4,6 +4,8 @@
   items:
     - name: Was ist Azure Managed Instance for Apache Cassandra?
       href: introduction.md
+    - name: Vergleichen mit der Cassandra-API für Azure Cosmos DB
+      href: compare-cosmosdb-managed-instance.md
 - name: Schnellstarts
   items:
     - name: 'Erstellen eines Clusters: Portal'
@@ -21,21 +23,15 @@
   items:
     - name: Migration
       items:
-        - name: Livemigration
-          items:
-            - name: Verwenden eines Proxys für duales Schreiben
-              href: dual-write-proxy-migration.md
-        - name: Offlinemigration
-          items:
-            - name: Verwenden von Apache Spark
-              href: spark-migration.md
+        - name: 'Verwenden des Proxys für duales Schreiben: Live'
+          href: dual-write-proxy-migration.md
+        - name: 'Verwenden von Apache Spark: Offline'
+          href: spark-migration.md
 - name: Konzepte
   items:
     - name: Häufig gestellte Fragen
       displayName: 'cost, region, monitor, backup'
       href: faq.md
-    - name: "Gegenüberstellung von Managed Instance und Cassandra-API für Azure Cosmos\_DB"
-      href: compare-cosmosdb-managed-instance.md
 - name: Anleitungen
   items:
     - name: Verwalten mit der Azure CLI

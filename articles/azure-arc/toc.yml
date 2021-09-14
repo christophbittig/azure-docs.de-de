@@ -8,11 +8,11 @@
   items:
     - name: Azure Resource Graph-Abfragen
       href: ./resource-graph-samples.md
-- name: Server mit Arc-Unterstützung >
+- name: "Server mit Azure\_Arc-Unterstützung >"
   href: ./servers/overview.md
-- name: Kubernetes mit Arc-Unterstützung >
+- name: "Kubernetes mit Azure\_Arc-Unterstützung >"
   href: ./kubernetes/overview.md
-- name: Datendienste mit Arc-Unterstützung >
+- name: "Datendienste mit Azure\_Arc-Unterstützung >"
   href: ./data/overview.md
 - name: SQL Server auf Servern mit Azure Arc-Unterstützung >
   href: /sql/sql-server/azure-arc/overview

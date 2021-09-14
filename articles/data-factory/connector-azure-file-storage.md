@@ -1,7 +1,7 @@
 ---
-title: Kopieren von Daten aus und nach Azure File Storage
+title: Kopieren von Daten aus/in Azure Files
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Hier erfahren Sie, wie Sie mithilfe von Azure Data Factory Daten aus Azure File Storage in unterstützte Senkendatenspeicher oder aus unterstützten Quelldatenspeichern in Azure File Storage kopieren.
+description: Hier erfahren Sie, wie Sie mithilfe von Azure Data Factory Daten aus Azure Files in unterstützte Senkendatenspeicher oder aus unterstützten Quelldatenspeichern in Azure Files kopieren.
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
@@ -9,31 +9,31 @@ ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
 ms.date: 03/17/2021
-ms.openlocfilehash: 26033c1d19b9025bd5dceffeaf19a1504965df33
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 50136700ce4cc39a2a8166ce4c7d7d2960b53990
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122640717"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123313898"
 ---
-# <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>Kopieren von Daten aus bzw. in Azure File Storage mithilfe von Azure Data Factory
+# <a name="copy-data-from-or-to-azure-files-by-using-azure-data-factory"></a>Kopieren von Daten aus bzw. in Azure Files mithilfe von Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel wird beschrieben, wie Sie Daten in und aus Azure File Storage kopieren. Informationen zu Azure Data Factory finden Sie im [Einführungsartikel](introduction.md).
+In diesem Artikel wird beschrieben, wie Sie Daten in und aus Azure Files kopieren. Informationen zu Azure Data Factory finden Sie im [Einführungsartikel](introduction.md).
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
-Dieser Azure File Storage-Connector wird für die folgenden Aktivitäten unterstützt:
+Dieser Azure Files-Connector wird für die folgenden Aktivitäten unterstützt:
 
 - [Kopieraktivität](copy-activity-overview.md) mit [unterstützter Quellen/Senken-Matrix](copy-activity-overview.md)
 - [Lookup-Aktivität](control-flow-lookup-activity.md)
 - [GetMetadata-Aktivität](control-flow-get-metadata-activity.md)
 - [Delete-Aktivität](delete-activity.md)
 
-Sie können Daten aus Azure File Storage in einen beliebigen unterstützten Senkendatenspeicher bzw. Daten aus einem beliebigen unterstützten Quelldatenspeicher in Azure File Storage kopieren. Eine Liste der Datenspeicher, die die Kopieraktivität als Quellen und Senken unterstützt, finden Sie unter [Unterstützte Datenspeicher und Formate](copy-activity-overview.md#supported-data-stores-and-formats).
+Sie können Daten aus Azure Files in einen beliebigen unterstützten Senkendatenspeicher bzw. Daten aus einem beliebigen unterstützten Quelldatenspeicher in Azure Files kopieren. Eine Liste der Datenspeicher, die die Kopieraktivität als Quellen und Senken unterstützt, finden Sie unter [Unterstützte Datenspeicher und Formate](copy-activity-overview.md#supported-data-stores-and-formats).
 
-Dieser Azure File Storage-Connector unterstützt insbesondere Folgendes:
+Der Azure Files-Connector unterstützt insbesondere Folgendes:
 
 - Kopieren von Dateien mithilfe der Authentifizierung per Kontoschlüssel oder per Dienst-SAS (Shared Access Signature).
 - Kopieren von Dateien im jeweiligen Zustand oder Analysieren bzw. Generieren von Dateien mit den [unterstützten Dateiformaten und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs.md)
@@ -42,26 +42,50 @@ Dieser Azure File Storage-Connector unterstützt insbesondere Folgendes:
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Azure File Storage-spezifischen Data Factory-Entitäten verwendet werden:
+## <a name="create-a-linked-service-to-azure-files-using-ui"></a>Erstellen eines verknüpften Diensts mit Azure Files über die Benutzeroberfläche
+
+Verwenden Sie die folgenden Schritte, um einen verknüpften Dienst für die Azure Files auf der Azure-Portal-Benutzeroberfläche zu erstellen.
+
+1. Navigieren Sie in Ihrem Azure Data Factory- oder Synapse-Arbeitsbereich zu der Registerkarte „Verwalten“, wählen Sie „Verknüpfte Dienste“ aus und klicken Sie dann auf „Neu“:
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Ein Screenshot, der das Erstellen eines neuen verknüpften Diensts mit der Azure Data Factory Benutzeroberfläche zeigt.":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Ein Screenshot, der das Erstellen eines neuen verknüpften Diensts mit der Azure Synapse Benutzeroberfläche zeigt.":::
+
+2. Suchen Sie nach der Datei und wählen Sie den Connector für Azure Files *Azure File Storage*.
+
+    :::image type="content" source="media/connector-azure-file-storage/azure-file-storage-connector.png" alt-text="Screenshot: Azure File Storage Connector.":::    
+
+1. Konfigurieren Sie die Dienstdetails, testen Sie die Verbindung und erstellen Sie den neuen verknüpften Dienst.
+
+    :::image type="content" source="media/connector-azure-file-storage/configure-azure-file-storage-linked-service.png" alt-text="Ein Screenshot, der die Konfiguration des verknüpften Diensts für ein Azure File Storage zeigt.":::
+
+## <a name="connector-configuration-details"></a>Details zur Connector-Konfiguration
+
+Die folgenden Abschnitte enthalten Details zu den Eigenschaften, die zum Definieren von Entitäten speziell für Azure Files verwendet werden.
 
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 
-Dieser Azure File Storage-Connector unterstützt die folgenden Authentifizierungstypen. Weitere Informationen finden Sie in den entsprechenden Abschnitten.
+Dieser Azure Files-Connector unterstützt die folgenden Authentifizierungstypen. Weitere Informationen finden Sie in den entsprechenden Abschnitten.
 
 - [Kontoschlüsselauthentifizierung](#account-key-authentication)
 - [SAS-Authentifizierung (Shared Access Signature)](#shared-access-signature-authentication)
 
 >[!NOTE]
-> Sie können den verknüpften Azure File Storage-Dienst mit einem [Legacymodell](#legacy-model) verwenden, in dem auf der Benutzeroberfläche zum Erstellen einer ADF die „Standardauthentifizierung“ angezeigt wird. Dies wird unverändert unterstützt, es wird jedoch empfohlen, in Zukunft das neue Modell zu verwenden. Das Legacymodell überträgt Daten an den bzw. aus dem Speicher über SMB (Server Message Block), während das neue Modell das Speicher-SDK verwendet, das einen besseren Durchsatz aufweist. Um ein Upgrade durchzuführen, können Sie den verknüpften Dienst bearbeiten und die Authentifizierungsmethode in „Kontoschlüssel“ oder „SAS-URI“ ändern. Für das Dataset und die Kopieraktivität sind keine Änderungen erforderlich.
+> Sie können den verknüpften Azure Files-Dienst mit einem [Legacymodell](#legacy-model) verwenden, in dem auf der Benutzeroberfläche zum Erstellen einer ADF die „Standardauthentifizierung“ angezeigt wird. Dies wird unverändert unterstützt, es wird jedoch empfohlen, in Zukunft das neue Modell zu verwenden. Das Legacymodell überträgt Daten an den bzw. aus dem Speicher über SMB (Server Message Block), während das neue Modell das Speicher-SDK verwendet, das einen besseren Durchsatz aufweist. Um ein Upgrade durchzuführen, können Sie den verknüpften Dienst bearbeiten und die Authentifizierungsmethode in „Kontoschlüssel“ oder „SAS-URI“ ändern. Für das Dataset und die Kopieraktivität sind keine Änderungen erforderlich.
 
 ### <a name="account-key-authentication"></a>Kontoschlüsselauthentifizierung
 
-Data Factory unterstützt die folgenden Eigenschaften für die Kontoschlüsselauthentifizierung von Azure File Storage:
+Data Factory unterstützt die folgenden Eigenschaften für die Kontoschlüsselauthentifizierung von Azure Files:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureFileStorage**. | Ja |
-| connectionString | Geben Sie die zum Verbinden mit Azure File Storage erforderlichen Informationen an. <br/> Sie können auch den Kontoschlüssel in Azure Key Vault speichern und die `accountKey`-Konfiguration aus der Verbindungszeichenfolge pullen. Weitere Informationen finden Sie in den folgenden Beispielen und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). |Ja |
+| connectionString | Geben Sie die zum Verbinden mit Azure Files erforderlichen Informationen an. <br/> Sie können auch den Kontoschlüssel in Azure Key Vault speichern und die `accountKey`-Konfiguration aus der Verbindungszeichenfolge pullen. Weitere Informationen finden Sie in den folgenden Beispielen und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). |Ja |
 | fileShare | Geben Sie die Dateifreigabe an. | Ja |
 | Momentaufnahme | Geben Sie das Datum der [Dateifreigabe-Momentaufnahme](../storage/files/storage-snapshots-files.md) an, wenn die Kopie von einer Momentaufnahme erstellt werden soll. | Nein |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure-Integrationslaufzeit oder selbstgehostete Integrationslaufzeit verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
@@ -183,8 +207,8 @@ Data Factory unterstützt die folgenden Eigenschaften für die Verwendung der SA
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureFileStorage**. | Ja |
-| host | Gibt den Azure File Storage-Endpunkt an als: <br/>– Unter Verwendung der Benutzeroberfläche: Geben Sie `\\<storage name>.file.core.windows.net\<file service name>` an.<br/>– Unter Verwendung von JSON: `"host": "\\\\<storage name>.file.core.windows.net\\<file service name>"`. | Ja |
-| userid | Geben Sie den Benutzer für den Zugriff auf Azure File Storage an als: <br/>– Unter Verwendung der Benutzeroberfläche: Geben Sie `AZURE\<storage name>` an.<br/>– Unter Verwendung von JSON: `"userid": "AZURE\\<storage name>"`. | Ja |
+| host | Gibt den Azure Files-Endpunkt an als: <br/>– Unter Verwendung der Benutzeroberfläche: Geben Sie `\\<storage name>.file.core.windows.net\<file service name>` an.<br/>– Unter Verwendung von JSON: `"host": "\\\\<storage name>.file.core.windows.net\\<file service name>"`. | Ja |
+| userid | Geben Sie den Benutzer für den Zugriff auf Azure Files an als: <br/>– Unter Verwendung der Benutzeroberfläche: Geben Sie `AZURE\<storage name>` an.<br/>– Unter Verwendung von JSON: `"userid": "AZURE\\<storage name>"`. | Ja |
 | password | Geben Sie den Speicherzugriffsschlüssel an. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure-Integrationslaufzeit oder selbstgehostete Integrationslaufzeit verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Quelle: Nein, Senke: Ja |
 
@@ -217,7 +241,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 [!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
-Folgende Eigenschaften werden für Azure File Storage unter `location`-Einstellungen in formatbasierten Datasets unterstützt:
+Folgende Eigenschaften werden für Azure Files unter den `location`-Einstellungen in formatbasierten Datasets unterstützt:
 
 | Eigenschaft   | BESCHREIBUNG                                                  | Erforderlich |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -253,20 +277,20 @@ Folgende Eigenschaften werden für Azure File Storage unter `location`-Einstellu
 
 ## <a name="copy-activity-properties"></a>Eigenschaften der Kopieraktivität
 
-Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Pipelines](concepts-pipelines-activities.md). Dieser Abschnitt enthält eine Liste mit Eigenschaften, die von der Azure File Storage-Quelle und -Senke unterstützt werden.
+Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Pipelines](concepts-pipelines-activities.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die von der Azure Files-Quelle und -senke unterstützt werden.
 
-### <a name="azure-file-storage-as-source"></a>Azure File Storage als Quelle
+### <a name="azure-files-as-source"></a>Azure Files als Quelle
 
 [!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
-Folgende Eigenschaften werden für Azure File Storage unter `storeSettings`-Einstellungen in formatbasierten Kopierquellen unterstützt:
+Folgende Eigenschaften werden für Azure-Files unter den `storeSettings`-Einstellungen in der formatbasierten Kopierquelle unterstützt:
 
 | Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | Die „type“-Eigenschaft unter `storeSettings` muss auf **AzureFileStorageReadSettings** festgelegt werden. | Ja                                           |
 | ***Suchen Sie die zu kopierenden Dateien:*** |  |  |
 | OPTION 1: statischer Pfad<br> | Kopieren Sie aus dem im Dataset angegebenen Ordner/Dateipfad. Wenn Sie alle Dateien aus einem Ordner kopieren möchten, geben Sie zusätzlich für `wildcardFileName` den Wert `*` an. |  |
-| OPTION 2: Dateipräfix<br>– prefix | Präfix für den Dateinamen in der angegebenen Dateifreigabe, die in einem Dataset zum Filtern von Quelldateien konfiguriert ist. Es werden Dateien ausgewählt, deren Namen mit `fileshare_in_linked_service/this_prefix` beginnen. Für Azure File Storage wird der dienstseitige Filter verwendet, dessen Leistung besser ist als die eines Platzhalterfilters. Dieses Feature wird bei Verwendung eines [verknüpften Legacydienstmodells](#legacy-model) nicht unterstützt. | Nein                                                          |
+| OPTION 2: Dateipräfix<br>– prefix | Präfix für den Dateinamen in der angegebenen Dateifreigabe, die in einem Dataset zum Filtern von Quelldateien konfiguriert ist. Es werden Dateien ausgewählt, deren Namen mit `fileshare_in_linked_service/this_prefix` beginnen. Für Azure Files wird der dienstseitige Filter verwendet, dessen Leistung besser ist als die eines Platzhalterfilters. Dieses Feature wird bei Verwendung eines [verknüpften Legacydienstmodells](#legacy-model) nicht unterstützt. | Nein                                                          |
 | OPTION 3: Platzhalter<br>– wildcardFolderPath | Der Ordnerpfad mit Platzhalterzeichen, um Quellordner zu filtern. <br>Zulässige Platzhalter sind: `*` (entspricht null oder mehr Zeichen) und `?` (entspricht null oder einem einzelnen Zeichen). Verwenden Sie `^` als Escapezeichen, wenn Ihr tatsächlicher Dateiname einen Platzhalter oder dieses Escapezeichen enthält. <br>Weitere Beispiele finden Sie unter [Beispiele für Ordner- und Dateifilter](#folder-and-file-filter-examples). | Nein                                            |
 | OPTION 3: Platzhalter<br>– wildcardFileName | Der Dateiname mit Platzhalterzeichen unter dem angegebenen „folderPath/wildcardFolderPath“ für das Filtern von Quelldateien. <br>Zulässige Platzhalter sind: `*` (entspricht null oder mehr Zeichen) und `?` (entspricht null oder einem einzelnen Zeichen). Verwenden Sie `^` als Escapezeichen, wenn Ihr tatsächlicher Dateiname einen Platzhalter oder dieses Escapezeichen enthält.  Weitere Beispiele finden Sie unter [Beispiele für Ordner- und Dateifilter](#folder-and-file-filter-examples). | Ja |
 | OPTION 4: eine Liste von Dateien<br>– fileListPath | Gibt an, dass eine bestimmte Dateigruppe kopiert werden soll. Verweisen Sie auf eine Textdatei, die eine Liste der zu kopierenden Dateien enthält, und zwar eine Datei pro Zeile. Dies ist der relative Pfad zu dem im Dataset konfigurierten Pfad.<br/>Wenn Sie diese Option verwenden, dürfen Sie keinen Dateinamen im Dataset angeben. Weitere Beispiele finden Sie unter [Beispiele für Dateilisten](#file-list-examples). |Nein |
@@ -320,11 +344,11 @@ Folgende Eigenschaften werden für Azure File Storage unter `storeSettings`-Eins
 ]
 ```
 
-### <a name="azure-file-storage-as-sink"></a>Azure File Storage als Senke
+### <a name="azure-files-as-sink"></a>Azure Files als Senke
 
 [!INCLUDE [data-factory-v2-file-sink-formats](includes/data-factory-v2-file-sink-formats.md)]
 
-Folgende Eigenschaften werden für Azure File Storage unter `storeSettings`-Einstellungen in formatbasierten Kopiersenken unterstützt:
+Folgende Eigenschaften werden für Azure-Files unter den `storeSettings`-Einstellungen in der formatbasierten Kopiersenke unterstützt:
 
 | Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich |
 | ------------------------ | ------------------------------------------------------------ | -------- |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
-ms.openlocfilehash: 3205d4c4c6d8d7d821cb65400a4c1f19d6484005
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: c5f1509a5d037e5866ed86266693e955bdca2d6f
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108226532"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123186423"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Einschränkungen und bekannte Probleme beim Import von APIs
 
@@ -34,6 +34,7 @@ Wenn Sie beim Importieren Ihres OpenAPI-Dokuments Fehlermeldungen erhalten, stel
 ### <a name="general"></a><a name="open-api-general"> </a>Allgemein
 
 -   Erforderliche Parameter für Pfad und Abfrage müssen eindeutige Namen besitzen. (In OpenAPI muss ein Parametername nur an einem Ort (beispielsweise im Pfad, in der Abfrage oder im Header) eindeutig sein. In API Management können Vorgänge jedoch sowohl nach Pfad- als auch nach Abfrageparametern unterschieden werden (dies wird von OpenAPI nicht unterstützt). Daher müssen Parameternamen innerhalb der gesamten URL-Vorlage eindeutig sein.)
+- Beim Inlineimport in API Management kann eine OpenAPI-Spezifikation bis zu 4 MB groß sein. Die Größenbeschränkung gilt nicht, wenn ein OpenAPI-Dokument über eine URL zu einem Speicherort bereitgestellt wird, auf den von Ihrem API Management zugegriffen werden kann.
 -   Mit `\$ref`-Zeigern kann nicht auf externe Dateien verwiesen werden.
 -   `x-ms-paths` und `x-servers` sind die einzigen unterstützten Erweiterungen.
 -   Benutzerdefinierte Erweiterungen werden beim Import ignoriert und nicht für den Export gespeichert oder aufbewahrt.

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: sharrai
 ms.date: 05/27/2021
-ms.openlocfilehash: 92d1c5babc2daacdd0b0687a5ff779fcd4272e71
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: 7dc82a163a9365532b21af447b823659bf40c71f
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110577068"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225323"
 ---
 # <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>Überprüfen von Kostenvorkalkulationen im VMware-Bereitstellungsplaner 
 
@@ -65,7 +65,10 @@ Die Gesamtkosten der Notfallwiederherstellung werden basierend auf zwei untersch
 **Replication cost** (Replikationskosten): Die Kosten, die während der Replikation anfallen. Hierin sind die Kosten für Speicher, Netzwerk und Azure Site Recovery-Lizenz enthalten. 
 
 **DR-Drill cost** (Kosten für DR-Drills): Die Kosten, die bei DR-Drills anfallen. Bei DR-Drills startet Azure Site Recovery virtuelle Computer. Die Kosten für DR-Drills decken die Compute- und Speicherkosten für die ausgeführten VMs ab.
-DR-Drill-Gesamtdauer eines Jahres = Anzahl von DR-Drills × einzelne DR-Drill-Dauer (Tage) Durchschnittliche DR-Drillkosten (pro Monat) = Gesamtkosten der DR-Drills / 12
+
+1.  DR-Drill-Gesamtdauer eines Jahres = Anzahl von DR-Drills x einzelne DR-Drill-Dauer (Tage)
+
+2.  Durchschnittliche DR-Drill-Kosten (pro Monat) = DR-Drill-Kosten/12
 
 ### <a name="storage-cost-table"></a>Storage cost table (Tabelle mit Speicherkosten):
 In dieser Tabelle sind die Kosten für Storage Premium und Standardspeicher für Replikation und DR-Drills mit und ohne Preisrabatt angegeben.

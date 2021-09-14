@@ -5,15 +5,15 @@ metadata:
   description: Azure Database for MySQL Flexible Server ist ein relationaler Datenbankdienst in Microsoft Cloud für Entwickler, der von der MySQL Community-Edition unterstützt wird.
   author: mksuni
   ms.author: sumuth
-  ms.date: 09/21/2020
+  ms.date: 09/10/2021
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 0d209c2b875b8ff1b22a4fe65098fc3fd076bde3
-  ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+  ms.openlocfilehash: 992574a32c657584ef28ad031059d0528a2383bc
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/24/2021
-  ms.locfileid: "122777534"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124784687"
 landingContent:
 - title: Informationen zu Flexible Server (Vorschau)
   linkLists:
@@ -111,6 +111,8 @@ landingContent:
     links:
     - text: Durchführen einer Onlinemigration
       url: ../howto-migrate-online.md
+    - text: Migrieren von RDS für MySQL mithilfe der Datenreplikation
+      url: ../how-to-migrate-rds-mysql-data-in-replication.md
 - title: Verweis
   linkLists:
   - linkListType: reference

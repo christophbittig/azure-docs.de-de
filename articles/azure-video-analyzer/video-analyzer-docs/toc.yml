@@ -63,6 +63,8 @@
           href: analyze-live-video-custom-vision.md
         - name: Mit räumlicher Analyse
           href: computer-vision-for-spatial-analysis.md
+    - name: Visualisieren von KI-Rückschlussereignissen
+      href: visualize-ai-events-power-bi.md
 - name: GitHub-Beispiele
   items:
     - name: C#-Beispielrepositorys

@@ -4,12 +4,12 @@ description: Verwenden Sie die rollenbasierte Zugriffssteuerung in Azure zum Ver
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 03/09/2021
-ms.openlocfilehash: 0b321a5f33bd75ce8615d6d2a90442a83d9fff67
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fdde385ca49a61a8fb2c2bba81311035dca3e324
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102613441"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123215183"
 ---
 # <a name="use-azure-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Verwenden der rollenbasierten Zugriffssteuerung in Azure zum Verwalten von Azure Backup-Wiederherstellungspunkten
 
@@ -86,10 +86,10 @@ In der folgenden Tabelle sind die Aktionen der Sicherungsverwaltung und die ents
 | Verwaltungsvorgang | Erforderliche Rolle | Ressourcen |
 | --- | --- | --- |
 | Aktivieren der Sicherung von Azure-Dateifreigaben | Mitwirkender für Sicherungen |Recovery Services-Tresor |
-| |Speicherkonto | Speicherkontoressource „Mitwirkender“ |
+| | Mitwirkender für Speicherkontosicherung | Speicherkontoressource |
 | Bedarfsgesteuerte Sicherung eines virtuellen Computers | Sicherungsoperator | Recovery Services-Tresor |
 | Wiederherstellen einer Azure-Dateifreigabe | Sicherungsoperator | Recovery Services-Tresor |
-| | Mitwirkender von Speicherkonto | Speicherkontoressourcen, in dem Wiederherstellungs-Quelldateifreigaben und -Zieldateifreigaben vorhanden sind |
+| | Mitwirkender für Speicherkontosicherung | Speicherkontoressourcen, in dem Wiederherstellungs-Quelldateifreigaben und -Zieldateifreigaben vorhanden sind |
 | Wiederherstellen einzelner Dateien | Sicherungsoperator | Recovery Services-Tresor |
 | |Mitwirkender von Speicherkonto|Speicherkontoressourcen, in dem Wiederherstellungs-Quelldateifreigaben und -Zieldateifreigaben vorhanden sind |
 | Schutz beenden |Mitwirkender für Sicherungen | Recovery Services-Tresor |

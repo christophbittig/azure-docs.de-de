@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/11/2021
+ms.date: 08/30/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9e1ef9880086818a7111b79f1db06abd4b647a60
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: dce411e6359a760f50dd4bbbbeba369e2a67f386
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419504"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123254205"
 ---
 # <a name="object-replication-for-block-blobs"></a>Objektreplikation für Blockblobs
 
@@ -43,7 +43,7 @@ Die Objektreplikation erfordert, dass außerdem die folgenden Azure Storage-Funk
 
 Durch das Aktivieren des Änderungsfeeds und der Blobversionsverwaltung können zusätzliche Kosten entstehen. Weitere Informationen finden Sie auf der Seite [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
-Die Objektreplikation wird nur für Speicherkonten vom Typ „Universell V2“ unterstützt. Sowohl das Quell- als auch das Zielkonto müssen vom Typ „Universell V2“ sein.
+Die Objektreplikation wird nur für Speicherkonten vom Typ „Universell V2“ unterstützt. Sowohl das Quell- als auch das Zielkonto müssen vom Typ „Universell V2“ sein. Die Objektreplikation unterstützt nur Blockblobs. Anfügeblobs und Seitenblobs werden nicht unterstützt.
 
 ## <a name="how-object-replication-works"></a>Funktionsweise der Objektreplikation
 
@@ -68,7 +68,11 @@ Die Objektreplikation wird unterstützt, wenn sich das Quell- und das Zielkonto 
 
 ### <a name="immutable-blobs"></a>Unveränderliche Blobs
 
-Die Objektreplikation unterstützt keine unveränderlichen Blobs. Wenn für einen Quell- oder Zielcontainer eine zeitbasierte Aufbewahrungsrichtlinie oder eine gesetzliche Aufbewahrungspflicht gilt, schlägt die Objektreplikation fehl. Weitere Informationen zu unveränderlichen Blobs finden Sie unter [Speichern unternehmenskritischer Blobdaten mit unveränderlichem Speicher](immutable-storage-overview.md).
+Unveränderlichkeitsrichtlinien für Azure Blob Storage umfassen zeitbasierte Aufbewahrungsrichtlinien und Aufbewahrungrichtlinien für juristische Zwecke. Wenn eine Unveränderlichkeitsrichtlinie für das Zielkonto wirksam ist, kann die Objektreplikation betroffen sein. Weitere Informationen zu Unveränderlichkeitsrichtlinien finden Sie unter [Speichern unternehmenskritischer Blobdaten mit unveränderlichem Speicher](immutable-storage-overview.md).
+
+Wenn eine Unveränderlichkeitsrichtlinie auf Containerebene für einen Container im Zielkonto in Kraft ist und ein Objekt im Quellcontainer aktualisiert oder gelöscht wird, kann der Vorgang für den Quellcontainer erfolgreich sein, aber die Replikation dieses Vorgangs in den Zielcontainer ist nicht erfolgreich. Weitere Informationen dazu, welche Vorgänge mit einer Unveränderlichkeitsrichtlinie, die einem Container zugeordnet ist, nicht zulässig sind, finden Sie unter [Szenarien mit Bereich auf Containerebene](immutable-storage-overview.md#scenarios-with-container-level-scope).
+
+Wenn eine Unveränderlichkeitsrichtlinie auf Versionsebene für eine Blobversion im Zielkonto in Kraft ist und ein Lösch- oder Aktualisierungsvorgang für die Blobversion im Quellcontainer ausgeführt wird, kann der Vorgang für das Quellobjekt erfolgreich sein, aber die Replikation dieses Vorgangs in das Zielobjekt ist nicht erfolgreich. Weitere Informationen dazu, welche Vorgänge mit einer Unveränderlichkeitsrichtlinie, die einem Container zugeordnet ist, nicht zulässig sind, finden Sie unter [Szenarien mit Bereich auf Versionsebene](immutable-storage-overview.md#scenarios-with-version-level-scope).
 
 ## <a name="object-replication-policies-and-rules"></a>Objektreplikationsrichtlinien und -regeln
 

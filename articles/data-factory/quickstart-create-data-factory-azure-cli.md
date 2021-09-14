@@ -6,14 +6,14 @@ ms.author: jingwang
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: quickstart
-ms.date: 03/24/2021
+ms.date: 08/27/2021
 ms.custom: template-quickstart, devx-track-azurecli
-ms.openlocfilehash: f12b9f785063b8fa6fec4bc8cd4011d65110b7fe
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 30f521567f06eab04aceee462ffc44b817b63333
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749883"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123187701"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-azure-cli"></a>Schnellstart: Erstellen einer Azure Data Factory-Instanz mithilfe der Azure CLI
 
@@ -72,20 +72,20 @@ In dieser Schnellstartanleitung wird ein Azure Storage-Konto verwendet, das ein
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 
-Führen Sie zum Erstellen einer Azure Data Factory-Instanz den Befehl [az datafactory factory create](/cli/azure/datafactory#az_datafactory_create) aus:
+Führen Sie zum Erstellen einer Azure Data Factory-Instanz den Befehl [az datafactory create](/cli/azure/datafactory#az_datafactory_create) aus:
 
 ```azurecli
-az datafactory factory create --resource-group ADFQuickStartRG \
+az datafactory create --resource-group ADFQuickStartRG \
     --factory-name ADFTutorialFactory
 ```
 
 > [!IMPORTANT]
 > Ersetzen Sie `ADFTutorialFactory` durch einen global eindeutigen Data Factory-Namen, etwa „ADFTutorialFactorySP1127“.
 
-Die von Ihnen erstellte Data Factory können Sie mithilfe des Befehls [az datafactory factory show](/cli/azure/datafactory#az_datafactory_factory_show) anzeigen:
+Die von Ihnen erstellte Data Factory-Instanz können Sie mithilfe des Befehls [az datafactory show](/cli/azure/datafactory#az_datafactory_factory_show) anzeigen:
 
 ```azurecli
-az datafactory factory show --resource-group ADFQuickStartRG \
+az datafactory show --resource-group ADFQuickStartRG \
     --factory-name ADFTutorialFactory
 ```
 
@@ -102,17 +102,14 @@ Erstellen Sie als Nächstes einen verknüpften Dienst und zwei Datasets.
 
 1. Erstellen Sie in Ihrem Arbeitsverzeichnis eine JSON-Datei mit folgendem Inhalt, die ihre eigene Verbindungszeichenfolge aus dem vorherigen Schritt enthält. Geben Sie der Datei den Namen `AzureStorageLinkedService.json`:
 
-   ```json
-   {
-       "type":"AzureStorage",
-           "typeProperties":{
-           "connectionString":{
-           "type": "SecureString",
-           "value":"DefaultEndpointsProtocol=https;AccountName=adfquickstartstorage;AccountKey=K9F4Xk/EhYrMBIR98rtgJ0HRSIDU4eWQILLh2iXo05Xnr145+syIKNczQfORkQ3QIOZAd/eSDsvED19dAwW/tw==;EndpointSuffix=core.windows.net"
-           }
-       }
-   }
-   ```
+    ```json
+    {
+        "type": "AzureBlobStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountName>;AccountKey=<accountKey>;EndpointSuffix=core.windows.net"
+        }
+    }
+    ```
 
 1. Erstellen Sie mithilfe des Befehls [az datafactory linked-service create](/cli/azure/datafactory/linked-service#az_datafactory_linked_service_create) einen verknüpften Dienst namens `AzureStorageLinkedService`:
 
@@ -124,26 +121,24 @@ Erstellen Sie als Nächstes einen verknüpften Dienst und zwei Datasets.
 
 1. Erstellen Sie in Ihrem Arbeitsverzeichnis eine JSON-Datei namens `InputDataset.json` mit dem folgenden Inhalt:
 
-   ```json
-   {
-       "type": 
-           "AzureBlob",
-           "linkedServiceName": {
-               "type":"LinkedServiceReference",
-               "referenceName":"AzureStorageLinkedService"
-               },
-           "annotations": [],
-           "type": "Binary",
-           "typeProperties": {
-               "location": {
-                   "type": "AzureBlobStorageLocation",
-                   "fileName": "emp.txt",
-                   "folderPath": "input",
-                   "container": "adftutorial"
-           }
-       }
-   }
-   ```
+    ```json
+    {
+        "linkedServiceName": {
+            "referenceName": "AzureStorageLinkedService",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Binary",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobStorageLocation",
+                "fileName": "emp.txt",
+                "folderPath": "input",
+                "container": "adftutorial"
+            }
+        }
+    }
+    ```
 
 1. Erstellen Sie mit dem Befehl [az datafactory dataset create](/cli/azure/datafactory/dataset#az_datafactory_dataset_create) ein Eingabedataset namens `InputDataset`:
 
@@ -155,26 +150,23 @@ Erstellen Sie als Nächstes einen verknüpften Dienst und zwei Datasets.
 
 1. Erstellen Sie in Ihrem Arbeitsverzeichnis eine JSON-Datei namens `OutputDataset.json` mit dem folgenden Inhalt:
 
-   ```json
-   {
-       "type": 
-           "AzureBlob",
-           "linkedServiceName": {
-               "type":"LinkedServiceReference",
-               "referenceName":"AzureStorageLinkedService"
-               },
-           "annotations": [],
-           "type": "Binary",
-           "typeProperties": {
-               "location": {
-                   "type": "AzureBlobStorageLocation",
-                   "fileName": "emp.txt",
-                   "folderPath": "output",
-                   "container": "adftutorial"
-           }
-       }
-   }
-   ```
+    ```json
+    {
+        "linkedServiceName": {
+            "referenceName": "AzureStorageLinkedService",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Binary",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobStorageLocation",
+                "folderPath": "output",
+                "container": "adftutorial"
+            }
+        }
+    }
+    ```
 
 1. Erstellen Sie mit dem Befehl [az datafactory dataset create](/cli/azure/datafactory/dataset#az_datafactory_dataset_create) ein Ausgabedataset namens `OutputDataset`:
 
@@ -190,57 +182,57 @@ Erstellen Sie abschließend die Pipeline, und führen Sie sie aus.
 
 1. Erstellen Sie in Ihrem Arbeitsverzeichnis eine JSON-Datei namens `Adfv2QuickStartPipeline.json` mit dem folgenden Inhalt:
 
-   ```json
-   {
-       "name": "Adfv2QuickStartPipeline",
-       "properties": {
-           "activities": [
-               {
-                   "name": "CopyFromBlobToBlob",
-                   "type": "Copy",
-                   "dependsOn": [],
-                   "policy": {
-                       "timeout": "7.00:00:00",
-                       "retry": 0,
-                       "retryIntervalInSeconds": 30,
-                       "secureOutput": false,
-                       "secureInput": false
-                   },
-                   "userProperties": [],
-                   "typeProperties": {
-                          "source": {
-                           "type": "BinarySource",
-                           "storeSettings": {
-                               "type": "AzureBlobStorageReadSettings",
-                               "recursive": true
-                           }
-                       },
-                       "sink": {
-                           "type": "BinarySink",
-                           "storeSettings": {
-                               "type": "AzureBlobStorageWriteSettings"
-                           }
-                       },
-                       "enableStaging": false
-                   },
-                   "inputs": [
-                       {
-                           "referenceName": "InputDataset",
-                           "type": "DatasetReference"
-                       }
-                   ],
-                   "outputs": [
-                       {
-                           "referenceName": "OutputDataset",
-                           "type": "DatasetReference"
-                       }
-                   ]
-               }
-           ],
-           "annotations": []
-       }
-   }
-   ```
+    ```json
+    {
+        "name": "Adfv2QuickStartPipeline",
+        "properties": {
+            "activities": [
+                {
+                    "name": "CopyFromBlobToBlob",
+                    "type": "Copy",
+                    "dependsOn": [],
+                    "policy": {
+                        "timeout": "7.00:00:00",
+                        "retry": 0,
+                        "retryIntervalInSeconds": 30,
+                        "secureOutput": false,
+                        "secureInput": false
+                    },
+                    "userProperties": [],
+                    "typeProperties": {
+                        "source": {
+                            "type": "BinarySource",
+                            "storeSettings": {
+                                "type": "AzureBlobStorageReadSettings",
+                                "recursive": true
+                            }
+                        },
+                        "sink": {
+                            "type": "BinarySink",
+                            "storeSettings": {
+                                "type": "AzureBlobStorageWriteSettings"
+                            }
+                        },
+                        "enableStaging": false
+                    },
+                    "inputs": [
+                        {
+                            "referenceName": "InputDataset",
+                            "type": "DatasetReference"
+                        }
+                    ],
+                    "outputs": [
+                        {
+                            "referenceName": "OutputDataset",
+                            "type": "DatasetReference"
+                        }
+                    ]
+                }
+            ],
+            "annotations": []
+        }
+    }
+    ```
 
 1. Erstellen Sie mit dem Befehl [az datafactory pipeline create](/cli/azure/datafactory/pipeline#az_datafactory_pipeline_create) eine Pipeline namens `Adfv2QuickStartPipeline`:
 

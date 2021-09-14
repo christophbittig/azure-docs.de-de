@@ -49,8 +49,6 @@ items:
             href: quickstarts/voice-video-calling/getting-started-with-calling.md
           - name: Hinzufügen von Videoanrufen zu Ihrer Client-App
             href: quickstarts/voice-video-calling/get-started-with-video-calling.md
-          - name: "Verwenden des Calling\_SDK"
-            href: quickstarts/voice-video-calling/calling-client-samples.md
           - name: Teilnehmen an einer Teams-Besprechung über Ihre Telefonieclient-App
             href: quickstarts/voice-video-calling/get-started-teams-interop.md
           - name: Verwenden der APIs für die Anrufautomatisierung
@@ -125,6 +123,8 @@ items:
             href: concepts/call-flows.md
           - name: Aufrufen von Flowtopologien
             href: concepts/detailed-call-flows.md
+          - name: Anrufdiagnose
+            href: concepts/voice-video-calling/call-diagnostics.md
           - name: Bewährte Methoden für das Web
             href: concepts/best-practices.md
           - name: Bekannte Probleme
@@ -160,6 +160,28 @@ items:
         href: concepts/metrics.md
       - name: Problembehandlung
         href: concepts/troubleshooting-info.md
+  - name: Anleitungen
+    items:
+      - name: Verwenden des Calling SDK
+        items:
+          - name: Verwalten von Anrufen
+            href: how-tos/calling-sdk/manage-calls.md
+          - name: Verwalten von Videos
+            href: how-tos/calling-sdk/manage-video.md
+          - name: Aufzeichnen von Anrufen
+            href: how-tos/calling-sdk/record-calls.md
+          - name: Aktivieren von Pushbenachrichtigungen
+            href: how-tos/calling-sdk/push-notifications.md
+          - name: Transkribieren von Anrufen
+            href: how-tos/calling-sdk/call-transcription.md
+          - name: Anzeigen von aktiven Sprechern
+            href: how-tos/calling-sdk/dominant-speaker.md
+          - name: Durchstellen von Anrufen
+            href: how-tos/calling-sdk/transfer-calls.md
+          - name: Teilnehmen an einer Teams-Besprechung
+            href: how-tos/calling-sdk/teams-interoperability.md
+          - name: Abonnieren von SDK-Ereignissen
+            href: how-tos/calling-sdk/events.md
   - name: Proben
     items:
       - name: Übersicht

@@ -5,15 +5,15 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 04/15/2021
+ms.date: 08/25/2021
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3ac1afe3658db60297735e897d69caa463358a4c
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: ece3693fa183ba31de569e7db632c3d294c10437
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108318385"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123187179"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>Verwenden von Bereitstellungsskripts in ARM-Vorlagen
 
@@ -38,43 +38,45 @@ Die Bereitstellungsskriptressource ist nur in den Regionen verfügbar, in denen 
 > [!IMPORTANT]
 > Für die Skriptausführung und Problembehandlung werden ein Speicherkonto und eine Containerinstanz benötigt. Sie haben die Möglichkeit, ein vorhandenes Speicherkonto anzugeben. Andernfalls wird das Speicherkonto zusammen mit der Containerinstanz vom Skriptdienst automatisch erstellt. Die beiden automatisch erstellten Ressourcen werden normalerweise vom Skriptdienst gelöscht, wenn die Ausführung des Bereitstellungsskripts beendet ist. Die Ressourcen werden Ihnen in Rechnung gestellt, bis sie gelöscht werden. Weitere Informationen finden Sie unter [Bereinigen von Bereitstellungsskriptressourcen](#clean-up-deployment-script-resources).
 
-> [!IMPORTANT]
-> Die API-Version 2020-10-01 der deploymentScripts-Ressource unterstützt [OnBehalfofTokens(OBO)](../../active-directory/develop/v2-oauth2-on-behalf-of-flow.md). Mithilfe von OBO verwendet der Bereitstellungsskriptdienst das Token des Bereitstellungsprinzipals, um die zugrunde liegenden Ressourcen für die Ausführung von Bereitstellungsskripts zu erstellen, darunter die Azure Container-Instanz, das Azure Storage-Konto und Rollenzuweisungen für die verwaltete Identität. In der älteren API-Version wird die verwaltete Identität verwendet, um diese Ressourcen zu erstellen.
-> Wiederholungslogik für die Azure-Anmeldung ist jetzt in das Wrapperskript integriert. Dies gilt, wenn Sie Berechtigungen in derselben Vorlage erteilen, in der Sie Bereitstellungsskripts ausführen. Der Bereitstellungsskriptdienst wiederholt die Anmeldung 10 Minuten lang in einem Intervall von 10 Sekunden, bis die verwaltete Identitätsrollenzuweisung repliziert wurde.
+> [!NOTE]
+> Wiederholungslogik für die Azure-Anmeldung ist jetzt in das Wrapperskript integriert. Wenn Sie Berechtigungen in derselben Vorlage wie Ihre Bereitstellungsskripts erteilen, wiederholt der Bereitstellungsskriptdienst die Anmeldung 10 Minuten lang mit einem Intervall von 10 Sekunden, bis die Rollenzuweisung für verwaltete Identitäten repliziert wird.
 
 ## <a name="configure-the-minimum-permissions"></a>Konfigurieren der mindestens erforderlichen Berechtigungen
 
-Bei einem Bereitstellungsskript ab API-Version 2020-10-01 wird zum Erstellen der zugrunde liegenden Ressourcen, die für die Ausführung der Bereitstellungsskriptressource erforderlich sind (ein Speicherkonto und eine Azure-Containerinstanz) der Bereitstellungsprinzipal verwendet. Wenn sich das Skript bei Azure authentifizieren und Azure-spezifische Aktionen ausführen muss, empfiehlt es sich, für das Skript eine vom Benutzer zugewiesene verwaltete Identität bereitzustellen. Die verwaltete Identität muss über den erforderlichen Zugriff verfügen, um den Vorgang im Skript abzuschließen.
+Für die Bereitstellungsskript-API-Version 2020-10-01 oder höher sind zwei Prinzipale an der Ausführung des Bereitstellungsskripts beteiligt:
 
-Um Berechtigungen mit den geringsten Rechten zu konfigurieren, ist Folgendes erforderlich:
+- **Bereitstellungsprinzipal** (dar zur Bereitstellung der Vorlage genutzte Prinzipal): Dieser Prinzipal wird verwendet, um zugrunde liegende Ressourcen, die für die Ausführung der Bereitstellungsskriptressource erforderlich sind – ein Speicherkonto und eine Azure-Containerinstanz zu erstellen. Weisen Sie dem Bereitstellungsprinzipal eine benutzerdefinierte Rolle mit den folgenden Eigenschaften zu, um die Berechtigungen mit den geringsten Rechten zu konfigurieren:
 
-- Weisen Sie dem Bereitstellungsprinzipal eine benutzerdefinierte Rolle mit den folgenden Eigenschaften zu:
+    ```json
+    {
+      "roleName": "deployment-script-minimum-privilege-for-deployment-principal",
+      "description": "Configure least privilege for the deployment principal in deployment script",
+      "type": "customRole",
+      "IsCustom": true,
+      "permissions": [
+        {
+          "actions": [
+            "Microsoft.Storage/storageAccounts/*",
+            "Microsoft.ContainerInstance/containerGroups/*",
+            "Microsoft.Resources/deployments/*",
+            "Microsoft.Resources/deploymentScripts/*"
+          ],
+        }
+      ],
+      "assignableScopes": [
+        "[subscription().id]"
+      ]
+    }
+    ```
 
-  ```json
-  {
-    "roleName": "deployment-script-minimum-privilege-for-deployment-principal",
-    "description": "Configure least privilege for the deployment principal in deployment script",
-    "type": "customRole",
-    "IsCustom": true,
-    "permissions": [
-      {
-        "actions": [
-          "Microsoft.Storage/storageAccounts/*",
-          "Microsoft.ContainerInstance/containerGroups/*",
-          "Microsoft.Resources/deployments/*",
-          "Microsoft.Resources/deploymentScripts/*"
-        ],
-      }
-    ],
-    "assignableScopes": [
-      "[subscription().id]"
-    ]
-  }
-  ```
+    Wenn die Azure Storage- und die Azure Container Instance-Ressourcenanbieter nicht registriert sind, müssen Sie auch `Microsoft.Storage/register/action` und `Microsoft.ContainerInstance/register/action` hinzufügen.
 
-  Wenn die Azure Storage- und die Azure Container Instance-Ressourcenanbieter nicht registriert sind, müssen Sie auch `Microsoft.Storage/register/action` und `Microsoft.ContainerInstance/register/action` hinzufügen.
+- **Bereitstellungsskriptprinzipal:** Dieser Prinzipal ist nur erforderlich, wenn sich das Bereitstellungsskript bei Azure authentifizieren und Azure CLI PowerShell aufrufen muss. Es gibt zwei Möglichkeiten, den Bereitstellungsskriptprinzipal anzugeben:
 
-- Wenn eine verwaltete Identität verwendet wird, muss für den Bereitstellungsprinzipal die Rolle **Operator für verwaltete Identität** (eine integrierte Rolle) der Ressource der verwalteten Identität zugewiesen sein.
+  - Spezifizieren Sie eine benutzerseitig zugewiesene verwaltete Identität in der `identity` Eigenschaft (siehe [ Stichprobenvorlagen](#sample-templates)). Wenn angegeben, ruft der Skriptdienst `Connect-AzAccount -Identity` auf, bevor das Bereitstellungsskript aufruft. Die verwaltete Identität muss über den erforderlichen Zugriff verfügen, um den Vorgang im Skript abzuschließen. Zurzeit wird nur eine benutzerseitig zugewiesene verwaltete Identität für die `identity` Eigenschaft unterstützt. Verwenden Sie die zweite Methode in dieser Liste, um sich mit einer anderen Identität anzumelden.
+  - Übergeben Sie die Anmeldeinformationen für den Dienstprinzipal als sichere Umgebungsvariablen, und rufen Sie dann [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) oder [az login](/cli/azure/reference-index?view=azure-cli-latest#az_login&preserve-view=true) im Bereitstellungsskript auf.
+
+  Wenn eine verwaltete Identität verwendet wird, muss für den Bereitstellungsprinzipal die Rolle **Operator für verwaltete Identität** (eine integrierte Rolle) der Ressource der verwalteten Identität zugewiesen sein.
 
 ## <a name="sample-templates"></a>Beispielvorlagen
 

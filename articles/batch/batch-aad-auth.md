@@ -4,12 +4,12 @@ description: Batch unterstützt Azure AD für die Authentifizierung vom Batch-Di
 ms.topic: how-to
 ms.date: 05/13/2021
 ms.custom: has-adal-ref, subject-rbac-steps
-ms.openlocfilehash: 52e34bb94ab151afcfcdc14d2de55e608d82a139
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: c7f365c7db4a8bc273e67d66a56a826021306f3a
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110066752"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123315086"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Authentifizieren von Lösungen des Azure Batch-Diensts mit Active Directory
 
@@ -81,10 +81,8 @@ Sobald Sie die Anwendung registriert haben, befolgen Sie diese Schritte im Azure
 1. Suchen Sie in der Liste mit den App-Registrierungen nach dem Namen Ihrer Anwendung.
 1. Wählen Sie die Anwendung und dann die Option **API-Berechtigungen** aus.
 1. Wählen Sie im Abschnitt **API-Berechtigungen** die Option **Berechtigung hinzufügen** aus.
-1. Suchen Sie unter **Hiermit wählen Sie eine API aus.** nach der Batch API. Suchen Sie diese Zeichenfolgen, bis Sie die API gefunden haben:
-    1. **Microsoft Azure Batch**
-    1. **ddbf3205-c6bd-46ae-8127-60eb93363864** ist die ID für die Batch-API.
-1. Wenn Sie die Batch-API gefunden haben, wählen Sie diese aus, und klicken Sie dann auf **Auswählen**.
+1. Suchen Sie unter **API auswählen** nach „Microsoft Azure Batch“, um die Batch API zu finden. **ddbf3205-c6bd-46ae-8127-60eb93363864** ist die Anwendungs-ID für die Batch-API.
+1. Wählen Sie die Batch API und dann **Auswählen** aus.
 1. Aktivieren Sie unter **Berechtigungen auswählen** das Kontrollkästchen neben **Access Azure Batch Service** (Auf Azure Batch-Dienst zugreifen), und wählen Sie dann **Berechtigungen hinzufügen** aus.
 
 Im Abschnitt **API-Berechtigungen** wird jetzt angezeigt, dass Ihre Azure AD-Anwendung sowohl Zugriff auf Microsoft Graph als auch auf die Batch-Dienst-API hat. Berechtigungen für Microsoft Graph werden automatisch gewährt, wenn Sie Ihre App zum ersten Mal bei Azure AD registrieren.

@@ -1,22 +1,24 @@
 ---
 title: Delete-Aktivität in Azure Data Factory
-description: Hier erfahren Sie, wie Sie mit der Delete-Aktivität in Azure Data Factory Dateien in verschiedenen Dateispeichern löschen.
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Hier erfahren Sie, wie Sie mit der Delete-Aktivität in Azure Data Factory und Azure Synaps Analystics Dateien in verschiedenen Dateispeichern löschen.
 author: dearandyxu
 ms.author: yexu
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/12/2020
-ms.openlocfilehash: 569e42643642a435ba8fbd56f11d7ffcbea9249e
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 08/24/2021
+ms.openlocfilehash: f185df57226f438a8f40ef6889f1945b21b8540b
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110065168"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123252938"
 ---
-# <a name="delete-activity-in-azure-data-factory"></a>Delete-Aktivität in Azure Data Factory
+# <a name="delete-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>Aktivitäten in Azure Data Factory and Azure Synapse Analytics löschen
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
-
 
 Sie können mit der Delete-Aktivität in Azure Data Factory Dateien oder Ordner aus lokalen Speichern oder Cloudspeichern löschen. Verwenden Sie diese Aktivität zum Bereinigen oder Archivieren von Dateien, wenn diese nicht mehr benötigt werden.
 
@@ -29,7 +31,7 @@ Nachfolgend sind einige Empfehlungen für die Verwendung der Delete-Aktivität a
 
 -   Sichern Sie Ihre Dateien, bevor Sie sie mit der Delete-Aktivität löschen, falls Sie die Dateien später wiederherstellen müssen.
 
--   Stellen Sie sicher, dass Data Factory über Schreibberechtigungen verfügt, um Ordner oder Dateien aus dem Speicher zu löschen.
+-   Stellen Sie sicher, dass der Dienst über Schreibberechtigungen verfügt, um Ordner oder Dateien aus dem Speicher zu löschen.
 
 -   Stellen Sie sicher, dass Sie keine Dateien löschen, die zur gleichen Zeit geschrieben werden. 
 
@@ -40,7 +42,7 @@ Nachfolgend sind einige Empfehlungen für die Verwendung der Delete-Aktivität a
 -   [Azure Blob Storage](connector-azure-blob-storage.md)
 -   [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
 -   [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
--   [Azure File Storage](connector-azure-file-storage.md)
+-   [Azure Files](connector-azure-file-storage.md)
 -   [Dateisystem](connector-file-system.md)
 -   [FTP](connector-ftp.md)
 -   [SFTP](connector-sftp.md)
@@ -142,7 +144,7 @@ Nun verwenden Sie die Delete-Aktivität, um Ordner oder Dateien durch die Kombin
 
 ### <a name="periodically-clean-up-the-time-partitioned-folder-or-files"></a>Regelmäßiges Bereinigen der zeitpartitionierten Ordner oder Dateien
 
-Sie können eine Pipeline erstellen, um die zeitpartitionierten Ordner oder Dateien in regelmäßigen Abständen zu bereinigen.  Die Ordnerstruktur sieht zum Beispiel wie folgt aus: `/mycontainer/2018/12/14/*.csv`.  Sie können mithilfe einer ADF-Systemvariablen aus dem Zeitplantrigger bestimmen, welche Ordner oder Dateien in den einzelnen Pipelineausführungen gelöscht werden sollen. 
+Sie können eine Pipeline erstellen, um die zeitpartitionierten Ordner oder Dateien in regelmäßigen Abständen zu bereinigen.  Die Ordnerstruktur sieht zum Beispiel wie folgt aus: `/mycontainer/2018/12/14/*.csv`.  Sie können mithilfe einer Dienstsystemvariablen aus dem Zeitplantrigger bestimmen, welche Ordner oder Dateien in den einzelnen Pipelineausführungen gelöscht werden sollen. 
 
 #### <a name="sample-pipeline"></a>Beispiel-Pipeline
 
@@ -765,6 +767,6 @@ Sie erhalten die Vorlage zum Verschieben von Dateien auch [hier](solution-templa
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Verschieben von Dateien in Azure Data Factory.
+Erfahren Sie mehr über das Verschieben von Dateien in Azure Data Factory und Synapse-Pipelines.
 
--   [Tool zum Kopieren von Daten in Azure Data Factory](copy-data-tool.md)
+-   [Tool zum Kopieren von Daten](copy-data-tool.md)

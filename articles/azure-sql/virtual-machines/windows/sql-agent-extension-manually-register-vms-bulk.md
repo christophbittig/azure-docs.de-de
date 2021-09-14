@@ -15,12 +15,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c350d91e04ea284ed91c3afb6912d76ed1e39ab0
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 6b2066ef94cb87a9ab9c000615c018938cbeddb1
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079695"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123220634"
 ---
 # <a name="register-multiple-sql-vms-in-azure-with-the-sql-iaas-agent-extension"></a>Registrieren mehrerer SQL Server-VMs mit der SQL-IaaS-Agent-Erweiterung in Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,9 +30,12 @@ In diesem Artikel wird beschrieben, wie Sie mithilfe des Azure PowerShell-Cmdlet
 
 In diesem Artikel erfahren Sie, wie Sie SQL Server-VMs in einem Massenvorgang manuell registrieren. Alternativ können Sie [alle SQL Server-VMs automatisch](sql-agent-extension-automatic-registration-all-vms.md) oder [einzelne SQL Server-VMs manuell](sql-agent-extension-manually-register-single-vm.md) registrieren. 
 
+> [!NOTE]
+> Ab September 2021 ist für die Registrierung bei der SQL IaaS-Erweiterung im Vollmodus kein Neustart des SQL Server-Dienstes erforderlich. 
+
 ## <a name="overview"></a>Übersicht
 
-Mit dem Cmdlet `Register-SqlVMs` können alle virtuellen Computer in einer bestimmten Liste von Abonnements, Ressourcengruppen oder einer Liste mit bestimmten virtuellen Computern registriert werden. Mit dem Cmdlet werden die virtuellen Computer im [Verwaltungsmodus „Lightweight“](sql-server-iaas-agent-extension-automate-management.md#management-modes) registriert, und dann werden [ein Bericht und eine Protokolldatei](#output-description) generiert. 
+Mit dem Cmdlet `Register-SqlVMs` können alle virtuellen Computer in einer bestimmten Liste von Abonnements, Ressourcengruppen oder einer Liste mit bestimmten virtuellen Computern registriert werden. Mit dem Cmdlet werden die virtuellen Computer im [Verwaltungsmodus „Lightweight“](sql-server-iaas-agent-extension-automate-management.md#management-modes) registriert, und dann [ein Bericht und eine Protokolldatei](#output-description) generiert. 
 
 Der Registrierungsprozess birgt keine Risiken, führt nicht zu Ausfallzeiten und startet den SQL Server-Dienst oder den virtuellen Computer nicht neu. 
 
@@ -40,7 +43,7 @@ Der Registrierungsprozess birgt keine Risiken, führt nicht zu Ausfallzeiten und
 
 Um Ihre SQL Server-VM mit der Erweiterung registrieren zu können, benötigen Sie Folgendes: 
 
-- Ein [Azure-Abonnement](https://azure.microsoft.com/free/), das [beim Anbieter **Microsoft.SqlVirtualMachine** registriert](sql-agent-extension-manually-register-single-vm.md#register-subscription-with-resource-provider) wurde und nicht registrierte SQL Server-VMs enthält. 
+- Ein [Azure-Abonnement](https://azure.microsoft.com/free/), das [beim Ressourcenanbieter **Microsoft.SqlVirtualMachine** registriert](sql-agent-extension-manually-register-single-vm.md#register-subscription-with-rp) wurde und nicht registrierte SQL Server-VMs enthält. 
 - Die zum Registrieren der virtuellen Computer verwendeten Clientanmeldeinformationen sind in einer der folgenden Azure-Rollen vorhanden: **Mitwirkender von virtuellen Computern**, **Mitwirkender** oder **Besitzer**. 
 - Die aktuelle Version von [Azure PowerShell (mindestens Version 5.0)](/powershell/azure/new-azureps-module-az). 
 

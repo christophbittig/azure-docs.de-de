@@ -1,18 +1,20 @@
 ---
 title: Kopieren von Daten aus und in Microsoft Access
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Erfahren Sie, wie Daten mithilfe einer Kopieraktivität in einer Azure Data Factory-Pipeline aus und in Microsoft Access kopiert werden.
-ms.author: jianleishen
-author: jianleishen
+ms.author: chez
+author: chez-charlie
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 03/17/2021
-ms.openlocfilehash: 75159291f383b4d8ed5752cbae0907a6c21c26ec
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.custom: synapse
+ms.date: 08/30/2021
+ms.openlocfilehash: a17d6cf31b94aa2c737335a7c2cc1a746df1d323
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109488481"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123303197"
 ---
 # <a name="copy-data-from-and-to-microsoft-access-using-azure-data-factory"></a>Kopieren von Daten aus und in Microsoft Access mithilfe von Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -36,11 +38,36 @@ Um diesen Microsoft Access-Connector verwenden zu können, müssen Sie folgende 
 - Installieren des Microsoft Access-Treibers für den Datenspeicher auf dem Computer mit der Integrationslaufzeit.
 
 >[!NOTE]
->Die Microsoft Access 2016-Version des ODBC-Treibers ist mit diesem Connector nicht funktionsfähig. Verwenden Sie stattdessen die Treiberversion für 2013 oder 2010.
+>Die Microsoft Access 2016-Version des ODBC-Treibers ist mit diesem Connector nicht funktionsfähig. Verwenden Sie die Microsoft Access 2013- oder 2010-Version des ODBC-Treibers.
 
 ## <a name="getting-started"></a>Erste Schritte
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-linked-service-to-microsoft-access-using-ui"></a>Erstellen eines verknüpften Diensts für Microsoft Access über die Benutzeroberfläche
+
+Verwenden Sie die folgenden Schritte, um einen verknüpften Dienst mit Microsoft Access auf der Azure-Portal-Benutzeroberfläche zu erstellen.
+
+1. Navigieren Sie in Ihrem Azure Data Factory- oder Synapse-Arbeitsbereich zu der Registerkarte „Verwalten“, wählen Sie „Verknüpfte Dienste“ aus und klicken Sie dann auf „Neu“:
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Erstellen Sie einen neuen verknüpften Dienst mithilfe der Azure Data Factory Benutzeroberfläche.":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Erstellen Sie einen neuen verknüpften Dienst mithilfe der Azure Synapse Benutzeroberfläche.":::
+
+2. Suchen Sie nach „Access“ und wählen Sie den Microsoft Access-Connector aus.
+
+   :::image type="content" source="media/connector-microsoft-access/microsoft-access-connector.png" alt-text="Wählen Sie den Microsoft Access-Connector aus.":::    
+
+
+1. Konfigurieren Sie die Dienstdetails, testen Sie die Verbindung und erstellen Sie den neuen verknüpften Dienst.
+
+   :::image type="content" source="media/connector-microsoft-access/configure-microsoft-access-linked-service.png" alt-text="Konfigurieren Sie einen verknüpften Dienst für Microsoft Access.":::
+
+## <a name="connector-configuration-details"></a>Details zur Connector-Konfiguration
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den Microsoft Access-Connector verwendet werden.
 

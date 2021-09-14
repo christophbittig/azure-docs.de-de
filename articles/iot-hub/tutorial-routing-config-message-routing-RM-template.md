@@ -5,15 +5,15 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-ms.date: 03/25/2019
+ms.date: 08/24/2021
 ms.author: robinsh
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 1d96bb01cde5edbe4bff06de43d66b785da9cd98
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6a5f21153936313a209bb5971c1a7c6bd7a9e973
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748399"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122969346"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>Tutorial: Konfigurieren des IoT Hub-Nachrichtenroutings mithilfe einer Azure Resource Manager-Vorlage
 
@@ -49,7 +49,7 @@ Die meisten dieser Parameter haben Standardwerte. Parameter mit der Endung **_in
 
 **subscriptionId**: Das Abonnement, in dem die Vorlage bereitgestellt wird. Dieses Feld wird automatisch festgelegt und ist daher nicht in der Parameterdatei enthalten.
 
-**IoTHubName_in**: Der IoT Hub-Basisname. Er wird mit dem Zufallswert verkettet, um global eindeutig zu sein.
+**IoTHubName_in**: Der IoT Hub-Basisname. Er wird mit dem Zufallswert verkettet, sodass er global eindeutig ist.
 
 **location**: Die Azure-Zielregion für die Bereitstellung (beispielsweise „USA, Westen“).
 

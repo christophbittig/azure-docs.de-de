@@ -5,15 +5,15 @@ metadata:
   description: Azure Database for MySQL ist ein relationaler Datenbankdienst in Microsoft Cloud für Entwickler, der von der MySQL Community-Edition unterstützt wird. Sie können entweder Single Server oder Flexible Server (Vorschau) auswählen, um Ihre MySQL-Datenbank in Azure bereitzustellen.
   author: savjani
   ms.author: pariks
-  ms.date: 09/03/2019
+  ms.date: 09/10/2021
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 20839bff8c6ab4e9c25431941955e289ff1bf6d2
-  ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+  ms.openlocfilehash: 36338fdaad38bb84b4b4a796289c07e0cfee01d7
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/24/2021
-  ms.locfileid: "122779514"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124804889"
 landingContent:
 - title: Informationen zu Azure Database for MySQL
   linkLists:
@@ -117,6 +117,8 @@ landingContent:
       url: concepts-migrate-import-export.md
     - text: Migrieren von Amazon RDS für MySQL mit MySQL Workbench
       url: how-to-migrate-rds-mysql-workbench.md
+    - text: Migrieren von Amazon RDS für MySQL mithilfe der Datenreplikation
+      url: how-to-migrate-rds-mysql-data-in-replication.md
     - text: Migration mit minimaler Downtime
       url: howto-migrate-online.md
     - text: Allgemeine Fehler während oder nach der Migration

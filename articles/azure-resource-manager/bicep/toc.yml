@@ -22,8 +22,10 @@
     - name: 'Microsoft Learn: Bicep'
       href: learn-bicep.md
 - name: Anleitung
+  expanded: true
   items:
     - name: Autor
+      expanded: true
       items:
         - name: Ressourcen
           items:
@@ -146,6 +148,8 @@
           href: bicep-functions-date.md
         - name: Bereitstellungsfunktionen
           href: bicep-functions-deployment.md
+        - name: Dateifunktionen
+          href: bicep-functions-files.md
         - name: Logische Funktionen
           href: bicep-functions-logical.md
         - name: Numerische Funktionen
@@ -175,5 +179,5 @@
       displayName: 'build,decompile,install,list-versions,list versions,upgrade,version'
     - name: Azure PowerShell
       href: /powershell/module/az.resources
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/resource
