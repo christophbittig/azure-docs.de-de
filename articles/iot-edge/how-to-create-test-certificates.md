@@ -184,7 +184,7 @@ Bevor Sie mit den Schritten in diesem Abschnitt fortfahren, führen Sie die Schr
 
    * `<WRKDIR>/certs/azure-iot-test-only.root.ca.cert.pem`  
 
-## <a name="create-iot-edge-device-identity-certificates"></a>Erstellen von Zertifizierungsstellenzertifikaten für IoT Edge-Geräte
+## <a name="create-iot-edge-device-identity-certificates"></a>Erstellen von Geräteidentitätszertifikate für IoT Edge-Geräte
 
 Geräteidentitätszertifikate werden zum Bereitstellen von IoT Edge-Geräten verwendet, wenn Sie X.509-Zertifikatauthentifizierung wählen. Diese Zertifikate funktionieren unabhängig davon, ob Sie manuelle Bereitstellung oder automatische Bereitstellung über den Azure IoT Hub Device Provisioning Service (DPS) verwenden.
 
