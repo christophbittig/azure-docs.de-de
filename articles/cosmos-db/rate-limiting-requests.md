@@ -4,16 +4,17 @@ description: In diesem Artikel wird eine Methodik zur Ratenbegrenzung von Anford
 author: plasne
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/07/2021
+ms.date: 08/26/2021
 ms.author: pelasne
-ms.openlocfilehash: f9130808da0f833246e013e56f081b92fa461ac9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0677a3f4180ab429dc51a4e40c969e32e6e8f655
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122354757"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123098138"
 ---
 # <a name="optimize-your-azure-cosmos-db-application-using-rate-limiting"></a>Optimieren Ihrer Azure Cosmos DB-Anwendung mit Ratenbegrenzung
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 In diesem Artikel wird eine Methodik zur Ratenbegrenzung von Anforderungen an Azure Cosmos DB für Entwickler beschrieben. Die Implementierung dieses Musters kann Fehler reduzieren und die Gesamtleistung für Workloads verbessern, die den bereitgestellten Durchsatz der Zieldatenbank oder des Zielcontainers überschreiten.
 
@@ -160,3 +161,6 @@ Weitere Informationen finden Sie im Abschnitt zur [Muster für materialisierte S
 * Erfahren Sie mehr über [Partitionierung und horizontale Skalierung](partitioning-overview.md) in Azure Cosmos DB.
 * Erfahren Sie mehr über [Indizierungsrichtlinien](index-policy.md) in Azure Cosmos DB.
 * Erfahren Sie mehr zur [automatischen Skalierung](provision-throughput-autoscale.md) in Azure Cosmos DB.
+* Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen? Sie können Informationen zu Ihrem vorhandenen Datenbankcluster für die Kapazitätsplanung verwenden.
+    * Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](convert-vcore-to-request-unit.md) 
+    * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbankworkload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)

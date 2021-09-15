@@ -5,17 +5,21 @@ author: deborahc
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 04/28/2021
+ms.date: 08/26/2021
 ms.author: dech
-ms.openlocfilehash: 10f03ce5d2171b28fa195f7f5c2b0f34a939eef0
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: a6c430462185ebac38c196d5aa80fc0d676f4911
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108202801"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123030355"
 ---
 # <a name="estimate-rus-using-the-azure-cosmos-db-capacity-planner---azure-cosmos-db-api-for-mongodb"></a>Schätzen Sie RU/s mithilfe des Azure Cosmos DB-Kapazitätsplaners ab - Azure Cosmos DB API für MongoDB
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-mongodb-api.md)]
+
+> [!NOTE]
+> Wenn Sie eine Datenmigration zu Azure Cosmos DB planen und sie nur die Anzahl von virtuellen Kernen und Servern in Ihrem vorhandenen Shard-Datenbankcluster und replizierten Datenbankcluster kennen, informieren Sie sich auch über das [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](../convert-vcore-to-request-unit.md) 
+>
 
 Die Konfiguration Ihrer Datenbanken und Sammlungen mit der richtigen Menge an bereitgestelltem Durchsatz, bzw. [Anforderungseinheiten (RU/s)](../request-units.md), für Ihre workload ist entscheidend für die Optimierung von Kosten und Leistung. In diesem Artikel wird beschrieben, wie Sie den Azure Cosmos DB-[Kapazitätsplaner](https://cosmos.azure.com/capacitycalculator/) verwenden, um eine Schätzung der erforderlichen RU/s und der Kosten für Ihre workload zu erhalten, wenn Sie die Azure Cosmos DB API für MongoDB verwenden. Falls Sie die SQL-API verwenden, lesen Sie den Artikel zur Verwendung von [Kapazitätsrechner mit SQL-API](../estimate-ru-with-capacity-planner.md).
 
@@ -70,7 +74,9 @@ Die angezeigten Preise im Kapazitätsplaner sind Schätzungen, die auf den öffe
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](../convert-vcore-to-request-unit.md) 
 * Informieren Sie sich weiter über das [Preismodell von Azure Cosmos DB](../how-pricing-works.md).
 * Erstellen Sie ein neues [Cosmos-Konto, eine Datenbank und einen Container](../create-cosmosdb-resources-portal.md).
 * Erfahren Sie, wie Sie die [Kosten für den bereitgestellten Durchsatz optimieren](../optimize-cost-throughput.md) können.
 * Informieren Sie sich über das [Optimieren der Kosten mit Reservekapazität](../cosmos-db-reserved-capacity.md).
+* Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen? Sie können Informationen zu Ihrem vorhandenen Datenbankcluster für die Kapazitätsplanung verwenden.

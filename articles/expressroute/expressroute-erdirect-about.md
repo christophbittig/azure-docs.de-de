@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/17/2021
 ms.author: duau
-ms.openlocfilehash: fd890c8e8d72609d109fa466e260dd7315fd553b
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: c6f06df11e0e17f37d7cfcbba6ed4fb8c224f824
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111441220"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123029860"
 ---
 # <a name="about-expressroute-direct"></a>Informationen zu ExpressRoute Direct
 
@@ -48,7 +48,7 @@ Bevor Sie ExpressRoute Direct nutzen können, müssen Sie zunächst Ihr Abonneme
 
 1. Überprüfen Sie, ob in Ihrem Abonnement unter **Ressourcenanbieter** der Anbieter **Microsoft.Network** den Status **Registriert** aufweist. Wenn der Ressourcenanbieter Microsoft.Network nicht in der Liste der registrierten Anbieter aufgeführt ist, fügen Sie ihn hinzu.
 
-Wenn Sie ExpressRoute Direct zum ersten Mal verwenden und bemerken, dass an dem von Ihnen ausgewählten Peeringstandort keine Ports verfügbar sind, senden Sie eine E-Mail an ExpressRouteDirect@microsoft.com, um mehr Inventar anzufordern.
+Wenn Sie ExpressRoute Direct zum ersten Mal verwenden und bemerken, dass an dem von Ihnen ausgewählten Peeringstandort keine Ports verfügbar sind, übermitteln Sie eine Supportanfrage, um mehr Bestand anzufordern.
 
 ## <a name="expressroute-using-a-service-provider-and-expressroute-direct"></a>Vergleich von ExpressRoute mit Dienstanbieter und ExpressRoute Direct
 

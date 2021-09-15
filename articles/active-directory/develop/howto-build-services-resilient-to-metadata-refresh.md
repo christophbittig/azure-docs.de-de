@@ -13,14 +13,14 @@ ms.date: 04/21/2021
 ms.author: jmprieur
 ms.reviewer: marsma, shermanouko
 ms.custom: aaddev
-ms.openlocfilehash: 8eb9db4d89f6d3c517afb57d6343387343ac5325
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 2c7d4fdbcd27b4b8d7097d7a6978f80f5eb7fca4
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108167054"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123033245"
 ---
-# <a name="how-to-build-services-that-are-resilient-to-azure-ads-openid-connect-metadata-refresh"></a>Wie gemacht: Erstellen Sie Dienste, die resistent sind gegenüber der Aktualisierung der OpenID Connect-Metadaten von Azure AD
+# <a name="build-services-that-are-resilient-to-azure-ads-openid-connect-metadata-refresh"></a>Erstellen von Diensten, die gegenüber der Aktualisierung der OpenID Connect-Metadaten von Azure AD resilient sind
 
 Geschützte Web-APIs müssen Zugriffstoken überprüfen. Web-Apps überprüfen auch die ID-Token. Die Token-Validierung besteht aus mehreren Teilen, wobei geprüft wird, ob das Token zur Anwendung gehört, von einem vertrauenswürdigen Identitätsanbieter (IDP) ausgestellt wurde, eine noch gültige Lebensdauer hat und nicht manipuliert wurde. Es können auch spezielle Validierungen vorliegen. Zum Beispiel muss die App die Signatur validieren und sicherstellen, dass Signierschlüssel (wenn sie in einem Token eingebettet sind) vertrauenswürdig sind und dass das Token nicht wiedergegeben wird. Wenn die Signaturschlüssel nicht in das Token eingebettet sind, müssen sie vom Identitätsanbieter (Discovery oder Metadaten) abgerufen werden. Manchmal ist es auch erforderlich, Schlüssel dynamisch zur Ausführungszeit abzurufen.
 

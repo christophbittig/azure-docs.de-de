@@ -1,19 +1,22 @@
 ---
-title: Kopieraktivität in Azure Data Factory
-description: Erfahren Sie mehr über die Kopieraktivität in Azure Data Factory. Mit der dieser Aktivität können Sie Daten aus einem unterstützten Quelldatenspeicher in einen unterstützten Senkendatenspeicher kopieren.
+title: Copy-Aktivität
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Erfahren Sie mehr über die Copy-Aktivität in Azure Data Factory und Azure Synapse Analytics. Mit der dieser Aktivität können Sie Daten aus einem unterstützten Quelldatenspeicher in einen unterstützten Senkendatenspeicher kopieren.
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 6/1/2021
+ms.date: 08/24/2021
 ms.author: jianleishen
-ms.openlocfilehash: 944e5fb05298c91e4405088c1179e0720173dde0
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: a5b84673a879c086fe1fc0543da1ab0037d32ac1
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746146"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255956"
 ---
-# <a name="copy-activity-in-azure-data-factory"></a>Kopieraktivität in Azure Data Factory
+# <a name="copy-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>Copy-Aktivität in Azure Data Factory und Azure Synapse Analytics
 
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Data Factory-Version aus:"]
 > * [Version 1](v1/data-factory-data-movement-activities.md)
@@ -21,7 +24,7 @@ ms.locfileid: "111746146"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In Azure Data Factory können Sie die Kopieraktivität verwenden, um Daten zwischen lokalen Datenspeichern und Clouddatenspeichern zu kopieren. Nach dem Kopieren können Sie andere Aktivitäten verwenden, um die Daten weiter zu transformieren und zu analysieren. Sie können die Kopieraktivität auch zum Veröffentlichen von Transformations- und Analyseergebnissen verwenden, um sie für Business Intelligence (BI) und Anwendungen zu nutzen.
+In Azure Data Factory- und Synapse-Pipelines können Sie mithilfe der Copy-Aktivität Daten zwischen lokalen Datenspeichern und Clouddatenspeichern kopieren. Nach dem Kopieren können Sie andere Aktivitäten verwenden, um die Daten weiter zu transformieren und zu analysieren. Sie können die Kopieraktivität auch zum Veröffentlichen von Transformations- und Analyseergebnissen verwenden, um sie für Business Intelligence (BI) und Anwendungen zu nutzen.
 
 ![Die Aufgabe der Kopieraktivität](media/copy-activity-overview/copy-activity.png)
 
@@ -58,13 +61,13 @@ Sie können die Kopieraktivität verwenden, um Dateien unverändert zwischen zwe
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 
-Der Dienst, der die Kopieraktivität unterstützt, ist weltweit in den Regionen und Ländern verfügbar, die unter [Standorte der Azure Integration Runtime](concepts-integration-runtime.md#integration-runtime-location) aufgeführt sind. Die global verfügbare Topologie gewährleistet effiziente Datenverschiebungen, die regionsübergreifende Hops in der Regel vermeiden. Unter [Produkte nach Region](https://azure.microsoft.com/regions/#services) können Sie die Verfügbarkeit von Data Factory und der Datenverschiebung in einer bestimmten Region überprüfen.
+Der Dienst, der die Kopieraktivität unterstützt, ist weltweit in den Regionen und Ländern verfügbar, die unter [Standorte der Azure Integration Runtime](concepts-integration-runtime.md#integration-runtime-location) aufgeführt sind. Die global verfügbare Topologie gewährleistet effiziente Datenverschiebungen, die regionsübergreifende Hops in der Regel vermeiden. Unter [Produkte nach Region](https://azure.microsoft.com/regions/#services) können Sie die Verfügbarkeit von Data Factory, Synapse-Arbeitsbereichen und der Datenverschiebung in einer bestimmten Region überprüfen.
 
 ## <a name="configuration"></a>Konfiguration
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-Wenn Sie die Kopieraktivität in Azure Data Factory verwenden möchten, müssen Sie generell folgende Schritte ausführen:
+Wenn Sie die Copy-Aktivität in Azure Data Factory- oder Synapse-Pipelines verwenden möchten, müssen Sie generell folgende Schritte ausführen:
 
 1. **Erstellen Sie verknüpfte Dienste für den Quell- und Senkendatenspeicher.** Sie finden die Liste der unterstützten Connectors im Abschnitt [Unterstützte Datenspeicher und Formate](#supported-data-stores-and-formats) dieses Artikels. Im Abschnitt „Eigenschaften des verknüpften Diensts“ im Connectorartikel finden Sie Informationen zur Konfiguration und zu unterstützten Eigenschaften. 
 2. **Erstellen Sie Datasets für die Quelle und die Senke.** In den Abschnitten zu Dataset-Eigenschaften in den Artikeln zu Quell- und Senkenconnectors finden Sie Informationen zur Konfiguration und zu unterstützten Eigenschaften.
@@ -139,19 +142,19 @@ Die folgende Vorlage einer Kopieraktivität enthält eine vollständige Liste un
 
 ## <a name="monitoring"></a>Überwachung
 
-Sie können die Ausführung der Kopieraktivität in Azure Data Factory sowohl visuell überwachen als auch programmgesteuert überwachen lassen. Einzelheiten dazu finden Sie unter [Überwachen der Kopieraktivität](copy-activity-monitoring.md).
+Sie können die Ausführung der Copy-Aktivität in Azure Data Factory- und Synapse-Pipelines sowohl visuell als auch programmgesteuert überwachen. Einzelheiten dazu finden Sie unter [Überwachen der Kopieraktivität](copy-activity-monitoring.md).
 
 ## <a name="incremental-copy"></a>Inkrementelles Kopieren
 
-Data Factory unterstützt das inkrementelle Kopieren von Deltadaten von einem Quelldatenspeicher in einen Senkendatenspeicher. Weitere Informationen finden Sie unter [Tutorial: Inkrementelles Kopieren von Daten](tutorial-incremental-copy-overview.md).
+Data Factory- und Synpase-Pipelines unterstützen das inkrementelle Kopieren von Deltadaten von einem Quelldatenspeicher in einen Senkendatenspeicher. Weitere Informationen finden Sie unter [Tutorial: Inkrementelles Kopieren von Daten](tutorial-incremental-copy-overview.md).
 
 ## <a name="performance-and-tuning"></a>Leistung und Optimierung
 
-In der Benutzeroberfläche zur [Überwachung der Kopieraktivität](copy-activity-monitoring.md) werden Ihnen die Statistiken zur Kopierleistung für jede Ihrer Aktivitätsausführungen angezeigt. Im [Handbuch zur Leistung und Optimierung der Kopieraktivität](copy-activity-performance.md) werden wichtige Faktoren beschrieben, die sich auf die Leistung der Kopieraktivität beim Verschieben von Daten in Azure Data Factory auswirken. Außerdem finden Sie dort in Tests ermittelte Leistungswerte und Möglichkeiten, die Leistung der Kopieraktivität zu optimieren.
+In der Benutzeroberfläche zur [Überwachung der Kopieraktivität](copy-activity-monitoring.md) werden Ihnen die Statistiken zur Kopierleistung für jede Ihrer Aktivitätsausführungen angezeigt. Im [Leitfaden zur Leistung und Skalierbarkeit der Copy-Aktivität](copy-activity-performance.md) werden wichtige Faktoren beschrieben, die sich auf die Leistung der Copy-Aktivität beim Verschieben von Daten auswirken. Außerdem finden Sie dort in Tests ermittelte Leistungswerte und Möglichkeiten, die Leistung der Kopieraktivität zu optimieren.
 
 ## <a name="resume-from-last-failed-run"></a>Fortsetzen ab der letzten fehlgeschlagenen Ausführung
 
-Die Kopieraktivität unterstützt das Fortsetzen ab der letzten fehlgeschlagenen Ausführung, wenn Sie große Dateien unverändert im Binärformat zwischen dateibasierten Speichern kopieren und sich dafür entscheiden, die Ordner-/Dateistruktur beim Kopieren von der Quelle zur Senke beizubehalten, z. B. beim Migrieren von Daten aus Amazon S3 zu Azure Data Lake Storage Gen2. Es gilt für die folgenden dateibasierten Connectors: [Amazon S3](connector-amazon-simple-storage-service.md), [Amazon S3-kompatibler Speicher](connector-amazon-s3-compatible-storage.md) [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [Dateisystem](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [Oracle Cloud Storage](connector-oracle-cloud-storage.md) und [SFTP](connector-sftp.md).
+Die Kopieraktivität unterstützt das Fortsetzen ab der letzten fehlgeschlagenen Ausführung, wenn Sie große Dateien unverändert im Binärformat zwischen dateibasierten Speichern kopieren und sich dafür entscheiden, die Ordner-/Dateistruktur beim Kopieren von der Quelle zur Senke beizubehalten, z. B. beim Migrieren von Daten aus Amazon S3 zu Azure Data Lake Storage Gen2. Es gilt für die folgenden dateibasierten Connectors: [Amazon S3](connector-amazon-simple-storage-service.md), [Amazon S3-kompatibler Speicher](connector-amazon-s3-compatible-storage.md) [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure Files](connector-azure-file-storage.md), [Dateisystem](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [Oracle Cloud Storage](connector-oracle-cloud-storage.md) und [SFTP](connector-sftp.md).
 
 Sie können die zwei folgenden Methoden zum Fortsetzen der Kopieraktivität nutzen:
 
@@ -194,7 +197,7 @@ Auf der Registerkarte „Quelle der Kopieraktivität“ finden Sie die folgende 
 
 Wenn es programmgesteuert konfiguriert werden soll, fügen Sie in Ihrer Quelle für die Kopieraktivität die Eigenschaft `additionalColumns` hinzu:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | additionalColumns | Fügen Sie zusätzliche Datenspalten zum Kopieren in die Senke hinzu.<br><br>Jedes Objekt unter dem Array `additionalColumns` stellt eine zusätzliche Spalte dar. `name` definiert den Spaltennamen, und `value` gibt den Datenwert dieser Spalte an.<br><br>Zulässige Datenwerte sind:<br>-  **`$$FILEPATH`** – eine reservierte Variable, die angibt, dass der relative Pfad der Quelldateien in dem im Dataset angegebenen Ordnerpfad gespeichert werden soll. Auf dateibasierte Quelle anwenden.<br>-  **`$$COLUMN:<source_column_name>`** – ein reserviertes Variablenmuster gibt an, dass die angegebene Quellspalte als eine andere Spalte dupliziert wird.<br>- **Ausdruck**<br>- **Statischer Wert** | Nein |
 
@@ -260,7 +263,7 @@ Wenn Datenzeilen in der Quelle und in der Senke nicht kompatibel sind, wird ein 
 
 ## <a name="data-consistency-verification"></a>Datenkonsistenzprüfung
 
-Wenn Sie Daten aus dem Quell- in den Zielspeicher verschieben, bietet die Azure Data Factory-Kopieraktivität eine Option, mit der Sie eine zusätzliche Datenkonsistenzprüfung durchführen können. Damit stellen Sie sicher, dass die Daten nicht nur erfolgreich aus dem Quell- in den Zielspeicher kopiert werden, sondern auch dass überprüft wird, ob sie zwischen Quell- und Zielspeicher konsistent sind. Wenn während der Datenverschiebung inkonsistente Dateien gefunden werden, können Sie entweder die Kopieraktivität abbrechen oder auch noch die restlichen Dateien kopieren. Hierzu aktivieren Sie die Einstellung für Fehlertoleranz, damit inkonsistente Daten übersprungen werden. Die Namen der übersprungenen Dateien können Sie durch Aktivieren der Einstellung für das Sitzungsprotokoll in der Kopieraktivität abrufen. Ausführliche Informationen finden Sie unter [Datenkonsistenzprüfung in der Kopieraktivität](copy-activity-data-consistency.md).
+Wenn Sie Daten aus dem Quell- in den Zielspeicher verschieben, bietet die Copy-Aktivität eine Option, mit der Sie eine zusätzliche Datenkonsistenzprüfung durchführen können. Damit stellen Sie sicher, dass die Daten nicht nur erfolgreich aus dem Quell- in den Zielspeicher kopiert werden, sondern auch dass überprüft wird, ob sie zwischen Quell- und Zielspeicher konsistent sind. Wenn während der Datenverschiebung inkonsistente Dateien gefunden werden, können Sie entweder die Kopieraktivität abbrechen oder auch noch die restlichen Dateien kopieren. Hierzu aktivieren Sie die Einstellung für Fehlertoleranz, damit inkonsistente Daten übersprungen werden. Die Namen der übersprungenen Dateien können Sie durch Aktivieren der Einstellung für das Sitzungsprotokoll in der Kopieraktivität abrufen. Ausführliche Informationen finden Sie unter [Datenkonsistenzprüfung in der Kopieraktivität](copy-activity-data-consistency.md).
 
 ## <a name="session-log"></a>Sitzungsprotokoll
 Sie können die kopierten Dateinamen protokollieren, um sicherzustellen, dass die Daten nicht nur erfolgreich aus dem Quell- in den Zielspeicher kopiert werden, sondern auch zwischen Quell- und Zielspeicher konsistent sind. Dazu überprüfen Sie die Sitzungsprotokolle der Kopieraktivität. Ausführliche Informationen finden Sie unter [Sitzungsprotokoll in der Kopieraktivität](copy-activity-log.md).

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87fd2189222828eef2ff03a82125e0b6dcf7111e
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 29b000ee3231361ccdca4c2909e093cdaef6bc04
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122342843"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866517"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Was ist ein primäres Aktualisierungstoken (Primary Refresh Token, PRT)?
 
@@ -76,7 +76,7 @@ Nach der Ausstellung ist ein PRT 14 Tage lang gültig und wird fortlaufend verl
 Ein PRT wird in Windows von zwei wichtigen Komponenten verwendet:
 
 * **Azure AD-CloudAP-Plug-In**: Während der Windows-Anmeldung fordert das Azure AD-CloudAP-Plug-In ein PRT von Azure AD an, indem die vom Benutzer bereitgestellten Anmeldeinformationen verwendet werden. Darüber hinaus wird das PRT hierbei zwischengespeichert, um die Nutzung der zwischengespeicherten Anmeldung zu ermöglichen, wenn der Benutzer keinen Zugriff auf eine Internetverbindung hat.
-* **Azure AD-WAM-Plug-In**: Wenn Benutzer versuchen, auf Anwendungen zuzugreifen, wird das PRT vom Azure AD-WAM-Plug-In genutzt, um SSO unter Windows 10 zu ermöglichen. Das Azure AD-WAM-Plug-In nutzt das PRT, um Aktualisierungs- und Zugriffstoken für Anwendungen anzufordern, für die WAM für Tokenanforderungen verwendet wird. Außerdem wird hiermit SSO in Browsern ermöglicht, indem das PRT in Browseranforderungen eingefügt wird. SSO für Browser unter Windows 10 wird für Microsoft Edge (nativ) und Chrome (über die [Windows 10-Konten](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji?hl=en) oder die [Office Online](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb?hl=en)-Erweiterungen) unterstützt.
+* **Azure AD-WAM-Plug-In**: Wenn Benutzer versuchen, auf Anwendungen zuzugreifen, wird das PRT vom Azure AD-WAM-Plug-In genutzt, um SSO unter Windows 10 zu ermöglichen. Das Azure AD-WAM-Plug-In nutzt das PRT, um Aktualisierungs- und Zugriffstoken für Anwendungen anzufordern, für die WAM für Tokenanforderungen verwendet wird. Außerdem wird hiermit SSO in Browsern ermöglicht, indem das PRT in Browseranforderungen eingefügt wird. SSO für Browser unter Windows 10 wird für Microsoft Edge (nativ), Chrome (über die [Windows 10-Konten](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji?hl=en) oder die [Office Online](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb?hl=en)-Erweiterungen) und Mozilla Firefox ab Version 91 (über [Windows-SSO-Einstellungen](https://support.mozilla.org/en-US/kb/windows-sso)) unterstützt.
 
 ## <a name="how-is-a-prt-renewed"></a>Wie wird ein PRT verlängert?
 
@@ -109,7 +109,7 @@ Durch das Sichern dieser Schlüssel mit dem TPM verbessern wir den Schutz des PR
 
 **App-Token**: Wenn eine App Token per WAM anfordert, stellt Azure AD ein Aktualisierungstoken und ein Zugriffstoken aus. Von WAM wird aber nur das Zugriffstoken an die App zurückgegeben und das Aktualisierungstoken im Cache geschützt, indem es mit dem DPAPI-Schlüssel (Data Protection Application Programming Interface) des Benutzers verschlüsselt wird. Von WAM wird das Aktualisierungstoken auf sichere Weise verwendet, indem Anforderungen mit dem Sitzungsschlüssel signiert werden, um weitere Zugriffstoken auszustellen. Der DPAPI-Schlüssel wird mit einem Azure AD-basierten symmetrischen Schlüssel direkt in Azure AD geschützt. Wenn das Gerät das Benutzerprofil mit dem DPAPI-Schlüssel entschlüsseln muss, stellt Azure AD den mit dem Sitzungsschlüssel verschlüsselten DPAPI-Schlüssel bereit. Für den Sitzungsschlüssel fordert das CloudAP-Plug-In die Entschlüsselung durch das TPM an. Mit dieser Funktionalität wird sichergestellt, dass das Schützen von Aktualisierungstoken einheitlich erfolgt, und es wird vermieden, dass Anwendungen ihre eigenen Schutzmechanismen implementieren.  
 
-**Browsercookies**: In Windows 10 unterstützt Azure AD SSO für Browser in Internet Explorer und Microsoft Edge auf native Weise, und in Google Chrome über die Kontoerweiterung für Windows 10. Die Sicherheit dient nicht nur zum Schützen der Cookies, sondern auch der Endpunkte, an die die Cookies gesendet werden. Browsercookies werden genauso wie ein PRT geschützt, indem der Sitzungsschlüssel genutzt wird, um die Cookies zu signieren und zu schützen.
+**Browsercookies:** Unter Windows 10 unterstützt Azure AD SSO für Browser in Internet Explorer und Microsoft Edge nativ, in Google Chrome über die Kontoerweiterung für Windows 10 und in Mozilla Firefox ab Version 91 über Browsereinstellungen. Die Sicherheit dient nicht nur zum Schützen der Cookies, sondern auch der Endpunkte, an die die Cookies gesendet werden. Browsercookies werden genauso wie ein PRT geschützt, indem der Sitzungsschlüssel genutzt wird, um die Cookies zu signieren und zu schützen.
 
 Wenn ein Benutzer eine Browserinteraktion initiiert, ruft der Browser (bzw. die Erweiterung) einen nativen COM-Clienthost auf. Der native Clienthost stellt sicher, dass die Seite aus einer der zulässigen Domänen stammt. Der Browser kann auch andere Parameter an den nativen Clienthost senden, z. B. eine Nonce, aber der native Clienthost garantiert die Überprüfung des Hostnamens. Der native Clienthost fordert ein PRT-Cookie vom CloudAP-Plug-In an. Das Plug-In erstellt und signiert es mit dem per TPM geschützten Sitzungsschlüssel. Da das PRT-Cookie durch den Sitzungsschlüssel signiert ist, ist es sehr schwierig, dieses zu manipulieren. Dieses PRT-Cookie ist in den Anforderungsheader für Azure AD integriert, um das Ursprungsgerät zu überprüfen. Bei Verwendung des Chrome-Browsers ist der Aufruf nur mit der Erweiterung möglich, die im Manifest des nativen Clienthosts explizit definiert ist, damit keine anderen Erweiterungen diese Anforderungen senden können. Nachdem das PRT-Cookie von Azure AD überprüft wurde, wird ein Sitzungscookie für den Browser ausgestellt. Dieses Sitzungscookie enthält auch den gleichen Sitzungsschlüssel, der mit einem PRT ausgestellt wird. Während der nachfolgenden Anforderungen wird der Sitzungsschlüssel auf effektive Weise überprüft, und das Cookie wird an das Gerät gebunden. So werden Wiedergaben von anderen Orten verhindert.
 
@@ -199,7 +199,7 @@ Im folgenden Diagramm sind die zugrunde liegenden Details für das Ausstellen, V
 | F | Azure AD überprüft die Sitzungsschlüsselsignatur im PRT-Cookie, überprüft die Nonce, stellt sicher, dass das Gerät im Mandanten gültig ist, und stellt ein ID-Token für die Webseite und ein verschlüsseltes Sitzungscookie für den Browser aus. |
 
 > [!NOTE]
-> Der in den obigen Schritten beschriebene Browser-SSO-Flow gilt nicht für Sitzungen in privaten Modi wie InPrivate in Microsoft Edge oder Incognito in Google Chrome (bei Verwendung der Erweiterung für Microsoft-Konten).
+> Der in den obigen Schritten beschriebene Browser-SSO-Flow gilt nicht für Sitzungen in privaten Modi wie InPrivate in Microsoft Edge, Incognito in Google Chrome (bei Verwendung der Erweiterung für Microsoft-Konten) oder im privaten Modus in Mozilla Firefox ab Version 91.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

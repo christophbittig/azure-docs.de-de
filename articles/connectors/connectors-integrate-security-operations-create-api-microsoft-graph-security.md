@@ -9,12 +9,12 @@ ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: a83cd68df2f1d722517d6239bf6959075860d0b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b32d5aee270e3380899a81f49b12a55c468f2bc5
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94888537"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122865010"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Verbessern des Bedrohungsschutzes durch Integrieren von Sicherheitsvorgängen mit der Sicherheits-API von Microsoft Graph und Azure Logic Apps
 
@@ -30,7 +30,7 @@ Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem [Sicherheit
 
 Der Workflow Ihrer Logik-App kann Aktionen verwenden, die Antworten vom Sicherheits-API-Connector von Microsoft Graph erhalten, und diese Ausgabe weiteren Aktionen in Ihrem Workflow zur Verfügung stellen. Sie können die Ausgabe der Aktionen des Sicherheits-API-Connectors von Microsoft Graph auch von anderen Aktionen in Ihrem Workflow verwenden lassen. Wenn Sie z.B. Warnungen mit hohem Schweregrad über den Sicherheits-API-Connector von Microsoft Graph erhalten haben, können Sie diese Warnungen in einer E-Mail-Nachricht mithilfe des Outlook-Connectors senden. 
 
-Weitere Informationen zu Microsoft Graph-Sicherheit finden Sie in der [Übersicht über die Sicherheits-API von Microsoft Graph](/graph/security-concept-overview). Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md). Informationen zu Power Automate oder Power Apps finden Sie bei Bedarf in der [Übersicht über Power Automate](https://flow.microsoft.com/) bzw. in der [Übersicht über Power Apps](https://powerapps.microsoft.com/).
+Weitere Informationen zu Microsoft Graph-Sicherheit finden Sie in der [Übersicht über die Sicherheits-API von Microsoft Graph](/graph/security-concept-overview). Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md). Informationen zu Power Automate oder Power Apps finden Sie in der [Übersicht über Power Automate](https://flow.microsoft.com/) bzw. in der [Übersicht über Power Apps](https://powerapps.microsoft.com/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

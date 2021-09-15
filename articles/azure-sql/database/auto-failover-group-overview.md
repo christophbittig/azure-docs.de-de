@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: BustosMSFT
 ms.author: robustos
 ms.reviewer: mathoma
-ms.date: 05/10/2021
-ms.openlocfilehash: 1bbbf7266fdcac552972f563e0d958bf035de984
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/30/2021
+ms.openlocfilehash: 68c657b7e8e045b8756bc2db8de2b4024b7530b8
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122356016"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123256488"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -411,7 +411,7 @@ Bedenken Sie dabei folgende Einschränkungen:
 - Failovergruppen können nicht zwischen zwei Servern oder Instanzen in denselben Azure-Regionen erstellt werden.
 - Failovergruppen können nicht umbenannt werden. Sie müssen die Gruppe löschen und unter einem anderen Namen neu erstellen.
 - Die Datenbankumbenennung wird für Instanzen in der Failovergruppe nicht unterstützt. Sie müssen eine Failovergruppe vorübergehend löschen, um eine Datenbank umzubenennen.
-- Systemdatenbanken werden nicht in die sekundäre Instanz in einer Failovergruppe repliziert. Daher sind Szenarien, die von Objekten aus den Systemdatenbanken abhängen, in der sekundären Instanz nicht möglich, es sei denn, die Objekte werden manuell in der sekundären Instanz erstellt.
+- Systemdatenbanken werden nicht in die sekundäre Instanz in einer Failovergruppe repliziert. Daher erfordern Szenarien, die von Objekten in den Systemdatenbanken abhängen, dass die Objekte manuell auf den sekundären Instanzen erstellt und auch manuell synchron gehalten werden, nachdem Änderungen an der primären Instanz vorgenommen wurden. Die einzige Ausnahme ist der Diensthauptschlüssel (Service Master Key, SMK) für SQL Managed Instance, der während der Erstellung der Failovergruppe automatisch auf die sekundäre Instanz repliziert wird. Alle nachfolgenden Änderungen des SMK auf der primären Instanz werden jedoch nicht auf die sekundäre Instanz repliziert.
 
 ## <a name="programmatically-managing-failover-groups"></a>Programmgesteuertes Verwalten von Failovergruppen
 

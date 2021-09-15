@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/16/2019
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5187f30bd1de87e930e1a2d28ab9c68ec861cff6
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 5bdae2055f46f6f933325c95b86d427951c6cfbc
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321517"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222661"
 ---
 # <a name="create-application-gateway-custom-error-pages"></a>Erstellen von benutzerdefinierten Application Gateway-Fehlerseiten
 
@@ -41,9 +41,9 @@ Zum Erstellen einer benutzerdefinierten Fehlerseite benötigen Sie Folgendes:
 - Ein öffentlich zugängliches Azure Storage-Blob für den Standort
 - Einen HTM- oder HTML-Erweiterungstyp 
 
-Die Größe der Fehlerseite muss weniger als 1 MB betragen. Wenn auf der Fehlerseite Bilder verlinkt sind, muss es sich um öffentlich zugängliche absolute URLs oder um Base64-codierte Bilder auf der benutzerdefinierte Fehlerseite handeln. Relative Links mit Bildern am selben Blobspeicherort werden derzeit nicht unterstützt. 
+Die Größe der Fehlerseite muss weniger als 1 MB betragen. Sie können für diese HTML-Datei auf interne oder externe Bilder/CSS verweisen. Verwenden Sie für extern referenzierte Ressourcen absolute URLs, die öffentlich zugänglich sind. Beachten Sie die HTML-Dateigröße, wenn Sie interne Bilder (Base64-codiertes Inlinebild) oder CSS verwenden. Relative Links mit Dateien am selben Blobspeicherort werden derzeit nicht unterstützt.
 
-Nachdem Sie eine Fehlerseite angeben, lädt Application Gateway sie vom Speicherort des Speicherblobs herunter und speichert sie im lokalen Application Gateway-Cache. Die Fehlerseite wird dann direkt aus Application Gateway bereitgestellt. Um eine vorhandene benutzerdefinierte Fehlerseite zu ändern, müssen Sie in der Application Gateway-Konfiguration auf einen anderen Blobspeicherort verweisen. Application Gateway überprüft nicht regelmäßig den Blobspeicherort zum Abrufen neuer Versionen.
+Nachdem Sie eine Fehlerseite angeben, lädt Application Gateway sie vom Speicherort des Speicherblobs herunter und speichert sie im lokalen Application Gateway-Cache. Diese HTML-Seite wird dann vom Anwendungsgateway verarbeitet, während die extern referenzierten Ressourcen direkt vom Client abgerufen werden. Um eine vorhandene benutzerdefinierte Fehlerseite zu ändern, müssen Sie in der Application Gateway-Konfiguration auf einen anderen Blobspeicherort verweisen. Application Gateway überprüft nicht regelmäßig den Blobspeicherort zum Abrufen neuer Versionen.
 
 ## <a name="portal-configuration"></a>Portalkonfiguration
 

@@ -10,14 +10,16 @@ ms.workload: infrastructure
 ms.date: 09/01/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: c7ca147f0a5b907ee0c5c66d53a219fe75ab2179
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95802a767521da81cc6fdd63aac8bb3db0628e68
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102551707"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123111527"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>Erstellen generalisierter Images ohne Bereitstellungs-Agent
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
 Microsoft Azure bietet Bereitstellungs-Agents für Linux-VMs in Form von [walinuxagent](https://github.com/Azure/WALinuxAgent) oder [cloud-init](https://github.com/canonical/cloud-init) (empfohlen). Es kann jedoch Situationen geben, in denen Sie keine dieser Anwendungen für Ihren Bereitstellungs-Agent verwenden möchten, wie z. B:
 
@@ -108,13 +110,15 @@ xml_el = ElementTree.fromstring(wireserver_goalstate)
 
 container_id = xml_el.findtext('Container/ContainerId')
 instance_id = xml_el.findtext('Container/RoleInstanceList/RoleInstance/InstanceId')
+incarnation = xml_el.findtext('Incarnation')
 print(f'ContainerId: {container_id}')
 print(f'InstanceId: {instance_id}')
+print(f'Incarnation: {incarnation}')
 
 # Construct the XML response we need to send to Wireserver to report ready.
 health = ElementTree.Element('Health')
 goalstate_incarnation = ElementTree.SubElement(health, 'GoalStateIncarnation')
-goalstate_incarnation.text = '1'
+goalstate_incarnation.text = incarnation
 container = ElementTree.SubElement(health, 'Container')
 container_id_el = ElementTree.SubElement(container, 'ContainerId')
 container_id_el.text = container_id
@@ -155,12 +159,12 @@ wireserver_conn.close()
 
 Wenn Python nicht in Ihrer VM installiert oder verfügbar ist, können Sie die obige Skriptlogik anhand der folgenden Schritte programmgesteuert reproduzieren:
 
-1. Rufen Sie `ContainerId` und `InstanceId` durch Analysieren der Antwort von WireServer ab: `curl -X GET -H 'x-ms-version: 2012-11-30' http://168.63.129.16/machine?comp=goalstate`.
+1. Rufen Sie `ContainerId`, `InstanceId` und `Incarnation` durch Analysieren der Antwort von WireServer ab: `curl -X GET -H 'x-ms-version: 2012-11-30' http://168.63.129.16/machine?comp=goalstate`.
 
-2. Erstellen Sie die folgenden XML-Daten, indem Sie die analysierten Werte für `ContainerId` und `InstanceId` aus dem obigen Schritt einfügen:
+2. Erstellen Sie die folgenden XML-Daten, indem Sie die analysierten Werte für `ContainerId`, `InstanceId` und `Incarnation` aus dem obigen Schritt einfügen:
    ```xml
    <Health>
-     <GoalStateIncarnation>1</GoalStateIncarnation>
+     <GoalStateIncarnation>INCARNATION</GoalStateIncarnation>
      <Container>
        <ContainerId>CONTAINER_ID</ContainerId>
        <RoleInstanceList>
