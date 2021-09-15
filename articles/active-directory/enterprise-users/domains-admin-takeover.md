@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
-ms.date: 04/18/2021
+ms.date: 09/01/2021
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38f036f96b4747fb6b712bf032d6f2ec3cb38e6a
-ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
+ms.openlocfilehash: 38ca8313620eda7c8adad52373aab94bcb151abe
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2021
-ms.locfileid: "113288030"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425930"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Übernehmen eines nicht verwalteten Verzeichnisses als Administrator in Azure Active Directory
 
@@ -95,13 +95,16 @@ Die externe Administratorübernahme wird von folgenden Onlinediensten unterstüt
 
 Die unterstützten Tarife umfassen:
 
-- PowerApps Free
-- PowerFlow Free
+- Power Apps Free
+- Power Automate Free
 - RMS for Individuals
 - Microsoft Stream
 - die kostenlose Testversion von Dynamics 365
 
 Die externe Administratorübernahme wird für keinen Dienst mit Tarifen unterstützt, die SharePoint, OneDrive oder Skype For Business enthalten, z. B. über ein kostenloses Abonnement für Office. 
+
+> [!NOTE]
+> Externe Administratorübernahmen werden nicht über Cloudgrenzen hinweg unterstützt (z. B. von Azure Commercial zu Azure Government).  In diesen Szenarien wird empfohlen, eine externe Administratorübernahme in einen anderen Azure Commercial-Mandanten durchzuführen und dann die Domäne aus diesem Mandanten zu löschen, damit Sie eine erfolgreiche Überprüfung im Azure Government-Zielmandanten durchführen können.
 
 Optional können Sie die Option [**ForceTakeover**](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option) verwenden, um den Domänennamen aus der nicht verwalteten Organisation zu entfernen und diesen Namen für die gewünschte Organisation zu überprüfen. 
 

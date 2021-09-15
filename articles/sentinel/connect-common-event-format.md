@@ -1,6 +1,6 @@
 ---
-title: Verknüpfen von CEF-Daten mit Azure Sentinel | Microsoft-Dokumentation
-description: Stellen Sie eine Verbindung mit einer externen Lösung her, die unter Verwendung eines Linux-Computers für die Protokollweiterleitung CEF-Nachrichten (Common Event Format) an Azure Sentinel sendet.
+title: Abrufen von Protokollen im CEF-Format von Ihrem Gerät oder Ihrer Appliance in Azure Sentinel | Microsoft-Dokumentation
+description: Verwenden Sie den Log Analytics-Agent, der auf einer Linux-basierten Protokollweiterleitung installiert ist, um Protokolle zu erfassen, die im CEF-Format (Common Event Format) über Syslog in Ihren Azure Sentinel-Arbeitsbereich gesendet werden.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,93 +14,128 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2021
 ms.author: yelevin
-ms.openlocfilehash: ccf05bb51c64a94c07a0277ed901912f9e4dda3e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6f261e69daa14e652d226c9b0d6402eb353c1744
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339867"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251893"
 ---
-# <a name="connect-your-external-solution-using-common-event-format"></a>Verbinden der externen Lösung mithilfe von Common Event Format
+# <a name="get-cef-formatted-logs-from-your-device-or-appliance-into-azure-sentinel"></a>Abrufen von Protokollen im CEF-Format von Ihrem Gerät oder Ihrer Appliance in Azure Sentinel
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
-Wenn Sie eine Verbindung mit einer externen Lösung herstellen, die CEF-Nachrichten sendet, sind drei Schritte für die Verbindung mit Azure Sentinel erforderlich:
+Viele Netzwerk- und Sicherheitsgeräte und -Appliances senden ihre Systemprotokolle über das Syslog-Protokoll in einem speziellen Format, das als Common Event Format (CEF) bezeichnet wird. Dieses Format enthält mehr Informationen als das Syslog-Standardformat und stellt diese in einer analysierten Schlüssel-Wert-Anordnung dar. Der Log Analytics-Agent akzeptiert CEF-Protokolle und formatiert sie speziell für die Verwendung mit Azure Sentinel, bevor er sie an Ihren Azure Sentinel-Arbeitsbereich weiterleitet.
 
-SCHRITT 1: [Stellen Sie eine Verbindung mit CEF her, indem Sie eine Syslog/CEF Forwarder-Instanz bereitstellen](connect-cef-agent.md) SCHRITT 2: [Ausführen lösungsspezifischer Schritte](connect-cef-solution-config.md) SCHRITT 3: [Überprüfen der Konnektivität](connect-cef-verify.md)
+In diesem Artikel wird beschrieben, wie Sie Protokolle im CEF-Format verwenden, um eine Verbindung mit Ihren Datenquellen herzustellen. Informationen zu Datenconnectors, die diese Methode verwenden, finden Sie unter [Referenz zu Azure Sentinel-Datenconnectors](data-connectors-reference.md).
 
-In diesem Artikel wird die Funktionsweise der Verbindung beschrieben, die Voraussetzungen aufgelistet und die Schritte zum Bereitstellen eines Mechanismus für Sicherheitslösungen erläutert, um zusätzlich zu Syslog CEF-Nachrichten (Common Event Format) zu senden. 
+Es gibt zwei Hauptschritte zum Herstellen dieser Verbindung, die im Folgenden ausführlich erläutert werden:
 
-> [!NOTE] 
+- Sie müssen einen Linux-Computer oder einen virtuellen Computer als dedizierte Protokollweiterleitung bestimmen, den Log Analytics-Agent darauf installieren und den Agent so konfigurieren, dass die Protokolle an Ihren Azure Sentinel-Arbeitsbereich weitergeleitet werden.
+Die Installation und Konfiguration des Agents werden von einem Bereitstellungsskript verarbeitet.
+
+- Sie müssen Ihr Gerät für das Senden seiner Protokolle im CEF-Format an einen Syslog-Server konfigurieren.
+
+> [!NOTE]
 > Daten werden am geografischen Standort des Arbeitsbereichs gespeichert, in dem Sie Azure Sentinel ausführen.
 
-Damit Sie diese Verbindung herstellen können, müssen Sie einen Syslog Forwarder-Server bereitstellen, um die Kommunikation zwischen der Appliance und Azure Sentinel zu ermöglichen.  Der Server besteht aus einem dedizierten Linux-Computer (VM oder lokal), auf dem der Log Analytics-Agent für Linux installiert ist. 
+## <a name="supported-architectures"></a>Unterstützte Architekturen
 
 Die folgende Abbildung beschreibt die Einrichtung mit einer Linux-VM in Azure:
 
  ![CEF in Azure](./media/connect-cef/cef-syslog-azure.png)
 
-Alternativ gilt diese Einrichtung, wenn Sie eine VM in einer anderen Cloud oder auf einem lokalen Computer verwenden: 
+Alternativ verwenden Sie das folgende Setup, wenn Sie eine VM in einer anderen Cloud oder auf einem lokalen Computer verwenden:
 
  ![CEF lokal](./media/connect-cef/cef-syslog-onprem.png)
 
-## <a name="security-considerations"></a>Sicherheitshinweise
-
-Stellen Sie sicher, dass Sie die Sicherheit des Computers gemäß der Sicherheitsrichtlinie Ihrer Organisation konfigurieren. Beispielsweise können Sie das Netzwerk so konfigurieren, dass es der Sicherheitsrichtlinie für das Unternehmensnetzwerk entspricht, und die Ports und Protokolle im Daemon Ihren Anforderungen entsprechend ändern. Anhand der folgenden Anleitungen können Sie die Sicherheitskonfiguration Ihrer Computer verbessern:  [Sichern und Verwenden von Richtlinien auf virtuellen Computern in Azure](../virtual-machines/security-policy.md), [Bewährte Methoden für die Netzwerksicherheit in Azure](../security/fundamentals/network-best-practices.md).
-
-Wenn Sie die TLS-Kommunikation zwischen der Syslog-Lösung und Syslog Forwarder verwenden möchten, müssen Sie den Syslog-Daemon (rsyslog oder syslog-ng) für die Kommunikation in TLS konfigurieren: [Verschlüsseln von Syslog-Datenverkehr mit TLS – rsyslog](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [Verschlüsseln von Protokollmeldungen mit TLS – syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
- 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Ein Azure Sentinel-Arbeitsbereich ist erforderlich, um CEF-Daten in Log Analytics zu erfassen.
 
-Vergewissern Sie sich, dass auf dem Linux-Computer, den Sie für die Protokollweiterleitung verwenden, eines der folgenden Betriebssysteme ausgeführt wird:
+- Sie müssen über Lese- und Schreibberechtigungen für diesen Arbeitsbereich verfügen.
 
-- 64 Bit
-  - CentOS 7 und 8, einschließlich Nebenversionen (ausgenommen Version 6)
-  - Amazon Linux 2017.09
-  - Oracle Linux 7
-  - RHEL Server 7 und 8 (Red Hat Enterprise Linux), einschließlich Nebenversionen (ausgenommen Version 6)
-  - Debian GNU/Linux 8 und 9
-  - Ubuntu Linux 14.04 LTS, 16.04 LTS und 18.04 LTS
-  - SUSE Linux Enterprise Server 12, 15
+- Sie müssen über Leseberechtigungen für die freigegebenen Schlüssel für den Arbeitsbereich verfügen. [Weitere Informationen zu Arbeitsbereichsschlüsseln](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)
 
-- 32 Bit
-  - CentOS 7 und 8, einschließlich Nebenversionen (ausgenommen Version 6)
-  - Oracle Linux 7
-  - RHEL Server 7 und 8 (Red Hat Enterprise Linux), einschließlich Nebenversionen (ausgenommen Version 6)
-  - Debian GNU/Linux 8 und 9
-  - Ubuntu Linux 14.04 LTS und 16.04 LTS
- 
-- Daemonversionen
-  - Syslog-ng: 2.1 bis 3.22.1
-  - Rsyslog: v8
-  
-- Unterstützte Syslog-RFCs
-  - Syslog RFC 3164
-  - Syslog RFC 5424
- 
-Stellen Sie sicher, dass Ihr Computer auch die folgenden Anforderungen erfüllt: 
+## <a name="designate-a-log-forwarder-and-install-the-log-analytics-agent"></a>Festlegen einer Protokollweiterleitung und Installieren des Log Analytics-Agents
 
-- Capacity
-  - Ihr Computer muss mindestens **4 CPU-Kerne und 8 GB RAM** aufweisen.
+In diesem Abschnitt wird beschrieben, wie Sie den Linux-Computer bestimmen und konfigurieren, der die Protokolle von Ihrem Gerät an Ihren Azure Sentinel-Arbeitsbereich weiterleiten soll.
 
-    > [!NOTE]
-    > - Ein einzelner Computer für die Protokollweiterleitung, der den **rsyslog**-Daemon verwendet, unterstützt insgesamt eine Kapazität von **bis zu 8.500 Ereignissen pro Sekunde (EPS)** .
+Bei Ihrem Linux-Computer kann es sich um einen physischen oder virtuellen Computer in Ihrer lokalen Umgebung, eine Azure-VM oder eine VM in einer anderen Cloud handeln.
 
-- Berechtigungen
-  - Sie müssen über erhöhte Berechtigungen (sudo) auf dem Computer verfügen. 
+Verwenden Sie den Link auf der **CEF-Datenconnectorseite (Common Event Format)** , um ein Skript auf dem dedizierten Computer auszuführen und die folgenden Aufgaben auszuführen:
 
-- Softwareanforderungen
-  - Stellen Sie sicher, dass Python 2.7 oder 3 auf dem Computer ausgeführt wird.
+- **Installiert den Log Analytics-Agent für Linux** (auch als OMS-Agent bezeichnet) und konfiguriert ihn für die folgenden Zwecke:
+    - Lauschen auf CEF-Nachrichten vom integrierten Linux-Syslog-Daemon am TCP-Port 25226
+    - Sicheres Senden der Nachrichten über TLS an Ihren Azure Sentinel-Arbeitsbereich, wo sie analysiert und ergänzt werden
+
+- **Konfiguriert den integrierten Linux-Syslog-Daemon** (rsyslog.d/syslog-ng) für die folgenden Zwecke:
+    - Lauschen auf Syslog-Nachrichten von Ihren Sicherheitslösungen an TCP-Port 514
+    - Weiterleiten nur der Nachrichten, die mit dem Log Analytics-Agent auf localhost als CEF identifiziert werden, über TCP-Port 25226
+
+Weitere Informationen finden Sie unter [Bereitstellung einer Protokollweiterleitung zum Erfassen von Syslog- und CEF-Protokollen in Azure Sentinel](connect-log-forwarder.md).
+
+### <a name="security-considerations"></a>Sicherheitshinweise
+
+Stellen Sie sicher, dass Sie die Sicherheit des Computers gemäß der Sicherheitsrichtlinie Ihrer Organisation konfigurieren. Beispielsweise können Sie das Netzwerk so konfigurieren, dass es der Sicherheitsrichtlinie für das Unternehmensnetzwerk entspricht, und die Ports und Protokolle im Daemon Ihren Anforderungen entsprechend ändern.
+
+Weitere Informationen finden Sie unter [Sichern einer VM in Azure](../virtual-machines/security-policy.md) und [Bewährte Methoden für die Netzwerksicherheit](../security/fundamentals/network-best-practices.md).
+
+Wenn Ihre Geräte Syslog- und CEF-Protokolle über TLS senden (z. B. wenn sich Ihre Protokollweiterleitung in der Cloud befindet), müssen Sie den Syslog-Daemon (rsyslog oder syslog-ng) so konfigurieren, dass er über TLS kommuniziert. 
+
+Weitere Informationen finden Sie unter:
+
+- [Verschlüsselung des Syslog-Datenverkehrs mit TLS – rsyslog](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html)
+- [Verschlüsselung von Protokollnachrichten mit TLS – syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298)
+
+## <a name="configure-your-device"></a>Konfigurieren Ihres Geräts
+
+Suchen Sie nach den Konfigurationsanweisungen Ihres Geräteanbieters zum Senden von Protokollen im CEF-Format an einen SIEM- oder Protokollserver, und befolgen Sie diese. 
+
+Wenn Ihr Produkt im Katalog der Datenconnectors angezeigt wird, können Sie die [Referenz zu Azure Sentinel-Datenconnectors](data-connectors-reference.md) lesen, um Unterstützung zu erhalten, wobei die Konfigurationsanweisungen die Einstellungen aus der folgenden Liste enthalten sollten.
+
+   - Protokoll = TCP
+   - Port = 514
+   - Format = CEF
+   - IP-Adresse: Achten Sie darauf, die CEF-Nachrichten an die IP-Adresse des virtuellen Computers zu senden, den Sie für diesen Zweck reserviert haben.
+
+Diese Lösung unterstützt Syslog RFC 3164 und RFC 5424.
+
+> [!TIP]
+> Definieren Sie bei Bedarf ein anderes Protokoll oder eine andere Portnummer auf Ihrem Gerät, solange Sie auch dieselben Änderungen am Syslog-Daemon auf der Protokollweiterleitung vornehmen.
+>
+
+## <a name="find-your-data"></a>Suchen von Daten
+
+Nach Herstellung der Verbindung kann es bis zu 20 Minuten dauern, bis Daten in Log Analytics angezeigt werden.
+
+Wenn Sie in Log Analytics nach CEF-Ereignissen möchten, fragen Sie die Tabelle `CommonSecurityLog` im Abfragefenster ab.
+
+Einige Produkte, die im Katalog der Datenconnectors aufgeführt sind, erfordern die Verwendung zusätzlicher Parser, um optimale Ergebnisse zu erzielen. Diese Parser werden durch die Verwendung von Kusto-Funktionen implementiert. Weitere Informationen finden Sie im Abschnitt zu Ihrem Produkt auf der Seite [Referenz zu Azure Sentinel-Datenconnectors](data-connectors-reference.md).
+
+Um CEF-Ereignisse für diese Produkte zu finden, geben Sie den Namen der Kusto-Funktion als Abfragebetreff anstelle von „CommonSecurityLog“ ein.
+
+Hilfreiche Beispielabfragen, Arbeitsmappen und Analyseregelvorlagen, die speziell für Ihr Produkt erstellt wurden, finden Sie auf der Registerkarte **Nächste Schritte** der Datenconnectorseite Ihres Produkts im Azure Sentinel-Portal.
+
+Wenn keine Daten angezeigt werden, finden Sie eine Anleitung auf der [CEF-Problembehandlungsseite](connect-cef-verify.md).
+
+### <a name="changing-the-source-of-the-timegenerated-field"></a>Ändern der Quelle des Felds „TimeGenerated“
+
+Standardmäßig füllt der Log Analytics-Agent das Feld *TimeGenerated* im Schema mit der Zeit auf, zur der der Agent das Ereignis vom Syslog-Daemon empfangen hat. Folglich wird die Zeit, zu der das Ereignis im Quellsystem generiert wurde, nicht in Azure Sentinel erfasst.
+
+Sie können jedoch den folgenden Befehl ausführen, um das Skript `TimeGenerated.py` herunterzuladen und auszuführen. Mit diesem Skript wird der Log Analytics-Agent so konfiguriert, dass das Feld *TimeGenerated* mit der ursprünglichen Zeit des Ereignisses aus dem Quellsystem aufgefüllt wird, und nicht mit der Zeit, zu der es vom Agent empfangen wurde.
+
+```bash
+wget -O TimeGenerated.py https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/TimeGenerated.py && python TimeGenerated.py {ws_id}
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Dokument haben Sie erfahren, wie Azure Sentinel CEF-Protokolle von Sicherheitslösungen und -appliances sammelt. Informationen zum Herstellen einer Verbindung zwischen Ihrer Lösung und Azure Sentinel finden Sie in den folgenden Artikeln:
+In diesem Dokument haben Sie erfahren, wie Azure Sentinel CEF-Protokolle von Geräten und Appliances sammelt. Weitere Informationen zum Verbinden Ihres Produkts mit Azure Sentinel finden Sie in den folgenden Artikeln:
 
-- SCHRITT 1: [Herstellen einer Verbindung mit CEF durch Bereitstellen einer Syslog-/CEF-Weiterleitung](connect-cef-agent.md)
-- SCHRITT 2: [Ausführen lösungsspezifischer Schritte](connect-cef-solution-config.md)
-- SCHRITT 3: [Überprüfen der Konnektivität](connect-cef-verify.md)
+- [Bereitstellen einer Syslog-/CEF-Weiterleitung](connect-log-forwarder.md)
+- [Referenz zu Azure Sentinel-Datenconnectors](data-connectors-reference.md)
+- [Problembehandlung der Konnektivität der Protokollweiterleitung](troubleshooting-cef-syslog.md#validate-cef-connectivity)
 
 Weitere Informationen zu Aktivitäten, die Sie mit den in Azure Sentinel gesammelten Daten ausführen können, finden Sie in den folgenden Artikeln:
 

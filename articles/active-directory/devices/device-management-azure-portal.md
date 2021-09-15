@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11182b8331f218b970d867764f575ba5b7854d62
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 4042ce416b2af83447af283d21c059050b9a144c
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550692"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866589"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Verwalten der Geräteidentität mithilfe des Azure-Portals
 
@@ -82,7 +82,7 @@ Sie haben zwei Optionen, um Geräte zu aktivieren bzw. zu deaktivieren:
 - Die Symbolleiste nach dem Drilldown auf ein bestimmtes Gerät
 
 > [!IMPORTANT]
-> - Zum Aktivieren oder Deaktivieren eines Geräts müssen Sie ein globaler Administrator oder ein Cloudgeräteadministrator in Azure AD sein. 
+> - Zum Aktivieren oder Deaktivieren eines Geräts müssen Sie ein globaler Administrator, ein Intune-Administrator oder ein Cloudgeräteadministrator in Azure AD sein. 
 > - Durch die Deaktivierung eines Geräts wird seine erfolgreiche Authentifizierung mit Azure AD verhindert. Dadurch wird wiederum verhindert, dass das Gerät auf Ihre Azure AD-Ressourcen zugreift, die durch gerätebasierten bedingten Zugriff oder mithilfe Ihrer Anmeldeinformationen für Windows Hello for Business geschützt werden.
 > - Durch Deaktivieren eines Geräts werden sowohl das primäre Aktualisierungstoken (Primary Refresh Token, PRT) als auch etwaige Aktualisierungstoken (Refresh Tokens, RT) auf dem Gerät widerrufen.
 > - Drucker können nicht in Azure AD aktiviert oder deaktiviert werden.

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/04/2019
+ms.date: 08/21/2021
 ms.author: davidmu
 ms.reviewer: ergreenl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 397b55bccde5781de5b9e53922e31281b3ec855c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ee3ff6fc063de5eebd4a7cc300fdc0a5ceeba560
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340189"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038386"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Erteilen einer mandantenweiten Administratoreinwilligung für eine Anwendung
 
@@ -46,7 +46,10 @@ So erteilen Sie die mandantenweite Administratoreinwilligung für eine in **Unte
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) mit einer Rolle an, die das Erteilen der Administratoreinwilligung ermöglicht (siehe [Voraussetzungen](#prerequisites)).
 2. Klicken Sie auf **Azure Active Directory** und anschließend auf **Unternehmensanwendungen**.
 3. Wählen Sie die Anwendung aus, der Sie eine mandantenweite Administratoreinwilligung erteilen möchten.
-4. Wählen Sie **Berechtigungen** aus, und klicken Sie dann auf **Administratoreinwilligung gewähren**.
+4. Wählen Sie **Berechtigungen** aus, und klicken Sie dann auf **Administratoreinwilligung gewähren**. In diesem Beispiel verwenden wir 10,000ft Plans-Anwendungen.
+
+   :::image type="content" source="media/grant-tenant-wide-admin-consent/grant-tenant-wide-admin-consent.png" alt-text="Screenshot: Erteilen der mandantenweiten Administratorzustimmung.":::
+
 5. Überprüfen Sie sorgfältig die Berechtigungen, die die Anwendung anfordert.
 6. Erteilen Sie die Einwilligung, wenn Sie mit den angeforderten Berechtigungen der Anwendung einverstanden sind. Klicken Sie andernfalls auf **Abbrechen**, oder schließen Sie das Fenster.
 

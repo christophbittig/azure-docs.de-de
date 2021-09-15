@@ -1,20 +1,20 @@
 ---
 title: Konfigurieren von Azure ExpressRoute v1
-description: Netzwerkkonfiguration für App Service-Umgebungen für PowerApps mit Microsoft Azure ExpressRoute. Dieses Dokument wird nur für Kunden bereitgestellt, die die ASE-Legacyumgebung v1 verwenden.
+description: Netzwerkkonfiguration für App Service-Umgebungen für Power Apps mit Azure ExpressRoute. Dieses Dokument wird nur für Kunden bereitgestellt, die die ASE-Legacyumgebung v1 verwenden.
 author: stefsch
 ms.assetid: 34b49178-2595-4d32-9b41-110c96dde6bf
 ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 3fa2677f7c71b118ec3f7da717e29d5879ee982b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a7ea57cf8d76c7a8e1455b561a1a2bc050ec3d7
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88961821"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864794"
 ---
-# <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Details zur Netzwerkkonfiguration für App Service-Umgebungen für PowerApps mit Microsoft Azure ExpressRoute
+# <a name="network-configuration-details-for-app-service-environment-for-power-apps-with-azure-expressroute"></a>Details zur Netzwerkkonfiguration für App Service-Umgebungen für Power Apps mit Azure ExpressRoute
 
 Kunden können eine [Microsoft Azure ExpressRoute][ExpressRoute]-Verbindung mit der Infrastruktur ihres virtuellen Netzwerks herstellen und so ihr lokales Netzwerk auf Azure ausdehnen. Eine App Service-Umgebung kann in einem Subnetz der Infrastruktur des [virtuellen Netzwerks][virtualnetwork] erstellt werden. In der App Service-Umgebung ausgeführte Apps stellen sichere Verbindungen mit Back-End-Ressourcen her, auf die nur über die ExpressRoute-Verbindung ein Zugriff besteht.  
 
@@ -140,7 +140,7 @@ Nun können Sie die App Service-Umgebung bereitstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Einstieg in die App Service-Umgebung für PowerApps finden Sie unter [Einführung in die App Service-Umgebung][IntroToAppServiceEnvironment].
+Informationen zu den ersten Schritten in der App Service-Umgebung für Power Apps finden Sie unter [Einführung in die App Service-Umgebung][IntroToAppServiceEnvironment].
 
 <!-- LINKS -->
 [virtualnetwork]: https://azure.microsoft.com/services/virtual-network/ 

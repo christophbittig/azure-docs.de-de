@@ -1,16 +1,19 @@
 ---
 title: 'Relevanzbewertung: Personalisierung'
 description: Die Relevanzbewertung gibt an, wie gut die Personalisierungsauswahl – die RewardActionID – für den Benutzer war. Der Wert der Relevanzbewertung richtet sich nach Ihrer Geschäftslogik und basiert auf Beobachtungen zum Benutzerverhalten. Die Personalisierung trainiert die eigenen Machine Learning-Modelle durch Auswertung der Relevanz.
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.date: 02/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 69e5aeff345bdf66d1b171738a2fbf14c7f8b15c
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: ec2c9ba7e700a79cffc70cfd4eab7ea780527cff
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112453482"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867039"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>Relevanzbewertungen geben den Erfolg der Personalisierung an.
 
@@ -97,7 +100,7 @@ Durch die Addition der Relevanzbewertungen kann das Endergebnis für die Relevan
 
 Die Personalisierung korreliert die Informationen eines Rangfolgeaufrufs mit den Relevanzwerten, die in Relevanzaufrufen zum Trainieren des Modells übermittelt wurden. Diese können zu unterschiedlichen Zeitpunkten eingehen. Die Personalisierung wartet einen begrenzten Zeitraum, der mit dem Aufruf für die Priorisierung beginnt. Dies gilt auch, wenn der Rangfolgeaufruf als inaktives Ereignis erfolgt ist und erst später aktiviert wurde.
 
-Wenn die **Reward Wait Time** (Relevanzwartezeit) abgelaufen ist und keine Relevanzinformationen eingegangen sind, erhält dieses Ereignis für das Training die Standardrelevanz. Die maximale Wartezeit beträgt 6 Tage.
+Wenn die **Reward Wait Time** (Relevanzwartezeit) abgelaufen ist und keine Relevanzinformationen eingegangen sind, erhält dieses Ereignis für das Training die Standardrelevanz. Die maximale Wartezeit beträgt 2 Tage. Wenn Ihr Szenario längere Belohnungswartezeiten erfordert (z. B. für E-Mail-Marketingkampagnen), steht Ihnen eine private Vorschau mit längeren Wartezeiten zur Verfügung. Erstellen Sie ein Supportticket im Azure-Portal, um sich mit dem Team in Verbindung zu setzen und zu erfahren, ob Sie für das Angebot qualifiziert sind und es Ihnen angeboten werden kann.
 
 ## <a name="best-practices-for-reward-wait-time"></a>Bewährte Methoden für die Belohnungswartezeit
 

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 06/18/2020
-ms.openlocfilehash: 03f80ebeb7b30d8c0fe14060335541d77b7523b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/18/2021
+ms.openlocfilehash: 08cf192a650c592d7e5624c556ee8dfc766292fa
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "90898629"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122831620"
 ---
 # <a name="create-python-model-module"></a>Modul „Create Python Model“
 
@@ -46,6 +46,7 @@ In diesem Artikel wird anhand einer einfachen Pipeline erläutert, wie Sie **Cre
 
 > [!NOTE]
 > Achten Sie besonders auf die Kommentare im Beispielcode des Skripts, und stellen Sie sicher, dass Ihr Skript strikt die Anforderungen einhält, einschließlich des Klassennamens, der Methoden sowie der Methodensignatur. Verstöße verursachen Ausnahmen. 
+> Beim **Erstellen eines Python-Modells** wird nur das Erstellen eines sklearn-basierten Modells unterstützt, das mit **Modell trainieren** trainiert werden soll.
 
    Der folgende Beispielcode der Naive Bayes-Klassifizierung mit zwei Klassen verwendet das beliebte *sklearn*-Paket:
 

@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 07/16/2021
+ms.date: 08/30/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 011b04e8e7931726b2585c5cbc606855001675fa
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: df7ec7aa9fe6fb73cd7d6871fe9b6a698e324899
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446338"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123219687"
 ---
 # <a name="what-is-risk"></a>Was bedeutet Risiko?
 
-Risikoerkennungen in Azure AD Identity Protection umfassen alle identifizierten verdächtigen Aktionen im Zusammenhang mit Benutzerkonten im Verzeichnis.
+Risikoerkennungen in Azure AD Identity Protection umfassen alle identifizierten verdächtigen Aktionen im Zusammenhang mit Benutzerkonten im Verzeichnis. Risikoerkennungen (im Zusammenhang mit Benutzern und Anmeldungen) tragen zur Gesamtrisikobewertung des Benutzers bei, die im Bericht zu riskanten Benutzern enthalten ist.
 
 Identity Protection bietet Organisationen Zugriff auf leistungsstarke Ressourcen, um diese verdächtigen Aktionen zu erkennen und schnell darauf zu reagieren. 
 
@@ -31,13 +31,13 @@ Identity Protection bietet Organisationen Zugriff auf leistungsstarke Ressourcen
 
 ## <a name="risk-types-and-detection"></a>Risikotypen und Erkennung
 
-Es gibt zwei Arten von Risiken (**Benutzerrisiken** und **Anmelderisiken**) und zwei Arten der Erkennung oder Berechnung (**Echtzeit** und **Offline**).
+Risiken können auf Ebene der **Benutzer** und der **Anmeldungen** erkannt werden, und es gibt zwei Arten der Erkennung oder Berechnung (**Echtzeit** und **Offline**).
 
 Erkennungen in Echtzeit werden bei der Berichterstellung möglicherweise 5-10 Minuten nicht angezeigt. Offlineerkennungen werden bei der Berichterstellung möglicherweise 2 bis 24 Stunden nicht angezeigt.
 
-### <a name="user-risk"></a>Benutzerrisiko
+### <a name="user-linked-detections"></a>Mit dem Benutzer verknüpfte Erkennungen
 
-Ein Benutzerrisiko stellt die Wahrscheinlichkeit dar, dass eine bestimmte Identität oder ein bestimmtes Konto kompromittiert wurde. 
+Riskante Aktivitäten können für einen Benutzer erkannt werden, der nicht mit einer bestimmten böswilligen Anmeldung verknüpft sind, sondern mit dem Benutzer selbst. Diese Risikoerkennungen werden offline anhand interner und externer Threat Intelligence-Quellen von Microsoft berechnet, z. B. Sicherheitsexperten, Strafverfolgungsbehörden, Sicherheitsteams bei Microsoft und anderen vertrauenswürdigen Quellen.
 
 Diese Risiken werden offline anhand interner und externer Threat Intelligence-Quellen von Microsoft berechnet, z. B. Sicherheitsexperten, Strafverfolgungsbehörden, Sicherheitsteams bei Microsoft und anderen vertrauenswürdigen Quellen.
 

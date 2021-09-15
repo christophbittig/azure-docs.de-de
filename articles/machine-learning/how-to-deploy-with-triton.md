@@ -11,12 +11,12 @@ ms.date: 05/17/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, devx-track-azurecli
-ms.openlocfilehash: 894b95b1fb00402f9cfed2614639b29ac5412f4b
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d1f45c5501395ff486101f7270212c8fb333aede
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114446430"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123436966"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Bereitstellung mit hoher Leistung mit Triton Inference Server (Vorschau) 
 
@@ -200,6 +200,16 @@ az ml service delete -n triton-densenet-onnx
 [!notebook-python[] (~/Azureml-examples-main/python-sdk/experimental/deploy-triton/1.bidaf-ncd-local.ipynb?name=delete-service)]
 
 ---
+
+## <a name="how-to-use-azure-machine-learning-triton-inference-server-container-image"></a>Verwenden des Azure Machine Learning-Containerimages für Triton Inference Server
+
+Erfahren Sie, wie Sie das Azure Machine Learning-Containerimage für Triton Inference Server mit der neuen [Befehlszeilenschnittstelle (V2)](/cli/azure/ml?view=azure-cli-latest&preserve-view=true) verwenden. In den folgenden Beispielen wird das Konzept von [Onlineendpunkten und -bereitstellungen](concept-endpoints.md#what-are-online-endpoints-preview) angewandt. 
+
+1. [Bereitstellen eines einzelnen Triton-Modells](https://github.com/Azure/azureml-examples/blob/main/cli/deploy-triton-managed-online-endpoint.sh)
+1. [Bereitstellen mehrerer Triton-Modelle](https://github.com/Azure/azureml-examples/blob/main/cli/deploy-triton-multiple-models-online-endpoint.sh)
+1. [Bereitstellen eines Triton-Ensemblemodells](https://github.com/Azure/azureml-examples/blob/main/cli/deploy-triton-ensemble-managed-online-endpoint.sh)
+1. Auschecken der [Triton-Beispiele](https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/online/triton)
+
 ## <a name="troubleshoot"></a>Problembehandlung
 
 * [Problembehandlung bei einer fehlerhaften Bereitstellung](how-to-troubleshoot-deployment.md): Erfahren Sie, wie Sie häufige Fehler behandeln und beheben oder umgehen können, die beim Bereitstellen eines Modells auftreten können.
