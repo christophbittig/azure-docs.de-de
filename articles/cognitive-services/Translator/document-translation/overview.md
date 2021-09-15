@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 08/09/2021
-ms.openlocfilehash: b55d8a806864b7d6d63f0801cbac224b80e328ef
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 64198fce7acb3ea02349978de0c2787cb744e6b4
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733223"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433888"
 ---
 # <a name="what-is-document-translation"></a>Was ist die Dokumentübersetzung?
 
@@ -45,7 +45,7 @@ Sie können Ihre Anwendungen mithilfe der REST-API oder eines SDK für Clientbib
 
 * [**REST-API**](reference/rest-api-guide.md). Dies ist eine sprachunabhängige Schnittstelle, mit der Sie HTTP-Anforderungen und Autorisierungsheader zum Übersetzen von Dokumenten erstellen können.
 
-* Die [**Clientbibliothek-SDKs**](client-sdks.md) sind sprachspezifische Klassen, Objekte, Methoden und Code, die Sie schnell verwenden können, indem Sie ihrem Projekt einen Verweis hinzufügen. Derzeit bietet die Dokumentübersetzung Unterstützung für die Programmiersprachen [**C#/.NET**](/dotnet/api/azure.ai.translation.document) und [**Python**](/python/azure-ai-translation-document/latest/azure.ai.translation.document.html).
+* Die [**Clientbibliothek-SDKs**](client-sdks.md) sind sprachspezifische Klassen, Objekte, Methoden und Code, die Sie schnell verwenden können, indem Sie ihrem Projekt einen Verweis hinzufügen. Derzeit bietet die Dokumentübersetzung Unterstützung für die Programmiersprachen [**C#/.NET**](/dotnet/api/azure.ai.translation.document) und [**Python**](https://pypi.org/project/azure-ai-translation-document/).
 
 ## <a name="get-started"></a>Erste Schritte
 

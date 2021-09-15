@@ -10,12 +10,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.reviewer: mimckitt
-ms.openlocfilehash: 8bf4c2842f6ec3cecc6e6cc014bb225115a1655f
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: d94ef853247b4f9fce90190004f156f6dc92d843
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123450411"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690874"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>Tutorial: Erstellen eines benutzerdefinierten Images eines virtuellen Azure-Computers mit der Azure CLI
 
@@ -43,7 +43,7 @@ Shared Image Gallery ermöglicht Ihnen die Freigabe Ihrer benutzerdefinierten VM
 
 Die Funktion „Katalog mit geteilten Images“ verfügt über mehrere Ressourcentypen:
 
-[!INCLUDE [virtual-machines-shared-image-gallery-resources](../includes/virtual-machines-shared-image-gallery-resources.md)]
+[!INCLUDE [virtual-machines-shared-image-gallery-resources](../../../includes/virtual-machines-shared-image-gallery-resources.md)]
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 

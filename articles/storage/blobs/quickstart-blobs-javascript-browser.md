@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 5d3836d46b7a6db071887918a1e2f915f298038f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f253be6bbcea46baa6c86f33223504bfba3ab198
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740171"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123475978"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -38,9 +38,6 @@ Zusätzliche Ressourcen:
     * [Debugger für Microsoft Edge](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-edge)
     * [Debugger für Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
     * [Debugger für Firefox](https://marketplace.visualstudio.com/items?itemName=firefox-devtools.vscode-firefox-debug)
-
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="object-model"></a>Objektmodell
 

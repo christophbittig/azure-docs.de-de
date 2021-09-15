@@ -5,25 +5,20 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: quickstart
-ms.date: 08/17/2021
+ms.date: 09/01/2021
 ms.author: duau
-ms.openlocfilehash: b5d4017c60a831b90b21527bbf8ecca4282bdd73
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 36be075345dcacdf8246f46462a2665718f27e7e
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322948"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123424796"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-the-azure-portal"></a>Schnellstart: Erstellen und Konfigurieren einer Route Server-Instanz mithilfe des Azure-Portals
 
 In diesem Artikel wird beschrieben, wie Sie Azure Route Server mithilfe des Azure-Portals für das Peering mit einem virtuellen Netzwerkgerät (Network Virtual Appliance, NVA) in Ihrem virtuellen Netzwerk konfigurieren. Azure Route Server lernt Routen vom NVA und programmiert sie auf den virtuellen Computern im virtuellen Netzwerk. Azure Route Server kündigt die virtuellen Netzwerkrouten auch für das NVA an. Weitere Informationen finden Sie unter [Azure Route Server](overview.md).
 
 :::image type="content" source="media/quickstart-configure-route-server-portal/environment-diagram.png" alt-text="Diagramm: Route Server-Bereitstellungsumgebung mit dem Azure-Portal" border="false":::
-
-> [!IMPORTANT]
-> Azure Route Server (Vorschau) befindet sich derzeit in der öffentlichen Vorschauphase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
