@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: 97189fd7a232c2467981b23dc20da51ebef08252
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f5059352793adf7cd3e8635d270ba85a3014758
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97656341"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434212"
 ---
 # <a name="create-a-data-streaming-job-in-azure-sql-edge"></a>Erstellen eines Datenstreamingauftrags in Azure SQL Edge 
 
@@ -104,7 +104,7 @@ Im folgenden Beispiel wird ein externes Streamobjekt für die lokale Datenbank i
 3. Erstellen Sie mit CREATE EXTERNAL DATA SOURCE eine externe Datenquelle. Im folgenden Beispiel:
 
     * Wird eine externe Datenquelle mit dem Namen *LocalSQLOutput* erstellt.
-    * Wird die externe Datenquellen (LOCATION = '<vendor>://<server>[:<port>]') identifiziert. Im Beispiel wird auf eine lokale Instanz von Azure SQL Edge verwiesen.
+    * werden externe Datenquellen (`LOCATION = '<vendor>://<server>[:<port>]'`) identifiziert. Im Beispiel wird auf eine lokale Instanz von Azure SQL Edge verwiesen.
     * Werden die zuvor erstellten Anmeldeinformationen verwendet.
 
     ```sql

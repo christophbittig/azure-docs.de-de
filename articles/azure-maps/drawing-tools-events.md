@@ -1,19 +1,19 @@
 ---
 title: Ereignisse von Zeichentools | Microsoft Azure Maps
 description: In diesem Artikel erfahren Sie, wie Sie einer Karte mithilfe des Microsoft Azure Maps Web SDK eine Zeichnungssymbolleiste hinzufügen.
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 12/05/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: edb3b0bdcd5d8e9f80493267cad3ccbfa07a576f
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: ebafc4ac95afd4c9b6d414966d616ee7315414c1
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114665208"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123437776"
 ---
 # <a name="drawing-tool-events"></a>Ereignisse von Zeichentools
 
@@ -32,7 +32,7 @@ Der folgende Code zeigt, wie die Ereignisse im Zeichentools-Modul funktionieren.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Ereignisse von Zeichentools" src="https://codepen.io/azuremaps/embed/dyPMRWo?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="Ereignisse von Zeichentools" src="https://codepen.io/azuremaps/embed/dyPMRWo?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/dyPMRWo'>Drawing tools events</a> (Ereignisse von Zeichentools) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -48,7 +48,7 @@ Dieser Code veranschaulicht die Überwachung eines Ereignisses, bei dem ein Benu
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Auswählen von Daten in einem gezeichneten Polygonbereich" src="https://codepen.io/azuremaps/embed/XWJdeja?height=500&theme-id=default&default-tab=result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="Auswählen von Daten in einem gezeichneten Polygonbereich" src="https://codepen.io/azuremaps/embed/XWJdeja?height=500&theme-id=default&default-tab=result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/XWJdeja'>Select data in drawn polygon area</a> (Auswählen von Daten in einem gezeichneten Polygonbereich) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -60,7 +60,7 @@ Dieser Code sucht innerhalb des Bereichs einer Form nach POIs, nachdem der Benut
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Zeichnen und Suchen in einem Polygonbereich" src="https://codepen.io/azuremaps/embed/eYmZGNv?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="Zeichnen und Suchen in einem Polygonbereich" src="https://codepen.io/azuremaps/embed/eYmZGNv?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/eYmZGNv'>Draw and search in polygon area</a> (Zeichnen und Suchen in einem Polygonbereich) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -72,7 +72,7 @@ Der folgende Code veranschaulicht, wie mithilfe von Zeichenereignissen ein Messt
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Messtool" src="https://codepen.io/azuremaps/embed/RwNaZXe?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="Messtool" src="https://codepen.io/azuremaps/embed/RwNaZXe?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/RwNaZXe'>Measuring tool</a> (Messtool) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 

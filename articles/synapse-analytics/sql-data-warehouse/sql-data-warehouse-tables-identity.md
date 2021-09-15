@@ -11,12 +11,12 @@ ms.date: 07/20/2020
 ms.author: emtehran
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 9ee0108e4567199b7bbf1b52222c1ab14e2837be
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: f4ae68478bf1e964fe2539f25e11ed27645f7a62
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113005328"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541925"
 ---
 # <a name="using-identity-to-create-surrogate-keys-using-dedicated-sql-pool-in-azuresynapse-analytics"></a>Verwenden von IDENTITY zum Erstellen von Ersatzschlüsseln mithilfe eines dedizierten SQL-Pools in Azure Synapse Analytics
 
@@ -164,7 +164,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > Aktuell ist es nicht möglich, `CREATE TABLE AS SELECT` zu verwenden, wenn Sie Daten mit einer IDENTITY-Spalte in eine Tabelle laden.
 >
 
-Weitere Informationen zum Laden von Daten finden Sie unter [Entwerfen von ELT-Prozessen für dedizierte SQL-Pools](design-elt-data-loading.md) und [Bewährte Methoden zum Laden von Daten](guidance-for-loading-data.md).
+Weitere Informationen zum Laden von Daten finden Sie unter [Entwerfen von ELT-Prozessen für dedizierte SQL-Pools](design-elt-data-loading.md) und [Bewährte Methoden zum Laden von Daten](../sql/data-loading-best-practices.md).
 
 ## <a name="system-views"></a>Systemsichten
 

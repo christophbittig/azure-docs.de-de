@@ -7,12 +7,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/02/2021
 ms.custom: template-concept
-ms.openlocfilehash: c9a5ac391607249393d362f0e0b5b007989ea138
-ms.sourcegitcommit: 9caa850a2b26773e238f8ba6f4ca151c47260915
+ms.openlocfilehash: 1d6e7d6dd94efb11f5a2ea7cc8263f7916926fbe
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2021
-ms.locfileid: "113601380"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123475762"
 ---
 # <a name="configure-data-loss-prevention-for-azure-cognitive-services"></a>Konfigurieren der Verhinderung von Datenverlust für Azure Cognitive Services
 
@@ -103,7 +103,6 @@ Die folgenden Dienste unterstützen die Konfiguration zur Verhinderung von Daten
 - Content Moderator
 - Custom Vision
 - Gesicht
-- Formularerkennung
 - Spracherkennungsdienst
 - QnA Maker
 

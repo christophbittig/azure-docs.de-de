@@ -2,18 +2,17 @@
 title: Ermitteln und Erkunden von Daten in ADF mithilfe von Purview
 description: Hier erfahren Sie, wie Sie Daten in Azure Data Factory mithilfe von Purview ermitteln und erkunden können.
 ms.service: data-factory
-ms.subservice: data-movement
 ms.topic: conceptual
 author: linda33wj
 ms.author: jingwang
 ms.custom: seo-lt-2019
 ms.date: 08/10/2021
-ms.openlocfilehash: 145f7c50d6fdd2fef5e1f31e029c06434fa2e8e5
-ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
+ms.openlocfilehash: 037e7fadd84d3b3b7405507a6116ed1e8c0ef59d
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122356443"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427046"
 ---
 # <a name="discover-and-explore-data-in-adf-using-purview"></a>Ermitteln und Erkunden von Daten in ADF mithilfe von Purview
 

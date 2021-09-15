@@ -1,20 +1,20 @@
 ---
 title: Erstellen einer Datenquelle für Android-Karten | Microsoft Azure Maps
 description: 'Hier wird erläutert, wie Sie eine Datenquelle für eine Karte erstellen. Hier erfahren Sie mehr über die Datenquellen, die vom Azure Maps Android SDK verwendet werden: GeoJSON-Quellen und Vektorkacheln.'
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 9ea96613425ec3802080277da9ac674af4e87c52
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: e66d1aeaa87ac170cf692360e614335a98802e5a
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114669087"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430664"
 ---
 # <a name="create-a-data-source-android-sdk"></a>Erstellen einer Datenquelle (Android SDK)
 

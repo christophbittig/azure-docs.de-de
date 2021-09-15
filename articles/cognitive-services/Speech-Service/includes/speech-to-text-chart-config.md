@@ -3,25 +3,25 @@ title: Installieren von Speech-Containern
 titleSuffix: Azure Cognitive Services
 description: Beschreibt die Konfigurationsoptionen für ein Helm-Diagramm zur Spracherkennung.
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 05/05/2020
-ms.author: lajanuar
-ms.openlocfilehash: 3181702921e0673a5b707cd0564d08a9c30bc1dd
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 0726b01ea082df91d426a66d36f7ad5f83babba4
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122262128"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123646410"
 ---
 ### <a name="speech-to-text-sub-chart-chartsspeechtotext"></a>Spracherkennung (Unterdiagramm: charts/speechToText)
 
 Zum Überschreiben des übergeordneten Diagramms fügen Sie das Präfix `speechToText.` bei einem beliebigen Parameter hinzu, um das Diagramm genauer zu definieren. Dadurch wird der entsprechende Parameter überschrieben. Beispielsweise überschreibt `speechToText.numberOfConcurrentRequest` den Parameter `numberOfConcurrentRequest`.
 
-|Parameter|BESCHREIBUNG|Standard|
+|Parameter|Beschreibung|Standard|
 | -- | -- | -- |
 | `enabled` | Gibt an, ob der **Spracherkennungs**-Dienst aktiviert ist. | `false` |
 | `numberOfConcurrentRequest` | Die Anzahl gleichzeitiger Anforderungen für den **Spracherkennungs**-Dienst. In diesem Diagramm werden automatisch CPU- und Speicherressourcen basierend auf diesem Wert berechnet. | `2` |

@@ -4,12 +4,12 @@ ms.service: api-management
 ms.topic: include
 ms.date: 01/26/2021
 ms.author: danlep
-ms.openlocfilehash: a9dbedd8516f3a3a592c7fd4f4f5563011d6c6db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f651dc7990212347d3179b9d4eddf7bf733ef6fd
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99491009"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123646342"
 ---
 #### <a name="requirements-for-key-vault-firewall"></a>Anforderungen an Key Vault-Firewall
 
@@ -25,4 +25,4 @@ Wenn die API Management-Instanz in einem virtuellen Netzwerk bereitgestellt wird
 * Aktivieren Sie im API Management-Subnetz einen [Dienstendpunkt](../articles/key-vault/general/overview-vnet-service-endpoints.md) für Azure Key Vault.
 * Konfigurieren Sie eine Netzwerksicherheitsgruppen-Regel (NSG), um ausgehenden Datenverkehr an die [Diensttags](../articles/virtual-network/service-tags-overview.md) AzureKeyVault und AzureActiveDirectory zuzulassen. 
 
-Weitere Informationen zur Netzwerkkonfiguration finden Sie unter [Herstellen einer Verbindung mit einem virtuellen Netzwerk](../articles/api-management/api-management-using-with-vnet.md#-common-network-configuration-issues).
+Weitere Informationen zur Netzwerkkonfiguration finden Sie unter [Herstellen einer Verbindung mit einem virtuellen Netzwerk](../articles/api-management/api-management-using-with-vnet.md#network-configuration).

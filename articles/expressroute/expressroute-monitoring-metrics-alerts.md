@@ -1,18 +1,17 @@
 ---
 title: 'Azure ExpressRoute: Überwachung, Metriken und Warnungen'
 description: Hier erfahren Sie mehr über die Azure ExpressRoute-Überwachung, -Metriken und -Warnungen mithilfe von Azure Monitor, der zentralen Anlaufstelle für alle Metriken, Warnungen und Diagnoseprotokolle in Azure.
-services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 04/07/2021
 ms.author: duau
-ms.openlocfilehash: 44ddf54aac61ab00009e7e2cc820b38074c5e8c3
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: abcec496f6bf3fdcd42dcffa66ecfb67533c7052
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725780"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123449493"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute-Überwachung, Metriken und Warnungen
 
@@ -42,22 +41,22 @@ Der Metriken-Explorer unterstützt die folgenden [Aggregationstypen](../azure-mo
 
 |**Metrik**|**Kategorie**|**Dimension(en)**|**Feature(s)**|
 | --- | --- | --- | --- |
-|ARP-Verfügbarkeit|Verfügbarkeit|<ui><li>Peer (Primärer/Sekundärer ExpressRoute-Router)</ui></li><ui><li> Peeringtyp (Privat/Öffentlich/Microsoft)</ui></li>|ExpressRoute|
-|BGP-Verfügbarkeit|Verfügbarkeit|<ui><li> Peer (Primärer/Sekundärer ExpressRoute-Router)</ui></li><ui><li> Peeringtyp</ui></li>|ExpressRoute|
-|BitsInPerSecond|Verkehr|<ui><li> Peeringtyp (ExpressRoute)</ui></li><ui><li>Link (ExpressRoute Direct)</ui></li>|<li>ExpressRoute</li><li>ExpressRoute Direct</li><ui><li>ExpressRoute-Gatewayverbindung</ui></li>|
-|BitsOutPerSecond|Verkehr| <ui><li>Peeringtyp (ExpressRoute)</ui></li><ui><li> Link (ExpressRoute Direct) |<ui><li>ExpressRoute<ui><li>ExpressRoute Direct</ui></li><ui><li>ExpressRoute-Gatewayverbindung</ui></li>|
-|CPU-Auslastung|Leistung| <ui><li>Instanz</ui></li>|ExpressRoute-Gateway für virtuelle Netzwerke|
-|Pakete pro Sekunde|Leistung| <ui><li>Instanz</ui></li>|ExpressRoute-Gateway für virtuelle Netzwerke|
-|Anzahl der für Peer angekündigten Routen |Verfügbarkeit| <ui><li>Instanz</ui></li>|ExpressRoute-Gateway für virtuelle Netzwerke|
-|Anzahl der von Peer gelernten Routen |Verfügbarkeit| <ui><li>Instanz</ui></li>|ExpressRoute-Gateway für virtuelle Netzwerke|
-|Häufigkeit der Routenänderung |Verfügbarkeit| <ui><li>Instanz</ui></li>|ExpressRoute-Gateway für virtuelle Netzwerke|
+|ARP-Verfügbarkeit|Verfügbarkeit|<ul><li>Peer (Primärer/Sekundärer ExpressRoute-Router)</li><li> Peeringtyp (Privat/Öffentlich/Microsoft)</li></ul>|ExpressRoute|
+|BGP-Verfügbarkeit|Verfügbarkeit|<ul><li> Peer (Primärer/Sekundärer ExpressRoute-Router)</li><li> Peeringtyp</li></ul>|ExpressRoute|
+|BitsInPerSecond|Verkehr|<ul><li> Peeringtyp (ExpressRoute)</li><li>Link (ExpressRoute Direct)</li></ul>|<ul><li>ExpressRoute</li><li>ExpressRoute Direct</li><li>ExpressRoute-Gatewayverbindung</li></ul>|
+|BitsOutPerSecond|Verkehr| <ul><li>Peeringtyp (ExpressRoute)</li><li> Link (ExpressRoute Direct)</li></ul> |<ul><li>ExpressRoute</li><li>ExpressRoute Direct</li><li>ExpressRoute-Gatewayverbindung</li></ul>|
+|CPU-Auslastung|Leistung| <ul><li>Instanz</li></ul>|ExpressRoute-Gateway für virtuelle Netzwerke|
+|Pakete pro Sekunde|Leistung| <ul><li>Instanz</li></ul>|ExpressRoute-Gateway für virtuelle Netzwerke|
+|Anzahl der für Peer angekündigten Routen |Verfügbarkeit| <ul><li>Instanz</li></ul>|ExpressRoute-Gateway für virtuelle Netzwerke|
+|Anzahl der von Peer gelernten Routen |Verfügbarkeit| <ul><li>Instanz</li></ul>|ExpressRoute-Gateway für virtuelle Netzwerke|
+|Häufigkeit der Routenänderung |Verfügbarkeit| <ul><li>Instanz</li></ul>|ExpressRoute-Gateway für virtuelle Netzwerke|
 |Anzahl der virtuellen Computer im virtuellen Netzwerk |Verfügbarkeit| – |ExpressRoute-Gateway für virtuelle Netzwerke|
-|GlobalReachBitsInPerSecond|Verkehr|<ui><li>Dienstschlüssel der Peeringleitung</ui></li>|Global Reach|
-|GlobalReachBitsOutPerSecond|Verkehr|<ui><li>Dienstschlüssel der Peeringleitung</ui></li>|Global Reach|
+|GlobalReachBitsInPerSecond|Verkehr|<ul><li>Dienstschlüssel (Skey) der Peeringleitung (Skey)</li></ul>|Global Reach|
+|GlobalReachBitsOutPerSecond|Verkehr|<ul><li>Dienstschlüssel (Skey) der Peeringleitung (Skey)</li></ul>|Global Reach|
 |AdminState|Physische Konnektivität|Link|ExpressRoute Direct|
 |LineProtocol|Physische Konnektivität|Link|ExpressRoute Direct|
-|RxLightLevel|Physische Konnektivität|<ui><li>Link</ui></li><ui><li>Bereich</ui></li>|ExpressRoute Direct|
-|TxLightLevel|Physische Konnektivität|<ui><li>Link</ui></li><ui><li>Bereich</ui></li>|ExpressRoute Direct|
+|RxLightLevel|Physische Konnektivität|<ul><li>Link</li><li>Bereich</li></ul>|ExpressRoute Direct|
+|TxLightLevel|Physische Konnektivität|<ul><li>Link</li><li>Bereich</li></ul>|ExpressRoute Direct|
 >[!NOTE]
 >Die Verwendung von *GlobalGlobalReachBitsInPerSecond* und *GlobalGlobalReachBitsOutPerSecond* ist nur sichtbar, wenn mindestens eine Global Reach-Verbindung hergestellt wird.
 >

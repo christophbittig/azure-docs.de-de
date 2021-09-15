@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 6af0f2b5221a737687578e939c14cecf3be14509
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 88387bbe51d71a2530d25608fee962e926cd6511
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88932915"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123449151"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>Grundlegendes zu OData-Sammlungsfiltern in der kognitiven Azure-Suche
 
@@ -108,9 +108,6 @@ So wird `Rooms/Description` für die Volltextsuche gespeichert:
 | Ansicht | 1 |
 
 Im Gegensatz zum obigen Filter, der im Wesentlichen besagt, dass „Dokumente ermittelt werden sollen, in denen `Type` für ein Zimmer gleich „Deluxe Room“ (Luxuszimmer) und `BaseRate` für **dieses gleiche Zimmer** kleiner als 100 ist“, besagt die Suchabfrage, dass „Dokumente ermittelt werden sollen, in denen `Rooms/Type` den Begriff „deluxe“ und `Rooms/Description` den Begriff „city view“ (Aussicht auf die Stadt) enthält. Es gibt kein Konzept für einzelne Zimmer, deren Felder im letzteren Fall korreliert werden können.
-
-> [!NOTE]
-> Wenn Sie möchten, dass der kognitiven Azure-Suche Unterstützung für die korrelierte Suche hinzugefügt wird, stimmen Sie bitte für [dieses Benutzerfeedbackelement](https://feedback.azure.com/forums/263029-azure-search/suggestions/37735060-support-correlated-search-on-complex-collections) ab.
 
 ## <a name="inverted-indexes-and-collections"></a>Invertierte Indizes und Sammlungen
 

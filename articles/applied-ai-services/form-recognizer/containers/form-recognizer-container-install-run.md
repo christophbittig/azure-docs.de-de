@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/01/2021
 ms.author: lajanuar
 keywords: Lokal, Docker, Container, Identifizieren
-ms.openlocfilehash: 5f8e0c17fd7f76ddb28072e292bbe4ae39dab64c
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 700e49f1fb635cc93797c5b39463dc3d76018c7e
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343698"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123480964"
 ---
 # <a name="install-and-run-form-recognizer-v21-preview-containers"></a>Installieren und Ausführen der Container für die Formularerkennung v2.1 (Vorschau)
 
@@ -625,5 +625,3 @@ Das ist alles! In diesem Artikel haben Sie die Konzepte und Workflows zum Herunt
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Konfigurationseinstellungen für Formularerkennungscontainer](form-recognizer-container-configuration.md) 
-* [Imagetags für den Formularerkennungscontainer](../../../cognitive-services/containers/container-image-tags.md?tabs=current#form-recognizer)
-* [Supportseite und Versionshinweise für den Cognitive Services-Container](../../../cognitive-services/containers/container-image-tags.md?tabs=current#form-recognizer)
