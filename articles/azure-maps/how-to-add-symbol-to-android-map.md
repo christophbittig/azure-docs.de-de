@@ -228,7 +228,7 @@ Der folgende Screenshot zeigt, wie durch den oben aufgeführten Code ein Punktfe
 
 Das Azure Maps Android SDK enthält eine Reihe vordefinierter Farbvariationen des Standardmarkersymbols. So kann beispielsweise `marker-red` in der Option `iconImage` einer Symbolebene übergeben werden, um eine rote Version des Markersymbols auf dieser Ebene zu rendern.
 
-::: zone pivot=&quot;programming-language-java-android&quot;
+::: zone pivot="programming-language-java-android"
 
 ```java
 SymbolLayer layer = new SymbolLayer(source,
