@@ -1,20 +1,20 @@
 ---
 title: Erstellen einer Datenquelle für eine Karte in Microsoft Azure Maps
 description: 'Hier wird erläutert, wie Sie eine Datenquelle für eine Karte erstellen. Sie erfahren mehr über die Datenquellen, die vom Azure Maps Web SDK verwendet werden: GeoJSON-Quellen und Vektorkacheln.'
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: d20be688ccd13e7f053c4633a91cc5ce7a6cc34f
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: bb5050d1305f88987ed7ac38a8217e6b4f9c724e
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114669070"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425768"
 ---
 # <a name="create-a-data-source"></a>Erstellen einer Datenquelle
 
@@ -132,7 +132,7 @@ map.layers.add(flowLayer, 'labels');
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Linienebene der Vektorkachel" src="https://codepen.io/azuremaps/embed/wvMXJYJ?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="Linienebene der Vektorkachel" src="https://codepen.io/azuremaps/embed/wvMXJYJ?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/wvMXJYJ'>Vector tile line layer</a> (Linienebene der Vektorkachel) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 

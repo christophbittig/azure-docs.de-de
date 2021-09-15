@@ -4,15 +4,15 @@ description: Hier erfahren Sie, wie Daten aus Ihrer Azure IoT Central-Anwendung 
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 06/25/2020
+ms.date: 08/30/2021
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: cd4df6157d4b163a6c475b0f627a1d96466f8ae5
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 8235da7781ec55a90c81fca3a6393e5d1eda5c2f
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835814"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123481198"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-legacy"></a>Exportieren von IoT-Daten zu Cloudzielen mithilfe des Datenexports (Legacy)
 

@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: f21dc3251a64a3a432320e1d7a1f64abc124b61e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a97d855730a67111f66d201b6ca177975540d535
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349783"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427883"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Voraussetzungen für die Bereitstellung von Azure Cloud Services (erweiterter Support)
 
@@ -76,19 +76,19 @@ Die folgenden Größen sind in Azure Resource Manager veraltet. Wenn Sie diese j
 
 | Vorheriger Name der Größe | Aktualisierter Name der Größe | 
 |---|---|
-| Sehr klein | Standard_A0 | 
-| Small | Standard_A1 |
-| Medium | Standard_A2 | 
-| Large | Standard_A3 | 
-| Extragroß | Standard_A4 | 
-| A5 | Standard_A5 | 
-| A6 | Standard_A6 | 
-| A7 | Standard_A7 |  
-| A8 | Standard_A8 | 
-| A9 | Standard_A9 |
-| A10 | Standard_A10 | 
-| A11 | Standard_A11 | 
-| MSODSG5 | Standard_MSODSG5 | 
+| Sehr klein | Standard_A1_v2 | 
+| Klein | Standard_A1_v2 |
+| Medium | Standard_A2_v2 | 
+| Groß | Standard_A4_v2 | 
+| Extragroß | Standard_A8_v2 | 
+| A5 | Standard_A2m_v2 | 
+| A6 | Standard_A4m_v2 | 
+| A7 | Standard_A8m_v2 |  
+| A8 | Als veraltet markiert | 
+| A9 | Als veraltet markiert |
+| A10 | Als veraltet markiert | 
+| A11 | Als veraltet markiert | 
+| MSODSG5 | Als veraltet markiert | 
 
  Beispielsweise wird `<WorkerRole name="WorkerRole1" vmsize="Medium"` zu `<WorkerRole name="WorkerRole1" vmsize="Standard_A2"`.
  

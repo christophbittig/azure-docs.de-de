@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: a720eec0c112b54fab0a1651c388b6e0514128c3
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: b77eadcbd46c4cac442ed26af94d5781d225806a
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094940"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123475780"
 ---
 # <a name="azure-cognitive-services-security"></a>Sicherheit von Azure Cognitive Services
 
@@ -209,9 +209,6 @@ Für die folgenden Dienste greifen die Microsoft-Techniker im Tarif „E0“ auf
 * Gesicht
 * Content Moderator
 * Personalisierung
-
-> [!IMPORTANT]
-> Für die **Formularerkennung** greifen Microsoft-Techniker auf keine Kundendaten in Ressourcen zu, die nach dem 10. Juli 2020 erstellt wurden.
 
 Wenn Sie die Verwendung der E0-SKU beantragen möchten, füllen Sie dieses  [Anforderungsformular](https://aka.ms/cogsvc-cmk) aus, und reichen Sie es ein. Nach ca. 3–5 Werktagen erhalten Sie eine Rückmeldung zum Status Ihrer Anforderung. Je nach Bedarf können Sie in einer Warteschlange platziert und genehmigt werden, sobald Platz verfügbar ist. Nachdem Ihre Verwendung der E0-SKU mit LUIS genehmigt wurde, müssen Sie im Azure-Portal eine neue Ressource erstellen und E0 als Tarif auswählen. Benutzer können kein Upgrade von F0 auf die neue E0-SKU durchführen.
 

@@ -3,19 +3,19 @@ title: 'API für lange Audioinhalte: Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie die API für lange Audioinhalte für die asynchrone Synthese von langen Sprachsynthesen konzipiert ist.
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.author: lajanuar
-ms.openlocfilehash: 62546d4f7a1cd93d787faee22132d967bb0def8d
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 006ccace3cbaeefbb2c330c8ef29e7b19ba4151f
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122350132"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538613"
 ---
 # <a name="long-audio-api"></a>API für lange Audioinhalte
 
@@ -425,7 +425,7 @@ Die abgeschlossene `long_audio_synthesis_client.py` ist auf [GitHub](https://git
 
 In der folgenden Tabelle werden die HTTP-Antwortcodes und -Nachrichten von der REST-API ausführlich erläutert.
 
-| API | HTTP-Statuscode | BESCHREIBUNG | Lösung |
+| API | HTTP-Statuscode | Beschreibung | Lösung |
 |-----|------------------|-------------|----------|
 | Erstellen | 400 | Die Stimmensynthese ist in dieser Region nicht aktiviert. | Verwenden Sie einen Speech-Abonnementschlüssel mit einer unterstützten Region. |
 |        | 400 | Nur das **Standard**-Speech-Abonnement für diese Region ist gültig. | Ändern Sie den Speech-Abonnementschlüssel in den Tarif „Standard“. |

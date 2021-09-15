@@ -9,12 +9,12 @@ author: timoklimmer
 ms.author: tklimmer
 ms.topic: conceptual
 ms.date: 04/29/2021
-ms.openlocfilehash: 13da66fbe5b79026028dc6c525283e40f1d55dad
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3e071ad5f86d13270144ec8eb7839f31601b5c39
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339814"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123432304"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Unterstützte Datenplattformen für Data Science Virtual Machine
 
@@ -39,7 +39,7 @@ Folgende Datenplattformen werden von der DSVM unterstützt.
 > Der Support für Machine Learning Server (eigenständig) endet am 1. Juli 2021. Sie wird nach dem 30. Juni aus den DSVM-Images entfernt. Vorhandene Bereitstellungen haben weiterhin Zugriff auf die Software, aber aufgrund des erreichten Enddatums für den Support wird sie nach dem 1. Juli 2021 nicht mehr unterstützt.
 
 > [!NOTE]
-> Wir werden SQL Server Developer Edition bis Ende November 2021 aus DSVM-Images entfernen. Für vorhandene Bereitstellungen ist weiterhin SQL Server Developer Edition installiert. Wenn Sie in neuen Bereitstellungen Zugriff auf SQL Server Developer Edition benötigen, können Sie es über die Docker-Unterstützung installieren und verwenden. Weitere Informationen finden Sie unter [Schnellstart: Ausführen von SQL Server-Containerimages mit Docker](/sql/linux/quickstart-install-connect-docker?view=sql-server-ver15&pivots=cs1-).
+> Wir werden SQL Server Developer Edition bis Ende November 2021 aus DSVM-Images entfernen. Für vorhandene Bereitstellungen ist weiterhin SQL Server Developer Edition installiert. Wenn Sie in neuen Bereitstellungen Zugriff auf SQL Server Developer Edition benötigen, können Sie es über die Docker-Unterstützung installieren und verwenden. Weitere Informationen finden Sie unter [Schnellstart: Ausführen von SQL Server-Containerimages mit Docker](/sql/linux/quickstart-install-connect-docker?view=sql-server-ver15&pivots=cs1-bash&preserve-view=true).
 
 ### <a name="windows"></a>Windows
 

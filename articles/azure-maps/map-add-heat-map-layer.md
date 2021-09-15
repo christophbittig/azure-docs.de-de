@@ -1,20 +1,18 @@
 ---
 title: Hinzufügen einer Wärmebildebene zu einer Karte | Microsoft Azure Maps
 description: Informationen zum Erstellen eines Wärmebilds. Erfahren Sie, wie Sie einer Karte mit dem Azure Maps Web SDK eine Wärmebildebene hinzufügen. Lernen Sie, Wärmebildebenen anzupassen.
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
-services: azure-maps
-manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 0145460746665756f007c50845a279743dc60ae1
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 181cd714f85195157b767062cac99caadd32e817
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114666318"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123432754"
 ---
 # <a name="add-a-heat-map-layer"></a>Hinzufügen einer Wärmebildebene
 
@@ -60,7 +58,7 @@ Hier finden Sie das vollständige, ausführbare Codebeispiel für den oben erlä
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Einfache Wärmebildebene' src='//codepen.io/azuremaps/embed/gQqdQB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/gQqdQB/'>Simple Heat Map Layer</a> (Einfache Wärmebildebene) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Einfache Wärmebildebene' src='//codepen.io/azuremaps/embed/gQqdQB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/gQqdQB/'>Simple Heat Map Layer</a> (Einfache Wärmebildebene) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="customize-the-heat-map-layer"></a>Anpassen der Wärmebildebene
@@ -89,7 +87,7 @@ Mit diesem Tool können Sie die verschiedenen Optionen für Wärmebildebenen tes
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Optionen für Wärmebildebenen' src='//codepen.io/azuremaps/embed/WYPaXr/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/WYPaXr/'>Line Layer Options</a> (Linienebeneoptionen) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Optionen für Wärmebildebenen' src='//codepen.io/azuremaps/embed/WYPaXr/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/WYPaXr/'>Line Layer Options</a> (Linienebeneoptionen) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="consistent-zoomable-heat-map"></a>Konsistentes zoombares Wärmebild
@@ -102,11 +100,11 @@ Wenn der Radius so skaliert wird, dass er sich mit jeder Zoomebene verdoppelt, w
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Konsistentes zoombares Wärmebild" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="Konsistentes zoombares Wärmebild" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
 Anzeigen des <a href='https://codepen.io/azuremaps/pen/OGyMZr/'>konsistenten zoombaren Wärmebilds</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) in <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Der `zoom`-Ausdruck kann nur in `step`- und `interpolate`-Ausdrücken verwendet werden. Der folgende Ausdruck kann verwendet werden, um einen Radius in Metern anzunähern. Dieser Ausdruck verwendet einen Platzhalter `radiusMeters`, den Sie durch den gewünschten Radius ersetzen sollten. Dieser Ausdruck berechnet den ungefähren Pixelradius für einen Zoomfaktor am Äquator für die Zoomfaktoren 0 und 24 und verwendet einen `exponential interpolation`-Ausdruck, um auf dieselbe Weise zwischen diesen Werten zu skalieren, wie das Kachelsystem in der Karte funktioniert.
+Der `zoom`-Ausdruck kann nur in `step`- und `interpolate`-Ausdrücken verwendet werden. Der folgende Ausdruck kann für eine ungefähre Berechnung eines Radius in Metern verwendet werden. Dieser Ausdruck verwendet den Platzhalter `radiusMeters`, den Sie durch den gewünschten Radius ersetzen. Dieser Ausdruck berechnet den ungefähren Pixelradius für einen Zoomfaktor am Äquator für die Zoomfaktoren 0 und 24 und verwendet einen `exponential interpolation`-Ausdruck, um auf dieselbe Weise zwischen diesen Werten zu skalieren, wie das Kachelsystem in der Karte funktioniert.
 
 ```json
 [

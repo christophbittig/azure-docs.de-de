@@ -2,13 +2,13 @@
 title: Bereitstellen von Ressourcen in Ressourcengruppen mithilfe von Bicep
 description: Hier wird erläutert, wie Ressourcen in einer Bicep-Datei bereitgestellt werden. Es wird gezeigt, wie Sie mehrere Ressourcengruppen als Ziel festlegen.
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 4d68d0d28763c21574a3fd4f2f4c57561759e51e
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.date: 09/02/2021
+ms.openlocfilehash: 57e6814a8d7acd5c35995e037c2fd0c1c6804819
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634476"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426938"
 ---
 # <a name="resource-group-deployments-with-bicep-files"></a>Bereitstellung von Ressourcengruppen mit Bicep-Dateien
 
@@ -191,7 +191,7 @@ Weitere Informationen finden Sie unter [Verwaltungsgruppe](deploy-to-management-
 
 Zum Bereitstellen von Ressourcen in der Zielressourcengruppe definieren Sie die Ressourcen im Abschnitt `resources` der Vorlage. Mit der folgenden Vorlage wird ein Speicherkonto in der Ressourcengruppe erstellt, die im Bereitstellungsvorgang angegeben ist.
 
-:::code language="bicep" source="~/azure-docs-bicep-samples/get-started-with-bicep-files/add-output/azuredeploy.bicep":::
+:::code language="bicep" source="~/azure-docs-bicep-samples/samples/create-storage-account/azuredeploy.bicep":::
 
 ## <a name="deploy-to-multiple-resource-groups"></a>Bereitstellen in mehreren Ressourcengruppen
 

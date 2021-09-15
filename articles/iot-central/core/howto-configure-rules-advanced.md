@@ -3,16 +3,16 @@ title: Integrieren Ihrer Azure IoT Central-Anwendung in andere Clouddienste mi
 description: In diesem Anleitungsartikel für Entwickler erfahren Sie, wie Sie Regeln und Aktionen für die Integration Ihrer Azure IoT Central-Anwendung in andere Clouddienste konfigurieren. Für die Erstellung einer erweiterten Regel wird ein IoT Central-Connector in Power Automate oder Azure Logic Apps verwendet.
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/12/2020
+ms.date: 08/26/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 9cbcfa355198b94a60242503745f5cfc183e170d
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: b90e96975dadc1f7fb168345aa89b98bb6a22b9c
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109683754"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123473584"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>Integrieren Ihrer Azure IoT Central-Anwendung in andere Clouddienste mithilfe von Workflows
 
@@ -97,7 +97,7 @@ Verwenden Sie diese Aktion, um ein Gerät in Ihrer IoT Central-Anwendung zu ers
 
 Verwenden Sie diese Aktion, um ein Gerät aus Ihrer IoT Central-Anwendung zu löschen.
 
-| Feld | BESCHREIBUNG |
+| Feld | Beschreibung |
 | ----- | ----------- |
 | Anwendung | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
 | Sicherungsmedium | Die eindeutige ID des zu löschenden Geräts. |
@@ -106,7 +106,7 @@ Verwenden Sie diese Aktion, um ein Gerät aus Ihrer IoT Central-Anwendung zu l�
 
 Verwenden Sie diese Aktion, um einen Befehl auszuführen, der in einer der Schnittstellen des Geräts definiert ist.
 
-| Feld | BESCHREIBUNG |
+| Feld | Beschreibung |
 | ----- | ----------- |
 | Anwendung | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
 | Sicherungsmedium | Die eindeutige ID des zu löschenden Geräts. |
@@ -133,7 +133,7 @@ Die zurückgegebenen Details können in den dynamischen Ausdrücken in anderen A
 
 Verwenden Sie diese Aktion, um die Cloudeigenschaftswerte für ein bestimmtes Gerät abzurufen.
 
-| Feld | BESCHREIBUNG |
+| Feld | Beschreibung |
 | ----- | ----------- |
 | Anwendung | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
 | Sicherungsmedium | Die eindeutige ID des zu löschenden Geräts. |
@@ -145,7 +145,7 @@ Die zurückgegebenen Cloudeigenschaftswerte können in den dynamischen Ausdrück
 
 Verwenden Sie diese Aktion, um die Eigenschaftswerte für ein bestimmtes Gerät abzurufen.
 
-| Feld | BESCHREIBUNG |
+| Feld | Beschreibung |
 | ----- | ----------- |
 | Anwendung | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
 | Sicherungsmedium | Die eindeutige ID des zu löschenden Geräts. |
@@ -157,7 +157,7 @@ Die zurückgegebenen Eigenschaftswerte können in den dynamischen Ausdrücken in
 
 Verwenden Sie diese Aktion, um die Telemetriewerte für ein bestimmtes Gerät abzurufen.
 
-| Feld | BESCHREIBUNG |
+| Feld | Beschreibung |
 | ----- | ----------- |
 | Anwendung | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
 | Sicherungsmedium | Die eindeutige ID des zu löschenden Geräts. |
@@ -169,7 +169,7 @@ Die zurückgegebenen Telemetriewerte können in den dynamischen Ausdrücken in a
 
 Verwenden Sie diese Aktion, um die Cloudeigenschaftswerte für ein bestimmtes Gerät zu aktualisieren.
 
-| Feld | BESCHREIBUNG |
+| Feld | Beschreibung |
 | ----- | ----------- |
 | Anwendung | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
 | Sicherungsmedium | Die eindeutige ID des zu löschenden Geräts. |
@@ -180,7 +180,7 @@ Verwenden Sie diese Aktion, um die Cloudeigenschaftswerte für ein bestimmtes Ge
 
 Verwenden Sie diese Aktion, um die beschreibbaren Eigenschaftswerte für ein bestimmtes Gerät zu aktualisieren.
 
-| Feld | BESCHREIBUNG |
+| Feld | Beschreibung |
 | ----- | ----------- |
 | Anwendung | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
 | Sicherungsmedium | Die eindeutige ID des zu löschenden Geräts. |

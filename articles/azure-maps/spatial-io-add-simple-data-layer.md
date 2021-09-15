@@ -6,14 +6,13 @@ ms.author: v-stharr
 ms.date: 02/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
-services: azure-maps
 ms.custom: devx-track-js
-ms.openlocfilehash: d58ae0125e37d781075a0df0da65eb8b08241f4d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6f1855474454cc69489b76e03b8ce17dd97ccf32
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349540"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123437653"
 ---
 # <a name="add-a-simple-data-layer"></a>Hinzufügen einer einfachen Datenschicht
 
@@ -56,7 +55,7 @@ Der folgende Code rendert das obige Punktfeature unter Verwendung der einfachen 
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Use the Simple data layer" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true"> Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>Use the Simple data layer</a> (Verwenden der einfachen Datenebene) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+<iframe height="500" scrolling="no" title="Use the Simple data layer" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true"> Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>Use the Simple data layer</a> (Verwenden der einfachen Datenebene) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 Die tatsächliche Leistungsfähigkeit der einfachen Datenebene kommt in folgenden Fällen zum Tragen:
@@ -69,7 +68,7 @@ Beim Analysieren von XML-Datenfeeds sind Ihnen möglicherweise die genauen Stile
 
 <br/>
 
-<iframe height="700" style="width: 100%;" scrolling="no" title="Simple data layer options" src="//codepen.io/azuremaps/embed/gOpRXgy/?height=700&theme-id=0&default-tab=result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true"> Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/gOpRXgy/'>Simple data layer options</a> (Optionen für die einfache Datenebene) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+<iframe height="700" scrolling="no" title="Simple data layer options" src="//codepen.io/azuremaps/embed/gOpRXgy/?height=700&theme-id=0&default-tab=result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true"> Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/gOpRXgy/'>Simple data layer options</a> (Optionen für die einfache Datenebene) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 

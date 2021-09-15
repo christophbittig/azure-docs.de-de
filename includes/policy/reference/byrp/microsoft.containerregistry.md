@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 08/27/2021
+ms.date: 09/03/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: f82638baae468047cd2025d555ce460d9616bb19
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 520ea310c00e2b4cff65f7eeebefe1c4658ef3e8
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123110485"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123476128"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Konfigurieren Sie Containerregistrierungen, um die lokale Authentifizierung zu deaktivieren.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F79fdfe03-ffcb-4e55-b4d0-b925b8241759) |Deaktivieren Sie die lokale Authentifizierung, damit Ihre Containerregistrierungen ausschließlich Azure Active Directory-Identitäten für die Authentifizierung anfordern. Mehr erfahren Sie unter: [https://aka.ms/acr/authentication](../../../../articles/container-registry/container-registry-authentication.md). |Modify, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_AdminAccountDisabled_Modify.json) |
 |[Containerregistrierungen zum Deaktivieren des Zugriffs über öffentliche Netzwerke konfigurieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa3701552-92ea-433e-9d17-33b7f1208fc9) |Deaktivieren Sie den Zugriff über öffentliche Netzwerke für Ihre Container Registry-Ressource, sodass sie nicht über das öffentliche Internet zugänglich ist. Dies kann das Risiko von Datenlecks verringern. Weitere Informationen finden Sie unter [https://aka.ms/acr/portal/public-network](../../../../articles/container-registry/container-registry-access-selected-networks.md) und [https://aka.ms/acr/private-link](../../../../articles/container-registry/container-registry-private-link.md). |Modify, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_PublicNetworkAccess_Modify.json) |

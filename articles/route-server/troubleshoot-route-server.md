@@ -5,21 +5,16 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: how-to
-ms.date: 08/30/2021
+ms.date: 09/01/2021
 ms.author: duau
-ms.openlocfilehash: 96e71dbd8a03e66644f0dc754d448a345978d940
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: b5b40f4e4dfa72eacdcf178dedbc11c969bf7315
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123255669"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123424670"
 ---
 # <a name="troubleshooting-azure-route-server-issues"></a>Beheben von Problemen mit Azure Route Server
-
-> [!IMPORTANT]
-> Azure Route Server (Vorschau) befindet sich derzeit in der öffentlichen Vorschauphase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="connectivity-issues"></a>Konnektivitätsprobleme
 

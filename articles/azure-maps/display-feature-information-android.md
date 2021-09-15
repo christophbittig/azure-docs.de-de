@@ -1,20 +1,20 @@
 ---
 title: Anzeigen von Featureinformationen in Android-Karten | Microsoft Azure Maps
 description: Hier erfahren Sie, wie Sie Informationen anzeigen, wenn Benutzer mit Kartenfunktionen interagieren. Verwenden Sie das Azure Maps Android SDK, um Popupmeldungen und andere Arten von Meldungen anzuzeigen.
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 9d7606a259f46981f672cba114410f84d395615c
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: a8bd232ccba2adb3666ee7fd54983be2ed1f7296
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113091787"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426434"
 ---
 # <a name="display-feature-information"></a>Anzeigen von Featureinformationen
 

@@ -3,12 +3,12 @@ title: Abfragen von Protokollen aus Container Insights
 description: Container Insights erfasst Metriken und Protokolldaten. In diesem Artikel werden die Datensätze und einige Beispielabfragen beschrieben.
 ms.topic: conceptual
 ms.date: 07/19/2021
-ms.openlocfilehash: 6b5e88e8de1f88a738fdfbb60678909d20e72863
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 07ff7a65f6f4ed0865a45e92288caa362051fd20
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123187197"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123428018"
 ---
 # <a name="how-to-query-logs-from-container-insights"></a>Abfragen von Protokollen aus Container Insights
 
@@ -44,8 +44,8 @@ ContainerInventory
 ### <a name="kubernetes-events"></a>Kubernetes-Ereignisse
 
 ``` kusto
-KubeEvents_CL
-| where not(isempty(Namespace_s))
+KubeEvents
+| where not(isempty(Namespace))
 | sort by TimeGenerated desc
 | render table
 ```

@@ -3,17 +3,17 @@ title: Gerätevorlagen in Azure IoT Central | Microsoft-Dokumentation
 description: Mit Azure IoT Central-Gerätevorlagen können Sie das Verhalten der mit Ihrer Anwendung verbundenen Geräte festlegen. Eine Gerätevorlage legt die Telemetrie, Eigenschaften und Befehle fest, die das Gerät implementieren muss. Außerdem definiert eine Gerätevorlage die Benutzeroberfläche für das Gerät in IoT Central, z. B. die von einem Bediener verwendeten Formulare und Ansichten.
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/19/2020
+ms.date: 08/24/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: b2122dc50b265c31c1c21c2758e343ec88384a8b
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d0e5f563e61cec96e67dd998e969a34a8da3615f
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114474054"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123481234"
 ---
 # <a name="what-are-device-templates"></a>Was sind Gerätevorlagen?
 

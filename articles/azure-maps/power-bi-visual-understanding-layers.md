@@ -1,20 +1,20 @@
 ---
 title: Grundlegendes zu Ebenen im Azure Maps-Visual in Power BI | Microsoft Azure Maps
 description: In diesem Artikel erfahren Sie mehr über die verschiedenen Ebenen, die im Microsoft Azure Maps-Visual für Power BI verfügbar sind.
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/26/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: a5c7296a0e7b7f6ea33c1f4a669675efd90f9e9a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6014bbf5ed5f3600bc79d5083f5fcc85d323acd5
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86261416"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123428900"
 ---
 # <a name="understanding-layers-in-the-azure-maps-power-bi-visual"></a>Grundlegendes zu Ebenen im Azure Maps-Visual in Power BI
 

@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/25/2021
 ms.author: shpathak
-ms.openlocfilehash: 999d8f1f4bf5ad1eef2008678f1e46d1586dd40a
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: e071298ce1ed191f79e071f18916d8afba10d625
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123223694"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123478804"
 ---
 # <a name="connection-resilience"></a>Verbindungsresilienz
 
@@ -53,7 +53,7 @@ Caches weisen Grenzwerte für die Anzahl von Clientverbindungen pro Cacheebene a
 
 ## <a name="advance-maintenance-notification"></a>Benachrichtigungen zu erweiterten Wartungen
 
-Verwenden Sie Benachrichtigungen, um mehr über bevorstehende Wartungen zu erfahren. Weitere Informationen finden Sie unter [Kann ich im Voraus über eine geplante Wartung informiert werden](cache-failover.md#can-i-be-notified-in-advance-of-a-planned-maintenance).
+Verwenden Sie Benachrichtigungen, um mehr über bevorstehende Wartungen zu erfahren. Weitere Informationen finden Sie unter [Kann ich im Voraus über eine geplante Wartung informiert werden](cache-failover.md#can-i-be-notified-in-advance-of-planned-maintenance).
 
 ## <a name="schedule-maintenance-window"></a>Zeitplan für Wartungsfenster
 

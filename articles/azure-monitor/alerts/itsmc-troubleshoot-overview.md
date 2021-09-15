@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 16b6675a7b9796405376540b87efbaaa2a991890
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: d6e41cd80e27fe673d04592c61e590c09645619e
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110081116"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430358"
 ---
 # <a name="troubleshoot-problems-in-it-service-management-connector"></a>Behandeln von Problemen im ITSM-Connector
 
@@ -100,7 +100,7 @@ In den folgenden Abschnitten werden allgemeine Symptome, mögliche Ursachen und 
 **Ursache:** Für dieses Symptom kann es eine Reihe von Gründen geben:
 
 * Vorlagen werden nicht als Teil des Dropdownmenüs für Aktionsdefinitionen angezeigt, und eine Fehlermeldung wird eingeblendet: „Die Vorlagenkonfiguration kann nicht abgerufen werden. Weitere Informationen finden Sie in den Connectorprotokollen.“
-* Werte werden nicht in den Dropdownlisten der Standardfelder als Teil der Aktionsdefinition angezeigt, und eine Fehlermeldung wird eingeblendet: „Für die folgenden Felder wurden keine Werte gefunden: <field names>.“
+* Werte werden nicht in den Dropdownlisten der Standardfelder als Teil der Aktionsdefinition angezeigt, und eine Fehlermeldung wird eingeblendet: „Für die folgenden Felder wurden keine Werte gefunden: \<field names\>.“
 * Incidents/Ereignisse werden nicht in ServiceNow erstellt.
 
 **Lösung**: 

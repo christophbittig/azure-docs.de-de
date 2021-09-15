@@ -11,12 +11,12 @@ ms.date: 08/23/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: f8d27d30ace8ac29a59df9b77de4b56b5e138f63
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: b05aa59f465eafd65fa111fff811d2f0909f601d
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123185739"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123471856"
 ---
 # <a name="configure-authentication-in-a-sample-web-app-by-using-azure-ad-b2c"></a>Konfigurieren der Authentifizierung in einem Beispiel einer ASP.NET-Webanwendung mithilfe von Azure AD B2C
 
@@ -115,7 +115,7 @@ Extrahieren Sie die Beispieldatei in einen Ordner, bei dem die Gesamtlänge des 
 
 |`Section`  |Key  |Wert  |
 |---------|---------|---------|
-|AzureAdB2C|Instanz| Der erste Teil Ihres Azure AD B2C-[Mandantennamens](tenant-management.md#get-your-tenant-name)(z. B. `https://contoso.b2clogin.com`).|
+|AzureAdB2C|Instanz| Der erste Teil Ihres Azure AD B2C-[Mandantennamens](tenant-management.md#get-your-tenant-name) (z. B. `https://contoso.b2clogin.com`).|
 |AzureAdB2C|Domain| Der vollständige Name Ihres Azure AD B2C-[Mandanten](tenant-management.md#get-your-tenant-name) (z. B. `contoso.onmicrosoft.com`).|
 |AzureAdB2C|ClientId| Die Web-API-Anwendungs-ID aus [Schritt 2](#step-2-register-a-web-application).|
 |AzureAdB2C|SignUpSignInPolicyId|Die Benutzerflows oder die benutzerdefinierte Richtlinie, die Sie in [Schritt 1](#step-1-configure-your-user-flow) erstellt haben.|
@@ -135,7 +135,7 @@ Die endgültige Konfigurationsdatei sollte wie die folgende JSON aussehen:
 ## <a name="step-5-run-the-sample-web-app"></a>Schritt 5: Ausführen der Beispiel-Web-App
 
 1. Erstellen Sie das Projekt, und führen Sie es aus.
-1. Wechseln Sie zu [https://localhost:5001](https://localhost:5001). 
+1. Navigieren Sie zu `https://localhost:5001`. 
 1. Wählen Sie **Registrieren/Anmelden** aus.
 
     ![Ein Screenshot, der die Schaltfläche „Registrieren/Anmelden“ auf der Willkommensseite des Projekts zeigt.](./media/configure-authentication-sample-web-app/web-app-sign-in.png)

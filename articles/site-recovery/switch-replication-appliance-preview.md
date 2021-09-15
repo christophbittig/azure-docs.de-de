@@ -3,13 +3,13 @@ title: 'Wechseln der Replikationsappliance in Azure Site Recovery: Vorschau'
 description: In diesem Artikel wird beschrieben, wie Sie zwischen verschiedenen Replikationsappliances wechseln, während Sie VMware-VMs in Azure Site Recovery in Azure replizieren (Vorschau)
 ms.service: site-recovery
 ms.topic: article
-ms.date: 08/19/2021
-ms.openlocfilehash: f95ed991833a9f6ed1b0635a8678e393f152cb56
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.date: 09/01/2021
+ms.openlocfilehash: 3cf8fa8c761419a73e6bca5dac34d8b1e63cbd04
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446865"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123537893"
 ---
 # <a name="switch-azure-site-recovery-replication-appliance"></a>Wechseln der Azure Site Recovery-Replikationsappliance
 
@@ -78,4 +78,4 @@ Hier sehen Sie beispielsweise das Szenario, in dem der Zustand von Replikationsa
    Sobald die Neusynchronisierung abgeschlossen ist, wechseln die virtuellen Computer, die zu einer neuen Appliance verschoben werden, in den fehlerfreien Replikationsstatus.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Einrichten der Notfallwiederherstellung in Azure für lokale VMware-VMs](vmware-azure-tutorial.md)
+[Einrichten der Notfallwiederherstellung in Azure für lokale VMware-VMs](vmware-azure-set-up-replication-tutorial-preview.md)

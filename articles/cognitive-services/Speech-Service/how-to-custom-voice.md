@@ -3,19 +3,19 @@ title: 'Erste Schritte mit „Benutzerdefinierte neuronale Stimme“: Speech-Die
 titleSuffix: Azure Cognitive Services
 description: Bei „Benutzerdefinierte neuronale Stimme“ handelt es sich um eine Reihe von Onlinetools, mit denen Sie eine wiedererkennbare, einzigartige Stimme für Ihre Marke erstellen können. Für den Einstieg benötigen Sie lediglich einige Audiodateien und die dazugehörigen Transkriptionen.
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/18/2021
-ms.author: lajanuar
-ms.openlocfilehash: 155c62791426ceafde70c173370d4056a6b8956c
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 32bdd0db2008d9f5b49bab26033f57c9e5e59847
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122356205"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123540737"
 ---
 # <a name="get-started-with-custom-neural-voice"></a>Erste Schritte mit „Benutzerdefinierte neuronale Stimme“
 

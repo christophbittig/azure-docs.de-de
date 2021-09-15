@@ -1,19 +1,17 @@
 ---
 title: Vom Web SDK unterstützte Browser | Microsoft Azure Maps
 description: Hier erfahren Sie, wie Sie überprüfen, ob das Web-SDK von Azure Maps einen Browser unterstützt. Sie können eine Liste der unterstützten Browser anzeigen. Außerdem wird erläutert, wie Sie Kartendienste mit Legacy-Browsern verwenden.
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/25/2019
 ms.topic: conceptual
 ms.service: azure-maps
-services: azure-maps
-manager: cpendle
-ms.openlocfilehash: 6321b96cb3db570102f138dcfd949d9c32daedbc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a393d6c54f5d9918b3746bfc6c1de1c93cd9319c
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100384468"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435022"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK: unterstützte Browser
 
@@ -67,7 +65,7 @@ Möglicherweise möchten Sie ältere Browser als Ziel verwenden, die WebGL nicht
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Azure Maps und Broschüre" src="//codepen.io/azuremaps/embed/GeLgyx/?height=500&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="Azure Maps und Broschüre" src="//codepen.io/azuremaps/embed/GeLgyx/?height=500&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure Maps + Leaflet</a> (Azure Maps und Broschüre) in Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 

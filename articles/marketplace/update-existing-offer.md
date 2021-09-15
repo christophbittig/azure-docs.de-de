@@ -8,12 +8,12 @@ author: trkeya
 ms.author: trkeya
 ms.date: 07/09/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 6931f33c303e1e42af75b34cb7a72d7a37c702cd
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: ae8cdb3b6f470d8dd9f1500d5dd0af51d594b8e8
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113598187"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123432286"
 ---
 # <a name="update-existing-offers-in-the-commercial-marketplace"></a>Aktualisieren bestehender Angebote im kommerziellen Marketplace
 
@@ -57,6 +57,9 @@ Führen Sie die folgenden Schritte aus, um einen Plan für ein bereits veröffen
 1. Klicken Sie auf **Entwurf speichern**, nachdem Sie alle gewünschten Änderungen am Namen, an der Beschreibung oder der Zielgruppenverfügbarkeit des Plans vorgenommen haben.
 1. Wenn Sie bereit sind, Ihre Aktualisierungen zu veröffentlichen, wählen Sie **Überprüfen und veröffentlichen** aus. Dann wird die Seite **[Überprüfen und veröffentlichen](review-publish-offer.md)** mit dem Fertigstellungsstatus Ihrer Aktualisierungen geöffnet.
 1. Wählen Sie **Veröffentlichen** aus, um den aktualisierten Plan zur Veröffentlichung zu übermitteln. Wir senden Ihnen eine E-Mail, wenn eine Vorschauversion des aktualisierten Angebots zur Überprüfung und Freigabe verfügbar ist.
+
+> [!NOTE]
+> Wenn Sie einen privaten Plan veröffentlichen, können Sie die Sichtbarkeit später in „Öffentlich“ ändern. Wenn Sie hingegen einen öffentlichen Plan veröffentlichen, können Sie dessen Sichtbarkeit nicht in „Privat“ ändern.
 
 ## <a name="update-image-versions-for-an-existing-vm-offer"></a>Aktualisieren von Imageversionen für ein vorhandenes VM-Angebot
 

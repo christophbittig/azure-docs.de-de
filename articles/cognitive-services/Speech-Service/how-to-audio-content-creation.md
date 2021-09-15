@@ -3,19 +3,19 @@ title: 'Speech-Dienst: Audio Content Creation'
 titleSuffix: Azure Cognitive Services
 description: Audio Content Creation ist ein Onlinetool, mit dem Sie die Sprachsynthese von Microsoft an Ihre Apps und Produkte anpassen und optimieren können.
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
-ms.author: lajanuar
-ms.openlocfilehash: 087459b5831aa69c6e30e1dbe824d1902facbc2d
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.author: pafarley
+ms.openlocfilehash: 2e5942ccbb9e7acf090e5b538dfbb70b1c84762f
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419197"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538631"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>Verbessern der Synthese mit dem Audio Content Creation-Tool
 

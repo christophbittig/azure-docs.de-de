@@ -3,18 +3,18 @@ title: Überwachen der Gerätekonnektivität mit dem Azure IoT Central-Explorer
 description: Überwachen Sie Gerätemeldungen, und beobachten Sie Änderungen bei Gerätezwillingen über die Befehlszeilenschnittstelle des IoT Central-Explorers.
 author: viv-liu
 ms.author: viviali
-ms.date: 03/27/2020
+ms.date: 08/30/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: devx-track-azurecli, device-developer
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 9193e908f00a601774a9f06b6c94f4369da68fc5
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: fe42d9bcfef72dfb8f2deebd3fb147ed2025f150
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108768785"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123479404"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Überwachen der Gerätekonnektivität per Azure CLI
 

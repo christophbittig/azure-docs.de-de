@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
 ms.date: 08/11/2021
-ms.openlocfilehash: 3b715c15eb889d04c87a654fd68b802a53e7af01
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f1a7af136633b096f8bcda08466822549f922b35
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345770"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536957"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-using-an-integration-service-environment-ise"></a>Herstellen einer Verbindung mit virtuellen Azure-Netzwerken in Azure Logic Apps mithilfe einer Integrationsdienstumgebung
 
@@ -156,7 +156,7 @@ Wenn Sie den Zugriff für diese Abhängigkeiten nicht zulassen, tritt ein Fehler
   * [Azure-IP-Adressen für Connectors in der ISE-Region, die in dieser Downloaddatei verfügbar sind](https://www.microsoft.com/download/details.aspx?id=56519)
   * [App Service-Umgebung Management-Adressen](../app-service/environment/management-addresses.md)  
   * [Azure Traffic Manager-Verwaltungsadressen](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json)
-  * [IP-Adressen der Azure API Management-Steuerungsebene](../api-management/api-management-using-with-vnet.md#control-plane-ips)
+  * [IP-Adressen der Azure API Management-Steuerungsebene](../api-management/api-management-using-with-vnet.md#control-plane-ip-addresses)
 
 * Dienstendpunkte
 
@@ -168,7 +168,7 @@ Wenn Sie den Zugriff für diese Abhängigkeiten nicht zulassen, tritt ein Fehler
    
    * [Azure-Dienstabhängigkeiten](../app-service/environment/firewall-integration.md#deploying-your-ase-behind-a-firewall)
    * [Azure Cache-Dienstabhängigkeiten](../azure-cache-for-redis/cache-how-to-premium-vnet.md#what-are-some-common-misconfiguration-issues-with-azure-cache-for-redis-and-virtual-networks)
-   * [Azure API Management-Abhängigkeiten](../api-management/api-management-using-with-vnet.md#-common-network-configuration-issues)
+   * [Azure API Management-Abhängigkeiten](../api-management/api-management-using-with-vnet.md#network-configuration)
 
 <a name="create-environment"></a>
 
@@ -186,7 +186,7 @@ Wenn Sie den Zugriff für diese Abhängigkeiten nicht zulassen, tritt ein Fehler
 
    ![Angeben von Umgebungsdetails](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
-   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Wert | Beschreibung |
    |----------|----------|-------|-------------|
    | **Abonnement** | Ja | <*Name des Azure-Abonnements*> | Das für Ihre Umgebung zu verwendende Azure-Abonnement |
    | **Ressourcengruppe** | Ja | <*Name der Azure-Ressourcengruppe*> | Eine neue oder vorhandene Azure-Ressourcengruppe, in der Sie Ihre Umgebung erstellen möchten. |

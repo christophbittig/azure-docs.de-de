@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e1af8651ac8b1031190249205d0a0f7f436711c4
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 703c2023103d9225e5dfad5bd0d288164350122f
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696180"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450339"
 ---
 # <a name="create-an-azure-image-builder-template"></a>Erstellen einer Azure Image Builder-Vorlage 
 
@@ -90,7 +90,7 @@ Das grundlegende Format der Vorlage:
 Der Azure VM Image Builder-Dienst speichert/verarbeitet Kundendaten nicht außerhalb von Regionen, die strenge Anforderungen an die Datenresidenz in einer Region haben, wenn ein Kunde einen Build in dieser Region an fordert. Bei einem Dienstausfall für Regionen mit Anforderungen an die Datenresidenz müssen Sie Vorlagen in einer anderen Region und Geografie erstellen.
 
 ### <a name="zone-redundancy"></a>Zonenredundanz
-Die Verteilung unterstützt Zonenredundanz, VHDs werden standardmäßig auf ein Konto für zonenredundanten Speicher verteilt, und die Version der Shared Image Gallery unterstützt einen [ZRS-Speichertyp](../disks-redundancy.md#zone-redundant-storage-for-managed-disks-preview), falls angegeben.
+Die Verteilung unterstützt Zonenredundanz, VHDs werden standardmäßig auf ein Konto für zonenredundanten Speicher verteilt, und die Version der Shared Image Gallery unterstützt einen [ZRS-Speichertyp](../disks-redundancy.md#zone-redundant-storage-for-managed-disks), falls angegeben.
  
 ## <a name="vmprofile"></a>vmProfile
 ## <a name="buildvm"></a>buildVM
@@ -607,7 +607,7 @@ Ein Katalog mit freigegebenen Images besteht aus:
 - Imagedefinitionen: eine konzeptionelle Gruppierung von Images. 
 - Imageversionen: ein Imagetyp für die Bereitstellung einer VM oder Skalierungsgruppe. Imageversionen können in andere Regionen repliziert werden, in denen VMs bereitgestellt werden müssen.
  
-Bevor Sie ein Image an den Imagekatalog verteilen können, müssen Sie einen Katalog und eine Imagedefinition erstellen. Informationen dazu finden Sie unter [Erstellen eines Katalogs mit freigegebenen Images mit der Azure-Befehlszeilenschnittstelle](../shared-images-cli.md). 
+Bevor Sie ein Image an den Imagekatalog verteilen können, müssen Sie einen Katalog und eine Imagedefinition erstellen. Informationen dazu finden Sie unter [Erstellen eines Katalogs mit freigegebenen Images mit der Azure-Befehlszeilenschnittstelle](../create-gallery.md). 
 
 ```json
 {

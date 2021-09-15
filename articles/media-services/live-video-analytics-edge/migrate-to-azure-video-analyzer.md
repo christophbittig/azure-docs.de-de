@@ -3,12 +3,12 @@ title: Migrieren von Live Video Analytics zu Azure Video Analyzer
 description: Erfahren Sie, wie Sie die Migration von Live Video Analytics zu Azure Video Analyzer durchführen.
 ms.topic: how-to
 ms.date: 08/16/2021
-ms.openlocfilehash: a2225e25685bb9177851379fd86b59c986ff28f0
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 452b3430dd1e0eafbfe35166339e42bcbfe1f47b
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351455"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123471694"
 ---
 # <a name="how-to-migrate-from-live-video-analytics-to-azure-video-analyzer"></a>Migrieren von Live Video Analytics zu Azure Video Analyzer
 
@@ -184,11 +184,11 @@ Wenn Sie ein Azure Video Analyzer-Konto erstellen, müssen Sie es ein Azure-Spei
 
    - **Abonnement**: Wählen Sie das Abonnement aus, das Sie zum Erstellen des Video Analyzer-Kontos verwenden möchten. 
 
-   - **Ressourcengruppe**: Wählen Sie eine Ressourcengruppe aus, in der Sie das Video Analyzer-Konto erstellen möchten, oder wählen Sie **Neu erstellen** aus, um eine Ressourcengruppe zu erstellen. 
+   - **Ressourcengruppe**: Wählen Sie eine Ressourcengruppe aus, in der Sie das Video Analyzer-Konto erstellen möchten, oder wählen Sie  **Neu erstellen** aus, um eine Ressourcengruppe zu erstellen. 
 
    - **Video Analyzer account name** (Name des Video Analyzer-Kontos): Geben Sie einen Namen für Ihr Video Analyzer-Konto ein. Der Name darf nur aus drei bis 24 Kleinbuchstaben oder Zahlen bestehen und keine Leerzeichen enthalten. 
 
-   - **Standort**: Wählen Sie einen Standort zum Bereitstellen Ihres Video Analyzer-Kontos aus (beispielsweise **USA, Westen 2**). 
+   - **Standort**: Wählen Sie einen Standort zum Bereitstellen Ihres Video Analyzer-Kontos aus (beispielsweise  **USA, Westen 2**). 
 
    - **Speicherkonto**: Erstellen Sie ein Speicherkonto. Es wird empfohlen, ein [universelles Standardspeicherkonto der Version 2](../../storage/common/storage-account-overview.md#types-of-storage-accounts) auszuwählen. 
 
@@ -332,7 +332,7 @@ Es gibt einige Unterschiede zwischen den von Live Video Analytics verwendeten Me
 | Fortlaufende Videoaufzeichnung und Rückschluss mithilfe der gRPC-Erweiterung | [cvr-with-grpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/cvr-with-grpcExtension/topology.json) | [cvr-with-grpcExtension](https://github.com/Azure/video-analyzer/blob/main/pipelines/live/topologies/cvr-with-grpcExtension/topology.json) |
 | Fortlaufende Videoaufzeichnung und Rückschluss mithilfe der HTTP-Erweiterung | [cvr-with-httpExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/cvr-with-httpExtension/2.0/topology.json) | [cvr-with-httpExtension](https://github.com/Azure/video-analyzer/blob/main/pipelines/live/topologies/cvr-with-httpExtension/topology.json) |
 | Kontinuierliche Videoaufzeichnung mit Bewegungserkennung             | [cvr-with-motion](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/cvr-with-motion/2.0/topology.json) | [cvr-with-motion](https://github.com/Azure/video-analyzer/blob/main/pipelines/live/topologies/cvr-with-motion/topology.json) |
-| Ereignisbasierte Videoaufzeichnung in [Azure Video Analyzer-Video/Medienobjekten] basierend auf Ereignissen aus externer KI | [evr-grpcExtension-assets](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-grpcExtension-assets) | [evr-grpcExtension-video-sink](https://github.com/Azure/video-analyzer/tree/main/pipelines/live/topologies/evr-grpcExtension-video-sinkhttps://github.com/Azure/video-analyzer/tree/main/pipelines/live/topologies/evr-grpcExtension-video-sink) |
+| Ereignisbasierte Videoaufzeichnung in [Azure Video Analyzer-Video/Medienobjekten] basierend auf Ereignissen aus externer KI | [evr-grpcExtension-assets](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-grpcExtension-assets) | [evr-grpcExtension-video-sink](https://github.com/Azure/video-analyzer/tree/main/pipelines/live/topologies/evr-grpcExtension-video-sink) |
 | Ereignisbasierte Videoaufzeichnung in [Azure Video Analyzer-Video/Medienobjekten] basierend auf Ereignissen aus externer KI | [evr-httpExtension-assets](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-httpExtension-assets) | [evr-httpExtension-video-sink](https://github.com/Azure/video-analyzer/tree/main/pipelines/live/topologies/evr-httpExtension-video-sink) |
 | Ereignisbasierte Videoaufzeichnung in [Medienobjekten/Videosenke] basierend auf bestimmten Objekten, die von einer externen Rückschluss-Engine erkannt werden | [evr-hubMessages-assets](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/evr-hubMessage-assets/2.0/topology.json) | [evr-hubMessages-video-sink](https://github.com/Azure/video-analyzer/blob/main/pipelines/live/topologies/evr-hubMessage-video-sink/topology.json) |
 | Ereignisbasierte Aufzeichnung von Video in Dateien auf Grundlage von Nachrichten, die über IoT Edge Hub gesendet werden | [evr-hubMessage-files](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/evr-hubMessage-files/2.0/topology.json) | [evr-hubMessage-file-sink](https://github.com/Azure/video-analyzer/blob/main/pipelines/live/topologies/evr-hubMessage-file-sink/topology.json) |

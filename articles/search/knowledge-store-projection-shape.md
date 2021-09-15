@@ -7,12 +7,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/10/2021
-ms.openlocfilehash: 05ba404217fcab9171fad011cedd64cc06557279
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7cc61d144576e8f386997e1d2acfa083c9e5f571
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349460"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123535795"
 ---
 # <a name="shaping-data-for-projection-into-a-knowledge-store"></a>Strukturieren von Daten für die Projektion in einen Wissensspeicher
 
@@ -69,7 +69,7 @@ Shaper-Skills werden in der Regel am Ende eines Skillsets platziert, um eine Ans
             "sourceContext": "/document/reviews_text/pages/*",
             "inputs": [
                 {
-                    "name": "SentimentScore",
+                    "name": "Sentiment",
                     "source": "/document/reviews_text/pages/*/Sentiment",
                     "sourceContext": null,
                     "inputs": []
@@ -189,7 +189,7 @@ Um die gleichen Daten wie im vorherigen Beispiel zu projizieren, würde die Inli
                 "sourceContext": "/document/reviews_text/pages/*",
                 "inputs": [
                         {
-                    "name": "SentimentScore",
+                    "name": "Sentiment",
                     "source": "/document/reviews_text/pages/*/Sentiment"
                     },
                     {

@@ -5,18 +5,18 @@ metadata:
   title: 'Dokumentation zu Unterhaltungsszenarien: Tutorials, API-Referenz – Azure Cognitive Services | Microsoft-Dokumentation'
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
-  author: laujan
+  author: PatrickFarley
   manager: nitinme
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/16/2020
-  ms.author: lajanuar
-  ms.openlocfilehash: 5eeec13feb527cd8ac99d641c31da5a03719d0eb
-  ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+  ms.author: pafarley
+  ms.openlocfilehash: bedbfc9578a6a729474ff24a1a2bc0b7caf76be9
+  ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/13/2021
-  ms.locfileid: "122340492"
+  ms.lasthandoff: 09/07/2021
+  ms.locfileid: "123543892"
 landingContent:
 - title: Informationen zur Unterhaltungstranskription (Besprechungsszenario)
   linkLists:

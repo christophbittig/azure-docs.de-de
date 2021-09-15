@@ -1,20 +1,20 @@
 ---
 title: Verwalten des Power BI-Visuals für Azure Maps in Ihrer Organisation | Microsoft Azure Maps
 description: In diesem Artikel erfahren Sie, wie Sie das Power BI-Visual für Microsoft Azure Maps in Ihrer Organisation verwalten.
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/26/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 2f7372d522c02eb86f1cc6470cefa9cb299605a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5578f7297fc60bcbf007f53c1914b565c4ec4355
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86261417"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425120"
 ---
 # <a name="manage-the-azure-maps-visual-within-your-organization"></a>Verwalten des Azure Maps-Visuals in Ihrer Organisation
 

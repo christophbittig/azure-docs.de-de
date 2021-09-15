@@ -1,20 +1,20 @@
 ---
 title: Datengesteuerte Formatvorlagenausdrücke in Android-Karten | Microsoft Azure Maps
 description: Hier erhalten Sie Informationen zu datengesteuerten Formatvorlagenausdrücken. Hier erfahren Sie, wie Sie diese Ausdrücke im Azure Maps Android SDK verwenden, um Formatvorlagen in Karten anzupassen.
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: d26947b48ca64ea5f06f3f9566d05fd110d6e93f
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 7c73c52045504dfeeaccf5292aea7ab07b75d8d8
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113091841"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123438531"
 ---
 # <a name="data-driven-style-expressions-android-sdk"></a>Datengesteuerte Formatvorlagenausdrücke (Android SDK)
 
@@ -1167,7 +1167,7 @@ Der `format`-Ausdruck kann mit der Option `textField` der Symbolebene verwendet 
 
 Die folgenden Formatoptionen sind verfügbar:
 
-| Ausdruck | BESCHREIBUNG |
+| Ausdruck | Beschreibung |
 |------------|-------------|
 | `formatFontScale(number)` \| `formatFontScale(Expression)` | Gibt den Skalierungsfaktor für den Schriftgrad an. Falls angegeben, wird mit diesem Wert die `textSize`-Eigenschaft für die individuelle Zeichenfolge außer Kraft gesetzt. |
 | `formatTextFont(string[])` \| `formatTextFont(Expression)` | Gibt eine Farbe an, die beim Rendern auf einen Text angewendet werden soll. |

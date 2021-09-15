@@ -11,12 +11,12 @@ ms.reviewer: laobri
 ms.date: 05/13/2021
 ms.topic: troubleshooting
 ms.custom: devplatv2
-ms.openlocfilehash: 8a68538657762417c5b6e23e455efa43fed0450a
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 71570e00f77626edc82db0e45e7815d1c40bd06d
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419409"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430142"
 ---
 # <a name="troubleshooting-managed-online-endpoints-deployment-and-scoring-preview"></a>Problembehandlung für die Bereitstellung und Bewertung verwalteter Onlineendpunkte (Vorschau)
 
@@ -175,7 +175,7 @@ az ml endpoint get-logs
 
 Um die bei der Bereitstellung angegebene Datei `score.py` auszuführen, wird von Azure ein Container mit allen Ressourcen erstellt, die für `score.py` benötigt werden, und das Bewertungsskript für den Container ausgeführt.  Der Fehler besteht bei diesem Szenario darin, dass dieser Container bei der Ausführung abstürzt. Dies bedeutet, dass der Bewertungsvorgang nicht durchgeführt werden konnte. Dieser Fehler tritt in folgenden Fällen auf:
 
-- `score.py` enthält einen Fehler. Verwenden Sie `get--logs`, um häufige Probleme zu diagnostizieren:
+- `score.py` enthält einen Fehler. Verwenden Sie `get-logs`, um häufige Probleme zu diagnostizieren:
     - Ein Paket, das importiert wurde, sich aber nicht in der Conda-Umgebung befindet.
     - Ein Syntaxfehler.
     - Ein Fehler in der `init()`-Methode.

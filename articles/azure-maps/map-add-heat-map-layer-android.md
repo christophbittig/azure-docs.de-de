@@ -1,20 +1,20 @@
 ---
 title: Hinzufügen einer Wärmebildebene zu Android-Karten | Microsoft Azure Maps
 description: Informationen zum Erstellen eines Wärmebilds. Erfahren Sie, wie Sie einer Karte mit dem Azure Maps Android SDK eine Wärmebildebene hinzufügen. Lernen Sie, Wärmebildebenen anzupassen.
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: ffbda69d91a709ff5a9af66f7abe2b7734efe177
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 5e48be82a2486291d2b7fdecf42d759e2c13eb08
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114666387"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425192"
 ---
 # <a name="add-a-heat-map-layer-android-sdk"></a>Hinzufügen einer Wärmebildebene (Android SDK)
 

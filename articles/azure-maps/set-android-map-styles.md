@@ -1,20 +1,20 @@
 ---
 title: Festlegen eines Kartenstils in Android-Karten | Microsoft Azure Maps
 description: Erlernen Sie zwei Möglichkeiten, den Stil einer Karte festzulegen. Erfahren Sie, wie Sie den Stil mit dem Azure Maps Android SDK in der Layoutdatei oder der „Activity“-Klasse anpassen.
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 84e87593a67bfda512619c5637ffc13c07fa8111
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: c6d9eaedbd4a257a60fa0ba3dc7f41857173207e
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113091271"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123431566"
 ---
 # <a name="set-map-style-android-sdk"></a>Festlegen eines Kartenstils (Android SDK)
 

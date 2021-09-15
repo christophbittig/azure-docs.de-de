@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1391ca9ff3fb7563aa8a31729a8f4cd66091b264
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 73435cbc7a630e77f7ed2d7804afd314f68c1a87
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175044"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433222"
 ---
 # <a name="use-cloudsimple-private-cloud-site-to-host-a-virtual-desktop-infrastructure-using-vmware-horizon"></a>Verwenden der Private Cloud-Website von CloudSimple zum Hosten einer virtuellen Desktopinfrastruktur mithilfe von VMware Horizon
 
@@ -124,7 +124,7 @@ Installieren Sie die Komponenten wie folgt:
 
 2. Installieren Sie Horizon View in der privaten Cloud anhand der Anweisungen unter [View Installation](https://docs.vmware.com/en/VMware-Horizon-7/7.4/horizon-installation/GUID-37D39B4F-5870-4188-8B11-B6C41AE9133C.html) (Installieren von View).
 
-3. Installieren Sie App Volume Manager anhand der Anweisungen unter [Install and Configure VMware App Volumes](https://docs.vmware.com/en/VMware-App-Volumes/2.10/com.vmware.appvolumes.user.doc/GUID-5E8BAF8C-F5A6-412C-9424-266BA7109BA4.html) (Installieren und Konfigurieren von VMware App Volumes).
+3. Installieren Sie App Volume Manager anhand der Anweisungen unter [Install and Configure VMware App Volumes](https://docs.vmware.com/en/VMware-App-Volumes/4/com.vmware.appvolumes.install.doc/GUID-3F92761D-9F83-4610-978C-4DAA55E07D14.html) (Installieren und Konfigurieren von VMware App Volumes).
 
 4. Installieren und konfigurieren Sie User Environment Manager anhand der Anweisungen unter [About Installing and Configuring VMware User Environment Manager](https://docs.vmware.com/en/VMware-User-Environment-Manager/9.4/com.vmware.user.environment.manager-install-config/GUID-DBBC82E4-483F-4B28-9D49-4D28E08715BC.html) (Installieren und Konfigurieren von VMware User Environment Manager).
 

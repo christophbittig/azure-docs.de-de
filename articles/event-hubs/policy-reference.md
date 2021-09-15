@@ -1,15 +1,15 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure Event Hubs
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure Event Hubs. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 08/27/2021
+ms.date: 09/03/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: d22231bb0507e1619f23ec63438de77b3e93a38a
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 794bd7e7ec084bfd93ef16c4091725664b589bc8
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123110666"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123477605"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-event-hubs"></a>Integrierte Azure Policy-Definitionen für Azure Event Hubs
 

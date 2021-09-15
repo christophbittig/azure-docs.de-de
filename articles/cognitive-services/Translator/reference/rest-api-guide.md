@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 08/10/2021
 ms.author: lajanuar
-ms.openlocfilehash: 2b0c4676ca7d085e5fbe042dd2a23fe0ae42db9c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f3188f303d7e2945341267c9ea4598682e4d7964
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122338969"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426245"
 ---
 # <a name="text-translation-rest-api"></a>REST-API für Textübersetzung
 
@@ -32,7 +32,7 @@ Die Textübersetzung ist ein cloudbasiertes Feature des Azure-Übersetzerdiensts
 | [**dictionary/examples**](v3-0-dictionary-lookup.md) | **POST** | Gibt zurück, wie ein Begriff im Kontext verwendet wird. |
 
 > [!div class="nextstepaction"]
-> [Erstellen Sie Übersetzerressource im Azure-Portal.](/translator-how-to-signup.md)
+> [Erstellen Sie Übersetzerressource im Azure-Portal.](../translator-how-to-signup.md)
 
 > [!div class="nextstepaction"]
 > [Schnellstart: REST-API und Ihre Programmiersprache](../quickstart-translator.md)

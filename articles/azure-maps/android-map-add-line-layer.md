@@ -1,20 +1,20 @@
 ---
 title: Hinzufügen einer Linienebene zu Android-Karten | Microsoft Azure Maps
 description: Erfahren Sie, wie Sie Linien zu Karten hinzufügen. Hier finden Sie Beispiele, in denen das Azure Maps Android SDK verwendet wird, um Linienebenen zu Karten hinzuzufügen und Linien mit Symbolen und Farbverläufen benutzerdefiniert anzupassen.
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: ff071d03e00a0380d1ab6642828b0940931d3302
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: ce8733fdc6e6fd22414df944e35fa3609668e653
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097447"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123438460"
 ---
 # <a name="add-a-line-layer-to-the-map-android-sdk"></a>Hinzufügen einer Linienebene zur Karte (Android SDK)
 
