@@ -2,29 +2,48 @@
 title: Häufigkeit von VMware-Softwareupdates
 description: Unterstützte Häufigkeit von VMware-Softwareupdates für Azure VMware Solution.
 ms.topic: include
-ms.date: 04/23/2021
+ms.date: 08/24/2021
 author: shortpatti
 ms.author: v-patsho
 ms.service: azure-vmware
-ms.openlocfilehash: 3295ab9da93b1e1ec1cace62653670de366c880d
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 20286e2363001a49905715f2274d94bd23351e9c
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122324314"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867099"
 ---
 <!-- Used in faq.md and concepts-private-clouds-clusters.md -->
 
-Die Hostwartung und Lebenszyklusverwaltung haben keine Auswirkungen auf die Kapazität oder Leistung von Clustern in privaten Clouds. Upgrades der Software der privaten Cloud erfolgen nach einem Zeitplan, der sich nach der Veröffentlichung des Softwarepakets von VMware richtet.  Ihre private Cloud erfordert daher keine Downtime für Upgrades.
+Einer der Vorteile von privaten Azure VMware Solution-Clouds besteht darin, dass die Plattform für Sie verwaltet wird.  Microsoft ist für die Lebenszyklusverwaltung der VMware-Software (ESXi, vCenter und vSAN) zuständig. Außerdem ist Microsoft für die Lebenszyklusverwaltung von NSX-T-Appliances und das Bootstrapping der Netzwerkkonfiguration zuständig, z. B. die Erstellung des Gateways für Schicht 0 und die Aktivierung des Nord-Süd-Routings. Sie sind für die NSX-T-SDN-Konfiguration verantwortlich, also Netzwerksegmente, Regeln für verteilte Firewalls, Gateways für Schicht 1 und Lastenausgleich. 
 
-Die Upgrades für die Softwarepakete der privaten Cloud behalten eine Version der Software des neuesten Release des Softwarepakets von VMware bei. Die Softwareversionen der privaten Cloud können sich von den aktuellen Versionen der einzelnen Softwarekomponenten (ESXi, NSX-T, vCenter und vSAN) unterscheiden. Updates umfassen auch Treiber, Software auf den Netzwerkswitches und Firmware auf den Bare-Metal-Knoten.
+Microsoft ist für das Anwenden von Patches, Updates oder Upgrades für ESXi, vCenter, vSAN und NSX-T in Ihrer privaten Cloud verantwortlich. Die Auswirkungen von Patches, Updates und Upgrades auf ESXi, vCenter und NSX-T sind unterschiedlich. 
 
-Sie werden benachrichtigt, bevor und nachdem Patches auf Ihre privaten Clouds angewendet werden. Wir arbeiten auch mit Ihnen zusammen, um ein Wartungsfenster zu planen, bevor wir Updates oder Upgrades auf Ihre private Cloud anwenden. 
+- **ESXi:** Auf Workloads, die in Ihrer privaten Cloud ausgeführt werden, hat dies keine Auswirkungen. Der Zugriff auf vCenter und NSX-T wird während dieses Zeitraums nicht blockiert.  Es wird empfohlen, während dieses Zeitraums keine weiteren Aktivitäten wie das Hochskalieren der privaten Cloud usw. in Ihrer privaten Cloud zu planen.
+
+- **vCenter:** Auf Workloads, die in Ihrer privaten Cloud ausgeführt werden, hat dies keine Auswirkungen. Während dieses Zeitraums ist vCenter nicht verfügbar, und Sie können keine VMs verwalten (anhalten, starten, erstellen oder löschen). Es wird empfohlen, während dieser Zeit keine weiteren Aktivitäten wie das Hochskalieren der privaten Cloud, das Erstellen neuer Netzwerke usw. in Ihrer privaten Cloud zu planen.
+
+- **NSX-T:** Es gibt Auswirkungen auf die Workload. Wenn ein bestimmter Host aktualisiert wird, geht die Konnektivität für die virtuellen Computer auf diesem Host zwei Sekunden bis maximal eine Minute verloren. Dabei können folgende Symptome auftreten:
+
+   - Pingfehler
+
+   - Paketverlust
+
+   - Fehlermeldungen (etwa *Zielhost nicht erreichbar* und *Net unreachable* (Netz nicht erreichbar))
+
+   Während dieses Upgradefensters ist der gesamte Zugriff auf die NSX-T-Verwaltungsebene blockiert. Sie können während dieser Zeit keine Konfigurationsänderungen an der NSX-T-Umgebung vornehmen.  Ihre Workloads werden jedoch weiterhin normal ausgeführt. Es gelten nur die oben beschriebenen Auswirkungen des Upgrades.
+ 
+   Es wird empfohlen, während dieses Upgradezeitraums keine weiteren Aktivitäten wie das Hochskalieren der privaten Cloud usw. in Ihrer privaten Cloud zu planen. Diese können den Start des Upgrades verhindern oder negative Auswirkungen auf das Upgrade und die Umgebung haben.
+ 
+Sie werden benachrichtigt, bevor Patches und Updates bzw. Upgrades auf Ihre privaten Clouds angewendet werden. Wir arbeiten auch mit Ihnen zusammen, um ein Wartungsfenster zu planen, bevor wir Updates oder Upgrades auf Ihre private Cloud anwenden.
+
 
 Softwareupdates umfassen:
 
 - **Patches**: Sicherheitspatches oder Fehlerbehebungen, die von VMware freigegeben werden
+
 - **Updates**: Änderungen der Nebenversion einer VMware-Stack-Komponente
+
 - **Upgrades**: Änderungen der Hauptversion einer VMware-Stack-Komponente
 
 >[!NOTE]

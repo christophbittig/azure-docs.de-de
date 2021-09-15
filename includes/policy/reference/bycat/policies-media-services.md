@@ -2,18 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 08/13/2021
+ms.date: 08/27/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 6ca26d27169c5d8fa6ab9e76fcc60950401008b8
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 5b883801779732da01dcf0ea1048920142afbf95
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122180988"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123103262"
 ---
 |Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
+|[Azure Media Services-Konten müssen den Zugriff über öffentliche Netzwerke deaktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8bfe3603-0888-404a-87ff-5c1b6b4cc5e3) |Die Deaktivierung des Zugriffs über öffentliche Netzwerke erhöht die Sicherheit, da Media Services-Ressourcen nicht über das öffentliche Internet zugänglich sind. Private Endpunkte können die Verfügbarkeit von Media Services-Ressourcen einschränken. Weitere Informationen finden Sie unter [https://aka.ms/mediaservicesprivatelinkdocs](../../../../articles/media-services/latest/security-private-link-how-to.md). |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Media%20Services/MediaServices_PublicNetworkAccess_Audit.json) |
 |[Azure Media Services-Konten sollten ein API verwenden, welches Private Link unterstützt](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa77d8bb4-8d22-4bc1-a884-f582a705b480) |Media Services-Konten sollten mit einem API erstellt werden, welches Private Link unterstützt. |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Media%20Services/MediaServices_RequirePrivateLinkSupport_Audit.json) |
 |[Azure Media Services-Konten, die Zugriff auf die Legacy-API (v2) erlauben, sollten blockiert werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fccf93279-9c91-4143-a841-8d1f21505455) |Die Media Services Legacy-API (v2) gestattet Anforderungen, die nicht über Azure Policy verwaltet werden können. Media Services-Ressourcen, die mit der API vom 01.05.2020 oder neuer erstellt wurden, blockieren den Zugriff auf die Legacy-API (v2). |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Media%20Services/MediaServices_BlockRestV2_Audit.json) |
 |[Azure Media Services-Richtlinien für symmetrische Schlüssel sollten die Tokenauthentifizierung verwenden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdaccf7e4-9808-470c-a848-1c5b582a1afb) |Richtlinien für symmetrische Schlüssel definieren die Bedingungen, die für den Zugriff auf symmetrische Schlüssel erfüllt sein müssen. Eine Tokeneinschränkung stellt sicher, dass nur Benutzer mit gültigen Token von einem Authentifizierungsdienst, z. B. Azure Active Directory, auf symmetrische Schlüssel zugreifen können. |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Media%20Services/ContentKeyPolicies_RequireTokenAuth_Audit.json) |

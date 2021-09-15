@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/05/2020
 ms.author: v-jawe
-ms.openlocfilehash: f77fa7e5c33d8970365f7d35c6ad0460718662b9
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 56f116b8c7b90f74da86a792242866d5a88ebff4
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114593538"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122442328"
 ---
 ## <a name="quickstart-face-client-library-for-javascript"></a>Schnellstart: Clientbibliothek zur Gesichtserkennung für JavaScript
 
@@ -22,10 +22,9 @@ Hier erfahren Sie mehr zu den ersten Schritten mit Gesichtserkennung unter Verwe
 
 Verwenden Sie die Clientbibliothek zur Gesichtserkennung für JavaScript für Folgendes:
 
-* [Gesichtserkennung in einem Bild](#detect-faces-in-an-image)
-* [Suchen ähnlicher Gesichter](#find-similar-faces)
-* [Erstellen einer PersonGroup](#create-a-persongroup)
+* [Erkennen und Analysieren von Gesichtern](#detect-and-analyze-faces)
 * [Identifizieren eines Gesichts](#identify-a-face)
+* [Suchen ähnlicher Gesichter](#find-similar-faces)
 
 [Referenzdokumentation](/javascript/api/overview/azure/cognitive-services/face-readme) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-face) | [Paket (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-face) | [Beispiele](/samples/browse/?products=azure&term=face&languages=javascript)
 
@@ -33,6 +32,7 @@ Verwenden Sie die Clientbibliothek zur Gesichtserkennung für JavaScript für Fo
 
 * Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/cognitive-services/)
 * Die aktuelle Version von [Node.js](https://nodejs.org/en/)
+* [!INCLUDE [contributor-requirement](../../../includes/quickstarts/contributor-requirement.md)]
 * Sobald Sie über Ihr Azure-Abonnement verfügen, sollten Sie im Azure-Portal [eine Gesichtserkennungsressource erstellen](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace), um Ihren Schlüssel und Endpunkt zu erhalten. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
     * Sie benötigen den Schlüssel und Endpunkt der von Ihnen erstellten Ressource, um Ihre Anwendung mit der Gesichtserkennungs-API zu verbinden. Der Schlüssel und der Endpunkt werden weiter unten in der Schnellstartanleitung in den Code eingefügt.
     * Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst zu testen, und später für die Produktion auf einen kostenpflichtigen Tarif upgraden.
@@ -104,10 +104,9 @@ Die folgenden Klassen und Schnittstellen verarbeiten einige der Hauptfunktionen 
 Die folgenden Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit der Clientbibliothek zur Gesichtserkennung für .NET ausgeführt werden:
 
 * [Authentifizieren des Clients](#authenticate-the-client)
-* [Gesichtserkennung in einem Bild](#detect-faces-in-an-image)
-* [Suchen ähnlicher Gesichter](#find-similar-faces)
-* [Erstellen einer PersonGroup](#create-a-persongroup)
+* [Erkennen und Analysieren von Gesichtern](#detect-and-analyze-faces)
 * [Identifizieren eines Gesichts](#identify-a-face)
+* [Suchen ähnlicher Gesichter](#find-similar-faces)
 
 > [!TIP]
 > Möchten Sie sich sofort die gesamte Codedatei für die Schnellstartanleitung ansehen? Die Datei steht [auf GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/Face/sdk_quickstart.js) zur Verfügung. Dort finden Sie die Codebeispiele aus dieser Schnellstartanleitung.
@@ -130,7 +129,10 @@ Sie verwenden die folgende Funktion, um auf den Abschluss des Trainings der Pers
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="helpers":::
 
-## <a name="detect-faces-in-an-image"></a>Gesichtserkennung in einem Bild
+## <a name="detect-and-analyze-faces"></a>Erkennen und Analysieren von Gesichtern
+
+Die Gesichtserkennung ist als erster Schritt für die Gesichtsanalyse und Identitätsüberprüfung erforderlich. In diesem Abschnitt wird gezeigt, wie die zusätzlichen Gesichtsattributdaten zurückgegeben werden. Wenn Sie Gesichter nur für die Gesichtsidentifikation oder -überprüfung erkennen möchten, fahren Sie mit den Abschnitten weiter unten fort.
+
 
 ### <a name="get-detected-face-objects"></a>Abrufen erkannter Gesichtsobjekte
 
@@ -143,25 +145,11 @@ Die Methode `DetectFaceExtract` analysiert dann die Attributdaten für jedes erk
 > [!TIP]
 > Sie können auch Gesichter in einem lokalen Bild erkennen. Sehen Sie sich die [Face](/javascript/api/@azure/cognitiveservices-face/face)-Methoden an, etwa [DetectWithStreamAsync](/javascript/api/@azure/cognitiveservices-face/face#detectWithStream_msRest_HttpRequestBody__FaceDetectWithStreamOptionalParams__ServiceCallback_DetectedFace____).
 
-## <a name="find-similar-faces"></a>Suchen ähnlicher Gesichter
 
-Der folgende Code verwendet ein einzelnes erkanntes Gesicht (Quelle) und durchsucht eine Reihe anderer Gesichter (Ziel) auf Übereinstimmungen (Gesichtssuche anhand von Bildern). Bei einer Übereinstimmung wird die ID des entsprechenden Gesichts in der Konsole ausgegeben.
-
-### <a name="detect-faces-for-comparison"></a>Erkennen von Gesichtern zum Vergleich
-
-Definieren Sie zunächst eine zweite Gesichtserkennungsmethode. Sie müssen Gesichter in Bildern erkennen, bevor Sie sie vergleichen können, und diese Erkennungsmethode ist für Vergleichsvorgänge optimiert. Sie extrahiert keine detaillierten Gesichtsattribute wie im obigen Abschnitt und verwendet ein anderes Erkennungsmodell.
-
-:::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="recognize":::
-
-### <a name="find-matches"></a>Suchen von Übereinstimmungen
-
-Die folgende Methode erkennt Gesichter in einer Reihe von Zielbildern und in einem einzelnen Quellbild. Anschließend vergleicht sie diese und sucht alle Zielbilder, die dem Quellbild ähneln. Schließlich werden die Übereinstimmungsdetails in der Konsole ausgegeben:
-
-:::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="find_similar":::
 
 ## <a name="identify-a-face"></a>Identifizieren eines Gesichts
 
-Der [Identifizierungsvorgang](/javascript/api/@azure/cognitiveservices-face/face#identify_string____FaceIdentifyOptionalParams__ServiceCallback_IdentifyResult____) verwendet ein Bild einer Person (oder mehrerer Personen) und sucht im Bild nach der Identität der einzelnen Gesichter (Gesichtserkennungssuche). Er vergleicht jedes erkannte Gesicht mit einem [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup)-Objekt, einer Datenbank mit verschiedenen [Person](/javascript/api/@azure/cognitiveservices-face/person)-Objekten,deren Gesichtsmerkmale bekannt sind. Für den Identifizierungsvorgang müssen Sie zunächst ein [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup)-Element erstellen und trainieren.
+Der [Identifizierungsvorgang](/javascript/api/@azure/cognitiveservices-face/face#identify_string____FaceIdentifyOptionalParams__ServiceCallback_IdentifyResult____) verwendet ein Bild einer Person (oder mehrerer Personen) und sucht im Bild nach dem gespeicherten Personenobjekt, das den einzelnen Gesichter zugeordnet ist (Gesichtserkennungssuche). Er vergleicht jedes erkannte Gesicht mit einem [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup)-Objekt, einer Datenbank mit verschiedenen [Person](/javascript/api/@azure/cognitiveservices-face/person)-Objekten,deren Gesichtsmerkmale bekannt sind. Für den Identifizierungsvorgang müssen Sie zunächst ein [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup)-Element erstellen und trainieren.
 
 ### <a name="add-faces-to-persongroup"></a>Hinzufügen von Gesichtern zu PersonGroup
 
@@ -189,6 +177,22 @@ Diese **PersonGroup** und die ihr zugeordneten **Personen** objekte sind jetzt f
 
 > [!TIP]
 > Sie können auch ein **PersonGroup**-Element aus lokalen Bildern erstellen. Sehen Sie sich die [IPersonGroupPerson](/javascript/api/@azure/cognitiveservices-face/persongroupperson)-Methoden an, etwa [AddFaceFromStream](/javascript/api/@azure/cognitiveservices-face/persongroupperson#addFaceFromStream_string__string__msRest_HttpRequestBody__Models_PersonGroupPersonAddFaceFromStreamOptionalParams_).
+
+## <a name="find-similar-faces"></a>Suchen ähnlicher Gesichter
+
+Der folgende Code verwendet ein einzelnes erkanntes Gesicht (Quelle) und durchsucht eine Reihe anderer Gesichter (Ziel) auf Übereinstimmungen (Gesichtssuche anhand von Bildern). Bei einer Übereinstimmung wird die ID des entsprechenden Gesichts in der Konsole ausgegeben.
+
+### <a name="detect-faces-for-comparison"></a>Erkennen von Gesichtern zum Vergleich
+
+Definieren Sie zunächst eine zweite Gesichtserkennungsmethode. Sie müssen Gesichter in Bildern erkennen, bevor Sie sie vergleichen können, und diese Erkennungsmethode ist für Vergleichsvorgänge optimiert. Sie extrahiert keine detaillierten Gesichtsattribute wie im obigen Abschnitt und verwendet ein anderes Erkennungsmodell.
+
+:::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="recognize":::
+
+### <a name="find-matches"></a>Suchen von Übereinstimmungen
+
+Die folgende Methode erkennt Gesichter in einer Reihe von Zielbildern und in einem einzelnen Quellbild. Anschließend vergleicht sie diese und sucht alle Zielbilder, die dem Quellbild ähneln. Schließlich werden die Übereinstimmungsdetails in der Konsole ausgegeben:
+
+:::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="find_similar":::
 
 ## <a name="main"></a>Main
 

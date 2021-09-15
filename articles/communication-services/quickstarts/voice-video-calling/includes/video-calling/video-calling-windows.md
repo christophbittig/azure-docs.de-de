@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 5fa934ea2dc29004057ffbd3bad7c5f7b5afe935
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 91ed308ecbeeb839dfddb78c0151e2c8aafd0d3b
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114593978"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123122765"
 ---
 In diesem Schnellstartanleitung erfahren Sie, wie Sie einen 1:1-Videoanruf mithilfe des Calling SDK von Azure Communication Services für Windows aufbauen.
 
@@ -161,8 +161,7 @@ private async void InitCallAgentAndDeviceManager()
     deviceManager = await callClient.GetDeviceManager();
 
     CommunicationTokenCredential token_credential = new CommunicationTokenCredential("<USER_ACCESS_TOKEN>");
-    callClient = new CallClient();
-
+    
     CallAgentOptions callAgentOptions = new CallAgentOptions()
     {
         DisplayName = "<DISPLAY_NAME>"
@@ -334,5 +333,7 @@ private async void HangupButton_Click(object sender, RoutedEventArgs e)
 Sie können den Build in Visual Studio erstellen und den Code ausführen. Beachten Sie, dass wir für Lösungsplattformen `ARM64`, `x64` und `x86` unterstützen. 
 
 Sie können einen ausgehenden Videoanruf tätigen, indem Sie in das Textfeld eine Benutzer-ID eingeben und auf die Schaltfläche `Start Call` klicken. 
+
+Hinweis: Durch den Aufruf von `8:echo123` wird der Videostream beendet, da der Echobot das Videostreaming nicht unterstützt. 
 
 Weitere Informationen zu Benutzer IDs (Identität) finden Sie im Leitfaden zu [Benutzerzugriffstoken](../../../access-tokens.md). 

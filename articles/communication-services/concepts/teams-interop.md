@@ -7,19 +7,19 @@ manager: chpalm
 services: azure-communication-services
 ms.author: chpalm
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: e884079bc159dbbc76d6443dc0e095c4d8f596ab
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 1bcb97892965cbe978899df4208888a4adb07253
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114668094"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251337"
 ---
 # <a name="teams-interoperability"></a>Teams-Interoperabilität
 
 > [!IMPORTANT]
-> BYOI-Interoperabilität befindet sich in der Public Preview-Phase und ist auf Anfrage für eine breite Zielgruppe verfügbar. Um die [Interoperabilität von Teams-Mandanten](../concepts/teams-interop.md) zu aktivieren/deaktivieren, füllen Sie [dieses Formular](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u) aus.
+> Die BYOI-Interoperabilität befindet sich in der Public Preview-Phase und ist für alle Communication Services-Anwendungen und Teams-Organisationen verfügbar.
 >
 > Die von Microsoft 365 authentifizierte Interoperabilität befindet sich in der privaten Vorschau, und die Verwendung von Dienststeuerungen ist auf Early Adopter von Azure Communication Services beschränkt. Wenn Sie am Early Access-Programm teilnehmen möchten, füllen Sie [dieses Formular](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8MfnD7fOYZEompFbYDoD4JUMkdYT0xKUUJLR001ODdQRk1ITTdOMlRZNSQlQCN0PWcu) aus.
 >
@@ -42,10 +42,24 @@ Azure Communication Services unterstützt abhängig von der Identität des Endbe
 
 Anwendungen können beide Authentifizierungsschemas implementieren und die Wahl der Authentifizierung dem Endbenutzer überlassen.
 
-## <a name="bring-your-own-identity"></a>Verwendung eigener Identitäten
-Die Verwendung eigener Identitäten (Bring Your Own Identity, BYOI) ist das gängige Modell für die Verwendung von Azure Communication Services und Teams-Interoperabilität. Es unterstützt alle Identitätsanbieter und Authentifizierungsschemas. Ihre App kann Microsoft Teams-Besprechungen beitreten, und diese Benutzer werden von Teams als anonyme externe Konten behandelt. Der in Teams angezeigte Name von Communication Services-Benutzern kann über das Calling SDK von Communication Services konfiguriert werden.
+## <a name="overview"></a>Übersicht
 
-Diese Funktion eignet sich perfekt für B2C-Anwendungen, die (mit Teams vertraute) Mitarbeiter und externe Benutzer (mit einer benutzerdefinierten Anwendungsumgebung) in einer Besprechungsumgebung zusammenbringen. Besprechungsdetails, die für externe Benutzer Ihrer Anwendung freigegeben werden müssen, können über die Graph-API oder aus dem Kalender in Microsoft Teams abgerufen werden.
+Benutzer können auf zwei Arten auf die Teams-Anrufbenutzeroberfläche zugreifen:
+
+- Über Teams-Clients als **Teams-Benutzer**. Dies schließt desktopbasierte, mobile und webbasierte Teams-Clients ein. 
+- Über die Weboberfläche Ihrer Anwendung als **anonyme Teams-Benutzer**. 
+
+Anonyme Teams-Benutzer müssen keine Teams-Benutzer sein. Azure Communication Services ermöglicht das Erstellen und Anpassen neuer Teams-Anrufendpunkte für Teams-Benutzer und anonyme Teams-Benutzer. Sie können das Calling SDK von Communication Services und die Benutzeroberflächenbibliothek für die Anpassung und Integration in bereits vorhandene Anwendungen oder Produkte verwenden. Das folgende Diagramm zeigt den Beitritt zu einer Teams-Besprechung von mehreren Endpunkten aus: ![Übersicht über mehrere Interoperabilitätsszenarien in Azure Communication Services](./media/teams-identities/teams_interop_overview.png)
+
+Wenn ein Endpunkt unter Verwendung einer Teams-Identität über die Azure Communication Services-Clientbibliotheken eine Verbindung mit einer Teams-Besprechung herstellt, wird der Endpunkt wie ein Teams-Benutzer mit einem Teams-Client behandelt. Teams-Benutzer haben Zugriff auf mehr Funktionen als anonyme Teams-Benutzer. Teams-Benutzer können Teams-Besprechungen beitreten, andere Teams-Benutzer anrufen, Anrufe von Telefonnummern entgegennehmen und laufende Anrufe an die Teams-Anrufwarteschlange übergeben. Die Konnektivität des Communication Services-Endpunkts mit Teams-Identität ist im folgenden Diagramm dargestellt:
+
+![Übersicht über Interoperabilitätsszenarien in Azure Communication Services](./media/teams-identities/teams_interop_m365_identity_interop_overview.png)
+
+## <a name="bring-your-own-identity"></a>Verwendung eigener Identitäten
+
+Die Verwendung eigener Identitäten (Bring Your Own Identity, BYOI) ist das gängige Modell für die Verwendung von Azure Communication Services und Teams-Interoperabilität. Es unterstützt alle Identitätsanbieter und Authentifizierungsschemas. Im ersten ermöglichten Szenario kann Ihre Anwendung Microsoft Teams-Besprechungen beitreten, und Teams behandelt die entsprechenden Benutzer als anonyme externe Konten – genau wie Benutzer, die über die anonyme Teams-Webanwendung beitreten. Dies eignet sich perfekt für B2C-Anwendungen, die (mit Teams vertraute) Mitarbeiter und externe Benutzer (mit einer benutzerdefinierten Anwendungsumgebung) in einer Besprechungsumgebung zusammenbringen. Später kommen noch weitere Szenarien hinzu. Dazu zählen beispielsweise direkte Anrufe und Chats, die es Ihrer Anwendung ermöglichen, Anrufe und Chats mit Teams-Benutzern außerhalb des Kontexts einer Teams-Besprechung zu initiieren.
+
+Die Möglichkeit für Communication Services-Benutzer, Teams-Besprechungen als anonyme Benutzer beizutreten, wird durch die bereits vorhandene Konfiguration zum Zulassen des anonymen Besprechungsbeitritts gesteuert. Diese steuert auch den vorhandenen anonymen Besprechungsbeitritt von Teams.  Diese Einstellung kann in Teams Admin Center (https://admin.teams.microsoft.com/meetings/settings) oder mithilfe des Teams-PowerShell-Cmdlets (https://docs.microsoft.com/powershell/module/skype/set-csteamsmeetingconfiguration) aktualisiert werden. Genau wie beim anonymen Besprechungsbeitritt von Teams muss Ihre Anwendung über den Besprechungslink für den Beitritt verfügen. Dieser kann über die Graph-API oder aus dem Kalender in Microsoft Teams abgerufen werden.  Der in Teams angezeigte Name von Communication Services-Benutzern kann über das Calling SDK von Communication Services konfiguriert werden.
 
 Externe Benutzer können grundlegende Audio-, Video-, Bildschirmfreigabe- und Chatfunktionen über Azure Communication Services-SDKs verwenden. Features wie das Heben der Hand, der Zusammen-Modus und Gruppenräume stehen nur Teams-Benutzern zur Verfügung. Communication Services-Benutzer können Nachrichten nur senden und empfangen, solange sie sich in der Teams-Besprechung befinden und die Besprechung nicht für einen Kanal geplant ist.
 

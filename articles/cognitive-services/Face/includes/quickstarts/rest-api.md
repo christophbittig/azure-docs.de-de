@@ -9,18 +9,18 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 12/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 87871be12310782abe172fe308782825ba8e09d0
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: 6520c9514ee8fbf950437026c1d2712683e58151
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109858129"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122442354"
 ---
 Erste Schritte mit der Gesichtserkennung unter Verwendung der Gesichtserkennungs-REST-API. Über den Gesichtserkennungsdienst haben Sie Zugriff auf erweiterte Algorithmen für die Erkennung von menschlichen Gesichtern in Bildern.
 
 Verwenden Sie die Gesichtserkennungs-REST-API für Folgendes:
 
-* [Gesichtserkennung in einem Bild](#detect-faces-in-an-image)
+* [Erkennen und Analysieren von Gesichtern](#detect-and-analyze-faces)
 * [Suchen ähnlicher Gesichter](#find-similar-faces)
 
 > [!NOTE]
@@ -29,13 +29,14 @@ Verwenden Sie die Gesichtserkennungs-REST-API für Folgendes:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/cognitive-services/)
+* [!INCLUDE [contributor-requirement](../../../includes/quickstarts/contributor-requirement.md)]
 * Sobald Sie über Ihr Azure-Abonnement verfügen, erstellen Sie über <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="Erstellen einer Gesichtserkennungsressource"  target="_blank"> eine Gesichtserkennungsressource </a> im Azure-Portal, um Ihren Schlüssel und Endpunkt zu erhalten. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
     * Sie benötigen den Schlüssel und Endpunkt der von Ihnen erstellten Ressource, um Ihre Anwendung mit der Gesichtserkennungs-API zu verbinden. Der Schlüssel und der Endpunkt werden weiter unten in der Schnellstartanleitung in den Code eingefügt.
     * Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst zu testen, und später für die Produktion auf einen kostenpflichtigen Tarif upgraden.
 * [PowerShell-Version 6.0 oder höher](/powershell/scripting/install/installing-powershell-core-on-windows) oder eine ähnliche Befehlszeilenanwendung
 
 
-## <a name="detect-faces-in-an-image"></a>Gesichtserkennung in einem Bild
+## <a name="detect-and-analyze-faces"></a>Erkennen und Analysieren von Gesichtern
 
 Der Befehl zum Aufrufen der Gesichtserkennungs-API sowie zum Abrufen von Gesichtsattributdaten aus einem Bild sieht in etwa wie folgt aus. Kopieren Sie den Code zunächst in einen Text-Editor. Sie müssen bestimmte Teile des Befehls ändern, bevor Sie ihn ausführen können.
 
@@ -175,7 +176,7 @@ Bei diesem Vorgang wird ein einzelnes erkanntes Gesicht (Quelle) verwendet und e
 
 ### <a name="detect-faces-for-comparison"></a>Erkennen von Gesichtern zum Vergleich
 
-Damit Gesichter in Bildern verglichen werden können, müssen sie zunächst erkannt werden. Führen Sie den folgenden Befehl auf die gleiche Weise aus wie im Abschnitt [Erkennen von Gesichtern](#detect-faces-in-an-image). Diese Erkennungsmethode ist für Vergleichsvorgänge optimiert. Sie extrahiert keine detaillierten Gesichtsattribute wie im obigen Abschnitt und verwendet ein anderes Erkennungsmodell.
+Damit Gesichter in Bildern verglichen werden können, müssen sie zunächst erkannt werden. Führen Sie den folgenden Befehl auf die gleiche Weise aus wie im Abschnitt [Erkennen und Analysieren von Gesichtern](#detect-and-analyze-faces). Diese Erkennungsmethode ist für Vergleichsvorgänge optimiert. Sie extrahiert keine detaillierten Gesichtsattribute wie im obigen Abschnitt und verwendet ein anderes Erkennungsmodell.
 
 :::code language="shell" source="~/cognitive-services-quickstart-code/curl/face/detect.sh" ID="detect_for_similar":::
 

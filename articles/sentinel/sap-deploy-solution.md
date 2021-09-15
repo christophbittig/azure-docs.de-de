@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc
 ms.date: 07/06/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: 7bddb61bbbab008fad4e538400bbe4396ac744b4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 555bc5c14a769c6e2ec309347fd40e4e9aa9e1e3
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723458"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681407"
 ---
 #  <a name="deploy-sap-continuous-threat-monitoring-public-preview"></a>Bereitstellen der kontinuierlichen Bedrohungsüberwachung in SAP (öffentliche Vorschau)
 
@@ -35,13 +35,16 @@ Um SAP-Protokolle in Azure Sentinel zu erfassen, muss der SAP-Datenconnector von
 
 Nach der Bereitstellung des SAP-Datenconnectors stellen Sie die Sicherheitsinhalte der SAP-Lösung bereit, um reibungslos Einblicke in die SAP-Umgebung Ihrer Organisation zu erhalten und alle zugehörigen Funktionen für Sicherheitsvorgänge zu verbessern.
 
-In diesem Tutorial lernen Sie Folgendes:
+In diesem Artikel wird Folgendes behandelt:
 
 > [!div class="checklist"]
 > * Vorbereiten Ihres SAP-Systems für die Bereitstellung des SAP-Datenconnectors
 > * Verwenden eines Docker-Containers und einer Azure-VM zum Bereitstellen des SAP-Datenconnectors
 > * Bereitstellen der Sicherheitsinhalte der SAP-Lösung in Azure Sentinel
 
+> [!NOTE]
+> Zusätzliche Schritte sind erforderlich, um Ihren SAP-Datenconnector über eine sichere SNC-Verbindung bereitzustellen. Weitere Informationen finden Sie unter [Bereitstellen des Azure Sentinel-Datenconnectors für SAP mit SNC](sap-solution-deploy-snc.md).
+>
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um den SAP-Datenconnector von Azure Sentinel und die Sicherheitsinhalte wie in diesem Tutorial beschrieben bereitzustellen, müssen die folgenden Voraussetzungen erfüllt sein:
@@ -83,7 +86,7 @@ In diesem Verfahren wird beschrieben, wie Sie sicherstellen, dass auf Ihrem SAP-
     |– 700 bis 702<br>– 710 bis 711, 730, 731 und 740<br>– 750 bis 752     | 2502336: CD (Change Document): RSSCD100 – schreibgeschützt aus dem Archiv, nicht aus der Datenbank        |
     |     |         |
 
-    Für höhere Versionen sind die zusätzlichen Hinweise nicht erforderlich. Weitere Informationen finden Sie auf der [Launchpad-Website des SAP-Support](https://support.sap.com/en/index.html), bei der Sie sich mit einem SAP-Benutzerkonto anmelden.
+    Für spätere Versionen sind keine zusätzlichen Hinweise erforderlich. Weitere Informationen finden Sie auf der [Launchpad-Website des SAP-Supports](https://support.sap.com/en/index.html), bei der Sie sich mit einem SAP-Benutzerkonto anmelden.
 
 1. Laden Sie eine der folgenden SAP-Änderungsanforderungen aus dem Azure Sentinel-GitHub-Repository unter https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/SAP/CR: herunter, und installieren Sie sie:
 
@@ -299,13 +302,26 @@ Wenn Sie über einen Docker-Container verfügen, der bereits mit einer früheren
     ./ sapcon-instance-update.sh
     ```
 
-Der Docker-Container des SAP-Datenconnectors auf Ihrem Computer wird aktualisiert.
+1. Starten Sie den Docker-Container neu:
+
+    ```bash
+    docker restart sapcon-[SID]
+    ```
+
+Der Docker-Container des SAP-Datenconnectors auf Ihrem Computer wird aktualisiert. 
+
+Prüfen Sie unbedingt, ob weitere Updates verfügbar sind:
+
+- Relevante SAP-Änderungsanforderungen im [GitHub-Repository für Azure Sentinel](https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/SAP/CR)
+- Azure Sentinel-Sicherheitsinhalte für SAP in der Lösung **Azure Sentinel – Kontinuierliche Bedrohungsüberwachung für SAP**
+- Relevante Watchlists im [Azure Sentinel-GitHub-Repository](https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/SAP/Analytics/Watchlists)
+
 
 ## <a name="collect-sap-hana-audit-logs"></a>Erfassen von SAP HANA-Überwachungsprotokollen
 
 Wenn die SAP HANA-Datenbanküberwachungsprotokolle mit Syslog konfiguriert sind, müssen Sie auch Ihren Log Analytics-Agent zum Erfassen der Syslog-Dateien konfigurieren.
 
-1. Stellen Sie sicher, dass der SAP HANA-Überwachungsprotokollpfad wie auf der [Launchpad-Website des SAP-Support](https://launchpad.support.sap.com/#/notes/0002624117) im *SAP-Hinweis 0002624117* beschrieben so konfiguriert ist, dass Syslog verwendet wird. Weitere Informationen finden Sie unter:
+1. Stellen Sie sicher, dass der SAP HANA-Überwachungsprotokollpfad wie auf der [Launchpad-Website des SAP-Support](https://launchpad.support.sap.com/#/notes/0002624117) im *SAP-Hinweis 0002624117* beschrieben so konfiguriert ist, dass Syslog verwendet wird. Weitere Informationen finden Sie unter
 
     - [SAP HANA-Überwachungspfad – Bewährte Methode](https://archive.sap.com/documents/docs/DOC-51098)
     - [Empfehlungen für die Überwachung](https://help.sap.com/viewer/742945a940f240f4a2a0e39f93d3e2d4/2.0.05/en-US/5c34ecd355e44aa9af3b3e6de4bbf5c1.html)
@@ -336,6 +352,7 @@ Wenn die SAP HANA-Datenbanküberwachungsprotokolle mit Syslog konfiguriert sind,
 
 Erfahren Sie mehr über die SAP-Lösungen von Azure Sentinel:
 
+- [Bereitstellen des Azure Sentinel-Datenconnectors für SAP mit SNC](sap-solution-deploy-snc.md)
 - [Konfigurationsoptionen für Experten, lokale Bereitstellung und SAPControl-Protokollquellen](sap-solution-deploy-alternate.md)
 - [Detaillierte SAP-Anforderungen für die Azure Sentinel-Lösung für SAP](sap-solution-detailed-requirements.md)
 - [Referenz zu Protokollen der SAP-Lösung von Azure Sentinel](sap-solution-log-reference.md)

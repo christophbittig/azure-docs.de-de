@@ -13,14 +13,14 @@ metadata:
   ms.topic: troubleshooting
   ms.tgt_pltfrm: vm-windows-sql-server
   ms.workload: iaas-sql-server
-  ms.date: 08/05/2019
+  ms.date: 9/01/2021
   ms.author: mathoma
-  ms.openlocfilehash: afc126a44fec520f4451787c0e8b350a292c2fca
-  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+  ms.openlocfilehash: 6b6b6ae343e5ac641e1fb855c7ca7d466fd91ba8
+  ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 07/22/2021
-  ms.locfileid: "114440691"
+  ms.lasthandoff: 08/30/2021
+  ms.locfileid: "123221426"
 title: Häufig gestellte Fragen für SQL Server auf Azure-VMs
 summary: >
   [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -92,7 +92,7 @@ sections:
       Ja. Sie können ein Image mit nutzungsbasierter Bezahlung (Pay-As-You-Go, PAYG) problemlos auf Bring-Your-Own-License (BYOL) umstellen, indem Sie den [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/faq/) aktivieren.  Weitere Informationen finden Sie unter [Ändern des Lizenzierungsmodells für eine SQL Server-VM](licensing-model-azure-hybrid-benefit-ahb-change.md). Diese Funktion ist zurzeit nur für öffentliche und Azure Government-Cloudkunden verfügbar.
   - question: >
       Sind für den Wechsel des Lizenzierungsmodells Ausfallzeiten für SQL Server erforderlich?
-    answer: "Nein. Das [Ändern das Lizenzierungsmodells](licensing-model-azure-hybrid-benefit-ahb-change.md) erfordert keine Ausfallzeiten für SQL Server, da die Änderung sofort wirksam werden und kein Neustart des virtuellen Computers erforderlich ist. Um jedoch Ihre SQL Server-VM mit der SQL-IaaS-Agent-Erweiterung registrieren zu können, muss die [SQL-IaaS-Erweiterung](sql-server-iaas-agent-extension-automate-management.md) als erforderliche Komponente installiert sein, und durch die Installation der SQL-IaaS-Erweiterung im Modus _Vollständig_ wird der SQL Server-Dienst neu gestartet. Wenn die SQL-IaaS-Erweiterung installiert werden muss, installieren Sie sie entweder im _Lightweight_-Modus für eingeschränkte Funktionalität, oder installieren Sie sie während eines Wartungsfensters im _Vollmodus_. Die im _Lightweight_-Modus installierte SQL-IaaS-Erweiterung kann jederzeit auf den _Vollmodus_ umgestellt werden. Dazu ist jedoch ein Neustart des SQL Server-Diensts erforderlich. \n"
+    answer: "Nein. Das [Ändern das Lizenzierungsmodells](licensing-model-azure-hybrid-benefit-ahb-change.md) erfordert keine Ausfallzeiten für SQL Server, da die Änderung sofort wirksam werden und kein Neustart des virtuellen Computers erforderlich ist.  \n"
   - question: >
       Ist es möglich, das Lizenzierungsmodell auf einem virtuellen SQL Server-Computer zu wechseln, der mit dem klassischem Modell bereitgestellt wurde?
     answer: Nein. Eine Änderung des Lizenzierungsmodells wird auf einer klassischen VM nicht unterstützt. Sie können Ihre VM zum Azure Resource Manager-Modell migrieren und mit der SQL-IaaS-Agent-Erweiterung registrieren. Nach der Registrierung der VM mit der SQL-IaaS-Agent-Erweiterung kann das Lizenzierungsmodell für den virtuellen Computer geändert werden.
@@ -191,17 +191,16 @@ sections:
     answer: Ja. Kunden sollten Ihre SQL Server-VMs mit der Erweiterung registrieren, wenn sie kein SQL Server-Image aus Azure Marketplace verwendet, sondern stattdessen SQL Server selbst installiert oder ihre benutzerdefinierte VHD verwendet haben. VMs im Besitz aller Abonnementtypen (direkt, Enterprise Agreement und Cloud Solution Provider) können mit der SQL-IaaS-Agent-Erweiterung registriert werden.
   - question: >
       Wie lautet der Standardverwaltungsmodus bei der Registrierung mit der SQL-IaaS-Agent-Erweiterung?
-    answer: >
-      Bei der Registrierung der VM mit der SQL-IaaS-Agent-Erweiterung lautet der Standardverwaltungsmodus *Lightweight*. Wenn die Eigenschaft für die Verwaltung von SQL Server bei der Registrierung mit der Erweiterung nicht festgelegt wurde, wird der Modus „Lightweight“ festgelegt, und der SQL Server-Dienst wird nicht neu gestartet. Es wird empfohlen, die VM mit der SQL-IaaS-Agent-Erweiterung zunächst im Modus „Lightweight“ zu registrieren und dann während eines Wartungsfensters auf den Modus „Vollständig“ zu aktualisieren. Der Standardverwaltungsmodus ist auch dann „Lightweight“, wenn das Feature zur [automatischen Registrierung](sql-agent-extension-automatic-registration-all-vms.md) verwendet wird.
+    answer: "Bei der Registrierung der VM mit der SQL-IaaS-Agent-Erweiterung lautet der Standardverwaltungsmodus *Lightweight*. Wenn die Eigenschaft für die Verwaltung von SQL Server bei der Registrierung mit der Erweiterung nicht festgelegt wurde, wird der Modus „Lightweight“ festgelegt.  Der Standardverwaltungsmodus ist auch dann „Lightweight“, wenn das Feature zur [automatischen Registrierung](sql-agent-extension-automatic-registration-all-vms.md) verwendet wird. \n"
   - question: >
       Was sind die Voraussetzungen für die Registrierung der VM mit der SQL-IaaS-Agent-Erweiterung?
-    answer: Als Voraussetzung für die Registrierung mit der SQL-IaaS-Agent-Erweiterung muss lediglich SQL Server auf der VM installiert sein. Beachten Sie, dass bei einer Installation der SQL-IaaS-Agent-Erweiterung im Modus „Vollständig“ ein Neustart des SQL Server-Diensts erfolgt. Es wird daher empfohlen, dies während eines Wartungsfensters durchzuführen.
+    answer: Als Voraussetzung für die Registrierung mit der SQL-IaaS-Agent-Erweiterung muss lediglich SQL Server auf der VM installiert sein.
   - question: >
       Wird bei der Registrierung mit der SQL-IaaS-Agent-Erweiterung ein Agent auf meiner VM installiert?
     answer: "Ja, bei der Registrierung mit der SQL-IaaS-Agent-Erweiterung im Verwaltbarkeitsmodus „Vollständig“ wird auf der VM ein Agent installiert. Bei einer Registrierung in den Modi „Lightweight“ oder „NoAgent“ ist dies nicht der Fall. \n\nBei der Registrierung mit der SQL-IaaS-Agent-Erweiterung im Modus „Lightweight“ werden nur die *Binärdateien* der SQL-IaaS-Agent-Erweiterung auf die VM kopiert, der Agent wird jedoch nicht installiert. Diese Binärdateien werden dann für die Installation des Agents verwendet, wenn der Verwaltungsmodus in „Vollständig“ geändert wird.\n"
   - question: >
       Wird bei der Registrierung mit der SQL-IaaS-Agent-Erweiterung der SQL Server-Dienst auf meiner VM neu gestartet?
-    answer: Das hängt von dem während der Registrierung angegebenen Modus ab. Wenn als Modus „Lightweight“ oder „NoAgent“ angegeben wurde, wird der SQL Server-Dienst nicht neu gestartet. Wird als Verwaltungsmodus jedoch „Vollständig“ angegeben, erfolgt ein Neustart des SQL Server-Diensts. Beim Feature für die automatische Registrierung werden Ihre SQL Server-VMs im Modus „Lightweight“ registriert, es sei denn, die Windows Server-Version ist 2008. In diesem Fall wird die SQL Server-VM im Modus „NoAgent“ registriert.
+    answer: Ab September 2021 ist für die Registrierung bei der [SQL IaaS-Erweiterung](sql-server-iaas-agent-extension-automate-management.md) im [Verwaltungsmodus „Vollständig“](sql-agent-extension-manually-register-single-vm.md) kein Neustart des SQL Server-Dienstes mehr erforderlich.
   - question: "Worin besteht der Unterschied zwischen den Verwaltungsmodi „Lightweight“ und „NoAgent“ bei der Registrierung mit der SQL-IaaS-Agent-Erweiterung? \n"
     answer: "Der Verwaltungsmodus „NoAgent“ ist der einzige verfügbare Modus für SQL Server 2008 und SQL Server 2008 R2 unter Windows Server 2008. Für alle anderen Versionen von Windows Server sind die beiden Verwaltbarkeitsmodi „Lightweight“ und „Vollständig“ verfügbar. \n\nFür den Modus „NoAgent“ müssen die Eigenschaften für die SQL Server-Version und -Edition vom Kunden festgelegt werden. Der Modus „Lightweight“ fragt die VM ab, um die Version und Edition der SQL Server-Instanz zu ermitteln.\n"
   - question: >
@@ -215,7 +214,7 @@ sections:
     answer: Nein. Das Upgrade des Verwaltbarkeitsmodus auf „Vollständig“ oder „Lightweight“ steht für den Modus „NoAgent“ nicht zur Verfügung. Dies ist eine technische Einschränkung von Windows Server 2008. Sie müssen für das Betriebssystem zunächst ein Upgrade auf Windows Server 2008 R2 oder höher ausführen. Danach können Sie ein Upgrade auf den Verwaltungsmodus „Vollständig“ ausführen.
   - question: >
       Kann ich die SQL Server-IaaS-Erweiterung vom Modus „Lightweight“ auf „Vollständig“ upgraden?
-    answer: Ja. Das Upgrade des Verwaltbarkeitsmodus von „Lightweight“ auf „Vollständig“ wird über Azure PowerShell und das Azure-Portal unterstützt. Dadurch wird ein Neustart des SQL Server-Diensts auslöst.
+    answer: Ja. Das Upgrade des Verwaltbarkeitsmodus von „Lightweight“ auf „Vollständig“ wird über Azure PowerShell und das Azure-Portal unterstützt.
   - question: >
       Kann ich eine Herabstufung der SQL Server-IaaS-Erweiterung vom Modus „Vollständig“ auf die Verwaltungsmodi „NoAgent“ oder „Lightweight“ durchführen?
     answer: "Nein. Eine Herabstufung des Verwaltungsmodus für die SQL Server-IaaS-Erweiterung wird nicht unterstützt. Der Verwaltbarkeitsmodus kann vom Modus „Vollständig“ nicht auf „Lightweight“ oder „NoAgent“ herabgestuft werden und auch nicht vom Modus „Lightweight“ auf den Modus „NoAgent“. \n\nUm den Modus „Vollständig“ in einen anderen Verwaltbarkeitsmodus zu ändern, müssen Sie die [Registrierung der SQL-IaaS-Agent-Erweiterung für die SQL Server-VM aufheben](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension), indem Sie die _Ressource_ „Virtueller SQL-Computer“ löschen und die SQL Server-VM mit der SQL-IaaS-Agent-Erweiterung in einem anderen Verwaltungsmodus erneut registrieren.\n"

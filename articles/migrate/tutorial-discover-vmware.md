@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 07/28/2021
 ms.custom: mvc
-ms.openlocfilehash: 324e30df7f63f5ca0abf7abd50ab890495e4e7cc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 973d6f9450d0cb58df5b1e8dcd208990806abc54
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121721967"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967327"
 ---
 # <a name="tutorial-discover-servers-running-in-a-vmware-environment-with-azure-migrate"></a>Tutorial: Ermitteln von in einer VMware-Umgebung ausgeführten Servern mit Azure Migrate
 
@@ -137,7 +137,8 @@ Ein neues Projekt einrichten:
 Für das Azure Migrate-Tool zur Ermittlung und Bewertung wird eine einfache Azure Migrate-Appliance verwendet. Die Appliance führt die Serverermittlung komplett durch und sendet Metadaten zur Serverkonfiguration und -leistung an Azure Migrate. Richten Sie die Appliance durch Bereitstellen einer OVA-Vorlage ein, die aus dem Projekt heruntergeladen werden kann.
 
 > [!NOTE]
-> Wenn Sie die Appliance nicht mithilfe der OVA-Vorlage einrichten können, können Sie für die Einrichtung ein PowerShell-Skript auf einem vorhandenen Windows Server 2016 ausführen. Erfahren Sie, wie Sie eine [Azure Migrate-Appliance mit PowerShell einrichten](deploy-appliance-script.md#set-up-the-appliance-for-vmware).
+> Wenn Sie die Appliance nicht mithilfe der OVA-Vorlage einrichten können, können Sie für die Einrichtung ein PowerShell-Skript auf einem vorhandenen Windows Server 2016 ausführen. Erfahren Sie, wie Sie eine [Azure Migrate-Appliance mit PowerShell einrichten](deploy-appliance-script.md#set-up-the-appliance-for-vmware). <br/>
+> Die Option zum Bereitstellen einer Appliance mithilfe einer OVA-Vorlage wird in der Azure Government-Cloud nicht unterstützt. [Hier](/azure/migrate/deploy-appliance-script-government) erfahren Sie mehr über das Bereitstellen einer Appliance für die Azure Government-Cloud.
 
 ### <a name="deploy-by-using-an-ova-template"></a>Bereitstellen mithilfe einer OVA-Vorlage
 

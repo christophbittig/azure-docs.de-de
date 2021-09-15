@@ -2,19 +2,19 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 07/21/2021
+ms.date: 08/31/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 1b1c91ac00a359b9fc33ebacca26c2e2ebfae5e3
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 2e2695f2c2b193e77b286b30b5300aa09d099358
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114456843"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123308860"
 ---
 ### <a name="count-of-os-update-installation-done"></a>Anzahl abgeschlossener Betriebssystem-Updateinstallation
 
-Gibt eine Liste mit dem Ausführungsstatus aller Betriebssystem-Updateinstallationen zurück, die für Ihre Computer in den letzten 7 Tagen ausgeführt wurden.
+Gibt eine Liste mit dem Ausführungsstatus aller Betriebssystem-Updateinstallationen zurück, die für Ihre Computer in den letzten sieben Tagen ausgeführt wurden.
 
 ```kusto
 PatchAssessmentResources
@@ -85,7 +85,7 @@ Search-AzGraph -Query "PatchAssessmentResources | where type !has 'softwarepatch
 
 ### <a name="list-of-linux-os-update-installation-done"></a>Auflisten der ausgeführten Updateinstallationen für das Linux-Betriebssystem
 
-Gibt eine Liste mit dem Ausführungsstatus von Updateinstallationen für das Windows Server-Betriebssystem zurück, die für Ihre Computer in den letzten 7 Tagen ausgeführt wurden.
+Gibt eine Liste mit dem Ausführungsstatus von Updateinstallationen für das Linux Server-Betriebssystem zurück, die für Ihre Computer in den letzten sieben Tagen ausgeführt wurden.
 
 ```kusto
 PatchAssessmentResources
@@ -122,7 +122,7 @@ Search-AzGraph -Query "PatchAssessmentResources | where type has 'softwarepatche
 
 ### <a name="list-of-windows-server-os-update-installation-done"></a>Auflisten der ausgeführten Updateinstallationen für das Windows Server-Betriebssystem
 
-Gibt eine Liste mit dem Ausführungsstatus von Updateinstallationen für das Windows Server-Betriebssystem zurück, die für Ihre Computer in den letzten 7 Tagen ausgeführt wurden.
+Gibt eine Liste mit dem Ausführungsstatus von Updateinstallationen für das Windows Server-Betriebssystem zurück, die für Ihre Computer in den letzten sieben Tagen ausgeführt wurden.
 
 ```kusto
 PatchAssessmentResources

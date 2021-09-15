@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: dde83e48fe25e1f7e4d23462574e80c75323dde3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3cff113ffd6a37406a88eb5ad5a4e3d5e85e10c5
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740581"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123039420"
 ---
 # <a name="tutorial-develop-iot-edge-modules-with-linux-containers"></a>Tutorial: Entwickeln von IoT Edge-Modulen mit Linux-Containern
 
@@ -80,6 +80,7 @@ In der folgenden Tabelle sind die unterstützten Entwicklungsszenarien für **Li
 >Unterstützung für Linux ARM64-Geräte ist in der [öffentlichen Vorschau](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) verfügbar. Weitere Informationen finden Sie unter [Develop and debug ARM64 IoT Edge modules in Visual Studio Code (preview) (Entwickeln und Debuggen von ARM64 IoT Edge-Modulen in Visual Studio Code (Vorschauversion))](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview).
 
 In diesem Tutorial werden die Entwicklungsschritte für Visual Studio Code beschrieben. Falls Sie Visual Studio bevorzugen, hilft Ihnen die Anleitung unter [Entwickeln und Debuggen von Modulen für Azure IoT Edge (Vorschauversion) mithilfe von Visual Studio 2017](how-to-visual-studio-develop-module.md) weiter.
+
 ## <a name="install-container-engine"></a>Installieren der Container-Engine
 
 Da IoT Edge-Module als Container verpackt werden, benötigen Sie auf Ihrem Entwicklungscomputer eine Container-Engine zum Erstellen und Verwalten der Container. Wir empfehlen Docker Desktop für die Entwicklung, da diese beliebte Anwendung zahlreiche Features unterstützt. Mit Docker Desktop unter Windows können Sie zwischen Linux-Containern und Windows-Containern wechseln, damit Sie auf einfache Weise für unterschiedliche Arten von IoT Edge-Geräten Module entwickeln können.
@@ -150,6 +151,18 @@ Nehmen Sie sich nach dem Laden Ihrer neuen Projektmappe im Visual Studio Code-Fe
 
   * Im Abschnitt mit den Anmeldeinformationen für die Registrierung wird die Adresse automatisch anhand der Informationen eingefügt, die Sie beim Erstellen der Projektmappe angegeben haben. Der Benutzername und das Kennwort basieren aber auf den Variablen, die in der ENV-Datei gespeichert sind. Diese Konfiguration dient der Sicherheit, da die ENV-Datei von Git ignoriert wird, während dies für die Bereitstellungsvorlage nicht der Fall ist.
   * Im Abschnitt „SampleModule“ wird das Containerimage nicht eingefügt, obwohl Sie das Repository für das Image beim Erstellen der Projektmappe angegeben haben. Dieser Platzhalter verweist auf die Datei **module.json** im Ordner „SampleModule“. Wenn Sie auf diese Datei zugreifen, sehen Sie, dass das Repository im Imagefeld enthalten ist. Es wird aber auch ein Tagwert angezeigt, der aus der Version und der Plattform des Containers besteht. Sie können die Version im Rahmen des Entwicklungszyklus manuell durchlaufen und wählen die Containerplattform mit einem Umschalter aus, der weiter unten in diesem Abschnitt beschrieben wird.
+
+### <a name="set-iot-edge-runtime-version"></a>Festlegen der IoT Edge-Runtimeversion
+
+Die IoT Edge-Erweiterung verwendet beim Erstellen der Bereitstellungsressourcen standardmäßig die neueste stabile Version der IoT Edge-Runtime. Derzeit ist Version 1.2 die neueste stabile Version. Wenn Sie Module für Geräte entwickeln, auf denen die Version 1.1 mit langfristigem Support (Long-Term Support, LTS) oder die frühere Version 1.0 ausgeführt wird, aktualisieren Sie die IoT Edge-Runtimeversion in Visual Studio Code entsprechend.
+
+1. Wählen Sie **Ansicht** > **Befehlspalette** aus.
+
+1. Geben Sie in der Befehlspalette den Befehl **Azure IoT Edge: Set default IoT Edge runtime version** ein, und führen Sie ihn aus.
+
+1. Wählen Sie in der Liste die Runtimeversion aus, die auf Ihren IoT Edge-Geräten ausgeführt wird.
+
+Nachdem Sie eine neue Runtimeversion ausgewählt haben, wird Ihr Bereitstellungsmanifest dynamisch aktualisiert, um die Änderung an den Runtimemodulimages widerzuspiegeln.
 
 ### <a name="provide-your-registry-credentials-to-the-iot-edge-agent"></a>Angeben Ihrer Anmeldeinformationen für die Registrierung über den IoT Edge-Agent
 

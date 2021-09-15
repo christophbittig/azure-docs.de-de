@@ -4,22 +4,25 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: a191d5ff68bf671274ceb7f88a42c0451d48cd40
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 0198bcdd34cd92822c779329affeb1a405264bae
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459598"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830514"
 ---
 ## <a name="configure-your-local-environment"></a>Konfigurieren Ihrer lokalen Umgebung
 
 Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
-+ Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [functions-cli-dotnet-prerequisites](functions-cli-dotnet-prerequisites.md)]
+::: zone-end  
+::: zone pivot="programming-language-java,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-other" 
 + [Azure Functions Core Tools](../articles/azure-functions/functions-run-local.md#v2).
 
 + [Azure CLI](/cli/azure/install-azure-cli), Version 2.4 oder höher. 
+:::zone-end  
 ::: zone pivot="programming-language-javascript,programming-language-typescript"
 + [Node.js](https://nodejs.org/), Active LTS- und Maintenance LTS-Versionen (8.11.1 und 10.14.1 empfohlen)
 ::: zone-end
@@ -39,3 +42,5 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 ::: zone pivot="programming-language-other"
 + Entwicklungstools für die von Ihnen verwendete Sprache. In diesem Tutorial wird als Beispiel die [Programmiersprache R](https://www.r-project.org/) verwendet.
 ::: zone-end
+
+Sie benötigen außerdem ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
