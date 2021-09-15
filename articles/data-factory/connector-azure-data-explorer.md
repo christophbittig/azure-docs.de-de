@@ -1,18 +1,20 @@
 ---
 title: Kopieren von Daten in oder aus Azure Data Explorer
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Erfahren Sie, wie Daten mithilfe einer Kopieraktivität in einer Azure Data Factory-Pipeline in oder aus Azure Data Explorer kopiert werden.
-ms.author: orspodek
-author: jianleishen
+ms.author: susabat
+author: ssabat
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 03/24/2020
-ms.openlocfilehash: 606d10694b6806b62871ddf24afd259d7bc224bc
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.custom: synapse
+ms.date: 08/30/2021
+ms.openlocfilehash: 4f3718699e7438b3b45c84eebebbbbf75126d793
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482973"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123304532"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Kopieren von Daten in oder aus Azure Data Explorer mithilfe von Azure Data Factory
 
@@ -48,14 +50,39 @@ Mit dem Azure Data Explorer-Connector ist Folgendes möglich:
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den Azure Data Explorer-Connector verwendet werden.
+## <a name="create-a-linked-service-to-azure-data-explorer-using-ui"></a>Erstellen eines verknüpften Diensts für Azure Data Explorer über die Benutzeroberfläche
+
+Führen Sie die folgenden Schritte aus, um einen verknüpften Dienst für Azure Data Explorer auf der Benutzeroberfläche im Azure-Portal zu erstellen.
+
+1. Navigieren Sie in Ihrem Azure Data Factory- oder Synapse-Arbeitsbereich zu der Registerkarte „Verwalten“, wählen Sie „Verknüpfte Dienste“ aus und klicken Sie dann auf „Neu“:
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Ein Screenshot, der das Erstellen eines neuen verknüpften Diensts mit der Azure Data Factory Benutzeroberfläche zeigt.":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Ein Screenshot, der das Erstellen eines neuen verknüpften Diensts mit der Azure Synapse Benutzeroberfläche zeigt.":::
+
+2. Suchen Sie nach Explorer, und wählen Sie den Connector für Azure Data Explorer (Kusto) aus.
+
+    :::image type="content" source="media/connector-azure-data-explorer/azure-data-explorer-connector.png" alt-text="Screenshot des Azure Data Explorer-Connectors (Kusto)":::    
+
+1. Konfigurieren Sie die Dienstdetails, testen Sie die Verbindung und erstellen Sie den neuen verknüpften Dienst.
+
+    :::image type="content" source="media/connector-azure-data-explorer/configure-azure-data-explorer-linked-service.png" alt-text="Screenshot der Konfiguration des verknüpften Diensts für Azure Data Explorer":::
+
+## <a name="connector-configuration-details"></a>Details zur Connector-Konfiguration
+
+Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Entitäten speziell für den Azure Data Explorer-Connector verwendet werden.
 
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 
 Der Azure Data Explorer-Connector unterstützt die folgenden Authentifizierungstypen. Weitere Informationen finden Sie in den entsprechenden Abschnitten:
 
 - [Dienstprinzipalauthentifizierung](#service-principal-authentication)
-- [Verwaltete Identitäten für Azure-Ressourcenauthentifizierung](#managed-identity)
+- [Authentifizierung mit einer systemseitig zugewiesenen verwalteten Identität](#managed-identity)
+- [Authentifizierung mit einer benutzerseitig zugewiesenen verwalteten Identität](#user-assigned-managed-identity-authentication)
 
 ### <a name="service-principal-authentication"></a>Dienstprinzipalauthentifizierung
 
@@ -108,9 +135,11 @@ Folgende Eigenschaften werden für den mit Azure Data Explorer verknüpften Dien
 }
 ```
 
-### <a name="managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a>Verwaltete Identitäten für Azure-Ressourcenauthentifizierung
+### <a name="system-assigned-managed-identity-authentication"></a><a name="managed-identity"></a> Authentifizierung mit einer systemseitig zugewiesenen verwalteten Identität
 
-Wenn Sie verwaltete Identitäten für die Azure-Ressourcenauthentifizierung verwenden möchten, gehen Sie folgendermaßen vor, um Berechtigungen zu erteilen:
+Weitere Informationen zu verwalteten Identitäten für Azure-Ressourcen finden Sie unter [Verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md).
+
+Führen Sie die folgenden Schritte zum Gewähren von Berechtigungen aus, um die Authentifizierung mit einer systemseitig zugewiesenen verwalteten Identität zu verwenden:
 
 1. [Rufen Sie die Informationen zur verwalteten Data Factory-Identität ab](data-factory-service-identity.md#retrieve-managed-identity), indem Sie den Wert von **Objekt-ID der verwalteten Identität** kopieren, der zusammen mit Ihrer Factory generiert wurde.
 
@@ -131,7 +160,7 @@ Folgende Eigenschaften werden für den mit Azure Data Explorer verknüpften Dien
 | database | Name der Datenbank | Ja |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn kein Wert angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
-**Beispiel: Verwenden der Authentifizierung der verwalteten Identität**
+**Beispiel: Verwenden der Authentifizierung mit einer systemseitig zugewiesenen verwalteten Identität**
 
 ```json
 {
@@ -141,6 +170,46 @@ Folgende Eigenschaften werden für den mit Azure Data Explorer verknüpften Dien
         "typeProperties": {
             "endpoint": "https://<clusterName>.<regionName>.kusto.windows.net ",
             "database": "<database name>",
+        }
+    }
+}
+```
+
+### <a name="user-assigned-managed-identity-authentication"></a>Authentifizierung mit einer benutzerseitig zugewiesenen verwalteten Identität
+Weitere Informationen zu verwalteten Identitäten für Azure-Ressourcen finden Sie unter [Verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md)
+
+Führen Sie die folgenden Schritte aus, um die Authentifizierung mit einer benutzerseitig zugewiesenen verwalteten Identität zu verwenden:
+
+1. [Erstellen Sie eine oder mehrere benutzerseitig zugewiesene verwaltete Identitäten](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md), und gewähren Sie ihnen Berechtigungen in Azure Data Explorer. Unter [Verwalten der Berechtigungen für Datenbanken in Azure Data Explorer](/azure/data-explorer/manage-database-permissions) finden Sie ausführliche Informationen zu Rollen und Berechtigungen sowie zur Verwaltung von Berechtigungen. Gehen Sie wie folgt vor:
+
+    - Weisen Sie der Datenbank **als Quelle** mindestens die Rolle **Database viewer** (Anzeigender Datenbankbenutzer) zu.
+    - Weisen Sie der Datenbank **als Senke** mindestens die Rolle **Database ingestor** (Datenbankerfasser) zu.
+     
+2. Weisen Sie Ihrer Data Factory eine oder mehrere benutzerseitig zugewiesene verwaltete Identitäten zu, und [erstellen Sie Anmeldeinformationen](data-factory-service-identity.md#credentials) für jede benutzerseitig zugewiesene verwaltete Identität.
+
+Folgende Eigenschaften werden für den mit Azure Data Explorer verknüpften Dienst unterstützt:
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| type | Die **type**-Eigenschaft muss auf **AzureDataExplorer** festgelegt werden. | Ja |
+| endpoint | Endpunkt-URL des Azure Data Explorer-Clusters im Format `https://<clusterName>.<regionName>.kusto.windows.net` | Ja |
+| database | Name der Datenbank | Ja |
+| Anmeldeinformationen | Geben Sie die benutzerseitig zugewiesene verwaltete Identität als Anmeldeinformationsobjekt an. | Ja |
+| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn kein Wert angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
+
+**Beispiel: Verwenden der Authentifizierung mit einer benutzerseitig zugewiesenen verwalteten Identität**
+```json
+{
+    "name": "AzureDataExplorerLinkedService",
+    "properties": {
+        "type": "AzureDataExplorer",
+        "typeProperties": {
+            "endpoint": "https://<clusterName>.<regionName>.kusto.windows.net ",
+            "database": "<database name>",
+            "credential": {
+                "referenceName": "credential1",
+                "type": "CredentialReference"
+            }
         }
     }
 }

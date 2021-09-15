@@ -9,12 +9,12 @@ ms.custom: synapse
 ms.topic: conceptual
 ms.date: 10/20/2019
 ms.author: jianleishen
-ms.openlocfilehash: 537fc48141712c4113076e253ed3c93c7c89d066
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 58f760514c38529dc059d7150392e6a98e48f2da
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122640698"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123308222"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Kopieren von Daten aus Office 365 mithilfe von Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -68,6 +68,30 @@ Sie können mithilfe eines der folgenden Tools oder SDKs eine Pipeline mit der C
 - [Azure PowerShell](quickstart-create-data-factory-powershell.md)
 - [REST-API](quickstart-create-data-factory-rest-api.md)
 - [Azure Resource Manager-Vorlage](quickstart-create-data-factory-resource-manager-template.md). 
+
+## <a name="create-a-linked-service-to-office-365-using-ui"></a>Erstellen eines verknüpften Diensts für Office 365 über die Benutzeroberfläche
+
+Führen Sie die folgenden Schritte aus, um einen verknüpften Dienst für Office 365 auf der Benutzeroberfläche im Azure-Portal zu erstellen.
+
+1. Navigieren Sie in Ihrem Azure Data Factory- oder Synapse-Arbeitsbereich zu der Registerkarte „Verwalten“, wählen Sie „Verknüpfte Dienste“ aus und klicken Sie dann auf „Neu“:
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Ein Screenshot, der das Erstellen eines neuen verknüpften Diensts mit der Azure Data Factory Benutzeroberfläche zeigt.":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Ein Screenshot, der das Erstellen eines neuen verknüpften Diensts mit der Azure Synapse Benutzeroberfläche zeigt.":::
+
+2. Suchen Sie nach Office, und wählen Sie den Office 365-Connector aus.
+
+    :::image type="content" source="media/connector-office-365/office-365-connector.png" alt-text="Screenshot des Office 365-Connectors":::    
+
+1. Konfigurieren Sie die Dienstdetails, testen Sie die Verbindung und erstellen Sie den neuen verknüpften Dienst.
+
+    :::image type="content" source="media/connector-office-365/configure-office-365-linked-service.png" alt-text="Screenshot der Konfiguration des verknüpften Diensts für Office 365":::
+
+## <a name="connector-configuration-details"></a>Details zur Connector-Konfiguration
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den Office 365-Connector verwendet werden.
 

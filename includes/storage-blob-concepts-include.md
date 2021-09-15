@@ -1,6 +1,6 @@
 ---
-title: include file
-description: include file
+title: Datei einfügen
+description: Datei einfügen
 services: storage
 author: tamram
 ms.service: storage
@@ -15,7 +15,7 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/29/2021
 ms.locfileid: "98612904"
 ---
-Azure Blob Storage ist die Objektspeicherlösung von Microsoft für die Cloud. Blobspeicher ist für die Speicherung großer Mengen unstrukturierter Daten optimiert. Unstrukturierte Daten sind Daten, die keinem bestimmten Datenmodell und keiner bestimmten Definition entsprechen (also beispielsweise Text- oder Binärdaten).
+Azure Blob Storage ist die Objektspeicherlösung von Microsoft für die Cloud. Blob Storage ist für die Speicherung großer Mengen unstrukturierter Daten optimiert. Unstrukturierte Daten sind Daten, die keinem bestimmten Datenmodell und keiner bestimmten Definition entsprechen (also beispielsweise Text- oder Binärdaten).
 
 ## <a name="about-blob-storage"></a>Informationen zu Azure-Blobspeicher
 
