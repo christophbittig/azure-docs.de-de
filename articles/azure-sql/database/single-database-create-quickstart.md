@@ -11,22 +11,22 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: ''
 ms.date: 01/27/2021
-ms.openlocfilehash: baf181c90b4bc899f682cbfea28d1998f7b2117a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8f9fa57a160871ba88b080ac7599e1781202fb84
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121722890"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123306244"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>Schnellstart: Erstellen einer Azure SQL-Einzeldatenbank
 
 In dieser Schnellstartanleitung erstellen Sie über das Azure-Portal, mithilfe eines PowerShell-Skripts oder eines Azure CLI-Skripts eine [Einzeldatenbank](single-database-overview.md). Anschließend fragen Sie die Datenbank mit dem **Abfrage-Editor** im Azure-Portal ab.
 
 
-## <a name="prerequisite"></a>Voraussetzung
+## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein aktives Azure-Abonnement. Falls Sie nicht über ein Abonnement verfügen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/).
-- Abhängig von der ausgewählten Erstellungsmethode benötigen Sie möglicherweise auch die neueste Version von [Azure PowerShell](/powershell/azure/install-az-ps) oder der [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli-windows). 
+- Die aktuelle Version von [Azure PowerShell](/powershell/azure/install-az-ps) oder der [Azure CLI](/cli/azure/install-azure-cli-windows).
 
 ## <a name="create-a-single-database"></a>Erstellen einer Einzeldatenbank
 
@@ -34,7 +34,7 @@ In dieser Schnellstartanleitung wird eine Einzeldatenbank im [serverlosen Comput
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Zum Erstellen einer Einzeldatenbank im Azure-Portal beginnt diese Schnellstartanleitung auf der Seite „Azure SQL“.
+Diese Schnellstarteinleitung beginnt für die Erstellung eines Singletons im Azure-Portal auf der Azure SQL-Seite.
 
 1. Navigieren Sie zur Seite [SQL-Bereitstellungsoption auswählen](https://portal.azure.com/#create/Microsoft.AzureSQL).
 1. Behalten Sie unter **SQL-Datenbanken** für **Einzeldatenbank** den festgelegten Wert **Ressourcentyp** bei, und wählen Sie **Erstellen** aus.
@@ -160,6 +160,47 @@ az sql db create \
     --capacity 2
 ```
 
+# <a name="azure-cli-sql-up"></a>[Azure CLI (sql up)](#tab/azure-cli-sql-up)
+
+## <a name="use-azure-cloud-shell"></a>Verwenden von Azure Cloud Shell
+
+Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritte in diesem Artikel ausführen können. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. 
+
+Wählen Sie zum Öffnen von Cloud Shell oben rechts in einem Codeblock einfach die Option **Ausprobieren**. Sie können Cloud Shell auch auf einer separaten Browserregisterkarte starten, indem Sie zu [https://shell.azure.com](https://shell.azure.com) navigieren. Wählen Sie **Kopieren** aus, um die Blöcke mit dem Code zu kopieren. Fügen Sie ihn anschließend in Cloud Shell ein, und drücken Sie die **EINGABETASTE**, um ihn auszuführen.
+
+## <a name="create-a-database-and-resources"></a>Erstellen einer Datenbank und von Ressourcen
+
+Der Befehl [az sql up](/cli/azure/sql#az_sql_up) vereinfacht den Datenbankerstellungsprozess. Damit können Sie eine Datenbank und alle zugehörigen Ressourcen mit einem einzigen Befehl erstellen. Dies schließt die Ressourcengruppe, den Servernamen, den Serverspeicherort, den Datenbanknamen und die Anmeldeinformationen ein. Die Datenbank wird mit einem Standardtarif von Universell, Bereitgestellt, Gen5, 2 virtuellen Kernen erstellt. 
+
+Dieser Befehl erstellt und konfiguriert einen [logischen Server](logical-servers.md) für Azure SQL-Datenbank zur sofortigen Verwendung. Für eine präzisere Ressourcensteuerung während der Datenbankerstellung verwenden Sie die Standardbefehle der Azure CLI in diesem Artikel.
+
+> [!NOTE]
+> Wenn Sie den `az sql up`-Befehl zum ersten Mal ausführen, werden Sie von der Azure CLI aufgefordert, die `db-up`-Erweiterung zu installieren. Diese Erweiterung befindet sich zurzeit in der Vorschau. Akzeptieren Sie die Installation, um fortzufahren. Weitere Informationen zu Erweiterungen finden Sie unter [Verwenden von Erweiterungen mit der Azure CLI](/cli/azure/azure-cli-extensions-overview).
+
+1. Führen Sie den Befehl `az sql up` aus. Wenn erforderliche Parameter wie `--server-name` nicht verwendet werden, wird diese Ressource mit einem zufälligen Namen und zugewiesenen Anmeldeinformationen erstellt.
+
+    ```azurecli-interactive
+    az sql up \
+        --resource-group $resourceGroupName \
+        --location $location \
+        --server-name $serverName \
+        --database-name mySampleDatabase \
+        --admin-user $adminlogin \
+        --admin-password $password
+    ```
+
+2.  Eine Serverfirewallregel wird automatisch erstellt. Wenn der Server Ihre IP-Adresse ablehnt, erstellen Sie mit dem Befehl `az sql server firewall-rule create` eine neue Firewallregel.
+
+    ```azurecli-interactive
+    az sql server firewall-rule create \
+        --resource-group $resourceGroupName \
+        --server $serverName \
+        -n AllowYourIp \
+        --start-ip-address $startip \
+        --end-ip-address $endip
+    ```
+
+3. Alle erforderlichen Ressourcen werden erstellt, und die Datenbank ist für Abfragen bereit.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -294,6 +335,14 @@ Löschen Sie **myResourceGroup** und alle zugehörigen Ressourcen wie folgt übe
 1. Geben Sie unter **Geben Sie den Ressourcengruppennamen ein** den Namen *myResourceGroup* ein, und wählen Sie anschließend **Löschen** aus.
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Führen Sie den folgenden Azure CLI-Befehl für den Namen Ihrer Ressourcengruppe aus, um die Ressourcengruppe und alle zugehörigen Ressourcen zu löschen:
+
+```azurecli-interactive
+az group delete --name $resourceGroupName
+```
+
+### <a name="azure-cli-sql-up"></a>[Azure CLI (sql up)](#tab/azure-cli-sql-up)
 
 Führen Sie den folgenden Azure CLI-Befehl für den Namen Ihrer Ressourcengruppe aus, um die Ressourcengruppe und alle zugehörigen Ressourcen zu löschen:
 

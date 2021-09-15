@@ -2,18 +2,18 @@
 title: Verwenden von Zertifikaten und sicheres Zugreifen auf Azure Key Vault mit Batch
 description: Erfahren Sie, wie Sie mit Azure Batch programmgesteuert auf Ihre Anmeldeinformationen aus Key Vault zugreifen können.
 ms.topic: how-to
-ms.date: 10/28/2020
+ms.date: 08/25/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: eaaeaa05caca7897eb649b56504b643038f08d53
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20af753813ead55a3107b952a56d92b16135b523
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99260128"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123098963"
 ---
 # <a name="use-certificates-and-securely-access-azure-key-vault-with-batch"></a>Verwenden von Zertifikaten und sicheres Zugreifen auf Azure Key Vault mit Batch
 
-In diesem Artikel erfahren Sie, wie Sie Batch-Knoten einrichten, um sicher auf die in [Azure Key Vault](../key-vault/general/overview.md) gespeicherten Anmeldeinformationen zuzugreifen. Es ist nicht sinnvoll, Ihre Administratoranmeldeinformationen in Key Vault einzugeben und dann eine Hartcodierung für die Anmeldeinformationen vorzunehmen, um von einem Skript aus auf Key Vault zuzugreifen. Die Lösung ist die Verwendung eines Zertifikats, das Ihren Batch-Knoten Zugriff auf Key Vault gewährt.
+In diesem Artikel erfahren Sie, wie Sie Batch-Knoten einrichten, um sicher auf die in [Azure Key Vault](../key-vault/general/overview.md) gespeicherten Anmeldeinformationen zuzugreifen.
 
 Sie benötigen Folgendes, um Azure Key Vault über einen Batch-Knoten zu authentifizieren:
 
@@ -21,6 +21,9 @@ Sie benötigen Folgendes, um Azure Key Vault über einen Batch-Knoten zu authent
 - Ein Zertifikat
 - Ein Batch-Konto
 - Einen Batch-Pool mit mindestens einem Knoten
+
+> [!IMPORTANT]
+> Batch bietet ab sofort eine verbesserte Option für den Zugriff auf Anmeldeinformationen, die in Azure Key Vault gespeichert sind. Wenn Sie Ihren Pool mit einer benutzerseitig zugewiesenen verwalteten Identität erstellen, die auf das Zertifikat in Azure Key Vault zugreifen kann, müssen Sie den Zertifikatsinhalt nicht an den Batch-Dienst senden. Dies erhöht die Sicherheit. Es wird empfohlen, anstelle der in diesem Thema beschriebenen Methode die automatische Zertifikatrotation zu verwenden. Weitere Informationen erhalten Sie unter [Aktivieren der automatischen Zertifikatrotation in einem Batch-Pool](automatic-certificate-rotation.md).
 
 ## <a name="obtain-a-certificate"></a>Beschaffung eines Zertifikats
 

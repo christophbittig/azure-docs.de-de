@@ -1,23 +1,43 @@
 ---
-title: 'Tutorial: Bereitstellen der Azure IoT Central-Anwendungsvorlage „Videoanalyse: Objekt- und Bewegungserkennung“'
-description: 'Tutorial: In diesem Leitfaden werden die Schritte zusammengefasst, die ausgeführt werden müssen, um eine Azure IoT Central-Anwendung unter Verwendung der Anwendungsvorlage „Videoanalyse: Objekt- und Bewegungserkennung“ bereitzustellen.'
+title: 'Tutorial: Azure IoT-Videoanalyse: Objekt- und Bewegungserkennung | Microsoft-Dokumentation'
+description: 'In diesem Tutorial erfahren Sie, wie Sie die Anwendungsvorlage „Videoanalyse: Objekt- und Bewegungserkennung“ für IoT Central bereitstellen und verwenden.'
 services: iot-central
 ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
-ms.date: 07/31/2020
-ms.openlocfilehash: c578da7e83a39f84e72b550038bd87dde3c61d28
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/02/2021
+ms.openlocfilehash: 026c1794f678c5d194b0e5174986f9f962508647
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101727463"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123473746"
 ---
-# <a name="tutorial-how-to-deploy-an-iot-central-application-using-the-video-analytics---object-and-motion-detection-application-template"></a>Tutorial: Bereitstellen einer IoT Central-Anwendung unter Verwendung der Anwendungsvorlage „Videoanalyse: Objekt- und Bewegungserkennung“
+# <a name="tutorial-deploy-and-walk-through-the-video-analytics---object-and-motion-detection-application-template"></a>Tutorial: Bereitstellen und Durchlaufen der Anwendungsvorlage „Videoanalyse: Objekt- und Bewegungserkennung“
 
-Eine Übersicht über die wichtigsten Komponenten einer Anwendung vom Typ *Videoanalyse: Objekt- und Bewegungserkennung* finden Sie unter [Architektur einer Videoanalyseanwendung mit Objekt- und Bewegungserkennung](architecture-video-analytics.md).
+Hier finden Sie eine Übersicht über die Anwendungsvorlage *Videoanalyse: Objekt- und Bewegungserkennung*. Die Anwendungsvorlage **Videoanalyse: Objekt- und Bewegungserkennung** ermöglicht die Erstellung von IoT-Lösungen mit Funktionen für die Analyse von Livevideos.
+
+:::image type="content" source="media/architecture-video-analytics/architecture.png" alt-text="Abbildung der Übersicht über die Objekt- und Bewegungserkennungskomponenten der Videoanalyse":::
+
+Die Videoanalyselösung umfasst folgende wichtige Komponenten:
+
+### <a name="live-video-analytics-lva"></a>Live Video Analytics (LVA)
+
+LVA bietet eine Plattform für die Erstellung intelligenter Videoanwendungen, die den Edgebereich und die Cloud umfassen. Mithilfe der Plattform können Sie intelligente Videoanwendungen erstellen, die den Edgebereich und die Cloud umfassen. Die Plattform bietet die Möglichkeit, Livevideos zu erfassen, aufzuzeichnen und zu analysieren sowie die Ergebnisse (Video oder Videoanalyse) in Azure-Diensten zu veröffentlichen. Die Azure-Dienste können in der Cloud oder im Edgebereich ausgeführt werden. Über die Plattform können IoT-Lösungen durch Videoanalyse verbessert werden.
+
+Weitere Informationen finden Sie unter [Live Video Analytics](https://github.com/Azure/live-video-analytics) auf GitHub.
+
+### <a name="iot-edge-lva-gateway-module"></a>IoT Edge-LVA-Gatewaymodul
+
+Das IoT Edge-LVA-Gatewaymodul instanziiert Kameras als neue Geräte und verbindet sie unter Verwendung des IoT-Geräteclient-SDK direkt mit IoT Central.
+
+In dieser Referenzimplementierung werden von den Geräten symmetrische Schlüssel aus dem Edgebereich verwendet, um eine Verbindung mit der Lösung herzustellen. Weitere Informationen zur Gerätekonnektivität finden Sie unter [Herstellen einer Verbindung mit Azure IoT Central](../core/concepts-get-connected.md)
+
+### <a name="media-graph"></a>Mediendiagramm
+
+Mithilfe des Mediendiagramms können Sie definieren, von wo aus die Medien erfasst, wie Sie verarbeitet und wohin die Ergebnisse übermittelt werden sollen. Verbinden Sie zum Konfigurieren des Mediendiagramms Komponenten (oder Knoten) nach Bedarf. Weitere Informationen finden Sie unter [Mediendiagramm](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph) auf GitHub.
 
 Das folgende Video enthält eine exemplarische Vorgehensweise zur Verwendung der _Videoanalyse: Objekt- und Bewegungserkennung_, um eine IoT Central-Lösung bereitzustellen:
 
@@ -32,7 +52,8 @@ In diesen Tutorials lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Es wird ein Azure-Abonnement empfohlen. Alternativ können Sie eine kostenlose 7-Tage-Testversion verwenden. Wenn Sie kein Azure-Abonnement besitzen, können Sie auf der Seite [Azure-Anmeldeseite](https://aka.ms/createazuresubscription) eines erstellen.
+* Zum Bereitstellen dieser App müssen keine besonderen Voraussetzungen erfüllt werden.
+* Sie können den Tarif „Free“ oder ein Azure-Abonnement verwenden.
 
 ## <a name="deploy-the-application"></a>Bereitstellen der Anwendung
 

@@ -9,12 +9,12 @@ ms.date: 03/18/2021
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 2f92733fd440ebe9b9c6bc1c22de7c2bc8412599
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: aa745b9a5c19f45563b6fe30b80f67a776660d39
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464952"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272419"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Migrieren von virtuellen Hyper-V-Computern zu Azure
 
@@ -266,8 +266,8 @@ Nachdem Sie sich vergewissert haben, dass die Testmigration wie erwartet funktio
     - Beendet die Replikation für den lokalen Computer.
     - Entfernt den Computer aus dem Zähler **Server werden repliziert.** in Azure Migrate: Servermigration.
     - Bereinigt die Replikationsstatusinformationen für den virtuellen Computer.
-1. Installieren Sie den [Windows](../virtual-machines/extensions/agent-windows.md)- oder [Linux](../virtual-machines/extensions/agent-linux.md)-Agent für die Azure-VM auf den migrierten Computern.
-1. Führen Sie App-Anpassungen nach der Migration durch, z.B. die Aktualisierung von Datenbankverbindungszeichenfolgen und Webserverkonfigurationen.
+1. Überprüfen und [beheben Sie alle Windows-Aktivierungsprobleme auf dem virtuellen Azure-Computer](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems).
+1. Führen Sie App-Anpassungen nach der Migration durch, z. B. die Aktualisierung von Hostnamen, Datenbankverbindungszeichenfolgen und Webserverkonfigurationen.
 1. Führen Sie endgültige Anwendungs- und Migrationsakzeptanztests für die migrierte Anwendung durch, die nun in Azure ausgeführt wird.
 1. Leiten Sie den Datenverkehr auf die migrierte Instanz der Azure-VM um.
 1. Entfernen Sie die lokalen VMs aus Ihrem lokalen VM-Bestand.

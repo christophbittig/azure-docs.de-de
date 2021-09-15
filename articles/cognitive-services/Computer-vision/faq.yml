@@ -12,12 +12,12 @@ metadata:
   ms.date: 04/17/2019
   ms.author: kefre
   ms.custom: seodec18
-  ms.openlocfilehash: f03dd44b1ea37f5103ca9aa4eff26b3b7b080312
-  ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+  ms.openlocfilehash: 2509338fac06a182864777e2ff5825f1092f758c
+  ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 07/06/2021
-  ms.locfileid: "113311623"
+  ms.lasthandoff: 08/26/2021
+  ms.locfileid: "122968821"
 title: Häufig gestellte Fragen zur Maschinelles Sehen-API
 summary: >
   > [!TIP]
@@ -27,9 +27,28 @@ sections:
 - name: Wird ignoriert.
   questions:
   - question: >
+      Wie kann ich die vom Dienst zugelassenen Transaktionen pro Sekunde (TPS) erhöhen?
+    answer: >
+      Der Free-Tarif (S0) lässt nur 20 Transaktionen pro Minute zu. Führen Sie ein Upgrade auf den Tarif S1 durch, um bis zu 10 Transaktionen pro Sekunde zu erhalten. Wenn der Fehlercode 429 und die Fehlermeldung „Zu viele Anforderungen“ angezeigt werden, [senden Sie ein Azure-Supportticket](https://azure.microsoft.com/support/create-ticket/), um Ihre TPS mit einer kurzen geschäftlichen Begründung auf 50 oder höher zu erhöhen. [Preise für maschinelles Sehen](https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/#pricing).
+  - question: "Der Dienst löst einen Fehler aus, weil meine Bilddatei zu groß ist. Wie kann ich dieses Problem umgehen? \n"
+    answer: >
+      Die Dateigrößenbeschränkung für die meisten Features des maschinellen Sehens beträgt 4 MB, aber die Clientbibliotheks-SDKs können Dateien bis zu 6 MB verarbeiten. Für die optische Zeichenerkennung (Optical Character Recognition, OCR), die mehrseitige Dokumente verarbeitet, beträgt die maximale Dateigröße 50 MB. Weitere Informationen finden Sie unter [Bildanforderungen](overview-image-analysis.md#image-requirements) und [Eingabeanforderungen](overview-ocr.md#input-requirements).
+  - question: >
+      Wie kann ich mehrseitige Dokumente mit OCR in einem einzigen Aufruf verarbeiten?
+    answer: >
+      Die optische Zeichenerkennung, insbesondere der Lesevorgang, unterstützt mehrseitige Dokumente als API-Eingabe. Wenn Sie die API mit einem 10-Seiten-Dokument aufrufen, werden Ihnen 10 Seiten in Rechnung gestellt, wobei jede Seite als abrechenbare Transaktion gezählt wird. Beachten Sie Folgendes: Wenn Sie über den Free-Tarif (S0) verfügen, können nur zwei Seiten gleichzeitig verarbeitet werden.
+  - question: >
+      Kann ich mehrere Bilder in einem einzigen API-Aufruf an den Dienst für maschinelles Sehen senden?
+    answer: >
+      Diese Funktion ist derzeit nicht verfügbar.
+  - question: >
+      Wie viele Sprachen werden für die Bildanalyse und OCR unterstützt?
+    answer: >
+      Eine Liste der Sprachen, die von der Bildanalyse und OCR abgedeckt werden, finden Sie auf der Seite [Sprachunterstützung für maschinelles Sehen](language-support.md).
+  - question: >
       Kann ich die Maschinelles Sehen-API für die Verwendung benutzerdefinierter Tags trainieren?  Zum Beispiel möchte ich Bilder von Katzenrassen einfügen, um die KI zu „trainieren“ und dann auf eine KI-Anforderung hin den Zuchtwert zu erhalten.
     answer: >
-      Diese Funktion ist derzeit nicht verfügbar. Unsere Techniker arbeiten jedoch daran, diese Funktionalität bald für maschinelles Sehen zu ermöglichen.
+      Diese Funktion ist derzeit nicht verfügbar. Sie können mit [maschinellem Sehen](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/overview) ein Modell zum Erkennen benutzerdefinierter visueller Features trainieren.
   - question: >
       Kann ich die Funktion „OCR (Lesen)“ lokal bereitstellen?
     answer: >

@@ -1,5 +1,5 @@
 ---
-title: 'Azure Policy: Gastkonfigurationserweiterung'
+title: Gastkonfigurationserweiterung
 description: Hier erfahren Sie mehr über die Erweiterung, die zum Überprüfen/Konfigurieren von Einstellungen auf virtuellen Computern verwendet wird.
 ms.topic: article
 ms.service: virtual-machines
@@ -8,14 +8,14 @@ author: mgreenegit
 ms.author: migreene
 ms.date: 04/15/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e12bcc3a1c1589baf5ab8fcc0f2b3e264d1953eb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 88d9ceedffffc3b1ab1b4c00e04f6fbbfe2654a7
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349739"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433240"
 ---
-# <a name="overview-of-the-azure-policy-guest-configuration-extension"></a>Übersicht über die Azure Policy-Gastkonfigurationserweiterung
+# <a name="overview-of-the-guest-configuration-extension"></a>Übersicht über die Gastkonfigurationserweiterung
 
 Die Gastkonfigurationserweiterung ist eine Azure Policy-Komponente, die Überprüfungs- und Konfigurationsvorgänge auf virtuellen Computern ausführt.
 Richtlinien wie Definitionen von Sicherheitsbaselines für [Linux](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc9b3da7-8347-4380-8e70-0a0361d8dedd) und [Windows](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F72650e9f-97bc-4b2a-ab5f-9781a9fcecbc) können Einstellungen auf Computern erst überprüfen, wenn die Erweiterung installiert ist.
@@ -93,7 +93,7 @@ So stellen Sie die Erweiterung für Linux bereit:
 {
   "type": "Microsoft.Compute/virtualMachines/extensions",
   "name": "[concat(parameters('VMName'), '/AzurePolicyforLinux')]",
-  "apiVersion": "2019-07-01",
+  "apiVersion": "2020-12-01",
   "location": "[parameters('location')]",
   "dependsOn": [
     "[concat('Microsoft.Compute/virtualMachines/', parameters('VMName'))]"
@@ -115,7 +115,7 @@ So stellen Sie die Erweiterung für Windows bereit:
 {
   "type": "Microsoft.Compute/virtualMachines/extensions",
   "name": "[concat(parameters('VMName'), '/AzurePolicyforWindows')]",
-  "apiVersion": "2019-07-01",
+  "apiVersion": "2020-12-01",
   "location": "[parameters('location')]",
   "dependsOn": [
     "[concat('Microsoft.Compute/virtualMachines/', parameters('VMName'))]"
@@ -127,6 +127,50 @@ So stellen Sie die Erweiterung für Windows bereit:
     "autoUpgradeMinorVersion": true,
     "settings": {},
     "protectedSettings": {}
+  }
+}
+```
+
+### <a name="bicep"></a>Bicep
+
+So stellen Sie die Erweiterung für Linux bereit:
+
+```bicep
+resource virtualMachine 'Microsoft.Compute/virtualMachines@2021-03-01' existing = {
+  name: 'VMName'
+}
+resource windowsVMGuestConfigExtension 'Microsoft.Compute/virtualMachines/extensions@2020-12-01' = {
+  parent: virtualMachine
+  name: 'AzurePolicyforLinux'
+  location: resourceGroup().location
+  properties: {
+    publisher: 'Microsoft.GuestConfiguration'
+    type: 'ConfigurationforLinux'
+    typeHandlerVersion: '1.0'
+    autoUpgradeMinorVersion: true
+    settings: {}
+    protectedSettings: {}
+  }
+}
+```
+
+So stellen Sie die Erweiterung für Windows bereit:
+
+```bicep
+resource virtualMachine 'Microsoft.Compute/virtualMachines@2021-03-01' existing = {
+  name: 'VMName'
+}
+resource windowsVMGuestConfigExtension 'Microsoft.Compute/virtualMachines/extensions@2020-12-01' = {
+  parent: virtualMachine
+  name: 'AzurePolicyforWindows'
+  location: resourceGroup().location
+  properties: {
+    publisher: 'Microsoft.GuestConfiguration'
+    type: 'ConfigurationforWindows'
+    typeHandlerVersion: '1.0'
+    autoUpgradeMinorVersion: true
+    settings: {}
+    protectedSettings: {}
   }
 }
 ```

@@ -2,19 +2,20 @@
 title: Hinzufügen einer VM-Skalierungsgruppenerweiterung zu einem verwalteten Service Fabric-Clusterknotentyp
 description: Im Folgenden wird beschrieben, wie Sie eine VM-Skalierungsgruppenerweiterung einem verwalteten Service Fabric-Clusterknotentyp hinzufügen.
 ms.topic: article
-ms.date: 5/10/2021
-ms.openlocfilehash: 0c0aac8d7804caeb6c08657b1ed36c45958a0ea5
-ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
+ms.date: 8/02/2021
+ms.openlocfilehash: 8755eb7551dd7f7e572632ee50eb57467f675822
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113033693"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866391"
 ---
-# <a name="add-a-virtual-machine-scale-set-extension-to-a-service-fabric-managed-cluster-node-type"></a>Hinzufügen einer VM-Skalierungsgruppenerweiterung zu einem verwalteten Service Fabric-Clusterknotentyp
+# <a name="virtual-machine-scale-set-extension-support-on-service-fabric-managed-cluster-node-types"></a>Hinzufügen von Unterstützung für VM-Skalierungsgruppenerweiterungen zu einem verwalteten Service Fabric-Clusterknotentyp
 
-Jeder Knotentyp in einem verwalteten Service Fabric-Cluster wird von einer VM-Skalierungsgruppe unterstützt. Im Folgenden wird beschrieben, wie Sie [VM-Skalierungsgruppenerweiterungen](../virtual-machines/extensions/overview.md) einem verwalteten Service Fabric-Clusterknotentyp hinzufügen.
+Jeder Knotentyp in einem verwalteten Service Fabric-Cluster wird von einer VM-Skalierungsgruppe unterstützt. Im Folgenden wird beschrieben, wie Sie [VM-Skalierungsgruppenerweiterungen](../virtual-machines/extensions/overview.md) einem verwalteten Service Fabric-Clusterknotentyp hinzufügen. Erweiterungen sind kleine Anwendungen, die Konfiguration und Automatisierung für virtuelle Azure-Computer nach der Bereitstellung bereitstellen. Auf der Azure-Plattform werden Erweiterungen für viele Zwecke gehostet, z. B. VM-Konfiguration, Überwachung, Sicherheit und Hilfsprogramme. Herausgeber nehmen eine Anwendung, umschließen diese in einer Erweiterung und vereinfachen die Installation. Sie müssen lediglich noch die obligatorischen Parameter angeben. 
 
-Sie können eine VM-Skalierungsgruppenerweiterung einem Knotentyp mithilfe des PowerShell-Befehls [Add-AzServiceFabricManagedNodeTypeVMExtension](/powershell/module/az.servicefabric/add-azservicefabricmanagednodetypevmextension) hinzufügen.
+## <a name="add-a-virtual-machine-scale-set-extension"></a>Hinzufügen einer VM-Skalierungsgruppenerweiterung
+Sie können einem verwalteten Service Fabric-Clusterknotentyp über den PowerShell-Befehl [Add-AzServiceFabricManagedNodeTypeVMExtension](/powershell/module/az.servicefabric/add-azservicefabricmanagednodetypevmextension) eine VM-Skalierungsgruppenerweiterung hinzufügen.
 
 Alternativ können Sie eine VM-Skalierungsgruppenerweiterung für einen verwalteten Service Fabric-Clusterknotentyp in Ihrer Azure Resource Manager-Vorlage hinzufügen. Beispiel:
 

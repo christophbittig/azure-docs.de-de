@@ -11,12 +11,12 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: dc0e8b0affcb89058e95bc7ce1c3cafb5882921f
-ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
+ms.openlocfilehash: 3f0e2baa7ac30e0e75167dc603de73fdd1df8d73
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112552812"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123215366"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-windows-device"></a>Schnellstart: Deploy your first IoT Edge module to a Windows device (Bereitstellen Ihres ersten IoT Edge-Moduls auf einem Windows-Gerät)
 
@@ -185,6 +185,9 @@ Führen Sie die folgenden Schritte aus, um über den Azure Marketplace Ihr erste
 
 1. Wählen Sie in der Liste der Geräte die Geräte-ID des Zielgeräts aus.
 
+   Wenn Sie ein neues IoT Edge Gerät erstellen, wird es im Azure-Portal mit dem Statuscode `417 -- The device's deployment configuration is not set` angezeigt. Dieser Status ist normal und bedeutet, dass das Gerät bereit ist, eine Modulbereitstellung zu empfangen.
+
+
 1. Wählen Sie in der oberen Leiste **Module festlegen** aus.
 
    ![Screenshot: Auswählen von „Module festlegen“](./media/quickstart/select-set-modules.png)
@@ -291,7 +294,7 @@ Verwenden Sie die Dashboard-Erweiterung in Windows Admin Center, um Azure IoT Ed
 
 In dieser Schnellstartanleitung haben Sie ein IoT Edge-Gerät erstellt und die Azure IoT Edge-Cloudschnittstelle zum Bereitstellen von Code auf dem Gerät verwendet. Sie verfügen nun über ein Testgerät, das Rohdaten zu seiner Umgebung generiert.
 
-Als Nächstes richten Sie Ihre lokale Entwicklungsumgebung ein, damit Sie mit der Entwicklung von IoT Edge-Modulen für Ihre Geschäftslogik beginnen können.
+Im nächsten Tutorial erfahren Sie, wie Sie die Aktivität und Integrität Ihres Geräts im Azure-Portal überwachen.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Entwickeln von IoT Edge-Modulen für Linux-Geräte](tutorial-develop-for-linux.md)
+> [Überwachen von IoT Edge-Geräten](tutorial-monitor-with-workbooks.md)

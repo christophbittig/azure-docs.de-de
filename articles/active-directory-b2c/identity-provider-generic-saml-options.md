@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/22/2021
+ms.date: 08/25/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 32f9df410dabf1902e9a7d9aadbf47288bfa90f5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c245fef005be5937887a3b8af1a5264e6520a6e8
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104798237"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967782"
 ---
 # <a name="configure-saml-identity-provider-options-with-azure-active-directory-b2c"></a>Konfigurieren der SAML-Identitätsanbieteroptionen mit Azure Active Directory B2C
 
@@ -219,6 +219,32 @@ Im folgenden Beispiel ist eine Autorisierungsanforderung mit der **AllowCreate**
 </samlp:AuthnRequest>
 ```
 
+### <a name="force-authentication"></a>Erzwingen der Authentifizierung
+
+Sie können erzwingen, dass der externe SAML-Identitätsanbieter den Benutzer zur Authentifizierung auffordert, indem Sie die Eigenschaft `ForceAuthN` in der SAML-Authentifizierungsanforderung übergeben. Ihr Identitätsanbieter muss diese Eigenschaft ebenfalls unterstützen.
+
+Die Eigenschaft `ForceAuthN` ist ein boolescher Wert (`true` oder `false`). Standardmäßig legt Azure AD B2C den ForceAuthN-Wert auf `false` fest. Wenn die Sitzung dann zurückgesetzt wird (z. B. mithilfe von `prompt=login` in OIDC), wird der ForceAuthN-Wert auf `true` festgelegt. Wenn Sie das Metadatenelement wie unten gezeigt einstellen, wird der Wert für alle Anforderungen an den externen Identitätsanbieter erzwungen.
+
+Im folgenden Beispiel wird die Festlegung der Eigenschaft `ForceAuthN` auf `true` gezeigt:
+
+```xml
+<Metadata>
+  ...
+  <Item Key="ForceAuthN">true</Item>
+  ...
+</Metadata>
+```
+
+Das folgende Beispiel zeigt die Eigenschaft `ForceAuthN` in einer Autorisierungsanforderung:
+
+
+```xml
+<samlp:AuthnRequest AssertionConsumerServiceURL="https://..."  ...
+                    ForceAuthN="true">
+  ...
+</samlp:AuthnRequest>
+```
+
 ### <a name="include-authentication-context-class-references"></a>Einschließen von Authentifizierungskontext-Klassenverweisen
 
 Eine SAML-Autorisierungsanforderung kann ein **AuthnContext**-Element enthalten, das den Kontext einer Autorisierungsanforderung angibt. Das Element kann einen Authentifizierungskontext-Klassenverweis enthalten, der dem SAML-Identitätsanbieter mitteilt, welcher Authentifizierungsmechanismus dem Benutzer präsentiert werden soll.
@@ -248,7 +274,7 @@ Die folgende SAML-Autorisierungsanforderung enthält die Authentifizierungskonte
 
 ## <a name="include-custom-data-in-the-authorization-request"></a>Einschließen benutzerdefinierter Daten in die Autorisierungsanforderung
 
-Sie können optional Protokollnachrichten-Erweiterungselemente einschließen, die zwischen Azure AD BC und Ihrem Identitätsanbieter vereinbart wurden. Die Erweiterung wird im XML-Format angezeigt. Sie schließen Erweiterungselemente ein, indem Sie dem CDATA-Element `<![CDATA[Your IDP metadata]]>` XML-Daten hinzufügen. Sehen Sie in der Dokumentation Ihres Identitätsanbieters nach, ob das Erweiterungselement unterstützt wird.
+Sie können optional Protokollnachrichten-Erweiterungselemente einschließen, die zwischen Azure AD BC und Ihrem Identitätsanbieter vereinbart wurden. Die Erweiterung wird im XML-Format angezeigt. Sie schließen Erweiterungselemente ein, indem Sie dem CDATA-Element `<![CDATA[Your Custom XML]]>` XML-Daten hinzufügen. Sehen Sie in der Dokumentation Ihres Identitätsanbieters nach, ob das Erweiterungselement unterstützt wird.
 
 Im folgenden Beispiel wird die Verwendung von Erweiterungsdaten veranschaulicht:
 
@@ -262,6 +288,9 @@ Im folgenden Beispiel wird die Verwendung von Erweiterungsdaten veranschaulicht:
             </ext:MyCustom>]]></Item>
 </Metadata>
 ```
+
+> [!NOTE]
+> Gemäß der SAML-Spezifikation müssen die Erweiterungsdaten namespacequalifizierte XML-Daten sein (z. B. „urn:ext:custom“, wie im obigen Beispiel gezeigt). Es darf sich dabei nicht um einen der SAML-spezifischen Namespaces handeln.
 
 Bei Verwendung der SAML-Protokollnachrichtenerweiterung sieht die SAML-Antwort wie im folgenden Beispiel aus:
 

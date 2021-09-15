@@ -5,13 +5,13 @@ author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 09/01/2020
-ms.openlocfilehash: cae8c1564d9ba03d48f5ac8dcc1eb23b36589df4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/26/2021
+ms.openlocfilehash: 98458a624a9c0d713e518e3fda442b8e45209d25
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355184"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123036505"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>Optionen zum Migrieren von lokalen oder Clouddaten zu Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -41,6 +41,9 @@ Die folgenden Faktoren haben Einfluss auf die Auswahl des Migrationstools:
 
 ## <a name="azure-cosmos-db-sql-api"></a>SQL-API von Azure Cosmos DB
 
+Wenn Sie Hilfe bei der Kapazitätsplanung benötigen, lesen Sie bitte unsere [Führungslinie zur Schätzung von RU/s mit Azure Cosmos DB Kapazitätsplanung](estimate-ru-with-capacity-planner.md). 
+* Wenn Sie von einer vCores- oder serverbasierten Plattform migrieren und eine Anleitung zur Schätzung von Anforderungen benötigen, lesen Sie bitte unsere [Führungslinie zur Schätzung von RU/s auf der Grundlage von vCores](estimate-ru-with-capacity-planner.md).
+
 |Migrationstyp|Lösung|Unterstützte Quellen|Unterstützte Ziele|Überlegungen|
 |---------|---------|---------|---------|---------|
 |Offline|[Datenmigrationstool](import-data.md)| &bull;JSON-/CSV-Dateien<br/>&bull;SQL-API von Azure Cosmos DB<br/>&bull;MongoDB<br/>&bull;SQL Server<br/>&bull;Table Storage<br/>&bull;AWS DynamoDB<br/>&bull;Azure Blob Storage|&bull;SQL-API von Azure Cosmos DB<br/>&bull;Azure Cosmos DB-Tabellen-API<br/>&bull;JSON-Dateien |&bull; Einfache Einrichtung und Unterstützung mehrerer Quellen <br/>&bull; Nicht geeignet für große Datasets|
@@ -53,6 +56,20 @@ Die folgenden Faktoren haben Einfluss auf die Auswahl des Migrationstools:
 
 ## <a name="azure-cosmos-db-mongo-api"></a>Mongo-API von Azure Cosmos DB
 
+Folgen Sie dem [Vor-Migration-Führungslinie](mongodb/pre-migration-steps.md), um Ihre Migration zu planen. 
+* Wenn Sie Hilfe bei der Kapazitätsplanung benötigen, lesen Sie bitte unsere [Führungslinie zur Schätzung von RU/s mit Azure Cosmos DB Kapazitätsplanung](estimate-ru-with-capacity-planner.md). 
+* Wenn Sie von einer vCores- oder serverbasierten Plattform migrieren und eine Anleitung zur Schätzung von Anforderungen benötigen, lesen Sie bitte unsere [Führungslinie zur Schätzung von RU/s auf der Grundlage von vCores](convert-vcore-to-request-unit.md).
+
+Wenn Sie für die Migration bereit sind, finden Sie im Folgenden detaillierte Anleitungen zu Migrationstools
+* [Offline-Migration mit nativen MongoDB-Tools](mongodb/tutorial-mongotools-cosmos-db.md)
+* [Offline-Migration mit dem Azure Database Migration Service (DMS)](../dms/tutorial-mongodb-cosmos-db.md)
+* [Online-Migration mit dem Azure-Datenbank-Migration Service (DMS)](../dms/tutorial-mongodb-cosmos-db-online.md)
+* [Offline/Online-Migration unter Verwendung von Azure Databricks und Spark](mongodb/migrate-databricks.md)
+
+Folgen Sie dann unsere [Nach-Migration-Führungslinie](mongodb/post-migration-optimization.md), um Ihren Azure Cosmos DB-Datenbestand zu optimieren, nachdem Sie migriert haben.
+
+Unten finden Sie eine Zusammenfassung der Migrationspfade von Ihrer aktuellen Lösung zu Azure Cosmos DB API für MongoDB:
+
 |Migrationstyp|Lösung|Unterstützte Quellen|Unterstützte Ziele|Überlegungen|
 |---------|---------|---------|---------|---------|
 |Online|[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db-online.md)| MongoDB|Azure Cosmos DB-API für MongoDB |&bull; Nutzt die Azure Cosmos DB-BulkExecutor-Bibliothek <br/>&bull; Eignet sich für große Datasets und übernimmt die Replikation von Liveänderungen <br/>&bull; Funktioniert nur mit anderen MongoDB-Quellen|
@@ -61,6 +78,8 @@ Die folgenden Faktoren haben Einfluss auf die Auswahl des Migrationstools:
 |Offline|[Vorhandene Mongo-Tools (mongodump, mongorestore, Studio3T)](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|MongoDB | Azure Cosmos DB-API für MongoDB| &bull; Einfache Einrichtung und Integration <br/>&bull; Erfordert die benutzerdefinierte Behandlung von Drosselungen|
 
 ## <a name="azure-cosmos-db-cassandra-api"></a>Cassandra-API für Azure Cosmos DB
+
+Wenn Sie Hilfe bei der Kapazitätsplanung benötigen, lesen Sie bitte unsere [Führungslinie zur Schätzung von RU/s mit Azure Cosmos DB Kapazitätsplanung](estimate-ru-with-capacity-planner.md). 
 
 |Migrationstyp|Lösung|Unterstützte Quellen|Unterstützte Ziele|Überlegungen|
 |---------|---------|---------|---------|---------|
@@ -85,6 +104,9 @@ Bei anderen APIs als SQL-API, Mongo-API und Cassandra-API werden in den Umgebung
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen?
+    * Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](convert-vcore-to-request-unit.md) 
+    * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbank-Workload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)
 * Erfahren Sie mehr darüber, indem Sie die Beispielanwendungen ausprobieren, die die BulkExecutor-Bibliothek in [.NET](bulk-executor-dot-net.md) und [Java](bulk-executor-java.md) nutzen. 
 * Die BulkExecutor-Bibliothek ist in den Cosmos DB Spark-Connector integriert. Weitere Informationen finden Sie im Artikel [Spark-Connector für Azure Cosmos DB](./create-sql-api-spark.md).  
 * Wenden Sie sich an das Azure Cosmos DB-Team, indem Sie unter dem Problemtyp „General Advisory“ (Allgemeine Ratschläge) und dem Problemuntertyp „Large (TB+) migrations“ (Umfangreiche Migrationen (TB+)) ein Supportticket erstellen, um weitere Hilfe zu größeren Migrationen zu erhalten.

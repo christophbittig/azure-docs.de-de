@@ -4,17 +4,17 @@ description: Erfahren Sie, wie Sie einen Azure Virtual Desktop-Hostpool über da
 author: Heidilohr
 ms.topic: tutorial
 ms.custom: references_regions
-ms.date: 07/20/2021
+ms.date: 08/06/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 34faa055eb14841d1b35d81e62c74fef92c80bac
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: 49c453f4ffcb2fac04b42f4956768e06ab8fce8f
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114707070"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123100813"
 ---
-# <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Tutorial: Erstellen eines Hostpools mit dem Azure-Portal
+# <a name="tutorial-create-a-host-pool"></a>Tutorial: Erstellen eines Hostpools
 
 >[!IMPORTANT]
 >Dieser Inhalt gilt für Azure Virtual Desktop mit Azure Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Azure Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md). Objekte, die Sie mit Azure Virtual Desktop (klassisch) erstellen, können nicht mit dem Azure-Portal verwaltet werden.
@@ -50,7 +50,7 @@ Wenn Sie ein App-Entwickler sind, der das Remote-App-Streaming für Azure Virtua
 
 - Wenn Sie planen, die App Ihrer Organisation Endbenutzern zur Verfügung zu stellen, müssen Sie sicherstellen, dass die App einsatzbereit ist. Weitere Informationen finden Sie unter [Hosten benutzerdefinierter Apps mit Azure Virtual Desktop](./remote-app-streaming/custom-apps.md).
 - Wenn die vorhandenen Imageauswahlmöglichkeiten im Azure-Katalog Ihre Anforderungen nicht erfüllen, müssen Sie auch Ihr eigenes benutzerdefiniertes Image für Ihre Sitzungshost-VMs erstellen. Weitere Informationen zur Erstellung von VM-Images finden Sie unter [Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md) bzw. unter [Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure](../virtual-machines/windows/capture-image-resource.md).
-- Wo befinden sich Ihre Anmeldeinformationen für den Domänenbeitritt? Wenn Sie noch nicht über ein Identitätsverwaltungssystem verfügen, das mit Azure Virtual Desktop kompatibel ist, müssen Sie die Identitätsverwaltung für Ihren Hostpool einrichten.
+- Wo befinden sich Ihre Anmeldeinformationen für den Domänenbeitritt? Wenn Sie noch nicht über ein Identitätsverwaltungssystem verfügen, das mit Azure Virtual Desktop kompatibel ist, müssen Sie die Identitätsverwaltung für Ihren Hostpool einrichten. Weitere Informationen finden Sie unter [Einrichten verwalteter Identitäten](./remote-app-streaming/identities.md).
 
 ### <a name="final-requirements"></a>Abschließende Anforderungen
 
@@ -61,6 +61,8 @@ Wenn Sie als IT-Experte ein Netzwerk einrichten und im Rahmen dessen einen Azure
 Schließlich müssen Sie, wenn Sie noch kein Azure-Abonnement haben, [ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie die folgenden Anweisungen ausführen können.
 
 ## <a name="begin-the-host-pool-setup-process"></a>Erste Schritte des Einrichtungsprozesses für den Hostpool
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Zum Erstellen des neuen Hostpools führen Sie zunächst die folgenden Schritte aus:
 
@@ -110,13 +112,42 @@ Zum Erstellen des neuen Hostpools führen Sie zunächst die folgenden Schritte a
 
 11. Wenn Sie bereits virtuelle Computer erstellt haben und diese mit dem neuen Hostpool verwenden möchten, wählen Sie **Nein** und dann **Weiter: Arbeitsbereich >** aus, und wechseln Sie zum Abschnitt [Arbeitsbereichsinformationen](#workspace-information). Möchten Sie neue VMs erstellen und beim neuen Hostpool registrieren, wählen Sie **Ja** aus.
 
-Damit ist der erste Teil abgeschlossen. Im nächsten Teil des Einrichtungsprozesses erstellen Sie die VM.
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Bereiten Sie zunächst Ihre Umgebung für die Azure-Befehlszeilenschnittstelle vor:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Verwenden Sie nach der Anmeldung den Befehl [az desktopvirtualization hostpool create](/cli/azure/desktopvirtualization#az_desktopvirtualization_hostpool_create), um den neuen Hostpool zu erstellen, und erstellen Sie optional ein Registrierungstoken für Sitzungshosts, um dem Hostpool beizutreten:
+
+```azurecli
+az desktopvirtualization hostpool create --name "MyHostPool" \
+    --resource-group "MyResourceGroup" \ 
+    --location "MyLocation" \
+    --host-pool-type "Pooled" \
+    --load-balancer-type "BreadthFirst" \
+    --max-session-limit 999 \
+    --personal-desktop-assignment-type "Automatic"  \
+    --registration-info expiration-time="2022-03-22T14:01:54.9571247Z" registration-token-operation="Update" \
+    --sso-context "KeyVaultPath" \
+    --description "Description of this host pool" \
+    --friendly-name "Friendly name of this host pool" \
+    --tags tag1="value1" tag2="value2" 
+```
+
+Möchten Sie neue VMs erstellen und beim neuen Hostpool registrieren, fahren Sie mit dem folgenden Abschnitt fort. Wenn Sie bereits virtuelle Computer erstellt haben und diese mit dem neuen Hostpool verwenden möchten, springen Sie zum Abschnitt [Informationen zum Arbeitsbereich](#workspace-information). 
+
+---
+
+Nachdem Sie jetzt einen Hostpool erstellt haben, gehen wir zum nächsten Teil des Einrichtungsprozesses über, bei dem wir die VM erstellen.
 
 ## <a name="virtual-machine-details"></a>Details zum virtuellen Computer
 
 Nachdem Sie den ersten Teil abgeschlossen haben, müssen Sie nun Ihre VM einrichten.
 
-So richten Sie Ihre VM im Rahmen des Einrichtungsprozesses für den Hostpool ein:
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+So richten Sie Ihre VM im Rahmen des Einrichtungsprozesses für den Hostpool im Azure-Portal ein:
 
 1. Wählen Sie unter **Ressourcengruppe** die Ressourcengruppe aus, in der Sie die virtuellen Computer erstellen möchten. Dabei kann es sich um eine andere Ressourcengruppe als die für den Hostpool handeln.
 
@@ -190,6 +221,26 @@ So richten Sie Ihre VM im Rahmen des Einrichtungsprozesses für den Hostpool ein
 
 13. Klicken Sie auf **Weiter: Arbeitsbereich >** .
 
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Verwenden Sie den Befehl [az vm create](/cli/azure/vm#az_vm_create), um einen neuen virtuellen Computer in Azure zu erstellen:
+
+```azurecli
+az vm create --name "MyVMName" \
+    --resource-group "MyResourceGroup" \
+    --image "MyImage" \
+    --generate-ssh-keys
+```
+
+Weitere Informationen zur Verwendung der Azure CLI zum Erstellen virtueller Azure-Computer finden Sie unter:
+- Windows
+    - [Erstellen eines virtuellen Windows-Computers mit der Azure-Befehlszeilenschnittstelle]( /azure/virtual-machines/windows/quick-create-cli)
+    - [Tutorial: Erstellen und Verwalten virtueller Windows-Computer mit der Azure CLI](/cli/azure/azure-cli-vm-tutorial)
+- Linux
+    - [Erstellen einer Linux-VM von Grund auf mit der Azure-Befehlszeilenschnittstelle]( /virtual-machines/linux/quick-create-cli)
+    - [Tutorial: Erstellen und Verwalten virtueller Linux-Computer mit der Azure-Befehlszeilenschnittstelle]( /azure/virtual-machines/linux/tutorial-manage-vm) 
+---
+
 Damit sind Sie bereit für die nächste Phase der Einrichtung Ihres Hostpools: Registrieren Ihrer App-Gruppe in einem Arbeitsbereich.
 
 ## <a name="workspace-information"></a>Informationen zum Arbeitsbereich
@@ -198,6 +249,8 @@ Beim Einrichtungsprozess für den Hostpool wird standardmäßig eine Desktopanwe
 
 >[!NOTE]
 >Wenn Sie ein App-Entwickler sind und die Apps Ihrer Organisation veröffentlichen möchten, können Sie MSIX-Apps dynamisch an Benutzersitzungen anfügen oder Ihre App-Pakete einem benutzerdefinierten VM-Image hinzufügen. Weitere Informationen finden Sie unter „Verwenden Ihrer benutzerdefinierten App mit Azure Virtual Desktop“.
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 So registrieren Sie die Desktop-App-Gruppe in einem Arbeitsbereich:
 
@@ -216,14 +269,30 @@ So registrieren Sie die Desktop-App-Gruppe in einem Arbeitsbereich:
      >[!NOTE]
      >Beim Überprüfungsprozess „Überprüfen + erstellen“ wird nicht überprüft, ob Ihr Kennwort den Sicherheitsstandards entspricht oder Ihre Architektur korrekt ist. Sie müssen daher selbst überprüfen, ob in dieser Hinsicht Probleme vorliegen.
 
-5. Überprüfen Sie die Informationen zu Ihrer Bereitstellung, um sicherzustellen, dass alles richtig ist. Wählen Sie **Erstellen**, wenn Sie fertig sind. Dadurch wird der Bereitstellungsprozess gestartet, bei dem die folgenden Objekte erstellt werden:
+5. Überprüfen Sie die Informationen zu Ihrer Bereitstellung, um sicherzustellen, dass alles richtig ist. Wählen Sie **Erstellen**, wenn Sie fertig sind. 
 
-     - Ihr neuer Hostpool.
-     - Eine Desktop-App-Gruppe.
-     - Ein Arbeitsbereich (sofern Sie keinen vorhandenen Arbeitsbereich verwenden).
-     - Wenn Sie sich für die Registrierung der Desktop-App-Gruppe entschieden haben, wird die Registrierung durchgeführt.
-     - VMs (sofern Sie sich für deren Erstellung entschieden haben), die der Domäne hinzugefügt und beim neuen Hostpool registriert werden.
-     - Ein Downloadlink für eine Azure Resource Manager-Vorlage, die auf Ihrer Konfiguration basiert.
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Verwenden Sie den Befehl [az desktopvirtualization workspace create](/cli/azure/desktopvirtualization#az_desktopvirtualization_workspace_create), um den neuen Arbeitsbereich zu erstellen:
+
+```azurecli
+az desktopvirtualization workspace create --name "MyWorkspace" \
+    --resource-group "MyResourceGroup" \
+    --location "MyLocation" \
+    --tags tag1="value1" tag2="value2" \
+    --friendly-name "Friendly name of this workspace" \
+    --description "Description of this workspace" 
+```
+---
+
+Dadurch wird der Bereitstellungsprozess gestartet, bei dem die folgenden Objekte erstellt werden:
+
+- Ihr neuer Hostpool.
+- Eine Desktop-App-Gruppe.
+- Ein Arbeitsbereich (sofern Sie keinen vorhandenen Arbeitsbereich verwenden).
+- Wenn Sie sich für die Registrierung der Desktop-App-Gruppe entschieden haben, wird die Registrierung durchgeführt.
+- VMs (sofern Sie sich für deren Erstellung entschieden haben), die der Domäne hinzugefügt und beim neuen Hostpool registriert werden.
+- Ein Downloadlink für eine Azure-Ressourcenverwaltungsvorlage, die auf Ihrer Konfiguration basiert.
 
 Danach sind Sie fertig!
 

@@ -4,11 +4,11 @@ ms.service: active-directory-b2c
 ms.topic: include
 ms.date: 12/08/2020
 ms.author: mimart
-ms.openlocfilehash: b3f08f817be157ef5a1c729458bcfb4b5551d738
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 282f8ad0b4f166d2f8e46a25a5f9ddb118595802
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97417447"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221534"
 ---
-Diese Funktion ist nur für benutzerdefinierte Richtlinien verfügbar. Unter **Benutzerdefinierte Richtlinie** weiter oben sind die Einrichtungsschritte beschrieben.
+Diese Funktion ist nur für benutzerdefinierte Richtlinien verfügbar. Wählen Sie für die Einrichtungsschritte in der vorherigen Auswahl die Option **Benutzerdefinierte Richtlinie** aus.

@@ -1,7 +1,7 @@
 ---
 title: 'Schnellstart: Objekterkennung mit der Custom Vision-Clientbibliothek'
 titleSuffix: Azure Cognitive Services
-description: 'Schnellstart: Erstellen Sie ein Objekterkennungsprojekt, fügen Sie Tags hinzu, laden Sie Bilder hoch, trainieren Sie Ihr Projekt, und erkennen Sie Objekte mithilfe der Custom Vision-Clientbibliothek.'
+description: 'Schnellstart: Erstellen Sie ein Objekterkennungsprojekt, fügen Sie benutzerdefinierte Tags hinzu, laden Sie Bilder hoch, trainieren Sie das Modell, und erkennen Sie Objekte in Bildern mithilfe der Custom Vision-Clientbibliothek.'
 author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
@@ -11,12 +11,12 @@ ms.date: 04/19/2021
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 keywords: Custom Vision
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 45ac9fb96a6b8c0d5e20b616cf99b27e599f99fe
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 7aa148919cd4c30fb14c81db3a0f7e37ee7860a3
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725130"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123309937"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-client-library"></a>Schnellstart: Erstellen eines Objekterkennungsprojekts mit der Custom Vision-Clientbibliothek
 

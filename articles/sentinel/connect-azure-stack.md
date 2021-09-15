@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 4ea85c1ae1533ffe231e57ecc95f345b37c77499
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 38b595e4f9b2582f3baefecabf6285ee36436ad6
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340123"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123260060"
 ---
 # <a name="connect-azure-stack-hub-virtual-machines-to-azure-sentinel"></a>Verbinden von virtuellen Azure Stack Hub-Computern mit Azure Sentinel
 
@@ -35,9 +35,9 @@ Fügen Sie die VM-Erweiterung zur **Update- und Konfigurationsverwaltung für Az
 
 1. Wählen Sie **Erweiterungen**. Die Liste der auf dieser VM installierten VM-Erweiterungen wird angezeigt.
 
-1. Klicken Sie auf die Registerkarte **Hinzufügen**. Das Menüblatt **Neue Ressource** mit einer Liste der verfügbaren VM-Erweiterungen wird geöffnet. 
+1. Wählen Sie die Registerkarte **Hinzufügen**. Das Menüblatt **Neue Ressource** wird geöffnet und zeigt die Liste der verfügbaren Erweiterungen für virtuelle Computer an. 
 
-1. Wählen Sie die Erweiterung **Azure Monitor, Update and Configuration Management** (Azure Monitor, Update- und Konfigurationsverwaltung) aus, und klicken Sie auf **Erstellen**. Das Konfigurationsfenster **Erweiterung installieren** wird geöffnet.
+1. Wählen Sie die Erweiterung **Azure Monitor, Aktualisieren und Konfigurationsverwaltung** aus und wählen Sie **Erstellen**. Das Konfigurationsfenster **Erweiterung installieren** wird geöffnet.
 
    ![Einstellungen für die Update- und Konfigurationsverwaltung für Azure Monitor](./media/connect-azure-stack/azure-monitor-extension-fix.png)  
 
@@ -46,7 +46,7 @@ Fügen Sie die VM-Erweiterung zur **Update- und Konfigurationsverwaltung für Az
 
 1. Wählen Sie im Azure Sentinel-Menü die Option **Arbeitsbereichseinstellungen** und dann **Erweitert** aus, und kopieren Sie die **Arbeitsbereichs-ID** und den **Arbeitsbereichsschlüssel (Primärschlüssel)** . 
 
-1. Fügen Sie sie im Azure Stack Hub-Fenster **Erweiterung installieren** in den angegebenen Feldern ein, und klicken Sie auf **OK**.
+1. Fügen Sie ihn im Azure Stack Hub-Fenster **Erweiterung installieren** in den angegebenen Feldern ein, und wählen Sie **OK**.
 
 1. Nach Abschluss der Installation wird die Erweiterung mit dem Status **Bereitstellung erfolgreich** angezeigt. Es kann bis zu einer Stunde dauern, bis der virtuelle Computer im Azure Sentinel-Portal angezeigt wird.
 
@@ -68,7 +68,7 @@ So entfernen Sie die Erweiterung:
 
 1. Wählen Sie **Erweiterungen** und dann die Erweiterung **Microsoft.EnterpriseCloud.Monitoring** aus.
 
-1. Klicken Sie auf **Deinstallieren**, und bestätigen Sie die Auswahl.
+1. Wählen Sie **Deinstallieren** und bestätigen Sie die Auswahl.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

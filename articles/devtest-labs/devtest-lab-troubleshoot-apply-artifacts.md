@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Probleme beheben, die beim Anwenden von Artef
 ms.topic: article
 ms.date: 06/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6d3f37a942010240835238648c48ad5671ec028d
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 6258c2e85b708ea9dac1371a40e83a8a6f8e1911
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110692428"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123031765"
 ---
 # <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>Beheben von Problemen, die beim Anwenden von Artefakten auf einem virtuellen Azure DevTest Labs-Computer auftreten
 Das Anwenden von Artefakten auf einem virtuellen Computer kann aus verschiedenen Gründen fehlschlagen. Dieser Artikel stellt Ihnen einige der Methoden vor, die Sie beim Identifizieren möglicher Ursachen unterstützen.
@@ -53,7 +53,7 @@ Probleme mit virtuellen Computern, die unter Verwendung von DevTest Labs und des
 
 Ein Artefakt scheint so lange nicht mehr zu reagieren, bis ein vordefiniertes Timeout abgelaufen ist und das Artefakt als **Fehlerhaft** markiert wird.
 
-Wenn ein Artefakt scheinbar nicht mehr reagiert, stellen Sie zunächst fest, bei welchem Vorgang es nicht mehr reagiert. Ein Artefakt kann während der Ausführung bei jedem der folgenden Schritte blockiert werden:
+Wenn ein Artefakt scheinbar nicht mehr reagiert, stellen Sie zunächst fest, wo das Problem auftritt. Ein Artefakt kann während der Ausführung bei jedem der folgenden Schritte blockiert werden:
 
 - **Während der ersten Anforderung**. DevTest Labs erstellt eine Azure Resource Manager-Vorlage, um die Verwendung der benutzerdefinierten Skripterweiterung (Custom Script Extension, CSE) anzufordern. Daher wird im Hintergrund eine Ressourcengruppenbereitstellung ausgelöst. Wenn auf dieser Ebene ein Fehler auftritt, erhalten Sie Details in den **Aktivitätsprotokollen** der Ressourcengruppe für die betreffende VM.  
     - Sie können auf das Aktivitätsprotokoll über die Navigationsleiste der Lab-VM-Seite zugreifen. Wenn Sie diese Option auswählen, sehen Sie einen Eintrag entweder für das **Anwenden von Artefakten auf den virtuellen Computer** (wenn der Vorgang zum Anwenden von Artefakten direkt ausgelöst wurde) oder für das **Hinzufügen oder Ändern von virtuellen Computern** (wenn der Vorgang zum Anwenden von Artefakten Teil des VM-Erstellungsprozesses war).

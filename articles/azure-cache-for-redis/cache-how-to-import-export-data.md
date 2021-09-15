@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: a877ee39c2d5a3760df50ebb3575793d1500de96
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 0430217ab8c2f113127c6a2e519d9e394fc3d3e7
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110795530"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123318679"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Importieren und Exportieren von Daten in Azure Cache for Redis
 
@@ -73,7 +73,12 @@ Mit der Exportfunktion können Sie die in Azure Cache for Redis gespeicherten Da
 2. Wählen Sie **Speichercontainer auswählen** und dann das gewünschte Speicherkonto aus. Das Speicherkonto muss sich in demselben Abonnement und derselben Region wie der Cache befinden.
 
    > [!IMPORTANT]
-   > Das Exportieren funktioniert in Verbindung mit Seitenblobs. Diese werden in klassischen Speicherkonten sowie in Resource Manager-Speicherkonten unterstützt. In Blob Storage-Konten wird das Exportieren derzeit nicht unterstützt. Weitere Informationen finden Sie unter [Azure-Speicherkonto – Übersicht](../storage/common/storage-account-overview.md).
+   >
+   > - Der Export erfolgt über Seitenblobs, die sowohl in klassischen als auch in Resource Manager-Speicherkonten unterstützt werden.
+   > - Das Exportieren in ADLS Gen2-Speicherkonten wird von Azure Cache for Redis nicht unterstützt.
+   > - In Blob Storage-Konten wird das Exportieren derzeit nicht unterstützt.
+   >
+   > Weitere Informationen finden Sie unter [Azure-Speicherkonto – Übersicht](../storage/common/storage-account-overview.md).
    >
 
     ![Speicherkonto](./media/cache-how-to-import-export-data/cache-export-data-choose-account.png)
@@ -154,7 +159,7 @@ Ja. Anweisungen für PowerShell finden Sie unter [Importieren eines Azure Cache 
 
 Wenn Sie sich vor dem Starten des Vorgangs länger als 15 Minuten auf dem Blatt **Daten importieren** bzw. **Daten exportieren** aufhalten, wird auf der linken Seite eine Fehlermeldung angezeigt, die dem folgenden Beispiel ähnelt:
 
-```output
+```azcopy
 The request to import data into cache 'contoso55' failed with status 'error' and error 'One of the SAS URIs provided could not be used for the following reason: The SAS token end time (se) must be at least 1 hour from now and the start time (st), if given, must be at least 15 minutes in the past.
 ```
 

@@ -5,14 +5,14 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: quickstart
-ms.date: 03/03/2021
+ms.date: 08/17/2021
 ms.author: duau
-ms.openlocfilehash: 8e7572f5f39655cd6fae8a6528cacd2e074a002b
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: b5d4017c60a831b90b21527bbf8ecca4282bdd73
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107950404"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322948"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-the-azure-portal"></a>Schnellstart: Erstellen und Konfigurieren einer Route Server-Instanz mithilfe des Azure-Portals
 
@@ -56,6 +56,7 @@ Navigieren Sie in einem Browser zum [Azure-Portal](https://portal.azure.com) , u
     | Region | Wählen Sie die Region aus, in der die Route Server-Instanz erstellt werden soll. Wählen Sie dieselbe Region wie für das virtuelle Netzwerk aus, das Sie zuvor erstellt haben, damit das virtuelle Netzwerk in der Dropdownliste angezeigt wird. |
     | Virtual Network | Wählen Sie das virtuelle Netzwerk aus, in dem die Route Server-Instanz erstellt werden soll. Sie können ein neues virtuelles Netzwerk erstellen oder ein bereits vorhandenes virtuelles Netzwerk auswählen. Stellen Sie bei Verwendung eines vorhandenen virtuellen Netzwerks sicher, dass es über ausreichend Platz für mindestens ein /27-Subnetz verfügt, um die Anforderung an das Route Server-Subnetz zu erfüllen. Sollte Ihr virtuelles Netzwerk nicht in der Dropdownliste angezeigt werden, überprüfen Sie, ob Sie die richtige Ressourcengruppe oder Region ausgewählt haben. |
     | Subnet | Nach dem Erstellen oder Auswählen eines virtuellen Netzwerks wird das Subnetzfeld angezeigt. Dieses Subnetz ist nur für Route Server vorgesehen. Wählen Sie **Subnetzkonfiguration verwalten** aus, und erstellen Sie das Azure Route Server-Subnetz. Wählen Sie **+ Subnetz** aus, und erstellen Sie ein Subnetz unter Verwendung der folgenden Richtlinien:</br><br>- Das Subnetz muss *RouteServerSubnet* heißen.</br><br>- Das Subnetz muss mindestens die Größe „/27“ haben.</br> |
+    | Öffentliche IP-Adresse | Erstellen Sie eine neue öffentliche IP-Ressource, oder wählen Sie eine vorhandene aus, um sie dem Route Server zuzuweisen. Um die Konnektivität mit dem Back-End-Dienst sicherzustellen, der die Route Server-Konfiguration verwaltet, ist eine öffentliche IP-Adresse erforderlich. |
 
 1. Wählen Sie **Überprüfen und erstellen** aus, überprüfen Sie die Zusammenfassung, und wählen Sie dann die Option **Erstellen** aus. 
 

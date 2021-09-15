@@ -9,12 +9,12 @@ ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: synapse
 ms.date: 04/16/2021
-ms.openlocfilehash: 51711cbbd66e52ccf0b47c4e1db5ecc5883ff959
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e37a6dcd6cd536e3702294e45a1aa3ffd2c75a24
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122640718"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123099368"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Mapping Data Flow – Debugmodus
 
@@ -28,7 +28,7 @@ Mit dem Debugmodus von Azure Data Factory Mapping Data Flow können Sie die Tran
 
 ![Screenshot: Position des Schiebereglers „Debuggen“ 2](media/data-flow/debug-button-4.png)
 
-Nachdem Sie den Schieberegler aktiviert haben, werden Sie aufgefordert, die Integration Runtime-Konfiguration auszuwählen, die Sie verwenden möchten. Wird „AutoResolveIntegrationRuntime“ ausgewählt, wird ein Cluster mit acht allgemeinen Compute-Kernen und einer Standarddauer von 60 Minuten gestartet. Wenn Sie vor dem Timeout Ihrer Sitzung eine längere Leerlaufzeit zulassen möchten, können Sie eine höhere TTL-Einstellung wählen. Weitere Informationen zu Datenfluss-Integration Runtimes finden Sie unter [Datenflussleistung](concepts-data-flow-performance.md#ir).
+Nachdem Sie den Schieberegler aktiviert haben, werden Sie aufgefordert, die Integration Runtime-Konfiguration auszuwählen, die Sie verwenden möchten. Wird „AutoResolveIntegrationRuntime“ ausgewählt, wird ein Cluster mit acht allgemeinen Compute-Kernen und einer Standarddauer von 60 Minuten gestartet. Wenn Sie vor dem Timeout Ihrer Sitzung eine längere Leerlaufzeit zulassen möchten, können Sie eine höhere TTL-Einstellung wählen. Weitere Informationen zu Datenfluss-Integration Runtimes finden Sie unter [Integration Runtime-Leistung](concepts-integration-runtime-performance.md).
 
 ![Auswahl der Integration Runtime zum Debuggen](media/data-flow/debug-new-1.png "Auswahl der Integration Runtime zum Debuggen")
 

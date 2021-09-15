@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/01/2020
+ms.date: 08/25/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2f16de49518e334f2f5e679ce24e24a262a1e231
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 29e9341427b74c2395288ac85ee98d8ff44bd02e
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98674942"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122968199"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Profils für einen SAML-Identitätsanbieter in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -169,6 +169,8 @@ Das **OutputClaimsTransformations**-Element darf eine Sammlung von **OutputClaim
 | IncludeKeyInfo | Nein | Gibt an, ob die SAML-Authentifizierungsanforderung den öffentlichen Schlüssel des Zertifikats enthält, wenn die Bindung auf `HTTP-POST` festgelegt ist. Mögliche Werte: `true` oder `false`. |
 | IncludeClaimResolvingInClaimsHandling  | Nein | Gibt bei Eingabe- und Ausgabeansprüchen an, ob die [Anspruchsauflösung](claim-resolver-overview.md) im technischen Profil enthalten ist. Mögliche Werte sind `true` oder `false` (Standardwert). Wenn Sie im technischen Profil eine Anspruchsauflösung verwenden möchten, legen Sie für diese Einstellung den Wert `true` fest. |
 |SingleLogoutEnabled| Nein| Gibt an, ob das technische Profil bei der Anmeldung versucht, sich beim Verbundidentitätsanbieter abzumelden. Weitere Informationen finden Sie unter [Abmelden von der Azure AD B2C-Sitzung](session-behavior.md#sign-out).  Mögliche Werte: `true` (Standard) oder `false`.|
+|ForceAuthN| Nein| Übergibt den ForceAuthN-Wert in der SAML-Authentifizierungsanforderung, um zu bestimmen, ob der externe SAML-IDP dazu genutzt wird, den Benutzer zur Authentifizierung aufzufordern. Standardmäßig legt Azure AD B2C den ForceAuthN-Wert bei der ersten Anmeldung auf False fest. Wenn die Sitzung dann zurückgesetzt wird (z. B. mithilfe von `prompt=login` in OIDC), wird der ForceAuthN-Wert auf `true` festgelegt. Wenn Sie das Metadatenelement wie unten gezeigt einstellen, wird der Wert für alle externen HTTP-Anforderungen erzwungen.  Mögliche Werte: `true` oder `false`.|
+
 
 ## <a name="cryptographic-keys"></a>Kryptografische Schlüssel
 

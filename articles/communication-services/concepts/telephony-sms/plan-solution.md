@@ -7,15 +7,15 @@ manager: nmurav
 services: azure-communication-services
 ms.author: prakulka
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 150daaa834cefbb3f74e6711fea500138774f2de
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 23be7352c1a9b8ca5e0ec60240cf29c863926a20
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113111085"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255078"
 ---
 # <a name="phone-number-types-in-azure-communication-services"></a>Telefonnummerntypen in Azure Communication Services
 
@@ -71,12 +71,12 @@ Welche Funktionen Ihnen zur Verfügung stehen, hängt von dem Land ab, in dem Si
 
 In der folgenden Tabelle wird gezeigt, wo Sie verschiedene Telefonnummerntypen sowie die mit diesen Telefonnummerntypen verbundenen ein- und ausgehenden Anruf- und SMS-Features abrufen können.
 
-|Nummerntyp| Abrufen von Nummern in | Tätigen von Anrufen nach                                        | Empfangen von Anrufen aus                                    |Senden von Nachrichten nach       | Empfangen von Nachrichten aus |
+|Nummerntyp| Abrufen von Nummern in | Tätigen von Anrufen nach                                        | Empfangen von Anrufen aus*                                    |Senden von Nachrichten nach       | Empfangen von Nachrichten aus |
 |-----------| ------------------ | ---------------------------------------------------  |-------------------------------------------------------|-----------------------|--------|
-| Lokal (geografisch)  | US                 | USA, Kanada, Vereinigtes Königreich, Deutschland, Frankreich, +weitere*| USA, Kanada, Vereinigtes Königreich, Deutschland, Frankreich, +weitere* |Nicht verfügbar| Nicht verfügbar |
+| Lokal (geografisch)  | US                 | USA, Kanada, Vereinigtes Königreich, Deutschland, Frankreich, +weitere**| USA, Kanada, Vereinigtes Königreich, Deutschland, Frankreich, +weitere** |Nicht verfügbar| Nicht verfügbar |
 | Gebührenfrei | US                 | US                                                   | US                                                    |US                | US |
 
-*Weitere Details zu Anrufzielen und Preisen finden Sie auf der [Seite mit der Preisübersicht](../pricing.md).
+*Derzeit können Sie nur Anrufe an eine Microsoft-Nummer empfangen, die einem Telefoniekanalbot zugewiesen ist. Weitere Informationen zum Telefoniekanal finden Sie [here](/azure/bot-service/bot-service-channel-connect-telephony) **Weitere Details zu Anrufzielen und Preisen finden Sie auf der [Seite mit der Preisübersicht](../pricing.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

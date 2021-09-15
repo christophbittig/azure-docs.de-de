@@ -11,16 +11,16 @@ ms.topic: overview
 ms.date: 04/28/2021
 ms.author: justinha
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 5854d8cecd1de8121b6129d86a70c1f5ad9518f2
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 8c390593778917bef45b20d27e11e1b642b194c6
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175386"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123303566"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Was ist Azure Active Directory Domain Services?
 
-Azure Active Directory Domain Services (AD DS) verfügt über verwaltete Domänendienste wie Domänenbeitritt, Gruppenrichtlinien, Lightweight Directory Access Protocol (LDAP) und Kerberos-/NTLM-Authentifizierung. Sie können diese Domänendienste nutzen, ohne Domänencontroller (DCs) in der Cloud bereitstellen, verwalten und patchen zu müssen.
+Azure Active Directory Domain Services (Azure AD DS) stellt verwaltete Domänendienste wie Domänenbeitritt, Gruppenrichtlinien, Lightweight Directory Access Protocol (LDAP) und Kerberos/NTLM-Authentifizierung bereit. Sie können diese Domänendienste nutzen, ohne Domänencontroller (DCs) in der Cloud bereitstellen, verwalten und patchen zu müssen.
 
 Mit einer verwalteten Azure AD DS-Domäne können Sie Legacyanwendungen in der Cloud ausführen, für die keine modernen Authentifizierungsmethoden genutzt werden können oder bei denen Sie nicht möchten, dass Verzeichnissuchen immer in einer lokalen AD DS-Umgebung durchgeführt werden. Sie können diese Legacyanwendungen per Lift & Shift-Vorgang aus Ihrer lokalen Umgebung in eine verwaltete Domäne verschieben, ohne dass Sie die AD DS-Umgebung in der Cloud verwalten müssen.
 

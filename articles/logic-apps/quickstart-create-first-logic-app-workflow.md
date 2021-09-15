@@ -1,24 +1,24 @@
 ---
-title: Schnellstart - Erstellen von Integrationsworkflows mit Azure Logic Apps im Azure-Portal
+title: 'Schnellstart: Erstellen von automatisierten Workflows mit Azure Logic Apps im Azure-Portal'
 description: Erstellen Sie Ihren ersten automatisierten Integrations-Workflow mit Mandanten-fähigen Azure Logic Apps im Azure-Portal.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: contperf-fy21q4
-ms.date: 05/25/2021
-ms.openlocfilehash: b7419986137632561cae71b91dd55a2af64912a7
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 08/24/2021
+ms.openlocfilehash: a2b3533a1af6740b1d847a2a3e452bbe45aacc05
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373284"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122831266"
 ---
 # <a name="quickstart-create-an-integration-workflow-with-multi-tenant-azure-logic-apps-and-the-azure-portal"></a>Schnellstart: Erstellen eines Integrationsworkflows mit Mandanten-fähigen Azure Logic Apps und dem Azure-Portal
 
-Dieser Schnellstart zeigt, wie Sie einen automatisierten Beispielworkflow erstellen, der zwei Dienste integriert, einen RSS-Feed für eine Website und ein E-Mail-Konto, wenn Sie [Azure Logic Apps](logic-apps-overview.md) mit *mehreren Mandanten* verwenden. Dieses Beispiel ist zwar cloudbasiert, von Logic Apps werden jedoch auch Workflows unterstützt, die Apps, Daten, Dienste und Systeme in der Cloud, in lokalen Umgebungen und in Hybridumgebungen miteinander verbinden. Weitere Informationen zum Multi-Mandanten- versus Einzel-Mandanten-Modell finden Sie unter [Einzel-Mandant versus Multi-Mandant und Integrationsdienstumgebung](single-tenant-overview-compare.md).
+Diese Schnellstartanleitung zeigt an einem Beispiel, wie Sie einen automatisierten Workflow erstellen, der zwei Dienste integriert: einen RSS-Feed für eine Website und ein E-Mail-Konto, wenn Sie [Azure Logic Apps *mit mehreren Mandanten*](logic-apps-overview.md) verwenden. Dieses Beispiel ist zwar cloudbasiert, von Logic Apps werden jedoch auch Workflows unterstützt, die Apps, Daten, Dienste und Systeme in der Cloud, in lokalen Umgebungen und in Hybridumgebungen miteinander verbinden. Einen Vergleich zwischen den Azure Logic Apps-Modellen mit einem und mehreren Mandanten finden Sie unter [Vergleich zwischen Umgebungen mit einem Mandanten und mehreren Mandanten bzw. Integrationsdienstumgebung für Azure Logic Apps](single-tenant-overview-compare.md).
 
-In diesem Beispiel wird ein Workflow mit RSS-Connector und Office 365 Outlook-Connector erstellt. Der RSS-Connector verfügt über einen Trigger, durch den basierend auf einem Zeitplan ein RSS-Feed überprüft wird. Der Office 365 Outlook-Connector verfügt über eine Aktion, durch die für jedes neue Element eine E-Mail gesendet wird. Die Connectors in diesem Beispiel sind nur zwei von [Hunderten von Connectors](/connectors/connector-reference/connector-reference-logicapps-connectors), die Sie in einem Workflow verwenden können.
+In diesem Beispiel erstellen Sie eine Logik-App-Ressource und einen Workflow, der den RSS-Connector und den Office 365 Outlook-Connector verwendet. Die Ressource wird in Azure Logic Apps mit mehreren Mandanten ausgeführt und basiert auf dem [verbrauchsbasierten Preismodell](logic-apps-pricing.md#consumption-pricing). Der RSS-Connector verfügt über einen Trigger, durch den basierend auf einem Zeitplan ein RSS-Feed überprüft wird. Der Office 365 Outlook-Connector verfügt über eine Aktion, durch die für jedes neue Element eine E-Mail gesendet wird. Die Connectors in diesem Beispiel sind nur zwei von [Hunderten von Connectors](/connectors/connector-reference/connector-reference-logicapps-connectors), die Sie in einem Workflow verwenden können.
 
 Der folgende Screenshot zeigt den allgemeinen Beispielworkflow:
 
@@ -26,13 +26,13 @@ Der folgende Screenshot zeigt den allgemeinen Beispielworkflow:
 
 Im Rahmen dieser Schnellstartanleitung werden folgende grundlegende Schritte vermittelt:
 
-* Erstellen einer Logik-App-Ressource, die in der Logic Apps-Dienstumgebung mit mehreren Mandanten ausgeführt wird
+* Erstellen einer Logik-App-Ressource, die in der Azure Logic Apps-Umgebung mit mehreren Mandanten ausgeführt wird
 * Auswählen der leeren Logik-App-Vorlage
 * Hinzufügen eines Triggers, der angibt, wann der Workflow ausgeführt werden soll
 * Hinzufügen einer Aktion, durch die eine Aufgabe ausgeführt wird, nachdem der Trigger ausgelöst wurde
 * Ausführen Ihres Workflows
 
-Informationen zum Erstellen und Verwalten einer Logik-App mit anderen Tools finden Sie in den folgenden Logic Apps-Schnellstartanleitungen:
+Informationen zum Erstellen und Verwalten einer Logik-App-Ressource mit anderen Tools finden Sie in den folgenden Azure Logic Apps-Schnellstartanleitungen:
 
 * [Erstellen und Verwalten von Logik-Apps in Visual Studio Code](quickstart-create-logic-apps-visual-studio-code.md)
 * [Erstellen und Verwalten von Logik-Apps in Visual Studio](quickstart-create-logic-apps-with-visual-studio.md)
@@ -42,16 +42,16 @@ Informationen zum Erstellen und Verwalten einer Logik-App mit anderen Tools find
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
+* Azure-Konto und -Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Ein E-Mail-Konto eines mit Azure Logic Apps kompatiblen Diensts (z. B. Office 365 Outlook oder Outlook.com). Informationen zu anderen unterstützten E-Mail-Anbietern finden Sie in den [Connectors für Logic Apps](/connectors/connector-reference/connector-reference-logicapps-connectors).
+* Ein E-Mail-Konto eines mit Azure Logic Apps kompatiblen Diensts (z. B. Office 365 Outlook oder Outlook.com). Weitere unterstützte E-Mail-Anbieter finden Sie unter [Connectors für Azure Logic Apps](/connectors/connector-reference/connector-reference-logicapps-connectors).
 
   > [!NOTE]
   > Der [Gmail-Connector](/connectors/gmail/) kann nur von G-Suite-Konten ohne Einschränkung in Azure Logic Apps verwendet werden. Wenn Sie über ein Gmail-Consumerkonto verfügen, können Sie diesen Connector nur mit bestimmten von Google genehmigten Diensten verwenden, sofern Sie keine [Google-Client-App für die Authentifizierung mit Ihrem Gmail-Connector erstellen](/connectors/gmail/#authentication-and-bring-your-own-application). Weitere Informationen finden Sie unter [Datensicherheit und Datenschutzrichtlinien für Google-Connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
-* Falls Sie über eine Firewall verfügen, durch die der Datenverkehr auf bestimmte IP-Adressen beschränkt wird, richten Sie Ihre Firewall so ein, dass der Zugriff für IP-Adressen, die vom Logic Apps-Dienst in der Azure-Region Ihrer Logik-App genutzt werden, in [eingehender](logic-apps-limits-and-config.md#inbound) *und* in [ausgehender](logic-apps-limits-and-config.md#outbound) Richtung zugelassen wird.
+* Falls Sie über eine Firewall verfügen, durch die der Datenverkehr auf bestimmte IP-Adressen beschränkt wird, richten Sie diese so ein, dass der Zugriff für [eingehende](logic-apps-limits-and-config.md#inbound) *und* [ausgehende](logic-apps-limits-and-config.md#outbound) IP-Adressen zugelassen ist, die vom Logic Apps-Dienst in der Azure-Region genutzt werden, in der Sie Ihren Logik-App-Workflow erstellen.
 
-  In diesem Beispiel werden auch die [von Microsoft verwalteten](../connectors/managed.md) RRS- und Office 365 Outlook-Connectors verwendet. Für diese Connectors muss Ihre Firewall so eingerichtet werden, dass der Zugriff für *alle* [ausgehenden IP-Adressen des verwalteten Connectors](logic-apps-limits-and-config.md#outbound) in der Azure-Region der Logik-App zugelassen wird.
+  In diesem Beispiel werden die [von Microsoft verwalteten](../connectors/managed.md) Connectors für RSS und Office 365 Outlook verwendet. Für diese Connectors muss Ihre Firewall so eingerichtet werden, dass der Zugriff für *alle* [ausgehenden IP-Adressen des verwalteten Connectors](/connectors/common/outbound-ip-addresses) in der Azure-Region für Ihre Logik-App-Ressource zugelassen ist.
 
 <a name="create-logic-app-resource"></a>
 
@@ -63,39 +63,37 @@ Informationen zum Erstellen und Verwalten einer Logik-App mit anderen Tools find
 
    ![Screenshot: Suchfeld im Azure-Portal mit „Logic Apps“ als Suchbegriff und „Logic Apps“ als ausgewähltem Ergebnis](./media/quickstart-create-first-logic-app-workflow/find-select-logic-apps.png)
 
-1. Wählen Sie auf der Seite **Logic Apps** die Option **Hinzufügen** > **Verbrauch** aus.
+1. Wählen Sie auf der Seite **Logic Apps** die Option **Hinzufügen** aus.
 
-   Dadurch wird eine Logik-App-Ressource erstellt, die in der Logic Apps-Dienstumgebung mit mehreren Mandanten ausgeführt wird und [Modell für nutzungsbasierte Preise](logic-apps-pricing.md) verwendet.
+   ![Screenshot: Azure-Portal und Seite des Logic Apps-Diensts mit ausgewählter Option „Hinzufügen“](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
 
-   ![Screenshot: Seite des Diensts „Logic Apps“ im Azure-Portal mit Logik-Apps-Liste, geöffnetem Menü „Hinzufügen“ und ausgewählter Option „Verbrauch“](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
-
-1. Geben Sie im Bereich **Logik-App** die grundlegenden Details und Einstellungen für Ihre Logik-App an. Erstellen Sie eine neue [Ressourcengruppe](../azure-resource-manager/management/overview.md#terminology) für diese exemplarische Logik-App.
+1. Wählen Sie im Bereich **Logik-App erstellen** das zu verwendende Azure-Abonnement aus, erstellen Sie eine neue [Ressourcengruppe](../azure-resource-manager/management/overview.md#terminology) für Ihre Logik-App-Ressource, und geben Sie grundlegende Informationen zu dieser Ressource an.
 
    | Eigenschaft | Wert | BESCHREIBUNG |
    |----------|-------|-------------|
    | **Abonnement** | <*Name des Azure-Abonnements*> | Der Name Ihres Azure-Abonnements. |
    | **Ressourcengruppe** | <*Name der Azure-Ressourcengruppe*> | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md#terminology). Dieser Name muss regionsübergreifend eindeutig sein. In diesem Beispiel wird „My-First-LA-RG“ verwendet. |
-   | **Name der Logik-App** | <*logic-app-name*> | Der Name Ihrer Logik-App, der regionsübergreifend eindeutig sein muss. In diesem Beispiel wird „My-First-Logic-App“ verwendet. <p><p>**Wichtig:** Der Name darf nur Buchstaben, Ziffern, Bindestriche (`-`), Unterstriche (`_`), Klammern (`(`, `)`) und Punkte (`.`) enthalten.  |
-   | **Region** | <*Azure-Region*> | Die Azure-Rechenzentrumsregion, in der die Informationen Ihrer App gespeichert werden sollen. In diesem Beispiel wird „USA, Westen“ verwendet. |
-   | **Einer Integrationsdienstumgebung zuordnen** | Aus | Wählen Sie diese Option nur aus, wenn Sie diese Logik-App in einer [Integrationsdienstumgebung](connect-virtual-network-vnet-isolated-environment-overview.md) bereitstellen möchten. Lassen Sie sie in diesem Beispiel deaktiviert. |
-   | **Aktivieren von Log Analytics** | Aus | Wählen Sie diese Option nur aus, wenn Sie die Diagnoseprotokollierung aktivieren möchten. Lassen Sie sie in diesem Beispiel deaktiviert. |
+   | **Typ** | **Verbrauch** | Der Ressourcentyp und das Abrechnungsmodell, der/das für Ihre Logik-App-Ressource verwendet werden soll: <p><p>- **Verbrauch**: Dieser Logik-App-Ressourcentyp wird in globalen Azure Logic Apps-Instanzen mit mehreren Mandanten ausgeführt und verwendet das [Abrechnungsmodell „Verbrauch“](logic-apps-pricing.md#consumption-pricing). Das Beispiel in diesem Artikel verwendet dieses **verbrauchsbasierte** Modell. <p>- **Standard**: Dieser Logik-App-Ressourcentyp wird in Azure Logic Apps-Instanzen mit einem Mandanten ausgeführt und verwendet das [Abrechnungsmodell „Standard“](logic-apps-pricing.md#standard-pricing). |
+   | **Name der Logik-App** | <*logic-app-name*> | Der Ressourcenname Ihrer Logik-App, der regionsübergreifend eindeutig sein muss. In diesem Beispiel wird „My-First-Logic-App“ verwendet. <p><p>**Wichtig:** Der Name darf nur Buchstaben, Ziffern, Bindestriche (`-`), Unterstriche (`_`), Klammern (`(`, `)`) und Punkte (`.`) enthalten.  |
+   | **Region** | <*Azure-Region*> | Die Azure-Rechenzentrumsregion, in der die Informationen Ihrer App gespeichert werden sollen. In diesem Beispiel wird „USA, Westen“ verwendet. <p>**Hinweis**: Wenn Ihr Abonnement einer [Integrationsdienstumgebung](connect-virtual-network-vnet-isolated-environment-overview.md) (Integration Service Environment, ISE) zugewiesen ist, enthält die Liste auch diese Umgebung. |
+   | **Aktivieren von Log Analytics** | **Nein** | Ändern Sie diese Option nur, wenn Sie die Diagnoseprotokollierung aktivieren möchten. Lassen Sie sie in diesem Beispiel deaktiviert. |
    ||||
 
-   ![Screenshot: Azure-Portal und Seite zum Erstellen einer Logik-App mit Details für die neue Logik-App](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
+   ![Screenshot: Azure-Portal und Seite zum Erstellen einer Logik-App-Ressource mit Details zur neuen Logik-App](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
 1. Wählen Sie, wenn Sie bereit sind, **Überprüfen + erstellen** aus. Überprüfen Sie auf der Überprüfungsseite Ihre Angaben, und wählen Sie **Erstellen** aus.
 
 ## <a name="select-the-blank-template"></a>Auswählen der leeren Vorlage
 
-1. Nachdem Azure Ihre App erfolgreich bereitgestellt hat, wählen Sie **Zu Ressource wechseln** aus. Alternativ können Sie den Namen Ihrer Logik-App in das Suchfeld von Azure eingeben und Ihre Logik-App auswählen.
+1. Nachdem Azure Ihre App erfolgreich bereitgestellt hat, wählen Sie **Zu Ressource wechseln** aus. Alternativ dazu können Sie den Namen Ihrer Logik-App-Ressource in das Suchfeld von Azure eingeben und Ihre Ressource auswählen.
 
    ![Screenshot: Ressourcenbereitstellungsseite und ausgewählte Schaltfläche „Zu Ressource wechseln“](./media/quickstart-create-first-logic-app-workflow/go-to-new-logic-app-resource.png)
 
-   Der Logik-App-Designer wird geöffnet, und es wird eine Seite mit einem Einführungsvideo und häufig verwendeten Triggern angezeigt.
+   Der Workflow-Designer wird geöffnet und zeigt eine Seite mit einem Einführungsvideo und häufig verwendeten Triggern an.
 
-1. Wählen Sie unter **Vorlagen** die Option **Leere Logik-App**.
+1. Klicken Sie unter **Vorlagen** auf die Option **Leere Logik-App**.
 
-   ![Screenshot: Vorlagenkatalog des Designers für Logik-Apps und ausgewählte Vorlage „Leere Logik-App“](./media/quickstart-create-first-logic-app-workflow/choose-logic-app-template.png)
+   ![Screenshot: Vorlagenkatalog des Workflow-Designers und ausgewählte Vorlage „Leere Logik-App“](./media/quickstart-create-first-logic-app-workflow/choose-logic-app-template.png)
 
    Nachdem Sie die Vorlage ausgewählt haben, wird im Designer eine leere Workflowoberfläche angezeigt.
 
@@ -103,15 +101,15 @@ Informationen zum Erstellen und Verwalten einer Logik-App mit anderen Tools find
 
 ## <a name="add-the-trigger"></a>Hinzufügen des Triggers
 
-Ein Workflow beginnt immer mit einem einzelnen [Trigger](../logic-apps/logic-apps-overview.md#how-do-logic-apps-work). Dieser dient zum Angeben der Bedingung, die erfüllt sein muss, damit Aktionen im Workflow ausgeführt werden. Bei jeder Auslösung des Triggers wird durch den Logic Apps-Dienst eine Workflowinstanz zum Ausführen der Aktionen erstellt. Wird der Trigger nicht ausgelöst, wird weder eine Instanz erstellt noch eine Instanz ausgeführt. Zum Starten eines Workflows stehen verschiedenste Trigger zur Auswahl.
+Ein Workflow beginnt immer mit einem einzelnen [Trigger](../logic-apps/logic-apps-overview.md#how-do-logic-apps-work). Dieser dient zum Angeben der Bedingung, die erfüllt sein muss, damit Aktionen im Workflow ausgeführt werden. Bei jeder Auslösung des Triggers erstellt Azure Logic Apps eine Workflowinstanz und führt diese aus. Wird der Trigger nicht ausgelöst, wird weder eine Instanz erstellt noch eine Instanz ausgeführt. Zum Starten eines Workflows stehen verschiedenste Trigger zur Auswahl.
 
 In diesem Beispiel wird ein RSS-Trigger verwendet, durch den basierend auf einem Zeitplan ein RSS-Feed überprüft wird. Ist ein neues Element im Feed vorhanden, wird der Trigger ausgelöst, und eine neue Workflowinstanz wird gestartet. Sind seit der letzten Überprüfung mehrere neue Elemente hinzugekommen, wird der Trigger für jedes Element ausgelöst, und für jedes Element wird eine separate neue Workflowinstanz ausgeführt.
 
-1. Wählen Sie im **Designer für Logik-Apps** unterhalb des Suchfelds die Option **Alle** aus.
+1. Wählen Sie im Workflow-Designer unterhalb des Suchfelds die Option **Alle** aus.
 
 1. Geben Sie `rss` in das Suchfeld ein, um nach dem RSS-Trigger zu suchen. Wählen Sie in der Liste **Trigger** den RSS-Trigger **Beim Veröffentlichen eines Feedelements** aus.
 
-   ![Screenshot: Designer für Logik-Apps mit „rss“ im Suchfeld und ausgewähltem RSS-Trigger „Beim Veröffentlichen eines Feedelements“](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
+   ![Screenshot: Workflow-Designer mit „rss“ im Suchfeld und ausgewähltem RSS-Trigger „Beim Veröffentlichen eines Feedelements“](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
 
 1. Geben Sie in den Triggerdetails folgende Informationen an:
 
@@ -218,7 +216,7 @@ Durch die in diesem Beispiel verwendete Office 365 Outlook-Aktion wird bei jed
       | `Link:` | **Link zum primären Feed** | Die URL für das Element |
       ||||
 
-      ![Screenshot: Designer für Logik-Apps mit der Aktion „E-Mail senden“ und ausgewählten Eigenschaften im Feld „Text“](./media/quickstart-create-first-logic-app-workflow/send-email-body.png)
+      ![Screenshot: Workflow-Designer mit der Aktion „E-Mail senden“ und ausgewählten Eigenschaften im Feld „Text“](./media/quickstart-create-first-logic-app-workflow/send-email-body.png)
 
 1. Speichern Sie Ihre Logik-App. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
 
@@ -226,11 +224,11 @@ Durch die in diesem Beispiel verwendete Office 365 Outlook-Aktion wird bei jed
 
 ## <a name="run-your-workflow"></a>Ausführen Ihres Workflows
 
-Um zu überprüfen, ob der Workflow ordnungsgemäß ausgeführt wird, können Sie warten, bis der RSS-Feed durch den Trigger basierend auf dem festgelegten Zeitplan überprüft wird. Alternativ können Sie den Workflow auch manuell ausführen, indem Sie auf der Symbolleiste des Designers für Logik-Apps die Option **Ausführen** auswählen, wie im folgenden Screenshot zu sehen: 
+Um zu überprüfen, ob der Workflow ordnungsgemäß ausgeführt wird, können Sie warten, bis der RSS-Feed durch den Trigger basierend auf dem festgelegten Zeitplan überprüft wird. Sie können den Workflow auch manuell ausführen, indem Sie auf der Symbolleiste des Workflow-Designers die Option **Ausführen** auswählen, wie im folgenden Screenshot zu sehen.
 
-![Screenshot: Designer für Logik-Apps mit ausgewählter Schaltfläche „Ausführen“ auf der Designer-Symbolleiste](./media/quickstart-create-first-logic-app-workflow/run-logic-app-test.png)
+![Screenshot: Workflow-Designer mit ausgewählter Schaltfläche „Ausführen“ auf der Symbolleiste](./media/quickstart-create-first-logic-app-workflow/run-logic-app-test.png)
 
-Wenn der RSS-Feed über neue Elemente verfügt, wird für jedes neue Element eine E-Mail gesendet. Andernfalls wird bis zum nächsten Intervall gewartet und der RSS-Feed dann erneut überprüft. 
+Wenn der RSS-Feed über neue Elemente verfügt, wird für jedes neue Element eine E-Mail gesendet. Andernfalls wird bis zum nächsten Intervall gewartet und der RSS-Feed dann erneut überprüft.
 
 Der folgende Screenshot zeigt eine vom Beispielworkflow gesendete Beispiel-E-Mail. Die E-Mail enthält die Details aus den einzelnen ausgewählten Triggerausgaben sowie die jeweils eingeschlossenen Beschreibungen.
 
@@ -241,11 +239,12 @@ Der folgende Screenshot zeigt eine vom Beispielworkflow gesendete Beispiel-E-Mai
 Sollten Sie wider Erwarten keine E-Mails von dem Workflow erhalten, gehen Sie wie folgt vor:
 
 * Überprüfen Sie den Junk- bzw. Spam-Ordner Ihres E-Mail-Kontos, um sicherzustellen, dass die Nachricht nicht fälschlicherweise herausgefiltert wurde.
+
 * Vergewissern Sie sich, dass für den von Ihnen verwendeten RSS-Feed seit der letzten geplanten oder manuellen Überprüfung Elemente veröffentlicht wurden.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Bereinigen Sie nach Abschluss dieser Schnellstartanleitung die exemplarische Logik-App und alle zugehörigen Ressourcen, indem Sie die für dieses Beispiel erstellte Ressourcengruppe löschen.
+Löschen Sie nach Abschluss dieser Schnellstartanleitung die exemplarische Logik-App-Ressource und alle zugehörigen Ressourcen, indem Sie die für dieses Beispiel erstellte Ressourcengruppe löschen.
 
 1. Geben Sie in das Azure-Suchfeld `resource groups` ein, und wählen Sie dann **Ressourcengruppen** aus.
 

@@ -2,19 +2,19 @@
 title: Übersicht über das Azure Communication Services Calling SDK
 titleSuffix: An Azure Communication Services concept document
 description: Hier finden Sie eine Übersicht über das Calling SDK.
-author: mikben
-manager: jken
+author: probableprime
+manager: chpalm
 services: azure-communication-services
-ms.author: mikben
+ms.author: rifox
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 320ef1b523615894910d277fcc155104b4b297bc
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 7069d5089142f4fc5a6fff6492726b6f949c8f18
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113766548"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259016"
 ---
 # <a name="calling-sdk-overview"></a>Übersicht über das Calling SDK
 
@@ -90,6 +90,8 @@ Das Communication Services Calling SDK unterstützt folgende Streamingkonfigura
 | **Anzahl der ausgehenden Datenströme, die gleichzeitig gesendet werden können.**     | 1 Video- oder 1 Bildschirmfreigabe | 1 Video- und 1 Bildschirmfreigabe |
 | **Anzahl der eingehenden Datenströme, die gleichzeitig gerendert werden können.** | 1 Video- oder 1 Bildschirmfreigabe | 6 Video- und 1 Bildschirmfreigabe |
 
+Obwohl das Calling SDK diese Grenzwerte nicht erzwingt, kann es bei Ihren Benutzern zur Leistungsbeeinträchtigung führen, wenn sie überschritten werden.
+
 ## <a name="calling-sdk-timeouts"></a>Timeouts des Calling SDK
 
 Für die Communication Services Calling SDKs gelten folgende Timeouts:
@@ -106,18 +108,19 @@ Für die Communication Services Calling SDKs gelten folgende Timeouts:
 
 ## <a name="javascript-calling-sdk-support-by-os-and-browser"></a>JavaScript Calling SDK: Unterstützung nach Betriebssystem und Browser
 
-Die folgende Tabelle enthält die unterstützten Browser, die derzeit verfügbar sind. Sofern nichts anderes angegeben ist, unterstützen wir die letzten drei Versionen des Browsers.
+Die folgende Tabelle enthält die unterstützten Browser, die derzeit verfügbar sind. Sofern nichts anderes angegeben ist, **unterstützen wir die letzten drei Versionen des Browsers**.
 
-| Plattform     | Chrome | Safari | Edge (Chromium) | Notizen                                                                                                                                                                                                       |
-| ------------ | ------ | ------ | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Android      | ✔️      | ❌      | ❌               | Die ausgehende Bildschirmfreigabe wird nicht unterstützt.                                                                                                                                                                   |
-| iOS          | ❌      | ✔️      | ❌               | [Mit einer iOS-App in Safari können keine Mikrofon- und Lautsprechergeräte (z. B. Bluetooth) aufgelistet bzw. ausgewählt werden.](https://docs.microsoft.com/azure/communication-services/concepts/known-issues#enumerating-devices-isnt-possible-in-safari-when-the-application-runs-on-ios-or-ipados) Dies ist eine Einschränkung des Betriebssystems, und es ist immer nur ein Gerät vorhanden. Die Standardgeräteauswahl wird vom Betriebssystem gesteuert. Die ausgehende Bildschirmfreigabe wird nicht unterstützt. |
-| macOS        | ✔️      | ✔️      | ❌               | Safari 14+/macOS 11+ erforderlich für die Unterstützung von ausgehenden Videos                                                                                                                                                     |
-| Windows      | ✔️      | ❌      | ✔️               |                                                                                                                                                                                                             |
-| Ubuntu/Linux | ✔️      | ❌      | ❌               |                                                                                                                                                                                                             |
+| Plattform     | Chrome | Safari | Edge (Chromium)  |
+| ------------ | ------ | ------ | --------------   |
+| Android      | ✔️      | ❌      | ❌           | 
+| iOS          | ❌      | ✔️      | ❌           |
+| macOS        | ✔️      | ✔️      | ❌           | 
+| Windows      | ✔️      | ❌      | ✔️           |
+| Ubuntu/Linux | ✔️      | ❌      | ❌           |    
 
-* Safari wird ab Version 13.1 unterstützt, 1:1-Anrufe werden in Safari nicht unterstützt.
-* Sofern nicht anders angegeben, werden die letzten drei Versionen der einzelnen Browser unterstützt.
+* 1:1-Aufrufe werden für Safari nicht unterstützt.
+* Die ausgehende Bildschirmfreigabe wird unter iOS oder Android nicht unterstützt.
+* [Mit einer iOS-App in Safari können keine Mikrofon- und Lautsprechergeräte (z. B. Bluetooth) aufgelistet bzw. ausgewählt werden.](../known-issues.md#enumerating-devices-isnt-possible-in-safari-when-the-application-runs-on-ios-or-ipados) Dies ist eine Einschränkung des Betriebssystems, und es ist immer nur ein Gerät vorhanden. Die Standardgeräteauswahl wird vom Betriebssystem gesteuert.
 
 ## <a name="android-calling-sdk-support"></a>Android Calling SDK-Unterstützung
 

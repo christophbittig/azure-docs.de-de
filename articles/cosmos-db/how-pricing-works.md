@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: 4ae981ed39276d7b4a3a338c0ab822afd2d8e456
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 08/26/2021
+ms.openlocfilehash: 407e5935771b6b6c0b351d75d0a0d7c734eaa556
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373473"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038024"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Preismodell in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -55,6 +55,9 @@ Die reservierte Kapazität bezieht sich auf einen Rechnungsrabatt und wirkt sich
 
 Erfahren Sie mehr über die Optimierung der Kosten für Ihre Azure Cosmos DB-Ressourcen in den folgenden Artikeln:
 
+* Versuchen Sie, eine Kapazitätsplanung für eine Migration auf Azure Cosmos DB vorzunehmen? Sie können Informationen zu Ihrem vorhandenen Datenbankcluster für die Kapazitätsplanung verwenden.
+    * Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](convert-vcore-to-request-unit.md) 
+    * Sollten Ihnen die typischen Anforderungsraten Ihres aktuellen Datenbankworkloads kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe des Azure Cosmos DB Kapazitätsplaners](estimate-ru-with-capacity-planner.md)
 * Weitere Informationen unter [Optimale Entwicklungs- und Testmöglichkeiten mit Azure Cosmos DB](optimize-dev-test.md)
 * Weitere Informationen unter [Erläuterungen zu Ihrer Azure Cosmos DB-Rechnung](understand-your-bill.md)
 * Weitere Informationen unter [Optimieren der Durchsatzkosten](optimize-cost-throughput.md)

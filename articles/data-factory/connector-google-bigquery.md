@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 09/04/2019
-ms.openlocfilehash: 73ea8462d6838d74d1d9fcdb25f381661312eafc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/30/2021
+ms.openlocfilehash: 368427d087f5ae609c50ec2c2de27e0af690e20c
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122639869"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123312733"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Kopieren von Daten aus Google BigQuery mithilfe von Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -39,7 +39,31 @@ Data Factory bietet zum Herstellen von Konnektivität einen integrierten Treiber
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten verwendet werden, die für den Google BigQuery-Connector spezifisch sind.
+## <a name="create-a-linked-service-to-google-bigquery-using-ui"></a>Erstellen eines verknüpften Dienstes mit Google BigQuery über die Benutzeroberfläche
+
+Gehen Sie wie folgt vor, um einen verknüpften Dienst mit Google BigQuery in der Benutzeroberfläche des Azure-Portals zu erstellen.
+
+1. Navigieren Sie zur Registerkarte Verwalten in Ihrem Azure Data Factory- oder Synapse-Arbeitsbereich, wählen Sie Verknüpfte Dienste und klicken Sie dann auf Neu:
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Screenshot der Erstellung eines neuen verknüpften Dienstes mit der Benutzeroberfläche von Azure Data Factory.":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Screenshot der Erstellung eines neuen verknüpften Dienstes mit der Benutzeroberfläche von Azure Synapse.":::
+
+2. Suchen Sie nach Google und wählen Sie den Google BigQuery Connector aus.
+
+    :::image type="content" source="media/connector-google-bigquery/google-bigquery-connector.png" alt-text="Screenshot des Google BigQuery Connectors.":::    
+
+1. Konfigurieren Sie die Dienstdetails, probieren Sie die Verbindung aus und erstellen Sie den neuen verbundenen Dienst.
+
+    :::image type="content" source="media/connector-google-bigquery/configure-google-bigquery-linked-service.png" alt-text="Screenshot der Konfiguration des verknüpften Dienstes für Google BigQuery.":::
+
+## <a name="connector-configuration-details"></a>Details zur Konfiguration des Connectors
+
+Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zur Definition von Entitäten verwendet werden, die für den Google BigQuery Connector spezifisch sind.
 
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 

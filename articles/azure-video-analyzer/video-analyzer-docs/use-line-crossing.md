@@ -3,12 +3,12 @@ title: Erkennen der Überquerung einer virtuellen Linie durch Objekte in einem L
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Azure Video Analyzer verwenden, um die Überquerung einer Linie durch Objekte in einem Livevideofeed einer (simulierten) IP-Kamera zu erkennen.
 ms.topic: tutorial
 ms.date: 06/01/2021
-ms.openlocfilehash: 0b87d80c5dcc7a72bf940cac3573ee5e68964022
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 7257562626b17c8f61479eb1ba4d51fea52d3c91
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114604655"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123185955"
 ---
 # <a name="tutorial-detect-when-objects-cross-a-virtual-line-in-a-live-video"></a>Tutorial: Erkennen der Überquerung einer virtuellen Linie durch Objekte in einem Livevideo
 
@@ -113,7 +113,7 @@ Navigieren Sie in Visual Studio Code zum Ordner „src/cloud-to-device-console-a
    }
 ```
 
-Hier wird `skipSamplesWithoutAnnotation` auf `false` festgelegt, da der Erweiterungsknoten alle Frames an den Downstream-Objektnachverfolgungsknoten übergeben muss – unabhängig davon, ob sie über Rückschlussergebnisse verfügen. Mit der Objektnachverfolgung können Objekte über ca. 15 Frames hinweg verfolgt werden. Wenn das Livevideo eine Bildfrequenz von 30 Frames pro Sekunde hat, sollten mindestens zwei Frames pro Sekunde zur Rückschlussermittlung an den HTTP-Server gesendet werden. Ihr KI-Modell verfügt über einen maximalen FPS-Wert für die Verarbeitung. Dies ist der höchste Wert, auf den `maximumSamplesPerSecond` festgelegt werden sollte.
+Hier wird `skipSamplesWithoutAnnotation` auf `false` festgelegt, da der Erweiterungsknoten alle Frames an den Downstream-Objektnachverfolgungsknoten übergeben muss – unabhängig davon, ob sie über Rückschlussergebnisse verfügen. Mit der Objektnachverfolgung können Objekte über ca. 15 Frames hinweg verfolgt werden. Ihr KI-Modell verfügt über einen maximalen FPS-Wert für die Verarbeitung. Dies ist der höchste Wert, auf den `maximumSamplesPerSecond` festgelegt werden sollte.
 
 Sehen Sie sich auch die Parameterplatzhalter `linecrossingName` und `lineCoordinates` für den Linienüberquerungsknoten an. Wir haben zwar Standardwerte für diese Parameter angegeben, Sie überschreiben diese aber mithilfe der Datei „operations.json“. Sehen Sie sich an, wie andere Parameter aus der Datei „operations.json“ an eine Topologie (RTSP-URL) übergeben werden.  
 
@@ -251,6 +251,9 @@ Beachten Sie in dieser Meldung diese Details:
 * Die Gesamtanzahl von Überquerungen im Uhrzeigersinn (`clockwiseTotal`).
 * Die Gesamtanzahl von Überquerungen gegen den Uhrzeigersinn (`counterclockwiseTotal`).
 * `direction` enthält die Richtung für dieses Ereignis.
+
+> [!NOTE] 
+> Wenn Sie Azure-Ressourcen mithilfe der Bereitstellung mit nur einem Klick für dieses Tutorial bereitgestellt haben, wird ein virtueller Standard-DS1-Computer erstellt. Um jedoch genaue Ergebnisse von ressourcenintensiven KI-Modellen wie YOLO zu erhalten, müssen Sie möglicherweise die VM-Größe erhöhen. [Ändern Sie die Größe des virtuellen Computers](../../virtual-machines/windows/resize-vm.md), um die Anzahl von vCPUs und die Arbeitsspeichergröße Ihren Anforderungen gemäß zu erhöhen. Aktivieren Sie die Livepipeline dann erneut, um Rückschlüsse zu sehen.
 
 ## <a name="customize-for-your-own-environment"></a>Anpassen für Ihre eigene Umgebung
 

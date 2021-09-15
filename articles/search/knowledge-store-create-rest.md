@@ -1,27 +1,27 @@
 ---
 title: Erstellen eines Wissensspeichers mithilfe von REST
 titleSuffix: Azure Cognitive Search
-description: Verwenden Sie die REST-API und Postman, um einen Azure Cognitive Search-Wissensspeicher zum Speichern von Anreicherungen aus einer KI-Anreicherungspipeline zu erstellen.
+description: Verwenden Sie die REST-API und Postman, um einen Azure Cognitive Search-Wissensspeicher zum Speichern von KI-Anreicherungen aus einem Skillset zu erstellen.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/18/2020
-ms.openlocfilehash: 69b9fa867159e5bd475d37194422a4fd21bfe9ab
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 08/10/2021
+ms.openlocfilehash: 0f52fe37e7eadabaefbd35e6ca2c600b53ad3b0c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111557239"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724202"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>Erstellen eines Wissensspeichers mithilfe von REST und Postman
 
-Ein Wissensspeicher enthält die Ausgaben aus einer Azure Cognitive Search-Anreicherungspipeline zur späteren Analyse oder anderweitigen Downstreamverarbeitung. Eine Pipeline mit KI-Anreicherung akzeptiert Bilddateien oder unstrukturierte Textdateien, indiziert sie mithilfe von Azure Cognitive Search, wendet KI-Anreicherungen von Cognitive Services (z. B. Bildanalyse und Verarbeitung natürlicher Sprache) an und speichert die Ergebnisse in einem Wissensspeicher in Azure Storage. Sie können den Wissensspeicher dann im Azure-Portal mit Tools wie Power BI oder Storage-Explorer erkunden.
+Ein Wissensspeicher enthält die Ausgaben aus einer Azure Cognitive Search-Anreicherungspipeline zur späteren Analyse oder anderweitigen Downstreamverarbeitung. Eine Pipeline mit KI-Anreicherung akzeptiert Bilddateien oder unstrukturierte Textdateien, wendet KI-Anreicherungen von Cognitive Services (beispielsweise Bildanalyse und Verarbeitung natürlicher Sprache) an und speichert die Ausgabe in einem Wissensspeicher in Azure Storage. Sie können den Wissensspeicher dann im Azure-Portal mit Tools wie Power BI oder Storage-Explorer erkunden.
 
-In diesem Artikel wird die REST-API-Schnittstelle verwendet, um eine Gruppe von Hotelrezensionen zu erfassen, zu indizieren und KI-Anreicherungen darauf anzuwenden. Die Hotelrezensionen werden in Azure Blob Storage importiert. Die Ergebnisse werden als Wissensspeicher in Azure Table Storage gespeichert.
+In diesem Artikel verwenden Sie die REST-API, um verschiedene Kundenbewertungen von Hotelaufenthalten zu erfassen, anzureichern und zu untersuchen. Um das anfängliche DataSet verfügbar zu machen, werden die Hotelrezensionen zuerst in Azure Blob Storage importiert. Bei der Nachbearbeitung werden die Ergebnisse als Wissensspeicher in Azure Table Storage gespeichert.
 
-Nachdem Sie den Wissensspeicher erstellt haben, können Sie sich darüber informieren, wie Sie per [Storage-Explorer](knowledge-store-view-storage-explorer.md) oder [Power BI](knowledge-store-connect-power-bi.md) darauf zugreifen.
+Nachdem Sie den Wissensspeicher erstellt haben, können Sie seinen Inhalt mithilfe von [Storage-Explorer](knowledge-store-view-storage-explorer.md) oder [Power BI](knowledge-store-connect-power-bi.md) untersuchen.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -30,9 +30,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="create-services-and-load-data"></a>Erstellen von Diensten und Laden von Daten
 
-In dieser Schnellstartanleitung werden Azure Cognitive Search, Azure Blob Storage und [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) für die KI verwendet. 
+In dieser Übung werden Azure Cognitive Search, Azure Blob Storage und [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) für die KI verwendet. 
 
-Aufgrund der geringen Workloadgröße wird Cognitive Services im Hintergrund genutzt und bietet eine kostenlose Verarbeitung von bis zu 20 Transaktionen pro Tag. Aufgrund der geringen Datasetgröße können Sie das Erstellen oder Anfügen einer Cognitive Services-Ressource überspringen.
+Aufgrund der geringen Workloadgröße wird Cognitive Services im Hintergrund genutzt und bietet eine kostenlose Verarbeitung von bis zu 20 Transaktionen pro Tag. Bei einer kleinen Workload können Sie das Erstellen oder Anfügen einer Cognitive Services-Ressource überspringen.
 
 1. [Laden Sie „HotelReviews_Free.csv“ herunter.](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D) Bei diesen Daten handelt es sich um gespeicherte Hotelrezensionen (von Kaggle.com) in einer CSV-Datei. Die Daten umfassen 19 Kundenfeedbacks für ein einzelnes Hotel. 
 
@@ -90,10 +90,12 @@ Navigieren Sie zum Azure Cognitive Search-Dienst, und wählen Sie die Register
 
 ### <a name="review-the-request-collection-in-postman"></a>Überprüfen der Auflistung von Anforderungen in Postman
 
+Wissensspeicher werden in Skillsets definiert, die wiederum an Indexer angefügt sind. Zum Erstellen eines Wissensspeichers müssen Sie alle Upstreamobjekte erstellen, einschließlich eines Index, einer Datenquelle, eines Skillsets und eines Indexers. Obwohl ein Index nicht mit einem Wissensspeicher verknüpft ist, benötigt ein Indexer ihn für die Ausführung. Daher erstellen Sie einen Index als Voraussetzung für den Indexer.
+
 Beim Erstellen eines Wissensspeichers müssen Sie vier HTTP-Anforderungen durchführen: 
 
-- **PUT-Anforderung zum Erstellen des Index**: Dieser Index enthält die Daten, die von Azure Cognitive Search verwendet und zurückgegeben werden.
-- **POST-Anforderung zum Erstellen der Datenquelle**: Diese Datenquelle verknüpft das Azure Cognitive Search-Verhalten mit den Daten und dem Speicherkonto des Wissensspeichers. 
+- **PUT-Anforderung zum Erstellen des Index:** Dieser Index enthält die Daten, die Azure Cognitive Search verwendet und in Abfrageanforderungen zurückgibt.
+- **POST-Anforderung zum Erstellen der Datenquelle:** Diese Datenquelle stellt eine Verbindung mit Ihrem Azure Storage-Konto her. 
 - **PUT-Anforderung zum Erstellen des Skillsets**: Das Skillset gibt die Anreicherungen an, die auf die Daten und die Struktur des Wissensspeichers angewendet werden.
 - **PUT-Anforderung zum Erstellen des Indexers**: Beim Ausführen des Indexers werden die Daten gelesen, das Skillset wird angewendet, und die Ergebnisse werden gespeichert. Diese Anforderung muss zuletzt ausgeführt werden.
 
@@ -102,7 +104,7 @@ Der [Quellcode](https://github.com/Azure-Samples/azure-search-postman-samples/bl
 ![Screenshot: Postman-Schnittstelle für Header](media/knowledge-store-create-rest/postman-headers-ui.png)
 
 > [!Note]
-> Sie müssen die Header `api-key` und `Content-type` in allen Anforderungen festlegen. Wenn von Postman eine Variable erkannt wird, wird sie als orangefarbener Text angezeigt (wie `{{admin-key}}` im obigen Screenshot). Falls die Variable falsch geschrieben ist, wird sie als roter Text dargestellt.
+> Alle Anforderungen in der Sammlung legen Header vom Typ `api-key` und `Content-type` fest. Diese sind erforderlich. Wenn von Postman eine Variable erkannt wird, wird sie als orangefarbener Text angezeigt (wie `{{admin-key}}` im obigen Screenshot). Falls die Variable falsch geschrieben ist, wird sie als roter Text dargestellt.
 >
 
 ## <a name="create-an-azure-cognitive-search-index"></a>Erstellen eines Azure Cognitive Search-Index
@@ -147,6 +149,8 @@ Legen Sie die Struktur des Azure Cognitive Search-Index im Text der Anforderung 
 Diese Indexdefinition ist eine Kombination von Daten, die dem Benutzer präsentiert werden sollen (Name des Hotels, Inhalt der Rezension, Datum), Suchmetadaten und KI-Erweiterungsdaten (Stimmung, Schlüsselbegriffe und Sprache).
 
 Wählen Sie **Send** (Senden) aus, um die PUT-Anforderung zu senden. Als Status sollte `201 - Created` angezeigt werden. Wenn ein anderer Status angezeigt wird, sollten Sie im Bereich **Body** (Text) nach einer JSON-Antwort suchen, die eine Fehlermeldung enthält. 
+
+Der Index wird erstellt, aber nicht geladen. Das Importieren von Dokumenten erfolgt später, wenn Sie den Indexer ausführen. 
 
 ## <a name="create-the-datasource"></a>Erstellen der Datenquelle
 
@@ -306,7 +310,7 @@ Wählen Sie zum Generieren des Skillsets in Postman die Schaltfläche **Send** (
 
 Der letzte Schritt ist die Erstellung des Indexers. Der Indexer liest die Daten und aktiviert das Skillset. Wählen Sie in Postman die Anforderung **Create Indexer** (Indexer erstellen) aus, und sehen Sie sich den Anforderungstext an. Die Definition des Indexers verweist auf verschiedene andere Ressourcen, die Sie bereits erstellt haben: die Datenquelle, den Index und das Skillset. 
 
-Das `parameters/configuration`-Objekt steuert die Erfassung der Daten durch den Indexer. In diesem Fall befinden sich die Eingabedaten in einem einzigen Dokument, das über eine Kopfzeile und durch Trennzeichen getrennte Werte verfügt. Der Dokumentschlüssel ist ein eindeutiger Bezeichner für das Dokument. Vor der Codierung ist der Dokumentschlüssel die URL des Quelldokuments. Schließlich werden die Ausgabewerte des Skillsets, z. B. Sprachcode, Stimmung und Schlüsselbegriffe, den entsprechenden Positionen im Dokument zugeordnet. Es ist zwar ein einzelner Wert für `Language` vorhanden, aber `Sentiment` wird auf jedes Element im Array `pages` angewendet. `Keyphrases` ist ein Array, das ebenfalls auf jedes Element im Array `pages` angewendet wird.
+Das `parameters/configuration`-Objekt steuert die Erfassung der Daten durch den Indexer. In diesem Fall befinden sich die Eingabedaten in einer einzigen CSV-Datei, die über eine Kopfzeile und durch Trennzeichen getrennte Werte verfügt. Der Dokumentschlüssel ist ein eindeutiger Bezeichner für das Dokument. Vor der Codierung ist der Dokumentschlüssel die URL des Quelldokuments. Schließlich werden die Ausgabewerte des Skillsets, z. B. Sprachcode, Stimmung und Schlüsselbegriffe, den entsprechenden Positionen im Dokument zugeordnet. Es ist zwar ein einzelner Wert für `Language` vorhanden, aber `Sentiment` wird auf jedes Element im Array `pages` angewendet. `Keyphrases` ist ein Array, das ebenfalls auf jedes Element im Array `pages` angewendet wird.
 
 Nachdem Sie die Header `api-key` und `Content-type` festgelegt und sich vergewissert haben, dass der Text der Anforderung dem folgenden Code ähnelt, wählen Sie in Postman die Option **Send** (Senden). Postman sendet eine PUT-Anforderung an `https://{{search-service-name}}.search.windows.net/indexers/{{indexer-name}}?api-version={{api-version}}`. Azure Cognitive Search erstellt den Indexer und führt ihn aus. 
 
@@ -342,6 +346,14 @@ Nachdem Sie die Header `api-key` und `Content-type` festgelegt und sich vergewis
 ## <a name="run-the-indexer"></a>Ausführen des Indexers 
 
 Navigieren Sie im Azure-Portal zur Seite **Übersicht** des Azure Cognitive Search-Diensts. Wählen Sie die Registerkarte **Indexer** und dann **hotels-reviews-ixr** aus. Wählen Sie **Ausführen**, falls der Indexer nicht bereits ausgeführt wurde. Unter Umständen werden für die Indizierungsaufgabe einige Warnungen in Bezug auf die Spracherkennung ausgelöst. Die Daten enthalten einige Überprüfungen in Sprachen, die von den kognitiven Skills noch nicht unterstützt werden. 
+
+## <a name="clean-up"></a>Bereinigung
+
+Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie am Ende eines Projekts prüfen, ob Sie die Ressourcen, die Sie erstellt haben, noch benötigen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
+
+Ressourcen können im Portal über den Link **Alle Ressourcen** oder **Ressourcengruppen** im linken Navigationsbereich gesucht und verwaltet werden.
+
+Denken Sie bei Verwendung eines kostenlosen Diensts an die Beschränkung auf maximal drei Indizes, Indexer und Datenquellen. Sie können einzelne Elemente über das Portal löschen, um unter dem Limit zu bleiben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

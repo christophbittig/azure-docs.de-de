@@ -2,18 +2,18 @@
 title: Problembehandlung in Azure Communication Services
 description: Erfahren Sie, wie Sie die Informationen ermitteln, die Sie zum Beheben von Problemen mit der Communication Services-Lösung benötigen.
 author: manoskow
-manager: jken
+manager: chpalm
 services: azure-communication-services
 ms.author: manoskow
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: d8e3dbc012e49b69e766d0551c0a91dcbb92660b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3cd19094b876203569df83cf3bc165968d9051a2
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739588"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123257997"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Problembehandlung in Azure Communication Services
 
@@ -77,7 +77,28 @@ chat_client = ChatClient(
 ```
 ---
 
-## <a name="access-your-call-id"></a>Zugreifen auf Ihre Anruf-ID
+## <a name="access-your-server-call-id"></a>Zugreifen auf Ihre Serveraufruf-ID
+Bei der Problembehandlung mit dem Call Automation SDK, z. B. bei Problemen mit der Anrufaufzeichnung und der Anrufverwaltung, müssen Sie die Serveraufruf-ID erfassen. Diese ID kann mit der ```getServerCallId```-Methode erfasst werden.
+
+#### <a name="javascript"></a>JavaScript
+```
+callAgent.on('callsUpdated', (e: { added: Call[]; removed: Call[] }): void => {
+    e.added.forEach((addedCall) => {
+        addedCall.on('stateChanged', (): void => {
+            if (addedCall.state === 'Connected') {
+                addedCall.info.getServerCallId().then(result => {
+                    dispatch(setServerCallId(result));
+                }).catch(err => {
+                    console.log(err);
+                });
+            }
+        });
+    });
+});
+```
+
+
+## <a name="access-your-client-call-id"></a>Zugreifen auf Ihre Clientaufruf-ID
 
 Bei der Problembehandlung von Sprach- oder Videoanrufen werden Sie möglicherweise zur Angabe einer `call ID` aufgefordert. Darauf kann über die `id`-Eigenschaft des `call`-Objekts zugegriffen werden:
 

@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.date: 06/10/2021
 adobe-target: true
 ms.custom: FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 0d4c85ec1075e3925fa5657783ffce618faaa6ea
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: a5bc3ebfb58a41761b4a41439b6482592c58a7b0
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113760152"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123037307"
 ---
 # <a name="quickstart-create-workspace-resources-you-need-to-get-started-with-azure-machine-learning"></a>Schnellstart: So erstellen Sie Arbeitsbereichsressourcen, die Sie für die ersten Schritte mit Azure Machine Learning benötigen
 
@@ -44,10 +44,10 @@ Sie können Azure Machine Learning auf Ihrem eigenen Computer installieren.  I
 Erstellen Sie eine *Compute-Instanz*, um diese Entwicklungsumgebung für die restlichen Tutorials und Schnellstarts zu verwenden:
 
 1. Wenn Sie im vorherigen Abschnitt nicht **Zu Arbeitsbereich wechseln** ausgewählt haben, melden Sie sich bei [Azure Machine Learning Studio](https://ml.azure.com) an, und wählen Sie Ihren Arbeitsbereich aus.
-1. Wählen Sie links unter **Verwalten** die Option **Compute** aus.
+1. Wählen Sie auf der linken Seite **Compute** aus.
 1. Wählen Sie **+Neu** aus, um eine neue Compute-Instanz zu erstellen.
-1. Behalten Sie alle Standardwerte auf der ersten Seite bei, und wählen Sie **Weiter** aus.
-1. Geben Sie einen Namen an, und wählen Sie **Erstellen** aus.
+1. Geben Sie einen Namen an. Behalten Sie alle Standardwerte auf der ersten Seite bei.
+1. Klicken Sie auf **Erstellen**.
  
 In etwa zwei Minuten sehen Sie, dass sich der **Status** der Compute-Instanz von *Erstellen...* in *Wird ausgeführt.* ändert.  Sie kann nun verwendet werden.  
 
@@ -86,6 +86,10 @@ Studio ist Ihr Webportal für Azure Machine Learning. In diesem Portal werden 
 * Im Abschnitt **Ressourcen** von Studio können Sie die Ressourcen nachverfolgen, die Sie beim Ausführen Ihrer Aufträge erstellen.  Wenn Sie über einen neuen Arbeitsbereich verfügen, enthalten diese Abschnitte noch keine Elemente.
 
 * Sie haben bereits den Abschnitt **Verwalten** von Studio verwendet, um Ihre Computeressourcen zu erstellen.  In diesem Abschnitt können Sie auch Daten und externe Dienste erstellen und verwalten, die Sie mit Ihrem Arbeitsbereich verknüpfen.  
+
+### <a name="workspace-diagnostics"></a>Arbeitsbereichsdiagnose
+
+[!INCLUDE [machine-learning-workspace-diagnostics](../../includes/machine-learning-workspace-diagnostics.md)]
 
 ## <a name="clean-up-resources"></a><a name="clean-up"></a>Bereinigen von Ressourcen
 

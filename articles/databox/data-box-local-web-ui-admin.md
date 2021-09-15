@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/18/2020
+ms.date: 08/25/2021
 ms.author: alkohli
-ms.openlocfilehash: e84f39fa5b9245d1874e60d651156e99c0885040
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fa37d5dc9957e39d7fe4f47404bc9aaf249f192f
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97678921"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123226411"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Verwalten von Data Box und Data Box Heavy über die lokale Webbenutzeroberfläche
 
@@ -95,6 +95,27 @@ Führen Sie zum Neustarten Ihres Data Box-Geräts die folgenden Schritte aus.
 3. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **OK**, um fortzufahren.
 
    Das Gerät wird heruntergefahren und anschließend neu gestartet.
+
+## <a name="get-share-credentials"></a>Abrufen der Anmeldeinformationen für die Freigabe 
+
+Wenn Sie den Benutzernamen und das Kennwort für die Verbindung mit einer Freigabe auf Ihrem Gerät herausfinden müssen, können Sie die Anmeldedaten für die Freigabe finden in **Verbinden und Kopieren** in die lokale Web-Benutzeroberfläche.
+
+Bei der Bestellung Ihres Geräts können Sie wählen, ob Sie standardmäßige, vom System generierte Kennwörter für die Freigaben auf Ihrem Gerät oder Ihre eigenen Kennwörter verwenden möchten. In beiden Fällen sind die Kennwörter für die Freigaben werkseitig festgelegt und können nicht geändert werden. 
+
+So erhalten Sie die Anmeldeinformationen für eine Freigabe:
+
+1. Gehen Sie in der lokalen Web-Benutzeroberfläche zu **Verbinden und Kopieren**. Wählen Sie **SMB**, um die Zugangsdaten für die mit Ihrem Speicherkonto verbundenen Freigaben zu erhalten.
+
+   ![Screenshot von der Seite „Verbinden und Kopieren“ in der lokalen Web-Benutzeroberfläche für eine Datenbox. Der Menüpunkt „Verbinden und Kopieren“ und die Option SMB sind hervorgehoben.](media/data-box-local-web-ui-admin/get-share-credentials-01.png)
+
+1. Verwenden Sie im Dialogfeld **Zugriffsfreigabe und Daten kopieren** das Kopiersymbol, um den mit Ihnen korrespondierenden **Benutzernamen** und das **Kennwort** zu kopieren. Wählen Sie **OK** aus, um das Dialogfeld zu schließen.
+
+   ![Screenshot des Dialogfelds „Zugriffsfreigabe und Daten kopieren“ auf der lokalen Weboberfläche für eine SMB-Freigabe auf der Data Box. Das Symbol „Kopieren“ für die Optionen „Speicherkonto“ und „Kennwort“ und die Schaltfläche „OK“ sind hervorgehoben.](media/data-box-local-web-ui-admin/get-share-credentials-02.png)
+
+> [!NOTE]
+> Nach mehreren fehlgeschlagenen Freigabeverbindungsversuchen mit einem falschen Kennwort wird das Benutzerkonto von der Freigabe gesperrt. Die Kontosperre wird nach einigen Minuten aufgehoben, und Sie können erneut eine Verbindung mit den Freigaben herstellen.  
+> - Data Box 4.1 und höher: Das Konto ist nach 5 fehlgeschlagenen Anmeldeversuchen 15 Minuten lang gesperrt. 
+> - Data Box 4.0 und früher: Das Konto ist nach 3 fehlgeschlagenen Anmeldeversuchen 30 Minuten lang gesperrt.
 
 ## <a name="download-bom-or-manifest-files"></a>Herunterladen von BOM- oder Manifestdateien
 

@@ -2,19 +2,19 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 07/21/2021
+ms.date: 08/31/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: b2facd700fa0bf5943cca679f9dac6616f27b8f8
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 176c75922fdeae6f1984330a40cbdc38a4d8404b
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114457117"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123309521"
 ---
-### <a name="list-cosmos-db-with-specific-write-locations"></a>Auflisten von Cosmos DB mit bestimmten Schreibstandorten
+### <a name="list-azure-cosmos-db-with-specific-write-locations"></a>Auflisten von Azure Cosmos DB mit bestimmten Schreibinstanzen
 
-Die folgende Abfrage schränkt die Cosmos DB-Ressourcen ein, verwendet `mv-expand`, um den Eigenschaftenbehälter für **properties.writeLocations** zu erweitern, anschließend bestimmte Felder zu projizieren und die Ergebnisse weiter auf **properties.writeLocations.locationName**-Werte einzuschränken, die „USA, Osten“ oder „USA, Westen“ entsprechen.
+Die folgende Abfrage schränkt die Azure Cosmos DB-Ressourcen ein und verwendet `mv-expand`, um den Eigenschaftenbehälter für **properties.writeLocations** zu erweitern. Anschließend werden bestimmte Felder projiziert und die Ergebnisse weiter auf **properties.writeLocations.locationName**-Werte für „USA, Osten“ oder „USA, Westen“ eingeschränkt.
 
 ```kusto
 Resources

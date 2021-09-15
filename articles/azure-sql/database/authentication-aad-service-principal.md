@@ -8,12 +8,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 05/11/2021
-ms.openlocfilehash: 606197b7dbc327c80da9d8a1ed9f3b933dad176a
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: 781cce588654ab5babcd74277a3fca97f9f906c1
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109810574"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123252581"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>Azure Active Directory-Dienstprinzipal mit Azure SQL
 
@@ -80,7 +80,7 @@ Zum Aktivieren einer Azure AD-Objekterstellung in SQL-Datenbank im Auftrag eine
 > [!IMPORTANT]
 > Die Schritte 1 und 2 müssen in der vorstehenden Reihenfolge ausgeführt werden. Erstellen Sie zuerst die Serveridentität, oder weisen Sie sie zu, und erteilen Sie dann die Berechtigung [**Verzeichnisleseberechtigte**](../../active-directory/roles/permissions-reference.md#directory-readers). Wenn Sie einen dieser Schritte oder beide auslassen, tritt während der Erstellung eines Azure AD-Objekts in Azure SQL im Auftrag einer Azure AD-Anwendung ein Ausführungsfehler auf.
 >
-> In der **öffentlichen Vorschau** können Sie die Rolle **Verzeichnisleseberechtigte** einer Gruppe in Azure AD zuweisen. Die Gruppenbesitzer können dann die verwaltete Identität als Mitglied dieser Gruppe hinzufügen. Dadurch wird die Notwendigkeit eines **Globalen Administrators** oder **Administrators für privilegierte Rollen** umgangen, um die Rolle **Verzeichnisleseberechtigter** zuzuweisen. Weitere Informationen zu diesem Feature finden Sie unter [Rolle „Verzeichnisleseberechtigte“ in Azure Active Directory für Azure SQL](authentication-aad-directory-readers-role.md).
+> Sie können die Rolle **Verzeichnisleseberechtigte** einer Gruppe in Azure AD zuweisen. Die Gruppenbesitzer können dann die verwaltete Identität als Mitglied dieser Gruppe hinzufügen. Dadurch wird die Notwendigkeit eines **Globalen Administrators** oder **Administrators für privilegierte Rollen** umgangen, um die Rolle **Verzeichnisleseberechtigter** zuzuweisen. Weitere Informationen zu diesem Feature finden Sie unter [Rolle „Verzeichnisleseberechtigte“ in Azure Active Directory für Azure SQL](authentication-aad-directory-readers-role.md).
 
 ## <a name="troubleshooting-and-limitations"></a>Problembehandlung und Einschränkungen
 

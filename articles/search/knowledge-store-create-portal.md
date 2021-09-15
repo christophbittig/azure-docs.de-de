@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines Wissensspeichers im Azure-Portal
+title: 'Schnellstart: Erstellen eines Azure Cognitive Search-Wissensspeichers im Azure-Portal'
 titleSuffix: Azure Cognitive Search
 description: Verwenden Sie den Datenimport-Assistenten, um einen Wissensspeicher zum Speichern angereicherter Inhalte zu erstellen. Stellen Sie von anderen Apps aus eine Verbindung mit einem Wissensspeicher her, um Analysen durchzuführen, oder senden Sie angereicherte Inhalte an Downstreamprozesse.
 author: HeidiSteen
@@ -7,19 +7,19 @@ ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/17/2020
-ms.openlocfilehash: 3225013f09abd326c619b67caf77918889a64859
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/10/2021
+ms.openlocfilehash: d7af6f2ad8e3a45041a22a6268efdbfee32377df
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94741806"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768160"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Wissensspeichers im Azure-Portal
 
-Der Wissensspeicher ist ein Azure Cognitive Search-Feature, das Ausgaben aus einer Pipeline für Inhaltsverarbeitung zur späteren Analyse oder für die Downstreamverarbeitung speichert. 
+Der Wissensspeicher ist ein Feature von Azure Cognitive Search, das Ausgaben aus einer [KI-Anreicherungspipeline](cognitive-search-concept-intro.md) zur nachfolgenden Analyse oder Downstreamverarbeitung speichert. 
 
-Eine Pipeline akzeptiert unstrukturierte Text- und Bildinhalte, wendet über Cognitive Services künstliche Intelligenz (etwa OCR und Verarbeitung natürlicher Sprache) an und gibt neue Strukturen und Informationen aus, die zuvor nicht vorhanden waren. Eines der physischen Artefakte, die durch eine Pipeline erstellt werden, ist ein [Wissensspeicher](knowledge-store-concept-intro.md), auf den Sie über Tools zugreifen können, um den Inhalt zu analysieren und zu untersuchen.
+Eine Pipeline akzeptiert unstrukturierte Text- und Bildinhalte, wendet über Cognitive Services künstliche Intelligenz (etwa Stimmungsanalyse und Textübersetzung) an und gibt neue Strukturen und Informationen aus, die zuvor nicht vorhanden waren. Eines der physischen Artefakte, die durch eine Pipeline erstellt werden, ist ein [Wissensspeicher](knowledge-store-concept-intro.md), auf den Sie über Tools zugreifen können, die den Inhalt in Azure Storage analysieren und untersuchen.
 
 In dieser Schnellstartanleitung werden Dienste und Daten in der Azure-Cloud miteinander kombiniert, um einen Wissensspeicher zu erstellen. Nach Abschluss der Einrichtung wird im Portal der **Datenimport-Assistent** ausgeführt, um alles miteinander zu verknüpfen. Am Ende verfügen Sie neben den ursprünglichen Textinhalten über angereicherte Inhalte, die Sie im Portal mithilfe des [Storage-Explorer](knowledge-store-view-storage-explorer.md) anzeigen können.
 
@@ -158,9 +158,9 @@ Nachdem Sie Ihre Daten mithilfe von Cognitive Services angereichert und die Erge
 
 Sie können Inhalte im Storage-Explorer anzeigen oder mit Power BI noch einen Schritt weiter gehen und Erkenntnisse mittels Visualisierung gewinnen.
 
-> [!div class="nextstepaction"]
-> [Anzeigen mit dem Storage-Explorer](knowledge-store-view-storage-explorer.md)
-> [Verbinden mit Power BI](knowledge-store-connect-power-bi.md)
++ [Anzeigen mit Storage-Explorer](knowledge-store-view-storage-explorer.md)
+
++[Herstellen einer Verbindung mit Power BI](knowledge-store-connect-power-bi.md)
 
 > [!Tip]
 > Wenn Sie diese Übung wiederholen oder eine andere exemplarische Vorgehensweise für die KI-Anreicherung ausprobieren möchten, löschen Sie den Indexer *hotel-reviews-idxr*. Durch Löschen des Indexers wird der Zähler für kostenlose Transaktionen pro Tag für die Cognitive Services-Verarbeitung auf Null zurückgesetzt.

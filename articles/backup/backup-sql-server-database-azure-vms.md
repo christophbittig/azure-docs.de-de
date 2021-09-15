@@ -2,13 +2,13 @@
 title: Sichern mehrerer SQL Server-VMs über den Tresor
 description: In diesem Artikel erfahren Sie, wie Sie SQL Server-Datenbanken auf virtuellen Azure-Maschinen mit Azure Backup aus dem Recovery Services Tresor sichern können
 ms.topic: conceptual
-ms.date: 05/28/2021
-ms.openlocfilehash: 3a6792fe5146df9babc906edec1fc12aa4b3e1cb
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.date: 08/20/2021
+ms.openlocfilehash: 834737c9773b9efead12ef8033852d25ae706062
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110672311"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123099092"
 ---
 # <a name="back-up-multiple-sql-server-vms-from-the-recovery-services-vault"></a>Sichern mehrerer SQL Server-VMs aus dem Recovery Services-Depot
 
@@ -30,6 +30,8 @@ Bevor Sie eine SQL Server-Datenbank sichern können, müssen folgende Kriterien 
 
 1. Bestimmen oder erstellen Sie einen [Recovery Services-Tresor](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault) in derselben Region und demselben Abonnement wie die VM, die die SQL Server-Instanz hostet.
 1. Stellen Sie sicher, dass der virtuelle Computer über [Netzwerkkonnektivität](backup-sql-server-database-azure-vms.md#establish-network-connectivity) verfügt.
+1. Stellen Sie sicher, dass der [Azure-VM-Agent](../virtual-machines/extensions/agent-windows.md) auf der VM installiert ist.
+1. Stellen Sie sicher, dass .NET 4.5.2 oder höher auf der VM installiert ist.
 1. Vergewissern Sie sich, dass die SQL Server-Datenbanken die [Benennungsrichtlinien für Datenbanken für Azure Backup](#database-naming-guidelines-for-azure-backup) befolgen.
 1. Der Name des virtuellen SQL Server-Computers und der Ressourcengruppenname dürfen bei virtuellen Computer (Azure Resource Manager) zusammen maximal 84 Zeichen lang sein (bzw. 77 Zeichen bei klassischen virtuellen Computern). Diese Einschränkung ist darauf zurückzuführen, dass einige Zeichen vom Dienst reserviert werden.
 1. Stellen Sie sicher, dass keine anderen Sicherungslösungen für die Datenbank aktiviert sind. Deaktivieren Sie alle anderen SQL Server-Sicherungen, bevor Sie die Datenbank sichern.
@@ -96,18 +98,22 @@ Wenn Sie eine SQL Server-Datenbank auf einem virtuellen Azure-Computer sichern, 
 
 ### <a name="database-naming-guidelines-for-azure-backup"></a>Benennungsrichtlinien für Datenbanken in Azure Backup
 
-Verwenden Sie in Datenbanknamen nicht die folgenden Elemente:
+- Verwenden Sie in Datenbanknamen nicht die folgenden Elemente:
 
-* Nachstehende und führende Leerzeichen
-* Nachstehende Ausrufezeichen (!)
-* Schließende eckige Klammern (])
-* Semikolon ';'
-* Schrägstrich '/'
+  - Nachstehende und führende Leerzeichen
+  - Nachstehende Ausrufezeichen (!)
+  - Schließende eckige Klammern (])
+  - Semikolon (;)
+  - Schrägstrich (/)
 
-Obwohl Aliase für nicht unterstützte Zeichen möglich ist, wird empfohlen, sie zu vermeiden. Weitere Informationen finden Sie unter [Grundlegendes zum Tabellendienst-Datenmodell](/rest/api/storageservices/understanding-the-table-service-data-model).
+- Obwohl Aliase für nicht unterstützte Zeichen möglich ist, wird empfohlen, sie zu vermeiden. Weitere Informationen finden Sie unter [Grundlegendes zum Tabellendienst-Datenmodell](/rest/api/storageservices/understanding-the-table-service-data-model).
+
+- Mehrere Datenbanken mit unterschiedlicher Groß-/Kleinschreibung auf derselben SQL-Instanz werden nicht unterstützt.
+
+-   Das Ändern der Groß-/Kleinschreibung einer SQL-Datenbank wird nach dem Konfigurieren des Schutzes nicht unterstützt.
 
 >[!NOTE]
->Der Vorgang **Schutz konfigurieren** wird für Datenbanken mit Sonderzeichen wie „+“ oder „&“ im Namen nicht unterstützt. Sie können entweder den Datenbanknamen ändern oder **Automatischen Schutz** aktivieren, sodass diese Datenbanken erfolgreich geschützt werden können.
+>Der Vorgang **Schutz konfigurieren** wird für Datenbanken mit Sonderzeichen wie „+“ oder „&“ im Namen nicht unterstützt. Sie können den Datenbanknamen ändern oder den **automatischen Schutz** aktivieren, damit diese Datenbanken erfolgreich geschützt werden können.
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 

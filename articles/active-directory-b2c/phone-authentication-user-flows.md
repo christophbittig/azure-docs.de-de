@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/17/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5d6e5f608a79765a0bf6ac46cb8e36e6ba1ed1f3
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: b0d0c77ffbf6e8c8493abe2f9356aaa0e171f1f2
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122356569"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967293"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-for-user-flows"></a>Richten Sie die Telefonregistrierung und -anmeldung für Benutzerströme ein
 
@@ -176,6 +176,25 @@ Zum Aktivieren von Zustimmungsinformationen
 12. Speichern Sie die Datei . Durchsuchen Sie **Neue Außerkraftsetzungen hochladen** nach der Datei und wählen Sie diese aus. Stellen Sie sicher, dass Sie eine Benachrichtigung „Erfolgreich hochgeladene Außerkraftsetzungen“ sehen.
 
 13. Wählen Sie die **Seite Telefonanmeldung** und wiederholen Sie dann die Schritte 10 bis 12. 
+
+
+## <a name="get-a-users-phone-number-in-your-directory"></a>Abrufen der Telefonnummer eines Benutzers in Ihrem Verzeichnis
+
+1. Führen Sie die folgende Anforderung in Graph Explorer aus:
+
+   `GET https://graph.microsoft.com/v1.0/users/{object_id}?$select=identities`
+
+1. Sie finden die Eigenschaft `issuerAssignedId` in der erhaltenen Rückmeldung:
+
+   ```json
+       "identities": [
+           {
+               "signInType": "phoneNumber",
+               "issuer": "contoso.onmicrosoft.com",
+               "issuerAssignedId": "+11231231234"
+           }
+       ]
+   ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

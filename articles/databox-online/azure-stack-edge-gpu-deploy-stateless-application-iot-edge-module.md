@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 4eda6eaf69fad6f8600651660ae4ac6223fe8f8c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 233afd9b103a250633c5e49776fc0dfda55a0389
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102438062"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123112247"
 ---
 # <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-pro-gpu-device"></a>Verwenden des IoT Edge-Moduls zum Ausführen einer zustandslosen Kubernetes-Anwendung auf Ihrem Azure Stack Edge Pro-GPU-Gerät
 
@@ -56,7 +56,7 @@ Führen Sie die folgenden Schritte aus, um ein Webserver-App-Modul zu Ihrem Azur
 1. Unter **IoT Edge-Modul hinzufügen**:
 
     1. Legen Sie einen **Namen** für Ihr Webserver-App-Modul fest, das Sie bereitstellen möchten.
-    2. Stellen Sie unter der Registerkarte **Moduleinstellungen** einen **Image-URI** für Ihr Modulimage bereit. Ein Modul, das dem angegebenen Namen und den Tags entspricht, wird abgerufen. In diesem Fall ruft `nginx:stable` ein stabiles nginx-Image (als stabil gekennzeichnet) per Pull aus dem öffentlichen [Docker-Repository](https://hub.docker.com/_/nginx/) ab.
+    2. Stellen Sie unter der Registerkarte **Moduleinstellungen** einen **Image-URI** für Ihr Modulimage bereit. Ein Modul, das dem angegebenen Namen und den Tags entspricht, wird abgerufen. In diesem Fall wird `mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine` ein nginx-Image (als 1.15.5-alpine markiert) aus der öffentlichen Registrierung `mcr.microsoft.com` pullen.
 
         ![Hinzufügen eines IoT Edge-Moduls](media/azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module/set-module-settings-1.png)    
 

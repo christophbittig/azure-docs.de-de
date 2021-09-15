@@ -1,21 +1,21 @@
 ---
-title: Erstellen eines Skillsets im Azure-Portal
+title: 'Schnellstart: Erstellen eines Skillsets im Azure-Portal'
 titleSuffix: Azure Cognitive Search
-description: In diesem Schnellstart über das Portal erfahren Sie, wie Sie den Datenimport-Assistenten verwenden, um einer Indizierungspipeline in Azure Cognitive Search kognitive Qualifikationen hinzuzufügen. Zu diesen Qualifikationen zählen die optische Zeichenerkennung (Optical Character Recognition, OCR) und die Verarbeitung natürlicher Sprache.
+description: In diesem Schnellstart über das Portal verwenden Sie den Datenimport-Assistenten, um einer Indizierungspipeline in Azure Cognitive Search kognitive Qualifikationen hinzuzufügen. Zu diesen Qualifikationen zählen die optische Zeichenerkennung (Optical Character Recognition, OCR) und die Verarbeitung natürlicher Sprache.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 03/21/2021
-ms.openlocfilehash: 6a0ce57af076644072545356c0b225c4d639b9d5
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 08/17/2021
+ms.openlocfilehash: 24f052eea727a2231ad0cc6f0ac0272d63a1c1b2
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111559212"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768799"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Schnellstart: Erstellen eines kognitiven Skillsets für Azure Cognitive Search über das Azure-Portal
+# <a name="quickstart-create-an-azure-cognitive-search-skillset-in-the-azure-portal"></a>Schnellstart: Erstellen eines Skillsets für Azure Cognitive Search über das Azure-Portal
 
 In dieser Schnellstartanleitung wird die Skillset-Unterstützung im Portal veranschaulicht und gezeigt, wie mithilfe der optischen Zeichenerkennung (Optical Character Recognition, OCR) und der Entitätserkennung durchsuchbare Textinhalte aus Bildern und Anwendungsdateien erstellt werden können.
 
@@ -34,7 +34,7 @@ Bevor Sie beginnen können, müssen die folgenden Voraussetzungen erfüllt werde
 + Ein Azure Storage-Konto mit [Blob Storage](../storage/blobs/index.yml).
 
 > [!NOTE]
-> In diesem Schnellstart wird außerdem [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) für die KI verwendet. Aufgrund der geringen Workloadgröße wird Cognitive Services im Hintergrund für die kostenlose Verarbeitung von bis zu 20 Transaktionen genutzt. Das bedeutet, dass Sie diese Übung durchführen können, ohne eine zusätzliche Cognitive Services-Ressource erstellen zu müssen.
+> In diesem Schnellstart wird außerdem [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) für die KI verwendet. Aufgrund der geringen Workloadgröße wird Cognitive Services im Hintergrund für die kostenlose Verarbeitung von bis zu 20 Transaktionen genutzt. Das bedeutet, dass Sie diese Übung durchführen können, ohne eine zusätzliche Cognitive Services-Ressource erstellen zu müssen.
 
 ## <a name="set-up-your-data"></a>Einrichten Ihrer Daten
 
@@ -108,7 +108,7 @@ Für diesen Schnellstart legt der Assistent sinnvolle Standardwerte fest:
 
 Beachten Sie, dass das Attribut **Abrufbar** für das Feld `content` durchgestrichen und mit einem Fragezeichen versehen ist. Bei textlastigen Blobdokumenten enthält das Feld `content` den Großteil der Datei, der mehrere tausende Zeilen umfassen kann. Ein solches Feld ist in den Suchergebnissen unpraktisch und sollte für diese Demo ausgeschlossen werden. 
 
-Wenn Sie jedoch Dateiinhalte an Clientcode übergeben müssen, stellen Sie sicher, dass **Abrufbar** ausgewählt bleibt. Entfernen Sie andernfalls ggf. dieses Attribut für `content`, wenn die extrahierten Elemente (z. B. `people`, `organizations`, `locations` usw.) ausreichen.
+Wenn Sie jedoch Dateiinhalte an Clientcode übergeben müssen, stellen Sie sicher, dass **Abrufbar** ausgewählt bleibt, damit die Suchmaschine dieses Feld zurückgeben kann.
 
 Die Markierung eines Felds als **abrufbar** bedeutet nicht, dass das Feld in den Suchergebnissen vorhanden sein *muss*. Sie können die Zusammenstellung der Suchergebnisse präzise steuern und mit dem Abfrageparameter **$select** angeben, welche Felder enthalten sein sollen. Bei textlastigen Feldern wie `content` können Sie mit dem Parameter **$select** verwaltbare Suchergebnisse für die menschlichen Benutzer Ihrer Anwendung bereitstellen und gleichzeitig sicherstellen, dass Clientcode über das Attribut **Abrufbar** Zugriff auf alle erforderlichen Informationen hat.
   

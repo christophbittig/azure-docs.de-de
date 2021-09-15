@@ -10,12 +10,12 @@ ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 69bcc521b4cd00320a5fbecc5244e913ac16c68b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c9bfc12a1af68e56aacea5b73bd2b4ddc6f857c
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99593907"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221599"
 ---
 # <a name="graphics-binding"></a>Grafikbindung
 
@@ -27,7 +27,7 @@ Nach der Einrichtung ermöglicht die Grafikbindung den Zugriff auf diverse Funkt
 
 In Unity wird die gesamte Bindung von der `RemoteUnityClientInit`-Struktur behandelt, die an `RemoteManagerUnity.InitializeManager` übergeben wird. Zum Festlegen des Grafikmodus muss das Feld `GraphicsApiType` auf die ausgewählte Bindung festgelegt werden. Das Feld wird abhängig davon, ob ein XRDevice vorhanden ist, automatisch gefüllt. Das Verhalten kann mit den folgenden Verhaltensweisen manuell außer Kraft gesetzt werden:
 
-* **HoloLens 2**: Es wird immer die Grafikbindung [Windows Mixed Reality](#windows-mixed-reality) verwendet.
+* **HoloLens 2:** Die [OpenXR](#openxr)- oder [Windows Mixed Reality](#windows-mixed-reality)- Grafikbindung wird abhängig vom aktiven Unity XR-Plug-In verwendet.
 * **Flat UWP-Desktop-App**: Es wird immer [Simulation](#simulation) verwendet.
 * **Unity-Editor**: [Simulation](#simulation) wird immer verwendet, es sei denn, ein WMR VR-Headset ist angeschlossen. In diesem Fall wird ARR deaktiviert, um das Debuggen der nicht-ARR-bezogenen Teile der Anwendung zu ermöglichen. Siehe auch [Holographic Remoting](../how-tos/unity/holographic-remoting.md).
 
@@ -39,7 +39,7 @@ Führen Sie die folgenden zwei Schritte aus, um eine Grafikbindung auszuwählen:
 
 ```cs
 RemoteRenderingInitialization managerInit = new RemoteRenderingInitialization();
-managerInit.GraphicsApi = GraphicsApiType.WmrD3D11;
+managerInit.GraphicsApi = GraphicsApiType.OpenXrD3D11;
 managerInit.ConnectionType = ConnectionType.General;
 managerInit.Right = ///...
 RemoteManagerStatic.StartupRemoteRendering(managerInit);
@@ -47,14 +47,15 @@ RemoteManagerStatic.StartupRemoteRendering(managerInit);
 
 ```cpp
 RemoteRenderingInitialization managerInit;
-managerInit.GraphicsApi = GraphicsApiType::WmrD3D11;
+managerInit.GraphicsApi = GraphicsApiType::OpenXrD3D11;
 managerInit.ConnectionType = ConnectionType::General;
 managerInit.Right = ///...
 StartupRemoteRendering(managerInit); // static function in namespace Microsoft::Azure::RemoteRendering
 
 ```
-
-Der obige Aufruf ist erforderlich, um das Azure Remote Rendering in den Holographic-APIs zu initialisieren. Diese Funktion muss aufgerufen werden, bevor eine Holographic-API aufgerufen wird und bevor auf andere Remote Rendering-APIs zugegriffen wird. Ebenso muss die entsprechende Deinitialisierungsfunktion `RemoteManagerStatic.ShutdownRemoteRendering();` aufgerufen werden, wenn keine Holographic-APIs mehr aufgerufen werden.
+Der obige Aufruf muss erfolgen, bevor auf andere Remote-Rendering-APIs zugegriffen wird.
+In ähnlicher Weise sollte die korrespondierende Funktion „de-init“ `RemoteManagerStatic.ShutdownRemoteRendering();` aufgerufen werden, nachdem alle anderen Remote Rendering-Objekte bereits gelöscht wurden.
+Für WMR muss `StartupRemoteRendering` auch vor dem Aufruf irgendeiner holografischen API aufgerufen werden. Für OpenXR gilt dasselbe für alle OpenXR-bezogenen APIs.
 
 ## <a name="span-idaccessaccessing-graphics-binding"></a><span id="access">Zugreifen auf Grafikbindungen
 
@@ -86,16 +87,78 @@ if (ApiHandle<GraphicsBinding> binding = currentSession->GetGraphicsBinding())
 
 ## <a name="graphic-apis"></a>Grafik-APIs
 
-Derzeit sind zwei Grafik-APIs vorhanden, die ausgewählt werden können: `WmrD3D11` und `SimD3D11`. Eine Dritte (`Headless`) ist vorhanden, wird jedoch clientseitig noch nicht unterstützt.
+Derzeit gibt es drei Grafik-APIs, die ausgewählt werden können, `OpenXrD3D11`,`WmrD3D11` und `SimD3D11`. Eine vierte, `Headless`, gibt es, sie wird aber auf der Client-Seite noch nicht unterstützt.
+
+### <a name="openxr"></a>OpenXR
+
+`GraphicsApiType.OpenXrD3D11` ist die Standardbindung, die auf HoloLens 2 ausgeführt wird. Damit wird die `GraphicsBindingOpenXrD3d11`-Bindung erstellt. In diesem Modus erstellt Azure Remote Rendering eine OpenXR-API-Ebene, um sich in die OpenXR-Runtime zu integrieren.
+
+Um auf die abgeleiteten Grafikbindungen zuzugreifen, muss die Basis-`GraphicsBinding` umgewandelt werden.
+Es gibt drei Dinge, die getan werden müssen, um die OpenXR-Bindung zu verwenden:
+
+#### <a name="package-custom-openxr-layer-json"></a>Paketierung der benutzerdefinierten OpenXR-Ebene json
+
+Um Remote Rendering mit OpenXR zu verwenden, muss die benutzerdefinierte OpenXR-API-Ebene aktiviert werden. Dies geschieht durch den Aufruf des im vorherigen Abschnitt erwähnten `StartupRemoteRendering`. Als Voraussetzung muss `XrApiLayer_msft_holographic_remoting.json` jedoch mit der Anwendung paketiert werden, damit es geladen werden kann. Dies geschieht automatisch, wenn das NuGet-Paket  **"Microsoft.Azure.RemoteRendering.Cpp "** zu einem Projekt hinzugefügt wird.
+
+#### <a name="inform-remote-rendering-of-the-used-xr-space"></a>Informieren Sie Remote Rendering über den verwendeten XR Platz
+
+Dies wird benötigt, um remote und lokal gerenderte Inhalte anzugleichen.
+
+```cs
+RenderingSession currentSession = ...;
+ulong space = ...; // XrSpace cast to ulong
+GraphicsBindingOpenXrD3d11 openXrBinding = (currentSession.GraphicsBinding as GraphicsBindingOpenXrD3d11);
+if (openXrBinding.UpdateAppSpace(space) == Result.Success)
+{
+    ...
+}
+```
+
+```cpp
+ApiHandle<RenderingSession> currentSession = ...;
+XrSpace space = ...;
+ApiHandle<GraphicsBindingOpenXrD3d11> openXrBinding = currentSession->GetGraphicsBinding().as<GraphicsBindingOpenXrD3d11>();
+#ifdef _M_ARM64
+    if (openXrBinding->UpdateAppSpace(reinterpret_cast<uint64_t>(space)) == Result::Success)
+#else
+    if (openXrBinding->UpdateAppSpace(space) == Result::Success)
+#endif
+{
+    ...
+}
+```
+
+Das oben genannte `XrSpace` ist das von der Anwendung verwendete Koordinatensystem, das das Weltraumkoordinatensystem definiert, in dem die Koordinaten in der API ausgedrückt werden.
+
+#### <a name="render-remote-image-openxr"></a>Rendering eines remote Image (OpenXR)
+
+Am Anfang jedes Frames muss der Remoteframe in den Hintergrundpuffer gerendert werden. Hierfür wird `BlitRemoteFrame` aufgerufen. Dadurch werden sowohl Farb- als auch Tiefeninformationen für beide Augen in das derzeit gebundene Renderziel gefüllt. Daher muss dies unbedingt erfolgen, nachdem der vollständige Hintergrundpuffer als Renderziel gebunden wurde.
+
+> [!WARNING]
+> Nachdem das Remotebild in den Hintergrundpuffer verschoben wurde, sollte der lokale Inhalt mit einem Stereorenderingverfahren mit einzelnem Durchlauf gerendert werden, z. B. mithilfe von **SV_RenderTargetArrayIndex**. Die Verwendung anderer Stereorenderingverfahren, wie das Rendering der einzelnen Augen in einem separaten Durchlauf, kann zu erheblichen Leistungseinbußen oder grafischen Artefakten führen und sollte vermieden werden.
+
+```cs
+RenderingSession currentSession = ...;
+GraphicsBindingOpenXrD3d11 openXrBinding = (currentSession.GraphicsBinding as GraphicsBindingOpenXrD3d11);
+openXrBinding.BlitRemoteFrame();
+```
+
+```cpp
+ApiHandle<RenderingSession> currentSession = ...;
+ApiHandle<GraphicsBindingOpenXrD3d11> openXrBinding = currentSession->GetGraphicsBinding().as<GraphicsBindingOpenXrD3d11>();
+openXrBinding->BlitRemoteFrame();
+```
 
 ### <a name="windows-mixed-reality"></a>Windows Mixed Reality
 
-`GraphicsApiType.WmrD3D11` ist die Standardbindung, die auf HoloLens 2 ausgeführt wird. Damit wird die `GraphicsBindingWmrD3d11`-Bindung erstellt. In diesem Modus wird Azure Remote Rendering direkt in die Holographic-APIs eingebunden.
+`GraphicsApiType.WmrD3D11` ist die zuvor verwendete Grafikbindung, die auf der HoloLens 2 ausgeführt wird. Damit wird die `GraphicsBindingWmrD3d11`-Bindung erstellt. In diesem Modus wird Azure Remote Rendering direkt in die Holographic-APIs eingebunden.
 
 Um auf die abgeleiteten Grafikbindungen zuzugreifen, muss die Basis-`GraphicsBinding` umgewandelt werden.
 Es müssen zwei Vorgänge ausgeführt werden, um die WMR-Bindung zu verwenden:
 
 #### <a name="inform-remote-rendering-of-the-used-coordinate-system"></a>Informieren von Remote Rendering über das verwendete Koordinatensystems
+
+Dies wird benötigt, um remote und lokal gerenderte Inhalte anzugleichen.
 
 ```cs
 RenderingSession currentSession = ...;
@@ -113,18 +176,15 @@ void* ptr = ...; // native pointer to ISpatialCoordinateSystem
 ApiHandle<GraphicsBindingWmrD3d11> wmrBinding = currentSession->GetGraphicsBinding().as<GraphicsBindingWmrD3d11>();
 if (wmrBinding->UpdateUserCoordinateSystem(ptr) == Result::Success)
 {
-    //...
+    ...
 }
 ```
 
 Dabei muss der obige `ptr` ein Zeiger auf ein natives `ABI::Windows::Perception::Spatial::ISpatialCoordinateSystem`-Objekt sein, welches das globale Koordinatensystem definiert, in dem Koordinaten in der API ausgedrückt werden.
 
-#### <a name="render-remote-image"></a>Rendern des Remotebildes
+#### <a name="render-remote-image-wmr"></a>Remote Image rendern (WMR)
 
-Am Anfang jedes Frames muss der Remoteframe in den Hintergrundpuffer gerendert werden. Hierfür wird `BlitRemoteFrame` aufgerufen. Dadurch werden sowohl Farb- als auch Tiefeninformationen für beide Augen in das derzeit gebundene Renderziel gefüllt. Daher muss dies unbedingt erfolgen, nachdem der vollständige Hintergrundpuffer als Renderziel gebunden wurde.
-
-> [!WARNING]
-> Nachdem das Remotebild in den Hintergrundpuffer verschoben wurde, sollte der lokale Inhalt mit einem Stereorenderingverfahren mit einzelnem Durchlauf gerendert werden, z. B. mithilfe von **SV_RenderTargetArrayIndex**. Die Verwendung anderer Stereorenderingverfahren, wie das Rendering der einzelnen Augen in einem separaten Durchlauf, kann zu erheblichen Leistungseinbußen oder grafischen Artefakten führen und sollte vermieden werden.
+Hier gelten die gleichen Überlegungen wie im Fall von OpenXR oben. Die API-Aufrufe sehen wie folgt aus:
 
 ```cs
 RenderingSession currentSession = ...;

@@ -2,13 +2,13 @@
 title: Sichern von SQL Server-Datenbanken in Azure
 description: In diesem Artikel erfahren Sie, wie Sie SQL Server in Azure sichern. In diesem Artikel wird auch die SQL Server-Wiederherstellung beschrieben.
 ms.topic: conceptual
-ms.date: 06/18/2019
-ms.openlocfilehash: b6daf631248958948e799b20284d84a1e59e5dfe
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 08/20/2021
+ms.openlocfilehash: aae8493579c96607c5623bb04495ec21c99cf667
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107518863"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123101438"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informationen zur SQL Server-Sicherung auf virtuellen Azure-Computern
 
@@ -18,6 +18,9 @@ ms.locfileid: "107518863"
 2. RPO (Recovery Point Objective) von 15 Minuten mit häufigen Protokollsicherungen
 3. Zeitpunktwiederherstellung von bis zu einer Sekunde
 4. Sicherung und Wiederherstellung einzelner Datenbankebenen
+
+>[!Note]
+>Die momentaufnahmebasierte Sicherung für SQL-Datenbanken in Azure-VMs befindet sich jetzt in der Vorschauphase. Dieses einzigartige Angebot nutzt die Möglichkeiten von Momentaufnahmen, die zu einer besseren RTO und verringerten Auswirkungen auf den Server beitragen, sowie die Vorteile häufiger Protokollsicherungen, um eine niedrige RPO zu erzielen. Wenn Sie Fragen haben oder Zugriff benötigen, schreiben Sie uns unter [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com).
 
 Informationen zu den zurzeit unterstützten Sicherungs- und Wiederherstellungsszenarien finden Sie in der [Unterstützungsmatrix](sql-support-matrix.md#scenario-support).
 
@@ -91,7 +94,7 @@ Fügen Sie der SQL Server-Instanz die Anmeldungen **NT AUTHORITY\SYSTEM** und **
 
 1. Wechseln Sie im Objekt-Explorer zur SQL Server-Instanz.
 2. Navigieren Sie zu „Sicherheit -> Anmeldungen“.
-3. Klicken Sie mit der rechten Maustaste auf „Anmeldungen“, und wählen Sie *Neue Anmeldung...* aus.
+3. Klicken Sie mit der rechten Maustaste auf „Anmeldungen“, und wählen Sie *Neue Anmeldung* aus.
 
     ![Neue Anmeldung mit SSMS](media/backup-azure-sql-database/sql-2k8-new-login-ssms.png)
 

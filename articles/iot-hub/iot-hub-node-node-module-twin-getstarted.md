@@ -7,14 +7,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 04/26/2018
+ms.date: 08/23/2021
 ms.custom: amqp, devx-track-js
-ms.openlocfilehash: f8cf2faac9914b7b9fafd8355c2070c5d3a6f0e9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2028bed00624526c021668076c4d7feaba7aa07c
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340319"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830108"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>Erste Schritte mit der Modulidentität und dem Modulzwilling von IoT Hub (Node.js)
 
@@ -25,7 +25,7 @@ ms.locfileid: "122340319"
 
 Am Ende dieses Tutorials verfügen Sie über zwei Node.js-Apps:
 
-* **CreateIdentities**: Hiermit werden eine Geräteidentität, eine Modulidentität und ein zugehöriger Sicherheitsschlüssel zum Verbinden Ihrer Geräte- und Modulclients erstellt.
+* **CreateIdentities**: Hiermit werden eine Geräteidentität, eine Modulidentität und zugehörige Sicherheitsschlüssel zum Verbinden Ihrer Geräte- und Modulclients erstellt.
 
 * **UpdateModuleTwinReportedProperties**: Hiermit werden aktualisierte vom Modulzwilling gemeldete Eigenschaften an Ihren IoT Hub sendet.
 
@@ -123,7 +123,7 @@ Diese App erstellt eine Geräteidentität mit der ID **myFirstDevice** und ein I
 Führen Sie sie mit „node add.js“ aus. Dadurch erhalten Sie eine Verbindungszeichenfolge für Ihre Geräteidentität und eine weitere für Ihre Modulidentität.
 
 > [!NOTE]
-> Die Identitätsregistrierung in IoT Hub speichert nur Geräte- und Modulidentitäten, um einen sicheren Zugriff auf IoT Hub zu ermöglichen. In der Identitätsregistrierung werden Geräte-IDs und -schlüssel für die Verwendung als Sicherheitsanmeldeinformationen gespeichert. Darüber hinaus wird in der Identitätsregistrierung ein Flag für den Aktivierungszustand des jeweiligen Geräts gespeichert, mit dem Sie den Zugriff für das betreffende Gerät deaktivieren können. Wenn Ihre Anwendung das Speichern weiterer gerätespezifischer Metadaten erfordert, sollte dafür ein anwendungsspezifischer Speicher verwendet werden. Es gibt keinen Flag „Aktiviert/deaktiviert“ für Modulidentitäten. Weitere Informationen finden Sie im [IoT Hub-Entwicklerhandbuch](iot-hub-devguide-identity-registry.md).
+> Die Identitätsregistrierung in IoT Hub speichert nur Geräte- und Modulidentitäten, um einen sicheren Zugriff auf IoT Hub zu ermöglichen. In der Identitätsregistrierung werden Geräte-IDs und -schlüssel für die Verwendung als Sicherheitsanmeldeinformationen gespeichert. Darüber hinaus wird in der Identitätsregistrierung ein Flag für den Aktivierungszustand des jeweiligen Geräts gespeichert, mit dem Sie den Zugriff für das betreffende Gerät deaktivieren können. Wenn Ihre Anwendung das Speichern weiterer gerätespezifischer Metadaten erfordert, sollte dafür ein anwendungsspezifischer Speicher verwendet werden. Es gibt keinen Flag „Aktiviert/deaktiviert“ für Modulidentitäten. Weitere Informationen finden Sie unter [Grundlegendes zur Identitätsregistrierung in Ihrer IoT Hub-Instanz](iot-hub-devguide-identity-registry.md) im Handbuch für IoT-Entwickler.
 
 ## <a name="update-the-module-twin-using-nodejs-device-sdk"></a>Aktualisieren des Modulzwillings mithilfe des Node.js-Geräte-SDK
 

@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: 2d68a74332ef77694d44597e6f879858fa0051bb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 808f7a23a0be389703f2a805407b6ce725ce920a
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345970"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123315550"
 ---
 # <a name="support-matrix-for-physical-server-discovery-and-assessment"></a>Unterstützungsmatrix für die Ermittlung und Bewertung physischer Server 
 
@@ -34,6 +34,10 @@ Zum Bewerten physischer Server erstellen Sie ein Projekt und fügen dem Projekt 
 
 **Bereitstellung des physischen Servers**: Der physische Server kann eigenständig sein oder in einem Cluster bereitgestellt werden.
 
+**Servertyp:** Bare-Metal-Server, virtualisierte Server, die lokal oder in anderen Clouds wie AWS, GCP, Xen usw. ausgeführt werden.
+>[!Note]
+> Derzeit unterstützt Azure Migrate die Ermittlung para-virtualisierter Server nicht. 
+
 **Betriebssystem:** Alle Windows- und Linux-Betriebssysteme können für die Migration bewertet werden.
 
 **Berechtigungen:**
@@ -46,7 +50,7 @@ Richten Sie ein Konto ein, das von der Appliance für den Zugriff auf die physis
 - Das Benutzerkonto sollte diesen Gruppen hinzugefügt werden: Remoteverwaltungsbenutzer, Leistungsüberwachungsbenutzer und Leistungsprotokollbenutzer. 
 - Wenn die Gruppe „Remoteverwaltungsbenutzer“ nicht vorhanden ist, fügen Sie der Gruppe ein Benutzerkonto hinzu: **WinRMRemoteWMIUsers_** .
 - Das Konto benötigt diese Berechtigungen, damit die Appliance eine CIM-Verbindung mit dem Server herstellen und die erforderlichen Konfigurations- und Leistungsmetadaten aus den [hier](migrate-appliance.md#collected-data---physical) aufgeführten WMI-Klassen pullen kann.
-- In einigen Fällen werden durch das Hinzufügen des Kontos zu diesen Gruppen unter Umständen nicht die erforderlichen Daten aus WMI-Klassen zurückgegeben, da das Konto möglicherweise nach [UAC](/windows/win32/wmisdk/user-account-control-and-wmi) gefiltert ist. Um die UAC-Filterung außer Kraft zu setzen, muss das Benutzerkonto über die erforderlichen Berechtigungen für den CIMV2-Namespace und die untergeordneten Namespaces auf dem Zielserver verfügen. Sie können die [hier](troubleshoot-appliance.md#access-is-denied-when-connecting-to-physical-servers-during-validation) beschriebenen Schritte ausführen, um die erforderlichen Berechtigungen zu aktivieren.
+- In einigen Fällen werden durch das Hinzufügen des Kontos zu diesen Gruppen unter Umständen nicht die erforderlichen Daten aus WMI-Klassen zurückgegeben, da das Konto möglicherweise nach [UAC](/windows/win32/wmisdk/user-account-control-and-wmi) gefiltert ist. Um die UAC-Filterung außer Kraft zu setzen, muss das Benutzerkonto über die erforderlichen Berechtigungen für den CIMV2-Namespace und die untergeordneten Namespaces auf dem Zielserver verfügen. Sie können die [hier](troubleshoot-appliance.md#access-is-denied-error-occurs-when-you-connect-to-physical-servers-during-validation) beschriebenen Schritte ausführen, um die erforderlichen Berechtigungen zu aktivieren.
 
     > [!Note]
     > Stellen Sie unter Windows Server 2008 und 2008 R2 sicher, dass WMF 3.0 auf den Servern installiert ist.

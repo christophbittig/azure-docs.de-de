@@ -2,14 +2,14 @@
 title: Aufskalieren eines verwalteten Service Fabric-Clusters
 description: In diesem Tutorial erfahren Sie, wie Sie Knotentypen eines verwalteten Service Fabric-Clusters aufskalieren.
 ms.topic: tutorial
-ms.date: 5/10/2021
+ms.date: 8/23/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9e2bd57925ddb78dcfe23742b35c1490584558f8
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 938c163f4b27706999f7fe32f7935d4d7877c96b
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110666875"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864968"
 ---
 # <a name="tutorial-scale-out-a-service-fabric-managed-cluster"></a>Tutorial: Aufskalieren eines verwalteten Service Fabric-Clusters
 
@@ -35,7 +35,7 @@ In diesem Teil der Reihe wird Folgendes behandelt:
 Ändern Sie die Instanzanzahl, um die Anzahl der Knoten für den Knotentyp zu erhöhen oder zu verringern, die Sie skalieren möchten. Sie finden Knotentypnamen in der ARM-Vorlage (Azure Resource Manager) aus der Clusterbereitstellung oder in Service Fabric Explorer.  
 
 > [!NOTE]
-> Wenn der Knotentyp auf einen primären Typ festgelegt ist, sind Sie nicht in der Lage, unter 3 Knoten für einen Cluster der SKU „Basic“ und unter 5 Knoten für einen Cluster der SKU „Standard“ zu skalieren.
+> Für den primären Knotentyp können Sie für einen Cluster der SKU „Basic“ nicht unter 3 Knoten und für einen Cluster der SKU „Standard“ nicht unter 5 Knoten skalieren.
 
 ```powershell
 $resourceGroup = "myResourceGroup"

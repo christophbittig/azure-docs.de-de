@@ -9,15 +9,15 @@ ms.subservice: hybrid
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/27/2019
+ms.date: 08/31/2021
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 868d1280179d63bd07b7e01d5e807339439c02f0
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 0621cc58b5cf76505de5e1f914114ad601e7a9bf
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108163605"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123316181"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Konfigurieren von Gruppenansprüchen für Anwendungen mit Azure Active Directory
 
@@ -31,6 +31,7 @@ Azure Active Directory kann Informationen zur Gruppenmitgliedschaft eines Benutz
 >
 > - Die Unterstützung für die Verwendung lokal synchronisierter sAMAccountName -und SID-Attribute (Sicherheits-ID) soll das Verschieben vorhandener Anwendungen aus AD FS und anderen Identitätsanbietern ermöglichen. In Azure AD verwaltete Gruppen umfassen nicht die Attribute, die für die Ausgabe dieser Ansprüche erforderlich sind.
 > - In größeren Organisationen kann die Anzahl der Gruppen, bei denen ein Benutzer Mitglied ist, den Grenzwert übersteigen, den Azure Active Directory zu einem Token hinzufügt. Dieser beträgt 150 Gruppen für ein SAML-Token und 200 Gruppen für ein JWT-Token. Dies kann zu unvorhersehbaren Ergebnissen führen. Wenn die Benutzer über eine große Anzahl von Gruppenmitgliedschaften verfügen, wird die Option zum Einschränken der in Ansprüchen ausgegebenen Gruppen auf die relevanten Gruppen für die Anwendung empfohlen.
+> - Gruppenansprüche haben ein Limit von 5 Gruppen, wenn das Token über den impliziten Flow ausgestellt wird. Token, die über den impliziten Flow angefordert werden, weisen nur dann den Anspruch "hasgroups":true auf, wenn sich der Benutzer in mehr als 5 Gruppen befindet.
 > - Für die Entwicklung neuer Anwendungen oder in Fällen, in denen die Anwendung nicht hierfür konfiguriert werden kann und in denen keine Unterstützung für geschachtelte Gruppen erforderlich ist, empfehlen wir, die In-App-Autorisierung auf Anwendungsrollen anstatt auf Gruppen zu basieren.  Diese Vorgehensweise schränkt die Menge an Informationen ein, die in das Token aufgenommen werden müssen, sie ist sicherer und trennt die Benutzerzuweisung von der App-Konfiguration.
 
 ## <a name="group-claims-for-applications-migrating-from-ad-fs-and-other-identity-providers"></a>Gruppenansprüche für aus AD FS und anderen Identitätsanbietern migrierte Anwendungen

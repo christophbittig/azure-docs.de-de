@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
 ms.date: 06/23/2021
-ms.openlocfilehash: fdeaf2f16dc2b1b6d6beb75544160ac03ce025e9
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: 2aa4fe3e7e2f7637060996b53748391da03879ec
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113588361"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123032280"
 ---
 # <a name="whats-new-in-anomaly-detector"></a>Neues in der Anomalieerkennung
 
@@ -20,13 +20,19 @@ Wir haben auch Links zu einigen benutzergenerierten Inhalten hinzugefügt. Diese
 
 ## <a name="release-notes"></a>Versionshinweise
 
+### <a name="august-2021"></a>August 2021
+
+* APIs zur multivarianten Anomalieerkennung, die in fünf weiteren Regionen bereitgestellt werden: „USA, Westen 3“, „Japan, Osten“, „Brasilien, Süden“, „USA, Mitte“, „Norwegen, Osten“. Jetzt werden insgesamt 15 Regionen unterstützt.
+
 ### <a name="july-2021"></a>Juli 2021
 
 * APIs zur multivarianten Anomalieerkennung werden in vier weiteren Regionen bereitgestellt: Australien, Osten; Kanada, Mitte; Europa, Norden und Asien, Südosten. Jetzt werden insgesamt 10 Regionen unterstützt.
+* Anomalieerkennung (univariat) ist in „USA, Westen 3“ und „Norwegen, Osten“ verfügbar.
+
 
 ### <a name="june-2021"></a>Juni 2021
 
-* APIs für die multivariate Anomalieerkennung sind nun in weiteren Regionen verfügbar: USA, Westen 2; Europa, Westen; USA, Osten 2; USA, Süden-Mitte; USA, Osten und Vereinigtes Königreich, Süden.
+* APIs für die multivariate Anomalieerkennung sind nun in weiteren Regionen verfügbar: „USA, Westen 2“; „Europa, Westen“; „USA, Osten 2“; „USA, Süden-Mitte“; „USA, Osten“ und „Vereinigtes Königreich, Süden“.
 * Anomalieerkennung (univariat) verfügbar in Azure-Cloud für US Government.
 * Anomalieerkennung (univariat) verfügbar in Azure China (China, Norden 2).
 
@@ -34,7 +40,7 @@ Wir haben auch Links zu einigen benutzergenerierten Inhalten hinzugefügt. Diese
 
 * [IoT Edge-Modul](https://azuremarketplace.microsoft.com/marketplace/apps/azure-cognitive-service.edge-anomaly-detector) (univariat) veröffentlicht.
 * Anomalieerkennung (univariat) verfügbar in Azure China (China, Osten 2).
-* APIs für die multivariate Anomalieerkennung als Vorschau in ausgewählten Regionen (USA, Westen 2; Europa, Westen).
+* APIs für die multivariate Anomalieerkennung als Vorschau in ausgewählten Regionen („USA, Westen 2“; „Europa, Westen“).
 
 ### <a name="september-2020"></a>September 2020
 

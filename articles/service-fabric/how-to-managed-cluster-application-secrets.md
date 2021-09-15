@@ -1,18 +1,18 @@
 ---
-title: Verwenden von Anwendungsgeheimnissen in verwalteten Service Fabric-Clustern
-description: Erfahren Sie mehr über Azure Service Fabric-Anwendungsgeheimnisse und das Erfassen von Informationen, die für die Verwendung in verwalteten Clustern erforderlich sind.
+title: Bereitstellen von Anwendungsgeheimnissen in verwalteten Service Fabric-Clustern
+description: Erfahren Sie mehr über Azure Service Fabric-Anwendungsgeheimnisse und deren Bereitstellung in verwalteten Clustern.
 ms.topic: how-to
-ms.date: 5/10/2021
-ms.openlocfilehash: 820fb2a116ba5343a2f2126950a7f5d5896ddee3
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 8/23/2021
+ms.openlocfilehash: 81fbd254f6aee216661e720a73c97e89351a9fad
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111950123"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867345"
 ---
-# <a name="use-application-secrets-in-service-fabric-managed-clusters"></a>Verwenden von Anwendungsgeheimnissen in verwalteten Service Fabric-Clustern
+# <a name="deploy-application-secrets-to-a-service-fabric-managed-cluster"></a>Bereitstellen von Anwendungsgeheimnissen in verwalteten Service Fabric-Clustern
 
-Geheimnisse beinhalten jegliche Art von vertraulichen Informationen (z.B. Speicherverbindungszeichenfolgen, Kennwörter oder andere Werte, die nicht als Nur-Text verarbeitet werden sollen). In diesem Artikel wird Azure Key Vault zum Verwalten von Schlüsseln und Geheimnissen verwendet, da es um verwaltete Service Fabric-Cluster geht. Die *Verwendung* von Geheimnissen in einer Anwendung ist jedoch cloudplattformunabhängig, sodass Anwendungen auf einem Cluster bereitgestellt werden können, der an einem beliebigen Standort gehostet wird.
+Geheimnisse beinhalten jegliche Art von vertraulichen Informationen (z.B. Speicherverbindungszeichenfolgen, Kennwörter oder andere Werte, die nicht als Nur-Text verarbeitet werden sollen). Wir empfehlen, Azure Key Vault zu verwenden, um Schlüssel und Geheimnisse für Service Fabric verwaltete Cluster zu verwalten und für diesen Artikel zu nutzen. Die *Verwendung* von Geheimnissen in einer Anwendung ist jedoch cloudplattformunabhängig, sodass Anwendungen auf einem Cluster bereitgestellt werden können, der an einem beliebigen Standort gehostet wird.
 
 Es wird empfohlen, Dienstkonfigurationseinstellungen über [Dienstkonfigurationspakete][config-package] zu verwalten. Konfigurationspakete verfügen über eine Versionsangabe und können über parallele Upgrades aktualisiert werden. Außerdem kann die Integrität überprüft und ein automatischer Rollback durchgeführt werden. Dies wird der globalen Konfiguration vorgezogen, da die Wahrscheinlichkeit eines globalen Dienstausfalls verringert wird. Verschlüsselte Geheimnisse stellen keine Ausnahme dar. Service Fabric verfügt über integrierte Features zum Verschlüsseln und Entschlüsseln von Werten in der Konfigurationspaketdatei „Settings.xml“ mithilfe der Zertifikatverschlüsselung.
 
@@ -45,11 +45,11 @@ Dieses Zertifikat muss auf jedem Knoten im Cluster installiert sein. Verwaltete 
 Für verwaltete Cluster benötigen Sie drei Werte: zwei aus Azure Key Vault und einen Wert, den Sie als Namen des lokalen Speichers auf den Knoten festlegen.
 
 Parameter: 
-* Quelltresor: Dies ist 
+* `Source Vault`: Dies ist der/die/das 
     * beispielsweise: /subscriptions/{abonnementid}/resourceGroups/myrg1/providers/Microsoft.KeyVault/vaults/mykeyvault1
-* Zertifikat-URL: Dies ist der vollständige Objektbezeichner, bei dem Groß-/Kleinschreibung nicht beachtet wird und der unveränderlich ist.
+* `Certificate URL`: Dies ist der vollständige Objektbezeichner, bei dem Groß-/Kleinschreibung nicht beachtet wird und der unveränderlich ist
     * https://mykeyvault1.vault.azure.net/secrets/{secretname}/{secret-version}
-* Zertifikatspeicher: Dies ist der lokale Zertifikatspeicher auf den Knoten, auf denen das Zertifikat platziert wird.
+* `Certificate Store`: Dies ist der lokale Zertifikatspeicher auf den Knoten, auf denen das Zertifikat platziert wird
     * Name des Zertifikatspeichers auf den Knoten, z. B. „MY“
 
 Verwaltete Service Fabric-Cluster unterstützen zwei Methoden zum Hinzufügen versionsspezifischer Geheimnisse zu Ihren Knoten.

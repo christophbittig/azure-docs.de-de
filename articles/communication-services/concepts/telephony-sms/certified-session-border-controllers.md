@@ -6,14 +6,14 @@ manager: nmurav
 services: azure-communication-services
 ms.author: bobazile
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 7251e97209e9cca1b4c86a6ab8c829c8f0346525
-ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
+ms.openlocfilehash: 8b2468b13f7093129c137019d8ec7f60e4fd5e4f
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114674897"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258017"
 ---
 # <a name="list-of-session-border-controllers-certified-for-azure-communication-services-direct-routing"></a>Liste der für das Direct Routing von Azure Communication Services zertifizierten Session Border Controller
 Dieses Dokument enthält eine Liste der für das Direct Routing von Azure Communication Services zertifizierten Session Border Controller. Es enthält außerdem bekannte Einschränkungen.
@@ -37,8 +37,8 @@ Wenn Sie Fragen zum SBC-Zertifizierungsprogramm für das Direct Routing von Comm
 
 |Hersteller|Produkt|Softwareversion|
 |:--- |:--- |:--- 
+|AudioCodes|Mediant SBC|7.40A
 |Metaswitch|Perimeta SBC|4,9|
-
 
 Beachten Sie die Zertifizierung für eine Hauptversion. Das bedeutet, dass Firmware mit einer beliebigen Zahl in der SBC-Firmware nach der Hauptversion unterstützt wird.
 
@@ -47,7 +47,7 @@ Beachten Sie die Zertifizierung für eine Hauptversion. Das bedeutet, dass Firmw
 ### <a name="conceptual-documentation"></a>Dokumentation
 
 - [Telefonnummerntypen in Azure Communication Services](./plan-solution.md)
-- [Planen des direkten Azure-Routings](./sip-interface-infrastructure.md)
+- [Planen des direkten Azure-Routings](./direct-routing-infrastructure.md)
 - [Koppeln des Session Border Controllers und Konfigurieren des Sprachroutings](./direct-routing-provisioning.md)
 - [Preise](../pricing.md)
 

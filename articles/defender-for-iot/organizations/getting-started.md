@@ -3,12 +3,12 @@ title: 'Schnellstart: Erste Schritte'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie sich mit dem grundlegenden Workflow für die Bereitstellung von Defender für IoT vertraut machen.
 ms.topic: quickstart
 ms.date: 06/06/2021
-ms.openlocfilehash: c0d8406f842e182c6c129ba32f38dd11fdfbd46c
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: bb67cb5788e891861eb0c1f5fe2533d62b4ee520
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113011205"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122254080"
 ---
 # <a name="quickstart-get-started-with-defender-for-iot"></a>Schnellstart: Erste Schritte mit Defender für IoT
 
@@ -32,9 +32,9 @@ In der folgenden Tabelle werden die Benutzerzugriffsberechtigungen für Tools im
 | Berechtigung | Sicherheitsleseberechtigter | Sicherheitsadministrator | Abonnementmitwirkender | Abonnementbesitzer |
 |--|--|--|--|--|
 | Anzeigen von Details und Zugreifen auf Software, Aktivierungsdateien und Threat Intelligence-Pakete  | ✓ | ✓ | ✓ | ✓ |
-| Integrieren eines Sensors  |  |  ✓ | ✓ | ✓ |
-| Aktualisieren des Tarifs  |  |  ✓ | ✓ | ✓ |
-| Wiederherstellen des Kennworts  | ✓  |  ✓ | ✓ | ✓ |
+| Integrieren von Sensoren  |  |  ✓ | ✓ | ✓ |
+| Integrieren von Abonnements und Aktualisieren von committeten Geräten  |  |  | ✓ | ✓ |
+| Wiederherstellen von Kennwörtern  | ✓  |  ✓ | ✓ | ✓ |
 
 ## <a name="identify-the-solution-infrastructure"></a>Identifizieren der Lösungsinfrastruktur
 
@@ -46,7 +46,7 @@ Sammeln Sie Informationen zu Ihrer Netzwerkarchitektur, gemessenen Bandbreite un
 
 Azure Defender für IoT unterstützt sowohl physische als auch virtuelle Bereitstellungen. Für physische Bereitstellungen können Sie verschiedene zertifizierte Appliances erwerben. Weitere Informationen finden Sie unter [Ermitteln erforderlicher Appliances](how-to-identify-required-appliances.md).
 
-Sie sollten die ungefähre Anzahl der Geräte berechnen, die überwacht werden. Wenn Sie später Ihr Azure-Abonnement im Portal registrieren, müssen Sie diese Zahl eingeben. Zahlen können in Intervallen von 1.000 Sekunden eingegeben werden. Die Anzahl überwachter Geräte wird als *committete Geräte* bezeichnet.
+Sie sollten die ungefähre Anzahl der Geräte berechnen, die überwacht werden. Wenn Sie später Ihr Azure-Abonnement im Portal registrieren, müssen Sie diese Zahl eingeben. Zahlen können in Intervallen von 1.000 hinzugefügt werden, z. B. „1000“, „2000“, „3000“. Die Anzahl überwachter Geräte wird als *committete Geräte* bezeichnet.
 
 ## <a name="register-with-azure-defender-for-iot"></a>Registrieren in Azure Defender für IoT
 

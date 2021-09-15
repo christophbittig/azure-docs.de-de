@@ -1,18 +1,20 @@
 ---
 title: Kopieren und Transformieren von Daten in Azure Database for PostgreSQL
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Erfahren Sie, wie Sie Daten mit Azure Data Factory in Azure Database for PostgreSQL kopieren und transformieren.
-ms.author: jianleishen
-author: jianleishen
+ms.author: susabat
+author: ssabat
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 02/25/2021
-ms.openlocfilehash: d7d5ac30549667a6806b9f0c45328c0662a2e47e
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.custom: synapse
+ms.date: 08/30/2021
+ms.openlocfilehash: b74588bf1a8f5aacabc273fb9a473a8cb4f1154d
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109785365"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123314145"
 ---
 # <a name="copy-and-transform-data-in-azure-database-for-postgresql-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure Database for PostgreSQL mit Azure Data Factory
 
@@ -35,6 +37,30 @@ Derzeit unterstützt der Datenfluss in Azure Data Factory zwar Azure Database fo
 ## <a name="getting-started"></a>Erste Schritte
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-linked-service-to-azure-database-for-postgresql-using-ui"></a>Erstellen eines mit Azure Database for PostgreSQL verknüpften Diensts über die Benutzeroberfläche
+
+Führen Sie die folgenden Schritte aus, um einen mit Azure Database for PostgreSQL verknüpften Dienst in der Benutzeroberfläche des Azure-Portals zu erstellen.
+
+1. Navigieren Sie in Ihrem Azure Data Factory- oder Synapse-Arbeitsbereich zur Registerkarte „Verwalten“, wählen Sie „Verknüpfte Dienste“ aus, und klicken Sie dann auf „Neu“:
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Erstellen Sie einen neuen verknüpften Dienst mithilfe der Azure Data Factory-Benutzeroberfläche.":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Erstellen Sie einen neuen verknüpften Dienst mithilfe der Azure Synapse-Benutzeroberfläche.":::
+
+2. Suchen Sie nach PostgreSQL, und wählen Sie den Azure Database for PostgreSQL-Connector aus.
+
+    :::image type="content" source="media/connector-azure-database-for-postgresql/azure-database-for-postgresql-connector.png" alt-text="Wählen Sie den Azure Database for PostgreSQL-Connector aus.":::    
+
+1. Konfigurieren Sie die Dienstdetails, testen Sie die Verbindung, und erstellen Sie den neuen verknüpften Dienst.
+
+    :::image type="content" source="media/connector-azure-database-for-postgresql/configure-azure-database-for-postgresql-linked-service.png" alt-text="Konfigurieren Sie einen mit Azure Database for PostgreSQL verknüpften Dienst.":::
+
+## <a name="connector-configuration-details"></a>Details zur Connectorkonfiguration
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten für den Azure Database for PostgreSQL-Connector verwendet werden.
 
@@ -173,7 +199,7 @@ Beim Kopieren von Daten nach Azure Database for PostgreSQL werden im Abschnitt *
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Senke der Kopieraktivität muss auf **AzurePostgreSQLSink** festgelegt sein. | Ja |
 | preCopyScript | Geben Sie eine SQL-Abfrage für die Kopieraktivität an, die bei jeder Ausführung ausgeführt wird, bevor Daten in Azure Database for PostgreSQL geschrieben werden. Sie können diese Eigenschaft nutzen, um die vorab geladenen Daten zu bereinigen. | Nein |
-| writeMethod | Die Methode zum Schreiben von Daten in Azure Database for PostgreSQL.<br>Zulässige Werte sind: **CopyCommand** (Vorschau mit höherer Leistung), **BulkInsert** (Standard). | Nein |
+| writeMethod | Die Methode zum Schreiben von Daten in Azure Database for PostgreSQL.<br>Zulässige Werte: **CopyCommand** (Standardeinstellung mit höherer Leistung), **BulkInsert**. | Nein |
 | writeBatchSize | Die Anzahl von Zeilen, die pro Batch in Azure Database for PostgreSQL geladen werden.<br>Als Wert ist ein Integer zulässig, der die Anzahl der Zeilen angibt. | Nein (Standardwert: 1.000.000) |
 | writeBatchTimeout | Die Wartezeit für den Abschluss der Batcheinfügung, bis das Timeout wirksam wird.<br>Zulässige Werte sind Timespan-Zeichenfolgen. Beispiel: 00:30:00 (30 Minuten). | Nein (Standardwert: 00:30:00) |
 

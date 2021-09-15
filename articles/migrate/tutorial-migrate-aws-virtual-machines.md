@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 05d617b39160a55a15eb3e74b6b515ce053baf6c
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 2a8f8c4a1cda62c4267f7a0f38f4dc9f9654404f
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113769062"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272455"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Ermitteln, Bewerten und Migrieren von virtuellen AWS-Computern (Amazon Web Services) zu Azure
 
@@ -356,13 +356,11 @@ Nachdem Sie sich vergewissert haben, dass die Testmigration wie erwartet funktio
     - Die Replikation für die AWS-VM wird beendet.
     - Die AWS-VM wird aus dem Zähler **Server werden repliziert.** in Azure Migrate entfernt: Servermigration.
     - Bereinigt die Replikationsstatusinformationen für den virtuellen Computer.
-2. Installieren Sie den [Linux](../virtual-machines/extensions/agent-linux.md)-Agent auf den migrierten Computern. Der Azure-VM-Windows-Agent wird während des Migrationsvorgangs vorinstalliert.
-3. Führen Sie App-Anpassungen nach der Migration durch, z.B. die Aktualisierung von Datenbankverbindungszeichenfolgen und Webserverkonfigurationen.
-4. Führen Sie endgültige Anwendungs- und Migrationsakzeptanztests für die migrierte Anwendung durch, die nun in Azure ausgeführt wird.
-5. Leiten Sie den Datenverkehr auf die migrierte Instanz der Azure-VM um.
-6. Aktualisieren Sie die interne Dokumentation zum Anzeigen des neuen Speicherorts und der IP-Adresse der Azure-VMs.
-
-
+1. Überprüfen und [beheben Sie alle Windows-Aktivierungsprobleme auf dem virtuellen Azure-Computer](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems).
+1. Führen Sie App-Anpassungen nach der Migration durch, z. B. die Aktualisierung von Hostnamen, Datenbankverbindungszeichenfolgen und Webserverkonfigurationen.
+1. Führen Sie endgültige Anwendungs- und Migrationsakzeptanztests für die migrierte Anwendung durch, die nun in Azure ausgeführt wird.
+1. Leiten Sie den Datenverkehr auf die migrierte Instanz der Azure-VM um.
+1. Aktualisieren Sie die interne Dokumentation zum Anzeigen des neuen Speicherorts und der IP-Adresse der Azure-VMs.
 
 
 ## <a name="post-migration-best-practices"></a>Bewährte Methoden nach der Migration

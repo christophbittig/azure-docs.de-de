@@ -10,12 +10,12 @@ ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1a68ec9868e5a441dbfd11f97bc8f169df246598
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: fe26f8f61acbbf454cd2eb2928fdcab0f0bc7e47
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109633733"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866967"
 ---
 # <a name="use-azure-cli-to-manage-acls-in-azure-data-lake-storage-gen2"></a>Verwenden der Azure CLI zum Verwalten von Zugriffssteuerungslisten in Azure Data Lake Storage Gen2
 
@@ -80,7 +80,7 @@ Die Vererbung von Zugriffssteuerungslisten (ACLs) ist für neue untergeordnete E
 
 ## <a name="get-acls"></a>Abrufen von ACLs
 
-Ermitteln Sie die Zugriffssteuerungsliste (ACL) eines **Verzeichnisses** mit dem Befehl `az storage fs access show`.
+Rufen Sie die Zugriffssteuerungsliste (ACL) für ein **Verzeichnis** mit dem Befehl [az storage fs access show](/cli/azure/storage/fs#az_storage_fs_show) ab.
 
 In diesem Beispiel wird die Zugriffssteuerungsliste eines Verzeichnisses abgerufen und dann auf der Konsole ausgegeben.
 
@@ -88,7 +88,7 @@ In diesem Beispiel wird die Zugriffssteuerungsliste eines Verzeichnisses abgeruf
 az storage fs access show -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-Rufen Sie die Zugriffsberechtigungen einer **Datei** mit dem Befehl `az storage fs access show` ab. 
+Rufen Sie die Berechtigungen für eine **Datei** mit dem Befehl [az storage fs access show](/cli/azure/storage/fs#az_storage_fs_show) ab. 
 
 In diesem Beispiel wird die Zugriffssteuerungsliste einer Datei abgerufen und dann auf der Konsole ausgegeben.
 
@@ -115,7 +115,7 @@ In diesem Abschnitt erfahren Sie Folgendes:
 
 ### <a name="set-an-acl"></a>Festlegen einer Zugriffssteuerungsliste
 
-Verwenden Sie den Befehl `az storage fs access set`, um die Zugriffssteuerungsliste eines **Verzeichnisses** festzulegen. 
+Verwenden Sie den Befehl [az storage fs access set](/cli/azure/storage/fs/access#az_storage_fs_access_set), um die Zugriffssteuerungsliste für ein **Verzeichnis** festzulegen. 
 
 In diesem Beispiel wird die Zugriffssteuerungsliste auf ein Verzeichnis für den zuständigen Benutzer, die zuständige Gruppe oder andere Benutzer festgelegt und dann auf der Konsole ausgegeben.
 
@@ -129,7 +129,7 @@ In diesem Beispiel wird die *Standard*-Zugriffssteuerungsliste auf ein Verzeichn
 az storage fs access set --acl "default:user::rw-,group::rw-,other::-wx" -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-Verwenden Sie den Befehl `az storage fs access set`, um die Zugriffssteuerungsliste einer **Datei** festzulegen. 
+Verwenden Sie den Befehl [az storage fs access set](/cli/azure/storage/fs/access#az_storage_fs_access_set), um die Zugriffssteuerungsliste für eine **Datei** festzulegen. 
 
 In diesem Beispiel wird die Zugriffssteuerungsliste auf eine Datei für den zuständigen Benutzer, die zuständige Gruppe oder andere Benutzer festgelegt und anschließend auf der Konsole ausgegeben.
 
@@ -172,7 +172,7 @@ In diesem Abschnitt erfahren Sie Folgendes:
 
 ### <a name="update-an-acl"></a>Aktualisieren einer Zugriffssteuerungsliste (ACL)
 
-Eine weitere Möglichkeit, diese Berechtigung festzulegen, ist die Verwendung des Befehls `az storage fs access set`. 
+Eine weitere Möglichkeit, diese Berechtigung festzulegen, ist die Verwendung des Befehls [az storage fs access set](/cli/azure/storage/fs/access#az_storage_fs_access_set). 
 
 Aktualisieren Sie die Zugriffssteuerungsliste eines Verzeichnisses oder einer Datei, indem Sie den Parameter `-permissions` auf die Kurzform einer Zugriffssteuerungsliste festlegen.
 

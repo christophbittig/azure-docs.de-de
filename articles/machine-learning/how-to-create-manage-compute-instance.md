@@ -10,13 +10,13 @@ ms.custom: devx-track-azurecli, references_regions
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
-ms.date: 10/02/2020
-ms.openlocfilehash: c678c36ff653d8975f7a0fe1a82395c3093758f6
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 08/30/2021
+ms.openlocfilehash: cad2ac9319eb674cb8022ff5ce3d2df2a57df648
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110458550"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224702"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Erstellen und Verwalten einer Azure Machine Learning-Compute-Instanz
 
@@ -26,11 +26,10 @@ Nutzen Sie eine Compute-Instanz als Ihre vollständig konfigurierte und verwalte
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-* Erstellen einer Compute-Instanz
-* Verwalten einer Compute-Instanz (Starten, Beenden, Neu starten und Löschen)
-* Zugreifen auf das Terminalfenster
-* Installieren von R- oder Python-Paketen
-* Erstellen neuer Umgebungen oder Jupyter-Kernels
+* [Erstellen](#create) einer Compute-Instanz
+* [Verwalten](#manage) (starten, stoppen, neu starten, löschen) einer Compute-Instanz
+* [Erstellen eines Zeitplans](#schedule) zum automatischen Starten und Stoppen der Compute-Instanz (Vorschau)
+* [Verwenden Sie ein Setup-Skript](#setup-script) zum Anpassen und Konfigurieren der Compute-Instanz
 
 Sie können Aufträge sicher in einer [virtuellen Netzwerkumgebung](how-to-secure-training-vnet.md) ausführen, ohne dass Unternehmen hierfür SSH-Ports öffnen müssen. Der Auftrag wird in einer Containerumgebung ausgeführt und packt die Abhängigkeiten Ihres Modells in einen Docker-Container.
 
@@ -49,11 +48,11 @@ Sie können Aufträge sicher in einer [virtuellen Netzwerkumgebung](how-to-secur
 
 **Geschätzter Zeitaufwand**: Ca. fünf Minuten.
 
-Das Erstellen einer Compute-Instanz ist ein für Ihren Arbeitsbereich einmaliger Prozess. Sie können die Compute-Instanz als Entwicklungsarbeitsstation oder als Computeziel für das Training wiederverwenden. Sie können mehrere Compute-Instanzen an Ihren Arbeitsbereich anfügen.
+Das Erstellen einer Compute-Instanz ist ein für Ihren Arbeitsbereich einmaliger Prozess. Sie können die Compute-Instanz als Entwicklungsarbeitsstation oder als Computeziel für das Training wiederverwenden. Sie können mehrere Compute-Instanzen an Ihren Arbeitsbereich anfügen. 
 
-Das Kontingent dedizierter Kerne pro Region pro VM-Familie und gesamte regionale Kontingent, das für die Erstellung von Compute-Instanzen gilt, ist einheitlich und wird mit dem Kontingent für Azure Machine Learning-Trainingcomputecluster gemeinsam genutzt. Das Beenden der Compute-Instanz gibt keine Kontingente frei, um sicherzustellen, dass Sie die Compute-Instanz erneut starten können. Beachten Sie, dass die Größe des virtuellen Computers nach Erstellung der Compute-Instanz nicht mehr geändert werden kann.
+Das Kontingent dedizierter Kerne pro Region pro VM-Familie und gesamte regionale Kontingent, das für die Erstellung von Compute-Instanzen gilt, ist einheitlich und wird mit dem Kontingent für Azure Machine Learning-Trainingcomputecluster gemeinsam genutzt. Das Beenden der Compute-Instanz gibt keine Kontingente frei, um sicherzustellen, dass Sie die Compute-Instanz erneut starten können. Es ist nicht möglich, die Größe des virtuellen Computers einer Compute-Instanz zu ändern, nachdem sie erstellt wurde.
 
-Das folgende Beispiel veranschaulicht das Erstellen einer Compute-Instanz:
+<a name="create-instance"></a>Das folgende Beispiel zeigt, wie eine Compute-Instanz erstellt wird:
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -98,39 +97,176 @@ Weitere Informationen zu den in diesem Beispiel verwendeten Klassen, Methoden un
 az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 ```
 
-Weitere Informationen finden Sie in der Referenz zu [az ml computetarget create computeinstance](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_computeinstance).
+Weitere Informationen finden Sie in der Referenz zu [az ml computetarget create computeinstance](/cli/azure/ml(v1)/computetarget/create#az_ml_computetarget_create_computeinstance).
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 
-Erstellen Sie in Ihrem Arbeitsbereich im Azure Machine Learning Studio eine neue Compute-Instanz entweder im Abschnitt **Compute** oder im Abschnitt **Notebooks**, wenn Sie bereit sind, eines Ihrer Notebooks auszuführen.
+1. Navigieren Sie zu [Azure Machine Learning Studio](https://ml.azure.com).
+1. Wählen Sie unter __Verwalten__ die Option __Compute__ aus.
+1. Wählen Sie die **Compute-Instanz** oben aus.
+1. Wenn Sie keine Compute-Instanz haben, wählen Sie **Erstellen** in der Mitte aus der Seite.
+  
+    :::image type="content" source="media/how-to-create-attach-studio/create-compute-target.png" alt-text="Erstellen eines Computeziels":::
 
-Weitere Informationen zum Erstellen einer Compute-Instanz in Studio finden Sie unter [Erstellen von Computezielen für Modelltraining und -bereitstellung in Azure Machine Learning Studio](how-to-create-attach-compute-studio.md#compute-instance).
+1. Wenn eine Liste der Computeressourcen angezeigt wird, wählen Sie oberhalb der Liste **+ Neu** aus.
+
+    :::image type="content" source="media/how-to-create-attach-studio/select-new.png" alt-text="Auswählen von „Neu“":::
+1. Füllen Sie das Formular aus:
+
+    |Feld  |BESCHREIBUNG  |
+    |---------|---------|
+    |Computename     |  <ul><li>Der Name ist erforderlich und muss zwischen 3 und 24 Zeichen lang sein.</li><li>Gültige Zeichen sind Groß- und Kleinbuchstaben, Ziffern und das Zeichen **-** .</li><li>Der Name muss mit einem Buchstaben beginnen.</li><li>Der Name muss auf allen vorhandenen Compute-Instanzen innerhalb einer Azure-Region eindeutig sein. Sie erhalten eine Warnung, wenn der von Ihnen gewählte Name nicht eindeutig ist.</li><li>Wenn ein **-** -Zeichen verwendet wird, muss darauf im Namen mindestens ein Buchstabe folgen.</li></ul>     |
+    |Typ des virtuellen Computers |  Wählen Sie CPU oder GPU aus. Dieser Typ kann nach der Erstellung nicht mehr geändert werden.     |
+    |Größe des virtuellen Computers     |  Die Größe der unterstützten virtuellen Computer kann in Ihrer Region eingeschränkt sein. Überprüfen Sie die [Verfügbarkeitsliste](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).     |
+
+1. Wählen Sie **Erstellen**, es sei denn, Sie möchten erweiterte Einstellungen für die Compute-Instanz konfigurieren.
+1. <a name="advanced-settings"></a>Wählen Sie **Weiter: Erweiterte Einstellungen** wenn Sie folgendes möchten:
+
+    * Aktivieren vom SSH-Zugang.  Folgen Sie den [ausführlichen Anweisungen für den SSH-Zugang](#enable-ssh) unten.
+    * Virtuelles Netz aktivieren. Geben Sie **Ressourcengruppe**, **Virtuelles Netzwerk** und **Subnetz** an, um die Compute-Instanz innerhalb von Azure Virtual Network (VNET) zu erstellen. Weitere Informationen finden Sie unter diesen [Netzwerkanforderungen](./how-to-secure-training-vnet.md) für VNET. 
+    * Den Computer einem anderen Benutzer zuweisen. Für weitere Informationen über die Zuweisung an andere Benutzer siehe [Erstellen im Namen von](#on-behalf).
+    * Mit einem Einrichtungsskript bereitstellen (Vorschau) – weitere Einzelheiten zur Erstellung und Verwendung eines Einrichtungsskripts finden Sie unter [Anpassen der Compute-Instanz mit einem Skript](#setup-script).
+    * Zeitplan hinzufügen (Vorschau). Legen Sie Zeiten für das automatische Starten und/oder Herunterfahren der Compute-Instanz fest. Siehe [Details zu Zeitplänen](#schedule) unten.
 
 ---
 
 Sie können eine Compute-Instanz auch mit einer [Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-compute-create-computeinstance) erstellen.
 
+## <a name="enable-ssh-access"></a><a name="enable-ssh"></a> Aktivieren Sie den SSH-Zugang
 
+Der SSH-Zugriff ist standardmäßig deaktiviert.  Der SSH-Zugang kann nach der Erstellung nicht geändert werden. Stellen Sie sicher, dass Sie den Zugriff aktivieren, wenn Sie vorhaben, interaktiv mit [VS Code Remote](how-to-set-up-vs-code-remote.md) zu debuggen.  
+
+[!INCLUDE [amlinclude-info](../../includes/machine-learning-enable-ssh.md)]
+
+Nachdem die Compute-Instanz erstellt wurde und läuft, siehe [Verbindung mit SSH-Zugang](how-to-create-attach-compute-studio.md#ssh-access).
 
 ## <a name="create-on-behalf-of-preview"></a><a name="on-behalf"></a> Erstellen im Namen von (Vorschau)
 
 Als Administrator können Sie im Namen einer wissenschaftlichen Fachkraft für Daten eine Compute-Instanz erstellen und ihr die Instanz mit der folgenden Methode zuweisen:
 
-* [Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-compute-create-computeinstance).  Ausführliche Informationen zum Suchen der in dieser Vorlage benötigten „TenantID“ und „ObjectID“ finden Sie unter [Ermitteln von Identitätsobjekt-IDs für die Authentifizierungskonfiguration](../healthcare-apis/fhir/find-identity-object-ids.md).  Sie können diese Werte auch im Azure Active Directory-Portal abrufen.
+* Konfigurieren Sie die [Advanced Einstellungen](?tabs=azure-studio#advanced-settings)
+
+* [Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-compute-create-computeinstance).  Ausführliche Informationen zum Suchen der in dieser Vorlage benötigten „TenantID“ und „ObjectID“ finden Sie unter [Ermitteln von Identitätsobjekt-IDs für die Authentifizierungskonfiguration](../healthcare-apis/azure-api-for-fhir/find-identity-object-ids.md).  Sie können diese Werte auch im Azure Active Directory-Portal abrufen.
 
 * REST-API
 
 Die wissenschaftliche Fachkraft für Daten, für die Sie die Compute-Instanz erstellen, benötigt die folgenden [Azure RBAC-Berechtigungen](../role-based-access-control/overview.md) (rollenbasierte Zugriffssteuerung in Azure):
+
 * *Microsoft.MachineLearningServices/workspaces/computes/start/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/stop/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/restart/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/applicationaccess/action*
+* *Microsoft.MachineLearningServices/workspaces/computes/updateSchedules/action*
 
 Die wissenschaftliche Fachkraft für Daten kann die Compute-Instanz starten, beenden und neu starten. Sie kann die Compute-Instanz für folgende Zwecke verwenden:
 * Jupyter
 * JupyterLab
 * RStudio
 * Integrierte Notebooks
+
+## <a name="schedule-automatic-start-and-stop-preview"></a><a name="schedule"></a>Planen des automatischen Startens und Beendens (Vorschau)
+
+Definieren Sie mehrere Zeitpläne für automatische Herunterfahren und automatische Starten. Erstellen Sie beispielsweise einen Zeitplan, der von Montag bis Donnerstag um 9 Uhr morgens beginnt und um 18 Uhr endet, und einen zweiten Zeitplan, der um 9 Uhr morgens beginnt und um 16 Uhr endet, für Freitag.  Sie können insgesamt vier Zeitpläne pro Compute-Instanz erstellen.
+
+Zeitpläne können auch für [Erstellen im Namen von](#on-behalf) Compute-Instanzen definiert werden. Sie können einen Zeitplan erstellen, um eine Compute-Instanz in einem angehaltenen Zustand zu erstellen. Dies ist besonders nützlich, wenn ein Benutzer eine Compute-Instanz im Namen eines anderen Benutzers erstellt.
+
+### <a name="create-a-schedule-in-studio"></a>Einen Zeitplan in Studio erstellen
+
+1. [Füllen Sie das Formular aus.](?tabs=azure-studio#create-instance)
+1. Öffnen Sie auf der zweiten Seite des Formulars **Advanced Einstellungen anzeigen**.
+1. Wählen Sie **Zeitplan hinzufügen**, um einen neuen Zeitplan hinzuzufügen.
+
+    :::image type="content" source="media/how-to-create-attach-studio/create-schedule.png" alt-text="Screenshot: Zeitplan in den erweiterten Einstellungen hinzufügen.":::
+
+1. Wählen Sie **Compute-Instanz starten** oder **Compute-Instanz beenden** aus.
+1. Wählen Sie die **Zeitzone**.
+1. Wählen Sie die **Startzeit** oder **Abschaltzeit**.
+1. Wählen Sie die Tage, an denen dieser Zeitplan aktiv ist.
+
+    :::image type="content" source="media/how-to-create-attach-studio/stop-compute-schedule.png" alt-text="Screenshot: Planen Sie das Herunterfahren einer Compute-Instanz.":::
+
+1. Wählen Sie erneut **Zeitplan** hinzufügen, wenn Sie einen weiteren Zeitplan erstellen möchten.
+
+Nachdem die Compute-Instanz erstellt wurde, können Sie im Bereich Details der Compute-Instanz neue Zeitpläne anzeigen, bearbeiten oder hinzufügen.
+Bitte beachten Sie, dass die Zeitzonenbezeichnungen die Sommerzeit nicht berücksichtigen. Zum Beispiel ist (UTC+01:00) Amsterdam, Berlin, Bern, Rom, Stockholm, Wien während der Sommerzeit UTC+02:00.
+
+### <a name="create-a-schedule-with-a-resource-manager-template"></a>Erstellen eines Zeitplans mithilfe einer Resource Manager-Vorlage
+
+Sie können den automatischen Start und Stopp einer Compute-Instanz planen, indem Sie eine Ressourcenmanager-[Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-compute-create-computeinstance) verwenden.
+
+Fügen Sie in der Ressourcenmanager-Vorlage hinzu:
+
+```
+"schedules": "[parameters('schedules')]"
+```
+
+Verwenden Sie dann entweder cron- oder LogicApps-Ausdrücke, um den Zeitplan für das Starten oder Stoppen der Instanz in Ihrer Parameterdatei zu definieren:
+ 
+```json
+        "schedules": {
+        "value": {
+        "computeStartStop": [
+          {
+            "triggerType": "Cron",
+            "cron": {              
+              "timeZone": "UTC",
+              "expression": "0 18 * * *"
+            },
+            "action": "Stop",
+            "status": "Enabled"
+          },
+          {
+            "triggerType": "Cron",
+            "cron": {              
+              "timeZone": "UTC",
+              "expression": "0 8 * * *"
+            },
+            "action": "Start",
+            "status": "Enabled"
+          },
+          { 
+            "triggerType": "Recurrence", 
+            "recurrence": { 
+              "frequency": "Day", 
+              "interval": 1, 
+              "timeZone": "UTC", 
+              "schedule": { 
+                "hours": [17], 
+                "minutes": [0]
+              } 
+            }, 
+            "action": "Stop", 
+            "status": "Enabled" 
+          } 
+        ]
+      }
+    }
+```
+
+* Die Aktion kann den Wert „Start“ oder „Stop“ haben.
+* Für den Auslösertyp `Recurrence` verwenden Sie dieselbe Syntax wie für LogicApps mit diesem [-Serienschema](../logic-apps/logic-apps-workflow-actions-triggers.md#recurrence-trigger).
+* Für den Auslösertyp `cron` verwenden Sie die Standard-Cron-Syntax:  
+
+    ```cron
+    // Crontab expression format: 
+    // 
+    // * * * * * 
+    // - - - - - 
+    // | | | | | 
+    // | | | | +----- day of week (0 - 6) (Sunday=0) 
+    // | | | +------- month (1 - 12) 
+    // | | +--------- day of month (1 - 31) 
+    // | +----------- hour (0 - 23) 
+    // +------------- min (0 - 59) 
+    // 
+    // Star (*) in the value field above means all legal values as in 
+    // braces for that column. The value column can have a * or a list 
+    // of elements separated by commas. An element is either a number in 
+    // the ranges shown above or two numbers in the range separated by a 
+    // hyphen (meaning an inclusive range). 
+    ```
+
+Verwenden Sie die Azure-Policy, um für jede Compute-Instanz in einem Abonnement einen Zeitplan für das Herunterfahren zu erzwingen, oder verwenden Sie standardmäßig einen Zeitplan, wenn nichts vorhanden ist.
 
 ## <a name="customize-the-compute-instance-with-a-script-preview"></a><a name="setup-script"></a> Anpassen der Compute-Instanz mit einem Skript (Vorschau)
 
@@ -148,7 +284,7 @@ Einige Beispiele für die Verwendungsmöglichkeiten eines Setupskripts:
 
 ### <a name="create-the-setup-script"></a>Erstellen des Setupskripts
 
-Das Setup-Skript ist ein Shellskript, das als *rootuser* ausgeführt wird.  Erstellen Sie das Skript, oder laden Sie es in Ihre **Notebooks**-Dateien hoch:
+Das Setup-Skript ist ein Shellskript, das als *Stammbenutzer* ausgeführt wird.  Erstellen Sie das Skript, oder laden Sie es in Ihre **Notebooks**-Dateien hoch:
 
 1. Melden Sie sich bei [Studio](https://ml.azure.com) an, und wählen Sie Ihren Arbeitsbereich aus.
 2. Wählen Sie links **Notebooks** aus.
@@ -160,25 +296,13 @@ Wenn das Skript ausgeführt wird, ist das aktuelle Arbeitsverzeichnis des Skript
 
 Skriptargumente können im Skript als $1, $2 usw. bezeichnet werden.
 
-Wenn Ihr Skript für azureuser bestimmt war, z. B. die Installation der Conda-Umgebung oder des Jupyter-Kernels, müssen Sie es wie folgt im *sudo -u azureuser*-Block speichern
+Wenn Ihr Skript etwas Spezielles für azureuser tut, wie z. B. die Installation der conda-Umgebung oder des Jupyter-Kernels, müssen Sie es in den Block *sudo -u azureuser* wie folgt einfügen
 
-```shell
-#!/bin/bash
+:::code language="bash" source="~/azureml-examples-main/setup-ci/install-pip-package.sh":::
 
-set -e
+Der Befehl *sudo -u azureuser* ändert den aktuelle Arbeitsordner in  */home/azureuser*. Sie können auch nicht auf die Skriptargumente in diesem Block zugreifen.
 
-# This script installs a pip package in compute instance azureml_py38 environment
-
-sudo -u azureuser -i <<'EOF'
-# PARAMETERS
-PACKAGE=numpy
-ENVIRONMENT=azureml_py38 
-conda activate "$ENVIRONMENT"
-pip install "$PACKAGE"
-conda deactivate
-EOF
-```
-Beachten Sie, dass *sudo -u azureuser* das aktuelle Arbeitsverzeichnis in */home/azureuser* ändert. Sie können auch nicht auf die Skriptargumente in diesem Block zugreifen.
+Sehen Sie andere Skriptbeispiele in [azureml-examples](https://github.com/Azure/azureml-examples/tree/main/setup-ci).
 
 In Ihrem Skript können zudem die folgenden Umgebungsvariablen verwendet werden:
 
@@ -187,6 +311,9 @@ In Ihrem Skript können zudem die folgenden Umgebungsvariablen verwendet werden:
 3. CI_NAME
 4. CI_LOCAL_UBUNTU_USER. Dies verweist auf azureuser
 
+Sie können das Einrichtungsskript in Verbindung mit der **Azure-Policy verwenden, um entweder ein Einrichtungsskript für jede Compute-Instanz-Erstellung zu erzwingen oder vorzugeben**. Der Standardwert für den Timeout des Einrichtungsskripts beträgt 15 Minuten. Dieser Wert kann über die Studio-Benutzeroberfläche oder über ARM-Vorlagen unter Verwendung des Parameters DURATION geändert werden.
+DURATION ist eine Fließkommazahl mit einem optionalen Suffix: "s" für Sekunden (der Standard), "m" für Minuten, "h" für Stunden oder "d" für Tage.
+
 ### <a name="use-the-script-in-the-studio"></a>Verwenden des Skripts in Studio
 
 Nachdem Sie das Skript gespeichert haben, geben Sie es während der Erstellung Ihrer Compute-Instanz an:
@@ -194,15 +321,15 @@ Nachdem Sie das Skript gespeichert haben, geben Sie es während der Erstellung I
 1. Melden Sie sich bei [Studio](https://ml.azure.com/) an, und wählen Sie Ihren Arbeitsbereich aus.
 1. Wählen Sie links **Compute** aus.
 1. Wählen Sie **+Neu** aus, um eine neue Compute-Instanz zu erstellen.
-1. [Füllen Sie das Formular aus.](how-to-create-attach-compute-studio.md#compute-instance)
+1. [Füllen Sie das Formular aus.](?tabs=azure-studio#create-instance)
 1. Öffnen Sie auf der zweiten Seite des Formulars **Erweiterte Einstellungen anzeigen**.
-1. Aktivieren Sie die Option **Provision with setup script** (Mit Setupskript bereitstellen).
+1. Aktivieren Sie die Option **Bereitstellen mit Einrichtungsskript**.
 1. Navigieren Sie zu dem Shellskript, das Sie gespeichert haben.  Oder laden Sie ein Skript von Ihrem Computer hoch.
 1. Fügen Sie nach Bedarf Befehlsargumente hinzu.
 
 :::image type="content" source="media/how-to-create-manage-compute-instance/setup-script.png" alt-text="Bereitstellen einer Compute-Instanz mit einem Setupskript in Studio":::
 
-Beachten Sie Folgendes: Wenn der Arbeitsbereichsspeicher an ein virtuelles Netzwerk angefügt ist, können Sie möglicherweise nicht auf die Setupskriptdatei zugreifen, es sei denn, Sie greifen innerhalb des virtuellen Netzwerks auf Studio zu.
+Wenn der Arbeitsbereichsspeicher an ein virtuelles Netz angeschlossen ist, können Sie möglicherweise nicht auf die Datei mit dem Einrichtungsskript zugreifen, es sei denn, Sie greifen von einem virtuellen Netz aus auf das Studio zu.
 
 ### <a name="use-script-in-a-resource-manager-template"></a>Verwenden eines Skripts in einer Resource Manager-Vorlage
 
@@ -241,12 +368,15 @@ Geben Sie beispielsweise eine Base64-codierte Befehlszeichenfolge für `scriptDa
 
 Protokolle der Setupskriptausführung werden im Protokollordner auf der Detailseite der Compute-Instanz angezeigt. Protokolle werden wieder in Ihrer Notebooks-Dateifreigabe im Ordner „Protokolle\<compute instance name>“ gespeichert. Skriptdatei- und Befehlsargumente für eine bestimmte Compute-Instanz werden auf der Detailseite angezeigt.
 
+
 ## <a name="manage"></a>Verwalten
 
-Starten, Beenden, Neustarten und Löschen einer Compute-Instanz. Eine Compute-Instanz wird nicht automatisch herunterskaliert. Stellen Sie daher sicher, dass die Ressource beendet wird, um laufende Gebühren zu vermeiden. Das Beenden einer Compute-Instanz gibt diese frei. Starten Sie sie dann erneut, wenn Sie sie benötigen. Das Beenden der Compute-Instanz stoppt zwar die Abrechnung der Computestunden, es werden Ihnen aber weiterhin Datenträger, öffentliche IP-Adresse und Standardlastenausgleich in Rechnung gestellt.
+Starten, Beenden, Neustarten und Löschen einer Compute-Instanz. Eine Compute-Instanz wird nicht automatisch herunterskaliert. Stellen Sie daher sicher, dass die Ressource beendet wird, um laufende Gebühren zu vermeiden. Das Beenden einer Compute-Instanz gibt diese frei. Starten Sie sie dann erneut, wenn Sie sie benötigen. Das Beenden der Compute-Instanz stoppt zwar die Abrechnung der Computestunden, es werden Ihnen aber weiterhin Datenträger, öffentliche IP-Adresse und Standardlastenausgleich in Rechnung gestellt. 
+
+Sie können einen [Zeitplan erstellen](#schedule) für die Compute-Instanz, um diese automatisch zu einer bestimmten Uhrzeit und an einem bestimmten Wochentag zu starten und zu stoppen.
 
 > [!TIP]
-> Die Compute-Instanz verfügt über einen 120 GB Betriebssystemdatenträger. Wenn Ihnen der Speicherplatz ausgeht, [verwenden Sie das Terminal](how-to-access-terminal.md), um mindestens 1–2 GB zu löschen, bevor Sie die Compute-Instanz beenden oder neu starten.
+> Die Compute-Instanz verfügt über einen 120 GB Betriebssystemdatenträger. Wenn Ihnen der Speicherplatz ausgeht, [verwenden Sie das Terminal](how-to-access-terminal.md), um mindestens 1–2 GB zu löschen, bevor Sie die Compute-Instanz beenden oder neu starten. Bitte beenden Sie die Compute-Instanz nicht, indem Sie sudo Herunterfahren im Terminal eingeben.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -299,7 +429,7 @@ In den unten stehenden Beispielen lautet der Name der Compute-Instanz **instance
     az ml computetarget stop computeinstance -n instance -v
     ```
 
-    Weitere Informationen finden Sie unter [az ml computetarget stop computeinstance](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_stop).
+    Weitere Informationen finden Sie unter [az ml computetarget stop computeinstance](/cli/azure/ml(v1)/computetarget/computeinstance#az_ml_computetarget_computeinstance_stop).
 
 * Start
 
@@ -307,7 +437,7 @@ In den unten stehenden Beispielen lautet der Name der Compute-Instanz **instance
     az ml computetarget start computeinstance -n instance -v
     ```
 
-    Weitere Informationen finden Sie unter [az ml computetarget start computeinstance](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_start).
+    Weitere Informationen finden Sie unter [az ml computetarget start computeinstance](/cli/azure/ml(v1)/computetarget/computeinstance#az_ml_computetarget_computeinstance_start).
 
 * Neu starten
 
@@ -315,7 +445,7 @@ In den unten stehenden Beispielen lautet der Name der Compute-Instanz **instance
     az ml computetarget restart computeinstance -n instance -v
     ```
 
-    Weitere Informationen finden Sie unter [az ml computetarget restart computeinstance](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_restart).
+    Weitere Informationen finden Sie unter [az ml computetarget restart computeinstance](/cli/azure/ml(v1)/computetarget/computeinstance#az_ml_computetarget_computeinstance_restart).
 
 * Löschen
 
@@ -323,9 +453,10 @@ In den unten stehenden Beispielen lautet der Name der Compute-Instanz **instance
     az ml computetarget delete -n instance -v
     ```
 
-    Weitere Informationen finden Sie unter [az ml computetarget delete computeinstance](/cli/azure/ml/computetarget#az_ml_computetarget_delete).
+    Weitere Informationen finden Sie unter [az ml computetarget delete computeinstance](/cli/azure/ml(v1)/computetarget#az_ml_computetarget_delete).
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
+<a name="schedule"></a>
 
 Wählen Sie Ihrem Arbeitsbereich in Azure Machine Learning Studio **Compute** aus, und wählen sie dann oben **Compute-Instanz** aus.
 
@@ -335,15 +466,17 @@ Sie können folgende Aktionen ausführen:
 
 * Erstellen einer neuen Compute-Instanz
 * Aktualisieren der Registerkarte „Compute-Instanzen“.
-* Starten, Beenden und erneutes Starten einer Compute-Instanz.  Sie zahlen für die Instanz, wann immer sie ausgeführt wird. Beenden Sie die Compute-Instanz, wenn Sie sie nicht verwenden, um Kosten zu sparen. Das Beenden einer Compute-Instanz gibt diese frei. Starten Sie sie dann erneut, wenn Sie sie benötigen.
+* Starten, Beenden und erneutes Starten einer Compute-Instanz.  Sie zahlen für die Instanz, wann immer sie ausgeführt wird. Beenden Sie die Compute-Instanz, wenn Sie sie nicht verwenden, um Kosten zu sparen. Das Beenden einer Compute-Instanz gibt diese frei. Starten Sie sie dann erneut, wenn Sie sie benötigen. Sie können auch eine Zeit für das Starten und Stoppen der Compute-Instanz planen.
 * Löschen einer Compute-Instanz.
 * Filtern Sie die Liste der Compute-Instanzen, um nur diejenigen anzuzeigen, die Sie erstellt haben.
 
-Für jede Compute-Instanz in Ihrem Arbeitsbereich, die Sie erstellt haben (oder die für Sie erstellt wurde), können Sie folgende Aktionen ausführen:
+Für jede Compute-Instanz in einem Arbeitsbereich, den Sie erstellt haben (oder der für Sie erstellt wurde), können Sie:
 
-* Zugreifen auf Jupyter, JupyterLab, RStudio auf der Computeinstanz
-* SSH-Verbindung mit Compute-Instanz. Der SSH-Zugriff ist standardmäßig deaktiviert, kann aber zum Zeitpunkt der Erstellung der Compute-Instanz aktiviert werden. Der SSH-Zugriff erfolgt über einen Mechanismus mit öffentlichem/privatem Schlüssel. Auf der Registerkarte finden Sie Details zur SSH-Verbindung wie IP-Adresse, Benutzername und Portnummer.
-* Informieren Sie sich über Details einer bestimmten Compute-Instanz wie IP-Adresse und Region.
+* Auf der Compute-Instanz auf Jupyter, JupyterLab, RStudio zugreifen.
+* SSH-Verbindung mit Compute-Instanz. Der SSH-Zugriff ist standardmäßig deaktiviert, kann aber zum Zeitpunkt der Erstellung der Compute-Instanz aktiviert werden. Der SSH-Zugriff erfolgt über einen Mechanismus mit öffentlichem/privatem Schlüssel. Auf der Registerkarte finden Sie Details zur SSH-Verbindung wie IP-Adresse, Benutzername und Portnummer. In einer virtuellen Netzbereitstellung verhindert die Deaktivierung von SSH den SSH-Zugang aus dem öffentlichen Internet. Sie können jedoch weiterhin SSH aus dem virtuellen Netz über die private IP-Adresse des Knotens der Compute-Instanz und Port 22 nutzen.
+* Wählen Sie den Computernamen, um:
+    * Details zu einer bestimmten Compute-Instanz anzuzeigen, wie z. B. die IP-Adresse und die Region.
+    * Den Zeitplan für das Starten und Stoppen der Compute-Instanz zu erstellen oder zu ändern (Vorschau).  Scrollen Sie zum unteren Ende der Seite, um den Zeitplan zu bearbeiten.
 
 ---
 
@@ -356,8 +489,9 @@ Diese Aktionen können von Azure RBAC gesteuert werden:
 * *Microsoft.MachineLearningServices/workspaces/computes/start/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/stop/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/restart/action*
+* *Microsoft.MachineLearningServices/workspaces/computes/updateSchedules/action*
 
-Zum Erstellen einer Compute-Instanz müssen Sie über Berechtigungen für die folgenden Aktionen verfügen:
+Zum Erstellen einer Compute-Instanz benötigen Sie Berechtigungen für die folgenden Aktionen verfügen:
 * *Microsoft.MachineLearningServices/workspaces/computes/write*
 * *Microsoft.MachineLearningServices/workspaces/checkComputeNameAvailability/action*
 

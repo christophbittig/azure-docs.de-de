@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/03/2021
-ms.openlocfilehash: 990dfd3a2cf86f77310e51cb29fa65e181b37a9f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ab16bfe708589b6f89dd5b9a37512d4f2148992f
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638470"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123214907"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-using-dms"></a>Tutorial: Migrieren von SQL Server zu Azure SQL-Datenbank mithilfe von DMS
 
-Mit Azure Database Migration Service können Sie die Datenbanken von einer SQL Server-Instanz zu [Azure SQL-Datenbank](/azure/sql-database/) migrieren. In diesem Tutorial migrieren Sie die Datenbank [Adventureworks2016](/sql/samples/adventureworks-install-configure#download-backup-files), die auf einer lokalen Instanz von SQL Server 2016 (oder höher) wiederhergestellt wurde, mithilfe von Azure Database Migration Service zu einer Einzel- oder Pooldatenbank in Azure SQL-Datenbank.
+Mit Azure Database Migration Service können Sie die Datenbanken von einer SQL Server-Instanz zu [Azure SQL-Datenbank](/azure/sql-database/) migrieren. In diesem Tutorial migrieren Sie die Datenbank [AdventureWorks2016](/sql/samples/adventureworks-install-configure#download-backup-files), die auf einer lokalen Instanz von SQL Server 2016 (oder höher) wiederhergestellt wurde, mithilfe von Azure Database Migration Service zu einer Einzel- oder Pooldatenbank in Azure SQL-Datenbank.
 
 Sie lernen Folgendes:
 > [!div class="checklist"]
@@ -41,6 +41,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 - Laden Sie [SQL Server 2016 oder höher](https://www.microsoft.com/sql-server/sql-server-downloads) herunter, und installieren Sie es.
 - Aktivieren Sie das TCP/IP-Protokoll (dieses wird während der SQL Server Express-Installation standardmäßig deaktiviert), indem Sie die Anweisungen im Artikel [Aktivieren oder Deaktivieren eines Servernetzwerkprotokolls](/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure) befolgen.
+- [Stellen Sie die Datenbank „AdventureWorks2016“ in der SQL Server-Instanz wieder her.](/sql/samples/adventureworks-install-configure#restore-to-sql-server)
 - Erstellen Sie gemäß der Anleitung im Artikel [Schnellstart: Erstellen einer Azure SQL-Einzeldatenbank](../azure-sql/database/single-database-create-quickstart.md) eine Datenbank in Azure SQL-Datenbank. Zum Zweck dieses Tutorials lautet der Name der Azure SQL-Datenbank **AdventureWorksAzure**. Sie können sie jedoch nach Bedarf umbenennen.
 
     > [!NOTE]
@@ -158,7 +159,7 @@ Damit Sie Daten von einer SQL Server-Instanz zu einer Einzel- oder Pooldatenbank
 
 3. Wählen Sie im Data Migration Assistant im Bildschirm **Options** (Optionen) die Schaltfläche **Weiter**.
 4. Geben Sie im Bildschirm **Select sources** (Quellen auswählen) im Dialogfeld **Connect to a server** (Verbindung mit einem Server herstellen) die Verbindungsdetails für SQL Server an, und wählen Sie dann **Connect** (Verbinden).
-5. Wählen Sie im Dialogfeld **Quellen hinzufügen** den Eintrag **Adventureworks2016** und dann **Hinzufügen** > **Bewertung starten** aus.
+5. Wählen Sie im Dialogfeld **Quellen hinzufügen** den Eintrag **AdventureWorks2016** und dann **Hinzufügen** > **Bewertung starten** aus.
 
     > [!NOTE]
     > Bei Verwendung von SSIS wird die Bewertung der Quell-SSISDB derzeit von DMA nicht unterstützt. SSIS-Projekte/-Pakete werden jedoch bewertet/überprüft, wenn sie in der von Azure SQL-Datenbank gehosteten Ziel-SSISDB neu bereitgestellt werden. Weitere Informationen zur Migration von SSIS-Paketen finden Sie im Artikel [Migrieren von SQL Server Integration Services-Paketen in Azure](./how-to-migrate-ssis-packages.md).
@@ -184,7 +185,7 @@ Nachdem Sie sich mit der Bewertung vertraut gemacht und sich davon überzeugt ha
 > [!IMPORTANT]
 > Bei Verwendung von SSIS wird die Migration der Quell-SSISDB derzeit von DMA nicht unterstützt. Sie können jedoch Ihre SSIS-Projekte/-Pakete in der von Azure SQL-Datenbank gehosteten Ziel-SSISDB neu bereitstellen. Weitere Informationen zur Migration von SSIS-Paketen finden Sie im Artikel [Migrieren von SQL Server Integration Services-Paketen in Azure](./how-to-migrate-ssis-packages.md).
 
-Führen Sie zur Migration des **Adventureworks2016**-Schemas zu einer Einzel- oder Pooldatenbank in Azure SQL-Datenbank die folgenden Schritte aus:
+Führen Sie zur Migration des **AdventureWorks2016**-Schemas zu einer Einzel- oder Pooldatenbank in Azure SQL-Datenbank die folgenden Schritte aus:
 
 1. Wählen Sie im Data Migration Assistant das Symbol „Neu (+)“ aus, und wählen Sie dann unter **Projekttyp** die Option **Migration** aus.
 2. Geben Sie einen Projektnamen im Textfeld **Source server type** (Quellservertyp) an, wählen Sie **SQL Server**, und wählen Sie dann im Textfeld **Target server type** (Zielservertyp) die Option **Azure SQL Database** (Azure SQL-Datenbank).
@@ -195,7 +196,7 @@ Führen Sie zur Migration des **Adventureworks2016**-Schemas zu einer Einzel- od
     ![Erstellen eines Data Migration Assistant-Projekts](media/tutorial-sql-server-to-azure-sql/dma-create-project.png)
 
 4. Wählen Sie **Create** (Erstellen), um das Projekt zu erstellen.
-5. Geben Sie im Data Migration Assistant die Quellverbindungsdetails für Ihre SQL Server-Instanz an, und wählen Sie **Connect** (Verbinden), und dann die Datenbank **Adventureworks2016** aus.
+5. Geben Sie im Data Migration Assistant die Quellverbindungsdetails für Ihre SQL Server-Instanz an, und wählen Sie **Connect** (Verbinden) und dann die Datenbank **AdventureWorks2016** aus.
 
     ![Data Migration Assistant-Quellverbindungsdetails](media/tutorial-sql-server-to-azure-sql/dma-source-connect.png)
 
@@ -203,7 +204,7 @@ Führen Sie zur Migration des **Adventureworks2016**-Schemas zu einer Einzel- od
 
     ![Data Migration Assistant-Zielverbindungsdetails](media/tutorial-sql-server-to-azure-sql/dma-target-connect.png)
 
-7. Wählen Sie **Weiter** aus, um zum Bildschirm **Select objects** (Objekte auswählen) zu gelangen. Hier können Sie die Schemaobjekte in der Datenbank **Adventureworks2016** angeben, die in Azure SQL-Datenbank bereitgestellt werden sollen.
+7. Wählen Sie **Weiter** aus, um zum Bildschirm **Select objects** (Objekte auswählen) zu gelangen. Hier können Sie die Schemaobjekte in der Datenbank **AdventureWorks2016** angeben, die in Azure SQL-Datenbank bereitgestellt werden sollen.
 
     Standardmäßig sind alle Objekte ausgewählt.
 
@@ -219,7 +220,7 @@ Führen Sie zur Migration des **Adventureworks2016**-Schemas zu einer Einzel- od
 
 [!INCLUDE [resource-provider-register](../../includes/database-migration-service-resource-provider-register.md)]   
 
-## <a name="create-an-instance"></a>Erstellen einer Instanz
+## <a name="create-an-azure-database-migration-service-instance"></a>Erstellen einer Instanz von Azure Database Migration Service
 
 1. Wählen Sie im Menü des Azure-Portals oder auf der **Startseite** die Option **Ressource erstellen** aus. Suchen Sie **Azure Database Migration Service**, und wählen Sie ihn aus.
 
@@ -248,7 +249,7 @@ Führen Sie zur Migration des **Adventureworks2016**-Schemas zu einer Einzel- od
 
     ![Konfigurieren der Netzwerkeinstellungen einer Azure Database Migration Service-Instanz](media/tutorial-sql-server-to-azure-sql/dms-settings-3.png)
 
-    - Wählen Sie zum Erstellen des Diensts die Option **Überprüfen + erstellen** aus.
+    - Wählen Sie zum Überprüfen der Details **Überprüfen + erstellen** und dann **Erstellen** aus, um den Dienst zu erstellen.
 
 ## <a name="create-a-migration-project"></a>Erstellen eines Migrationsprojekts
 
@@ -292,7 +293,7 @@ Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Si
 
 ## <a name="select-databases-for-migration"></a>Auswählen von Datenbanken für die Migration
 
-Wählen Sie entweder alle Datenbanken oder bestimmte Datenbanken aus, die Sie zu Azure SQL-Datenbank migrieren möchten. DMS gibt die erwartete Migrationszeit für ausgewählte Datenbanken an. Ist die Downtime für die Migration akzeptabel, fahren Sie mit der Migration fort. Ist die Downtime für die Migration nicht akzeptabel, sollten Sie eine Migration zu [SQL Managed Instance nahezu ohne Downtime](tutorial-sql-server-managed-instance-online.md) erwägen oder sich an das [DMS-Team](mailto:DMSFeedback@microsoft.com) wenden, um Informationen zu weiteren Optionen zu erhalten. 
+Wählen Sie entweder alle Datenbanken oder bestimmte Datenbanken aus, die Sie zu Azure SQL-Datenbank migrieren möchten. DMS gibt die erwartete Migrationszeit für ausgewählte Datenbanken an. Wenn die Downtimes für die Migration akzeptabel sind, fahren Sie mit der Migration fort. Wenn die Downtimes für die Migration nicht akzeptabel sind, sollten Sie eine Migration zu [SQL Managed Instance nahezu ohne Downtime](tutorial-sql-server-managed-instance-online.md) erwägen oder sich an das [DMS-Team](mailto:DMSFeedback@microsoft.com) wenden, um Informationen zu weiteren Optionen zu erhalten. 
 
 1. Wählen Sie in der Liste der verfügbaren Datenbanken die Datenbanken aus, die Sie migrieren möchten. 
 1. Überprüfen Sie die erwartete Downtime. Ist diese akzeptabel, wählen Sie **Weiter: Ziel auswählen >>** aus.

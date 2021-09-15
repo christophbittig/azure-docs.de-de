@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 082b0fd4d3324502516dcd2b45b9ad16a919c773
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: ce1d83ddd47553de1efdef80cc33bc5dd4634c81
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749220"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123307592"
 ---
 # <a name="renew-your-azure-key-vault-certificates"></a>Verlängern Ihrer Azure Key Vault-Zertifikate
 
@@ -28,7 +28,7 @@ In diesem Artikel wird beschrieben, wie Sie Ihre Azure Key Vault-Zertifikate ver
 Sie müssten einen Zertifikatkontakt hinzufügen, um über Ereignisse zur Zertifikatlebensdauer benachrichtigt zu werden. Zertifikatkontakte enthalten Kontaktinformationen zum Senden von Benachrichtigungen, die durch Zertifikatlebensdauer-Ereignisse ausgelöst werden. Die Kontaktinformationen werden von allen Zertifikaten im Schlüsseltresor gemeinsam genutzt. Eine Benachrichtigung zu einem Ereignis eines beliebigen Zertifikats im Schlüsseltresor wird an alle angegebenen Kontakte gesendet.
 
 ### <a name="steps-to-set-certificate-notifications"></a>Schritte zum Festlegen von Zertifikatbenachrichtigungen:
-Fügen Sie zunächst einen Zertifikatkontakt zu Ihrem Schlüsseltresor hinzu. Das Hinzufügen kann über das Azure-Portal oder das PowerShell-Cmdlet [`Add-AzureKeyVaultCertificateContact`](/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact) erfolgen.
+Fügen Sie zunächst einen Zertifikatkontakt zu Ihrem Schlüsseltresor hinzu. Sie können zum Hinzufügen das Azure-Portal oder das PowerShell-Cmdlet [Add-AzKeyVaultCertificateContact](/powershell/module/az.keyvault/add-azkeyvaultcertificatecontact) nutzen.
 
 Konfigurieren Sie als Nächstes, wann Sie über den Ablauf des Zertifikats benachrichtigt werden möchten. Informationen zum Konfigurieren der Lebenszyklusattribute des Zertifikats finden Sie unter [Konfigurieren der automatischen Zertifikatrotation in Key Vault](./tutorial-rotate-certificates.md#update-lifecycle-attributes-of-a-stored-certificate).
 

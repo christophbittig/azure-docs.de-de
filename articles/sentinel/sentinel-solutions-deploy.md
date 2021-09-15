@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/05/2021
 ms.author: yelevin
-ms.openlocfilehash: ce1620982aac833472102dce8a80b0c4195eb61d
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: 5cb84ad912e5430948d0dedc71d94e69d1dd1a86
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109811754"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251904"
 ---
 # <a name="discover-and-deploy-azure-sentinel-solutions"></a>Entdecken und Bereitstellen von Azure Sentinel-Lösungen
 
@@ -46,7 +46,7 @@ Lösungen können aus einer oder allen der folgenden Komponenten bestehen:
 
     :::image type="content" source="./media/sentinel-solutions-deploy/solutions-list.png" alt-text="Lösungsliste":::
 
-    - Wenn Sie ans Ende der Liste scrollen, die gesuchte Lösung aber nicht finden, klicken Sie unten auf den Link **Mehr laden**, um die Liste zu erweitern.
+    - Wenn Sie ans Ende der Liste scrollen, die gesuchte Lösung aber nicht finden, klicken Sie unten auf den Link **Weitere laden**, um die Liste zu erweitern.
 
         :::image type="content" source="./media/sentinel-solutions-deploy/load-more.png" alt-text="Laden weiterer Lösungen":::
 
@@ -68,7 +68,7 @@ Lösungen können aus einer oder allen der folgenden Komponenten bestehen:
 
 1. Geben Sie das Abonnement, die Ressourcengruppe und den Arbeitsbereich ein, in dem/der Sie die Lösung bereitstellen möchten. 
 
-1. Klicken Sie auf **Weiter**, um die verbleibenden Registerkarten (entsprechend den in der Lösung enthaltenen Komponenten) zu durchlaufen, auf denen Sie die einzelnen Komponenten kennen lernen und in einigen Fällen konfigurieren können.
+1. Klicken Sie auf **Weiter**, um die verbleibenden Registerkarten (entsprechend den in der Lösung enthaltenen Komponenten) zu durchlaufen, auf denen Sie die einzelnen Komponenten kennenlernen und in einigen Fällen konfigurieren können.
 
     > [!NOTE]
     > Die unten aufgeführten Registerkarten entsprechen den Komponenten, die von der in den zugehörigen Screenshots gezeigten Lösung angeboten werden. Verschiedene Lösungen können unterschiedliche Arten von Komponenten enthalten. Daher werden möglicherweise nicht in jeder Lösung die gleichen Registerkarten angezeigt, und es werden möglicherweise Registerkarten angezeigt, die unten nicht beschrieben werden.
@@ -80,7 +80,7 @@ Lösungen können aus einer oder allen der folgenden Komponenten bestehen:
     1. Registerkarte **Playbooks** – Sie müssen hier gültige Proofpoint TAP-Anmeldeinformationen eingeben, damit sich das Playbook bei Ihrem Proofpoint-System authentifizieren kann, um vorgeschriebene Antwortaktionen durchzuführen.
         :::image type="content" source="./media/sentinel-solutions-deploy/wizard-playbooks.png" alt-text="Registerkarte „Playbooks“ des Bereitstellungs-Assistenten":::
 
-1. Warten Sie abschließend, bis auf der Registerkarte **Überprüfen und erstellen** die Meldung „Überprüfung erfolgreich“ angezeigt wird, und klicken Sie dann auf **Erstellen**, um die Lösung bereitzustellen. Sie können auch den Link **Vorlage für Automatisierung herunterladen** auswählen, um die Lösung als Code bereitzustellen.
+1. Warten Sie, bis auf der Registerkarte **Überprüfen und erstellen** die Meldung „Überprüfung erfolgreich“ angezeigt wird, und wählen Sie dann **Erstellen** aus, um die Lösung bereitzustellen. Sie können auch den Link **Vorlage für Automatisierung herunterladen** auswählen, um die Lösung als Code bereitzustellen.
 
     :::image type="content" source="./media/sentinel-solutions-deploy/wizard-create.png" alt-text="Registerkarte „Überprüfen und erstellen“ des Bereitstellungs-Assistenten":::
 

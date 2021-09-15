@@ -4,12 +4,12 @@ description: In diesem Artikel wird erläutert, wie Sie Ihrer Service Fabric-Anw
 ms.topic: article
 ms.date: 12/09/2019
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 7f49a3f97862c3a141ea9376d0ffc9bf510d3e6f
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: ac383c3d517bbbab2b25c12dc4a06b4fe63e1b89
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110782960"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122865046"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources"></a>Gewähren des Zugriffs auf Azure-Ressourcen für die verwaltete Identität einer Service Fabric-Anwendung
 
@@ -98,5 +98,6 @@ Vom System zugewiesene verwaltete Identitäten:
 Weitere Informationen finden Sie unter [Tresore: Aktualisieren der Zugriffsrichtlinie](/rest/api/keyvault/vaults/updateaccesspolicy).
 
 ## <a name="next-steps"></a>Nächste Schritte
+* [Bereitstellen einer Service Fabric-Anwendung mit verwalteter Identität in einem verwalteten Cluster](how-to-managed-cluster-application-managed-identity.md)
 * [Bereitstellen einer Azure Service Fabric-Anwendung mit einer systemseitig zugewiesenen verwalteten Identität](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Bereitstellen einer Azure Service Fabric-Anwendung mit einer benutzerseitig zugewiesenen verwalteten Identität](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)

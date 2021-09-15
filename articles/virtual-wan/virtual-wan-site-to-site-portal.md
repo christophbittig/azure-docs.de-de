@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 07/15/2021
+ms.date: 08/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: 8fb3734e1975254442fa2aff57ba60847bbfac04
-ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
+ms.openlocfilehash: dbc48719f2897c22717319e1e07b5b3b3146fe84
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114362251"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122638286"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Tutorial: Erstellen einer Site-to-Site-Verbindung per Azure Virtual WAN
 
@@ -29,7 +29,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Herstellen einer VPN-Verbindung zwischen einer Site und einem Hub
 > * Verbinden eines VNET mit einem Hub
 > * Herunterladen einer Konfigurationsdatei
-> * Konfigurieren Ihres VPN-Gateways
+> * Anzeigen oder Bearbeiten Ihres VPN-Gateways
 
 > [!NOTE]
 > Falls Sie über viele Sites verfügen, verwenden Sie normalerweise einen [Virtual WAN-Partner](https://aka.ms/virtualwan), um diese Konfiguration zu erstellen. Sie können diese Konfiguration aber auch selbst erstellen, wenn Sie mit Netzwerken vertraut sind und sich mit der Konfiguration Ihres eigenen VPN-Geräts auskennen.
@@ -47,42 +47,51 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass die folgenden Vorausset
 
 [!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-create-vwan-include.md)]
 
-## <a name="create-a-hub"></a><a name="hub"></a>Erstellen eines Hubs
+## <a name="create-hub"></a><a name="hub"></a>Erstellen eines Hubs
 
-Ein Hub ist ein virtuelles Netzwerk, das Gateways für Verbindungen vom Typ „Site-to-Site“, „ExpressRoute“ oder „Point-to-Site“ enthalten kann. Nachdem der Hub erstellt wurde, werden Ihnen für den Hub auch dann Kosten berechnet, wenn Sie keine Websites zuordnen.
+Ein Hub ist ein virtuelles Netzwerk, das Gateways für Verbindungen vom Typ „Site-to-Site“, „ExpressRoute“ oder „Point-to-Site“ enthalten kann. Für dieses Tutorial füllen Sie zunächst die Registerkarte **Grundlagen** für den virtuellen Hub und anschließend die Registerkarte „Site-to-Site“ im nächsten Abschnitt aus. Beachten Sie, dass es möglich ist, einen leeren Hub (einen Hub, der keine Gateways enthält) zu erstellen und später Gateways (S2S, P2S, ExpressRoute usw.) hinzuzufügen. Nachdem ein Hub erstellt wurde, werden Ihnen für den Hub auch dann Kosten berechnet, wenn Sie keine Sites zuordnen oder Gateways im Hub erstellen.
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-s2s-hub-include.md)]
 
-## <a name="create-a-site-to-site-vpn-gateway"></a><a name="gateway"></a>Erstellen eines Site-to-Site-VPN-Gateways
+## <a name="create-site-to-site-vpn-gateway"></a><a name="gateway"></a>Erstellen eines Site-to-Site-VPN-Gateways
+
+In diesem Abschnitt konfigurieren Sie Site-to-Site-Konnektivitätseinstellungen und erstellen dann den Hub und das S2S-VPN-Gateway. Das Erstellen eines Hubs und Gateways kann etwa 30 Minuten dauern.
 
 [!INCLUDE [Create a gateway](../../includes/virtual-wan-tutorial-s2s-gateway-include.md)]
 
-## <a name="create-a-site"></a><a name="site"></a>Erstellen einer Site
+## <a name="create-site"></a><a name="site"></a>Erstellen einer Site
 
 In diesem Abschnitt wird eine Site erstellt. Sites entsprechen Ihren physischen Standorten. Sie können beliebig viele davon erstellen. Erstellen Sie beispielsweise drei separate Sites, wenn Sie jeweils über eine Filiale in New York, London und Los Angeles verfügen. Diese Sites enthalten Ihre lokalen VPN-Geräteendpunkte. In einem virtuellen WAN können bis zu 1.000 Sites pro virtuellem Hub erstellt werden. Bei mehreren Hubs ist die Erstellung von 1.000 Sites pro Hub möglich. Falls Sie über ein CPE-Gerät eines Virtual WAN-Partners verfügen, können Sie sich bei dem Partner über die Automatisierungsmöglichkeiten in Azure informieren. Automatisierung impliziert in der Regel einen einfachen Klickvorgang, um umfassende Branchinformationen nach Azure zu exportieren und die Konnektivität vom CPE zum Azure Virtual WAN-VPN-Gateway einzurichten. Weitere Informationen finden Sie unter [Virtual WAN-Partner](virtual-wan-configure-automation-providers.md).
 
 [!INCLUDE [Create a site](../../includes/virtual-wan-tutorial-s2s-site-include.md)]
 
-## <a name="connect-the-vpn-site-to-the-hub"></a><a name="connectsites"></a>Herstellen einer Verbindung von der VPN-Site mit dem Hub
+## <a name="connect-vpn-site-to-hub"></a><a name="connectsites"></a>Herstellen einer Verbindung zwischen einer VPN-Site und einem Hub
 
-In diesem Schritt stellen Sie für Ihre VPN-Site eine Verbindung mit dem Hub her.
+In diesem Abschnitt stellen Sie für Ihre VPN-Site eine Verbindung mit dem Hub her.
 
 [!INCLUDE [Connect VPN sites](../../includes/virtual-wan-tutorial-s2s-connect-vpn-site-include.md)]
 
-## <a name="connect-the-vnet-to-the-hub"></a><a name="vnet"></a>Herstellen einer Verbindung zwischen VNET und Hub
+## <a name="connect-vnet-to-hub"></a><a name="vnet"></a>Verbinden eines VNET mit einem Hub
+
+In diesem Abschnitt erstellen Sie eine Verbindung zwischen dem Hub und Ihrem VNet.
 
 [!INCLUDE [Connect](../../includes/virtual-wan-connect-vnet-hub-include.md)]
 
 ## <a name="download-vpn-configuration"></a><a name="device"></a>Herunterladen der VPN-Konfiguration
 
-Verwenden Sie die VPN-Gerätekonfiguration, um Ihr lokales VPN-Gerät zu konfigurieren.
+Verwenden Sie die VPN-Gerätekonfigurationsdatei, um Ihr lokales VPN-Gerät zu konfigurieren. Die grundlegenden Schritte sind im Folgenden aufgeführt. Informationen dazu, was die Konfigurationsdatei enthält und wie Sie Ihr VPN-Gerät konfigurieren: 
 
-1. Klicken Sie auf der Seite für Ihr virtuelles WAN auf **Übersicht**.
-2. Klicken Sie oben auf der Seite **Hub > VPNSite** auf **VPN-Konfiguration herunterladen**. Azure erstellt ein Speicherkonto in der Ressourcengruppe „microsoft-network-[location]“, wobei „location“ für den WAN-Standort steht. Nachdem Sie die Konfiguration auf Ihre VPN-Geräte angewendet haben, können Sie dieses Speicherkonto löschen.
-3. Nachdem die Erstellung der Datei abgeschlossen wurde, können Sie auf den Link klicken, um sie herunterzuladen.
-4. Wenden Sie die Konfiguration auf Ihr lokales VPN-Gerät an.
+1. Navigieren Sie zur Seite **Virtueller Hub > VPN (Site-to-Site)** .
 
-### <a name="about-the-vpn-device-configuration-file"></a>Informationen zur VPN-Gerätekonfigurationsdatei
+1. Klicken Sie oben auf der Seite **VPN (Site-to-Site)** auf **VPN-Konfiguration herunterladen**. Mehrere Meldungen werden angezeigt, während Azure ein Speicherkonto in der Ressourcengruppe „microsoft-network-[location]“ erstellt. „location“ steht dabei für den Standort des WAN.
+
+1. Klicken Sie nach der Erstellung der Datei auf den Link, um sie herunterzuladen. Weitere Informationen zum Inhalt der Datei finden Sie in diesem Abschnitt unter [Informationen zur VPN-Gerätekonfigurationsdatei](#config-file).
+
+1. Wenden Sie die Konfiguration auf Ihr lokales VPN-Gerät an. Weitere Informationen finden Sie in diesem Abschnitt unter [Konfigurieren Ihres VPN-Geräts](#vpn-device).
+
+1. Nach dem Anwenden der Konfiguration auf Ihre VPN-Geräte müssen Sie das von Azure erstellte Speicherkonto nicht beibehalten. Sie können es löschen.
+
+### <a name="about-the-vpn-device-configuration-file"></a><a name="config-file"></a>Informationen zur VPN-Gerätekonfigurationsdatei
 
 Die Gerätekonfigurationsdatei enthält die Einstellungen, die beim Konfigurieren Ihrer lokalen VPN-Geräte verwendet werden. Beachten Sie beim Anzeigen dieser Datei die folgenden Informationen:
 
@@ -99,7 +108,7 @@ Die Gerätekonfigurationsdatei enthält die Einstellungen, die beim Konfiguriere
          ```
         "ConnectedSubnets":["10.2.0.0/16","10.3.0.0/16"]
          ```
-    * **IP-Adressen** des vpngateway für den virtuellen Hub. Da jede Verbindung des vpngateway aus zwei Tunneln mit Aktiv-Aktiv-Konfiguration besteht, werden in dieser Datei beide IP-Adressen aufgelistet. In diesem Beispiel werden für jede Site „Instance0“ und „Instance1“ angezeigt.<br>Beispiel:
+    * **IP-Adressen** des vpngateway für den virtuellen Hub. Da jede Verbindung des VPN-Gateways (vpngateway) aus zwei Tunneln mit Aktiv-Aktiv-Konfiguration besteht, werden in dieser Datei beide IP-Adressen aufgelistet. In diesem Beispiel werden für jede Site „Instance0“ und „Instance1“ angezeigt.<br>Beispiel:
 
         ``` 
         "Instance0":"104.45.18.186"
@@ -212,7 +221,7 @@ Die Gerätekonfigurationsdatei enthält die Einstellungen, die beim Konfiguriere
    }
   ```
 
-### <a name="configuring-your-vpn-device"></a>Konfigurieren Ihres VPN-Geräts
+### <a name="configuring-your-vpn-device"></a><a name="vpn-device"></a>Konfigurieren Ihres VPN-Geräts
 
 >[!NOTE]
 > Wenn Sie mit einer Virtual WAN-Partnerlösung arbeiten, wird die VPN-Gerätekonfiguration automatisch durchgeführt. Der Gerätecontroller ruft die Konfigurationsdatei aus Azure ab und wendet sie auf das Gerät an, um die Verbindung mit Azure einzurichten. Dies bedeutet, dass Sie nicht wissen müssen, wie Sie Ihr VPN-Gerät manuell konfigurieren.
@@ -220,23 +229,26 @@ Die Gerätekonfigurationsdatei enthält die Einstellungen, die beim Konfiguriere
 
 Falls Sie eine Anleitung für die Konfiguration Ihres Geräts benötigen, können Sie die Anleitung auf der [Seite mit den Schritten für die VPN-Gerätekonfiguration](~/articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#configscripts) verwenden. Beachten Sie hierbei aber die folgenden Einschränkungen:
 
-* Die Anleitung auf der Seite für die VPN-Geräte wurde nicht für Virtual WAN geschrieben, aber Sie können die Virtual WAN-Werte aus der Konfigurationsdatei verwenden, um Ihr VPN-Gerät manuell zu konfigurieren. 
+* Die Anleitung auf der Seite für die VPN-Geräte wurde nicht für Virtual WAN geschrieben, aber Sie können die Virtual WAN-Werte aus der Konfigurationsdatei verwenden, um Ihr VPN-Gerät manuell zu konfigurieren.
+ 
 * Die herunterladbaren Skripts für die Gerätekonfiguration, die für VPN Gateway bestimmt sind, funktionieren nicht für Virtual WAN, da sich die Konfiguration unterscheidet.
+
 * Für eine neue Virtual WAN-Instanz können IKEv1 und IKEv2 unterstützt werden.
+
 * Für Virtual WAN können sowohl richtlinienbasierte als auch routenbasierte VPN-Geräte und die entsprechenden Geräteanweisungen verwendet werden.
 
-## <a name="configure-your-vpn-gateway"></a><a name="gateway-config"></a>Konfigurieren Ihres VPN-Gateways
+## <a name="view-or-edit-gateway-settings"></a><a name="gateway-config"></a>Anzeigen oder Bearbeiten von Gatewayeinstellungen
 
-Sie können Ihre VPN Gateway-Einstellungen jederzeit anzeigen und konfigurieren, indem Sie **Anzeigen/Konfigurieren** auswählen.
+Sie können Ihre VPN-Gatewayeinstellungen jederzeit anzeigen und konfigurieren. Navigieren Sie dazu zu **Virtueller HUB > VPN (Site-to-Site)** , und wählen Sie **Anzeigen/Konfigurieren** aus.
 
 :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-1.png" alt-text="Screenshot: Seite „VPN (Site-to-Site)“ mit einem Pfeil, der auf die Aktion „Anzeigen/Konfigurieren“ zeigt" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-1-expand.png":::
 
 Auf der Seite **VPN-Gateway bearbeiten** werden die folgenden Einstellungen angezeigt:
 
-* Öffentliche IP-Adresse für VPN Gateway (von Azure zugewiesen)
-* Private IP-Adresse für VPN Gateway (von Azure zugewiesen)
-* BGP-IP-Standardadresse für VPN Gateway (von Azure zugewiesen)
-* Konfigurationsoption für benutzerdefinierte BGP-IP-Adresse: Dieses Feld ist für APIPA (Automatic Private IP Addressing) reserviert. Azure unterstützt BGP-IP-Adressen in den Bereichen „169.254.21.*“ und „169.254.22.*“. Azure akzeptiert BGP-Verbindungen in diesen Bereichen, wählt jedoch die Verbindung mit der standardmäßigen BGP-IP-Adresse.
+* **Öffentliche IP-Adresse**: Von Azure zugewiesen
+* **Privae IP-Adresse**: Von Azure zugewiesen
+* **BGP-IP-Standardadresse**: Von Azure zugewiesen
+* **Benutzerdefinierte BGP-IP-Adresse**: Dieses Feld ist für APIPA (Automatic Private IP Addressing) reserviert. Azure unterstützt BGP-IP-Adressen in den Bereichen „169.254.21.*“ und „169.254.22.*“. Azure akzeptiert BGP-Verbindungen in diesen Bereichen, wählt jedoch die Verbindung mit der standardmäßigen BGP-IP-Adresse.
 
    :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="Screenshot: Seite „VPN Gateway bearbeiten“ mit hervorgehobener Schaltfläche „Bearbeiten“" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
 

@@ -10,12 +10,12 @@ ms.author: gopalv
 author: gvashishtha
 ms.date: 07/31/2020
 ms.custom: deploy
-ms.openlocfilehash: 1bb38c45203b0356444d0eb115a8c75e0f1c465d
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 7d080297dd32ad137e11cb692b820f4b9f6b3521
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122356666"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123428450"
 ---
 # <a name="update-a-deployed-web-service"></a>Aktualisieren eines bereitgestellten Webdiensts
 
@@ -37,6 +37,14 @@ Weitere Informationen finden Sie unter [ACI-Dienstaktualisierungsmethode.](/pyth
 > Wenn Sie eine neue Version eines Modells erstellen, müssen Sie jeden Dienst, der die neue Version verwenden soll, manuell aktualisieren.
 >
 > Sie können nicht das SDK verwenden, um einen Webdienst zu aktualisieren, der über den Azure Machine Learning-Designer veröffentlicht wurde.
+
+> [!IMPORTANT]
+> Azure Kubernetes Service verwendet den [Blobfuse FlexVolume-Treiber](https://github.com/Azure/kubernetes-volume-drivers/blob/master/flexvolume/blobfuse/README.md) für die Versionen <=1.16 und den [Blob CSI-Treiber](https://github.com/kubernetes-sigs/blob-csi-driver/blob/master/README.md) für die Versionen >=1.17. 
+>
+> Daher ist es wichtig, den Webdienst nach dem Clusterupgrade erneut bereitzustellen oder zu aktualisieren, um die Bereitstellung für die richtige Blobfuse-Methode für die Clusterversion durchzuführen.
+
+> [!NOTE]
+> Wenn ein Vorgang bereits ausgeführt wird, antwortet jeder neue Vorgang für denselben Webdienst mit einem 409-Konfliktfehler. Wenn beispielsweise ein Webdienstvorgang erstellt oder aktualisiert wird und Sie einen neuen Löschvorgang auslösen, wird ein Fehler ausgelöst.
 
 **Verwenden des SDK**
 
@@ -86,7 +94,7 @@ az ml service update -n myservice --model-metadata-file modelinfo.json
 >
 > Um den Dienst so zu aktualisieren, dass für ihn ein neues Eingabeskript oder eine neue Umgebung verwendet wird, erstellen Sie eine [Rückschlusskonfigurationsdatei](./reference-azure-machine-learning-cli.md#inference-configuration-schema), und geben Sie diese mit dem `ic`-Parameter an.
 
-Weitere Informationen finden Sie in der Dokumentation zu [az ml service update](/cli/azure/ml(v1)/service?view=azure-cli-latest#az_ml_v1__service_update).
+Weitere Informationen finden Sie in der Dokumentation zu [az ml service update](/cli/azure/ml(v1)/service?view=azure-cli-latest#az_ml_v1__service_update&preserve-view=true).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

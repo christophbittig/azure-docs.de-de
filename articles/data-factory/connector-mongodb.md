@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 06/01/2021
-ms.openlocfilehash: 3a555f92fb210516ce7fa010e39df339c3823bf0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/30/2021
+ms.openlocfilehash: 6788de24c3e8fc74ac69f73b5e91c13b56843eda
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122640018"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123307317"
 ---
 # <a name="copy-data-from-or-to-mongodb-by-using-azure-data-factory"></a>Kopieren von Daten aus oder nach MongoDB mithilfe von Azure Data Factory
 
@@ -41,6 +41,30 @@ Dieser MongoDB-Connector unterstützt insbesondere die **Versionen bis 4.2**.
 ## <a name="getting-started"></a>Erste Schritte
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-linked-service-to-mongodb-using-ui"></a>Erstellen eines verknüpften Diensts für MongoDB über die Benutzeroberfläche
+
+Führen Sie die folgenden Schritte aus, um einen verknüpften Dienst für MongoDB in der Benutzeroberfläche des Azure-Portals zu erstellen.
+
+1. Navigieren Sie in Ihrem Azure Data Factory- oder Synapse-Arbeitsbereich zur Registerkarte „Verwalten“, wählen Sie „Verknüpfte Dienste“ aus, und klicken Sie dann auf „Neu“:
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Erstellen Sie einen neuen verknüpften Dienst mithilfe der Azure Data Factory-Benutzeroberfläche.":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Erstellen Sie einen neuen verknüpften Dienst mithilfe der Azure Synapse-Benutzeroberfläche.":::
+
+2. Suchen Sie nach MongoDB, und wählen Sie den MongoDB-Connector aus.
+
+    :::image type="content" source="media/connector-mongodb/mongodb-connector.png" alt-text="Wählen Sie den MongoDB-Connector aus.":::    
+
+1. Konfigurieren Sie die Dienstdetails, testen Sie die Verbindung, und erstellen Sie den neuen verknüpften Dienst.
+
+    :::image type="content" source="media/connector-mongodb/configure-mongodb-linked-service.png" alt-text="Konfigurieren Sie einen mit MongoDB verknüpften Dienst.":::
+
+## <a name="connector-configuration-details"></a>Details zur Connectorkonfiguration
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den MongoDB-Connector verwendet werden:
 

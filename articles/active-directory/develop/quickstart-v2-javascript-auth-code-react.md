@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: f380a2807ad4efa6c2da2df8aabf3b521918d64c
-ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
+ms.openlocfilehash: 1ce5a7e2532fd150b5445e3b243c841d797b4157
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112516811"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123226852"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-a-react-spa-using-the-auth-code-flow"></a>Schnellstart: Anmelden und Abrufen eines Zugriffstokens in einer React-SPA mithilfe des Autorisierungscodeflows
 
@@ -187,7 +187,7 @@ npm install @azure/msal-browser @azure/msal-react
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine ausführliche Anleitung zum Erstellen der Autorisierungscodeflow-Anwendung mithilfe von Vanilla JavaScript finden Sie im folgenden Tutorial:
+Probieren Sie als Nächstes ein schrittweises Tutorial aus, um zu erfahren, wie Sie eine React-SPA von Grund auf neu erstellen, die Benutzer anmeldet und die Microsoft Graph-API aufruft, um Benutzerprofildaten abzurufen:
 
 > [!div class="nextstepaction"]
-> [Aufrufen der Microsoft Graph-API aus einer JavaScript-SPA](./tutorial-v2-javascript-auth-code.md)
+> [Tutorial: Anmelden von Benutzern und Aufrufen von Microsoft Graph](tutorial-v2-react.md)

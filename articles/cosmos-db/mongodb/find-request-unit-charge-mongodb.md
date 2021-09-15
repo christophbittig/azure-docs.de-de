@@ -6,14 +6,14 @@ ms.author: gahllevy
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 03/19/2021
+ms.date: 08/26/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 5b3a43805e77157b875948ca093c5f04935ffe68
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c2ad6ef764fa13a6876f1727314d5a7944ce7d31
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122338961"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123035211"
 ---
 # <a name="find-the-request-unit-charge-for-operations-executed-in-azure-cosmos-db-api-for-mongodb"></a>Ermitteln der Gebühr für Anforderungseinheiten für Vorgänge, die in der Azure Cosmos DB-API für MongoDB ausgeführt werden
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -97,3 +97,6 @@ Informationen zum Optimieren Ihres RU-Verbrauchs finden Sie in diesen Artikeln:
 * [Durchsatz und Anforderungseinheiten in Azure Cosmos DB](../request-units.md)
 * [Optimieren der Kosten für bereitgestellten Durchsatz in Azure Cosmos DB](../optimize-cost-throughput.md)
 * [Optimieren der Abfragekosten in Azure Cosmos DB](../optimize-cost-reads-writes.md)
+* Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen? Sie können Informationen zu Ihrem vorhandenen Datenbankcluster für die Kapazitätsplanung verwenden.
+    * Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](../convert-vcore-to-request-unit.md). 
+    * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbankworkload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-capacity-planner.md).

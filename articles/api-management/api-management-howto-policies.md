@@ -1,6 +1,6 @@
 ---
 title: Richtlinien in Azure API Management | Microsoft Docs
-description: Erfahren Sie, wie Sie Richtlinien in API Management erstellen, bearbeiten und konfigurieren. Hier finden Sie Codebeispiele und zusätzliche verfügbare Ressourcen.
+description: Erfahren Sie, wie Sie Richtlinien in API Management erstellen, bearbeiten und konfigurieren. Siehe Codebeispiele und andere verfügbare Ressourcen.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -10,35 +10,40 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/29/2017
+ms.date: 08/25/2021
 ms.author: apimpm
-ms.openlocfilehash: c87e436fe7fada8b1e16c18a5fad36c4ef3c872a
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: c4b069d76d795bd8ae830b811c97dfe58c2f842c
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110096398"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123106010"
 ---
 # <a name="policies-in-azure-api-management"></a>Richtlinien in Azure API Management
 
-Richtlinien sind ein umfassendes Werkzeug in Azure API Management (APIM), mit dem Herausgeber das Verhalten der API über eine Konfiguration verändern können. Richtlinien sind eine Sammlung von Anweisungen, die sequenziell bei Anfragen oder Antworten einer API ausgeführt werden. Häufig verwendete Anweisungen sind z. B. Formatumwandlungen von XML nach JSON und Aufrufbeschränkungen, um die Anzahl eingehender Aufrufe von einem Entwickler zu beschränken. Viele weitere Richtlinien sind vorkonfiguriert verfügbar.
+In Azure API Management können API-Herausgeber das API-Verhalten über eine Konfiguration mithilfe von Richtlinien ändern. Richtlinien sind eine Sammlung von Anweisungen, die sequenziell auf die Anforderung oder Antwort einer API ausgeführt werden. Zu den gängigen Anweisungen gehören:
 
-Richtlinien werden im Gateway, das sich zwischen API-Consumer und der verwalteten API befindet, angewendet. Das Gateway empfängt alle Anfragen und leitet diese normalerweise unverändert an die zugrunde liegende API weiter. Richtlinien können jedoch Änderungen an der eingehenden Anfrage und an der ausgehenden Antwort vornehmen.
+* Formatumwandlung von XML in JSON
+* Aufrufratenbeschränkung zum Begrenzen der Anzahl eingehender Aufrufe von einem Entwickler 
 
-Richtlinienausdrücke können als Attributwerte oder Textwerte in einer beliebigen API Management-Richtlinie verwendet werden, sofern in der Richtlinie nicht anders angegeben. Einige Richtlinien, beispielsweise [Ablaufsteuerung][Control flow] und [Variable festlegen][Set variable], basieren auf Richtlinienausdrücken. Weitere Informationen finden Sie unter [Erweiterte Richtlinien][Advanced policies] und [Richtlinienausdrücke][Policy expressions].
+Viele weitere Richtlinien sind vorkonfiguriert verfügbar.
+
+Richtlinien werden im Gateway angewendet, das sich zwischen API-Consumer und der verwalteten API befindet. Während das Gateway Anforderungen empfängt und diese unverändert an die zugrunde liegende API weiterleitet, kann eine Richtlinie sowohl auf die eingehende Anforderung als auch auf die ausgehende Antwort Änderungen anwenden.
+
+Sofern in der Richtlinie nicht anders angegeben, können Richtlinienausdrücke als Attribut- oder Textwerte in allen API Management-Richtlinien verwendet werden. Einige Richtlinien, z. B. [Ablaufsteuerung][Control flow] und [Variable festlegen][Set variable], basieren auf Richtlinienausdrücken. Weitere Informationen finden Sie in den Artikeln [Erweiterte Richtlinien][Advanced policies] und [Richtlinienausdrücke][Policy expressions].
 
 ## <a name="understanding-policy-configuration"></a><a name="sections"> </a>Grundlegendes zur Richtlinienkonfiguration
 
-Die Richtliniendefinition ist ein einfaches XML-Dokument, das eine Sequenz eingehender und ausgehender Anweisungen beschreibt. Das XML-Dokument kann direkt im Definitionsfenster bearbeitet werden. Auf der rechten Seite sehen Sie eine Liste mit Anweisungen, und die für den aktuellen Bereich anwendbaren Anweisungen sind aktiviert und hervorgehoben.
+Richtliniendefinitionen sind einfache XML-Dokumente, die eine Sequenz eingehender und ausgehender Anweisungen beschreiben. Sie können den XML-Code direkt im Definitionsfenster bearbeiten, der außerdem Folgendes bereitstellt:
+* Eine Liste der Anweisungen auf der rechten Seite.
+* Für den aktuellen Bereich anwendbare Anweisungen, diese sind aktiviert und hervorgehoben.
 
 Wenn Sie auf eine aktivierte Anweisung klicken, wird der entsprechende XML-Ausschnitt an der Cursorposition in der Definitionsansicht eingefügt. 
 
 > [!NOTE]
-> Wenn die Richtlinie, die Sie hinzufügen möchten, nicht aktiviert ist, stellen Sie sicher, dass Sie sich im richtigen Bereich für diese Richtlinie befinden. Für jede Richtlinienanweisung sind bestimmte Bereiche und Richtlinienabschnitte vorgesehen. Informationen zu den Richtlinienabschnitten und Bereichen für eine Richtlinie finden Sie in der [Richtlinienreferenz][Policy Reference] im Abschnitt **Verwendung** für die jeweilige Richtlinie.
-> 
-> 
+> Wenn die Richtlinie, die Sie hinzufügen möchten, nicht aktiviert ist, stellen Sie sicher, dass Sie sich im richtigen Bereich für diese Richtlinie befinden. Für jede Richtlinienanweisung sind bestimmte Bereiche und Richtlinienabschnitte vorgesehen. Informationen zu den Richtlinienabschnitten und den Bereichen für eine Richtlinie finden Sie im Abschnitt **Verwendung** in der [Richtlinienreferenz][Policy Reference].
 
-Die Konfiguration ist in `inbound`, `backend`, `outbound` und `on-error` unterteilt. Die Richtlinienanweisungen werden in der Reihenfolge für Anforderung und Antwort ausgeführt.
+Die Konfiguration ist in `inbound`, `backend`, `outbound` und `on-error` unterteilt. Die Richtlinienanweisungen werden für eine Anforderung und eine Antwort nacheinander ausgeführt.
 
 ```xml
 <policies>
@@ -58,7 +63,18 @@ Die Konfiguration ist in `inbound`, `backend`, `outbound` und `on-error` unterte
 </policies> 
 ```
 
-Wenn bei der Verarbeitung einer Anfrage ein Fehler auftritt, werden alle verbleibenden Schritte in den `inbound`-, `backend`- oder `outbound`-Abschnitten übersprungen und die Ausführung bei den Anweisungen im `on-error`-Abschnitt fortgesetzt. Durch Platzieren von Richtlinienanweisungen im `on-error`-Abschnitt können Sie den Fehler überprüfen, indem Sie die `context.LastError`-Eigenschaft verwenden, die Fehlerantwort mit der `set-body`-Richtlinie untersuchen und anpassen sowie konfigurieren, was geschieht, wenn ein Fehler auftritt. Es gibt Fehlercodes für integrierte Schritte und für Fehler, die während der Verarbeitung von Richtlinienanweisungen auftreten können. Weitere Informationen finden Sie unter [Error handling in API Management policies](./api-management-error-handling-policies.md)(in englischer Sprache).
+Wenn es während der Verarbeitung einer Anforderung zu einem Fehler kommt, gilt Folgendes:
+* Alle verbleibenden Schritte in den Abschnitten `inbound`, `backend` oder `outbound` werden übersprungen.
+* Die Ausführung wechselt zu den Anweisungen im Abschnitt `on-error`.
+
+Das Platzieren von Richtlinienanweisungen im Abschnitt `on-error` ermöglicht Ihnen Folgendes:
+* Sie können den Fehler mithilfe der Eigenschaft `context.LastError` überprüfen.
+* Sie können die Fehlerantwort mithilfe der Richtlinie `set-body` untersuchen und anpassen.
+* Sie können konfigurieren, was bei Auftreten eines Fehlers passiert. 
+
+Unter [Fehlerbehandlung bei API Management-Richtlinien](./api-management-error-handling-policies.md) finden Sie Informationen zu Fehlercodes für:
+* Integrierte Schritte
+* Fehler, die während der Verarbeitung von Richtlinienanweisungen auftreten können 
 
 ## <a name="how-to-configure-policies"></a><a name="scopes"> </a>Konfigurieren von Richtlinien
 
@@ -76,7 +92,7 @@ Weitere Codebeispiele finden Sie unter [Richtlinien für die API-Verwaltung](./p
 
 ### <a name="apply-policies-specified-at-different-scopes"></a>Anwenden von Richtlinien, die für verschiedene Bereiche angegeben sind
 
-Wenn Sie eine Richtlinie auf der globalen Ebene und eine Richtlinie für eine API konfiguriert haben, dann werden immer beide Richtlinien angewendet, wenn diese API aufgerufen wird. API Management ermöglicht eine deterministische Festlegung der Reihenfolge kombinierter Richtlinienanweisungen über das `base`-Element. 
+Wenn Sie eine Richtlinie auf der globalen Ebene und eine Richtlinie für eine API konfiguriert haben, dann werden bei jeder Verwendung dieser API immer beide Richtlinien angewendet. API Management ermöglicht eine deterministische Festlegung der Reihenfolge kombinierter Richtlinienanweisungen über das `base`-Element. 
 
 ```xml
 <policies>
@@ -88,7 +104,12 @@ Wenn Sie eine Richtlinie auf der globalen Ebene und eine Richtlinie für eine AP
 </policies>
 ```
 
-In der obigen Beispiel-Richtliniendefinition wird die `cross-domain`-Anweisung vor allen übergeordneten Richtlinien ausgeführt, auf die wiederum die `find-and-replace`-Richtlinie folgt. 
+Für die oben gezeigte Beispielrichtliniendefinition gilt Folgendes:
+* Die Anweisung `cross-domain` wird vor jeder höheren Richtlinien ausgeführt.
+* Die Richtlinie `find-and-replace` wird nach jeder höheren Richtlinien ausgeführt. 
+
+>[!NOTE]
+> Wenn Sie das Tag `<base />` im API-Bereich entfernen, werden nur Richtlinien angewendet, die im API-Bereich konfiguriert sind. Es werden weder Produktrichtlinien noch Richtlinien auf globaler Ebene angewendet.
 
 ### <a name="restrict-incoming-requests"></a>Einschränken eingehender Anforderungen
 

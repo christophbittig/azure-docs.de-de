@@ -12,23 +12,25 @@ ms.subservice: msi
 ms.devlang: ''
 ms.topic: overview
 ms.custom: mvc
-ms.date: 05/20/2021
+ms.date: 08/26/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 123b3ab0f438c0577143c3780836a2a2c574412e
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 4f79fc66b44de89ba93137b244e22890348ab1c4
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081026"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967201"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>Was sind verwaltete Identitäten für Azure-Ressourcen?
 
 Die Verwaltung von Geheimnissen und Anmeldeinformationen, die zum Absichern der Kommunikation zwischen verschiedenen Komponenten einer Lösung verwendet werden. Dank verwalteter Identitäten müssen Entwickler keine Anmeldeinformationen mehr verwalten. Verwaltete Identitäten stellen eine Identität bereit, die Anwendungen beim Herstellen einer Verbindung mit Ressourcen verwenden, die Azure Active Directory-Authentifizierung (Azure AD) unterstützen. Anwendungen können die verwaltete Identität verwenden, um Azure AD-Token abzurufen. Beispielsweise kann eine Anwendung eine verwaltete Identität verwenden, um auf Ressourcen wie [Azure Key Vault](../../key-vault/general/overview.md) zuzugreifen, in denen Entwickler Anmeldeinformationen auf sichere Weise speichern, oder um auf Speicherkonten zuzugreifen.
 
-Wofür kann eine verwaltete Identität verwendet werden?</br>
+Sehen Sie sich an, wie Sie verwaltete Identitäten verwenden können:</br>
 
-> [!VIDEO https://www.youtube.com/embed/5lqayO_oeEo]
+> [!VIDEO https://channel9.msdn.com/Shows/On-NET/Using-Azure-Managed-identities/player?format=ny]
+
+
 
 Nachstehend sind einige Vorteile der Verwendung von verwalteten Identitäten beschrieben:
 
@@ -46,7 +48,6 @@ Es gibt zwei Arten von verwalteten Identitäten:
 - **Systemseitig zugewiesen**: Bei einigen Azure-Diensten können Sie eine verwaltete Identität direkt in einer Dienstinstanz aktivieren. Wenn Sie eine systemseitig zugewiesene verwaltete Identität aktivieren, wird in Azure AD eine Identität erstellt, die an den Lebenszyklus der jeweiligen Dienstinstanz gebunden ist. Daher löscht Azure automatisch die Identität, wenn die Ressource gelöscht wird. Entwurfsbedingt kann nur diese Azure-Ressource diese Identität zum Anfordern von Token von Azure AD verwenden.
 - **Benutzerseitig zugewiesen**: Sie können eine verwaltete Identität auch als eigenständige Azure-Ressource erstellen. Sie können eine [benutzerseitig zugewiesene verwaltete Identität erstellen](how-to-manage-ua-identity-portal.md) und diese einer oder mehreren Instanzen eines Azure-Diensts zuweisen. Bei benutzerseitig zugewiesenen verwalteten Identitäten wird die Identität getrennt von den Ressourcen verwaltet, für die sie verwendet wird. </br></br>
 
-> [!VIDEO https://www.youtube.com/embed/OzqpxeD3fG0]
 
 Die nachstehende Tabelle verdeutlicht die Unterschiede zwischen den beiden Arten von verwalteten Identitäten.
 

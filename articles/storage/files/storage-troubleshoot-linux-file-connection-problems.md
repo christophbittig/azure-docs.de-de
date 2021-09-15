@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 4c618fad5b1e85df1ffa19fa2aa0e8621ae2bdd9
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: db5cb2f6bc8b4ca3eed802552fe86830b9f1723f
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094454"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259572"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>Behandeln von Azure Files-Problemen unter Linux (SMB)
 
@@ -22,6 +22,13 @@ Zusätzlich zu den Schritten zur Problembehandlung in diesem Artikel können Sie
 
 > [!IMPORTANT]
 > Der Inhalt dieses Artikels gilt nur für SMB-Freigaben. Weitere Informationen zu NFS-Freigaben finden Sie unter [Behandeln von Problemen mit Azure NFS-Dateifreigaben](storage-troubleshooting-files-nfs.md).
+
+## <a name="applies-to"></a>Gilt für:
+| Dateifreigabetyp | SMB | NFS |
+|-|:-:|:-:|
+| Standard-Dateifreigaben (GPv2), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Standard-Dateifreigaben (GPv2), GRS/GZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Premium-Dateifreigaben (FileStorage), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
 
 ## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Verbindungsherstellung mit oder Einbindung von Azure-Dateifreigabe nicht möglich
 
@@ -228,13 +235,13 @@ Upgraden Sie den Linux-Kernel auf die folgenden Versionen, in denen dieses Probl
 ## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>Symbolische Verknüpfungen kann nicht erstellt werden – ln: Fehler beim Erstellen der symbolischen Verknüpfung „t“: Dieser Vorgang wird nicht unterstützt.
 
 ### <a name="cause"></a>Ursache
-Standardmäßig ermöglicht das Bereitstellen von Azure-Dateifreigaben unter Linux mit CIFS keine Unterstützung symbolischer Verknüpfungen (Symlinks). Die Fehlermeldung sieht in etwa wie folgt aus:
+Standardmäßig ermöglicht das Bereitstellen von Azure-Dateifreigaben unter Linux mithilfe von CIFS keine Unterstützung für symbolische Verknüpfungen (Symlinks). Die Fehlermeldung sieht in etwa wie folgt aus:
 ```
 ln -s linked -n t
 ln: failed to create symbolic link 't': Operation not supported
 ```
 ### <a name="solution"></a>Lösung
-Der Linux-CIFS-Client unterstützt die Erstellung symbolischer Verknüpfungen im Windows-Stil über das SMB 2- oder SMB 3-Protokoll nicht. Derzeit unterstützt der Linux-Client eine andere Art von symbolischen Verknüpfungen namens [Minshall+Französische Symlinks](https://wiki.samba.org/index.php/UNIX_Extensions#Minshall.2BFrench_symlinks) (sowohl für Erstellungs- als auch für Folgevorgänge). Kunden, die symbolische Verknüpfungen benötigen, können die Bereitstellungsoption „mfsymlinks“ verwenden. Die Verwendung von „mfsymlinks“ empfiehlt sich, da dieses Format auch von Macs verwendet wird.
+Die Erstellung symbolischer Verknüpfungen im Windows-Stil über das SMB 2- oder SMB 3-Protokoll wird vom Linux-CIFS-Client nicht unterstützt. Derzeit unterstützt der Linux-Client eine andere Art von symbolischen Verknüpfungen namens [Minshall+Französische Symlinks](https://wiki.samba.org/index.php/UNIX_Extensions#Minshall.2BFrench_symlinks) (sowohl für Erstellungs- als auch für Folgevorgänge). Kunden, die symbolische Verknüpfungen benötigen, können die Bereitstellungsoption „mfsymlinks“ verwenden. Die Verwendung von „mfsymlinks“ empfiehlt sich, da dieses Format auch von Macs verwendet wird.
 
 Wenn Sie symbolische Verknüpfungen verwenden möchten, fügen Sie am Ende des CIFS-Bereitstellungsbefehls Folgendes hinzu:
 

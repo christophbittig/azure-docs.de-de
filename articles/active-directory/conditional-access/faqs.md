@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 8043e85db1ee1aadc814e98db12cab10ec17e129
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 55dffd12f63b5cea3f2728ca36a1038e990d45e8
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92145237"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122865100"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Häufig gestellte Fragen zum bedingten Zugriff mit Azure Active Directory
 
@@ -57,7 +57,7 @@ Weitere Informationen finden Sie im Artikel [Dienstabhängigkeiten für den bedi
 
 ## <a name="why-are-some-tabs-not-working-in-microsoft-teams-after-enabling-conditional-access-policies"></a>Warum funktionieren in Microsoft Teams einige Registerkarten nach dem Aktivieren von Richtlinien für bedingten Zugriff nicht?
 
-Nachdem einige Richtlinien für bedingten Zugriff für den Mandanten in Microsoft Teams aktiviert wurden, funktionieren möglicherweise im Desktopclient bestimmte Registerkarten nicht mehr wie erwartet. Die betreffenden Registerkarten funktionieren jedoch bei der Verwendung des Microsoft Teams-Webclients. Die betreffenden Registerkarten können Power BI, Forms, VSTS, PowerApps und SharePoint-Liste enthalten.
+Nachdem einige Richtlinien für bedingten Zugriff für den Mandanten in Microsoft Teams aktiviert wurden, funktionieren möglicherweise im Desktopclient bestimmte Registerkarten nicht mehr wie erwartet. Die betreffenden Registerkarten funktionieren jedoch bei der Verwendung des Microsoft Teams-Webclients. Die betreffenden Registerkarten können Power BI, Forms, VSTS, Power Apps und SharePoint-Listen enthalten.
 
 Um die betreffenden Registerkarten anzuzeigen, müssen Sie den Teams-Webclient in Microsoft Edge, Internet Explorer oder Chrome mit installierter Windows 10-Kontoerweiterung verwenden. Einige Registerkarten sind von der Webauthentifizierung abhängig, die im Microsoft Teams-Desktopclient nicht funktioniert, wenn der bedingte Zugriff aktiviert ist. Microsoft arbeitet zusammen mit den Partnern daran, diese Szenarios zu ermöglichen. Bisher konnten wir Szenarien mit Planner, OneNote und Stream realisieren.
 

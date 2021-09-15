@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/24/2021
+ms.date: 08/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 23abb7c3d917084d0cc9989bf19dbb76adf0a266
-ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
+ms.openlocfilehash: 8740f7e8b02002e4f55a833074cf34057cddc056
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112967298"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123226161"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone"></a>Tutorial: Integration von einmaligem Anmelden (SSO) zwischen Azure Active Directory und Cornerstone
 
@@ -41,6 +41,8 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Cornerstone unterstützt **SP**-initiiertes einmaliges Anmelden.
+
+* Cornerstone unterstützt die [automatisierte Benutzerbereitstellung](cornerstone-ondemand-provisioning-tutorial.md).
 
 * Zum Integrieren von einem oder mehreren Produkten aus dieser speziellen Liste sollten Sie diese Cornerstone Single Sign-On-App aus dem Katalog verwenden.
 
@@ -140,6 +142,7 @@ Um das SSO in Cornerstone zu konfigurieren, müssen Sie sich an Ihr Cornerstone-
 
 In diesem Abschnitt erstellen Sie in Cornerstone einen Benutzer namens Britta Simon. Wenden Sie sich bitte an Ihr Cornerstone-Implementierungsprojektteam, um die Benutzer in Cornerstone hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
+Außerdem unterstützt Cornerstone Single Sign-On die automatische Benutzerbereitstellung. Weitere Informationen zum Konfigurieren der automatischen Benutzerbereitstellung finden Sie [hier](./cornerstone-ondemand-provisioning-tutorial.md).
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c71a0ddece95eb7d6a651da9c307912a1a24c800
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 52a1931ec567d03d0beaaf9180532a91ff6bed07
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107795531"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259463"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Tutorial: Erweitern von Windows-Dateiservern mit der Azure-Dateisynchronisierung
 
@@ -61,7 +61,7 @@ Nachdem Sie ein Azure-Speicherkonto bereitgestellt haben, erstellen Sie eine Dat
 
     ![Auswählen der Schaltfläche „Dateifreigabe hinzufügen“](./media/storage-sync-files-extend-servers/create-file-share-portal2.png)
 
-1. Geben Sie der neuen Dateifreigabe den Namen _afsfileshare_. Geben Sie unter **Kontingent** den Wert 1 ein, und wählen Sie anschließend **Erstellen**. Das Kontingent kann maximal auf 5 TiB festgelegt werden, aber für dieses Tutorial benötigen Sie nur 1 GB.
+1. Geben Sie der neuen Dateifreigabe den Namen _afsfileshare_. Geben Sie unter **Kontingent** den Wert 5120 ein, und wählen Sie anschließend **Erstellen** aus. Das Kontingent kann auf maximal 100 TiB festgelegt werden, aber für dieses Tutorial benötigen Sie nur 5 TiB.
 
     ![Angeben eines Namens und Kontingents für die neue Dateifreigabe](./media/storage-sync-files-extend-servers/create-file-share-portal3.png)
 
@@ -97,7 +97,7 @@ Sie haben jetzt ein Speicherkonto und eine Dateifreigabe mit einer Datei erstell
    1. Übernehmen Sie auf der Registerkarte **Datenträger** unter **Datenträgeroptionen** die Standardwerte.
    1. Wählen Sie unter **DATENTRÄGER** die Option **Create and attach a new disk** (Neuen Datenträger erstellen und anfügen).
 
-   1. Verwenden Sie die Standardeinstellungen mit Ausnahme von **Größe (GiB)** . Den Wert dieser Option können Sie für dieses Tutorial in **1 GB** ändern.
+   1. Verwenden Sie die Standardeinstellungen mit Ausnahme von **Größe (GiB)** . Den Wert dieser Option können Sie für dieses Tutorial in **1 GiB** ändern.
 
       ![Datenträgerdetails](./media/storage-sync-files-extend-servers/vm-create-new-disk-details.png)
 
@@ -156,7 +156,7 @@ Sie können den Datenträger jetzt dem virtuellen Computer hinzufügen.
 
     ![Datenträger](media/storage-sync-files-extend-servers/your-disk.png)
 
-1. Klicken Sie mit der rechten Maustaste auf den 1-GB-Datenträger mit dem Namen **Msft Virtual Disk**, und wählen Sie **Neues Volume**.
+1. Klicken Sie mit der rechten Maustaste auf den 1-GiB-Datenträger mit dem Namen **Msft Virtual Disk**, und wählen Sie **Neues Volume** aus.
 1. Schließen Sie den Assistenten ab. Verwenden Sie die Standardeinstellungen, und notieren Sie sich den zugewiesenen Laufwerkbuchstaben.
 1. Klicken Sie auf **Erstellen**.
 1. Klicken Sie auf **Schließen**.
@@ -215,7 +215,7 @@ Für die Bereitstellung der Azure-Dateisynchronisierung platzieren Sie zuerst ei
 
    Geben Sie in dem neuen Bereich, der geöffnet wird, Folgendes ein:
 
-   | Wert | Beschreibung |
+   | Wert | BESCHREIBUNG |
    | ----- | ----- |
    | **Name** | Ein eindeutiger Name (pro Abonnement) für den Speichersynchronisierungsdienst.<br><br>Verwenden Sie für dieses Tutorial _afssyncservice02_. |
    | **Abonnement** | Das Azure-Abonnement, das Sie für dieses Tutorial verwenden. |

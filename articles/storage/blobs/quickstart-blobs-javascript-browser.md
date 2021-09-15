@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: bc02f9c526ec9b0826bbe640efc4b474794f30ae
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 5d3836d46b7a6db071887918a1e2f915f298038f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278489"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740171"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -94,7 +94,7 @@ Die SAS (Shared Access Signature) wird von dem im Browser ausgeführten Code ver
 Führen Sie die folgenden Schritte aus, um die SAS-URL für den Blob-Dienst abzurufen:
 
 1. Wählen Sie im Azure-Portal Ihr Speicherkonto aus.
-2. Navigieren Sie zum Abschnitt **Einstellungen**, und wählen Sie **Shared Access Signature (SAS)** aus.
+2. Navigieren Sie zum Abschnitt **Sicherheit + Netzwerkbetrieb**, und wählen Sie **Shared Access Signature (SAS)** aus.
 3. Scrollen Sie nach unten, und klicken Sie auf die Schaltfläche **SAS und Verbindungszeichenfolge generieren**.
 4. Scrollen Sie weiter nach unten, und suchen Sie nach dem Feld **SAS-URL für Blob-Dienst**.
 5. Klicken Sie ganz rechts neben dem Feld **SAS-URL für Blob-Dienst** auf die Schaltfläche **In Zwischenablage kopieren**.

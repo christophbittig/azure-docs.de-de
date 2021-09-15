@@ -3,15 +3,15 @@ title: Verwenden einer systemseitig zugewiesenen verwalteten Identität für ein
 description: In diesem Artikel wird beschrieben, wie Sie eine verwaltete Identität für Azure Automation-Konten einrichten.
 services: automation
 ms.subservice: process-automation
-ms.date: 07/24/2021
+ms.date: 08/12/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6d381abcc13a5b91d32b4e444e01909c83300e7b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 882a55d017ed23dc7abbc9096e38f70abb41c425
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339558"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123214288"
 ---
 # <a name="using-a-system-assigned-managed-identity-for-an-azure-automation-account-preview"></a>Verwenden einer systemseitig zugewiesenen verwalteten Identität für ein Azure Automation-Konto (Vorschau)
 
@@ -256,6 +256,8 @@ Führen Sie die folgenden Schritte aus:
 Ein Automation-Konto kann mithilfe seiner systemseitig zugewiesenen verwalteten Identität Token für den Zugriff auf andere durch Azure AD geschützte Ressourcen wie z. B. Azure Key Vault abrufen. Diese Token repräsentieren keinen bestimmten Benutzer der Anwendung. Stattdessen stellen sie die Anwendung dar, die auf die Ressource zugreift. In diesem Fall stellt das Token beispielsweise ein Automation-Konto dar.
 
 Bevor Sie die systemseitig verwaltete Identität für die Authentifizierung verwenden können, richten Sie den Zugriff dieser Identität auf die Azure-Ressource ein, in der Sie die Identität verwenden möchten. Für diese Aufgabe muss der Identität in der Azure-Zielressource die entsprechende Rolle zugewiesen werden.
+
+Befolgen Sie das Prinzip der geringsten Berechtigung und weisen Sie sorgfältig nur die Berechtigungen zu, die für die Ausführung Ihres Runbooks erforderlich sind. Beispiel: Wenn das Automatisierungskonto nur zum Starten oder Stoppen einer Azure-VM erforderlich ist, dann müssen die dem Konto "Ausführen als" oder der verwalteten Identität zugewiesenen Berechtigungen nur zum Starten oder Stoppen der VM dienen. Ähnlich verhält es sich, wenn ein Runbook aus dem Blob-Speicher liest, dann weisen Sie nur Leseberechtigungen zu. in diesem Beispiel wird anhand von Azure PowerShell gezeigt, wie Sie dem Contributor
 
 In diesem Beispiel wird Azure PowerShell verwendet, um zu zeigen, wie die Rolle Mitwirkender im Abonnement der Azure-Zielressource zugewiesen wird. Die Rolle Mitwirkender wird als Beispiel verwendet und ist in Ihrem Fall möglicherweise erforderlich.
 

@@ -11,12 +11,12 @@ author: NikaKinska
 ms.author: nnikolic
 ms.reviewer: mathoma, wiassaf
 ms.date: 06/03/2019
-ms.openlocfilehash: 7216978845921e4b35c4cb3485379054cbf5cfff
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 8e1c8288317ee5d0424ee633a14431d87a78175f
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591804"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866355"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>E-Mail-Benachrichtigungen zur automatischen Optimierung
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -32,7 +32,7 @@ Sie können die Empfehlungen zur automatischen Optimierung von Azure SQL-Datenba
 
 ## <a name="automate-email-notifications-for-automatic-tuning-recommendations"></a>Automatisieren von E-Mail-Benachrichtigungen für Empfehlungen zur automatischen Optimierung
 
-Mit der folgenden Lösung wird das Senden von E-Mail-Benachrichtigungen automatisiert, die Empfehlungen zur automatischen Optimierung enthalten. Die beschriebene Lösung umfasst die automatische Ausführung eines PowerShell-Skripts zum Abrufen von Optimierungsempfehlungen mithilfe von [Azure Automation](../../automation/automation-intro.md) und die Automatisierung der Planung der E-Mail-Übermittlung unter Verwendung von [Microsoft Flow ](https://flow.microsoft.com).
+Mit der folgenden Lösung wird das Senden von E-Mail-Benachrichtigungen automatisiert, die Empfehlungen zur automatischen Optimierung enthalten. Die beschriebene Lösung umfasst die automatische Ausführung eines PowerShell-Skripts zum Abrufen von Optimierungsempfehlungen mithilfe von [Azure Automation](../../automation/automation-intro.md) und die Automatisierung der Planung der E-Mail-Übermittlung unter Verwendung von [Microsoft Power Automate](https://flow.microsoft.com).
 
 ## <a name="create-azure-automation-account"></a>Erstellen eines Azure Automation-Kontos
 
@@ -89,7 +89,7 @@ Bei mehreren Abonnements können Sie diese durch Kommas getrennt in der „$subs
 ```powershell
 # PowerShell script to retrieve Azure SQL Database automatic tuning recommendations.
 #
-# Provided "as-is&quot; with no implied warranties or support.
+# Provided "as-is" with no implied warranties or support.
 # The script is released to the public domain.
 #
 # Replace <SUBSCRIPTION_ID_WITH_DATABASES> in the header with your Azure subscription ID.
@@ -97,7 +97,7 @@ Bei mehreren Abonnements können Sie diese durch Kommas getrennt in der „$subs
 # Microsoft Azure SQL Database team, 2018-01-22.
 
 # Set subscriptions : IMPORTANT – REPLACE <SUBSCRIPTION_ID_WITH_DATABASES> WITH YOUR SUBSCRIPTION ID
-$subscriptions = (&quot;<SUBSCRIPTION_ID_WITH_DATABASES>&quot;, &quot;<SECOND_SUBSCRIPTION_ID_WITH_DATABASES>&quot;, &quot;<THIRD_SUBSCRIPTION_ID_WITH_DATABASES>")
+$subscriptions = ("<SUBSCRIPTION_ID_WITH_DATABASES>", "<SECOND_SUBSCRIPTION_ID_WITH_DATABASES>", "<THIRD_SUBSCRIPTION_ID_WITH_DATABASES>")
 
 # Get credentials
 $Conn = Get-AutomationConnection -Name AzureRunAsConnection
@@ -181,17 +181,17 @@ Passen Sie den Inhalt unbedingt an, indem Sie das PowerShell-Skript Ihrem Bedarf
 
 Mit den obigen Schritten wird das PowerShell-Skript zum Abrufen von Empfehlungen zur automatischen Optimierung in Azure Automation geladen. Im nächsten Schritt automatisieren und planen Sie den Auftrag zur E-Mail-Übermittlung.
 
-## <a name="automate-the-email-jobs-with-microsoft-flow"></a>Automatisieren der E-Mail-Aufträge mit Microsoft Flow
+## <a name="automate-the-email-jobs-with-microsoft-power-automate"></a>Automatisieren der E-Mail-Aufträge mit Microsoft Power Automate
 
-Zum Abschließen der Lösung erstellen Sie im letzten Schritt einen Automation-Flow in Microsoft Flow bestehend aus drei Aktionen (Aufträgen):
+Zum Vervollständigen der Lösung erstellen Sie im letzten Schritt einen Automation-Flow in Microsoft Power Automate, der drei Aktionen (Aufträge) umfasst:
 
 - **Azure Automation – Auftrag erstellen:** zum Ausführen des PowerShell-Skripts, mit dem die Empfehlungen zur automatischen Optimierung im Azure Automation-Runbook abgerufen werden.
 - **Azure Automation – Auftragsausgabe abrufen:** zum Abrufen der Ausgabe des ausgeführten PowerShell-Skripts.
 - **Office 365 Outlook – E-Mail senden:** zum Senden einer E-Mail E-Mails werden mit dem Geschäfts-, Schul- oder Unikonto der Person gesendet, die den Flow erstellt hat.
 
-Weitere Informationen zu den Funktionen von Microsoft Flow finden Sie unter [Erste Schritte mit Microsoft Flow](/flow/getting-started).
+Weitere Informationen zu den Funktionen von Microsoft Power Automate finden Sie unter [Erste Schritte mit Microsoft Power Automate](/power-automate/getting-started).
 
-Voraussetzung für diesen Schritt ist die Registrierung und Anmeldung bei einem [Microsoft Flow](https://flow.microsoft.com)-Konto. Führen Sie in der Lösung die folgenden Schritte aus, um einen **neuen Flow** einzurichten:
+Voraussetzung für diesen Schritt ist die Registrierung und Anmeldung bei einem [Microsoft Power Automate](https://flow.microsoft.com)-Konto. Führen Sie in der Lösung die folgenden Schritte aus, um einen **neuen Flow** einzurichten:
 
 1. Klicken Sie auf das Menüelement **Meine Flows**.
 1. Klicken Sie in „Meine Flows“ oben auf der Seite auf den Link **+ Ohne Vorlage erstellen**.

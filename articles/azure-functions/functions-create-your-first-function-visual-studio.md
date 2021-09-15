@@ -9,12 +9,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./functions-create-your-first-function-visual-studio-uiex
-ms.openlocfilehash: 9b5d5d85d8df58a8e8c3e2626abaed75377e6025
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 5a7df784ec30b958eb6924de674e09cbbe21c91e
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "122643300"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830020"
 ---
 # <a name="quickstart-create-your-first-c-function-in-azure-using-visual-studio"></a>Schnellstart: Erstellen Ihrer ersten C#-Funktion in Azure mithilfe von Visual Studio
 
@@ -28,9 +28,14 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > * Führen Sie Ihren Code lokal aus, um das Funktionsverhalten zu überprüfen.
 > * Stellen Sie Ihr Codeprojekt für Azure Functions bereit. 
  
+Dieser Artikel unterstützt die Erstellung beider Arten von kompilierten C#-Funktionen: 
+
++ [In-Process](functions-create-your-first-function-visual-studio.md?tabs=in-process): Dieser Funktionstyp wird im gleichen Prozess wie der Functions-Hostprozess ausgeführt. Weitere Informationen finden Sie unter [Entwickeln von C#-Klassenbibliotheksfunktionen mithilfe von Azure Functions](functions-dotnet-class-library.md).
++ [Isolierter Prozess](functions-create-your-first-function-visual-studio.md?tabs=isolated-process): Dieser Funktionstyp wird in einem separaten .NET-Workerprozess ausgeführt. Weitere Informationen finden Sie im [Handbuch zum Ausführen von Funktionen unter .NET 5.0 in Azure](dotnet-isolated-process-guide.md).
+
 Im Rahmen dieser Schnellstartanleitung fallen in Ihrem Azure-Konto ggf. geringfügige Kosten im Centbereich an.
- 
-Das von Ihnen erstellte Projekt wird unter .NET Core 3.1 ausgeführt. Wenn Sie stattdessen ein Projekt erstellen möchten, das unter .NET 5.0 ausgeführt wird, finden Sie weitere Informationen unter [Entwickeln und Veröffentlichen von .NET 5-Funktionen mit Azure Functions](dotnet-isolated-process-developer-howtos.md).
+
+Es gibt auch eine [Visual Studio Code-basierte Version](create-first-function-vs-code-csharp.md) dieses Artikels.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -56,8 +61,16 @@ Das Methodenattribut `FunctionName` dient zum Festlegen des Namens der Funktion,
 
 Die Definition der Funktion sollte nun wie folgt aussehen:
 
-:::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs" range="13-18"::: 
- 
+# <a name="in-process"></a>[In-Process](#tab/in-process) 
+
+:::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs" range="15-18"::: 
+
+# <a name="isolated-process"></a>[Isolierter Prozess](#tab/isolated-process)
+
+:::code language="csharp" source="~/functions-docs-csharp/http-trigger-isolated/HttpExample.cs" range="11-13"::: 
+
+---
+
 Nachdem Sie die Funktion nun umbenannt haben, können Sie sie auf Ihrem lokalen Computer testen.
 
 ## <a name="run-the-function-locally"></a>Lokales Ausführen der Funktion

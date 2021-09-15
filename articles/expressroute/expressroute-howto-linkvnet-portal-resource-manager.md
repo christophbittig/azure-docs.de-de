@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: tutorial
-ms.date: 10/15/2020
+ms.date: 08/10/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 88674255c98559a06c33bd5030aefba9184ada58
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 7b5aff80acca790f1ae8c4a852f8b353dfa7312a
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111538741"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433834"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Tutorial: Verbinden eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung mithilfe des Portals
 
@@ -154,6 +154,41 @@ Der Verbindungsbenutzer benötigt die Ressourcen-ID und einen Autorisierungsschl
 1. Überprüfen Sie die Informationen auf der Seite **Zusammenfassung**, und klicken Sie auf **OK**.
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-summary.png" alt-text="Seite „Zusammenfassung“":::
+
+## <a name="configure-expressroute-fastpath"></a>Konfigurieren von ExpressRoute FastPath
+
+Sie können [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) aktivieren, wenn Ihr virtuelles Netzwerkgateway den Typ „Höchstleistung“ oder „ErGw3AZ“ hat. FastPath verbessert die Leistung von Datenpfaden (Pakete pro Sekunde und Verbindungen pro Sekunde) zwischen Ihrem lokalen und Ihrem virtuellen Netzwerk.
+
+**Konfigurieren von FastPath für eine neue Verbindung**
+
+Wenn Sie eine neue Verbindung für Ihr ExpressRoute-Gateway hinzufügen, aktivieren Sie das Kontrollkästchen für **FastPath**.
+
+:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/enable-fastpath-portal.png" alt-text="Screenshot des Kontrollkästchens „FastPath“ auf der Seite „Verbindung hinzufügen“.":::
+
+> [!NOTE]
+> Das Aktivieren von FastPath für eine neue Verbindung ist nur über das Erstellen einer Verbindung über die Gatewayressource verfügbar. Neue Verbindungen, die über die ExpressRoute-Verbindung oder die Seite „Verbindungsressource“ erstellt wurden, werden nicht unterstützt.
+>
+**Konfigurieren von FastPath für eine vorhandene Verbindung**
+
+1. Wechseln Sie entweder vom ExpressRoute-Gateway, von der ExpressRoute-Verbindung oder der Seite „Verbindungsressource“ zur vorhandenen Verbindungsressource.
+
+1.  Wählen Sie unter *Einstellungen* die Option **Konfiguration** und anschließend **FastPath** aus. Wählen Sie **Speichern** aus, um das Feature zu aktivieren.
+
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/enable-fastpath-connection.png" alt-text="Screenshot des Kontrollkästchens „FastPath“ auf der Verbindungskonfigurationsseite.":::
+
+> [!NOTE]
+> Sie können den [Verbindungsmonitor](how-to-configure-connection-monitor.md) verwenden, um mithilfe von FastPath zu überprüfen, ob Ihr Datenverkehr das Ziel erreicht.
+>
+
+## <a name="enroll-in-expressroute-fastpath-features-preview"></a>Registrieren für FastPath-Features in ExpressRoute (Vorschau)
+
+FastPath-Unterstützung für das Peering virtueller Netzwerke befindet sich jetzt in der öffentlichen Vorschauphase. Die Registrierung ist nur über Azure PowerShell verfügbar. Anweisungen zur Registrierung finden Sie unter [FastPath-Previewfunktionen](expressroute-howto-linkvnet-arm.md#enroll-in-expressroute-fastpath-features-preview).
+
+> [!NOTE] 
+> Alle Verbindungen, die für FastPath im Zielabonnement konfiguriert sind, werden in dieser Vorschauversion registriert. Wir raten davon ab, diese Vorschauversion in Produktionsabonnements zu aktivieren.
+> Wenn Sie FastPath bereits konfiguriert haben und sich für die Previewfunktionen registrieren möchten, müssen Sie folgende Schritte ausführen:
+> 1. Registrieren Sie sich mit dem obigen Azure PowerShell-Befehl für die FastPath-Previewfunktion.
+> 1. Deaktivieren Sie FastPath für die Zielverbindung, und aktivieren Sie es dann erneut.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

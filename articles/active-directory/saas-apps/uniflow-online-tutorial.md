@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/04/2021
+ms.date: 08/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 9fdcd8a82b901e00e28f0ddd89ba53d9a2e3fbae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f9a51d7266be8c8565ddd84afa0989951896af1b
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104952676"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123032900"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-uniflow-online"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit uniFLOW Online
 
@@ -73,30 +73,34 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL in einem der folgenden Formate ein:
+    a. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL in einem der folgenden Formate ein:
 
-    - `https://<tenant_domain_name>.eu.uniflowonline.com`
-    - `https://<tenant_domain_name>.us.uniflowonline.com`
-    - `https://<tenant_domain_name>.sg.uniflowonline.com`
-    - `https://<tenant_domain_name>.jp.uniflowonline.com`
-    - `https://<tenant_domain_name>.au.uniflowonline.com`
+    | **Identifier** |
+    |---------|
+    | `https://<tenant_domain_name>.eu.uniflowonline.com` |
+    | `https://<tenant_domain_name>.us.uniflowonline.com` |
+    | `https://<tenant_domain_name>.sg.uniflowonline.com` |
+    | `https://<tenant_domain_name>.jp.uniflowonline.com` |
+    | `https://<tenant_domain_name>.au.uniflowonline.com` |
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL in einem der folgenden Formate ein:
+    b. Geben Sie im Textfeld **Anmelde-URL** eine URL in einem der folgenden Formate ein:
 
-    - `https://<tenant_domain_name>.eu.uniflowonline.com`
-    - `https://<tenant_domain_name>.us.uniflowonline.com`
-    - `https://<tenant_domain_name>.sg.uniflowonline.com`
-    - `https://<tenant_domain_name>.jp.uniflowonline.com`
-    - `https://<tenant_domain_name>.au.uniflowonline.com`
+    | **Anmelde-URL** |
+    |---------|
+    | `https://<tenant_domain_name>.eu.uniflowonline.com` |
+    | `https://<tenant_domain_name>.us.uniflowonline.com` |
+    | `https://<tenant_domain_name>.sg.uniflowonline.com` |
+    | `https://<tenant_domain_name>.jp.uniflowonline.com` |
+    | `https://<tenant_domain_name>.au.uniflowonline.com` |
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Diese Werte erhalten Sie vom [Supportteam für den uniFLOW Online-Client](mailto:support@nt-ware.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal oder die im uniFLOW Online-Mandanten angezeigte Antwort-URL ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner und die tatsächliche Anmelde-URL. Diese Werte erhalten Sie vom [Supportteam für den uniFLOW Online-Client](mailto:support@nt-ware.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal oder die im uniFLOW Online-Mandanten angezeigte Antwort-URL ansehen.
 
-1. Die uniFLOW Online-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute.
+1. Die uniFLOW Online-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute, wobei **nameidentifier** hier **user.userprincipalname** zugeordnet wird. Die uniFLOW Online-Anwendung erwartet, dass **nameidentifier** der Wert **user.objectid** zugeordnet ist. Sie müssen die Attributzuordnung daher entsprechend ändern, indem Sie auf das Symbol **Bearbeiten** klicken.
 
-    ![image](common/default-attributes.png)
+    ![Screenshot: Bereich „Benutzerattribute“ mit hervorgehobenem Bearbeitungssymbol](common/edit-attribute.png)
 
 1. Darüber hinaus wird von der uniFLOW Online-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden (siehe unten). Diese Attribute werden ebenfalls vorab aufgefüllt, Sie können sie jedoch nach Bedarf überprüfen.
 
@@ -145,21 +149,21 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Wählen Sie im linken Navigationsbereich die Registerkarte **User** (Benutzer) aus.
 
-    ![Screenshot: uniFLOW Online-Website, auf der „User“ (Benutzer) ausgewählt ist](./media/uniflow-online-tutorial/configure-1.png)
+    ![Screenshot: uniFLOW Online-Website, auf der „User“ (Benutzer) ausgewählt ist](./media/uniflow-online-tutorial/user.png)
 
 1. Klicken Sie auf **Identitätsanbieter**.
 
-    ![Screenshot, auf dem „Identity Provider“ (Identitätsanbieter) ausgewählt ist](./media/uniflow-online-tutorial/configure-2.png)
+    ![Screenshot, auf dem „Identity Provider“ (Identitätsanbieter) ausgewählt ist](./media/uniflow-online-tutorial/profile.png)
 
 1. Klicken Sie auf **Add identity provider** (Identitätsanbieter hinzufügen).
 
-    ![Screenshot, auf dem „Add identity provider“ (Identitätsanbieter hinzufügen) ausgewählt ist](./media/uniflow-online-tutorial/configure-3.png)
+    ![Screenshot, auf dem „Add identity provider“ (Identitätsanbieter hinzufügen) ausgewählt ist](./media/uniflow-online-tutorial/add-profile.png)
 
 1. Führen Sie im Abschnitt **ADD IDENTITY PROVIDER** (IDENTITÄTSANBIETER HINZUFÜGEN) die folgenden Schritte aus:
 
-    ![Screenshot: Abschnitt „ADD IDENTITY PROVIDER“ (IDENTITÄTSANBIETER HINZUFÜGEN), in dem Sie die beschriebenen Werte eingeben können](./media/uniflow-online-tutorial/configure-4.png)
+    ![Screenshot: Abschnitt „ADD IDENTITY PROVIDER“ (IDENTITÄTSANBIETER HINZUFÜGEN), in dem Sie die beschriebenen Werte eingeben können](./media/uniflow-online-tutorial/configuration.png)
 
-    a. Geben Sie den Anzeigenamen ein, etwa *AzureAD SSO*.
+    a. Geben Sie den Anzeigenamen ein, etwa **AzureAD SSO**.
 
     b. Wählen Sie unter **Provider type** (Anbietertyp) im Dropdownmenü die Option **WS-Fed** aus.
 
@@ -169,9 +173,9 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Führen Sie auf der Registerkarte **General** (Allgemein) die folgenden Schritte aus:
 
-    ![Screenshot: Registerkarte „General“ (Allgemein), auf der Sie die beschriebenen Werte eingeben können](./media/uniflow-online-tutorial/configure-5.png)
+    ![Screenshot: Registerkarte „General“ (Allgemein), auf der Sie die beschriebenen Werte eingeben können](./media/uniflow-online-tutorial/general-tab.png)
 
-    a. Geben Sie den Anzeigenamen ein, etwa *AzureAD SSO*.
+    a. Geben Sie den Anzeigenamen ein, etwa **AzureAD SSO**.
 
     b. Wählen Sie unter **ADFS Federation Metadata** (ADFS-Verbundmetadaten) die Option **From URL** (Über URL) aus.
 

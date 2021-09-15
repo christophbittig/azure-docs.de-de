@@ -10,12 +10,12 @@ ms.date: 08/10/2020
 ms.author: rosouz
 ms.reviewer: jrasnick
 ms.custom: cosmos-db
-ms.openlocfilehash: ff04d43e72d4eca9800b330d5a4721ba951c85f9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2a061e5db3e4a6b6aef193449abcd41d0b8eaf76
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105627641"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123097533"
 ---
 # <a name="copy-data-from-azure-cosmos-db-into-a-dedicated-sql-pool-using-apache-spark"></a>Kopieren von Daten aus Azure Cosmos DB in einen dedizierten SQL-Pool mithilfe von Apache Spark
 
@@ -101,4 +101,5 @@ SELECT  [productCode]
 Ihre Abfrage zeigt die folgenden Ergebnisse in einem Diagrammmodus: [![Schritte für Spark zu SQL 2](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png)](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png#lightbox)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Abfragen des Azure Cosmos DB-Analysespeichers mit Apache Spark](./how-to-query-analytical-store-spark.md)
+* [Abfragen des Azure Cosmos DB-Analysespeichers mit Apache Spark 3](./how-to-query-analytical-store-spark-3.md)
+* [Abfragen des Azure Cosmos DB-Analysespeichers mit Apache Spark 2](./how-to-query-analytical-store-spark.md)

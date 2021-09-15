@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 265ae82f3a8d5a10e333057ebb55473c18fd36c3
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 501294688446bdb944d93a0939cde0a5e4fea0df
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113109465"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123254157"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Sicherheitsrahmen: Kommunikationssicherheit | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
@@ -195,7 +195,7 @@ Diese Regel funktioniert durch die Rückgabe eines HTTP-Statuscode von 301 (Perm
 | **Referenzen**              | [Windows Azure Blob MD5 Overview](https://blogs.msdn.microsoft.com/windowsazurestorage/2011/02/17/windows-azure-blob-md5-overview/) (MD5-Übersicht für Windows Azure-Blobs) |
 | **Schritte** | <p>Der Windows Azure-Blob-Dienst stellt Mechanismen bereit, um die Datenintegrität sowohl auf der Anwendungs- als auch auf der Transportebene zu gewährleisten. Falls Sie aus irgendeinem Grund HTTP statt HTTPS verwenden müssen und mit Blockblobs arbeiten, können Sie die Integrität der übertragenen Blobs mithilfe einer MD5-Prüfung überprüfen.</p><p>Dies bietet Schutz vor Fehlern der Vermittlungs-/Transportschicht, aber nicht notwendigerweise vor zwischengeschalteten Angriffen. Wenn Sie HTTPS verwenden können, welches Schutz auf der Transportschicht bietet, ist eine MD5-Prüfung redundant und unnötig.</p>|
 
-## <a name="use-smb-30-compatible-client-to-ensure-in-transit-data-encryption-to-azure-file-shares"></a><a id="smb-shares"></a>Verwenden Sie einen SMB 3.0-kompatiblen Client, um die Verschlüsselung von Daten während der Übertragung an Azure-Dateifreigaben zu gewährleisten.
+## <a name="use-smb-3x-compatible-client-to-ensure-in-transit-data-encryption-to-azure-file-shares"></a><a id="smb-shares"></a>Verwenden Sie einen SMB 3-kompatiblen Client, um die Verschlüsselung von Daten während der Übertragung an Azure-Dateifreigaben sicherzustellen
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -203,8 +203,8 @@ Diese Regel funktioniert durch die Rückgabe eines HTTP-Statuscode von 301 (Perm
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | StorageType: Datei |
-| **Referenzen**              | [Azure File Storage, now generally available](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/#comment-2529238931) (Azure File Storage, jetzt allgemein verfügbar), [Erste Schritte mit Azure File Storage unter Windows](../../storage/files/storage-dotnet-how-to-use-files.md#understanding-the-net-apis) |
-| **Schritte** | Azure File Storage unterstützt HTTPS bei Verwendung der REST-API, wird jedoch häufiger als SMB-Dateifreigabe verwendet, die einer VM angefügt ist. SMB 2.1 unterstützt keine Verschlüsselung, sodass Verbindungen nur innerhalb der gleichen Region in Azure zulässig sind. Allerdings unterstützt SMB 3.0 die Verschlüsselung und kann mit Windows Server 2012 R2, Windows 8, Windows 8.1 und Windows 10 verwendet werden, sodass regionsübergreifender Zugriff und sogar Zugriff auf dem Desktop möglich ist. |
+| **Referenzen**              | [Azure Files](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/#comment-2529238931), [ Azure Files SMB-Unterstützung für Windows Clients](../../storage/files/storage-dotnet-how-to-use-files.md#understanding-the-net-apis) |
+| **Schritte** | Azure Files unterstützt HTTPS bei Verwendung der REST-API, wird jedoch häufiger als SMB-Dateifreigabe verwendet, die einem virtuellen Computer angefügt ist. SMB 2.1 unterstützt keine Verschlüsselung, sodass Verbindungen nur innerhalb der gleichen Region in Azure zulässig sind. Allerdings unterstützt SMB 3.x die Verschlüsselung und kann mit Windows Server 2012 R2, Windows 8, Windows 8.1 und Windows 10 verwendet werden, sodass regionsübergreifender Zugriff und sogar Zugriff auf dem Desktop möglich ist. |
 
 ## <a name="implement-certificate-pinning"></a><a id="cert-pinning"></a>Implementieren Sie das Anheften von Zertifikaten.
 

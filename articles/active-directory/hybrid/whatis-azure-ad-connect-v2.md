@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 06/24/2021
+ms.date: 08/26/2021
 ms.subservice: hybrid
 ms.author: billmath
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c117e7f1a5d605e1abe42474b24b8fbf6491c43
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.collection: M365-identity-device-management, has-adal-ref
+ms.openlocfilehash: ba222c5d0ae028b606deda08e225085bd42d761c
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114481367"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122966748"
 ---
 # <a name="introduction-to-azure-ad-connect-v20"></a>Einführung in Azure AD Connect V2.0 
 
@@ -54,13 +54,13 @@ Der SQL Server 2019 erfordert den Windows Server 2016 oder neuer als Serverbetri
 
 Sie können diese Version nicht auf einer älteren Windows Server Version installieren. Es empfohlen, dass Sie ihren Azure AD Connect-Server auf den Windows Server 2019 aktualisieren. Das ist die neueste Version des Windows Server-Betriebssystems. 
 
-In diesem [Artikel](https://docs.microsoft.com/windows-server/get-started-19/install-upgrade-migrate-19) wird das Upgrade von älteren Windows Server-Versionen auf den Windows Server 2019 beschrieben. 
+In diesem [Artikel](/windows-server/get-started-19/install-upgrade-migrate-19) wird das Upgrade von älteren Windows Server-Versionen auf den Windows Server 2019 beschrieben. 
 
 ### <a name="powershell-50"></a>PowerShell 5.0 
 
 Dieses Release von Azure AD Connect enthält mehrere Cmdlets, die PowerShell 5.0 erfordern. Daher ist diese Anforderung eine neue Voraussetzung für Azure AD Connect.  
 
-Weitere Informationen zu PowerShell-Voraussetzungen finden Sie [hier](https://docs.microsoft.com/powershell/scripting/windows-powershell/install/windows-powershell-system-requirements?view=powershell-7.1#windows-powershell-50).
+Weitere Informationen zu PowerShell-Voraussetzungen finden Sie [hier](/powershell/scripting/windows-powershell/install/windows-powershell-system-requirements?view=powershell-7.1#windows-powershell-50).
 
  >[!NOTE]
  >PowerShell 5 ist bereits ein Teil von Windows Server 2016, sodass Sie wahrscheinlich keine Maßnahmen ergreifen müssen, solange Sie eine aktuelle Windows Server-Version verwenden. 
@@ -85,10 +85,13 @@ Ja, sie können dies tun, und es ist eine hervorragende Möglichkeit, zu Azure A
 **Ich habe das automatische Upgrade für Azure AD Connect aktiviert. Erhalte ich diese neue Version automatisch?** </br> Nein – Azure AD Connect V2.0 wird derzeit nicht für das automatische Upgrade verfügbar gemacht. 
 
 **Ich bin noch nicht bereit für ein Upgrade – wie viel Zeit habe ich?** </br>
-Sie sollten so schnell wie möglich auf Azure AD Connect V2.0 aktualisieren. Vorerst werden wir weiterhin ältere Versionen von Azure AD Connect unterstützen, aber es kann sich schwierig gestalten, eine gute Supporterfahrung zu bieten, wenn einige Komponenten in Azure AD Connect nicht mehr unterstützt werden. Dieses Upgrade ist besonders wichtig für ADAL und TLS 1.0/1.1, da diese Dienste möglicherweise nicht mehr wie erwartet funktionieren, nachdem sie veraltet sind. 
+Sie sollten so schnell wie möglich auf Azure AD Connect V2.0 aktualisieren. **__Alle Azure AD Connect V1-Versionen werden am 31. August  2022 eingestellt.__** Vorerst werden wir weiterhin ältere Versionen von Azure AD Connect unterstützen, aber es kann sich schwierig gestalten, eine gute Supporterfahrung zu bieten, wenn einige Komponenten in Azure AD Connect nicht mehr unterstützt werden. Dieses Upgrade ist besonders wichtig für ADAL und TLS 1.0/1.1, da diese Dienste möglicherweise nicht mehr wie erwartet funktionieren, nachdem sie veraltet sind. 
 
 **Ich verwende eine externe SQL-Datenbank und nicht SQL 2012 LocalDb – muss ich trotzdem ein Upgrade durchführen?** </br>
 Ja, Sie müssen trotzdem ein Upgrade durchführen, um in einem unterstützten Zustand zu bleiben, auch wenn Sie SQL Server 2012 nicht verwenden, da TLS 1.0/1.1 und ADAL veraltet sind. 
+
+**Werden nach dem Upgrade meiner Azure AD Connect-Instanz auf V2.0 die SQL 2012-Komponenten automatisch deinstalliert?** </br>
+Nein, durch das Upgrade auf SQL 2019 werden keine SQL 2012-Komponenten von Ihrem Server entfernt. Wenn Sie diese Komponenten nicht mehr benötigen, befolgen Sie [die Anweisungen zum Deinstallieren von SQL Server](https://docs.microsoft.com/sql/sql-server/install/uninstall-an-existing-instance-of-sql-server-setup).
 
 **Was geschieht, wenn ich kein Upgrade durchführe?** </br>
 Bis eine der Komponenten, die zurückgezogen werden, tatsächlich veraltet ist, werden Sie keine Auswirkungen erfahren. Azure AD Connect wird weiterhin funktionieren. 
@@ -120,4 +123,4 @@ Dieses Problem ist bekannt.  Um dies zu beheben, starten Sie Ihre PowerShell-Sit
 - [Express-Einstellungen](how-to-connect-install-express.md)
 - [Benutzerdefinierte Einstellungen](how-to-connect-install-custom.md)
 
-In diesem Artikel wird das Upgrade von älteren Windows Server-Versionen auf den Windows Server 2019 beschrieben. 
+In diesem Artikel wird das Upgrade von älteren Windows Server-Versionen auf den Windows Server 2019 beschrieben.

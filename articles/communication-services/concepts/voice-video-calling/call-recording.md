@@ -2,27 +2,27 @@
 title: 'Azure Communication Services: Übersicht über die Anrufaufzeichnung'
 titleSuffix: An Azure Communication Services concept document
 description: Hier finden Sie eine Übersicht über das Feature und die APIs für die Anrufaufzeichnung.
-author: joseys
+author: GrantMeStrength
 manager: anvalent
 services: azure-communication-services
-ms.author: joseys
+ms.author: jken
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 898346d69b656656c93889002109bae0f15b2dbc
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: fef4972271046f7435140fd2d9ba3d18c7c3b11c
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464335"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123254753"
 ---
 # <a name="calling-recording-overview"></a>Übersicht über die Anrufaufzeichnung
 
 [!INCLUDE [Public Preview](../../includes/public-preview-include-document.md)]
 
 > [!NOTE]
-> Die Anrufaufzeichnung ist derzeit nur für Communication Services-Ressourcen verfügbar, die in einer Region in den USA erstellt wurden.
+> Die Anrufaufzeichnung ist für Communication Services-Ressourcen verfügbar, die in Regionen in den USA, dem Vereinigten Königreich, Europa, Asien und Australien erstellt wurden.
 
 Von der Anrufaufzeichnung wird eine Reihe von APIs zum Starten, Beenden, Anhalten und Fortsetzen der Aufzeichnung bereitgestellt. Auf diese APIs kann über serverseitige Geschäftslogik oder über durch Benutzeraktionen ausgelöste Ereignisse zugegriffen werden. Aufgezeichnete Medien werden im Audio- und Videoformat „MP4“ ausgegeben. Dieses Format wird auch von Teams zum Aufzeichnen von Medien verwendet. Benachrichtigungen im Zusammenhang mit Medien und Metadaten werden über Event Grid ausgegeben. Aufzeichnungen werden 48 Stunden lang in einem integrierten temporären Speicher gespeichert, wo sie abgerufen und in eine langfristige Speicherlösung Ihrer Wahl verschoben werden können. 
 

@@ -10,12 +10,12 @@ author: rajeshsetlem
 ms.author: rsetlem
 ms.reviewer: mathoma, cawrites
 ms.date: 12/15/2020
-ms.openlocfilehash: 011420abfbd6bf5994aa65024651f2bbd34e1bf4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ab030e8e4b86fc669325099e13650f8e1c178986
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346945"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835332"
 ---
 # <a name="assessment-rules-for-sql-server-to-azure-sql-database-migration"></a>Bewertungsregeln für die Migration von Azure SQL Server zu SQL-Datenbank
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -409,7 +409,7 @@ Weitere Informationen: [Nicht mehr unterstützte Datenbank-Engine-Funktionalitä
 **Kategorie**: Warnung   
 
 **Beschreibung**   
-Die folgenden nicht unterstützten gespeicherten Systemprozeduren und erweiterten gespeicherten Prozeduren können in Azure SQL-Datenbank nicht verwendet werden: `sp_dboption`, `sp_addserver`, `sp_dropalias`, `sp_activedirectory_obj`, `sp_activedirectory_scp` und `sp_activedirectory_start`.
+Die folgenden nicht unterstützten Systemprozeduren und erweiterten gespeicherten Prozeduren können in Azure SQL-Datenbank nicht verwendet werden: `sp_dboption`, `sp_addserver`, `sp_dropalias`,`sp_activedirectory_obj`, `sp_activedirectory_scp`, `sp_activedirectory_start`.
 
 
 **Empfehlung**    

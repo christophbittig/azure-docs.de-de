@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e3eb77d15c288c93298da6dd79a76565e5d67f96
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 4119794663a35c6f29edf42443e57d411376cce5
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749940"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830462"
 ---
 # <a name="azure-key-vault-keys-secrets-and-certificates-overview"></a>Übersicht über Schlüssel, Geheimnisse und Zertifikate in Azure Key Vault
 
@@ -47,7 +47,7 @@ Speicherkontoschlüssel|/storage|Unterstützt|Nicht unterstützt
 |||
 - **Kryptografische Schlüssel:** Unterstützt mehrere Schlüsseltypen und Algorithmen und ermöglicht die Verwendung von softwaregeschützten und durch HSM geschützten Schlüsseln. Weitere Informationen finden Sie unter [Informationen zu Azure Key Vault-Schlüsseln](../keys/about-keys.md).
 - **Geheimnisse:** Bieten einen sicheren Speicher für Geheimnisse wie Kennwörter und Datenbank-Verbindungszeichenfolgen. Weitere Informationen finden Sie unter [Informationen zu Azure Key Vault-Geheimnissen](../secrets/about-secrets.md).
-- **Zertifikate**: Unterstützen Zertifikate, die auf Schlüsseln und Geheimnissen aufbauen, und fügt ein Feature für die automatisierte Verlängerung hinzu. Weitere Informationen finden Sie unter [Informationen zu Azure Key Vault-Zertifikaten](../certificates/about-certificates.md).
+- **Zertifikate**: Unterstützen Zertifikate, die auf Schlüsseln und Geheimnissen aufbauen, und fügt ein Feature für die automatisierte Verlängerung hinzu. Beachten Sie: Wenn ein Zertifikat erstellt wird, werden auch ein adressierbarer Schlüssel und ein Geheimnis gleichen Namens erstellt. Weitere Informationen finden Sie unter [Informationen zu Azure Key Vault-Zertifikaten](../certificates/about-certificates.md).
 - **Azure-Speicherkontenschlüssel:** Kann die Schlüssel eines Azure Storage-Kontos für Sie verwalten. Intern kann Key Vault Schlüssel für ein Azure Storage-Konto auflisten (synchronisieren) und die Schlüssel in regelmäßigen Abständen erneut generieren (rotieren). Weitere Informationen finden Sie unter [Verwalten von Speicherkontoschlüsseln mit Key Vault und der Azure-Befehlszeilenschnittstelle](../secrets/overview-storage-keys.md).
 
 Weitere allgemeine Informationen zu Key Vault finden Sie unter [Informationen zu Azure Key Vault](overview.md). Weitere Informationen zu Pools verwalteter HSMs finden Sie unter [Was ist verwaltetes HSM von Azure Key Vault?](../managed-hsm/overview.md).
@@ -90,7 +90,7 @@ Ein Objektbezeichner hat das folgende allgemeine Format (abhängig vom Container
 
 Hierbei gilt:  
 
-| Element | Beschreibung |  
+| Element | BESCHREIBUNG |  
 |-|-|  
 |`vault-name` oder `hsm-name`|Der Name eines Schlüsseltresors oder Pools verwalteter HSMs im Microsoft Azure Key Vault-Dienst.<br /><br />Schlüsseltresornamen und Namen von Pools verwalteter HSMs werden vom Benutzer ausgewählt und sind global eindeutig.<br /><br />Der Name des Schlüsseltresors und des Pools verwalteter HSMs muss zwischen 3 und 24 Zeichen lang sein und darf nur die Ziffern 0-9, die Buchstaben a-z und A-Z sowie das Minuszeichen („-“) enthalten.|  
 |`object-type`|Die Art des Objekts (Schlüssel, Geheimnisse oder Zertifikate)|  

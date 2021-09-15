@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell, synapse
-ms.date: 03/17/2021
-ms.openlocfilehash: 366feb50ef79fc2061f589c3a227c780df258344
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/30/2021
+ms.openlocfilehash: d61d2b7799ab715532b703b5c73ad045e8be6226
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122640554"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123313930"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure Table Storage mit Azure Data Factory
 
@@ -43,7 +43,31 @@ Dieser Azure Table-Connector unterstützt insbesondere das Kopieren von Daten mi
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für Table Storage verwendet werden.
+## <a name="create-an-azure-table-storage-linked-service-using-ui"></a>Erstellen eines verknüpften Azure-Tabellenspeicherdienstes über die Benutzeroberfläche
+
+Führen Sie die folgenden Schritte aus, um einen verknüpften Azure-Tabellenspeicherdienst in der Azure-Portal-Benutzeroberfläche zu erstellen.
+
+1. Navigieren Sie in Ihrem Azure Data Factory- oder Synapse-Arbeitsbereich zur Registerkarte Verwalten, wählen Sie Verknüpfte Dienste und klicken Sie dann auf Neu:
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Screenshot der Erstellung eines neuen verknüpften Dienstes mit Azure Data Factory Benutzeroberfläche.":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Screenshot der Erstellung eines neuen verknüpften Dienstes mit der Azure Synapse-Benutzeroberfläche.":::
+
+2. Suchen Sie nach Azure Table und wählen Sie den Azure Table Storage Connector aus.
+
+    :::image type="content" source="media/connector-azure-table-storage/azure-table-storage-connector.png" alt-text="Screenshot des Azure Table Storage Connectors.":::    
+
+1. Konfigurieren Sie die Details des Dienstes, probieren Sie die Verbindung aus und erstellen Sie den neuen verknüpften Dienst.
+
+    :::image type="content" source="media/connector-azure-table-storage/configure-azure-table-storage-linked-service.png" alt-text="Screenshot der Konfiguration für einen verknüpften Azure Table-Speicherdienst.":::
+
+## <a name="connector-configuration-details"></a>Details zur Konfiguration des Connectors
+
+Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zur Definition von Entitäten verwendet werden, die spezifisch für Azure Table Storage sind.
 
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 

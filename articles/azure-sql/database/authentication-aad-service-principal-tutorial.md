@@ -9,12 +9,12 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 05/10/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c1c0754175283dd9087429586e61739c8c779e49
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 8980380fb16aadd2a5f3c8e64190bb7580d40425
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110662434"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123252593"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>Tutorial: Erstellen von Azure AD-Benutzern mithilfe von Azure AD-Anwendungen
 
@@ -92,7 +92,7 @@ Führen Sie das folgende Skript aus, um diese erforderliche Berechtigung zu erte
 > [!NOTE] 
 > Dieses Skript muss von einem Azure AD-`Global Administrator` oder einem -`Privileged Roles Administrator` ausgeführt werden.
 >
-> In der **öffentlichen Vorschau** können Sie die Rolle `Directory Readers` einer Gruppe in Azure AD zuweisen. Die Gruppenbesitzer können dann die verwaltete Identität als Mitglied dieser Gruppe hinzufügen. Hierdurch wird die Notwendigkeit umgangen, dass von `Global Administrator` oder `Privileged Roles Administrator` die Rolle `Directory Readers` gewährt werden muss. Weitere Informationen zu diesem Feature finden Sie unter [Rolle „Verzeichnisleseberechtigte“ in Azure Active Directory für Azure SQL](authentication-aad-directory-readers-role.md).
+> Sie können die Rolle `Directory Readers` einer Gruppe in Azure AD zuweisen. Die Gruppenbesitzer können dann die verwaltete Identität als Mitglied dieser Gruppe hinzufügen. Hierdurch wird die Notwendigkeit umgangen, dass von `Global Administrator` oder `Privileged Roles Administrator` die Rolle `Directory Readers` gewährt werden muss. Weitere Informationen zu diesem Feature finden Sie unter [Rolle „Verzeichnisleseberechtigte“ in Azure Active Directory für Azure SQL](authentication-aad-directory-readers-role.md).
 
 - Ersetzen Sie `<TenantId>` durch Ihre zuvor ermittelte `TenantId`.
 - Ersetzen Sie `<server name>` durch den Namen Ihres logischen SQL-Servers. Wenn der Servername `myserver.database.windows.net` ist, ersetzen Sie `<server name>` durch `myserver`.

@@ -4,23 +4,97 @@ description: Beschreibt die Bicep-Zugriffsoperatoren für Ressourcen und Eigensc
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 07/29/2021
-ms.openlocfilehash: addf6f552d6c409c77a11d666b8b9ade619ca8f2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/30/2021
+ms.openlocfilehash: b5eebb9b5dd6d39ae790b8fda7133e94ecd0cdb5
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340049"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224287"
 ---
 # <a name="bicep-accessor-operators"></a>Bicep-Accessoroperatoren
 
-Die Accessoroperatoren werden verwendet, um auf untergeordnete Ressourcen und Eigenschaften von Objekten zuzugreifen. Sie können den Eigenschaftenaccessor auch verwenden, um einige Funktionen zu verwenden.
+Die Accessoroperatoren werden verwendet, um auf untergeordnete Ressourcen, Eigenschaften von Objekten und Elemente in einem Array zuzugreifen. Sie können den Eigenschaftenaccessor auch verwenden, um einige Funktionen zu verwenden.
 
 | Operator | Name |
 | ---- | ---- |
+| `[]` | [Indexaccessor](#index-accessor) |
+| `.`  | [Funktionsaccessor](#function-accessor) |
 | `::` | [Accessor für geschachtelte Ressourcen](#nested-resource-accessor) |
 | `.`  | [Eigenschaftenaccessor](#property-accessor) |
-| `.`  | [Funktionsaccessor](#function-accessor) |
+
+## <a name="index-accessor"></a>Indexaccessor
+
+`array[index]`
+
+`object['index']`
+
+Um ein Element in einem Array abzurufen, verwenden Sie `[index]`, und geben Sie eine ganze Zahl für den Index an.
+
+Das folgende Beispiel ruft ein Element in einem Array ab.
+
+```bicep
+var arrayVar = [
+  'Coho'
+  'Contoso'
+  'Fabrikan'
+]
+
+output accessorResult string = arrayVar[1]
+``` 
+
+Ausgabe des Beispiels:
+
+| Name | type | Wert |
+| ---- | ---- | ---- |
+| accessorResult | Zeichenfolge | „Contoso“ |
+
+Sie können auch den Indexaccessor verwenden, um eine Objekteigenschaft anhand des Namens abzurufen. Sie müssen eine Zeichenfolge, keine ganze Zahl, für den Index verwenden. Das folgende Beispiel ruft eine Eigenschaft für ein Objekt ab.
+
+```bicep
+var environmentSettings = {
+  dev: {
+    name: 'Development'
+  }
+  prod: {
+    name: 'Production'
+  }
+}
+
+output accessorResult string = environmentSettings['dev'].name
+```
+
+Ausgabe des Beispiels:
+
+| Name | type | Wert |
+| ---- | ---- | ---- |
+| accessorResult | Zeichenfolge | „Development“ |
+
+## <a name="function-accessor"></a>Funktionsaccessor
+
+`resourceName.functionName()`
+
+Zwei Funktionen, [getSecret](bicep-functions-resource.md#getsecret) und [list*](bicep-functions-resource.md#list), unterstützen den Accessoroperator zum Aufrufen der Funktion. Diese beiden Funktionen sind die einzigen Funktionen, die den Accessoroperator unterstützen.
+
+### <a name="example"></a>Beispiel
+
+Das folgende Beispiel verweist auf einen vorhandenen Schlüsseltresor und verwendet dann `getSecret`, um ein Geheimnis an ein Modul zu übergeben.
+
+```bicep
+resource kv 'Microsoft.KeyVault/vaults@2019-09-01' existing = {
+  name: kvName
+  scope: resourceGroup(subscriptionId, kvResourceGroup )
+}
+
+module sql './sql.bicep' = {
+  name: 'deploySQL'
+  params: {
+    sqlServerName: sqlServerName
+    adminLogin: adminLogin
+    adminPassword: kv.getSecret('vmAdminPassword')
+  }
+}
+```
 
 ## <a name="nested-resource-accessor"></a>Accessor für geschachtelte Ressourcen
 
@@ -107,32 +181,6 @@ resource publicIp 'Microsoft.Network/publicIPAddresses@2020-06-01' = {
 
 // Use property accessor to get value
 output ipFqdn string = publicIp.properties.dnsSettings.fqdn
-```
-
-## <a name="function-accessor"></a>Funktionsaccessor
-
-`resourceName.functionName()`
-
-Zwei Funktionen, [getSecret](bicep-functions-resource.md#getsecret) und [list*](bicep-functions-resource.md#list), unterstützen den Accessoroperator zum Aufrufen der Funktion. Diese beiden Funktionen sind die einzigen Funktionen, die den Accessoroperator unterstützen.
-
-### <a name="example"></a>Beispiel
-
-Das folgende Beispiel verweist auf einen vorhandenen Schlüsseltresor und verwendet dann `getSecret`, um ein Geheimnis an ein Modul zu übergeben.
-
-```bicep
-resource kv 'Microsoft.KeyVault/vaults@2019-09-01' existing = {
-  name: kvName
-  scope: resourceGroup(subscriptionId, kvResourceGroup )
-}
-
-module sql './sql.bicep' = {
-  name: 'deploySQL'
-  params: {
-    sqlServerName: sqlServerName
-    adminLogin: adminLogin
-    adminPassword: kv.getSecret('vmAdminPassword')
-  }
-}
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

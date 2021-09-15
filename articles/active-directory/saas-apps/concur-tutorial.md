@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/26/2020
+ms.date: 08/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 006d30839e16ea303b684fb0ee1be7f40dcbdfb7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 34b18de633d586b6b32bc11b4eb6cb1a65928550
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98736955"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222632"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Concur
 
@@ -37,8 +37,9 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Concur unterstützt das **SP-initiierte** einmalige Anmelden.
+* Concur unterstützt das **SP**-initiierte einmalige Anmelden.
 * Concur unterstützt die **Just-in-Time**-Benutzerbereitstellung.
+* Concur unterstützt die [Automatisierte Benutzerbereitstellung](concur-provisioning-tutorial.md).
 
 ## <a name="adding-concur-from-the-gallery"></a>Hinzufügen von Concur aus dem Katalog
 
@@ -134,6 +135,8 @@ Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Concur** müssen Sie 
 ### <a name="create-concur-test-user"></a>Erstellen eines Concur-Testbenutzers
 
 In diesem Abschnitt wird in Concur ein Benutzer namens B. Simon erstellt. Concur unterstützt die Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Concur vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
+
+Außerdem unterstützt Concur die automatische Benutzerbereitstellung. Weitere Informationen zum Konfigurieren der automatischen Benutzerbereitstellung finden Sie [hier](./concur-provisioning-tutorial.md).
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 

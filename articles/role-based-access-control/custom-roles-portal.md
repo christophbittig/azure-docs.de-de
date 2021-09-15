@@ -8,14 +8,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/11/2020
+ms.date: 08/27/2021
 ms.author: rolyon
-ms.openlocfilehash: ecda0edcd34999e8cbb6c7ab9039953d17c119e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de888e76e9ba27fa653905084193e6f8e25d2a81
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97369225"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123315259"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Erstellen oder Aktualisieren von benutzerdefinierten Azure-Rollen über das Azure-Portal
 
@@ -48,7 +48,7 @@ Wenn eine vorhandene Rolle nicht über die erforderlichen Berechtigungen verfüg
 
     Der folgende Screenshot zeigt die geöffnete Seite „Zugriffssteuerung (IAM)“ für ein Abonnement.
 
-    ![Die Seite „Zugriffssteuerung (IAM)“ für ein Abonnement](./media/custom-roles-portal/access-control-subscription.png)
+    ![Die Seite „Zugriffssteuerung (IAM)“ für ein Abonnement](./media/shared/sub-access-control.png)
 
 1. Klicken Sie auf die Registerkarte **Rollen**, um eine Liste aller integrierten und benutzerdefinierten Rollen anzuzeigen.
 
@@ -176,13 +176,13 @@ Führen Sie diese Schritte aus, um Berechtigungen für Ihre benutzerdefinierte R
 
     Basierend auf Ihrer Suchzeichenfolge wird eine Liste mit Ressourcenanbieterkarten angezeigt. Eine Übersicht über die Zuordnung von Ressourcenanbietern und Azure-Diensten finden Sie unter [Ressourcenanbieter für Azure-Dienste](../azure-resource-manager/management/azure-services-resource-providers.md).
 
-    ![Der Bereich „Berechtigungen hinzufügen“ mit Ressourcenanbietern](./media/custom-roles-portal/add-permissions-provider.png)
+    ![Der Bereich „Berechtigungen hinzufügen“ mit Ressourcenanbietern](./media/shared/add-permissions-provider.png)
 
 1. Klicken Sie auf die Karte eines Ressourcenanbieters, der möglicherweise über die Berechtigungen verfügt, die Sie Ihrer benutzerdefinierten Rolle hinzufügen möchten (z.B. **Microsoft-Abrechnung**).
 
     Basierend auf Ihrer Suchzeichenfolge wird eine Liste mit Verwaltungsberechtigungen für den jeweiligen Ressourcenanbieter angezeigt.
 
-    ![Die Liste „Berechtigungen hinzufügen“](./media/custom-roles-portal/add-permissions-list.png)
+    ![Die Liste „Berechtigungen hinzufügen“](./media/shared/add-permissions-list.png)
 
 1. Wenn Sie nach Berechtigungen suchen, die sich auf die Datenebene beziehen, klicken Sie auf **Datenaktionen**. Anderenfalls behalten Sie die Einstellung **Aktionen** bei, um Berechtigungen aufzulisten, die sich auf die Verwaltungsebene beziehen. Weitere Informationen zu den Unterschieden zwischen der Verwaltungsebene und der Datenebene finden Sie unter [Verwaltungs- und Datenvorgänge](role-definitions.md#management-and-data-operations).
 
@@ -241,7 +241,9 @@ Wenn Sie eine Berechtigung ausschließen, wird sie als `NotActions` oder `NotDat
 
 ## <a name="step-5-assignable-scopes"></a>Schritt 5: Zuweisbare Bereiche
 
-Auf der Registerkarte **Zuweisbare Bereiche** geben Sie an, wo Ihre benutzerdefinierte Rolle zugewiesen werden kann (z.B. in einem Abonnement oder in einer Ressourcengruppe). Abhängig davon, wie Sie den Vorgang zum Erstellen der Rolle begonnen haben, wird auf dieser Registerkarte möglicherweise der Bereich angezeigt, in dem Sie die Seite „Zugriffssteuerung (IAM)“ geöffnet haben. Der zuweisbare Bereich kann nicht auf den Stammbereich ("/") festgelegt werden. Derzeit können keine Verwaltungsgruppen als zuweisbarer Bereich hinzugefügt werden.
+Geben Sie auf der Registerkarte **Zuweisbare Bereiche** an, wo Ihre benutzerdefinierte Rolle für die Zuweisung verfügbar ist, z. B. Verwaltungsgruppe: Abonnements: oder Ressourcengruppen. Je nachdem, wie Sie den Anfang gewählt haben, ist auf dieser Registerkarte möglicherweise bereits der Bereich aufgeführt, in dem Sie die Seite Zugriffssteuerung (IAM) geöffnet haben.
+
+ Sie können eine Verwaltungsgruppe nur in zuweisbaren Bereichen definieren. Das Hinzufügen einer Verwaltungsgruppe zu zuweisbaren Bereichen befindet sich derzeit in der Vorschau. Der zuweisbare Bereich kann nicht auf den Stammbereich ("/") festgelegt werden.
 
 1. Klicken Sie auf **Zuweisbare Bereiche hinzufügen**, um den Bereich „Zuweisbare Bereiche hinzufügen“ zu öffnen.
 

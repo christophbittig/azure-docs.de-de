@@ -11,30 +11,15 @@ metadata:
   ms.topic: conceptual
   ms.date: 11/05/2020
   ms.author: mbullwin
-  ms.openlocfilehash: 9c09297f587fcac65346abddc1b06a69a8e58e6e
-  ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+  ms.openlocfilehash: fb5659f5432225c6b6e33dd8480377763697190f
+  ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 07/15/2021
-  ms.locfileid: "114341719"
+  ms.lasthandoff: 08/27/2021
+  ms.locfileid: "123029843"
 title: 'Metrics Advisor: Häufig gestellte Fragen'
 summary: ''
 sections:
-- name: Allgemein
-  questions:
-  - question: >
-      Warum kann ich die Ressource nicht erstellen? Der Tarif ist nicht verfügbar, und „You have already created 1 S0 for this subscription“ (Sie haben bereits 1 S0 für dieses Abonnement erstellt) wird angezeigt.
-    answer: >
-      :::image type="content" source="media/pricing.png" alt-text="Meldung, wenn eine F0-Ressource bereits vorhanden ist":::
-
-
-      In der öffentlichen Vorschau kann nur eine Instanz von Metrics Advisor pro Region unter einem Abonnement erstellt werden.
-
-
-      Wenn Sie bereits über eine Instanz verfügen, die mit demselben Abonnement in derselben Region erstellt wurde, können Sie eine andere Region oder ein anderes Abonnement zum Erstellen einer neuen Instanz verwenden. Oder löschen Sie eine vorhandene Instanz, um eine neue Instanz zu erstellen.
-
-
-      Wenn Sie die vorhandene Instanz bereits gelöscht haben, der Fehler jedoch weiterhin angezeigt wird, warten Sie nach dem Löschen der Ressource ca. 20 Minuten, bevor Sie eine neue Instanz erstellen.
 - name: Grundlegende Konzepte
   questions:
   - question: >
@@ -63,6 +48,9 @@ sections:
       | Mehr als 1 Tag, bis zu 31 Tage | 4 Jahre an Daten |
 
       | Mehr als 31 Tage | 48 Jahre an Daten |
+  - question: >
+      Welche Daten werden von Metrics Advisor verarbeitet, und wie werden die Daten aufbewahrt?
+    answer: "- Metrics Advisor verarbeitet Zeitreihendaten, die aus einer Datenquelle des Kunden gesammelt werden; Verlaufsdaten werden für die Modellauswahl verwendet und bestimmen die erwartete Datengrenze. \n- Die Zeitreihendaten und Rückschlussergebnisse des Kunden werden innerhalb des Diensts gespeichert. Metrics Advisor speichert und verarbeitet keine Kundendaten außerhalb der Region, in der der Kunde die Dienstinstanz bereitstellt.\n"
   - question: >
       Warum erkennt Metrics Advisor keine Anomalien in Verlaufsdaten?
     answer: >

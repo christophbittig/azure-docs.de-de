@@ -5,16 +5,16 @@ services: container-service
 ms.topic: article
 ms.date: 02/1/2021
 ms.author: miwithro
-ms.openlocfilehash: 353fdd952ed4b2baa8920f1e15fb0dc0f44264ba
-ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
+ms.openlocfilehash: 7a5bea7e555bf4f388a06668b2e349045692a941
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122350852"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123106625"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>Von AKS verwaltete Azure Active Directory-Integration
 
-Die von AKS verwaltete Azure AD-Integration vereinfacht deren Nutzung, weil es für Benutzer nicht mehr erforderlich ist, eine Client-App und eine Server-App zu erstellen und dem Azure AD-Mandanten Leseberechtigungen für Verzeichnisse zu gewähren. In der neuen Version verwaltet der AKS-Ressourcenanbieter die Client- und Server-App.
+Die von AKS verwaltete Azure AD-Integration vereinfacht den Azure AD-Integrationsprozess. Zuvor mussten Benutzer eine Client- und Server-App erstellen und vom Azure AD-Mandanten Berechtigungen zum Lesen von Verzeichnissen erhalten. In der neuen Version verwaltet der AKS-Ressourcenanbieter die Client- und Server-App.
 
 ## <a name="azure-ad-authentication-overview"></a>Übersicht über die Azure AD-Authentifizierung
 
@@ -26,7 +26,7 @@ Informieren Sie sich in der [Dokumentation zu den Konzepten der Azure Active Dir
 
 * Die von AKS verwaltete Azure AD-Integration kann nicht deaktiviert werden.
 * Das Ändern eines integrierten, von AKS verwalteten Azure AD-Clusters in Legacy-AAD wird nicht unterstützt.
-* Bei nicht für Kubernetes RBAC aktivierten Clustern wird die von AKS verwaltete Azure AD-Integration nicht unterstützt.
+* In Clustern ohne Aktivierung der Kubernetes-RBAC wird die von AKS verwaltete Azure AD-Integration nicht unterstützt.
 * Die Änderung des mit der von AKS verwalteten Azure AD-Integration verknüpften Azure AD-Mandanten wird nicht unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -50,7 +50,7 @@ Verwenden Sie für andere Betriebssysteme [diese Anweisungen](https://kubernetes
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Für Ihren Cluster benötigen Sie eine Azure AD-Gruppe. Diese Gruppe wird als Administratorengruppe benötigt, damit dem Cluster Administratorberechtigungen für den Cluster erteilt werden können. Sie können eine vorhandene Azure AD-Gruppe verwenden oder eine neue erstellen. Notieren Sie die Objekt-ID Ihrer Azure AD-Gruppe.
+Für Ihren Cluster benötigen Sie eine Azure AD-Gruppe. Diese Gruppe wird als Administratorgruppe für den Cluster registriert, um Administratorberechtigungen auf Clusterebene zu erteilen. Sie können eine vorhandene Azure AD-Gruppe verwenden oder eine neue erstellen. Notieren Sie die Objekt-ID Ihrer Azure AD-Gruppe.
 
 ```azurecli-interactive
 # List existing groups in the directory
@@ -100,7 +100,7 @@ Sobald der Cluster erstellt ist, können Sie darauf zugreifen.
 
 ## <a name="access-an-azure-ad-enabled-cluster"></a>Zugreifen auf einen Azure AD-fähigen Cluster
 
-Sie benötigen die integrierte Rolle [Azure Kubernetes Service-Clusterbenutzer](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role), um die unten angegebenen Schritte auszuführen.
+Bevor Sie mithilfe einer in Azure AD definierten Gruppe auf den Cluster zugreifen, benötigen Sie die integrierte Rolle [Azure Kubernetes Service-Clusterbenutzer](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role).
 
 Rufen Sie die Benutzeranmeldeinformationen für den Zugriff auf den Cluster ab:
  

@@ -2,13 +2,13 @@
 title: Funktionen von Azure-Ressourcen-Manager-Vorlagen
 description: Es werden die Funktionen beschrieben, die in einer ARM-Vorlage (Azure Resource Manager) zum Abrufen von Werten, Arbeiten mit Zeichenfolgen und numerischen Werten sowie Abrufen von Bereitstellungsinformationen verwendet werden.
 ms.topic: conceptual
-ms.date: 10/12/2020
-ms.openlocfilehash: 012e570a769e8ea969d0c527a71053f55ecdf5a9
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 08/31/2021
+ms.openlocfilehash: a094bfca418cfb2ab28fd0c80b19e580cab76024
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111959405"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123310373"
 ---
 # <a name="arm-template-functions"></a>ARM-Vorlagenfunktionen
 
@@ -176,6 +176,7 @@ Der Ressourcen-Manager stellt die folgenden Funktionen zum Abrufen von Ressource
 * [listSecrets](template-functions-resource.md#list)
 * [list*](template-functions-resource.md#list)
 * [pickZones](template-functions-resource.md#pickzones)
+* [Anbieter (veraltet)](template-functions-resource.md#providers)
 * [Referenz](template-functions-resource.md#reference)
 * [resourceGroup](template-functions-resource.md#resourcegroup): Kann nur in Bereitstellungen in einer Ressourcengruppe verwendet werden.
 * [resourceId](template-functions-resource.md#resourceid): Kann in jedem Bereich verwendet werden, aber die gültigen Parameter ändern sich je nach Bereich.

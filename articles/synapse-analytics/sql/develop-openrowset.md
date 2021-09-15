@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: c8a93ce59927144ce02edb8c1193406a29b18530
-ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
+ms.openlocfilehash: 578ff0997375b62b3fd5a90ec44967ead1b9cd63
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112913777"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123253799"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Verwenden von „OPENROWSET“ mit einem serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -113,10 +113,10 @@ Bei den Eingabedateien mit den Zieldaten für die Abfrage stehen zwei Optionen z
 **'unstructured_data_path'**
 
 Bei dem Pfad für unstrukturierte Daten kann es sich um einen absoluten oder relativen Pfad handeln:
-- Der absolute Pfad im Format \<prefix>://\<storage_account_path>/\<storage_path> ermöglicht einem Benutzer, die Dateien direkt zu lesen.
-- Der relative Pfad im Format '<Speicherpfad>' muss mit dem Parameter `DATA_SOURCE` verwendet werden und beschreibt das Dateimuster innerhalb des Speicherorts <Speicherkontopfad>, der in `EXTERNAL DATA SOURCE` definiert ist. 
+- Der absolute Pfad im Format `\<prefix>://\<storage_account_path>/\<storage_path>` ermöglicht Benutzern, die Dateien direkt zu lesen.
+- Der relative Pfad im Format `<storage_path>` muss mit dem Parameter `DATA_SOURCE` verwendet werden und beschreibt das Dateimuster innerhalb des Speicherorts <Speicherkontopfad>, der in `EXTERNAL DATA SOURCE` definiert ist. 
 
-Nachfolgend sind die relevanten <storage account path>-Werte für die Verknüpfung mit Ihrer speziellen externen Datenquelle angegeben. 
+Nachfolgend sind die relevanten \<storage account path>-Werte für die Verknüpfung mit Ihrer speziellen externen Datenquelle angegeben. 
 
 | Externe Datenquelle       | Präfix | Speicherkontopfad                                 |
 | -------------------------- | ------ | ---------------------------------------------------- |

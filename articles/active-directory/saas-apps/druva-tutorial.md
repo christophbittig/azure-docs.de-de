@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/02/2021
+ms.date: 08/23/2021
 ms.author: jeedes
-ms.openlocfilehash: 858e63272faea2aaf2572a5e97e24ba5858d5bda
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 69649cf16ecfeca81d730ecfc19c8124fdc25579
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111568430"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224174"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-druva"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory in Druva
 
@@ -38,6 +38,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Druva unterstützt **IDP-initiiertes** einmaliges Anmelden.
+* Druva unterstützt die [automatisierte Benutzerbereitstellung](druva-provisioning-tutorial.md).
 
 > [!NOTE]
 > Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
@@ -155,6 +156,8 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anme
 ### <a name="create-druva-test-user"></a>Erstellen eines Druva-Testbenutzers
 
 In diesem Abschnitt wird in Druva ein Benutzer namens B. Simon erstellt. Druva unterstützt die Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn in Druva noch kein Benutzer vorhanden ist, wird nach der Authentifizierung ein neuer Benutzer erstellt.
+
+Außerdem unterstützt Druva die automatische Benutzerbereitstellung. Weitere Informationen zum Konfigurieren der automatischen Benutzerbereitstellung finden Sie [hier](./druva-provisioning-tutorial.md).
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 

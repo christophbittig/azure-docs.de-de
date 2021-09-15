@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: 5e32daea0fd28029b13090c33cb8ec5d8d86abff
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: be43dda1e1fdf6d23031f2d2bf75a7f126ddef7a
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113765357"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272833"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>Migrieren von VMware-VMs zu Azure (Agent-basiert)
 
@@ -358,13 +358,13 @@ Nachdem Sie sich vergewissert haben, dass die Testmigration wie erwartet funktio
     - Beendet die Replikation für den lokalen Computer.
     - Entfernt den Computer aus dem Zähler **Server werden repliziert.** in Azure Migrate: Servermigration.
     - Bereinigt die Replikationsstatusinformationen für den virtuellen Computer.
-2. Installieren Sie den [Windows](../virtual-machines/extensions/agent-windows.md)- oder [Linux](../virtual-machines/extensions/agent-linux.md)-Agent für die Azure-VM auf den migrierten Computern.
-3. Führen Sie App-Anpassungen nach der Migration durch, z.B. die Aktualisierung von Datenbankverbindungszeichenfolgen und Webserverkonfigurationen.
-4. Führen Sie endgültige Anwendungs- und Migrationsakzeptanztests für die migrierte Anwendung durch, die nun in Azure ausgeführt wird.
-5. Leiten Sie den Datenverkehr auf die migrierte Instanz der Azure-VM um.
-6. Entfernen Sie die lokalen VMs aus Ihrem lokalen VM-Bestand.
-7. Entfernen Sie die lokalen VMs aus lokalen Sicherungen.
-8. Aktualisieren Sie die interne Dokumentation zum Anzeigen des neuen Speicherorts und der IP-Adresse der Azure-VMs.
+1. Überprüfen und [beheben Sie alle Windows-Aktivierungsprobleme auf dem virtuellen Azure-Computer](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems).
+1. Führen Sie App-Anpassungen nach der Migration durch, z. B. Hostnamen, die Aktualisierung von Datenbankverbindungszeichenfolgen und Webserverkonfigurationen.
+1. Führen Sie endgültige Anwendungs- und Migrationsakzeptanztests für die migrierte Anwendung durch, die nun in Azure ausgeführt wird.
+1. Leiten Sie den Datenverkehr auf die migrierte Instanz der Azure-VM um.
+1. Entfernen Sie die lokalen VMs aus Ihrem lokalen VM-Bestand.
+1. Entfernen Sie die lokalen VMs aus lokalen Sicherungen.
+1. Aktualisieren Sie die interne Dokumentation zum Anzeigen des neuen Speicherorts und der IP-Adresse der Azure-VMs.
 
 ## <a name="post-migration-best-practices"></a>Bewährte Methoden nach der Migration
 

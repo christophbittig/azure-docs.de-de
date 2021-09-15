@@ -1,23 +1,25 @@
 ---
 title: Was ist Azure Communication Services?
 description: Erfahren Sie, wie Azure Communication Services Sie bei der Entwicklung umfassender Benutzererfahrungen mit Echtzeitkommunikation unterstützt.
-author: mikben
-manager: jken
+author: probableprime
+manager: chpalm
 services: azure-communication-services
-ms.author: mikben
+ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 12e0c9c277bbf162797d52692add208ce921569b
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 4e8ec31fc28014e404ae69f2746eb02099e83842
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113360917"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967843"
 ---
 # <a name="what-is-azure-communication-services"></a>Was ist Azure Communication Services?
 
-Azure Communication Services sind cloudbasierte Dienste mit REST-APIs und Clientbibliothek-SDKs, die Sie dabei unterstützen, Ihre Anwendungen mit Kommunikationsfunktionen auszustatten. Sie können Ihren Anwendungen Kommunikationsfunktionen hinzufügen, ohne sich mit Kommunikationstechnologien wie Mediencodierung und Echtzeitnetzwerken auskennen zu müssen. Azure Communication Services unterstützt verschiedene Kommunikationsformate:
+Azure Communication Services sind cloudbasierte Dienste mit REST-APIs und Clientbibliothek-SDKs, die Sie dabei unterstützen, Ihre Anwendungen mit Kommunikationsfunktionen auszustatten. Sie können Ihren Anwendungen Kommunikationsfunktionen hinzufügen, ohne sich mit Kommunikationstechnologien wie Mediencodierung und Echtzeitnetzwerken auskennen zu müssen. Diese Funktionalität wird auch in Azure für Behörden unterstützt.
+
+Azure Communication Services unterstützt verschiedene Kommunikationsformate:
 
 1. Sprach- und Videoanrufe
 1. Rich-Text-Chat

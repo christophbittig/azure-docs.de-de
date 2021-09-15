@@ -6,21 +6,19 @@ author: prakulka
 manager: nmurav
 services: azure-communication-services
 ms.author: prakulka
-ms.date: 03/19/2021
-ms.topic: overview
+ms.date: 06/30/2021
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: bb9765c2620f45d67bf888f8bfe8a4dee450cfd6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2281dac86281d01ec6f033062b87236a780d3bc7
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645663"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259746"
 ---
 # <a name="azure-communication-services-messaging-policy"></a>Azure Communication Services: Nachrichtenrichtlinie
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
-Azure Communication Services bedeutet eine Transformation der Art und Weise, wie unsere Kunden sich mit ihren eigenen Kunden vernetzen. Diese Dienste ermöglichen die Erstellung von umfassenden benutzerdefinierten Kommunikationsumgebungen, bei denen dieselben Unternehmensdienste genutzt werden, die auch Microsoft Teams und Skype zugrunde liegen. Integrieren Sie Funktionen für SMS-Nachrichten in Ihre Kommunikationslösungen, damit Sie Ihre Kunden jederzeit und an jedem Ort erreichen und den benötigten Support leisten können. Beim Einstieg müssen Sie lediglich einige Anforderungen beachten, die in Bezug auf Nachrichten gelten.
+Azure Communication Services bedeutet eine Transformation der Art und Weise, wie unsere Kunden sich mit ihren eigenen Kunden vernetzen. Diese Dienste ermöglichen die Erstellung von umfassenden benutzerdefinierten Kommunikationsumgebungen, bei denen dieselben Unternehmensdienste genutzt werden, die auch Microsoft Teams und Skype zugrunde liegen. Integrieren Sie Funktionen für SMS-Nachrichten in Ihre Kommunikationslösungen, damit Sie Ihre Kunden jederzeit und an jedem Ort erreichen und den benötigten Support leisten können. Für den Anfang müssen Sie nur einige Anforderungen an das Messaging und ein paar Branchenstandards kennen.
 
 Uns ist bewusst, dass das Erlernen der für Nachrichten geltenden Anforderungen ggf. nicht einfach ist, aber Sie können sich als Hilfestellung einfach die Abkürzung „COMS“ merken:
 
@@ -131,9 +129,11 @@ Falls Nachrichten Elemente aus den Bereichen Sex, Hass, Alkohol, Waffen, Tabak, 
 
 Auch wenn mit Inhalt dieser Art nicht gegen Gesetze verstoßen wird, sollten Sie bei der Registrierung für die Teilnahme ein Verfahren zur Altersüberprüfung einbauen, um zu verifizieren, ob der jeweilige Nachrichtenempfänger alt genug für den Erhalt von jugendgefährdendem Inhalt ist. In den USA gelten besondere rechtliche Anforderungen für Marketingnachrichten, die für Kinder unter 13 Jahren bestimmt sind. 
 
-### <a name="prohibited-content"></a>Unerlaubter Inhalt:
+### <a name="prohibited-practices"></a>Unzulässige Vorgehensweisen:
 
-Unabhängig von der Erteilung einer Einwilligung sind bestimmte Nachrichteninhalte unter Azure Communication Services verboten. Folgende Inhalte sind verboten:
+Weder Sie noch Ihre Kunden dürfen Azure Communication Services verwenden, um angemessene Abmeldeanfragen zu umgehen. Darüber hinaus dürfen Sie und Ihre Kunden keine Maßnahmen umgehen, die von Azure Communication Services oder einem Kommunikationsdienstanbieter implementiert wurden, um die Einhaltung von Messaginganforderungen und Branchenstandards sicherzustellen.
+
+Unabhängig von der Erteilung einer Einwilligung sind auch bestimmte Nachrichteninhalte unter Azure Communication Services verboten. Folgende Inhalte sind verboten:
 - Inhalte, mit denen ungesetzliche Aktivitäten gefördert werden (in den USA z. B. Steuerhinterziehung oder Tierquälerei)
 - Hass, Verleumdungen, Belästigungen oder andere offenkundig verletzende Inhalte
 - Pornografische Inhalte
@@ -156,7 +156,7 @@ Beim Spoofing wird eine irreführende oder falsche Absendernummer auf dem Gerät
 
 Diese Nachrichtenrichtlinie stellt keine rechtliche Beratung dar, und wir behalten uns das Recht vor, die Richtlinie jederzeit zu ändern. Azure Communication Services ist nicht dafür verantwortlich sicherzustellen, dass für die Inhalte, die Sendezeitpunkte oder die Empfänger der Nachrichten unserer Kunden alle geltenden rechtlichen Anforderungen erfüllt sind. 
 
-Unsere Kunden sind selbst dafür verantwortlich, alle Anforderungen zu erfüllen, die für das Senden von Nachrichten gelten. Wenn Sie Azure Communication Services als Plattform- oder Softwareanbieter zum Senden von Nachrichten nutzen, sollten Sie es auch für Ihre Kunden obligatorisch machen, dass alle in dieser Nachrichtenrichtlinie beschriebenen Anforderungen erfüllt werden. Weitere hilfreiche Hinweise finden Sie in der PDF-Datei der CTIA zum Thema [Prinzipien und bewährte Methoden für das Messaging](https://api.ctia.org/wp-content/uploads/2019/07/190719-CTIA-Messaging-Principles-and-Best-Practices-FINAL.pdf).
+Unsere Kunden sind selbst dafür verantwortlich, alle Anforderungen zu erfüllen, die für das Senden von Nachrichten gelten. Wenn Sie Azure Communication Services als Plattform- oder Softwareanbieter zum Senden von Nachrichten nutzen, sollten Sie es auch für Ihre Kunden obligatorisch machen, dass alle in dieser Nachrichtenrichtlinie beschriebenen Anforderungen erfüllt werden. Der CTIA-Artikel [Messaging Principles and Best Practices ](https://api.ctia.org/wp-content/uploads/2019/07/190719-CTIA-Messaging-Principles-and-Best-Practices-FINAL.pdf) (Messagingprinzipien und Best Practices) bietet eine hilfreiche Übersicht über die relevanten Branchenstandards.
 
 ### <a name="penalties"></a>Strafzahlungen:
 

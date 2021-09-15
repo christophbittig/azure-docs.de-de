@@ -4,12 +4,12 @@ description: Azure Functions unterstützt mehrere Versionen der Runtime. Lernen 
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 05/19/2021
-ms.openlocfilehash: 18f37bba5996e7d376684e8cee646dd705ab966c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 901297e34f259f9246b79ace2cc914f46b7d3b45
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339062"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251491"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Übersicht über die Runtimeversionen von Azure Functions
 
@@ -112,7 +112,7 @@ Einige Features wurden nach der Version 1.x entfernt, aktualisiert oder ersetzt
 
 In Version 2.x wurden die folgenden Änderungen vorgenommen:
 
-* Schlüssel für aufrufende HTTP-Endpunkte werden immer verschlüsselt in Azure Blob Storage gespeichert. In Version 1.x wurden die Schlüssel standardmäßig in Azure File Storage gespeichert. Beim Durchführen eines Upgrades für eine App von Version 1.x auf Version 2.x werden vorhandene Geheimnisse, die sich in File Storage befinden, zurückgesetzt.
+* Schlüssel für aufrufende HTTP-Endpunkte werden immer verschlüsselt in Azure Blob Storage gespeichert. In Version 1.x wurden Schlüssel standardmäßig in Azure Files gespeichert. Bei einem App-Upgrade von Version 1.x auf Version 2.x werden in Azure Files vorhandene Geheimnisse zurückgesetzt.
 
 * Version 2.x der Runtime umfasst keine integrierte Unterstützung für Webhookanbieter. Diese Änderung wurde vorgenommen, um die Leistung zu verbessern. Sie können weiterhin HTTP-Trigger als Endpunkte für Webhooks verwenden.
 

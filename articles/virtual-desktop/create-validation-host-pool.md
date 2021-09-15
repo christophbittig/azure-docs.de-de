@@ -3,16 +3,16 @@ title: Azure Virtual Desktop-Hostpool zum Überwachen von Dienstupdates – Azur
 description: Erfahren Sie, wie Sie einen Hostpool für die Überwachung von Dienstupdates erstellen, bevor Updates in der Produktion bereitgestellt werden.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 12/15/2020
+ms.date: 07/23/2021
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 2c944d1068ae74a97c8a6315e98a1348f9378b8c
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 13d340d427d2478d226b966e17bf98bcf2561004
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111749127"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123110160"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Tutorial: Erstellen eines Hostpools zum Überprüfen von Dienstupdates
 
@@ -31,17 +31,29 @@ Sie können Probleme beim Überprüfungshostpool entweder mit der [Diagnosefunkt
 >[!IMPORTANT]
 >Bei Azure Virtual Desktop mit Integration der Azure-Ressourcenverwaltung treten derzeit Probleme beim Aktivieren und Deaktivieren von Überprüfungsumgebungen auf. Dieser Artikel wird aktualisiert, wenn das Problem behoben wurde.
 
-## <a name="prerequisites"></a>Voraussetzungen
-
-Bevor Sie beginnen, befolgen Sie die Anweisungen unter [Einrichten des Azure Virtual Desktop PowerShell-Moduls](powershell-module.md), um Ihr PowerShell-Modul einzurichten und sich bei Azure anzumelden.
-
 ## <a name="create-your-host-pool"></a>Erstellen Ihres Hostpools
 
 Sie können einen Hostpool erstellen, indem Sie die Anweisungen in diesen Artikeln befolgen:
-- [Tutorial: Erstellen eines Hostpools mit Azure Marketplace](create-host-pools-azure-marketplace.md)
-- [Erstellen eines Hostpools mit PowerShell](create-host-pools-powershell.md)
+- [Tutorial: Erstellen eines Hostpools mit Azure Marketplace oder der Azure CLI](create-host-pools-azure-marketplace.md)
+- [Erstellen eines Hostpools mithilfe von PowerShell oder der Azure CLI](create-host-pools-powershell.md)
 
 ## <a name="define-your-host-pool-as-a-validation-host-pool"></a>Definieren Ihres Hostpools als Überprüfungshostpool
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+So verwenden Sie das Azure-Portal, um Ihren Überprüfungshostpool zu konfigurieren
+
+1. Melden Sie sich unter <https://portal.azure.com> beim Azure-Portal an.
+2. Suchen Sie nach **Azure Virtual Desktop**, und wählen Sie diese Option aus.
+3. Wählen Sie auf der Seite „Azure Virtual Desktop“ die Option **Hostpools** aus.
+4. Wählen Sie den Namen des Hostpools aus, den Sie bearbeiten möchten.
+5. Wählen Sie **Eigenschaften** aus.
+6. Wählen Sie im Feld „Überprüfungsumgebung“ **Ja** aus, um die Überprüfungsumgebung zu aktivieren.
+7. Wählen Sie **Speichern** aus. Dadurch werden die neuen Einstellungen angewendet.
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Sofern dies noch nicht erfolgt ist, befolgen Sie die Anweisungen unter [Einrichten des Azure Virtual Desktop PowerShell-Moduls](powershell-module.md), um Ihr PowerShell-Modul einzurichten und sich bei Azure anzumelden.
 
 Führen Sie die folgenden PowerShell-Cmdlets aus, um den neuen Hostpool als Überprüfungshostpool zu definieren. Ersetzen Sie die Werte in Klammern durch die für Ihre Sitzung relevanten Werte:
 
@@ -68,19 +80,27 @@ Die Ergebnisse des Cmdlets sollte der folgenden Ausgabe ähneln:
     ValidationEnvironment : True
 ```
 
-## <a name="enable-your-validation-environment-with-the-azure-portal"></a>Aktivieren Ihrer Überprüfungsumgebung über das Azure-Portal
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Sie können auch das Azure-Portal verwenden, um Ihre Überprüfungsumgebung zu aktivieren.
+Bereiten Sie Ihre Umgebung für die Azure CLI vor und melden Sie sich an, falls Sie dies noch nicht erledigt haben.
 
-So verwenden Sie das Azure-Portal, um Ihren Überprüfungshostpool zu konfigurieren
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-1. Melden Sie sich unter <https://portal.azure.com> beim Azure-Portal an.
-2. Suchen Sie nach **Azure Virtual Desktop**, und wählen Sie diese Option aus.
-3. Wählen Sie auf der Seite „Azure Virtual Desktop“ die Option **Hostpools** aus.
-4. Wählen Sie den Namen des Hostpools aus, den Sie bearbeiten möchten.
-5. Wählen Sie **Eigenschaften** aus.
-6. Wählen Sie im Feld „Überprüfungsumgebung“ **Ja** aus, um die Überprüfungsumgebung zu aktivieren.
-7. Wählen Sie **Speichern** aus. Dadurch werden die neuen Einstellungen angewendet.
+Verwenden Sie den Befehl [az desktopvirtualization hostpool update](/cli/azure/desktopvirtualization#az_desktopvirtualization_hostpool_update), um den neuen Hostpool als Überprüfungshostpool zu definieren:
+
+```azurecli
+az desktopvirtualization hostpool update --name "MyHostPool" \
+    --resource-group "MyResourceGroup" \
+    --validation-environment true
+```
+
+Verwenden Sie den folgenden Befehl, um zu bestätigen, dass die Überprüfungseigenschaft festgelegt ist.
+
+```azurecli
+az desktopvirtualization hostpool show --name "MyHostPool" \
+    --resource-group "MyResourceGroup" 
+```
+---
 
 ## <a name="update-schedule"></a>Zeitplan für Updates
 

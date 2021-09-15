@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 01/27/2021
 ms.author: mimart
-ms.openlocfilehash: 32a47a34d9a4c8562dd1cec44f5a2ec519cb1a7f
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 19065a8a0bc828c30997edd05e9b268657e0fcb1
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107984447"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221523"
 ---
 Wenn Sie noch nicht über ein Zertifikat verfügen, können Sie ein selbstsigniertes Zertifikat verwenden. Ein selbstsigniertes Zertifikat ist ein Sicherheitszertifikat, das nicht von einer Zertifizierungsstelle (ZS) signiert ist und nicht die Sicherheitsgarantien eines Zertifikats bietet, das von einer Zertifizierungsstelle signiert wurde. 
 
@@ -18,7 +18,7 @@ Wenn Sie noch nicht über ein Zertifikat verfügen, können Sie ein selbstsignie
 
 Verwenden Sie unter Windows das PowerShell-Cmdlet [New-SelfSignedCertificate](/powershell/module/pki/new-selfsignedcertificate), um ein Zertifikat zu generieren.
 
-1. Führen Sie diesen PowerShell-Befehl aus, um ein selbstsigniertes Zertifikat zu generieren. Ändern Sie das Argument `-Subject` entsprechend Ihrer Anwendung und des Azure AD B2C-Mandantennamens. Sie können auch das `-NotAfter`-Datum anpassen, um einen anderen Ablaufzeitpunkt für das Zertifikat anzugeben.
+1. Führen Sie den folgenden PowerShell-Befehl aus, um ein selbstsigniertes Zertifikat zu generieren. Ändern Sie das Argument `-Subject` entsprechend Ihrer Anwendung und des Azure AD B2C-Mandantennamens. Sie können auch das `-NotAfter`-Datum anpassen, um einen anderen Ablaufzeitpunkt für das Zertifikat anzugeben.
 
     ```PowerShell
     New-SelfSignedCertificate `
@@ -43,13 +43,13 @@ Damit das Kennwort für die PFX-Datei in Azure AD B2C akzeptiert wird, muss es s
 
 Verwenden Sie unter macOS den [Zertifikatsassistenten](https://support.apple.com/guide/keychain-access/aside/glosa3ed0609/11.0/mac/11.0) in Keychain Access, um ein Zertifikat zu generieren.
 
-1. Führen Sie die Anweisungen unter [Erstellen von selbstsignierten Zertifikaten in Keychain Access unter Mac OS](https://support.apple.com/guide/keychain-access/kyca8916/mac) aus.
-1. Wählen Sie in der Keychain Access-App auf Ihrem Mac das Zertifikat aus, das Sie erstellt haben.
-1. Wählen Sie **Datei** > **Elemente exportieren** aus.
-1. Wählen Sie einen Dateinamen aus, um das Zertifikat zu speichern. Beispielsweise **self-signed-certificate.p12**.
-1. Wählen Sie als **Dateiformat** die Option **Privater Informationsaustausch (.p12)** aus.
+1. Führen Sie die Anweisungen unter [Erstellen von selbstsignierten Zertifikaten mit der Schlüsselbundverwaltung auf dem Mac](https://support.apple.com/guide/keychain-access/kyca8916/mac) aus.
+1. Wählen Sie in der App „Schlüsselbundverwaltung“ auf Ihrem Mac das von Ihnen erstellte Zertifikat aus.
+1. Wählen Sie **Ablage** > **Objekte exportieren** aus.
+1. Wählen Sie einen Dateinamen aus, um das Zertifikat zu speichern. Beispiel: **self-signed-certificate.p12**.
+1. Wählen Sie als **Dateiformat** die Option **Personal Information Exchange (.p12)** aus.
 1. Wählen Sie **Speichern** aus.
-1. Geben Sie ein **Kennwort** ein, und **überprüfen** Sie es.
-1. Ändern Sie die Dateinamenerweiterung in `.pfx`. Beispielsweise **self-signed-certificate.pfx**.
+1. Geben Sie ein Kennwort in den Feldern **Kennwort** und **Bestätigen** ein.
+1. Ändern Sie die Erweiterung der Datei in „.pfx“. Beispiel: **self-signed-certificate.pfx**.
 
 ---

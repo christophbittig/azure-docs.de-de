@@ -10,15 +10,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2020
+ms.date: 08/31/2021
 ms.author: duau
 ms.reviewer: amsriva
-ms.openlocfilehash: bb7de037f63c8892aa73e357f744b1f25fb0750f
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: c784232d5c51f4c3a3c81df48ce0c01f7e794fc8
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114441027"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123309918"
 ---
 # <a name="geo-filtering-on-a-domain-for-azure-front-door"></a>Geofilterung in einer Domäne für Azure Front Door
 
@@ -26,8 +26,10 @@ Standardmäßig reagiert Azure Front Door auf alle Benutzeranforderungen unabhä
 
 Eine WAF-Richtlinie enthält einige benutzerdefinierte Regeln. Die Regel umfasst Übereinstimmungsbedingungen, eine Aktion und eine Priorität. In einer Übereinstimmungsbedingung werden eine Übereinstimmungsvariable, ein Operator und ein Übereinstimmungswert definiert. Eine Geofilterungsregel setzt sich aus der Übereinstimmungsvariable „REMOTE_ADDR“, dem Operator „GeoMatch“ und einem aus zwei Buchstaben bestehenden Länder-/Regionscode als Wert zusammen. Die Landeskennzahl „ZZ“ oder das Land „Unbekannt“ erfassen IP-Adressen, die noch keinem Land/keiner Region in unserem Dataset zugeordnet sind. Sie können „ZZ“ zu Ihrer Vergleichsbedingung hinzufügen, um False Positive-Ergebnisse zu vermeiden. Sie können eine GeoMatch-Bedingung mit einer Zeichenfolgen-Übereinstimmungsbedingung vom Typ „REQUEST_URI“ kombinieren, um eine pfadbasierte Geofilterungsregel zu erstellen.
 
-
 Eine Geofilterungsrichtlinie für Front Door kann über [Azure PowerShell](front-door-tutorial-geo-filtering.md) oder mithilfe einer [Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-geo-filtering) konfiguriert werden.
+
+> [!IMPORTANT]
+> Geben Sie den Landeskennzahl **ZZ** an, wenn Sie die Funktion Geofilterung verwenden. Die Landeskennzahl **ZZ** (oder das Land *Unbekannt*) erfasst IP-Adressen, die noch keinem Land in unserem Dataset zugeordnet sind. Dadurch werden falsch positive Ergebnisse vermieden.
 
 ## <a name="countryregion-code-reference"></a>Referenz zu Länder-/Regionscodes
 

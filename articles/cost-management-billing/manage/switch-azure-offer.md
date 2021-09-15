@@ -6,23 +6,25 @@ ms.reviewer: amberb
 tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.subservice: billing
-ms.topic: conceptual
-ms.date: 01/20/2021
+ms.topic: how-to
+ms.date: 08/27/2021
 ms.author: banders
-ms.openlocfilehash: dd8040effc5972d86e620793e437f5b185e12603
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 7388ee42195d93a9b7d9a64567f25be91b0eb38d
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685459"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123111953"
 ---
 # <a name="change-your-azure-subscription-to-a-different-offer"></a>Ändern Ihres Azure-Abonnements in ein anderes Angebot
 
-Als Kunde mit einem [Abonnement mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) können Sie Ihr Azure-Abonnement im Azure-Portal auf ein anderes Angebot umstellen. Mithilfe dieses Features können Sie beispielsweise von den [monatlichen Gutschriften für Visual Studio-Abonnenten](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) profitieren.
+Kunden mit einem [Abonnement mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) können ihr Azure-Abonnement im Azure-Portal auf ein anderes Angebot umstellen. Mithilfe dieses Features können Sie beispielsweise von den [monatlichen Gutschriften für Visual Studio-Abonnenten](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) profitieren.
+
+Wenn Sie über ein abgelaufenes Visual Studio-Abonnement verfügen, können Sie zu einem Abonnement mit [nutzungsbasierter Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) wechseln.
 
 **Sie möchten nur Ihre kostenlose Testversion aktualisieren?** Siehe [Upgrade Sie Ihr Abonnement](upgrade-azure-subscription.md).
 
-## <a name="whats-supported"></a>Unterstützte Umstellungen:
+## <a name="whats-supported"></a>Unterstützte Funktionen
 
 Sie können von einem Abonnement mit nutzungsbasierter Zahlung zu einem der folgenden Angebote wechseln:
 
@@ -33,31 +35,56 @@ Sie können von einem Abonnement mit nutzungsbasierter Zahlung zu einem der folg
 - [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/)
 - [Visual Studio Enterprise (Bizspark)](https://azure.microsoft.com/offers/ms-azr-0064p/)
 
+Sie können auch von einem abgelaufenen [Visual Studio Enterprise-Abonnement](https://azure.microsoft.com/offers/ms-azr-0063p/) zu einem Abonnement mit [nutzungsbasierter Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) wechseln. 
+
 > [!NOTE]
 > Um Informationen zu weiteren Angebotsänderungen zu erhalten, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-## <a name="switch-subscription-offer"></a>Umstellen des Abonnementangebots
+## <a name="switch-from-a-pay-as-you-go-subscription"></a>Wechseln von einem Abonnement mit nutzungsbasierter Bezahlung
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Navigieren Sie zu **Abonnements**, und wählen Sie dann Ihr Abonnement mit nutzungsbasierter Bezahlung aus.
 1. Wählen Sie am oberen Rand der Seite **Angebot wechseln** aus. Die Option ist nur verfügbar, wenn Sie über ein Abonnement mit nutzungsbasierter Bezahlung verfügen und Ihren ersten Abrechnungszeitraum abgeschlossen haben.  
-    :::image type="content" source="./media/switch-azure-offer/switch-offer.png" alt-text="ALTImage: Abonnementdetails mit der Option „Angebot wechseln“TEXT" lightbox="./media/switch-azure-offer/switch-offer.png" :::
+    :::image type="content" source="./media/switch-azure-offer/switch-offer.png" alt-text="Screenshot der Abonnementdetails mit der Option „Angebot wechseln“" lightbox="./media/switch-azure-offer/switch-offer.png" :::
 1. Wählen Sie das gewünschte Angebot in der Liste der Angebote aus, auf die Ihr Abonnement umgestellt werden kann. Diese Liste variiert je nach den Mitgliedschaften, denen Ihr Konto zugeordnet ist. Ist kein Angebot verfügbar, sehen Sie sich die [Liste mit verfügbaren Angeboten an, auf die Sie umstellen können](#whats-supported), und vergewissern Sie sich, dass Sie über die richtigen Mitgliedschaften verfügen. Klicken Sie dann auf **Weiter**.
-    :::image type="content" source="./media/switch-azure-offer/select-offer.png" alt-text="Wählen Sie ein Angebot, zu dem Sie wechseln möchten." lightbox="./media/switch-azure-offer/select-offer.png" :::
-    Abhängig von dem Angebot, zu dem Sie wechseln möchten, wird möglicherweise ein Hinweis zu den Auswirkungen dieses Wechsels angezeigt. Lesen Sie die Liste aufmerksam durch, und befolgen Sie die Anweisungen, bevor Sie fortfahren. Möglicherweise müssen Sie auch Ihre Telefonnummer bestätigen.
+    :::image type="content" source="./media/switch-azure-offer/select-offer.png" alt-text="Screenshot, der zeigt, an welcher Stelle Sie ein Angebot für einen Wechsel auswählen können" lightbox="./media/switch-azure-offer/select-offer.png" :::
+    Abhängig von dem Angebot, zu dem Sie wechseln möchten, wird möglicherweise ein Hinweis zu den Folgen dieses Wechsels angezeigt. Lesen Sie die Liste aufmerksam durch, und befolgen Sie die Anweisungen, bevor Sie fortfahren. Möglicherweise müssen Sie auch Ihre Telefonnummer bestätigen.
 1. Wählen Sie nach dem Überprüfen der Hinweise oder dem Bestätigen Ihrer Telefonnummer die Option **Angebot wechseln** aus.
 1. Ihr Abonnement wird jetzt auf das neue Angebot umgestellt.
 
-## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
-Die folgenden Abschnitte enthalten Antworten auf häufig gestellte Fragen.
+## <a name="convert-a-visual-studio-enterprise-subscription"></a>Umstellen eines Visual Studio Enterprise-Abonnements
+
+Wenn Ihr Visual Studio Enterprise-Abonnement abläuft, wird es deaktiviert. Um Azure-Dienste weiterhin mit dem Abonnement verwenden zu können, müssen Sie es in ein Abonnement mit nutzungsbasierter Bezahlung konvertieren.
+
+>[!NOTE]
+> - Wenn Sie ein Upgrade auf ein Abonnement mit nutzungsbasierter Bezahlung durchführen, erhalten Sie keine monatlichen Gutschriften mehr, und Ihre Zahlungsmethode wird monatlich basierend auf Ihrer monatlichen Nutzung abgerechnet.
+> - Wenn Sie zu einem Abonnement mit nutzungsbasierter Bezahlung wechseln, gehen Ihre Nutzungs- und Abrechnungsinformationen verloren. Es wird empfohlen, [alle früheren Rechnungen und Nutzungsdaten](download-azure-invoice-daily-usage-date.md) zu speichern, bevor Sie das Angebot wechseln.
+
+So stellen Sie Ihr Abonnement um
+
+1. Wechseln Sie zu **Abonnements**, und wählen Sie Ihr Visual Studio Enterprise-Abonnement aus.
+1. Oben auf der Seite wird ein Banner mit folgenden Hinweis angezeigt: `Your Visual Studio subscription is expired and has been disabled. To continue using this subscription, please click here to convert to a pay-as-you-go subscription`. Wählen Sie das Banner aus.  
+    :::image type="content" source="./media/switch-azure-offer/visual-studio-expired-banner.png" alt-text="Screenshot eines abgelaufenen Abonnements mit dem Banner für die Umstellung" lightbox="./media/switch-azure-offer/visual-studio-expired-banner.png" :::
+1. Wählen Sie auf der Seite „Angebot wechseln“ auf der Registerkarte „Angebot auswählen“ die Option „Nutzungsbasierte Bezahlung“ aus, und klicken Sie dann auf **Weiter**.  
+    :::image type="content" source="./media/switch-azure-offer/select-offer-pay-as-you-go.png" alt-text="Screenshot mit der Option „Angebot wechseln“" lightbox="./media/switch-azure-offer/select-offer-pay-as-you-go.png" :::
+1. Wählen Sie auf der Registerkarte „Zahlungsmethode auswählen“ die Option **Zahlungsmethode auswählen** aus, geben Sie Ihre Informationen zur Zahlungsmethode ein, und klicken Sie dann auf **Weiter**.  
+1. Auf der Seite „Überprüfen + konvertieren“ können Sie optional den Abonnementnamen ändern. Überprüfen Sie die Vertragsinformationen, wählen Sie die Option **Ich stimme zu** aus, und klicken Sie dann unten auf der Seite auf **Angebot wechseln**.  
+    :::image type="content" source="./media/switch-azure-offer/switch-offer-visual-studio-agreement.png" alt-text="Screenshot mit der Registerkarte „Überprüfen + konvertieren“ mit Abonnementname und Zustimmung zur Vereinbarung" lightbox="./media/switch-azure-offer/switch-offer-visual-studio-agreement.png" :::
+
+Zeigen Sie Ihr neues konvertiertes Abonnement an, indem Sie zu **Abonnements** navigieren.
+
+
+## <a name="frequently-asked-questions-for-pay-as-you-go-subscriptions"></a>Häufig gestellte Fragen zu Abonnements mit nutzungsbasierter Bezahlung
+
+In den folgenden Abschnitten werden häufig gestellte Fragen zum Wechsel von einem Abonnement mit nutzungsbasierter Bezahlung beantwortet.
 
 ### <a name="what-is-an-azure-offer"></a>Was ist ein Azure-Angebot?
 
-Ein Azure-Angebot ist der *Typ* von Azure-Abonnement, das Sie besitzen. Bei [einem Abonnement mit Preisen für nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/), [Azure in Open](https://azure.microsoft.com/offers/ms-azr-0111p/) und [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) handelt es sich beispielsweise um Azure-Angebote. Für jedes Angebot gelten andere [Bedingungen](https://azure.microsoft.com/support/legal/offer-details/), und einige weisen besondere Vorteile auf. Das Angebot Ihres Abonnements wird auf der Seite mit den Abonnementdetails angezeigt.
+Ein Azure-Angebot ist der *Typ* von Azure-Abonnement, das Sie besitzen. Zum Beispiel handelt es sich bei [Abonnements mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/), [Azure in Open](https://azure.microsoft.com/offers/ms-azr-0111p/) und [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) insgesamt um Azure-Angebote. Für jedes Angebot gelten andere [Bedingungen](https://azure.microsoft.com/support/legal/offer-details/), und einige weisen besondere Vorteile auf. Das Angebot Ihres Abonnements wird auf der Seite mit den Abonnementdetails angezeigt.
 
 :::image type="content" source="./media/switch-azure-offer/subscription-details.png" alt-text="Abonnementdetailseite mit dem Angebotstyp" lightbox="./media/switch-azure-offer/subscription-details.png" :::
 
-### <a name="why-dont-i-see-the-button"></a>Warum wird die Schaltfläche nicht angezeigt?
+### <a name="why-dont-i-see-the-switch-offer-option"></a>Warum wird die Option „Angebot wechseln“ nicht angezeigt?
 
 Die Option **Angebot wechseln** wird in den folgenden Fällen unter Umständen nicht angezeigt:
 
@@ -90,7 +117,7 @@ An dem Tag, an dem Sie das Angebot wechseln, wird für alle ausstehenden Gebühr
 ### <a name="can-i-migrate-from-a-subscription-with-pay-as-you-go-rates-to-cloud-solution-provider-csp-or-enterprise-agreement-ea"></a>Kann ich von einem Abonnement mit Preisen für nutzungsbasierte Bezahlung zu Cloudlösungsanbieter (Cloud Solution Provider, CSP) oder Enterprise Agreement (EA) migrieren?
 
 * Informationen zum Migrieren zu CSP finden Sie unter [Übertragen von Azure-Abonnements zwischen Abonnenten und CSPs](transfer-subscriptions-subscribers-csp.md).
-* Um zu EA zu migrieren, muss Ihr Registrierungsadministrator Ihr Konto in EA hinzufügen. Führen Sie die Anweisungen in der Einladungs-E-Mail aus, um Ihre Abonnements in die EA-Registrierung zu verschieben.
+* Wenn Sie über ein Abonnement mit nutzungsbasierter Bezahlung (Azure-Angebots-ID: MS-AZR-0003P) oder einen Azure-Plan mit Preisen für die nutzungsbasierte Bezahlung (Azure-Angebots-ID: MS-AZR-0017G) verfügen und zu einer EA-Registrierung migrieren möchten, bitten Sie Ihren Registrierungsadministrator, Ihr Konto dem EA hinzufügen. Führen Sie die Anweisungen in der Einladungs-E-Mail aus, um Ihre Abonnements in die EA-Registrierung zu verschieben. Weitere Informationen finden Sie unter [Ändern des Besitzes von Azure-Abonnements oder -Konten](ea-portal-administration.md#change-azure-subscription-or-account-ownership).
 
 ### <a name="can-i-migrate-data-and-services-to-a-new-subscription"></a>Kann ich Daten und Dienste in ein neues Abonnement migrieren?
 
@@ -102,4 +129,5 @@ An dem Tag, an dem Sie das Angebot wechseln, wird für alle ausstehenden Gebühr
 Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - [Kostenanalyse beginnen](../costs/quick-acm-cost-analysis.md)

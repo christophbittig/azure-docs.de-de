@@ -2,13 +2,13 @@
 title: Verwenden eines Event Hubs aus der Apache Kafka-App – Azure Event Hubs | Microsoft-Dokumentation
 description: Dieser Artikel enthält Informationen zur Azure Event Hubs-Unterstützung für Apache Kafka.
 ms.topic: article
-ms.date: 09/25/2020
-ms.openlocfilehash: 5402769b00a142551672098829dcf8f3ef6ea670
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.date: 08/30/2021
+ms.openlocfilehash: f0ea6469d17248a0d37a7ababf767d494545fbbb
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343498"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123250653"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Verwenden von Azure Event Hubs aus Apache Kafka-Anwendungen
 Event Hubs bietet einen mit den Apache Kafka®-Producer- und -Consumer-APIs kompatiblen Endpunkt, der von den meisten vorhandenen Apache Kafka-Clientanwendungen als Alternative zum Ausführen Ihres eigenen Apache Kafka-Clusters verwendet werden kann. Event Hubs unterstützt Apache Kafka-Producer- und -Consumer-API-Clients mit Version 1.0 oder höher.
@@ -44,21 +44,21 @@ Die Skalierung in Event Hubs wird durch die Anzahl von [Durchsatzeinheiten (TUs)
 
 Beim Entwickeln von Anwendungen mit Apache Kafka ist es auch hilfreich zu verstehen, dass Azure Event Hubs Teil einer Sammlung von Diensten ist, die auch [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) und [Azure Event Grid](../event-grid/overview.md) umfasst. 
 
-Während einige Anbieter kommerzieller Distributionen von Apache Kafka den Eindruck erwecken möchten, dass Apache Kafka eine Universallösung für alle Anforderungen an eine Messagingplattform ist, sieht die Realität jedoch so aus, dass Apache Kafka beispielsweise nicht das [ Competing-Consumer](/azure/architecture/patterns/competing-consumers)-Warteschlangenmuster implementiert, keine Unterstützung für [publish-subscribe](/azure/architecture/patterns/publisher-subscriber) auf einer Ebene bietet, die Abonnenten Zugriff auf eingehende Nachrichten auf der Grundlage von vom Server ausgewerteten Regeln erlaubt, die keine einfachen Offsets sind, und keine Möglichkeiten besitzt, den Lebenszyklus eines Auftrags nachzuverfolgen, der durch eine Nachricht initiiert wurde oder fehlerhafte Nachrichten in eine Warteschlange für unzustellbare Nachrichten zu verschieben, die alle für viele Messagingszenarien in Unternehmen grundlegend sind.
+Während einige Anbieter kommerzieller Distributionen von Apache Kafka den Eindruck erwecken möchten, dass Apache Kafka eine Universallösung für alle Anforderungen an eine Messagingplattform ist, sieht die Realität jedoch so aus, dass Apache Kafka beispielsweise nicht das [Competing-Consumer](/azure/architecture/patterns/competing-consumers)-Warteschlangenmuster implementiert, keine Unterstützung für [veröffentlichen-abonnieren](/azure/architecture/patterns/publisher-subscriber) auf einer Ebene bietet, die Abonnenten Zugriff auf eingehende Nachrichten auf der Grundlage von vom Server ausgewerteten Regeln erlaubt, die keine einfachen Offsets sind, und keine Möglichkeiten besitzt, den Lebenszyklus eines Auftrags nachzuverfolgen, der durch eine Nachricht initiiert wurde oder fehlerhafte Nachrichten in eine Warteschlange für unzustellbare Nachrichten zu verschieben, die alle für viele Messagingszenarien in Unternehmen grundlegend sind.
 
-Um die Unterschiede zwischen Mustern zu verstehen und um zu erfahren, welches Muster am besten von welchem Dienst abgedeckt wird, lesen Sie den Leitfaden [Asynchrone Messagingoptionen in Azure](/azure/architecture/guide/technology-choices/messaging). Als Benutzer von Apache Kafka werden Sie vielleicht feststellen, dass die Kommunikationspfade, die Sie bisher mit Kafka realisiert haben, mit weitaus geringerer Grundkomplexität und dennoch leistungsfähigeren Funktionen realisiert werden können, wenn Sie entweder Event Grid oder Service Bus verwenden. 
+Um die Unterschieden zwischen Mustern und dem Muster, das von welchem Dienst am besten abgedeckt wird, zu verstehen lesen Sie die Anleitung [asynchrone Messagingoptionen in Azure](/azure/architecture/guide/technology-choices/messaging). Als Benutzer von Apache Kafka werden Sie vielleicht feststellen, dass die Kommunikationspfade, die Sie bisher mit Kafka realisiert haben, mit weitaus geringerer Grundkomplexität und dennoch leistungsfähigeren Funktionen realisiert werden können, wenn Sie entweder Event Grid oder Service Bus verwenden. 
 
 Wenn Sie bestimmte Funktionen von Apache Kafka benötigen, die nicht über die Event Hubs für Apache Kafka-Schnittstelle verfügbar sind, oder wenn Ihr Implementierungsmuster die [Event Hubs-Kontingente](event-hubs-quotas.md) überschreitet, können Sie auch einen [nativen Apache Kafka-Cluster in Azure HDInsight](../hdinsight/kafka/apache-kafka-introduction.md) ausführen.  
 
 ## <a name="security-and-authentication"></a>Sicherheit und Authentifizierung
-Jedes Mal, wenn Sie Ereignisse/Daten von einem Event Hub für Kafka veröffentlichen oder nutzen, versucht Ihr Client, auf die Event Hubs-Ressourcen zuzugreifen. Sie möchten sicherstellen, dass der Zugriff auf die Ressourcen durch eine autorisierte Entität erfolgt. Wenn Sie das Apache Kafka-Protokoll mit ihren Clients verwenden, können Sie die Konfiguration für Authentifizierung und Verschlüsselung mithilfe der SASL-Mechanismen festlegen. Wenn Sie Event Hubs für Kafka verwenden, ist die TLS-Verschlüsselung erforderlich (da alle Daten während der Übertragung an Event Hubs TLS-verschlüsselt sind). Sie können dies durch Angeben der Option SASL_SSL in Ihrer Konfigurationsdatei erreichen. 
+Jedes Mal, wenn Sie Ereignisse/Daten von einem Event Hub für Kafka veröffentlichen oder nutzen, versucht Ihr Client, auf die Event Hubs-Ressourcen zuzugreifen. Sie möchten sicherstellen, dass der Zugriff auf die Ressourcen durch eine autorisierte Entität erfolgt. Wenn Sie das Apache Kafka-Protokoll mit ihren Clients verwenden, können Sie die Konfiguration für Authentifizierung und Verschlüsselung mithilfe der SASL-Mechanismen festlegen. Wenn die Verwendung von Event Hubs für Kafka die TLS-Verschlüsselung erfordert (da alle Daten während der Übertragung mit Event Hubs TLS-verschlüsselt sind), können Sie die Option SASL_SSL in Ihrer Konfigurationsdatei angeben. 
 
 Azure Event Hubs bietet mehrere Optionen, um den Zugriff auf Ihre sicheren Ressourcen zu autorisieren. 
 
 - OAuth 2.0
 - Shared Access Signature (SAS)
 
-#### <a name="oauth-20"></a>OAuth 2.0
+### <a name="oauth-20"></a>OAuth 2.0
 Event Hubs ist in Azure Active Directory (Azure AD) integriert, das einen mit **OAuth 2.0** kompatiblen zentralisierten Autorisierungsserver bereitstellt. Mit Azure AD können Sie rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) verwenden, um Ihren Clientidentitäten fein differenzierte Berechtigungen zu erteilen. Sie können dieses Feature in Kombination mit Ihren Kafka-Clients verwenden, indem Sie **SASL_SSL** als Protokoll und **OAUTHBEARER** als Mechanismus angeben. Details zu den Azure-Rollen und -Ebenen, die den Umfang des Zugriffs definieren, finden Sie unter [Autorisieren des Zugriffs mit Azure AD](authorize-access-azure-active-directory.md).
 
 ```properties
@@ -69,7 +69,7 @@ sasl.jaas.config=org.apache.kafka.common.security.oauthbearer.OAuthBearerLoginMo
 sasl.login.callback.handler.class=CustomAuthenticateCallbackHandler
 ```
 
-#### <a name="shared-access-signature-sas"></a>Shared Access Signature (SAS)
+### <a name="shared-access-signature-sas"></a>Shared Access Signature (SAS)
 Event Hubs bietet darüber hinaus **Shared Access Signatures (SAS)** für den delegierten Zugriff auf Event Hubs für Kafka-Ressourcen. Die Autorisierung des Zugriffs mithilfe des tokenbasierten OAuth 2.0-Mechanismus sorgt für überlegene Sicherheit und einfache Verwendung im Vergleich mit SAS. Durch die integrierten Rollen kann außerdem die Notwendigkeit einer ACL-basierten Autorisierung entfallen, die vom Benutzer gewartet und verwaltet werden muss. Sie können dieses Feature in Kombination mit Ihren Kafka-Clients verwenden, indem Sie **SASL_SSL** als Protokoll und **PLAIN** als Mechanismus angeben. 
 
 ```properties
@@ -93,15 +93,15 @@ Weitere **Beispiele**, die die Verwendung von OAuth mit Event Hubs für Kafka ve
 
 ## <a name="other-event-hubs-features"></a>Weitere Event Hubs-Funktionen 
 
-Die Funktion „Event Hubs für Apache Kafka“ ist eines der drei Protokolle, die gleichzeitig in Azure Event Hubs verfügbar sind und ergänzt HTTP und AMQP. Sie können mit jedem dieser Protokolle schreiben und mit einem der anderen lesen, sodass Ihre aktuellen Apache Kafka-Producer die Veröffentlichung über Apache Kafka fortsetzen können. Der Leser kann jedoch von der nativen Integration in die AMQP-Schnittstelle von Event Hubs profitieren, z. B. Azure Stream Analytics oder Azure Functions. Umgekehrt können Sie Azure Event Hubs problemlos als Zielendpunkt in AMQP-Routingnetzwerke integrieren und dennoch Daten über Apache Kafka-Integrationen lesen.  
+Die Funktion „Event Hubs für Apache Kafka“ ist eines der drei Protokolle, die gleichzeitig in Azure Event Hubs verfügbar sind und ergänzt HTTP und AMQP. Sie können mit jedem dieser Protokolle schreiben und mit einem der anderen lesen, sodass Ihre aktuellen Apache Kafka-Produzenten die Veröffentlichung über Apache Kafka fortsetzen können. Der Leser kann jedoch von der nativen Integration in die AMQP-Schnittstelle von Event Hubs profitieren, z. B. Azure Stream Analytics oder Azure Functions. Umgekehrt können Sie Azure Event Hubs problemlos als Zielendpunkt in AMQP-Routingnetze integrieren und dennoch Daten über Apache Kafka-Integrationen lesen.  
 
-Darüber hinaus arbeiten Event Hubs-Funktionen wie [Aufzeichnen](event-hubs-capture-overview.md), die eine äußerst kosteneffiziente Langzeitarchivierung über Azure Blob Storage und Azure Data Lake Storage ermöglichen, und [Geo Disaster-Recovery](event-hubs-geo-dr.md) ebenfalls mit der Event Hubs für Kafka-Funktion zusammen.
+Darüber hinaus arbeiten Event Hubs-Funktionen wie [Capture](event-hubs-capture-overview.md), das eine äußerst kosteneffiziente Langzeitarchivierung über Azure Blob Storage und Azure Data Lake Storage ermöglichen, und [Geographische Disasterwiederherstellung](event-hubs-geo-dr.md) ebenfalls mit dem Event Hubs für Kafka-Funktion zusammen.
 
 ## <a name="apache-kafka-feature-differences"></a>Unterschiede der Apache Kafka-Funktionen 
 
 Das Ziel von Event Hubs für Apache Kafka ist es, Anwendungen, die in die Apache Kafka-API eingebunden sind und ansonsten von einem Apache Kafka-Cluster unterstützt werden müssten, Zugriff auf die Funktionen von Azure Event Hubs zu ermöglichen. 
 
-Wie [oben](#is-apache-kafka-the-right-solution-for-your-workload) erläutert, bieten die Azure-Messagingdienste eine reichhaltige und robuste Abdeckung für eine Vielzahl von Messagingszenarien, und obwohl die folgenden Funktionen derzeit nicht durch Unterstützung von Event Hubs für die Apache Kafka-API unterstützt werden, weisen wir darauf hin, wo und wie die gewünschte Funktion verfügbar ist.
+Wie [oben](#is-apache-kafka-the-right-solution-for-your-workload) erläutert, bieten die Azure-Messagingdienste eine reichhaltige und robuste Abdeckung für eine Vielzahl von Messagingszenarien, und obwohl die folgenden Funktionen derzeit nicht durch Unterstützung von Event Hubs für die Apache Kafka-API unterstützt werden, zeigen wir, wo und wie die gewünschte Funktion verfügbar ist.
 
 ### <a name="transactions"></a>Transaktionen
 
@@ -117,13 +117,13 @@ Die Nutzlast eines Event Hub-Ereignisses ist ein Bytestream, und der Inhalt kann
 
 ### <a name="log-compaction"></a>Protokollkomprimierung
 
-Apache Kafka-Protokollkomprimierung ist eine Funktion, mit der alle bis auf den letzten Datensatz jedes Schlüssels aus einer Partition entfernt werden können, wodurch ein Apache Kafka-Thema effektiv in einen Schlüssel-Wert-Speicher umgewandelt wird, bei dem der letzte hinzugefügte Wert den vorherigen Wert überschreibt. Dieses Feature wird derzeit nicht von Azure Event Hubs implementiert. Das Schlüssel-Wert-Speichermuster wird selbst bei häufigen Updates wesentlich besser von Datenbankdiensten wie [Azure Cosmos DB](../cosmos-db/introduction.md) unterstützt. Weitere Informationen finden Sie im Thema [Protokollprojektion](event-hubs-federation-overview.md#log-projections) des Event Hubs-Verbundleitfadens. 
+Apache Kafka-Protokollkomprimierung ist eine Funktion, mit der alle bis auf den letzten Datensatz jedes Schlüssels aus einer Partition entfernt werden können, wodurch ein Apache Kafka-Thema effektiv in einen Schlüssel-Wert-Speicher umgewandelt wird, bei dem der letzte hinzugefügte Wert den vorherigen Wert überschreibt. Dieses Feature wird derzeit nicht von Azure Event Hubs implementiert. Das Schlüssel-Wert-Speichermuster wird selbst bei häufigen Updates wesentlich besser von Datenbankdiensten wie [Azure Cosmos DB](../cosmos-db/introduction.md) unterstützt. Weitere Informationen finden Sie unter [Protokollprojektion](event-hubs-federation-overview.md#log-projections). 
 
 ### <a name="kafka-streams"></a>Kafka Streams
 
 Kafka Streams ist eine Clientbibliothek für Stream Analytics, die Teil des Apache Kafka-Open-Source-Projekts, aber vom Apache Kafka-Ereignisdatenstrom-Broker getrennt ist. 
 
-Der häufigste Grund, warum Azure Event Hubs-Kunden Kafka Streams-Unterstützung verwenden möchten, besteht darin, dass sie am Produkt „ksqlDB“ von Confluent interessiert sind. „ksqlDB“ ist ein proprietäres Shared-Source-Projekt, das [so lizenziert ist](https://github.com/confluentinc/ksql/blob/master/LICENSE), dass kein Anbieter, der „Software-as-a-Service, Platform-as-a-Service, Infrastructure-as-a-Service oder andere ähnliche Onlinedienste anbietet, die mit Confluent-Produkten oder -Diensten konkurrieren“, „ksqlDB“-Unterstützung verwenden oder anbieten darf. In der Praxis müssen Sie, wenn Sie ksqlDB verwenden, entweder Kafka selbst ausführen, oder Sie müssen die Cloudangebote von Confluent nutzen. Die Lizenzierungsbedingungen können sich auch auf Azure-Kunden auswirken, die Dienste für einen Zweck anbieten, der von der Lizenz ausgeschlossen wird.
+Der häufigste Grund, warum Azure Event Hubs-Kunden die Unterstützung von Kafka Streams haben möchten, besteht darin, dass sie am Produkt „ksqlDB“ von Confluent interessiert sind. „ksqlDB“ ist ein proprietäres freigegebene-Quelle-Projekt (Shared-Source-Projekt), das [so lizenziert ist](https://github.com/confluentinc/ksql/blob/master/LICENSE), dass kein Anbieter, der „Sofware-als-Dienst (Software-as-a-Service)“, „Plattform-als-Dienst (Platform-as-a-Service)“, „Infrastuktur-als-Dienst (Infrastructure-as-a-Service)“ oder andere ähnliche Onlinedienste anbietet, die mit Confluent-Produkten oder -Diensten konkurrieren“, „ksqlDB“-Unterstützung verwenden oder anbieten darf. In der Praxis müssen Sie, wenn Sie ksqlDB verwenden, entweder Kafka selbst ausführen, oder Sie müssen die Cloudangebote von Confluent nutzen. Die Lizenzierungsbedingungen können sich auch auf Azure-Kunden auswirken, die Dienste für einen Zweck anbieten, der von der Lizenz ausgeschlossen wird.
 
 Als eigenständige Lösung und ohne ksqlDB verfügt Kafka Streams über weniger Funktionen als viele alternative Frameworks und Dienste, von denen die meisten über integrierte SQL-Streamingschnittstellen verfügen. Sie alle sind heute in Azure Event Hubs integriert:
 

@@ -9,12 +9,12 @@ ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: jianleishen
-ms.openlocfilehash: 1883d1192a1908611e3440ea2d39e770b4599bc6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b5bb9cc624f298ae4997b46a5cc7b4cf2a0d21ed
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122640946"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123250729"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>Beibehalten von Metadaten und Zugriffssteuerungslisten bei Verwendung der Kopieraktivität in Azure Data Factory
 
@@ -24,7 +24,7 @@ Wenn Sie die Azure Data Factory-Kopieraktivität verwenden, um Daten von der Que
 
 ## <a name="preserve-metadata-for-lake-migration"></a><a name="preserve-metadata"></a> Beibehalten von Metadaten für die Lake-Migration
 
-Wenn Sie Daten von einem Data Lake zu einem anderen migrieren, z. B. [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md) und [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) und [Azure File Storage](connector-azure-file-storage.md), können Sie festlegen, dass die Dateimetadaten zusammen mit den Daten beibehalten werden.
+Wenn Sie Daten von einem Data Lake zu einem anderen migrieren, einschließlich [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) und [Azure Files](connector-azure-file-storage.md), können Sie wählen, ob die Metadaten der Dateien zusammen mit den Daten erhalten bleiben sollen.
 
 Die Kopieraktivität unterstützt die Beibehaltung der folgenden Attribute beim Kopieren von Daten:
 

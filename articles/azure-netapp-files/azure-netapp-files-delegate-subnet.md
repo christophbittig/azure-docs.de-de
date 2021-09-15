@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 08/25/2021
 ms.author: b-juche
-ms.openlocfilehash: bb3d1fd49c2623ff6dcbe8a19ae8c8ca3b46425a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cdb184d4b96e4cfee2b5450f35c947efb768da9b
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96006575"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866976"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>Delegieren eines Subnetzes an Azure NetApp Files 
 
@@ -27,8 +27,8 @@ Sie müssen ein Subnetze an Azure NetApp Files delegieren.   Wenn Sie ein Volume
 
 ## <a name="considerations"></a>Überlegungen
 
-* Der Assistent zum Erstellen eines neuen Subnetzes verwendet standardmäßig eine /24-Netzwerkmaske, die 251 IP-Adressen bereitstellt. Die Verwendung einer /28-Netzwerkmaske, die 11 nutzbare IP-Adressen bereitstellt, ist für den Dienst ausreichend.
-* In jedem Azure Virtual Network (VNET) kann nur ein Subnetz an Azure NetApp Files delegiert werden.   
+* Der Assistent zum Erstellen eines neuen Subnetzes verwendet standardmäßig eine /24-Netzwerkmaske, die 251 IP-Adressen bereitstellt. Die Verwendung einer /28-Netzwerkmaske, die 11 nutzbare IP-Adressen bereitstellt, ist in den meisten Fällen ausreichend. In Szenarien wie SAP HANA, in denen viele Volumes und Speicherendpunkte erwartet werden, sollten Sie ein größeres Subnetz (z. B. /26-Netzwerkmaske) in Betracht ziehen. Sie können auch bei der vom Assistenten vorgeschlagenen Standardnetzwerkmaske /24 bleiben, wenn Sie nicht viele Client- oder VM-IP-Adressen in Ihrem Azure Virtual Network (VNet) reservieren müssen. Beachten Sie, dass die Netzwerkmaske des delegierten Netzwerks nach der ersten Erstellung nicht mehr geändert werden kann. 
+* In jedem VNET kann nur ein Subnetz an Azure NetApp Files delegiert werden.   
    Azure ermöglicht es Ihnen, mehrere delegierte Subnetze in einem VNet zu erstellen.  Alle Versuche, ein neues Volume zu erstellen, schlagen jedoch fehl, wenn Sie mehr als ein delegiertes Subnetz verwenden.  
    Sie können nur über ein delegiertes Subnetz in einem VNet verfügen. Ein NetApp-Konto kann Volumes in mehreren VNets bereitstellen, die jeweils über ihre eigenen delegierte Subnetze verfügen.  
 * Sie können im delegierten Subnetz keine Netzwerksicherheitsgruppe und keinen Dienstendpunkt festlegen. Dadurch würde bei der Subnetzdelegierung ein Fehler auftreten.

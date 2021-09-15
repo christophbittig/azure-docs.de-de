@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4376a57b677b95b2de7d261b30ac4c0ad24956cc
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f5f06f87ece24377aac380e80c308b4e40906255
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107796175"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259311"
 ---
 # <a name="cloud-tiering-policies"></a>Cloudtieringrichtlinien
 
@@ -24,43 +24,43 @@ Die **Datumsrichtlinie** lagert Dateien aus, auf die zuletzt vor einer bestimmte
 
 ## <a name="how-both-policies-work-together"></a>Zusammenspiel der beiden Richtlinien
 
-Wir veranschaulichen anhand eines Beispiels, wie diese Richtlinien funktionieren: Angenommen, Sie haben die Azure-Dateisynchronisierung auf einem lokalen Volume mit 500 GB konfiguriert, und das Cloudtiering wurde nie aktiviert. Ihre Dateifreigabe enthält die folgenden Dateien:
+Wir veranschaulichen anhand eines Beispiels, wie diese Richtlinien funktionieren: Angenommen, Sie haben die Azure-Dateisynchronisierung auf einem lokalen Volume mit 500 GiB konfiguriert, und das Cloudtiering wurde nie aktiviert. Ihre Dateifreigabe enthält die folgenden Dateien:
 
 |Dateiname |Letzter Zugriff  |Dateigröße  |Speicherort |
 |----------|------------------|-----------|----------|
-|Datei 1    | Vor 2 Tagen  | 10 GB | Server und Azure-Dateifreigabe
-|File 2    | Vor 10 Tagen | 30 GB | Server und Azure-Dateifreigabe
-|Datei 3    | vor 1 Jahr | 200 GB | Server und Azure-Dateifreigabe
-|Datei 4    | Vor 1 Jahr und 2 Tagen | 130 GB | Server und Azure-Dateifreigabe
-|Datei 5    | Vor 2 Jahren und 1 Tag | 140 GB | Server und Azure-Dateifreigabe
+|Datei 1    | Vor 2 Tagen  | 10 GiB | Server und Azure-Dateifreigabe
+|File 2    | Vor 10 Tagen | 30 GiB | Server und Azure-Dateifreigabe
+|Datei 3    | vor 1 Jahr | 200 GiB | Server und Azure-Dateifreigabe
+|Datei 4    | Vor 1 Jahr und 2 Tagen | 130 GiB | Server und Azure-Dateifreigabe
+|Datei 5    | Vor 2 Jahren und 1 Tag | 140 GiB | Server und Azure-Dateifreigabe
 
-**Änderung 1:** Sie haben das Cloudtiering aktiviert, eine Richtlinie für freien Volumespeicherplatz von 20 % festgelegt und die Datumsrichtlinie deaktiviert. Bei dieser Konfiguration stellt das Cloudtiering sicher, dass 20 % (in diesem Fall 100 GB) des Speicherplatzes frei bleiben und auf dem lokalen Computer verfügbar sind. Folglich beträgt die Gesamtkapazität des lokalen Caches 400 GB. Diese 400 GB werden zum Speichern der Dateien verwendet, auf die zuletzt und am häufigsten auf dem lokalen Volume zugegriffen wurde.
+**Änderung 1:** Sie haben das Cloudtiering aktiviert, eine Richtlinie für freien Volumespeicherplatz von 20 % festgelegt und die Datumsrichtlinie deaktiviert. Bei dieser Konfiguration stellt das Cloudtiering sicher, dass 20 % (in diesem Fall 100 GiB) des Speicherplatzes frei bleiben und auf dem lokalen Computer verfügbar sind. Folglich beträgt die Gesamtkapazität des lokalen Cache 400 GiB. Diese 400 GiB werden zum Speichern der Dateien verwendet, auf die zuletzt und am häufigsten auf dem lokalen Volume zugegriffen wurde.
 
-Bei dieser Konfiguration werden nur die Dateien 1 bis 4 im lokalen Cache gespeichert, und die Datei 5 wird ausgelagert. Es können also nur 370 GB der 400 GB genutzt werden. Datei 5 ist 140 GB groß und würde zu einer Überschreitung des Grenzwerts von 400 GB führen, wenn sie lokal zwischengespeichert wird. 
+Bei dieser Konfiguration werden nur die Dateien 1 bis 4 im lokalen Cache gespeichert, und die Datei 5 wird ausgelagert. Es können also nur 370 GiB der 400 GiB genutzt werden. Datei 5 ist 140 GiB groß und würde bei lokaler Zwischenspeicherung zu einer Überschreitung des Grenzwerts von 400 GiB führen. 
 
-**Änderung 2:** Angenommen, ein Benutzer greift auf Datei 5 zu. Dadurch wird Datei 5 zu der Datei in der Freigabe, auf die zuletzt zugegriffen wurde. Folglich wird Datei 5 im lokalen Cache gespeichert, und um unter dem Grenzwert von 400 GB zu bleiben, wird Datei 4 ausgelagert. Die folgende Tabelle zeigt, wo die Dateien gespeichert werden, wenn die folgenden Aktualisierungen vorgenommen werden:
+**Änderung 2:** Angenommen, ein Benutzer greift auf Datei 5 zu. Dadurch wird Datei 5 zu der Datei in der Freigabe, auf die zuletzt zugegriffen wurde. Folglich wird Datei 5 im lokalen Cache gespeichert, und um unter dem Grenzwert von 400 GiB zu bleiben, wird Datei 4 ausgelagert. Die folgende Tabelle zeigt, wo die Dateien gespeichert werden, wenn die folgenden Aktualisierungen vorgenommen werden:
 
 |Dateiname |Letzter Zugriff  |Dateigröße  |Speicherort |
 |----------|------------------|-----------|----------|
-|Datei 5    | vor 2 Stunden | 140 GB | Server und Azure-Dateifreigabe
-|Datei 1    | Vor 2 Tagen  | 10 GB | Server und Azure-Dateifreigabe
-|File 2    | Vor 10 Tagen | 30 GB | Server und Azure-Dateifreigabe
-|Datei 3    | vor 1 Jahr | 200 GB | Server und Azure-Dateifreigabe
-|Datei 4    | Vor 1 Jahr und 2 Tagen | 130 GB | Azure-Dateifreigabe, lokal ausgelagert
+|Datei 5    | vor 2 Stunden | 140 GiB | Server und Azure-Dateifreigabe
+|Datei 1    | Vor 2 Tagen  | 10 GiB | Server und Azure-Dateifreigabe
+|File 2    | Vor 10 Tagen | 30 GiB | Server und Azure-Dateifreigabe
+|Datei 3    | vor 1 Jahr | 200 GiB | Server und Azure-Dateifreigabe
+|Datei 4    | Vor 1 Jahr und 2 Tagen | 130 GiB | Azure-Dateifreigabe, lokal ausgelagert
 
-**Änderung 3:** Angenommen, Sie haben die Richtlinien so aktualisiert, dass die datumsbasierte Tieringrichtlinie auf 60 Tage festgelegt ist und die Richtlinie für freien Volumespeicherplatz auf 70 %. Jetzt können nur bis zu 150 GB im lokalen Cache gespeichert werden. Obwohl auf Datei 2 vor weniger als 60 Tagen zugegriffen wurde, setzt die Richtlinie für freien Volumespeicherplatz die Datumsrichtlinie außer Kraft, und Datei 2 wird ausgelagert, um den freien lokalen Speicherplatz von 70 % beizubehalten.
+**Änderung 3:** Angenommen, Sie haben die Richtlinien so aktualisiert, dass die datumsbasierte Tieringrichtlinie auf 60 Tage festgelegt ist und die Richtlinie für freien Volumespeicherplatz auf 70 %. Jetzt können nur bis zu 150 GiB im lokalen Cache gespeichert werden. Obwohl auf Datei 2 vor weniger als 60 Tagen zugegriffen wurde, setzt die Richtlinie für freien Volumespeicherplatz die Datumsrichtlinie außer Kraft, und Datei 2 wird ausgelagert, um den freien lokalen Speicherplatz von 70 % beizubehalten.
 
 **Änderung 4:** Wenn Sie die Richtlinie für freien Volumespeicherplatz in 20 % ändern und dann mit `Invoke-StorageSyncFileRecall` alle Dateien abrufen, die unter Einhaltung der Cloudtieringrichtlinien auf das lokale Laufwerk passen, sieht die Tabelle wie folgt aus:
 
 |Dateiname |Letzter Zugriff  |Dateigröße  |Speicherort |
 |----------|------------------|-----------|----------|
-|Datei 5    | vor 1 Stunde  | 140 GB | Server und Azure-Dateifreigabe
-|Datei 1    | Vor 2 Tagen  | 10 GB | Server und Azure-Dateifreigabe
-|File 2    | Vor 10 Tagen | 30 GB | Server und Azure-Dateifreigabe
-|Datei 3    | vor 1 Jahr | 200 GB | Azure-Dateifreigabe, lokal ausgelagert
-|Datei 4    | Vor 1 Jahr und 2 Tagen | 130 GB | Azure-Dateifreigabe, lokal ausgelagert
+|Datei 5    | vor 1 Stunde  | 140 GiB | Server und Azure-Dateifreigabe
+|Datei 1    | Vor 2 Tagen  | 10 GiB | Server und Azure-Dateifreigabe
+|File 2    | Vor 10 Tagen | 30 GiB | Server und Azure-Dateifreigabe
+|Datei 3    | vor 1 Jahr | 200 GiB | Azure-Dateifreigabe, lokal ausgelagert
+|Datei 4    | Vor 1 Jahr und 2 Tagen | 130 GiB | Azure-Dateifreigabe, lokal ausgelagert
 
-In diesem Fall werden die Dateien 1, 2 und 5 lokal zwischengespeichert und die Dateien 3 und 4 ausgelagert. Aufgrund der Datumsrichtlinie von 60 Tagen werden die Dateien 3 und 4 ausgelagert, obwohl die Richtlinie für freien Volumespeicherplatz die lokale Speicherung bis zu 400 GB zulässt.
+In diesem Fall werden die Dateien 1, 2 und 5 lokal zwischengespeichert und die Dateien 3 und 4 ausgelagert. Aufgrund der Datumsrichtlinie von 60 Tagen werden die Dateien 3 und 4 ausgelagert, obwohl die Richtlinie für freien Volumespeicherplatz die lokale Speicherung von bis zu 400 GiB zulässt.
 
 > [!NOTE] 
 > Dateien werden nicht automatisch abgerufen, wenn Kunden die Richtlinie für freien Volumespeicherplatz in einen niedrigeren Wert ändern (z. B. von 20 % in 10 %) oder die Datumsrichtlinie in einen höheren Wert ändern (z. B. von 20 Tagen in 50 Tage).
