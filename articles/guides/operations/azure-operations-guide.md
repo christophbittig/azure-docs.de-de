@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: f362bc76a3361b511b08a3822c01730c200d37b1
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: cfbca90fe4c0053816421ff392f0af93938ff5ee
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111957027"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123254180"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Erste Schritte für Azure-IT-Operatoren
 
@@ -348,46 +348,33 @@ Sie verwalten den Zugriff auf den virtuellen Computer über die öffentliche IP-
 
 Schließlich sollten Sie die Sicherheit für einen virtuellen Azure-Computer wie bei der Verwaltung aller Computersysteme über das Betriebssystem gewährleisten, indem Sie Sicherheitsanmeldeinformationen und Softwarefirewalls verwenden.
 
-## <a name="azure-storage"></a>Azure Storage
-
-Azure Storage ist ein von Microsoft verwalteter Dienst zur Bereitstellung von dauerhaftem, skalierbarem und redundantem Speicher. Sie können ein Azure-Speicherkonto einer beliebigen Ressourcengruppe als Ressource hinzufügen, indem Sie eine Ressourcenbereitstellungsmethode Ihrer Wahl verwenden. Azure umfasst vier Speichertypen: Blob Storage, File Storage, Table Storage und Queue Storage. Beim Bereitstellen eines Speicherkontos sind zwei Kontotypen verfügbar: allgemein und Blobspeicher. Mit einem allgemeinen Speicherkonto haben Sie Zugriff auf alle vier Speichertypen. Blob-Speicherkonten ähneln allgemeinen Speicherkonten, aber sie enthalten spezielle Blobs mit „heißen“ und „kalten“ Zugriffsebenen. Weitere Informationen zu Blobspeicher finden Sie unter [Azure Blob Storage](../../storage/blobs/storage-blob-storage-tiers.md).
-
-Azure-Speicherkonten können mit unterschiedlichen Redundanzebenen konfiguriert werden:
-
-- **Lokal redundanter Speicher** bietet Hochverfügbarkeit, indem sichergestellt wird, dass synchron drei Kopien aller Daten erstellt werden, bevor ein Schreibvorgang als erfolgreich angesehen wird. Diese Kopien werden in einer einzelnen Einrichtung in einer einzelnen Region gespeichert. Die Replikate befinden sich in separaten Fehler- und Upgradedomänen. Dies bedeutet Folgendes: Die Daten sind auch dann verfügbar, wenn ein Speicherknoten, der Ihre Daten enthält, ausfällt oder zur Durchführung eines Updates in den Offlinezustand versetzt wird.
-
-- **Georedundanter Speicher** erstellt drei synchrone Kopien der Daten in der primären Region, um für Hochverfügbarkeit zu sorgen, und anschließend asynchron drei Replikate in einer verknüpften Region für die Notfallwiederherstellung.
-
-- Bei **georedundantem Speicher mit Lesezugriff** handelt es sich um georedundanten Speicher, der zusätzlich über die Möglichkeit verfügt, dass Daten in der sekundären Region gelesen werden. Hierdurch ist der Speicher für Teilnotfallwiederherstellungen geeignet. Besteht ein Problem mit der primären Region, können Sie Ihre Anwendung so ändern, dass sie über schreibgeschützten Zugriff auf die verknüpfte Region verfügt.
+## <a name="azure-storage"></a>Azure-Speicher
+Azure bietet Azure Blob Storage, Azure Files, Azure Table Storage und Azure Queue Storage, um eine Vielzahl verschiedener Speicheranwendungsfälle zu berücksichtigen sowie hohe Dauerhaftigkeit, Skalierbarkeit und Redundanz zu garantieren. Azure-Speicherdienste werden über ein Azure-Speicherkonto verwaltet, das mithilfe einer beliebigen Ressourcenbereitstellungsmethode als Ressource in einer Ressourcengruppe bereitgestellt werden kann. 
 
 ### <a name="use-cases"></a>Anwendungsfälle
-
 Für jeden Speichertyp gilt ein anderer Anwendungsfall.
 
 #### <a name="blob-storage"></a>Blob Storage
+Der Ausdruck *Blob* ist ein Akronym für *Binary Large Object*. Blobs sind unstrukturierte Dateien, also beispielsweise die Dateien, die Sie auf Ihrem Computer speichern. In Blob Storage können alle Arten von Text- oder Binärdaten gespeichert werden, z. B. ein Dokument, eine Mediendatei oder ein Installer einer Anwendung. Der Blobspeicher wird auch als Objektspeicher bezeichnet.
 
-Der Ausdruck *Blob* ist ein Akronym für *Binary Large Object*. Blobs sind unstrukturierte Dateien, also beispielsweise die Dateien, die Sie auf Ihrem Computer speichern. In Blob Storage können alle Arten von Text- oder Binärdaten gespeichert werden, z. B. ein Dokument, eine Mediendatei oder ein Installer einer Anwendung. Der Blobspeicher wird auch als Objektspeicher bezeichnet. Azure Blob Storage umfasst auch Azure Virtual Machines-Datenträger für Daten.
+Azure Blob Storage unterstützt drei Arten von Blobs:
 
-Azure Storage unterstützt drei Arten von Blobs:
+- **Blockblobs** werden für gewöhnliche Dateien mit einer Größe von bis zu 195 GiB verwendet (4 MiB mal 50.000 Blöcke). Der wichtigste Anwendungsfall für Blockblobs ist die Speicherung von Dateien, die von Anfang bis Ende gelesen werden, z.B. Mediendateien oder Imagedateien für Websites. Sie werden als Blockblobs bezeichnet, da Dateien, die größer als 64 MiB sind, als kleine Blöcke hochgeladen werden müssen. Diese Blöcke werden dann im endgültigen Blob konsolidiert (Commit-Vorgang).
 
-- **Blockblobs** werden für gewöhnliche Dateien mit einer Größe von bis zu 195 GB verwendet (4 MB mal 50.000 Blöcke). Der wichtigste Anwendungsfall für Blockblobs ist die Speicherung von Dateien, die von Anfang bis Ende gelesen werden, z.B. Mediendateien oder Imagedateien für Websites. Sie werden als Blockblobs bezeichnet, da Dateien, die größer als 64 MB sind, als kleine Blöcke hochgeladen werden müssen. Diese Blöcke werden dann im endgültigen Blob konsolidiert (Commit-Vorgang).
+- **Seitenblobs** werden für Random-Access-Dateien mit einer Größe von bis zu 1 TiB verwendet. Seitenblobs werden hauptsächlich als Hintergrundspeicher für die VHDs verwendet, die dauerhafte Datenträger für Azure Virtual Machines, den IaaS-Computedienst von Azure, bereitstellen. Sie werden als Seitenblobs bezeichnet, da sie wahlfreien Lese-/Schreibzugriff auf 512-Byte-Seiten ermöglichen.
 
-- **Seitenblobs** werden für Random-Access-Dateien mit einer Größe von bis zu 1 TB verwendet. Seitenblobs werden hauptsächlich als Hintergrundspeicher für die VHDs verwendet, die dauerhafte Datenträger für Azure Virtual Machines, den IaaS-Computedienst von Azure, bereitstellen. Sie werden als Seitenblobs bezeichnet, da sie zufälligen Lese-/Schreibzugriff auf 512-Byte-Seiten ermöglichen.
+- **Anfügeblobs** bestehen wie Blockblobs auch aus Blöcken, aber sie sind für Anfügevorgänge optimiert. Diese werden häufig eingesetzt, um Informationen aus mindestens einer Quelle in demselben Blob zu protokollieren. Beispielsweise können Sie die gesamte Protokollierung der Ablaufverfolgung für eine Anwendung, die auf mehreren virtuellen Computern ausgeführt wird, in dasselbe Anfügeblob schreiben. Ein einzelnes Anfügeblob kann eine maximale Größe von 195 GiB aufweisen.
 
-- **Anfügeblobs** bestehen wie Blockblobs auch aus Blöcken, aber sie sind für Anfügevorgänge optimiert. Diese werden häufig eingesetzt, um Informationen aus mindestens einer Quelle in demselben Blob zu protokollieren. Beispielsweise können Sie die gesamte Protokollierung der Ablaufverfolgung für eine Anwendung, die auf mehreren virtuellen Computern ausgeführt wird, in dasselbe Anfügeblob schreiben. Ein einzelnes Anfügeblob kann eine maximale Größe von 195 GB haben.
+Weitere Informationen finden Sie unter [Was ist Azure Blob Storage?](../../storage/blobs/storage-blobs-overview.md).
 
-Weitere Informationen finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../../storage/blobs/storage-quickstart-blobs-dotnet.md).
+#### <a name="azure-files"></a>Azure Files
+Azure Files bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über die Branchenstandardprotokolle SMB (Server Message Block) sowie NFS (Network File System) zugegriffen werden kann. Der Dienst unterstützt SMB 3.1.1, SMB 3.0, SMB 2.1 und NFS 4.1. Mit Azure Files können Sie Anwendungen, für die Dateifreigaben benötigt werden, schnell und ohne teures Umschreiben zu Azure migrieren. Anwendungen, die auf virtuellen Azure-Computern, in Clouddiensten oder auf lokalen Clients ausgeführt werden, können eine Dateifreigabe in der Cloud bereitstellen.
 
-#### <a name="file-storage"></a>File Storage
+Da Azure-Dateifreigaben üblich SMB- oder NFS-Endpunkte bereitstellen, können Anwendungen in Azure über die E/A-APIs des Dateisystems auf die Daten der Freigabe zugreifen. Entwickler können daher ihren vorhandenen Code und bereits erlernte Fertigkeiten für die Migration vorhandener Anwendungen verwenden. IT-Fachkräfte können PowerShell-Cmdlets verwenden, um Azure-Dateifreigaben im Rahmen der Administration von Azure-Anwendungen zu erstellen, bereitzustellen und zu verwalten.
 
-Azure File Storage ist ein Dienst, bei dem Dateifreigaben in der Cloud mit dem standardmäßigen SMB-Protokoll (Server Message Block) bereitgestellt werden können. Der Dienst unterstützt sowohl SMB 2.1 als auch SMB 3.0. Mit Azure File Storage können Sie Anwendungen, für die Dateifreigaben benötigt werden, schnell und ohne teures Umschreiben zu Azure migrieren. Anwendungen, die auf virtuellen Azure-Computern, in Clouddiensten oder auf lokalen Clients ausgeführt werden, können eine Dateifreigabe in der Cloud bereitstellen. Dies ähnelt dem Bereitstellen einer typischen SMB-Freigabe durch eine Desktopanwendung. Die File Storage-Freigaben können dann von beliebig vielen Anwendungskomponenten gleichzeitig eingebunden und genutzt werden.
-
-Da es sich bei File Storage-Freigaben um gewöhnliche SMB-Dateifreigaben handelt, können Anwendungen in Azure über die E/A-APIs des Dateisystems auf die Daten der Freigabe zugreifen. Entwickler können daher ihren vorhandenen Code und bereits erlernte Fertigkeiten für die Migration vorhandener Anwendungen verwenden. IT-Fachkräfte können PowerShell-Cmdlets verwenden, um Dateispeicher-Freigaben im Rahmen der Administration von Azure-Anwendungen zu erstellen, bereitzustellen und zu verwalten.
-
-Weitere Informationen finden Sie unter [Erste Schritte mit Azure File Storage unter Windows](../../storage/files/storage-how-to-use-files-windows.md) und [Verwenden des Azure-Dateispeichers unter Linux](../../storage/files/storage-how-to-use-files-linux.md).
+Weitere Informationen finden Sie unter [Was ist Azure Files?](../../storage/files/storage-files-introduction.md).
 
 #### <a name="table-storage"></a>Table Storage
-
 Azure Table Storage ist ein Dienst, bei dem strukturierte NoSQL-Daten in der Cloud gespeichert werden. Bei Table Storage handelt es sich um einen Schlüssel-/Attributspeicher mit einem schemalosen Design. Aufgrund der Schemalosigkeit von Table Storage ist es einfach, Ihre Daten an die Entwicklung Ihrer Anwendungen anzupassen. Der Datenzugriff ist für alle Arten von Anwendungen schnell und kostengünstig. Table Storage ist in der Regel erheblich günstiger als herkömmliche SQL-Lösungen für ähnliche Datenmengen.
 
 Mit Table Storage können Sie flexible Datasets wie Benutzerdaten für Webanwendungen, Adressbücher, Geräteinformationen und jegliche Art von Metadaten speichern, die Ihr Dienst erfordert. Sie können in einer Tabelle eine beliebige Anzahl von Entitäten speichern. Ein Speicherkonto kann eine beliebige Anzahl von Tabellen enthalten (bis zur Kapazitätsgrenze des Speicherkontos).
@@ -395,7 +382,6 @@ Mit Table Storage können Sie flexible Datasets wie Benutzerdaten für Webanwend
 Weitere Informationen finden Sie unter [Erste Schritte mit Azure Table Storage](../../cosmos-db/tutorial-develop-table-dotnet.md).
 
 #### <a name="queue-storage"></a>Queue Storage
-
 Azure Queue Storage ermöglicht Cloud-Messaging zwischen Anwendungskomponenten. Bei der Entwicklung skalierbarer Anwendungen werden häufig einzelne Anwendungskomponenten entkoppelt, um eine unabhängige Skalierung zu ermöglichen. Queue Storage bietet asynchrones Messaging für die Kommunikation zwischen Anwendungskomponenten, egal ob diese in der Cloud, auf dem Desktop, auf einem lokalen Server oder einem mobilen Gerät ausgeführt werden. Queue Storage unterstützt auch die Verwaltung asynchroner Aufgaben und den Aufbau von Prozessworkflows.
 
 Weitere Informationen finden Sie unter [Erste Schritte mit Azure Queue Storage](../../storage/queues/storage-dotnet-how-to-use-queues.md).
@@ -418,17 +404,17 @@ Zusätzlich zum individuellen Bereitstellen von Azure-Ressourcen können Sie das
 
 #### <a name="command-line-interface-cli"></a>Befehlszeilenschnittstelle (CLI)
 
-Wie beim PowerShell-Modul auch, ermöglicht die Azure-Befehlszeilenschnittstelle die Automatisierung der Bereitstellung und kann unter den Betriebssystemen Windows, OS X oder Linux verwendet werden. Sie können den Azure CLI-Befehl **storage account create** verwenden, um ein Speicherkonto zu erstellen. Weitere Informationen finden Sie unter [Verwenden der Azure CLI 2.0 mit Azure Storage](../../storage/blobs/storage-quickstart-blobs-cli.md).
+Wie beim PowerShell-Modul auch, ermöglicht die Azure-Befehlszeilenschnittstelle die Automatisierung der Bereitstellung und kann unter den Betriebssystemen Windows, macOS oder Linux verwendet werden. Sie können den Azure CLI-Befehl **storage account create** verwenden, um ein Speicherkonto zu erstellen. Weitere Informationen finden Sie unter [Verwenden der Azure CLI 2.0 mit Azure Storage](../../storage/blobs/storage-quickstart-blobs-cli.md).
 
 Sie können die Azure CLI auch nutzen, um eine Azure Resource Manager-Vorlage bereitzustellen. Informationen hierzu finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure CLI](../../azure-resource-manager/templates/deploy-cli.md).
 
-### <a name="access-and-security-for-azure-storage"></a>Zugriff und Sicherheit für Azure Storage
+### <a name="access-and-security-for-azure-storage-services"></a>Zugriff und Sicherheit für Azure-Speicherdienste
 
-Der Zugriff auf Azure Storage ist auf verschiedene Arten möglich, z.B. über das Azure-Portal, während der Erstellung und des Betriebs der VM und über Speicherclientbibliotheken.
+Der Zugriff auf Azure-Speicherdienste ist auf verschiedene Arten möglich, z. B. über das Azure-Portal, während der Erstellung und des Betriebs von VMs und über Speicherclientbibliotheken.
 
 #### <a name="virtual-machine-disks"></a>VM-Datenträger
 
-Beim Bereitstellen eines virtuellen Computers müssen Sie auch ein Speicherkonto erstellen, unter dem der Betriebssystemdatenträger des virtuellen Computers und alle weiteren Datenträger angeordnet sind. Sie können ein vorhandenes Speicherkonto auswählen oder ein neues erstellen. Da die maximale Größe eines Blobs 1.024 GB beträgt, kann ein einzelner VM-Datenträger eine maximale Größe von 1.023 GB haben. Zum Konfigurieren eines größeren Datenträgers können Sie für den virtuellen Computer mehrere Datenträger für Daten bereitstellen und zusammen als logischen Einzeldatenträger in einem Pool anordnen. Weitere Informationen finden Sie im Artikel zur Verwaltung von Azure-Datenträgern für [Windows](../../virtual-machines/windows/tutorial-manage-data-disk.md) und [Linux](../../virtual-machines/linux/tutorial-manage-disks.md).
+Beim Bereitstellen eines virtuellen Computers müssen Sie auch ein Speicherkonto erstellen, unter dem der Betriebssystemdatenträger des virtuellen Computers und alle weiteren Datenträger angeordnet sind. Sie können ein vorhandenes Speicherkonto auswählen oder ein neues erstellen. Da die maximale Größe eines Blobs 1.024 GiB beträgt, kann ein einzelner VM-Datenträger eine maximale Größe von 1.023 GiB haben. Zum Konfigurieren eines größeren Datenträgers können Sie für den virtuellen Computer mehrere Datenträger für Daten bereitstellen und zusammen als logischen Einzeldatenträger in einem Pool anordnen. Weitere Informationen finden Sie im Artikel zur Verwaltung von Azure-Datenträgern für [Windows](../../virtual-machines/windows/tutorial-manage-data-disk.md) und [Linux](../../virtual-machines/linux/tutorial-manage-disks.md).
 
 #### <a name="storage-tools"></a>Speichertools
 
@@ -436,7 +422,7 @@ Auf Azure Storage-Konten kann mit vielen unterschiedlichen Storage-Explorern zug
 
 #### <a name="storage-api"></a>Storage-API
 
-Auf Storage-Ressourcen kann über jede Sprache zugegriffen werden, die für HTTP/HTTPS-Anforderungen geeignet ist. Zusätzlich bietet Azure Storage Programmierbibliotheken für einige beliebte Sprachen. Diese Bibliotheken vereinfachen die Arbeit mit Azure Storage und behandeln bestimmte Details wie synchrone und asynchrone Aufrufe, Zusammenfassung von Vorgängen, Ausnahmeverwaltung und automatische Wiederholungen. Weitere Informationen finden Sie unter [Referenz zur REST-API von Azure Storage Services](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference).
+Auf Storage-Ressourcen kann über jede Sprache zugegriffen werden, die für HTTP/HTTPS-Anforderungen geeignet ist. Darüber hinaus verfügen die Azure-Speicherdienste über Programmierbibliotheken für mehrere gängige Sprachen. Diese Bibliotheken vereinfachen die Arbeit mit Azure-Speicherplattform und hanhaben bestimmte Details wie synchrone und asynchrone Aufrufe, Zusammenfassung von Vorgängen, Ausnahmeverwaltung und automatische Wiederholungen. Weitere Informationen finden Sie unter [Azure Storage REST-API-Referenz](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference).
 
 #### <a name="storage-access-keys"></a>Speicherzugriffsschlüssel
 

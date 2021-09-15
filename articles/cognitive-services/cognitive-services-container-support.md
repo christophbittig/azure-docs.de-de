@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 07/02/2021
 ms.author: aahi
 keywords: lokal, Docker, Container, Kubernetes
-ms.openlocfilehash: adc449be1aa1673540e02269d15823b819bc37c1
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 567e09dfcc47926b8b25fa8c634a11ee339ab2ea
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114285522"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123475852"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services-Container
 
@@ -80,8 +80,6 @@ Azure Cognitive Services-Container bieten den folgenden Satz von Docker-Containe
 | [Maschinelles Sehen][cv-containers] | **Read OCR** ([Image](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Mit dem Read OCR-Container können Sie gedruckten und handschriftlichen Text aus Bildern und Dokumenten mit Unterstützung für die Dateiformate JPEG, PNG, BMP, PDF und TIFF extrahieren. Weitere Informationen finden Sie in der Dokumentation zur [Lese-API](./computer-vision/overview-ocr.md). | Beschränkte Vorschauversion. [Zugriff anfordern][request-access]. |
 | [Räumliche Analyse][spa-containers] | **Räumliche Analyse** ([Image](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-spatial-analysis)) | Analysiert in Echtzeit gestreamte Videodaten, um räumliche Bezüge zwischen Personen, ihre Bewegungen und ihre Interaktionen mit Objekten in der physischen Umgebung zu verstehen. | Vorschau |
 | [Gesichtserkennung][fa-containers] | **Gesichtserkennung** | Erkennt menschliche Gesichter in Bildern und identifiziert zugehörige Attribute wie Gesichtsmerkmale (z.B. Nasen und Augen), Geschlecht, Alter und andere vom Computer vorhergesagte Gesichtsmerkmale. Zusätzlich zur Erkennung kann die Gesichtserkennung über eine Zuverlässigkeitsbewertung überprüfen, ob zwei Gesichter in einem oder verschiedenen Bildern identisch sind, oder Gesichter mit einer Datenbank vergleichen, um festzustellen, ob ein ähnliches oder identisches Gesicht bereits vorhanden ist. Sie kann auch ähnliche Gesichter in Gruppen mit gemeinsamen Gesichtsmerkmalen organisieren. | Nicht verfügbar |
-| [Formularerkennung][fr-containers] | **Formularerkennung** | Die Formularerkennung wendet Technologien des maschinellen Lernens an, um Schlüssel-Wert-Paare und Tabellen in Formularen zu identifizieren und aus diesen zu extrahieren. | Beschränkte Vorschauversion. [Zugriff anfordern][request-access]. | 
-
 
 <!--
 |[Personalizer](./personalizer/what-is-personalizer.md) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|
@@ -123,7 +121,6 @@ Installieren und erkunden Sie die Funktionalität der Container in Azure Cogniti
 * [Container für die Anomalieerkennung][ad-containers]
 * [Container für maschinelles Sehen][cv-containers]
 * [Container für die Gesichtserkennung][fa-containers]
-* [Container für die Formularerkennung][fr-containers]
 * [Container für Language Understanding (LUIS)][lu-containers]
 * [Container für die Speech Services-API][sp-containers]
 * [Container für die Textanalyse][ta-containers]
@@ -135,7 +132,6 @@ Installieren und erkunden Sie die Funktionalität der Container in Azure Cogniti
 [ad-containers]: anomaly-Detector/anomaly-detector-container-howto.md
 [cv-containers]: computer-vision/computer-vision-how-to-install-containers.md
 [fa-containers]: face/face-how-to-install-containers.md
-[fr-containers]: ./form-recognizer/containers/form-recognizer-container-install-run.md
 [lu-containers]: luis/luis-container-howto.md
 [sp-containers]: speech-service/speech-container-howto.md
 [spa-containers]: ./computer-vision/spatial-analysis-container.md

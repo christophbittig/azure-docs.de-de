@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 08/27/2021
+ms.date: 09/03/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 75afc262fb47fd4bfae2b5d5dde1706c21f6c3bc
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: fe1ae7f5f95e0ffa8f63b8764a1cda43103c9957
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123109144"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123471953"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Advanced Threat Protection für die Aktivierung auf Azure Database for PostgreSQL-Servern konfigurieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdb048e65-913c-49f9-bb5f-1084184671d3) |Aktivieren Sie Advanced Threat Protection auf Ihren Azure Database for PostgreSQL-Servern außerhalb des Basic-Tarifs, um anomale Aktivitäten zu ermitteln, die auf ungewöhnliche und potenziell schädliche Zugriffs- oder Exploitversuche für Datenbanken hinweisen. |DeployIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/DeployAtpOnPostgreSqlServers_Deploy.json) |
 |[Die Verbindungsdrosselung muss für PostgreSQL-Datenbankserver aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5345bb39-67dc-4960-a1bf-427e16b9a0bd) |Mit dieser Richtlinie können Sie überwachen, ob für alle PostgreSQL-Datenbanken in Ihrer Umgebung die Verbindungsdrosselung aktiviert ist. Diese Einstellung aktiviert die temporäre Verbindungsdrosselung pro IP-Adresse bei zu vielen Anmeldefehlern aufgrund ungültiger Kennwörter. |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_ConnectionThrottling_Enabled_Audit.json) |

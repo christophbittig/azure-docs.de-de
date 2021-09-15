@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 7/1/2021
 ms.author: olayemio
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 69e3fa87d55dcedc95ac4fec7fa92f53449ece46
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 936eb725836b8191aa35045d37882c859c9c058a
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768715"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123449169"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Vorschau: Verwenden von kundenseitig verwalteten Schlüsseln zum Verschlüsseln von Images
 
@@ -100,7 +100,7 @@ New-AzGalleryImageVersion `
 
 ### <a name="create-a-vm"></a>Erstellen einer VM
 
-Sie können einen virtuellen Computer (VM) aus einem Katalog mit freigegebenen Images erstellen und kundenseitig verwaltete Schlüssel zum Verschlüsseln der Datenträger verwenden. Die Syntax ist dieselbe wie beim Erstellen einer [generalisierten](vm-generalized-image-version-powershell.md) oder [spezialisierten](vm-specialized-image-version-powershell.md) VM aus einem Image. Verwenden Sie den erweiterten Parametersatz, und fügen Sie `Set-AzVMOSDisk -Name $($vmName +"_OSDisk") -DiskEncryptionSetId $diskEncryptionSet.Id -CreateOption FromImage` der VM-Konfiguration hinzu.
+Sie können einen virtuellen Computer (VM) aus einem Katalog mit freigegebenen Images erstellen und kundenseitig verwaltete Schlüssel zum Verschlüsseln der Datenträger verwenden. Die Syntax ist dieselbe wie beim Erstellen einer [generalisierten](vm-generalized-image-version.md) oder [spezialisierten](vm-specialized-image-version.md) VM aus einem Image. Verwenden Sie den erweiterten Parametersatz, und fügen Sie `Set-AzVMOSDisk -Name $($vmName +"_OSDisk") -DiskEncryptionSetId $diskEncryptionSet.Id -CreateOption FromImage` der VM-Konfiguration hinzu.
 
 Bei Datenträgern für Daten fügen Sie den Parameter `-DiskEncryptionSetId $setID` hinzu, wenn Sie [Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk) verwenden.
 
@@ -144,7 +144,7 @@ az sig image-version create \
 
 ### <a name="create-the-vm"></a>Erstellen des virtuellen Computers
 
-Sie können eine VM aus einem Katalog mit freigegebenen Images erstellen und kundenseitig verwaltete Schlüssel zum Verschlüsseln der Datenträger verwenden. Die Syntax ist dieselbe wie beim Erstellen einer [generalisierten](vm-generalized-image-version-cli.md) oder [spezialisierten](vm-specialized-image-version-cli.md) VM aus einem Image. Fügen Sie einfach den Parameter `--os-disk-encryption-set` mit der ID des Verschlüsselungssatzes hinzu. Bei Datenträgern für Daten fügen Sie `--data-disk-encryption-sets` mit einer durch Leerzeichen getrennten Liste der Datenträgerverschlüsselungssätze für die Datenträger hinzu.
+Sie können eine VM aus einem Katalog mit freigegebenen Images erstellen und kundenseitig verwaltete Schlüssel zum Verschlüsseln der Datenträger verwenden. Die Syntax ist dieselbe wie beim Erstellen einer [generalisierten](vm-generalized-image-version.md) oder [spezialisierten](vm-specialized-image-version.md) VM aus einem Image. Fügen Sie einfach den Parameter `--os-disk-encryption-set` mit der ID des Verschlüsselungssatzes hinzu. Bei Datenträgern für Daten fügen Sie `--data-disk-encryption-sets` mit einer durch Leerzeichen getrennten Liste der Datenträgerverschlüsselungssätze für die Datenträger hinzu.
 
 
 ## <a name="portal"></a>Portal
