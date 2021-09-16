@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: jushiman
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2f7af8ebc054b49df03a7f03c512db08a5098f2b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5de4c52015a8282591edeee6de9fd27aae042324
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122338884"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770662"
 ---
 # <a name="hotpatch-for-new-virtual-machines-preview"></a>Hotpatch für neue VMs (Vorschau)
 
@@ -24,7 +24,7 @@ ms.locfileid: "122338884"
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 > [!NOTE]
-> Hotpatchfunktionen finden Sie in einem der folgenden _Windows Server Azure Edition_-Images: Windows Server 2019 Datacenter: Azure Edition (Core), Windows Server 2022 Datacenter: Azure Edition (Core).
+> Hotpatch kann in der _Vorschauversion von Windows Server 2022 Datacenter Azure Edition (Core)_ evaluiert werden.  Hotpatch in der _Vorschauversion von Windows Server 2019 Datacenter Azure Edition Preview_ kann nicht mehr evaluiert werden.
 
 Hotpatching ist eine neue Methode zur Installation von Updates auf unterstützten virtuellen Computern (VMs) der _Windows Server Azure Edition_, die keinen Neustart nach der Installation erfordert. Dieser Artikel enthält Informationen über Hotpatches für unterstützte _Windows Server Azure Edition_-VMs, die folgende Vorteile bieten:
 * Geringere Auswirkungen auf die Workload mit weniger Neustarts
@@ -218,7 +218,7 @@ Beim Betrieb einer unterstützten _Windows Server Azure Edition_-VM mit aktivier
 
 ### <a name="can-i-upgrade-from-my-existing-windows-server-os"></a>Kann ich ein Upgrade von meinem bestehenden Windows Server-Betriebssystem durchführen?
 
-* Ein Upgrade von vorhandenen Versionen von Windows Server (d. h. Windows Server 2016 oder 2019 als Nicht-Azure-Editionen) auf _Windows Server 2022 Datacenter: Azure Edition_ wird unterstützt. Ein Upgrade auf _Windows Server 2019 Datacenter: Azure Edition_ wird nicht unterstützt.
+* Ja, ein Upgrade von vorhandenen Versionen von Windows Server (d. h. Windows Server 2016 oder Windows Server 2019) auf _Windows Server 2022 Datacenter: Azure Edition_ wird unterstützt. 
 
 ### <a name="can-i-use-hotpatch-for-production-workloads-during-the-preview"></a>Kann ich Hotpatch für Produktionsworkloads während der Vorschau verwenden?
 

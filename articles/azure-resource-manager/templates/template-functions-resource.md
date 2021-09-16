@@ -2,14 +2,14 @@
 title: Vorlagenfunktionen – Ressourcen
 description: Beschreibung der Funktionen, die in einer Azure Resource Manager-Vorlage (ARM-Vorlage) zum Abrufen von Werten zu Ressourcen verwendet werden können.
 ms.topic: conceptual
-ms.date: 08/16/2021
+ms.date: 08/31/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5fb365b1b0a1a77f93f627986902d4ede2752850
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: a728d51025a2bb23e7da681fc6ed5daf162b1315
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122343263"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123309278"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Ressourcenfunktionen für ARM-Vorlagen
 
@@ -18,6 +18,7 @@ Resource Manager stellt die folgenden Funktionen zum Abrufen von Ressourcenwerte
 * [extensionResourceId](#extensionresourceid)
 * [list*](#list)
 * [pickZones](#pickzones)
+* [providers (veraltet)](#providers)
 * [Referenz](#reference)
 * [Ressourcengruppe](#resourcegroup)
 * [Ressourcen-ID](#resourceid)
@@ -29,7 +30,7 @@ Informationen zum Abrufen von Werten aus Parametern, Variablen oder der aktuelle
 
 ## <a name="extensionresourceid"></a>extensionResourceId
 
-`extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ...)`
+`extensionResourceId(baseResourceId, resourceType, resourceName1, [resourceName2], ...)`
 
 Gibt die Ressourcen-ID für eine [Erweiterungsressource](../management/extension-resource-types.md) zurück. Hierbei handelt es sich um einen Ressourcentyp, der auf eine andere Ressource angewendet wird, um deren Funktionen zu erweitern.
 
@@ -37,9 +38,9 @@ Gibt die Ressourcen-ID für eine [Erweiterungsressource](../management/extension
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| resourceId |Ja |Zeichenfolge |Die Ressourcen-ID für die Ressource, auf die die Erweiterungsressource angewendet wird. |
-| resourceType |Ja |Zeichenfolge |Ressourcentyp einschließlich Namespace von Ressourcenanbieter. |
-| resourceName1 |Ja |Zeichenfolge |Name der Ressource. |
+| baseResourceId |Ja |Zeichenfolge |Die Ressourcen-ID für die Ressource, auf die die Erweiterungsressource angewendet wird. |
+| resourceType |Ja |Zeichenfolge |Typ der Erweiterungsressource, einschließlich Namespace des Ressourcenanbieters. |
+| resourceName1 |Ja |Zeichenfolge |Name der Erweiterungsressource. |
 | resourceName2 |Nein |Zeichenfolge |Nächstes Ressourcennamensegment, sofern erforderlich. |
 
 Fügen Sie weitere Ressourcennamen als Parameter hinzu, wenn der Ressourcentyp mehrere Segmente enthält.
@@ -52,7 +53,7 @@ Das Standardformat der Ressourcen-ID, die von dieser Funktion zurückgegeben wir
 {scope}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
 ```
 
-Das „scope“-Segment ist je nach erweiterter Ressource unterschiedlich.
+Das „scope“-Segment ist je nach erweiterter Basisressource unterschiedlich. Beispielsweise hat die ID für ein Abonnement andere Segmente als die ID für eine Ressourcengruppe.
 
 Wenn die Erweiterungsressource auf eine **Ressource** angewendet wird, hat die zurückgegebene Ressourcen-ID das folgende Format:
 
@@ -60,23 +61,27 @@ Wenn die Erweiterungsressource auf eine **Ressource** angewendet wird, hat die z
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{baseResourceProviderNamespace}/{baseResourceType}/{baseResourceName}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
 ```
 
-Wenn die Erweiterungsressource auf eine **Ressourcengruppe** angewendet wird, ist das Format wie folgt:
+Wenn die Erweiterungsressource auf eine **Ressourcengruppe** angewendet wird, ist das zurückgegebene Format wie folgt:
 
 ```json
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
 ```
 
-Wenn die Erweiterungsressource auf ein **Abonnement** angewendet wird, ist das Format wie folgt:
+Ein Beispiel für die Verwendung dieser Funktion mit einer Ressourcengruppe finden Sie im nächsten Abschnitt.
+
+Wenn die Erweiterungsressource auf ein **Abonnement** angewendet wird, ist das zurückgegebene Format wie folgt:
 
 ```json
 /subscriptions/{subscriptionId}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
 ```
 
-Wenn die Erweiterungsressource auf eine **Verwaltungsgruppe** angewendet wird, ist das Format wie folgt:
+Wenn die Erweiterungsressource auf eine **Verwaltungsgruppe** angewendet wird, ist das zurückgegebene Format wie folgt:
 
 ```json
 /providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
 ```
+
+Ein Beispiel für die Verwendung dieser Funktion mit einer Verwaltungsgruppe finden Sie im nächsten Abschnitt.
 
 ### <a name="extensionresourceid-example"></a>Beispiel für „extensionResourceId“
 
@@ -462,6 +467,10 @@ Das folgende Beispiel zeigt, wie Sie die pickZones-Funktion verwenden, um Zonenr
   }
 ]
 ```
+
+## <a name="providers"></a>providers
+
+**Die providers-Funktion ist veraltet.** Ihre Verwendung wird nicht mehr empfohlen. Wenn Sie diese Funktion verwendet haben, um eine API-Version für den Ressourcenanbieter abzurufen, empfehlen wir, dass Sie eine bestimmte API-Version in Ihrer Vorlage bereitstellen. Die Verwendung einer dynamisch zurückgegebenen API-Version kann Ihre Vorlage beschädigen, wenn sich die Eigenschaften zwischen Versionen ändern.
 
 ## <a name="reference"></a>Referenz
 

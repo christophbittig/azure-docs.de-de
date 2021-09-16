@@ -1,45 +1,47 @@
 ---
-title: Integrierte Trigger und Aktionen für Azure Logic Apps
+title: Integrierte Trigger und Aktionen
 description: Verwenden Sie integrierte Trigger und Aktionen, um automatisierte Workflows zu erstellen, die Apps, Daten, Dienste und Systeme integrieren, Workflows zu steuern sowie Daten mithilfe von Azure Logic Apps zu verwalten.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 06/16/2021
-ms.openlocfilehash: c98263500651447ddc4a9962f2e1ac10d9927502
-ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
+ms.date: 08/16/2021
+ms.openlocfilehash: 83800e088599bca0023d734bba52b6ed3207f0a3
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113664933"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515339"
 ---
-# <a name="built-in-triggers-and-actions-for-logic-apps"></a>Integrierte Trigger und Aktionen für Azure Logic Apps
+# <a name="built-in-triggers-and-actions-in-azure-logic-apps"></a>Integrierte Trigger und Aktionen in Azure Logic Apps
 
-Mithilfe von [integrierten Triggern und Aktionen](apis-list.md) können Sie den [Zeitplan und die Struktur Ihres Workflows steuern](#control-workflow), [eigenen Code ausführen](#run-code-from-workflows), [Daten verwalten oder bearbeiten](#manage-or-manipulate-data) und andere Aufgaben in Ihren Workflows ausführen. Anders als [verwaltete Connectors](managed.md) sind viele integrierte Vorgänge nicht an einen bestimmten Dienst, ein System oder ein Protokoll gebunden. Beispielsweise können Sie mithilfe des Triggers „Serie“ fast jeden Workflow basierend auf einem Zeitplan starten. Sie können auch den Trigger „Anforderung“ verwenden, damit Ihr Workflow erst gestartet wird, wenn er aufgerufen wird. Alle integrierten Vorgänge werden nativ im Logic Apps-Dienst ausgeführt, und die meisten dieser Vorgänge erfordern nicht, dass Sie vor ihrer Verwendung eine Verbindung erstellen.
+Mithilfe von [integrierten Triggern und Aktionen](apis-list.md) können Sie den [Zeitplan und die Struktur Ihres Workflows steuern](#control-workflow), [eigenen Code ausführen](#run-code-from-workflows), [Daten verwalten oder bearbeiten](#manage-or-manipulate-data) und andere Aufgaben in Ihren Workflows ausführen. Anders als [verwaltete Connectors](managed.md) sind viele integrierte Vorgänge nicht an einen bestimmten Dienst, ein System oder ein Protokoll gebunden. Beispielsweise können Sie mithilfe des Triggers „Serie“ fast jeden Workflow basierend auf einem Zeitplan starten. Sie können auch den Trigger „Anforderung“ verwenden, damit Ihr Workflow erst gestartet wird, wenn er aufgerufen wird. Alle integrierten Vorgänge werden nativ in Azure Logic Apps ausgeführt, und die meisten dieser Vorgänge erfordern nicht, dass Sie vor ihrer Verwendung eine Verbindung erstellen.
 
-Für eine kleinere Anzahl von Diensten, Systemen und Protokollen, wie z. B. Azure Service Bus, Azure Functions, Azure Blob, Azure App Services, Azure API Management, SQL, AS2 usw. bietet Logic Apps auch integrierte Vorgänge. Die Anzahl und der Bereich variieren abhängig davon, ob Sie eine Logik-App mit mehreren oder einem einzigen Mandanten erstellen. In einigen Fällen sind sowohl eine integrierte Version als auch eine verwaltete Connectorversion verfügbar. In den meisten Fällen bietet die integrierte Version eine höhere Leistung, bessere Funktionen, niedrigere Preise usw. Zum [Austauschen von B2B-Nachrichten mithilfe des AS2-Protokolls](../logic-apps/logic-apps-enterprise-integration-as2.md) sollten Sie beispielsweise die integrierte Version auswählen, es sei denn, Sie benötigen Nachverfolgungsfunktionen, die nur in der (veralteten) verwalteten Connectorversion verfügbar sind.
+Für eine kleinere Anzahl von Diensten, Systemen und Protokollen bietet Azure Logic Apps integrierte Vorgänge wie Azure App Services, Azure Functions, Azure API Management sowie zum Aufrufen weiterer Logik-App-Workflows in Azure Logic Apps. Die Anzahl und der verfügbare Bereich variieren je nachdem, ob Sie eine auf einem Verbrauchsplan basierende Logik-App-Ressource erstellen, die in Azure Logic Apps mit mehreren Mandanten ausgeführt wird, oder eine auf einem Standardplan basierende Logik-App-Ressource, die in Azure Logic Apps mit einem Mandanten ausgeführt wird. Weitere Informationen finden Sie unter [Einzelmandanten versus Mehrmandanten und Integration Service Environment (ISE)](../logic-apps/single-tenant-overview-compare.md). In den meisten Fällen bietet die integrierte Version eine höhere Leistung, bessere Funktionen, niedrigere Preise usw.
 
-Die Anzahl und der Bereich variieren abhängig davon, ob Sie eine Logik-App mit mehreren oder einem einzigen Mandanten erstellen. In einigen Fällen sind sowohl eine integrierte Version als auch eine verwaltete Connectorversion verfügbar. In den meisten Fällen bietet die integrierte Version eine höhere Leistung, bessere Funktionen, niedrigere Preise usw. Zum [Austauschen von B2B-Nachrichten mithilfe des AS2-Protokolls](../logic-apps/logic-apps-enterprise-integration-as2.md) sollten Sie beispielsweise die integrierte Version auswählen, es sei denn, Sie benötigen Nachverfolgungsfunktionen, die nur in der (veralteten) verwalteten Connectorversion verfügbar sind.
+Wenn Sie beispielsweise eine Logik-App mit nur einem Mandanten erstellen, sind sowohl integrierte Vorgänge als auch [Vorgänge für verwaltete Connectors](managed.md) für einige Dienste verfügbar, insbesondere Azure Service Bus, Azure Event Hubs, SQL Server, DB2 und MQ. In einigen Fällen ist ein integrierter Vorgang nur in einer Umgebung verfügbar, z. B. ist Flatfile derzeit nur in mehrinstanzenfähigen Mandanten verfügbar, während IBM Host File nur in Einzelmandanten verfügbar ist. In den meisten Fällen bietet die integrierte Version eine höhere Leistung, bessere Funktionen, niedrigere Preise usw.
 
+In der folgenden Liste werden nur einige der Aufgaben beschrieben, die Sie mit [integrierten Triggern und Aktionen](#general-built-in-triggers-and-actions) ausführen können:
 
-Wenn Sie beispielsweise eine Logik-App mit nur einem Mandanten erstellen, stehen integrierte Vorgänge für Azure Service Bus, Azure Event Hubs, SQL Server und MQ zur Verfügung. In einigen Fällen sind sowohl eine integrierte Version als auch eine verwaltete Connectorversion verfügbar. In den meisten Fällen bietet die integrierte Version eine höhere Leistung, bessere Funktionen, niedrigere Preise usw. Zum [Austauschen von B2B-Nachrichten mithilfe des AS2-Protokolls](../logic-apps/logic-apps-enterprise-integration-as2.md) sollten Sie beispielsweise die integrierte Version auswählen, es sei denn, Sie benötigen Nachverfolgungsfunktionen, die nur in der (veralteten) verwalteten Connectorversion verfügbar sind.
+- Ausführen von Workflows mit benutzerdefinierten und erweiterten Zeitplänen. Weitere Informationen zur Planung finden Sie im [Abschnitt zum Wiederholungsverhalten in der Connectorübersicht für Azure Logic Apps](apis-list.md#recurrence-behavior).
 
-In der folgenden Liste werden nur einige der Aufgaben beschrieben, die Sie mit [integrierten Triggern und Aktionen](#understand-triggers-and-actions) ausführen können:
-
-- Ausführen von Workflows mit benutzerdefinierten und erweiterten Zeitplänen. Weitere Informationen zur Planung finden Sie im [Abschnitt zum Wiederholungsverhalten in der Übersicht über Logic Apps-Connectors](apis-list.md#recurrence-behavior).
 - Organisieren und Steuern der Struktur des Workflows, z. B. mit Schleifen und Bedingungen.
+
 - Verwenden von Variablen, Datumsangaben, Datenvorgängen, Inhaltstransformationen und Batchvorgängen.
+
 - Kommunizieren mit anderen Endpunkten über HTTP-Trigger und -Aktionen.
+
 - Empfangen von und Reagieren auf Anforderungen.
-- Aufrufen eigener Funktionen (Azure Functions), Web-Apps (Azure App Services), APIs (Azure API Management) sowie anderer Logic Apps-Workflows, die Anforderungen empfangen können usw.
 
-## <a name="understand-triggers-and-actions"></a>Grundlegendes zu Triggern und Aktionen
+- Aufrufen eigener Funktionen (Azure Functions), Web-Apps (Azure App Services), APIs (Azure API Management) sowie anderer Azure Logic Apps-Workflows, die Anforderungen empfangen können usw.
 
-Logic Apps bietet die folgenden integrierten Trigger und Aktionen:
+## <a name="general-built-in-triggers-and-actions"></a>Allgemeine integrierte Trigger und Aktionen
+
+Azure Logic Apps bietet die folgenden integrierten Trigger und Aktionen:
 
 :::row:::
     :::column:::
-        [![Symbol „Zeitplan“ in Logic Apps][schedule-icon]][schedule-doc]
+        [![Zeitplansymbol][schedule-icon]][schedule-doc]
         \
         \
         [**Zeitplan**][schedule-doc]
@@ -57,21 +59,21 @@ Logic Apps bietet die folgenden integrierten Trigger und Aktionen:
         [**Verzögern bis**][schedule-delay-until-doc]: Anhalten des Workflows bis zur angegebenen Zeit (Datum und Uhrzeit).
     :::column-end:::
     :::column:::
-        [![Symbol „HTTP“ in Logic Apps][http-icon]][http-doc]
+        [![HTTP-Trigger und -Aktionssymbol][http-icon]][http-doc]
         \
         \
         [**HTTP**][http-doc]
         \
         \
-        Aufrufen eines HTTP- oder HTTPS-Endpunkts mit dem HTTP-Trigger oder der HTTP-Aktion. 
+        Aufrufen eines HTTP- oder HTTPS-Endpunkts mit dem HTTP-Trigger oder der HTTP-Aktion.
         \
         \
-        Zudem können Sie die folgenden anderen integrierten HTTP-Trigger und -Aktionen verwenden: 
+        Zudem können Sie die folgenden anderen integrierten HTTP-Trigger und -Aktionen verwenden:
         - [HTTP + Swagger][http-swagger-doc]
         - [HTTP + Webhook][http-webhook-doc]
     :::column-end:::
     :::column:::
-        [![Symbol „Anforderung“][http-request-icon]][http-request-doc]
+        [![Anforderungstriggersymbol][http-request-icon]][http-request-doc]
         \
         \
         [**Anforderung**][http-request-doc]
@@ -83,7 +85,7 @@ Logic Apps bietet die folgenden integrierten Trigger und Aktionen:
         [**Antwort**][http-request-doc]: Antworten auf eine Anforderung, die vom Trigger **Beim Empfang einer HTTP-Anforderung** im gleichen Workflow empfangen wurde.
     :::column-end:::
     :::column:::
-        [![Symbol „Batch“ in Logic Apps][batch-icon]][batch-doc]
+        [![Batchsymbol][batch-icon]][batch-doc]
         \
         \
         [**Batch**][batch-doc]
@@ -95,9 +97,14 @@ Logic Apps bietet die folgenden integrierten Trigger und Aktionen:
         [**Nachrichten an Batch senden**][batch-doc]: Aufrufen eines vorhandenen Workflows, der aktuell mit einem Trigger **Batchnachrichten** gestartet wird.
     :::column-end:::
 :::row-end:::
+
+## <a name="service-based-built-in-trigger-and-actions"></a>Dienstbasierte integrierte Trigger und Aktionen
+
+Azure Logic Apps stellt die folgenden integrierten Aktionen für die folgenden Dienste zur Verfügung:
+
 :::row:::
     :::column:::
-        [![Symbol „Azure API Management“ in Logic Apps][azure-api-management-icon]][azure-api-management-doc]
+        [![API Management-Symbol][azure-api-management-icon]][azure-api-management-doc]
         \
         \
         [**Azure API Management**][azure-api-management-doc]
@@ -106,7 +113,7 @@ Logic Apps bietet die folgenden integrierten Trigger und Aktionen:
         Aufrufen eigener Trigger und Aktionen in APIs, die Sie mit [Azure API Management](../api-management/api-management-key-concepts.md) definieren, verwalten und veröffentlichen. <p><p>**Hinweis:** Wird bei Verwendung des [Tarifs „Consumption“ für API Management](../api-management/api-management-features.md) nicht unterstützt.
     :::column-end:::
     :::column:::
-        [![Symbol „Azure App Services“ in Logic Apps][azure-app-services-icon]][azure-app-services-doc]
+        [![Azure App Services-Symbol][azure-app-services-icon]][azure-app-services-doc]
         \
         \
         [**Azure App Services**][azure-app-services-doc]
@@ -118,7 +125,7 @@ Logic Apps bietet die folgenden integrierten Trigger und Aktionen:
         Bei der Verwendung von Swagger werden die in diesen Apps definierten Trigger und Aktionen wie alle anderen erstklassigen Trigger und Aktionen in Azure Logic Apps angezeigt.
     :::column-end:::
     :::column:::
-        [![Symbol „Azure Logic Apps“ in Logic Apps][azure-logic-apps-icon]][nested-logic-app-doc]
+        [![Azure Logic Apps-Symbol][azure-logic-apps-icon]][nested-logic-app-doc]
         \
         \
         [**Azure Logic Apps**][nested-logic-app-doc]
@@ -127,7 +134,7 @@ Logic Apps bietet die folgenden integrierten Trigger und Aktionen:
         Aufrufen anderer Workflows, die mit dem Anforderungstrigger **Beim Empfang einer HTTP-Anforderung** gestartet werden.
     :::column-end:::
     :::column:::
-        [![SQL Server-Symbol in Logic Apps][sql-server-icon]][sql-server-doc]
+        [![SQL Server Symbol][sql-server-icon]][sql-server-doc]
         \
         \
         [**SQL Server**][sql-server-doc] <br>(*nur Einzelmandanten*)     \
@@ -138,11 +145,11 @@ Logic Apps bietet die folgenden integrierten Trigger und Aktionen:
 
 ## <a name="run-code-from-workflows"></a>Ausführen von Code über Workflows
 
-Logic Apps bietet integrierte Aktionen, mit denen Sie Ihren eigenen Code im Workflow ausführen können:
+Azure Logic Apps bietet die folgenden integrierten Aktionen, mit denen Sie Ihren eigenen Code im Workflow ausführen können:
 
 :::row:::
     :::column:::
-        [![Symbol „Azure Functions“ in Logic Apps][azure-functions-icon]][azure-functions-doc]
+        [![Azure Functions-Symbol][azure-functions-icon]][azure-functions-doc]
         \
         \
         [**Azure Functions**][azure-functions-doc]
@@ -151,7 +158,7 @@ Logic Apps bietet integrierte Aktionen, mit denen Sie Ihren eigenen Code im Wor
         Aufrufen von [in Azure gehosteten Funktionen](../azure-functions/functions-overview.md), um eigene *Codeausschnitte* (C# oder Node.js) im Workflow auszuführen.
     :::column-end:::
     :::column:::
-        [![Symbol „Inlinecode“ in Logic Apps][inline-code-icon]][inline-code-doc]
+        [![Inlinecode-Aktionssymbol][inline-code-icon]][inline-code-doc]
         \
         \
         [**Inlinecode**][inline-code-doc]
@@ -167,11 +174,11 @@ Logic Apps bietet integrierte Aktionen, mit denen Sie Ihren eigenen Code im Wor
 
 ## <a name="control-workflow"></a>Steuern des Workflows
 
-Logic Apps bietet integrierte Aktionen zum Strukturieren und Steuern der Aktionen in Ihrem Workflow:
+Azure Logic Apps bietet die folgenden integrierten Aktionen zum Strukturieren und Steuern der Aktionen in Ihrem Workflow:
 
 :::row:::
     :::column:::
-        [![Aktionssymbol „Bedingung“ in Logic Apps][condition-icon]][condition-doc]
+        [![Condition-Aktionssymbol (Bedingung)][condition-icon]][condition-doc]
         \
         \
         [**Bedingung**][condition-doc]
@@ -180,7 +187,7 @@ Logic Apps bietet integrierte Aktionen zum Strukturieren und Steuern der Aktion
         Auswerten einer Bedingung und Ausführen unterschiedlicher Aktionen abhängig davon, ob die Bedingung TRUE oder FALSE ist.
     :::column-end:::
     :::column:::
-        [![Aktionssymbol „For Each“ in Logic Apps][for-each-icon]][for-each-doc]
+        [![„For Each“-Aktionssymbol][for-each-icon]][for-each-doc]
         \
         \
         [**For Each**][for-each-doc]
@@ -189,7 +196,7 @@ Logic Apps bietet integrierte Aktionen zum Strukturieren und Steuern der Aktion
         Ausführen der gleichen Aktionen für jedes Element in einem Array.
     :::column-end:::
     :::column:::
-        [![Aktionssymbol „Bereich“ in Logic Apps][scope-icon]][scope-doc]
+        [![Scope-Aktionssymbol (Bereich)][scope-icon]][scope-doc]
         \
         \
         [**Name**][scope-doc]
@@ -198,7 +205,7 @@ Logic Apps bietet integrierte Aktionen zum Strukturieren und Steuern der Aktion
         Gruppieren von Aktionen in *Bereiche*, die einen eigenen Status erhalten, nachdem die Ausführung der Aktionen im Bereich beendet ist.
     :::column-end:::
     :::column:::
-        [![Aktionssymbol „Umschalten“ in Logic Apps][switch-icon]][switch-doc]
+        [![Switch-Aktionssymbol (Wechseln)][switch-icon]][switch-doc]
         \
         \
         [**Umschalten**][switch-doc]
@@ -209,16 +216,16 @@ Logic Apps bietet integrierte Aktionen zum Strukturieren und Steuern der Aktion
 :::row-end:::
 :::row:::
     :::column:::
-        [![Aktionssymbol „Beenden“ in Logic Apps][terminate-icon]][terminate-doc]
+        [![Terminate-Aktionssymbol (Beenden)][terminate-icon]][terminate-doc]
         \
         \
         [**Beenden**][terminate-doc]
         \
         \
-        Beenden des aktiv ausgeführten Workflows einer Logik-App. 
+        Beenden des aktiv ausgeführten Workflows einer Logik-App.
     :::column-end:::
     :::column:::
-        [![Aktionssymbol „Bis“ in Logic Apps][until-icon]][until-doc]
+        [![Until-Aktionssymbol (Bis)][until-icon]][until-doc]
         \
         \
         [**Bis**][until-doc]
@@ -234,41 +241,41 @@ Logic Apps bietet integrierte Aktionen zum Strukturieren und Steuern der Aktion
 
 ## <a name="manage-or-manipulate-data"></a>Verwalten oder Bearbeiten von Daten
 
-Logic Apps bietet integrierte Aktionen zur Verwendung von Datenausgaben mit den zugehörigen Formaten:
+Azure Logic Apps bietet die folgenden integrierten Aktionen zur Verwendung von Datenausgaben mit den zugehörigen Formaten:
 
 :::row:::
     :::column:::
-        [![Aktionssymbol „Datenvorgänge“ in Logic Apps][data-operations-icon]][data-operations-doc]
+        [![Datenvorgänge][data-operations-icon]][data-operations-doc]
         \
         \
         [**Datenvorgänge**][data-operations-doc]
         \
         \
-        Ausführen von Vorgängen mit Daten. 
+        Ausführen von Vorgängen mit Daten.
         \
         \
-        **Erstellen**: Erstellen einer einzelnen Ausgabe aus mehreren Eingaben mit verschiedenen Typen. 
+        **Erstellen**: Erstellen einer einzelnen Ausgabe aus mehreren Eingaben mit verschiedenen Typen.
         \
         \
-        **CSV-Tabelle erstellen**: Erstellen einer Tabelle mit durch Komma getrennten Werten (CSV-Tabelle) aus einem Array mit JSON-Objekten. 
+        **CSV-Tabelle erstellen**: Erstellen einer Tabelle mit durch Komma getrennten Werten (CSV-Tabelle) aus einem Array mit JSON-Objekten.
         \
         \
-        **HTML-Tabelle erstellen**: Erstellen einer HTML-Tabelle aus einem Array mit JSON-Objekten. 
+        **HTML-Tabelle erstellen**: Erstellen einer HTML-Tabelle aus einem Array mit JSON-Objekten.
         \
         \
-        **Array filtern**: Erstellen eines Arrays aus Elementen in einem anderen Array, die Ihren Kriterien entsprechen. 
+        **Array filtern**: Erstellen eines Arrays aus Elementen in einem anderen Array, die Ihren Kriterien entsprechen.
         \
         \
-        **Join**: Erstellen einer Zeichenfolge aus allen Elementen in einem Array und Trennen dieser Elemente mit dem angegebenen Trennzeichen. 
+        **Join**: Erstellen einer Zeichenfolge aus allen Elementen in einem Array und Trennen dieser Elemente mit dem angegebenen Trennzeichen.
         \
         \
-        **JSON analysieren**: Erstellen von benutzerfreundlichen Token aus Eigenschaften und den zugehörigen Werten in JSON-Inhalten, sodass Sie diese Eigenschaften in Ihrem Workflow verwenden können. 
+        **JSON analysieren**: Erstellen von benutzerfreundlichen Token aus Eigenschaften und den zugehörigen Werten in JSON-Inhalten, sodass Sie diese Eigenschaften in Ihrem Workflow verwenden können.
         \
         \
         **Select**: Erstellen eines Arrays mit JSON-Objekten durch Transformieren von Elementen oder Werten in einem anderen Array und Zuordnen dieser Elemente zu angegebenen Eigenschaften.
     :::column-end:::
     :::column:::
-        ![Aktionssymbol „Datum/Uhrzeit“ in Logic Apps][date-time-icon]
+        ![„Datum/Uhrzeit“-Aktionssymbol][date-time-icon]
         \
         \
         **Datum/Uhrzeit**
@@ -277,25 +284,25 @@ Logic Apps bietet integrierte Aktionen zur Verwendung von Datenausgaben mit den 
         Ausführen von Vorgängen mit Zeitstempeln.
         \
         \
-        **Zu Zeit hinzufügen**: Hinzufügen der angegebenen Anzahl von Einheiten zu einem Zeitstempel. 
+        **Zu Zeit hinzufügen**: Hinzufügen der angegebenen Anzahl von Einheiten zu einem Zeitstempel.
         \
         \
-        **Zeitzone konvertieren**: Konvertiert einen Zeitstempel von der Quellzeitzone in die Zielzeitzone. 
+        **Zeitzone konvertieren**: Konvertiert einen Zeitstempel von der Quellzeitzone in die Zielzeitzone.
         \
         \
-        **Aktuelle Zeit**: Gibt den aktuellen Zeitstempel als Zeichenfolge zurück. 
+        **Aktuelle Zeit**: Gibt den aktuellen Zeitstempel als Zeichenfolge zurück.
         \
         \
-        **Zukünftige Zeit abrufen**: Gibt den aktuellen Zeitstempel plus der angegebenen Zeiteinheiten zurück. 
+        **Zukünftige Zeit abrufen**: Gibt den aktuellen Zeitstempel plus der angegebenen Zeiteinheiten zurück.
         \
         \
-        **Vergangene Zeit abrufen**: Gibt den aktuellen Zeitstempel abzüglich der angegebenen Zeiteinheiten zurück. 
+        **Vergangene Zeit abrufen**: Gibt den aktuellen Zeitstempel abzüglich der angegebenen Zeiteinheiten zurück.
         \
         \
         **Von Uhrzeit abziehen**: Subtrahiert eine Anzahl von Zeiteinheiten von einem Zeitstempel.
     :::column-end:::
     :::column:::
-        [![Aktionssymbol „Variablen“ in Logic Apps][variables-icon]][variables-doc]
+        [![Variablen-Aktionssymbol][variables-icon]][variables-doc]
         \
         \
         [**Variablen**][variables-doc]
@@ -304,7 +311,7 @@ Logic Apps bietet integrierte Aktionen zur Verwendung von Datenausgaben mit den 
         Ausführen von Vorgängen mit Variablen.
         \
         \
-        **An Arrayvariable anfügen**: Einfügen eines Werts als letztes Element in einem Array, das in einer Variablen gespeichert ist. 
+        **An Arrayvariable anfügen**: Einfügen eines Werts als letztes Element in einem Array, das in einer Variablen gespeichert ist.
         \
         \
         **An Zeichenfolgenvariable anfügen**: Einfügen eines Werts als letztes Element in einer Zeichenfolge, die in einer Variablen gespeichert ist.
@@ -313,13 +320,81 @@ Logic Apps bietet integrierte Aktionen zur Verwendung von Datenausgaben mit den 
         **Variablenwert verringern**: Verringern einer Variablen um einen konstanten Wert.
         \
         \
-        **Variable schrittweise erhöhen**: Erhöhen einer Variablen um einen konstanten Wert. 
+        **Variable schrittweise erhöhen**: Erhöhen einer Variablen um einen konstanten Wert.
         \
         \
-        **Variable initialisieren**: Erstellen einer Variablen und Deklarieren ihres Datentyps und Anfangswert. 
+        **Variable initialisieren**: Erstellen einer Variablen und Deklarieren ihres Datentyps und Anfangswert.
         \
         \
-        **Variable festlegen**: Zuweisen eines anderen Werts zu einer vorhandenen Variable. 
+        **Variable festlegen**: Zuweisen eines anderen Werts zu einer vorhandenen Variable.
+    :::column-end:::
+    :::column:::
+    :::column-end:::
+:::row-end:::
+
+## <a name="integration-account-built-in-actions"></a>Integrierte Aktionen für Integrationskonten
+
+Azure Logic Apps bietet die folgenden integrierten Aktionen, die entweder ein Integrationskonto erfordern, wenn mehrinstanzenfähige Mandanten oder verbrauchsplanbasierte Azure Logic Apps verwendet werden, oder kein Integrationskonto erfordern, wenn standardplanbasierte Azure Logic Apps mit nur einem Mandanten verwendet werden:
+
+> [!NOTE]
+> Bevor Sie die Integrationskontoaktion in mehrinstanzenfähigen, verbrauchsplanbasierten Azure Logic Apps verwenden können, müssen Sie [Ihre Logic-App-Ressource mit einem Integrationskonto verknüpfen](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md). Bei standardplanbasierten Azure Logic Apps mit nur einem Mandanten ist für einige Integrationskontovorgänge jedoch keine Verknüpfung Ihrer Logik-App-Ressource mit einem Integrationskonto erforderlich, z. B. Liquid-Vorgänge und XML-Vorgänge. Um diese Aktionen zu verwenden, benötigen Sie Liquid-Zuordnungen, XML-Zuordnungen oder XML-Schemas, die Sie über die entsprechenden Aktionen im Azure-Portal hochladen können. Sie können sie auch mithilfe der entsprechenden Ordner für **Zuordnungen** und **Schemas** im Ordner für **Artefakte** des Visual Studio Code-Projekts hinzufügen.
+
+:::row:::
+    :::column:::
+        [![Flatfile-Decodierung][flat-file-decode-icon]][flat-file-decode-doc]
+        \
+        \
+        [**Flatfile-Decodierung**<br>(*nur mehrinstanzenfähig*)][flat-file-decode-doc]
+        \
+        \
+        Codieren Sie XML, bevor Sie den Inhalt an einen Handelspartner senden.
+    :::column-end:::
+    :::column:::
+        [![Flatfile-Decodierungssymbol][flat-file-encode-icon]][flat-file-encode-doc]
+        \
+        \
+        [**Flatfile-Codierung**<br>(*nur mehrinstanzenfähig*)][flat-file-encode-doc]
+        \
+        \
+        Decodieren Sie XML nach dem Empfang des Inhalts von einem Handelspartner.
+    :::column-end:::
+    :::column:::
+        [![Integrationskontosymbol][integration-account-icon]][integration-account-doc]
+        \
+        \
+        [**Artefaktsuche für Integrationskonto**<br>(*nur mehrinstanzenfähig*)][integration-account-doc]
+        \
+        \
+        Abrufen benutzerdefinierter Metadaten für Artefakte wie Handelspartner, Vereinbarungen, Schemas usw. in Ihr Integrationskonto.
+    :::column-end:::
+    :::column:::
+        [![Liquid-Vorgängesymbol][liquid-icon]][json-liquid-transform-doc]
+        \
+        \
+        [**Liquid-Vorgänge**][json-liquid-transform-doc]
+        \
+        \
+        Konvertieren Sie die folgenden Formate mithilfe von Liquid-Vorlagen: <p><p>– JSON in JSON <br>– JSON in TEXT <br>– XML in JSON <br>– XML in TEXT
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![„XML transformieren“-Symbol][xml-transform-icon]][xml-transform-doc]
+        \
+        \
+        [**XML transformieren**][xml-transform-doc]
+        \
+        \
+        Das XML-Quellformat in ein anderes XML-Format konvertieren.
+    :::column-end:::
+    :::column:::
+        [![XML-Überprüfungssymbol][xml-validate-icon]][xml-validate-doc]
+        \
+        \
+        [**XML-Überprüfung**][xml-validate-doc]
+        \
+        \
+        XML-Dokumente anhand des angegebenen Schemas überprüfen.
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -328,7 +403,7 @@ Logic Apps bietet integrierte Aktionen zur Verwendung von Datenausgaben mit den 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erstellen benutzerdefinierter APIs, die über Azure Logic Apps aufgerufen werden können](../logic-apps/logic-apps-create-api-app.md)
+> [Erstellen benutzerdefinierter APIs, die über Azure Logic Apps aufgerufen werden können](../logic-apps/logic-apps-create-api-app.md)
 
 <!-- Built-in icons -->
 [azure-api-management-icon]: ./media/apis-list/azure-api-management.png
@@ -354,6 +429,14 @@ Logic Apps bietet integrierte Aktionen zur Verwendung von Datenausgaben mit den 
 [terminate-icon]: ./media/apis-list/terminate.png
 [until-icon]: ./media/apis-list/until.png
 [variables-icon]: ./media/apis-list/variables.png
+
+<!--Built-in integration account connector icons -->
+[flat-file-encode-icon]: ./media/apis-list/flat-file-encoding.png
+[flat-file-decode-icon]: ./media/apis-list/flat-file-decoding.png
+[integration-account-icon]: ./media/apis-list/integration-account.png
+[liquid-icon]: ./media/apis-list/liquid-transform.png
+[xml-transform-icon]: ./media/apis-list/xml-transform.png
+[xml-validate-icon]: ./media/apis-list/xml-validation.png
 
 <!--Built-in doc links-->
 [azure-api-management-doc]: ../api-management/get-started-create-service-instance.md "Erstellen einer Azure API Management-Dienstinstanz zum Verwalten und Veröffentlichen von APIs"
@@ -383,3 +466,11 @@ Logic Apps bietet integrierte Aktionen zur Verwendung von Datenausgaben mit den 
 [terminate-doc]: ../logic-apps/logic-apps-workflow-actions-triggers.md#terminate-action "Beenden oder Abbrechen eines aktiv ausgeführten Workflows für Ihre Logik-App"
 [until-doc]: ../logic-apps/logic-apps-control-flow-loops.md#until-loop "Wiederholen von Aktionen, bis die angegebene Bedingung TRUE ist oder sich ein Status geändert hat"
 [variables-doc]: ../logic-apps/logic-apps-create-variables-store-values.md "Ausführen von Vorgängen mit Variablen, z.B. Initialisieren, Festlegen, Erhöhen oder Verringern in einzelnen Schritten sowie Anfügen an Arrayvariable oder Zeichenfolgenvariable"
+
+<!--Built-in integration account doc links-->
+[flat-file-decode-doc]:../logic-apps/logic-apps-enterprise-integration-flatfile.md "Informationen zu Enterprise Integration (Flatfile)"
+[flat-file-encode-doc]:../logic-apps/logic-apps-enterprise-integration-flatfile.md "Informationen zu Enterprise Integration (Flatfile)"
+[integration-account-doc]: ../logic-apps/logic-apps-enterprise-integration-metadata.md "Verwalten von Metadaten für Integrationskontoartefakte"
+[json-liquid-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-liquid-transform.md "Transformieren von JSON mithilfe einer Liquid-Vorlage"
+[xml-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-transform.md "Transformieren von XML-Nachrichten"
+[xml-validate-doc]: ../logic-apps/logic-apps-enterprise-integration-xml-validation.md "Überprüfen von XML-Nachrichten"

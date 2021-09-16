@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: kegorman
 ms.reviewer: tigorman
-ms.openlocfilehash: 6e59d0065dfa74979bf3bbc72458bda516e3b641
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f6f7312590b98474d5edab02ea8e73725aded229
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101669975"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690077"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Entwerfen und Implementieren einer Oracle-Datenbank in Azure
+
+**Gilt für**: :heavy_check_mark: Linux-VMs 
 
 ## <a name="assumptions"></a>Annahmen
 
@@ -154,7 +156,7 @@ Je nach Ihren Anforderungen an die Netzwerkbandbreite können Sie aus verschiede
 - Verwenden Sie Virtual Machines mit [beschleunigtem Netzwerkbetrieb](../../../virtual-network/create-vm-accelerated-networking-cli.md), um eine bessere Netzwerkleistung zu erzielen.
 - Erwägen Sie für bestimmte Linux-Distributionen die Aktivierung der [TRIM/UNMAP-Unterstützung](/previous-versions/azure/virtual-machines/linux/configure-lvm#trimunmap-support).
 - Installieren Sie [Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) auf einem separaten virtuellen Computer.
-- Große Seiten sind unter Linux nicht standardmäßig aktiviert. Erwägen Sie das Aktivieren großer Seiten, und legen Sie `use_large_pages = ONLY` für die Oracle Database fest. Dies kann helfen, die Leistung zu steigern. Weitere Informationen finden Sie [hier](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390).
+- Große Seiten sind unter Linux nicht standardmäßig aktiviert. Erwägen Sie das Aktivieren großer Seiten, und legen Sie `use_large_pages = ONLY` für die Oracle Database fest. Dies kann helfen, die Leistung zu steigern. Weitere Informationen finden Sie unter [USE_LARGE_PAGES](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390).
 
 ### <a name="disk-types-and-configurations"></a>Datenträgertypen und -konfigurationen
 

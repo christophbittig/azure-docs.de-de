@@ -5,19 +5,19 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 08/17/2021
+ms.date: 08/20/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 04f922d747ef535402baf664f5232e376f43cff2
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 10489579d95628399e94bad5dcab256a3df4bf74
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444192"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123309884"
 ---
 # <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-ad-multi-factor-authentication"></a>Integrieren Ihrer vorhandenen NPS-Infrastruktur in Azure AD Multi-Factor Authentication
 
@@ -32,7 +32,9 @@ Wenn Sie die NPS-Erweiterung für Azure AD Multi-Factor Authentication verwende
 1. Der **NAS/VPN-Server** empfängt Anforderungen von VPN-Clients und wandelt sie in RADIUS-Anforderungen an NPS-Server um.
 2. Der **NPS-Server** stellt eine Verbindung mit Active Directory Domain Services (AD DS) her, um die primäre Authentifizierung für die RADIUS-Anforderungen durchzuführen, und übergibt die Anforderung bei Erfolg an eventuell installierte Erweiterungen.  
 3. Die **NPS-Erweiterung** löst eine Anforderung der sekundären Authentifizierung bei Azure AD Multi-Factor Authentication aus. Sobald die Erweiterung die Antwort empfängt und die MFA-Abfrage erfolgreich ist, wird die Authentifizierungsanforderung abgeschlossen, indem dem NPS-Server Sicherheitstoken bereitgestellt werden, die einen von Azure STS ausgegebenen MFA-Anspruch enthalten.
-4. **Azure AD MFA** kommuniziert mit Azure Active Directory (Azure AD), um die Informationen zum Benutzer abzurufen, und führt die sekundäre Authentifizierung mithilfe einer Überprüfungsmethode durch, die für den Benutzer konfiguriert wurde.
+   >[!NOTE]
+   >Benutzer müssen auf ihre Standardauthentifizierungsmethode zugreifen können, um die MFA-Anforderung zu erfüllen. Sie können keine alternative Methode auswählen. Die Standardauthentifizierungsmethode wird auch dann verwendet, wenn sie in den Mandantenauthentifizierungsmethoden und MFA-Richtlinien deaktiviert wurde.
+1. **Azure AD MFA** kommuniziert mit Azure Active Directory (Azure AD), um die Informationen zum Benutzer abzurufen, und führt die sekundäre Authentifizierung mithilfe einer Überprüfungsmethode durch, die für den Benutzer konfiguriert wurde.
 
 Das folgende Diagramm veranschaulicht den allgemeinen Ablauf dieser Authentifizierungsanforderung:
 

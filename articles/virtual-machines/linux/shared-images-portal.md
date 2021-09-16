@@ -2,7 +2,6 @@
 title: Erstellen von freigegebenen Azure-Linux-VM-Images über das Portal
 description: Erfahren Sie, wie Sie mit dem Azure-Portal Linux-VM-Images erstellen und freigeben.
 author: cynthn
-tags: azure-resource-manager
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
 ms.collection: linux
@@ -10,15 +9,16 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/21/2021
 ms.author: cynthn
-ms.reviewer: akjosh
-ms.openlocfilehash: 254fb1b4c21f8dd956c271e75ddf29f25c2bce15
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 908d4ae4a18ac75577ea567f6aba37c9ea2e49fe
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114204446"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450492"
 ---
 # <a name="create-a-shared-image-gallery-using-the-portal"></a>Erstellen einer Shared Image Gallery-Instanz über das Portal
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen **Gilt für**: :heavy_check_mark: :heavy_check_mark: Einheitliche Skalierungsgruppen 
 
 Der [Katalog mit freigegebenen Images](../shared-image-galleries.md) vereinfacht das Freigeben benutzerdefinierter Images in Ihrer Organisation. Benutzerdefinierte Images sind wie Marketplace-Images, Sie erstellen sie jedoch selbst. Benutzerdefinierte Images können zum Laden von Bereitstellungsaufgaben verwendet werden, z.B. zum Vorabladen von Anwendungen sowie für Anwendungskonfigurationen und andere Betriebssystemkonfigurationen. 
 
@@ -29,7 +29,7 @@ Der Katalog ist eine Ressource der obersten Ebene, die vollständige rollenbasie
 Die Funktion „Katalog mit freigegebenen Images“ verfügt über mehrere Ressourcentypen. Wir werden diese in diesem Artikel verwenden oder erstellen:
 
 
-[!INCLUDE [virtual-machines-shared-image-gallery-resources](../../../includes/virtual-machines-shared-image-gallery-resources.md)]
+[!INCLUDE [virtual-machines-shared-image-gallery-resources](../includes/virtual-machines-shared-image-gallery-resources.md)]
 
 <br>
 

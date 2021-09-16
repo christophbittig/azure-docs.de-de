@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 06/07/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 2310bd39c39036b6d6ac919517fa5539d7b70779
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 71784aa5e40cc7af96faa60d0779a779e99f3425
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104581863"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122777846"
 ---
 # <a name="set-up-a-sign-in-flow-in-azure-active-directory-b2c"></a>Einrichten eines Anmeldeflows in Azure Active Directory B2C
 
@@ -46,14 +46,22 @@ Wenn dies noch nicht erfolgt ist, [registrieren Sie eine Webanwendung in Azure A
 Gehen Sie wie folgt vor, um eine Anmelderichtlinie hinzuzufügen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse + Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse + Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
 1. Wählen Sie unter **Richtlinien** die Option **Benutzerflows** und dann **Neuer Benutzerflow** aus.
 1. Wählen Sie auf der Seite **Benutzerflow erstellen** den Benutzerflow **Anmeldung** aus.
 1. Wählen Sie unter **Version auswählen** die Option **Empfohlen** und dann **Erstellen** aus. (Weitere Informationen zu [Benutzerflowversionen](user-flow-versions.md))
 1. Geben Sie unter **Name** einen Namen für den Benutzerflow ein. Beispiel: *signupsignin1*.
-1. Klicken Sie unter **Identitätsanbieter** auf **Email sign-in** (E-Mail-Anmeldung).
-1. Wählen Sie für **Anwendungsansprüche** die Ansprüche und Attribute aus, die an Ihre Anwendung gesendet werden sollen. Beispiel: Wählen Sie **Mehr anzeigen** aus, und wählen Sie dann Attribute und Ansprüche für **Anzeigename**, **Vorname**, **Nachname** und **Objekt-ID des Benutzers** aus. Klicken Sie auf **OK**.
+1. Wählen Sie unter **Identitätsanbieter** mindestens einen Identitätsanbieter aus:
+
+   * Wählen Sie unter **Lokale Konten** eine der folgenden Optionen aus: **E-Mail-Anmeldung**, **Benutzer-ID-Anmeldung**, **Telefonanmeldung**, **Telefon-/E-Mail-Anmeldung**, **Benutzer-ID-/E-Mail-Anmeldung** oder **Keine**. [Weitere Informationen](sign-in-options.md)
+   * Wählen Sie unter **Soziales Netzwerk als Identitätsanbieter** einen der externen Anbieter für soziale oder Unternehmensidentitäten aus, die Sie eingerichtet haben. [Weitere Informationen](add-identity-provider.md)
+1. Wenn Sie unter **Mehrstufige Authentifizierung** festlegen möchten, dass Benutzer ihre Identität anhand einer zweiten Authentifizierungsmethode verifizieren müssen, wählen Sie den Methodentyp und den Zeitpunkt aus, an dem die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) erzwungen werden soll. [Weitere Informationen](multi-factor-authentication.md)
+1. Wenn Sie unter **Bedingter Zugriff** Richtlinien für bedingten Zugriff für Ihren Azure AD B2C-Mandanten konfiguriert haben und sie für diesen Benutzerflow aktivieren möchten, aktivieren Sie das Kontrollkästchen **Richtlinien für bedingten Zugriff erzwingen**. Sie müssen keinen Richtliniennamen angeben. [Weitere Informationen](conditional-access-user-flow.md?pivots=b2c-user-flow)
+1. Wählen Sie unter **Anwendungsansprüche** die Ansprüche aus, die im Token an die Anwendung zurückgegeben werden sollen. Um eine vollständige Liste der Werte zu erhalten, wählen Sie **Mehr anzeigen** aus, wählen Sie die Werte aus, und klicken Sie dann auf **OK**.
+   > [!NOTE]
+   > Sie können auch [benutzerdefinierte Attribute erstellen](user-flow-custom-attributes.md?pivots=b2c-user-flow), die in Ihrem Azure AD B2C-Mandanten verwendet werden sollen.
 1. Klicken Sie auf **Erstellen**, um den Benutzerflow hinzuzufügen. Dem Namen wird automatisch das Präfix *B2C_1* vorangestellt.
 
 ### <a name="test-the-user-flow"></a>Testen des Benutzerflows
@@ -109,7 +117,8 @@ Das technische Profil **SelfAsserted-LocalAccountSignin-Email** ist ein [sebstbe
 ## <a name="update-and-test-your-policy"></a>Aktualisieren und Testen Ihrer Richtlinie
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD-Mandanten enthält, indem Sie im oberen Menü den **Verzeichnis- und Abonnementfilter** und dann das Verzeichnis auswählen, das Ihren Azure AD-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis mit Ihrem Azure AD-Mandanten verwenden, indem Sie in der Portalsymbolleiste das Symbol **Verzeichnisse + Abonnements** auswählen.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse + Abonnements** das Azure AD-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **App-Registrierungen**, und wählen Sie dann diese Option aus.
 1. Wählen Sie **Framework für die Identitätsfunktion** aus.
 1. Wählen Sie **Benutzerdefinierte Richtlinie hochladen** aus, und laden Sie dann die geänderte Richtliniendatei *TrustFrameworkExtensions.xml* hoch.

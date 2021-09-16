@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: mbullwin
 keywords: Anomalieerkennung, maschinelles Lernen, Algorithmen
-ms.openlocfilehash: 2e74edb0f716862925bb19140a4425366ebab894
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: 85c169afb8c6158a3e5c32ac4d62cbeeabb4c2bb
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113587659"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123035598"
 ---
 # <a name="multivariate-time-series-anomaly-detection-preview"></a>Erkennung von multivariaten Zeitreihenanomalien (Vorschau)
 
 Die neuen **APIs für die multivariate Anomalieerkennung** erweitern die Möglichkeiten von Entwicklern durch die einfache Integration fortschrittlicher KI zur Erkennung von Anomalien in Metrikgruppen ganz ohne Machine Learning-Kenntnisse oder gekennzeichnete Daten. Abhängigkeiten und gegenseitige Wechselwirkungen zwischen bis zu 300 verschiedenen Signalen werden jetzt automatisch als Schlüsselfaktoren gewertet. Diese neue Funktion hilft Ihnen, Ihre komplexen Systeme wie Softwareanwendungen, Server, Fertigungssysteme, Raumfahrzeuge oder schlicht Ihr Unternehmen proaktiv vor Ausfällen zu schützen.
 
-![Liniendiagramme mehrerer Zeitreihen für Variablen von: Vibration, Temperatur, Druck, Geschwindigkeit, Rotationsgeschwindigkeit. Die Anomalien sind orange hervorgehoben.](./media/multivariate-graph.png)
+![Liniendiagramme mehrerer Zeitreihen für Variablen von: Rotation, optischer Filter, Druck, Lager. Die Anomalien sind orange hervorgehoben.](./media/multivariate-graph.png)
 
-Stellen Sie sich 20 Sensoren eines Automotors vor, die 20 verschiedene Signale wie Vibration, Temperatur, Kraftstoffdruck usw. generieren. Die Messwerte dieser Signale geben Ihnen einzeln möglicherweise nicht allzu viel Auskunft über Probleme auf Systemebene, aber zusammen können sie die Integrität des Motors darstellen. Wenn die Interaktion dieser Signale außerhalb des üblichen Bereichs abweicht, kann das Feature zur multivariaten Anomalieerkennung die Anomalie wie ein erfahrener Experte erkennen. Die zugrunde liegenden KI-Modelle werden mit Ihren Daten trainiert und angepasst, sodass sie die besonderen Anforderungen Ihres Unternehmens verstehen. Mit den neuen APIs in der Anomalieerkennung können Entwickler jetzt problemlos die Funktionen zur Anomalieerkennung in multivariaten Zeitreihen in Predictive Maintenance-Lösungen, AIOps-Überwachungslösungen für komplexe Unternehmenssoftware oder Business Intelligence-Tools integrieren.
+Stellen Sie sich 20 Sensoren eines Automotors vor, die 20 verschiedene Signale wie beispielsweise Rotation, Kraftstoffdruck oder Lager generieren. Die Messwerte dieser Signale geben Ihnen einzeln möglicherweise nicht allzu viel Auskunft über Probleme auf Systemebene, aber zusammen können sie den Zustand des Motors abbilden. Wenn die Interaktion dieser Signale außerhalb des üblichen Bereichs abweicht, kann das Feature zur multivariaten Anomalieerkennung die Anomalie wie ein erfahrener Experte erkennen. Die zugrunde liegenden KI-Modelle werden mit Ihren Daten trainiert und angepasst, sodass sie die besonderen Anforderungen Ihres Unternehmens verstehen. Mit den neuen APIs in der Anomalieerkennung können Entwickler jetzt problemlos die Funktionen zur Anomalieerkennung in multivariaten Zeitreihen in Predictive Maintenance-Lösungen, AIOps-Überwachungslösungen für komplexe Unternehmenssoftware oder Business Intelligence-Tools integrieren.
 
 ## <a name="when-to-use-multivariate-versus-univariate"></a>Verwendung von **multivariate** gegenüber **univariate**
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python
-ms.openlocfilehash: 292c23398950a367f77c4200925007f660702a34
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 85a8b539d40aac11d0ce39ba4329b7466f48c009
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355439"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835464"
 ---
 # <a name="get-started-with-device-twins-python"></a>Erste Schritte mit Gerätezwillingen (Python)
 
@@ -154,7 +154,6 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolenanwendung, die als Ihre **
 
     ```python
     import time
-    import threading
     from azure.iot.device import IoTHubModuleClient
     ```
 
@@ -164,49 +163,55 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolenanwendung, die als Ihre **
     CONNECTION_STRING = "[IoTHub Device Connection String]"
     ```
 
-5. Fügen Sie folgenden Code der Datei **ReportConnectivity.py** hinzu, um die Gerätezwillingsfunktionalität zu implementieren:
+5. Fügen Sie der Datei **ReportConnectivity.py** folgenden Code hinzu, um einen Client zu instanziieren und die Gerätezwillingsfunktionalität zu implementieren:
 
     ```python
-    def twin_update_listener(client):
-        while True:
-            patch = client.receive_twin_desired_properties_patch()  # blocking call
-            print("Twin patch received:")
-            print(patch)
-
-    def iothub_client_init():
+    def create_client():
+        # Instantiate client
         client = IoTHubModuleClient.create_from_connection_string(CONNECTION_STRING)
-        return client
 
-    def iothub_client_sample_run():
+        # Define behavior for receiving twin desired property patches
+        def twin_patch_handler(twin_patch):
+            print("Twin patch received:")
+            print(twin_patch)
+
         try:
-            client = iothub_client_init()
+            # Set handlers on the client
+            client.on_twin_desired_properties_patch_received = twin_patch_handler
+        except:
+            # Clean up in the event of failure
+            client.shutdown()
 
-            twin_update_listener_thread = threading.Thread(target=twin_update_listener, args=(client,))
-            twin_update_listener_thread.daemon = True
-            twin_update_listener_thread.start()
+        return client
+    ```
 
-            # Send reported 
+6. Fügen Sie den folgenden Code am Ende der Datei **ReportConnectivity.py** hinzu, um die Anwendung auszuführen:
+
+    ```python
+    def main():
+        print ( "Starting the Python IoT Hub Device Twin device sample..." )
+        client = create_client()
+        print ( "IoTHubModuleClient waiting for commands, press Ctrl-C to exit" )
+
+        try:
+            # Update reported properties with cellular information
             print ( "Sending data as reported property..." )
             reported_patch = {"connectivity": "cellular"}
             client.patch_twin_reported_properties(reported_patch)
             print ( "Reported properties updated" )
 
+            # Wait for program exit
             while True:
                 time.sleep(1000000)
         except KeyboardInterrupt:
-            print ( "IoT Hub Device Twin device sample stopped" )
-    ```
+            print ("IoT Hub Device Twin device sample stopped")
+        finally:
+            # Graceful exit
+            print("Shutting down IoT Hub Client")
+            client.shutdown()
 
-    Das **IoTHubModuleClient**-Objekt macht alle Methoden verfügbar, die für die Interaktion mit Gerätezwillingen des Geräts erforderlich sind. Mit diesem Code werden nach dem Initialisieren des **IoTHubModuleClient**-Objekts der Gerätezwilling für Ihr Gerät abgerufen und die zugehörige gemeldete Eigenschaft mit den Verbindungsinformationen aktualisiert.
-
-6. Fügen Sie am Ende der Datei **ReportConnectivity.py** den folgenden Code ein, um die Funktion **iothub_client_sample_run** zu implementieren:
-
-    ```python
     if __name__ == '__main__':
-        print ( "Starting the Python IoT Hub Device Twin device sample..." )
-        print ( "IoTHubModuleClient waiting for commands, press Ctrl-C to exit" )
-
-        iothub_client_sample_run()
+        main()
     ```
 
 7. Führen Sie die Geräte-App aus:

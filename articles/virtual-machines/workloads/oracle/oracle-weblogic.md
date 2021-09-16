@@ -8,14 +8,16 @@ ms.collection: linux
 ms.topic: article
 ms.date: 03/23/2021
 ms.author: rezar
-ms.openlocfilehash: b84cb11211c3a51bd463ad7081963298f8ec357e
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 310b2576489a45bb6c04d91778eb74f4aa4becdd
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114450824"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694821"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>Welche Lösungen zum Ausführen von Oracle WebLogic Server in Azure Virtual Machines gibt es?
+
+**Gilt für**: :heavy_check_mark: Linux-VMs 
 
 Auf dieser Seite werden die Lösungen zum Ausführen von Oracle WebLogic Server (WLS) auf virtuellen Azure-Computern beschrieben. Diese Lösungen werden gemeinsam von Oracle und Microsoft entwickelt und unterstützt.
 

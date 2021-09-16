@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42a9867f46baf0fb1cae6f53acccef0be3fe9901
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 190a5c7df833137fdbc13dc6a09e7c19a34dce0a
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355921"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866490"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiv für Neuerungen in Azure Active Directory
 
@@ -434,7 +434,7 @@ Weitere Informationen finden Sie unter [Automatisieren der Bereitstellung von Be
 ### <a name="public-preview---email-sign-in-with-proxyaddresses-now-deployable-via-staged-rollout"></a>Public Preview: E-Mail-Anmeldung mit Proxyadressen ist jetzt über den gestaffelten Rollout möglich
 
 **Typ:** Neues Feature  
-**Dienstkategorie**: Authentifizierungen (Anmeldungen)  
+**Dienstkategorie:** Authentifizierungen (Anmeldungen)  
 **Produktfunktion:** Benutzerauthentifizierung
  
 Mandantenadministratoren können jetzt den gestaffelten Rollout zum Bereitstellen einer E-Mail-Anmeldung mit Proxyadressen für bestimmte Azure AD-Gruppen verwenden. Dies ist nützlich, um das Feature zu testen, bevor es über die Richtlinie für die Startbereichsermittlung im gesamten Mandanten bereitgestellt wird. Anweisungen zum Bereitstellen der E-Mail-Anmeldung mit Proxyadressen über den gestaffelten Rollout finden Sie in der [Dokumentation](../authentication/howto-authentication-use-email-signin.md).
@@ -875,7 +875,7 @@ Weitere Informationen finden Sie in [dieser Dokumentation](https://aka.ms/BlogPo
 ### <a name="public-preview-continuous-access-evaluation-for-tenants-who-configured-conditional-access-policies"></a>Öffentliche Vorschau: Fortlaufende Zugriffsevaluierung für Mandanten, die Richtlinien für bedingten Zugriff konfiguriert haben
 
 **Typ:** Neues Feature  
-**Dienstkategorie**: Authentifizierungen (Anmeldungen)  
+**Dienstkategorie:** Authentifizierungen (Anmeldungen)  
 **Produktfunktion:** Identitätssicherheit und -schutz
  
 Fortlaufende Zugriffsevaluierung (Continuous Access Evaluation, CAE) ist jetzt in der öffentlichen Vorschau für Azure AD-Mandanten mit Richtlinien für bedingten Zugriff verfügbar. Mit CAE werden kritische sicherheitsrelevante Ereignisse und Richtlinien in Echtzeit ausgewertet. Dies umfasst Kontodeaktivierungen, Kennwortzurücksetzungen und Standortänderungen. Weitere Informationen finden Sie unter [Fortlaufende Zugriffsevaluierung](../conditional-access/concept-continuous-access-evaluation.md).
@@ -1478,7 +1478,7 @@ Bisher war die Anzahl der Gruppen, die Sie verwenden können, wenn Sie Ansprüch
 ### <a name="enabling-basic-formatting-on-the-sign-in-page-text-component-in-company-branding"></a>Aktivieren der grundlegenden Formatierung im Text der Anmeldeseite im Unternehmensbranding
 
 **Typ:** Geändertes Feature  
-**Dienstkategorie**: Authentifizierungen (Anmeldungen)  
+**Dienstkategorie:** Authentifizierungen (Anmeldungen)  
 **Produktfunktion:** Benutzerauthentifizierung
  
 Die Unternehmensbrandingfunktion für die Azure AD-/Microsoft 365-Anmeldung wurde aktualisiert, damit der Kunde Hyperlinks und einfache Formatierungen hinzufügen kann, einschließlich fett, unterstrichen und kursiv. Anweisungen zur Verwendung dieser Funktion erhalten Sie unter [Hinzufügen von Branding zur Azure Active Directory-Anmeldeseite Ihrer Organisation](./customize-branding.md).
@@ -1487,7 +1487,7 @@ Die Unternehmensbrandingfunktion für die Azure AD-/Microsoft 365-Anmeldung wurd
 
 ### <a name="provisioning-performance-improvements"></a>Leistungsverbesserungen bei der Bereitstellung
 
-**Typ:** Geändertes Feature  
+**Typ:** Geänderte Funktion  
 **Dienstkategorie:** App-Bereitstellung  
 **Produktfunktion:** Identity Lifecycle Management
  
@@ -1548,7 +1548,7 @@ E-Mail-Benachrichtigungen werden von den folgenden Adressen gesendet: azure-nore
 ### <a name="new-self-service-sign-up-for-users-in-federated-domains-who-cant-access-microsoft-teams-because-they-arent-synced-to-azure-active-directory"></a>Neue Self-Service-Registrierung für Benutzer in Verbunddomänen, die nicht auf Microsoft Teams zugreifen können, weil sie nicht mit Azure Active Directory synchronisiert sind.
 
 **Typ:** Plan für Änderung  
-**Dienstkategorie**: Authentifizierungen (Anmeldungen)  
+**Dienstkategorie:** Authentifizierungen (Anmeldungen)  
 **Produktfunktion:** Benutzerauthentifizierung
  
 
@@ -1585,7 +1585,7 @@ Diese Änderung wird schrittweise eingeführt, wobei die Erzwingung für alle Ap
 ### <a name="saml-single-logout-request-now-sends-nameid-in-the-correct-format"></a>Die SAML-Anforderung für einmaliges Abmelden sendet jetzt eine NameID im richtigen Format
 
 **Typ:** Korrigiert  
-**Dienstkategorie**: Authentifizierungen (Anmeldungen)  
+**Dienstkategorie:** Authentifizierungen (Anmeldungen)  
 **Produktfunktion:** Benutzerauthentifizierung
  
 Wenn ein Benutzer auf die Abmeldung klickt (z. B. im MyApps-Portal), sendet Azure AD eine SAML-Nachricht für einmaliges Abmelden an jede App, die in der Benutzersitzung aktiv ist und für die eine Abmelde-URL konfiguriert ist. Diese Nachrichten enthalten eine NameID in einem persistenten Format.
@@ -1781,7 +1781,7 @@ Weitere Informationen finden Sie unter [Die neue App-Registrierungsbenutzeroberf
 
 **Typ:** Neues Feature
 
-**Dienstkategorie**: Authentifizierungen (Anmeldungen)
+**Dienstkategorie:** Authentifizierungen (Anmeldungen)
 
 **Produktfunktion:** Identitätssicherheit und -schutz
 
@@ -1793,7 +1793,7 @@ Die Umgebung für die kombinierte Registrierung für Multi-Factor Authentication
 
 **Typ:** Neues Feature
 
-**Dienstkategorie**: Authentifizierungen (Anmeldungen)
+**Dienstkategorie:** Authentifizierungen (Anmeldungen)
 
 **Produktfunktion:** Identitätssicherheit und -schutz
 
@@ -1805,7 +1805,7 @@ Die fortlaufende Zugriffsevaluierung ist ein neues Sicherheitsfeature, das bei E
 
 **Typ:** Neues Feature
 
-**Dienstkategorie**: Authentifizierungen (Anmeldungen)
+**Dienstkategorie:** Authentifizierungen (Anmeldungen)
 
 **Produktfunktion:** Benutzerauthentifizierung
 
@@ -2034,7 +2034,7 @@ Weitere Informationen finden Sie über die folgenden Links:
 
 ### <a name="an-upgraded-end-user-experience-in-access-reviews"></a>Aktualisierte Endbenutzerumgebung für Zugriffsüberprüfungen
 
-**Typ:** Geändertes Feature
+**Typ:** Geänderte Funktion
 
 **Dienstkategorie**: Zugriffsüberprüfungen
 
@@ -2102,7 +2102,7 @@ Weitere Informationen finden Sie unter [Überprüfen einer dynamischen Gruppenmi
 
 ### <a name="identity-secure-score---security-defaults-and-mfa-improvement-action-updates"></a>Identity Secure Score – Aktualisierungen von Sicherheitsstandards und MFA-Verbesserungsaktionen
 
-**Typ:** Geändertes Feature
+**Typ:** Geänderte Funktion
 
 **Dienstkategorie:** –
 
@@ -2252,7 +2252,7 @@ Wir sind jetzt dabei, zwischen Azure China 21Vianet und der öffentlichen Cloud 
 ### <a name="password-length-is-limited-to-256-characters"></a>Kennwortlänge auf 256 Zeichen beschränkt
 
 **Typ:** Geändertes Feature  
-**Dienstkategorie**: Authentifizierungen (Anmeldungen)  
+**Dienstkategorie:** Authentifizierungen (Anmeldungen)  
 **Produktfunktion:** Benutzerauthentifizierung
  
 Um die Zuverlässigkeit des Azure AD-Diensts sicherzustellen, sind die Benutzerkennwörter jetzt auf 256 Zeichen beschränkt. Benutzer mit längeren Kennwörtern werden aufgefordert, ihr Kennwort bei der nächsten Anmeldung zu ändern, indem sie sich entweder an ihren Administrator wenden oder die SSPR-Funktion (Self-Service-Kennwortzurücksetzung) verwenden.
@@ -2263,7 +2263,7 @@ Diese Änderung ist am 13. März 2020, 10 Uhr PST (18 Uhr UTC), in Kraft getrete
 
 ### <a name="azure-ad-sign-in-logs-are-now-available-for-all-free-tenants-through-the-azure-portal"></a>Azure AD-Anmeldeprotokolle jetzt für alle kostenlosen Mandanten über das Azure-Portal verfügbar
 
-**Typ:** Geändertes Feature  
+**Typ:** Geänderte Funktion  
 **Dienstkategorie:** Berichterstellung  
 **Produktfunktion:** Überwachung und Berichterstellung
  
@@ -2369,7 +2369,7 @@ Weitere Informationen dazu, wie Sie Ihre Organisation durch die automatisierte B
 ### <a name="azure-ad-support-for-fido2-security-keys-in-hybrid-environments"></a>Azure AD-Unterstützung für FIDO2-Sicherheitsschlüssel in Hybridumgebungen
 
 **Typ:** Neues Feature  
-**Dienstkategorie**: Authentifizierungen (Anmeldungen)  
+**Dienstkategorie:** Authentifizierungen (Anmeldungen)  
 **Produktfunktion:** Benutzerauthentifizierung
  
 Wir geben die Azure AD-Unterstützung für FIDO2-Sicherheitsschlüssel in Hybridumgebungen (Public Preview) bekannt. Benutzer können sich jetzt mit FIDO2-Sicherheitsschlüsseln bei ihren hybrid in Azure AD eingebundenen Geräten unter Windows 10 anmelden und über die nahtlose Anmeldung (Seamless Sign-On, SSO) auf ihre lokalen und Cloudressourcen zugreifen. Die Unterstützung für Hybridumgebungen stand bei unseren Kunden mit kennwortloser Authentifizierung ganz oben auf der Wunschliste, da wir zunächst die FIDO2-Unterstützung für in Azure AD eingebundene Geräte in der Public Preview gestartet haben. Die kennwortlose Authentifizierung mit modernen Technologien wie biometrische Merkmale und Verschlüsselung mit öffentlichen/privaten Schlüsseln ist nicht nur bequem und benutzerfreundlich, sondern auch sicher. Mit dieser Public Preview haben Sie nun die Möglichkeit, eine moderne Authentifizierung wie FIDO2-Sicherheitsschlüssel für den Zugriff auf herkömmliche Active Directory-Ressourcen zu verwenden. Weitere Informationen finden Sie unter [Einmaliges Anmelden bei lokalen Ressourcen](../authentication/howto-authentication-passwordless-security-key-on-premises.md). 
@@ -2412,7 +2412,7 @@ Führen Sie für Ihre Organisation ein Upgrade auf das neue Portal „Meine Apps
  
 ### <a name="workspaces-in-azure-ad-have-been-renamed-to-collections"></a>Arbeitsbereiche in Azure AD wurden in Sammlungen umbenannt
 
-**Typ:** Geändertes Feature  
+**Typ:** Geänderte Funktion  
 **Dienstkategorie:** Meine Apps   
 **Produktfunktion:** Endbenutzerumgebungen
  
@@ -2471,8 +2471,8 @@ Identity Protection wurde um zwei neue, mit der Anmeldung verknüpfte Erkennungs
  
 ### <a name="breaking-change-uri-fragments-will-not-be-carried-through-the-login-redirect"></a>Breaking Change: URI-Fragmente werden nicht über die Anmeldeumleitung übergeben
 
-**Typ:** Geändertes Feature  
-**Dienstkategorie**: Authentifizierungen (Anmeldungen)  
+**Typ:** Geänderte Funktion  
+**Dienstkategorie:** Authentifizierungen (Anmeldungen)  
 **Produktfunktion:** Benutzerauthentifizierung
  
 Ab dem 8. Februar 2020 fügt der Dienst ein leeres Fragment an die Anforderung an, wenn eine Anforderung an login.microsoftonline.com gesendet wird, um einen Benutzer anzumelden.  Dadurch wird eine Klasse von Umleitungsangriffen verhindert, indem sichergestellt wird, dass der Browser jedes vorhandene Fragment in der Anforderung bereinigt. Keine Anwendung sollte eine Abhängigkeit von diesem Verhalten aufweisen. Weitere Informationen finden Sie unter [Breaking Changes](../develop/reference-breaking-changes.md#february-2020) in der Dokumentation zu Microsoft Identity Platform.
@@ -2522,7 +2522,7 @@ Weitere Informationen zu den neuen Sicherheitsstandards finden Sie unter [Was si
 ### <a name="support-for-the-samesite-attribute-and-chrome-80"></a>Unterstützung für das SameSite-Attribut und Chrome 80
 
 **Typ:** Plan für Änderung  
-**Dienstkategorie**: Authentifizierungen (Anmeldungen)  
+**Dienstkategorie:** Authentifizierungen (Anmeldungen)  
 **Produktfunktion:** Benutzerauthentifizierung
 
 Im Rahmen des standardmäßig sicheren Modells für Cookies wird geändert, wie der Chrome 80-Browser Cookies ohne `SameSite`-Attribut verarbeitet. Cookies ohne das `SameSite`-Attribut werden so behandelt, als wäre dieses auf `SameSite=Lax` festgelegt. Dadurch blockiert Chrome bestimmte domänenübergreifenden Cookiefreigaben, von denen Ihre App möglicherweise abhängig ist. Sie können das bisherige Verhalten von Chrome beibehalten, indem Sie das `SameSite=None`-Attribut verwenden und das `Secure`-Attribut hinzufügen, damit auf seitenübergreifende Cookies nur über HTTPS-Verbindungen zugegriffen werden kann. Diese Änderung in Chrome soll bis zum 4. Februar 2020 abgeschlossen sein.
@@ -4945,7 +4945,7 @@ Mit benutzerdefinierten Richtlinien können Sie jetzt den gemeinsamen Endpunkt f
 
 **Typ:** Neues Feature-**Dienstkategorie:** Meine Apps-**Produktfunktion:** SSO
 
-Benutzer können über interne URLs jetzt auch dann auf Anwendungen zugreifen, wenn sie sich außerhalb Ihres Unternehmensnetzwerks befinden, indem sie die Erweiterung zur sicheren Anmeldung bei „Meine Apps“ verwenden. Dies funktioniert mit allen Anwendungen, die Sie per Azure AD-Anwendungsproxy veröffentlicht haben, und mit jedem Browser, für den die Browsererweiterung für den Zugriffsbereich installiert ist. Die Funktion für die URL-Umleitung wird automatisch aktiviert, nachdem sich ein Benutzer an der Erweiterung angemeldet hat. Die Erweiterung ist für [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176), [Chrome](https://go.microsoft.com/fwlink/?linkid=866367) und [Firefox](https://go.microsoft.com/fwlink/?linkid=866366) als Download verfügbar.
+Benutzer können über interne URLs jetzt auch dann auf Anwendungen zugreifen, wenn sie sich außerhalb Ihres Unternehmensnetzwerks befinden, indem sie die Erweiterung zur sicheren Anmeldung bei „Meine Apps“ verwenden. Dies funktioniert mit allen Anwendungen, die Sie per Azure AD-Anwendungsproxy veröffentlicht haben, und mit jedem Browser, für den die Browsererweiterung für den Zugriffsbereich installiert ist. Die Funktion für die URL-Umleitung wird automatisch aktiviert, nachdem sich ein Benutzer an der Erweiterung angemeldet hat. Die Erweiterung ist in [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176) und [Chrome](https://go.microsoft.com/fwlink/?linkid=866367) als Download verfügbar.
 
 ---
 

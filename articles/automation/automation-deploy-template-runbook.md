@@ -7,12 +7,12 @@ ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
 keywords: PowerShell, Runbook, JSON, Azure Automation
-ms.openlocfilehash: 7ea0e8209d244ad2b95e201ec7eb1e84f2038887
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: cb075d0ad59af211d80443a5e208509ea60c08ed
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113587767"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251808"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-a-powershell-runbook"></a>Bereitstellen einer Azure Resource Manager-Vorlage in einem PowerShell-Runbook
 
@@ -87,9 +87,9 @@ Kopieren Sie in einem Text-Editor den folgenden Text:
 
 Speichern Sie die Datei lokal als **TemplateTest.json**.
 
-## <a name="save-the-resource-manager-template-in-azure-storage"></a>Speichern der Resource Manager-Vorlage in Azure Storage
+## <a name="save-the-resource-manager-template-in-azure-files"></a>Speichern der Resource Manager-Vorlage in Azure Files
 
-Wir verwenden PowerShell jetzt zum Erstellen einer Azure Storage-Datei und zum Hochladen der Datei **TemplateTest.json**. Eine Anleitung zum Erstellen einer Dateifreigabe und Hochladen einer Datei im Azure-Portal finden Sie unter [Erste Schritte mit Azure File Storage unter Windows](../storage/files/storage-dotnet-how-to-use-files.md).
+Wir verwenden PowerShell jetzt zum Erstellen einer Azure-Dateifreigabe und zum Hochladen der Datei **TemplateTest.json**. Eine Anleitung zum Erstellen einer Dateifreigabe und Hochladen einer Datei im Azure-Portal finden Sie unter [Erste Schritte mit Azure Files unter Windows](../storage/files/storage-files-quick-create-use-windows.md).
 
 Starten Sie PowerShell auf Ihrem lokalen Computer, und führen Sie die folgenden Befehle aus, um eine Dateifreigabe zu erstellen und die Resource Manager-Vorlage auf diese Dateifreigabe hochzuladen.
 

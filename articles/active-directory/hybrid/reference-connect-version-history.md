@@ -8,24 +8,22 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 03/16/2021
+ms.date: 08/26/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 612fe2085e0eb683c3f423f410ed5b4a98798194
-ms.sourcegitcommit: d01c2b2719e363178720003b67b968ac2a640204
+ms.openlocfilehash: 3336ead4259c12b2eb6f7f87d5e21fe39765e817
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122455800"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122968793"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verlauf der Versionsveröffentlichungen
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
 
 Dieser Artikel soll Ihnen helfen, die Versionen zu verfolgen, die veröffentlicht wurden, und zu verstehen, welche Änderungen bei der aktuellen Version vorgenommen wurden.
-
-
 
 Dieser Tabelle enthält eine Liste der verwandten Themen:
 
@@ -33,30 +31,34 @@ Thema |  Details
 --------- | --------- |
 Schritte zum Upgrade von Azure AD Connect | Verschiedene Methoden zum [Aktualisieren von einer früheren Version auf die aktuelle Version](how-to-upgrade-previous-version.md) von Azure AD Connect.
 Erforderliche Berechtigungen | Informationen zu den zum Anwenden eines Updates erforderlichen Berechtigungen finden Sie unter [Konten und Berechtigungen](reference-connect-accounts-permissions.md#upgrade).
-Download| [Azure AD Connect herunterladen](https://go.microsoft.com/fwlink/?LinkId=615771).
+
+
+>[!IMPORTANT]
+> **Am 31. August 2022 werden alle 1.x-Versionen von Azure Active Directory (Azure AD) Connect eingestellt, weil sie SQL Server 2012-Komponenten enthalten, die nicht mehr unterstützt werden.** Führen Sie bis zu diesem Datum ein Upgrade auf die neueste Version von Azure AD Connect (2.x-Version) durch, oder [testen und wechseln Sie zur Azure AD-Cloudsynchronisierung](https://docs.microsoft.com/azure/active-directory/cloud-sync/what-is-cloud-sync).
+> 
+> Sie müssen sicherstellen, dass Sie eine aktuelle Version von Azure AD Connect ausführen, um einen optimalen Support zu erhalten. 
+> 
+> Wenn Sie eine außer Betrieb gesetzte Version von Azure AD Connect ausführen, kann diese unerwartet ihre Funktion einstellen, und Sie profitieren nicht von den neuesten Sicherheitsfixes, Leistungsverbesserungen, Tools für Problembehandlung und Diagnose sowie Dienstverbesserungen. Wenn Sie zudem Unterstützung benötigen, können wir Ihnen möglicherweise nicht das für Ihre Organisation erforderliche Serviceniveau bieten.
+> 
+> In diesem Artikel erfahren Sie mehr über [Azure Active Directory Connect V2.0](whatis-azure-ad-connect-v2.md), über die Änderungen in V2.0 und deren Auswirkungen für Sie.
+>
+> In [diesem Artikel](./how-to-upgrade-previous-version.md) erfahren Sie mehr über das Upgrade von Azure AD Connect auf die aktuelle Version.
+>
+> Informationen zum Versionsverlauf für eingestellte Versionen finden Sie unter [Azure AD Connect: Archiv des Verlaufs der Versionsveröffentlichungen](reference-connect-version-history-archive.md).
 
 >[!NOTE]
 >Das Veröffentlichen einer neuen Version von Azure AD Connect ist ein Prozess, der mehrere Qualitätskontrollschritte erfordert, um die Funktionalität des Diensts sicherzustellen. Im Laufe dieses Prozesses wird die Versionsnummer und der Status des Releases aktualisiert, um den aktuellen Zustand wiederzugeben.
-Während dieses Prozesses enthält die Versionsnummer des Releases ein „X“ an der Position der Nebenversion (z.B. 1.3.X.0). Dies bedeutet, dass die Versionshinweise in diesem Dokument für alle Versionen gültig sind, die mit „1.3“ beginnen. Sobald wir den Veröffentlichungsprozess beendet haben, wird die Versionsnummer auf die aktuell veröffentliche Version und der Releasestatus auf „Für den Download und für automatisches Upgrade veröffentlicht“ aktualisiert.
 Nicht für alle Releases von Azure AD Connect wird das automatische Upgrade zur Verfügung gestellt. Aus dem Releasestatus geht hervor, ob für ein Release das automatische Upgrade oder nur der Download verfügbar gemacht wird. Wenn das automatische Upgrade auf Ihrem Azure AD Connect-Server aktiviert ist, wird dieser Server automatisch auf die neueste Version von Azure AD Connect aktualisiert, die für das automatische Upgrade veröffentlicht wird. Beachten Sie, dass nicht alle Azure AD Connect-Konfigurationen für ein automatisches Upgrade berechtigt sind. 
 
-Um die Verwendung des automatischen Upgrades klarzustellen, sollten alle wichtigen Updates und Korrekturen an Sie gepusht werden. Dies ist nicht unbedingt die neueste Version, da nicht alle Versionen eine Behebung eines kritischen Sicherheitsproblems erfordern/einschließen (nur ein Beispiel für viele). Ein Problem wie dieses würde mit einer neuen Version behoben werden, die über das automatische Upgrade bereitgestellt wird. Wenn solche Probleme nicht vorliegen, werden keine Updates mithilfe des automatischen Upgrades gepusht, und im Allgemeinen sollten Sie auf der sicheren Seite sein, wenn Sie die neueste Version des automatischen Upgrades verwenden.
+>Um die Verwendung des automatischen Upgrades klarzustellen, sollten alle wichtigen Updates und Korrekturen an Sie gepusht werden. Dies ist nicht unbedingt die neueste Version, da nicht alle Versionen eine Behebung eines kritischen Sicherheitsproblems erfordern/einschließen (nur ein Beispiel für viele). Kritische Probleme würden in der Regel durch eine neue Version behoben, die über das automatische Upgrade bereitgestellt wird. Wenn solche Probleme nicht vorliegen, werden keine Updates mithilfe des automatischen Upgrades gepusht, und im Allgemeinen sollten Sie auf der sicheren Seite sein, wenn Sie die neueste Version des automatischen Upgrades verwenden.
 Wenn Sie jedoch alle neuesten Features und Updates wünschen, überprüfen Sie am besten anhand dieser Seite, welche vorliegen, und installieren sie wie gewünscht. 
 
-Unter dem Link [Automatisches Upgrade](how-to-connect-install-automatic-upgrade.md) erhalten Sie weitere Informationen zu diesem Thema.
+>Unter dem Link [Automatisches Upgrade](how-to-connect-install-automatic-upgrade.md) erhalten Sie weitere Informationen zu diesem Thema.
 
->[!IMPORTANT]
-> Ab dem 1. April 2024 werden die Versionen von Azure AD Connect eingestellt, die vor dem 1. Mai 2018 veröffentlicht wurden (Version 1.1.751.0 und älter). 
->
-> Sie müssen sicherstellen, dass Sie eine aktuelle Version von Azure AD Connect ausführen, um einen optimalen Support zu erhalten. 
->
->Wenn Sie eine eingestellte Version von Azure AD Connect ausführen, verfügen Sie wahrscheinlich nicht über die aktuellen Sicherheitsfixes, Leistungsoptimierungen, Problembehandlungs- und Diagnosetools sowie Dienstverbesserungen. Wenn Sie dann Unterstützung benötigen, sind wir möglicherweise nicht in der Lage, den für Ihr Unternehmen erforderlichen Servicelevel bereitzustellen.
->
 
->
->In [diesem Artikel](./how-to-upgrade-previous-version.md) erfahren Sie mehr über das Upgrade von Azure AD Connect auf die aktuelle Version.
->
->Informationen zum Versionsverlauf für eingestellte Versionen finden Sie unter [Azure AD Connect: Archiv des Verlaufs der Versionsveröffentlichungen](reference-connect-version-history-archive.md).
+## <a name="download-links"></a>Downloadlinks
+Wenn Sie Windows Server 2016 oder neuer verwenden, sollten Sie Azure AD Connect V2.0 verwenden. Sie können die neueste Version von Azure AD Connect 2.0 über [diesen Link](https://www.microsoft.com/en-us/download/details.aspx?id=47594) herunterladen.
+Wenn Sie noch eine ältere Version von Windows Server einsetzen, sollten Sie Azure AD Connect V1.6 verwenden. Sie können die neueste Version von Azure AD Connect 1.6 über [diesen Link](https://www.microsoft.com/download/details.aspx?id=103336) herunterladen.
 
 ## <a name="20100"></a>2.0.10.0
 
@@ -98,7 +100,7 @@ Dieses Release enthält keine funktionalen Änderungen.
 >[!NOTE] 
 >Dies ist ein Sicherheitsupdaterelease von Azure AD Connect. Für dieses Release ist Windows Server 2016 oder höher erforderlich. Wenn Sie mit einer älteren Windows Server-Version arbeiten, verwenden Sie bitte [Version 1.6.11.3](#16113).
 >Mit diesem Release soll – wie in [diesem CVE-Bericht](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36949) dokumentiert – ein Sicherheitsrisiko behoben werden. Weitere Informationen zu diesem Sicherheitsrisiko finden Sie im CVE-Bericht.
->Sie können dieses Release über [diesen Link](https://www.microsoft.com/en-us/download/details.aspx?id=47594) herunterladen.
+>Sie können die neueste Version von Azure AD Connect 2.0 über [diesen Link](https://www.microsoft.com/en-us/download/details.aspx?id=47594) herunterladen.
 
 ### <a name="release-status"></a>Releasestatus
 10.08.2021: Nur zum Download freigegeben, nicht für die Auto-Aktualisierung verfügbar. 
@@ -110,7 +112,7 @@ Dieses Release enthält keine funktionalen Änderungen.
 >[!NOTE] 
 >Dies ist ein Sicherheitsupdaterelease von Azure AD Connect. Diese Version soll von Kunden verwendet werden, die eine ältere Windows Server-Version ausführen und ihren Server zurzeit nicht auf Windows Server 2016 oder höher aktualisieren können. Sie können mit dieser Version keinen Azure AD Connect V2.0-Server aktualisieren.
 >Mit diesem Release soll – wie in [diesem CVE-Bericht](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36949) dokumentiert – ein Sicherheitsrisiko behoben werden. Weitere Informationen zu diesem Sicherheitsrisiko finden Sie im CVE-Bericht.
->Sie können dieses Release über [diesen Link](https://www.microsoft.com/download/details.aspx?id=103336) herunterladen.
+>Sie können die neueste Version von Azure AD Connect 1.6 über [diesen Link](https://www.microsoft.com/download/details.aspx?id=103336) herunterladen.
 
 ### <a name="release-status"></a>Releasestatus
 10.08.2021: Nur zum Download freigegeben, nicht für die Auto-Aktualisierung verfügbar.
