@@ -7,12 +7,12 @@ ms.date: 07/23/2021
 ms.topic: article
 author: mayurigupta13
 ms.author: mayg
-ms.openlocfilehash: ebf73d6a79048a7cd08b0995e98da229f9df46ca
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: c8a10873f420b5aba75596a4377bfa4f0b37d4f7
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122350151"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122606893"
 ---
 # <a name="azure-arc-enabled-open-service-mesh-preview"></a>Open Service Mesh mit Azure Arc-Unterstützung (Vorschauversion)
 
@@ -23,9 +23,10 @@ OSM führt eine Envoy-basierte Kontrollebene auf Kubernetes aus, kann mit [SMI](
 ### <a name="support-limitations-for-arc-enabled-open-service-mesh"></a>Die Support-Einschränkungen für ein Arc-fähiges Open Service Mesh
 
 - In einem mit Arc-verbundenen Kubernetes-Cluster kann nur eine Instanz von dem Open Service Mesh bereitgestellt werden
-- Die öffentliche Vorschau ist für die Open Service Mesh Version V 0.8.4 und höher verfügbar. Die neueste Version des Releases finden Sie [hier](https://github.com/Azure/osm-azure/releases).
+- Die öffentliche Vorschau ist für die Open Service Mesh Version V 0.8.4 und höher verfügbar. Die neueste Version des Releases finden Sie [hier](https://github.com/Azure/osm-azure/releases). Die unterstützten Releaseversionen werden mit Hinweisen angefügt. Ignorieren Sie die Tags, die Zwischenversionen zugeordnet sind. 
 - Aktuell werden die folgende Kubernetes-Distributionen unterstützt
     - AKS Engine
+    - AKS in HCI
     - Cluster API Azure
     - Google Kubernetes Engine
     - Canonical Kubernetes-Verteilung
@@ -393,24 +394,23 @@ Sowohl Azure Monitor als auch Azure Application Insights helfen Ihnen, die Verf�
 
 Das Arc-fähige Open Service Mesh wird über tiefe Integrationen in diese beiden Azure-Dienste verfügen. Sie werden eine nahtlose Azure-Erfahrung für die Anzeige und Reaktion auf die kritischen KPIs bieten, die von den OSM-Metriken bereitgestellt werden. Führen Sie die folgenden Schritte aus, damit Azure Monitor die Prometheus-Endpunkte zum Sammeln von Anwendungsmetriken erfassen kann. 
 
-1. Stellen Sie sicher, dass „prometheus_scraping“ in der `osm-mesh-config` auf TRUE festgelegt ist.
+1. Stellen Sie sicher, dass die Anwendungs-Namespaces, die überwacht werden sollen, in das Mesh integriert sind. Befolgen Sie die hier [verfügbare Anleitung](#onboard-namespaces-to-the-service-mesh).
 
-2. Stellen Sie sicher, dass die Anwendungs-Namespaces, die überwacht werden sollen, in das Mesh integriert sind. Befolgen Sie die hier [verfügbare Anleitung](#onboard-namespaces-to-the-service-mesh).
-
-3. Machen Sie die Prometheus-Endpunkte für die Anwendungs-Namespaces verfügbar.
+2. Machen Sie die Prometheus-Endpunkte für die Anwendungs-Namespaces verfügbar.
     ```azurecli-interactive
     osm metrics enable --namespace <namespace1>
     osm metrics enable --namespace <namespace2>
     ```
+    Stellen Sie für v0.8.4 sicher, dass `prometheus_scraping` in der `osm-config`-ConfigMap auf `true` festgelegt ist.
 
-4. Installieren Sie die Azure Monitor-Erweiterung mithilfe der [hier](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json) verfügbaren Anleitung.
+3. Installieren Sie die Azure Monitor-Erweiterung mithilfe der [hier](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json) verfügbaren Anleitung.
 
-5. Fügen Sie die Namespaces hinzu, die Sie in der „container-azm-ms-osmconfig“ Konfigurationszuordnung überwachen möchten. Laden Sie die Konfigurationszuordnung [hier](https://github.com/microsoft/Docker-Provider/blob/ci_prod/kubernetes/container-azm-ms-osmconfig.yaml) herunter.
+4. Fügen Sie die Namespaces hinzu, die Sie in der „container-azm-ms-osmconfig“ Konfigurationszuordnung überwachen möchten. Laden Sie die Konfigurationszuordnung [hier](https://github.com/microsoft/Docker-Provider/blob/ci_prod/kubernetes/container-azm-ms-osmconfig.yaml) herunter.
     ```azurecli-interactive
     monitor_namespaces = ["namespace1", "namespace2"]
     ```
 
-6. Führen Sie den folgenden kubectl-Befehl aus
+5. Führen Sie den folgenden kubectl-Befehl aus
     ```azurecli-interactive
     kubectl apply -f container-azm-ms-osmconfig.yaml
     ```
@@ -464,7 +464,7 @@ Stellen Sie sicher, dass Sie Ihre benutzerdefinierten Ressourcen sichern, bevor 
 > [!NOTE] 
 > Eine Aktualisierung der CRDs wirkt sich auf die Datenebene aus, da die SMI-Richtlinien zwischen dem Zeitpunkt, zu dem sie gelöscht werden, und dem Zeitpunkt, zu dem sie erneut erstellt werden, nicht vorhanden sind.
 
-### <a name="upgrade-instructions"></a>Aktualisierungsanweisungen
+### <a name="upgrade-instructions"></a>Upgradeanleitung
 
 1. Löschen Sie die alten CRDs und benutzerdefinierten Ressourcen (Ausführung aus dem Stammverzeichnis des [OSM-Repositorys](https://github.com/openservicemesh/osm)). Stellen Sie sicher, dass das Tag der [OSM-CRDs](https://github.com/openservicemesh/osm/tree/main/charts/osm/crds) der neuen Diagrammversion entspricht.
     ```azurecli-interactive

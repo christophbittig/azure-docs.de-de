@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2021
 ms.author: yelevin
-ms.openlocfilehash: 51650ad1a9d72611d694e5514dca1036937a2a13
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e1f6a508e72277fcc596a5217b0c5a061758e131
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346212"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123253561"
 ---
 # <a name="connect-your-threat-intelligence-platform-to-azure-sentinel"></a>Verbinden Ihrer Threat Intelligence-Plattform mit Azure Sentinel
 

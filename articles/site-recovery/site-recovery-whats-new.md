@@ -3,12 +3,12 @@ title: Neuerungen in Azure Site Recovery
 description: Enthält eine Übersicht über die neuen Features und die neuesten Updates im Azure Site Recovery-Dienst.
 ms.topic: conceptual
 ms.date: 07/28/2021
-ms.openlocfilehash: a9e0d9c462c494fdc1d0c50bc4faf3694f3b4cd7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2b733f4e525f2f47df7afde0ddc308430ae05d0b
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122353652"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123215316"
 ---
 # <a name="whats-new-in-site-recovery"></a>Neuerungen in Site Recovery
 
@@ -22,17 +22,45 @@ Für Site Recovery-Komponenten werden N-4 Versionen unterstützt, wobei N die zu
 
 **Aktualisieren** |  **Einheitliches Setup** | **OVA-Datei des Konfigurationsservers** | **Mobilitätsdienst-Agent** | **Site Recovery-Anbieter** | **Recovery Services-Agent**
 --- | --- | --- | --- | --- | ---
-[Rollup 56](https://support.microsoft.com/en-us/topic/update-rollup-56-for-azure-site-recovery-kb5005376-33f27950-1a07-43e5-bf40-4b380a270ef6)  | 9.43.6040.1  | 5.1.6853.0 | 9.43.6040.1| 5.1.6853.0 | 2.0.9226.0
+[Rollup 57](https://support.microsoft.com/topic/update-rollup-57-for-azure-site-recovery-kb5006172-9fccc879-6e0c-4dc8-9fec-e0600cf94094) | 9.44.6068.1 | 5.1.6899.0 | 9.44.6068.1 | 5.1.6899.0 | 2.0.9236.0
+[Rollup 56](https://support.microsoft.com/topic/update-rollup-56-for-azure-site-recovery-kb5005376-33f27950-1a07-43e5-bf40-4b380a270ef6)  | 9.43.6040.1  | 5.1.6853.0 | 9.43.6040.1| 5.1.6853.0 | 2.0.9226.0
 [.Rollup 55](https://support.microsoft.com/topic/b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8)  | .9.42.5941.1 | .5.1.6692.0 | .9.42.5941.1 | .5.1.6692.0  | .2.0.9208.0
 [Rollup 54](https://support.microsoft.com/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533)  | 9.41.5888.1 | 5.1.6620.0 | 9.41.5888.1 | 5.1.6620.0  | 2.0.9202.0
 [Rollup 53](https://support.microsoft.com/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)  | 9.40.5850.1 | 5.1.6537.0 | 9.40.5850.1 | 5.1.6537.0  | 2.0.9202.0
 [Rollup 52](https://support.microsoft.com/help/4597409/)  | 9.39.5796.1 | 5.1.6458.0 | 9.39.5796.1 | 5.1.6458.0  | 2.0.9196.0
-[Rollup 51](https://support.microsoft.com/help/4590304)  | 9.38.5761.1 | 5.1.6400.0 | 9.38.5761.1 | 5.1.6400.0  | 2.0.9193.0
-[Rollup 50](https://support.microsoft.com/help/4582666/) | 9.37.5724.1 | 5.1.6347.0 | 9.37.5724.1 | 5.1.6347.0  | 2.0.9192.0
-[Rollup 49](https://support.microsoft.com/help/4578241/) | 9.36.5696.1 | 5.1.6315.0 | 9.36.5696.1 | 5.1.6315.0 | 2.0.9188.0
 
 
 [Weitere Informationen](service-updates-how-to.md) zur Updateinstallation und -unterstützung
+
+## <a name="updates-august-2021"></a>Updates (August 2021)
+
+### <a name="update-rollup-57"></a>Updaterollup 57
+
+Das [Updaterollup 57](https://support.microsoft.com/topic/update-rollup-57-for-azure-site-recovery-kb5006172-9fccc879-6e0c-4dc8-9fec-e0600cf94094) umfasst die folgenden Updates:
+
+> [!NOTE]
+> Das Updaterollup stellt nur Updates für die öffentliche Vorschauversion von VMware zu Azure-Schutzmaßnahmen bereit. In dieser Version wurden keine weiteren Fehlerbehebungen oder Verbesserungen abgedeckt.
+> Zum Einrichten der Vorschauerfahrung müssen Sie ein neues Setup durchführen und einen neuen Recovery Services-Tresor verwenden. Das Aktualisieren von einer vorhandenen Architektur auf eine neue Architektur wird nicht unterstützt.
+
+In dieser öffentlichen Vorschauversion wird eine vollständige Überarbeitung der aktuellen Architektur für den Schutz von VMware-Computern behandelt.
+- [Erfahren Sie mehr](https://docs.microsoft.com/azure/site-recovery/vmware-azure-architecture-preview) über die neue Architektur und die eingeführten Änderungen.
+- Überprüfen Sie die Voraussetzungen, und richten Sie die ASR-Replikationsappliance ein, indem Sie [diese Schritte](https://docs.microsoft.com/azure/site-recovery/deploy-vmware-azure-replication-appliance-preview) ausführen.
+- [Aktivieren der Replikation](https://docs.microsoft.com/azure/site-recovery/vmware-azure-set-up-replication-tutorial-preview) für Ihre VMware-Computer.
+- Sehen Sie sich die Funktionen [Automatisches Upgrade](https://docs.microsoft.com/azure/site-recovery/upgrade-mobility-service-preview) und [Switch](https://docs.microsoft.com/azure/site-recovery/switch-replication-appliance-preview) (Wechsel) für die ASR-Replikationsappliance an.
+
+
+### <a name="update-rollup-56"></a>Updaterollup 56
+
+Das [Updaterollup 56](https://support.microsoft.com/topic/update-rollup-56-for-azure-site-recovery-kb5005376-33f27950-1a07-43e5-bf40-4b380a270ef6) umfasst die folgenden Aktualisierungen:
+
+**Update** | **Details**
+--- | ---
+**Anbieter und Agents** | Updates für Site Recovery-Agents und -Anbieter (wie im KB-Artikel zum Rollup beschrieben).
+**Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen, wie im KB-Artikel zum Rollup beschrieben.
+
+**Azure Site Recovery-Dienst** | Verbesserungen vorgenommen, um Vorgänge zum Aktivieren der Replikation und des erneuten Schutzes um 46 % zu beschleunigen.
+**Azure Site Recovery-Portal** | Die Replikation kann jetzt zwischen zwei beliebigen weltweiten Azure-Regionen aktiviert werden. Sie sind nicht mehr darauf beschränkt, die Replikation innerhalb Ihres Kontinents zu aktivieren.
+
 
 ## <a name="updates-july-2021"></a>Updates (Juli 2021)
 

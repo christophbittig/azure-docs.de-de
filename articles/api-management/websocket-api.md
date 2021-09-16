@@ -3,17 +3,17 @@ title: Das Importieren einer WebSocket-API mithilfe des Azure-Portals | Microsof
 titleSuffix: ''
 description: Erfahren Sie, wie das API Management das WebSocket beim Hinzufügen einer WebSocket-API und WebSocket-Einschränkungen unterstützt.
 ms.service: api-management
-author: v-hhunter
-ms.author: v-hhunter
+author: dlepow
+ms.author: danlep
 ms.topic: how-to
-ms.date: 06/02/2021
+ms.date: 08/25/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 887e1257ef5585e99da1922aa840761ebcb7aa05
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: b3eb368184eceeabc6af46bac8ca08254560e252
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111439768"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123097863"
 ---
 # <a name="import-a-websocket-api-preview"></a>Importieren einer WebSocket-API (Vorschau)
 
@@ -36,7 +36,7 @@ In diesem Artikel werden die folgenden Themen behandelt:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Eine bestehende API Management-Instanz. [Erstellen Sie eine, falls nicht schon geschehen](get-started-create-service-instance.md).
-- Eine [WebSocket-API](https://www.websocket.org/echo.html).
+- Eine WebSocket-API. 
 
 ## <a name="websocket-passthrough"></a>WebSocket-Passthrough
 
@@ -77,7 +77,9 @@ Wenn eine Clientanwendung versucht, eine WebSocket-Verbindung mit einem Back-End
     |----------------|-------|
     | Anzeigename | Das ist der Name, mit dem Ihre WebSocket-API angezeigt wird. |
     | Name | Das ist der Rohname der WebSocket-API. Er wird automatisch ausgefüllt, wenn Sie den Anzeigenamen eingeben. |
-    | Die WebSocket-URL | Die Basis-URL mit ihrem Websocket-Namen. Beispiel: ws://example.com/your-socket-name |
+    | Die WebSocket-URL | Die Basis-URL mit ihrem Websocket-Namen. Beispiel: *ws://example.com/your-socket-name* |
+    | URL-Schema | Übernehmen Sie die Standardeinstellung. |
+    | API-URL-Suffix| Fügen Sie ein URL-Suffix hinzu, um diese spezifische API in dieser API Management-Instanz zu identifizieren. Es muss in dieser APIM-Instanz eindeutig sein. |
     | Produkte | Ordnen Sie Ihre WebSocket-API einem Produkt zu, um es zu veröffentlichen. |
     | Gateways | Ordnen Sie Ihre WebSocket-API den vorhandenen Gateways zu. |
  
@@ -99,6 +101,17 @@ Wenn eine Clientanwendung versucht, eine WebSocket-Verbindung mit einem Back-End
 1. Zeigen Sie empfangene Meldungen unter **Ausgabe** an.
 1. Wiederholen Sie die vorherigen Schritte, um verschiedene Nutzdaten zu testen.
 1. Wenn der Test abgeschlossen ist, klicken Sie auf **Verbindung trennen**.
+
+## <a name="view-metrics-and-logs"></a>Anzeigen von Metriken und Protokollen
+
+Verwenden Sie Standardfunktionen für API Management und Azure Monitor zum [Überwachen](api-management-howto-use-azure-monitor.md) von WebSocket-APIs:
+
+* Anzeigen von API-Metriken in Azure Monitor
+* Aktivieren Sie optional Diagnoseeinstellungen, um API Management-Gatewayprotokolle zu erfassen und anzuzeigen, die WebSocket-API-Vorgänge enthalten.
+
+Der folgende Screenshot zeigt beispielsweise aktuelle WebSocket-API-Antworten mit Code `101` aus der Tabelle **ApiManagementGatewayLogs**. Diese Ergebnisse zeigen den erfolgreichen Wechsel der Anforderungen vom TCP- zum WebSocket-Protokoll an.
+
+:::image type="content" source="./media/websocket-api/query-gateway-logs.png" alt-text="Abfrageprotokolle für WebSocket-API-Anforderungen":::
 
 ## <a name="limitations"></a>Einschränkungen
 

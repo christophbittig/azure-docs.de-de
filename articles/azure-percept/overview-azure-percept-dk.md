@@ -1,20 +1,20 @@
 ---
-title: Übersicht über das Azure Percept DK
-description: Weitere Informationen zum Azure Percept DK
-author: mimcco
-ms.author: mimcco
+title: Übersicht über Azure Percept DK- und Vision-Geräte
+description: Informieren Sie sich ausführlicher über Azure Percept DK und Azure Percept Vision.
+author: MrHamlet
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 03/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: 5c510bbe6717b37664ac67ea7d10c79d1af74d78
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: a51f05fe29a4a0d3dda9057ca0eb7c4d3de494fb
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128359"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221999"
 ---
-# <a name="azure-percept-dk-overview"></a>Übersicht über das Azure Percept DK
+# <a name="azure-percept-dk-and-vision-device-overview"></a>Übersicht über Azure Percept DK- und Vision-Geräte
 
 Azure Percept DK ist ein Development Kit für Edge-KI, das für die Entwicklung von Lösungen im Zusammenhang mit KI für maschinelles Sehen und Audio mit [Azure Percept Studio](./overview-azure-percept-studio.md) konzipiert ist. Azure Percept DK kann im [Microsoft Online Store](https://go.microsoft.com/fwlink/p/?LinkId=2155270) erworben werden.
 

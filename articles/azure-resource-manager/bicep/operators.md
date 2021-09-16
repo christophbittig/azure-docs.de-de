@@ -4,13 +4,13 @@ description: Hier werden die für Azure Resource Manager-Bereitstellungen verfü
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 07/29/2021
-ms.openlocfilehash: 143c7881d3f22bf67b3dfabf74ca54825efffc94
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/30/2021
+ms.openlocfilehash: 80fc9e4e1285d86858a476feba30621a7afe1c79
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346811"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221038"
 ---
 # <a name="bicep-operators"></a>Bicep-Operatoren
 
@@ -46,9 +46,10 @@ Die Accessoroperatoren werden verwendet, um auf geschachtelte Ressourcen und Eig
 
 | Operator | Name | BESCHREIBUNG |
 | ---- | ---- | ---- |
+| `[]` | [Indexaccessor](./operators-access.md#index-accessor) | Zugriff auf ein Element eines Arrays oder einer Eigenschaft eines Objekts. |
+| `.` | [Funktionsaccessor](./operators-access.md#function-accessor) | Aufruf einer Funktion für eine Ressource |
 | `::` | [Accessor für geschachtelte Ressourcen](./operators-access.md#nested-resource-accessor) | Zugriff auf eine geschachtelte Ressource von außerhalb der übergeordneten Ressource |
 | `.` | [Eigenschaftenaccessor](./operators-access.md#property-accessor) | Zugriff auf Eigenschaften eines Objekts |
-| `.` | [Funktionsaccessor](./operators-access.md#function-accessor) | Aufruf einer Funktion für eine Ressource |
 
 ## <a name="comparison"></a>Vergleich
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: eea64520dd5440467c911b6de42d8c8c31fc1bde
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7cdd812347450a8798ed4fb8e6e69f71c725449f
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87543451"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225391"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Problembehandlung und Einschränkungen bei Azure Cloud Shell
 
@@ -130,6 +130,10 @@ Cloud Shell ist für interaktive Anwendungsfälle konzipiert. Daher werden lange
 
 Berechtigungen werden als reguläre Benutzer ohne sudo-Zugriff festgelegt. Installationen außerhalb des Verzeichnisses `$Home` werden nicht gespeichert.
 
+### <a name="supported-entry-point-limitations"></a>Unterstützte Einstiegspunkteinschränkungen
+
+Cloud Shell-Einstiegspunkte wie Visual Studio Code und Windows-Terminal unterstützen, neben dem Azure-Portal, keine Verwendung von Befehlen, die UX-Komponenten in Cloud Shell ändern, z. B. `Code`.
+
 ## <a name="bash-limitations"></a>Bash-Einschränkungen
 
 ### <a name="editing-bashrc"></a>Bearbeiten von „.bashrc“
@@ -151,7 +155,7 @@ Azure Cloud Shell nimmt Ihre personenbezogenen Daten ernst. Die vom Azure Cloud 
 ### <a name="export"></a>Exportieren
 Um die Benutzereinstellungen zu **exportieren**, die Cloud Shell für Sie speichert (wie bevorzugte Shell, Schriftgrad und Schriftart), führen Sie die folgenden Befehle aus.
 
-1. [![Abbildung mit einer Schaltfläche mit der Bezeichnung „Azure Cloud Shell starten“.](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com)
+1. Starten von Cloud Shell.
 
 2. Führen Sie die folgenden Befehle in Bash oder PowerShell aus:
 
@@ -175,21 +179,21 @@ Um die Benutzereinstellungen zu **löschen**, die Cloud Shell für Sie speichert
 >[!Note]
 > Wenn Sie Ihre Benutzereinstellungen löschen, wird die eigentliche Azure Files-Freigabe nicht gelöscht. Navigieren Sie zu Ihrer Azure Files-Instanz, um diese Aktion durchzuführen.
 
-1. [![Abbildung mit einer Schaltfläche mit der Bezeichnung „Azure Cloud Shell starten“.](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com)
+1. Starten Sie Cloud Shell oder eine lokale Shell entweder mithilfe von Azure PowerShell oder der installierten Azure CLI.
 
 2. Führen Sie die folgenden Befehle in Bash oder PowerShell aus:
 
 Bash:
 
   ```
-  token="Bearer $(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true -s | jq -r ".access_token")"
+  token=(az account get-access-token --resource "https://management.azure.com/" | jq -r ".access_token")
   curl -X DELETE https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -H Authorization:"$token"
   ```
 
 Mit PowerShell:
 
   ```powershell
-  $token= ((Invoke-WebRequest -Uri "$env:MSI_ENDPOINT`?resource=https://management.core.windows.net/" -Headers @{Metadata='true'}).content |  ConvertFrom-Json).access_token
+  $token= (Get-AzAccessToken -Resource  https://management.azure.com/).Token
   Invoke-WebRequest -Method Delete -Uri https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -Headers @{Authorization = "Bearer $token"}
   ```
 ## <a name="azure-government-limitations"></a>Azure Government-Einschränkungen
