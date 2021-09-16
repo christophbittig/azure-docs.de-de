@@ -4,23 +4,33 @@ description: Verwendung einer Bicep-Variablenschleife zum Iterieren beim Erstell
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 429a15c222e47bab29b314b0d11f7e077281b635
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.date: 08/30/2021
+ms.openlocfilehash: bf182379c9cc10db11e451f908df552a16520b45
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122635002"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225193"
 ---
 # <a name="variable-iteration-in-bicep"></a>Variableniteration in Bicep
 
-Dieser Artikel erklärt, wie Sie mehr als einen Wert für eine Variable in Ihrer Bicep-Datei erstellen. Sie können dem Abschnitt `variables` eine Schleife hinzufügen und die Anzahl der Elemente für eine Variable während der Bereitstellung dynamisch festlegen. So vermeiden Sie auch das Wiederholen von Syntax in Ihrer Bicep-Datei.
+Dieser Artikel erklärt, wie Sie mehr als einen Wert für eine Variable in Ihrer Bicep-Datei erstellen. Sie können der Deklaration `variables` eine Schleife hinzufügen und die Anzahl der Elemente für eine Variable dynamisch festlegen. So vermeiden Sie auch das Wiederholen einer Syntax in Ihrer Bicep-Datei.
 
-Sie können „copy“ auch mit [Ressourcen](loop-resources.md), [Eigenschaften in einer Ressource](loop-properties.md) und [Ausgaben](loop-outputs.md) verwenden.
+Sie können „copy“ auch mit [Modulen](loop-modules.md), [Ressourcen](loop-resources.md), [Eigenschaften in einer Ressource](loop-properties.md) und [Ausgaben](loop-outputs.md) verwenden.
 
 ## <a name="syntax"></a>Syntax
 
 Mit Schleifen können mehrere Variablen folgendermaßen deklariert werden:
+
+- Verwendung eines Schleifenindexes
+
+  ```bicep
+  var <variable-name> = [for <index> in range(<start>, <stop>): {
+    <properties>
+  }]
+  ```
+
+  Weitere Informationen finden Sie unter [Schleifenindex](#loop-index).
 
 - Durchlaufen eines Arrays
 
@@ -31,7 +41,9 @@ Mit Schleifen können mehrere Variablen folgendermaßen deklariert werden:
 
   ```
 
-- Durchlaufen der Elemente eines Arrays
+  Weitere Informationen finden Sie unter [Schleifenarray](#loop-array).
+
+- Iterieren über ein Array und einen Index.
 
   ```bicep
   var <variable-name> = [for <item>, <index> in <collection>: {
@@ -39,19 +51,11 @@ Mit Schleifen können mehrere Variablen folgendermaßen deklariert werden:
   }]
   ```
 
-- Verwendung eines Schleifenindexes
-
-  ```bicep
-  var <variable-name> = [for <index> in range(<start>, <stop>): {
-    <properties>
-  }]
-  ```
-
 ## <a name="loop-limits"></a>Schleifengrenzwerte
 
-Bicep-Dateien dürfen keine Schleifen mit einer Anzahl von unter 0 oder über 800 Iterationen enthalten. Installieren Sie zum Bereitstellen von Bicep-Dateien die neueste Version der [Bicep-Tools](install.md).
+Bicep-Dateien dürfen keine Schleifen mit einer Anzahl von unter 0 oder über 800 Iterationen enthalten. 
 
-## <a name="variable-iteration"></a>Variableniteration
+## <a name="loop-index"></a>Schleifenindex
 
 Im folgenden Beispiel wird veranschaulicht, wie Sie ein Array mit Zeichenfolgenwerten erstellen:
 
@@ -121,23 +125,69 @@ Die Ausgabe gibt ein Array mit den folgenden Werten zurück:
 ]
 ```
 
-## <a name="example-templates"></a>Beispielvorlagen
+## <a name="loop-array"></a>Schleifenarray
 
-Die folgenden Beispiele zeigen allgemeine Szenarien für das Erstellen mehrerer Werte für eine Variable.
+Im folgenden Beispiel wird eine Schleife für ein Array ausgeführt, das als Parameter übergeben wird. Die Variable erstellt mithilfe des Parameters Objekte im erforderlichen Format.
 
-|Vorlage  |BESCHREIBUNG  |
-|---------|---------|
-|[Schleifenvariablen](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/multiple-instance/loopvariables.bicep) | Veranschaulicht das Iterieren von Variablen. |
-|[Mehrere Sicherheitsregeln](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/multiple-instance/multiplesecurityrules.bicep) |Stellt mehrere Sicherheitsregeln in einer Netzwerksicherheitsgruppe bereit. Die Sicherheitsregeln werden aus einem Parameter generiert. Informationen zum Parameter finden Sie im Artikel zur [Datei mit mehreren NSG-Parametern](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/multiple-instance/multiplesecurityrules.parameters.json). |
+```bicep
+@description('An array that contains objects with properties for the security rules.')
+param securityRules array = [
+  {
+    name: 'RDPAllow'
+    description: 'allow RDP connections'
+    direction: 'Inbound'
+    priority: 100
+    sourceAddressPrefix: '*'
+    destinationAddressPrefix: '10.0.0.0/24'
+    sourcePortRange: '*'
+    destinationPortRange: '3389'
+    access: 'Allow'
+    protocol: 'Tcp'
+  }
+  {
+    name: 'HTTPAllow'
+    description: 'allow HTTP connections'
+    direction: 'Inbound'
+    priority: 200
+    sourceAddressPrefix: '*'
+    destinationAddressPrefix: '10.0.1.0/24'
+    sourcePortRange: '*'
+    destinationPortRange: '80'
+    access: 'Allow'
+    protocol: 'Tcp'
+  }
+]
+
+
+var securityRulesVar = [for rule in securityRules: {
+  name: rule.name
+  properties: {
+    description: rule.description
+    priority: rule.priority
+    protocol: rule.protocol
+    sourcePortRange: rule.sourcePortRange
+    destinationPortRange: rule.destinationPortRange
+    sourceAddressPrefix: rule.sourceAddressPrefix
+    destinationAddressPrefix: rule.destinationAddressPrefix
+    access: rule.access
+    direction: rule.direction
+  }
+}]
+
+resource netSG 'Microsoft.Network/networkSecurityGroups@2020-11-01' = {
+  name: 'NSG1'
+  location: resourceGroup().location
+  properties: {
+    securityRules: securityRulesVar
+  }
+}
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zu anderen Verwendungsmöglichkeiten von Schleifen finden Sie unter folgenden Links:
-  - [Ressourceniteration in Bicep-Dateien](loop-resources.md)
-  - [Eigenschafteniteration in Bicep-Dateien](loop-properties.md)
-  - [Ausgabeiteration in Bicep-Dateien](loop-outputs.md)
-- Weitere Informationen zu den Abschnitten in einer Bicep-Datei finden Sie unter [Verstehen der Struktur und Syntax von Bicep-Dateien](file.md).
-- Informationen zum Bereitstellen mehrerer Ressourcen finden Sie unter [Verwenden von Bicep-Modulen](modules.md).
+  - [Ressourceniteration in Bicep](loop-resources.md)
+  - [Moduliteration in Bicep](loop-modules.md)
+  - [Eigenschafteniteration in Bicep](loop-properties.md)
+  - [Ausgabeiteration in Bicep](loop-outputs.md)
 - Informationen zum Festlegen von Abhängigkeiten von Ressourcen, die in einer Schleife erstellt werden, finden Sie unter [Festlegen von Ressourcenabhängigkeiten](./resource-declaration.md#set-resource-dependencies).
-- Informationen zum Bereitstellen mit PowerShell finden Sie unter [Bereitstellen von Ressourcen mit Bicep und Azure PowerShell](deploy-powershell.md).
-- Informationen zum Bereitstellen mit der Azure CLI finden Sie unter [Bereitstellen von Ressourcen mit Bicep und der Azure CLI](deploy-cli.md).

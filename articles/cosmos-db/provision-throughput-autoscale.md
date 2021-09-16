@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/18/2021
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 55899fc38652462f0f98b4ad2d916cf10f203458
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 628cba9c515b58e23c984c6dcd34fa35ff63c78a
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110470969"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123028606"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>Erstellen von Azure Cosmos-Containern und -Datenbanken mit automatisch skaliertem Durchsatz
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -86,5 +86,8 @@ Weitere Informationen finden Sie in diesem [Dokument](how-to-choose-offer.md), i
 * Erfahren Sie, wie Sie sich [zwischen manuellem Durchsatz und automatisch skaliertem Durchsatz entscheiden](how-to-choose-offer.md).
 * Erfahren Sie mehr über das [Bereitstellen von automatisch skaliertem Durchsatz für eine Datenbank oder einen Container in Azure Cosmos DB](how-to-provision-autoscale-throughput.md).
 * Erfahren Sie mehr über die [Partitionierung](partitioning-overview.md) in Azure Cosmos DB.
+* Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen? Sie können Informationen zu Ihrem vorhandenen Datenbankcluster für die Kapazitätsplanung verwenden.
+    * Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](convert-vcore-to-request-unit.md). 
+    * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbankworkload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)
 
 

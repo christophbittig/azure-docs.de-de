@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 03/17/2021
+ms.date: 08/30/2021
 ms.author: jianleishen
-ms.openlocfilehash: dc362a2c05a8993c429c7ff2ca191bf559814cf4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6dc99ca4c6d7b004bd8994c89a3e79e1f2d817d4
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122639971"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123312751"
 ---
 # <a name="copy-data-from-google-cloud-storage-by-using-azure-data-factory"></a>Kopieren von Daten aus Google Cloud Storage mithilfe von Azure Data Factory
 
@@ -55,6 +55,30 @@ Eine vollständige Liste der Google Cloud Storage-Rollen und zugehöriger Berech
 ## <a name="getting-started"></a>Erste Schritte
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)] 
+
+## <a name="create-a-linked-service-to-google-cloud-storage-using-ui"></a>Erstellen eines verknüpften Diensts für Google Cloud Storage über die Benutzeroberfläche
+
+Führen Sie die folgenden Schritte aus, um über die Benutzeroberfläche des Azure-Portals einen verknüpften Dienst für Google Cloud Storage zu erstellen.
+
+1. Navigieren Sie in Ihrem Azure Data Factory- oder Synapse-Arbeitsbereich zur Registerkarte „Verwalten“, wählen Sie „Verknüpfte Dienste“ aus, und klicken Sie dann auf „Neu“:
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Erstellen eines neuen verknüpften Diensts mithilfe der Azure Data Factory-Benutzeroberfläche":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Erstellen eines neuen verknüpften Diensts mit der Azure Synapse-Benutzeroberfläche":::
+
+2. Suchen Sie nach Google, und wählen Sie den Connector „Google Cloud Storage (S3 API)“ aus.
+
+    :::image type="content" source="media/connector-google-cloud-storage/google-cloud-storage-connector.png" alt-text="Auswählen des Connectors „Google Cloud Storage (S3 API)“":::    
+
+1. Konfigurieren Sie die Dienstdetails, testen Sie die Verbindung, und erstellen Sie den neuen verknüpften Dienst.
+
+    :::image type="content" source="media/connector-google-cloud-storage/configure-google-cloud-storage-linked-service.png" alt-text="Konfigurieren eines verknüpften Diensts für Google Cloud Storage":::
+
+## <a name="connector-configuration-details"></a>Details zur Connectorkonfiguration
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Google Cloud Storage-spezifischen Data Factory-Entitäten verwendet werden.
 

@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: bonova, mathoma, danil
-ms.date: 08/12/2021
-ms.openlocfilehash: 302b6e6cdce7fb95962b66a593ae02b9fe3922a1
-ms.sourcegitcommit: d01c2b2719e363178720003b67b968ac2a640204
+ms.date: 08/26/2021
+ms.openlocfilehash: 451dd198b5507b99400d4e1c8e1670e596016af1
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122455911"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123308291"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>Featurevergleich: Azure SQL-Datenbank und Azure SQL Managed Instance
 
@@ -66,7 +66,7 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 | [DDL-Anweisungen](/sql/t-sql/statements/statements) | Die meisten (siehe einzelne Anweisungen) | Ja – siehe [T-SQL-Unterschiede](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
 | [DDL-Trigger](/sql/relational-databases/triggers/ddl-triggers) | Nur Datenbank |  Ja |
 | [Verteilte Partitionsansichten](/sql/t-sql/statements/create-view-transact-sql#partitioned-views) | Nein | Ja |
-| [Verteilte Transaktionen – MS DTC](/sql/relational-databases/native-client-ole-db-transactions/supporting-distributed-transactions) | Nein (siehe [Elastische Transaktionen](elastic-transactions-overview.md)) |  Nein – siehe [Verknüpfte Server](../managed-instance/transact-sql-tsql-differences-sql-server.md#linked-servers). Versuchen Sie, während der Migration Datenbanken aus verschiedenen verteilten SQL Server-Instanzen in einer SQL Managed Instance zu konsolidieren. |
+| [Verteilte Transaktionen – MS DTC](/sql/relational-databases/native-client-ole-db-transactions/supporting-distributed-transactions) | Nein (siehe [Elastische Transaktionen](elastic-transactions-overview.md)) | Nein (siehe [Elastische Transaktionen](elastic-transactions-overview.md)) |
 | [DML-Trigger](/sql/relational-databases/triggers/create-dml-triggers) | Die meisten (siehe einzelne Anweisungen) |  Ja |
 | [DMVs](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) | Die meisten – siehe einzelne DMVs |  Ja – siehe [T-SQL-Unterschiede](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
 | [Elastische Abfrage](elastic-query-overview.md) (in der Public Preview) | Ja, mit dem erforderlichen RDBMS-Typ. | Nein |
@@ -80,6 +80,7 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 | [Funktionen](/sql/t-sql/functions/functions) | Die meisten (siehe einzelne Funktionen) | Ja – siehe [Gespeicherte Prozeduren, Funktionen, Trigger](../managed-instance/transact-sql-tsql-differences-sql-server.md#stored-procedures-functions-and-triggers) |
 | [In-Memory-Optimierung](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Ja bei den [Dienstebenen „Premium“ und „Unternehmenskritisch“](../in-memory-oltp-overview.md).</br> Eingeschränkte Unterstützung für nicht persistente In-Memory-OLTP-Objekte wie speicheroptimierte Tabellenvariablen in der [Dienstebene „Hyperscale“](service-tier-hyperscale.md).| Ja bei der [Dienstebene „Unternehmenskritisch“](../managed-instance/sql-managed-instance-paas-overview.md). |
 | [Sprachelemente](/sql/t-sql/language-elements/language-elements-transact-sql) | Die meisten (siehe einzelne Elemente) |  Ja – siehe [T-SQL-Unterschiede](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
+| [Ledger](ledger-overview.md) | Ja | Nein |
 | [Verknüpfte Server](/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nein (siehe [Elastische Abfrage](elastic-query-horizontal-partitioning.md)) | Ja. Nur für [SQL Server und SQL-Datenbank](../managed-instance/transact-sql-tsql-differences-sql-server.md#linked-servers) ohne verteilte Transaktionen. |
 | [Verbindungsserver](/sql/relational-databases/linked-servers/linked-servers-database-engine), die aus Dateien (CSV, Excel) lesen| Nein. Verwenden Sie [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) oder [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) als Alternative zum CSV-Format. | Nein. Verwenden Sie [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) oder [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) als Alternative zum CSV-Format. Verfolgen Sie diese Anforderungen im [Feedback zu SQL Managed Instance](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources).|
 | [Protokollversand](/sql/database-engine/log-shipping/about-log-shipping-sql-server) | [Hochverfügbarkeit](high-availability-sla.md) ist in jeder Datenbank enthalten. Informationen zur Notfallwiederherstellung finden Sie unter [Übersicht über die Geschäftskontinuität](business-continuity-high-availability-disaster-recover-hadr-overview.md). | Ist als Teil des Migrationsprozesses des [Azure-Datenmigrationsdiensts (DMS)](../../dms/tutorial-sql-server-to-managed-instance.md) nativ integriert. Ist für benutzerdefinierte Datenmigrationsprojekte als externer [Protokollwiedergabedienst (LRS)](../managed-instance/log-replay-service-migrate.md) nativ erstellt.<br /> Nicht als Hochverfügbarkeitslösung verfügbar, da andere [Hochverfügbarkeitsmethoden](high-availability-sla.md) in jeder Datenbank enthalten sind und es nicht empfohlen wird, Protokollversand als Hochverfügbarkeitsalternative zu verwenden. Informationen zur Notfallwiederherstellung finden Sie unter [Übersicht über die Geschäftskontinuität](business-continuity-high-availability-disaster-recover-hadr-overview.md). Nicht als Replikationsmechanismus zwischen Datenbanken verfügbar. Verwenden Sie sekundäre Replikate für die [unternehmenskritische Ebene](service-tier-business-critical.md), [Gruppen für automatisches Failover](auto-failover-group-overview.md) oder [Transaktionsreplikation](../managed-instance/replication-transactional-overview.md) als Alternativen. |
@@ -114,7 +115,7 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 | Auswahl der Zeitzone | Nein | [Ja](../managed-instance/timezones-overview.md), und die Konfiguration muss beim Erstellen der SQL Managed Instance erfolgen. |
 | [Ablaufverfolgungsflags](/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql) | Nein | Ja, aber nur eine begrenzte Gruppe von globalen Ablaufverfolgungsflags. Siehe [DBCC](../managed-instance/transact-sql-tsql-differences-sql-server.md#dbcc). |
 | [Transaktionsreplikation](../managed-instance/replication-transactional-overview.md) | Ja, [nur für Abonnentendatenbanken mit Transaktions- und Momentaufnahmenreplikation](migrate-to-database-from-sql-server.md) | Ja, in der [Öffentlichen Vorschau](/sql/relational-databases/replication/replication-with-sql-database-managed-instance). Einschränkungen finden Sie [hier](../managed-instance/transact-sql-tsql-differences-sql-server.md#replication). |
-| [Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | Ja, nur die Dienstebenen „Universell“ und „Unternehmenskritisch“| [Ja](transparent-data-encryption-tde-overview.md) |
+| [Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | Ja, aber nur die Dienstebenen „Universell“, „Unternehmenskritisch“ und „Hyperscale“ (in der Vorschau).| [Ja](transparent-data-encryption-tde-overview.md) |
 | Windows-Authentifizierung | Nein | Nein |
 | [ Windows Server-Failoverclustering](/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) | Nein. Andere Techniken, die [Hochverfügbarkeit](high-availability-sla.md) bereitstellen, sind in jeder Datenbank enthalten. Informationen zur Notfallwiederherstellung finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](business-continuity-high-availability-disaster-recover-hadr-overview.md). | Nein. Andere Techniken, die [Hochverfügbarkeit](high-availability-sla.md) bereitstellen, sind in jeder Datenbank enthalten. Informationen zur Notfallwiederherstellung finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](business-continuity-high-availability-disaster-recover-hadr-overview.md). |
 

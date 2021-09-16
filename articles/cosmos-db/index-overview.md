@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/04/2021
+ms.date: 08/26/2021
 ms.author: tisande
-ms.openlocfilehash: 00b119d993b549340467bf3892f3ffc5cf7b76dd
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 8228c3cedf58b389b93a516c4a372a38b33c0e4d
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108755421"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123028538"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indizierung in Azure Cosmos DB: Übersicht
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -392,3 +392,6 @@ Weitere Informationen zur Indizierung erhalten Sie in den folgenden Artikeln:
 
 - [Indizierungsrichtlinie](index-policy.md)
 - [Gewusst wie: Verwalten der Indizierungsrichtlinie](how-to-manage-indexing-policy.md)
+- Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen? Sie können Informationen zu Ihrem vorhandenen Datenbankcluster für die Kapazitätsplanung verwenden.
+    - Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](convert-vcore-to-request-unit.md). 
+    - Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbankworkload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)

@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 08/30/2021
 ms.author: jianleishen
-ms.openlocfilehash: 2122af325b4bac56be0af47692dc257e999b1181
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e2d697c8fece7974bc2b546945b3f725c9be995d
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122641038"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123313437"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>Kopieren von Daten aus Couchbase mithilfe von Azure Data Factory (Vorschauversion)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -41,6 +41,31 @@ Azure Data Factory enthält einen integrierten Treiber zum Sicherstellen der Kon
 ## <a name="getting-started"></a>Erste Schritte
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-linked-service-to-couchbase-using-ui"></a>Erstellen eines verknüpften Diensts für Couchbase über die Benutzeroberfläche
+
+Führen Sie die folgenden Schritte aus, um über die Benutzeroberfläche des Azure-Portals einen verknüpften Dienst für Couchbase zu erstellen.
+
+1. Navigieren Sie in Ihrem Azure Data Factory- oder Synapse-Arbeitsbereich zur Registerkarte „Verwalten“, wählen Sie „Verknüpfte Dienste“ aus, und klicken Sie dann auf „Neu“:
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Screenshot: Erstellen eines neuen verknüpften Diensts mit der Azure Data Factory-Benutzeroberfläche":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Screenshot: Erstellen eines neuen verknüpften Diensts mit der Azure Synapse-Benutzeroberfläche":::
+
+2. Suchen Sie nach Couchbase, und wählen Sie den Couchbase-Connector aus.
+
+   :::image type="content" source="media/connector-couchbase/couchbase-connector.png" alt-text="Screenshot: Couchbase-Connector":::    
+
+
+1. Konfigurieren Sie die Dienstdetails, testen Sie die Verbindung, und erstellen Sie den neuen verknüpften Dienst.
+
+   :::image type="content" source="media/connector-couchbase/configure-couchbase-linked-service.png" alt-text="Screenshot: Konfiguration des verknüpften Diensts für Couchbase":::
+
+## <a name="connector-configuration-details"></a>Details zur Connectorkonfiguration
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den Couchbase-Connector verwendet werden.
 

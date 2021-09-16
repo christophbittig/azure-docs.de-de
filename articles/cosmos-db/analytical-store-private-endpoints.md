@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: anithaa
-ms.openlocfilehash: 09b4e6ebe14f5650be5bc92302acc51b1c6e99a5
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 457182e2f8bf24e911fa2b5e0514b0dba48d6ae0
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111985758"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123111968"
 ---
 # <a name="configure-azure-private-link-for-azure-cosmos-db-analytical-store"></a>Konfigurieren von Azure Private Link für Azure Cosmos DB-Analysespeicher
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -131,5 +131,6 @@ Zum Konfigurieren der Netzwerkisolation für dieses Konto über einen Synapse-Ar
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erste Schritte zum [Abfragen des Analysespeichers mit Azure Synapse Spark](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json)
+* Erste Schritte beim [Abfragen des Analysespeichers mit Azure Synapse Spark 3](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark-3.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json)
+* Erste Schritte beim [Interagieren mit Azure Cosmos DB mithilfe von Apache Spark 2 in Azure Synapse Link](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json)
 * Erste Schritte zum [Abfragen des Analysespeichers mit serverlosen Azure Synapse-SQL-Pools](../synapse-analytics/sql/query-cosmos-db-analytical-store.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json)

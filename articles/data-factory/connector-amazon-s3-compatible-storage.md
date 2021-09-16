@@ -7,13 +7,13 @@ author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 05/11/2021
-ms.openlocfilehash: 12d7080a9f000df1f2e7469defef820cd4231e1b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/30/2021
+ms.openlocfilehash: 98191eb2e958510fe01fc5a02e0490bf7c2d41ae
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122639791"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123306995"
 ---
 # <a name="copy-data-from-amazon-s3-compatible-storage-by-using-azure-data-factory"></a>Kopieren von Daten aus Amazon S3-kompatiblem Speicher mithilfe von Azure Data Factory
 
@@ -47,7 +47,32 @@ Die vollständige Liste der Amazon S3-Berechtigungen finden Sie unter [Specifyin
 
 ## <a name="getting-started"></a>Erste Schritte
 
-[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)] 
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-linked-service-to-amazon-s3-compatible-storage-using-ui"></a>Erstellen eines verknüpften Diensts mit dem kompatiblen Amazon S3-Speicher über die Benutzeroberfläche
+
+Führen Sie die folgenden Schritte aus, um über die Benutzeroberfläche des Azure-Portals einen verknüpften Dienst für den kompatiblen Amazon S3-Speicher zu erstellen.
+
+1. Navigieren Sie in Ihrem Azure Data Factory- oder Synapse-Arbeitsbereich zu der Registerkarte „Verwalten“, wählen Sie „Verknüpfte Dienste“ aus und klicken Sie dann auf „Neu“:
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Erstellen Sie einen neuen verknüpften Dienst mithilfe der Azure Data Factory Benutzeroberfläche.":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Erstellen Sie einen neuen verknüpften Dienst mithilfe der Azure Synapse Benutzeroberfläche.":::
+
+2. Suchen Sie nach Amazon, und wählen Sie den Connector für „Amazon S3 Compatible Storage“ aus.
+
+   :::image type="content" source="media/connector-amazon-s3-compatible-storage/amazon-s3-compatible-storage-connector.png" alt-text="Wählen Sie den Connector für den kompatiblen Amazon S3-Speicher aus.":::    
+
+
+1. Konfigurieren Sie die Dienstdetails, testen Sie die Verbindung und erstellen Sie den neuen verknüpften Dienst.
+
+   :::image type="content" source="media/connector-amazon-s3-compatible-storage/configure-amazon-s3-compatible-storage-linked-service.png" alt-text="Konfigurieren Sie einen verknüpften Diensts mit dem kompatiblen Amazon S3-Speicher.":::
+
+## <a name="connector-configuration-details"></a>Details zur Connectorkonfiguration 
 
 In den folgenden Abschnitten finden Sie Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten verwendet werden, die für Amazon S3-kompatiblen Speicher spezifisch sind.
 

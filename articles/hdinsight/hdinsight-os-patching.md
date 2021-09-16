@@ -4,20 +4,20 @@ description: Erfahren Sie, wie der Zeitplan für das Patchen des Betriebssystems
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
-ms.date: 01/21/2020
-ms.openlocfilehash: 636caf592baa4df771f7cc50095911d0337456d0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/30/2021
+ms.openlocfilehash: 10ab6462096bbdabee0730e6ef60e07d8d51b438
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98939382"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223568"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Konfigurieren des Zeitplans für das Patchen des Betriebssystems für Linux-basierte HDInsight-Cluster
 
 > [!IMPORTANT]
 > Ubuntu-Images stehen für die Erstellung neuer Azure HDInsight-Cluster innerhalb von drei Monaten nach der Veröffentlichung zur Verfügung. Ausgeführte Cluster werden nicht automatisch gepatcht. Kunden müssen Skriptaktionen oder andere Mechanismen verwenden, um einen laufenden Cluster zu patchen. Es hat sich bewährt, diese Skriptaktionen auszuführen und direkt nach der Clustererstellung Sicherheitsupdates durchzuführen.
 
-HDInsight bietet Unterstützung für die Durchführung allgemeiner Aufgaben in Ihrem Cluster, z. B. Installieren von Betriebssystempatches, Sicherheitsupdates und Neustarts von Knoten. Diese Aufgaben werden mithilfe der folgenden beiden Skripts ausgeführt, die als [Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md) ausgeführt werden können und mit Parametern konfiguriert werden:
+HDInsight bietet Unterstützung für die Durchführung allgemeiner Aufgaben in Ihrem Cluster, z. B. Installieren von Betriebssystempatches, Sicherheitsupdates für Betriebssysteme und Neustarts von Knoten. Diese Aufgaben werden mithilfe der folgenden beiden Skripts ausgeführt, die als [Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md) ausgeführt werden können und mit Parametern konfiguriert werden:
 
 - `schedule-reboots.sh` – Ausführen eines sofortigen Neustarts oder Planen eines Neustarts auf den Clusterknoten.
 - `install-updates-schedule-reboots.sh` – Installieren aller Updates, nur Installieren von Kernel- und Sicherheitsupdates, oder nur von Kernelupdates.

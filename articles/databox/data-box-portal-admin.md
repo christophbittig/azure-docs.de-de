@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/18/2020
+ms.date: 08/23/2021
 ms.author: alkohli
-ms.openlocfilehash: 46a18cb2b6e1682427d5674be28b240f35b120fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 796c9563de794b22d47dacee4c93e7bfde73fb2a
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97678650"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221791"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Verwalten von Azure Data Box und Azure Data Box Heavy über das Azure-Portal
 
@@ -255,8 +255,18 @@ Beim selbstverwalteten Versand werden (anstelle der in der obigen Tabelle erwäh
 |Bereit für den Empfang im Azure-Rechenzentrum     |Das Gerät kann im Azure-Rechenzentrum empfangen werden.        |
 |Empfangen     |Ihr Gerät ist im Azure-Rechenzentrum eingegangen.      |
 
+## <a name="get-device-password"></a>Abrufen eines Gerätekennworts
 
+Wenn Sie Ihr Gerät bestellen, können Sie das vom System generierte Standardkennwort für das Gerät oder Ihr eigenes Kennwort verwenden. In beiden Fällen ist das Gerätekennwort werkseitig festgelegt und kann nicht geändert werden. 
 
+Sie können das Gerätekennwort ermitteln, indem Sie Ihre Bestellung im Azure-Portal anzeigen.
+
+[!INCLUDE [data-box-get-device-password](../../includes/data-box-get-device-password.md)]
+
+> [!NOTE]
+> Nach mehreren fehlgeschlagenen Anmeldeversuchen mit einem falschen Kennwort wird Ihr Administratorkonto für das Gerät gesperrt. Die Kontosperre wird nach einigen Minuten aufgehoben, und Sie können erneut eine Verbindung herstellen.  
+> - Data Box 4.1 und höher: Das Konto ist nach fünf fehlgeschlagenen Anmeldeversuchen 15 Minuten lang gesperrt. 
+> - Data Box 4.0 und früher: Das Konto ist nach drei fehlgeschlagenen Anmeldeversuchen 30 Minuten lang gesperrt.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -7,12 +7,12 @@ ms.author: karler
 author: karlerickson
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 123cc401d03a802c0a390f88cfc727893f165364
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 0de08976f0391c995004265ac1b1a33cf4a5c491
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122356167"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835787"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Einrichten einer Spring Cloud-Konfigurationsserverinstanz für Ihren Dienst
 
@@ -101,10 +101,11 @@ Alle konfigurierbaren Eigenschaften, die zum Einrichten des privaten Git-Reposit
 | `default-label` | Nein     | Die Standardbezeichnung für das Git-Repository sollte der *Branchname*, der *Tagname* oder die *Commit-ID* des Repositorys sein. |
 | `search-paths`  | Nein     | Ein Array von Zeichenfolgen, die zum Durchsuchen von Unterverzeichnissen des Git-Repositorys verwendet werden |
 | `username`      | Nein     | Der Benutzername, der für den Zugriff auf den Git-Repositoryserver verwendet wird, _erforderlich_, wenn der Git-Repositoryserver `Http Basic Authentication` unterstützt |
-| `password`      | Nein     | Das Kennwort, das für den Zugriff auf den Git-Repositoryserver verwendet wird, _erforderlich_, wenn der Git-Repositoryserver `Http Basic Authentication` unterstützt |
+| `password`      | Nein     | Dies ist das Kennwort oder persönliche Zugriffstoken, das für den Zugriff auf den Git-Repositoryserver verwendet wird, und ist _erforderlich_, wenn der Git-Repositoryserver `Http Basic Authentication` unterstützt. |
 
 > [!NOTE]
-> Für viele `Git`-Repositoryserver wird die Verwendung von Token anstelle von Kennwörtern für die HTTP-Standardauthentifizierung unterstützt. In einigen Repositorys, z. B. GitHub, können Token unendlich lange aufbewahrt werden. Für bestimmte Git-Repositoryserver, z. B. Azure DevOps, wird aber erzwungen, dass Token innerhalb einiger Stunden ablaufen. Für Repositorys mit erzwungenem Ablauf von Token sollte nicht die tokenbasierte Authentifizierung mit Azure Spring Cloud genutzt werden.
+> Für viele `Git`-Repositoryserver wird die Verwendung von Token anstelle von Kennwörtern für die HTTP-Standardauthentifizierung unterstützt. In einigen Repositorys können Token unendlich lange aufbewahrt werden. Für bestimmte Git-Repositoryserver, z. B. Azure DevOps Server, wird aber erzwungen, dass Token innerhalb einiger Stunden ablaufen. Für Repositorys mit erzwungenem Ablauf von Token sollte nicht die tokenbasierte Authentifizierung mit Azure Spring Cloud genutzt werden.
+> GitHub hat die Unterstützung für die Kennwortauthentifizierung entfernt, sodass Sie ein persönliches Zugriffstoken anstelle der Kennwortauthentifizierung für GitHub verwenden müssen. Weitere Informationen finden Sie unter [Tokenauthentifizierung](https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/).
 
 ### <a name="git-repositories-with-pattern"></a>Git-Repositorys mit Muster
 
@@ -122,7 +123,7 @@ Alle konfigurierbaren Eigenschaften, die zum Einrichten von Repositorys mit Must
 | `repos."default-label"`            | Nein             | Die Standardbezeichnung für das Git-Repository sollte der *Branchname*, der *Tagname* oder die *Commit-ID* des Repositorys sein. |
 | `repos."search-paths`"             | Nein             | Ein Array von Zeichenfolgen, die zum Durchsuchen von Unterverzeichnissen des Git-Repositorys verwendet werden |
 | `repos."username"`                 | Nein             | Der Benutzername, der für den Zugriff auf den Git-Repositoryserver verwendet wird, _erforderlich_, wenn der Git-Repositoryserver `Http Basic Authentication` unterstützt |
-| `repos."password"`                 | Nein             | Das Kennwort, das für den Zugriff auf den Git-Repositoryserver verwendet wird, _erforderlich_, wenn der Git-Repositoryserver `Http Basic Authentication` unterstützt |
+| `repos."password"`                 | Nein             | Dies ist das Kennwort oder persönliche Zugriffstoken, das für den Zugriff auf den Git-Repositoryserver verwendet wird, und ist _erforderlich_, wenn der Git-Repositoryserver `Http Basic Authentication` unterstützt. |
 | `repos."private-key"`              | Nein             | Der private SSH-Schlüssel für den Zugriff auf das Git-Repository, _erforderlich_, wenn der URI mit *git@* oder *ssh://* beginnt. |
 | `repos."host-key"`                 | Nein             | Der Hostschlüssel des Git-Repositoryservers. Er darf nicht das Algorithmuspräfix (abgedeckt durch `host-key-algorithm`) enthalten. |
 | `repos."host-key-algorithm"`       | Nein             | Der Algorithmus für den Hostschlüssel, sollte *ssh-dss*, *ssh-rsa*, *ecdsa-sha2-nistp256*, *ecdsa-sha2-nistp384* oder *ecdsa-sha2-nistp521* sein. Nur *erforderlich*, wenn `host-key` vorhanden ist. |
@@ -167,7 +168,8 @@ Nachdem Sie Ihre Konfigurationsdateien in einem Repository gespeichert haben, m�
     ![Der Bereich „Authentifizierung bearbeiten“](media/spring-cloud-tutorial-config-server/basic-auth.png)
 
     > [!CAUTION]
-    > Einige Git-Repositoryserver, wie z. B. GitHub, verwenden ein *persönliches Token* oder ein *Zugriffstoken* (z. B. ein Kennwort) für die **Standardauthentifizierung**. Dieser Typ von Token kann als Kennwort in Azure Spring Cloud verwendet werden, da es nie abläuft. Für andere Git-Repositoryserver wie Bitbucket und Azure DevOps läuft das *Zugriffstoken* nach einer oder zwei Stunden ab. Dies bedeutet, dass sich diese Option nicht für die Verwendung dieser Repositoryserver mit Azure Spring Cloud eignet.
+    > Einige Git-Repositoryserver verwenden ein *persönliches Token* oder ein *Zugriffstoken* (z. B. ein Kennwort) für die **Standardauthentifizierung**. Dieser Typ von Token kann als Kennwort in Azure Spring Cloud verwendet werden, da es nie abläuft. Für andere Git-Repositoryserver wie Bitbucket und Azure DevOps Server läuft das *Zugriffstoken* nach einer oder zwei Stunden ab. Dies bedeutet, dass sich diese Option nicht für die Verwendung dieser Repositoryserver mit Azure Spring Cloud eignet.
+    > GitHub hat die Unterstützung für die Kennwortauthentifizierung entfernt, sodass Sie ein persönliches Zugriffstoken anstelle der Kennwortauthentifizierung für GitHub verwenden müssen. Weitere Informationen finden Sie unter [Tokenauthentifizierung](https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/).
 
     * **SSH**: Fügen Sie im Abschnitt **Standardrepository** im Feld **URI** den Repository-URI ein, und wählen Sie dann die Schaltfläche **Authentifizierung** (Stiftsymbol) aus. Wählen Sie im Bereich **Authentifizierung bearbeiten** in der Dropdownliste **Authentifizierungstyp** die Option **SSH** aus, und geben Sie dann Ihren **privaten Schlüssel** ein. Optional können Sie den **Hostschlüssel** und den **Hostschlüsselalgorithmus** angeben. Stellen Sie sicher, dass Sie Ihren öffentlichen Schlüssel in das Repository Ihres Konfigurationsservers einfügen. Wählen Sie **OK** und dann **Anwenden** aus, um die Einrichtung Ihrer Konfigurationsserverinstanz abzuschließen.
 

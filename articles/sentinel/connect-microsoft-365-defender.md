@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: yelevin
-ms.openlocfilehash: 536a9b0fe4cacdc48f4429e1b85b5a47c4dbd449
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c31ed32e13e8b71b5ad6253d5e157b5adc2096bf
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339447"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123260022"
 ---
 # <a name="connect-data-from-microsoft-365-defender-to-azure-sentinel"></a>Verknüpfen von Daten aus Microsoft 365 Defender mit Azure Sentinel
 

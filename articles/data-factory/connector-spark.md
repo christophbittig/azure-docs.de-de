@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 09/04/2019
-ms.openlocfilehash: 8cf248d5ffa7a05d4561213b6c9bbd96d59ff79a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/30/2021
+ms.openlocfilehash: 5482ae0a4f0c00883e3f7f8347a7c53f15cee599
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122640961"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123316302"
 ---
 # <a name="copy-data-from-spark-using-azure-data-factory"></a>Kopieren von Daten aus Spark mithilfe von Azure Data Factory 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -39,6 +39,31 @@ Azure Data Factory enthält einen integrierten Treiber zum Sicherstellen der Kon
 ## <a name="getting-started"></a>Erste Schritte
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-linked-service-to-spark-using-ui"></a>Erstellen eines verknüpften Diensts mit Spark über die Benutzeroberfläche
+
+Verwenden Sie die folgenden Schritte, um einen verknüpften Dienst mit Spark auf der Azure-Portal Benutzeroberfläche zu erstellen.
+
+1. Navigieren Sie in Ihrem Azure Data Factory- oder Synapse-Arbeitsbereich zu der Registerkarte „Verwalten“, wählen Sie „Verknüpfte Dienste“ aus, und klicken Sie dann auf „Neu“:
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Ein Screenshot, der das Erstellen eines neuen verknüpften Diensts mit der Azure Data Factory Benutzeroberfläche zeigt":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Ein Screenshot, der das Erstellen eines neuen verknüpften Diensts mit der Azure Synapse Benutzeroberfläche zeigt":::
+
+2. Suchen Sie nach Spark, und wählen Sie den Spark-Connector aus.
+
+   :::image type="content" source="media/connector-spark/spark-connector.png" alt-text="Screenshot des Spark-Connectors":::    
+
+
+1. Konfigurieren Sie die Dienstdetails, testen Sie die Verbindung, und erstellen Sie den neuen verknüpften Dienst.
+
+   :::image type="content" source="media/connector-spark/configure-spark-linked-service.png" alt-text="Screenshot mit der Konfiguration des verknüpften Diensts für Spark":::
+
+## <a name="connector-configuration-details"></a>Details zur Connectorkonfiguration
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den Spark-Connector verwendet werden.
 

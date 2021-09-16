@@ -6,13 +6,13 @@ ms.author: sngun
 ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/05/2021
-ms.openlocfilehash: c8589911e4424afe1ff2f5dbed32c375cb29c706
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 08/26/2021
+ms.openlocfilehash: f954be4b5ce82bf84bc99fcdab253c48fccf9933
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110095728"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123226992"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>Planen und Verwalten von Kosten für Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -35,9 +35,20 @@ Die Kostenanalyse in Cost Management unterstützt die meisten Azure-Kontotypen, 
 
 Azure Cosmos DB ist in zwei verschiedenen Kapazitätsmodi verfügbar: bereitgestellter Durchsatz und serverlos. In beiden Modi können Sie genau die gleichen Datenbankvorgänge ausführen, die Abrechnungsmethode für diese Vorgänge ist jedoch unterschiedlich.
 
+### <a name="capacity-planning"></a>Kapazitätsplanung
+
+Bei der Kostenschätzung kann es hilfreich sein, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB zu erstellen. Wenn Sie eine Migration von einem vorhandenen Datenbankcluster zu Azure Cosmos DB planen, können Sie Informationen zu Ihrem vorhandenen Datenbankcluster für die Kapazitätsplanung nutzen.
+* Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](convert-vcore-to-request-unit.md). 
+
+![Migrieren einer Replikatgruppe mit drei Replikaten einer SKU mit vier Kernen zu Azure Cosmos DB](media/convert-vcore-to-request-unit/one-replica-set.png)
+
+* Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbankworkload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)
+
 ### <a name="estimate-provisioned-throughput-costs"></a>Schätzung der bereitgestellten Durchsatzkosten
 
-Wenn Sie planen, Azure Cosmos DB im Modus „bereitgestellter Durchsatz“ zu verwenden, nutzen Sie den [Azure Cosmos DB Capacity Calculator](https://cosmos.azure.com/capacitycalculator/), um die Kosten zu schätzen, bevor Sie die Ressourcen in einem Azure Cosmos-Konto erstellen. Der Capacity Calculator wird genutzt, um eine Schätzung des erforderlichen Durchsatzes und der Kosten Ihrer Workload zu erhalten. Die Konfiguration Ihrer Azure Cosmos-Datenbanken und -Container mit der richtigen Menge an bereitgestelltem Durchsatz bzw. [Anforderungseinheiten (RU/s)](request-units.md) für Ihre Workload ist von entscheidender Bedeutung, um die Kosten und die Leistung zu optimieren. Für eine Kostenschätzung müssen Sie Details wie API-Typ, Anzahl von Regionen, Elementgröße, Lese-/Schreibanforderungen pro Sekunde und insgesamt gespeicherte Daten eingeben. Weitere Informationen zum Capacity Calculator finden Sie im Artikel zum Thema [Schätzung](estimate-ru-with-capacity-planner.md).
+Wenn Sie planen, Azure Cosmos DB im Modus „bereitgestellter Durchsatz“ zu verwenden, nutzen Sie den [Azure Cosmos DB Capacity Calculator](https://cosmos.azure.com/capacitycalculator/), um die Kosten zu schätzen, bevor Sie die Ressourcen in einem Azure Cosmos-Konto erstellen. Der Capacity Calculator wird genutzt, um eine Schätzung des erforderlichen Durchsatzes und der Kosten Ihrer Workload zu erhalten. Der Kapazitätsrechner ist derzeit nur für die SQL-API, Cassandra-API und MongoDB-API verfügbar.
+
+Die Konfiguration Ihrer Azure Cosmos-Datenbanken und -Container mit der richtigen Menge an bereitgestelltem Durchsatz bzw. [Anforderungseinheiten (RU/s)](request-units.md) für Ihre Workload ist von entscheidender Bedeutung, um die Kosten und die Leistung zu optimieren. Für eine Kostenschätzung müssen Sie Details wie API-Typ, Anzahl von Regionen, Elementgröße, Lese-/Schreibanforderungen pro Sekunde und insgesamt gespeicherte Daten eingeben. Weitere Informationen zum Capacity Calculator finden Sie im Artikel zum Thema [Schätzung](estimate-ru-with-capacity-planner.md).
 
 Im folgenden Screenshot sind der Durchsatz und die Kostenschätzung bei Verwendung des Capacity Calculators dargestellt:
 
@@ -149,6 +160,9 @@ Es folgen einige bewährte Methoden, die Sie verwenden können, um die Kosten zu
 
 Die folgenden Artikel enthalten weitere Informationen zu den Preisen in Azure Cosmos DB:
 
+* Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen? Sie können Informationen zu Ihrem vorhandenen Datenbankcluster für die Kapazitätsplanung verwenden.
+    * Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](convert-vcore-to-request-unit.md). 
+    * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbankworkload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)
 * [Preismodell in Azure Cosmos DB](how-pricing-works.md)
 * Erfahren Sie, wie Sie Ihre [Cloudinvestitionen mit Azure Cost Management optimieren](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 * Erfahren Sie mehr über die Verwaltung von Kosten mit der [Kostenanalyse](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).

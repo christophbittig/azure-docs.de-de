@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 06/30/2021
+ms.date: 08/30/2021
 ms.author: hirsin
 ms.reviewer: marsma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f55c5096f9205e75904a65724715104fe8bca849
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 301a386c9c9a21cf1f988ee62c19ca7cc60e7a39
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355483"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429998"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity Platform und der Fluss von OAuth 2.0-Clientanmeldeinformationen
 
@@ -58,7 +58,7 @@ Diese Art der Autorisierung wird häufig für Daemons und Dienstkonten eingesetz
 
 Azure AD setzt nicht voraus, dass Anwendungen zum Abrufen von Token für eine andere Anwendung autorisiert sind, um dieses ACL-basierte Autorisierungsmuster zu aktivieren. Daher können nur für Apps gültige Token ohne einen `roles`-Anspruch ausgestellt werden. Bei Anwendungen, die APIs verfügbar machen, müssen zum Akzeptieren von Token Berechtigungsüberprüfungen implementiert werden.
 
-Wenn Sie verhindern möchten, dass Anwendungen nur für Apps gültige Zugriffstoken ohne Rollen abrufen, [sollten Sie sicherstellen, dass die Benutzerzuweisungsanforderungen für Ihre App aktiviert sind](../manage-apps/assign-user-or-group-access-portal.md#configure-an-application-to-require-user-assignment). Dadurch wird verhindert, dass Benutzer und Anwendungen ohne zugewiesene Rollen ein Token für diese Anwendung abrufen können. 
+Wenn Sie verhindern möchten, dass Anwendungen nur für Apps gültige Zugriffstoken ohne Rollen abrufen, [sollten Sie sicherstellen, dass die Benutzerzuweisungsanforderungen für Ihre App aktiviert sind](../manage-apps/add-application-portal-configure.md#configure-app-properties). Dadurch wird verhindert, dass Benutzer und Anwendungen ohne zugewiesene Rollen ein Token für diese Anwendung abrufen können.
 
 ### <a name="application-permissions"></a>Anwendungsberechtigungen
 
@@ -114,7 +114,7 @@ An diesem Punkt erzwingt Azure AD, dass sich nur ein Mandantenadministrator anme
 Wenn der Administrator die Berechtigungen für Ihre Anwendung genehmigt, lautet die erfolgreiche Antwort wie folgt:
 
 ```HTTP
-GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=12345&admin_consent=True
+GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
 ```
 
 | Parameter | BESCHREIBUNG |
@@ -165,7 +165,7 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 | `tenant` | Erforderlich | Der Verzeichnismandant, der von der Anwendung für den Betrieb verwendet werden soll, im GUID- oder Domänennamensformat. |
 | `client_id` | Erforderlich | Die Anwendungs-ID, die Ihrer App zugewiesen ist. Diese Informationen finden Sie in dem Portal, in dem Sie Ihre App registriert haben. |
 | `scope` | Erforderlich | Bei dem Wert, der in dieser Anforderung für den `scope`-Parameter übergeben wird, muss es sich um den Ressourcenbezeichner (Anwendungs-ID-URI) der gewünschten Ressource mit dem Suffix `.default` handeln. Für das angegebene Microsoft Graph-Beispiel ist der Wert `https://graph.microsoft.com/.default`. <br/>Dieser Wert weist die Microsoft Identity Platform an, von allen direkten Anwendungsberechtigungen, die Sie für Ihre App konfiguriert haben, ein Token für diejenigen auszustellen, die zur gewünschten Ressource gehören. Weitere Informationen zum `/.default`-Bereich finden Sie in der [Dokumentation zu Zustimmungen](v2-permissions-and-consent.md#the-default-scope). |
-| `client_secret` | Erforderlich | Der geheime Clientschlüssel, den Sie im App-Registrierungsportal für Ihre App generiert haben. Der geheime Clientschlüssel muss vor dem Senden URL-codiert werden. |
+| `client_secret` | Erforderlich | Der geheime Clientschlüssel, den Sie im App-Registrierungsportal für Ihre App generiert haben. Der geheime Clientschlüssel muss vor dem Senden URL-codiert werden. Das Standardauthentifizierungsmuster der Bereitstellung von Anmeldeinformationen im Autorisierungsheader gemäß [RFC 6749](https://datatracker.ietf.org/doc/html/rfc6749#section-2.3.1) wird ebenfalls unterstützt. |
 | `grant_type` | Erforderlich | Muss auf `client_credentials` festgelegt sein. |
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>Zweiter Fall: Zugriffstokenanforderung mit einem Zertifikat
@@ -182,7 +182,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 &grant_type=client_credentials
 ```
 
-| Parameter | Bedingung | BESCHREIBUNG |
+| Parameter | Bedingung | Beschreibung |
 | --- | --- | --- |
 | `tenant` | Erforderlich | Der Verzeichnismandant, der von der Anwendung für den Betrieb verwendet werden soll, im GUID- oder Domänennamensformat. |
 | `client_id` | Erforderlich |Die Anwendungs-ID (Client-ID), die Ihrer App zugewiesen ist. |

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: robinsh
 ms.custom: devx-track-python
-ms.openlocfilehash: 7aac4d2fcab192d77c1629e8f53b91f5dadedd86
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 305d3103e9f0f0bdfb3ce49f5c801ca0f2f975ff
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346167"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835241"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>Planen und Übertragen von Aufträgen (Python)
 
@@ -81,65 +81,75 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolen-App, die auf eine von der
 3. Fügen Sie am Anfang der Datei **simDevice.py** die folgenden `import`-Anweisungen und Variablen hinzu. Ersetzen Sie `deviceConnectionString` durch die Verbindungszeichenfolge des Geräts, das Sie oben erstellt haben:
 
     ```python
+    import time
     from azure.iot.device import IoTHubDeviceClient, MethodResponse
 
     CONNECTION_STRING = "{deviceConnectionString}"
-    client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
     ```
 
-4. Definieren Sie die folgende Handlerfunktion, mit der auf die **lockDoor**-Methode reagiert wird:
+4. Definieren Sie die folgende Funktion, die einen Client instanziiert und so konfiguriert, dass er auf die **lockDoor-Methode** reagiert und Gerätezwillingsupdates empfängt:
 
     ```python
-    def method_request_handler(method_request):
-        if method_request.name == "lockDoor":
-            print("Locking Door!")
+    def create_client():
+        # Instantiate the client
+        client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
 
-            resp_status = 200
-            resp_payload = {"Response": "lockDoor called successfully"}
-            method_response = MethodResponse.create_from_method_request(
-                method_request=method_request,
-                status=resp_status,
-                payload=resp_payload
-            )
-            client.send_method_response(method_response)
+        # Define behavior for responding to the lockDoor direct method
+        def method_request_handler(method_request):
+            if method_request.name == "lockDoor":
+                print("Locking Door!")
+
+                resp_status = 200
+                resp_payload = {"Response": "lockDoor called successfully"}
+                method_response = MethodResponse.create_from_method_request(
+                    method_request=method_request,
+                    status=resp_status,
+                    payload=resp_payload
+                )
+                client.send_method_response(method_response)
+
+        # Define behavior for receiving a twin patch
+        def twin_patch_handler(twin_patch):
+            print("")
+            print("Twin desired properties patch received:")
+            print(twin_patch)
+
+        # Set the handlers on the client
+        try:
+            print("Beginning to listen for 'lockDoor' direct method invocations...")
+            client.on_method_request_received = method_request_handler
+            print("Beginning to listen for updates to the Twin desired properties...")
+            client.on_twin_desired_properties_patch_received = twin_patch_handler
+        except:
+            # If something goes wrong while setting the handlers, clean up the client
+            client.shutdown()
+            raise
     ```
 
-5. Fügen Sie eine weitere Handlerfunktion zum Empfangen von Gerätezwillingsupdates hinzu:
+5. Fügen Sie den folgenden Code hinzu, um das Beispiel auszuführen:
 
     ```python
-    def twin_patch_handler(twin_patch):
-        print("")
-        print("Twin desired properties patch received:")
-        print(twin_patch)
-    ```
+    def main():
+        print ("Starting the IoT Hub Python jobs sample...")
+        client = create_client()
 
-6. Fügen Sie den folgenden Code zum Registrieren der Handler für die **lockDoor**-Methode sowie für Zwillingspatches hinzu. Schließen Sie auch die Routine `main` ein:
-
-    ```python
-    def iothub_jobs_sample_run():
-        print("Beginning to listen for 'lockDoor' direct method invocations...")
-        client.on_method_request_received = method_request_handler
-        print("Beginning to listen for updates to the Twin desired properties...")
-        client.on_twin_desired_properties_patch_received = twin_patch_handler
-
-        client.connect()
-
+        print ("IoTHubDeviceClient waiting for commands, press Ctrl-C to exit")
         try:
             while True:
-                import time
                 time.sleep(100)
         except KeyboardInterrupt:
             print("IoTHubDeviceClient sample stopped!")
+        finally:
+            # Graceful exit
+            print("Shutting down IoT Hub Client")
             client.shutdown()
 
-    if __name__ == '__main__':
-        print ( "Starting the IoT Hub Python jobs sample..." )
-        print ( "IoTHubDeviceClient waiting for commands, press Ctrl-C to exit" )
 
-        iothub_jobs_sample_run()
+    if __name__ == '__main__':
+        main()
     ```
 
-7. Speichern und schließen Sie die Datei **simDevice.py**.
+6. Speichern und schließen Sie die Datei **simDevice.py**.
 
 > [!NOTE]
 > Der Einfachheit halber wird in diesem Tutorial keine Wiederholungsrichtlinie implementiert. Im Produktionscode sollten Sie Wiederholungsrichtlinien implementieren (z.B. exponentielles Backoff), wie es im Artikel [Behandeln vorübergehender Fehler](/azure/architecture/best-practices/transient-faults) vorgeschlagen wird.
