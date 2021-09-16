@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 76832f02f1c1337a705f33d26de97b0b5823c2c1
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.openlocfilehash: 0a3312559ee46b70b97a99a5dae16e4a26cad273
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112981107"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123031840"
 ---
 # <a name="customize-the-user-interface-with-html-templates-in-azure-active-directory-b2c"></a>Anpassen der Benutzeroberfläche mit HTML-Vorlagen in Azure Active Directory B2C
 
@@ -75,7 +75,8 @@ Wenn Sie eigene HTML- und CSS-Dateien zum Anpassen der Benutzeroberfläche verwe
 
 - Verwenden Sie eine absolute URL, wenn Sie externe Ressourcen wie Medien-, CSS- und JavaScript-Dateien in Ihre HTML-Datei einbeziehen.
 - Mit der [Seitenlayoutversion](page-layout.md) 1.2.0 und höher können Sie in den HTML-Tags das Attribut `data-preload="true"` hinzufügen, um die Ladereihenfolge für CSS und JavaScript zu steuern. Mit `data-preload="true"` wird die Seite erstellt, bevor sie dem Benutzer angezeigt wird. Mit diesem Attribut wird ein „Flackern“ der Seite verhindert, da die CSS-Datei vorab geladen und die unformatierte HTML-Datei dem Benutzer nicht angezeigt wird. Der folgende HTML-Codeausschnitt zeigt die Verwendung des `data-preload`-Tags.
-  ```HTML
+
+  ```html
   <link href="https://path-to-your-file/sample.css" rel="stylesheet" type="text/css" data-preload="true"/>
   ```
 - Wir empfehlen, mit dem Standardseiteninhalt zu beginnen und darauf aufzubauen.
@@ -90,11 +91,41 @@ Wenn Sie eigene HTML- und CSS-Dateien zum Anpassen der Benutzeroberfläche verwe
 
 ## <a name="localize-content"></a>Lokalisieren von Inhalt
 
-Sie lokalisieren Ihren HTML-Inhalt, indem Sie die [Sprachanpassung](language-customization.md) in Ihrem Azure AD B2C-Mandanten aktivieren. Wenn Sie dieses Feature aktivieren, kann Azure AD B2C den Open ID Connect-Parameter `ui_locales` an Ihren Endpunkt weiterleiten. Ihr Inhaltsserver kann diesen Parameter verwenden, um benutzerdefinierte, sprachspezifische HTML-Seiten bereitzustellen.
+Sie lokalisieren Ihren HTML-Inhalt, indem Sie die [Sprachanpassung](language-customization.md) in Ihrem Azure AD B2C-Mandanten aktivieren. Wenn Sie dieses Feature aktivieren, kann Azure AD B2C das Sprachattribut für die HTML-Seite festlegen und den OpenID Connect-Parameter `ui_locales` an Ihren Endpunkt übergeben.
+
+#### <a name="single-template-approach"></a>Einzelvorlagenansatz
+
+Während des Ladens der Seite legt Azure AD B2C das Sprachattribut für die HTML-Seite mit der aktuellen Sprache fest. Beispielsweise `<html lang="en">`. Verwenden Sie zum Rendern verschiedener Stile in der aktuellen Sprache den CSS-Selektor `:lang` zusammen mit Ihrer CSS-Definition.
+
+Im folgenden Beispiel werden die folgenden Klassen definiert:
+
+* `imprint-en` – Wird verwendet, wenn die aktuelle Sprache Englisch ist.
+* `imprint-de` – Wird verwendet, wenn die aktuelle Sprache Deutsch ist.
+* `imprint` – Standardklasse, die verwendet wird, wenn die aktuelle Sprache weder Englisch noch Deutsch ist.
+
+```css
+.imprint-en:lang(en),
+.imprint-de:lang(de) {
+    display: inherit !important;
+}
+.imprint {
+    display: none;
+}
+```
+
+Die folgenden HTML-Elemente werden entsprechend der Seitensprache angezeigt oder ausgeblendet:
+
+```html
+<a class="imprint imprint-en" href="Link EN">Imprint</a>
+<a class="imprint imprint-de" href="Link DE">Impressum</a>
+```
+
+#### <a name="multi-template-approach"></a>Ansatz mit mehreren Vorlagen
+
+Mithilfe des Sprachanpassungsfeatures kann Azure AD B2C den Open ID Connect-Parameter `ui_locales` an Ihren Endpunkt weiterleiten. Ihr Inhaltsserver kann diesen Parameter verwenden, um benutzerdefinierte, sprachspezifische HTML-Seiten bereitzustellen.
 
 > [!NOTE]
 > Azure AD B2C übergibt keine OpenID Connect-Parameter wie `ui_locales` an die [Seite mit Ausnahmen](page-layout.md#exception-page-globalexception).
-
 
 Inhalt kann auf Grundlage des verwendeten Gebietsschemas aus unterschiedlichen Quellen abgerufen werden. Richten Sie in Ihrem CORS-fähigen Endpunkt eine Ordnerstruktur zum Hosten von Inhalten für bestimmte Sprachen ein. Wenn Sie den Platzhalterwert `{Culture:RFC5646}` verwenden, wird der passende Inhalt abgerufen.
 
@@ -380,7 +411,7 @@ So verwenden Sie das Beispiel
 
 1. Klonen Sie das Repository auf Ihrem lokalen Computer. Wählen Sie den Vorlagenordner `/AzureBlue`, `/MSA` oder `/classic` aus.
 1. Laden Sie alle Dateien aus dem Vorlagenordner und dem Ordner `/src` in den Blob-Speicher hoch, wie in den vorherigen Abschnitten beschrieben.
-1. Öffnen Sie dann die einzelnen `\*.html`-Dateien im Vorlagenordner. Ersetzen Sie anschließend alle Instanzen von `https://login.microsoftonline.com`-URLs durch die URL, die Sie in Schritt 2 hochgeladen haben. Zum Beispiel:
+1. Öffnen Sie dann die einzelnen `\*.html`-Dateien im Vorlagenordner. Ersetzen Sie anschließend alle Instanzen von `https://login.microsoftonline.com`-URLs durch die URL, die Sie in Schritt 2 hochgeladen haben. Beispiel:
     
     Von:
     ```html

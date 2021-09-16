@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.topic: conceptual
 ms.date: 07/04/2021
 ms.author: bagol
-ms.openlocfilehash: 525def5e69317597664b54bc68505ae3f19d228e
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: dc2c1b6ed2d40e7d1af82b3c62f378bfd046a94c
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122350372"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123254119"
 ---
 # <a name="migrate-to-azure-sentinel-from-an-existing-siem"></a>Migrieren von einer vorhandenen SIEM-Lösung zu Azure Sentinel
 
@@ -182,7 +182,7 @@ Achten Sie darauf, dass Sie nur Daten migrieren, die Ihren aktuell wichtigen Anw
 
     - Sie können auch **[Syslog](connect-data-sources.md#syslog), [Common Event Format (CEF)](connect-data-sources.md#common-event-format-cef) oder [REST-APIs](connect-data-sources.md#rest-api-integration)** verwenden, um andere Datenquellen mit Azure Sentinel zu verbinden.
 
-        Weitere Informationen finden Sie unter [Azure Sentinel-Partnerdatenconnectors](partner-data-connectors.md) sowie im [Azure Sentinel-Lösungskatalog](sentinel-solutions-catalog.md).
+        Weitere Informationen finden Sie in der [Referenz zu Azure Sentinel-Datenconnectors](data-connectors-reference.md) sowie im [Azure Sentinel-Lösungskatalog](sentinel-solutions-catalog.md).
 
 > [!TIP]
 > - Wenn Sie sich auf kostenlose Datenquellen beschränken, schränken Sie damit gegebenenfalls auch Ihre Möglichkeit ein, Tests mit Daten durchzuführen, die für Sie wichtig sind. Erwägen Sie beim Testen eine begrenzte Datenerfassung über kostenlose und kostenpflichtige Datenconnectors, damit Sie den größten Nutzen aus den Testergebnissen ziehen können.

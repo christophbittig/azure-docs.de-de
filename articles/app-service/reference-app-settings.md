@@ -3,12 +3,12 @@ title: Referenz zu Umgebungsvariablen und App-Einstellungen
 description: Dieser Artikel beschreibt die häufig verwendeten Umgebungsvariablen und welche mit App-Einstellungen geändert werden können.
 ms.topic: article
 ms.date: 06/14/2021
-ms.openlocfilehash: 39cb9b210cb7cff3e8b1b6a58a3ab32e22628833
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 5cba4a7d66f5b2bb705df8c685b6c8be05e04a08
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114289988"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272347"
 ---
 # <a name="environment-variables-and-app-settings-in-azure-app-service"></a>Umgebungsvariablen und App-Einstellungen in Azure App Service
 
@@ -18,7 +18,7 @@ In [Azure App Service](overview.md) sind bestimmte Einstellungen für die Bereit
 
 Die folgenden Umgebungsvariablen hängen allgemein mit der App-Umgebung zusammen.
 
-| Name der Einstellung| BESCHREIBUNG | Beispiel |
+| Einstellungsname| BESCHREIBUNG | Beispiel |
 |-|-|-|
 | `WEBSITE_SITE_NAME` | Schreibgeschützt. App-Name. ||
 | `WEBSITE_RESOURCE_GROUP` | Schreibgeschützt. Name der Azure-Ressourcengruppe, die die App-Ressource enthält. ||
@@ -46,8 +46,6 @@ Die folgenden Umgebungsvariablen hängen allgemein mit der App-Umgebung zusammen
 | `REMOTEDEBUGGINGVERSION` | Version für Remotedebuggen. ||
 | `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` | Standardmäßig erstellt App Service bei der App-Erstellung einen freigegebenen Speicher für Sie. Wenn Sie stattdessen ein benutzerdefiniertes Speicherkonto verwenden möchten, legen Sie den Wert auf die Verbindungszeichenfolge Ihres Speicherkontos fest. Informationen zu Funktionen finden Sie in der [Referenz zu App-Einstellungen für Functions](../azure-functions/functions-app-settings.md#website_contentazurefileconnectionstring). | `DefaultEndpointsProtocol=https;AccountName=<name>;AccountKey=<key>` |
 | `WEBSITE_CONTENTSHARE` | Wenn Sie mit `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` ein benutzerdefiniertes Speicherkonto angeben, erstellt App Service eine Dateifreigabe in diesem Speicherkonto für Ihre App. Zur Verwendung eines benutzerdefinierten Namens legen Sie diese Variable auf den gewünschten Namen fest. Wenn keine Dateifreigabe mit dem angegebenen Namen vorhanden ist, wird sie von App Service erstellt. | `myapp123` |
-| `WEBSITE_AUTH_ENCRYPTION_KEY` | Standardmäßig wird der automatisch generierte Schlüssel als Verschlüsselungsschlüssel verwendet. Legen Sie ihn zur Außerkraftsetzung auf einen gewünschten Schlüssel fest. Dies wird empfohlen, wenn Sie Token oder Sitzungen für mehrere Apps freigeben möchten. ||
-| `WEBSITE_AUTH_SIGNING_KEY` | Standardmäßig wird der automatisch generierte Schlüssel als Signaturschlüssel verwendet. Legen Sie ihn zur Außerkraftsetzung auf einen gewünschten Schlüssel fest. Dies wird empfohlen, wenn Sie Token oder Sitzungen für mehrere Apps freigeben möchten. ||
 | `WEBSITE_SCM_ALWAYS_ON_ENABLED` | Schreibgeschützt. Zeigt an, ob Always On aktiviert ist (`1`) oder nicht (`0`). ||
 | `WEBSITE_SCM_SEPARATE_STATUS` | Schreibgeschützt. Zeigt an, ob die Kudu-App in einem separaten Prozess (`1`) ausgeführt wird oder nicht (`0`). ||
 
@@ -66,7 +64,7 @@ WEBSITE_CLASSIC_MODE
 
 Die folgende Tabelle zeigt Umgebungsvariablenpräfixe, die von App Service für verschiedene Zwecke verwendet werden.
 
-| Name der Einstellung | BESCHREIBUNG |
+| Einstellungsname | BESCHREIBUNG |
 |-|-|
 | `APPSETTING_` | Gibt an, dass eine Variable vom Kunden als App-Einstellung in der App-Konfiguration festgelegt wird. Sie wird als App-Einstellung in eine .NET-App eingefügt. |
 | `MAINSITE_` | Gibt an, dass eine Variable für die App selbst spezifisch ist. |
@@ -76,14 +74,14 @@ Die folgende Tabelle zeigt Umgebungsvariablenpräfixe, die von App Service für 
 | `POSTGRESQLCONNSTR_` | Gibt eine PostgreSQL-Verbindungszeichenfolge in der App-Konfiguration an. Sie wird als Verbindungszeichenfolge in eine .NET-App eingefügt. |
 | `CUSTOMCONNSTR_` | Gibt eine benutzerdefinierte Verbindungszeichenfolge in der App-Konfiguration an. Sie wird als Verbindungszeichenfolge in eine .NET-App eingefügt. |
 | `MYSQLCONNSTR_` | Gibt eine Azure SQL-Datenbank-Verbindungszeichenfolge in der App-Konfiguration an. Sie wird als Verbindungszeichenfolge in eine .NET-App eingefügt. |
-| `AZUREFILESSTORAGE_` | Eine Verbindungszeichenfolge zu einem benutzerdefinierten Azure File Storage für eine Container-App. |
+| `AZUREFILESSTORAGE_` | Eine Verbindungszeichenfolge zu einer benutzerdefinierten Azure-Dateifreigabe für eine Container-App. |
 | `AZUREBLOBSTORAGE_` | Eine Verbindungszeichenfolge zu einem benutzerdefinierten Azure Blob Storage für eine Container-App. |
 
 ## <a name="deployment"></a>Bereitstellung
 
 Die folgenden Umgebungsvariablen beziehen sich auf die App-Bereitstellung. Variablen im Zusammenhang mit der App Service-Buildautomatisierung finden Sie unter [Buildautomatisierung](#build-automation).
 
-| Name der Einstellung| BESCHREIBUNG |
+| Einstellungsname| BESCHREIBUNG |
 |-|-|
 | `DEPLOYMENT_BRANCH`| Legen Sie für die [lokale Git-](deploy-local-git.md) oder [Cloud-Git-Bereitstellung](deploy-continuous-deployment.md) (z. B. GitHub) den Wert auf den Branch in Azure fest, in dem Sie bereitstellen möchten. Standardmäßig ist dies `master`. |
 | `WEBSITE_RUN_FROM_PACKAGE`| Legen Sie den Wert auf `1` fest, um die App aus einem lokalen ZIP-Paket auszuführen, oder legen Sie ihn auf eine externe URL fest, um die App aus einem Remote-ZIP-Paket auszuführen. Weitere Informationen finden Sie unter [Direktes Ausführen Ihrer App in Azure App Service aus einem ZIP-Paket](deploy-run-package.md). |
@@ -106,7 +104,7 @@ WEBSITE_RUN_FROM_PACKAGE_BLOB_MI_RESOURCE_ID
 
 Die Kudu-Buildkonfiguration gilt für native Windows-Apps und wird verwendet, um das Verhalten von Git-basierten (oder ZIP-basierten) Bereitstellungen zu steuern.
 
-| Name der Einstellung| BESCHREIBUNG | Beispiel |
+| Einstellungsname| BESCHREIBUNG | Beispiel |
 |-|-|-|
 | `SCM_BUILD_ARGS` | Fügen Sie Elemente am Ende der MsBuild-Befehlszeile hinzu, sodass alle vorherigen Teile der Standardbefehlszeile überschrieben werden. | So erstellen Sie einen bereinigten Build: `-t:Clean;Compile`|
 | `SCM_SCRIPT_GENERATOR_ARGS` | Kudu verwendet den [hier](http://blog.amitapple.com/post/38418009331/azurewebsitecustomdeploymentpart2) beschriebenen Befehl `azure site deploymentscript`, um ein Bereitstellungsskript zu generieren. Er erkennt automatisch den Typ des Sprachframeworks und bestimmt die Parameter, die an den Befehl übergeben werden sollen. Diese Einstellung überschreibt die automatisch generierten Parameter. | So behandeln Sie Ihr Repository als einfache Inhaltsdateien: `--basic -p <folder-to-deploy>` |
@@ -139,18 +137,22 @@ In diesem Abschnitt werden die konfigurierbaren Laufzeiteinstellungen für jedes
 <!-- 
 | DOTNET_HOSTING_OPTIMIZATION_CACHE | 
  -->
-| Name der Einstellung | BESCHREIBUNG |
+| Einstellungsname | BESCHREIBUNG |
 |-|-|
 | `PORT` | Schreibgeschützt. Bei Linux-Apps der Port, an dem die .NET-Runtime im Container lauscht. |
 | `WEBSITE_ROLE_INSTANCE_ID` | Schreibgeschützt. Die ID der aktuellen Instanz. |
 | `HOME` | Schreibgeschützt. Verzeichnis, das auf freigegebenen Speicher verweist (`/home`). |
 | `DUMP_DIR` | Schreibgeschützt. Verzeichnis für die Absturzabbilder (`/home/logs/dumps`). |
 | `APP_SVC_RUN_FROM_COPY` | Nur Linux-Apps. Standardmäßig wird die App von `/home/site/wwwroot` ausgeführt, einem freigegebenen Verzeichnis für alle horizontal skalierten Instanzen. Legen Sie diese Variable auf `true` fest, um die App in ein lokales Verzeichnis in Ihrem Container zu kopieren und von dort aus auszuführen. Stellen Sie bei Verwendung dieser Option sicher, dass Sie keinen Verweis auf `/home/site/wwwroot` hartcodieren. Verwenden Sie stattdessen einen Pfad relativ zu `/home/site/wwwroot`. |
+| `MACHINEKEY_Decryption` | Bei nativen Windows-Apps oder Windows-Container-Apps wird diese Variable in die App-Umgebung oder den Container eingefügt, um kryptografische ASP.NET-Routinen zu aktivieren (siehe [machineKey-Element](/previous-versions/dotnet/netframework-4.0/w8h3skw9(v=vs.100))). Um den Standardwert `decryption` zu überschreiben, konfigurieren Sie ihn als App Service-App-Einstellung, oder legen Sie ihn direkt im `machineKey`-Element der *Web.config*-Datei fest. |
+| `MACHINEKEY_DecryptionKey` | Bei nativen Windows-Apps oder Windows-Container-Apps wird diese Variable in die App-Umgebung oder den Container eingefügt, um kryptografische ASP.NET-Routinen zu aktivieren (siehe [machineKey-Element](/previous-versions/dotnet/netframework-4.0/w8h3skw9(v=vs.100))). Um den automatisch generierten Wert `decryptionKey` zu überschreiben, konfigurieren Sie ihn als App Service-App-Einstellung, oder legen Sie ihn direkt im `machineKey`-Element der *Web.config*-Datei fest.|
+| `MACHINEKEY_Validation` | Bei nativen Windows-Apps oder Windows-Container-Apps wird diese Variable in die App-Umgebung oder den Container eingefügt, um kryptografische ASP.NET-Routinen zu aktivieren (siehe [machineKey-Element](/previous-versions/dotnet/netframework-4.0/w8h3skw9(v=vs.100))). Um den Standardwert `validation` zu überschreiben, konfigurieren Sie ihn als App Service-App-Einstellung, oder legen Sie ihn direkt im `machineKey`-Element der *Web.config*-Datei fest.|
+| `MACHINEKEY_ValidationKey` | Bei nativen Windows-Apps oder Windows-Container-Apps wird diese Variable in die App-Umgebung oder den Container eingefügt, um kryptografische ASP.NET-Routinen zu aktivieren (siehe [machineKey-Element](/previous-versions/dotnet/netframework-4.0/w8h3skw9(v=vs.100))). Um den automatisch generierten Wert `validationKey` zu überschreiben, konfigurieren Sie ihn als App Service-App-Einstellung, oder legen Sie ihn direkt im `machineKey`-Element der *Web.config*-Datei fest.|
 <!-- | `USE_DOTNET_MONITOR` | if =true then /opt/dotnetcore-tools/dotnet-monitor collect --urls "http://0.0.0.0:50051" --metrics true --metricUrls "http://0.0.0.0:50050" > /dev/null 2>&1 & -->
 
 # <a name="java"></a>[Java](#tab/java)
 
-| Name der Einstellung | BESCHREIBUNG | Beispiel |
+| Einstellungsname | BESCHREIBUNG | Beispiel |
 |-|-|-|
 | `JAVA_HOME` | Pfad des Java-Installationsverzeichnisses ||
 | `JAVA_OPTS` | Umgebungsvariablen, die für Java SE-Apps an den Befehl `java` übergeben werden sollen. Kann Systemvariablen enthalten. Verwenden Sie für Tomcat `CATALINA_OPTS`. | `-Dmysysproperty=%DRIVEPATH%` |
@@ -197,7 +199,7 @@ AZURE_SITE_APP_BASE
 
 # <a name="nodejs"></a>[Node.js](#tab/node)
 
-| Name der Einstellung | BESCHREIBUNG |
+| Einstellungsname | BESCHREIBUNG |
 |-|-|
 | `PORT` | Schreibgeschützt. Bei Linux-Apps der Port, an dem die Node.js-Runtime im Container lauscht. |
 | `WEBSITE_ROLE_INSTANCE_ID` | Schreibgeschützt. Die ID der aktuellen Instanz. |
@@ -210,7 +212,7 @@ APPSVC_TUNNEL_PORT -->
 
 # <a name="python"></a>[Python](#tab/python)
 
-| Name der Einstellung | BESCHREIBUNG |
+| Einstellungsname | BESCHREIBUNG |
 |-|-|
 | `APPSVC_VIRTUAL_ENV` | Schreibgeschützt. |
 | `PORT` | Schreibgeschützt. Bei Linux-Apps der Port, an dem die Python-App im Container lauscht. |
@@ -221,7 +223,7 @@ APPSVC_REMOTE_DEBUGGING_BREAK | debugArgs+=" -debugWait" -->
 
 # <a name="php"></a>[PHP](#tab/php)
 
-| Name der Einstellung | BESCHREIBUNG | Beispiel|
+| Einstellungsname | BESCHREIBUNG | Beispiel|
 |-|-|-|
 | `PHP_Extensions` | Durch Trennzeichen getrennte Liste von PHP-Erweiterungen. | `extension1.dll,extension2.dll,Name1=value1` |
 | `PHP_ZENDEXTENSIONS` | Legen Sie für native Windows-Apps den Wert auf den Pfad der XDebug-Erweiterung fest, z. B. `D:\devtools\xdebug\2.6.0\php_7.2\php_xdebug-2.6.0-7.2-vc15-nts.dll`. Legen Sie für Linux-Apps den Wert auf `xdebug` fest, um die XDebug-Version des PHP-Containers zu verwenden. ||
@@ -244,7 +246,7 @@ APACHE_RUN_GROUP | RUN sed -i 's!User ${APACHE_RUN_GROUP}!Group www-data!g' /etc
 
 # <a name="ruby"></a>[Ruby](#tab/ruby)
 
-| Name der Einstellung | BESCHREIBUNG | Beispiel |
+| Einstellungsname | BESCHREIBUNG | Beispiel |
 |-|-|-|
 | `PORT` | Schreibgeschützt. Port, an dem die Rails-App im Container lauscht. ||
 | `WEBSITE_ROLE_INSTANCE_ID` | Schreibgeschützt. Die ID der aktuellen Instanz. ||
@@ -260,7 +262,7 @@ APACHE_RUN_GROUP | RUN sed -i 's!User ${APACHE_RUN_GROUP}!Group www-data!g' /etc
 
 ## <a name="domain-and-dns"></a>Domäne und DNS
 
-| Name der Einstellung| BESCHREIBUNG | Beispiel |
+| Einstellungsname| BESCHREIBUNG | Beispiel |
 |-|-|-|
 | `WEBSITE_DNS_SERVER` | IP-Adresse des primären DNS-Servers für ausgehende Verbindungen (z. B. zu einem Back-End-Dienst). Der DNS-Standardserver für App Service ist Azure DNS, dessen IP-Adresse `168.63.129.16` ist. Wenn Ihre App die [VNet-Integration](web-sites-integrate-with-vnet.md) verwendet oder sich in einer [App Service-Umgebung](environment/intro.md) befindet, erbt sie standardmäßig die DNS-Serverkonfiguration vom VNet. | `10.0.0.1` |
 | `WEBSITE_DNS_ALT_SERVER` | IP-Adresse des Fallback-DNS-Servers für ausgehende Verbindungen. Siehe `WEBSITE_DNS_SERVER`. | |
@@ -269,11 +271,11 @@ APACHE_RUN_GROUP | RUN sed -i 's!User ${APACHE_RUN_GROUP}!Group www-data!g' /etc
 DOMAIN_OWNERSHIP_VERIFICATION_IDENTIFIERS
  -->
 
-## <a name="tslssl"></a>TSL/SSL
+## <a name="tlsssl"></a>TLS/SSL
 
 Weitere Informationen finden Sie unter [Verwenden eines TLS-/SSL-Zertifikats in Ihrem Code in Azure App Service](configure-ssl-certificate-in-code.md).
 
-| Name der Einstellung| BESCHREIBUNG |
+| Einstellungsname| BESCHREIBUNG |
 |-|-|
 | `WEBSITE_LOAD_CERTIFICATES` | Durch Trennzeichen getrennte Fingerabdruckwerte für das Zertifikat, das Sie in Ihren Code laden möchten, oder `*`, um das Laden aller Zertifikate in Code zu ermöglichen. Nur [Zertifikate, die Ihrer App hinzugefügt wurden](configure-ssl-certificate.md), können geladen werden. |
 | `WEBSITE_PRIVATE_CERTS_PATH` | Schreibgeschützt. Pfad in einem Windows-Container zu den geladenen privaten Zertifikaten. |
@@ -285,7 +287,7 @@ Weitere Informationen finden Sie unter [Verwenden eines TLS-/SSL-Zertifikats in 
 
 Weitere Informationen zu Bereitstellungsslots finden Sie unter [Einrichten von Stagingumgebungen in Azure App Service](deploy-staging-slots.md).
 
-| Name der Einstellung| BESCHREIBUNG | Beispiel |
+| Einstellungsname| BESCHREIBUNG | Beispiel |
 |-|-|-|
 |`WEBSITE_SLOT_NAME`| Schreibgeschützt. Name des aktuellen Bereitstellungsslots. Der Name des Produktionsslots ist `Production`. ||
 |`WEBSITE_OVERRIDE_STICKY_EXTENSION_VERSIONS`| Standardmäßig sind die Versionen für Websiteerweiterungen für jeden Slot spezifisch. Dies verhindert unerwartetes Anwendungsverhalten aufgrund von Änderungen der Erweiterungsversionen nach einem Austausch. Wenn Sie möchten, dass die Erweiterungsversionen auch ausgetauscht werden, legen Sie für *alle Slots* den Wert auf `1` fest. ||
@@ -304,7 +306,7 @@ Weitere Informationen zu Bereitstellungsslots finden Sie unter [Einrichten von S
 
 Weitere Informationen zu benutzerdefinierten Containern finden Sie unter [Ausführen eines benutzerdefinierten Containers in Azure](quickstart-custom-container.md).
 
-| Name der Einstellung| BESCHREIBUNG | Beispiel |
+| Einstellungsname| BESCHREIBUNG | Beispiel |
 |-|-|-|
 | `WEBSITES_ENABLE_APP_SERVICE_STORAGE` | Legen Sie diese Option auf `true` fest, damit das `/home`-Verzeichnis für skalierte Instanzen freigegeben werden kann. Der Standard ist `false` für benutzerdefinierte Container. ||
 | `WEBSITES_CONTAINER_START_TIME_LIMIT` | Die Zeit in Sekunden, die auf den Abschluss des Containerstartvorgangs gewartet wird, bevor der Container neu gestartet wird. Der Standardwert ist `230`. Sie können ihn bis zum Maximum von `1800` erhöhen. ||
@@ -312,13 +314,9 @@ Weitere Informationen zu benutzerdefinierten Containern finden Sie unter [Ausfü
 | `DOCKER_REGISTRY_SERVER_USERNAME` | Benutzername für die Authentifizierung beim Registrierungsserver unter `DOCKER_REGISTRY_SERVER_URL`. Aus Sicherheitsgründen wird diese Variable nicht an den Container übergeben. ||
 | `DOCKER_REGISTRY_SERVER_PASSWORD` | Kennwort für die Authentifizierung beim Registrierungsserver unter `DOCKER_REGISTRY_SERVER_URL`. Aus Sicherheitsgründen wird diese Variable nicht an den Container übergeben. ||
 | `WEBSITES_WEB_CONTAINER_NAME` | In einer Docker Compose-App kann nur einer der Container über das Internet zugänglich sein. Legen Sie den Wert auf den Namen des Containers fest, der in der Konfigurationsdatei definiert ist, um die Standardauswahl des Containers zu überschreiben. Standardmäßig ist der über das Internet zugängliche Container der erste Container, der Port 80 oder 8080 definiert, oder, wenn kein solcher Container gefunden wird, der erste Container, der in der Konfigurationsdatei definiert ist. |  |
-| `WEBSITES_PORT` | Bei einem benutzerdefinierten Container die benutzerdefinierte Portnummer für den Container, an den Anforderungen weitergeleitet werden sollen. Standardmäßig versucht App Service die automatische Porterkennung der Ports 80 und 8080. ||
+| `WEBSITES_PORT` | Bei einem benutzerdefinierten Container die benutzerdefinierte Portnummer für den Container, an den App Service Anforderungen weiterleiten soll. Standardmäßig versucht App Service die automatische Porterkennung der Ports 80 und 8080. Diese Einstellung wird *nicht* als Umgebungsvariable in den Container eingefügt. ||
 | `WEBSITE_CPU_CORES_LIMIT` | Standardmäßig wird ein Windows-Container mit allen verfügbaren Kernen für Ihren ausgewählten Tarif ausgeführt. Zum Verringern der Anzahl der Kerne legen Sie den Wert auf den Grenzwert für die Anzahl der gewünschten Kerne fest. Weitere Informationen finden Sie unter [Anpassen der Anzahl der Compute-Kerne](configure-custom-container.md?pivots=container-windows#customize-the-number-of-compute-cores).||
 | `WEBSITE_MEMORY_LIMIT_MB` | Standardmäßig sind alle in Azure App Service bereitgestellten Windows-Container auf 1 GB RAM beschränkt. Legen Sie den Wert auf den gewünschten Arbeitsspeichergrenzwert in MB fest. Der kumulierte Gesamtwert dieser Einstellung für Apps im gleichen Plan darf den im ausgewählten Tarif zulässigen Betrag nicht überschreiten. Weitere Informationen finden Sie unter [Anpassen des Containerarbeitsspeichers](configure-custom-container.md?pivots=container-windows#customize-container-memory). ||
-| `MACHINEKEY_Decryption` | Bei Windows-Containern wird diese Variable in den Container eingefügt, um kryptografische ASP.NET-Routinen zu aktivieren (siehe [machineKey-Element](/previous-versions/dotnet/netframework-4.0/w8h3skw9(v=vs.100))). Zur Außerkraftsetzung des `decryption`-Standardwerts legen Sie ihn als App-Einstellung fest. ||
-| `MACHINEKEY_DecryptionKey` | Bei Windows-Containern wird diese Variable in den Container eingefügt, um kryptografische ASP.NET-Routinen zu aktivieren (siehe [machineKey-Element](/previous-versions/dotnet/netframework-4.0/w8h3skw9(v=vs.100))). Zur Außerkraftsetzung des automatisch generierten `decryptionKey`-Werts legen Sie ihn als App-Einstellung fest. ||
-| `MACHINEKEY_Validation` | Bei Windows-Containern wird diese Variable in den Container eingefügt, um kryptografische ASP.NET-Routinen zu aktivieren (siehe [machineKey-Element](/previous-versions/dotnet/netframework-4.0/w8h3skw9(v=vs.100))). Zur Außerkraftsetzung des `validation`-Standardwerts legen Sie ihn als App-Einstellung fest. ||
-| `MACHINEKEY_ValidationKey` | Bei Windows-Containern wird diese Variable in den Container eingefügt, um kryptografische ASP.NET-Routinen zu aktivieren (siehe [machineKey-Element](/previous-versions/dotnet/netframework-4.0/w8h3skw9(v=vs.100))). Zur Außerkraftsetzung des automatisch generierten `validationKey`-Werts legen Sie ihn als App-Einstellung fest. ||
 | `CONTAINER_WINRM_ENABLED` | Legen Sie für eine Windows Container-App den Wert auf `1` fest, um Windows-Remoteverwaltung (WIN-RM) zu aktivieren. ||
 
 <!-- 
@@ -335,7 +333,7 @@ WEBSITE_DISABLE_PRELOAD_HANG_MITIGATION
 
 ## <a name="scaling"></a>Skalierung
 
-| Name der Einstellung| BESCHREIBUNG |
+| Einstellungsname| BESCHREIBUNG |
 |-|-|
 | `WEBSITE_INSTANCE_ID` | Schreibgeschützt. Eindeutige ID der aktuellen VM-Instanz, wenn die App auf mehrere Instanzen ausskaliert wird. |
 | `WEBSITE_IIS_SITE_NAME` | Veraltet. Verwenden Sie `WEBSITE_INSTANCE_ID`. |
@@ -344,7 +342,7 @@ WEBSITE_DISABLE_PRELOAD_HANG_MITIGATION
 
 ## <a name="logging"></a>Protokollierung
 
-| Name der Einstellung| BESCHREIBUNG | Beispiel |
+| Einstellungsname| BESCHREIBUNG | Beispiel |
 |-|-|-|
 | `WEBSITE_HTTPLOGGING_ENABLED` | Schreibgeschützt. Zeigt an, ob die Webserverprotokollierung für native Windows-Apps aktiviert (`1`) oder nicht aktiviert (`0`) ist. ||
 | `WEBSITE_HTTPLOGGING_RETENTION_DAYS` | Aufbewahrungsdauer von Webserverprotokollen für native Windows-Apps in Tagen, wenn Webserverprotokolle aktiviert sind. | `10` |
@@ -380,7 +378,7 @@ WEBSITE_ARR_SESSION_AFFINITY_DISABLE
 
 Im Folgenden sind „Fake“-Umgebungsvariablen aufgeführt, die nicht vorhanden sind, wenn Sie sie aufzählen, aber ihren Wert zurückgeben, wenn Sie sie einzeln suchen. Der Wert ist dynamisch und kann sich bei jedem Lookup ändern.
 
-| Name der Einstellung| BESCHREIBUNG |
+| Einstellungsname| BESCHREIBUNG |
 |-|-|
 | `WEBSITE_COUNTERS_ASPNET` | Ein JSON-Objekt, das die ASP.NET Leistungsindikatoren enthält. |
 | `WEBSITE_COUNTERS_APP` | Ein JSON-Objekt, das die Sandbox-Indikatoren enthält. |
@@ -389,7 +387,7 @@ Im Folgenden sind „Fake“-Umgebungsvariablen aufgeführt, die nicht vorhanden
 
 ## <a name="caching"></a>Caching
 
-| Name der Einstellung| BESCHREIBUNG |
+| Einstellungsname| BESCHREIBUNG |
 |-|-|
 | `WEBSITE_LOCAL_CACHE_OPTION` | Gibt an, ob der lokale Cache aktiviert ist. Die verfügbaren Optionen lauten wie folgt: <br/>- `Default`: die globale Einstellung auf Stempelebene erben.<br/>- `Always`: für die App aktivieren.<br/>– OnStorageUnavailability<br/>- `Disabled`: für die App deaktiviert. |
 | `WEBSITE_LOCAL_CACHE_READWRITE_OPTION` | Lese-/Schreiboptionen des lokalen Caches. Die verfügbaren Optionen lauten wie folgt: <br/>- `ReadOnly`: Cache ist schreibgeschützt.<br/>- `WriteWithCopyBack`: Schreibvorgänge in den lokalen Cache zulassen und in regelmäßigen Abständen in freigegebenen Speicher kopieren. Gilt nur für Einzelinstanz-Apps, da die SCM-Website auf den lokalen Cache verweist.<br/>- `WriteButDiscardChanges`: Schreibvorgänge in den lokalen Cache zulassen, aber lokal vorgenommene Änderungen verwerfen. |
@@ -427,7 +425,7 @@ NEGOTIATE_CLIENT_CERT
 
 Die folgenden Umgebungsvariablen beziehen sich auf [Hybridverbindungen](app-service-hybrid-connections.md) und die [VNet-Integration](web-sites-integrate-with-vnet.md).
 
-| Name der Einstellung | BESCHREIBUNG |
+| Einstellungsname | BESCHREIBUNG |
 |-|-|
 | `WEBSITE_RELAYS` | Schreibgeschützt. Daten, die zum Konfigurieren der Hybridverbindung erforderlich sind, einschließlich Endpunkte und Service Bus-Daten. |
 | `WEBSITE_REWRITE_TABLE` | Schreibgeschützt. Wird zur Laufzeit verwendet, um die Lookups durchzuführen und die Verbindungen entsprechend neu zu schreiben. | 
@@ -453,7 +451,7 @@ WEBSITE_SOCKET_STATISTICS_ENABLED
 
 Die folgenden Umgebungsvariablen beziehen sich auf [Key Vault-Verweise](app-service-key-vault-references.md).
 
-| Name der Einstellung | BESCHREIBUNG |
+| Einstellungsname | BESCHREIBUNG |
 |-|-|
 | `WEBSITE_KEYVAULT_REFERENCES` | Schreibgeschützt. Enthält Informationen (einschließlich Status) für alle Key Vault-Verweise, die derzeit in der App konfiguriert sind. |
 | `WEBSITE_SKIP_CONTENTSHARE_VALIDATION` | Wenn Sie die freigegebene Speicherverbindung Ihrer App (mithilfe von `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`) auf einen Key Vault-Verweis festlegen, kann die App den Key Vault-Verweis bei der App-Erstellung oder -Aktualisierung nicht auflösen, wenn eine der folgenden Bedingungen zutrifft: <br/>– Die App greift mit einer vom System zugewiesenen Identität auf den Schlüsseltresor zu.<br/>– Die App greift mit einer vom Benutzer zugewiesenen Identität auf den Schlüsseltresor zu, und der Schlüsseltresor wird [ mit einem VNet gesperrt](../key-vault/general/overview-vnet-service-endpoints.md).<br/>Zum Vermeiden von Fehlern beim Erstellen oder Aktualisieren legen Sie diese Variable auf `1` fest. |
@@ -464,7 +462,7 @@ Die folgenden Umgebungsvariablen beziehen sich auf [Key Vault-Verweise](app-serv
 
 Die folgenden Umgebungsvariablen beziehen sich auf die CORS-Konfiguration (Cross-Origin Resource Sharing).
 
-| Name der Einstellung | BESCHREIBUNG |
+| Einstellungsname | BESCHREIBUNG |
 |-|-|
 | `WEBSITE_CORS_ALLOWED_ORIGINS` | Schreibgeschützt. Zeigt die zulässigen Ursprünge für CORS an. |
 | `WEBSITE_CORS_SUPPORT_CREDENTIALS` | Schreibgeschützt. Zeigt an, ob die Einstellung des `Access-Control-Allow-Credentials`-Headers auf `true` aktiviert (`True`) oder nicht aktiviert (`False`) ist. |
@@ -473,7 +471,7 @@ Die folgenden Umgebungsvariablen beziehen sich auf die CORS-Konfiguration (Cross
 
 Die folgenden Umgebungsvariablen beziehen sich auf die [App Service-Authentifizierung](overview-authentication-authorization.md).
 
-| Name der Einstellung| BESCHREIBUNG|
+| Einstellungsname| BESCHREIBUNG|
 |-|-|
 | `WEBSITE_AUTH_DISABLE_IDENTITY_FLOW`  | Wenn diese Einstellung auf `true` festgelegt ist, wird die Zuweisung der Threadprinzipalidentität in ASP.NET-basierten Webanwendungen (einschließlich v1-Funktions-Apps) deaktiviert. Dies dient dazu, dass Entwickler den Zugriff auf ihre Website mit Authentifizierung schützen können, aber dennoch einen separaten Anmeldemechanismus innerhalb ihrer App-Logik verwenden können. Der Standardwert lautet `false`. |
 | `WEBSITE_AUTH_HIDE_DEPRECATED_SID` | `true` oder `false`. Der Standardwert ist `false`. Dies ist eine Einstellung für die Legacyintegration von Azure Mobile Apps für Azure App Service. Durch Festlegen dieser Einstellung auf `true` wird ein Problem behoben, bei dem sich die für authentifizierte Benutzer generierte SID (Sicherheits-ID) möglicherweise ändert, wenn der Benutzer seine Profilinformationen ändert. Das Ändern dieses Werts kann dazu führen, dass vorhandene Azure Mobile Apps-Benutzer-IDs geändert werden. Die meisten Apps müssen diese Einstellung nicht verwenden. |
@@ -488,6 +486,8 @@ Die folgenden Umgebungsvariablen beziehen sich auf die [App Service-Authentifizi
 | `WEBSITE_AUTH_VALIDATE_NONCE`| `true` oder `false`. Der Standardwert ist `true`. Dieser Wert sollte nie auf `false` festgelegt werden, außer wenn während interaktiver Anmeldungen vorübergehend Fehler bei der Überprüfung [kryptografischer Nonces](https://en.wikipedia.org/wiki/Cryptographic_nonce) debuggt werden. Diese Anwendungseinstellung ist für die Verwendung mit der (klassischen) V1-Konfigurationsumgebung vorgesehen. Wenn Sie das Konfigurationsschema für die V2-Authentifizierung verwenden, sollten Sie stattdessen den Konfigurationswert `login.nonce.validateNonce` verwenden. |
 | `WEBSITE_AUTH_V2_CONFIG_JSON` | Diese Umgebungsvariable wird automatisch von der Azure App Service-Plattform aufgefüllt und zum Konfigurieren des integrierten Authentifizierungsmoduls verwendet. Der Wert dieser Umgebungsvariablen entspricht der V2-Authentifizierungskonfiguration (nicht klassisch) für die aktuelle App in Azure Resource Manager. Er ist nicht dazu gedacht, explizit konfiguriert zu werden. |
 | `WEBSITE_AUTH_ENABLED` | Schreibgeschützt. Wird in eine Windows- oder Linux-App eingefügt, um anzugeben, ob App Service-Authentifizierung aktiviert ist. |
+| `WEBSITE_AUTH_ENCRYPTION_KEY` | Standardmäßig wird der automatisch generierte Schlüssel als Verschlüsselungsschlüssel verwendet. Legen Sie ihn zur Außerkraftsetzung auf einen gewünschten Schlüssel fest. Dies wird empfohlen, wenn Sie Token oder Sitzungen für mehrere Apps freigeben möchten. Wenn angegeben, wird die `MACHINEKEY_DecryptionKey`-Einstellung dadurch ersetzt. ||
+| `WEBSITE_AUTH_SIGNING_KEY` | Standardmäßig wird der automatisch generierte Schlüssel als Signaturschlüssel verwendet. Legen Sie ihn zur Außerkraftsetzung auf einen gewünschten Schlüssel fest. Dies wird empfohlen, wenn Sie Token oder Sitzungen für mehrere Apps freigeben möchten. Wenn angegeben, wird die `MACHINEKEY_ValidationKey`-Einstellung dadurch ersetzt. ||
 
 <!-- System settings
 WEBSITE_AUTH_RUNTIME_VERSION
@@ -544,7 +544,7 @@ WEBSITE_AUTH_FILE_PATH
 
 Die folgenden Umgebungsvariablen beziehen sich auf [verwaltete Identitäten](overview-managed-identity.md).
 
-|Name der Einstellung | BESCHREIBUNG |
+|Einstellungsname | BESCHREIBUNG |
 |-|-|
 |`IDENTITY_ENDPOINT` | Schreibgeschützt. Die URL zum Abrufen des Tokens für die [verwaltete Identität](overview-managed-identity.md) der App. |
 | `MSI_ENDPOINT` | Veraltet. Verwenden Sie `IDENTITY_ENDPOINT`. |
@@ -556,7 +556,7 @@ Die folgenden Umgebungsvariablen beziehen sich auf [verwaltete Identitäten](ove
 
 Die folgenden Umgebungsvariablen beziehen sich auf [Integritätsprüfungen](monitor-instances-health-check.md).
 
-| Name der Einstellung | BESCHREIBUNG |
+| Einstellungsname | BESCHREIBUNG |
 |-|-|
 | `WEBSITE_HEALTHCHECK_MAXPINGFAILURES` | Die maximale Anzahl fehlgeschlagener Pings, bevor die Instanz entfernt wird. Legen Sie einen Wert zwischen `2` und `100` fest. Beim Hoch- oder Aufskalieren pingt App Service außerdem den Pfad der Integritätsprüfung, um sicherzustellen, dass neue Instanzen bereit sind. Weitere Informationen finden Sie unter [Integritätsprüfung](monitor-instances-health-check.md).|
 | `WEBSITE_HEALTHCHECK_MAXUNHEALTHYWORKERPERCENT` | Um zu vermeiden, dass fehlerfreie Instanzen überlastet werden, wird nicht mehr als die Hälfte der Instanzen ausgeschlossen. Wenn z. B. ein App Service-Plan auf vier Instanzen skaliert ist und drei fehlerhaft sind, werden höchstens zwei ausgeschlossen. Die anderen beiden Instanzen (eine fehlerfreie und eine fehlerhafte) empfangen weiterhin Anforderungen. Im ungünstigsten Fall, in dem alle Instanzen fehlerhaft sind, wird keine ausgeschlossen. Zur Außerkraftsetzung dieses Verhaltens legen Sie einen Wert zwischen `0` und `100` fest. Ein höherer Wert führt dazu, dass mehr fehlerhafte Instanzen entfernt werden. Der Standardwert ist `50` (50 %). |
@@ -565,7 +565,7 @@ Die folgenden Umgebungsvariablen beziehen sich auf [Integritätsprüfungen](moni
 
 Die folgenden Umgebungsvariablen hängen mit dem Feature [Pushbenachrichtigungen](/previous-versions/azure/app-service-mobile/app-service-mobile-xamarin-forms-get-started-push#configure-hub) zusammen.
 
-| Name der Einstellung | BESCHREIBUNG |
+| Einstellungsname | BESCHREIBUNG |
 |-|-|
 | `WEBSITE_PUSH_ENABLED` | Schreibgeschützt. Wird hinzugefügt, wenn Pushbenachrichtigungen aktiviert sind. |
 | `WEBSITE_PUSH_TAG_WHITELIST` | Schreibgeschützt. Enthält die Tags in der Benachrichtigungsregistrierung. |
@@ -594,7 +594,7 @@ WEBSITE_VNET_BLOCK_FOR_SETUP_SCM_SITE
 
 Die folgenden Umgebungsvariablen beziehen sich auf [WebJobs](webjobs-create.md).
 
-| Name der Einstellung| BESCHREIBUNG |
+| Einstellungsname| BESCHREIBUNG |
 |-|-|
 | `WEBJOBS_RESTART_TIME`|Bei fortlaufenden Aufträgen die Verzögerung in Sekunden, bevor der Prozess eines Auftrags, der aus irgendeinem Grund ausgefallen ist, neu gestartet wird. |
 | `WEBJOBS_IDLE_TIMEOUT`| Bei ausgelösten Aufträgen das Timeout in Sekunden, nach dem der Auftrag abgebrochen wird, wenn er sich im Leerlauf befindet oder keine CPU-Zeit oder Ausgabe aufweist. |
@@ -610,9 +610,9 @@ Die folgenden Umgebungsvariablen beziehen sich auf [WebJobs](webjobs-create.md).
 | `WEBJOBS_DATA_PATH` | Schreibgeschützt. Der aktuelle Auftragsmetadatenpfad, der die Protokolle, den Verlauf und jedes Artefakt des Auftrags enthalten soll. |
 | `WEBJOBS_RUN_ID` | Schreibgeschützt. Bei ausgelösten Aufträgen die aktuelle Ausführungs-ID des Auftrags. |
 
-## <a name="functions"></a>Funktionen
+## <a name="functions"></a>Functions
 
-| Name der Einstellung | BESCHREIBUNG |
+| Einstellungsname | BESCHREIBUNG |
 |-|-|
 | `WEBSITE_FUNCTIONS_ARMCACHE_ENABLED` | Legen Sie den Wert auf `0` fest, um den Funktionscache zu deaktivieren. |
 | `WEBSITE_MAX_DYNAMIC_APPLICATION_SCALE_OUT` | [Referenz zu App-Einstellungen für Azure Functions](../azure-functions/functions-app-settings.md) |

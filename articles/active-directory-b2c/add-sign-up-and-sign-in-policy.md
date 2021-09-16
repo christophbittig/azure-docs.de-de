@@ -13,12 +13,12 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: edaecb8d3969d251f8ff7c4e6525912a0c199089
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 0c1871921160b0b5862e7655a3826949406ac111
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351287"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122777801"
 ---
 # <a name="set-up-a-sign-up-and-sign-in-flow-in-azure-active-directory-b2c"></a>Einrichten eines Registrierungs- und Anmeldeflows in Azure Active Directory B2C
 
@@ -46,7 +46,8 @@ Wenn dies noch nicht erfolgt ist, [registrieren Sie eine Webanwendung in Azure A
 Der Benutzerflow für Registrierung und Anmeldung verarbeitet die Benutzeroberflächen für die Registrierung und Anmeldung in ein und derselben Konfiguration. Die Benutzer Ihrer Anwendung werden je nach Kontext auf den entsprechenden Pfad geleitet.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
 1. Wählen Sie unter **Richtlinien** die Option **Benutzerflows** und dann **Neuer Benutzerflow** aus.
 
@@ -64,9 +65,9 @@ Der Benutzerflow für Registrierung und Anmeldung verarbeitet die Benutzeroberfl
 1. Wählen Sie unter **Identitätsanbieter** mindestens einen Identitätsanbieter aus:
 
    * Wählen Sie unter **Lokale Konten** eins der folgenden Konten aus: **E-Mail-Registrierung**, **Benutzer-ID-Registrierung**, **Registrierung per Telefon**, **Registrierung per Telefon/E-Mail** oder **Keins**. [Weitere Informationen](sign-in-options.md)
-   * Wählen Sie unter **Anbieter für soziale Identitäten** einen der externen Anbieter für soziale oder Unternehmensidentitäten aus, die Sie eingerichtet haben. [Weitere Informationen](add-identity-provider.md)
-1. Wenn Sie unter **Mehrstufige Authentifizierung** festlegen möchten, dass Benutzer ihre Identität mit einer zweiten Authentifizierungsmethode überprüfen müssen, wählen Sie den Methodentyp aus und den Zeitpunkt, an dem die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) erzwungen werden soll. [Weitere Informationen](multi-factor-authentication.md)
-1. Wenn Sie unter **Bedingter Zugriff** Richtlinien für den bedingten Zugriff für Ihren Azure AD B2C-Mandanten konfiguriert haben und diese für diesen Benutzerflow aktivieren möchten, aktivieren Sie das Kontrollkästchen **Richtlinien für bedingten Zugriff erzwingen**. Sie müssen keinen Richtliniennamen angeben. [Weitere Informationen](conditional-access-user-flow.md?pivots=b2c-user-flow)
+   * Wählen Sie unter **Soziales Netzwerk als Identitätsanbieter** einen der externen Anbieter für soziale oder Unternehmensidentitäten aus, die Sie eingerichtet haben. [Weitere Informationen](add-identity-provider.md)
+1. Wenn Sie unter **Mehrstufige Authentifizierung** festlegen möchten, dass Benutzer ihre Identität anhand einer zweiten Authentifizierungsmethode verifizieren müssen, wählen Sie den Methodentyp und den Zeitpunkt aus, an dem die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) erzwungen werden soll. [Weitere Informationen](multi-factor-authentication.md)
+1. Wenn Sie unter **Bedingter Zugriff** Richtlinien für bedingten Zugriff für Ihren Azure AD B2C-Mandanten konfiguriert haben und sie für diesen Benutzerflow aktivieren möchten, aktivieren Sie das Kontrollkästchen **Richtlinien für bedingten Zugriff erzwingen**. Sie müssen keinen Richtliniennamen angeben. [Weitere Informationen](conditional-access-user-flow.md?pivots=b2c-user-flow)
 1. Wählen Sie unter **Benutzerattribute und Tokenansprüche** die Attribute aus, die Sie vom Benutzer während der Registrierung erfassen möchten. Wählen Sie außerdem die Ansprüche aus, die im Token zurückgegeben werden sollen. Um eine vollständige Liste der Werte zu erhalten, wählen Sie **Mehr anzeigen** aus, wählen Sie die Werte aus, und wählen Sie dann **OK**.
 
    > [!NOTE]

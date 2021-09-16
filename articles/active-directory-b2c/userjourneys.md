@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/27/2021
+ms.date: 08/31/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ee0fbab517a34f6986d20ea3271cb4325bf6aabd
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.openlocfilehash: 2a935e88f1127f27e3f779fb88447466c470fd32
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112981014"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123271915"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -113,11 +113,6 @@ Das **OrchestrationStep**-Element kann die folgenden Elemente enthalten:
 
 Orchestrierungsschritte können anhand von Voraussetzungen, die im Orchestrierungsschritt definiert werden, bedingungsabhängig ausgeführt werden. Das `Preconditions`-Element enthält eine Liste der auszuwertenden Vorbedingungen. Wenn die Vorbedingungsauswertung erfüllt ist, wird der zugeordnete Orchestrierungsschritt mit dem nächsten Orchestrierungsschritt übersprungen. 
 
-Jede Vorbedingung wertet einen einzelnen Anspruch aus. Es gibt zwei Arten von Vorbedingungen:
- 
-- **Claims exist** (Ansprüche sind vorhanden): Gibt an, dass die Aktionen ausgeführt werden sollen, wenn der aktuelle Anspruchsbehälter des Benutzers die angegebenen Ansprüche enthält.
-- **Claim equals** (Anspruch entspricht): Gibt an, dass die Aktionen ausgeführt werden sollen, wenn der angegebene Anspruch vorhanden ist und dessen Wert dem angegebenen Wert entspricht. Bei der Überprüfung wird ein Ordinalvergleich unter Beachtung der Groß-/Kleinschreibung durchgeführt. Verwenden Sie bei der Überprüfung eines booleschen Anspruchstyps `True` oder `False`.
-
 Azure AD B2C wertet die Vorbedingungen in Listenreihenfolge aus. Mit den auf der Reihenfolge basierenden Vorbedingungen können Sie die Reihenfolge festlegen, in der die Vorbedingungen angewendet werden. Die erste erfüllte Vorbedingung überschreibt alle nachfolgenden Vorbedingungen. Der Orchestrierungsschritt wird nur ausgeführt, wenn nicht alle Vorbedingungen erfüllt sind. 
 
 Das **Preconditions**-Element enthält das folgende Element:
@@ -141,6 +136,31 @@ Das **Precondition**-Element enthält die folgenden Elemente:
 | ------- | ----------- | ----------- |
 | Wert | 1:2 | Der Bezeichner eines Anspruchstyps. Der Anspruch ist bereits im Abschnitt für das Anspruchsschema in der Richtliniendatei oder der übergeordneten Richtliniendatei definiert. Bei Verwendung einer Vorbedingung vom Typ `ClaimEquals` enthält ein zweites Element vom Typ `Value` den zu überprüfenden Wert. |
 | Aktion | 1:1 | Die Aktion, die ausgeführt werden soll, wenn die Auswertung der Vorbedingung erfüllt ist. Möglicher Wert: `SkipThisOrchestrationStep`. Der zugeordnete Orchestrierungsschritt wird mit dem nächsten Schritt übersprungen. |
+  
+Jede Vorbedingung wertet einen einzelnen Anspruch aus. Es gibt zwei Arten von Vorbedingungen:
+ 
+- **ClaimsExist**: Gibt an, dass die Aktionen ausgeführt werden sollen, wenn der aktuelle Anspruchsbehälter des Benutzers die angegebenen Ansprüche enthält.
+- **ClaimEquals**: Gibt an, dass die Aktionen ausgeführt werden sollen, wenn der angegebene Anspruch vorhanden ist und dessen Wert dem angegebenen Wert entspricht. Bei der Überprüfung wird ein Ordinalvergleich unter Beachtung der Groß-/Kleinschreibung durchgeführt. Verwenden Sie bei der Überprüfung eines booleschen Anspruchstyps `True` oder `False`. 
+
+    Wenn der Anspruch NULL oder nicht initialisiert ist, wird die Vorbedingung ignoriert, unabhängig davon, ob `ExecuteActionsIf` den Wert `true` oder `false` aufweist. Als bewährte Methode sollten Sie überprüfen, ob der Anspruch vorhanden ist und einem bestimmten Wert entspricht.
+
+Ein Beispielszenario wäre, den Benutzer zur MFA aufzufordern, wenn der Benutzer `MfaPreference` auf `Phone` festgelegt hat. Um diese bedingte Logik durchzuführen, überprüfen Sie, ob der Anspruch `MfaPreference`vorhanden ist und überprüfen Sie außerdem, ob der Anspruchswert gleich `Phone` ist. Im folgenden XML-Code wird veranschaulicht, wie diese Logik mit Vorbedingungen implementiert wird. 
+  
+```xml
+<Preconditions>
+  <!-- Skip this orchestration step if MfaPreference doesn't exist. -->
+  <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
+    <Value>MfaPreference</Value>
+    <Action>SkipThisOrchestrationStep</Action>
+  </Precondition>
+  <!-- Skip this orchestration step if MfaPreference doesn't equal to Phone. -->
+  <Precondition Type="ClaimEquals" ExecuteActionsIf="false">
+    <Value>MfaPreference</Value>
+    <Value>Phone</Value>
+    <Action>SkipThisOrchestrationStep</Action>
+  </Precondition>
+</Preconditions>
+```
 
 #### <a name="preconditions-examples"></a>Beispiele für Voraussetzungen
 

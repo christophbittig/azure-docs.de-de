@@ -11,16 +11,19 @@ ms.topic: how-to
 ms.date: 07/15/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: bee4eb52ffab891f1a0f120fca25573a93d25370
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 09f35e9621f6704fb33720a43afb38fd99e9eec6
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355025"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123213909"
 ---
 # <a name="tutorial-configure-akamai-with-azure-active-directory-b2c"></a>Tutorial: Konfigurieren von Akamai mit Azure Active Directory B2C
 
 In diesem Beispieltutorial erfahren Sie, wie Sie die Lösung [Akamai Web Application Firewall (WAF)](https://www.akamai.com/us/en/resources/web-application-firewall.jsp) für einen Azure Active Directory (AD) B2C-Mandanten mit benutzerdefinierten Domänen aktivieren. Akamai WAF unterstützt Organisationen dabei, ihre Webanwendungen vor böswilligen Angriffen zu schützen, die darauf abzielen, Sicherheitsrisiken wie die Einschleusung von SQL-Befehlen und Cross-Site-Skripting auszunutzen.
+
+>[!NOTE]
+>Dieses Feature befindet sich in der Phase der öffentlichen Vorschau.
 
 Vorteile der Verwendung der Akamai WAF-Lösung:
 
@@ -79,8 +82,8 @@ Die Akamai WAF-Integration umfasst die folgenden Komponenten:
 |:-----------|:-----------|
 | Ursprungstyp | Ihr Ursprung |
 | Hostname des Ursprungsservers | yourafddomain.azurefd.net |
-| Hostheader für Weiterleitung | Hostname des Ursprungs |
-| Hostname des Cacheschlüssels| Hostname des Ursprungs |
+| Hostheader für Weiterleitung | Incomming-Hostheader |
+| Hostname des Cacheschlüssels| Incomming-Hostheader  |
 
 ### <a name="configure-dns"></a>Konfigurieren des DNS
 

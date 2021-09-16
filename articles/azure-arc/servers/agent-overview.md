@@ -4,12 +4,12 @@ description: Dieser Artikel bietet eine ausführliche Übersicht über den Agent
 ms.date: 08/18/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 04324fa93c728440b0e590bad1d74e98c6e62df1
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: fa3b934d6909a3975bf9d01b6cd2f8f2fd2428e4
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418457"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771004"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Übersicht über den Agent für Server mit Azure Arc-Unterstützung
 
@@ -26,11 +26,11 @@ Das Azure Connected Machine-Agent-Paket enthält mehrere logische Komponenten, d
 
 * Hybrid Instance Metadata Service (HIMDS) verwaltet die Verbindung mit Azure und die Azure-Identität des verbundenen Computers.
 
-* Der Gastkonfigurations-Agent stellt Gastrichtlinien und Gastkonfigurationsfunktionen bereit, z. B. die Überprüfung, ob der Computer den erforderlichen Richtlinien entspricht.
+* Der Gastkonfigurations-Agent stellt Funktionen wie die Überprüfung, ob der Computer den erforderlichen Richtlinien entspricht, sowie das Erzwingen der Compliance bereit.
 
     Beachten Sie das folgende Verhalten bei der Azure Policy-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md) für einen getrennten Computer:
 
-    * Die Zuweisung der Gastkonfigurationsrichtlinie für getrennte Computer wird nicht durchgeführt.
+    * Eine Azure Policy-Zuweisung, deren Ziel getrennte Computer sind, ist nicht betroffen.
     * Die Gastzuweisung wird 14 Tage lang lokal gespeichert. Wenn der Connected Machine-Agent innerhalb dieser 14 Tage erneut eine Verbindung mit dem Dienst herstellt, werden die Richtlinienzuweisungen neu angewendet.
     * Zuweisungen werden nach 14 Tagen gelöscht und nach Ablauf dieses Zeitraums für den betreffenden Computer nicht erneut durchgeführt.
 
@@ -51,8 +51,8 @@ Metadateninformationen zum verbundenen Computer werden gesammelt, nachdem der Co
 * Connected Machine-Agent-Takt
 * Version des Connected Machine-Agents
 * Öffentlicher Schlüssel für verwaltete Identität
-* Richtlinienkonformitätsstatus und Details (bei Verwendung von Azure Policy-Richtlinien für Gastkonfigurationen)
-* Microsoft SQL Server installiert (boolescher Wert)
+* Richtlinienkonformitätsstatus und Details (bei Verwendung von Richtlinien für Gastkonfigurationen)
+* SQL Server installiert (boolescher Wert)
 * Clusterressourcen-ID (für Azure Stack HCI-Knoten) 
 
 Die folgenden Metadateninformationen werden vom Agent von Azure angefordert:
@@ -231,7 +231,7 @@ Nach der Installation des Connected Machine-Agents für Windows werden die folge
     |%ProgramData%\AzureConnectedMachineAgent |Dieser Ordner enthält die Konfigurationsdateien des Agents.|
     |%ProgramData%\AzureConnectedMachineAgent\Tokens |Dieser Ordner enthält die abgerufenen Token.|
     |%ProgramData%\AzureConnectedMachineAgent\Config |Dieser Ordner enthält die Agent-Konfigurationsdatei `agentconfig.json`, die die Registrierungsinformationen mit dem Dienst aufzeichnet.|
-    |%ProgramFiles%\ArcConnectedMachineAgent\ExtensionService\GC | Installationspfad, unter dem sich die Gastkonfigurations-Agent-Dateien befinden |
+    |%ProgramFiles%\ArcConnectedMachineAgent\ExtensionService\GC | Installationspfad, unter dem sich die Gastkonfigurations-Agent-Dateien befinden. |
     |%ProgramData%\GuestConfig |Enthält die (angewendeten) Richtlinien von Azure|
     |%ProgramFiles%\AzureConnectedMachineAgent\ExtensionService\downloads | Erweiterungen werden von Azure heruntergeladen und in diesen Ordner kopiert.|
 
@@ -281,7 +281,7 @@ Nach der Installation des Connected Machine-Agents für Linux werden die folgend
     |-------|------------|
     |/var/opt/azcmagent/ |Dieser Ordner entspricht dem Standardinstallationspfad der Unterstützungsdateien für den Agent.|
     |/opt/azcmagent/ |
-    |/opt/GC_Ext | Installationspfad, unter dem sich die Gastkonfigurations-Agent-Dateien befinden|
+    |/opt/GC_Ext | Installationspfad, unter dem sich die Gastkonfigurations-Agent-Dateien befinden.|
     |/opt/DSC/ |
     |/var/opt/azcmagent/tokens |Dieser Ordner enthält die abgerufenen Token.|
     |/var/lib/GuestConfig |Enthält die (angewendeten) Richtlinien von Azure|

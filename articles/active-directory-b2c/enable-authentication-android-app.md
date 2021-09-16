@@ -11,38 +11,38 @@ ms.date: 07/06/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support, has-adal-ref
-ms.openlocfilehash: b9341909f6dd1dd9d01408a7b7af46e47a0ff339
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: 1e21be821a495dae95b0bc45b47aef4345802f38
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122428712"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123186189"
 ---
-# <a name="enable-authentication-in-your-own-android-application-using-azure-active-directory-b2c"></a>Aktivieren der Authentifizierung in einer eigenen Android-Anwendung mithilfe von Azure Active Directory B2C
+# <a name="enable-authentication-in-your-own-android-app-by-using-azure-ad-b2c"></a>Aktivieren der Authentifizierung in Ihrer eigenen Android -App mithilfe von Azure AD B2C
 
 In diesem Artikel wird beschrieben, wie Sie einer eigenen mobilen Android-Anwendung die Authentifizierung von Azure Active Directory B2C (Azure AD B2C) hinzufügen. 
 
-Verwenden Sie diesen Artikel mit den Informationen unter [Konfigurieren der Authentifizierung in einer Android-Beispielanwendung](./configure-authentication-sample-android-app.md), und ersetzen Sie dabei die Android-Beispiel-App durch Ihre eigene Android-App. Nachdem Sie die Schritte in diesem Artikel ausgeführt haben, akzeptiert Ihre Anwendung Anmeldungen über Azure AD B2C.
+Verwenden Sie diesen Artikel mit den Informationen unter [Konfigurieren der Authentifizierung in einer Android-Beispiel-App mithilfe von Azure AD B2C](./configure-authentication-sample-android-app.md), und ersetzen Sie dabei die Android-Beispiel-App durch Ihre eigene Android-App. Nachdem Sie die Anleitung in diesem Artikel ausgeführt haben, akzeptiert Ihre Anwendung Anmeldungen über Azure AD B2C.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Berücksichtigen Sie die Voraussetzungen und Integrationsschritte unter [Konfigurieren der Authentifizierung in einer Android-Beispielanwendung](configure-authentication-sample-android-app.md).
+Berücksichtigen Sie die Voraussetzungen und Integrationsschritte unter [Konfigurieren der Authentifizierung in einer Android-Beispielanwendung mithilfe von Azure AD B2C](configure-authentication-sample-android-app.md).
 
 ## <a name="create-an-android-app-project"></a>Erstellen eines Android-App-Projekts
 
-Sofern Sie noch nicht über eine Android-Anwendung verfügen, gehen Sie wie folgt vor, um ein neues Projekt einzurichten.
+Falls Sie noch nicht über eine Android-Anwendung verfügen, richten Sie wie folgt ein neues Projekt ein:
 
-1. Öffnen Sie Android Studio, und wählen Sie **Start a new Android Studio project** (Neues Android Studio-Projekt starten) aus.
-2. Wählen Sie **Basic Activity** (Standardaktivität) aus, und klicken Sie dann auf **Next** (Weiter).
-3. Benennen Sie Ihre Anwendung.
-4. Speichern Sie den Paketnamen. Sie geben diesen später im Azure-Portal ein.
-5. Ändern Sie die Sprache von **Kotlin** in **Java**.
-6. Legen Sie **Minimum API level** (Mindestebene für API) auf **API 19** oder höher fest, und klicken Sie auf **Finish** (Fertig stellen).
-7. Wählen Sie in der Projektansicht in der Dropdownliste die Option **Project** aus, um die Projektdateien mit und ohne Quelle anzuzeigen, öffnen Sie **app/build.gradle**, und legen Sie `targetSdkVersion` auf `28` fest.
+1. Wählen Sie in Android Studio **Start a new Android Studio project** (Neues Android Studio-Projekt starten) aus.
+1. Wählen Sie **Basic Activity** (Standardaktivität) aus, und klicken Sie dann auf **Weiter**.
+1. Benennen Sie Ihre Anwendung.
+1. Speichern Sie den Paketnamen. Sie geben diesen später im Azure-Portal ein.
+1. Ändern Sie die Sprache von **Kotlin** in **Java**.
+1. Legen Sie **Minimum API level** (Mindestebene für API) auf **API 19** oder höher fest, und klicken Sie auf **Finish** (Fertig stellen).
+1. Wählen Sie in der Projektansicht in der Dropdownliste die Option **Project** aus, um die Projektdateien mit und ohne Quelle anzuzeigen, öffnen Sie **app/build.gradle**, und legen Sie dann **targetSdkVersion** auf **28** fest.
 
-## <a name="install-the-dependencies"></a>Installieren der Abhängigkeiten
+## <a name="step-1-install-the-dependencies"></a>Schritt 1: Installieren der Abhängigkeiten
 
-Navigieren Sie im Android Studio-Projektfenster zu **app** > **build.gradle**, und fügen Sie Folgendes hinzu:
+Navigieren Sie im Android Studio-Projektfenster zu **app** > **build.gradle**, und fügen Sie dann Folgendes hinzu:
 
 ```gradle
 apply plugin: 'com.android.application'
@@ -75,7 +75,7 @@ packagingOptions{
 ```
 
 
-## <a name="add-the-authentication-components"></a>Hinzufügen der Authentifizierungskomponenten
+## <a name="step-2-add-the-authentication-components"></a>Schritt 2: Hinzufügen der Authentifizierungskomponenten
 
 Der [Beispielcode](configure-authentication-sample-android-app.md#step-3-get-the-android-mobile-app-sample) setzt sich aus den folgenden Komponenten zusammen. Fügen Sie diese Komponenten aus der Android-Beispiel-App Ihrer eigenen App hinzu. 
 
@@ -84,29 +84,29 @@ Der [Beispielcode](configure-authentication-sample-android-app.md#step-3-get-the
 | B2CUser| Klasse| [Kotlin](https://github.com/Azure-Samples/ms-identity-android-kotlin/blob/master/app/src/main/java/com/azuresamples/msalandroidkotlinapp/B2CUser.kt) [Java](https://github.com/Azure-Samples/ms-identity-android-java/blob/master/app/src/main/java/com/azuresamples/msalandroidapp/B2CUser.java)| Repräsentiert einen B2C-Benutzer. Diese Klasse ermöglicht es Benutzern, sich mit mehreren Richtlinien anzumelden. | 
 | B2CModeFragment | Fragment-Klasse| [Kotlin](https://github.com/Azure-Samples/ms-identity-android-kotlin/blob/master/app/src/main/java/com/azuresamples/msalandroidkotlinapp/B2CModeFragment.kt) [Java](https://github.com/Azure-Samples/ms-identity-android-java/blob/master/app/src/main/java/com/azuresamples/msalandroidapp/B2CModeFragment.java)| Ein Fragment repräsentiert einen modularen Teil der Anmeldung über die Azure AD B2C-Benutzerschnittstelle in Ihrer Hauptaktivität. Dieses Fragment enthält den Großteil des Authentifizierungscodes. |
 | fragment_b2c_mode.xml | Fragment-Layout| [Kotlin](https://github.com/Azure-Samples/ms-identity-android-kotlin/blob/master/app/src/main/res/layout/fragment_b2c_mode.xml) [Java](https://github.com/Azure-Samples/ms-identity-android-java/blob/master/app/src/main/res/layout/fragment_b2c_mode.xml) | Definiert die Struktur für eine Benutzerschnittstelle für die B2CModeFragment-Fragmentkomponente. |
-| B2CConfiguration| Klasse| [Kotlin](https://github.com/Azure-Samples/ms-identity-android-kotlin/blob/master/app/src/main/java/com/azuresamples/msalandroidkotlinapp/B2CConfiguration.kt) [Java](https://github.com/Azure-Samples/ms-identity-android-java/blob/master/app/src/main/java/com/azuresamples/msalandroidapp/B2CConfiguration.java)| Eine Konfigurationsdatei enthält Informationen zu Ihrem Azure AD B2C-Identitätsanbieter. Die mobile App nutzt diese Informationen, um eine Vertrauensstellung mit Azure AD B2C herzustellen, den Benutzer an- und abzumelden sowie Token zu beziehen und zu überprüfen. Weitere Konfigurationseinstellungen finden Sie in der Datei „auth_config_b2c.json“.  | 
-|auth_config_b2c.json | JSON-Datei| [Kotlin](https://github.com/Azure-Samples/ms-identity-android-kotlin/blob/master/app/src/main/res/raw/auth_config_b2c.json) [Java](https://github.com/Azure-Samples/ms-identity-android-java/blob/master/app/src/main/res/raw/auth_config_b2c.json)| Eine Konfigurationsdatei enthält Informationen zu Ihrem Azure AD B2C-Identitätsanbieter. Die mobile App nutzt diese Informationen, um eine Vertrauensstellung mit Azure AD B2C herzustellen, den Benutzer an- und abzumelden sowie Token zu beziehen und zu überprüfen. Weitere Konfigurationseinstellungen finden Sie in der B2CConfiguration-Klasse. | 
+| B2CConfiguration| Klasse| [Kotlin](https://github.com/Azure-Samples/ms-identity-android-kotlin/blob/master/app/src/main/java/com/azuresamples/msalandroidkotlinapp/B2CConfiguration.kt) [Java](https://github.com/Azure-Samples/ms-identity-android-java/blob/master/app/src/main/java/com/azuresamples/msalandroidapp/B2CConfiguration.java)| Eine Konfigurationsdatei enthält Informationen zu Ihrem Azure AD B2C-Identitätsanbieter. Die mobile App nutzt diese Informationen, um eine Vertrauensstellung mit Azure AD B2C herzustellen, Benutzer an- und abzumelden sowie Token zu beziehen und zu überprüfen. Weitere Konfigurationseinstellungen finden Sie in der Datei „auth_config_b2c.json“.  | 
+|auth_config_b2c.json | JSON-Datei| [Kotlin](https://github.com/Azure-Samples/ms-identity-android-kotlin/blob/master/app/src/main/res/raw/auth_config_b2c.json) [Java](https://github.com/Azure-Samples/ms-identity-android-java/blob/master/app/src/main/res/raw/auth_config_b2c.json)| Eine Konfigurationsdatei enthält Informationen zu Ihrem Azure AD B2C-Identitätsanbieter. Die mobile App nutzt diese Informationen, um eine Vertrauensstellung mit Azure AD B2C herzustellen, Benutzer an- und abzumelden sowie Token zu beziehen und zu überprüfen. Weitere Konfigurationseinstellungen finden Sie in der B2CConfiguration-Klasse. |
+| | | 
 
-## <a name="configure-your-android-app"></a>Konfigurieren der Android-App
+## <a name="step-3-configure-your-android-app"></a>Schritt 3: Konfigurieren der Android-App
 
-Nachdem Sie die [Authentifizierungskomponenten hinzugefügt](#add-the-authentication-components) haben, konfigurieren Sie Ihre Android-App mit Ihren Azure AD B2C-Einstellungen. Einstellungen für den Azure AD B2C-Identitätsanbieter werden in der Datei „auth_config_b2c.json“ und in der B2CConfiguration-Klasse konfiguriert. 
+Nachdem Sie die [Authentifizierungskomponenten hinzugefügt](#step-2-add-the-authentication-components) haben, konfigurieren Sie Ihre Android-App mit Ihren Azure AD B2C-Einstellungen. Einstellungen für den Azure AD B2C-Identitätsanbieter werden in der Datei *auth_config_b2c.json* und in der B2CConfiguration-Klasse konfiguriert. 
 
-Folgen Sie den Anweisungen zum [Konfigurieren der mobilen Beispiel-App](configure-authentication-sample-android-app.md#step-5-configure-the-sample-mobile-app).
+Anweisungen finden Sie unter [Konfigurieren der mobilen Beispiel-App](configure-authentication-sample-android-app.md#step-5-configure-the-sample-mobile-app).
 
-## <a name="set-the-redirect-uri"></a>Festlegen des Umleitungs-URI
+## <a name="step-4-set-the-redirect-uri"></a>Schritt 4: Festlegen des Umleitungs-URI
 
-In diesem Abschnitt legen Sie fest, wo Ihre Anwendung auf die Azure AD B2C-Tokenantwort lauscht. 
-
+Konfigurieren Sie, wo Ihre Anwendung auf die Azure AD B2C-Tokenantwort lauscht. 
 
 1. Generieren Sie einen neuen Signaturhash für die Entwicklung. Dieser lautet für jede Entwicklungsumgebung anders.
     
-    Unter einem Windows-Betriebssystem:
+    Windows:
     
     ```
     keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.keystore | openssl sha1 -binary | openssl base64
     ```
     
-    Für ein iOS-Betriebssystem:
+    Für iOS:
     
     ```dotnetcli
     keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore | openssl sha1 -binary | openssl base64
@@ -120,7 +120,7 @@ In diesem Abschnitt legen Sie fest, wo Ihre Anwendung auf die Azure AD B2C-Token
 
     Weitere Hilfe beim Signieren Ihrer Apps finden Sie unter [Signieren Ihrer Android-App](https://developer.android.com/studio/publish/app-signing). 
 
-1. Fügen Sie in **app** > **src** > **main** > **AndroidManifest.xml** die folgende `BrowserTabActivity`-Aktivität zum Hauptteil der Anwendung hinzu:
+1. Wählen Sie **app** > **src** > **main** > **AndroidManifest.xml**, und fügen Sie dann die folgende `BrowserTabActivity`-Aktivität zum Hauptteil der Anwendung hinzu:
     
     ```xml
     <!--Intent filter to capture System Browser or Authenticator calling back to our app after sign-in-->
@@ -139,13 +139,13 @@ In diesem Abschnitt legen Sie fest, wo Ihre Anwendung auf die Azure AD B2C-Token
 1. Ersetzen Sie `Signature_Hash` durch den von Ihnen generierten Hash.
 1. Ersetzen Sie `Package_Name` durch den Namen Ihres Android-Pakets.
  
-Führen Sie die folgenden Schritte aus, um die Registrierung der mobilen App mit Ihrem App-Umleitungs-URI zu aktualisieren:
+Gehen Sie folgendermaßen vor, um die Registrierung der mobilen App mit Ihrem App-Umleitungs-URI zu aktualisieren:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
-1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
-1. Wählen Sie unter **App-Registrierungen** und dann die Anwendung aus, die Sie in [Schritt 2.3: Registrieren der mobilen App](configure-authentication-sample-android-app.md#23-register-the-mobile-app) registriert haben.
-1. Siehe **Authentifizierung**.
+1. Suchen Sie nach **Azure AD B2C**, und wählen Sie diese Option aus.
+1. Wählen Sie unter **App-Registrierungen** und dann die Anwendung aus, die Sie in [Schritt 2.3: Registrieren der mobilen App](configure-authentication-sample-android-app.md#step-23-register-the-mobile-app) registriert haben.
+1. Wählen Sie **Authentifizierung** aus.
 1. Wählen Sie unter **Android** die Option **URI hinzufügen** aus.
 1. Geben Sie **Paketname** und **Signaturhash** ein.
 1. Wählen Sie **Speichern** aus.
@@ -154,13 +154,13 @@ Ihr Umleitungs-URI und die `BrowserTabActivity`-Aktivität sollten in etwa wie i
 
 #### <a name="kotlin"></a>[Kotlin](#tab/kotlin)
 
-Die Umleitungs-URL für das Android-Beispiel:
+Die Umleitungs-URL für das Android-Beispiel sieht folgendermaßen aus:
 
 ```
 msauth://com.azuresamples.msalandroidkotlinapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D
 ```
 
-Anschließend verwendet der Absichtsfilter das gleiche Muster wie im folgenden XML-Codeausschnitt:
+Der Absichtsfilter verwendet das gleiche Muster wie im folgenden XML-Codeausschnitt:
 
 ```xml
 <activity android:name="com.microsoft.identity.client.BrowserTabActivity">
@@ -180,13 +180,13 @@ Anschließend verwendet der Absichtsfilter das gleiche Muster wie im folgenden X
 
 #### <a name="java"></a>[Java](#tab/java)
 
-Die Umleitungs-URL für das Android-Beispiel:
+Die Umleitungs-URL für das Android-Beispiel sieht folgendermaßen aus:
 
 ```
 msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D
 ```
 
-Anschließend verwendet der Absichtsfilter das gleiche Muster wie im folgenden XML-Codeausschnitt:
+Der Absichtsfilter verwendet das gleiche Muster wie im folgenden XML-Codeausschnitt:
 
 ```xml
 <activity android:name="com.microsoft.identity.client.BrowserTabActivity">
@@ -206,15 +206,15 @@ Anschließend verwendet der Absichtsfilter das gleiche Muster wie im folgenden X
 
 --- 
 
-## <a name="code-building-blocks"></a>Codebausteine
+## <a name="step-5-customize-your-code-building-blocks"></a>Schritt 5: Anpassen Ihrer Codebausteine
 
 In diesem Abschnitt werden die Codebausteine beschrieben, die Ihrer Android-App die Authentifizierung ermöglichen. In der folgenden Tabelle werden die B2CModeFragment-Methoden aufgeführt, und es wird angegeben, wie Sie Ihren Code anpassen. 
 
-### <a name="instantiate-a-public-client-application"></a>Instanziieren einer öffentlichen Clientanwendung
+### <a name="step-51-instantiate-a-public-client-application"></a>Schritt 5.1: Instanziieren einer öffentlichen Clientanwendung
 
 Öffentlichen Clientanwendungen sind nicht vertrauenswürdig genug, um Anwendungsgeheimnisse sicher aufzubewahren, deshalb enthalten sie keine geheimen Clientschlüssel. Instanziieren Sie in [onCreate](https://developer.android.com/reference/android/app/Fragment#onCreate(android.os.Bundle)) oder [onCreateView](https://developer.android.com/reference/android/app/Fragment#onCreateView(android.view.LayoutInflater,%20android.view.ViewGroup,%20android.os.Bundle)) MSAL mithilfe des Objekts für öffentliche Clientanwendungen, das mehrere Konten umfasst.
 
-Die `MultipleAccountPublicClientApplication`-Klasse wird verwendet, um MSAL-basierte Apps zu erstellen, die ein gleichzeitiges Anmelden mehrerer Konten zulassen. Dies ermöglicht die Anmeldung mit mehreren Azure AD B2C-Benutzerflows oder benutzerdefinierten Richtlinien. Beispielsweise könnte sich ein Benutzer mit einem Benutzerflow für [Anmeldung oder Registrierung](add-sign-up-and-sign-in-policy.md) anmelden und später einen Benutzerflow für die [Profilbearbeitung](add-profile-editing-policy.md) ausführen. 
+Die `MultipleAccountPublicClientApplication`-Klasse wird verwendet, um MSAL-basierte Apps zu erstellen, die ein gleichzeitiges Anmelden mehrerer Konten zulassen. Die Klasse ermöglicht die Anmeldung mit mehreren Azure AD B2C-Benutzerflows oder benutzerdefinierten Richtlinien. Benutzer melden sich beispielsweise mit einem Benutzerflow für [Anmeldung oder Registrierung](add-sign-up-and-sign-in-policy.md) an und führen später einen Benutzerflow für die [Profilbearbeitung](add-profile-editing-policy.md) aus. 
 
 Der folgende Codeausschnitt veranschaulicht die Initialisierung der MSAL-Bibliothek mit der JSON-Konfigurationsdatei `auth_config_b2c.json`.
 
@@ -264,9 +264,9 @@ PublicClientApplication.createMultipleAccountPublicClientApplication(getContext(
 
 --- 
 
-### <a name="load-accounts"></a>Laden von Konten
+### <a name="step-52-load-accounts"></a>Schritt 5.2: Laden von Konten
 
-Wenn die App in den Vordergrund wechselt, lädt sie das vorhandene Konto, um festzustellen, ob der Benutzer angemeldet ist oder nicht.  Verwenden Sie diese Methode, um die Benutzeroberfläche mit dem Authentifizierungsstatus zu aktualisieren. Aktivieren oder deaktivieren Sie beispielsweise die Abmeldeschaltfläche.
+Wenn die App in den Vordergrund wechselt, lädt sie das vorhandene Konto, um festzustellen, ob Benutzer angemeldet sind. Verwenden Sie diese Methode, um die Benutzeroberfläche mit dem Authentifizierungsstatus zu aktualisieren. Sie können beispielsweise die Abmeldeschaltfläche aktivieren oder deaktivieren.
 
 Im folgenden Codeausschnitt wird das Laden der Konten veranschaulicht:
 
@@ -316,13 +316,13 @@ private void loadAccounts() {
 
 --- 
 
-### <a name="interactive-authorization-request"></a>Interaktive Autorisierungsanforderung
+### <a name="step-53-start-an-interactive-authorization-request"></a>Schritt 5.3: Starten einer interaktiven Autorisierungsanforderung
 
-Eine interaktive Autorisierungsanforderung ist ein Flow, bei dem der Benutzer zur Registrierung oder Anmeldung aufgefordert wird. Die `initializeUI`-Methode konfiguriert das `runUserFlowButton`-Klickereignis. Wenn der Benutzer auf die Schaltfläche **BENUTZERFLOW AUSFÜHREN** klickt, leitet die App den Benutzer an Azure AD B2C weiter, um den Anmeldeflow abzuschließen. 
+Eine interaktive Autorisierungsanforderung ist ein Flow, bei dem Benutzer zur Registrierung oder Anmeldung aufgefordert werden. Die `initializeUI`-Methode konfiguriert das `runUserFlowButton`-Klickereignis. Wenn Benutzer auf die Schaltfläche **Benutzerflow ausführen** klicken, leitet die App sie an Azure AD B2C weiter, um den Anmeldeflow abzuschließen. 
 
-Die `runUserFlowButton.setOnClickListener`-Methode bereitet das Objekt `AcquireTokenParameters` mit relevanten Daten zur Autorisierungsanforderung vor. Anschließend fordert die `acquireToken`-Methode den Benutzer auf, den Registrierungs- oder Anmeldeflow abzuschließen. 
+Die `runUserFlowButton.setOnClickListener`-Methode bereitet das Objekt `AcquireTokenParameters` mit relevanten Daten zur Autorisierungsanforderung vor. Die `acquireToken`-Methode fordert Benutzer dann auf, den Registrierungs- oder Anmeldeflow abzuschließen. 
 
-Der folgende Codeausschnitt veranschaulicht, wie die interaktive Autorisierungsanforderung gestartet wird. 
+Der folgende Codeausschnitt veranschaulicht, wie die interaktive Autorisierungsanforderung gestartet wird: 
 
 #### <a name="kotlin"></a>[Kotlin](#tab/kotlin)
 
@@ -356,16 +356,16 @@ b2cApp.acquireToken(parameters);
 --- 
 
  
-### <a name="interactive-authorization-request-callback"></a>Rückruf für interaktive Autorisierungsanforderung
+### <a name="step-54-make-an-interactive-authorization-request-callback"></a>Schritt 5.4: Rückruf für interaktive Autorisierungsanforderung
 
-Sobald der Benutzer den Autorisierungsflow (erfolgreich oder nicht erfolgreich) abgeschlossen hat, wird das Ergebnis an die `getAuthInteractiveCallback()`-Rückrufmethode zurückgegeben. 
+Sobald die Benutzer den Autorisierungsflow abgeschlossen haben (erfolgreich oder nicht), wird das Ergebnis an die `getAuthInteractiveCallback()`-Methode zurückgegeben. 
 
 Die Rückrufmethode übergibt das `AuthenticationResult`-Objekt oder eine Fehlermeldung im `MsalException`-Objekt. Verwenden Sie diese Methode für folgende Aufgaben:
 
-- Aktualisieren der Benutzeroberfläche der mobilen App mit Informationen nach Abschluss der Anmeldung
-- Erneutes Laden der Kontenobjekts
-- Aufruf eines Web-API-Diensts mit einem Zugriffstoken
-- Verarbeiten von Authentifizierungsfehlern
+- Aktualisieren der Benutzeroberfläche der mobilen App mit Informationen nach Abschluss der Anmeldung.
+- Erneutes Laden des Kontenobjekts.
+- Aufrufen eines Web-API-Diensts mit einem Zugriffstoken
+- Verarbeiten von Authentifizierungsfehlern.
 
 Der folgende Codeausschnitt veranschaulicht die Verwendung des interaktiven Authentifizierungsrückrufs.
 
@@ -390,7 +390,7 @@ private val authInteractiveCallback: AuthenticationCallback
             val B2C_PASSWORD_CHANGE = "AADB2C90118"
             if (exception.message!!.contains(B2C_PASSWORD_CHANGE)) {
                 txt_log!!.text = """
-                    The user clicks the 'Forgot Password' link in a sign-up or sign-in user flow.
+                    Users click the 'Forgot Password' link in a sign-up or sign-in user flow.
                     Your application needs to handle this error code by running a specific user flow that resets the password.
                     """.trimIndent()
                 return
@@ -434,7 +434,7 @@ private AuthenticationCallback getAuthInteractiveCallback() {
         public void onError(MsalException exception) {
             final String B2C_PASSWORD_CHANGE = "AADB2C90118";
             if (exception.getMessage().contains(B2C_PASSWORD_CHANGE)) {
-                logTextView.setText("The user clicks the 'Forgot Password' link in a sign-up or sign-in user flow.\n" +
+                logTextView.setText("Users click the 'Forgot Password' link in a sign-up or sign-in user flow.\n" +
                         "Your application needs to handle this error code by running a specific user flow that resets the password.");
                 return;
             }
@@ -461,9 +461,9 @@ private AuthenticationCallback getAuthInteractiveCallback() {
 
 --- 
 
-## <a name="call-a-web-api"></a>Aufrufen einer Web-API
+## <a name="step-6-call-a-web-api"></a>Schritt 6: Aufrufen einer Web-API
 
-Zum Aufruf einer [tokenbasierten Autorisierungs-Web-API](enable-authentication-web-api.md) benötigt die App ein gültiges Zugriffstoken. Die App führt die folgenden Schritte aus:
+Zum Aufruf einer [tokenbasierten Autorisierungs-Web-API](enable-authentication-web-api.md) benötigt die App ein gültiges Zugriffstoken. Die App führt folgende Schritte aus:
 
 
 1. Beziehen eines Zugriffstokens mit den erforderlichen Berechtigungen (Bereichen) für den Web-API-Endpunkt
@@ -473,13 +473,13 @@ Zum Aufruf einer [tokenbasierten Autorisierungs-Web-API](enable-authentication-w
 Authorization: Bearer <access-token>
 ```
 
-Wenn sich Benutzer [interaktiv anmelden](#interactive-authorization-request), empfängt die App ein Zugriffstoken in der `getAuthInteractiveCallback`-Rückrufmethode. Verwenden Sie für nachfolgende Web-API-Aufrufe das Verfahren zum automatischen Tokenabruf, wie in diesem Abschnitt beschrieben. 
+Wenn sich Benutzer [interaktiv anmelden](#step-53-start-an-interactive-authorization-request), empfängt die App ein Zugriffstoken in der `getAuthInteractiveCallback`-Rückrufmethode. Verwenden Sie für nachfolgende Web-API-Aufrufe das Verfahren zum automatischen Tokenabruf, wie in diesem Abschnitt beschrieben. 
 
-Rufen Sie vor dem Aufruf einer Web-API die `acquireTokenSilentAsync`-Methode mit den geeigneten Bereichen für Ihren Web-API-Endpunkt auf. Die MSAL-Bibliothek führt die folgenden Schritte aus:
+Rufen Sie vor dem Aufruf einer Web-API die `acquireTokenSilentAsync`-Methode mit den geeigneten Bereichen für Ihren Web-API-Endpunkt auf. Die MSAL-Bibliothek führt Folgendes aus:
 
 1. Es wird versucht, ein Zugriffstoken mit den angeforderten Bereichen aus dem Tokencache abzurufen. Falls das Token vorhanden ist, wird es zurückgegeben. 
 1. Wenn das Token nicht im Tokencache vorhanden ist, versucht die MSAL-Bibliothek, mithilfe des Aktualisierungstokens ein neues Zugriffstoken zu beziehen. 
-1. Wenn das Aktualisierungstoken nicht vorhanden oder abgelaufen ist, wird eine Ausnahme zurückgegeben. In diesem Fall sollte der Benutzer dazu aufgefordert werden, [sich interaktiv anzumelden](#interactive-authorization-request).  
+1. Wenn das Aktualisierungstoken nicht vorhanden oder abgelaufen ist, wird eine Ausnahme zurückgegeben. In diesem Fall sollte der Benutzer dazu aufgefordert werden, [sich interaktiv anzumelden](#step-53-start-an-interactive-authorization-request).  
 
 Der folgende Codeausschnitt veranschaulicht das Beziehen eines Zugriffstokens:
 
@@ -656,7 +656,7 @@ private void callWebAPI(IAuthenticationResult authenticationResult) throws Excep
 
 ### <a name="add-permission-to-perform-network-operations"></a>Hinzufügen der Berechtigung zum Ausführen von Netzwerkvorgängen
 
-Um Netzwerkvorgänge in Ihrer Anwendung auszuführen, schließen Sie die folgende Berechtigung in Ihr Manifest ein. Weitere Informationen finden Sie unter [Verbindungsherstellung mit dem Netzwerk](https://developer.android.com/training/basics/network-ops/connecting).
+Um Netzwerkvorgänge in Ihrer Anwendung auszuführen, fügen Sie die folgende Berechtigung zu Ihrem Manifest hinzu. Weitere Informationen finden Sie unter [Verbindungsherstellung mit dem Netzwerk](https://developer.android.com/training/basics/network-ops/connecting).
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET"/>
@@ -664,5 +664,6 @@ Um Netzwerkvorgänge in Ihrer Anwendung auszuführen, schließen Sie die folgend
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Konfigurieren von Authentifizierungsoptionen in einer Android-Anwendung](enable-authentication-android-app-options.md)
-* [Aktivieren der Authentifizierung in Ihrer eigenen Web-API](enable-authentication-web-api.md)
+In diesem Artikel werden folgende Themen erläutert:
+* [Konfigurieren der Authentifizierungsoptionen in einer Android-App mithilfe von Azure AD B2C](enable-authentication-android-app-options.md)
+* [Aktivieren der Authentifizierung in Ihrer eigenen Web-API mit Azure AD B2C](enable-authentication-web-api.md)

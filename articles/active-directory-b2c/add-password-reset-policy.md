@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1c7d4eeaf7df1764b021cd5914d6f4f4a88a9a1c
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: ddf46df1af8dc41e4f50c92eee527ac25e77b08a
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113213469"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122777585"
 ---
 # <a name="set-up-a-password-reset-flow-in-azure-active-directory-b2c"></a>Einrichten eines Kennwortzurücksetzungsflows in Azure Active Directory B2C
 
@@ -73,7 +73,8 @@ Die Self-Service-Kennwortzurücksetzung kann für den Benutzerflow **Anmeldung (
 So aktivieren Sie die Self-Service-Kennwortzurücksetzung für den Benutzerflow für die Registrierung oder Anmeldung:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
 1. Wählen Sie **Benutzerflows** aus.
 1. Wählen Sie einen Benutzerflow für die Registrierung oder Anmeldung (vom Typ **empfohlen**) aus, den Sie anpassen möchten.
@@ -271,7 +272,8 @@ Ihre Anwendung muss möglicherweise erkennen können, ob sich der Benutzer über
 ### <a name="upload-the-custom-policy"></a>Hochladen der benutzerdefinierten Richtlinie
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
 1. Wählen Sie unter **Richtlinien** die Option **Identity Experience Framework** aus.
 1. Wählen Sie **Benutzerdefinierte Richtlinie hochladen** aus, und laden Sie dann die beiden geänderten Richtliniendateien in der folgenden Reihenfolge hoch:
@@ -317,7 +319,7 @@ Damit Benutzer Ihrer Anwendung ihr eigenes Kennwort zurücksetzten können, erst
 1. Geben Sie unter **Name** einen Namen für den Benutzerflow ein. Beispiel *passwordreset1*.
 1. Aktivieren Sie für **Identitätsanbieter** die Option **Reset password using username** (Kennwort mithilfe des Benutzernamens zurücksetzen) oder **Reset password using email address** (Kennwort mithilfe der E-Mail-Adresse zurücksetzen).
 1. Wenn Sie unter **Mehrstufige Authentifizierung** festlegen möchten, dass Benutzer ihre Identität mit einer zweiten Authentifizierungsmethode überprüfen müssen, wählen Sie den Methodentyp und den Zeitpunkt aus, an dem die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) erzwungen werden soll. [Weitere Informationen](multi-factor-authentication.md)
-1. Wenn Sie unter **Bedingter Zugriff** Richtlinien für den bedingten Zugriff für Ihren Azure AD B2C-Mandanten konfiguriert haben und diese für diesen Benutzerflow aktivieren möchten, aktivieren Sie das Kontrollkästchen **Enforce conditional access policies** (Richtlinien für bedingten Zugriff erzwingen). Sie müssen keinen Richtliniennamen angeben. [Weitere Informationen](conditional-access-user-flow.md?pivots=b2c-user-flow)
+1. Wenn Sie unter **Bedingter Zugriff** Richtlinien für bedingten Zugriff für Ihren Azure AD B2C-Mandanten konfiguriert haben und sie für diesen Benutzerflow aktivieren möchten, aktivieren Sie das Kontrollkästchen **Richtlinien für bedingten Zugriff erzwingen**. Sie müssen keinen Richtliniennamen angeben. [Weitere Informationen](conditional-access-user-flow.md?pivots=b2c-user-flow)
 1. 1. Wählen Sie unter **Anwendungsansprüche** die Option **Mehr anzeigen**, und wählen Sie die Ansprüche aus, die in den an Ihre Anwendung gesendeten Autorisierungstoken zurückgegeben werden sollen. Wählen Sie beispielsweise **Objekt-ID des Benutzers**.
 1. Klicken Sie auf **OK**.
 1. Wählen Sie **Erstellen** aus, um den Benutzerflow hinzuzufügen. Dem Namen wird automatisch das Präfix *B2C_1* vorangestellt.

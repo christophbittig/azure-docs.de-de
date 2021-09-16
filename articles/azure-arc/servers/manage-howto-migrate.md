@@ -3,12 +3,12 @@ title: Regionsübergreifendes Migrieren von Azure Arc-fähigen Servern
 description: Hier erfahren Sie, wie Sie einen Azure Arc-fähigen Server aus einer Region in eine andere verschieben.
 ms.date: 07/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 9635bcf4f2f557c1f4b32a15c9cd936e5b5f02fe
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: d0e909b789e3e0dcee4d39e22067de26daace548
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114387112"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122609648"
 ---
 # <a name="how-to-migrate-azure-arc-enabled-servers-across-regions"></a>Regionsübergreifendes Migrieren von Azure Arc-fähigen Servern
 
@@ -30,7 +30,7 @@ Sie müssen die VM-Erweiterungen deinstallieren, die Ressource in Azure löschen
 
 3. Registrieren Sie den Connected Machine-Agent bei Arc-fähigen Servern in der anderen Region erneut. Führen Sie das `azcmagent`-Tool mit dem Parameter [Connect](manage-agent.md#connect) aus, um diesen Schritt abzuschließen.
 
-4. Stellen Sie die VM-Erweiterungen, die ursprünglich für den Computer bereitgestellt wurden, von Arc-fähigen Servern aus erneut bereit. Wenn Sie den „Azure Monitor für VMs (Insights)“-Agent oder den Log Analytics-Agent mithilfe einer Azure-Richtlinie bereitgestellt haben, werden die Agents nach dem nächsten [Auswertungszyklus](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers) erneut bereitgestellt.
+4. Stellen Sie die VM-Erweiterungen, die ursprünglich für den Computer bereitgestellt wurden, von Arc-fähigen Servern aus erneut bereit. Wenn Sie den Azure Monitor für VMs-Agent (Insights) oder den Log Analytics-Agent mithilfe einer Azure Policy-Definition bereitgestellt haben, werden die Agents nach dem nächsten [Auswertungszyklus](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers) erneut bereitgestellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
