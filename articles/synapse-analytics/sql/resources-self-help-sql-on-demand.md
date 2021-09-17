@@ -6,15 +6,15 @@ author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
-ms.date: 05/15/2020
+ms.date: 8/31/2021
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: c3ade548ae31f7f62014d8f41141374aaa73217a
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 906f6a7a8e64c255c8b87219ef0549a553821783
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123252296"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536479"
 ---
 # <a name="self-help-for-serverless-sql-pool"></a>Selbsthilfe für serverlose SQL-Pools
 
@@ -81,7 +81,9 @@ Wenn Sie in diesem Beispiel „data2.csv“ abfragen möchten, werden die folgen
 
 Wenn bei Ihrer Abfrage ein Fehler mit der Beschreibung auftritt, dass die Abfrage aufgrund von aktuellen Ressourceneinschränkungen nicht ausgeführt werden kann, gibt es in diesem Moment Ressourceneinschränkungen, die verhindern, dass der serverlose SQL-Pool die Abfrage ausführt: 
 
-- Vergewissern Sie sich, dass Datentypen mit passener Größe verwendet werden. Geben Sie außerdem für Parquet-Dateien das Schema für Zeichenfolgenspalten an, da hierfür standardmäßig „VARCHAR(8000)“ verwendet wird. 
+- Vergewissern Sie sich, dass Datentypen mit passener Größe verwendet werden.  
+
+- Bei Abfragen für Parquet-Dateien empfiehlt sich ggf. das Definieren von expliziten Typen für Zeichenfolgenspalten, da für sie standardmäßig „VARCHAR(8000)“ verwendet wird. [Abgeleitete Datentypen überprüfen](./best-practices-serverless-sql-pool.md#check-inferred-data-types)
 
 - Bei Abfragen für CSV-Dateien empfiehlt sich ggf. das [Erstellen von Statistiken](develop-tables-statistics.md#statistics-in-serverless-sql-pool). 
 
@@ -503,7 +505,7 @@ Die Delta Lake-Unterstützung befindet sich für serverlose SQL-Pools derzeit in
 - Stellen Sie sicher, dass Sie auf den Delta Lake-Stammordner in der [OPENROWSET](./develop-openrowset.md)-Funktion oder an einem externen Tabellenspeicherort verweisen.
   - Der Stammordner muss über einen Unterordner mit dem Namen `_delta_log` verfügen. Für die Abfrage tritt ein Fehler auf, wenn der Ordner `_delta_log` nicht vorhanden ist. Falls dieser Ordner nicht angezeigt wird, verweisen Sie auf einfache Parquet-Dateien, die über Apache Spark-Pools [für Delta Lake konvertiert](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#convert-parquet-to-delta) werden müssen.
   - Geben Sie keine Platzhalter an, um das Partitionsschema zu beschreiben. Die Delta Lake-Partitionen werden von der Delta Lake-Abfrage automatisch identifiziert. 
-- Delta Lake-Tabellen, die in den Apache Spark-Pools erstellt wurden, werden im serverlosen SQL-Pool nicht synchronisiert. Sie können Delta Lake-Tabellen in Apache Spark-Pools nicht abfragen, indem Sie die T-SQL-Sprache verwenden.
+- Delta Lake-Tabellen, die in den Apache Spark-Pools erstellt wurden, sind im serverlosen SQL-Pool nicht automatisch verfügbar. Um solche Delta Lake-Tabellen mit T-SQL Sprache abzufragen, führen Sie die Anweisung [CREATE EXTERNAL TABLE](https://docs.microsoft.com/azure/synapse-analytics/sql/create-use-external-tables#delta-lake-external-table) aus, und geben Sie als Format „Delta“ an.
 - Externe Tabellen unterstützen keine Partitionierung. Verwenden Sie [partitionierte Sichten](create-use-views.md#delta-lake-partitioned-views) im Delta Lake-Ordner, um die Partitionsentfernung zu nutzen. Weiter unten finden Sie bekannte Probleme und Problemumgehungen.
 - Serverlose SQL-Pools unterstützen keine Zeitreiseabfragen. Sie können auf der [Azure-Feedbackwebsite](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/43656111-add-time-travel-feature-in-delta-lake) für dieses Feature abstimmen. Verwenden Sie Apache Spark-Pools in Azure Synapse Analytics, um [Verlaufsdaten zu lesen](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#read-older-versions-of-data-using-time-travel).
 - Serverlose SQL-Pools unterstützen keine Aktualisierung von Delta Lake-Dateien. Sie können einen serverlosen SQL-Pool verwenden, um die neueste Version von Delta Lake abzufragen. Verwenden Sie Apache Spark-Pools in Azure Synapse Analytics, um [Delta Lake zu aktualisieren](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#update-table-data).

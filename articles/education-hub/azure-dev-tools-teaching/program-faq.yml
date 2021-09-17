@@ -7,13 +7,13 @@ metadata:
   ms.service: azure-education
   ms.subservice: education-hub
   ms.topic: overview
-  ms.date: 06/30/2020
-  ms.openlocfilehash: 9953271e12adb0ccd59deabbb7fbf7a7fc846b94
-  ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+  ms.date: 08/31/2021
+  ms.openlocfilehash: 28972b6c29e14ca453d713e25867b8079e05c3ca
+  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/31/2021
-  ms.locfileid: "123271879"
+  ms.lasthandoff: 09/03/2021
+  ms.locfileid: "123431024"
 title: Häufig gestellte Fragen zu Education Hub
 summary: In diesem Artikel finden Sie Antworten auf einige häufig gestellte Fragen zu Azure for Students, Azure for Students Starter und Azure Dev Tools für den Unterricht.
 sections:
@@ -22,18 +22,21 @@ sections:
   - question: >
       Was geschieht, wenn ich mein Guthaben von 100 USD verbraucht habe oder die 12 Monate abgelaufen sind?
     answer: >
-      Nachdem Sie Ihr verfügbares Guthaben aufgebraucht haben oder 12 Monaten vergangen sind, wird Ihr Azure-Abonnement deaktiviert. Um Azure weiterhin verwenden zu können, können Sie im Azure-Portal ein Upgrade auf ein Abonnement mit nutzungsbasierter Bezahlung durchführen. Ausführliche Nutzungsbedingungen für Azure for Students finden Sie in den [Angebotsbedingungen](https://azure.microsoft.com/offers/ms-azr-0170p/).
+      Wenn Sie Ihr verfügbares Guthaben vor Ablauf von 12 Monaten aufgebraucht haben und Azure weiterhin nutzen möchten, können Sie im Azure-Portal ein Upgrade auf ein Abonnement mit nutzungsbasierter Zahlung vornehmen.  Wenn Sie kein Upgrade durchführen, wird Ihr Azure-Abonnement deaktiviert. Nach Ablauf von 12 Monaten können Sie Ihr Abonnement verlängern, indem Sie sich erneut für das Angebot registrieren. Ausführliche Nutzungsbedingungen für Azure for Students finden Sie in den [Angebotsbedingungen](https://azure.microsoft.com/offers/ms-azr-0170p/).
   - question: >
       Wer darf Azure for Students nutzen?
-    answer: "Azure for Students Starter ist nur für Schüler/Studenten verfügbar, die die folgenden Anforderungen erfüllen:\n\n- Sie müssen bestätigen, dass Sie mindestens 18 Jahre alt sind und an einer anerkannten Bildungseinrichtung an einem zwei- oder vierjährigen Studiengang mit Abschluss als Hauptfachstudent teilnehmen. \n- Sie müssen ihren akademischen Status über die E-Mail-Adresse Ihrer Organisation bestätigen.\n- Ausführliche Nutzungsbedingungen finden Sie im [Azure for Students-Angebot](https://azure.microsoft.com/offers/ms-azr-0170p/).\n\nDieses Angebot ist nicht für die Nutzung in einem Massive Open Online Course (MOOC) oder in anderen professionellen Schulungen von gewinnorientierten Organisationen verfügbar.\n\nDieses Angebot ist auf ein Azure for Students-Abonnement pro berechtigtem Kunden beschränkt. Es ist nicht übertragbar und kann nicht mit anderen Angeboten kombiniert werden, es sei denn, dies wird von Microsoft anderweitig gestattet.\n    \n"
+    answer: "Azure for Students ist nur für Lernende/Studierende verfügbar, die die folgenden Anforderungen erfüllen:\n\n- Sie müssen bestätigen, dass Sie mindestens 18 Jahre alt sind und an einer anerkannten Bildungseinrichtung an einem zwei- oder vierjährigen Studiengang mit Abschluss als Hauptfachstudent teilnehmen. \n- Sie müssen ihren akademischen Status über die E-Mail-Adresse Ihrer Organisation bestätigen.\n- Ausführliche Nutzungsbedingungen finden Sie im [Azure for Students-Angebot](https://azure.microsoft.com/offers/ms-azr-0170p/).\n\nDieses Angebot ist nicht für die Nutzung in einem Massive Open Online Course (MOOC) oder in anderen professionellen Schulungen von gewinnorientierten Organisationen verfügbar.\n\nDieses Angebot ist auf ein Azure for Students-Abonnement pro berechtigtem Kunden beschränkt. Es ist nicht übertragbar und kann nicht mit anderen Angeboten kombiniert werden, es sei denn, dies wird von Microsoft anderweitig gestattet.\n    \n"
   - question: >
       Kann ich Azure for Students im nächsten Jahr erneut nutzen?
     answer: >
-      Vielen Dank für Ihr Interesse an Azure for Students. Wir freuen uns, dass das Prodkt Ihnen gefallen hat. Zu diesem Zeitpunkt werden keine Verlängerungen angekündigt. Überprüfen Sie zu einem späteren Zeitpunkt auf dieser Seite, ob neue Informationen vorliegen.
+      Ja!  Sie können Ihr Azure for Students-Abonnement nach einem Jahr verlängern.  Wir werden Sie kurz vor Ablauf des Jahres per E-Mail an die Verlängerung erinnern.  Um zu verlängern, registrieren Sie sich auf der [Website](https://aka.ms/azure4students) von Azure for Students einfach erneut für das Angebot.
+  - question: >
+      Warum habe ich eine Rechnung von Microsoft erhalten?
+    answer: "Möglicherweise erhalten Sie eine Rechnung von Microsoft, in der die im Vormonat angefallenen Kosten für die Nutzung von Azure for Students aufgeführt sind.  Keine Sorge, Sie müssen für diese Nutzung nicht zahlen, denn sie ist durch das Guthaben für Azure for Students abgedeckt.  Weitere Informationen über Rechnungen und ihre Funktionsweise finden Sie in diesem [Artikel](https://docs.microsoft.com/en-us/azure/cost-management-billing/understand/mca-overview) auf docs.microsoft.com \n"
   - question: >
       Was sind Abonnements, und in welcher Beziehung stehen sie zu Azure for Students?
     answer: >
-      Abonnements bieten Zugriff auf Azure-Dienste. Azure for Students bietet Ihnen eine Gutschrift von 100 USD für 12 Monate. Diese umfasst den Zugriff auf mehr als 25 kostenlose Dienste, einschließlich Compute-, Netzwerk- und Speicherdienste sowie Datenbanken. Alle Gebühren, die während dieses Zeitraums anfallen, werden von der Gutschrift abgezogen. Wenn Sie Azure-Dienste nach 12 Monaten oder nach Überschreiten Ihrer Gutschrift von 100 USD weiterhin nutzen möchten, müssen Sie ein Upgrade auf ein Abonnement mit nutzungsbasierter Bezahlung durchführen.
+      Abonnements bieten Zugriff auf Azure-Dienste. Azure for Students bietet Ihnen für 12 Monate ein Guthaben von 100 US-Dollar und umfasst den Zugriff auf mehr als 25 kostenlose Dienste, darunter Compute-, Netzwerk-, Speicher- und Datenbankdienste. Alle Gebühren, die während dieses Zeitraums anfallen, werden von der Gutschrift abgezogen. Wenn Sie Azure-Dienste nach dem Aufbrauchen Ihres Guthabens in Höhe von 100 US-Dollar weiter nutzen möchten, müssen Sie das Abonnement entweder verlängern (wenn Sie bereits 12 Monate dabei sind) oder auf nutzungsbasierte Zahlung umstellen.
   - question: >
       Was geschieht mit meinen Azure-Diensten, wenn ich kein Upgrade durchführe?
     answer: >

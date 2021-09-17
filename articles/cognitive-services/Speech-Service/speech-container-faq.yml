@@ -4,99 +4,99 @@ metadata:
   titleSuffix: Azure Cognitive Services
   description: Installieren Sie Speech-Container, und führen Sie sie aus. Die Spracherkennung wandelt Audiodatenströme in Echtzeit in Text um, der von Ihren Anwendungen, Tools oder Geräten genutzt oder angezeigt werden kann. Die Sprachsynthese konvertiert Eingabetext in menschenähnliche synthetische Sprache.
   services: cognitive-services
-  author: laujan
+  author: PatrickFarley
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: speech-service
   ms.topic: conceptual
   ms.date: 03/11/2021
-  ms.author: lajanuar
+  ms.author: pafarley
   ms.custom: devx-track-csharp
-  ms.openlocfilehash: c6a519af6910bac536b90b6606636d14f6af97d8
-  ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+  ms.openlocfilehash: e2dbd29686dad5416a6bd148d2bcccc37fca5107
+  ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/13/2021
-  ms.locfileid: "122066235"
+  ms.lasthandoff: 09/07/2021
+  ms.locfileid: "123537828"
 title: Häufig gestellte Fragen (FAQ) zu Containern für den Speech-Dienst
 summary: Ziehen Sie bei der Verwendung des Speech-Diensts mit Containern diese Sammlung häufig gestellter Fragen zu Rate, bevor Sie sich an den Support wenden. In diesem Artikel werden Fragen von unterschiedlicher Bedeutung erfasst, von allgemeinen bis hin zu technischen Fragen. Um eine Antwort zu erweitern, klicken Sie auf die Frage.
 sections:
 - name: Allgemeine Fragen
   questions:
   - question: >
-      How do Speech containers work and how do I set them up?
-    answer: "When setting up the production cluster, there are several things to consider. First, setting up single language, multiple containers, on the same machine, should not be a large issue. If you are experiencing problems, it may be a hardware-related issue - so we would first look at resource, that is; CPU and memory specifications.\n\nConsider for a moment, the `ja-JP` container and latest model. The acoustic model is the most demanding piece CPU-wise, while the language model demands the most memory. When we benchmarked the use, it takes about 0.6 CPU cores to process a single speech-to-text request when audio is flowing in at real-time (like from the microphone). If you are feeding audio faster than real-time (like from a file), that usage can double (1.2x cores). Meanwhile, the memory listed below is operating memory for decoding speech. It does *not* take into account the actual full size of the language model, which will reside in file cache. For `ja-JP` that's an additional 2 GB; for `en-US`, it may be more (6-7 GB).\n\nIf you have a machine where memory is scarce, and you are trying to deploy multiple languages on it, it is possible that file cache is full, and the OS is forced to page models in and out. For a running transcription, that could be disastrous, and may lead to slowdowns and other performance implications.\n\nFurthermore, we pre-package executables for machines with the [advanced vector extension (AVX2)](speech-container-howto.md#advanced-vector-extension-support) instruction set. A machine with the AVX512 instruction set will require code generation for that target, and starting 10 containers for 10 languages may temporarily exhaust CPU. A message like this one will appear in the docker logs:\n\n```console\n2020-01-16 16:46:54.981118943 \n[W:onnxruntime:Default, tvm_utils.cc:276 LoadTVMPackedFuncFromCache]\nCannot find Scan4_llvm__mcpu_skylake_avx512 in cache, using JIT...\n```\n\nYou can set the number of decoders you want inside a *single* container using `DECODER MAX_COUNT` variable. So, basically, we should start with your SKU (CPU/memory), and we can suggest how to get the best out of it. A great starting point is referring to the recommended host machine resource specifications.\n"
+      Wie funktionieren Speech-Container und wie richte ich sie ein?
+    answer: "Bei der Einrichtung des Produktionsclusters sind mehrere Punkte zu beachten. Zunächst sollte das Einrichten einer einzelnen Sprache und mehrerer Container auf demselben Computer kein großes Problem darstellen. Wenn Probleme auftreten, könnte es sich um ein Problem mit der Hardware handeln. Daher würden wir zunächst die Ressourcen, d. h. die CPU- und Speicherspezifikationen, betrachten.\n\nBetrachten Sie für einen Moment den `ja-JP`-Container und das neueste Modell. Das Akustikmodell ist hinsichtlich der CPU die anspruchsvollste Komponente, während das Sprachmodell den größten Arbeitsspeicherbedarf aufweist. Beim Benchmarking der Verwendung benötigten wir etwa 0,6 CPU-Kerne für die Verarbeitung einer einzelnen Spracherkennungsanforderung, wenn Audiodaten in Echtzeit eingehen (z. B. über das Mikrofon). Wenn Sie Audiodaten schneller als in Echtzeit zuführen (z. B. aus einer Datei), kann sich diese Nutzung verdoppeln (1,2 Kerne). Inzwischen wird der unten aufgeführte Arbeitsspeicher für die Sprachdecodierung verwendet. Dabei wird *nicht* die tatsächliche vollständige Größe des Sprachmodells berücksichtigt, das sich im Dateicache befinden wird. Für `ja-JP` sind das zusätzliche 2 GB. Für `en-US` können es mehr sein (6-7 GB).\n\nWenn Sie einen Computer besitzen, auf dem der Arbeitsspeicher knapp ist, und Sie versuchen, mehrere Sprachen darauf bereitzustellen, ist es möglich, dass der Dateicache voll ist und das Betriebssystem gezwungen ist, Modelle ein- und auszulagern. Für eine laufende Transkription könnte das verheerend sein und zu Verzögerungen und anderen Leistungsbeeinträchtigungen führen.\n\nDarüber hinaus packen wir ausführbare Dateien für Computer mit dem [AVX2](speech-container-howto.md#advanced-vector-extension-support)-Anweisungssatz (Advanced Vector Extension) vorab. Ein Computer mit dem AVX512-Anweisungssatz erfordert die Codegenerierung für dieses Ziel, und das Starten von 10 Containern für 10 Sprachen kann die CPU vorübergehend überlasten. Eine Meldung wie diese wird in den Docker-Protokollen angezeigt:\n\n```console\n2020-01-16 16:46:54.981118943 \n[W:onnxruntime:Default, tvm_utils.cc:276 LoadTVMPackedFuncFromCache]\nCannot find Scan4_llvm__mcpu_skylake_avx512 in cache, using JIT...\n```\n\nSie können mit der `DECODER MAX_COUNT`-Variablen die Anzahl der gewünschten Decoder innerhalb eines *einzelnen* Containers festlegen. Im Grunde genommen sollten wir also mit Ihrer SKU (CPU/Speicher) beginnen, und wir können Ihnen empfehlen, wie Sie sie optimal nutzen können. Ein geeigneter Ausgangspunkt ist der Verweis auf die empfohlenen Ressourcenspezifikationen für Hostcomputer.\n"
   - question: >
-      Could you help with capacity planning and cost estimation of on-prem Speech-to-text containers?
+      Könnten Sie bei der Kapazitätsplanung und Kostenvorkalkulation von lokalen Spracherkennungscontainern helfen?
     answer: >
-      For container capacity in batch processing mode, each decoder could handle 2-3x in real time, with two CPU cores, for a single recognition. We do not recommend keeping more than two concurrent recognitions per container instance, but recommend running more instances of containers for reliability/availability reasons, behind a load balancer.
+      Für die Containerkapazität im Batchverarbeitungsmodus könnte jeder Decoder 2-3x in Echtzeit mit zwei CPU-Kernen für eine einzelne Erkennung verarbeiten. Es wird nicht empfohlen, mehr als zwei gleichzeitige Erkennungen pro Containerinstanz zu behalten, aber es wird empfohlen, aus Gründen der Zuverlässigkeit/Verfügbarkeit mehr Containerinstanzen hinter einem Lastenausgleich auszuführen.
 
 
-      Though we could have each container instance running with more decoders. For example, we may be able to set up 7 decoders per container instance on an eight core machine (at at more than 2x each), yielding 15x throughput. There is a param `DECODER_MAX_COUNT` to be aware of. For the extreme case, reliability and latency issues arise, with throughput increased significantly. For a microphone, it will be at 1x real time. The overall usage should be at about one core for a single recognition.
+      Obwohl wir jede Containerinstanz mit mehr Decodern ausführen könnten. So können wir z. B. sieben Decoder pro Containerinstanz auf einem Computer mit acht Kernen (mit jeweils mehr als 2x) einrichten, was einen 15-fachen Durchsatz ergibt. Es gibt einen `DECODER_MAX_COUNT`-Parameter, der beachtet werden muss. Für den Extremfall ergeben sich Probleme mit der Zuverlässigkeit und Wartezeit, wobei der Durchsatz deutlich erhöht wird. Für ein Mikrofon entspricht dies 1x der Echtzeit. Die Gesamtverwendung sollte bei etwa einem Kern für eine einzelne Erkennung liegen.
 
 
-      For scenario of processing 1 K hours/day in batch processing mode, in an extreme case, 3 VMs could handle it within 24 hours but not guaranteed. To handle spike days, failover, update, and to provide minimum backup/BCP, we recommend 4-5 machines instead of 3 per cluster, and with 2+ clusters.
+      Für das Szenario der Verarbeitung von 1 K Stunden/Tag im Batchverarbeitungsmodus könnten im Extremfall drei virtuelle Computer dies innerhalb von 24 Stunden verarbeiten, aber ohne Garantie. Zur Bewältigung von Spitzentagen, Failover, Update und zur Bereitstellung einer minimalen Sicherung/BCP empfehlen wir 4-5 anstelle von drei Computern pro Cluster, wenn mehr als zwei Cluster vorliegen.
 
 
-      For hardware, we use standard Azure VM `DS13_v2` as a reference (each core must be 2.6 GHz or better, with AVX2 instruction set enabled).
+      Für die Hardware verwenden wir den standardmäßigen virtuellen Azure-Computer `DS13_v2` als Referenz (jeder Kern muss mindestens 2,6 GHz mit aktiviertem AVX2-Anweisungssatz aufweisen).
 
 
-      | Instance  | vCPU(s) | RAM    | Temp storage | Pay-as-you-go with AHB | 1-year reserve with AHB (% Savings) | 3-year reserved with AHB (% Savings) |
+      | Instanz  | vCPU(s) | RAM    | Temporärer Speicher | Nutzungsbasierte Zahlung mit AHB | 1-Jahr-Reservierung mit AHB (Einsparungen in Prozent) | 3-Jahre-Reservierung mit AHB (Einsparungen in Prozent) |
 
       |-----------|---------|--------|--------------|------------------------|-------------------------------------|--------------------------------------|
 
-      | `DS13 v2` | 8       | 56 GiB | 112 GiB      | $0.598/hour            | $0.3528/hour (~41%)                 | $0.2333/hour (~61%)                  |
+      | `DS13 v2` | 8       | 56 GiB | 112 GiB      | 0,598 USD/Stunde            | 0,3528 USD/Stunde (~41 %)                 | 0,2333 USD/Stunde (~61 %)                  |
 
 
-      Based on the design reference (two clusters of 5 VMs to handle 1 K hours/day audio batch processing), 1-year hardware cost will be:
+      Basierend auf der Designreferenz (zwei Cluster mit fünf virtuellen Computern zur Verarbeitung von 1 K Stunden/Tag Audiobatchverarbeitung) werden die folgenden Hardwarekosten für ein Jahr angesetzt:
 
 
-      > 2 (clusters) * 5 (VMs per cluster) * $0.3528/hour * 365 (days) * 24 (hours) = $31K / year
+      > 2 (Cluster) * 5 (VMs pro Cluster) * 0,3528 USD/Stunde * 365 (Tage) * 24 (Stunden) = 31.000 USD/Jahr
 
 
-      When mapping to physical machine, a general estimation is 1 vCPU = 1 Physical CPU Core. In reality, 1vCPU is more powerful than a single core.
+      Bei der Zuordnung zu einem physischen Computer ist die allgemeine Schätzung: 1 vCPU = 1 physischer CPU-Kern. In der Realität ist eine vCPU leistungsfähiger als ein einzelner Kern.
 
 
-      For on-prem, all of these additional factors come into play:
+      Für eine lokale Lösung werden die folgenden zusätzlichen Faktoren berücksichtigt:
 
 
-      - On what type the physical CPU is and how many cores on it
+      - Zu welchem Typ die physische CPU gehört und wie viele Kerne sie umfasst
 
-      - How many CPUs running together on the same box/machine
+      - Wie viele CPUs im gleichen Gerät/Computer ausgeführt werden
 
-      - How VMs are set up
+      - Wie die virtuellen Computer eingerichtet sind
 
-      - How hyper-threading / multi-threading is used
+      - Wie Hyperthreading/Multithreading verwendet werden
 
-      - How memory is shared
+      - Wie der Arbeitsspeicher freigegeben wird
 
-      - The OS, etc.
-
-
-      Normally it is not as well tuned as Azure the environment. Considering other overhead, I would say a safe estimation is 10 physical CPU cores = 8 Azure vCPU. Though popular CPUs only have eight cores. With on-prem deployment, the cost will be higher than using Azure VMs. Also, consider the depreciation rate.
+      - Das Betriebssystem usw.
 
 
-      Service cost is the same as the online service: $1/hour for speech-to-text. The Speech service cost is:
+      Normalerweise ist sie nicht so gut abgestimmt wie die Azure-Umgebung. Unter Berücksichtigung weiterer Komponenten würde ich sagen, eine sichere Schätzung ist: 10 physische CPU-Kerne = 8 Azure vCPUs. Obwohl beliebte CPUs nur über acht Kerne verfügen. Bei einer lokalen Bereitstellung werden die Kosten höher sein als bei der Verwendung von virtuellen Azure-Computern. Beachten Sie auch den Abschreibungssatz.
 
 
-      > $1 * 1000 * 365 = $365K
+      Die Kosten für den Dienst sind dieselben wie für den Onlinedienst: 1 USD/Stunde für die Spracherkennung. Kosten für den Speech-Dienst:
 
 
-      Maintenance cost paid to Microsoft depends on the service level and content of the service. It various from $29.99/month for basic level to hundreds of thousands if onsite service involved. A rough number is $300/hour for service/maintain. People cost is not included. Other infrastructure costs (such as storage, networks, and load balancers) are not included.
+      > 1 USD * 1000 * 365 = 365.000 USD
+
+
+      Die an Microsoft gezahlten Wartungskosten hängen vom Servicelevel und vom Inhalt des Diensts ab. Sie variieren von 29,99 USD/Monat für die Stufe „Basic“ bis zu Hunderttausenden USDs, wenn ein lokaler Service erforderlich ist. Ein ungefährer Wert ist 300 USD/Stunde für Service/Wartung. Die Kosten für das Personal sind nicht inbegriffen. Andere Infrastrukturkosten (z. B. Speicher, Netzwerke und Lastenausgleiche) sind nicht inbegriffen.
   - question: >
-      Why is punctuation missing from the transcription?
-    answer: "The `speech_recognition_language=<YOUR_LANGUAGE>` should be explicitly configured in the request if they are using Carbon client.\n\nFor example:\n\n```python\nif not recognize_once(\n    speechsdk.SpeechRecognizer(\n        speech_config=speechsdk.SpeechConfig(\n            endpoint=template.format(\"interactive\"),\n            speech_recognition_language=\"ja-JP\"),\n            audio_config=audio_config)):\n\n    print(\"Failed interactive endpoint\")\n    exit(1)\n```\nHere is the output:\n\n```cmd\nRECOGNIZED: SpeechRecognitionResult(\n    result_id=2111117c8700404a84f521b7b805c4e7, \n    text=\"まだ早いまだ早いは猫である名前はまだないどこで生まれたかとんと見当を検討をなつかぬ。\n    何でも薄暗いじめじめした所でながら泣いていた事だけは記憶している。\n    まだは今ここで初めて人間と言うものを見た。\n    しかも後で聞くと、それは書生という人間中で一番同額同額。\",\n    reason=ResultReason.RecognizedSpeech)\n```\n"
+      Warum fehlt die Interpunktion in der Transkription?
+    answer: "Die `speech_recognition_language=<YOUR_LANGUAGE>` sollten in der Anforderung explizit konfiguriert werden, wenn sie den Carbon-Client verwenden.\n\nBeispiel:\n\n```python\nif not recognize_once(\n    speechsdk.SpeechRecognizer(\n        speech_config=speechsdk.SpeechConfig(\n            endpoint=template.format(\"interactive\"),\n            speech_recognition_language=\"ja-JP\"),\n            audio_config=audio_config)):\n\n    print(\"Failed interactive endpoint\")\n    exit(1)\n```\nHier sehen Sie die Ausgabe:\n\n```cmd\nRECOGNIZED: SpeechRecognitionResult(\n    result_id=2111117c8700404a84f521b7b805c4e7, \n    text=\"まだ早いまだ早いは猫である名前はまだないどこで生まれたかとんと見当を検討をなつかぬ。\n    何でも薄暗いじめじめした所でながら泣いていた事だけは記憶している。\n    まだは今ここで初めて人間と言うものを見た。\n    しかも後で聞くと、それは書生という人間中で一番同額同額。\",\n    reason=ResultReason.RecognizedSpeech)\n```\n"
   - question: >
-      Can I use a custom acoustic model and language model with Speech container?
+      Kann ich ein benutzerdefiniertes Akustikmodell und Sprachmodell mit dem Speech-Container verwenden?
     answer: >
-      We are currently only able to pass one model ID, either custom language model or custom acoustic model.
+      Wir können derzeit nur eine Modell-ID, entweder ein benutzerdefiniertes Sprachmodell oder benutzerdefiniertes Akustikmodell, übergeben.
 
 
-      The decision to *not* support both acoustic and language models concurrently was made. This will remain in effect, until a unified identifier is created to reduce API breaks. So, unfortunately this is not supported right now.
+      Es wurde die Entscheidung getroffen, Akustik- und Sprachmodelle *nicht* gleichzeitig zu unterstützen. Dies bleibt so lange wirksam, bis ein einheitlicher Bezeichner erstellt wird, um API-Unterbrechungen zu reduzieren. Daher wird dies leider im Moment nicht unterstützt.
   - question: >
-      Could you explain these errors from the custom speech-to-text container?
+      Können Sie diese Fehler des benutzerdefinierten Spracherkennungscontainers erklären?
     answer: >
-      **Error 1:**
+      **Fehler 1:**
 
 
       ```cmd
@@ -111,16 +111,16 @@ sections:
       ```
 
 
-      If you're training with the latest custom model, we currently don't support that. If you train with an older version, it should be possible to use. We are still working on supporting the latest versions.
+      Wenn Sie mit dem aktuellen benutzerdefinierten Modell trainieren, wird dies derzeit nicht unterstützt. Wenn Sie mit einer älteren Version trainieren, sollte es möglich sein, diese zu verwenden. Wir arbeiten weiterhin an der Unterstützung der neuesten Versionen.
 
 
-      Essentially, the custom containers do not support Halide or ONNX-based acoustic models (which is the default in the custom training portal). This is due to custom models not being encrypted and we don't want to expose ONNX models, however; language models are fine. The customer will need to explicitly select an older non-ONNX model for custom training. Accuracy will not be affected. The model size may be larger (by 100 MB).
+      Im Wesentlichen unterstützen die benutzerdefinierten Container keine Halide- oder ONNX-basierten Akustikmodelle (dies ist der Standard im benutzerdefinierten Trainingsportal). Das liegt daran, dass benutzerdefinierte Modelle nicht verschlüsselt sind, und wir wollen ONNX-Modelle jedoch nicht verfügbar machen. Sprachmodelle sind in Ordnung. Der Kunde muss explizit ein älteres Nicht-ONNX-Modell für benutzerdefinierte Trainings auswählen. Die Genauigkeit wird nicht beeinträchtigt. Die Modellgröße kann größer sein (um 100 MB).
 
 
-      > Support model > 20190220 (v4.5 Unified)
+      > Supportmodell > 20190220 (v4.5 Unified)
 
 
-      **Error 2:**
+      **Fehler 2:**
 
 
       ```cmd
@@ -138,10 +138,10 @@ sections:
       ```
 
 
-      You need to provide the correct voice name in the request, which is case-sensitive. Refer to the full service name mapping.
+      Sie müssen in der Anforderung den richtigen Sprachnamen angeben, wobei die Groß- und Kleinschreibung zu beachten ist. Weitere Informationen finden Sie in der vollständigen Zuordnung der Dienstnamen.
 
 
-      **Error 3:**
+      **Fehler 3:**
 
 
       ```json
@@ -154,31 +154,31 @@ sections:
       ```
 
 
-      You reed to create a Speech resource, not a Cognitive Services resource.
+      Sie müssen eine Speech-Ressource erstellen, nicht eine Ressource für Cognitive Services.
   - question: >
-      What API protocols are supported, REST or WS?
+      Welche API-Protokolle werden unterstützt, REST oder WS?
     answer: >
-      For speech-to-text and custom speech-to-text containers, we currently only support the websocket based protocol. The SDK only supports calling in WS but not REST. There's a plan to add REST support, but not ETA for the moment. Always refer to the official documentation, see [query prediction endpoints](speech-container-howto.md#query-the-containers-prediction-endpoint).
+      Für Spracherkennungs- und benutzerdefinierte Spracherkennungscontainer unterstützen wir derzeit nur das Websocket-basierte Protokoll. Das SDK unterstützt nur den Aufruf in WS, aber nicht in REST. Es gibt einen Plan, die REST-Unterstützung hinzuzufügen, aber es gibt im Moment keinen Zeitpunkt der Verfügbarkeit. Weitere Informationen finden Sie in der offiziellen Dokumentation unter [Endpunkte der Abfragevorhersage](speech-container-howto.md#query-the-containers-prediction-endpoint).
   - question: >
-      Is CentOS supported for Speech containers?
+      Wird CentOS für Speech-Container unterstützt?
     answer: >
-      CentOS 7 is not supported by Python SDK yet, also Ubuntu 19.04 is not supported.
+      CentOS 7 wird von Python SDK noch nicht unterstützt, auch Ubuntu 19.04 wird nicht unterstützt.
 
 
-      The Python Speech SDK package is available for these operating systems:
+      Das Python Speech SDK-Paket ist für die folgenden Betriebssysteme verfügbar:
 
-      - **Windows** - x64 and x86
+      - **Windows**: x64 und x86
 
-      - **Mac** - macOS X version 10.12 or later
+      - **Mac**: macOS X Version 10.12 oder höher
 
-      - **Linux** - Ubuntu 16.04 (until September), Ubuntu 18.04, Debian 9 on x64
+      - **Linux:** Ubuntu 16.04 (bis September), Ubuntu 18.04, Debian 9 unter x64
 
 
-      For more information on environment setup, see [Python platform setup](quickstarts/setup-platform.md?pivots=programming-language-python). For now, Ubuntu 18.04 is the recommended version.
+      Weitere Informationen zum Einrichten der Umgebung finden Sie unter [Einrichten der Python-Plattform](quickstarts/setup-platform.md?pivots=programming-language-python). Momentan ist Ubuntu 18.04 die empfohlene Version.
   - question: >
-      Why am I getting errors when attempting to call LUIS prediction endpoints?
+      Warum erhalte ich beim Versuch, LUIS-Vorhersageendpunkte aufzurufen, Fehler?
     answer: >
-      I am using the LUIS container in an IoT Edge deployment and am attempting to call the LUIS prediction endpoint from another container. The LUIS container is listening on port 5001, and the URL I'm using is this:
+      Ich verwende den LUIS-Container in einer IoT-Edge-Bereitstellung und versuche, den LUIS-Vorhersageendpunkt von einem anderen Container aus aufzurufen. Der LUIS-Container lauscht an Port 5001, und die verwendete URL ist:
 
 
       ```csharp
@@ -190,7 +190,7 @@ sections:
       ```
 
 
-      The error I'm getting is:
+      Der von mir erhaltene Fehler ist:
 
 
       ```cmd
@@ -200,7 +200,7 @@ sections:
       ```
 
 
-      I see the request in the LUIS container logs and the message says:
+      Ich sehe die Anforderung in den LUIS-Containerprotokollen und die Meldung lautet:
 
 
       ```cmd
@@ -210,21 +210,21 @@ sections:
       ```
 
 
-      What does this mean? What am I missing? I was following the example for the Speech SDK, from [here](https://github.com/Azure-Samples/cognitive-services-speech-sdk). The scenario is that we are detecting the audio directly from the PC microphone and trying to determine the intent, based on the LUIS app we trained. The example I linked to does exactly that. And it works well with the LUIS cloud-based service. Using the Speech SDK seemed to save us from having to make a separate explicit call to the speech-to-text API and then a second call to LUIS.
+      Was bedeutet dies? Was habe ich übersehen? Ich bin dem Beispiel für das Speech SDK von [hier](https://github.com/Azure-Samples/cognitive-services-speech-sdk) aus gefolgt. Im Szenario wird der Ton direkt vom PC-Mikrofon erfasst und versucht, auf der Grundlage der von uns trainierten LUIS-App die Absicht zu bestimmen. Das Beispiel, mit dem ich verknüpft bin, geht genau so vor. Und es funktioniert gut mit dem cloudbasierten LUIS-Dienst. Die Verwendung des Speech SDKs hat uns offenbar erspart, einen separaten expliziten Aufruf der Spracherkennungs-API und dann einen zweiten Aufruf von LUIS durchführen zu müssen.
 
 
-      So, all I am attempting to do is switch from the scenario of using LUIS in the cloud to using the LUIS container. I can't imagine if the Speech SDK works for one, it won't work for the other.
+      Ich versuche also nur, vom Szenario der Verwendung von LUIS in der Cloud zur Verwendung des LUIS-Containers zu wechseln. Ich kann mir nicht vorstellen, dass das Speech SDK nur für den einen, aber nicht für den anderen Fall funktioniert.
 
 
 
-      The Speech SDK should not be used against a LUIS container. For using the LUIS container, the LUIS SDK or LUIS REST API should be used. Speech SDK should be used against a speech container.
+      Das Speech SDK sollte nicht zusammen mit einem LUIS-Container verwendet werden. Für die Verwendung des LUIS-Containers sollte das LUIS SDK oder die LUIS-REST-API verwendet werden. Das Speech SDK sollte für einen Speech-Container verwendet werden.
 
 
-      A cloud is different than a container. A cloud can be composed of multiple aggregated containers (sometimes called micro services). So there is a LUIS container and then there is a Speech container - Two separate containers. The Speech container only does speech. The LUIS container only does LUIS. In the cloud, because both containers are known to be deployed, and it is bad performance for a remote client to go to the cloud, do speech, come back, then go to the cloud again and do LUIS, we provide a feature that allows the client to go to Speech, stay in the cloud, go to LUIS then come back to the client. Thus even in this scenario the Speech SDK goes to Speech cloud container with audio, and then Speech cloud container talks to LUIS cloud container with text. The LUIS container has no concept of accepting audio (it would not make sense for LUIS container to accept streaming audio - LUIS is a text-based service). With on-prem, we have no certainty our customer has deployed both containers, we don't presume to orchestrate between containers in our customers' premises, and if both containers are deployed on-prem, given they are more local to the client, it is not a burden to go the SR first, back to client, and have the customer then take that text and go to LUIS.
+      Eine Cloud unterscheidet sich von einem Container. Eine Cloud kann aus mehreren aggregierten Containern (manchmal auch Microservices genannt) bestehen. Es gibt also einen LUIS-Container und einen Speech-Container – zwei separate Container. Der Speech-Container dient ausschließlich der Spracheingabe/-ausgabe. Der LUIS-Container führt nur LUIS aus. Da in der Cloud beide Container bekanntermaßen bereitgestellt werden und ein Remoteclient eine schlechte Leistung erzielt, wenn er zur Cloud wechselt, die Spracheingabe/-ausgabe vornimmt, wieder zurückkehrt, dann wieder zur Cloud wechselt und LUIS durchführt, bieten wir ein Feature, das es dem Client ermöglicht, zur Spracheingabe/-ausgabe zu wechseln, in der Cloud zu verbleiben, zu LUIS zu wechseln und dann wieder zum Client zurückzukehren. So wechselt auch in diesem Szenario das Speech SDK zum Speech-Cloudcontainer mit Audio, und dann spricht der Speech-Cloudcontainer mit dem LUIS-Cloudcontainer mit Text. Der LUIS-Container besitzt kein Konzept zur Übernahme von Audio (es wäre nicht sinnvoll, wenn der LUIS-Container Audiostreaming akzeptieren würde, da LUIS ein textbasierter Dienst ist). Bei dem lokalen Szenario haben wir keine Gewissheit, dass unser Kunde beide Container bereitgestellt hat. Wir maßen uns nicht an, zwischen den Containern in den Räumlichkeiten unserer Kunden zu orchestrieren, und wenn beide Container lokal beim Kunden bereitgestellt werden, ist es keine Mühe, zuerst zum SR und dann zurück zum Kunden zu wechseln, damit der Kunde dann den Text übernimmt und zu LUIS wechselt.
   - question: >
-      Why are we getting errors with macOS, Speech container and the Python SDK?
+      Warum erhalten wir Fehler beim macOS, Speech-Container und dem Python SDK?
     answer: >
-      When we send a *.wav* file to be transcribed, the result comes back with:
+      Wenn wir eine *WAV*-Datei zur Transkription senden, kommt das Ergebnis mit Folgendem zurück:
 
 
       ```cmd
@@ -253,172 +253,172 @@ sections:
       ```
 
 
-      We know the websocket is set up correctly.
+      Wir wissen, dass der Websocket ordnungsgemäß eingerichtet ist.
 
 
 
-      If that is the case, then see [this GitHub issue](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/310). We have a work-around, [proposed here](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/310#issuecomment-527542722).
+      Wenn das der Fall ist, dann finden Sie weitere Informationen unter [diesem GitHub-Problem](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/310). Wir verfügen über eine Problemumgehung, [die hier vorgeschlagen wird](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/310#issuecomment-527542722).
 
 
-      Carbon fixed this at version 1.8.
+      Carbon hat dies in Version 1.8 behoben.
   - question: >
-      What are the differences in the Speech container endpoints?
+      Was sind die Unterschiede bei den Endpunkten des Speech-Containers?
     answer: >
-      Could you help fill the following test metrics, including what functions to test, and how to test the SDK and REST APIs? Especially, differences in "interactive" and "conversation", which I did not see from existing doc/sample.
+      Könnten Sie helfen, die folgenden Testmetriken auszufüllen, einschließlich der zu testenden Funktionen und der Vorgehensweise beim Testen der SDK- und REST-APIs? Insbesondere Unterschiede bei „interaktiv“ und „Unterhaltung“, die ich bei bestehenden Dokumenten/Beispielen nicht gesehen habe.
 
 
-      | Endpoint                                                | Functional test                                                   | SDK | REST API |
+      | Endpunkt                                                | Funktionstest                                                   | SDK | REST-API |
 
       |---------------------------------------------------------|-------------------------------------------------------------------|-----|----------|
 
-      | `/speech/synthesize/cognitiveservices/v1`               | Synthesize Text (text-to-speech)                                  |     | Yes      |
+      | `/speech/synthesize/cognitiveservices/v1`               | Text synthetisieren (Sprachsynthese)                                  |     | Ja      |
 
-      | `/speech/recognition/dictation/cognitiveservices/v1`    | Cognitive Services on-prem dictation v1 websocket endpoint        | Yes | No       |
+      | `/speech/recognition/dictation/cognitiveservices/v1`    | Cognitive Services: on-prem dictation v1 – Websocket-Endpunkt        | Ja | Nein       |
 
-      | `/speech/recognition/interactive/cognitiveservices/v1`  | The Cognitive Services on-prem interactive v1 websocket endpoint  |     |          |
+      | `/speech/recognition/interactive/cognitiveservices/v1`  | Cognitive Services: on-prem interactive v1 – Websocket-Endpunkt  |     |          |
 
-      | `/speech/recognition/conversation/cognitiveservices/v1` | The cognitive services on-prem conversation v1 websocket endpoint |     |          |
-
-
-
-      This is a fusion of:
-
-      - People trying the dictation endpoint for containers, (I'm not sure how they got that URL)
-
-      - The 1<sup>st</sup> party endpoint being the one in a container.
-
-      - The 1<sup>st</sup> party endpoint returning speech.fragment messages instead of the `speech.hypothesis` messages the 3<sup>rd</sup> part endpoints return for the dictation endpoint.
-
-      - The Carbon quickstarts all use `RecognizeOnce` (interactive mode)
-
-      - Carbon having an assert that for `speech.fragment` messages requiring they aren't returned in interactive mode.
-
-      - Carbon having the asserts fire in release builds (killing the process).
+      | `/speech/recognition/conversation/cognitiveservices/v1` | Cognitive Services: on-prem conversation v1 – Websocket-Endpunkt |     |          |
 
 
-      The workaround is either switch to using continuous recognition in your code, or (quicker) connect to either the interactive or continuous endpoints in the container.
 
-      For your code, set the endpoint to `host:port`/speech/recognition/interactive/cognitiveservices/v1
+      Dies ist eine Verbindung von:
+
+      - Leute, die den Diktatendpunkt für Container testen (ich bin nicht sicher, wie sie an diese URL gekommen sind)
+
+      - Der<sup> </sup>Erstanbieterendpunkt ist derjenige in einem Container.
+
+      - Der<sup> </sup>Erstanbieterendpunkt, der speech.fragment-Meldungen anstelle der `speech.hypothesis`-Meldungen zurückgibt, die die<sup> </sup>Drittanbieterendpunkte für den Diktatendpunkt zurückgeben.
+
+      - Die Carbon-Schnellstarts verwenden alle `RecognizeOnce` (interaktiver Modus).
+
+      - Carbon verfügt über eine Assertion, dass für `speech.fragment`-Meldungen erforderlich ist, dass sie nicht im interaktiven Modus zurückgegeben werden.
+
+      - Carbon verfügt über Assertionen, die in Releasebuilds ausgelöst werden (der Prozess wird beendet).
 
 
-      For the various modes, see Speech modes - see below:
+      Die Problemumgehung besteht entweder darin, zur kontinuierlichen Erkennung in Ihrem Code zu wechseln oder (schneller) eine Verbindung zu den interaktiven oder kontinuierlichen Endpunkten im Container herzustellen.
+
+      Legen Sie für Ihren Code den Endpunkt auf „`host:port`/speech/recognition/interactive/cognitives services/v1“ fest.
 
 
-      ### Speech modes - Interactive, conversation, dictation
+      Informationen zu den verschiedenen Modi finden Sie nachfolgend unter „Speech-Modi“:
+
+
+      ### <a name="speech-modes---interactive-conversation-dictation"></a>Sprachmodi: Interaktiv, Konversation, Diktat
 
 
       [!INCLUDE [speech-modes](includes/speech-modes.md)]
 
 
-      The proper fix is coming with SDK 1.8, which has on-prem support (will pick the right endpoint, so we will be no worse than online service). In the meantime, there is a sample for continuous recognition, why don't we point to it?
+      Die richtige Lösung folgt mit SDK 1.8, das über die lokale Unterstützung verfügt (es wird den richtigen Endpunkt auswählen, sodass wir nicht schlechter sein werden als ein Onlinedienst). In der Zwischenzeit gibt es ein Beispiel für die kontinuierliche Erkennung. Warum verweisen wir nicht darauf?
 
 
       https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d9e95c9137fe129bc5d81e35f6309/samples/python/console/speech_sample.py#L196
   - question: >
-      Which mode should I use for various audio files?
+      Welchen Modus sollte ich für verschiedene Audiodateien verwenden?
     answer: >
-      Here's a [quickstart using Python](./get-started-speech-to-text.md?pivots=programming-language-python). You can find the other languages linked on the docs site.
+      Hier ist ein [Schnellstart mit Python](./get-started-speech-to-text.md?pivots=programming-language-python). Die anderen Sprachen finden Sie auf der Website für die Dokumentationen.
 
 
-      Just to clarify for the interactive, conversation, and dictation; this is an advanced way of specifying the particular way in which our service will handle the speech request. Unfortunately, for the on-prem containers we have to specify the full URI (since it includes local machine), so this information leaked from the abstraction. We are working with the SDK team to make this more usable in the future.
+      Nur zur Verdeutlichung für den Modus „Interaktiv“, „Unterhaltung“ und „Diktat“: Dies ist eine fortgeschrittene Art und Weise, die besondere Vorgehensweise zu spezifizieren, in der unser Dienst die Speech-Anforderung behandeln wird. Leider müssen wir bei den lokalen Containern den vollständigen URI angeben (da er den lokalen Computer einschließt), sodass diese Informationen aus der Abstraktion durchgesickert sind. Wir arbeiten mit dem SDK-Team zusammen, um dies in Zukunft besser nutzen zu können.
   - question: >
-      How can we benchmark a rough measure of transactions/second/core?
+      Wie können wir einen Vergleichstest für eine grobe Kennzahl für Transaktionen/Sekunde/Kern durchführen?
     answer: >
-      Here are some of the rough numbers to expect from existing model (will change for the better in the one we will ship in GA):
+      Hier sind einige der groben Werte, die vom bestehenden Modell zu erwarten sind (wird sich in dem Modell, das wir in der GA ausliefern werden, verbessern):
 
 
-      - For files, the throttling will be in the speech SDK, at 2x. First five seconds of audio are not throttled. Decoder is capable of doing about 3x real time. For this, the overall CPU usage will be close to 2 cores for a single recognition.
+      - Bei Dateien wird die Drosselung im Speech SDK bei 2x liegen. Die ersten fünf Sekunden der Audiodaten werden nicht gedrosselt. Der Decoder ist in der Lage, etwa 3x in Echtzeit zu verarbeiten. Hierfür wird die gesamte CPU-Auslastung nahezu zwei Kerne für eine einzelne Erkennung betragen.
 
-      - For mic, it will be at 1x real time. The overall usage should be at about 1 core for a single recognition.
+      - Für das Mikrofon wird es 1x in Echtzeit betragen. Die Gesamtauslastung sollte bei etwa einem Kern für eine einzelne Erkennung liegen.
 
 
-      This can all be verified from the docker logs. We actually dump the line with session and phrase/utterance statistics, and that includes the RTF numbers.
+      All dies kann anhand der Docker-Protokolle überprüft werden. Wir geben die Zeile tatsächlich mit den Sitzungs- und Phrasen-/Äußerungsstatistiken aus, und dazu gehören auch die RTF-Werte.
   - question: >
-      How do I make multiple containers run on the same host?
+      Wie kann ich mehrere Container auf demselben Host ausführen lassen?
     answer: >
-      The doc says to expose a different port, which I do, but the LUIS container is still listening on port 5000?
+      Das Dokument besagt, dass wir einen anderen Port verfügbar machen sollen (was ich auch tue), aber der LUIS-Container lauscht immer noch an Port 5000?
 
 
-      Try `-p <outside_unique_port>:5000`. For example, `-p 5001:5000`.
+      Versuchen Sie `-p <outside_unique_port>:5000`. Beispiel: `-p 5001:5000`.
 - name: Technische Fragen
   questions:
   - question: >
-      How can I get non-batch APIs to handle audio <15 seconds long?
+      Wie kann ich erreichen, dass Nicht-Batch-APIs Audiodaten bis zu 15 Sekunden lang verarbeiten?
     answer: >
-      `RecognizeOnce()` in interactive mode only processes up to 15 seconds of audio, as the mode is intended for Speech Commanding where utterances are expected to be short. If you use `StartContinuousRecognition()` for dictation or conversation, there is no 15 second limit.
+      Bei `RecognizeOnce()` werden im interaktiven Modus nur Audiodaten mit einer Länge von maximal 15 Sekunden verarbeitet, da dieser Modus für die Sprachsteuerung gedacht ist, bei der kurze Äußerungen zu erwarten sind. Wenn Sie `StartContinuousRecognition()` für Diktat oder Unterhaltung verwenden, gibt es kein Limit von 15 Sekunden.
   - question: >
-      What are the recommended resources, CPU and RAM; for 50 concurrent requests?
+      Was sind die empfohlenen Ressourcen, CPU und RAM; für 50 gleichzeitige Anforderungen?
     answer: >
-      How many concurrent requests will a 4 core, 4 GB RAM handle? If we have to serve for example, 50 concurrent requests, how many Core and RAM is recommended?
+      Wie viele gleichzeitige Anforderungen können von einem Szenario mit vier Kernen und 4 GB RAM verarbeitet werden? Wenn wir z. B. 50 gleichzeitige Anforderungen verarbeiten müssen, welche Werte werden für Kerne und RAM empfohlen?
 
 
 
-      At real time, 8 with our latest `en-US`, so we recommend using more docker containers beyond 6 concurrent requests. It gets crazier beyond 16 cores, and it becomes non-uniform memory access (NUMA) node sensitive. The following table describes the minimum and recommended allocation of resources for each Speech container.
+      In Echtzeit acht mit unserem neuesten `en-US`, daher empfehlen wir, mehr Docker-Container bei mehr als sechs gleichzeitigen Anforderungen zu verwenden. Ab 16 Kernen wird es komplizierter und es wird empfindlich auf NUMA-Knoten (Non-Uniform Memory Access) reagiert. Die folgende Tabelle beschreibt die minimale und empfohlene Zuordnung von Ressourcen für jeden Speech-Container.
 
 
-      # [Speech-to-text](#tab/stt)
+      # <a name="speech-to-text"></a>[Spracherkennung](#tab/stt)
 
 
-      | Container      | Minimum             | Recommended         |
-
-      |----------------|---------------------|---------------------|
-
-      | Speech-to-text | 2 core, 2-GB memory | 4 core, 4-GB memory |
-
-
-      # [Custom Speech-to-text](#tab/cstt)
-
-
-      | Container             | Minimum             | Recommended         |
-
-      |-----------------------|---------------------|---------------------|
-
-      | Custom Speech-to-text | 2 core, 2-GB memory | 4 core, 4-GB memory |
-
-
-      # [Text-to-speech](#tab/tts)
-
-
-      | Container      | Minimum             | Recommended         |
+      | Container      | Minimum             | Empfohlen         |
 
       |----------------|---------------------|---------------------|
 
-      | Text-to-speech | 1 core, 2-GB memory | 2 core, 3-GB memory |
+      | Spracherkennung | 2 Kerne, 2 GB Arbeitsspeicher | 4 Kerne, 4 GB Arbeitsspeicher |
 
 
-      # [Custom Text-to-speech](#tab/ctts)
+      # <a name="custom-speech-to-text"></a>[Benutzerdefinierte Spracherkennung](#tab/cstt)
 
 
-      | Container             | Minimum             | Recommended         |
+      | Container             | Minimum             | Empfohlen         |
 
       |-----------------------|---------------------|---------------------|
 
-      | Custom Text-to-speech | 1 core, 2-GB memory | 2 core, 3-GB memory |
+      | Benutzerdefinierte Spracherkennung | 2 Kerne, 2 GB Arbeitsspeicher | 4 Kerne, 4 GB Arbeitsspeicher |
+
+
+      # <a name="text-to-speech"></a>[Sprachsynthese](#tab/tts)
+
+
+      | Container      | Minimum             | Empfohlen         |
+
+      |----------------|---------------------|---------------------|
+
+      | Text-zu-Sprache | Ein Kern, 2 GB Arbeitsspeicher | 2 Kerne, 3 GB Arbeitsspeicher |
+
+
+      # <a name="custom-text-to-speech"></a>[Benutzerdefinierte Sprachsynthese](#tab/ctts)
+
+
+      | Container             | Minimum             | Empfohlen         |
+
+      |-----------------------|---------------------|---------------------|
+
+      | Benutzerdefinierte Sprachsynthese | Ein Kern, 2 GB Arbeitsspeicher | 2 Kerne, 3 GB Arbeitsspeicher |
 
 
       ***
 
 
-      - Each core must be at least 2.6 GHz or faster.
+      - Jeder Kern muss eine Geschwindigkeit von mindestens 2,6 GHz aufweisen.
 
-      - For files, the throttling will be in the Speech SDK, at 2x (first 5 seconds of audio are not throttled).
+      - Bei Dateien wird die Drosselung im Speech SDK auf 2x festgelegt (die ersten fünf Sekunden der Audiodaten werden nicht gedrosselt).
 
-      - The decoder is capable of doing about 2-3x real time. For this, the overall CPU usage will be close to two cores for a single recognition. That's why we do not recommend keeping more than two active connections, per container instance. The extreme side would be to put about 10 decoders at 2x real time in an eight core machine like `DS13_V2`. For the container version 1.3 and later, there's a param you could try setting `DECODER_MAX_COUNT=20`.
+      - Der Decoder ist in der Lage, etwa 2-3x in Echtzeit zu verarbeiten. Hierfür wird die gesamte CPU-Auslastung nahezu zwei Kerne für eine einzelne Erkennung betragen. Aus diesem Grund wird nicht empfohlen, mehr als zwei aktive Verbindungen pro Containerinstanz zu verwenden. Der Extremfall wäre, etwa 10 Decoder bei 2x der Echtzeit in einen Computer mit acht Kernen wie `DS13_V2` zu integrieren. Für die Containerversion 1.3 und höher gibt es einen Parameter, den Sie versuchen könnten, auf `DECODER_MAX_COUNT=20` festzulegen.
 
-      - For microphone, it will be at 1x real time. The overall usage should be at about one core for a single recognition.
-
-
-      Consider the total number of hours of audio you have. If the number is large, to improve reliability/availability, we suggest running more instances of containers, either on a single box or on multiple boxes, behind a load balancer. Orchestration could be done using Kubernetes (K8S) and Helm, or with Docker compose.
+      - Für ein Mikrofon entspricht dies 1x der Echtzeit. Die Gesamtverwendung sollte bei etwa einem Kern für eine einzelne Erkennung liegen.
 
 
-      As an example, to handle 1000 hours/24 hours, we have tried setting up 3-4 VMs, with 10 instances/decoders per VM.
+      Berücksichtigen Sie die Gesamtzahl der Audiodatenstunden, über die Sie verfügen. Wenn die Anzahl groß ist, schlagen wir zur Verbesserung der Zuverlässigkeit/Verfügbarkeit vor, mehr Containerinstanzen, entweder für eine einzelne oder mehrere Boxen, hinter einem Lastenausgleich auszuführen. Die Orchestrierung könnte mit Kubernetes (K8S) und Helm oder mit Docker Compose erfolgen.
+
+
+      Um z. B. 1000 Stunden/24 Stunden zu verarbeiten, haben wir versucht, 3-4 virtuelle Computer mit 10 Instanzen/Decodern pro virtuellem Computer einzurichten.
   - question: >
-      Does the Speech container support punctuation?
+      Unterstützt der Speech-Container die Interpunktion?
     answer: >
-      We have capitalization (ITN) available in the on-prem container. Punctuation is language-dependent, and not supported for some languages, including Chinese and Japanese.
+      Im lokalen Container ist die Großschreibung (ITN) verfügbar. Die Interpunktion ist sprachabhängig und wird für einige Sprachen, darunter Chinesisch und Japanisch, nicht unterstützt.
 
 
-      We *do* have implicit and basic punctuation support for the existing containers, but it is `off` by default. What that means is that you can get the `.` character in your example, but not the `。` character. To enable this implicit logic, here's an example of how to do so in Python using our Speech SDK (it would be similar in other languages):
+      Wir *verfügen* über eine implizite und grundlegende Unterstützung der Interpunktion für die bestehenden Container, aber sie ist standardmäßig `off`. Das bedeutet, dass Sie in Ihrem Beispiel das Zeichen `.` erhalten können, aber nicht das Zeichen `。`. Um diese implizite Logik zu aktivieren, finden Sie hier ein Beispiel dafür, wie dies in Python mit unserem Speech SDK möglich ist (in anderen Sprachen wäre es ähnlich):
 
 
       ```python
@@ -431,9 +431,9 @@ sections:
 
       ```
   - question: >
-      Why am I getting 404 errors when attempting to POST data to speech-to-text container?
+      Warum erhalte ich den Fehler 404, wenn ich versuche, Daten in einen Spracherkennungscontainer zu veröffentlichen?
     answer: >
-      Here is an example HTTP POST:
+      Hier ist ein Beispiel für HTTP POST:
 
 
       ```http
@@ -471,12 +471,12 @@ sections:
       ```
 
 
-      We do not support REST API in either speech-to-text container, we only support WebSockets through the Speech SDK. Always refer to the official documentation, see [query prediction endpoints](speech-container-howto.md#query-the-containers-prediction-endpoint).
-  - question: Why is the container running as a non-root user? What issues might occur because of this?
+      Wir unterstützen keine REST-API in beiden Spracherkennungscontainern, sondern nur WebSockets über das Speech SDK. Weitere Informationen finden Sie in der offiziellen Dokumentation unter [Endpunkte der Abfragevorhersage](speech-container-howto.md#query-the-containers-prediction-endpoint).
+  - question: Warum wird der Container als Nicht-Root-Benutzer ausgeführt? Welche Probleme können hierdurch ggf. entstehen?
     answer: >
-      Note that the default user inside the container is a non-root user. This provides protection against processes escaping the container and obtaining escalated permissions on the host node. By default, some platforms like the OpenShift Container Platform already do this by running containers using an arbitrarily assigned user ID. For these platforms, the non-root user will need to have permissions to write to any externally mapped volume that requires writes. For example a logging folder, or a custom model download folder.
+      Beachten Sie, dass der Standardbenutzer innerhalb des Containers ein Nicht-Root-Benutzer ist. Dies bietet Schutz vor Prozessen, die aus dem Container entweichen und ausgeweitete Berechtigungen auf dem Hostknoten erhalten. Standardmäßig gehen einige Plattformen wie die OpenShift Container-Plattform bereits entsprechend vor, indem sie Container mithilfe einer willkürlich zugewiesenen Benutzer-ID ausführen. Für diese Plattformen muss der Nicht-Root-Benutzer über die Berechtigung verfügen, auf jedes extern zugeordnete Volume zu schreiben, das Schreibvorgänge erfordert. Beispiel: ein Protokollordner oder ein Downloadordner für benutzerdefinierte Modelle.
   - question: >
-      When using the speech-to-text service, why am I getting this error?
+      Warum erhalte ich diesen Fehler, wenn ich den Spracherkennungsdienst verwende?
     answer: >
       ```cmd
 
@@ -490,11 +490,11 @@ sections:
       ```
 
 
-      This typically happens when you feed the audio faster than the Speech recognition container can take it. Client buffers fill up, and the cancellation is triggered. You need to control the concurrency and the RTF at which you send the audio.
+      Dies ist normalerweise der Fall, wenn Sie die Audiodaten schneller zuführen, als sie vom Spracherkennungscontainer verarbeitet werden können. Die Clientpuffer füllen sich, und der Abbruch wird ausgelöst. Sie müssen die Parallelität und das RTF, mit dem Sie die Audiodaten senden, steuern.
   - question: >
-      Could you explain these text-to-speech container errors from the C++ examples?
+      Könnten Sie diese Fehler des Sprachsynthesecontainers anhand der C++-Beispiele erklären?
     answer: >
-      If the container version is older than 1.3, then this code should be used:
+      Wenn die Containerversion älter als Version 1.3 ist, dann sollte der folgende Code verwendet werden:
 
 
       ```cpp
@@ -510,7 +510,7 @@ sections:
       ```
 
 
-      Older containers don't have the required endpoint for Carbon to work with the `FromHost` API. If the containers used for version 1.3, then this code should be used:
+      Ältere Container verfügen nicht über den erforderlichen Endpunkt, damit Carbon mit der `FromHost`-API arbeiten kann. Wenn die Container für Version 1.3 verwendet werden, dann sollte dieser Code verwendet werden:
 
 
       ```cpp
@@ -528,7 +528,7 @@ sections:
       ```
 
 
-      Below is an example of using the `FromEndpoint` API:
+      Nachfolgend finden Sie ein Beispiel für die Verwendung der `FromEndpoint`-API:
 
 
       ```cpp
@@ -545,5 +545,5 @@ sections:
 
       ```
 
-       The `SetSpeechSynthesisVoiceName` function is called because the containers with an updated text-to-speech engine require the voice name.
-additionalContent: "\n## Next steps\n\n> [!div class=\"nextstepaction\"]\n> [Cognitive Services containers](speech-container-howto.md)"
+       Die Funktion `SetSpeechSynthesisVoiceName` wird aufgerufen, da die Container mit einer aktualisierten Sprachsyntheseengine den Sprachnamen benötigen.
+additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\n> [!div class=\"nextstepaction\"]\n> [Containerunterstützung in Azure Cognitive Services](speech-container-howto.md)"

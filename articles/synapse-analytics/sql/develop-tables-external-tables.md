@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/26/2021
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4f56571fb96f6d9baf28a119a978f2658de5616c
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 834feed476c307bc1a16bf95719b630389e58511
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860538"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430790"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Verwenden externer Tabellen mit Synapse SQL
 
@@ -297,6 +297,7 @@ CREATE EXTERNAL TABLE { database_name.schema_name.table_name | schema_name.table
         LOCATION = 'folder_or_filepath',  
         DATA_SOURCE = external_data_source_name,  
         FILE_FORMAT = external_file_format_name
+        [, TABLE_OPTIONS = N'{"READ_OPTIONS":["ALLOW_INCONSISTENT_READS"]}' ]
     )  
 [;]  
 
@@ -320,6 +321,8 @@ CREATE EXTERNAL TABLE unterstützt das Konfigurieren von Spaltenname, Datentyp u
 
 Beim Lesen aus Parquet-Dateien können Sie die zu lesenden Spalten angeben und die übrigen Spalten überspringen.
 
+#### <a name="location"></a>LOCATION
+
 LOCATION = '*folder_or_filepath*'
 
 Dient zum Angeben des Ordners oder des Dateipfads und Dateinamens für die tatsächlichen Daten in Azure Blob Storage. Der Speicherort beginnt im Stammordner. Der Stammordner ist der in der externen Datenquelle angegebene Datenspeicherort.
@@ -330,9 +333,15 @@ Im Gegensatz zu externen Hadoop-Tabellen geben native externe Tabellen keine Unt
  
 Dateien, deren Name mit einem Unterstrich (_) oder Punkt (.) beginnt, werden sowohl bei externen Hadoop-Tabellen als auch bei nativen externen Tabellen übersprungen.
 
+#### <a name="data_source"></a>DATA_SOURCE
+
 DATA_SOURCE = *external_data_source_name*: Dient zum Angeben des Namens der externen Datenquelle, die den Speicherort der externen Daten enthält. Verwenden Sie zum Erstellen einer externen Datenquelle [CREATE EXTERNAL DATA SOURCE](#create-external-data-source).
 
 FILE_FORMAT = *external_file_format_name*: Dient zum Angeben des Namens des Objekts für das externe Dateiformat, das den Dateityp und die Komprimierungsmethode für die externen Daten enthält. Verwenden Sie zum Erstellen eines externen Dateiformats [CREATE EXTERNAL FILE FORMAT](#create-external-file-format).
+
+#### <a name="table_options"></a>TABLE_OPTIONS
+
+TABLE_OPTIONS = *JSON-Optionen*: Gibt die Optionen an, die beschreiben, wie die zugrunde liegenden Dateien gelesen werden sollen. Derzeit ist nur die Option `"READ_OPTIONS":["ALLOW_INCONSISTENT_READS"]` verfügbar. Durch diese Option wird die externe Tabelle angewiesen, Aktualisierungen der zugrunde liegenden Dateien zu ignorieren, auch wenn dies unter Umständen zu inkonsistenten Lesevorgängen führt. Verwenden Sie diese Option nur in Sonderfällen, in denen Sie häufig Dateien angefügt haben. Diese Option steht im serverlosen SQL-Pool für das CSV-Format zur Verfügung.
 
 ### <a name="permissions-create-external-table"></a>Berechtigungen für „CREATE EXTERNAL TABLE“
 

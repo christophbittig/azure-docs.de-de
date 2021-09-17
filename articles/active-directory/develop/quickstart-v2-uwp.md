@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/07/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: 88fd6260df0039e960ac87b4b83d43ea497a58b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f142cf84e0e7e75d2ed61fbad9896d89e2364a0
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104658508"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123436534"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Schnellstart: Aufrufen der Microsoft Graph-API über eine UWP-Anwendung (UWP = Universelle Windows-Plattform)
 
@@ -103,9 +103,8 @@ Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-w
 > 1. Erstellen Sie ein neues selbstsigniertes Testzertifikat für das Paket, und wählen Sie es aus:
 >     1. Doppelklicken Sie im **Projektmappen-Explorer** auf die Datei *Package.appxmanifest*.
 >     1. Wählen Sie **Verpackung** > **Zertifikat auswählen...**  > **Erstellen...** aus.
->     1. Geben Sie ein Kennwort ein, und wählen Sie anschließend **OK** aus.
->     1. Wählen Sie die Option **Aus Datei auswählen...** und dann die soeben erstellte Datei *Native_UWP_V2_TemporaryKey.pfx* aus. Wählen Sie anschließend **OK** aus.
->     1. Schließen Sie die Datei *Package.appxmanifest* (Auswahl von **OK** bei Aufforderung zum Speichern der Datei).
+>     1. Geben Sie ein Kennwort ein, und wählen Sie anschließend **OK** aus. Ein Zertifikat mit dem Namen *Native_UWP_V2_TemporaryKey.pfx* wird erstellt. 
+>     1. Wählen Sie **OK** aus, um das Dialogfeld **Zertifikat auswählen** zu schließen. Vergewissern Sie sich anschließend, dass *Native_UWP_V2_TemporaryKey.pfx* im Projektmappen-Explorer angezeigt wird.
 >     1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **Native_UWP_V2**, und wählen Sie **Eigenschaften** aus.
 >     1. Wählen Sie **Signieren** und dann die von Ihnen erstellte PFX-Datei in der Dropdownliste **Schlüsseldatei mit starkem Namen auswählen** aus.
 

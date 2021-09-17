@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2021
 ms.author: duau
-ms.openlocfilehash: 1e95d3b72af14b151bdd1cbeede4d65deef0f817
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 5d97ebebe19235a54084ec551f3bbcb9e55e3022
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081513"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425624"
 ---
 # <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Tutorial: Weiterleiten von Datenverkehr an bestimmte Endpunkte mit dem Traffic Manager basierend auf einem Benutzersubnetz
 
@@ -175,9 +175,9 @@ Fügen Sie die beiden virtuellen Computer mit den IIS-Servern (*myIISVMEastUS* &
     | Name           | myInternalWebSiteEndpoint                                        |
     | Zielressourcentyp           | Öffentliche IP-Adresse                          |
     | Zielressource          | **Wählen Sie eine öffentliche IP-Adresse aus**, um die Liste der Ressourcen mit öffentlichen IP-Adressen im gleichen Abonnement anzuzeigen. Wählen Sie in **Ressource** die öffentliche IP-Adresse mit dem Namen *myIISVMEastUS-ip* aus. Dies ist die öffentliche IP-Adresse der IIS-Server-VM in „USA, Osten“.|
-    |  Einstellungen für das Subnetzrouting    |   Fügen Sie die IP-Adresse der Test-VM *myVMEastUS* hinzu. Jede Benutzerabfrage von diesem virtuellen Computer wird an *myInternalWebSiteEndpoint* weitergeleitet.    |
+    |  Einstellungen für das Subnetzrouting    |   Fügen Sie die IP-Adresse des rekursiven DNS-Konfliktlösers hinzu, der vom virtuellen Testcomputer *myVMEastUS* verwendet wird. Jede Benutzerabfrage von diesem virtuellen Computer wird an *myInternalWebSiteEndpoint* weitergeleitet.    |
 
-4. Wiederholen Sie die Schritte 2 und 3, um einen anderen Endpunkt mit dem Namen *myProdWebsiteEndpoint* für die öffentliche IP-Adresse *myIISVMWestEurope-ip* hinzuzufügen, die dem virtuellen IIS-Servercomputer mit dem Namen *myIISVMWestEurope* zugeordnet ist. Fügen Sie unter **Einstellungen für das Subnetzrouting** die IP-Adresse der Test-VM *myVMWestEurope* hinzu. Jede Benutzerabfrage von diesem virtuellen Testcomputer wird an den Endpunkt *myProdWebsiteEndpoint* geleitet.
+4. Wiederholen Sie die Schritte 2 und 3, um einen anderen Endpunkt mit dem Namen *myProdWebsiteEndpoint* für die öffentliche IP-Adresse *myIISVMWestEurope-ip* hinzuzufügen, die dem virtuellen IIS-Servercomputer mit dem Namen *myIISVMWestEurope* zugeordnet ist. Fügen Sie unter **Einstellungen für das Subnetzrouting** die IP-Adresse des rekursiven DNS-Konfliktlösers hinzu, der vom virtuellen Testcomputer *myVMWestEurope* verwendet wird. Jede Benutzerabfrage von diesem virtuellen Testcomputer über den DNS-Konfliktlöser wird an den Endpunkt *myProdWebsiteEndpoint* geleitet.
 5. Wenn Sie das Hinzufügen beider Endpunkte abgeschlossen haben, werden diese unter **Traffic Manager-Profil** zusammen mit ihrem Überwachungsstatus als **Online** angezeigt.
 
 ## <a name="test-traffic-manager-profile"></a>Testen des Traffic Manager-Profils

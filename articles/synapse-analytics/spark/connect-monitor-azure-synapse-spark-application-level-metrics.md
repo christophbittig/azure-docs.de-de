@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Verbinden und Überwachen von Azure Synapse Spark-Metriken auf Anwendungsebene'
+title: Sammeln von Apache Spark-Anwendungsmetriken mithilfe von APIs
 description: 'Tutorial: Erfahren Sie, wie Sie Ihren vorhandenen lokalen Prometheus-Server über den Synapse-Prometheus-Connector in einen Azure Synapse-Arbeitsbereich integrieren, um Azure Spark-Anwendungsmetriken zu erhalten.'
 services: synapse-analytics
 author: jejiang
@@ -9,27 +9,27 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 01/22/2021
-ms.openlocfilehash: 45ccced6f083e0d304651a0cea7df90c6396fd88
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: b2810d97651c6819996c79ce554fa2feee2a6c65
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108143249"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123539639"
 ---
-# <a name="tutorial-connect-and-monitor-azure-synapse-spark-application-level-metrics"></a>Tutorial: Verbinden und Überwachen von Azure Synapse Spark-Metriken auf Anwendungsebene
+#  <a name="collect-apache-spark-applications-metrics-using-apis"></a>Sammeln von Apache Spark-Anwendungsmetriken mithilfe von APIs
 
 ## <a name="overview"></a>Übersicht
 
-In diesem Tutorial erfahren Sie, wie Sie Ihren vorhandenen lokalen Prometheus-Server über den Synapse-Prometheus-Connector in einen Azure Synapse-Arbeitsbereich integrieren, um Azure Spark-Anwendungsmetriken zu erhalten. 
+In diesem Tutorial erfahren Sie, wie Sie Ihren vorhandenen lokalen Prometheus-Server über den Synapse-Prometheus-Connector in einen Azure Synapse-Arbeitsbereich integrieren, um Azure Spark-Anwendungsmetriken in Quasi-Echtzeit zu erhalten. 
 
-Außerdem werden in diesem Tutorial die Azure Synapse-REST-Metrik-APIs vorgestellt. Sie können Daten zu Spark-Anwendungsmetriken über die REST-APIs abrufen, um ein eigenes Überwachungs- und Diagnosetoolkit zu erstellen oder in Ihre Überwachungssysteme zu integrieren.
+Außerdem werden in diesem Tutorial die Azure Synapse-REST-Metrik-APIs vorgestellt. Sie können Daten zu Apache Spark-Anwendungsmetriken über die REST-APIs abrufen, um ein eigenes Überwachungs- und Diagnosetoolkit zu erstellen oder in Ihre Überwachungssysteme zu integrieren.
 
 ## <a name="use-azure-synapse-prometheus-connector-for-your-on-premises-prometheus-servers"></a>Verwenden des Azure Synapse-Prometheus-Connectors für Ihre lokalen Prometheus-Server
 
 Der [Azure Synapse-Prometheus-Connector](https://github.com/microsoft/azure-synapse-spark-metrics) ist ein Open-Source-Projekt. Der Synapse-Prometheus-Connector verwendet eine dateibasierte Dienstermittlungsmethode, um Folgendes zu ermöglichen:
  - Authentifizieren beim Synapse-Arbeitsbereich über einen AAD-Dienst Prinzipal
  - Abrufen einer Liste von Apache Spark-Anwendungen im Arbeitsbereich 
- - Abrufen von Spark-Anwendungsmetriken über die dateibasierte Prometheus-Konfiguration 
+ - Abrufen von Apache Spark-Anwendungsmetriken über die dateibasierte Prometheus-Konfiguration 
 
 ### <a name="1-prerequisite"></a>1. Voraussetzung
 
@@ -176,15 +176,15 @@ Die Antwort sieht wie folgt aus:
 
 ### <a name="2-list-running-applications-in-the-azure-synapse-workspace"></a>2. Auflisten von Anwendungsausführungen im Azure Synapse-Arbeitsbereich
 
-Um eine Liste der Spark-Anwendungen für einen Synapse-Arbeitsbereich zu erhalten, befolgen Sie die Informationen in diesem Dokument: [Überwachung: Abrufen einer Spark-Auftragsliste](/rest/api/synapse/data-plane/monitoring/getsparkjoblist).
+Um eine Liste der Apache Spark-Anwendungen für einen Synapse-Arbeitsbereich zu erhalten, befolgen Sie die Informationen in diesem Dokument: [Überwachung: Abrufen einer Spark-Auftragsliste](/rest/api/synapse/data-plane/monitoring/getsparkjoblist).
 
 
-### <a name="3-collect-spark-application-metrics-with-the-prometheus-or-rest-apis"></a>3. Erfassen von Spark-Anwendungsmetriken mit der Prometheus-API oder den REST-APIs
+### <a name="3-collect-apache-spark-application-metrics-with-the-prometheus-or-rest-apis"></a>3. Erfassen von Apache Spark-Anwendungsmetriken mit der Prometheus-API oder den REST-APIs
 
 
-#### <a name="collect-spark-application-metrics-with-the-prometheus-api"></a>Erfassen von Spark-Anwendungsmetriken mit der Prometheus-API
+#### <a name="collect-apache-spark-application-metrics-with-the-prometheus-api"></a>Erfassen von Apache Spark-Anwendungsmetriken mit der Prometheus-API
 
-Erfassen Sie die neuesten Metriken der angegebenen Spark-Anwendung mit der Prometheus-API.
+Erfassen Sie die aktuellen Metriken der angegebenen Apache Spark-Anwendung mit der Prometheus-API:
 
 ```
 GET https://{endpoint}/livyApi/versions/{livyApiVersion}/sparkpools/{sparkPoolName}/sessions/{sessionId}/applications/{sparkApplicationId}/metrics/executors/prometheus?format=html
@@ -221,7 +221,7 @@ metrics_executor_completedTasks_total{application_id="application_1605509647837_
 
 ```
 
-#### <a name="collect-spark-application-metrics-with-the-rest-api"></a>Erfassen von Spark-Anwendungsmetriken mit der REST-API
+#### <a name="collect-apache-spark-application-metrics-with-the-rest-api"></a>Erfassen von Apache Spark-Anwendungsmetriken mit der REST-API
 
 ```
 GET https://{endpoint}/livyApi/versions/{livyApiVersion}/sparkpools/{sparkPoolName}/sessions/{sessionId}/applications/{sparkApplicationId}/executors
@@ -285,4 +285,4 @@ Beispielantwort für Statuscode: 200
 
 ### <a name="4-build-your-own-diagnosis-and-monitoring-tools"></a>4. Erstellen Ihrer eigenen Diagnose- und Überwachungstools
 
-Die Prometheus-API und die Rest-APIs stellen umfangreiche Metrikdaten zur Ausführung von Spark-Anwendungen bereit. Sie können die anwendungsbezogenen Metrikdaten über die Prometheus-API und die REST-APIs erfassen. Zudem können Sie eigene Diagnose- und Überwachungstools erstellen, die für Ihre Anforderungen optimiert sind.
+Die Prometheus-API und die Rest-APIs stellen umfangreiche Metrikdaten zur Ausführung von Apache Spark-Anwendungen bereit. Sie können die anwendungsbezogenen Metrikdaten über die Prometheus-API und die REST-APIs erfassen. Zudem können Sie eigene Diagnose- und Überwachungstools erstellen, die für Ihre Anforderungen optimiert sind.

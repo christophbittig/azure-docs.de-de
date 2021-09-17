@@ -3,16 +3,16 @@ title: 'Azure Defender für Resource Manager: Vorteile und Features'
 description: Hier finden Sie Informationen zu den Vorteilen und Features von Azure Defender für Resource Manager.
 author: memildin
 ms.author: memildin
-ms.date: 07/14/2021
+ms.date: 09/05/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 1acf785021f83605db2f8bfe3188e0e2ac874d4e
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: fff9c94af2c74612e8c07be1f7e125787265a72d
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113761883"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541367"
 ---
 # <a name="introduction-to-azure-defender-for-resource-manager"></a>Einführung in Azure Defender für Resource Manager
 
@@ -22,13 +22,22 @@ Die Cloudverwaltungsebene ist ein wichtiger Dienst, der mit allen Ihren Cloudres
 
 Azure Defender für Resource Manager überwacht automatisch die Ressourcenverwaltungsvorgänge in Ihrer Organisation. Dabei spielt es keine Rolle, ob diese über das Azure-Portal, über Azure-REST-APIs, über die Azure CLI oder über andere programmgesteuerte Azure-Clients ausgeführt werden. Von Azure Defender werden erweiterte Sicherheitsanalysen durchgeführt, um Bedrohungen zu erkennen und Sie auf verdächtige Aktivitäten aufmerksam zu machen.
 
+>[!NOTE]
+> Einige dieser Analysen basieren auf [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security). Um von diesen Analysen zu profitieren, müssen Sie eine Cloud App Security-Lizenz aktivieren. Wenn Sie über eine Cloud App Security-Lizenz verfügen, sind diese Warnungen standardmäßig aktiviert. So deaktivieren Sie die Warnungen:
+>
+> 1. Wählen Sie im Menü von Security Center **Preise und Einstellungen** aus.
+> 1. Wählen Sie das Abonnement aus, das Sie ändern möchten.
+> 1. Wählen Sie **Integrationen** aus.
+> 1. Deaktivieren Sie **Microsoft Cloud App Security Zugriff auf meine Daten erteilen**, und wählen Sie anschließend **Speichern** aus.
+
+
 ## <a name="availability"></a>Verfügbarkeit
 
 |Aspekt|Details|
 |----|:----|
 |Status des Release:|Allgemeine Verfügbarkeit (General Availability, GA)|
 |Preise:|**Azure Defender für Resource Manager** wird gemäß [Security Center – Preise](https://azure.microsoft.com/pricing/details/security-center/) abgerechnet.|
-|Clouds:|:::image type="icon" source="./media/icons/yes-icon.png"::: Kommerzielle Clouds<br>:::image type="icon" source="./media/icons/yes-icon.png":::US Gov<br>:::image type="icon" source="./media/icons/yes-icon.png":::Azure China|
+|Clouds:|:::image type="icon" source="./media/icons/yes-icon.png"::: Kommerzielle Clouds<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure Government<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure China 21Vianet|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-resource-manager"></a>Welche Vorteile bietet Azure Defender für Resource Manager?
@@ -70,9 +79,11 @@ So untersuchen Sie Sicherheitswarnungen von Azure Defender für Resource Manager
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie sich über Azure Defender für Resource Manager informiert. Verwandte Informationen finden Sie im folgenden Artikel: 
+In diesem Artikel haben Sie sich über Azure Defender für Resource Manager informiert. 
+
+> [!div class="nextstepaction"]
+> [Aktivieren von Azure Defender](enable-azure-defender.md)
+
+Verwandte Informationen finden Sie im folgenden Artikel: 
 
 - Sicherheitswarnungen können von Security Center generiert oder von Security Center aus anderen Sicherheitsprodukten empfangen werden. Gehen Sie wie unter [Fortlaufendes Exportieren von Security Center-Daten](continuous-export.md) beschrieben vor, um alle diese Warnungen in Azure Sentinel, in ein beliebiges Drittanbieter-SIEM oder in ein beliebiges anderes externes Tool zu exportieren.
-
-- > [!div class="nextstepaction"]
-    > [Aktivieren von Azure Defender](enable-azure-defender.md)

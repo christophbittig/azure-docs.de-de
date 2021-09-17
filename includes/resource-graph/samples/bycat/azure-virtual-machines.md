@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 08/31/2021
+ms.date: 09/03/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 716ac7b7d1c3b6577b9eb7290e249b306a617254
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 263f2be5c13a9086a529271ef8bd03464e20975e
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123304097"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536316"
 ---
 ### <a name="count-of-os-update-installation-done"></a>Anzahl abgeschlossener Betriebssystem-Updateinstallation
 
@@ -213,7 +213,7 @@ Search-AzGraph -Query "Resources | where type=~ 'microsoft.compute/virtualmachin
 
 ### <a name="list-all-extensions-installed-on-a-virtual-machine"></a>Auflisten aller Erweiterungen, die auf einem virtuellen Computer installiert sind
 
-Zuerst wird bei dieser Abfrage `extend` für den VM-Ressourcentyp verwendet, um die ID in Großbuchstaben (`toupper()`) und dann den Namen und Typ des Betriebssystems sowie die VM-Größe abzurufen. Das Abrufen der Ressourcen-ID in Großbuchstaben ist eine gute Möglichkeit, um das Einbinden in eine andere Eigenschaft vorzubereiten. Anschließend wird für die Abfrage `join` mit **kind** als _leftouter_-Element verwendet, um VM-Erweiterungen abzurufen. Hierfür wird ein Abgleich mit dem `substring`-Element der Erweiterungs-ID in Großbuchstaben durchgeführt. Da der Teil der ID vor „/extensions/\<ExtensionName\>“ das gleiche Format wie die VM-ID hat, verwenden wie diese Eigenschaft für den `join`-Vorgang. `summarize` wird dann mit `make_list` im Namen der VM-Erweiterung verwendet, um die Namen der einzelnen Erweiterungen zu kombinieren. Hierbei sind _id_, _OSName_, _OSType_ und _VMSize_ für jede Arrayeigenschaft jeweils identisch. Abschließend führen wir `order by` für das _OSName_-Element in Kleinbuchstaben mit **asc** durch. Standardmäßig wird für `order by` „descending“ (absteigend) und nicht „ascending“ (aufsteigend) verwendet.
+Zuerst wird bei dieser Abfrage `extend` für den VM-Ressourcentyp verwendet, um die ID in Großbuchstaben (`toupper()`) und dann den Namen und Typ des Betriebssystems sowie die VM-Größe abzurufen. Das Abrufen der Ressourcen-ID in Großbuchstaben ist eine gute Möglichkeit, um das Einbinden in eine andere Eigenschaft vorzubereiten. Anschließend wird für die Abfrage `join` mit **kind** als _leftouter_-Element verwendet, um VM-Erweiterungen abzurufen. Hierfür wird ein Abgleich mit dem `substring`-Element der Erweiterungs-ID in Großbuchstaben durchgeführt. Da der Teil der ID vor „/extensions/\<ExtensionName\>“ das gleiche Format wie die VM-ID hat, verwenden wie diese Eigenschaft für den `join`-Vorgang. `summarize` wird dann mit `make_list` im Namen der VM-Erweiterung verwendet, um die Namen der einzelnen Erweiterungen zu kombinieren. Hierbei sind _id_, _OSName_, _OSType_ und _VMSize_ für jede Arrayeigenschaft jeweils identisch. Abschließend erfolgt `order by` in Kleinbuchstaben nach _OSName_ mit **asc**. Standardmäßig wird für `order by` „descending“ (absteigend) und nicht „ascending“ (aufsteigend) verwendet.
 
 ```kusto
 Resources

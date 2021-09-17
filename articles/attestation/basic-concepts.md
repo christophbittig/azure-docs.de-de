@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 5ac431f489f279ea09407e1a34c234911d71f12f
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 82b40680d5f9aa46514273d8a147971b19cae9c8
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123259732"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123438550"
 ---
 # <a name="basic-concepts"></a>Grundlegende Konzepte
 
@@ -139,7 +139,7 @@ Beispiel für ein JWT, das für eine SGX-Enclave generiert wurde:
 
 Einige der oben verwendeten Ansprüche werden als veraltet eingestuft, werden jedoch vollständig unterstützt.  Es wird empfohlen, dass der gesamte zukünftige Code und alle Tools die nicht veralteten Anspruchsnamen verwenden. Weitere Informationen finden Sie unter [von Azure Attestation ausgegebene Ansprüche](claim-sets.md).
 
-Die nachstehenden Angaben erscheinen nur in dem Nachweistoken, die für die Serverplattformen mit Intel® Xeon® Scalable-Prozessoren erstellt wurde. Die Ansprüche werden nicht angezeigt, wenn die SGX-Enclave nicht mit Unterstützung für [Schlüsseltrennung und Freigabeunterstützung](https://github.com/openenclave/openenclave/issues/3054) konfiguriert ist
+Die nachstehenden Angaben erscheinen nur in dem Nachweistoken, die für die Serverplattformen mit Intel® Xeon® Scalable-Prozessoren erstellt wurde. Die Ansprüche werden nicht angezeigt, wenn die SGX-Enclave nicht mit [Unterstützung für Schlüsseltrennung und -freigabe](https://github.com/openenclave/openenclave/issues/3054) konfiguriert ist.
 
 **x-ms-sgx-config-id**
 

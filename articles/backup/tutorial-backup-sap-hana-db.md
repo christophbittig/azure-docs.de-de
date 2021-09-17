@@ -2,13 +2,13 @@
 title: 'Tutorial: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern'
 description: In diesem Tutorial wird beschrieben, wie Sie SAP HANA-Datenbanken, die auf einem virtuellen Azure-Computer ausgeführt werden, in einem Azure Backup Recovery Services-Tresor sichern.
 ms.topic: tutorial
-ms.date: 02/24/2020
-ms.openlocfilehash: 00109de349c1fdfdbaff9de30d18f64d8b986a59
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/01/2021
+ms.openlocfilehash: 3cfbd89e9df6cf2d0d30d744ee8e437e3c364094
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104587643"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434248"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Tutorial: Sichern von SAP HANA-Datenbanken auf einem virtuellen Azure-Computer
 
@@ -37,7 +37,8 @@ Führen Sie vor dem Konfigurieren von Sicherungen unbedingt die folgenden Schrit
   * Für MDC sollte der Schlüssel auf den SQL-Port von **NAMESERVER** verweisen. Für SDC sollte er auf den SQL-Port von **INDEXSERVER** verweisen.
   * Es sollten Anmeldeinformationen zum Hinzufügen und Löschen von Benutzern vorhanden sein.
   * Beachten Sie, dass dieser Schlüssel nach der erfolgreichen Ausführung des Vorregistrierungsskripts gelöscht werden kann.
-* Führen Sie das Skript für die SAP HANA-Sicherungskonfiguration (Vorregistrierungsskript) auf dem virtuellen Computer, auf dem HANA installiert ist, als Stammbenutzer aus. Mit [diesem Skript](https://aka.ms/scriptforpermsonhana) wird das HANA-System für die Sicherung vorbereitet. Weitere Informationen zum Vorregistrierungsskript finden Sie unter [Aufgaben des Vorregistrierungsskripts](#what-the-pre-registration-script-does).
+* Sie können auch einen Schlüssel für den vorhandenen HANA SYSTSEM-Benutzer in **hdbuserstore** anstelle eines benutzerdefinierten Schlüssels erstellen, wie im obigen Schritt aufgeführt.
+* Führen Sie das Skript für die SAP HANA-Sicherungskonfiguration (Vorregistrierungsskript) auf dem virtuellen Computer, auf dem HANA installiert ist, als Stammbenutzer aus. Mit [diesem Skript](https://aka.ms/scriptforpermsonhana) wird das HANA-System auf die Sicherung vorbereitet. Dabei muss der in den vorherigen Schritten erstellte Schlüssel als Eingabe übergeben werden. Informationen dazu, wie diese Eingabe als Parameter an das Skript übergeben werden soll, finden Sie im Abschnitt [Aufgaben des Vorregistrierungsskripts](#what-the-pre-registration-script-does). In diesem Abschnitt erfahren Sie außerdem mehr über die Funktion des Vorregistrierungsskripts.
 * Wenn Ihr HANA-Setup private Endpunkte verwendet, führen Sie das [Vorregistrierungsskript](https://aka.ms/scriptforpermsonhana) mit dem Parameter *-sn* oder *--skip-network-checks* aus.
 
 >[!NOTE]
@@ -103,7 +104,7 @@ Wenn Sie eine SAP HANA-Datenbank auf einem virtuellen Azure-Computer sichern, v
 
 Bei den über Backint bereitgestellten Sicherungen (Protokoll und protokollfremd) für virtuelle SAP HANA-Azure-Computer handelt es sich um Streams zu Azure Recovery Services-Tresoren. Daher ist es wichtig, diese Streamingmethodik zu verstehen.
 
-Die Backint-Komponente von HANA stellt die Pipes (eine Pipe für Lese- und eine für Schreibvorgänge) bereit. Diese sind mit zugrunde liegenden Datenträgern verbunden, auf denen sich Datenbankdateien befinden, die dann durch den Azure Backup-Dienst gelesen und an einen Azure Recovery Services-Tresor übertragen werden. Vom Azure Backup-Dienst wird neben den nativen Validierungsüberprüfungen von Backint auch eine Prüfsumme erstellt. Durch diese Überprüfungen wird sichergestellt, dass die im Azure Recovery Services-Tresor enthaltenen Daten zuverlässig und wiederherstellbar sind.
+Die Backint-Komponente von HANA stellt die Pipes (eine Pipe für Lese- und eine für Schreibvorgänge) bereit. Diese sind mit zugrunde liegenden Datenträgern verbunden, auf denen sich Datenbankdateien befinden, die dann durch den Azure Backup-Dienst gelesen und an einen Azure Recovery Services-Tresor übertragen werden. Vom Azure Backup-Dienst wird neben den nativen Validierungsüberprüfungen von Backint auch eine Prüfsumme zum Überprüfen der Datenströme erstellt. Durch diese Überprüfungen wird sichergestellt, dass die im Azure Recovery Services-Tresor enthaltenen Daten zuverlässig und wiederherstellbar sind.
 
 Da es bei den Streams in erster Linie um Datenträger geht, müssen Sie mit der Datenträgerleistung vertraut sein, um die Sicherungs- und Wiederherstellungsleistung beurteilen zu können. Ausführliche Informationen zu Datenträgerdurchsatz und -leistung bei virtuellen Azure-Computern finden Sie in [diesem Artikel](../virtual-machines/disks-performance.md). Diese Informationen sind auf die Sicherungs- und Wiederherstellungsleistung übertragbar.
 
@@ -145,17 +146,22 @@ Beim Ausführen des Skripts für die Vorregistrierung wird Folgendes durchgefüh
 
 * Je nach Ihrer Linux-Distribution werden alle Pakete installiert bzw. aktualisiert, die vom Azure Backup-Agent benötigt werden.
 * Es werden Konnektivitätsprüfungen in ausgehender Richtung mit Azure Backup-Servern und abhängigen Diensten wie Azure Active Directory und Azure Storage durchgeführt.
-* Die Anmeldung bei Ihrem HANA-System erfolgt mit dem Benutzerschlüssel, der Teil der [Voraussetzungen](#prerequisites) ist. Der Benutzerschlüssel wird zum Erstellen eines Sicherungsbenutzers (AZUREWLBACKUPHANAUSER) im HANA-System verwendet und **kann gelöscht werden, nachdem das Vorregistrierungsskript erfolgreich ausgeführt wurde**.
+* Die Anmeldung bei Ihrem HANA-System wird unter Verwendung des benutzerdefinierten Benutzerschlüssels oder des SYSTEM-Benutzerschlüssels (siehe [Voraussetzungen](#prerequisites)) durchgeführt. Dieser Schlüssel wird zum Erstellen eines Sicherungsbenutzers (AZUREWLBACKUPHANAUSER) im HANA-System verwendet, und der Benutzerschlüssel kann gelöscht werden, nachdem das Vorregistrierungsskript erfolgreich ausgeführt wurde. _Beachten Sie, dass der SYSTEM-Benutzerschlüssel nicht gelöscht werden darf._
 * AZUREWLBACKUPHANAUSER werden die folgenden erforderlichen Rollen und Berechtigungen zugewiesen:
   * Für MDC: DATABASE ADMIN (DATENBANKADMINISTRATOR) und BACKUP ADMIN (SICHERUNGSADMINISTRATOR, ab HANA 2.0 SPS05): Erstellen neuer Datenbanken während der Wiederherstellung
   * Für SDC: BACKUP ADMIN: Erstellen neuer Datenbanken während der Wiederherstellung
   * CATALOG READ: Lesen des Sicherungskatalogs
   * SAP_INTERNAL_HANA_SUPPORT: Zugreifen auf einige private Tabellen Nur erforderlich für SDC- und MDC-Versionen unter HANA 2.0 SPS04 Rev 46. Dies ist nicht erforderlich für HANA 2.0 SPS04 Rev 46 und höhere Versionen, da die benötigten Informationen aus öffentlichen Tabellen nun mit dem Fix des HANA-Teams abgerufen werden.
 * Das Skript fügt einen Schlüssel zu **hdbuserstore** für AZUREWLBACKUPHANAUSER für das HANA-Sicherungs-Plug-In hinzu, um alle Vorgänge (Datenbankabfragen, Wiederherstellungsvorgänge, Konfigurieren und Ausführen von Sicherungen) zu behandeln.
+* Alternativ können Sie auch einen eigenen benutzerdefinierten Backup-Benutzer erstellen. Stellen Sie sicher, dass diesem Benutzer die folgenden erforderlichen Rollen und Berechtigungen zugewiesen sind:
+  * Für MDC: DATABASE ADMIN (DATENBANKADMINISTRATOR) und BACKUP ADMIN (SICHERUNGSADMINISTRATOR, ab HANA 2.0 SPS05): Erstellen neuer Datenbanken während der Wiederherstellung
+  * Für SDC: BACKUP ADMIN: Erstellen neuer Datenbanken während der Wiederherstellung
+  * CATALOG READ: Lesen des Sicherungskatalogs
+  * SAP_INTERNAL_HANA_SUPPORT: Zugreifen auf einige private Tabellen Nur erforderlich für SDC- und MDC-Versionen unter HANA 2.0 SPS04 Rev 46. Dies ist nicht erforderlich für HANA 2.0 SPS04 Rev 46 und höhere Versionen, da die benötigten Informationen aus öffentlichen Tabellen nun mit dem Fix des HANA-Teams abgerufen werden.
+* Fügen Sie dann einen Schlüssel zu „hdbuserstore“ für Ihren benutzerdefinierten Backup-Benutzer für das HANA-Sicherungs-Plug-In hinzu, um alle Vorgänge (Datenbankabfragen, Wiederherstellungsvorgänge, Konfigurieren und Ausführen von Sicherungen) zu behandeln. Übergeben Sie diesen benutzerdefinierten Backup-Benutzerschlüssel als Parameter an das Skript: `-bk CUSTOM_BACKUP_KEY_NAME` oder `-backup-key CUSTOM_BACKUP_KEY_NAME`.  _Beachten Sie, dass der Ablauf des Kennworts dieses benutzerdefinierten Sicherungsschlüssels zu Sicherungs- und Wiederherstellungsfehlern führen kann._
 
 >[!NOTE]
-> Sie können den unter [Voraussetzungen](#prerequisites) aufgeführten Benutzerschlüssel explizit als Parameter an das Vorregistrierungsskript übergeben: `-sk SYSTEM_KEY_NAME, --system-key SYSTEM_KEY_NAME`. <br><br>
->Führen Sie den Befehl `bash msawb-plugin-config-com-sap-hana.sh --help` aus, um zu erfahren, welche anderen Parameter vom Skript akzeptiert werden.
+> Führen Sie den Befehl `bash msawb-plugin-config-com-sap-hana.sh --help` aus, um zu erfahren, welche anderen Parameter vom Skript akzeptiert werden.
 
 Um die Schlüsselerstellung zu bestätigen, führen Sie auf dem HANA-Computer den Befehl HDBSQL mit SIDADM-Anmeldeinformationen aus:
 
@@ -168,7 +174,7 @@ Die Ausgabe des Befehls sollte den Schlüssel {SID} {DBNAME} und den Benutzer AZ
 >[!NOTE]
 > Stellen Sie sicher, dass sich unter `/usr/sap/{SID}/home/.hdb/` eine eindeutige Gruppe von SSFS-Dateien befindet. In diesem Pfad darf nur ein Ordner vorhanden sein.
 
-Nachfolgend finden Sie eine Zusammenfassung der Schritte, die zum Abschließen der Ausführung des Vorregistrierungsskripts erforderlich sind.
+Nachfolgend finden Sie eine Zusammenfassung der Schritte, die zum Abschließen der Ausführung des Vorregistrierungsskripts erforderlich sind. Beachten Sie, dass Sie in diesem Flow den SYSTEM-Benutzerschlüssel als Eingabeparameter für das Vorregistrierungsskript bereitstellen.
 
 |Wer  |From  |Auszuführendes Programm  |Kommentare  |
 |---------|---------|---------|---------|

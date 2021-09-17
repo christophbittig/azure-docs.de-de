@@ -3,16 +3,16 @@ title: 'Azure Defender für Containerregistrierungen: Vorteile und Features'
 description: Enthält eine Beschreibung der Vorteile und Features von Azure Defender für Containerregistrierungen.
 author: memildin
 ms.author: memildin
-ms.date: 07/05/2021
+ms.date: 09/05/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d448d0b0a67987ced1caec04557773c2f8ab33d7
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: 5c9407e33cefc9c604192252a119db5a42851949
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113651813"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541403"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Einführung in Azure Defender für Containerregistrierungen
 
@@ -20,7 +20,17 @@ Azure Container Registry (ACR) ist ein verwalteter, privater Docker-Registrierun
 
 Aktivieren Sie **Azure Defender für Containerregistrierungen** auf Abonnementebene, um die auf Azure Resource Manager basierenden Registrierungen in Ihrem Abonnement zu schützen. Mit Azure Defender werden dann alle Images gescannt, wenn sie in die Registrierung gepusht oder importiert werden oder innerhalb der letzten 30 Tage gepullt wurden. Ihnen wird jedes gescannte Image in Rechnung gestellt – einmal pro Image.
 
-[!INCLUDE [Defender for container registries availability info](../../includes/security-center-availability-defender-for-container-registries.md)]
+## <a name="availability"></a>Verfügbarkeit
+
+|Aspekt|Details|
+|----|:----|
+|Status des Release:|Allgemein verfügbar (Generally Available, GA)|
+|Preise:|**Azure Defender für Containerregistrierungen** wird gemäß den Angaben in der [Preisübersicht](security-center-pricing.md) abgerechnet.|
+|Unterstützte Registrierungen und Images:|Linux-Images in ACR-Registrierungen, auf die mit Shellzugriff über das öffentliche Internet zugegriffen werden kann<br>[Mit Azure Private Link geschützte ACR-Registrierungen](../container-registry/container-registry-private-link.md)|
+|Nicht unterstützte Registrierungen und Images:|Windows-Images<br>Private Registrierungen (sofern kein Zugriff auf [vertrauenswürdige Dienste](../container-registry/allow-access-trusted-services.md#trusted-services) gewährt wird)<br>Extrem minimalistische Images wie [Docker-Scratch](https://hub.docker.com/_/scratch/)-Images oder Images ohne Distribution, die nur eine Anwendung und deren Laufzeitabhängigkeiten ohne Paket-Manager, Shell oder Betriebssystem enthalten<br>Images mit der [Spezifikation für das Imageformat Open Container Initiative (OCI)](https://github.com/opencontainers/image-spec/blob/master/spec.md)|
+|Erforderliche Rollen und Berechtigungen:|**Sicherheitsleseberechtigter** und [Azure Container Registry: Rollen und Berechtigungen](../container-registry/container-registry-roles.md)|
+|Clouds:|:::image type="icon" source="./media/icons/yes-icon.png" border="false"::: Kommerzielle Clouds<br>:::image type="icon" source="./media/icons/yes-icon.png" border="false"::: US Gov und China Gov: Derzeit wird nur das Feature zur Überprüfung bei Pushvorgang unterstützt. Weitere Informationen finden Sie unter [Wann werden Images überprüft?](#when-are-images-scanned)|
+|||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-container-registries"></a>Welche Vorteile hat die Nutzung von Azure Defender für Containerregistrierungen?
 

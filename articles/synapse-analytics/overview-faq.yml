@@ -7,15 +7,15 @@ metadata:
   ms.service: synapse-analytics
   ms.topic: overview
   ms.subservice: overview
-  ms.date: 07/27/2021
+  ms.date: 09/02/2021
   ms.author: saveenr
   ms.reviewer: jrasnick, wiassaf
-  ms.openlocfilehash: c6e970383611a14694b7e921257a117b09a4da89
-  ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+  ms.openlocfilehash: b076139e94c102ddd850d28bf0288dbd635e7dc1
+  ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/27/2021
-  ms.locfileid: "123029793"
+  ms.lasthandoff: 09/03/2021
+  ms.locfileid: "123451059"
 title: 'Azure Synapse Analytics: Häufig gestellte Fragen'
 summary: In diesem Leitfaden finden Sie die am häufigsten gestellten Fragen zu Azure Synapse Analytics.
 sections:
@@ -131,5 +131,5 @@ sections:
   - question: >
       Gewusst wie: Sichern des Zugriffs auf meinen Azure Synapse-Arbeitsbereich
     answer: >
-      Sowohl mit als auch ohne ein [verwaltetes virtuelles Netzwerk](/azure/synapse-analytics/security/synapse-workspace-managed-vnet) können Sie aus öffentlichen Netzwerken eine Verbindung mit Ihrem Arbeitsbereich herstellen. Weitere Informationen finden Sie unter [Konnektivitätseinstellungen](/azure/azure-sql/database/connectivity-settings). Der Zugriff aus öffentlichen Netzwerken lässt sich kontrollieren, indem Sie das [Feature für den Zugriff auf öffentliche Netzwerke](/azure/azure-sql/database/connectivity-settings#public-network-access) oder die [Arbeitsbereichsfirewall](/bs-cyrl-ba/azure/synapse-analytics/security/synapse-workspace-ip-firewall) aktivieren. Alternativ können Sie auch über einen [verwalteten privaten Endpunkt](/azure/synapse-analytics/security/synapse-workspace-managed-private-endpoints) und [Private Link](../azure-sql/database/private-endpoint-overview.md) eine Verbindung mit Ihrem Arbeitsbereich herstellen. Synapse-Arbeitsbereiche ohne das [verwaltete virtuelle Netzwerk von Azure Synapse Analytics](/azure/synapse-analytics/security/synapse-workspace-managed-vnet) können keine Verbindung über verwaltete private Endpunkte herstellen.
+      Sowohl mit als auch ohne ein [verwaltetes virtuelles Netzwerk](./security/synapse-workspace-managed-vnet.md) können Sie aus öffentlichen Netzwerken eine Verbindung mit Ihrem Arbeitsbereich herstellen. Weitere Informationen finden Sie unter [Konnektivitätseinstellungen](./security/connectivity-settings.md). Der Zugriff aus öffentlichen Netzwerken lässt sich kontrollieren, indem Sie das [Feature für den Zugriff auf öffentliche Netzwerke](./security/connectivity-settings.md#public-network-access) oder die [Arbeitsbereichsfirewall](./security/synapse-workspace-ip-firewall.md) aktivieren. Alternativ können Sie auch über einen [verwalteten privaten Endpunkt](./security/synapse-workspace-managed-private-endpoints.md) und [Private Link](../azure-sql/database/private-endpoint-overview.md) eine Verbindung mit Ihrem Arbeitsbereich herstellen. Synapse-Arbeitsbereiche ohne das [verwaltete virtuelle Netzwerk von Azure Synapse Analytics](./security/synapse-workspace-managed-vnet.md) können keine Verbindung über verwaltete private Endpunkte herstellen.
 additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n   * [Erste Schritte mit Azure Synapse Analytics](get-started.md)\n   * [Erstellen eines Arbeitsbereichs](quickstart-create-workspace.md)\n   * [Verwenden eines serverlosen SQL-Pools](quickstart-sql-on-demand.md)"

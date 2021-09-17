@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 01/23/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 93b5d7059c1d19b3e5130a8e6d360655fa210aba
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: a25f2a83fe03b8510e6ec56eb6bdcfedbb0098d8
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111555950"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538073"
 ---
 # <a name="tutorial-use-net-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Tutorial: Verwenden von .NET und KI zum Generieren von durchsuchbarem Inhalt über Azure-Blobs
 
@@ -60,7 +60,7 @@ Sie können auch den Quellcode für dieses Tutorial herunterladen. Der Quellcode
 
 ## <a name="1---create-services"></a>1\. Erstellen der Dienste
 
-In diesem Tutorial werden Azure Cognitive Search für Indizierungsvorgänge und Abfragen, Cognitive Services auf dem Back-End für die KI-Anreicherung und Azure Blob Storage für die Datenbereitstellung verwendet. Dieses Tutorial bleibt unter der kostenlosen Zuteilung von 20 Transaktionen pro Indexer pro Tag für Cognitive Services. Aus diesem Grund müssen Sie nur den Such- und den Speicherdienst erstellen.
+In diesem Tutorial werden Azure Cognitive Search für Indizierungsvorgänge und Abfragen, Cognitive Services im Back-End für die KI-Anreicherung und Azure Blob Storage für die Datenbereitstellung verwendet. Dieses Tutorial bleibt unter der kostenlosen Zuteilung von 20 Transaktionen pro Indexer pro Tag für Cognitive Services. Aus diesem Grund müssen Sie nur den Such- und den Speicherdienst erstellen.
 
 Erstellen Sie diese beiden Dienste nach Möglichkeit in derselben Region und Ressourcengruppe, um eine möglichst große Nähe zu erreichen und die Verwaltung zu vereinfachen. In der Praxis kann sich Ihr Azure Storage-Konto in einer beliebigen Region befinden.
 
@@ -309,7 +309,7 @@ Weitere Informationen zu den Grundlagen von Qualifikationsgruppen finden Sie unt
 
 ### <a name="ocr-skill"></a>OCR-Qualifikation
 
-Die Qualifikation **OCR** extrahiert Text aus Bildern. Bei dieser Qualifikation wird davon ausgegangen, dass ein Feld „normalized_images“ vorhanden ist. Um dieses Feld zu generieren, legen Sie später in diesem Tutorial die ```"imageAction"```-Konfiguration in der Indexerdefinition auf ```"generateNormalizedImages"``` fest.
+[`OcrSkill`](/dotnet/api/azure.search.documents.indexes.models.ocrskill) extrahiert Text aus Bildern. Bei dieser Qualifikation wird davon ausgegangen, dass ein Feld „normalized_images“ vorhanden ist. Um dieses Feld zu generieren, legen Sie später in diesem Tutorial die ```"imageAction"```-Konfiguration in der Indexerdefinition auf ```"generateNormalizedImages"``` fest.
 
 ```csharp
 private static OcrSkill CreateOcrSkill()
@@ -340,7 +340,7 @@ private static OcrSkill CreateOcrSkill()
 
 ### <a name="merge-skill"></a>Qualifikation: Zusammenführung
 
-In diesem Abschnitt erstellen Sie einen Skill für das **Zusammenführen**, mit dem das Feld mit dem Dokumentinhalt mit dem vom OCR-Skill erstellten Text zusammengeführt wird.
+In diesem Abschnitt erstellen Sie ein [`MergeSkill`](/dotnet/api/azure.search.documents.indexes.models.mergeskill)-Element, mit dem das Feld mit dem Dokumentinhalt mit dem vom OCR-Skill erstellten Text zusammengeführt wird.
 
 ```csharp
 private static MergeSkill CreateMergeSkill()
@@ -379,7 +379,7 @@ private static MergeSkill CreateMergeSkill()
 
 ### <a name="language-detection-skill"></a>Qualifikation „Sprachenerkennung“
 
-Die Qualifikation **Sprachenerkennung** erkennt die Sprache von Eingabetexten und meldet einen einzigen Sprachcode für jedes Dokument, das mit der Anforderung übermittelt wurde. Wir verwenden die Ausgabe der Qualifikation **Sprachenerkennung** als Teil der Eingabe für die Qualifikation **Textaufteilung**.
+[`LanguageDetectionSkill`](/dotnet/api/azure.search.documents.indexes.models.languagedetectionskill) erkennt die Sprache von Eingabetexten und meldet einen einzigen Sprachcode für jedes Dokument, das mit der Anforderung übermittelt wurde. Wir verwenden die Ausgabe der Qualifikation **Sprachenerkennung** als Teil der Eingabe für die Qualifikation **Textaufteilung**.
 
 ```csharp
 private static LanguageDetectionSkill CreateLanguageDetectionSkill()
@@ -408,7 +408,7 @@ private static LanguageDetectionSkill CreateLanguageDetectionSkill()
 
 ### <a name="text-split-skill"></a>Qualifikation „Textaufteilung“
 
-Die folgende Qualifikation **Textaufteilung** teilt Text nach Seiten und beschränkt die Seitenlänge auf 4.000 Zeichen, die mit `String.Length` gemessen werden. Der Algorithmus versucht, den Text in Blöcke aufzuteilen, die höchstens `maximumPageLength` groß sind. Dabei versucht der Algorithmus, Sätze an Satzgrenzen zu teilen, sodass die Größe der Blöcke etwas kleiner als `maximumPageLength` sein kann.
+Das folgende [`SplitSkill`](/dotnet/api/azure.search.documents.indexes.models.splitskill)-Element teilt Text nach Seiten und beschränkt die Seitenlänge auf 4.000 Zeichen, die mit `String.Length` gemessen werden. Der Algorithmus versucht, den Text in Blöcke aufzuteilen, die höchstens `maximumPageLength` groß sind. Dabei versucht der Algorithmus, Sätze an Satzgrenzen zu teilen, sodass die Größe der Blöcke etwas kleiner als `maximumPageLength` sein kann.
 
 ```csharp
 private static SplitSkill CreateSplitSkill()
@@ -444,7 +444,7 @@ private static SplitSkill CreateSplitSkill()
 
 ### <a name="entity-recognition-skill"></a>Qualifikation „Entitätserkennung“
 
-Diese `EntityRecognitionSkill`-Instanz ist auf den Erkennungskategorietyp `organization` festgelegt. Die Qualifikation **Entitätserkennung** kann auch die Kategorientypen `person` und `location` erkennen.
+Diese `EntityRecognitionSkill`-Instanz ist auf den Erkennungskategorietyp `organization` festgelegt. [`EntityRecognitionSkill`](/dotnet/api/azure.search.documents.indexes.models.entityrecognitionskill) kann auch die Kategorietypen `person` und `location` erkennen.
 
 Beachten Sie, dass das Feld „context“ mit einem Sternchen auf ```"/document/pages/*"``` festgelegt ist, d. h. der Anreicherungsschritt wird für jede Seite unter ```"/document/pages"``` aufgerufen.
 
@@ -477,7 +477,7 @@ private static EntityRecognitionSkill CreateEntityRecognitionSkill()
 
 ### <a name="key-phrase-extraction-skill"></a>Qualifikation „Schlüsselbegriffserkennung“
 
-Wie die `EntityRecognitionSkill`-Instanz, die gerade erstellt wurde, wird auch die Qualifikation **Schlüsselbegriffserkennung** für jede Seite des Dokuments aufgerufen.
+Wie die `EntityRecognitionSkill`-Instanz, die gerade erstellt wurde, wird auch [`KeyPhraseExtractionSkill`](/dotnet/api/azure.search.documents.indexes.models.keyphraseextractionskill) für jede Seite des Dokuments aufgerufen.
 
 ```csharp
 private static KeyPhraseExtractionSkill CreateKeyPhraseExtractionSkill()
@@ -511,7 +511,7 @@ private static KeyPhraseExtractionSkill CreateKeyPhraseExtractionSkill()
 
 ### <a name="build-and-create-the-skillset"></a>Aufbauen und Erstellen der Qualifikationsgruppe
 
-Erstellen Sie die `Skillset` mithilfe der Qualifikationen, die Sie erstellt haben.
+Erstellen Sie [`SearchIndexerSkillset`](/dotnet/api/azure.search.documents.indexes.models.searchindexerskillset) mithilfe der von Ihnen erstellten Skills.
 
 ```csharp
 private static SearchIndexerSkillset CreateOrUpdateDemoSkillSet(SearchIndexerClient indexerClient, IList<SearchIndexerSkill> skills,string cognitiveServicesKey)

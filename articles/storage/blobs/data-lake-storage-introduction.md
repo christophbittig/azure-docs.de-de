@@ -8,12 +8,12 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: b197d91893cc419913ace60fe30beca88484bfd2
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 65d8ad19426aca491260035364c4e99bfc1b5179
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111590952"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123469642"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Einführung in Azure Data Lake Storage Gen2
 
@@ -70,9 +70,9 @@ Die folgenden Begriffe stellen äquivalente Entitäten dar, wie sie durch versch
 
 ## <a name="supported-blob-storage-features"></a>Unterstützte Blob Storage-Features
 
-Für Ihr Konto stehen Blob Storage-Features wie [Diagnoseprotokollierung](../common/storage-analytics-logging.md), [Zugriffsebenen](storage-blob-storage-tiers.md) und [Richtlinien für die Blob Storage-Lebenszyklusverwaltung](storage-lifecycle-management-concepts.md) zur Verfügung. 
+Für Ihr Konto stehen Blob Storage-Features wie [Diagnoseprotokollierung](../common/storage-analytics-logging.md), [Zugriffsebenen](storage-blob-storage-tiers.md) und [Richtlinien für die Blob Storage-Lebenszyklusverwaltung](storage-lifecycle-management-concepts.md) zur Verfügung. Die meisten Blob Storage-Features werden vollständig unterstützt, aber einige Features werden nur auf Vorschauebene oder noch nicht unterstützt.  
 
-Eine Liste der unterstützen Blob Storage-Features finden Sie unter [Unterstützte Blob Storage-Features in Azure Data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md).
+Informationen zur Unterstützung der einzelnen Blob Storage-Features mit Data Lake Storage Gen2 finden Sie unter [Unterstützung von Blob Storage-Features in Azure Storage-Konten](storage-feature-support-in-storage-accounts.md).
 
 ## <a name="supported-azure-service-integrations"></a>Unterstützte Azure-Dienstintegrationen
 

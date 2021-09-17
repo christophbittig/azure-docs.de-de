@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 45c7bb19e3f48fedf93fbb147a3014e09914a475
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: c0efb162b624cd6bc1ca2266c51506b49bb07f2b
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831274"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123480280"
 ---
 # <a name="tutorial-create-a-powershell-workflow-runbook"></a>Tutorial: Erstellen eines PowerShell-Workflow-Runbooks
 
@@ -227,9 +227,7 @@ Ihr Runbook startet derzeit die im Runbook hartcodierte VM. Es ist nützlicher, 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu PowerShell, einschließlich Sprachreferenz und Lernmodulen, finden Sie in der [PowerShell-Dokumentation](/powershell/scripting/overview).
-* Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](/powershell/module/az.automation).
-* Informationen zu den ersten Schritten mit grafischen Runbooks finden Sie unter [Erstellen eines grafischen Runbooks](automation-tutorial-runbook-graphical.md).
-* Informationen zu den ersten Schritten mit PowerShell-Runbooks finden Sie unter [Erstellen eines PowerShell-Runbooks](automation-tutorial-runbook-textual-powershell.md).
-* Informationen zu den verschiedenen Runbooktypen mit ihren Vorteilen und Einschränkungen finden Sie unter [Azure Automation-Runbooktypen](../automation-runbook-types.md).
-* Weitere Informationen zur PowerShell-Skriptunterstützung finden Sie unter [Native PowerShell Script Support in Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/) (Native PowerShell-Skriptunterstützung in Azure Automation).
+In diesem Tutorial haben Sie ein PowerShell-Workflow-Runbook erstellt. Informationen zu Python 3-Runbooks finden Sie unter folgendem Link:
+
+> [!div class="nextstepaction"]
+> [Tutorial: Erstellen eines Python 3-Runbooks (Vorschau)](automation-tutorial-runbook-textual-python-3.md)

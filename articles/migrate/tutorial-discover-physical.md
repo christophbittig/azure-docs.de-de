@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/11/2021
 ms.custom: mvc
-ms.openlocfilehash: 0878911bdd3caa2202ef993142aa89e4eabfe33c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f925eb888c1955212a762eb46c63300afd17d77d
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464840"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427727"
 ---
 # <a name="tutorial-discover-physical-servers-with-azure-migrate-discovery-and-assessment"></a>Tutorial: Ermitteln physischer Server mit der Ermittlung und Bewertung von Azure Migrate
 
@@ -40,9 +40,12 @@ Bevor Sie mit diesem Tutorial beginnen, überprüfen Sie, ob die folgenden Vorau
 
 **Anforderung** | **Details**
 --- | ---
-**Appliance** | Sie benötigen einen Server für die Ausführung der Azure Migrate-Appliance. Der Server muss über Folgendes verfügen:<br/><br/> - Installation von Windows Server 2016.<br/> _(Derzeit wird die Bereitstellung einer Appliance nur unter Windows Server 2016 unterstützt.)_<br/><br/> - 16 GB RAM, 8 virtuelle CPUs, ungefähr 80 GB Speicherplatz auf dem Datenträger<br/><br/> - eine statische oder dynamische IP-Adresse sowie Internetzugriff (entweder direkt oder über einen Proxy)
+**Appliance** | Sie benötigen einen Server für die Ausführung der Azure Migrate-Appliance. Der Server muss über Folgendes verfügen:<br/><br/> - Installation von Windows Server 2016.<br/> _(Derzeit wird die Bereitstellung einer Appliance nur unter Windows Server 2016 unterstützt.)_<br/><br/> - 16 GB RAM, 8 virtuelle CPUs, ungefähr 80 GB Speicherplatz auf dem Datenträger<br/><br/> - eine statische oder dynamische IP-Adresse sowie Internetzugriff (entweder direkt oder über einen Proxy)<br/><br/> - Ausgehende Internetverbindung mit den erforderlichen [URLs](migrate-appliance.md#url-access) von der Appliance aus
 **Windows-Server** | Lassen Sie eingehende Verbindungen am WinRM-Port 5985 (HTTP) zu, sodass die Appliance Konfigurations- und Leistungsmetadaten pullen kann.
 **Linux-Server** | Lassen Sie eingehende Verbindungen über Port 22 (TCP) zu.
+
+> [!NOTE]
+> Die Installation der Azure Migrate-Appliance auf einem Server, auf dem die [Replikationsappliance](migrate-replication-appliance.md) oder der Mobilitätsdienst-Agent installiert ist, wird nicht unterstützt.  Vergewissern Sie sich, dass der Applianceserver nicht bereits verwendet wurde, um die Replikationsappliance einzurichten, bzw. dass der Mobilitätsdienst-Agent auf dem Server installiert ist.
 
 ## <a name="prepare-an-azure-user-account"></a>Vorbereiten eines Azure-Benutzerkontos
 
@@ -88,21 +91,21 @@ Richten Sie ein Konto ein, das von der Appliance für den Zugriff auf die physis
 - In einigen Fällen werden durch das Hinzufügen des Kontos zu diesen Gruppen unter Umständen nicht die erforderlichen Daten aus WMI-Klassen zurückgegeben, da das Konto möglicherweise nach [UAC](/windows/win32/wmisdk/user-account-control-and-wmi) gefiltert ist. Um die UAC-Filterung außer Kraft zu setzen, muss das Benutzerkonto über die erforderlichen Berechtigungen für den CIMV2-Namespace und die untergeordneten Namespaces auf dem Zielserver verfügen. Sie können die [hier](troubleshoot-appliance.md) beschriebenen Schritte ausführen, um die erforderlichen Berechtigungen zu aktivieren.
 
     > [!Note]
-    > Stellen Sie unter Windows Server 2008 und 2008 R2 sicher, dass WMF 3.0 auf den Servern installiert ist.
+    > Stellen Sie unter Windows Server 2008 und 2008 R2 sicher, dass WMF 3.0 auf den Servern installiert ist.
 
 **Linux-Server**
 
 - Sie benötigen ein root-Konto auf den Linux-Servern, die Sie ermitteln möchten. Alternativ können Sie ein Benutzerkonto mit sudo-Berechtigungen bereitstellen.
-- Die Unterstützung zum Hinzufügen eines Benutzerkontos mit sudo-Zugriff wird standardmäßig mit dem neuen Installationsskript für die Appliance bereitgestellt, das seit dem 20. Juli 2021 aus dem Portal heruntergeladen werden kann.
+- Die Unterstützung zum Hinzufügen eines Benutzerkontos mit sudo-Zugriff wird standardmäßig mit dem neuen Installationsskript für die Appliance bereitgestellt, das seit dem 20. Juli 2021 aus dem Portal heruntergeladen werden kann.
 - Für ältere Appliances können Sie die Funktion anhand der folgenden Schritte aktivieren:
     1. Öffnen Sie auf dem Server, auf dem die Appliance ausgeführt wird, den Registrierungs-Editor.
     1. Navigieren Sie zu HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance.
-    1. Erstellen Sie den Registrierungsschlüssel „isSudo“ mit dem DWORD-Wert 1.
+    1. Erstellen Sie den Registrierungsschlüssel „isSudo“ mit dem DWORD-Wert 1.
 
-    :::image type="content" source="./media/tutorial-discover-physical/issudo-reg-key.png" alt-text="Screenshot: Aktivieren der sudo-Unterstützung":::
+    :::image type="content" source="./media/tutorial-discover-physical/issudo-reg-key.png" alt-text="Screenshot: Aktivieren der sudo-Unterstützung.":::
 
 - Wenn Sie die Konfigurations- und Leistungsmetadaten vom Zielserver ermitteln möchten, müssen Sie sudo-Zugriff für die [hier](migrate-appliance.md#linux-server-metadata) aufgeführten Befehle aktivieren. Stellen Sie sicher, dass Sie „NOPASSWD“ für das Konto aktiviert haben, um die erforderlichen Befehle auszuführen, ohne bei jedem Aufruf des sudo-Befehls ein Kennwort eingeben zu müssen.
-- Die folgenden Linux-Betriebssystemverteilungen werden für die Ermittlung durch Azure Migrate mit einem Konto mit sudo-Zugriff unterstützt:
+- Die folgenden Linux-Betriebssystemdistributionen werden für die Ermittlung durch Azure Migrate mit einem Konto mit sudo-Zugriff unterstützt:
 
     Betriebssystem | Versionen 
     --- | ---
@@ -212,7 +215,7 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
     - **Konfigurationsdateien**: %Programdata%\Microsoft Azure\Config
     - **Protokolldateien**: %Programdata%\Microsoft Azure\Logs
 
-Nach der erfolgreichen Ausführung des Skripts wird der Appliance-Konfigurations-Manager automatisch gestartet.
+Nach der erfolgreichen Ausführung des Skripts wird der Appliancekonfigurations-Manager automatisch gestartet.
 
 > [!NOTE]
 > Bei Problemen können Sie zum Troubleshooting unter „C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Zeitstempel</em>.log“ auf die Skriptprotokolle zugreifen.

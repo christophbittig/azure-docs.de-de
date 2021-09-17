@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: apimpm
-ms.openlocfilehash: 9ff64f57e61002101b4e2c560bdcd91863cc461e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0187a1c15315835c1606913acfd52dc930e92443
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91626955"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538649"
 ---
 # <a name="tutorial-import-and-publish-your-first-api"></a>Tutorial: Importieren und Veröffentlichen Ihrer ersten API
 
@@ -53,7 +53,7 @@ In diesem Abschnitt wird gezeigt, wie Sie eine Back-End-API mit OpenAPI-Spezifik
 
    |Einstellung|Wert|BESCHREIBUNG|
    |-------|-----|-----------|
-   |**OpenAPI-Spezifikation**|*https:\//conferenceapi.azurewebsites.net?format=json*|Der Dienst, der die API implementiert. API Management leitet Anfragen an diese Adresse weiter.|
+   |**OpenAPI-Spezifikation**|*https:\//conferenceapi.azurewebsites.net?format=json*|Der Dienst, der die API implementiert. API Management leitet Anfragen an diese Adresse weiter. Der Dienst muss unter einer öffentlich zugänglichen Internetadresse gehostet werden. |
    |**Anzeigename**|Nachdem Sie die vorherige Dienst-URL eingegeben haben, füllt API Management dieses Feld basierend auf dem JSON-Code aus.|Der Name im [Entwicklerportal](api-management-howto-developer-portal.md) angezeigte Name.|
    |**Name**|Nachdem Sie die vorherige Dienst-URL eingegeben haben, füllt API Management dieses Feld basierend auf dem JSON-Code aus.|Ein eindeutiger Name für die API.|
    |**Beschreibung**|Nachdem Sie die vorherige Dienst-URL eingegeben haben, füllt API Management dieses Feld basierend auf dem JSON-Code aus.|Eine optionale Beschreibung der API.|

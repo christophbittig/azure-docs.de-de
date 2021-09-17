@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Sie mit Apache Spark zu Azure Managed Instance fo
 author: TheovanKraay
 ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
-ms.topic: overview
-ms.date: 06/02/2021
-ms.openlocfilehash: e85d95dcd455ea2c9f4d9a14d9b68bebf06d3df6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.topic: tutorial
+ms.date: 08/17/2021
+ms.openlocfilehash: 5d78161f73dfa1927483d7c6f8bad3ce925b3631
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731211"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426866"
 ---
 # <a name="migrate-to-azure-managed-instance-for-apache-cassandra-using-apache-spark"></a>Migrieren zu Azure Managed Instance for Apache Cassandra mit Apache Spark
 
@@ -22,7 +22,7 @@ ms.locfileid: "121731211"
 
 Es wird empfohlen, nach Möglichkeit die native Apache Cassandra-Replikation zu verwenden, um Daten aus Ihrem vorhandenen Cluster zu Azure Managed Instance for Apache Cassandra zu migrieren, indem Sie einen [Hybridcluster](configure-hybrid-cluster.md) konfigurieren. Bei diesem Ansatz wird das Gossip-Protokoll von Apache Cassandra verwendet, um Daten aus Ihrem Quellrechenzentrum in Ihr neues Rechenzentrum der verwalteten Instanz zu replizieren. Es kann jedoch einige Szenarien geben, in denen Ihre Quelldatenbankversion nicht kompatibel ist oder ein Hybridclustersetup andernfalls nicht möglich ist. 
 
-In diesem Artikel wird beschrieben, wie Sie Daten mithilfe des Cassandra Spark-Connectors und Azure Databricks für Apache Spark offline zu Azure Managed Instance for Apache Cassandra migrieren.
+In diesem Tutorial wird beschrieben, wie Sie Daten mithilfe des Cassandra Spark-Connectors und Azure Databricks für Apache Spark offline zu Azure Managed Instance for Apache Cassandra migrieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

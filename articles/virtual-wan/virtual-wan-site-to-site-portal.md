@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 08/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: dbc48719f2897c22717319e1e07b5b3b3146fe84
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 544275ce4c9ab31fa65fe17351eed495895569e2
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122638286"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123432160"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Tutorial: Erstellen einer Site-to-Site-Verbindung per Azure Virtual WAN
 
@@ -22,8 +22,8 @@ In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen eines virtuellen WAN
-> * Erstellen eines Hubs
-> * Erstellen eines Site-to-Site-VPN-Gateways
+> * Konfigurieren der Grundeinstellungen für den Hub
+> * Konfigurieren von Site-to-Site-VPN-Gatewayeinstellungen
 > * Erstellen einer Site
 > * Herstellen einer Verbindung zwischen einer Site und einem Hub
 > * Herstellen einer VPN-Verbindung zwischen einer Site und einem Hub
@@ -47,7 +47,7 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass die folgenden Vorausset
 
 [!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-create-vwan-include.md)]
 
-## <a name="create-hub"></a><a name="hub"></a>Erstellen eines Hubs
+## <a name="configure-hub-settings"></a><a name="hub"></a>Konfigurieren von Hubeinstellungen
 
 Ein Hub ist ein virtuelles Netzwerk, das Gateways für Verbindungen vom Typ „Site-to-Site“, „ExpressRoute“ oder „Point-to-Site“ enthalten kann. Für dieses Tutorial füllen Sie zunächst die Registerkarte **Grundlagen** für den virtuellen Hub und anschließend die Registerkarte „Site-to-Site“ im nächsten Abschnitt aus. Beachten Sie, dass es möglich ist, einen leeren Hub (einen Hub, der keine Gateways enthält) zu erstellen und später Gateways (S2S, P2S, ExpressRoute usw.) hinzuzufügen. Nachdem ein Hub erstellt wurde, werden Ihnen für den Hub auch dann Kosten berechnet, wenn Sie keine Sites zuordnen oder Gateways im Hub erstellen.
 

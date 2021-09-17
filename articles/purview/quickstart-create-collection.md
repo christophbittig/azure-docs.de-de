@@ -8,19 +8,19 @@ ms.subservice: purview-data-map
 ms.topic: quickstart
 ms.date: 08/18/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: ba3265ff435bc0e8a34048b07aeee3ef82b24b6c
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: a1a62bb6253aa2788d8dad41d506ca898a049283
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122609138"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123475690"
 ---
 # <a name="quickstart-create-a-collection-and-assign-permissions-in-purview"></a>Schnellstart: Erstellen einer Sammlung und Zuweisen von Berechtigungen in Purview
 
 > [!NOTE]
 > Derzeit gilt diese Schnellstartanleitung nur für Purview-Instanzen, die am oder nach dem 18. August 2021 erstellt wurden. Vor dem 18. August erstellte Instanzen können Sammlungen erstellen, aber keine Berechtigungen über diese Sammlungen verwalten. Informationen zum Erstellen einer Sammlung für eine Purview-Instanz, die vor dem 18. August erstellt wurde, finden Sie im [**Leitfaden zu Legacysammlungen**](#legacy-collection-guide) am Ende dieses Artikels.
 > 
-> Alle Legacykonten erhalten in den kommenden Wochen automatisch ein Upgrade. Sie erhalten eine E-Mail-Benachrichtigung, wenn Ihr Purview-Konto aktualisiert wird. Bei der Aktualisierung des Kontos werden alle zugewiesenen Berechtigungen für die Stammsammlung automatisch erneut bereitgestellt.
+> Alle Legacykonten erhalten in den kommenden Wochen automatisch ein Upgrade. Sie erhalten eine E-Mail-Benachrichtigung, wenn Ihr Purview-Konto aktualisiert wird. Informationen darüber, was sich bei einem Upgrade Ihres Kontos ändert, finden Sie in unserem Leitfaden zum [Upgrade von Konten](concept-account-upgrade.md).
 
 Sammlungen sind das Tool von Purview zum Verwalten des Besitzes und der Zugriffssteuerung für Ressourcen, Quellen und Informationen. Darüber hinaus werden damit Ihre Quellen und Ressourcen in benutzerdefinierten Kategorien strukturiert, um Ihre Verwaltungsoberfläche auf Ihre Daten abzustimmen. In diesem Leitfaden erfahren Sie, wie Sie Ihre erste Sammlung und einen Sammlungsadministrator einrichten, um die Purview-Umgebung für Ihre Organisation vorzubereiten.
 

@@ -3,12 +3,12 @@ title: 'Schnellstart: Erste Schritte'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie sich mit dem grundlegenden Workflow für die Bereitstellung von Defender für IoT vertraut machen.
 ms.topic: quickstart
 ms.date: 06/06/2021
-ms.openlocfilehash: bb67cb5788e891861eb0c1f5fe2533d62b4ee520
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: cae5b1db400cebe341463dbc752fe5559b779380
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122254080"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123437661"
 ---
 # <a name="quickstart-get-started-with-defender-for-iot"></a>Schnellstart: Erste Schritte mit Defender für IoT
 
@@ -40,7 +40,14 @@ In der folgenden Tabelle werden die Benutzerzugriffsberechtigungen für Tools im
 
 **Klären Ihrer Netzwerkeinrichtungsanforderungen**
 
-Sammeln Sie Informationen zu Ihrer Netzwerkarchitektur, gemessenen Bandbreite und anderen Netzwerkdetails. Weitere Informationen finden Sie unter [Informationen zur Netzwerkeinrichtung für Azure Defender für IoT](how-to-set-up-your-network.md).
+Ermitteln Sie Folgendes:
+
+- Netzwerkarchitektur
+- Überwachte Bandbreite
+- Anforderungen zum Erstellen von Zertifikaten
+- Weitere Netzwerkdetails
+
+Weitere Informationen finden Sie unter [Informationen zur Netzwerkeinrichtung für Azure Defender für IoT](how-to-set-up-your-network.md).
 
 **Ermitteln der zur Verarbeitung der Netzwerklast erforderlichen Sensor- und Verwaltungsappliances**
 

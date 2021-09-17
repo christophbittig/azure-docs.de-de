@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/03/2020
-ms.openlocfilehash: bfb808c634ba946e1a4825d7828db6df8963352c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de49c820100140f0822149bba84f7a38f034323b
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98951242"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123473278"
 ---
 # <a name="tutorial-use-the-rest-apis"></a>Tutorial: Verwenden der REST-APIs
 
@@ -79,20 +79,22 @@ So konfigurieren Sie Azure Purview, sodass der Dienst dem neuen Dienstprinzipal
 
 1. Navigieren Sie zu Ihrem Purview-Konto.
 
-1. Wählen Sie auf der Seite **Purview account** (Purview-Konto) die Registerkarte **Zugriffssteuerung (IAM)** aus.
+1. Öffnen Sie auf der Seite **Purview-Konto** den Dienst **Purview Studio**.
 
-1. Klicken Sie auf **+ Hinzufügen**.
+1. Wählen Sie im linken Menü **Data Map** aus.
 
-1. Wählen Sie **Rollenzuweisung hinzufügen** aus.
+1. Wählen Sie **Sammlungen** aus.
 
-1. Geben Sie als Rollentyp **Datenkurator für Purview** ein.
+1. Wählen Sie im Sammlungsmenü die Stammsammlung aus. Dies ist die oberste Sammlung in der Liste. Sie hat den gleichen Namen wie Ihr Purview-Konto.
+
+1. Klicken Sie auf die Registerkarte **Rollenzuweisungen**.
+
+1. Scrollen Sie nach unten zu **Datenkuratoren**, und wählen Sie die Benutzerschaltfläche **+** aus.
 
     > [!Note]
-    > Weitere Informationen zu Azure Purview-Datenkatalogberechtigungen finden Sie unter [Rollenbasierte Zugriffssteuerung auf der Datenebene von Azure Purview](catalog-permissions.md). Wenn Sie beispielsweise die Berechtigung zum Auslösen von Überprüfungen benötigen, muss als Rollentyp **Datenquellenadministrator für Purview** festgelegt werden.
+    > Nur Sammlungsadministratoren können Berechtigungen für eine Sammlung bearbeiten. Wenn Sie kein Sammlungsadministrator sind, wenden Sie sich an einen der in der Stammsammlung aufgeführten Administratoren. Weitere Informationen finden Sie auf der Seite [Zugriffssteuerung in Azure Purview](catalog-permissions.md).
 
-1. Behalten Sie unter **Zugriff zuweisen zu** den Standardwert **Benutzer, Gruppe oder Dienstprinzipal** bei.
-
-1. Geben Sie unter **Auswählen** den Namen des zuvor erstellten Dienstprinzipals ein, den Sie zuweisen möchten, und klicken Sie anschließend im Ergebnisbereich auf den entsprechenden Namen.
+1. Suchen Sie nach dem Namen des zuvor erstellten Dienstprinzipals, den Sie zuweisen möchten, und klicken Sie anschließend im Ergebnisbereich auf den entsprechenden Namen.
 
 1. Klicken Sie im Menü „Einstellungen“ auf **Speichern**
 

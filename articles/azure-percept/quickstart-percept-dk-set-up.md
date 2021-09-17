@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 03/17/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 601970978dc69aea2a6f0947a26cc0bebc1d999d
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 4e37be9e121d634e0d4a83fdd5f786805dedf132
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123223030"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427208"
 ---
 # <a name="set-up-the-azure-percept-dk-device"></a>Einrichten des Azure Percept DK-Geräts
 
@@ -150,7 +150,7 @@ Gehen Sie wie folgt vor, um sich zu vergewissern, dass Ihr Azure-Konto innerhalb
     - Wählen Sie eine vorhandene Ressourcengruppe aus. Sollte keine vorhanden sein, klicken Sie auf **Neu erstellen**, und folgen Sie den Anweisungen.
     - Wählen Sie die Azure-Region aus, die Ihrem physischen Standort am nächsten ist.
     - Benennen Sie Ihre neue IoT Hub-Instanz.
-    - Wählen Sie den Tarif „S1“ (Standard) aus.
+    - Wählen Sie den **Tarif „S1“ (Standard)** aus.
 
     > [!NOTE]
     > Es kann einige Minuten dauern, bis ihre IoT Hub-Bereitstellung abgeschlossen ist. Wenn Sie für Ihre Edge-KI-Anwendungen einen höheren [Nachrichtendurchsatz](../iot-hub/iot-hub-scaling.md#message-throughput) benötigen, können Sie [Ihren IoT Hub im Azure-Portal jederzeit auf einen höheren Standard-Tarif upgraden](../iot-hub/iot-hub-upgrade.md). In den Tarifen B und F wird Azure Percept NICHT unterstützt.

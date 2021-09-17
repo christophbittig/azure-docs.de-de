@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: cfce86e74a5e32f266dd0bbad84a179d8158a687
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: 35a56131c55549cc5d33989579514fec3a0184c8
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113303686"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123428234"
 ---
 # <a name="create-and-use-native-external-tables-using-sql-pools-in-azure-synapse-analytics"></a>Erstellen und Verwenden nativer externer Tabellen mithilfe von SQL-Pools in Azure Synapse Analytics
 
@@ -127,6 +127,35 @@ Sie können das Muster angeben, dem die Dateien entsprechen müssen, damit die e
 
 > [!NOTE]
 > Die Tabelle wird in der Struktur mit partitionierten Ordnern erstellt, die Partitionsentfernung kann jedoch teilweise nicht genutzt werden. Wenn Sie eine bessere Leistung erzielen möchten, indem Sie die Dateien überspringen, die einige Kriterien nicht erfüllen (in diesem Fall ein bestimmtes Jahr oder einen bestimmten Monat), verwenden Sie [Ansichten für externe Daten](create-use-views.md#partitioned-views).
+
+## <a name="external-table-on-appendable-files"></a>Externe Tabelle für erweiterbare Dateien
+
+Die Dateien, auf die von einer externen Tabelle verwiesen wird, sollten nicht geändert werden, während die Abfrage ausgeführt wird. In der Abfrage mit langer Ausführungszeit kann es vorkommen, dass der SQL-Pool Leseversuche wiederholt, Teile der Dateien liest oder die Datei sogar mehrmals liest. Änderungen am Dateiinhalt würden zu falschen Ergebnissen führen. Daher ist die Abfrage für den SQL-Pool nicht erfolgreich, wenn erkannt wird, dass sich die Änderungszeit einer beliebigen Datei während der Abfrageausführung geändert hat.
+In einigen Szenarien empfiehlt es sich gegebenenfalls, eine Tabelle für die Dateien erstellen, die kontinuierlich erweitert werden. Um Abfragefehler durch kontinuierlich erweiterte Dateien zu vermeiden, können Sie mithilfe der Einstellung `TABLE_OPTIONS` angeben, dass potenziell inkonsistente Lesevorgänge von der externen Tabelle ignoriert werden sollen.
+
+
+```sql
+CREATE EXTERNAL TABLE populationExternalTable
+(
+    [country_code] VARCHAR (5) COLLATE Latin1_General_BIN2,
+    [country_name] VARCHAR (100) COLLATE Latin1_General_BIN2,
+    [year] smallint,
+    [population] bigint
+)
+WITH (
+    LOCATION = 'csv/population/population.csv',
+    DATA_SOURCE = sqlondemanddemo,
+    FILE_FORMAT = QuotedCSVWithHeaderFormat,
+    TABLE_OPTIONS = N'{"READ_OPTIONS":["ALLOW_INCONSISTENT_READS"]}'
+);
+```
+
+Durch die Leseoption `ALLOW_INCONSISTENT_READS` wird die Überprüfung der Dateiänderungszeit während des Abfragelebenszyklus deaktiviert, und es werden alle verfügbaren Inhalte der Dateien gelesen, auf die durch die externe Tabelle verwiesen wird. In erweiterbaren Dateien wird der vorhandene Inhalt nicht aktualisiert, und es werden nur neue Zeilen hinzugefügt. Dadurch wird die Wahrscheinlichkeit falscher Ergebnisse im Vergleich zu den aktualisierbaren Dateien minimiert. Mit dieser Option können Sie ggf. die häufig erweiterten Dateien lesen, ohne die Fehler behandeln zu müssen.
+
+Diese Option ist nur in den externen Tabellen verfügbar, die im CSV-Dateiformat erstellt wurden.
+
+> [!NOTE]
+> Wie der Optionsname schon sagt, geht der Ersteller der Tabelle das Risiko ein, dass die Ergebnisse möglicherweise nicht konsistent sind. In den erweiterbaren Dateien erhalten Sie möglicherweise falsche Ergebnisse, wenn Sie mittels Selbstverknüpfung der Tabelle das mehrfache Lesen der zugrunde liegenden Dateien erzwingen. In den meisten klassischen Abfragen werden von der externen Tabelle einfach einige Zeilen ignoriert, die während der Ausführung der Abfrage erweitert wurden.
 
 ## <a name="delta-lake-external-table"></a>Externe Delta Lake-Tabelle
 

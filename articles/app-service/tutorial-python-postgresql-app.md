@@ -12,12 +12,12 @@ ms.custom:
 - devx-track-python
 - devx-track-azurecli
 zone_pivot_groups: postgres-server-options
-ms.openlocfilehash: a5e57cf8ac41c6452116d4a88a5892d1779e6519
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 7daa8e8e1fa8ba268211afb9b3cdddde218f3310
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114439104"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426542"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Tutorial: Bereitstellen einer Django-Web-App mit PostgreSQL in Azure App Service
 
@@ -467,9 +467,9 @@ Testen Sie die App lokal:
 
 1. Navigieren Sie in einem Browser zu `http://localhost:8000`, woraufhin die Meldung „No polls are available“ (Keine Abstimmungen verfügbar) angezeigt werden sollte. 
 
-1. Wechseln Sie zu `http:///localhost:8000/admin`, und melden Sie sich mit dem Administratorbenutzer an, den Sie zuvor erstellt haben. Wählen Sie erneut unter **Polls** (Umfragen) neben **Questions** (Fragen) die Option **Add** (Hinzufügen) aus, und erstellen Sie eine Frage für eine Umfrage mit mehreren Auswahlmöglichkeiten. 
+1. Wechseln Sie zu `http://localhost:8000/admin`, und melden Sie sich mit dem Administratorbenutzer an, den Sie zuvor erstellt haben. Wählen Sie erneut unter **Polls** (Umfragen) neben **Questions** (Fragen) die Option **Add** (Hinzufügen) aus, und erstellen Sie eine Frage für eine Umfrage mit mehreren Auswahlmöglichkeiten. 
 
-1. Navigieren Sie erneut zu *http:\//localhost:8000*, und beantworten Sie die Frage, um die App zu testen. 
+1. Navigieren Sie erneut zu `http://localhost:8000`, und beantworten Sie die Frage, um die App zu testen. 
 
 1. Drücken Sie **STRG**+**C**, um den Django-Server zu beenden.
 

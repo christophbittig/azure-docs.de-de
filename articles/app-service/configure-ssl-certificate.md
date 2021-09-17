@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 05/13/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 011461b1ecba9c5ce8cf636980a97d26f2228a98
-ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+ms.openlocfilehash: 27e17c5adeb7ab5a55b4783bac86301ba4237f45
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113128838"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538199"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Hinzufügen eines TLS-/SSL-Zertifikats in Azure App Service
 
@@ -46,7 +46,7 @@ Das [von App Service verwaltete kostenlose Zertifikat](#create-a-free-managed-ce
 
 * Exportiert als [kennwortgeschützte PFX-Datei](https://en.wikipedia.org/w/index.php?title=X.509&section=4#Certificate_filename_extensions), mit Triple DES verschlüsselt
 * Enthält einen privaten Schlüssel mit mindestens 2048 Bit
-* Enthält alle Zwischenzertifikate in der Zertifikatkette
+* Enthält alle Zwischenzertifikate und das Stammzertifikat in der Zertifikatkette.
 
 Zum Schützen einer benutzerdefinierten Domäne in einer TLS-Bindung gelten für das Zertifikat zusätzliche Anforderungen:
 
@@ -101,7 +101,7 @@ Wenn Sie ein App Service-Zertifikat von Azure erwerben, verwaltet Azure die fol
 - Abwickeln des Kaufs von GoDaddy
 - Ausführen der Domänenüberprüfung des Zertifikats
 - Speichern des Zertifikats in [Azure Key Vault](../key-vault/general/overview.md)
-- Verwalten der Zertifikatsverlängerung (siehe [Verlängern des Zertifikats](#renew-certificate))
+- Verwalten der Zertifikatsverlängerung (siehe [Verlängern des Zertifikats](#renew-an-app-service-certificate))
 - Automatisches Synchronisieren des Zertifikats mit den importierten Kopien in App Service-Apps
 
 Gehen Sie zu [Starten einer Zertifikatbestellung](#start-certificate-order), um ein App Service-Zertifikat zu erwerben.
@@ -121,7 +121,7 @@ Starten Sie eine App Service-Zertifikatreihenfolge auf der <a href="https://port
 
 Die folgende Tabelle unterstützt Sie bei der Konfiguration des Zertifikats. Klicken Sie auf **Erstellen**, wenn Sie fertig sind.
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |-|-|
 | Name | Ein Anzeigename für Ihr App Service-Zertifikat. |
 | Reiner Domänenhostname | Geben Sie hier die Stammdomäne an. Das ausgestellte Zertifikat sichert *sowohl* die Stamm Domäne als auch die Unterdomäne `www`. Im ausgestellten Zertifikat enthält das Feld „Allgemeiner Name“ die Stammdomäne, und das Feld „Alternativer Antragstellername“ enthält die Domäne `www`. Um eine beliebige Unterdomäne zu sichern, geben Sie den vollqualifizierten Domänennamen der Unterdomäne hier an (z.B. `mysubdomain.contoso.com`).|
@@ -146,7 +146,7 @@ Wählen Sie das Zertifikat auf der Seite [App Service-Zertifikate](https://porta
 
 Klicken Sie auf der Seite **Key Vault-Status** auf **Key Vault-Repository**, um einen neuen Tresor zu erstellen oder einen vorhandenen Tresor auszuwählen. Wenn Sie einen neuen Tresor erstellen möchten, konfigurieren Sie mithilfe der folgende Tabelle den Tresor, und klicken Sie auf „Erstellen“. Erstellen Sie die neue Key Vault-Instanz im gleichen Abonnement und in der gleichen Ressourcengruppe wie Ihre App Service-App.
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |-|-|
 | Name | Ein eindeutiger Name aus alphanumerischen Zeichen und Bindestrichen. |
 | Resource group | Es wird empfohlen, die gleiche Ressourcengruppe wie bei Ihrem App Service-Zertifikat auszuwählen. |
@@ -218,7 +218,7 @@ Wählen Sie im linken Navigationsbereich Ihrer App **TLS-/SSL-Einstellungen** > 
 
 Die folgende Tabelle unterstützt Sie beim Auswählen des Zertifikats:
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |-|-|
 | Subscription | Das Abonnement, zu dem die Key Vault-Instanz gehört |
 | Key Vault | Der Tresor mit dem zu importierenden Zertifikat |
@@ -297,7 +297,6 @@ Nach Abschluss des Vorgangs wird das Zertifikat in der Liste **Private Schlüsse
 
 > [!IMPORTANT] 
 > Sie müssen noch eine Zertifikatsbindung erstellen, um eine benutzerdefinierte Domäne mit diesem Zertifikat zu schützen. Führen Sie die Schritte unter [Erstellen einer Bindung](configure-ssl-bindings.md#create-binding) aus.
->
 
 ## <a name="upload-a-public-certificate"></a>Hochladen eines öffentlichen Zertifikats
 
@@ -315,14 +314,59 @@ Klicken Sie auf **Hochladen**.
 
 Sobald das Zertifikat hochgeladen wurde, kopieren Sie den Zertifikatfingerabdruck, und [stellen Sie sicher, dass auf das Zertifikat zugegriffen werden kann](configure-ssl-certificate-in-code.md#make-the-certificate-accessible).
 
+## <a name="renew-an-expiring-certificate"></a>Verlängern eines abgelaufenen Zertifikats
+
+Vor Ablauf eines Zertifikats sollten Sie App Service das verlängerte Zertifikat hinzufügen und alle [TLS/SSL-Bindungen](configure-ssl-certificate.md) aktualisieren. Der Vorgang hängt vom Zertifikattyp ab. Ein [aus Key Vault importiertes Zertifikat](#import-a-certificate-from-key-vault), einschließlich eines [App Service-Zertifikats](#import-an-app-service-certificate), wird beispielsweise automatisch alle 24 Stunden mit App Service synchronisiert und aktualisiert die TLS/SSL-Bindung, wenn Sie das Zertifikat verlängern. Für ein [hochgeladenes Zertifikat](#upload-a-private-certificate) erfolgt keine automatische Aktualisierung der Bindung. Lesen Sie je nach Szenario einen der folgenden Abschnitte:
+
+- [Verlängern eines hochgeladenen Zertifikats](#renew-an-uploaded-certificate)
+- [Verlängern eines App Service-Zertifikats](#renew-an-app-service-certificate)
+- [Verlängern eines aus Azure Key Vault importierten Zertifikats](#renew-a-certificate-imported-from-key-vault)
+
+### <a name="renew-an-uploaded-certificate"></a>Verlängern eines hochgeladenen Zertifikats
+
+Beim Ersatz eines ablaufenden Zertifikats kann sich die Art der Aktualisierung der Zertifikatbindung durch das neue Zertifikat negativ auf die Benutzerfreundlichkeit auswirken. Ihre IP-Adresse für eingehenden Datenverkehr kann sich z. B. ändern, wenn Sie eine Bindung löschen, auch wenn diese Bindung IP-basiert ist. Dies ist besonders wichtig, wenn Sie ein Zertifikat erneuern, das sich bereits in einer IP-basierten Bindung befindet. Um zu vermeiden, dass die IP-Adresse Ihrer App geändert wird und Ihre App aufgrund von HTTPS-Fehlern ausfällt, führen Sie die folgenden Schritte der Reihe nach aus:
+
+1. [Laden Sie das neue Zertifikat hoch](#upload-a-private-certificate).
+2. [Binden Sie das neue Zertifikat an dieselbe benutzerdefinierte Domäne](configure-ssl-bindings.md), ohne das vorhandene (ablaufende) Zertifikat zu löschen. Dadurch wird die Bindung ersetzt, ohne dass die bestehende Zertifikatbindung entfernt wird.
+3. Löschen Sie das vorhandene Zertifikat.
+
+### <a name="renew-an-app-service-certificate"></a>Verlängern eines App Service-Zertifikats
+
+> [!NOTE]
+> Der Verlängerungsprozess erfordert, dass [der bekannte Dienstprinzipal für App Service über die erforderlichen Berechtigungen für Ihren Schlüsseltresor verfügt](deploy-resource-manager-template.md#deploy-web-app-certificate-from-key-vault). Diese Berechtigung wird für Sie konfiguriert, wenn Sie eine App Service Certificate-Instanz über das Portal importieren. Sie sollte nicht aus Ihrem Schlüsseltresor entfernt werden.
+
+Um die Einstellung für die automatische Verlängerung Ihres App Service-Zertifikats umzustellen, wählen Sie das Zertifikat auf der Seite [App Service Certificate](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) aus. Klicken Sie dann im linken Navigationsbereich auf **Einstellungen für die automatische Verlängerung**. Standardmäßig haben App Service-Zertifikate eine Gültigkeitsdauer von einem Jahr.
+
+Wählen Sie **Ein** oder **Aus** aus, und klicken Sie auf **Speichern**. Zertifikate können 31 Tage vor Ablauf automatisch verlängert werden, wenn Sie die automatische Verlängerung aktiviert haben.
+
+![Automatisches Verlängern eines App Service-Zertifikats](./media/configure-ssl-certificate/auto-renew-app-service-cert.png)
+
+Um das Zertifikat stattdessen manuell zu verlängern, klicken Sie auf **Manuelle Verlängerung**. Sie können anfordern, dass Ihr Zertifikat vor Ablauf manuell um 60 Tage verlängert wird.
+
+Wenn der Verlängerungsvorgang abgeschlossen ist, klicken Sie auf **Synchronisierung**. Der Synchronisierungsvorgang aktualisiert automatisch die Hostnamenbindungen für das Zertifikat in App Service, ohne dass es zu Downtime für Ihre Apps kommt.
+
+> [!NOTE]
+> Wenn Sie nicht auf **Synchronisierung** klicken, synchronisiert App Service Ihr Zertifikat automatisch innerhalb von 24 Stunden.
+
+### <a name="renew-a-certificate-imported-from-key-vault"></a>Verlängern eines aus Azure Key Vault importierten Zertifikats
+
+Informationen zum Verlängern eines Zertifikats, das Sie aus Key Vault in App Service importiert haben, finden Sie unter [Verlängern eines Azure Key Vault-Zertifikats](../key-vault/certificates/overview-renew-certificate.md).
+
+Nachdem das Zertifikat in Ihrem Schlüsseltresor verlängert wurde, synchronisiert App Service das neue Zertifikat automatisch und aktualisiert alle zugehörigen TLS/SSL-Bindungen innerhalb von 24 Stunden. So synchronisieren Sie manuell
+
+1. Wechseln Sie zur Seite **TLS/SSL-Einstellungen** Ihrer App.
+1. Wählen Sie unter **Zertifikate für private Schlüssel** das importierte Zertifikat aus.
+1. Klicken Sie auf **Synchronisierung**. 
+
 ## <a name="manage-app-service-certificates"></a>Verwalten von App Service-Zertifikaten
 
-In diesem Abschnitt wird gezeigt, wie Sie ein App Service-Zertifikat verwalten, das Sie unter [Importieren eines App Service-Zertifikats](#import-an-app-service-certificate) erworben haben.
+In diesem Abschnitt erfahren Sie, wie Sie ein [von Ihnen erworbenes App Service-Zertifikat](#import-an-app-service-certificate) verwalten können.
 
 - [Erstellen neuer Schlüssel für das Zertifikat](#rekey-certificate)
-- [Verlängern eines Zertifikats](#renew-certificate)
 - [Exportieren eines Zertifikats](#export-certificate)
 - [Löschen eines Zertifikats](#delete-certificate)
+
+Weitere Informationen finden Sie auch unter [Verlängern eines App Service-Zertifikats](#renew-an-app-service-certificate).
 
 ### <a name="rekey-certificate"></a>Neue Schlüssel für Zertifikat erstellen
 
@@ -335,24 +379,6 @@ Klicken Sie auf **Erneute Schlüsselerstellung**, um den Prozess zu starten. Die
 Bei erneuter Schlüsselerstellung für Ihr Zertifikat wird von der Zertifizierungsstelle ein neues Zertifikat ausgestellt.
 
 Wenn der Vorgang zur erneuten Schlüsselerstellung abgeschlossen ist, klicken Sie auf **Synchronisierung**. Der Synchronisierungsvorgang aktualisiert automatisch die Hostnamenbindungen für das Zertifikat in App Service, ohne dass es zu Downtime für Ihre Apps kommt.
-
-> [!NOTE]
-> Wenn Sie nicht auf **Synchronisierung** klicken, synchronisiert App Service Ihr Zertifikat automatisch innerhalb von 24 Stunden.
-
-### <a name="renew-certificate"></a>Verlängern des Zertifikats
-
-> [!NOTE]
-> Der Verlängerungsprozess erfordert, dass [der bekannte Dienstprinzipal für App Service über die erforderlichen Berechtigungen für Ihren Schlüsseltresor verfügt](deploy-resource-manager-template.md#deploy-web-app-certificate-from-key-vault). Diese Berechtigung wird für Sie konfiguriert, wenn Sie eine App Service Certificate-Instanz über das Portal importieren. Sie sollte nicht aus Ihrem Schlüsseltresor entfernt werden.
-
-Um zu einem beliebigen Zeitpunkt die automatische Verlängerung Ihres Zertifikats zu aktivieren, wählen Sie das Zertifikat auf der Seite [App Service Certificate](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) aus, und klicken Sie dann im linken Navigationsbereich auf **Einstellungen für die automatische Verlängerung**. Standardmäßig haben App Service-Zertifikate eine Gültigkeitsdauer von einem Jahr.
-
-Klicken Sie nacheinander auf **Ein** und **Speichern**. Zertifikate können 30 Tage vor Ablauf automatisch verlängert werden, wenn Sie die automatische Verlängerung aktiviert haben.
-
-![Automatisches Verlängern eines App Service-Zertifikats](./media/configure-ssl-certificate/auto-renew-app-service-cert.png)
-
-Um das Zertifikat stattdessen manuell zu verlängern, klicken Sie auf **Manuelle Verlängerung**. Sie können anfordern, dass Ihr Zertifikat vor Ablauf manuell um 60 Tage verlängert wird.
-
-Wenn der Verlängerungsvorgang abgeschlossen ist, klicken Sie auf **Synchronisierung**. Der Synchronisierungsvorgang aktualisiert automatisch die Hostnamenbindungen für das Zertifikat in App Service, ohne dass es zu Downtime für Ihre Apps kommt.
 
 > [!NOTE]
 > Wenn Sie nicht auf **Synchronisierung** klicken, synchronisiert App Service Ihr Zertifikat automatisch innerhalb von 24 Stunden.

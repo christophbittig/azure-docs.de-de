@@ -1,65 +1,82 @@
 ---
-title: 'Tutorial: Micro-Fulfillment-Center-App-Vorlage | Microsoft-Dokumentation'
-description: Ein Tutorial zur Micro-Fulfillment-Center-Anwendungsvorlage für Azure IoT Central.
+title: 'Tutorial: Micro-Fulfillment-Center in Azure IoT | Microsoft-Dokumentation'
+description: In diesem Tutorial erfahren Sie, wie Sie die Anwendungsvorlage für Micro-Fulfillment-Center für IoT Central bereitstellen und nutzen.
 author: avneet723
 ms.author: avneets
 ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
-ms.date: 01/09/2020
-ms.openlocfilehash: 5d473ad0409fcdd301490348659f183d15905cf2
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.date: 09/01/2021
+ms.openlocfilehash: 9eb70a08679427af9e91ffd6df3cd8f827cc76cd
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113585841"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123476302"
 ---
-# <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>Tutorial: Bereitstellen und Durchlaufen einer Anwendungsvorlage für Micro-Fulfillment-Center
+# <a name="tutorial-deploy-and-walk-through-the-micro-fulfillment-center-application-template"></a>Tutorial: Bereitstellen und Durchlaufen der Anwendungsvorlage für Micro-Fulfillment-Center
 
-In diesem Tutorial wird mithilfe der Micro-Fulfillment-Center-Anwendungsvorlage für Azure IoT Central eine Einzelhandelslösung erstellt.
+Verwenden Sie die IoT Central-Anwendungsvorlage für *Micro-Fulfillment-Center* und die Anweisungen in diesem Artikel, um eine End-to-End-Lösung für Micro-Fulfillment-Center zu entwickeln.
+
+![Azure IoT Central Store Analytics](./media/tutorial-micro-fulfillment-center-app/micro-fulfillment-center-architecture-frame.png)
+
+1. Ein Satz von IoT-Sensoren zum Senden von Telemetriedaten an ein Gatewaygerät
+2. Gatewaygeräte senden Telemetrie und aggregierte Erkenntnisse an IoT Central
+3. Kontinuierlicher Datenexport an den gewünschten Azure-Dienst zur Bearbeitung
+4. Daten können im gewünschten Format strukturiert und an einen Speicherdienst gesendet werden
+5. Geschäftsanwendungen können Daten abfragen und Erkenntnisse generieren, die Einzelhandelsvorgänge stützen
+
+### <a name="robotic-carriers"></a>Transportroboter
+
+Eine Micro-Fulfillment-Center-Lösung verfügt wahrscheinlich über zahlreiche Transportroboter, die verschiedene Telemetriesignale generieren. Diese Signale können von einem Gatewaygerät erfasst, aggregiert und anschließend an IoT Central gesendet werden, wie auf der linken Seite des Architekturdiagramms zu sehen.  
+
+### <a name="condition-monitoring-sensors"></a>Sensoren zur Zustandsüberwachung
+
+Eine IoT-Lösung beginnt mit einer Reihe von Sensoren, die aussagekräftige Signale aus Ihrem Fulfillment-Center erfassen. Dies wird durch verschiedene Arten von Sensoren ganz am linken Rand des Architekturdiagramms oben wiedergegeben.
+
+### <a name="gateway-devices"></a>Gatewaygeräte
+
+Viele IoT-Sensoren können unformatierte Signale direkt in die Cloud oder in ein Gatewaygerät in ihrer Nähe einspeisen. Das Gatewaygerät führt vor dem Senden von zusammengefassten Einblicken an eine IoT Central-Anwendung eine Datenaggregation auf dem Edge aus. Die Gatewaygeräte sind ggf. außerdem für die Weiterleitung von Befehls- und Steuerungsvorgängen an die Sensorgeräte zuständig. 
+
+### <a name="iot-central-application"></a>IoT Central-Anwendung
+
+Die Azure IoT Central-Anwendung erfasst Daten von verschiedenen IoT-Sensoren, Robotern und Gatewaygeräten innerhalb der Fulfillment-Center-Umgebung und generiert eine Reihe aussagekräftiger Erkenntnisse.
+
+Azure IoT Central bietet darüber hinaus eine maßgeschneiderte Benutzeroberfläche für den Betreiber des Geschäfts, die ihm die Überwachung und Verwaltung der Infrastrukturgeräte aus der Ferne erlaubt.
+
+### <a name="data-transform"></a>Datentransformation
+
+Die Azure IoT Central-Anwendung kann in einer Lösung so konfiguriert werden, dass sie unformatierte oder aggregierte Erkenntnisse an eine Reihe von Azure-PaaS-Diensten (Platform-as-a-Service) exportiert, die die Daten bearbeiten und die Erkenntnisse anreichern können, bevor sie in einer Geschäftsanwendung landen. 
+
+### <a name="business-application"></a>Geschäftsanwendung
+
+Die IoT-Daten können die Basis verschiedener Geschäftsanwendungen bilden, die in einer Einzelhandelsumgebung bereitgestellt sind. Ein Manager oder Mitarbeiter eines Fulfillment-Centers kann diese Anwendungen nutzen, um geschäftliche Erkenntnisse zu visualisieren und in Echtzeit zielgerichtete Maßnahmen zu ergreifen. Informationen zum Erstellen eines Power BI-Echtzeit-Dashboards für Ihr Einzelhandelsteam finden Sie in [diesem Tutorial](./tutorial-in-store-analytics-create-app.md).
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
+
 > * Bereitstellen der Anwendungsvorlage
 > * Verwenden der Anwendungsvorlage
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Für diese Tutorialreihe benötigen Sie ein Azure-Abonnement. Optional können Sie eine kostenlose 7-Tage-Testversion verwenden. Wenn Sie kein Azure-Abonnement besitzen, können Sie auf der Seite [Azure-Anmeldeseite](https://aka.ms/createazuresubscription) eines erstellen.
 
-## <a name="create-an-application"></a>Erstellen einer Anwendung 
-In diesem Abschnitt erstellen Sie eine neue Azure IoT Central-Anwendung aus einer Vorlage. Sie verwenden diese Anwendung in der gesamten Tutorialreihe, um eine umfassende Lösung zu erstellen.
+* Zum Bereitstellen dieser App müssen keine besonderen Voraussetzungen erfüllt werden.
+* Sie können den Tarif „Free“ oder ein Azure-Abonnement verwenden.
 
-So erstellen Sie eine neue Azure IoT Central-Anwendung:
+## <a name="create-micro-fulfillment-application"></a>Erstellen einer Anwendung für ein Micro-Fulfillment-Center
 
-1. Navigieren Sie zur [Anwendungs-Manager-Website von Azure IoT Central](https://aka.ms/iotcentral).
-1. Wenn Sie über ein Azure-Abonnement verfügen, können Sie sich mit den zugehörigen Anmeldeinformationen anmelden. Melden Sie sich andernfalls mit einem Microsoft-Konto an:
+Gehen Sie wie folgt vor, um die Anwendung zu erstellen:
 
-   ![Screenshot: Dialogfeld für die Anmeldung mit einem Microsoft-Konto](./media/tutorial-in-store-analytics-create-app/sign-in.png)
+1. Navigieren Sie zur Buildwebsite für [Azure IoT Central](https://aka.ms/iotcentral). Melden Sie sich dann mit einem persönlichen Microsoft-Konto oder mit einem Geschäfts-, Schul- oder Unikonto an. Wählen Sie auf der linken Navigationsleiste **Erstellen** und anschließend die Registerkarte **Einzelhandel** aus.
 
-1. Wählen Sie **Neue Anwendung** aus, um mit der Erstellung einer neuen Azure IoT Central-Anwendung zu beginnen.
+   :::image type="content" source="media/tutorial-micro-fulfillment-center-app/iotc-retail-homepage-mfc.png" alt-text="Screenshot: Erstellen einer App":::
 
-1. Wählen Sie **Einzelhandel** aus.  Auf der Seite „Einzelhandel“ werden verschiedene Vorlagen für Einzelhandelsanwendungen angezeigt.
-
-So erstellen Sie eine neue Micro-Fulfillment-Center-Anwendung mit Previewfunktionen:  
-1. Wählen Sie die Anwendungsvorlage **Micro-Fulfillment-Center** aus. Diese Vorlage enthält Gerätevorlagen für alle im Tutorial verwendeten Geräte. Darüber hinaus stellt die Vorlage ein Dashboard zur Überwachung von Bedingungen innerhalb Ihres Fulfillment-Centers sowie zur Überwachung der Bedingungen für Ihre Transportroboter bereit. 
-
-    ![Screenshot: Seite „Eigene IoT-Anwendung erstellen“ in Azure IoT Central](./media/tutorial-micro-fulfillment-center-app/iotc-retail-homepage-mfc.png)
-    
-1. Wählen Sie optional einen benutzerfreundlichen **Anzeigenamen** aus. Die Anwendungsvorlage basiert auf dem fiktiven Unternehmen Northwind Traders. 
-
-    >[!NOTE]
-    >Wenn Sie einen benutzerfreundlichen Anwendungsnamen verwenden, müssen Sie trotzdem einen eindeutigen Wert für die Anwendungs-URL angeben.
-
-1. Falls Sie über ein Azure-Abonnement verfügen, geben Sie Ihr Verzeichnis, Ihr Azure-Abonnement und Ihre Region ein. Andernfalls können Sie eine siebentägige kostenlose Testversion aktivieren und die erforderlichen Kontaktinformationen eingeben.  
-
-1. Klicken Sie auf **Erstellen**.
-
-    ![Screenshot: Seite „Neue Anwendung“ in Azure IoT Central](./media/tutorial-micro-fulfillment-center-app/iotc-retail-create-app-mfc.png)
-
-    ![Screenshot: Abrechnungsinformationen in Azure IoT Central](./media/tutorial-micro-fulfillment-center-app/iotc-retail-create-app-mfc-billing.png)
+1. Wählen Sie unter **Micro-Fulfillment-Center** die Option **App erstellen** aus.
 
 ## <a name="walk-through-the-application"></a>Einführung in die Anwendung 
+
+In den nächsten Abschnitten werden die wichtigsten Features der Anwendung behandelt:
 
 Nach erfolgreicher Bereitstellung der App-Vorlage wird das **Micro-Fulfillment-Center-Dashboard für Northwind Traders** angezeigt. Northwind Traders ist ein fiktiver Einzelhändler, der über ein in dieser Azure IoT Central-Anwendung verwaltetes Micro-Fulfillment-Center verfügt. Dieses Dashboard enthält Informationen und Telemetriedaten zu den Geräten in dieser Vorlage sowie die verfügbaren Befehle, Aufträge und Aktionen. Das Dashboard ist logisch in zwei Abschnitte unterteilt. Auf der linken Seite können Sie die Umgebungsbedingungen innerhalb der Fulfillment-Struktur und auf der rechten Seite den Status eines Transportroboters in Ihrer Einrichtung überwachen.  
 
@@ -68,33 +85,38 @@ Das Dashboard ermöglicht Folgendes:
    * Anzeigen des Grundrisses und der Position der Transportroboter innerhalb der Fulfillment-Struktur
    * Auslösen von Befehlen – etwa zum Zurücksetzen des Steuerungssystems, zum Aktualisieren der Firmwareversion eines Transportroboters oder zum Ändern der Netzwerkkonfiguration
 
-     ![Screenshot: Obere Hälfte des Dashboards des Micro-Fulfillment-Centers von Northwind Traders](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard-1.png)
-   * Betrachten eines Beispiels für das Dashboard, über das ein Operator die Bedingungen innerhalb des Fulfillment-Centers überwachen kann 
-   * Überwachen der Integrität der Nutzlasten, die auf dem Gatewaygerät innerhalb des Fulfillment-Centers ausgeführt werden    
+  :::image type="content" source="media/tutorial-micro-fulfillment-center-app/mfc-dashboard-1.png" alt-text="Screenshot: Obere Hälfte des Dashboards des Micro-Fulfillment-Centers von Northwind Traders":::
+   * Betrachten eines Beispiels für das Dashboard, über das ein Operator die Bedingungen innerhalb des Fulfillment-Centers überwachen kann
+   * Überwachen der Integrität der Nutzlasten, die auf dem Gatewaygerät innerhalb des Fulfillment-Centers ausgeführt werden
 
-     ![Screenshot: Untere Hälfte des Dashboards des Micro-Fulfillment-Centers von Northwind Traders](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard-2.png)
+  :::image type="content" source="media/tutorial-micro-fulfillment-center-app/mfc-dashboard-2.png" alt-text="Screenshot: Untere Hälfte des Dashboards des Micro-Fulfillment-Centers von Northwind Traders.":::
 
-## <a name="device-template"></a>Gerätevorlage
+
+### <a name="device-template"></a>Gerätevorlage
+
 Wenn Sie die Registerkarte „Gerätevorlagen“ auswählen, werden für die Vorlage zwei unterschiedliche Gerätetypen angezeigt: 
    * **Robotic Carrier** (Transportroboter): Diese Gerätevorlage stellt die Definition eines funktionierenden Transportroboters dar, der in der Fulfillment-Struktur eingesetzt wird und ordnungsgemäß funktioniert. Wenn Sie die Vorlage auswählen, sehen Sie, dass von dem Roboter Gerätedaten wie Temperatur und Achsenposition sowie Eigenschaften wie etwa der Status des Transportroboters gesendet werden. 
    * **Structure Condition Monitoring** (Überwachung der Strukturbedingungen): Diese Gerätevorlage stellt eine Sammlung von Geräten dar, mit deren Hilfe Sie sowohl Umgebungsbedingungen als auch das Gatewaygerät überwachen können, von dem verschiedene Edgeworkloads für den Betrieb Ihres Fulfillment-Centers gehostet werden. Das Gerät sendet Telemetriedaten wie etwa die Temperatur, die Anzahl von Entnahmen und die Anzahl von Aufträgen. Darüber hinaus sendet es Informationen zum Zustand und zur Integrität der in Ihrer Umgebung ausgeführten Computeworkloads. 
 
-     ![Gerätevorlagen für das Micro-Fulfillment-Center](./media/tutorial-micro-fulfillment-center-app/device-templates.png)
+  :::image type="content" source="media/tutorial-micro-fulfillment-center-app/device-templates.png" alt-text="Gerätevorlagen für das Micro-Fulfillment-Center":::
+
+
 
 Wenn Sie die Registerkarte „Gerätegruppen“ auswählen, sehen Sie auch, dass für diese Gerätevorlagen automatisch Gerätegruppen erstellt werden.
 
-## <a name="rules"></a>Regeln
+### <a name="rules"></a>Regeln
+
 Auf der Registerkarte **Regeln** sehen Sie eine Beispielregel, die in der Anwendungsvorlage vorhanden ist, um die Temperaturbedingungen für den Transportroboter zu überwachen. Diese Regel kann verwendet werden, um den Operator zu benachrichtigen, wenn ein bestimmter Roboter in der Einrichtung zu heiß wird und zu Wartungszwecken offline geschaltet werden muss. 
 
 Nutzen Sie die Beispielregel als Orientierungshilfe, um Regeln zu definieren, die besser zu Ihren geschäftlichen Funktionen passen.
 
-![Screenshot: Registerkarte „Regeln“](./media/tutorial-micro-fulfillment-center-app/rules.png)
+  :::image type="content" source="media/tutorial-micro-fulfillment-center-app/rules.png" alt-text="Screenshot: Registerkarte „Regeln“":::
 
-## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+### <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Falls Sie diese Anwendung nicht mehr benötigen, löschen Sie die Anwendungsvorlage. Navigieren Sie zu **Verwaltung** > **Anwendungseinstellungen**, und wählen Sie **Löschen** aus.
 
-![Screenshot: Seite „Anwendungseinstellungen“ für das Micro-Fulfillment-Center](./media/tutorial-micro-fulfillment-center-app/delete.png)
+  :::image type="content" source="media/tutorial-micro-fulfillment-center-app/delete.png" alt-text="Screenshot: Seite „Anwendungseinstellungen“ für das Micro-Fulfillment-Center":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

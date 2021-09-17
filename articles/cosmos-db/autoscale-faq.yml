@@ -7,12 +7,12 @@ metadata:
   ms.service: cosmos-db
   ms.topic: conceptual
   ms.date: 05/18/2021
-  ms.openlocfilehash: 20fe5aabf2e7cc8f38272e86a0df2fc91443eee2
-  ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+  ms.openlocfilehash: 960a4e93cfc8f6d2041fceb84b92dd6a4ab8b9e8
+  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 05/26/2021
-  ms.locfileid: "111907291"
+  ms.lasthandoff: 09/03/2021
+  ms.locfileid: "123426992"
 title: Häufig gestellte Fragen zum im Autoskalierungsmodus bereitgestellten Durchsatz von Azure Cosmos DB
 summary: >
   [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -96,7 +96,7 @@ sections:
       Wenn Sie z. B. mit dem Höchstwert von 50.000 RU/s beginnen (Skalierungen zwischen 5.000 und 50.000 RU/s), können Sie bis zu 500 GB an Daten speichern. Wenn Sie 500 GB überschreiten (z. B. 600 GB), gilt als neuer Höchstwert 60.000 RU/s (Skalierungen zwischen 6.000 und 60.000 RU/s).
   - question: "Kann ich die maximale Anzahl von RU/s für die Datenbank oder den Container ändern? \n"
     answer: >
-      Ja. Informationen zum Ändern des Höchstwerts für die RU/s finden Sie in [diesem Artikel](how-to-provision-autoscale-throughput.md). Wenn Sie die maximale Anzahl von RU/s ändern, kann es je nach angefordertem Wert zu einem asynchronen Vorgang kommen, dessen Abschluss einige Zeit in Anspruch nehmen kann (je nach den ausgewählten RU/s bis zu 4–6 Stunden).
+      Ja. Informationen zum Ändern des Höchstwerts für die RU/s finden Sie in [diesem Artikel](how-to-provision-autoscale-throughput.md). Wenn Sie die maximale Anzahl von RU/s ändern, kann es je nach angefordertem Wert zu einem asynchronen Vorgang kommen, dessen Abschluss einige Zeit in Anspruch nehmen kann (je nach den ausgewählten RU/s bis zu 4–6 Stunden). [Weitere Informationen](scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus)
   - question: >
       Erhöhen der maximalen Anzahl von RU/s
     answer: >

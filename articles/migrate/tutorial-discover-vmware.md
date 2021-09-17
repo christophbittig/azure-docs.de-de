@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 07/28/2021
 ms.custom: mvc
-ms.openlocfilehash: 973d6f9450d0cb58df5b1e8dcd208990806abc54
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 520b75e38d7ccf33c3f900c0b30bfd68e6184720
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122967327"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123542402"
 ---
 # <a name="tutorial-discover-servers-running-in-a-vmware-environment-with-azure-migrate"></a>Tutorial: Ermitteln von in einer VMware-Umgebung ausgeführten Servern mit Azure Migrate
 
@@ -103,12 +103,15 @@ Richten Sie im VMware vSphere-Webclient ein schreibgeschütztes Konto ein, das f
 > [!NOTE]
 > Sie können das vCenter Server-Konto einschränken, um die Erkennung auf bestimmte vCenter Server-Rechenzentren, Cluster, Hosts, Ordner von Clustern oder Hosts oder einzelne Server zu beschränken. Erfahren Sie mehr über das [Einschränken des vCenter Server-Benutzerkontos](set-discovery-scope.md).
 
+> [!NOTE]
+> vCenter-Ressourcen, die über Linked-Mode mit dem für die Ermittlung angegebenen vCenter-Server verbunden sind, werden von Azure Migrate nicht ermittelt. Eine Azure Migrate-Appliance muss für jede vCenter-Umgebung bereitgestellt werden, die Sie ermitteln möchten.
+
 ### <a name="create-an-account-to-access-servers"></a>Erstellen eines Kontos für den Zugriff auf Server
 
 Ihr Benutzerkonto auf Ihren Servern muss über die erforderlichen Berechtigungen verfügen, um die Ermittlung installierter Anwendungen, die Abhängigkeitsanalyse ohne Agent sowie die Ermittlung von Web-Apps und SQL Server-Instanzen und -Datenbanken zu initiieren. Sie können die Benutzerkontoinformationen im Appliance-Konfigurations-Manager angeben. Die Appliance installiert keine Agents auf den Servern.
 
 * Erstellen Sie für die Ermittlung von Servern unter Windows und Web-Apps ein Konto (lokales Konto oder Domänenkonto) mit Administratorberechtigungen für die Server. Um SQL Server Instanzen und -Datenbanken zu ermitteln, muss das Windows- oder SQL Server-Konto Mitglied der Serverrolle sysadmin sein. Erfahren Sie mehr darüber, wie Sie dem [Benutzerkonto die erforderliche Rolle zuweisen](/sql/relational-databases/security/authentication-access/server-level-roles).
-* Erstellen Sie für Server unter Linux ein Konto, das über Root-Berechtigungen verfügt. Sie können auch ein Konto erstellen, das über die Berechtigungen CAP_DAC_READ_SEARCH und CAP_SYS_PTRACE für /bin/netstat and /bin/ls-Dateien verfügt.
+* Geben Sie bei Linux-Servern die Details des Root-Benutzerkontos an, oder erstellen Sie ein Konto, das die Berechtigungen CAP_DAC_READ_SEARCH und CAP_SYS_PTRACE für die Dateien „/bin/netstat“ und „/bin/ls“ hat.
 
 > [!NOTE]
 > Sie können dem Konfigurations-Manager in der Azure Migrate-Appliance mehrere Serveranmeldeinformationen hinzufügen, um die Ermittlung installierter Anwendungen, die Abhängigkeitsanalyse ohne Agent sowie die Ermittlung von Web-Apps und SQL Server-Instanzen und -Datenbanken zu initiieren. Sie können Anmeldeinformationen für die Authentifizierung für mehrere Domänen, Windows (ohne Domäne), Linux (ohne Domäne) oder SQL Server angeben. Erfahren Sie mehr über das [Hinzufügen von Serveranmeldeinformationen](add-server-credentials.md).
@@ -270,7 +273,7 @@ Die Appliance muss eine Verbindung mit der vCenter Server-Instanz herstellen, um
 
 ### <a name="provide-server-credentials"></a>Angeben von Serveranmeldeinformation
 
-Unter folgendem Schritt können Sie mehrere Serveranmeldeinformationen angeben: **Schritt 3: Geben Sie Anmeldeinformationen für den Server an, um eine Softwareinventur, eine Abhängigkeitsanalyse ohne Agent, eine Ermittlung von SQL Server-Instanzen und -Datenbanken und eine Ermittlung von ASP.NET-Web-Apps in Ihrer VMware-Umgebung durchzuführen.** Wenn Sie keine dieser Appliancefunktionen verwenden möchten, können Sie diesen Schritt überspringen und mit der vCenter Server-Ermittlung fortfahren. Sie können diese Option jederzeit ändern.
+In diesem Schritt können Sie mehrere Serveranmeldeinformationen angeben: **Schritt 3: Geben Sie Anmeldeinformationen für den Server an, um eine Softwareinventur, eine Abhängigkeitsanalyse ohne Agent, eine Ermittlung von SQL Server-Instanzen und -Datenbanken und eine Ermittlung von ASP.NET-Web-Apps in Ihrer VMware-Umgebung durchzuführen**. Wenn Sie keine dieser Appliancefunktionen verwenden möchten, können Sie diesen Schritt überspringen und mit der vCenter Server-Ermittlung fortfahren. Sie können diese Option jederzeit ändern.
 
 :::image type="content" source="./media/tutorial-discover-vmware/appliance-server-credentials-mapping.png" alt-text="Screenshot: Bereitstellen von Anmeldeinformationen für die Softwareinventur, Abhängigkeitsanalyse und s q l Serverermittlung.":::
 

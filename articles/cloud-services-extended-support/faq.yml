@@ -9,12 +9,12 @@ metadata:
   ms.reviewer: mimckitt
   ms.date: 10/13/2020
   ms.custom: references_regions
-  ms.openlocfilehash: 4b8cd236bad28c93949610dd26f45042bc0debc7
-  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+  ms.openlocfilehash: bb2ee07d3d5c603df11d5b17b6afea496f4b31c8
+  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 07/22/2021
-  ms.locfileid: "114481436"
+  ms.lasthandoff: 09/03/2021
+  ms.locfileid: "123424094"
 title: Häufig gestellte Fragen zu Azure Cloud Services (erweiterter Support)
 summary: In diesem Artikel werden häufig gestellte Fragen zu Azure Cloud Services (erweiterter Support) behandelt.
 sections:
@@ -29,7 +29,7 @@ sections:
   - question: >
       Welche Standorte sind zum Bereitstellen von Cloud Services (erweiterter Support) verfügbar?
     answer: >
-      Cloud Services (erweiterter Support) ist in allen Public Cloud-Regionen verfügbar.
+      Cloud Services (erweiterter Support) ist in allen Regionen mit öffentlichen Clouds und Sovereign Clouds verfügbar.
   - question: "Wie ändert sich mein Kontingent? \n"
     answer: >
       Kunden müssen ein Kontingent mit denselben Prozessen wie jedes andere Azure Resource Manager-Produkt anfordern. Das Kontingent in Azure Resource Manager ist regional, und für jede Region wird eine separate Kontingentanforderung benötigt.

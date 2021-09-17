@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/24/2021
 ms.author: jeedes
-ms.openlocfilehash: 4e340e2046a3e1611d9204fba262e42696de49e1
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: e5f4c198114a49049c22ef0d79adcb08b85683c9
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123077562"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435688"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-animaker"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory in Animaker
 
@@ -73,11 +73,23 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Im Abschnitt **Grundlegende SAML-Konfiguration** muss der Benutzer keine Schritte ausführen, weil die App bereits in Azure integriert ist.
+1. Geben Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** die Werte für die folgenden Felder ein:
+
+    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://app.animaker.com/login/samlsuccess/<Anyone_Home_Provided_Unique_Value>`
+
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://app.animaker.com/login/samlsuccess/<Anyone_Home_Provided_Unique_Value>`
+
+    > [!NOTE]
+    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Supportteam von Animaker](mailto:help@animaker.com), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+
 
 1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://app.animaker.com/login/samlsuccess/azure/`.
+    Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://app.animaker.com/login/samlsuccess/<Anyone_Home_Provided_Unique_Value>`.
+
+1. Animaker erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. **nameidentifier** ist hier **user.userprincipalname** zugeordnet. Die Appraisd-Anwendung erwartet, dass **nameidentifier** der Wert **user.mail** zugeordnet ist. Sie müssen die Attributzuordnung daher entsprechend ändern, indem Sie auf das Symbol **Bearbeiten** klicken.
+
+    ![Screenshot: Bereich „Benutzerattribute“ mit hervorgehobenem Bearbeitungssymbol](common/edit-attribute.png)
 
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
 

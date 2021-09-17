@@ -10,13 +10,13 @@ ms.custom:
 - iot-p0-scenario
 ms.author: timlt
 author: timlt
-ms.date: 11/12/2019
-ms.openlocfilehash: 44e62418a74d40f05ab0ccc9b9da86c76bc07790
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.date: 08/17/2021
+ms.openlocfilehash: 93438e9726dca4fe74da3bbfc9bd06533115e74e
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122196036"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123439077"
 ---
 # <a name="tutorial-deploy-and-walk-through-the-in-store-analytics-application-template"></a>Tutorial: Bereitstellen und Durchlaufen der Anwendungsvorlage für In-Store-Analytics
 
@@ -144,7 +144,7 @@ So fügen Sie eine RuuviTag-Gerätevorlage zu Ihrer Anwendung hinzu:
 
 1. Wählen Sie **+ Neu** aus, um eine neue Gerätevorlage zu erstellen.
 
-1. Suchen Sie im Azure IoT-Gerätekatalog die Gerätevorlage für den **RuuviTag**-Sensor. 
+1. Suchen Sie im Azure IoT-Gerätekatalog die Gerätevorlage für den Multisensor **RuuviTag**. 
 
 1. Klicken Sie auf **Weiter: Anpassen**.
 
@@ -204,7 +204,7 @@ Geben Sie die folgenden Werte an, um eine benutzerdefinierte Eigenschaft zum Spe
 
 1. Geben Sie für **Anzeigename** den Wert *Standort* ein. Dieser Wert wird automatisch in das Feld **Name** kopiert. Dies ist eine benutzerfreundliche Bezeichnung für die Eigenschaft. Sie können den kopierten Wert verwenden oder ihn ändern.
 
-1. Wählen Sie in der Dropdownliste **Schema** die Option *Zeichenfolge* aus. Mit einem Zeichenfolgentyp können Sie basierend auf der Vorlage eine Zeichenfolge für den Standortnamen einem beliebigen Gerät zuordnen. Beispielsweise können Sie jedem Gerät einen Bereich in einem Laden zuordnen. Optional können Sie die Option **Semantischer Typ** Ihrer Eigenschaft auf *Standort* festlegen. Dadurch wird für das **Schema** automatisch *Geopunkt* verwendet. Damit ist es möglich, einem Gerät GPS-Koordinaten zuzuordnen. 
+1. Wählen Sie in der Dropdownliste **Schema** die Option *Zeichenfolge* aus. Mit einem Zeichenfolgentyp können Sie basierend auf der Vorlage eine Zeichenfolge für den Standortnamen einem beliebigen Gerät zuordnen. Beispielsweise können Sie jedem Gerät einen Bereich in einem Laden zuordnen.
 
 1. Legen Sie für **Mindestlänge** *2* fest. 
 

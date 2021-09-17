@@ -6,15 +6,15 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/22/2021
+ms.date: 08/26/2021
 ms.author: alkohli
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: dc06c5646f85fda4b4100805be4a9566d0917e2a
-ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+ms.openlocfilehash: 489182db34366a910a26ad358d9ef60ae4244530
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114652990"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123468562"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Tutorial: Bestellen von Azure Data Box
 
@@ -214,214 +214,7 @@ Ausführliche Informationen zum Anmelden bei Azure mit Windows PowerShell finden
 
 # <a name="portal"></a>[Portal](#tab/portal)
 
-Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Gerät zu bestellen.
-
-1. Melden Sie sich mit Ihren Microsoft Azure-Anmeldeinformationen unter folgender URL an: [https://portal.azure.com](https://portal.azure.com).
-2. Wählen Sie **+ Ressource erstellen** aus, und suchen Sie nach *Azure Data Box*. Wählen Sie **Azure Data Box** aus.
-
-   ![Screenshot: Abschnitt „Neu“ mit „Azure Data Box“ im Suchfeld](media/data-box-deploy-ordered/select-data-box-import-02.png)
-
-3. Klicken Sie auf **Erstellen**.
-
-   ![Screenshot: Abschnitt „Azure Data Box“ mit hervorgehobener Option „Erstellen“](media/data-box-deploy-ordered/select-data-box-import-03.png)
-
-4. Überprüfen Sie, ob der Data Box-Dienst in Ihrer Region verfügbar ist. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, und wählen Sie anschließend **Übernehmen** aus.
-
-    |Einstellung  |Wert  |
-    |---------|---------|
-    |Übertragungstyp     | Wählen Sie **Import in Azure** aus.        |
-    |Subscription     | Wählen Sie ein EA-, CSP- oder Azure Sponsorship-Abonnement für den Data Box-Dienst aus. <br> Das Abonnement ist mit Ihrem Abrechnungskonto verknüpft.       |
-    |Ressourcengruppe | Wählen Sie eine vorhandene Ressourcengruppe aus. Eine Ressourcengruppe ist ein logischer Container für die Ressourcen, die zusammen verwaltet oder bereitgestellt werden können. |
-    |Quellland/Quellregion    |    Wählen Sie das Land/die Region aus, in dem/der sich Ihre Daten zurzeit befinden.         |
-    |Azure-Zielregion     |     Wählen Sie die Azure-Region aus, in die Daten übertragen werden sollen. <br> Weitere Informationen finden Sie unter [Regionale Verfügbarkeit](data-box-overview.md#region-availability).            |
-
-    [ ![Starten eines Importauftrags für Azure Data Box](media/data-box-deploy-ordered/select-data-box-import-04-b.png) ](media/data-box-deploy-ordered/select-data-box-import-04-b.png#lightbox)
-
-5. Wählen Sie **Data Box** aus. Die maximal nutzbare Kapazität für eine einzelne Bestellung beträgt 80 TB. Sie können mehrere Bestellungen für größere Datenmengen erstellen.
-
-    ![Verfügbare Datengrößen: „Data Box Disk“ (40 TB), „Data Box“ (100 TB), „Data Box Heavy“ (1.000 TB) und „Eigene Datenträger einsenden“ (1 TB)](media/data-box-deploy-ordered/select-data-box-import-05.png)
-
-6. Wechseln Sie in **Bestellung** zur Registerkarte **Grundlagen**. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, und wählen Sie anschließend Folgendes aus: **Weiter: Datenziel>** .
-
-    |Einstellung  |Wert  |
-    |---------|---------|
-    |Subscription      | Das Abonnement wird auf der Grundlage Ihrer zuvor getroffenen Auswahl automatisch eingetragen.|
-    |Resource group    | Die Ressourcengruppe, die Sie zuvor ausgewählt haben. |
-    |Name des Importauftrags | Geben Sie einen Anzeigenamen an, um die Bestellung nachzuverfolgen. <br> Der Name kann zwischen 3 und 24 Zeichen lang sein und darf nur Buchstaben, Zahlen und Bindestriche enthalten. <br> Der Name muss mit einem Buchstaben oder einer Zahl beginnen und enden.    |
-
-    ![Assistent für Data Box-Importaufträge, Bildschirm „Grundlagen“ mit den richtigen Informationen](media/data-box-deploy-ordered/select-data-box-import-06.png)
-
-7. Wählen Sie auf dem Bildschirm **Datenziel** das **Datenziel** aus: entweder Speicherkonten oder verwaltete Datenträger.
-
-    Wenn Sie als Speicherziel ein oder mehrere **Speicherkonten** verwenden, wird Folgendes angezeigt:
-
-    ![Assistent für Data Box-Importaufträge, Bildschirm „Datenziel“ mit ausgewählten Speicherkonten](media/data-box-deploy-ordered/select-data-box-import-07.png)
-
-    Wählen Sie basierend auf der angegebenen Azure-Region mindestens ein Speicherkonto in der gefilterten Liste vorhandener Speicherkonten aus. Data Box kann mit bis zu zehn Speicherkonten verknüpft werden. Sie können auch ein neues Speicherkonto vom Typ **Universell V1** oder **Universell V2** oder ein **Blob Storage-Konto** erstellen.
-
-   > [!NOTE]
-   > - Bei der Auswahl von Azure-Premium-FileStorage-Konten wird das bereitgestellte Kontingent für die Azure-Speicherkontofreigabe auf die Größe der Daten erhöht, die auf die Dateifreigaben kopiert werden. Nach der Erhöhung des Kontingents wird es nicht erneut angepasst, wenn die Data Box beispielsweise aus irgendeinem Grund die Daten nicht kopieren kann.
-   > - Dieses Kontingent wird für die Abrechnung verwendet. Nachdem die Daten in das Rechenzentrum hochgeladen wurden, sollten Sie das Kontingent an Ihre Anforderungen anpassen. Weitere Informationen finden Sie unter [Grundlegendes zur Abrechnung für Azure Files](../../articles/storage/files/understanding-billing.md).
-
-    Speicherkonten mit virtuellen Netzwerken werden unterstützt. Aktivieren Sie in den Netzwerkfirewalleinstellungen des Speicherkontos die vertrauenswürdigen Dienste, um dem Data Box-Dienst die Verwendung geschützter Speicherkonten zu ermöglichen. Weitere Informationen zum Hinzufügen von Azure Data Box als vertrauenswürdiger Dienst finden Sie [hier](../storage/common/storage-network-security.md#exceptions).
-
-    Wenn Sie Data Box verwenden, um auf der Grundlage lokaler virtueller Festplatten (VHDs) **verwaltete Datenträger** zu erstellen, sind außerdem folgende Informationen erforderlich:
-
-    |Einstellung  |Wert  |
-    |---------|---------|
-    |Ressourcengruppen     | Erstellen Sie neue Ressourcengruppen, wenn Sie verwaltete Datenträger auf der Grundlage lokaler VHDs erstellen möchten. Eine bereits vorhandene Ressourcengruppe kann nur verwendet werden, wenn diese zuvor beim Erstellen eines Data Box-Auftrags für verwaltete Datenträger durch den Data Box-Dienst erstellt wurde. <br> Bei Angabe mehrerer Ressourcengruppen müssen diese jeweils durch ein Semikolon getrennt werden. Es werden maximal zehn Ressourcengruppen unterstützt.|
-
-    ![Assistent für Data Box-Importaufträge, Bildschirm „Datenziel“, auf dem „Verwaltete Datenträger“ ausgewählt ist](media/data-box-deploy-ordered/select-data-box-import-07-b.png)
-
-    Das für verwaltete Datenträger angegebene Speicherkonto wird als Stagingspeicherkonto verwendet. Der Data Box-Dienst lädt die VHDs als Seitenblobs in das Stagingspeicherkonto hoch, konvertiert es in verwaltete Datenträger und verschiebt es in die Ressourcengruppen. Weitere Informationen finden Sie unter [Überprüfen des Datenuploads in Azure](data-box-deploy-picked-up.md#verify-data-upload-to-azure).
-
-   > [!NOTE]
-   > Wird ein Seitenblob nicht in einen verwalteten Datenträger konvertiert, bleibt es im Speicherkonto, und Ihnen wird der Speicher in Rechnung gestellt.
-
-8. Klicken Sie auf **Weiter: Sicherheit**, um den Vorgang fortzusetzen.
-
-    Auf dem Bildschirm **Sicherheit** können Sie Ihren eigenen Verschlüsselungsschlüssel und Ihre eigenen Geräte- und Freigabekennwörter verwenden und die doppelte Verschlüsselung aktivieren.
-
-    Alle Einstellungen auf dem Bildschirm **Sicherheit** sind optional. Wenn Sie keine der Einstellungen ändern, werden die Standardeinstellungen verwendet.
-
-    ![Bildschirm „Sicherheit“ für den Assistenten für Data Box-Importaufträge](media/data-box-deploy-ordered/select-data-box-import-security-01.png)
-
-9. Erweitern Sie die Option **Verschlüsselungstyp**, wenn Sie Ihren eigenen kundenseitig verwalteten Schlüssel nutzen möchten, um den Hauptschlüssel zum Entsperren Ihrer neuen Ressource zu schützen.
-
-    Das Konfigurieren eines kundenseitig verwalteten Schlüssels für Azure Data Box ist optional. Standardmäßig verwendet Data Box einen von Microsoft verwalteten Schlüssel zum Schützen des Hauptschlüssels für die Entsperrung.
-
-    Ein kundenseitig verwalteter Schlüssel wirkt sich nicht darauf aus, wie Daten auf dem Gerät verschlüsselt werden. Der Schlüssel wird nur verwendet, um den Hauptschlüssel zum Entsperren des Geräts zu verschlüsseln.
-
-    Springen Sie zu Schritt 15, falls Sie keinen kundenseitig verwalteten Schlüssel verwenden möchten.
-
-   ![Bildschirm „Sicherheit“ mit Einstellungen für den Verschlüsselungstyp](./media/data-box-deploy-ordered/customer-managed-key-01.png)
-
-10. Wählen Sie **Kundenseitig verwalteter Schlüssel** als Schlüsseltyp aus. Wählen Sie anschließend die Option **Schlüsseltresor und Schlüssel auswählen** aus.
-   
-    ![Bildschirm „Sicherheit“: Einstellungen für einen kundenseitig verwalteten Schlüssel](./media/data-box-deploy-ordered/customer-managed-key-02.png)
-
-11. Auf dem Blatt **Schlüssel aus Azure Key Vault auswählen** wird das Abonnementfeld automatisch aufgefüllt.
-
-    - Für **Schlüsseltresor** können Sie einen vorhandenen Schlüsseltresor aus der Dropdownliste auswählen.
-
-      ![Auswählen des Schlüssels auf dem Azure Key Vault-Bildschirm](./media/data-box-deploy-ordered/customer-managed-key-03.png)
-
-    - Sie können auch **Neu erstellen** auswählen, um einen neuen Schlüsseltresor zu erstellen. Geben Sie auf dem Bildschirm **Schlüsseltresor erstellen** die Ressourcengruppe und einen Schlüsseltresornamen ein. Stellen Sie sicher, dass die Optionen **Vorläufiges Löschen** und **Löschschutz** aktiviert sind. Übernehmen Sie für alle anderen Einstellungen die Standardwerte, und wählen Sie dann **Überprüfen und erstellen** aus.
-
-      ![Erstellen von neuen Azure Key Vault-Einstellungen](./media/data-box-deploy-ordered/customer-managed-key-04.png)
-
-      Überprüfen Sie die Informationen für Ihren Schlüsseltresor, und wählen Sie **Erstellen** aus. Warten Sie einige Minuten, bis die Erstellung des Schlüsseltresors abgeschlossen ist.
-
-      ![Bildschirm mit Übersicht für neuen Azure-Schlüsseltresor](./media/data-box-deploy-ordered/customer-managed-key-05.png)
-
-12. Unter **Schlüssel aus Azure Key Vault auswählen** können Sie einen Schlüssel auswählen, der im Schlüsseltresor vorhanden ist.
-
-    ![Auswählen eines vorhandenen Schlüssels aus Azure-Schlüsseltresor](./media/data-box-deploy-ordered/customer-managed-key-06.png)
-
-    Wählen Sie die Option **Neu erstellen** aus, wenn Sie einen neuen Schlüssel erstellen möchten. Sie müssen einen RSA-Schlüssel verwenden. Der Wert für die Größe kann „2048“ oder höher lauten. Geben Sie einen Namen für Ihren neuen Schlüssel ein, behalten Sie ansonsten die Standardeinstellungen bei, und wählen Sie **Erstellen** aus.
-
-      ![Option zum Erstellen eines neuen Schlüssels](./media/data-box-deploy-ordered/customer-managed-key-07.png)
-
-      Sie werden benachrichtigt, wenn der Schlüssel in Ihrem Schlüsseltresor erstellt wurde.
-
-13. Wählen Sie die **Version** des zu verwendenden Schlüssels und dann die Option **Auswählen** aus.
-
-      ![Neu erstellter Schlüssel im Schlüsseltresor](./media/data-box-deploy-ordered/customer-managed-key-08.png)
-
-    Wählen Sie die Option **Neu erstellen** aus, wenn Sie eine neue Schlüsselversion erstellen möchten.
-
-    ![Öffnen eines Dialogfelds zum Erstellen einer neuen Schlüsselversion](./media/data-box-deploy-ordered/customer-managed-key-08-a.png)
-
-    Wählen Sie Einstellungen für die neue Schlüsselversion und dann die Option **Erstellen** aus.
-
-    ![Erstellen einer neuen Schlüsselversion](./media/data-box-deploy-ordered/customer-managed-key-08-b.png)
-
-    Auf dem Bildschirm **Sicherheit** werden in den Einstellungen unter **Verschlüsselungstyp** Ihr Schlüsseltresor und der Schlüssel angezeigt.
-
-    ![Schlüssel und Schlüsseltresor für einen kundenseitig verwalteten Schlüssel](./media/data-box-deploy-ordered/customer-managed-key-09.png)
-
-14. Wählen Sie eine Benutzeridentität aus, die Sie zum Verwalten des Zugriffs auf diese Ressource verwenden. Wählen Sie die Option **Benutzeridentität auswählen** aus. Wählen Sie im Bereich auf der rechten Seite das zu verwendende Abonnement und die verwaltete Identität aus. Wählen Sie anschließend **Auswählen** aus.
-
-    Eine vom Benutzer zugewiesene verwaltete Identität ist eine eigenständige Azure-Ressource, die zum Verwalten mehrerer Ressourcen verwendet werden kann. Weitere Informationen finden Sie unter [Arten von verwalteten Identitäten](../active-directory/managed-identities-azure-resources/overview.md).  
-
-    Befolgen Sie die Anleitung unter [Erstellen, Auflisten, Löschen oder Zuweisen einer Rolle zu einer vom Benutzer zugewiesenen verwalteten Identität über das Azure-Portal](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md), wenn Sie eine neue verwaltete Identität erstellen müssen.
-    
-    ![Auswählen einer Benutzeridentität](./media/data-box-deploy-ordered/customer-managed-key-10.png)
-
-    Die Benutzeridentität wird in den Einstellungen unter **Verschlüsselungstyp** angezeigt.
-
-    ![Ausgewählte Benutzeridentität in den Einstellungen unter „Verschlüsselungstyp“](./media/data-box-deploy-ordered/customer-managed-key-11.png)
-
-15. Wenn Sie nicht die systemseitig generierten Kennwörter verwenden möchten, die standardmäßig von Azure Data Box genutzt werden, erweitern Sie auf dem Bildschirm **Sicherheit** den Bereich **Bring Your Own Password** (Eigenes Kennwort verwenden).
-
-    Die systemseitig generierten Kennwörter sind sicher und werden empfohlen, sofern in Ihrer Organisation keine anderen Vorgaben gelten.
-
-    ![Erweiterte Optionen zur Verwendung eines eigenen Kennworts für einen Data Box-Importauftrag](media/data-box-deploy-ordered/select-data-box-import-security-02.png) 
-
-   - Wenn Sie für Ihr neues Gerät ein eigenes Kennwort verwenden möchten, wählen Sie unter **Set preference for the device password** (Einstellung für das Gerätekennwort festlegen) die Option **Use your own password** (Eigenes Kennwort verwenden) aus, und geben Sie ein Kennwort ein, das die Sicherheitsanforderungen erfüllt.
-     
-     Das Kennwort muss alphanumerisch und 12 bis 15 Zeichen lang sein und mindestens einen Großbuchstaben, einen Kleinbuchstaben, ein Sonderzeichen und eine Ziffer enthalten. 
-
-     - Zulässige Sonderzeichen: @ # - $ % ^ ! + = ; : _ ( )
-     - Nicht zulässige Zeichen: I i L o O 0
-   
-     ![Optionen für die Verwendung eines eigenen Gerätekennworts auf dem Bildschirm „Sicherheit“ für einen Data Box-Importauftrag](media/data-box-deploy-ordered/select-data-box-import-security-03.png)
-
- - So verwenden Sie Ihre eigenen Kennwörter für Freigaben:
-
-   1. Wählen Sie unter **Set preference for share passwords** (Einstellung für Freigabekennwörter festlegen) die Option **Use your own passwords** (Eigene Kennwörter verwenden) und anschließend **Select passwords for the shares** (Kennwörter für die Freigaben auswählen) aus.
-     
-       ![Optionen für die Verwendung eigener Freigabekennwörter auf dem Bildschirm „Sicherheit“ für einen Data Box-Importauftrag](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
-
-    1. Geben Sie ein Kennwort für jedes im Auftrag enthaltene Speicherkonto ein. Das Kennwort wird für alle Freigaben für das Speicherkonto verwendet.
-    
-       Das Kennwort muss alphanumerisch und 12 bis 64 Zeichen lang sein und mindestens einen Großbuchstaben, einen Kleinbuchstaben, ein Sonderzeichen und eine Ziffer enthalten.
-
-       - Zulässige Sonderzeichen: @ # - $ % ^ ! + = ; : _ ( )
-       - Nicht zulässige Zeichen: I i L o O 0
-     
-    1. Wenn Sie das gleiche Kennwort für alle Speicherkonten verwenden möchten, wählen Sie **In alle kopieren** aus. 
-
-    1. Wählen Sie abschließend **Speichern** aus.
-     
-       ![Eingabebildschirm für Freigabekennwörter für einen Data Box-Importauftrag](media/data-box-deploy-ordered/select-data-box-import-security-05.png)
-
-    Auf dem Bildschirm **Sicherheit** können Sie mithilfe von **View or change passwords** (Kennwörter anzeigen oder ändern) die Kennwörter ändern.
-
-16. Wenn Sie die softwarebasierte doppelte Verschlüsselung aktivieren möchten, erweitern Sie auf dem Bildschirm **Sicherheit** den Bereich **Double-encryption (for highly secure environments)**  (Doppelte Verschlüsselung (für Hochsicherheitsumgebungen)), und wählen Sie die Option **Doppelte Verschlüsselung für den Auftrag aktivieren** aus.
-
-    ![Bildschirm „Sicherheit“ für Data Box-Import: Aktivieren der softwarebasierten Verschlüsselung für einen Data Box-Auftrag](media/data-box-deploy-ordered/select-data-box-import-security-07.png)
-
-    Die softwarebasierte Verschlüsselung wird zusätzlich zur AES-256-Bit-Verschlüsselung der Daten auf der Data Box ausgeführt.
-
-    > [!NOTE]
-    > Wenn Sie diese Option aktivieren, können die Auftragsverarbeitung und das Kopieren von Daten länger dauern. Nach dem Erstellen des Auftrags können Sie diese Option nicht mehr ändern.
-
-    Klicken Sie auf **Weiter: Kontaktdetails**, um fortzufahren.
-
-17. Wählen Sie unter **Kontaktdetails** die Option **+ Lieferadresse hinzufügen** aus.
-
-    ![Hinzufügen von Lieferadressen zu Ihrem Azure Data Box-Importauftrag auf dem Bildschirm „Kontaktdetails“](media/data-box-deploy-ordered/select-data-box-import-08-a.png)
-
-18. Geben Sie unter **Lieferadresse** Ihren Vor- und Nachnamen, den Namen und die Postanschrift des Unternehmens sowie eine gültige Telefonnummer an. Wählen Sie **Adresse überprüfen** aus. Der Dienst überprüft anhand der Lieferadresse die Verfügbarkeit des Diensts. Wenn der Dienst für die angegebene Lieferadresse verfügbar ist, erhalten Sie eine entsprechende Benachrichtigung.
-
-    ![Screenshot: Dialogfeld „Lieferadresse hinzufügen“ mit Hervorhebung der gewünschten Versandoption und der Option „Lieferadresse hinzufügen“](media/data-box-deploy-ordered/select-data-box-import-10.png)
-
-    Wenn Sie den selbstverwalteten Versand ausgewählt haben, erhalten Sie nach der erfolgreichen Auftragserteilung eine E-Mail-Benachrichtigung. Weitere Informationen zum selbstverwalteten Versand finden Sie unter [Verwenden des selbstverwalteten Versands](data-box-portal-customer-managed-shipping.md).
-
-19. Wählen Sie **Lieferadresse hinzufügen** aus, wenn die Versanddetails erfolgreich überprüft wurden. Sie kehren zur Registerkarte **Kontaktdetails** zurück.
-
-20. Fügen Sie nach der Rückkehr zu **Kontaktdetails** mindestens eine E-Mail-Adresse hinzu. Der Dienst sendet E-Mail-Benachrichtigungen in Bezug auf Aktualisierungen des Auftragsstatus an die angegebenen E-Mail-Adressen.
-
-    Es wird empfohlen, eine E-Mail-Gruppenadresse zu verwenden, damit Sie weiterhin Benachrichtigungen erhalten, wenn ein Administrator die Gruppe verlässt.
-
-    ![Abschnitt „E-Mail“ unter „Kontaktdetails“ im Bestell-Assistenten](media/data-box-deploy-ordered/select-data-box-import-08-c.png)
-
-21. Überprüfen Sie die Informationen in **Überprüfen + bestellen** im Zusammenhang mit der Bestellung, den Kontakt, die Benachrichtigungen und die Datenschutzbestimmungen. Aktivieren Sie das Kontrollkästchen für die Zustimmung zu den Datenschutzbestimmungen.
-
-22. Wählen Sie **Bestellen** aus. Die Erstellung des Auftrags dauert einige Minuten.
-
-    ![Bildschirm „Überprüfen + bestellen“ des Bestell-Assistenten](media/data-box-deploy-ordered/select-data-box-import-11.png)
+[!INCLUDE [order-data-box-via-portal](../../includes/data-box-order-portal.md)]
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
@@ -450,7 +243,7 @@ Führen Sie für die Azure CLI die folgenden Schritte aus, um ein Gerät zu best
    |help| Zeigt Hilfeinformationen für diesen Befehl an. | --help -h |
    |only-show-errors| Nur Fehler anzeigen und Warnungen unterdrücken. | --only-show-errors |
    |output -o| Legt das Ausgabeformat fest.  Zulässige Werte: „json“, „jsonc“, „none“, „table“, „tsv“, „yaml“, „yamlc“. Der Standardwert ist „json“. | --output „json“ |
-   |Abfrage| JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter [JMESPath](http://jmespath.org/). | --query <string>|
+   |Abfrage| JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter [JMESPath](http://jmespath.org/). | --query &lt;string&gt;|
    |Ausführlich| Einbinden der ausführlichen Protokollierung. | --verbose |
 
 2. Führen Sie an der Eingabeaufforderung oder im Terminal Ihrer Wahl [az databox job create](/cli/azure/databox/job#az_databox_job_create) aus, um Ihre Azure Data Box-Bestellung zu erstellen.
@@ -565,7 +358,7 @@ Führen Sie für Azure PowerShell die folgenden Schritte aus, um ein Gerät zu b
     |CountryCode [Erforderlich]| Das Land/die Region, an das/die das Gerät gesendet wird. | „USA“ |
     |PostalCode [Erforderlich]| Die Postleitzahl, die zur Lieferadresse gehört.| „98052“|
     |CompanyName| Der Name des Unternehmens, für das Sie arbeiten.| „Contoso, LTD“ |
-    |StorageAccountResourceId [Erforderlich]| Die ID für das Azure Storage-Konto, aus dem Sie Daten importieren möchten.| <AzStorageAccount>.id |
+    |StorageAccountResourceId [Erforderlich]| Die ID für das Azure Storage-Konto, aus dem Sie Daten importieren möchten.| &lt;AzstorageAccount&gt;.id |
 
 3. Verwenden Sie in der Eingabeaufforderung oder im Terminal Ihrer Wahl den Befehl [New-AzDataBoxJob](/powershell/module/az.databox/New-AzDataBoxJob), um Ihre Azure Data Box-Bestellung zu erstellen.
 
@@ -637,7 +430,7 @@ Führen Sie [`az databox job show`](/cli/azure/databox/job#az_databox_job_show) 
    |help| Zeigt Hilfeinformationen für diesen Befehl an. | --help -h |
    |only-show-errors| Nur Fehler anzeigen und Warnungen unterdrücken. | --only-show-errors |
    |output -o| Legt das Ausgabeformat fest.  Zulässige Werte: „json“, „jsonc“, „none“, „table“, „tsv“, „yaml“, „yamlc“. Der Standardwert ist „json“. | --output „json“ |
-   |Abfrage| JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter [JMESPath](http://jmespath.org/). | --query <string>|
+   |Abfrage| JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter [JMESPath](http://jmespath.org/). | --query &lt;string&gt;|
    |Ausführlich| Einbinden der ausführlichen Protokollierung. | --verbose |
 
    Hier ist ein Beispiel für den Befehl mit Festlegung des Ausgabeformats auf „table“ angegeben:
@@ -678,7 +471,7 @@ In der folgenden Tabelle sind die Parameterinformationen für `az databox job li
    |help| Zeigt Hilfeinformationen für diesen Befehl an. | --help -h |
    |only-show-errors| Nur Fehler anzeigen und Warnungen unterdrücken. | --only-show-errors |
    |output -o| Legt das Ausgabeformat fest.  Zulässige Werte: „json“, „jsonc“, „none“, „table“, „tsv“, „yaml“, „yamlc“. Der Standardwert ist „json“. | --output „json“ |
-   |Abfrage| JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter [JMESPath](http://jmespath.org/). | --query <string>|
+   |Abfrage| JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter [JMESPath](http://jmespath.org/). | --query &lt;string&gt;|
    |Ausführlich| Einbinden der ausführlichen Protokollierung. | --verbose |
 
    Hier ist ein Beispiel für den Befehl mit Festlegung des Ausgabeformats auf „table“ angegeben:
@@ -799,7 +592,7 @@ Führen Sie zum Stornieren einer Azure Data Box-Bestellung den Befehl [`az datab
    |help| Zeigt Hilfeinformationen für diesen Befehl an. | --help -h |
    |only-show-errors| Nur Fehler anzeigen und Warnungen unterdrücken. | --only-show-errors |
    |output -o| Legt das Ausgabeformat fest.  Zulässige Werte: „json“, „jsonc“, „none“, „table“, „tsv“, „yaml“, „yamlc“. Der Standardwert ist „json“. | --output „json“ |
-   |Abfrage| JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter [JMESPath](http://jmespath.org/). | --query <string>|
+   |Abfrage| JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter [JMESPath](http://jmespath.org/). | --query &lt;string&gt;|
    |Ausführlich| Einbinden der ausführlichen Protokollierung. | --verbose |
 
    Hier ist ein Beispiel für den Befehl mit der Ausgabe angegeben:
@@ -836,7 +629,7 @@ Wenn Sie eine Azure Data Box-Bestellung storniert haben, können Sie [`az databo
    |help| Zeigt Hilfeinformationen für diesen Befehl an. | --help -h |
    |only-show-errors| Nur Fehler anzeigen und Warnungen unterdrücken. | --only-show-errors |
    |output -o| Legt das Ausgabeformat fest.  Zulässige Werte: „json“, „jsonc“, „none“, „table“, „tsv“, „yaml“, „yamlc“. Der Standardwert ist „json“. | --output „json“ |
-   |Abfrage| JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter [JMESPath](http://jmespath.org/). | --query <string>|
+   |Abfrage| JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter [JMESPath](http://jmespath.org/). | --query &lt;string&gt;|
    |Ausführlich| Einbinden der ausführlichen Protokollierung. | --verbose |
 
 Hier ist ein Beispiel für den Befehl mit der Ausgabe angegeben:

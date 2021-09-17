@@ -13,16 +13,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 08/19/2021
+ms.date: 09/02/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be182a944b97d8753e5ca8117f7e62475761f772
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: dabaf249df7554fc2a2811f3fd1916e20f072f57
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122514496"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123449829"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>Tutorial: Streamen von Azure Active Directory-Protokollen an einen Azure Event Hub
 
@@ -41,47 +41,47 @@ Sie benötigen Folgendes, um dieses Feature verwenden zu können:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
 
-2. Wählen Sie **Azure Active Directory** > **Überwachung** > **Überwachungsprotokolle** aus. 
+1. Wählen Sie **Azure Active Directory** > **Überwachungsprotokolle** aus. 
 
-3. Klicken Sie auf **Einstellungen exportieren**.  
+1. Wählen Sie **Einstellungen für das Exportieren von Daten** aus.  
     
-4. Führen Sie im Bereich **Diagnoseeinstellungen** einen der folgenden Schritte aus:
+1. Führen Sie im Bereich **Diagnoseeinstellungen** einen der folgenden Schritte aus:
     * Klicken Sie zum Ändern vorhandener Einstellungen auf **Einstellung bearbeiten**.
     * Klicken Sie zum Hinzufügen neuer Einstellungen auf **Diagnoseeinstellungen hinzufügen**.  
       Sie können maximal drei Einstellungen verwenden.
 
-      ![Exporteinstellungen](./media/quickstart-azure-monitor-stream-logs-to-event-hub/ExportSettings.png)
+1. Aktivieren Sie das Kontrollkästchen **An einen Event Hub streamen**, und klicken Sie auf **Event Hub/Konfigurieren**.
 
-5. Aktivieren Sie das Kontrollkästchen **An einen Event Hub streamen**, und klicken Sie auf **Event Hub/Konfigurieren**.
-
-6. Wählen Sie das Azure-Abonnement und den Event Hubs-Namespace aus, an den Sie die Protokolle weiterleiten möchten.  
+   [ ![Exporteinstellungen](./media/tutorial-azure-monitor-stream-logs-to-event-hub/diagnostic-setting-stream-to-event-hub.png) ](./media/tutorial-azure-monitor-stream-logs-to-event-hub/diagnostic-setting-stream-to-event-hub.png)
+   
+   1. Wählen Sie das Azure-Abonnement und den Event Hubs-Namespace aus, an den Sie die Protokolle weiterleiten möchten.  
     Das Abonnement und der Event Hubs-Namespace müssen jeweils dem Azure AD-Mandanten zugeordnet sein, von dem die Protokolle gestreamt werden. Sie können einen Event Hub auch in dem Event Hubs-Namespace angeben, an den Protokolle gesendet werden sollen. Wenn kein Event Hub angegeben ist, wird im Namespace ein Event Hub mit dem Standardnamen **insights-logs-audit** erstellt.
 
-7. Klicken Sie auf **OK**, um die Event Hub-Konfiguration zu beenden.
+   1. Wählen Sie eine beliebige Kombination der folgenden Elemente aus:
+       - Aktivieren Sie das Kontrollkästchen **AuditLogs**, um Überwachungsprotokolle an den Event Hub zu senden. 
+       - Aktivieren Sie das Kontrollkästchen **SignInLogs**, um die Anmeldeprotokolle der interaktiven Benutzer an den Event Hub zu senden.
+       - Aktivieren Sie das Kontrollkästchen **NonInteractiveUserSignInLogs**, um die Anmeldeprotokolle der nicht interaktiven Benutzer an den Event Hub zu senden. 
+       - Aktivieren Sie das Kontrollkästchen **ServicePrincipalSignInLogs,** um die Dienstprinzipal-Anmeldeprotokolle an den Event Hub zu senden.
+       - Aktivieren Sie das Kontrollkästchen **ManagedIdentitySignInLogs,** um die Anmeldeprotokolle für verwaltete Identitäten an den Event Hub zu senden.
+       - Aktivieren Sie das Kontrollkästchen **ProvisioningLogs**, um die Bereitstellungsprotokolle an den Event Hub zu senden.
+       - Aktivieren Sie das Kontrollkästchen **ADFSSignInLogs**, um Anmeldungen zu senden, die von einem AD FS Connect Health-Agenten an Azure AD gesendet wurden.
+       - Aktivieren Sie das Kontrollkästchen **RiskyUsers**, um Informationen zu Risikobenutzern zu senden.
+       - Aktivieren Sie das Kontrollkästchen **UserRiskEvents**, um Informationen zu Risikoereignissen von Benutzern zu senden. 
 
-8. Führen Sie eine beliebige Kombination der folgenden Möglichkeiten durch:
-    - Aktivieren Sie das Kontrollkästchen **AuditLogs**, um Überwachungsprotokolle an den Event Hub zu senden. 
-    - Aktivieren Sie das Kontrollkästchen **SignInLogs**, um die Anmeldeprotokolle der interaktiven Benutzer an den Event Hub zu senden.
-    - Aktivieren Sie das Kontrollkästchen **NonInteractiveUserSignInLogs**, um die Anmeldeprotokolle der nicht interaktiven Benutzer an den Event Hub zu senden. 
-    - Aktivieren Sie das Kontrollkästchen **ServicePrincipalSignInLogs,** um die Dienstprinzipal-Anmeldeprotokolle an den Event Hub zu senden.
-    - Aktivieren Sie das Kontrollkästchen **ManagedIdentitySignInLogs,** um die Anmeldeprotokolle für verwaltete Identitäten an den Event Hub zu senden.
-    - Aktivieren Sie das Kontrollkästchen **ProvisioningLogs**, um die Bereitstellungsprotokolle an den Event Hub zu senden.
-    - Aktivieren Sie das Kontrollkästchen **ADFSSignInLogs**, um Anmeldungen zu senden, die von einem AD FS Connect Health-Agenten an Azure AD gesendet wurden.
+       > [!NOTE]
+       > Einige Anmeldekategorien enthalten abhängig von der Konfiguration Ihres Mandanten große Mengen an Protokolldaten. Im Allgemeinen können die nicht interaktiven Benutzer- und Dienstprinzipal-Anmeldungen fünf- bis zehnmal größer sein als die interaktiven Benutzeranmeldeinformationen.
 
-    >[!Note]
-    >Einige Anmeldekategorien enthalten abhängig von der Konfiguration Ihres Mandanten große Mengen an Protokolldaten. Im Allgemeinen können die nicht interaktiven Benutzer- und Dienstprinzipal-Anmeldungen fünf- bis zehnmal größer sein als die interaktiven Benutzeranmeldeinformationen.
+   1. Klicken Sie auf **Speichern**, um die Einstellung zu speichern.
 
-9. Klicken Sie auf **Speichern**, um die Einstellung zu speichern.
+1. Überprüfen Sie nach ungefähr 15 Minuten, ob Ereignisse in Ihrem Event Hub angezeigt werden. Navigieren Sie hierzu im Portal zum Event Hub, und vergewissern Sie sich, dass die Anzahl von **eingehenden Nachrichten** größer als Null ist. 
 
-10. Überprüfen Sie nach ungefähr 15 Minuten, ob Ereignisse in Ihrem Event Hub angezeigt werden. Navigieren Sie hierzu im Portal zum Event Hub, und vergewissern Sie sich, dass die Anzahl von **eingehenden Nachrichten** größer als Null ist. 
-
-    ![Überwachungsprotokolle](./media/quickstart-azure-monitor-stream-logs-to-event-hub/InsightsLogsAudit.png)
+    [ ![Überwachungsprotokolle](./media/tutorial-azure-monitor-stream-logs-to-event-hub/azure-monitor-event-hub-instance.png)](./media/tutorial-azure-monitor-stream-logs-to-event-hub/azure-monitor-event-hub-instance.png)
 
 ## <a name="access-data-from-your-event-hub"></a>Zugreifen auf Daten aus Ihrem Event Hub
 
 Nachdem die Daten im Event Hub angezeigt werden, stehen Ihnen zwei Möglichkeiten zur Verfügung, um auf die Daten zuzugreifen und sie zu lesen:
 
-* **Konfigurieren eines unterstützten SIEM-Tools**. Zum Lesen von Daten aus dem Event Hub benötigen die meisten Tools die Event Hub-Verbindungszeichenfolge und bestimmte Berechtigungen für Ihr Azure-Abonnement. Drittanbietertools mit Azure Monitor-Integration sind unter anderem:
+* **Konfigurieren eines unterstützten SIEM-Tools**. Zum Lesen von Daten aus dem Event Hub benötigen die meisten Tools die Event Hub-Verbindungszeichenfolge und bestimmte Berechtigungen für Ihr Azure-Abonnement. Drittanbietertools mit Azure Monitor-Integration sind u. a.:
     
     * **ArcSight**: Weitere Informationen zur Integration von Azure AD-Protokollen in ArcSight finden Sie unter [Integrieren von Azure Active Directory-Protokollen in ArcSight mit Azure Monitor](howto-integrate-activity-logs-with-arcsight.md).
     
@@ -92,7 +92,6 @@ Nachdem die Daten im Event Hub angezeigt werden, stehen Ihnen zwei Möglichkeite
     * **Sumo Logic:** Wenn Sie Sumo Logic für die Verwendung von Daten aus einem Event Hub einrichten möchten, lesen Sie die Informationen unter [Install the Azure Active Directory App and View the Dashboards](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards) (Installieren der Azure Active Directory-App und Anzeigen der Dashboards). 
 
 * **Einrichten benutzerdefinierter Tools**. Wenn Ihr aktuelles SIEM-Tool in der Azure Monitor-Diagnose noch nicht unterstützt wird, können Sie mit der Event Hub-API benutzerdefinierte Tools einrichten. Weitere Informationen finden Sie unter [Erste Schritte zum Empfangen von Nachrichten von einem Event Hub](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md).
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

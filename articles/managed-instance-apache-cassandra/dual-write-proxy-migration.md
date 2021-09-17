@@ -4,14 +4,14 @@ description: Hier erhalten Sie Informationen zur Migration zu Azure Managed Inst
 author: TheovanKraay
 ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
-ms.topic: overview
-ms.date: 06/02/2021
-ms.openlocfilehash: c2529f355e7d39c22bf5f3d703cb33c59101a5f8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.topic: tutorial
+ms.date: 08/17/2021
+ms.openlocfilehash: 03862b42fb181adcf1a6c4edbed66ce61ee49e73
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749459"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426128"
 ---
 # <a name="live-migration-to-azure-managed-instance-for-apache-cassandra-by-using-a-dual-write-proxy"></a>Livemigration zu Azure Managed Instance for Apache Cassandra mithilfe eines Proxys für duales Schreiben
 
@@ -22,7 +22,7 @@ ms.locfileid: "121749459"
 
 Es wird empfohlen, nach Möglichkeit die native Apache Cassandra-Funktion zur Migration von Daten aus Ihrem vorhandenen Cluster zu Azure Managed Instance for Apache Cassandra zu verwenden, indem Sie einen [Hybridcluster](configure-hybrid-cluster.md) konfigurieren. Diese Funktion verwendet das Gossipprotokoll von Apache Cassandra, um Daten nahtlos aus Ihrem Quellrechenzentrum in Ihr neues Rechenzentrum der verwalteten Instanz zu replizieren. In manchen Szenarios kann es jedoch möglich sein, dass die Version Ihrer Quelldatenbank nicht kompatibel ist oder ein anderer Grund das Einrichten eines Hybridclusters verhindert. 
 
-In diesem Artikel wird beschrieben, wie Sie Daten live mithilfe eines [Proxys für duales Schreiben](https://github.com/Azure-Samples/cassandra-proxy) und Apache Spark zu Azure Managed Instance for Apache Cassandra migrieren. Diese Methode bietet folgende Vorteile:
+In diesem Tutorial wird beschrieben, wie Sie Daten live mithilfe eines [Proxys für duales Schreiben](https://github.com/Azure-Samples/cassandra-proxy) und Apache Spark zu Azure Managed Instance for Apache Cassandra migrieren. Diese Methode bietet folgende Vorteile:
 
 - **Minimale Anwendungsänderungen**. Damit der Proxy Verbindungen von Ihrem Anwendungscode akzeptiert, sind wenig bis keine Konfigurationsänderungen nötig. Er wird alle Anforderungen an Ihre Quelldatenbank und Schreibvorgänge asynchron an ein sekundäres Ziel weiterleiten. 
 - **Abhängigkeit vom Wire Protocol des Clients**. Da diese Methode nicht von Back-End-Ressourcen oder internen Protokollen abhängig ist, kann sie für jedes Cassandra-Quell- oder -Zielsystem verwendet werden, das das Apache Cassandra-Wire Protocol implementiert.

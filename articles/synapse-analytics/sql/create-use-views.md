@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 01a48da50391c6d3e826b81c4174936c95f64462
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.openlocfilehash: 94fee0aa5582f76e6d97568a5535d3626d94515b
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122597215"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123535219"
 ---
 # <a name="create-and-use-views-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Erstellen und Verwenden von Ansichten mit einem serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -123,6 +123,51 @@ Der Ordnername in der `OPENROWSET`-Funktion (`yellow` in diesem Beispiel), der m
 >![Delta Lake-Ordner „Yellow Taxi“](./media/shared/yellow-taxi-delta-lake.png)
 
 Delta Lake befindet sich in der öffentlichen Vorschau. Es sind einige Probleme und Einschränkungen bekannt. Überprüfen Sie die bekannten Probleme auf der [Selbsthilfeseite bei Problemen mit serverlosen Synapse-SQL-Pools](resources-self-help-sql-on-demand.md#delta-lake)
+
+## <a name="json-views"></a>JSON-Ansichten
+
+Die Ansichten sind die beste Wahl, wenn Sie auf der Grundlage des Resultset, das aus den Dateien abgerufen wird, weitere Verarbeitungsschritte ausführen müssen. Ein Beispiel hierfür ist das Analysieren von JSON-Dateien, bei denen Sie die JSON-Funktionen anwenden müssen, um die Werte aus den JSON-Dokumenten zu extrahieren:
+
+```sql
+CREATE OR ALTER VIEW CovidCases
+AS 
+select
+    *
+from openrowset(
+        bulk 'latest/ecdc_cases.jsonl',
+        data_source = 'covid',
+        format = 'csv',
+        fieldterminator ='0x0b',
+        fieldquote = '0x0b'
+    ) with (doc nvarchar(max)) as rows
+    cross apply openjson (doc)
+        with (  date_rep datetime2,
+                cases int,
+                fatal int '$.deaths',
+                country varchar(100) '$.countries_and_territories')
+```
+
+Die Funktion `OPENJSON` analysiert jede Zeile aus der JSONL-Datei, die ein JSON-Dokument pro Zeile im Textformat enthält.
+
+## <a name="cosmosdb-view"></a>CosmosDB-Ansicht
+
+Die Ansichten können auf der Grundlage der Azure CosmosDB-Container erstellt werden, wenn der analytische CosmosDB-Speicher für den Container aktiviert ist. CosmosDB-Kontoname, Datenbankname und Containername sollten als Teil der Ansicht hinzugefügt werden, und der schreibgeschützte Zugriffsschlüssel muss in den datenbankspezifischen Anmeldeinformationen platziert werden, auf die die Ansicht verweist.
+
+```sql
+CREATE DATABASE SCOPED CREDENTIAL MyCosmosDbAccountCredential
+WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 's5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==';
+GO
+CREATE OR ALTER VIEW Ecdc
+AS SELECT *
+FROM OPENROWSET(
+      PROVIDER = 'CosmosDB',
+      CONNECTION = 'Account=synapselink-cosmosdb-sqlsample;Database=covid',
+      OBJECT = 'Ecdc',
+      CREDENTIAL = 'MyCosmosDbAccountCredential'
+    ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
+```
+
+[Hier](query-cosmos-db-analytical-store.md) finden Sie ausführlichere Informationen zum Abfragen von CosmosDB-Containern mithilfe von Synapse Link.
 
 ## <a name="use-a-view"></a>Verwenden einer Ansicht
 
