@@ -1,67 +1,74 @@
 ---
-title: 'Tutorial: Erstellen einer App für die Überwachung von Solarpaneln mit Azure IoT Central'
-description: 'Tutorial: Hier erfahren Sie, wie Sie mithilfe von Azure IoT Central-Anwendungsvorlagen eine Solarpanel-Anwendung erstellen.'
+title: 'Tutorial: Azure IoT – Überwachung von Solarpanels | Microsoft-Dokumentation'
+description: In diesem Tutorial erfahren Sie, wie Sie die Anwendungsvorlage zum Überwachen von Solarpanels für IoT Central bereitstellen und nutzen.
 author: op-ravi
 ms.author: omravi
-ms.date: 12/11/2020
+ms.date: 08/02/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 369195e8dfce2440c2e34151e7de6b2d23edbad1
-ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
+ms.openlocfilehash: 59650af808a5af947cbb2fd6df1f203692fb7034
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112963255"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182777"
 ---
-# <a name="tutorial-create-and-explore-the-solar-panel-monitoring-app-template"></a>Tutorial: Erstellen und Erkunden der App-Vorlage für die Überwachung von Solarpaneln 
+# <a name="tutorial-deploy-and-walk-through-the-solar-panel-monitoring-app-template"></a>Tutorial: Bereitstellen und Durchlaufen der App-Vorlage für die Überwachung von Solarpanels 
 
-In diesem Tutorial werden die Schritte zum Erstellen einer Anwendung für die Überwachung von Solarpaneln erläutert, die ein Beispielgerätemodell mit simulierten Daten enthält. In diesem Tutorial lernen Sie Folgendes:
+Verwenden Sie die IoT Central-Anwendungsvorlage zum *Überwachen von Solarpanels* und die Anleitungen in diesem Artikel, um eine End-to-End-Lösung für die Überwachung von Solarpanels zu entwickeln.
 
+  :::image type="content" source="media/tutorial-iot-central-solar-panel/solar-panel-app-architecture.png" alt-text="Solarpanelarchitektur.":::
+
+Diese Architektur umfasst die folgenden Komponenten. Einige Anwendungen erfordern möglicherweise nicht alle der hier aufgeführten Komponenten.
+
+### <a name="solar-panels-and-connectivity"></a>Solarpanels und Konnektivität
+
+Solarpanels sind eine wichtige Quelle für erneuerbare Energien. Je nach Art und Aufbau der Solarpanels können Sie eine Verbindung entweder über Gateways oder über andere zwischengeschaltete Geräte und proprietäre Systeme herstellen. Unter Umständen wird eine IoT Central-Geräte-Bridge benötigt, um Geräte zu verbinden, die nicht direkt verbunden werden können. Bei der IoT Central-Gerätebridge handelt es sich um eine Open-Source-Lösung. Die Details finden Sie [hier](../core/howto-build-iotc-device-bridge.md). 
+
+### <a name="iot-central-platform"></a>IoT Central-Plattform
+
+Azure IoT Central ist eine Plattform, die das Erstellen Ihrer IoT-Lösungen vereinfacht und den Aufwand und die Kosten für die Verwaltung, den Betrieb und die Entwicklung von IoT-Lösungen senkt. Mit IoT Central können Sie Ihre IoT-Ressourcen (Internet of Things) einfach und in jeder Größenordnung verbinden, überwachen und verwalten. Nachdem Sie Ihre Solarpanels mit IoT Central verbunden haben, verwendet die App-Vorlage integrierte Features wie Gerätemodelle, Befehle und Dashboards. Die App-Vorlage verwendet außerdem den IoT Central-Speicher für Szenarien mit warmen Pfaden, z. B. Datenüberwachung nahezu in Echtzeit, Analysen, Regeln und Visualisierung.
+
+### <a name="extensibility-options-to-build-with-iot-central"></a>Erweiterbarkeitsoptionen für die Erstellung mit IoT Central
+
+Die IoT Central-Plattform bietet zwei Erweiterbarkeitsoptionen: Kontinuierlichen Datenexport (Continuous Data Export, CDE) und APIs. Die Kunden und Partner können zwischen diesen Optionen auswählen, um ihre Lösungen an bestimmte Anforderungen anzupassen. Beispielsweise konfigurierte einer unserer Partner CDE mit Azure Data Lake Storage (ADLS). Er verwendet ADLS für die langfristige Datenaufbewahrung und andere Speicherszenarien mit kalten Pfaden, z. B. Batchverarbeitung, Überwachung und Berichterstellung. 
+
+
+In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 
 > [!div class="checklist"]
+
 > * Kostenloses Erstellen einer Solarpanel-App
 > * Einführung in die Anwendung
 > * Bereinigen von Ressourcen
 
 
-Sollten Sie noch nicht über ein Abonnement verfügen, [erstellen Sie ein kostenloses Testkonto](https://azure.microsoft.com/free).
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Tutorial müssen keine Voraussetzungen erfüllt werden. Ein Azure-Abonnement wird zwar empfohlen, ist aber nicht erforderlich.
+* Zum Bereitstellen dieser App müssen keine besonderen Voraussetzungen erfüllt werden.
+* Sie können den Tarif „Free“ oder ein Azure-Abonnement verwenden.
 
 
-## <a name="create-a-solar-panel-monitoring-app"></a>Erstellen einer App für die Überwachung von Solarelementen 
-
-Sie können diese Anwendung in drei einfachen Schritten erstellen:
-
-1. Navigieren Sie zu [Azure IoT Central](https://apps.azureiotcentral.com). Wählen Sie zum Erstellen einer neuen Anwendung die Option **Erstellen** aus. 
-
-1. Wählen Sie die Registerkarte **Energie** aus. Wählen Sie unter **Überwachung von Solarpaneln** die Option **App erstellen** aus. 
-
-    > [!div class="mx-imgBorder"]
-    > ![Screenshot: Erstellungsoptionen in Azure IoT Central](media/tutorial-iot-central-solar-panel/solar-panel-build.png)
-  
-1. Geben Sie im Dialogfeld **Neue Anwendung** die erforderlichen Details ein, und wählen Sie anschließend **Erstellen** aus:
-    * **Anwendungsname**: Wählen Sie einen Namen für Ihre Azure IoT Central-Anwendung. 
-    * **URL**: Wählen Sie eine Azure IoT Central-URL. Die Angabe wird von der Plattform auf Eindeutigkeit überprüft.
-    * **Tarif**: Wenn Sie bereits über ein Azure-Abonnement verfügen, wird die Standardeinstellung empfohlen. Falls Sie noch nicht über ein Azure-Abonnement verfügen, beginnen Sie mit der kostenlosen Testversion.
-    * **Abrechnungsinfo**: Die Anwendung selbst ist kostenlos. Die Angaben zu Verzeichnis, Azure-Abonnement und Region sind für die Bereitstellung der Ressourcen für die App erforderlich.
-        ![Screenshot: Neue Anwendung](media/tutorial-iot-central-solar-panel/solar-panel-create-app.png)
-        
-        ![Screenshot: Abrechnungsinfo](media/tutorial-iot-central-solar-panel/solar-panel-create-app-billinginfo.png)
+## <a name="create-a-solar-panel-monitoring-application"></a>Erstellen einer Anwendung für die Überwachung von Solarpanels
 
 
-### <a name="verify-the-application-and-simulated-data"></a>Überprüfen der Anwendung und der simulierten Daten
+1. Navigieren Sie zur Buildwebsite für [Azure IoT Central](https://aka.ms/iotcentral). Melden Sie sich dann mit einem persönlichen Microsoft-Konto oder mit einem Geschäfts-, Schul- oder Unikonto an. Wählen Sie auf der linken Navigationsleiste **Erstellen** und dann die Registerkarte **Energieversorgung** aus:
 
-Sie können Ihre neue Solarpanel-App jederzeit ändern. Vergewissern Sie sich zunächst, dass die App wie erwartet bereitgestellt wurde und ausgeführt wird, bevor Sie sie ändern.
+    :::image type="content" source="media/tutorial-iot-central-solar-panel/solar-panel-build.png" alt-text="Vorlage für intelligente Stromzähler":::
 
-Wechseln Sie zum Überprüfen der App-Erstellung und der Datensimulation zum **Dashboard**. Wenn die Kacheln mit einigen Daten angezeigt werden, war die Bereitstellung Ihrer App erfolgreich. Bei der Datensimulation kann es einige Minuten dauern, bis die Daten generiert wurden. 
+1. Wählen Sie unter **Überwachung von Solarpanels** die Option **App erstellen** aus.
 
-## <a name="application-walk-through"></a>Anwendungsablauf
-Nach erfolgreicher Bereitstellung der App-Vorlage empfiehlt es sich, die App etwas genauer in Augenschein zu nehmen. Wie Sie sehen, beinhaltet sie ein exemplarisches intelligentes Zählergerät, ein Gerätemodell und ein Dashboard.
+Weitere Informationen finden Sie unter [Erstellen einer IoT Central-Anwendung](../core/howto-create-iot-central-application.md).
+
+## <a name="walk-through-the-application"></a>Einführung in die Anwendung
+
+In den nächsten Abschnitten werden die wichtigsten Features der Anwendung behandelt:
+
+### <a name="dashboard"></a>Dashboard
+
+Nach Bereitstellung der Anwendungsvorlage sollten Sie die App etwas genauer betrachten. Wie Sie sehen, beinhaltet sie ein exemplarisches intelligentes Zählergerät, ein Gerätemodell und ein Dashboard.
 
 Adatum ist ein fiktives Energieversorgungsunternehmen, das Solarpanel überwacht und verwaltet. Im Dashboard für die Überwachung von Solarpanels werden die entsprechenden Eigenschaften, Daten und Beispielbefehle angezeigt. Dieses Dashboard ermöglicht es Ihnen oder Ihrem Supportteam, folgende Aktivitäten proaktiv durchzuführen, bevor Probleme mit zusätzlichem Supportaufwand auftreten:
 * Überprüfen der aktuellen Bereichsinformationen und des [ Installationsorts](../core/howto-use-location-data.md) auf der Karte.
@@ -70,39 +77,31 @@ Adatum ist ein fiktives Energieversorgungsunternehmen, das Solarpanel überwacht
 * Nachverfolgen der gesamten Energieerzeugung zu Planungs- und Abrechnungszwecken
 * Aktivieren eines Panels und Aktualisieren der Firmwareversion bei Bedarf In der Vorlage werden über die Befehlsschaltflächen die möglichen Funktionen angezeigt, jedoch keine echten Befehle gesendet.
 
-> [!div class="mx-imgBorder"]
-> ![Screenshot: Vorlage für die Überwachung von Solarpaneln: Dashboard](media/tutorial-iot-central-solar-panel/solar-panel-dashboard.png)
+:::image type="content" source="media/tutorial-iot-central-solar-panel/solar-panel-dashboard.png" alt-text="Screenshot: Vorlage für die Überwachung von Solarpaneln: Dashboard":::
 
 ### <a name="devices"></a>Geräte
+
 Die App enthält ein Beispielgerät für ein Solarpanel. Wählen Sie zum Anzeigen von Gerätedetails die Option **Geräte** aus.
 
-> [!div class="mx-imgBorder"]
-> ![Screenshot: Vorlage für die Überwachung von Solarpaneln: Geräte](media/tutorial-iot-central-solar-panel/solar-panel-device.png)
+:::image type="content" source="media/tutorial-iot-central-solar-panel/solar-panel-device.png" alt-text="Screenshot: Vorlage für die Überwachung von Solarpaneln: Geräte":::
 
 Wählen Sie das Beispielgerät (**SP0123456789**) aus. Auf der Registerkarte **Update Properties** (Eigenschaften aktualisieren) können Sie die schreibbaren Eigenschaften des Geräts aktualisieren und die aktualisierten Werte im Dashboard anzeigen. 
 
-> [!div class="mx-imgBorder"]
-> ![Screenshot: Vorlage für die Überwachung von Solarpaneln: Registerkarte zum Aktualisieren von Eigenschaften](media/tutorial-iot-central-solar-panel/solar-panel-device-properties.png)
+:::image type="content" source="media/tutorial-iot-central-solar-panel/solar-panel-device-properties.png" alt-text="Screenshot: Vorlage für die Überwachung von Solarpaneln: Registerkarte zum Aktualisieren von Eigenschaften":::
 
 
 ### <a name="device-template"></a>Gerätevorlage
+
 Wählen Sie die Registerkarte **Gerätevorlagen** aus, um das Gerätemodell für Solarpanel anzuzeigen. Das Modell verfügt über vordefinierte Schnittstellen für Daten, Eigenschaften, Befehle und Ansichten.
 
-> [!div class="mx-imgBorder"]
-> ![Screenshot: Vorlage für die Überwachung von Solarpaneln: Gerätevorlagen](media/tutorial-iot-central-solar-panel/solar-panel-device-templates.png)
+:::image type="content" source="media/tutorial-iot-central-solar-panel/solar-panel-device-templates.png" alt-text="Screenshot: Vorlage für die Überwachung von Solarpaneln: Gerätevorlagen":::
 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
 Wenn Sie diese Anwendung nicht mehr benötigen, können Sie sie mit den folgenden Schritten löschen:
 
 1. Wählen Sie im linken Bereich die Option **Verwaltung** aus.
 1. Wählen Sie **Anwendungseinstellungen** > **Löschen** aus. 
 
-    > [!div class="mx-imgBorder"]
-    > ![Screenshot: Vorlage für die Überwachung von Solarpaneln: Verwaltung](media/tutorial-iot-central-solar-panel/solar-panel-delete-app.png)
-
-## <a name="next-steps"></a>Nächste Schritte
- 
-> [!div class="nextstepaction"]
-> [Azure IoT Central – App-Architektur für Solarpanel](./concept-iot-central-solar-panel-app.md)
-
+    :::image type="content" source="media/tutorial-iot-central-solar-panel/solar-panel-delete-app.png" alt-text="Screenshot: Vorlage für die Überwachung von Solarpaneln: Verwaltung":::

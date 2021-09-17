@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 5/17/2021
-ms.openlocfilehash: c289ab60973c0e907deb97c0e8520f8b608099eb
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 0a7d8a22cf8f9dcdaac9d3fe07bd6ab006e61818
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114467079"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751902"
 ---
 # <a name="register-and-scan-hive-metastore-database"></a>Registrieren und Überprüfen einer Hive-Metastore-Datenbank
 
@@ -36,7 +36,7 @@ Die Hive-Metastore-Quelle unterstützt die vollständige Überprüfung, um Metad
     > [!Note]
     > Der Treiber muss für alle Konten des virtuellen Computers zugänglich sein. Installieren Sie ihn nicht in einem Benutzerkonto.
 
-5.  Hierfür werden die Hive-Versionen 2.x bis 3.x unterstützt.
+5.  Hierfür werden die Hive-Versionen 2.x bis 3.x unterstützt. Unterstützte Databricks-Versionen sind 8.0 und höher. 
 
 ## <a name="setting-up-authentication-for-a-scan"></a>Einrichten der Authentifizierung für eine Überprüfung
 
@@ -48,7 +48,7 @@ Gehen Sie wie folgt vor, um in Ihrem Datenkatalog eine neue Hive-Metastore-Daten
 
 1.  Navigieren Sie zu Ihrem Purview-Konto.
 
-2.  Wählen Sie im linken Navigationsbereich die Option **Quellen** aus.
+2.  Wählen Sie im linken Navigationsbereich **Data Map** aus.
 
 3.  Wählen Sie **Registrieren** aus.
 

@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
-ms.openlocfilehash: 20b4a76756a70660ff638207fa20b5a4801e783d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 97980d07d7dc597b5bfb4b093495b2cb74c4569e
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346768"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122777913"
 ---
 # <a name="set-up-an-appliance-for-azure-government-cloud"></a>Einrichten einer Appliance für Azure Government Cloud
 
@@ -39,7 +39,7 @@ Sie können das Skript verwenden, um die Azure Migrate-Appliance auf einem vorha
 
 1. Um die Appliance einzurichten, laden Sie die ZIP-Datei namens „AzureMigrateInstaller.zip“ entweder aus dem Portal oder von [hier](https://go.microsoft.com/fwlink/?linkid=2140334) herunter.
 1. Extrahieren Sie den Inhalt auf dem Server, auf dem Sie die Appliance bereitstellen möchten.
-1. Führen Sie das PowerShell-Skript zum Starten des Appliancekonfigurations-Managers aus.
+1. Führen Sie das PowerShell-Skript zum Starten des Appliance-Konfigurations-Manager aus.
 1. Richten Sie die Appliance ein, und führen die Erstkonfiguration aus.
 
 ### <a name="download-the-script"></a>Herunterladen des Skripts
@@ -61,7 +61,7 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
 
     **Download** | **Hashwert**
     --- | ---
-    [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140337) | b4668be44c05836bf0f2ac1c8b1f48b7a9538afcf416c5212c7190629e3683b2
+    [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140337) | CA8CEEE4C7AC13328ECA56AE9EB35137336CD3D73B1F867C4D736286EF61A234
 
 
 ### <a name="run-the-script"></a>Führen Sie das Skript aus.
@@ -88,7 +88,7 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
     - **Konfigurationsdateien**: %Programdata%\Microsoft Azure\Config
     - **Protokolldateien**: %Programdata%\Microsoft Azure\Logs
 
-Nach der erfolgreichen Ausführung des Skripts wird der Appliancekonfigurations-Manager automatisch gestartet.
+Nach der erfolgreichen Ausführung des Skripts wird der Appliance-Konfigurations-Manager automatisch gestartet.
 
 
 ### <a name="verify-access"></a>Überprüfen des Zugriffs
@@ -100,7 +100,7 @@ Stellen Sie sicher, dass die Appliance eine Verbindung mit Azure-URLs für [Azur
 
 1. Um die Appliance einzurichten, laden Sie die ZIP-Datei namens „AzureMigrateInstaller.zip“ entweder aus dem Portal oder von [hier](https://go.microsoft.com/fwlink/?linkid=2140334) herunter.
 1. Extrahieren Sie den Inhalt auf dem Server, auf dem Sie die Appliance bereitstellen möchten.
-1. Führen Sie das PowerShell-Skript zum Starten des Appliancekonfigurations-Managers aus.
+1. Führen Sie das PowerShell-Skript zum Starten des Appliance-Konfigurations-Manager aus.
 1. Richten Sie die Appliance ein, und führen die Erstkonfiguration aus.
 
 ### <a name="download-the-script"></a>Herunterladen des Skripts
@@ -122,7 +122,7 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
 
     **Download** | **Hashwert**
     --- | ---
-    [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140424) | 15a94b637a39c53ac91a2d8b21cc3cca8905187e4d9fb4d895f4fa6fd2f30b9f
+    [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140424) | CA8CEEE4C7AC13328ECA56AE9EB35137336CD3D73B1F867C4D736286EF61A234
 
 ### <a name="run-the-script"></a>Führen Sie das Skript aus.
 
@@ -148,7 +148,7 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
     - **Konfigurationsdateien**: %Programdata%\Microsoft Azure\Config
     - **Protokolldateien**: %Programdata%\Microsoft Azure\Logs
 
-Nach der erfolgreichen Ausführung des Skripts wird der Appliancekonfigurations-Manager automatisch gestartet.
+Nach der erfolgreichen Ausführung des Skripts wird der Appliance-Konfigurations-Manager automatisch gestartet.
 
 ### <a name="verify-access"></a>Überprüfen des Zugriffs
 
@@ -159,7 +159,7 @@ Stellen Sie sicher, dass die Appliance eine Verbindung mit Azure-URLs für [Azur
 
 1. Um die Appliance einzurichten, laden Sie die ZIP-Datei namens „AzureMigrateInstaller.zip“ entweder aus dem Portal oder von [hier](https://go.microsoft.com/fwlink/?linkid=2140334) herunter.
 1. Extrahieren Sie den Inhalt auf dem Server, auf dem Sie die Appliance bereitstellen möchten.
-1. Führen Sie das PowerShell-Skript zum Starten des Appliancekonfigurations-Managers aus.
+1. Führen Sie das PowerShell-Skript zum Starten des Appliance-Konfigurations-Manager aus.
 1. Richten Sie die Appliance ein, und führen die Erstkonfiguration aus.
 
 ### <a name="download-the-script"></a>Herunterladen des Skripts
@@ -180,7 +180,7 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
 
     **Download** | **Hashwert**
     --- | ---
-    [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140338) | 15a94b637a39c53ac91a2d8b21cc3cca8905187e4d9fb4d895f4fa6fd2f30b9f
+    [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140338) | CA8CEEE4C7AC13328ECA56AE9EB35137336CD3D73B1F867C4D736286EF61A234
 
 > [!NOTE]
 > Das gleiche Skript kann verwendet werden, um eine physische Appliance für Azure Government Cloud mit Konnektivität für öffentliche oder private Endpunkte einzurichten.
@@ -209,7 +209,7 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
         - **Konfigurationsdateien**: %Programdata%\Microsoft Azure\Config
         - **Protokolldateien**: %Programdata%\Microsoft Azure\Logs
 
-Nach der erfolgreichen Ausführung des Skripts wird der Appliancekonfigurations-Manager automatisch gestartet.
+Nach der erfolgreichen Ausführung des Skripts wird der Appliance-Konfigurations-Manager automatisch gestartet.
 
 > [!NOTE]
 > Bei Problemen können Sie zum Troubleshooting unter „C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Zeitstempel</em>.log“ auf die Skriptprotokolle zugreifen.

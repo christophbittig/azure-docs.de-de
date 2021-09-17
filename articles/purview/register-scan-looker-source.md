@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 7/16/2021
-ms.openlocfilehash: 903435ff45249d0c066b386d84ce060057bac666
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: ed524382bf1fcc0c93fc61dd1c0450d69a16b74c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114666576"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749406"
 ---
 # <a name="register-and-scan-lookerpreview"></a>Registrieren und Überprüfen von Looker (Vorschau)
 
@@ -23,7 +23,7 @@ In diesem Artikel erfahren Sie, wie Sie eine Looker Server-Instanz in Purview re
 Die Looker-Quelle unterstützt die vollständige Überprüfung, um Metadaten von einem Looker-Server zu extrahieren. Sie importiert Metadaten von einem Looker-Server, einschließlich Datenbankverbindungen, LookML-Modellen und den zugehörigen Berichten (Looks und Dashboards). Diese Datenquelle ruft auch die Herkunft von Datenobjekten ab.
 
 > [!Note]
-> Looker als Quelle wird derzeit in der privaten Vorschau unterstützt. Registrieren Sie diese Quelle, richten Sie Ihre Überprüfungen in Ihren Purview-Konten ein, die nicht für die Produktion verwendet werden, und geben Sie uns Ihr Feedback.
+> Looker als Quelle wird derzeit in der privaten Vorschau unterstützt. Registrieren Sie diese Quelle, richten Sie Ihre Überprüfungen in Ihren Purview-Konten ein, die nicht für die Produktion verwendet werden, und geben Sie uns Feedback.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -32,7 +32,7 @@ Die Looker-Quelle unterstützt die vollständige Überprüfung, um Metadaten von
 
 2.  Stellen Sie sicher, dass [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) auf dem virtuellen Computer installiert ist, auf dem auch die selbstgehostete Integration Runtime installiert ist.
 
-3.  Stellen Sie sicher, dass das\"Visual C++ Redistributable 2012 Update 4\" auf der VM installiert ist, auf der die selbstgehostete Integration Runtime ausgeführt wird. Sollte diese Komponente \' nicht installiert sein, können Sie sie [hier](https://www.microsoft.com/download/details.aspx?id=30679) herunterladen.
+3.  Stellen Sie sicher, dass \"Visual C++ Redistributable 2012 Update 4\" auf der VM installiert ist, auf die selbstgehostete Integration Runtime ausgeführt wird. Sollte diese Komponente nicht installiert sein, können Sie sie [hier](https://www.microsoft.com/download/details.aspx?id=30679) herunterladen.
 
 4.  Die unterstützte Looker-Serverversion ist 7.2
 
@@ -45,7 +45,7 @@ Ein API3-Schlüssel ist erforderlich, um eine Verbindung mit dem Looker-Server h
 Gehen Sie wie folgt vor, um in Ihrem Datenkatalog einen neuen Looker-Server zu registrieren:
 
 1. Navigieren Sie zu Ihrem Purview-Konto.
-2. Wählen Sie im linken Navigationsbereich die Option **Quellen** aus.
+2. Wählen Sie im linken Navigationsbereich **Data Map** aus.
 3. Wählen Sie **Registrieren** aus.
 4. Wählen Sie unter „Quellen registrieren“ die Option **Looker** aus. Wählen Sie **Weiter** aus.
     :::image type="content" source="media/register-scan-looker-source/register-sources.png" alt-text="Registrieren einer Looker-Quelle" border="true":::
@@ -85,7 +85,7 @@ Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
     d.  **Anmeldeinformation**: Stellen Sie beim Konfigurieren von Looker-Anmeldeinformationen Folgendes sicher:
 
-    - Wählen Sie **Standardauthentifizierung** als die Authentifizierungsmethode aus
+    - Wählen Sie **Standardauthentifizierung** als Authentifizierungsmethode aus.
     - Geben Sie die Client-ID Ihres Looker API3-Schlüssels im Feld Benutzername an
     - Speichern Sie das Client-Geheimnis Ihre Ihres Looker API3-Schlüssels als Geheimnis in Ihrem Schlüsseltresor.
 
@@ -97,7 +97,7 @@ Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
     e.  **Projektfilter** – Legen Sie den Bereich ihrer Überprüfung durch Bereitstellen einer durch Semikolons getrennten Liste von Looker fest. Diese Option wird verwendet, um das Aussehen und die Dashboards nach Ihrem übergeordneten Projekt auszuwählen.
 
-    f.  **Maximal verfügbarer Arbeitsspeicher**: Maximaler Arbeitsspeicher (in GB), der auf dem virtuellen Computer des Kunden für Überprüfungsprozesse verfügbar ist. Dies hängt von der Größe der zu überprüfenden Looker-Instanz ab.
+    f.  **Maximal verfügbarer Arbeitsspeicher**: Maximaler Arbeitsspeicher (in GB), der auf dem virtuellen Computer des Kunden für Überprüfungsprozesse verfügbar ist. Dies hängt von der Größe der zu überprüfenden erwin Mart-Instanz ab.
 
     :::image type="content" source="media/register-scan-looker-source/setup-scan.png" alt-text="Auslösen der Überprüfung" border="true":::
 

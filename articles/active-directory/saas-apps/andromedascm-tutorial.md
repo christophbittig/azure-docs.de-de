@@ -9,39 +9,38 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/28/2020
+ms.date: 08/12/2021
 ms.author: jeedes
-ms.openlocfilehash: 45d7939840f1fd3055f29d3aee677e105890a94d
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 88336401fa7e351791ecddbaf0b9caf5b3a54bd3
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108802088"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122272191"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>Tutorial: Azure Active Directory-Integration mit Andromeda
 
-In diesem Tutorial erfahren Sie, wie Sie Andromeda in Azure Active Directory (Azure AD) integrieren.
-Die Integration von Andromeda in Azure AD bietet die folgenden Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie Andromeda in Azure Active Directory (Azure AD) integrieren. Die Integration von Andromeda in Azure AD ermöglicht Folgendes:
 
-- Sie können in Azure AD steuern, wer Zugriff auf Andromeda hat.
-- Sie können Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Andromeda anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
-- Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
+* Steuern Sie in Azure AD, wer Zugriff auf Andromeda hat.
+* Ermöglichen Sie es Ihren Benutzern, sich mit ihrem Azure AD-Konto automatisch bei Andromeda anzumelden.
+* Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um die Azure AD-Integration mit Andromeda konfigurieren zu können, benötigen Sie Folgendes:
 
-- Ein Azure AD-Abonnement Sollten Sie über keine Azure AD-Umgebung verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) verwenden.
-- Andromeda-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein Azure AD-Abonnement Sollten Sie nicht über eine Azure AD-Umgebung verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) verwenden.
+* Andromeda-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-- Andromeda unterstützt **SP- und IDP**-initiiertes einmaliges Anmelden.
-- Andromeda unterstützt die **Just-in-Time**-Benutzerbereitstellung.
+* Andromeda unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
+* Andromeda unterstützt die **Just-In-Time**-Benutzerbereitstellung.
 
-## <a name="adding-andromeda-from-the-gallery"></a>Hinzufügen von Andromeda aus dem Katalog
+## <a name="add-andromeda-from-the-gallery"></a>Hinzufügen von Andromeda aus dem Katalog
 
 Zum Konfigurieren der Integration von Andromeda in Azure AD müssen Sie Andromeda aus dem Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
 
@@ -75,15 +74,13 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte in die folgenden Felder ein, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten: 
 
    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<tenantURL>.ngcxpress.com/`
 
    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<tenantURL>.ngcxpress.com/SAMLConsumer.aspx`
 
 1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
-
-   ![Screenshot: Option „Zusätzliche URLs festlegen“ zum Eingeben einer Anmelde-URL](common/metadata-upload-additional-signon.png)
 
    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<tenantURL>.ngcxpress.com/SAMLLogon.aspx`
 
@@ -92,9 +89,9 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Die Andromeda-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
 
-   ![Screenshot: Benutzerattribute wie „user.givenname“ für „givenname“ und „user.mail“ für „emailaddress“](common/edit-attribute.png)
+   ![Screenshot: Benutzerattribute](common/edit-attribute.png)
 
-   > [!Important]
+   > [!NOTE]
    > Löschen Sie beim Einrichten dieser Werte die NameSpace-Definitionen.
 
 1. Bearbeiten Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die Ansprüche mithilfe des Symbols zum **Bearbeiten**, oder fügen Sie die Ansprüche über **Neuen Anspruch hinzufügen** hinzu, um das SAML-Tokenattribut wie in der obigen Abbildung gezeigt zu konfigurieren. Führen Sie dann die folgenden Schritte aus:
@@ -164,15 +161,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 2. Klicken Sie oben auf der Menüleiste auf **Admin** (Administrator), und navigieren Sie zu **Administration** (Verwaltung).
 
-   ![Andromeda-Administrator](./media/andromedascm-tutorial/tutorial_andromedascm_admin.png)
+   ![Andromeda-Administrator](./media/andromedascm-tutorial/admin.png)
 
 3. Klicken Sie links auf der Symbolleiste unter **Interfaces** (Schnittstellen) auf **SAML Configuration** (SAML-Konfiguration).
 
-   ![Andromeda: SAML](./media/andromedascm-tutorial/tutorial_andromedascm_saml.png)
+   ![Andromeda: SAML](./media/andromedascm-tutorial/interface.png)
 
 4. Führen Sie auf der Seite mit dem Abschnitt **SAML Configuration** (SAML-Konfiguration) die folgenden Schritte aus:
 
-   ![Andromeda-Konfiguration](./media/andromedascm-tutorial/tutorial_andromedascm_config.png)
+   ![Andromeda-Konfiguration](./media/andromedascm-tutorial/configure.png)
 
    a. Aktivieren Sie **Enable SSO with SAML** (SSO mit SAML zulassen).
 
@@ -188,9 +185,9 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
    g. Öffnen Sie das aus dem Azure-Portal heruntergeladene **Base64-codierte Zertifikat** im Editor, und fügen Sie es in das Textfeld **X 509 Certificate** (X.509-Zertifikat) ein.
 
-   h. Weisen Sie den folgenden Attributen die entsprechenden Werte zu, um die SSO-Anmeldung über Azure AD zu ermöglichen. Das Attribut **User ID** (Benutzer-ID) ist für die Anmeldung erforderlich. Für die Bereitstellung sind die Attribute **Email** (E-Mail), **Company** (Unternehmen), **User Type** (Benutzertyp) and **Role** (Rolle) erforderlich. In diesem Abschnitt definieren wir die Zuordnung von Attributen (Namen und Werte) zu den Attributen des Azure-Portals.
+   h. Weisen Sie den folgenden Attributen die entsprechenden Werte zu, um die SSO-Anmeldung über Azure AD zu ermöglichen. Das Attribut **User ID** (Benutzer-ID) ist für die Anmeldung erforderlich. Für die Bereitstellung sind die Attribute **Email** (E-Mail), **Company** (Unternehmen), **User Type** (Benutzertyp) and **Role** (Rolle) erforderlich. In diesem Abschnitt definieren Sie die Zuordnung von Attributen (Namen und Werte) zu den Attributen des Azure-Portals.
 
-   ![Andromeda-Attributzuordnung](./media/andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
+   ![Andromeda-Attribute](./media/andromedascm-tutorial/mapping.png)
 
    i. Klicken Sie auf **Speichern**.
 
@@ -204,15 +201,15 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 #### <a name="sp-initiated"></a>SP-initiiert:
 
-- Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Andromeda weitergeleitet, wo Sie den Anmeldeflow initiieren können.
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Andromeda weitergeleitet, wo Sie den Anmeldeflow initiieren können.
 
-- Rufen Sie direkt die Andromeda-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
+* Rufen Sie direkt die Andromeda-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
 #### <a name="idp-initiated"></a>IDP-initiiert:
 
-- Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der Andromeda-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben.
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der Andromeda-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben.
 
-Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „Andromeda“ in „Meine Apps“ geschieht Folgendes: Wenn Sie die Anwendung im SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie die Anwendung im IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Andromeda-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „Andromeda“ in „Meine Apps“ geschieht Folgendes: Wenn Sie die Anwendung im SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie die Anwendung im IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Andromeda-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

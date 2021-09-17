@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 32fb95c88d632cc2c51cd2390f0244e9c1927051
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4e5e0b563b2701a8b5ddbffbf485a3127d52ece0
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100585893"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769894"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-automation-account"></a>Aktivieren von Änderungsnachverfolgung und Bestand über ein Automation-Konto
 
@@ -49,7 +49,7 @@ Melden Sie sich unter https://portal.azure.com bei Azure an.
 
 ## <a name="enable-non-azure-vms"></a>Aktivieren Azure-fremder virtueller Computer
 
-Computer, die nicht in Azure enthalten sind, müssen manuell hinzugefügt werden. Es wird empfohlen, den Log Analytics-Agent für Windows oder Linux zu installieren, indem Sie zuerst Ihren Computer mit [Azure Arc-fähigen Servern](../../azure-arc/servers/overview.md) verbinden und dann Azure Policy verwenden, um die integrierte Richtlinie „[Log Analytics-Agent auf Azure Arc-Computern unter *Linux* oder *Windows* bereitstellen](../../governance/policy/samples/built-in-policies.md#monitoring)“ zuzuweisen. Wenn Sie auch die Überwachung der Computer mit Azure Monitor für VMs planen, verwenden Sie stattdessen die Initiative [Azure Monitor für VMs aktivieren](../../governance/policy/samples/built-in-initiatives.md#monitoring).
+Computer, die nicht in Azure enthalten sind, müssen manuell hinzugefügt werden. Es wird empfohlen, den Log Analytics-Agent für Windows oder Linux zu installieren, indem Sie zuerst Ihren Computer mit [Azure Arc-fähigen Servern](../../azure-arc/servers/overview.md) verbinden und dann mit Azure Policy die integrierte Richtlinie [Log Analytics-Agent für *Linux*-/*Windows*-Azure Arc-Computer bereitstellen](../../governance/policy/samples/built-in-policies.md#monitoring) zuweisen. Wenn Sie auch die Überwachung der Computer mit Azure Monitor für VMs planen, verwenden Sie stattdessen die Initiative [Azure Monitor für VMs aktivieren](../../governance/policy/samples/built-in-initiatives.md#monitoring).
 
 1. Wählen Sie in Ihrem Automation-Konto unter **Konfigurationsverwaltung** die Option **Bestand** oder **Änderungsnachverfolgung** aus.
 

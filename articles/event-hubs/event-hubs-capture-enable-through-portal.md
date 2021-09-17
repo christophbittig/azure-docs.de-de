@@ -3,12 +3,12 @@ title: 'Event Hubs: Erfassen von Streamingereignissen über das Azure-Portal'
 description: In diesem Artikel erfahren Sie, wie Sie über das Azure-Portal die Erfassung von über Azure Event Hubs gestreamten Ereignissen aktivieren.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 8c89a6e56c2d0bc7b7ff09d5fd63737009239eb9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b603af17ca4e46b8004b7b2550cddd87164da157
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100653950"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253636"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Aktivieren der Erfassung von über Azure Event Hubs gestreamten Ereignissen
 
@@ -34,7 +34,7 @@ Das Standadzeitfenster beträgt fünf Minuten. Der Mindestwert ist 1, der Höchs
 
 ## <a name="capture-data-to-azure-data-lake-storage-gen-2"></a>Erfassen von Daten in Azure Data Lake Storage Gen 2 
 
-1. Folgen Sie dem Artikel [Speicherkonto erstellen](../storage/common/storage-account-create.md?tabs=azure-portal#create-a-storage-account), um ein Azure Storage-Konto zu erstellen. Legen Sie auf der Registerkarte **Erweitert** die Option **Hierarchischer Namespace** auf **Aktiviert** fest, um daraus ein Azure Data Lake Storage Gen 2-Konto zu machen.
+1. Folgen Sie dem Artikel [Speicherkonto erstellen](../storage/common/storage-account-create.md?tabs=azure-portal#create-a-storage-account), um ein Azure Storage-Konto zu erstellen. Legen Sie auf der Registerkarte **Erweitert** die Option **Hierarchischer Namespace** auf **Aktiviert** fest, um daraus ein Azure Data Lake Storage Gen 2-Konto zu machen. Das Azure Storage-Konto muss sich in demselben Abonnement wie der Event Hub befinden.
 2. Führen Sie die folgenden Schritte aus, wenn Sie einen Event Hub erstellen: 
 
     1. Wählen Sie für **Capture****Ein** aus. 

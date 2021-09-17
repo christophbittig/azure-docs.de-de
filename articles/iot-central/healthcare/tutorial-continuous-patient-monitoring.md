@@ -1,55 +1,65 @@
 ---
-title: 'Tutorial: Erstellen einer App für die ständige Überwachung von Patienten mit Azure IoT Central | Microsoft-Dokumentation'
-description: In diesem Tutorial erfahren Sie, wie Sie mit Azure IoT Central-Anwendungsvorlagen eine Anwendung für die ständige Überwachung von Patienten erstellen.
+title: 'Tutorial: Kontinuierliche Patientenüberwachung in Azure IoT | Microsoft-Dokumentation'
+description: In diesem Tutorial erfahren Sie, wie Sie die Anwendungsvorlage für die kontinuierliche Patientenüberwachung für IoT Central bereitstellen und nutzen.
 author: philmea
 ms.author: philmea
-ms.date: 09/24/2019
+ms.date: 08/02/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 07cd77eb5546143936af1fc963f0212112fc6eb7
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: dc1cf6a9a250b64b84cacbcf300183b913144b45
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108743361"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122180164"
 ---
-# <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>Tutorial: Bereitstellen einer App für die ständige Überwachung von Patienten und exemplarische Vorgehensweise für die zugehörige Vorlage
+# <a name="tutorial-deploy-and-walkthrough-the-continuous-patient-monitoring-app-template"></a>Tutorial: Bereitstellen und Durchlaufen der App-Vorlage für die kontinuierliche Überwachung von Patienten
 
-In diesem Tutorial wird veranschaulicht, wie Sie in dieses Thema einsteigen können, indem Sie eine IoT Central-Vorlage für eine Anwendung für die ständige Überwachung von Patienten bereitstellen. Sie erfahren, wie Sie die Vorlage bereitstellen und verwenden.
+:::image type="content" source="media/cpm-architecture.png" alt-text="Architektur für die ständige Überwachung von Patienten":::
+
+## <a name="bluetooth-low-energy-ble-medical-devices"></a>Medizinische Geräte mit Bluetooth Low Energy (BLE)
+
+Bei vielen medizinischen Wearables, die in IoT-Lösungen im Gesundheitswesen zum Einsatz kommen, handelt es sich um BLE-Geräte. Diese Geräte können nicht direkt mit der Cloud kommunizieren und benötigen ein Gateway für den Datenaustausch mit Ihrer Cloudlösung. In dieser Architektur wird als Gateway eine Mobiltelefonanwendung verwendet.
+
+## <a name="mobile-phone-gateway"></a>Mobiltelefongateway
+
+Die Hauptfunktion der Mobiltelefonanwendung besteht darin, BLE-Daten von medizinischen Geräten zu erfassen und an IoT Central weiterzugeben. Die App führt Patienten außerdem durch die Geräteeinrichtung und ermöglicht es ihnen, ihre persönlichen Gesundheitsdaten anzuzeigen. Bei anderen Lösungen kann ein Tabletgateway oder ein statisches Gateway in einem Krankenzimmer verwendet werden. Für Android und iOS steht eine Open-Source-Beispielanwendung für Mobilgeräte zur Verfügung, die als Ausgangspunkt für die Anwendungsentwicklung verwendet werden kann. Weitere Informationen zur mobilen IoT Central-App für die kontinuierliche Patientenüberwachung finden Sie [hier](/samples/iot-for-all/iotc-cpm-sample/iotc-cpm-sample/).
+
+## <a name="export-to-azure-api-for-fhirreg"></a>Exportieren nach Azure API for FHIR&reg;
+
+Azure IoT Central ist HIPAA-konform und für HITRUST&reg; zertifiziert. Per [Azure API for FHIR](../../healthcare-apis/fhir/overview.md) können Patientengesundheitsdaten auch an andere Dienste gesendet werden. Azure API for FHIR ist eine standardbasierte API für klinische Gesundheitsdaten. Mit dem [Azure IoT-Konnektor für FHIR](../../healthcare-apis/fhir/iot-fhir-portal-quickstart.md) können Sie Azure API for FHIR als Ziel für den kontinuierlichen Datenexport über IoT Central verwenden.
+
+## <a name="machine-learning"></a>Machine Learning
+
+Verwenden Sie Machine Learning-Modelle mit Ihren FHIR-Daten, um Erkenntnisse zu gewinnen und Ihr Pflegeteam bei der Entscheidungsfindung zu unterstützen. Weitere Informationen finden Sie in der [Dokumentation zu Azure Machine Learning](../../machine-learning/index.yml).
+
+## <a name="provider-dashboard"></a>Anbieterdashboard
+
+Erstellen Sie mithilfe der Daten von Azure API for FHIR ein Dashboard für Patientenerkenntnisse, oder integrieren Sie sie direkt in eine elektronische Patientenakte für Pflegeteams. Pflegeteams können das Dashboard verwenden, um Patienten zu unterstützen und frühzeitig Anzeichen für eine Verschlechterung zu erkennen. Weitere Informationen finden Sie unter [Tutorial: Erstellen eines Power BI-Anbieterdashboards](tutorial-health-data-triage.md).
 
 In diesem Tutorial lernen Sie Folgendes:
 
-> [!div class="checklist"]
-> * Erstellen einer Anwendungsvorlage
-> * Exemplarische Vorgehensweise für die Anwendungsvorlage
+- Erstellen einer Anwendungsvorlage
+- Exemplarische Vorgehensweise für die Anwendungsvorlage
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Es wird ein Azure-Abonnement empfohlen. Alternativ können Sie eine kostenlose 7-Tage-Testversion verwenden. Wenn Sie kein Azure-Abonnement besitzen, können Sie auf der Seite [Azure-Anmeldeseite](https://aka.ms/createazuresubscription) eines erstellen.
+- Zum Bereitstellen dieser App müssen keine besonderen Voraussetzungen erfüllt werden.
+- Sie können den Tarif „Free“ oder ein Azure-Abonnement verwenden.
 
-## <a name="create-an-application-template"></a>Erstellen einer Anwendungsvorlage
+## <a name="create-continuous-patient-monitoring-application"></a>Erstellen einer Anwendung für die kontinuierliche Überwachung von Patienten
 
-Navigieren Sie zur [Anwendungs-Manager-Website von Azure IoT Central](https://apps.azureiotcentral.com/). Wählen Sie auf der linken Navigationsleiste **Erstellen** und anschließend die Registerkarte **Gesundheitswesen** aus.
+1. Navigieren Sie zur Buildwebsite für [Azure IoT Central](https://aka.ms/iotcentral). Melden Sie sich dann mit einem persönlichen Microsoft-Konto oder mit einem Geschäfts-, Schul- oder Unikonto an. Wählen Sie auf der linken Navigationsleiste **Erstellen** und dann die Registerkarte **Gesundheitswesen** aus: :::image type="content" source="media/app-manager-health.png" alt-text="Anwendungsvorlage":::
 
-:::image type="content" source="media/app-manager-health.png" alt-text="App-Vorlage für das Gesundheitswesen":::
+1. Wählen Sie unter **Kontinuierliche Patientenüberwachung** die Option **App erstellen** aus.
 
-Wählen Sie die Schaltfläche **App erstellen** aus, um mit der Erstellung Ihrer Anwendung zu beginnen, und melden Sie sich dann mit einem persönlichen Microsoft-Konto oder mit einem Geschäfts-, Schul- oder Unikonto an. Sie gelangen zur Seite **Neue Anwendung**.
+Weitere Informationen finden Sie unter [Erstellen einer IoT Central-Anwendung](../core/howto-create-iot-central-application.md).
 
-![Erstellen einer Anwendung: Gesundheitswesen](media/app-manager-health-create.png)
+## <a name="walk-through-the-application"></a>Einführung in die Anwendung
 
-![Erstellen einer Anwendung: Abrechnungsinformationen im Bereich Gesundheitswesen](media/app-manager-health-create-billinginfo.png)
-
-Erstellung Sie Ihre Anwendung wie folgt:
-
-1. Azure IoT Central schlägt entsprechend der von Ihnen ausgewählten Vorlage automatisch einen Anwendungsnamen vor. Sie können diesen Namen übernehmen oder einen eigenen aussagekräftigen Anwendungsnamen eingeben, z. B. **Ständige Überwachung von Patienten**. Azure IoT Central generiert für Sie außerdem entsprechend dem Anwendungsnamen ein Präfix mit einer eindeutigen URL. Sie können dieses URL-Präfix in einen einprägsameren Wert ändern.
-
-2. Sie können auswählen, ob Sie die Anwendung unter dem Tarif *Free* oder unter einem der Tarife vom Typ *Standard* erstellen möchten. Anwendungen, die Sie unter dem Free-Tarif erstellen, sind sieben Tage lang kostenlos, bevor sie ablaufen, und es sind bis zu fünf kostenlose Geräte zulässig. Sie können eine Anwendung vor dem Ablauf jederzeit vom Free-Tarif auf einen Standard-Tarif umstellen. Bei Wahl des Free-Tarifs müssen Sie Ihre Kontaktdaten eingeben und auswählen, ob Sie Informationen und Tipps von Microsoft erhalten möchten. Anwendungen, die Sie unter einem Standard-Tarif erstellen, unterstützen bis zu zwei kostenlose Geräte, und Sie müssen Ihre Informationen zum Azure-Abonnement für die Abrechnung eingeben.
-
-3. Wählen Sie unten auf der Seite die Option **Erstellen** aus, um Ihre Anwendung bereitzustellen.
-
-## <a name="walk-through-the-application-template"></a>Exemplarische Vorgehensweise für die Anwendungsvorlage
+In den nächsten Abschnitten werden die wichtigsten Features der Anwendung behandelt:
 
 ### <a name="dashboards"></a>Dashboards
 
@@ -75,9 +85,9 @@ Sie können auch **Go to remote patient dashboard** (Zu Dashboard für externe P
 
 Wenn Sie **Gerätevorlagen** auswählen, werden die beiden Gerätetypen in der Vorlage angezeigt:
 
-* **Smart Vitals Patch**: Bei diesem Gerät handelt es sich um ein Pflaster zur Messung verschiedener Vitalwerte. Es kann für die Überwachung von Patienten innerhalb und außerhalb des Krankenhauses verwendet werden. Wenn Sie die Vorlage auswählen, sehen Sie, dass das Pflaster Gerätedaten wie Akkustand und Gerätetemperatur sowie Daten zum Gesundheitszustand des Patienten wie Atemfrequenz und Blutdruck sendet.
+- **Smart Vitals Patch**: Bei diesem Gerät handelt es sich um ein Pflaster zur Messung verschiedener Vitalwerte. Es kann für die Überwachung von Patienten innerhalb und außerhalb des Krankenhauses verwendet werden. Wenn Sie die Vorlage auswählen, sehen Sie, dass das Pflaster Gerätedaten wie Akkustand und Gerätetemperatur sowie Daten zum Gesundheitszustand des Patienten wie Atemfrequenz und Blutdruck sendet.
 
-* **Smart Knee Brace**: Bei diesem Gerät handelt es sich um eine Stützmanschette für das Knie, die von Patienten mit einem neuen Kniegelenk verwendet wird. Wenn Sie auf diese Vorlage klicken, werden Funktionen wie Gerätedaten, Bewegungsumfang und Beschleunigung angezeigt.
+- **Smart Knee Brace**: Bei diesem Gerät handelt es sich um eine Stützmanschette für das Knie, die von Patienten mit einem neuen Kniegelenk verwendet wird. Wenn Sie auf diese Vorlage klicken, werden Funktionen wie Gerätedaten, Bewegungsumfang und Beschleunigung angezeigt.
 
 :::image type="content" source="media/smart-vitals-device-template.png" alt-text="Smart Patch-Vorlage":::
 
@@ -91,11 +101,11 @@ Wenn Sie die Registerkarte „Gerätegruppen“ auswählen, wird für jede Gerä
 
 Wenn Sie **Regeln** auswählen, werden die drei Regeln in der Vorlage angezeigt:
 
-* **Brace temperature high** (Hohe Manschettentemperatur): Diese Regel wird ausgelöst, wenn die Gerätetemperatur der intelligenten Kniemanschette fünf Minuten lang über 95 &deg;F (35 °C) liegt. Verwenden Sie diese Regel, um den Patienten und das Pflegeteam zu informieren und das Gerät per Remotesteuerung herunterzukühlen.
+- **Brace temperature high** (Hohe Manschettentemperatur): Diese Regel wird ausgelöst, wenn die Gerätetemperatur der intelligenten Kniemanschette fünf Minuten lang über 95 &deg;F (35 °C) liegt. Verwenden Sie diese Regel, um den Patienten und das Pflegeteam zu informieren und das Gerät per Remotesteuerung herunterzukühlen.
 
-* **Fall detected** (Sturz erkannt): Diese Regel wird ausgelöst, wenn ein Sturz des Patienten erkannt wird. Verwenden Sie diese Regel, um eine Aktion zum Alarmieren eines Teams zu konfigurieren, das dem gestürzten Patienten zur Hilfe eilt.
+- **Fall detected** (Sturz erkannt): Diese Regel wird ausgelöst, wenn ein Sturz des Patienten erkannt wird. Verwenden Sie diese Regel, um eine Aktion zum Alarmieren eines Teams zu konfigurieren, das dem gestürzten Patienten zur Hilfe eilt.
 
-* **Patch battery low** (Niedriger Akkustand des Patchgeräts): Diese Regel wird ausgelöst, wenn der Akkustand des Geräts unter zehn Prozent sinkt. Verwenden Sie diese Regel, um für den Patienten eine Benachrichtigung mit dem Hinweis auszulösen, dass er sein Gerät aufladen sollte.
+- **Patch battery low** (Niedriger Akkustand des Patchgeräts): Diese Regel wird ausgelöst, wenn der Akkustand des Geräts unter zehn Prozent sinkt. Verwenden Sie diese Regel, um für den Patienten eine Benachrichtigung mit dem Hinweis auszulösen, dass er sein Gerät aufladen sollte.
 
 :::image type="content" source="media/brace-temp-rule.png" alt-text="Regeln":::
 
@@ -119,9 +129,6 @@ Auf der Registerkarte **Befehle** können Sie Befehle auf dem Gerät ausführen.
 
 :::image type="content" source="media/knee-brace-dashboard.png" alt-text="Dashboard Kniemanschette":::
 
-### <a name="data-export"></a>Datenexport
-
-Mit dem Datenexport können Sie Ihre Gerätedaten fortlaufend in andere Azure-Dienste exportieren – einschließlich in [Azure API for FHIR](concept-continuous-patient-monitoring-architecture.md#export-to-azure-api-for-fhir).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

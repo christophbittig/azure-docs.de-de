@@ -1,17 +1,20 @@
 ---
 title: Common Data Model-Format
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Transformieren von Daten mit dem Common Data Model-Metadatensystem
 author: kromerm
 ms.service: data-factory
+ms.subservice: data-flows
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: makromer
-ms.openlocfilehash: 45f5334ebee3365c17bfa52c8d47ed75b82bdfa1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 612faa714f6a31bb464d30cc5b30766734782d41
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100387698"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122640770"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Common Data Model-Format in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -84,7 +87,7 @@ Wenn Sie Entitätseigenschaften in der Senkentransformation Spalten für Zuordnu
 2. Suchen Sie nach der Eigenschaft „partitions.Location“. 
 3. Ändern Sie „blob.core.windows.net“ in „dfs.core.windows.net“.
 4. Korrigieren Sie eine „%2F“-Codierung in der URL in „/“.
-5. Bei Verwendung von ADF-Datenflüssen müssen Sonderzeichen im Dateipfad der Partition durch alphanumerische Werte ersetzt werden, oder Sie wechseln zu Synapse-Datenflüssen.
+5. Bei Verwendung von ADF-Datenflüssen müssen Sonderzeichen im Dateipfad der Partition durch alphanumerische Werte ersetzt werden, oder Sie wechseln zu Azure Synapse Datenflüssen
 
 ### <a name="cdm-source-data-flow-script-example"></a>Beispiel eines Datenflussskripts für eine CDM-Quelle
 

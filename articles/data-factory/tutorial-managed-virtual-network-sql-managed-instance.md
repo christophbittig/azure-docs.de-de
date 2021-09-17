@@ -6,12 +6,12 @@ ms.author: lle
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 05/06/2021
-ms.openlocfilehash: 5c9396cdfe8296b4869f6713ff0022bc896dc733
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: faa08121bde07f82a24fad24ca49b2fe2d0ea618
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111957237"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731458"
 ---
 # <a name="tutorial-how-to-access-sql-managed-instance-from-data-factory-managed-vnet-using-private-endpoint"></a>Tutorial: Zugreifen auf SQL Managed Instance über ein verwaltetes Data Factory-VNet mithilfe eines privaten Endpunkts
 
@@ -235,13 +235,12 @@ In diesem Abschnitt erstellen Sie einen Private Link-Dienst hinter einem Standa
 4. Wählen Sie unter **Verwaltete private Endpunkte** die Option **+ Neu** aus.
 5. Wählen Sie in der Liste die Kachel **Private Link-Dienst** und anschließend **Weiter** aus.
 6. Geben Sie den Namen des privaten Endpunkts ein, und wählen Sie in der Liste „Private Link-Dienst“ die Option **myPrivateLinkService** aus.
-7. Fügen Sie den FQDN Ihrer SQL Managed Instance-Zielinstanz sowie die NAT-IP-Adressen Ihres Private Link-Diensts hinzu.
+7. Fügen Sie den FQDN Ihrer verwalteten SQL-Zielinstanz hinzu.
     
     :::image type="content" source="./media/tutorial-managed-virtual-network/sql-mi-host.png" alt-text="Screenshot: SQL MI-Host" lightbox="./media/tutorial-managed-virtual-network/sql-mi-host-expanded.png":::
 
-    :::image type="content" source="./media/tutorial-managed-virtual-network/link-service-nat-ip.png" alt-text="Screenshot: NAT-IP-Adresse im verknüpften Dienst" lightbox="./media/tutorial-managed-virtual-network/link-service-nat-ip-expanded.png":::
 
-    :::image type="content" source="./media/tutorial-managed-virtual-network/private-endpoint-2.png" alt-text="Screenshot: Einstellungen des privaten Endpunkts":::
+    :::image type="content" source="./media/tutorial-managed-virtual-network/private-endpoint-5.png" alt-text="Screenshot: Einstellungen des privaten Endpunkts":::
 
 8. Erstellen Sie den privaten Endpunkt.
 

@@ -3,15 +3,17 @@ title: Definieren einer Dienstkonfiguration in der Datei „StartupServices.xml�
 description: Erfahren Sie, wie Sie die Datei „StartupServices.xml“ verwenden, um die Konfiguration der Serviceebene von der Datei „ApplicationManifest.xml“ zu trennen.
 ms.topic: conceptual
 ms.date: 05/05/2021
-ms.openlocfilehash: 2b11e1dfdfec357d48ee95cabb35c87e71123bc8
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 69ec795bab910f8f2b030ab5758698d3fdbae824
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110482498"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681377"
 ---
 # <a name="introducing-startupservicesxml-in-service-fabric-application"></a>Einführung in die Datei „StartupServices.xml“ in der Service Fabric-Anwendung
 Diese Funktion führt die Datei „StartupServices.xml“ in den Entwurf einer Service Fabric-Anwendung ein. Diese Datei hostet den Abschnitt „DefaultServices“ der Datei „AnwendungManifest.xml“. Bei dieser Implementierung werden die Parameter, die sich auf die DefaultServices und die Dienstdefinition beziehen, aus der bestehenden Datei „ApplicationManifest.xml“ in die neue Datei namens „StartupServices.xml“ verschoben. Diese Datei wird in jeder Funktionalität (Erstellen/Neu  Erstellen/F5/STRG+F5/Veröffentlichen) in Visual Studio verwendet.
+
+Hinweis: Die Datei „StartupServices.xml“ ist nur für Visual Studio-Bereitstellungen vorgesehen, um sicherzustellen, dass mit Visual Studio bereitgestellte Pakete (mit „StartupServices.xml“) keine Konflikte mit per ARM bereitgestellten Diensten verursachen. „StartupServices.xml“ ist nicht als Teil des Anwendungspakets gepackt. Die Datei wird in der DevOps-Pipeline nicht unterstützt, und Kunden müssen einzelne Dienste in der Anwendung entweder über ARM oder über Cmdlets mit gewünschter Konfiguration bereitstellen.
 
 ## <a name="existing-service-fabric-application-design"></a>Ein vorhandener Service Fabric-Anwendungsentwurf
 Für jede Service Fabric-Anwendung ist die Datei „ApplicationManifest.xml“ die Quelle aller dienstbezogenen Informationen für die Anwendung. Die Datei „ApplicationManifest.xml“ besteht aus allen Parametern, dem ServiceManifestImport und den DefaultServices. Die Konfigurationsparameter werden in den „Cloud.xml/Local1Node.xml/Local5Node.xml“-Dateien unter ApplicationParameters genannt.

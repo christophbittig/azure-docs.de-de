@@ -1,18 +1,20 @@
 ---
-title: Transformation für abgeleitete Spalten in Mapping Data Flow
-description: Informationen zum bedarfsorientierten Transformieren von Daten in Azure Data Factory mithilfe der Mapping Data Flow-Transformation für abgeleitete Spalten.
+title: Transformation für abgeleitete Spalten in Zuordnungsdatenflüssen
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Erfahren Sie mehr über das bedarfsorientierte Transformieren von Daten in Azure Data Factory mithilfe der Transformation für abgeleitete Spalten in Zuordnungsdatenflüssen.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 09/14/2020
-ms.openlocfilehash: 2e90a8779322cf8967ca9a194c6cc760f7c8b8f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: synapse
+ms.date: 08/24/2021
+ms.openlocfilehash: 815410030ffbfece39f5f92a4d6783abb8991eb6
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90532031"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822841"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>Transformation für abgeleitete Spalten in Mapping Data Flow
 
@@ -85,7 +87,7 @@ Wenn Sie auf eine lokale Variable in einer abgeleiteten Spalte verweisen möchte
 
 Das folgende Beispiel ist eine abgeleitete Spalte mit dem Namen `CleanData`, die aus einem eingehenden Datenstrom `MoviesYear` zwei abgeleitete Spalten erstellt. Die erste abgeleitete Spalte ersetzt die Spalte `Rating` durch den Wert für „Rating“ als ganzzahliger Typ. Die zweite abgeleitete Spalte ist ein Muster, das jede Spalte abgleicht, deren Name mit „movies“ beginnt. Für jede übereinstimmende Spalte wird eine Spalte `movie` erstellt, die dem Wert der übereinstimmenden Spalte entspricht und das Präfix „movie_“ erhält. 
 
-Auf der Data Factory-Benutzeroberfläche sieht diese Transformation wie folgt aus:
+In der Benutzeroberfläche sieht diese Transformation wie in der folgenden Abbildung aus:
 
 ![Ableitungsbeispiel](media/data-flow/derive-script.png "Ableitungsbeispiel")
 

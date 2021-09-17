@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 06/24/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2e9b10206a28072d37668207993007dc29320f04
-ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
+ms.openlocfilehash: de148858ba5c88e8dbbf2693dadc818b8c66e833
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112679020"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768328"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Bereitstellen von Updates und Überprüfen von Ergebnissen
 
@@ -36,19 +36,19 @@ Bei der Planung einer Updatebereitstellung wird eine [Zeitplanressource](../shar
 >[!NOTE]
 >Wenn Sie die Zeitplanressource nach der Bereitstellungserstellung über das Azure-Portal oder mithilfe von PowerShell löschen, wird die geplante Updatebereitstellung unterbrochen, und es wird ein Fehler angezeigt, wenn Sie versuchen, die Konfiguration der Zeitplanressource über das Portal zu ändern. Sie können die Zeitplanressource nur löschen, indem Sie den entsprechenden Bereitstellungszeitplan löschen.  
 
-Um eine neue Updatebereitstellung durchzuführen, führen Sie die folgenden Schritte aus. Abhängig von der ausgewählten Ressource (d. h. Automation-Konto, Arc-fähiger Server, virtueller Azure-Computer) gelten die folgenden Schritte für alle mit geringfügigen Unterschieden beim Konfigurieren des Bereitstellungszeitplans.
+Um eine neue Updatebereitstellung durchzuführen, führen Sie die folgenden Schritte aus. Abhängig von der ausgewählten Ressource (d. h. Automation-Konto, Arc-fähiger Server, virtueller Azure-Computer) gelten die folgenden Schritte für alle, mit geringfügigen Unterschieden beim Konfigurieren des Bereitstellungszeitplans.
 
 1. Im Portal zum Planen einer Bereitstellung:
 
    * Für einen oder mehrere Computer navigieren Sie zu **Automation-Konten**, und wählen Sie in der Liste Ihr Automation-Konto mit aktivierter Updateverwaltung aus.
    * Für einen virtuellen Azure-Computer navigieren Sie zu **Virtuelle Computer**, und wählen Sie Ihren virtuellen Computer in der Liste aus.
-   * Für einen Arc-fähigen Server navigieren Sie zu **Server – Azure Arc**, und wählen Sie Ihren Server in der Liste aus.
+   * Für einen Arc-fähigen Server navigieren Sie zu **Server – Azure Arc**, und wählen Ihren Server in der Liste aus.
 
 2. Gehen Sie wie folgt vor, um abhängig von der ausgewählten Ressource zur Updateverwaltung zu navigieren:
 
    * Wenn Sie Ihr Automation-Konto ausgewählt haben, wechseln Sie unter **Updateverwaltung** zu **Updateverwaltung**, und wählen Sie dann **Updatebereitstellung planen** aus.
    * Wenn Sie einen virtuellen Azure-Computer ausgewählt haben, wechseln Sie zu **Gast- und Hostupdates**, und wählen Sie dann **Zur Updateverwaltung wechseln** aus.
-   * Wenn Sie einen Arc-fähigen Server ausgewählt haben, wechseln Sie zur **Updateverwaltung**, und wählen Sie dann **Updatebereitstellung planen** aus.
+   * Wenn Sie einen Arc-fähigen Server ausgewählt haben, wechseln Sie zur **Updateverwaltung**, und wählen dann **Updatebereitstellung planen** aus.
 
 3. Geben Sie unter **Neue Updatebereitstellung**  im Feld **Name** einen eindeutigen Namen für Ihre Bereitstellung ein.
 

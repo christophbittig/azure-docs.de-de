@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 07/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 7f0e9d0c97b9325a30de3cb8c6ce10a3ba8489f4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a49dec3b7a87eebebbb6d4737618a387c80e4f1a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92454112"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742810"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-elium"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Elium
 
@@ -43,7 +43,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 * Elium unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
 * Elium unterstützt die **Just-in-Time**-Benutzerbereitstellung.
 
-## <a name="adding-elium-from-the-gallery"></a>Hinzufügen von Elium aus dem Katalog
+## <a name="add-elium-from-the-gallery"></a>Hinzufügen von Elium aus dem Katalog
 
 Zum Konfigurieren der Integration von Elium in Azure AD müssen Sie Elium aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
@@ -58,13 +58,13 @@ Zum Konfigurieren der Integration von Elium in Azure AD müssen Sie Elium aus de
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Elium mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Elium eingerichtet werden.
 
-Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Elium die folgenden Schritte aus:
+Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Elium die folgenden Schritte aus:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
-    * **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
-    * **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
 1. **[Konfigurieren des einmaligen Anmeldens für Elium](#configure-elium-sso)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    * **[Erstellen eines Elium-Testbenutzers](#create-elium-test-user)**, um eine Entsprechung von B. Simon in Elium zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+    1. **[Erstellen eines Elium-Testbenutzers](#create-elium-test-user)**, um eine Entsprechung von B. Simon in Elium zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
@@ -73,11 +73,11 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Elium** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte in die folgenden Felder ein, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten:
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<platform-domain>.elium.com/login/saml2/metadata`
 
@@ -153,20 +153,20 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Klicken Sie in der oberen rechten Ecke auf das **Benutzerprofil**, und wählen Sie **Settings** (Einstellungen) aus.
 
-    ![Konfigurieren des einmaligen Anmeldens, Elium 01](./media/elium-tutorial/elium-01.png)
+    ![Benutzerprofil für einmaliges Anmelden konfigurieren](./media/elium-tutorial/profile.png)
 
 1. Wählen Sie unter **Advanced** (Erweitert) die Option **Security** (Sicherheit) aus.
 
-    ![Konfigurieren des einmaligen Anmeldens, Elium 02](./media/elium-tutorial/elium-02.png)
+    ![„Erweitert“ für einmaliges Anmelden konfigurieren](./media/elium-tutorial/security.png)
 
 1. Scrollen Sie zum Abschnitt **Single Sign-On (SSO)** (Einmaliges Anmelden), und führen Sie die folgenden Schritte aus:
 
-    ![Konfigurieren des einmaligen Anmeldens, Elium 03](./media/elium-tutorial/elium-03.png)
+    ![Einmaliges Anmelden konfigurieren](./media/elium-tutorial/configuration.png)
 
     a. Kopieren Sie den Wert von **Verify that SAML2 authentication works for your account** (Überprüfen, ob die SAML2-Authentifizierung für Ihr Konto funktioniert), und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** ins Textfeld **Anmelde-URL** ein.
 
     > [!NOTE]
-    > Nach dem Konfigurieren des einmaligen Anmeldens können Sie jederzeit unter der folgenden URL auf die Standardseite für die Remoteanmeldung zugreifen: `https://<platform_domain>/login/regular/login` 
+    > Nach dem Konfigurieren des einmaligen Anmeldens können Sie jederzeit unter der URL `https://<platform_domain>/login/regular/login` auf die Standardseite für die Remoteanmeldung zugreifen. 
 
     b. Aktivieren Sie das Kontrollkästchen **Enable SAML2 federation** (SAML2-Verbund aktivieren).
 
@@ -176,11 +176,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     e. Suchen Sie in der Datei **SP Metadata** (SP-Metadaten) nach **entityID**, kopieren Sie den **entityID**-Wert, und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** ins Textfeld **Bezeichner** ein. 
 
-    ![Konfigurieren des einmaligen Anmeldens, Elium 04](./media/elium-tutorial/elium-04.png)
+    ![Konfiguration für einmaliges Anmelden festlegen](./media/elium-tutorial/metadata.png)
 
     f. Suchen Sie in der Datei **SP Metadata** (SP-Metadaten) nach **AssertionConsumerService**, kopieren Sie den Wert für **Location**, und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** ins Textfeld **Antwort-URL** ein.
 
-    ![Konfigurieren des einmaligen Anmeldens, Elium 05](./media/elium-tutorial/elium-05.png)
+    ![„AssertionConsumerService“ für einmaliges Anmelden konfigurieren](./media/elium-tutorial/service.png)
 
     g. Öffnen Sie die heruntergeladene Metadatendatei im Azure-Portal im Editor, kopieren Sie den Inhalt, und fügen Sie ihn in das Textfeld **IdP Metadata** ein.
 
@@ -207,7 +207,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
  
 * Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der Elium-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
  
-Sie können auch den Microsoft-Zugriffsbereich verwenden, um die Anwendung in einem beliebigen Modus zu testen. Wenn Sie im Zugriffsbereich auf die Kachel „Elium“ klicken, geschieht Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet, und wenn Sie den IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Elium-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Wenn Sie in „Meine Apps“ auf die Kachel „Elium“ klicken, geschieht Folgendes: Wenn Sie die Anwendung im SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie die Anwendung im IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Elium-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

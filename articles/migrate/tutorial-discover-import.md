@@ -6,18 +6,18 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
-ms.openlocfilehash: c142cae3e96d800488b67da613181d1a91ba5b5b
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 9c36fc141dd09d3fc968116fe6a62fecc00721e9
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107713316"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112466139"
 ---
 # <a name="tutorial-assess-servers-using-an-imported-csv-file"></a>Tutorial: Bewerten von Servern mithilfe einer importierten CSV-Datei
 
-Im Rahmen der Migration zu Azure ermitteln Sie den lokalen Bestand und die lokalen Workloads. 
+Im Rahmen der Migration zu Azure ermitteln Sie den lokalen Bestand und die lokalen Workloads.
 
-In diesem Tutorial wird gezeigt, wie Sie lokale Computer mit dem Azure Migrate- Serverbewertungstool und einer importierten CSV-Datei (Comma-Separated Value, durch Trennzeichen getrennt) bewerten. 
+In diesem Tutorial wird gezeigt, wie Sie lokale Computer mit dem Tool „Azure Migrate: Ermittlung und Bewertung“ und einer importierten CSV-Datei bewerten. 
 
 Wenn Sie eine CSV-Datei verwenden, müssen Sie nicht die Azure Migrate-Appliance zum Ermitteln und Bewerten von Servern einrichten. Sie können steuern, welche Daten Sie in der Datei freigeben, und ein Großteil der Daten ist optional. Diese Methode ist in folgenden Fällen sinnvoll:
 
@@ -38,7 +38,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Bewerten von Servern
 
 > [!NOTE]
-> In Tutorials wird der schnellste Weg zum Ausprobieren eines Szenarios beschrieben, und nach Möglichkeit werden dabei die Standardoptionen verwendet. 
+> In Tutorials wird der schnellste Weg zum Ausprobieren eines Szenarios beschrieben, und nach Möglichkeit werden dabei die Standardoptionen verwendet.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen, bevor Sie beginnen.
 
@@ -47,10 +47,10 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 - In einer einzelnen CSV-Datei und einem Azure Migrate-Projekt können bis zu 20.000 Server hinzugefügt werden. 
 - Die in der CSV-Datei angegebenen Betriebssystemnamen müssen [unterstützte Namen](#supported-operating-system-names) enthalten und mit diesen identisch sein.
 
-
 ## <a name="prepare-an-azure-user-account"></a>Vorbereiten eines Azure-Benutzerkontos
 
 Zum Erstellen eines Azure Migrate-Projekts benötigen Sie ein Konto mit folgenden Berechtigungen:
+
 - Berechtigungen vom Typ „Mitwirkender“ oder „Besitzer“ für ein Azure-Abonnement
 - Berechtigungen zum Registrieren von Azure Active Directory-Apps
 
@@ -60,7 +60,7 @@ Wenn Sie gerade erst ein kostenloses Azure-Konto erstellt haben, sind Sie der Be
 
     ![Suchfeld, um nach dem Azure-Abonnement zu suchen](./media/tutorial-discover-import/search-subscription.png)
 
-2. Wählen Sie auf der Seite **Abonnements** das Abonnement aus, in dem Sie ein Azure Migrate-Projekt erstellen möchten. 
+2. Wählen Sie auf der Seite **Abonnements** das Abonnement aus, in dem Sie ein Azure Migrate-Projekt erstellen möchten.
 3. Wählen Sie im Abonnement die Option **Zugriffssteuerung (IAM)**  > **Zugriff überprüfen** aus.
 4. Suchen Sie unter **Zugriff überprüfen** nach dem entsprechenden Benutzerkonto.
 5. Wählen Sie unter **Rollenzuweisung hinzufügen** die Option **Hinzufügen** aus.
@@ -75,8 +75,6 @@ Wenn Sie gerade erst ein kostenloses Azure-Konto erstellt haben, sind Sie der Be
 8. Vergewissern Sie sich unter **Benutzereinstellungen**, dass Azure AD-Benutzer Anwendungen registrieren können (standardmäßig auf **Ja** festgelegt).
 
     ![Überprüfen unter „Benutzereinstellungen“, ob Benutzer Active Directory-Apps registrieren können](./media/tutorial-discover-import/register-apps.png)
-
-
 
 ## <a name="set-up-a-project"></a>Einrichten eines Projekts
 
@@ -130,7 +128,7 @@ In der folgenden Tabelle sind die auszufüllenden Felder zusammengefasst:
 **Betriebssystemversion** | Nein | Betriebssystemversion des Servers
 **Betriebssystemarchitektur** | Nein | Architektur des Serverbetriebssystems <br/> Gültige Werte: x64, x86, amd64, 32-Bit oder 64-Bit
 **Anzahl der Datenträger** | Nein | Nicht erforderlich, wenn Details zu den einzelnen Datenträgern angegeben werden.
-**Disk 1 size** (Größe von Datenträger 1)  | Nein | Die maximale Größe des Datenträgers (in GB).<br/>Sie können Details zu weiteren Datenträgern hinzufügen, indem Sie in der Vorlage [Spalten hinzufügen](#add-multiple-disks). Es ist möglich, bis zu acht Datenträger hinzuzufügen.
+**Disk 1 size** (Größe von Datenträger 1)  | Nein | Die maximale Größe des Datenträgers (in GB).<br/>Sie können Details zu weiteren Datenträgern hinzufügen, indem Sie in der Vorlage [Spalten hinzufügen](#add-multiple-disks). Es ist möglich, bis zu zwanzig Datenträger hinzuzufügen.
 **Disk 1 read ops** (Lesevorgänge für Datenträger 1) | Nein | Datenträger-Lesevorgänge pro Sekunde
 **Disk 1 write ops** (Schreibvorgänge für Datenträger 1) | Nein | Datenträger-Schreibvorgänge pro Sekunde
 **Disk 1 read throughput** (Lesedurchsatz für Datenträger 1) | Nein | Vom Datenträger gelesenen Daten pro Sekunde (in MB pro Sekunde)
@@ -146,14 +144,13 @@ In der folgenden Tabelle sind die auszufüllenden Felder zusammengefasst:
 **Firmware type** (Firmwaretyp) | Nein | Serverfirmware. Mögliche Werte: „BIOS“ und „UEFI“.
 **MAC address** (MAC-Adresse)| Nein | MAC-Adresse des Servers
 
-
 ### <a name="add-operating-systems"></a>Hinzufügen von Betriebssystemen
 
 Bei der Bewertung werden bestimmte Betriebssystemnamen erkannt. Alle von Ihnen angegebenen Namen müssen exakt einer der Zeichenfolgen aus der [Liste mit den unterstützten Namen](#supported-operating-system-names) entsprechen.
 
 ### <a name="add-multiple-disks"></a>Hinzufügen mehrerer Datenträger
 
-Die Vorlage enthält Standardfelder für den ersten Datenträger. Sie können ähnliche Spalten für bis zu acht Datenträger hinzufügen.
+Die Vorlage enthält Standardfelder für den ersten Datenträger. Sie können ähnliche Spalten für bis zu zwanzig Datenträger hinzufügen.
 
 Fügen Sie beispielsweise die folgenden Spalten hinzu, um alle Felder für einen zweiten Datenträger anzugeben:
 
@@ -162,7 +159,6 @@ Fügen Sie beispielsweise die folgenden Spalten hinzu, um alle Felder für einen
 - „Disk 2 write ops“ (Schreibvorgänge für Datenträger 2)
 - „Disk 2 read throughput“ (Lesedurchsatz für Datenträger 2)
 - „Disk 2 write throughput“ (Schreibdurchsatz für Datenträger 2)
-
 
 ## <a name="import-the-server-information"></a>Importieren der Serverinformationen
 
@@ -176,7 +172,7 @@ Importieren Sie die CSV-Datei in die Serverbewertung, nachdem Sie der CSV-Vorlag
     - Wählen Sie zum Anzeigen und Beheben von Warnungen die Option **Download warning details .CSV** (CSV mit Warnungsdetails herunterladen) aus. Dadurch wird die CSV-Datei mit Warnungen heruntergeladen. Überprüfen Sie die Warnungen, und beheben Sie sie bei Bedarf.
     - Sollten Fehler vorliegen (Importstatus: **Fehler**), müssen Sie diese beheben, um den Importvorgang fortsetzen zu können.
         1. Laden Sie die CSV-Datei herunter. Diese enthält nun Fehlerdetails.
-        1. Überprüfen und beheben Sie die Fehler nach Bedarf. 
+        1. Überprüfen und beheben Sie die Fehler nach Bedarf.
         1. Laden Sie die geänderte Datei erneut hoch.
 4. Wenn der Importstatus **Abgeschlossen** lautet, wurden die Serverinformationen importiert. Aktualisieren Sie die Seite, wenn der Import anscheinend noch nicht abgeschlossen ist.
 
@@ -192,8 +188,6 @@ Gehen Sie wie folgt vor, um sich zu vergewissern, dass die Server nach der Ermit
 2. Wählen Sie auf der Seite **Azure Migrate – Server** > **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung) das Symbol mit der Anzahl für **Ermittelte Server** aus.
 3. Wählen Sie die Registerkarte **Importbasiert** aus.
 
-
-
 ## <a name="supported-operating-system-names"></a>Namen von unterstützten Betriebssystemen
 
 Die in der CSV-Datei angegebenen Betriebssystemnamen müssen mit den Namen in dieser Liste identisch sein oder diese enthalten. Andernfalls können sie nicht bewertet werden. 
@@ -207,5 +201,6 @@ Asianux 3<br/>Asianux 4<br/>Asianux 5<br/>CentOS<br/>CentOS 4/5<br/>CoreOS Linux
 In diesem Tutorial führen Sie Folgendes durch:
 
 > [!div class="checklist"]
-> * Sie haben ein Azure Migrate-Projekt erstellt. 
-> * Sie haben Server mithilfe einer importierten CSV-Datei ermittelt. Führen Sie nun eine Bewertung für die [Migration von virtuellen VMware-Computern zu virtuellen Azure-Computern](./tutorial-assess-vmware-azure-vm.md) aus.
+> * Sie haben ein Azure Migrate-Projekt erstellt.
+> * Sie haben Server mithilfe einer importierten CSV-Datei ermittelt.
+Führen Sie nun eine Bewertung für die [Migration von virtuellen VMware-Computern zu virtuellen Azure-Computern](./tutorial-assess-vmware-azure-vm.md) aus.

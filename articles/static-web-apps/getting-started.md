@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 06/16/2021
 ms.author: cshoe
-ms.openlocfilehash: 3ec36a06dafb8622f97ded317f8ab2617e96662a
-ms.sourcegitcommit: d137460f55a38a0e8f8b9e6594e480d5e5f662ed
+ms.openlocfilehash: b543831ceead6d386de0617b02db93a99d9507a6
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112428839"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122609127"
 ---
 # <a name="quickstart-building-your-first-static-site-with-azure-static-web-apps"></a>Schnellstart: Erstellen Ihrer ersten statischen Website mit Azure Static Web Apps
 
@@ -46,6 +46,9 @@ Falls Sie noch nicht über ein Azure-Abonnement verfügen, können Sie ein [kost
 1. Wählen Sie unter der Bezeichnung _Static Web Apps_ das **Pluszeichen** aus.
 
     :::image type="content" source="media/getting-started/extension-create-button.png" alt-text="Anwendungsname":::
+    
+    > [!NOTE]
+    > Die Visual Studio Code-Erweiterung für Azure Static Web Apps optimiert den Erstellungsprozess mithilfe einer Reihe von Standardwerten. Wenn Sie eine fein abgestufte Kontrolle über den Erstellungsprozess wünschen, öffnen Sie die Befehlspalette, und wählen Sie **Azure Static Web Apps: Static Web App erstellen... (Erweitert)** aus.
 
 1. Die Befehlspalette wird oben im Editor geöffnet. Dort werden Sie aufgefordert, einen Abonnementnamen auszuwählen.
 
@@ -65,11 +68,11 @@ Falls Sie noch nicht über ein Azure-Abonnement verfügen, können Sie ein [kost
 
     :::image type="content" source="media/getting-started/extension-presets-no-framework.png" alt-text="Anwendungsvoreinstellungen: kein Framework":::
 
-    Wählen Sie **./** als Speicherort für die Anwendungsdateien aus, und drücken Sie die <kbd>EINGABETASTE</kbd>.
+    Geben Sie **./src** als Speicherort für die Anwendungsdateien ein, und drücken Sie die <kbd>EINGABETASTE</kbd>.
 
     :::image type="content" source="media/getting-started/extension-build-location.png" alt-text="Ausgabespeicherort des Anwendungsbuilds":::
 
-    Geben Sie **./** als Speicherort für die Buildausgabe ein, und drücken Sie die <kbd>EINGABETASTE</kbd>.
+    Geben Sie **./src** als Speicherort für die Buildausgabe ein, und drücken Sie die <kbd>EINGABETASTE</kbd>.
 
     # <a name="angular"></a>[Angular](#tab/angular)
 

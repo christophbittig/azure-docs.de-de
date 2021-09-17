@@ -3,18 +3,17 @@ title: 'Tutorial: Entwickeln eines C#-Moduls für Linux-Geräte mithilfe von Azu
 description: In diesem Tutorial wird gezeigt, wie Sie ein IoT Edge-Modul mit C#-Code erstellen und auf einem IoT Edge-Gerät unter Linux bereitstellen.
 services: iot-edge
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 1384fbc79e052bfc2b0fdf29b7087de0949c5095
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 27bfa2400715b568fc99411235a21e1a87d17cbb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113438330"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740622"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-using-linux-containers"></a>Tutorial: Entwickeln eines C#-IoT Edge-Moduls mit Linux-Containern
 
@@ -97,7 +96,7 @@ Die IoT Edge-Erweiterung versucht, Ihre Anmeldeinformationen für die Containerr
 3. Speichern Sie diese Datei.
 
 >[!NOTE]
->In diesem Tutorial werden die Administratoranmeldeinformationen für die Azure Container Registry verwendet, die für Entwicklungs- und Testszenarien geeignet sind. Wenn Sie für die Produktionsszenarien bereit sind, empfehlen wir Ihnen eine Authentifizierungsoption mit den geringsten Rechten wie Dienstprinzipale auszuwählen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf Ihre Azure Container Registry](production-checklist.md#manage-access-to-your-container-registry).
+>In diesem Tutorial werden die Administratoranmeldeinformationen für die Azure Container Registry verwendet, die für Entwicklungs- und Testszenarien geeignet sind. Wenn Sie für die Produktionsszenarien bereit sind, empfehlen wir Ihnen, eine Authentifizierungsoption mit den geringstmöglichen Rechten, z. B. Dienstprinzipale, auszuwählen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf die Containerregistrierung](production-checklist.md#manage-access-to-your-container-registry).
 
 ### <a name="select-your-target-architecture"></a>Auswählen Ihrer Zielarchitektur
 
@@ -111,7 +110,7 @@ Mit Visual Studio Code können derzeit C#-Module für Linux AMD64- und Linux ARM
 
 1. Öffnen Sie im VS Code-Explorer **Module** > **CSharpModule** > **Program.cs**.
 
-2. Fügen Sie oben im Namespace **CSharpModule** drei **using**-Anweisungen für Typen hinzu, die im weiteren Verlauf verwendet werden:
+1. Fügen Sie oben im Namespace **CSharpModule** drei **using**-Anweisungen für Typen hinzu, die im weiteren Verlauf verwendet werden:
 
     ```csharp
     using System.Collections.Generic;     // For KeyValuePair<>
@@ -119,13 +118,13 @@ Mit Visual Studio Code können derzeit C#-Module für Linux AMD64- und Linux ARM
     using Newtonsoft.Json;                // For JsonConvert
     ```
 
-3. Fügen Sie der Klasse **Program** die Variable **temperatureThreshold** hinzu. Diese Variable legt den Wert fest, den die gemessene Temperatur übersteigen muss, damit die Daten an die IoT Hub-Instanz gesendet werden.
+1. Fügen Sie der Klasse **Program** die Variable **temperatureThreshold** hinzu. Diese Variable legt den Wert fest, den die gemessene Temperatur übersteigen muss, damit die Daten an die IoT Hub-Instanz gesendet werden.
 
     ```csharp
     static int temperatureThreshold { get; set; } = 25;
     ```
 
-4. Fügen Sie der Klasse **Program** die Klassen **MessageBody**, **Machine** und **Ambient** hinzu. Diese Klassen definieren das erwartete Schema für den Textkörper eingehender Nachrichten.
+1. Fügen Sie der Klasse **Program** die Klassen **MessageBody**, **Machine** und **Ambient** hinzu. Diese Klassen definieren das erwartete Schema für den Textkörper eingehender Nachrichten.
 
     ```csharp
     class MessageBody
@@ -146,24 +145,26 @@ Mit Visual Studio Code können derzeit C#-Module für Linux AMD64- und Linux ARM
     }
     ```
 
-5. Suchen Sie die Funktion **Init**. Diese Funktion erstellt und konfiguriert ein **ModuleClient**-Objekt, das es dem Modul ermöglicht, eine Verbindung mit der lokalen Azure IoT Edge-Runtime zum Senden und Empfangen von Nachrichten herzustellen. Nach dem Erstellen von **ModuleClient** liest der Code den Wert **temperatureThreshold** aus den gewünschten Eigenschaften des Modulzwillings. Der Code registriert einen Rückruf, um über den Endpunkt **input1** Nachrichten von einer IoT Edge Hub-Instanz zu empfangen. Ersetzen Sie die Methode **SetInputMessageHandlerAsync** durch eine neue, und fügen Sie den gewünschten Eigenschaften eine Methode vom Typ **SetDesiredPropertyUpdateCallbackAsync** hinzu. Zu diesem Zweck ersetzen Sie die letzte Zeile der **Init**-Methode durch folgenden Code:
+1. Suchen Sie die Funktion **Init**. Diese Funktion erstellt und konfiguriert ein **ModuleClient**-Objekt, das es dem Modul ermöglicht, eine Verbindung mit der lokalen Azure IoT Edge-Runtime zum Senden und Empfangen von Nachrichten herzustellen. Nach dem Erstellen von **ModuleClient** liest der Code den Wert **temperatureThreshold** aus den gewünschten Eigenschaften des Modulzwillings. Der Code registriert einen Rückruf, um über einen Endpunkt namens **input1** Nachrichten von einem IoT Edge-Hub zu empfangen.
 
-    ```csharp
-    // Register a callback for messages that are received by the module.
-    // await ioTHubModuleClient.SetInputMessageHandlerAsync("input1", PipeMessage, iotHubModuleClient);
+   Ersetzen Sie die Methode **SetInputMessageHandlerAsync** durch eine neue Methode, die den Namen des Endpunkts und die Methode aktualisiert, die beim Eingang der Eingabe aufgerufen wird. Fügen Sie außerdem eine Methode vom Typ **SetDesiredPropertyUpdateCallbackAsync** hinzu, um die gewünschten Eigenschaften aktualisieren zu können. Zu diesem Zweck ersetzen Sie die letzte Zeile der **Init**-Methode durch folgenden Code:
 
-    // Read the TemperatureThreshold value from the module twin's desired properties
-    var moduleTwin = await ioTHubModuleClient.GetTwinAsync();
-    await OnDesiredPropertiesUpdate(moduleTwin.Properties.Desired, ioTHubModuleClient);
+   ```csharp
+   // Register a callback for messages that are received by the module.
+   // await ioTHubModuleClient.SetInputMessageHandlerAsync("input1", PipeMessage, iotHubModuleClient);
 
-    // Attach a callback for updates to the module twin's desired properties.
-    await ioTHubModuleClient.SetDesiredPropertyUpdateCallbackAsync(OnDesiredPropertiesUpdate, null);
+   // Read the TemperatureThreshold value from the module twin's desired properties
+   var moduleTwin = await ioTHubModuleClient.GetTwinAsync();
+   await OnDesiredPropertiesUpdate(moduleTwin.Properties.Desired, ioTHubModuleClient);
 
-    // Register a callback for messages that are received by the module.
-    await ioTHubModuleClient.SetInputMessageHandlerAsync("input1", FilterMessages, ioTHubModuleClient);
-    ```
+   // Attach a callback for updates to the module twin's desired properties.
+   await ioTHubModuleClient.SetDesiredPropertyUpdateCallbackAsync(OnDesiredPropertiesUpdate, null);
 
-6. Fügen Sie der Klasse **Program** die Methode **onDesiredPropertiesUpdate** hinzu. Diese Methode empfängt Aktualisierungen der gewünschten Eigenschaften aus dem Modulzwilling und aktualisiert die Variable **temperatureThreshold** entsprechend. Alle Module haben ihren eigenen Modulzwilling, über den Sie den in einem Modul ausgeführten Code direkt in der Cloud konfigurieren können.
+   // Register a callback for messages that are received by the module. Messages received on the inputFromSensor endpoint are sent to the FilterMessages method.
+   await ioTHubModuleClient.SetInputMessageHandlerAsync("inputFromSensor", FilterMessages, ioTHubModuleClient);
+   ```
+
+1. Fügen Sie der Klasse **Program** die Methode **onDesiredPropertiesUpdate** hinzu. Diese Methode empfängt Aktualisierungen der gewünschten Eigenschaften aus dem Modulzwilling und aktualisiert die Variable **temperatureThreshold** entsprechend. Alle Module haben ihren eigenen Modulzwilling, über den Sie den in einem Modul ausgeführten Code direkt in der Cloud konfigurieren können.
 
     ```csharp
     static Task OnDesiredPropertiesUpdate(TwinCollection desiredProperties, object userContext)
@@ -194,7 +195,7 @@ Mit Visual Studio Code können derzeit C#-Module für Linux AMD64- und Linux ARM
     }
     ```
 
-7. Ersetzen Sie die Methode **PipeMessage** durch die Methode **FilterMessages**. Diese Methode wird aufgerufen, wenn das Modul eine Nachricht vom IoT Edge-Hub empfängt. Sie filtert Nachrichten heraus, die Temperaturen unter dem über den Modulzwilling festgelegten Temperaturschwellenwert melden. Sie fügt der Nachricht außerdem die **MessageType**-Eigenschaft hinzu, deren Wert auf **Alert** festgelegt ist.
+1. Ersetzen Sie die Methode **PipeMessage** durch die Methode **FilterMessages**. Diese Methode wird aufgerufen, wenn das Modul eine Nachricht vom IoT Edge-Hub empfängt. Sie filtert Nachrichten heraus, die Temperaturen unter dem über den Modulzwilling festgelegten Temperaturschwellenwert melden. Sie fügt der Nachricht außerdem die **MessageType**-Eigenschaft hinzu, deren Wert auf **Alert** festgelegt ist.
 
     ```csharp
     static async Task<MessageResponse> FilterMessages(Message message, object userContext)
@@ -251,11 +252,19 @@ Mit Visual Studio Code können derzeit C#-Module für Linux AMD64- und Linux ARM
     }
     ```
 
-8. Speichern Sie die Datei "Program.cs".
+1. Speichern Sie die Datei "Program.cs".
 
-9. Öffnen Sie im VS Code-Explorer die Datei **deployment.template.json** im Arbeitsbereich für Ihre IoT Edge-Projektmappe.
+1. Öffnen Sie im VS Code-Explorer die Datei **deployment.template.json** im Arbeitsbereich für Ihre IoT Edge-Projektmappe.
 
-10. Fügen Sie dem Bereitstellungsmanifest den Modulzwilling **CSharpModule** hinzu. Fügen Sie am Ende des Abschnitts **modulesContent** nach dem Modulzwilling **$edgeHub** den folgenden JSON-Inhalt ein:
+1. Da Sie den Namen des Endpunkts geändert haben, an dem das Modul lauscht, müssen Sie auch die Routen im Bereitstellungsmanifest aktualisieren, damit edgeHub Nachrichten an den neuen Endpunkt sendet.
+
+    Navigieren Sie im Modulzwilling **$edgeHub** zum Abschnitt **Routen**. Aktualisieren Sie die Route **sensorToCSharpModule**, und ersetzen Sie `input1` durch `inputFromSensor`:
+
+    ```json
+    "sensorToCSharpModule": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/CSharpModule/inputs/inputFromSensor\")"
+    ```
+
+1. Fügen Sie dem Bereitstellungsmanifest den Modulzwilling **CSharpModule** hinzu. Fügen Sie am Ende des Abschnitts **modulesContent** nach dem Modulzwilling **$edgeHub** den folgenden JSON-Inhalt ein:
 
     ```json
        "CSharpModule": {
@@ -267,7 +276,7 @@ Mit Visual Studio Code können derzeit C#-Module für Linux AMD64- und Linux ARM
 
     ![Hinzufügen des Modulzwillings zur Bereitstellungsvorlage](./media/tutorial-csharp-module/module-twin.png)
 
-11. Speichern Sie die Datei „deployment.template.json“.
+1. Speichern Sie die Datei „deployment.template.json“.
 
 ## <a name="build-and-push-your-module"></a>Erstellen und Pushen Ihres Moduls
 

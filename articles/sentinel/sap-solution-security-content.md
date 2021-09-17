@@ -8,12 +8,12 @@ ms.topic: reference
 ms.custom: mvc
 ms.date: 07/28/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: bec0a6c872077d3982ddaf6e0ffc7e96ec7f54ee
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 234de4f2f93a9c35126c0f7be7d8feeb3a244044
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122343059"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681495"
 ---
 # <a name="azure-sentinel-sap-solution-security-content-reference-public-preview"></a>Azure Sentinel-Lösung für SAP: Referenz zu sicherheitsbezogenen Inhalten (Public Preview)
 
@@ -158,10 +158,11 @@ Diese Watchlists stellen die Konfiguration für die Azure Sentinel-Lösung „Ko
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter
 
 - [Bereitstellen der Azure Sentinel-Lösung für SAP](sap-deploy-solution.md)
 - [Referenz zu Protokollen der Azure Sentinel-Lösung für SAP](sap-solution-log-reference.md)
+- [Bereitstellen des Azure Sentinel-Datenconnectors für SAP mit SNC](sap-solution-deploy-snc.md)
 - [Konfigurationsoptionen für Experten, lokale Bereitstellung und SAPControl-Protokollquellen](sap-solution-deploy-alternate.md)
 - [Detaillierte SAP-Anforderungen für die Azure Sentinel-Lösung für SAP](sap-solution-detailed-requirements.md)
 - [Problembehandlung bei der Bereitstellung der Azure Sentinel-Lösung für SAP](sap-deploy-troubleshoot.md)

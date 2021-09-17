@@ -7,14 +7,16 @@ ms.date: 06/29/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: disks
-ms.openlocfilehash: a6e156350be0de13b6c6bfea3f8d220830c3480e
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: c57047cdaf848bc27805d8819be515636d492676
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113360773"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687551"
 ---
 # <a name="benchmark-a-disk"></a>Durchführen von Vergleichstest für einen Datenträger
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Bei Benchmarktests werden verschiedene Workloads Ihrer Anwendung simuliert und die Anwendungsleistung für jeden Workload gemessen. Unter Befolgung der in dem [Artikel „Entwerfen für hohe Leistung“](premium-storage-performance.md) beschriebenen Schritte haben Sie die Leistungsanforderungen der Anwendung gesammelt. Durch Ausführen von Benchmarktools in den VMs, die die Anwendung hosten, können Sie die Leistungsgrade bestimmen, die Ihre Anwendung mit SSD Premium-Datenträgern erreichen kann. In diesem Artikel bieten wir Beispiele für Benchmarktests einer Standard_D8ds_v4-VM, die mit SSD Premium-Datenträgern von Azure bereitgestellt wurde.
 

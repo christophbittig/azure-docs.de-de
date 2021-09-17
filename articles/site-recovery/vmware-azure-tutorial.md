@@ -1,20 +1,22 @@
 ---
-title: Einrichten der Notfallwiederherstellung für VMware-VMs in Azure mit Azure Site Recovery
-description: Hier erfahren Sie, wie Sie mit Azure Site Recovery für lokale VMware-VMs die Notfallwiederherstellung in Azure einrichten.
+title: Einrichten der Notfallwiederherstellung für VMware-VMs in Azure mit Azure Site Recovery – Klassisch
+description: Hier erfahren Sie, wie Sie mit Azure Site Recovery für lokale VMware-VMs die Notfallwiederherstellung in Azure einrichten – Klassisch.
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 11/12/2019
 ms.custom: MVC
-ms.openlocfilehash: 6044de81253b9069631ff3cdae687d90a0287fea
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 8f53f7598b58e46e8020275cdf96e339c69c857a
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580573"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446440"
 ---
-# <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Einrichten der Notfallwiederherstellung in Azure für lokale VMware-VMs
+# <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms---classic"></a>Einrichten der Notfallwiederherstellung in Azure für lokale VMware-VMs – Klassisch
 
-In diesem Artikel wird beschrieben, wie Sie mithilfe des Diensts [Azure Site Recovery](site-recovery-overview.md) die Replikation für lokale VMware-VMs für die Notfallwiederherstellung in Azure aktivieren.
+In diesem Artikel wird beschrieben, wie Sie mithilfe des Diensts [Azure Site Recovery](site-recovery-overview.md) die Replikation für lokale VMware-VMs für die Notfallwiederherstellung in Azure aktivieren – Klassisch.
+
+Informationen zur Notfallwiederherstellung in Azure Site Recovery – Vorschau finden Sie in [diesem Artikel](vmware-azure-set-up-replication-tutorial-preview.md).
 
 Dies ist das dritte in einer Reihe von Tutorials zur Einrichtung der Notfallwiederherstellung in Azure für lokale VMware-VMs. Im vorherigen Tutorial haben Sie sich mit der [Vorbereitung der lokalen VMware-Umgebung](vmware-azure-tutorial-prepare-on-premises.md) für die Notfallwiederherstellung in Azure befasst.
 

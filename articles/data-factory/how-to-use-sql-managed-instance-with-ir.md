@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: c7ed059e3f7a0bbf620bf9008a08a7d600dcbc88
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 18f73a379c32bf80893e00ff0e95cb9edf905724
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346717"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122607759"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Verwenden von verwalteten Azure SQL-Instanzen mit SQL Server Integration Services (SSIS) in Azure Data Factory
 
@@ -94,7 +94,7 @@ Sie können Ihre SQL Server Integration Services-Projekte, -Pakete und -Workload
 
     1. Stellen Sie sicher, dass für die Ressourcengruppe/das Abonnement, zu der bzw. dem das virtuelle Netzwerk gehört, keine [Ressourcensperre](../azure-resource-manager/management/lock-resources.md) besteht. Wenn Sie eine Schreibschutzsperre oder eine Löschsperre konfigurieren, kann beim Starten und Beenden Ihrer Azure-SSIS IR ein Fehler auftreten oder die IR nicht mehr reagieren.
 
-    1. Stellen Sie sicher, dass Sie keine Azure-Richtlinie haben, die verhindert, dass die folgenden Ressourcen unter der Ressourcengruppe/dem Abonnement erstellt werden, zu der bzw. dem das virtuelle Netzwerk gehört:
+    1. Stellen Sie sicher, dass Sie keine Azure Policy-Definition besitzen, die verhindert, dass die folgenden Ressourcen unter der Ressourcengruppe/dem Abonnement erstellt werden, zu der bzw. dem das virtuelle Netzwerk gehört:
         - Microsoft.Network/LoadBalancers
         - Microsoft.Network/NetworkSecurityGroups
 

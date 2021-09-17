@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/19/2021
 ms.author: msangapu
 ms.custom: contperf-fy22q1
-ms.openlocfilehash: 571f273d54989b0ea2f014294cd570c26b5e6931
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3efac96949d701bbc0147abf8712d4995f781d47
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355586"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771844"
 ---
 # <a name="monitor-app-service-instances-using-health-check"></a>Überwachen von App Service-Instanzen mit der Integritätsprüfung
 
@@ -99,6 +99,10 @@ Angenommen, Sie verfügen über zwei Anwendungen (oder eine App mit einem Slot) 
 ### <a name="what-if-all-my-instances-are-unhealthy"></a>Was ist, wenn alle meine Instanzen fehlerhaft sind?
 
 In dem Szenario, in dem alle Instanzen Ihrer Anwendung fehlerhaft sind, entfernt App Service Instanzen aus dem Lastenausgleich bis zu dem in `WEBSITE_HEALTHCHECK_MAXUNHEALTHYWORKERPERCENT` angegebenen Prozentsatz. In diesem Szenario würde das Entfernen aller fehlerhaften App-Instanzen aus der Lastenausgleichsrotation effektiv zu einem Ausfall Ihrer Anwendung führen.
+
+### <a name="does-health-check-work-on-app-service-environments"></a>Funktioniert die Integritätsprüfung in App Service-Umgebungen?
+
+Ja, in App Service-Umgebungen (ASEs) pingt die Plattform Ihre Instanzen auf dem angegebenen Pfad und entfernt alle fehlerhaften Instanzen aus dem Lastenausgleich, sodass Anforderungen nicht an sie umgeleitet werden. Derzeit werden diese fehlerhaften Instanzen jedoch nicht durch neue Instanzen ersetzt, wenn sie 1 Stunde lang fehlerhaft bleiben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Erstellen einer Aktivitätsprotokollwarnung, um alle Vorgänge der Engine für die automatische Skalierung für Ihr Abonnement zu überwachen](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/monitor-autoscale-alert)

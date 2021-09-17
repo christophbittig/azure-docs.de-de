@@ -10,14 +10,16 @@ ms.subservice: scale-in-policy
 ms.date: 02/26/2020
 ms.reviewer: avverma
 ms.custom: avverma, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: af2293e9a9c5d3dcbed5dc737ad7785be9221913
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: af1aa7ceb0784b58f9878befeae7c6ee26742061
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673837"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696635"
 ---
 # <a name="use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>Verwenden benutzerdefinierter Richtlinien für horizontales Herunterskalieren mit Azure-VM-Skalierungsgruppen
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Eine Bereitstellung einer VM-Skalierungsgruppe kann basierend auf einem Array von Metriken einschließlich plattform- und benutzerdefinierter Metriken horizontal hoch- oder herunterskaliert werden. Während bei einer horizontalen Skalierung basierend auf dem Skalierungsgruppenmodell neue VMs erstellt werden, wirkt sich das horizontale Herunterskalieren auf die Ausführung virtueller Computer aus, die im Laufe der Entwicklung der Skalierungsgruppenworkload möglicherweise unterschiedliche Konfigurationen und/oder Funktionen aufweisen. 
 

@@ -6,24 +6,22 @@ services: notification-hubs
 documentationcenter: nodejs
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: ded4749c-6c39-4ff8-b2cf-1927b3e92f93
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 04/29/2020
+ms.date: 08/23/2021
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: eb41593938c670199be38140118f276142ceed43
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 44e6156d472200c818520fbba7e0618100f4344b
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102453222"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769152"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Senden von Pushbenachrichtigungen mit Azure Notification Hubs und Node.js
 
@@ -100,6 +98,9 @@ Das `NotificationHubService`-Objekt enthält die folgenden Objektinstanzen für 
 - **iOS**: Verwenden Sie das `ApnsService`-Objekt unter `notificationHubService.apns`.
 - **Windows Phone**: Verwenden Sie das `MpnsService`-Objekt unter `notificationHubService.mpns`.
 - **Universelle Windows-Plattform**: Verwenden Sie das `WnsService`-Objekt unter `notificationHubService.wns`.
+
+> [!NOTE]
+> Der Microsoft-Pushbenachrichtigungsdienst (MPNS) ist veraltet und wird nicht mehr unterstützt.
 
 ### <a name="how-to-send-push-notifications-to-android-applications"></a>Gewusst wie: Senden von Pushbenachrichtigungen an Android-Anwendungen
 

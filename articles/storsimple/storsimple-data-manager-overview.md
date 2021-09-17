@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/11/2021
+ms.date: 08/17/2021
 ms.author: alkohli
-ms.openlocfilehash: 81a906e6d1a5630ed7b40092d997ba0f81c7220b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 66c9394c446f5fa74662fb39815a4cd6d121c008
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349563"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821571"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>Übersicht über die StorSimple Data Manager-Lösung
 
@@ -90,13 +90,19 @@ Personenbezogene Daten werden vom StorSimple Data Manager weder gesammelt noch a
 
 ## <a name="known-limitations"></a>Bekannte Einschränkungen
 
-Für den Dienst gelten derzeit folgende Einschränkungen:
-- Der StorSimple Data Manager funktioniert derzeit nicht mit Volumes, die BitLocker-verschlüsselt sind. Wenn Sie versuchen, den Dienst mit einem verschlüsselten Laufwerk auszuführen, werden Auftragsfehler angezeigt.
+Für StorSimple Data Manager gelten die folgenden Einschränkungen:
+- Der Dienst funktioniert nicht mit Volumen, die mit BitLocker verschlüsselt sind. Wenn Sie versuchen, den Dienst mit einem verschlüsselten Laufwerk auszuführen, werden Auftragsfehler angezeigt.
+- Der Dienst kann keine Daten kopieren, wenn die StorSimple-Momentaufnahme beschädigt ist.
 - Eine Firewall kann für das Speicherkonto, in dem StorSimple-Sicherungen gespeichert sind, nicht aktiviert werden. Wenn Sie eine Firewall für das Speicherkonto aktivieren, kommt es bei Aufträgen zu Fehlern. 
 - Einige Metadaten von Dateien (z.B. ACLs) werden nicht in den transformierten Daten beibehalten.
 - Dieser Dienst funktioniert nur mit NTFS-Volumes.
 - Der StorSimple Data Manager unterstützt keine Migration virtueller Festplatten (Virtual Hard Disks, VHDs). Zum Migrieren von VHDs können Sie entweder Azure Data Box oder den Azure-Dateisynchronisierungsdienst verwenden.
 - Wenn Dateipfade 256 Zeichen oder mehr aufweisen, kommt es bei dem Auftrag zu einem Fehler.
+- Einschränkungen bei der Blob-Übertragung:
+  - Die maximal unterstützte Dateigröße für ein Blob beträgt 4,7 TiB.
+  - Der neueste verfügbare Sicherungssatz wird verwendet.
+  - Dateimetadaten werden nicht mit dem Dateiinhalt hochgeladen.
+  - Hochgeladene Blobs haben den Typ „Blockblob“. Daher kann keine hochgeladene VHD in Azure Virtual Machines verwendet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

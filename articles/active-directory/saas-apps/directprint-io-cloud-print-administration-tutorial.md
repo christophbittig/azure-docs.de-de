@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/19/2021
+ms.date: 07/30/2021
 ms.author: jeedes
-ms.openlocfilehash: ac70d5ae65e07673ffdd68c1659ca3c342f1f29c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 13211d4b22470291fcee84a075a0305ba1e29718
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114479622"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739922"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-directprintio-cloud-print-administration"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory in directprint.io Cloud Print Administration
 
@@ -38,6 +38,8 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * directprint.io Cloud Print Administration unterstützt **IDP**-initiiertes SSO.
+
+* directprint.io Cloud Print Administration unterstützt die **Just-in-Time**-Benutzerbereitstellung.
 
 ## <a name="add-directprintio-cloud-print-administration-from-the-gallery"></a>Fügen Sie directprint.io Cloud Print Administration aus dem Katalog hinzu.
 
@@ -75,9 +77,9 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Im Abschnitt **Grundlegende SAML-Konfiguration** ist die Anwendung im IDP-initiierten Modus vorkonfiguriert, und die erforderlichen URLs sind bereits mit Azure vorausgefüllt. Der Benutzer muss die Konfiguration speichern, indem er auf die Schaltfläche **Speichern** klickt.
 
-1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
 
-    ![Downloadlink für das Zertifikat](common/certificatebase64.png)
+    ![Downloadlink für das Zertifikat](common/copy-metadataurl.png)
 
 1. Kopieren Sie im Abschnitt **directprint.io Cloud Print Administration einrichten** die entsprechenden URLs basierend auf Ihren Anforderungen.
 
@@ -109,11 +111,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon das einmalige Anmelden von Azure,
 
 ## <a name="configure-directprintio-cloud-print-administration-sso"></a>Konfigurieren des einmaligen Anmeldens in directprint.io Cloud Print Administration
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **directprint.io Cloud Print Administration** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von directprint.io Cloud Print Administration](mailto:support@directprint.io) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **directprint.io Cloud Print Administration** müssen Sie die **App-Verbundmetadaten-URL** an das [Supportteam von directprint.io Cloud Print Administration](mailto:support@directprint.io) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-directprintio-cloud-print-administration-test-user"></a>Erstellen eines Testbenutzers in directprint.io Cloud Print Administration
 
-In diesem Abschnitt erstellen Sie in directprint.io Cloud Print Administration einen Benutzer mit dem Namen Britta Simon. Wenden Sie sich an das [Supportteam von directprint.io Cloud Print Administration](mailto:support@directprint.io), um die Benutzer zur directprint.io Cloud Print Administration-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt wird in directprint.io Cloud Print Administration ein Benutzer mit dem Namen B. Simon erstellt. directprint.io Cloud Print Administration unterstützt die Just-in-Time-Benutzerbereitstellung (standardmäßig aktiviert). Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in directprint.io Cloud Print Administration vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 

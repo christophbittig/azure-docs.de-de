@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 03/31/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 7e1b2ee95864affa6e5e72e1f8354767dc95bdb1
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 45eea8f8809e97f7e424a988140bcf76b47d5947
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107753324"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122609284"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>Vorläufiges Löschen wird für alle Schlüsseltresore aktiviert
 
@@ -55,7 +55,7 @@ Wenn von Ihrer Anwendung die Deaktivierung des vorläufiges Löschens vorausgese
 
 Sicherheitsprinzipalen, die Zugriff benötigen, um Geheimnisse endgültig zu löschen, müssen zusätzliche Zugriffsrichtlinienberechtigungen gewährt werden, damit diese Geheimnisse und der Schlüsseltresor endgültig gelöscht werden können.
 
-Deaktivieren Sie alle Azure-Richtlinien für Ihre Schlüsseltresore, in denen festgelegt ist, dass das vorläufige Löschen deaktiviert werden soll. Unter Umständen müssen Sie dieses Problem an einen Administrator eskalieren, der die auf Ihre Umgebung angewendeten Azure-Richtlinien kontrolliert. Wenn diese Richtlinie nicht deaktiviert wird, verlieren Sie ggf. die Möglichkeit, neue Schlüsseltresore im Gültigkeitsbereich der angewendeten Richtlinie zu erstellen.
+Deaktivieren Sie alle Azure Policy-Zuweisungen für Ihre Schlüsseltresore, in denen festgelegt ist, dass das vorläufige Löschen deaktiviert werden soll. Unter Umständen müssen Sie dieses Problem an einen Administrator eskalieren, der die auf Ihre Umgebung angewendeten Azure Policy-Zuweisungen kontrolliert. Wenn diese Richtlinienzuweisung nicht deaktiviert wird, verlieren Sie ggf. die Möglichkeit, neue Schlüsseltresore im Gültigkeitsbereich der angewendeten Richtlinienzuweisung zu erstellen.
 
 Wenn für Ihre Organisation gesetzliche Complianceanforderungen gelten und nicht zugelassen werden kann, dass gelöschte Schlüsseltresore und Geheimnisse über einen längeren Zeitraum in einem wiederherstellbaren Zustand verbleiben, müssen Sie den Aufbewahrungszeitraum für das vorläufige Löschen anpassen, um die Standards Ihrer Organisation zu erfüllen. Sie können für den Aufbewahrungszeitraum eine Dauer von 7 bis 90 Tagen konfigurieren.
 

@@ -1,141 +1,154 @@
 ---
-title: Erstellen von Definitionen der Gastkonfigurationsrichtlinie anhand der Gruppenrichtlinien-Baseline für Windows
-description: Erfahren Sie, wie Sie die Gruppenrichtlinie aus der Sicherheitsbaseline von Windows Server 2019 in eine Richtliniendefinition konvertieren.
+title: Erstellen einer Gastkonfigurationsrichtlinie aus einer Gruppenrichtlinie
+description: Lernen eine Gruppenrichtlinie in eine Richtliniendefinition zu konvertieren.
 ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: fa6012702bf00ee062b4d9d46f47bb673bb460ef
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 12bd1c905c254f16da170cde4a4426a2aa0cb263
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108762999"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772294"
 ---
-# <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Erstellen von Definitionen der Gastkonfigurationsrichtlinie anhand der Gruppenrichtlinien-Baseline für Windows
+# <a name="how-to-create-a-guest-configuration-policy-from-group-policy"></a>Erstellen einer Gastkonfigurationsrichtlinie aus einer Gruppenrichtlinie
 
-Vor dem Erstellen von benutzerdefinierten Richtliniendefinitionen empfiehlt es sich, die allgemeinen Informationen zur [Azure Policy-Gastkonfiguration](../concepts/guest-configuration.md) zu lesen. Informationen zum Erstellen benutzerdefinierter Richtliniendefinitionen für Gastkonfigurationen für Linux finden Sie unter [Erstellen von Richtlinien für Gastkonfigurationen für Linux](./guest-configuration-create-linux.md). Informationen zum Erstellen von benutzerdefinierten Richtliniendefinitionen für Gastkonfigurationen für Windows finden Sie unter [Erstellen von Richtlinien für Gastkonfigurationen für Windows](./guest-configuration-create.md).
-
-Beim Überwachen von Windows wird für die Gastkonfiguration ein [DSC](/powershell/scripting/dsc/overview/overview)-Ressourcenmodul (Desired State Configuration) zum Erstellen der Konfigurationsdatei verwendet. Die DSC-Konfiguration definiert den Zustand, in dem sich der Computer befinden soll. Wenn die Auswertung der Konfiguration **nicht konform** ergibt, wird der Richtlinieneffekt *auditIfNotExists* ausgelöst.
-Die [Azure Policy-Gastkonfiguration](../concepts/guest-configuration.md) führt nur eine Überprüfung der Einstellungen auf Computern durch.
+Bevor Sie beginnen, sollten Sie die Übersichtsseite zur [Gastkonfiguration](../concepts/guest-configuration.md) und die Details zu den Auswirkungen der Gastkonfigurationsrichtlinien auf die [Konfiguration von Abhilfemaßnahmen für die Gastkonfiguration](../concepts/guest-configuration-policy-effects.md) lesen.
 
 > [!IMPORTANT]
-> Die Gastkonfigurationserweiterung ist zum Durchführen von Überprüfungen in virtuellen Azure-Computern erforderlich. Weisen Sie die folgenden Richtliniendefinitionen zu, um die Erweiterung auf allen Windows-Computern im gewünschten Umfang bereitzustellen:
-> - [Erforderliche Komponenten bereitstellen, um die Gastkonfigurationsrichtlinie auf Windows-VMs zu aktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
+> Konvertieren der Gruppenrichtlinie in die Gastkonfiguration befindet sich **in der Vorschau**. Nicht für alle Arten von Gruppenrichtlinieneinstellungen sind korrespondierende DSC-Ressourcen für PowerShell 7 verfügbar.
+>
+> Alle Befehle auf dieser Seite müssen in **Windows PowerShell 5.1** ausgeführt werden.
+> Die resultierenden MOF-Dateien sollten dann mit dem `GuestConfiguration`Modul in PowerShell 7.1.3 oder höher verpackt werden.
+> 
+> Benutzerdefinierte Gastkonfigurationsrichtliniendefinitionen, die **AuditlfNotExists** verwenden, sind allgemein verfügbar, aber Definitionen, die **HDeploylfNotExists** mit Gastkonfiguration verwenden, sind **in der Vorschau**.
+> 
+> Die Gastkonfigurationserweiterung ist für virtuelle Computer in Azure erforderlich. Um die Erweiterung in großem Umfang auf allen Computern bereitzustellen, weisen Sie die folgende Richtlinieninitiative zu: `Deploy prerequisites to enable guest configuration policies on
+> virtual machines`
 >
 > Verwenden Sie keine geheimen oder vertraulichen Informationen in benutzerdefinierten Inhaltspaketen.
 
-Von der DSC-Community wurde das [BaselineManagement-Modul](https://github.com/microsoft/BaselineManagement) veröffentlicht, mit dem exportierte Gruppenrichtlinienvorlagen in das DSC-Format konvertiert werden können. In Verbindung mit dem Cmdlet GuestConfiguration erstellt das BaselineManagement-Modul ein Azure Policy-Gastkonfigurationspaket für Windows aus dem Gruppenrichtlinieninhalt. Ausführliche Informationen zur Verwendung des BaselineManagement-Moduls finden Sie im Artikel [Schnellstart: Konvertieren von Gruppenrichtlinien in DSC](/powershell/scripting/dsc/quickstarts/gpo-quickstart).
+Von der DSC-Community wurde das [BaselineManagement-Modul](https://github.com/microsoft/BaselineManagement) veröffentlicht, mit dem exportierte [Gruppenrichtlinien](/support/windows-server/group-policy/group-policy-overview)vorlagen in das PowerShell DSC konvertiert werden können. Zusammen mit dem `GuestConfiguration`Modul können Sie ein Gastkonfigurationspaket für Windows aus exportierten Gruppenrichtlinie erstellen. Das Gastkonfigurationspaket kann dann zur Überprüfung oder Konfiguration von Servern unter Verwendung lokaler Richtlinien verwendet werden, selbst wenn diese nicht in eine Domäne eingebunden sind.
 
-In diesem Leitfaden werden die Schritte zum Erstellen eines Azure Policy-Gastkonfigurationspakets aus einem Gruppenrichtlinienobjekt (GPO) beschrieben. Zwar wird in der exemplarischen Vorgehensweise die Konvertierung der Sicherheitsbaseline von Windows Server 2019 beschrieben, derselbe Prozess kann jedoch auch auf andere GPOs angewendet werden.
+In dieser Anleitung wird der Prozess zur Erstellung eines Azure Policy-Gastkonfigurationspakets aus einem Gruppenrichtlinienobjekt (GPO) erläutert.
 
-## <a name="download-windows-server-2019-security-baseline-and-install-related-powershell-modules"></a>Herunterladen der Windows Server 2019-Sicherheitsbaseline und Installieren der zugehörigen PowerShell-Module
+## <a name="download-required-powershell-modules"></a>Herunterladen der erforderlichen PowerShell-Module
 
-So installieren Sie die **DSC-** , **GuestConfiguration-** , **BaselineManagement-** und zugehörigen Azure-Module in PowerShell:
+So installieren Sie alle erforderlichen Module in PowerShell:
 
-1. Führen Sie an einer PowerShell-Eingabeaufforderung den folgenden Befehl aus:
+```powershell
+Install-Module guestconfiguration
+Install-Module baselinemanagement
+```
 
-   ```azurepowershell-interactive
-   # Install the BaselineManagement module, Guest Configuration DSC resource module, and relevant Azure modules from PowerShell Gallery
-   Install-Module az.resources, az.policyinsights, az.storage, guestconfiguration, gpregistrypolicyparser, securitypolicydsc, auditpolicydsc, baselinemanagement -scope currentuser -Repository psgallery -AllowClobber
-   ```
+Um Gruppenrichtlinienobjekte (GPOs) aus einer Active Directory-Umgebung zu sichern, benötigen Sie die im Remote Server Administration Toolkit (RSAT) verfügbaren PowerShell-Befehle.
 
-1. Erstellen Sie ein Verzeichnis für die Windows Server 2019-Sicherheitsbaseline, und laden Sie diese aus dem Windows Security Compliance-Toolkit herunter.
+So aktivieren Sie RSAT für die Gruppenrichtlinien-Verwaltungskonsole unter Windows 10:
 
-   ```azurepowershell-interactive
-   # Download the 2019 Baseline files from https://docs.microsoft.com/windows/security/threat-protection/security-compliance-toolkit-10
-   New-Item -Path 'C:\git\policyfiles\downloads' -Type Directory
-   Invoke-WebRequest -Uri 'https://download.microsoft.com/download/8/5/C/85C25433-A1B0-4FFA-9429-7E023E7DA8D8/Windows%2010%20Version%201909%20and%20Windows%20Server%20Version%201909%20Security%20Baseline.zip' -Out C:\git\policyfiles\downloads\Server2019Baseline.zip
-   ```
+```powerShell
+Add-WindowsCapability -Online -Name 'Rsat.GroupPolicy.Management.Tools~~~~0.0.1.0'
+Add-WindowsCapability -Online -Name 'Rsat.ActiveDirectory.DS-LDS.Tools~~~~0.0.1.0'
+```
 
-1. Entsperren und erweitern Sie die heruntergeladene Server 2019-Baseline.
+## <a name="export-and-convert-group-policy-to-guest-configuration"></a>Exportieren und Konvertieren einer Gruppenrichtlinie in eine Gastkonfiguration
 
-   ```azurepowershell-interactive
-   Unblock-File C:\git\policyfiles\downloads\Server2019Baseline.zip
-   Expand-Archive -Path C:\git\policyfiles\downloads\Server2019Baseline.zip -DestinationPath C:\git\policyfiles\downloads\
-   ```
+Es gibt drei Möglichkeiten, Gruppenrichtliniendateien zu exportieren und sie in DSC zu konvertieren, um sie in der Gastkonfiguration zu verwenden.
 
-1. Überprüfen Sie den Inhalt der Server 2019-Baseline mithilfe von **MapGuidsToGpoNames.ps1**.
+- Exportieren von einem einzelnen Gruppenrichtlinienobjekt
+- Exportieren von zusammengeführten Gruppenrichtlinienobjekte für eine OU
+- Exportieren Sie die zusammengefassten Gruppenrichtlinienobjekte von einem Computer aus
 
-   ```azurepowershell-interactive
-   # Show content details of downloaded GPOs
-   C:\git\policyfiles\downloads\Scripts\Tools\MapGuidsToGpoNames.ps1 -rootdir C:\git\policyfiles\downloads\GPOs\ -Verbose
-   ```
+### <a name="single-group-policy-object"></a>Einzelne Gruppenrichtlinienobjekte
 
-## <a name="convert-from-group-policy-to-azure-policy-guest-configuration"></a>Konvertieren aus der Gruppenrichtlinie in die Azure Policy-Gastkonfiguration
+Identifizieren Sie die GUID des zu exportierenden Gruppenrichtlinienobjekts, indem Sie die Befehle im `Group Policy` Modul verwenden. In einer großen Umgebung sollten Sie erwägen, die Ausgabe nach `where-object` zu leiten und nach Namen zu filtern.
 
-Im nächsten Schritt wird die heruntergeladene Server 2019-Baseline mithilfe der Module GuestConfiguration und BaselineManagement in ein Gastkonfigurationspaket konvertiert.
+Führen Sie jeden der folgenden Schritte in einer **Windows PowerShell 5.1**-Umgebung auf einem Windows-Computer mit **Domänenanschluss** aus:
 
-1. Konvertieren Sie die Gruppenrichtlinie mithilfe des BaselineManagement-Moduls in die Desired State Configuration.
+```powershell
+# List all Group Policy Objects
+Get-GPO -all
+```
 
-   ```azurepowershell-interactive
-   ConvertFrom-GPO -Path 'C:\git\policyfiles\downloads\GPOs\{3657C7A2-3FF3-4C21-9439-8FDF549F1D68}\' -OutputPath 'C:\git\policyfiles\' -OutputConfigurationScript -Verbose
-   ```
+Sichern Sie die Gruppenrichtlinie in Dateien. Der Befehl akzeptiert auch einen "Name"-Parameter, aber die Verwendung der GUID der Richtlinie ist weniger fehleranfällig.
 
-1. Benennen Sie die konvertierten Skripts um, formatieren Sie sie neu, und führen Sie sie dann aus, bevor Sie ein Richtlinieninhaltspaket erstellen.
+```powershell
+Backup-GPO -Guid 'f0cf623e-ae29-4768-9bb4-406cce1f3cff' -Path C:\gpobackup\
+```
 
-   ```azurepowershell-interactive
-   Rename-Item -Path C:\git\policyfiles\DSCFromGPO.ps1 -NewName C:\git\policyfiles\Server2019Baseline.ps1
-   (Get-Content -Path C:\git\policyfiles\Server2019Baseline.ps1).Replace('DSCFromGPO', 'Server2019Baseline') | Set-Content -Path C:\git\policyfiles\Server2019Baseline.ps1
-   (Get-Content -Path C:\git\policyfiles\Server2019Baseline.ps1).Replace('PSDesiredStateConfiguration', 'PSDscResources') | Set-Content -Path C:\git\policyfiles\Server2019Baseline.ps1
-   C:\git\policyfiles\Server2019Baseline.ps1
-   ```
+```
 
-1. Erstellen Sie ein Azure Policy-Gastkonfigurationsinhaltspaket.
+The output of the command returns the details of the files.
 
-   ```azurepowershell-interactive
-   New-GuestConfigurationPackage -Name Server2019Baseline -Configuration c:\git\policyfiles\localhost.mof -Verbose
-   ```
+ConfigurationScript                   Configuration                   Name
+-------------------                   -------------                   ----
+C:\convertfromgpo\myCustomPolicy1.ps1 C:\convertfromgpo\localhost.mof myCustomPolicy1
+```
 
-## <a name="create-azure-policy-guest-configuration"></a>Erstellen der Azure Policy-Gastkonfiguration
+Überprüfen Sie das exportierte PowerShell-Skript, um sicherzustellen, dass alle Einstellungen ausgefüllt wurden und keine Fehlermeldungen geschrieben wurden. Erstellen Sie mithilfe der MOF-Datei ein neues Konfigurationspaket, indem Sie die Anleitung auf der Seite [Erstellen benutzerdefinierter Gastkonfigurationspaketartefakte](./guest-configuration-create.md) verwenden.
+Die Schritte zum Erstellen und Ausprobieren des Gastkonfigurationspakets sollten in einer PowerShell 7-Umgebung ausgeführt werden.
 
-1. Im nächsten Schritt wird die Datei in Azure Blob Storage veröffentlicht. Für den Befehl `Publish-GuestConfigurationPackage` ist das `Az.Storage`-Modul erforderlich.
+### <a name="merged-group-policy-objects-for-an-ou"></a>Zusammengeführte Gruppenrichtlinienobjekte für eine OU
 
-   ```azurepowershell-interactive
-   Publish-GuestConfigurationPackage -Path ./AuditBitlocker.zip -ResourceGroupName  myResourceGroupName -StorageAccountName myStorageAccountName
-   ```
+Exportieren Sie die zusammengefasste Kombination von Gruppenrichtlinienobjekten (ähnlich einem resultierenden Richtliniensatz) für eine bestimmte Organisationseinheit. Der Zusammenführungsvorgang berücksichtigt den Verknüpfungsstatus, die Durchsetzung und den Zugriff, jedoch keine WMI-Filter.
 
-1. Nachdem ein benutzerdefiniertes Richtlinienpaket für Gastkonfigurationen erstellt und hochgeladen wurde, erstellen Sie die Richtliniendefinition für Gastkonfigurationen. Verwenden Sie das Cmdlet `New-GuestConfigurationPolicy`, um die Gastkonfiguration zu erstellen.
+```powershell
+Merge-GPOsFromOU -Path C:\mergedfromou\ -OUDistinguishedName 'OU=mySubOU,OU=myOU,DC=mydomain,DC=local' -OutputConfigurationScript
+```
 
-   ```azurepowershell-interactive
-   $NewGuestConfigurationPolicySplat = @{
-        ContentUri = $Uri
-        DisplayName = 'Server 2019 Configuration Baseline'
-        Description 'Validation of using a completely custom baseline configuration for Windows VMs'
-        Path = 'C:\git\policyfiles\policy'  
-        Platform = Windows
-   }
-   New-GuestConfigurationPolicy @NewGuestConfigurationPolicySplat
-   ```
+Die Ausgabe des Befehls gibt die Details der Dateien zurück.
 
-1. Veröffentlichen Sie die Richtliniendefinitionen mit dem Cmdlet `Publish-GuestConfigurationPolicy`. Das Cmdlet verfügt nur über den Parameter **Path**, mit dem auf den Speicherort der JSON-Dateien verwiesen wird, die mit `New-GuestConfigurationPolicy` erstellt werden. Um den Befehl „Veröffentlichen“ auszuführen, benötigen Sie Zugriff zum Erstellen von Richtliniendefinitionen in Azure. Die entsprechenden Autorisierungsanforderungen sind auf der Seite mit der [Übersicht über Azure Policy](../overview.md#getting-started) dokumentiert. Die beste integrierte Rolle ist **Mitwirkender bei Ressourcenrichtlinien**.
+```powershell
+Configuration                                Name    ConfigurationScript
+-------------                                ----    -------------------
+C:\mergedfromou\mySubOU\output\localhost.mof mySubOU C:\mergedfromou\mySubOU\output\mySubOU.ps1
+```
 
-   ```azurepowershell-interactive
-   Publish-GuestConfigurationPolicy -Path C:\git\policyfiles\policy\ -Verbose
-   ```
+### <a name="merged-group-policy-objects-from-within-a-machine"></a>Zusammengeführte Gruppenrichtlinienobjekte auf einem Computer
 
-## <a name="assign-guest-configuration-policy-definition"></a>Zuweisen der Richtliniendefinition für die Gastkonfiguration
+Sie können die Richtlinien, die auf einen bestimmten Computer angewendet werden, auch zusammenführen, indem Sie den `Merge-GPOs`Befehl in Windows PowerShell ausführen. WMI-Filter werden nur ausgewertet, wenn Sie die Zusammenführung auf einem Computer vornehmen.
 
-Bei der in Azure erstellten Richtlinie ist der letzte Schritt das Zuweisen der Initiative. Informieren Sie sich darüber, wie Sie die Initiative per [Portal](../assign-policy-portal.md), [Azure CLI](../assign-policy-azurecli.md) oder [Azure PowerShell](../assign-policy-powershell.md) zuweisen können.
+```powershell
+Merge-GPOs -OutputConfigurationScript -Path c:\mergedgpo
+```
 
-> [!IMPORTANT]
-> Richtliniendefinitionen für Gastkonfigurationen müssen **immer** über die Initiative zugewiesen werden, in der die Richtlinien _AuditIfNotExists_ und _DeployIfNotExists_ kombiniert sind. Wenn nur die Richtlinie _AuditIfNotExists_ zugewiesen wird, werden die erforderlichen Komponenten nicht bereitgestellt, und die Richtlinie zeigt immer an, dass „0“ Server konform sind.
+Die Ausgabe des Befehls gibt die Details der Dateien zurück.
 
-Das Zuweisen einer Richtliniendefinition mit der Auswirkung _DeployIfNotExists_ erfordert eine zusätzliche Zugriffsebene. Zum Erteilen der geringsten Berechtigung können Sie eine benutzerdefinierte Rollendefinition erstellen, die **Mitwirkender bei Ressourcenrichtlinien** erweitert. Im folgenden Beispiel wird eine Rolle mit dem Namen **Resource Policy Contributor DINE** mit der zusätzlichen Berechtigung _Microsoft.Authorization/roleAssignments/write_ erstellt.
+```powershell
+Configuration              Name                  ConfigurationScript                    PolicyDetails
+-------------              ----                  -------------------                    -------------
+C:\mergedgpo\localhost.mof MergedGroupPolicy_ws1 C:\mergedgpo\MergedGroupPolicy_ws1.ps1 {@{Name=myEnforcedPolicy; Ap...
+```
 
-   ```azurepowershell-interactive
-   $subscriptionid = '00000000-0000-0000-0000-000000000000'
-   $role = Get-AzRoleDefinition "Resource Policy Contributor"
-   $role.Id = $null
-   $role.Name = "Resource Policy Contributor DINE"
-   $role.Description = "Can assign Policies that require remediation."
-   $role.Actions.Clear()
-   $role.Actions.Add("Microsoft.Authorization/roleAssignments/write")
-   $role.AssignableScopes.Clear()
-   $role.AssignableScopes.Add("/subscriptions/$subscriptionid")
-   New-AzRoleDefinition -Role $role
-   ```
+## <a name="optional-download-sample-group-policy-files-for-testing"></a>OPTIONAL: Herunterladen von Beispielen von Gruppenrichtliniendateien zum Ausprobieren
+
+Wenn Sie nicht soweit sind, Gruppenrichtliniedateien aus einer Active Directory-Umgebung zu exportieren, können Sie die Windows Server-Sicherheitsbaseline aus dem Windows-Sicherheit-Toolkit herunterladen.
+
+Erstellen Sie ein Verzeichnis für die Windows Server 2019-Sicherheitsbaseline, und laden Sie diese aus dem Windows Security Compliance-Toolkit herunter.
+
+```azurepowershell-interactive
+# Download the 2019 Baseline files from https://docs.microsoft.com/windows/security/threat-protection/security-compliance-toolkit-10
+New-Item -Path 'C:\git\policyfiles\downloads' -Type Directory
+Invoke-WebRequest -Uri 'https://download.microsoft.com/download/8/5/C/85C25433-A1B0-4FFA-9429-7E023E7DA8D8/Windows%2010%20Version%201909%20and%20Windows%20Server%20Version%201909%20Security%20Baseline.zip' -Out C:\git\policyfiles\downloads\Server2019Baseline.zip
+```
+
+Entsperren und erweitern Sie die heruntergeladene Server 2019-Baseline.
+
+```azurepowershell-interactive
+Unblock-File C:\git\policyfiles\downloads\Server2019Baseline.zip
+Expand-Archive -Path C:\git\policyfiles\downloads\Server2019Baseline.zip -DestinationPath C:\git\policyfiles\downloads\
+```
+
+Überprüfen Sie den Inhalt der Server 2019-Baseline mithilfe von **MapGuidsToGpoNames.ps1**.
+
+```azurepowershell-interactive
+# Show content details of downloaded GPOs
+C:\git\policyfiles\downloads\Scripts\Tools\MapGuidsToGpoNames.ps1 -rootdir C:\git\policyfiles\downloads\GPOs\ -Verbose
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informieren Sie sich über die Überprüfung von VMs mit [Gastkonfiguration](../concepts/guest-configuration.md).
-- Informieren Sie sich über das [programmgesteuerte Erstellen von Richtlinien](./programmatically-create.md).
-- Informieren Sie sich über das [Abrufen von Konformitätsdaten](./get-compliance-data.md).
+- [Erstellen Sie ein Paketartefakt](./guest-configuration-create.md) für Gastkonfigurationen.
+- [Testen Sie das Paketartefakt](./guest-configuration-create-test.md) aus Ihrer Entwicklungsumgebung.
+- [Veröffentlichen Sie das Paketartefakt](./guest-configuration-create-publish.md), damit es für Ihre Computer zugänglich ist.
+- Verwenden Sie das Modul `GuestConfiguration` zum [Erstellen einer Azure Policy Definition](./guest-configuration-create-definition.md) für die skalierungsorientierte Verwaltung Ihrer Umgebung.
+- [Weisen Sie Ihre Richtliniendefinition](../assign-policy-portal.md) mithilfe des Azure-Portals zu.
+- Erfahren Sie, wie Sie die [Konformitätsdetails für die Zuweisung von Gastkonfigurationsrichtlinien](./determine-non-compliance.md#compliance-details-for-guest-configuration) anzeigen.

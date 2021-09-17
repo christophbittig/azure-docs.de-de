@@ -1,23 +1,26 @@
 ---
-title: Aktivität „Metadaten abrufen“ in Azure Data Factory
-description: Erfahren Sie, wie Sie die Aktivität „Metadaten abrufen“ in einer Data Factory-Pipeline verwenden.
+title: Aktivität „Metadaten abrufen“
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Erfahren Sie, wie Sie die Aktivität „Metadaten abrufen“ in einer Azure Data Factory- oder Azure Synapse Analytics-Pipeline verwenden.
 author: jianleishen
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 02/25/2021
+ms.date: 08/24/2021
 ms.author: jianleishen
-ms.openlocfilehash: 6c375143217379b7ec795778f8947d88b70aa4bc
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 4f619266d225e4dd36bb68ca9ebcaaae366891cb
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110062810"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821887"
 ---
-# <a name="get-metadata-activity-in-azure-data-factory"></a>Aktivität „Metadaten abrufen“ in Azure Data Factory
+# <a name="get-metadata-activity-in-azure-data-factory-or-azure-synapse-analytics"></a>Aktivität „Metadaten abrufen“ in Azure Data Factory und Azure Synapse Analytics
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Die Aktivität „Metadaten abrufen“ kann zum Abrufen von Metadaten beliebiger Daten in Azure Data Factory verwendet werden. Sie können die Ausgabe der Aktivität „Get Metadata“ (Metadaten abrufen) in bedingten Ausdrücken verwenden, um die Validierung durchzuführen oder die Metadaten in nachfolgenden Aktivitäten zu nutzen.
+Sie können die Aktivität „Metadaten abrufen“ verwenden, um Metadaten zu beliebigen Daten in Azure Data Factory oder einer Synapse-Pipeline abzurufen. Sie können die Ausgabe der Aktivität „Get Metadata“ (Metadaten abrufen) in bedingten Ausdrücken verwenden, um die Validierung durchzuführen oder die Metadaten in nachfolgenden Aktivitäten zu nutzen.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -224,7 +227,7 @@ Die Ergebnisse von „Metadaten abrufen“ werden in der Ausgabe der Aktivität 
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informieren Sie sich über weitere Ablaufsteuerungsaktivitäten, die von Data Factory unterstützt werden:
+Informationen zu weiteren unterstützten Ablaufsteuerungsaktivitäten:
 
 - [Aktivität „Pipeline ausführen“](control-flow-execute-pipeline-activity.md)
 - [ForEach-Aktivität](control-flow-for-each-activity.md)

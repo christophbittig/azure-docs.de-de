@@ -1,18 +1,18 @@
 ---
 title: 'Schnellstart: Bereitstellen von Azure Spring Cloud mithilfe von Terraform'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von Terraform einen Spring Cloud-Cluster in einem vorhandenen virtuellen Netzwerk bereitstellen.
-author: aluna033
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.custom: devx-track-java
 ms.author: ariel
 ms.date: 06/15/2021
-ms.openlocfilehash: d099e86f5a28aae145723b728e79ce3ee55f8250
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: f3459ef8fe7f3d1dcc491c0c7dcc8863df0b2cb1
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114287566"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271509"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-using-terraform"></a>Schnellstart: Bereitstellen von Azure Spring Cloud mithilfe von Terraform
 
@@ -24,7 +24,7 @@ Mit Azure Spring Cloud lassen sich Spring Boot-Microserviceanwendungen ganz ein
 
 * Ein Azure-Abonnement. Wenn Sie kein Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 * [Hashicorp Terraform](https://www.terraform.io/downloads.html)
-* Zwei dedizierte Subnetze für den Azure Spring Cloud-Cluster, eines für die Dienstruntime und ein weiteres für die Spring Boot-Microserviceanwendungen. Die Anforderungen an Subnetze und virtuelle Netzwerke finden Sie im Abschnitt [Anforderungen für virtuelle Netzwerke](how-to-deploy-in-azure-virtual-network.md#virtual-network-requirements) des Artikels [Bereitstellen von Azure Spring Cloud in einem virtuellen Netzwerk](how-to-deploy-in-azure-virtual-network.md).
+* Zwei dedizierte Subnetze für den Azure Spring Cloud-Cluster, eines für die Dienstruntime und ein weiteres für die Spring Boot-Microserviceanwendungen. Die Anforderungen an Subnetze und virtuelle Netzwerke finden Sie im Abschnitt [Anforderungen für virtuelle Netzwerke](how-to-deploy-in-azure-virtual-network.md#virtual-network-requirements) des Artikels [Bereitstellen von Azure Spring Cloud in einem virtuellen Netzwerk](how-to-deploy-in-azure-virtual-network.md).
 * Ein vorhandener Log Analytics-Arbeitsbereich für Azure Spring Cloud-Diagnoseeinstellungen und eine arbeitsbereichsbasierte Application Insights-Ressource. Weitere Informationen finden Sie unter [Analysieren von Protokollen und Metriken mit Diagnoseeinstellungen](diagnostic-services.md) und [Java-In-Process-Agent für Application Insights in Azure Spring Cloud](how-to-application-insights.md).
 * Drei interne CIDR-Bereiche (Classless Inter-Domain Routing) (mindestens jeweils */16*), die Sie für die Verwendung durch den Azure Spring Cloud-Cluster identifiziert haben. Diese CIDR-Bereiche sind nicht direkt routingfähig und werden nur intern vom Azure Spring Cloud-Cluster verwendet. Cluster dürfen nicht *169.254.0.0/16*, *172.30.0.0/16*, *172.31.0.0/16* oder *192.0.2.0/24* für die internen Spring Cloud-CIDR-Bereiche verwenden, oder IP-Adressbereiche, die im Adressbereich des virtuellen Netzwerks des Clusters enthalten sind.
 * Dienstberechtigung, die dem virtuellen Netzwerk erteilt wurde. Der Azure Spring Cloud-Ressourcenanbieter erfordert die Berechtigung vom Typ „Besitzer“ für Ihr virtuelles Netzwerk, damit ein dedizierter und dynamischer Dienstprinzipal im virtuellen Netzwerk für die weitere Bereitstellung und Wartung gewährt werden kann. Anweisungen und weitere Informationen finden Sie im Abschnitt [Erteilen der Dienstberechtigung für das virtuelle Netzwerk](how-to-deploy-in-azure-virtual-network.md#grant-service-permission-to-the-virtual-network) des Artikels [Bereitstellen von Azure Spring Cloud in einem virtuellen Netzwerk](how-to-deploy-in-azure-virtual-network.md).
@@ -38,7 +38,7 @@ Die in dieser Schnellstartanleitung verwendete Konfigurationsdatei stammt aus de
 
 ```hcl
 provider "azurerm" {
-    features {} 
+    features {}
 }
 
 resource "azurerm_resource_group" "sc_corp_rg" {
@@ -55,24 +55,24 @@ resource "azurerm_application_insights" "sc_app_insights" {
 }
 
 resource "azurerm_spring_cloud_service" "sc" {
-  name                = var.sc_service_name 
+  name                = var.sc_service_name
   resource_group_name = var.resource_group_name
   location            = var.location
-  
+
   network {
     app_subnet_id                   = "/subscriptions/${var.subscription}/resourceGroups/${var.azurespringcloudvnetrg}/providers/Microsoft.Network/virtualNetworks/${var.vnet_spoke_name}/subnets/${var.app_subnet_id}"
     service_runtime_subnet_id       = "/subscriptions/${var.subscription}/resourceGroups/${var.azurespringcloudvnetrg}/providers/Microsoft.Network/virtualNetworks/${var.vnet_spoke_name}/subnets/${var.service_runtime_subnet_id}"
     cidr_ranges                     = var.sc_cidr
   }
-  
+
   timeouts {
       create = "60m"
       delete = "2h"
   }
-  
+
   depends_on = [azurerm_resource_group.sc_corp_rg]
   tags = var.tags
-  
+
 }
 
 resource "azurerm_monitor_diagnostic_setting" "sc_diag" {
@@ -111,27 +111,19 @@ Führen Sie die folgenden Schritte aus, um die Konfiguration anzuwenden:
 
    - Bereitstellungsstandort aus den Regionen, in denen Azure Spring Cloud verfügbar ist (siehe [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=spring-cloud&regions=all)). Sie benötigen die Kurzform des Standortnamens. Verwenden Sie zum Abrufen dieses Werts den folgenden Befehl, um eine Liste von Azure-Standorten zu generieren, und suchen Sie dann nach dem Wert für **Name** für die von Ihnen ausgewählte Region.
 
-      ```azurecli
-      az account list-locations --output table
-      ```
+   ```azurecli
+   az account list-locations --output table
+   ```
 
    - Name der Ressourcengruppe, in der Sie die Bereitstellung durchführen
-
    - Name Ihrer Wahl für die Spring Cloud-Bereitstellung
-
    - Name der Ressourcengruppe des virtuellen Netzwerks, in der Sie Ihre Ressourcen bereitstellen
-
    - Name des virtuellen Spokenetzwerks (z. B. *vnet-spoke*)
-
    - Name des Subnetzes, das von Spring Cloud App Service verwendet werden soll (z. B. *snet-app*)
-
    - Name des Subnetzes, das vom Spring Cloud-Laufzeitdienst verwendet werden soll (z. B. *snet-runtime*)
-
    - Name des Azure Log Analytics-Arbeitsbereichs
-
    - CIDR-Bereiche Ihres virtuellen Netzwerks, die von Azure Spring Cloud verwendet werden sollen (z. B. *XX.X.X.X/16,XX.X.X.X/16,XX.X.X.X/16*)
-
-   - Schlüssel-Wert-Paare, die als Tags auf alle Ressourcen angewendet werden sollen, die Tags unterstützen. Unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen und Verwaltungshierarchie](../azure-resource-manager/management/tag-resources.md) erhalten Sie weitere Informationen. 
+   - Schlüssel-Wert-Paare, die als Tags auf alle Ressourcen angewendet werden sollen, die Tags unterstützen. Unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen und Verwaltungshierarchie](../azure-resource-manager/management/tag-resources.md) erhalten Sie weitere Informationen.
 
 1. Führen Sie den folgenden Befehl aus, um die Terraform-Module zu initialisieren:
 

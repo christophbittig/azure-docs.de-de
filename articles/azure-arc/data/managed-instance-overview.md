@@ -7,27 +7,33 @@ ms.subservice: azure-arc-data
 author: dnethi
 ms.author: dinethi
 ms.reviewer: mikeray
-ms.date: 03/02/2021
+ms.date: 07/30/2021
 ms.topic: overview
-ms.openlocfilehash: 91501d89a7fe286dc12311f7d1f6d423b58e2505
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 42ad3481d9732d8ddef37624de87f465ae41d297
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113729864"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733516"
 ---
 # <a name="azure-arc-enabled-sql-managed-instance-overview"></a>SQL Managed Instance mit Azure Arc-Unterstützung (Übersicht)
 
 SQL Managed Instance mit Azure Arc-Unterstützung ist ein Azure SQL-Datendienst, der in der Infrastruktur Ihrer Wahl erstellt werden kann. 
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="description"></a>Beschreibung
 
 SQL Managed Instance mit Azure Arc-Unterstützung ist zu nahezu 100 % mit der aktuellen SQL Server-Datenbank-Engine kompatibel und ermöglicht bestehenden SQL Server-Kunden, ihre Anwendungen mit minimalen Anwendungs- und Datenbankänderungen per Lift & Shift zu Azure Arc-Datendiensten zu migrieren und gleichzeitig die Datenhoheit beizubehalten. Gleichzeitig umfasst SQL Managed Instance integrierte Verwaltungsfunktionen, mit denen der Verwaltungsaufwand drastisch reduziert wird. 
 
-Wenn Sie mehr zu diesen Funktionen erfahren möchten, können Sie sich auch diese Data Exposed-Folge ansehen.
-> [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/What-is-Azure-Arc-Enabled-SQL-Managed-Instance--Data-Exposed/player?format=ny]
+Weitere Informationen zu diesen Funktionen erhalten Sie in den folgenden Einführungsvideos.
+
+### <a name="azure-arc-enabled-sql-managed-instance---indirect-connected-mode"></a>SQL Managed Instance mit Azure Arc-Unterstützung: Indirekter Konnektivitätsmodus
+
+> [!VIDEO https://channel9.msdn.com/Shows/Inside-Azure-for-IT/Azure-Arcenabled-data-services-in-disconnected-mode/player?format=ny]
+
+### <a name="azure-arc-enabled-sql-managed-instance---direct-connected-mode"></a>SQL Managed Instance mit Azure Arc-Unterstützung: Direkter Konnektivitätsmodus
+
+> [!VIDEO https://channel9.msdn.com/Shows/Inside-Azure-for-IT/Azure-Arcenabled-data-services-in-connected-mode/player?format=ny]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

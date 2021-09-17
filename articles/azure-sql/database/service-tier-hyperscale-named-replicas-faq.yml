@@ -1,77 +1,79 @@
 ### YamlMime:FAQ
 metadata:
   title: 'Benannte Hyperscale-Replikate in Azure SQL-Datenbank: Häufig gestellte Fragen'
-  description: In diesem Artikel werden häufig gestellte Fragen beantwortet, die Kunden zu einer Datenbank in SQL-Datenbank mit benannten Replikaten der Dienstebene „Hyperscale“ haben.
+  description: Antworten auf häufig gestellte Fragen zu benannten Hyperscale-Replikaten
   services: sql-database
   ms.service: sql-database
-  ms.subservice: 
+  ms.subservice: service-overview
   ms.custom: 
   ms.devlang: 
   ms.topic: conceptual
   author: yorek
   ms.author: damauri
   ms.reviewer: 
-  ms.date: 06/09/2021
-  ms.openlocfilehash: 53dd0035a9ee973b68b7a1f795e500775e226e3f
-  ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
+  ms.date: 07/27/2021
+  ms.openlocfilehash: 223873b80235c9a8734d0b7d6c3a04781e202a4d
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 07/02/2021
-  ms.locfileid: "113233442"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121722915"
 title: 'Benannte Hyperscale-Replikate in Azure SQL-Datenbank: Häufig gestellte Fragen'
-summary: "[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]\n\nDieser Artikel enthält Antworten auf häufig gestellte Fragen für Kunden, die in Erwägung ziehen, eine Datenbank in Azure SQL-Datenbank mit der Dienstebene „Hyperscale“ zu verwenden, die im weiteren Verlauf dieses Artikels einfach als „Hyperscale“ bezeichnet wird. In diesem Artikel werden die von Hyperscale unterstützten Szenarien und die Features beschrieben, die mit Hyperscale kompatibel sind.\n\n- Diese FAQs richten sich an Leser, die über Grundkenntnisse zu den benannten Replikaten der Dienstebene „Hyperscale“ verfügen und auf der Suche nach Antworten auf ihre Fragen und Probleme sind.\n- Alle wichtigen Informationen zu benannten Hyperscale-Replikaten finden Sie unter [Benanntes Replikat (Vorschau)](service-tier-hyperscale-replicas.md#named-replica-in-preview) im Artikel zu Hyperscale-Replikaten. \n"
+summary: >
+  [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+
+
+  Diese FAQs richten sich an Leser, die über Grundkenntnisse zu den [benannten Hyperscale-Replikaten](service-tier-hyperscale-replicas.md#named-replica-in-preview) verfügen und auf der Suche nach Antworten auf ihre Fragen und Probleme sind.
 sections:
 - name: Allgemeine Fragen
   questions:
   - question: >
-      Kann ein benanntes Replikat als Failoverziel verwendet werden?
+      Can a named replica be used as a failover target?
     answer: >
-      Nein. Benannte Replikate können nicht als Failoverziele verwendet werden. Verwenden Sie hierfür Hochverfügbarkeitsreplikate.
+      No, named replicas cannot be used as failover targets for the primary replica. Add HA replicas for that purpose.
   - question: >
-      Wie kann ich die schreibgeschützte Workload auf meine benannten Replikate verteilen?
+      How can I distribute a read-only workload across my named replicas?
     answer: >
-      Da jedes benannte Replikat ein anderes Servicelevelziel haben und daher für unterschiedliche Anwendungsfälle genutzt werden kann, gibt es keine integrierte Möglichkeit, den an das primäre Replikat gesendeten schreibgeschützten Datenverkehr an die zugehörigen benannten Replikate weiterzuleiten. Es kann beispielsweise sein, dass Sie über acht benannte Replikate verfügen und die OLTP-Workload nur an die benannten Replikate 1 bis 4 weiterleiten möchten. Für alle Power BI-Analyseworkloads sollen die benannten Replikate 5 und 6 und für die Data Science-Workload die Replikate 7 und 8 genutzt werden. In Abhängigkeit davon, welches Tool bzw. welche Programmiersprache Sie verwenden, können die Strategien zum Verteilen von Workloads dieser Art jeweils variieren. Ein Beispiel für die Erstellung einer Lösung für das Routing von Workloads, um für ein REST-Back-End das Aufskalieren zu ermöglichen, finden Sie hier: [Beispiel für OLTP-Aufskalierung](https://github.com/Azure-Samples/azure-sql-db-named-replica-oltp-scaleout).
+      Since every named replica may have a different service level objective and thus be used for different use cases, there is no built-in way to direct read-only traffic sent to the primary to a set of named replicas. For example, you may have eight named replicas, and you may want to direct OLTP workload only to named replicas 1 to 4, while all the Power BI analytical workloads will use named replicas 5 and 6 and the data science workload will use replicas 7 and 8. Depending on which tool or programming language you use, strategies to distribute such workload may vary. One example of creating a workload routing solution to allow a REST backend to scale out is here: [OLTP scale-out sample](https://github.com/Azure-Samples/azure-sql-db-named-replica-oltp-scaleout).
   - question: >
-      Kann sich ein benanntes Replikat in einer anderen Region als der Region des primären Replikats befinden?
+      Can a named replica be in a region different from the region of the primary replica?
     answer: >
-      Nein. Da für benannte Replikate dieselben Seitenserver wie für das primäre Replikat verwendet werden, müssen sich diese in derselben Region befinden.
+      No, as named replicas use the same page servers of the primary replica, they must be in the same region.
   - question: >
-      Kann ein benanntes Replikat die Verfügbarkeit oder Leistung des primären Replikats beeinträchtigen?
+      Can a named replica impact availability or performance of the primary replica?
     answer: >
-      Durch ein benanntes Replikat kann die Verfügbarkeit des primären Replikats nicht beeinträchtigt werden. Für benannte Replikate ist es unter normalen Umständen unwahrscheinlich, dass diese eine negative Auswirkung auf die Leistung des primären Replikats haben. Dies ist aber ggf. möglich, wenn rechenintensive Workloads ausgeführt werden. Es gilt dasselbe wie bei einem Hochverfügbarkeitsreplikat: Ein benanntes Replikat wird über den Transaktionsprotokolldienst mit dem primären Replikat synchron gehalten. Falls das Transaktionsprotokoll von einem benannten Replikat aus irgendeinem Grund nicht schnell genug genutzt werden kann, wird vom primären Replikat eine Verlangsamung (Drosselung) der Protokollgenerierung gefordert, damit der Rückstand aufgeholt werden kann. Dieses Verhalten hat zwar keine Auswirkungen auf die Verfügbarkeit des primären Replikats, aber die Leistung wird beeinträchtigt. Stellen Sie zur Vermeidung dieser Situation sicher, dass Ihre benannten Replikate über genügend freie Ressourcen (hauptsächlich in Bezug auf die CPU) verfügen, damit diese das Transaktionsprotokoll ohne Verzögerung verarbeiten können. Falls vom primären Replikat beispielsweise eine größere Zahl von Datenänderungen verarbeitet wird, empfehlen wir Ihnen, für das benannte Replikat mindestens das gleiche Servicelevelziel wie für das primäre Replikat zu verwenden. Auf diese Weise werden Engpässe für die CPU auf den Replikaten verhindert, sodass für das primäre Replikat die Verlangsamung erzwungen werden kann.
+      A named replica cannot impact the availability of the primary replica. Named replicas, under normal circumstances, are unlikely to impact the primary's performance, but it can happen if there are intensive workloads running. Just like an HA replica, a named replica is kept in sync with the primary via the transaction log service. If a named replica, for any reason, is not able to consume the transaction log fast enough, it will start asking the primary replica to slow down (throttle) its log generation, so that it can catch up. While this behavior will not impact the primary's availability, it may impact performance of write workloads on the primary. To avoid this situation, make sure that your named replicas have enough resource headroom – mainly CPU – to process transaction log without delay. For example, if the primary is processing numerous data changes, it is recommended to have named replicas with at least the same Service Level Objective as the primary, to avoid saturating CPU on the replicas and thus forcing the primary to slow down.
   - question: >
-      Was geschieht mit benannten Replikaten, wenn das primäre Replikat nicht verfügbar ist, z. B. aufgrund einer geplanten Wartung?
+      What happens to named replicas if the primary replica is unavailable, for example because of planned maintenance?
     answer: >
-      Benannte Replikate sind weiterhin wie gewohnt für den schreibgeschützten Zugriff verfügbar.
+      Named replicas will still be available for read-only access, as usual.
   - question: >
-      Wie kann ich überprüfen, ob die Verbindungsherstellung mit dem sekundären Computereplikat mithilfe von SQL Server Management Studio (SSMS) oder anderen Clienttools erfolgreich war?
+      How do I validate if I have successfully connected to secondary compute replica using SQL Server Management Studio (SSMS) or other client tools?
     answer: >
-      Sie können die folgende T-SQL-Abfrage ausführen:
+      You can execute the following T-SQL query. The database context must be set to the name of the Hyperscale database, not to the `master` database.
 
 
       ```sql
 
-      SELECT @@SERVERNAME, DB_NAME(), DATABASEPROPERTYEX(DB_NAME(), 'Updateability');
+      SELECT @@SERVERNAME AS logical_server_name, DB_NAME() AS database_name, DATABASEPROPERTYEX(DB_NAME(), 'Updateability') AS replica_updateability;
 
       ```
 
 
-      Das Ergebnis lautet `READ_ONLY`, wenn Sie mit einem schreibgeschützten sekundären Replikat verbunden sind, und `READ_WRITE` bei einer Verbindung mit dem primären Replikat. Der Datenbankkontext muss auf den Namen der Hyperscale-Datenbank (und nicht auf die `master`-Datenbank) festgelegt werden.
+      `replica_updateability` will be `READ_ONLY` if you are connected to a read-only secondary replica, and `READ_WRITE` if you are connected to the primary replica.
   - question: >
-      Kann ich auf meinen sekundären Computereplikaten Objekte oder Indizes erstellen?
+      Can I create any objects or indexes on my secondary compute replicas?
     answer: >
-      Nein. Hyperscale-Datenbanken verfügen über einen gemeinsamen Speicher. Dies bedeutet, dass alle Computereplikate dieselben Tabellen, Indizes und Ansichten anzeigen. Wenn Sie zusätzliche für Lesevorgänge optimierte Indizes im sekundären Replikat benötigen, müssen Sie sie im primären Replikat hinzufügen.
+      No. Hyperscale databases have shared storage, meaning that all compute replicas see the same tables, indexes, views, etc. If you want additional indexes optimized for reads on secondary, you must add them on the primary.
 
 
-      Sie können weiterhin temporäre Tabellen erstellen und verwenden, um temporäre Daten zu speichern.
+      You can still create temporary tables (table names prefixed with # or ##) on each secondary replica to store temporary data. Temporary tables are read-write.
   - question: >
-      Wie lange dauert die Verzögerung zwischen dem primären und dem sekundären Computereplikat?
+      How much delay is there between the primary and secondary compute replicas?
     answer: >
-      Die Datenlatenz ab dem Zeitpunkt, zu dem eine Transaktion auf dem primären Replikat committet wird, bis zu dem Zeitpunkt, zu dem sie auf einem sekundären Replikat lesbar ist, hängt von den aktuellen Werten für Protokollgenerierungsrate, Transaktionsgröße und Last auf dem Replikat sowie anderen Faktoren ab. Die typische Datenlatenz bei kleinen Transaktionen liegt im Bereich einiger Zehntel Millisekunden, es gibt jedoch keine obere Grenze für die Datenlatenz. Daten auf einem bestimmten sekundären Replikat sind immer transaktionsweise konsistent. Zu einem bestimmten Zeitpunkt kann die Datenlatenz für verschiedene sekundäre Replikate jedoch unterschiedlich sein. Workloads, die committete Daten sofort lesen müssen, sollten auf dem primären Replikat ausgeführt werden.
+      Data latency from the time a transaction is committed on the primary to the time it is readable on a secondary depends on current log generation rate, transaction size, load on the replica, and other factors. Typical data latency for small transactions is in tens of milliseconds, however there is no upper bound on data latency. Data on a given secondary replica is always transactionally consistent. However, at a given point in time data latency may be different for different secondary replicas. Workloads that need to read committed data immediately should run on the primary replica.
   - question: >
-      Wie kann ich die Verfügbarkeit von benannten Replikaten verbessern?
+      How can I improve availability of named replicas?
     answer: >
-      Benannte Replikate verfügen standardmäßig nicht über Hochverfügbarkeitsreplikate. Da sie sich aber wie eine reguläre (schreibgeschützte) Azure SQL-Datenbank-Instanz verhalten, können sie von der [höheren SLA-Ebene](https://azure.microsoft.com/support/legal/sla/azure-sql-database/) profitieren, die für Hochverfügbarkeitsreplikate gilt. Zum Festlegen der Anzahl von Hochverfügbarkeitsreplikaten können Sie den Parameter `--ha-replicas` in der [Azure CLI](/cli/azure/sql/db/replica?view=azure-cli-latest#az_sql_db_replica_create) bzw. den Parameter `--HighAvailabilityReplicaCount` in [PowerShell](/powershell/module/az.sql/set-azsqldatabase) oder die `highAvailabilityReplicaCount`-Eigenschaft über die [REST-API](/rest/api/sql/2021-02-01-preview/databases/create-or-update) verwenden.
-
-      Die Anzahl von Hochverfügbarkeitsreplikaten kann während der Erstellung eines benannten Replikats festgelegt werden. Diese Angabe kann nach der Erstellung des benannten Replikats jederzeit geändert werden (nur per Azure CLI, PowerShell oder REST-API). Die Preise für die Hochverfügbarkeitsreplikate, die für benannte Replikate genutzt werden, sind identisch mit den Preisen für Hochverfügbarkeitsreplikate für reguläre Datenbanken.
-additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\nWeitere Informationen zur Dienstebene „Hyperscale“ finden Sie unter [Dienstebene „Hyperscale“ (Vorschau) für bis zu 100 TB](service-tier-hyperscale.md).\nWeitere Informationen zu den Hyperscale-Replikaten finden Sie in [diesem Artikel](service-tier-hyperscale-replicas.md).\n"
+      By default, named replicas do not have any HA replicas of their own. A failover of a named replica requires creating a new replica first, which typically takes about 1-2 minutes. However, named replicas can also benefit from higher availability and shorter failovers provided by HA replicas. To add HA replicas for a named replica, you can use the parameter `ha-replicas` with [AZ CLI](/cli/azure/sql/db/replica?view=azure-cli-latest#az_sql_db_replica_create), or the parameter `HighAvailabilityReplicaCount` with [PowerShell](/powershell/module/az.sql/set-azsqldatabase), or the `highAvailabilityReplicaCount` property with [REST API](/rest/api/sql/2021-02-01-preview/databases/create-or-update). The number of HA replicas can be set during the creation of a named replica and can be changed – only via AZ CLI, PowerShell or REST API – anytime after the named replica has been created. Pricing of HA replicas for named replicas is the same of HA replicas for regular Hyperscale databases.
+additionalContent: "\n## Next steps\n\nFor more information about the Hyperscale service tier, see [Hyperscale service tier](service-tier-hyperscale.md).\nFor more information about the Hyperscale replicas, see [Hyperscale Replicas](service-tier-hyperscale-replicas.md)."

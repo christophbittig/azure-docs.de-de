@@ -1,18 +1,21 @@
 ---
 title: Vereinfachungstransformation im Zuordnungsdatenfluss
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Denormalisieren Sie hierarchische Daten mithilfe der Vereinfachungstransformation.
 author: kromerm
 ms.author: makromer
 ms.review: daperlov
 ms.service: data-factory
+ms.subservice: data-flows
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: a0e75957a0ab49394dab56f2b7fb847dee4b43cb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e632260e8af6e4bac9fac9ec43f25bf636b98b4d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81413674"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122639993"
 ---
 # <a name="flatten-transformation-in-mapping-data-flow"></a>Vereinfachungstransformation im Zuordnungsdatenfluss
 
@@ -39,6 +42,28 @@ Standardmäßig löst die Vereinfachungstransformation ein Array an den Anfang d
 Wählen Sie ähnlich wie bei der Auswahltransformation die Projektion der neuen Struktur aus eingehenden Feldern und dem denormalisierten Array aus. Wenn ein denormalisiertes Array zugeordnet wird, stimmt der Datentyp der Ausgabespalte mit demjenigen des Arrays überein. Wenn das Array „Auflösen“ ein Array komplexer Objekte ist, das Subarrays enthält, wird bei der Zuordnung eines Elements aus diesem Subarray ein Array ausgegeben.
 
 Überprüfen Sie Ihre Ausgabe der Zuordnung auf der Registerkarte „Überprüfen“ und in der Datenvorschau.
+
+## <a name="rule-based-mapping"></a>Regelbasierte Zuordnung
+
+Die Transformation zur Vereinfachung unterstützt die regelbasierte Zuordnung, sodass Sie dynamische und flexible Transformationen erstellen können, die Arrays basierend auf Regeln und Strukturen basierend auf Hierarchieebenen vereinfachen.
+
+![Muster vereinfachen](media/data-flow/flatten-pattern.png "Muster vereinfachen")
+
+### <a name="matching-condition"></a>Vergleichsbedingung
+
+Geben Sie eine Musterabgleichsbedingung für die Spalte oder Spalten ein, die mithilfe von exakten Übereinstimmungen oder Mustern vereinfacht werden sollen. Beispiel: ```like(name,'cust%')```
+
+### <a name="deep-column-traversal"></a>Tiefer Spaltendurchlauf
+
+Mithilfe dieser optionalen Einstellung werden alle Unterspalten eines komplexen Objekts einzeln verarbeitet, statt das komplexe Objekt als ganze Spalte zu verarbeiten.
+
+### <a name="hierarchy-level"></a>Hierarchieebene
+
+Wählen Sie die Ebene der Hierarchie aus, die Sie erweitern möchten.
+
+### <a name="name-matches-regex"></a>Name stimmt überein (RegEx)
+
+Optional können Sie ihren Namensabgleich als regulären Ausdruck in diesem Feld ausdrücken, anstatt die obige Vergleichsbedingung zu verwenden.
 
 ## <a name="examples"></a>Beispiele
 

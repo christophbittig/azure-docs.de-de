@@ -7,12 +7,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/06/2021
-ms.openlocfilehash: 804166beebf4f12e246a27122bd44c611972a488
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 03d29f6f6265c214427e208de4bc9177659bb473
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111437998"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823903"
 ---
 # <a name="tips-for-better-performance-in-azure-cognitive-search"></a>Tipps zur Verbesserung der Leistung in Azure Cognitive Search
 
@@ -67,7 +67,9 @@ Die Art der gesendeten Abfragen ist einer der wichtigsten Faktoren für die Leis
 
 + **Suche nach Teilausdrücken:** Die [Suche nach Teilausdrücken](search-query-partial-matching.md) (z. B. Präfixsuche, Fuzzysuche und Suche mit regulären Ausdrücken) ist rechenintensiver als eine typische Schlüsselwortsuche, da sie eine vollständige Indexüberprüfung erfordert, um Ergebnisse zu generieren.
 
-+ **Anzahl von Facetten:** Das Hinzufügen von Facetten zu Abfragen erfordert Aggregationen für jede Abfrage. Allgemein gilt: Fügen Sie nur die Facetten hinzu, die Sie auch in Ihrer App rendern möchten.
++ **Anzahl von Facetten:** Das Hinzufügen von Facetten zu Abfragen erfordert Aggregationen für jede Abfrage. Das Anfordern einer höheren Anzahl von Facetten führt auch zu einem höheren Verarbeitungsaufwand für Ihren Dienst. Fügen Sie im Allgemeinen nur die Facetten hinzu, die Sie in Ihrer App rendern möchten, und fordern Sie nur dann eine hohe Anzahl von Facetten an, wenn dies erforderlich ist.
+
++ **Hohe $skip-Werte:** Das Festlegen des $skip-Parameters auf einen hohen Wert (z. B. im Tausenderbereich) erhöht die Suchlatenz, da die Engine für jede Anforderung eine größere Anzahl von Dokumenten abruft und nach Rang sortiert. Aus Leistungsgründen sollten hohe $skip-Werte vermieden und stattdessen andere Techniken wie z. B. eine Filterung verwendet werden, um eine große Anzahl von Dokumenten abzurufen.
 
 + **Begrenzen von Feldern mit hoher Kardinalität:**  Ein *Feld mit hoher Kardinalität* ist ein Feld, in dem Facetten oder Filter verwendet werden können und das eine beträchtliche Anzahl von eindeutigen Werten besitzt. Daher werden bei der Berechnung von Ergebnissen erhebliche Ressourcen beansprucht. Wenn Sie z. B. ein Feld mit einer Produkt-ID oder einer Beschreibung als facettenreich und filterbar einrichten, ist die Kardinalität hoch, da die meisten Werte von Dokument zu Dokument eindeutig sind.
 

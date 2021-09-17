@@ -1,24 +1,28 @@
 ---
 title: Überwachen von Zuordnungsdatenflüssen
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Hier erfahren Sie, wie Sie Azure Data Factory-Zuordnungsdatenflüsse visuell überwachen.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 06/11/2021
-ms.openlocfilehash: 18481a24bb9e8d5624cb52c9b02833204d4f403d
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.custom: synapse
+ms.date: 06/18/2021
+ms.openlocfilehash: b64ed4b59c2aba13640dec2f19dfa4e42696ce59
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112076592"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122641042"
 ---
 # <a name="monitor-data-flows"></a>Überwachen von Datenflüssen
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Nachdem Sie den Aufbau und das Debugging Ihres Datenflusses abgeschlossen haben, planen Sie Ihren Datenfluss am besten so, dass er nach einem Zeitplan im Kontext einer Pipeline ausgeführt wird. Sie können die Pipeline von Azure Data Factory mit Hilfe von Auslösern planen. Oder Sie können die Option „Jetzt auslösen“ aus dem Azure Data Factory Pipeline Builder verwenden, um eine einmalige Ausführung auszuführen, um Ihren Datenfluss im Kontext der Pipeline zu testen.
+Nachdem Sie den Aufbau und das Debugging Ihres Datenflusses abgeschlossen haben, planen Sie Ihren Datenfluss am besten so, dass er nach einem Zeitplan im Kontext einer Pipeline ausgeführt wird. Sie können die Pipeline von Azure Data Factory mit Hilfe von Auslösern planen. Zum Testen und Debuggen Ihres Datenflusses aus einer Pipeline können Sie die Schaltfläche Debug in der Symbolleiste oder die Option Jetzt Auslösen im Azure Data Factory Pipeline Builder verwenden, um eine einmalige Ausführung zum Testen Ihres Datenflusses im Pipeline-Kontext durchzuführen.
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4P5pV]
 
 Bei der Ausführung können Sie die Pipeline und alle darin enthaltenen Aktivitäten, einschließlich der Datenflussaktivität, überwachen. Klicken Sie auf das Symbol „Überwachen“ im linken Bereich der Azure Data Factory-Benutzeroberfläche. Daraufhin wird ein Bildschirm angezeigt, der dem folgenden ähnelt. Über die hervorgehobenen Symbole können Sie einen Drilldown in die Aktivitäten der Pipeline ausführen, einschließlich der Datenflussaktivität.
 
@@ -28,7 +32,7 @@ Auf dieser Ebene werden sowohl Statistikdaten als auch die Laufzeiten und der St
 
 ![Screenshot mit dem Brillensymbol zur Anzeige von Details zur Datenflussausführung](media/data-flow/monitoring-details.png "Datenflussüberwachung")
 
-Wenn Sie sich in der grafischen Knotenüberwachungsansicht befinden, wird eine vereinfachte reine Ansichtsversion Ihres Datenflussdiagramms angezeigt.
+Wenn Sie sich in der grafischen Knotenüberwachungsansicht befinden, wird eine vereinfachte reine Ansichtsversion Ihres Datenflussdiagramms angezeigt. Verwenden Sie den Zoom-Schieberegler auf der rechten Seite der Arbeitsfläche, um die Detailansicht mit größeren Diagrammknoten und Beschriftungen der Transformationsstages anzuzeigen. Sie können auch die Schaltfläche Suchen auf der rechten Seite verwenden, um Teile Ihrer Datenflusslogik in dem Graph zu suchen.
 
 ![Screenshot der schreibgeschützten Version des Diagramms](media/data-flow/mon003.png "Datenflussüberwachung")
 
@@ -41,6 +45,12 @@ Wenn Ihr Datenfluss in Spark ausgeführt wird, bestimmt Azure Data Factory basie
 * Wenn Sie das freie Feld im Überwachungsfenster auswählen, zeigen die Statistiken im unteren Bereich die Zeitangabe und die Anzahl der Zeilen für jede Senke und die Transformationen an, die zu den Senkendaten für die Transformationsherkunft geführt haben.
 
 * Wenn Sie einzelne Transformationen auswählen, wird auf der rechten Seite zusätzliches Feedback angezeigt, das Partitionsstatistiken, Spaltenanzahl, Schiefe (wie gleichmäßig die Daten auf Partitionen verteilt sind) und Kurtosis (wie viele Spitzen die Daten haben) enthält.
+
+* Das Sortieren nach *Verarbeitungszeit* hilft Ihnen zu erkennen, welche Stages in Ihrem Datenfluss die meiste Zeit in Anspruch genommen haben.
+
+* Um zu ermitteln, welche Transformationen innerhalb der einzelnen Stages die meiste Zeit in Anspruch genommen haben, sortieren Sie nach *der längsten Verarbeitungszeit*.
+
+* Die *geschriebenen Zeilen* können auch sortiert werden, um zu identifizieren, welche Datenströme in Ihrem Datenfluss die meisten Daten schreiben.
 
 * Wenn Sie die Senke in der Knotenansicht auswählen, wird die Spaltenherkunft angezeigt. Es gibt drei verschiedene Methoden, mit denen Spalten während des gesamten Datenflusses akkumuliert werden, um in die Senke weitergeleitet zu werden. Sie lauten wie folgt:
 

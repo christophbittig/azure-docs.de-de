@@ -10,12 +10,12 @@ ms.author: laobri
 author: lobrien
 ms.date: 02/26/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 57f5da06909436e0cbce92559c29c309ca9e20e3
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: caa9d95d57cb8ef6bfe6223a09376614bd254336
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107819230"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122604031"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Beschreibung von Azure Machine Learning-Pipelines
 
@@ -55,7 +55,7 @@ Kurz gesagt können alle komplexen Aufgaben des Machine Learning-Lebenszyklus mi
 
 Viele Programmierökosysteme weisen Tools zum Orchestrieren von Ressourcen-, Bibliotheks- oder Kompilierungsabhängigkeiten auf. Im Allgemeinen verwenden diese Tools Dateizeitstempel zum Berechnen von Abhängigkeiten. Wenn eine Datei geändert wird, werden nur sie und ihre Abhängigkeiten aktualisiert (heruntergeladen, erneut kompiliert oder verpackt). Azure Machine Learning-Pipelines erweitern dieses Konzept. Wie herkömmliche Buildtools errechnen Pipelines Abhängigkeiten zwischen Schritten und wiederholen nur die erforderlichen Neuberechnungen. 
 
-Die Abhängigkeitsanalyse in Azure Machine Learning-Pipelines ist jedoch anspruchsvoller als einfache Zeitstempel. Jeder Schritt kann in einer anderen Hardware- und Softwareumgebung ausgeführt werden. Die Datenaufbereitung ist möglicherweise ein zeitaufwändiger Vorgang, sie muss aber nicht auf Hardware mit leistungsstarken GPUs ausgeführt werden, für bestimmte Schritte ist vielleicht betriebssystemspezifische Software erforderlich, oder Sie entscheiden sich für verteiltes Training usw. 
+Die Abhängigkeitsanalyse in Azure Machine Learning-Pipelines ist jedoch anspruchsvoller als einfache Zeitstempel. Jeder Schritt kann in einer anderen Hardware- und Softwareumgebung ausgeführt werden. Die Datenaufbereitung kann ein zeitaufwändiger Prozess sein, muss aber nicht auf Hardware mit leistungsstarken GPUs laufen, bestimmte Schritte können betriebssystemspezifische Software erfordern, Sie sollten vielleicht [verteiltes Training](how-to-train-distributed-gpu.md) verwenden usw. 
 
 Azure Machine Learning orchestriert automatisch alle Abhängigkeiten zwischen den Schritten der Pipeline. Diese Orchestrierung kann das Hoch- und Herunterfahren von Docker-Images, das Einbinden und Trennen von Computeressourcen und das automatisierte Verschieben der Daten zwischen den einzelnen Schritten in konsistenter Weise beinhalten.
 

@@ -5,19 +5,20 @@ author: cynthn
 ms.collection: linux
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 04/20/2021
 ms.author: cynthn
-ms.openlocfilehash: 5365bad5fdea2a8213defc103f0cdd966ebe50a5
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: ec73bc6c6f7563f1513f4575b5ee3c9b4a244e7c
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816344"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698998"
 ---
 # <a name="tutorial-install-a-lamp-stack-on-an-azure-linux-vm"></a>Tutorial: Installieren eines LAMP-Stacks auf einem virtuellen Azure Linux-Computer
+
+**Gilt für**: :heavy_check_mark: Linux-VMs 
 
 In diesem Artikel werden Sie durch die Bereitstellung eines Apache-Webservers sowie von MySQL und PHP (LAMP-Stack) auf einem virtuellen Ubuntu-Computer in Azure geführt. Um den LAMP-Server in Aktion zu sehen, können Sie optional eine WordPress-Website installieren und konfigurieren. In diesem Tutorial lernen Sie Folgendes:
 

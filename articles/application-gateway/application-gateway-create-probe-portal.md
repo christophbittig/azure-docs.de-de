@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: victorh
-ms.openlocfilehash: 5d2760415e4f4ef3b181f2fb69802659fec3ef66
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1244cc0fdd9a5c978ee64c1aa7ce4af20272c818
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95975954"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634440"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Erstellen eines benutzerdefinierten Tests für ein Anwendungsgateway über das Portal
 
@@ -48,11 +48,11 @@ Tests werden in einem aus zwei Schritten bestehenden Prozess im Portal konfiguri
    |---|---|---|
    |**Name**|customProbe|Dieser Wert ist der Anzeigename für den Test, auf den Sie über das Portal zugreifen können.|
    |**Protokoll**|HTTP oder HTTPS | Das Protokoll, das vom Integritätstest verwendet wird. |
-   |**Host**|z.B.: contoso.com|Dieser Wert ist der Name des virtuellen Hosts (nicht der VM-Hostname), der auf dem Anwendungsserver ausgeführt wird. Der Test wird an \<protocol\>://\<host name\>:\<port\>/\<urlPath\> gesendet.|
+   |**Host**|z.B.: contoso.com|Dieser Wert ist der Name des virtuellen Hosts (nicht der VM-Hostname), der auf dem Anwendungsserver ausgeführt wird. Der Test wird an \<protocol\>://\<host name\>:\<port\>/\<urlPath\> gesendet. Es kann sich hierbei auch um die private IP-Adresse des Servers, die öffentliche IP-Adresse oder um den DNS-Eintrag der öffentlichen IP-Adresse handeln.  Hierdurch wird versucht, auf den Server zuzugreifen, wenn ein dateibasierten Pfadangabe verwendet wird, und es wird zur Integritätsprüfung überprüft, ob eine bestimmte Datei auf dem Server vorhanden ist.|
    |**Hostnamen aus Back-End-Adresse auswählen**|Ja oder Nein|Legt den Header *host* im Test auf den Hostnamen aus den HTTP-Einstellungen fest, denen dieser Test zugeordnet ist. Dies ist insbesondere im Falle mehrinstanzenfähiger Back-Ends, z. B. Azure App Service, erforderlich. [Weitere Informationen](./configuration-http-settings.md#pick-host-name-from-back-end-address)|
    |**Port aus Back-End-HTTP-Einstellungen auswählen**| Ja oder Nein|Legt den *Port* des Tests auf den Port aus den HTTP-Einstellungen fest, denen dieser Test zugeordnet ist. Wenn Sie „Nein“ auswählen, können Sie einen benutzerdefinierten Zielport eingeben. |
    |**Port**| 1-65535 | Benutzerdefinierter Port für die Integritätstests | 
-   |**Pfad**|„/“ oder beliebiger gültiger Pfad|Dies ist der Rest der vollständigen URL für den benutzerdefinierten Test. Ein gültiger Pfad beginnt mit „/“. Verwenden Sie für den Standardpfad von „http:\//contoso.com“ nur „/“. |
+   |**Pfad**|„/“ oder beliebiger gültiger Pfad|Dies ist der Rest der vollständigen URL für den benutzerdefinierten Test. Ein gültiger Pfad beginnt mit „/“. Verwenden Sie für den Standardpfad http:\//contoso.com nur „/“.  Sie können auch einen Serverpfad zu einer Datei eingeben, um anstelle einer webbasierten Überprüfung eine statische Integritätsprüfung durchzuführen.  Dateipfade sollten bei der Verwendung von öffentlichen/privaten IP-Adressen oder öffentlichen IP-DNS-Einträgen als Hostnamen verwendet werden.|
    |**Interval (Sek.)**|30|Legen Sie fest, wie oft der Test ausgeführt werden soll, um die Integrität zu prüfen. Es wird nicht empfohlen, einen Wert unter 30 Sekunden einzustellen.|
    |**Timeout (Sek.)**|30|Legen Sie fest, wie lange der Test warten soll, bis ein Timeout auftritt. Die Überprüfung wird als fehlerhaft markiert, wenn innerhalb des Zeitraums für die Zeitüberschreitung keine gültige Antwort empfangen wird. Das Timeoutintervall muss lang genug sein, damit ein HTTP-Aufruf erfolgen und sichergestellt werden kann, dass die Integritätsseite für das Back-End verfügbar ist. Beachten Sie, dass der Timeoutwert nicht größer als der in dieser Testeinstellung verwendete Wert für „Intervall“ oder der Wert für „Anforderungstimeout“ in der HTTP-Einstellung für diesen Test sein sollte.|
    |**Fehlerhafter Schwellenwert**|3|Dies ist die Anzahl aufeinanderfolgender erfolgloser Versuche, nach denen der Test als „fehlerhaft“ eingestuft wird. Der Schwellenwert kann auf 1 oder mehr festgelegt werden.|
@@ -99,9 +99,9 @@ Tests werden in einem aus zwei Schritten bestehenden Prozess im Portal konfiguri
    |---|---|---|
    |**Name**|customProbe|Dieser Wert ist der Anzeigename für den Test, auf den Sie über das Portal zugreifen können.|
    |**Protokoll**|HTTP oder HTTPS | Das Protokoll, das vom Integritätstest verwendet wird. |
-   |**Host**|z.B.: contoso.com|Dieser Wert ist der Name des virtuellen Hosts (nicht der VM-Hostname), der auf dem Anwendungsserver ausgeführt wird. Der Test wird an diese Adresse gesendet: (Protokoll)://(Hostname):(Port aus HTTP-Einstellungen)/urlPath.  Dies ist relevant, wenn in Application Gateway mehrere Standorte konfiguriert sind. Wenn Application Gateway für einen einzelnen Standort konfiguriert ist, geben Sie „127.0.0.1“ ein.|
+   |**Host**|z.B.: contoso.com|Dieser Wert ist der Name des virtuellen Hosts (nicht der VM-Hostname), der auf dem Anwendungsserver ausgeführt wird. Der Test wird an diese Adresse gesendet: (Protokoll)://(Hostname):(Port aus HTTP-Einstellungen)/urlPath.  Dies ist relevant, wenn in Application Gateway mehrere Standorte konfiguriert sind. Wenn Application Gateway für einen einzelnen Standort konfiguriert ist, geben Sie „127.0.0.1“ ein.  Sie können auch einen Serverpfad zu einer Datei eingeben, um anstelle einer webbasierten Überprüfung eine statische Integritätsprüfung durchzuführen. Dateipfade sollten bei der Verwendung von öffentlichen/privaten IP-Adressen oder öffentlichen IP-DNS-Einträgen als Hostnamen verwendet werden.|
    |**Hostnamen aus Back-End-Adresse auswählen**|Ja oder Nein|Legt den *host*-Header im Test auf den Hostnamen der Back-End-Ressource im Back-End-Pool fest, der der HTTP-Einstellung für den Test zugeordnet ist. Dies ist insbesondere im Falle mehrinstanzenfähiger Back-Ends, z. B. Azure App Service, erforderlich. [Weitere Informationen](./configuration-http-settings.md#pick-host-name-from-back-end-address)|
-   |**Pfad**|„/“ oder beliebiger gültiger Pfad|Dies ist der Rest der vollständigen URL für den benutzerdefinierten Test. Ein gültiger Pfad beginnt mit „/“. Verwenden Sie für den Standardpfad von „http:\//contoso.com“ nur „/“. |
+   |**Pfad**|„/“ oder beliebiger gültiger Pfad|Dies ist der Rest der vollständigen URL für den benutzerdefinierten Test. Ein gültiger Pfad beginnt mit „/“. Verwenden Sie für den Standardpfad http:\//contoso.com nur „/“. Sie können auch einen Serverpfad zu einer Datei eingeben, um anstelle einer webbasierten Überprüfung eine statische Integritätsprüfung durchzuführen.  Dateipfade sollten bei der Verwendung von öffentlichen/privaten IP-Adressen oder öffentlichen IP-DNS-Einträgen als Hostnamen verwendet werden.|
    |**Interval (Sek.)**|30|Legen Sie fest, wie oft der Test ausgeführt werden soll, um die Integrität zu prüfen. Es wird nicht empfohlen, einen Wert unter 30 Sekunden einzustellen.|
    |**Timeout (Sek.)**|30|Legen Sie fest, wie lange der Test warten soll, bis ein Timeout auftritt. Die Überprüfung wird als fehlerhaft markiert, wenn innerhalb des Zeitraums für die Zeitüberschreitung keine gültige Antwort empfangen wird. Das Timeoutintervall muss lang genug sein, damit ein HTTP-Aufruf erfolgen und sichergestellt werden kann, dass die Integritätsseite für das Back-End verfügbar ist. Beachten Sie, dass der Timeoutwert nicht größer als der in dieser Testeinstellung verwendete Wert für „Intervall“ oder der Wert für „Anforderungstimeout“ in der HTTP-Einstellung für diesen Test sein sollte.|
    |**Fehlerhafter Schwellenwert**|3|Dies ist die Anzahl aufeinanderfolgender erfolgloser Versuche, nach denen der Test als „fehlerhaft“ eingestuft wird. Der Schwellenwert kann auf 1 oder mehr festgelegt werden.|

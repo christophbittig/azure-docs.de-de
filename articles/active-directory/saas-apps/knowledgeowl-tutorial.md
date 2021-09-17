@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/11/2021
+ms.date: 08/11/2021
 ms.author: jeedes
-ms.openlocfilehash: c1c53da8c62acc1b4aacd2b0fa79dd968c65c13a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 61b8a15e4e765113455be0e8b37ba22b98e6e4ad
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101645636"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271112"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-knowledgeowl"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit KnowledgeOwl
 
@@ -156,13 +156,13 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Melden Sie sich in einem anderen Webbrowserfenster bei der KnowledgeOwl-Unternehmenswebsite als Administrator an.
 
-1. Klicken Sie auf **Settings** (Einstellungen), und wählen Sie dann **Security** (Sicherheit) aus.
+1. Klicken Sie auf **Settings** (Einstellungen), und wählen Sie dann **SSO** aus.
 
-    ![Screenshot, auf dem „Security“ (Sicherheit) im Menü „Settings“ (Einstellungen) ausgewählt ist](./media/knowledgeowl-tutorial/configure-1.png)
+    ![Screenshot: Auswahl von SSO im Menü „Settings“ (Einstellungen).](./media/knowledgeowl-tutorial/settings-sso-dropdown.png)
 
-1. Scrollen Sie bis zu **SAML SSO Integration**, und führen Sie die folgenden Schritte aus:
+1. Führen Sie auf der Registerkarte **SAML-Einstellungen** die folgenden Schritte aus:
 
-    ![Screenshot: Abschnitt „SAML SSO Integration“ (SAML-SSO-Integration), in dem Sie die hier beschriebenen Änderungen vornehmen können](./media/knowledgeowl-tutorial/configure-2.png)
+    ![Screenshot: Abschnitt „SAML SSO Integration“ (SAML-SSO-Integration), in dem Sie die hier beschriebenen Änderungen vornehmen können](./media/knowledgeowl-tutorial/sso-settings-required-fields.png)
 
     a. Wählen Sie **Enable SAML SSO** (SAML-SSO aktivieren) aus.
 
@@ -176,21 +176,24 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     f. Fügen Sie im Textfeld **IdP Logout URL** (IdP-Abmelde-URL) den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    g. Laden Sie das heruntergeladene Zertifikat aus dem Azure-Portal hoch, indem Sie auf **Upload IdP Certificate** (IdP-Zertifikat hochladen) klicken.
+    g. Laden Sie das heruntergeladene Zertifikat aus dem Azure-Portal hoch, indem Sie auf den Link **Upload** unter **IdP Certificate** (IdP-Zertifikat) klicken.
 
-    h. Klicken Sie auf **Map SAML Attributes** (SAML-Attribute zuordnen), um Attribute zuzuordnen, und führen Sie die folgenden Schritte aus:
+    h. Klicken Sie unten auf der Seite auf **Speichern** .
 
-    ![Screenshot: Abschnitt „Map SAML Attributes“ (SAML-Attribute zuordnen), in dem Sie die hier beschriebenen Änderungen vornehmen können](./media/knowledgeowl-tutorial/configure-3.png)
+    ![Screenshot der Schaltfläche „Save“](./media/knowledgeowl-tutorial/sso-settings-saml-save.png)
+
+    i. Öffnen Sie die Registerkarte **Map SAML Attributes** (SAML-Attribute zuordnen), um Attribute zuzuordnen, und führen Sie die folgenden Schritte aus:
+
+    ![Screenshot: Abschnitt „Map SAML Attributes“ (SAML-Attribute zuordnen), in dem Sie die hier beschriebenen Änderungen vornehmen können](./media/knowledgeowl-tutorial/sso-settings-direct-attribute-fields.png)
 
     * Geben Sie `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ssoid` im Textfeld **SSO ID** ein.
     * Geben Sie `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` im Textfeld **Username/Email** (Benutzername/E-Mail) ein.
     * Geben Sie `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` im Textfeld **First Name** (Vorname) ein.
     * Geben Sie `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` im Textfeld **Last Name** (Nachname) ein.
-    * Klicken Sie auf **Speichern**.
 
-    i. Klicken Sie unten auf der Seite auf **Speichern** .
+    j. Klicken Sie unten auf der Seite auf **Speichern** .
 
-    ![Screenshot der Schaltfläche „Save“](./media/knowledgeowl-tutorial/configure-4.png)
+    ![Screenshot: Schaltfläche „Speichern“.](./media/knowledgeowl-tutorial/sso-settings-direct-attribute-save.png)
 
 ### <a name="create-knowledgeowl-test-user"></a>Erstellen eines KnowledgeOwl-Testbenutzers
 
@@ -203,17 +206,17 @@ In diesem Abschnitt wird in KnowledgeOwl ein Benutzer mit dem Namen B. Simon er
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-#### <a name="sp-initiated"></a>SP-initiiert:
+#### <a name="sp-initiated"></a>SP-initiiert
 
 * Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für KnowledgeOwl weitergeleitet, wo Sie den Anmeldeflow initiieren können.  
 
-* Rufen Sie direkt die KnowledgeOwl-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
+* Rufen Sie direkt die Anmelde-URL für KnowledgeOwl auf, und initiieren Sie den Anmeldeflow.
 
-#### <a name="idp-initiated"></a>IDP-initiiert:
+#### <a name="idp-initiated"></a>IDP-initiiert
 
-* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der KnowledgeOwl-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der KnowledgeOwl-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
 
-Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „KnowledgeOwl“ in „Meine Apps“ geschieht Folgendes: Wenn Sie die Anwendung im SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie die Anwendung im IDP-Modus konfiguriert haben, sollten Sie automatisch bei der KnowledgeOwl-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+Sie können auch das Microsoft-Portal „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „KnowledgeOwl“ im Portal „Meine Apps“ geschieht Folgendes: Wenn Sie die Anwendung im SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie die Anwendung im IDP-Modus konfiguriert haben, sollten Sie automatisch bei der KnowledgeOwl-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Portal „Meine Apps“ finden Sie in dieser [Einführung](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,14 +7,16 @@ ms.date: 09/25/2019
 ms.topic: how-to
 ms.service: storage
 ms.subservice: disks
-ms.openlocfilehash: aba38411be9502fd8592e293580a3c816fc9b55b
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 1ef24210e033c5e0af623dfa6f3cd79146732640
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113362267"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692293"
 ---
 # <a name="use-azure-storage-explorer-to-manage-azure-managed-disks"></a>Verwenden von Azure Storage-Explorer zum Verwalten von verwalteten Azure-Datenträgern
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Storage-Explorer 1.10.0 ermöglicht Benutzern das Hochladen, Herunterladen und Kopieren verwalteter Datenträger sowie das Erstellen von Momentaufnahmen. Aufgrund dieser zusätzlichen Funktionen können Sie Storage-Explorer zum Migrieren von Daten an einem lokalen Standort nach Azure und zum Migrieren von Daten zwischen Azure-Regionen verwenden.
 
@@ -51,7 +53,7 @@ Wenn Storage-Explorer über keine Verbindung zu Azure verfügt, können Sie Stor
 
     ![Auswahl von Ressourcengruppe 1](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1.png)
 
-1. Klicken Sie auf **Hochladen**.
+1. Wählen Sie **Hochladen** aus.
 
     ![Auswählen von „Hochladen“](media/disks-upload-vhd-to-managed-disk-storage-explorer/upload-button.png)
 

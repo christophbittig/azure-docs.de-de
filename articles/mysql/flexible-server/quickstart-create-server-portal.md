@@ -7,18 +7,21 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/22/2020
-ms.openlocfilehash: 53878384f4eb056f0cb23ec9005043ac26c8fad2
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 42b25599bfd1ef40f8bb0bc1a954677f68dbf668
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106492575"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862899"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-an-azure-database-for-mysql-flexible-server"></a>Schnellstart: Verwenden des Azure-Portals zum Erstellen einer Azure Database for MySQL Flexible Server-Instanz
 
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+
+
 Azure Database for MySQL Flexible Server ist ein verwalteter Dienst, mit dem Sie hochverfügbare MySQL-Serverinstanzen in der Cloud ausführen, verwalten und skalieren können. In dieser Schnellstartanleitung erfahren Sie, wie Sie mit dem Azure-Portal eine Flexible Server-Instanz erstellen.
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
 
 Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
@@ -36,7 +39,7 @@ Führen Sie die folgenden Schritte aus, um eine Flexible Server-Instanz zu erste
     
     > :::image type="content" source="./media/quickstart-create-server-portal/find-mysql-portal.png" alt-text="Screenshot: Suchen nach „Azure Database for MySQL-Server“":::
 
-2. Wählen Sie **Hinzufügen**. 
+2. Klicken Sie auf **Erstellen**. 
 
 3. Wählen Sie auf der Seite **Option „Azure Database for MySQL-Bereitstellung“ auswählen** die Bereitstellungsoption **Flexibler Server** aus.
      
@@ -54,12 +57,16 @@ Führen Sie die folgenden Schritte aus, um eine Flexible Server-Instanz zu erste
     Region|Die Region, die Ihren Benutzern am nächsten liegt| Der Standort, der Ihren Benutzern am nächsten ist|
     Workloadtyp| Entwicklung | Für Produktionsworkloads können Sie je nach [max_connections](concepts-server-parameters.md#max_connections)-Anforderungen eine kleine/mittlere Größe oder eine große Größe auswählen.|
     Verfügbarkeitszone| Keine Einstellung | Wenn Ihre Anwendung auf virtuellen Azure-Computern, VM-Skalierungsgruppen oder AKS-Instanzen in einer bestimmten Verfügbarkeitszone bereitgestellt wird, können Sie Ihren flexiblen Server in derselben Verfügbarkeitszone angeben, um die Anwendung und die Datenbank gemeinsam anzuordnen und so die Leistung zu verbessern, indem die Netzwerklatenz zonenübergreifend reduziert wird.|
-    Hochverfügbarkeit| Standard | Bei Produktionsservern wird die Aktivierung von zonenredundanter Hochverfügbarkeit (High Availability, HA) zur Gewährleistung von Geschäftskontinuität und Schutz vor Zonenausfällen dringend empfohlen.|
+    Hochverfügbarkeit| Deaktiviert | Wählen Sie bei Produktionsservern zwischen [Zonenredundante Hochverfügbarkeit](https://docs.microsoft.com/azure/mysql/flexible-server/concepts-high-availability#zone-redundant-high-availability) und [Hochverfügbarkeit in gleicher Zone](https://docs.microsoft.com/azure/mysql/flexible-server/concepts-high-availability#same-zone-high-availability). Dies wird im Hinblick auf Geschäftskontinuität und Schutz vor VM-Ausfällen dringend empfohlen.|
+    |Standby-Verfügbarkeitszone| Keine Einstellung| Wählen Sie den Standort für die Standbyserverzone aus, und legen Sie ihn bei einem Zonenausfall mit dem Standbyserver der Anwendung zusammen. |
     MySQL-Version|**5.7**| Eine MySQL-Hauptversion|
     Administratorbenutzername |**mydemouser**| Ihr Anmeldekonto für die Verbindungsherstellung mit dem Server. Der Administratorbenutzername darf nicht **azure_superuser**, **admin**, **administrator**, **root**, **guest** oder **public** lauten.|
     Kennwort |Ihr Kennwort| Ein neues Kennwort für das Serveradministratorkonto. Es muss zwischen acht und 128 Zeichen lang sein. Darüber hinaus muss es Zeichen aus drei der folgenden Kategorien enthalten: Englische Großbuchstaben, englische Kleinbuchstaben, Zahlen (0 bis 9) und nicht alphanumerische Zeichen (!, $, #, % usw.).|
-    Compute und Speicher | **Burstfähig**, **Standard_B1ms**, **10 GiB**, **100 Tage** | Die Compute-, Speicher-, IOPS- und Sicherungskonfigurationen für Ihren neuen Server. Wählen Sie **Server konfigurieren** aus. **Burstfähig**, **Standard_B1ms**, **10 GiB**, **100 iops** und **7 Tage** sind die Standardwerte für die **Berechnungsebene**, die **Computegröße**, die **Speichergröße** und den **Aufbewahrungszeitraum** für Sicherungen. Sie können diese Werte unverändert lassen oder anpassen. Zum schnelleren Laden von Daten während der Migration wird empfohlen, den Wert für IOPS auf die maximale Größe zu erhöhen, die von der Computegröße unterstützt wird, und Sie später wieder herunterzuskalieren, um Kosten zu sparen. Um die Compute- und Speicherauswahl zu speichern und die Konfiguration fortzusetzen, wählen Sie **Speichern** aus. Der folgende Screenshot zeigt die Compute- und Speicheroptionen:|
-    
+    Compute und Speicher | **Burstfähig**, **Standard_B1ms**, **10 GiB**, **100 IOPS**, **7 Tage** | Die Compute-, Speicher-, IOPS- und Sicherungskonfigurationen für Ihren neuen Server. Wählen Sie **Server konfigurieren** aus. **Burstfähig**, **Standard_B1ms**, **10 GiB**, **100 IOPS** und **7 Tage** sind die Standardwerte für die **Computeebene**, die **Computegröße**, die **Speichergröße**, **IOPS** und den **Aufbewahrungszeitraum** für Sicherungen. Sie können diese Werte unverändert lassen oder anpassen. Zum schnelleren Laden von Daten während der Migration wird empfohlen, den Wert für IOPS auf die maximale Größe zu erhöhen, die von der Computegröße unterstützt wird, und Sie später wieder herunterzuskalieren, um Kosten zu sparen. Um die Compute- und Speicherauswahl zu speichern und die Konfiguration fortzusetzen, wählen Sie **Speichern** aus. Der folgende Screenshot zeigt die Compute- und Speicheroptionen:|
+
+ 
+    > :::image type="content" source="./media/quickstart-create-server-portal/high-availability.png" alt-text="Screenshot: Optionen für Hochverfügbarkeit.":::
+
     > :::image type="content" source="./media/quickstart-create-server-portal/compute-storage.png" alt-text="Screenshot: Compute- und Speicheroptionen":::
 
 5. Konfigurieren Sie Netzwerkoptionen.
@@ -68,7 +75,9 @@ Führen Sie die folgenden Schritte aus, um eine Flexible Server-Instanz zu erste
    - Öffentlicher Zugriff (zugelassene IP-Adressen)
    - Privater Zugriff (VNET-Integration) 
    
-   Bei öffentlichem Zugriff ist der Zugriff auf Ihren Server auf zugelassene IP-Adressen beschränkt, die einer Firewallregel hinzugefügt werden. Diese Methode verhindert, dass externe Anwendungen und Tools eine Verbindung mit der Serverinstanz oder mit Datenbanken auf dem Server herstellen – es sei denn, Sie erstellen eine Regel, um die Firewall für bestimmte IP-Adressen oder einen bestimmten IP-Adressbereich zu öffnen. Wenn Sie privaten Zugriff (VNET-Integration) verwenden, ist der Zugriff auf Ihren Server auf Ihr virtuelles Netzwerk beschränkt. In dieser Schnellstartanleitung erfahren Sie, wie Sie den öffentlichen Zugriff aktivieren, um eine Verbindung mit dem Server herzustellen. Im Artikel zu [Konzepten](./concepts-networking.md) erfahren Sie mehr über Konnektivitätsmethoden.
+   Bei öffentlichem Zugriff ist der Zugriff auf Ihren Server auf zugelassene IP-Adressen beschränkt, die einer Firewallregel hinzugefügt werden. Diese Methode verhindert, dass externe Anwendungen und Tools eine Verbindung mit der Serverinstanz oder mit Datenbanken auf dem Server herstellen – es sei denn, Sie erstellen eine Regel, um die Firewall für bestimmte IP-Adressen oder einen bestimmten IP-Adressbereich zu öffnen. Wenn Sie privaten Zugriff (VNET-Integration) verwenden, ist der Zugriff auf Ihren Server auf Ihr virtuelles Netzwerk beschränkt. Im Artikel zu [Konzepten](./concepts-networking.md) erfahren Sie mehr über Konnektivitätsmethoden.
+    
+     In dieser Schnellstartanleitung erfahren Sie, wie Sie den öffentlichen Zugriff aktivieren, um eine Verbindung mit dem Server herzustellen. Wählen Sie auf der Registerkarte **Netzwerk** als **Konnektivitätsmethode** die Option **Öffentlicher Zugriff** aus. Wählen Sie zum Konfigurieren von **Firewallregeln** die Option **Aktuelle Client-IP-Adresse hinzufügen** aus. 
 
     > [!NOTE]
     > Nach der Erstellung des Servers kann die Verbindungsmethode nicht mehr geändert werden. Wenn Sie während der Erstellung des Servers beispielsweise **Öffentlicher Zugriff (zugelassene IP-Adressen)** ausgewählt haben, können Sie nach der Erstellung nicht zu **Privater Zugriff (VNET-Integration)** wechseln. Es wird dringend empfohlen, den Server mit privatem Zugriff zu erstellen, um den Zugriff auf Ihren Server über die VNET-Integration zu schützen. Weitere Informationen zum privaten Zugriff finden Sie im Artikel zu [Konzepten](./concepts-networking.md).
@@ -118,7 +127,7 @@ wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA
 mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl=true --ssl-ca=DigiCertGlobalRootCA.crt.pem
 ```
 > [!IMPORTANT]
-> Beim Herstellen einer Verbindung mit Ihrem flexiblen Server mithilfe von Azure Cloud Shell müssen Sie den Parameter „--ssl=true“ und nicht „--ssl-mode=REQUIRED“ verwenden.
+>Beim Herstellen einer Verbindung mit Ihrem flexiblen Server mithilfe von Azure Cloud Shell müssen Sie den Parameter „--ssl=true“ und nicht „--ssl-mode=REQUIRED“ verwenden.
 > Der Hauptgrund ist, dass Azure Cloud Shell mit einem vorinstalliertem mysql.exe-Client aus der MariaDB-Distribution kommt, die den Parameter „--ssl-“ erfordert, während der MySQL-Client aus der Distribution von Oracle den Parameter „--ssl-mode“ erfordert.
 
 Sollte bei dem Versuch, mithilfe des obigen Befehls eine Verbindung mit Ihrem flexiblen Server herzustellen, die folgende Fehlermeldung angezeigt werden, haben Sie vergessen, die Firewallregel mithilfe des Kontrollkästchens „Öffentlichen Zugriff auf diesen Server über beliebigen Azure-Dienst in Azure gestatten“ festzulegen, oder die Option wurde nicht gespeichert. Konfigurieren Sie die Firewall, und wiederholen Sie anschließend den Vorgang.

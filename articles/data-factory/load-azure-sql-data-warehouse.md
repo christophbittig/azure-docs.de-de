@@ -1,38 +1,40 @@
 ---
 title: Laden von Daten in Azure Synapse Analytics
-description: Verwenden von Azure Data Factory zum Kopieren von Daten in Azure Synapse Analytics
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Verwenden von Azure Data Factory- oder Synapse-Pipelines zum Kopieren von Daten in Azure Synapse Analytics.
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 01/29/2020
-ms.openlocfilehash: 0a83a80ab8be8081e058436115eed82e6f5e7ce6
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.custom: synapse
+ms.date: 08/24/2021
+ms.openlocfilehash: b297e47e3b1cb890312b6f7a566eb4f033e6612a
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109485565"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824119"
 ---
-# <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Laden von Daten in Azure Synapse Analytics mithilfe von Azure Data Factory
+# <a name="load-data-into-azure-synapse-analytics-using-azure-data-factory-or-a-synapse-pipeline"></a>Laden von Daten in Azure Synapse Analytics mithilfe einer Azure Data Factory- oder Synapse-Pipeline
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) ist eine cloudbasierte Datenbank mit horizontaler Skalierung, mit der sehr große Datenvolumen verarbeitet werden können, und zwar sowohl relational als auch nicht relational. Azure Synapse Analytics basiert auf der MPP-Architektur (Massively Parallel Processing), die für Data-Warehouse-Workloads auf Unternehmensniveau optimiert ist. Es bietet Cloudelastizität mit der Flexibilität, Speicher zu skalieren und unabhängig zu berechnen.
 
-Die ersten Schritte mit Azure Synapse Analytics sind jetzt mithilfe von Azure Data Factory einfacher als je zuvor. Azure Data Factory ist ein vollständig verwalteter, cloudbasierter Datenintegrationsdienst. Mithilfe dieses Diensts können Sie eine Azure Synapse Analytics-Instanz mit Daten aus dem vorhandenen System auffüllen und so Zeit beim Erstellen von Analyselösungen sparen.
+Das Ausführen der ersten Schritte mit Azure Synapse Analytics ist jetzt einfacher als je zuvor. Azure Data Factory und die entsprechenden Pipelinefunktionen in Azure Synapse bieten einen vollständig verwalteten cloudbasierten Datenintegrationsdienst. Mithilfe dieses Diensts können Sie eine Azure Synapse Analytics-Instanz mit Daten aus dem vorhandenen System auffüllen und so Zeit beim Erstellen von Analyselösungen sparen.
 
-Azure Data Factory bietet die folgenden Vorteile beim Laden von Daten in Azure Synapse Analytics:
+Azure Data Factory- und Synapse-Pipelines bieten die folgenden Vorteile beim Laden von Daten in Azure Synapse Analytics:
 
 * **Mühelose Einrichtung**: Intuitiver Assistent mit 5 Schritten. Keine Skripterstellung erforderlich.
 * **Unterstützung für umfangreiche Datenspeicher**: Integrierte Unterstützung für umfangreiche lokale und cloudbasierte Datenspeicher. Eine ausführliche Liste finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 * **Sicher und kompatibel**: Daten werden über HTTPS oder ExpressRoute übertragen. Globale Dienste stellen sicher, dass Ihre Daten nie die geografische Grenze verlassen.
 * **Beispiellose Leistung mithilfe von PolyBase**: PolyBase ist die effizienteste Methode zum Verschieben von Daten in Azure Synapse Analytics. Mit der Funktion „Stagingblob“ werden schnelle Ladezeiten für alle Arten von Datenspeicher erreicht. Dies gilt auch für Azure Blob Storage und Data Lake Store. (Azure Blob Storage und Azure Data Lake Store werden standardmäßig von Polybase unterstützt.) Weitere Informationen finden Sie unter [Leistung der Kopieraktivität](copy-activity-performance.md).
 
-In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data Factory zum _Laden von Daten aus Azure SQL-Datenbank in Azure Synapse Analytics_ verwenden. Sie können ähnliche Schritte zum Kopieren von Daten aus anderen Typen von Datenspeichern ausführen.
+In diesem Artikel erfahren Sie, wie Sie das Tool „Kopieren von Daten“ zum _Laden von Daten aus der Azure SQL-Datenbank in Azure Synapse Analytics_ verwenden. Sie können ähnliche Schritte zum Kopieren von Daten aus anderen Typen von Datenspeichern ausführen.
 
 > [!NOTE]
-> Weitere Informationen finden Sie unter [Kopieren von Daten nach und aus Azure Synapse Analytics mithilfe von Azure Data Factory](connector-azure-sql-data-warehouse.md).
+> Weitere Informationen finden Sie unter [Kopieren von Daten nach und aus Azure Synapse Analytics](connector-azure-sql-data-warehouse.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -42,6 +44,9 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
 * Azure-Speicherkonto: Azure Storage wird im Massenkopiervorgang als _Staging_ blob verwendet. Falls Sie noch nicht über ein Azure-Speicherkonto verfügen, finden Sie Anweisungen dazu unter [Erstellen eines Speicherkontos](../storage/common/storage-account-create.md).
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
+
+> [!NOTE]
+> Sie können die Erstellung einer neuen Data Factory überspringen, wenn Sie die Pipelinefunktion in Ihrem vorhandenen Synapse-Arbeitsbereich verwenden möchten, um die Daten zu laden.  Azure Synapse bettet die Funktionalität von Azure Data Factory in die Pipelinefunkton ein.
 
 1. Wählen Sie im Menü auf der linken Seite **Ressource erstellen** > **Daten + Analysen** > **Data Factory** aus:
 
@@ -56,15 +61,15 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
 3. Klicken Sie auf **Erstellen**.
 4. Nach Abschluss der Erstellung navigieren Sie zu Ihrer Data Factory. Die Startseite **Data Factory** wird wie in der folgenden Abbildung dargestellt angezeigt:
 
-    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Startseite von Azure Data Factory mit der Kachel „Erstellen und überwachen“":::
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Startseite für Azure Data Factory mit der Kachel „Open Azure Data Factory Studio“":::
 
-   Wählen Sie die Kachel **Erstellen und überwachen** aus, um die Datenintegrationsanwendung auf einer separaten Registerkarte zu starten.
+   Klicken Sie auf der Kachel **Open Azure Data Factory Studio** auf **Öffnen**, um die Datenintegration-Anwendung in einer separaten Registerkarte zu starten.
 
 ## <a name="load-data-into-azure-synapse-analytics"></a>Laden von Daten in Azure Synapse Analytics
 
-1. Wählen Sie auf der Seite **Erste Schritte** die Kachel **Daten kopieren** aus, um das Tool Daten kopieren zu starten.
+1. Wählen Sie auf der Startseite von dem Azure Data Factory- oder Azure Synapse-Arbeitsbereich die Kachel **Erfassen** aus, um das Tool „Daten kopieren“ zu starten.  Sie können dann die **Integrierte Kopieraufgabe** verwenden.
 
-2. Geben Sie auf der Seite **Eigenschaften** im Feld **Aufgabenname** den Namen **CopyFromSQLToSQLDW** ein, und wählen Sie dann **Weiter** aus.
+2. Wählen Sie auf der Seite **Eigenschaften** unter **Aufgabentyp** den Typ **Integrierte Kopieraufgabe** aus, und wählen Sie dann **Weiter** aus.
 
     ![Eigenschaftenseite](./media/load-azure-sql-data-warehouse/copy-data-tool-properties-page.png)
 
@@ -73,74 +78,84 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
     >In diesem Tutorial verwenden Sie die *SQL-Authentifizierung* als Authentifizierungstyp für Ihren Quelldatenspeicher, Sie können bei Bedarf aber auch andere unterstützte Authentifizierungsmethoden auswählen: *Dienstprinzipal* oder *Verwaltete Identität*. Ausführlichere Informationen finden Sie in den entsprechenden Abschnitten [dieses Artikels](./connector-azure-sql-database.md#linked-service-properties).
     >Zum sicheren Speichern von Geheimnissen für Datenspeicher empfiehlt sich darüber hinaus die Verwendung einer Azure Key Vault-Instanz. Eine ausführliche Erläuterung finden Sie in [diesem Artikel](./store-credentials-in-key-vault.md).
 
-    a. Klicken Sie auf **+ Neue Verbindung erstellen**.
+    1. Wählen Sie **+ Neue Verbindung** aus.
 
-    b. Wählen Sie im Katalog **Azure SQL-Datenbank** und dann **Weiter** aus. Sie können in das Suchfeld zum Filtern der Connectors „SQL“ eingeben.
+    1. Wählen Sie im Katalog **Azure SQL-Datenbank** und dann **Weiter** aus. Sie können in das Suchfeld zum Filtern der Connectors „SQL“ eingeben.
 
-    ![Auswählen der Azure SQL-Datenbank](./media/load-azure-sql-data-warehouse/select-azure-sql-db-source.png)
+        ![Auswählen der Azure SQL-Datenbank](./media/load-azure-sql-data-warehouse/select-azure-sql-db-source.png)
+    
+    1. Wählen Sie auf der Seite **Neue Verbindung (Azure SQL Database)** in der Dropdownliste Ihren Server- und Datenbanknamen aus und geben Sie den Benutzernamen und das Kennwort an. Wählen Sie **Verbindung testen** aus, um die Einstellungen zu überprüfen. Wählen Sie dann **Erstellen** aus.
 
-    c. Wählen Sie auf der Seite **New Linked Service** (Neuer verknüpfter Dienst) in der Dropdownliste Ihren Server- und Datenbanknamen aus, und geben Sie den Benutzernamen und das Kennwort an. Klicken Sie auf **Verbindung testen**, um die Einstellungen zu überprüfen, und wählen Sie dann **Erstellen** aus.
+        ![Konfigurieren von Azure SQL-Datenbank](./media/load-azure-sql-data-warehouse/configure-azure-sql-db.png)
+    
+    1. Wählen Sie auf der Seite **Zieldatenspeicher** die neu erstellte Verbindung als Quelle in dem Bereich **Verbindung** aus.
 
-    ![Konfigurieren von Azure SQL-Datenbank](./media/load-azure-sql-data-warehouse/configure-azure-sql-db.png)
+    1. Geben Sie **SalesLT** in dem Abschnitt **Quelltabellen** ein, um die Tabellen zu filtern. Aktivieren Sie das Kontrollkästchen **(Alles auswählen)** , um alle Tabellen für den Kopiervorgang zu verwenden, und wählen Sie dann **Weiter** aus.
 
-    d. Wählen Sie den neu erstellten verknüpften Dienst als Quelle aus, und klicken Sie auf **Weiter**.
+    ![Ein Screenshot, der die Konfiguration der Seite „Quelldatenspeicher“ zeigt.](./media/load-azure-sql-data-warehouse/source-data-store-page.png)
 
-4. Geben Sie auf der Seite **Tabellen auswählen, aus denen die Daten kopiert werden sollen, oder eine benutzerdefinierte Abfrage verwenden** die Zeichenfolge **SalesLT** ein, um die Tabellen zu filtern. Aktivieren Sie das Kontrollkästchen **(Alles auswählen)** , um alle Tabellen für den Kopiervorgang zu verwenden, und wählen Sie dann **Weiter** aus.
+4. Geben Sie auf der Seite **Filter anwenden** die Einstellungen an, oder wählen Sie **Weiter** aus. Sie können eine Datenvorschau anzeigen und das Schema der Eingabedaten einsehen, indem Sie die Schaltfläche **Datenvorschau** auswählen. 
 
-    ![Auswählen von Quelltabellen](./media/load-azure-sql-data-warehouse/select-source-tables.png)
+    :::image type="content" source="./media/load-azure-sql-data-warehouse/apply-filter.png" alt-text="Ein Screenshot, der die Seite „Filter anwenden“ zeigt":::.
 
-5. Geben Sie auf der Seite **Filter anwenden** die Einstellungen an, oder wählen Sie **Weiter** aus.
-
-6. Führen Sie auf der Seite **Zieldatenspeicher** die folgenden Schritte aus:
+5. Führen Sie auf der Seite **Zieldatenspeicher** die folgenden Schritte aus:
     >[!TIP]
     >In diesem Tutorial verwenden Sie die *SQL-Authentifizierung* als Authentifizierungstyp für Ihren Zieldatenspeicher, Sie können bei Bedarf aber auch andere unterstützte Authentifizierungsmethoden auswählen: *Dienstprinzipal* oder *Verwaltete Identität*. Ausführlichere Informationen finden Sie in den entsprechenden Abschnitten [dieses Artikels](./connector-azure-sql-data-warehouse.md#linked-service-properties).
     >Zum sicheren Speichern von Geheimnissen für Datenspeicher empfiehlt sich darüber hinaus die Verwendung einer Azure Key Vault-Instanz. Eine ausführliche Erläuterung finden Sie in [diesem Artikel](./store-credentials-in-key-vault.md).
 
-    a. Klicken Sie auf **+ Neue Verbindung erstellen**, um eine Verbindung hinzuzufügen.
+    1. Wählen Sie **+ Neue Verbindung** aus, um eine Verbindung hinzuzufügen.
 
-    b. Wählen Sie im Katalog **Azure Synapse Analytics** aus, und klicken Sie auf **Weiter**.
+    1. Wählen Sie im Katalog **Azure Synapse Analytics** aus, und klicken Sie auf **Weiter**.
 
-    ![Auswählen von Azure Synapse Analytics](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
+        ![Auswählen von Azure Synapse Analytics](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
 
-    c. Wählen Sie auf der Seite **New Linked Service** (Neuer verknüpfter Dienst) in der Dropdownliste Ihren Server- und Datenbanknamen aus, und geben Sie den Benutzernamen und das Kennwort an. Klicken Sie auf **Verbindung testen**, um die Einstellungen zu überprüfen, und wählen Sie dann **Erstellen** aus.
+    1. Wählen Sie auf der Seite **Neue Verbindung (Azure Synapse Analytics)** in der Dropdownliste Ihren Server- und Datenbanknamen aus und geben Sie den Benutzernamen und das Kennwort an. Wählen Sie **Verbindung testen** aus, um die Einstellungen zu überprüfen. Wählen Sie dann **Erstellen** aus.
 
-    ![Konfigurieren von Azure Synapse Analytics](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
+        ![Konfigurieren von Azure Synapse Analytics](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
 
-    d. Wählen Sie den neu erstellten verknüpften Dienst als Senke aus, und klicken Sie auf **Weiter**.
+    1. Wählen Sie auf der Seite **Zieldatenspeicher** die neu erstellte Verbindung als Senke in dem Bereich **Verbindung** aus.
 
-7. Überprüfen Sie den Inhalt der Seite **Tabellenmapping**, und klicken Sie dann auf **Weiter**. Eine intelligente Tabellenzuordnung wird angezeigt. Die Quelltabellen werden den Zieltabellen auf Grundlage der Tabellennamen zugeordnet. Wenn eine Quelltabelle im Ziel nicht vorhanden ist, wird von Azure Data Factory standardmäßig eine Zieltabelle mit dem gleichen Namen erstellt. Sie können eine Quelltabelle auch einer vorhandenen Zieltabelle zuordnen.
+6. Überprüfen Sie den Inhalt der Seite **Tabellenzuordnung** und klicken Sie dann auf **Weiter**. Eine intelligente Tabellenzuordnung wird angezeigt. Die Quelltabellen werden den Zieltabellen auf Grundlage der Tabellennamen zugeordnet. Wenn eine Quelltabelle im Ziel nicht vorhanden ist, wird von dem Service standardmäßig eine Zieltabelle mit dem gleichen Namen erstellt. Sie können eine Quelltabelle auch einer vorhandenen Zieltabelle zuordnen.
 
-   ![Seite „Tabellenmapping“](./media/load-azure-sql-data-warehouse/table-mapping.png)
+   ![Ein Screenshot, der die Konfiguration der Seite „Zieldatenspeicher“ zeigt.](./media/load-azure-sql-data-warehouse/destination-data-store-page.png)
 
-8. Überprüfen Sie den Inhalt der Seite **Spaltenzuordnung**, und wählen Sie dann **Weiter** aus. Die intelligente Tabellenzuordnung basiert auf dem Spaltennamen. Wenn Sie Data Factory die Tabellen automatisch erstellen lassen, kann eine Datentypkonvertierung erfolgen, wenn zwischen den Quell- und Zielspeichern Inkompatibilitäten vorliegen. Wenn es eine nicht unterstützte Datentypkonvertierung zwischen der Quell- und Zielspalte gibt, wird eine Fehlermeldung neben der entsprechenden Tabelle angezeigt.
+1. Überprüfen Sie den Inhalt der Seite **Spaltenzuordnung**, und wählen Sie dann **Weiter** aus. Die intelligente Tabellenzuordnung basiert auf dem Spaltennamen. Wenn Sie den Dienst die Tabellen automatisch erstellen lassen, kann eine Datentypkonvertierung erfolgen, wenn zwischen den Quell- und Zielspeichern Inkompatibilitäten vorliegen. Wenn es eine nicht unterstützte Datentypkonvertierung zwischen der Quell- und Zielspalte gibt, wird eine Fehlermeldung neben der entsprechenden Tabelle angezeigt.
 
     ![Seite „Spaltenzuordnung“](./media/load-azure-sql-data-warehouse/schema-mapping.png)
 
-9. Führen Sie auf der Seite **Einstellungen** die folgenden Schritte aus:
+1. Führen Sie auf der Seite **Einstellungen** die folgenden Schritte aus:
 
-    a. Klicken Sie im Abschnitt **Stagingeinstellungen** auf **+ Neu**, um einen neuen Stagingspeicher zu erstellen. Der Speicher wird für das Staging der Daten verwendet, bevor diese mit PolyBase in Azure Synapse Analytics geladen werden. Nach Abschluss des Kopiervorgangs werden die vorläufigen Daten in Azure Blob Storage automatisch bereinigt.
+    1. Geben Sie **CopyFromSQLToSQLDW** in das Feld **Aufgabenname** ein.
+    1. Klicken Sie im Abschnitt **Stagingeinstellungen** auf **+ Neu**, um einen neuen Stagingspeicher zu erstellen. Der Speicher wird für das Staging der Daten verwendet, bevor diese mit PolyBase in Azure Synapse Analytics geladen werden. Nach Abschluss des Kopiervorgangs werden die vorläufigen Daten in Azure Blob Storage automatisch bereinigt.
 
-    b. Wählen Sie auf der Seite **Neuer verknüpfter Dienst** Ihr Speicherkonto und dann **Erstellen** aus, um den verknüpften Dienst bereitzustellen.
+    1. Wählen Sie auf der Seite **Neuer verknüpfter Dienst** Ihr Speicherkonto und dann **Erstellen** aus, um den verknüpften Dienst bereitzustellen.
 
-    c. Deaktivieren Sie die Option **Typstandard verwenden**, und wählen Sie dann **Weiter** aus.
+    1. Deaktivieren Sie die Option **Typstandard verwenden**, und wählen Sie dann **Weiter** aus.
 
     ![Konfigurieren von PolyBase](./media/load-azure-sql-data-warehouse/configure-polybase.png)
 
-10. Überprüfen Sie auf der Seite **Zusammenfassung** die Einstellungen, und klicken Sie dann auf **Weiter**.
+8. Überprüfen Sie auf der Seite **Zusammenfassung** die Einstellungen, und klicken Sie dann auf **Weiter**.
 
-    ![Seite „Zusammenfassung“](./media/load-azure-sql-data-warehouse/summary-page.png)
+9. Klicken Sie auf der Seite **Bereitstellung** auf **Überwachen**, um die Pipeline (Task) zu überwachen. 
 
-11. Klicken Sie auf der Seite **Bereitstellung** auf **Überwachen**, um die Pipeline (Task) zu überwachen. 
+    :::image type="content" source="./media/load-azure-sql-data-warehouse/deployment-complete-page.png" alt-text="Ein Screenshot, der die Seite „Bereitstellung“ zeigt":::.
  
-12. Beachten Sie, dass die Registerkarte **Überwachen** auf der linken Seite automatisch ausgewählt ist. Wenn die Pipelineausführung erfolgreich abgeschlossen wurde, wählen Sie den Link **CopyFromSQLToSQLDW** unter der Spalte **PIPELINENAME** aus, um Details zur Aktivitätsausführung anzuzeigen oder die Pipeline erneut auszuführen.
+10. Beachten Sie, dass die Registerkarte **Überwachen** auf der linken Seite automatisch ausgewählt ist. Wenn die Pipelineausführung erfolgreich abgeschlossen wurde, wählen Sie den Link **CopyFromSQLToSQLDW** unter der Spalte **Pipelinename** aus, um Details zur Aktivitätsausführung anzuzeigen oder die Pipeline erneut auszuführen.
 
-    [![Überwachen der Pipelineausführungen](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png)](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png#lightbox)
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+    :::image type="content" source="./media/load-azure-sql-data-warehouse/pipeline-monitoring.png" alt-text="Überwachen der Pipelineausführungen":::    
 
-13. Wählen Sie oben den Link **Alle Pipelineausführungen** aus, um zurück zur Ansicht mit den Pipelineausführungen zu wechseln. Klicken Sie zum Aktualisieren der Liste auf **Aktualisieren**.
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+    :::image type="content" source="./media/load-azure-sql-data-warehouse/pipeline-monitoring-synapse.png" alt-text="Überwachen der Pipelineausführungen":::   
+
+--- 
+
+12. Wählen Sie oben den Link **Alle Pipelineausführungen** aus, um zurück zur Ansicht mit den Pipelineausführungen zu wechseln. Klicken Sie zum Aktualisieren der Liste auf **Aktualisieren**.
 
     ![Überwachung der Aktivitätsausführungen](./media/load-azure-sql-data-warehouse/activity-monitoring.png)
 
-14. Zum Überwachen der Ausführungsdetails jeder Kopieraktivität wählen Sie in der Ansicht der Aktivitätsausführungen unter **AKTIVITÄTSNAME** den Link **Details** (Brillensymbol) aus. Sie können Details wie die Menge der Daten, die aus der Quelle in die Senke kopiert wurden, den Datendurchsatz, die Ausführungsschritte mit entsprechender Dauer sowie die verwendeten Konfigurationen überwachen.
+1. Zum Überwachen der Ausführungsdetails jeder Kopieraktivität wählen Sie in der Ansicht der Aktivitätsausführungen unter **Aktivitätsname** den Link **Details** (Brillensymbol) aus. Sie können Details wie die Menge der Daten, die aus der Quelle in die Senke kopiert wurden, den Datendurchsatz, die Ausführungsschritte mit entsprechender Dauer sowie die verwendeten Konfigurationen überwachen.
+
     ![Überwachen von Details zur Aktivitätsausführung 1](./media/load-azure-sql-data-warehouse/monitor-activity-run-details-1.png)
 
     ![Überwachen von Details zur Aktivitätsausführung 2](./media/load-azure-sql-data-warehouse/monitor-activity-run-details-2.png)

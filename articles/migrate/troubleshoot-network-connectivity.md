@@ -6,13 +6,13 @@ ms.author: v-ssudhir
 ms.manager: deseelam
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/15/2021
-ms.openlocfilehash: 1b2dd711fb44b1b6b684257e5e5f6abefb5eda50
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.date: 08/19/2021
+ms.openlocfilehash: f6f63c24f98cd362619823ca4ebe1d66d35e6ced
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114291154"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122598029"
 ---
 # <a name="troubleshoot-network-connectivity"></a>Problembehandlung für die lokale Netzwerkkonnektivität
 Dieser Artikel hilft Ihnen bei der Behandlung von Problemen mit der Netzwerkkonnektivität bei der Verwendung von Azure Migrate mit privaten Endpunkten.
@@ -49,7 +49,7 @@ Die Details des privaten Endpunkts und die FQDNs der Ressource für die private 
 
 Ein anschauliches Beispiel für die DNS-Auflösung des FQDN für die private Verbindung des Speicherkontos.  
 
-- Geben Sie _nslookup<Speicherkontoname>.blob.core.windows.net_ ein.  Ersetzen Sie dabei <Speicherkontoname> durch den Namen des Speicherkontos, das für Azure Migrate verwendet wird.  
+- Geben Sie Folgendes ein: _nslookup ```<storage-account-name>_.blob.core.windows.net.``` Ersetzen Sie dabei ```<storage-account-name>``` durch den Namen des Speicherkontos, das für Azure Migrate verwendet wird.  
 
     Sie erhalten eine Meldung ähnlich der folgenden:  
 
@@ -231,7 +231,7 @@ Zusätzlich zu den oben genannten URLs benötigt die Appliance direkt oder über
 |*.portal.azure.com | Navigieren Sie zum Azure-Portal.
 |*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com <br/> *.office.com <br/> *.microsoftonline.com <br/> *.microsoftonline-p.com <br/> | Verwendet für Zugriffssteuerung und Identitätsverwaltung durch Azure Active Directory
 |management.azure.com | Zum Auslösen von Azure Resource Manager-Bereitstellungen
-|*.services.visualstudio.com (optional) | Hochladen von Applianceprotokollen, die für interne Überwachung verwendet werden
+|*.services.visualstudio.com (optional) | Hochladen von Applianceprotokollen, die für die interne Überwachung verwendet werden.
 |aka.ms/* (optional) | Zulassen des Zugriffs auf aka-Links; die für das Herunterladen und Installieren der neuesten Updates für Appliancedienste verwendet werden
 |download.microsoft.com/download | Zulassen von Downloads aus Microsoft Download Center    
 
@@ -265,3 +265,33 @@ Führen Sie bei einer nicht korrekten DNS-Auflösung die folgenden Schritte aus:
 3. Wenn das Problem weiterhin besteht, finden Sie in [diesem Abschnitt](#validate-the-private-dns-zone) weitere Informationen zur Problembehandlung.
 
 Nachdem Sie die Konnektivität überprüft haben, wiederholen Sie den Ermittlungsvorgang.
+
+### <a name="importexport-request-fails-with-the-error-403-this-request-is-not-authorized-to-perform-this-operation"></a>Fehler bei Import/Export-Anforderung: „403: Diese Anforderung ist nicht zum Ausführen des Vorgangs autorisiert.“ 
+
+Die Anforderung zum Exportieren/Importieren/Herunterladen des Berichts ist nicht erfolgreich, und für Projekte mit privater Endpunktverbindung wird folgende Fehlermeldung angezeigt: *403: Diese Anforderung ist nicht zum Ausführen des Vorgangs autorisiert.*
+
+#### <a name="possible-causes"></a>Mögliche Ursachen: 
+Dieser Fehler kann auftreten, wenn die Anforderung zum Exportieren/Importieren/Herunterladen des Berichts nicht über ein autorisiertes Netzwerk eingeleitet wurde. Dieser Fall kann vorliegen, wenn die Anforderung zum Exportieren/Importieren/Herunterladen des Berichts von einem Client eingeleitet wurde, der nicht über ein privates Netzwerk mit dem Azure Migrate-Dienst (Azure Virtual Network) verbunden ist. 
+
+#### <a name="remediation"></a>Wiederherstellung
+**Option 1** *(empfohlen)* :
+  
+Wiederholen Sie zur Beseitigung dieses Fehlers den Import/Export/Download-Vorgang von einem Client aus, der sich in einem virtuellen Netzwerk befindet, das über eine private Verbindung mit Azure verbunden ist. Sie können das Azure-Portal in Ihrem lokalen Netzwerk oder auf Ihrer Appliance-VM öffnen und den Vorgang wiederholen. 
+
+**Option 2**:
+
+Die Anforderung zum Import/Export/Download stellt eine Verbindung mit einem Speicherkonto her, um Berichte hoch- oder herunterzuladen. Sie können auch die Netzwerkeinstellungen des Speicherkontos ändern, das für den Import/Export/Download-Vorgang verwendet wird, und den Zugriff auf das Speicherkonto über andere Netzwerke (öffentliche Netzwerke) zulassen.  
+
+So richten Sie das Speicherkonto für die Konnektivität mit öffentlichen Endpunkten ein
+
+1. **Suchen Sie das Speicherkonto**: Der Name des Speicherkontos ist auf der Eigenschaftenseite „Azure Migrate: Ermittlung und Bewertung“ verfügbar. Der Name des Speicherkontos weist das Suffix *usa* auf. 
+
+   :::image type="content" source="./media/how-to-use-azure-migrate-with-private-endpoints/server-assessment-properties.png" alt-text="Screenshot: Option „DNS-Einstellungen herunterladen“"::: 
+
+2. Navigieren Sie zum Speicherkonto, und bearbeiten Sie die Netzwerkeigenschaften des Speicherkontos, um den Zugriff von allen/anderen Netzwerken zuzulassen. 
+
+    :::image type="content" source="./media/how-to-use-azure-migrate-with-private-endpoints/networking-firewall-virtual-networks.png" alt-text="Screenshot: Netzwerkeigenschaften des Speicherkontos":::
+
+3. Alternativ können Sie den Zugriff auf ausgewählte Netzwerke einschränken und die öffentliche IP-Adresse des Clients hinzufügen, von dem aus Sie auf das Azure-Portal zugreifen möchten.  
+
+    :::image type="content" source="./media/how-to-use-azure-migrate-with-private-endpoints/networking-firewall.png" alt-text="Screenshot: Hinzufügens der öffentlichen IP-Adresse des Clients":::

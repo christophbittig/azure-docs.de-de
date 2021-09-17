@@ -8,14 +8,16 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 6d43935365580233063deb0e523d222351c22d54
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f035d7813dfcf84d21e5913fa4626188e125db9a
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101670604"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691085"
 ---
 # <a name="error-messages-for-azure-spot-virtual-machines-and-scale-sets"></a>Fehlermeldungen für Azure Spot-VMs und -Skalierungsgruppen
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Im Folgenden finden Sie einige mögliche Fehlercodes, die Sie bei Verwendung von Spot-VMs und -Skalierungsgruppen erhalten können.
 

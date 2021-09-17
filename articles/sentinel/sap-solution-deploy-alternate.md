@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.custom: mvc
 ms.date: 05/19/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: ba0457bef8ad4e732cffe229e850272f68a6d30f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0dbdc6be4eb5dd61545bbf761d1805824690ebc7
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122338930"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681368"
 ---
-# <a name="expert-configuration-options-on-premises-deployment-and-sapcontrol-log-sources"></a>Konfigurationsoptionen von Experten, lokale Bereitstellung und SAPControl-Protokollquellen
+# <a name="expert-configuration-options-on-premises-deployment-and-sapcontrol-log-sources"></a>Konfigurationsoptionen für Experten, lokale Bereitstellung und SAPControl-Protokollquellen
 
 In diesem Artikel wird beschrieben, wie Sie den Azure Sentinel-Datenconnector für SAP in einem Experten- oder benutzerdefinierten Prozess bereitstellen, z. B. mithilfe eines lokalen Computers und einer Azure Key Vault-Instanz zum Speichern Ihrer Anmeldeinformationen.
 
@@ -30,7 +30,7 @@ In diesem Artikel wird beschrieben, wie Sie den Azure Sentinel-Datenconnector f�
 
 Die grundlegenden Voraussetzungen für die Bereitstellung Ihres Azure Sentinel-Datenconnectors für SAP sind unabhängig von Ihrer Bereitstellungsmethode identisch.
 
-Stellen Sie sicher, dass Ihr System die Voraussetzungen erfüllt, die im [Haupttutorial zur Bereitstellung des SAP-Datenconnectors](sap-deploy-solution.md#prerequisites) dokumentiert sind, bevor Sie beginnen.
+Stellen Sie sicher, dass Ihr System die Voraussetzungen erfüllt, die in der [Hauptanleitung zur Bereitstellung des SAP-Datenconnectors](sap-deploy-solution.md#prerequisites) dokumentiert sind, bevor Sie beginnen.
 
 Weitere Informationen finden Sie unter [Azure Sentinel-Lösung für SAP: detaillierte SAP-Anforderungen (Public Preview)](sap-solution-detailed-requirements.md).
 
@@ -362,6 +362,7 @@ Weitere Informationen finden Sie unter [Bereitstellen der SAP-Lösung](sap-deplo
 
 Weitere Informationen finden Sie unter
 
+- [Bereitstellen des Azure Sentinel-Datenconnectors für SAP mit SNC](sap-solution-deploy-snc.md)
 - [Detaillierte SAP-Anforderungen für die Azure Sentinel-Lösung für SAP](sap-solution-detailed-requirements.md)
 - [Referenz zu Protokollen der Azure Sentinel-Lösung für SAP](sap-solution-log-reference.md)
 - [Azure Sentinel-Lösung für SAP: Referenz zu sicherheitsbezogenen Inhalten](sap-solution-security-content.md)

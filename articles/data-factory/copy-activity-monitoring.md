@@ -1,39 +1,50 @@
 ---
 title: Überwachen der Kopieraktivität
-description: Hier erfahren Sie, wie Sie die Ausführung der Kopieraktivität in Azure Data Factory überwachen können.
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Hier erfahren Sie, wie Sie die Ausführung der Kopieraktivität in Azure Data Factory und Azure Synapse Analytics überwachen können.
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 03/22/2021
+ms.date: 08/24/2021
 ms.author: jianleishen
-ms.openlocfilehash: 1382d92b09bef59a7b9e79a758c41c6bbaec7343
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: b8f3de9a986c491de6bfd2b507755abe4face534
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482631"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822400"
 ---
 # <a name="monitor-copy-activity"></a>Überwachen der Kopieraktivität
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel wird beschrieben, wie Sie die Ausführung der Kopieraktivität in Azure Data Factory überwachen können. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
+In diesem Artikel wird beschrieben, wie Sie die Ausführung der Kopieraktivität in Azure Data Factory- und Synapse-Pipelines überwachen können. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
 ## <a name="monitor-visually"></a>Visuelle Überwachung
 
-Nachdem Sie eine Pipeline in Azure Data Factory erstellt und veröffentlicht haben, können Sie ihr einen Trigger zuordnen oder manuell eine Ad-hoc-Ausführung starten. Sie können Ihre gesamten Pipelineausführungen nativ über die Azure Data Factory-Benutzeroberfläche überwachen. Informieren Sie sich in [Visuelles Überwachen von Azure Data Factory](monitor-visually.md) zur Azure Data Factory-Überwachung im Allgemeinen.
+Nachdem Sie eine Pipeline erstellt und veröffentlicht haben, können Sie ihr einen Trigger zuordnen oder manuell eine Ad-hoc-Ausführung starten. Sie können Ihre gesamten Pipeline-Ausführungen nativ über die Benutzeroberfläche überwachen. Informieren Sie sich in [Visuelles Überwachen von Azure Data Factory](monitor-visually.md) zur Überwachung im Allgemeinen.
 
-Wenn Sie die Ausführung der Kopieraktivität überwachen möchten, wechseln Sie zur Benutzeroberfläche **Erstellen und überwachen** Ihrer Data Factory-Instanz. Auf der Registerkarte **Überwachen** wird eine Liste der Pipelineausführungen angezeigt. Klicken Sie auf den Link **Pipelinename**, um auf die Liste von Aktivitätsausführungen in der Pipelineausführung zuzugreifen.
+Um die Ausführung der Kopieraktivität zu überwachen, wechseln Sie zur **Data Factory Studio**- oder **Azure Synapse Studio**-Benutzeroberfläche für Ihre Dienstinstanz. Auf der Registerkarte **Überwachen** wird eine Liste der Pipelineausführungen angezeigt. Klicken Sie auf den Link **Pipelinename**, um auf die Liste von Aktivitätsausführungen in der Pipelineausführung zuzugreifen.
+
+# <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
 ![Überwachen der Pipelineausführung](./media/copy-activity-overview/monitor-pipeline-run.png)
+
+# <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+![Überwachen der Pipelineausführung](./media/copy-activity-overview/monitor-pipeline-run-synapse.png)
+
+---
 
 Auf dieser Ebene können Sie Links zu Eingabe und Ausgabe der Kopieraktivität sowie Fehler (wenn die Ausführung der Kopieraktivität fehlschlägt) und außerdem Statistiken wie Dauer/Status anzeigen. Wenn Sie neben dem Namen der Kopieraktivität auf die Schaltfläche **Details** (Brille) klicken, erhalten Sie detaillierte Informationen zur Ausführung Ihrer Kopieraktivität. 
 
 ![Überwachen der Ausführung der Kopieraktivität](./media/copy-activity-overview/monitor-copy-activity-run.png)
 
-In dieser grafischen Überwachungsansicht zeigt Ihnen Azure Data Factory die Informationen zur Ausführung der Kopieraktivität – darunter die gelesene/geschriebene Datenmenge, die Anzahl der Dateien/Zeilen von Daten, die aus der Quelle in die Senke kopiert wurden, den Durchsatz, die für Ihr Kopierszenario angewendeten Konfigurationen, die Schritte, die die Kopieraktivität durchläuft, mit den entsprechenden Dauern und Details und mehr. Unter [dieser Tabelle](#monitor-programmatically) finden Sie jede mögliche Metrik und eine detaillierte Beschreibung dazu. 
+In dieser grafischen Überwachungsansicht zeigt Ihnen der Dienst die Informationen zur Ausführung der Kopieraktivität – darunter die gelesene/geschriebene Datenmenge, die Anzahl der Dateien/Zeilen von Daten, die aus der Quelle in die Senke kopiert wurden, den Durchsatz, die für Ihr Kopierszenario angewendeten Konfigurationen, die Schritte, die die Kopieraktivität durchläuft, mit den entsprechenden Dauern und Details und mehr. Unter [dieser Tabelle](#monitor-programmatically) finden Sie jede mögliche Metrik und eine detaillierte Beschreibung dazu. 
 
-In einigen Szenarien werden bei der Ausführung einer Kopieraktivität in Data Factory am Anfang der Überwachungsansicht der Kopieraktivität **„Tipps zur Leistungsoptimierung“** angezeigt, wie im Beispiel zu sehen ist. Die Tipps geben Aufschluss über den Engpass, der von ADF für den jeweiligen Kopiervorgang identifiziert wurde, und machen Vorschläge dazu, was geändert werden muss, um den Kopierdurchsatz zu erhöhen. Informieren Sie sich ausführlicher über [Tipps zur automatischen Leistungsoptimierung](copy-activity-performance-troubleshooting.md#performance-tuning-tips).
+In einigen Szenarien werden bei der Ausführung einer Kopieraktivität am Anfang der Überwachungsansicht der Kopieraktivität **Tipps zur Leistungsoptimierung** angezeigt, wie im Beispiel zu sehen ist. Die Tipps geben Aufschluss über den Engpass, der vom Dienst für den jeweiligen Kopiervorgang identifiziert wurde, und bieten Änderungsvorschläge zur Erhöhung des Kopierdurchsatzes. Informieren Sie sich ausführlicher über [Tipps zur automatischen Leistungsoptimierung](copy-activity-performance-troubleshooting.md#performance-tuning-tips).
 
 Am Ende von **Ausführungsdetails und Dauern** werden die wichtigsten Schritte beschrieben, die Ihre Kopieraktivität durchläuft. Dies ist besonders nützlich für die Problembehandlung der Kopierleistung. Der Engpass Ihrer Kopierausführung ist die Ausführung mit der längsten Dauer. Informationen zu den einzelnen Phasen sowie ausführliche Anleitungen zur Problembehandlung finden Sie in [Troubleshoot copy activity performance](copy-activity-performance-troubleshooting.md) (Problembehandlung bei der Leistung der Kopieraktivität).
 

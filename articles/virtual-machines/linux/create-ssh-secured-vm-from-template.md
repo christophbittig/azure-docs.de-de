@@ -7,14 +7,16 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: cynthn
-ms.openlocfilehash: 73b21947410ac275a568e20208c062f0da7a1b2e
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: ae954f1a461f2a5fd98b0f0374f6583fed34ce05
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108769955"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689880"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Erstellen eines virtuellen Linux-Computers mithilfe von Azure Resource Manager-Vorlagen
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
 Es wird beschrieben, wie Sie einen virtuellen Linux-Computer (VM) mit einer Azure Resource Manager-Vorlage und mit der Azure CLI über die Azure Cloud Shell erstellen. Informationen zum Erstellen eines virtuellen Windows-Computers finden Sie unter [Erstellen eines virtuellen Windows-Computer mit einer Resource Manager-Vorlage](../windows/ps-template.md).
 

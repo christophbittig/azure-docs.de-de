@@ -1,15 +1,15 @@
 ---
 title: 'Visual Studio Code: Erstellen von Bicep-Dateien'
 description: Hier erfahren Sie, wie Sie Visual Studio Code und die Bicep-Erweiterung für Bicep-Dateien zum Bereitstellen von Azure-Ressourcen verwenden.
-ms.date: 06/25/2021
+ms.date: 07/30/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8167516a41943ea17fdeb47bce84767178593e85
-ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
+ms.openlocfilehash: 4f76d18c756855798651e0c129fd4f0caec15984
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112970101"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750155"
 ---
 # <a name="quickstart-create-bicep-files-with-visual-studio-code"></a>Schnellstart: Erstellen von Bicep-Dateien mit Visual Studio Code
 
@@ -61,7 +61,7 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2019-11-01' = {
 }
 ```
 
-Dieser Codeausschnitt enthält alle Werte, die Sie zum Definieren des virtuellen Netzwerks benötigen. Sie können diesen Code jedoch an ihre Anforderungen anpassen. Beispielsweise ist `name` kein hervorragender Name für das virtuelle Netzwerk. Ändern Sie die `name` Eigenschaft in `examplevnet`.
+Dieser Codeausschnitt enthält alle Werte, die Sie zum Definieren eines virtuellen Netzwerks benötigen. Sie können diesen Code jedoch an ihre Anforderungen anpassen. Beispielsweise ist `name` kein hervorragender Name für das virtuelle Netzwerk. Ändern Sie die `name` Eigenschaft in `examplevnet`.
 
 ```bicep
 name: 'examplevnet'
@@ -118,13 +118,13 @@ Ihr Parameter kann nun verwendet werden.
 
 Anstatt einen Codeausschnitt zum Definieren des Speicherkontos zu verwenden, verwenden wir IntelliSense, um die Werte festzulegen. IntelliSense vereinfacht diesen Schritt erheblich, anstatt die Werte manuell eingeben zu müssen.
 
-Sie definieren eine Ressource mit dem `resource` Schlüsselwort.  Geben Sie unterhalb Ihres virtuellen Netzwerks **resource exampleStorage** ein:
+Verwenden Sie das Schlüsselwort `resource`, um eine bereitzustellende Ressource zu definieren.  Geben Sie unterhalb Ihres virtuellen Netzwerks **resource exampleStorage** ein:
 
 ```bicep
 resource exampleStorage
 ```
 
-**exampleStorage** ist ein symbolischer Name für die Ressource, die Sie bereitstellen. Sie erleichtert damit das Verweisen auf die Ressource in anderen Teilen Ihrer Bicep-Datei.
+**exampleStorage** ist ein symbolischer Name für die Ressource, die Sie bereitstellen. Sie können diesen Namen verwenden, um in anderen Teilen der Bicep-Datei auf die Ressource zu verweisen.
 
 Wenn Sie nach dem symbolischen Namen ein Leerzeichen hinzufügen, wird eine Liste der Ressourcentypen angezeigt. Fahren Sie mit der Eingabe des Worts **Speicher** fort, bis Sie ihn aus den verfügbaren Optionen auswählen können.
 
@@ -154,7 +154,7 @@ resource exampleStorage 'Microsoft.Storage/storageAccounts@2021-02-01' = {
 
 Sie haben es fast geschafft! Geben Sie einfach Werte für diese Eigenschaften an.
 
-Auch hier hilft Ihnen IntelliSense weiter. Geben Sie `name` für den Parameter an, der einen Namen für das Speicherkonto enthält. Legen Sie hierfür `location` auf `eastus` fest. Beim Hinzufügen von einem SKU-Name und einer SKU-Art stellt IntelliSense die gültigen Optionen zur Verfügung.
+Auch hier hilft Ihnen IntelliSense weiter. Legen Sie `name` auf `storageName` fest, der der Parameter ist, der einen Namen für das Speicherkonto enthält. Legen Sie hierfür `location` auf `eastus` fest. Beim Hinzufügen von einem SKU-Name und einer SKU-Art stellt IntelliSense die gültigen Optionen zur Verfügung.
 
 Wenn Sie fertig sind, haben Sie:
 
@@ -234,7 +234,7 @@ New-AzResourceGroupDeployment -ResourceGroupName exampleRG -TemplateFile ./main.
 ---
 
 > [!NOTE]
-> Ersetzen Sie **{Ihren-eindeutigen-Namen}** (einschließlich geschweifte Klammern) durch einen eindeutigen Speicherkontonamen.
+> Ersetzen Sie **{Ihren-eindeutigen-Namen}** (einschließlich der geschweiften Klammern) durch einen eindeutigen Speicherkontonamen.
 
 Nach Abschluss der Bereitstellung sollte eine Meldung mit dem Hinweis angezeigt werden, dass die Bereitstellung erfolgreich war. Wenn Sie eine Fehlermeldung erhalten, die angibt, dass das Speicherkonto bereits verwendet wurde, wird der von Ihnen bereitgestellte Speichername bereits verwendet. Geben Sie einen Namen an, der wahrscheinlich eindeutiger ist.
 

@@ -1,18 +1,18 @@
 ---
 title: Einführung in Azure Stream Analytics
 description: Hier erfahren Sie mehr über Azure Stream Analytics, einen verwalteten Dienst, der Ihnen bei der Analyse der Streamingdaten aus dem Internet der Dinge (IoT) in Echtzeit hilft.
-author: enkrumah
-ms.author: ebnkruma
+author: jeanb
+ms.author: jeanb
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc, contperf-fy21q2
-ms.date: 11/12/2020
-ms.openlocfilehash: 5aea6460f3a876d63544ce8422f9f205c22f2a0f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 8/20/2021
+ms.openlocfilehash: ee78ca8fee1b83ea10ea86ef180b3804279bbe91
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98015248"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687684"
 ---
 # <a name="welcome-to-azure-stream-analytics"></a>Willkommen bei Azure Stream Analytics
 
@@ -100,7 +100,7 @@ Azure Stream Analytics erfüllt die Anforderungen mehrerer Compliancezertifizier
 
 ## <a name="performance"></a>Leistung
 
-Stream Analytics kann pro Sekunde Millionen von Ereignissen verarbeiten und Ergebnisse mit äußerst kurzer Wartezeit liefern. Sie können vertikal und horizontal hochskalieren, um große Echtzeitanwendungen und komplexe Anwendungen für die Ereignisverarbeitung zu nutzen. Stream Analytics unterstützt eine höhere Leistung mittels Partitionierung, damit komplexe Abfragen parallelisiert und auf mehreren Streamingknoten ausgeführt werden können. Azure Stream Analytics basiert auf [Trill](https://github.com/Microsoft/Trill), einem Hochleistungsanalysemodul für In-Memory-Streaming, das in Zusammenarbeit mit der Forschungsabteilung von Microsoft entwickelt wurde.
+Stream Analytics kann pro Sekunde Millionen von Ereignissen verarbeiten und Ergebnisse mit äußerst kurzer Wartezeit liefern. Es gestattet Ihnen das [Aufskalieren](stream-analytics-autoscale.md), um Ihre Workloads anzupassen. Stream Analytics unterstützt eine höhere Leistung mittels Partitionierung, damit komplexe Abfragen parallelisiert und auf mehreren Streamingknoten ausgeführt werden können. Azure Stream Analytics basiert auf [Trill](https://github.com/Microsoft/Trill), einem Hochleistungsanalysemodul für In-Memory-Streaming, das in Zusammenarbeit mit der Forschungsabteilung von Microsoft entwickelt wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

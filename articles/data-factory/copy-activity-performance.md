@@ -1,23 +1,24 @@
 ---
 title: Handbuch zur Leistung und Skalierbarkeit der Kopieraktivität
-description: Hier erfahren Sie, welche Faktoren sich entscheidend auf die Leistung auswirken, wenn Sie Daten in Azure Data Factory mithilfe der Kopieraktivität verschieben.
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Hier erfahren Sie, welche Faktoren sich entscheidend auf die Leistung auswirken, wenn Sie in Azure Data Factory- und Azure Synapse Analytics-Pipelines Daten mithilfe der Kopieraktivität verschieben.
 services: data-factory
 documentationcenter: ''
 ms.author: jianleishen
 author: jianleishen
 manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
+ms.subservice: data-movement
 ms.workload: data-services
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 09/15/2020
-ms.openlocfilehash: 473f0c2c33fff48f945079ad1bd948c35c0826c4
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.custom: synapse
+ms.date: 08/24/2021
+ms.openlocfilehash: 2a2708c3d84dd83b752db2a0ae56843ae068aabe
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482595"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822427"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Handbuch zur Leistung und Skalierbarkeit der Kopieraktivität
 
@@ -29,27 +30,27 @@ ms.locfileid: "109482595"
 
 Gelegentlich möchten Sie eine umfangreiche Datenmigration von Data Lake oder Enterprise Data Warehouse (EDW) zu Azure durchführen. Ein anderes Mal möchten Sie für Big Data-Analysen große Datenmengen aus verschiedenen Quellen in Azure erfassen. In jedem Fall ist es entscheidend, eine optimale Leistung und Skalierbarkeit zu erreichen.
 
-Azure Data Factory (ADF) bietet einen Mechanismus zum Erfassen von Daten. ADF bietet folgende Vorteile:
+Azure Data Factory- und Azure Synapse Analytics-Pipelines bieten einen Mechanismus zum Erfassen von Daten mit den folgenden Vorteilen:
 
 * Verarbeitet große Datenmengen
 * Ist äußerst leistungsfähig
 * Ist kostengünstig
 
-Aufgrund dieser Vorteile eignet sich ADF hervorragend für Datentechniker, die skalierbare und leistungsstarke Pipelines für die Datenerfassung erstellen möchten.
+Dadurch können technische Fachkräfte für Daten skalierbare und leistungsstarke Pipelines für die Datenerfassung erstellen.
 
 Nach dem Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 
-* Welche Leistung und Skalierbarkeit kann ich mit ADF-Kopieraktivität für Datenmigrations- und Datenerfassungsszenarien erzielen?
-* Welche Schritte sind durchzuführen, um die Leistung der ADF-Kopieraktivität zu optimieren?
-* Welche Steuerelemente für die ADF-Leistungsoptimierung kann ich verwenden, um die Leistung für eine einzelne Kopieraktivitätsausführung zu optimieren?
-* Welche anderen Faktoren außerhalb von ADF sind bei der Optimierung der Kopierleistung zu berücksichtigen?
+* Welche Leistung und Skalierbarkeit kann ich mit der Kopieraktivität in Datenmigrations- und Datenerfassungsszenarios erzielen?
+* Welche Schritte muss ich ausführen, um die Leistung der Kopieraktivität zu optimieren?
+* Welche Leistungsoptimierungen kann ich für eine einzelne Kopieraktivitätsausführung nutzen?
+* Welche anderen externen Faktoren müssen bei der Optimierung der Kopierleistung berücksichtigt werden?
 
 > [!NOTE]
 > Falls Sie mit dem grundlegenden Konzept der Kopieraktivität nicht vertraut sind, finden Sie weitere Informationen unter [Kopieraktivität – Übersicht](copy-activity-overview.md), bevor Sie sich mit diesem Artikel beschäftigen.
 
-## <a name="copy-performance-and-scalability-achievable-using-adf"></a>Durch ADF erreichbare Kopierleistung und -skalierbarkeit
+## <a name="copy-performance-and-scalability-achievable-using-azure-data-factory-and-synapse-pipelines"></a>Mit Azure Data Factory- und Synapse-Pipelines erreichbare Kopierleistung und Skalierbarkeit
 
-ADF bietet eine serverlose Architektur, die Parallelität auf verschiedenen Ebenen ermöglicht.
+Azure Data Factory- und Synapse-Pipelines bieten eine serverlose Architektur, die Parallelität auf verschiedenen Ebenen ermöglicht.
 
 Diese Architektur ermöglicht es Ihnen, Pipelines zu entwickeln, die den Datenverschiebungsdurchsatz für Ihre Umgebung maximieren. Diese Pipelines nutzen die folgenden Ressourcen vollständig:
 
@@ -65,7 +66,7 @@ Diese volle Auslastung bedeutet, dass Sie den Gesamtdurchsatz durch Messung des 
 Die folgende Tabelle zeigt die Berechnung der Dauer der Datenverschiebung. Die Dauer in jeder Zelle wird basierend auf einer bestimmten Netzwerk- und Datenspeicherbandbreite und einer bestimmten Größe der Datennutzlast berechnet.
 
 > [!NOTE]
-> Die unten angegebene Dauer soll die erreichbare Leistung in einer End-to-End-Datenintegrationslösung darstellen, die mit ADF implementiert wird. Dazu wird mindestens eine der Leistungsoptimierungstechniken verwendet, die unter [Features für die Leistungsoptimierung von Kopiervorgängen](#copy-performance-optimization-features) beschrieben sind, einschließlich der Verwendung von ForEach zum Partitionieren und Erzeugen mehrerer gleichzeitiger Kopieraktivitäten. Es wird empfohlen, die Schritte unter [Schritte zur Optimierung der Leistung](#performance-tuning-steps) zu befolgen, um die Kopierleistung für Ihr spezifisches Dataset und Ihre Systemkonfiguration zu optimieren. Sie sollten die in den Leistungsoptimierungstests ermittelten Zahlen für die Planung der Produktionsbereitstellung, die Kapazitätsplanung und die Abrechnungsprognose verwenden.
+> Die unten angegebene Dauer soll die erreichbare Leistung in einer umfassenden Datenintegrationslösung darstellen. Dazu wird mindestens eine der Leistungsoptimierungstechniken verwendet, die unter [Features für die Leistungsoptimierung von Kopiervorgängen](#copy-performance-optimization-features) beschrieben sind, einschließlich der Verwendung von ForEach zum Partitionieren und Erzeugen mehrerer gleichzeitiger Kopieraktivitäten. Es wird empfohlen, die Schritte unter [Schritte zur Optimierung der Leistung](#performance-tuning-steps) zu befolgen, um die Kopierleistung für Ihr spezifisches Dataset und Ihre Systemkonfiguration zu optimieren. Sie sollten die in den Leistungsoptimierungstests ermittelten Zahlen für die Planung der Produktionsbereitstellung, die Kapazitätsplanung und die Abrechnungsprognose verwenden.
 
 &nbsp;
 
@@ -81,11 +82,11 @@ Die folgende Tabelle zeigt die Berechnung der Dauer der Datenverschiebung. Die D
 | **10 PB**                   | 647,3 Monate   | 323,6 Monate  | 64,7 Monate   | 31,6 Monate  | 6,5 Monate   | 3,2 Monate   | 0,6 Monate    |
 | | |  | | |  | | |
 
-Die ADF-Kopieraktivität kann auf verschiedenen Ebenen skaliert werden:
+Die Kopieraktivität kann auf verschiedenen Ebenen skaliert werden:
 
-![Skalierung der ADF-Kopieraktivität](media/copy-activity-performance/adf-copy-scalability.png)
+![Skalieren der Kopieraktivität](media/copy-activity-performance/adf-copy-scalability.png)
 
-* Mit der ADF-Ablaufsteuerung können mehrere Kopieraktivitäten parallel gestartet werden, z. B. per [foreach-Schleife](control-flow-for-each-activity.md).
+* Mit der Ablaufsteuerung können mehrere Kopieraktivitäten parallel gestartet werden (z. B. per [ForEach-Schleife](control-flow-for-each-activity.md)).
 
 * Eine einzelne Kopieraktivität kann skalierbare Computeressourcen nutzen.
   * Bei Verwendung der Azure Integration Runtime (IR) können Sie [bis zu 256 Datenintegrationseinheiten (DIUs)](#data-integration-units) für jede Kopieraktivität auf serverlose Weise angeben.
@@ -97,7 +98,7 @@ Die ADF-Kopieraktivität kann auf verschiedenen Ebenen skaliert werden:
 
 ## <a name="performance-tuning-steps"></a>Schritte zur Optimierung der Leistung
 
-Führen Sie die folgenden Schritte aus, um die Leistung des Azure Data Factory-Diensts mit der Kopieraktivität zu verbessern.
+Führen Sie die folgenden Schritte aus, um die Leistung Ihres Diensts mit der Kopieraktivität zu verbessern:
 
 1. **Wählen Sie ein Testdataset aus, und legen Sie eine Baseline fest.**
 
@@ -127,7 +128,7 @@ Führen Sie die folgenden Schritte aus, um die Leistung des Azure Data Factory-D
 
 3. **So maximieren Sie den aggregierten Durchsatz durch paralleles Ausführen mehrerer Kopiervorgänge:**
 
-    Mittlerweile haben Sie die Leistung einer einzelnen Kopieraktivität maximiert. Wenn Sie die Durchsatzobergrenzen Ihrer Umgebung noch nicht erreicht haben, können Sie mehrere Kopieraktivitäten parallel ausführen. Mithilfe von ADF-Ablaufsteuerungskonstrukten sind parallele Ausführungen möglich. Ein solches Konstrukt ist die [„For Each“-Schleife](control-flow-for-each-activity.md). Weitere Informationen finden Sie in den folgenden Artikeln über Lösungsvorlagen:
+    Mittlerweile haben Sie die Leistung einer einzelnen Kopieraktivität maximiert. Wenn Sie die Durchsatzobergrenzen Ihrer Umgebung noch nicht erreicht haben, können Sie mehrere Kopieraktivitäten parallel ausführen. Mithilfe von Ablaufsteuerungskonstrukten sind parallele Ausführungen möglich. Ein solches Konstrukt ist die [„For Each“-Schleife](control-flow-for-each-activity.md). Weitere Informationen finden Sie in den folgenden Artikeln über Lösungsvorlagen:
 
     * [Kopieren von Dateien aus mehreren Containern](solution-template-copy-files-multiple-containers.md)
     * [Migrieren von Daten aus Amazon S3 zu ADLS Gen2](solution-template-migration-s3-azure.md)
@@ -139,11 +140,11 @@ Führen Sie die folgenden Schritte aus, um die Leistung des Azure Data Factory-D
 
 ## <a name="troubleshoot-copy-activity-performance"></a>Problembehandlung für die Leistung der Kopieraktivität
 
-Führen Sie die [Schritte zur Optimierung der Leistung](#performance-tuning-steps) aus, um den Leistungstest für Ihr Szenario zu planen und durchzuführen. Informieren Sie sich auch unter [Problembehandlung für die Leistung der Kopieraktivität](copy-activity-performance-troubleshooting.md) darüber, wie Sie Probleme bei der Ausführung von einzelnen Kopieraktivitäten in Azure Data Factory beheben.
+Führen Sie die [Schritte zur Optimierung der Leistung](#performance-tuning-steps) aus, um den Leistungstest für Ihr Szenario zu planen und durchzuführen. Informieren Sie sich auch unter [Problembehandlung für die Leistung der Kopieraktivität](copy-activity-performance-troubleshooting.md) darüber, wie Sie Leistungsprobleme bei der Ausführung von einzelnen Kopieraktivitäten beheben.
 
 ## <a name="copy-performance-optimization-features"></a>Features für die Leistungsoptimierung von Kopiervorgängen
 
-Azure Data Factory bietet die folgenden Funktionen zur Leistungsoptimierung:
+Der Dienst bietet die folgenden Leistungsoptimierungsfeatures:
 
 * [Datenintegrationseinheiten](#data-integration-units)
 * [Skalierbarkeit der selbstgehosteten Integration Runtime (IR)](#self-hosted-integration-runtime-scalability)
@@ -152,7 +153,7 @@ Azure Data Factory bietet die folgenden Funktionen zur Leistungsoptimierung:
 
 ### <a name="data-integration-units"></a>Datenintegrationseinheiten
 
-Eine Datenintegrationseinheit (DIU) ist ein Measure, das die Leistung einer einzelnen Einheit in Azure Data Factory darstellt. Leistung ist eine Kombination aus CPU-, Arbeitsspeicher- und Netzwerkressourcenzuordnung. DIU gilt nur für [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime). DIU gilt nicht für die [selbst gehostete Integration Runtime](concepts-integration-runtime.md#self-hosted-integration-runtime). [Hier erhalten Sie weitere Informationen](copy-activity-performance-features.md#data-integration-units).
+Eine Datenintegrationseinheit (DIU) ist ein Measure, das die Leistung einer einzelnen Einheit in Azure Data Factory- und Synapse-Pipelines darstellt. Leistung ist eine Kombination aus CPU-, Arbeitsspeicher- und Netzwerkressourcenzuordnung. DIU gilt nur für [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime). DIU gilt nicht für die [selbst gehostete Integration Runtime](concepts-integration-runtime.md#self-hosted-integration-runtime). [Hier erhalten Sie weitere Informationen](copy-activity-performance-features.md#data-integration-units).
 
 ### <a name="self-hosted-integration-runtime-scalability"></a>Skalierbarkeit der selbstgehosteten Integration Runtime (IR)
 

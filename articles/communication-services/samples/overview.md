@@ -9,12 +9,12 @@ ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 6b0239a431e2c5ec8cd516686456ec68cb543b8e
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 9096b11331a4e935bb0d9a23e648404b5c0d5bab
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113107593"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271664"
 ---
 # <a name="samples"></a>Beispiele
 
@@ -25,7 +25,7 @@ Azure Communication Services bietet viele Beispiele, mit denen Sie ACS-Dienste u
 | Name des Beispiels                                                                                          | Beschreibung                                                         | Verfügbare Sprachen/Plattformen      |
 | :--------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------ | :--------------------------------- |
 | [Hero-Beispiel für Gruppenanrufe](./calling-hero-sample.md)                                                | Enthält ein Beispiel zum Erstellen einer Anwendung für Gruppenanrufe.          | [Web](https://github.com/Azure-Samples/communication-services-web-calling-hero), [iOS](https://github.com/Azure-Samples/communication-services-ios-calling-hero), [Android](https://github.com/Azure-Samples/communication-services-android-calling-hero)                           |
-| [Beispiel für Webanrufe](./web-calling-sample.md)                                                        | Eine Schritt-für-Schritt-Anleitung für ACS-Anruffunktionen im Web | [Web](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)                                |
+| [Beispiel für Webanrufe](./web-calling-sample.md)                                                        | Eine Schritt-für-Schritt-Anleitung für ACS-Anruffunktionen, einschließlich PSTN, im Web | [Web](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)                                |
 | [Hero-Beispiel für Chats](./chat-hero-sample.md)                                                            | Enthält ein Beispiel für das Erstellen einer Chatanwendung.                   | [Web](https://github.com/Azure-Samples/communication-services-web-chat-hero)                    |
 | [Contoso Medical-App](https://github.com/Azure-Samples/communication-services-contoso-med-app)       | Beispiel-App zur Veranschaulichung eines Patienten-Arzt-Flows.                     | Web und Node.js                      |
 | [Contoso Retail-App](https://github.com/Azure-Samples/communication-services-contoso-retail-app)     | Beispiel-App zur Veranschaulichung des Supportflows für den Einzelhandel.                     | ASP.NET, .NET Core, JavaScript/Web |

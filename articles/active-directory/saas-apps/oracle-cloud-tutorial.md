@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/04/2020
 ms.author: jeedes
-ms.openlocfilehash: 914858471432979e5516a1f075ed4fcbb8061a5d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02ba974aa430bd75848c3fcf2b762453d99e27fe
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181848"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183605"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>Tutorial: Integrieren von Oracle Cloud Infrastructure Console in Azure Active Directory
 
@@ -38,6 +38,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Oracle Cloud Infrastructure Console unterstützt **SP-initiiertes** einmaliges Anmelden.
+* Oracle Cloud Infrastructure Console unterstützt die [**automatisierte** Benutzerbereitstellung und Bereitstellungsaufhebung](oracle-cloud-infrastructure-console-provisioning-tutorial.md) (empfohlen).
 
 ## <a name="adding-oracle-cloud-infrastructure-console-from-the-gallery"></a>Hinzufügen von Oracle Cloud Infrastructure Console über den Katalog
 

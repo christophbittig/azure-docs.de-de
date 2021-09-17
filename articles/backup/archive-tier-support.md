@@ -2,14 +2,14 @@
 title: Unterstützung für Archivspeicherebene
 description: Informationen zur Unterstützung der Zugriffsebene „Archiv“ für Azure Backup
 ms.topic: conceptual
-ms.date: 08/04/2021
+ms.date: 08/31/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ccb85c42685f962da3c9faf098d7847a93f4de74
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 228ab85a0cde5ed37156a5821ad3ac2acd6a7209
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122353675"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123260775"
 ---
 # <a name="archive-tier-support"></a>Unterstützung für Archivspeicherebene
 
@@ -37,7 +37,7 @@ Unterstützte Clients:
 - Die Funktion wird mithilfe von PowerShell bereitgestellt.
 
 >[!Note]
->Die Unterstützung der Zugriffsebene „Archiv“ für SQL Server auf Azure-VMs ist jetzt allgemein verfügbar in „Europa, Norden“, „Indien, Mitte“, „Asien, Südosten“ und „Australien, Osten“. Eine ausführliche Liste der unterstützten Regionen finden Sie in der [Supportmatrix](#support-matrix).    <br><br>    Für die verbleibenden Regionen für SQL Server in Azure-VMs befindet sich die Unterstützung der Zugriffsebene „Archiv“ in der eingeschränkten öffentlichen Vorschau. Die Unterstützung der Zugriffsebene „Archiv“ für Azure Virtual Machines befindet sich ebenfalls in der eingeschränkten öffentlichen Vorschau. Verwenden Sie diesen [Link](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR463S33c54tEiJLEM6Enqb9UNU5CVTlLVFlGUkNXWVlMNlRPM1lJWUxLRy4u), um sich für die eingeschränkte öffentliche Vorschauversion zu registrieren.
+>Die Unterstützung der Zugriffsebene „Archiv“ für SQL Server auf Azure-VMs ist ab sofort in vielen Regionen allgemein verfügbar. Eine ausführliche Liste der unterstützten Regionen finden Sie in der [Supportmatrix](#support-matrix).    <br><br>    Für die verbleibenden Regionen für SQL Server in Azure-VMs befindet sich die Unterstützung der Zugriffsebene „Archiv“ in der eingeschränkten öffentlichen Vorschau. Die Unterstützung der Zugriffsebene „Archiv“ für Azure Virtual Machines befindet sich ebenfalls in der eingeschränkten öffentlichen Vorschau. Verwenden Sie diesen [Link](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR463S33c54tEiJLEM6Enqb9UNU5CVTlLVFlGUkNXWVlMNlRPM1lJWUxLRy4u), um sich für die eingeschränkte öffentliche Vorschauversion zu registrieren.
 
 ## <a name="get-started-with-powershell"></a>Erste Schritte mit PowerShell
 
@@ -211,8 +211,8 @@ Durch das Beenden des Schutzes und das Löschen der Daten werden alle Wiederhers
 
 | Arbeitsauslastungen | Vorschau | Allgemein verfügbar |
 | --- | --- | --- |
-| SQL Server auf Azure-VM | „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Süden-Mitte“, „USA, Westen“, „USA, Westen 2“, „USA, Westen-Mitte“, „USA, Norden-Mitte“, „Brasilien, Süden“, „Kanada, Osten“, „Kanada, Mitte“, „Europa, Westen“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Asien, Osten“, „Japan, Osten“, „Indien, Süden“ | „Australien, Osten“, „Indien, Mitte“, „Europa, Norden“, „Asien, Südosten“ |
-| Azure-VMs | „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Süden-Mitte“, „USA, Westen“, „USA, Westen 2“, „USA, Westen-Mitte“, „USA, Norden-Mitte“, „Brasilien, Süden“, „Kanada, Osten“, „Kanada, Mitte“, „Europa, Westen“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Asien, Osten“, „Japan, Osten“, „Indien, Süden“, „Asien, Südosten“, „Australien, Osten“, „Indien, Mitte“, „Europa, Norden“ | Keine |
+| SQL Server auf Azure-VM | „USA, Osten“, „USA, Süden-Mitte“, „USA, Norden-Mitte“, „Europa, Westen“ | „Australien, Osten“, „Indien, Mitte“, „Europa, Norden“, „Asien, Südosten“, „Australien, Südosten“, „Kanada, Mitte“, „Brasilien, Süden“, „Kanada, Osten“, „Frankreich, Mitte“, „Frankreich, Süden“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „Indien, Süden“, „Vereinigtes Königreich, Westen“, „Vereinigtes Königreich, Süden“, „USA, Mitte“, „USA, Osten 2“, „USA, Westen“, „USA, Westen 2“, „USA, Westen-Mitte“ |
+| Azure-VMs | „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Süden-Mitte“, „USA, Westen“, „USA, Westen 2“, „USA, Westen-Mitte“, „USA, Norden-Mitte“, „Brasilien, Süden“, „Kanada, Osten“, „Kanada, Mitte“, „Europa, Westen“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Asien, Osten“, „Japan, Osten“, „Indien, Süden“, „Asien, Südosten“, „Australien, Osten“, „Indien, Mitte“, „Europa, Mitte“, „Australien, Südosten“, „Frankreich, Mitte“, „Frankreich, Süden“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“ | Keine |
 
 ## <a name="error-codes-and-troubleshooting-steps"></a>Fehlercodes und Schritte zur Problembehandlung
 

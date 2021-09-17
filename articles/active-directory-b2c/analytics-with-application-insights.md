@@ -12,12 +12,12 @@ ms.date: 01/29/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 2cde44ddb49ede8002b8a25ab47ae92ccd602a9d
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: a296babaafdee7939d462a356b9a3087e5e8990f
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226369"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122777774"
 ---
 # <a name="track-user-behavior-in-azure-ad-b2c-by-using-application-insights"></a>Verfolgen des Benutzerverhaltens in Azure AD B2C mithilfe von Application Insights
 
@@ -58,7 +58,8 @@ Wenn Sie Application Insights verwenden, beachten Sie Folgendes:
 Wenn Sie Application Insights mit Azure AD B2C verwenden, müssen Sie lediglich eine Ressource erstellen und den Instrumentierungsschlüssel abrufen. Informationen finden Sie unter [Erstellen einer Application Insights-Ressource](../azure-monitor/app/create-new-resource.md).
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das über Ihr Azure-Abonnement verfügt. Wählen Sie im Hauptmenü den Filter **Verzeichnis + Abonnement** aus, und wählen Sie das Verzeichnis aus, das Ihr Azure-Abonnement enthält. Bei diesem Mandanten handelt es sich nicht um Ihren Azure AD B2C-Mandanten.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das über Ihr Azure AD-Abonnement verfügt, und nicht Ihr Azure AD B2C-Verzeichnis. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse + Abonnements** das Azure AD-Verzeichnis, das über Ihr Abonnement verfügt, in der Liste **Verzeichnisname**, und wählen Sie dann **Wechseln** aus.
 1. Wählen Sie links oben im Azure-Portal **Ressource erstellen** aus, suchen Sie **Application Insights**, und wählen Sie dann diese Option aus.
 1. Wählen Sie **Erstellen** aus.
 1. Geben Sie unter **Name** einen Namen für die Ressourcengruppe ein.

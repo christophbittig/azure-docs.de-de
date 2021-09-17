@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: reference
 ms.date: 08/03/2021
 ms.author: memildin
-ms.openlocfilehash: b826ed1ab9fbe2c55e8fd4737cb3a1c83bae1766
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5b2eb0cd1f96ce52a7f27ec961bd08248442827a
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355283"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122606857"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Archiv der Neuerungen in Azure Security Center
 
@@ -1283,7 +1283,7 @@ Die Automatisierung der Prozesse Ihrer Organisation zur Überwachung und Reaktio
 
 Zum Bereitstellen Ihrer Automatisierungskonfigurationen in Ihrer Organisation verwenden Sie diese integrierten „DeployIfdNotExist“-Azure-Richtlinien zum Erstellen und Konfigurieren von Prozeduren für [fortlaufenden Export](continuous-export.md) und [Workflowautomatisierung](workflow-automation.md):
 
-Die Richtlinien finden Sie in der Azure-Richtlinie:
+Die Richtliniendefinitionen finden Sie unter Azure Policy:
 
 
 |Zielsetzung  |Richtlinie  |Richtlinien-ID  |
@@ -1314,9 +1314,9 @@ Weitere Informationen finden Sie in der Tabelle [Netzwerkempfehlungen](recommend
 
 ### <a name="new-policies-for-enabling-threat-protection-and-advanced-data-security"></a>Neue Richtlinien zum Aktivieren von Bedrohungsschutz und erweiterter Datensicherheit
 
-Die folgenden neuen Richtlinien wurden der ASC-Standardinitiative hinzugefügt und dienen zur Unterstützung beim Aktivieren von Bedrohungsschutz oder erweiterter Datensicherheit für die relevanten Ressourcentypen.
+Die folgenden neuen Richtliniendefinitionen wurden der ASC-Standardinitiative hinzugefügt und dienen zur Unterstützung beim Aktivieren von Bedrohungsschutz oder erweiterter Datensicherheit für die relevanten Ressourcentypen.
 
-Die Richtlinien finden Sie in der Azure-Richtlinie:
+Die Richtliniendefinitionen finden Sie unter Azure Policy:
 
 
 | Richtlinie                                                                                                                                                                                                                                                                | Richtlinien-ID                            |

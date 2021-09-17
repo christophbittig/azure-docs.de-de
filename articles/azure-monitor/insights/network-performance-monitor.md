@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: fab7a613a040a57b65ecb8cb2372fff37f35c84a
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: bd0fb0720218b938b8c10454afeafba85887fa2c
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114392559"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779124"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Netzwerkleistungsmonitor-Lösung in Azure
 
@@ -47,7 +47,7 @@ NPM kann die Konnektivität zwischen Netzwerken und Anwendungen in jedem Teil de
 * USA, Westen-Mitte
 * USA Nord Mitte
 * USA Süd Mitte
-* USA, Mitte
+* USA (Mitte)
 * East US
 * USA (Ost) 2
 * USA, Westen 2
@@ -123,7 +123,7 @@ Das Skript erstellt die für die Lösung erforderlichen Registrierungsschlüssel
 
 ### <a name="configure-the-solution"></a>Konfigurieren der Projektmappe 
 
-1. Fügen Sie die Netzwerkleistungsmonitor-Lösung Ihrem Arbeitsbereich aus [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/solarwinds.solarwinds-orion-network-performance-monitor?tab=Overview) hinzu. Sie können auch den unter [Überwachungslösungen in Azure Monitor](./solutions.md) beschriebenen Prozess verwenden. 
+1. Fügen Sie Ihrem Arbeitsbereich mithilfe der unter [Hinzufügen von Azure Monitor-Lösungen aus dem Lösungskatalog](./solutions.md#install-a-monitoring-solution) beschriebenen Prozesse die Netzwerkleistungsmonitor-Lösung hinzu. Dies ist erforderlich, wenn Sie im Verbindungsmonitor mit Nicht-Azure-Endpunkten arbeiten möchten.
 2. Öffnen Sie Ihren Log Analytics-Arbeitsbereich, und wählen Sie die Kachel **Übersicht** aus. 
 3. Wählen Sie die Kachel **Netzwerkleistungsmonitor** mit der Meldung *Für die Lösung ist eine weitere Konfiguration erforderlich* aus.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2021
 ms.author: bagol
-ms.openlocfilehash: d964dc25fd450f244e34140080e77cdc0e319941
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: b0a0b8cb4d3ff5ce10348608d66a451517b60016
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108749427"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122514737"
 ---
 # <a name="resources-for-creating-azure-sentinel-custom-connectors"></a>Ressourcen zum Erstellen benutzerdefinierter Azure Sentinel-Connectors
 
@@ -198,11 +198,13 @@ Sie können die in Ihrem benutzerdefinierten Connector integrierte Analysemethod
 Beispiel:
 
 - **Wenn Sie Logstash verwendet haben**, verwenden Sie das [Grok](https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html)-Filter-Plug-In, um Ihre Daten zu analysieren.
-- **Wenn Sie eine Azure-Funktion verwendet haben**, analysieren Sie Ihre Daten mit Code. Weitere Informationen finden Sie unter [Parser](normalization.md#parsers).
+- **Wenn Sie eine Azure-Funktion verwendet haben**, analysieren Sie Ihre Daten mit Code.
 
-Azure Sentinel unterstützt die Analyse zur Abfragezeit. Die Analyse zur Abfragezeit ermöglicht es Ihnen, Daten im ursprünglichen Format per Push als Eingabe zu übergeben und dann bei Bedarf zu analysieren.
+Azure Sentinel unterstützt die Analyse zur Abfragezeit. Die Analyse zur Abfragezeit ermöglicht es Ihnen, Daten im ursprünglichen Format per Push als Eingabe zu übergeben und dann bei Bedarf zu analysieren. 
 
 Die Analyse zur Abfragezeit bedeutet ferner, dass Sie die genaue Struktur Ihrer Daten nicht im Voraus kennen müssen, wenn Sie Ihren benutzerdefinierten Connector erstellen, und sogar auch die Informationen, die Sie extrahieren müssen, nicht. Analysieren Sie stattdessen Ihre Daten jederzeit, auch während einer Untersuchung.
+
+Weitere Informationen zur Analyse der Abfragezeit finden Sie unter [Parsers](normalization-about-parsers.md).
 
 > [!NOTE]
 > Eine Aktualisierung Ihres Parsers gilt auch für Daten, die Sie bereits in Azure Sentinel erfasst haben.
@@ -211,9 +213,11 @@ Die Analyse zur Abfragezeit bedeutet ferner, dass Sie die genaue Struktur Ihrer 
 
 Verwenden Sie die in Azure Sentinel erfassten Daten, um Ihre Umgebung mit einem der folgenden Prozesse zu sichern:
 
-- [Einblick in Warnungen](quickstart-get-visibility.md)
-- [Visualisieren und Überwachen Ihrer Daten](tutorial-monitor-your-data.md)
-- [Untersuchen von Vorfällen](tutorial-investigate-cases.md)
-- [Erkennen von Bedrohungen](tutorial-detect-threats-built-in.md)
+- [Einblick in Warnungen](get-visibility.md)
+- [Visualisieren und Überwachen Ihrer Daten](monitor-your-data.md)
+- [Untersuchen von Vorfällen](investigate-cases.md)
+- [Erkennen von Bedrohungen](detect-threats-built-in.md)
 - [Automatisieren des Bedrohungsschutzes](tutorial-respond-threats-playbook.md)
 - [Suchen nach Bedrohungen](hunting.md)
+
+Außerdem erfahren Sie mehr über ein Beispiel zum Erstellen eines benutzerdefinierten Connectors für die Überwachung von Zoom: [Überwachen von Zoom mit Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/monitoring-zoom-with-azure-sentinel/ba-p/1341516).

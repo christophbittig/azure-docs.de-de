@@ -5,15 +5,15 @@ services: iot-edge
 author: kgremban
 manager: lizross
 ms.author: kgremban
-ms.date: 07/19/2021
+ms.date: 08/24/2021
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 69ac8ca51fb4bf418af3569e2d294053c1956134
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: e7ded6eb8b3e8ee44594e75eb22b920c4e0649b6
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114447392"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123037584"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Entwickeln und Debuggen von Modulen für Azure IoT Edge mithilfe von Visual Studio 2019
 
@@ -48,7 +48,7 @@ Wenn Visual Studio 2019 bereit ist, benötigen Sie auch die folgenden Tools und 
 
 * Laden Sie die [Docker Community Edition](https://docs.docker.com/install/) auf Ihren Entwicklungscomputer herunter, und installieren Sie sie, um Ihre Modulimages erstellen und ausführen zu können. Sie müssen Docker CE je nach Typ der Module, die Sie entwickeln, für die Ausführung im Linux- oder Windows-Containermodus festlegen.
 
-* Richten Sie Ihre lokale Entwicklungsumgebung zum Debuggen, Ausführen und Testen Ihrer IoT Edge-Lösung ein, indem Sie das [Entwicklertool für Azure IoT EdgeHub](https://pypi.org/project/iotedgehubdev/) installieren. Installieren Sie [Python (2.7/3.6 und höher) und Pip](https://www.python.org/) und anschließend das **iotedgehubdev**-Paket, indem Sie in Ihrem Terminal den folgenden Befehl ausführen. Stellen Sie sicher, dass Sie eine Version des Azure IoT EdgeHub-Entwicklertools von höher als 0.3.0 verwenden.
+* Richten Sie Ihre lokale Entwicklungsumgebung zum Debuggen, Ausführen und Testen Ihrer IoT Edge-Lösung ein, indem Sie das [Entwicklertool für Azure IoT EdgeHub](https://pypi.org/project/iotedgehubdev/) installieren. Installieren Sie [Python (3.5/3.6/3.7/3.8) und Pip](https://www.python.org/) und anschließend das Paket **iotedgehubdev**, indem Sie in Ihrem Terminal den folgenden Befehl ausführen. Stellen Sie sicher, dass Sie eine Version des Azure IoT EdgeHub-Entwicklertools von höher als 0.3.0 verwenden.
 
    ```cmd
    pip install --upgrade iotedgehubdev
@@ -103,7 +103,7 @@ Die IoT Edge-Projektvorlage in Visual Studio erstellt eine Projektmappe, die auf
 
 1. Suchen Sie auf der Seite **Neues Projekt erstellen** nach **Azure IoT Edge**. Wählen Sie das Projekt aus, das der Plattform und Architektur für Ihr IoT Edge-Gerät entspricht, und klicken Sie auf **Weiter**.
 
-   ![Erstellen eines neuen Projekts](./media/how-to-visual-studio-develop-csharp-module/create-new.png)
+   :::image type="content" source="./media/how-to-visual-studio-develop-module/create-new-project.png" alt-text="Erstellen eines neuen Projekts":::
 
 1. Geben Sie auf der Seite **Konfigurieren Ihres neuen Projekts** einen Namen und den Speicherort für Ihr Projekt ein, und wählen Sie dann **Erstellen** aus.
 
@@ -122,6 +122,18 @@ Der Modulordner enthält abhängig von der Sprache, die Sie ausgewählt haben, e
 Der Projektordner enthält eine Liste aller Module, die in diesem Projekt enthalten sind. Derzeit sollte nur ein Modul angezeigt werden, aber Sie können weitere hinzufügen. Weitere Informationen zum Hinzufügen von Modulen zu einem Projekt finden Sie weiter unten in diesem Artikel im Abschnitt [Erstellen und Debuggen mehrerer Module](#build-and-debug-multiple-modules).
 
 Der Projektordner enthält auch eine Datei mit dem Namen `deployment.template.json`. Diese Datei ist eine Vorlage eines IoT Edge-Bereitstellungsmanifests, das alle Module definiert, die auf einem Gerät ausgeführt werden, sowie die Art und Weise, wie sie miteinander kommunizieren. Weitere Informationen zu Bereitstellungsmanifesten finden Sie unter [Bereitstellen von Modulen und Einrichten von Routen in IoT Edge](module-composition.md). Wenn Sie diese Bereitstellungsvorlage öffnen, sehen Sie, dass die beiden Runtimemodule **edgeAgent** und **edgeHub** zusammen mit dem benutzerdefinierten Modul enthalten sind, das Sie in diesem Visual Studio-Projekt erstellt haben. Ein viertes Modul mit dem Namen **SimulatedTemperatureSensor** ist ebenfalls enthalten. Dieses Standardmodul generiert simulierte Daten, mit denen Sie Ihre Module testen können, oder löschen, wenn dies nicht erforderlich ist. Der [Quellcode „SimulatedTemperatureSensor.csproj“](https://github.com/Azure/iotedge/tree/master/edge-modules/SimulatedTemperatureSensor) veranschaulicht die Funktionsweise des simulierten Temperatursensors.
+
+### <a name="set-iot-edge-runtime-version"></a>Festlegen der IoT Edge-Runtimeversion
+
+Die IoT Edge-Erweiterung verwendet beim Erstellen Ihrer Bereitstellungsressourcen standardmäßig die neueste stabile Version der IoT Edge-Runtime. Zurzeit ist Version 1.2 die neueste stabile Version. Wenn Sie Module für Geräte entwickeln, auf denen die Version 1.1 mit langfristigem Support (Long-Term Support, LTS) oder die frühere Version 1.0 ausgeführt wird, aktualisieren Sie die IoT Edge-Runtimeversion in Visual Studio entsprechend.
+
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Namen Ihres Projekts, und wählen Sie **IoT Edge-Runtimeversion festlegen** aus.
+
+   :::image type="content" source="./media/how-to-visual-studio-develop-module/set-iot-edge-runtime-version.png" alt-text="Klicken Sie mit der rechten Maustaste auf Ihren Projektnamen, und wählen Sie „IoT Edge-Runtimeversion festlegen“ aus.":::
+
+1. Wählen Sie mithilfe des Dropdownmenüs die auf Ihren IoT Edge-Geräten ausgeführte Runtimeversion und dann **OK** aus, um Ihre Änderungen zu speichern.
+
+1. Generieren Sie Ihr Bereitstellungsmanifest mit der neuen Runtimeversion neu. Klicken Sie mit der rechten Maustaste auf den Namen Ihres Projekts, und wählen Sie **Bereitstellung für IoT Edge generieren** aus.
 
 ## <a name="develop-your-module"></a>Entwickeln Ihres Moduls
 
@@ -234,7 +246,7 @@ Nachdem Sie ein Einzelmodul entwickelt haben, möchten Sie jetzt vielleicht eine
     ```
 
    >[!NOTE]
-   >In diesem Artikel werden die Administratoranmeldeinformationen für die Azure Container Registry verwendet, die für Entwicklungs- und Testszenarien geeignet sind. Wenn Sie für die Produktionsszenarien bereit sind, empfehlen wir Ihnen, eine Authentifizierungsoption mit den geringstmöglichen Rechten, z. B. Dienstprinzipale, auszuwählen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf Ihre Containerregistrierung](production-checklist.md#manage-access-to-your-container-registry).
+   >In diesem Artikel werden die Administratoranmeldeinformationen für die Azure Container Registry verwendet, die für Entwicklungs- und Testszenarien geeignet sind. Wenn Sie für die Produktionsszenarien bereit sind, empfehlen wir Ihnen, eine Authentifizierungsoption mit den geringstmöglichen Rechten, z. B. Dienstprinzipale, auszuwählen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf die Containerregistrierung](production-checklist.md#manage-access-to-your-container-registry).
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf den Projektordner, und wählen Sie **IoT Edge-Module erstellen und pushen** aus, um das Docker-Image für jedes Modul zu kompilieren und zu pushen.
 

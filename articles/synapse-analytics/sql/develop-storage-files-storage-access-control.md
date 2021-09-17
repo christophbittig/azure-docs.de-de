@@ -10,12 +10,12 @@ ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ca738136984941b050c0ae3a7c2408273724b1cd
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: d3a1fe8f4b06601ed6b3e77ffa5743506e923ec4
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112379274"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771748"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Steuern des Speicherkontozugriffs für einen serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -46,7 +46,7 @@ Ein bei einem serverlosen SQL-Pool angemeldeter Benutzer muss für den Zugriff a
 Die **Benutzeridentität** (auch „Azure AD-Passthrough“ genannt) ist ein Autorisierungstyp, bei dem die Identität des bei einem serverlosen SQL-Pool angemeldeten Azure AD-Benutzers verwendet wird, um den Datenzugriff zu autorisieren. Vor dem Zugriff auf die Daten muss der Azure Storage-Administrator dem Azure AD-Benutzer die erforderlichen Berechtigungen erteilen. Wie Sie der Tabelle unten entnehmen können, wird diese Art der Autorisierung für den Typ „SQL-Benutzer“ nicht unterstützt.
 
 > [!IMPORTANT]
-> Das AAD-Authentifizierungstoken wird von den Client-Anwendungen möglicherweise zwischengespeichert. Beispielsweise speichert PowerBI das AAD-Token zwischen und verwendet genau dieses Token noch eine Stunde lang. Die Abfragen mit langer Laufzeit können fehlschlagen, wenn das Token während der Ausführung der Abfrage abläuft. Wenn durch ein während der Abfrage ablaufendes AAD-Zugriffstoken Abfragefehler auftreten, sollten Sie eine Umstellung auf [Verwaltete Identität](develop-storage-files-storage-access-control.md?tabs=managed-identity#supported-storage-authorization-types) oder [Shared Access Signature](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#supported-storage-authorization-types)in Erwägung ziehen.
+> Das AAD-Authentifizierungstoken wird von den Client-Anwendungen möglicherweise zwischengespeichert. Beispielsweise speichert PowerBI das AAD-Token zwischen und verwendet genau dieses Token noch eine Stunde lang. Die zeitintensiven Abfragen können fehlschlagen, wenn das Token während der Ausführung der Abfrage abläuft. Wenn durch ein während der Abfrage ablaufendes AAD-Zugriffstoken Abfragefehler auftreten, sollten Sie eine Umstellung auf [Verwaltete Identität](develop-storage-files-storage-access-control.md?tabs=managed-identity#supported-storage-authorization-types) oder [Shared Access Signature](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#supported-storage-authorization-types)in Erwägung ziehen.
 
 Sie müssen über eine Rolle als Besitzer, Mitwirkender oder Leser für Storage-Blobdaten verfügen, um mithilfe Ihrer Identität auf die Daten zugreifen zu können. Alternativ können Sie differenzierte ACL-Regeln für den Zugriff auf Dateien und Ordner angeben. Auch wenn Sie Besitzer eines Speicherkontos sind, müssen Sie sich selbst zu einer der Rollen für den Zugriff auf Storage-Blobdaten hinzufügen.
 Weitere Informationen zur Zugriffssteuerung in Azure Data Lake Storage Gen2 finden Sie im Artikel [Zugriffssteuerung in Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-access-control.md).
@@ -195,7 +195,7 @@ Shared Access Signatures können nicht für den Zugriff auf Speicher verwendet w
 
 ### <a name="managed-identity"></a>[Verwaltete Identität](#tab/managed-identity)
 
-Sie müssen [vertrauenswürdige Microsoft-Dienste zulassen](../../storage/common/storage-network-security.md#trusted-microsoft-services) und der [systemseitig zugewiesenen Identität](../../active-directory/managed-identities-azure-resources/overview.md) für diese Ressourceninstanz explizit [eine Azure-Rolle zuweisen](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights). In diesem Fall entspricht der Zugriffsbereich für die Instanz der Azure-Rolle, die der verwalteten Identität zugewiesen ist.
+Sie müssen [vertrauenswürdige Microsoft-Dienste zulassen](../../storage/common/storage-network-security.md#trusted-microsoft-services) und der [systemseitig zugewiesenen Identität](../../active-directory/managed-identities-azure-resources/overview.md) für diese Ressourceninstanz explizit [eine Azure-Rolle zuweisen](../../storage/blobs/authorize-access-azure-active-directory.md#assign-azure-roles-for-access-rights). In diesem Fall entspricht der Zugriffsbereich für die Instanz der Azure-Rolle, die der verwalteten Identität zugewiesen ist.
 
 ### <a name="anonymous-access"></a>[Anonymer Zugriff](#tab/public-access)
 

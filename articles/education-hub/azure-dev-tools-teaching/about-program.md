@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
-ms.openlocfilehash: 680e22974aa85ae2d179f0b927a44b3471b4939d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a106f6f4a9a539b8139c6a423d70d78faa97e769
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87100923"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122229030"
 ---
 # <a name="what-is-azure-dev-tools-for-teaching"></a>Was ist Azure Dev Tools für den Unterricht?
 
@@ -37,6 +37,9 @@ Azure Dev Tools für den Unterricht ist in mehr als 140 Ländern/Regionen verf�
 Der Zugriff auf die gesamte Software erfolgt über einen [Education Hub](https://azureforeducation.microsoft.com/devtools) (in das [Azure-Portal](https://portal.azure.com/) integriert), in dem alle für akademische Benutzer verfügbaren Produkte und Dienste gespeichert sind. Kursteilnehmer greifen auf Software zu, indem sie sich einfach am Azure-Portal mit denselben Anmeldeinformationen anmelden, die Sie für den Zugriff auf Ihr Imagine-Abonnement verwenden.
 
 Kursteilnehmer müssen sich nicht für ein Azure-Abonnement registrieren, um auf Ihre Softwarevorteile zugreifen zu können. Microsoft bietet jedoch eine Azure-Gutschrift von 100 USD sowie Zugang zu kostenlosen Azure-Diensten für Kursteilnehmer an: Kursteilnehmer können sich für das [Azure for Students-Angebot](azure-students-program.md) registrieren, ohne eine Kreditkarte zu benötigen.
+
+## <a name="why-cant-i-purchase-azure-dev-tools-for-teaching"></a>Warum kann ich keine Azure Dev Tools für den Unterricht kaufen?
+Azure Dev Tools für den Unterricht können jetzt nur eingelöst werden, wenn Sie über einen Volumenlizenzvertrag (Volume Licensing, VL) mit Microsoft verfügen.  Wenn Sie über einen VL-Vertrag mit Microsoft verfügen und weiterhin Probleme beim Einlösen haben, wenden Sie sich an den Support.  Weitere Informationen zur Volumenlizenzierung für Bildungseinrichtungen finden Sie unter https://aka.ms/ees.
 
 ## <a name="getting-help"></a>Hilfe
 

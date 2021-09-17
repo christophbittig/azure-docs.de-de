@@ -1,17 +1,20 @@
 ---
 title: Tool zum Kopieren von Daten in Azure Data Factory
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Stellt Informationen zum Tool zum Kopieren von Daten der Benutzeroberfläche von Azure Data Factory bereit.
 author: dearandyxu
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 06/01/2021
+ms.date: 06/04/2021
 ms.author: yexu
-ms.openlocfilehash: 68bfa62817d971ce8c8127f44f43576431a499fc
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.openlocfilehash: 165d799e6bc2cc6a5f7e064b909ca7e80f819c42
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111371872"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122640013"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Tool zum Kopieren von Daten in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -30,10 +33,11 @@ In der folgenden Tabelle finden Sie Hinweise dazu, unter welchen Umständen Sie 
 | Sie möchten einfach einen Datenladetask erstellen, ohne sich mit den Entitäten von Azure Data Factory vertraut zu machen (verknüpfte Dienste, Datasets, Pipelines usw.). | Sie möchten komplexe und flexible Logik für das Laden von Daten in den Data Lake implementieren. |
 | Sie möchten schnell eine große Anzahl von Datenartefakten in einen Data Lake laden. | Sie möchten die Kopieraktivität mit nachfolgenden Aktivitäten zur Bereinigung oder Verarbeitung von Daten verketten. |
 
-Klicken Sie zum Starten des Tools zum Kopieren von Daten auf der Startseite Ihrer Data Factory auf die Kachel **Daten kopieren**.
+Klicken Sie zum Starten des Tools zum Kopieren von Daten auf der Homepage Ihrer Data Factory auf die Kachel **Ingest** (Erfassen).
 
-![Seite „Erste Schritte“: Link zum Tool zum Kopieren von Daten](./media/doc-common-process/get-started-page.png)
+![Screenshot, der die Startseite zeigt – Link zum Tool zum Kopieren von Daten.](./media/doc-common-process/get-started-page.png)
 
+Nach dem Starten des Tools zum Kopieren von Daten sehen Sie zwei Arten von Aufgaben: eine ist die **Aufgabe integrierte Kopie** und die andere ist die **Aufgabe metadatenbasierte Kopie**. Die Aufgabe integrierte Kopie führt Sie dazu, innerhalb von fünf Minuten eine Pipeline zum Replizieren von Daten zu erstellen, ohne mehr über Entitäten von Azure Data Factory zu erfahren.  Die Aufgabe „metadatenbasierte Kopie“ erleichtert Ihnen das Erstellen parametrisierter Pipelines und externer Steuertabellen, um große Mengen von Objekten (z. B. Tausende von Tabellen) im großen Stil zu kopieren. Weitere Einzelheiten erhalten Sie unter [metadatenbasiertes Kopieren von Daten](copy-data-tool-metadata-driven.md).
 
 ## <a name="intuitive-flow-for-loading-data-into-a-data-lake"></a>Intuitiver Fluss zum Laden von Daten in einen Data Lake
 Mit diesem Tool können Sie mit einem intuitiven Fluss problemlos Daten in wenigen Minuten aus einer Vielzahl von Quellen an verschiedene Ziele verschieben:  

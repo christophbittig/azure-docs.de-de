@@ -8,14 +8,16 @@ ms.author: rogarana
 ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 48b7fb11f3f0127358ee92ddea9262b805264500
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7f4ae0dfb8e03add64f450d98c15f85da33eaef3
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339645"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696465"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Serverseitige Verschlüsselung von Azure Disk Storage
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Die meisten von Azure verwalteten Datenträger werden mit der Azure Storage-Verschlüsselung verschlüsselt, die die serverseitige Verschlüsselung verwendet, um Ihre Daten zu schützen und Ihnen dabei zu helfen, die Sicherheits- und Complianceanforderungen Ihrer Organisation zu erfüllen. Die Azure Storage-Verschlüsselung verschlüsselt Ihre auf verwalteten Azure-Datenträgern (Betriebssystemdatenträger und reguläre Datenträger) gespeicherten ruhenden Daten standardmäßig, wenn sie in der Cloud gespeichert werden. Datenträger mit aktivierter Verschlüsselung auf dem Host werden jedoch nicht über Azure Storage verschlüsselt. Für Datenträger mit aktivierter Verschlüsselung auf dem Host stellt der Server, der Ihre VM hostet, die Verschlüsselung für Ihre Daten bereit, und die verschlüsselten Daten werden an Azure Storage übermittelt.
 
@@ -55,7 +57,7 @@ Von Kunden verwaltete Schlüssel sind in allen Regionen verfügbar, in denen ver
 > [!IMPORTANT]
 > Von Kunden verwaltete Schlüssel basieren auf verwalteten Identitäten für Azure-Ressourcen, einem Feature von Azure Active Directory (Azure AD). Wenn Sie vom Kunden verwaltete Schlüssel konfigurieren, wird Ihren Ressourcen im Hintergrund automatisch eine verwaltete Identität zugewiesen. Wenn Sie anschließend das Abonnement, die Ressourcengruppe oder den verwalteten Datenträger in ein anderes Azure AD-Verzeichnis verschieben, wird die den verwalteten Datenträgern zugeordnete verwaltete Identität nicht an den neuen Mandanten übertragen, sodass kundenseitig verwaltete Schlüssel möglicherweise nicht mehr funktionieren. Weitere Informationen finden Sie unter [Übertragen eines Abonnements zwischen Azure AD-Verzeichnissen](../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).
 
-Informationen zum Aktivieren kundenseitig verwalteter Schlüssel für verwaltete Datenträger finden Sie in den Artikeln, in denen erläutert wird, wie Sie diese entweder mit dem [Azure PowerShell-Modul](windows/disks-enable-customer-managed-keys-powershell.md), der [Azure CLI](linux/disks-enable-customer-managed-keys-cli.md) oder dem [Azure-Portal](disks-enable-customer-managed-keys-portal.md) aktivieren. Lesen Sie den Artikel [Einrichten von Azure Key Vault und DiskEncryptionSet ohne automatische Schlüsselrotation](windows/disks-enable-customer-managed-keys-powershell.md#set-up-an-azure-key-vault-and-diskencryptionset-with-automatic-key-rotation-preview), um zu erfahren, wie Sie kundenseitig verwaltete Schlüssel mit automatischer Schlüsselrotation aktivieren.
+Informationen zum Aktivieren kundenseitig verwalteter Schlüssel für verwaltete Datenträger finden Sie in den Artikeln, in denen erläutert wird, wie Sie diese entweder mit dem [Azure PowerShell-Modul](windows/disks-enable-customer-managed-keys-powershell.md), der [Azure CLI](linux/disks-enable-customer-managed-keys-cli.md) oder dem [Azure-Portal](disks-enable-customer-managed-keys-portal.md) aktivieren. 
 
 ## <a name="encryption-at-host---end-to-end-encryption-for-your-vm-data"></a>Verschlüsselung auf dem Host: End-to-End-Verschlüsselung für Ihre VM-Daten
 

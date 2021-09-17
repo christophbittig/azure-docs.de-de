@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/23/2020
+ms.date: 08/06/2021
 ms.author: jeedes
-ms.openlocfilehash: b0afcf00a95b46472c902b24c6d4b287c1c6a482
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1d6e1c99bd70cedd678cbf3dcef4ef66a594d969
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181015"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728417"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-checkproof"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit CheckProof
 
@@ -37,9 +37,9 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* CheckProof unterstützt **IDP-initiiertes** einmaliges Anmelden.
+* CheckProof unterstützt **IDP**-initiiertes einmaliges Anmelden.
 
-## <a name="adding-checkproof-from-the-gallery"></a>Hinzufügen von CheckProof aus dem Katalog
+## <a name="add-checkproof-from-the-gallery"></a>Hinzufügen von CheckProof aus dem Katalog
 
 Zum Konfigurieren der Integration von CheckProof in Azure AD müssen Sie CheckProof aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
@@ -49,7 +49,6 @@ Zum Konfigurieren der Integration von CheckProof in Azure AD müssen Sie CheckP
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **CheckProof** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **CheckProof** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-checkproof"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für CheckProof
 
@@ -70,11 +69,11 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **CheckProof** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** die Werte für die folgenden Felder ein:
+1. Führen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** die folgenden Schritte aus:
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://api.checkproof.com/api/v1/saml/<ID>/metadata`
 
@@ -120,7 +119,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Navigieren Sie zu **Settings > Company Settings > SAML SETTINGS** (Einstellungen > Unternehmenseinstellungen > SAML-EINSTELLUNGEN), und laden Sie im Textfeld **Federation XML** (Verbund-XML) die **Verbundmetadaten-XML** hoch.
 
-    ![Seite „SAML-Einstellungen“](./media/checkproof-tutorial/saml-settings.png)
+    ![Seite „SAML-Einstellungen“](./media/checkproof-tutorial/settings.png)
 
 ### <a name="create-checkproof-test-user"></a>Erstellen eines CheckProof-Testbenutzers
 
@@ -134,17 +133,16 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Füllen Sie auf der Seite **CREATE USER** (BENUTZER ERSTELLEN) die erforderlichen Felder aus, und klicken Sie auf **SAVE** (SPEICHERN).
 
-    ![Seite für den CheckProof-Testbenutzer 1](./media/checkproof-tutorial/create-user-2.png)
+    ![CheckProof-Seite für das Erstellen eines Benutzers](./media/checkproof-tutorial/user.png)
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen:
 
-1. Klicken Sie im Azure-Portal auf „Diese Anwendung testen“. Dadurch sollten Sie automatisch bei der CheckProof-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben.
+* Klicken Sie im Azure-Portal auf „Diese Anwendung testen“. Dadurch sollten Sie automatisch bei der CheckProof-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben.
 
-1. Sie können den Microsoft-Zugriffsbereich verwenden. Wenn Sie im Zugriffsbereich auf die Kachel „CheckProof“ klicken, sollten Sie automatisch bei der CheckProof-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
-
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „CheckProof“ klicken, sollten Sie automatisch bei der CheckProof-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von CheckProof können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von CheckProof können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

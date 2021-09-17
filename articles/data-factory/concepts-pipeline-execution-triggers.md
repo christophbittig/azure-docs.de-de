@@ -1,28 +1,30 @@
 ---
-title: Pipelineausführung und Trigger in Azure Data Factory
-description: Dieser Artikel enthält Informationen zur Ausführung einer Pipeline in Azure Data Factory entweder bei Bedarf oder durch Erstellen eines Triggers.
+title: Pipelineausführung und -trigger
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Dieser Artikel enthält Informationen zur Ausführung einer Pipeline in Azure Data Factory oder Azure Synapse Analytics, entweder bei Bedarf oder durch Erstellen eines Triggers.
 author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
 ms.topic: conceptual
-ms.date: 07/05/2018
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e0696d648fa176314c4ed73eb68f4edbd73c32a2
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.date: 08/24/2021
+ms.custom: devx-track-azurepowershell, synapse
+ms.openlocfilehash: b0fda7e6376cd7adb302db2c0f3aac39da38b407
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110675139"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821509"
 ---
-# <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Pipelineausführung und Trigger in Azure Data Factory
+# <a name="pipeline-execution-and-triggers-in-azure-data-factory-or-azure-synapse-analytics"></a>Pipelineausführung und Trigger in Azure Data Factory oder Azure Synapse Analytics
 
 > [!div class="op_single_selector" title1="Wählen Sie die Version des Data Factory-Diensts aus, den Sie verwenden:"]
 > * [Version 1](v1/data-factory-scheduling-and-execution.md)
 > * [Aktuelle Version](concepts-pipeline-execution-triggers.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Eine _Pipelineausführung_ in Azure Data Factory definiert eine Instanz einer Pipelineausführung. Beispiel: Angenommen, Sie verfügen über eine Pipeline, die um 8:00, 9:00 und 10:00 Uhr ausgeführt wird. In diesem Fall erfolgen drei separate Ausführungen der Pipeline (oder Pipelineausführungen). Jede Pipelineausführung besitzt eine eindeutige Pipelineausführungs-ID. Eine Ausführungs-ID ist eine GUID, die die jeweilige Pipelineausführung eindeutig definiert.
+Eine _Pipelineausführung_ in Azure Data Factory und Azure Synapse Analytics definiert eine Instanz einer Pipelineausführung. Beispiel: Angenommen, Sie verfügen über eine Pipeline, die um 8:00, 9:00 und 10:00 Uhr ausgeführt wird. In diesem Fall erfolgen drei separate Ausführungen der Pipeline (oder Pipelineausführungen). Jede Pipelineausführung besitzt eine eindeutige Pipelineausführungs-ID. Eine Ausführungs-ID ist eine GUID, die die jeweilige Pipelineausführung eindeutig definiert.
 
 Zur Instanziierung von Pipelineausführungen werden in der Regel Argumente an in der Pipeline definierte Parameter übergeben. Sie können eine Pipeline entweder manuell oder mithilfe eines _Triggers_ ausführen. Dieser Artikel enthält Informationen zu beiden Möglichkeiten der Ausführung einer Pipeline.
 
@@ -133,11 +135,11 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 Ein vollständiges Beispiel finden Sie unter [Schnellstart: Erstellen einer Data Factory mit dem .NET SDK](quickstart-create-data-factory-dot-net.md).
 
 > [!NOTE]
-> Mit dem .NET SDK können Sie Data Factory-Pipelines aus Azure Functions, Ihren Webdiensten usw. aufrufen.
+> Mit dem .NET SDK können Sie Pipelines aus Azure Functions, Ihren Webdiensten usw. aufrufen.
 
 ## <a name="trigger-execution"></a>Triggerausführung
 
-Eine Pipelineausführung kann auch mithilfe von Triggern erfolgen. Trigger stellen eine Verarbeitungseinheit dar, die bestimmt, wann eine Pipelineausführung initiiert werden soll. Derzeit unterstützt Data Factory drei Arten von Triggern:
+Eine Pipelineausführung kann auch mithilfe von Triggern erfolgen. Trigger stellen eine Verarbeitungseinheit dar, die bestimmt, wann eine Pipelineausführung initiiert werden soll. Derzeit unterstützt der Dienst drei Arten von Triggern:
 
 - Zeitplantrigger: Ein Trigger, der eine Pipeline nach einem Realzeitplan aufruft.
 

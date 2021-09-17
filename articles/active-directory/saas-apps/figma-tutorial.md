@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/23/2021
 ms.author: jeedes
-ms.openlocfilehash: 4dc5cf7b6a583f63e75c366c5fb2bc7857bd45dc
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: ef637225d516ccaf2eaf06ace1803874299d3312
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111896052"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178492"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-figma"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Figma
 
@@ -38,6 +38,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Figma unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
+* Figma unterstützt die [**automatisierte** Benutzerbereitstellung und Bereitstellungsaufhebung](figma-provisioning-tutorial.md) (empfohlen).
 * Figma unterstützt die **Just-In-Time**-Benutzerbereitstellung.
 
 ## <a name="add-figma-from-the-gallery"></a>Hinzufügen von Figma aus dem Katalog

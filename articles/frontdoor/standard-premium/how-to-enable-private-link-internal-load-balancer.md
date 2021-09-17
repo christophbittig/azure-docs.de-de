@@ -8,12 +8,12 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 03/16/2021
 ms.author: duau
-ms.openlocfilehash: 80013ca5d4d20366672eda417862ff7bb1309b0c
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: e902c8d3a1662f83328ab39a85a11009c58da24b
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109633157"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122606577"
 ---
 # <a name="connect-azure-front-door-premium-to-an-internal-load-balancer-origin-with-private-link"></a>Verbinden von Azure Front Door Premium mit einem internen Lastenausgleichsursprung mit Private Link
 
@@ -51,7 +51,7 @@ In diesem Abschnitt ordnen Sie den Private Link-Dienst einem privaten Endpunkt z
 
 1. Wählen Sie anschließend **Hinzufügen** und dann **Aktualisieren** aus, um die Konfiguration zu speichern.
 
-## <a name="approve-private-endpoint-connection-from-the-storage-account"></a>Genehmigen der privaten Endpunktverbindung über das Speicherkonto
+## <a name="approve-azure-front-door-premium-private-endpoint-connection-from-private-link-service"></a>Genehmigen der Azure Front Door Premium-Verbindung mit einem privaten Endpunkt über die Web-App
 
 1. Wechseln Sie zu Private Link Center, und wählen Sie **Private Link-Dienste** aus. Wählen Sie dann den Namen Ihrer privaten Verbindung aus.
 

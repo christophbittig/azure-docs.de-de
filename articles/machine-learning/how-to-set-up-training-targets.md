@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 06/18/2021
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 875407e07af1059c98a2adb6bb0f7b075d78fe02
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: e08823861e0b1a197313c8311cc13ac972d61a25
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112462721"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122603708"
 ---
 # <a name="configure-and-submit-training-runs"></a>Konfigurieren und Übermitteln von Trainingsausführungen
 
@@ -135,7 +135,7 @@ Wenn Sie Befehlszeilenargumente an das Trainingsskript übergeben möchten, kön
 Wenn Sie die für die Ausführung maximal zulässige Standardzeit überschreiben möchten, können Sie dies über den **`max_run_duration_seconds`** -Parameter tun. Das System versucht, die Ausführung automatisch abzubrechen, wenn er länger dauert als dieser Wert angibt.
 
 ### <a name="specify-a-distributed-job-configuration"></a>Festlegen einer Konfigurieren für verteilte Aufträge
-Wenn Sie einen verteilten Trainingsauftrag ausführen möchten, geben Sie die für den verteilten Auftrag spezifische Konfiguration für den **`distributed_job_config`** -Parameter an. Zu den unterstützten Konfigurationstypen zählen [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration), [TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration) und [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration). 
+Wenn Sie einen [verteilten Trainingsauftrag](how-to-train-distributed-gpu.md) ausführen möchten, geben Sie die für den verteilten Auftrag spezifische Konfiguration für den **`distributed_job_config`** -Parameter an. Zu den unterstützten Konfigurationstypen zählen [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration), [TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration) und [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration). 
 
 Weitere Informationen und Beispiele zum Ausführen verteilter Horovod-, TensorFlow- und PyTorch-Aufträge finden Sie unter:
 

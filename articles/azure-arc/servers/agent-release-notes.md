@@ -3,12 +3,12 @@ title: Neuerungen im Agent für Azure Arc-fähige Server
 description: Dieser Artikel enthält Versionshinweise für den Agent für Azure Arc-fähige Server. Für viele der zusammengefassten Issues werden Links zu ausführlicheren Informationen bereitgestellt.
 ms.topic: conceptual
 ms.date: 07/16/2021
-ms.openlocfilehash: d53ebd32c870ce8ec26bca7bcb811fbdd45c58b2
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 54e7bc72884cc7bc9116c88e7cdb72e5af5f71cd
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114392372"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770959"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Neuerungen im Agent für Azure Arc-fähige Server
 
@@ -125,7 +125,7 @@ Version: 1.0 (Allgemeine Verfügbarkeit)
 - Unterstützung für Vorschau-Agents (alle Versionen, die älter als 1.0 sind) wird in einem zukünftigen Dienstupdate entfernt.
 - Unterstützung für den Fallbackendpunkt `.azure-automation.net` wurde entfernt. Wenn Sie einen Proxy verwenden, müssen Sie den Endpunkt `*.his.arc.azure.com` zulassen.
 - Wenn der Connected Machine-Agent auf einem virtuellen Computer installiert ist, der in Azure gehostet wird, können VM-Erweiterungen nicht von der Ressource „Arc-fähige Server“ installiert oder geändert werden. Dadurch soll vermieden werden, dass widersprüchliche Erweiterungsvorgänge von der Ressource **Microsoft.Compute** und **Microsoft.HybridCompute** des virtuellen Computers durchgeführt werden. Verwenden Sie die **Microsoft.Compute**-Ressource für den Computer für alle Erweiterungsvorgänge.
-- Der Name des Gastkonfigurationsprozesses wurde aus *gcd* in *gcad* unter Linux und aus *gcservice* in *gcarcservice* unter Windows geändert.
+- Der Name des Gastkonfigurationsprozesses wurde unter Linux von *gcd* in *gcad* und unter Windows von *gcservice* in *gcarcservice* geändert.
 
 ### <a name="new-features"></a>Neue Funktionen
 

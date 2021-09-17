@@ -9,14 +9,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: 2f90d3698156e27780bc57e0ac9355b6811d20d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 464ffc8b5d4d04aeb7e4013f5b25d240d5ee9b06
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104607414"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688963"
 ---
 # <a name="save-costs-with-azure-dedicated-host-reservations"></a>Einsparen von Kosten mit Azure Dedicated Host-Reservierungen
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Wenn Sie sich für eine reservierte Instanz von Azure Dedicated Hosts entscheiden, können Sie Geld sparen. Der Reservierungsrabatt wird automatisch auf die Anzahl der ausgeführten dedizierten Hosts angewendet, die dem Reservierungsbereich und den Reservierungsattributen entsprechen. Sie müssen einem dedizierten Host keine Reservierung zuweisen, um die Rabatte zu erhalten. Bei einem Erwerb reservierter Instanzen wird nur der Computebereich ihrer Nutzung abgedeckt, und es werden Softwarelizenzierungskosten berücksichtigt. Weitere Informationen finden Sie unter [Übersicht über Azure Dedicated Hosts für virtuelle Computer](./dedicated-hosts.md).
 

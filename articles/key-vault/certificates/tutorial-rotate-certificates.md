@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: ec88dfc7ded7ecb1d640eb4d73ef4c8045e549cf
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a0ae17c5108a4af15245d833f4f2636f9a330138
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107791983"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862249"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>Tutorial: Konfigurieren der automatischen Zertifikatrotation in Key Vault
 
@@ -46,7 +46,7 @@ Sie können eine Azure Key Vault-Instanz im [Azure-Portal](../general/quick-crea
 
 ## <a name="create-a-certificate-in-key-vault"></a>Erstellen eines Zertifikats in Key Vault
 
-Erstellen Sie ein Zertifikat, oder importieren Sie ein Zertifikat in den Schlüsseltresor. (Die Schritte zum Erstellen eines Zertifikats in Key Vault finden Sie [hier](../secrets/quick-create-portal.md).) In diesem Beispiel wird das Zertifikat **ExampleCertificate** verwendet.
+Erstellen Sie ein Zertifikat, oder importieren Sie ein Zertifikat in den Schlüsseltresor. (Die Schritte zum Erstellen eines Zertifikats in Key Vault finden Sie [hier](../certificates/quick-create-portal.md).) In diesem Beispiel wird das Zertifikat **ExampleCertificate** verwendet.
 
 ## <a name="update-certificate-lifecycle-attributes"></a>Aktualisieren der Attribute des Zertifikatlebenszyklus
 
@@ -83,7 +83,7 @@ Zertifikate werden von Key Vault durch bewährte Partnerschaften mit Zertifizier
       |-----------|------|
       |Wenn Sie diese Option auswählen, wird die automatische Rotation *aktiviert*. | Wenn Sie diese Option auswählen, werden nur die Kontakte benachrichtigt. Die automatische Rotation wird dadurch *nicht* aktiviert.|
       
-      Informationen zum Einrichten eines E-Mail-Kontakts finden Sie [hier](https://docs.microsoft.com/azure/key-vault/certificates/overview-renew-certificate#get-notified-about-certificate-expiration).
+      Informationen zum Einrichten eines E-Mail-Kontakts finden Sie [hier](./overview-renew-certificate.md#get-notified-about-certificate-expiration).
 
 1. Klicken Sie auf **Erstellen**.
 

@@ -3,12 +3,12 @@ title: 'Tutorial: Bereitstellen einer privaten Azure VMware Solution-Cloud'
 description: Hier erfahren Sie, wie Sie eine private Azure VMware Solution-Cloud erstellen und bereitstellen.
 ms.topic: tutorial
 ms.date: 06/11/2021
-ms.openlocfilehash: 5d882098c29db7fb0272bb503eae42a244113b5b
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: d91e9fe9261aa4a04f5e5dffd3505742d9886623
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112021373"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730346"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud"></a>Tutorial: Bereitstellen einer privaten Azure VMware Solution-Cloud
 
@@ -21,7 +21,7 @@ Sie verwenden vSphere und NSX-T Manager, um die meisten weiteren Aspekte der Clu
 >[!TIP]
 >Sie können den Cluster später jederzeit erweitern und zusätzliche Cluster hinzufügen, wenn Sie die anfängliche Bereitstellungsanzahl erhöhen möchten.
 
-Da Sie Ihre private Cloud zunächst nicht mit Ihrer lokalen vCenter-Instanz verwalten können, sind zusätzliche Konfigurationsschritte erforderlich. Diese Verfahren und die damit zusammenhängenden Voraussetzungen werden in diesem Tutorial behandelt.
+Da Sie Ihre private Cloud zunächst nicht mit Ihrer lokalen vCenter-Instanz verwalten können, müssen Sie zusätzliche Schritte für die Konfiguration durchführen.  In diesem Tutorial werden diese Schritte und die zugehörigen Voraussetzungen behandelt.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -32,9 +32,9 @@ In diesem Tutorial lernen Sie Folgendes:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Geeignete Administratorrechte und Berechtigung zum Erstellen einer privaten Cloud. Sie müssen mindestens die Rolle „Mitwirkender“ im Abonnement haben.
-- Verwenden Sie die Informationen, die Sie im Artikel [Planen der Azure VMware Solution-Bereitstellung](production-ready-deployment-steps.md) gesammelt haben:
+- Verwenden Sie die Informationen, die Sie im Tutorial [Planen der Azure VMware Solution-Bereitstellung](plan-private-cloud-deployment.md) gesammelt haben.
 - Vergewissern Sie sich, dass das Netzwerk ordnungsgemäß konfiguriert ist, wie unter [Checkliste für die Netzwerkplanung für Azure VMware Solution](tutorial-network-checklist.md) beschrieben.
-- Hosts wurden bereitgestellt, und der Ressourcenanbieter [Microsoft.AVS](deploy-azure-vmware-solution.md#step-1-register-the-microsoftavs-resource-provider) wurde registriert.
+- Hosts wurden bereitgestellt, und der Ressourcenanbieter [Microsoft.AVS wurde registriert](deploy-azure-vmware-solution.md#register-the-microsoftavs-resource-provider).
 
 ## <a name="create-a-private-cloud"></a>Erstellen einer privaten Cloud
 

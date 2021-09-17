@@ -1,18 +1,18 @@
 ---
 title: Leitfaden zur Veröffentlichung nach Angebotstyp – Kommerzieller Microsoft-Marketplace
-description: In diesem Artikel werden die im kommerziellen Microsoft-Marketplace verfügbaren Angebotstypen beschrieben.
+description: In diesem Artikel werden die im kommerziellen Microsoft-Marketplace (Azure Marketplace) verfügbaren Angebotstypen beschrieben.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 04/06/2021
-ms.openlocfilehash: 72cae8aee9b1bcca286696b5685ef69b84167a8e
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.date: 08/20/2021
+ms.openlocfilehash: b5b969a5e390b59e60fb0dee47e2335541532730
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110537852"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122633768"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Leitfaden zur Veröffentlichung nach Angebotstyp
 
@@ -42,6 +42,9 @@ Die folgende Tabelle zeigt die Angebotstypen im kommerziellen Marketplace in Par
 | [**Verwalteter Dienst**](./plan-managed-service-offer.md) | Erstellen Sie verwaltete Dienstangebote, und verwalten Sie vom Kunden delegierte Abonnements oder Ressourcengruppen über [Azure Lighthouse](../lighthouse/overview.md).|
 | [**Power BI-App**<br/>**Microsoft 365**](marketplace-dynamics-365.md) | Veröffentlichen Sie AppSource-Angebote, die Power BI und Microsoft 365 ergänzen oder erweitern.|
 | [**Software-as-a-Service**](plan-saas-offer.md) | Verwenden Sie den SaaS-Angebotstyp (Software-as-a-Service), um Ihren Kunden die Möglichkeit zu geben, Ihre SaaS-basierte, technische Lösung als Abonnement zu kaufen. Informationen zu den Anforderungen des einmaligen Anmeldens für SaaS-Angebote finden Sie unter [Azure AD und transaktionsfähige SaaS-Angebote im kommerziellen Marketplace](azure-ad-saas.md). |
+
+> [!IMPORTANT]
+> **SaaS-Angebote und Microsoft 365-Add-Ins:** Unter [Transaktionsfunktionen im kommerziellen Marketplace](marketplace-commercial-transaction-capabilities-and-considerations.md) wird ausführlich beschrieben, wie sich die Transaktionsfähigkeit ggf. darauf auswirkt, wie Ihr Angebot von Marketplace-Kunden angezeigt und erworben werden kann. Bei SaaS-Angeboten bestimmen sowohl die Transaktionsfähigkeit des Angebots als auch die Kategorieauswahl, in welchem Onlineshop Ihr Angebot veröffentlicht wird:
 
 ## <a name="next-steps"></a>Nächste Schritte
 

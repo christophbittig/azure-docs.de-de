@@ -1,23 +1,23 @@
 ---
 title: Azure Security Center-Funktionen nach Betriebssystem, Computertyp und Cloud
-description: Hier erfahren Sie, welche Azure Security Center-Funktionen abhängig von Betriebssystem, Typ und Cloudbereitstellung verfügbar sind.
+description: Erfahren Sie mehr über die Verfügbarkeit von Azure Security Center-Features je nach Betriebssystem, Computertyp und Cloudbereitstellung.
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 07/25/2021
+ms.date: 08/18/2021
 ms.custom: references_regions
 ms.author: memildin
-ms.openlocfilehash: 8f8ce2e92729ab2130bf23fa890f0eac19d0bd47
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: 3174aff7529e8248cffb39ee10684e843b4fd0b1
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114689180"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418571"
 ---
 # <a name="feature-coverage-for-machines"></a>Funktionsabdeckung für Computer
 
-Die beiden folgenden Registerkarten enthalten die Azure Security Center-Features, die für virtuelle Computer und Server unter Windows und Linux verfügbar sind.
+Die beiden folgenden Registerkarten enthalten die Azure Security Center-Features, die für Windows- und Linux-Computer verfügbar sind.
 
 ## <a name="supported-features-for-virtual-machines-and-servers"></a>Unterstützte Funktionen für virtuelle Computer und Server <a name="vm-server-features"></a>
 
@@ -36,7 +36,7 @@ Die beiden folgenden Registerkarten enthalten die Azure Security Center-Features
 |[Netzwerkübersicht](security-center-network-recommendations.md#network-map)|✔|✔|-|Ja|
 |[Adaptives Erhöhen des Netzwerkschutzes](security-center-adaptive-network-hardening.md)|✔|-|-|Ja|
 |[Dashboard und Berichte für die Einhaltung gesetzlicher Bestimmungen](security-center-compliance-dashboard.md)|✔|✔|✔|Ja|
-|Empfehlungen und Bedrohungsschutz für in Docker gehostete IaaS-Container|-|-|-|Ja|
+|[Docker-Hosthärtung](./harden-docker-hosts.md)|-|-|-|Ja|
 |Fehlende Bewertung von BS-Patches|✔|✔|✔|Azure: Nein<br><br>Arc-Unterstützung: Ja|
 |Bewertung von Sicherheitsfehlkonfigurationen|✔|✔|✔|Azure: Nein<br><br>Arc-Unterstützung: Ja|
 |[Endpoint Protection-Bewertung](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: Nein<br><br>Arc-Unterstützung: Ja|
@@ -47,26 +47,26 @@ Die beiden folgenden Registerkarten enthalten die Azure Security Center-Features
 
 ### <a name="linux-machines"></a>[**Linux-Computer**](#tab/features-linux)
 
-|**Feature**|**Dokumentation zu virtuellen Computern**|**Azure Virtual Machine Scale Sets**|**Computer mit Azure Arc-Unterstützung**|**Azure Defender erforderlich**
-|----|:----:|:----:|:----:|:----:|
-|[Integration in Microsoft Defender für Endpunkt](security-center-wdatp.md)|-|-|-|-|
-|[Virtual Machine-Verhaltensanalysen (und Sicherheitswarnungen)](./azure-defender.md)|✔</br>(für unterstützte Versionen)|✔</br>(für unterstützte Versionen)|✔|Ja|
-|[Dateilose Sicherheitswarnungen](alerts-reference.md#alerts-windows)|-|-|-|Ja|
-|[Netzwerkbasierte Sicherheitswarnungen](other-threat-protections.md#network-layer)|✔|✔|-|Ja|
-|[Just-in-Time-VM-Zugriff](security-center-just-in-time.md)|✔|-|-|Ja|
-|[Native Sicherheitsrisikobewertung](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|✔|Ja|
-|[Dateiintegritätsüberwachung](security-center-file-integrity-monitoring.md)|✔|✔|✔|Ja|
-|[Adaptive Anwendungssteuerungen](security-center-adaptive-application.md)|✔|-|✔|Ja|
-|[Netzwerkübersicht](security-center-network-recommendations.md#network-map)|✔|✔|-|Ja|
-|[Adaptives Erhöhen des Netzwerkschutzes](security-center-adaptive-network-hardening.md)|✔|-|-|Ja|
-|[Dashboard und Berichte für die Einhaltung gesetzlicher Bestimmungen](security-center-compliance-dashboard.md)|✔|✔|✔|Ja|
-|Empfehlungen und Bedrohungsschutz für in Docker gehostete IaaS-Container|✔|✔|✔|Ja|
-|Fehlende Bewertung von BS-Patches|✔|✔|✔|Azure: Nein<br><br>Arc-Unterstützung: Ja|
-|Bewertung von Sicherheitsfehlkonfigurationen|✔|✔|✔|Azure: Nein<br><br>Arc-Unterstützung: Ja|
-|[Endpoint Protection-Bewertung](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Nein|
-|Bewertung der Datenträgerverschlüsselung|✔</br>(für [unterstützte Szenarien](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|Nein|
-|Sicherheitsrisikobewertung durch Drittanbieter|✔|-|✔|Nein|
-|[Netzwerksicherheitsbewertung](security-center-network-recommendations.md)|✔|✔|-|Nein|
+| **Feature**                                                                                                               | **Dokumentation zu virtuellen Computern**                                                                                      | **Azure Virtual Machine Scale Sets** | **Computer mit Azure Arc-Unterstützung** | **Azure Defender erforderlich**       |
+|---------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------:|:------------------------------------:|:------------------------------:|:---------------------------------:|
+| [Integration in Microsoft Defender für Endpunkt](security-center-wdatp.md)                                                   | ✔                                                                                                               | -                                    | ✔                              | Ja                              |
+| [Virtual Machine-Verhaltensanalysen (und Sicherheitswarnungen)](./azure-defender.md)                                         | ✔</br>(für unterstützte Versionen)                                                                                  | ✔</br>(für unterstützte Versionen)        | ✔                             | Ja                               |
+| [Dateilose Sicherheitswarnungen](alerts-reference.md#alerts-windows)                                                            | -                                                                                                               | -                                    | -                              | Ja                               |
+| [Netzwerkbasierte Sicherheitswarnungen](other-threat-protections.md#network-layer)                                                | ✔                                                                                                              | ✔                                    | -                              | Ja                               |
+| [Just-in-Time-VM-Zugriff](security-center-just-in-time.md)                                                                 | ✔                                                                                                              | -                                    | -                              | Ja                               |
+| [Native Sicherheitsrisikobewertung](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner) | ✔                                                                                                              | -                                    | ✔                             | Ja                               |
+| [Dateiintegritätsüberwachung](security-center-file-integrity-monitoring.md)                                                 | ✔                                                                                                              | ✔                                    | ✔                             | Ja                               |
+| [Adaptive Anwendungssteuerungen](security-center-adaptive-application.md)                                                  | ✔                                                                                                              | -                                    | ✔                             | Ja                               |
+| [Netzwerkübersicht](security-center-network-recommendations.md#network-map)                                                     | ✔                                                                                                              | ✔                                    | -                              | Ja                               |
+| [Adaptives Erhöhen des Netzwerkschutzes](security-center-adaptive-network-hardening.md)                                               | ✔                                                                                                              | -                                    | -                              | Ja                               |
+| [Dashboard und Berichte für die Einhaltung gesetzlicher Bestimmungen](security-center-compliance-dashboard.md)                                      | ✔                                                                                                              | ✔                                    | ✔                             | Ja                               |
+| [Docker-Hosthärtung](./harden-docker-hosts.md)                                                                         | ✔                                                                                                              | ✔                                    | ✔                             | Ja                               |
+| Fehlende Bewertung von BS-Patches                                                                                             | ✔                                                                                                              | ✔                                    | ✔                             | Azure: Nein<br><br>Arc-Unterstützung: Ja |
+| Bewertung von Sicherheitsfehlkonfigurationen                                                                                     | ✔                                                                                                              | ✔                                    | ✔                             | Azure: Nein<br><br>Arc-Unterstützung: Ja |
+| [Endpoint Protection-Bewertung](security-center-services.md#supported-endpoint-protection-solutions-)                    | -                                                                                                               | -                                    | -                              | Nein                                |
+| Bewertung der Datenträgerverschlüsselung                                                                                                | ✔</br>(für [unterstützte Szenarien](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)) | ✔                                    | -                              | Nein                                |
+| Sicherheitsrisikobewertung durch Drittanbieter                                                                                      | ✔                                                                                                              | -                                    | ✔                             | Nein                                |
+| [Netzwerksicherheitsbewertung](security-center-network-recommendations.md)                                                 | ✔                                                                                                              | ✔                                    | -                              | Nein                                |
 ||||||
 
 --- 
@@ -100,34 +100,35 @@ Informationen darüber, wann Empfehlungen für die einzelnen Schutzfunktionen ge
 
 ## <a name="feature-support-in-government-and-sovereign-clouds"></a>Funktionsunterstützung in Government- und Sovereign Clouds
 
-| Funktion/Dienst                                                                                                                                                             | Azure          | Azure Government               | Azure China   |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|--------------------------------|---------------|
-| **Security Center: kostenlose Funktionen**                                                                                                                                           |                |                                |               |
-| - [Fortlaufender Export](./continuous-export.md)                                                                                                                               | Allgemein verfügbar             | Allgemein verfügbar                             | Allgemein verfügbar            |
-| - [Workflowautomatisierung](./continuous-export.md)                                                                                                                             | Allgemein verfügbar             | Allgemein verfügbar                             | Allgemein verfügbar            |
-| - [Empfehlungsausnahmeregeln](./exempt-resource.md)                                                                                                                    | Öffentliche Vorschau | Nicht verfügbar                  | Nicht verfügbar. |
-| - [Warnungsunterdrückungsregeln](./alerts-suppression-rules.md)                                                                                                                  | Allgemein verfügbar             | Allgemein verfügbar                             | Allgemein verfügbar            |
-| - [E-Mail-Benachrichtigungen für Sicherheitswarnungen](./security-center-provide-security-contact-details.md)                                                                          | Allgemein verfügbar             | Allgemein verfügbar                             | Allgemein verfügbar            |
-| - [Automatische Bereitstellung für Agents und Erweiterungen](./security-center-enable-data-collection.md)                                                                                | Allgemein verfügbar             | Allgemein verfügbar                             | Allgemein verfügbar            |
-| - [Ressourcenbestand](./asset-inventory.md)                                                                                                                                   | Allgemein verfügbar             | Allgemein verfügbar                             | Allgemein verfügbar            |
-| - [Azure Monitor-Arbeitsmappenberichte im Azure Security Center-Arbeitsmappenkatalog](./custom-dashboards-azure-workbooks.md)                                                    | Allgemein verfügbar             | Allgemein verfügbar                             | Allgemein verfügbar            |
-| **Azure Defender-Pläne und Erweiterungen**                                                                                                                                     |                |                                |               |
-| - [Azure Defender für Server](/azure/security-center/defender-for-servers-introduction)                                                                                    | Allgemein verfügbar             | Allgemein verfügbar                             | Allgemein verfügbar            |
-| - [Azure Defender für App Service](/azure/security-center/defender-for-app-service-introduction)                                                                            | Allgemein verfügbar             | Nicht verfügbar                  | Nicht verfügbar. |
-| - [Azure Defender für DNS](/azure/security-center/defender-for-dns-introduction)                                                                                            | Allgemein verfügbar             | Nicht verfügbar                  | Allgemein verfügbar            |
-| - [Azure Defender für Containerregistrierungen](/azure/security-center/defender-for-container-registries-introduction) <sup>[1](#footnote1)</sup>                               | Allgemein verfügbar             | Allgemein verfügbar <sup>[2](#footnote2)</sup> | Allgemein verfügbar <sup>[2](#footnote2)</sup> |
-| - [Azure Defender für Containerregistrierungen zum Überprüfen von Images in CI/CD-Workflows](/azure/security-center/defender-for-container-registries-cicd) <sup>[3](#footnote3)</sup> | Öffentliche Vorschau | Nicht verfügbar                  | Nicht verfügbar. |
-| - [Azure Defender für Kubernetes](/azure/security-center/defender-for-kubernetes-introduction) <sup>[4](#footnote4)</sup>                                                   | Allgemein verfügbar             | Allgemein verfügbar                             | Allgemein verfügbar            |
-| - [Azure Defender-Erweiterung für Azure Arc-fähige Kubernetes-Cluster ](/azure/security-center/defender-for-kubernetes-azure-arc) <sup>[5](#footnote5)</sup>                 | Öffentliche Vorschau | Nicht verfügbar                  | Nicht verfügbar. |
-| - [Azure Defender für Azure SQL-Datenbank-Server](/azure/security-center/defender-for-sql-introduction)                                                                     | Allgemein verfügbar             | Allgemein verfügbar                             | Allgemein verfügbar <sup>[9](#footnote9)</sup> |
-| - [Azure Defender für SQL-Server auf Computern](/azure/security-center/defender-for-sql-introduction)                                                                        | Allgemein verfügbar             | Allgemein verfügbar                             | Nicht verfügbar |
-| - [Azure Defender für relationale Open-Source-Datenbanken](/azure/security-center/defender-for-databases-introduction)                                                         | Allgemein verfügbar             | Nicht verfügbar                  | Nicht verfügbar. |
-| - [Azure Defender für Key Vault](/azure/security-center/defender-for-key-vault-introduction)                                                                                | Allgemein verfügbar             | Nicht verfügbar                  | Nicht verfügbar. |
-| - [Azure Defender für Resource Manager](/azure/security-center/defender-for-resource-manager-introduction)                                                                  | Allgemein verfügbar             | Allgemein verfügbar                             | Allgemein verfügbar            |
-| - [Azure Defender für Storage](/azure/security-center/defender-for-storage-introduction) <sup>[6](#footnote6)</sup>                                                         | Allgemein verfügbar             | Allgemein verfügbar                             | Nicht verfügbar |
-| - [Bedrohungsschutz für Cosmos DB](/azure/security-center/other-threat-protections#threat-protection-for-azure-cosmos-db-preview)                                          | Öffentliche Vorschau | Nicht verfügbar                  | Nicht verfügbar. |
-| - [Kubernetes-Workloadschutz](/azure/security-center/kubernetes-workload-protections)                                                                                  | Allgemein verfügbar             | Allgemein verfügbar                             | Allgemein verfügbar            |
-| **Azure Defender für Serverfunktionen** <sup>[7](#footnote7)</sup>                                                                                                          |                |                                |               |
+| Funktion/Dienst                                                                                                                                           | Azure          | Azure Government               | Azure China 21Vianet   |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|--------------------------------|---------------|
+| **Security Center: kostenlose Funktionen**                                                                                                                         |                |                                |               |
+| - [Fortlaufender Export](./continuous-export.md)                                                                                                             | Allgemein verfügbar             | Allgemein verfügbar                             | Allgemein verfügbar            |
+| - [Workflowautomatisierung](./continuous-export.md)                                                                                                           | Allgemein verfügbar             | Allgemein verfügbar                             | Allgemein verfügbar            |
+| - [Empfehlungsausnahmeregeln](./exempt-resource.md)                                                                                                  | Öffentliche Vorschau | Nicht verfügbar                  | Nicht verfügbar. |
+| - [Warnungsunterdrückungsregeln](./alerts-suppression-rules.md)                                                                                                | Allgemein verfügbar             | Allgemein verfügbar                             | Allgemein verfügbar            |
+| - [E-Mail-Benachrichtigungen für Sicherheitswarnungen](./security-center-provide-security-contact-details.md)                                                        | Allgemein verfügbar             | Allgemein verfügbar                             | Allgemein verfügbar            |
+| - [Automatische Bereitstellung für Agents und Erweiterungen](./security-center-enable-data-collection.md)                                                              | Allgemein verfügbar             | Allgemein verfügbar                             | Allgemein verfügbar            |
+| - [Ressourcenbestand](./asset-inventory.md)                                                                                                                 | Allgemein verfügbar             | Allgemein verfügbar                             | Allgemein verfügbar            |
+| - [Azure Monitor-Arbeitsmappenberichte im Azure Security Center-Arbeitsmappenkatalog](./custom-dashboards-azure-workbooks.md)                                  | Allgemein verfügbar             | Allgemein verfügbar                             | Allgemein verfügbar            |
+| **Azure Defender-Pläne und Erweiterungen**                                                                                                                   |                |                                |               |
+| - [Azure Defender für Server](./defender-for-servers-introduction.md)                                                                                    | Allgemein verfügbar             | Allgemein verfügbar                             | Allgemein verfügbar            |
+| - [Azure Defender für App Service](./defender-for-app-service-introduction.md)                                                                            | Allgemein verfügbar             | Nicht verfügbar                  | Nicht verfügbar. |
+| - [Azure Defender für DNS](./defender-for-dns-introduction.md)                                                                                            | Allgemein verfügbar             | Allgemein verfügbar                             | Allgemein verfügbar            |
+| - [Azure Defender für Containerregistrierungen](./defender-for-container-registries-introduction.md) <sup>[1](#footnote1)</sup>                               | Allgemein verfügbar             | Allgemein verfügbar <sup>[2](#footnote2)</sup> | Allgemein verfügbar <sup>[2](#footnote2)</sup> |
+| - [Azure Defender für Containerregistrierungen zum Überprüfen von Images in CI/CD-Workflows](./defender-for-container-registries-cicd.md) <sup>[3](#footnote3)</sup> | Öffentliche Vorschau | Nicht verfügbar                  | Nicht verfügbar. |
+| - [Azure Defender für Kubernetes](./defender-for-kubernetes-introduction.md) <sup>[4](#footnote4)</sup>                                                   | Allgemein verfügbar             | Allgemein verfügbar                             | Allgemein verfügbar            |
+| - [Azure Defender-Erweiterung für Azure Arc-fähige Kubernetes-Cluster ](./defender-for-kubernetes-azure-arc.md) <sup>[5](#footnote5)</sup>                 | Öffentliche Vorschau | Nicht verfügbar                  | Nicht verfügbar. |
+| - [Azure Defender für Azure SQL-Datenbank-Server](./defender-for-sql-introduction.md)                                                                     | Allgemein verfügbar             | Allgemein verfügbar                             | Allgemein verfügbar <sup>[9](#footnote9)</sup> |
+| - [Azure Defender für SQL-Server auf Computern](./defender-for-sql-introduction.md)                                                                        | Allgemein verfügbar             | Allgemein verfügbar                             | Nicht verfügbar |
+| - [Azure Defender für relationale Open-Source-Datenbanken](./defender-for-databases-introduction.md)                                                         | Allgemein verfügbar             | Nicht verfügbar                  | Nicht verfügbar. |
+| - [Azure Defender für Key Vault](./defender-for-key-vault-introduction.md)                                                                                | Allgemein verfügbar             | Nicht verfügbar                  | Nicht verfügbar. |
+| - [Azure Defender für Resource Manager](./defender-for-resource-manager-introduction.md)                                                                  | Allgemein verfügbar             | Allgemein verfügbar                             | Allgemein verfügbar            |
+| - [Azure Defender für Storage](./defender-for-storage-introduction.md) <sup>[6](#footnote6)</sup>                                                         | Allgemein verfügbar             | Allgemein verfügbar                             | Nicht verfügbar |
+| - [Bedrohungsschutz für Cosmos DB](./other-threat-protections.md#threat-protection-for-azure-cosmos-db-preview)                                          | Öffentliche Vorschau | Nicht verfügbar                  | Nicht verfügbar. |
+| - [Kubernetes-Workloadschutz](./kubernetes-workload-protections.md)                                                                                  | Allgemein verfügbar             | Allgemein verfügbar                             | Allgemein verfügbar            |
+| - [Bidirektionale Synchronisierung von Warnungen mit Sentinel](../sentinel/connect-azure-security-center.md)                                                      | Öffentliche Vorschau | Nicht verfügbar                  | Nicht verfügbar. |
+| **Azure Defender für Serverfunktionen** <sup>[7](#footnote7)</sup>                                                                                        |                |                                |               |
 | - [Just-In-Time-VM-Zugriff](./security-center-just-in-time.md)                                                                                             | Allgemein verfügbar             | Allgemein verfügbar                             | Allgemein verfügbar            |
 | - [Dateiintegritätsüberwachung](./security-center-file-integrity-monitoring.md)                                                                             | Allgemein verfügbar             | Allgemein verfügbar                             | Allgemein verfügbar            |
 | - [Adaptive Anwendungssteuerungen](./security-center-adaptive-application.md)                                                                              | Allgemein verfügbar             | Allgemein verfügbar                             | Allgemein verfügbar            |
@@ -138,7 +139,7 @@ Informationen darüber, wann Empfehlungen für die einzelnen Schutzfunktionen ge
 | - [Microsoft Defender für Endpunkt: Bereitstellung und integrierte Lizenz](./security-center-wdatp.md)                                                         | Allgemein verfügbar             | Allgemein verfügbar                             | Nicht verfügbar |
 | - [Verbinden von AWS-Konten](./quickstart-onboard-aws.md)                                                                                                      | Allgemein verfügbar             | Nicht verfügbar                  | Nicht verfügbar. |
 | - [Verbinden von GCP-Konten](./quickstart-onboard-gcp.md)                                                                                                      | Allgemein verfügbar             | Nicht verfügbar                  | Nicht verfügbar. |
-|                                                                                                                                                                             |                |                                |
+|                                                                                                                                                           |                |                                |               |
 
 <sup><a name="footnote1" /></a>1</sup> Teilweise allgemeine Verfügbarkeit: Die Möglichkeit, bestimmte Ergebnisse von Sicherheitsrisikoüberprüfungen zu deaktivieren, befindet sich in der öffentlichen Vorschau.
 

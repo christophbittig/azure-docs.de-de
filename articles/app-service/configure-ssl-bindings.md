@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 05/13/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: c67dfe6295a62a464d1a7a5eeb7a9ba7afd88ced
-ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+ms.openlocfilehash: 717c9595a9fbda39583be0be5bc6565d2938dc63
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113128766"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823366"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Schützen eines benutzerdefinierten DNS-Namens mit einer TLS-/SSL-Bindung in Azure App Service
 
@@ -154,6 +154,17 @@ Nach Abschluss des Vorgangs lehnt Ihre App alle Verbindungen mit niedrigerer TLS
 In App Service erfolgt die [TLS-Terminierung](https://wikipedia.org/wiki/TLS_termination_proxy) in den Modulen für den Netzwerklastenausgleich, sodass alle HTTPS-Anforderungen Ihre App unverschlüsselt erreichen. Wenn Ihre App-Logik überprüfen muss, ob Benutzeranforderungen verschlüsselt sind, können Sie dazu den Header `X-Forwarded-Proto` untersuchen.
 
 In sprachspezifischen Konfigurationsleitfäden (etwa unter [Konfigurieren einer Linux-Node.js-App für Azure App Service](configure-language-nodejs.md#detect-https-session)) wird die Erkennung einer HTTPS-Sitzung in Ihrem Anwendungscode gezeigt.
+
+## <a name="renew-certificate-binding"></a>Verlängern der Zertifikatbindung
+
+> [!NOTE]
+> Informationen zum Verlängern eines [von Ihnen erworbenen App Service-Zertifikats](configure-ssl-certificate.md#import-an-app-service-certificate) finden Sie unter [Exportieren eines (App Service)-Zertifikats](configure-ssl-certificate.md#export-certificate). App Service-Zertifikate können automatisch verlängert und die Bindung automatisch synchronisiert werden.
+
+Beim Ersatz eines ablaufenden Zertifikats kann sich die Art der Aktualisierung der Zertifikatbindung durch das neue Zertifikat negativ auf die Benutzerfreundlichkeit auswirken. Ihre IP-Adresse für eingehenden Datenverkehr kann sich z. B. ändern, wenn Sie eine Bindung löschen, auch wenn diese Bindung IP-basiert ist. Dies ist besonders wichtig, wenn Sie ein Zertifikat erneuern, das sich bereits in einer IP-basierten Bindung befindet. Führen Sie die folgenden Schritte in der folgenden Reihenfolge aus, um eine Änderung der IP-Adresse Ihrer App und Ausfallzeiten für Ihre App zu vermeiden:
+
+1. Laden Sie das neue Zertifikat hoch.
+2. Binden Sie das neue Zertifikat an dieselbe benutzerdefinierte Domäne, ohne das vorhandene (ablaufende) Zertifikat zu löschen. Dadurch wird die Bindung ersetzt, anstatt das vorhandene Zertifikat zu entfernen.
+3. Löschen Sie das vorhandene Zertifikat.
 
 ## <a name="automate-with-scripts"></a>Automatisieren mit Skripts
 

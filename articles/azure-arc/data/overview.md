@@ -8,25 +8,27 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 07/13/2021
+ms.date: 07/30/2021
 ms.topic: overview
-ms.openlocfilehash: cb905bd3e8ceb7012415a65bda1928b25da3037b
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 5a2bd61c2e59e5933361cc5d64462ba50a12d836
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113760986"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737106"
 ---
-# <a name="what-are-azure-arc-enabled-data-services-preview"></a>Was sind Azure Arc-fähige Datendienste (Vorschauversion)?
+# <a name="what-are-azure-arc-enabled-data-services"></a>Was sind Datendienste mit Azure Arc-Unterstützung?
 
 Azure Arc ermöglicht das lokale Ausführen von Azure Data Services in Edgeumgebungen und in öffentlichen Clouds mithilfe von Kubernetes und der Infrastruktur Ihrer Wahl.
 
-Derzeit sind die folgenden Azure Arc-fähigen Datendienste in der Vorschauversion verfügbar:
+Derzeit sind die folgenden Azure Arc-fähigen Datendienste verfügbar: 
 
 - Verwaltete SQL-Instanz
-- PostgreSQL Hyperscale
+- PostgreSQL Hyperscale (Vorschau)
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+Eine Einführung darin, wie Azure Arc-fähige Datendienste Ihre Hybridarbeitsumgebung unterstützen, finden Sie in diesem Einführungsvideo:
+
+> [!VIDEO https://channel9.msdn.com/Shows//Inside-Azure-for-IT/Choose-the-right-data-solution-for-your-hybrid-environment/player?format=ny]
 
 ## <a name="always-current"></a>Immer aktuell
 
@@ -43,6 +45,8 @@ Azure Arc bietet weitere Cloudvorteile, wie z. B. schnelle Bereitstellung und 
 ## <a name="unified-management"></a>Einheitliche Verwaltung
 
 Mit vertrauten Tools wie dem Azure-Portal, Azure Data Studio und der Azure CLI (`az`) mit der Erweiterung `arcdata` erhalten Sie nun eine einheitliche Übersicht über alle Datenressourcen, die mit Azure Arc bereitgestellt werden. Neben der Möglichkeit, eine Vielzahl relationaler Datenbanken in Ihrer Umgebung und Azure anzuzeigen und zu verwalten, können Sie auch Protokolle und Telemetriedaten von Kubernetes-APIs abrufen, um die Kapazität und Integrität der zugrunde liegende Infrastruktur zu analysieren. Zusätzlich zur lokalisierten Protokollanalyse und Leistungsüberwachung können Sie nun Azure Monitor nutzen, um einen umfassenden Überblick über sämtliche IT-Ressourcen zu erhalten.
+
+[!INCLUDE [use-insider-azure-data-studio](includes/use-insider-azure-data-studio.md)]
 
 ## <a name="disconnected-scenario-support"></a>Unterstützung für nicht verbundenes Szenario
 

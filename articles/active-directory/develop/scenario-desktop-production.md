@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 22e61ea767d781dc9da54d61143c1b2524e06e94
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 759dcafe3d1c98b73d9ddcaf079cba952b9a95ca
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99584413"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122777900"
 ---
 # <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Desktop-App, die Web-APIs aufruft: Überführen in die Produktion
 
@@ -110,7 +110,7 @@ Für Benutzer eines persönlichen Microsoft-Kontos besteht das beabsichtigte Ver
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Beispiele zum Testen finden Sie unter [Öffentliche Desktop- und mobile Client-Apps](sample-v2-code.md#desktop-and-mobile-public-client-apps).
+Weitere Beispiele zum Testen finden Sie unter [Öffentliche Desktopclient-Apps](sample-v2-code.md#desktop).
 
 
 

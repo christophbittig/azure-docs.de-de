@@ -6,12 +6,12 @@ ms.topic: article
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2021
-ms.openlocfilehash: 552e79a11da001d7834cb9640bb77c08f9491f99
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 004196117512282ee960ed275dd970b472cde918
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110482745"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122662317"
 ---
 # <a name="using-queries-in-azure-monitor-log-analytics"></a>Verwenden von Abfragen in Azure Monitor Log Analytics
 Wenn Sie Log Analytics öffnen, haben Sie Zugriff auf vorhandene Protokollabfragen. Sie können diese Abfragen entweder ohne Änderung ausführen oder als Startpunkt für Ihre eigenen Abfragen verwenden. Die verfügbaren Abfragen enthalten von Azure Monitor bereitgestellte Beispiele und von Ihrer Organisation gespeicherte Abfragen. In diesem Artikel wird beschrieben, welche Abfragen verfügbar sind und wie Sie diese suchen und verwenden können.
@@ -69,6 +69,7 @@ Jede Abfrage verfügt über mehrere Eigenschaften, die Ihnen helfen, sie zu grup
 - **Kategorie:** ein Informationstyp, z. B. *Sicherheit* oder *Überprüfung*. Die Kategorien sind identisch mit den Kategorien, die im Bereich „Tabellen“ der Seitenleiste definiert sind. In der [Referenz zu Azure Monitor-Tabellen](/azure/azure-monitor/reference/tables/tables-category) finden Sie eine vollständige Liste der Kategorien.  
 - **Lösung:** eine Azure Monitor-Lösung, die mit den Abfragen verknüpft ist.
 - **Thema:** das Thema der Beispielabfrage, z. B. *Aktivitätsprotokolle* oder *App-Protokolle*. Die Themeneigenschaft ist spezifisch für Beispielabfragen und kann sich je nach Ressourcentyp unterscheiden.
+- - **Abfragetyp:** definiert den Typ der Abfrage. Der Abfragetyp kann Beispielabfragen, Abfragepaketabfragen oder Legacyabfragen lauten.
 - **Bezeichnungen** – Benutzerdefinierte Bezeichnungen, die Sie definieren und zuweisen können, [wenn Sie Ihre eigene Abfrage speichern](save-query.md).
 - **Tags** – Benutzerdefinierte Eigenschaften, die beim [Erstellen eines Abfragepakets](query-packs.md) definiert werden können. Tags ermöglichen es Ihrer Organisation, eigene Taxonomien zum Organisieren von Abfragen zu erstellen.
 
@@ -83,6 +84,8 @@ Die Abfrageschnittstelle wird mit den folgenden Abfragetypen aufgefüllt:
 **Abfragepakete:** Ein [Abfragepaket](query-packs.md) enthält mehrere Protokollabfragen, einschließlich Abfragen, die Sie selbst speichern. Dies schließt das [Standardabfragepaket](query-packs.md#default-query-pack) und alle anderen Abfragepakete ein, die Ihre Organisation möglicherweise im Abonnement erstellt hat.
 
 **Legacyabfragen:** Dies sind Protokollabfragen, die zuvor im Abfrage-Explorer gespeichert wurden und Azure-Lösungen abfragen, die im Arbeitsbereich installiert sind. Diese sind im Abfragedialogfeld unter **Legacy queries** (Legacyabfragen) aufgeführt.
+>[!TIP]
+> Legacyabfragen sind nur in einem Log Analytics-Arbeitsbereich verfügbar.
 
 ## <a name="effect-of-query-scope"></a>Auswirkungen des Abfragebereichs
 Die Abfragen, die beim Öffnen von Log Analytics verfügbar sind, werden durch den aktuellen [Abfragebereich](scope.md) bestimmt.

@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
-ms.date: 03/04/2021
+ms.date: 08/18/2021
 ms.author: memildin
-ms.openlocfilehash: 3f7663c62b514cb002b4de3df59d2185cfa815d3
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 96b5becdda011243cdcc9e510450683c255e7c1c
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114284213"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122607947"
 ---
 # <a name="configure-auto-provisioning-for-agents-and-extensions-from-azure-security-center"></a>Konfigurieren der automatischen Bereitstellung für Agents und Erweiterungen aus Azure Security Center
 
@@ -25,10 +25,10 @@ Für den Einstieg in Security Center benötigen Sie ein Microsoft Azure-Abonneme
 
 | Aspekt                  | Details                                                                                                                                                                                                                      |
 |-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Status des Release:          | **Feature**: Die automatische Bereitstellung ist allgemein verfügbar (GA).<br>**Agent und Erweiterungen:** Der Log Analytics-Agent für virtuelle Azure-Computer ist allgemein verfügbar, der Microsoft Dependency-Agent befindet sich in der Vorschauversion, das Richtlinien-Add-On für Kubernetes ist allgemein verfügbar.                |
+| Status des Release:          | **Feature**: Die automatische Bereitstellung ist allgemein verfügbar (GA).<br>**Agent und Erweiterungen:** Der Log Analytics-Agent für Azure-VMs ist in der GA-Version (allgemeine Verfügbarkeit) verfügbar, der Microsoft Dependency-Agent befindet sich in der Vorschauversion, das Richtlinien-Add-On für Kubernetes ist „GA“, der Gastkonfigurations-Agent ist in der Vorschauversion.  |
 | Preise:                | Kostenlos                                                                                                                                                                                                                         |
 | Unterstützte Ziele: | :::image type="icon" source="./media/icons/yes-icon.png"::: Azure-Computer<br>:::image type="icon" source="./media/icons/no-icon.png"::: Azure Arc-Computer<br>:::image type="icon" source="./media/icons/no-icon.png"::: Kubernetes-Knoten<br>:::image type="icon" source="./media/icons/no-icon.png"::: Virtual Machine Scale Sets |
-| Clouds:                 | :::image type="icon" source="./media/icons/yes-icon.png"::: Kommerzielle Clouds<br>:::image type="icon" source="./media/icons/yes-icon.png"::: US Gov, Azure China                                                                                                      |
+| Clouds:                 | **Feature**:<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Kommerzielle Clouds<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure Government, Azure China 21Vianet<br>**Agent und Erweiterungen:**<br>Der Log Analytics-Agent für Azure-VMs ist in allen Clouds verfügbar, das Richtlinien-Add-On für Kubernetes ist in allen Clouds verfügbar, der Gastkonfigurations-Agent ist nur in kommerziellen Clouds verfügbar.  |
 |                         |                                                                                                                                                                                                                              |
 
 ## <a name="how-does-security-center-collect-data"></a>Wie werden Daten von Security Center gesammelt?
@@ -67,9 +67,9 @@ So aktivieren Sie die automatische Bereitstellung des Log Analytics-Agents:
 
 1. Wählen Sie im Menü von Security Center **Preise und Einstellungen** aus.
 1. Wählen Sie das relevante Abonnement aus.
-1. Legen Sie auf der Seite **Automatische Bereitstellung** den Status des Log Analytics-Agents auf **Ein** fest.
+1. Legen Sie auf der Seite **Automatische Bereitstellung** den Status der automatischen Bereitstellung für den Log Analytics-Agent auf **Ein** fest.
 
-    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Aktivieren der automatischen Bereitstellung des Log Analytics-Agents":::
+    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Aktivieren der automatischen Bereitstellung des Log Analytics-Agents" lightbox="./media/security-center-enable-data-collection/enable-automatic-provisioning.png":::
 
 1. Definieren Sie im Bereich mit den Konfigurationsoptionen den zu verwendenden Arbeitsbereich.
 
@@ -120,13 +120,14 @@ So aktivieren Sie die automatische Bereitstellung des Log Analytics-Agents:
 
         :::image type="content" source="./media/security-center-enable-data-collection/toggle-kubernetes-add-on.png" alt-text="Umschaltfläche zum Aktivieren der automatischen Bereitstellung für das Azure Policy-Add-On für Kubernetes (K8s)":::
 
-    1. Wählen Sie **Speichern** aus. Die Azure-Richtlinie wird zugewiesen, und ein Wartungstask wird erstellt.
+    1. Wählen Sie **Speichern** aus. Die Azure Policy-Definition wird zugewiesen und ein Wartungstask wird erstellt.
 
         |Durchwahl  |Policy  |
         |---------|---------|
-        |Policy-Add-On für Kubernetes|[Azure Policy-Add-On für Azure Kubernetes Service-Cluster bereitstellen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa8eff44f-8c92-45c3-a3fb-9880802d67a7)|
+        |Policy-Add-On für Kubernetes                      |[Azure Policy-Add-On für Azure Kubernetes Service-Cluster bereitstellen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa8eff44f-8c92-45c3-a3fb-9880802d67a7)|
         |Microsoft Dependency-Agent (Vorschauversion) (Windows-VMs)|[Dependency-Agent für Windows-VMs bereitstellen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1c210e94-a481-4beb-95fa-1571b434fb04)         |
-        |Microsoft Dependency-Agent (Vorschauversion) (Linux-VMs)|[Dependency-Agent für Linux-VMs bereitstellen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da21710-ce6f-4e06-8cdb-5cc4c93ffbee)|
+        |Microsoft Dependency-Agent (Vorschauversion) (Linux-VMs)  |[Dependency-Agent für Linux-VMs bereitstellen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da21710-ce6f-4e06-8cdb-5cc4c93ffbee)|
+        |Gastkonfigurations-Agent (Vorschau)               |[Voraussetzungen zum Aktivieren der Gastkonfigurationsrichtlinien auf VMs bereitstellen](https://github.com/Azure/azure-policy/blob/64dcfa3033a3ff231ec4e73d2c1dad4db4e3b5dd/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_Prerequisites.json)|
         |||
 
 1. Wählen Sie **Speichern** aus. Wenn ein Arbeitsbereich bereitgestellt werden muss, kann die Installation des Agents bis zu 25 Minuten dauern.
@@ -221,7 +222,7 @@ So installieren Sie den Log Analytics-Agent manuell:
    - [Installieren des Log Analytics-Agents für Windows](../virtual-machines/extensions/oms-windows.md)
    - [Installieren des Log Analytics-Agents für Linux](../virtual-machines/extensions/oms-linux.md)
 
-1. Folgen Sie zum Bereitstellen von Agents auf Ihren vorhandenen VMs den Anweisungen unter [Sammeln von Daten von einem virtuellen Azure-Computer mit Azure Monitor](../azure-monitor/vm/quick-collect-azurevm.md) (der Abschnitt **Sammeln von Ereignis- und Leistungsdaten** ist optional).
+1. Folgen Sie zum Bereitstellen von Agents auf Ihren vorhandenen VMs den Anweisungen unter [Sammeln von Daten von einem virtuellen Azure-Computer mit Azure Monitor](../azure-monitor/vm/monitor-virtual-machine.md) (der Abschnitt **Sammeln von Ereignis- und Leistungsdaten** ist optional).
 
 1. Wenn Sie die Agents mithilfe von PowerShell bereitstellen möchten, folgen Sie den Anweisungen in der Dokumentation zu VMs:
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/11/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 0d39961e1c56bdd6159fdb0d14cc0901aab6bc0e
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: ad25ce992dec7165e2b936e5642e8c3a209ce6a5
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112413446"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122516275"
 ---
 Event Hubs erfasst Diagnoseprotokolle für die folgenden Kategorien:
 
@@ -182,7 +182,7 @@ Die JSON-Zeichenfolge für das Event Hubs-Verbindungsereignis mit virtuellem Net
 | `Count` | Anzahl von Vorkommen für die angegebene Aktion. |
 | `ResourceId` | Azure Resource Manager-Ressourcen-ID |
 
-Protokolle virtueller Netzwerke werden nur dann generiert, wenn der Namespace Zugriff aus **ausgewählten Netzwerken** oder über **spezifische IP-Adressen** (IP-Filterregeln) erlaubt. Wenn Sie den Zugriff auf Ihren Namespace mit diesen Features nicht einschränken möchten und dennoch Protokolle virtueller Netzwerke erhalten möchten, um IP-Adressen von Clients zu verfolgen, die sich mit dem Namespace der Event Hubs verbinden, können Sie die folgende Umgehungslösung verwenden. [Aktivieren Sie IP-Filterung](../event-hubs-ip-filtering.md), und fügen Sie den gesamten adressierbaren IPv4-Bereich (1.0.0.0/1 bis 255.0.0.0/1) hinzu. Die IP-Filterung von Event Hubs unterstützt keine IPv6-Adressbereiche. Beachten Sie, dass im IPv6-Format im Protokoll möglicherweise private Endpunktadressen angezeigt werden. 
+Protokolle virtueller Netzwerke werden nur dann generiert, wenn der Namespace Zugriff aus **ausgewählten Netzwerken** oder über **spezifische IP-Adressen** (IP-Filterregeln) erlaubt. Wenn Sie den Zugriff auf Ihren Namespace mit diesen Features nicht einschränken möchten und dennoch Protokolle virtueller Netzwerke erhalten möchten, um IP-Adressen von Clients zu verfolgen, die sich mit dem Namespace der Event Hubs verbinden, können Sie die folgende Umgehungslösung verwenden. [Aktivieren Sie IP-Filterung](../event-hubs-ip-filtering.md), und fügen Sie den gesamten adressierbaren IPv4-Bereich (1.0.0.0/1 bis 255.0.0.0/1) hinzu. Die IP-Filterung von Event Hubs unterstützt keine IPv6-Adressbereiche. Möglicherweise werden private Endpunktadressen im IPv6-Format im Protokoll angezeigt. 
 
 #### <a name="example"></a>Beispiel
 
@@ -204,11 +204,58 @@ Die JSON-Zeichenfolge im Benutzerprotokoll für kundenseitig verwaltete Schlüss
 
 | Name | BESCHREIBUNG |
 | ---- | ----------- | 
-| `Category` | Typ der Kategorie für eine Meldung. Es handelt sich um einen der folgenden Werte: **error** oder **info** |
+| `Category` | Typ der Kategorie für eine Meldung. Hierbei handelt es sich um einen der folgenden Werte: **Fehler** oder **Info**. Wenn beispielsweise der Schlüssel aus Ihrem Schlüsseltresor deaktiviert wird, dann handelt es sich hierbei um eine Informationskategorie. Wenn ein Schlüssel nicht entpackt werden kann, dann handelt es sich um einen Fehler.|
 | `ResourceId` | Interne Ressourcen-ID, die die Azure-Abonnement-ID und den Namespacenamen umfasst. |
 | `KeyVault` | Name der Key Vault-Ressource. |
-| `Key` | Name des Key Vault-Schlüssels. |
-| `Version` | Version des Key Vault-Schlüssels. |
-| `Operation` | Der Name eines Vorgangs, der zum Verarbeiten von Anforderungen ausgeführt wird. |
-| `Code` | Statuscode |
+| `Key` | Der Name des Key Vault-Schlüssels, der zum Verschlüsseln des Event Hubs-Namespace verwendet wird. |
+| `Version` | Version des Key Vault-Schlüssels.|
+| `Operation` | Der Vorgang, der für den Schlüssel in Ihrem Schlüsseltresor ausgeführt wird. Dazu zählen etwa das Deaktivieren/Aktvieren, das Packen und das Entpacken des Schlüssels. |
+| `Code` | Der Code, der dem Vorgang zugeordnet ist. Beispiel: Der Fehlercode 404 bedeutet, dass der Schlüssel nicht gefunden wurde. |
 | `Message` | Meldung, die Details zu einem Fehler oder einer Informationsmeldung enthält. |
+
+Im Folgenden finden Sie ein Beispiel für das Protokoll für einen kundenseitig verwalteten Schlüssel:
+
+```json
+{
+   "TaskName": "CustomerManagedKeyUserLog",
+   "ActivityId": "11111111-1111-1111-1111-111111111111",
+   "category": "error"
+   "resourceId": "/SUBSCRIPTIONS/11111111-1111-1111-1111-11111111111/RESOURCEGROUPS/DEFAULT-EVENTHUB-CENTRALUS/PROVIDERS/MICROSOFT.EVENTHUB/NAMESPACES/FBETTATI-OPERA-EVENTHUB",
+   "keyVault": "https://mykeyvault.vault-int.azure-int.net",
+   "key": "mykey",
+   "version": "1111111111111111111111111111111",
+   "operation": "wrapKey",
+   "code": "404",
+   "message": "Key not found: ehbyok0/111111111111111111111111111111",
+}
+
+
+
+{
+   "TaskName": "CustomerManagedKeyUserLog",
+   "ActivityId": "11111111111111-1111-1111-1111111111111",
+   "category": "info"
+   "resourceId": "/SUBSCRIPTIONS/111111111-1111-1111-1111-11111111111/RESOURCEGROUPS/DEFAULT-EVENTHUB-CENTRALUS/PROVIDERS/MICROSOFT.EVENTHUB/NAMESPACES/FBETTATI-OPERA-EVENTHUB",
+   "keyVault": "https://mykeyvault.vault-int.azure-int.net",
+   "key": "mykey",
+   "version": "111111111111111111111111111111",
+   "operation": "disable" | "restore",
+   "code": "",
+   "message": "",
+}
+```
+
+Im Folgenden finden Sie die allgemeinen Fehlercodes, nach denen Sie suchen müssen, wenn die BYOK-Verschlüsselung aktiviert ist.
+
+| Aktion | Fehlercode | Resultierender Zustand der Daten |
+| ------ | ---------- | ----------------------- | 
+| Widerrufen der Berechtigung zum Packen/Entpacken aus einem Schlüsseltresor | 403 |    Inaccessible |
+| Entfernen der AAD-Rollenmitgliedschaft aus einem AAD-Prinzipal, der die Berechtigung zum Packen/Entpacken gewährt hat | 403 |  Inaccessible |
+| Löschen eines Verschlüsselungsschlüssels aus dem Schlüsseltresor | 404 | Inaccessible |
+| Löschen des Schlüsseltresors | 404 | Zugriff nicht möglich (unter der Annahme, dass vorläufiges Löschen aktiviert ist, da dies eine erforderliche Einstellung ist) |
+| Ändern des Ablaufzeitraums für den Verschlüsselungsschlüssel, sodass er bereits abgelaufen ist | 403 |   Inaccessible  |
+| Ändern des Werts für NBF (not before, nicht vor), sodass der Schlüsselverschlüsselungsschlüssel nicht aktiv ist | 403 | Inaccessible  |
+| Auswählen der Option **Allow MSFT Services** (MSFT-Dienste zulassen) für die Firewall des Schlüsseltresors oder anderweitiges Blockieren des Netzwerkzugriffs auf den Schlüsseltresor, der den Verschlüsselungsschlüssel enthält | 403 | Inaccessible |
+| Verschieben des Schlüsseltresors in einen anderen Mandanten | 404 | Inaccessible |  
+| Zeitweilig auftretendes Netzwerkproblem oder DNS-/AAD-/MSI-Ausfall |  | Zugriff mithilfe des zwischengespeicherten Datenverschlüsselungsschlüssels |
+

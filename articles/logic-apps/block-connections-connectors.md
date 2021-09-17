@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 02d9852f6615c3926a02294e0e7eca50f2fbe9a5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f13ffe10ed9ade4e6fe8767ef61b6709747b7d2a
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92310034"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122606248"
 ---
 # <a name="block-connections-created-by-connectors-in-azure-logic-apps"></a>Blockieren der von Connectors in Azure Logic Apps erstellten Verbindungen
 
@@ -220,7 +220,7 @@ Führen Sie die folgenden Schritte aus, um die Erstellung einer Verbindung in ei
 
 1. [Erstellen Sie als Nächstes eine Richtlinienzuweisung](#create-policy-assignment), um die Richtliniendefinition dem Ort zuzuweisen, an dem Sie sie erzwingen möchten.
 
-Weitere Informationen zu Azure-Richtliniendefinitionen finden Sie in den folgenden Themen:
+Weitere Informationen zu Azure Policy-Definitionen finden Sie in den folgenden Artikeln:
 
 * [Struktur von Azure Policy-Definitionen](../governance/policy/concepts/definition-structure.md)
 * [Tutorial: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung](../governance/policy/tutorials/create-and-manage.md)
@@ -307,7 +307,7 @@ Wenn Sie eine Verbindung in einer Logik-App erstellen, handelt es sich dabei um 
 
 1. [Erstellen Sie als Nächstes eine Richtlinienzuweisung](#create-policy-assignment), um die Richtliniendefinition dem Ort zuzuweisen, an dem Sie sie erzwingen möchten.
 
-Weitere Informationen zu Azure-Richtliniendefinitionen finden Sie in den folgenden Themen:
+Weitere Informationen zu Azure Policy-Definitionen finden Sie in den folgenden Artikeln:
 
 * [Struktur von Azure Policy-Definitionen](../governance/policy/concepts/definition-structure.md)
 * [Tutorial: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung](../governance/policy/tutorials/create-and-manage.md)

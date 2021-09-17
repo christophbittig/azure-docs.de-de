@@ -1,18 +1,21 @@
 ---
-title: Erstellen von Triggern für rollierende Fenster in Azure Data Factory
-description: Erfahren Sie, wie in Azure Data Factory ein Trigger erstellt wird, der eine Pipeline gemäß einem rollierenden Fenster ausführt.
+title: Erstellen eines Triggers für ein rollierendes Fenster
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Erfahren Sie, wie Sie in Azure Data Factory oder Azure Synapse Analytics einen Trigger erstellen, der eine Pipeline für ein rollierendes Fenster ausführt.
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 10/25/2020
-ms.openlocfilehash: ad397b62adcbcf6a0e117950c0dc3be33e6522db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/24/2021
+ms.openlocfilehash: b4a2e86c66584f555dd88dfd8e3d3b8b0fac5858
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104779816"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822733"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Erstellen eines Triggers zum Ausführen einer Pipeline für ein rollierendes Fenster
 
@@ -22,13 +25,19 @@ Dieser Artikel enthält die Schritte zum Erstellen, Starten und Überwachen eine
 
 Trigger für ein rollierendes Fenster werden ab einem angegebenen Startzeitpunkt in regelmäßigen Zeitintervallen ausgelöst, während der Zustand beibehalten wird. Bei rollierenden Fenstern handelt es sich um eine Reihe von nicht überlappenden, aneinandergrenzenden Zeitintervallen mit einer festen Größe. Ein Trigger für ein rollierendes Fenster hat eine 1:1-Beziehung zu einer Pipeline und kann nur auf eine einzelne Pipeline verweisen. Der Trigger für ein rollierendes Fenster ist eine leistungsstärkere Alternative für einen Zeitplantrigger und verfügt über eine Suite mit Funktionen für komplexe Szenarien ([Abhängigkeit von anderen Triggern für ein rollierendes Fenster](#tumbling-window-trigger-dependency), [Erneutes Ausführen eines fehlgeschlagenen Auftrags](tumbling-window-trigger-dependency.md#monitor-dependencies) und [Festlegen der Benutzerwiederholung für Pipelines](#user-assigned-retries-of-pipelines)). Weitere Informationen zum Unterschied zwischen dem Zeitplantrigger und dem Trigger für ein rollierendes Fenster finden Sie [hier](concepts-pipeline-execution-triggers.md#trigger-type-comparison).
 
-## <a name="data-factory-ui"></a>Data Factory-Benutzeroberfläche
+## <a name="ui-experience"></a>Benutzeroberfläche
 
-1. Zum Erstellen eines Triggers für ein rollierendes Fenster klicken Sie auf die Data Factory-Benutzeroberfläche, wählen die Registerkarte **Trigger** und dann **Neu** aus. 
+1. Zum Erstellen eines Triggers für ein rollierendes Fenster in der Benutzeroberfläche wählen Sie die Registerkarte **Trigger** und dann **Neu** aus. 
 1. Nachdem der Bereich für die Triggerkonfiguration geöffnet wurde, wählen Sie **Rollierendes Fenster** aus und definieren dann die Triggereigenschaften des rollierenden Fensters. 
 1. Klicken Sie auf **Speichern**, wenn Sie fertig sind.
 
-![Erstellen eines Triggers für ein rollierendes Fenster im Azure-Portal](media/how-to-create-tumbling-window-trigger/create-tumbling-window-trigger.png)
+# <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+:::image type="content" source="media/how-to-create-tumbling-window-trigger/create-tumbling-window-trigger.png" alt-text="Erstellen eines Triggers für ein rollierendes Fenster im Azure-Portal":::
+
+# <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+:::image type="content" source="media/how-to-create-tumbling-window-trigger/create-tumbling-window-trigger-synapse.png" alt-text="Erstellen eines Triggers für ein rollierendes Fenster im Azure-Portal":::
+
+---
 
 ## <a name="tumbling-window-trigger-type-properties"></a>Triggertypeigenschaften eines rollierenden Fensters
 
@@ -168,11 +177,27 @@ Sie können Ausführungen für einen Trigger für rollierende Fenster abbrechen,
 * Wenn sich das Fenster im Zustand **Wird ausgeführt** befindet, brechen Sie die zugehörige _Pipelineausführung_ ab. Danach wird die Triggerausführung als _Abgebrochen_ markiert.
 * Wenn sich das Fenster im Zustand **Warten** oder im Zustand **Auf Abhängigkeit warten** befindet, können Sie das Fenster über die Überwachung abbrechen:
 
-![Abbrechen eines Triggers für rollierende Fenster über die Seite „Überwachung“](media/how-to-create-tumbling-window-trigger/cancel-tumbling-window-trigger.png)
+# <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+:::image type="content" source="media/how-to-create-tumbling-window-trigger/cancel-tumbling-window-trigger.png" alt-text="Abbrechen eines Triggers für rollierende Fenster über die Seite „Überwachung“":::
+
+# <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+:::image type="content" source="media/how-to-create-tumbling-window-trigger/cancel-tumbling-window-trigger-synapse.png" alt-text="Abbrechen eines Triggers für rollierende Fenster über die Seite „Überwachung“":::
+
+---
 
 Sie können ein abgebrochenes Fenster auch erneut ausführen. Bei der erneuten Ausführung werden die _letzten_ veröffentlichten Definitionen des Triggers verwendet, und Abhängigkeiten für das angegebene Fenster werden bei der erneuten Ausführung _erneut ausgewertet_.
 
-![Erneute Ausführung eines Triggers für rollierende Fenster für zuvor abgebrochene Ausführungen](media/how-to-create-tumbling-window-trigger/rerun-tumbling-window-trigger.png)
+# <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+:::image type="content" source="media/how-to-create-tumbling-window-trigger/rerun-tumbling-window-trigger.png" alt-text="Erneute Ausführung eines Triggers für rollierende Fenster für zuvor abgebrochene Ausführungen":::
+
+# <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+:::image type="content" source="media/how-to-create-tumbling-window-trigger/rerun-tumbling-window-trigger-synapse.png" alt-text="Erneute Ausführung eines Triggers für rollierende Fenster für zuvor abgebrochene Ausführungen":::
+
+---
 
 ## <a name="sample-for-azure-powershell"></a>Beispiel für Azure PowerShell
 

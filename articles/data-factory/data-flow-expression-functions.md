@@ -1,18 +1,20 @@
 ---
 title: Ausdrucksfunktionen im Zuordnungsdatenfluss
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Hier erhalten Sie Informationen zu Ausdrucksfunktionen in Mapping Data Flow.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
+ms.custom: synapse
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 04/01/2021
-ms.openlocfilehash: deabcc9170e8b025e91dace47ce9e6a70bd385bb
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.date: 08/24/2021
+ms.openlocfilehash: c0f0f36694e4eadccc4f7b2e9298e2a5ef27d31f
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109809254"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122825181"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Datentransformationsausdrücke in Mapping Data Flow
 
@@ -20,7 +22,7 @@ ms.locfileid: "109809254"
 
 ## <a name="expression-functions"></a>Ausdrucksfunktionen
 
-In Data Factory verwenden Sie die Ausdruckssprache des Mapping Data Flow-Features, um Datentransformationen zu konfigurieren.
+In Data Factory- und Synapse-Pipelines verwenden Sie die Ausdruckssprache des Features für Zuordnungsdatenflüsse, um Datentransformationen zu konfigurieren.
 ___
 ### <code>abs</code>
 <code><b>abs(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
@@ -238,8 +240,16 @@ ___
 <code><b>divide(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
 Dividiert ein Zahlenpaar. Entspricht dem Operator `/`.  
 * ``divide(20, 10) -> 2``  
-* ``20 / 10 -> 2``  
+* ``20 / 10 -> 2``
 ___
+### <code>dropLeft</code>
+<code><b>dropLeft(<i>&lt;value1&gt;</i> : string, <i>&lt;value2&gt;</i> : integer) => string</b></code><br/><br/>
+Entfernt die angegebene Anzahl von Zeichen links von der Zeichenfolge. Wenn die angeforderte Löschung die Länge der Zeichenfolge überschreitet, wird eine leere Zeichenfolge zurückgegeben.
+*   dropLeft('bojjus', 2) => 'jjus' *   dropLeft('cake', 10) => '' ___
+### <code>dropRight</code>
+<code><b>dropRight(<i>&lt;value1&gt;</i> : string, <i>&lt;value2&gt;</i> : integer) => string</b></code><br/><br/>
+Entfernt die angegebene Anzahl von Zeichen rechts von der Zeichenfolge. Wenn die angeforderte Löschung die Länge der Zeichenfolge überschreitet, wird eine leere Zeichenfolge zurückgegeben.
+*   dropRight('bojjus', 2) => 'bojj' *   dropRight('cake', 10) => '' ___
 ### <code>endsWith</code>
 <code><b>endsWith(<i>&lt;string&gt;</i> : string, <i>&lt;substring to check&gt;</i> : string) => boolean</b></code><br/><br/>
 Überprüft, ob die Zeichenfolge mit der angegebenen Zeichenfolge endet.  
@@ -286,7 +296,7 @@ Gibt den größten Integerwert zurück, der nicht größer als die Zahl ist.
 ___
 ### <code>fromBase64</code>
 <code><b>fromBase64(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
-Codiert die angegebene Zeichenfolge in Base64.  
+Decodiert die angegebene Base64-codierte Zeichenfolge.
 * ``fromBase64('Z3VuY2h1cw==') -> 'gunchus'``  
 ___
 ### <code>fromUTC</code>
@@ -405,6 +415,11 @@ ___
 Überprüft, ob die Zeile zum Einfügen markiert ist. Für Transformationen, die mehrere Eingabestreams akzeptieren, können Sie den (auf 1 basierenden) Index des Streams übergeben. Der Streamindex muss „1“ oder „2“ lauten, und der Standardwert ist „1“.  
 * ``isUpsert()``  
 * ``isUpsert(1)``  
+___
+### <code>jaroWinkler</code>
+<code><b>jaroWinkler(<i>&lt;value1&gt;</i> : string, <i>&lt;value2&gt;</i> : string) => double</b></code><br/><br/>
+Ruft den Jaro-Winkler-Abstand zwischen zwei Zeichenfolgen ab. 
+* ``jaroWinkler('frog', 'frog') => 1.0``  
 ___
 ### <code>lastDayOfMonth</code>
 <code><b>lastDayOfMonth(<i>&lt;value1&gt;</i> : datetime) => date</b></code><br/><br/>
@@ -607,6 +622,10 @@ ___
 <code><b>power(<i>&lt;value1&gt;</i> : number, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
 Potenziert eine Zahl um den Potenzwert einer anderen.  
 * ``power(10, 2) -> 100``  
+___
+### <code>radians</code>
+<code><b>radians(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
+Konvertiert Grade in Bogenmaße. * ``radians(180) => 3.141592653589793``  
 ___
 ### <code>random</code>
 <code><b>random(<i>&lt;value1&gt;</i> : integral) => long</b></code><br/><br/>
@@ -830,6 +849,12 @@ Ruft den Jahreswert eines Datums ab.
 
 ## <a name="aggregate-functions"></a>Aggregatfunktionen
 Die folgenden Funktionen stehen nur in Transformationen vom Typ „Aggregieren“, „Pivotieren“, „Entpivotieren“ und „Fenster“ zur Verfügung.
+
+___
+### <code>approxDistinctCount</code>
+<code><b>approxDistinctCount(<i>&lt;value1&gt;</i> : any, [ <i>&lt;value2&gt;</i> : double ]) => long</b></code><br/><br/>
+Ruft die ungefähre aggregierte Anzahl unterschiedlicher Werte für eine Spalte ab. Der optionale zweite Parameter dient zur Kontrolle des Schätzfehlers.
+* ``approxDistinctCount(ProductID, .05) => long``  
 ___
 ### <code>avg</code>
 <code><b>avg(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
@@ -1052,11 +1077,27 @@ Erstellt ein Array von Elementen. Alle Elemente sollten denselben Typ haben. Wen
 * ``['Seattle', 'Washington'][1]``
 * ``'Washington'``
 ___
+### <code>at</code>
+<code><b>at(<i>&lt;value1&gt;</i> : array/map, <i>&lt;value2&gt;</i> : integer/key type) => array</b></code><br/><br/>
+Sucht das Element an einem Arrayindex. Der Index ist 1-basiert. Indexergebnisse außerhalb des gültigen Bereichs führen zu einem NULL-Wert. Sucht einen Wert anhand eines vorgegebenen Schlüssels in einer Zuordnung. Wird der Schlüssel nicht gefunden, wird NULL zurückgegeben.
+*   ``at(['apples', 'pears'], 1) => 'apples'``
+*   ``at(['fruit' -> 'apples', 'vegetable' -> 'carrot'], 'fruit') => 'apples'``
+___
 ### <code>contains</code>
 <code><b>contains(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : unaryfunction) => boolean</b></code><br/><br/>
 Gibt TRUE zurück, wenn ein beliebiges Element im angegebenen Array als TRUE im bereitgestellten Prädikat ausgewertet wird. Die contains-Funktion erwartet einen Verweis auf ein Element in der Prädikatfunktion als #item.  
 * ``contains([1, 2, 3, 4], #item == 3) -> true``  
 * ``contains([1, 2, 3, 4], #item > 5) -> false``  
+___
+### <code>distinct</code>
+<code><b>distinct(<i>&lt;value1&gt;</i> : array) => array</b></code><br/><br/>
+Gibt eine bestimmte Menge von Elementen aus einem Array zurück.
+* ``distinct([10, 20, 30, 10]) => [10, 20, 30]``
+___
+### <code>except</code>
+<code><b>except(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : array) => array</b></code><br/><br/>
+Gibt eine Differenzmenge eines Arrays aus einem anderen zurück, wobei Duplikate gelöscht werden.
+* ``except([10, 20, 30], [20, 40]) => [10, 30]``  
 ___
 ### <code>filter</code>
 <code><b>filter(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : unaryfunction) => array</b></code><br/><br/>
@@ -1097,10 +1138,19 @@ Suchen Sie das erste Element aus einem Array, das der Bedingung entspricht. Es e
       )
     ``  
 ___
+### <code>flatten</code>
+<code><b>flatten(<i>&lt;array&gt;</i> : array, <i>&lt;value2&gt;</i> : array ..., <i>&lt;value2&gt;</i> : boolean) => array</b></code><br/><br/> Vereinfacht Arrays zu einem einzelnen Array. Arrays unteilbarer Elemente werden unverändert zurückgegeben. Das letzte Argument ist optional und lautet standardmäßig FALSE, um rekursiv mehr als eine Ebene tief zu vereinfachen. one level deep.
+*   ``flatten([['bojjus', 'girl'], ['gunchus', 'boy']]) => ['bojjus', 'girl', 'gunchus', 'boy']``
+*   ``flatten([[['bojjus', 'gunchus']]] , true) => ['bojjus', 'gunchus']``
+___
 ### <code>in</code>
 <code><b>in(<i>&lt;array of items&gt;</i> : array, <i>&lt;item to find&gt;</i> : any) => boolean</b></code><br/><br/> Überprüft, ob ein Element is in the array.  
 * ``in([10, 20, 30], 10) -> true``  
 * ``in(['good', 'kid'], 'bad') -> fa.lse``  
+___
+### <code>intersect</code>
+<code><b>intersect(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : array) => array</b></code><br/><br/> Gibt eine Schnittmenge unterschiedlicher Elemente aus verschiedenen Elementen zurück. s from 2 arrays.
+* ``intersect([10, 20, 30], [20, 40]) => [20]``  
 ___
 ### <code>map</code>
 <code><b>map(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : unaryfunction) => any</b></code><br/><br/> Ordnet anhand des bereitgestellten Ausdrucks jedes Element des Arrays einem neuen Element zu. Die map-Funktion erwartet einen Verweis auf ein einzelnes Element in der Ausdrucksfunktion als „#item“. nction as #item.  
@@ -1141,7 +1191,17 @@ ___
 ### <code>sort</code>
 <code><b>sort(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : binaryfunction) => array</b></code><br/><br/> Sortiert das Array mithilfe der bereitgestellten Prädikatfunktion. Die sort-Funktion erwartet einen Verweis auf zwei aufeinander folgende Elemente in der Ausdrucksfunktion als #item1 and #item2.  
 * ``sort([4, 8, 2, 3], compare(#item1, #item2)) -> [2, 3, 4, 8]``  
-* ``sort(['a3', 'b2', 'c1'], iif(right(#item1, 1) >= right(#item2, 1), 1, -1)) -> ['c1', 'b2', 'a3']``* ``
+* ``sort(['a3', 'b2', 'c1'], iif(right(#item1, 1) >= right(#item2, 1), 1, -1)) -> ['c1', 'b2', 'a.3']``  
+___
+### <code>unfold</code>
+<code><b>unfold (<i>&lt;value1&gt;</i>: array) => any</b></code><br/><br/> Faltet ein Array in eine Reihe von Zeilen auf und wiederholt die Werte für die restlichen Spalten in jeder Zeile. ns in every row.
+*   ``unfold(addresses) => any``
+*   ``unfold( @(name = salesPerson, sales = salesAmount) ) => any``
+___  
+### <code>union</code>
+<code><b>union(<i>&lt;value1&gt;</i>: array, <i>&lt;value2&gt;</i> : array) => array</b></code><br/><br/> Gibt einen Union-Satz unterschiedlicher Elemente aus zwei verschiedenen Arrays zurück. s from 2 arrays.
+* ``union([10, 20, 30], [20, 40]) => [10, 20, 30, 40]``
+___* ``
  @(
        name = 'Mark',
        types = [
@@ -1151,11 +1211,22 @@ ___
   )
 ``  
 ___
+### <code>flatten</code>
+<code><b>flatten(<i>&lt;array&gt;</i> : array, <i>&lt;value2&gt;</i> : array ..., <i>&lt;value2&gt;</i> : boolean) => array</b></code><br/><br/>
+Flattens array or arrays into a single array. Arrays of atomic items are returned unaltered. The last argument is optional and is defaulted to false to flatten recursively more than one level deep.
+*   ``flatten([['bojjus', 'girl'], ['gunchus', 'boy']]) => ['bojjus', 'girl', 'gunchus', 'boy']``
+*   ``flatten([[['bojjus', 'gunchus']]] , true) => ['bojjus', 'gunchus']``
+___
 ### <code>in</code>
 <code><b>in(<i>&lt;array of items&gt;</i> : array, <i>&lt;item to find&gt;</i> : any) => boolean</b></code><br/><br/>
 Checks if an item is in the array.  
 * ``in([10, 20, 30], 10) -> true``  
 * ``in(['good', 'kid'], 'bad') -> false``  
+___
+### <code>intersect</code>
+<code><b>intersect(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : array) => array</b></code><br/><br/>
+Returns an intersection set of distinct items from 2 arrays.
+* ``intersect([10, 20, 30], [20, 40]) => [20]``  
 ___
 ### <code>map</code>
 <code><b>map(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : unaryfunction) => any</b></code><br/><br/>
@@ -1204,8 +1275,20 @@ ___
 <code><b>sort(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : binaryfunction) => array</b></code><br/><br/>
 Sorts the array using the provided predicate function. Sort expects a reference to two consecutive elements in the expression function as #item1 and #item2.  
 * ``sort([4, 8, 2, 3], compare(#item1, #item2)) -> [2, 3, 4, 8]``  
-* ``sort(['a3', 'b2', 'c1'], iif(right(#item1, 1) >= right(#item2, 1), 1, -1)) -> ['c1', 'b2', 'a3']``.  
-
+* ``sort(['a3', 'b2', 'c1'], iif(right(#item1, 1) >= right(#item2, 1), 1, -1)) -> ['c1', 'b2', 'a3']``  
+___
+### <code>unfold</code>
+<code><b>unfold (<i>&lt;value1&gt;</i>: array) => any</b></code><br/><br/>
+Unfolds an array into a set of rows and repeats the values for the remaining columns in every row.
+*   ``unfold(addresses) => any``
+*   ``unfold( @(name = salesPerson, sales = salesAmount) ) => any``
+___  
+### <code>union</code>
+<code><b>union(<i>&lt;value1&gt;</i>: array, <i>&lt;value2&gt;</i> : array) => array</b></code><br/><br/>
+Returns a union set of distinct items from 2 arrays.
+* ``union([10, 20, 30], [20, 40]) => [10, 20, 30, 40]``
+___  
+  
 ## <a name="cached-lookup-functions"></a>Zwischengespeicherte Lookupfunktionen
 Die folgenden Funktionen sind nur verfügbar, wenn ein zwischengespeichertes Lookup verwendet wird und Sie eine zwischengespeicherte Senke eingefügt haben.
 ___
@@ -1227,7 +1310,6 @@ ___
 <code><b>output() => any</b></code><br/><br/>
 Gibt die gesamte Ausgabe an Zeilen der zwischengespeicherten Senke zurück: * ``cacheSink#outputs()``
 ___
-
 
 ## <a name="conversion-functions"></a>Konvertierungsfunktionen
 
@@ -1255,41 +1337,46 @@ Diese Funktion überprüft, ob der Zeichenfolgenwert ein Bytewert ist, der gemä
 * ``isByte('chocolate') -> false``
 ___
 ### <code>isDate</code>
-<code><b>isDate (<i>\<value1\></i> : string, [<format>: string]) => boolean</b></code> ein optionales Format erhält.<br/><br/>
+<code><b>isDate (<i>\<value1\></i> : string, [&lt;format&gt;: string]) => boolean</b></code> ein optionales Format erhält.<br/><br/>
 Diese Funktion überprüft, ob es sich bei der Eingabedatum-Zeichenfolge um ein Datum handelt, das ein optionales Eingabedatumsformat verwendet. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. Wenn das Eingabedatumsformat weggelassen wird, ist das Standardformat ``yyyy-[M]M-[d]d``. Zulässige Formate sind ``[ yyyy, yyyy-[M]M, yyyy-[M]M-[d]d, yyyy-[M]M-[d]dT* ]``
 * ``isDate('2012-8-18') -> true``
 * ``isDate('12/18--234234' -> 'MM/dd/yyyy') -> false``
 ___
 ### <code>isShort</code>
-<code><b>isShort (<i>\<value1\></i> : string, [<format>: string]) => boolean</b></code>.<br/><br/>
+<code><b>isShort (<i>\<value1\></i> : string, [&lt;format&gt;: string]) => boolean</b></code>.<br/><br/>
 Diese Funktion überprüft, ob der Zeichenfolgenwert ein Short-Wert ist, der gemäß den Regeln von ``toShort()``
 * ``isShort('123') -> true``
 * ``isShort('$123' -> '$###') -> true``
 * ``isShort('microsoft') -> false``
 ___
 ### <code>isInteger</code>
-<code><b>isInteger (<i>\<value1\></i> : string, [<format>: string]) => boolean</b></code> ein optionales Format erhält.<br/><br/>
+<code><b>isInteger (<i>\<value1\></i> : string, [&lt;format&gt;: string]) => boolean</b></code> ein optionales Format erhält.<br/><br/>
 Diese Funktion überprüft, ob der Zeichenfolgenwert eine ganze Zahl ist, die gemäß den Regeln von ``toInteger()``
 * ``isInteger('123') -> true``
 * ``isInteger('$123' -> '$###') -> true``
 * ``isInteger('microsoft') -> false``
 ___
 ### <code>isLong</code>
-<code><b>isLong (<i>\<value1\></i> : string, [<format>: string]) => boolean</b></code> ein optionales Format erhält.<br/><br/>
+<code><b>isLong (<i>\<value1\></i> : string, [&lt;format&gt;: string]) => boolean</b></code> ein optionales Format erhält.<br/><br/>
 Diese Funktion überprüft, ob der Zeichenfolgenwert ein Long-Wert ist, der gemäß den Regeln von ``toLong()``
 * ``isLong('123') -> true``
 * ``isLong('$123' -> '$###') -> true``
 * ``isLong('gunchus') -> false``
 ___
+### <code>isNan</code>
+<code><b>isNan (<i>\<value1\></i> : integral) => boolean</b></code> ein optionales Format erhält.<br/><br/>
+Diese Funktion überprüft, ob es sich nicht um eine Zahl handelt.
+* ``isNan(10.2) => false``
+___
 ### <code>isFloat</code>
-<code><b>isFloat (<i>\<value1\></i> : string, [<format>: string]) => boolean</b></code> ein optionales Format erhält.<br/><br/>
+<code><b>isFloat (<i>\<value1\></i> : string, [&lt;format&gt;: string]) => boolean</b></code><br/><br/>
 Diese Funktion überprüft, ob der Zeichenfolgenwert ein Gleitkommawert ist, der gemäß den Regeln von ``toFloat()``
 * ``isFloat('123') -> true``
 * ``isFloat('$123.45' -> '$###.00') -> true``
 * ``isFloat('icecream') -> false``
 ___
 ### <code>isDouble</code>
-<code><b>isDouble (<i>\<value1\></i> : string, [<format>: string]) => boolean</b></code> ein optionales Format erhält.<br/><br/>
+<code><b>isDouble (<i>\<value1\></i> : string, [&lt;format&gt;: string]) => boolean</b></code> ein optionales Format erhält.<br/><br/>
 Diese Funktion überprüft, ob der Zeichenfolgenwert ein Double-Wert ist, der gemäß den Regeln von ``toDouble()``
 * ``isDouble('123') -> true``
 * ``isDouble('$123.45' -> '$###.00') -> true``
@@ -1302,7 +1389,7 @@ Diese Funktion überprüft, ob der Zeichenfolgenwert ein Dezimalwert ist, der ge
 * ``isDecimal('12/12/2000') -> false``
 ___
 ### <code>isTimestamp</code>
-<code><b>isTimestamp (<i>\<value1\></i> : string, [<format>: string]) => boolean</b></code> ein optionales Format erhält.<br/><br/>
+<code><b>isTimestamp (<i>\<value1\></i> : string, [&lt;format&gt;: string]) => boolean</b></code> ein optionales Format erhält.<br/><br/>
 Diese Funktion überprüft, ob es sich bei der Eingabedatum-Zeichenfolge um einen Zeitstempel handelt, der ein optionales Eingabezeitstempel-Format verwendet. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. Wenn der Zeitstempel weggelassen wird, wird das Standardmuster ``yyyy-[M]M-[d]d hh:mm:ss[.f...]`` verwendet. Sie können eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Der Zeitstempel unterstützt eine Genauigkeit im Millisekundenbereich mit dem Wert 999. Verfügbare Formate finden Sie unter SimpleDateFormat von Java.
 * ``isTimestamp('2016-12-31 00:12:00') -> true``
 * ``isTimestamp('2016-12-31T00:12:00' -> 'yyyy-MM-dd\\'T\\'HH:mm:ss' -> 'PST') -> true``
@@ -1411,6 +1498,31 @@ Wandelt den Zeitstempel in UTC um. Sie können eine optionale Zeitzone in der Fo
 * ``toUTC(currentTimestamp()) == toTimestamp('2050-12-12 19:18:12') -> false``  
 * ``toUTC(currentTimestamp(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``  
 
+## <a name="map-functions"></a>map-Funktionen
+  
+Zuordnungsfunktionen führen Vorgänge für map-Datentypen aus.
+
+### <code>associate</code>
+<code><b>reassociate(<i>&lt;value1&gt;</i> : map, <i>&lt;value2&gt;</i> : binaryFunction) => map</b></code><br/><br/>
+Erstellt eine Zuordnung von Schlüsseln/Werten. Alle Schlüssel und Werte müssen den gleichen Typ aufweisen. Wenn keine Elemente angegeben werden, wird standardmäßig eine Zuordnung der Zeichenfolge zum Zeichenfolgentyp verwendet. Identisch mit einem ```[ -> ]```-Erstellungsoperator. Schlüssel und Werte müssen sich abwechseln.
+*   ``associate('fruit', 'apple', 'vegetable', 'carrot' )=> ['fruit' -> 'apple', 'vegetable' -> 'carrot']``
+___
+### <code>keyValues</code>
+<code><b>keyValues(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : array) => map</b></code><br/><br/>
+Erstellt eine Zuordnung von Schlüsseln/Werten. Der erste Parameter ist ein Array von Schlüsseln, der zweite Parameter ist das Array von Werten. Beide Arrays müssen die gleiche Länge haben.
+*   ``keyValues(['bojjus', 'appa'], ['gunchus', 'ammi']) => ['bojjus' -> 'gunchus', 'appa' -> 'ammi']``
+___ 
+### <code>mapAssociation</code>
+<code><b>mapAssociation(<i>&lt;value1&gt;</i> : map, <i>&lt;value2&gt;</i> : binaryFunction) => array</b></code><br/><br/>
+Transformiert eine Zuordnung durch Zuordnen der Schlüssel zu neuen Werten. Gibt ein Array zurück. Es wird eine Zuordnungsfunktion verwendet, bei der Sie das Element als „#key“ und den aktuellen Wert als „#value“ aufrufen können. 
+*   ``mapAssociation(['bojjus' -> 'gunchus', 'appa' -> 'ammi'], @(key = #key, value = #value)) => [@(key = 'bojjus', value = 'gunchus'), @(key = 'appa', value = 'ammi')]``
+___ 
+### <code>reassociate</code>
+<code><b>reassociate(<i>&lt;value1&gt;</i> : map, <i>&lt;value2&gt;</i> : binaryFunction) => map</b></code><br/><br/>
+Transformiert eine Zuordnung durch Zuordnen der Schlüssel zu neuen Werten. Es wird eine Zuordnungsfunktion verwendet, bei der Sie das Element als „#key“ und den aktuellen Wert als „#value“ aufrufen können.  
+* ``reassociate(['fruit' -> 'apple', 'vegetable' -> 'tomato'], substring(#key, 1, 1) + substring(#value, 1, 1)) => ['fruit' -> 'fa', 'vegetable' -> 'vt']``
+___
+  
 ## <a name="metafunctions"></a>Metafunktionen
 
 Metafunktionen werden hauptsächlich auf Metadaten in Ihrem Datenfluss angewendet.
@@ -1473,7 +1585,12 @@ ___
 <code><b>hasPath(<i>&lt;value1&gt;</i> : string, [<i>&lt;streamName&gt;</i> : string]) => boolean</b></code><br/><br/>
 Überprüft, ob ein bestimmter hierarchischer Pfad nach dem Namen im Stream vorhanden ist. Sie können einen optionalen Streamnamen als zweites Argument übergeben. Spaltennamen/-pfade, die zur Entwurfszeit bekannt sind, sollten nur anhand ihres Namens oder Punktnotationspfades adressiert werden. Berechnete Eingaben werden nicht unterstützt. Sie können aber Parameterersetzungen verwenden.  
 * ``hasPath('grandpa.parent.child') => boolean``
-___
+___  
+### <code>originColumns</code>
+<code><b>originColumns(<i>&lt;streamName&gt;</i> : string) => any</b></code><br/><br/>
+Ruft alle Ausgabespalten für einen Ursprungsstream ab, in dem Spalten erstellt wurden. Muss in eine andere Funktion eingeschlossen werden.
+* ``array(toString(originColumns('source1')))``
+___  
 ### <code>hex</code>
 <code><b>hex(<i>\<value1\></i>: binary) => string</b></code><br/><br/>
 Diese Funktion gibt eine Hexadezimal-Zeichenfolgendarstellung eines Binärwerts zurück. * ``hex(toBinary([toByte(0x1f), toByte(0xad), toByte(0xbe)])) -> '1fadbe'``

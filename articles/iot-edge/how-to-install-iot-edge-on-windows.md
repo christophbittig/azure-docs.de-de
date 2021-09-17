@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/10/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 4720056254c3983f8b63c7ed2c46d55e4eabc7d6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6169d3b0f99b2044fbe6076283e176d4dc1a76a7
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122338849"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272437"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device"></a>Installieren und Bereitstellen von Azure IoT Edge für Linux auf einem Windows-Gerät
 
@@ -112,7 +112,7 @@ Installieren Sie IoT Edge für Linux unter Windows auf dem Zielgerät, sofern di
 
    Sie können benutzerdefinierte Installations- und VHDX-Verzeichnisse für IoT Edge für Linux unter Windows angeben, indem Sie dem Installationsbefehl die Parameter `INSTALLDIR="<FULLY_QUALIFIED_PATH>"` und `VHDXDIR="<FULLY_QUALIFIED_PATH>"` hinzufügen.
 
-1. Legen Sie die Ausführungsrichtlinie für das Zielgerät auf `AllSigned` fest, sofern nicht bereits geschehen. Sie können die aktuelle Ausführungsrichtlinie in einer PowerShell-Eingabeaufforderung mit erhöhten Rechten wie folgt überprüfen:
+1. Legen Sie die Ausführungsrichtlinie auf dem Zielgerät auf `AllSigned` fest, wenn dies noch nicht so eingestellt ist. Sie können die aktuelle Ausführungsrichtlinie in einer PowerShell-Eingabeaufforderung mit erhöhten Rechten wie folgt überprüfen:
 
    ```powershell
    Get-ExecutionPolicy -List
@@ -130,7 +130,18 @@ Installieren Sie IoT Edge für Linux unter Windows auf dem Zielgerät, sofern di
    Deploy-Eflow
    ```
 
-   Der Befehl `Deploy-Eflow` verwendet optionale Parameter, mit denen Sie Ihre Bereitstellung anpassen können.
+   >[!TIP]
+   >Standardmäßig erstellt der Befehl `Deploy-Eflow` Ihren Linux-VM mit 1 GB RAM, 16 vCPU-Kern und 16 GB Speicherplatz. Die Ressourcen, die Ihr VM benötigt, sind jedoch stark von den Workloads abhängig, die Sie bereitstellen. Wenn Ihr VM nicht über genügend Arbeitsspeicher verfügt, um Ihre Workloads zu unterstützen, kann er nicht gestartet werden.
+   >
+   >Sie können die verfügbaren Ressourcen des VM mithilfe der optionalen Parameter des Befehls `Deploy-Eflow` anpassen.
+   >
+   >Mit dem folgenden Befehl wird beispielsweise ein VM mit vier vCPU-Kernen, 4 GB RAM und 20 GB Speicherplatz erstellt:
+   >
+   >   ```powershell
+   >   Deploy-Eflow -cpuCount 4 -memoryInMB 4096 -vmDiskSize 20
+   >   ```
+   >
+   >Informationen zu allen verfügbaren optionalen Parametern finden Sie unter [PowerShell-Funktionen für IoT Edge für Linux unter Windows](reference-iot-edge-for-linux-on-windows-functions.md#deploy-eflow).
 
    Sie können Ihrer Bereitstellung eine GPU zuweisen, um GPU-beschleunigte Linux-Module zu aktivieren. Um Zugriff auf diese Features zu erhalten, müssen Sie die erforderlichen Komponenten installieren, die unter [GPU-Beschleunigung für Azure IoT Edge für Linux unter Windows](gpu-acceleration.md) aufgeführt werden.
 
@@ -138,8 +149,6 @@ Installieren Sie IoT Edge für Linux unter Windows auf dem Zielgerät, sofern di
 
    >[!WARNING]
    >Das Aktivieren von Hardwaregeräte-Passthrough kann zu einem erhöhten Sicherheitsrisiko führen. Microsoft empfiehlt zur Risikominderung die Installation eines Gerätetreibers, den Sie vom Anbieter Ihrer GPU erhalten. Weitere Informationen finden Sie unter [Bereitstellen von Grafikgeräten mit Discrete Device Assignment](/windows-server/virtualization/hyper-v/deploy/deploying-graphics-devices-using-dda).
-
-
 
 1. Geben Sie „Y“ ein, um den Lizenzbedingungen zuzustimmen.
 
@@ -154,7 +163,7 @@ Nach Abschluss dieses Vorgangs können Sie Ihr Gerät bereitstellen.
 # <a name="windows-admin-center"></a>[Windows Admin Center](#tab/windowsadmincenter)
 
 >[!NOTE]
->Die Azure IoT Edge-Erweiterung für Windows Admin Center befindet sich derzeit in der [öffentlichen Vorschau](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Die Installations- und Verwaltungsprozesse können sich von denen bei allgemeiner Verfügbarkeit unterscheiden.
+>Die Azure IoT Edge-Erweiterung für Windows Admin Center befindet sich zurzeit in der [öffentlichen Vorschau](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Die Installations- und Verwaltungsprozesse können sich von denen bei allgemeiner Verfügbarkeit unterscheiden.
 
 Auf der Startseite von Windows Admin Center wird in der Liste der Verbindungen eine Verbindung mit dem lokalen Host angezeigt. Diese stellt den PC dar, auf dem Sie Windows Admin Center ausführen. Alle weiteren von Ihnen verwalteten Server, PCs oder Cluster werden hier ebenfalls aufgeführt.
 
@@ -261,7 +270,7 @@ Weitere Informationen zum Befehl `Provision-EflowVM` finden Sie unter [PowerShel
 
 1. Geben Sie die **Geräteverbindungszeichenfolge** an, die Sie nach dem Registrieren des Geräts aus IoT Hub abgerufen haben.
 
-1. Wählen Sie die Option **Mit der ausgewählten Methode bereitstellen** aus.
+1. Wählen Sie **Mit der ausgewählten Methode bereitstellen** aus.
 
    ![Auswählen von „Provisioning with the selected method“ (Mit der ausgewählten Methode bereitstellen) nach dem Einfügen der Verbindungszeichenfolge](./media/how-to-install-iot-edge-on-windows/provisioning-with-selected-method-connection-string.png)
 
@@ -300,7 +309,7 @@ Weitere Informationen zum Befehl `Provision-EflowVM` finden Sie unter [PowerShel
    * **Zertifikatdatei**: Laden Sie das Geräteidentitätszertifikat hoch, das auf die VM verschoben und zum Bereitstellen des Geräts verwendet wird.
    * **Datei mit privatem Schlüssel**: Laden Sie die Datei mit dem zugehörigen privaten Schlüssel hoch, die auf die VM verschoben und zum Bereitstellen des Geräts verwendet wird.
 
-1. Wählen Sie die Option **Mit der ausgewählten Methode bereitstellen** aus.
+1. Wählen Sie **Mit der ausgewählten Methode bereitstellen** aus.
 
 1. Nachdem die Bereitstellung abgeschlossen ist, wählen Sie **Fertig stellen** aus. Daraufhin gelangen Sie wieder zum Hauptdashboard. Nun sollte ein neues Gerät vom Typ `IoT Edge Devices` aufgeführt werden. Sie können das IoT Edge-Gerät auswählen, um eine Verbindung damit herzustellen. Auf der zugehörigen Seite **Übersicht** können Sie die **Liste der IoT Edge-Module** und den **IoT Edge-Status** Ihres Geräts anzeigen.
 
@@ -355,6 +364,8 @@ Vergewissern Sie sich, dass IoT Edge für Linux unter Windows erfolgreich auf Ih
    * Im Abschnitt **IoT Edge-Status** wird der Dienststatus angezeigt. Dieser sollte **Aktiv (wird ausgeführt)** lauten.
 
 ---
+
+Wenn Sie ein neues IoT Edge-Gerät erstellen, wird es im Azure-Portal mit dem Statuscode `417 -- The device's deployment configuration is not set` angezeigt. Dieser Status ist normal und bedeutet, dass das Gerät bereit ist, eine Modulbereitstellung zu empfangen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

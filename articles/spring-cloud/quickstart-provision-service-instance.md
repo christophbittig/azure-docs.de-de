@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 243f176fd906ecfe33c38bebc7e7745a7dc15e1e
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f96eeaaddbf49a0649cbec8737052b8d555b2681
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114470589"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681246"
 ---
 # <a name="quickstart-provision-an-azure-spring-cloud-service"></a>Schnellstart: Bereitstellen eines Azure Spring Cloud-Diensts
 
@@ -41,9 +41,9 @@ Führen Sie den folgenden Befehl aus, um die Azure Spring Cloud-Erweiterung für
 az extension add --name spring-cloud
 ```
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-1. Anmelden bei der Azure CLI
+1. Melden Sie sich bei der Azure CLI an.
 
     ```azurecli
     az login
@@ -84,10 +84,12 @@ az extension add --name spring-cloud
    ```azurecli
    az config set defaults.spring-cloud=<service instance name>
    ```
+
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
 Sie können Azure Spring Cloud mithilfe des Azure-Portals oder der Azure CLI instanziieren.  Beide Methoden werden in den folgenden Verfahren näher beschrieben.
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * [Installation von JDK 8](/java/azure/jdk/)
@@ -101,7 +103,7 @@ Sie können Azure Spring Cloud mithilfe des Azure-Portals oder der Azure CLI ins
 
 Mit dem folgenden Verfahren wird eine Azure Spring Cloud-Instanz über das Azure-Portal erstellt:
 
-1. Öffnen Sie das [Azure-Portal](https://ms.portal.azure.com/) in einem neuen Tab. 
+1. Öffnen Sie das [Azure-Portal](https://ms.portal.azure.com/) in einem neuen Tab.
 
 2. Suchen Sie im oberen Suchfeld nach **Azure Spring Cloud**.
 
@@ -109,11 +111,12 @@ Mit dem folgenden Verfahren wird eine Azure Spring Cloud-Instanz über das Azure
 
     ![ASC-Symbol: Starten](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
-4. Klicken Sie auf der Azure Spring Cloud-Seite auf **+ Hinzufügen**.
+4. Wählen Sie auf der Seite „Azure Spring Cloud“ die Option **Erstellen** aus.
 
-    ![ASC-Symbol: Hinzufügen](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
+    ![ASC-Symbol: Hinzufügen](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-create.png)
 
 5. Füllen Sie das Formular auf der Azure Spring Cloud-Seite **Erstellen** aus.  Berücksichtigen Sie die folgenden Richtlinien:
+
     - **Abonnement**: Wählen Sie das Abonnement aus, unter dem diese Ressource abgerechnet werden soll.
     - **Ressourcengruppe**: Die Erstellung neuer Ressourcengruppen für neue Ressourcen ist eine bewährte Methode. Beachten Sie, dass diese später als **\<resource group name\>** verwendet wird.
     - **Dienstdetails/Name**: Geben Sie **\<service instance name\>** an.  Der Name muss zwischen 4 und 32 Zeichen lang sein und darf nur Kleinbuchstaben, Ziffern und Bindestriche enthalten.  Das erste Zeichen des Dienstnamens muss ein Buchstabe und das letzte Zeichen entweder ein Buchstabe oder eine Ziffer sein.
@@ -148,9 +151,9 @@ Im folgenden Verfahren wird die Azure CLI-Erweiterung zum Bereitstellen einer Az
 
 1. Bereiten Sie einen Namen für Ihren Azure Spring Cloud-Dienst vor.  Der Name muss zwischen 4 und 32 Zeichen lang sein und darf nur Kleinbuchstaben, Ziffern und Bindestriche enthalten.  Das erste Zeichen des Dienstnamens muss ein Buchstabe und das letzte Zeichen entweder ein Buchstabe oder eine Ziffer sein.
 
-1. Erstellen Sie eine Ressourcengruppe, die Ihren Azure Spring Cloud-Dienst enthält.  Erstellen Sie eine Instanz des Azure Spring Cloud-Diensts.  
+1. Erstellen Sie eine Ressourcengruppe, die Ihren Azure Spring Cloud-Dienst enthält.  Erstellen Sie eine Instanz des Azure Spring Cloud-Diensts.
 
-    ```azurecli 
+    ```azurecli
     az group create --name <resource group name>
     az spring-cloud create -n <service instance name> -g <resource group name> --enable-java-agent
     ```
@@ -162,6 +165,7 @@ Im folgenden Verfahren wird die Azure CLI-Erweiterung zum Bereitstellen einer Az
     ```azurecli
     az config set defaults.group=<resource group name> defaults.spring-cloud=<service name>
     ```
+
 ---
 ::: zone-end
 

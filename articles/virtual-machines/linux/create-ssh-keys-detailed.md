@@ -7,14 +7,16 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 07/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 9d888de78432558cda8e08c3de91be9673231b47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 38a35aacb8123d66b76d8ebc25be660612cccfe6
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102554716"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689907"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Ausführliche Schritte: Erstellen und Verwalten von SSH-Schlüsseln für die Authentifizierung bei einer Linux-VM in Azure
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
 Mit einem SSH-Schlüsselpaar (Secure Shell) können Sie einen virtuellen Linus-Computer erstellen, bei dessen Authentifizierung SSH-Schlüssel verwendet werden. In diesem Artikel wird gezeigt, wie Sie eine Datei mit einem SSH-Schlüsselpaar (ein öffentlicher und ein privater RSA-Schlüssel) für SSH-Clientverbindungen erstellen und verwenden.
 

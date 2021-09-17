@@ -4,16 +4,16 @@ description: Hier erfahren Sie, wie Sie ein Netzwerksegment für die Verwendung 
 ms.topic: tutorial
 ms.custom: contperf-fy22q1
 ms.date: 07/16/2021
-ms.openlocfilehash: 04681c5d55536e3ee1cc0b12d2ebc94f19b3873f
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: a678e29591bc3ca17a1ec6638e111ffeb8c264b0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464429"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734208"
 ---
 # <a name="tutorial-add-a-network-segment-in-azure-vmware-solution"></a>Tutorial: Hinzufügen eines Netzwerksegments in Azure VMware Solution 
 
-Nach der Bereitstellung von Azure VMware Solution können Sie ein NSX-T-Netzwerksegment entweder über NSX-T Manager oder das Azure-Portal konfigurieren.  Nach der Konfiguration werden die Segmente in Azure VMware Solution, NSX-T Manger und vCenter angezeigt.  NSX-T wird vorab mit einem NSX-T Tier-0-Gateway im **Aktiv/Aktiv-Modus** und einem NSX-T Tier-1-Standardgateway im **aktiven Standbymodus** bereitgestellt.  Mit diesen Gateways können Sie eine Verbindung der Segmente herstellen (logische Switches) und Ost-West- und Nord-Süd-Konnektivität bereitstellen. 
+Nach der Bereitstellung von Azure VMware Solution können Sie ein NSX-T-Netzwerksegment über NSX-T Manager oder das Azure-Portal konfigurieren. Nach der Konfiguration werden die Segmente in Azure VMware Solution, NSX-T Manger und vCenter angezeigt. NSX-T wird vorab mit einem NSX-T Tier-0-Gateway im **Aktiv/Aktiv-Modus** und einem NSX-T Tier-1-Standardgateway im **aktiven Standbymodus** bereitgestellt.  Mit diesen Gateways können Sie eine Verbindung der Segmente herstellen (logische Switches) und Ost-West- und Nord-Süd-Konnektivität bereitstellen. 
 
 >[!TIP]
 >Im Azure-Portal wird eine vereinfachte Ansicht von NSX-T-Vorgängen angezeigt, die ein VMware-Administrator regelmäßig benötigt und die für Benutzer bestimmt ist, die mit NSX-T Manager nicht vertraut sind. 

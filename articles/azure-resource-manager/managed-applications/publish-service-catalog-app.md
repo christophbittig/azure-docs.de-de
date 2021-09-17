@@ -3,15 +3,15 @@ title: Veröffentlichen einer verwalteten Dienstkatalog-App
 description: Erfahren Sie, wie Sie eine verwaltete Azure-Anwendung erstellen, die für Mitglieder Ihrer Organisation vorgesehen ist.
 author: tfitzmac
 ms.topic: quickstart
-ms.custom: subject-armqs, devx-track-azurecli, devx-track-azurepowershell
-ms.date: 04/14/2020
+ms.custom: subject-armqs, devx-track-azurecli, devx-track-azurepowershell, subject-rbac-steps
+ms.date: 08/16/2021
 ms.author: tomfitz
-ms.openlocfilehash: b5306b40688974b17fb268a31c2d095de264df6d
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 7722017e2cbe9c0f195ce24ee5452674ad0fd344
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108314695"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253746"
 ---
 # <a name="quickstart-create-and-publish-a-managed-application-definition"></a>Schnellstart: Erstellen und Veröffentlichen einer Definition für die verwaltete Anwendung
 
@@ -309,14 +309,9 @@ Kopieren Sie die Ressourcen-ID des Speicherkontos. Sie wird später bei der Bere
 
 ### <a name="set-the-role-assignment-for-appliance-resource-provider-in-your-storage-account"></a>Festlegen der Rollenzuweisung für „Applianceressourcenanbieter“ in Ihrem Speicherkonto
 
-Bevor die Definition der verwalteten Anwendung in Ihrem Speicherkonto bereitgestellt werden kann, müssen Sie der Rolle **Applianceressourcenanbieter** Berechtigungen vom Typ „Mitwirkender“ zuweisen, damit die Definitionsdateien in den Container Ihres Speicherkontos geschrieben werden können.
+Bevor die Definition Ihrer verwalteten Anwendung in Ihrem Speicherkonto bereitgestellt werden kann, weisen Sie dem **Applianceressourcenanbieter**-Benutzer die Rolle **Mitwirkender** im Speicherkonto-Gültigkeitsbereich zu. Mit dieser Zuweisung kann die Identität Definitionsdateien in den Container Ihres Speicherkontos schreiben.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto.
-1. Wählen Sie **Zugriffssteuerung (IAM)** aus, um Zugriffssteuerungseinstellungen für das Speicherkonto anzuzeigen. Wählen Sie die Registerkarte **Rollenzuweisungen** aus, um die Liste mit den Rollenzuweisungen anzuzeigen.
-1. Wählen Sie im Fenster **Rollenzuweisung hinzufügen** die Rolle **Mitwirkender** aus.
-1. Wählen Sie im Feld **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** aus.
-1. Suchen Sie unter **Auswählen** nach der Rolle **Applianceressourcenanbieter**, und wählen Sie sie aus.
-1. Speichern Sie die Rollenzuweisung.
+Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>Bereitstellen der Definition der verwalteten Anwendung mit einer ARM-Vorlage
 

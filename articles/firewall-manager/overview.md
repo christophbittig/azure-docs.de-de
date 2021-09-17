@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 06/21/2021
+ms.date: 08/03/2021
 ms.author: victorh
-ms.openlocfilehash: c5ba8ed36bc59b9b26dc854a0c1a1757f1c47266
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: 9a6e6a0713179295379e758f454617484c75b9a2
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113595325"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779154"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Was ist Azure Firewall Manager?
 
@@ -87,6 +87,8 @@ Für Azure Firewall Manager sind die folgenden Probleme bekannt:
 |Fehler beim Massenhinzufügen von IP-Adressen|Die Firewall des geschützten Hubs wird in einen Fehlerzustand versetzt, wenn Sie eine größere Zahl von öffentlichen IP-Adressen hinzufügen.|Fügen Sie öffentliche IP-Adressen in kleineren Schritten hinzu. Fügen Sie beispielsweise nur zehn gleichzeitig hinzu.|
 |DDoS Protection Standard wird bei geschützten virtuellen Hubs nicht unterstützt.|DDoS Protection Standard ist nicht in vWANs integriert.|Wird untersucht|
 |Aktivitätsprotokolle werden nicht vollständig unterstützt.|Firewallrichtlinie unterstützt derzeit keine Aktivitätsprotokolle.|Wird untersucht|
+|Regelbeschreibung nicht vollständig unterstützt|Die Firewallrichtlinie zeigt in einem ARM-Export keine Beschreibung der Regeln an.|Wird untersucht|
+|Azure Firewall Manager überschreibt statische und benutzerdefinierte Routen und verursacht eine Downtime im Virtual WAN-Hub.|Verwenden Sie Azure Firewall Manager nicht, um Ihre Einstellungen in Bereitstellungen zu verwalten, die mit benutzerdefinierten oder statischen Routen konfiguriert sind. Updates von Firewall Manager können statische oder benutzerdefinierte Routeneinstellungen potenziell überschreiben.|Wenn Sie statische oder benutzerdefinierte Routen nutzen, verwenden Sie die Virtual WAN-Seite zum Verwalten von Sicherheitseinstellungen, und vermeiden Sie eine Konfiguration über Azure Firewall Manager.<br><br>Weitere Informationen finden Sie unter [Szenario: Azure Firewall: Benutzerdefiniert](../virtual-wan/scenario-route-between-vnets-firewall.md).|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

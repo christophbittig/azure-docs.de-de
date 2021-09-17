@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: integration-runtime
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: dd52d74ab4b5be261e6c170d897e15f14a332d9c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0b5d2921a59cc62ec4a58230a76eee33e4347ed0
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122640001"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123250716"
 ---
 # <a name="data-access-strategies"></a>Datenzugriffsstrategien
 
@@ -52,8 +52,8 @@ Weitere Informationen zu unterstützten Netzwerksicherheitsmechanismen für Date
     |                              | Azure-Daten-Explorer                                 | -                | -                   | Ja*            | Ja*         | -                    |
     |                              | Azure Data Lake Gen1                                | -                | -                   | Ja             | -            | Ja                  |
     |                              | Azure Database for MariaDB, MySQL, PostgreSQL       | -                | -                   | Ja             | -            | Ja                  |
-    |                              | Azure File Storage                                  | Ja              | -                   | Ja             | -            | .                    |
-    |                              | Azure Storage (Blob, ADLS Gen2)                     | Ja              | Ja (nur MSI-Authentifizierung) | Ja             | -            | .                    |
+    |                              | Azure Files                                  | Ja              | -                   | Ja             | -            | .                    |
+    |                              | Azure Blob Storage und ADLS Gen2                     | Ja              | Ja (nur MSI-Authentifizierung) | Ja             | -            | .                    |
     |                              | Azure SQL DB, Azure Synapse Analytics, SQL ML  | Ja (nur Azure SQL DB/DW)        | -                   | Ja             | -            | Ja                  |
     |                              | Azure Key Vault (zum Abrufen von Geheimnissen/Verbindungszeichenfolge) | ja      | Ja                 | Ja             | -            | -                    |
     | Andere PaaS-/SaaS-Datenspeicher | AWS S3, SalesForce, Google Cloud Storage usw.    | -                | -                   | Ja             | -            | -                    |
@@ -70,8 +70,8 @@ Weitere Informationen zu unterstützten Netzwerksicherheitsmechanismen für Date
     |                                | Azure-Daten-Explorer                                           | -         | -                   |
     |                                | Azure Data Lake Gen1                                          | Ja       | -                   |
     |                                | Azure Database for MariaDB, MySQL, PostgreSQL               | Ja       | -                   |
-    |                                | Azure File Storage                                            | Ja       | -                   |
-    |                                | Azure Storage (Blog, ADLS Gen2)                             | Ja       | Ja (nur MSI-Authentifizierung) |
+    |                                | Azure Files                                            | Ja       | -                   |
+    |                                | Azure Blob Storage und ADLS Gen2                             | Ja       | Ja (nur MSI-Authentifizierung) |
     |                                | Azure SQL DB, Azure Synapse Analytics, SQL ML          | Ja       | -                   |
     |                                | Azure Key Vault (zum Abrufen von Geheimnissen/Verbindungszeichenfolge) | Ja       | Ja                 |
     | Andere PaaS-/SaaS-Datenspeicher | AWS S3, SalesForce, Google Cloud Storage usw.              | Ja       | -                   |

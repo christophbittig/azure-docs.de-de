@@ -5,16 +5,18 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
-ms.date: 10/23/2020
+ms.date: 06/17/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bc95cd3ab471826538a551687c38d1422e4b7163
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: adffb4edf7f689002cab7eae86388ff18ac04027
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108654"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122639747"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-flexible-server-using-the-azure-cli"></a>Erstellen und Verwalten von Lesereplikaten auf flexiblen Azure Database for MySQL-Servern mithilfe der Azure-Befehlszeilenschnittstelle
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Lesereplikate auf flexiblen Azure Database for MySQL-Servern befinden sich in der Vorschauphase.
@@ -22,9 +24,13 @@ ms.locfileid: "105108654"
 In diesem Artikel erfahren Sie, wie Sie Lesereplikate auf flexiblen Azure Database for MySQL-Servern mithilfe der Azure-Befehlszeilenschnittstelle erstellen und verwalten. Weitere Informationen zu Lesereplikaten finden Sie in der [Übersicht](concepts-read-replicas.md).
 
 > [!Note]
-> Auf Servern mit Hochverfügbarkeit werden keine Replikate unterstützt. 
+>
+> * Auf Servern mit Hochverfügbarkeit werden keine Replikate unterstützt. 
+>
+> * Wenn GTID auf einem primären Server aktiviert ist (`gtid_mode` = ON), wird für neu erstellte Replikate GTID ebenfalls aktiviert und die GTID-Replikation verwendet. Weitere Informationen finden Sie unter [Globaler Transaktionsbezeichner (GTID)](concepts-read-replicas.md#global-transaction-identifier-gtid)
 
 ## <a name="azure-cli"></a>Azure CLI
+
 Sie können Lesereplikate mithilfe der Azure CLI erstellen und verwalten.
 
 ### <a name="prerequisites"></a>Voraussetzungen
@@ -35,7 +41,7 @@ Sie können Lesereplikate mithilfe der Azure CLI erstellen und verwalten.
 ### <a name="create-a-read-replica"></a>Erstellen eines Lesereplikats
 
 > [!IMPORTANT]
-> Wenn Sie ein Replikat für eine Quelle erstellen, die keine vorhandenen Replikate hat, startet die Quelle zunächst neu, um sich auf die Replikation vorzubereiten. Beachten Sie dies, und führen Sie diese Vorgänge nicht zu Spitzenzeiten durch.
+>Wenn Sie ein Replikat für eine Quelle erstellen, die keine vorhandenen Replikate hat, startet die Quelle zunächst neu, um sich auf die Replikation vorzubereiten. Beachten Sie dies, und führen Sie diese Vorgänge nicht zu Spitzenzeiten durch.
 
 Ein Lesereplikatserver kann mit dem folgenden Befehl erstellt werden:
 
@@ -58,7 +64,7 @@ az mysql flexible-server replica list --server-name mydemoserver --resource-grou
 ### <a name="stop-replication-to-a-replica-server"></a>Beenden der Replikation auf einem Replikatserver
 
 > [!IMPORTANT]
-> Das Beenden der Replikation auf einem Server kann nicht rückgängig gemacht werden. Wenn die Replikation zwischen einer Quelle und dem Replikat beendet wurde, kann dies nicht rückgängig gemacht werden. Der Replikatserver wird zu einem eigenständigen Server und unterstützt nun Lese- und Schreibvorgänge. Der Server kann nicht wieder in ein Replikat umgewandelt werden.
+>Das Beenden der Replikation auf einem Server kann nicht rückgängig gemacht werden. Wenn die Replikation zwischen einer Quelle und dem Replikat beendet wurde, kann dies nicht rückgängig gemacht werden. Der Replikatserver wird zu einem eigenständigen Server und unterstützt nun Lese- und Schreibvorgänge. Der Server kann nicht wieder in ein Replikat umgewandelt werden.
 
 Die Replikation auf einem Lesereplikatserver kann mit dem folgenden Befehl beendet werden:
 
@@ -77,7 +83,7 @@ az mysql flexible-server delete --resource-group myresourcegroup --name mydemore
 ### <a name="delete-a-source-server"></a>Löschen eines Quellservers
 
 > [!IMPORTANT]
-> Wenn Sie einen Quellserver löschen, wird die Replikation auf allen Replikatservern beendet und der Quellserver selbst gelöscht. Replikatserver werden zu eigenständigen Servern, die nun Lese- und Schreibvorgänge unterstützen.
+>Wenn Sie einen Quellserver löschen, wird die Replikation auf allen Replikatservern beendet und der Quellserver selbst gelöscht. Replikatserver werden zu eigenständigen Servern, die nun Lese- und Schreibvorgänge unterstützen.
 
 Zum Löschen eines Quellservers können Sie den Befehl **[az mysql flexible-server delete](/cli/azure/mysql/flexible-server)** ausführen.
 

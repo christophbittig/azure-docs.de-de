@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/07/2021
+ms.date: 08/17/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 26bd2a4e39f2698f47a27a08716dc3049c7b70f8
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: ce49a0a6fc249f3cea6bfdac613beade5322142f
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113106819"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323887"
 ---
 # <a name="tutorial-create-user-flows-and-custom-policies-in-azure-active-directory-b2c"></a>Tutorial: Erstellen von Benutzerflows und benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -39,7 +39,7 @@ Mithilfe eines Benutzerflows können Sie feststellen, wie Benutzer mit Ihrer Anw
 
 ::: zone pivot="b2c-user-flow"
 > [!IMPORTANT]
-> Benutzerflowversionen werden jetzt anders angegeben. Zuvor wurden V1-Versionen (bereit für die Produktion) sowie V1.1- und V2-Versionen (Vorschauversion) angeboten. Nun haben Sie Benutzerflows in zwei Versionen zusammengefasst: **Empfohlene** Benutzerflows mit den neuesten Features und **Standardbenutzerflows (Legacy)** . In der öffentlichen Cloud werden alle Benutzerflows der Legacyvorschauversionen (V1.1 und V2) zum **1. August 2021** eingestellt. Weitere Informationen finden Sie unter [Benutzerflowversionen in Azure Active Directory B2C](user-flow-versions.md). *Diese Änderungen gelten nur für die öffentliche Azure-Cloud. In anderen Umgebungen werden weiterhin die [Legacyversionen der Benutzerflows](user-flow-versions-legacy.md) verwendet.* 
+> Benutzerflowversionen werden jetzt anders angegeben. Zuvor wurden V1-Versionen (bereit für die Produktion) sowie V1.1- und V2-Versionen (Vorschauversion) angeboten. Nun haben Sie Benutzerflows in zwei Versionen zusammengefasst: **Empfohlene** Benutzerflows mit den neuesten Features und **Standardbenutzerflows (Legacy)** . Alle Benutzerflows der Legacyvorschauversionen (V1.1 und V2) sind veraltet. Weitere Informationen finden Sie unter [Benutzerflowversionen in Azure Active Directory B2C](user-flow-versions.md). *Diese Änderungen gelten nur für die öffentliche Azure-Cloud. In anderen Umgebungen werden weiterhin die [Legacyversionen der Benutzerflows](user-flow-versions-legacy.md) verwendet.* 
 ::: zone-end
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -70,7 +70,7 @@ Der Benutzerflow für Registrierung und Anmeldung verarbeitet die Benutzeroberfl
 1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
 1. Wählen Sie unter **Richtlinien** die Option **Benutzerflows** und dann **Neuer Benutzerflow** aus.
 
-    ![Seite „Benutzerflows“ im Portal mit hervorgehobener Schaltfläche „Neuer Benutzerflow“](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
+    ![Seite „Benutzerflows“ im Portal mit hervorgehobener Schaltfläche „Neuer Benutzerflow“](./media/tutorial-create-user-flows/sign-up-sign-in-user-flow.png)
 
 1. Wählen Sie auf der Seite **Benutzerflow erstellen** den Benutzerflow **Registrierung und Anmeldung** aus.
 
@@ -339,9 +339,17 @@ In diesem Artikel haben Sie Folgendes gelernt:
 > * Erstellen eines Benutzerflows für die Profilbearbeitung
 > * Erstellen eines Benutzerflows zur Kennwortrücksetzung
 
-Erfahren Sie im Anschluss, wie Sie Azure AD B2C für die Anmeldung und Registrierung von Benutzern in einer Anwendung verwenden. Orientieren Sie sich an der ASP.NET-Webanwendung unter dem folgenden Link, oder navigieren Sie im Inhaltsverzeichnis unter **Authentifizieren von Benutzern** zu einer anderen Anwendung.
+Erfahren Sie im Anschluss, wie Sie Azure AD B2C für die Anmeldung und Registrierung von Benutzern in einer Anwendung verwenden. Folgen Sie den unten verlinkten Beispiel-Apps:
 
-> [!div class="nextstepaction"]
-> [Tutorial: Aktivieren der Authentifizierung in einer Webanwendung mithilfe von Azure AD B2C >](tutorial-web-app-dotnet.md)
+- [Konfigurieren einer ASP.NET Core-Beispielwebanwendung](configure-authentication-sample-web-app.md)
+- [Konfigurieren einer ASP.NET Core-Beispielwebanwendung, die eine Web-API aufruft](configure-authentication-sample-web-app-with-api.md)
+- [Konfigurieren der Authentifizierung in einer Python-Beispielwebanwendung](configure-authentication-sample-python-web-app.md)
+- [Konfigurieren einer Single-Page-Beispielanwendung (SPA)](configure-authentication-sample-spa-app.md)
+- [Konfigurieren einer Angular-Single-Page-Beispielwebanwendung](configure-authentication-sample-angular-spa-app.md)
+- [Konfigurieren einer mobilen Android-Beispielanwendung](configure-authentication-sample-android-app.md)
+- [Konfigurieren einer mobilen iOS-Beispielanwendung](configure-authentication-sample-ios-app.md)
+- [Konfigurieren der Authentifizierung in einer WPF-Beispieldesktopanwendung](configure-authentication-sample-wpf-desktop-app.md)
+- [Aktivieren der Authentifizierung in Ihrer Web-API](enable-authentication-web-api.md)
+- [Konfigurieren einer SAML-Anwendung](saml-service-provider.md) 
 
 Weitere Informationen finden Sie außerdem in der [ausführlichen Betrachtung der Architektur von Azure Active Directory B2C](https://www.youtube.com/playlist?list=PLOPotgzC07IKXXCTZcrpuLWbVe3y51kfm).

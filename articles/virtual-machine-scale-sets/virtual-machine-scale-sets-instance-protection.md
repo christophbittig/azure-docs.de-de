@@ -9,14 +9,15 @@ ms.subservice: instance-protection
 ms.date: 02/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurepowershell
-ms.openlocfilehash: 1b54a1be03aca62cacf6afe7361028a42ea7f84c
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 60d7b1c2a869d22e3d8220e0f3537b2882ea0db4
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673895"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690423"
 ---
 # <a name="instance-protection-for-azure-virtual-machine-scale-set-instances"></a>Instanzschutz für Instanzen von Azure-VM-Skalierungsgruppen
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Azure-VM-Skalierungsgruppen ermöglichen per [Autoskalierung](virtual-machine-scale-sets-autoscale-overview.md) eine bessere Elastizität für Ihre Workload, damit Sie die Konfiguration durchführen können, wenn Ihre Infrastruktur horizontal hoch- und herunterskaliert wird. Mit Skalierungsgruppen können Sie auch eine große Zahl von VMs zentral verwalten, konfigurieren und aktualisieren, indem Sie die entsprechenden Einstellungen der [Upgraderichtlinie](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) verwenden. Sie können ein Update des Skalierungsgruppenmodells konfigurieren. Die neue Konfiguration wird dann automatisch auf alle Skalierungsgruppeninstanzen angewendet, wenn Sie die Upgraderichtlinie auf „Automatisch“ oder „Parallel“ festgelegt haben.
 

@@ -9,18 +9,16 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 06/28/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 88e67711b71ad80b48a7d5c19377847d0dadd296
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 04b1b4b9b9dd859a2f4b4515c2896163b8f9a698
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345957"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038477"
 ---
 # <a name="manage-a-public-ip-address-with-a-load-balancer"></a>Verwalten einer öffentlichen IP-Adresse mit einem Lastenausgleich
 
-Ein öffentlicher Lastenausgleich ist eine Lösung der Ebene 4 zum Verteilen von TCP- und UDP-Datenverkehr an einen Back-End-Pool. Für den Lastenausgleich sind SKUs vom Typ „Basic“ und „Standard“ verfügbar. 
-
-Diese SKUs entsprechen den Basic- und Standard-SKUs einer öffentlichen IP-Adresse.
+Ein öffentlicher Lastenausgleich ist eine Lösung der Ebene 4 zum Verteilen von TCP- und UDP-Datenverkehr an einen Back-End-Pool. Für den Lastenausgleich sind SKUs vom Typ „Basic“ und „Standard“ verfügbar. Diese SKUs entsprechen den Basic- und Standard-SKUs einer öffentlichen IP-Adresse.
 
 Eine öffentliche IP-Adresse, die einem Lastenausgleich zugeordnet ist, dient als Front-End-IP-Konfiguration mit Internetzugriff. Das Front-End wird verwendet, um auf Ressourcen im Back-End-Pool zuzugreifen. Die Front-End-IP-Adresse kann für Member des Back-End-Pools verwendet werden, um ins Internet zu gelangen. 
 
@@ -157,7 +155,7 @@ In diesem Abschnitt ändern Sie die Front-End-Konfiguration, die für ausgehende
 
 ## <a name="caveats"></a>Vorbehalte
 
-* Öffentliche Standardlastenausgleiche können IPv6-Adressen als öffentliche Front-End-IP-Adressen oder Präfixe von öffentlichen IP-Adressen verwenden.  Jede Bereitstellung muss einen dualen Stapel mit IPv4- und IPv6-Front-Ends aufweisen. Die NAT64-Übersetzung ist nicht verfügbar. Weitere Informationen finden Sie unter [Bereitstellen einer IPv6-Anwendung mit dualem Stapel in Azure – PowerShell](./virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md).
+* Öffentliche Lastenausgleichsmodule im Standard-Tarif können statische IPv6-Adressen der Standard-SKU als öffentliche Front-End-IP-Adressen oder Präfixe von öffentlichen IP-Adressen verwenden.  Jede Bereitstellung muss einen dualen Stapel mit IPv4- und IPv6-Front-Ends aufweisen. Die NAT64-Übersetzung ist nicht verfügbar. Weitere Informationen finden Sie unter [Bereitstellen einer IPv6-Anwendung mit dualem Stapel in Azure – PowerShell](./virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md). (Hinweis: Öffentliche Lastenausgleichsmodule im Basic-Tarif können dynamische IPv6-Adressen der Basic-SKU als öffentliche Front-End-IP-Adressen verwenden.)
 
 * Wenn einem öffentlichen Lastenausgleich mehrere Front-Ends zugewiesen werden, gibt es keine Methode zum Zuweisen von Datenflüssen von bestimmten Back-End-Instanzen zu ausgehendem Datenverkehr für eine bestimmte IP-Adresse.  Weitere Informationen finden Sie unter [Mehrere Front-Ends für Azure Load Balancer](../load-balancer/load-balancer-multivip-overview.md).
 ## <a name="next-steps"></a>Nächste Schritte

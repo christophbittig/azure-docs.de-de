@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 03/03/2021
+ms.date: 08/06/2021
 ms.author: alkohli
-ms.openlocfilehash: 81c11665db1ee1f7c73e8abee95f01b8ea62d2fe
-ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
+ms.openlocfilehash: b223d428daf1a7080478f4f80b6a997fb97cd7a0
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113504889"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322603"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>Tutorial: Vorbereiten der Bereitstellung von Azure Stack Edge Pro-Geräten mit GPU 
 
@@ -63,18 +63,20 @@ Im Folgenden finden Sie die Konfigurationsvoraussetzungen für die Azure Stack E
 
 ### <a name="for-the-azure-stack-edge-resource"></a>Für die Azure Stack Edge-Ressource
 
+<!--Why isn't the include file used, as for the Pro R and Mini R SKUs? Check for differences. Also, the presentation of requirements is organized a bit differently; standard presentation would be more usable, even if the GPU requirements are different.-->
+
 Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
 - Ihr Microsoft Azure-Abonnement ist für eine Azure Stack Edge-Ressource aktiviert. Stellen Sie sicher, dass Sie ein unterstütztes Abonnement verwendet haben, z. B. [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/overview/sales-number/), [Cloud Solution Provider (CSP)](/partner-center/azure-plan-lp) oder [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/). Abonnements mit nutzungsbasierter Bezahlung werden nicht unterstützt. Informationen zum Identifizieren des Azure-Abonnementtyps finden Sie unter [Was ist ein Azure-Angebot?](../cost-management-billing/manage/switch-azure-offer.md#what-is-an-azure-offer).
-- Sie verfügen für die Azure Stack Edge Pro-/Data Box Gateway-, IoT Hub- und Azure Storage-Ressourcen über Zugriff als Besitzer oder Mitwirkender auf Ressourcengruppenebene.
+- Sie verfügen für die Azure Stack Edge Pro-, IoT Hub- und Azure Storage-Ressourcen über Zugriff als Besitzer oder Mitwirkender auf Ressourcengruppenebene.
 
-    - Für die Erstellung von Azure Stack Edge-/Data Box Gateway-Ressourcen müssen Sie mindestens über Berechtigungen als Mitwirkender auf der Ressourcengruppenebene verfügen. 
+    - Für die Erstellung von Azure Stack Edge-Ressourcen müssen Sie mindestens über Berechtigungen als Mitwirkender auf der Ressourcengruppenebene verfügen. 
     - Außerdem müssen Sie dafür sorgen, dass die Ressourcenanbieter `Microsoft.DataBoxEdge` und `MicrosoftKeyVault` registriert werden. Der `Microsoft.Devices`-Anbieter muss registriert werden, um IoT Hub-Ressourcen zu erstellen. 
         - Zum Registrieren eines Ressourcenanbieters wechseln Sie im Azure-Portal zu **Home > Abonnements > Ihr-Abonnement > Ressourcenanbieter**. 
         - Suchen Sie nach dem jeweiligen Ressourcenanbieter, z. B. `Microsoft.DataBoxEdge`, und registrieren Sie ihn. 
     - Für die Erstellung von Speicherkontoressourcen sind ebenfalls mindestens Berechtigungen als Mitwirkender auf der Ressourcengruppenebene erforderlich. Azure Storage ist standardmäßig als Ressourcenanbieter registriert.
+- Sie müssen zum Erstellen einer Bestellung in Azure Edge Hardware Center sicherstellen, dass der Anbieter `Microsoft.EdgeOrder` registriert ist. Eine Registrierungsanleitung finden Sie unter [Register resource provider](azure-stack-edge-gpu-manage-access-power-connectivity-mode.md#register-resource-providers) (Registrieren des Ressourcenanbieters).
 - Sie haben Administrator- oder Benutzerzugriff auf die Azure Active Directory Graph-API zum Generieren von Vorgängen für Aktivierungsschlüssel oder Anmeldeinformationen, z. B. die Erstellung einer Freigabe, bei der ein Speicherkonto verwendet wird. Weitere Informationen finden Sie unter [Azure Active Directory Graph-API](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
-
 
 ### <a name="for-the-azure-stack-edge-pro-device"></a>Für das Azure Stack Edge Pro-Gerät
 
@@ -102,67 +104,91 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
 Falls Sie bereits über eine Azure Stack Edge-Ressource für die Verwaltung Ihres physischen Geräts verfügen, überspringen Sie diesen Schritt, und fahren Sie mit [Abrufen des Aktivierungsschlüssels](#get-the-activation-key) fort.
 
-### <a name="portal"></a>[Portal](#tab/azure-portal)
+---
 
-Um eine Azure Stack Edge-Ressource zu erstellen, führen Sie im Azure-Portal die folgenden Schritte aus.
+### <a name="azure-edge-hardware-center-preview"></a>[Azure Edge Hardware Center (Vorschau)](#tab/azure-edge-hardware-center)
+
+Azure Edge Hardware Center (Vorschau) ist ein neuer Dienst, mit dem Sie eine breite Palette an Hardware aus dem Azure-Hybridportfolio einschließlich Azure Stack Edge Pro-Geräten untersuchen und bestellen können.
+
+Wenn Sie eine Bestellung über Azure Edge Hardware Center aufgeben, können Sie mehrere Geräte bestellen, die an verschiedene Adressen versendet werden sollen, und Sie können die Lieferadressen aus anderen Bestellungen wiederverwenden.
+
+Bei einer Bestellung über Azure Edge Hardware Center wird eine Azure-Ressource erstellt, die alle Ihre bestellbezogenen Informationen enthält. Für jede der bestellten Einheiten wird jeweils eine Ressource erstellt. Nachdem Sie das Gerät erhalten haben, müssen Sie eine Azure Stack Edge-Ressource erstellen, um es zu aktivieren und zu verwalten.
+
+[!INCLUDE [Create order in Azure Edge Hardware Center](../../includes/azure-edge-hardware-center-new-order.md)]
+
+#### <a name="create-a-management-resource-for-each-device"></a>Erstellen einer Verwaltungsressource für die einzelnen Geräte
+
+[!INCLUDE [Create management resource](../../includes/azure-edge-hardware-center-create-management-resource.md)]
+
+### <a name="portal-classic"></a>[Portal (klassisch)](#tab/azure-portal)
+
+Um eine Azure Stack Edge-Ressource über den Azure Stack Edge-Dienst zu erstellen, führen Sie im Azure-Portal die folgenden Schritte aus.
 
 1. Melden Sie sich mit Ihren Microsoft Azure-Anmeldeinformationen beim Azure-Portal unter der folgenden URL an: [https://portal.azure.com](https://portal.azure.com).
 
-2. Wählen Sie im linken Bereich **+ Ressource erstellen** aus. Suchen Sie nach **Azure Stack Edge/Data Box Gateway**, und wählen Sie den Eintrag aus. Klicken Sie auf **Erstellen**. 
+2. Suchen Sie unter **Azure-Dienste** nach **Azure Stack Edge**, und wählen Sie den Eintrag aus. Wählen Sie dann **+ Erstellen** aus. 
 
-3. Wählen Sie das Abonnement aus, das Sie für das Azure Stack Edge Pro-Gerät verwenden möchten. Wählen Sie das Land/die Region aus, in das/die das physische Gerät versendet werden soll. Wählen Sie **Geräte anzeigen** aus.
+3. Wählen Sie unter **Azure Stack Edge-Geräte verwalten** den Link **Azure Edge Hardware Center testen** aus.
 
-    ![Ressource erstellen 1](media/azure-stack-edge-gpu-deploy-prep/create-resource-1.png)
+    ![Screenshot: Über die Schaltfläche „+ Erstellen“ geöffneter Bildschirm „Azure Stack Edge-Geräte verwalten“. Der Link „Azure Edge Hardware Center testen“ ist hervorgehoben.](media/azure-stack-edge-gpu-deploy-prep/classic-order-experience-1.png)
 
-4. Wählen Sie den Gerätetyp aus. Wählen Sie unter **Azure Stack Edge Pro** die Option **Azure Stack Edge Pro mit GPU** und dann **Auswählen** aus. Wenn Probleme auftreten oder Sie den Gerätetyp nicht auswählen können, finden Sie unter [Behandeln von Problemen](azure-stack-edge-troubleshoot-ordering.md) weitere Informationen.
+4. Wenn Sie nicht über Hardware Center bestellen möchten, wählen Sie auf dem Bildschirm **Erste Schritte** die Option **Über die klassische Auftragsfunktionalität bestellen** aus.
 
-    ![Ressource erstellen 3](media/azure-stack-edge-gpu-deploy-prep/create-resource-3.png)
+   ![Screenshot: Bildschirm „Erste Schritte“ in Azure Stack Edge. Der Link „Über die klassische Auftragsfunktionalität bestellen“ ist hervorgehoben.](media/azure-stack-edge-gpu-deploy-prep/classic-order-experience-2.png)
 
-5. Abhängig von Ihren Anforderungen können Sie Azure Stack Edge Pro mit ein oder zwei GPUs (Graphical Processing Units) von Nvidia auswählen. 
+5. Wählen Sie das Abonnement aus, das Sie für das Azure Stack Edge Pro-Gerät mit GPU verwenden möchten. Wählen Sie das Land oder die Region aus, in das bzw. in die das physische Gerät versendet werden soll. Wählen Sie dann **Geräte anzeigen** aus.
 
-    ![Ressource erstellen 4](media/azure-stack-edge-gpu-deploy-prep/create-resource-4.png)
+    ![Screenshot: Bildschirm „Gerätetyp auswählen“ zum Auswählen eines Abonnements und einer Zielregion für den Versand für eine Azure Stack Edge-Ressource. Die Schaltfläche „Geräte anzeigen“ ist hervorgehoben.](media/azure-stack-edge-gpu-deploy-prep/create-resource-1.png)
 
-6. Geben Sie auf der Registerkarte **Grundlagen** die folgenden **Projektdetails** ein, bzw. wählen Sie sie aus:
+6. Wählen Sie den Gerätetyp aus. Wählen Sie unter **Azure Stack Edge Pro** die Option **Azure Stack Edge Pro mit GPU** und dann **Auswählen** aus. Wenn Probleme auftreten oder Sie den Gerätetyp nicht auswählen können, finden Sie unter [Behandeln von Problemen](azure-stack-edge-troubleshoot-ordering.md) weitere Informationen.
+
+    ![Screenshot: Bildschirm „Gerätetyp auswählen" zum Auswählen eines Gerätetyps für eine Azure Stack Edge-Ressource. Die Schaltfläche „Auswählen“ für einen Gerätetyp ist hervorgehoben.](media/azure-stack-edge-gpu-deploy-prep/create-resource-3.png)
+
+7. Abhängig von Ihren Anforderungen können Sie Azure Stack Edge Pro mit ein oder zwei GPUs (Graphical Processing Units) von Nvidia auswählen. 
+
+    ![Screenshot: Bildschirm zum Auswählen einer Konfiguration für ein Azure Stack Edge Pro-Gerät mit GPU für eine Azure Stack Edge-Ressource. Eine Hardwarekonfiguration und die Schaltfläche „Auswählen“ sind hervorgehoben.](media/azure-stack-edge-gpu-deploy-prep/create-resource-4.png)
+
+8. Geben Sie auf der Registerkarte **Grundlagen** die folgenden **Projektdetails** ein, bzw. wählen Sie sie aus:
     
     |Einstellung  |Wert  |
     |---------|---------|
     |Subscription    |Das Abonnement wird auf der Grundlage der zuvor getroffenen Auswahl automatisch eingetragen. Das Abonnement ist mit Ihrem Abrechnungskonto verknüpft. |
     |Resource group  |Wählen Sie eine vorhandene Gruppe aus, oder erstellen Sie eine neue Gruppe.<br>Erfahren Sie mehr über [Azure-Ressourcengruppen](../azure-resource-manager/management/overview.md).     |
 
-7. Geben Sie die folgenden **Instanzendetails** ein, bzw. wählen Sie sie aus:
+9. Geben Sie die folgenden **Instanzendetails** ein, bzw. wählen Sie sie aus:
 
     |Einstellung  |Wert  |
     |---------|---------|
     |Name   | Ein Anzeigename, der die Ressource identifiziert.<br>Der Name muss 2 bis 50 Zeichen lang sein und darf nur Buchstaben, Zahlen und Bindestriche enthalten.<br> Der Name muss mit einem Buchstaben oder einer Zahl beginnen und enden.        |
     |Region     |Eine Liste aller Regionen, in denen die Azure Stack Edge-Ressource verfügbar ist, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Die für Azure Government verfügbaren Regionen finden Sie bei Bedarf unter [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/).<br> Wählen Sie den Standort aus, der der geografischen Region, in der Ihr Gerät bereitgestellt werden soll, am nächsten ist.|
 
-    ![Ressource erstellen5](media/azure-stack-edge-gpu-deploy-prep/create-resource-5.png)
+    ![Screenshot der Registerkarte „Grundlagen“ des Assistenten zum Erstellen einer Ressource und Bestellen eines Geräts für Azure Stack Edge. Die Registerkarte „Grundlagen“ und die Schaltfläche „Weiter: Lieferadresse“ sind hervorgehoben.](media/azure-stack-edge-gpu-deploy-prep/create-resource-5.png)
 
-8. Klicken Sie auf **Weiter: Lieferanschrift**.
+10. Klicken Sie auf **Weiter: Lieferanschrift**.
 
     - Falls Sie bereits über ein Gerät verfügen, aktivieren Sie das Kontrollkästchen **Ich besitze bereits ein Gerät.** .
 
-        ![Ressource erstellen 6](media/azure-stack-edge-gpu-deploy-prep/create-resource-6.png)
+        ![Screenshot: Registerkarte „Lieferadresse“ mit der ausgewählten Option „Ich habe bereits eine Lieferadresse für das Gerät“ im Assistenten zum Erstellen einer Ressource für Azure Stack Edge](media/azure-stack-edge-gpu-deploy-prep/create-resource-6.png)
 
     - Handelt es sich um das neue Gerät, das Sie bestellen möchten, geben Sie Kontaktname, Unternehmen, Lieferadresse für das Gerät sowie Kontaktinformationen ein.
 
-        ![Ressource erstellen 7](media/azure-stack-edge-gpu-deploy-prep/create-resource-7.png)
+        ![Screenshot: Registerkarte „Lieferadresse“ im Assistenten zum Erstellen einer Ressource beim Erstellen einer neuen Azure Stack Edge-Ressource](media/azure-stack-edge-gpu-deploy-prep/create-resource-7.png)
 
-9. Klicken Sie auf **Weiter: Tags**. Geben Sie optional Tags an, um Ressourcen zu kategorisieren und die Abrechnung zu konsolidieren. Klicken Sie auf **Weiter: Überprüfen + erstellen**.
+11. Klicken Sie auf **Weiter: Tags**. Geben Sie optional Tags an, um Ressourcen zu kategorisieren und die Abrechnung zu konsolidieren. Klicken Sie auf **Weiter: Überprüfen + erstellen**.
 
-10. Überprüfen Sie auf der Registerkarte **Überprüfen + erstellen** die **Preisdetails**, die **Nutzungsbedingungen** und die Details für Ihre Ressource. Aktivieren Sie das Kontrollkästchen **Ich habe die angegebenen Informationen gelesen und stimme den Datenschutzbestimmungen zu.** .
+12. Überprüfen Sie auf der Registerkarte **Überprüfen + erstellen** die **Preisdetails**, die **Nutzungsbedingungen** und die Details für Ihre Ressource. Aktivieren Sie das Kontrollkästchen **Ich habe die angegebenen Informationen gelesen und stimme den Datenschutzbestimmungen zu.** .
 
-    ![Ressource erstellen 8](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png) 
+    ![Screenshot: Registerkarte „Überprüfen + erstellen“ für eine Azure Stack Edge-Bestellung](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png) 
 
     Sie werden auch darüber informiert, dass während der Ressourcenerstellung eine verwaltete Identität aktiviert wird, mit der Sie sich bei Clouddiensten authentifizieren können. Diese Identität bleibt so lange bestehen, wie die Ressource vorhanden ist.
 
-11. Klicken Sie auf **Erstellen**.
+13. Klicken Sie auf **Erstellen**.
 
     Die Erstellung der Ressource dauert einige Minuten. Außerdem wird eine verwaltete Identität erstellt, die die Kommunikation des Azure Stack Edge-Geräts mit dem Ressourcenanbieter in Azure ermöglicht.
 
     Nachdem die Ressource erfolgreich erstellt und bereitgestellt wurde, erhalten Sie eine Benachrichtigung. Wählen Sie **Zu Ressource wechseln** aus.
 
-    ![Navigieren zur Azure Stack Edge Pro-Ressource](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-1.png)
+    ![Screenshot: Anzeige mit dem Hinweis, dass die Bereitstellung einer neuen Azure Stack Edge-Ressource abgeschlossen ist. Die Schaltfläche „Zu Ressource wechseln“ ist hervorgehoben.](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-1.png)
 
 Nach der Bestellung wird diese von Microsoft geprüft, und Sie erhalten eine E-Mail mit den Versanddetails.
 
@@ -230,7 +256,7 @@ Wenn die Azure Stack Edge-Ressource betriebsbereit ist, müssen Sie den Aktivier
 
    Nachdem Sie einen Schlüsseltresornamen angegeben haben, wählen Sie **Schlüssel generieren** aus, um einen Aktivierungsschlüssel zu erstellen. 
 
-   ![Abrufen des Aktivierungsschlüssels](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-3.png)
+   ![Screenshot: Bereich „Übersicht“ für eine neu erstellte Azure Stack Edge-Ressource. Die Schaltfläche „Generate activation key“ (Aktivierungsschlüssel generieren) ist hervorgehoben.](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-3.png)
 
    Warten Sie einige Minuten, während Schlüsseltresor und Aktivierungsschlüssel erstellt werden. Wählen Sie das Kopiersymbol, um den Schlüssel zu kopieren und für die spätere Verwendung zu speichern.<!--Verify that the new screen has a copy icon.-->
 

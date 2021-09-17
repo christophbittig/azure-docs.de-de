@@ -4,15 +4,15 @@ description: Dieser Artikel enthält Schritte zum Verarbeiten von Service Bus-Er
 documentationcenter: .net
 author: spelluru
 ms.topic: tutorial
-ms.date: 07/26/2021
+ms.date: 08/13/2021
 ms.author: spelluru
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 36690973f441c80f71c1941c63cd40d91c1efd08
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 013468d1b6e5ba6fccb1277f715b5a42a469f4a2
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114719885"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182581"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-logic-apps"></a>Tutorial: Reagieren auf über Azure Event Grid empfangene Azure Service Bus-Ereignisse mit Azure Logic Apps
 In diesem Tutorial erfahren Sie, wie Sie mit Azure Logic Apps auf Azure Service Bus-Ereignisse reagieren, die über Azure Event Grid empfangen wurden. 
@@ -44,7 +44,7 @@ In diesem Schritt erstellen Sie eine Azure-Logik-App, die Service Bus-Ereignisse
     2. Wählen Sie für **Ressourcentyp** den Wert **Microsoft.ServiceBus.Namespaces** aus. 
     3. Wählen Sie für **Ressourcenname** Ihren Service Bus-Namespace aus. 
     4. Wählen Sie **Neuen Parameter hinzufügen** und dann **Suffixfilter** aus. 
-    5. Geben Sie für **Suffixfilter** den Namen Ihres zweiten Service Bus-Themenabonnements ein. 
+    5. Geben Sie für **Suffixfilter** den Namen Ihres Service Bus-Themenabonnements ein. 
         ![Designer für Logik-Apps: Ereignis konfigurieren](./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png)
 6. Wählen Sie im Designer **+ Neuer Schritt** aus, und führen Sie die folgenden Schritte aus:
     1. Suchen Sie nach **Service Bus**.
@@ -102,7 +102,7 @@ In diesem Schritt fügen Sie Schritte hinzu, um die empfangene Nachricht in eine
     1. Wählen Sie **Service Bus** in der Liste **Recent** („Zuletzt verwendet“) aus.
     2. Wählen Sie in der Liste der Aktionen **Nachricht in einem Themenabonnement abschließen** aus. 
     3. Wählen Sie Ihr Service Bus-**Thema** aus.
-    4. Wählen Sie das zweite **Abonnement** für das Thema aus.
+    4. Wählen Sie ein **Abonnement** für das Thema aus.
     5. Wählen Sie für **Sperrtoken der Nachricht** die Option **Sperrtoken** aus dem **Dynamischen Inhalt** aus. 
 
         ![Logik-App-Designer: Vervollständigen der Nachricht](./media/service-bus-to-event-grid-integration-example/logic-app-complete-message.png)

@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: aminsaied
 ms.author: amsaied
 ms.reviewer: sgilley
-ms.date: 04/27/2021
+ms.date: 08/18/2021
 ms.custom: devx-track-python, contperf-fy21q3, FY21Q4-aml-seo-hack, contperf-fy21q
-ms.openlocfilehash: c96936635898f9173b7eb8e60502ea059420cf0b
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: f8ff5e9d5a7b35bcc4ada9fd600d28b54ead57a9
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113758854"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634349"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-2-of-3"></a>Tutorial: Trainieren Ihres ersten Machine Learning-Modells (Teil 2 von 3)
 
@@ -77,7 +77,7 @@ Der Trainingscode stammt aus [diesem Einführungsbeispiel](https://pytorch.org/t
 
     Erstellen Sie im Unterordner **src** das Skript *train.py*:
 
-     ```python
+    ```python
     import torch
     import torch.optim as optim
     import torchvision
@@ -200,16 +200,18 @@ if __name__ == "__main__":
 
 ## <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit"></a> Senden der Ausführung an Azure Machine Learning
 
-Wählen Sie **Save and run script in terminal** (Skript speichern und im Terminal ausführen) aus, um das Skript *run-pytorch.py* auszuführen.
+1. Wählen Sie **Save and run script in terminal** (Skript speichern und im Terminal ausführen) aus, um das Skript *run-pytorch.py* auszuführen.
 
->[!NOTE] 
-> Wenn Sie dieses Skript zum ersten Mal ausführen, erstellt Azure Machine Learning ein neues Docker-Image aus Ihrer PyTorch-Umgebung. Die gesamte Ausführung kann drei bis vier Minuten dauern. 
->
-> Die Docker-Buildprotokolle werden in Azure Machine Learning Studio angezeigt. Folgen Sie dem Link zu Studio, und wählen Sie die Registerkarte **Ausgaben und Protokolle** und dann `20_image_build_log.txt` aus.
->
-> Dieses Image wird auch in zukünftigen Ausführungen verwendet, um die Dauer deutlich zu verkürzen.
+1. In dem sich öffnenden Terminalfenster wird ein Link angezeigt. Wählen Sie den Link aus, um die Ausführung anzuzeigen.
 
-Nachdem das Image erstellt wurde, wählen Sie `70_driver_log.txt` aus, um die Ausgabe des Trainingsskripts anzuzeigen.
+    [!INCLUDE [amlinclude-info](../../includes/machine-learning-py38-ignore.md)]
+
+### <a name="view-the-output"></a>Anzeigen der Ausgabe
+
+1. Auf der Seite, die sich öffnet, sehen Sie den Status der Ausführung. Wenn Sie dieses Skript zum ersten Mal ausführen, erstellt Azure Machine Learning ein neues Docker-Image aus Ihrer PyTorch-Umgebung. Die gesamte Ausführung kann drei bis vier Minuten dauern.  Dieses Image wird auch in zukünftigen Ausführungen verwendet, um die Dauer deutlich zu verkürzen.
+1. Die Docker-Buildprotokolle werden in Azure Machine Learning Studio angezeigt. Wählen Sie die Registerkarte **Ausgaben und Protokolle** und dann **20_image_build_log.txt** aus.
+1. Wenn der Ausführungsstatus **Abgeschlossen** lautet, wählen Sie **Ausgabe und Protokolle** aus.
+1. Wählen Sie **70_driver_log.txt** aus, um die Ausgabe der Ausführung anzuzeigen.
 
 ```txt
 Downloading https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz to ./data/cifar-10-python.tar.gz
@@ -230,10 +232,11 @@ epoch=2, batch=12000: loss 1.27
 Finished Training
 ```
 
-> [!WARNING]
-> Wenn ein Fehler vom Typ `Your total snapshot size exceeds the limit` (Gesamtgröße der Momentaufnahme überschreitet den Grenzwert) angezeigt wird, befindet sich der Ordner **data** unter dem Wert `source_directory`, der in `ScriptRunConfig` verwendet wird.
->
-> Wählen Sie am Ende des Ordners die Auslassungszeichen ( **...** ) und dann die Option **Verschieben** aus, um **data** in den Ordner **get-started** zu verschieben.  
+Wenn ein Fehler vom Typ `Your total snapshot size exceeds the limit` (Gesamtgröße der Momentaufnahme überschreitet den Grenzwert) angezeigt wird, befindet sich der Ordner **data** unter dem Wert `source_directory`, der in `ScriptRunConfig` verwendet wird.
+
+Wählen Sie am Ende des Ordners die Auslassungszeichen ( **...** ) und dann die Option **Verschieben** aus, um **data** in den Ordner **get-started** zu verschieben.  
+
+
 
 ## <a name="log-training-metrics"></a><a name="log"></a> Protokollieren von Trainingsmetriken
 

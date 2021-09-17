@@ -16,12 +16,12 @@ ms.date: 12/14/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 389bf4438fa31b0c1174441cd62f814f18b271d2
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 5c7439263f15a99a7b717bac1dc48e06a77bb66b
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114729514"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123257120"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Ändern von Ressourcenrollen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
@@ -49,7 +49,7 @@ Wenn Sie einem Zugriffspaket Ressourcen hinzufügen möchten, müssen Sie überp
 
 ## <a name="add-resource-roles"></a>Hinzufügen von Ressourcenrollen
 
-Eine Ressourcenrolle ist eine Sammlung von Berechtigungen, die einer Ressource zugeordnet sind. Damit Benutzer Ressourcen anfordern können, müssen Sie dem Zugriffspaket Ressourcenrollen hinzufügen. Ressourcenrollen können für Gruppen, Teams, Anwendungen und SharePoint-Websites hinzugefügt werden.
+Eine Ressourcenrolle ist eine Sammlung von Berechtigungen, die einer Ressource zugeordnet sind. Damit Benutzer Ressourcen anfordern können, müssen Sie dem Zugriffspaket Ressourcenrollen aus jeder im Katalog enthaltenen Ressource hinzufügen. Sie können Ressourcenrollen hinzufügen, die von Gruppen, Teams, Anwendungen und SharePoint-Websites bereitgestellt werden.
 
 **Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
 
@@ -121,6 +121,8 @@ Sobald eine Anwendungsrolle Teil eines Zugriffspakets ist, gilt Folgendes:
 Beachten Sie Folgendes, wenn Sie eine Anwendung auswählen:
 
 - Anwendungen können auch Gruppen besitzen, die ihren Rollen zugewiesen sind.  Sie können wählen, ob Sie einem Zugriffspaket anstelle einer Anwendungsrolle eine Gruppe hinzufügen möchten. In diesem Fall wird die Anwendung dem Benutzer jedoch nicht als Teil des Zugriffspakets im Portal „Mein Zugriff“ angezeigt.
+- Das Azure-Portal zeigt möglicherweise auch Dienstprinzipale für Dienste an, die nicht als Anwendungen ausgewählt werden können.  Insbesondere sind **Exchange Online** und **SharePoint Online** Dienste, aber keine Anwendungen, die über Ressourcenrollen im Verzeichnis verfügen. Daher können sie nicht in ein Zugriffspaket einbezogen werden.  Verwenden Sie stattdessen die gruppenbasierte Lizenzierung, um geeignete Lizenzen für Benutzer einzurichten, die Zugriff auf diese Dienste benötigen.
+- Anwendungen, die nur Persönliche Microsoft-Kontobenutzer für die Authentifizierung unterstützen und keine Unternehmenskonten in Ihrem Verzeichnis unterstützen, verfügen nicht über Anwendungsrollen und können nicht zum Zugriff auf Paketkataloge hinzugefügt werden.
 
 1. Klicken Sie auf der Seite **Hinzufügen von Ressourcenrollen zu einem Zugriffspaket** auf **Anwendungen**, um den Bereich „Anwendungen auswählen“ zu öffnen.
 

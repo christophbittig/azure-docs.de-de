@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 08/01/2021
 ms.author: wellee
-ms.openlocfilehash: d61e6c3847d9ce64f9c3f17da1300b32a1a8e643
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 5fb694cd1dab2d53495e2e4b513ce6bfe2ebaff9
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122356144"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123101828"
 ---
 # <a name="how-to-configure-virtual-wan-hub-routing-intent-and-routing-policies"></a>Konfigurieren von Routingabsichten und Routingrichtlinien für den Virtual WAN-Hub
 
@@ -22,7 +22,7 @@ ms.locfileid: "122356144"
 > 
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel (SLA) bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Einige Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 > 
-> Um Zugriff auf die Vorschauversion zu erhalten, wenden Sie sich an previewinterhub@microsoft.com. Geben Sie hierbei die Virtual WAN-ID, die Abonnement-ID und die Azure-Region an, in der Sie Routingabsichten konfigurieren möchten. Erwarten Sie innerhalb von 48 Stunden (innerhalb der Geschäftszeiten von Montag-Freitag) eine Antwort mit der Bestätigung der Funktionsfreigabe.
+> Um Zugriff auf die Vorschauversion zu erhalten, stellen Sie zwei Hubs in derselben Azure-Region zusammen mit beliebigen Gateways (Site-to-Site-VPN-Gateways, Point-to-Site-Gateways und ExpressRoute-Gateways) bereit. Wenden Sie sich anschließend an previewinterhub@microsoft.com, und geben Sie die Virtual WAN-ID, Abonnement-ID und Azure-Region an, für die Sie Routingabsichten konfigurieren möchten. Erwarten Sie innerhalb von 48 Stunden (innerhalb der Geschäftszeiten von Montag-Freitag) eine Antwort mit der Bestätigung der Funktionsfreigabe. Beachten Sie, dass alle Gateways, die nach der Aktivierung des Features erstellt wurden, vom Virtual WAN-Team aktualisiert werden müssen.
 
 ## <a name="background"></a>Hintergrund 
 
@@ -44,7 +44,7 @@ Während privater Datenverkehr sowohl Zweigstellen- als auch VNet-Adresspräfixe
     Mit anderen Worten, wenn eine Richtlinie für das Routing von privatem Datenverkehr auf dem Virtual WAN-Hub konfiguriert ist, wird der gesamte Datenverkehr zwischen Zweigstellen, zwischen Zweigstellen und virtuellen Netzwerken, zwischen virtuellen Netzwerken und Zweigstellen sowie zwischen Hubs über Azure Firewall geleitet.
 
 
-## <a name="key-considerations"></a>Wichtige Hinweise
+## <a name="key-considerations"></a>Wichtige Aspekte
 * Sie werden **nicht** in der Lage sein, Routingrichtlinien für Ihre Bereitstellungen zu aktivieren, wenn bereits benutzerdefinierte Routingtabellen konfiguriert sind oder wenn statische Routen in Ihrer Standardroutingtabelle konfiguriert sind.
 * Derzeit werden Richtlinien für das Routing von privatem Datenverkehr nicht in Hubs mit verschlüsselten ExpressRoute-Verbindungen unterstützt (Site-to-Site-VPN-Tunnel, die über ExpressRoute (private Verbindung) ausgeführt werden). 
 * In der geschlossenen öffentlichen Vorschauversion der Routingrichtlinien für Virtual WAN-Hubs wird der Datenverkehr zwischen den Hubs nur dann von Azure Firewall geprüft, wenn sich die Virtual WAN-Hubs in derselben Region befinden.
@@ -53,7 +53,7 @@ Während privater Datenverkehr sowohl Zweigstellen- als auch VNet-Adresspräfixe
 ## <a name="prerequisites"></a>Voraussetzungen
 1. Erstellen Sie eine Virtual WAN-Instanz. Stellen Sie sicher, dass Sie mindestens zwei virtuelle Hubs in der **gleichen** Region erstellen. Sie können zum Beispiel ein Virtual WAN mit zwei virtuellen Hubs in der Region „USA, Osten“ einrichten. 
 2. Konvertieren Sie Ihren Virtual WAN-Hub in einen geschützten Virtual WAN-Hub, indem Sie eine Azure Firewall in den virtuellen Hubs in der gewählten Region bereitstellen. Weitere Informationen zur Konvertierung Ihres Virtual WAN-Hubs in einen geschützten Virtual WAN-Hub finden Sie in diesem [Dokument](howto-firewall.md).
-3. Wenden Sie sich an **previewinterhub@microsoft.com** mit der **Virtual WAN-Ressourcen-ID** und der **Region für den Azure Virtual WAN-Hub**, in der Sie Routingrichtlinien konfigurieren möchten. Um die Virtual WAN-ID zu finden, öffnen Sie das Azure-Portal, navigieren Sie zu Ihrer Virtual WAN-Ressource, und wählen Sie „Einstellungen > Eigenschaften > Ressourcen-ID“ aus. Zum Beispiel: 
+3. Stellen Sie alle Site-to-Site-VPN-, Point-to-Site-VPN- und ExpressRoute-Gateways bereit, die Sie zu Testzwecken verwenden möchten. Wenden Sie sich an **previewinterhub@microsoft.com** mit der **Virtual WAN-Ressourcen-ID** und der **Region für den Azure Virtual WAN-Hub**, in der Sie Routingrichtlinien konfigurieren möchten. Um die Virtual WAN-ID zu finden, öffnen Sie das Azure-Portal, navigieren Sie zu Ihrer Virtual WAN-Ressource, und wählen Sie „Einstellungen > Eigenschaften > Ressourcen-ID“ aus. Beispiel: 
 ```
     /subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/virtualWans/<virtualWANname>
 ```
@@ -104,7 +104,7 @@ Im Folgenden sind die Datenverkehrsflüsse aufgeführt, die sich aus einer solch
 > [!NOTE]
 > Der Internetdatenverkehr muss die **lokale** Azure Firewall-Instanz durchlaufen, da die Standardroute (0.0.0.0/0) **nicht** über Hubs hinweg weitergegeben wird.
 
-| From |   Beschreibung |  VNets von Hub 1 | Branches von Hub 1 | VNets von Hub 2 | Branches von Hub 2| Internet|
+| From |   To |  VNets von Hub 1 | Branches von Hub 1 | VNets von Hub 2 | Branches von Hub 2| Internet|
 | -------------- | -------- | ---------- | ---| ---| ---| ---|
 | VNets von Hub 1     | &#8594;| AzFW von Hub 1 |   AzFW von Hub 1    | AzFW von Hub 1 und 2 | AzFW von Hub 1 und 2 | AzFW von Hub 1 |
 | Branches von Hub 1   | &#8594;|  AzFW von Hub 1  |   AzFW von Hub 1    | AzFW von Hub 1 und 2 | AzFW von Hub 1 und 2 | AzFW von Hub 1|
@@ -131,7 +131,7 @@ Betrachten Sie die folgende Konfiguration, bei der Hub 1 (Normal) und Hub 2 (Ges
 
  Im Folgenden sind die Datenverkehrsflüsse aufgeführt, die sich aus einer solchen Konfiguration ergeben. Branches und virtuelle Netzwerke, die mit Hub 1 verbunden sind, können über Azure Firewall im Hub **nicht** auf das Internet zugreifen, da die Standardroute (0.0.0.0/0) **nicht** über Hubs weitergegeben wird.
 
-| From |   Beschreibung |  VNets von Hub 1 | Branches von Hub 1 | VNets von Hub 2 | Branches von Hub 2| Internet |
+| From |   To |  VNets von Hub 1 | Branches von Hub 1 | VNets von Hub 2 | Branches von Hub 2| Internet |
 | -------------- | -------- | ---------- | ---| ---| ---| --- |
 | VNets von Hub 1     | &#8594;| Direkt |   Direkt   | AzFW von Hub 2 | AzFW von Hub 2 | - |
 | Branches von Hub 1   | &#8594;|  Direkt |   Direkt    | AzFW von Hub 2 | AzFW von Hub 2 | - |
@@ -157,6 +157,7 @@ Im folgenden Abschnitt werden häufige Probleme beim Konfigurieren von Routingri
 * Derzeit ist die Verwendung von Azure Firewall zur Überprüfung des Datenverkehrs zwischen Hubs nur für Virtual WAN-Hubs verfügbar, die in der **gleichen** Azure-Region bereitgestellt werden. 
 * Derzeit werden Richtlinien für das Routing von privatem Datenverkehr nicht in Hubs mit verschlüsselten ExpressRoute-Verbindungen unterstützt (Site-to-Site-VPN-Tunnel, die über ExpressRoute (private Verbindung) ausgeführt werden). 
 * Sie können überprüfen, ob die Routingrichtlinien ordnungsgemäß angewendet wurden, indem Sie die effektiven Routen von „DefaultRouteTable“ überprüfen. Wenn private Routingrichtlinien konfiguriert sind, sollten Sie in „DefaultRouteTable“ Routen für private Datenverkehrspräfixe mit dem nächsten Hop „Azure Firewall“ sehen. Wenn Routingrichtlinien für Internetdatenverkehr konfiguriert sind, sollten Sie eine Standardroute (0.0.0.0/0) in „DefaultRouteTable“ mit dem nächsten Hop „Azure Firewall“ sehen.
+* Wenn Site-to-Site-VPN-Gateways oder Point-to-Site-VPN-Gateways erstellt wurden, **nachdem** die Aktivierung des Features für Ihre Bereitstellung bestätigt wurde, müssen Sie sich erneut an previewinterhub@microsoft.com wenden, um das Feature aktivieren zu lassen. 
 
 ### <a name="troubleshooting-azure-firewall"></a>Problembehandlung für Azure Firewall
 

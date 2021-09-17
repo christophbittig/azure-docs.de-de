@@ -2,13 +2,14 @@
 title: Einrichten eines Lab-Kontos mit Azure Lab Services | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie ein Lab-Konto mit Azure Lab Services einrichten, einen Lab-Ersteller hinzufügen und Marketplace-Images für die Verwendung durch Labs im Lab-Konto angeben.
 ms.topic: tutorial
-ms.date: 06/26/2020
-ms.openlocfilehash: fba4dbc5386407bd796606d86a5b7bdc7c10fd61
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/26/2021
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: d6107c1a70b22682636b63c0fb0f7374a0d96873
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85445065"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634013"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Tutorial: Einrichten eines Labkontos mit Azure Lab Services
 In Azure Lab Services fungiert ein Lab-Konto als zentrales Konto, unter dem die Labs Ihrer Organisation verwaltet werden. In Ihrem Lab-Konto können Sie anderen Benutzern die Berechtigung zum Erstellen von Labs erteilen und Richtlinien festlegen, die für alle Labs unter dem Lab-Konto gelten. In diesem Tutorial erfahren Sie, wie Sie ein Labkonto erstellen. 
@@ -50,17 +51,25 @@ Die folgenden Schritte veranschaulichen, wie Sie Azure-Portal verwenden, um ein 
     ![Seite des Lab-Kontos](./media/tutorial-setup-lab-account/lab-account-page.png)
 
 ## <a name="add-a-user-to-the-lab-creator-role"></a>Hinzufügen eines Benutzers zur Rolle „Lab-Ersteller“
-Zum Einrichten eines Classroom-Labs in einem Labkonto muss der Benutzer Mitglied der Rolle **Ersteller des Labs** für das Labkonto sein. Um Lehrkräften die Berechtigung zum Erstellen von Labs für ihre Klassen zu erteilen, fügen Sie sie zur Rolle **Lab-Ersteller** hinzu:
+Zum Einrichten eines Classroom-Labs in einem Labkonto muss der Benutzer Mitglied der Rolle **Ersteller des Labs** für das Labkonto sein. Um Lehrkräften die Berechtigung zum Erstellen von Labs für ihre Klassen zu erteilen, fügen Sie sie zur Rolle **Lab-Ersteller** hinzu. Detaillierte Anweisungen dazu finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).
 
 > [!NOTE]
 > Das zum Erstellen des Labkontos verwendete Konto wird dieser Rolle automatisch hinzugefügt. Wenn Sie in diesem Tutorial zum Erstellen eines Classroom-Labs das gleiche Benutzerkonto verwenden möchten, überspringen Sie diesen Schritt. 
 
-1. Wählen Sie auf der Seite **Lab-Konto** die Option **Zugriffssteuerung (IAM)** aus, und wählen Sie auf der Symbolleiste **+Hinzufügen** und dann **+ Rollenzuweisung hinzufügen** aus. 
 
-    ![Zugriffssteuerung > Schaltfläche „Rollenzuweisung hinzufügen“](./media/tutorial-setup-lab-account/add-role-assignment-button.png)
-1. Wählen Sie auf der Seite **Rollenzuweisung hinzufügen** als **Rolle** die Option **Ersteller des Labs** aus. Wählen Sie den Benutzer aus, den Sie der Rolle „Ersteller des Labs“ hinzufügen möchten, und klicken Sie auf **Speichern**. 
+1. Wählen Sie auf der Seite **Lab-Konto** die Option **Zugriffssteuerung (IAM)** aus.
 
-    ![Hinzufügen des Lab-Erstellers](./media/tutorial-setup-lab-account/add-lab-creator.png)
+1. Wählen Sie die Option **Hinzufügen** > **Rollenzuweisung hinzufügen (Vorschau)** aus.
+
+    ![Seite „Zugriffssteuerung (IAM)“ mit offenem Menü Rollenzuweisung hinzufügen“](../../includes/role-based-access-control/media/add-role-assignment-menu-generic.png)
+
+1. Wählen Sie auf der Registerkarte **Rolle** die Rolle **Lab-Ersteller** aus.
+
+    ![Seite „Rollenzuweisung hinzufügen“ mit ausgewählter Registerkarte „Rolle“](../../includes/role-based-access-control/media/add-role-assignment-role-generic.png)
+
+1. Wählen Sie auf der Registerkarte **Verwalten** den Benutzer aus, den Sie der Rolle „Lab-Ersteller“ hinzufügen möchten.
+
+1. Wählen Sie auf der Registerkarte **Überprüfen und zuweisen** die Option **Überprüfen und zuweisen** aus, um die Rolle zuzuweisen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

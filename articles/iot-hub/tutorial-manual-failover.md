@@ -6,17 +6,17 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-ms.date: 07/24/2019
+ms.date: 08/10/2021
 ms.author: robinsh
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: 3b6bc972f5c26c78ffff81f5bab8c2812cf2cb11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 898cc8dcb634ed9beab26c0a0d5de9a9fdda068c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98622912"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732867"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>Tutorial: Ausführen eines manuellen Failovers für eine IoT Hub-Instanz
 
@@ -41,35 +41,14 @@ Weitere Informationen zum manuellen Failover und einem von Microsoft initiierten
 
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
-
-2. Klicken Sie auf **+ Ressource erstellen**, und wählen Sie dann **Internet der Dinge** und anschließend **IoT Hub**.
-
-   ![Screenshot, auf dem das Erstellen eines IoT-Hubs dargestellt ist](./media/tutorial-manual-failover/create-hub-01.png)
-
-3. Klicken Sie auf die Registerkarte **Grundlagen**. Füllen Sie die folgenden Feldern aus:
-
-    **Abonnement**: Wählen Sie das zu verwendende Azure-Abonnement aus.
-
-    **Ressourcengruppe**: Klicken Sie auf **Neu erstellen**, und geben Sie als Ressourcengruppenname **ManlFailRG** an.
-
-    **Region**: Wählen sie eine Region in Ihrer Nähe aus. In diesem Tutorial wird `West US 2` verwendet. Ein Failover kann nur zwischen geografisch gekoppelten Azure-Regionen ausgeführt werden. Die mit „USA, Westen 2“ geografisch gekoppelte Region ist „WestCentralUS“.
-    
-   **IoT Hub-Name**: Geben Sie einen Namen für Ihren IoT-Hub an. Der Hubname muss global eindeutig sein. 
-
-   ![Screenshot, auf dem das Blatt „Grundlagen“ zum Erstellen eines IoT-Hubs dargestellt ist](./media/tutorial-manual-failover/create-hub-02-basics.png)
-
-   Klicken Sie auf **Überprüfen + erstellen**. (Für Größe und Skalierung werden die Standardwerte verwendet.) 
-
-4. Überprüfen Sie die Informationen, und klicken Sie dann auf **Erstellen**, um den IoT-Hub zu erstellen. 
-
-   ![Screenshot, auf dem der letzte Schritt beim Erstellen eines IoT-Hubs dargestellt ist](./media/tutorial-manual-failover/create-hub-03-create.png)
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="perform-a-manual-failover"></a>Ausführen eines manuellen Failovers
 
-Beachten Sie, dass für einen IoT-Hub pro Tag maximal zwei Failover und zwei Failbacks ausgeführt werden können.
+> [!NOTE]
+> Bei einem IoT-Hub können pro Tag maximal zwei Failover und zwei Failbacks ausgeführt werden.
 
-1. Klicken Sie auf **Ressourcengruppen**, und wählen Sie dann die Ressourcengruppe **ManlFailRG** aus. Klicken Sie in der Liste der Ressourcen auf Ihren Hub. 
+1. Klicken Sie auf **Ressourcengruppen**, und wählen Sie dann Ihre Ressourcengruppe aus. In diesem Tutorial wird **ManlFailRG** verwendet. Klicken Sie in der Liste der Ressourcen auf Ihren Hub. 
 
 1. Klicken Sie im Bereich „IoT Hub“ unter **Einstellungen** auf **Failover**.
 
@@ -99,7 +78,7 @@ Beachten Sie, dass für einen IoT-Hub pro Tag maximal zwei Failover und zwei Fai
 
    ![Screenshot mit abgeschlossenem Failover](./media/tutorial-manual-failover/trigger-failover-06-finished.png)
 
-   Auf der Übersichtsseite wird ebenfalls ein Banner mit dem Hinweis angezeigt, dass das Failover abgeschlossen ist und die IoT Hub-Instanz in `West Central US` ausgeführt wird.
+   Auf der Übersichtsseite wird auch ein Banner mit dem Hinweis angezeigt, dass das Failover abgeschlossen ist und die IoT Hub-Instanz in `West Central US` ausgeführt wird.
 
    ![Screenshot mit abgeschlossenem Failover auf der Übersichtsseite](./media/tutorial-manual-failover/trigger-failover-06-finished-overview.png)
 
@@ -116,7 +95,7 @@ Ein Failback wird genau wie ein manuelles Failover ausgeführt. Hier sind die Sc
 
 3. Klicken Sie oben im Bereich „Manuelles Failover“ auf **Failover starten**. 
 
-4. Geben Sie im Bereich für die Bestätigung den Namen Ihres IoT-Hubs ein, um zu bestätigen, dass für ihn das Failback ausgeführt werden soll. Klicken Sie dann auf „OK“, um das Failback zu initiieren. 
+4. Geben Sie im Bereich für die Bestätigung den Namen Ihres IoT-Hubs ein, um zu bestätigen, dass für ihn das Failback ausgeführt werden soll. Klicken Sie dann auf **OK**, um das Failback zu initiieren. 
 
    ![Screenshot der Anforderung für ein manuelles Failback](./media/tutorial-manual-failover/trigger-failover-03-confirm.png)
 
@@ -143,7 +122,7 @@ In diesem Tutorial haben Sie gelernt, wie Sie ein manuelles Failover konfigurier
 > * Ausführen eines Failbacks, um die Vorgänge des IoT-Hubs am primären Standort wiederherzustellen 
 > * Überprüfen, ob der Hub ordnungsgemäß am richtigen Standort ausgeführt wird
 
-Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie den Status eines IoT-Geräts verwalten. 
+Im nächsten Tutorial erfahren Sie, wie Sie Ihr Gerät über einen Back-End-Dienst konfigurieren können. 
 
 > [!div class="nextstepaction"]
-> [Tutorial: Konfigurieren Ihrer Geräte über einen Back-End-Dienst](tutorial-device-twins.md)
+> [Konfigurieren Ihrer Geräte](tutorial-device-twins.md)

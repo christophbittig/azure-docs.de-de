@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: overview
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 69bc44fcffd760b0c98264c43c02f8dfffd8b853
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 3a7ed9fbb30ab770cd7069ebbd97faa41b12cd34
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114448458"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122606836"
 ---
 # <a name="device-update-for-iot-hub-preview-overview"></a>Device Update for IoT Hub (Vorschau): Übersicht
 
@@ -24,12 +24,12 @@ Um die Vorteile der IoT-gestützten digitalen Transformation voll ausschöpfen z
 ## <a name="support-for-a-wide-range-of-iot-devices"></a>Unterstützung für eine große Bandbreite von IoT-Geräten
 
 
-Device Update for IoT Hub wurde entwickelt, um durch die Integration in [Azure IoT Hub](https://azure.microsoft.com/en-us/services/iot-hub/) optimierte Updatebereitstellung und rationalisierte Abläufe zu bieten. Durch diese Integration ist es einfach, Device Update für jede vorhandene Lösung zu übernehmen. Sie bietet eine in der Cloud gehostete Lösung zum Verbinden sämtlicher IoT-Geräte. Device Update unterstützt eine breite Palette von IoT-Betriebssystemen einschließlich Linux und [Azure RTOS](https://azure.microsoft.com/en-us/services/rtos/) (Echtzeitbetriebssystem) und ist über Open-Source erweiterbar. Gemeinsam mit unseren Partnern in der Halbleiterindustrie (u. a. STMicroelectronics, NXP, Renesas und Microchip) entwickeln wir Angebote für „Device Update für IoT Hub“. Sehen Sie sich die [Beispiele](https://github.com/azure-rtos/samples/tree/PublicPreview/ADU) für die wichtigsten Halbleiter-Evaluierungsboards an. Sie enthalten Leitfäden zu den ersten Schritten, in denen Sie erfahren, wie Sie die OTA-Updates (Over-The-Air-Updates) für Geräte der MPU-Klasse konfigurieren, erstellen und bereitstellen. 
+Device Update for IoT Hub wurde entwickelt, um durch die Integration in [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) optimierte Updatebereitstellung und rationalisierte Abläufe zu bieten. Durch diese Integration ist es einfach, Device Update für jede vorhandene Lösung zu übernehmen. Sie bietet eine in der Cloud gehostete Lösung zum Verbinden sämtlicher IoT-Geräte. Device Update unterstützt eine breite Palette von IoT-Betriebssystemen einschließlich Linux und [Azure RTOS](https://azure.microsoft.com/services/rtos/) (Echtzeitbetriebssystem) und ist über Open-Source erweiterbar. Gemeinsam mit unseren Partnern in der Halbleiterindustrie (u. a. STMicroelectronics, NXP, Renesas und Microchip) entwickeln wir Angebote für „Device Update für IoT Hub“. Sehen Sie sich die [Beispiele](https://github.com/azure-rtos/samples/tree/PublicPreview/ADU) für die wichtigsten Halbleiter-Evaluierungsboards an. Sie enthalten Leitfäden zu den ersten Schritten, in denen Sie erfahren, wie Sie die OTA-Updates (Over-The-Air-Updates) für Geräte der MPU-Klasse konfigurieren, erstellen und bereitstellen. 
 
 Es werden sowohl ein Device Update-Agent-Simulator als auch Raspberry Pi-Referenz-Yocto-Images bereitgestellt.
 Device Update for IoT Hub unterstützt auch das Aktualisieren von Azure IoT Edge-Geräten. Ein Device Update-Agent wird für die Plattform Ubuntu Server 18.04 amd64 bereitgestellt. Device Update for IoT Hub bietet auch Open-Source-Code, wenn Sie keine der oben genannten Plattformen ausführen. Sie können den Agent in die von Ihnen ausgeführte Distribution portieren.
 
-Device Update arbeitet mit IoT Plug & Play (PnP) und kann jedes Gerät verwalten, das die erforderlichen PnP-Schnittstellen unterstützt. Weitere Informationen finden Sie unter [Device Update for IoT Hub und IoT Plug & Play](device-update-plug-and-play.md).
+Device Update arbeitet mit IoT Plug & Play und kann jedes Gerät verwalten, das die erforderlichen Plug & Play-Schnittstellen unterstützt. Weitere Informationen finden Sie unter [Device Update for IoT Hub und IoT Plug & Play](device-update-plug-and-play.md).
 
 ## <a name="support-for-a-wide-range-of-update-artifacts"></a>Unterstützung für eine breite Palette von Updateartefakten
 

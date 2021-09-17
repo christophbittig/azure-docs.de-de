@@ -6,12 +6,12 @@ ms.author: lle
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 05/06/2021
-ms.openlocfilehash: bb29c7712bdbe629ff3aa8704c0c4654404f0da3
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: a04371fcba573be41fd5c2275371e0c590b82c08
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971834"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736878"
 ---
 # <a name="tutorial-how-to-access-on-premises-sql-server-from-data-factory-managed-vnet-using-private-endpoint"></a>Tutorial: Zugreifen auf eine lokale SQL Server-Instanz über ein verwaltetes Data Factory-VNet unter Verwendung eines privaten Endpunkts
 
@@ -239,11 +239,9 @@ In diesem Abschnitt erstellen Sie einen Private Link-Dienst hinter einem Standa
 4. Wählen Sie unter **Verwaltete private Endpunkte** die Option **+ Neu** aus.
 5. Wählen Sie in der Liste die Kachel **Private Link-Dienst** und anschließend **Weiter** aus.
 6. Geben Sie den Namen des privaten Endpunkts ein, und wählen Sie in der Liste „Private Link-Dienst“ die Option **myPrivateLinkService** aus.
-7. Fügen Sie den FQDN Ihrer lokalen SQL Server-Zielinstanz sowie die NAT-IP-Adressen Ihres Private Link-Diensts hinzu.
-    
-    :::image type="content" source="./media/tutorial-managed-virtual-network/link-service-nat-ip.png" alt-text="Screenshot: NAT-IP-Adresse im verknüpften Dienst" lightbox="./media/tutorial-managed-virtual-network/link-service-nat-ip-expanded.png":::
+7. Fügen Sie den FQDN Ihres lokalen SQL-Zielservers hinzu.
 
-    :::image type="content" source="./media/tutorial-managed-virtual-network/private-endpoint.png" alt-text="Screenshot: Einstellungen des privaten Endpunkts":::
+    :::image type="content" source="./media/tutorial-managed-virtual-network/private-endpoint-6.png" alt-text="Screenshot: Einstellungen des privaten Endpunkts":::
 
 8. Erstellen Sie den privaten Endpunkt.
 

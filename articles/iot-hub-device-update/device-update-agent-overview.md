@@ -6,18 +6,18 @@ ms.author: valls
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 14bc02c81e28e98d6d094cdfbde6095b7cd2d885
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 6502779c4d301e760e10be8cf1a1766834ec2038
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114403448"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122604150"
 ---
 # <a name="device-update-for-iot-hub-agent-overview"></a>Device Update for IoT Hub-Agent: Übersicht
 
 Der Device Update-Agent besteht aus zwei konzeptionellen Ebenen:
 
-* Die Schnittstellenebene baut auf dem [Azure IoT Plug & Play (PNP)](../iot-develop/overview-iot-plug-and-play.md) auf und ermöglicht das Übertragen von Nachrichten zwischen dem Device Update-Agent und den Device Update-Diensten.
+* Die Schnittstellenebene baut auf dem [Azure IoT Plug & Play](../iot-develop/overview-iot-plug-and-play.md) auf und ermöglicht das Übertragen von Nachrichten zwischen dem Device Update-Agent und den Device Update-Diensten.
 * Die Plattformebene ist für die Aktualisierungsaktionen auf hoher Ebene wie Herunterladen, Installieren und Anwenden zuständig, die plattform- oder gerätespezifisch sein können.
 
 :::image type="content" source="media/understand-device-update/client-agent-reference-implementations.png" alt-text="Agent-Implementierungen." lightbox="media/understand-device-update/client-agent-reference-implementations.png":::

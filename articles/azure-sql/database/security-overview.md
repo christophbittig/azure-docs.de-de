@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, emlisa
-ms.date: 10/26/2020
-ms.openlocfilehash: 084f9aae16cfbf495f05c90c8244b2b9b71cf624
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.date: 08/23/2021
+ms.openlocfilehash: 9326797e16190b3570ed6faca4d724bec432bc86
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812933"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122767914"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Übersicht über die Sicherheitsfunktionen von Azure SQL-Datenbank und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -69,9 +69,9 @@ Die Authentifizierung ist der Prozess, bei dem bestätigt wird, dass der Benutze
 
 ## <a name="authorization"></a>Authorization
 
-Der Begriff Autorisierung bezieht sich auf die Berechtigungen, die einem Benutzer in einer Datenbank in Azure SQL-Datenbank oder Azure SQL Managed Instance zugewiesen sind und festlegen, welche Aktionen der Benutzer ausführen darf. Berechtigungen werden gesteuert, indem Benutzerkonten zu [Datenbankrollen](/sql/relational-databases/security/authentication-access/database-level-roles) hinzugefügt und diesen Rollen Berechtigungen auf Datenbankebene zugewiesen oder dem Benutzer bestimmte [Berechtigungen auf Objektebene](/sql/relational-databases/security/permissions-database-engine) erteilt werden. Weitere Informationen finden Sie unter [Anmeldungen und Benutzer](logins-create-manage.md).
+Die Autorisierung bezieht sich auf die Steuerung des Zugriffs auf Ressourcen und Befehle innerhalb einer Datenbank. Dies erfolgt durch Zuweisen von Berechtigungen zu einem Benutzer innerhalb einer Datenbank in einer Azure SQL-Datenbank oder einer Azure SQL Managed Instance. Berechtigungen werden idealerweise verwaltet, indem Benutzerkonten zu [Datenbankrollen](/sql/relational-databases/security/authentication-access/database-level-roles) hinzugefügt und diesen Rollen Berechtigungen auf Datenbankebene zugewiesen werden. Alternativ können einem einzelnen Benutzer auch bestimmte [Berechtigungen auf Objektebene](/sql/relational-databases/security/permissions-database-engine) erteilt werden. Weitere Informationen finden Sie unter [Anmeldungen und Benutzer](logins-create-manage.md).
 
-Es hat sich bewährt, benutzerdefinierte Rollen bei Bedarf zu erstellen. Fügen Sie Benutzer dann derjenigen Rolle hinzu, die die geringsten Berechtigungen besitzt, um die erforderliche Aufgabe noch erfüllen zu können. Weisen Sie Benutzern Berechtigungen nicht direkt zu. Das Serveradministratorkonto gehört zur integrierten Rolle „db_owner“, die über umfassende Berechtigungen verfügt und nur wenigen Benutzern mit administrativen Aufgaben erteilt werden sollte. Verwenden Sie bei Anwendungen die Option [EXECUTE AS](/sql/t-sql/statements/execute-as-clause-transact-sql) zur Angabe des Ausführungskontexts für das aufgerufene Modul, oder verwenden Sie [Anwendungsrollen](/sql/relational-databases/security/authentication-access/application-roles) mit eingeschränkten Berechtigungen. Durch diese Vorgehensweise wird sichergestellt, dass eine Anwendung, die eine Verbindung mit der Datenbank herstellt, nur über die geringsten Berechtigungen verfügt, die von der Anwendung benötigt werden. Diese bewährten Methoden fördern auch die Aufgabentrennung.
+Es hat sich bewährt, benutzerdefinierte Rollen bei Bedarf zu erstellen. Fügen Sie Benutzer dann derjenigen Rolle hinzu, die die geringsten Berechtigungen besitzt, um die erforderliche Aufgabe noch erfüllen zu können. Weisen Sie Benutzern Berechtigungen nicht direkt zu. Das Serveradministratorkonto gehört zur integrierten Rolle „db_owner“, die über umfassende Berechtigungen verfügt und nur wenigen Benutzern mit administrativen Aufgaben erteilt werden sollte. Um den Umfang der Möglichkeiten eines Benutzers weiter einzuschränken, kann [AUSFÜHREN ALS](/sql/t-sql/statements/execute-as-clause-transact-sql) verwendet werden, um den Ausführungskontext des aufgerufenen Moduls anzugeben. Das Befolgen dieser bewährten Methoden ist auch ein grundlegender Schritt in Richtung Aufgabentrennung.
 
 ### <a name="row-level-security"></a>Sicherheit auf Zeilenebene
 
@@ -140,7 +140,7 @@ Die [Sicherheitsrisikobewertung](sql-vulnerability-assessment.md) ist ein einfac
 
 ### <a name="data-discovery-and-classification"></a>Datenermittlung und -klassifizierung
 
-Datenermittlung und -klassifizierung (derzeit in der Vorschauphase) bietet erweiterte Funktionen für Azure SQL-Datenbank und SQL Managed Instance zum Ermitteln, Klassifizieren, Bezeichnen und Schützen vertraulicher Daten in Ihren Datenbanken. Das Ermitteln und Klassifizieren Ihrer vertraulichen Daten (Geschäfts-/Finanz-/Gesundheits-, personenbezogene Daten usw.) kann eine entscheidende Rolle in der Strategie Ihrer Organisation zum Datenschutz spielen. Sie kann für Folgendes als Infrastruktur gelten:
+Datenerkennung und -klassifizierung (derzeit in der Vorschau) bietet grundlegende Funktionen, die in Azure SQL Database und SQL Managed Instance integriert sind, um sensible Daten in Ihren Datenbanken zu erkennen, zu klassifizieren und zu kennzeichnen. Das Ermitteln und Klassifizieren Ihrer vertraulichen Daten (Geschäfts-/Finanz-/Gesundheits-, personenbezogene Daten usw.) kann eine entscheidende Rolle in der Strategie Ihrer Organisation zum Datenschutz spielen. Sie kann für Folgendes als Infrastruktur gelten:
 
 - Verschiedene Sicherheitsszenarien, z.B. Überwachung und Warnungen bei abweichendem Zugriff auf sensible Daten
 - Steuern des Zugriffs auf und Härten der Sicherheit von Datenbanken, die sensible Daten enthalten

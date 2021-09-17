@@ -1,6 +1,6 @@
 ---
-title: include file
-description: include file
+title: Datei einfügen
+description: Datei einfügen
 services: machine-learning
 ms.service: machine-learning
 ms.custom: include file
@@ -8,18 +8,18 @@ ms.topic: include
 author: sdgilley
 ms.author: sgilley
 ms.date: 10/14/2019
-ms.openlocfilehash: 119d9579cb139a6b1611b8ccec4ebf271e610d3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 242408c869fc6f584f93ac60a4e83068b0b25ad2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841844"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121802559"
 ---
-Sollten Sie eine Compute-Instanz oder eine Notebook-VM verwendet haben, beenden Sie die VM, wenn Sie sie nicht verwenden, um Kosten zu sparen.
+Sollten Sie eine Compute-Instanz verwendet haben, beenden Sie die VM, wenn Sie sie nicht verwenden, um Kosten zu sparen.
 
 1. Wählen Sie in Ihrem Arbeitsbereich die Option **Compute** aus.
 
-1. Wählen Sie die VM in der Liste aus.
+1. Wählen Sie in der Liste den Namen der Compute-Instanz aus.
 
 1. Wählen Sie **Stop** (Beenden) aus.
 

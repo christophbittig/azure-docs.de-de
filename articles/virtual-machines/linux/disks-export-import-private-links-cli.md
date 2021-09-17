@@ -8,14 +8,16 @@ ms.date: 07/15/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 05cff1385ee4e606a3d5ecae3f04139a67be699a
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 16ba38828cc9137e7d69e113126826b254aaf957
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114289252"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688991"
 ---
 # <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure CLI: Einschränken des Import-/Exportzugriffs auf verwaltete Datenträger mit privaten Links
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
 Sie können [private Endpunkte](../../private-link/private-endpoint-overview.md) verwenden, um den Export und Import verwalteter Datenträger einzuschränken und sicheren Zugriff auf Daten über einen [privaten Link](../../private-link/private-link-overview.md) von Clients in Ihrem virtuellen Azure-Netzwerk zu ermöglichen. Der private Endpunkt verwendet eine IP-Adresse aus dem Adressraum des virtuellen Netzwerks für Ihren Dienst für verwaltete Datenträger. Der Netzwerkdatenverkehr zwischen den Clients im virtuellen Netzwerk und den verwalteten Datenträgern wird nur über das virtuelle Netzwerk und eine private Verbindung im Microsoft-Backbonenetzwerk geleitet und somit nicht dem öffentlichen Internet ausgesetzt.
 
@@ -156,5 +158,5 @@ az snapshot create -n $snapshotNameSecuredWithPL \
 
 - Hochladen einer VHD in Azure oder Kopieren eines verwalteten Datenträgers in eine andere Region: [Azure CLI](disks-upload-vhd-to-managed-disk-cli.md) oder [Azure PowerShell-Modul](../windows/disks-upload-vhd-to-managed-disk-powershell.md)
 - Herunterladen einer VHD: [Windows](../windows/download-vhd.md) oder [Linux](download-vhd.md)
-- [Häufig gestellte Fragen zu privaten Links](/azure/virtual-machines//faq-for-disks#private-links-for-securely-exporting-and-importing-managed-disks)
+- [Häufig gestellte Fragen zu privaten Links](/azure/virtual-machines/faq-for-disks#private-links-for-securely-exporting-and-importing-managed-disks)
 - [Exportieren/Kopieren verwalteter Momentaufnahmen als VHD in ein Speicherkonto in einer anderen Region mit der Befehlszeilenschnittstelle](/previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-vhd)

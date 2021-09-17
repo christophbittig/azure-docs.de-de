@@ -6,15 +6,15 @@ ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 01/27/2021
+ms.date: 08/02/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 7aa57fa20c3a043cdb210ccd8a5ddbf61323716d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: cc8d65ec4b714bbb98036c5ed3deabd4b75d3c98
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943680"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356054"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure Enterprise-Übertragungen
 
@@ -59,6 +59,9 @@ Dieser Abschnitt dient nur zu Informationszwecken, da die Aktion von einem Unter
 
 Wenn Sie die Übertragung einer gesamten Unternehmensregistrierung in eine Registrierung anfordern, werden die folgenden Aktionen ausgeführt:
 
+- Es kann bis zu 72 Stunden dauern, bis die übertragene Nutzung in der neuen Registrierung berücksichtigt wird.
+- Wenn die Gebühren für das Anzeigen für Abteilungsadministratoren und Kontobesitzer für die übertragene Registrierung aktiviert waren, müssen sie auch für die neue Registrierung aktiviert sein.
+- Wenn Sie API-Berichte oder Power BI verwenden, generieren Sie einen neuen API-Schlüssel unter Ihrer neuen Registrierung.
 - Alle Azure-Dienste, Abonnements, Konten, Abteilungen sowie die gesamte Registrierungsstruktur einschließlich aller EA-Abteilungsadministratoren werden in die neue Zielregistrierung übertragen.
 - Der Registrierungsstatus wird auf _Übertragen_ festgelegt. Die übertragene Registrierung ist nur für Berichte zum Nutzungsverlauf verfügbar.
 - Einer übertragenen Registrierung können Sie keine Rollen oder Abonnements hinzufügen. Der Status „Übertragen“ verhindert eine zusätzliche Nutzung in Bezug auf die Registrierung.
@@ -85,6 +88,17 @@ Andere Punkte, die vor einer Registrierungsübertragung zu beachten sind:
 - Sowohl die Genehmigung des EA-Administrators der Ziel- als auch des EA-Administrators der Quellregistrierung ist erforderlich.
 - Wenn eine Registrierungsübertragung Ihre Anforderungen nicht erfüllt, ziehen Sie eine Kontoübertragung in Betracht.
 - Der Quellregistrierungsstatus wird auf „übertragen“ aktualisiert und steht nur für die Nutzungsberichterstellung zur Verfügung.
+- Es gibt keine Downtime während einer Registrierungsübertragung.
+- Es kann zwischen 24 und 48 Stunden dauern, bis sich die Nutzung in der Zielregistrierung widerspiegelt.
+- Die Einstellungen der Kostenansicht für Abteilungsadministratoren oder Kontobesitzer werden nicht übernommen.
+  - Falls zuvor aktiviert, müssen die Einstellungen für die Zielregistrierung aktiviert werden.
+- Alle API-Schlüssel, die in der Quellregistrierung verwendet wurden, müssen für die Zielregistrierung neu generiert werden.
+- Wenn sich die Quell- und Zielregistrierungen auf verschiedenen Cloudinstanzen befinden, tritt bei der Übertragung ein Fehler auf. Der Azure-Support kann nur innerhalb derselben Cloudinstanz übertragen werden.
+- Für Reservierungen (reservierte Instanzen):
+  - Die Registrierung oder Kontoübertragung zwischen verschiedenen Währungen wirkt sich auf monatliche Reservierungseinkäufe aus.
+  - Bei einem Währungswechsel während oder nach einer Registrierungsübertragung werden monatlich bezahlte Reservierungen für die ursprüngliche Registrierung storniert. Dies ist beabsichtigt und betrifft nur die monatlichen Reservierungseinkäufe.
+  - Möglicherweise müssen Sie die stornierten monatlichen Reservierungen aus der Ursprungsregistrierung mithilfe der neuen Registrierung in der lokalen oder neuen Währung erneut kaufen.
+
 
 ### <a name="auto-enrollment-transfer"></a>Übertragung mit automatischer Registrierung
 

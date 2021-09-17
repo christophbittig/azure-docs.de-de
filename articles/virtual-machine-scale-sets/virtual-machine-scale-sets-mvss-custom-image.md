@@ -8,14 +8,16 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: shared-image-gallery
 ms.date: 04/26/2018
 ms.reviewer: mimckitt
-ms.openlocfilehash: 56e27c7978ef95ad49e6db7592fe3c755af2b0ab
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 6508935cc104f2eac46f8e61b50850c45e6856cc
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108756141"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697393"
 ---
 # <a name="add-a-custom-image-to-an-azure-scale-set-template"></a>Hinzufügen eines benutzerdefinierten Images zu einer Azure-Skalierungsgruppenvorlage
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 In diesem Artikel erfahren Sie, wie die [Vorlage für eine grundlegende Skalierungsgruppe](virtual-machine-scale-sets-mvss-start.md) geändert wird, um die Bereitstellung über ein benutzerdefiniertes Image durchzuführen.
 

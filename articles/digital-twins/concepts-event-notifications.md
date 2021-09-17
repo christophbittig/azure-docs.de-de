@@ -8,16 +8,16 @@ ms.date: 4/8/2021
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: e403ed4778e87e42ad4abb2e6d45923e420ca0c4
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d008888968f05641786cdfcb73afac1d540b7596
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114438631"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769867"
 ---
 # <a name="event-notifications"></a>Ereignisbenachrichtigungen
 
-Unterschiedliche Ereignisse in Azure Digital Twins erzeugen **Benachrichtigungen**, die es dem Lösungs-Back-End ermöglichen, zu erkennen, wenn verschiedene Aktionen stattfinden. Diese werden dann zu verschiedenen Orten innerhalb und außerhalb von Azure Digital Twins [geleitet](concepts-route-events.md), die diese Informationen zur Ergreifung von Maßnahmen nutzen können.
+Unterschiedliche Ereignisse in Azure Digital Twins erzeugen **Benachrichtigungen**, die es dem Lösungs-Back-End ermöglichen, zu erkennen, wenn verschiedene Aktionen stattfinden. Diese Benachrichtigungen werden dann an verschiedene Stellen innerhalb und außerhalb von Azure Digital Twins [weitergeleitet](concepts-route-events.md), die diese Informationen nutzen können, um Maßnahmen zu ergreifen.
 
 Es gibt verschiedene Arten von Benachrichtigungen, die generiert werden können, und Benachrichtigungsmeldungen können unterschiedlich aussehen, je nachdem, mit welcher Art von Ereignis sie erzeugt wurden. Dieser Artikel enthält Einzelheiten zu den verschiedenen Arten von Meldungen und wie sie aussehen könnten.
 
@@ -43,15 +43,15 @@ Die Dienste müssen allen Benachrichtigungen eine Sequenznummer hinzufügen, um 
 
 Benachrichtigungen, die von Azure Digital Twins an Event Grid gesendet werden, werden automatisch entweder in das CloudEvents-Schema oder das EventGridEvent-Schema formatiert. Dies ist abhängig vom Schematyp, der im Thema „Event Grid“ definiert ist. 
 
-Erweiterungsattribute für Header werden als Eigenschaften im Event Grid-Schema innerhalb der Nutzlast hinzugefügt. 
+Erweiterungsattribute in Kopfzeilen werden als Eigenschaften in das Event Grid-Schema in der Payload aufgenommen. 
 
 ### <a name="event-notification-bodies"></a>Hauptteile der Ereignisbenachrichtigung
 
-Die Hauptteile der Benachrichtigungsmeldungen werden hier in JSON beschrieben. Je nach gewünschter Serialisierung des Nachrichtentexts (z. B. mit JSON, CBOR, Protobuf usw.) kann der Nachrichtentext unterschiedlich serialisiert werden.
+Die Hauptteile der Benachrichtigungsmeldungen werden hier in JSON beschrieben. Je nach gewünschtem Serialisierungstyp für den Nachrichtenkörper (z. B. mit JSON, CBOR, Protobuf: usw.) kann der Nachrichtenkörper unterschiedlich serialisiert werden.
 
 Die Auswahl von Feldern, die der Hauptteil enthält, variiert je nach Benachrichtigungstyp.
 
-In den folgenden Abschnitten wird näher auf die verschiedenen Arten von Benachrichtigungen eingegangen, die von IoT Hub und Azure Digital Twins (oder anderen Azure IoT-Diensten) gesendet werden. Sie werden über die Auslöser für die einzelnen Benachrichtigungstypen und die Auswahl von Feldern lesen, die bei jeder Art von Benachrichtigungshauptteil enthalten sind.
+In den folgenden Abschnitten wird näher auf die verschiedenen Arten von Benachrichtigungen eingegangen, die von IoT Hub und Azure Digital Twins (oder anderen Azure IoT-Diensten) gesendet werden. Sie erfahren, was die einzelnen Benachrichtigungstypen auslöst und welche Felder die einzelnen Benachrichtigungstypen enthalten.
 
 ## <a name="digital-twin-change-notifications"></a>Änderungsbenachrichtigungen bei digitalen Zwillingen
 
@@ -103,11 +103,11 @@ Die entsprechende Benachrichtigung (wenn sie vom Dienst synchron ausgeführt wir
   }
 ```
 
-Dies sind die Informationen, die im Feld `data` der Benachrichtigungsmeldung zum Lebenszyklus angezeigt werden.
+Diese Daten sind die Informationen, die in das Feld `data` der Lebenszyklus-Benachrichtigung eingetragen werden.
 
-## <a name="digital-twin-lifecycle-notifications"></a>Benachrichtigungen zum Lebenszyklus von digitalen Zwillingen
+## <a name="digital-twin-lifecycle-notifications"></a>Lebenszyklusbenachrichtigungen für digitale Zwillinge
 
-Alle [digitalen Zwillinge](concepts-twins-graph.md) senden Benachrichtigungen, unabhängig davon, ob sie [IoT Hub-Geräte in Azure Digital Twins](how-to-ingest-iot-hub-data.md) darstellen oder nicht. Das liegt an den **Lebenszyklusbenachrichtigungen**, die den digitalen Zwilling selbst betreffen.
+Unabhängig davon, ob die [digitalen Zwillinge](concepts-twins-graph.md) [loT-Hub-Geräte in Azure Digital Twins](how-to-ingest-iot-hub-data.md) darstellen oder nicht: Sie werden alle Benachrichtigungen aussenden. Sie tun dies aufgrund der **Lebenszyklus-Benachrichtigungen**, die sich auf den digitalen Zwilling selbst beziehen.
 
 Lebenszyklusbenachrichtigungen werden in folgenden Situationen ausgelöst:
 * Ein digitaler Zwilling wird erstellt.
@@ -131,7 +131,7 @@ Hier werden die Felder des Hauptteils einer Lebenszyklusbenachrichtigung aufgef�
 
 ### <a name="body-details"></a>Details zum Hauptteil
 
-Hier ist ein Beispiel für eine Benachrichtigungsmeldung zum Lebenszyklus: 
+Hier ist ein Beispiel für eine Lebenszyklus-Benachrichtigung: 
 
 ```json
 {
@@ -153,11 +153,11 @@ Hier ist ein Beispiel für eine Benachrichtigungsmeldung zum Lebenszyklus:
 }
 ```
 
-Innerhalb der Nachricht enthält das Feld `data` die Daten des betreffenden digitalen Zwillings, dargestellt im JSON-Format. Das Schema hierfür ist *Digital Twins Resource 7.1*.
+Innerhalb der Nachricht enthält das Feld `data` die Daten des betreffenden digitalen Zwillings, dargestellt im JSON-Format. Das Schema für dieses `data`Feld ist *Digital Twins Ressource 7.1*.
 
 Bei Erstellungsereignissen spiegelt die `data`-Payload den Zustand des Zwillings nach der Erstellung der Ressource wider, sodass sie wie ein `GET`-Aufruf alle vom System generierten Elemente enthalten sollte.
 
-Hier folgt ein Beispiel der Daten für ein [IoT Plug and Play (PnP)](../iot-develop/overview-iot-plug-and-play.md)-Gerät mit Komponenten und ohne Eigenschaften der obersten Ebene. Eigenschaften, die für Geräte nicht sinnvoll sind (z. B. gemeldete Eigenschaften), sollten weggelassen werden. Dies sind die Informationen, die im Feld `data` der Benachrichtigungsmeldung zum Lebenszyklus angezeigt werden.
+Hier ein Beispiel für die Daten eines [IoT Plug & Play](../iot-develop/overview-iot-plug-and-play.md)-Geräts, mit Komponenten und ohne Spitzeneigenschaften. Eigenschaften, die für Geräte keinen Sinn machen (z. B. berichtete Eigenschaften), sollten weggelassen werden. Das folgende JSON-Objekt ist die Information, die in das `data`Feld der Lebenszyklus-Benachrichtigungsnachricht aufgenommen wird:
 
 ```json
 {
@@ -190,7 +190,7 @@ Hier folgt ein Beispiel der Daten für ein [IoT Plug and Play (PnP)](../iot-deve
 }
 ```
 
-Hier ist ein weiteres Beispiel für Daten eines digitalen Zwillings. Dieses basiert auf einem [Modell](concepts-models.md) und unterstützt keine Komponenten:
+Hier ist ein weiteres Beispiel für digitale Zwillingsdaten. Dieses Beispiel basiert auf einem [Modell](concepts-models.md) und unterstützt keine Komponenten:
 
 ```json
 {
@@ -242,7 +242,7 @@ Hier folgen die Felder des Hauptteils einer Änderungsbenachrichtigung zu einer 
 
 Innerhalb der Nachricht enthält das Feld `data` die Payload einer Beziehung im JSON-Format. Es verwendet dasselbe Format wie eine `GET`-Anforderung für eine Beziehung über die [DigitalTwins-API](/rest/api/digital-twins/dataplane/twins). 
 
-Hier sehen Sie ein Beispiel der Daten für eine Benachrichtigung zum Aktualisieren einer Beziehung. „Aktualisieren einer Beziehung“ bedeutet, dass die Eigenschaften der Beziehung geändert wurden, sodass die Daten die aktualisierte Eigenschaft und ihren neuen Wert anzeigen. Dies sind die Informationen, die im Feld `data` der Benachrichtigungsmeldung zur Beziehung zwischen digitalen Zwillingen angezeigt werden.
+Hier sehen Sie ein Beispiel der Daten für eine Benachrichtigung zur Beziehungsaktualisierung. „Aktualisieren einer Beziehung“ bedeutet, dass die Eigenschaften der Beziehung geändert wurden, sodass die Daten die aktualisierte Eigenschaft und ihren neuen Wert anzeigen. Das folgende JSON-Objekt ist die Information, die in das Feld `data` der Meldung über die digitale Zwillingsbeziehung eingetragen wird:
 
 ```json
 {
@@ -257,7 +257,7 @@ Hier sehen Sie ein Beispiel der Daten für eine Benachrichtigung zum Aktualisier
   }
 ```
 
-Hier folgt ein Beispiel der Daten für eine Benachrichtigung zum Erstellen oder Löschen einer Beziehung. Für `Relationship.Delete` entspricht der Hauptteil der Anforderung `GET`, und er erhält den letzten Zustand vor dem Löschvorgang.
+Hier sehen Sie ein Beispiel der Daten zum Erstellen oder Löschen einer Beziehungsbenachrichtigung. Für `Relationship.Delete` entspricht der Hauptteil der Anforderung `GET`, und er erhält den letzten Zustand vor dem Löschvorgang.
 
 ```json
 {
@@ -292,7 +292,7 @@ Hier folgen die Felder des Hauptteils einer Telemetrienachricht.
 
 Der Text enthält die Telemetriemessdaten zusammen mit einigen Kontextinformationen zum Gerät.
 
-Hier ist ein Beispiel für eine Telemetrienachricht: 
+Hier sehen Sie ein Beispiel von einem Telemetrienachrichtentext: 
 
 ```json
 {

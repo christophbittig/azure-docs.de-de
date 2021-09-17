@@ -3,17 +3,17 @@ title: Analysieren der Azure-Kosten mit der Power BI-App
 description: In diesem Artikel wird erläutert, wie Sie die Azure Cost Management-Power BI-App installieren und verwenden.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/15/2021
+ms.date: 08/19/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 903bcab1816263cdd660f5b41561cd5209b6557f
-ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+ms.openlocfilehash: b500bd2b97c262739902c5e1b8af51b013ad4ecb
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112200941"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515062"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Analysieren der Kosten mit der Azure Cost Management-Power BI-App für Enterprise Agreements (EA)
 
@@ -45,6 +45,9 @@ So installieren Sie die App:
 1. Wählen Sie auf der Seite „Erste Schritte“ die Option **Ihre Daten verbinden** aus.
     :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-your-data.png" alt-text="Screenshot mit hervorgehobenem Link „Ihre Daten verbinden“." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-your-data.png" :::
 1. Geben Sie im angezeigten Dialogfeld unter **BillingProfileIdOrEnrollmentNumber** Ihre EA-Registrierungsnummer ein. Geben Sie die Anzahl von Monaten ein, für die Daten abgerufen werden sollen. Übernehmen Sie den Standardwert **Registrierungsnummer** für **Bereich**, und wählen Sie dann **Weiter** aus.  
+    >[!NOTE]
+    > Der Standardwert für den Scope ist `Enrollment Number`. Ändern Sie den Wert nicht, da andernfalls die anfängliche Datenverbindung fehlschlägt.  
+
     :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png" alt-text="Screenshot, der zeigt, wo Sie Ihre EA-Registrierungsinformationen eingeben." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png" :::
 1. Im nächsten Installationsschritt wird eine Verbindung mit Ihrer EA-Registrierung hergestellt und ein Konto vom Typ [Unternehmensadministrator](../manage/understand-ea-roles.md) benötigt. Übernehmen Sie alle Standardwerte. Wählen Sie **Anmelden und Verbindung herstellen** aus.  
     :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png" alt-text="Screenshot des Dialogfelds „Verbindung mit Azure Cost Management herstellen“ mit Standardwerten für das Herstellen der Verbindung." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png" :::

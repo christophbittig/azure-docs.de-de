@@ -1,24 +1,27 @@
 ---
 title: Parametrisieren von Zuordnungsdatenflüssen
-description: Erfahren Sie, wie Sie eine Mapping Data Flow-Funktion aus Data Factory-Pipelines parametrisieren können.
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Erfahren Sie, wie Sie einen Zuordnungsdatenfluss aus Azure Data Factory und Azure Synapse Analytics-Pipelines parametrisieren.
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
+ms.subservice: data-flows
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 04/19/2021
-ms.openlocfilehash: 22c4fc0680d8666d8c2dfafb8829436e27cf1ebd
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.date: 08/24/2021
+ms.openlocfilehash: 5d06d55e199e0c5f2f1fcda9f1a9d121ed1726e5
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725708"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821599"
 ---
 # <a name="parameterizing-mapping-data-flows"></a>Parametrisieren von Zuordnungsdatenflüssen
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)] 
 
-Zuordnungsdatenflüsse in Azure Data Factory und Azure Synapse Analytics unterstützen die Verwendung von Parametern. Definieren Sie Parameter innerhalb Ihrer Datenflussdefinition, und verwenden Sie sie in allen Ihren Ausdrücken. Die Parameterwerte werden von der aufrufenden Pipeline über die Aktivität „Datenfluss ausführen“ festgelegt. Sie haben drei Möglichkeiten, die Werte in den Ausdrücken der Datenflussaktivität festzulegen:
+Zuordnungsdatenflüsse in Data Factory- und Azure Synapse-Pipelines unterstützen die Verwendung von Parametern. Definieren Sie Parameter innerhalb Ihrer Datenflussdefinition, und verwenden Sie sie in allen Ihren Ausdrücken. Die Parameterwerte werden von der aufrufenden Pipeline über die Aktivität „Datenfluss ausführen“ festgelegt. Sie haben drei Möglichkeiten, die Werte in den Ausdrücken der Datenflussaktivität festzulegen:
 
 * Verwenden der Ausdruckssprache für die Pipeline-Ablaufsteuerung, um einen dynamischen Wert festzulegen
 * Verwenden der Ausdruckssprache für den Datenfluss, um einen dynamischen Wert festzulegen

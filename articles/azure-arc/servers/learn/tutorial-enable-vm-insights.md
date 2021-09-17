@@ -3,12 +3,12 @@ title: 'Tutorial: Überwachen eines Hybridcomputers mit Azure Monitor VM Insight
 description: Hier erfahren Sie, wie Sie Daten von einem Hybridcomputer in Azure Monitor sammeln und analysieren.
 ms.topic: tutorial
 ms.date: 04/21/2021
-ms.openlocfilehash: f59ad448440110e2c5e6dd1fa1b2858d9cf42e91
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 8ab801885e86ed90d5f28c2ce90a994828b358a0
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107834262"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772621"
 ---
 # <a name="tutorial-monitor-a-hybrid-machine-with-vm-insights"></a>Tutorial: Überwachen eines Hybridcomputers mit VM Insights
 

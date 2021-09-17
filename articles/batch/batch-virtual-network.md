@@ -2,14 +2,14 @@
 title: Bereitstellen eines Pools in einem virtuellen Netzwerk
 description: Hier erfahren Sie, wie Sie einen Batch-Pool in einem virtuellen Netzwerk erstellen, damit Computeknoten sicher mit anderen VMs (z. B. Dateiserver) im Netzwerk kommunizieren können.
 ms.topic: how-to
-ms.date: 06/09/2021
+ms.date: 08/20/2021
 ms.custom: seodec18
-ms.openlocfilehash: 5279e9efb426c327761f14188b436e47387ea1eb
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: bc8f63af713b3b56d85426ce9be86214572506be
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111903082"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122635130"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Erstellen eines Azure Batch-Pools in einem virtuellen Netzwerk
 
@@ -38,14 +38,16 @@ Um die sichere Kommunikation zwischen Serverknoten und virtuellen Computern oder
 Wenn Sie Ihr VNET erstellt und einem Subnetz zugewiesen haben, können Sie einen Batch-Pool mit diesem VNET erstellen. Führen Sie die folgenden Schritte aus, um einen Pool im Azure-Portal zu erstellen: 
 
 1. Navigieren Sie im Azure-Portal zu Ihrem Batch-Konto. Das Konto muss sich im gleichen Abonnement und der gleichen Region wie die Ressourcengruppe befinden, die das VNET enthält, das Sie verwenden möchten.
-2. Wählen Sie links im Fenster **Einstellungen** die Menüoption **Pools** aus.
-3. Wählen Sie im Fenster **Pools** die Option **Hinzufügen** aus.
-4. Wählen Sie im Fenster **Pool hinzufügen** die Option, die Sie verwenden möchten, in der Dropdownliste **Imagetyp** aus.
-5. Wählen Sie **Verleger/Angebot/SKU** für Ihr benutzerdefiniertes Image aus.
-6. Geben Sie die übrigen erforderlichen Einstellungen an, einschließlich **Knotengröße**, **Ziel für dedizierte Knoten** und **Knoten mit niedriger Priorität**, sowie alle gewünschten optionalen Einstellungen.
-7. Wählen Sie unter **Virtuelles Netzwerk** das virtuelle Netzwerk und Subnetz aus, die Sie verwenden möchten.
+1. Wählen Sie links im Fenster **Einstellungen** die Menüoption **Pools** aus.
+1. Wählen Sie im Fenster **Pools** die Option **Hinzufügen** aus.
+1. Wählen Sie im Fenster **Pool hinzufügen** die Option, die Sie verwenden möchten, in der Dropdownliste **Imagetyp** aus.
+1. Wählen Sie **Verleger/Angebot/SKU** für Ihr benutzerdefiniertes Image aus.
+1. Geben Sie die übrigen erforderlichen Einstellungen an, einschließlich **Knotengröße**, **Ziel für dedizierte Knoten** und **Knoten mit niedriger Priorität**, sowie alle gewünschten optionalen Einstellungen.
+1. Wählen Sie unter **Virtuelles Netzwerk** das virtuelle Netzwerk und Subnetz aus, die Sie verwenden möchten.
+1. Klicken Sie auf **OK**, um Ihren Pool zu erstellen.
 
-   ![„Pool hinzufügen“ mit virtuellem Netzwerk](./media/batch-virtual-network/add-vnet-pool.png)
+> [!IMPORTANT]
+> Wenn Sie versuchen, ein Subnetz zu löschen, das von einem Pool verwendet wird, erhalten Sie eine Fehlermeldung. Alle Pools, die ein Subnetz verwenden, müssen gelöscht werden, bevor Sie dieses Subnetz löschen.
 
 ## <a name="user-defined-routes-for-forced-tunneling"></a>Benutzerdefinierte Routen für erzwungenes Tunneln
 
@@ -62,8 +64,6 @@ Um sicherzustellen, dass die Knoten im Pool in einem VNET funktionieren, in dem 
 - Wenn Sie virtuelle Dateieinbindung verwenden, überprüfen Sie die [Netzwerkanforderungen](virtual-file-mount.md#networking-requirements) und stellen Sie sicher, dass kein erforderlicher Datenverkehr blockiert ist.
 
 Wenn Sie eine UDR hinzufügen, definieren Sie die Route für jedes zugehörige Batch-IP-Adresspräfix, und legen Sie den **Typ des nächsten Hops** auf **Internet** fest.
-
-![Benutzerdefinierte Route](./media/batch-virtual-network/user-defined-route.png)
 
 > [!WARNING]
 > IP-Adressen des Batch-Diensts können sich im Laufe der Zeit ändern. Um Ausfälle aufgrund der Änderung einer IP-Adresse zu verhindern, erstellen Sie einen Prozess zum automatischen Aktualisieren der IP-Adressen des Batch-Diensts, und halten Sie sie in der Routingtabelle auf dem neuesten Stand.

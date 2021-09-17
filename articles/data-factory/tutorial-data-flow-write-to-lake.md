@@ -4,15 +4,16 @@ description: Dieses Tutorial bietet bewährte Methoden für das Schreiben in Dat
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2021
-ms.date: 04/01/2021
-ms.openlocfilehash: 8010f3f95c9358714b659df5821a375bd8488ad8
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.date: 06/04/2021
+ms.openlocfilehash: 91eb5d1072f1385c025d9d93b89466aaa9320ecd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106582030"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122639811"
 ---
 # <a name="best-practices-for-writing-to-files-to-data-lake-with-data-flows"></a>Bewährte Methoden für das Schreiben in Dateien in Data Lake mit Datenflüssen
 
@@ -52,9 +53,9 @@ In diesem Schritt erstellen Sie eine Data Factory und öffnen die Data Factory-B
 
 In diesem Schritt erstellen Sie eine Pipeline mit einer Datenflussaktivität.
 
-1. Wählen Sie auf der Seite **Erste Schritte** die Option **Pipeline erstellen** aus.
+1. Klicken Sie auf der Homepage von Azure Data Factory auf **Orchestrate** (Orchestrieren).
 
-   ![Erstellen der Pipeline](./media/doc-common-process/get-started-page.png)
+   ![Screenshot, der die ADF-Homepage zeigt.](./media/doc-common-process/get-started-page.png)
 
 1. Geben Sie auf der Registerkarte **Allgemein** der Pipeline als **Namen** der Pipeline **DeltaLake** ein.
 1. Setzen Sie auf der oberen Leiste der Factory den Schieberegler **Datenfluss debuggen** auf „Ein“. Der Debugmodus ermöglicht das interaktive Testen von Transformationslogik mit einem aktiven Spark-Cluster. Die Aufwärmphase von Datenflussclustern dauert 5 bis 7 Minuten. Den Benutzern wird empfohlen, zuerst den Debugmodus zu aktivieren, wenn sie die Entwicklung eines Datenflusses planen. Weitere Informationen finden Sie unter [Debugmodus](concepts-data-flow-debug-mode.md).

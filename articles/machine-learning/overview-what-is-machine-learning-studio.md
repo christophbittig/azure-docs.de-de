@@ -7,18 +7,18 @@ ms.subservice: core
 ms.topic: overview
 author: peterclu
 ms.author: peterlu
-ms.date: 08/24/2020
+ms.date: 08/23/2021
 adobe-target: true
-ms.openlocfilehash: ca53c42c5c80a86e50db5ac52e6efee75c17cd8e
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: f52c27bbcd0f289028f51c6fcb1fa22ae321f8b4
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108770639"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695768"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Was ist Azure Machine Learning Studio?
 
-In diesem Artikel erfahren Sie mehr über Azure Machine Learning Studio, das Webportal für Data Scientist-Entwickler in [Azure Machine Learning](overview-what-is-azure-ml.md). In Studio werden codefreie Umgebungen und Code First-Umgebungen zu einer inklusiven Data Science-Plattform kombiniert.
+In diesem Artikel erfahren Sie mehr über Azure Machine Learning Studio, das Webportal für Data Scientist-Entwickler in [Azure Machine Learning](overview-what-is-azure-machine-learning.md). In Studio werden codefreie Umgebungen und Code First-Umgebungen zu einer inklusiven Data Science-Plattform kombiniert.
 
 In diesem Artikel wird Folgendes behandelt:
 >[!div class="checklist"]
@@ -27,7 +27,7 @@ In diesem Artikel wird Folgendes behandelt:
 > - Unterschiede zwischen [Azure Machine Learning Studio und Machine Learning Studio (Classic)](#ml-studio-classic-vs-azure-machine-learning-studio)
 
 Es wird empfohlen, den neuesten Browser zu verwenden, der mit Ihrem Betriebssystem kompatibel ist. Die folgenden Browser werden unterstützt:
-  * Microsoft Edge (Die neueste Version von Microsoft Edge. Keine ältere Microsoft Edge-Version.)
+  * Microsoft Edge (neueste Version)
   * Safari (neueste Version, nur auf Mac)
   * Chrome (neueste Version)
   * Firefox (neueste Version)
@@ -52,7 +52,7 @@ Studio bietet abhängig vom Projekttyp und von der Erfahrung der Benutzer versch
 
   Informieren Sie sich darüber, wie Sie mit einer benutzerfreundlichen Oberfläche [automatisierte ML-Experimente](tutorial-first-experiment-automated-ml.md) erstellen. 
 
-  [![Navigationsbereich von Azure Machine Learning Studio](./media/overview-what-is-azure-ml/azure-machine-learning-automated-ml-ui.jpg)](./media/overview-what-is-azure-ml/azure-machine-learning-automated-ml-ui.jpg)
+  ![Automatisiertes ML im Navigationsbereich von Azure Machine Learning Studio](./media/overview-what-is-azure-ml-studio/azure-machine-learning-automated-ml-ui.jpg)
 
 + **Datenbeschriftung**
 
@@ -76,17 +76,15 @@ Selbst wenn Sie ein erfahrener Entwickler sind, kann Studio die Verwaltung von A
 
 ## <a name="ml-studio-classic-vs-azure-machine-learning-studio"></a>ML Studio (Classic) und Azure Machine Learning Studio
 
-**ML Studio (Classic)** wurde 2015 veröffentlicht und war der erste Drag & Drop-Generator für maschinelles Lernen. 
+[!INCLUDE [ML Studio (classic) retirement](../../includes/machine-learning-studio-classic-deprecation.md)]
 
-Bei **ML Studio (Classic)** handelt sich um einen eigenständigen Dienst, der nur eine visuelle Umgebung bietet. Studio (Classic) funktioniert nicht mit Azure Machine Learning.
+**ML Studio (Classic)** wurde 2015 veröffentlicht und war der erste Drag & Drop-Modellgenerator für maschinelles Lernen in Azure. Bei **ML Studio (Classic)** handelt sich um einen eigenständigen Dienst, der nur eine visuelle Umgebung bietet. Studio (Classic) funktioniert nicht mit Azure Machine Learning.
 
 **Azure Machine Learning** ist ein separater und modernisierter Dienst, der eine umfassende Data Science-Plattform bereitstellt. Er unterstützt sowohl den Code First-Ansatz als auch Umgebungen mit wenig Code.
 
 **Azure Machine Learning Studio** ist ein Webportal *in* Azure Machine Learning, das Optionen mit wenig Code und ohne Code für die Projekterstellung und Ressourcenverwaltung enthält. 
 
-Neuen Benutzern wird empfohlen, **Azure Machine Learning** anstelle von ML Studio (Classic) zu wählen, um die aktuellen Data Science-Tools nutzen zu können. Wenn Sie ML Studio (Classic) bereits nutzen, ziehen Sie die [Migration zu Azure Machine Learning](classic/migrate-overview.md) in Erwägung.
-
-Nachfolgend sind einige Vorteile der Umstellung auf Azure Machine Learning aufgeführt:
+Wenn Sie ein neuer Benutzer sind, wählen Sie **Azure Machine Learning** anstelle von ML Studio (klassisch) aus. Als vollständige ML-Plattform bietet Azure Machine Learning Folgendes:
 
 - Skalierbare Computecluster für umfangreiche Trainings
 - Unternehmenssicherheit und -governance

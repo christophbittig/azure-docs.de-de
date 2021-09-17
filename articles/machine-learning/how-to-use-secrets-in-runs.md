@@ -8,14 +8,14 @@ ms.author: roastala
 ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 03/09/2020
+ms.date: 08/24/2021
 ms.topic: how-to
-ms.openlocfilehash: b934a5b5d7781465d01b0e16927bf213f9fa23df
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 397f22711eadc38c82625a8b6a899f6485d798cf
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897034"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122778233"
 ---
 # <a name="use-authentication-credential-secrets-in-azure-machine-learning-training-runs"></a>Verwenden von Geheimnissen als Anmeldeinformationen für die Authentifizierung in Azure Machine Learning-Trainingsausführungen
 
@@ -49,6 +49,11 @@ keyvault.set_secret(name="mysecret", value = my_secret)
 Schreiben Sie den Wert des Geheimnisses nicht in Python-Code, weil es unsicher ist, den Wert als Klartext in einer Datei zu speichern. Rufen Sie den Wert des Geheimnisses stattdessen aus einer Umgebungsvariablen, z. B. Azure DevOps-Buildgeheimnis, oder aus einer interaktiven Benutzereingabe ab.
 
 Geheimnisnamen können mithilfe der Methode [`list_secrets()`](/python/api/azureml-core/azureml.core.keyvault.keyvault#list-secrets--) aufgelistet werden. Mit [set_secrets()](/python/api/azureml-core/azureml.core.keyvault.keyvault#set-secrets-secrets-batch-) steht außerdem eine Batchversion zur Verfügung, mit der Sie mehrere Geheimnisse gleichzeitig festlegen können.
+
+> [!IMPORTANT]
+> Mit `list_secrets()`werden nur Geheimnisse aufgelistet, die über `set_secret()` oder `set_secrets()`mit dem Azure ML SDK erstellt wurden. Es werden keine Geheimnisse aufgelistet, die von einem anderen als diesem SDK erstellt wurden. Beispielsweise wird ein Geheimnis, das mit dem Azure-Portal oder der Azure PowerShell erstellt wurde, nicht aufgeführt.
+> 
+> Sie können [`get_secret()`](#get-secrets) verwenden, um einen Geheimniswert aus dem Schlüsseltresor abzurufen, unabhängig davon, wie er erstellt wurde. Sie können also Geheimnisse abrufen, die nicht von `list_secrets()` aufgelistet werden.
 
 ## <a name="get-secrets"></a>Abrufen geheimer Schlüssel
 

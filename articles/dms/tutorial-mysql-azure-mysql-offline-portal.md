@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 04/11/2021
-ms.openlocfilehash: 45d9104c5669b3b0adef2c32757076097656ae87
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: cafe928ad8baed2a597bfef9bbedca8ca72e1d76
+ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967900"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122201984"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-offline-using-dms"></a>Tutorial: Durchführen einer Offlinemigration von MySQL zu Azure Database for MySQL mithilfe von DMS
 
@@ -25,8 +25,6 @@ Sie können Azure Database Migration Service verwenden, um per Hochgeschwindigke
 
 > [!IMPORTANT]
 > Für Onlinemigrationen können Sie Open-Source-Tools wie [MyDumper/MyLoader](https://centminmod.com/mydumper.html) mit [Datenreplikation](../mysql/concepts-data-in-replication.md) verwenden. 
-
-[!INCLUDE [preview features callout](../../includes/dms-boilerplate-preview.md)]
 
 > [!NOTE]
 > Eine PowerShell-basierte skriptfähige Version dieser Migration finden Sie unter [Durchführen einer Offlinemigration von MySQL zu Azure Database for MySQL mit PowerShell und Azure Database Migration Service](./migrate-mysql-to-azure-mysql-powershell.md).
@@ -76,6 +74,24 @@ Für dieses Tutorial benötigen Sie Folgendes:
 * Azure Database for MySQL unterstützt nur InnoDB-Tabellen. Informationen zum Konvertieren von MyISAM-Tabellen in InnoDB finden Sie im Artikel [Converting Tables from MyISAM to InnoDB](https://dev.mysql.com/doc/refman/5.7/en/converting-tables-to-innodb.html) (Konvertieren von Tabellen von MyISAM zu InnoDB).
 * Der Benutzer muss über Berechtigungen zum Lesen von Daten aus der Quelldatenbank verfügen.
 
+## <a name="sizing-the-target-azure-database-for-mysql-instance"></a>Festlegen der Größe der Azure Database for MySQL-Zielinstanz
+
+Wenn Sie den Azure Database for MySQL-Zielserver für schnelleres Laden von Daten mithilfe von Azure Database Migration Service vorbereiten möchten, werden die folgenden Serverparameter und Konfigurationsänderungen empfohlen: 
+
+* Legen Sie „max_allowed_packet“ auf „1073741824“ (also 1 GB) fest, um Verbindungsprobleme aufgrund langer Zeilen zu vermeiden. 
+* Legen Sie slow_query_log auf „OFF“ fest, um die langsame Abfrageprotokollierung zu deaktivieren. Dadurch entfällt der zusätzliche Aufwand, der durch eine langsame Abfrageprotokollierung während des Ladens von Daten verursacht wird.
+* Legen Sie „query_store_capture_mode“ auf „NONE“ fest, um den Abfragespeicher zu deaktivieren. Dadurch entfällt der Aufwand durch das Sampling von Aktivitäten durch den Abfragespeicher.
+* innodb_buffer_pool_size: „innodb_buffer_pool_size“ kann nur durch Hochskalieren von Computeressourcen für Azure Database for MySQL-Server erhöht werden. Skalieren Sie den Server im Portal auf der Tarifseite während der Migration auf die SKU „Universell“ mit 64 virtuellen Kernen hoch, um „innodb_buffer_pool_size“ zu erhöhen. 
+* Ändern Sie „innodb_io_capacity“ und „innodb_io_capacity_max“ in den Serverparametern im Azure-Portal auf „9.000“, um die E/A-Auslastung zu verbessern und die Migrationsgeschwindigkeit damit zu optimieren.
+* Ändern Sie „innodb_write_io_threads“ und „innodb_write_io_threads“ in den Serverparametern im Azure-Portal auf „4“, um die Migrationsgeschwindigkeit zu erhöhen.
+* Skalieren Sie die Speicherebene hoch. Die IOPS für den Azure Database for MySQL-Server erhöhen sich progressiv mit dem Anstieg der Speicherebene. 
+    * Bei der Bereitstellungsoption für Einzelserver empfiehlt es sich, für schnellere Ladevorgänge die Speicherebene zu erhöhen, um die bereitgestellten IOPs zu steigern. 
+    * Bei der Bereitstellungsoption für flexible Server wird empfohlen, IOPS unabhängig von der Speichergröße zu skalieren (erhöhen oder verringern). 
+    * Beachten Sie, dass die Speichergröße nur hochskaliert, aber nicht herunterskaliert werden kann.
+
+Nach Abschluss der Migration können Sie die Serverparameter und die Konfiguration auf die Werte zurücksetzen, die für Ihre Workload erforderlich sind. 
+
+
 ## <a name="migrate-database-schema"></a>Migrieren des Datenbankschemas
 
 Um alle Datenbankobjekte wie Tabellenschemas, Indizes und gespeicherte Prozeduren zu übertragen, muss das Schema aus der Quelldatenbank extrahiert und auf die Zieldatenbank angewendet werden. Zum Extrahieren des Schemas können Sie „mysqldump“ mit dem Parameter `--no-data` verwenden. Hierzu benötigen Sie einen Computer, der sowohl eine Verbindung mit der MySQL-Quelldatenbank als auch eine Verbindung mit der Azure Database for MySQL-Zieldatenbank herstellen kann.
@@ -104,47 +120,9 @@ Beispiel:
 mysql.exe -h mysqlsstrgt.mysql.database.azure.com -u docadmin@mysqlsstrgt -p migtestdb < d:\migtestdb.sql
  ```
 
-Wenn Ihr Schema Fremdschlüssel enthält, wird das parallele Laden von Daten während der Migration von der Migrationsaufgabe übernommen. Fremdschlüssel müssen bei der Schemamigration nicht entfernt werden.
+Wenn Ihr Schema Fremdschlüssel oder Trigger enthält, wird das parallele Laden von Daten während der Migration von der Migrationsaufgabe übernommen. Fremdschlüssel oder Trigger müssen bei der Schemamigration nicht entfernt werden.
 
-Falls die Datenbank Trigger enthält, wird vor der vollständigen Migration der Daten aus der Quelldatenbank die Datenintegrität in der Zieldatenbank erzwungen. Es wird empfohlen, während der Migration die Trigger in allen Tabellen der Zieldatenbank zu deaktivieren und die Trigger nach der Migration wieder zu aktivieren.
-
-Führen Sie in MySQL Workbench das folgende Skript für die Zieldatenbank aus, um das Skript zum Entfernen von Triggern und das Skript zum Hinzufügen von Triggern zu extrahieren:
-
-```sql
-SELECT
-    SchemaName,
-    GROUP_CONCAT(DropQuery SEPARATOR ';\n') as DropQuery,
-    Concat('DELIMITER $$ \n\n', GROUP_CONCAT(AddQuery SEPARATOR '$$\n'), '$$\n\nDELIMITER ;') as AddQuery
-FROM
-(
-SELECT 
-    TRIGGER_SCHEMA as SchemaName,
-    Concat('DROP TRIGGER `', TRIGGER_NAME, "`") as DropQuery,
-    Concat('CREATE TRIGGER `', TRIGGER_NAME, '` ', ACTION_TIMING, ' ', EVENT_MANIPULATION, 
-            '\nON `', EVENT_OBJECT_TABLE, '`\n' , 'FOR EACH ', ACTION_ORIENTATION, ' ',
-            ACTION_STATEMENT) as AddQuery
-FROM  
-    INFORMATION_SCHEMA.TRIGGERS
-ORDER BY EVENT_OBJECT_SCHEMA, EVENT_OBJECT_TABLE, ACTION_TIMING, EVENT_MANIPULATION, ACTION_ORDER ASC
-) AS Queries
-GROUP BY SchemaName
-```
-
-Führen Sie die generierte Abfrage zum Entfernen von Triggern (Spalte „DropQuery“) im Ergebnis aus, um Trigger in der Zieldatenbank zu entfernen. Die Abfrage zum Hinzufügen von Triggern kann gespeichert und nach Abschluss der Datenmigration verwendet werden.
-
-## <a name="register-the-microsoftdatamigration-resource-provider"></a>Registrieren des Ressourcenanbieters „Microsoft.DataMigration“
-
-Die Registrierung des Ressourcenanbieters muss für jedes Azure-Abonnement lediglich einmal durchgeführt werden. Ohne die Registrierung kann keine Instanz von **Azure Database Migration Service** erstellt werden.
-
-1. Melden Sie sich beim Azure-Portal an, und klicken Sie auf **Alle Dienste** und anschließend auf **Abonnements**.
-
-   ![Abonnements im Portal anzeigen](media/tutorial-mysql-to-azure-mysql-offline-portal/01-dms-portal-select-subscription.png)
-
-2. Wählen Sie das Abonnement aus, in dem Sie die Azure Database Migration Service-Instanz erstellen möchten, und klicken Sie dann auf **Ressourcenanbieter**.
-
-3. Suchen Sie nach „Migration“, und wählen Sie rechts neben **Microsoft.DataMigration** die Option **Registrieren** aus.
-
-    ![Registrieren des Ressourcenanbieters](media/tutorial-mysql-to-azure-mysql-offline-portal/02-dms-portal-register-rp.png)
+[!INCLUDE [resource-provider-register](../../includes/database-migration-service-resource-provider-register.md)]
 
 ## <a name="create-a-database-migration-service-instance"></a>Erstellen einer Database Migration Service-Instanz
 
@@ -188,7 +166,7 @@ Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Si
     
     ![Erstellen eines neuen Migrationsprojekts](media/tutorial-mysql-to-azure-mysql-offline-portal/08-02-dms-portal-new-project.png)
 
-3. Geben Sie auf dem Bildschirm **Neues Migrationsprojekt** einen Namen für das Projekt an, und wählen Sie im Auswahlfeld **Typ des Quellservers** die Option **MySQL**, im Auswahlfeld **Typ des Zielservers** die Option **Azure Database for MySQL** und im Auswahlfeld für die **Art der Migrationsaktivität** die Option **\[Datenmigration \]Vorschau** aus. Wählen Sie **Aktivität erstellen und ausführen** aus.
+3. Geben Sie auf dem Bildschirm **Neues Migrationsprojekt** einen Namen für das Projekt an, und wählen Sie im Auswahlfeld **Typ des Quellservers** die Option **MySQL**, im Auswahlfeld **Typ des Zielservers** die Option **Azure Database for MySQL** und im Auswahlfeld für die **Art der Migrationsaktivität** die Option **Datenmigration** aus. Wählen Sie **Aktivität erstellen und ausführen** aus.
 
     ![Erstellen eines Database Migration Service-Projekts](media/tutorial-mysql-to-azure-mysql-offline-portal/09-dms-portal-project-mysql-create.png)
 

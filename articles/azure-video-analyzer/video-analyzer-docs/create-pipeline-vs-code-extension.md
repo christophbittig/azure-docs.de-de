@@ -4,12 +4,12 @@ description: In dieser Schnellstartanleitung werden die ersten Schritte mit der 
 ms.service: azure-video-analyzer
 ms.topic: quickstart
 ms.date: 06/01/2021
-ms.openlocfilehash: dd342d1aaf8cf93bfcf518342315ad022e52f4f9
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: e3d118f2651e7b680b85bbb41bb6ecc3d7106bba
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114604018"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745687"
 ---
 # <a name="quickstart-azure-video-analyzer-visual-studio-code-extension"></a>Schnellstart: Verwenden der Visual Studio Code-Erweiterung für Azure Video Analyzer
 
@@ -25,7 +25,7 @@ Nach Abschluss der Einrichtungsschritte können Sie den simulierten Livevideostr
 * Ein Azure-Konto das ein aktives Abonnement beinhaltet. [Erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), falls Sie noch keines besitzen.
 
 * [Visual Studio Code](https://code.visualstudio.com/) mit den folgenden Erweiterungen:
-    * [Video Analyzer](https://go.microsoft.com/fwlink/?linkid=2163332)
+    * [Video Analyzer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.azure-video-analyzer)
 
 * Wenn Sie die Schnellstartanleitung [Erste Schritte: Azure Video Analyzer](./get-started-detect-motion-emit-events.md) nicht abgeschlossen haben, müssen Sie [Azure-Ressourcen einrichten](#set-up-azure-resources).    
 
@@ -58,7 +58,7 @@ Auf der linken Seite wird nun Ihr verbundenes Gerät mit dem zugrunde liegenden 
 
 Pipelinetopologien sind die Grundbausteine, die von Video Analyzer verwendet werden, um die Vorgehensweise zu definieren.  Weitere Informationen zu Pipelinetopologien finden Sie [hier](./pipeline.md).  In diesem Abschnitt wird eine Pipelinetopologie (also eine Vorlage) bereitgestellt und anschließend eine Instanz der Topologie (oder Livepipeline) erstellt. Die Livepipeline ist mit dem eigentlichen Videostream verbunden.
 
-1.  Klicken Sie links unter `Modules` mit der rechten Maustaste auf `Pipeline topologies`, und wählen Sie die Option zum Erstellen einer Pipelinetopologie aus.
+1.  Klicken Sie auf der linken Seite unter `Modules` mit der rechten Maustaste auf `Pipeline topologies`, und wählen Sie `Create pipeline topology` aus.
 1.  Wählen Sie im oberen Bereich unter `Try sample topologies` > `Motion Detection` die Option `Publish motion events to IoT Hub` aus.  Klicken Sie auf `Proceed`, wenn Sie dazu aufgefordert werden.
 1.  Klicken Sie rechts oben auf `Save`.
 
@@ -67,9 +67,9 @@ In der Liste `Pipeline topologies` auf der linken Seite sollte nun der Eintrag `
 1.  Klicken Sie auf der linken Seite unter `Pipeline topologies` mit der rechten Maustaste auf `MotionDetection`, und wählen Sie `Create live pipeline` aus.
 1.  Geben Sie für `Live pipeline name` den Namen `mdpipeline1` ein.
 1.  Gehen Sie im `Parameters`-Abschnitt folgendermaßen vor:
-    - Geben Sie für „rtspPassword“ das Kennwort „testpassword“ ein.
+    - Geben Sie für „rtspPassword“ entsprechend „testpassword“ ein.
     - Geben Sie für „rtspUrl“ die URL „rtsp://rtspsim:554/media/camera-300s.mkv“ ein.
-    - Geben Sie für „rtspUserName“ den Benutzernamen „testuser“ ein.
+    - Geben Sie für „rtspUserName“ entsprechend „testuser“ ein.
 1.  Klicken Sie rechts oben auf die Option zum Speichern und Aktivieren.
 
 Daraufhin wird eine anfängliche Topologie bereitgestellt, und auf Ihrem Edgegerät wird eine Livepipeline eingerichtet und verfügbar gemacht.  Wenn Sie die Azure IoT Hub-Erweiterung aus der Schnellstartanleitung zu den ersten Schritten installiert haben, können Sie den integrierten Ereignisendpunkt in der Visual Studio Code-Erweiterung für Azure IoT Hub überwachen, um die im Abschnitt [Überprüfen der Ergebnisse](./get-started-detect-motion-emit-events.md#observe-results) gezeigte Überwachung durchzuführen.

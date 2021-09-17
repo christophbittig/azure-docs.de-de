@@ -8,14 +8,16 @@ ms.subservice: hpc
 ms.topic: overview
 ms.date: 04/09/2021
 ms.reviewer: cynthn
-ms.openlocfilehash: 554764b89e5da4cd6777ec89fcb2f2d5ad104ebf
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 2b9f89126f49b75f5e232521f807f6db3ba9d4e9
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600266"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693388"
 ---
 # <a name="high-performance-computing-on-infiniband-enabled-h-series-and-n-series-vms"></a>High Performance Computing auf InfiniBand-fähigen virtuellen Computern der H- und N-Serie
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 InfiniBand-fähige virtuelle Computer der H- und N-Serie von Azure bieten eine herausragende Leistung, MPI-Skalierbarkeit (Message Passing Interface) und Kosteneffizienz für verschiedenste HPC- und KI-Workloads in der Praxis. Diese für High Performance Computing (HPC) optimierten virtuellen Computer werden verwendet, um besonders rechenintensive Probleme in Wissenschaft und Technik zu lösen. Hierzu zählen beispielsweise Strömungssimulationen, Erdmodellierung und Wettersimulationen.
 
@@ -47,5 +49,5 @@ Viertens: Konfigurieren Sie die Workloads optimal, wie im spezifischen Leitfaden
 - Informieren Sie sich über das [Konfigurieren und Optimieren](configure.md) der InfiniBand-fähigen virtuellen Computer der [H-Serie](../../sizes-hpc.md) und der [N-Serie](../../sizes-gpu.md).
 - Sehen Sie sich die [Übersicht über virtuelle Computer der HBv3-Serie](hb-series-overview.md) und die [Übersicht über virtuelle Computer der HC-Serie](hc-series-overview.md) an, um zu erfahren, wie Sie Workloads optimal konfigurieren, um die bestmögliche Leistung und Skalierbarkeit zu erzielen.
 - Informieren Sie sich über die neuesten Ankündigungen, HPC-Workloadbeispiele und Leistungsergebnisse in den [Tech Community-Blogs zu Azure Compute](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
-- Testen Sie Ihr Wissen mit einem [Lernmodul zur Optimierung von HPC-Anwendungen in Azure](https://docs.microsoft.com/learn/modules/optimize-tightly-coupled-hpc-apps/).
+- Testen Sie Ihr Wissen mit einem [Lernmodul zur Optimierung von HPC-Anwendungen in Azure](/learn/modules/optimize-tightly-coupled-hpc-apps/).
 - Eine allgemeinere Übersicht über die Architektur für die Ausführung von HPC-Workloads finden Sie unter [High Performance Computing (HPC) in Azure](/azure/architecture/topics/high-performance-computing/).

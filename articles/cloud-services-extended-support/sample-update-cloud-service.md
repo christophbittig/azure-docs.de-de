@@ -8,65 +8,69 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1be03892e9516e5f73b447e8dba921db802903f2
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 22d02ef7c395ae6f7cdbbf739ed5107436bd169c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110696159"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751092"
 ---
 # <a name="update-an-azure-cloud-service-extended-support"></a>Aktualisieren eines Azure-Clouddiensts (erweiterter Support)
 
 In diesen Beispielen werden verschiedene Möglichkeiten zum Aktualisieren einer vorhandenen Azure Cloud Services-Bereitstellung (erweiterter Support) behandelt.
 
 ## <a name="add-an-extension-to-existing-cloud-service"></a>Hinzufügen einer Erweiterung zu einer vorhandenen Cloud Services-Instanz
+Die folgenden Befehle fügen eine RDP-Erweiterung zu einem bereits bestehenden Clouddienst namens ContosoCS hinzu, der zur Ressourcengruppe ContosOrg gehört.
 ```powershell
 # Create RDP extension object
 $rdpExtension = New-AzCloudServiceRemoteDesktopExtensionObject -Name "RDPExtension" -Credential $credential -Expiration $expiration -TypeHandlerVersion "1.2.1"
-# Get existing Cloud Service
+# Get existing cloud service
 $cloudService = Get-AzCloudService -ResourceGroup "ContosOrg" -CloudServiceName "ContosoCS"
-# Add RDP extension to existing Cloud Service extension object
-$cloudService.ExtensionProfileExtension = $cloudService.ExtensionProfileExtension + $rdpExtension
-# Update Cloud Service
+# Add RDP extension to existing cloud service extension object
+$cloudService.ExtensionProfile.Extension = $cloudService.ExtensionProfile.Extension + $rdpExtension
+# Update cloud service
 $cloudService | Update-AzCloudService
 ```
 
 ## <a name="remove-all-extensions-from-a-cloud-service"></a>Entfernen aller Erweiterungen aus einer Cloud Services-Instanz
+Die folgenden Befehle entfernen alle Erweiterungen aus dem bestehenden Clouddienst namens ContosoCS, der zur Ressourcengruppe ContosOrg gehört.
 ```powershell
-# Get existing Cloud Service
+# Get existing cloud service
 $cloudService = Get-AzCloudService -ResourceGroup "ContosOrg" -CloudServiceName "ContosoCS"
 # Set extension to empty list
-$cloudService.ExtensionProfileExtension = @()
-# Update Cloud Service
+$cloudService.ExtensionProfile.Extension = @()
+# Update cloud service
 $cloudService | Update-AzCloudService
 ```
 
 ## <a name="remove-the-remote-desktop-extension-from-cloud-service"></a>Entfernen der Remotedesktoperweiterung aus Cloud Services
+Die folgenden Befehle entfernen die RDP-Erweiterung aus dem bestehenden Clouddienst namens ContosoCS, der zur Ressourcengruppe ContosOrg gehört.
 ```powershell
-# Get existing Cloud Service
+# Get existing cloud service
 $cloudService = Get-AzCloudService -ResourceGroup "ContosOrg" -CloudServiceName "ContosoCS"
 # Remove extension by name RDPExtension
-$cloudService.ExtensionProfileExtension = $cloudService.ExtensionProfileExtension | Where-Object { $_.Name -ne "RDPExtension" }
-# Update Cloud Service
+$cloudService.ExtensionProfile.Extension = $cloudService.ExtensionProfile.Extension | Where-Object { $_.Name -ne "RDPExtension" }
+# Update cloud service
 $cloudService | Update-AzCloudService
 ```
 
 ## <a name="scale-out--scale-in-role-instances"></a>Horizontales Skalieren/Abskalieren von Rolleninstanzen
+Die folgenden Befehle zeigen, wie die Anzahl der Rolleninstanzen für den Clouddienst namens ContosoCS, der zur Ressourcengruppe ContosOrg gehört, ab- und aufskaliert werden kann.
 ```powershell
-# Get existing Cloud Service
+# Get existing cloud service
 $cloudService = Get-AzCloudService -ResourceGroup "ContosOrg" -CloudServiceName "ContosoCS"
 
 # Scale-out all role instance count by 1
-$cloudService.RoleProfileRole | ForEach-Object {$_.SkuCapacity += 1}
+$cloudService.RoleProfile.Role | ForEach-Object {$_.SkuCapacity += 1}
 
 # Scale-in ContosoFrontend role instance count by 1
-$role = $cloudService.RoleProfileRole | Where-Object {$_.Name -eq "ContosoFrontend"}
- $role.SkuCapacity -= 1
+$role = $cloudService.RoleProfile.Role | Where-Object {$_.Name -eq "ContosoFrontend"}
+$role.SkuCapacity -= 1
 
-# Update Cloud Service configuration as per the new role instance count
+# Update cloud service configuration as per the new role instance count
 $cloudService.Configuration = $configuration
 
-# Update Cloud Service
+# Update cloud service
 $cloudService | Update-AzCloudService
 ```
 

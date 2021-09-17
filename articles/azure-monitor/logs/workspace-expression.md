@@ -4,13 +4,13 @@ description: Der workspace-Ausdruck wird in Azure Monitor-Protokollabfragen verw
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/10/2018
-ms.openlocfilehash: 2f6eb3998c611cb7a72886d1c577c665d73cb5a2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 08/19/2021
+ms.openlocfilehash: 7eee3f0133a629fb5c1669ba8dbdc36fe95bf252
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102035567"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515412"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>workspace()-Ausdruck in Azure Monitor-Protokollabfragen
 
@@ -29,7 +29,7 @@ Der Ausdruck `workspace` wird in Azure Monitor-Abfragen verwendet, um Daten aus 
 |:---|:---|:---|
 | Ressourcenname | Für Menschen lesbarer Name des Arbeitsbereichs (auch als „Komponentenname“ bezeichnet) | workspace("contosoretail") |
 | Qualifizierter Name | Vollständiger Name des Arbeitsbereichs in der Form: „Abonnementname/Ressourcengruppe/Komponentenname“ | workspace('Contoso/ContosoResource/ContosoWorkspace') |
-| ID | GUID des Arbeitsbereichs | workspace("b438b3f6-912a-46d5-9db1-b42069242ab4") |
+| id | GUID des Arbeitsbereichs | workspace("b438b3f6-912a-46d5-9db1-b42069242ab4") |
 | Azure-Ressourcen-ID | Bezeichner für die Azure-Ressource | workspace("/subscriptions/e4227-645-44e-9c67-3b84b5982/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail") |
 
 

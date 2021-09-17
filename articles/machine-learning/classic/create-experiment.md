@@ -1,5 +1,5 @@
 ---
-title: 'ML Studio (Classic): Schnellstart: Erstellen eines Data Science-Experiments – Azure'
+title: 'ML Studio (Classic): Erstellen eines Data Science-Experiments – Azure'
 description: In dieser Machine Learning-Schnellstartanleitung werden die Schritte eines einfachen Data Science-Experiments beschrieben. Wir sagen den Preis für ein Auto vorher, indem wir einen Regressionsalgorithmus verwenden.
 services: machine-learning
 ms.service: machine-learning
@@ -9,21 +9,20 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: 68741d273cc0461bc2c0d362c1a859146d696cad
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 8049b3fcce0d9f07314a71b051162819da42514c
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112582472"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689618"
 ---
-# <a name="quickstart-create-your-first-data-science-experiment-in-machine-learning-studio-classic"></a>Schnellstart: Erstellen Ihres ersten Data Science-Experiments in Machine Learning Studio (Classic)
+# <a name="create-your-first-data-science-experiment-in-machine-learning-studio-classic"></a>Erstellen Ihres ersten Data Science-Experiments in Machine Learning Studio (Classic)
 
 **GILT FÜR:**  ![Dies ist ein Häkchen, d. h., dieser Artikel bezieht sich auf Machine Learning Studio (Classic).](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic)   ![Dies ist ein X, d. h., dieser Artikel bezieht sich nicht auf Azure Machine Learning.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
-[!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
-
-In dieser Schnellstartanleitung erstellen Sie ein Machine-Learning-Experiment in [Machine Learning Studio (Classic)](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio), mit dem der Preis eines Automobils basierend auf verschiedenen Variablen vorhergesagt wird, z. B. Marke und technische Daten.
+In diesem Artikel erstellen Sie ein Machine-Learning-Experiment in [Machine Learning Studio (Classic)](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio), mit dem der Preis eines Automobils basierend auf verschiedenen Variablen vorhergesagt wird, z. B. Marke und technische Daten.
 
 Falls maschinelles Lernen neu für Sie ist, hilft Ihnen die Videoreihe [Data Science für Anfänger](data-science-for-beginners-the-5-questions-data-science-answers.md) weiter. Hierbei handelt es sich um eine gute Einführung in maschinelles Lernen in alltäglicher Sprache und mit entsprechenden Konzepten.
 

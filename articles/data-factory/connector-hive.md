@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 11/17/2020
+ms.date: 08/30/2021
 ms.author: jianleishen
-ms.openlocfilehash: e9117ce75c17a1d45d5479520372de5bbcb47074
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: db88b0250a52ea96a116097469e43e1f0c26ece2
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122640706"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123306045"
 ---
 # <a name="copy-and-transform-data-from-hive-using-azure-data-factory"></a>Kopieren und Transformieren von Daten aus Hive mithilfe von Azure Data Factory 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -40,6 +40,32 @@ Azure Data Factory enthält einen integrierten Treiber zum Sicherstellen der Kon
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
+## <a name="create-a-linked-service-to-hive-using-ui"></a>Erstellen eines mit Hive verknüpften Dienstes über die Benutzeroberfläche
+
+Führen Sie die folgenden Schritte aus, um einen mit Hive verknüpften Dienst in der Azure-Portal-Benutzeroberfläche zu erstellen.
+
+1. Navigieren Sie in Ihrem Azure Data Factory- oder Synapse-Arbeitsbereich zur Registerkarte „Verwalten“, wählen Sie „Verknüpfte Dienste“ aus, und klicken Sie auf „Neu“:
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Erstellen Sie einen neuen verknüpften Dienst über die Azure Data Factory-Benutzeroberfläche.":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Erstellen Sie einen neuen verknüpften Dienst über die Azure Synapse-Benutzeroberfläche.":::
+
+2. Suchen Sie nach „Hive“, und wählen Sie den Hive-Connector aus.
+
+    :::image type="content" source="media/connector-hive/hive-connector.png" alt-text="Wählen Sie den Hive-Connector aus.":::    
+
+1. Konfigurieren Sie die Dienstdetails, testen Sie die Verbindung, und erstellen Sie den neuen verknüpften Dienst.
+
+    :::image type="content" source="media/connector-hive/configure-hive-linked-service.png" alt-text="Konfigurieren Sie einen mit Hive verknüpften Dienst.":::
+
+## <a name="connector-configuration-details"></a>Details zur Connector-Konfiguration
+
+
+
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den Hive-Connector verwendet werden.
 
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
@@ -50,7 +76,7 @@ Folgende Eigenschaften werden für den mit Hive verknüpften Dienst unterstützt
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Hive** | Ja |
 | host | IP-Adresse oder Hostname des Hive-Servers, bei mehreren Hosts durch „;“ getrennt (nur wenn „serviceDiscoveryMode“ aktiviert ist).  | Ja |
-| port | Der TCP-Port, den der Hive-Server verwendet, um auf Clientverbindungen zu lauschen. Geben Sie beim Herstellen einer Verbindung mit Azure HDInsights als Port 443 an. | Ja |
+| port | Der TCP-Port, den der Hive-Server verwendet, um auf Clientverbindungen zu lauschen. Wenn Sie eine Verbindung mit Azure HDInsight herstellen, geben Sie „443“ als Port an. | Ja |
 | serverType | Der Typ des Hive-Servers. <br/>Zulässige Werte sind: **HiveServer1**, **HiveServer2**, **HiveThriftServer** | Nein |
 | thriftTransportProtocol | Das auf der Thrift-Ebene zu verwendende Transportprotokoll. <br/>Zulässige Werte sind: **Binary**, **SASL**, **HTTP** | Nein |
 | authenticationType | Die Authentifizierungsmethode für den Zugriff auf den Hive-Server. <br/>Zulässige Werte sind: **Anonymous**, **Username**, **UsernameAndPassword** und **WindowsAzureHDInsightService**. Kerberos-Authentifizierung wird derzeit nicht unterstützt. | Ja |

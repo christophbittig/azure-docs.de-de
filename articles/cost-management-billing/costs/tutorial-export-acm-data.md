@@ -3,18 +3,18 @@ title: 'Tutorial: Erstellen und Verwalten von exportierten Daten aus Azure Cost 
 description: Dieser Artikel erläutert, wie Sie aus Azure Cost Management exportierte Daten erstellen und verwalten können, um sie in externen Systemen zu verwenden.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/26/2021
+ms.date: 08/05/2021
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 592ef54b359c84309da350bf53da6bb0a4152374
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: f6d640d40b586e435e1484fce8d6560a961ba6ac
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114708637"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731950"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Tutorial: Erstellen und Verwalten von exportierten Daten
 
@@ -259,11 +259,11 @@ Exporte für Verwaltungsgruppen anderer Abonnementtypen werden nicht unterstütz
 
 ### <a name="file-partitioning-for-large-datasets"></a>Dateipartitionierung für große Datasets
 
-Wenn Sie über eine Microsoft-Kundenvereinbarung oder eine Microsoft Partner-Vereinbarung verfügen, können Sie Exporte aktivieren, um Ihre Datei in mehrere kleinere Dateipartitionen aufzuteilen und so die Datenerfassung zu erleichtern. Wenn Sie den Export erstmalig konfigurieren, legen Sie die Einstellung **Dateipartitionierung** auf **Ein** fest. Diese Einstellung ist standardmäßig **Aus**.
+Wenn Sie über eine Microsoft-Kundenvereinbarung, eine Microsoft Partner-Vereinbarung oder ein Enterprise Agreement verfügen, können Sie Exporte aktivieren, um Ihre Datei in mehrere kleinere Dateipartitionen aufzuteilen und so die Datenerfassung zu erleichtern. Wenn Sie den Export erstmalig konfigurieren, legen Sie die Einstellung **Dateipartitionierung** auf **Ein** fest. Diese Einstellung ist standardmäßig **Aus**.
 
 :::image type="content" source="./media/tutorial-export-acm-data/file-partition.png" alt-text="Screenshot der Option „Dateipartitionierung“." lightbox="./media/tutorial-export-acm-data/file-partition.png" :::
 
-Wenn Sie keine Microsoft-Kundenvereinbarung oder Microsoft Partner-Vereinbarung haben, wird die Option **Dateipartitionierung** nicht angezeigt.
+Wenn Sie keine Microsoft-Kundenvereinbarung, Microsoft Partner-Vereinbarung oder ein Enterprise Agreement haben, wird die Option **Dateipartitionierung** nicht angezeigt.
 
 #### <a name="update-existing-exports-to-use-file-partitioning"></a>Aktualisieren vorhandener Exporte zur Verwendung der Dateipartitionierung
 

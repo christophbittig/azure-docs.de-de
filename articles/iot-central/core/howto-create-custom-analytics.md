@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: ce4c526408f4aae1d4814a1c523c668e79e32c3a
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 5f046920ce711ac6b1e6b9a461d71d9d49b2ddc7
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122356115"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597663"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Erweitern von Azure IoT Central mit benutzerdefinierten Analysen mithilfe von Azure Databricks
 
@@ -250,4 +250,4 @@ In dieser Schrittanleitung wurde Folgendes vermittelt:
 * Streamen von Telemetriedaten aus einer IoT Central-Anwendung mithilfe des *kontinuierlichen Datenexports*
 * Erstellen einer Azure Databricks-Umgebung zum Analysieren und Darstellen von Telemetriedaten
 
-Sie wissen nun, wie Sie benutzerdefinierte Analysen erstellen. Als Nächstes sollten Sie den Artikel [Visualisieren und Analysieren der Azure IoT Central-Daten in einem Power BI-Dashboard](howto-connect-powerbi.md) lesen.
+Sie wissen jetzt, wie benutzerdefinierte Analysen erstellt werden. Als Nächstes sollten Sie den Artikel [Verwenden der Azure IoT Central-Geräte-Bridge, um andere IoT-Clouds mit IoT Central zu verbinden](howto-build-iotc-device-bridge.md) lesen.

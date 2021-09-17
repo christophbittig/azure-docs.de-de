@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.date: 11/05/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b5e83f883b5e1e35842ab128e4732e993fb937a0
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: ff3c4dc893a6760c317b39b4a76f4de2e24da96e
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106383653"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690903"
 ---
 # <a name="tutorial-set-up-disaster-recovery-for-linux-virtual-machines"></a>Tutorial: Einrichten der Notfallwiederherstellung für virtuelle Linux-Computer
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
 In diesem Tutorial wird veranschaulicht, wie Sie die Notfallwiederherstellung für virtuelle Azure-Computer einrichten, auf denen Linux ausgeführt wird. In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
@@ -66,13 +68,13 @@ Optional können Sie bei der Erstellung eines virtuellen Computers die Notfallwi
 1. [Erstellen Sie einen virtuellen Linux-Computer.](quick-create-portal.md)
 2. Wählen Sie auf der Registerkarte **Verwaltung** unter **Site Recovery** die Option **Notfallwiederherstellung aktivieren** aus.
 3. Wählen Sie unter **Sekundäre Region** die Zielregion aus, in der Sie den virtuellen Computer zur Notfallwiederherstellung replizieren möchten.
-4. Wählen Sie unter **Sekundäres Abonnement** das Zielabonnement aus, in dem der virtuelle Zielcomputer erstellt wird. Der virtuelle Zielcomputer wird erstellt, wenn Sie ein Failover des virtuellen Quellcomputers aus der Quellregion in die Zielregion durchführen.
-5. Wählen Sie unter **Recovery Services-Tresor** den Tresor aus, den Sie für die Replikation verwenden möchten. Wenn Sie über keinen Tresor verfügen, klicken Sie auf **Neu erstellen**. Wählen Sie eine Ressourcengruppe für den Tresor und einen Tresornamen aus.
-6. Übernehmen Sie unter **Site Recovery-Richtlinie** die Standardrichtlinie, oder wählen Sie **Neu erstellen** aus, um benutzerdefinierte Werte festzulegen.
+4. Wählen Sie unter **Sekundäres Abonnement** das Zielabonnement aus, in dem der virtuelle Zielcomputer erstellt wird. Der virtuelle Zielcomputer wird erstellt, wenn Sie ein Failover der Quell-VM aus der Quellregion in die Zielregion durchführen.
+5. Wählen Sie in **Recovery Services** Tresor den Tresor aus, den Sie für die Replikation verwenden möchten. Wenn Sie über keinen Tresor verfügen, klicken Sie auf **Neu erstellen**. Wählen Sie eine Ressourcengruppe aus, in der der Tresor platziert werden soll, und einen Tresor Namen.
+6. Überlassen Sie in **Site Recovery Richtlinie** die Standard Richtlinie, oder wählen Sie **neu erstellen** aus, um benutzerdefinierte Werte festzulegen.
 
-    - Wiederherstellungspunkte werden aus Momentaufnahmen von VM-Datenträgern zu einem bestimmten Zeitpunkt erstellt. Wenn Sie ein Failover eines virtuellen Computers ausführen, verwenden Sie einen Wiederherstellungspunkt, um den virtuellen Computer am Zielstandort wiederherzustellen. 
-    - Alle fünf Minuten wird ein absturzkonsistenter Wiederherstellungspunkt erstellt. Diese Einstellung kann nicht geändert werden. Eine absturzkonsistente Momentaufnahme erfasst Daten, die sich zum Zeitpunkt der Erstellung der Momentaufnahme auf dem Datenträger befunden haben. Sie enthält keine Daten aus dem Arbeitsspeicher. 
-    - Standardmäßig behält Site Recovery absturzkonsistente Wiederherstellungspunkte 24 Stunden lang bei. Sie können einen benutzerdefinierten Wert zwischen 0 und 72 Stunden festlegen.
+    - Wiederherstellungspunkte werden aus Momentaufnahmen von VM-Datenträgern zu einem bestimmten Zeitpunkt erstellt. Wenn Sie ein Failover eines VM ausführen, verwenden Sie einen Wiederherstellungspunkt, um die VM am Zielstandort wiederherzustellen. 
+    - Alle fünf Minuten wird ein Absturz einheitlicher Wiederherstellungspunkt erstellt. Diese Einstellung kann nicht geändert werden. Eine absturzkonsistente Momentaufnahme erfasst Daten, die sich zum Zeitpunkt der Erstellung der Momentaufnahme auf dem Datenträger befunden haben. Sie enthält keine Daten aus dem Arbeitsspeicher. 
+    - Standardmäßig behält Site Recovery Wiederherstellungspunkte 24 Stunden lang bei. Sie können einen benutzerdefinierten Wert zwischen 0 und 72 Stunden festlegen.
     - Alle vier Stunden wird eine anwendungskonsistente Momentaufnahme erstellt.
     - Wiederherstellungspunkte werden von Site Recovery standardmäßig 24 Stunden lang gespeichert.
 
@@ -89,28 +91,28 @@ Wenn Sie die Notfallwiederherstellung für einen vorhandenen virtuellen Computer
 1. Öffnen Sie im Azure-Portal die Seite mit den VM-Eigenschaften.
 2. Wählen Sie unter **Vorgänge** die Option **Notfallwiederherstellung** aus.
 
-    :::image type="content" source="./media/tutorial-disaster-recovery/existing-vm.png" alt-text="Öffnen der Notfallwiederherstellungsoptionen für einen vorhandenen virtuellen Computer":::
+    :::image type="content" source="./media/tutorial-disaster-recovery/existing-vm.png" alt-text="Öffnen Sie Notfallwiederherstellungsoptionen für einen vorhandenen VM":::
 
-3. Wenn der virtuelle Computer in einer Verfügbarkeitszone bereitgestellt wird, können Sie unter **Grundlagen** die Notfallwiederherstellung zwischen Verfügbarkeitszonen auswählen.
-4. Wählen Sie unter **Zielregion** die Region aus, in der Sie den virtuellen Computer replizieren möchten. Die Quell- und Zielregionen müssen sich jeweils auf demselben Azure Active Directory-Mandanten befinden.
+3. Wenn der VM in einer Verfügbarkeits Zone bereitgestellt wird, können Sie unter **Grundlagen** die Notfallwiederherstellung zwischen Verfügbarkeits Zonen auswählen.
+4. Wählen Sie unter **Zielregion** die Region aus, in der Sie die VM replizieren möchten. Die Quell- und Zielregionen müssen sich jeweils auf demselben Azure Active Directory-Mandanten befinden.
 
-    :::image type="content" source="./media/tutorial-disaster-recovery/basics.png" alt-text="Festlegen der grundlegenden Notfallwiederherstellungsoptionen für einen virtuellen Computer":::
+    :::image type="content" source="./media/tutorial-disaster-recovery/basics.png" alt-text="Legen Sie die grundlegenden Notfallwiederherstellungsoptionen für eine VM fest.":::
 
 5. Klicken Sie auf **Weiter: Erweiterte Einstellungen**.
 6. Unter **Erweiterte Einstellungen** können Sie Einstellungen überprüfen und Werte in benutzerdefinierte Einstellungen ändern. Standardmäßig werden die Quelleinstellungen von Site Recovery gespiegelt, um die Zielressourcen zu erstellen.
 
-    - **Zielabonnement:** Das Abonnement, in dem der virtuelle Zielcomputer nach einem Failover erstellt wird
-    - **Target VM resource group** (Ressourcengruppe des virtuellen Zielcomputers): Die Ressourcengruppe, in der der virtuelle Zielcomputer nach einem Failover erstellt wird.
-    - **Virtuelles Zielnetzwerk:** Das virtuelle Azure-Netzwerk, in dem sich der virtuelle Zielcomputer befindet, wenn er nach einem Failover erstellt wird.
-    - **Zielverfügbarkeit:** Wenn der virtuelle Zielcomputer als einzelne Instanz, in einer Verfügbarkeitsgruppe oder in einer Verfügbarkeitszone erstellt wird
-    - **Näherungsplatzierungsgruppe:** Wählen Sie ggf. die Näherungsplatzierungsgruppe aus, in der sich der virtuelle Zielcomputer nach einem Failover befindet.
+    - **Zielabonnement**. Das Abonnement, in dem die Ziel-VM nach einem Failover erstellt wird.
+    - **Azure-VM-Ziel-Ressourcengruppe**. Die Ressourcengruppe in der die Ziel-VM nach einem Failover erstellt wird.
+    - **Virtuelles Zielnetzwerk:** Das virtuelle Azure-Netzwerk, in dem sich die Ziel-VM befindet, wenn Sie nach einem Failover erstellt wird.
+    - **Zielverfügbarkeit**. Wenn die Ziel-VM als einzelne Instanz, in einer Verfügbarkeits Gruppe oder in einer Verfügbarkeits Zone erstellt wird.
+    - **Näherungsplatzierungsgruppe**. Wählen Sie ggf. die Näherungsplatzierungsgruppe aus, in der sich die Ziel-VM nach einem Failover befindet.
     - **Speichereinstellungen – Cachespeicherkonto**: Bei der Wiederherstellung wird ein Speicherkonto in der Quellregion als temporärer Datenspeicher verwendet. Änderungen der Quell-VM werden unter diesem Konto zwischengespeichert, bevor sie am Zielort repliziert werden.
-        - Standardmäßig wird ein Cachespeicherkonto pro Tresor erstellt und wiederverwendet.
-        - Wenn Sie das Cachekonto für den virtuellen Computer anpassen möchten, können Sie ein anderes Speicherkonto auswählen.
-    - **Speichereinstellungen – verwalteter Replikatdatenträger** Site Recovery erstellt in der Zielregion standardmäßig verwaltete Replikatdatenträger.
-        -  Der verwaltete Zieldatenträger spiegelt standardmäßig die verwalteten Datenträger des virtuellen Quellcomputers. Dabei wird derselbe Speichertyp (HDD/SSD Standard oder SSD Premium) verwendet.
+        - Standardmäßig wird ein Cache Speicherkonto pro Tresor erstellt und wieder verwendet.
+        - Wenn Sie das Cache Konto für das VM anpassen möchten, können Sie ein anderes Speicherkonto auswählen.
+    - **Speichereinstellungen – Replikat verwalteter Datenträgerdatenträger**. Site Recovery erstellt standardmäßig in der Zielregion ein Replikat verwalteter Datenträger.
+        -  Standardmäßig spiegelt der verwaltete Ziel Datenträger die verwalteten Datenträger der Quell-VM mit demselben Speichertyp (Standard HDD/SSD oder Premium SSD) wider.
         - Sie können den Speichertyp nach Bedarf anpassen.
-    - **Replikationseinstellungen**: Zeigt den Tresor, in dem sich der virtuelle Computer befindet, und die für den virtuellen Computer verwendete Replikationsrichtlinie. Wiederherstellungspunkte, die von Site Recovery für den virtuellen Computer erstellt werden, werden standardmäßig 24 Stunden lang aufbewahrt.
+    - **Replikationseinstellungen**: Zeigt den Tresor an, in dem sich der VM befindet, und die für den virtuellen Computer verwendete Replikations Richtlinie. Standardmäßig werden Wiederherstellungspunkte, die von Site Recovery für die VM erstellt werden, 24 Stunden lang aufbewahrt.
     - **Erweiterungseinstellungen**: Hier wird angegeben, dass Site Recovery die Updates für die Site Recovery Mobility Service-Erweiterung verwaltet, die auf den von Ihnen replizierten VMs installiert ist.
         - Mit dem angegebenen Azure Automation-Konto wird der Updateprozess verwaltet.
         - Sie können das Automation-Konto anpassen.

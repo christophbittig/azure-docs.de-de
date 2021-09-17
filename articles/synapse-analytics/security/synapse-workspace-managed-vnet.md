@@ -1,19 +1,19 @@
 ---
 title: Verwaltetes virtuelles Netzwerk
 description: Dieser Artikel enthält Informationen zum verwalteten virtuellen Netzwerk in Azure Synapse Analytics.
-author: RonyMSFT
+author: ashinMSFT
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: security
-ms.date: 01/18/2021
-ms.author: ronytho
-ms.reviewer: jrasnick
-ms.openlocfilehash: f55251932c8aa8f632bd3b498943ac722f006dee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/16/2021
+ms.author: seshin
+ms.reviewer: wiassaf
+ms.openlocfilehash: 9866a2c773193cc20bd6b9e193e025fa65eddcc6
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98569906"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446205"
 ---
 # <a name="azure-synapse-analytics-managed-virtual-network"></a>Azure Synapse Analytics: verwaltetes virtuelles Netzwerk
 
@@ -50,25 +50,23 @@ Ist das Kontrollkästchen deaktiviert, wird Ihr Arbeitsbereich nicht mit einem v
 >[!IMPORTANT]
 >Sie können private Links nur in einem Arbeitsbereich mit verwaltetem virtuellem Arbeitsbereichsnetzwerk verwenden.
 
-![Aktivieren eines verwalteten virtuellen Arbeitsbereichsnetzwerks](./media/synapse-workspace-managed-vnet/enable-managed-vnet-1.png)
+:::image type="content" source="./media/synpase-workspace-ip-firewall/azure-synapse-analytics-networking-managed-virtual-network-outbound-traffic.png" lightbox="./media/synpase-workspace-ip-firewall/azure-synapse-analytics-networking-managed-virtual-network-outbound-traffic.png" alt-text="Screenshot: Registerkarte „Netzwerk“ auf der Seite „Synapse-Arbeitsbereich erstellen“ mit der aktivierten Option „Verwaltetes virtuelles Netzwerk“ und der auf „Ja“ festgelegten Einstellung „Ausgehenden Datenverkehr nur zu genehmigten Zielen zulassen“":::
 
 Nachdem Sie die Entscheidung für die Zuordnung eines verwalteten virtuellen Arbeitsbereichsnetzwerks zu Ihrem Arbeitsbereich getroffen haben, können Sie den Schutz vor Datenexfiltration einrichten. Lassen Sie hierfür ausgehende Verbindungen vom verwalteten virtuellen Arbeitsbereichsnetzwerk nur zu genehmigten Zielen zu, indem Sie [verwaltete private Endpunkte](./synapse-workspace-managed-private-endpoints.md) verwenden. Wählen Sie **Ja** aus, um ausgehenden Datenverkehr aus dem verwalteten virtuellen Arbeitsbereichsnetzwerk zu Zielen auf den Weg über verwaltete private Endpunkte zu beschränken. 
 
 
->[!IMPORTANT]
->Metastore ist in Synapse-Arbeitsbereichen deaktiviert, die über ein verwaltetes virtuelles Netzwerk mit aktiviertem Schutz vor Datenexfiltration verfügen. In diesen Arbeitsbereichen können Sie Spark SQL nicht nutzen.
 
-![Ausgehender Datenverkehr über verwaltete private Endpunkte](./media/synapse-workspace-managed-vnet/select-outbound-connectivity.png)
+:::image type="content" source="./media/synpase-workspace-ip-firewall/azure-synapse-workspace-managed-virtual-network-allow-outbound-traffic.png" lightbox="./media/synpase-workspace-ip-firewall/azure-synapse-workspace-managed-virtual-network-allow-outbound-traffic.png" alt-text="Screenshot: Seite „Verwaltetes virtuelles Netzwerk“ mit der auf „Ja“ festgelegten Option „Ausgehenden Datenverkehr nur zu genehmigten Zielen zulassen“":::
 
 Wählen Sie **Nein** aus, um für den Arbeitsbereich ausgehenden Datenverkehr zu beliebigen Zielen zuzulassen.
 
 Sie können die Ziele, für die verwaltete private Endpunkte erstellt werden, auch über Ihren Azure Synapse-Arbeitsbereich steuern. Standardmäßig sind verwaltete private Endpunkte für Ressourcen auf demselben AAD-Mandanten zulässig, dem Ihr Abonnement angehört. Wenn Sie einen verwalteten privaten Endpunkt für eine Ressource auf einem AAD-Mandanten erstellen möchten, der sich vom Mandanten Ihres Abonnements unterscheidet, können Sie diesen AAD-Mandanten hinzufügen, indem Sie die Option **+ Hinzufügen** verwenden. Sie können den AAD-Mandanten entweder in der Dropdownliste auswählen oder die ID des AAD-Mandanten manuell eingeben.
 
-![Hinzufügen zusätzlicher AAD-Mandanten](./media/synapse-workspace-managed-vnet/add-additional-azure-active-directory-tenants.png)
+:::image type="content" source="./media/synpase-workspace-ip-firewall/azure-synapse-workspace-managed-virtual-network-private-endpoints-azure-ad.png" lightbox="./media/synpase-workspace-ip-firewall/azure-synapse-workspace-managed-virtual-network-private-endpoints-azure-ad.png" alt-text="Screenshot: Seite „Verwaltetes virtuelles Netzwerk“ mit hervorgehobener Schaltfläche „Hinzufügen“ für Azure AD-Mandanten":::
 
 Nach der Erstellung des Arbeitsbereichs können Sie überprüfen, ob Ihr Azure Synapse-Arbeitsbereich mit einem verwalteten virtuellen Arbeitsbereichsnetzwerk verknüpft ist. Wählen Sie hierfür im Azure-Portal die Option **Übersicht** aus.
 
-![Arbeitsbereichsübersicht im Azure-Portal](./media/synapse-workspace-managed-vnet/enable-managed-vnet-2.png)
+:::image type="content" source="./media/synpase-workspace-ip-firewall/azure-synapse-analytics-overview-managed-virtual-network-enabled.png" lightbox="./media/synpase-workspace-ip-firewall/azure-synapse-analytics-overview-managed-virtual-network-enabled.png" alt-text="Screenshot: Übersicht des Azure Synapse-Arbeitsbereichs, auf dem zu sehen ist, dass ein verwaltetes virtuelles Netzwerk aktiviert ist":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,25 +1,26 @@
 ---
-title: 'Tutorial: Konfigurieren von Canary-Bereitstellungen für virtuelle Linux-Computer in Azure'
-description: In diesem Tutorial erfahren Sie, wie Sie eine CD-Pipeline (Continuous Deployment) einrichten. Diese Pipeline aktualisiert eine Gruppe virtueller Linux-Computer in Azure unter Verwendung der Blau-Grün-Bereitstellungsstrategie.
+title: Konfigurieren von Canary-Bereitstellungen für virtuelle Linux-Computer in Azure
+description: Hier erfahren Sie, wie Sie eine CD-Pipeline (Continuous Deployment) einrichten. Diese Pipeline aktualisiert eine Gruppe virtueller Linux-Computer in Azure unter Verwendung der Blau-Grün-Bereitstellungsstrategie.
 author: moala
 tags: azure-devops-pipelines
-ms.assetid: ''
 ms.service: virtual-machines
 ms.collection: linux
-ms.topic: tutorial
+ms.topic: how-to
 ms.tgt_pltfrm: azure-pipelines
 ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: 4545891cce926f049673cd2c2380a8309f2e71a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a455950e1637dbcef63acc52de139c5d0a9a2e10
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552586"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690965"
 ---
-# <a name="tutorial---configure-the-blue-green-deployment-strategy-for-azure-linux-virtual-machines"></a>Tutorial: Konfigurieren der Blau-Grün-Bereitstellungsstrategie für virtuelle Linux-Computer in Azure
+# <a name="configure-the-blue-green-deployment-strategy-for-azure-linux-virtual-machines"></a>Konfigurieren der Blau-Grün-Bereitstellungsstrategie für virtuelle Linux-Computer in Azure
+
+**Gilt für:** :heavy_check_mark: Linux-VMs 
 
 ## <a name="infrastructure-as-a-service-iaas---configure-cicd"></a>Infrastructure-as-a-Service (IaaS): Konfigurieren von CI/CD
 

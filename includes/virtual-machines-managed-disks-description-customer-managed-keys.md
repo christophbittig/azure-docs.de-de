@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/02/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 76ee3371134c66d6dcc5b4b07436e5c30a15f144
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 7c06903720db4315bad04e88dfdb9c7cad604697
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111449878"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122820775"
 ---
 Sie können die Verschlüsselung auf der Ebene verwalteter Datenträger mit eigenen Schlüsseln verwalten. Die serverseitige Verschlüsselung für verwaltete Datenträger mit vom Kunden verwalteten Schlüsseln bietet eine integrierte Benutzerfunktionalität mit Azure Key Vault. Sie können entweder [ihre RSA-Schlüssel](../articles/key-vault/keys/hsm-protected-keys.md) in den Schlüsseltresor importieren oder neue RSA-Schlüssel in Azure Key Vault generieren. 
 
@@ -42,6 +42,6 @@ In der folgenden Liste wird das Diagramm ausführlicher erläutert:
 
 Informationen zum Widerrufen von Kunden verwalteter Schlüsseln finden Sie in den Artikeln zu [Azure Key Vault-PowerShell](/powershell/module/azurerm.keyvault/) und zur [Azure Key Vault-CLI](/cli/azure/keyvault). Durch das Widerrufen des Zugriffs wird der Zugriff auf alle Daten im Speicherkonto blockiert, da Azure Storage keinen Zugriff mehr auf den Verschlüsselungsschlüssel hat.
 
-#### <a name="automatic-key-rotation-of-customer-managed-keys-preview"></a>Automatische Schlüsselrotation von kundenseitig verwalteten Schlüsseln (Vorschau)
+#### <a name="automatic-key-rotation-of-customer-managed-keys"></a>Automatische Rotation von kundenseitig verwalteten Schlüsseln
 
-Sie können die automatische Schlüsselrotation für die neueste Schlüsselversion aktivieren. Ein Datenträger verweist über den Datenträgerverschlüsselungssatz auf einen Schlüssel. Wenn Sie die automatische Rotation für einen Datenträgerverschlüsselungssatz aktivieren, aktualisiert das System automatisch alle verwalteten Datenträger, Momentaufnahmen und Images, die auf den Datenträgerverschlüsselungssatz verweisen, um die neue Version des Schlüssels innerhalb von einer Stunde zu verwenden. Das Feature ist derzeit in der Vorschauversion für eine begrenzte Anzahl von Regionen verfügbar. Informationen zur regionalen Verfügbarkeit finden Sie im Abschnitt zu [unterstützten Regionen](#supported-regions).
+Sie können die automatische Schlüsselrotation für die neueste Schlüsselversion aktivieren. Ein Datenträger verweist über den Datenträgerverschlüsselungssatz auf einen Schlüssel. Wenn Sie die automatische Rotation für einen Datenträgerverschlüsselungssatz aktivieren, aktualisiert das System automatisch alle verwalteten Datenträger, Momentaufnahmen und Images, die auf den Datenträgerverschlüsselungssatz verweisen, um die neue Version des Schlüssels innerhalb von einer Stunde zu verwenden. Lesen Sie [Einrichten von Azure Key Vault und DiskEncryptionSet mit automatischer Schlüsselrotation](../articles/virtual-machines/windows/disks-enable-customer-managed-keys-powershell.md#set-up-an-azure-key-vault-and-diskencryptionset-optionally-with-automatic-key-rotation), um zu erfahren, wie Sie kundenseitig verwaltete Schlüssel mit automatischer Schlüsselrotation aktivieren.

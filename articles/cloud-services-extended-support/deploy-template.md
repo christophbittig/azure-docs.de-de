@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 10ebb60caed4bb42bb8e8d8351b465d692eaaf0a
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: de46eb9fca550d95caa8aa5d42449ab10d1bb9a2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114445091"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741114"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Bereitstellen eines Clouddiensts (erweiterter Support) mithilfe von ARM-Vorlagen
 
@@ -109,7 +109,30 @@ In diesem Tutorial erfahren Sie, wie Sie mithilfe von [ARM-Vorlagen](../azure-re
           ] 
     ```
  
-3. Erstellen Sie ein Netzwerkprofilobjekt, und ordnen Sie die öffentliche IP-Adresse dem Front-End des Lastenausgleichs zu. Ein Lastenausgleich wird automatisch von der Plattform erstellt.
+3. Erstellen Sie ein Clouddienstobjekt (erweiterter Support), und fügen Sie entsprechende `dependsOn`-Verweise hinzu, wenn Sie virtuelle Netzwerke oder öffentliche IP-Adressen in Ihrer Vorlage bereitstellen. 
+
+    ```json
+    {
+      "apiVersion": "2021-03-01",
+      "type": "Microsoft.Compute/cloudServices",
+      "name": "[variables('cloudServiceName')]",
+      "location": "[parameters('location')]",
+      "tags": {
+        "DeploymentLabel": "[parameters('deploymentLabel')]",
+        "DeployFromVisualStudio": "true"
+      },
+      "dependsOn": [
+        "[concat('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]",
+        "[concat('Microsoft.Network/publicIPAddresses/', parameters('publicIPName'))]"
+      ],
+      "properties": {
+        "packageUrl": "[parameters('packageSasUri')]",
+        "configurationUrl": "[parameters('configurationSasUri')]",
+        "upgradeMode": "[parameters('upgradeMode')]"
+      }
+    }
+    ```
+4. Erstellen Sie ein Netzwerkprofilobjekt für Ihren Clouddienst, und ordnen Sie die öffentliche IP-Adresse dem Front-End des Lastenausgleichs zu. Ein Lastenausgleich wird automatisch von der Plattform erstellt. 
 
     ```json
     "networkProfile": { 
@@ -135,7 +158,7 @@ In diesem Tutorial erfahren Sie, wie Sie mithilfe von [ARM-Vorlagen](../azure-re
     ```
  
 
-4. Fügen Sie im Abschnitt `OsProfile` der ARM-Vorlage Ihren Schlüsseltresorverweis hinzu. Key Vault wird zum Speichern von Zertifikaten verwendet, die Cloud Services (erweiterter Support) zugeordnet sind. Fügen Sie Key Vault die Zertifikate hinzu, und verweisen Sie dann in der Dienstkonfigurationsdatei (.cscfg) auf die Zertifikatfingerabdrücke. Außerdem müssen Sie in Key Vault „Zugriffsrichtlinien“ für „Azure Virtual Machines für Bereitstellung“ (im Portal) aktivieren, damit Cloud Services (erweiterter Support) als Geheimnisse gespeicherte Zertifikate aus Key Vault abrufen kann. Der Schlüsseltresor muss in der gleichen Region und im gleichen Abonnement erstellt werden wie der Clouddienst und einen eindeutigen Namen besitzen. Weitere Informationen finden Sie unter [Verwenden von Zertifikaten mit Azure Cloud Services (erweiterter Support)](certificates-and-key-vault.md).
+5. Fügen Sie im Abschnitt `OsProfile` der ARM-Vorlage Ihren Schlüsseltresorverweis hinzu. Key Vault wird zum Speichern von Zertifikaten verwendet, die Cloud Services (erweiterter Support) zugeordnet sind. Fügen Sie Key Vault die Zertifikate hinzu, und verweisen Sie dann in der Dienstkonfigurationsdatei (.cscfg) auf die Zertifikatfingerabdrücke. Außerdem müssen Sie in Key Vault „Zugriffsrichtlinien“ für „Azure Virtual Machines für Bereitstellung“ (im Portal) aktivieren, damit Cloud Services (erweiterter Support) als Geheimnisse gespeicherte Zertifikate aus Key Vault abrufen kann. Der Schlüsseltresor muss in der gleichen Region und im gleichen Abonnement erstellt werden wie der Clouddienst und einen eindeutigen Namen besitzen. Weitere Informationen finden Sie unter [Verwenden von Zertifikaten mit Azure Cloud Services (erweiterter Support)](certificates-and-key-vault.md).
      
     ```json
     "osProfile": { 
@@ -159,7 +182,7 @@ In diesem Tutorial erfahren Sie, wie Sie mithilfe von [ARM-Vorlagen](../azure-re
     > - „certificateUrl“ finden Sie, indem Sie im Schlüsseltresor mit dem Bezeichner **Geheimnis-ID** zu dem Zertifikat navigieren.  
    >  - „certificateUrl“ muss folgendes Format haben: https://{Schlüsseltresor-Endpunkt}/secrets/{Geheimnisname}/{Geheimnis-ID}.
 
-5. Erstellen Sie ein Rollenprofil. Stellen Sie sicher, dass die Anzahl von Rollen, Rollennamen und Instanzen in den einzelnen Rollen sowie die Größen in der Dienstkonfiguration (.cscfg), in der Dienstdefinition (.csdef) und im Rollenprofilabschnitt der ARM-Vorlage jeweils identisch sind.
+6. Erstellen Sie ein Rollenprofil. Stellen Sie sicher, dass die Anzahl von Rollen, Rollennamen und Instanzen in den einzelnen Rollen sowie die Größen in der Dienstkonfiguration (.cscfg), in der Dienstdefinition (.csdef) und im Rollenprofilabschnitt der ARM-Vorlage jeweils identisch sind.
     
     ```json
     "roleProfile": {
@@ -184,7 +207,7 @@ In diesem Tutorial erfahren Sie, wie Sie mithilfe von [ARM-Vorlagen](../azure-re
     }   
     ```
 
-6. Optional: Erstellen Sie ein Erweiterungsprofil, um Ihrem Clouddienst Erweiterungen hinzuzufügen. In diesem Beispiel fügen wir die Erweiterung für Remotedesktop und für die Windows Azure-Diagnose hinzu.
+7. Optional: Erstellen Sie ein Erweiterungsprofil, um Ihrem Clouddienst Erweiterungen hinzuzufügen. In diesem Beispiel fügen wir die Erweiterung für Remotedesktop und für die Windows Azure-Diagnose hinzu.
    > [!Note] 
    > Das Kennwort für Remotedesktop muss zwischen 8 und 123 Zeichen lang sein und mindestens 3 der folgenden Kennwortkomplexitätsanforderungen erfüllen: 1) Enthält einen Großbuchstaben 2) Enthält einen Kleinbuchstaben 3) Enthält eine Ziffer 4) Enthält ein Sonderzeichen 5) Steuerzeichen sind unzulässig.
 
@@ -220,7 +243,7 @@ In diesem Tutorial erfahren Sie, wie Sie mithilfe von [ARM-Vorlagen](../azure-re
         }
     ```
 
-7. Überprüfen Sie die gesamte Vorlage.
+8. Überprüfen Sie die gesamte Vorlage.
 
     ```json
     {
@@ -448,7 +471,7 @@ In diesem Tutorial erfahren Sie, wie Sie mithilfe von [ARM-Vorlagen](../azure-re
     }
     ```
 
-8. Stellen Sie die Vorlagen- und Parameterdatei (definierende Parameter in der Vorlagendatei) zum Erstellen der Clouddienstbereitstellung (erweiterter Support) bereit. Weitere Informationen finden Sie bei Bedarf in [diesen Beispielvorlagen](https://github.com/Azure-Samples/cloud-services-extended-support).
+9. Stellen Sie die Vorlagen- und Parameterdatei (definierende Parameter in der Vorlagendatei) zum Erstellen der Clouddienstbereitstellung (erweiterter Support) bereit. Weitere Informationen finden Sie bei Bedarf in [diesen Beispielvorlagen](https://github.com/Azure-Samples/cloud-services-extended-support).
 
     ```powershell
     New-AzResourceGroupDeployment -ResourceGroupName "ContosOrg" -TemplateFile "file path to your template file" -TemplateParameterFile "file path to your parameter file"

@@ -9,14 +9,16 @@ ms.topic: how-to
 ms.date: 07/17/2017
 ms.custom: devx-track-java
 ms.author: cynthn
-ms.openlocfilehash: 4f1523c58a8ca26bbab516383d59e7e8dd009466
-ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
+ms.openlocfilehash: ec738d2f2765cd97c518b79081675c197ead6466
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2021
-ms.locfileid: "113288301"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697204"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Erstellen und Verwalten von virtuellen Windows-Computern in Azure mithilfe von Java
+
+**Gilt für**: :heavy_check_mark: Windows-VMs 
 
 Für einen [virtuellen Azure-Computer](overview.md) (VM) sind mehrere unterstützende Azure-Ressourcen erforderlich. In diesem Artikel wird das Erstellen, Verwalten und Löschen virtueller Computerressourcen mithilfe von Java behandelt. Folgendes wird vermittelt:
 

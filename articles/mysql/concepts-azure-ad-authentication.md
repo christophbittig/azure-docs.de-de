@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 5fb4e8e4b204653c3d78f89a42220dd78b0eec1f
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: ea70b094c1b53a5ec4a7c80705e4ac795e6d8629
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111570950"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122598357"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Verwenden von Azure Active Directory für die Authentifizierung mit MySQL
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Microsoft Azure AD-Authentifizierung (Azure Active Directory) ist ein Mechanismus zum Herstellen einer Verbindung mit Azure Database for MySQL unter Verwendung der in Azure AD definierten Identitäten.
 Mit Azure AD-Authentifizierung können Sie Datenbankbenutzeridentitäten und andere Microsoft-Dienste an einem zentralen Ort verwalten, wodurch die Berechtigungsverwaltung vereinfacht wird.

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 08/03/2021
-ms.openlocfilehash: d611698bcc72a4a8ceaafb6cfe43f7da362acf71
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8331cd2f0fa0df52f550acfdac1d8d3506e415f2
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346760"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123318609"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-connection-pooling"></a>Azure Database for PostgreSQL: Verbindungspooling für Hyperscale (Citus)
 
@@ -30,6 +30,11 @@ Hyperscale (Citus) bietet jetzt für Servergruppen eine verwaltete Instanz von P
 
 1. Wechseln Sie im Azure-Portal zur Seite **Verbindungszeichenfolgen** für Ihre Servergruppe.
 2. Aktivieren Sie das Kontrollkästchen **PgBouncer connection strings** (PgBouncer-Verbindungszeichenfolgen). (Die aufgelisteten Verbindungszeichenfolgen ändern sich.)
+
+   > [!IMPORTANT]
+   >
+   > Wenn das Kontrollkästchen nicht vorhanden ist, ist PgBouncer noch nicht für Ihre Servergruppe aktiviert. Der verwaltete PgBouncer wird in allen [unterstützten Regionen](concepts-hyperscale-configuration-options.md#regions) eingeführt.  Nach der Aktivierung in einer Region wird er während eines [geplanten Wartungsereignisses](concepts-hyperscale-maintenance.md) in der Region vorhandenen Servergruppen hinzugefügt.
+
 3. Aktualisieren Sie Clientanwendungen, sodass sie die neue Zeichenfolge zum Herstellen einer Verbindung verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte

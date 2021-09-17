@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/20/2019
+ms.date: 08/12/2021
 ms.author: jeedes
-ms.openlocfilehash: 7d561f9c99641beba8a5092df447f3d18da050e9
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: 5f5ffb3303d60ebe080514099822ea4743e9a31f
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110190120"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271814"
 ---
 # <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>Tutorial: Integrieren von Displayr in Azure Active Directory
 
@@ -25,8 +25,6 @@ In diesem Tutorial erfahren Sie, wie Sie Displayr in Azure Active Directory (Azu
 * Steuern Sie in Azure AD, wer Zugriff auf Displayr hat.
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Displayr anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
-
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -37,50 +35,52 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
-In diesem Tutorial erfahren Sie, wie Sie das einmalige Anmelden von Azure AD in Ihrem Displayr-Unternehmen konfigurieren. Displayr unterstützt **SP-initiiertes** einmaliges Anmelden.
+In diesem Tutorial erfahren Sie, wie Sie das einmalige Anmelden von Azure AD in Ihrem Displayr-Unternehmen konfigurieren.
 
-## <a name="adding-displayr-from-the-gallery"></a>Hinzufügen von Displayr aus dem Katalog
+* Displayr unterstützt **SP-initiiertes** einmaliges Anmelden.
+
+## <a name="add-displayr-from-the-gallery"></a>Hinzufügen von Displayr aus dem Katalog
 
 Zum Konfigurieren der Integration von Displayr in Azure AD müssen Sie Displayr aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Displayr** in das Suchfeld ein.
 1. Wählen Sie **Displayr** im Ergebnisbereich aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
+## <a name="configure-azure-ad-sso-for-displayr"></a>Konfigurieren des einmaligen Anmeldens von Azure AD für Displayr
 
-Zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Displayr müssen Sie die folgenden Schritte ausführen:
+Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Displayr die folgenden Schritte aus:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen
-2. **[Konfigurieren von Displayr](#configure-displayr)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-4. **[Beschränken Sie den Zugriff auf bestimmte Benutzer,](#restrict-access-to-specific-users)** um einzuschränken, welche Ihrer Azure AD-Benutzer sich bei Displayr anmelden können.
-6. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
+1. **[Konfigurieren des einmaligen Anmeldens für Displayr](#configure-displayr-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+1. **[Beschränken Sie den Zugriff auf bestimmte Benutzer,](#restrict-access-to-specific-users)** um einzuschränken, welche Ihrer Azure AD-Benutzer sich bei Displayr anmelden können.
+1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Displayr** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Displayr** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** den folgenden Schritt aus:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<YOURDOMAIN>.displayr.com`
+    a. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** einen Wert im folgenden Format ein: `<YOURDOMAIN>.displayr.com`.
+    
+    b. Geben Sie im Textfeld **Antwort-URL** die folgende URL ein: `https://app.displayr.com/Login/ProcessSamlResponse`.
+    
+    c. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<YOURDOMAIN>.displayr.com`
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `<YOURDOMAIN>.displayr.com`.
-    
-    c. Geben Sie im Textfeld **Antwort-URL** die URL `https://app.displayr.com/Login/ProcessSamlResponse` ein.
-    
     d. Klicken Sie auf **Speichern**.
 
     >[!NOTE]
-    >Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Diese Werte erhalten Sie vom [Supportteam für den Displayr-Client](mailto:support@displayr.com). Sie können sich auch die Muster im Abschnitt „Grundlegende SAML-Konfiguration“ im Azure-Portal ansehen.
+    >Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner und die tatsächliche Anmelde-URL. Diese Werte erhalten Sie vom [Supportteam für den Displayr-Client](mailto:support@displayr.com). Sie können sich auch die Muster im Abschnitt „Grundlegende SAML-Konfiguration“ im Azure-Portal ansehen.
 
 1. Suchen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** den Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 
@@ -94,7 +94,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    a. Klicken Sie auf **Gruppenanspruch hinzufügen**.
 
-      ![Screenshot des Fensters „Gruppenansprüche (Vorschau)“ mit ausgewählten Einstellungen](./media/displayr-tutorial/config05.png)
+      ![Screenshot des Fensters „Gruppenansprüche (Vorschau)“ mit ausgewählten Einstellungen](./media/displayr-tutorial/claims.png)
 
    b. Wählen Sie **Alle Gruppen** aus der Optionsfeldliste aus.
 
@@ -106,7 +106,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
-### <a name="configure-displayr"></a>Konfigurieren von Displayr
+## <a name="configure-displayr-sso"></a>Konfigurieren des einmaligen Anmeldens für Displayr
 
 1. Wenn Sie die Konfiguration in Displayr automatisieren möchten, müssen Sie die **Browsererweiterung „Meine Apps“ für die sichere Anmeldung** installieren, indem Sie auf **Erweiterung installieren** klicken.
 
@@ -120,15 +120,15 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 4. Klicken Sie auf das Symbol **Benutzer**, und navigieren Sie dann zu **Kontoeinstellungen**.
 
-    ![Screenshot, in dem das Symbol „Einstellungen“ und „Konto“ ausgewählt sind](./media/displayr-tutorial/config01.png)
+    ![Screenshot, in dem das Symbol „Einstellungen“ und „Konto“ ausgewählt sind](./media/displayr-tutorial/account.png)
 
 5. Wechseln Sie aus dem Hauptmenü zu **Einstellungen**, und scrollen Sie nach unten, um auf **Einmaliges Anmelden konfigurieren (SAML)** zu klicken.
 
-    ![Screenshot, in dem die Registerkarte „Einstellungen“ und die Aktion „Einmaliges Anmelden (S A M L)“ ausgewählt sind](./media/displayr-tutorial/config02.png)
+    ![Screenshot, in dem die Registerkarte „Einstellungen“ und die Aktion „Einmaliges Anmelden (S A M L)“ ausgewählt sind](./media/displayr-tutorial/settings.png)
 
 6. Führen Sie auf der Seite **Einmaliges Anmelden (SAML)** die folgenden Schritte aus:
 
-    ![Konfiguration](./media/displayr-tutorial/config03.png)
+    ![Screenshot, der die Konfiguration zeigt.](./media/displayr-tutorial/configure.png)
 
     a. Aktivieren Sie das Kontrollkästchen **Einmaliges Anmelden aktivieren (SAML)** .
 
@@ -148,14 +148,16 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 Standardmäßig können sich alle Benutzer im Mandanten, in dem Sie die Displayr-Anwendung hinzugefügt haben, mithilfe von SSO bei Displayr anmelden. Wenn Sie den Zugriff auf bestimmte Benutzer oder Gruppen einschränken möchten, finden Sie unter [Einschränken Ihrer Azure AD-App auf eine Gruppe von Benutzern in einem Azure AD-Mandanten](../develop/howto-restrict-your-app-to-a-set-of-users.md) weitere Informationen.
 
-### <a name="test-sso"></a>Testen des einmaligen Anmeldens
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
-Wenn Sie im Zugriffsbereich die Kachel „Displayr“ auswählen, sollten Sie automatisch beim Displayr-Unternehmen angemeldet werden, für das Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-## <a name="additional-resources"></a>Weitere Ressourcen
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Displayr weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
+* Rufen Sie direkt die Anmelde-URL für Displayr auf, und initiieren Sie den Anmeldeflow.
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Displayr“ klicken, werden Sie zur Anmelde-URL für Displayr weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
-- [Was ist bedingter Zugriff?](../conditional-access/overview.md)
+## <a name="next-steps"></a>Nächste Schritte
+
+Nach dem Konfigurieren von Displayr können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

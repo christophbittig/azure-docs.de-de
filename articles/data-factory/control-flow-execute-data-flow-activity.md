@@ -1,19 +1,22 @@
 ---
 title: Datenflussaktivität
-description: 'Gewusst wie: Ausführen von Datenflüssen aus einer Data Factory-Pipeline heraus.'
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 'Gewusst wie: Ausführen von Datenflüssen von einer Azure Data Factory- oder Azure Synapse Analytics-Pipeline aus.'
 author: kromerm
 ms.service: data-factory
+ms.subservice: data-flows
+ms.custom: synapse
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 05/20/2021
-ms.openlocfilehash: 3793fb3495ca9df9ab8ed408090a8f285f6488b0
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 08/24/2021
+ms.openlocfilehash: b5fdb41c84d97c5a4ba544c299eb183c704fa3d8
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110464645"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822211"
 ---
-# <a name="data-flow-activity-in-azure-data-factory"></a>Datenflussaktivität in Azure Data Factory
+# <a name="data-flow-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>Datenflussaktivität in Azure Data Factory und Azure Synapse Analytics
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -71,7 +74,7 @@ traceLevel | Festlegen des Protokolliergrads für die Ausführung Ihrer Datenflu
 Die Eigenschaften „Anzahl Kerne“ und „Computetyp“ können dynamisch festgelegt werden, um die Größe der eingehenden Quelldaten zur Laufzeit anzupassen. Verwenden Sie Pipelineaktivitäten wie „Nachschlagen“ oder „Metadaten abrufen“, um die Größe der Daten im Quelldatenset zu bestimmen. Verwenden Sie dann in den Eigenschaften der Datenflussaktivität „Dynamischen Inhalt hinzufügen“.
 
 > [!NOTE]
-> Bei der Auswahl von Treiber- und Workerknotenkernen in Synapse-Datenflüssen werden immer mindestens 3 Knoten verwendet.
+> Bei der Auswahl von Treiber- und Workerknotenkernen in Azure Synapse-Datenflüssen werden immer mindestens 3 Knoten verwendet.
 
 ![Dynamischer Datenfluss](media/data-flow/dyna1.png "Dynamischer Datenfluss")
 
@@ -79,7 +82,7 @@ Die Eigenschaften „Anzahl Kerne“ und „Computetyp“ können dynamisch fest
 
 ### <a name="data-flow-integration-runtime"></a>Datenfluss-Integration Runtime
 
-Wählen Sie die Integration Runtime aus, die für die Ausführung Ihrer Datenflussaktivität verwendet werden soll. Standardmäßig verwendet Data Factory die Azure Integration Runtime mit automatischer Auflösung und vier Workerkernen. Diese Integration Runtime weist einen allgemeinen Computetyp auf und wird in derselben Region wie Ihre Factory ausgeführt. Für operationalisierte Pipelines ist es sehr empfehlenswert, dass Sie Ihre eigene Azure Integration Runtime erstellen, die bestimmte Regionen, den Computetyp, die Kernanzahl und die Gültigkeitsdauer (TTL) für die Ausführung Ihrer Datenflussaktivität definiert.
+Wählen Sie die Integration Runtime aus, die für die Ausführung Ihrer Datenflussaktivität verwendet werden soll. Standardmäßig verwendet der Dienst die Azure Integration Runtime mit automatischer Auflösung und vier Workerkernen. Diese Integration Runtime weist einen allgemeinen Computetyp auf und wird in derselben Region wie Ihre Dienstinstanz ausgeführt. Für operationalisierte Pipelines ist es sehr empfehlenswert, dass Sie Ihre eigene Azure Integration Runtime erstellen, die bestimmte Regionen, den Computetyp, die Kernanzahl und die Gültigkeitsdauer (TTL) für die Ausführung Ihrer Datenflussaktivität definiert.
 
 Mindestens ein Computetyp „Universell“ (für Compute optimiert wird für große Workloads nicht empfohlen) mit einer Konfiguration von 8+8 (16 virtuellen Kernen insgesamt) und einer 10-Minuten-Konfiguration ist die Mindestempfehlung für die meisten Produktionsworkloads. Durch Festlegen einer geringen TTL kann die Azure IR einen „warmen“ Cluster verwalten, der nicht mehrere Minuten der Startzeit benötigt, wie ein kalter Cluster. Sie können die Ausführung Ihrer Datenflüsse noch beschleunigen, indem Sie in den Azure IR-Datenflusskonfigurationen die Option für die schnelle Wiederverwendung auswählen. Weitere Informationen finden Sie unter [Azure Integration Runtime](concepts-integration-runtime.md).
 
@@ -94,13 +97,13 @@ Wenn Sie Azure Synapse Analytics als Senke oder Quelle verwenden, müssen Sie ei
 
 ## <a name="logging-level"></a>Protokolliergrad
 
-Wenn Sie nicht voraussetzen, dass jede Pipelineausführung Ihrer Datenflussaktivitäten alle ausführlichen Telemetrieprotokolle vollständig protokolliert, können Sie den Protokolliergrad optional auf „Standard“ oder „Kein“ festlegen. Wenn Sie Ihre Datenflüsse im Modus „Ausführlich“ (Standard) ausführen, fordern Sie an, dass ADF die Aktivität während der Datentransformation auf den einzelnen Partitionsebenen vollständig protokolliert. Da dies ein kostspieliger Vorgang sein kann, kann nur die ausschließliche Aktivierung von „Ausführlich“ bei der Problembehandlung den gesamten Datenfluss und die Pipelineleistung verbessern. Der Modus „Standard“ protokolliert nur die Transformationszeitspannen, während „Kein“ nur eine Zusammenfassung der Zeitspannen bietet.
+Wenn Sie nicht voraussetzen, dass jede Pipelineausführung Ihrer Datenflussaktivitäten alle ausführlichen Telemetrieprotokolle vollständig protokolliert, können Sie den Protokolliergrad optional auf „Standard“ oder „Kein“ festlegen. Wenn Sie Ihre Datenflüsse im Modus „Ausführlich“ (Standard) ausführen, fordern Sie an, dass der Dienst die Aktivität während der Datentransformation auf den einzelnen Partitionsebenen vollständig protokolliert. Da dies ein kostspieliger Vorgang sein kann, kann nur die ausschließliche Aktivierung von „Ausführlich“ bei der Problembehandlung den gesamten Datenfluss und die Pipelineleistung verbessern. Der Modus „Standard“ protokolliert nur die Transformationszeitspannen, während „Kein“ nur eine Zusammenfassung der Zeitspannen bietet.
 
 ![Protokolliergrad](media/data-flow/logging.png "Festlegen des Protokolliergrads")
 
 ## <a name="sink-properties"></a>Senkeneigenschaften
 
-Mit der Gruppierungsfunktion in Datenflüssen können Sie sowohl die Ausführungsreihenfolge der Senken festlegen als auch Senken unter Verwendung derselben Gruppennummer gruppieren. Um die Verwaltung von Gruppen zu erleichtern, können Sie ADF auffordern, Senken in der gleichen Gruppe parallel auszuführen. Sie können die Senkengruppe auch so festlegen, dass sie selbst dann fortgesetzt wird, wenn bei einer der Senken ein Fehler auftritt.
+Mit der Gruppierungsfunktion in Datenflüssen können Sie sowohl die Ausführungsreihenfolge der Senken festlegen als auch Senken unter Verwendung derselben Gruppennummer gruppieren. Um die Verwaltung von Gruppen zu erleichtern, können Sie den Dienst anweisen, Senken aus der gleichen Gruppe parallel auszuführen. Sie können die Senkengruppe auch so festlegen, dass sie selbst dann fortgesetzt wird, wenn bei einer der Senken ein Fehler auftritt.
 
 Beim Standardverhalten von Datenflusssenken wird jede Senke sequenziell nacheinander ausgeführt, und der Datenfluss schlägt fehl, wenn ein Fehler in der Senke auftritt. Außerdem werden alle Senken standardmäßig der gleichen Gruppe zugeordnet, es sei denn, Sie bearbeiten die Datenflusseigenschaften und legen unterschiedliche Prioritäten für die Senken fest.
 
@@ -120,7 +123,7 @@ Wenn im Datenfluss parametrisierte Datasets verwendet werden, legen Sie die Para
 
 ### <a name="parameterized-data-flows"></a>Parametrisierte Datenflüsse
 
-Wenn der Datenfluss parametrisiert ist, legen Sie die dynamischen Werte der Datenflussparameter auf der Registerkarte **Parameter** fest. Sie können entweder die Ausdruckssprache für die ADF-Pipeline oder die Ausdruckssprache für Datenflüsse verwenden, um dynamische oder literale Parameterwerte zuzuweisen. Weitere Informationen finden Sie unter [Datenflussparameter](parameters-data-flow.md).
+Wenn Ihr Datenfluss parametrisiert ist, legen Sie die dynamischen Werte der Datenflussparameter auf der Registerkarte **Parameter** fest. Sie können entweder die Pipelineausdruckssprache oder die Datenflussausdruckssprache verwenden, um dynamische oder literale Parameterwerte zuzuweisen. Weitere Informationen finden Sie unter [Datenflussparameter](parameters-data-flow.md).
 
 ### <a name="parameterized-compute-properties"></a>Parametrisierte Compute-Eigenschaften.
 
@@ -179,7 +182,7 @@ Verwenden Sie `@activity('dataflowActivity').output.runStatus.metrics.sink1.sour
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich über Ablaufsteuerungsaktivitäten, die von Data Factory unterstützt werden: 
+Weitere Informationen zu unterstützten Ablaufsteuerungsaktivitäten: 
 
 - [Aktivität „If Condition“](control-flow-if-condition-activity.md)
 - [Aktivität „Pipeline ausführen“](control-flow-execute-pipeline-activity.md)

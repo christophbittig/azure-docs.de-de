@@ -1,7 +1,6 @@
 ---
 title: 'Tutorial: Anpassen eines virtuellen Linux-Computers mit cloud-init in Azure'
 description: In diesem Tutorial erfahren Sie, wie Sie cloud-init und Key Vault zum Anpassen virtueller Linux-Computer beim ersten Start in Azure verwenden.
-documentationcenter: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.collection: linux
@@ -9,14 +8,16 @@ ms.topic: tutorial
 ms.date: 09/12/2019
 ms.author: cynthn
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 461a52bca90040279ceaf2bab0bb1361336f355e
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 98723a6390958f38acec4909d6635adadc65ff13
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816312"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692054"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Tutorial: Verwenden von cloud-init zum Anpassen eines virtuellen Linux-Computers in Azure beim ersten Start
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
 In einem früheren Tutorial haben Sie erfahren, wie eine SSH-Verbindung mit einem virtuellen Computer hergestellt und NGINX manuell installiert wird. Um VMs auf schnelle und einheitliche Weise zu erstellen, ist meist eine Form der Automatisierung erwünscht. Eine gängige Methode zum Anpassen virtueller Computer beim ersten Start ist die Verwendung von [cloud-Init](https://cloudinit.readthedocs.io). In diesem Tutorial lernen Sie Folgendes:
 

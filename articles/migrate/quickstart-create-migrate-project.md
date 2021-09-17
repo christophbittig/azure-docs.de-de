@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom:
 - subject-armqs
 - mode-arm
-ms.openlocfilehash: 29bd42bedb9c7aa70769236d95339a510ae9dfe9
-ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
+ms.openlocfilehash: 4380b52489a483faf8063516cf2d3fd6af6b061d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113487487"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726237"
 ---
 # <a name="quickstart-create-an-azure-migrate-project-using-an-arm-template"></a>Schnellstartanleitung: Erstellen eines Azure Migrate-Projekts mithilfe einer ARM-Vorlage
 
@@ -37,8 +37,6 @@ Falls Sie kein aktives Azure-Abonnement besitzen, können Sie ein [kostenloses K
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/migrate-project-create/).
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.migrate/migrate-project-create/azuredeploy.json":::
-
-
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
@@ -66,7 +64,7 @@ Verwenden Sie das Azure-Portal, um zu überprüfen, ob das Azure Migrate-Projek
 
 
 1. Navigieren Sie zu Azure Migrate, indem Sie im Azure-Portal über die Suchleiste nach **Azure Migrate** suchen.
-2. Klicken Sie unter der Kachel für Windows, Linux und SQL Server auf die Schaltfläche **Entdecken**, **Bewerten** und **Migrieren**.
+2. Klicken Sie unter der Kachel „Server, Datenbanken und Web-Apps“ auf die Schaltfläche **Entdecken**, **Bewerten** und **Migrieren**.
 3. Wählen Sie das **Azure-Abonnement** und das **Projekt** gemäß den in der Bereitstellung angegebenen Werten aus.
 
 

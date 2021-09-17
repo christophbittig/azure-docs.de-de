@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Probleme lösen, die beim B
 services: automation
 ms.date: 02/11/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 43bc367be9ad9bb32f33f94df774acb3e808182a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8112b7637fc2737a80ab9235b962b2adef6d1b19
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100651118"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122607795"
 ---
 # <a name="troubleshoot-feature-deployment-issues"></a>Beheben von Problemen bei der Featurebereitstellung
 
@@ -105,20 +105,20 @@ Sie können die Abfrage für das Feature löschen und das Feature dann wieder ak
 
 #### <a name="issue"></a>Problem
 
-Dieser Fehlercode zeigt an, dass bei der Bereitstellung ein Fehler aufgrund einer oder mehrerer Richtlinienverletzungen aufgetreten ist.
+Dieser Fehlercode zeigt an, dass bei der Bereitstellung ein Fehler aufgrund einer oder mehrerer Azure Policy-Zuweisungen aufgetreten ist.
 
 #### <a name="cause"></a>Ursache 
 
-Eine Richtlinie blockiert den Abschluss des Vorgangs.
+Eine Azure Policy-Zuweisung lässt nicht zu, dass der Vorgang abgeschlossen wird.
 
 #### <a name="resolution"></a>Lösung
 
-Für eine erfolgreiche Bereitstellung des Features müssen Sie eine Änderung der angegebenen Richtlinie in Betracht ziehen. Da viele verschiedene Richtlinientypen definiert werden können, hängen die erforderlichen Änderungen von der Richtlinie ab, gegen die verstoßen wurde. Wenn z. B. eine Richtlinie für eine Ressourcengruppe definiert ist, die die Berechtigung zum Ändern des Inhalts einiger enthaltener Ressourcen verweigert, können Sie eine der folgenden Korrekturen auswählen:
+Für eine erfolgreiche Bereitstellung des Features müssen Sie eine Änderung der angegebenen Richtliniendefinition in Betracht ziehen. Da viele verschiedene Richtliniendefinitionstypen definiert werden können, hängen die erforderlichen Änderungen von der Richtliniendefinition ab, gegen die verstoßen wurde. Wenn z. B. eine Richtliniendefinition einer Ressourcengruppe zugewiesen ist, die die Berechtigung zum Ändern des Inhalts einiger enthaltener Ressourcen verweigert, können Sie eine der folgenden Korrekturen auswählen:
 
-* Entfernen Sie die Richtlinie vollständig.
+* Entfernen Sie die Richtlinienzuweisung vollständig.
 * Versuchen Sie, das Feature für eine andere Ressourcengruppe zu aktivieren.
-* Wählen Sie als neues Ziel der Richtlinie eine andere spezifische Ressource aus, z. B. ein Automation-Konto.
-* Überarbeiten Sie die Gruppe der Ressourcen, für deren Ablehnung diese Richtlinie konfiguriert wurde.
+* Wählen Sie als neues Ziel der Richtliniendefinition eine andere spezifische Ressource aus, z. B. ein Automation-Konto.
+* Überarbeiten Sie die Gruppe der Ressourcen, für deren Ablehnung diese Richtliniendefinition konfiguriert wurde.
 
 Prüfen Sie die Benachrichtigungen rechts oben im Azure-Portal, oder navigieren Sie zum Anzeigen der fehlerhaften Bereitstellung zur Ressourcengruppe, die Ihr Automation-Konto enthält, und wählen Sie unter **Einstellungen** die Option **Bereitstellungen** aus. Weitere Informationen zu Azure Policy finden Sie unter [Übersicht zu Azure-Richtlinien](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json).
 

@@ -7,14 +7,14 @@ ms.author: allensu
 ms.service: virtual-network
 ms.subservice: nat
 ms.topic: tutorial
-ms.date: 03/19/2021
+ms.date: 08/04/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: f25266f5a969514ca515e8cbbec959404428d6fb
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 4f523c41a38fa458d8d29cc6b644cdaaa4e9676f
+ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113438777"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122201677"
 ---
 # <a name="tutorial-integrate-a-nat-gateway-with-an-internal-load-balancer-using-the-azure-portal"></a>Tutorial: Integrieren eines NAT-Gateways in einen internen Lastenausgleich über das Azure-Portal
 
@@ -95,110 +95,86 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und ein Subnetz.
 
 ## <a name="create-load-balancer"></a>Erstellen eines Load Balancers
 
-In diesem Abschnitt wird eine Azure Load Balancer Standard-Instanz erstellt. 
+In diesem Abschnitt wird ein Lastenausgleich für virtuelle Computer erstellt.
 
-1. Wählen Sie **Ressource erstellen**. 
+Während der Erstellung des Lastenausgleichs konfigurieren Sie Folgendes:
 
-2. Geben Sie im Suchfeld **Load Balancer** ein. Wählen Sie in den Suchergebnissen **Load Balancer** aus.
+* Front-End-IP-Adresse
+* Back-End-Pool
+* Lastenausgleichsregeln für eingehenden Datenverkehr
 
-3. Wählen Sie auf der Seite **Load Balancer** die Option **Erstellen** aus.
-4. Geben Sie auf der Seite **Lastenausgleich erstellen** die folgenden Informationen ein, bzw. wählen Sie sie aus: 
+1. Geben Sie am oberen Rand des Portals den Suchbegriff **Lastenausgleich** in das Suchfeld ein. Wählen Sie in den Suchergebnissen **Lastenausgleichsmodule** aus.
+
+2. Wählen Sie auf der Seite **Load Balancer** die Option **Erstellen** aus.
+
+3. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, bzw. wählen Sie sie aus: 
 
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
     | **Projektdetails** |   |
     | Subscription               | Wählen Sie Ihr Abonnement aus.    |    
-    | Ressourcengruppe         | Wählen Sie **TutorIntLBNAT-rg** aus.|
-    | **Instanzendetails** |    |
+    | Ressourcengruppe         | Wählen Sie **TutorIntLBNAT-rg** aus. |
+    | **Instanzendetails** |   |
     | Name                   | Geben Sie **myLoadBalancer** ein.                                   |
     | Region         | Wählen Sie **(USA) USA, Osten** aus.                                        |
     | type          | Wählen Sie **Intern** aus.                                        |
     | SKU           | Übernehmen Sie den Standardwert **Standard**. |
-    | **Konfigurieren eines virtuellen Netzwerks** |    |
-    | Virtuelles Netzwerk | Wählen Sie **myVNet** aus. |
-    | Subnet | Wählen Sie **myBackendSubnet** aus. |
-    | IP-Adresszuweisung | Wählen Sie **Dynamisch** aus. |
-    | Verfügbarkeitszone | Wählen Sie **Zonenredundant** aus, um einen resilienten Lastenausgleich zu erstellen. </br> Wählen Sie zum Erstellen eines zonalen Lastenausgleichs eine bestimmte Zone aus 1, 2 oder 3 aus. |
-    
 
-5. Übernehmen Sie bei den anderen Einstellungen die Standardwerte, und wählen Sie **Überprüfen + erstellen** aus.
+4. Wählen Sie unten auf der Seite **Weiter: Front-End-IP-Konfiguration** aus.
 
-6. Wählen Sie auf der Registerkarte **Bewerten + erstellen** die Option **Erstellen** aus.
+5. Wählen Sie unter **Front-End-IP-Konfiguration** die Option **+ Front-End-IP-Adresse hinzufügen** aus.
 
-## <a name="create-load-balancer-resources"></a>Erstellen von Load Balancer-Ressourcen
+6. Geben Sie unter **Name** den Wert **LoadBalancerFrontend** ein.
 
-In diesem Abschnitt wird Folgendes konfiguriert:
+7. Wählen Sie unter **Subnetz** den Eintrag **myBackendSubnet** aus.
 
-* Lastenausgleichseinstellungen für einen Back-End-Adresspool
-* Ein Integritätstest
-* Eine Lastenausgleichsregel
+8. Wählen Sie **Dynamisch** für die **Zuweisung** aus.
 
-### <a name="create-a-backend-pool"></a>Erstellen eines Back-End-Pools
+9. Wählen Sie unter **Verfügbarkeitszone** die Option **Zonenredundant** aus.
 
-Der Back-End-Adresspool enthält die IP-Adressen der virtuellen NICs, die mit dem Lastenausgleich verbunden sind. 
+    > [!NOTE]
+    > In Regionen mit [Verfügbarkeitszonen](../../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones) haben Sie die Möglichkeit, „Keine Zone“ (Standardoption), eine bestimmte Zone oder die Option „Zonenredundant“ auszuwählen. Die Auswahl hängt von Ihren spezifischen Domänenfehleranforderungen ab. In Regionen ohne Verfügbarkeitszonen wird dieses Feld nicht angezeigt. </br> Weitere Informationen zu Verfügbarkeitszonen finden Sie in der [Übersicht über Verfügbarkeitszonen](../../availability-zones/az-overview.md).
 
-Erstellen Sie den Back-End-Adresspool **myBackendPool**, um virtuelle Computer für den Lastenausgleich von Internetdatenverkehr einzubeziehen.
+10. Wählen Sie **Hinzufügen**.
 
-1. Wählen Sie im linken Menü **Alle Dienste** > **Alle Ressourcen** und anschließend in der Ressourcenliste den Eintrag **myLoadBalancer** aus.
+11. Wählen Sie unten auf der Seite **Weiter: Back-End-Pools** aus.
 
-2. Wählen Sie unter **Einstellungen** die Option **Back-End-Pools** und dann **Hinzufügen** aus.
+12. Wählen Sie auf der Registerkarte **Back-End-Pools** die Option **+ Back-End-Pool hinzufügen** aus.
 
-3. Geben Sie auf der Seite **Back-End-Pool hinzufügen** die Zeichenfolge **myBackendPool** als Namen für Ihren Back-End-Pool ein, und wählen Sie anschließend **Hinzufügen** aus.
+13. Geben Sie unter **Back-End-Pool hinzufügen** in das Feld **Name** den Namen **myBackendPool** ein.
 
-### <a name="create-a-health-probe"></a>Erstellen eines Integritätstests
+14. Wählen Sie unter **Backend Pool Configuration** (Konfiguration des Back-End-Pools) die Option **NIC** oder **IP-Adresse** aus.
 
-Der Status Ihrer App wird vom Lastenausgleich mithilfe eines Integritätstests überwacht. 
+15. Wählen Sie unter **IP-Version** die Option **IPv4** oder **IPv6** aus.
 
-Abhängig von der Reaktion auf Integritätsüberprüfungen werden der Load Balancer-Instanz durch den Integritätstest virtuelle Computer hinzugefügt oder daraus entfernt. 
+16. Wählen Sie **Hinzufügen**.
 
-Erstellen Sie zur Überwachung der Integrität der virtuellen Computer einen Integritätstest mit dem Namen **myHealthProbe**.
+17. Wählen Sie unten auf der Seite die Schaltfläche **Weiter: Regeln für eingehenden Datenverkehr** aus.
 
-1. Wählen Sie im linken Menü **Alle Dienste** > **Alle Ressourcen** und anschließend in der Ressourcenliste den Eintrag **myLoadBalancer** aus.
+18. Wählen Sie unter **Lastenausgleichsregel** auf der Registerkarte **Regeln für eingehenden Datenverkehr** die Option **+ Lastenausgleichsregel hinzufügen** aus.
 
-2. Wählen Sie unter **Einstellungen** die Option **Integritätstests** und dann **Hinzufügen** aus.
-    
-    | Einstellung | Wert |
-    | ------- | ----- |
-    | Name | Geben Sie **myHealthProbe** ein. |
-    | Protocol | Wählen Sie **TCP** aus. |
-    | Port | Geben Sie **80** ein.|
-    | Intervall | Geben Sie für das **Intervall** den Wert **15** (Sekunden zwischen Testversuchen) ein. |
-    | Fehlerhafter Schwellenwert | Wählen Sie **2** als Wert für den **Fehlerschwellenwert** bzw. als Anzahl aufeinander folgender Testfehler aus, die auftreten müssen, damit ein virtueller Computer als fehlerhaft eingestuft wird.|
-   
-3. Lassen Sie die restlichen Einstellungen unverändert, und wählen Sie **OK** aus.
+19. Geben Sie unter **Lastenausgleichsregel hinzufügen** die folgenden Informationen ein, oder wählen Sie sie aus:
 
-### <a name="create-a-load-balancer-rule"></a>Erstellen einer Load Balancer-Regel
-
-Mithilfe einer Load Balancer-Regel wird definiert, wie Datenverkehr auf die virtuellen Computer verteilt werden soll. Sie definieren die Front-End-IP-Konfiguration für den eingehenden Datenverkehr und den Back-End-IP-Pool für den Empfang des Datenverkehrs. Quell- und Zielport werden in der Regel definiert. 
-
-In diesem Abschnitt wird eine Lastenausgleichsregel mit folgenden Merkmalen erstellt:
-
-* Sie heißt **myHTTPRule**.
-* Sie befindet sich im Front-End **LoadBalancerFrontEnd**.
-* Sie lauscht a **Port 80**.
-* Sie leitet vom Lastenausgleich verteilten Datenverkehr an den **Port 80** des Back-Ends **myBackendPool** weiter.
-
-1. Wählen Sie im linken Menü **Alle Dienste** > **Alle Ressourcen** und anschließend in der Ressourcenliste den Eintrag **myLoadBalancer** aus.
-
-2. Wählen Sie unter **Einstellungen** die Option **Lastenausgleichsregeln** und dann **Hinzufügen** aus.
-
-3. Konfigurieren Sie die Lastenausgleichsregel mit folgenden Werten:
-    
     | Einstellung | Wert |
     | ------- | ----- |
     | Name | Geben Sie **myHTTPRule** ein. |
-    | IP-Version | Wählen Sie **IPv4** aus. |
-    | Front-End-IP-Adresse | Wählen Sie **LoadBalancerFrontEnd** aus. |
+    | IP-Version | Wählen Sie abhängig von Ihren Anforderungen **IPv4** oder **IPv6** aus. |
+    | Front-End-IP-Adresse | Wählen Sie **LoadBalancerFrontend** aus. |
     | Protocol | Wählen Sie **TCP** aus. |
-    | Port | Geben Sie **80** ein.|
+    | Port | Geben Sie **80** ein. |
     | Back-End-Port | Geben Sie **80** ein. |
-    | Back-End-Pool | Wählen Sie **myBackendPool** aus.|
-    | Integritätstest | Wählen Sie **myHealthProbe** aus. |
-    | Leerlaufzeitüberschreitung (Minuten) | Geben Sie **15** Minuten ein. |
+    | Back-End-Pool | Wählen Sie **myBackendPool** aus. |
+    | Integritätstest | Wählen Sie **Neu erstellen**. </br> Geben Sie unter **Name** den Namen **myHealthProbe** ein. </br> Wählen Sie für **Protokoll** die Option **HTTP** aus. </br> Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **OK** aus. |
+    | Sitzungspersistenz | Wählen Sie **Keine**. |
+    | Leerlaufzeitüberschreitung (Minuten) | Geben Sie **15** ein, oder wählen Sie diesen Wert aus. |
     | TCP-Zurücksetzung | Wählen Sie **Aktiviert**. |
+    | Unverankerte IP | Wählen Sie **Deaktiviert** aus. |
 
-4. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie dann **OK** aus.
+20. Wählen Sie **Hinzufügen**.
 
+21. Wählen Sie unten auf der Seite die blaue Schaltfläche **Überprüfen + erstellen** aus.
+
+22. Klicken Sie auf **Erstellen**.
 
 ## <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
 
@@ -241,7 +217,7 @@ Diese virtuellen Computer werden dem Back-End-Pool des zuvor erstellten Lastenau
     | Subnet | **myBackendSubnet** |
     | Öffentliche IP-Adresse | Wählen Sie **Keine** aus. |
     | NIC-Netzwerksicherheitsgruppe | Wählen Sie **Erweitert** aus.|
-    | Konfigurieren von Netzwerksicherheitsgruppen | Wählen Sie **Neu erstellen**. </br> Geben Sie unter **Netzwerksicherheitsgruppe erstellen** als **Name** die Zeichenfolge **myNSG** ein. </br> Wählen Sie unter **Regeln für eingehenden Datenverkehr** die Option **+ Eingangsregel hinzufügen** aus. </br> Geben Sie unter **Zielportbereiche** den Wert **80** ein. </br> Geben Sie unter **Priorität** den Wert **100** ein. </br> Geben Sie unter **Name** die Zeichenfolge **myHTTPRule** ein. </br> Wählen Sie **Hinzufügen** aus. </br> Klicken Sie auf **OK**. |
+    | Konfigurieren von Netzwerksicherheitsgruppen | Wählen Sie **Neu erstellen**. </br> Geben Sie unter **Netzwerksicherheitsgruppe erstellen** als **Name** die Zeichenfolge **myNSG** ein. </br> Wählen Sie unter **Regeln für eingehenden Datenverkehr** die Option **+ Eingangsregel hinzufügen** aus. </br> Geben Sie unter **Zielportbereiche** den Wert **80** ein. </br> Geben Sie unter **Priorität** den Wert **100** ein. </br> Geben Sie unter **Name** den Namen **myNSGRule** ein. </br> Wählen Sie **Hinzufügen** aus. </br> Klicken Sie auf **OK**. |
     | **Lastenausgleich**  |
     | Diese VM hinter einer vorhandenen Lastenausgleichslösung platzieren? | Aktivieren Sie das Kontrollkästchen. |
     | **Lastenausgleichseinstellungen** |
@@ -253,7 +229,7 @@ Diese virtuellen Computer werden dem Back-End-Pool des zuvor erstellten Lastenau
   
 6. Überprüfen Sie die Einstellungen, und wählen Sie dann die Option **Erstellen**.
 
-7. Führen Sie die Schritte 1 bis 7 aus, um einen virtuellen Computer mit den unten angegebenen Werten zu erstellen. Verwenden Sie für alle übrigen Einstellungen die Werte von **myVM1**:
+7. Führen Sie die Schritte 1 bis 6 aus, um einen virtuellen Computer mit den unten angegebenen Werten zu erstellen. Verwenden Sie für alle übrigen Einstellungen die Werte von **myVM1**:
 
     | Einstellung | VM 2 |
     | ------- | ----- |
@@ -288,7 +264,7 @@ In diesem Abschnitt wird ein NAT-Gateway erstellt und dem Subnetz in dem virtuel
 
     | **Einstellung** | **Wert** |
     | ----------- | --------- |
-    | Öffentliche IP-Adressen | Wählen Sie **Neue öffentliche IP-Adresse erstellen** aus. </br> Geben Sie unter **Name** den Namen **myPublicIP-NAT** ein. </br> Klicken Sie auf **OK**. |
+    | Öffentliche IP-Adressen | Wählen Sie **Neue öffentliche IP-Adresse erstellen** aus. </br> Geben Sie unter **Name** den Namen **myNATgatewayIP** ein. </br> Klicken Sie auf **OK**. |
 
 6. Wählen Sie die Registerkarte **Subnetz** oder unten auf der Seite die Schaltfläche **Weiter: Subnetz** aus.
 

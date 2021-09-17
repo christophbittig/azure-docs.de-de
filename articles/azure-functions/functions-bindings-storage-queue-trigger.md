@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 8f9f6c18e75b0c8238583742a2a99d0e365edbd0
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 85422b8bc587c858fc219379e553d1705e5aaabe
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166359"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429884"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Queue Storage-Trigger für Azure Functions
 
@@ -439,9 +439,21 @@ Der Warteschlangentrigger stellt mehrere [Metadateneigenschaften](./functions-bi
 
 ## <a name="poison-messages"></a>Nicht verarbeitbare Nachrichten
 
-Falls eine Funktion des Warteschlangentriggers nicht erfolgreich ausgeführt werden kann, versucht Azure Functions für eine bestimmte Warteschlangennachricht bis zu fünf Mal (einschließlich des ersten Versuchs), die Funktion auszuführen. Sind alle fünf Versuche nicht erfolgreich, fügt die Functions-Laufzeit einer Warteschlange namens *&lt;Name der Originalwarteschlange>-poison* eine Nachricht hinzu. Sie können eine Funktion schreiben, um Nachrichten aus der Warteschlange für nicht verarbeitete Nachrichten zu verarbeiten, indem Sie diese protokollieren oder eine Benachrichtigung senden, dass ein manueller Eingriff erforderlich ist.
+Falls eine Funktion des Warteschlangentriggers nicht erfolgreich ausgeführt werden kann, versucht Azure Functions für eine bestimmte Warteschlangennachricht bis zu fünf Mal (einschließlich des ersten Versuchs), die Funktion auszuführen. Sind alle fünf Versuche nicht erfolgreich, fügt die Functions-Laufzeit einer Warteschlange namens *&lt;Name der Originalwarteschlange&gt;-poison* eine Nachricht hinzu. Sie können eine Funktion schreiben, um Nachrichten aus der Warteschlange für nicht verarbeitete Nachrichten zu verarbeiten, indem Sie diese protokollieren oder eine Benachrichtigung senden, dass ein manueller Eingriff erforderlich ist.
 
 Überprüfen Sie zur manuellen Behandlung nicht verarbeitbarer Nachrichten den Wert [dequeueCount](#message-metadata) der Warteschlangennachricht.
+
+
+## <a name="peek-lock"></a>Peek-Lock
+Das Peek-Lock-Muster erfolgt automatisch für Warteschlangentrigger. Wenn Nachrichten aus der Warteschlange entfernt werden, werden sie als unsichtbar markiert und mit einem vom Speicherdienst verwalteten Timeout versehen.
+
+Wenn die Funktion gestartet wird, beginnt sie mit der Verarbeitung einer Nachricht unter den folgenden Bedingungen.
+
+- Wenn die Funktion erfolgreich ist, wird die Ausführung der Funktion abgeschlossen und die Nachricht gelöscht.
+- Wenn die Funktion fehlerhaft ist, wird die Sichtbarkeit der Nachricht zurückgesetzt. Nach dem Zurücksetzen wird die Nachricht erneut verarbeitet, wenn die Funktion das nächste Mal eine neue Nachricht anfordert.
+- Wenn die Funktion aufgrund eines Absturzes nie abgeschlossen wird, läuft die Sichtbarkeit der Nachricht ab und sie wird wieder in der Warteschlange angezeigt.
+
+Alle Mechanismen der Sichtbarkeit werden vom Speicherdienst und nicht von der Functions-Runtime gehandhabt.
 
 ## <a name="polling-algorithm"></a>Abrufalgorithmus
 
@@ -449,14 +461,15 @@ Der Warteschlangentrigger implementiert einen zufälligen exponentiellen Backoff
 
 Der Algorithmus verwendet die folgende Logik:
 
-- Wenn eine Nachricht gefunden wird, wartet die Runtime zwei Sekunden und prüft dann, ob eine andere Nachricht vorhanden ist.
-- Wenn keine Nachricht gefunden wird, wartet sie ungefähr vier Sekunden, bevor der Versuch wiederholt wird.
+- Wenn eine Nachricht gefunden wird, wartet die Runtime 100 Millisekunden und prüft dann, ob eine andere Nachricht vorhanden ist.
+- Wenn keine Nachricht gefunden wird, wartet sie ungefähr 200 Millisekunden, bevor der Versuch wiederholt wird.
 - Nach aufeinander folgenden fehlgeschlagenen Versuchen, eine Warteschlangennachricht abzurufen, erhöht sich die Wartezeit immer mehr, bis die maximale Wartezeit, standardmäßig eine Minute, erreicht ist.
 - Die maximale Wartezeit kann über die `maxPollingInterval`-Eigenschaft in der Datei [host.json](functions-host-json-v1.md#queues) konfiguriert werden.
 
 Bei der lokalen Entwicklung ist das maximale Abrufintervall standardmäßig auf zwei Sekunden eingestellt.
 
-Im Hinblick auf die Abrechnung ist die Zeit, die für das Abrufen der Runtime aufgewendet wird, „kostenlos“ und wird Ihrem Konto nicht angerechnet.
+> [!NOTE]
+> Bei der Abrechnung von Funktions-Apps im Verbrauchsplan wird Ihnen die Zeit, die die Runtime mit dem Abruf verbringt, nicht in Rechnung gestellt.
 
 ## <a name="concurrency"></a>Parallelität
 

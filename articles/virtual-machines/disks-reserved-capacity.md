@@ -7,14 +7,16 @@ ms.date: 06/29/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: disks
-ms.openlocfilehash: 60ccfe222b06e9c250eab3b8fa568cc4e5a925b2
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 4ec7c3640a242212010de68a9f08c4d6e3e27300
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113356179"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694319"
 ---
 # <a name="reduce-costs-with-azure-disks-reservation"></a>Senken der Kosten durch Azure-Datenträgerreservierung
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Sparen Sie beim Azure Disk Storage-Verbrauch mit reservierter Kapazität. Mit Azure Disk Storage-Reservierungen in Kombination mit Azure Reserved Virtual Machine Instances können Sie die Gesamtkosten virtueller Computer (VM) senken. Der Reservierungsrabatt wird automatisch auf die entsprechenden Datenträger im ausgewählten Reservierungsbereich angewandt. Aufgrund dieser automatischen Anwendung müssen Sie einem verwalteten Datenträger keine Reservierung zuweisen, um die Rabatte zu erhalten.
 

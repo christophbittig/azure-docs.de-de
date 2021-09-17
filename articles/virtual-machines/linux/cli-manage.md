@@ -1,19 +1,21 @@
 ---
 title: Häufig verwendete Azure-CLI-Befehle
 description: Erfahren Sie mehr über häufig verwendete Azure CLI-Befehle für den Einstieg in die Verwaltung Ihrer virtuellen Computer im Azure Resource Manager-Modus
-author: RicksterCDN
+author: cynthn
 ms.service: virtual-machines
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/12/2017
-ms.author: rclaus
-ms.openlocfilehash: 2084d79ecbbc53ef9e3c75bae0664eae7de0eccb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: cynthn
+ms.openlocfilehash: 64f028059504d7d4ff7905653146add0649ecd2f
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102559629"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697003"
 ---
 # <a name="common-azure-cli-commands-for-managing-azure-resources"></a>Häufig verwendete Azure CLI-Befehle zum Verwalten von Azure-Ressourcen
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
 Mit Azure CLI können Sie Ihre Azure-Ressourcen unter macOS, Linux und Windows erstellen und verwalten. In diesem Artikel werden einige der am häufigsten verwendeten Befehle zum Erstellen und Verwalten von virtuellen Computern (VMs) erläutert.
 

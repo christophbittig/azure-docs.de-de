@@ -10,12 +10,12 @@ ms.topic: sample
 ms.date: 02/23/2021
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cec466fc420e435159e2882d7b39ef6d03eeea7c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c53686338ae45971519735edce0ac62a0544ac2e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733481"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744774"
 ---
 # <a name="use-the-headpose-attribute"></a>Verwenden des HeadPose-Attributs
 
@@ -29,7 +29,7 @@ Die Beispiel-App [Cognitive Services Face WPF](https://github.com/Azure-Samples/
 
 ### <a name="explore-the-sample-code"></a>Untersuchen des Beispielcodes
 
-Sie können das Gesichtsrechteck programmgesteuert drehen, indem Sie das HeadPose-Attribut verwenden. Wenn Sie dieses Attribut bei der Gesichtserkennung angeben (siehe [Informationen zur Gesichtserkennung](HowtoDetectFacesinImage.md)), können Sie es später abfragen. Die folgende Methode aus der App [Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) nimmt eine Liste von **DetectedFace**-Objekten und gibt eine Liste von **[Face](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/Face.cs)**-Objekten zurück. **Face** ist hier eine benutzerdefinierte Klasse, die Gesichtsdaten speichert, einschließlich der aktualisierten Rechteckkoordinaten. Neue Werte werden für **top** (oben), **left** (links), **width** (Breite) und **height** (Höhe) berechnet, und ein neues Feld **FaceAngle** gibt die Drehung an.
+Sie können das Gesichtsrechteck programmgesteuert drehen, indem Sie das HeadPose-Attribut verwenden. Wenn Sie dieses Attribut bei der Gesichtserkennung angeben (siehe [Aufrufen der Erkennungs-API](HowtoDetectFacesinImage.md)), können Sie es später abfragen. Die folgende Methode aus der App [Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) nimmt eine Liste von **DetectedFace**-Objekten und gibt eine Liste von **[Face](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/Face.cs)**-Objekten zurück. **Face** ist hier eine benutzerdefinierte Klasse, die Gesichtsdaten speichert, einschließlich der aktualisierten Rechteckkoordinaten. Neue Werte werden für **top** (oben), **left** (links), **width** (Breite) und **height** (Höhe) berechnet, und ein neues Feld **FaceAngle** gibt die Drehung an.
 
 ```csharp
 /// <summary>

@@ -3,12 +3,12 @@ title: Leitfaden und bewährte Methoden
 description: Bewährte Methoden und Anleitungen zum Sichern von Cloudworkloads und lokalen Workloads in der Cloud
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 54ddababad561edd307aab29b88415353887818b
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: e2d65f256a69b397486675dc71efb71ce3e4263d
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444931"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122605033"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Sichern von Cloudworkloads und lokalen Workloads in der Cloud
 
@@ -73,7 +73,7 @@ Sie können einen einzelnen Tresor oder mehrere Tresore verwenden, um Ihr Sicher
 * Wenn Ihre Workloads auf Abonnements verteilt sind, können Sie mehrere Tresore erstellen, einen oder mehrere pro Abonnement.
   * Backup Center ermöglicht es Ihnen, über eine zentralisierte Benutzeroberfläche alle Aufgaben im Zusammenhang mit der Sicherung zu verwalten. [Hier erhalten Sie weitere Informationen]().
   * Sie können Ihre Ansichten mit Arbeitsmappenvorlagen anpassen. Sicherungs-Explorer ist eine solche Vorlage für virtuelle Azure-Computer. [Hier erhalten Sie weitere Informationen](monitor-azure-backup-with-backup-explorer.md).
-  * Wenn Sie eine konsistente Richtlinie über mehrere Tresore hinweg benötigen, können Sie die Azure-Richtlinie verwenden, um die Sicherungsrichtlinie über mehrere Tresore hinweg weiterzugeben. Sie können eine benutzerdefinierte [Azure Policy-Definition](../governance/policy/concepts/definition-structure.md) schreiben, die den Effekt [‚deployifnotexists‘](../governance/policy/concepts/effects.md#deployifnotexists) verwendet, um eine Sicherungsrichtlinie über mehrere Tresore weiterzugeben. Sie können diese Azure Policy-Definition auch einem bestimmten Bereich (Abonnement oder RG) [zuweisen](../governance/policy/assign-policy-portal.md), sodass eine Sicherungsrichtlinienressource für alle Recovery Services-Tresore im Bereich der Azure Policy-Zuweisung bereitgestellt wird. Die Einstellungen der Sicherungsrichtlinie (wie z. B. Sicherungshäufigkeit, Aufbewahrung usw.) sollten vom Benutzer als Parameter in der Azure Policy-Zuweisung festgelegt werden.
+  * Wenn Sie tresorübergreifend eine konsistente Richtlinie benötigen, können Sie die Sicherungsrichtlinie mithilfe von Azure Policy über mehrere Tresore hinweg weitergeben. Sie können eine benutzerdefinierte [Azure Policy-Definition](../governance/policy/concepts/definition-structure.md) schreiben, die den Effekt [‚deployifnotexists‘](../governance/policy/concepts/effects.md#deployifnotexists) verwendet, um eine Sicherungsrichtlinie über mehrere Tresore weiterzugeben. Sie können diese Azure Policy-Definition auch einem bestimmten Bereich (Abonnement oder RG) [zuweisen](../governance/policy/assign-policy-portal.md), sodass eine Sicherungsrichtlinienressource für alle Recovery Services-Tresore im Bereich der Azure Policy-Zuweisung bereitgestellt wird. Die Einstellungen der Sicherungsrichtlinie (wie z. B. Sicherungshäufigkeit, Aufbewahrung usw.) sollten vom Benutzer als Parameter in der Azure Policy-Zuweisung festgelegt werden.
 
 * Wenn Ihr organisatorischer Fußabdruck wächst, möchten Sie möglicherweise aus folgenden Gründen Workloads über Abonnements hinweg verschieben: Ausrichtung nach Sicherungsrichtlinie, Konsolidierung von Tresoren, Kompromiss bezüglich geringerer Redundanz zum Einsparen von Kosten (Wechsel von GRS zu LRS).  Azure Backup unterstützt das Verschieben eines Recovery Services-Tresors über Azure-Abonnements hinweg oder in eine andere Ressourcengruppe innerhalb desselben Abonnements. [Hier erhalten Sie weitere Informationen](backup-azure-move-recovery-services-vault.md).
 

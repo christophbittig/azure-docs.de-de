@@ -1,30 +1,32 @@
 ---
 title: Features für die Leistungsoptimierung bei Kopieraktivitäten
-description: Erfahren Sie mehr über die wichtigsten Funktionen, mit denen Sie die Leistung bei Kopieraktivitäten in Azure Data Factory optimieren können.
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Erfahren Sie mehr über die wichtigsten Funktionen, mit denen Sie die Leistung bei Kopieraktivitäten in Azure Data Factory- und Azure Synapse Analytics-Pipelines optimieren können.
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 09/24/2020
-ms.openlocfilehash: e161ddbeaad0f9e366baa1265622bede93d5b567
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.custom: synapse
+ms.date: 08/24/2021
+ms.openlocfilehash: 9be8ef1772da6259441a8de4c85fa44d54945c7d
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482613"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821815"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>Features für die Leistungsoptimierung bei Kopieraktivitäten
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel werden die Features für die Leistungsoptimierung bei Kopieraktivitäten beschrieben, die Sie in Azure Data Factory nutzen können.
+In diesem Artikel werden die Features für die Leistungsoptimierung bei Kopieraktivitäten beschrieben, die Sie in Azure Data Factory- und Synapse-Pipelines nutzen können.
 
 ## <a name="data-integration-units"></a>Datenintegrationseinheiten
 
-Eine Datenintegrationseinheit ist eine Messgröße für die Leistungsfähigkeit (Kombination aus zugeteilten CPU-, Speicher- und Netzwerkressourcen) einer einzelnen Einheit in Azure Data Factory. Die Datenintegrationseinheit gilt nur für die [Azure-Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime), aber nicht für [selbstgehostete Integration Runtimes](concepts-integration-runtime.md#self-hosted-integration-runtime).
+Eine Datenintegrationseinheit ist eine Messgröße für die Leistungsfähigkeit (Kombination aus zugeteilten CPU-, Speicher- und Netzwerkressourcen) einer einzelnen Einheit innerhalb des Diensts. Die Datenintegrationseinheit gilt nur für die [Azure-Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime), aber nicht für [selbstgehostete Integration Runtimes](concepts-integration-runtime.md#self-hosted-integration-runtime).
 
-Die zulässige Anzahl von DIUs für die Ausführung einer Kopieraktivität liegt zwischen **2 und 256**. Wenn diese Option nicht angegeben ist oder Sie auf der Benutzeroberfläche „Auto“ auswählen, wendet die Data Factory dynamisch die optimale DIU-Einstellung basierend auf dem Quelle-Senke-Paar und dem Datenmuster an. In der nachstehenden Tabelle sind die unterstützten DIU-Bereiche und das Standardverhalten in verschiedenen Kopierszenarien aufgeführt:
+Die zulässige Anzahl von DIUs für die Ausführung einer Kopieraktivität liegt zwischen **2 und 256**. Wenn diese Option nicht angegeben ist oder Sie auf der Benutzeroberfläche „Auto“ auswählen, wendet der Dienst dynamisch die optimale DIU-Einstellung auf dem Quelle-Senke-Paar und dem Datenmuster basierend an. In der nachstehenden Tabelle sind die unterstützten DIU-Bereiche und das Standardverhalten in verschiedenen Kopierszenarien aufgeführt:
 
 | Kopierszenario | Unterstützter DIU-Bereich | Vom Dienst bestimmte Standard-DIUs |
 |:--- |:--- |---- |
@@ -77,10 +79,10 @@ Sie können eine parallele Kopie (Eigenschaft `parallelCopies`) für die Kopiera
 
 Die parallele Kopie ist orthogonal zu [Datenintegrationseinheiten](#data-integration-units) oder [Knoten der selbstgehosteten IR](#self-hosted-integration-runtime-scalability). Sie wird für alle DIUs oder Knoten der selbstgehosteten IR gezählt.
 
-Bei jeder Ausführung einer Kopieraktivität wendet Azure Data Factory standardmäßig die optimale Einstellung für parallele Kopien basierend auf Ihrem Quell-Senke-Paar und Datenmuster dynamisch an. 
+Bei jeder Ausführung einer Kopieraktivität wendet der Dienst standardmäßig die optimale Einstellung für parallele Kopien basierend auf Ihrem Quell-Senke-Paar und Datenmuster dynamisch an. 
 
 > [!TIP]
-> Das Standardverhalten von parallelen Kopien bietet Ihnen normalerweise den besten Durchsatz, der von ADF automatisch festgelegt wird. Grundlage dafür ist das Quell-/Senkenpaar, das Datenmuster sowie die Anzahl der DIUs oder die CPU/der Arbeitsspeicher/die Anzahl der Knoten der selbstgehosteten IR. Weitere Informationen zur Optimierung des parallelen Kopierens finden Sie unter [Problembehandlung bei der Leistung der Kopieraktivität](copy-activity-performance-troubleshooting.md).
+> Das Standardverhalten von parallelen Kopien bietet Ihnen normalerweise den besten Durchsatz, der vom Dienst automatisch festgelegt wird. Grundlage dafür ist das Quell-/Senkenpaar, das Datenmuster sowie die Anzahl der DIUs oder die CPU/der Arbeitsspeicher/die Anzahl der Knoten der selbstgehosteten IR. Weitere Informationen zur Optimierung des parallelen Kopierens finden Sie unter [Problembehandlung bei der Leistung der Kopieraktivität](copy-activity-performance-troubleshooting.md).
 
 In der folgenden Tabelle wird das parallele Kopierverhalten aufgeführt:
 
@@ -131,7 +133,7 @@ Beim Kopieren von Daten aus einem Quelldatenspeicher in einen Senkendatenspeiche
 
 ### <a name="how-staged-copy-works"></a>Funktionsweise des gestaffelten Kopierens
 
-Bei aktivierter Stagingfunktion werden die Daten zunächst aus dem Quelldatenspeicher in den Stagingspeicher kopiert (von Ihnen bereitgestelltes Azure-Blob oder Azure Data Lake Storage Gen2). Danach werden sie aus dem Staging- in den Senkendatenspeicher kopiert. Die Azure Data Factory-Kopieraktivität verwaltet den zweistufigen Ablauf automatisch und löscht außerdem nach Abschluss der Datenverschiebung temporäre Daten aus dem Stagingspeicher.
+Bei aktivierter Stagingfunktion werden die Daten zunächst aus dem Quelldatenspeicher in den Stagingspeicher kopiert (von Ihnen bereitgestelltes Azure-Blob oder Azure Data Lake Storage Gen2). Danach werden sie aus dem Staging- in den Senkendatenspeicher kopiert. Die Kopieraktivität verwaltet den zweistufigen Ablauf automatisch und löscht außerdem nach Abschluss der Datenverschiebung temporäre Daten aus dem Stagingspeicher.
 
 ![gestaffeltem Kopieren](media/copy-activity-performance/staged-copy.png)
 

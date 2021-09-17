@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2021
 ms.author: yelevin
-ms.openlocfilehash: ce1d2fafd330848c19dc5386fad11d87bfe2670a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1335d10b1fd46b24326636e7caece4583c84f523
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339332"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123253517"
 ---
 # <a name="connect-azure-sentinel-to-stixtaxii-threat-intelligence-feeds"></a>Verbinden von Azure Sentinel mit STIX/TAXII-Threat Intelligence-Feeds
 
@@ -60,9 +60,9 @@ Gehen Sie folgendermaßen vor, um von einem TAXII-Server Bedrohungsindikatoren i
 
 1. Wählen Sie den **Arbeitsbereich** aus, in den Sie Bedrohungsindikatoren vom TAXII-Server importieren möchten.
 
-1. Wählen Sie im Menü **Datenconnectors** im Connectorkatalog **Threat Intelligence – TAXII** aus, und klicken Sie auf die Schaltfläche **Connectorseite öffnen**.
+1. Wählen Sie im Menü **Datenconnectors** im Connectorkatalog **Threat Intelligence – TAXII** aus, und wählen Sie die Schaltfläche **Connectorseite öffnen** aus.
 
-1. Geben Sie einen **Anzeigenamen** für diese TAXII-Serversammlung, die **API-Stamm-URL**, die **Sammlungs-ID**, einen **Benutzernamen** (falls erforderlich) und ein **Kennwort** (falls erforderlich) ein, und wählen Sie die Gruppe der Indikatoren und die gewünschte Abfragefrequenz. Klicken Sie auf die Schaltfläche **Hinzufügen** .
+1. Geben Sie einen **Anzeigenamen** für diese TAXII-Serversammlung, die **API-Stamm-URL**, die **Sammlungs-ID**, einen **Benutzernamen** (falls erforderlich) und ein **Kennwort** (falls erforderlich) ein, und wählen Sie die Gruppe der Indikatoren und die gewünschte Abfragefrequenz. Wählen Sie die Schaltfläche **Hinzufügen** aus.
 
     :::image type="content" source="media/connect-threat-intelligence-taxii/threat-intel-configure-taxii-servers.png" alt-text="Konfigurieren von TAXII-Servern":::
  

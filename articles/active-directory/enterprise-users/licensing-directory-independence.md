@@ -1,5 +1,5 @@
 ---
-title: Merkmale der Interaktion mehrerer Mandanten – Azure AD | Microsoft-Dokumentation
+title: Merkmale der Interaktion mehrerer Mandanten – Azure AD | Microsoft-Dokumentation
 description: Grundlegendes zur Datenunabhängigkeit Ihrer Azure Active Directory-Organisationen
 services: active-directory
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.author: curtand
 ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ce3e4c6a7708fba15560564577c9b01722c8aec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 79673341845504590d1c70f802a04c644d20b7db
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96548051"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750547"
 ---
-# <a name="understand-how-multiple-azure-active-directory-organizations-interact"></a>Grundlegendes zur Interaktion mehrerer Azure Active Directory-Organisationen
+# <a name="understand-how-multiple-azure-active-directory-tenant-organizations-interact"></a>Grundlegendes zur Interaktion zwischen Azure Active Directory-Organisationen mit mehreren Mandanten
 
 In Azure Active Directory (Azure AD) ist jede Azure AD-Organisation vollständig unabhängig: gleichgestellt und logisch unabhängig von anderen Azure AD-Organisationen, die Sie verwalten. Diese Unabhängigkeit zwischen den Organisationen umfasst die Unabhängigkeit in Bezug auf Ressourcen, Verwaltung und Synchronisierung. Es gibt keine unter- und übergeordneten Beziehungen zwischen den Organisationen.
 
@@ -35,7 +35,7 @@ In Azure Active Directory (Azure AD) ist jede Azure AD-Organisation vollständig
 Wenn ein regulärer Benutzer (kein Administrator) der Organisation „Contoso“ die Testorganisation „Test“ erstellt, gilt Folgendes:
 
 * Standardmäßig wird der Benutzer, der eine Organisation erstellt, als externer Benutzer in dieser neuen Organisation hinzugefügt, und ihm wird die globale Administratorrolle für diese Organisation zugewiesen.
-* Die Administratoren für die Organisation „Contoso“ haben keine direkten Administratorberechtigungen für die Organisation „Test“, sofern ihnen nicht ein Administrator dieser Organisation die Berechtigungen explizit erteilt. Die Administratoren von „Contoso“ können allerdings den Zugriff auf die Organisation „Test“ steuern, wenn sie das Benutzerkonto steuern, mit dem diese Organisation erstellt wurde.
+* Die Administratoren für die Organisation „Contoso“ haben keine direkten Administratorberechtigungen für die Organisation „Test“, sofern ihnen nicht ein Administrator dieser Organisation die Berechtigungen explizit erteilt. Die Administratoren von „Contoso“ können jedoch den Zugriff auf die Organisation „Test“ steuern, wenn sie sich bei dem Benutzerkonto anmelden, mit dem diese Organisation erstellt wurde.
 * Wenn Sie eine Azure AD-Rolle für einen Benutzer in einer Organisation hinzufügen oder entfernen, wirkt sich diese Änderung nicht auf die Rollen aus, die dem Benutzer in einer anderen Azure AD-Organisation zugewiesen werden.
 
 ## <a name="synchronization-independence"></a>Synchronisierungsunabhängigkeit

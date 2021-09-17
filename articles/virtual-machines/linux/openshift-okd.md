@@ -10,14 +10,16 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/15/2019
 ms.author: haroldw
-ms.openlocfilehash: dc14b10081cf175581d29524dcea60c52763b03c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e011b48323246d9cff2b6cc6116cb6746fb81299
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101667204"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692665"
 ---
 # <a name="deploy-okd-in-azure"></a>Bereitstellen von OKD in Azure
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
 Sie können eine von zwei Methoden verwenden, um OKD (vormals OpenShift Origin) in Azure bereitzustellen:
 

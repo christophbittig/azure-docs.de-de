@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: duau
 ms.custom: references_regions
-ms.openlocfilehash: 38bd02f478ebe34f3c5708e1df9cc7da1e885058
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 53c719bb451b6bc8239fbd0f68bb6ad423b37b11
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109715212"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122607138"
 ---
 # <a name="secure-your-origin-with-private-link-in-azure-front-door-standardpremium-preview"></a>Sichern ihres Ursprungs mit Private Link in Azure Front Door Standard/Premium (Vorschau)
 
@@ -51,5 +51,6 @@ Die privaten Endpunkte von Azure Front Door werden von der Plattform verwaltet u
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zum Herstellen einer Verbindung zwischen Azure Front Door Premium und Ihrer Web-App über den Private Link-Dienst finden Sie unter [Herstellen einer Verbindung mit einer Web-App über einen privaten Endpunkt](../../private-link/tutorial-private-endpoint-webapp-portal.md).
-* Informationen zum Herstellen einer Verbindung zwischen Azure Front Door Premium und Ihrem Speicherkonto über den Private Link-Dienst finden Sie unter [Herstellen einer Verbindung mit einem Speicherkonto über einen privaten Endpunkt](../../private-link/tutorial-private-endpoint-storage-portal.md).
+* Um Azure Front Door Premium über den Private Link-Dienst mit Ihrer Web-App zu verbinden, siehe [Azure Front Door Premium mit einem Web-App-Ursprung über Private LinkB verbinden](../../frontdoor/standard-premium/how-to-enable-private-link-web-app.md).
+* Um Azure Front Door Premium mit Ihrem Speicherkonto über einen privaten Verbindungsdienst zu verbinden, siehe [Verbinden von Azure Front Door Premium mit einem Speicherkonto mit Private Link](../../frontdoor/standard-premium/how-to-enable-private-link-storage-account.md).
+* Um Azure Front Door Premium mit einem internen Load Balancer-Ursprung mit Private Link Service zu verbinden, siehe [Verbinden von Azure Front Door Premium mit einem internen Load Balancer-Ursprung mit Private Link](../../frontdoor/standard-premium/how-to-enable-private-link-internal-load-balancer.md).

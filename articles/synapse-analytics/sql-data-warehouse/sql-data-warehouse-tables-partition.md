@@ -1,5 +1,5 @@
 ---
-title: Partitionieren von Tabellen
+title: Partitionierungstabellen im dedizierten SQL-Pool
 description: Empfehlungen und Beispiele für die Verwendung von Tabellenpartitionen in einem dedizierten SQL-Pool
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 03/18/2019
+ms.date: 08/19/2021
 ms.author: xiaoyul
-ms.reviewer: igorstan
+ms.reviewer: igorstan, wiassaf
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ed9a5c63fa86e1fac6abd9ac023bb48abd2f196d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ea941ae782e7da33cc07932d4b0c79613790b2e8
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459646"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515038"
 ---
 # <a name="partitioning-tables-in-dedicated-sql-pool"></a>Partitionierungstabellen im dedizierten SQL-Pool
 
@@ -134,6 +134,8 @@ GROUP BY    s.[name]
 Ein dedizierter SQL-Pool unterstützt das Aufteilen, Zusammenführen und Wechseln von Partitionen. Jede dieser Funktionen wird mithilfe der [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)-Anweisung ausgeführt.
 
 Für den Wechsel zweier Partitionen zwischen zwei Tabellen müssen Sie sicherstellen, dass die Partitionen an ihren jeweiligen Grenzen ausgerichtet sind und die Tabellendefinitionen übereinstimmen. Da keine Überprüfungseinschränkungen verfügbar sind, um den Bereich der Werte in einer Tabelle zu erzwingen, muss die Quelltabelle die gleichen Partitionsgrenzen enthalten wie die Zieltabelle. Ist dies nicht der Fall, tritt ein Fehler beim Partitionswechsel auf, da die Partitionsmetadaten nicht synchronisiert werden.
+
+Eine Partitionsaufteilung erfordert, dass die entsprechende Partition (nicht unbedingt die gesamte Tabelle) leer ist, wenn die Tabelle über einen gruppierten Columnstore-Index (Clustered Columnstore Index, CCI) verfügt. Andere Partitionen in derselben Tabelle können Daten enthalten. Eine Partition, die Daten enthält, kann nicht geteilt werden. Dies führt zu einem Fehler: `ALTER PARTITION statement failed because the partition is not empty. Only empty partitions can be split in when a columnstore index exists on the table. Consider disabling the columnstore index before issuing the ALTER PARTITION statement, then rebuilding the columnstore index after ALTER PARTITION is complete.` Eine Problemumgehung zum Aufteilen einer Partition mit Daten finden Sie unter [Aufteilen einer Partition mit Daten](#how-to-split-a-partition-that-contains-data). 
 
 ### <a name="how-to-split-a-partition-that-contains-data"></a>Aufteilen einer Partition mit Daten
 
@@ -278,6 +280,11 @@ ALTER TABLE dbo.FactInternetSales_NewSales SWITCH PARTITION 2 TO dbo.FactInterne
 ```
 
 ### <a name="table-partitioning-source-control"></a>Datenquellen-Steuerelement für die Tabellenpartitionierung
+
+> [!NOTE]
+> Wenn Ihr Quellcodeverwaltungstool nicht so konfiguriert ist, dass Partitionsschemas ignoriert werden, kann das Ändern des Schemas einer Tabelle zum Aktualisieren von Partitionen dazu führen, dass eine Tabelle im Rahmen der Bereitstellung gelöscht und neu erstellt wird, was möglicherweise nicht mehr durchführbar ist. Es kann eine benutzerdefinierte Lösung zum Implementieren einer solchen Änderung, wie unten beschrieben, erforderlich sein. Überprüfen Sie, ob Ihr CI/CD-Tool (Continuous Integration/Continuous Deployment) dies zulässt. Suchen Sie in SQL Server Data Tools (SSDT) nach der erweiterten Veröffentlichungseinstellung „Ignore partition schemes“ (Partitionsschemas ignorieren), um ein generiertes Skript zu vermeiden, das dazu führt, dass eine Tabelle gelöscht und neu erstellt wird.
+
+Dieses Beispiel ist nützlich, wenn Partitionsschemas einer leeren Tabelle aktualisiert werden. Führen Sie zum kontinuierlichen Bereitstellen von Partitionsänderungen für eine Tabelle mit Daten die Schritte unter [Aufteilen einer Partition mit Daten](#how-to-split-a-partition-that-contains-data) zusammen mit der Bereitstellung aus, um Daten vorübergehend aus jeder Partition zu verschieben, bevor Sie die Partition SPLIT RANGE anwenden. Dies ist erforderlich, da das CI/CD-Tool nicht weiß, welche Partitionen Daten enthalten.
 
 Um ein **Rosten** der Tabellendefinition in Ihrem Quellcodeverwaltungssystem zu vermeiden, sollten Sie die folgende Vorgehensweise befolgen:
 

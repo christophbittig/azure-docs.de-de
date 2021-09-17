@@ -1,23 +1,26 @@
 ---
-title: ForEach-Aktivität in Azure Data Factory
-description: Mit der ForEach-Aktivität wird eine wiederholte Ablaufsteuerung in Ihrer Pipeline definiert. Sie wird verwendet, um eine Sammlung zu durchlaufen und die angegebenen Aktivitäten auszuführen.
+title: ForEach-Aktivität
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Die ForEach-Aktivität definiert eine sich wiederholende Ablaufsteuerung in einer Azure Data Factory- oder Azure Synapse Analytics-Pipeline. Die ForEach-Aktivität wird zum Durchlaufen einer Sammlung verwendet, um Aktionen für jedes Element in der Sammlung einzeln auszuführen.
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 01/23/2019
-ms.openlocfilehash: 28c67640a65e44fb9c6d6791229796c614993fa1
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 08/24/2021
+ms.openlocfilehash: 5325999fc844a23aeea3795527396709d2e7a730
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906294"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122825076"
 ---
-# <a name="foreach-activity-in-azure-data-factory"></a>ForEach-Aktivität in Azure Data Factory
+# <a name="foreach-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>ForEach-Aktivität in Azure Data Factory und Azure Synapse Analytics
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Mit der ForEach-Aktivität wird eine wiederholte Ablaufsteuerung in Ihrer Pipeline definiert. Diese Aktivität wird verwendet, um eine Sammlung zu durchlaufen. Sie führt die angegebenen Aktivitäten in einer Schleife aus. Die Schleifenimplementierung dieser Aktivität ähnelt der Foreach-Schleifenstruktur in Programmiersprachen.
+Die ForEach-Aktivität definiert eine sich wiederholende Ablaufsteuerung in einer Azure Data Factory- oder Synapse-Pipeline. Diese Aktivität wird verwendet, um eine Sammlung zu durchlaufen. Sie führt die angegebenen Aktivitäten in einer Schleife aus. Die Schleifenimplementierung dieser Aktivität ähnelt der Foreach-Schleifenstruktur in Programmiersprachen.
 
 ## <a name="syntax"></a>Syntax
 Die Eigenschaften werden weiter unten in diesem Artikel beschrieben. Die Eigenschaft „items“ ist die Sammlung, und auf die einzelnen Elemente in der Sammlung wird mit `@item()` verwiesen, wie im folgenden Syntaxbeispiel gezeigt:  
@@ -70,13 +73,13 @@ Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
 name | Name der ForEach-Aktivität. | String | Ja
 type | Muss auf **ForEach** festgelegt sein. | String | Ja
-isSequential | Gibt an, ob die Schleife sequenziell oder parallel ausgeführt werden soll.  Maximal 20 Schleifeniterationen können gleichzeitig parallel ausgeführt werden. Beispiel: Bei einer ForEach-Aktivität, die eine Kopieraktivität mit 10 unterschiedlichen Quell- und Senkendatasets durchläuft, während **isSequential** auf „false“ festgelegt ist, werden alle Kopien gleichzeitig ausgeführt. Der Standardwert lautet False. <br/><br/> Wenn „isSequential“ auf „false“ festgelegt ist, stellen Sie sicher, dass die Konfiguration die Ausführung mehrerer ausführbarer Dateien ermöglicht. Andernfalls sollte diese Eigenschaft vorsichtig verwendet werden, um Schreibkonflikte zu vermeiden. Weitere Informationen finden Sie im Abschnitt [Parallele Ausführung](#parallel-execution). | Boolean | Nein. Der Standardwert lautet False.
+isSequential | Gibt an, ob die Schleife sequenziell oder parallel ausgeführt werden soll.  Es können maximal 50 Schleifeniterationen parallel ausgeführt werden. Beispiel: Bei einer ForEach-Aktivität, die eine Kopieraktivität mit 10 unterschiedlichen Quell- und Senkendatasets durchläuft, während **isSequential** auf „false“ festgelegt ist, werden alle Kopien gleichzeitig ausgeführt. Der Standardwert lautet False. <br/><br/> Wenn „isSequential“ auf „false“ festgelegt ist, stellen Sie sicher, dass die Konfiguration die Ausführung mehrerer ausführbarer Dateien ermöglicht. Andernfalls sollte diese Eigenschaft vorsichtig verwendet werden, um Schreibkonflikte zu vermeiden. Weitere Informationen finden Sie im Abschnitt [Parallele Ausführung](#parallel-execution). | Boolean | Nein. Der Standardwert lautet False.
 batchCount | Batchanzahl, die zum Steuern der Anzahl der parallelen Ausführungen verwendet werden soll (wenn „isSequential“ auf „false“ festgelegt ist). Dies ist das obere Parallelitätslimit, aber die ForEach-Aktivität wird nicht immer mit dieser Zahl ausgeführt. | Ganze Zahl (maximal 50) | Nein. Der Standardwert ist 20.
 Items | Ein Ausdruck, der ein JSON-Array zurückgibt, das durchlaufen werden soll. | Ausdruck (der ein JSON-Array zurückgibt) | Ja
 activities | Die Aktivitäten, die ausgeführt werden sollen. | Liste der Aktivitäten | Ja
 
 ## <a name="parallel-execution"></a>Parallele Ausführung
-Wenn **isSequential** auf „false“ festgelegt ist, erfolgen maximal 20 gleichzeitige Iterationen der Aktivität parallel. Diese Einstellung sollte vorsichtig verwendet werden. Wenn die gleichzeitigen Iterationen in den gleichen Ordner, aber in andere Dateien schreiben, ist dieser Ansatz gut. Wenn die gleichzeitigen Iterationen gleichzeitig in genau dieselbe Datei schreiben, verursacht dieser Ansatz wahrscheinlich einen Fehler. 
+Wenn **isSequential** auf FALSE festgelegt ist, werden maximal 50 Iterationen der Aktivität gleichzeitig ausgeführt. Diese Einstellung sollte vorsichtig verwendet werden. Wenn die gleichzeitigen Iterationen in den gleichen Ordner, aber in andere Dateien schreiben, ist dieser Ansatz gut. Wenn die gleichzeitigen Iterationen gleichzeitig in genau dieselbe Datei schreiben, verursacht dieser Ansatz wahrscheinlich einen Fehler. 
 
 ## <a name="iteration-expression-language"></a>Sprache für Iterationsausdrücke
 Geben Sie in der ForEach-Aktivität für die Eigenschaft **items** ein Array an, das durchlaufen werden soll. Verwenden Sie `@item()` zum Durchlaufen einer einzelnen Enumeration in der ForEach-Aktivität. Beispiel: Wenn **items** ein Array wie [1, 2, 3] ist, gibt `@item()` in der ersten Iteration 1 zurück, in der zweiten Iteration 2 und in der dritten Iteration 3. Sie können `@range(0,10)` den auch „Gefällt mir“ Ausdruck verwenden, um zehnmal zu iterieren, beginnend mit 0 bis 9.
@@ -487,7 +490,7 @@ Hier finden Sie einige Einschränkungen der ForEach-Aktivität sowie empfohlene 
 | | |
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie unter anderen Ablaufsteuerungsaktivitäten, die von Data Factory unterstützt werden: 
+Informationen zu weiteren unterstützten Ablaufsteuerungsaktivitäten: 
 
 - [Aktivität „Pipeline ausführen“](control-flow-execute-pipeline-activity.md)
 - [Aktivität „Metadaten abrufen“](control-flow-get-metadata-activity.md)

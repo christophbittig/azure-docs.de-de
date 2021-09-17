@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/25/2021
 ms.author: dpless
 ms.reviewer: jroth
-ms.openlocfilehash: d7d33fe4bc94de3d1fdca3d2b2e99d0663e39c97
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 86db0ce090c68f1a610aae6c69ed74dcf303416a
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112289853"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122635202"
 ---
 # <a name="storage-performance-best-practices-for-sql-server-on-azure-vms"></a>Speicher: Bewährte Methoden zur Leistung für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -193,10 +193,12 @@ Die folgende Tabelle enthält eine Zusammenfassung der empfohlenen Richtlinien f
 |---------|---------|
 | **Datenträger für Daten** | Aktivieren Sie die `Read-only`-Zwischenspeicherung für die Datenträger, die SQL Server-Datendateien hosten. <br/> Die Lesevorgänge aus dem Cache sind schneller als die nicht zwischengespeicherten Lesevorgänge von dem Datenträger für Daten. <br/> IOPS und Durchsatz ohne Zwischenspeicherung sowie IOPS und Durchsatz mit Zwischenspeicherung ergeben die gesamte mögliche Leistung, die vom virtuellen Computer innerhalb der VM-Grenzwerte zur Verfügung steht, aber die tatsächliche Leistung variiert je nach der Fähigkeit der Workload, den Cache zu nutzen (Cachetrefferquote). <br/>|
 |**Transaktionsprotokolldatenträger**|Legen Sie die Richtlinie für die Zwischenspeicherung für Datenträger, die das Transaktionsprotokoll hosten, auf `None` fest.  Das Aktivieren der Zwischenspeicherung für den Transaktionsprotokolldatenträger bringt keinen Leistungsvorteil, und tatsächlich kann das Aktivieren der `Read-only`- oder `Read/Write`-Zwischenspeicherung auf dem Protokolllaufwerk die Leistung der Schreibvorgänge auf dem Laufwerk verschlechtern und den Umfang des für Lesevorgänge auf dem Datenlaufwerk verfügbaren Caches verringern.  |
-|**Betriebssystemdatenträger** | Die Standardrichtlinie für die Zwischenspeicherung könnte `Read-only` oder `Read/write` für das Betriebssystemlaufwerk sein. <br/> Es wird nicht empfohlen, den Grad der Zwischenspeicherung für das Betriebssystemlaufwerk zu ändern.  |
+|**Betriebssystemdatenträger** | Die Standardrichtlinie für die Zwischenspeicherung für das Betriebssystemlaufwerk ist `Read/write`. <br/> Es wird nicht empfohlen, den Grad der Zwischenspeicherung für das Betriebssystemlaufwerk zu ändern.  |
 | **tempdb**| Wenn tempdb aus Kapazitätsgründen nicht auf dem kurzlebigen Laufwerk `D:\` platziert werden kann, ändern Sie entweder die Größe des virtuellen Computers, um ein größeres kurzlebiges Laufwerk zu erhalten, oder platzieren Sie tempdb auf einem separaten Datenlaufwerk mit konfigurierter `Read-only`-Zwischenspeicherung. <br/> Der Cache des virtuellen Computers und das kurzlebige Laufwerk verwenden beide die lokale SSD. Beachten Sie dies bei der Dimensionierung, da die E/A von tempdb auf die Grenzwerte des virtuellen Computers für IOPS und den Durchsatz mit Zwischenspeicherung angerechnet werden, wenn das Hosting auf dem kurzlebigen Laufwerk erfolgt.| 
 | | | 
 
+> [!IMPORTANT]
+> Durch Ändern der Cacheeinstellung eines Azure-Datenträgers wird der Zieldatenträger getrennt und erneut angefügt. Wenn Sie die Cacheeinstellung für einen Datenträger ändern, der Daten-, Protokoll- oder Anwendungsdateien für SQL Server hostet, müssen Sie unbedingt den SQL Server-Dienst sowie alle anderen verwandten Diensten beenden, um Datenbeschädigungen zu vermeiden.
 
 Weitere Informationen finden Sie unter [Nutzung des Datenträgercaches](../../../virtual-machines/premium-storage-performance.md#disk-caching). 
 

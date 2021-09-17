@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 7/16/2021
-ms.openlocfilehash: 55ec355cf28f08618b1c51670b876f93dee69cc8
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 2b6c9f621c4c18a172e12bc93387eb75451cb851
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114393657"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736331"
 ---
 # <a name="register-and-scan-erwin-mart-server-preview"></a>Registrieren und Überprüfen von erwin Mart Server (Vorschau)
 
@@ -54,12 +54,12 @@ Die einzige unterstützte Authentifizierung für eine Erwin Mart-Quelle ist die 
 
 Gehen Sie wie folgt vor, um in Ihrem Datenkatalog eine neue erwin Mart-Instanz zu registrieren:
 
-1.  Navigieren Sie zu Ihrem Purview-Konto.
-2.  Wählen Sie im linken Navigationsbereich die Option **Quellen** aus.
-3.  Wählen Sie **Registrieren** aus.
-4.  Wählen Sie unter „Register sources“ (Quellen registrieren) die Option **erwin** aus. Klicken Sie auf **Weiter**
-    :::image type="content" source="media/register-scan-erwin-source/register-sources.png" alt-text="register erwin source" border="true"::: (erwin-Quelle registrieren).
-    
+1. Navigieren Sie zu Ihrem Purview-Konto.
+1. Wählen Sie im linken Navigationsbereich **Data Map** aus.
+1. Wählen Sie **Registrieren** aus.
+1. Wählen Sie unter „Register sources“ (Quellen registrieren) die Option **erwin** aus. Wählen Sie **Weiter** aus.
+    :::image type="content" source="media/register-scan-erwin-source/register-sources.png" alt-text="Registrieren der Quelle „erwin“" border="true":::
+
 Gehen Sie auf dem Bildschirm „Register sources (erwin)“ (Quellen registrieren (erwin)) wie folgt vor:
 
 1.  Geben Sie einen **Namen** ein, unter dem die Datenquelle im Katalog aufgeführt werden soll.

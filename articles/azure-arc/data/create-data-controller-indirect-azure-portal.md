@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: ce593d8f4e29ecbe0873381b2a1cf028f03e212b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: cc31c8af40e064e9a320f93ec4ccbd5fe0f051c6
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340012"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771781"
 ---
 # <a name="create-azure-arc-data-controller-from-azure-portal---indirect-connectivity-mode"></a>Erstellen eines Azure Arc-Datencontrollers über das Azure-Portal: Indirekter Konnektivitätsmodus
 
@@ -23,7 +23,7 @@ ms.locfileid: "122340012"
 
 Sie können das Azure-Portal verwenden, um einen Azure Arc-Datencontroller im indirekten Konnektivitätsmodus zu erstellen.
 
-Viele der Erstellungsfunktionen für Azure Arc beginnen im Azure-Portal, obwohl sich die zu erstellende oder zu verwaltende Ressource außerhalb der Azure-Infrastruktur befindet. Das Muster für die Benutzerfunktionalität besteht in diesen Fällen darin, das Azure-Portal zu verwenden, um ein Skript zu generieren, das dann in Ihrer Umgebung heruntergeladen und ausgeführt werden kann, um wiederum eine sichere Verbindung mit Azure herzustellen. Dies gilt insbesondere dann, wenn keine direkte Verbindung zwischen Azure und Ihrer Umgebung besteht. Beispielsweise wird bei der [Erstellung von Azure Arc-fähigen Servern](../servers/onboard-portal.md) das folgende Muster befolgt.
+Viele der Erstellungsfunktionen für Azure Arc beginnen im Azure-Portal, obwohl sich die zu erstellende oder zu verwaltende Ressource außerhalb der Azure-Infrastruktur befindet. Das Muster für die Benutzerfunktionalität besteht in diesen Fällen darin, das Azure-Portal zu verwenden, um ein Skript zu generieren, das dann in Ihrer Umgebung heruntergeladen und ausgeführt werden kann, um wiederum eine sichere Verbindung mit Azure herzustellen. Dies gilt insbesondere dann, wenn keine direkte Verbindung zwischen Azure und Ihrer Umgebung besteht. Beispielsweise wird bei der [Erstellung von Servern mit Azure Arc-Unterstützung](../servers/onboard-portal.md) das folgende Muster befolgt.
 
 Wenn Sie den indirekten Konnektivitätsmodus der Azure Arc-fähigen Datendienste verwenden, können Sie im Azure-Portal ein Notebook generieren, das dann heruntergeladen und in Azure Data Studio für Ihren Kubernetes-Cluster ausgeführt werden kann. 
 

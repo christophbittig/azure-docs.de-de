@@ -1,29 +1,28 @@
 ---
-title: Azure Synapse Runtime für Apache Spark 3.0 (Vorschauversion)
-description: Unterstützte Versionen von Spark, Scala, Python und .NET für Apache Spark 3.0 (Vorschau)
+title: Azure Synapse Runtime für Apache Spark 3.1 (Vorschauversion)
+description: Unterstützte Versionen von Spark, Scala, Python und .NET für Apache Spark 3.1 (Vorschauversion).
 services: synapse-analytics
 author: midesa
 ms.service: synapse-analytics
 ms.topic: reference
 ms.subservice: spark
-ms.date: 05/26/2021
+ms.date: 08/23/2021
 ms.author: midesa
 ms.custom: has-adal-ref
-ms.openlocfilehash: 3fa8942ac11549d5c9e7c6e068d7003297e016b2
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: 4ee561e5be8d24136210cd755865973d9aafd62f
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122428413"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695675"
 ---
-# <a name="azure-synapse-runtime-for-apache-spark-30-preview"></a>Azure Synapse Runtime für Apache Spark 3.0 (Vorschauversion)
+# <a name="azure-synapse-runtime-for-apache-spark-31-preview"></a>Azure Synapse Runtime für Apache Spark 3.1 (Vorschauversion)
 
-Azure Synapse Analytics unterstützt mehrere Laufzeiten für Apache Spark. In diesem Dokument werden die Laufzeitkomponenten und -versionen für die Azure Synapse Runtime für Apache Spark 3.0 (Vorschauversion) behandelt.  Die Laufzeitengine wird während des Vorschauzeitraums in regelmäßigen Abständen mit den neuesten Features und Bibliotheken aktualisiert.  Sehen Sie sich hier die neuesten Updates der Bibliotheken und deren Versionen an.
+Azure Synapse Analytics unterstützt mehrere Laufzeiten für Apache Spark. In diesem Dokument werden die Laufzeitkomponenten und -versionen für die Azure Synapse Runtime für Apache Spark 3.1 (Vorschauversion) behandelt.  Die Laufzeitengine wird während des Vorschauzeitraums in regelmäßigen Abständen mit den neuesten Features und Bibliotheken aktualisiert.  Sehen Sie sich hier die neuesten Updates der Bibliotheken und deren Versionen an.
 
 ## <a name="known-issues-in-preview"></a>Bekannte Probleme in der Vorschauversion
 * Unterstützung für Synapse Pipeline/Dataflows ist in Kürze verfügbar.
-* Bibliotheksverwaltung zum Hinzufügen von Bibliotheken ist in Kürze verfügbar.
-* Connectors: Die folgende Connectorunterstützung ist in Kürze verfügbar.
+* Die folgende Connector-Unterstützung ist in Kürze verfügbar:
   * Azure Data Explorer-Connector
   * CosmosDB
   * SQL Server
@@ -32,14 +31,14 @@ Azure Synapse Analytics unterstützt mehrere Laufzeiten für Apache Spark. In di
 ## <a name="component-versions"></a>Komponentenversionen
 |  Komponente   | Version   |  
 | ----- | ----- |
-| Apache Spark | 3.0 |
+| Apache Spark | 3.1 |
 | Betriebssystem | Ubuntu 18.04 |
 | Java | 1.8.0_282 |
 | Scala | 2,12  |
 | .NET Core | 3.1 |
-| .NET | 1.0.0 |
-| Delta Lake | 0,8 |
-| Python | 3.6 |
+| .NET | 2.0.0 |
+| Delta Lake | 1.0 |
+| Python | 3.8 |
 
 ## <a name="scala-and-java-libraries"></a>Scala- und Java-Bibliotheken
 

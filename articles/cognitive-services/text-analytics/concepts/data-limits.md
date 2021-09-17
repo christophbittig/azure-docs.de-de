@@ -8,26 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 11/19/2020
+ms.date: 04/07/2021
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 9ba9fe7ca73e874fb55c228e22b884a86de736cf
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: b583caa4fdb2a1e72833d4e24c317282be041513
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661458"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822133"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Datengrenzwerte und Ratenbegrenzungen für die Textanalyse-API
 <a name="data-limits"></a>
 
-In diesem Artikel finden Sie die Grenzwerte für die Datengröße und -rate, die beim Senden von Daten an die Textanalyse-API gelten. Beachten Sie, dass die Datengrenzwerte oder Ratenbegrenzungen keine Auswirkungen auf die Preise haben. Die Preise unterliegen den [Preisdetails](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) für Ihre Textanalyseressource.
+In diesem Artikel finden Sie die Grenzwerte für die Datengröße und -rate, die beim Senden von Daten an die Textanalyse-API gelten.
 
 ## <a name="data-limits"></a>Datengrenzwerte
 
 > [!NOTE]
-> * Wenn Sie größere Dokumente analysieren müssen, als der Grenzwert zulässt, können Sie den Text in kleinere Textabschnitte aufteilen, bevor Sie ihn an die API senden. 
-> * Ein Dokument ist eine einzelne aus Textzeichen bestehende Zeichenfolge.  
+> * Die Datengrenzwerte oder Ratenbegrenzungen haben keine Auswirkungen auf die Preise. Die Preise basieren auf der Anzahl der Textdatensätze, die Sie an die API senden. Weitere Informationen finden Sie in den [Preisdetails](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) Ihrer Textanalyseressource.
+>   * Ein Textdatensatz umfasst 1.000 Zeichen. 
+> * Daten- und Ratenbegrenzungen basieren auf der Anzahl von Dokumenten, die Sie an die API senden. Wenn Sie größere Dokumente analysieren müssen, als der Grenzwert zulässt, können Sie den Text in kleinere Textabschnitte aufteilen, bevor Sie ihn an die API senden. 
+>   * Ein Dokument ist eine einzelne aus Textzeichen bestehende Zeichenfolge.  
 
 | Begrenzung | Wert |
 |------------------------|---------------|
@@ -88,6 +90,8 @@ Die Ratenbegrenzung variiert je nach [Tarif](https://azure.microsoft.com/pricing
 
 Anforderungsraten werden für jedes Textanalysefeature separat gemessen. So können Sie die maximale Anzahl von Anforderungen für Ihren Tarif gleichzeitig an jedes Feature senden. Wenn Sie also beispielsweise den Tarif `S` verwenden und gleichzeitig 1.000 Anforderungen senden, können Sie 59 Sekunden lang keine weitere Anforderung senden.
 
+
+Die Ebenen S0-S4 sind veraltet, und es wird ein Wechsel zur Ebene S empfohlen.
 
 ## <a name="see-also"></a>Weitere Informationen
 

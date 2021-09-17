@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 07/20/2021
 ms.custom: references_regions
-ms.openlocfilehash: 3c44db5c17d1179df03985515acc9133feca198e
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: b3c84a46e19e4cf24459424458340233869ea683
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114711045"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736297"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Neuerungen in der kognitiven Azure-Suche
 
@@ -111,7 +111,7 @@ Informieren Sie sich über die Neuerungen im Dienst. Legen Sie ein Lesezeichen f
 |November | [Kognitiver Skill „Dokumentextrahierung“ (Vorschau)](cognitive-search-skill-document-extraction.md) | Kognitiver Skill zum Extrahieren des Inhalts einer Datei aus einem Skillset.|
 |November | [Skill „Textübersetzungs-API“](cognitive-search-skill-text-translation.md) | Kognitiver Skill für die Nutzung während der Indizierung, mit dem Text evaluiert und übersetzt wird. Allgemein verfügbar.|
 |November | [Power BI-Vorlagen](https://github.com/Azure-Samples/cognitive-search-templates/blob/master/README.md) | Vorlage zum Visualisieren von Inhalt im Wissensspeicher |
-|November | [Azure Data Lake Storage Gen2 (Vorschauversion)](search-howto-index-azure-data-lake-storage.md), [Cosmos DB-Gremlin-API (Vorschauversion)](search-howto-index-cosmosdb.md) und [Cosmos DB-Cassandra-API (Vorschauversion)](search-howto-index-cosmosdb.md) | Neue Indexerdatenquellen, die sich in der öffentlichen Vorschauphase befinden. |
+|November | [Azure Data Lake Storage Gen2 (Vorschauversion)](search-howto-index-azure-data-lake-storage.md) und [Cosmos DB-Gremlin-API (Vorschauversion)](search-howto-index-cosmosdb.md) | Neue Indexerdatenquellen, die sich in der öffentlichen Vorschauphase befinden. |
 |Juli | [Unterstützung für die Azure Government-Cloud](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia&products=search) | Allgemein verfügbar.|
 
 <a name="new-service-name"></a>

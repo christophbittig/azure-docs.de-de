@@ -1,5 +1,5 @@
 ---
-title: Verwalten privilegierter Azure AD-Gruppen in Privileged Identity Management (PIM) | Microsoft-Dokumentation
+title: Verwalten von Gruppen mit privilegiertem Zugriff in Privileged Identity Management (PIM) | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Mitglieder und Besitzer privilegierter Zugriffsgruppen in Privileged Identity Management (PIM) verwalten.
 services: active-directory
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.date: 12/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83aa5f4527885fbb0a02c70857cdd8409f0fa554
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: f2b68492dfd5c25199b00f6b5f68dc154ae767c8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111892722"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736135"
 ---
-# <a name="management-capabilities-for-privileged-access-azure-ad-groups-preview"></a>Verwaltungsfunktionen für privilegierte Azure AD-Zugriffsgruppen (Vorschau)
+# <a name="management-capabilities-for-privileged-access-groups-preview"></a>Verwaltungsfunktionen für Gruppen mit privilegiertem Zugriff (Vorschau)
 
-In Privileged Identity Management (PIM) kann nun die Berechtigung zur Mitgliedschaft in privilegierten Zugriffsgruppen oder zum Besitz privilegierter Zugriffsgruppen zugewiesen werden. Ab dieser Vorschauversion können Sie Cloudgruppen integrierte Azure AD-Rollen (Azure Active Directory) zuweisen und die Berechtigung und Aktivierung von Gruppenmitgliedern und -besitzern mithilfe von PIM verwalten. Weitere Informationen zu Gruppen, die in Azure AD Rollen zugewiesen werden können, finden Sie unter [Verwalten von Rollenzuweisungen in Azure Active Directory mithilfe von Cloudgruppen (Vorschau)](../roles/groups-concept.md).
+In Privileged Identity Management (PIM) kann nun die Berechtigung zur Mitgliedschaft in privilegierten Zugriffsgruppen oder zum Besitz privilegierter Zugriffsgruppen zugewiesen werden. Ab dieser Vorschauversion können Sie Cloudgruppen integrierte Azure AD-Rollen (Azure Active Directory) zuweisen und die Berechtigung und Aktivierung von Gruppenmitgliedern und -besitzern mithilfe von PIM verwalten. Weitere Informationen zu Gruppen, die in Azure AD Rollen zugewiesen werden können, finden Sie unter [Verwenden von Azure AD-Gruppen zum Verwalten von Rollenzuweisungen](../roles/groups-concept.md).
 
 >[!Important]
 > Verwenden Sie zum Zuweisen einer privilegierten Zugriffsgruppe zu einer Rolle für den Administratorzugriff auf Exchange, Security & Compliance Center oder SharePoint die Funktion **Rollen und Administratoren** im Azure AD-Portal und nicht die Funktion für Gruppen mit privilegiertem Zugriff, um den Benutzer oder die Gruppe als berechtigt für die Aktivierung in der Gruppe festzulegen.

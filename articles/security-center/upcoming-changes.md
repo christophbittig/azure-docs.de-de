@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 07/25/2021
+ms.date: 08/19/2021
 ms.author: memildin
-ms.openlocfilehash: 2770c3532dd83051f9c2c7dcc770850e85aeae4b
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: 0e9988aa7779d85714d6e1562af78c3a5bf0e1ff
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114689569"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444690"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Wichtige bevorstehende Änderungen an Azure Security Center
 
@@ -26,111 +26,78 @@ Die neuesten Versionshinweise finden Sie unter [Neuerungen in Azure Security Cen
 
 ## <a name="planned-changes"></a>Geplante Änderungen
 
-| Geplante Änderung                                                                                                                                                                                          | Voraussichtliches Datum der Änderung |
-|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
-| [Die Legacy-Implementierung von ISO 27001 wird durch die neue ISO-Norm 27001:2013 ersetzt.](#legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013)                                            | Juli 2021                 |
-| [Empfehlung „Log Analytics-Agent-Integritätsprobleme müssen auf Computern gelöst werden“ als veraltet gekennzeichnet](#deprecating-recommendation-log-analytics-agent-health-issues-should-be-resolved-on-your-machines) | Juli 2021                 |
-| [Logische Neuorganisation des Azure Defender für Resource Manager-Warnungen](#logical-reorganization-of-azure-defender-for-resource-manager-alerts)                                                           | August 2021               |
-| [CSV-Exporte auf 20 MB beschränkt](#csv-exports-to-be-limited-to-20-mb)                                                                                                                               | August 2021               |
-| [Aktivieren der Einbindung der Azure Defender-Sicherheitskontrolle in die Sicherheitsbewertung](#enable-azure-defender-security-control-to-be-included-in-secure-score)                                                         | Q3 2021                   |
-| [Verbesserungen bei der Empfehlung zur Klassifizierung vertraulicher Daten in den SQL Datenbanken](#enhancements-to-recommendation-to-classify-sensitive-data-in-sql-databases)                                               | Q1 2022                   ||                                                                                                                                                                                                         |                           |
+| Geplante Änderung       | Voraussichtliches Datum der Änderung |
+|----------------------|---------------------------|
+| [Die Legacy-Implementierung von ISO 27001 wird durch die neue ISO-Norm 27001:2013 ersetzt.](#legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013)| August 2021|
+| [Ändern des Präfix einiger Warnungstypen von „ARM_“ in „VM_“](#changing-prefix-of-some-alert-types-from-arm_-to-vm_)                                          | Oktober 2021|
+| [Änderungen an Empfehlungen für die Verwaltung von Endpoint Protection-Lösungen](#changes-to-recommendations-for-managing-endpoint-protection-solutions)             | Q4 2021    |
+| [Verbesserungen bei der Empfehlung zur Klassifizierung vertraulicher Daten in den SQL Datenbanken](#enhancements-to-recommendation-to-classify-sensitive-data-in-sql-databases)   | Q1 2022    |
 
 
 ### <a name="legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013"></a>Die Legacyimplementierung von ISO 27001 wird durch die neue ISO-Norm 27001:2013 ersetzt.
 
-**Voraussichtliches Datum der Änderung:** Juli 2021
+**Geschätztes Datum der Änderung:** August 2021
 
 Die Legacyimplementierung von ISO 27001 wird vom Security Center-Dashboard für die Einhaltung gesetzlicher Bestimmungen entfernt. Wenn Sie Ihre ISO 27001-Konformität mit Security Center nachverfolgen, integrieren Sie den neuen Standard „ISO 27001:2013“ für alle relevanten Verwaltungsgruppen oder Abonnements. Die derzeitige Legacynorm „ISO 27001“ wird in Kürze vom Dashboard entfernt.
 
 :::image type="content" source="media/upcoming-changes/removing-iso-27001-legacy-implementation.png" alt-text="Security Center-Dashboard zur Einhaltung gesetzlicher Bestimmungen mit der Meldung, dass die Legacyimplementierung von ISO 27001 entfernt wird" lightbox="media/upcoming-changes/removing-iso-27001-legacy-implementation.png":::
 
-### <a name="deprecating-recommendation-log-analytics-agent-health-issues-should-be-resolved-on-your-machines"></a>Empfehlung „Log Analytics-Agent-Integritätsprobleme müssen auf Computern gelöst werden“ als veraltet gekennzeichnet
+### <a name="changing-prefix-of-some-alert-types-from-arm_-to-vm_"></a>Ändern des Präfix einiger Warnungstypen von „ARM_“ in „VM_“ 
 
-**Voraussichtliches Datum der Änderung:** Juli 2021
+**Geschätztes Datum für die Änderung:** Oktober 2021
 
-Wir haben festgestellt, dass die Empfehlung **Log Analytics-Agent-Integritätsprobleme müssen auf Computern gelöst werden** Auswirkungen auf die Sicherheitsbewertungen haben, die dem Schwerpunkt von Security Center Cloud Security Posture Management (CSPM) nicht entsprechen. In der Regel bezieht sich CSPM auf die Ermittlung von Fehlkonfigurationen bei der Sicherheit. Probleme mit der Agent-Integrität gehören nicht in diese Problemkategorie.
+Im Juli 2021 haben wir eine [logische Neuorganisation des Azure Defender für Resource Manager-Warnungen](release-notes.md#logical-reorganization-of-azure-defender-for-resource-manager-alerts) angekündigt. 
 
-Darüber hinaus handelt es sich bei der Empfehlung im Gegensatz zu den anderen Agents im Zusammenhang mit Security Center um eine Anomalie: Dies ist der einzige Agent mit einer Empfehlung im Zusammenhang mit Integritätsproblemen.
+Im Rahmen einer logischen Neuorganisation für einige der Azure Defender-Pläne wurden 21 Warnungen vom [Azure Defender für Resource Manager](defender-for-resource-manager-introduction.md) in den [Azure Defender für Server](defender-for-servers-introduction.md) verschoben.
 
-Die Empfehlung wird in Kürze eingestellt.
+Wir planen nun, die Präfixe dieser Warnungen entsprechend dieser Neuzuweisung zu aktualisieren. Wir ersetzen „ARM_“ durch „VM_“, wie in der folgenden Tabelle dargestellt.
 
-Aufgrund dieser Einstellung nehmen wir auch geringfügige Änderungen an den Empfehlungen für die Installation des Log Analytics-Agents vor (**Der Log Analytics-Agent muss auf ... installiert sein**).
+| Aktueller Name                                   | Nach dieser Änderung                             |
+|------------------------------------------------|-----------------------------------------------|
+| ARM_AmBroadFilesExclusion                      | VM_AmBroadFilesExclusion                      |
+| ARM_AmDisablementAndCodeExecution              | VM_AmDisablementAndCodeExecution              |
+| ARM_AmDisablement                              | VM_AmDisablement                              |
+| ARM_AmFileExclusionAndCodeExecution            | VM_AmFileExclusionAndCodeExecution            |
+| ARM_AmTempFileExclusionAndCodeExecution        | VM_AmTempFileExclusionAndCodeExecution        |
+| ARM_AmTempFileExclusion                        | VM_AmTempFileExclusion                        |
+| ARM_AmRealtimeProtectionDisabled               | VM_AmRealtimeProtectionDisabled               |
+| ARM_AmTempRealtimeProtectionDisablement        | VM_AmTempRealtimeProtectionDisablement        |
+| ARM_AmRealtimeProtectionDisablementAndCodeExec | VM_AmRealtimeProtectionDisablementAndCodeExec |
+| ARM_AmMalwareCampaignRelatedExclusion          | VM_AmMalwareCampaignRelatedExclusion          |
+| ARM_AmTemporarilyDisablement                   | VM_AmTemporarilyDisablement                   |
+| ARM_UnusualAmFileExclusion                     | VM_UnusualAmFileExclusion                     |
+| ARM_CustomScriptExtensionSuspiciousCmd         | VM_CustomScriptExtensionSuspiciousCmd         |
+| ARM_CustomScriptExtensionSuspiciousEntryPoint  | VM_CustomScriptExtensionSuspiciousEntryPoint  |
+| ARM_CustomScriptExtensionSuspiciousPayload     | VM_CustomScriptExtensionSuspiciousPayload     |
+| ARM_CustomScriptExtensionSuspiciousFailure     | VM_CustomScriptExtensionSuspiciousFailure     |
+| ARM_CustomScriptExtensionUnusualDeletion       | VM_CustomScriptExtensionUnusualDeletion       |
+| ARM_CustomScriptExtensionUnusualExecution      | VM_CustomScriptExtensionUnusualExecution      |
+| ARM_VMAccessUnusualConfigReset                 | VM_VMAccessUnusualConfigReset                 |
+| ARM_VMAccessUnusualPasswordReset               | VM_VMAccessUnusualPasswordReset               |
+| ARM_VMAccessUnusualSSHReset                    | VM_VMAccessUnusualSSHReset                    |
 
-Diese Änderung wirkt sich mit hoher Wahrscheinlichkeit auf Ihre Sicherheitsbewertungen aus. Bei den meisten Abonnements erwarten wir, dass die Änderung zu einer höheren Bewertung führt. Es ist aber möglich, dass die Updates der Installationsempfehlung in einigen Fällen zu niedrigeren Bewertungen führen können.
-
-> [!TIP]
-> Diese Änderung wirkt sich auch auf die Seite [Ressourcenbestand](asset-inventory.md) aus, da sie auch Informationen darüber anzeigt, ob ein Computer überwacht, nicht überwacht oder teilweise überwacht wird (ein Zustand, der einen Agent mit Integritätsproblemen anzeigt). 
-
-
-### <a name="logical-reorganization-of-azure-defender-for-resource-manager-alerts"></a>Logische Neuorganisation des Azure Defender für Resource Manager-Warnungen
-
-**Geschätztes Datum der Änderung:** August 2021
-
-Die unten aufgeführten Warnungen werden derzeit im Rahmen des [Azure Defender für Resource Manager](defender-for-resource-manager-introduction.md)-Plans bereitgestellt.
-
-Im Rahmen einer logischen Neuorganisation für einige der Azure Defender-Pläne verschieben wir einzelne Warnungen vom **Azure Defender für Resource Manager** in den **Azure Defender für Server**.
-
-Die Warnungen werden nach zwei Hauptprinzipien organisiert:
-
-- Warnungen, die Schutz auf der Steuerungsebene für viele Azure-Ressourcentypen bieten, werden ein Teil des Azure Defender für Resource Manager
-- Warnungen, die bestimmte Workloads schützen, werden in den entsprechenden Azure Defender-Plan verschoben, der sich auf diese Workload bezieht
-
-Dies sind die Warnungen, die derzeit Teil des Azure Defender für Resource Manager sind und aufgrund dieser Änderung in den Azure Defender für Server verschoben werden:
-
-- ARM_AmBroadFilesExclusion
-- ARM_AmDisablementAndCodeExecution
-- ARM_AmDisablement
-- ARM_AmFileExclusionAndCodeExecution
-- ARM_AmTempFileExclusionAndCodeExecution
-- ARM_AmTempFileExclusion
-- ARM_AmRealtimeProtectionDisabled
-- ARM_AmTempRealtimeProtectionDisablement
-- ARM_AmRealtimeProtectionDisablementAndCodeExec
-- ARM_AmMalwareCampaignRelatedExclusion
-- ARM_AmTemporarilyDisablement
-- ARM_UnusualAmFileExclusion
-- ARM_CustomScriptExtensionSuspiciousCmd
-- ARM_CustomScriptExtensionSuspiciousEntryPoint
-- ARM_CustomScriptExtensionSuspiciousPayload
-- ARM_CustomScriptExtensionSuspiciousFailure
-- ARM_CustomScriptExtensionUnusualDeletion
-- ARM_CustomScriptExtensionUnusualExecution
-- ARM_VMAccessUnusualConfigReset
-- ARM_VMAccessUnusualPasswordReset
-- ARM_VMAccessUnusualSSHReset
-
-Weitere Informationen finden Sie unter [Azure Defender für Resource Manager](defender-for-resource-manager-introduction.md) und [Azure Defender für Server](defender-for-servers-introduction.md).
+Hier finden Sie weitere Informationen zu den Plänen [Azure Defender für Resource Manager](defender-for-resource-manager-introduction.md) und [Azure Defender für Server](defender-for-servers-introduction.md).
 
 
-### <a name="csv-exports-to-be-limited-to-20-mb"></a>CSV-Exporte auf 20 MB beschränkt
+### <a name="changes-to-recommendations-for-managing-endpoint-protection-solutions"></a>Änderungen an Empfehlungen für die Verwaltung von Endpoint Protection-Lösungen
 
-**Geschätztes Datum der Änderung:** August 2021
+**Geschätztes Datum für die Änderung:** Q4 2021
 
-Beim Exportieren von Daten zu Security Center-Empfehlungen gibt es derzeit keine Beschränkung für die Datenmenge, die Sie herunterladen können.
+Im August 2021 wurden zwei neue **Vorschau**-Empfehlungen für die Bereitstellung und Wartung der Endpoint Protection-Lösungen auf Ihren Computern hinzugefügt. Ausführliche Informationen finden Sie in den [Versionshinweisen](release-notes.md#two-new-recommendations-for-managing-endpoint-protection-solutions-in-preview).
 
-:::image type="content" source="media/upcoming-changes/download-csv-report.png" alt-text="Schaltfläche „CSV-Bericht herunterladen“ zum Exportieren von Empfehlungsdaten in Security Center":::
+Wenn die Empfehlungen für die allgemeine Verfügbarkeit freigegeben werden, ersetzen sie die folgenden vorhandenen Empfehlungen:
 
-Mit dieser Änderung wird ein Grenzwert von 20 MB festgelegt.
+- **Endpoint Protection sollte auf Ihren Computern installiert sein** ersetzt Folgendes:
+    - [Endpoint Protection-Lösung auf virtuellen Computern installieren](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/83f577bd-a1b6-b7e1-0891-12ca19d1e6df)
+    - [Endpoint Protection-Lösung auf Ihren Computern installieren](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/383cf3bc-fdf9-4a02-120a-3e7e36c6bfee) 
 
-Wenn Sie größere Datenmengen exportieren müssen, verwenden Sie vor der Auswahl die verfügbaren Filter, oder wählen Sie Teilmengen Ihrer Abonnements aus, und laden Sie die Daten in Batches herunter.
+- **Endpoint Protection-Integritätsprobleme sollten auf Ihren Computern gelöst werden** ersetzt die vorhandene Empfehlung mit derselben Bezeichnung. Die beiden Empfehlungen verfügen über unterschiedliche Bewertungsschlüssel:
+    - Bewertungsschlüssel für die **Vorschau**-Empfehlung: 37a3689a-818e-4a0e-82ac-b1392b9bb000
+    - Bewertungsschlüssel für die **GA**-Empfehlung (allgemeine Verfügbarkeit): 3bcd234d-c9c7-c2a2-89e0-c01f419c1a8a
 
-:::image type="content" source="media/upcoming-changes/filter-subscriptions.png" alt-text="Filtern von Abonnements im Azure-Portal":::
-
-Erfahren Sie mehr über das [Ausführen eines CSV-Exports Ihrer Sicherheitsempfehlungen](continuous-export.md#manual-one-time-export-of-alerts-and-recommendations).
-
-### <a name="enable-azure-defender-security-control-to-be-included-in-secure-score"></a>Aktivieren der Einbindung der Azure Defender-Sicherheitskontrolle in die Sicherheitsbewertung
-
-**Geschätztes Datum für die Änderung:** Q3 2021
-
-Die Security Center-Empfehlungen zur Härtung sind in Form von Sicherheitskontrollen gruppiert. Bei jeder Sicherheitskontrolle handelt es sich um eine logische Gruppe mit verwandten Sicherheitsempfehlungen, die eine anfällige Angriffsfläche widerspiegelt. Der Beitrag jeder Sicherheitskontrolle zur gesamten Sicherheitsbewertung wird sowohl auf der Seite mit den Empfehlungen als auch unter [Sicherheitskontrollen und deren Empfehlungen](secure-score-security-controls.md#security-controls-and-their-recommendations) eindeutig angezeigt.
-
-Seit ihrer Einführung verfügt die Sicherheitskontrolle **Azure Defender aktivieren** über eine maximal mögliche Bewertung von 0 Punkten. **Nach dieser Änderung trägt die Sicherheitskontrolle zu Ihrer Sicherheitsbewertung bei**.
-
-Beim Aktivieren von Azure Defender erweitern Sie die Funktionen des kostenlosen Modus von Security Center auf Workloads, die in privaten und anderen öffentlichen Clouds ausgeführt werden. So erhalten Sie eine einheitliche Sicherheitsverwaltung und Schutz vor Bedrohungen für Ihre Hybrid Cloud-Workloads. Einige wichtige Features von Azure Defender sind: integrierte Microsoft Defender für Endpunkt-Lizenzen für Ihre Server, Sicherheitsrisikoüberprüfung für virtuelle Computer und Containerregistrierungen, Sicherheitswarnungen basierend auf erweiterten Verhaltensanalysen und maschinellem Lernen und Containersicherheitsfeatures. Eine vollständige Liste finden Sie unter [Azure Security Center Free und Azure Defender-Aktivierung](security-center-pricing.md).
-
-Aufgrund dieser Änderung ergibt sich eine Auswirkung auf die Sicherheitsbewertung von Abonnements, die nicht durch Azure Defender geschützt sind. Wir empfehlen Ihnen, Azure Defender vor dieser Änderung zu aktivieren, um sicherzustellen, dass sich keine Auswirkungen auf Ihre Bewertungen ergeben. 
-
-Erfahren Sie mehr in [Schnellstart: Aktivieren von Azure Defender](enable-azure-defender.md).
+Weitere Informationen:
+- [Von Azure Security Center unterstützte Endpoint Protection-Lösungen](security-center-services.md#endpoint-supported)
+- [Bewerten des Status Ihrer bereitgestellten Lösungen durch diese Empfehlungen](security-center-endpoint-protection.md)
 
 ### <a name="enhancements-to-recommendation-to-classify-sensitive-data-in-sql-databases"></a>Verbesserungen bei der Empfehlung zur Klassifizierung vertraulicher Daten in den SQL Datenbanken
 
@@ -141,4 +108,4 @@ Die Empfehlung **Sensible Daten in Ihren SQL-Datenbanken müssen klassifiziert w
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Alle aktuellen Änderungen am Produkt finden Sie unter [Neuerungen in Azure Security Center](release-notes.md).
+Alle aktuellen Änderungen an Security Center finden Sie unter [Neuerungen in Azure Security Center](release-notes.md).

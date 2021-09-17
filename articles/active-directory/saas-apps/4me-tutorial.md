@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/09/2021
+ms.date: 08/20/2021
 ms.author: jeedes
-ms.openlocfilehash: ee9b326a43adb9c96fe6013eeecaabf955c78d45
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 98b8b3c1de7879301d82356bbb23e2d2d19ff9cc
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111986388"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768430"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-4me"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit 4me
 
@@ -42,6 +42,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * 4me unterstützt **SP**-initiiertes einmaliges Anmelden.
 * 4me unterstützt die **Just-In-Time**-Benutzerbereitstellung.
+* 4me unterstützt die [automatisierte Benutzerbereitstellung](4me-provisioning-tutorial.md).
 
 ## <a name="add-4me-from-the-gallery"></a>Hinzufügen von 4me aus dem Katalog
 

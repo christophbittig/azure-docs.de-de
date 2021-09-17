@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Verwenden von Playbooks mit Automatisierungsregeln in Azure Sentinel'
+title: Verwenden von Playbooks mit Automatisierungsregeln in Azure Sentinel
 description: Dieses Tutorial hilft Ihnen bei der Verwendung von Playbooks mit Automatisierungsregeln in Azure Sentinel, um Ihre Reaktion auf Vorfälle zu automatisieren und Sicherheitsbedrohungen zu behandeln.
 services: sentinel
 documentationcenter: na
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/17/2021
 ms.author: yelevin
-ms.openlocfilehash: a9411d044a8c176387d8b9900ca56a7512c4a0de
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 152b034fe5fd5571ec58c001a8befc98c84f4107
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112458324"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737543"
 ---
 # <a name="tutorial-use-playbooks-with-automation-rules-in-azure-sentinel"></a>Tutorial: Verwenden von Playbooks mit Automatisierungsregeln in Azure Sentinel
 
@@ -33,6 +33,10 @@ In diesem Tutorial erfahren Sie, wie Sie Playbooks mit Automatisierungsregeln ve
 > * Erstellen eines Playbooks
 > * Hinzufügen von Aktionen zu einem Playbook
 > * Anfügen eines Playbooks an eine Automatisierungs- oder Analyseregel, um die Reaktion auf Bedrohungen zu automatisieren
+
+> [!NOTE]
+> Dieses Tutorial enthält grundlegende Anleitungen für eine der wichtigsten Kundenaufgaben: Das Einrichten von Automatisierung für die Selektierung von Vorfällen. Weitere Informationen finden Sie in unserem Abschnitt **Vorgehensweise**, z. B. [Automatisieren der Bedrohungsabwehr mit Playbooks in Azure Sentinel](automate-responses-with-playbooks.md) und [Verwenden von Triggern und Aktionen in Azure Sentinel-Playbooks](playbook-triggers-actions.md).
+>
 
 ## <a name="what-are-automation-rules-and-playbooks"></a>Was sind Automatisierungsregeln und Playbooks?
 
@@ -124,7 +128,7 @@ Jedes Playbook muss mit einem Trigger beginnen. Der Trigger definiert die Aktion
    Wählen Sie den passenden Trigger für die Art des Playbooks aus, das Sie erstellen.
 
     > [!NOTE]
-    > Denken Sie daran, dass nur Playbooks, die auf dem **Incidenttrigger** basieren, von Automatisierungsregeln aufgerufen werden können. Playbooks, die auf dem **Warnungstrigger** basieren, müssen für die direkte Ausführung in [Analyseregeln](tutorial-detect-threats-custom.md#set-automated-responses-and-create-the-rule) definiert werden und können auch manuell ausgeführt werden.
+    > Denken Sie daran, dass nur Playbooks, die auf dem **Incidenttrigger** basieren, von Automatisierungsregeln aufgerufen werden können. Playbooks, die auf dem **Warnungstrigger** basieren, müssen für die direkte Ausführung in [Analyseregeln](detect-threats-custom.md#set-automated-responses-and-create-the-rule) definiert werden und können auch manuell ausgeführt werden.
     > 
     > Weitere Informationen zum zu verwendenden Trigger finden Sie unter [**Verwenden von Triggern und Aktionen in Azure Sentinel Playbooks**](playbook-triggers-actions.md).
 
@@ -205,7 +209,7 @@ Weitere Möglichkeiten zum Erstellen von Automatisierungsregeln finden Sie [hier
 
 ### <a name="respond-to-alerts"></a>Reagieren auf Warnungen
 
-Sie verwenden ein Playbook, um auf eine **Warnung** zu reagieren. Hierzu erstellen Sie eine **Analyseregel** oder bearbeiten eine bereits vorhandene Regel, die ausgeführt wird, wenn die Warnung generiert wird, und wählen Ihr Playbook als automatisierte Antwort im [Analyseregel-Assistent](tutorial-detect-threats-custom.md) aus.
+Sie verwenden ein Playbook, um auf eine **Warnung** zu reagieren. Hierzu erstellen Sie eine **Analyseregel** oder bearbeiten eine bereits vorhandene Regel, die ausgeführt wird, wenn die Warnung generiert wird, und wählen Ihr Playbook als automatisierte Antwort im [Analyseregel-Assistent](detect-threats-custom.md) aus.
 
 1. Wählen Sie im Azure Sentinel-Navigationsmenü auf dem Blatt **Analyse** die Analyseregel aus, für die Sie die Reaktion automatisieren möchten, und klicken Sie im Detailbereich auf **Bearbeiten**.
 

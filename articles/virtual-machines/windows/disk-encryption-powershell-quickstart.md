@@ -9,14 +9,16 @@ ms.collection: windows
 ms.topic: quickstart
 ms.date: 05/17/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4aed2ce182e535ebb60eae0007353c9c7bddef78
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 689a871a656aa03eea50faee5bbc48a3786f87f4
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555260"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692590"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-in-azure-with-powershell"></a>Schnellstart: Erstellen und Verschlüsseln einer Windows-VM mit PowerShell in Azure
+
+**Gilt für**: :heavy_check_mark: Windows VMs 
 
 Das Azure PowerShell-Modul dient zum Erstellen und Verwalten von Azure-Ressourcen über die PowerShell-Befehlszeile oder mit Skripts. In dieser Schnellstartanleitung erfahren Sie, wie Sie mit dem Azure PowerShell-Modul einen virtuellen Windows-Computer (VM) und einen Schlüsseltresor zum Speichern von Verschlüsselungsschlüsseln erstellen und den virtuellen Computer verschlüsseln. 
 

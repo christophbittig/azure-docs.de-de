@@ -8,19 +8,19 @@ ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: d3b956803e9a796c49288f90873e88c3b69f1c7b
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 1f07907d3a4f421fa9f7a03c48d5f74496a1d45a
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502894"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123303074"
 ---
 # <a name="find-errors-and-resume-jobs-by-using-log-and-plan-files-in-azcopy"></a>Ermitteln von Fehlern und Fortsetzen von Aufträgen mithilfe von Protokoll- und Plandateien in AzCopy
 
 AzCopy ist ein Befehlszeilenhilfsprogramm, das Sie verwenden können, um Blobs oder Dateien in oder aus einem Speicherkonto zu kopieren. In diesem Artikel erfahren Sie, wie Sie mithilfe von Protokollen Fehler diagnostizieren und dann Plandateien verwenden, um Aufträge fortzusetzen. Zudem wird in diesem Artikel gezeigt, wie Sie Protokoll- und Plandateien konfigurieren, indem Sie deren Ausführlichkeitsgrad und Standardspeicherort ändern.
 
 > [!NOTE]
-> Inhalte, die Sie beim Einstieg in AzCopy unterstützen, finden Sie unter [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md).
+> Inhalte, die Sie beim Einstieg in AzCopy unterstützen, finden Sie unter [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md). Dieser Artikel gilt für AzCopy **V10**, da diese Version von AzCopy derzeit unterstützt wird. Wenn Sie eine vorherige Version von AzCopy verwenden müssen, finden Sie Informationen hierzu unter [Verwenden der vorherige Version von AzCopy](storage-use-azcopy-v10.md#previous-version).
 
 ## <a name="log-and-plan-files"></a>Protokoll- und Plandateien
 
@@ -74,8 +74,7 @@ azcopy jobs show <job-id> --with-status=Failed
 Verwenden Sie den folgenden Befehl, um einen fehlgeschlagenen bzw. abgebrochenen Auftrag fortzusetzen. Dieser Befehl verwendet seinen Bezeichner zusammen mit dem SAS-Token, da er aus Sicherheitsgründen nicht persistent ist:
 
 ```
-azcopy jobs resume <job-id> --source-sas="<sas-token>"
-azcopy jobs resume <job-id> --destination-sas="<sas-token>"
+azcopy jobs resume <job-id> --source-sas="<sas-token>" --destination-sas="<sas-token>"
 ```
 
 > [!TIP]

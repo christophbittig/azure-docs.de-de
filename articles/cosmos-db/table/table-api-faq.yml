@@ -1,0 +1,276 @@
+### YamlMime:FAQ
+metadata:
+  title: Häufig gestellte Fragen zur Tabellen-API in Azure Cosmos DB
+  description: Hier finden Sie Antworten auf häufig gestellte Fragen zur Tabellen-API in Azure Cosmos DB.
+  author: SnehaGunda
+  ms.service: cosmos-db
+  ms.subservice: cosmosdb-table
+  ms.topic: conceptual
+  ms.date: 08/12/2020
+  ms.author: sngun
+  ms.openlocfilehash: 72b6dd7f64e7c55fd2547632cc132f8247b6ff72
+  ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122322750"
+title: Häufig gestellte Fragen zur Tabellen-API in Azure Cosmos DB
+summary: >
+  [!INCLUDE[appliesto-table-api](../includes/appliesto-table-api.md)]
+
+
+  Die Tabellen-API von Azure Cosmos DB steht im [Azure-Portal](https://portal.azure.com) zur Verfügung. Sie müssen sich zunächst für ein Azure-Abonnement registrieren. Nach der Registrierung können Sie Ihrem Azure-Abonnement ein Azure Cosmos DB-Table-API-Konto und Ihrem Konto anschließend Tabellen hinzufügen. Die unterstützten Sprachen und entsprechenden Schnellstartanleitungen finden Sie in der [Einführung in die Table-API von Azure Cosmos DB](introduction.md).
+sections:
+- name: Vergleich von Tabellen-API in Azure Cosmos DB und Azure Table Storage
+  questions:
+  - question: >
+      Inwiefern unterscheidet sich das Verhalten von Azure Table Storage von der Table-API?
+    answer: "Benutzer, die mit Azure Table Storage vertraut sind und Tabellen mit der Table-API von Azure Cosmos DB erstellen möchten, müssen sich auf einige Unterschiede beim Verhalten einstellen:\n\n* Die Table-API von Azure Cosmos DB verwendet zur Gewährleistung der garantierten Leistung ein Modell mit reservierter Kapazität. Das bedeutet allerdings, dass für die Kapazität Kosten anfallen, sobald die Tabelle erstellt wird, auch wenn die Kapazität gar nicht genutzt wird. Bei Azure Table Storage wird dagegen nur die genutzte Kapazität in Rechnung gestellt. Das erklärt, warum bei der Tabellen-API eine SLA mit einer Lesegeschwindigkeit von 10 ms und einer Schreibgeschwindigkeit von 15 ms im 99. Perzentil möglich ist, während Azure Table Storage nur eine SLA mit 10 Sekunden bietet. Bei Table-API-Tabellen fallen dafür jedoch auch Kosten für leere Tabellen ohne jegliche Anforderungen an, um sicherzustellen, dass gemäß der SLA von Azure Cosmos DB die erforderliche Kapazität für mögliche Anforderungen an die Tabellen zur Verfügung steht.\n\n* Von der Tabellen-API zurückgegebene Abfrageergebnisse werden nicht wie bei Azure Table Storage nach Partitionsschlüssel/Zeilenschlüssel sortiert.\n\n* Die Größe von Zeilenschlüsseln ist auf 255 Bytes begrenzt.\n\n* Batches können nur bis zu 2 MB enthalten.\n\n* CORS wird derzeit nicht unterstützt.\n\n* Bei Tabellennamen in Azure Table Storage wird die Groß- und Kleinschreibung nicht berücksichtigt, bei der Tabellen-API von Azure Cosmos DB dagegen schon.\n\n* Einige der internen Azure Cosmos DB-Formate für Codierungsinformationen (etwa binäre Felder) sind derzeit nicht so wie effizient wie möglicherweise gewünscht. Daher können unerwartete Einschränkungen in Bezug auf die Datengröße auftreten. Beispiel: Derzeit kann zum Speichern der Binärdaten die Kapazität einer Tabellenentität von 1 MB nicht vollständig genutzt werden, da die Codierung den Datenumfang vergrößert.\n\n* Der Entitätseigenschaftenname „ID“, „etag“ wird derzeit nicht unterstützt.\n\n* „TakeCount“ von „TableQuery“ ist nicht auf 1.000 beschränkt.\n\n* In Bezug auf die REST-API werden die folgenden Endpunkt-/Abfrageoptionen von Azure Table Storage unterstützt, aber NICHT von der Azure Cosmos DB-Tabellen-API:\n\n  | REST-Methode | REST-Endpunkt/-Abfrageoption | Dokumentations-URLs | Erklärung | In Table Storage unterstützt | In Tabellen-API unterstützt | \n  | ------------| ------------- | ---------- | ----------- |\n  | GET, PUT | `/?restype=service@comp=properties`| [Set Table Service Properties](/rest/api/storageservices/set-table-service-properties) (Festlegen von Tabellendiensteigenschaften) und [Get Table Service Properties](/rest/api/storageservices/get-table-service-properties) (Abrufen von Tabellendiensteigenschaften) | Dieser Endpunkt dient zum Festlegen von CORS-Regeln, Storage Analytics-Konfiguration und Protokollierungseinstellungen. CORS wird derzeit nicht unterstützt. Analyse und Protokollierung werden in Azure Cosmos DB anders behandelt als in Azure Storage-Tabellen. | Ja | Nein |\n  | OPTIONS | `/<table-resource-name>` | [Pre-flight CORS table request](/rest/api/storageservices/preflight-table-request) (Preflight-CORS-Tabellenanforderung) | Dies ist Teil von CORS und wird daher derzeit von Azure Cosmos DB nicht unterstützt. | Ja | Nein |\n  | GET | `/?restype=service@comp=stats` | [Get Table Service Stats](/rest/api/storageservices/get-table-service-stats) (Abrufen der Tabellendienststatistik) | Gibt Aufschluss über die Replikationsgeschwindigkeit von Daten zwischen primärer Datenbank und sekundären Datenbanken. Wird in Cosmos DB nicht benötigt, da hier die Replikation Teil der Schreibvorgänge ist. | Ja | Nein |\n  | GET, PUT | `/mytable?comp=acl` | [Get Table ACL](/rest/api/storageservices/get-table-acl) (Tabellen-ACL abrufen) und [Set Table ACL](/rest/api/storageservices/set-table-acl) (Tabellen-ACL festlegen) | Dient zum Abrufen und Festlegen der gespeicherten Zugriffsrichtlinien, die für die Verwaltung von Shared Access Signatures (SAS) verwendet werden. | Ja | Nein |\n\n* Die Tabellen-API von Azure Cosmos DB unterstützt nur das JSON-Format und nicht das ATOM-Format.\n\n* Beim .NET SDK werden einige Klassen und Methoden derzeit nicht von Azure Cosmos DB unterstützt.\n\n  | Klasse | Nicht unterstützte Methode |\n  |-------|-------- |\n  | CloudTableClient | \\*ServiceProperties* |\n  |                  | \\*ServiceStats* |\n  | CloudTable | SetPermissions* |\n  |            | GetPermissions* |\n  | TableServiceContext | * (Diese Klasse ist veraltet.) |\n  | TableServiceEntity | \" \" |\n  | TableServiceExtensions | \" \" |\n  | TableServiceQuery | \" \" |\n"
+- name: Weitere häufig gestellte Fragen
+  questions:
+  - question: >
+      Benötige ich für die Verwendung der Table-API ein neues SDK?
+    answer: >
+      Nein. Vorhandene Storage SDKs sollten auch weiterhin funktionieren. Es empfiehlt sich allerdings immer, die neuesten SDKs zu verwenden, um eine optimale Unterstützung zu gewährleisten und in vielen Fällen eine bessere Leistung zu erzielen. Eine Liste mit den verfügbaren Sprachen finden Sie in der [Einführung in die Table-API von Azure Cosmos DB](introduction.md).
+  - question: >
+      Welche Verbindungszeichenfolge muss ich zum Herstellen einer Verbindung mit der Table-API verwenden?
+    answer: >
+      Die Verbindungszeichenfolge lautet:
+
+
+      ```
+
+      DefaultEndpointsProtocol=https;AccountName=<AccountNamefromCosmosDB;AccountKey=<FromKeysPaneofCosmosDB>;TableEndpoint=https://<AccountName>.table.cosmosdb.azure.com
+
+      ```
+
+
+      Die Verbindungszeichenfolge können Sie im Azure-Portal auf der Seite „Verbindungszeichenfolge“ ermitteln.
+  - question: >
+      Wie setze ich die Konfigurationseinstellungen für die Anforderungsoptionen im .NET SDK für die Table-API außer Kraft?
+    answer: >
+      Einige Einstellungen werden über die CreateCloudTableClient-Methode behandelt, andere über „app.config“ im appSettings-Abschnitt der Clientanwendung. Informationen zu Konfigurationseinstellungen finden Sie unter [Azure Cosmos DB-Funktionen](tutorial-develop-table-dotnet.md).
+  - question: >
+      Müssen Kunden, die die vorhandenen Azure Table Storage SDKs verwenden, Änderungen vornehmen?
+    answer: >
+      Keine. Für Bestands- oder Neukunden, die die vorhandenen Azure Table Storage-SDKs verwenden, ergeben sich keine Änderungen.
+  - question: >
+      Wie zeige ich in Azure Cosmos DB gespeicherte Tabellendaten für die Verwendung mit der Tabellen-API an?
+    answer: >
+      Sie können das Azure-Portal verwenden, um die Daten zu durchsuchen. Außerdem können Sie den Code der Table-API oder die in der nächsten Antwort erwähnten Tools verwenden.
+  - question: >
+      Welche Tools kann ich mit der Table-API verwenden?
+    answer: >
+      Sie können den [Azure Storage-Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) verwenden.
+
+
+      Tools, die eine Verbindungszeichenfolge im weiter oben angegebenen Format akzeptieren, können die neue Table-API unterstützen. Eine Liste mit Tabellentools steht auf der Seite [Azure Storage-Clienttools](../../storage/common/storage-explorers.md) zur Verfügung.
+  - question: >
+      Ist die Parallelität im Betrieb gesteuert?
+    answer: >
+      Ja. Die optimistische Nebenläufigkeit wird über den Einsatz des ETag-Mechanismus bereitgestellt.
+  - question: >
+      Wird das OData-Abfragemodell für Entitäten unterstützt?
+    answer: >
+      Ja. Die Table-API unterstützt OData-Abfragen und LINQ-Abfragen.
+  - question: >
+      Kann in einer Anwendung gleichzeitig eine Verbindung mit Azure Table Storage und mit der Table-API von Azure Cosmos DB hergestellt werden?
+    answer: >
+      Ja. Sie können Verbindungen herstellen, indem Sie zwei separate CloudTableClient-Instanzen erstellen, die über die Verbindungszeichenfolge jeweils auf ihren eigenen URI verweisen.
+  - question: >
+      Wie migriere ich eine bereits vorhandene Azure Table Storage-Anwendung zu diesem Angebot?
+    answer: >
+      Hierzu können Sie [AzCopy](../../storage/common/storage-use-azcopy-v10.md) oder das [Migrationstool für Azure Cosmos DB-Daten](../import-data.md) verwenden.
+  - question: >
+      Wie erfolgt die Erweiterung der Speichergröße für diesen Dienst, wenn ich beispielsweise mit „n“ GB Daten beginne und meine Daten im Laufe der Zeit auf 1 TB anwachsen?
+    answer: >
+      Azure Cosmos DB wurde dafür ausgelegt, mithilfe von horizontaler Skalierung unbeschränkten Speicherplatz zu bieten. Der Dienst kann Ihren Speicher überwachen und effektiv vergrößern.
+  - question: >
+      Wie kann ich das Table-API-Angebot überwachen?
+    answer: >
+      Anforderungen und Speicherverwendung können im Bereich **Metriken** der Table-API überwacht werden.
+  - question: >
+      Wie kann ich den erforderlichen Durchsatz berechnen?
+    answer: >
+      Sie können den Kapazitätskalkulator verwenden, um den für die Vorgänge erforderlichen TableThroughput zu berechnen. Weitere Informationen finden Sie unter [Estimate Request Units and Data Storage](https://www.documentdb.com/capacityplanner) (Schätzen von Anforderungseinheiten und Datenspeicher). Im Allgemeinen können Sie Ihre Entität als JSON-Code darstellen und die Zahlen für Ihre Vorgänge eingeben.
+  - question: >
+      Kann ich das SDK der Table-API lokal mit dem Emulator verwenden?
+    answer: >
+      Derzeit leider nicht.
+  - question: >
+      Kann ich meine bereits vorhandene Anwendung mit der Table-API verwenden?
+    answer: >
+      Ja. Die gleiche API wird unterstützt.
+  - question: >
+      Muss ich meine vorhandenen Azure Table Storage-Anwendungen zum SDK migrieren, wenn ich die Funktionen der Tabellen-API nicht nutzen möchte?
+    answer: >
+      Nein. Sie können den vorhandenen Azure Table Storage-Bestand ohne irgendwelche Unterbrechungen erstellen und verwenden. Wenn Sie die Tabellen-API nicht nutzen, können Sie allerdings nicht von der automatischen Indizierung, der zusätzlichen Konsistenzoption oder der globalen Verteilung profitieren.
+  - question: >
+      Wie füge ich in der Tabellen-API die Datenreplikation über mehrere Azure-Regionen hinweg hinzu?
+    answer: >
+      Sie können die [globalen Replikationseinstellungen](../tutorial-global-distribution-sql-api.md#portal) im Azure Cosmos DB-Portal verwenden, um Regionen hinzuzufügen, die sich für Ihre Anwendung eignen. Beim Entwickeln einer global verteilten Anwendung sollten Sie Ihre Anwendung darüber hinaus mit einem auf die lokale Region festgelegten Wert von PreferredLocation hinzufügen, um für eine niedrige Leselatenz zu sorgen.
+  - question: >
+      Wie ändere ich die primäre Schreibregion für das Konto in der Table-API?
+    answer: >
+      Sie können den Portalbereich für globale Azure Cosmos DB-Replikation verwenden, um eine Region hinzuzufügen, und dann ein Failover in die benötigte Region durchführen. Anweisungen finden Sie unter [Entwickeln für Azure Cosmos DB-Konten für mehrere Regionen](../high-availability.md).
+  - question: >
+      Wie lassen sich beim Verteilen meiner Daten meine bevorzugten Leseregionen konfigurieren, um niedrige Latenz zu erreichen?
+    answer: "Verwenden Sie den Schlüssel PreferredLocation in der Datei „app.config“, um das Lesen vom lokalen Standort zu unterstützen. Bei bereits vorhandenen Anwendungen gibt die Table-API einen Fehler aus, wenn „LocationMode“ festgelegt ist. Entfernen Sie diesen Code, da die Table-API diese Angabe aus der Datei „app.config“ abruft. \n"
+  - question: >
+      Wie kann ich mir die Konsistenzebenen in der Table-API vorstellen?
+    answer: >
+      Azure Cosmos DB bietet einen wohlüberlegten Kompromiss zwischen Konsistenz, Verfügbarkeit und Wartezeit. Azure Cosmos DB verfügt über fünf Konsistenzebenen für Entwickler, die die Table-API nutzen. Sie können also auf Tabellenebene das passende Konsistenzmodell auswählen und beim Abfragen der Daten individuelle Anforderungen verwenden. Wenn ein Client eine Verbindung herstellt, kann er eine Konsistenzebene angeben. Die Ebene kann über das consistencyLevel-Argument von „CreateCloudTableClient“ geändert werden.
+
+
+      Die Table-API bietet Lesevorgänge mit geringer Wartezeit und die Garantie „Eigene Schreibvorgänge lesen“ mit begrenzter Veraltung als Standardeinstellung. Weitere Informationen finden Sie unter [Konsistenzebenen](../consistency-levels.md).
+
+
+      Standardmäßig wird für Azure-Tabellenspeicher „Starke Konsistenz“ innerhalb einer Region und „Letztliche Konsistenz“ an den sekundären Standorten verwendet.
+  - question: >
+      Bietet die Table-API von Azure Cosmos DB mehr Konsistenzebenen als Azure Table Storage?
+    answer: >
+      Ja. Informationen dazu, wie Sie von der weiten Verteilung von Azure Cosmos DB profitieren können, finden Sie unter [Einstellbare Datenkonsistenzebenen in Azure Cosmos DB](../consistency-levels.md). Da für die Konsistenzebenen Garantien gegeben werden, können Sie sie vertrauensvoll nutzen.
+  - question: >
+      Wie viel Zeit wird für die Replikation der Daten benötigt, wenn die globale Verteilung aktiviert ist?
+    answer: >
+      Azure Cosmos DB führt für die Daten dauerhaft einen Commit in der lokalen Region durch und überträgt die Daten innerhalb von Millisekunden sofort in andere Regionen. Diese Replikation ist nur von der Roundtripzeit (Round-Trip Time, RTT) des Datencenters abhängig. Weitere Informationen zur Funktion für die globale Verteilung von Azure Cosmos DB finden Sie unter [Globale Datenverteilung mit Azure Cosmos DB](../distribute-data-globally.md).
+  - question: >
+      Kann die Konsistenzebene für Leseanforderungen geändert werden?
+    answer: >
+      Mit Azure Cosmos DB können Sie die Konsistenzebene auf Containerebene (in der Tabelle) festlegen. Mit dem .NET SDK können Sie die Ebene ändern, indem Sie den Wert für den TableConsistencyLevel-Schlüssel in der Datei „app.config“ angeben. Mögliche Werte: „Stark“, „Begrenzte Veraltung“, „Sitzung“, „Präfixkonsistenz“ und „Letztlich“ Weitere Informationen finden Sie unter [Einstellbare Datenkonsistenzebenen in Azure Cosmos DB](../consistency-levels.md). Der Hauptaspekt hierbei ist, dass Sie die Konsistenzebene für Anforderungen nicht auf einen höheren Wert als für die Einstellung für die Tabelle festlegen können. Beispielsweise ist es nicht möglich, die Konsistenzebene für die Tabelle auf „Letztlich“ und die Konsistenzebene für die Anforderung auf „Sicher“ festzulegen.
+  - question: >
+      Wie läuft mit der Table-API das Failover bei einem Ausfall einer Region ab?
+    answer: >
+      Die Table-API nutzt die global verteilte Plattform von Azure Cosmos DB. Um sicherzustellen, dass Ihre Anwendung Ausfallzeiten des Datencenters tolerieren kann, sollten Sie für das Konto mindestens eine weitere Region im Azure Cosmos DB-Portal aktivieren: [Entwickeln für Azure Cosmos DB-Konten für mehrere Regionen](../high-availability.md). Sie können die Priorität der Region mithilfe des Portals festlegen: [Entwickeln für Azure Cosmos DB-Konten für mehrere Regionen](../high-availability.md).
+
+
+      Sie können für das Konto beliebig viele Regionen hinzufügen und steuern, wohin das Failover erfolgen kann, indem Sie eine Failoverpriorität festlegen. Für die Verwendung der Datenbank müssen Sie dafür eine Anwendung bereitstellen. Wenn Sie so vorgehen, treten für Ihre Kunden keine Ausfallzeiten auf. Das [neueste .NET-Client-SDK](dotnet-sdk.md) verfügt über Auto-Homing, die anderen SDKs dagegen nicht. Es kann also die ausgefallene Region erkennen und automatisch das Failover in die neue Region durchführen.
+  - question: >
+      Können mit der Table-API Sicherungen erstellt werden?
+    answer: >
+      Ja. Die Table-API nutzt für Sicherungen die global verteilte Plattform von Azure Cosmos DB. Sicherungen werden automatisch erstellt. Weitere Informationen finden Sie unter [Automatische Onlinesicherung und -wiederherstellung mit Azure Cosmos DB](../online-backup-and-restore.md).
+  - question: >
+      Indiziert die Table-API standardmäßig alle Attribute einer Entität?
+    answer: >
+      Ja, alle Attribute einer Entität werden standardmäßig indiziert. Weitere Informationen finden Sie unter [Azure Cosmos DB: Indizierungsrichtlinien](../index-policy.md).
+  - question: >
+      Bedeutet dies, dass ich nicht mehrere Indizes erstellen muss, um Abfragen zu bedienen?
+    answer: >
+      Ja. Die Table-API von Azure Cosmos DB ermöglicht die automatische Indizierung aller Attribute ganz ohne Schemadefinition. Dank dieser Automatisierung können sich Entwickler auf die Anwendung konzentrieren und verlieren keine Zeit mehr mit der Indexerstellung und -verwaltung. Weitere Informationen finden Sie unter [Azure Cosmos DB: Indizierungsrichtlinien](../index-policy.md).
+  - question: >
+      Kann ich die Indizierungsrichtlinie ändern?
+    answer: >
+      Ja. Sie können die Indizierungsrichtlinie ändern, indem Sie die Indexdefinition bereitstellen. Sie müssen die Einstellungen richtig codieren und mit Escapezeichen versehen.
+
+
+      Für .NET-fremde SDKs kann die Indizierungsrichtlinie nur über den **Daten-Explorer** im Portal festgelegt werden: Navigieren Sie zu der spezifischen Tabelle, die Sie ändern möchten. Navigieren Sie dann zu **Scale & Settings** (Skalierung und Einstellungen) > „Indizierungsrichtlinie“, nehmen Sie die gewünschte Änderung vor, und klicken Sie anschließend auf **Speichern**.
+
+
+      Bei Verwendung des .NET SDKs kann die Richtlinie in der Datei „app.config“ übermittelt werden:
+
+
+      ```JSON
+
+      {
+        "indexingMode": "consistent",
+        "automatic": true,
+        "includedPaths": [
+          {
+            "path": "/somepath",
+            "indexes": [
+              {
+                "kind": "Range",
+                "dataType": "Number",
+                "precision": -1
+              },
+              {
+                "kind": "Range",
+                "dataType": "String",
+                "precision": -1
+              }
+            ]
+          }
+        ],
+        "excludedPaths":
+      [
+       {
+            "path": "/anotherpath"
+       }
+      ]
+
+      }
+
+      ```
+  - question: >
+      Azure Cosmos DB als Plattform verfügt scheinbar über viele Funktionen, z.B. Sortierung, Aggregate, Hierarchie und andere. Werden diese Funktionen der Table-API hinzugefügt?
+    answer: >
+      Die Table-API bietet die gleichen Abfragefunktionen wie Azure Table Storage. Azure Cosmos DB unterstützt auch Sortieren, Aggregieren, räumliche Abfrage, Hierarchie und eine Vielzahl von integrierten Funktionen. Weitere Informationen finden Sie unter [SQL-Abfragen](../sql-query-getting-started.md).
+  - question: >
+      Wann sollte ich „TableThroughput“ für die Table-API ändern?
+    answer: >
+      Sie sollten TableThroughput ändern, wenn eine der folgenden Bedingungen gilt:
+
+
+      * Sie führen das Extrahieren, Transformieren und Laden (ETL) für die Daten durch, oder Sie möchten innerhalb eines kurzen Zeitraums viele Daten hochladen.
+
+      * Sie benötigen für den Container oder mehrere Container auf dem Back-End mehr Durchsatz. Beispielsweise erkennen Sie, dass der genutzte Durchsatz den bereitgestellten Durchsatz übersteigt, und es kommt zu einer Drosselung. Weitere Informationen finden Sie unter [Festlegen von Durchsatz für Azure Cosmos-Container](../set-throughput.md).
+  - question: >
+      Kann ich den Durchsatz meiner Table-API-Tabelle hoch- oder herunterskalieren?
+    answer: >
+      Ja. Sie können den Skalierungsbereich des Azure Cosmos DB-Portals verwenden, um den Durchsatz zu skalieren. Weitere Informationen finden Sie unter [Festlegen von Durchsatz für Azure Cosmos DB-Container](../set-throughput.md).
+  - question: >
+      Wird für neu bereitgestellte Tabellen ein TableThroughput-Standardwert festgelegt?
+    answer: >
+      Ja. Wenn Sie TableThroughput nicht mithilfe von „app.config“ außer Kraft setzen und keinen vorkonfigurierten Container in Azure Cosmos DB verwenden, erstellt der Dienst eine Tabelle mit einem Durchsatz von 400.
+  - question: >
+      Müssen Bestandskunden des Azure Table Storage-Diensts mit Preisänderungen rechnen?
+    answer: >
+      Keine. Es gibt keine Preisänderungen für Bestandskunden von Azure Table Storage.
+  - question: >
+      Wie errechnet sich der Preis für die Table-API?
+    answer: >
+      Der Preis hängt vom zugewiesenen TableThroughput-Wert ab.
+  - question: >
+      Wie kann ich beim Table-API-Angebot eine ggf. auftretende Ratenbegrenzung behandeln?
+    answer: >
+      Wenn die Anforderungsrate die Kapazität des bereitgestellten Durchsatzes für die zugrunde liegenden Container übersteigt, erhalten Sie einen Fehler, und das SDK wiederholt den Aufruf, indem die Wiederholungsrichtlinie angewendet wird.
+  - question: >
+      Warum muss ich zusätzlich zu „PartitionKey“ und „RowKey“ einen Durchsatz festlegen, um das Table-API-Angebot von Azure Cosmos DB nutzen zu können?
+    answer: >
+      Azure Cosmos DB legt einen Standarddurchsatz für Ihren Container fest, wenn Sie in der Datei „app.config“ oder über das Portal keinen Durchsatz angeben.
+
+
+      Azure Cosmos DB bietet Garantien für Leistung und Latenz mit Obergrenzen im Betrieb. Diese Garantie ist möglich, wenn die Engine die Kontrolle für die Vorgänge des Mandanten erzwingen kann. Durch das Festlegen von TableThroughput wird sichergestellt, dass Sie den garantierten Durchsatz und die Wartezeit auch erhalten, da diese Kapazität von der Plattform reserviert wird und somit der Erfolg des Vorgangs sichergestellt ist.
+
+
+      Mithilfe der Durchsatzspezifikation können Sie dies flexibel ändern, um von der Saisonalität Ihrer Anwendung zu profitieren, die Durchsatzanforderungen zu erfüllen und Kosten zu sparen.
+  - question: >
+      Azure Table Storage war für mich kostengünstig, da ich nur für die Speicherung der Daten zahle und nur selten Abfragen durchführe. Beim Tabellen-API-Angebot von Azure Cosmos DB fallen für mich aber offenbar auch Kosten an, wenn ich keine einzige Transaktion durchgeführt und nichts gespeichert habe. Gibt es dafür eine Erklärung?
+    answer: >
+      Azure Cosmos DB wurde als global verteiltes, SLA-basiertes System mit Garantien für Verfügbarkeit, Wartezeit und Durchsatz entwickelt. Wenn Sie den Durchsatz in Azure Cosmos DB reservieren, ist er – im Gegensatz zum Durchsatz anderer Systeme – garantiert. Mit Azure Cosmos DB werden zusätzliche Funktionen bereitgestellt, die von Kunden gefordert wurden, z.B. sekundäre Indizes und globale Verteilung.
+  - question: >
+      Ich habe die Benachrichtigung „Kontingent erschöpft“ (als Information, dass eine Partition voll ist) beim Erfassen von Daten in Azure Table Storage nie erhalten. Bei der Table-API wird diese Meldung aber angezeigt. Schränkt mich dieses Angebot ein, und zwingt es mich zum Ändern meiner vorhandenen Anwendung?
+    answer: >
+      Azure Cosmos DB ist ein SLA-basiertes System, das unbeschränkte Skalierung mit Garantien für Wartezeit, Durchsatz, Verfügbarkeit und Konsistenz bietet. Achten Sie darauf, dass Ihre Datengröße und der Index verwaltbar und skalierbar sind, um sicherzustellen, dass Sie die garantierte Premium-Leistung erhalten. Mit dem 20 GB-Grenzwert für die Anzahl von Entitäten bzw. Elementen pro Partitionsschlüssel wird dafür gesorgt, dass wir eine hervorragende Such- und Abfrageleistung bieten können. Um sicherzustellen, dass Ihre Anwendung gut skaliert werden kann, raten wir Ihnen auch bei Azure Storage, *keine* Hot Partition zu erstellen, indem Sie alle Informationen in einer Partition speichern und abfragen.
+  - question: >
+      Also benötige ich „PartitionKey“ und „RowKey“ auch bei der Table-API?
+    answer: >
+      Ja. Da die Oberfläche der Table-API der Oberfläche des Azure Table Storage SDKs ähnelt, ermöglicht der Partitionsschlüssel eine effiziente Datenverteilung. Der Zeilenschlüssel ist innerhalb dieser Partition eindeutig. Der Zeilenschlüssel muss vorhanden sein und darf nicht wie beim Standard-SDK NULL sein. Die RowKey-Länge beträgt 255 Bytes. Die PartitionKey-Länge beträgt 1 KB.
+  - question: >
+      Welche Fehlermeldungen gibt es für die Table-API?
+    answer: >
+      Da Azure Table Storage und die Table-API von Azure Cosmos DB die gleichen SDKs verwenden, sind auch die Fehler größtenteils gleich.
+  - question: >
+      Warum kommt es zu einer Drosselung, wenn ich versuche, über die Table-API nacheinander eine große Anzahl von Tabellen zu erstellen?
+    answer: >
+      Azure Cosmos DB ist ein SLA-basiertes System mit Garantien für Wartezeit, Durchsatz, Verfügbarkeit und Konsistenz. Da es sich um ein bereitgestelltes System handelt, werden Ressourcen reserviert, um diese Anforderungen zu garantieren. Eine hohe Erstellungsrate von Tabellen in rascher Folge wird erkannt und gedrosselt. Es wird empfohlen, dass Sie sich die Erstellungsrate der Tabellen ansehen und auf weniger als „5 pro Minute“ reduzieren. Bedenken Sie, dass es sich bei der Table-API um ein bereitgestelltes System handelt. Ab dem Moment, in dem Sie es bereitstellen, werden Gebühren fällig.
+  - question: >
+      Wie kann ich Feedback zum SDK und zu Bugs geben?
+    answer: >
+      Sie können Ihr Feedback wie folgt mitteilen:
+
+
+      * [Frageseite von Microsoft Q&A (Fragen und Antworten)](/answers/topics/azure-cosmos-db.html)
+
+      * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack Overflow eignet sich am besten für Fragen zur Programmierung. Vergewissern Sie sich, dass Ihre Frage [themenbezogen](https://stackoverflow.com/help/on-topic) ist und [so viele Details wie möglich enthält, damit sie klar und beantwortbar ist](https://stackoverflow.com/help/how-to-ask).
+additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\n* [Erstellen einer Tabellen-API-App per .NET SDK und Azure Cosmos DB](../create-table-dotnet.md)\n* [Erstellen einer Java-App zum Verwalten von Tabellen-API-Daten in Azure Cosmos DB](../create-table-java.md)\n"

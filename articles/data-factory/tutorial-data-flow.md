@@ -5,15 +5,16 @@ author: kromerm
 ms.author: makromer
 ms.reviewer: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/16/2021
-ms.openlocfilehash: 2e732cf11627c9bf9be2610d32dc324f548b82ed
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.date: 06/04/2021
+ms.openlocfilehash: b5d28b5e625bc7822469511ae83d5dabd5824fa0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111986406"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122640734"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Transformieren von Daten mithilfe von Mapping Data Flow
 
@@ -73,9 +74,9 @@ In diesem Schritt erstellen Sie eine Data Factory und öffnen die Data Factory-B
 
 In diesem Schritt erstellen Sie eine Pipeline, die eine Datenflussaktivität enthält.
 
-1. Wählen Sie auf der Seite **Erste Schritte** die Option **Pipeline erstellen** aus.
+1. Klicken Sie auf der Homepage von Azure Data Factory auf **Orchestrate** (Orchestrieren).
 
-   ![Erstellen der Pipeline](./media/doc-common-process/get-started-page.png)
+   ![Screenshot, der die ADF-Startseite zeigt.](./media/doc-common-process/get-started-page.png)
 
 1. Geben Sie auf der Registerkarte **Allgemein** für die Pipeline als **Name** der Pipeline **TransformMovies** ein.
 1. Erweitern Sie im Bereich **Aktivitäten** das Accordion-Element **Verschieben und transformieren**. Ziehen Sie die **Datenfluss**-Aktivität per Drag & Drop aus dem Bereich auf die Pipelinecanvas.

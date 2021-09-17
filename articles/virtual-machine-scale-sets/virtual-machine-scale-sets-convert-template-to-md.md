@@ -10,14 +10,16 @@ ms.subservice: disks
 ms.date: 6/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 03cbe4eb56f3b3b99f87048b699f76b30b7937c8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2cf6fc21baae657b28b7d3edfb242ee1bcef407c
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85373963"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690501"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>Konvertieren einer Skalierungsgruppenvorlage in eine Skalierungsgruppenvorlage für verwaltete Datenträger
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Kunden mit einer Resource Manager-Vorlage für die Erstellung einer Skalierungsgruppe ohne verwaltete Datenträger möchten diese Vorlage unter Umständen anpassen, um verwaltete Datenträger zu verwenden. In diesem Artikel wird die Vorgehensweise zur Verwendung von verwalteten Datenträgern am Beispiel eines Pull Requests aus den [Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates) (communitygestütztes Repository für Resource Manager-Beispielvorlagen) beschrieben. Die vollständige Pull-Anforderung finden Sie hier: [https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998). Im Anschluss finden Sie die relevanten Teile des Diffs sowie die dazugehörigen Erläuterungen:
 

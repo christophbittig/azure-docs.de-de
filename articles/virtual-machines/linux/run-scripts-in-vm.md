@@ -8,14 +8,16 @@ author: bobbytreed
 ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 3ed0766067e50ac8199890afdd7c7627aeecbdb9
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 1b0f47f11f72a4fa26a15bc96e04052b460d5729
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112455048"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688205"
 ---
 # <a name="run-scripts-in-your-linux-vm"></a>Ausführen von Skripts in Ihrer Linux-VM
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
 Beim Automatisieren von Aufgaben oder Beheben von Problemen kann es erforderlich sein, Befehle in einer VM auszuführen. Der folgende Artikel enthält eine kurze Übersicht der Funktionen, die zum Ausführen von Skripts und Befehlen in Ihren VMs zur Verfügung stehen.
 

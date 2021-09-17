@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
-ms.openlocfilehash: 9f3ad2a5d5b275ff611653855eff73bd36afda9f
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: bd334201d2dd93b38959aa9c8ebf19dc3125294f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107379416"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751930"
 ---
 # <a name="quickstart-configure-a-hybrid-cluster-with-azure-managed-instance-for-apache-cassandra-preview"></a>Schnellstart: Konfigurieren eines Hybridclusters mit Azure Managed Instance for Apache Cassandra (Vorschauversion)
 
@@ -26,7 +26,12 @@ In dieser Schnellstartanleitung wird veranschaulicht, wie Sie die Azure CLI-Befe
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
+
+
 * Für diesen Artikel ist die Azure CLI-Version 2.12.1 oder höher erforderlich. Wenn Sie Azure Cloud Shell verwenden, ist die neueste Version bereits installiert.
+
+    > [!NOTE]
+    > Stellen Sie sicher, dass Version **0.9.0** (oder höher) des CLI-Moduls `cosmosdb-preview` in Ihrer Cloud Shell ausgeführt wird. Dies ist erforderlich, damit alle unten aufgeführten Befehle ordnungsgemäß funktionieren. Sie können die Erweiterungsversionen überprüfen, indem Sie `az --version` ausführen. Führen Sie bei Bedarf ein Upgrade mit `az extension update --name cosmosdb-preview` aus.
 
 * [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) mit einer Verbindung mit Ihrer selbstgehosteten bzw. lokalen Umgebung. Weitere Informationen zum Herstellen einer Verbindung für lokale Umgebungen mit Azure finden Sie im Artikel [Verbinden eines lokalen Netzwerks mit Azure](/azure/architecture/reference-architectures/hybrid-networking/).
 
@@ -40,7 +45,7 @@ In dieser Schnellstartanleitung wird veranschaulicht, wie Sie die Azure CLI-Befe
     <!-- ![image](./media/configure-hybrid-cluster/subnet.png) -->
 
     > [!NOTE]
-    > Für die Bereitstellung einer Instanz von Azure Managed Instance for Apache Cassandra ist Internetzugriff erforderlich. In Umgebungen, in denen der Internetzugriff eingeschränkt ist, tritt ein Fehler bei der Bereitstellung auf. Stellen Sie sicher, dass der Zugriff im VNet auf die folgenden wichtigen Azure-Dienste, die für die richtige Funktionsweise von Managed Cassandra erforderlich sind, nicht blockiert ist:
+    > Für die Bereitstellung einer Instanz von Azure Managed Instance for Apache Cassandra ist Internetzugriff erforderlich. In Umgebungen, in denen der Internetzugriff eingeschränkt ist, tritt ein Fehler bei der Bereitstellung auf. Stellen Sie sicher, dass der Zugriff im VNet auf die folgenden wichtigen Azure-Dienste, die für die richtige Funktionsweise von Managed Cassandra erforderlich sind, nicht blockiert ist. Eine umfassende Liste der IP-Adressen und Portabhängigkeiten finden Sie [hier](network-rules.md). 
     > - Azure Storage
     > - Azure Key Vault
     > - Skalierungsgruppen für virtuelle Azure-Computer
@@ -57,7 +62,15 @@ In dieser Schnellstartanleitung wird veranschaulicht, wie Sie die Azure CLI-Befe
    > [!NOTE]
    > Die Werte `assignee` und `role` im vorherigen Befehl sind feste Dienstprinzipal- bzw. Rollenbezeichner.
 
-1. Als Nächstes konfigurieren wir Ressourcen für unseren Hybridcluster. Da Sie bereits über einen Cluster verfügen, dient der Clustername hier nur als logische Ressource zum Identifizieren des Namens Ihres vorhandenen Clusters. Achten Sie darauf, dass Sie den Namen Ihres vorhandenen Clusters verwenden, wenn Sie die Variablen `clusterName` und `clusterNameOverride` im folgenden Skript definieren. Darüber hinaus benötigen Sie die Startknoten, öffentlichen Clientzertifikate (falls Sie auf Ihrem Cassandra-Endpunkt einen öffentlichen/privaten Schlüssel konfiguriert haben) und Gossipzertifikate Ihres vorhandenen Clusters.
+1. Als Nächstes konfigurieren wir Ressourcen für unseren Hybridcluster. Da Sie bereits über einen Cluster verfügen, dient der Clustername hier nur als logische Ressource zum Identifizieren des Namens Ihres vorhandenen Clusters. Achten Sie darauf, dass Sie den Namen Ihres vorhandenen Clusters verwenden, wenn Sie die Variablen `clusterName` und `clusterNameOverride` im folgenden Skript definieren. 
+ 
+    Außerdem benötigen Sie mindestens die Startknoten aus Ihrem vorhandenen Rechenzentrum und die Gossip-Zertifikate, die für die Knoten-zu-Knoten-Verschlüsselung erforderlich sind. Azure Managed Instance for Apache Cassandra erfordert eine Knoten-zu-Knoten-Verschlüsselung für die Kommunikation zwischen Rechenzentren. Wenn Sie in Ihrem vorhandenen Cluster keine Knoten-zu-Knoten-Verschlüsselung implementiert haben, müssen Sie sie implementieren. Weitere Informationen finden Sie in [dieser Dokumentation](https://docs.datastax.com/en/cassandra-oss/3.x/cassandra/configuration/secureSSLNodeToNode.html). Sie müssen den Pfad zum Speicherort der Zertifikate bereitstellen. Jedes Zertifikat sollte im PEM-Format vorliegen, z. B. `-----BEGIN CERTIFICATE-----\n...PEM format 1...\n-----END CERTIFICATE-----`. Im Allgemeinen gibt es zwei Möglichkeiten zum Implementieren von Zertifikaten:
+
+    1. Selbstsignierte Zertifikate. Dies bedeutet, dass für jeden Knoten ein privates und ein öffentliches Zertifikat (kein Zertifizierungsstellenzertifikat) vorhanden sind. In diesem Fall benötigen wir alle öffentlichen Zertifikate.
+
+    1. Zertifikate, die von einer Zertifizierungsstelle signiert wurden. Hierbei kann es sich um eine selbstsignierte Zertifizierungsstelle oder sogar um eine öffentliche Zertifizierungsstelle handelt. In diesem Fall benötigen wir das Stammzertifizierungsstellenzertifikat (siehe Anweisungen zum [Vorbereiten von SSL-Zertifikaten für die Produktion](https://docs.datastax.com/en/cassandra-oss/3.x/cassandra/configuration/secureSSLCertWithCA.html)) und alle Zwischenstufen (falls zutreffend).
+
+    Wenn Sie auch Client-zu-Knoten-Zertifikate implementiert haben (siehe [hier](https://docs.datastax.com/en/cassandra-oss/3.x/cassandra/configuration/secureSSLClientToNode.html)), müssen Sie diese beim Erstellen des Hybridclusters ebenfalls im gleichen Format bereitstellen. Siehe Beispiel unten.
 
    > [!NOTE]
    > Der Wert der von Ihnen unten angegebenen Variablen `delegatedManagementSubnetId` stimmt exakt mit dem Wert von `--scope` überein, den Sie im obigen Befehl angegeben haben:
@@ -78,13 +91,14 @@ In dieser Schnellstartanleitung wird veranschaulicht, wie Sie die Azure CLI-Befe
       --resource-group $resourceGroupName \
       --location $location \
       --delegated-management-subnet-id $delegatedManagementSubnetId \
-      --external-seed-nodes 10.52.221.2,10.52.221.3,10.52.221.4
-      --client-certificates 'BEGIN CERTIFICATE-----\n...PEM format..\n-----END CERTIFICATE-----','BEGIN CERTIFICATE-----\n...PEM format...\n-----END CERTIFICATE-----' \
-      --external-gossip-certificates 'BEGIN CERTIFICATE-----\n...PEM format 1...\n-----END CERTIFICATE-----','BEGIN CERTIFICATE-----\n...PEM format 2...\n-----END CERTIFICATE-----'
+      --external-seed-nodes 10.52.221.2 10.52.221.3 10.52.221.4 \
+      --external-gossip-certificates /usr/csuser/clouddrive/rootCa.pem /usr/csuser/clouddrive/gossipKeyStore.crt_signed
+      # optional - add your existing datacenter's client-to-node certificates (if implemented):
+      # --client-certificates /usr/csuser/clouddrive/rootCa.pem /usr/csuser/clouddrive/nodeKeyStore.crt_signed 
    ```
 
     > [!NOTE]
-    > Sie sollten wissen, wo sich Ihre vorhandenen öffentlichen bzw. Gossipzertifikate befinden. Falls Sie sich nicht sicher sind, sollten Sie `keytool -list -keystore <keystore-path> -rfc -storepass <password>` ausführen können, um die Zertifikate auszugeben. 
+    > Wenn Ihr Cluster bereits über Knoten-zu-Knoten- und Client-zu-Knoten-Verschlüsselung verfügt, müssen Sie wissen, wo Ihre vorhandenen Client- und/oder Gossip-SSL-Zertifikate gespeichert werden. Falls Sie sich nicht sicher sind, sollten Sie `keytool -list -keystore <keystore-path> -rfc -storepass <password>` ausführen können, um die Zertifikate auszugeben. 
 
 1. Führen Sie nach dem Erstellen der Clusterressource den folgenden Befehl aus, um die Details zur Clustereinrichtung anzuzeigen:
 
@@ -97,10 +111,30 @@ In dieser Schnellstartanleitung wird veranschaulicht, wie Sie die Azure CLI-Befe
        --resource-group $resourceGroupName \
    ```
 
-1. Mit dem obigen Befehl werden Informationen zur Umgebung der verwalteten Instanz zurückgegeben. Sie benötigen die Gossipzertifikate für die Installation auf den Knoten in Ihrem vorhandenen Rechenzentrum. Im folgenden Screenshot ist die Ausgabe des vorherigen Befehls und das Format der Zertifikate dargestellt:
+1. Mit dem obigen Befehl werden Informationen zur Umgebung der verwalteten Instanz zurückgegeben. Sie benötigen die Gossip-Zertifikate für die Installation im Vertrauensspeicher für die Knoten in Ihrem vorhandenen Rechenzentrum. Im folgenden Screenshot ist die Ausgabe des vorherigen Befehls und das Format der Zertifikate dargestellt:
 
    :::image type="content" source="./media/configure-hybrid-cluster/show-cluster.png" alt-text="Abrufen der Zertifikatdetails aus dem Cluster" lightbox="./media/configure-hybrid-cluster/show-cluster.png" border="true":::
     <!-- ![image](./media/configure-hybrid-cluster/show-cluster.png) -->
+
+    > [!NOTE]
+    > Die vom obigen Befehl zurückgegebenen Zertifikate enthalten Zeilenumbrüche, die als Text dargestellt werden, z. B. `\r\n`. Sie sollten jedes Zertifikat in eine Datei kopieren und formatieren, bevor Sie versuchen, es in den Vertrauensspeicher Ihres vorhandenen Rechenzentrums zu importieren.
+
+    > [!TIP]
+    > Kopieren Sie den im obigen Screenshot gezeigten Arraywert `gossipCertificates` in eine Datei, und verwenden Sie das folgende Bash-Skript (Sie müssen [jq für Ihre Plattform herunterladen und installieren](https://stedolan.github.io/jq/download/)), um die Zertifikate zu formatieren und jeweils separate PEM-Dateien zu erstellen.
+    >
+    > ```bash
+    > readarray -t cert_array < <(jq -c '.[]' gossipCertificates.txt)
+    > # iterate through the certs array, format each cert, write to a numbered file.
+    > num=0
+    > filename=""
+    > for item in "${cert_array[@]}"; do
+    >   let num=num+1
+    >   filename="cert$num.pem"
+    >   cert=$(jq '.pem' <<< $item)
+    >   echo -e $cert >> $filename
+    >   sed -e '1d' -e '$d' -i $filename
+    > done
+    > ```
 
 1. Erstellen Sie als Nächstes im Hybridcluster ein neues Rechenzentrum. Achten Sie darauf, dass Sie die Variablenwerte durch die Details für Ihren Cluster ersetzen:
 
@@ -132,23 +166,30 @@ In dieser Schnellstartanleitung wird veranschaulicht, wie Sie die Azure CLI-Befe
        --data-center-name $dataCenterName 
    ```
 
-1. Mit dem obigen Befehl werden die Startknoten des neuen Rechenzentrums ausgegeben. Fügen Sie die Startknoten des neuen Rechenzentrums in der Datei *cassandra.yaml* der Konfiguration Ihres vorhandenen Rechenzentrums hinzu. Installieren Sie auch die Gossipzertifikate für die verwaltete Instanz, die Sie weiter oben abgerufen haben:
+1. Mit dem obigen Befehl werden die Startknoten des neuen Rechenzentrums ausgegeben: 
 
    :::image type="content" source="./media/configure-hybrid-cluster/show-datacenter.png" alt-text="Abrufen der Details zum Rechenzentrum" lightbox="./media/configure-hybrid-cluster/show-datacenter.png" border="true":::
     <!-- ![image](./media/configure-hybrid-cluster/show-datacenter.png) -->
 
-    > [!NOTE]
-    > Falls Sie weitere Rechenzentren hinzufügen möchten, können Sie die obigen Schritte wiederholen, aber Sie benötigen hierfür nur die Startknoten. 
+
+1. Fügen Sie die Startknoten des neuen Rechenzentrums in der Datei [cassandra.yaml](https://docs.datastax.com/en/cassandra-oss/3.0/cassandra/configuration/configCassandra_yaml.html) der [Startknotenkonfiguration](https://docs.datastax.com/en/cassandra-oss/3.0/cassandra/configuration/configCassandra_yaml.html#configCassandra_yaml__seed_provider) Ihres vorhandenen Rechenzentrums hinzu. Installieren Sie außerdem die Gossip-Zertifikate der verwalteten Instanz, die Sie zuvor im Vertrauensspeicher für alle Knoten in Ihrem vorhandenen Cluster erfasst haben, mit dem `keytool`-Befehl für jedes Zertifikat:
+
+    ```bash
+        keytool -importcert -keystore generic-server-truststore.jks -alias CassandraMI -file cert1.pem -noprompt -keypass myPass -storepass truststorePass
+    ```
+
+   > [!NOTE]
+   > Falls Sie weitere Rechenzentren hinzufügen möchten, können Sie die obigen Schritte wiederholen, aber Sie benötigen hierfür nur die Startknoten. 
 
 1. Verwenden Sie abschließend die folgende CQL-Abfrage, um die Replikationsstrategie in den einzelnen Keyspaces so zu aktualisieren, dass alle Rechenzentren des gesamten Clusters eingebunden sind:
 
    ```bash
-   ALTER KEYSPACE "ks" WITH REPLICATION = {'class': 'NetworkTopologyStrategy', ‘on-premise-dc': 3, ‘managed-instance-dc': 3};
+   ALTER KEYSPACE "ks" WITH REPLICATION = {'class': 'NetworkTopologyStrategy', 'on-premise-dc': 3, 'managed-instance-dc': 3};
    ```
    Darüber hinaus müssen Sie auch die Kennworttabellen aktualisieren:
 
    ```bash
-    ALTER KEYSPACE "system_auth" WITH REPLICATION = {'class': 'NetworkTopologyStrategy', ‘on-premise-dc': 3, ‘managed-instance-dc': 3}
+    ALTER KEYSPACE "system_auth" WITH REPLICATION = {'class': 'NetworkTopologyStrategy', 'on-premise-dc': 3, 'managed-instance-dc': 3}
    ```
 
 ## <a name="troubleshooting"></a>Problembehandlung

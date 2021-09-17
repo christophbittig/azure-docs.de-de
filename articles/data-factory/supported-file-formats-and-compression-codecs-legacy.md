@@ -9,18 +9,18 @@ ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 12b3b1dddfa7ff37d8d8fa80562699cf9242148e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: cf1df8645a6b5c7a33305c87732a9c3b108b523d
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122639922"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123256645"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Unterstützte Dateiformate und Komprimierungscodecs in Azure Data Factory (Legacy)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-*Dieser Artikel bezieht sich auf die folgenden Connectors: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [Dateisystem](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md) und [SFTP](connector-sftp.md).*
+*Dieser Artikel gilt für die folgenden Connectors: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure Files](connector-azure-file-storage.md), [File System](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md) und [SFTP](connector-sftp.md).*
 
 >[!IMPORTANT]
 >In Data Factory wurde das neue formatbasierte Datasetmodell eingeführt. Weitere Informationen dazu finden Sie im Artikel zum entsprechenden Format: <br>- [Avro-Format](format-avro.md)<br>- [Binärformat](format-binary.md)<br>- [Textformat mit Trennzeichen](format-delimited-text.md)<br>- [JSON-Format](format-json.md)<br>- [ORC-Format](format-orc.md)<br>- [Parquet-Format](format-parquet.md)<br>Die in diesem Artikel erwähnten restlichen Konfigurationen werden nach wie vor aus Gründen der Abwärtskompatibilität unterstützt. Es wird jedoch empfohlen, in Zukunft das neue Modell zu verwenden. 

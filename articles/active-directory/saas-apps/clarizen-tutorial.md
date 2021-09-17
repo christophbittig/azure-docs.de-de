@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 62cd714fc20cb7620def8a1aaa3cbccba0b13d57
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 6ca4bda03a5696406682898eef62da9825c65214
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144080"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181671"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarizen-one"></a>Tutorial: Azure Active Directory-Integration mit Clarizen One
 
@@ -38,6 +38,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Clarizen One unterstützt **IDP**-initiiertes einmaliges Anmelden.
+* Clarizen One unterstützt die [**automatisierte** Benutzerbereitstellung und Bereitstellungsaufhebung](clarizen-one-provisioning-tutorial.md) (empfohlen).
 
 > [!NOTE]
 > Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.

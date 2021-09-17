@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 7dae716944426ce21cb81bdbb36992238e4bb227
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 3d6f30e3d50fa79ac394460f9b13e1127cf16168
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112298437"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740272"
 ---
 # <a name="register-and-scan-teradata-source"></a>Registrieren und Überprüfen einer Teradata-Quelle
 
@@ -48,7 +48,7 @@ Die einzige unterstützte Authentifizierung für eine Teradata-Quelle ist die **
 Gehen Sie wie folgt vor, um in Ihrem Datenkatalog eine neue Teradata-Quelle zu registrieren:
 
 1.  Navigieren Sie zu Ihrem Purview-Konto.
-2.  Wählen Sie im linken Navigationsbereich die Option **Quellen** aus.
+2.  Wählen Sie im linken Navigationsbereich **Data Map** aus.
 3.  Wählen Sie **Registrieren** aus.
 4.  Wählen Sie unter „Quellen registrieren“ die Option **Teradata** aus. Wählen Sie **Weiter** aus.
 

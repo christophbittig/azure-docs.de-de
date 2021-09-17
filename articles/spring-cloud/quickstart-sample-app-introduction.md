@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: da3370540a915694f1199e3a8965dbc8aa0450a0
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: a44558f6d0a1351c5f9c61fba6d6686757fd3292
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114470571"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122014751"
 ---
 # <a name="introduction-to-the-sample-app"></a>Einführung in die Beispiel-App
 
@@ -26,30 +26,30 @@ Die Beispiel-App besteht aus zwei Microservices:
 
 * Der Dienst `planet-weather-provider` gibt Wettertext als Antwort auf eine HTTP-Anforderung zurück, die den Namen des Planeten angibt. Beispielsweise kann für den Planeten Merkur „sehr warm“ zurückgegeben werden. Die Wetterdaten werden vom Konfigurationsserver abgerufen. Der Konfigurationsserver ruft die Wetterdaten aus einer YAML-Datei in einem Git-Repository ab, z. B.:
 
-  ```yaml
-  MercuryWeather: very warm
-  VenusWeather: quite unpleasant
-  MarsWeather: very cool
-  SaturnWeather: a little bit sandy
-  ```
+   ```yaml
+   MercuryWeather: very warm
+   VenusWeather: quite unpleasant
+   MarsWeather: very cool
+   SaturnWeather: a little bit sandy
+   ```
 
 * Der Dienst `solar-system-weather` gibt Daten für vier Planeten als Antwort auf eine HTTP-Anforderung zurück. Er ruft die Daten ab, indem vier HTTP-Anforderungen an `planet-weather-provider` gesendet werden. Der Dienst nutzt den Eureka Server-Ermittlungsdienst, um `planet-weather-provider` aufzurufen. JSON-Code wird zurückgegeben, z. B.:
 
-  ```json
-  [{
-      "Key": "Mercury",
-      "Value": "very warm"
-  }, {
-      "Key": "Venus",
-      "Value": "quite unpleasant"
-  }, {
-      "Key": "Mars",
-      "Value": "very cool"
-  }, {
-      "Key": "Saturn",
-      "Value": "a little bit sandy"
-  }]
-  ```
+   ```json
+   [{
+       "Key": "Mercury",
+       "Value": "very warm"
+   }, {
+       "Key": "Venus",
+       "Value": "quite unpleasant"
+   }, {
+       "Key": "Mars",
+       "Value": "very cool"
+   }, {
+       "Key": "Saturn",
+       "Value": "a little bit sandy"
+   }]
+   ```
 
 Die Architektur der Beispiel-App wird anhand des folgenden Diagramms veranschaulicht:
 
@@ -64,7 +64,7 @@ In den Anweisungen der folgenden Schnellstartanleitungen wird bei Bedarf auf den
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-In dieser Schnellstartanleitung verwenden Sie die Microservicesversion der bekannten Beispiel-App [PetClinic](https://github.com/spring-petclinic/spring-petclinic-microservices). Diese zeigt, wie Sie Apps für den Azure Spring Cloud-Dienst bereitstellen. Das Beispiel **PetClinic** veranschaulicht das Microservicearchitekturmuster sowie die Aufschlüsselung der Dienste. Sie erfahren, wie Dienste in Azure mit Azure Spring Cloud-Funktionen wie Dienstermittlung, Konfigurationsserver, Protokolle, Metriken, verteilte Ablaufverfolgung und entwicklerfreundliche Toolunterstützung bereitgestellt wird. 
+In dieser Schnellstartanleitung verwenden Sie die Microservicesversion der bekannten Beispiel-App [PetClinic](https://github.com/spring-petclinic/spring-petclinic-microservices). Diese zeigt, wie Sie Apps für den Azure Spring Cloud-Dienst bereitstellen. Das Beispiel **PetClinic** veranschaulicht das Microservicearchitekturmuster sowie die Aufschlüsselung der Dienste. Sie erfahren, wie Dienste in Azure mit Azure Spring Cloud-Funktionen wie Dienstermittlung, Konfigurationsserver, Protokolle, Metriken, verteilte Ablaufverfolgung und entwicklerfreundliche Toolunterstützung bereitgestellt wird.
 
 Für die Verwendung der Azure Spring Cloud-Bereitstellungsbeispiele benötigen Sie nur den Speicherort des Quellcodes. Dieser ist jeweils nach Bedarf angegeben.
 
@@ -77,16 +77,17 @@ PetClinic ist in vier wichtige Microservices unterteilt. Alle sind eigenständig
 * **customers-service:** Enthält allgemeine Benutzereingabelogik und -validierung, einschließlich Informationen zu Haustieren und Besitzern (Name, Adresse, Ort, Telefon).
 * **visits-service:** Speichert Informationen zu den Besuchen für die Anmerkungen zu den einzelnen Haustieren und zeigt sie an.
 * **vets-service:** Speichert Informationen zu Tierärzten und zeigt sie an, u. a. Name und Besonderheiten.
-* **API-Gateway:** Das API-Gateway ist ein einzelner Einstiegspunkt in das System und wird zum Verarbeiten von Anforderungen und zum Weiterleiten dieser Anforderungen an den entsprechenden Dienst oder zum Aufrufen mehrerer Dienste verwendet. Die Ergebnisse werden dabei aggregiert.  Die drei Kerndienste machen eine externe API für den Client verfügbar. In realen Systemen kann die Anzahl von Funktionen mit der Systemkomplexität sehr schnell wachsen. Am Rendern einer einzigen komplexen Webseite können Hunderte von Diensten beteiligt sein. 
+* **API-Gateway:** Das API-Gateway ist ein einzelner Einstiegspunkt in das System und wird zum Verarbeiten von Anforderungen und zum Weiterleiten dieser Anforderungen an den entsprechenden Dienst oder zum Aufrufen mehrerer Dienste verwendet. Die Ergebnisse werden dabei aggregiert.  Die drei Kerndienste machen eine externe API für den Client verfügbar. In realen Systemen kann die Anzahl von Funktionen mit der Systemkomplexität sehr schnell wachsen. Am Rendern einer einzigen komplexen Webseite können Hunderte von Diensten beteiligt sein.
 
 ## <a name="infrastructure-services-hosted-by-azure-spring-cloud"></a>Von Azure Spring Cloud gehostete Infrastrukturdienste
 
-Es gibt mehrere gängige Muster in verteilten Systemen, die Kerndienste unterstützen. Azure Spring Cloud bietet Tools, die Spring Boot-Anwendungen zur Implementierung dieser Muster verbessern: 
+Es gibt mehrere gängige Muster in verteilten Systemen, die Kerndienste unterstützen. Azure Spring Cloud bietet Tools, die Spring Boot-Anwendungen zur Implementierung dieser Muster verbessern:
 
 * **Konfigurationsdienst:** Die Azure Spring Cloud-Konfiguration ist ein horizontal skalierbarer zentralisierter Konfigurationsdienst für verteilte Systeme. Er nutzt ein austauschbares Repository, das derzeit lokalen Speicher, Git und Subversion unterstützt.
 * **Dienstermittlung:** Sie ermöglicht die automatische Erkennung von Netzwerkadressen für Dienstinstanzen, die aufgrund von automatischer Skalierung, Fehlern und Upgrades dynamisch zugewiesene Adressen aufweisen können.
 
 ## <a name="database-configuration"></a>Datenbankkonfiguration
+
 In der Standardkonfiguration verwendet **PetClinic** eine In-Memory Database-Instanz (HSQLDB), die beim Start mit Daten aufgefüllt wird. Ein ähnliches Setup wird für MySql bereitgestellt, wenn eine persistente Datenbankkonfiguration erforderlich ist. Die Abhängigkeit für Connector/J, den MySQL JDBC-Treiber, ist bereits in den Dateien vom Typ „pom.xml“ enthalten.
 
 ## <a name="sample-usage-of-petclinic"></a>Beispielnutzung von PetClinic

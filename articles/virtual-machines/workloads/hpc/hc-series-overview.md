@@ -8,14 +8,16 @@ ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: c251634710811820ba920b72c1759938758f5d2e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0db18bf162ee91ddccc070d7250a2ee35b05f5a9
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802816"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689205"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>Übersicht über virtuelle Computer der HC-Serie
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Die Maximierung der HPC-Anwendungsleistung auf skalierbaren Intel Xeon-Prozessoren erfordert ein durchdachtes Konzept für die Prozessplatzierung in dieser neuen Architektur. In diesem Artikel wird die entsprechende Implementierung auf virtuellen Computern der HC-Serie für HPC-Anwendungen erläutert. Der Begriff „pNUMA“ bezieht sich hier auf eine physische NUMA-Domäne; „vNUMA“ steht für eine virtualisierte NUMA-Domäne. Analog dazu bezieht sich der Begriff „pCore“ auf physische CPU-Kerne, während „vCore“ für virtualisierte CPU-Kerne verwendet wird.
 

@@ -4,15 +4,16 @@ description: Übersicht über die CodeBehind-Sprache für das Datenflussskript v
 author: kromerm
 ms.author: nimoolen
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2021
-ms.openlocfilehash: 7dd58a7d4a94b832e52930f8ac6507cdd8f7a20e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0860d59d7d04354b6236d02126492468dec5921b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100534820"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122639942"
 ---
 # <a name="data-flow-script-dfs"></a>Datenflussskript (DFS)
 
@@ -269,6 +270,13 @@ window(over(stocksymbol),
     startRowOffset: -7L,
     endRowOffset: 7L,
     FifteenDayMovingAvg = round(avg(Close),2)) ~> Window1
+```
+
+### <a name="distinct-count-of-all-column-values"></a>Distinct count of all column values (Eindeutige Anzahl aller Spaltenwerte)
+Sie können dieses Skript verwenden, um Schlüsselspalten zu identifizieren und die Kardinalität aller Spalten in Ihrem Stream mit einem einzelnen Skriptausschnitt anzeigen. Fügen Sie dieses Skript ihrem Datenfluss als Aggregattransformation hinzu, und es stellt automatisch eine eindeutige Anzahl aller Spalten zur Verfügung.
+
+```
+aggregate(each(match(true()), $$ = countDistinct($$))) ~> KeyPattern
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

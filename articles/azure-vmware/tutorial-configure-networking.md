@@ -3,29 +3,78 @@ title: 'Tutorial: Konfigurieren des Netzwerks für Ihre private VMware-Cloud in 
 description: Hier erfahren Sie, wie Sie das erforderliche Netzwerk zum Bereitstellen Ihrer privaten Cloud in Azure erstellen und konfigurieren.
 ms.topic: tutorial
 ms.custom: contperf-fy22q1
-ms.date: 04/23/2021
-ms.openlocfilehash: 10326a07e5838dd5fe2264029c857f5ad49f5811
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.date: 07/30/2021
+ms.openlocfilehash: 61a1c1c45455c9edc402aca1e5471f3ed95a8d66
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114442018"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122069553"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Tutorial: Konfigurieren des Netzwerks für Ihre private VMware-Cloud in Azure
 
-Eine private Azure VMware Solution-Cloud erfordert ein virtuelles Azure-Netzwerk. Da Azure VMware Solution Ihre lokale vCenter-Instanz nicht unterstützt, sind zusätzliche Schritte erforderlich, um die Integration in Ihre lokale Umgebung durchführen. Die Einrichtung einer ExpressRoute-Leitung und eines Gateways für virtuelle Netzwerke ist ebenfalls erforderlich.
+Eine private Azure VMware Solution-Cloud erfordert ein virtuelles Azure-Netzwerk. Da Azure VMware Solution Ihre lokale vCenter-Instanz nicht unterstützt, müssen Sie zusätzliche Schritte für die Integration in Ihre lokale Umgebung ausführen. Die Einrichtung einer ExpressRoute-Leitung und eines Gateways für virtuelle Netzwerke ist ebenfalls erforderlich.
 
 [!INCLUDE [disk-pool-planning-note](includes/disk-pool-planning-note.md)]
+
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen eines virtuellen Netzwerks
+> * Erstellen eines virtuellen Netzwerks 
 > * Erstellen eines Gateways für das virtuelle Netzwerk
 > * Verbinden der ExpressRoute-Leitung mit dem Gateway
 
+>[!NOTE]
+>Bevor Sie ein neues vNet erstellen, prüfen Sie, ob Sie bereits über ein vorhandenes vNet in Azure verfügen, das Sie zum Herstellen einer Verbindung mit Azure VMware Solution verwenden können, oder ob Sie ein neues vNet erstellen müssen.  
+>* Um ein vorhandenes vNet zu verwenden, nutzen Sie unter **Konnektivität** die Registerkarte **[Azure vNet-Verbindung](#select-an-existing-vnet)** . 
+>* Zum Erstellen eines neuen vNet verwenden Sie die Registerkarte **[Azure vNet-Verbindung](#create-a-new-vnet)** , oder erstellen Sie [manuell](#create-a-vnet-manually) ein vNet.
 
-## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
+## <a name="connect-with-the-azure-vnet-connect-feature"></a>Herstellen einer Verbindung mit dem Feature „Azure vNet-Verbindung“
+
+Mit dem Feature **Azure vNet-Verbindung** können Sie ein vorhandenes vNet verwenden oder eine neues vNet erstellen, um eine Verbindung mit Azure VMware Solution herzustellen.   
+
+>[!NOTE]
+>Der Adressraum im vNet darf sich nicht mit dem CIDR-Wert der privaten Azure VMware Solution-Cloud überschneiden.
+
+
+### <a name="select-an-existing-vnet"></a>Auswählen eines vorhandenen vNet
+
+Wenn Sie ein vorhandenes vNet auswählen, wird die ARM-Vorlage (Azure Resource Manager), die das vNet und andere Ressourcen erstellt, erneut bereitgestellt. Die Ressourcen sind in diesem Fall die öffentliche IP-Adresse, das Gateway, die Gatewayverbindung und der ExpressRoute-Autorisierungsschlüssel. Wenn alles eingerichtet ist, ändert die Bereitstellung nichts. Wenn Elemente fehlen, werden diese automatisch erstellt. Wenn beispielsweise das GatewaySubnet-Element fehlt, wird es während der Bereitstellung hinzugefügt.
+
+1. Wählen Sie in Ihrer privaten Azure VMware Solution-Cloud unter **Verwalten** die Option **Konnektivität** aus.
+
+2. Wählen Sie die Registerkarte **Azure vNet-Verbindung** und dann das vorhandene vNet aus.
+
+   :::image type="content" source="media/networking/azure-vnet-connect-tab.png" alt-text="Screenshot: Registerkarte „Azure vNet-Verbindung“ unter „Konnektivität“ mit einem ausgewähltem vorhandenem vNet":::
+
+3. Wählen Sie **Speichern** aus.
+
+   An diesem Punkt überprüft das vNet, ob sich überschneidende IP-Adressräume zwischen Azure VMware Solution und vNet erkannt werden. Wenn eine Überschneidung erkannt wird, ändern Sie die Netzwerkadresse der privaten Cloud oder des vNet so, dass sie sich nicht überschneiden. 
+
+
+### <a name="create-a-new-vnet"></a>Erstellen eines neuen vNet
+
+Wenn Sie ein neues vNet erstellen, werden die erforderlichen Komponenten zum Herstellen einer Verbindung mit Azure VMware Solution automatisch erstellt.
+
+1. Wählen Sie in Ihrer privaten Azure VMware Solution-Cloud unter **Verwalten** die Option **Konnektivität** aus.
+
+2. Wählen Sie die Registerkarte **Azure vNet-Verbindung** und dann **Neu erstellen** aus.
+
+   :::image type="content" source="media/networking/azure-vnet-connect-tab-create-new.png" alt-text="Screenshot: Registerkarte „Azure vNet-Verbindung“ unter „Konnektivität“":::
+
+3. Geben Sie die Informationen für das neue vNet an, oder aktualisieren Sie sie, und wählen Sie dann **OK** aus.
+
+   An diesem Punkt überprüft das vNet, ob sich überschneidende IP-Adressräume zwischen Azure VMware Solution und vNet erkannt werden. Wenn eine Überschneidung erkannt wird, ändern Sie die Netzwerkadresse der privaten Cloud oder des vNet so, dass sie sich nicht überschneiden. 
+
+   :::image type="content" source="media/networking/create-new-virtual-network.png" alt-text="Screenshot: Fenster „Virtuelles Netzwerk erstellen“":::
+
+Das vNet mit dem angegebenen Adressbereich und dem GatewaySubnet-Element werden in Ihrem Abonnement und Ihrer Ressourcengruppe erstellt.  
+
+
+## <a name="connect-to-the-private-cloud-manually"></a>Manuelles Herstellen einer Verbindung mit der privaten Cloud
+
+### <a name="create-a-vnet-manually"></a>Manuelles Erstellen eines vNet
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
@@ -52,13 +101,15 @@ In diesem Tutorial lernen Sie Folgendes:
 
 1. Überprüfen Sie die Angaben, und wählen Sie dann **Erstellen** aus. Nach Abschluss der Bereitstellung wird Ihr virtuelles Netzwerk in der Ressourcengruppe angezeigt.
 
-## <a name="create-a-virtual-network-gateway"></a>Erstellen eines Gateways für das virtuelle Netzwerk
+
+
+### <a name="create-a-virtual-network-gateway"></a>Erstellen eines Gateways für das virtuelle Netzwerk
 
 Sie haben ein virtuelles Netzwerk erstellt und erstellen nun ein Gateway für das virtuelle Netzwerk.
 
 1. Wählen Sie in Ihrer Ressourcengruppe **+ Hinzufügen** aus, um eine neue Ressource hinzuzufügen.
 
-1. Geben Sie **Gateway für virtuelle Netzwerke** in das Feld **Marketplace durchsuchen** ein. Suchen Sie nach der VNET-Ressource.
+1. Geben Sie im Feld **Marketplace durchsuchen** den Text **Gateway für virtuelle Netzwerke** ein. Suchen Sie nach der VNET-Ressource.
 
 1. Wählen Sie auf der Seite **Gateway für virtuelle Netzwerke** die Option **Erstellen** aus.
 
@@ -78,10 +129,11 @@ Sie haben ein virtuelles Netzwerk erstellt und erstellen nun ein Gateway für da
 
    :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network-gateway.png" alt-text="Ein Screenshot, der die Details für das Gateway für virtuelle Netzwerke zeigt" border="true":::.
 
-1. Überprüfen Sie die Details auf ihre Richtigkeit, und wählen Sie dann **Erstellen** aus, um die Bereitstellung des Gateways für virtuelle Netzwerke zu starten. 
+1. Überprüfen Sie die Details auf ihre Richtigkeit, und wählen Sie dann **Erstellen** aus, um die Bereitstellung des Gateways für virtuelle Netzwerke zu starten.
+
 1. Fahren Sie nach Abschluss der Bereitstellung mit dem nächsten Abschnitt fort, um Ihre ExpressRoute-Verbindung mit dem Gateway für virtuelle Netzwerke zu verbinden, das Ihre private Azure VMware Solution-Cloud enthält.
 
-## <a name="connect-expressroute-to-the-virtual-network-gateway"></a>Verbinden von ExpressRoute mit dem Gateway für virtuelle Netzwerke
+### <a name="connect-expressroute-to-the-virtual-network-gateway"></a>Verbinden von ExpressRoute mit dem Gateway für virtuelle Netzwerke
 
 Sie haben ein Gateway für virtuelle Netzwerke bereitgestellt und fügen nun eine Verbindung zwischen dem Gateway und Ihrer privaten Azure VMware Solution-Cloud hinzu.
 
@@ -93,7 +145,8 @@ Sie haben ein Gateway für virtuelle Netzwerke bereitgestellt und fügen nun ein
 In diesem Tutorial haben Sie gelernt, wie die folgenden Aufgaben ausgeführt werden:
 
 > [!div class="checklist"]
-> * Erstellen eines virtuellen Netzwerks
+> * Erstellen eines virtuellen Netzwerks mithilfe des Features „vNet-Verbindung“
+> * Manuelles Erstellen eines virtuellen Netzwerks
 > * Erstellen eines Gateways für das virtuelle Netzwerk
 > * Verbinden der ExpressRoute-Leitung mit dem Gateway
 

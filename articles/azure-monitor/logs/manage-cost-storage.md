@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/19/2021
+ms.date: 08/23/2021
 ms.author: bwren
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 106648297bf64d650a4db4bf578e8171039378f2
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 9967eaa374116ac28bd0db830eed6a4fc2becfa0
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446495"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771790"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen    
 
@@ -63,9 +63,7 @@ In Clusterabrechnungsoptionen wird die Datenaufbewahrung für die einzelnen Arbe
 
 ## <a name="estimating-the-costs-to-manage-your-environment"></a>Schätzen der Kosten für die Verwaltung Ihrer Umgebung 
 
-Wenn Sie noch keine Azure Monitor-Protokolle verwenden, können Sie mit dem [Azure Monitor-Preisrechner](https://azure.microsoft.com/pricing/calculator/?service=monitor) die Kosten für die Nutzung von Log Analytics schätzen. Geben Sie in das **Suchen**-Feld „Azure Monitor“ ein und wählen Sie dann die entsprechende Azure Monitor-Kachel aus. Scrollen Sie auf der Seite nach unten bis zu **Azure Monitor**, und wählen Sie in der Dropdownliste **Typ** den Eintrag **Log Analytics** aus. Hier können Sie die Anzahl der VMs und die erwartete Datenmenge in GB eingeben, die Sie von jeder VM sammeln möchten. Von einer typischen Azure-VM werden in der Regel 1 bis 3 GB Daten pro Monat erfasst. Wenn Sie bereits Azure Monitor-Protokolle auswerten, können Sie die Datenstatistiken aus Ihrer eigenen Umgebung verwenden. Unten wird erläutert, wie die [Anzahl der überwachten VMs](#understanding-nodes-sending-data) und das [erfasste Datenvolumen im Arbeitsbereich](#understanding-ingested-data-volume) bestimmt werden. 
-
-Wenn Sie Log Analytics noch nicht verwenden, finden Sie hier einige Anleitungen zum Schätzen von Datenmengen:
+Wenn Sie noch keine Azure Monitor-Protokolle verwenden, können Sie mit dem [Azure Monitor-Preisrechner](https://azure.microsoft.com/pricing/calculator/?service=monitor) die Kosten für die Nutzung von Log Analytics schätzen. Geben Sie in das **Suchen**-Feld „Azure Monitor“ ein und wählen Sie dann die entsprechende Azure Monitor-Kachel aus. Scrollen Sie auf der Seite nach unten zu **Azure Monitor**, und erweitern Sie den Abschnitt **Log Analytics**. Hier können Sie die Datenmenge in GB eingeben, die Sie erfassen möchten. Wenn Sie bereits Azure Monitor-Protokolle auswerten, können Sie die Datenstatistiken aus Ihrer eigenen Umgebung verwenden. Unten wird erläutert, wie die [Anzahl der überwachten VMs](#understanding-nodes-sending-data) und das [erfasste Datenvolumen im Arbeitsbereich](#understanding-ingested-data-volume) bestimmt werden. Wenn Sie Log Analytics noch nicht verwenden, finden Sie hier einige Anleitungen zum Schätzen von Datenmengen:
 
 1. **Überwachen von VMs:** Bei aktivierter typischer Überwachung werden pro überwachter VM monatlich 1 GB bis 3 GB Daten erfasst. 
 2. **Überwachen von Azure Kubernetes Service(AKS)-Clustern:** Details zu den erwarteten Datenvolumes für die Überwachung eines typischen AKS-Clusters finden Sie [hier](../containers/container-insights-cost.md#estimating-costs-to-monitor-your-aks-cluster). Befolgen Sie diese [Best Practices](../containers/container-insights-cost.md#controlling-ingestion-to-reduce-cost), um die Überwachungskosten Ihres AKS-Clusters zu kontrollieren. 
@@ -569,7 +567,7 @@ Auf dieser Tabelle finden Sie einige Vorschläge zum Verringern des Umfangs der 
 | Sicherheitsereignisse            | Wählen Sie [Sicherheitsereignisse vom Typ „Allgemein“ oder „Minimal“](../../security-center/security-center-enable-data-collection.md#data-collection-tier) aus. <br> Ändern der Sicherheitsüberwachungsrichtlinie, sodass nur benötigte Ereignisse erfasst werden. Überprüfen Sie insbesondere die Notwendigkeit zum Erfassen von Ereignissen für Folgendes: <br> - [Überwachung der Filterplattform](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772749(v=ws.10)) <br> - [Überwachung der Registrierung](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10)) <br> - [Überwachung des Dateisystems](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10)) <br> - [Überwachung von Kernelobjekten](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10)) <br> - [Überwachung der Handleänderung](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10)) <br> – Überwachung von Wechselmedien |
 | Leistungsindikatoren       | Ändern Sie die [Leistungsindikatoren-Konfiguration](../agents/data-sources-performance-counters.md) folgendermaßen: <br> – Reduzieren der Sammlungshäufigkeit <br> – Reduzieren der Anzahl von Leistungsindikatoren |
 | Ereignisprotokolle                 | Ändern Sie die [Ereignisprotokollkonfiguration](../agents/data-sources-windows-events.md) folgendermaßen: <br> – Reduzieren der Anzahl von erfassten Ereignisprotokollen <br> - Ausschließliches Erfassen von erforderlichen Ereignisebenen. Erfassen Sie beispielsweise keine Ereignisse der Ebene *Informationen*. |
-| Syslog                     | Ändern Sie die [syslog-Konfiguration](../agents/data-sources-syslog.md) folgendermaßen: <br> – Reduzieren der Anzahl von erfassten Einrichtungen <br> - Ausschließliches Erfassen von erforderlichen Ereignisebenen. Erfassen Sie beispielsweise keine Ereignisse der Ebenen *Info* und *Debuggen*. |
+| syslog                     | Ändern Sie die [syslog-Konfiguration](../agents/data-sources-syslog.md) folgendermaßen: <br> – Reduzieren der Anzahl von erfassten Einrichtungen <br> - Ausschließliches Erfassen von erforderlichen Ereignisebenen. Erfassen Sie beispielsweise keine Ereignisse der Ebenen *Info* und *Debuggen*. |
 | AzureDiagnostics           | Ändern Sie die [Ressourcenprotokollsammlung](../essentials/diagnostic-settings.md#create-in-azure-portal) folgendermaßen: <br> – Verringern der Anzahl von Ressourcen, die Protokolle an Log Analytics senden <br> – Ausschließliches Erfassen von erforderlichen Protokollen |
 | Lösungsdaten von Computern, für die die Lösung nicht erforderlich ist | Verwenden Sie die [Zielgruppenadressierung für Lösungen](../insights/solution-targeting.md), um Daten nur für erforderliche Gruppen mit Computern zu erfassen. |
 | Application Insights | Erwägen Sie die Optionen zum [Verwalten des Application Insights-Datenvolumens](../app/pricing.md#managing-your-data-volume). |

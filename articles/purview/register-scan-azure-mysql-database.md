@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 06/30/2021
-ms.openlocfilehash: a5edf1b85d97798e5ed159433961c4c0d76cfcca
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: ed3a0abc6bdd99e5c86e67a410d7c9ecadf7a718
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114208206"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737645"
 ---
 # <a name="register-and-scan-an-azure-mysql-database"></a>Registrieren und Überprüfen einer Azure Database for MySQL
 
@@ -53,7 +53,7 @@ Gehen Sie wie folgt vor, um in Ihrem Datenkatalog eine neue Azure Database for 
 
 1. Navigieren Sie zu Ihrem Purview-Konto.
 
-1. Wählen Sie im linken Navigationsbereich die Option **Quellen** aus.
+1. Wählen Sie im linken Navigationsbereich **Data Map** aus.
 
 1. Wählen Sie **Registrieren**.
 

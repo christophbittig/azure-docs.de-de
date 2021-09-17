@@ -9,93 +9,33 @@ ms.date: 07/30/2020
 ms.custom: include file
 author: anbene
 ms.author: mingshen
-ms.openlocfilehash: 763ee108e1e2899bb2268ae5e6236f74a73e4b44
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca1f1cd1f3af3760122a1eb6f644132fea3be57a
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87498044"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122635241"
 ---
-| [**Azure Marketplace**](https://azuremarketplace.microsoft.com/marketplace/apps)  | [**AppSource**](https://appsource.microsoft.com/marketplace/apps) |
+| [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps) | [Microsoft AppSource](https://appsource.microsoft.com/marketplace/apps) |
 | :------------------- |:----------------|
-|**Analyse** | **Analyse** |
-| &nbsp;&nbsp;Datenerkenntnisse | &nbsp;&nbsp;Erweiterte Analyse  |
-| &nbsp;&nbsp;Datenanalyse |  &nbsp;&nbsp;Visualisierung und Berichterstellung |
-| &nbsp;&nbsp;Big Data | **KI und Machine Learning**  |
-| &nbsp;&nbsp;Predictive Analytics | &nbsp;&nbsp;KI für Unternehmen |
-| &nbsp;&nbsp;Echtzeit-/Streaminganalyse | &nbsp;&nbsp;Bot-Apps |
-| **KI und Machine Learning** | **Kollaboration** |
-| &nbsp;&nbsp;Botdienst | &nbsp;&nbsp;Kontakte und Personen |
-| &nbsp;&nbsp;Cognitive Services | &nbsp;&nbsp;Besprechungsmanagement |
-| &nbsp;&nbsp;ML-Dienst | &nbsp;&nbsp;Websitedesign und -verwaltung |
-| &nbsp;&nbsp;Automatisiertes ML | &nbsp;&nbsp;Aufgaben- und Projektmanagement |
-| &nbsp;&nbsp;Geschäftsprozessautomatisierung/robotergesteuerte Prozessautomatisierung | &nbsp;&nbsp;Sprach- und Videokonferenzen |
-| &nbsp;&nbsp;Datenbeschriftung | **Compliance und rechtliche Angelegenheiten** |
-| &nbsp;&nbsp;Datenaufbereitung | &nbsp;&nbsp;Steuern und Prüfungen |
-| &nbsp;&nbsp;Knowledge Mining | &nbsp;&nbsp;Rechtswesen |
-| &nbsp;&nbsp;ML-Vorgänge | &nbsp;&nbsp;Daten, Governance und Datenschutz |
-| **Blockchain**  | &nbsp;&nbsp;Integrität und Sicherheit |
-| &nbsp;&nbsp;App-Beschleuniger | **Kundendienst**  |
-| &nbsp;&nbsp;Ledger mit einem Knoten | &nbsp;&nbsp;Kontaktcenter |
-| &nbsp;&nbsp;Ledger mit mehreren Knoten | &nbsp;&nbsp;Persönlicher Dienst |
-| &nbsp;&nbsp;Tools | &nbsp;&nbsp;Backoffice und Personaldienste |
-| **Compute**  | &nbsp;&nbsp;Wissens- und Fallmanagement |
-| &nbsp;&nbsp;Anwendungsinfrastruktur | &nbsp;&nbsp;Soziale Medien und Omnichannel-Kundenbindung |
-| &nbsp;&nbsp;Betriebssysteme | **Finanzen** |
-| &nbsp;&nbsp;Cache | &nbsp;&nbsp;Rechnungsstellung |
-| **Container**  | &nbsp;&nbsp;Asset-Management |
-| &nbsp;&nbsp;Erste Schritte mit Containern | &nbsp;&nbsp;Analyse, Konsolidierung und Berichterstellung |
-| &nbsp;&nbsp;Container-Apps | &nbsp;&nbsp;Kredite und Inkasso |
-| &nbsp;&nbsp;Containerimages | &nbsp;&nbsp;Compliance- und Risikomanagement |
-| **Datenbanken**  | **Geolocation** |
-| &nbsp;&nbsp;NoSQL-Datenbanken | &nbsp;&nbsp;Karten |
-| &nbsp;&nbsp;Relationale Datenbanken | &nbsp;&nbsp;Nachrichten und Wetter |
-| &nbsp;&nbsp;Ledger-/Blockchain-Datenbanken | **Personalverwaltung** |
-| &nbsp;&nbsp;Data Lakes | &nbsp;&nbsp;Talentakquise |
-| &nbsp;&nbsp;Data Warehouse | &nbsp;&nbsp;Talentmanagement |
-| **Entwicklertools**  | &nbsp;&nbsp;Personalverwaltung |
-| &nbsp;&nbsp;Tools | &nbsp;&nbsp;Personalplanung und Analyse |
-| &nbsp;&nbsp;Skripts | **IT- und Verwaltungstools** |
-| &nbsp;&nbsp;Entwicklerdienst | &nbsp;&nbsp;Verwaltungslösungen |
-| **DevOps**  | &nbsp;&nbsp;Geschäftsanwendungen |
-| **Integration**  | **Internet der Dinge (IoT)** |
-| &nbsp;&nbsp;Messaging | &nbsp;&nbsp;Asset-Management und Betriebsführung |
-| **IT- und Verwaltungstools**  | &nbsp;&nbsp;Verbundene Produkte |
-| &nbsp;&nbsp;Verwaltungslösungen | &nbsp;&nbsp;Intelligente Lieferkette |
-| &nbsp;&nbsp;Geschäftsanwendungen | &nbsp;&nbsp;Predictive Maintenance |
-| **Identität**  | &nbsp;&nbsp;Remoteüberwachung |
-| &nbsp;&nbsp;Zugriffsverwaltung | &nbsp;&nbsp;Sicherheit |
-| **Internet der Dinge (IoT)**  | &nbsp;&nbsp;Intelligente Infrastruktur und Ressourcen |
-| &nbsp;&nbsp;IoT-Konnektivität | &nbsp;&nbsp;Fahrzeuge und Mobilität |
-| &nbsp;&nbsp;IoT-Basisdienste | **Marketing** |
-| &nbsp;&nbsp;IoT Edge-Module | &nbsp;&nbsp;Werbung |
-| &nbsp;&nbsp;IoT-Lösungen | &nbsp;&nbsp;Analysen |
-| &nbsp;&nbsp;Datenanalyse und Visualisierung | &nbsp;&nbsp;Kampagnenmanagement und -automatisierung |
-| **Medien**  | &nbsp;&nbsp;E-Mail-Marketing |
-| &nbsp;&nbsp;Mediendienste | &nbsp;&nbsp;Veranstaltungs- und Ressourcenmanagement |
-| &nbsp;&nbsp;Inhaltsschutz | &nbsp;&nbsp;Forschung und Analyse |
-| &nbsp;&nbsp;Live- und On-Demand-Streaming | &nbsp;&nbsp;Soziale Medien |
-| **Überwachung und Diagnose**  | **Betrieb und Lieferkette** |
-| **Migration**  | &nbsp;&nbsp;Asset- und Produktionsmanagement |
-| &nbsp;&nbsp;Datenmigration | &nbsp;&nbsp;Bedarfsvorhersage |
-| **Mixed Reality**  | &nbsp;&nbsp;Informationsverwaltung und Konnektivität |
-| **Netzwerk**  | &nbsp;&nbsp;Planung, Einkauf und Berichterstellung |
-| &nbsp;&nbsp;Appliance-Manager | &nbsp;&nbsp;Qualitäts- und Servicemanagement |
-| &nbsp;&nbsp;Konnektivität | &nbsp;&nbsp;Vertriebs- und Auftragsmanagement |
-| &nbsp;&nbsp;Firewalls | &nbsp;&nbsp;Transport- und Lagerverwaltung |
-| &nbsp;&nbsp;Lastenausgleichsmodule | **Produktivität** |
-| **Security**  | &nbsp;&nbsp;Inhaltserstellung und -verwaltung |
-| &nbsp;&nbsp;Identitäts- und Zugriffsverwaltung | &nbsp;&nbsp;Dokumentverwaltung |
-| &nbsp;&nbsp;Bedrohungsschutz | &nbsp;&nbsp;E-Mail-Verwaltung |
-| &nbsp;&nbsp;Informationsschutz | &nbsp;&nbsp;Sprachen und Übersetzungen |
-| **Storage**  | &nbsp;&nbsp;Suche und Referenzierung |
-| &nbsp;&nbsp;Sicherung und Wiederherstellung | &nbsp;&nbsp;Gamification |
-| &nbsp;&nbsp;Unternehmenshybridspeicher | **Vertrieb** |
-| &nbsp;&nbsp;Dateifreigabe | &nbsp;&nbsp;Teleshopping |
-| &nbsp;&nbsp;Lebenszyklusverwaltung von Daten | &nbsp;&nbsp;CPQ (Configure, Price, Quote) |
-| **Web**  | &nbsp;&nbsp;Vertragsverwaltung |
-| &nbsp;&nbsp;Blogs und CMSs | &nbsp;&nbsp;CRM |
-| &nbsp;&nbsp;Web-Apps für Einsteiger | &nbsp;&nbsp;E-Commerce |
-| &nbsp;&nbsp;E-Commerce | &nbsp;&nbsp;Anreicherung von Geschäftsdaten  |
-| &nbsp;&nbsp;Web-App-Frameworks | &nbsp;&nbsp;Vertriebsoptimierung  |
-| &nbsp;&nbsp;Web-Apps |  |
+| Analyse<ul><li>Datenerkenntnisse<li>Datenanalyse<li>Big Data<li>Predictive Analytics<li>Echtzeit-/Streaminganalyse | Analytics<ul><li>Erweiterte Analyse<li>Visualisierung und Berichterstellung |
+| KI + Machine Learning<ul><li>Botdienst<li>Cognitive Services<li>ML-Dienst<li>Automatisiertes maschinelles Lernen<li>Geschäftsprozessautomatisierung/robotergesteuerte Prozessautomatisierung<li>Datenbeschriftung<li>Vorbereitung der Daten<li>Knowledge Mining<li>ML-Vorgänge | KI + Machine Learning<ul><li>KI für Unternehmen<li>Bot-Apps |
+| Blockchain<ul><li>App-Beschleuniger<li>Ledger mit einem Knoten<li>Ledger mit mehreren Knoten<li>Tools | Zusammenarbeit<ul><li>Kontakte und Personen<li>Besprechungsmanagement<li>Websitedesign und -verwaltung<li>Aufgaben- und Projektmanagement<li>Sprach- und Videokonferenzen |
+| Compute<ul><li>Anwendungsinfrastruktur<li>Betriebssysteme<li>cache | Compliance und rechtliche Hinweise<ul><li>Steuern und Prüfungen<li>Rechtliche Hinweise<li>Daten, Governance und Datenschutz<li>Gesundheit und Sicherheit |
+| Container<ul><li>Erste Schritte mit Containern<li>Container-Apps<li>Containerimages | Customer Service<ul><li>Kontaktcenter<li>Persönlicher Dienst<li>Backoffice und Personaldienste<li>Wissens- und Fallmanagement<li>Soziale Medien und Omnichannel-Kundenbindung |
+| Datenbanken<ul><li>NoSQL-Datenbanken<li>Relationale Datenbanken<li>Ledger-/Blockchain-Datenbanken<li>Data Lakes<li>Data Warehouse | Finance<ul><li>Buchhaltung<li>Ressourcenverwaltung<li>Analyse, Konsolidierung und Berichterstellung<li>Kredite und Inkasso<li>Compliance- und Risikomanagement |
+| Entwicklertools<ul><li>Tools<li>Skripts<li>Entwicklerdienst | Geolocation<ul><li>Maps<li>Nachrichten und Wetter |
+| DevOps | Personalabteilung<ul><li>Talentakquise<li>Talentmanagement<li>Personalverwaltung<li>Personalplanung und Analyse |
+| Integration<ul><li>Nachrichten | IT- und Verwaltungstools<ul><li>Verwaltungslösungen<li>Geschäftsanwendungen |
+| IT- und Verwaltungstools<ul><li>Verwaltungslösungen<li>Geschäftsanwendungen | Internet der Dinge<ul><li>Vermögensverwaltung und Betrieb<li>Verbundene Produkte<li>Intelligente Lieferkette<li>Predictive Maintenance<li>Remoteüberwachung<li>Schutz und Sicherheit<li>Intelligente Infrastruktur und Ressourcen<li>Fahrzeuge und Mobilität |
+| Identität<ul><li>Zugriffsverwaltung | Marketing<ul><li>Werbung<li>Analytics<li>Kampagnenmanagement und -automatisierung<li>E-Mail-Marketing<li>Veranstaltungs- und Ressourcenmanagement<li>Forschung und Analyse<li>Soziale Medien |
+| Internet der Dinge<ul><li>IoT-Konnektivität<li>IoT-Basisdienste<li>IoT Edge-Module<li>IoT-Lösungen<li>Datenanalyse und Visualisierung | Operativer Betrieb und Lieferkette<ul><li>Asset- und Produktionsmanagement<li>Bedarfsvorhersage<li>Informationsverwaltung und Konnektivität<li>Planung, Einkauf und Berichterstellung<li>Qualitäts- und Servicemanagement<li>Vertriebs- und Auftragsmanagement<li>Transport- und Lagerverwaltung |
+| Medien<ul><li>Media Services<li>Content Protection<li>Live- und On-Demand-Streaming | Produktivität<ul><li>Inhaltserstellung und -verwaltung<li>Dokumentverwaltung<li>E-Mail-Verwaltung<li>Sprache und Übersetzung<li>Suche und Referenz<li>Gamification |
+| Überwachung und Diagnose | Sales<ul><li>Teleshopping<li>CPQ (Configure, Price, Quote)<li>Vertragsverwaltung<li>CRM<li>E-Commerce<li>Anreicherung von Geschäftsdaten<li>Vertriebsoptimierung |
+| Migration<ul><li>Datenmigration | (Die verbleibenden Zellen in dieser Spalte sind leer.) |
+| Mixed Reality<ul> | |
+| Netzwerk<ul><li>Appliance-Manager<li>Konnektivität<li>Firewalls<li>Load Balancer | |
+| Sicherheit<ul><li>Identitäts- und Zugriffsverwaltung<li>Threat Protection<li>Information Protection | |
+| Speicher<ul><li>Sicherung und Wiederherstellung<li>Unternehmenshybridspeicher<li>Dateifreigabe<li>Verwaltung des Datenlebenszyklus | |
+| Web<ul><li>Blogs und CMS<li>Web-Apps für Einsteiger<li>E-Commerce<li>Web-App-Frameworks<li>Web Apps |
+|

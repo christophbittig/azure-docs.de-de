@@ -9,14 +9,16 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: 4a7bd76a6b7536a6bbc117d52fb2c0770145ab9d
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 173adbaa32444a2eb28c050266a503c9f448f927
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078706"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693930"
 ---
 # <a name="quickstart-create-an-ubuntu-linux-virtual-machine-using-an-arm-template"></a>Schnellstart: Erstellen eines virtuellen Ubuntu Linux-Computers mithilfe einer ARM-Vorlage
+
+**Gilt für**: :heavy_check_mark: Linux-VMs 
 
 In dieser Schnellstartanleitung wird veranschaulicht, wie Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage) zum Bereitstellen eines virtuellen Ubuntu Linux-Computers (VM) in Azure verwenden.
 

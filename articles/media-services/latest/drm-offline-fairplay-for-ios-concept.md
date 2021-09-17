@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: how-to
 ms.date: 05/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 516feb728368bfc57ce48bad8275419c726c7701
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: fec32eda9d82a7526a14befeab833d58b7792ccf
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110793404"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122633740"
 ---
 # <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>FairPlay-Offlinestreaming für iOS mit Media Services v3
 
@@ -199,4 +199,4 @@ Mit der Version 3 oder 4 des Beispiels des FPS Server SDK wird nur Audio wiederg
 
 ## <a name="offline-fairplay-questions"></a>Fragen zum Offline-Fairplay
 
-Mehr dazu finden Sie unter [Fragen zum Offline-Fairplay](questions-collection.md#why-does-only-audio-play-but-not-video-during-offline-mode).
+Weitere Informationen dazu finden Sie unter den [häufig gestellten Fragen zum Offline-Fairplay](frequently-asked-questions.yml).

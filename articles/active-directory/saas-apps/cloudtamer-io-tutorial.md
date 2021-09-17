@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/21/2021
+ms.date: 07/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 407a6284c46eb6eef4057d98cef0f5e86a38bcea
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 6e19b051378bb068172d6356397ee16761611bae
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114601827"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732239"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cloudtamerio"></a>Tutorial: Integration des einmaligen Anmeldens (SSO) von Azure Active Directory mit cloudtamer.io
 
@@ -74,6 +74,8 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
 
     ![Ein Screenshot, der das Erstellen einer IDMS-Datei zeigt.](./media/cloudtamer-io-tutorial/idms-creation.png)
 
+1. Wählen Sie **SAML 2.0** als IDMS-Typ aus.
+
 1. Lassen Sie diesen Bildschirm geöffnet, und kopieren Sie die Werte von diesem Bildschirm in die Azure AD Konfiguration.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
@@ -88,16 +90,13 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte in die folgenden Felder ein, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    a. Fügen Sie in das Textfeld **Bezeichner** den **IDENTITY PROVIDER ISSUER (ENTITY ID)** aus cloudtamer.io ein.
+    a. Fügen Sie in das Textfeld **Bezeichner** den Wert für **SERVICE PROVIDER ISSUER (ENTITY ID)** aus cloudtamer.io ein.
 
     b. Fügen Sie in das Textfeld **Antwort-URL** die **SERVICE PROVIDER ACS URL** aus cloudtamer.io ein.
 
 1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<CUSTOMERDOMAIN>.<EXTENSION>/login`
-
-    > [!NOTE]
-    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    Fügen Sie in das Textfeld **Anmelde-URL** den Wert für **SERVICE PROVIDER ACS URL** aus cloudtamer.io ein.
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML**, und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -137,25 +136,23 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     ![Ein Screenshot, der das Hinzufügen einer IDMS-Datei zeigt.](./media/cloudtamer-io-tutorial/configuration.png)
 
-    a. Wählen Sie in der Dropdownliste **SAML2.0** als **IDMS-TYP** aus.
+    a. Geben Sie in dem Feld **IDMS-Name** einen Namen ein, den die Benutzer auf dem Anmeldebildschirm erkennen können.
 
-    b. Geben Sie in dem Feld **IDMS-Name** einen Namen ein, den die Benutzer auf dem Anmeldebildschirm erkennen können.
+    b. Fügen Sie im Textfeld **IDENTITY PROVIDER ISSUER (ENTITY ID)** den **Bezeichner** ein, den Sie in dem Azure-Portal kopiert haben.
 
-    c. Fügen Sie im Textfeld **IDENTITY PROVIDER ISSUER (ENTITY ID)** den **Bezeichner** ein, den Sie in dem Azure-Portal kopiert haben.
+    c. Öffnen Sie die heruntergeladene **Verbundmetadaten-XML** Datei aus dem Azure-Portal im Editor. Kopieren Sie ihren Inhalt und fügen Sie ihn in das Textfeld **IDENTITY PROVIDER METADATA** ein.
 
-    d. Öffnen Sie die heruntergeladene **Verbundmetadaten-XML** Datei aus dem Azure-Portal im Editor. Kopieren Sie ihren Inhalt und fügen Sie ihn in das Textfeld **IDENTITY PROVIDER METADATA** ein.
+    d. Kopieren Sie den Wert für **AUSSTELLER DES DIENSTANBIETERS (ENTITÄTS-ID)** und fügen Sie diesen Wert im Azure-Portal im Abschnitt „Grundlegende SAML-Konfiguration“ in das Textfeld **Bezeichner** ein.
 
-    e. Kopieren Sie den Wert für **AUSSTELLER DES DIENSTANBIETERS (ENTITÄTS-ID)** und fügen Sie diesen Wert im Azure-Portal im Abschnitt „Grundlegende SAML-Konfiguration“ in das Textfeld **Bezeichner** ein.
+    e. Kopieren Sie den Wert im Feld **DIENSTANBIETER ACS-URL** und fügen Sie diesen Wert im Azure-Portal im Abschnitt „Grundlegende SAML-Konfiguration“ in das Textfeld **Antwort-URL** ein.
 
-    f. Kopieren Sie den Wert im Feld **DIENSTANBIETER ACS-URL** und fügen Sie diesen Wert im Azure-Portal im Abschnitt „Grundlegende SAML-Konfiguration“ in das Textfeld **Antwort-URL** ein.
-
-    g. Geben Sie unter Assertionszuordnung die folgenden Werte ein:
+    f. Geben Sie unter Assertionszuordnung die folgenden Werte ein:
 
     | Feld | Wert |
     |-----------|-------|
     | First Name (Vorname) | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` |
     | Last Name (Nachname) | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` |
-    | E-Mail | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` |
+    | Email | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` |
     |  Username | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` |
     |
 

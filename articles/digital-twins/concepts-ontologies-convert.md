@@ -7,24 +7,24 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 45df0eb8bfc6ab5b181b8bc103c4a4a47f3196f6
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: d95e9e6ed85e170efeb570fa46f634a9071c687c
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122428447"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772393"
 ---
 # <a name="convert-industry-standard-ontologies-to-dtdl-for-azure-digital-twins"></a>Konvertieren von Branchenstandardontologien in DTDL für Azure Digital Twins
 
 Die meisten [Ontologien](concepts-ontologies.md) basieren auf semantischen Webstandards wie [OWL](https://www.w3.org/OWL/), [RDF](https://www.w3.org/2001/sw/wiki/RDF) und [RDFS](https://www.w3.org/2001/sw/wiki/RDFS). 
 
-Damit ein Modell mit Azure Digital Twins verwendet werden kann, muss es im DTDL-Format vorliegen. Dieser Artikel bietet einen allgemeinen Leitfaden für den Entwurf in Form eines **Konvertierungsmusters** zur Konvertierung von RDF-basierten Modellen in DTDL, damit diese mit Azure Digital Twins verwendet werden können. 
+Damit ein Modell mit Azure Digital Twins verwendet werden kann, muss es im DTDL-Format vorliegen. Dieser Artikel bietet eine allgemeine Anleitung für den Entwurf in Form eines **Konvertierungsmusters**. Mit diesem Muster können RDF-basierte Modelle in DTDL umgewandelt werden, damit sie mit Azure Digital Twins verwendet werden können. 
 
 Er enthält außerdem einen [Beispielkonvertercode](#converter-samples) für RDF- und OWL-Konverter, die für andere Schemas in der Baubranche erweitert werden können.
 
 ## <a name="conversion-pattern"></a>Konvertierungsmuster
 
-Zur Konvertierung von RDF-basierten Modellen in DTDL können mehrere Bibliotheken von Drittanbietern verwendet werden. Mit einigen dieser Bibliotheken können Sie die Modelldatei in ein Diagramm laden. Sie können das Diagramm durchlaufen, um nach spezifischen RDFS- und OWL-Konstrukten zu suchen und diese in DTDL zu konvertieren.   
+Zur Konvertierung von RDF-basierten Modellen in DTDL können mehrere Bibliotheken von Drittanbietern verwendet werden. Mit einigen dieser Bibliotheken können Sie die Modelldatei in ein Diagramm laden. Sie können das Diagramm durchlaufen, um nach spezifischen RDFS- und OWL-Konstrukten zu suchen und diese in DTDL umzuwandeln.   
 
 In der folgenden Tabelle sind Beispiele dafür aufgeführt, wie RDFS- und OWL-Konstrukte in DTDL zugeordnet werden können. 
 

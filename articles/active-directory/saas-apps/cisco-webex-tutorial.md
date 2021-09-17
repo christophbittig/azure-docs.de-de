@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: jeedes
-ms.openlocfilehash: bb8ea637d0353e4efa0cb946f486d68639fc699d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef6a785fc1d825b0b490ec7af7d3c8128aac588b
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104592488"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181660"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Cisco Webex Meetings
 
@@ -42,7 +42,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Cisco Webex Meetings unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
-
+* Cisco Webex Meetings unterstützt die [**automatisierte** Benutzerbereitstellung und Bereitstellungsaufhebung](cisco-webex-provisioning-tutorial.md) (empfohlen).
 * Cisco Webex Meetings unterstützt die **Just-in-Time**-Benutzerbereitstellung.
 
 ## <a name="adding-cisco-webex-meetings-from-the-gallery"></a>Hinzufügen von Cisco WebEx Meetings aus dem Katalog

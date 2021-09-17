@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 6/1/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 55aa3f69976a413e1c23e9d935ad99fde88065ec
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 0855663fb60f6e8ae420762cdd23ce237de56c04
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122350971"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770581"
 ---
 # <a name="data-ingress-and-egress-for-azure-digital-twins"></a>Datenein- und -ausgänge für Azure Digital Twins
 
-Azure Digital Twins wird in der Regel zusammen mit anderen Diensten verwendet, um flexible, verbundene Lösungen zu erstellen, die Ihre Daten auf verschiedene Weise verwenden.
+Azure Digital Twins wird in der Regel zusammen mit anderen Diensten verwendet, um flexible, vernetzte Lösungen zu erstellen, die Ihre Daten in verschiedener Weise nutzen.
 
 Unter Verwendung von [Ereignisrouten](concepts-route-events.md) kann Azure Digital Twins Daten von Upstreamdiensten wie [IoT Hub](../iot-hub/about-iot-hub.md) oder [Logic Apps](../logic-apps/logic-apps-overview.md) empfangen, die zur Bereitstellung von Telemetrie und Benachrichtigungen verwendet werden. 
 
@@ -24,9 +24,9 @@ Azure Digital Twins kann Daten auch an Downstreamdienste wie [Azure Maps](../azu
 
 ## <a name="data-ingress"></a>Dateneingang
 
-Azure Digital Twins kann mit Daten und Ereignissen aus jedem Dienst gespeist werden – [IoT Hub](../iot-hub/about-iot-hub.md), [Logic Apps](../logic-apps/logic-apps-overview.md), Ihrem eigenen benutzerdefinierten Dienst usw. Dies ermöglicht Ihnen, Telemetrie von physischen Geräten in Ihrer Umgebung zu erfassen und diese Daten mithilfe des Azure Digital Twins-Graphen in der Cloud zu verarbeiten.
+Azure Digital Twins kann mit Daten und Ereignissen aus jedem Dienst gespeist werden – [IoT Hub](../iot-hub/about-iot-hub.md), [Logic Apps](../logic-apps/logic-apps-overview.md), Ihrem eigenen benutzerdefinierten Dienst usw. Diese Art von Datenfluss ermöglicht es Ihnen, Telemetrie von physischen Geräten in Ihrer Umgebung zu erfassen und diese Daten mithilfe des Azure Digital Twins-Graphen in der Cloud zu verarbeiten.
 
-Anstatt einen integrierten IoT Hub im Hintergrund zu verwenden, können Sie mit Azure Digital Twins Ihren eigenen IoT Hub für den Dienst verwenden. Sie können einen vorhandenen IoT Hub verwenden, den Sie derzeit in der Produktionsumgebung einsetzen, oder einen neuen IoT Hub zu diesem Zweck bereitstellen. Dadurch erhalten Sie vollen Zugriff auf alle Geräteverwaltungsfunktionen des IoT Hubs.
+Anstatt einen integrierten IoT Hub im Hintergrund zu verwenden, können Sie mit Azure Digital Twins Ihren eigenen IoT Hub für den Dienst verwenden. Sie können einen vorhandenen IoT Hub verwenden, den Sie derzeit in der Produktionsumgebung einsetzen, oder einen neuen IoT Hub zu diesem Zweck bereitstellen. Durch diese Funktionalität erhalten Sie vollen Zugriff auf alle Geräteverwaltungsfunktionen von IoT Hub.
 
 Um Daten von einer beliebigen Quelle in Azure Digital Twins zu erfassen, verwenden Sie eine [Azure-Funktion](../azure-functions/functions-overview.md). Weitere Informationen zu diesem Muster finden Sie unter[Erfassen von Telemetriedaten aus IoT Hub](how-to-ingest-iot-hub-data.md), oder testen Sie selbst im Azure Digital Twins-Tutorial: [Verbinden einer End-to-End-Lösung](tutorial-end-to-end.md). 
 
@@ -43,7 +43,7 @@ Endpunkte werden über Verwaltungs-APIs oder das Azure-Portal an Azure Digital T
 
 Es gibt viele andere Dienste, an die Sie Ihre Daten letztendlich weiterleiten können, z. B. [Azure Storage](../storage/common/storage-introduction.md), [Azure Maps](../azure-maps/about-azure-maps.md) [Azure Data Explorer](/azure/data-explorer/data-explorer-overview) oder [Time Series Insights](../time-series-insights/overview-what-is-tsi.md). Fügen Sie den Zieldienst an einen Endpunkt an, um Ihre Daten an Dienste wie diese zu senden.
 
-Wenn Sie z. B. auch Azure Maps verwenden und den Standort mit Ihrem Azure Digital Twins-[Zwillingsgraphen](concepts-twins-graph.md) korrelieren möchten, können Sie Azure Functions mit Event Grid verwenden, um die Kommunikation zwischen allen Diensten in Ihrer Bereitstellung herzustellen. Weitere Informationen dazu finden Sie unter [Verwenden von Azure Digital Twins zum Aktualisieren eines Azure Maps-Gebäudeplans](how-to-integrate-maps.md).
+Wenn Sie z. B. auch Azure Maps verwenden und den Standort mit Ihrem Azure Digital Twins-[Zwillingsgraphen](concepts-twins-graph.md) korrelieren möchten, können Sie Azure Functions mit Event Grid verwenden, um eine Kommunikation zwischen allen Diensten in Ihrer Bereitstellung zu ermöglichen. Weitere Informationen zur Integration von Azure Maps finden Sie unter [Verwenden von Azure Digital Twins zum Aktualisieren eines Azure Maps-Gebäudeplans](how-to-integrate-maps.md).
 
 Sie können sich auch informieren, wie Sie Daten auf ähnliche Weise an Time Series Insights weiterleiten können. Weitere Informationen finden Sie unter [Integration in Time Series Insights](how-to-integrate-time-series-insights.md).
 

@@ -5,15 +5,17 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
-ms.date: 10/26/2020
-ms.openlocfilehash: fd303804706f9ae210e6714cc8698c94c39ebef6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 06/17/2021
+ms.openlocfilehash: 61e2f33511e6a200258ed16b5ef191e153553db8
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105106852"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122639746"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-flexible-server-using-the-azure-portal"></a>Erstellen und Verwalten von Lesereplikaten auf flexiblen Azure Database for MySQL-Servern mithilfe des Azure-Portals
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Lesereplikate auf flexiblen Azure Database for MySQL-Servern befinden sich in der Vorschauphase.
@@ -21,7 +23,10 @@ ms.locfileid: "105106852"
 In diesem Artikel erfahren Sie, wie Sie Lesereplikate auf flexiblen Azure Database for MySQL-Servern mithilfe des Azure-Portals erstellen und verwalten.
 
 > [!Note]
-> Auf Servern mit Hochverfügbarkeit werden keine Replikate unterstützt. 
+>
+> * Auf Servern mit Hochverfügbarkeit werden keine Replikate unterstützt. 
+>
+> * Wenn GTID auf einem primären Server aktiviert ist (`gtid_mode` = ON), wird für neu erstellte Replikate GTID ebenfalls aktiviert und die GTID-Replikation verwendet. Weitere Informationen finden Sie unter [Globaler Transaktionsbezeichner (GTID)](concepts-read-replicas.md#global-transaction-identifier-gtid)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -30,7 +35,7 @@ In diesem Artikel erfahren Sie, wie Sie Lesereplikate auf flexiblen Azure Databa
 ## <a name="create-a-read-replica"></a>Erstellen eines Lesereplikats
 
 > [!IMPORTANT]
-> Wenn Sie ein Replikat für eine Quelle erstellen, die keine vorhandenen Replikate hat, startet die Quelle zunächst neu, um sich auf die Replikation vorzubereiten. Beachten Sie dies, und führen Sie diese Vorgänge nicht zu Spitzenzeiten durch.
+>Wenn Sie ein Replikat für eine Quelle erstellen, die keine vorhandenen Replikate hat, startet die Quelle zunächst neu, um sich auf die Replikation vorzubereiten. Beachten Sie dies, und führen Sie diese Vorgänge nicht zu Spitzenzeiten durch.
 
 Ein Lesereplikatserver kann mit den folgenden Schritten erstellt werden:
 
@@ -60,7 +65,7 @@ Nach der Erstellung des Replikatservers kann dieser auf dem Blatt **Replikation*
 ## <a name="stop-replication-to-a-replica-server"></a>Beenden der Replikation auf einem Replikatserver
 
 > [!IMPORTANT]
-> Das Beenden der Replikation auf einem Server kann nicht rückgängig gemacht werden. Wenn die Replikation zwischen einer Quelle und dem Replikat beendet wurde, kann dies nicht rückgängig gemacht werden. Der Replikatserver wird zu einem eigenständigen Server und unterstützt nun Lese- und Schreibvorgänge. Der Server kann nicht wieder in ein Replikat umgewandelt werden.
+>Das Beenden der Replikation auf einem Server kann nicht rückgängig gemacht werden. Wenn die Replikation zwischen einer Quelle und dem Replikat beendet wurde, kann dies nicht rückgängig gemacht werden. Der Replikatserver wird zu einem eigenständigen Server und unterstützt nun Lese- und Schreibvorgänge. Der Server kann nicht wieder in ein Replikat umgewandelt werden.
 
 Führen Sie die folgenden Schritte aus, um die Replikation zwischen einem Quellserver und einem Replikatserver im Azure-Portal zu beenden:
 
@@ -103,7 +108,7 @@ Führen Sie die folgenden Schritte aus, um einen Lesereplikatserver im Azure-Por
 ## <a name="delete-a-source-server"></a>Löschen eines Quellservers
 
 > [!IMPORTANT]
-> Wenn Sie einen Quellserver löschen, wird die Replikation auf allen Replikatservern beendet und der Quellserver selbst gelöscht. Replikatserver werden zu eigenständigen Servern, die nun Lese- und Schreibvorgänge unterstützen.
+>Wenn Sie einen Quellserver löschen, wird die Replikation auf allen Replikatservern beendet und der Quellserver selbst gelöscht. Replikatserver werden zu eigenständigen Servern, die nun Lese- und Schreibvorgänge unterstützen.
 
 Führen Sie die folgenden Schritte aus, um einen Quellserver im Azure-Portal zu löschen:
 

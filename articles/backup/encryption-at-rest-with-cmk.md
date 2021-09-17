@@ -2,14 +2,14 @@
 title: Verschlüsselung von Sicherungsdaten mit von Kunden verwalteten Schlüsseln
 description: Hier erfahren Sie, wie Sie mit Azure Backup Sicherungsdaten mithilfe von kundenseitig verwalteten Schlüsseln (Customer-Managed Keys, CMK) verschlüsseln können.
 ms.topic: conceptual
-ms.date: 08/19/2021
+ms.date: 08/24/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b952cf75776536652f96132049d8cef59c963e17
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: f16974d00f4801f288180814daf9ff5ed4558748
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445399"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122778719"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Verschlüsselung von Sicherungsdaten mit von Kunden verwalteten Schlüsseln
 
@@ -113,7 +113,11 @@ TenantId    : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 Type        : SystemAssigned
 ```
 
-### <a name="assign-user-assigned-managed-identity-to-the-vault"></a>Zuweisen einer vom Benutzer zugewiesenen verwalteten Identität zum Tresor
+### <a name="assign-user-assigned-managed-identity-to-the-vault-in-preview"></a>Zuweisen einer benutzerseitig zugewiesenen verwalteten Identität zum Tresor (in der Vorschau)
+
+>[!Note]
+>- Tresore, die benutzerseitig zugewiesene verwaltete Identitäten für die CMK-Verschlüsselung verwenden, unterstützen die Verwendung privater Endpunkte für Backup nicht.
+>- Azure Key Vault-Instanzen, die den Zugriff auf bestimmte Netzwerke beschränken, werden noch nicht für die gemeinsame Verwendung mit benutzerseitig zugewiesenen verwalteten Identitäten für die CMK-Verschlüsselung unterstützt.
 
 Führen Sie die folgenden Schritte aus, um die vom Benutzer zugewiesene verwaltete Identität für den Recovery Services Tresor zuzuweisen:
 

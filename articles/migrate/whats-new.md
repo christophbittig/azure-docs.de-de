@@ -5,43 +5,63 @@ ms.topic: overview
 author: anvar-ms
 ms.author: anvar
 ms.manager: bsiva
-ms.date: 04/19/2020
+ms.date: 08/04/2021
 ms.custom: mvc
-ms.openlocfilehash: 3e6644f8d1956b69390e8bb3bb49bfbc3c7b0621
-ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
+ms.openlocfilehash: 720b19ff16e72fade8bcdbd1b41304b2d87d1f2d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112988767"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737661"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Neuerungen in Azure Migrate
 
 [Azure Migrate](migrate-services-overview.md) unterstützt Sie beim Ermitteln, Bewerten und Migrieren von lokalen Servern, Apps und Daten in die Microsoft Azure Cloud. In diesem Artikel werden die neuen Releases und Features in Azure Migrate zusammengefasst.
 
+## <a name="update-august-2021"></a>Update (August 2021)
+
+- Die bedarfsorientierte Ermittlung und Bewertung von ASP.NET-Web-Apps, die auf IIS-Servern in Ihrer VMware-Umgebung ausgeführt werden, befindet sich jetzt in der Vorschauphase. [Weitere Informationen](concepts-azure-webapps-assessment-calculation.md). Informationen zu den ersten Schritten finden Sie in den Tutorials zur [Ermittlung](tutorial-discover-vmware.md) und [Bewertung](tutorial-assess-webapps.md).
+- Unterstützung für Azure [Ultra-Datenträger](https://docs.microsoft.com/azure/virtual-machines/disks-types#ultra-disk) in der Azure-VM-Bewertungsempfehlung.
+- Allgemeine Verfügbarkeit von bedarfsorientierter Softwareinventur und Abhängigkeitsanalyse ohne Agent für virtuelle VMware-Computer.
+- Updates der Azure Migrate-Appliance:
+    - Diagnostizieren und Beheben von Problemen mit der Appliance, damit Benutzer Probleme mit der Appliance erkennen und selbst bewerten können.
+    - Einheitliches Installationsskript: Allgemeines Skript, bei dem Benutzer Optionen für Szenario, Cloud und Konnektivität auswählen müssen, um eine Appliance mit der gewünschten Konfiguration bereitzustellen.
+    - Unterstützung für das Hinzufügen eines Benutzerkontos mit „sudo“-Zugriff auf die Konfigurationsverwaltung der Appliance zum Durchführen der Ermittlung von Linux-Servern (als Alternative zur Bereitstellung eines Stammkontos oder zum Aktivieren von Setcap-Berechtigungen).
+    - Unterstützung zum Bearbeiten der SQL Server-Verbindungseigenschaften in der Konfigurationsverwaltung der Appliance.
+
+## <a name="update-july-2021"></a>Update (Juli 2021)
+
+- Azure Migrate: Mit dem Tool zur Anwendungscontainerisierung können Sie Anwendungen, die auf Servern ausgeführt werden, jetzt in ein Containerimage packen und die containerisierte Anwendung zusätzlich zum Azure Kubernetes Service in Azure App Service-Containern bereitstellen. Sie können die Anwendungsüberwachung für Java-Apps auch automatisch in Azure Application Insights integrieren und Azure Key Vault verwenden, um Anwendungsgeheimnisse wie Zertifikate und parametrisierte Konfigurationen zu verwalten. Weitere Informationen zu den ersten Schritten finden Sie in den Tutorials [Containerisieren und Migrieren von ASP.NET-Apps zu Azure App Service](tutorial-app-containerization-aspnet-app-service.md) und [Containerisieren und Migrieren von Java-Web-Apps zu Azure App Service](tutorial-app-containerization-java-app-service.md).
+
 ## <a name="update-june-2021"></a>Update (Juni 2021)
+
 - Azure Migrate unterstützt jetzt neue geografische Bereiche und Regionen der öffentlichen Cloud. [Weitere Informationen](migrate-support-matrix.md#supported-geographies-public-cloud)
 - Mit Azure Migrate können Sie Server, auf denen SQL Server ausgeführt wird, während der Replikation beim SQL-VM-Ressourcenanbieter registrieren, um automatisch die Erweiterung für den SQL-IaaS-Agent zu installieren. Dieses Feature ist für VMware-Migrationen ohne Agent, Hyper-V-Migrationen ohne Agent und Agent-basierte Migrationen verfügbar.
 - Beim Importieren einer CSV-Datei für die Bewertung werden nun bis zu 20 Datenträger unterstützt. Zuvor war dieser Vorgang auf acht Datenträger pro Server beschränkt.
 
 ## <a name="update-may-2021"></a>Update (Mai 2021)
+
 - Die Migration von virtuellen Computern und physischen Servern mit Betriebssystemdatenträgern bis zu 4 TB wird jetzt mithilfe der Agent-basierten Migrationsmethode unterstützt.
 
 ## <a name="update-march-2021"></a>Update (März 2021)
+
 - Unterstützung der Angabe mehrerer Serveranmeldeinformationen für die Azure Migrate-Appliance zur Erkennung installierter Anwendungen (Softwareinventur), Abhängigkeitsanalyse ohne Agent und Erkennung von SQL Server-Instanzen und -Datenbanken in Ihrer VMware-Umgebung. [Weitere Informationen](tutorial-discover-vmware.md#provide-server-credentials)
 - Das Feature zur Ermittlung und Bewertung von SQL Server-Instanzen und -Datenbanken, die in Ihrer VMware-Umgebung ausgeführt werden, befindet sich nun in der Vorschauphase. [Weitere Informationen:](concepts-azure-sql-assessment-calculation.md) Informationen zu den ersten Schritten finden Sie in den Tutorials zur [Ermittlung](tutorial-discover-vmware.md) und [Bewertung](tutorial-assess-sql.md).
 - Agent-lose VMware-Migration unterstützt nun gleichzeitige Replikation von 500 VMs pro vCenter.
 - Azure Migrate: Mit dem Tool zur Anwendungscontainerisierung können Sie Anwendungen, die auf Servern ausgeführt werden, jetzt in ein Containerimage packen und die containerisierte Anwendung für Azure Kubernetes Service bereitstellen.  
 Weitere Informationen zu den ersten Schritten finden Sie in den Tutorials [Containerisieren und Migrieren von ASP.NET-Apps zu Azure Kubernetes Service](tutorial-app-containerization-aspnet-kubernetes.md) und [Containerisieren und Migrieren von Java-Web-Apps zu Azure Kubernetes Service](tutorial-app-containerization-java-kubernetes.md).
 
-
 ## <a name="update-january-2021"></a>Update (Januar 2021)
--  Mit dem Tool für die Azure Migrate-Servermigration können Sie nun virtuelle VMware-Computer, physische Server und virtuelle Computer aus anderen Clouds zu virtuellen Azure-Computern migrieren. Dabei werden die Datenträger mit serverseitiger Verschlüsselung und kundenseitig verwalteten Schlüsseln (Customer-Managed Keys, CMKs) verschlüsselt.
+
+- Mit dem Tool für die Azure Migrate-Servermigration können Sie nun virtuelle VMware-Computer, physische Server und virtuelle Computer aus anderen Clouds zu virtuellen Azure-Computern migrieren. Dabei werden die Datenträger mit serverseitiger Verschlüsselung und kundenseitig verwalteten Schlüsseln (Customer-Managed Keys, CMKs) verschlüsselt.
 
 ## <a name="update-december-2020"></a>Update (Dezember 2020)
+
 - Azure Migrate installiert jetzt automatisch den VM-Agent von Azure auf den VMware-VMs, während diese mit der Methode ohne Agent der VMware-Migration zu Azure migriert werden. (Windows Server 2008 R2 und höher)
 - Die Migration von VMware-VMs mithilfe der Azure Migrate-Servermigration (Replikation ohne Agents) zu Azure-VMs mit Datenträgern, die mithilfe der serverseitigen Verschlüsselung (SSE) mit kundenseitig verwalteten Schlüsseln (CMK) verschlüsselt sind, ist nun über das Azure-Portal verfügbar.
 
 ## <a name="update-september-2020"></a>Update (September 2020)
+
 - Die Migration von Servern zu Verfügbarkeitszonen wird jetzt unterstützt.
 - Die Migration von UEFI-basierten VMs und physischen Servern zu Azure-VMs der Generation 2 wird jetzt unterstützt. Mit dieser Version führt das Tool für die Azure Migrate- Servermigration bei der Migration nicht die Konvertierung von der Gen2-VM in eine Gen1-VM aus.
 - Ein neues Dashboard für Azure Migrate Power BI-Bewertung ist verfügbar, mit dem Sie die Kosten über verschiedene Bewertungseinstellungen hinweg vergleichen können. Das Dashboard enthält ein PowerShell-Hilfsprogramm, das die Bewertungen automatisch erstellt, die in das Power BI-Dashboard eingebunden werden. [Weitere Informationen.](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/assessment-utility)
@@ -67,7 +87,6 @@ Weitere Informationen zu den ersten Schritten finden Sie in den Tutorials [Conta
 - Unterstützung mehrerer Anmeldeinformationen für die Appliance zur Erkennung physischer Server
 - Unterstützung für die Azure-Anmeldung von der Appliance für Mandanten, für die eine Mandanteneinschränkung konfiguriert wurde
 
-
 ## <a name="update-april-2020"></a>Update (April 2020)
 
 Azure Migrate unterstützt Bereitstellungen in Azure Government.
@@ -78,7 +97,6 @@ Azure Migrate unterstützt Bereitstellungen in Azure Government.
 - Überprüfen Sie die [unterstützten geografischen Bereiche und Regionen](migrate-support-matrix.md#supported-geographies-azure-government) für Azure Government.
 - Die [Agent-basierte Abhängigkeitsanalyse](concepts-dependency-visualization.md#agent-based-analysis) wird in Azure Government nicht unterstützt.
 - Funktionen in der Vorschau, wie die [Abhängigkeitsanalyse ohne Agent](concepts-dependency-visualization.md#agentless-analysis) und die [Anwendungsermittlung](how-to-discover-applications.md), werden in Azure Government unterstützt.
-
 
 ## <a name="update-march-2020"></a>Update (März 2020)
 
@@ -124,8 +142,6 @@ Die aktuelle Version von Azure Migrate (veröffentlicht im Juli 2019) enthält 
 ## <a name="azure-migrate-previous-version"></a>Vorherige Azure Migrate-Version
 
 Wenn Sie zurzeit die Vorgängerversion von Azure Migrate verwenden (es wird nur die Bewertung von lokalen VMware-VMs unterstützt), sollten Sie ab sofort die aktuelle Version verwenden. In der vorherigen Version können Sie keine neuen Azure Migrate Projekte mehr erstellen oder neue Ermittlungen durchführen. Sie können weiterhin auf vorhandene Projekte zugreifen. Wählen Sie zu diesem Zweck im Azure-Portal die Option **Alle Dienste** aus, und suchen Sie dann nach **Azure Migrate**. In den Azure Migrate-Benachrichtigungen finden Sie einen Link für den Zugriff auf alte Azure Migrate-Projekte.
-
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

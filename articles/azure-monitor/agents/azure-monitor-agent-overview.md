@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 07/22/2021
 ms.custom: references_regions
-ms.openlocfilehash: b037f82b0d56f09000c5fb9e2814ff80aa6f1a82
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: ccd194df39f0fff4bdabe4ae91e911dd030673e6
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343475"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122662171"
 ---
 # <a name="azure-monitor-agent-overview"></a>Übersicht über den Azure Monitor-Agent
 Der Azure Monitor-Agent (AMA) sammelt Überwachungsdaten aus dem Gastbetriebssystem virtueller Azure-Computer und übermittelt sie an Azure Monitor. Dieser Artikel bietet eine Übersicht über den Azure Monitor-Agent und enthält Informationen zu dessen Installation und zur Konfiguration der Datensammlung.
@@ -35,9 +35,10 @@ Im Vergleich zu vorhandenen Agents bietet dieser neue Agent noch keine vollstän
 - **Vergleich mit Log Analytics-Agents (MMA/OMS):**
     - Derzeit werden nicht alle Log Analytics-Lösungen unterstützt. Informieren Sie sich, [welche Dienste und Features unterstützt werden](#supported-services-and-features).
     - Keine Unterstützung für Azure Private Link.
-    - Keine Unterstützung für das Sammeln von benutzerdefinierten Protokollen oder IIS-Protokollen.
+    - Keine Unterstützung für das Sammeln von dateibasierten Protokollen oder IIS-Protokollen.
 - **Vergleich mit Erweiterungen für die Azure-Diagnose (WAD/LAD):**
     - Keine Unterstützung für Event Hubs und Storage-Konten als Ziele.
+    - Keine Unterstützung für das Sammeln von dateibasierten Protokollen, IIS-Protokollen, ETW-Ereignissen, NET-Ereignissen und Absturzbildern.
 
 ### <a name="changes-in-data-collection"></a>Änderungen bei der Datensammlung
 Diese Methoden zum Definieren einer Datensammlung für die vorhandenen Agents unterscheiden sich erheblich. Jede Methode bringt Herausforderungen mit sich, die Sie mit dem Azure Monitor-Agent angehen können.
@@ -66,7 +67,11 @@ Der Azure Monitor-Agent ersetzt die [Agents einer Vorgängerversion für Azure M
 Derzeit werden virtuelle Azure-Computer, VM-Skalierungsgruppen und Azure Arc-fähige Server unterstützt. Azure Kubernetes Service und andere Computeressourcentypen werden zurzeit nicht unterstützt.
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
-Der Azure Monitor-Agent ist in allen öffentlichen Regionen verfügbar, die Log Analytics unterstützen. Government-Regionen und -Clouds werden momentan nicht unterstützt.
+Der Azure Monitor Agent ist in allen öffentlichen Regionen verfügbar, die Log Analytics unterstützen, sowie in den Azure Government und China Clouds. Air-gapped Clouds werden noch nicht unterstützt.
+
+## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
+Eine Liste der Windows- und Linux-Betriebssystemversionen, die derzeit vom Azure Monitor-Agent unterstützt werden, finden Sie unter [Unterstützte Betriebssysteme](agents-overview.md#supported-operating-systems).
+
 ## <a name="supported-services-and-features"></a>Unterstützte Dienste und Features
 In der folgenden Tabelle erhalten Sie Informationen zur aktuellen Unterstützung für den Azure Monitor-Agent mit anderen Azure-Diensten.
 
@@ -105,16 +110,13 @@ Die folgende Tabelle gibt Aufschluss darüber, welche Datentypen Sie aktuell mit
 
 Der Azure Monitor-Agent sendet Daten an Azure Monitor-Metriken oder an einen Log Analytics-Arbeitsbereich, der Azure Monitor-Protokolle unterstützt.
 
-| Datenquellen- | Destinations | BESCHREIBUNG |
+| Datenquelle | Destinations | BESCHREIBUNG |
 |:---|:---|:---|
 | Leistung        | Azure Monitor-Metriken<sup>1</sup><br>Log Analytics-Arbeitsbereich | Numerische Werte zum Messen der Leistung verschiedener Betriebssystem- und Workloadaspekte |
 | Windows-Ereignisprotokolle | Log Analytics-Arbeitsbereich | An das Windows-System für die Ereignisprotokollierung gesendete Informationen |
 | syslog             | Log Analytics-Arbeitsbereich | Informationen, die an das Linux-System für die Ereignisprotokollierung gesendet werden |
 
 <sup>1</sup> Aktuell gibt es eine Beschränkung für den Azure Monitor-Agent für Linux. Die Nutzung von Azure Monitor-Metriken als *einziges* Ziel wird nicht unterstützt. Die Verwendung zusammen mit Azure Monitor-Protokollen funktioniert hingegen problemlos. Diese Einschränkung wird im nächsten Erweiterungsupdate behoben.
-
-## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
-Eine Liste der Windows- und Linux-Betriebssystemversionen, die derzeit vom Azure Monitor-Agent unterstützt werden, finden Sie unter [Unterstützte Betriebssysteme](agents-overview.md#supported-operating-systems).
 
 ## <a name="security"></a>Sicherheit
 Der Azure Monitor-Agent benötigt zwar keine Schlüssel, dafür aber eine [systemseitig zugewiesene verwaltete Identität](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity). Für die Agent-Bereitstellung muss auf dem jeweiligen virtuellen Computer eine systemseitig zugewiesene verwaltete Identität aktiviert sein.
@@ -131,7 +133,7 @@ Die Windows- und Linux-Erweiterungen für den Azure Monitor-Agent können mithil
    ![Flussdiagramm zum Bestimmen der Werte der Parameter „setting“ und „protectedSetting“ beim Aktivieren der Erweiterung](media/azure-monitor-agent-overview/proxy-flowchart.png)
 
 
-1. Nachdem die Werte für die Parameter *setting* und *protectedSetting* festgelegt wurden, geben Sie diese zusätzlichen Parameter an, wenn Sie den Azure Monitor-Agent mithilfe von PowerShell-Befehlen bereitstellen. Die folgenden Beispiele sind für virtuelle Azure-Computer konzipiert.
+2. Nachdem die Werte für die Parameter *setting* und *protectedSetting* festgelegt wurden, geben Sie diese zusätzlichen Parameter an, wenn Sie den Azure Monitor-Agent mithilfe von PowerShell-Befehlen bereitstellen. Die folgenden Beispiele sind für virtuelle Azure-Computer konzipiert.
 
     | Parameter | Wert |
     |:---|:---|

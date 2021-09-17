@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/04/2021
 ms.author: ccompy
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 444831d1d8e9982ac0837e90fe04941b5ae928a7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ac90dadc93ce09bc2ce0af6314e4bd2c48ab79f8
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339141"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768670"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrieren Ihrer App in ein Azure Virtual Network
 
@@ -115,7 +115,7 @@ Beim Konfigurieren des Anwendungsroutings können Sie entweder den gesamten Date
     
     :::image type="content" source="./media/web-sites-integrate-with-vnet/vnetint-route-all-disabling.png" alt-text="Deaktivieren von „Route All“ (Gesamten Datenverkehr weiterleiten)":::
 
-1. Wählen Sie **Ja**.
+1. Wählen Sie **Ja** aus.
 
 Sie können „Route All“ (Gesamten Datenverkehr weiterleiten) auch mithilfe der CLI konfigurieren (*Hinweis:* ab `az version` 2.27.0):
 
@@ -123,9 +123,7 @@ Sie können „Route All“ (Gesamten Datenverkehr weiterleiten) auch mithilfe d
 az webapp config set --resource-group myRG --name myWebApp --vnet-route-all-enabled [true|false]
 ```
 
-Die Konfigurationseinstellung „Route All“ (Gesamten Datenverkehr weiterleiten) ersetzt die Legacy-App-Einstellung `WEBSITE_VNET_ROUTE_ALL` und hat Vorrang.
-
-:::image type="content" source="./media/web-sites-integrate-with-vnet/vnetint-route-all-appsetting.png" alt-text="App-Einstellung „Route All“ (Gesamten Datenverkehr weiterleiten)":::
+Die Konfigurationseinstellung „Route All“ (Gesamten Datenverkehr weiterleiten) ist die empfohlene Methode zum Aktivieren des gesamten Datenverkehrsrouting. Mithilfe der Konfigurationseinstellung können Sie das Verhalten mit einer [integrierten Richtlinie](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F33228571-70a4-4fa1-8ca1-26d0aba8d6ef) überwachen. Die vorhandene App-Einstellung `WEBSITE_VNET_ROUTE_ALL` kann weiterhin verwendet werden, und Sie können das Datenverkehrsrouting mit beiden Einstellungen aktivieren.
 
 #### <a name="network-routing"></a>Netzwerkrouting
 

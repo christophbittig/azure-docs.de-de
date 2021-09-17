@@ -8,12 +8,12 @@ ms.topic: reference
 ms.custom: mvc
 ms.date: 06/09/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: a03031640bd116e2901ff123b5fec13d36151fd4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 63ca9c2a76b5daaf576992f715a7ec112ac98b25
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122338928"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681524"
 ---
 # <a name="azure-sentinel-sap-solution-detailed-sap-requirements-public-preview"></a>Detaillierte SAP-Anforderungen für die Azure Sentinel-Lösung für SAP (öffentliche Vorschau)
 
@@ -28,6 +28,9 @@ Verwenden Sie diesen Artikel als Referenz, wenn Sie Administrator sind oder [die
 > Die Azure Sentinel-Lösung für SAP befindet sich derzeit in der PREVIEW-Phase. In den [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) finden Sie weitere rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden oder anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 >
 
+> [!NOTE]
+> Zusätzliche Anforderungen werden aufgeführt, wenn Sie Ihren SAP-Datenconnector über eine sichere SNC-Verbindung bereitstellen. Weitere Informationen finden Sie unter [Bereitstellen des Azure Sentinel-Datenconnectors für SAP mit SNC](sap-solution-deploy-snc.md).
+>
 ## <a name="recommended-virtual-machine-sizing"></a>Empfohlen Dimensionierung für virtuelle Computer
 
 In der folgenden Tabelle wird die empfohlene Dimensionierung für Ihren virtuellen Computer beschrieben, je nach beabsichtigter Nutzung:
@@ -136,9 +139,10 @@ Die erforderlichen Autorisierungen sind nach Protokolltyp aufgelistet. Sie benö
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter
 
 - [Bereitstellen der Azure Sentinel-Lösung für SAP](sap-deploy-solution.md)
+- [Bereitstellen des Azure Sentinel-Datenconnectors für SAP mit SNC](sap-solution-deploy-snc.md)
 - [Konfigurationsoptionen für Experten, lokale Bereitstellung und SAPControl-Protokollquellen](sap-solution-deploy-alternate.md)
 - [Referenz zu Protokollen der Azure Sentinel-Lösung für SAP](sap-solution-log-reference.md)
 - [Azure Sentinel-Lösung für SAP: verfügbare Sicherheitsinhalte](sap-solution-security-content.md)

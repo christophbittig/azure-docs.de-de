@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: b8ae9365199edfde078cad39783458fc3f86ebd6
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: ea85ca0cf1160b4ad738ea45ce33e72d07dc5fbf
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110061496"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681394"
 ---
 # <a name="view-and-configure-ddos-diagnostic-logging"></a>Anzeigen und Konfigurieren der DDoS-Diagnoseprotokollierung
 
@@ -60,6 +60,39 @@ Wenn Sie die Diagnoseprotokollierung für alle öffentlichen IP-Adressen in eine
     - **In einem Speicherkonto archivieren:** Daten werden in einem Azure Storage-Konto gespeichert. Weitere Informationen zu dieser Option finden Sie unter [Archivieren von Ressourcenprotokollen](../azure-monitor/essentials/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage).
     - **An einen Event Hub streamen:** Erlaubt einem Protokollempfänger das Erfassen von Protokollen mithilfe eines Azure-Event Hubs. Event Hubs ermöglichen die Integration in Splunk oder andere SIEM-Systeme. Weitere Informationen zu dieser Option finden Sie unter [Streamen von Ressourcenprotokollen an Event Hubs](../azure-monitor/essentials/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs).
     - **An Log Analytics senden:** Schreibt Protokolle in den Azure Monitor-Dienst. Weitere Informationen zu dieser Option finden Sie unter [Sammeln von Azure-Dienstprotokollen und Metriken zur Verwendung in Azure Monitor-Protokollen](../azure-monitor/essentials/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-log-analytics-workspace).
+
+### <a name="query-ddos-protection-logs-in-log-analytics-workspace"></a>Abfragen von DDOS-Schutzprotokollen im Log Analytics-Arbeitsbereich
+
+#### <a name="ddosprotectionnotifications-logs"></a>DDoSProtectionNotifications-Protokolle
+
+1. Wählen Sie im Blatt **Log Analytics-Arbeitsbereich** Ihren Log Analytics-Arbeitsbereich aus.
+
+4. Klicken Sie unter **Allgemein** auf **Protokolle**.
+
+5. Geben Sie im Abfrage-Explorer die folgende Kusto-Abfrage ein, und ändern Sie den Zeitbereich in „Benutzerdefiniert“ und in die letzten 3 Monate. Wählen Sie dann „Ausführen“ aus.
+
+    ```kusto
+    AzureDiagnostics
+    | where Category == "DDoSProtectionNotifications"
+    ```
+
+#### <a name="ddosmitigationflowlogs"></a>DDoSMitigationFlowLogs
+
+1. Ändern Sie nun die Abfrage wie folgt, behalten Sie den gleichen Zeitbereich bei, und wählen Sie „Ausführen“ aus.
+
+    ```kusto
+    AzureDiagnostics
+    | where Category == "DDoSMitigationFlowLogs"
+    ```
+
+#### <a name="ddosmitigationreports"></a>DDoSMitigationReports
+
+1. Ändern Sie nun die Abfrage wie folgt, behalten Sie den gleichen Zeitbereich bei, und wählen Sie „Ausführen“ aus.
+
+    ```kusto
+    AzureDiagnostics
+    | where Category == "DDoSMitigationReports"
+    ```
 
 ### <a name="log-schemas"></a>Protokollschemas
 
@@ -106,7 +139,7 @@ In der folgenden Tabelle sind die Feldnamen und Beschreibungen aufgeführt:
 | --- | --- |
 | **TimeGenerated** | Hier werden das Datum und die Uhrzeit (UTC) der Erstellung des Berichts angegeben. |
 | **ResourceId** | Hier wird die Ressourcen-ID Ihrer öffentlichen IP-Adresse angegeben. |
-| **Kategorie** | Bei Benachrichtigungen ist der Wert für dieses Feld `DDoSProtectionNotifications`.|
+| **Kategorie** | Bei Benachrichtigungen ist der Wert für dieses Feld `DDoSMitigationReports`.|
 | **ResourceGroup** | Hier wird die Ressourcengruppe angegeben, die Ihre öffentliche IP-Adresse und Ihr virtuelles Netzwerk enthält. |
 | **SubscriptionId** | Hier wird die Abonnement-ID für Ihren DDoS-Schutzplan angegeben. |
 | **Ressource** | Hier wird der Name Ihrer öffentlichen IP-Adresse angegeben. |

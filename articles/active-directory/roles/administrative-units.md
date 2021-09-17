@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0cdaefcc92a1a690ae3e3e222053976c3aa3178
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 26b91b216c6a813270cf3b30cde0d8450f964668
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113730800"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734481"
 ---
 # <a name="administrative-units-in-azure-active-directory"></a>Verwaltungseinheiten in Azure Active Directory
 
@@ -33,9 +33,9 @@ Das Einschränken des Verwaltungsbereichs mithilfe von Verwaltungseinheiten kann
 
 Ein zentraler Administrator könnte folgende Aktionen ausführen:
 
-- Erstellen einer Rolle mit Administratorberechtigungen nur für Azure AD-Benutzer in der Verwaltungseinheit „Wirtschaftswissenschaften“
 - Erstellen einer Verwaltungseinheit für die Fakultät „Wirtschaftswissenschaften“
-- Auffüllen der Verwaltungseinheit nur mit den Studenten und Mitarbeitern der Fakultät „Wirtschaftswissenschaften“
+- Auffüllen der Verwaltungseinheit nur mit Studenten und Mitarbeitern der Fakultät „Wirtschaftswissenschaften“
+- Erstellen einer Rolle mit Administratorberechtigungen nur für Azure AD-Benutzer in der Verwaltungseinheit für die Fakultät „Wirtschaftswissenschaften“
 - Hinzufügen des IT-Teams der Fakultät „Wirtschaftswissenschaften“ zu der Rolle, zusammen mit dem zugehörigen Bereich
 
 ## <a name="license-requirements"></a>Lizenzanforderungen

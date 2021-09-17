@@ -8,14 +8,16 @@ ms.collection: linux
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: kegorman
-ms.openlocfilehash: 862bb886c7ec5dfd40c7acdbae2f70f6698a711b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac9c699addf996178b1d6aabdf010267bda75964
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101669938"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690068"
 ---
 # <a name="architectures-to-deploy-oracle-applications-on-azure"></a>Architekturen für die Bereitstellung von Oracle-Anwendungen in Azure
+
+**Gilt für**: :heavy_check_mark: Linux-VMs 
 
 Microsoft und Oracle sind eine Kooperation eingegangen, um Kunden die Bereitstellung von Oracle-Anwendungen, z. B. Oracle E-Business Suite, JD Edwards EnterpriseOne und PeopleSoft, in der Cloud zu ermöglichen. Mit der Einführung der Vorschauversion der [privaten Netzwerkverbindung](configure-azure-oci-networking.md) zwischen Microsoft Azure und der Oracle Cloud Infrastructure (OCI) können Oracle-Anwendungen jetzt in Azure bereitgestellt werden, während die Back-End-Datenbanken in Azure oder in der OCI angeordnet sind. Oracle-Anwendungen können auch in Azure Active Directory integriert werden. Sie können einmaliges Anmelden einrichten, damit sich Benutzer mit ihren Azure AD-Anmeldeinformationen (Azure Active Directory) an der Oracle-Anwendung anmelden können.
 

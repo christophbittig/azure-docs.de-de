@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: pafarley
-ms.openlocfilehash: 3938f7f5dae00a3628e2c9e2fec21a364efac95d
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: d546726e03420b41b4ff445418e30274904c6e5c
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110084698"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122635058"
 ---
 # <a name="copy-and-move-your-custom-vision-projects"></a>Kopieren und Verschieben von Custom Vision-Projekten
 
@@ -103,6 +103,9 @@ Sie erhalten eine `200/OK`-Antwort mit Metadaten zum exportierten Projekt und ei
   "token": "string"
 }
 ```
+
+> [!TIP]
+> Wenn beim Importieren Ihres Projekts der Fehler „Ungültiges Token“ angezeigt wird, ist möglicherweise die URL-Zeichenfolge des Tokens nicht webcodiert. Sie können das Token mit einem [URL-Encoder](https://meyerweb.com/eric/tools/dencoder/) codieren.
 
 ## <a name="import-the-project"></a>Importieren des Projekts
 

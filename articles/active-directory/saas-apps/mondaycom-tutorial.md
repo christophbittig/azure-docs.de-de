@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 06f4ddff9c897858eec27f97f8e45a3d656e951d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d317adf207360c7e513bbd5239f45e4955b50782
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101650786"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182956"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mondaycom"></a>Tutorial: Integration von monday.com in das einmalige Anmelden (Single Sign-On, SSO) von Azure Active Directory
 
@@ -38,6 +38,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * monday.com unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
+* monday.com unterstützt die [**automatisierte** Benutzerbereitstellung und Bereitstellungsaufhebung](mondaycom-provisioning-tutorial.md) (empfohlen).
 * monday.com unterstützt die **Just-in-Time**-Benutzerbereitstellung.
 
 ## <a name="add-mondaycom-from-the-gallery"></a>Hinzufügen von monday.com aus dem Katalog

@@ -7,14 +7,16 @@ ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: 696125f75e41d39b4f9aaa1ff852b03eff589fb0
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: e129b596473784c72cab93568be88dd6dcb6fe2a
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108204241"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697993"
 ---
 # <a name="msv2-and-mdsv2-series-medium-memory"></a>Msv2- und Mdsv2-Serie mit mittlerem Arbeitsspeicher
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Die VM-Serien „Msv2“ und „Mdsv2“ mit mittlerem Arbeitsspeicher verfügen über einen Intel® Xeon® Platinum 8280-Prozessor (Cascade Lake) mit einer Kernbasisfrequenz von 2,7 GHz und einer maximalen Einzelkern-Turbofrequenz von 4,0 GHz. Mit diesen VMs erhalten Kunden größere Flexibilität durch Optionen mit lokalen Datenträgern und ohne Datenträger. Außerdem erhalten Kunden Zugriff auf eine Reihe neuer isolierter VM-Größen mit mehr CPU-Leistung und Arbeitsspeicher, die bis zu 192 vCPUs mit 4 TiB Arbeitsspeicher reichen. 
 

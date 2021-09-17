@@ -2,13 +2,14 @@
 title: Hinzufügen von Benutzern als Lab-Ersteller in Azure Lab Services
 description: In diesem Artikel erfahren Sie, wie Sie einen Benutzer der Rolle „Lab-Ersteller“ für ein Labkonto in Azure Lab Services hinzufügen. Die Lab-Ersteller können Labs in diesem Labkonto erstellen.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: a6c89483744f943926f126701d28988358627a27
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/26/2021
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: a2135ab6580d39d6c63f7e948a29f0f0ede4efd6
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96435959"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634193"
 ---
 # <a name="add-lab-creators-to-a-lab-account-in-azure-lab-services"></a>Hinzufügen von Lab-Erstellern zu einem Labkonto in Azure Lab Services
 In diesem Artikel erfahren Sie, wie Sie Benutzer als Lab-Ersteller zu einem Labkonto in Azure Lab Services hinzufügen. Diese Benutzer können dann Labs im Labkonto erstellen. 
@@ -16,14 +17,25 @@ In diesem Artikel erfahren Sie, wie Sie Benutzer als Lab-Ersteller zu einem Labk
 ## <a name="add-microsoft-user-account-to-lab-creator-role"></a>Hinzufügen eines Microsoft-Benutzerkontos zur Rolle „Lab-Ersteller“
 Zum Einrichten eines Classroom-Labs in einem Labkonto muss der Benutzer Mitglied der Rolle **Ersteller des Labs** für das Labkonto sein. Das zum Erstellen des Labkontos verwendete Konto wird dieser Rolle automatisch hinzugefügt. Wenn Sie zum Erstellen eines Classroom-Labs das gleiche Benutzerkonto verwenden möchten, können Sie diesen Schritt überspringen. Führen Sie die folgenden Schritte aus, um zum Erstellen eines Classroom-Labs ein anderes Benutzerkonto zu verwenden: 
 
-Um Lehrkräften die Berechtigung zum Erstellen von Labs für ihre Klassen zu erteilen, fügen Sie sie zur Rolle **Lab-Ersteller** hinzu:
+Um Lehrkräften die Berechtigungzu geben, Labs für ihre Klassen zu erstellen, fügen Sie ihnen die Rolle **Lab Autor** hinzu: Detaillierte Schritte finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).
 
-1. Wählen Sie auf der Seite **Lab-Konto** die Option **Zugriffssteuerung (IAM)** aus, und klicken Sie auf der Symbolleiste auf **+ Rollenzuweisung hinzufügen**. 
 
-    ![Zugriffssteuerung > Schaltfläche „Rollenzuweisung hinzufügen“](./media/tutorial-setup-lab-account/add-role-assignment-button.png)
-1. Wählen Sie auf der Seite **Rollenzuweisung hinzufügen** als **Rolle** die Option **Ersteller des Labs** aus. Wählen Sie den Benutzer aus, den Sie der Rolle „Ersteller des Labs“ hinzufügen möchten, und klicken Sie auf **Speichern**. 
+1. Wählen Sie auf der Seite **Lab Konto** **Zugriffssteuerung (IAM)**
 
-    ![Hinzufügen des Lab-Erstellers](./media/tutorial-setup-lab-account/add-lab-creator.png)
+1. Wählen Sie **Hinzufügen** > **Rollenzuweisung hinzufügen (Vorschau)** .
+
+    ![Seite „Zugriffssteuerung (IAM)“ mit geöffnetem Menü „Rollenzuweisung hinzufügen“.](../../includes/role-based-access-control/media/add-role-assignment-menu-generic.png)
+
+1. Wählen Sie auf der Registerkarte **Rolle** die Rolle **Lab Autor**.
+
+    ![Seite „Rollenzuweisung hinzufügen“ mit ausgewählter Registerkarte „Rolle“.](../../includes/role-based-access-control/media/add-role-assignment-role-generic.png)
+
+1. Wählen Sie auf der Registerkarte **Members** den Benutzer, den Sie der Rolle Lab Autors hinzufügen möchten
+
+1. Wählen Sie auf der Registerkarte **Überprüfen und zuweisen** die Option **Überprüfen und zuweisen** aus, um die Rolle zuzuweisen.
+
+
+
 
     > [!NOTE]
     > Wenn Sie einen Benutzer ohne Microsoft-Konto als Lab-Ersteller hinzufügen, finden Sie weitere Informationen im Abschnitt [Hinzufügen eines Benutzers ohne Microsoft-Konto als Lab-Ersteller](#add-a-non-microsoft-account-user-as-a-lab-creator). 

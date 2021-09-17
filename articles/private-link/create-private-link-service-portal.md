@@ -6,14 +6,14 @@ services: private-link
 author: asudbring
 ms.service: private-link
 ms.topic: quickstart
-ms.date: 01/18/2021
+ms.date: 08/18/2021
 ms.author: allensu
-ms.openlocfilehash: d394a475c5121607f70c03437382e104a5d0cbee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b54784b5cd77113983dea5e936d93e36aca5591
+ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98746406"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122201844"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>Schnellstart: Erstellen eines Private Link-Diensts über das Azure-Portal
 
@@ -35,141 +35,167 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und eine interne Azure
 
 In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und das Subnetz zum Hosten des Lastenausgleichs, der auf Ihren Private Link-Dienst zugreift.
 
-1. Wählen Sie links oben auf dem Bildschirm **Ressource erstellen > Netzwerk > Virtuelles Netzwerk** aus, oder suchen Sie über das Suchfeld nach **Virtuelles Netzwerk**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Geben Sie unter **Virtuelles Netzwerk erstellen** auf der Registerkarte **Grundlegende Einstellungen** die folgenden Informationen ein, oder wählen Sie sie aus:
+2. Wählen Sie links oben auf dem Bildschirm **Ressource erstellen > Netzwerk > Virtuelles Netzwerk** aus, oder suchen Sie über das Suchfeld nach **Virtuelles Netzwerk**.
+
+3. Klicken Sie auf **Erstellen**. 
+
+4. Geben Sie unter **Virtuelles Netzwerk erstellen** auf der Registerkarte **Grundlegende Einstellungen** die folgenden Informationen ein, oder wählen Sie sie aus:
 
     | **Einstellung**          | **Wert**                                                           |
     |------------------|-----------------------------------------------------------------|
     | **Projektdetails**  |                                                                 |
     | Subscription     | Auswählen des Azure-Abonnements                                  |
-    | Ressourcengruppe   | Wählen Sie **CreatePrivLinkService-rg** aus. |
+    | Ressourcengruppe   | Wählen Sie **Neu erstellen**. Geben Sie **CreatePrivLinkService-rg** ein. </br> Klicken Sie auf **OK**. |
     | **Instanzendetails** |                                                                 |
     | Name             | Geben Sie **myVNet** ein.                                    |
-    | Region           | Wählen Sie **USA, Osten 2** aus. |
+    | Region           | Wählen Sie **USA, Osten** aus. |
 
-3. Wählen Sie die Registerkarte **IP-Adressen** oder die Schaltfläche **Weiter: IP-Adressen** am unteren Seitenrand aus.
+5. Wählen Sie die Registerkarte **IP-Adressen** oder die Schaltfläche **Weiter: IP-Adressen** am unteren Seitenrand aus.
 
-4. Geben Sie auf der Registerkarte **IP-Adressen** die folgenden Informationen ein:
+6. Geben Sie auf der Registerkarte **IP-Adressen** die folgenden Informationen ein:
 
     | Einstellung            | Wert                      |
     |--------------------|----------------------------|
     | IPv4-Adressraum | Geben Sie **10.1.0.0/16** ein. |
 
-5. Wählen Sie unter **Subnetzname** das Wort **Standard** aus.
+7. Wählen Sie unter **Subnetzname** das Wort **Standard** aus.
 
-6. Geben Sie unter **Subnetz bearbeiten** die folgenden Informationen ein:
+8. Geben Sie unter **Subnetz bearbeiten** die folgenden Informationen ein:
 
     | Einstellung            | Wert                      |
     |--------------------|----------------------------|
-    | Subnetzname | Geben Sie **mySubnet** ein. |
+    | Subnetzname | Geben Sie **myBackendSubnet** ein. |
     | Subnetzadressbereich | Geben Sie **10.1.0.0/24** ein. |
 
-7. Wählen Sie **Speichern** aus.
+9. Wählen Sie **Speichern** aus.
 
-8. Wählen Sie die Registerkarte **Überprüfen + erstellen** oder die Schaltfläche **Überprüfen + erstellen** aus.
+10. Wählen Sie die Registerkarte **Überprüfen + erstellen** oder die Schaltfläche **Überprüfen + erstellen** aus.
 
-9. Klicken Sie auf **Erstellen**.
+11. Klicken Sie auf **Erstellen**.
 
-### <a name="create-a-standard-load-balancer"></a>Schnellstart: Erstellen einer Load Balancer Standard-Instanz mit Azure PowerShell
+### <a name="create-nat-gateway"></a>Erstellen eines NAT Gateways
 
-Erstellen Sie über das Portal einen internen Lastenausgleich im Tarif „Standard“. 
+In diesem Abschnitt wird ein NAT-Gateway erstellt und dem Subnetz in dem virtuellen Netzwerk zugewiesen, das Sie zuvor erstellt haben.
 
-1. Wählens Sie links oben auf dem Bildschirm die Optionen **Ressource erstellen** > **Netzwerk** > **Lastenausgleich** aus.
+1. Wählen Sie links oben auf dem Bildschirm **Ressource erstellen > Netzwerk> NAT-Gateway** aus, oder suchen Sie über das Suchfeld nach **NAT-Gateway**.
 
-2. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, bzw. wählen Sie sie aus: 
+2. Klicken Sie auf **Erstellen**. 
+
+3. Geben Sie auf der Registerkarte **Grundlagen** unter **Gateway für die Netzwerkadressübersetzung (NAT) erstellen** die folgenden Informationen ein, oder wählen Sie sie aus:
+
+    | **Einstellung**          | **Wert**                                                           |
+    |------------------|-----------------------------------------------------------------|
+    | **Projektdetails**  |                                                                 |
+    | Subscription     | Wählen Sie Ihr Azure-Abonnement.                                  |
+    | Ressourcengruppe   | Wählen Sie **CreatePrivLinkService-rg** aus. |
+    | **Instanzendetails** |                                                                 |
+    | Name             | Geben Sie **myNATGateway** ein.                                    |
+    | Region           | Wählen Sie **(USA) USA, Osten 2** aus.  |
+    | Verfügbarkeitszone | Wählen Sie **Keine**. |
+    | Leerlaufzeitüberschreitung (Minuten) | Geben Sie **10** ein. |
+
+4. Wählen Sie die Registerkarte **Ausgehende IP-Adresse** oder unten auf der Seite die Schaltfläche **Weiter: Ausgehende IP-Adresse** aus.
+
+5. Geben Sie auf der Registerkarte **Ausgehende IP-Adresse** die folgenden Informationen ein, bzw. wählen Sie sie aus:
+
+    | **Einstellung** | **Wert** |
+    | ----------- | --------- |
+    | Öffentliche IP-Adressen | Wählen Sie **Neue öffentliche IP-Adresse erstellen** aus. </br> Geben Sie unter **Name** den Namen **myNATgatewayIP** ein. </br> Klicken Sie auf **OK**. |
+
+6. Wählen Sie die Registerkarte **Subnetz** oder unten auf der Seite die Schaltfläche **Weiter: Subnetz** aus.
+
+7. Wählen Sie auf der Registerkarte **Subnetz** in der Dropdownliste **Virtuelles Netzwerk** die Option **myVNet** aus.
+
+8. Aktivieren Sie das Kontrollkästchen neben **myBackendSubnet**.
+
+9. Wählen Sie die Registerkarte **Überprüfen + erstellen** oder unten auf der Seite die blaue Schaltfläche **Überprüfen + erstellen** aus.
+
+10. Klicken Sie auf **Erstellen**.
+
+### <a name="create-load-balancer"></a>Erstellen eines Load Balancers
+
+In diesem Abschnitt wird ein Lastenausgleich für virtuelle Computer erstellt.
+
+Während der Erstellung des Lastenausgleichs konfigurieren Sie Folgendes:
+
+* Front-End-IP-Adresse
+* Back-End-Pool
+* Lastenausgleichsregeln für eingehenden Datenverkehr
+
+1. Geben Sie am oberen Rand des Portals den Suchbegriff **Lastenausgleich** in das Suchfeld ein. Wählen Sie in den Suchergebnissen **Lastenausgleichsmodule** aus.
+
+2. Wählen Sie auf der Seite **Load Balancer** die Option **Erstellen** aus.
+
+3. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, bzw. wählen Sie sie aus: 
 
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
+    | **Projektdetails** |   |
     | Subscription               | Wählen Sie Ihr Abonnement aus.    |    
-    | Resource group         | Wählen Sie das Element **CreatePrivLinkService-rg** aus, das Sie im vorherigen Schritt erstellt haben.|
+    | Resource group         | Wählen Sie **CreatePrivLinkService-rg** aus. |
+    | **Instanzendetails** |   |
     | Name                   | Geben Sie **myLoadBalancer** ein.                                   |
-    | Region         | Wählen Sie **USA, Osten 2** aus.                                        |
+    | Region         | Wählen Sie **(USA) USA, Osten 2** aus.                                        |
     | type          | Wählen Sie **Intern** aus.                                        |
-    | SKU           | Wählen Sie **Standard** aus. |
-    | Virtuelles Netzwerk | Wählen Sie das im vorherigen Schritt erstellte virtuelle Netzwerk **myVNet** aus. |
-    | Subnet  | Wählen Sie das Element **mySubnet** aus, das Sie im vorherigen Schritt erstellt haben. |
-    | IP-Adresszuweisung | Wählen Sie **Dynamisch** aus. |
-    | Verfügbarkeitszone | Wählen Sie **Zonenredundant** aus. |
+    | SKU           | Übernehmen Sie den Standardwert **Standard**. |
 
-3. Übernehmen Sie bei den anderen Einstellungen die Standardwerte, und wählen Sie **Überprüfen + erstellen** aus.
+4. Wählen Sie unten auf der Seite **Weiter: Front-End-IP-Konfiguration** aus.
 
-4. Wählen Sie auf der Registerkarte **Bewerten + erstellen** die Option **Erstellen** aus.   
+5. Wählen Sie unter **Front-End-IP-Konfiguration** die Option **+ Front-End-IP-Adresse hinzufügen** aus.
 
-## <a name="create-load-balancer-resources"></a>Erstellen von Load Balancer-Ressourcen
+6. Geben Sie unter **Name** den Wert **LoadBalancerFrontend** ein.
 
-In diesem Abschnitt wird Folgendes konfiguriert:
+7. Wählen Sie unter **Subnetz** den Eintrag **myBackendSubnet** aus.
 
-* Lastenausgleichseinstellungen für einen Back-End-Adresspool
-* Ein Integritätstest
-* Eine Lastenausgleichsregel
+8. Wählen Sie **Dynamisch** für die **Zuweisung** aus.
 
-### <a name="create-a-backend-pool"></a>Erstellen eines Back-End-Pools
+9. Wählen Sie unter **Verfügbarkeitszone** die Option **Zonenredundant** aus.
 
-Der Back-End-Adresspool enthält die IP-Adressen der virtuellen NICs, die mit dem Lastenausgleich verbunden sind. 
+    > [!NOTE]
+    > In Regionen mit [Verfügbarkeitszonen](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones) haben Sie die Möglichkeit, „Keine Zone“ (Standardoption), eine bestimmte Zone oder die Option „Zonenredundant“ auszuwählen. Die Auswahl hängt von Ihren spezifischen Domänenfehleranforderungen ab. In Regionen ohne Verfügbarkeitszonen wird dieses Feld nicht angezeigt. </br> Weitere Informationen zu Verfügbarkeitszonen finden Sie in der [Übersicht über Verfügbarkeitszonen](../availability-zones/az-overview.md).
 
-Erstellen Sie den Back-End-Adresspool **myBackendPool**, um virtuelle Computer für den Lastenausgleich von Internetdatenverkehr einzubeziehen.
+10. Wählen Sie **Hinzufügen**.
 
-1. Wählen Sie im linken Menü **Alle Dienste** > **Alle Ressourcen** und anschließend in der Ressourcenliste den Eintrag **myLoadBalancer** aus.
+11. Wählen Sie unten auf der Seite **Weiter: Back-End-Pools** aus.
 
-2. Wählen Sie unter **Einstellungen** die Option **Back-End-Pools** und dann **Hinzufügen** aus.
+12. Wählen Sie auf der Registerkarte **Back-End-Pools** die Option **+ Back-End-Pool hinzufügen** aus.
 
-3. Geben Sie auf der Seite **Back-End-Pool hinzufügen** die Zeichenfolge **myBackendPool** als Name für Ihren Back-End-Pool ein, und wählen Sie anschließend **Hinzufügen** aus.
+13. Geben Sie unter **Back-End-Pool hinzufügen** in das Feld **Name** den Namen **myBackendPool** ein.
 
-### <a name="create-a-health-probe"></a>Erstellen eines Integritätstests
+14. Wählen Sie unter **Backend Pool Configuration** (Konfiguration des Back-End-Pools) die Option **NIC** oder **IP-Adresse** aus.
 
-Der Status Ihrer App wird vom Lastenausgleich mithilfe eines Integritätstests überwacht. 
+15. Wählen Sie unter **IP-Version** die Option **IPv4** oder **IPv6** aus.
 
-Abhängig von der Reaktion auf Integritätsüberprüfungen werden der Load Balancer-Instanz durch den Integritätstest virtuelle Computer hinzugefügt oder daraus entfernt. 
+16. Wählen Sie **Hinzufügen**.
 
-Erstellen Sie zur Überwachung der Integrität der virtuellen Computer einen Integritätstest mit dem Namen **myHealthProbe**.
+17. Wählen Sie unten auf der Seite die Schaltfläche **Weiter: Regeln für eingehenden Datenverkehr** aus.
 
-1. Wählen Sie im linken Menü **Alle Dienste** > **Alle Ressourcen** und anschließend in der Ressourcenliste den Eintrag **myLoadBalancer** aus.
+18. Wählen Sie unter **Lastenausgleichsregel** auf der Registerkarte **Regeln für eingehenden Datenverkehr** die Option **+ Lastenausgleichsregel hinzufügen** aus.
 
-2. Wählen Sie unter **Einstellungen** die Option **Integritätstests** und dann **Hinzufügen** aus.
-    
-    | Einstellung | Wert |
-    | ------- | ----- |
-    | Name | Geben Sie **myHealthProbe** ein. |
-    | Protocol | Wählen Sie **TCP** aus. |
-    | Port | Geben Sie **80** ein.|
-    | Intervall | Geben Sie für das **Intervall** den Wert **15** (Sekunden zwischen Testversuchen) ein. |
-    | Fehlerhafter Schwellenwert | Wählen Sie **2** als Wert für den **Fehlerschwellenwert** bzw. als Anzahl aufeinander folgender Testfehler aus, die auftreten müssen, damit ein virtueller Computer als fehlerhaft eingestuft wird.|
-    | | |
+19. Geben Sie unter **Lastenausgleichsregel hinzufügen** die folgenden Informationen ein, oder wählen Sie sie aus:
 
-3. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **OK** aus.
-
-### <a name="create-a-load-balancer-rule"></a>Erstellen einer Load Balancer-Regel
-
-Mithilfe einer Load Balancer-Regel wird definiert, wie Datenverkehr auf die virtuellen Computer verteilt werden soll. Sie definieren die Front-End-IP-Konfiguration für den eingehenden Datenverkehr und den Back-End-IP-Pool für den Empfang des Datenverkehrs. Quell- und Zielport werden in der Regel definiert. 
-
-In diesem Abschnitt wird eine Lastenausgleichsregel mit folgenden Merkmalen erstellt:
-
-* Sie heißt **myHTTPRule**.
-* Sie befindet sich im Front-End **LoadBalancerFrontEnd**.
-* Sie lauscht a **Port 80**.
-* Sie leitet vom Lastenausgleich verteilten Datenverkehr an den **Port 80** des Back-Ends **myBackendPool** weiter.
-
-1. Wählen Sie im linken Menü **Alle Dienste** > **Alle Ressourcen** und anschließend in der Ressourcenliste den Eintrag **myLoadBalancer** aus.
-
-2. Wählen Sie unter **Einstellungen** die Option **Lastenausgleichsregeln** und dann **Hinzufügen** aus.
-
-3. Konfigurieren Sie die Lastenausgleichsregel mit folgenden Werten:
-    
     | Einstellung | Wert |
     | ------- | ----- |
     | Name | Geben Sie **myHTTPRule** ein. |
-    | IP-Version | Wählen Sie **IPv4** aus. |
-    | Front-End-IP-Adresse | Wählen Sie **LoadBalancerFrontEnd** aus. |
+    | IP-Version | Wählen Sie abhängig von Ihren Anforderungen **IPv4** oder **IPv6** aus. |
+    | Front-End-IP-Adresse | Wählen Sie **LoadBalancerFrontend** aus. |
     | Protocol | Wählen Sie **TCP** aus. |
-    | Port | Geben Sie **80** ein.|
+    | Port | Geben Sie **80** ein. |
     | Back-End-Port | Geben Sie **80** ein. |
-    | Back-End-Pool | Wählen Sie **myBackendPool** aus.|
-    | Integritätstest | Wählen Sie **myHealthProbe** aus. |
-    | Leerlaufzeitüberschreitung (Minuten) | Bewegen Sie den Schieberegler auf **15 Minuten**. |
+    | Back-End-Pool | Wählen Sie **myBackendPool** aus. |
+    | Integritätstest | Wählen Sie **Neu erstellen**. </br> Geben Sie unter **Name** den Namen **myHealthProbe** ein. </br> Wählen Sie für **Protokoll** die Option **HTTP** aus. </br> Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **OK** aus. |
+    | Sitzungspersistenz | Wählen Sie **Keine**. |
+    | Leerlaufzeitüberschreitung (Minuten) | Geben Sie **15** ein, oder wählen Sie diesen Wert aus. |
     | TCP-Zurücksetzung | Wählen Sie **Aktiviert**. |
+    | Unverankerte IP | Wählen Sie **Deaktiviert** aus. |
 
-4. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie dann **OK** aus.
+20. Wählen Sie **Hinzufügen**.
+
+21. Wählen Sie unten auf der Seite die blaue Schaltfläche **Überprüfen + erstellen** aus.
+
+22. Klicken Sie auf **Erstellen**.
 
 ## <a name="create-a-private-link-service"></a>Erstellen eines Private Link-Diensts
 
@@ -192,7 +218,7 @@ In diesem Abschnitt erstellen Sie einen Private Link-Dienst hinter einem Standa
     | Ressourcengruppe | Wählen Sie **CreatePrivLinkService-rg** aus. |
     | **Instanzendetails** |  |
     | Name | Geben Sie **myPrivateLinkService** ein. |
-    | Region | Wählen Sie **USA, Osten 2** aus. |
+    | Region | Wählen Sie **(USA) USA, Osten 2** aus. |
 
 6. Wählen Sie die Registerkarte **Ausgangseinstellungen** oder unten auf der Seite die Option **Weiter: Ausgangseinstellungen** aus.
 
@@ -219,7 +245,6 @@ In diesem Abschnitt erstellen Sie einen Private Link-Dienst hinter einem Standa
 
 Ihr Private Link-Dienst wird erstellt und kann Datenverkehr empfangen. Konfigurieren Sie Ihre Anwendung hinter Ihrer Instanz von Load Balancer Standard, falls Sie den Datenverkehrsfluss anzeigen möchten.
 
-
 ## <a name="create-private-endpoint"></a>Erstellen eines privaten Endpunkts
 
 In diesem Abschnitt ordnen Sie den Private Link-Dienst einem privaten Endpunkt zu. Ein virtuelles Netzwerk enthält den privaten Endpunkt für den Private Link-Dienst. In diesem virtuellen Netzwerk sind die Ressourcen enthalten, die auf Ihren Private Link-Dienst zugreifen.
@@ -237,7 +262,7 @@ In diesem Abschnitt ordnen Sie den Private Link-Dienst einem privaten Endpunkt 
     | Ressourcengruppe   | Wählen Sie **CreatePrivLinkService-rg** aus. |
     | **Instanzendetails** |                                                                 |
     | Name             | Geben Sie **myVNetPE** ein.                                    |
-    | Region           | Wählen Sie **USA, Osten 2** aus. |
+    | Region           | Wählen Sie **(USA) USA, Osten 2** aus. |
 
 3. Wählen Sie die Registerkarte **IP-Adressen** oder die Schaltfläche **Weiter: IP-Adressen** am unteren Seitenrand aus.
 
@@ -281,7 +306,7 @@ In diesem Abschnitt ordnen Sie den Private Link-Dienst einem privaten Endpunkt 
     | Resource group | Wählen Sie **CreatePrivLinkService-rg** aus. Diese Ressourcengruppe wurde im vorherigen Abschnitt erstellt.|
     | **Instanzendetails** |  |
     | Name  | Geben Sie **myPrivateEndpoint** ein. |
-    | Region | Wählen Sie **USA, Osten 2** aus. |
+    | Region | Wählen Sie **(USA) USA, Osten 2** aus. |
 
 6. Wählen Sie die Registerkarte **Ressource** oder unten auf der Seite **Weiter: Ressource** aus.
     
@@ -321,16 +346,18 @@ In diesem Abschnitt finden Sie die IP-Adresse des privaten Endpunkts, die zum La
 4. Wählen Sie auf der Seite **Übersicht** von **myPrivateEndpoint** den Namen der Netzwerkschnittstelle aus, die dem privaten Endpunkt zugeordnet ist.  Der Name der Netzwerkschnittstelle beginnt mit **myPrivateEndpoint.nic**.
 
 5. Auf der Seite **Übersicht** der NIC des privaten Endpunkts wird unter **Private IP-Adresse** die IP-Adresse des Endpunkts angezeigt.
-    
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Sie den Private Link-Dienst nicht mehr benötigen, löschen Sie die Ressourcengruppe, um die im Rahmen dieser Schnellstartanleitung verwendeten Ressourcen zu bereinigen.
 
 1. Geben Sie im Portal oben im Suchfeld den Suchbegriff **CreatePrivLinkService-rg** ein, und wählen Sie in den Suchergebnissen den Eintrag **CreatePrivLinkService-rg** aus.
-1. Wählen Sie die Option **Ressourcengruppe löschen**.
-1. Geben Sie unter **GEBEN SIE DEN RESSOURCENGRUPPENNAMEN EIN** den Namen **CreatePrivLinkService-rg** ein.
-1. Klicken Sie auf **Löschen**.
+
+2. Wählen Sie die Option **Ressourcengruppe löschen**.
+
+3. Geben Sie unter **GEBEN SIE DEN RESSOURCENGRUPPENNAMEN EIN** den Namen **CreatePrivLinkService-rg** ein.
+
+4. Klicken Sie auf **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

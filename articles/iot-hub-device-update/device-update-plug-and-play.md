@@ -6,26 +6,26 @@ ms.author: valls
 ms.date: 2/14/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 768e751f28f9725cab47f100188c318d6b35d667
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: e53aa866465e7a1409a966a5bab6147d304caddf
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111969134"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122605330"
 ---
 # <a name="device-update-for-iot-hub-and-iot-plug-and-play"></a>Device Update for IoT Hub und IoT Plug & Play
 
-Device Update for IoT Hub verwendet [IoT Plug & Play](../iot-pnp/index.yml) zum Erkennen und Verwalten von Geräten, die OTA-Updates (Over-the-Air) empfangen können. Der Device Update-Dienst sendet Eigenschaften und Nachrichten an Geräte und empfängt diese von Geräten, die PnP-Schnittstellen verwenden. Device Update for IoT Hub erfordert, dass IoT-Geräte die folgenden Schnittstellen und die model-id wie unten beschrieben implementieren.
+Device Update for IoT Hub verwendet [IoT Plug & Play](../iot-develop/index.yml) zum Erkennen und Verwalten von Geräten, die OTA-Updates (Over-the-Air) empfangen können. Der Device Update-Dienst sendet Eigenschaften und Nachrichten an Geräte und empfängt diese von Geräten, die IoT Plug & Play-Schnittstellen verwenden. Device Update for IoT Hub erfordert, dass IoT-Geräte die folgenden Schnittstellen und die model-id wie unten beschrieben implementieren.
 
 Konzepte: 
-* Grundlegendes zum [IoT Plug & Play-Geräteclient.](../iot-pnp/concepts-developer-guide-device.md?pivots=programming-language-csharp#implement-telemetry-properties-and-commands) 
+* Grundlegendes zum [IoT Plug & Play-Geräteclient.](../iot-develop/concepts-developer-guide-device.md?pivots=programming-language-csharp) 
 * Erfahren Sie, wie der [Geräteupdate-Agent implementiert wird.](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-build-agent-code.md)
 
 ## <a name="adu-core-interface"></a>ADU Core-Schnittstelle
 
 Die Schnittstelle „ADUCoreInterface“ wird verwendet, um Updateaktionen und Metadaten an Geräte zu senden und den Updatestatus von Geräten zu empfangen. Die Schnittstelle „ADU Core“ ist in zwei Objekteigenschaften aufgeteilt.
 
-Der erwartete Komponentenname im Modell ist **azureDeviceUpdateAgent**, wenn diese Schnittstelle implementiert wird. Weitere Informationen zu [Azure IoT PnP-Komponenten](../iot-pnp/concepts-modeling-guide.md)
+Der erwartete Komponentenname im Modell ist **azureDeviceUpdateAgent**, wenn diese Schnittstelle implementiert wird. [Weitere Informationen zu Azure IoT Plug & Play-Komponenten](../iot-develop/concepts-modeling-guide.md)
 
 ### <a name="agent-metadata"></a>Agent-Metadaten
 
@@ -80,7 +80,7 @@ Beispiel für IoT Hub-Gerätezwilling
                             }
 ```
 
-Hinweis: Das Gerät oder Modul muss die {"__t": "c"} Markierung hinzufügen, um anzuzeigen, dass sich das Element auf eine Komponente bezieht, erfahren Sie mehr [hier](../iot-pnp/concepts-convention.md#sample-multiple-components-writable-property).
+Hinweis: Das Gerät oder Modul muss die {"__t": "c"} Markierung hinzufügen, um anzuzeigen, dass sich das Element auf eine Komponente bezieht, erfahren Sie mehr [hier](../iot-develop/concepts-convention.md#sample-multiple-components-writable-property).
 
 ### <a name="service-metadata"></a>Dienstmetadaten
 
@@ -106,9 +106,9 @@ Dienstmetadaten enthalten Felder, die von den Device Update-Diensten zum Kommuni
 
 ## <a name="device-information-interface"></a>Geräteinformationsschnittstelle
 
-Die Geräteinformationsschnittstelle ist ein Konzept, das in der [IoT Plug & Play-Architektur](../iot-pnp/overview-iot-plug-and-play.md) verwendet wird. Sie enthält Gerät-zu-Cloud-Eigenschaften, die Informationen zur Hardware und zum Betriebssystem des Geräts bereitstellen. Device Update for IoT Hub verwendet die Eigenschaften DeviceInformation.manufacturer und DeviceInformation.model für Telemetriedaten und Diagnosen verwendet. Weitere Informationen zur Geräteinformationsschnittstelle finden Sie in diesem [Beispiel](https://devicemodels.azure.com/dtmi/azure/devicemanagement/deviceinformation-1.json).
+Die Geräteinformationsschnittstelle ist ein Konzept, das in der [IoT Plug & Play-Architektur](../iot-develop/overview-iot-plug-and-play.md) verwendet wird. Sie enthält Gerät-zu-Cloud-Eigenschaften, die Informationen zur Hardware und zum Betriebssystem des Geräts bereitstellen. Device Update for IoT Hub verwendet die Eigenschaften DeviceInformation.manufacturer und DeviceInformation.model für Telemetriedaten und Diagnosen verwendet. Weitere Informationen zur Geräteinformationsschnittstelle finden Sie in diesem [Beispiel](https://devicemodels.azure.com/dtmi/azure/devicemanagement/deviceinformation-1.json).
 
-Der erwartete Komponentenname im Modell ist **deviceInformation**, wenn diese Schnittstelle implementiert wird. [Weitere Informationen zu Azure IoT PnP-Komponenten](../iot-pnp/concepts-modeling-guide.md)
+Der erwartete Komponentenname im Modell ist **deviceInformation**, wenn diese Schnittstelle implementiert wird. [Weitere Informationen zu Azure IoT Plug & Play-Komponenten](../iot-develop/concepts-modeling-guide.md)
 
 |Name|type|Schema|Direction|BESCHREIBUNG|Beispiel|
 |----|----|------|---------|-----------|-----------|
@@ -123,6 +123,6 @@ Der erwartete Komponentenname im Modell ist **deviceInformation**, wenn diese Sc
 
 ## <a name="model-id"></a>Modell-ID 
 
-Die Modell-ID gibt an, wie intelligente Geräte ihre Funktionen für Azure IoT-Anwendungen mit IoT Plug & Play ankündigen. Weitere Informationen zum Erstellen von intelligenten Geräten zum Ankündigen ihrer Funktionen für Azure IoT-Anwendungen finden Sie im [Entwicklerleitfaden für IoT Plug & Play-Geräte](../iot-pnp/concepts-developer-guide-device.md).
+Die Modell-ID gibt an, wie intelligente Geräte ihre Funktionen für Azure IoT-Anwendungen mit IoT Plug & Play ankündigen. Weitere Informationen zum Erstellen von intelligenten Geräten zum Ankündigen ihrer Funktionen für Azure IoT-Anwendungen finden Sie im [Entwicklerleitfaden für IoT Plug & Play-Geräte](../iot-develop/concepts-developer-guide-device.md).
 
-Für Device Update for IoT Hub muss das intelligente IoT Plug & Play-Gerät im Rahmen der Geräteverbindung eine Modell-ID mit dem Wert **dtmi:AzureDeviceUpdate;1** ankündigen. [Weitere Informationen zum Ankündigen einer Modell-ID](../iot-pnp/concepts-developer-guide-device.md#model-id-announcement).
+Für Device Update for IoT Hub muss das intelligente IoT Plug & Play-Gerät im Rahmen der Geräteverbindung eine Modell-ID mit dem Wert **dtmi:AzureDeviceUpdate;1** ankündigen. [Weitere Informationen zum Ankündigen einer Modell-ID](../iot-develop/concepts-developer-guide-device.md#model-id-announcement).

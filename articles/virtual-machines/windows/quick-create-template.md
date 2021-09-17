@@ -9,14 +9,16 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: b3ba1aefb02e8cfb139b1afc07e2c57e1d80fe94
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: cb80d5e6bc6d12dfe51420b25560f83376125a13
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112080271"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693836"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-using-an-arm-template"></a>Schnellstart: Erstellen eines virtuellen Windows-Computers mithilfe einer ARM-Vorlage
+
+**Gilt für**: :heavy_check_mark: Windows VMs 
 
 In dieser Schnellstartanleitung wird veranschaulicht, wie Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage) zum Bereitstellen eines virtuellen Windows-Computers (VM) in Azure verwenden.
 

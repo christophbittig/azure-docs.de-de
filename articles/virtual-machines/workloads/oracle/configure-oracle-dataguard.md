@@ -8,14 +8,16 @@ ms.collection: linux
 ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: 1b04ef24ff01787c6904db0e288c23d4434e7dcf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b6419a949e37ef6068fa0621ac469638e03f7301
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101673823"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691943"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Implementieren von Oracle Data Guard auf einem virtuellen Azure-Linux-Computer 
+
+**Gilt für:** :heavy_check_mark: Linux-VMs 
 
 Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In diesem Artikel wird beschrieben, wie Sie Skripts in der Azure CLI verwenden, um eine Oracle Database 12c-Datenbank aus einem Azure Marketplace-Image bereitzustellen. Anschließend wird in diesem Artikel Schritt für Schritt gezeigt, wie Sie Data Guard auf einem virtuellen Azure-Computer (VM) installieren und konfigurieren.
 

@@ -7,14 +7,16 @@ ms.subservice: scheduled-events
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
-ms.openlocfilehash: 866522da162d22621bd37bf9d2f2fa6838206e17
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b8e13f8a8bd577e3e872d3fc59b099e34fd495d1
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101674689"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694211"
 ---
 # <a name="monitor-scheduled-events-for-your-azure-vms"></a>Überwachen geplanter Ereignisse für Ihre virtuellen Azure-Computer
+
+**Gilt für:** VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen:heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Updates werden täglich auf verschiedene Teile von Azure angewendet, damit die Dienste, die auf ihnen ausgeführt werden, sicher und auf dem neuesten Stand bleiben. Zusätzlich zu geplanten Updates können auch ungeplante Ereignisse auftreten. Wenn beispielsweise eine Hardwarebeeinträchtigung oder ein Hardwarefehler erkannt wird, müssen die Azure-Dienste möglicherweise nicht geplante Wartung ausführen. Durch Verwenden von Livemigration und speichererhaltende Updates sowie grundsätzliches Beachten einer strengen Begrenzung der Auswirkungen von Updates sind diese Ereignisse in den meisten Fällen für Kunden weitestgehend transparent, und die Ereignisse haben entweder keine Auswirkung oder verursachen höchstens für einige Sekunden ein Einfrieren des virtuellen Computers. Es gibt jedoch Anwendungen, bei denen sich bereits wenige Sekunden eines Einfrierens des virtuellen Computers negativ auswirken. Es ist wichtig, im Voraus über eine bevorstehende Azure-Wartung informiert zu sein, um das beste Betriebsverhalten für solche Anwendungen sicherzustellen. Der [Scheduled Events-Dienst](scheduled-events.md) stellt Ihnen eine befehlsorientierte Benutzerschnittstelle zur Verfügung, um über bevorstehende Wartung benachrichtigt zu werden, und ermöglicht es Ihnen, die Wartung reibungslos abzuwickeln. 
 

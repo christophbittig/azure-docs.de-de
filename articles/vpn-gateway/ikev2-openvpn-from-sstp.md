@@ -8,16 +8,16 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 06/04/2021
 ms.author: alzam
-ms.openlocfilehash: c9b6671a2baa807d8def27a78d7776eb6fec2c1a
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: af136cab65034be5cd0f3ec18d22492a826678d0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111559428"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355920"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>Übergang von SSTP zum OpenVPN-Protokoll oder zu IKEv2
 
-Mit einer P2S-VPN-Gatewayverbindung (Point-to-Site) können Sie von einem einzelnen Clientcomputer aus eine sichere Verbindung mit Ihrem virtuellen Netzwerk herstellen. Eine P2S-Verbindung wird hergestellt, indem Sie die Verbindung vom Clientcomputer aus starten. Dieser Artikel bezieht sich auf das Resource Manager-Bereitstellungsmodell und erläutert Möglichkeiten, das Limit von 128 gleichzeitigen Verbindungen für SSTP durch den Wechseln zum OpenVPN-Protokoll oder zu IKEv2 aufzuheben.
+Mit einer P2S-VPN-Gatewayverbindung (Point-to-Site) können Sie von einem einzelnen Clientcomputer aus eine sichere Verbindung mit Ihrem virtuellen Netzwerk herstellen. Eine P2S-Verbindung wird hergestellt, indem Sie die Verbindung vom Clientcomputer aus starten. Dieser Artikel bezieht sich auf das [Resource Manager-Bereitstellungsmodell](../azure-resource-manager/management/deployment-models.md) und erläutert Möglichkeiten, das Limit von 128 gleichzeitigen Verbindungen für SSTP durch den Wechseln zum OpenVPN-Protokoll oder zu IKEv2 aufzuheben.
 
 ## <a name="what-protocol-does-p2s-use"></a><a name="protocol"></a>Welches Protokoll verwendet P2S?
 
@@ -31,7 +31,7 @@ P2S-VPN kann eins der folgenden Protokolle verwenden:
 
 
 >[!NOTE]
->IKEv2 und OpenVPN für P2S sind ausschließlich für das Resource Manager-Bereitstellungsmodell verfügbar. Für das klassische Bereitstellungsmodell sind sie nicht verfügbar. Die Basic-Gateway-SKU unterstützt die Protokolle IKEv2 und OpenVPN nicht. Wenn Sie die Basic-SKU verwenden, müssen Sie das Gateway löschen und ein neues Gateway für ein virtuelles Netzwerk mit Produktions-SKU erstellen.
+>IKEv2 und OpenVPN für P2S sind ausschließlich für das [Resource Manager-Bereitstellungsmodell](../azure-resource-manager/management/deployment-models.md) verfügbar. Für das klassische Bereitstellungsmodell sind sie nicht verfügbar. Die Basic-Gateway-SKU unterstützt die Protokolle IKEv2 und OpenVPN nicht. Wenn Sie die Basic-SKU verwenden, müssen Sie das Gateway löschen und ein neues Gateway für ein virtuelles Netzwerk mit Produktions-SKU erstellen.
 >
 
 ## <a name="migrating-from-sstp-to-ikev2-or-openvpn"></a>Migrieren von SSTP zu IKEv2 oder OpenVPN

@@ -5,16 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 06/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 270a48181e8eceb7b5e851f9bc69bb5a41428573
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 20df340df025ceada8a4b254f317fe2f5d8eecbc
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111964462"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768895"
 ---
 # <a name="view-update-assessments-in-update-management"></a>Anzeigen von Updatebewertungen in der Updateverwaltung
 
-In der Updateverwaltung können Sie Informationen zu Ihren Computern, zu fehlenden Updates, zu Updatebereitstellungen und zu geplanten Updatebereitstellungen anzeigen. Sie können die Bewertungsinformationen für den ausgewählten virtuellen Azure-Computer, den ausgewählten Arc-fähigen Server oder das Automation-Konto übergreifend für alle konfigurierten Computer und Server anzeigen.
+In der Updateverwaltung können Sie Informationen zu Ihren Computern, zu fehlenden Updates, zu Updatebereitstellungen und zu geplanten Updatebereitstellungen anzeigen. Sie können die Bewertungsinformationen für die ausgewählte Azure-VM, den ausgewählten Arc-fähigen Server oder das Automation-Konto übergreifend für alle konfigurierten Computer und Server anzeigen.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
@@ -32,7 +32,7 @@ Navigieren Sie zum Anzeigen der Updatebewertung über einen Arc-fähigen Server 
 
 In der Updateverwaltung können Sie Informationen zu Ihrem Arc-fähigen Computer, zu fehlenden Updates, zu Updatebereitstellungen und zu geplanten Updatebereitstellungen anzeigen.
 
-[ ![Updateverwaltung: Ansicht für Arc-fähige Server](./media/view-update-assessments/update-assessment-arc-server.png)](./media/view-update-assessments/update-assessment-arc-server-expanded.png#lightbox)
+[ ![Updateverwaltung: Bewertungsansicht für Arc-fähige Server](./media/view-update-assessments/update-assessment-arc-server.png)](./media/view-update-assessments/update-assessment-arc-server-expanded.png#lightbox)
 
 Navigieren Sie zum übergreifenden Anzeigen der Updatebewertung für alle Computer, einschließlich der Arc-fähigen Server Ihres Automation-Kontos, zu **Automation-Konten**, und wählen Sie Ihr Automation-Konto mit aktivierter Updateverwaltung in der Liste aus. Wählen Sie in Ihrem Automation-Konto im Menü auf der linken Seite die Option **Updateverwaltung** aus.
 

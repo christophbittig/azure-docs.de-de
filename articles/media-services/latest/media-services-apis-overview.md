@@ -10,9 +10,11 @@ ms.service: media-services ms.workload: ms.topic: conceptual ms.date: 10/23/2020
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Als Entwickler können Sie die [REST-API](/rest/api/media/) von Media Services oder Clientbibliotheken verwenden, die es Ihnen ermöglichen, mit der REST-API auf einfache Weise zu interagieren, um benutzerdefinierte Medienworkflows zu erstellen, zu verwalten und zu pflegen. Die [Media Services v3](https://aka.ms/ams-v3-rest-sdk)-API basiert auf der OpenAPI-Spezifikation (ehemals Swagger).
+Als Entwickler können Sie Clientbibliotheken (.NET, Python, Node.js, Java, Go und Ruby) verwenden, die Ihnen ermöglichen, mit der REST-API auf einfache Weise zu interagieren, um benutzerdefinierte Medienworkflows zu erstellen, zu verwalten und zu pflegen. Die [Media Services v3](https://aka.ms/ams-v3-rest-sdk)-API basiert auf der OpenAPI-Spezifikation (ehemals Swagger).
 
 In diesem Artikel werden Regeln erläutert, die für Entitäten und APIs gelten, wenn Sie mit Media Services v3 entwickeln.
+
+[!INCLUDE [warning-rest-api-retry-policy.md](./includes/warning-rest-api-retry-policy.md)]
 
 ## <a name="accessing-the-azure-media-services-api"></a>Zugreifen auf die Azure Media Services-API
 
@@ -51,12 +53,11 @@ In der folgenden Abbildung stellen die Zahlen den Fluss der Anforderungen in chr
 ### <a name="samples"></a>Beispiele
 
 Sehen Sie sich die folgenden Beispiele an, die zeigen, wie Sie sich mit dem Azure AD-Dienstprinzipal verbinden können:
-
-* [Herstellen einer Verbindung mit REST](setup-postman-rest-how-to.md)  
-* [Herstellen einer Verbindung mit Java](configure-connect-java-howto.md)
 * [Herstellen einer Verbindung mit .NET](configure-connect-dotnet-howto.md)
 * [Herstellen einer Verbindung mit Node.js](configure-connect-nodejs-howto.md)
 * [Herstellen einer Verbindung mit Python](configure-connect-python-howto.md)
+* [Herstellen einer Verbindung mit Java](configure-connect-java-howto.md)
+* [Herstellen einer Verbindung mit REST](setup-postman-rest-how-to.md)  
 
 ## <a name="naming-conventions"></a>Benennungskonventionen
 
@@ -128,7 +129,7 @@ AMSE ist ein Open-Source-Projekt mit communitybasiertem Support. (Probleme könn
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Filterung, Sortierung und Paginierung von Media Services-Entitäten
 
-Informationen finden Sie unter [Filterung, Sortierung, Paginierung von Azure Media Services-Entitäten](filter-order-page-entitites-how-to.md).
+Informationen finden Sie unter [Filterung, Sortierung, Paginierung von Azure Media Services-Entitäten](filter-order-page-entities-how-to.md).
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Fragen stellen, Feedback geben, Updates abrufen
 

@@ -9,12 +9,12 @@ ms.workload: media
 ms.topic: conceptual
 ms.date: 05/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: c5d8d5d5dbbe8e79591c735e4a6fa77f47ff9b2f
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: a753115db7ae0f0ff3c9939ef4d90018b15b064f
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110793353"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122633746"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Widevine-Offlinestreaming für Android mit Media Services v3
 
@@ -154,6 +154,6 @@ Die oben erwähnte Open-Source-PWA-App wurde in Node.js erstellt. Wenn Sie eine 
 
 ## <a name="more-information"></a>Weitere Informationen
 
-Weitere Informationen finden Sie unter [Widevine in der Fragensammlung](questions-collection.md#widevine-streaming-for-android).
+Weitere Informationen finden Sie in den [häufig gestellten Fragen zu Content Protection](frequently-asked-questions.yml).
 
 Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google, Inc. unterliegt.

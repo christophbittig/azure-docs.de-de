@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/11/2020
 ms.subservice: ''
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 547889b63bcaa7e8a43d62c639ac40715949e89d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: cc30139e0fade80da1185c009d162c7e5fc9f9ff
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339249"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771067"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation"></a>Verwenden von Azure Private Link zum sicheren Verbinden von Netzwerken mit Azure Automation
 
@@ -62,7 +62,7 @@ Sie können Runbooks starten, indem Sie einen POST in der Webhook-URL ausführen
 
 ### <a name="hybrid-runbook-worker-scenario"></a>Hybrid Runbook Worker-Szenario
 
-Sie können die Benutzerfunktion Hybrid Runbook Worker von Azure Automation verwenden, um Runbooks direkt auf dem Azure- oder Nicht-Azure-Computer auszuführen, einschließlich der Server, die bei Azure Arc-fähigen Servern registriert sind. Von dem Computer oder Server aus, der die Rolle hostet, können Sie Runbooks direkt auf dem Computer und mit Ressourcen in der Umgebung ausführen, um diese lokalen Ressourcen zu verwalten.
+Sie können die Benutzerfunktion „Hybrid Runbook Worker“ von Azure Automation verwenden, um Runbooks direkt auf dem Azure- oder Nicht-Azure-Computer auszuführen. Dies schließt auch Server ein, die bei Azure Arc-fähigen Servern registriert sind. Von dem Computer oder Server aus, der die Rolle hostet, können Sie Runbooks direkt auf dem Computer und mit Ressourcen in der Umgebung ausführen, um diese lokalen Ressourcen zu verwalten.
 
 Der Hybrid Worker nutzt einen JRDS-Endpunkt zum Starten/Beenden von Runbooks, zum Herunterladen der Runbooks auf den Worker und zum Zurücksenden des Auftragsprotokollstreams an den Automation-Dienst. Nach dem Aktivieren des JRDS-Endpunkts sieht die URL wie folgt aus: `https://<automationaccountID>.jrds.<region>.privatelink.azure-automation.net`. Dadurch wird die Runbookausführung auf dem Hybrid Worker sichergestellt, der mit Azure Virtual Network verbunden ist, sodass Aufträge ausgeführt werden können, ohne dass eine ausgehende Verbindung mit dem Internet hergestellt werden muss.  
 

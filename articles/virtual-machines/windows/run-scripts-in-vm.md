@@ -8,15 +8,16 @@ author: bobbytreed
 ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: how-to
-manager: carmonm
-ms.openlocfilehash: 34abfb3195f8a3640b1b4797aa430b6250d15b68
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 7c45718726e9037021edc53346d20f26273a92b3
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112452366"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687488"
 ---
 # <a name="run-scripts-in-your-windows-vm"></a>Ausführen von Skripts in Ihrer Windows-VM
+
+**Gilt für:** VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen:heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Beim Automatisieren von Aufgaben oder Beheben von Problemen kann es erforderlich sein, Befehle in einer VM auszuführen. Der folgende Artikel enthält eine kurze Übersicht der Funktionen, die zum Ausführen von Skripts und Befehlen in Ihren VMs zur Verfügung stehen.
 

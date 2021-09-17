@@ -8,14 +8,16 @@ ms.topic: article
 ms.date: 04/16/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 8012702e9004361c8b19797bf0ca66553d307dce
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: c6396eab9cb7a2224d660e0e034f8592a879510d
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138191"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688458"
 ---
 # <a name="scaling-hpc-applications"></a>Skalieren von HPC-Anwendungen
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Um beim zentralen und horizontalen Skalieren von HPC-Anwendungen in Azure eine optimale Leistung zu erzielen, müssen für die betreffende Workload Experimente zur Leistungsoptimierung durchgeführt werden. In diesem Abschnitt sowie auf den spezifischen Seiten der jeweiligen VM-Serie finden Sie allgemeine Informationen zum Skalieren Ihrer Anwendungen.
 

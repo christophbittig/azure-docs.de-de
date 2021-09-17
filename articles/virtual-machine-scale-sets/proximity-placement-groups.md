@@ -9,14 +9,16 @@ ms.subservice: proximity-placement-groups
 ms.date: 07/01/2019
 ms.reviewer: zivr
 ms.custom: mimckitt, devx-track-azurepowershell
-ms.openlocfilehash: 767ce9c132c7ca5f322175c54875a6870490052e
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: b5533f14a239e3e2d01c597d57ab2b2726e930b9
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111556044"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693264"
 ---
 # <a name="creating-and-using-proximity-placement-groups-using-powershell"></a>Erstellen und Verwenden von Näherungsplatzierungsgruppen mit PowerShell
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Um den Abstand zwischen den VMs so stark wie möglich zu verringern und somit die geringstmögliche Latenz zu erzielen, sollten Sie Ihre Skalierungsgruppe in einer [Näherungsplatzierungsgruppe](../virtual-machines/co-location.md#proximity-placement-groups) bereitstellen.
 

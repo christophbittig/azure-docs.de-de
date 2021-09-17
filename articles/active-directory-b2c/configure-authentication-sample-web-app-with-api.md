@@ -1,56 +1,57 @@
 ---
 title: Konfigurieren der Authentifizierung in einer Beispielwebanwendung, die eine Web-API mithilfe von Azure Active Directory B2C aufruft
-description: Hier finden Sie Informationen zur Verwendung von Azure Active Directory B2C für die Anmeldung und Registrierung von Benutzern in einer ASP.NET-Webanwendung, die eine Web-API aufruft.
+description: In diesem Artikel wird die Verwendung von Azure Active Directory B2C für die Anmeldung und Registrierung von Benutzern in einer ASP.NET-Webanwendung besprochen, die eine Web-API aufruft.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/11/2021
+ms.date: 07/05/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: fab89113665b8b9534118fc443474349f4e9c3b6
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: fec8af9d4153736738cf658e7e77bb1e9506fedd
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112072994"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770178"
 ---
-# <a name="configure-authentication-in-a-sample-web-application-that-calls-a-web-api-using-azure-active-directory-b2c"></a>Konfigurieren der Authentifizierung in einer Beispielwebanwendung, die eine Web-API mithilfe von Azure Active Directory B2C aufruft
+# <a name="configure-authentication-in-a-sample-web-app-that-calls-a-web-api-by-using-azure-ad-b2c"></a>Konfigurieren der Authentifizierung in einer Beispiel-Web-App, die eine Web-API mithilfe von Azure AD B2C aufruft
 
 In diesem Artikel wird anhand einer ASP.NET-Beispielwebanwendung, die eine Web-API aufruft, veranschaulicht, wie Sie Ihren Webanwendungen die Authentifizierung von Azure Active Directory B2C (Azure AD B2C) hinzufügen.
 
 > [!IMPORTANT]
-> Die ASP.NET-Beispielwebanwendung, auf die in diesem Artikel verwiesen wird, wird verwendet, um eine Web-API mit einem Bearertoken aufzurufen. Informationen zu einer Webanwendung, die keine Web-API aufruft, finden Sie unter [Konfigurieren der Authentifizierung in einer Beispielwebanwendung mit Azure Active Directory B2C](configure-authentication-sample-web-app.md).  
+> Die beispielhafte ASP.NET-Web-App, auf die in diesem Artikel verwiesen wird, wird genutzt, um eine Web-API mit einem Bearertoken aufzurufen. Informationen zu einer Web-App, die keine Web-API aufruft, finden Sie unter [Konfigurieren der Authentifizierung in einem Beispiel einer ASP.NET-Webanwendung mithilfe von Azure AD B2C](configure-authentication-sample-web-app.md).  
 
 ## <a name="overview"></a>Übersicht
 
-OpenID Connect (OIDC) ist ein Authentifizierungsprotokoll auf Grundlage von OAuth 2.0, mit dem Benutzer sicher bei einer Anwendung angemeldet werden können. Für dieses Web-App-Beispiel wird [Microsoft Identity Web](https://www.nuget.org/packages/Microsoft.Identity.Web) verwendet. Microsoft Identity Web ist eine Reihe von ASP.NET Core-Bibliotheken, die das Hinzufügen von Authentifizierungs- und Autorisierungsunterstützung zu Web-Apps vereinfacht, die eine sichere Web-API aufrufen können. 
+OpenID Connect (OIDC) ist ein Authentifizierungsprotokoll, das auf OAuth 2.0 basiert. Sie können mit OIDC einen Benutzer sicher bei einer Anwendung anmelden. Für dieses Web-App-Beispiel wird [Microsoft Identity Web](https://www.nuget.org/packages/Microsoft.Identity.Web) verwendet. Microsoft Identity Web ist ein Satz von ASP.NET Core-Bibliotheken, die das Hinzufügen von Authentifizierungs- und Autorisierungsunterstützung zu Web-Apps vereinfachen, die eine sichere Web-API aufrufen können. 
 
 Der Anmeldeflow umfasst die folgenden Schritte:
 
-1. Der Benutzer navigiert zur Webanwendung und wählt **Anmelden** aus.
-1. Die App initiiert eine Authentifizierungsanforderung und leitet den Benutzer zu Azure AD B2C um.
-1. Der Benutzer [registriert sich oder meldet sich an](add-sign-up-and-sign-in-policy.md), [setzt das Kennwort zurück](add-password-reset-policy.md) oder meldet sich mit einem [Social Media-Konto](add-identity-provider.md) an.
-1. Nach erfolgreicher Anmeldung gibt Azure AD B2C einen Autorisierungscode an die App zurück.
-1. Die App führt die folgenden Aktionen aus:
-    1. Sie tauscht den Autorisierungscode gegen ein ID-Token, ein Zugriffstoken und ein Aktualisierungstoken.
-    1. Sie liest die ID-Tokenansprüche und behält ein Anwendungsautorisierungscookie bei.
-    1. Sie speichert das Aktualisierungstoken zur späteren Verwendung in einem In-Memory-Cache.
+1. Benutzer navigieren zur Web-App und wählen **Anmelden** aus.
+1. Die App löst eine Authentifizierungsanforderung aus und leitet Benutzer an Azure AD B2C um.
+1. Benutzer [registrieren oder melden sich an](add-sign-up-and-sign-in-policy.md) und [setzen das Kennwort](add-password-reset-policy.md) zurück. Alternativ können sie sich mit einem [Social Media-Konto](add-identity-provider.md) anmelden.
+1. Nach erfolgreicher Benutzeranmeldung gibt Azure AD B2C einen Autorisierungscode an die App zurück.
+1. Die App führt anschließend folgende Aufgaben aus:
+ 
+   a. Sie tauscht den Autorisierungscode gegen ein ID-Token, ein Zugriffstoken und ein Aktualisierungstoken ein.  
+   b. Sie liest die ID-Tokenansprüche und behält ein Anwendungsautorisierungscookie bei.  
+   c. Sie speichert das Aktualisierungstoken zur späteren Verwendung in einem In-Memory-Cache.
 
 ### <a name="app-registration-overview"></a>Übersicht über die App-Registrierung
 
 Damit sich Ihre App bei Azure AD B2C anmelden und eine Web-API aufrufen kann, registrieren Sie im Azure AD B2C-Verzeichnis zwei Anwendungen.  
 
-- Durch die **Webanwendungsregistrierung** kann sich Ihre App bei Azure AD B2C anmelden. Bei der App-Registrierung geben Sie den *Umleitungs-URI* an. Der Umleitungs-URI ist der Endpunkt, an den der Benutzer von Azure AD B2C umgeleitet wird, nachdem die Authentifizierung mit Azure AD B2C abgeschlossen ist. Beim App-Registrierungsprozess wird eine *Anwendungs-ID* generiert, die auch als *Client-ID* bezeichnet wird und Ihre App eindeutig identifiziert. Außerdem erstellen Sie einen *geheimen Clientschlüssel*, der von Ihrer Anwendung zum sicheren Abrufen der Token verwendet wird.
+- Durch die *Webanwendungsregistrierung* kann sich Ihre App bei Azure AD B2C anmelden. Während der Registrierung geben Sie den *Umleitungs-URI* an. Der Umleitungs-URI ist der Endpunkt, an den Benutzer von Azure AD B2C umgeleitet werden, nachdem die Authentifizierung mithilfe von Azure AD B2C abgeschlossen ist. Beim App-Registrierungsprozess wird eine *Anwendungs-ID* generiert, die auch als *Client-ID* bezeichnet wird und Ihre App eindeutig identifiziert. Außerdem erstellen Sie einen *geheimen Clientschlüssel*, der von Ihrer App zum sicheren Abrufen der Token verwendet wird.
 
-- Durch die **Web-API**-Registrierung kann Ihre App eine sichere Web-API aufrufen. Die Registrierung umfasst die Web-API-*Bereiche*. Die Bereiche bieten eine Möglichkeit, Berechtigungen für geschützte Ressourcen wie Ihre Web-API zu verwalten. Sie erteilen der Webanwendung Berechtigungen für die Bereiche der Web-API. Wenn ein Zugriffstoken angefordert wird, gibt Ihre App im Bereichsparameter der Anforderung die gewünschten Berechtigungen an.  
+- Durch die *Web-API*-Registrierung kann Ihre App eine sichere Web-API aufrufen. Die Registrierung umfasst die Web-API-*Bereiche*. Die Bereiche bieten eine Möglichkeit, Berechtigungen für geschützte Ressourcen wie Ihre Web-API zu verwalten. Sie erteilen der Webanwendung Berechtigungen für die Bereiche der Web-API. Wenn ein Zugriffstoken angefordert wird, gibt Ihre App im Bereichsparameter der Anforderung die gewünschten Berechtigungen an.  
 
-In den folgenden Diagrammen werden die App-Registrierung und die Anwendungsarchitektur veranschaulicht.
+App-Architektur und -Registrierungen sind im folgenden Diagramm dargestellt:
 
-![Web-App mit Web-API-Aufrufregistrierungen und Token](./media/configure-authentication-sample-web-app-with-api/web-app-with-api-architecture.png) 
+![Diagramm einer Web-App mit Web-API-Aufrufregistrierungen und Token.](./media/configure-authentication-sample-web-app-with-api/web-app-with-api-architecture.png) 
 
 ### <a name="call-to-a-web-api"></a>Aufrufen einer Web-API
 
@@ -85,63 +86,64 @@ Ein Computer, auf dem eine der folgenden Optionen ausgeführt wird:
 
 In diesem Schritt erstellen Sie die Web-App und die Web-API-Anwendungsregistrierung und geben die Bereiche Ihrer Web-API an.
 
-### <a name="21-register-the-web-api-app"></a>2.1 Registrieren der Web-API-App
+### <a name="step-21-register-the-web-api-app"></a>Schritt 2.1: Registrieren der Web-API-App
 
 [!INCLUDE [active-directory-b2c-app-integration-register-api](../../includes/active-directory-b2c-app-integration-register-api.md)]
 
-### <a name="22-configure-web-api-app-scopes"></a>2.2 Konfigurieren von Web-API-App-Bereichen
+### <a name="step-22-configure-web-api-app-scopes"></a>Schritt 2.2: Konfigurieren von Bereichen für die Web-API-App
 
 [!INCLUDE [active-directory-b2c-app-integration-api-scopes](../../includes/active-directory-b2c-app-integration-api-scopes.md)]
 
 
-### <a name="23-register-the-web-app"></a>2.3 Registrieren der Web-App
+### <a name="step-23-register-the-web-app"></a>Schritt 2.3: Registrieren der Web-App
 
-Führen Sie die folgenden Schritte aus, um die Web-App-Registrierung zu erstellen:
+Gehen Sie zum Erstellen der Web-App-Registrierung folgendermaßen vor:
 
 1. Wählen Sie **App-Registrierungen** aus, und wählen Sie dann **Registrierung einer neuen Anwendung** aus.
-1. Geben Sie unter **Name** einen Namen für die Anwendung ein. Beispiel: *webapp1*.
+1. Geben Sie unter **Name** einen Namen für die Anwendung ein, (z. B. *webapp1*).
 1. Wählen Sie unter **Unterstützte Kontotypen** die Option **Konten in einem beliebigen Identitätsanbieter oder Organisationsverzeichnis (zum Authentifizieren von Benutzern mit Benutzerflows)** aus. 
-1. Wählen Sie unter **Umleitungs-URI** die Option **Web** aus, und geben Sie `https://localhost:5000/signin-oidc` in das URL-Textfeld ein.
-1. Aktivieren Sie unter **Berechtigungen** das Kontrollkästchen **Administratoreinwilligung für openid- und offline_access-Berechtigungen erteilen**.
+1. Wählen Sie unter **Umleitungs-URI** die Option **Web** aus, und geben Sie `https://localhost:5000/signin-oidc` in das URL-Feld ein.
+1. Aktivieren Sie unter **Berechtigungen** das Kontrollkästchen **Administratoreinwilligung für OpenID- und Offlinezugriffsberechtigungen erteilen**.
 1. Wählen Sie **Registrieren**.
 1. Wählen Sie nach Abschluss der App-Registrierung **Übersicht** aus.
-1. Notieren Sie sich die **Anwendungs-ID (Client)** , die Sie später beim Konfigurieren der Webanwendung verwenden.
+1. Notieren Sie sich die **Anwendungs- bzw. Client-ID**, die Sie später beim Konfigurieren der Webanwendung verwenden.
 
-    ![Abrufen Ihrer Webanwendungs-ID](./media/configure-authentication-sample-web-app-with-api/get-azure-ad-b2c-app-id.png)  
+    ![Screenshot: Seite „Übersicht“ der Web-App zum Aufzeichnen Ihrer Webanwendungs-ID](./media/configure-authentication-sample-web-app-with-api/get-azure-ad-b2c-app-id.png)  
 
-### <a name="24-create-a-web-app-client-secret"></a>2.4 Erstellen eines geheimen Clientschlüssels für die Web-App
+### <a name="step-24-create-a-web-app-client-secret"></a>Schritt 2.4: Erstellen eines geheimen Clientschlüssels für die Web-App
 
 [!INCLUDE [active-directory-b2c-app-integration-client-secret](../../includes/active-directory-b2c-app-integration-client-secret.md)]
 
 
-### <a name="25-grant-the-web-app-permissions-for-the-web-api"></a>2.5 Erteilen von Berechtigungen für die Web-App zur Verwendung der Web-API
+### <a name="step-25-grant-the-web-app-permissions-for-the-web-api"></a>Schritt 2.5: Erteilen von Berechtigungen für die Web-App zur Verwendung der Web-API
 
 [!INCLUDE [active-directory-b2c-app-integration-grant-permissions](../../includes/active-directory-b2c-app-integration-grant-permissions.md)]
 
 ## <a name="step-3-get-the-web-app-sample"></a>Schritt 3: Herunterladen des Web-App-Beispiels
 
-[Laden Sie die ZIP-Datei herunter](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/refs/heads/master.zip), oder klonen Sie die Beispielwebanwendung von GitHub. 
+[Laden Sie die ZIP-Datei herunter](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/refs/heads/master.zip), oder führen Sie den folgenden Bash-Befehl aus, um die Beispielwebanwendung aus GitHub zu klonen. 
 
 ```bash
 git clone https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2
 ```
 
-Extrahieren Sie die Beispieldatei in einem Ordner, dessen Pfad insgesamt maximal 259 Zeichen lang ist.
+Extrahieren Sie die Beispieldatei in einen Ordner, bei dem der Pfad eine Gesamtlänge von maximal 260 Zeichen aufweist.
 
 ## <a name="step-4-configure-the-sample-web-api"></a>Schritt 4: Konfigurieren der Beispiel-Web-API
 
-Öffnen Sie im Beispielordner unter dem Ordner `4-WebApp-your-API/4-2-B2C/TodoListService` das Projekt **TodoListService.csproj** mit Visual Studio oder Visual Studio Code. 
+Öffnen Sie im Beispielordner unter dem Ordner *4-WebApp-your-API/4-2-B2C/TodoListService* das Projekt **TodoListService.csproj** mit Visual Studio oder Visual Studio Code. 
 
-Öffnen Sie im Projektstammordner die Datei `appsettings.json`. Diese Datei enthält Informationen zu Ihrem Azure AD B2C-Identitätsanbieter. Die Web-API-App verwendet diese Informationen, um das Zugriffstoken zu überprüfen, das die Web-App als Bearertoken übergibt. Aktualisieren Sie die folgenden Eigenschaften der App-Einstellungen:
+Öffnen Sie im Projektstammordner die Datei *appsettings.json*. Diese Datei enthält Informationen zu Ihrem Azure AD B2C-Identitätsanbieter. Die Web-API-App überprüft anhand dieser Informationen das Zugriffstoken, das die Web-App als Bearertoken übergibt. Aktualisieren Sie die folgenden Eigenschaften der App-Einstellungen:
 
-|`Section`  |Key  |Wert  |
-|---------|---------|---------|
+| `Section` | Key | Wert |
+| --- | --- | --- |
 |AzureAdB2C|Instanz| Der erste Teil Ihres Azure AD B2C-[Mandantennamens](tenant-management.md#get-your-tenant-name). Beispielsweise `https://contoso.b2clogin.com`.|
 |AzureAdB2C|Domain| Der vollständige [Mandantenname](tenant-management.md#get-your-tenant-name) Ihres Azure AD B2C-Mandanten. Beispielsweise `contoso.onmicrosoft.com`.|
-|AzureAdB2C|ClientId| Die Web-API-Anwendungs-ID aus [Schritt 2.1](#21-register-the-web-api-app).|
+|AzureAdB2C|ClientId| Die Web-API-Anwendungs-ID aus [Schritt 2.1](#step-21-register-the-web-api-app).|
 |AzureAdB2C|SignUpSignInPolicyId|Die Benutzerflows oder die benutzerdefinierte Richtlinie, die Sie in [Schritt 1](#step-1-configure-your-user-flow) erstellt haben.|
+| | | |
 
-Die endgültige Konfigurationsdatei sollte wie die folgende JSON aussehen:
+Die endgültige Konfigurationsdatei sollte wie das folgende JSON-Beispiel aussehen:
 
 ```json
 {
@@ -152,25 +154,25 @@ Die endgültige Konfigurationsdatei sollte wie die folgende JSON aussehen:
     "SignedOutCallbackPath": "/signout/<your-sign-up-in-policy>",
     "SignUpSignInPolicyId": "<your-sign-up-in-policy>"
   },
-  // More setting here
+  // More settings here
 }
 ```
 
-### <a name="41-set-the-permission-policy"></a>4.1 Festlegen der Berechtigungsrichtlinie
+### <a name="step-41-set-the-permission-policy"></a>Schritt 4.1: Festlegen der Berechtigungsrichtlinie
 
-Die Web-API überprüft, ob sich der Benutzer mit dem Bearertoken authentifiziert hat, und das Bearertoken verfügt über die konfigurierten akzeptierten Bereiche. Wenn das Bearertoken über keinen dieser akzeptierten Bereiche verfügt, gibt die Web-API den HTTP-Statuscode 403 (Verboten) zurück und schreibt in den Antworttext eine Meldung, die angibt, welche Bereiche im Token erwartet werden. 
+Die Web-API überprüft, ob sich der Benutzer mit dem Bearertoken authentifiziert hat, und das Bearertoken verfügt über die konfigurierten akzeptierten Bereiche. Wenn das Bearertoken über keinen dieser akzeptierten Bereiche verfügt, gibt die Web-API den HTTP-Statuscode 403 (Verboten) zurück und schreibt eine Meldung in den Antworttext, welche Bereiche im Token erwartet werden. 
 
-Öffnen Sie zum Konfigurieren der akzeptierten Bereiche die `Controller/TodoListController.cs`-Klasse, und legen Sie den Bereichsnamen fest. Der Bereichsname ohne den vollständigen URI:
+Öffnen Sie zum Konfigurieren der akzeptierten Bereiche die `Controller/TodoListController.cs`-Klasse, und legen Sie den Bereichsnamen ohne vollständigen URI fest.
 
 ```csharp
 [RequiredScope("tasks.read")]
 ```
 
-### <a name="42-run-the-sample-web-api-app"></a>4.2 Ausführen der Beispiel-Web-API-App
+### <a name="step-42-run-the-sample-web-api-app"></a>Schritt 4.2: Ausführen der Beispiel-Web-API-App
 
-Führen Sie zum Ausführen der Web-API die folgenden Schritte aus, um das Aufrufen des Web-API-Beispiels durch eine Web-App zuzulassen:
+Damit die Web-App das Web-API-Beispiel aufrufen kann, führen Sie die Web-API wie folgt aus:
 
-1. Stellen Sie auf Anforderung Abhängigkeiten wieder her.
+1. Wenn Sie dazu aufgefordert werden, stellen Sie Abhängigkeiten wieder her.
 1. Erstellen Sie das Projekt, und führen Sie es aus.
 1. Nachdem das Projekt erstellt wurde, startet Visual Studio oder Visual Studio Code die Web-API in den Browsern mit der folgenden Adresse: https://localhost:44332.
 
@@ -178,21 +180,22 @@ Führen Sie zum Ausführen der Web-API die folgenden Schritte aus, um das Aufruf
 
 Öffnen Sie im Beispielordner unter dem Ordner `4-WebApp-your-API/4-2-B2C/Client` das Projekt **TodoListClient.csproj** mit Visual Studio oder Visual Studio Code. 
 
-Öffnen Sie im Projektstammordner die Datei `appsettings.json`. Diese Datei enthält Informationen zu Ihrem Azure AD B2C-Identitätsanbieter. Die Web-App verwendet diese Informationen, um eine Vertrauensstellung mit Azure AD B2C herzustellen, den Benutzer anzumelden und abzumelden sowie Token zu erhalten und zu überprüfen. Aktualisieren Sie die folgenden Eigenschaften der App-Einstellungen:
+Öffnen Sie im Projektstammordner die Datei `appsettings.json`. Diese Datei enthält Informationen zu Ihrem Azure AD B2C-Identitätsanbieter. Die Web-App verwendet diese Informationen, um eine Vertrauensstellung mit Azure AD B2C einzurichten, den Benutzer anzumelden und abzumelden sowie Token abzurufen und zu überprüfen. Aktualisieren Sie die folgenden Eigenschaften der App-Einstellungen:
 
-|`Section`  |Key  |Wert  |
-|---------|---------|---------|
-|AzureAdB2C|Instanz| Der erste Teil Ihres Azure AD B2C-[Mandantennamens](tenant-management.md#get-your-tenant-name). Beispielsweise `https://contoso.b2clogin.com`.|
-|AzureAdB2C|Domain| Der vollständige [Mandantenname](tenant-management.md#get-your-tenant-name) Ihres Azure AD B2C-Mandanten. Beispielsweise `contoso.onmicrosoft.com`.|
-|AzureAdB2C|ClientId| Die Webanwendungs-ID aus [Schritt 2.1](#21-register-the-web-api-app).|
-|AzureAdB2C | ClientSecret | Das Geheimnis der Webanwendung aus [Schritt 2.4](#24-create-a-web-app-client-secret). | 
+| `Section` | Key | Wert |
+| --- | --- | --- |
+| AzureAdB2C | Instanz | Der erste Teil Ihres Azure AD B2C-[Mandantennamens](tenant-management.md#get-your-tenant-name) (z. B. `https://contoso.b2clogin.com`).|
+|AzureAdB2C|Domain| Der vollständige Name Ihres Azure AD B2C-[Mandanten](tenant-management.md#get-your-tenant-name) (z. B. `contoso.onmicrosoft.com`).|
+|AzureAdB2C|ClientId| Die Webanwendungs-ID aus [Schritt 2.3](#step-23-register-the-web-app).|
+|AzureAdB2C | ClientSecret | Das Geheimnis der Webanwendung aus [Schritt 2.4](#step-24-create-a-web-app-client-secret). | 
 |AzureAdB2C|SignUpSignInPolicyId|Die Benutzerflows oder die benutzerdefinierte Richtlinie, die Sie in [Schritt 1](#step-1-configure-your-user-flow) erstellt haben.|
-| Aufgabenliste | TodoListScope | Die Bereiche aus [Schritt 2.5](#25-grant-the-web-app-permissions-for-the-web-api).|
-| Aufgabenliste | TodoListBaseAddress | Der Basis-URI Ihrer Web-API, z. B. `https://localhost:44332`|
+| Aufgabenliste | TodoListScope | Die Web-API-Bereiche, die Sie in [Schritt 2.5](#step-25-grant-the-web-app-permissions-for-the-web-api) erstellt haben.|
+| Aufgabenliste | TodoListBaseAddress | Der Basis-URI Ihrer Web-API (z. B. `https://localhost:44332`). |
+| | | |
 
 Die endgültige Konfigurationsdatei sollte wie die folgende JSON aussehen:
 
-```JSon
+```json
 {
   "AzureAdB2C": {
     "Instance": "https://contoso.b2clogin.com",
@@ -213,12 +216,12 @@ Die endgültige Konfigurationsdatei sollte wie die folgende JSON aussehen:
 ## <a name="step-6-run-the-sample-web-app"></a>Schritt 6: Ausführen der Beispiel-Web-App
 
 1. Erstellen Sie das Projekt, und führen Sie es aus.
-1. Navigieren Sie zu https://localhost:5000. 
+1. Navigieren Sie zu `https://localhost:5000`. 
 1. Schließen Sie den Registrierungs- oder Anmeldevorgang ab.
 
 Nach erfolgreicher Authentifizierung wird Ihr Anzeigename in der Navigationsleiste angezeigt. Wählen Sie **TodoList** aus, um die Ansprüche anzuzeigen, die das Azure AD B2C-Token an Ihre App zurückgibt.
 
-![Ansprüche des Web-App-Token](./media/configure-authentication-sample-web-app-with-api/web-api-to-do-list.png)
+![Screenshot: Tokenansprüche der Web-App](./media/configure-authentication-sample-web-app-with-api/web-api-to-do-list.png)
 
 
 ## <a name="deploy-your-application"></a>Bereitstellen der Anwendung
@@ -232,12 +235,13 @@ Sie können Umleitungs-URIs in Ihren registrierten Anwendungen jederzeit hinzuf�
 
 ### <a name="token-cache-for-a-web-app"></a>Tokencache für eine Web-App
 
-Das Web-App-Beispiel verwendet In-Memory-Tokencacheserialisierung. Diese Implementierung eignet sich hervorragend für Beispiele. Sie eignet sich auch für Produktionsanwendungen, falls es Ihnen nichts ausmacht, wenn der Tokencache beim Neustart der Web-App verloren geht. 
+Das Web-App-Beispiel verwendet In-Memory-Tokencacheserialisierung. Diese Implementierung eignet sich hervorragend für Beispiele. Sie eignet sich auch für Produktionsanwendungen, sofern es keine Rolle spielt, dass der Tokencache beim Neustart der Web-App verloren geht. 
 
-Für Produktionsumgebungen wird empfohlen, einen verteilten Speichercache zu verwenden, z. B. Redis Cache, NCache oder einen SQL Server-Cache. Ausführliche Informationen zu den Implementierungen des verteilten Speichercaches finden Sie unter [Tokencache für eine Web-App](../active-directory/develop/msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application).
+Für Produktionsumgebungen wird empfohlen, einen verteilten Speichercache zu verwenden, z. B. Redis Cache, NCache oder einen SQL Server-Cache. Ausführliche Informationen zu den Implementierungen des verteilten Speichercaches finden Sie unter [Serialisierung des Tokencaches](../active-directory/develop/msal-net-token-cache-serialization.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Weitere Informationen zum Codebeispiel](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-5-B2C#about-the-code)
-* [Aktivieren der Authentifizierung in Ihrer eigenen Webanwendung mit Azure Active Directory B2C](enable-authentication-web-application.md)
+* Weitere Informationen zum [Codebeispiel](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-5-B2C#about-the-code)
+* Weitere Informationen zum [Aktivieren der Authentifizierung in Ihrer eigenen Webanwendung mit Azure Active Directory B2C](enable-authentication-web-application.md)
+* Weitere Informationen zum [Aktivieren der Authentifizierung in Ihrer eigenen Web-API](enable-authentication-web-api.md)

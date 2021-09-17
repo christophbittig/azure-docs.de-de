@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: mathoma, bonova, vanto
-ms.date: 07/08/2021
-ms.openlocfilehash: fd2616b6de5c1c3955139ec7869c1903d68729f6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/20/2021
+ms.openlocfilehash: 3acd77d986d22af08ac7042da751a6aa8c7fc24b
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349655"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122607579"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Herstellen einer Verbindung zwischen einer Anwendung und SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -28,9 +28,13 @@ Beispielsweise können Sie eine Anwendung unter Verwendung von Azure App Service
 
 Unabhängig von Ihrer Wahl können Sie sie mit Azure SQL Managed Instance verbinden. 
 
+In diesem Artikel wird beschrieben, wie Sie eine Anwendung in verschiedenen Anwendungsszenarien aus dem virtuellen Netzwerk heraus mit Azure SQL Managed Instance verbinden können. 
+
+> [!IMPORTANT]
+> Sie können außerdem den Datenzugriff auf Ihre verwaltete Instanz von außerhalb eines virtuellen Netzwerks aktivieren. Über mehrinstanzenfähige Azure-Dienste wie Power BI, Azure App Service oder ein lokales Netzwerk, das nicht mit einem VPN verbunden ist, können Sie mithilfe des öffentlichen Endpunkts für eine verwaltete Instanz auf Ihre verwaltete Instanz zugreifen. Sie müssen den öffentlichen Endpunkt für die verwaltete Instanz aktivieren und Datenverkehr für öffentliche Endpunkte in der Netzwerksicherheitsgruppe zulassen, die dem Subnetz der verwalteten Instanz zugeordnet ist. Weitere Informationen finden Sie unter [Konfigurieren eines öffentlichen Endpunkts in Azure SQL Managed Instance](./public-endpoint-configure.md). 
+
 ![Hochverfügbarkeit](./media/connect-application-instance/application-deployment-topologies.png)
 
-In diesem Artikel wird beschrieben, wie eine Anwendung in verschiedenen Anwendungsszenarien mit Azure SQL Managed Instance verbunden werden kann. 
 
 ## <a name="connect-inside-the-same-vnet"></a>Herstellen einer Verbindung im selben VNET
 
@@ -52,7 +56,7 @@ Dabei ist Peering vorzuziehen, da dabei das Microsoft-Backbonenetzwerk verwendet
 
 ## <a name="connect-from-on-premises"></a>Herstellen einer Verbindung mit einer lokalen Anwendung 
 
-Sie können auch Ihre lokale Anwendung mit SQL Managed Instance verbinden. Auf SQL Managed Instance kann nur über eine private IP-Adresse zugegriffen werden. Für den Zugriff darauf in der lokalen Umgebung müssen Sie eine Site-zu-Site-Verbindung zwischen der Anwendung und dem virtuellen Netzwerk von SQL Managed Instance herstellen.
+Sie können ihre lokale Anwendung auch über ein virtuelles Netzwerk (private IP-Adresse) mit SQL Managed Instance verbinden. Für den Zugriff darauf in der lokalen Umgebung müssen Sie eine Site-zu-Site-Verbindung zwischen der Anwendung und dem virtuellen Netzwerk von SQL Managed Instance herstellen. Informationen zum Datenzugriff auf Ihre verwaltete Instanz von außerhalb eines virtuellen Netzwerks finden Sie unter [Konfigurieren eines öffentlichen Endpunkts in Azure SQL Managed Instance](./public-endpoint-configure.md).
 
 Es gibt zwei Optionen, um lokal eine Verbindung mit einem virtuellen Azure-Netzwerk herzustellen:
 
@@ -63,7 +67,9 @@ Wenn Sie lokal eine Verbindung mit Azure hergestellt haben und keine Verbindung 
 
 ## <a name="connect-the-developer-box"></a>Herstellen einer Verbindung mit dem Computer des Entwicklers
 
-Es ist auch möglich, den Computer des Entwicklers mit SQL Managed Instance zu verbinden. Auf SQL Managed Instance kann nur über eine private IP-Adresse zugegriffen werden. Für den Zugriff darauf auf dem Computer des Entwicklers müssen Sie daher zunächst eine Verbindung zwischen diesem Computer und dem virtuellen Netzwerk von SQL Managed Instance herstellen. Konfigurieren Sie hierfür eine Point-to-Site-Verbindung mit einem virtuellen Netzwerk unter Verwendung der nativen Azure-Zertifikatauthentifizierung. Weitere Informationen finden Sie unter [Konfigurieren einer Point-to-Site-Verbindung zwischen einem lokalen Computer und Azure SQL Managed Instance](point-to-site-p2s-configure.md).
+Es ist auch möglich, den Computer des Entwicklers mit SQL Managed Instance zu verbinden. Um vom Computer des Entwicklers aus über ein virtuellen Netzwerk darauf zugreifen zu können, müssen Sie zunächst eine Verbindung zwischen diesem Computer und dem virtuellen Netzwerk von SQL Managed Instance herstellen. Konfigurieren Sie hierfür eine Point-to-Site-Verbindung mit einem virtuellen Netzwerk unter Verwendung der nativen Azure-Zertifikatauthentifizierung. Weitere Informationen finden Sie unter [Konfigurieren einer Point-to-Site-Verbindung von einem lokalen Computer zu einer Azure SQL Managed Instance-Instanz](point-to-site-p2s-configure.md).
+
+Informationen zum Datenzugriff auf Ihre verwaltete Instanz von außerhalb eines virtuellen Netzwerks finden Sie unter [Konfigurieren eines öffentlichen Endpunkts in Azure SQL Managed Instance](./public-endpoint-configure.md).
 
 ## <a name="connect-with-vnet-peering"></a>Herstellen einer Verbindung mit VNET-Peering
 
@@ -78,9 +84,9 @@ Nachdem Sie die grundlegende Infrastruktur eingerichtet haben, müssen Sie einig
 
 ## <a name="connect-azure-app-service"></a>Herstellen einer Verbindung mit Azure App Service 
 
-Sie können auch eine Verbindung mit einer von Azure App Service gehosteten Anwendung herstellen. Auf SQL Managed Instance kann nur über eine private IP-Adresse zugegriffen werden. Für den Zugriff darauf über Azure App Service müssen Sie daher zunächst eine Verbindung zwischen der Anwendung und dem virtuellen Netzwerk von SQL Managed Instance herstellen. Weitere Informationen finden Sie unter [Integrieren Ihrer App in ein virtuelles Azure-Netzwerk](../../app-service/web-sites-integrate-with-vnet.md).  
+Sie können auch eine Verbindung mit einer von Azure App Service gehosteten Anwendung herstellen. Um von Azure App Service aus über ein virtuellen Netzwerk darauf zugreifen zu können, müssen Sie zunächst eine Verbindung zwischen der Anwendung und dem virtuellen Netzwerk von SQL Managed Instance herstellen. Weitere Informationen finden Sie unter [Integrieren Ihrer App in ein virtuelles Azure-Netzwerk](../../app-service/web-sites-integrate-with-vnet.md). Informationen zum Datenzugriff auf Ihre verwaltete Instanz von außerhalb eines virtuellen Netzwerks finden Sie unter [Konfigurieren eines öffentlichen Endpunkts in Azure SQL Managed Instance](./public-endpoint-configure.md). 
 
-Informationen zur Problembehandlung finden Sie unter [Problembehandlung bei virtuellen Netzwerken und Anwendungen](../../app-service/web-sites-integrate-with-vnet.md#troubleshooting). Wenn keine Verbindung hergestellt werden kann, versuchen Sie, [die Netzwerkkonfiguration zu synchronisieren](azure-app-sync-network-configuration.md).
+Informationen zur Problembehandlung des Azure App Service-Zugriffs über ein virtuelles Netzwerk finden Sie unter [Problembehandlung für virtuelle Netzwerke und Anwendungen](../../app-service/web-sites-integrate-with-vnet.md#troubleshooting). Wenn keine Verbindung hergestellt werden kann, versuchen Sie, [die Netzwerkkonfiguration zu synchronisieren](azure-app-sync-network-configuration.md).
 
 Ein spezieller Fall beim Herstellen einer Verbindung zwischen Azure App Service mit SQL Managed Instance besteht, wenn Sie Azure App Service in ein Netzwerk integriert haben, das mittels Peering mit dem virtuellen Netzwerk von SQL Managed Instance verbunden ist. In diesem Fall muss die folgende Konfiguration eingerichtet werden:
 

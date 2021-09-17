@@ -5,20 +5,20 @@ services: virtual-machines
 ms.service: virtual-machines
 ms.subservice: proximity-placement-groups
 ms.topic: how-to
-ms.workload: infrastructure-services
 ms.date: 3/8/2021
 ms.author: cynthn
 ms.reviewer: zivr
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 647f9bd509633000e5154e77aeebfea56947b45d
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: cad5029c88c3444ab42a53af950d78a4167ea878
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110668863"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697168"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-azure-powershell"></a>Bereitstellen von VMs für Näherungsplatzierungsgruppen mithilfe von Azure PowerShell
 
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs 
 
 Um den Abstand zwischen den VMs so stark wie möglich zu verringern und somit die geringstmögliche Latenz zu erzielen, sollten Sie sie in einer [Näherungsplatzierungsgruppe](../co-location.md#proximity-placement-groups) bereitstellen.
 

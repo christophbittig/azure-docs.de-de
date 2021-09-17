@@ -17,12 +17,12 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: a0e4bb393e522d54bb259e1a85c645fe7f3f5e48
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: dcbc2f726d4c7c935462743578f863efc8762f79
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109786355"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749201"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Was ist die Azure AD-Berechtigungsverwaltung?
 
@@ -159,7 +159,7 @@ Für die folgenden Aufgaben sind **keine** Azure AD Premium P2-Lizenzen erforde
 
 - Für Benutzer mit der Rolle „globaler Administrator“, die Anfangskataloge einrichten, auf Pakete und Richtlinien zugreifen und administrative Aufgaben an andere Benutzer delegieren, sind keine Lizenzen erforderlich.
 - Für Benutzer, an die administrative Aufgaben (z. B. Katalogersteller, Katalogbesitzer und Zugriffspaketmanager) delegiert wurden, sind keine Lizenzen erforderlich.
-- Für Gäste, die Zugriffspakete anfordern **können**, aber **kein** Zugriffspaket anfordern, sind keine Lizenzen erforderlich.
+- Für Gäste, die **eine Berechtigung zum Anfordern von Zugriffspaketen besitzen**, aber **kein** Zugriffspaket anfordern, sind keine Lizenzen erforderlich.
 
 Weitere Informationen zu Lizenzen finden Sie unter [Zuweisen oder Entfernen von Lizenzen im Azure Active Directory-Portal](../fundamentals/license-users-groups.md).
 

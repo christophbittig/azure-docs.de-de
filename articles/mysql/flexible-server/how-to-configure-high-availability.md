@@ -7,18 +7,20 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
 ms.custom: references_regions
-ms.openlocfilehash: e217dcaeafd553803f5c9699ab6d7779ed755b67
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 9cd237a6441c8da748c9c5b999a608cfcecb0d92
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107818282"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122639695"
 ---
 # <a name="manage-zone-redundant-high-availability-in-azure-database-for-mysql-flexible-server-preview"></a>Verwalten von zonenredundanter Hochverfügbarkeit für Azure Database for MySQL Flexible Server (Vorschau)
 
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+
 In diesem Artikel wird beschrieben, wie Sie die zonenredundante Hochverfügbarkeit in Azure Database for PostgreSQL – Flexible Server im Azure-Portal aktivieren oder deaktivieren.
 
-Die Hochverfügbarkeitsfunktion stellt ein physisch getrenntes primäres und Standbyreplikat in unterschiedlichen Zonen bereit. Weitere Detailinformationen finden Sie unter [Dokumentation zu Hochverfügbarkeitskonzepten](./concepts/../concepts-high-availability.md). 
+Die Hochverfügbarkeitsfunktion stellt ein physisch getrenntes primäres und Standbyreplikat in unterschiedlichen Zonen bereit. Weitere Detailinformationen finden Sie unter [Dokumentation zu Hochverfügbarkeitskonzepten](./concepts/../concepts-high-availability.md).
 
 > [!IMPORTANT]
 > Sie können die zonenredundante Hochverfügbarkeit nur während der Erstellung flexibler Server aktivieren.
@@ -32,50 +34,49 @@ Auf dieser Seite finden Sie Richtlinien zum Aktivieren oder Deaktivieren der Hoc
 
 In diesem Abschnitt finden Sie spezifische Informationen für auf Hochverfügbarkeit bezogene Felder. Sie können diese Schritte ausführen, um Hochverfügbarkeit während der Erstellung Ihres flexiblen Servers bereitzustellen.
 
-1.  Wählen Sie im [Azure-Portal](https://portal.azure.com/) die Option „Flexibler Server“ aus, und klicken Sie auf **Erstellen**.  Ausführliche Informationen zum Ausfüllen von Details wie **Abonnement**, **Ressourcengruppe**, **Servername**, **Region** und anderen Feldern finden Sie in der Dokumentation zur Vorgehensweise beim Erstellen des Servers.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) die Option „Flexibler Server“ aus, und klicken Sie auf **Erstellen**.  Ausführliche Informationen zum Ausfüllen von Details wie **Abonnement**, **Ressourcengruppe**, **Servername**, **Region** und anderen Feldern finden Sie in der Dokumentation zur Vorgehensweise beim Erstellen des Servers.
 
-2.  Aktivieren Sie das Kontrollkästchen für **Zonenredundante Hochverfügbarkeit** in der Option „Verfügbarkeit“.
+2. Wählen Sie das Kontrollkästchen für **Zonenredundante Hochverfügbarkeit** in der Option „Verfügbarkeit“ aus.
 
-3.  Wenn Sie die Standardwerte für „Compute“ und „Speicher“ ändern möchten, klicken Sie auf  **Server konfigurieren**.
+3. Wenn Sie die Standardwerte für „Compute“ und „Speicher“ ändern möchten, wählen Sie **Server konfigurieren** aus.
 
-4.  Wenn die Option „Hochverfügbarkeit“ aktiviert ist, steht die Ebene „Burstfähig“ nicht zur Auswahl. Sie können die Computeebene **Allgemeiner Zweck** oder **Arbeitsspeicheroptimiert** auswählen.
+4. Wenn die Option „Hochverfügbarkeit“ aktiviert ist, steht die Ebene „Burstfähig“ nicht zur Auswahl. Sie können die Computeebene **Allgemeiner Zweck** oder **Arbeitsspeicheroptimiert** auswählen.
 
     > [!IMPORTANT]
     > Wir unterstützen zonenredundante Hochverfügbarkeit nur für die Tarife ***Universell** _ und _ *_Arbeitsspeicheroptimiert_**.
 
-5.  Wählen Sie die **Computegröße** für Ihre Option aus der Dropdownliste aus.
+5. Wählen Sie die **Computegröße** für Ihre Option aus der Dropdownliste aus.
 
-6.  Wählen Sie die **Speichergröße** in GiB mithilfe der Schiebereglerleiste aus, und wählen Sie den **Aufbewahrungszeitraum für Sicherungen** zwischen 7 Tagen und 35 Tagen aus.   
+6. Wählen Sie die **Speichergröße** in GiB mithilfe der Schiebereglerleiste aus, und wählen Sie den **Aufbewahrungszeitraum für Sicherungen** zwischen 7 Tagen und 35 Tagen aus.   
 
 ## <a name="disable-high-availability"></a>Deaktivieren der Hochverfügbarkeit
 
 Führen Sie diese Schritte aus, um die Hochverfügbarkeit für Ihren flexiblen Server zu deaktivieren, der bereits mit Zonenredundanz konfiguriert ist.
 
-1.  Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihren vorhandenen flexiblen Azure Database for MySQL-Server aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihren vorhandenen flexiblen Azure Database for MySQL-Server aus.
 
-2.  Klicken Sie auf der Seite „Flexibler Server“ im vorderen Bereich auf **Hochverfügbarkeit**, um die Seite „Hochverfügbarkeit“ zu öffnen.
+2. Wählen Sie auf der Seite „Flexibler Server“ im vorderen Bereich **Hochverfügbarkeit** aus, um die Seite „Hochverfügbarkeit“ zu öffnen.
 
-3.  Klicken Sie auf das Kontrollkästchen **Zonenredundante Hochverfügbarkeit**, um die Option zu deaktivieren, und klicken Sie auf **Speichern**, um die Änderung zu speichern.
+3. Wählen Sie das Kontrollkästchen **Zonenredundante Hochverfügbarkeit** aus, um die Option zu deaktivieren, und klicken Sie dann auf **Speichern**, um die Änderung zu speichern.
 
-4.  Ein Bestätigungsdialogfeld wird angezeigt, in dem Sie die Deaktivierung der Hochverfügbarkeit bestätigen können.
+4. Ein Bestätigungsdialogfeld wird angezeigt, in dem Sie die Deaktivierung der Hochverfügbarkeit bestätigen können.
 
-5.  Klicken Sie auf die Schaltfläche **Hochverfügbarkeit deaktivieren**, um die Hochverfügbarkeit zu deaktivieren.
+5. Klicken Sie auf die Schaltfläche **Hochverfügbarkeit deaktivieren**, um die Hochverfügbarkeit zu deaktivieren.
 
-6.  Es wird eine Benachrichtigung angezeigt, die besagt, dass die Außerbetriebnahme der Bereitstellung der Hochverfügbarkeit ausgeführt wird.
-
+6. Es wird eine Benachrichtigung angezeigt, die besagt, dass die Außerbetriebnahme der Bereitstellung der Hochverfügbarkeit ausgeführt wird.
 
 ## <a name="forced-failover"></a>erzwungenes Failover
 
 Führen Sie die folgenden Schritte aus, um ein Failover von Ihrem primären Server auf den flexiblen Standbyserver zu erzwingen.
 
-1.  Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihren flexiblen Azure Database for MySQL-Server aus, bei dem das Feature „Hochverfügbarkeit“ aktiviert wurde.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihren flexiblen Azure Database for MySQL-Server aus, bei dem das Feature „Hochverfügbarkeit“ aktiviert wurde.
 
-2.  Klicken Sie auf der Seite „Flexibler Server“ im vorderen Bereich auf **Hochverfügbarkeit**, um die Seite „Hochverfügbarkeit“ zu öffnen.
+2. Wählen Sie auf der Seite „Flexibler Server“ im vorderen Bereich **Hochverfügbarkeit** aus, um die Seite „Hochverfügbarkeit“ zu öffnen.
 
-3.  Überprüfen Sie die **Primäre Verfügbarkeitszone** und die **Standbyverfügbarkeitszone**.
+3. Überprüfen Sie die **Primäre Verfügbarkeitszone** und die **Standbyverfügbarkeitszone**.
 
-4.  Klicken Sie auf **Erzwungenes Failover**, um das manuelle Failoververfahren einzuleiten. Ein Popupfenster informiert Sie über die erwartete Failoverzeit – abhängig von der aktuellen Workload auf dem primären Server – und die Aktualität des letzten Prüfpunkts. Lesen Sie diese Meldung, und klicken Sie auf „OK“.
- 
+4. Wählen Sie die Option **Erzwungenes Failover** aus, um das manuelle Failoververfahren einzuleiten. Ein Popupfenster informiert Sie über die erwartete Failoverzeit – abhängig von der aktuellen Workload auf dem primären Server – und die Aktualität des letzten Prüfpunkts. Lesen Sie diese Meldung, und wählen Sie dann auf „OK“ aus.
+
 5. In einer Benachrichtigung wird mitgeteilt, dass ein Failover ausgeführt wird.
 
 6. Sobald das Failover auf den Standbyserver erfolgreich war, wird eine entsprechende Benachrichtigung angezeigt.
@@ -86,5 +87,5 @@ Führen Sie die folgenden Schritte aus, um ein Failover von Ihrem primären Serv
 
 ## <a name="next-steps"></a>Nächste Schritte
 
--   Weitere Informationen zur [Geschäftskontinuität](./concepts-business-continuity.md)
--   Weitere Informationen zur [zonenredundanten Hochverfügbarkeit](./concepts-high-availability.md)
+- Weitere Informationen zur [Geschäftskontinuität](./concepts-business-continuity.md)
+- Weitere Informationen zur [zonenredundanten Hochverfügbarkeit](./concepts-high-availability.md)

@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, devx-track-azurepowershell
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6710273438b291c1547688b2213b0c57ac766b99
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: b018dead90b593276a9cb92696dd964473057407
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110796373"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732323"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>Schnellstart: Erteilen einer Berechtigung zum Erstellen unbegrenzter App-Registrierungen
 
@@ -39,8 +39,9 @@ Weitere Informationen finden Sie unter [Voraussetzungen für die Verwendung von 
 
 ### <a name="create-a-custom-role"></a>Erstellen einer benutzerdefinierten Rolle
 
-1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) an.
-1. Wählen Sie **Azure Active Directory** > **Rollen und Administratoren** > **Neue benutzerdefinierte Rolle** aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder bei [Azure AD Admin Center](https://aad.portal.azure.com) an.
+
+1. Wählen Sie **Azure Active Directory** > **Rollen und Administratoren** und dann **Neue benutzerdefinierte Rolle** aus.
 
     ![Erstellen oder Bearbeiten von Rollen auf der Seite „Rollen und Administratoren“](./media/quickstart-app-registration-limits/new-custom-role.png)
 
@@ -56,9 +57,12 @@ Weitere Informationen finden Sie unter [Voraussetzungen für die Verwendung von 
 
 ### <a name="assign-the-role"></a>Zuweisen der Rolle
 
-1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder bei [Azure AD Admin Center](https://aad.portal.azure.com) an.
+
 1. Wählen Sie **Azure Active Directory** > **Rollen und Administratoren** aus.
+
 1. Wählen Sie die Rolle „Application Registration Creator“ (Anwendungsregistrierungsersteller) und anschließend **Zuweisung hinzufügen** aus.
+
 1. Wählen Sie den gewünschten Benutzer aus, und klicken Sie auf **Auswählen**, um ihn der Rolle hinzuzufügen.
 
 Das war's! In dieser Schnellstartanleitung haben Sie eine benutzerdefinierte Rolle mit der Berechtigung zum Erstellen einer unbegrenzten Anzahl von App-Registrierungen erstellt und sie anschließend einem Benutzer zugewiesen.

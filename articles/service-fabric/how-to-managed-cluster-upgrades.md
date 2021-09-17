@@ -2,17 +2,17 @@
 title: Upgrade von verwalteten Azure Service Fabric-Clustern
 description: Erfahren Sie mehr über die Optionen zum Aktualisieren Ihres verwalteten Azure Service Fabric-Clusters.
 ms.topic: how-to
-ms.date: 06/16/2021
-ms.openlocfilehash: 50af042be1dc69f39e61447901d4d5f07da2a1e7
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.date: 08/23/2021
+ms.openlocfilehash: b30f240325eda83428a19377e63d5a7f37f88169
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112290087"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122865055"
 ---
 # <a name="manage-service-fabric-managed-cluster-upgrades"></a>Verwalten von Service Fabric-Clusterupgrades
 
-Ein Azure Service Fabric-Cluster ist eine Ressource, die Sie besitzen, die jedoch teilweise von Microsoft verwaltet wird. Hier erfahren Sie, wie Sie den Zeitpunkt und die Art der Aktualisierung Ihres Azure Service Fabric-Clusters durch Microsoft verwalten.
+Ein Azure Service Fabric-Cluster ist eine Ressource, die Sie besitzen, die jedoch teilweise von Microsoft verwaltet wird. Erfahren Sie, wie Sie den Zeitpunkt und die Art der Aktualisierung Ihrer Azure Service Fabric-Cluster-Runtime durch Microsoft verwalten.
 
 ## <a name="set-upgrade-mode"></a>Festlegen des Upgrademodus
 
@@ -28,8 +28,8 @@ Mit der Bereitstellung in Zyklen können Sie eine Pipeline erstellen, mit der Si
 Zum Auswählen der zyklischen Bereitstellung für das automatische Upgrade legen Sie zunächst fest, welcher Zyklus Ihrem Cluster zugewiesen werden soll:
 
 * **Wave 0** (`Wave0`): Cluster werden aktualisiert, sobald ein neuer Service Fabric-Build freigegeben wird.
-* **Wave 1** (`Wave1`): Cluster werden nach Wave 0 aktualisiert, um Baking-Zeit zu ermöglichen. Dies tritt nach mindestens 7 Tagen nach Wave 0 auf.
-* **Wave 2** (`Wave2`): Cluster werden zuletzt aktualisiert, um weitere Baking-Zeit zu ermöglichen. Dies tritt nach mindestens 14 Tagen nach Wave 0 auf.
+* **Wave 1** (`Wave1`): Cluster werden nach Wave 0 aktualisiert, um Baking-Zeit zu ermöglichen. Wave 1 erfolgt mindestens 7 Tage nach Wave 0.
+* **Wave 2** (`Wave2`): Cluster werden zuletzt aktualisiert, um weitere Baking-Zeit zu ermöglichen. Wave 2 erfolgt mindestens 14 Tage nach Wave 0.
 
 ## <a name="set-the-wave-for-your-cluster"></a>Festlegen des Zyklus für Ihren Cluster
 
@@ -70,7 +70,7 @@ Beim Auftreten eines Rollbacks müssen Sie die Probleme beheben, die zum Rollbac
 
 #### <a name="automatic-upgrade-with-wave-deployment"></a>Automatisches Upgrade mit Wave-Bereitstellung
 
-Um automatische Upgrades und die Wave-Bereitstellung zu konfigurieren, wird einfach „`ClusterUpgradeMode` Hinzufügen/Validieren“ auf `Automatic` festgelegt und die `upgradeWave`-Eigenschaft wird mit einem der Wave-Werte definiert, die oben in Ihrer Resource Manager-Vorlage aufgeführt sind.
+Um automatische Upgrades und die Wave-Bereitstellung zu konfigurieren, wird einfach „`ClusterUpgradeMode` Hinzufügen/Validieren“ auf `Automatic` festgelegt und die `clusterUpgradeCadence`-Eigenschaft wird mit einem der Wave-Werte definiert, die oben in Ihrer Resource Manager-Vorlage aufgeführt sind.
 
 ```json
 {
@@ -78,12 +78,12 @@ Um automatische Upgrades und die Wave-Bereitstellung zu konfigurieren, wird einf
 "type": "Microsoft.ServiceFabric/managedClusters",
 "properties": {
         "ClusterUpgradeMode": "Automatic",
-        "upgradeWave": "Wave1",
+        "clusterUpgradeCadence": "Wave1",
         }  
 }
 ```
 
-Nachdem Sie die aktualisierte Vorlage bereitgestellt haben, wird Ihr Cluster im angegebenen Zyklus für den nächsten Upgradezeitraum und danach registriert.
+Nachdem Sie die aktualisierte Vorlage bereitgestellt haben, wird Ihr Cluster im angegebenen Zyklus für automatische Upgrades registriert.
 
 ## <a name="query-for-supported-cluster-versions"></a>Abfrage nach unterstützten Clusterversionen
 

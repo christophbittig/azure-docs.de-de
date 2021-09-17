@@ -5,19 +5,19 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-ms.date: 04/04/2021
+ms.date: 08/16/2021
 ms.author: robinsh
 ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 965738a735052947940ec3763c664e5e90909ee1
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 1805213d64a7d6feb47033940c3c479713acd688
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108278282"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397215"
 ---
 # <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>Tutorial: Verwenden der Azure CLI und des Azure-Portals zum Konfigurieren des IoT Hub-Nachrichtenroutings
 
@@ -135,91 +135,96 @@ Richten Sie jetzt die Weiterleitung für das Speicherkonto ein. Wechseln Sie zum
 
 [!INCLUDE [iot-hub-include-blob-storage-format](../../includes/iot-hub-include-blob-storage-format.md)]
 
+Nun richten Sie die Konfiguration für das Nachrichtenrouting an Azure Storage ein.
+
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Ressourcengruppen** und dann Ihre Ressourcengruppe aus. In diesem Tutorial wird **ContosoResources** verwendet.
 
 2. Wählen Sie in der Liste mit den Ressourcen Ihren IoT-Hub aus. In diesem Tutorial wird **ContosoTestHub** verwendet.
 
-3. Wählen Sie **Nachrichtenrouting**. Wählen Sie im Bereich **Nachrichtenrouting** die Option **+ Hinzufügen**. Wählen Sie im Bereich **Route hinzufügen** neben dem Feld „Endpunkt“ die Option **+ Endpunkt hinzufügen** aus, um die unterstützten Endpunkte anzuzeigen. Dies ist in der folgenden Abbildung dargestellt:
+3. Wählen Sie in der mittleren Spalte (**_Messaging_*) die Option **Nachrichtenrouting** aus. Wählen Sie** + Hinzufügen** aus, um den Bereich **Route hinzufügen** anzuzeigen. Wählen Sie neben dem Feld „Endpunkt“ die Option **+ Endpunkt hinzufügen** und dann **Speicher** aus. Der Bereich **Speicherendpunkt hinzufügen** wird angezeigt.
 
-   ![Beginnen mit dem Hinzufügen eines Endpunkts für eine Route](./media/tutorial-routing/message-routing-add-a-route-with-storage-endpoint-ver2.png)
+   ![Beginnen mit dem Hinzufügen eines Endpunkts für eine Route](./media/tutorial-routing/01-add-a-route-to-storage.png)
 
-4. Wählen Sie **Speicher**. Der Bereich **Speicherendpunkt hinzufügen** wird angezeigt.
+4. Geben Sie einen Namen für den Endpunkt ein. In diesem Tutorial wird **ContosoStorageEndpoint** verwendet.
 
-   ![Hinzufügen eines Endpunkts](./media/tutorial-routing/message-routing-add-storage-endpoint-ver2.png)
+   ![Benennen des Endpunkts](./media/tutorial-routing/02-add-a-storage-endpoint.png)
 
-5. Geben Sie einen Namen für den Endpunkt ein. In diesem Tutorial wird **ContosoStorageEndpoint** verwendet.
+5. Wählen Sie **Container auswählen**. Dadurch gelangen Sie zu einer Liste Ihrer Speicherkonten. Wählen Sie das in den Vorbereitungsschritten eingerichtete Speicherkonto aus. In diesem Tutorial wird **contosostorage** verwendet. Es zeigt eine Liste der Container in diesem Speicherkonto. **Wählen** Sie den Container aus, den Sie in den Vorbereitungsschritten eingerichtet haben. In diesem Tutorial wird **contosoresults** verwendet. Klicken Sie dann am unteren Bildschirmrand auf **Auswählen**. Ein anderer Bereich **Speicherendpunkt hinzufügen** wird angezeigt. Die URL für den ausgewählten Container wird angezeigt. 
 
-6. Wählen Sie **Container auswählen**. Dadurch gelangen Sie zu einer Liste Ihrer Speicherkonten. Wählen Sie das Konto aus, das Sie in den Vorbereitungsschritten eingerichtet haben. In diesem Tutorial wird **contosostorage** verwendet. Es zeigt eine Liste der Container in diesem Speicherkonto. **Wählen** Sie den Container aus, den Sie in den Vorbereitungsschritten eingerichtet haben. In diesem Tutorial wird **contosoresults** verwendet. Sie gelangen zurück zum Bereich **Neuen Speicherendpunkt hinzufügen**, und die getroffene Auswahl wird angezeigt.
-
-7. Legen Sie die Codierung auf AVRO oder JSON fest. Verwenden Sie in diesem Tutorial die Standardwerte für die restlichen Felder. Dieses Feld ist ausgegraut, wenn die JSON-Codierung für die ausgewählte Region nicht unterstützt wird.
+6. Legen Sie die Codierung auf AVRO oder JSON fest. Verwenden Sie in diesem Tutorial die Standardwerte für die restlichen Felder. Dieses Feld ist ausgegraut, wenn die JSON-Codierung für die ausgewählte Region nicht unterstützt wird. Legen Sie das Format für den Dateinamen fest. 
 
    > [!NOTE]
-   > Sie können das Format des Blobnamens festlegen, indem Sie das **Format für Blobdateinamen** verwenden. Der Standardwert lautet `{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}`. Das Format muss {iothub}, {partition}, {YYYY}, {MM}, {DD}, {HH} und {mm} in einer beliebigen Reihenfolge enthalten.
+   > Legen Sie das Format des Blobnamens fest, indem Sie das **Format für Blobdateinamen** verwenden. Der Standardwert lautet `{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}`. Das Format muss {iothub}, {partition}, {YYYY}, {MM}, {DD}, {HH} und {mm} in einer beliebigen Reihenfolge enthalten.
    >
    > Bei Verwendung des Standardformats für Blobdateinamen sieht der Blobname beispielsweise wie folgt aus, wenn der Hubname „ContosoTestHub“ lautet und als Datum bzw. Uhrzeit „30. Oktober 2018 um 10:56 Uhr“ verwendet wird: `ContosoTestHub/0/2018/10/30/10/56`.
    > 
    > Die Blobs werden standardmäßig im AVRO-Format geschrieben.
    >
 
-8. Wählen Sie **Erstellen**, um den Speicherendpunkt zu erstellen und der Route hinzuzufügen. Sie wechseln zurück zum Bereich **Route hinzufügen**.
+7. Wählen Sie unten auf der Seite **Erstellen** aus, um den Speicherendpunkt zu erstellen und der Route hinzuzufügen. Sie gelangen zurück zum Bereich **Route hinzufügen**. 
 
-9. Geben Sie nun die restlichen Routingabfrageinformationen an. Diese Abfrage gibt die Kriterien für das Senden von Nachrichten an den Speichercontainer, den Sie gerade als Endpunkt hinzugefügt haben, an. Füllen Sie die Felder auf dem Bildschirm aus.
+8. Geben Sie die restlichen Routingabfrageinformationen an. Diese Abfrage gibt die Kriterien für das Senden von Nachrichten an den Speichercontainer, den Sie gerade als Endpunkt hinzugefügt haben, an. Füllen Sie die Felder auf dem Bildschirm aus.
 
-   **Name**: Geben Sie einen Namen für Ihre Routingabfrage ein. In diesem Tutorial wird **ContosoStorageRoute** verwendet.
+9. Füllen Sie die übrigen Felder aus:
 
-   **Endpunkt**: Zeigt den Endpunkt an, den Sie gerade eingerichtet haben.
-
-   **Datenquelle**: Wählen Sie in der Dropdownliste **Gerätetelemetriemeldungen** aus.
-
-   **Route aktivieren**: Achten Sie darauf, dass dieses Feld auf `enabled` festgelegt ist.
+   - **Name**: Geben Sie einen Namen für Ihre Route ein. In diesem Tutorial wird **ContosoStorageRoute** verwendet. Geben Sie als Nächstes den Endpunkt für den Speicher an. In diesem Tutorial wird ContosoStorageEndpoint verwendet.
    
-   **Routingabfrage**: Geben Sie `level="storage"` als Abfragezeichenfolge ein.
+   - Geben Sie einen Wert für **Datenquelle** an: Wählen Sie in der Dropdownliste **Gerätetelemetriemeldungen** aus.   
 
-   ![Erstellen einer Routingabfrage für das Speicherkonto](./media/tutorial-routing/message-routing-finish-route-storage-ep.png)  
+   - Aktivieren Sie **Route aktivieren**: Achten Sie darauf, dass dieses Feld auf `enabled` festgelegt ist.
 
-   Wählen Sie **Speichern** aus. Wenn der Speichervorgang abgeschlossen ist, werden Sie wieder zum Bereich „Nachrichtenrouting“ geleitet, in dem Sie Ihre neue Routingabfrage für die Speicherung anzeigen können. Schließen Sie den Bereich „Routen“. Daraufhin werden Sie wieder zur Seite der Ressourcengruppe geleitet.
+   - **Routingabfrage**: Geben Sie `level="storage"` als Abfragezeichenfolge ein.
+
+   ![Speichern der Routingabfrageinformationen](./media/tutorial-routing/04-save-storage-route.png)
+  
+10.  Wählen Sie **Speichern** aus. Wenn der Speichervorgang abgeschlossen ist, werden Sie wieder zum Bereich „Nachrichtenrouting“ geleitet, in dem Sie Ihre neue Routingabfrage für die Speicherung anzeigen können. Schließen Sie den Bereich „Nachrichtenrouting“. Daraufhin werden Sie wieder zur Seite der Ressourcengruppe geleitet.
+
 
 ### <a name="route-to-a-service-bus-queue"></a>Weiterleiten an eine Service Bus-Warteschlange
 
-Richten Sie jetzt die Weiterleitung für die Service Bus-Warteschlange ein. Wechseln Sie zum Bereich „Nachrichtenrouting“, und fügen Sie eine Route hinzu. Definieren Sie beim Hinzufügen der Route einen neuen Endpunkt für die Route. Nach der Einrichtung dieser Route werden Nachrichten, bei denen die **level**-Eigenschaft auf **critical** festgelegt ist, in die Service Bus-Warteschlange geschrieben. Hierdurch wird eine Logik-App ausgelöst, die dann eine E-Mail mit den Informationen sendet.
+Richten Sie jetzt die Weiterleitung für die Service Bus-Warteschlange ein. Wechseln Sie zum Bereich „Nachrichtenrouting“, und fügen Sie eine Route hinzu. Definieren Sie beim Hinzufügen der Route eine Service Bus-Warteschlange als Endpunkt für die Route. Nach der Einrichtung dieser Route werden Nachrichten, bei denen die **level**-Eigenschaft auf **critical** festgelegt ist, in die Service Bus-Warteschlange geschrieben. Hierdurch wird eine Logik-App ausgelöst, die dann eine E-Mail mit den Informationen sendet.
 
 1. Wählen Sie auf der Seite der Ressourcengruppe Ihre IoT Hub-Instanz und dann die Option **Nachrichtenrouting** aus.
 
-2. Wählen Sie im Bereich **Nachrichtenrouting** die Option **+ Hinzufügen**.
+2. Wählen Sie im Bereich **Nachrichtenrouting** die Option **+ Hinzufügen** aus.
 
-3. Wählen Sie im Bereich **Route hinzufügen** neben dem Feld „Endpunkt“ die Option **+ Hinzufügen**. Wählen Sie **Service Bus-Warteschlange** aus. Der Bereich **Service Bus-Endpunkt hinzufügen** wird angezeigt.
+3. Wählen Sie im Bereich **Route hinzufügen** neben **Endpunkt** die Option **+ Hinzufügen** aus. Wählen Sie **Service Bus-Warteschlange** aus. Der Bereich **Service Bus-Endpunkt hinzufügen** wird angezeigt.
 
-   ![Hinzufügen eines Service Bus-Endpunkts](./media/tutorial-routing/message-routing-add-sbqueue-ep.png)
+   ![Hinzufügen des ersten Service Bus-Endpunkts](./media/tutorial-routing/05-setup-sbq-endpoint.png)
 
-4. Füllen Sie die Felder aus:
+4. Füllen Sie die übrigen Felder aus:
 
-   **Endpunktname**: Geben Sie einen Namen für den Endpunkt ein. In diesem Tutorial wird **ContosoSBQueueEndpoint** verwendet.
+   **Endpunktname**: Geben Sie einen Namen für den Endpunkt ein. In diesem Tutorial wird **ContosoSBQEndpoint** verwendet.
    
    **Service Bus-Namespace**: Verwenden Sie die Dropdownliste, um den Service Bus-Namespace auszuwählen, den Sie in den Vorbereitungsschritten eingerichtet haben. In diesem Tutorial wird **ContosoSBNamespace** verwendet.
 
    **Service Bus-Warteschlange**: Verwenden Sie die Dropdownliste, um die Service Bus-Warteschlange auszuwählen. In diesem Tutorial wird **contososbqueue** verwendet.
 
-5. Wählen Sie **Erstellen**, um den Endpunkt für die Service Bus-Warteschlange hinzuzufügen. Sie wechseln zurück zum Bereich **Route hinzufügen**.
+5. Wählen Sie **Erstellen** aus, um den Endpunkt für die erste Service Bus-Warteschlange hinzuzufügen. Sie wechseln zurück zum Bereich **Route hinzufügen**.
 
-6. Geben Sie nun die restlichen Routingabfrageinformationen an. Diese Abfrage gibt die Kriterien für das Senden von Nachrichten an die Service Bus-Warteschlange, die Sie gerade als Endpunkt hinzugefügt haben, an. Füllen Sie die Felder auf dem Bildschirm aus. 
+   ![Hinzufügen des zweiten Service Bus-Endpunkts](./media/tutorial-routing/06-save-sbq-endpoint.png)
 
-   **Name**: Geben Sie einen Namen für Ihre Routingabfrage ein. In diesem Tutorial wird **ContosoSBQueueRoute** verwendet. 
+6. Geben Sie nun die restlichen Routingabfrageinformationen an. Diese Abfrage gibt die Kriterien für das Senden von Nachrichten an die Service Bus-Warteschlange an, die Sie gerade als Endpunkt hinzugefügt haben. Füllen Sie die Felder auf dem Bildschirm aus. 
+
+   **Name**: Geben Sie einen Namen für Ihre Route ein. In diesem Tutorial wird **ContosoSBQueueRoute** verwendet. 
 
    **Endpunkt**: Zeigt den Endpunkt an, den Sie gerade eingerichtet haben.
 
    **Datenquelle**: Wählen Sie in der Dropdownliste **Gerätetelemetriemeldungen** aus.
 
-   **Routingabfrage**: Geben Sie `level="critical"` als Abfragezeichenfolge ein. 
+   **Route aktivieren**: Legen Sie dieses Feld auf `enable` fest.
 
-   ![Erstellen einer Routingabfrage für die Service Bus-Warteschlange](./media/tutorial-routing/message-routing-finish-route-sbq-ep.png)
+   **Routingabfrage**: Geben Sie als Routingabfrage `level="critical"` ein. 
 
-7. Wählen Sie **Speichern** aus. Wenn Sie zum Bereich „Routen“ zurückkehren, sehen Sie Ihre beiden neuen Routen, wie hier gezeigt.
+   ![Erstellen einer Routingabfrage für die Service Bus-Warteschlange](./media/tutorial-routing/07-save-servicebusqueue-route.png)
 
-   ![Routen, die Sie gerade eingerichtet haben](./media/tutorial-routing/message-routing-show-both-routes.png)
+7. Wählen Sie **Speichern** aus. Wenn Sie zum Bereich „Routen“ zurückkehren, sehen Sie Ihre beiden neuen Routen.
+
+   ![Routen, die Sie gerade eingerichtet haben](./media/tutorial-routing/08-show-both-routes.png)
 
 8. Sie können die von Ihnen eingerichteten benutzerdefinierten Endpunkte anzeigen, indem Sie die Registerkarte **Benutzerdefinierte Endpunkte** auswählen.
 
-   ![Benutzerdefinierter Endpunkt, den Sie gerade eingerichtet haben](./media/tutorial-routing/message-routing-show-custom-endpoints.png)
+   ![Benutzerdefinierte Endpunkte, die Sie gerade eingerichtet haben](./media/tutorial-routing/09-show-custom-endpoints.png)
 
 9. Schließen Sie den Bereich „Nachrichtenrouting“. Daraufhin werden Sie wieder zum Bereich der Ressourcengruppe geleitet.
 

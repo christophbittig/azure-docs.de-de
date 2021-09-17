@@ -1,21 +1,21 @@
 ---
 title: 'Referenz: Azure Policy-Gastkonfigurationsbaseline für Linux'
 description: Details der Linux-Baseline in Azure, die durch die Azure Policy-Gastkonfiguration implementiert wird.
-ms.date: 08/03/2021
+ms.date: 08/24/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 4fe3e374b39c880940fa61b84342d2d8cbf94d12
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5d3b360a3a87c08e457e02829d1938193631e74f
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355106"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779322"
 ---
 # <a name="linux-security-baseline"></a>Linux-Sicherheitsbaseline
 
 In diesem Artikel werden die jeweils anwendbaren Konfigurationseinstellungen für Linux-Gäste in den folgenden Implementierungen beschrieben:
 
-- **\[Vorschau\]: Linux-Computer müssen die Anforderungen der Azure Compute-Sicherheitsbaseline erfüllen** Azure Policy-Gastkonfiguritonsdefinition
+- **\[Vorschau\]: Linux-Computer müssen die Anforderungen der Azure Compute-Sicherheitsbaseline erfüllen** Azure Policy-Gastkonfigurationsdefinition
 - **Sicherheitsrisiken in der Sicherheitskonfiguration auf Ihren Computern müssen entschärft werden** in Azure Security Center
 
 Weitere Informationen finden Sie unter [Informationen zu Guest Configuration von Azure Policy](../concepts/guest-configuration.md) und [Übersicht über den Azure-Sicherheitsvergleichstest (V2)](../../../security/benchmarks/overview.md).

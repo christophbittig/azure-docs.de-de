@@ -1,23 +1,26 @@
 ---
-title: Lookup-Aktivität in Azure Data Factory
-description: Erfahren Sie, wie die Lookup-Aktivität verwendet wird, um einen Wert in einer externen Quelle zu suchen. Auf die Ausgabe kann durch nachfolgende Aktivitäten verwiesen werden.
+title: Lookup-Aktivität
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Hier erfahren Sie, wie Sie die Lookupaktivität in Azure Data Factory und Azure Synapse Analytics verwenden, um einen Wert in einer externen Quelle zu suchen. Auf die Ausgabe kann durch nachfolgende Aktivitäten verwiesen werden.
 author: jianleishen
 ms.author: jianleishen
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 02/25/2021
-ms.openlocfilehash: 14ab6295717777f40677e0bdcd63a46821683658
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.date: 08/24/2021
+ms.openlocfilehash: a9a1918496d3832aea736b8a024a15f62f72edad
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109480183"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824551"
 ---
-# <a name="lookup-activity-in-azure-data-factory"></a>Lookup-Aktivität in Azure Data Factory
+# <a name="lookup-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>Lookupaktivität in Azure Data Factory und Azure Synapse Analytics
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Mithilfe der Lookup-Aktivität kann ein Dataset aus einer der von Azure Data Factory unterstützten Datenquellen abgerufen werden. Sie können damit dynamisch ermitteln, welche Objekte in einer nachfolgenden Aktivität verarbeitet werden sollen, statt den Objektnamen hart zu codieren. Beispiele für Objekte sind Dateien und Tabellen.
+Die Lookupaktivität kann ein Dataset aus allen Datenquellen abrufen, die von Data Factory- und Synapse-Pipelines unterstützt werden. Sie können damit dynamisch ermitteln, welche Objekte in einer nachfolgenden Aktivität verarbeitet werden sollen, statt den Objektnamen hart zu codieren. Beispiele für Objekte sind Dateien und Tabellen.
 
 Die Lookup-Aktivität liest die Daten und gibt den Inhalt einer Konfigurationsdatei oder Tabelle zurück. Zudem gibt sie auch das Ergebnis einer ausgeführten Abfrage oder gespeicherten Prozedur zurück. Die Ausgabe kann ein Singleton-Wert oder ein Array von Attributen sein, das in einer nachfolgenden Kopier-, Transformations-oder Ablaufsteuerungsaktivität wie einer ForEach-Aktivität verwendet werden kann.
 
@@ -108,7 +111,7 @@ Das Lookupergebnis wird im Abschnitt `output` des Ergebnisses der Aktivitätsaus
 
 In diesem Beispiel enthält die Pipeline zwei Aktivitäten: **Lookup** und **Kopieren**. Mit der Kopieraktivität kopieren Sie Daten aus einer SQL-Tabelle in Ihrer Azure SQL-Datenbank-Instanz nach Azure Blob Storage. Der Name der SQL-Tabelle wird in einer JSON-Datei in Blob Storage gespeichert. Die Lookup-Aktivität sucht den Tabellennamen zur Runtime. Durch diesen Ansatz wird die JSON-Datei dynamisch geändert. Pipelines oder Datasets müssen nicht erneut bereitgestellt werden. 
 
-Dieses Beispiel zeigt nur das Lookup für die erste Zeile. Wenn Sie weitere Informationen zum Lookup für alle Zeilen und dem Verketten von Ergebnissen mit der ForEach-Aktivität benötigen, lesen Sie die Beispiele in [Massenkopieren von mehreren Tabellen mithilfe von Azure Data Factory](tutorial-bulk-copy.md).
+Dieses Beispiel zeigt nur das Lookup für die erste Zeile. Wenn Sie weitere Informationen zum Lookup für alle Zeilen und dem Verketten von Ergebnissen mit der ForEach-Aktivität benötigen, sehen Sie sich die Beispiele unter [Massenkopieren mehrerer Tabellen mithilfe von Azure Data Factory und PowerShell](tutorial-bulk-copy.md) an.
 
 
 ### <a name="pipeline"></a>Pipeline
@@ -389,7 +392,7 @@ Hier werden einige Einschränkungen der Lookup-Aktivität und empfohlene Problem
 | | |
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie unter anderen Ablaufsteuerungsaktivitäten, die von Data Factory unterstützt werden: 
+Dies sind weitere Ablaufsteuerungsaktivitäten, die von Azure Data Factory- und Synapse-Pipelines unterstützt werden: 
 
 - [Aktivität „Pipeline ausführen“](control-flow-execute-pipeline-activity.md)
 - [ForEach-Aktivität](control-flow-for-each-activity.md)

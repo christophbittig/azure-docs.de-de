@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: tracych
 ms.author: tracych
 ms.reviewer: laobri
-ms.date: 5/25/2021
-ms.custom: how-to
-ms.openlocfilehash: 53fa68fdffd27c1d48322104c541894c6f9c4dd8
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.date: 8/11/2021
+ms.custom: how-to, devplatv2
+ms.openlocfilehash: b68ba3f0221aa97307e746d192de65b2915d2e4b
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111751251"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419551"
 ---
 # <a name="use-batch-endpoints-preview-for-batch-scoring"></a>Verwenden von Batchendpunkten (Vorschau) für die Batchbewertung
 
@@ -27,7 +27,7 @@ In diesem Artikel lernen Sie Folgendes:
 > [!div class="checklist"]
 > * Erstellen eines Batchendpunkts für das MLflow-Modell ohne Programmieraufwand
 > * Überprüfen eines Batchendpunktdetails
-> * Starten eines Batchbewertungsauftrags mithilfe der CLI
+> * Starten eines Batchbewertungsauftrags mithilfe der Azure CLI
 > * Überwachen des Ausführungsstatus des Batchbewertungsauftrags und Überprüfen der Bewertungsergebnisse
 > * Hinzufügen einer neuen Bereitstellung zu einem Batchendpunkt
 > * Starten eines Batchbewertungsauftrags unter Verwendung von REST
@@ -36,7 +36,7 @@ In diesem Artikel lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement: Sollten Sie über kein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
+* Ein Azure-Abonnement: Sollten Sie über kein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://azure.microsoft.com/free/) noch heute aus.
 
 * Die Azure-Befehlszeilenschnittstelle (Command-Line Interface, CLI) und die ML-Erweiterung.
 
@@ -64,7 +64,7 @@ Fügen Sie die Azure ML-Erweiterung hinzu, und konfigurieren Sie sie:
 az extension add -n ml
 ```
 
-Weitere Informationen zum Konfigurieren der ML-Erweiterung finden Sie unter [Installieren, Einrichten und Verwenden der 2.0 CLI (Vorschau)](how-to-configure-cli.md).
+Weitere Informationen zum Konfigurieren der ML-Erweiterung finden Sie unter [Installieren, Einrichten und Verwenden der CLI (v2) (Vorschau)](how-to-configure-cli.md).
 
 * Das Beispielrepository
 
@@ -77,16 +77,14 @@ Die Batchbewertung wird nicht lokal, sondern nur auf Cloud Computing-Ressourcen
 Führen Sie den folgenden Code aus, um ein universelles Ziel vom Typ [`AmlCompute`](/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py&preserve-view=true) zu erstellen. Weitere Informationen zu Computezielen finden Sie unter [Was sind Computeziele in Azure Machine Learning?](./concept-compute-target.md).
 
 ```azurecli
-az ml compute create --name cpu-cluster --type AmlCompute --min-instances 0 --max-instances 5
+az ml compute create --name cpu-cluster --type amlcompute --min-instances 0 --max-instances 5
 ```
 
 ## <a name="create-a-batch-endpoint"></a>Erstellen eines Batchendpunkts
 
 Bei Verwendung eines MLflow-Modells können Sie die Batchendpunkterstellung ohne Code durchführen. Das bedeutet, Sie müssen kein Bewertungsskript und keine Umgebung vorbereiten. Beides kann automatisch generiert werden. Weitere Informationen finden Sie unter [Trainieren und Nachverfolgen von ML-Modellen mit MLflow und Azure Machine Learning (Vorschauversion)](how-to-use-mlflow.md).
 
-```azurecli
-az ml endpoint create --type batch --file cli/endpoints/batch/create-batch-endpoint.yml
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="create_batch_endpoint" :::
 
 Im Anschluss finden Sie die YAML-Datei zum Definieren des MLFlow-Batchendpunkts:
 
@@ -103,7 +101,7 @@ Im Anschluss finden Sie die YAML-Datei zum Definieren des MLFlow-Batchendpunkts:
 
 Bereitstellungsattribute:
 
-| Schlüssel | Beschreibung |
+| Schlüssel | BESCHREIBUNG |
 | --- | ----------- |
 | name | Der Name der Bereitstellung |
 | model | Das Modell, das für die Batchbewertung verwendet werden soll. Verwenden Sie `name`, `version` und `local_path`, um ein Modell von Ihrem lokalen Computer hochzuladen. Verwenden Sie das Präfix `azureml:`, um auf eine vorhandene Modellressource in Ihrem Arbeitsbereich zu verweisen. `azureml: autolog:1` verweist beispielsweise auf Version 1 eines Modells namens `autolog`. |
@@ -120,15 +118,13 @@ Bereitstellungsattribute:
 
 Die Details eines erstellten Batchendpunkts können mithilfe von `show` überprüft werden. Verwenden Sie [`--query parameter`](/cli/azure/query-azure-cli), um nur bestimmte Attribute aus den zurückgegebenen Daten abzurufen.
 
-```azurecli
-az ml endpoint show --name mybatchedp --type batch
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="check_batch_endpooint_detail" :::
 
-## <a name="start-a-batch-scoring-job-using-cli"></a>Starten eines Batchbewertungsauftrags mithilfe der CLI
+## <a name="start-a-batch-scoring-job-using-the-azure-cli"></a>Starten eines Batchbewertungsauftrags mithilfe der Azure CLI
 
-Eine Batchbewertungsworkload wird als Offlineauftrag ausgeführt. Die Batchbewertung ist auf die Verarbeitung großer Datenmengen ausgelegt. Eingaben werden im Computecluster parallel verarbeitet. Eine Datenpartition wird einem Prozess auf einem Knoten zugewiesen. Ein einzelner Knoten mit mehreren Prozessen verfügt über mehrere parallel ausgeführte Partitionen. Die Bewertungsausgaben der Batchbewertung werden standardmäßig in Blobspeicher gespeichert. Sie können einen Batchbewertungsauftrag über die CLI starten, indem Sie die Dateneingaben übergeben. Sie können auch den Ausgabespeicherort konfigurieren und einige der Einstellungen überschreiben, um die bestmögliche Leistung zu erzielen.
+Eine Batchbewertungsworkload wird als Offlineauftrag ausgeführt. Die Batchbewertung ist auf die Verarbeitung großer Datenmengen ausgelegt. Eingaben werden im Computecluster parallel verarbeitet. Eine Datenpartition wird einem Prozess auf einem Knoten zugewiesen. Ein einzelner Knoten mit mehreren Prozessen verfügt über mehrere parallel ausgeführte Partitionen. Die Bewertungsausgaben der Batchbewertung werden standardmäßig in Blobspeicher gespeichert. Sie können einen Batchbewertungsauftrag über die Azure CLI starten, indem Sie die Dateneingaben übergeben. Sie können auch den Ausgabespeicherort konfigurieren und einige der Einstellungen überschreiben, um die bestmögliche Leistung zu erzielen.
 
-### <a name="start-a-bath-scoring-job-with-different-inputs-options"></a>Starten eines Batchbewertungsauftrag mit unterschiedlichen Eingabeoptionen
+### <a name="start-a-batch-scoring-job-with-different-input-options"></a>Starten eines Batchbewertungsauftrags mit verschiedenen Eingabeoptionen
 
 Für die Angabe der Dateneingaben stehen drei Optionen zur Verfügung:
 
@@ -187,30 +183,26 @@ Beim Starten eines Batchbewertungsauftrags können einige Einstellungen übersch
 ```azurecli
 az ml endpoint invoke --name mybatchedp --type batch --input-path https://pipelinedata.blob.core.windows.net/sampledata/nytaxi/taxi-tip-data.csv --set retry_settings.max_retries=1
 ```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="start_batch_scoring_job_with_new_settings" :::
 
 ## <a name="check-batch-scoring-job-execution-progress"></a>Überprüfen des Ausführungsstatus des Batchbewertungsauftrags
 
 Bei Batchbewertungsaufträgen dauert es in der Regel etwas, bis sämtliche Eingaben verarbeitet wurden. Sie können den Auftragsstatus von Azure Machine Learning Studio aus überprüfen. Der Studio-Link ist in der Antwort von `invoke` als Wert von `interactionEndpoints.Studio.endpoint` enthalten.
 
-Über die CLI können Sie neben dem Status auch Auftragsdetails überprüfen.
+Über die Azure CLI können Sie neben dem Status auch Auftragsdetails überprüfen.
 
 Rufen Sie den Auftragsnamen aus der Antwort von „invoke“ ab.
 
-```azurecli
-job_name=$(az ml endpoint invoke --name mybatchedp --type batch --input-path https://pipelinedata.blob.core.windows.net/sampledata/nytaxi/taxi-tip-data.csv --query name -o tsv)
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="start_batch_scoring_job" :::
 
 Verwenden Sie `job show`, um Details und den Status eines Batchbewertungsauftrags zu überprüfen.
 
-```azurecli
-az ml job show --name $job_name
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="check_job_status" :::
 
 Streamen Sie die Auftragsprotokolle mithilfe von `job stream`.
 
-```azurecli
-az ml job stream --name $job_name
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="stream_job_logs_to_console" :::
+
 
 ## <a name="check-batch-scoring-results"></a>Überprüfen der Ergebnisse der Batchbewertung
 
@@ -234,9 +226,7 @@ Ein Batchendpunkt kann über mehrere Bereitstellungen verfügen. Von den einzeln
 
 Verwenden Sie den folgenden Befehl, um einem vorhandenen Batchendpunkt eine neue Bereitstellung hinzuzufügen.
 
-```azurecli
-az ml endpoint update --name mybatchedp --type batch --deployment-file cli/endpoints/batch/add-deployment.yml
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" range="65" :::
 
 In diesem Beispiel wird ein MLflow-fremdes Modell verwendet. Bei Verwendung eines MLflow-fremden Modells müssen Sie in der YAML-Datei die Umgebung und ein Bewertungsskript angeben:
 
@@ -252,29 +242,21 @@ Im Anschluss finden Sie weitere Bereitstellungsattribute für das MLflow-fremde 
 
 Die Details Ihrer Bereitstellung können Sie wie folgt überprüfen:
 
-```azurecli
-az ml endpoint show --name mybatchedp --type batch
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="check_batch_endpooint_detail" :::
 
 ### <a name="activate-the-new-deployment"></a>Aktivieren der neuen Bereitstellung
 
 Für den Batchrückschluss müssen 100 Prozent der Anfragen an die gewünschte Bereitstellung gesendet werden. Verwenden Sie Folgendes, um Ihre neu erstellte Bereitstellung als Ziel festzulegen:
 
-```azurecli
-az ml endpoint update --name mybatchedp --type batch --traffic mnist-deployment:100
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="switch_traffic" :::
 
 Wenn Sie die Details Ihrer Bereitstellung erneut überprüfen, werden Ihre Änderungen angezeigt:
 
-```azurecli
-az ml endpoint show --name mybatchedp --type batch
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="check_batch_endpooint_detail" :::
 
 Nun können Sie einen Batchbewertungsauftrag mit dieser neuen Bereitstellung aufrufen:
 
-```azurecli
-az ml endpoint invoke --name mybatchedp --type batch --input-path https://pipelinedata.blob.core.windows.net/sampledata/mnist --mini-batch-size 10 --instance-count 2
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="start_batch_scoring_job_with_new_settings" :::
 
 ## <a name="start-a-batch-scoring-job-using-rest"></a>Starten eines Batchbewertungsauftrags unter Verwendung von REST
 
@@ -282,28 +264,17 @@ Batchendpunkte verfügen für den REST-Zugriff über Bewertungs-URIs. MIT REST k
 
 1. Rufen Sie den Bewertungs-URI (`scoring_uri`) ab:  
 
-```azurecli
-scoring_uri=$(az ml endpoint show --name mybatchedp --type batch --query scoring_uri -o tsv)
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="get_scoring_uri" :::
 
 2. Rufen Sie das Zugriffstoken ab:
 
-```azurecli
-auth_token=$(az account get-access-token --query accessToken -o tsv)
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="get_token" :::
+
 
 3. Verwenden Sie den Bewertungs-URI (`scoring_uri`), das Zugriffstoken und JSON-Daten, um per POST eine Anforderung zu veröffentlichen und einen Batchbewertungsauftrag zu starten:
 
-```bash
-curl --location --request POST "$scoring_uri" --header "Authorization: Bearer $auth_token" --header 'Content-Type: application/json' --data-raw '{
-"properties": {
-  "dataset": {
-    "dataInputType": "DataUrl",
-    "Path": "https://pipelinedata.blob.core.windows.net/sampledata/mnist"
-    }
-  }
-}'
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="start_batch_scoring_job_rest":::
+
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -321,3 +292,4 @@ Sie können die Ressourcengruppe auch behalten und einen einzelnen Arbeitsbereic
 In diesem Artikel haben Sie gelernt, wie Sie Batchendpunkte erstellen und aufrufen, um große Datenmengen zu bewerten. Weitere Informationen zu Azure Machine Learning finden Sie in den folgenden Artikeln:
 
 * [Problembehandlung für Batchendpunkte](how-to-troubleshoot-batch-endpoints.md)
+* [Bereitstellen und Bewerten eines Machine Learning-Modells mit einem verwalteten Onlineendpunkt (Vorschau)](how-to-deploy-managed-online-endpoints.md)

@@ -1,19 +1,21 @@
 ---
 title: Zeilenänderungstransformation im Zuordnungsdatenfluss
-description: Hier erfahren Sie, wie Sie das Datenbankziel mithilfe der Zeilenänderungstransformation im Zuordnungsdatenfluss aktualisieren.
+titleSuffix: Azure Data Factory & Azure Synapse
+description: So aktualisieren Sie das Datenbankziel mithilfe der Transformation "Zeilenänderung" im Zuordnungsdatenfluss in Azure Data Factory- und Azure Synapse Analytics-Pipelines.
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 05/06/2020
-ms.openlocfilehash: c3858756a0140481c0ab249e29c95f76c4b90da5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: synapse
+ms.date: 08/24/2021
+ms.openlocfilehash: 7fe220315f7cccb749fe0974e822f157cf54ca36
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "82982648"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821716"
 ---
 # <a name="alter-row-transformation-in-mapping-data-flow"></a>Zeilenänderungstransformation im Zuordnungsdatenfluss
 
@@ -57,15 +59,15 @@ Das Standardverhalten besteht darin, dass nur Einfügevorgänge zugelassen werde
 
 Für die Senkentransformation ist entweder ein einzelner Schlüssel oder eine Reihe von Schlüsseln zur eindeutigen Zeilenidentifizierung in Ihrer Zieldatenbank erforderlich. Legen Sie für SQL-Senken die Schlüssel auf der Registerkarte „Senkeneinstellungen“ fest. Legen Sie für CosmosDB den Partitionsschlüssel in den Einstellungen und außerdem das CosmosDB-Systemfeld „ID“ in Ihrer Senkenzuordnung fest. Bei CosmosDB ist es zwingend erforderlich, die Systemspalte „ID“ für Update-, Upsert- und Löschvorgänge mit einzubeziehen.
 
-## <a name="merges-and-upserts-with-azure-sql-database-and-synapse"></a>Merge- und Upsertvorgänge mit Azure SQL-Datenbank und Synapse
+## <a name="merges-and-upserts-with-azure-sql-database-and-azure-synapse"></a>Zusammenführungen und Upserts mit Azure SQL Database und Azure Synapse
 
-ADF-Datenflüsse unterstützen Mergevorgänge für Azure SQL-Datenbank und Synapse-Datenbankpool (Data Warehouse) mit der Option „upsert“.
+Data Flows unterstützt Zusammenführungen mit Azure SQL Database und Azure Synapse Database Pool (Data Warehouse) mit der Upsert-Option.
 
-Es kann jedoch zu Szenarien kommen, in denen Ihr Schema der Zieldatenbank die IDENTITY-Eigenschaft von Schlüsselspalten verwendet hat. ADF erfordert es, dass Sie die Schlüssel identifizieren, mit denen Sie die Zeilenwerte für Update- und Upsertvorgänge abgleichen werden. Wenn aber für die Zielspalte die IDENTITY-Eigenschaft festgelegt wurde und Sie die Upsertrichtlinie verwenden, können Sie in der Zieldatenbank nicht in die Spalte schreiben. Möglicherweise treten auch Fehler auf, wenn Sie versuchen, einen Upsert-Vorgang für die Verteilungsspalte einer verteilten Tabelle durchzuführen.
+Es kann jedoch zu Szenarien kommen, in denen Ihr Schema der Zieldatenbank die IDENTITY-Eigenschaft von Schlüsselspalten verwendet hat. Der Dienst erfordert, dass Sie die Schlüssel identifizieren, die Sie verwenden werden, um die Zeilenwerte für Aktualisierungen und Upserts abzugleichen. Wenn aber für die Zielspalte die IDENTITY-Eigenschaft festgelegt wurde und Sie die Upsertrichtlinie verwenden, können Sie in der Zieldatenbank nicht in die Spalte schreiben. Möglicherweise treten auch Fehler auf, wenn Sie versuchen, einen Upsert-Vorgang für die Verteilungsspalte einer verteilten Tabelle durchzuführen.
 
 Hier sind die Möglichkeiten zur Behebung dieses Problems:
 
-1. Wechseln Sie zu den Einstellungen für die Senkentransformation, und legen Sie „Skip writing key columns“ (Schreiben von Schlüsselspalten überspringen) fest. Dadurch wird ADF angewiesen, nicht in die Spalte zu schreiben, die Sie als Schlüsselwert für Ihre Zuordnung ausgewählt haben.
+1. Wechseln Sie zu den Einstellungen für die Senkentransformation, und legen Sie „Skip writing key columns“ (Schreiben von Schlüsselspalten überspringen) fest. Dadurch wird der Dienst angewiesen, die Spalte, die Sie als Schlüsselwert für Ihre Zuordnung ausgewählt haben, nicht zu schreiben.
 
 2. Wenn diese Schlüsselspalte nicht diejenige Spalte ist, die das Problem bei Identitätsspalten verursacht, können Sie die SQL-Option für die Vorbearbeitung von Senkentransformationen verwenden: ```SET IDENTITY_INSERT tbl_content ON```. Deaktivieren Sie die Option dann mit der SQL-Eigenschaft für Nachverarbeitung: ```SET IDENTITY_INSERT tbl_content OFF```.
 
@@ -89,7 +91,7 @@ Hier sind die Möglichkeiten zur Behebung dieses Problems:
 
 Das nachstehende Beispiel ist die Zeilenänderungstransformation `CleanData`, die aus dem eingehenden Stream `SpecifyUpsertConditions` drei Zeilenänderungsbedingungen erstellt. In der vorherigen Transformation wird die Spalte `alterRowCondition` berechnet, die bestimmt, ob eine Zeile in der Datenbank eingefügt, aktualisiert oder gelöscht werden soll oder nicht. Wenn der Wert der Spalte einen Zeichenfolgenwert enthält, der mit der Zeilenänderungsregel übereinstimmt, wird ihr diese Richtlinie zugewiesen.
 
-Auf der Data Factory-Benutzeroberfläche sieht diese Transformation wie folgt aus:
+In der Benutzeroberfläche sieht diese Transformation wie in der folgenden Abbildung aus:
 
 ![Beispiel für Zeilenänderung](media/data-flow/alter-row4.png "Beispiel für Zeilenänderung")
 

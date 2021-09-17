@@ -7,14 +7,16 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 07b76f565aa9eda4db885b6ec37a42a21b2d25bc
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 1009a63f1ffc323073deb00e7c628d3752af2408
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108744365"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690210"
 ---
 # <a name="updated-ndv2-series"></a>Aktualisierte NDv2-Serie
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen:heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Die VMs der NDv2-Serie sind ein neues Mitglied der GPU-Familie und darauf ausgelegt, die Anforderungen von besonders ressourcenintensiven Workloads zu erfüllen – beispielsweise KI-Workloads mit GPU-Beschleunigung, Machine Learning-, Simulations- und HPC-Workloads.
 

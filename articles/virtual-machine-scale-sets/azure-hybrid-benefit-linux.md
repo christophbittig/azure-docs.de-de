@@ -12,14 +12,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/20/2021
 ms.author: mathapli
-ms.openlocfilehash: 71d585d16f4026ac605e7a61e64af89df806fed8
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: d8671cab8e81b47316d14c9cabb4b803111643be
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111950034"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768481"
 ---
 # <a name="azure-hybrid-benefit-for-linux-virtual-machine-scale-set"></a>Azure-Hybridvorteil für eine Linux-VM-Skalierungsgruppe
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 **Der Azure-Hybridvorteil für eine Linux-VM-Skalierungsgruppe ist nun allgemein verfügbar.** Der Azure-Hybridvorteil kann Ihnen helfen, die Kosten für die Ausführung ihrer RHEL-und SLES-VM- [Skalierungs Gruppen](./overview.md)zu reduzieren.
 
@@ -71,7 +73,7 @@ So beginnen Sie mit der Verwendung des Vorteils für SUSE:
 1. Registrieren Sie die virtuellen Computer, auf die der Vorteil angewendet wird, bei einer separaten Quelle für Updates.
 
 
-## <a name="enable-and-disable-the-benefit-on-azure-portal"></a>Aktivieren und Deaktivieren der Leistung im Azure-Portal 
+## <a name="enable-and-disable-the-benefit-on-azure-portal"></a>Aktivieren und Deaktivieren des Vorteils im Azure-Portal 
 ### <a name="azure-portal-example-to-enable-the-benefit-during-creation"></a>Beispiel für das Aktivieren des Vorteils während der Erstellung über das Azure-Portal:
 1. Öffnen Sie das [Microsoft Azure-Portal](https://portal.azure.com/).
 1. Navigieren Sie im Portal zur Seite „VM-Skalierungsgruppe erstellen“.

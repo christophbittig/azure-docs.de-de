@@ -1,20 +1,20 @@
 ---
 title: Verwalten von Azure HDInsight-Clustern mit der Azure-Befehlszeilenschnittstelle
-description: Erfahren Sie, wie Sie mit der Azure-Befehlszeilenschnittstelle Azure HDInsight-Cluster verwalten. Zu den Clustertypen gehören Apache Hadoop, Spark, HBase, Storm, Kafka, Interactive Query und ML Services.
+description: Erfahren Sie, wie Sie mit der Azure-Befehlszeilenschnittstelle Azure HDInsight-Cluster verwalten. Zu den Clustertypen gehören Apache Hadoop, Spark, HBase, Storm, Kafka und Interactive Query.
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-azurecli
 ms.date: 02/26/2020
-ms.openlocfilehash: 14b88700f3968e3bfdc788abb2fc9ce90634068e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 74f228c8c1d9ca29e3f9e60062891a90a3a4abf6
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107770343"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "122639669"
 ---
 # <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>Verwalten von Azure HDInsight-Clustern mit der Azure-Befehlszeilenschnittstelle
 
-[!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
+[!INCLUDE [selector](includes/hdinsight-portal-management-selector.md)]
 
 Erfahren Sie, wie Sie mit der [Azure-Befehlszeilenschnittstelle](/cli/azure/) Azure HDInsight-Cluster verwalten. Die Azure-Befehlszeilenschnittstelle (CLI) ist die plattformübergreifende Befehlszeilenumgebung von Microsoft zum Verwalten von Azure-Ressourcen.
 
@@ -87,7 +87,7 @@ az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --w
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie gelernt, verschiedene Verwaltungsaufgaben für HDInsight-Cluster auszuführen. Weitere Informationen erhalten Sie in den folgenden Artikeln:
+In diesem Artikel haben Sie gelernt, verschiedene Verwaltungsaufgaben für HDInsight-Cluster auszuführen. Weitere Informationen finden Sie in den folgenden Artikeln:
 
 * [Verwalten von Apache Hadoop-Clustern in HDInsight mit dem Azure-Portal](hdinsight-administer-use-portal-linux.md)
 * [Verwalten von HDInsight mit Azure PowerShell](hdinsight-administer-use-powershell.md)

@@ -1,15 +1,14 @@
 ---
 title: Erstellen eines Dashboards im Azure-Portal
 description: In diesem Artikel wird beschrieben, wie Dashboards im Azure-Portal erstellt und angepasst werden.
-ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
 ms.topic: how-to
-ms.date: 05/12/2021
-ms.openlocfilehash: 0de3e30d2a27d131c13b2df94b1462b6e89b48e3
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.date: 08/19/2021
+ms.openlocfilehash: af26cc36f73088c9a4231e59f3414efaa828d452
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109846181"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597716"
 ---
 # <a name="create-a-dashboard-in-the-azure-portal"></a>Erstellen eines Dashboards im Azure-Portal
 
@@ -30,11 +29,11 @@ In diesem Beispiel wird gezeigt, wie Sie ein neues privates Dashboard mit einem 
 
 1. Wählen Sie im Menü des Azure-Portals die Option **Dashboard** aus. Die Standardansicht ist möglicherweise bereits auf das Dashboard festgelegt.
 
-    ![Screenshot: Azure-Portal mit ausgewähltem Dashboard](./media/azure-portal-dashboards/portal-menu-dashboard.png)
+    :::image type="content" source="media/azure-portal-dashboards/portal-menu-dashboard.png" alt-text="Screenshot: Azure-Portal mit ausgewähltem Dashboard":::
 
 1. Wählen Sie **Neues Dashboard** und dann **Leeres Dashboard** aus.
 
-    ![Screenshot: Optionen für das neue Dashboard](./media/azure-portal-dashboards/create-new-dashboard.png)
+    :::image type="content" source="media/azure-portal-dashboards/create-new-dashboard.png" alt-text="Screenshot: Optionen für das neue Dashboard":::
 
     Mit dieser Aktion werden der **Kachelkatalog**, aus dem Sie Kacheln auswählen können, sowie ein leeres Raster geöffnet, in dem Sie die Kacheln anordnen.
 
@@ -56,7 +55,7 @@ Führen Sie die folgenden Schritte aus, um einem Dashboard Kacheln hinzuzufügen
 
 1. Wählen Sie in der Seitenkopfzeile ![Bearbeitungssymbol](./media/azure-portal-dashboards/dashboard-edit-icon.png) **Bearbeiten** aus.
 
-    ![Screenshot: Dashboard mit hervorgehobener Bearbeitungsoption](./media/azure-portal-dashboards/dashboard-edit.png)
+    :::image type="content" source="media/azure-portal-dashboards/dashboard-edit.png" alt-text="Screenshot: Dashboard mit hervorgehobener Bearbeitungsoption":::
 
 1. Durchsuchen Sie den **Kachelkatalog**, oder verwenden Sie das Suchfeld, um nach einer bestimmten Kachel zu suchen. Wählen Sie die Kachel aus, die Sie Ihrem Dashboard hinzufügen möchten.
 
@@ -131,7 +130,7 @@ Wenn Sie Filter für eine bestimmte Kachel festlegen, zeigt die linke Ecke diese
 
 Einige Kacheln erfordern möglicherweise weitere Konfiguration, um die gewünschten Informationen anzuzeigen. Beispielsweise muss die Kachel **Metrikdiagramm** so eingerichtet werden, dass eine Metrik aus Azure Monitor angezeigt wird. Sie können Kacheldaten auch anpassen, um die Standardzeiteinstellungen und Filter des Dashboards außer Kraft zu setzen.
 
-## <a name="complete-tile-configuration"></a>Abschließen der Kachelkonfiguration
+### <a name="complete-tile-configuration"></a>Abschließen der Kachelkonfiguration
 
 Für alle Kacheln, die eingerichtet werden müssen, wird ein Banner angezeigt, bis Sie die Kachel anpassen. Im **Diagramm mit den Metriken** lautet das Banner beispielsweise **In Metriken bearbeiten**. Andere Banner können einen anderen Text verwenden, z. B. **Kachel konfigurieren**.
 
@@ -141,7 +140,7 @@ So passen Sie die Kachel an
 
 1. Wählen Sie das Banner aus, und nehmen Sie dann die gewünschte Einrichtung vor.
 
-    ![Screenshot einer Kachel, die konfiguriert werden muss.](./media/azure-portal-dashboards/dashboard-configure-tile.png)
+    :::image type="content" source="media/azure-portal-dashboards/dashboard-configure-tile.png" alt-text="Screenshot einer Kachel, die konfiguriert werden muss.":::
 
 ### <a name="customize-time-span-for-a-tile"></a>Anpassen der Zeitspanne für eine Kachel
 
@@ -149,11 +148,11 @@ Daten auf dem Dashboard zeigen Aktivitäten und Aktualisierungen basierend auf d
 
 1. Wählen Sie im Kontextmenü oder über das ![Filtersymbol](./media/azure-portal-dashboards/dashboard-filter.png) in der linken oberen Ecke der Kachel die Option **Kacheldaten anpassen** aus.
 
-    ![Screenshot: Kontextmenü einer Kachel](./media/azure-portal-dashboards/dashboard-customize-tile-data.png)
+    :::image type="content" source="media/azure-portal-dashboards/dashboard-customize-tile-data.png" alt-text="Screenshot: Kontextmenü einer Kachel":::
 
 1. Aktivieren Sie das Kontrollkästchen zum **Außerkraftsetzen der Zeiteinstellungen für das Dashboard auf Kachelebene**.
 
-    ![Screenshot: Dialogfeld zum Konfigurieren der Zeiteinstellungen der Kachel](./media/azure-portal-dashboards/dashboard-override-time-settings.png)
+    :::image type="content" source="media/azure-portal-dashboards/dashboard-override-time-settings.png" alt-text="Screenshot: Dialogfeld zum Konfigurieren der Zeiteinstellungen der Kachel":::
 
 1. Wählen Sie die Zeitspanne aus, die für diese Kachel angezeigt werden soll. Sie können zwischen den letzten 30 Minuten bis zu den letzten 30 Tagen wählen oder einen benutzerdefinierten Bereich definieren.
 
@@ -161,6 +160,16 @@ Daten auf dem Dashboard zeigen Aktivitäten und Aktualisierungen basierend auf d
 
 1. Wählen Sie **Übernehmen**.
 
+### <a name="change-the-title-and-subtitle-of-a-tile"></a>Ändern des Titels und Untertitels einer Kachel
+
+Für einige Kacheln kann der Titel und Untertitel bearbeitet werden. Wählen Sie hierzu im Kontextmenü **Kacheleinstellungen konfigurieren** aus.
+
+:::image type="content" source="media/azure-portal-dashboards/dashboard-tile-rename.png" alt-text="Screenshot: Option „Kacheleinstellungen konfigurieren“":::
+
+Nehmen Sie Änderungen am Titel und/oder Untertitel der Kachel vor, und klicken Sie dann auf **Anwenden**.
+
+:::image type="content" source="media/azure-portal-dashboards/dashboard-title-subtitle.png" alt-text="Screenshot: Ändern des Titels und Untertitels für eine Kachel":::
+ 
 ## <a name="delete-a-tile"></a>Löschen einer Kachel
 
 Führen Sie zum Entfernen einer Kachel von einem Dashboard eine der folgenden Aktionen aus:
@@ -169,7 +178,7 @@ Führen Sie zum Entfernen einer Kachel von einem Dashboard eine der folgenden Ak
 
 - Wählen Sie ![Bearbeitungssymbol](./media/azure-portal-dashboards/dashboard-edit-icon.png) **Bearbeiten** aus, um den Anpassungsmodus einzugeben. Platzieren Sie den Mauszeiger in der oberen rechten Ecke der Kachel, und wählen Sie dann das ![Löschsymbol](./media/azure-portal-dashboards/dashboard-delete-icon.png) Löschsymbol aus, um die Kachel aus dem Dashboard zu entfernen.
 
-   ![Screenshot: Entfernen einer Kachel vom Dashboard](./media/azure-portal-dashboards/dashboard-delete-tile.png)
+    :::image type="content" source="media/azure-portal-dashboards/dashboard-delete-tile.png" alt-text="Screenshot: Entfernen einer Kachel vom Dashboard":::
 
 ## <a name="clone-a-dashboard"></a>Klonen eines Dashboards
 
@@ -195,11 +204,11 @@ Gehen Sie folgendermaßen vor, um ein freigegebenes Dashboard zu suchen und zu �
 
     1. Wählen Sie **Alle Dashboards durchsuchen** aus.
 
-        ![Screenshot des Menüs „Dashboardauswahl“](./media/azure-portal-dashboards/dashboard-browse.png)
+        :::image type="content" source="media/azure-portal-dashboards/dashboard-browse.png" alt-text="Screenshot: Menü zur Dashboardauswahl":::
 
     1. Wählen Sie im Feld **Typ** die Option **Freigegebene Dashboards** aus.
 
-        ![Screenshot des Auswahlmenüs „Alle Dashboards“](./media/azure-portal-dashboards/dashboard-browse-all.png)
+        :::image type="content" source="media/azure-portal-dashboards/dashboard-browse-all.png" alt-text="Screenshot: Auswahlmenü „Alle Dashboards“":::
 
     1. Wählen Sie mindestens ein Abonnement aus. Sie können auch Text eingeben, um Dashboards nach Namen zu filtern.
 
@@ -215,7 +224,7 @@ Führen Sie die folgenden Schritte aus, um ein privates oder freigegebenes Dashb
 
 1. Wählen Sie für ein privates Dashboard im Bestätigungsdialogfeld **OK** aus, um das Dashboard zu entfernen. Aktivieren Sie für ein freigegebenes Dashboard im Bestätigungsdialogfeld das Kontrollkästchen, um zu bestätigen, dass das veröffentlichte Dashboard von anderen Benutzern nicht mehr angezeigt werden kann. Wählen Sie anschließend **OK** aus.
 
-    ![Screenshot: Löschbestätigung](./media/azure-portal-dashboards/dashboard-delete-dash.png)
+    :::image type="content" source="media/azure-portal-dashboards/dashboard-delete-dash.png" alt-text="Screenshot: Löschbestätigung":::
 
 ## <a name="recover-a-deleted-dashboard"></a>Wiederherstellen eines gelöschten Dashboards
 

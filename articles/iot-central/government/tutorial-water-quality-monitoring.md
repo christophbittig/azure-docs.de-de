@@ -1,27 +1,55 @@
 ---
-title: 'Tutorial: Erstellen einer App zur Überwachung der Wasserqualität mit Azure IoT Central'
-description: 'Tutorial: Es wird beschrieben, wie Sie mit Azure IoT Central-Anwendungsvorlagen eine Anwendung zur Überwachung der Wasserqualität erstellen.'
+title: 'Tutorial: Überwachung der Wasserqualität in Azure IoT | Microsoft-Dokumentation'
+description: In diesem Tutorial erfahren Sie, wie Sie die Anwendungsvorlage zum Überwachen der Wasserqualität für IoT Central bereitstellen und nutzen.
 author: miriambrus
 ms.author: miriamb
-ms.date: 12/11/2020
+ms.date: 08/02/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: fdab861cc122fe738cce4da049154ecb4039ca65
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: 481a085b1fd5fec55cd34f885dfcda40fec6f5e7
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113588973"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179082"
 ---
-# <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Tutorial: Erstellen einer Anwendung zur Überwachung der Wasserqualität in Azure IoT Central
+# <a name="tutorial-deploy-and-walk-through-the-water-quality-monitoring-application"></a>Tutorial: Bereitstellen und Durchlaufen der Anwendung zum Überwachen der Wasserqualität
 
-In diesem Tutorial wird Schritt für Schritt die Erstellung einer Anwendung zur Überwachung der Wasserqualität in Azure IoT Central beschrieben. Sie erstellen die Anwendung mit der Azure IoT Central-Anwendungsvorlage **Überwachung der Wasserqualität**.
+Verwenden Sie die IoT Central-Anwendungsvorlage *Überwachung der Wasserqualität* und die Anleitungen in diesem Artikel, um eine End-to-End-Lösung für die Überwachung der Wasserqualität zu entwickeln.
+
+
+![Architektur zur Überwachung der Wasserqualität](./media/tutorial-waterqualitymonitoring/concepts-water-quality-monitoring-architecture1.png)
+
+### <a name="devices-and-connectivity"></a>Geräte und Konnektivität
+
+Wasserverwaltungslösungen nutzen intelligente Wasserwirtschaftsgeräte wie Strömungsmessgeräte, Geräte zur Überwachung der Wasserqualität, intelligente Ventile und Leckdetektoren.
+
+Geräte in intelligenten Wasserlösungen können über Low-Power Wide Area Networks (LPWAN) oder über einen externen Netzwerkbetreiber eine Verbindung herstellen. Nutzen Sie bei diesen Gerätetypen die [Azure IoT Central-Geräte-Bridge](../core/howto-build-iotc-device-bridge.md), um Ihre Gerätedaten an Ihre IoT-Anwendung in Azure IoT Central zu senden. Sie können auch Gerätegateways verwenden, die IP-fähig sind und mit IoT Central direkt verbunden werden können.
+
+### <a name="iot-central"></a>IoT Central
+
+Azure IoT Central ist eine IoT-App-Plattform, mit der Sie eine IoT-Lösung schnell erstellen und bereitstellen können. Sie können Ihre Lösung mit Branding versehen, anpassen und in Dienste von Drittanbietern integrieren.
+
+Wenn Sie Ihre intelligenten Wasserwirtschaftsgeräte mit IoT Central verbinden, stellt die Anwendung Befehls-, Steuerungs-, Überwachungs- und Warnungsfunktionen, eine Benutzeroberfläche mit integrierter rollenbasierter Zugriffssteuerung (RBAC), konfigurierbare Dashboards sowie Erweiterungsoptionen zur Verfügung.
+
+### <a name="extensibility-and-integrations"></a>Erweiterbarkeit und Integrationen
+
+Sie können Ihre IoT-Anwendung in IoT Central erweitern und haben folgende Optionen:
+
+* Transformieren und Integrieren Ihrer IoT-Daten für erweiterte Analysen, z. B. für das Training von Machine Learning-Modellen, durch kontinuierlichen Datenexport aus der IoT Central-Anwendung.
+* Automatisieren von Workflows in anderen Systemen, indem in der IoT Central-Anwendung Aktionen über Power Automate oder Webhooks ausgelöst werden.
+* Programmgesteuertes Zugreifen auf Ihre IoT-Anwendung in IoT Central über IoT Central-APIs.
+
+### <a name="business-applications"></a>Geschäftsanwendungen
+
+Sie können mithilfe von IoT-Daten verschiedene Geschäftsanwendungen in einem Wasserversorgungsunternehmen betreiben. In Ihrer [IoT Central-Anwendung für die Überwachung des Wasserverbrauchs](tutorial-water-consumption-monitoring.md) können Sie Regeln und Aktionen konfigurieren und sie so festlegen, dass in [Connected Field Service](/dynamics365/field-service/connected-field-service) Warnungen erstellt werden. Konfigurieren Sie Regeln für Power Automate in IoT Central, um Workflows anwendungs- und dienstübergreifend zu automatisieren. Darüber hinaus können Informationen – basierend auf Dienstaktivitäten in Connected Field Service – zurück an Azure IoT Central gesendet werden.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
+
 > * Verwenden der Vorlage **Überwachung der Wasserqualität** für die Erstellung einer entsprechenden Anwendung
 > * Erkunden und Anpassen eines Dashboards
 > * Erkunden einer Gerätevorlage für die Überwachung der Wasserqualität
@@ -32,55 +60,28 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wir empfehlen Ihnen, zum Durcharbeiten dieses Tutorials ein Azure-Abonnement zu nutzen. Wenn Sie kein Azure-Abonnement besitzen, können Sie auf der Seite [Azure-Anmeldeseite](https://aka.ms/createazuresubscription) eines erstellen.
+* Zum Bereitstellen dieser App müssen keine besonderen Voraussetzungen erfüllt werden.
+* Sie können den Tarif „Free“ oder ein Azure-Abonnement verwenden.
 
-## <a name="create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Erstellen einer Anwendung zur Überwachung der Wasserqualität in Azure IoT Central
+## <a name="create-water-quality-monitoring-application"></a>Erstellen der Anwendung zur Überwachung der Wasserqualität
 
-In diesem Abschnitt verwenden Sie die Azure IoT Central-Vorlage **Überwachung der Wasserqualität**, um eine entsprechende Anwendung zu erstellen.
+Gehen Sie wie folgt vor, um die Anwendung zu erstellen:
 
-1. Navigieren Sie zur [Startseite von Azure IoT Central](https://aka.ms/iotcentral).
+1. Navigieren Sie zur Buildwebsite für [Azure IoT Central](https://aka.ms/iotcentral). Melden Sie sich dann mit einem persönlichen Microsoft-Konto oder mit einem Geschäfts-, Schul- oder Unikonto an. Wählen Sie auf der linken Navigationsleiste **Erstellen** und dann die Registerkarte **Behörden** aus: :::image type="content" source="media/tutorial-waterqualitymonitoring/iot-central-government-tab-overview1.png" alt-text="Anwendungsvorlage":::
 
-    Wenn Sie über ein Azure-Abonnement verfügen, können Sie sich mit den zugehörigen Anmeldeinformationen anmelden. Melden Sie sich andernfalls mit einem Microsoft-Konto an:
+1. Wählen Sie unter **Überwachung der Wasserqualität** die Option **App erstellen** aus.
 
-    ![Anmelden mit Ihrem Organisationskonto](./media/tutorial-waterqualitymonitoring/sign-in.png)
+Weitere Informationen finden Sie unter [Erstellen einer IoT Central-Anwendung](../core/howto-create-iot-central-application.md).
 
-1. Wählen Sie in Azure IoT Central im Bereich ganz links die Option **Build** und dann die Registerkarte **Regierung** aus. Im Bereich „Regierung“ werden mehrere Anwendungsvorlagen für den Behördenbereich angezeigt.
+## <a name="walk-through-the-application"></a>Einführung in die Anwendung
 
-    ![Anwendungsvorlagen für den Behördenbereich](./media/tutorial-waterqualitymonitoring/iotcentral-government-tab-overview1.png)
+In den nächsten Abschnitten werden die wichtigsten Features der Anwendung behandelt:
 
-1. Wählen Sie die Anwendungsvorlage **Überwachung der Wasserqualität** aus. Diese Anwendungsvorlage enthält eine Gerätevorlage für die Wasserqualität, simulierte Geräte, ein Dashboard und vorkonfigurierte Überwachungsregeln.
-
-1. Wählen Sie **App erstellen** aus. Der Bereich **Neue Anwendung** mit den folgenden Elementen wird geöffnet:
-
-    * **Anwendungsname**: Standardmäßig lautet der Anwendungsname **Überwachung der Wasserqualität**, gefolgt von einer eindeutigen ID-Zeichenfolge, die von Azure IoT Central generiert wird. Bei Bedarf können Sie einen Anzeigenamen eingeben oder den Anwendungsnamen später ändern.
-    * **URL**: Sie können eine beliebige URL eingeben oder den URL-Wert später ändern.
-    * Geben Sie Werte für **Verzeichnis**, **Azure-Abonnement** und **Standort** ein, wenn Sie über ein Azure-Abonnement verfügen. Wenn Sie kein Abonnement haben, können Sie eine **7-tägige kostenlose Testversion** aktivieren und die erforderlichen Kontaktinformationen eingeben.
-
-1. Wählen Sie unten links auf der Seite die Schaltfläche **Erstellen** aus.
-
-    ![Seite für neue Anwendung in Azure IoT Central](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1.png)
-
-    ![Neue Anwendung in Azure IoT Central: Abrechnungsinformationen](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1-billinginfo.png)
-
-Sie haben nun eine Anwendung zur Überwachung der Wasserqualität erstellt, indem Sie die Azure IoT Central-Vorlage **Überwachung der Wasserqualität** verwendet haben.
-
-Ihre neue Anwendung verfügt über die folgenden vorkonfigurierten Komponenten:
-
-* Dashboards
-* Gerätevorlagen für die Überwachung der Wasserqualität
-* Simulierte Geräte zur Überwachung der Wasserqualität
-* Regeln und Aufträge
-* Branding mit Whitelabeling
-
-Sie können Ihre Anwendung jederzeit ändern.
-
-Erkunden Sie als Nächstes die Anwendung, und nehmen Sie einige Anpassungen vor.
-
-## <a name="explore-and-customize-the-dashboard"></a>Erkunden und Anpassen des Dashboards
+### <a name="dashboard"></a>Dashboard
 
 Nachdem Sie die Anwendung erstellt haben, wird der Bereich mit dem **Wide World Water-Dashboard zur Wasserqualität** geöffnet.
 
-   ![Dashboard für die Überwachung der Wasserqualität](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-dashboard1.png)
+:::image type="content" source="media/tutorial-waterqualitymonitoring/water-quality-monitoring-dashboard1.png" alt-text="Das Dashboard für die Überwachung der Wasserqualität.":::
 
 Als Lösungsentwickler können Sie im Dashboard Ansichten für Bediener erstellen und anpassen. Erkunden Sie aber zunächst das Dashboard, bevor Sie die Anpassungen durchführen.
 
@@ -110,7 +111,7 @@ Als Lösungsentwickler können Sie im Dashboard Ansichten für Bediener anpassen
 
 1. Wählen Sie die Option **Bearbeiten** aus, um den Bereich **Wide World Water-Dashboard zur Wasserqualität** anzupassen. Sie können das Dashboard anpassen, indem Sie Befehle im Menü **Bearbeiten** auswählen. Wenn sich das Dashboard im Modus „Bearbeiten“ befindet, können Sie neue Kacheln hinzufügen oder die vorhandenen Dateien konfigurieren.
 
-    ![Bearbeiten Ihres Dashboards](./media/tutorial-waterqualitymonitoring/edit-dashboard.png)
+    :::image type="content" source="media/tutorial-waterqualitymonitoring/edit-dashboard.png" alt-text="Bearbeiten Ihres Dashboards.":::
 
 1. Wählen Sie die Option **+ Neu** aus, um ein neues Dashboard zu erstellen, das Sie konfigurieren können. Sie können mehrere Dashboards nutzen und über das Dashboardmenü dazwischen navigieren.
 
@@ -125,7 +126,7 @@ Zeigen Sie die Gerätevorlage wie folgt an:
 1. Wählen Sie in Azure IoT Central ganz links im Bereich für Ihre Anwendung die Option **Gerätevorlagen** aus.
 1. Wählen Sie in der Liste der Gerätevorlagen **Überwachung der Wasserqualität**  aus, um diese Gerätevorlage zu öffnen.
 
-    ![Gerätevorlage](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-devicetemplate.png)
+:::image type="content" source="media/tutorial-waterqualitymonitoring/water-quality-monitoring-device-template.png" alt-text="Die Gerätevorlage.":::
 
 ### <a name="customize-the-device-template"></a>Anpassen der Gerätevorlage
 
@@ -148,7 +149,7 @@ Zeigen Sie die Gerätevorlage wie folgt an:
 
 Die Gerätevorlage „Überwachung der Wasserqualität“ verfügt über vordefinierte Ansichten. Mit den Ansichten wird definiert, wie die Gerätedaten für Bediener angezeigt werden und wie diese die Cloudeigenschaften festlegen können. Erkunden Sie die Ansichten, und üben Sie das Vornehmen von Änderungen.
 
-  ![Ansichten der Gerätevorlage](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-devicetemplate-views.png)
+:::image type="content" source="media/tutorial-waterqualitymonitoring/water-quality-monitoring-device-template-views.png" alt-text="Ansichten der Gerätevorlage.":::
 
 ### <a name="publish-the-device-template"></a>Veröffentlichen der Gerätevorlage
 
@@ -167,11 +168,11 @@ Die Anwendung zur Überwachung der Wasserqualität, die Sie mit der Anwendungsvo
 
 1. Wählen Sie in Ihrer Anwendung im Bereich ganz links die Option **Geräte** aus.
 
-   ![Geräte](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-devices.png)
+    :::image type="content" source="media/tutorial-waterqualitymonitoring/water-quality-monitoring-devices.png" alt-text="Geräte":::
 
 1. Wählen Sie ein simuliertes Gerät aus.
 
-    ![Auswählen von Gerät 1](./media/tutorial-waterqualitymonitoring/waterqualitymonitor-device1.png)
+    :::image type="content" source="media/tutorial-waterqualitymonitoring/water-quality-monitor-device1.png" alt-text="Auswählen von Gerät 1":::
 
 1. Ändern Sie auf der Registerkarte **Cloudeigenschaften** den Wert unter **Acidity (pH) threshold** (Azidität (pH): Schwellenwert) von **8** in **9**. Wählen Sie anschließend **Speichern** aus.
 1. Erkunden Sie die Registerkarten **Geräteeigenschaften** und **Gerätedashboard**.
@@ -197,11 +198,11 @@ Die von Ihnen erstellte Anwendung zur Überwachung der Wasserqualität verfügt 
 
 1. Wählen Sie in Ihrer Anwendung im Bereich ganz links die Option **Regeln** aus.
 
-   ![Regeln](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-rules.png)
+    :::image type="content" source="media/tutorial-waterqualitymonitoring/water-quality-monitoring-rules.png" alt-text="Regeln":::
 
 1. Wählen Sie die Option **High pH alert** (Warnung: Hoher pH-Wert) aus. Dies ist eine der vorkonfigurierten Regeln in der Anwendung.
 
-   ![Warnungsregel für hohen pH-Wert](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-highphalert.png)
+    :::image type="content" source="media/tutorial-waterqualitymonitoring/water-quality-monitoring-high-ph-alert.png" alt-text="Die Warnungsregel für hohen pH-Wert.":::
 
    Die Regel **High pH alert** (Warnung: Hoher pH-Wert) ist so konfiguriert, dass überprüft wird, ob der Wert für die Azidität (pH-Wert) höher als 8 ist.
 
@@ -237,7 +238,7 @@ Als Lösungsersteller können Sie verschiedene Einstellungen ändern, um die Ben
 1. Wählen Sie unter **Browsersymbol** die Option **Ändern** aus, um das Bild für die Anzeige auf Browsertabs auszuwählen.
 1. Unter **Browserfarben** können Sie die Standardwerte durch hexadezimale HTML-Farbcodes ersetzen.
 
-   ![Anpassen Ihrer Anwendung](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-customize-your-application1.png)
+    :::image type="content" source="media/tutorial-waterqualitymonitoring/water-quality-monitoring-customize-your-application1.png" alt-text="Anpassen Ihrer Anwendung":::
 
 ### <a name="update-the-application-image"></a>Aktualisieren des Anwendungsbilds
 
@@ -252,11 +253,4 @@ Falls Sie Ihre Anwendung nicht weiterverwenden möchten, sollten Sie sie mit den
 1. Öffnen Sie in Ihrer Anwendung ganz links die Registerkarte **Verwaltung**.
 1. Wählen Sie **Ihre Anwendung** und dann die Schaltfläche **Löschen** aus.
 
-    ![Löschen Ihrer Anwendung](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-application-settings-delete-app1.png)
-
-## <a name="next-steps"></a>Nächste Schritte
-
-* Weitere Informationen 
-
-> [!div class="nextstepaction"]
-> [Überwachung der Wasserqualität: Referenzarchitektur](./concepts-waterqualitymonitoring-architecture.md)
+    :::image type="content" source="media/tutorial-waterqualitymonitoring/water-quality-monitoring-application-settings-delete-app1.png" alt-text="Löschen Ihrer Anwendung.":::

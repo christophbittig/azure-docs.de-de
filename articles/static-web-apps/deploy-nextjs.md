@@ -5,19 +5,19 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: tutorial
-ms.date: 05/08/2020
+ms.date: 08/05/2021
 ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: eb4a9c69ed29b1f13ab2769044c0067779a5e195
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 1f8ef3146ce7ef1b1767c04284ddbdb191b50d81
+ms.sourcegitcommit: d01c2b2719e363178720003b67b968ac2a640204
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112454130"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122455902"
 ---
 # <a name="deploy-static-rendered-nextjs-websites-on-azure-static-web-apps"></a>Bereitstellen von statisch gerenderten Next.js-Websites in Azure Static Web Apps
 
-In diesem Tutorial erfahren Sie, wie Sie eine mit [Next.js](https://nextjs.org) generierte statische Website für [Azure Static Web Apps](overview.md) bereitstellen. Zunächst wird beschrieben, wie Sie eine Next.js-App einrichten, konfigurieren und bereitstellen. Im Rahmen dieses Prozesses erfahren Sie auch, wie Sie häufige Schwierigkeiten überwinden, die beim Generieren von statischen Seiten mit Next.js auftreten können.
+In diesem Tutorial erfahren Sie, wie Sie eine mit [Next.js](https://nextjs.org) generierte statische Website für [Azure Static Web Apps](overview.md) bereitstellen. Weitere Informationen zu den Besonderheiten von Next.js finden Sie in der [Infodatei mit der Starter-Vorlage](https://github.com/staticwebdev/nextjs-starter#readme).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -27,7 +27,7 @@ In diesem Tutorial erfahren Sie, wie Sie eine mit [Next.js](https://nextjs.org) 
 
 ## <a name="set-up-a-nextjs-app"></a>Einrichten einer Next.js-App
 
-Anstatt die Next.js-CLI zum Erstellen einer App zu verwenden, können Sie auch ein Startrepository nutzen, in dem eine Next.js-App vorhanden ist. Dieses Repository enthält eine Next.js-App mit dynamischen Routen, die zu einem häufigen Bereitstellungsproblem führen können. Für dynamische Routen muss eine zusätzliche Bereitstellungskonfiguration durchgeführt werden. Dies ist weiter unten genauer beschrieben.
+Anstatt die Next.js-CLI zum Erstellen einer App zu verwenden, können Sie auch ein Startrepository nutzen. Das Startrepository enthält eine vorhandene Next.js-Anwendung, die dynamische Routen unterstützt.
 
 Erstellen Sie zunächst aus einem Vorlagenrepository unter Ihrem GitHub-Konto ein neues Repository.
 
@@ -61,76 +61,13 @@ Navigieren Sie zu `http://localhost:3000`, um die App zu öffnen. Die folgende W
 
 :::image type="content" source="media/deploy-nextjs/start-nextjs-app.png" alt-text="Starten der Next.js-App":::
 
-Wenn Sie auf ein Framework bzw. eine Bibliothek klicken, sollte eine Detailseite zum ausgewählten Element angezeigt werden:
+Wenn Sie ein Framework oder eine Bibliothek auswählen, wird eine Detailseite zum ausgewählten Element angezeigt:
 
 :::image type="content" source="media/deploy-nextjs/start-nextjs-details.png" alt-text="Detailseite":::
 
-## <a name="generate-a-static-website-from-nextjs-build"></a>Generieren einer statischen Website aus dem Next.js-Build
-
-Beim Erstellen einer Next.js-Website mit `npm run build` wird die App als herkömmliche Web-App und nicht als statische Website erstellt. Verwenden Sie die unten angegebene Anwendungskonfiguration, um eine statische Website zu generieren.
-
-1. Erstellen Sie zum Konfigurieren von statischen Routen im Stammverzeichnis Ihres Projekts eine Datei mit dem Namen _next.config.js_, und fügen Sie den unten angegebenen Code hinzu.
-
-    ```javascript
-    module.exports = {
-      trailingSlash: true,
-      exportPathMap: function() {
-        return {
-          '/': { page: '/' }
-        };
-      }
-    };
-    ```
-
-      Mit dieser Konfiguration wird `/` der Next.js-Seite zugeordnet, die für die Route `/` bereitgestellt wird. Dies ist die Seitendatei _pages/index.js_.
-
-1. Aktualisieren Sie das Buildskript der Datei _package.json_, um nach der Erstellung mit dem Befehl `next export` auch eine statische Website zu generieren. Mit dem Befehl `export` wird eine statische Website generiert.
-
-    ```json
-    "scripts": {
-      "dev": "next dev",
-      "build": "next build && next export",
-    },
-    ```
-
-    Nach der Ausführung dieses Befehls wird das Skript `build` von Azure Static Web Apps jedes Mal ausgeführt, wenn Sie einen Commit pushen.
-
-1. Generieren einer statischen Website:
-
-    ```bash
-    npm run build
-    ```
-
-    Die statische Website wird generiert und in einen _out_-Ordner im Stammverzeichnis Ihres Arbeitsverzeichnisses kopiert.
-
-    > [!NOTE]
-    > Dieser Ordner ist in der _GITIGNORE_-Datei aufgeführt, damit er während des CI/CD-Vorgangs generiert werden kann, wenn Sie die Bereitstellung durchführen.
-
-## <a name="push-your-static-website-to-github"></a>Pushen Ihrer statischen Website zu GitHub
-
-Bei Azure Static Web Apps wird Ihre App aus einem GitHub-Repository bereitgestellt. Dies wird dann für jedes Pushen eines Commits zu einem entsprechend angegebenen Branch durchgeführt. Verwenden Sie die folgenden Befehle, um Ihre Änderungen mit GitHub zu synchronisieren.
-
-1. Stellen Sie alle geänderten Dateien bereit.
-
-    ```bash
-    git add .
-    ```
-
-1. Führen Sie einen Commit für alle Änderungen aus.
-
-    ```bash
-    git commit -m "Update build config"
-    ```
-
-1. Pushen Sie Ihre Änderungen zu GitHub.
-
-    ```bash
-    git push origin main
-    ```
-
 ## <a name="deploy-your-static-website"></a>Bereitstellen Ihrer statischen Website
 
-Die folgenden Schritte veranschaulichen, wie Sie die App, die Sie gerade zu GitHub gepusht haben, mit Azure Static Web Apps verknüpfen. Wenn sich die Anwendung in Azure befindet, können Sie sie in einer Produktionsumgebung bereitstellen.
+Die folgenden Schritte veranschaulichen, wie Sie Ihre App mit Azure Static Web Apps verknüpfen. Wenn sich die Anwendung in Azure befindet, können Sie sie in einer Produktionsumgebung bereitstellen.
 
 ### <a name="create-a-static-app"></a>Erstellen einer statischen App
 
@@ -156,15 +93,17 @@ Die folgenden Schritte veranschaulichen, wie Sie die App, die Sie gerade zu GitH
 
     | Eigenschaft | Wert |
     | --- | --- |
-    | _Organisation_ | Wählen Sie Ihre gewünschte GitHub-Organisation aus. |
+    | _Organisation_ | Wählen Sie die entsprechende GitHub-Organisation aus. |
     | _Repository_ | Wählen Sie **nextjs-starter** aus. |
     | _Branch_ | Wählen Sie **main** aus. |
 
-1. Wählen Sie im Abschnitt _Builddetails_ in der Dropdownliste _Buildvoreinstellungen_ die Option **Benutzerdefiniert** aus, und übernehmen Sie die Standardwerte.
+1. Wählen Sie im Abschnitt _Builddetails_ unter _Buildvoreinstellungen_ die Option **Benutzerdefiniert** aus. Fügen Sie die folgenden Werte für die Buildkonfiguration hinzu:
 
-1. Geben Sie im Feld _API-Speicherort_ **/** ein.
-1. Lassen Sie das Feld _API-Speicherort_ leer.
-1. Geben Sie im Feld _Ausgabespeicherort_ **out** ein.
+    | Eigenschaft | Wert |
+    | --- | --- |
+    | _App-Speicherort_ | Geben Sie **/** in das Feld ein. |
+    | _API-Speicherort_ | Lassen Sie dieses Feld leer. |
+    | _Ausgabespeicherort_ | Geben Sie **out** in das Feld ein. |
 
 ### <a name="review-and-create"></a>Überprüfen und Erstellen
 
@@ -172,66 +111,35 @@ Die folgenden Schritte veranschaulichen, wie Sie die App, die Sie gerade zu GitH
 
 1. Wählen Sie **Erstellen** aus, um mit der Erstellung der statischen App Service-Web-App zu beginnen und einen GitHub Action-Vorgang für die Bereitstellung anzugeben.
 
-1. Wenn die Bereitstellung abgeschlossen ist, klicken Sie auf **Zu Ressource wechseln**.
+1. Wählen Sie nach Abschluss der Bereitstellung die Option **Zu Ressource wechseln** aus.
 
-1. Klicken Sie im Fenster _Übersicht_ auf den Link *URL*, um Ihre bereitgestellte Anwendung zu öffnen.
+1. Wählen Sie im Fenster _Übersicht_ den Link *URL* aus, um Ihre bereitgestellte Anwendung zu öffnen.
 
-Falls die Website nicht sofort geladen wird, ist der Workflow für GitHub Actions im Hintergrund noch aktiv. Nach Abschluss des Workflows können Sie auf die Schaltfläche zum Aktualisieren des Browsers klicken, um Ihre Web-App anzuzeigen.
-Falls die Website nicht sofort geladen wird, ist der Workflow für GitHub Actions im Hintergrund noch aktiv. Nach Abschluss des Workflows können Sie auf die Schaltfläche zum Aktualisieren des Browsers klicken, um Ihre Web-App anzuzeigen.
+Wenn die Website nicht sofort geladen wird, wird der Build noch ausgeführt. Nach Abschluss des Workflows können Sie den Browser aktualisieren, um Ihre Web-App anzuzeigen.
 
-Sie können den Status der GitHub Actions-Workflows überprüfen, indem Sie zu den Aktionen für Ihr Repository navigieren:
+Wenn Sie den Status des Actions-Workflows überprüfen möchten, navigieren Sie zum Actions-Dashboard für Ihr Repository:
 
 ```url
 https://github.com/<YOUR_GITHUB_USERNAME>/nextjs-starter/actions
 ```
 
+Alle am `main`-Branch vorgenommenen Änderungen starten nun eine neue Erstellung und Bereitstellung Ihrer Website.
+
 ### <a name="sync-changes"></a>Synchronisieren von Änderungen
 
-Als Sie die App erstellt haben, wurde von Azure Static Web Apps in Ihrem Repository eine GitHub Actions-Workflowdatei erstellt. Sie müssen diese Datei in Ihr lokales Repository einfügen, damit Ihr Git-Verlauf synchronisiert wird.
+Als Sie die App erstellt haben, wurde von Azure Static Web Apps in Ihrem Repository eine GitHub Actions-Datei erstellt. Führen Sie die Synchronisierung mit dem Server aus, indem Sie die neueste Version in Ihr lokales Repository pullen.
 
 Wechseln Sie zurück zum Terminal, und führen Sie den folgenden Befehl aus: `git pull origin main`.
 
-## <a name="configure-dynamic-routes"></a>Konfigurieren dynamischer Routen
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Navigieren Sie zur neu bereitgestellten Website, und klicken Sie auf eines der Logos für ein Framework oder eine Bibliothek. Anstelle der Detailseite wird eine Seite mit dem Fehler 404 angezeigt.
+Falls Sie diese Anwendung nicht weiter nutzen möchten, können Sie die Azure Static Web Apps-Instanz mit den folgenden Schritten löschen:
 
-:::image type="content" source="media/deploy-nextjs/404-in-production.png" alt-text="Fehler 404 bei dynamischen Routen":::
-
-Der Grund für diesen Fehler ist, dass von Next.js basierend auf der Anwendungskonfiguration nur die Startseite generiert wurde.
-
-## <a name="generate-static-pages-from-dynamic-routes"></a>Generieren von statischen Seiten aus dynamischen Routen
-
-1. Aktualisieren Sie die Datei _next.config.js_, damit von Next.js eine Liste mit allen verfügbaren Daten verwendet wird, um statische Seiten für jedes Framework bzw. jede Bibliothek zu generieren:
-
-   ```javascript
-   const data = require('./utils/projectsData');
-
-   module.exports = {
-     trailingSlash: true,
-     exportPathMap: async function () {
-       const { projects } = data;
-       const paths = {
-         '/': { page: '/' },
-       };
-  
-       projects.forEach((project) => {
-         paths[`/project/${project.slug}`] = {
-           page: '/project/[path]',
-           query: { path: project.slug },
-         };
-       });
-  
-       return paths;
-     },
-   };
-   ```
-
-   > [!NOTE]
-   > Da die Funktion `exportPathMap` eine asynchrone Funktion ist, können Sie darin eine Anforderung an eine API senden und die zurückgegebene Liste verwenden, um die Pfade zu generieren.
-
-2. Pushen Sie die neuen Änderungen in Ihr GitHub-Repository, und warten Sie einige Minuten, während Ihre Website von GitHub Actions neu erstellt wird. Nach Abschluss des Buildvorgangs wird der Fehler 404 nicht mehr angezeigt.
-
-   :::image type="content" source="media/deploy-nextjs/404-in-production-fixed.png" alt-text="Behobener Fehler 404 für dynamische Routen":::
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
+1. Suchen Sie über die obere Suchleiste nach **my-nextjs-group**.
+1. Wählen Sie den Gruppennamen aus.
+1. Klicken Sie auf die Schaltfläche **Löschen**.
+1. Klicken Sie zum Bestätigen des Löschvorgangs auf **Ja**.
 
 > [!div class="nextstepaction"]
 > [Einrichten einer benutzerdefinierten Domäne](custom-domain.md)

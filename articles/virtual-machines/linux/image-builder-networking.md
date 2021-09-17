@@ -8,14 +8,16 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.openlocfilehash: 19e77b8a2baa168b1ca6ed335711b2f41a2c1aea
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: 1285f3673851e5784a5bc35b606e2dc30d7cfd09
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113596279"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691869"
 ---
 # <a name="azure-image-builder-service-networking-options"></a>Netzwerkoptionen des Azure VM Image Builder-Diensts
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
 Sie müssen entscheiden, ob Azure VM Image Builder mit oder ohne einem vorhandenen VNET bereitgestellt werden soll.
 

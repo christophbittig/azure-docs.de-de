@@ -3,16 +3,16 @@ title: Architektonische Konzepte in Azure IoT Central | Microsoft-Dokumentation
 description: In diesem Artikel werden die wichtigsten Konzepte in Bezug auf die Architektur von Azure IoT Central vorgestellt.
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/19/2020
+ms.date: 08/31/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 46b8cdc7fa33c8ddd382decb49eaa148093c99fe
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 37e4224ae1347647d15959a55d19d2c6487935d7
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355614"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123273211"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central-Architektur
 
@@ -29,71 +29,11 @@ In Azure IoT Central werden die Daten, die ein Gerät mit Ihrer Anwendung austau
 
 Um mehr darüber zu erfahren, wie Geräte eine Verbindung mit Ihrer Azure IoT Central-Anwendung herstellen können, lesen Sie [Gerätekonnektivität](concepts-get-connected.md).
 
-## <a name="azure-iot-edge-devices"></a>Azure IoT Edge-Geräte
+### <a name="azure-iot-edge-devices"></a>Azure IoT Edge-Geräte
 
-Ebenso wie Geräte, die mit den [Azure IoT-SDKs](https://github.com/Azure/azure-iot-sdks) erstellt wurden, können Sie auch [Azure IoT Edge Geräte](../../iot-edge/about-iot-edge.md) mit einer IoT Central-Anwendung verbinden. IoT Edge ermöglicht die Ausführung von Cloud Intelligence und benutzerdefinierter Logik direkt auf IoT-Geräten, die von IoT Central verwaltet werden. Die IoT Edge-Laufzeit ermöglicht Ihnen Folgendes:
+Ebenso wie Geräte, die mit den [Azure IoT-SDKs](https://github.com/Azure/azure-iot-sdks) erstellt wurden, können Sie auch [Azure IoT Edge Geräte](../../iot-edge/about-iot-edge.md) mit einer IoT Central-Anwendung verbinden. IoT Edge ermöglicht die Ausführung von Cloud Intelligence und benutzerdefinierter Logik direkt auf IoT-Geräten, die von IoT Central verwaltet werden. Sie können auch IoT Edge als Gateway verwenden, um anderen nachgeschalteten Geräten das Herstellen einer Verbindung mit IoT Central zu ermöglichen.
 
-- Installieren und Aktualisieren von Workloads auf dem Gerät
-- Aufrechterhalten von IoT Edge-Sicherheitsstandards auf dem Gerät
-- Sicherstellen, dass die IoT Edge-Module immer ausgeführt werden
-- Melden der Modulintegrität an die Cloud für die Remoteüberwachung
-- Verwalten der Kommunikation zwischen nachgeschalteten Blattknotengeräten und einem IoT Edge-Gerät, zwischen Modulen auf einem IoT Edge-Gerät sowie zwischen einem IoT Edge-Gerät und der Cloud.
-
-![Azure IoT Central mit Azure IoT Edge](./media/concepts-architecture/iotedge.png)
-
-IoT Central bietet die folgenden Funktionen für IoT Edge-Geräte:
-
-- Gerätevorlagen zum Beschreiben der Funktionen eines IoT Edge-Geräts, wie z.B.:
-  - Funktion zum Upload eines Bereitstellungsmanifests, wodurch ein Manifest für eine Geräteflotte verwaltet werden kann
-  - Module, die auf dem IoT Edge-Gerät ausgeführt werden
-  - Die von jedem Modul gesendeten Telemetriedaten
-  - Die von jedem Modul gemeldeten Eigenschaften
-  - Die Befehle, auf die jedes Modul reagiert
-  - Die Beziehungen zwischen einem IoT Edge-Gatewaygerät und dem nachgeschalteten Gerät
-  - Cloudeigenschaften, die auf dem IoT Edge-Gerät nicht gespeichert werden
-  - Anpassungen, die ändern, wie Gerätefunktionen auf der Benutzeroberfläche angezeigt werden.
-  - Geräteansichten und Formulare.
-
-  Weitere Informationen finden Sie im Artikel [Verbinden eines Azure IoT Edge-Geräts mit einer Azure IoT Central-Anwendung](./concepts-iot-edge.md).
-
-- Die Funktion zum Bereitstellen von IoT Edge-Geräten nach Maß mit dem Azure IoT-Gerätebereitstellungsdienst
-- Regeln und Aktionen
-- Benutzerdefinierte Dashboards und Analysen
-- Fortlaufender Datenexport von Telemetriedaten von IoT Edge-Geräten
-
-### <a name="iot-edge-device-types"></a>IoT Edge-Gerätetypen
-
-IoT Central klassifiziert IoT Edge-Gerätetypen folgendermaßen:
-
-- Blattgeräte. Ein IoT Edge-Gerät kann über nachgeschaltete Blattgeräte verfügen, doch diese Geräte werden in IoT Central nicht bereitgestellt.
-- Gatewaygeräte mit nachgeschalteten Geräten. Sowohl das Gatewaygerät als auch nachgeschaltete Geräte werden in IoT Central bereitgestellt.
-
-![Übersicht über IoT Central mit IoT Edge](./media/concepts-architecture/gatewayedge.png)
-
-> [!NOTE]
-> IoT Central unterstützt zurzeit nicht das Verbinden eines IoT Edge Geräts als nachgeschaltetes Gerät mit einem IoT Edge-Gateway. Der Grund: Alle Geräte, die eine Verbindung mit IoT Central herstellen, werden mit dem Device Provisioning Service (DPS) bereitgestellt, und DPS unterstützt keine geschachtelten IoT Edge-Szenarios.
-
-### <a name="iot-edge-patterns"></a>IoT Edge-Muster
-
-IoT Central unterstützt die folgenden IoT Edge-Gerätemuster:
-
-#### <a name="iot-edge-as-leaf-device"></a>IoT Edge als Blattgerät
-
-![IoT Edge als Blattgerät](./media/concepts-architecture/edgeasleafdevice.png)
-
-Das IoT Edge-Gerät wird in IoT Central bereitgestellt; alle nachgeschalteten Geräte und deren Telemetriedaten werden so dargestellt, als stammten sie vom IoT Edge-Gerät. Nachgeschaltete Geräte, die mit dem IoT Edge-Gerät verbunden sind, werden in IoT Central nicht bereitgestellt.
-
-#### <a name="iot-edge-gateway-device-connected-to-downstream-devices-with-identity"></a>IoT Edge-Gatewaygerät, das mit nachgeschalteten Geräten mit Identität verbunden ist
-
-![IoT Edge mit nachgeschalteter Geräteidentität](./media/concepts-architecture/edgewithdownstreamdeviceidentity.png)
-
-Das IoT Edge-Gerät wird in IoT Central zusammen mit den nachgeschalteten Geräten bereitgestellt, die mit ihm verbunden sind. Runtime-Unterstützung für die Bereitstellung von nachgeschalteten Geräten über das Gateway gibt es derzeit nicht.
-
-#### <a name="iot-edge-gateway-device-connected-to-downstream-devices-with-identity-provided-by-the-iot-edge-gateway"></a>IoT Edge-Gatewaygerät, das mit nachgeschalteten Geräten mit Identität verbunden ist, die vom IoT Edge-Gateway bereitgestellt wird
-
-![IoT Edge mit nachgeschaltetem Gerät ohne Identität](./media/concepts-architecture/edgewithoutdownstreamdeviceidentity.png)
-
-Das IoT Edge-Gerät wird in IoT Central zusammen mit den nachgeschalteten Geräten bereitgestellt, die mit ihm verbunden sind. Runtime-Unterstützung für die Bereitstellung von Identitätsdaten für nachgeschaltete Geräte durch ein Gateway und die Bereitstellung nachgeschalteter Geräte gibt es derzeit nicht. Wenn Sie ein eigenes Modul für die Identitätsübersetzung einsetzen, kann IoT Central dieses Muster unterstützen.
+Weitere Informationen finden Sie unter [Verbinden eines Azure IoT Edge-Geräts mit einer Azure IoT Central-Anwendung](concepts-iot-edge.md).
 
 ## <a name="cloud-gateway"></a>Cloudgateway
 

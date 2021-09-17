@@ -10,12 +10,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 07/14/2021
-ms.openlocfilehash: dd8fc18b8f24a6164830dda6044c1b03151eb180
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 31c9f128c1e98ce3b5a3e6a50f11e4afea33ecbc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113727344"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747674"
 ---
 # <a name="tutorial-getting-started-with-always-encrypted-with-secure-enclaves-in-azure-sql-database"></a>Tutorial: Erste Schritte mit Always Encrypted mit Secure Enclaves in Azure SQL-Datenbank
 
@@ -125,7 +125,7 @@ In diesem Schritt erstellen Sie unter Verwendung der Hardwaregeneration der DC-S
    ```PowerShell
    Connect-AzAccount
    $subscriptionId = "<your subscription ID>"
-   Set-AzContext -Subscription $subscriptionId
+   $context = Set-AzContext -Subscription $subscriptionId
    ```
 
 1. Erstellen einer neuen Ressourcengruppe
@@ -253,8 +253,17 @@ In diesem Schritt erstellen und konfigurieren Sie einen Nachweisanbieter in Micr
    $attestationProviderName = "<your attestation provider name>" 
    New-AzAttestation -Name $attestationProviderName -ResourceGroupName $resourceGroupName -Location $location
    ```
+1. Weisen Sie sich selbst der Rolle „Nachweismitwirkender“ für den Nachweisanbieter zu, um sicherzustellen, dass Sie über Berechtigungen zum Konfigurieren einer Nachweisrichtlinie verfügen.
 
-1. Konfigurieren Sie die Nachweisrichtlinie.
+   ```powershell
+   New-AzRoleAssignment -SignInName $context.Account.Id `
+    -RoleDefinitionName "Attestation Contributor" `
+    -ResourceName $attestationProviderName `
+    -ResourceType "Microsoft.Attestation/attestationProviders" `
+    -ResourceGroupName $resourceGroupName
+   ```
+   
+3. Konfigurieren Sie die Nachweisrichtlinie.
   
    ```powershell
    $policyFile = "<the pathname of the file from step 1 in this section>"

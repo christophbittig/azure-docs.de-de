@@ -8,14 +8,16 @@ ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
 ms.subservice: cloud-init
-ms.openlocfilehash: fa4381aa21b1565e29db026b43dbc70b457daf5d
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: b9a113c4c7f54bfb47d10795325f163cd6f35429
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109783205"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687927"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>Problembehandlung bei VM-Bereitstellung mit cloud-init
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
 Wenn Sie generalisierte benutzerdefinierte Images erstellt haben, die mit cloud-init bereitgestellt werden, dann aber feststellen, dass die jeweilige VM nicht ordnungsgemäß erstellt wurde, müssen Sie für Ihre benutzerdefinierten Images eine Problembehandlung vornehmen.
 

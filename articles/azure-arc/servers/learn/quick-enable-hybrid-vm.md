@@ -3,16 +3,16 @@ title: Verbinden eines Hybridcomputers mit Azure Arc-fähigen Servern
 description: Hier erfahren Sie, wie Sie Ihren Hybridcomputer mit Azure Arc-fähigen Servern verbinden und registrieren.
 ms.topic: quickstart
 ms.date: 12/15/2020
-ms.openlocfilehash: c52b8d1f7098a7a2a88a9770a3b768b7fea31775
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d5f1699447093f148b0dadbdd23857c9e16e13a3
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101646825"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772657"
 ---
-# <a name="quickstart-connect-hybrid-machines-with-azure-arc-enabled-servers"></a>Schnellstart: Verbinden von Hybridcomputern mit Servern mit Azure Arc-Unterstützung
+# <a name="quickstart-connect-hybrid-machines-with-azure-arc-enabled-servers"></a>Schnellstart: Verbinden von Hybridcomputern mit Azure Arc-fähigen Servern
 
-Mit [Azure Arc-fähigen Servern](../overview.md) können Sie Ihre Windows- und Linux-Computer, die in lokalen Umgebungen, in Edgeumgebungen und in Multicloudumgebungen gehostet werden, verwalten und steuern. In dieser Schnellstartanleitung wird der Connected Machine-Agent auf Ihrem außerhalb von Azure gehosteten Windows- oder Linux-Computer bereitgestellt und für die Verwaltung durch Azure Arc-fähige Server konfiguriert.
+Mit [Azure Arc-fähigen Servern](../overview.md) können Sie Windows- und Linux-Computer steuern, die in lokalen Umgebungen, in Edgeumgebungen und in Multicloudumgebungen gehostet werden. In diesem Schnellstart wird der Connected Machine-Agent auf Ihrem außerhalb von Azure gehosteten Windows- oder Linux-Computer bereitgestellt und für die Verwaltung durch Azure Arc-fähige Server konfiguriert.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -31,7 +31,7 @@ Mit [Azure Arc-fähigen Servern](../overview.md) können Sie Ihre Windows- und 
     * Von Azure Arc-fähigen Servern werden nur die [hier](../overview.md#supported-regions) angegebenen Regionen unterstützt.
 
 > [!WARNING]
-> Der Linux-Hostname oder Windows-Computername darf keines der reservierten Wörter bzw. keine Marken im Namen verwenden. Andernfalls schlägt der Versuch fehl, den verbundenen Computer bei Azure zu registrieren. Eine Liste der reservierten Wörter finden Sie unter [Beheben von Fehlern bei reservierten Ressourcennamen](../../../azure-resource-manager/templates/error-reserved-resource-name.md).
+> Der Linux-Hostname oder Windows-Computername darf keines der reservierten Wörter bzw. keine Marken im Namen verwenden. Andernfalls führt der Versuch, den verbundenen Computer bei Azure zu registrieren, zu einem Fehler. Eine Liste der reservierten Wörter finden Sie unter [Beheben von Fehlern bei reservierten Ressourcennamen](../../../azure-resource-manager/templates/error-reserved-resource-name.md).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
@@ -56,7 +56,7 @@ Das Skript zum Automatisieren des Download- und Installationsvorgangs sowie zum 
 
 1. Starten Sie den Azure Arc-Dienst im Azure-Portal, indem Sie auf **Alle Dienste** klicken und dann nach **Server – Azure Arc** suchen und diese Option auswählen.
 
-    :::image type="content" source="./media/quick-enable-hybrid-vm/search-machines.png" alt-text="Suchen nach Servern mit Arc-Unterstützung unter „Alle Dienste“" border="false":::
+    :::image type="content" source="./media/quick-enable-hybrid-vm/search-machines.png" alt-text="Suchen nach Azure Arc-fähigen Servern unter „Alle Dienste“" border="false":::
 
 1. Wählen Sie auf der Seite **Server - Azure Arc** oben links **Hinzufügen** aus.
 

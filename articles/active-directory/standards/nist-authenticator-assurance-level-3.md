@@ -13,12 +13,12 @@ ms.reviewer: martinco
 ms.date: 4/26/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 210213321dfba3bf734af498db6567cf1c6b4281
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: d95bfadd23e1a8e0d2db70952c81667d24dc4230
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111889704"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771022"
 ---
 # <a name="achieve-nist-authenticator-assurance-level-3-by-using-azure-active-directory"></a>Realisieren von NIST Authenticator Assurance Level 3 mit Azure Active Directory
 
@@ -44,7 +44,7 @@ Microsoft bietet Authentifizierungsmethoden, mit denen Sie die erforderlichen NI
 
 Es wird empfohlen, einen Multi-Factor-Kryptografiehardware-Authentifikator zu verwenden, um AAL3 zu erzielen. Die kennwortlose Authentifizierung beseitigt die größte Angriffsfläche – das Kennwort – und bietet Benutzern eine optimierte Authentifizierungsmethode. Für vollständig cloudbasierte Organisationen wird die Verwendung von FIDO2-Sicherheitsschlüsseln empfohlen.
 
-Beachten Sie, dass FIDO2-Schlüssel und Windows Hello for Business nicht auf der erforderlichen FIPS 140-Sicherheitsstufe überprüft wurden. Daher müssen staatliche Kunden eine Risikobeurteilung und -bewertung durchführen, bevor sie diese Authentifikatoren als AAL3 akzeptieren.
+Hinweis: Windows Hello for Business wurde nicht gemäß der erforderlichen FIPS 140-Sicherheitsstufe validiert. Daher müssen Kunden wie z. B. US-Bundesbehörden eine Risikobewertung und Evaluierung durchführen, bevor sie es als AAL3 akzeptieren. .
 
 Einen detaillierten Leitfaden finden Sie unter [Planen einer Bereitstellung mit kennwortloser Authentifizierung in Azure Active Directory](../authentication/howto-authentication-passwordless-deployment.md).
 

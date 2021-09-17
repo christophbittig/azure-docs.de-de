@@ -7,18 +7,16 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 07/13/2021
+ms.date: 07/30/2021
 ms.topic: overview
-ms.openlocfilehash: c1c72ea44dc392e169f505c4820f99affdc82615
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 6ac96cb0420ecdba934b364c185bedf01f9f4321
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114602521"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822646"
 ---
 #  <a name="create-azure-arc-data-controller-from-azure-portal---direct-connectivity-mode"></a>Bereitstellen eines Azure Arc-Datencontrollers vom Microsoft Azure-Portal im direkten Verbindungsmodus
-
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 In diesem Artikel wird beschrieben, wie Sie den Azure Arc-Datencontroller während der aktuellen Vorschau dieses Features im direkten Verbindungsmodus bereitstellen. 
 
@@ -26,21 +24,13 @@ In diesem Artikel wird beschrieben, wie Sie den Azure Arc-Datencontroller währ
 
 Vergewissern Sie sich zunächst, dass Sie die Voraussetzungen unter [Bereitstellen eines Datencontrollers: direkter Verbindungsmodus (Voraussetzungen)](create-data-controller-direct-prerequisites.md) erfüllen.
 
->[!NOTE]
->Sie müssen zunächst eine Arc-fähige Kubernetes-Datendiensterweiterung unter Verwendung der Azure CLI bereitstellen.
->
->```azurecli
->az k8s-extension create -c "{connected_cluster_name}" -g "{resource_group_name}" --name "arcdataservices" --cluster-type "connectedClusters" --extension-type "microsoft.arcdataservices" --scope "cluster" --release-namespace {namespace} --config "Microsoft.CustomLocation.ServiceAccount=sa-bootstrapper"
->```
-
-
 ## <a name="deploy-azure-arc-data-controller"></a>Bereitstellen eines Azure Arc-Datencontrollers
 
 Der Azure Arc Datencontroller-Erstellungsablauf kann über das Azure-Portal auf eine der folgenden Arten gestartet werden:
 
 - Suchen Sie in der Suchleiste im Azure-Portal nach „Azure Arc-Datencontroller“ und wählen Sie „+ Erstellen“ aus
 - Auf der Übersichtsseite Ihres Azure Arc Kubernetes-Clusters,
-  - Wählen Sie unter „Einstellungen“ die Option „Erweiterungen (Vorschau)“ aus.
+  - Wählen Sie unter „Einstellungen“ die Option „Erweiterungen“ aus.
   - Wählen Sie auf der Übersichtsseite Erweiterungen die Option „Hinzufügen“ und dann „Azure Arc-Datencontroller“ aus
   - Wählen Sie im Azure Arc-Datencontroller Marketplace-Katalog die Option „Erstellen“ aus
   

@@ -1,53 +1,54 @@
 ---
-title: Schützen einer Single-Page-Webanwendung mit nicht interaktiver Anmeldung
+title: Sichern einer Einzelseiten-Webanwendung mit nicht interaktiver Anmeldung in Microsoft Azure Maps
 titleSuffix: Azure Maps
-description: Konfigurieren einer Single-Page-Webanwendung mit nicht interaktiver rollenbasierter Zugriffssteuerung von Azure (Azure RBAC) und Azure Maps Web SDK.
+description: Konfigurieren einer Einzelseiten-Webanwendung mit nicht interaktiver rollenbasierter Zugriffssteuerung von Azure (Azure RBAC) und Azure Maps Web SDK.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 06/12/2020
+ms.date: 06/21/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
-ms.custom: devx-track-js
-ms.openlocfilehash: 9d2af0bf731ab069a8512cb10feccf5ba18d3fa0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-js, subject-rbac-steps
+ms.openlocfilehash: 9bf18a9122bbe8406b76cfd822cc2a5a86339a52
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101092723"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122639807"
 ---
-# <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>Schützen einer Single-Page-Webanwendung mit nicht interaktiver Anmeldung
+# <a name="how-to-secure-a-single-page-web-application-with-non-interactive-sign-in"></a>Schützen einer Einzelseiten-Webanwendung mit nicht interaktiver Anmeldung
 
-Die folgende Anleitung bezieht sich auf eine Anwendung, die Azure Active Directory (Azure AD) verwendet, um ein Zugriffstoken für Azure Maps-Anwendungen bereitzustellen, wenn sich der Benutzer nicht bei Azure AD anmelden kann. Dieser Flow erfordert das Hosting eines Webdiensts, der so gesichert sein muss, dass nur die Single-Page-Webanwendung darauf zugreifen kann. Es gibt mehrere Implementierungen, mit denen die Authentifizierung bei Azure AD erreicht werden kann. Diese Anleitung nutzt das Produkt Azure Functions, um Zugriffstoken abzurufen.
+In diesem Artikel wird beschrieben, wie Sie eine Einzelseiten-Webanwendung mit Azure Active Directory (Azure AD) schützen, wenn sich der Benutzer nicht bei Azure AD anmelden kann.
+
+Um diesen nicht-interaktiven Authentifizierungsablauf zu bilden, erstellen wir einen sicheren Azure Function-Webdienst, der für den Erwerb von Zugriffstoken von Azure AD verantwortlich ist. Dieser Webdienst ist nur für Ihre Einzelseiten-Webanwendung verfügbar.
 
 [!INCLUDE [authentication details](./includes/view-authentication-details.md)]
 
 > [!Tip]
-> Azure Maps kann Zugriffstoken aus Benutzeranmeldungs-/interaktiven Flows unterstützen. Interaktive Flows ermöglichen einen eingeschränkteren Bereich der Zugriffssperrung und Geheimnisverwaltung.
+> Azure Maps kann Zugriffstoken aus Benutzeranmeldungs- oder interaktiven Flows unterstützen. Interaktive Flows ermöglichen einen eingeschränkteren Bereich der Zugriffssperrung und Geheimhaltungsverwaltung.
 
-## <a name="create-azure-function"></a>Azure-Funktion erstellen
+## <a name="create-an-azure-function"></a>Erstellen einer Azure-Funktion
 
-Erstellen Sie eine gesicherte Webdienstanwendung, die für die Authentifizierung bei Azure AD zuständig ist. 
+Erstellen einer gesicherten Webdienstanwendung, die für die Authentifizierung bei Azure AD zuständig ist:
 
-1. Erstellen Sie eine Funktion im Azure-Portal. Weitere Informationen finden Sie unter [Erstellen einer Azure-Funktion](../azure-functions/functions-get-started.md).
+1. Erstellen Sie eine Funktion im Azure-Portal. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Functions](../azure-functions/functions-get-started.md).
 
-2. Konfigurieren Sie die CORS-Richtlinie für die Azure-Funktion so, dass Sie die Single-Page-Webanwendung darauf zugreifen kann. Dadurch werden Browserclients auf die zulässigen Ursprünge Ihrer Webanwendung gesichert. Siehe [Hinzufügen der CORS-Funktion](../app-service/app-service-web-tutorial-rest-api.md#add-cors-functionality).
+2. Konfigurieren Sie die CORS-Richtlinie für die Azure-Funktion so, dass die Einzelseiten-Webanwendung darauf zugreifen kann. Die CORS-Richtlinie gewährleistet, dass Browser-Clients nur die zulässigen Ursprünge Ihrer Webanwendung verwenden. Weitere Informationen finden Sie unter [Hinzufügen der CORS-Funktion](../app-service/app-service-web-tutorial-rest-api.md#add-cors-functionality).
 
 3. [Fügen Sie der Azure-Funktion eine systemseitig zugewiesene Identität hinzu](../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity), um das Erstellen eines Dienstprinzipals für die Authentifizierung bei Azure AD zu ermöglichen.  
 
-4. Gewähren Sie der systemseitig zugewiesenen Identität rollenbasierten Zugriff auf das Azure Maps-Konto. Details hierzu finden Sie unter [Gewähren des rollenbasierten Zugriffs](#grant-role-based-access).
+4. Gewähren Sie der systemseitig zugewiesenen Identität rollenbasierten Zugriff auf das Azure Maps-Konto. Details hierzu finden Sie unter [Gewähren von rollenbasiertem Zugriff](#grant-role-based-access-for-users-to-azure-maps).
 
-5. Schreiben Sie Code für die Azure-Funktion, mit dem sie Azure Maps-Zugriffstoken mittels einer systemseitig zugewiesenen Identität mit einem der unterstützten Mechanismen oder dem REST-Protokoll abruft. Siehe [Abrufen von Token für Azure-Ressourcen](../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity).
+5. Schreiben Sie Code für die Azure-Funktion, mit dem sie Azure Maps-Zugriffstoken mittels einer systemseitig zugewiesenen Identität mit einem der unterstützten Mechanismen oder dem REST-Protokoll abruft. Weitere Informationen finden Sie unter [Erhalten von Token für Azure-Ressourcen](../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity)
 
-    Beispiel für ein REST-Protokoll:
+    Hier ein Beispiel für ein REST-Protokoll:
 
     ```http
     GET /MSI/token?resource=https://atlas.microsoft.com/&api-version=2019-08-01 HTTP/1.1
     Host: localhost:4141
     ```
 
-    Beispiel für eine Antwort:
+    Und hier eine Beispielantwort:
 
     ```http
     HTTP/1.1 200 OK
@@ -62,12 +63,12 @@ Erstellen Sie eine gesicherte Webdienstanwendung, die für die Authentifizierung
     }
     ```
 
-6. Konfigurieren der Sicherheit für den HttpTrigger der Azure-Funktion
+6. Konfigurieren Sie die Sicherheit für den HttpTrigger der Azure-Funktion:
 
-   * [Erstellen eines Funktionszugriffsschlüssels](../azure-functions/functions-bindings-http-webhook-trigger.md?tabs=csharp#authorization-keys)
-   * [Sichern Sie den HTTP-Endpunkt](../azure-functions/functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production) für die in Produktion befindliche Azure-Funktion.
-   
-7. Konfigurieren Sie das Azure Maps Web SDK der Webanwendung. 
+   1. [Erstellen eines Funktionszugriffsschlüssels](../azure-functions/functions-bindings-http-webhook-trigger.md?tabs=csharp#authorization-keys)
+   1. [Sichern Sie den HTTP-Endpunkt](../azure-functions/functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production) für die in Produktion befindliche Azure-Funktion.
+
+7. Konfigurieren Sie eine Azure Maps Web SDK Webanwendung. 
 
     ```javascript
     //URL to custom endpoint to fetch Access token
@@ -100,25 +101,11 @@ Erstellen Sie eine gesicherte Webdienstanwendung, die für die Authentifizierung
         });
     ```
 
-## <a name="grant-role-based-access"></a>Gewähren von rollenbasiertem Zugriff
-
-Sie gewähren die *rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)* , indem Sie die systemseitig zugewiesene Identität einer oder mehreren Azure-Rollendefinitionen zuweisen. Informationen über die für Azure Maps verfügbaren Rollendefinitionen für die rollenbasierte Zugriffssteuerung von Azure finden Sie unter **Zugriffssteuerung (IAM)** . Wählen Sie **Rollen** aus, und suchen Sie dann nach Rollen, die mit *Azure Maps* beginnen.
-
-1. Navigieren Sie zu Ihrem **Azure Maps-Konto**. Wählen Sie **Zugriffssteuerung (IAM)**  > **Rollenzuweisungen** aus.
-
-    > [!div class="mx-imgBorder"]
-    > ![Gewähren von Zugriff mithilfe von Azure RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
-
-2. Wählen Sie auf der Registerkarte **Rollenzuweisungen** unter **Rolle** eine integrierte Azure Maps-Rollendefinition aus, z. B. **Azure Maps-Datenleser** oder **Azure Maps-Datenmitwirkender**. Wählen Sie unter **Zugriff zuweisen zu** die Option **Funktions-App** aus. Wählen Sie den Prinzipal nach Namen aus. Klicken Sie dann auf **Speichern**.
-
-   * Weitere Informationen finden Sie unter [Zuweisen von Azure-Rollen](../role-based-access-control/role-assignments-portal.md).
-
-> [!WARNING]
-> Integrierte Azure Maps-Rollendefinitionen bieten einen sehr umfangreichen Autorisierungszugriff auf viele Azure Maps-REST-APIs. Informationen, wie Sie den Zugriff auf APIs auf ein Mindestmaß beschränken, finden Sie unter [Erstellen einer benutzerdefinierten Rollendefinition und Zuweisen der systemseitig zugewiesenen Identität](../role-based-access-control/custom-roles.md) zur benutzerdefinierten Rollendefinition. Dadurch wird die geringste Berechtigung aktiviert, die für den Zugriff der Anwendung auf Azure Maps erforderlich ist.
+[!INCLUDE [grant role-based access to users](./includes/grant-rbac-users.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Single-Page-Webanwendungsszenario:
+Weiteres Verstehen eines Szenarios einer Einzelseiten-Webanwendung:
 > [!div class="nextstepaction"]
 > [Einzelseitenanwendung](../active-directory/develop/scenario-spa-overview.md)
 

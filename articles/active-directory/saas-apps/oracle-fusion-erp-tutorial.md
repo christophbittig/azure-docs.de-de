@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 3a950727034d4be822e0b9554424074a1aaebf33
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 44286f0f5a0d5f367cd3934ff61653eb4772c1fd
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649904"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182464"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oracle-fusion-erp"></a>Tutorial: Integration des einmaligen Anmeldens von Azure Active Directory mit Oracle Fusion ERP
 
@@ -38,6 +38,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Oracle Fusion ERP unterstützt **SP**-initiiertes einmaliges Anmelden.
+* Oracle Fusion ERP unterstützt die [**automatisierte** Benutzerbereitstellung und Bereitstellungsaufhebung](oracle-fusion-erp-provisioning-tutorial.md) (empfohlen).
 
 ## <a name="add-oracle-fusion-erp-from-the-gallery"></a>Hinzufügen von Oracle Fusion ERP aus dem Katalog
 

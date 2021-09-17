@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/28/2021
+ms.date: 08/24/2021
 ms.author: b-juche
-ms.openlocfilehash: 06be68fb1de224bbbcad13e71e7f4069e44f8309
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0b05b934b4dc57b4db941755cfcfb2f8d21fc2c6
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122354876"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824968"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Ressourcenlimits für Azure NetApp Files
 
@@ -90,68 +90,50 @@ Der Dienst passt das maxfiles-Limit für ein Volume basierend auf seiner bereitg
 |    > 3 TiB, aber <= 4 TiB    |    80 Mio.     |
 |    > 4 TiB                 |    100 Mio.    |
 
-Wenn Sie für ein Volume bereits ein Kontingent von mindestens 4 TiB zugeordnet haben, können Sie eine [Supportanfrage](#limit_increase) initiieren, um das maxfiles-Limit (I-Knoten) auf über 100 Millionen zu erhöhen. Für jede Erhöhung um 100 Millionen Dateien (oder einen Bruchteil davon) müssen Sie das entsprechende Volumekontingent um 4 TiB erhöhen.  Wenn Sie z. B. den Grenzwert „maxfiles“ von 100 Millionen Dateien auf 200 Millionen Dateien (oder eine beliebige Zahl dazwischen) erhöhen, müssen Sie das Volumenkontingent von 4 TiB auf 8 TiB erhöhen.
+Wenn Sie für ein Volume bereits ein Kontingent von mindestens 4 TiB zugeordnet haben, können Sie eine [Supportanfrage](#request-limit-increase) initiieren, um das maxfiles-Limit (I-Knoten) auf über 100 Millionen zu erhöhen. Für jede Erhöhung um 100 Millionen Dateien (oder einen Bruchteil davon) müssen Sie das entsprechende Volumekontingent um 4 TiB erhöhen.  Wenn Sie z. B. den Grenzwert „maxfiles“ von 100 Millionen Dateien auf 200 Millionen Dateien (oder eine beliebige Zahl dazwischen) erhöhen, müssen Sie das Volumenkontingent von 4 TiB auf 8 TiB erhöhen.
 
 Sie können das maxfiles-Limit auf 500 Millionen erhöhen, wenn das Volumenkontingent mindestens 20 TiB beträgt. <!-- ANF-11854 --> 
 
 ## <a name="regional-capacity-quota"></a>Regionales Kapazitätskontingent
 
-Azure NetApp Files verfügt über ein regionales Limit, basierend auf der Kapazität. Das Standardkapazitätslimit für jedes Abonnement beträgt 25 TiB pro Region auf allen Servicelevels.   
+Sie können in den Einstellungen für Azure NetApp Files auf **Kontingent** klicken, um die aktuellen und standardmäßigen Kontingentgrößen für die Region anzuzeigen. 
 
-Sie können eine Kapazitätserhöhung anfordern, indem Sie wie folgt ein spezifisches Supportticket für **Dienst- und Abonnementlimits (Kontingente)** übermitteln:
+Zum Beispiel: 
 
-1. Wechseln Sie im Portal zu **Support und Problembehandlung**, um den Supportanfrageprozess zu starten:  
+![Screenshot: Anzeigen von Kontingentinformationen](../media/azure-netapp-files/quota-display.png) 
 
-    ![Screenshot mit dem Menü „Support und Problembehandlung“.](../media/azure-netapp-files/support-troubleshoot-menu.png)   
+Sie können eine [Supportanfrage](#request-limit-increase) zur Erhöhung eines regionalen Kapazitätskontingent einreichen, ohne dass Ihnen zusätzliche Kosten entstehen. Die von Ihnen übermittelte Supportanfrage wird zur Verarbeitung an das Azure-Team für die Kapazitätsverwaltung gesendet. Sie erhalten in der Regel innerhalb von zwei Arbeitstagen eine Antwort. Wenn Sie eine umfangreiche Erhöhung anfordern, werden Sie möglicherweise vom Azure-Team für die Kapazitätsverwaltung kontaktiert.  
 
-2.  Wählen Sie den Problemtyp **Dienst- und Abonnementlimits (Kontingente)** aus, und geben Sie alle relevanten Details ein:
-
-    ![Screenshot mit dem Menü „Dienst- und Abonnementlimits“.](../media/azure-netapp-files/service-subscription-limits-menu.png)   
-
-3. Klicken Sie auf der Registerkarte „Details“ auf den Link **Details eingeben**, und wählen Sie dann den Kontingenttyp **TiBs pro Abonnement** aus:   
-
-    ![Screenshot mit dem Link „Details eingeben“ auf der Registerkarte „Details“.](../media/azure-netapp-files/support-details.png)   
-
-    ![Screenshot mit dem Fenster „Kontingentdetails“.](../media/azure-netapp-files/support-quota-details.png)   
-
-4.  Wählen Sie auf der Seite „Supportmethode“ die Option **Schweregrad B – Mittlere Auswirkung** aus:  
-
-    ![Screenshot mit dem Fenster „Supportmethode“.](../media/azure-netapp-files/support-method-severity.png)   
-
-5. Schließen Sie den Anforderungsprozess ab, um die Anfrage abzusenden. 
- 
-Nachdem das Ticket übermittelt wurde, wird die Anforderung zur Verarbeitung an das Azure-Kapazitätsverwaltungsteam gesendet. Sie erhalten in der Regel innerhalb von zwei Arbeitstagen eine Antwort. Bei der Bearbeitung großer Anforderungen wendet sich das Azure-Kapazitätsverwaltungsteam möglicherweise an Sie.
- 
 Eine Erhöhung des regionalen Kapazitätskontingents führt nicht zu einer Erhöhung der Abrechnung. Die Abrechnung basiert weiterhin auf den bereitgestellten Kapazitätspools.
+Wenn Sie beispielsweise derzeit über eine bereitgestellte Kapazität von 25 TiB verfügen, können Sie eine Erhöhung des Kontingents auf 35 TiB anfordern.  Innerhalb von zwei Werktagen wird Ihre Kontingenterhöhung auf die angeforderte Region angewendet. Wenn die Kontingenterhöhung angewendet wird, zahlen Sie weiterhin nur für die derzeit bereitgestellte Kapazität (25 TiB). Wenn Sie jedoch die zusätzlichen 10 TiB tatsächlich bereitstellen, werden Ihnen 35 TiB in Rechnung gestellt.
 
-## <a name="request-limit-increase"></a>Anfordern einer Limiterhöhung <a name="limit_increase"></a> 
+Die aktuellen [Ressourcenlimits](#resource-limits) für Azure NetApp Files bleiben unverändert. Sie können weiterhin einen 500-TiB-Kapazitätspool bereitstellen. Vorher muss das regionale Kapazitätskontingent jedoch auf 500 TiB erhöht werden.
+
+## <a name="request-limit-increase"></a>Anfordern einer Erhöhung der Grenzwerte
 
 Sie können eine Supportanfrage an den Azure-Support stellen, um die anpassbaren Grenzwerte aus der Tabelle [Ressourcenlimits](#resource-limits) zu erhöhen. 
 
-Über den Navigationsbereich im Azure-Portal: 
+1. Wechseln Sie unter **Support + Problembehandlung** zu **Neue Supportanfrage**.
+1. Geben Sie auf der Registerkarte **Problembeschreibung** die angeforderten Informationen an.
+1. Klicken Sie auf der Registerkarte **Zusätzliche Details** im Feld „Anforderungsdetails“ auf **Details eingeben**.  
 
-1. Klicken Sie auf **Hilfe und Support**.
-2. Klicken Sie auf **+ Neue Supportanfrage**.
-3. Geben Sie die folgenden Informationen auf der Registerkarte „Grundeinstellungen“ an: 
-    1. Problemtyp: Wählen Sie **Grenzwerte für Dienste und Abonnements (Kontingente)** aus.
-    2. Abonnements: Wählen Sie das Abonnement für die Ressource aus, deren Kontingente erhöht werden sollen.
-    3. Kontingenttyp: Wählen Sie **Storage: Azure NetApp Files limits** (Speicher: Azure NetApp Files-Grenzwerte) aus.
-    4. Klicken Sie auf **Weiter: Lösungen**.
-4. Auf der Registerkarte „Details“:
-    1. Geben Sie die folgenden Informationen für den entsprechenden Ressourcentyp im Feld „Beschreibung“ an:
+    ![Screenshot: Registerkarte „Details“ mit dem Feld „Details eingeben“](../media/azure-netapp-files/quota-additional-details.png)
 
-        |  Resource  |    Übergeordnete Ressourcen      |    Angeforderte neue Grenzwerte     |    Grund für die Kontingenterhöhung       |
-        |----------------|------------------------------|---------------------------------|------------------------------------------|
-        |  Konto |  *Abonnement-ID*   |  *Angeforderte neue maximale Anzahl an **Konten***    |  *Szenario oder Anwendungsfall, das zur Anforderung geführt hat*  |
-        |  Pool    |  *Abonnement-ID, NetApp-Konto-URI*  |  *Angeforderte neue maximale Anzahl an **Pools***   |  *Szenario oder Anwendungsfall, das zur Anforderung geführt hat*  |
-        |  Volume  |  *Abonnement-ID, NetApp-Konto-URI, Kapazitätspool-URI*   |  *Angeforderte neue maximale Anzahl an **Volumes***     |  *Szenario oder Anwendungsfall, das zur Anforderung geführt hat*  |
-        |  Maxfiles  |  *Abonnement-ID, NetApp-Konto-URI, Kapazitätspool-URI, Volume-URI*   |  *Angeforderter neuer maximaler **maxfiles**-Wert*     |  *Szenario oder Anwendungsfall, das zur Anforderung geführt hat*  |    
-        |  Datenschutzvolumes für die regionsübergreifende Replikation  |  *Abonnement-ID, NetApp-Zielkonto-URI, Zielkapazitätspool-URI, NetApp-Quellkonto-URI, Quellkapazitätspool-URI, Quellvolume-URI*   |  *Angeforderte neue maximale Anzahl **regionsübergreifender Datenschutzvolumes für die regionsübergreifende Replikation (Zielvolumes)** _     |  _Welches Szenario oder welcher Anwendungsfall hat zur Anforderung geführt?*  |    
+1. Gehen Sie im angezeigten Fenster „Kontingentdetails“ folgendermaßen vor:  
 
-    2. Legen Sie die entsprechende Supportmethode fest, und geben Sie Ihre Kontaktinformationen an.
+    1. Wählen Sie unter „Kontingenttyp“ den Ressourcentyp aus, für den Sie eine Erhöhung anfordern möchten.  
+        Zum Beispiel:  
+        * *Regionales Kapazitätskontingent pro Abonnement (TiB)*
+        * *Anzahl von NetApp-Konten pro Azure-Region und Abonnement*
+        * *Anzahl von Volumes pro Abonnement*
 
-    3. Klicken Sie auf **Weiter: Überprüfen + erstellen**, um die Anforderung zu erstellen. 
+    1. Wählen Sie unter „Angeforderte Region“ Ihre Region aus.   
+        Unter „Kontingentstatus“ werden die aktuelle Größe und die Standardgröße angezeigt.
+    1. Geben Sie einen Wert ein, um eine Erhöhung für den angegebenen Kontingenttyp anzufordern.
+    
+    ![Screenshot: Anzeigen und Anfordern einer Erhöhung des regionalen Kontingents](../media/azure-netapp-files/quota-details-regional-request.png)
 
+1. Klicken Sie auf **Weiter** und **Überprüfen + erstellen**, um die Anforderung zu erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte  
 

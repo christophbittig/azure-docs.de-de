@@ -7,12 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/04/2021
-ms.openlocfilehash: 240ed5ed7aefb31503047f124d34e99d738da687
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: e065aa7d3d269632c77a810917ec913c43e518db
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112236857"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122605272"
 ---
 # <a name="what-are-security-policies-initiatives-and-recommendations"></a>Was sind Sicherheitsrichtlinien, Initiativen und Empfehlungen?
 
@@ -29,7 +29,7 @@ In Azure Policy gibt es unterschiedliche Arten von Richtlinien. In Security Cent
 
 ## <a name="what-is-a-security-initiative"></a>Was ist eine Sicherheitsinitiative?
 
-Eine Azure-Initiative ist eine Sammlung mit Azure-Richtliniendefinitionen oder -Regeln, die gruppiert werden, um ein bestimmtes Ziel zu erreichen bzw. einen bestimmten Zweck zu erfüllen. Azure-Initiativen vereinfachen die Verwaltung Ihrer Richtlinien, indem Richtlinien logisch unter einem einzelnen Element gruppiert werden.
+Eine Azure Policy ist eine Sammlung mit Azure-Richtliniendefinitionen oder -Regeln, die gruppiert werden, um ein bestimmtes Ziel zu erreichen bzw. einen bestimmten Zweck zu erfüllen. Azure-Initiativen vereinfachen die Verwaltung Ihrer Richtlinien, indem Richtlinien logisch unter einem einzelnen Element gruppiert werden.
 
 Eine Sicherheitsinitiative definiert die gewünschte Konfiguration Ihrer Workloads und trägt zur Erfüllung unternehmensbezogener oder gesetzlicher Sicherheitsanforderungen bei.
 

@@ -8,12 +8,12 @@ ms.date: 03/29/2021
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 023320d29eac767e62e07c58de4f8fa6ac61b61f
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: a7841fcafff49dab43d944cfa6fd84e9b7119080
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112117840"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123260012"
 ---
 # <a name="prevent-accidental-deletion-of-azure-file-shares"></a>Verhindern eines versehentlichen Löschens von Azure-Dateifreigaben
 Azure Files bietet jetzt vorläufiges Löschen für Dateifreigaben. Dadurch können Sie Ihre Dateifreigabe leichter wiederherstellen, wenn diese irrtümlich von einer Anwendung oder einem anderen Benutzer des Speicherkontos gelöscht wurden.
@@ -50,7 +50,7 @@ Der Aufbewahrungszeitraum ist die Zeitspanne, für die vorläufig gelöschte Dat
 
 Sowohl Standard- als auch Premium-Dateifreigaben werden nach genutzter Kapazität in Rechnung gestellt, wenn sie vorläufig gelöscht werden, und nicht nach bereitgestellter Kapazität. Darüber hinaus werden Premium-Dateifreigaben mit dem Tarif für Momentaufnahmen in Rechnung gestellt, solange vorläufiges Löschen für sie aktiviert ist. Standarddateifreigaben werden bei aktiviertem vorläufigen Löschen mit dem Standardtarif in Rechnung gestellt. Für Daten, die nach Ablauf des festgelegten Aufbewahrungszeitraums dauerhaft gelöscht werden, fallen keine Kosten an.
 
-Weitere Informationen zu Preisen für Azure File Storage im Allgemeinen finden Sie auf der Seite [Preise für Azure File Storage](https://azure.microsoft.com/pricing/details/storage/files/).
+Weitere Informationen zu Preisen für Azure Files im Allgemeinen finden Sie auf der Seite [Preise für Azure Files](https://azure.microsoft.com/pricing/details/storage/files/).
 
 Wenn Sie vorläufiges Löschen erstmals aktivieren, wird ein kurzer Aufbewahrungszeitraum empfohlen, um besser zu verstehen, wie sich das Feature auf Ihre Rechnung auswirkt.
 

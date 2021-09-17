@@ -1,6 +1,6 @@
 ---
 title: Bereitstellen von Azure-Spot-VMs über das Portal
-description: Erfahren Sie, wie Sie Spot-VMs über das Azure-Portal bereitstellen, um Kosten zu sparen.
+description: Verwenden des Portals zum Bereitstellen von Spot Virtual Machines (Spot-VMs)
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: spot
@@ -9,14 +9,16 @@ ms.topic: how-to
 ms.date: 09/14/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 879a3e9b3d3f651a1dea17e76dba503cd2816b9e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a80356cf7045fc079e71d429f89f3b4b0fff31ba
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102098569"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694375"
 ---
 # <a name="deploy-azure-spot-virtual-machines-using-the-azure-portal"></a>Bereitstellen von Azure-Spot-VMs über das Azure-Portal
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Wenn Sie [Azure Spot-VMs](spot-vms.md) verwenden, profitieren Sie von unserer ungenutzten Kapazität und erzielen erhebliche Kosteneinsparungen. Wenn die Kapazität von Azure wieder benötigt wird, werden die Azure-Spot-VMs durch die Azure-Infrastruktur entfernt. Aus diesem Grund eignen sich Azure-Spot-VMs hervorragend für Workloads, die Unterbrechungen tolerieren, z. B. Batchverarbeitungsaufträge, Dev/Test-Umgebungen, umfangreiche Computeworkloads und mehr.
 

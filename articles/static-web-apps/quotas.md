@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 12666d69f6dcab043e909dbb2b49276644a70d76
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 5030b0fb4e714be221e28e590c463186ec81ad04
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110069560"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515584"
 ---
 # <a name="quotas-in-azure-static-web-apps"></a>Kontingente in Azure Static Web Apps
 
@@ -24,6 +24,7 @@ Für Azure Static Web Apps gelten folgende Kontingente.
 | Zusätzliche Bandbreite           | Nicht verfügbar      | 0,20 USD pro GB |
 | Apps pro Azure-Abonnement | 10               | Unbegrenzt |
 | App-Größe                    | 250 MB           | 500 MB |
+| Plangröße                   | Maximale App-Größe von 500 MB für eine einzelne Bereitstellung und 0,50 GB für alle Staging- und Produktionsumgebungen  | Maximale App-Größe von 500 MB für eine einzelne Bereitstellung und 2,00 GB kombiniert in allen Staging- und Produktionsumgebungen |
 | Präproduktionsumgebungen | 3                | 10 |
 | Benutzerdefinierte Domänen              | 2 pro App        | 5 pro App |
 | Autorisierung (mit benutzerdefinierten Rollen und Routingregeln) | Maximal 25 Endbenutzer, die möglicherweise zu benutzerdefinierten Rollen gehören | Maximal 25 Endbenutzer, die möglicherweise zu benutzerdefinierten Rollen gehören |

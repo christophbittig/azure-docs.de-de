@@ -9,12 +9,12 @@ ms.custom: synapse
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: yexu
-ms.openlocfilehash: 55d8c089bd73a3e85666208ed6edc13c654c24bb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 544d298616c8021991fedb1ee47d452cfbc427f3
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122640601"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255047"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Fehlertoleranz der Kopieraktivität in Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -91,12 +91,12 @@ path | Der Pfad der Protokolldateien. | Geben Sie den Pfad an, in dem Sie die Pr
 > Die folgenden Punkte sind die Voraussetzungen, um Fehlertoleranz bei der Kopieraktivität beim Kopieren von Binärdateien zu ermöglichen.
 > Zum Überspringen bestimmter Dateien, wenn sie aus dem Quellspeicher gelöscht werden:
 > - Das Quelldataset und das Senkendataset müssen im Binärformat vorliegen, und der Kompressionstyp darf nicht angegeben werden. 
-> - Die unterstützten Datenspeichertypen sind Azure Blob Storage, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure File Storage, File System, FTP, SFTP, Amazon S3, Google Cloud Storage und HDFS.
+> - Die unterstützten Datenspeichertypen sind Azure Blob Storage, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure Files, File System, FTP, SFTP, Amazon S3, Google Cloud Storage und HDFS.
 > - Nur bei der Angabe mehrerer Dateien im Quelldataset, bei dem es sich um einen Ordner, einen Platzhalter oder eine Liste von Dateien handeln kann, kann die Kopieraktivität die jeweiligen fehlerhaften Dateien überspringen. Wenn im Quelldataset eine einzelne Datei angegeben ist, die an das Ziel kopiert werden soll, schlägt die Kopieraktivität fehl, wenn ein Fehler aufgetreten ist.
 >
 > Zum Überspringen bestimmter Dateien, wenn ihr Zugriff vom Quellspeicher aus unzulässig ist:
 > - Das Quelldataset und das Senkendataset müssen im Binärformat vorliegen, und der Kompressionstyp darf nicht angegeben werden. 
-> - Die unterstützten Datenspeichertypen sind Azure Blob Storage, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure File Storage, SFTP, Amazon S3 und HDFS.
+> - Die unterstützten Datenspeichertypen sind Azure Blob Storage, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure Files, SFTP, Amazon S3 und HDFS.
 > - Nur bei der Angabe mehrerer Dateien im Quelldataset, bei dem es sich um einen Ordner, einen Platzhalter oder eine Liste von Dateien handeln kann, kann die Kopieraktivität die jeweiligen fehlerhaften Dateien überspringen. Wenn im Quelldataset eine einzelne Datei angegeben ist, die an das Ziel kopiert werden soll, schlägt die Kopieraktivität fehl, wenn ein Fehler aufgetreten ist.
 >
 > Zum Überspringen bestimmter Dateien, wenn überprüft wird, dass sie zwischen Quell- und Zielspeicher inkonsistent sind:

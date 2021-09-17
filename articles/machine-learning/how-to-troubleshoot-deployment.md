@@ -10,12 +10,12 @@ ms.author: gopalv
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: cef99e06eaafda41022d4c8937a4a624267b1e1d
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 2fddb83123f22a99e0b65363f52c2b8c3bbfbfc3
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112454418"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597994"
 ---
 # <a name="troubleshooting-remote-model-deployment"></a>Behandeln von Problemen bei der Remotemodellimplementierung 
 
@@ -213,9 +213,11 @@ Führen Sie diese Aktionen für die folgenden Fehler aus:
 
 |Fehler  | Lösung  |
 |---------|---------|
+| 409 Konfliktfehler| Wenn ein Vorgang bereits ausgeführt wird, antwortet jeder neue Vorgang für denselben Webdienst mit einem 409-Konfliktfehler. Wenn beispielsweise ein Webdienstvorgang erstellt oder aktualisiert wird und Sie einen neuen Löschvorgang auslösen, wird ein Fehler ausgelöst. |
 |Fehler bei der Imageerstellung beim Bereitstellen des Webdiensts.     |  Fügen Sie „pynacl==1.2.1“ als pip-Anhängigkeit zur Conda-Datei für die Imagekonfiguration hinzu.       |
 |`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   Ändern Sie die SKU für virtuelle Computer in Ihrer Bereitstellung in eine Variante mit mehr Arbeitsspeicher. |
 |FPGA-Fehler     |  Um Modelle auf FPGAs bereitzustellen, müssen Sie zuerst ein FPGA-Kontingent anfordern und dessen Genehmigung abwarten. Füllen Sie das Formular zur Kontingentanforderung aus, um Zugriff anzufordern: https://aka.ms/aml-real-time-ai       |
+
 
 ## <a name="advanced-debugging"></a>Erweitertes Debuggen
 

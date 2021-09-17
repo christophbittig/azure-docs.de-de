@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: f480f7821ea3443c76c551f45ac74d136f417060
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 7c4db2326ab8e325dfdfa759ec7f5fdc71f17df1
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277299"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122633721"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Livestreaming mit Azure Media Services v3
 
@@ -118,6 +118,6 @@ Das Medienobjekt, in dem die Liveausgabe archiviert wird, wird automatisch zu ei
 - [Zustandswerte und Abrechnung](live-event-states-billing-concept.md)
 - [Latenz](live-event-latency-reference.md)
 
-## <a name="live-streaming-questions"></a>Fragen zum Livestreaming
+## <a name="live-streaming-faq"></a>Häufig gestellte Fragen zum Livestreaming
 
-Weitere Informationen finden Sie im Artikel [Fragen zum Livestreaming](questions-collection.md#live-streaming).
+Weitere Informationen finden Sie in den [häufig gestellten Fragen zum Livestreaming](frequently-asked-questions.yml).

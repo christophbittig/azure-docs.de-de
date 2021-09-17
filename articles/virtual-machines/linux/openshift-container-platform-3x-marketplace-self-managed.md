@@ -11,14 +11,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 57916a7f142663711215fdb2a7f641e35fd9ad0f
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 43c1785a80738741478e93289fd9ff239dca7719
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114389976"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697795"
 ---
 # <a name="configure-prerequisites"></a>Konfigurieren der Voraussetzungen
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
 Vor dem Verwenden des Marketplace-Angebots zum Bereitstellen eines selbstverwalteten OpenShift Container Platform 3.11-Clusters in Azure sind einige erforderliche Komponenten zu konfigurieren.  Im Artikel zu [erforderlichen Komponenten für OpenShift](./openshift-container-platform-3x-prerequisites.md) finden Sie Anweisungen zum Erstellen eines SSH-Schlüssels (ohne Passphrase), des Azure-Schlüsseltresors, des Schlüsseltresor-Geheimnisses und eines Dienstprinzipals.
 

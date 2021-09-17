@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/08/2021
 ms.author: jeedes
-ms.openlocfilehash: a5b14cd231998515003574e6c961989d46e50095
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7be4e58ccb7b788c98c0ab0c8b21c7d5bd9f4088
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101654033"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182934"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-teamviewer"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit TeamViewer
 
@@ -38,6 +38,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * TeamViewer unterstützt **SP**-initiiertes einmaliges Anmelden.
+* TeamViewer unterstützt die [**automatisierte** Benutzerbereitstellung und Bereitstellungsaufhebung](teamviewer-provisioning-tutorial.md) (empfohlen).
 
 ## <a name="add-teamviewer-from-the-gallery"></a>Hinzufügen von TeamViewer aus dem Katalog
 

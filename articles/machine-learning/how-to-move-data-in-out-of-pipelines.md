@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 02/26/2021
 ms.topic: how-to
 ms.custom: contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: ddac4588009d495ac64c607e97780eca5aceb54b
-ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
+ms.openlocfilehash: 5b6a4186fed994057ab6c44930c5ec68ba85ad05
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112515454"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122607129"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Verschieben von Daten in ML-Pipelineschritte und zwischen ML-Pipelineschritten (Python)
 
@@ -172,7 +172,7 @@ dataprep_step = PythonScriptStep(
 ```
 
 > [!NOTE]
-> Beim gleichzeitigen Schreiben in eine `OutputFileDatasetConfig` tritt ein Fehler auf. Versuchen Sie nicht, eine einzelne `OutputFileDatasetConfig` parallel zu verwenden. Verwenden Sie keine einzelne, gemeinsam genutzte `OutputFileDatasetConfig` in einer Multiprocessingsituation, etwa beim Einsatz von verteiltem Training. 
+> Beim gleichzeitigen Schreiben in eine `OutputFileDatasetConfig` tritt ein Fehler auf. Versuchen Sie nicht, eine einzelne `OutputFileDatasetConfig` parallel zu verwenden. Verwenden Sie keine einzelne, gemeinsam genutzte `OutputFileDatasetConfig` in einem Szenario mit Multiprocessing, etwa für ein [verteiltes Training](how-to-train-distributed-gpu.md). 
 
 ### <a name="use-outputfiledatasetconfig-as-outputs-of-a-training-step"></a>Verwenden von `OutputFileDatasetConfig` als Ausgaben eines Trainingsschritts
 

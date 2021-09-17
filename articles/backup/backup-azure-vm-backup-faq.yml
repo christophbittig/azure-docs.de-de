@@ -2,14 +2,15 @@
 metadata:
   title: 'Häufig gestellte Fragen (FAQ): Sichern virtueller Azure-Computer'
   description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zum Sichern von virtuellen Azure-Computern mit dem Azure Backup-Dienst.
-  ms.topic: conceptual
-  ms.date: 06/02/2021
-  ms.openlocfilehash: b829855ad97e702f4a005375a1e70bd0869289ad
-  ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+  ms.topic: article
+  ms.service: backup
+  ms.date: 08/19/2021
+  ms.openlocfilehash: d579c304c9a345323fc57020435b4b3a41c70cbd
+  ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/22/2021
-  ms.locfileid: "112467333"
+  ms.lasthandoff: 08/20/2021
+  ms.locfileid: "122597863"
 title: Häufig gestellte Fragen – Sicherung von Azure-VMs
 summary: >
   Dieser Artikel enthält Antworten auf häufig gestellte Fragen zur Sicherung von Azure-VMs mit dem Dienst [Azure Backup](./backup-overview.md).
@@ -107,6 +108,18 @@ sections:
     answer: Alle VM-Konfigurationen, die zum Ausführen der Wiederherstellungsvorgänge erforderlich sind, werden in der VM-Sicherung gespeichert. Dies schließt die Verschlüsselungskopien der verschlüsselten VM-Schlüssel ein, auf die Sie bei der Wiederherstellung zugreifen können. Die Verschlüsselungskopien können nur mit dem Schlüsseltresor entschlüsselt werden. Temporäre Datenträger und der Arbeitsspeicherzustand werden in der Momentaufnahme nicht erfasst.
   - question: Können Tags von einem virtuellen Azure-Computer gesichert werden? Wenn ja, wie viele Tags?
     answer: Azure Backup kann Tags (mit Ausnahme von NICs und IPs) sichern und wiederherstellen. Azure Backup beachtet die Abonnementbeschränkungen der Azure-Ressourcengruppe und stellt bis zu 50 Tags wieder her.<br><br>Ausführlichere Informationen finden Sie unter [Grenzwerte für Abonnements](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits).
+  - question: Kann ich eine bedarfsorientierte (Ad-hoc)-Sicherung durchführen, ohne die Sicherung für einen virtuellen Azure-Computer zu planen?
+    answer: >
+      Nein, Sie können keine bedarfsorientierten Sicherungen auslösen, indem Sie die geplante Sicherung deaktivieren.
+  - question: Wie funktioniert der Azure Backup-Prozess für Clusterknoten?
+    answer: >
+      Jeder virtuelle Azure-Computer in einem Cluster wird als einzelner virtueller Azure-Computer betrachtet. Daher sind alle Sicherungsvorgänge auf einzelne Azure-VMs anwendbar.
+  - question: Beeinträchtigt Azure Backup die Anwendungsleistung?
+    answer: >
+      Das Erstellen einer VM-Momentaufnahme dauert ein paar Minuten, und während dieser Phase kommt es zu einer sehr geringen Beeinträchtigung der Anwendungsleistung. Die Datenübertragung in einen Tresor dauert jedoch einige Stunden. Daher wird empfohlen, Sicherungen außerhalb der Geschäftszeiten zu planen. Weitere Informationen zu [Bewährten Methoden zum Sichern und Wiederherstellen](/azure/backup/backup-azure-vms-introduction#backup-and-restore-considerations).
+  - question: Wird der neue Datenträger, der dem virtuellen Computer hinzugefügt wurde, automatisch gesichert?
+    answer: >
+      Ja, der neue Datenträger, der einem virtuellen Computer hinzugefügt wurde, wird während der nächsten Sicherung automatisch gesichert.
 - name: Restore
   questions:
   - question: Wie entscheide ich, ob ich nur Datenträger oder eine vollständige VM wiederherstelle?
@@ -127,7 +140,8 @@ sections:
 
       - ...eine andere Einstellung hinzufügen möchten, die mithilfe von PowerShell oder einer Vorlage konfiguriert werden muss.
   - question: Kann ich Sicherungen nicht verwalteter VM-Datenträger wiederherstellen, nachdem ich ein Upgrade auf verwaltete Datenträger durchgeführt habe?
-    answer: Ja, Sie können Sicherungen verwenden, die erstellt wurden, bevor Datenträger von nicht verwaltet auf verwaltet umgestellt wurden.
+    answer: >
+      Ja, Sie können Sicherungen verwenden, die erstellt wurden, bevor Datenträger von nicht verwaltet auf verwaltet umgestellt wurden.
   - question: Wie kann ich eine VM auf einen Punkt vor der Migration der VM zu verwalteten Datenträgern wiederherstellen?
     answer: >
       Der Wiederherstellungsvorgangs bleibt gleich. Wenn der Wiederherstellungspunkt ein Zeitpunkt ist, zu dem der virtuelle Computer über nicht verwaltete Datenträger verfügte, können Sie [Datenträger als nicht verwaltete Datenträger wiederherstellen](tutorial-restore-disk.md#unmanaged-disks-restore). Wenn die VM zu diesem Zeitpunkt über verwaltete Datenträger verfügte, können Sie [Datenträger als verwaltete Datenträger wiederherstellen](tutorial-restore-disk.md#managed-disk-restore). Anschließend können Sie [einen virtuellen Computer aus diesen Datenträgern erstellen](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk).
@@ -137,7 +151,7 @@ sections:
   - question: Was geschieht mit den in der Wiederherstellung enthaltenen Datenträgern, wenn die VM bei der Wiederherstellung nicht erstellt wird?
     answer: Bei der Wiederherstellung einer verwalteten VM werden die Datenträger auch dann wiederhergestellt, wenn bei der VM-Erstellung ein Fehler auftritt.
   - question: Kann ich eine gelöschte VM wiederherstellen?
-    answer: Ja. Selbst wenn Sie die VM gelöscht haben, können Sie diese über das entsprechende Sicherungselement im Tresor mithilfe eines Wiederherstellungspunkts wiederherstellen.
+    answer: Ja. Selbst wenn Sie die VM gelöscht haben, können Sie diese über das entsprechende Sicherungselement im Tresor [mithilfe eines Wiederherstellungspunkts wiederherstellen](backup-azure-arm-restore-vms.md#select-a-restore-point).
   - question: Wie stelle ich eine VM in denselben Verfügbarkeitsgruppen wieder her?
     answer: Bei Azure-VMs mit verwalteten Datenträgern ist die Wiederherstellung in Verfügbarkeitsgruppen durch eine Option in der Vorlage zur Wiederherstellung als verwaltete Datenträger möglich. Diese Vorlage verfügt über den Eingabeparameter **Verfügbarkeitsgruppen**.
   - question: Wie erreichen ich bei Wiederherstellungen eine schnellere Leistung?
@@ -162,6 +176,9 @@ sections:
 
 
       `if (storageProfile.osDisk.createOption == "Attach") then { exclude <Policy> }`
+  - question: 'Gewusst wie: Wiederherstellen eines virtuellen Computers im heruntergefahrenen Zustand'
+    answer: >
+      Um einen virtuellen Computer im heruntergefahrenen Zustand wiederherzustellen, können Sie [einen virtuellen Computer erstellen](/azure/backup/backup-during-vm-creation#create-a-vm-with-backup-configured) oder [Datenträger wiederherstellen](/azure/backup/backup-azure-arm-restore-vms#restore-disks), aber Sie können einen vorhandenen virtuellen Computer nicht ersetzen. Erfahren Sie mehr über die [verfügbaren Wiederherstellungsoptionen](/azure/backup/backup-azure-arm-restore-vms#restore-options).
 - name: Verwalten von VM-Sicherungen
   questions:
   - question: Was geschieht, wenn ich eine Sicherungsrichtlinie ändere?
@@ -214,11 +231,23 @@ sections:
   - question: Wie wird die Verschlüsselung während der Übertragung verwaltet, wenn die Momentaufnahme aus einem Speicherkonto in einen Tresor verschoben wird?
     answer: Azure VM Backup verwendet [HTTPS-Kommunikation für die Verschlüsselung während der Übertragung](guidance-best-practices.md#encryption-of-data-in-transit-and-at-rest). Die Datenübertragung verwendet Azure-Fabric (und keine öffentlichen Endpunkte). Dafür ist kein Internetzugriff für die VM-Sicherung erforderlich.
   - question: Wie kann ich die Option Dateiwiederherstellung deaktivieren?
-    answer: >-
-      [Diese API](/rest/api/backup/2021-02-10/item-level-recovery-connections/provision) bietet ein Skript zum Aufrufen einer **iSCSI-Verbindung** für die Dateiwiederherstellung von Azure Backup.
+    answer: >
+      [Diese API](/rest/api/backup/item-level-recovery-connections/provision) bietet ein Skript zum Aufrufen einer **iSCSI-Verbindung** für die Dateiwiederherstellung von Azure Backup.
 
       - Sie können diese Option mithilfe **benutzerdefinierter Rollendefinitionen** deaktivieren, indem Sie die API-Aktion ausschließen.
 
       - Sie können auch die [privaten Endpunkte](private-endpoints.md) verwenden, um den Zugriff auf den iSCSI-Server innerhalb des privaten Netzwerks einzuschränken.
 
       - Sie können diese Option auch mit dem Feature [Zuweisung verweigern](../role-based-access-control/deny-assignments.md) organisationsweit deaktivieren.
+  - question: Ich habe die Aufbewahrungsrichtlinie geändert. Wie lange dauert es, bis die Richtlinie wirksam wird?
+    answer: >
+      Die Richtlinie wird unmittelbar nach den Änderungen der Parameter wirksam, z. B. Aufbewahrung, Zeitplan usw. Dies gilt für alle neuen Sicherungen, die unter der geänderten Richtlinie erstellt werden. Die Bereinigung der Wiederherstellungspunkte (falls zutreffend) gemäß der neuen Richtlinie dauert jedoch 24 Stunden.
+  - question: Ich kann bei einer regionsübergreifenden Wiederherstellung kein virtuelles Netzwerk, Subnetz oder Speicherkonto in der sekundären Region auswählen.
+    answer: >
+      Sie müssen die Abonnementberechtigungen in der sekundären Region überprüfen. Schreiben Sie uns wegen der Abonnementregistrierung unter [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com).
+  - question: Wie kann ich den Datenverkehr zwischen dem Azure Backup-Dienst und der Azure-VM überprüfen?
+    answer: >
+      Da Azure-Ressourcen diesen Datenverkehr verarbeiten, kann er nicht von einem externen Benutzer ermittelt werden.
+  - question: Was ist die minimale RPO (Recovery Point Objective) und RTO (Recovery Time Objective) für VM-Sicherungen in Azure Backup?
+    answer: >
+      **RPO**: Der RPO-Mindestwert ist 1 Tag oder 24 Stunden.  <br><br>  **RTO**: Die Momentaufnahmen werden im Speicherkonto gespeichert. Daher erfolgt die Wiederherstellung von der Ebene mit sofortiger Wiederherstellung sofort. Diese Daten werden dann an den Recovery Services-Tresor übertragen, der vom Azure Backup-Dienst verwaltet wird. Die Übertragung und Wiederherstellung dauert einige Stunden.

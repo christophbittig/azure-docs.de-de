@@ -8,14 +8,16 @@ ms.workload: infrastructure-services
 ms.date: 09/11/2020
 ms.author: jushiman
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b804536c54cce64ace2605999c7cc28cef357a4d
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 312acb2715e76587ac213f73c86e785afe2eadcb
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112072323"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695271"
 ---
 # <a name="maintenance-control-for-os-image-upgrades-on-azure-virtual-machine-scale-sets-using-powershell"></a>Wartungssteuerung für Betriebssystemimageupgrades in Azure-VM-Skalierungsgruppen über PowerShell
+
+**Gilt für:** :heavy_check_mark: Flexible Skalierungsgruppen
 
 Über die Wartungssteuerung können Sie entscheiden, wann automatische Gastbetriebssystemimageupgrades auf Ihre VM-Skalierungsgruppen angewendet werden sollen. In diesem Thema werden die Azure PowerShell-Optionen für die Wartungssteuerung behandelt. Weitere Informationen zur Verwendung der Wartungssteuerung finden Sie unter [Wartungssteuerung für Azure-VM-Skalierungsgruppen](virtual-machine-scale-sets-maintenance-control.md).
 
@@ -108,10 +110,10 @@ New-AzConfigurationAssignment `
 
 ## <a name="enable-automatic-os-upgrade"></a>Aktivieren von automatischen Betriebssystemupgrades
 
-Sie können automatische Betriebssystemupgrades für jede VM-Skalierungsgruppe aktivieren, für die die Wartungssteuerung verwendet werden soll. Weitere Informationen zum Aktivieren automatischer Betriebssystemupgrades für Ihre VM-Skalierungsgruppe finden Sie unter [Automatische Betriebssystemimageupgrades mit Azure-VM-Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md).
+Sie können automatische Betriebssystemupgrades für jede VM-Skalierungsgruppe aktivieren, für die die Wartungssteuerung verwendet werden soll. Weitere Informationen zum Aktivieren automatischer Betriebssystemupgrades für Ihre VM-Skalierungsgruppe finden Sie unter [Automatische Betriebssystemimageupgrades für Azure-VM-Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erfahren Sie mehr über Wartung und Updates für VMs, die in Azure ausgeführt werden](maintenance-and-updates.md)
+> [Erfahren Sie mehr über Wartung und Updates für virtuelle Computer, die in Azure ausgeführt werden.](maintenance-and-updates.md)

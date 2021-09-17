@@ -10,12 +10,12 @@ ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: dacf5814ee487c008e343347f7ab1319fd578597
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: d4f48f8a8c573ac03f5637b74b740c5710af92b3
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113729000"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597681"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken
 
@@ -49,9 +49,6 @@ Datenverkehr für VM-Datenträger (einschließlich Vorgängen zur Einbindung/Auf
 Firewalls und virtuelle Netzwerke werden von klassischen Speicherkonten nicht unterstützt.
 
 Sie können nicht verwaltete Datenträger in Speicherkonten mit angewendeten Netzwerkregeln verwenden, um virtuelle Computer durch Erstellung einer Ausnahme zu sichern und wiederherzustellen. Dieser Prozess ist im Abschnitt [Verwalten von Ausnahmen](#manage-exceptions) dieses Artikels dokumentiert. Firewallausnahmen gelten nicht für verwaltete Datenträger, da sie bereits von Azure verwaltet werden.
-
-> [!IMPORTANT] 
-> Wenn Sie das Subnetz löschen, das in eine Netzwerkregel eingeschlossen wurde, sorgen Sie dafür, dieses Subnetz auch aus der Netzwerkregel zu entfernen. Wenn Sie andernfalls ein Subnetz mit demselben Namen erstellen, können Sie dieses Subnetz in den Netzwerkregeln Ihrer Speicherkonten nicht verwenden. 
 
 ## <a name="change-the-default-network-access-rule"></a>Ändern der Standard-Netzwerkzugriffsregel
 
@@ -128,6 +125,9 @@ Sie können Speicherkonten so konfigurieren, dass nur über bestimmte Subnetze z
 Aktivieren Sie einen [Dienstendpunkt](../../virtual-network/virtual-network-service-endpoints-overview.md) für Azure Storage innerhalb des VNETs. Der Dienstendpunkt leitet Datenverkehr aus dem VNET über einen optimalen Pfad an den Azure Storage-Dienst weiter. Mit jeder Anforderung werden außerdem die Identitäten des Subnetzes und des virtuellen Netzwerks übertragen. Administratoren können anschließend Netzwerkregeln für das Speicherkonto konfigurieren, die den Empfang von Anforderungen aus bestimmten Subnetzen in einem VNET zulassen. Clients, denen über diese Netzwerkregeln Zugriff gewährt wird, müssen weiterhin die Autorisierungsanforderungen des Speicherkontos erfüllen, um auf die Daten zugreifen zu können.
 
 Jedes Speicherkonto unterstützt bis zu 200 VNET-Regeln, die mit [IP-Netzwerkregeln](#grant-access-from-an-internet-ip-range) kombiniert werden können.
+
+> [!IMPORTANT] 
+> Wenn Sie ein Subnetz löschen, das in einer Netzwerkregel enthalten ist, wird es aus den Netzwerkregeln für das Speicherkonto entfernt. Wenn Sie ein neues Subnetz mit dem gleichen Namen erstellen, hat es keinen Zugriff auf das Speicherkonto. Um den Zugriff zuzulassen, müssen Sie das neue Subnetz explizit in den Netzwerkregeln für das Speicherkonto autorisieren.
 
 ### <a name="available-virtual-network-regions"></a>Verfügbare Regionen für virtuelle Netzwerke
 

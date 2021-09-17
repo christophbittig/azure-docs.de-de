@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: azure-redhat-openshift
 ms.date: 10/26/2020
-ms.openlocfilehash: 219ff986e88bca31912cfe8be72e9dba179b9236
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 707ee38ef71a0f3f3f09e142bd4d944bb04cff3d
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112289565"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446128"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Tutorial: Erstellen eines Azure Red Hat OpenShift 4-Clusters
 
@@ -42,7 +42,7 @@ Das ARO-Pullgeheimnis ändert nicht die Kosten der RH OpenShift-Lizenz für ARO.
 
 Während dieses Tutorials werden Sie eine Ressourcengruppe erstellen, die das virtuelle Netzwerk für den Cluster enthält. Sie müssen entweder über die Berechtigungen „Mitwirkender“ und „Benutzerzugriffsadministrator“ oder über „Besitzer“-Berechtigungen verfügen, entweder direkt im virtuellen Netzwerk oder in der Ressourcengruppe bzw. im Abonnement, die diese enthalten.
 
-Sie benötigen außerdem ausreichende Azure Active Directory-Berechtigungen für die Tools, um in Ihrem Auftrag ein Anwendungs- und Dienstprinzipal für den Cluster zu erstellen.
+Außerdem benötigen Sie ausreichende Azure Active Directory-Berechtigungen (Sie müssen entweder ein Mitgliedsbenutzer des Mandanten oder ein Gastbenutzer sein, dem die Rolle **Anwendungsadministrator** zugewiesen ist), damit mit den Tools eine Anwendung und ein Dienstprinzipal in Ihrem Namen für den Cluster erstellt werden können. Ausführlichere Informationen finden Sie unter [Mitglieder und Gastbenutzer](/azure/active-directory/fundamentals/users-default-permissions#member-and-guest-users) und [Zuweisen von Administrator- und anderen Rollen zu Benutzern mithilfe von Azure Active Directory](/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
 
 ### <a name="register-the-resource-providers"></a>Registrieren der Ressourcenanbieter
 
@@ -124,7 +124,7 @@ Als Nächstes erfahren Sie, wie Sie ein virtuelles Netzwerk mit zwei leeren Subn
    Eine Azure-Ressourcengruppe ist eine logische Gruppe, in der Azure-Ressourcen bereitgestellt und verwaltet werden. Wenn Sie eine Ressourcengruppe erstellen, müssen Sie einen Speicherort angeben. An diesem Speicherort werden die Metadaten der Ressourcengruppe gespeichert. Darüber hinaus werden dort die Ressourcen in Azure ausgeführt, wenn Sie während der Ressourcenerstellung keine andere Region angeben. Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe.
     
    > [!NOTE] 
-   > Azure Red Hat Openshift ist nicht in allen Regionen verfügbar, in denen eine Azure-Ressourcengruppe erstellt werden kann. Wo Azure Red Hat Openshift unterstützt wird, erfahren Sie unter [Available Regions](https://azure.microsoft.com/en-gb/global-infrastructure/services/?products=openshift) (Verfügbare Regionen).
+   > Azure Red Hat Openshift ist nicht in allen Regionen verfügbar, in denen eine Azure-Ressourcengruppe erstellt werden kann. Wo Azure Red Hat Openshift unterstützt wird, erfahren Sie unter [Available Regions](https://azure.microsoft.com/global-infrastructure/services/?products=openshift) (Verfügbare Regionen).
 
    ```azurecli-interactive
    az group create \

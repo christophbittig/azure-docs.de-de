@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/04/2021
+ms.date: 07/30/2021
 ms.author: jeedes
-ms.openlocfilehash: 91f6db79b7d18dc8b34ba1712d74a92000d63528
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 362b2108fb76716b0ad8f81aa2cca4215a97a570
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104953662"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746974"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-kemp-loadmaster-azure-ad-integration"></a>Tutorial: Azure Active Directory-SSO-Integration in Kemp LoadMaster Azure AD integration
 
@@ -32,6 +32,9 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
 * SSO-fähiges Abonnement für Kemp LoadMaster Azure AD integration
+
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -209,7 +212,7 @@ In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmel
  
 ### <a name="import-idp-certificate"></a>Importieren des IdP-Zertifikats
 
-Navigieren Sie zur Webkonsole für Kemp LoadMaster Azure AD integration. 
+Navigieren Sie zur Webkonsole für Kemp LoadMaster Azure AD integration. 
 
 1. Klicken Sie unter „Certificates and Security“ (Zertifikate und Sicherheit) auf „Intermediate Certs“ (Zwischenzertifikate).
 
@@ -251,7 +254,7 @@ Navigieren Sie unter „Virtual Services“ (Virtuelle Dienste) zu „Manage SSO
 
 ### <a name="set-authentication"></a>Festlegen der Authentifizierung  
  
-Gehen Sie in der Webkonsole für Kemp LoadMaster Azure AD integration wie folgt vor:
+Führen Sie in der Webkonsole für Kemp LoadMaster Azure AD integration die folgenden Schritte aus.
 
 1. Klicken Sie auf „Virtual Services“ (Virtuelle Dienste).
 

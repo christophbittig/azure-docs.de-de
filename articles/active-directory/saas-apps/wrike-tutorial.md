@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/21/2021
 ms.author: jeedes
-ms.openlocfilehash: b00dc3e169b3c9619f12ae881270a024c0c5a652
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 8d22b1815fddfbd3322d9fd0524a1cd896c6c127
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110473869"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181544"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wrike"></a>Tutorial: Azure Active Directory-Integration mit Wrike
 
@@ -38,7 +38,7 @@ Zum Konfigurieren der Azure AD-Integration mit Wrike benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Wrike unterstützt **SP**- und **IDP**-initiiertes einmaliges Anmelden.
-
+* Wrike unterstützt die [**automatisierte** Benutzerbereitstellung und Bereitstellungsaufhebung](wrike-provisioning-tutorial.md) (empfohlen).
 * Wrike unterstützt die **Just-In-Time**-Benutzerbereitstellung.
 
 > [!NOTE]

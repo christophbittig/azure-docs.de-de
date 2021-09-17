@@ -9,14 +9,16 @@ ms.topic: how-to
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: mimckitt
-ms.openlocfilehash: 7be64109aa304e25ec6c61053f446733ed922b32
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: a9ac2bd794ee4aa9f531ad9fcd2f07bb744d02c8
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028053"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691249"
 ---
 # <a name="create-a-scale-set-from-a-generalized-image-with-azure-cli"></a>Erstellen einer Skalierungsgruppe aus einem generalisierten Image mit Azure CLI
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Erstellen Sie eine Skalierungsgruppe aus einer generalisierten Imageversion in einem [Katalog mit freigegebenen Images](../virtual-machines/shared-image-galleries.md) mithilfe der Azure-Befehlszeilenschnittstelle. Wenn Sie eine Skalierungsgruppe mit einer spezialisierten Imageversion erstellen möchten, finden Sie weitere Informationen unter [Erstellen von Skalierungsgruppeninstanzen aus einem spezialisierten Image](instance-specialized-image-version-cli.md).
 

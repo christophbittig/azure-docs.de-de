@@ -7,14 +7,16 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: vikancha
-ms.openlocfilehash: a0c0c04d33c994279fe15a8fe7f677b2c25a55de
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 034acde1f99409ef7d541d7705bb995e0db00d3b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166035"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689102"
 ---
 # <a name="fpga-attestation-for-azure-np-series-vms-preview"></a>FPGA-Nachweis für Azure-VMs der NP-Serie (Vorschau)
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Beim FPGA-Nachweisdienst wird eine Reihe von Überprüfungen einer Entwurfsprüfpunkt-Datei (als „netlist“ bezeichnet) durchgeführt, die mit dem Xilinx-Toolset generiert wird. Darüber hinaus wird eine Datei mit dem überprüften Image (als „Bitstream“ bezeichnet) erstellt, die auf einer VM der NP-Serie auf die Xilinx U250 FPGA-Karte geladen werden kann.  
 

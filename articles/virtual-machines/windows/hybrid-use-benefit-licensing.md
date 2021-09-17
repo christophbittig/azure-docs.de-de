@@ -10,14 +10,17 @@ ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 759bd7fb48134d2e0da4514a143d3ffb5d5336bb
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: ac879292086b56003ac934a3f3005b2a8ecc0516
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111953782"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123112571"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure-Hybridvorteil für Windows Server
+
+**Gilt für:** :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
+
 Für Kunden mit Software Assurance ermöglicht der Azure-Hybridvorteil für Windows Server die Verwendung der lokalen Windows Server-Lizenzen und die Ausführung von virtuellen Windows-Computern in Azure zu geringeren Kosten. Sie können den Azure-Hybridvorteil für Windows Server dazu nutzen, neue virtuelle Computer mit dem Windows-Betriebssystem bereitzustellen. In diesem Artikel werden die Schritte zum Bereitstellen der neuen VMs mit dem Azure-Hybridvorteil für Windows Server und das Aktualisieren von vorhandenen, ausgeführten VMs beschrieben. Weitere Informationen zum Azure-Hybridvorteil für die Windows Server-Lizenzierung und den Kosteneinsparungen finden Sie auf der Seite zum [Azure-Hybridvorteil für die Windows Server-Lizenzierung](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
 
 Jede Lizenz für zwei Prozessoren oder jeder Satz an Lizenzen für je 16 Kerne kann für zwei Instanzen mit bis zu acht Kernen oder für eine Instanz mit bis zu 16 Kernen eingesetzt werden. Der Azure-Hybridvorteil für Standard Edition-Lizenzen kann nur einmalig entweder lokal oder in Azure verwendet werden. Mit der Datacenter Edition ist die gleichzeitige Nutzung sowohl lokal als auch in Azure möglich.
@@ -68,13 +71,15 @@ az vm create \
 ```
 
 ### <a name="template"></a>Vorlage
-In den Resource Manager-Vorlagen muss ein zusätzlicher Parameter für `licenseType` angegeben werden. Weitere Informationen dazu finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/syntax.md).
+In den Resource Manager-Vorlagen muss ein zusätzlicher Parameter für `licenseType` angegeben werden. Informieren Sie sich weiter über das [Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/syntax.md).
+
 ```json
 "properties": {
     "licenseType": "Windows_Server",
     "hardwareProfile": {
         "vmSize": "[variables('vmSize')]"
     }
+}    
 ```
 
 ## <a name="convert-an-existing-vm-using-azure-hybrid-benefit-for-windows-server"></a>Konvertieren eines vorhandenen virtuellen Computers mit Azure-Hybridvorteil für Windows Server
@@ -146,27 +151,39 @@ az vm get-instance-view -g MyResourceGroup -n MyVM --query "[?licenseType=='Wind
 > Das Ändern des Lizenztyps auf dem virtuellen Computer führt weder zu einem Neustart des Systems noch zu einer Dienstunterbrechung. Es ist nur ein Metadatelizenzierungsflag.
 >
 
-## <a name="list-all-vms-with-azure-hybrid-benefit-for-windows-server-in-a-subscription"></a>Auflisten aller virtuellen Computer mit dem Azure-Hybridvorteil für Windows Server in einem Abonnement
-Um alle mit dem Azure-Hybridvorteil für Windows Server bereitgestellten virtuellen Computer anzuzeigen und aufzulisten, können Sie den folgenden Befehl aus Ihrem Abonnement ausführen:
+## <a name="list-all-vms-and-vmss-with-azure-hybrid-benefit-for-windows-server-in-a-subscription"></a>Auflisten aller VMs and VMSS mit dem Azure-Hybridvorteil für Windows Server in einem Abonnement
+Um alle mit dem Azure-Hybridvorteil für Windows Server bereitgestellten virtuellen Computer und VM-Skalierungsgruppen anzuzeigen und aufzulisten, können Sie den folgenden Befehl aus Ihrem Abonnement ausführen:
 
 ### <a name="portal"></a>Portal
 Auf dem Ressourcenblatt des virtuellen Computers oder der VM-Skalierungsgruppe können Sie eine Liste aller virtuellen Computer und des entsprechenden Lizenztyps anzeigen, indem Sie die Tabellenspalte so konfigurieren, dass sie „Azure-Hybridvorteil“ enthält. Die VM-Einstellung kann einen der Status „Aktiviert“, „Nicht aktiviert“ oder „Nicht unterstützt“ aufweisen.
 
 ### <a name="powershell"></a>PowerShell
+Für virtuelle Computer:
 ```powershell
-$vms = Get-AzVM
-$vms | ?{$_.LicenseType -like "Windows_Server"} | select ResourceGroupName, Name, LicenseType
+Get-AzVM | ?{$_.LicenseType -like "Windows_Server"} | select ResourceGroupName, Name, LicenseType
+```
+
+Für VM-Skalierungsgruppen:
+```powershell
+Get-AzVmss | Select * -ExpandProperty VirtualMachineProfile | ? LicenseType -eq 'Windows_Server' | select ResourceGroupName, Name, LicenseType
 ```
 
 ### <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
+Für virtuelle Computer:
 ```azurecli
 az vm list --query "[?licenseType=='Windows_Server']" -o table
+```
+
+Für VM-Skalierungsgruppen:
+```azurecli
+az vmss list --query "[?virtualMachineProfile.licenseType=='Windows_Server']" -o table
 ```
 
 ## <a name="deploy-a-virtual-machine-scale-set-with-azure-hybrid-benefit-for-windows-server"></a>Bereitstellen einer VM-Skalierungsgruppe mit dem Azure-Hybridvorteil für Windows Server
 In den Resource Manager-Vorlagen der VM-Skalierungsgruppe muss ein zusätzlicher Parameter für `licenseType` in der Eigenschaft „VirtualMachineProfile“ angegeben werden. Dies kann während der Erstellung oder Aktualisierung der Skalierungsgruppe über die ARM-Vorlage, PowerShell, die Azure-Befehlszeilenschnittstelle oder REST erfolgen.
 
 Im folgenden Beispiel wird die ARM-Vorlage mit einem Windows Server 2016 Datacenter-Image verwendet:
+
 ```json
 "virtualMachineProfile": {
     "storageProfile": {
@@ -186,6 +203,7 @@ Im folgenden Beispiel wird die ARM-Vorlage mit einem Windows Server 2016 Datacen
             "adminUsername": "[parameters('adminUsername')]",
             "adminPassword": "[parameters('adminPassword')]"
     }
+}    
 ```
 Weitere Möglichkeiten zum Aktualisieren der Skalierungsgruppe finden Sie unter [Ändern einer VM-Skalierungsgruppe](../../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set.md).
 

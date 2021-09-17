@@ -3,16 +3,17 @@ metadata:
   title: Häufig gestellte Fragen zu Azure Monitor | Microsoft-Dokumentation
   description: Hier finden Sie Antworten auf häufig gestellte Fragen zu Azure Monitor.
   services: azure-monitor
-  ms.topic: conceptual
+  ms.topic: article
+  ms.service: azure-monitor
   author: bwren
   ms.author: bwren
   ms.date: 10/08/2020
-  ms.openlocfilehash: 8493312bcb15e2358191fb0aa6f0c0236961a446
-  ms.sourcegitcommit: 8154d7f8642d783f637cf6d857b4abbe28033f53
+  ms.openlocfilehash: 280a020b66ce20f8efdf124b92afa24bab0c9c13
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 07/12/2021
-  ms.locfileid: "113616365"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122252826"
 title: Häufig gestellte Fragen zu Azure Monitor
 summary: >
   Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Azure Monitor. Wenn Sie weiteren Fragen haben, können Sie diese im [Diskussionsforum](/answers/questions/topics/single/24223.html) stellen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
@@ -106,7 +107,7 @@ sections:
   - question: >
       Ist Log Analytics-Speicher unveränderlich?
     answer: >
-      Daten im Datenbankspeicher können nach der Erfassung nicht mehr geändert werden, aber sie können mithilfe der [*Purge*-API zum Löschen privater Daten](./logs/personal-data-mgmt.md#delete) endgültig gelöscht werden. Obwohl Daten nicht verändert werden können, verlangen einige Zertifizierungen, dass Daten unveränderlich aufbewahrt werden und im Speicher nicht geändert oder gelöscht werden können. Die Unveränderlichkeit von Daten kann durch [Datenexport](./logs/logs-data-export.md) in ein Speicherkonto erreicht werden, das als [unveränderlicher Speicher](../storage/blobs/storage-blob-immutability-policies-manage.md) konfiguriert ist.
+      Daten im Datenbankspeicher können nach der Erfassung nicht mehr geändert werden, aber sie können mithilfe der [*Purge*-API zum Löschen privater Daten](./logs/personal-data-mgmt.md#delete) endgültig gelöscht werden. Obwohl Daten nicht verändert werden können, verlangen einige Zertifizierungen, dass Daten unveränderlich aufbewahrt werden und im Speicher nicht geändert oder gelöscht werden können. Die Unveränderlichkeit von Daten kann durch [Datenexport](./logs/logs-data-export.md) in ein Speicherkonto erreicht werden, das als [unveränderlicher Speicher](../storage/blobs/immutable-policy-configure-version-scope.md) konfiguriert ist.
   - question: >
       Was ist ein Log Analytics-Arbeitsbereich?
     answer: >
@@ -207,20 +208,21 @@ sections:
 
       Geben Sie eine vorhandene oder neue [Aktionsgruppe](alerts/action-groups.md) an, damit Sie benachrichtigt werden, wenn die Protokollwarnung Kriterien erfüllt, und ein Heartbeat für mehr als 15 Minuten ausbleibt.
   - question: >
-      Welche Firewallanforderungen bestehen für Azure Monitor-Agents?
+      Welche Firewallanforderungen bestehen für Log Analytics-Agents?
     answer: >
       Ausführliche Informationen zu den Firewallanforderungen finden Sie unter [Netzwerkfirewallanforderungen](agents/log-analytics-agent.md#network-requirements).
 - name: Azure Monitor-Agent
   questions:
   - question: >
       Wie sieht der Upgradepfad von Log Analytics-Agents zum Azure Monitor-Agent aus? Wie erfolgt die Migration?
-    answer: "Derzeit gibt es keinen Pfad für die automatische Aktualisierung, da dies eine vollständige Deinstallation vorhandener Agents auf Ihren Computern und die Installation des neuen Agents erfordert. Daher sollten unsere Kunden die Migration zum günstigsten Zeitpunkt basierend auf der Featureparität planen.\nDer wichtigere Grund ist, dass die Einrichtung der Datensammlung mit dem neuen Agent wesentlich einfacher, zentraler und für Teilmengen von Computern konfigurierbar ist, die mit demselben oder mehreren Zielen verbunden sind. **Dabei wird die Leistungsfähigkeit von Datensammlungsregeln genutzt, wodurch viele Einschränkungen der bestehenden Einrichtung von Log Analytics-Agents überwunden werden.**\n\n**Daher wird empfohlen, Ihre Datensammlungsanforderungen ganzheitlich zu betrachten und zunächst die richtigen DCRs zu erstellen, bevor Sie dann das Agent-Update für dieses neue Setup durchführen**. Dazu können Sie die Anweisungen zur Bereitstellung im großen Stil befolgen. \n"
+    answer: >
+      Siehe [Migrieren vom Log Analytics-Agent](./agents/azure-monitor-agent-migration.md).
   - question: >
-      Wie sieht der Upgradepfad vom Log Analytics-Agent (MMA) zum Azure Monitor-Agent (AMA) für die Überwachung von SCOM aus? Kann AMA für SCOM-Szenarien verwendet werden?
-    answer: "Nachfolgend sind die Auswirkungen von AMA auf die beiden mit SCOM im Zusammenhang stehenden Überwachungsszenarien aufgeführt:\n- **Szenario 1**: Zur Überwachung des Windows-Betriebssystems von SCOM ist der Upgradepfad derselbe wie bei jedem anderen Computer, und Sie können von MMA (Versionen 2016, 2019) zu AMA migrieren, sobald die erforderlichen Paritätsfeatures auf AMA verfügbar sind.\n- **Szenario 2**: Da das Onboarding/Verbinden von SCOM mit Log Analytics-Arbeitsbereichen über einen SCOM-Connector für Log Analytics/Azure Monitor aktiviert wird, muss weder MMA noch AMA auf dem SCOM-Verwaltungsserver installiert werden. Daher bestehen aus AMA-Sicht für diesen Anwendungsfall keine Auswirkungen.  \n\n> [!NOTE] \n> Sie können beide oben genannten Szenarien mit dem MMA und dem AMA parallel ausführen, ohne dass es Auswirkungen hat.\n"
+      Wie sieht der Upgradepfad vom Log Analytics-Agent (MMA) zum Azure Monitor-Agent (AMA) für die Überwachung von System Center Operations Manager (SCOM) aus? Kann AMA für SCOM-Szenarien verwendet werden?
+    answer: "Nachfolgend sind die Auswirkungen von AMA auf die beiden mit System Center Operations Manager (SCOM) im Zusammenhang stehenden Überwachungsszenarien aufgeführt:\n- **Szenario 1**: Zur Überwachung des Windows-Betriebssystems von SCOM ist der Upgradepfad derselbe wie bei jedem anderen Computer, und Sie können von MMA (Versionen 2016, 2019) zu AMA migrieren, sobald die erforderlichen Paritätsfeatures auf AMA verfügbar sind.\n- **Szenario 2**: Da das Onboarding/Verbinden von SCOM mit Log Analytics-Arbeitsbereichen über einen SCOM-Connector für Log Analytics/Azure Monitor aktiviert wird, muss weder MMA noch AMA auf dem SCOM-Verwaltungsserver installiert werden. Daher bestehen aus AMA-Sicht für diesen Anwendungsfall keine Auswirkungen.  \n\n> [!NOTE] \n> Sie können beide oben genannten Szenarien mit dem MMA und dem AMA parallel ausführen, ohne dass es Auswirkungen hat.\n"
   - question: >
-      Unterstützt der neue Azure Monitor-Agent die Datensammlung für die verschiedenen Log Analytics-Lösungen?
-    answer: "Was Sie als Lösungen oder Management Packs kennen, sind jetzt VM-Erweiterungen, die die Azure Monitor-Agent-Erweiterung verwenden, um Daten an Azure Monitor zu senden. Wenn Sie eine Lösung auf AMA aktivieren, wird ggf. eine zusätzliche VM-Erweiterung installiert.\nIm Laufe der Zeit wird AMA der einzige Agent sein, der Daten in Azure Monitor (oder zusätzliche unterstützte Ziele) hochlädt. Die lösungsspezifischen VM-Erweiterungen dienen zum Sammeln szenariospezifischer Daten oder zur bedarfsabhängigen Transformation bzw. Verarbeitung. Anschließend wird AMA verwendet, um die endgültigen Daten an Azure Monitor weiterzuleiten. \n\nIm folgenden Diagramm wird die **neue Erweiterbarkeitsarchitektur** veranschaulicht:\n\n![Erweiterungsarchitektur](agents/media/azure-monitor-agent/extensibility-arch-new.png)\n"
+      Unterstützt der neue Azure Monitor-Agent die Datensammlung für die verschiedenen Log Analytics-Lösungen und Azure-Dienste wie Security Center, Sentinel usw.?
+    answer: "Sehen Sie sich die Liste der [aktuell als Vorschauversion verfügbaren AMA-Erweiterungen](./agents/azure-monitor-agent-overview.md#supported-services-and-features) an. Dies sind dieselben Lösungen und Dienste, die jetzt stattdessen mit dem neuen Azure Monitor-Agent verfügbar sind. Möglicherweise werden zusätzliche Erweiterungen für die Lösung/den Dienst installiert. Dies dient dem Sammeln zusätzlicher Daten oder dem Durchführen von Transformationen/Verarbeitungen, die für die Lösung/den Dienst erforderlich sind, um anschließend AMA zum Weiterleiten der endgültigen Daten an Azure Monitor zu verwenden. \n\nIm folgenden Diagramm wird die **neue Erweiterbarkeitsarchitektur** veranschaulicht:\n\n![Erweiterungsarchitektur](agents/media/azure-monitor-agent/extensibility-arch-new.png)\n"
   - question: >
       Welche Log Analytics-Lösungen werden auf dem neuen Azure Monitor-Agent unterstützt?
     answer: >
@@ -239,11 +241,11 @@ sections:
       Ja, doch müssen bestimmte Überlegungen beachtet werden. Weitere Informationen erhalten Sie [hier](agents/azure-monitor-agent-overview.md#coexistence-with-other-agents).
   - question: >
       Weist der neue Azure Monitor-Agent Parität mit vorhandenen Agents auf?
-    answer: "Der Agent weist noch keine vollständige Parität mit vorhandenen Agents auf. Nachfolgend sind einige allgemeine Abweichungen aufgeführt:\n\n- **Vergleich mit Log Analytics-Agents (MMA/OMS)**\n    -   Derzeit werden nicht alle Log Analytics-Lösungen unterstützt. Siehe Tabelle oben.\n    -   Keine Unterstützung für Private Links \n    -   Keine Unterstützung für Proxyserver oder Log Analytics-Gateway (OMS)\n    -   Keine Unterstützung für das Sammeln von benutzerdefinierten Protokollen oder IIS-Protokollen\n    -   Keine Unterstützung für Hybrid Runbook Worker\n\n- **Vergleich mit Azure-Diagnoseerweiterungen (WAD/LAD)**\n    -   Keine Unterstützung für Event Hubs und Storage-Konten als Ziele\n"
+    answer: "Der Agent weist noch keine vollständige Parität mit vorhandenen Agents auf. Nachfolgend sind einige allgemeine Abweichungen aufgeführt:\n\n- **Vergleich mit Log Analytics-Agents (MMA/OMS)**\n    -   Derzeit werden nicht alle Log Analytics-Lösungen unterstützt. Informieren Sie sich, [welche Dienste und Features unterstützt werden](agents/azure-monitor-agent-overview.md#supported-services-and-features).\n    -   Keine Unterstützung für Private Links \n    -   Keine Unterstützung für das Sammeln von benutzerdefinierten Protokollen oder IIS-Protokollen\n\n- **Vergleich mit Azure-Diagnoseerweiterungen (WAD/LAD)**\n    -   Keine Unterstützung für Event Hubs und Storage-Konten als Ziele\n"
   - question: >
       Bietet der neue Azure Monitor-Agent Unterstützung für Nicht-Azure-Umgebungen (andere Clouds, lokale Computer)?
     answer: >
-      Sowohl lokale Computer als auch Computer, die mit anderen Clouds verbunden sind, werden derzeit für Server unterstützt, sobald Sie den Azure ARC-Agent installiert haben. Für die Ausführung von AMA und DCR entstehen durch die ARC-Anforderung **keine zusätzlichen Kosten oder zusätzliche Ressourcennutzung**, da der ARC-Agent nur als Installationsmechanismus verwendet wird und keine Vorgänge ausführt, es sei denn, dass Sie diese aktivieren.
+      Sowohl lokale Computer als auch Computer, die mit anderen Clouds verbunden sind, werden derzeit für Server unterstützt, sobald Sie den Azure Arc-Agent installiert haben. Für die Ausführung von AMA und DCR entstehen durch die ARC-Anforderung **keine zusätzlichen Kosten oder zusätzliche Ressourcennutzung**, da der ARC-Agent nur als Installationsmechanismus verwendet wird und keine Vorgänge ausführt, es sei denn, dass Sie diese aktivieren.
   - question: >
       Welche Arten von Computern werden vom neuen Azure Monitor-Agent unterstützt?
     answer: "Sie können sie nur auf virtuellen Computern, VM-Skalierungsgruppen und Server mit Arc-Unterstützung direkt installieren. \n"

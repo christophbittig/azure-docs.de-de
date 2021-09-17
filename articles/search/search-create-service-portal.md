@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/03/2021
-ms.openlocfilehash: 713d2216029fb88716d157d9db7b2010d3f32720
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.date: 08/24/2021
+ms.openlocfilehash: 4a77ca4a3318e9ea583bd113d373815860e8d591
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111526270"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122767833"
 ---
 # <a name="create-an-azure-cognitive-search-service-in-the-portal"></a>Erstellen eines Azure Cognitive Search-Diensts im Portal
 
@@ -28,16 +28,20 @@ Für die Suchdiensterstellung können Sie das [Azure-Portal](https://portal.azur
 Die folgenden Diensteigenschaften sind für die Lebensdauer des Diensts festgelegt, und ihre Änderung erfordert einen neuen Dienst. Da sie festgelegt sind, sollten Sie beim Ausfüllen der einzelnen Eigenschaften ihre Auswirkungen auf die Nutzung berücksichtigen:
 
 + Der Dienstname wird Teil des URL-Endpunkts. (Hilfreiche Informationen zu Dienstnamen finden Sie unter [Benennen des Diensts](#name-the-service).)
-+ Die [Dienstebene](search-sku-tier.md) wirkt sich auf die Abrechnung aus und legt eine Obergrenze für die Kapazität fest. Einige Features sind im Free-Tarif nicht verfügbar.
++ Die [Dienstebene](search-sku-tier.md) (Basic, Standard usw.) bestimmt die Merkmale der zugrunde liegenden physischen Hardware. Daher hat sie auch Auswirkungen auf die Abrechnung und legt eine Obergrenze für die Kapazität fest. Einige Features sind im Free-Tarif nicht verfügbar.
 + Die Dienstregion kann die Verfügbarkeit bestimmter Szenarien bestimmen. Wenn Sie [Features für hohe Sicherheit](search-security-overview.md) oder [KI-Anreicherung](cognitive-search-concept-intro.md) benötigen, müssen Sie Azure Cognitive Search in derselben Region wie andere Dienste oder in Regionen erstellen, in denen das betreffende Feature bereitgestellt wird. 
 
 ## <a name="subscribe-free-or-paid"></a>Abonnieren (kostenlos oder kostenpflichtig)
 
-[Erstellen Sie ein kostenloses Azure-Konto](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F), und verwenden Sie das kostenlose Guthaben, um unsere kostenpflichtigen Azure-Dienste zu testen. Wenn das Guthaben aufgebraucht ist, können Sie das Konto behalten und weiterhin kostenlose Azure-Dienste wie z.B. Websites verwenden. Ihre Kreditkarte wird nur dann belastet, wenn Sie Ihre Einstellungen explizit ändern und mit der Berechnung von Gebühren einverstanden sind.
+Wenn Sie die Suche kostenlos testen möchten, haben Sie zwei Möglichkeiten:
 
-Alternativ dazu können Sie Ihre [Vorteile für MSDN-Abonnenten aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F). Ihr MSDN-Abonnement beinhaltet ein monatliches Guthaben, das Sie für kostenpflichtige Azure-Dienste verwenden können. 
++ [Erstellen Sie ein kostenloses Azure-Konto](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F), und verwenden Sie das kostenlose Guthaben, um unsere kostenpflichtigen Azure-Dienste zu testen. Wenn das Guthaben aufgebraucht ist, können Sie das Konto behalten und weiterhin kostenlose Azure-Dienste wie z.B. Websites verwenden. Ihre Kreditkarte wird nur dann belastet, wenn Sie Ihre Einstellungen explizit ändern und mit der Berechnung von Gebühren einverstanden sind.
 
-## <a name="find-azure-cognitive-search"></a>Finden der kognitiven Azure-Suche
++ Aktivieren Sie alternativ [Azure-Gutschriften in einem Visual Studio Abonnement](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F). Ein Visual Studio-Abonnement beinhaltet ein monatliches Guthaben, das Sie für zahlungspflichtige Azure-Dienste verwenden können. 
+
+Die Suche wird kostenpflichtig (d. h. abgerechnet), wenn Sie einen kostenpflichtigen Tarif (Basic oder höher) auswählen und die Ressource erstellen.
+
+## <a name="find-the-azure-cognitive-search-offering"></a>Suchen des Azure Cognitive Search-Angebots
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 

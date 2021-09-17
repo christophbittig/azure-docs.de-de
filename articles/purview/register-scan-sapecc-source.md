@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 62015554f7e8e17e1443cc85812b3f37ee64f0a4
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: f9cd8601ef3e59de3c11073d7ac73176367f4fc9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113551702"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724259"
 ---
 # <a name="register-and-scan-sap-ecc-source"></a>Registrieren und Überprüfen einer SAP ECC-Quelle
 
@@ -55,7 +55,7 @@ Die einzige unterstützte Authentifizierung für eine SAP ECC-Quelle ist die **S
 Gehen Sie wie folgt vor, um in Ihrem Datenkatalog eine neue SAP ECC-Quelle zu registrieren:
 
 1.  Navigieren Sie zu Ihrem Purview-Konto.
-2.  Wählen Sie im linken Navigationsbereich die Option **Quellen** aus.
+2.  Wählen Sie im linken Navigationsbereich **Data Map** aus.
 3.  Wählen Sie **Registrieren** aus.
 4.  Wählen Sie unter „Quellen registrieren“ die Option **SAP ECC** aus. Wählen Sie **Weiter** aus.
 

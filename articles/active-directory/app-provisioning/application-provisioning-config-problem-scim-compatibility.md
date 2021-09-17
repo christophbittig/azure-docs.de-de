@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/11/2021
+ms.date: 08/25/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: fb154e6c3551bdf51a0920b3a94a53deede8b637
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 9cf7fd49562f83976a10150d953a0afc8b994ed4
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822301"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123102791"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Bekannte Probleme und Lösungen bei der Einhaltung des SCIM 2.0-Protokolls des Azure AD-Benutzerbereitstellungsdiensts
 
@@ -43,12 +43,12 @@ Bei Elementen, die in der folgenden Tabelle als korrigiert markiert sind, weist 
 | Erweiterungsattribute verwenden vor Attributnamen die Punktnotation „.“ anstelle der Doppelpunktnotation „:“. |  Ja  | 18. Dezember 2018  | Downgrade zu „customappSSO“ |
 | Patchanforderungen für mehrwertige Attribute enthalten eine ungültige Syntax für Pfadfilter | Ja  |  18. Dezember 2018  | Downgrade zu „customappSSO“ |
 | Anforderungen zur Erstellung von Gruppen enthalten einen ungültigen Schema-URI | Ja  |  18. Dezember 2018  |  Downgrade zu „customappSSO“ |
-| Aktualisieren des PATCH-Verhaltens zum Sicherstellen der Konformität (z. B. aktiv als boolescher Wert und ordnungsgemäßes Entfernen von Gruppenmitgliedschaften) | Nein | TBD| Verwendung eines Vorschauflags |
+| Aktualisieren des PATCH-Verhaltens zum Sicherstellen der Konformität (z. B. aktiv als boolescher Wert und ordnungsgemäßes Entfernen von Gruppenmitgliedschaften) | Nein | TBD| Verwenden eines Featureflags |
 
 ## <a name="flags-to-alter-the-scim-behavior"></a>Flags zum Ändern des SCIM-Verhaltens
 Verwenden Sie die weiter unten angegebenen Flags in der Mandanten-URL Ihrer Anwendung, um das Standardverhalten des SCIM-Clients zu ändern.
 
-:::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="SCIM-Flags zum Ändern des Verhaltens":::
+:::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.png" alt-text="SCIM-Flags zum Ändern des Verhaltens":::
 
 Verwenden Sie die folgende URL, um das PATCH-Verhalten zu aktualisieren und SCIM-Konformität sicherzustellen. Das Flag ändert die folgenden Verhalten:                
 - Anforderungen zum Deaktivieren von Benutzern
@@ -56,7 +56,7 @@ Verwenden Sie die folgende URL, um das PATCH-Verhalten zu aktualisieren und SCIM
 - Anforderungen zum Ersetzen mehrerer Attribute
 - Anforderungen zum Entfernen eines Gruppenmitglieds        
                                                                                      
-Dieses Verhalten ist derzeit nur verfügbar, wenn Sie das Flag verwenden, wird jedoch in den nächsten Monaten zum Standardverhalten. Beachten Sie, dass dieses Vorschauflag bei bedarfsgesteuerter Bereitstellung nicht funktioniert. 
+Dieses Verhalten ist derzeit nur verfügbar, wenn Sie das Flag verwenden, wird jedoch in den nächsten Monaten zum Standardverhalten. Beachten Sie, dass dieses Featureflag bei bedarfsgesteuerter Bereitstellung nicht funktioniert. 
   * **URL (SCIM-konform):** aadOptscim062020
   * **SCIM-RFC-Verweise:** 
     * https://tools.ietf.org/html/rfc7644#section-3.5.2    

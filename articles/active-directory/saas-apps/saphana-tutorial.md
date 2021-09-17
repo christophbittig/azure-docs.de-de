@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/27/2020
+ms.date: 08/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 1a1e155974b66dce9a036a20cdebe19ded81fed5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dac7582f772beaf62a60661869f829018770538b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98727080"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751633"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>Tutorial: Azure Active Directory-Integration mit SAP HANA
 
@@ -47,8 +47,8 @@ Beachten Sie beim Testen der Schritte in diesem Tutorial die folgenden Empfehlun
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* SAP HANA unterstützt **IDP-initiiertes** einmaliges Anmelden.
-* SAP HANA unterstützt die **Just-in-Time**-Benutzerbereitstellung.
+* SAP HANA unterstützt **IDP**-initiiertes einmaliges Anmelden.
+* SAP HANA unterstützt die **Just-in-Time**-Benutzerbereitstellung.
 
 > [!NOTE]
 > Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
@@ -192,10 +192,10 @@ Wenn Sie manuell einen Benutzer erstellen müssen, führen Sie die folgenden Sch
 
 3. Klicken Sie auf **Add** (Hinzufügen), um den SAML-IDP hinzuzufügen.  Wählen Sie den entsprechenden SAML-IDP aus, und klicken Sie dann auf **OK**.
 
-4. Fügen Sie den Wert für **External Identity** (Externe ID) (in diesem Fall BrittaSimon) hinzu, oder wählen Sie **Any** (Beliebig). Klicken Sie anschließend auf **OK**.
+4. Fügen Sie die **externe Identität** (in diesem Fall „BrittaSimon“) hinzu. Klicken Sie anschließend auf **OK**.
 
    > [!Note]
-   > Wenn das Kontrollkästchen **Any** (Beliebig) nicht aktiviert ist, muss der Benutzername in HANA exakt dem Namen des Benutzers im Benutzerprinzipalnamen vor dem Domänensuffix entsprechen. (Beispiel: BrittaSimon@contoso.com wird in HANA zu „BrittaSimon“.)
+   > Sie müssen das Feld **Externe Identität** für den Benutzer auffüllen, das mit dem Feld **NameID** im SAML-Token von Azure AD übereinstimmen muss. Das Kontrollkästchen **Beliebig** sollte nicht aktiviert werden, da diese Option erfordert, dass der IDP die „SPProviderID“-Eigenschaft im Feld „NameID“ sendet, was derzeit von Azure AD nicht unterstützt wird. Ausführlichere Informationen finden Sie in [diesem](https://help.sap.com/viewer/b3ee5778bc2e4a089d3299b82ec762a7/2.0.05/en-US/db6db355bb571014b56eb25057daec5f.html) Dokument.
 
 5. Weisen Sie dem Benutzer zu Testzwecken alle **XS**-Rollen zu.
 

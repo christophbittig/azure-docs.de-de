@@ -8,14 +8,16 @@ ms.subservice: reserved-instances
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: banders
-ms.openlocfilehash: 136207afef3fef9266fadcea1e67bb0aa6a38a32
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6321058c863b6db190ec987887e61cf20ed8be50
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102549752"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692683"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Vorauszahlen für Azure-Softwarepläne
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
 Wenn Sie für Ihre Nutzung von SUSE- und Red Hat-Software in Azure im Voraus bezahlen, können Sie gegenüber dem nutzungsbasierten Modell Geld sparen. Die Rabatte gelten nur für SUSE- und Red Hat-Verbrauchseinheiten und nicht für die Nutzung virtueller Computer. Sie können für zusätzliche Einsparungen Reservierungen für virtuelle Computer separat erwerben.
 

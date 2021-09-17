@@ -1,14 +1,14 @@
 ---
 title: 'Tutorial: Erstellen einer benutzerdefinierten Richtliniendefinition'
 description: In diesem Tutorial erstellen Sie eine benutzerdefinierte Richtliniendefinition für Azure Policy, um benutzerdefinierte Geschäftsregeln für Ihre Azure-Ressourcen zu erzwingen.
-ms.date: 03/31/2021
+ms.date: 08/17/2021
 ms.topic: tutorial
-ms.openlocfilehash: 51b1f71985bde3a405b56514078e905042340321
-ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
+ms.openlocfilehash: ee7939461c6d655447ebbd32079ec2e1345a89ad
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114362150"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323616"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Tutorial: Erstellen einer benutzerdefinierten Richtliniendefinition
 
@@ -44,7 +44,7 @@ Es ist wichtig, dass Sie sich vor dem Erstellen der Richtliniendefinition mit de
 
 In Ihren Anforderungen sollten die gewünschten und unerwünschten Ressourcenzustände jeweils eindeutig angegeben werden.
 
-Wir haben zwar den erwarteten Zustand der Ressource definiert, aber wird haben noch nicht festgelegt, was mit nicht konformen Ressourcen passieren soll. Azure Policy unterstützt verschiedene [Auswirkungen](../concepts/effects.md). Für dieses Tutorial definieren wir die geschäftliche Anforderung so, dass die Erstellung von Ressourcen verhindert wird, wenn sie mit den Geschäftsregeln nicht konform sind. Um dieses Ziel zu erreichen, verwenden wir die Auswirkung [Deny](../concepts/effects.md#deny) (Verweigern). Außerdem möchten wir die Möglichkeit haben, die Richtlinie für bestimmte Fälle auszusetzen. Hierfür verwenden wir die Auswirkung [Disabled](../concepts/effects.md#disabled) (Deaktiviert) und machen die Auswirkung zu einem [Parameter](../concepts/definition-structure.md#parameters) in der Richtliniendefinition.
+Wir haben zwar den erwarteten Zustand der Ressource definiert, aber wird haben noch nicht festgelegt, was mit nicht konformen Ressourcen passieren soll. Azure Policy unterstützt viele [Effekte](../concepts/effects.md). Für dieses Tutorial definieren wir die geschäftliche Anforderung so, dass die Erstellung von Ressourcen verhindert wird, wenn sie mit den Geschäftsregeln nicht konform sind. Um dieses Ziel zu erreichen, verwenden wir die Auswirkung [Deny](../concepts/effects.md#deny) (Verweigern). Außerdem möchten wir die Möglichkeit haben, die Richtlinie für bestimmte Fälle auszusetzen. Hierfür verwenden wir die Auswirkung [Disabled](../concepts/effects.md#disabled) (Deaktiviert) und machen die Auswirkung zu einem [Parameter](../concepts/definition-structure.md#parameters) in der Richtliniendefinition.
 
 ## <a name="determine-resource-properties"></a>Ermitteln von Ressourceneigenschaften
 
@@ -268,8 +268,8 @@ Wir haben zwar keinen Parameter für die Änderung der Evaluierung verwendet, ab
 
 Das Verfassen der [Richtlinienregel](../concepts/definition-structure.md#policy-rule) ist der letzte Schritt bei der Erstellung der benutzerdefinierten Richtliniendefinition. Wir haben zwei Anweisungen für den Test identifiziert:
 
-- Sicherstellung, dass der Typ (**type**) des Speicherkontos **Microsoft.Storage/storageAccounts** lautet.
-- Sicherstellung, dass für das Speicherkonto **supportsHttpsTrafficOnly** nicht **true** festgelegt ist.
+- Der Typ (**type**) des Speicherkontos ist **Microsoft.Storage/storageAccounts**.
+- **supportsHttpsTrafficOnly** für das Speicherkonto ist nicht **true**.
 
 Da diese beiden Anweisungen wahr sein müssen, verwenden wir **allOf** als [logischen Operator](../concepts/definition-structure.md#logical-operators). Wir übergeben den Parameter **effectType** an die Auswirkung, anstatt eine statische Deklaration zu verwenden. Die fertige Regel sieht wie in diesem Beispiel aus:
 

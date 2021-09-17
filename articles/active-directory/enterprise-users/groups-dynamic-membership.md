@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: overview
-ms.date: 02/18/2021
+ms.date: 08/06/2021
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d93acbfa8ae89b459fafb69411d35706b18fcbb
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 9551906dc3a80a07597fc8406228a5869688d317
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982986"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750560"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Regeln für eine dynamische Mitgliedschaft für Gruppen in Azure Active Directory
 
@@ -176,25 +176,25 @@ user.displayName -match ".*vid"
 
 Die in einem Ausdruck verwendeten Werte können aus mehreren Typen bestehen, Beispiele:
 
-* Zeichenfolgen
-* Boolesch: true, false
-* Zahlen
-* Arrays: Zahlenarray, Zeichenfolgenarray
+- Zeichenfolgen
+- Boolesch: true, false
+- Zahlen
+- Arrays: Zahlenarray, Zeichenfolgenarray
 
 Wenn Sie einen Wert in einem Ausdruck angeben, ist es wichtig, die richtige Syntax zu verwenden, um Fehler zu vermeiden. Einige Tipps für die Syntax:
 
-* Doppelte Anführungszeichen sind optional, es sei denn, der Wert ist eine Zeichenfolge.
-* Bei Vorgängen mit Zeichenfolgen und regulären Ausdrücken wird die Groß- und Kleinschreibung nicht beachtet.
-* Wenn ein Zeichenfolgenwert doppelte Anführungszeichen enthält, müssen beide Anführungszeichen mit dem Escapezeichen \` versehen werden, Beispiel: user.department -eq \`"Sales\`" ist die richtige Syntax, wenn der Wert "Sales" ist.
-* Sie können auch NULL-Überprüfungen durchführen, indem Sie „null“ als Wert verwenden, Beispiel: `user.department -eq null`.
+- Doppelte Anführungszeichen sind optional, es sei denn, der Wert ist eine Zeichenfolge.
+- Bei Vorgängen mit Zeichenfolgen und regulären Ausdrücken wird die Groß- und Kleinschreibung nicht beachtet.
+- Wenn ein Zeichenfolgenwert doppelte Anführungszeichen enthält, müssen beide Anführungszeichen mit dem Escapezeichen \` versehen werden, Beispiel: user.department -eq \`"Sales\`" ist die richtige Syntax, wenn der Wert "Sales" ist. Einfache Anführungszeichen sollten jeweils mit zwei einfachen Anführungszeichen statt mit nur einem als Escapezeichen versehen werden.
+- Sie können auch NULL-Überprüfungen durchführen, indem Sie „null“ als Wert verwenden, Beispiel: `user.department -eq null`.
 
 ### <a name="use-of-null-values"></a>Verwenden von NULL-Werten
 
 Zum Angeben eines NULL-Werts in einer Regel können Sie den Wert *null* verwenden. 
 
-* Verwenden Sie „-eq“ oder „-ne“ zum Vergleichen des *null*-Werts in einem Ausdruck.
-* Verwenden Sie nur Anführungszeichen um das Wort *null*, wenn es als literaler Zeichenfolgenwert interpretiert werden soll.
-* Der -not-Operator kann nicht als Vergleichsoperator für NULL verwendet werden. Wenn Sie ihn verwenden, erhalten Sie eine Fehlermeldung, egal ob Sie „null“ oder „$null“ verwenden.
+- Verwenden Sie „-eq“ oder „-ne“ zum Vergleichen des *null*-Werts in einem Ausdruck.
+- Verwenden Sie nur Anführungszeichen um das Wort *null*, wenn es als literaler Zeichenfolgenwert interpretiert werden soll.
+- Der -not-Operator kann nicht als Vergleichsoperator für NULL verwendet werden. Wenn Sie ihn verwenden, erhalten Sie eine Fehlermeldung, egal ob Sie „null“ oder „$null“ verwenden.
 
 Die richtige Referenzierung des NULL-Werts erfolgt auf diese Weise:
 
@@ -241,9 +241,9 @@ Klammern sind nur erforderlich, wenn die Rangfolge nicht Ihren Anforderungen ent
 
 Eine Mitgliedschaftsregel kann aus komplexen Ausdrücken bestehen, in denen die Eigenschaften, Operatoren und Werte komplexere Formen annehmen. Ausdrücke werden als komplex angesehen, wenn eine der folgenden Bedingungen zutrifft:
 
-* Die Eigenschaft besteht aus einer Sammlung von Werten, insbesondere mehrwertigen Eigenschaften.
-* In den Ausdrücken werden die Operatoren „-any“ und „-all“ verwendet.
-* Der Wert des Ausdrucks kann selbst ein Ausdruck oder mehrere Ausdrücke sein.
+- Die Eigenschaft besteht aus einer Sammlung von Werten, insbesondere mehrwertigen Eigenschaften.
+- In den Ausdrücken werden die Operatoren „-any“ und „-all“ verwendet.
+- Der Wert des Ausdrucks kann selbst ein Ausdruck oder mehrere Ausdrücke sein.
 
 ## <a name="multi-value-properties"></a>Mehrwertige Eigenschaften
 
@@ -258,8 +258,8 @@ Mehrwertige Eigenschaften sind Sammlungen von Objekten desselben Typs. Sie könn
 
 Sie können die Operatoren „-any“ und „-all“ verwenden, um eine Bedingung auf ein Element oder alle Elemente in der Sammlung anzuwenden.
 
-* „-any“ (erfüllt, wenn mindestens ein Element in der Auflistung der Bedingung entspricht)
-* „-all“ (erfüllt, wenn alle Elemente in der Auflistung der Bedingung entsprechen)
+- „-any“ (erfüllt, wenn mindestens ein Element in der Auflistung der Bedingung entspricht)
+- „-all“ (erfüllt, wenn alle Elemente in der Auflistung der Bedingung entsprechen)
 
 #### <a name="example-1"></a>Beispiel 1
 
@@ -357,8 +357,8 @@ Erweiterungsattribute und benutzerdefinierte Erweiterungsattribute werden als Ze
 
 [Benutzerdefinierte Erweiterungseigenschaften](../hybrid/how-to-connect-sync-feature-directory-extensions.md) werden von einer lokalen Windows Server AD-Instanz oder einer verbundenen SaaS-Anwendung synchronisiert und weisen das Format `user.extension_[GUID]_[Attribute]` auf. Dabei gilt Folgendes:
 
-* [GUID] ist der eindeutige Bezeichner in Azure AD für die Anwendung, die die Eigenschaft in Azure AD erstellt hat.
-* [Attribute] ist der Name der Eigenschaft bei ihrer Erstellung.
+- [GUID] ist der eindeutige Bezeichner in Azure AD für die Anwendung, die die Eigenschaft in Azure AD erstellt hat.
+- [Attribute] ist der Name der Eigenschaft bei ihrer Erstellung.
 
 Beispiel für eine Regel, die eine benutzerdefinierte Erweiterungseigenschaft verwendet:
 

@@ -11,23 +11,27 @@ ms.date: 04/19/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Gesichtserkennung, Gesichtserkennungssoftware, Gesichtsanalyse, Gesichtsabgleich, Gesichtserkennungs-App, Gesichtserkennungssuche nach Bild, Gesichtserkennungssuche
-ms.openlocfilehash: d135e97b4792d5c4b71d3758800223d238a6990c
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: 15d8043beb32d8f3c7fa1b237e1ba25310983b86
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111810178"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822286"
 ---
 # <a name="what-is-the-azure-face-service"></a>Was ist der Azure-Gesichtserkennungsdienst?
 
 > [!WARNING]
-> Am 11. Juni 2020 kündigte Microsoft an, dass keine Technologie zur Gesichtserkennung mehr an die Polizeibehörden in den USA verkauft wird, bis es eine strenge, auf den Menschenrechten basierende Regelung gibt. Daher dürfen Kunden keine Gesichtserkennungsfeatures oder in Azure-Diensten enthaltenen Funktionen (wie Gesichtserkennung oder Video Indexer) verwenden, wenn es sich bei dem Kunden um eine Polizeibehörde in den USA handelt oder wenn der Kunde die Nutzung derartiger Dienste durch oder für eine Polizeibehörde zulässt.
+> Am 11. Juni 2020 kündigte Microsoft an, dass keine Technologie zur Gesichtserkennung mehr an die Polizeibehörden in den USA verkauft wird, bis es eine strenge, auf den Menschenrechten basierende Regelung gibt. Daher dürfen Kunden keine Gesichtserkennungsfeatures oder in Azure-Diensten enthaltenen Funktionen (wie Gesichtserkennung oder Video Indexer) verwenden, wenn es sich bei dem Kunden um eine Polizeibehörde in den USA handelt oder wenn der Kunde die Nutzung derartiger Dienste durch oder für eine Polizeibehörde zulässt. Wenn Sie eine neue Gesichtserkennungsressource erstellen, müssen Sie im Azure-Portal bestätigen und sich damit einverstanden erklären, dass Sie den Dienst nicht über oder für eine Polizeibehörde in den USA verwenden, und dass Sie die [RAI-Dokumentation (Responsible AI)](https://go.microsoft.com/fwlink/?linkid=2164191) gelesen haben und diesen Dienst entsprechend verwenden.
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Der Azure-Gesichtserkennungsdienst verfügt über KI-Algorithmen zum Ermitteln, Erkennen und Analysieren menschlicher Gesichter in Bildern. Gesichtserkennungssoftware ist für viele unterschiedliche Szenarien wichtig, z. B. Sicherheit, natürliche Benutzeroberfläche, Analyse und Verwaltung von Bildinhalten, mobile Apps und Robotik.
+Der Azure-Gesichtserkennungsdienst verfügt über KI-Algorithmen zum Ermitteln, Erkennen und Analysieren menschlicher Gesichter in Bildern. Gesichtserkennungssoftware ist in vielen verschiedenen Szenarien wichtig, z. B. Identitätsüberprüfung, berührungslose Zugangskontrolle und Gesichtsunschärfe aus Datenschutzgründen.
 
-Der Gesichtserkennungsdienst verfügt über verschiedene Funktionen für die Gesichtsanalyse, die in den folgenden Abschnitten beschrieben werden.
+Identitätsüberprüfung: Überprüft die Identität einer Person anhand einer von der Behörde ausgestellten ID-Karte, z. B. einem Pass, eines Führerscheins oder anderen Registrierungsbilds, um den Zugriff auf digitale oder physische Dienste zu gewähren oder ein Konto wiederherzustellen. Bestimmte Zugangsszenarien sind das Eröffnen eines neuen Kontos, das Überprüfen von Beschäftigten oder die Durchführung eines Onlineassessments. Die Identitätsüberprüfung kann einmal durchgeführt werden, wenn eine Person integriert wird, und wiederholt, wenn jemand auf einen digitalen oder physischen Dienst zugreift.
+
+Berührungslose Zugangskontrolle: Im Vergleich zu heutigen Methoden wie Karten oder Tickets ermöglicht die Gesichtserkennung eine verbesserte Zugangskontrolle, während gleichzeitig die Hygiene- und Sicherheitsrisiken durch das Teilen einer Karte, Verlust oder Diebstahl reduziert werden. Die Gesichtserkennung unterstützt den Eincheckprozess von Personen beim Einchecken in Flughäfen, Stadien, Vergnügungsparks oder Gebäuden sowie die Rezeptionen von Büros, Krankenhäusern, Fitnessstudios, Clubs oder Schulen.
+
+Gesichtsbearbeitung: Erkannte Gesichter von Personen, die in einem Video aufgezeichnet wurden, werden bearbeitet oder unscharf gemacht, um ihre Privatsphäre zu schützen.
 
 Diese Dokumentation enthält die folgenden Arten von Artikeln:
 * In den [Schnellstarts](./Quickstarts/client-libraries.md) finden Sie Schritt-für-Schritt-Anleitungen, mit denen Sie Aufrufe an den Dienst senden können und in kurzer Zeit Ergebnisse erhalten. 
@@ -35,36 +39,44 @@ Diese Dokumentation enthält die folgenden Arten von Artikeln:
 * Die [konzeptionellen Artikel](./concepts/face-detection.md) enthalten ausführliche Erläuterungen der Funktionen und Features eines Diensts.
 * Die [Tutorials](./enrollment-overview.md) sind ausführlichere Leitfäden, in denen die Verwendung dieses Diensts als Komponente in umfassenderen Unternehmenslösungen veranschaulicht wird.
 
-## <a name="face-detection"></a>Gesichtserkennung
+## <a name="face-detection-and-analysis"></a>Gesichtserkennung und Analyse
 
-Mit der Erkennungs-API können menschliche Gesichter in einem Bild erkannt und die Rechteckkoordinaten ihrer Positionen zurückgegeben werden. Optional können bei der Gesichtserkennung verschiedene Gesichtsattribute extrahiert werden, z. B. Kopfhaltung, Geschlecht, Alter, Emotionen, Gesichtsbehaarung und Brille. Bei diesen Attributen handelt es sich um allgemeine Vorhersagen, nicht um tatsächliche Klassifizierungen. 
+Die Gesichtserkennung ist in allen anderen Szenarien als erster Schritt erforderlich. Mit der Erkennungs-API können menschliche Gesichter in einem Bild erkannt und die Rechteckkoordinaten ihrer Positionen zurückgegeben werden. Außerdem wird eine eindeutige ID zurückgegeben, die die gespeicherten Gesichtsdaten darstellt, die in späteren Vorgängen zum Identifizieren oder Überprüfen von Gesichtern verwendet werden.
+
+Optional können bei der Gesichtserkennung auch verschiedene Gesichtsattribute extrahiert werden, z. B. Kopfhaltung, Alter, Emotionen, Gesichtsbehaarung und Brille. Bei diesen Attributen handelt es sich um allgemeine Vorhersagen, nicht um tatsächliche Klassifizierungen. Einige Attribute sind nützlich, um sicherzustellen, dass Ihre Anwendung hochwertige Gesichtsdaten erhält, wenn Benutzer sich selbst einem Gesichtserkennungsdienst hinzufügen (z. B. könnte Ihre Anwendung Benutzern empfehlen, ihre Sonnenbrillen abzunehmen, wenn sie Sonnenbrillen tragen).
 
 > [!NOTE]
-> Die Funktion zur Gesichtserkennung ist auch über den [Dienst für maschinelles Sehen](../computer-vision/overview.md) verfügbar. Wenn Sie jedoch weitere Gesichtserkennungsvorgänge wie „Identifizieren“, „Überprüfen“, „Ähnliches suchen“ oder „Gruppieren“ verwenden möchten, sollten Sie stattdessen diesen Gesichtserkennungsdienst verwenden.
+> Die Funktion zur Gesichtserkennung ist auch über den [Dienst für maschinelles Sehen](../computer-vision/overview.md) verfügbar. Wenn Sie jedoch weitere Gesichtserkennungsvorgänge wie „Identifizieren“, „Überprüfen“, „Ähnliches suchen“ oder „Gesichtsgruppierung“ verwenden möchten, sollten Sie stattdessen diesen Dienst verwenden.
 
-Weitere Informationen zur Gesichtserkennung finden Sie im Artikel zu den Konzepten der [Gesichtserkennungs-API](concepts/face-detection.md). Lesen Sie auch die Referenzdokumentation zur [Erkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+Weitere Informationen zur Gesichtserkennung und -analyse finden Sie im Artikel zu den Konzepten der [Gesichtserkennungs-API](concepts/face-detection.md). Lesen Sie auch die Referenzdokumentation zur [Erkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
-## <a name="face-verification"></a>Gesichtsüberprüfung
 
-Die Überprüfungs-API basiert auf der Erkennung und geht der folgenden Frage nach: „Handelt es sich bei diesen beiden Bildern um die gleiche Person?“. Die Überprüfung wird auch als 1:1-Abgleich bezeichnet, da das Testbild mit nur einer registrierten Vorlage verglichen wird. Die Überprüfung kann in Identitätsüberprüfungs- oder Zugriffssteuerungsszenarien verwendet werden, um zu überprüfen, ob ein Bild mit einem zuvor aufgenommenen Bild übereinstimmt (z. B. ein Foto von einem von einer Behörde ausgegebenen Ausweis). Weitere Informationen finden Sie im Konzeptleitfaden zur [Gesichtserkennung](concepts/face-recognition.md) oder in der Referenzdokumentation zur [Überprüfungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a).
+## <a name="identity-verification"></a>Identitätsüberprüfung
 
-## <a name="face-identification"></a>Gesichtsidentifizierung
+Moderne Unternehmen und Apps können mit den Gesichtsidentifikations- und Gesichtsüberprüfungsvorgängen überprüfen, ob es sich bei einem Benutzer um denjenigen handelt, als der er sich ausgibt. 
 
-Die Identifizierungs-API beginnt ebenfalls mit der Erkennung und beantwortet die Frage „Stimmt dieses erkannte Gesicht mit einem registrierten Gesicht in einer Datenbank überein?“. Der Vorgang ähnelt der Gesichtserkennungssuche und wird daher auch als 1:n-Abgleich bezeichnet. Übereinstimmungskandidaten werden basierend darauf zurückgegeben, wie genau die Testvorlage mit dem erkannten Gesicht den einzelnen registrierten Vorlagen entspricht.
+### <a name="identification"></a>Identifikation
+
+Die Gesichtsidentifikation kann als „1:n“-Abgleich bezeichnet werden. Übereinstimmungskandidaten werden basierend auf der Genauigkeit der Übereinstimmung ihrer Gesichtsdaten mit dem Abfragegesicht zurückgegeben. Dieses Szenario wird verwendet, um einer bestimmten Gruppe von Personen Zugang zu einem Gebäude zu gewähren oder den Benutzer eines Geräts zu überprüfen.
 
 Die folgende Abbildung enthält ein Beispiel für eine Datenbank mit dem Namen `"myfriends"`. Jede Gruppe kann bis zu 1 Million unterschiedliche Personenobjekte enthalten. Für jedes Personenobjekt können bis zu 248 Gesichter registriert sein.
 
 ![Raster mit drei Spalten für unterschiedliche Personen, jeweils mit drei Zeilen mit Bildern von Gesichtern](./Images/person.group.clare.jpg)
 
-Nachdem Sie eine Datenbank erstellt und trainiert haben, können Sie die Identifizierung eines neuen erkannten Gesichts für die Gruppe durchführen. Wenn das Gesicht als eine Person aus der Gruppe erkannt wird, wird das Personenobjekt zurückgegeben.
+Nachdem Sie eine Gruppe erstellt und trainiert haben, können Sie die Identifizierung eines neuen erkannten Gesichts anhand der Gruppe durchführen. Wenn das Gesicht als eine Person aus der Gruppe erkannt wird, wird das Personenobjekt zurückgegeben.
 
-Weitere Informationen zur Personenidentifizierung finden Sie im Konzeptleitfaden zur [Gesichtserkennung](concepts/face-recognition.md) oder in der Referenzdokumentation zur [Identify-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
+### <a name="verification"></a>Überprüfung
+
+Der Überprüfungsvorgang beantwortet die Frage „Gehören diese beiden Gesichter zu derselben Person?“. Die Überprüfung wird auch als „1:1“-Abgleich bezeichnet, da die Testgesichtsdaten mit nur einem registrierten Gesicht verglichen werden. Die Überprüfung wird im Identifikationsszenario verwendet, um zu überprüfen, ob eine bestimmte Übereinstimmung korrekt ist. 
+
+Weitere Informationen zur Überprüfung der Identifikation finden Sie im Konzeptleitfaden zur [Gesichtserkennung](concepts/face-recognition.md) oder in der Referenzdokumentation zur [Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)- und [Verify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)-API.
+
 
 ## <a name="find-similar-faces"></a>Suchen ähnlicher Gesichter
 
-Die „Find Similar API“ (API „Ähnliches suchen“) ermöglicht einen Abgleich zwischen einem Zielgesicht und mehreren Kandidatengesichtern, um eine Untermenge von Gesichtern zu ermitteln, die dem Zielgesicht ähnlich sind. Dieser Vorgang ist hilfreich, wenn eine Gesichtserkennungssuche anhand von Bildern durchgeführt werden soll. 
+Der Vorgang „Ähnliches suchen“ ermöglicht einen Abgleich zwischen einem Zielgesicht und mehreren Kandidatengesichtern, um eine Untermenge von Gesichtern zu ermitteln, die dem Zielgesicht ähnlich sind. Dies ist hilfreich, wenn eine Gesichtserkennungssuche anhand von Bildern durchgeführt werden soll. 
 
-Es werden zwei Arbeitsmodi unterstützt: **matchPerson** und **matchFace**. Im Modus **matchPerson** werden ähnliche Gesichter zurückgegeben, nachdem mit der [Überprüfungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) nach derselben Person gefiltert wurde. Im Modus **matchFace** wird der Filter für dieselbe Person ignoriert. Er gibt eine Liste mit ähnlichen Kandidatengesichtern zurück, die nicht unbedingt zu derselben Person gehören müssen.
+Der Dienst unterstützt die beiden Arbeitsmodi **matchPerson** und **matchFace**. Im Modus **matchPerson** werden ähnliche Gesichter zurückgegeben, nachdem mit der [Überprüfungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) nach derselben Person gefiltert wurde. Im Modus **matchFace** wird der Filter für dieselbe Person ignoriert. Er gibt eine Liste mit ähnlichen Kandidatengesichtern zurück, die nicht unbedingt zu derselben Person gehören müssen.
 
 Das folgende Beispiel zeigt das Zielgesicht:
 
@@ -76,16 +88,16 @@ Und diese Bilder sind die Kandidatengesichter:
 
 Für die Suche nach vier ähnlichen Gesichtern gibt der Modus **matchPerson** a und b zurück. Diese zeigen dieselbe Person wie das Zielgesicht. Im Modus **matchFace** werden a, b, c und d zurückgegeben, also genau vier Kandidaten – auch wenn es sich teilweise um andere Personen handelt oder die Ähnlichkeit nur gering ist. Weitere Informationen finden Sie im Konzeptleitfaden zur [Gesichtserkennung](concepts/face-recognition.md) oder in der Referenzdokumentation zur [Find Similar-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
 
-## <a name="face-grouping"></a>Gesichtsgruppierung
+## <a name="group-faces"></a>Gruppieren von Gesichtern
 
-Mit der API für die Gruppierung wird eine Gruppe von unbekannten Gesichtern anhand der Ähnlichkeit in mehrere Untergruppen aufgeteilt. Jede Gruppe ist eine zusammenhanglose korrekte Teilmenge der ursprünglichen Gesichtergruppe. Alle Gesichter in einer Gruppe gehören wahrscheinlich zur selben Person. Es kann mehrere verschiedene Gruppen für eine einzelne Person geben. Die Gruppen werden durch einen anderen Faktor unterschieden, z. B. den Ausdruck. Weitere Informationen finden Sie im Konzeptleitfaden zur [Gesichtserkennung](concepts/face-recognition.md) oder in der Referenzdokumentation zur [Group-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238).
+Mit dem Gruppierungsvorgang wird eine Gruppe von unbekannten Gesichtern anhand der Ähnlichkeit in kleinere Gruppen aufgeteilt. Jede Gruppe ist eine zusammenhanglose korrekte Teilmenge der ursprünglichen Gesichtergruppe. Außerdem wird ein einzelnes „messyGroup“-Array zurückgegeben, das die Gesichts-IDs enthält, für die keine Ähnlichkeiten gefunden wurden.
 
+Für alle Gesichter einer zurückgegebenen Gruppe ist die Wahrscheinlichkeit hoch, dass sie zu derselben Person gehören, aber es kann für eine Person auch mehrere unterschiedliche Gruppen geben. Diese Gruppen werden durch einen anderen Faktor unterschieden, z. B. den Ausdruck. Weitere Informationen finden Sie im Konzeptleitfaden zur [Gesichtserkennung](concepts/face-recognition.md) oder in der Referenzdokumentation zur [Group-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238).
 
-## <a name="sample-apps"></a>Beispiel-Apps
+## <a name="sample-app"></a>Beispiel-App
 
 Die folgenden Beispielanwendungen zeigen einige Verwendungsmöglichkeiten des Gesichtserkennungsdiensts:
 
-- [Gesichtserkennungs-API: Windows Client Library and sample](https://github.com/Microsoft/Cognitive-Face-Windows) (Microsoft-Gesichtserkennungs-API: Windows-Clientbibliothek und -Beispiel): Eine WPF-App, mit der verschiedene Szenarien der Gesichtserkennung, -analyse und -identifizierung veranschaulicht werden.
 - [FamilyNotes UWP app](https://github.com/Microsoft/Windows-appsample-familynotes) (FamilyNotes-UWP-App): Eine UWP-App (Universelle Windows-Plattform), bei der die Gesichtsidentifizierung zusammen mit Spracheingabe, Cortana, Freihand und Kamera in einem Szenario zum Austauschen von Familiennotizen genutzt wird.
 
 ## <a name="data-privacy-and-security"></a>Datenschutz und Sicherheit

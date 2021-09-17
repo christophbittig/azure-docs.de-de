@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/20/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 80a066aab79e3ca6ca541a82fe6b7fe023653a81
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: c020e239c566accfe10f0ad298bf76f2c749309b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114448788"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740148"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>Tutorial: Verwalten von App-Gruppen mit dem Azure-Portal
 
@@ -21,7 +21,7 @@ ms.locfileid: "114448788"
 Die Standard-App-Gruppe, die für einen neuen Azure Virtual Desktop-Hostpool erstellt wird, veröffentlicht auch den vollständigen Desktop. Zusätzlich können Sie RemoteApp-Anwendungsgruppen für den Hostpool erstellen. In diesem Tutorial erfahren Sie, wie Sie eine RemoteApp-Gruppe erstellen und individuelle Startmenü-Apps veröffentlichen.
 
 >[!NOTE]
->Sie können MISX-Apps dynamisch an Benutzersitzungen anfügen oder Ihre App-Pakete einem benutzerdefinierten VM-Image hinzufügen, um die Apps Ihrer Organisation zu veröffentlichen. Weitere Informationen finden Sie unter [Hosten benutzerdefinierter Apps mit Azure Virtual Desktop](./remote-app-streaming/custom-apps.md).
+>Sie können MSIX-Apps dynamisch an Benutzersitzungen anfügen oder Ihre App-Pakete einem benutzerdefinierten VM-Image hinzufügen, um die Apps Ihrer Organisation zu veröffentlichen. Weitere Informationen finden Sie unter [Hosten benutzerdefinierter Apps mit Azure Virtual Desktop](./remote-app-streaming/custom-apps.md).
 
 In diesem Tutorial lernen Sie Folgendes:
 

@@ -3,12 +3,12 @@ title: Azure Arc-fähigen Server zu Azure migrieren
 description: Erfahren Sie, wie Sie Ihre Azure Arc-fähigen Server, die lokal oder in einer anderen Cloudumgebung ausgeführt werden, zu Azure migrieren können.
 ms.date: 07/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 9dd7baa2466f4acd3e4106c3cec5a0d7e7afe05c
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 5433c859389722884df525ab7ac885ae013f9e59
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114390234"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768274"
 ---
 # <a name="migrate-your-on-premises-or-other-cloud-arc-enabled-server-to-azure"></a>Migrieren Ihres lokalen oder anderen Arc-fähigen Cloudservers zu Azure
 
@@ -42,7 +42,7 @@ Erstellen Sie eine Liste der Rollenzuweisungen für die Arc-fähige Serverressou
 
 Wenn Sie eine verwaltete Identität für eine Anwendung oder einen Prozess verwenden, die/der auf einem Arc-fähigen Server ausgeführt wird, müssen Sie sicherstellen, dass dem virtuellen Azure-Computer eine verwaltete Identität zugewiesen ist. Um die Rollenzuweisung für eine verwaltete Identität anzuzeigen, können Sie das cmdlet Azure PowerShell `Get-AzADServicePrincipal` verwenden. Weitere Informationen finden Sie unter [Auflisten von Rollenzuweisungen für eine verwaltete Identität](../../role-based-access-control/role-assignments-list-powershell.md#list-role-assignments-for-a-managed-identity). 
 
-Eine vom System verwaltete Identität wird auch verwendet, wenn Azure Policy genutzt wird, um Einstellungen auf einem Computer oder Server zu überwachen. Bei Arc-fähigen Servern ist der Gastkonfigurations-Agent enthalten und führt die Überprüfung der Überwachungseinstellungen durch. Nach der Migration finden Sie unter [Anforderungen zur Bereitstellung virtueller Azure-Computer](../../governance/policy/concepts/guest-configuration.md#deploy-requirements-for-azure-virtual-machines) Informationen zum Konfigurieren Ihrer Azure-VM manuell oder mit der Richtlinie mit der Gastkonfigurationserweiterung.
+Eine vom System verwaltete Identität wird auch verwendet, wenn Azure Policy genutzt wird, um Einstellungen auf einem Computer oder Server zu überwachen oder zu konfigurieren. Bei Arc-fähigen Servern ist der Gastkonfigurations-Agent-Dienst enthalten und führt die Überprüfung der Überwachungseinstellungen durch. Nach der Migration finden Sie unter [Anforderungen zur Bereitstellung virtueller Azure-Computer](../../governance/policy/concepts/guest-configuration.md#deploy-requirements-for-azure-virtual-machines) Informationen dazu, wie Sie Ihre Azure-VM manuell oder mit der Richtlinie mit der Gastkonfigurationserweiterung konfigurieren.
 
 Aktualisieren Sie die Rollenzuweisung mit allen Ressourcen, auf die von der verwalteten Identität zugegriffen wird, damit sich die neue Azure-VM-Identität bei diesen Diensten authentifizieren kann. Im Folgenden erfahren Sie, [wie verwaltete Identitäten für Azure-Ressourcen für einen virtuellen Azure-Computer (VM) funktionieren](../../active-directory/managed-identities-azure-resources/how-managed-identities-work-vm.md).
 
@@ -70,7 +70,7 @@ Bevor Sie mit der Migration mit Azure-Migration fortfahren, lesen Sie den Artike
 
 Nach der Migration und dem Abschluss aller Konfigurationsschritte nach der Migration können Sie nun die Azure-VM-Erweiterungen basierend auf den VM-Erweiterungen bereitstellen, die ursprünglich auf Ihrem Arc-fähigen Server installiert waren. Lesen Sie das Kapitel [Erweiterungen und Features für virtuelle Azure-Computer](../../virtual-machines/extensions/overview.md), um die Bereitstellung Ihrer Erweiterung zu planen. 
 
-Informationen zum Fortsetzen der Verwendung von Überwachungseinstellungen auf einem Computer mit Azure Policy Gastkonfigurationsrichtliniendefinitionen finden Sie unter [Aktivieren der Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md#enable-guest-configuration).
+Informationen zum Fortsetzen der Verwendung von Überwachungseinstellungen auf einem Computer mit Gastkonfigurationsrichtliniendefinitionen finden Sie unter [Aktivieren der Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md#enable-guest-configuration).
 
 Wenn die VM-Erweiterung der Protokollanalyse oder die VM-Erweiterung des Abhängigkeits-Agent mithilfe von Azure Policy der [VM-Erkenntnis-Initiative](../../azure-monitor/vm/vminsights-enable-policy.md) bereitgestellt wurde, entfernen Sie die [Ausnahme](../../governance/policy/tutorials/create-and-manage.md#remove-a-non-compliant-or-denied-resource-from-the-scope-with-an-exclusion), den Sie zuvor erstellt haben. Informationen, wie Sie Azure Policy zum Aktivieren virtueller Azure-Computer verwenden können, finden Sie in [Bereitstellen von Azure Monitor im großen Stil mithilfe von Azure Policy](../../azure-monitor/deploy-scale.md#vm-insights). 
 
