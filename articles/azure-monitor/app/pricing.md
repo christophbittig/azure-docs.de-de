@@ -5,14 +5,14 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 author: DaleKoetke
 ms.author: dalek
-ms.date: 6/24/2021
+ms.date: 8/23/2021
 ms.reviewer: lagayhar
-ms.openlocfilehash: 39109106a100d2af8a9dad4e6009f4c73fea8f59
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: 8183e52e5b475f08df3631021d8ea6d3120525c8
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122343166"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772591"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Verwalten der Nutzung und der Kosten für Application Insights
 
@@ -37,22 +37,20 @@ Für Application Insights-Ressourcen, die ihre Daten an einen Log Analytics-Arbe
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>Schätzen der Kosten für die Verwaltung Ihrer Anwendung
 
-Wenn Sie Application Insights noch nicht verwenden, können Sie mit dem [Azure Monitor-Preisrechner](https://azure.microsoft.com/pricing/calculator/?service=monitor) die Kosten für die Nutzung von Application Insights schätzen. Geben Sie „Azure Monitor“ im Suchfeld ein, und klicken Sie auf die ausgegebene Azure Monitor-Kachel. Scrollen Sie auf der Seite nach unten bis zu „Azure Monitor“, und wählen Sie in der Dropdownliste „Typ“ den Eintrag „Application Insights“ aus.  Hier können Sie die Menge der Daten in GB eingeben, die pro Monat erwartungsgemäß gesammelt werden. Die Frage ist also, wie viele Daten bei der Überwachung Ihrer Anwendung von Application Insights gesammelt werden.
+Wenn Sie Application Insights noch nicht verwenden, können Sie mit dem [Azure Monitor-Preisrechner](https://azure.microsoft.com/pricing/calculator/?service=monitor) die Kosten für die Nutzung von Application Insights schätzen. Geben Sie „Azure Monitor“ im Suchfeld ein, und klicken Sie auf die ausgegebene Azure Monitor-Kachel. Scrollen Sie auf der Seite nach unten zu Azure Monitor und erweitern Sie den Abschnitt Application Insights. Ihre geschätzten Kosten hängen von der Menge der erfassten Protokolldaten ab.  Es gibt zwei Ansätze zur Schätzung des Datenvolumens:
 
-Hierfür gibt es zwei Ansätze: Verwenden der standardmäßigen Überwachung und der adaptiven Stichprobenerstellung, die im ASP.NET SDK verfügbar ist, oder Schätzen der wahrscheinlichen Datenerfassung auf Grundlage der von anderen ähnlichen Kunden gemachten Erfahrungen.
+1. Schätzung der voraussichtlichen Datenerfassung auf der Grundlage der Daten, die andere ähnliche Anwendungen erzeugen, oder 
+2. Verwendung der standardmäßigen Überwachung und der adaptive Stichprobenerstellung, das im ASP.NET SDK verfügbar ist.
+
+### <a name="learn-from-what-similar-applications-collect"></a>Lernen Sie von dem, was ähnliche Anwendungen sammeln
+
+Im Azure Monitor Preisrechner für Application Insights, klicken Sie zur Aktivierung von **Schätzung des Datenvolumens anhand der Anwendungsaktivität**. Hier können Sie Eingaben zu Ihrer Anwendung machen (Anforderungen pro Monat und Seitenaufrufe pro Monat, falls Sie client-seitige Telemetrie sammeln), und der Rechner zeigt Ihnen dann den Median und das 90. Perzentil der von ähnlichen Anwendungen gesammelten Daten an. Diese Anwendungen umfassen die gesamte Bandbreite an Application Insights-Konfigurationen (z.B. weisen einige die standardmäßige [Stichprobenerstellung](./sampling.md) auf, einige keine Stichprobenerstellung usw.), sodass Sie bei der Stichprobenerstellung immer noch die Menge der erfassten Daten auf einen Wert weit unterhalb des Medianwerts reduzieren können. 
 
 ### <a name="data-collection-when-using-sampling"></a>Datensammlung unter Verwendung der Stichprobenerstellung
 
 Bei der [adaptiven Stichprobenerstellung](sampling.md#adaptive-sampling) des ASP.NET SDK wird die Datenmenge automatisch angepasst, damit sie eine festgelegte maximale Datenverkehrsrate für die standardmäßige Application Insights-Überwachung nicht überschreitet. Wenn die Anwendung wenig Telemetriedaten erzeugt (z.B. beim Debuggen oder aufgrund geringer Nutzung), werden keine Elemente vom Prozessor für Stichprobenentnahmen gelöscht, solange die Datenmenge unter dem konfigurierten Wert für Ereignisse pro Sekunde liegt. Bei einer Anwendung mit hohem Datenvolumen und dem Standardschwellenwert von fünf Ereignissen pro Sekunde, beschränkt die adaptive Stichprobenerstellung die Anzahl der täglichen Ereignisse auf 432.000. Bei einer üblichen durchschnittlichen Ereignisgröße von 1 KB entspricht dies 13,4 GB an Telemetriedaten pro Monat mit 31 Tagen pro Knoten, auf dem Ihre Anwendung gehostet wird, da die Stichprobenerstellung lokal auf jedem Knoten erfolgt.
 
-> [!NOTE]
-> Die Azure Monitor-Protokolldatengröße wird in GB (1 GB = 10^9 Bytes) berechnet.
-
 Bei SDKs, die keine adaptive Stichprobenerstellung unterstützen, können Sie die [Erfassungs-Stichprobenerstellung](./sampling.md#ingestion-sampling) verwenden, bei der Stichproben erstellt werden, wenn die Daten von Application Insights basierend auf einem Prozentsatz aufzubewahrender Daten empfangen werden, oder Sie können die [Stichprobenerstellung mit festem Prozentsatz für ASP.NET-, ASP.NET Core- und Java-Websites](sampling.md#fixed-rate-sampling) verwenden, um den von Ihrem Webserver und Webbrowsern gesendeten Datenverkehr zu reduzieren
-
-### <a name="learn-from-what-similar-customers-collect"></a>Erfahrungen ähnlicher Kunden bei der Datensammlung
-
-Wenn Sie im Preisrechner für die Azure-Überwachung für Application Insights die Funktion „Schätzung des Datenvolumens anhand der Anwendungsaktivität“ aktivieren, können Sie Angaben zu Ihrer Anwendung machen (Anforderungen pro Monat und Seitenaufrufe pro Monat, falls Sie clientseitige Telemetriedaten sammeln), und der Rechner teilt Ihnen dann den Medianwert und das 90. Percentil der von ähnlichen Anwendungen gesammelten Datenmenge mit. Diese Anwendungen umfassen die gesamte Bandbreite an Application Insights-Konfigurationen (z.B. weisen einige die standardmäßige [Stichprobenerstellung](./sampling.md) auf, einige keine Stichprobenerstellung usw.), sodass Sie bei der Stichprobenerstellung immer noch die Menge der erfassten Daten auf einen Wert weit unterhalb des Medianwerts reduzieren können. Dies ist jedoch ein Ausgangspunkt, um die Erfahrungen anderer, ähnlicher Kunden zu verstehen.
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>Verstehen Ihrer Nutzung und Schätzen von Kosten
 

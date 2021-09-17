@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 04/27/2021
 ms.custom: devx-track-python, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 40fdfcec5e74c7b86807f5cd1577d12ed4904632
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 472fcf4c7a1cc486db5aded40c87ffec2a9e796a
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113765748"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634692"
 ---
 # <a name="tutorial-get-started-with-a-python-script-in-azure-machine-learning-part-1-of-3"></a>Tutorial: Erste Schritte mit einem Python-Skript in Azure Machine Learning (Teil 1 von 3)
 
@@ -149,13 +149,19 @@ Eine kurze Beschreibung zur Funktionsweise des Steuerungsskripts:
 
 ## <a name="submit-and-run-your-code-in-the-cloud"></a><a name="submit"></a> Übermitteln und Ausführen Ihres Codes in der Cloud
 
-Wählen Sie **Speichern und Ausführen des Skripts im Terminal** aus, um Ihr Steuerungsskript auszuführen, das seinerseits `hello.py` auf dem Computecluster ausführt, den Sie im [Setup-Tutorial](quickstart-create-resources.md) erstellt haben.
+1. Wählen Sie **Speichern und Ausführen des Skripts im Terminal** aus, um Ihr Steuerungsskript auszuführen, das seinerseits `hello.py` auf dem Computecluster ausführt, den Sie im [Setup-Tutorial](quickstart-create-resources.md) erstellt haben.
 
-Im Terminal werden Sie möglicherweise aufgefordert, sich anzumelden, um sich zu authentifizieren.  Kopieren Sie den Code, und folgen Sie dem Link, um diesen Schritt abzuschließen.
+1. Im Terminal werden Sie möglicherweise aufgefordert, sich anzumelden, um sich zu authentifizieren.  Kopieren Sie den Code, und folgen Sie dem Link, um diesen Schritt abzuschließen.
 
-> [!TIP]
-> Wenn Sie gerade die Erstellung des Computeclusters abgeschlossen haben, sehen Sie möglicherweise die Fehlermeldung „UserError: Erforderliches Docker-Image nicht gefunden...“ Warten Sie etwa 5 Minuten, und versuchen Sie es dann erneut.  Der Computecluster benötigt möglicherweise mehr Zeit, bevor er zum Einrichten von Knoten bereit ist.
+1. Nachdem Sie authentifiziert wurden, wird im Terminal ein Link angezeigt. Wählen Sie den Link aus, um die Ausführung anzuzeigen.
 
+    [!INCLUDE [amlinclude-info](../../includes/machine-learning-py38-ignore.md)]
+
+## <a name="view-the-output"></a>Anzeigen der Ausgabe
+
+1. Auf der Seite, die sich öffnet, sehen Sie den Status der Ausführung.
+1. Wenn der Ausführungsstatus **Abgeschlossen** lautet, wählen Sie oben auf der Seite **Ausgabe und Protokolle** aus.
+1. Wählen Sie **70_driver_log.txt** aus, um die Ausgabe der Ausführung anzuzeigen.
 
 ## <a name="monitor-your-code-in-the-cloud-in-the-studio"></a><a name="monitor"></a>Überwachen Ihres Codes in der Cloud in Studio
 

@@ -9,14 +9,17 @@ ms.workload: infrastructure
 ms.date: 03/17/2021
 ms.author: cynthn
 ms.custom: contperf-fy21q3, devx-track-azurepowershell
-ms.openlocfilehash: e3f49268b11d57ccabccd7c14ccc244103d1db86
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: f13c13ec30972c6129f794f831d3f937ca98c9dc
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110670235"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698338"
 ---
 # <a name="find-and-use-azure-marketplace-vm-images-with-azure-powershell"></a>Suchen und Verwenden von VM-Images im Azure Marketplace mit Azure PowerShell
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
+
 
 Dieser Artikel beschreibt, wie Sie mit Azure PowerShell nach VM-Images im Azure Marketplace suchen. Sie können dann ein Marketplace-Image und Informationen zum Plan angeben, wenn Sie eine VM erstellen.
 

@@ -9,12 +9,12 @@ metadata:
   ms.topic: troubleshooting
   ms.date: 02/22/2021
   ms.author: deanwe
-  ms.openlocfilehash: b1cc973af2c4e50ea0f50698f6628bac77c1dfeb
-  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+  ms.openlocfilehash: dca933c5b86875b50d04a67f482713830437350b
+  ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 07/22/2021
-  ms.locfileid: "114481537"
+  ms.lasthandoff: 08/20/2021
+  ms.locfileid: "122608102"
 title: Häufig gestellte Fragen zur automatischen Azure-Verwaltung für VMs
 summary: >
   Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur [automatischen Azure-Verwaltung für virtuelle Computer](automanage-virtual-machines.md).

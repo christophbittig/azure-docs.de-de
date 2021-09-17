@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 ms.custom: references_regions, devx-track-azurecli
 description: Verwenden benutzerdefinierter Speicherorte zum Bereitstellen von Azure-PaaS-Diensten in Kubernetes-Clustern mit Azure Arc-Unterstützung
-ms.openlocfilehash: 5fa255755dd0b78498203624194d081447d70a13
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: a4586f6f527bd98f0f347e51c787f2bcda7c6d8d
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113730854"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768301"
 ---
 # <a name="create-and-manage-custom-locations-on-azure-arc-enabled-kubernetes"></a>Erstellen und Verwalten benutzerdefinierter Standorte in Kubernetes mit Azure Arc-Unterstützung
 
@@ -57,29 +57,26 @@ Eine konzeptionelle Übersicht zu diesem Feature finden Sie im Artikel [„Benut
 - Überprüfen Sie die abgeschlossene Anbieterregistrierung für `Microsoft.ExtendedLocation`.
     1. Geben Sie die folgenden Befehle ein:
     
-    ```azurecli
-    az provider register --namespace Microsoft.ExtendedLocation
-    ```
+        ```azurecli
+        az provider register --namespace Microsoft.ExtendedLocation
+        ```
 
     2. Überwachen Sie den Registrierungsprozess. Die Registrierung kann bis zu 10 Minuten dauern.
     
-    ```azurecli
-    az provider show -n Microsoft.ExtendedLocation -o table
-    ```
+        ```azurecli
+        az provider show -n Microsoft.ExtendedLocation -o table
+        ```
+
+        Nach der Registrierung weist der Status `RegistrationState` den Wert `Registered` auf.
 
 - Überprüfen Sie, ob Sie über einen [verbundenen, Azure Arc-fähigen Kubernetes-Cluster](quickstart-connect-cluster.md) verfügen.
     - [Führen Sie für Ihre Agents ein Upgrade](agent-upgrade.md#manually-upgrade-agents) auf Version 1.1.1.0 oder höher aus.
-
->[!NOTE]
->**Unterstützte Regionen für benutzerdefinierte Speicherorte:**
->* East US
->* Europa, Westen
 
 ## <a name="enable-custom-locations-on-cluster"></a>Aktivieren benutzerdefinierter Speicherorte im Cluster
 
 Wenn Sie bei Azure CLI als Azure AD-Benutzer angemeldet sind, führen Sie den folgenden Befehl aus, um dieses Feature in Ihrem Cluster zu aktivieren:
 
-```console
+```azurecli
 az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --features cluster-connect custom-locations
 ```
 
@@ -87,13 +84,13 @@ Wenn Sie bei Azure CLI über einen Dienstprinzipal angemeldet sind, führen Sie 
 
 1. Rufen Sie die Objekt-ID der Azure AD-Anwendung ab, die vom Azure Arc-Dienst verwendet wird:
 
-    ```console
+    ```azurecli
     az ad sp show --id 'bc313c14-388c-4e7d-a58e-70017303ee3b' --query objectId -o tsv
     ```
 
 1. Verwenden Sie den `<objectId>`-Wert aus dem obigen Schritt, um das Feature „Benutzerdefinierte Speicherorte“ im Cluster zu aktivieren:
 
-    ```console
+    ```azurecli
     az connectedk8s enable-features -n <cluster-name> -g <resource-group-name> --custom-locations-oid <objectId> --features cluster-connect custom-locations
     ```
 

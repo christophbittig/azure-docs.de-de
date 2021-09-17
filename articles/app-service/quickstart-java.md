@@ -14,12 +14,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-java-uiex
-ms.openlocfilehash: 7393a8085a2ac597f3fdbcc365608d32956f39b7
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 54ca249d1b89eb90b636da72e1378eadfd5fe0c1
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113111643"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681387"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Schnellstart: Erstellen einer Java-App in Azure App Service
 
@@ -98,7 +98,7 @@ Der Prozess zur Bereitstellung in Azure App Service verwendet automatisch Ihre A
 Führen Sie den folgenden Maven-Befehl aus, um die Bereitstellung zu konfigurieren. Dieser Befehl unterstützt Sie beim Einrichten des App Service-Betriebssystems, der Java-Version und der Tomcat-Version.
 
 ```azurecli-interactive
-mvn com.microsoft.azure:azure-webapp-maven-plugin:2.0.0:config
+mvn com.microsoft.azure:azure-webapp-maven-plugin:2.1.0:config
 ```
 
 ::: zone pivot="platform-windows"
@@ -291,13 +291,7 @@ Notieren Sie sich die Werte `<appName>` und `<resourceGroup>` (`helloworld-15903
 
 ## <a name="deploy-the-app"></a>Bereitstellen der App
 
-Das Maven-Plug-In verwendet bei der Bereitstellung in App Services Kontoanmeldeinformation aus der Azure CLI. [Melden Sie sich über die Azure CLI an](/cli/azure/authenticate-azure-cli), ehe Sie fortfahren.
-
-```azurecli-interactive
-az login
-```
-
-Dann können Sie Ihre Java-App mit dem folgenden Befehl in Azure bereitstellen.
+Wenn alle Konfigurationseinstellungen in Ihrer POM-Datei eingerichtet sind, können Sie Ihre Java-App mit einem einzigen Befehl in Azure bereitstellen.
 
 ```azurecli-interactive
 mvn package azure-webapp:deploy

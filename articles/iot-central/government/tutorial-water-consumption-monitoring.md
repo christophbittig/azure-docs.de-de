@@ -1,27 +1,54 @@
 ---
-title: 'Tutorial: Erstellen einer App zur Überwachung des Wasserverbrauchs mit Azure IoT Central'
-description: 'Tutorial: Hier erfahren Sie, wie Sie mit Azure IoT Central-Anwendungsvorlagen eine Anwendung zur Überwachung des Wasserverbrauchs erstellen.'
+title: 'Tutorial: Überwachung des Wasserverbrauchs in Azure IoT | Microsoft-Dokumentation'
+description: In diesem Tutorial erfahren Sie, wie Sie die Anwendungsvorlage für die Überwachung des Wasserverbrauchs für IoT Central bereitstellen und nutzen.
 author: miriambrus
 ms.author: miriamb
-ms.date: 12/11/2020
+ms.date: 08/02/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: df5752760dcb9968b44243fb4c2d2412698267df
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: 5b27c9b26c71fba3f5acbd326ff78514212c00ef
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113588991"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183711"
 ---
-# <a name="tutorial-create-a-water-consumption-monitoring-application-with-azure-iot-central"></a>Tutorial: Erstellen einer Anwendung zur Überwachung des Wasserverbrauchs mit Azure IoT Central
+# <a name="tutorial--deploy-and-walk-through-the-water-consumption-monitoring-application"></a>Tutorial: Bereitstellen und Durchlaufen der Anwendung zur Überwachung des Wasserverbrauchs
 
-In diesem Tutorial wird veranschaulicht, wie Sie eine Azure IoT Central-Anwendung zur Überwachung des Wasserverbrauchs erstellen.
+Verwenden Sie die IoT Central-Anwendungsvorlage *Überwachung des Wasserverbrauchs* und die Anweisungen in diesem Artikel, um eine End-to-End-Lösung für die Überwachung des Wasserverbrauchs zu entwickeln.
 
-In diesem Tutorial lernen Sie Folgendes:
+![Architektur zur Überwachung des Wasserverbrauchs](./media/tutorial-waterconsumptionmonitoring/concepts-waterconsumptionmonitoring-architecture1.png)
+
+### <a name="devices-and-connectivity"></a>Geräte und Konnektivität
+
+Wasserverwaltungslösungen nutzen intelligente Wasserwirtschaftsgeräte wie Strömungsmessgeräte, Geräte zur Überwachung der Wasserqualität, intelligente Ventile und Leckdetektoren.
+
+Geräte in intelligenten Lösungen im Wasserwirtschaftsbereich können per LPWAN (Low-Power Wide Area Network) oder über einen externen Netzbetreiber vernetzt werden. Nutzen Sie für diese Gerätetypen [Azure IoT Central-Geräte-Bridge](../core/howto-build-iotc-device-bridge.md), um Ihre Gerätedaten an Ihre IoT-Anwendung in Azure IoT Central zu senden. Sie können auch Gerätegateways verwenden, die IP-fähig sind und direkt mit IoT Central verbunden werden können.
+
+### <a name="iot-central"></a>IoT Central
+
+Azure IoT Central ist eine IoT-App-Plattform, die eine schnelle Erstellung und Bereitstellung einer IoT-Lösung ermöglicht. Sie können Ihre Lösung mit Branding versehen, anpassen und in Dienste von Drittanbietern integrieren.
+
+Wenn Sie Ihre intelligenten Wasserwirtschaftsgeräte mit IoT Central verbinden, stellt die Anwendung Befehls-, Steuerungs-, Überwachungs- und Alarmfunktionen, eine Benutzeroberfläche mit integrierter rollenbasierter Zugriffssteuerung (RBAC), konfigurierbare Dashboards und Erweiterungsoptionen zur Verfügung.
+
+### <a name="extensibility-and-integrations"></a>Erweiterbarkeit und Integrationen
+
+Sie können Ihre IoT-Anwendung in IoT Central erweitern und haben folgende Optionen:
+
+* Transformieren und Integrieren Ihrer IoT-Daten für erweiterte Analysen, z. B. für das Training von Machine Learning-Modellen durch kontinuierlichen Datenexport aus der IoT Central-Anwendung
+* Automatisieren von Workflows in anderen Systemen, indem in der IoT Central-Anwendung Aktionen über Power Automate oder Webhooks ausgelöst werden
+* Programmgesteuertes Zugreifen auf Ihre IoT-Anwendung in IoT Central über IoT Central-APIs
+
+### <a name="business-applications"></a>Geschäftsanwendungen
+
+Sie können IoT-Daten verwenden, um verschiedene Geschäftsanwendungen in einem Wasserversorgungsunternehmen zu betreiben. In Ihrer [IoT Central-Anwendung für die Überwachung des Wasserverbrauchs](tutorial-water-consumption-monitoring.md) können Sie Regeln und Aktionen konfigurieren und so festlegen, dass in [Connected Field Service](/dynamics365/field-service/connected-field-service) Warnungen erstellt werden. Konfigurieren Sie Power Automate-Regeln in IoT Central, um Workflows anwendungs- und dienstübergreifend zu automatisieren. Darüber hinaus können Informationen basierend auf Dienstaktivitäten in Connected Field Service zurück an Azure IoT Central gesendet werden.
+
+In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 
 > [!div class="checklist"]
+
 > * Erstellen einer Anwendung zur Überwachung des Wasserverbrauchs unter Verwendung der entsprechenden Azure IoT Central-Vorlage
 > * Erkunden und Anpassen des Dashboards
 > * Erkunden von Gerätevorlagen
@@ -30,55 +57,30 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Konfigurieren von Aufträgen
 > * Anpassen des Brandings Ihrer Anwendung mittels Whitelabeling
 
+## <a name="prerequisites"></a>Voraussetzungen
 
-## <a name="create-a-water-consumption-monitoring-app-with-azure-iot-central"></a>Erstellen einer App zur Überwachung des Wasserverbrauchs mit Azure IoT Central
+* Zum Bereitstellen dieser App müssen keine besonderen Voraussetzungen erfüllt werden.
+* Sie können den Tarif „Free“ oder ein Azure-Abonnement verwenden.
 
-In diesem Abschnitt verwenden Sie die Azure IoT Central-Vorlage zur Überwachung des Wasserverbrauchs, um eine entsprechende Anwendung in Azure IoT Central zu erstellen.
+## <a name="create-water-consumption-monitoring-application"></a>Erstellen einer Anwendung zur Überwachung des Wasserverbrauchs
 
-Erstellen Sie wie folgt eine neue Azure IoT Central-Anwendung zur Überwachung des Wasserverbrauchs:
+Gehen Sie wie folgt vor, um die Anwendung zu erstellen:
 
-1. Navigieren Sie zur [Startseite von Azure IoT Central](https://aka.ms/iotcentral).
+1. Navigieren Sie zur Buildwebsite für [Azure IoT Central](https://aka.ms/iotcentral). Melden Sie sich dann mit einem persönlichen Microsoft-Konto oder mit einem Geschäfts-, Schul- oder Unikonto an. Wählen Sie auf der linken Navigationsleiste **Erstellen** und anschließend die Registerkarte **Behörden** aus: :::image type="content" source="media/tutorial-waterconsumptionmonitoring/iot-central-government-tab-overview1.png" alt-text="Anwendungsvorlage":::
 
-    Wenn Sie über ein Azure-Abonnement verfügen, können Sie sich mit den zugehörigen Anmeldeinformationen anmelden. Melden Sie sich andernfalls mit einem Microsoft-Konto an.
+1. Wählen Sie unter **Überwachung des Wasserverbrauchs** die Option **App erstellen** aus.
 
-    ![Eingeben Ihres Organisationskontos](media/tutorial-waterconsumptionmonitoring/sign-in.png)
+Weitere Informationen finden Sie unter [Erstellen einer IoT Central-Anwendung](../core/howto-create-iot-central-application.md).
 
-1. Wählen Sie im linken Bereich die Option **Build** und anschließend die Registerkarte **Behörden** aus. Auf der Seite **Behörden** werden mehrere Anwendungsvorlagen für den Behördenbereich angezeigt.
+## <a name="walk-through-the-application"></a>Einführung in die Anwendung
 
-    :::image type="content" source="media/tutorial-waterconsumptionmonitoring/iotcentral-government-tab-overview1.png" alt-text="Erstellen von App-Vorlagen für Behörden":::
-  
+In den nächsten Abschnitten werden die wichtigsten Features der Anwendung behandelt:
 
-1. Wählen Sie die Anwendungsvorlage **Überwachung des Wasserverbrauchs** aus.
-Diese Vorlage enthält ein Beispiel für eine Gerätevorlage zur Überwachung des Wasserverbrauchs, ein simuliertes Gerät, ein Dashboard und vorkonfigurierte Überwachungsregeln.
-
-1. Wählen Sie **App erstellen** aus, um das Erstellungsformular **Neue Anwendung** mit den folgenden Feldern zu öffnen:
-    * **Anwendungsname**: Der Standardname lautet *Überwachung des Wasserverbrauchs*, gefolgt von einer eindeutigen, von Azure IoT Central generierten ID-Zeichenfolge. Wählen Sie optional einen benutzerfreundlichen Anzeigenamen aus. Der Anwendungsname kann auch später noch geändert werden.
-    * **URL**: Azure IoT Central generiert basierend auf dem Anwendungsnamen automatisch eine URL. Sie können die URL wie gewünscht aktualisieren. Die URL kann auch später noch geändert werden.
-    * Falls Sie über ein Azure-Abonnement verfügen, geben Sie die entsprechenden Informationen für **Verzeichnis**, **Azure-Abonnement** und **Standort** ein. Sollten Sie über kein Abonnement verfügen, können Sie die Option für die **siebentägige kostenlose Testversion** auswählen und die erforderlichen Kontaktinformationen eingeben.
-
-1. Wählen Sie am unteren Rand der Seite die Option **Erstellen**.
-
-    :::image type="content" source="media/tutorial-waterconsumptionmonitoring/new-application-water-consumption-monitoring.png" alt-text="Azure IoT Central: Seite „Neue Anwendung“":::
-
-    ![Azure IoT Central: Seite „Abrechnungsinfo“](./media/tutorial-waterconsumptionmonitoring/new-application-water-consumption-monitoring-billing-info.png)
-
-Sie haben nun mithilfe der Azure IoT Central-Vorlage zur Überwachung des Wasserverbrauchs eine entsprechende App erstellt.
-
-In der Anwendung zur Überwachung des Wasserverbrauchs ist Folgendes vorkonfiguriert:
-
-* Beispiele für Dashboards
-* Vordefinierte Beispielvorlagen für Wasserfluss und Ventile
-* Simulierter Wasserfluss und simulierte intelligente Ventile
-* Regeln und Aufträge
-* Beispielbranding
-
-Sie können Ihre Anwendung jederzeit ändern. Als Nächstes erkunden Sie die Anwendung und nehmen einige Anpassungen vor.
-
-## <a name="explore-and-customize-the-dashboard"></a>Erkunden und Anpassen des Dashboards
+### <a name="dashboard"></a>Dashboard
 
 Nachdem Sie die Anwendung erstellt haben, wird das exemplarische Wide World-Dashboard für den Wasserverbrauch (**Wide World water consumption dashboard**) geöffnet.
   
- :::image type="content" source="media/tutorial-waterconsumptionmonitoring/water-consumption-monitoring-dashboard-full.png" alt-text="Dashboard zur Überwachung des Wasserverbrauchs":::
+:::image type="content" source="media/tutorial-waterconsumptionmonitoring/water-consumption-monitoring-dashboard-full.png" alt-text="Dashboard zur Überwachung des Wasserverbrauchs":::
 
 
 Sie können Ansichten im Dashboard für Operators erstellen und anpassen.
@@ -268,4 +270,4 @@ Falls Sie diese Anwendung nicht mehr benötigen, löschen Sie sie:
 
 ## <a name="next-steps"></a>Nächste Schritte
  
-Als Nächstes empfehlen wir Ihnen, sich über die [Konzepte der Überwachung des Wasserverbrauchs](./concepts-waterconsumptionmonitoring-architecture.md) zu informieren.
+Als Nächstes empfehlen wir Ihnen, sich über die [Überwachung der Wasserqualität](./tutorial-water-quality-monitoring.md) zu informieren.

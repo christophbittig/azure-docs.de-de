@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/15/2021
-ms.openlocfilehash: 6029e571cc1f2d9fe50b2d163a711a89827f2bfd
-ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
+ms.date: 08/30/2021
+ms.openlocfilehash: 2131e74935ee831925dbe307a79c26909078e575
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122356445"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123313980"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory-or-synapse-pipelines"></a>Kopieren und Transformieren von Daten in Azure Synapse Analytics mithilfe von Azure Data Factory oder Synapse-Pipelines
 
@@ -45,13 +45,36 @@ Für die Kopieraktivität unterstützt dieser Connector von Azure Synapse Analyt
 > [!IMPORTANT]
 > Wenn Sie Daten mithilfe einer Azure Integration Runtime kopieren, konfigurieren Sie eine [Firewallregel auf Serverebene](../azure-sql/database/firewall-configure.md), damit Azure-Dienste Zugriff auf den [logischen SQL-Server](../azure-sql/database/logical-servers.md) erhalten.
 > Wenn Sie Daten mithilfe einer selbstgehosteten Integration Runtime kopieren, konfigurieren Sie die Firewall, um den entsprechenden IP-Adressbereich zuzulassen. Dieser Bereich schließt die IP-Adresse des Computers ein, der für die Verbindung mit Azure Synapse Analytics verwendet wird.
-
 ## <a name="get-started"></a>Erste Schritte
 
 > [!TIP]
 > Das beste Ergebnis erzielen Sie, indem Sie Daten mithilfe von PolyBase oder der COPY-Anweisung in Azure Synapse Analytics laden. Details finden Sie in den Abschnitten [Verwenden von PolyBase zum Laden von Daten in Azure Synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) und [Verwenden der COPY-Anweisung zum Laden von Daten in Azure Synapse Analytics (Vorschau)](#use-copy-statement). Eine exemplarische Vorgehensweise mit einem Anwendungsfall finden Sie unter [Laden von 1 TB in Azure Synapse Analytics in weniger als 15 Minuten mit Azure Data Factory](load-azure-sql-data-warehouse.md).
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-an-azure-synapse-analytics-linked-service-using-ui"></a>Erstellen eines mit Azure Synapse Analytics verknüpften Dienstes
+
+Führen Sie die folgenden Schritte aus, um einen mit Azure Synapse Analytics verknüpften Dienst in der Azure-Portal-Benutzeroberfläche zu erstellen.
+
+1. Navigieren Sie in Ihrem Azure Data Factory- oder Synapse-Arbeitsbereich zu der Registerkarte „Verwalten“, wählen Sie „Verknüpfte Dienste“ aus und klicken Sie dann auf „Neu“:
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Ein Screenshot, der das Erstellen eines neuen verknüpften Diensts mit der Azure Data Factory Benutzeroberfläche zeigt.":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Ein Screenshot, der das Erstellen eines neuen verknüpften Diensts mit der Azure Synapse Benutzeroberfläche zeigt.":::
+
+2. Suchen Sie nach „Synapse“, und wählen Sie den Azure Synapse Analytics-Connector aus.
+
+    :::image type="content" source="media/connector-azure-sql-data-warehouse/azure-sql-data-warehouse-connector.png" alt-text="Screenshot: Der Azure Synapse Analytics-Connector.":::    
+
+1. Konfigurieren Sie die Dienstdetails, testen Sie die Verbindung und erstellen Sie den neuen verknüpften Dienst.
+
+    :::image type="content" source="media/connector-azure-sql-data-warehouse/configure-azure-sql-data-warehouse-linked-service.png" alt-text="Screenshot: Konfiguration für einen mit Azure Synapse Analytics verknüpften Dienst.":::
+
+## <a name="connector-configuration-details"></a>Details zur Connector-Konfiguration
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften für das Definieren von Data Factory- und Synapse-Pipelineentitäten speziell für den Connector von Azure Synapse Analytics.
 

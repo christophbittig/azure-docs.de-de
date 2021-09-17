@@ -12,12 +12,12 @@ ms.date: 04/14/2021
 ms.author: aahi
 keywords: Textmining, Stimmungsanalyse, Textanalyse
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: bf148645ebdd762b65d59c86e5453b83423201e9
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: 804af634c7202fdc3f822e32e7cd1fbf827bfab1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113550604"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733965"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Worum handelt es sich bei der Textanalyse-API?
 
@@ -52,6 +52,10 @@ Die Spracherkennung kann eine Vielzahl von Sprachen, Varianten und Dialekten sow
 ## <a name="named-entity-recognition"></a>Erkennung benannter Entitäten
 
 Die Erkennung benannter Entitäten (NER) kann in Ihrem Text [Entitäten identifizieren und kategorisieren](how-tos/text-analytics-how-to-entity-linking.md), die als Personen, Orte, Organisationen und Mengen erkannt werden. Bekannte Entitäten werden ebenfalls erkannt, und es werden Links zu weiteren Informationen im Internet bereitgestellt.
+
+## <a name="text-summarization"></a>Textzusammenfassung
+
+Die [Zusammenfassung](how-tos/extractive-summarization.md) erzeugt eine Textzusammenfassung, indem Sätze extrahiert werden, die zusammen die wichtigsten oder relevantesten Informationen innerhalb des ursprünglichen Inhalts darstellen. Dieses Feature fasst Artikel, Abhandlungen oder Dokumente auf die wichtigsten Sätze zusammen.
 
 ## <a name="text-analytics-for-health"></a>Textanalyse für Gesundheit
 

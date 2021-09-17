@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 08/19/2021
 ms.author: cherylmc
-ms.openlocfilehash: 409858b2a9005592d895f6044d028221769144cc
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: e57f419daeb112be0925158109697bb2a9b399e8
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058509"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779979"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Erstellen einer Routingtabelle für den Virtual WAN-Hub für virtuelle Netzwerkgeräte: Azure-Portal
 
@@ -45,7 +45,7 @@ Navigieren Sie in einem Browser zum [Azure-Portal](https://portal.azure.com) , u
 
 ## <a name="2-create-a-virtual-wan"></a><a name="vwan"></a>2. Erstellen eines virtuellen WAN
 
-Erstellen Sie ein virtuelles WAN. Verwenden Sie die folgenden Beispielwerte:
+Erstellen Sie ein virtuelles WAN. Sie können die folgenden Beispiele nutzen oder diese mit ihren eigenen ersetzen.
 
 * **Name des virtuellen WAN:** myVirtualWAN
 * **Ressourcengruppe:** testRG
@@ -55,13 +55,13 @@ Erstellen Sie ein virtuelles WAN. Verwenden Sie die folgenden Beispielwerte:
 
 ## <a name="3-create-a-hub"></a><a name="hub"></a>3. Erstellen eines Hubs
 
-Erstellen Sie den Hub. Verwenden Sie die folgenden Beispielwerte:
+Erstellen Sie den Hub. Sie können die folgenden Beispiele nutzen oder diese mit ihren eigenen ersetzen.
 
 * **Standort:** USA (Westen)
 * **Name:** westushub
 * **Privater Adressraum des Hubs:** 10.0.1.0/24
 
-[!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-hub-include.md)]
+[!INCLUDE [Create a hub](../../includes/virtual-wan-empty-hub-include.md)]
 
 ## <a name="4-create-and-apply-a-hub-route-table"></a><a name="route"></a>4. Erstellen und Anwenden einer Routingtabelle für einen Hub
 

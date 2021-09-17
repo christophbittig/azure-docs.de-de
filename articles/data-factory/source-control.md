@@ -8,12 +8,12 @@ ms.author: abnarain
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/04/2021
-ms.openlocfilehash: 1dc73117d1d9fc470ae284461e520c9d45358e87
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0eb7356542eb7016cd27cc76e048857e8d7f9955
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346185"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122598087"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Quellcodeverwaltung in Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -241,6 +241,8 @@ Ein Seitenbereich wird geöffnet, in dem Sie bestätigen, dass der Branch für d
 > [!IMPORTANT]
 > Der Mainbranch ist nicht repräsentativ für das, was im Data Factory-Dienst bereitgestellt wird. Der Mainbranch *muss* manuell im Data Factory-Dienst veröffentlicht werden.
 
+
+
 ## <a name="best-practices-for-git-integration"></a>Bewährte Methoden für die Git-Integration
 
 ### <a name="permissions"></a>Berechtigungen
@@ -262,17 +264,34 @@ Durch die Verwendung von Key Vault oder der MSI-Authentifizierung werden Continu
 
 ### <a name="stale-publish-branch"></a>Veralteter Branch für die Veröffentlichung
 
-Wenn der Branch für die Veröffentlichung nicht mit dem Mainbranch synchron ist und trotz einer aktuellen Veröffentlichung veraltete Ressourcen enthält, versuchen Sie die folgenden Schritte:
+Im Folgenden werden einige Beispielsituationen veranschaulicht, die zu einem veralteten Branch für die Veröffentlichung führen können:
+
+- Ein Benutzer verfügt über mehrere Branches. In einem Featurebranch hat er einen verknüpften Dienst gelöscht, der nicht mit Azure Key Vault verbunden ist (nicht mit Azure Key Vault verknüpfte Dienste werden sofort veröffentlicht, unabhängig davon, ob sie sich in Git befinden). Der Featurebranch wurde nicht mit dem Zusammenarbeitsbranch zusammengeführt.
+- Ein Benutzer hat die Data Factory über das SDK oder über PowerShell bearbeitet.
+- Ein Benutzer hat alle Ressourcen zu einem neuen Branch migriert und zum ersten Mal versucht, eine Veröffentlichung durchzuführen. Verknüpfte Dienste sollten beim Importieren von Ressourcen manuell erstellt werden.
+- Ein Benutzer lädt einen nicht mit Azure Key Vault verknüpften Dienst oder eine Integration Runtime-JSON-Datei manuell hoch. Er verweist aus einer anderen Ressource auf diese Ressource, z. B. in einem Dataset, einem verknüpften Dienst oder einer Pipeline. Ein über die Benutzeroberfläche erstellter, nicht mit Azure Key Vault verknüpfter Dienst wird sofort veröffentlicht, da die Anmeldeinformationen verschlüsselt werden müssen. Wenn Sie ein Dataset hochladen, das auf diesen verknüpften Dienst verweist, und versuchen, dieses zu veröffentlichen, wird das von der Benutzeroberfläche zugelassen, weil es in der Git-Umgebung enthalten ist. Es wird zum Zeitpunkt der Veröffentlichung abgelehnt, da es nicht im Data Factory-Dienst vorhanden ist.
+
+Wenn der Branch für die Veröffentlichung nicht mit dem Mainbranch synchron ist und trotz einer aktuellen Veröffentlichung veraltete Ressourcen enthält, können Sie eine der folgenden Lösungen verwenden:
+
+#### <a name="option-1-use-overwrite-live-mode-functionality"></a>Option 1: Verwenden der Funktion **Livemodus überschreiben**
+
+Der Code aus Ihrem Kollaborationsbranch wird im Livemodus veröffentlicht oder überschrieben. Der Code in Ihrem Repository wird als Quelle der Wahrheit betrachtet. 
+
+<u>*Codeflow:*</u>***Kollaborationsbranch –> Livemodus***
+
+![Erzwingen der Veröffentlichung von Code aus dem Kollaborationsbranch](media/author-visually/force-publish-changes-from-collaboration-branch.png)
+
+#### <a name="option-2-disconnect-and-reconnect-git-repository"></a>Option 2: Trennen und erneutes Verbinden des Git-Repository
+
+Der Code wird aus dem Livemodus in den Kollaborationsbranch importiert. Er betrachtet den Code im Livemodus als Quelle der Wahrheit. 
+
+<u>*Codeflow:*</u> ***Livemodus –> Kollaborationsbranch***  
 
 1. Entfernen des aktuellen Git-Repositorys
 1. Konfigurieren Sie Git mit denselben Einstellungen neu. Stellen Sie jedoch sicher, dass **Vorhandene Data Factory Ressourcen in Repository importieren** ausgewählt ist, und wählen Sie **Neuer Branch** aus.
 1. Erstellen eines Pull Request zum Mergen der Änderungen in den Kollaborationsbranch 
 
-Im Folgenden werden einige Beispielsituationen veranschaulicht, die zu einem veralteten Branch für die Veröffentlichung führen können:
-- Ein Benutzer verfügt über mehrere Branches. In einem Featurebranch hat er einen verknüpften Dienst gelöscht, der nicht mit Azure Key Vault verbunden ist (nicht mit Azure Key Vault verknüpfte Dienste werden sofort veröffentlicht, unabhängig davon, ob sie sich in Git befinden). Der Featurebranch wurde nicht mit dem Zusammenarbeitsbranch zusammengeführt.
-- Ein Benutzer hat die Data Factory über das SDK oder über PowerShell bearbeitet.
-- Ein Benutzer hat alle Ressourcen zu einem neuen Branch migriert und zum ersten Mal versucht, eine Veröffentlichung durchzuführen. Verknüpfte Dienste sollten beim Importieren von Ressourcen manuell erstellt werden.
-- Ein Benutzer lädt einen nicht mit Azure Key Vault verknüpften Dienst oder eine Integration Runtime-JSON-Datei manuell hoch. Er verweist aus einer anderen Ressource auf diese Ressource, z. B. in einem Dataset, einem verknüpften Dienst oder einer Pipeline. Ein über die Benutzeroberfläche erstellter, nicht mit Azure Key Vault verknüpfter Dienst wird sofort veröffentlicht, da die Anmeldeinformationen verschlüsselt werden müssen. Wenn Sie ein Dataset hochladen, das auf diesen verknüpften Dienst verweist, und versuchen, dieses zu veröffentlichen, wird das von der Benutzeroberfläche zugelassen, weil es in der Git-Umgebung enthalten ist. Es wird zum Zeitpunkt der Veröffentlichung abgelehnt, da es nicht im Data Factory-Dienst vorhanden ist.
+Wählen Sie eine der beiden Methoden entsprechend nach Bedarf aus. 
 
 ## <a name="switch-to-a-different-git-repository"></a>Wechseln zu einem anderen Git-Repository
 

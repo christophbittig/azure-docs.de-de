@@ -4,15 +4,15 @@ description: In dieser Schnellstartanleitung wird beschrieben, wie Sie eine Holo
 author: craigktreasure
 manager: virivera
 ms.author: crtreasu
-ms.date: 02/02/2021
+ms.date: 08/02/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: eee130b0736c87b118b38f19e7523c07a431e5c9
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 605acf95b521e150456a69e84d2008be7080589a
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114202884"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122254196"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-object-anchors-in-cwinrt-and-directx"></a>Schnellstart: Erstellen einer HoloLens-App mit Azure Object Anchors in C++/WinRT und DirectX
 
@@ -38,6 +38,8 @@ Stellen Sie für diese Schnellstartanleitung sicher, dass Sie über Folgendes ve
   * Öffnen Sie zum Aktualisieren auf das neueste HoloLens-Release die App **Einstellungen**, navigieren Sie zu **Update und Sicherheit**, und wählen Sie dann **Nach Updates suchen** aus.
 
 [!INCLUDE [Create Account](../../../includes/object-anchors-get-started-create-account.md)]
+
+[!INCLUDE [Upload your model](../../../includes/object-anchors-quickstart-unity-upload-model.md)]
 
 ## <a name="open-the-sample-project"></a>Öffnen des Beispielprojekts
 
@@ -67,25 +69,19 @@ Erstellen Sie nun das Projekt **AoaSampleApp**, indem Sie mit der rechten Mausta
 
 Nachdem Sie das Beispielprojekt erfolgreich kompiliert haben, können Sie die App für HoloLens bereitstellen.
 
-Schalten Sie das HoloLens-Gerät ein, melden Sie sich an, und stellen Sie dafür per USB-Kabel eine Verbindung mit dem PC her. Stellen Sie sicher, dass **Gerät** das ausgewählte Bereitstellungsziel ist (siehe oben).
+Stellen Sie sicher, dass das HoloLens-Gerät eingeschaltet und über ein USB-Kabel mit dem PC verbunden ist. Stellen Sie sicher, dass **Gerät** das ausgewählte Bereitstellungsziel ist (siehe oben).
 
 Klicken Sie mit der rechten Maustaste auf das Projekt **AoaSampleApp**, und klicken Sie dann im Popupmenü auf **Bereitstellen**, um die App zu installieren. Wenn im **Ausgabefenster** von Visual Studio kein Fehler angezeigt wird, wird die App auf dem HoloLens-Gerät installiert.
 
 :::image type="content" source="./media/vs-deploy-app.png" alt-text="Bereitstellen der App für HoloLens":::
 
-Vor dem Starten der App müssen Sie ein Objektmodell hochladen. Befolgen Sie die Anweisungen im Abschnitt **Erfassen des Objektmodells und Erkennen seiner Instanz** weiter unten.
+Vor dem Starten der App sollten Sie ein Objektmodell, z. B. **chair.ou**, in den Ordner **3D-Objekte** (3D Objects) in Ihrer HoloLens hochgeladen haben. Wenn dies nicht der Fall ist, befolgen Sie die Anweisungen im Abschnitt [Hochladen Ihres Modells](#upload-your-model).
 
-Um die App zu starten und zu debuggen, wählen Sie **Debuggen > Debuggen starten** aus. Wählen Sie zum Beenden der App entweder **Debuggen beenden** aus, oder drücken Sie **UMSCHALT+F5**.
+Um die App zu starten und zu debuggen, wählen Sie **Debuggen > Debuggen starten** aus.
 
 ## <a name="ingest-object-model-and-detect-its-instance"></a>Erfassen des Objektmodells und Erkennen seiner Instanz
 
-Sie müssen ein Objektmodell erstellen, um die Beispiel-App ausführen zu können. Angenommen, Sie haben bereits entweder ein CAD- oder ein gescanntes 3D-Gittermodell eines Objekts in Ihrem Raum. Informationen zum Erstellen eines Modells finden Sie unter [Schnellstart: Erfassen eines 3D-Modells](./get-started-model-conversion.md).
-
-Laden Sie dieses Modell (**chair.ou** in unserem Fall) auf Ihren Computer herunter. Wählen Sie dann im HoloLens-Geräteportal **System > Datei-Explorer > LocalAppData > AoaSampleApp > LocalState** und **Durchsuchen...** aus. Wählen Sie dann Ihre Modelldatei (z. B. **chair.ou**) und **Hochladen** aus. Die Modelldatei sollte anschließend im lokalen Cache angezeigt werden.
-
-:::image type="content" source="../../../includes/media/object-anchors-quickstarts/portal-upload-model.png" alt-text="Portalupload des Modells":::
-
-Starten Sie die App **AoaSampleApp** in HoloLens (wenn sie bereits geöffnet war, schließen Sie sie, und öffnen Sie sie dann erneut). Treten Sie nahe (innerhalb von 2 Metern Entfernung) an das Zielobjekt (Stuhl) heran, und scannen Sie es, indem Sie es aus mehreren Perspektiven betrachten. Sie sollten einen rosafarbenen Begrenzungsrahmen um das Objekt mit einigen gelben Punkten in der Nähe der Oberfläche des Objekts sehen, wodurch angezeigt wird, dass es erkannt wurde.
+Die **AoaSampleApp**-App läuft jetzt auf Ihrem HoloLens-Gerät. Treten Sie nahe (innerhalb von 2 Metern Entfernung) an das Zielobjekt (Stuhl) heran, und scannen Sie es, indem Sie es aus mehreren Perspektiven betrachten. Sie sollten einen rosafarbenen Begrenzungsrahmen um das Objekt mit einigen gelben Punkten in der Nähe der Oberfläche des Objekts sehen, wodurch angezeigt wird, dass es erkannt wurde.
 
 :::image type="content" source="./media/chair-detection.png" alt-text="Stuhlerkennung":::
 
@@ -94,7 +90,7 @@ Abbildung: Ein erkannter Stuhl, gerendert mit seinem Begrenzungsrahmen (rosa), d
 Sie können in der App einen Suchraum für das Objekt definieren, indem Sie mit der rechten oder linken Hand in der Luft mit dem Finger klicken. Der Suchraum wechselt zwischen einer Kugel mit einem Radius von 2 Metern, einem 4 m^3 großen Begrenzungsrahmen und einer Frustum-Ansicht. Bei größeren Objekten (z. B. Autos) ist es in der Regel am besten, die Auswahl des Sichtkegels (Frustum) zu verwenden, während Sie in einer Ecke des Objekts in etwa 2 Meter Entfernung stehen.
 Jedes Mal, wenn sich der Suchbereich ändert, entfernt die App aktuell nachverfolgte Instanzen und versucht dann, sie im neuen Suchbereich erneut zu finden.
 
-Diese App kann mehrere Objekte gleichzeitig nachverfolgen. Laden Sie zu diesem Zweck mehrere Modelle in den Ordner **LocalState** hoch, und legen Sie einen Suchbereich fest, der alle Zielobjekte abdeckt. Es kann länger dauern, bis mehrere Objekte erkannt und nachverfolgt werden.
+Diese App kann mehrere Objekte gleichzeitig nachverfolgen. Laden Sie zu diesem Zweck mehrere Modelle in den Ordner **3D-Objekte** (3D Objects) Ihres Geräts hoch, und legen Sie einen Suchbereich fest, der alle Zielobjekte abdeckt. Es kann länger dauern, bis mehrere Objekte erkannt und nachverfolgt werden.
 
 Die App richtet ein 3D-Modell genau an seinem physischen Pendant aus. Ein Benutzer kann mit der linken Hand in der Luft tippen, um den hochpräzisen Nachverfolgungsmodus zu aktivieren, der eine genauere Position berechnet. Dies ist noch eine experimentelle Funktion, die mehr Systemressourcen verbraucht und zu einem höheren Jitter in der geschätzten Position führen kann. Tippen Sie erneut mit der linken Hand in der Luft, um zurück in den normalen Nachverfolgungsmodus zu wechseln.
 

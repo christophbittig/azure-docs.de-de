@@ -3,16 +3,16 @@ title: Übersicht über Azure Logic Apps
 description: Bei Azure Logic Apps handelt es sich um eine Cloud-Plattform zur Automatisierung von Workflows, die Apps, Daten, Dienste und Systeme mit wenig bis gar keinem Code integrieren. Workflows können in einer Multi-Mandantenfähigen, Einzel-Mandantenfähigen oder dedizierten Umgebung ausgeführt werden.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm
+ms.reviewer: estfan, azla
 ms.topic: overview
 ms.custom: mvc, contperf-fy21q4
-ms.date: 06/22/2021
-ms.openlocfilehash: 032723c66d3263019447e231064f8846b44afe1d
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.date: 08/18/2021
+ms.openlocfilehash: 299585baea87ca956fafb936fe7b8b265c936abc
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114728672"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122638938"
 ---
 # <a name="what-is-azure-logic-apps"></a>Was ist Azure Logic Apps?
 
@@ -21,20 +21,27 @@ Bei [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps) handelt 
 Die folgende Liste beschreibt lediglich einige Beispielaufgaben, Geschäftsprozesse und Workloads, die Sie mit dem Logic Apps-Dienst automatisieren können:
 
 * Planen und Senden von E-Mail-Benachrichtigungen mit Office 365, wenn ein bestimmtes Ereignis eintritt, z. B. eine neue Datei wird hochgeladen.
+
 * Weiterleiten und Verarbeiten von Kundenbestellungen in lokalen Systemen und Clouddiensten
+
 * Verschieben von hochgeladenen Dateien von einem SFTP- oder FTP-Server in Azure Storage
+
 * Überwachen von Tweets, Analysieren der Stimmung und Erstellen von Warnungen oder Aufgaben für zu prüfende Elemente
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Introducing-Azure-Logic-Apps/player]
 
-Basierend auf dem Logik-App-Ressourcentyp, den Sie auswählen und erstellen, werden Ihre Logik-Apps entweder in einer Multi-Mandanten-, Single-Mandanten- oder dedizierten Integrationsdienstumgebung ausgeführt. Wenn Sie z. B. Logik-Apps auf Einzel-Mandanten-Basis containerisieren, können Sie Ihre Apps als Container bereitstellen und sie überall dort ausführen, wo Azure Functions ausgeführt werden kann. Weitere Informationen finden Sie unter [Ressourcentyp und Unterschiede in der Host-Umgebung für Logik-Apps](#resource-environment-differences).
+Basierend auf dem von Ihnen ausgewählten und erstellten Logik-App-Ressourcentyp werden Ihre Logik-Apps in mehrinstanzenfähigen Azure Logic Apps-Instanzen, [Azure Logic Apps-Instanzen mit nur einem Mandanten](single-tenant-overview-compare.md) oder in einer dedizierten [Integrationsdienstumgebung](connect-virtual-network-vnet-isolated-environment-overview.md) ausgeführt, wenn Sie auf ein virtuelles Azure-Netzwerk zugreifen. Um Logik-Apps in Containern auszuführen, [erstellen Sie Logik-Apps mit nur einem Mandanten mithilfe von Logic Apps mit Azure Arc-Unterstützung](azure-arc-enabled-logic-apps-create-deploy-workflows.md). Weitere Informationen finden Sie unter [Was ist Logic Apps mit Azure Arc-Unterstützung?](azure-arc-enabled-logic-apps-overview.md) und [Unterschiede bei Ressourcentyp und Hostumgebung für Logik-Apps](#resource-environment-differences).
 
 Um sicher auf verschiedene Datenquellen zuzugreifen und Operationen in Echtzeit auszuführen, können Sie [*verwaltete Konnektoren*](#managed-connector) aus einem [Ökosystem von über 400+ und wachsenden Azure-Konnektoren](/connectors/connector-reference/connector-reference-logicapps-connectors) auswählen, die Sie in Ihren Workflows verwenden können:
 
 * Azure-Dienste wie Blob Storage und Service Bus
+
 * Office 365-Dienste wie Outlook, Excel und SharePoint
+
 * Datenbankserver wie SQL und Oracle
+
 * Unternehmenssysteme wie SAP und IBM MQ
+
 * Dateifreigaben wie FTP und SFTP
 
 Um mit einem beliebigen Dienstendpunkt zu kommunizieren, Ihren eigenen Code auszuführen, Ihren Workflow zu organisieren oder Daten zu manipulieren, können Sie [*integrierte*](#built-in-operations) Auslöser und Aktionen verwenden, die nativ innerhalb des Logic Apps-Dienstes ausgeführt werden. Zu den integrierten Triggern zählen beispielsweise „Anforderung“, „HTTP“ und „Serie“. Zu den integrierten Aktionen zählen „Bedingung“, „For each“, „JavaScript-Code ausführen“ und Vorgänge, die in Azure gehostete Azure-Funktionen, Web-Apps oder API-Apps aufrufen, sowie andere Logic Apps-Workflows.
@@ -44,8 +51,11 @@ Für B2B-Integrationsszenarien enthält Logic Apps Funktionen von [BizTalk Serve
 Weitere Informationen dazu, wie Workflows auf Apps, Daten, Dienste und Systeme zugreifen und mit ihnen arbeiten können, finden Sie in der folgenden Dokumentation:
 
 * [Connectors für Azure Logic Apps](../connectors/apis-list.md)
+
 * [Integrierte Trigger und Aktionen für Azure Logic Apps](../connectors/built-in.md)
+
 * [Verwaltete Connectors für Azure Logic Apps](../connectors/managed.md)
+
 * [B2B-Unternehmensintegrationslösungen mit Azure Logic Apps und dem Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)
 
 <a name="logic-app-concepts"></a>
@@ -62,7 +72,7 @@ Eine *Logik-App* ist die Azure-Ressource, die Sie erstellen, wenn Sie einen Work
 
 Ein *Workflow* ist eine Abfolge von Schritten, die einen Task oder Prozess definieren. Jeder Workflow beginnt mit einem einzelnen Trigger, nach dem Sie mindestens eine Aktion hinzufügen müssen.
 
-### <a name="trigger"></a>Trigger 
+### <a name="trigger"></a>Trigger
 
 Ein *Trigger* ist immer der erste Schritt in einem Workflow und gibt die Bedingung für die Ausführung weiterer Schritte in diesem Workflow an. Ein Triggerereignis kann beispielsweise der Eingang einer E-Mail in Ihrem Posteingang oder die Erkennung einer neuen Datei in einem Speicherkonto sein.
 
@@ -76,8 +86,7 @@ Bei *Aktionen* handelt es sich um die einzelnen Schritte, die in einem Workflow 
 
 Die meisten integrierten Vorgänge sind keinem Dienst oder System zugeordnet. Einige integrierte Vorgänge sind für bestimmte Dienste verfügbar, z. B. für Azure Functions oder Azure App Service. Bei vielen ist es auch nicht erforderlich, zuerst eine Verbindung in Ihrem Workflow zu erstellen und Ihre Identität zu authentifizieren. Weitere Informationen und Beispiele finden Sie unter [Integrierte Vorgänge für Azure Logic Apps](../connectors/built-in.md).
 
-Mithilfe des Triggers „Serie“ lässt sich beispielsweise fast jeder Workflow basierend auf einem Zeitplan starten. Sie können aber auch den Trigger „Anforderung“ verwenden, damit Ihr Workflow erst gestartet wird, wenn er aufgerufen wird. 
- 
+Mithilfe des Triggers „Serie“ lässt sich beispielsweise fast jeder Workflow basierend auf einem Zeitplan starten. Sie können aber auch den Trigger „Anforderung“ verwenden, damit Ihr Workflow erst gestartet wird, wenn er aufgerufen wird.
 
 ### <a name="managed-connector"></a>Verwalteter Connector
 
@@ -99,12 +108,17 @@ In einer Logik-App beginnt jeder Workflow immer mit einem einzelnen [Trigger](#t
 
 Der folgende Screenshot zeigt einen Teil eines Beispielworkflows für Unternehmen. Dieser Workflow verwendet Bedingungen und Optionen, um die nächste Aktion zu bestimmen. Angenommen, Sie verfügen über ein Bestellsystem, und Ihr Workflow verarbeitet eingehende Bestellungen. Sie möchten Aufträge, die eine bestimmte Kostengrenze übersteigen, manuell überprüfen. Ihr Workflow verfügt bereits über vorherige Schritte, in denen bestimmt wird, wie hoch die Kosten eines eingehenden Auftrags sind. Daher erstellen Sie eine Anfangsbedingung auf Basis dieses Kostenwerts. Beispiel:
 
-- Wenn die Bestellung unter einem bestimmten Betrag liegt, ist die Bedingung FALSE. Daher verarbeitet der Workflow die Bestellung.
-- Wenn die Bedingung TRUE ist, sendet der Workflow eine E-Mail zur manuellen Überprüfung. Eine Option bestimmt den nächsten Schritt. 
-  - Wenn der Prüfer die Genehmigung erteilt, setzt der Workflow die Verarbeitung des Auftrags fort.
-  - Wenn der Prüfer die Angelegenheit eskaliert, sendet der Workflow eine Eskalations-E-Mail, um weitere Informationen zum Auftrag zu erhalten. 
-      - Wenn die Eskalationsanforderungen erfüllt sind, ist die Antwortbedingung TRUE. Daher wird die Bestellung verarbeitet. 
-      - Lautet die Antwortbedingung FALSE, wird eine E-Mail bezüglich des Problems gesendet.
+* Wenn die Bestellung unter einem bestimmten Betrag liegt, ist die Bedingung FALSE. Daher verarbeitet der Workflow die Bestellung.
+
+* Wenn die Bedingung TRUE ist, sendet der Workflow eine E-Mail zur manuellen Überprüfung. Eine Option bestimmt den nächsten Schritt.
+
+  * Wenn der Prüfer die Genehmigung erteilt, setzt der Workflow die Verarbeitung des Auftrags fort.
+
+  * Wenn der Prüfer die Angelegenheit eskaliert, sendet der Workflow eine Eskalations-E-Mail, um weitere Informationen zum Auftrag zu erhalten.
+
+    * Wenn die Eskalationsanforderungen erfüllt sind, ist die Antwortbedingung TRUE. Daher wird die Bestellung verarbeitet.
+
+    * Lautet die Antwortbedingung FALSE, wird eine E-Mail bezüglich des Problems gesendet.
 
 :::image type="content" source="./media/logic-apps-overview/example-enterprise-workflow.png" alt-text="Screenshot, der den Workflow-Designer und einen Beispielworkflow für Unternehmen zeigt, der Optionen und Bedingungen verwendet" lightbox="./media/logic-apps-overview/example-enterprise-workflow.png":::
 
@@ -153,8 +167,11 @@ Unternehmen und Organisationen kommunizieren auf elektronischem Wege über Nachr
 Sie können mit Ihren aktuellen Systemen und Diensten klein beginnen und dann Schritt für Schritt in Ihrem persönlichen Tempo wachsen. Wenn Sie bereit sind, hilft Ihnen die Logic Apps-Plattform beim Implementieren und Hochskalieren auf anspruchsvollere Integrationsszenarien, indem diese und weitere Funktionen genutzt werden:
 
 * Integrieren und Erstellen mit [Microsoft BizTalk Server](/biztalk/core/introducing-biztalk-server), [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md), [Azure Functions](../azure-functions/functions-overview.md), [Azure API Management](../api-management/api-management-key-concepts.md) und mehr.
+
 * Austauschen von Nachrichten mithilfe der Protokolle [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md), [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md), [X12](../logic-apps/logic-apps-enterprise-integration-x12.md) und [RosettaNet](logic-apps-enterprise-integration-rosettanet.md).
+
 * Verarbeiten von [XML-Nachrichten](../logic-apps/logic-apps-enterprise-integration-xml.md) und [Flatfiles](../logic-apps/logic-apps-enterprise-integration-flatfile.md).
+
 * Erstellen eines [Integrationskontos](./logic-apps-enterprise-integration-create-integration-account.md), um B2B-Artefakte wie [Handelspartner](../logic-apps/logic-apps-enterprise-integration-partners.md), [Vereinbarungen](../logic-apps/logic-apps-enterprise-integration-agreements.md), [Transformationszuordnungen](../logic-apps/logic-apps-enterprise-integration-maps.md), [Validierungsschemas](../logic-apps/logic-apps-enterprise-integration-schemas.md) und mehr zu speichern und zu verwalten.
 
 Wenn Sie beispielsweise Microsoft BizTalk Server nutzen, können Ihre Workflows über den [BizTalk Server-Connector](../connectors/managed.md#on-premises-connectors) mit Ihrer BizTalk Server-Instanz kommunizieren. Danach können Sie dann mithilfe von [Integrationskonto-Connectors](../connectors/managed.md#integration-account-connectors) BizTalk-ähnliche Vorgänge in Ihrem Workflow erweitern oder ausführen. In der anderen Richtung kann BizTalk Server unter Verwendung des [Microsoft BizTalk Server Adapter für Logic Apps](https://www.microsoft.com/download/details.aspx?id=54287) mit Ihren Workflows kommunizieren. Informieren Sie sich darüber, wie Sie für Ihre BizTalk Server-Instanz den [BizTalk Server Adapter einrichten und nutzen](/biztalk/core/logic-app-adapter).
@@ -185,19 +202,21 @@ All diese Diensten helfen Ihnen, unterschiedliche Systeme zu verbinden und zusam
 
 ## <a name="get-started"></a>Erste Schritte
 
-Bevor Sie mit Azure Logic Apps beginnen können, benötigen Sie ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). 
+Bevor Sie mit Azure Logic Apps beginnen können, benötigen Sie ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 Wenn Sie bereit sind, probieren Sie eine oder mehrere der folgenden Schnellstartanleitungen für Logic Apps aus. Dort erfahren Sie, wie Sie einen grundlegenden Workflow erstellen, der einen RSS-Feed überwacht und eine E-Mail für neue Inhalte sendet.
 
 * [Erstellen einer Logik-App mit mehreren Mandanten im Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+
 * [Erstellen einer Logik-App mit mehreren Mandanten in Visual Studio](quickstart-create-logic-apps-with-visual-studio.md)
+
 * [Erstellen einer Logik-App mit mehreren Mandanten in Visual Studio Code](quickstart-create-logic-apps-visual-studio-code.md)
 
 Gegebenenfalls sollten Sie auch andere Schnellstartanleitungen für Logic Apps lesen:
 
 * [Erstellen einer Logik-App mit mehreren Mandanten mithilfe einer ARM-Vorlage](quickstart-create-deploy-azure-resource-manager-template.md)
-* [Erstellen einer Logik-App mit mehreren Mandanten mithilfe der Azure CLI](quickstart-create-deploy-azure-resource-manager-template.md)
 
+* [Erstellen einer Logik-App mit mehreren Mandanten mithilfe der Azure CLI](quickstart-create-deploy-azure-resource-manager-template.md)
 
 ## <a name="other-resources"></a>Weitere Ressourcen
 

@@ -1,19 +1,19 @@
 ---
 title: Konfigurieren von IP-Firewallregeln
 description: In diesem Artikel lernen Sie, wie Sie IP-Firewallregeln in Azure Synapse Analytics konfigurieren.
-author: RonyMSFT
+author: ashinMSFT
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: security
-ms.date: 04/15/2020
-ms.author: ronytho
-ms.reviewer: jrasnick
-ms.openlocfilehash: 787e600df4185346b250d9a96bdb89927e134075
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/15/2021
+ms.author: seshin
+ms.reviewer: wiassaf
+ms.openlocfilehash: a375c4c99e3b86706f9fed7bc52f3064995cd21c
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103472015"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252776"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules"></a>Azure Synapse Analytics: IP-Firewallregeln
 
@@ -25,15 +25,17 @@ IP-Firewallregeln gewähren oder verweigern den Zugriff auf Ihren Synapse-Arbeit
 
 ## <a name="create-and-manage-ip-firewall-rules"></a>Erstellen und Verwalten von IP-Firewallregeln
 
-Es gibt zwei Möglichkeiten, um einem Synapse-Arbeitsbereich IP-Firewallregeln hinzuzufügen. Um eine IP-Firewall zu Ihrem Arbeitsbereich hinzuzufügen, wählen Sie **Sicherheit + Netzwerk** aus, und aktivieren beim Erstellen des Arbeitsbereichs die Option **Verbindungen von allen IP-Adressen zulassen**.
+Es gibt zwei Möglichkeiten, um einem Azure Synapse-Arbeitsbereich IP-Firewallregeln hinzuzufügen. Um eine IP-Firewall zu Ihrem Arbeitsbereich hinzuzufügen, wählen Sie **Netzwerk** aus, und aktivieren beim Erstellen des Arbeitsbereichs die Option **Verbindungen von allen IP-Adressen zulassen**.
 
-![Screenshot, auf dem die Schaltfläche „Sicherheit + Netzwerk“ hervorgehoben ist](./media/synpase-workspace-ip-firewall/ip-firewall-1.png)
+> [!Important]
+> Dieses Feature ist nur für Azure Synapse-Arbeitsbereiche verfügbar, die keinem verwalteten VNET zugeordnet sind.
 
-![IP-Konfiguration für einen Synapse-Arbeitsbereich im Azure-Portal.](./media/synpase-workspace-ip-firewall/ip-firewall-2.png)
+:::image type="content" source="./media/synpase-workspace-ip-firewall/azure-synapse-workspace-networking-connections-all-ip-addresses.png" lightbox="./media/synpase-workspace-ip-firewall/azure-synapse-workspace-networking-connections-all-ip-addresses.png" alt-text="Screenshot, der die Registerkarte „Sicherheit“ hervorhebt sowie das Kontrollkästchen „Verbindungen von allen IP-Adressen zulassen“.":::
+
 
 Sie können einem Synapse-Arbeitsbereich auch nach der Erstellung IP-Firewallregeln hinzufügen. Wählen Sie dazu im Azure-Portal im Bereich **Sicherheit** die Option **Firewalls** aus. Um eine neue IP-Firewallregel hinzuzufügen, geben Sie einen Namen sowie eine Start-IP-Adresse und eine End-IP-Adresse an. Wenn Sie abschließend **Speichern** aus.
 
-![IP-Konfiguration für einen Azure Synapse-Arbeitsbereich im Azure-Portal.](./media/synpase-workspace-ip-firewall/ip-firewall-3.png)
+:::image type="content" source="./media/synpase-workspace-ip-firewall/azure-synapse-workspace-networking-firewalls-add-client-ip.png" lightbox="./media/synpase-workspace-ip-firewall/azure-synapse-workspace-networking-firewalls-add-client-ip.png" alt-text="Screenshot der Seite „Netzwerk“ eines Synapse-Arbeitsbereichs mit Hervorhebung der Schaltfläche „Client-IP-Adresse hinzufügen“ und der Felder „Regeln“.":::
 
 ## <a name="connect-to-synapse-from-your-own-network"></a>Herstellen einer Verbindung mit Synapse aus dem eigenen Netzwerk
 

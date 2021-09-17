@@ -7,12 +7,12 @@ ms.date: 01/08/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: ce10143be81da9ad797ba0ccd68837b647aeb7a7
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: 6a9a7d23d4fb8f11c27f279bdef8d2b46274b21e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113301970"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743367"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Tutorial: Erstellen einer Regel und Einrichten von Benachrichtigungen in Ihrer Azure IoT Central-Anwendung
 
@@ -110,7 +110,7 @@ Die von der Regel überwachten Kriterien werden mithilfe von Bedingungen definie
 
     :::image type="content" source="media/tutorial-create-telemetry-rules/aggregate-condition-filled-out.png" alt-text="Screenshot, der die ausgefüllte Aggregatbedingung zeigt":::
 
-Sie können einer Regel mehrere Bedingungen hinzufügen, indem Sie **+ Bedingung** auswählen. Wenn mehrere Bedingungen angegeben werden, müssen alle Bedingungen erfüllt sein, damit die Regel ausgelöst wird. Jede Bedingung wird durch eine implizite `AND`-Klausel verknüpft. Bei Verwendung einer Zeitaggregation mit mehreren Bedingungen müssen alle Telemetriewerte aggregiert werden.
+Sie können einer Regel mehrere Bedingungen hinzufügen, indem Sie **+ Bedingung** auswählen. Wenn mehrere Bedingungen hinzugefügt werden, können Sie angeben, ob alle Bedingungen erfüllt sein müssen oder eine der Bedingungen erfüllt sein muss, damit die Regel ausgelöst wird. Bei Verwendung einer Zeitaggregation mit mehreren Bedingungen müssen alle Telemetriewerte aggregiert werden.
 
 ### <a name="configure-actions"></a>Konfigurieren von Aktionen
 

@@ -9,12 +9,12 @@ ms.date: 01/29/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: d48ab6223485807400b6749bcf72691261405495
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: c536e8749ce41f51f161d9659beca3ab0ccd30ae
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108134553"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123032252"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics-Protokollierung
 
@@ -59,6 +59,9 @@ Sie können Azure Storage Analytics auch programmgesteuert über die REST-API od
 - Mit Fehlercode 304 (Nicht geändert) misslungene GET-Anforderungen
 
   Alle anderen misslungenen anonymen Anforderungen werden nicht protokolliert. Eine vollständige Liste der protokollierten Daten ist in den Themen [Protokollierte Speicheranalysevorgänge und Statusmeldungen](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) und [Protokollformat der Speicheranalyse](/rest/api/storageservices/storage-analytics-log-format) dokumentiert.
+  
+> [!NOTE]
+> Storage Analytics protokolliert alle internen Aufrufe der Datenebene. Aufrufe vom Azure Storage-Ressourcenanbieter werden ebenfalls protokolliert. Um diese Anforderungen zu identifizieren, suchen Sie in der Anforderungs-URL nach der Abfragezeichenfolge `<sk=system-1>`.
 
 ## <a name="how-logs-are-stored"></a>Wie Protokolle gespeichert werden
 

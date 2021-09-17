@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: wellee
-ms.openlocfilehash: d1aae5620f32b5680badc073d74d360b70b68a3b
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: 8c9ab37e46f23d533550ffc535633575a85937a6
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110579870"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122778899"
 ---
 # <a name="connect-cross-tenant-vnets-to-a-virtual-wan-hub"></a>Mandantenübergreifendes Verbinden von VNETs mit einem Virtual WAN-Hub
 
@@ -44,9 +44,9 @@ Damit Sie die Schritte in diesem Artikel ausführen können, müssen Sie die fol
 
 ## <a name="assign-permissions"></a><a name="rights"></a>Zuweisen von Berechtigungen
 
-Damit das übergeordnete Abonnement mit dem virtuellen Hub die virtuellen Netzwerke im Remotemandanten ändern und auf diese zugreifen kann, müssen Sie dem übergeordneten Abonnement aus dem Remotemandantenabonnement **Mitwirkender**-Berechtigungen zuweisen.
+Damit der Benutzer, der das übergeordnete Abonnement mit dem virtuellen Hub verwaltet, die virtuellen Netzwerke im Remotemandanten ändern und auf diese zugreifen kann, müssen Sie diesem Benutzer Berechtigungen als **Mitwirkender** zuweisen. Das Zuweisen von Berechtigungen als **Mitwirkender** für diesen Benutzer erfolgt im Abonnement des VNet im Remotemandanten.
 
-1. Fügen Sie dem übergeordneten Konto (dem mit dem virtuellen WAN-Hub) die **Mitwirkender**-Rollenzuweisung hinzu. Sie können zum Zuweisen dieser Rolle entweder PowerShell oder das Azure-Portal verwenden. Weitere Informationen finden Sie in den folgenden Artikeln zum **Hinzufügen oder Entfernen von Rollenzuweisungen**:
+1. Fügen Sie dem Administrator (der Person, die den Virtual WAN-Hub verwaltet) die Rollenzuweisung **Mitwirkender** zu. Sie können zum Zuweisen dieser Rolle entweder PowerShell oder das Azure-Portal verwenden. Weitere Informationen finden Sie in den folgenden Artikeln zum **Hinzufügen oder Entfernen von Rollenzuweisungen**:
 
    * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
    * [Portal](../role-based-access-control/role-assignments-portal.md)

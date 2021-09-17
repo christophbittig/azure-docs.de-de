@@ -9,14 +9,16 @@ ms.subservice: instance-protection
 ms.date: 02/28/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: af63d27f60c3e3fa8f6aa95cd30d1f93114d4078
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 6134e1f4b4823b2198a1ecc316644ef0cd11ca33
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112031167"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690535"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Automatische Instanzreparaturen für Azure-VM-Skalierungsgruppen
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Durch das Aktivieren von automatischen Instanzreparaturen für Azure-VM-Skalierungsgruppen können Sie Hochverfügbarkeit für Anwendungen erzielen, indem Sie eine Reihe von fehlerfreien Instanzen verwalten. Wenn eine Instanz in der Skalierungsgruppe fehlerhaft ist, wie von der [Anwendungsintegritätserweiterung](./virtual-machine-scale-sets-health-extension.md) oder [Load Balancer-Integritätstests](../load-balancer/load-balancer-custom-probe-overview.md) gemeldet, führt diese Funktion automatisch eine Instanzreparatur aus und erstellt eine neue Instanz, um sie zu ersetzen.
 

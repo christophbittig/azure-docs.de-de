@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 7/15/2021
-ms.openlocfilehash: f7b134f14d190e7ef65eb2da897f9c106583d497
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: d88df617e994f4a609b12dff0419fd673f8207d1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114393516"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121721934"
 ---
 # <a name="register-and-scan-google-bigquery-source-preview"></a>Registrieren und Überprüfen der Google BigQuery-Quelle (Vorschau)
 
@@ -43,7 +43,7 @@ Die Google BigQuery-Quelle unterstützt die vollständige Überprüfung, um Meta
 Gehen Sie wie folgt vor, um in Ihrem Datenkatalog ein neues Google BigQuery-Projekt zu registrieren:
 
 1.  Navigieren Sie zu Ihrem Purview-Konto.
-2.  Wählen Sie im linken Navigationsbereich die Option **Quellen** aus.
+2.  Wählen Sie im linken Navigationsbereich **Data Map** aus.
 3.  Wählen Sie **Registrieren** aus.
 4.  Wählen Sie unter „Quellen registrieren“ die Option **Google BigQuery** aus. Wählen Sie **Weiter aus.** 
     :::image type="content" source="media/register-scan-google-bigquery-source/register-sources.png" alt-text="Registrieren der BigQuery-Quelle" border="true":::
@@ -80,7 +80,7 @@ Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
     c.  **Anmeldeinformationen**: Stellen Sie beim Konfigurieren von BigQuery-Anmeldeinformationen Folgendes sicher:
 
     - Wählen Sie **Windows-Authentifizierung** als Authentifizierungstyp aus
-    - Geben Sie im Feld Benutzername die E-Mail-ID des Dienstkontos an. Beispiel: \xyz \@ developer.gserviceaccount.com
+    - Geben Sie im Feld Benutzername die E-Mail-ID des Dienstkontos an. Beispiel: xyz\@developer.gserviceaccount.com
     - Speichern Sie die Datei mit dem privaten Schlüssel des Dienstkontos im JSON-Format im Geheimnis des Schlüsseltresors
 
     Klicken Sie zum Erstellen eines neuen privaten Schlüssels auf der Google-Cloudplattform im Navigationsmenü auf IAM & Admin – \> Dienstkonten – \> Projekt auswählen – \>Klicken Sie auf die E-Mail-Adresse des Dienstkontos, für das Sie einen Schlüssel erstellen möchten – \> Klicken Sie auf die Registerkarte –  **Schlüssel** – \> Klicken Sie auf das Dropdownmenü **Schlüssel hinzufügen** und wählen Sie dann Neuen Schlüssel erstellen aus. Wählen Sie jetzt das JSON-Format aus.

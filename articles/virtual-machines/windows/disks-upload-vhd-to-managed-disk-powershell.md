@@ -9,14 +9,16 @@ ms.service: storage
 ms.tgt_pltfrm: linux
 ms.subservice: disks
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9bec6aaf34691adf03dad9204b93af006008c7a0
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 2260603ce4b2baa969734d87d91aa4c949e875f2
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113356152"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692488"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>Hochladen einer VHD in Azure oder Kopieren eines verwalteten Datenträgers in eine andere Region – Azure PowerShell
+
+**Gilt für**: :heavy_check_mark: Windows-VMs 
 
 [!INCLUDE [disks-upload-vhd-to-disk-intro](../../../includes/disks-upload-vhd-to-disk-intro.md)]
 
@@ -104,7 +106,7 @@ Das folgende Skript führt dies für Sie aus. Der Vorgang ähnelt mit einigen Un
 Ersetzen Sie `<sourceResourceGroupHere>`, `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>`, `<yourOSTypeHere>` und `<yourTargetLocationHere>` (ein Beispiel für einen Standortwert ist „uswest2“) durch Ihre Werte, und führen Sie dann das folgende Skript aus, um einen verwalteten Datenträger zu kopieren.
 
 > [!TIP]
-> Wenn Sie einen Betriebssystemdatenträger erstellen, fügen Sie „-HyperVGeneration '<yourGeneration>'“ zu `New-AzDiskConfig` hinzu.
+> Wenn Sie einen Betriebssystemdatenträger erstellen, fügen Sie `-HyperVGeneration '<yourGeneration>'` in `New-AzDiskConfig` hinzu.
 
 ```powershell
 

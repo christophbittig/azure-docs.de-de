@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: generated, it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfed2797d0f331becf273b7ed3828aabd8378ebf
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e05bfa8a024cb823a552f01e585f1c4843bd6df9
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340181"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866454"
 ---
 # <a name="azure-ad-built-in-roles"></a>Integrierte Rollen in Azure AD
 
@@ -85,7 +85,7 @@ In diesem Artikel werden die in Azure AD integrierten Rollen aufgelistet, die Si
 > | [Partnersupport der Ebene 2](#partner-tier2-support) | Verwenden Sie diese Rolle nicht – sie ist nicht zur allgemeinen Verwendung vorgesehen. | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8 |
 > | [Kennwortadministrator](#password-administrator) | Kann Kennwörter für Nicht-Administratoren und Kennwortadministratoren zurücksetzen. | 966707d0-3269-4727-9be2-8c3a10f19b9d |
 > | [Power BI-Administrator](#power-bi-administrator) | Verwalten sämtlicher Aspekte des Produkts Power BI. | a9ea8996-122f-4c74-9520-8edcd192826c |
-> | [Power Platform-Administrator](#power-platform-administrator) | Kann alle Aspekte von Microsoft Dynamics 365, PowerApps und Microsoft Flow erstellen und verwalten. | 11648597-926c-4cf3-9c36-bcebb0ba8dcc |
+> | [Power Platform-Administrator](#power-platform-administrator) | Kann alle Aspekte von Microsoft Dynamics 365, Power Apps und Power Automate erstellen und verwalten. | 11648597-926c-4cf3-9c36-bcebb0ba8dcc |
 > | [Druckeradministrator](#printer-administrator) | Verwalten sämtlicher Aspekte von Druckern und Druckerconnectors. | 644ef478-e28f-4e28-b9dc-3fdde9aa0b1f |
 > | [Druckertechniker](#printer-technician) | Registrieren von Druckern, Aufheben ihrer Registrierung und Aktualisieren des Druckerstatus. | e8cef6f1-e4bd-4ea8-bc07-4b8d950f4477 |
 > | [Privilegierter Authentifizierungsadministrator](#privileged-authentication-administrator) | Hat Zugriff zum Anzeigen, Festlegen und Zurücksetzen von Informationen zu Authentifizierungsmethoden für alle Benutzer (mit und ohne Administratorrechte). | 7be44c8a-adaf-4e2a-84d6-ab2649e08a13 |
@@ -1489,7 +1489,7 @@ Benutzer mit dieser Rolle besitzen globale Berechtigungen innerhalb von Microsof
 
 ## <a name="power-platform-administrator"></a>Power Platform-Administrator
 
-Benutzer in dieser Rolle können alle Aspekte von Umgebungen, PowerApps, Flows und Richtlinien zur Verhinderung von Datenverlust erstellen und verwalten. Darüber hinaus verfügen Benutzer mit dieser Rolle über die Möglichkeit, Supporttickets zu verwalten und die Dienstintegrität zu überwachen.
+Benutzer in dieser Rolle können alle Aspekte von Umgebungen, Power Apps, Flows und Richtlinien zur Verhinderung von Datenverlust erstellen und verwalten. Darüber hinaus verfügen Benutzer mit dieser Rolle über die Möglichkeit, Supporttickets zu verwalten und die Dienstintegrität zu überwachen.
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |

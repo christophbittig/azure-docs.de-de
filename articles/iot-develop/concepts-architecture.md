@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-develop
 services: iot-develop
-ms.openlocfilehash: 35062d3be0ba73a0cb9aa2e497199c44eccd2469
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 94376e1bc5192a0aa437066cb8a460e9aecd27a6
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339351"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122607420"
 ---
 # <a name="iot-plug-and-play-architecture"></a>IoT Plug & Play-Architektur
 
-IoT Plug & Play ermöglicht es Lösungsentwicklern, intelligente Geräte ohne manuelle Konfiguration in ihre Lösungen zu integrieren. Das Herzstück von IoT Plug & Play ist ein _Gerätemodell_, das die Funktionen eines Geräts für eine IoT Plug & Play-fähige Anwendung beschreibt. Dieses Modell ist als ein Satz von Schnittstellen strukturiert, die Folgendes definieren:
+IoT Plug & Play ermöglicht es Lösungsentwicklern, IoT-Geräte ohne manuelle Konfiguration in ihre Lösungen zu integrieren. Das Herzstück von IoT Plug & Play ist ein _Gerätemodell_, das die Funktionen eines Geräts für eine IoT Plug & Play-fähige Anwendung beschreibt. Dieses Modell ist als ein Satz von Schnittstellen strukturiert, die Folgendes definieren:
 
 - _Eigenschaften_, die den schreibgeschützten oder schreibbaren Status eines Geräts oder einer anderen Entität darstellen. Beispielsweise kann eine Geräteseriennummer eine schreibgeschützte Eigenschaft sein und die Zieltemperatur eines Thermostats eine schreibbare Eigenschaft.
 - _Telemetriedaten_, d. h. die von einem Gerät ausgegebenen Daten – unabhängig davon, ob es sich bei den Daten um einen regulären Datenstrom von Sensormesswerten, einen gelegentlichen Fehler oder eine Informationsmeldung handelt.
@@ -39,7 +39,7 @@ Das Modellrepository hat integrierte rollenbasierte Zugriffssteuerungen, mit den
 
 ## <a name="devices"></a>Geräte
 
-Ein Geräteentwickler implementiert den Code, der auf einem intelligenten IoT-Gerät ausgeführt werden soll, mithilfe eines der [Azure IoT-Geräte-SDKs](./libraries-sdks.md). Mithilfe der Geräte-SDKs können Geräteentwickler folgende Aktionen ausführen:
+Ein Geräteentwickler implementiert den Code, der auf einem IoT-Gerät ausgeführt werden soll, mithilfe eines der [Azure IoT-Geräte-SDKs](./libraries-sdks.md). Mithilfe der Geräte-SDKs können Geräteentwickler folgende Aktionen ausführen:
 
 - Eine sichere Verbindung mit einem IoT-Hub herstellen.
 - Registrieren des Geräts beim IoT-Hub und Ankündigen der Modell-ID, die die Sammlung der vom Gerät implementierten DTDL-Schnittstellen angibt

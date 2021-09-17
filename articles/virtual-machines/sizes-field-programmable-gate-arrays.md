@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: vikancha
-ms.openlocfilehash: d9eb0d5bc93cbe9c2a7cbae56c336115bb227b04
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c421c30e9a8f117806e9e93b2df5154bd881e7c2
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102557674"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697930"
 ---
 # <a name="fpga-optimized-virtual-machine-sizes"></a>Für FPGA optimierte VM-Größen
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 FPGA-optimierte VM-Größen sind für spezialisierte virtuelle Computer mit einzelnen oder mehreren FPGAs verfügbar. Diese Größen sind für rechenintensive Workloads ausgelegt. Dieser Artikel enthält Informationen über die Anzahlen und Typen von FPGAs, vCPUs, Datenträgern und NICs. Der Speicherdurchsatz und die Netzwerkbandbreite sind für die jeweiligen Größen in dieser Gruppe ebenfalls enthalten.
 

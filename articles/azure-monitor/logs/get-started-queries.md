@@ -5,41 +5,44 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: ff65a473391f8a2435b20b88cacb6a0e18b90ba3
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: cc06241e948f2f82440d6e41f5a7a26639a54a9a
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113360737"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418730"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Erste Schritte mit Protokollabfragen in Azure Monitor
 
 > [!NOTE]
-> Sie können diese Übung in Ihrer eigenen Umgebung durcharbeiten, wenn Sie Daten von mindestens einem virtuellen Computer sammeln. Andernfalls verwenden Sie die [Demoumgebung](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade), die eine Vielzahl von Beispieldaten enthält.  Falls Sie bereits wissen, wie Sie Abfragen in KQL ausführen, und nur schnell nützliche Abfragen basierend auf Ressourcentypen erstellen möchten, hilft Ihnen der [Bereich mit den gespeicherten Beispielabfragen](../logs/queries.md) weiter.
+> Wenn Sie Daten von mindestens einem virtuellen Computer sammeln, können Sie diese Übung in Ihrer eigenen Umgebung durcharbeiten. Wenn nicht, verwenden Sie die [Demoumgebung](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade), die eine Vielzahl von Beispieldaten enthält.  
+>
+> Wenn Sie bereits wissen, wie Sie Abfragen in Kusto-Abfragesprache (Kusto Query Language, KQL) ausführen, aber schnell nützliche Abfragen auf Grundlage von Ressourcentypen erstellen müssen, finden Sie weitere Informationen im Bereich mit den gespeicherten Beispielabfragen im Artikel [Verwenden von Abfragen in Azure Monitor Log Analytics](../logs/queries.md).
 
-In diesem Tutorial erfahren Sie, wie Sie Protokollabfragen in Azure Monitor schreiben. Es wird Folgendes vermittelt:
+In diesem Tutorial erfahren Sie, wie Sie Protokollabfragen in Azure Monitor schreiben. In diesem Artikel wird Folgendes vermittelt:
 
-- Grundlegendes zur Abfragestruktur
-- Sortieren von Abfrageergebnissen
-- Filtern von Abfrageergebnissen
-- Festlegen eines Zeitbereichs
-- Auswählen der Felder, die in den Ergebnissen enthalten sein sollen
-- Definieren und Verwenden von benutzerdefinierten Feldern
-- Aggregieren und Gruppieren von Ergebnissen
+- Grundlegendes zur Abfragestruktur.
+- Sortieren von Abfrageergebnissen.
+- Filtern von Abfrageergebnissen.
+- Festlegen eines Zeitbereichs.
+- Auswählen der Felder, die in den Ergebnissen enthalten sein sollen.
+- Definieren und Verwenden von benutzerdefinierten Feldern.
+- Aggregieren und Gruppieren von Ergebnissen.
 
-Ein Tutorial zur Verwendung von Log Analytics im Azure-Portal finden Sie unter [Erste Schritte mit Azure Monitor Log Analytics](./log-analytics-tutorial.md).<br>
+Ein Tutorial zur Verwendung von Log Analytics im Azure-Portal finden Sie unter [Erste Schritte mit Azure Monitor Log Analytics](./log-analytics-tutorial.md).
+
 Weitere Informationen zu Protokollabfragen in Azure Monitor finden Sie unter [Übersicht über Protokollabfragen in Azure Monitor](../logs/log-query-overview.md).
 
-Sehen Sie sich die Videoversion dieses Tutorials an:
+Hier finden Sie eine Videoversion dieses Tutorials:
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE42pGX]
 
-## <a name="writing-a-new-query"></a>Schreiben einer neuen Abfrage
+## <a name="write-a-new-query"></a>Schreiben einer neuen Abfrage
 
 Abfragen können entweder mit einem Tabellennamen oder dem *search*-Befehl beginnen. Sie sollten mit einem Tabellennamen beginnen, da er einen klaren Gültigkeitsbereich für die Abfrage definiert und die Abfrageleistung und -relevanz der Ergebnisse verbessert.
 
 > [!NOTE]
-> Bei der in Azure Monitor verwendeten Abfragesprache Kusto wird die Groß-/Kleinschreibung berücksichtigt. Programmiersprachen-Schlüsselwörter werden in der Regel in Kleinbuchstaben geschrieben. Verwenden Sie die richtige Schreibweise bei Tabellen- oder Spaltennamen in einer Abfrage, wie im Schemabereich angezeigt wird.
+> Bei der Abfragesprache Kusto, die in Azure Monitor verwendet wird, wird die Groß-/Kleinschreibung berücksichtigt. Sprachschlüsselwörter werden in der Regel in Kleinbuchstaben geschrieben. Verwenden Sie die richtige Schreibweise bei Tabellen- oder Spaltennamen in einer Abfrage, wie im Schemabereich angezeigt wird.
 
 ### <a name="table-based-queries"></a>Tabellenbasierte Abfragen
 
@@ -50,13 +53,13 @@ SecurityEvent
 | take 10
 ```
 
-Die oben gezeigte Abfrage gibt in keiner bestimmten Reihenfolge 10 Ergebnisse aus der *SecurityEvent*-Tabelle zurück. Dies ist eine gängige Methode, um eine Tabelle zu untersuchen und sich mit deren Struktur und Inhalt vertraut zu machen. Werfen wir einen Blick darauf, wie sie erstellt wird:
+Die vorangehende Abfrage gibt in keiner bestimmten Reihenfolge 10 Ergebnisse aus der *SecurityEvent*-Tabelle zurück. Dies ist eine gängige Methode, um eine Tabelle zu untersuchen und sich mit deren Struktur und Inhalt vertraut zu machen. Werfen wir einen Blick darauf, wie sie erstellt wird:
 
-* Die Abfrage beginnt mit dem Tabellennamen *SecurityEvent*, dem Teil, der den Gültigkeitsbereich der Abfrage definiert.
-* Der senkrechte Strich (|) trennt Befehle, d.h. die Ausgabe des ersten Befehls ist die Eingabe des folgenden Befehls. Sie können eine beliebige Anzahl von durch senkrechte Striche getrennten Elementen hinzufügen.
+* Die Abfrage beginnt mit dem Tabellennamen *SecurityEvent*, der den Gültigkeitsbereich der Abfrage definiert.
+* Der senkrechte Strich (|) trennt Befehle, d. h. die Ausgabe des ersten Befehls ist die Eingabe für den nächsten. Sie können eine beliebige Anzahl von durch senkrechte Striche getrennten Elementen hinzufügen.
 * Nach dem senkrechten Strich folgt der **take**-Befehl, der eine bestimmte Anzahl von beliebigen Datensätzen aus der Tabelle zurückgibt.
 
-Die Abfrage könnte sogar ohne Hinzufügen von `| take 10` ausgeführt werden. Dies wäre zwar eine gültige Abfrage, könnte jedoch bis zu 10.000 Ergebnisse zurückgeben.
+Wir könnten die Abfrage tatsächlich auch ohne Hinzufügen von `| take 10` ausführen. Der Befehl wäre weiterhin gültig, könnte aber bis zu 10.000 Ergebnisse zurückgeben.
 
 ### <a name="search-queries"></a>Suchabfragen
 
@@ -67,10 +70,10 @@ search in (SecurityEvent) "Cryptographic"
 | take 10
 ```
 
-Diese Abfrage sucht die *SecurityEvent*-Tabelle für Datensätze, die den Ausdruck „Cryptographic“ enthalten. Von diesen Datensätzen werden 10 Datensätze zurückgegeben und angezeigt. Wenn wir den Teil `in (SecurityEvent)` auslassen und nur `search "Cryptographic"` ausführen, geht die Suche *alle* Tabellen durch, was mehr Zeit in Anspruch nehmen würde und weniger effizient wäre.
+Diese Abfrage sucht die *SecurityEvent*-Tabelle für Datensätze, die den Ausdruck „Cryptographic“ enthalten. Von diesen Datensätzen werden 10 Datensätze zurückgegeben und angezeigt. Wenn Sie den Teil `in (SecurityEvent)` auslassen und nur `search "Cryptographic"` ausführen, geht die Suche *alle* Tabellen durch, was mehr Zeit in Anspruch nehmen würde und weniger effizient wäre.
 
-> [!WARNING]
-> Suchabfragen sind in der Regel langsamer als tabellengestützte Abfragen, da sie mehr Daten verarbeiten müssen. 
+> [!IMPORTANT]
+> Suchabfragen sind üblicherweise langsamer als tabellengestützte Abfragen, da sie mehr Daten verarbeiten müssen. 
 
 ## <a name="sort-and-top"></a>„sort“ und „top“
 Zwar können mit **take** einige Datensätze abgerufen werden, allerdings werden die Ergebnisse in keiner bestimmten Reihenfolge ausgewählt und angezeigt. Um eine sortierte Ansicht zu erhalten, können Sie diese nach der bevorzugten Spalte **sortieren**:
@@ -80,7 +83,7 @@ SecurityEvent
 | sort by TimeGenerated desc
 ```
 
-Dies könnte jedoch zu viele Ergebnisse zurückgeben und ebenfalls einige Zeit dauern. Die obige Abfrage sortiert die *gesamte* SecurityEvent-Tabelle nach der TimeGenerated-Spalte. Das Analytics-Portal beschränkt die Anzeige dann auf lediglich 10.000 Datensätze. Dieser Ansatz ist natürlich nicht optimal.
+Die vorherige Abfrage könnte jedoch zu viele Ergebnisse zurückgeben und außerdem einige Zeit dauern. Die Abfrage sortiert die *gesamte* „SecurityEvent“-Tabelle nach der **TimeGenerated**-Spalte. Das Analytics-Portal beschränkt die Anzeige dann auf lediglich 10.000 Datensätze. Dieser Ansatz ist natürlich nicht optimal.
 
 Die beste Möglichkeit, nur die letzten 10 Datensätze zu erhalten, besteht darin, **top** zu verwenden, das die gesamte Tabelle auf der Serverseite sortiert und dann die ersten Datensätze zurückgibt:
 
@@ -89,12 +92,12 @@ SecurityEvent
 | top 10 by TimeGenerated
 ```
 
-Die Standardsortierreihenfolge ist absteigend. Daher wird das **desc**-Argument in der Regel ausgelassen. Die Ausgabe sieht dann wie folgt aus:
+Die Standardsortierreihenfolge ist absteigend, weshalb Sie in der Regel das **desc**-Argument auslassen würden. Die Ausgabe sieht wie folgt aus:
 
-![Die ersten 10 Ergebnisse](media/get-started-queries/top10.png)
+![Screenshot der ersten 10 Datensätze, sortiert in absteigender Reihenfolge.](media/get-started-queries/top10.png)
 
 
-## <a name="where-filtering-on-a-condition"></a>where: Filtern nach einer Bedingung
+## <a name="the-where-operator-filtering-on-a-condition"></a>Der „where“-Operator: Filtern nach einer Bedingung
 Wie der Name schon angibt, filtern Filter die Daten nach einer bestimmten Bedingung. Dies ist die gängigste Methode, um Abfrageergebnisse auf relevante Informationen zu beschränken.
 
 Verwenden Sie zum Hinzufügen eines Filters zu einer Abfrage den **where**-Operator gefolgt von einer oder mehreren Bedingungen. Die folgende Abfrage gibt beispielsweise nur *SecurityEvent*-Datensätze zurück, bei denen _Level_ _8_ entspricht:
@@ -106,21 +109,23 @@ SecurityEvent
 
 Beim Schreiben von Filterbedingungen können Sie folgende Ausdrücke verwenden:
 
-| Ausdruck | Beschreibung | Beispiel |
+| Ausdruck | BESCHREIBUNG | Beispiel |
 |:---|:---|:---|
 | == | Überprüfung auf Gleichheit<br>(mit Berücksichtigung der Groß-/Kleinschreibung) | `Level == 8` |
 | =~ | Überprüfung auf Gleichheit<br>(ohne Berücksichtigung der Groß-/Kleinschreibung) | `EventSourceName =~ "microsoft-windows-security-auditing"` |
 | !=, <> | Überprüfung auf Ungleichheit<br>(beide Ausdrücke sind identisch) | `Level != 4` |
 | *and*, *or* | Zwischen Bedingungen erforderlich| `Level == 16 or CommandLine != ""` |
 
-Zum Filtern nach mehreren Bedingungen können Sie einerseits **und** verwenden:
+Um nach mehreren Bedingungen zu filtern, können Sie einen der folgenden Ansätze verwenden:
+
+Verwenden Sie **and** (und), wie hier gezeigt:
 
 ```Kusto
 SecurityEvent
 | where Level == 8 and EventID == 4672
 ```
 
-Alternativ können Sie hintereinander mehrere **where**-Elemente übergeben:
+Übergeben Sie hintereinander mehrere **where**-Elemente per Pipe, wie hier gezeigt:
 
 ```Kusto
 SecurityEvent
@@ -129,18 +134,18 @@ SecurityEvent
 ```
     
 > [!NOTE]
-> Werte können unterschiedliche Typen aufweisen. Deshalb müssen sie eventuell umgewandelt werden, damit ein Vergleich für den richtigen Typ ausgeführt werden kann. Die SecurityEvent-Spalte *Level* ist beispielsweise vom Typ „String“. Sie müssen daher eine Umwandlung in einen numerischen Typ wie *Int* oder *long* durchführen, bevor Sie numerische Operatoren für diese verwenden können: `SecurityEvent | where toint(Level) >= 10`
+> Werte können unterschiedliche Typen aufweisen. Deshalb müssen sie eventuell umgewandelt werden, damit ein Vergleich für den richtigen Typ ausgeführt werden kann. Die SecurityEvent-Spalte *Level* ist beispielsweise vom Typ „String“. Sie müssen daher eine Umwandlung in einen numerischen Typ wie *Int* oder *long* durchführen, bevor Sie numerische Operatoren für diese verwenden können, wie hier gezeigt: `SecurityEvent | where toint(Level) >= 10`
 
 ## <a name="specify-a-time-range"></a>Festlegen eines Zeitbereichs
 
-### <a name="time-picker"></a>Zeitauswahl
+### <a name="use-the-time-picker"></a>Verwenden der Zeitauswahl
 
-Die Zeitauswahl befindet sich neben der Schaltfläche „Ausführen“ und zeigt an, dass nur Datensätze aus den letzten 24 Stunden abgefragt werden. Dies ist der Standardzeitbereich, der auf alle Abfragen angewendet wird. Um nur Datensätze von der letzten Stunde zu erhalten, wählen Sie _Letzte Stunde_ aus und führen die Abfrage erneut aus.
+Die Zeitauswahl wird neben der Schaltfläche **Ausführen** angezeigt und zeigt an, dass Sie nur Datensätze aus den letzten 24 Stunden abfragen. Dies ist der Standardzeitbereich, der auf alle Abfragen angewendet wird. Um nur Datensätze aus der letzten Stunde zu erhalten, wählen Sie _Letzte Stunde_ aus, und führen Sie dann die Abfrage erneut aus.
 
-![Zeitauswahl](media/get-started-queries/timepicker.png)
+![Screenshot der Zeitauswahl und ihrer Liste von Zeitbereichsbefehlen.](media/get-started-queries/timepicker.png)
 
 
-### <a name="time-filter-in-query"></a>Zeitfilter in Abfragen
+### <a name="add-a-time-filter-to-the-query"></a>Hinzufügen eines Filters zur Abfrage
 
 Sie können auch einen eigenen Zeitbereich definieren, indem Sie einen Zeitfilter zur Abfrage hinzufügen. Der Zeitfilter sollte idealerweise unmittelbar nach dem Tabellennamen platziert werden: 
 
@@ -150,10 +155,10 @@ SecurityEvent
 | where toint(Level) >= 10
 ```
 
-`ago(30m)` im oben genannten Zeitfilter bedeutet „vor 30 Minuten“. Diese Abfrage gibt somit nur Datensätze von den letzten 30 Minuten zurück. Andere Zeiteinheiten sind Tage (2d), Minuten (25m) und Sekunden (10s).
+Im vorherigen Zeitfilter bedeutet `ago(30m)` „vor 30 Minuten“, was bedeutet, dass diese Abfrage nur Datensätze aus den letzten 30 Minuten zurückgibt (z. B. ausgedrückt als 30 m). Andere Zeiteinheiten umfassen Tage (z. B. 2d) und Sekunden (z. B. 10s).
 
 
-## <a name="project-and-extend-select-and-compute-columns"></a>„project“ und „extend“: Auswählen und Berechnen von Spalten
+## <a name="use-project-and-extend-to-select-and-compute-columns"></a>Verwenden von „project“ und „extend“ zum Auswählen und Berechnen von Spalten
 
 Mit **project** können Sie bestimmte Spalten zur Einbeziehung in die Ergebnisse auswählen:
 
@@ -163,14 +168,14 @@ SecurityEvent
 | project TimeGenerated, Computer, Activity
 ```
 
-Im vorherigen Beispiel wird die folgende Ausgabe generiert:
+Das Beispiel oben generiert die folgende Ausgabe:
 
-![Abfragen von Projektergebnissen](media/get-started-queries/project.png)
+![Screenshot der Ergebnisliste für die Abfrage von „project“.](media/get-started-queries/project.png)
 
-Sie können über **project** auch Spalten umbenennen und neue definieren. Im folgenden Beispiel wird mit „project“ Folgendes ausgeführt:
+Sie können über **project** auch Spalten umbenennen und neue definieren. Im nächsten Beispiel wird mit **project** Folgendes ausgeführt:
 
 * Wählen Sie nur die ursprünglichen Spalten *Computer* und *TimeGenerated* aus.
-* Zeigt die Spalte *Activity* als *EventDetails* an.
+* Anzeigen der Spalte *Aktivität* als *EventDetails*.
 * Erstellen Sie eine neue Spalte mit dem Namen *EventCode*. Die Funktion **substring()** wird verwendet, um nur die ersten vier Zeichen aus dem Feld „Activity“ abzurufen.
 
 
@@ -180,7 +185,7 @@ SecurityEvent
 | project Computer, TimeGenerated, EventDetails=Activity, EventCode=substring(Activity, 0, 4)
 ```
 
-**extend** behält alle ursprünglichen Spalten im Resultset bei und definiert weitere Typen. Die folgende Abfrage verwendet **extend** zum Hinzufügen der Spalte *EventCode*. Beachten Sie, dass diese Spalte möglicherweise nicht am Ende der Tabellenergebnisse angezeigt wird. In diesem Fall müssen Sie zum Anzeigen die Details eines Datensatzes erweitern.
+Sie können **extend** verwenden, um alle ursprünglichen Spalten im Resultset beizubehalten und zusätzliche zu definieren. Die folgende Abfrage verwendet **extend** zum Hinzufügen der Spalte *EventCode*. Diese Spalte wird möglicherweise nicht am Ende der Tabellenergebnisse angezeigt. In diesem Fall müssen Sie zum Anzeigen die Details eines Datensatzes erweitern.
 
 ```Kusto
 SecurityEvent
@@ -188,10 +193,11 @@ SecurityEvent
 | extend EventCode=substring(Activity, 0, 4)
 ```
 
-## <a name="summarize-aggregate-groups-of-rows"></a>„summarize“: Aggregieren von Zeilengruppen
-Identifizieren Sie mit **summarize** Gruppen von Datensätzen entsprechend einer oder mehrerer Spalten, und wenden Sie Aggregationen auf diese an. Am häufigsten wird **summarize** mit *count* verwendet, womit die Anzahl von Ergebnissen in jeder Gruppe zurückgegeben wird.
+## <a name="use-summarize-to-aggregate-groups-of-rows"></a>Verwenden von „summarize“ zum Aggregieren von Zeilengruppen
+Verwenden Sie **summarize**, um Gruppen von Datensätzen entsprechend einer oder mehrerer Spalten zu identifizieren und Aggregationen auf diese anzuwenden. Am häufigsten wird **summarize** mit *count* verwendet, womit die Anzahl von Ergebnissen in jeder Gruppe zurückgegeben wird.
 
 Die folgende Abfrage überprüft alle *Perf*-Datensätze aus der letzten Stunde, gruppiert diese nach *ObjectName* und zählt die Datensätze in jeder Gruppe: 
+
 ```Kusto
 Perf
 | where TimeGenerated > ago(1h)
@@ -206,7 +212,7 @@ Perf
 | summarize count() by ObjectName, CounterName
 ```
 
-Auch die Ausführung von mathematischen oder statistischen Berechnungen für jede Gruppe ist ein häufiger Anwendungsfall. Mit dem folgenden Befehl wird der durchschnittliche *CounterValue* für jeden Computer berechnet:
+Auch die Ausführung von mathematischen oder statistischen Berechnungen für jede Gruppe ist ein häufiger Anwendungsfall. Im folgenden Beispiel wird der durchschnittliche *CounterValue* für jeden Computer berechnet:
 
 ```Kusto
 Perf
@@ -214,7 +220,7 @@ Perf
 | summarize avg(CounterValue) by Computer
 ```
 
-Die Ergebnisse dieser Abfrage sind jedoch bedeutungslos, da verschiedene Leistungsindikatoren vermischt wurden. Um diese aussagekräftiger zu gestalten, sollte der Mittelwert separat für jede Kombination von *CounterName* und *Computer* berechnet werden:
+Die Ergebnisse dieser Abfrage sind jedoch leider bedeutungslos, da wir verschiedene Leistungsindikatoren gemischt haben. Um die Ergebnisse aussagekräftiger zu gestalten, berechnen Sie den Mittelwert separat für jede Kombination von *CounterName* und *Computer*:
 
 ```Kusto
 Perf
@@ -235,9 +241,9 @@ Perf
 | summarize avg(CounterValue) by bin(TimeGenerated, 1h)
 ```
 
-Um die Ausgabe übersichtlicher zu gestalten, wählen Sie das jeweilige Zeitdiagramm aus, das den verfügbaren Arbeitsspeicher im Laufe der Zeit darstellt:
+Um die Ausgabe übersichtlicher zu gestalten, können Sie das jeweilige Zeitdiagramm auswählen, das den verfügbaren Arbeitsspeicher im Laufe der Zeit darstellt:
 
-![Abfragen des Speichers über einen Zeitraum](media/get-started-queries/chart.png)
+![Screenshot der die Werte einer Abfrage des Arbeitsspeichers im Laufe der Zeit zeigt.](media/get-started-queries/chart.png)
 
 
 

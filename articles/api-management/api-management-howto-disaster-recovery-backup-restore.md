@@ -3,23 +3,18 @@ title: Implementieren der Notfallwiederherstellung mit Sichern und Wiederherstel
 titleSuffix: Azure API Management
 description: Erfahren Sie, wie Sie Sichern und Wiederherstellen zur Notfallwiederherstellung in Azure API Management verwenden.
 services: api-management
-documentationcenter: ''
 author: mikebudzynski
-manager: erikre
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 12/05/2020
+ms.date: 08/20/2021
 ms.author: apimpm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8148cbd1fa4e34610c4b27609910821323a2acea
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9d0845d2b54f2ce9d69772b6f1fcfe6fd3704a78
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339309"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538667"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>So implementieren Sie die Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management
 
@@ -57,38 +52,32 @@ Alle Aufgaben, die Sie mithilfe von Azure Resource Manager für Ressourcen ausf�
 ### <a name="create-an-azure-active-directory-application"></a>Erstellen einer Azure Active Directory-Anwendung
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Verwenden Sie das Abonnement, das Ihre API Management-Dienstinstanz enthält, und navigieren Sie zur Registerkarte **App-Registrierungen** in **Azure Active Directory** (Azure Active Directory > Verwalten > App-Registrierungen).
-
+1. Navigieren Sie unter Verwendung des Abonnements, das Ihre API Management-Dienstinstanz enthält, im Azure-Portal zu [App-Registrierungen](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade), um eine App in Active Directory zu registrieren.
     > [!NOTE]
     > Wenn das Azure Active Directory-Standardverzeichnis in Ihrem Konto nicht angezeigt wird, bitten Sie den Administrator des Azure-Abonnements, die erforderlichen Berechtigungen für das Konto zu erteilen.
+1. Wählen Sie **+ Neue Registrierung** aus.
+1. Legen Sie auf der Seite **Anwendung registrieren** folgende Werte fest:
+    
+    * Legen Sie für **Name** einen aussagekräftigen Namen fest,
+    * Legen Sie **Unterstützte Kontotypen** auf **Nur Konten in diesem Organisationsverzeichnis** fest. 
+    * Geben Sie unter **Umleitungs-URI** eine Platzhalter-URL wie z. B. `https://resources` ein. Es handelt sich um ein Pflichtfeld, aber der Wert wird später nicht verwendet. 
+    * Wählen Sie **Registrieren**.
 
-3. Klicken Sie auf **Registrierung einer neuen Anwendung**.
+### <a name="add-permissions"></a>Hinzufügen von Berechtigungen
 
-    Das Fenster **Erstellen** wird auf der rechten Seite angezeigt. Dort geben Sie die relevanten Informationen der AAD-App ein.
-
-4. Geben Sie einen Namen für die Anwendung ein.
-5. Wählen Sie als Anwendungstyp **Nativ** aus.
-6. Geben Sie eine Platzhalter-URL wie z.B. `http://resources` für den **Umleitungs-URI** ein, da es sich um ein Pflichtfeld handelt. Der Wert wird jedoch später nicht verwendet. Klicken Sie auf das Kontrollkästchen, um die Anwendung zu speichern.
-7. Klicken Sie auf **Erstellen**.
-
-### <a name="add-an-application"></a>Hinzufügen einer Anwendung
-
-1. Klicken Sie nach dem Erstellen der Anwendung auf **API-Berechtigungen**.
-2. Klicken Sie auf **+ Add a permission** (+ Berechtigung hinzufügen).
-4. Klicken Sie auf **Select Microsoft APIs** (Microsoft-APIs auswählen).
-5. Klicken Sie auf **Azure Service Management** (Azure-Dienstverwaltung).
-6. Drücken Sie **Auswählen**.
+1. Nachdem Ihre Anwendung erstellt wurde, wählen Sie **API-Berechtigungen** >  **+ Berechtigung hinzufügen** aus.
+1. Wählen Sie **Microsoft-APIs** aus.
+1. Wählen Sie **Azure Service Management** aus.
 
     :::image type="content" source="./media/api-management-howto-disaster-recovery-backup-restore/add-app-permission.png" alt-text="Screenshot: Hinzufügen von App-Berechtigungen"::: 
 
-7. Klicken Sie neben der neu hinzugefügten Anwendung auf **Delegierte Berechtigungen**, und aktivieren Sie das Kontrollkästchen **Access Azure Service Management (Vorschau)** .
+1. Klicken Sie neben der neu hinzugefügten Anwendung auf **Delegierte Berechtigungen**, und aktivieren Sie das Kontrollkästchen **Als Organisationsbenutzer auf Azure Service Management zugreifen (Vorschau)** .
 
     :::image type="content" source="./media/api-management-howto-disaster-recovery-backup-restore/delegated-app-permission.png" alt-text="Screenshot: Hinzufügen von delegierten App-Berechtigungen":::
 
-8. Drücken Sie **Auswählen**.
-9. Klicken Sie auf **Berechtigungen hinzufügen**.
+1. Wählen Sie **Berechtigungen hinzufügen** aus.
 
-### <a name="configuring-your-app"></a>Konfigurieren der App
+### <a name="configure-your-app"></a>Konfigurieren Ihrer App
 
 Vor dem Aufrufen der APIs, die die Sicherung erstellen und wiederherstellen, muss ein Token abgerufen werden. Im folgenden Beispiel wird das Token mit dem NuGet-Paket [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) abgerufen.
 
@@ -137,6 +126,9 @@ Ersetzen Sie `{tenant id}`, `{application id}` und `{redirect uri}` entsprechend
 
 Die REST-APIs sind [API Management-Dienst – Backup](/rest/api/apimanagement/2020-12-01/api-management-service/backup) und [API Management-Dienst – Restore](/rest/api/apimanagement/2020-12-01/api-management-service/restore).
 
+> [!NOTE]
+> Sicherungs- und Wiederherstellungsvorgänge können außerdem mithilfe der PowerShell-Befehle [_Backup-AzApiManagement_](/powershell/module/az.apimanagement/backup-azapimanagement) bzw. [_Restore-AzApiManagement_](/powershell/module/az.apimanagement/restore-azapimanagement) ausgeführt werden.
+
 Legen Sie vor dem Aufrufen der in den folgenden Abschnitten beschriebenen Vorgänge zur Sicherung und Wiederherstellung den Autorisierungsanforderungsheader für den REST-Aufruf fest.
 
 ```csharp
@@ -156,7 +148,7 @@ Dabei gilt:
 -   `subscriptionId` – ID des Abonnements, das den API Management-Dienst enthält, den Sie sichern möchten
 -   `resourceGroupName` – der Name der Ressourcengruppe Ihres Azure API Management-Diensts
 -   `serviceName` – der Name des zu sichernden API Management-Diensts zum Zeitpunkt seiner Erstellung
--   `api-version` – durch `2020-12-01` ersetzen
+-   `api-version` – Ersetzen Sie den Wert durch eine unterstützte REST-API-Version, z. B. `2020-12-01`.
 
 Geben Sie im Hauptteil der Anforderung das Azure-Zielspeicherkonto, den Zugriffsschlüssel, den Blobcontainernamen und den Sicherungsnamen an:
 
@@ -208,14 +200,8 @@ Die Wiederherstellung ist ein länger anhaltender Vorgang, der bis zum Abschluss
 >
 > **Änderungen** an der Dienstkonfiguration (z.B. APIs, Richtlinien, Erscheinungsbild des Entwicklerportals), die während des Wiederherstellungsvorgangs vorgenommen werden, **könnten überschrieben werden**.
 
-<!-- Dummy comment added to suppress markdown lint warning -->
-
-> [!NOTE]
-> Sicherungs- und Wiederherstellungsvorgänge können außerdem mithilfe der PowerShell-Befehle [_Backup-AzApiManagement_](/powershell/module/az.apimanagement/backup-azapimanagement) bzw. [_Restore-AzApiManagement_](/powershell/module/az.apimanagement/restore-azapimanagement) ausgeführt werden.
-
 ## <a name="constraints-when-making-backup-or-restore-request"></a>Einschränkungen beim Durchführen von Backup- oder Wiederherstellungsanforderungen
 
--   Der im Hauptteil der Anforderung angegebene **Container** **muss vorhanden sein**.
 -   Vermeiden Sie während der Sicherung **Verwaltungsänderungen im Dienst** wie beispielsweise SKU-Upgrades oder Herabstufungen, Änderungen am Domänennamen usw.
 -   Die Wiederherstellung einer Sicherung nach ihrer Erstellung **wird nur 30 Tage lange garantiert**.
 -   **Änderungen** an der Dienstkonfiguration (z.B. APIs, Richtlinien, Erscheinungsbild des Entwicklerportals), die während des Sicherungsvorgangs vorgenommen werden, sind ggf. **nicht in der Sicherung enthalten und gehen verloren**.
@@ -255,5 +241,5 @@ Sehen Sie sich die folgenden Ressourcen für verschiedene Vorgehensweisen für d
 [api-management-aad-resources]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-aad-resources.png
 [api-management-arm-token]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-arm-token.png
 [api-management-endpoint]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-endpoint.png
-[control-plane-ip-address]: api-management-using-with-vnet.md#control-plane-ips
+[control-plane-ip-address]: api-management-using-with-vnet.md#control-plane-ip-addresses
 [azure-storage-ip-firewall]: ../storage/common/storage-network-security.md#grant-access-from-an-internet-ip-range

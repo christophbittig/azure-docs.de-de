@@ -10,12 +10,12 @@ ms.devlang: javascript
 ms.custom:
 - devx-track-js
 - mode-api
-ms.openlocfilehash: 9e8bb3d49ef236521f7d4a48060b2405dbbbc104
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: fa3c4405bd2c62642e5d61dad10b078695fb32cd
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112462017"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444673"
 ---
 # <a name="quickstart-use-javascript-to-create-an-app-showing-github-star-count-with-azure-functions-and-signalr-service"></a>Schnellstart: Erstellen Sie eine App, die die Anzahl der GitHub-Sterne mit Azure Functions und dem SignalR-Service mithilfe von JavaScript anzeigt
 
@@ -50,7 +50,7 @@ Treten Probleme auf? Verwenden Sie den [Leitfaden zur Problembehandlung](signalr
 Treten Probleme auf? Verwenden Sie den [Leitfaden zur Problembehandlung](signalr-howto-troubleshoot-guide.md), oder [informieren Sie uns](https://aka.ms/asrs/qsjs).
 
 
-## <a name="setup-and-run-the-azure-function-locally"></a>Einrichten und Ausführen von Azure-Function auf einer lokalen Ebene
+## <a name="setup-and-run-the-azure-function-locally"></a>Einrichten und Ausführen von Azure-Function auf lokaler Ebene
 
 1. Stellen Sie sicher, dass die Azure Function Core Tools installiert sind. Erstellen Sie ein leeres Verzeichnis und navigieren Sie über die Befehlszeile zum Verzeichnis.
 
@@ -66,8 +66,31 @@ Treten Probleme auf? Verwenden Sie den [Leitfaden zur Problembehandlung](signalr
         ```bash
         func new -n index -t HttpTrigger
         ```
-        
-        Öffnen sie `index/index.js` und Kopieren Sie die folgenden Codes.
+        Öffnen Sie `index/function.json` und Kopieren Sie die folgenden JSON Codes:
+
+        ```json
+        {
+          "bindings": [
+            {
+              "authLevel": "anonymous",
+              "type": "httpTrigger",
+              "direction": "in",
+              "name": "req",
+              "methods": [
+                "get",
+                "post"
+              ]
+            },
+            {
+              "type": "http",
+              "direction": "out",
+              "name": "res"
+            }
+          ]
+        }
+        ```
+
+        Öffnen Sie `index/index.js` und Kopieren Sie die folgenden Codes.
 
         ```javascript
         var fs = require('fs').promises
@@ -191,7 +214,7 @@ Treten Probleme auf? Verwenden Sie den [Leitfaden zur Problembehandlung](signalr
         }    
         ```
 
-3. Die Clientschnittstelle dieses Beispiels ist eine Webseite. Wir lesen den HTML-Inhalt aus der `content/index.html` in der Funktion `index` und erstellen eine neue Datei `index.html` im Verzeichnis `content`. Dann kopieren wir den folgendem Inhalt.
+3. Die Clientschnittstelle dieses Beispiels ist eine Webseite. Wir lesen den HTML-Inhalt aus der `content/index.html` in der Funktion `index` und erstellen eine neue Datei `index.html` im Verzeichnis `content` unter dem Stammordner des Projekts. Dann kopieren wir den folgendem Inhalt.
 
     ```html
     <html>
@@ -232,16 +255,16 @@ Treten Probleme auf? Verwenden Sie den [Leitfaden zur Problembehandlung](signalr
     1. Kopieren Sie die primäre Verbindungszeichenfolge. Führen Sie den folgenden Befehl aus.
     
         ```bash
-        func settings add AzureSignalRConnectionString '<signalr-connection-string>'
+        func settings add AzureSignalRConnectionString "<signalr-connection-string>"
         ```
     
-5. Führen Sie Azure-Function auf einer lokalen Ebene aus:
+5. Führen Sie Azure-Function auf lokaler Ebene aus:
 
     ```bash
     func start
     ```
 
-    Nachdem Azure-Function lokal ausgeführt wurde. Verwenden Sie Ihren Browser, um `http://localhost:7071/api/index` besuchen, und Sie können die aktuelle Startanzahl anzeigen. Und wenn Sie im GitHub einen Stern setzen oder entfernen, wird alle paar Sekunden eine Startanzahl aktualisiert.
+    Nachdem Azure-Function auf lokaler Ebene ausgeführt wurde. Verwenden Sie Ihren Browser, um `http://localhost:7071/api/index` besuchen, und Sie können die aktuelle Sternanzahl anzeigen. Wenn Sie auf GitHub einen Stern vergeben oder entfernen, wird die Anzahl von Sternen alle paar Sekunden aktualisiert.
 
     > [!NOTE]
     > Die SignalR-Bindung benötigt Azure Storage, Sie können jedoch den lokalen Speicheremulator verwenden, wenn die Funktion lokal ausgeführt wird.
@@ -255,8 +278,8 @@ Treten Probleme auf? Verwenden Sie den [Leitfaden zur Problembehandlung](signalr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie eine lokale serverlose Echtzeitanwendung erstellt und ausgeführt. Erfahren Sie mehr darüber, wie Bindungen des SignalR-Service in Azure Functions verwendet werden.
-Als Nächstes erfahren Sie mehr über die bidirektionale Kommunikation zwischen den Clients und Azure Function mit dem SignalR Service.
+In diesem Schnellstart haben Sie eine lokale serverlose Echtzeitanwendung erstellt und ausgeführt. Erfahren Sie mehr darüber, wie Bindungen des SignalR-Services in Azure Functions verwendet werden.
+Als Nächstes erfahren Sie mehr über die bidirektionale Kommunikation zwischen Clients und Azure Function mit dem SignalR Service.
 
 > [!div class="nextstepaction"]
 > [Bindungen des SignalR-Diensts für Azure Functions](../azure-functions/functions-bindings-signalr-service.md)

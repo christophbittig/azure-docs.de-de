@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: f673c506411898788b35886dea741604e885e7a3
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: a9234a2bcce6a754a96d1f323af9f08a9697ff03
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112461673"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725237"
 ---
 # <a name="register-and-scan-oracle-source"></a>Oracle-Quelle registrieren und überprüfen
 
@@ -74,7 +74,7 @@ Die einzige unterstützte Authentifizierung für eine Oracle-Quelle ist die **St
 Gehen Sie wie folgt vor, um in Ihrem Datenkatalog eine neue Oracle-Quelle zu registrieren:
 
 1.  Navigieren Sie zu Ihrem Purview-Konto.
-2.  Wählen Sie im linken Navigationsbereich die Option **Quellen** aus.
+2.  Wählen Sie im linken Navigationsbereich **Data Map** aus.
 3.  Wählen Sie **Registrieren** aus.
 4.  Wählen Sie unter „Quellen registrieren“ die Option **Oracle** aus. Wählen Sie **Weiter**.
 

@@ -3,12 +3,12 @@ title: Ereignisbereitstellung, verwaltete Dienstidentität und private Verbindun
 description: In diesem Artikel wird beschrieben, wie Sie die verwaltete Dienstidentität für ein Azure Event Grid-Thema aktivieren. So können Sie Ereignisse an unterstützte Ziele weiterleiten.
 ms.topic: how-to
 ms.date: 03/25/2021
-ms.openlocfilehash: 76f10b4627dc9578b1e616a868eab03431b59b69
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f1f80f23fe108415daa6e0526b651c7269d6b1b3
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105625274"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634090"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>Ereignisübermittlung mit einer verwalteten Identität
 In diesem Artikel wird beschrieben, wie Sie eine [verwaltete Dienstidentität](../active-directory/managed-identities-azure-resources/overview.md) für ein Systemthema oder ein benutzerdefiniertes Thema von Azure Event Grid oder für eine Azure Event Grid-Domäne verwenden. Verwenden Sie diese Methode, um Ereignisse an unterstützte Ziele wie Service Bus-Warteschlangen und -Themen, Event Hubs und Speicherkonten weiterzuleiten.
@@ -16,7 +16,7 @@ In diesem Artikel wird beschrieben, wie Sie eine [verwaltete Dienstidentität](.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-1. Zuweisen einer systemseitig zugewiesenen Identität zu einem Systemthema, einem benutzerdefinierten Thema oder einer Domäne. 
+1. Weisen Sie einem Systemthema, einem benutzerdefinierten Thema oder einer Domäne eine systemseitig oder benutzerseitig zugewiesene Identität zu. 
     - Informationen zu benutzerdefinierten Themen und Domänen finden Sie unter [Aktivieren einer verwalteten Identität für benutzerdefinierte Themen und Domänen](enable-identity-custom-topics-domains.md). 
     - Informationen zu Systemthemen finden Sie unter [Aktivieren einer verwalteten Identität für Systemthemen](enable-identity-system-topics.md).
 1. Fügen Sie die Identität einer geeigneten Rolle (z. B. Azure Service Bus-Datensender) für das Ziel (z. B. Service Bus-Warteschlange) zu. Ausführliche Schritte finden Sie unter [Hinzufügen einer Identität zu Azure-Rollen für Ziele](add-identity-roles.md).
@@ -28,13 +28,24 @@ In diesem Artikel wird beschrieben, wie Sie eine [verwaltete Dienstidentität](.
 Sobald Sie über ein benutzerdefiniertes Event Grid-Thema, ein Event Grid-Systemthema oder eine Domäne mit einer systemseitig verwalteten Identität verfügen und die Identität der entsprechenden Rolle auf dem Ziel hinzugefügt haben, können Sie Abonnements erstellen, die die Identität verwenden. 
 
 ### <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
-Wenn Sie ein Ereignisabonnement erstellen, wird im Abschnitt **ENDPUNKTDETAILS** eine Option angezeigt, mit der die Verwendung der vom System zugewiesenen Identität für einen Endpunkt aktiviert werden kann. 
+Wenn Sie ein Ereignisabonnement erstellen, wird im Abschnitt **ENDPUNKTDETAILS** eine Option angezeigt, mit der die Verwendung der systemseitig oder benutzerseitig zugewiesenen Identität für einen Endpunkt aktiviert werden kann. 
+
+Im Folgenden finden Sie ein Beispiel für das Aktivieren der systemseitig zugewiesenen Identität beim Erstellen eines Ereignisabonnements mit einer Service Bus-Warteschlange als Ziel. 
 
 ![Aktivieren der Identität beim Erstellen eines Ereignisabonnements für die Service Bus-Warteschlange](./media/managed-service-identity/service-bus-queue-subscription-identity.png)
 
 Auf der Registerkarte **Zusätzliche Features** können Sie auch die Verwendung der vom System zugewiesenen Identität für unzustellbare Nachrichten aktivieren. 
 
 ![Aktivieren der vom System zugewiesenen Identität zur Verarbeitung unzustellbarer Nachrichten](./media/managed-service-identity/enable-deadletter-identity.png)
+
+Sie können auch nach der Erstellung eine verwaltete Identität für ein Ereignisabonnement aktivieren. Wechseln Sie auf der Seite **Ereignisabonnement** für das Ereignisabonnement zur Registerkarte **Zusätzliche Features**, um die Option anzuzeigen. 
+
+![Aktivieren einer systemseitig zugewiesenen Identität in einem vorhandenen Ereignisabonnement](./media/managed-service-identity/event-subscription-additional-features.png)
+
+Wenn Sie benutzerseitig zugewiesene Identitäten für das Thema aktiviert haben, wird die Option für benutzerseitig zugewiesene Identitäten in der Dropdownliste für **Managed Identity Type** (Verwalteter Identitätstyp) als aktiviert angezeigt. Wenn Sie unter **Managed Identity Type** (Verwalteter Identitätstyp) die Option **Vom Benutzer zugewiesen** auswählen, können Sie die vom Benutzer zugewiesene Identität auswählen, die Sie zum Übermitteln von Ereignissen verwenden möchten. 
+
+![Aktivieren der vom Benutzer zugewiesenen Identität für ein Ereignisabonnement](./media/managed-service-identity/event-subscription-user-identity.png)
+
 
 ### <a name="use-the-azure-cli---service-bus-queue"></a>Verwenden der Azure-Befehlszeilenschnittstelle: Service Bus-Warteschlange 
 In diesem Abschnitt erfahren Sie, wie Sie die vom System zugewiesene Identität zum Übermitteln von Ereignissen an eine Service Bus-Warteschlange mit der Azure-Befehlszeilenschnittstelle aktivieren. Die Identität muss Mitglied der Rolle **Azure Service Bus-Datensender** sein. Sie muss auch Mitglied der Rolle **Mitwirkender an Storage-Blobdaten** für das Speicherkonto sein, das für unzustellbare Nachrichten verwendet wird. 

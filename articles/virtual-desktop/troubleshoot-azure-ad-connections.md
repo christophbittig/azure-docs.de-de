@@ -6,14 +6,14 @@ author: Heidilohr
 manager: lizross
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 08/11/2021
+ms.date: 08/20/2021
 ms.author: helohr
-ms.openlocfilehash: 97c81eadf7091f04b77b094a4622c1731d19c537
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: f168c05e5df3421126c94bea7160896fb1b75363
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122356460"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122662272"
 ---
 # <a name="connections-to-azure-ad-joined-vms"></a>Verbindungen mit in Azure AD eingebundenen virtuellen Computern
 
@@ -41,6 +41,7 @@ Wenn bei der Aufforderung zur Eingabe von Anmeldeinformationen bei Windows Secur
 - Sie befinden sich auf einem Gerät, das in Azure AD eingebunden oder hybrid in Azure AD mit demselben Azure AD-Mandanten wie der Sitzungshost eingebunden ist ODER
 - Sie nutzen ein Gerät mit Windows 10 2004 oder höher, das in Azure AD beim gleichen Azure AD-Mandanten wie der Sitzungshost registriert ist.
 - Sowohl auf dem lokalen PC als auch auf dem Sitzungshost [ist das PKU2U-Protokoll aktiviert](/windows/security/threat-protection/security-policy-settings/network-security-allow-pku2u-authentication-requests-to-this-computer-to-use-online-identities).
+- [Die benutzerspezifische MFA](deploy-azure-ad-joined-vm.md#enabling-mfa-for-azure-ad-joined-vms) ist für das Benutzerkonto deaktiviert, da sie für in Azure AD eingebundene VMs nicht unterstützt wird.
 
 ### <a name="the-sign-in-method-youre-trying-to-use-isnt-allowed"></a>Die Anmeldemethode, die Sie verwenden möchten, ist nicht zulässig
 

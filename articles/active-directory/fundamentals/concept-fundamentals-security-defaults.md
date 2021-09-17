@@ -5,28 +5,28 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 07/07/2021
+ms.date: 08/20/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: rogoya
+ms.reviewer: lvandenende
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: d240e9bbf657a4336480d1340b8fbd59903a355a
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: a82b2632d5415091986c418ca7cd3871e519b374
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113730296"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634184"
 ---
 # <a name="what-are-security-defaults"></a>Was sind Sicherheitsstandards?
 
 Die Aufrechterhaltung der Sicherheit kann sich angesichts der zunehmenden Verbreitung gängiger identitätsbezogener Angriffe wie Kennwortspray, Replay und Phishing als schwierig erweisen. Sicherheitsstandards in Azure Active Directory (Azure AD) können den Schutz Ihrer Organisation vor solchen Angriffen mit vorkonfigurierten Sicherheitseinstellungen vereinfachen:
 
-- Festlegen, dass sich alle Benutzer für Azure AD Multi-Factor Authentication registrieren müssen.
-- Festlegen, dass Administratoren mehrstufige Authentifizierung durchführen müssen.
+- Alle Benutzer müssen sich für die Azure AD Multi-Factor-Authentifizierung registrieren.
+- Administratoren müssen eine mehrstufige Authentifizierung durchführen.
 - Blockieren älterer Authentifizierungsprotokolle.
-- Festlegen, dass Benutzer bei Bedarf mehrstufige Authentifizierung ausführen müssen.
+- Benutzer müssen bei Bedarf eine mehrstufige Authentifizierung durchführen.
 - Schützen privilegierter Aktivitäten Zugriff auf das Azure-Portal.
 
 ![Screenshot: Azure-Portal mit Umschaltfläche zum Aktivieren der Sicherheitsstandards](./media/concept-fundamentals-security-defaults/security-defaults-azure-ad-portal.png)
@@ -35,17 +35,17 @@ Weitere Informationen dazu, warum diese Sicherheitsstandards verfügbar gemacht 
 
 ## <a name="availability"></a>Verfügbarkeit
 
-Microsoft stellt allen Benutzern Sicherheitsstandards zur Verfügung. Das Ziel ist sicherzustellen, dass in allen Organisationen eine Standardsicherheitsebene ohne zusätzliche Kosten aktiviert ist. Sie aktivieren die Sicherheitsstandards im Azure-Portal. Wenn Ihr Mandant am oder nach dem 22. Oktober 2019 erstellt wurde, ist es möglich, dass in Ihrem Mandanten bereits Sicherheitsstandards aktiviert sind. Zum Schutz aller Benutzer werden Sicherheitsstandards für alle neu erstellten Mandanten eingeführt.
+Microsoft stellt allen Benutzern Sicherheitsstandards zur Verfügung. Das Ziel ist sicherzustellen, dass in allen Organisationen eine Standardsicherheitsebene ohne zusätzliche Kosten aktiviert ist. Sie aktivieren die Sicherheitsstandards im Azure-Portal. Wenn Ihr Mandant am oder nach dem 22. Oktober 2019 erstellt wurde, sind darin möglicherweise Sicherheitsstandards aktiviert. Zum Schutz aller Benutzer werden für alle neuen Mandanten bei deren Erstellung Sicherheitsstandards konfiguriert.
 
 ### <a name="whos-it-for"></a>Für wen eignet sich diese Funktion?
 
-- Wenn Sie ein Unternehmen sind, das seinen Sicherheitsstatus erhöhen möchte, Sie aber nicht wissen, wie oder wo Sie anfangen sollen, sind die Sicherheitsstandards für Sie von Nutzen.
-- Wenn Sie ein Unternehmen sind, das den Free-Tarif der Azure Active Directory-Lizenzierung nutzt, sind die Sicherheitsstandards für Sie geeignet.
+- Wenn Sie als Organisation Ihren Sicherheitsstatus verbessern möchten, aber nicht wissen, wie oder womit Sie anfangen sollen, sind die Sicherheitsstandards genau das Richtige für Sie.
+- Wenn Sie als Organisation die kostenlose Version der Azure Active Directory-Lizenzierung nutzen, sind die Sicherheitsstandards ebenfalls die richtige Wahl.
 
 ### <a name="who-should-use-conditional-access"></a>Wer sollte bedingten Zugriff verwenden?
 
-- Wenn Sie eine Organisation sind, die derzeit Richtlinien für den bedingten Zugriff verwendet, um Signale zusammenzuführen, Entscheidungen zu treffen und Organisationsrichtlinien zu erzwingen, sind Sicherheitsstandards möglicherweise nicht für Sie geeignet. 
-- Wenn Sie ein Unternehmen mit Azure Active Directory Premium-Lizenzen sind, sind Sicherheitsstandards möglicherweise nicht das Richtige für Sie.
+- Wenn Sie als Organisation derzeit Richtlinien für den bedingten Zugriff verwenden, um Signale zusammenzuführen, Entscheidungen zu treffen und Unternehmensrichtlinien durchzusetzen, sind die Sicherheitsstandards wahrscheinlich nicht für Sie geeignet. 
+- Wenn Sie als Organisation über Azure Active Directory Premium-Lizenzen verfügen, sind die Sicherheitsstandards wahrscheinlich nicht die richtige Wahl für Sie.
 - Bei komplexen Sicherheitsanforderungen empfiehlt sich ggf. die Verwendung von bedingtem Zugriff.
 
 ## <a name="policies-enforced"></a>Erzwungene Richtlinien
@@ -77,9 +77,9 @@ Nach Abschluss der Azure AD Multi-Factor Authentication-Registrierung ist für 
 
 Wir gehen häufig davon aus, dass nur Administratorkonten durch eine mehrstufige Authentifizierung geschützt werden müssen. Administratoren haben umfassenden Zugriff auf vertrauliche Informationen und können Änderungen an abonnementweiten Einstellungen vornehmen. Angriffe richten sich jedoch häufig gegen Endbenutzer. 
 
-Nachdem die Angreifer Zugang erhalten haben, können sie im Namen des ursprünglichen Kontoinhabers Zugriff auf privilegierten Informationen anfordern. Sie können sogar das gesamte Verzeichnis herunterladen, um einen Phishing-Angriff auf Ihr gesamtes Unternehmen durchzuführen. 
+Nachdem diese Angreifer sich Zugang verschafft haben, können sie im Namen des ursprünglichen Kontoinhabers Zugriff auf privilegierte Informationen anfordern. Sie können sogar das gesamte Verzeichnis herunterladen, um einen Phishing-Angriff auf die gesamte Organisation auszuführen. 
 
-Eine gängige Methode zur Verbesserung des Schutzes für alle Benutzer besteht in einer strengeren Kontoüberprüfung, beispielsweise durch eine mehrstufige Authentifizierung (MFA). Nachdem die Benutzer die MFA-Registrierung abgeschlossen haben, werden sie bei Bedarf zu einer zusätzlichen Authentifizierung aufgefordert. Benutzer werden in erster Linie aufgefordert, wenn sie sich mit einem neuen Gerät oder einer neuen Anwendung authentifizieren oder wenn sie kritische Rollen und Aufgaben ausführen. Diese Funktion schützt alle Anwendungen, die bei Azure AD registriert sind (einschließlich SaaS-Anwendungen).
+Eine gängige Methode zur Verbesserung des Schutzes für alle Benutzer besteht in einer strengeren Kontoüberprüfung, beispielsweise durch eine mehrstufige Authentifizierung (MFA). Nachdem die Benutzer die MFA-Registrierung abgeschlossen haben, werden sie bei Bedarf zu einer zusätzlichen Authentifizierung aufgefordert. Eine solche Aufforderung erfolgt in erster Linie dann, wenn sie sich mit einem neuen Gerät oder einer neuen Anwendung authentifizieren, oder wenn sie kritische Rollen und Aufgaben ausführen. Diese Funktion schützt alle Anwendungen, die bei Azure AD registriert sind (einschließlich SaaS-Anwendungen).
 
 ### <a name="blocking-legacy-authentication"></a>Blockieren der Legacyauthentifizierung
 
@@ -141,21 +141,20 @@ Diese kostenlosen Sicherheitsstandards ermöglichen die Registrierung für und V
 
 ### <a name="disabled-mfa-status"></a>Deaktivierter MFA-Status
 
-Wenn Ihre Organisation früher benutzerbasierte Azure AD Multi-Factor Authentication verwendet hat, sollten Sie nicht beunruhigt sein, wenn auf der Statusseite der mehrstufigen Authentifizierung keine Benutzer mit dem Status **Aktiviert** oder **Erzwungen** angezeigt werden. **Deaktiviert** ist der geeignete Status für Benutzer, die Sicherheitsstandards oder auf bedingtem Zugriff basierende Azure AD Multi-Factor Authentication verwenden.
+Wenn Ihre Organisation die benutzerbasierte Azure AD Multi-Factor Authentication bereits verwendet hat, sollten Sie nicht beunruhigt sein, wenn auf der Statusseite der mehrstufigen Authentifizierung keine Benutzer mit dem Status **Aktiviert** oder **Erzwungen** angezeigt werden. **Deaktiviert** ist der geeignete Status für Benutzer, die Sicherheitsstandards oder auf bedingtem Zugriff basierende Azure AD Multi-Factor Authentication verwenden.
 
 ### <a name="conditional-access"></a>Bedingter Zugriff
 
-Sie können den bedingten Zugriff zum Konfigurieren von Richtlinien verwenden, die mit den Sicherheitsstandards vergleichbar sind, aber eine höhere Granularität (einschließlich Benutzerausschlüsse) bieten, welche bei Sicherheitsstandards nicht verfügbar ist. Wenn Sie mit dem bedingtem Zugriff arbeiten und in Ihrer Umgebung die Richtlinien für bedingten Zugriff aktiviert sind, stehen Ihnen die Sicherheitsstandards nicht zur Verfügung. Wenn Sie über eine Lizenz für die Bereitstellung des bedingten Zugriffs verfügen, aber keine Richtlinien für bedingten Zugriff in Ihrer Umgebung aktiviert sind, können Sie die Sicherheitsstandards solange nutzen, bis Sie Richtlinien für bedingten Zugriff aktivieren. Weitere Informationen zur Azure AD-Lizenzierung finden Sie auf der Seite [Azure Active Directory (AD) – Preise](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing).
+Sie können den bedingten Zugriff zum Konfigurieren von Richtlinien verwenden. Diese sind mit den Sicherheitsstandards vergleichbar, bieten aber eine höhere Granularität (einschließlich Benutzerausschlüsse), die bei Sicherheitsstandards nicht verfügbar ist. Wenn Sie mit dem bedingtem Zugriff arbeiten und in Ihrer Umgebung die Richtlinien für bedingten Zugriff aktiviert sind, stehen Ihnen die Sicherheitsstandards nicht zur Verfügung. Wenn Sie über eine Lizenz für die Bereitstellung des bedingten Zugriffs verfügen, aber keine Richtlinien für bedingten Zugriff in Ihrer Umgebung aktiviert sind, können Sie die Sicherheitsstandards so lange nutzen, bis Sie Richtlinien für bedingten Zugriff aktivieren. Weitere Informationen zur Azure AD-Lizenzierung finden Sie auf der Seite [Azure Active Directory (AD) – Preise](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing).
 
 ![Warnmeldung mit dem Hinweis, dass Sicherheitsstandards und bedingter Zugriff nicht gleichzeitig verwendet werden können](./media/concept-fundamentals-security-defaults/security-defaults-conditional-access.png)
 
-Hier finden Sie schrittweise Anleitungen, wie Sie bedingten Zugriff verwenden können, um äquivalente Richtlinien zu den durch Sicherheitsstandards aktivierten Richtlinien zu konfigurieren:
+Nachfolgend finden Sie Schrittanleitungen zur Verwendung des bedingten Zugriffs, um eine Reihe von Richtlinien zu konfigurieren, die einen guten Ausgangspunkt für den Schutz Ihrer Identitäten darstellen:
 
 - [Vorschreiben der MFA für Administratoren](../conditional-access/howto-conditional-access-policy-admin-mfa.md)
 - [Vorschreiben der MFA für die Azure-Verwaltung](../conditional-access/howto-conditional-access-policy-azure-management.md)
 - [Blockieren älterer Authentifizierungsmethoden](../conditional-access/howto-conditional-access-policy-block-legacy.md)
 - [Erzwingen der MFA für alle Benutzer](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)
-- [Verlangen von Azure AD MFA-Registrierung](../identity-protection/howto-identity-protection-configure-mfa-policy.md): Erfordert Azure AD Identity Protection von Azure AD Premium P2.
 
 ## <a name="enabling-security-defaults"></a>Aktivieren von Sicherheitsstandards
 

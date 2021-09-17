@@ -6,14 +6,14 @@ documentationcenter: ''
 author: dlepow
 ms.service: api-management
 ms.topic: article
-ms.date: 07/12/2021
+ms.date: 08/20/2021
 ms.author: apimpm
-ms.openlocfilehash: 26f1f9449a4e02f25e44e55d578f0194615b0be5
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 6946dcaf713bda83e5bce7e823b5f7e26ccd6e92
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114437071"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694606"
 ---
 # <a name="api-management-policies-to-validate-requests-and-responses"></a>API Management-Richtlinien zum Überprüfen von Anforderungen und Antworten
 
@@ -95,7 +95,7 @@ Im folgenden Beispiel wird die JSON-Payload in Anforderungen und Antworten im Er
 | Name                       | BESCHREIBUNG                                                                                                                                                            | Erforderlich | Standard |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | unspecified-content-type-action | [Aktion](#actions), die für Anforderungen oder Antworten mit einem Inhaltstyp ausgeführt wird, der im API-Schema nicht angegeben ist. |  Ja     | –   |
-| max-size | Maximale Länge des Texts der Anforderung oder Antwort in Bytes, überprüft anhand des `Content-Length`Headers. Wenn der Anforderungs- oder Antworttext komprimiert ist, stellt dieser Wert die entkomprimierte Länge dar. Maximal zulässiger Wert: 102.400 Byte (100 KB).  | Ja       | –   |
+| max-size | Maximale Länge des Texts der Anforderung oder Antwort in Bytes, überprüft anhand des `Content-Length`Headers. Wenn der Anforderungs- oder Antworttext komprimiert ist, stellt dieser Wert die entkomprimierte Länge dar. Maximal zulässiger Wert: 102.400 Byte (100 KB). (Wenden Sie sich an den [Support](https://azure.microsoft.com/support/options/), wenn Sie diesen Grenzwert erhöhen möchten.) | Ja       | –   |
 | size-exceeded-action | [Aktion](#actions), die für Anforderungen oder Antworten ausgeführt wird, deren Text die in `max-size` angegebene Größe überschreitet. |  Ja     | –   |
 | errors-variable-name | Name der Variable in `context.Variables`, in der Validierungsfehler protokolliert werden.  |   Nein    | –   |
 | Typ | Inhaltstyp, für den die Textüberprüfung ausgeführt wird, überprüft anhand des `Content-Type`-Headers. Bei diesem Wert wird die Groß-/Kleinschreibung nicht beachtet. Wenn der Wert leer ist, gilt dies für jeden im API-Schema angegebenen Inhaltstyp. |   Nein    |  –  |

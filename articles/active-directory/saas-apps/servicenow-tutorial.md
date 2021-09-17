@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 07/21/2021
 ms.author: jeedes
-ms.openlocfilehash: c90234249f3cf7eb6ed4793110d61e1f8190ed60
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 24f05c59d7ceac37ff628aec265541d323f170e3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99092600"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725877"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit ServiceNow
 
@@ -92,7 +92,10 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    a. Geben Sie unter **Anmelde-URL** eine URL mit dem folgenden Muster ein: `https://<instancename>.service-now.com/navpage.do`
+    a. Geben Sie unter **Anmelde-URL** eine URL mit dem folgenden Muster ein: `https://<instance-name>.service-now.com/login_with_sso.do?glide_sso_id=<sys_id of the sso configuration>`
+    
+    > [!NOTE]
+    >  Kopieren Sie den sys_id-Wert aus Schritt 5.d.iii im Abschnitt **Konfigurieren von ServiceNow**.
 
     b. Geben Sie unter **Bezeichner (Entitäts-ID)** eine URL mit dem folgenden Muster ein: `https://<instance-name>.service-now.com`
 
@@ -163,7 +166,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    a. Geben Sie unter **Anmelde-URL** eine URL mit dem folgenden Muster ein: `https://<instancename>.service-now.com/navpage.do`
+    a. Geben Sie als **Anmelde-URL** eine URL im Format `https://<instance-name>.service-now.com/login_with_sso.do?glide_sso_id=<sys_id of the sso configuration>` ein, wobei Sie den sys_id-Wert aus Schritt 5.d.iii im Abschnitt **Konfigurieren von ServiceNow** kopieren.
 
     b. Geben Sie unter **Bezeichner (Entitäts-ID)** eine URL mit dem folgenden Muster ein: `https://<instance-name>.service-now.com`
 
@@ -262,18 +265,20 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
              ![Screenshot: Abschnitt „Identity Provider“ (Identitätsanbieter)](./media/servicenow-tutorial/automatic-config.png "Einmaliges Anmelden konfigurieren")
 
-               a. Geben Sie unter **Name** einen Namen für Ihre Konfiguration ein (beispielsweise **Microsoft Azure Federated single sign-on**).
+               a. Klicken Sie im oberen Bereich des Bildschirms mit der rechten Maustaste auf die graue Leiste, und klicken Sie dann auf **sys_id kopieren**. Verwenden Sie diesen Wert als **Anmelde-URL** im Abschnitt **Grundlegende SAML-Konfiguration**.
 
-               b. Kopieren Sie den Wert für **ServiceNow-Homepage** (ServiceNow-Homepage), und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration für ServiceNow** in das Textfeld **Anmelde-URL** ein.
+               b. Geben Sie unter **Name** einen Namen für Ihre Konfiguration ein (beispielsweise **Microsoft Azure Federated single sign-on**).
+
+               c. Kopieren Sie den Wert für **ServiceNow-Homepage** (ServiceNow-Homepage), und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration für ServiceNow** in das Textfeld **Anmelde-URL** ein.
 
                 > [!NOTE]
                 > Die URL zur Homepage der ServiceNow-Instanz ist eine Verkettung Ihrer **ServiceNow-Mandanten-URL** mit **/navpage.do** (beispielsweise `https://fabrikam.service-now.com/navpage.do`).
 
-              c. Kopieren Sie den Wert für **Entity ID / Issuer** (Entitäts-ID/Aussteller), und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration für ServiceNow** unter **Bezeichner** ein.
+              d. Kopieren Sie den Wert für **Entity ID / Issuer** (Entitäts-ID/Aussteller), und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration für ServiceNow** unter **Bezeichner** ein.
 
-              d. Vergewissern Sie sich, dass **NameID Policy** (NameID-Richtlinie) auf den Wert `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified` festgelegt ist. 
+              e. Vergewissern Sie sich, dass **NameID Policy** (NameID-Richtlinie) auf den Wert `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified` festgelegt ist. 
 
-              e. Klicken Sie auf **Advanced** (Erweitert), und weisen Sie **Single Sign-On Script** (Skript für einmaliges Anmelden) den Wert **MultiSSOv2_SAML2_custom** zu.
+              f. Klicken Sie auf **Advanced** (Erweitert), und weisen Sie **Single Sign-On Script** (Skript für einmaliges Anmelden) den Wert **MultiSSOv2_SAML2_custom** zu.
 
          1. Scrollen Sie nach unten zum Abschnitt **X.509 Certificate** (X.509-Zertifikat), und wählen Sie **Edit** (Bearbeiten) aus.
 
@@ -324,7 +329,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     1. Die URL für die Metadaten des Identitätsanbieters wird gelesen, und alle Felder werden aufgefüllt.
 
-        ![Screenshot: „Identity Provider“ (Identitätsanbieter)](./media/servicenow-tutorial/ic7694982.png "Einmaliges Anmelden konfigurieren")
+        ![Screenshot: „Identity Provider“ (Identitätsanbieter)](./media/servicenow-tutorial/identity-provider.png "Einmaliges Anmelden konfigurieren")
 
         a. Geben Sie unter **Name** einen Namen für Ihre Konfiguration ein (beispielsweise **Microsoft Azure Federated single sign-on**).
 
@@ -384,7 +389,7 @@ In diesem Abschnitt wird in ServiceNow ein Benutzer namens B.Simon erstellt. Ser
 
 5. Führen Sie im Dialogfeld **X.509 Certificates** (X.509-Zertifikate) die folgenden Schritte aus:
 
-    ![Screenshot: Dialogfeld „X.509 Certificates“ (X.509-Zertifikate)](./media/servicenow-tutorial/ic7694975.png "Einmaliges Anmelden konfigurieren")
+    ![Screenshot: Dialogfeld „X.509 Certificates“ (X.509-Zertifikate)](./media/servicenow-tutorial/certificate.png "Einmaliges Anmelden konfigurieren")
 
     a. Geben Sie unter **Name** einen Namen für Ihre Konfiguration ein (beispielsweise **TestSAML2.0**).
 
@@ -404,7 +409,7 @@ In diesem Abschnitt wird in ServiceNow ein Benutzer namens B.Simon erstellt. Ser
 
 7. Führen Sie im Dialogfeld **Add New Identity Provider** (Neuen Identitätsanbieter hinzufügen) unter **Configure Identity Provider** (Identitätsanbieter konfigurieren) die folgenden Schritte aus:
 
-    ![Screenshot: Dialogfeld „Add New Identity Provider“ (Neuen Identitätsanbieter hinzufügen)](./media/servicenow-tutorial/ic7694982ex.png "Einmaliges Anmelden konfigurieren")
+    ![Screenshot: Dialogfeld „Add New Identity Provider“ (Neuen Identitätsanbieter hinzufügen)](./media/servicenow-tutorial/new-identity-provider.png "Einmaliges Anmelden konfigurieren")
 
     a. Geben Sie unter **Name** einen Namen für Ihre Konfiguration ein (beispielsweise **SAML 2.0**).
 
@@ -418,7 +423,7 @@ In diesem Abschnitt wird in ServiceNow ein Benutzer namens B.Simon erstellt. Ser
 
 8. Wählen Sie **Advanced Settings** (Erweiterte Einstellungen) aus. Führen Sie unter **Additional Identity Provider Properties** (Weitere Identitätsanbietereigenschaften) die folgenden Schritte aus:
 
-    ![Screenshot: Dialogfeld „Add New Identity Provider“ (Neuen Identitätsanbieter hinzufügen) mit hervorgehobener Option „Advanced Settings“ (Erweiterte Einstellungen)](./media/servicenow-tutorial/ic7694983ex.png "Einmaliges Anmelden konfigurieren")
+    ![Screenshot: Dialogfeld „Add New Identity Provider“ (Neuen Identitätsanbieter hinzufügen) mit hervorgehobener Option „Advanced Settings“ (Erweiterte Einstellungen)](./media/servicenow-tutorial/advanced-settings.png "Einmaliges Anmelden konfigurieren")
 
     a. Geben Sie unter **Protocol Binding for the IDP's SingleLogoutRequest** (Protokollbindung für „SingleLogoutRequest“ des Identitätsanbieters) die Zeichenfolge **urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect** ein.
 
@@ -430,7 +435,7 @@ In diesem Abschnitt wird in ServiceNow ein Benutzer namens B.Simon erstellt. Ser
 
 9. Führen Sie unter **Additional Service Provider Properties** (Weitere Service Provider-Eigenschaften) die folgenden Schritte aus:
 
-    ![Screenshot: Dialogfeld „Add New Identity Provider“ (Neuen Identitätsanbieter hinzufügen) mit verschiedenen hervorgehobenen Eigenschaften](./media/servicenow-tutorial/ic7694984ex.png "Einmaliges Anmelden konfigurieren")
+    ![Screenshot: Dialogfeld „Add New Identity Provider“ (Neuen Identitätsanbieter hinzufügen) mit verschiedenen hervorgehobenen Eigenschaften](./media/servicenow-tutorial/service-provider.png "Einmaliges Anmelden konfigurieren")
 
     a. Geben Sie unter **ServiceNow Homepage** (ServiceNow-Homepage) die URL der Homepage Ihrer ServiceNow-Instanz ein.
 

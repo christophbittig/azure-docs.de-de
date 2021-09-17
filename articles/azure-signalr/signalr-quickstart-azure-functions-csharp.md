@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 06/09/2021
 ms.author: zhshang
-ms.openlocfilehash: 1856f6e012c2b90e173162f055d64402f0c4c908
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 3a3fa958ac6ad1cb440f30b5c680ae3f9139d29a
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112462107"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444922"
 ---
 # <a name="quickstart-create-an-app-showing-github-star-count-with-azure-functions-and-signalr-service-using-c"></a>Schnellstart: Erstellen einer App, die die Anzahl der GitHub-Sterne anzeigt, mit Azure Functions und SignalR Service unter Verwendung von C\#
 
@@ -42,9 +42,9 @@ Treten Probleme auf? Verwenden Sie den [Leitfaden zur Problembehandlung](signalr
 
 Treten Probleme auf? Verwenden Sie den [Leitfaden zur Problembehandlung](signalr-howto-troubleshoot-guide.md), oder [informieren Sie uns](https://aka.ms/asrs/qscsharp).
 
-## <a name="setup-and-run-the-azure-function-locally"></a>Lokales Einrichten und Ausführen der Azure-Funktion
+## <a name="setup-and-run-the-azure-function-locally"></a>Einrichten und Ausführen von Azure-Function auf lokaler Ebene
 
-1. Stellen Sie sicher, dass Azure Functions Core Tools installiert sind. Erstellen Sie außerdem über die Befehlszeile ein leeres Verzeichnis, und navigieren Sie zu diesem Verzeichnis.
+1. Stellen Sie sicher, dass die Azure Function Core Tools installiert sind. Erstellen Sie außerdem über die Befehlszeile ein leeres Verzeichnis, und navigieren Sie zu diesem Verzeichnis.
 
     ```bash
     # Initialize a function project
@@ -105,7 +105,7 @@ Treten Probleme auf? Verwenden Sie den [Leitfaden zur Problembehandlung](signalr
                     new SignalRMessage
                     {
                         Target = "newMessage",
-                        Arguments = new[] { $"Current start count of https://github.com/Azure/azure-signalr is: {result.StartCount}" }
+                        Arguments = new[] { $"Current star count of https://github.com/Azure/azure-signalr is: {result.StarCount}" }
                     });
             }
     
@@ -113,14 +113,14 @@ Treten Probleme auf? Verwenden Sie den [Leitfaden zur Problembehandlung](signalr
             {
                 [JsonRequired]
                 [JsonProperty("stargazers_count")]
-                public string StartCount { get; set; }
+                public string StarCount { get; set; }
             }
         }
     }
     ```
     Diese Codes verfügen über drei Funktionen. `Index` wird zum Abrufen einer Website als Client verwendet. `Negotiate` wird für den Client verwendet, um ein Zugriffstoken abzurufen. `Broadcast` ruft in regelmäßigen Abständen die Anzahl von Sternen von GitHub ab und sendet Nachrichten an alle Clients.
 
-3. Die Clientschnittstelle dieses Beispiels ist eine Webseite. Sie lesen den HTML-Inhalt aus `content/index.html` in der Funktion `GetHomePage` und erstellen eine neue Datei `index.html` im Verzeichnis `content`. Anschließend kopieren Sie den folgendem Inhalt:
+3. Die Clientschnittstelle dieses Beispiels ist eine Webseite. Wir lesen den HTML-Inhalt aus der `content/index.html` in der Funktion `GetHomePage` und erstellen eine neue Datei `index.html` im Verzeichnis `content` unter dem Stammordner des Projekts. Dann kopieren wir den folgendem Inhalt.
     ```html
     <html>
     
@@ -147,33 +147,43 @@ Treten Probleme auf? Verwenden Sie den [Leitfaden zur Problembehandlung](signalr
     </html>
     ```
 
-4. Der Vorgang ist jetzt fast abgeschlossen. Der letzte Schritt besteht darin, eine Verbindungszeichenfolge von SignalR Service in den Azure-Funktionseinstellungen festzulegen.
+4. Aktualisieren Sie die `*.csproj`, um die Inhaltsseite im Ordner für die Buildausgabe zu erstellen.
+
+    ```html
+    <ItemGroup>
+      <None Update="content/index.html">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+    ```
+
+5. Der Vorgang ist jetzt fast abgeschlossen. Der letzte Schritt besteht darin, eine Verbindungszeichenfolge des SignalR Service auf die Azure-Function Einstellungen festzulegen.
 
     1. Bestätigen Sie im Browser, in dem das Azure-Portal geöffnet ist, dass die von Ihnen zuvor bereitgestellte SignalR-Dienstinstanz erfolgreich erstellt wurde, indem Sie nach ihrem Namen im Suchfeld oben im Portal suchen. Wählen Sie die Instanz aus, um sie zu öffnen.
 
         ![Suchen nach der SignalR-Dienstinstanz](media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-search-instance.png)
 
-    1. Wählen Sie **Schlüssel** aus, um die Verbindungszeichenfolgen für die SignalR-Dienstinstanz anzuzeigen.
+    2. Wählen Sie **Schlüssel** aus, um die Verbindungszeichenfolgen für die SignalR-Dienstinstanz anzuzeigen.
     
         ![Screenshot: Hervorgehobene primäre Verbindungszeichenfolge](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
-    1. Kopieren Sie die primäre Verbindungszeichenfolge. Führen Sie den folgenden Befehl aus:
+    3. Kopieren Sie die primäre Verbindungszeichenfolge. Führen Sie den folgenden Befehl aus.
     
         ```bash
-        func settings add AzureSignalRConnectionString '<signalr-connection-string>'
+        func settings add AzureSignalRConnectionString "<signalr-connection-string>"
         ```
     
-5. Führen Sie die Azure-Funktion lokal aus:
+6. Führen Sie Azure-Function auf lokaler Ebene aus:
 
     ```bash
     func start
     ```
 
-    Nach dem lokalen Ausführen der Azure-Funktion rufen Sie in Ihrem Browser `http://localhost:7071/api/index` auf. Dort können Sie können die aktuelle Anzahl von Sternen anzeigen. Wenn Sie auf GitHub einen Stern vergeben oder entfernen, wird die Anzahl von Sternen alle paar Sekunden aktualisiert.
+    Nachdem Azure-Function auf lokaler Ebene ausgeführt wurde. Verwenden Sie Ihren Browser, um `http://localhost:7071/api/index` besuchen, und Sie können die aktuelle Sternanzahl anzeigen. Wenn Sie auf GitHub einen Stern vergeben oder entfernen, wird die Anzahl von Sternen alle paar Sekunden aktualisiert.
 
     > [!NOTE]
-    > Die SignalR-Bindung benötigt Azure Storage. Sie können jedoch den lokalen Speicheremulator verwenden, wenn die Funktion lokal ausgeführt wird.
-    > Wird eine Fehlermeldung wie `There was an error performing a read operation on the Blob Storage Secret Repository. Please ensure the 'AzureWebJobsStorage' connection string is valid.` angezeigt, müssen Sie den [Speicheremulator](../storage/common/storage-use-emulator.md) herunterladen und aktivieren.
+    > Die SignalR-Bindung benötigt Azure Storage, Sie können jedoch den lokalen Speicheremulator verwenden, wenn die Funktion lokal ausgeführt wird.
+    > Wenn Sie eine Fehlermeldung wie z. B. `There was an error performing a read operation on the Blob Storage Secret Repository. Please ensure the 'AzureWebJobsStorage' connection string is valid.` erhalten haben, müssen Sie den [Speicheremulator](../storage/common/storage-use-emulator.md) herunterladen und aktivieren
 
 Treten Probleme auf? Verwenden Sie den [Leitfaden zur Problembehandlung](signalr-howto-troubleshoot-guide.md), oder [informieren Sie uns](https://aka.ms/asrs/qscsharp).
 
@@ -183,15 +193,15 @@ Treten Probleme auf? Verwenden Sie den [Leitfaden zur Problembehandlung](signalr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie eine lokale serverlose Echtzeitanwendung erstellt und ausgeführt. Erfahren Sie mehr darüber, wie Sie SignalR Service-Bindungen in Azure Functions verwenden.
-Informieren Sie sich als Nächstes ausführlicher über die bidirektionale Kommunikation zwischen den Clients und Azure Functions mit SignalR Service.
+In diesem Schnellstart haben Sie eine lokale serverlose Echtzeitanwendung erstellt und ausgeführt. Erfahren Sie mehr darüber, wie Bindungen des SignalR-Services in Azure Functions verwendet werden.
+Als Nächstes erfahren Sie mehr über die bidirektionale Kommunikation zwischen Clients und Azure Function mit dem SignalR Service.
 
 > [!div class="nextstepaction"]
 > [Bindungen des SignalR-Diensts für Azure Functions](../azure-functions/functions-bindings-signalr-service.md)
 
 > [!div class="nextstepaction"]
-> [Bidirektionale Kommunikation in einem serverlosen Szenario](https://github.com/aspnet/AzureSignalR-samples/tree/main/samples/BidirectionChat)
+> [Bidirektionale Kommunikation in Serverlos](https://github.com/aspnet/AzureSignalR-samples/tree/main/samples/BidirectionChat)
 
 > [!div class="nextstepaction"]
-> [Entwickeln von Azure Functions mithilfe von Visual Studio](../azure-functions/functions-develop-vs.md)
+> [Bereitstellen in der Azure-Funktions-App mit Visual Studio](../azure-functions/functions-develop-vs.md#publish-to-azure)
 

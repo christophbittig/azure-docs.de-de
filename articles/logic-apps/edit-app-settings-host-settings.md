@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
-ms.date: 05/25/2021
-ms.openlocfilehash: cf1361a531511daf7f249f4e7c7d2acf9207c457
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/18/2021
+ms.openlocfilehash: 731fe8f29fc4e67e2d74d46702768e642928ae09
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339874"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122514568"
 ---
 # <a name="edit-host-and-app-settings-for-logic-apps-in-single-tenant-azure-logic-apps"></a>Bearbeiten von Einstellungen für Hosts und Apps für Logik-Apps in Azure Logic Apps-Instanzen mit einem einzelnen Mandanten
 
@@ -293,8 +293,9 @@ Diese Einstellungen wirken sich auf den Durchsatz und die Kapazität für Azure 
 
 ### <a name="built-in-azure-service-bus-operations"></a>Integrierte Azure Service Bus-Vorgänge
 
-| Einstellung | Standardwert | Beschreibung |
+| Einstellung | Standardwert | BESCHREIBUNG |
 |---------|---------------|-------------|
+| `ServiceProviders.ServiceBus.MessageSenderOperationTimeout` | `00:01:00` <br>(1 min) | Es legt das Timeout für das Senden von Nachrichten mit dem integrierten Service Bus-Vorgang fest. |
 | `Runtime.ServiceProviders.ServiceBus.MessageSenderPoolSizePerProcessorCount` | `64` Nachrichtenabsender | Hiermit wird die Anzahl der im Nachrichtenabsenderpool zu verwendenden Azure Service Bus-Nachrichtenabsender pro Prozessorkern festgelegt. |
 ||||
 

@@ -11,12 +11,12 @@ ms.date: 08/17/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f7aac30ec8cb5aa2707217183a7612f4eb5b27c3
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: f0502f11c9a6e900ae8f25209b6897f8384c2773
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343531"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122777756"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Aktivieren der Altersbeschränkung in Azure Active Directory B2C
 
@@ -44,7 +44,8 @@ Azure AD B2C nutzt die vom Benutzer eingegebenen Informationen, um zu ermitteln,
 Um die Altersbeschränkung in einem Benutzerflow zu verwenden, müssen Sie für Ihren Mandanten zusätzliche Eigenschaften konfigurieren.
 
 1. Über [diesen Link](https://portal.azure.com/?Microsoft_AAD_B2CAdmin_agegatingenabled=true#blade/Microsoft_AAD_B2CAdmin/TenantManagementMenuBlade/overview) können Sie die Vorschauversion der Altersbeschränkung ausprobieren.
-1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü den Filter **Verzeichnis und Abonnement** auswählen. Wählen Sie das Verzeichnis aus, das den Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis mit Ihrem Azure AD B2C-Mandanten verwenden, indem Sie in der Portalsymbolleiste das Symbol **Verzeichnisse + Abonnements** auswählen.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse + Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste**, suchen Sie nach **Azure AD B2C**, und wählen Sie diesen Eintrag aus.
 1. Wählen Sie für Ihren Mandanten im Menü auf der linken Seite die Option **Eigenschaften**.
 1. Wählen Sie unter **Altersbeschränkung** die Option **Konfigurieren** aus.

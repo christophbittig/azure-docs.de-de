@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 11/05/2019
+ms.date: 08/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 9975533e00b0ca184e7cc16c5d8ea51d4eafa0a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a176b971d830fcabf3eba1767b9ac198a4418f0b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100361705"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356051"
 ---
 # <a name="azure-data-box-disk-limits"></a>Begrenzungen für Azure Data Box Disk
 
@@ -46,9 +46,10 @@ Aktuelle Informationen zu Grenzwerten für den Azure Storage-Dienst und bewährt
 
 - Kopieren Sie Daten nicht direkt auf die Datenträger. Kopieren Sie Daten in die zuvor erstellten Ordner *BlockBlob*, *PageBlob* und *AzureFile*.
 - Ein Ordner unter *BlockBlob* und *PageBlob* ist ein Container. Container werden beispielsweise als *BlockBlob/container* und *PageBlob/container* erstellt.
-- Wenn Sie bereits über ein Azure-Objekt (z.B. ein Blob) in der Cloud verfügen, das den gleichen Namen hat wie das Objekt, das kopiert wird, benennt der Data Box-Datenträger die Datei in der Cloud in „Datei(1)“ um.
+- Wenn ein Ordner denselben Namen wie ein vorhandener Container hat, wird der Inhalt des Ordners mit dem Inhalt des Containers zusammengeführt. Dateien oder Blobs, die sich noch nicht in der Cloud befinden, werden dem Container hinzugefügt. Wenn eine Datei oder ein Blob denselben Namen wie eine Datei oder ein Blob hat, die bzw. das sich bereits im Container befindet, wird die vorhandene Datei oder das Blob überschrieben.
 - Jede Datei, die in die Freigaben *BlockBlob* und *PageBlob* geschrieben wird, wird als Blockblob bzw. Seitenblob hochgeladen.
 - Eine unter den Ordnern *BlockBlob* und *PageBlob* erstellte leere Verzeichnishierarchie (ohne jegliche Dateien) wird nicht hochgeladen.
+- Zur Leistungsverbesserung während Datenuploads empfehlen wir, dass Sie [große Dateifreigaben für das Speicherkonto aktivieren und die Freigabekapazität auf 100 TiB erhöhen](../../articles/storage/files/storage-how-to-create-file-share.md#enable-large-files-shares-on-an-existing-account). Große Dateifreigaben werden nur bei Speicherkonten mit lokal redundantem Speicher (LRS) unterstützt.
 - Wenn beim Hochladen von Daten in Azure Fehler auftreten, wird im Zielspeicherkonto ein Fehlerprotokoll erstellt. Der Pfad zu diesem Fehlerprotokoll ist im Portal verfügbar, wenn der Upload abgeschlossen ist, und Sie können das Protokoll überprüfen, um Korrekturmaßnahmen zu ergreifen. Löschen Sie keine Daten aus der Quelle, ohne die hochgeladenen Daten zu überprüfen.
 - Dateimetadaten und NTFS-Berechtigungen werden beim Hochladen der Daten in Azure Files nicht beibehalten. Beispielsweise wird das Attribut *Letzte Änderung* der Dateien beim Kopieren der Daten nicht beibehalten.
 - Wenn Sie verwaltete Datenträger in der Bestellung angegeben haben, beachten Sie die folgenden zusätzlichen Punkte:

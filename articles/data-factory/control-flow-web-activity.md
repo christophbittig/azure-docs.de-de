@@ -1,23 +1,26 @@
 ---
-title: Webaktivität in Azure Data Factory
-description: Erfahren Sie, wie Sie die Webaktivität, eine der Ablaufsteuerungsaktivitäten, die von Data Factory unterstützt werden, verwenden können, um einen REST-Endpunkt aus einer Pipeline aufzurufen.
+title: Webaktivität
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Erfahren Sie, wie Sie die Webaktivität, eine der Ablaufsteuerungsaktivitäten, die von Azure Data Factory und Azure Synapse Analytics unterstützt werden, verwenden, um einen REST-Endpunkt aus einer Pipeline aufzurufen.
 author: nabhishek
 ms.author: abnarain
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 12/19/2018
-ms.openlocfilehash: 23b28b54e42b03007492424a58b6234ccc5233ce
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 08/24/2021
+ms.openlocfilehash: 88b7e1cb43fc10301f9dab46c6cca5f30c1e14d1
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906672"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822481"
 ---
-# <a name="web-activity-in-azure-data-factory"></a>Webaktivität in Azure Data Factory
+# <a name="web-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>Webaktivität in Azure Data Factory und Azure Synapse Analytics
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 
-Die Webaktivität kann verwendet werden, um einen benutzerdefinierten REST-Endpunkt aus einer Data Factory-Pipeline aufzurufen. Sie können Datasets und verknüpfte Dienste zur Verwendung und für den Zugriff durch die Aktivität übergeben.
+Die Webaktivität kann verwendet werden, um einen benutzerdefinierten REST-Endpunkt aus einer Azure Data Factory- oder Synapse-Pipeline aufzurufen. Sie können Datasets und verknüpfte Dienste zur Verwendung und für den Zugriff durch die Aktivität übergeben.
 
 > [!NOTE]
 > Webaktivitäten werden zum Aufrufen von URLs unterstützt, die in einem privaten virtuellen Netzwerk gehostet sind, sowie zum Nutzen selbstgehosteter Integration Runtimes. Die Integration Runtime sollte den URL-Endpunkt erreichen können. 
@@ -128,7 +131,7 @@ Geben Sie die Base64-codierten Inhalte einer PFX-Datei und das Kennwort an.
 
 ### <a name="managed-identity"></a>Verwaltete Identität
 
-Geben Sie den Ressourcen-URI an, für den das Zugriffstoken mithilfe der verwalteten Identität für die Data Factory angefordert wird. Verwenden Sie zum Aufrufen der Azure-Ressourcenverwaltungs-API `https://management.azure.com/`. Weitere Informationen zur Funktion verwalteter Identitäten finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md).
+Geben Sie den Ressourcen-URI an, für den das Zugriffstoken mithilfe der verwalteten Identität für die Data Factory- oder Synapse-Arbeitsbereichsinstanz angefordert wird. Verwenden Sie zum Aufrufen der Azure-Ressourcenverwaltungs-API `https://management.azure.com/`. Weitere Informationen zur Funktion verwalteter Identitäten finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md).
 
 ```json
 "authentication": {
@@ -138,7 +141,7 @@ Geben Sie den Ressourcen-URI an, für den das Zugriffstoken mithilfe der verwalt
 ```
 
 > [!NOTE]
-> Wenn Ihre Data Factory mit einem Git-Repository konfiguriert ist, müssen Sie Ihre Anmeldeinformationen in Azure Key Vault speichern, um die Standardauthentifizierung oder die Clientzertifikatauthentifizierung zu verwenden. Azure Data Factory speichert keine Kennwörter in Git.
+> Wenn Ihr Data Factory- oder Synapse-Arbeitsbereich mit einem Git-Repository konfiguriert ist, müssen Sie Ihre Anmeldeinformationen in Azure Key Vault speichern, damit Sie die Standardauthentifizierung oder die Clientzertifikatauthentifizierung verwenden können. Der Dienst speichert Kennwörter nicht in Git.
 
 ## <a name="request-payload-schema"></a>Schema der Anforderungsnutzlast
 Wenn Sie die POST/PUT-Methode verwenden, stellt die Eigenschaft „body“ die Nutzlast dar, die an den Endpunkt gesendet wird. Sie können verknüpfte Dienste und Datasets als Teil der Nutzlast übergeben. Dies ist das Schema für die Nutzlast:
@@ -258,7 +261,7 @@ public HttpResponseMessage Execute(JObject payload)
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie unter anderen Ablaufsteuerungsaktivitäten, die von Data Factory unterstützt werden:
+Weitere Informationen finden Sie unter den anderen unterstützten Ablaufsteuerungsaktivitäten:
 
 - [Aktivität „Pipeline ausführen“](control-flow-execute-pipeline-activity.md)
 - [ForEach-Aktivität](control-flow-for-each-activity.md)

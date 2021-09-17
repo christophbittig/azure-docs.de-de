@@ -8,14 +8,17 @@ ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
 ms.subservice: cloud-init
-ms.openlocfilehash: 4ca42c259e10742e61fbd7f36b73f332cba5a8db
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 38e020cc7541c6005fe3bc1209d6a31191e49404
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114445828"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692210"
 ---
 # <a name="diving-deeper-into-cloud-init"></a>Tiefere Einblicke in cloud-init
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
+
 Um sich tiefergehendes Wissen zu [cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) anzueignen oder Problembehandlung für cloud-init auf einer tieferen Ebene auszuführen, müssen Sie verstehen, wie cloud-init funktioniert. In diesem Dokument werden die wichtigen Teile hervorgehoben, und es werden die Azure-Besonderheiten erläutert.
 
 Ist cloud-init in einem generalisierten Image enthalten, und wird eine VM mit diesem Image erstellt, durchläuft cloud-init beim Erststart fünf Phasen und verarbeitet dabei Konfigurationen. Diese Phasen sind wichtig, da Sie Ihnen zeigen, an welchem Punkt cloud-init Konfigurationen anwendet. 

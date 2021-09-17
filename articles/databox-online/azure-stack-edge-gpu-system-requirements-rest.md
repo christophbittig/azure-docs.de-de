@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 7deba32eb9d0e098b75f98cc81fac2c01b8bb7f8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4740a4b4aac59ac2e0e57797f39c489c6beaf75c
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567252"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123252179"
 ---
 # <a name="azure-stack-edge-blob-storage-requirements"></a>Blobspeicheranforderungen für Azure Stack Edge
 
@@ -25,12 +25,12 @@ Sie sollten die Informationen sorgfältig lesen, bevor Sie eine Verbindung mit d
 
 |     Funktion                                             |     Azure Storage                                     |     Azure Stack Edge-Blobspeicher |
 |---------------------------------------------------------|-------------------------------------------------------|---------------------------|
-|    Azure-Dateispeicher                                   |    Cloudbasierte SMB-Dateifreigaben unterstützt              |    Nicht unterstützt      |
+|    Azure Files                                   |    Cloudbasierte SMB- und NFS-Dateifreigaben werden unterstützt              |    Nicht unterstützt      |
 |    Speicherkontotyp                                 |    Allgemeine Speicherkonten und Azure Blob Storage-Konten    |    Nur Konten vom Typ „Universell V1“|
 |    Blobname                                            |    1\.024 Zeichen (2.048 Bytes)                     |    880 Zeichen (1.760 Bytes)|
-|    Maximale Blockblobgröße                              |    4,75 TB (100 MB X 50.000 Blöcke)                   |    4,75 TB (100 MB × 50.000 Blöcke) für Azure Stack Edge|
-|    Maximale Seitenblobgröße                               |    8 TB                                               |    1 TB                   |
-|    Seitenblob – Seitengröße                                  |    512 Bytes                                          |    4 KB                   |
+|    Maximale Blockblobgröße                              |    4,75 TiB (100 MiB × 50.000 Blöcke)                   |    4,75 TB (100 MiB × 50.000 Blöcke) für Azure Stack Edge|
+|    Maximale Seitenblobgröße                               |    8 TiB                                               |    1TiB                   |
+|    Seitenblob – Seitengröße                                  |    512 Bytes                                          |    4 KiB                   |
 
 ## <a name="supported-api-versions"></a>Unterstützte API-Versionen
 

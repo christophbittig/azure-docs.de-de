@@ -9,34 +9,29 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/27/2019
+ms.date: 07/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 23ae1a2c1371cda9435ea76f02cebc79c141c904
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 31f4390541020a7315d9168369898dff1cd854f7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92522239"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727541"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proxyclick"></a>Tutorial: Azure Active Directory-Integration in Proxyclick
 
-In diesem Tutorial erfahren Sie, wie Sie Proxyclick in Azure Active Directory (Azure AD) integrieren.
-Diese Integration bietet die folgenden Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie Proxyclick in Azure Active Directory (Azure AD) integrieren. Die Integration von Proxyclick in Azure AD ermöglicht Folgendes:
 
-* Sie können in Azure AD steuern, wer Zugriff auf Proxyclick hat.
-* Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Proxyclick anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
-* Sie können Ihre Konten an einem zentralen Ort verwalten: im Azure-Portal.
-
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
-
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+* Steuern Sie in Azure AD, wer Zugriff auf Proxyclick hat.
+* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Proxyclick anzumelden.
+* Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure AD-Integration mit Proxyclick konfigurieren zu können, benötigen Sie Folgendes:
+Für die ersten Schritte benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement Sollten Sie über keine Azure AD-Umgebung verfügen, können Sie sich für eine [einmonatige Testversion](https://azure.microsoft.com/pricing/free-trial/) registrieren.
-* Ein Proxyclick-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
+* Ein Proxyclick-Abonnement, für das einmaliges Anmelden aktiviert ist.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -46,75 +41,47 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 ## <a name="add-proxyclick-from-the-gallery"></a>Hinzufügen von Proxyclick aus dem Katalog
 
-Zum Einrichten der Integration von Proxyclick in Azure AD müssen Sie Proxyclick aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
+Zum Konfigurieren der Integration von Proxyclick in Azure AD müssen Sie Proxyclick aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-1. Klicken Sie im linken Bereich des [Azure-Portals](https://portal.azure.com) auf **Azure Active Directory**:
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
+1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
+1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
+1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Proxyclick** in das Suchfeld ein.
+1. Wählen Sie im Ergebnisbereich **Proxyclick** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-    ![Wählen Sie „Azure Active Directory“.](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-sso-for-proxyclick"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Proxyclick
 
-2. Navigieren Sie zu **Unternehmensanwendungen** > **Alle Anwendungen**:
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Proxyclick mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Proxyclick eingerichtet werden.
 
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
+Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Proxyclick zu konfigurieren und zu testen:
 
-3. Um eine Anwendung hinzuzufügen, wählen Sie oben im Fenster die Option **Neue Anwendung**:
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens für Proxyclick](#configure-proxyclick-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+    1. **[Erstellen eines Proxyclick-Testbenutzers](#create-proxyclick-test-user)** , um eine Entsprechung von B. Simon in Proxyclick zu erhalten, die mit der Darstellung des Benutzers in Azure AD verknüpft ist
+1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-    ![Auswählen von „Neue Anwendung“](common/add-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
-4. Geben Sie im Suchfeld das Wort **Proxyclick** ein. Wählen Sie in den Suchergebnissen den Eintrag **Proxyclick** aus, und wählen Sie dann **Hinzufügen** aus.
+Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-     ![Suchergebnisse](common/search-new-app.png)
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Proxyclick** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+   ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Proxyclick mithilfe eines Testbenutzers namens Britta Simon.
-Damit einmaliges Anmelden funktioniert, müssen Sie eine Beziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Proxyclick einrichten.
-
-Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Proxyclick müssen Sie die folgenden Schritte ausführen:
-
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden der Funktion zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Proxyclick](#configure-proxyclick-single-sign-on)** auf der Anwendungsseite
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD für den Benutzer zu aktivieren.
-5. **[Erstellen eines Proxyclick-Testbenutzers](#create-a-proxyclick-test-user)**, der mit der Darstellung des Benutzers in Azure AD verknüpft ist
-6. **[Testen des einmaligen Anmeldens](#test-single-sign-on)** , um sicherzustellen, dass die Konfiguration funktioniert.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
-
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
-
-Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Proxyclick die folgenden Schritte aus:
-
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für Proxyclick die Option **Einmaliges Anmelden** aus:
-
-    ![„Einmaliges Anmelden“ auswählen](common/select-sso.png)
-
-2. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML/WS-Fed** aus, um einmaliges Anmelden zu aktivieren:
-
-    ![SSO-Methode auswählen](common/select-saml-option.png)
-
-3. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** das Symbol **Bearbeiten** aus, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen:
-
-    ![Symbol „Bearbeiten“](common/edit-urls.png)
-
-4. Führen Sie im Dialogfeld **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im IdP-initiierten Modus konfigurieren möchten:
-
-    ![Dialogfeld „Grundlegende SAML-Konfiguration“](common/idp-intiated.png)
-
-    1. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein:
-   
-       `https://saml.proxyclick.com/init/<companyId>`
-
-    1. Geben Sie im Feld **Antwort-URL** eine URL im folgenden Format ein:
-
-       `https://saml.proxyclick.com/consume/<companyId>`
-
-5. Wenn Sie die Anwendung im SP-initiierten Modus konfigurieren möchten, wählen Sie **Zusätzliche URLs festlegen** aus. Geben Sie im Feld **Anmelde-URL** eine URL im folgenden Format ein:
-   
-   `https://saml.proxyclick.com/init/<companyId>`
-
-    ![SSO-Informationen zur Domäne und zu den URLs für Proxyclick](common/metadata-upload-additional-signon.png)
-
+4. Führen Sie im Dialogfeld **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im IdP-initiierten Modus konfigurieren möchten.
     
+    a. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein: `https://saml.proxyclick.com/init/<COMPANY_ID>`.
+
+    b. Geben Sie im Feld **Antwort-URL** eine URL im folgenden Format ein: `https://saml.proxyclick.com/consume/<COMPANY_ID>`
+
+5. Wenn Sie die Anwendung im SP-initiierten Modus konfigurieren möchten, wählen Sie **Zusätzliche URLs festlegen** aus. Geben Sie im Textfeld **Anmelde-URL** eine URL nach folgendem Muster ein:
+   
+   `https://saml.proxyclick.com/init/<COMPANY_ID>`
 
     > [!NOTE]
     > Diese Werte sind Platzhalter. Sie müssen die tatsächlichen Werte für Bezeichner, Antwort-URL und Anmelde-URL verwenden. Die Schritte zum Abrufen dieser Werte werden später in diesem Tutorial beschrieben.
@@ -127,27 +94,45 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Proxycli
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
-    1. **Anmelde-URL**
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
-    1. **Azure AD-Bezeichner**
+In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
-    1. **Abmelde-URL**:
+1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
+1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
+1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
+   1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
+   1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
+   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
+   1. Klicken Sie auf **Erstellen**.
 
-### <a name="configure-proxyclick-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Proxyclick
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+
+In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie Zugriff auf Proxyclick gewähren.
+
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
+1. Wählen Sie in der Anwendungsliste **Proxyclick** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
+1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
+1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+
+## <a name="configure-proxyclick-sso"></a>Konfigurieren des einmaligen Anmeldens für Proxyclick
 
 1. Melden Sie sich in einem neuen Webbrowserfenster auf der Proxyclick-Unternehmenswebsite als Administrator an.
 
-2. Wählen Sie **Account & Settings** (Konto & Einstellungen) aus:
+2. Wählen Sie **Account & Settings** (Konto & Einstellungen) aus.
 
-    ![Auswählen von „Account & Settings“ (Konto & Einstellungen)](./media/proxyclick-tutorial/configure1.png)
+    ![Auswählen von „Account & Settings“ (Konto & Einstellungen).](./media/proxyclick-tutorial/account.png)
 
-3. Scrollen Sie nach unten zu **Integrations** (Integrationen), und wählen Sie **SAML** (SAML) aus:
+3. Scrollen Sie nach unten zum Abschnitt **Integrations** (Integrationen), und wählen Sie **SAML** aus.
 
-    ![Auswählen von „SAML“](./media/proxyclick-tutorial/configure2.png)
+    ![Auswählen von „SAML“.](./media/proxyclick-tutorial/settings.png)
 
 4. Führen Sie im Abschnitt **SAML** (SAML) die folgenden Schritte aus:
 
-    ![Abschnitt „SAML“](./media/proxyclick-tutorial/configure3.png)
+    ![Abschnitt „SAML“](./media/proxyclick-tutorial/configuration.png)
 
     1. Kopieren Sie den Wert für **SAML Consumer URL** (SAML-Consumer-URL), und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Textfeld **Antwort-URL** ein.
 
@@ -163,57 +148,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Proxycli
 
     1. Klicken Sie auf **Save changes** (Änderungen speichern).
 
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
-
-In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin namens „Britta Simon“.
-
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory** aus, und wählen Sie dann **Benutzer** und anschließend **Alle Benutzer** aus:
-
-    ![„Alle Benutzer“ auswählen](common/users.png)
-
-2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus:
-
-    ![„Neuer Benutzer“ auswählen](common/new-user.png)
-
-3. Führen Sie im Dialogfeld **Benutzer** die folgenden Schritte aus.
-
-    ![Dialogfeld „Benutzer“](common/user-properties.png)
-
-    1. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
-  
-    1. Geben Sie in das Feld **Benutzername** den Namen **BrittaSimon@\<yourcompanydomain>.\<extension>** ein. (Beispiel: BrittaSimon@contoso.com.)
-
-    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den im Feld **Kennwort** angezeigten Wert.
-
-    1. Klicken Sie auf **Erstellen**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
-
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Proxyclick gewähren.
-
-1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** > **Proxyclick** aus.
-
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
-
-2. Wählen Sie in der Liste der Anwendungen den Eintrag **Proxyclick** aus.
-
-    ![Liste der Anwendungen](common/all-applications.png)
-
-3. Wählen Sie im linken Bereich die Option **Benutzer und Gruppen** aus:
-
-    ![Benutzer und Gruppen auswählen](common/users-groups-blade.png)
-
-4. Wählen Sie die Schaltfläche **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Auswählen von „Benutzer hinzufügen“](common/add-assign-user.png)
-
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Fenster auf die Schaltfläche **Auswählen**.
-
-6. Falls Sie in der SAML-Assertion einen Rollenwert erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer aus der Liste aus. Klicken Sie unten im Fenster auf die Schaltfläche **Auswählen**.
-
-7. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Option **Zuweisen** aus.
-
-### <a name="create-a-proxyclick-test-user"></a>Erstellen eines Proxyclick-Testbenutzers
+### <a name="create-proxyclick-test-user"></a>Erstellen eines Proxyclick-Testbenutzers
 
 Damit sich Azure AD-Benutzer bei Proxyclick anmelden können, müssen Sie sie in Proxyclick hinzufügen. Sie müssen diese manuell hinzufügen.
 
@@ -221,17 +156,17 @@ Zum Erstellen eines Benutzerkontos führen Sie die folgenden Schritte aus:
 
 1. Melden Sie sich auf der Proxyclick-Unternehmenswebsite als Administrator an.
 
-1. Wählen Sie oben im Fenster die Option **Colleagues** (Kollegen) aus:
+1. Wählen Sie oben im Fenster die Option **Colleagues** (Kollegen) aus.
 
-    ![Auswählen von „Colleagues“ (Kollegen)](./media/proxyclick-tutorial/user1.png)
+    ![Auswählen von „Colleagues“ (Kollegen).](./media/proxyclick-tutorial/user.png)
 
-1. Wählen Sie **Add Colleague** (Kollegen hinzufügen) aus:
+1. Wählen Sie **Add Colleague** (Kollegen hinzufügen) aus.
 
-    ![Auswählen von „Add Colleague“ (Kollegen hinzufügen)](./media/proxyclick-tutorial/user2.png)
+    ![Auswählen von „Add Colleague“ (Kollegen hinzufügen).](./media/proxyclick-tutorial/add-user.png)
 
 1. Führen Sie im Abschnitt **Add a colleague** (Kollegen hinzufügen) die folgenden Schritte aus:
 
-    ![Abschnitt „Add a colleague“ (Kollegen hinzufügen)](./media/proxyclick-tutorial/user3.png)
+    ![Abschnitt „Add a colleague“ (Kollegen hinzufügen).](./media/proxyclick-tutorial/create-user.png)
 
     1. Geben Sie im Feld **Email** (E-Mail) die E-Mail-Adresse des Benutzers ein. In diesem Fall: **brittasimon\@contoso.com**.
 
@@ -241,16 +176,22 @@ Zum Erstellen eines Benutzerkontos führen Sie die folgenden Schritte aus:
 
     1. Wählen Sie **Add User** (Benutzer hinzufügen) aus.
 
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
-Jetzt müssen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich testen.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-Wenn Sie im Zugriffsbereich die Kachel „Proxyclick“ auswählen, sollten Sie automatisch bei der Proxyclick-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>SP-initiiert:
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Proxyclick weitergeleitet, wo Sie den Anmeldeflow initiieren können.  
 
-- [Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](./tutorial-list.md)
+* Navigieren Sie direkt zur Anmelde-URL für Proxyclick, und initiieren Sie dort den Anmeldeflow.
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP-initiiert:
 
-- [Was ist bedingter Zugriff?](../conditional-access/overview.md)
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der Proxyclick-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
+
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „Proxyclick“ in „Meine Apps“ geschieht Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie den IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Proxyclick-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Nach dem Konfigurieren von Proxyclick können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

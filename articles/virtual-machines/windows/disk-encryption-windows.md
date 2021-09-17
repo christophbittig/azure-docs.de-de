@@ -9,14 +9,16 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 0341e00e51c5d1c112451142d2e48f9707d525ed
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 3b26543927dd2631ebb8a7536b0cf8d5694b28ba
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110669118"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689333"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption-Szenarien auf virtuellen Windows-Computern
+
+**Gilt für**: :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
 Azure Disk Encryption für virtuelle Windows-Computer (VMs) bietet mithilfe des BitLocker-Features von Windows eine vollständige Datenträgerverschlüsselung des Betriebssystemdatenträgers und des Datenträgers für Daten. Darüber hinaus wird die Verschlüsselung des temporären Datenträgers bereitgestellt, wenn der VolumeType-Parameter auf „All“ festgelegt ist.
 
@@ -84,13 +86,10 @@ Die Syntax für den Wert des Parameters „key-encryption-key“ ist der vollst�
      Get-AzVmDiskEncryptionStatus -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM'
      ```
 
-- **Deaktivieren der Datenträgerverschlüsselung:** Verwenden Sie das Cmdlet [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption), um die Verschlüsselung zu deaktivieren. Das Deaktivieren der Datenträgerverschlüsselung auf einem virtuellen Windows-Computer funktioniert nicht wie erwartet, wenn sowohl das Betriebssystem als auch Datenträger verschlüsselt wurden. Deaktivieren Sie stattdessen die Verschlüsselung auf allen Datenträgern.
-
-     ```azurepowershell-interactive
-     Disable-AzVMDiskEncryption -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM'
-     ```
+Informationen zum Deaktivieren der Verschlüsselung finden Sie unter [Deaktivieren der Verschlüsselung und Entfernen der Verschlüsselungserweiterung](#disable-encryption-and-remove-the-encryption-extension).
 
 ### <a name="enable-encryption-on-existing-or-running-vms-with-the-azure-cli"></a>Aktivieren der Verschlüsselung auf vorhandenen oder ausgeführten VMs mit der Azure-Befehlszeilenschnittstelle
+
 Verwenden Sie den Befehl [az vm encryption enable](/cli/azure/vm/encryption#az_vm_encryption_enable), um die Verschlüsselung auf einem ausgeführten virtuellen IaaS-Computer in Azure zu aktivieren.
 
 - **Verschlüsseln eines ausgeführten virtuellen Computers:**
@@ -115,11 +114,7 @@ Verwenden Sie den Befehl [az vm encryption enable](/cli/azure/vm/encryption#az_v
      az vm encryption show --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup"
      ```
 
-- **Deaktivieren der Verschlüsselung:** Verwenden Sie den Befehl [az vm encryption disable](/cli/azure/vm/encryption#az_vm_encryption_disable), um die Verschlüsselung zu deaktivieren. Das Deaktivieren der Datenträgerverschlüsselung auf einem virtuellen Windows-Computer funktioniert nicht wie erwartet, wenn sowohl das Betriebssystem als auch Datenträger verschlüsselt wurden. Deaktivieren Sie stattdessen die Verschlüsselung auf allen Datenträgern.
-
-     ```azurecli-interactive
-     az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type [ALL, DATA, OS]
-     ```
+Informationen zum Deaktivieren der Verschlüsselung finden Sie unter [Deaktivieren der Verschlüsselung und Entfernen der Verschlüsselungserweiterung](#disable-encryption-and-remove-the-encryption-extension).
 
 ### <a name="using-the-resource-manager-template"></a>Erstellen der Resource Manager-Vorlage
 
@@ -232,6 +227,7 @@ Sie können [einer Windows-VM einen neuen Datenträger mit PowerShell](attach-di
 Die Syntax für den Wert des Parameters „key-encryption-key“ ist der vollständige URI für den KEK, z.B.: https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id]
 
 ### <a name="enable-encryption-on-a-newly-added-disk-with-azure-cli"></a>Aktivieren der Verschlüsselung für einen neu hinzugefügten Datenträger per Azure CLI
+
  Mit dem Azure CLI-Befehl wird automatisch eine neue Sequenzversion für Sie bereitgestellt, wenn Sie den Befehl zum Aktivieren der Verschlüsselung ausführen. Im Beispiel wird „All“ für den Parameter „-VolumeType“ verwendet. Möglicherweise müssen Sie den Parameter „-VolumeType“ in „OS“ ändern, wenn Sie nur den Betriebssystemdatenträger verschlüsseln. Im Gegensatz zur PowerShell-Syntax erfordert die Befehlszeilenschnittstelle vom Benutzer keine Angabe einer eindeutigen Sequenzversion beim Aktivieren der Verschlüsselung. Die Befehlszeilenschnittstelle wird automatisch generiert und verwendet einen eigenen eindeutigen Sequenzversionswert.
 
 -  **Verschlüsseln eines ausgeführten virtuellen Computers:**
@@ -246,9 +242,56 @@ Die Syntax für den Wert des Parameters „key-encryption-key“ ist der vollst�
      az vm encryption enable --resource-group "MyVirtualMachineResourceGroup" --name "MySecureVM" --disk-encryption-keyvault  "MySecureVault" --key-encryption-key "MyKEK_URI" --key-encryption-keyvault "MySecureVaultContainingTheKEK" --volume-type "All"
      ```
 
+## <a name="disable-encryption-and-remove-the-encryption-extension"></a>Deaktivieren der Verschlüsselung und Entfernen der Verschlüsselungserweiterung
 
-## <a name="disable-encryption"></a>Deaktivieren der Verschlüsselung
-[!INCLUDE [disk-encryption-disable-encryption-powershell](../../../includes/disk-encryption-disable-powershell.md)]
+Sie können die Azure Disk Encryption-Erweiterung deaktivieren und Sie können die Azure Disk Encryption-Erweiterung entfernen. Dies sind zwei unterschiedliche Vorgänge. 
+
+Um ADE zu entfernen, wird empfohlen, zuerst die Verschlüsselung zu deaktivieren und dann die Erweiterung zu entfernen. Wenn Sie die Verschlüsselungserweiterung entfernen, ohne sie zu deaktivieren, werden die Datenträger weiterhin verschlüsselt. Wenn Sie die Verschlüsselung **nach** dem Entfernen der Erweiterung deaktivieren, wird die Erweiterung neu installiert (um den Entschlüsselungsvorgang auszuführen) und muss ein zweites Mal entfernt werden.
+
+### <a name="disable-encryption"></a>Deaktivieren der Verschlüsselung
+
+Sie können die Verschlüsselung mit Azure PowerShell, der Azure CLI oder einer Resource Manager-Vorlage deaktivieren. Wenn Sie die Verschlüsselung deaktivieren, wird die Erweiterung **nicht** entfernt (weitere Informationen finden Sie unter [Entfernen der Verschlüsselungserweiterung](#remove-the-encryption-extension)).
+
+> [!WARNING]
+> Das Deaktivieren der Datenträgerverschlüsselung, wenn sowohl das Betriebssystem als auch die Datenträger verschlüsselt wurden, kann zu unerwarteten Ergebnissen führen. Deaktivieren Sie stattdessen die Verschlüsselung auf allen Datenträgern.
+>
+> Durch das Deaktivieren der Verschlüsselung wird ein Hintergrundprozess von BitLocker zum Entschlüsseln der Datenträger gestartet. Diesem Prozess sollte ausreichend Zeit eingeräumt werden, bevor versucht wird, die Verschlüsselung erneut zu aktivieren.  
+
+- **Deaktivieren der Datenträgerverschlüsselung mit Azure PowerShell:** Verwenden Sie das Cmdlet [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption), um die Verschlüsselung zu deaktivieren.
+
+     ```azurepowershell-interactive
+     Disable-AzVMDiskEncryption -ResourceGroupName "MyVirtualMachineResourceGroup" -VMName "MySecureVM" -VolumeType "all"
+     ```
+
+- **Deaktivieren der Verschlüsselung mit der Azure CLI:** Verwenden Sie den Befehl [az vm encryption disable](/cli/azure/vm/encryption#az_vm_encryption_disable), um die Verschlüsselung zu deaktivieren. 
+
+     ```azurecli-interactive
+     az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type "all"
+     ```
+
+- **Deaktivieren der Verschlüsselung mit einer Resource Manager-Vorlage:** 
+
+    1. Klicken Sie in der Vorlage unter [Disable disk encryption on running Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/decrypt-running-windows-vm-without-aad) (Deaktivieren der Datenträgerverschlüsselung auf einer ausgeführten Windows-VM) auf **Deploy to Azure** (In Azure bereitstellen).
+    2. Wählen Sie das Abonnement, die Ressourcengruppe, den Standort, die VM, den Volumetyp, die rechtlichen Bedingungen und die Vereinbarung aus.
+    3.  Klicken Sie auf **Kaufen**, um die Datenträgerverschlüsselung auf einer ausgeführten Windows-VM zu deaktivieren.
+
+### <a name="remove-the-encryption-extension"></a>Entfernen der Verschlüsselungserweiterung
+
+Wenn Sie Ihre Datenträger entschlüsseln und die Verschlüsselungserweiterung entfernen möchten, müssen Sie die Verschlüsselung deaktivieren, **bevor** Sie die Erweiterung entfernen; siehe [Verschlüsselung deaktivieren](#disable-encryption).
+
+Sie können die Verschlüsselungserweiterung mit Azure PowerShell oder der Azure CLI entfernen. 
+
+- **Deaktivieren der Datenträgerverschlüsselung mit Azure PowerShell:** Verwenden Sie das Cmdlet [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension), um die Verschlüsselung zu entfernen.
+
+     ```azurepowershell-interactive
+     Remove-AzVMDiskEncryptionExtension -ResourceGroupName "MyVirtualMachineResourceGroup" -VMName "MySecureVM"
+     ```
+
+- **Deaktivieren der Verschlüsselung mit der Azure CLI:** Verwenden Sie den Befehl [az vm extension delete](/cli/azure/vm/extension#az_vm_extension_delete), um die Verschlüsselung zu entfernen.
+
+     ```azurecli-interactive
+     az vm extension delete -g "MyVirtualMachineResourceGroup" --vm-name "MySecureVM" -n "AzureDiskEncryptionForWindows"
+     ```
 
 ## <a name="unsupported-scenarios"></a>Nicht unterstützte Szenarien
 

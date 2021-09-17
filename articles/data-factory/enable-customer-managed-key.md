@@ -1,18 +1,19 @@
 ---
 title: Verschlüsseln von Azure Data Factory mit vom Kunden verwalteten Schlüsseln
 description: Verbessern der Data Factory-Sicherheit mit Bring Your Own Key (BYOK)
-author: chez-charlie
+author: dcstwh
+ms.author: weetok
 ms.service: data-factory
+ms.subservice: security
 ms.topic: quickstart
 ms.date: 05/08/2020
-ms.author: chez
 ms.reviewer: mariozi
-ms.openlocfilehash: a18d06e3a0324889a4cb9936fb339fd9d8f9b816
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 3580ae78497426f1399981035e861bc51c912144
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222686"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697555"
 ---
 # <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>Verschlüsseln von Azure Data Factory mit vom Kunden verwalteten Schlüsseln
 
@@ -85,11 +86,11 @@ In diesem Abschnitt erfahren Sie Schritt für Schritt, wie Sie _nach_ der Factor
 
 1. Starten Sie das Azure Data Factory-Portal, und wechseln Sie über die Navigationsleiste auf der linken Seite zum Data Factory-Verwaltungsportal.
 
-1. Klicken Sie auf das Symbol __Kundenseitig verwalteter Schlüssel__. :::image type="content" source="media/enable-customer-managed-key/05-customer-managed-key-configuration.png" alt-text="Screenshot: Aktivieren kundenseitig verwalteter Schlüssel über die Data Factory-Benutzeroberfläche":::
+1. Klicken Sie auf das Symbol __Kundenseitig verwalteter Schlüssel__. :::image type="content" source="media/enable-customer-managed-key/05-customer-managed-key-configuration.png" alt-text="Screenshot: Aktivieren eines kundenseitig verwalteten Schlüssels über die Data Factory-Benutzeroberfläche":::.
 
 1. Geben Sie den zuvor kopierten URI für den vom Kunden verwalteten Schlüssel ein.
 
-1. Klicken Sie auf __Speichern__. Dann wird die vom Kunden verwaltete Schlüsselverschlüsselung für Data Factory aktiviert.
+1. Klicken Sie auf __Speichern__. Dann wird die kundenseitig verwaltete Schlüsselverschlüsselung für Data Factory aktiviert.
 
 ### <a name="during-factory-creation-in-azure-portal"></a>Im Zuge der Factoryerstellung im Azure-Portal
 
@@ -128,7 +129,7 @@ Wenn Sie den für die Data Factory-Verschlüsselung verwendeten Schlüssel ände
 
 1. Ermitteln Sie den URI für den neuen Schlüssel über das Azure Key Vault-Portal.
 
-1. Navigieren Sie zur Einstellung __Vom Kunden verwalteter Schlüssel__.
+1. Navigieren Sie zur Einstellung __Kundenseitig verwalteter Schlüssel__.
 
 1. Ersetzen Sie den URI für den neuen Schlüssel, indem Sie ihn einfügen.
 

@@ -8,14 +8,16 @@ ms.date: 06/29/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: c45bc6fa0df5883f060458c3ce92680752e5875a
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: d2f617d2f5d05a6310d5442fa8d4a9e49369912e
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113358524"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696418"
 ---
 # <a name="performance-tiers-for-managed-disks"></a>Leistungsstufen für Managed Disks
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Die Leistung Ihres verwalteten Azure-Datenträgers wird bei seiner Erstellung über die Leistungsstufe festgelegt. Die Leistungsstufe bestimmt die IOPS und den Durchsatz Ihres verwalteten Datenträgers. Wenn Sie die bereitgestellte Größe Ihres Datenträgers festlegen, wird automatisch eine Leistungsstufe ausgewählt. Sie können die Leistungsstufe bei der Bereitstellung oder danach ändern, ohne die Größe des Datenträgers zu ändern.
 

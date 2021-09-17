@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 85abc77757d31f3b1054a0670ea3f65a4fcb2e52
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc35b26d1bf81b7d3cc139d0076c44a481cf4a70
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555957"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689655"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Zeitsynchronisierung für Windows-VMs in Azure
+
+**Gilt für**: :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen:heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Die Zeitsynchronisierung ist für die Sicherheit und die Ereigniskorrelation wichtig. Manchmal wird sie für die Implementierung von verteilten Transaktionen verwendet. Die Genauigkeit der Uhrzeit zwischen mehreren Computersystemen wird durch die Synchronisierung erreicht. Die Synchronisierung kann durch mehrere Faktoren beeinträchtigt werden, einschließlich Neustarts und Netzwerkdatenverkehr zwischen der Zeitquelle und dem Computer, der die Uhrzeit abruft. 
 

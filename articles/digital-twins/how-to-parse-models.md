@@ -8,12 +8,12 @@ ms.date: 8/13/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 52cec60dc771232fcb808184373b82f790f8a759
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 584d4ba9de922cd035a70850f723550b02863e16
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122350968"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122606595"
 ---
 # <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>Analysieren und Validieren von Modellen mit der DTDL-Parserbibliothek
 
@@ -70,7 +70,7 @@ Der Parser bietet die folgenden Funktionen:
 * Bestimmen, ob ein Modell aus einem anderen Modell zugewiesen werden kann
 
 > [!NOTE]
-> [IoT Plug & Play](../iot-develop/overview-iot-plug-and-play.md)-Geräte (PnP) arbeiten mit einer geringfügig anderen Syntaxvariante, um ihre Funktionalität zu beschreiben. Diese Syntaxvariante ist eine semantisch kompatible Teilmenge der Sprache DTDL, die in Azure Digital Twins verwendet wird. Wenn Sie die Parserbibliothek nutzen, müssen Sie nicht wissen, welche Syntaxvariante zur Erstellung der DTDL für Ihren Digital Twin verwendet wurde. Der Parser gibt für die PnP- und Azure Digital Twins-Syntax standardmäßig stets dasselbe Modell zurück.
+> [IoT Plug & Play](../iot-develop/overview-iot-plug-and-play.md)-Geräte arbeiten mit einer geringfügig anderen Syntaxvariante, um ihre Funktionalität zu beschreiben. Diese Syntaxvariante ist eine semantisch kompatible Teilmenge der Sprache DTDL, die in Azure Digital Twins verwendet wird. Wenn Sie die Parserbibliothek nutzen, müssen Sie nicht wissen, welche Syntaxvariante zur Erstellung der DTDL für Ihren Digital Twin verwendet wurde. Der Parser gibt für die IoT Plug & Play- und Azure Digital Twins-Syntax standardmäßig stets dasselbe Modell zurück.
 
 ### <a name="code-with-the-parser-library"></a>Codieren mit der Parserbibliothek
 

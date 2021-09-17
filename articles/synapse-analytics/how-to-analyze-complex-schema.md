@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 06/15/2020
 ms.author: rosouz
 ms.reviewer: jrasnick
-ms.openlocfilehash: d4004887a4806a5b8e50429031fb204f4eec5000
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0130379b5c9225329bde1d49c119eaec446d17de
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105627964"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123112622"
 ---
 # <a name="analyze-complex-data-types-in-azure-synapse-analytics"></a>Analysieren komplexer Datentypen in Azure Synapse Analytics
 
@@ -220,5 +220,6 @@ Es gibt zwei verschiedene Arten von Vorgängen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie, wie Sie Synapse Link für Azure Cosmos DB mit Spark abfragen.](./synapse-link/how-to-query-analytical-store-spark.md)
+* [Erfahren Sie, wie Sie Synapse Link für Azure Cosmos DB mit Spark 3 abfragen.](./synapse-link/how-to-query-analytical-store-spark-3.md)
+* [Erfahren Sie, wie Sie Synapse Link für Azure Cosmos DB mit Spark 2 abfragen.](./synapse-link/how-to-query-analytical-store-spark.md)
 * [Abfragen von geschachtelten Parquet-Typen](./sql/query-parquet-nested-types.md)

@@ -1,17 +1,20 @@
 ---
 title: Schema- und Datentypzuordnung in Kopieraktivität
-description: Erfahren Sie, wie Kopieraktivität in Azure Data Factory Schemas und Datentypen aus Quelldaten Senkendaten zuordnet.
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Erfahren Sie, wie eine Kopieraktivität in Azure Data Factory- und Azure Synapse Analytics-Pipeline Schemas und Datentypen aus Quelldaten den Senkendaten zuordnet.
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 08/24/2021
 ms.author: jianleishen
-ms.openlocfilehash: 2bd616ddec207d2aad47608c6f0200c7b629471e
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 046b25164df92c609196a701d35f989aa397253b
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482523"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122825091"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>Schema- und Datentypzuordnung in Kopieraktivität
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -40,14 +43,14 @@ Weitere Informationen:
 - [Hierarchische Quelle zu tabellarischer Senke](#hierarchical-source-to-tabular-sink)
 - [Tabellarische/hierarchische Quelle zu hierarchischer Senke](#tabularhierarchical-source-to-hierarchical-sink)
 
-Sie können die Zuordnung über die Data Factory-Benutzeroberfläche für die Erstellung (Kopieraktivität > Registerkarte „Zuordnung“) konfigurieren oder in der Kopieraktivität > Eigenschaft `translator` programmgesteuert angeben. Die folgenden Eigenschaften werden im Array `translator` -> `mappings` > Objekte > `source` und `sink` unterstützt, das auf die jeweilige Spalte bzw. das jeweilige Feld zum Zuordnen von Daten zeigt.
+Sie können die Zuordnung über die Benutzeroberfläche für die Erstellung unter „Kopieraktivität“ > Registerkarte „Zuordnung“ konfigurieren oder die Zuordnung in der Kopieraktivität mithilfe der Eigenschaft `translator` programmgesteuert angeben. Die folgenden Eigenschaften werden im Array `translator` -> `mappings` > Objekte > `source` und `sink` unterstützt, das auf die jeweilige Spalte bzw. das jeweilige Feld zum Zuordnen von Daten zeigt.
 
 | Eigenschaft | BESCHREIBUNG                                                  | Erforderlich |
 | -------- | ------------------------------------------------------------ | -------- |
 | name     | Name der Quell- oder Senkenspalte bzw. des Quell- oder Senkenfelds. Für tabellarische Quelle und Senke anwenden. | Ja      |
 | ordinal  | Spaltenindex. Bei 1 beginnen. <br>Anwenden und erforderlich, wenn Text mit Trennzeichen und ohne Kopfzeile verwendet wird. | Nein       |
 | path     | Der Ausdruck des JSON-Pfads für jedes Feld, das extrahiert oder zugeordnet werden soll. Für hierarchische Quelle und Senke anwenden, z. B. für Cosmos DB-, MongoDB- oder REST-Connectors.<br>Der JSON-Pfad für Felder unter dem Stammobjekt beginnt mit dem Stamm „`$`“. Für Felder innerhalb des von der `collectionReference`-Eigenschaften ausgewählten Arrays beginnt der JSON-Pfad mit dem Arrayelement ohne `$`. | Nein       |
-| type     | Data Factory-Zwischendatentyp der Quell- oder Senkenspalte. Im Allgemeinen müssen Sie diese Eigenschaft nicht angeben oder ändern. Weitere Informationen zu [Datentypzuordnung](#data-type-mapping). | Nein       |
+| type     | Interimsdatentyp der Quell- oder Senkenspalte. Im Allgemeinen müssen Sie diese Eigenschaft nicht angeben oder ändern. Weitere Informationen zu [Datentypzuordnung](#data-type-mapping). | Nein       |
 | culture  | Kultur der Quell- oder Senkenspalte. Anwenden, wenn der Typ `Datetime` oder `Datetimeoffset` ist. Der Standardwert lautet `en-us`.<br>Im Allgemeinen müssen Sie diese Eigenschaft nicht angeben oder ändern. Weitere Informationen zu [Datentypzuordnung](#data-type-mapping). | Nein       |
 | format   | Zu verwendende Formatzeichenfolge, wenn der Typ `Datetime` oder `Datetimeoffset` ist. Informationen zum Formatieren von Datum und Uhrzeit finden Sie unter [Benutzerdefinierte Formatzeichenfolgen für Datum und Uhrzeit](/dotnet/standard/base-types/custom-date-and-time-format-strings). Im Allgemeinen müssen Sie diese Eigenschaft nicht angeben oder ändern. Weitere Informationen zu [Datentypzuordnung](#data-type-mapping). | Nein       |
 
@@ -175,11 +178,11 @@ Wenn Sie es in eine Textdatei im folgenden Format mit Kopfzeile kopieren möchte
 
 Sie können eine Zuordnung dieser Art über die Data Factory-Benutzeroberfläche für die Erstellung definieren:
 
-1. Klicken Sie in der Kopieraktivität auf der Registerkarte „Zuordnung“ auf die Schaltfläche **Schemas importieren**, um das Quell- und das Senkenschema zu importieren. Da Data Factory beim Importieren eines Schemas die obersten Objekte abfragt, können Sie, falls ein Feld nicht angezeigt wird, das Feld der entsprechenden Ebene in der Hierarchie hinzufügen. Zeigen Sie hierzu auf einen vorhandenen Feldnamen, und geben Sie an, dass Sie einen Knoten, ein Objekt oder ein Array hinzufügen möchten.
+1. Klicken Sie in der Kopieraktivität auf der Registerkarte „Zuordnung“ auf die Schaltfläche **Schemas importieren**, um das Quell- und das Senkenschema zu importieren. Da der Dienst beim Importieren eines Schemas die obersten Objekte abfragt, können Sie, falls ein Feld nicht angezeigt wird, dieses der entsprechenden Ebene in der Hierarchie hinzufügen. Zeigen Sie hierzu auf einen vorhandenen Feldnamen, und geben Sie an, dass Sie einen Knoten, ein Objekt oder ein Array hinzufügen möchten.
 
 2. Wählen Sie das Array aus, in dem Sie Daten durchlaufen und aus dem Sie Daten extrahieren möchten. Das Feld wird automatisch als **Auflistungsverweis** ausgefüllt. Bei diesem Vorgang wird nur ein einzelnes Array unterstützt.
 
-3. Ordnen Sie der Senke die erforderlichen Felder zu. Die entsprechenden JSON-Pfade für die hierarchische Seite werden von Data Factory bestimmt automatisch.
+3. Ordnen Sie der Senke die erforderlichen Felder zu. Die zugehörigen JSON-Pfade für die hierarchische Seite werden automatisch vom Dienst bestimmt.
 
 > [!NOTE]
 > Wenn bei einem Datensatz das als Sammlungsverweis markierte Array leer und das Kontrollkästchen aktiviert ist, wird der gesamte Datensatz übersprungen.
@@ -273,9 +276,9 @@ Wenn eine explizite Zuordnung erforderlich ist, haben Sie folgende Möglichkeite
 
 Bei der Kopieraktivität werden Zuordnungen von Quelltypen zu Senkentypen mit dem folgenden Schritten durchgeführt: 
 
-1. Konvertieren von nativen Quelldatentypen in Azure Data Factory-Zwischendatentypen
+1. Wandeln Sie die nativen Quelldatentypen in Interimsdatentypen um, die von Azure Data Factory- und Synapse-Pipelines verwendet werden.
 2. Automatisches Konvertieren von Zwischendatentypen zu entsprechenden Senkentypen bei der [Standardzuordnung](#default-mapping) und bei der [expliziten Zuordnung](#explicit-mapping)
-3. Konvertieren von Azure Data Factory-Zwischendatentypen in native Senkendatentypen
+3. Wandeln Sie die Interimsdatentypen in native Senkendatentypen um.
 
 Von der Kopieraktivität werden derzeit die folgenden Zwischendatentypen unterstützt: Boolean, Byte, Bytearray, Datetime, DatetimeOffset, Decimal, Double, GUID, Int16, Int32, Int64, SByte, Single, String, Timespan, UInt16, UInt32 und UInt64.
 
@@ -307,7 +310,7 @@ Die folgenden Eigenschaften werden in der Kopieraktivität für die Datentypkonv
 
 | Eigenschaft                         | BESCHREIBUNG                                                  | Erforderlich |
 | -------------------------------- | ------------------------------------------------------------ | -------- |
-| typeConversion                   | Aktiviert den neuen Workflow für die Datentypkonvertierung. <br>Der Standardwert lautet aufgrund der Abwärtskompatibilität FALSE.<br><br>Bei neuen Kopieraktivitäten, die seit Ende Juni 2020 über die Data Factory-Benutzeroberfläche für die Erstellung erstellt wurden, ist diese Datentypkonvertierung für eine optimale Nutzung standardmäßig aktiviert. Zudem werden in der Kopieraktivität auf der Registerkarte „Zuordnung“ die folgenden Datentypkonvertierungseinstellungen für entsprechende Szenarios angezeigt. <br>Wenn Sie Pipelines programmgesteuert erstellen möchten, müssen Sie die Eigenschaft `typeConversion` explizit auf TRUE festlegen, um sie zu aktivieren.<br>Bei vorhandenen Kopieraktivitäten, die vor der Einführung dieser Funktion erstellt wurden, werden in der Data Factory-Benutzeroberfläche für die Erstellung aus Gründen der Abwärtskompatibilität keine Datentypkonvertierungsoptionen angezeigt. | Nein       |
+| typeConversion                   | Aktiviert den neuen Workflow für die Datentypkonvertierung. <br>Der Standardwert lautet aufgrund der Abwärtskompatibilität FALSE.<br><br>Bei neuen Kopieraktivitäten, die seit Ende Juni 2020 über die Data Factory-Benutzeroberfläche für die Erstellung erstellt wurden, ist diese Datentypkonvertierung für eine optimale Nutzung standardmäßig aktiviert. Zudem werden in der Kopieraktivität auf der Registerkarte „Zuordnung“ die folgenden Datentypkonvertierungseinstellungen für entsprechende Szenarios angezeigt. <br>Wenn Sie Pipelines programmgesteuert erstellen möchten, müssen Sie die Eigenschaft `typeConversion` explizit auf TRUE festlegen, um sie zu aktivieren.<br>Bei vorhandenen Kopieraktivitäten, die vor der Einführung dieses Features erstellt wurden, werden in der Benutzeroberfläche für die Erstellung aus Gründen der Abwärtskompatibilität keine Optionen für die Datentypkonvertierung angezeigt. | Nein       |
 | typeConversionSettings           | Eine Gruppe von Datentypkonvertierungseinstellungen. Wird angewendet, wenn `typeConversion` auf `true` festgelegt ist. Die folgenden Eigenschaften befinden sich in dieser Gruppe. | Nein       |
 | *Unter `typeConversionSettings`* |                                                              |          |
 | allowDataTruncation              | Ermöglicht das Abschneiden von Daten, wenn beim Kopieren Quelldaten in Senkendaten mit unterschiedlichem Datentyp konvertiert werden, beispielsweise von „Decimal“ zu „Integer“ bzw. von „DatetimeOffset“ zu „Datetime“. <br>Der Standardwert ist true. | Nein       |
@@ -350,7 +353,7 @@ Die folgenden Eigenschaften werden in der Kopieraktivität für die Datentypkonv
 ## <a name="legacy-models"></a>Legacy-Modelle
 
 > [!NOTE]
-> Die folgenden Modelle zum Zuordnen von Quellspalten/-feldern zur Senke werden aus Gründen der Abwärtskompatibilität weiterhin unverändert unterstützt. Es wird empfohlen, das unter [Schemazuordnung](#schema-mapping) erwähnte neue Modell zu verwenden. Die Data Factory-Benutzeroberfläche für die Erstellung ist zum Generieren des neuen Modells gewechselt.
+> Die folgenden Modelle zum Zuordnen von Quellspalten/-feldern zur Senke werden aus Gründen der Abwärtskompatibilität weiterhin unverändert unterstützt. Es wird empfohlen, das unter [Schemazuordnung](#schema-mapping) erwähnte neue Modell zu verwenden. Die Benutzeroberfläche für die Erstellung wurde auf die Erzeugung des neuen Modells umgestellt.
 
 ### <a name="alternative-column-mapping-legacy-model"></a>Alternative Spaltenzuordnung (Legacy-Modell)
 

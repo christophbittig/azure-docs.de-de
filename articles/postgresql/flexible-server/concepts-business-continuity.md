@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: fbc47fa19cccb8d5ce6af38fdff3f0e772f5039f
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 08/24/2021
+ms.openlocfilehash: 64206d1e5a26d163c5d5ed81c3c762a10de0fe96
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111537700"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769588"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---flexible-server"></a>Übersicht über die Geschäftskontinuität mit Azure Database for PostgreSQL – Flexible Server
 
@@ -59,7 +59,7 @@ Ungeplante Downtimes können aufgrund von unvorhergesehenen Unterbrechungen auft
 ### <a name="unplanned-downtime-failure-scenarios-and-service-recovery"></a>Ungeplante Downtime: Fehlerszenarios und Dienstwiederherstellung
 Im Folgenden finden Sie einige Szenarien mit ungeplanten Fehlern und dem zugehörigen Wiederherstellungsprozess. 
 
-| **Szenario** | **Wiederherstellungsprozess [ohne Hochverfügbarkeit]** | **Wiederherstellungsprozess [mit Hochverfügbarkeit]** |
+| **Szenario** | **Wiederherstellungsprozess** <br> [Ohne zonenredundante Hochverfügbarkeit konfigurierte Server] | **Wiederherstellungsprozess** <br> [Mit zonenredundanter Hochverfügbarkeit konfigurierte Server] |
 | ---------- | ---------- | ------- |
 | <B>Ausfall des Datenbankservers | Wenn der Datenbankserver nicht verfügbar ist, versucht Azure, den Datenbankserver neu zu starten. Wenn dabei ein Fehler auftritt, wird der Datenbankserver auf einem anderen physischen Knoten neu gestartet.  <br /> <br /> Die Wiederherstellungszeit (Recovery Time Objective, RTO) hängt von verschiedenen Faktoren ab, z. B. der Aktivität zum Zeitpunkt des Fehlers. Zu diesen Aktivitäten zählen große Transaktionen und das Volume der Wiederherstellungsvorgänge, die während des Starts des Datenbankservers ausgeführt wurden. <br /> <br /> Anwendungen, die die PostgreSQL-Datenbanken verwenden, müssen so konzipiert sein, dass sie getrennte Verbindungen und Transaktionsfehler erkennen und entsprechende Wiederholungsversuche durchführen. | Wenn der Datenbankserverfehler erkannt wird, wird ein Failover des Servers auf den Standbyserver durchgeführt, wodurch die Downtime verringert wird. Weitere Informationen finden Sie auf der [Seite „Hochverfügbarkeitskonzepte“](./concepts-high-availability.md). Es wird erwartet, dass RTO einen Wert von 60–120 s hat, ohne Datenverlust. |
 | <B>Speicherfehler | Speicherbezogene Probleme wie der Ausfall eines Datenträgers oder physische Blockbeschädigungen haben keine Auswirkungen auf Anwendungen. Da drei Kopien der Daten gespeichert werden, wird eine Kopie der Daten vom verbleibenden Speicher bereitgestellt. Der beschädigte Datenblock wird automatisch repariert, und eine neue Kopie der Daten wird automatisch erstellt. | Bei seltenen oder nicht behebbaren Fehlern wie der Unmöglichkeit, auf den gesamten Speicher zuzugreifen, erfolgt ein Failover des flexiblen Servers auf das Standbyreplikat, um die Downtime zu reduzieren. Weitere Informationen finden Sie auf der [Seite „Hochverfügbarkeitskonzepte“](./concepts-high-availability.md). |

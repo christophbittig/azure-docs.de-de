@@ -4,15 +4,16 @@ description: Kopieren von Daten in Azure Data Lake Storage Gen1 mithilfe von Azu
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/18/2021
-ms.openlocfilehash: 5269267f0fa786163b6c1fa1a4d4bfc8d0ff9af5
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.date: 07/05/2021
+ms.openlocfilehash: 0d2bdda7cacc07b84c8136eb63d282d55a4a0806
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109483513"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122640766"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Laden von Daten in Azure Data Lake Storage Gen1 mit Azure Data Factory
 
@@ -59,15 +60,15 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
 3. Klicken Sie auf **Erstellen**.
 4. Nach Abschluss der Erstellung navigieren Sie zu Ihrer Data Factory. Die Startseite **Data Factory** wird wie in der folgenden Abbildung dargestellt angezeigt: 
    
-   ![Data Factory-Startseite](./media/load-data-into-azure-data-lake-store/data-factory-home-page.png)
+   :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Startseite für Azure Data Factory mit der Kachel „Open Azure Data Factory Studio“":::
 
-   Wählen Sie die Kachel **Erstellen und überwachen** aus, um die Datenintegrationsanwendung auf einer separaten Registerkarte zu starten.
+   Klicken Sie auf der Kachel **Open Azure Data Factory Studio** auf **Öffnen**, um die Datenintegrations-Anwendung in einer separaten Registerkarte zu starten.
 
 ## <a name="load-data-into-data-lake-storage-gen1"></a>Laden von Daten in Data Lake Storage Gen1
 
-1. Wählen Sie auf der Seite **Erste Schritte** die Kachel **Daten kopieren** aus, um das Tool zum Kopieren von Daten zu starten: 
+1. Wählen Sie auf der Homepage die Kachel **Erfassen** aus, um das Tool zum Kopieren von Daten zu starten: 
 
-   ![Kachel für das Tool zum Kopieren von Daten](./media/load-data-into-azure-data-lake-store/copy-data-tool-tile.png)
+   ![Screenshot, der die ADF-Startseite zeigt.](./media/doc-common-process/get-started-page.png)
 2. Geben Sie auf der Seite **Eigenschaften** im Feld **Aufgabenname** den Namen **CopyFromAmazonS3ToADLS** ein, und klicken Sie dann auf **Weiter**:
 
     ![Eigenschaftenseite](./media/load-data-into-azure-data-lake-store/copy-data-tool-properties-page.png)

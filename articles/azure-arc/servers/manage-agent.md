@@ -3,12 +3,12 @@ title: Verwalten des Agents für Azure Arc-fähige Server
 description: In diesem Artikel werden die verschiedenen Verwaltungsaufgaben beschrieben, die Sie typischerweise während des Lebenszyklus des Connected Machine-Agents für Azure Arc-fähige Server ausführen.
 ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 9573d18b25b5795d4a6ea6d4448b46ebe4b4faa3
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 5e80d240c9b5ce8795de8baee3214d256d180e0f
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122356646"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769849"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Verwalten des Connected Machine-Agent
 
@@ -58,7 +58,7 @@ Bei Azure Arc-fähigen Servern müssen vor dem Umbenennen des Computers die VM-E
 
 5. Registrieren Sie den Connected Machine-Agent bei Arc-fähigen Servern erneut. Führen Sie das `azcmagent`-Tool mit dem Parameter [Connect](manage-agent.md#connect) aus, um diesen Schritt abzuschließen.
 
-6. Stellen Sie die VM-Erweiterungen, die dem Computer ursprünglich bereitgestellt wurden, von Arc-fähigen Servern aus erneut bereit. Wenn Sie den „Azure Monitor für VMs (Insights)“-Agent oder den Log Analytics-Agent mithilfe einer Azure-Richtlinie bereitgestellt haben, werden die Agents nach dem nächsten [Auswertungszyklus](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers) erneut bereitgestellt.
+6. Stellen Sie die VM-Erweiterungen, die dem Computer ursprünglich bereitgestellt wurden, von Arc-fähigen Servern aus erneut bereit. Wenn Sie den Azure Monitor für VMs-Agent (Insights) oder den Log Analytics-Agent mithilfe einer Azure Policy-Definition bereitgestellt haben, werden die Agents nach dem nächsten [Auswertungszyklus](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers) erneut bereitgestellt.
 
 ## <a name="upgrading-agent"></a>Aktualisierung des Agent
 
@@ -199,7 +199,7 @@ Sie können einen **Connect**- und **Disconnect**-Vorgang manuell ausführen, w�
 
 Dieser Parameter gibt eine Ressource in Azure Resource Manager an, die den in Azure erstellten Computer darstellt. Die Ressource befindet sich im angegebenen Abonnement und der angegebenen Ressourcengruppe, und die Daten zu dem Computer werden in der durch den `--location`-Parameter angegebenen Azure-Region gespeichert. Der Standardressourcenname ist der Hostname des Computers, wenn nichts angegeben wird.
 
-Ein Zertifikat, das der systemseitig zugewiesenen Identität dieses Computers entspricht, wird dann heruntergeladen und lokal gespeichert. Sobald dieser Schritt abgeschlossen ist, beginnen Azure Connected Machine Metadata Service und der Gastkonfigurations-Agent die Synchronisierung mit Azure Arc-fähigen Servern.
+Ein Zertifikat, das der systemseitig zugewiesenen Identität dieses Computers entspricht, wird dann heruntergeladen und lokal gespeichert. Sobald dieser Schritt abgeschlossen ist, starten Azure Connected Machine Metadata Service und der Gastkonfigurations-Agent die Synchronisierung mit Azure Arc-fähigen Servern.
 
 Führen Sie den folgenden Befehl aus, um eine Verbindung mithilfe des Dienstprinzipals herzustellen:
 

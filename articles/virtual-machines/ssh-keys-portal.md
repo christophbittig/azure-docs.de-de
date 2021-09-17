@@ -7,14 +7,16 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 08/25/2020
 ms.author: cynthn
-ms.openlocfilehash: abc9a2ae130d987c90ce87ffaecbf2bb44b06010
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa6cdb37e6b664398e469ab8e1c3eefbb721bba0
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88929436"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698445"
 ---
 # <a name="generate-and-store-ssh-keys-in-the-azure-portal"></a>Generieren und Speichern von SSH-Schlüsseln im Azure-Portal
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Falls Sie das Portal häufig zum Bereitstellen von Linux-VMs verwenden, können Sie die Nutzung von SSH-Schlüsseln vereinfachen, indem Sie sie direkt im Portal erstellen oder von Ihrem Computer hochladen.
 

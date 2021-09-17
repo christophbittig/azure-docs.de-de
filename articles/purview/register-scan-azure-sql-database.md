@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 06/08/2021
-ms.openlocfilehash: f4fa21c99a17111b1045b66713490b86592e04bf
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 83fd36ca1f352371e4d0717968512d791443d590
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114467114"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515534"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Registrieren und Überprüfen von Azure SQL-Datenbank
 
@@ -140,9 +140,9 @@ Durch Zulassen von Azure-Verbindungen kann Azure Purview den Server erreichen un
 
 Eine selbstgehostete Integration Runtime (SHIR) kann auf einem Computer installiert werden, um eine Verbindung mit einer Ressource in einem privaten Netzwerk herzustellen.
 
-1. [Erstellen und installieren Sie eine selbstgehostete Integration Runtime](/azure/purview/manage-integration-runtimes) auf einem privaten Computer oder einem Computer im gleichen VNet wie der Datenbankserver.
+1. [Erstellen und installieren Sie eine selbstgehostete Integration Runtime](./manage-integration-runtimes.md) auf einem privaten Computer oder einem Computer im gleichen VNet wie der Datenbankserver.
 1. Überprüfen Sie die Firewall des Datenbankservers, um sicherzustellen, dass der SHIR-Computer über die Firewall Zugriff hat. Fügen Sie die IP-Adresse des Computers hinzu, wenn er noch keinen Zugriff hat.
-1. Wenn sich Ihr Azure SQL-Server hinter einem privaten Endpunkt oder in einem VNet befindet, können Sie einen [privaten Endpunkt für die Erfassung](catalog-private-link.md#ingestion-private-endpoints-and-scanning-sources) verwenden, um die End-to-End-Netzwerkisolation sicherzustellen.
+1. Wenn sich Ihr Azure SQL-Server hinter einem privaten Endpunkt oder in einem VNet befindet, können Sie einen [privaten Endpunkt für die Erfassung](catalog-private-link-ingestion.md#deploy-self-hosted-integration-runtime-ir-and-scan-your-data-sources) verwenden, um die End-to-End-Netzwerkisolation sicherzustellen.
 
 ## <a name="register-an-azure-sql-database-data-source"></a>Registrieren einer Datenquelle vom Typ „Azure SQL-Datenbank“
 
@@ -150,9 +150,9 @@ Gehen Sie wie folgt vor, um in Ihrem Datenkatalog eine neue Azure SQL-Datenbank-
 
 1. Navigieren Sie zu Ihrem Purview-Konto.
 
-1. Wählen Sie im linken Navigationsbereich die Option **Quellen** aus.
+1. Wählen Sie im linken Navigationsbereich **Data Map** aus.
 
-1. Wählen Sie **Registrieren**.
+1. Wählen Sie **Registrieren** aus.
 
 1. Wählen Sie unter **Register sources** (Quellen registrieren) die Option **Azure SQL-Datenbank** aus. Wählen Sie **Weiter**.
 

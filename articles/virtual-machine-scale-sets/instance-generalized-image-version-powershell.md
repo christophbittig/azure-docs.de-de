@@ -10,14 +10,16 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: mimckitt
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c202b8b2d4535afd96ffad1806460c3cf43e34b6
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 591ad83cf9beeff7b25ffa1234441109dc169aa2
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028035"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691258"
 ---
 # <a name="create-a-scale-set-from-a-generalized-image-using-powershell"></a>Erstellen einer Skalierungsgruppe aus einem generalisierten Image mit PowerShell 
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Erstellen Sie eine VM aus einer generalisierten Imageversion, die in einer [Shared Image Gallery](../virtual-machines/shared-image-galleries.md) gespeichert wird. Wenn Sie eine Skalierungsgruppe mit einem spezialisierten Image erstellen möchten, finden Sie weitere Informationen unter [Erstellen von Skalierungsgruppeninstanzen aus einem spezialisierten Image](instance-specialized-image-version-powershell.md).
 

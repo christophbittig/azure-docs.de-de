@@ -10,12 +10,12 @@ ms.date: 07/06/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d98c239da9c415da0a87f0eecad20af147802aca
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: 06f5c1192d5216f753d77fb842359835c4552197
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122356453"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123471046"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>Point-in-Time-Wiederherstellung für Blockblobs
 
@@ -89,6 +89,17 @@ Die Point-in-Time-Wiederherstellung für Blockblobs weist die folgenden Einschr�
 
 > [!IMPORTANT]
 > Wenn Sie Blockblobs an einem Punkt wiederherstellen, der vor dem 22. September 2020 liegt, sind die Einschränkungen der Vorschau für die Point-in-Time-Wiederherstellung wirksam. Microsoft empfiehlt, einen Wiederherstellungspunkt auszuwählen, der gleich ist oder nach dem 22. September 2020 liegt, um die allgemein verfügbare Point-in-Time-Wiederherstellungsfunktion zu nutzen.
+
+## <a name="feature-support"></a>Featureunterstützung
+
+In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf den Support hat. 
+
+| Speicherkontotyp                | Blob Storage (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) |![Nein](../media/icons/no-icon.png)              | ![Nein](../media/icons/no-icon.png) | 
+| Premium-Blockblobs          | ![Nein](../media/icons/no-icon.png)|![Nein](../media/icons/no-icon.png) | ![Nein](../media/icons/no-icon.png) |
+
+<sup>1</sup>    Für Data Lake Storage Gen2 und das NFS 3.0-Protokoll (Network File System) ist ein Speicherkonto mit aktiviertem hierarchischem Namespace erforderlich.
 
 ## <a name="pricing-and-billing"></a>Preise und Abrechnung
 

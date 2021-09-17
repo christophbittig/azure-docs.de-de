@@ -4,12 +4,12 @@ description: In dieser Schnellstartanleitung werden die ersten Schritte mit Azur
 ms.service: azure-video-analyzer
 ms.topic: quickstart
 ms.date: 06/01/2021
-ms.openlocfilehash: 335890f4bb939123290e5dfe9cccbf9f9aef1242
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 001b1bd2e1f2f3350ad9e9cef28bb3ec682332ef
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114605174"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748683"
 ---
 # <a name="quickstart-get-started-with-azure-video-analyzer"></a>Schnellstart: Erste Schritte mit Azure Video Analyzer
 
@@ -91,14 +91,14 @@ Wenn Sie diese Schnellstartanleitung verwenden, werden Ereignisse an den IoT Hub
 
 ## <a name="use-direct-method-calls"></a>Verwenden von Aufrufen direkter Methoden
 
-Sie können jetzt Livevideostreams analysieren, indem Sie direkte Methoden aufrufen, die vom Video Analyzer-Edgemodul verfügbar gemacht werden. Lesen Sie [Direkte Methoden in Video Analyzer](direct-methods.md), um alle direkten Methoden zu untersuchen, die vom Modul bereitgestellt werden. 
+Sie können jetzt Livevideostreams analysieren, indem Sie direkte Methoden aufrufen, die vom Video Analyzer-Edgemodul verfügbar gemacht werden. Lesen Sie [Direkte Methoden in Video Analyzer](direct-methods.md), um alle direkten Methoden zu untersuchen, die vom Modul bereitgestellt werden. Das Schema für die direkten Methoden finden Sie [hier](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/videoanalyzer/data-plane/VideoAnalyzer.Edge/preview/1.0.0/AzureVideoAnalyzerSdkDefinitions.json).
 
 ### <a name="enumerate-pipeline-topologies"></a>Aufzählen von Pipelinetopologien
 
 In diesem Schritt werden alle [Pipelinetopologien](pipeline.md) im Modul aufgelistet.
 
 1. Klicken Sie mit der rechten Maustaste auf das Modul „avaedge“, und wählen Sie im Kontextmenü die Option **Invoke Module Direct Method** (Direkte Methode des Moduls aufrufen) aus.
-1. Oben in der Mitte des Visual Studio Code-Fensters wird ein Bearbeitungsfeld angezeigt. Geben Sie „pipelineTopologyList“ in das Bearbeitungsfeld ein, und drücken Sie die EINGABETASTE.
+1. Oben in der Mitte des Visual Studio Code-Fensters wird ein Bearbeitungsfeld angezeigt. Geben Sie `pipelineTopologyList` in das Bearbeitungsfeld ein, und drücken Sie die EINGABETASTE.
 1. Kopieren Sie die folgende JSON-Nutzlast, fügen Sie sie im Bearbeitungsfeld ein, und drücken Sie die EINGABETASTE.
    
 ```json

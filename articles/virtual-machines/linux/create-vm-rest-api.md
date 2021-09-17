@@ -7,14 +7,16 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 519939445e67f0f993662e2faf506eb186686156
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af006f25733344ebd272087b897130f895478685
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102554563"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689763"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Erstellen eines virtuellen Linux-Computers zur Verwendung der SSH-Authentifizierung mit der REST-API
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
 Ein virtueller Linux-Computer (VM) in Azure besteht aus verschiedenen Ressourcen wie Datenträgern und Netzwerkschnittstellen und definiert Parameter wie Speicherort, Größe und Betriebssystemimage sowie Authentifizierungseinstellungen.
 
@@ -55,7 +57,7 @@ Allgemeine Informationen zum Arbeiten mit REST-API-Anforderung finden Sie unter 
 
 Die folgenden allgemeinen Definitionen werden verwendet, um einen Anforderungstext zu erstellen:
 
-| Name                       | Erforderlich | type                                                                                | BESCHREIBUNG  |
+| Name                       | Erforderlich | Typ                                                                                | BESCHREIBUNG  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True     | Zeichenfolge                                                                              | Ressourcenspeicherort |
 | name                       |          | Zeichenfolge                                                                              | Name des virtuellen Computers |
@@ -129,7 +131,7 @@ Sie können den von Ihnen bevorzugten Client zum Senden dieser HTTP-Anforderung 
 
 Es gibt zwei erfolgreiche Antworten für den Vorgang, um einen virtuellen Computer zu erstellen oder zu aktualisieren:
 
-| Name        | type                                                                              | BESCHREIBUNG |
+| Name        | Typ                                                                              | BESCHREIBUNG |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 – OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
 | 201 – Erstellt | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Erstellt     |

@@ -9,14 +9,17 @@ ms.service: virtual-machine-scale-sets
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 6541f1a54391ca4dd991ff9ae2299cd9e337cc7b
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: a9c000d5c1ced86fd12e78b362fa437da119bf45
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111985930"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690488"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Überlegungen zum Entwurf von Skalierungsgruppen
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Einheitliche Skalierungsgruppen
+
 In diesem Artikel werden Überlegungen zum Entwurf von VM-Skalierungsgruppen erörtert. Informationen darüber, was Skalierungsgruppen für virtuelle Computer sind, finden Sie unter [Übersicht über VM-Skalierungsgruppen](./overview.md).
 
 ## <a name="when-to-use-scale-sets-instead-of-virtual-machines"></a>Wann sollten Sie Skalierungsgruppen statt virtuellen Computern verwenden?
@@ -38,7 +41,7 @@ Einige Features sind derzeit nur auf VMs verfügbar:
 - Sie können einen einzelnen virtuellen Computer von einem nativen Datenträger zu einem verwalteten Datenträger migrieren, aber Sie können keine VM-Instanzen in einer Skalierungsgruppe migrieren.
 - Sie können den virtuellen Netzwerkschnittstellenkarten (Network Interface Cards, NICs) einzelner VMs öffentliche IPv6-IP-Adressen zuweisen, bei VM-Instanzen in einer Skalierungsgruppe ist dies jedoch nicht möglich. Sie können Load Balancern sowohl bei VMs als auch bei VMs in einer Skalierungsgruppe öffentliche IPv6-Adressen zuweisen.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Speicher
 
 ### <a name="scale-sets-with-azure-managed-disks"></a>Skalierungsgruppen mit Azure Managed Disks
 Skalierungsgruppen können mit [Azure Managed Disks](../virtual-machines/managed-disks-overview.md) anstatt mit den traditionellen Azure-Speicherkonten erstellt werden. Das Feature „Managed Disks“ (Verwaltete Datenträger) bietet die folgenden Vorteile:

@@ -1,20 +1,23 @@
 ---
-title: Verknüpfte Dienste in Azure Data Factory
-description: Informationen über verknüpfte Dienste in Data Factory. Verknüpfte Dienste verknüpfen Compute/-Datenspeicher mit einer Data Factory.
+title: Verknüpfte Dienste
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Erfahren Sie mehr über verknüpfte Dienste in Azure Data Factory und Azure Synapse Analytics. Verknüpfte Dienste verknüpfen Compute- und Datenspeicher mit dem Dienst.
 author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/21/2020
-ms.openlocfilehash: 193213c55a56f745c45eec829dfbe1e81ee0f363
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.date: 08/24/2021
+ms.openlocfilehash: 96d7792ee9c867263b7ab7f21cea652414f28478
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107886980"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822391"
 ---
-# <a name="linked-services-in-azure-data-factory"></a>Verknüpfte Dienste in Azure Data Factory
+# <a name="linked-services-in-azure-data-factory-and-azure-synapse-analytics"></a>Verknüpfte Dienste in Azure Data Factory und Azure Synapse Analytics
 
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-create-datasets.md)
@@ -22,27 +25,27 @@ ms.locfileid: "107886980"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel wird beschrieben, was verknüpfte Dienste sind, wie sie im JSON-Format definiert werden und wie sie in Azure Data Factory-Pipelines verwendet werden.
+In diesem Artikel wird beschrieben, was verknüpfte Dienste sind, wie sie im JSON-Format definiert und in Azure Data Factory und Azure Synapse Analytics verwendet werden.
 
-Wenn Sie mit Data Factory noch nicht vertraut sind, finden Sie unter [Einführung in Azure Data Factory](introduction.md) eine Übersicht.
+Weitere Informationen finden Sie im Einführungsartikel zu [Azure Data Factory](introduction.md) oder [Azure Synapse](../synapse-analytics/overview-what-is.md).
 
 ## <a name="overview"></a>Übersicht
 
-Eine Data Factory kann eine oder mehrere Pipelines haben. Bei einer **Pipeline** handelt es sich um eine logische Gruppierung von **Aktivitäten**, die zusammen eine Aufgabe bilden. Die Aktivitäten in einer Pipeline definieren Aktionen, die Sie auf Ihre Daten anwenden. Sie können beispielsweise mit einer Kopieraktivität Daten aus SQL Server in Azure Blob Storage kopieren. Anschließend könnten Sie eine Hive-Aktivität verwenden, die ein Hive-Skript für einen Azure HDInsight-Cluster ausführt, um Daten aus dem Blob Storage zu verarbeiten, um Ausgabedaten zu produzieren. Schließlich könnten Sie die Ausgabedaten mit einer zweiten Kopieraktivität in Azure Synapse Analytics kopieren, auf dessen Basis Business Intelligence-Berichtslösungen (BI) erstellt werden. Weitere Informationen zu Pipelines und Aktivitäten finden Sie unter [Pipelines und Aktivitäten in Azure Data Factory](concepts-pipelines-activities.md).
+Azure Data Factory und Azure Synapse Analytics können eine oder mehrere Pipelines umfassen. Bei einer **Pipeline** handelt es sich um eine logische Gruppierung von **Aktivitäten**, die zusammen eine Aufgabe bilden. Die Aktivitäten in einer Pipeline definieren Aktionen, die Sie auf Ihre Daten anwenden. Sie können beispielsweise mit einer Kopieraktivität Daten aus SQL Server in Azure Blob Storage kopieren. Anschließend könnten Sie eine Hive-Aktivität verwenden, die ein Hive-Skript für einen Azure HDInsight-Cluster ausführt, um Daten aus dem Blob Storage zu verarbeiten, um Ausgabedaten zu produzieren. Schließlich könnten Sie die Ausgabedaten mit einer zweiten Kopieraktivität in Azure Synapse Analytics kopieren, auf dessen Basis Business Intelligence-Berichtslösungen (BI) erstellt werden. Weitere Informationen zu Pipelines und Aktivitäten finden Sie unter [Pipelines und Aktivitäten](concepts-pipelines-activities.md).
 
 Ein **Datensatz** ist eine benannte Ansicht von Daten, die einfach auf die Daten verweist, die Sie in Ihren **Aktivitäten** als Ein- und Ausgabe verwenden möchten.
 
-Bevor Sie ein Dataset erstellen, müssen Sie einen **verknüpften Dienst** erstellen, um Ihren Datenspeicher mit der Data Factory zu verknüpfen. Verknüpfte Dienste ähneln Verbindungszeichenfolgen, mit denen die Verbindungsinformationen definiert werden, die für Data Factory zum Herstellen einer Verbindung mit externen Ressourcen erforderlich sind. Sie können sich dies wie folgt vorstellen: Das Dataset stellt die Struktur der Daten innerhalb des verknüpften Datenspeichers dar, und der verknüpfte Dienst definiert die Verbindung mit der Datenquelle. Ein mit Azure Storage verknüpfter Dienst verbindet z.B. ein Speicherkonto mit der Data Factory. Ein Azure-Blob-Dataset repräsentiert den Blobcontainer und den Ordner innerhalb des Azure Storage-Kontos, das die zu verarbeitenden Eingabeblobs enthält.
+Bevor Sie ein Dataset erstellen, müssen Sie einen **verknüpften Dienst** erstellen, um Ihren Datenspeicher mit der Data Factory oder einem Synapse-Arbeitsbereich zu verknüpfen. Verknüpfte Dienste ähneln Verbindungszeichenfolgen, mit denen die Verbindungsinformationen definiert werden, die der Dienst zum Herstellen einer Verbindung mit externen Ressourcen benötigt. Sie können sich dies wie folgt vorstellen: Das Dataset stellt die Struktur der Daten innerhalb des verknüpften Datenspeichers dar, und der verknüpfte Dienst definiert die Verbindung mit der Datenquelle. Ein mit Azure Storage verknüpfter Dienst verbindet z. B. ein Speicherkonto mit dem Dienst. Ein Azure-Blob-Dataset repräsentiert den Blobcontainer und den Ordner innerhalb des Azure Storage-Kontos, das die zu verarbeitenden Eingabeblobs enthält.
 
-Hier ist ein Beispielszenario. Um Daten aus dem Blobspeicher in eine SQL-Datenbank zu kopieren, erstellen Sie zwei verknüpfte Dienste: Azure Storage und Azure SQL-Datenbank. Erstellen Sie anschließend zwei Datasets: Azure-Blobdataset (das sich auf den mit Azure Storage verknüpften Dienst bezieht) und Azure SQL-Tabellendataset (das sich auf den mit Azure SQL-Datenbank verknüpften Dienst bezieht). Die mit Azure Storage und Azure SQL-Datenbank verknüpften Dienste enthalten Verbindungszeichenfolgen, die Data Factory zur Laufzeit verwendet, um die Verbindung mit Ihrem Azure Storage bzw. mit Ihrer Instanz von Azure SQL-Datenbank herzustellen. Das Azure-Blobdataset gibt den Blobcontainer und Blobordner an, der die Eingabeblobs in Ihrer Blob Storage-Instanz enthält. Das Azure SQL-Tabellendataset gibt die SQL-Tabelle in Ihrer SQL-Datenbank an, in die die Daten kopiert werden sollen.
+Hier ist ein Beispielszenario. Um Daten aus dem Blobspeicher in eine SQL-Datenbank zu kopieren, erstellen Sie zwei verknüpfte Dienste: Azure Storage und Azure SQL-Datenbank. Erstellen Sie anschließend zwei Datasets: Azure-Blobdataset (das sich auf den mit Azure Storage verknüpften Dienst bezieht) und Azure SQL-Tabellendataset (das sich auf den mit Azure SQL-Datenbank verknüpften Dienst bezieht). Die mit Azure Storage und Azure SQL-Datenbank verknüpften Dienste enthalten Verbindungszeichenfolgen, die der Dienst zur Laufzeit nutzt, um eine Verbindung mit Ihrer Instanz von Azure Storage bzw. Azure SQL-Datenbank herzustellen. Das Azure-Blobdataset gibt den Blobcontainer und Blobordner an, der die Eingabeblobs in Ihrer Blob Storage-Instanz enthält. Das Azure SQL-Tabellendataset gibt die SQL-Tabelle in Ihrer SQL-Datenbank an, in die die Daten kopiert werden sollen.
 
-Das folgende Diagramm zeigt die Beziehung zwischen Pipeline, Aktivität, Dataset und verknüpftem Dienst in der Data Factory an:
+Das folgende Diagramm zeigt die Beziehung zwischen Pipeline, Aktivität, Dataset und verknüpftem Dienst im Dienst:
 
 ![Beziehung zwischen Pipeline, Aktivität, Dataset und verknüpften Diensten](media/concepts-datasets-linked-services/relationship-between-data-factory-entities.png)
 
 ## <a name="linked-service-json"></a>JSON-Text für verknüpfte Dienste
 
-Ein verknüpfter Dienst in Data Factory wird wie folgt im JSON-Format definiert:
+Ein verknüpfter Dienst wird wie folgt im JSON-Format definiert:
 
 ```json
 {
@@ -64,14 +67,14 @@ In der folgenden Tabelle werden die Eigenschaften im obigen JSON-Code beschriebe
 
 Eigenschaft | BESCHREIBUNG | Erforderlich |
 -------- | ----------- | -------- |
-name | Name des verknüpften Diensts. Siehe [Azure Data Factory – Benennungsregeln](naming-rules.md). |  Ja |
+name | Name des verknüpften Diensts. Siehe [Benennungsregeln](naming-rules.md). |  Ja |
 type | Typ des verknüpften Diensts. Beispiel: AzureBlobStorage (Datenspeicher) oder AzureBatch (Compute). Siehe die Beschreibung von „typeProperties“. | Ja |
 typeProperties | Die Typeigenschaften unterscheiden sich für jeden Datenspeicher- oder Computetyp. <br/><br/> Informationen zu den unterstützten Datenspeichertypen und ihren Typeigenschaften finden Sie unter [Unterstützte Datenspeicher und Formate](copy-activity-overview.md#supported-data-stores-and-formats). Navigieren Sie zum Artikel über den Datenspeicherconnector, um mehr über die für einen Datenspeicher spezifischen Typeigenschaften zu erfahren. <br/><br/> Informationen zu den unterstützten Computetypen und ihren Typeigenschaften finden Sie unter [Verknüpfte Computedienste](compute-linked-services.md). | Ja |
 connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure Integration Runtime oder selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein
 
 ## <a name="linked-service-example"></a>Beispiel für einen verknüpften Dienst
 
-Der folgende verknüpfte Dienst ist ein mit Azure Blob Storage verknüpfter Dienst. Beachten Sie, dass der Typ auf „Azure Blob Storage“ festgelegt ist. Die Typeigenschaften für den verknüpften Azure Blob Storage-Dienst umfassen eine Verbindungszeichenfolge. Der Data Factory-Dienst verwendet diese Verbindungszeichenfolge für die Verbindung mit dem Datenspeicher zur Laufzeit.
+Der folgende verknüpfte Dienst ist ein mit Azure Blob Storage verknüpfter Dienst. Beachten Sie, dass der Typ auf „Azure Blob Storage“ festgelegt ist. Die Typeigenschaften für den verknüpften Azure Blob Storage-Dienst umfassen eine Verbindungszeichenfolge. Der Dienst verwendet diese Verbindungszeichenfolge, um zur Laufzeit eine Verbindung mit dem Datenspeicher herzustellen.
 
 ```json
 {
@@ -98,11 +101,11 @@ Sie können verknüpfte Dienste mit einem dieser Tools oder SDKs erstellen: [.NE
 
 ## <a name="data-store-linked-services"></a>Verknüpfte Dienste von Datenspeichern
 
-Die Liste der von Data Factory unterstützten Datenspeicher finden Sie im Artikel [Übersicht über Connectors](copy-activity-overview.md#supported-data-stores-and-formats). Klicken Sie auf einen Datenspeicher, um mehr über die unterstützten Verbindungseigenschaften zu erfahren.
+Die Liste der unterstützten Datenspeicher finden Sie im Artikel [Übersicht über Connectors](copy-activity-overview.md#supported-data-stores-and-formats). Klicken Sie auf einen Datenspeicher, um mehr über die unterstützten Verbindungseigenschaften zu erfahren.
 
 ## <a name="compute-linked-services"></a>Verknüpfte Computedienste
 
-Weitere Informationen zu den verschiedenen Compute-Umgebungen, mit denen Sie sich von Ihrer Data Factory aus verbinden können, sowie zu den verschiedenen Konfigurationen finden Sie unter [Unterstützte Compute-Umgebungen](compute-linked-services.md).
+Weitere Informationen zu den verschiedenen Compute-Umgebungen, mit denen Sie sich von Ihrem Dienst aus verbinden können, sowie zu den verschiedenen Konfigurationen finden Sie unter [Unterstützte Compute-Umgebungen](compute-linked-services.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

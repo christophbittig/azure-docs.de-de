@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 06/13/2019
 ms.author: inhenkel
-ms.openlocfilehash: d471431da7cc738f9ef908897ccab34343cc4c4b
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f10ef55a44aa917fd8f0fb3783dcd29284512d7e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110470427"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732671"
 ---
 # <a name="tutorial-stream-live-with-media-services-by-using-net-50"></a>Tutorial: Livestreaming mit Media Services unter Verwendung von .NET 5.0
 
@@ -68,11 +68,7 @@ git clone https://github.com/Azure-Samples/media-services-v3-dotnet.git
 
 Das Livestreaming-Beispiel befindet sich im Ordner [Live](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Live).
 
-Öffnen Sie in Ihrem heruntergeladenen Projekt die Datei [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/appsettings.json). Ersetzen Sie die Werte durch die Anmeldeinformationen, die Sie unter [Abrufen von Anmeldeinformationen für den Zugriff auf die Media Services-API](./access-api-howto.md) erhalten haben.
-
-Beachten Sie, dass Sie auch das *ENV*-Dateiformat im Stammverzeichnis des Projekts verwenden können, um Ihre Umgebungsvariablen nur einmal für alle Projekte im .NET-Beispielrepository festzulegen. Kopieren Sie einfach die Datei *sample.env*, und geben Sie dann die Informationen an, die Sie im Azure-Portal über die Media Services-Seite für den **API-Zugriff** oder über die Azure CLI ermittelt haben. Benennen Sie die Datei *sample.env* in *.env* um, um sie in allen Projekten zu verwenden.
-
-Die *GITIGNORE*-Datei ist bereits so konfiguriert, dass sie nicht in Ihrem geforkten Repository veröffentlicht wird. 
+[!INCLUDE [appsettings or .env file](./includes/note-appsettings-or-env-file.md)]
 
 > [!IMPORTANT]
 > In diesem Beispiel wird für jede Ressourcen ein eindeutiges Suffix verwendet. Wenn Sie das Debuggen abbrechen oder die App beenden, ohne das Beispiel vollständig zu durchlaufen, werden in Ihrem Konto mehrere Liveereignisse generiert.
@@ -81,14 +77,16 @@ Die *GITIGNORE*-Datei ist bereits so konfiguriert, dass sie nicht in Ihrem gefor
 
 ## <a name="examine-the-code-that-performs-live-streaming"></a>Untersuchen des Codes für Livestreaming
 
-In diesem Abschnitt werden Funktionen untersucht, die in den Dateien [Authentication.cs](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Common_Utils/Authentication.cs) und [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs) des Projekts *LiveEventWithDVR* definiert werden.
+In diesem Abschnitt werden Funktionen untersucht, die in den Dateien [Authentication.cs](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Common_Utils/Authentication.cs) (im Ordner „Common_Utils“) und [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs) des Projekts *LiveEventWithDVR* definiert werden.
 
 Das Beispiel erstellt für jede Ressource ein eindeutiges Suffix, damit keine Namenskonflikte auftreten, wenn Sie das Beispiel ohne Bereinigung der Ressourcen mehrmals ausführen.
 
 
 ### <a name="start-using-media-services-apis-with-the-net-sdk"></a>Beginnen mit der Verwendung von Media Services-APIs mit dem .NET SDK
 
-Um mit der Verwendung von Media Services-APIs in .NET zu beginnen, müssen Sie ein `AzureMediaServicesClient`-Objekt erstellen. Zum Erstellen des Objekts müssen Sie Anmeldeinformationen für den Client bereitstellen, damit dieser per Azure Active Directory eine Verbindung mit Azure herstellen kann. Eine weitere Option ist die Verwendung der interaktiven Authentifizierung. Diese wird in `GetCredentialsInteractiveAuthAsync` implementiert.
+Mit „Authentication.cs“ wird unter Verwendung der Anmeldeinformationen aus den lokalen Konfigurationsdateien („appsettings.json“ oder „.env)“ ein `AzureMediaServicesClient`-Objekt erstellt.
+
+Mit einem `AzureMediaServicesClient`-Objekt können Sie mit der Nutzung von Media Services-APIs mit .NET beginnen. Zum Erstellen des Objekts müssen Sie Anmeldeinformationen für den Client bereitstellen, damit dieser per Azure Active Directory eine Verbindung mit Azure herstellen kann. Dies wird in `GetCredentailsAsync` implementiert. Eine weitere Option ist die interaktive Authentifizierung, die in `GetCredentialsInteractiveAuthAsync` implementiert ist.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Common_Utils/Authentication.cs#CreateMediaServicesClientAsync)]
 
@@ -96,7 +94,7 @@ Im Code, den Sie am Anfang des Artikels geklont haben, wird mit der Funktion `Ge
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Common_Utils/Authentication.cs#GetCredentialsAsync)]
 
-Bei der interaktiven Authentifizierung wird durch die Funktion `GetCredentialsInteractiveAuthAsync` das Objekt `ServiceClientCredentials` erstellt – basierend auf einer interaktiven Authentifizierung und den Verbindungsparametern, die in der lokalen Konfigurationsdatei (*appsettings.json*) oder über die Umgebungsvariablendatei (ENV-Datei) im Stammverzeichnis des Repositorys angegeben sind. In diesem Fall sind „AADCLIENTID“ und „AADSECRET“ in der Konfigurations- oder Umgebungsvariablendatei nicht erforderlich.
+Bei der interaktiven Authentifizierung wird durch die Funktion `GetCredentialsInteractiveAuthAsync` das Objekt `ServiceClientCredentials` erstellt, und zwar basierend auf einer interaktiven Authentifizierung und den Verbindungsparametern, die in der lokalen Konfigurationsdatei (*appsettings.json*) oder über die Umgebungsvariablendatei ( *.env*) im Stammverzeichnis des Repositorys angegeben sind. In diesem Fall sind „AADCLIENTID“ und „AADSECRET“ in der Konfigurations- oder Umgebungsvariablendatei nicht erforderlich.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Common_Utils/Authentication.cs#GetCredentialsInteractiveAuthAsync)]
 
@@ -204,7 +202,7 @@ Verwenden Sie das folgende Verfahren, wenn die Streamingereignisse beendet sind 
 
 ## <a name="watch-the-event"></a>Ansehen des Ereignisses
 
-Kopieren Sie zum Wiedergeben des Ereignisses die Streaming-URL, die Sie beim Ausführen des Codes unter „Erstellen eines Streaminglocators“ erhalten haben. Sie können einen Medienplayer Ihrer Wahl verwenden. [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) ist verfügbar, um Ihren Datenstrom auf der [Media Player-Demowebsite](https://ampdemo.azureedge.net) zu testen.
+Drücken Sie **STRG+F5**, um den Code auszuführen. Dadurch werden Streaming-URLs ausgegeben, die Sie zum Ansehen Ihres Liveereignisses verwenden können. Kopieren Sie die Streaming-URL, die Sie zum Erstellen eines Streaminglocators erhalten haben. Sie können einen Medienplayer Ihrer Wahl verwenden. [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) ist verfügbar, um Ihren Datenstrom auf der [Media Player-Demowebsite](https://ampdemo.azureedge.net) zu testen.
 
 Für ein Liveereignis werden Ereignisse bei der Beendigung automatisch in On-Demand-Inhalte konvertiert. Auch nach dem Beenden und Löschen des Ereignisses können die Benutzer archivierte Inhalte als Video auf Abruf streamen, solange Sie das Medienobjekt nicht löschen. Ein Medienobjekt kann nicht gelöscht werden, wenn es von einem Ereignis verwendet wird. Zuerst muss das betreffende Ereignis gelöscht werden.
 

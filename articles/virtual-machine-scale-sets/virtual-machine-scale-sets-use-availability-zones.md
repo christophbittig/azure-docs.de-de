@@ -9,14 +9,16 @@ ms.subservice: availability
 ms.date: 08/08/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: d66c6fada13bf88083a6359f5fa3e7ca826a6266
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 5584f052dc9dcb72f03b923c1a4c666e212b5385
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673701"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697357"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Erstellen einer VM-Skalierungsgruppe, die Verfügbarkeitszonen verwendet
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Um Ihre VM-Skalierungsgruppen vor Fehlern auf Rechenzentrumsebene zu schützen, können Sie eine Skalierungsgruppe über mehrere Verfügbarkeitszonen erstellen. Azure-Regionen, die Verfügbarkeitszonen unterstützen, weisen mindestens drei getrennte Zonen auf, mit je eigener, unabhängiger Stromquelle, Netzwerk und Kühlung. Weitere Informationen finden Sie in der [Overview of Availability Zones (Übersicht über Verfügbarkeitszonen)](../availability-zones/az-overview.md).
 

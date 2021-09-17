@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 06/25/2021
 ms.author: glenga
 ms.topic: tutorial
-ms.openlocfilehash: 4a017d57062e2871052305eb9bbf393c808a643d
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 6b4875f028fe8645125743d04770c2fd237b4f62
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114293272"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752459"
 ---
 # <a name="tutorial-get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Tutorial: Erste Schnitte mit dem Azure WebJobs SDK für die ereignisgesteuerte Hintergrundverarbeitung
 
@@ -246,7 +246,7 @@ Das `QueueTrigger`-Attribut weist die Runtime an, diese Funktion aufzurufen, wen
     }
     ```
 
-    Wenn einer Warteschlange mit dem Namen `queue` eine Nachricht hinzugefügt wird, wird die Funktion ausgeführt, und die `message`-Zeichenfolge wird in die Protokolle geschrieben. Die überwachte Warteschlange befindet sich im Azure Storage-Standardkonto, das Sie als Nächstes erstellen.
+    Sie sollten die *Functions*-Klasse als `public static` markieren, damit die Runtime auf die Methode zugreifen und sie ausführen kann. In dem obigen Codebeispiel wird, wenn einer Warteschlange mit dem Namen `queue` eine Nachricht hinzugefügt wird, die Funktion ausgeführt, und die `message`-Zeichenfolge wird in die Protokolle geschrieben. Die überwachte Warteschlange befindet sich im Azure Storage-Standardkonto, das Sie als Nächstes erstellen.
    
 Der `message`-Parameter muss keine Zeichenfolge sein. Sie können auch eine Bindung an ein JSON-Objekt, Bytearray oder [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage)-Objekt erstellen. Weitere Informationen finden Sie unter [Verwendung des Warteschlangentriggers](../azure-functions/functions-bindings-storage-queue-trigger.md?tabs=csharp#usage). Jeder Bindungstyp (z. B. Warteschlangen, Blobs oder Tabellen) weist einen anderen Satz von Parametertypen auf, an die Sie binden können.
 

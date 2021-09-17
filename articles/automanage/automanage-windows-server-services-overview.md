@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 07/09/2021
 ms.author: niwashbu
-ms.openlocfilehash: 475ea083a6412f38093f601ce34da8775357fa3e
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 09b011d76a570aaed1a9ea8c0b9bdc74e80eca53
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114286449"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772186"
 ---
 # <a name="automanage-for-windows-server-services-preview"></a>Automanage für Windows Server-Dienste (Vorschauversion)
 
@@ -27,9 +27,11 @@ Automanage für Windows Server-Dienste stellt neue Funktionen bereit, insbesonde
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
+> [!NOTE]
+> Hotpatch kann in der _Vorschauversion von Windows Server 2022 Datacenter Azure Edition (Core)_ evaluiert werden.  Hotpatch in der _Vorschauversion von Windows Server 2019 Datacenter Azure Edition Preview_ kann nicht mehr evaluiert werden.
+
 Automanage für Windows Server-Funktionen befinden sich in einem dieser _Windows Server Azure Edition_-Images: 
 
-- Windows Server 2019 Datacenter: Azure Edition (Core)
 - Windows Server 2022 Datacenter: Azure Edition (Desktoperfahrung)
 - Windows Server 2022 Datacenter: Azure Edition (Core)
 
@@ -41,7 +43,6 @@ Die Funktionen variieren je nach Image. Weitere Informationen finden Sie unter [
 
 Hotpatch ist in der öffentlichen Vorschauphase in den folgenden Images verfügbar:
 
-- Windows Server 2019 Datacenter: Azure Edition (Core)
 - Windows Server 2022 Datacenter: Azure Edition (Core)
 
 Hotpatch bietet Ihnen die Möglichkeit, Sicherheitsupdates ohne Neustart auf Ihren virtuellen Computer anzuwenden.  Darüber hinaus automatisiert Automanage für Windows Server das Onboarding, die Konfiguration und die Orchestrierung des Hotpatchings.  Weitere Informationen finden Sie unter [Hotpatch](automanage-hotpatch.md).  
@@ -55,7 +56,7 @@ SMB über QUIC ist in der öffentlichen Vorschauphase in den folgenden Images ve
 
 SMB über QUIC ermöglicht Benutzern den Zugriff auf Dateien, wenn sie remote ohne VPN arbeiten, indem SMB-Datenverkehr über das QUIC-Protokoll getunnelt wird.  Weitere Informationen finden Sie unter [SMB über QUIC](/windows-server/storage/file-server/smb-over-quic).  
 
-### <a name="azure-extended-network"></a>Azure Extended Network
+### <a name="azure-extended-network"></a>Erweitertes Azure-Netzwerk
 
 Azure Extended Network ist in der öffentlichen Vorschau in den folgenden Images verfügbar:
 
@@ -73,7 +74,6 @@ Es ist wichtig, im Voraus zu überlegen, welche Funktionen von Automanage für W
 
 |Image|Funktionen|
 |--|--|
-| Windows Server 2019 Datacenter: Azure Edition (Core) | Hotpatch | 
 |Windows Server 2022 Datacenter: Azure Edition (Desktoperfahrung) | SMB über QUIC, Extended Network | 
 | Windows Server 2022 Datacenter: Azure Edition (Core) | Hotpatch, SMB über QUIC, Extended Network | 
 

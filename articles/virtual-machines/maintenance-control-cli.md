@@ -8,14 +8,16 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 11/20/2020
 ms.author: cynthn
-ms.openlocfilehash: a611daf290bda8d6511cb4217e411de2886ce822
-ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
+ms.openlocfilehash: 95054a4da3bc11e92cc140e7fb6689773b0343ac
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112370849"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698826"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>Steuern von Updates mit der Wartungssteuerung und der Azure CLI
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Mit der Wartungssteuerung können Sie entscheiden, wann Sie Plattformupdates der Hostinfrastruktur auf Ihre isolierten VMs und Ihre dedizierten Azure-Hosts anwenden. In diesem Thema werden die Azure CLI-Optionen für die Wartungssteuerung behandelt. Weitere Informationen zu den Vorteilen der Verwendung der Wartungssteuerung, ihren Einschränkungen und anderen Verwaltungsoptionen finden Sie unter [Verwalten von Plattformupdates mit der Wartungssteuerung](maintenance-control.md).
 

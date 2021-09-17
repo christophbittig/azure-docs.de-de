@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/01/2020
+ms.date: 08/10/2021
 ms.author: jeedes
-ms.openlocfilehash: 88f6da7e43e269816c7e4ae2fd7bbc3f5e26522b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5845df453801b9c59e3652efed5cef7d9f9e0978
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92453092"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122272104"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fivetran"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Fivetran
 
@@ -37,7 +37,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Fivetran unterstützt **IDP-initiiertes** einmaliges Anmelden.
+* Fivetran unterstützt **IDP**-initiiertes einmaliges Anmelden.
 * Fivetran unterstützt die **Just-In-Time**-Benutzerbereitstellung.
 
 > [!NOTE]
@@ -53,7 +53,6 @@ Zum Konfigurieren der Integration von Fivetran in Azure AD müssen Sie Fivetran
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Fivetran** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Fivetran** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-fivetran"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Fivetran
 
@@ -74,12 +73,11 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Fivetran** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
 1. Im Abschnitt **SAML-Basiskonfiguration** ist die Anwendung vorkonfiguriert und die notwendigen URLs sind bereits mit Azure vorausgefüllt. Der Benutzer muss die Konfiguration speichern, indem er auf die Schaltfläche **Speichern** klickt.
-
 
 1. Die Fivetran-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute.
 
@@ -129,13 +127,14 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 In diesem Abschnitt konfigurieren Sie einmaliges Anmelden aufseiten von **Fivetran**.
 
 1. Melden Sie sich in einem anderen Webbrowserfenster bei Ihrem Fivetran-Konto als Kontobesitzer an.
+
 1. Wählen Sie in der oberen linken Ecke des Fensters den Pfeil und dann in der Dropdownliste die Option **Manage Account** (Konto verwalten) aus.
 
-   ![Screenshot: Menüoption „Manage Account“ (Konto verwalten)](media/fivetran-tutorial/fivetran-1.png)
+   ![Screenshot: Menüoption „Manage Account“ (Konto verwalten)](media/fivetran-tutorial/menu.png)
 
 1. Navigieren Sie auf der Seite **Settings** (Einstellungen) zum Abschnitt **SAML Config** (SAML-Konfiguration).
 
-   ![Screenshot: Bereich „SAML Config“ (SAML-Konfiguration) mit hervorgehobenen Konfigurationsoptionen](media/fivetran-tutorial/fivetran-2.png)
+   ![Screenshot: Bereich „SAML Config“ (SAML-Konfiguration) mit hervorgehobenen Konfigurationsoptionen](media/fivetran-tutorial/settings.png)
 
    1. Wählen Sie für **Enable SAML authentication** (SAML-Authentifizierung aktivieren) die Option **ON** (EIN) aus.
    1. Fügen Sie unter **Sign on URL** (Anmelde-URL) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
@@ -149,11 +148,11 @@ In diesem Abschnitt wird in Fivetran ein Benutzer namens B. Simon erstellt. Fiv
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen:
 
-1. Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der Fivetran-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
+* Klicken Sie im Azure-Portal auf „Diese Anwendung testen“. Dadurch sollten Sie automatisch bei der Fivetran-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben.
 
-2. Sie können den Microsoft-Zugriffsbereich verwenden. Wenn Sie im Zugriffsbereich auf die Kachel „Fivetran“ klicken, sollten Sie automatisch bei der Fivetran-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Fivetran“ klicken, sollten Sie automatisch bei der Fivetran-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

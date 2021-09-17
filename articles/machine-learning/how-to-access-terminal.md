@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 02/05/2021
-ms.openlocfilehash: d02259419a6349224b1d047ce01b2e1bf64c1b37
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 7b0d43cec561040e98688a216165d7a4ed88c3d2
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112454552"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122635175"
 ---
 # <a name="access-a-compute-instance-terminal-in-your-workspace"></a>Zugreifen auf ein Compute-Instanzterminal in Ihrem Arbeitsbereich
 
@@ -68,7 +68,7 @@ Erfahren Sie mehr über das [Klonen von Git-Repositorys in Ihrem Arbeitsbereichs
 
 ## <a name="install-packages"></a>Installieren von Paketen
 
- Installieren Sie Pakete über ein Terminalfenster. Installieren Sie Python-Pakete in der Umgebung **Python 3.6 – AzureML**.  Installieren Sie R-Pakete in der **R**-Umgebung.
+ Installieren Sie Pakete über ein Terminalfenster. Installieren Sie Python-Pakete in der Umgebung **Python 3.8 – AzureML**.  Installieren Sie R-Pakete in der **R**-Umgebung.
 
 Oder Sie können Pakete direkt in einem Jupyter Notebook oder in RStudio installieren:
 
@@ -81,7 +81,7 @@ Oder Sie können Pakete direkt in einem Jupyter Notebook oder in RStudio install
 ## <a name="add-new-kernels"></a>Hinzufügen neuer Kernel
 
 > [!WARNING]
->  Wenn Sie Ihre Compute-Instanz anpassen, sollten Sie sicherstellen, dass Sie die conda-Umgebung **azureml_py36** oder den Kernel **Python 3.6 – AzureML** nicht löschen. Diese sind für die Funktionalität von Jupyter bzw. JupyterLab erforderlich.
+>  Wenn Sie Ihre Compute-Instanz anpassen, sollten Sie darauf achten, die conda-Umgebung **azureml_py36** oder **azureml_py38** nicht zu löschen.  Löschen Sie auch nicht die Kernel **Python 3.6 – AzureML** oder **Python 3.8 – AzureML**. Diese sind für die Funktionalität von Jupyter bzw. JupyterLab erforderlich.
 
 So fügen Sie einen neuen Jupyter-Kernel zur Compute-Instanz hinzu:
 

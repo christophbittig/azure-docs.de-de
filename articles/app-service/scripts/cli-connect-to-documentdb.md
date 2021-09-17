@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: f76f036e2101fb1dbb4483ba417f5cf10f3e37f4
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6beaafe19184e9c7b27c4e533f20c023948e9209
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107782384"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736117"
 ---
 # <a name="connect-an-app-service-app-to-cosmos-db-using-cli"></a>Herstellen einer Verbindung zwischen einer App Service-App und Cosmos DB per CLI
 
@@ -43,7 +43,7 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 | [`az webapp create`](/cli/azure/webapp#az_webapp_create) | Erstellt eine App Service-App. |
 | [`az cosmosdb create`](/cli/azure/cosmosdb#az_cosmosdb_create) | Erstellt ein Cosmos DB-Konto. |
 | [`az cosmosdb list-connection-strings`](/cli/azure/cosmosdb#az_cosmosdb_list_connection_strings) | Listet die Verbindungszeichenfolgen für das angegebene Cosmos DB-Konto auf. |
-| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) | Erstellt oder aktualisiert eine App-Einstellung für eine App Service-App. App-Einstellungen werden als Umgebungsvariablen für Ihre App verfügbar gemacht. |
+| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) | Erstellt oder aktualisiert eine App-Einstellung für eine App Service-App. App-Einstellungen werden als Umgebungsvariablen für Ihre App verfügbar gemacht (siehe [Referenz zu Umgebungsvariablen und App-Einstellungen](../reference-app-settings.md)). |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

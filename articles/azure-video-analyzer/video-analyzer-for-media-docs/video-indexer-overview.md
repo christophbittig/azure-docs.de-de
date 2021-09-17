@@ -9,12 +9,12 @@ ms.topic: overview
 ms.subservice: azure-video-analyzer-media
 ms.date: 07/15/2021
 ms.author: juliako
-ms.openlocfilehash: 79c6dc98bd214594b938cf74ce9176a64867fe3e
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: 9f7b76a0de33e89a17f89f3c93fc7de430a681c9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114711842"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734148"
 ---
 # <a name="what-is-video-analyzer-for-media"></a>Was ist Video Analyzer for Media?
 
@@ -74,7 +74,7 @@ In der folgenden Liste sind die Erkenntnisse aufgeführt, die Sie aus Ihren Vide
 
 ### <a name="audio-insights"></a>Erkenntnisse aus Audioaufnahmen
 
-* **Audiotranskription:** konvertiert Sprache in Text in 12 Sprachen und lässt Erweiterungen zu. Unterstützt werden Arabisch, Chinesisch (Mandarin), Deutsch, Englisch, Französisch, Hindi, Italienisch, Japanisch, Koreanisch, Portugiesisch, Russisch und Spanisch.
+* **Audiotranskription**: Wandelt Spracherkennung in über 50 Sprachen um und lässt Erweiterungen zu. Unterstützte Sprachen: Englisch (USA), Englisch (Vereinigtes Königreich), Englisch (Australien), Spanisch, Spanisch (Mexiko), Französisch, Französisch (Kanada), Deutsch, Italienisch, Chinesisch (Mandarin), Chinesisch (Kantonesisch, traditionell), Chinesisch (vereinfacht), Japanisch, Russisch, Portugiesisch, Hindi, Tschechisch, Niederländisch, Polnisch, Dänisch, Norwegisch, Finnisch, Schwedisch, Thailändisch, Türkisch, Koreanisch, Arabisch (Ägypten), Arabisch (Arabische Republik Syrien), Arabisch (Israel), Arabisch (Irak), Arabisch (Jordanien), Arabisch (Kuwait), Arabisch (Libanon), Arabisch (Oman), Arabisch (Katar), Arabisch (Saudi-Arabien), Arabisch (Vereinigte Arabische Emirate), Arabisch (Palästinensische Autonomiebehörde) und Arabisch (modernes Hocharabisch) (Bahrain).
 * **Automatische Sprachenerkennung:** Die Lösung identifiziert automatisch die vorherrschend gesprochene Sprache. Unterstützt werden Chinesisch (Mandarin), Deutsch, Englisch, Französisch, Italienisch, Japanisch, Portugiesisch, Russisch und Spanisch. Falls die Sprache nicht zuverlässig identifiziert werden kann, geht Video Analyzer for Media davon aus, dass die gesprochene Sprache Englisch ist. Weitere Informationen finden Sie unter [Automatisches Identifizieren von gesprochener Sprache mit dem Modell zur Sprachenerkennung](language-identification-model.md).
 * **Spracherkennung und Transkription für mehrere Sprachen**: Erkennt die gesprochene Sprache in verschiedenen Segmenten automatisch anhand der Audiodaten. Die Funktion sendet jedes Segment der zu transkribierenden Mediendatei und kombiniert die Transkriptionen dann wieder zu einer einzigen Transkription. Weitere Informationen finden Sie unter [Automatisches Erkennen und Transkribieren mehrsprachiger Inhalte](multi-language-identification-transcription.md).
 * **Untertitelung:** erstellt Untertitel in drei Formaten: VTT, TTML und SRT.

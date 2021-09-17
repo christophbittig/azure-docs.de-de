@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 5d5b07e761d5ed38cb2083054708265189bdd72f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60b4eb7f827c1ed0084032b5e6cbe13a4c3dccb9
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101651575"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122180382"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lucidchart"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Lucidchart
 
@@ -38,6 +38,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Lucidchart unterstützt **SP**-initiiertes einmaliges Anmelden.
+* Lucidchart unterstützt die [**automatisierte** Benutzerbereitstellung und Bereitstellungsaufhebung](lucidchart-provisioning-tutorial.md) (empfohlen).
 * Lucidchart unterstützt die **Just-In-Time**-Benutzerbereitstellung.
 
 ## <a name="add-lucidchart-from-the-gallery"></a>Hinzufügen von Lucidchart aus dem Katalog

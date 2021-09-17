@@ -3,12 +3,12 @@ title: Erste Schritte mit Azure Video Analyzer im Azure-Portal – Azure
 description: In dieser Schnellstartanleitung werden die ersten Schritte mit Azure Video Analyzer im Azure-Portal erläutert.
 ms.topic: quickstart
 ms.date: 06/01/2021
-ms.openlocfilehash: 4ff89417a10e50ff404ce22b7c57a2c0e29322e6
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: df63755aa66399a2f457673ba17391d5b42f31a8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114601100"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734237"
 ---
 # <a name="quickstart-get-started-with-azure-video-analyzer-in-the-azure-portal"></a>Schnellstart: Erste Schritte mit Azure Video Analyzer im Azure-Portal
 
@@ -230,7 +230,7 @@ Wenn Sie diese Schnellstartanleitung verwenden, werden Ereignisse an IoT Hub ge
 
 ## <a name="use-direct-method-calls"></a>Verwenden von Aufrufen direkter Methoden
 
-Sie können jetzt Livevideostreams analysieren, indem Sie direkte Methoden aufrufen, die durch das Video Analyzer-Edgemodul verfügbar gemacht werden. Unter [Direkte Methoden in Azure Video Analyzer](direct-methods.md) können Sie sich mit den bereitgestellten direkten Methoden des Moduls vertraut machen.
+Sie können jetzt Livevideostreams analysieren, indem Sie direkte Methoden aufrufen, die durch das Video Analyzer-Edgemodul verfügbar gemacht werden. Unter [Direkte Methoden in Azure Video Analyzer](direct-methods.md) können Sie sich mit den bereitgestellten direkten Methoden des Moduls vertraut machen. Das Schema für die direkten Methoden finden Sie [hier](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/videoanalyzer/data-plane/VideoAnalyzer.Edge/preview/1.0.0/AzureVideoAnalyzerSdkDefinitions.json).
 
 ### <a name="enumerate-pipeline-topologies"></a>Aufzählen von Pipelinetopologien
 

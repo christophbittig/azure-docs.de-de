@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: e8b3b5c28d00b4d7c81fa3e245113119ae3134ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d98b7050b2472c1dd0405c213b450c719bcd8572
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555702"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322444"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Schnellstart: Erstellen eines Azure CDN-Profils und -Endpunkts
 
@@ -50,7 +50,7 @@ Nachdem Sie ein CDN-Profil erstellt haben, erstellen Sie damit einen Endpunkt.
     | **Ursprungstyp** | Wählen Sie **Speicher**. | 
     | **Hostname des Ursprungs** | Wählen Sie in der Dropdownliste den Hostnamen des von Ihnen verwendeten Azure Storage-Kontos aus, etwa *cdnstorageacct123.blob.core.windows.net*. |
     | **Ursprungspfad** | Lassen Sie dieses Feld leer. |
-    | **Header des Ursprungshosts** | Übernehmen Sie den Standardwert (der Hostname für das Speicherkonto). |  
+    | **Header des Ursprungshosts** | Übernehmen Sie den Standardwert (dies ist der Hostname des Ursprungs). |  
     | **Protokoll** | Übernehmen Sie den ausgewählten Standardoptionen **HTTP** und **HTTPS**. |
     | **Ursprungsport** | Behalten Sie die Standardportwerte bei. | 
     | **Optimiert für** | Behalten Sie die Standardauswahl **Allgemeine Webbereitstellung** bei. |

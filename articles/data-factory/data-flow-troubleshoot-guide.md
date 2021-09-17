@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: troubleshooting
 ms.date: 08/18/2021
-ms.openlocfilehash: 56a59d4acd9c1f8ed51f16e7c39cfb5cba949b6b
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 9925875f45f5715343ef50fff018b436966bb4c0
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446836"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123099614"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Problembehandlung bei Zuordnungsdatenflüssen in Azure Data Factory
 
@@ -495,7 +495,7 @@ In diesem Artikel werden die gängigen Problembehandlungsmethoden für Zuordnung
         
       :::image type="content" source="media/data-flow-troubleshoot-guide/configure-compute-type.png" alt-text="Screenshot: Konfiguration des Compute-Typs":::   
 
-  - Option 2: Verwenden Sie eine größere Clustergröße (z. B. 48 Kerne), um Ihre Datenflusspipelines ausführen. Weitere Informationen zur Clustergröße finden Sie in diesem Dokument: [Clustergröße](./concepts-data-flow-performance.md#cluster-size).
+  - Option 2: Verwenden Sie eine größere Clustergröße (z. B. 48 Kerne), um Ihre Datenflusspipelines ausführen. Weitere Informationen zur Clustergröße finden Sie in diesem Dokument: [Clustergröße](./concepts-integration-runtime-performance.md#cluster-size).
   
   - Option-3: Neupartitionierung Ihrer Eingabedaten. Bei Aufgaben, die im Datenfluss-Spark-Cluster ausgeführt werden, stellt eine Aufgabe eine Partition dar, die auf einem Knoten ausgeführt wird. Wenn die Daten in einer Partition zu groß sind, verbraucht die zugehörige Aufgabe, die auf dem Knoten ausgeführt wird, mehr Arbeitsspeicher als der Knoten selbst, wodurch ein Fehler auftritt. Sie können die Neupartitionierung verwenden, um Datenschiefe zu vermeiden und sicherzustellen, dass die Datengröße in jeder Partition durchschnittlich groß ist, während der Arbeitsspeicherverbrauch nicht zu hoch ist.
     
@@ -706,7 +706,7 @@ Im Folgenden finden Sie spezifische Szenarien, die interne Serverfehler verursac
 
   Die erfolgreiche Ausführung eines Datenflusses hängt von vielen Faktoren ab. Hierzu zählen unter anderem die/der Computegröße/-typ, die Anzahl der zu verarbeitenden Quellen/Senken, die Partitionsspezifikation, die erforderlichen Transformationen,die Größe von Datasets sowie die Datenschiefe.<br/>
   
-  Weitere Hinweise finden Sie unter [Optimieren der Azure Integration Runtime](concepts-data-flow-performance.md#ir).
+  Weitere Anleitungen finden Sie unter [Leistung der Integration Runtime](concepts-integration-runtime-performance.md).
 
 #### <a name="scenario-2-using-debug-sessions-with-parallel-activities"></a>Szenario 2: Verwenden von Debugsitzungen mit parallelen Aktivitäten
 
@@ -725,7 +725,7 @@ Im Folgenden finden Sie spezifische Szenarien, die interne Serverfehler verursac
 Weitere Hilfe zur Problembehandlung finden Sie in diesen Ressourcen:
 
 *  [Data Factory-Blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [Data Factory-Funktionsanfragen](https://feedback.azure.com/forums/270578-data-factory)
+*  [Data Factory-Funktionsanfragen](/answers/topics/azure-data-factory.html)
 *  [Azure-Videos](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Stack Overflow-Forum für Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Twitter-Informationen über Data Factory](https://twitter.com/hashtag/DataFactory)

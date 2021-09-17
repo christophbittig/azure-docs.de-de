@@ -9,14 +9,17 @@ ms.subservice: extensions
 ms.date: 01/30/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
-ms.openlocfilehash: 013404113c3346cfce752f53266062a3b5386092
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 1aa6a3291ef5d770104697669ec20468d91efc66
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673957"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690500"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Bereitstellen des Sequenzierens von Erweiterungen in VM-Skalierungsgruppen
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Einheitliche Skalierungsgruppen
+
 Azure-VM-Erweiterungen bieten Funktionen wie die Konfiguration nach der Bereitstellung sowie Verwaltung, Überwachung, Sicherheit und vieles mehr. Bei Produktionsbereitstellungen wird in der Regel eine Kombination von mehreren Erweiterungen verwendet, die so konfiguriert sind, dass die VM-Instanzen die gewünschten Ergebnisse erzielen.
 
 Wenn Sie mehrere Erweiterungen auf einem virtuellen Computer verwenden, müssen Sie sicherstellen, dass Erweiterungen, die die gleichen Betriebssystemressourcen erfordern, nicht versuchen, diese Ressourcen gleichzeitig abzurufen. Einige Erweiterungen hängen auch davon ab, dass andere Erweiterungen die erforderlichen Konfigurationen bereitstellen, wie z.B. Umgebungseinstellungen und Geheimnisse. Ohne die richtige Reihenfolge und Sequenzierung können bei abhängigen Erweiterungsbereitstellungen Fehler auftreten.

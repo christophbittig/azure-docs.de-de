@@ -8,23 +8,23 @@ ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
 ms.custom: devx-track-js
-ms.openlocfilehash: b7191e4d1cff49ff31fa66f80c3aafbc4dfd9924
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: 8132ed61a1588c8ccdeb2ac9dc0eb6b5354fd0e0
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109814278"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122778845"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps"></a>Konfigurieren von Anwendungseinstellungen für Azure Static Web Apps
 
 Anwendungseinstellungen enthalten Konfigurationseinstellungen für Werte, die sich ggf. ändern können, z. B. Datenbank-Verbindungszeichenfolgen. Indem Sie Anwendungseinstellungen hinzufügen, können Sie die Konfigurationseingabe für Ihre App ändern, ohne dass Sie dafür den Anwendungscode ändern müssen.
 
-Für Anwendungseinstellungen gilt Folgendes:
+Anwendungseinstellungen:
 
-- Sie sind im Ruhezustand verschlüsselt.
-- Sie werden in [Staging](review-publish-pull-requests.md)- und Produktionsumgebungen kopiert.
-
-Anwendungseinstellungen werden auch als Umgebungsvariablen bezeichnet.
+- Sind im Ruhezustand verschlüsselt.
+- Werden in [Staging](review-publish-pull-requests.md)- und Produktionsumgebungen kopiert.
+- Dürfen nur alphanumerische Zeichen, `.` und `_` enthalten.
+- Werden gelegentlich auch als Umgebungsvariablen bezeichnet.
 
 > [!IMPORTANT]
 > Die in diesem Artikel beschriebenen Anwendungseinstellungen gelten nur für die Back-End-API einer statischen Azure-Web-App.

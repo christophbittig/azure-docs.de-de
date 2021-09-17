@@ -7,12 +7,12 @@ services: web-application-firewall
 ms.topic: tutorial
 ms.date: 09/16/2020
 ms.author: victorh
-ms.openlocfilehash: 9579d0da3347bdd4ecc627662cee42f909cbfaf7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a8710bac1d3161581f1002aa2d7531350c197be1
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92132770"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696714"
 ---
 # <a name="tutorial-create-a-waf-policy-on-azure-cdn-using-the-azure-portal"></a>Tutorial: Erstellen einer WAF-Richtlinie für Azure CDN über das Azure-Portal
 
@@ -39,8 +39,8 @@ Erstellen Sie zuerst im Portal mithilfe des verwalteten Standardregelsatzes eine
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
     | Richtlinie für            |Wählen Sie Azure CDN (Vorschau) aus.|
-    | Subscription            |Wählen Sie den Namen Ihres Front Door-Abonnements aus.|
-    | Resource group          |Wählen Sie den Namen Ihrer Front Door-Ressourcengruppe aus.|
+    | Subscription            |Wählen Sie den Abonnementnamen Ihres CDN-Profils aus.|
+    | Resource group          |Wählen Sie den Ressourcengruppennamen Ihres CDN-Profils aus.|
     | Richtlinienname             |Geben Sie einen eindeutigen Namen für Ihre WAF-Richtlinie ein.|
 
    :::image type="content" source="../media/waf-cdn-create-portal/basic.png" alt-text="Screenshot: Seite „WAF-Richtlinie erstellen“ mit der Schaltfläche „Überprüfen + erstellen“ und eingegebenen Werten für verschiedene Einstellungen" border="false":::

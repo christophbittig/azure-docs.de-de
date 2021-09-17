@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/13/2021
+ms.date: 08/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 5affe9f8876ef8d69a585119155d6cdd77ab46ac
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 847e80822cffe0a1a1daaf7595062b2e7a522ab5
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110078728"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772198"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alertmedia"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit AlertMedia
 
@@ -39,6 +39,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * AlertMedia unterstützt **IDP-initiiertes** einmaliges Anmelden.
 * AlertMedia unterstützt die **Just-In-Time**-Benutzerbereitstellung.
+* AlertMedia unterstützt die [automatisierte Benutzerbereitstellung](alertmedia-provisioning-tutorial.md).
 
 ## <a name="add-alertmedia-from-the-gallery"></a>Hinzufügen von AlertMedia aus dem Katalog
 

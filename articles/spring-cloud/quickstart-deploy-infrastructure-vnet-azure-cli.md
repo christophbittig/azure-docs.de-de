@@ -2,18 +2,18 @@
 title: 'Schnellstart: Bereitstellen von Azure Spring Cloud mithilfe der Azure CLI'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Azure CLI einen Spring Cloud-Cluster in einem vorhandenen virtuellen Netzwerk bereitstellen.
 services: azure-cli
-author: vinodramasubbu
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.custom: devx-track-azurecli, devx-track-java
 ms.author: vramasubbu
 ms.date: 06/15/2021
-ms.openlocfilehash: 7eb9b1a3194398dff60b72d1bc65f6ad71cb6822
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: a8dd727b0f0f999f1b0b8e6c9b6ed5977779f5ff
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114289478"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271373"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-using-azure-cli"></a>Schnellstart: Bereitstellen von Azure Spring Cloud mithilfe der Azure CLI
 
@@ -24,7 +24,7 @@ Mit Azure Spring Cloud lassen sich Spring Boot-Microserviceanwendungen ganz ein
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Azure-Abonnement. Wenn Sie kein Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
-* Zwei dedizierte Subnetze für den Azure Spring Cloud-Cluster, eines für die Dienstruntime und ein weiteres für die Spring Boot-Microserviceanwendungen. Die Anforderungen an Subnetze und virtuelle Netzwerke finden Sie im Abschnitt [Anforderungen für virtuelle Netzwerke](how-to-deploy-in-azure-virtual-network.md#virtual-network-requirements) des Artikels [Bereitstellen von Azure Spring Cloud in einem virtuellen Netzwerk](how-to-deploy-in-azure-virtual-network.md).
+* Zwei dedizierte Subnetze für den Azure Spring Cloud-Cluster, eines für die Dienstruntime und ein weiteres für die Spring Boot-Microserviceanwendungen. Die Anforderungen an Subnetze und virtuelle Netzwerke finden Sie im Abschnitt [Anforderungen für virtuelle Netzwerke](how-to-deploy-in-azure-virtual-network.md#virtual-network-requirements) des Artikels [Bereitstellen von Azure Spring Cloud in einem virtuellen Netzwerk](how-to-deploy-in-azure-virtual-network.md).
 * Ein vorhandener Log Analytics-Arbeitsbereich für Azure Spring Cloud-Diagnoseeinstellungen und eine arbeitsbereichsbasierte Application Insights-Ressource. Weitere Informationen finden Sie unter [Analysieren von Protokollen und Metriken mit Diagnoseeinstellungen](diagnostic-services.md) und [Java-In-Process-Agent für Application Insights in Azure Spring Cloud](how-to-application-insights.md).
 * Drei interne CIDR-Bereiche (Classless Inter-Domain Routing) (mindestens jeweils */16*), die Sie für die Verwendung durch den Azure Spring Cloud-Cluster identifiziert haben. Diese CIDR-Bereiche sind nicht direkt routingfähig und werden nur intern vom Azure Spring Cloud-Cluster verwendet. Cluster dürfen nicht *169.254.0.0/16*, *172.30.0.0/16*, *172.31.0.0/16* oder *192.0.2.0/24* für die internen Spring Cloud-CIDR-Bereiche verwenden, oder IP-Adressbereiche, die im Adressbereich des virtuellen Netzwerks des Clusters enthalten sind.
 * Dienstberechtigung, die dem virtuellen Netzwerk erteilt wurde. Der Azure Spring Cloud-Ressourcenanbieter erfordert die Berechtigung vom Typ „Besitzer“ für Ihr virtuelles Netzwerk, damit ein dedizierter und dynamischer Dienstprinzipal im virtuellen Netzwerk für die weitere Bereitstellung und Wartung gewährt werden kann. Anweisungen und weitere Informationen finden Sie im Abschnitt [Erteilen der Dienstberechtigung für das virtuelle Netzwerk](how-to-deploy-in-azure-virtual-network.md#grant-service-permission-to-the-virtual-network) des Artikels [Bereitstellen von Azure Spring Cloud in einem virtuellen Netzwerk](how-to-deploy-in-azure-virtual-network.md).
@@ -157,7 +157,7 @@ Führen Sie die folgenden Schritte aus, um den Azure Spring Cloud-Cluster mithil
    az account list-locations --output table
    ```
 
-1. Erstellen Sie eine Ressourcengruppe, in der die Ressource bereitgestellt werden soll: 
+1. Erstellen Sie eine Ressourcengruppe, in der die Ressource bereitgestellt werden soll:
 
    ```azurecli
    az group create --name <your-resource-group-name> --location <location-name>
@@ -172,38 +172,28 @@ Führen Sie die folgenden Schritte aus, um den Azure Spring Cloud-Cluster mithil
 1. Geben Sie bei Aufforderung durch das Skript die folgenden Werte ein:
 
    - Die zuvor gespeicherte Azure-Abonnement-ID
-
    - Den zuvor gespeicherten Namen des Azure-Standorts
-
    - Den Namen der zuvor erstellten Ressourcengruppe
-
    - Den Namen der Ressourcengruppe des virtuellen Netzwerks, in der Sie Ihre Ressourcen bereitstellen
-
-   - Der Name des virtuellen Spokenetzwerks (z. B. *vnet-spoke*)
-
-   - Den Namen des Subnetzes, das von Spring Cloud App Service verwendet werden soll (z. B. *snet-app*)
-
+   - Name des virtuellen Spokenetzwerks (z. B. *vnet-spoke*)
+   - Name des Subnetzes, das von Spring Cloud App Service verwendet werden soll (z. B. *snet-app*)
    - Den Namen des Subnetzes, das vom Spring Cloud-Laufzeitdienst verwendet werden soll (z. B. *snet-runtime*)
-
    - Den Namen der Ressourcengruppe für den Azure Log Analytics-Arbeitsbereich, der zum Speichern von Diagnoseprotokollen verwendet werden soll
-
    - Den Namen des Azure Log Analytics-Arbeitsbereichs (z. B. *la-cb5sqq6574o2a*)
-
    - Die CIDR-Bereiche Ihres virtuellen Netzwerks, die von Azure Spring Cloud verwendet werden sollen (z. B. *XX.X.X.X/16,XX.X.X.X/16,XX.X.X.X/16*)
-
-   - Die Schlüssel-Wert-Paare, die als Tags auf alle Ressourcen angewendet werden sollen, die Tags unterstützen. Unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen und Verwaltungshierarchie](../azure-resource-manager/management/tag-resources.md) erhalten Sie weitere Informationen. Verwenden Sie eine durch Leerzeichen getrennte Liste, um mehrere Tags anzuwenden (z. B. *environment=Dev BusinessUnit=finance*)
+   - Schlüssel-Wert-Paare, die als Tags auf alle Ressourcen angewendet werden sollen, die Tags unterstützen. Unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen und Verwaltungshierarchie](../azure-resource-manager/management/tag-resources.md) erhalten Sie weitere Informationen. Verwenden Sie eine durch Leerzeichen getrennte Liste, um mehrere Tags anzuwenden (z. B. *environment=Dev BusinessUnit=finance*)
 
 Nach Angabe dieser Informationen werden die Azure-Ressourcen vom Skript erstellt und bereitgestellt.
 
 ## <a name="review-deployed-resources"></a>Überprüfen der bereitgestellten Ressourcen
 
-Sie können entweder das Azure-Portal nutzen, um die bereitgestellten Ressourcen zu überprüfen, oder Azure CLI oder ein Azure PowerShell-Skript, um die bereitgestellten Ressourcen aufzulisten.
+Sie können entweder das Azure-Portal nutzen, um die bereitgestellten Ressourcen zu überprüfen, oder die Azure CLI, um die bereitgestellten Ressourcen aufzulisten.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Falls Sie mit weiteren Schnellstartanleitungen und Tutorials fortfahren möchten, sollten Sie die Ressourcen nicht bereinigen. Wenn Sie die Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe. Dadurch werden die Ressourcen in der Ressourcengruppe gelöscht. Wenn Sie die Ressourcengruppe mithilfe der Azure CLI löschen möchten, verwenden Sie die folgenden Befehle:
 
-```azurecli-interactive
+```azurecli
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
 az group delete --name $resourceGroupName &&

@@ -3,18 +3,18 @@ title: Rechnungen für die Azure Enterprise-Registrierung
 description: In diesem Artikel wird erläutert, wie Sie Ihre Azure-Unternehmensrechnung verwalten und Aktionen dafür ausführen.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/05/2021
+ms.date: 08/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: ruturajd
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 8750ad846b832eb4fe037568d3b99f299cfe121b
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 77f463d34ebd05e39876933d65631371acff1707
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109790629"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515719"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Rechnungen für die Azure Enterprise-Registrierung
 
@@ -316,7 +316,7 @@ Die kombinierte Rechnung zeigt zunächst die Azure-Nutzung und dann alle Azure M
 
 Wenn am Ende des Standardabrechnungszyklus keine Überschreitungsrechnung erstellt wird, werden die Gebühren separat abgerechnet. Dieser Prozess gilt für Kunden in Australien, Japan und Singapur.
 
-Die folgenden Dienste werden separat in Rechnung gestellt:
+Die folgenden Dienste sind Beispiele für separat abgerechnete Gebühren. Sie können eine vollständige Liste der Dienste erhalten, bei denen Gebühren separat abgerechnet werden, indem Sie eine [Supportanfrage senden](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
 - Canonical
 - Citrix XenApp Essentials

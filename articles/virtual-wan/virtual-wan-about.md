@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: overview
 ms.date: 06/02/2021
 ms.author: cherylmc
-ms.openlocfilehash: b62f531c355852dd8a66f8186d4bd73a875e6948
-ms.sourcegitcommit: b59e0afdd98204d11b7f9b6a3e55f5a85d8afdec
+ms.openlocfilehash: 97ecb049d4307bacf6c9a7b73d08e3d25e05f112
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114371618"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821665"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Was ist Azure Virtual WAN?
 
@@ -51,11 +51,11 @@ Sie erstellen die folgenden Ressourcen, um ein virtuelles End-to-End-WAN zu konf
 
 * **virtualWAN:** Die Ressource „virtualWAN“ stellt eine virtuelle Überlagerung Ihres Azure-Netzwerks dar und ist eine Sammlung aus mehreren Ressourcen. Sie enthält Links zu allen virtuellen Hubs, die Teil des virtuellen WAN sein sollen. Virtual WAN-Ressourcen sind voneinander isoliert und können keinen gemeinsamen Hub enthalten. Virtuelle Hubs in Virtual WAN kommunizieren nicht miteinander.
 
-* **Hub:** Ein virtueller Hub ist ein von Microsoft verwaltetes virtuelles Netzwerk. Der Hub enthält verschiedene Dienstendpunkte zum Ermöglichen von Konnektivität. In Ihrem lokalen Netzwerk (vpnsite) können Sie sich innerhalb des virtuellen Hubs mit einer VPN Gateway-Instanz verbinden, ExpressRoute-Leitungen mit einem virtuellen Hub verbinden oder sogar mobile Benutzer mit einem Point-to-Site-Gateway im virtuellen Hub verbinden. Der Hub ist der Kern Ihres Netzwerks in einer Region. Es kann nur ein Hub pro Azure-Region vorhanden sein.
+* **Hub:** Ein virtueller Hub ist ein von Microsoft verwaltetes virtuelles Netzwerk. Der Hub enthält verschiedene Dienstendpunkte zum Ermöglichen von Konnektivität. In Ihrem lokalen Netzwerk (vpnsite) können Sie sich innerhalb des virtuellen Hubs mit einer VPN Gateway-Instanz verbinden, ExpressRoute-Leitungen mit einem virtuellen Hub verbinden oder sogar mobile Benutzer mit einem Point-to-Site-Gateway im virtuellen Hub verbinden. Der Hub ist der Kern Ihres Netzwerks in einer Region. In derselben Region können mehrere virtuelle Hubs erstellt werden. 
 
   Ein Hub-Gateway ist nicht das gleiche wie ein Gateway für virtuelle Netzwerke, das Sie für ExpressRoute und VPN Gateway verwenden. Bei der Verwendung von Virtual WAN erstellen Sie beispielsweise von Ihrer lokalen Site aus keine direkte Site-to-Site-Verbindung mit Ihrem VNET. Stattdessen erstellen Sie eine Site-to-Site-Verbindung mit dem Hub. Der Datenverkehr verläuft immer über das Hub-Gateway. Dies bedeutet, dass Ihre VNETs kein eigenes Gateway für virtuelle Netzwerke benötigen. Mit Virtual WAN können Sie für Ihre VNETs über den virtuellen Hub und das virtuelle Hub-Gateway leicht eine Skalierung durchführen.
 
-* **Virtuelle Netzwerkverbindung für Hub:** Die Ressource für die virtuelle Netzwerkverbindung für den Hub wird verwendet, um den Hub nahtlos mit Ihrem virtuellen Netzwerk zu verbinden.
+* **Virtuelle Netzwerkverbindung für Hub:** Die Ressource für die virtuelle Netzwerkverbindung für den Hub wird verwendet, um den Hub nahtlos mit Ihrem virtuellen Netzwerk zu verbinden. Ein virtuelles Netzwerk kann nur mit einem virtuellen Hub verbunden werden. 
 
 * **Hub-zu-Hub-Verbindung:** In einem virtuellen WAN sind alle Hubs miteinander verbunden. Dies bedeutet, dass mit einem lokalen Hub verbundene Niederlassungen, Benutzer oder VNETs mit einer anderen Niederlassung oder anderen VNETs mithilfe der vollständig vernetzten Architektur der verbundenen Hubs kommunizieren können. Sie können auch über das vernetzte Hub-zu-Hub-Framework VNETs innerhalb eines Hubs, der durch den virtuellen Hub führt, sowie VNETs zwischen Hubs verbinden.
 

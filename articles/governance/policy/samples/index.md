@@ -1,14 +1,14 @@
 ---
 title: Index der Richtlinienbeispiele
 description: Index der Integrationen für Azure Policy Kategorietags, Einhaltung gesetzlicher Bestimmungen, Key Vault, Kubernetes, Gastkonfiguration und vieles mehr
-ms.date: 07/16/2021
+ms.date: 08/13/2021
 ms.topic: sample
-ms.openlocfilehash: 3156c992ba0914fc5f244515b0027438567310a5
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: ca5c973b8efe6ec97eb5d4e6dada5418d7433c0f
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114387574"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122180082"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy-Beispiele
 
@@ -35,22 +35,41 @@ Nachfolgend finden Sie Beispiele für verschiedene Muster, in der die Sprache un
 
 ## <a name="regulatory-compliance"></a>Einhaltung gesetzlicher Bestimmungen
 
-Dies sind die Integrationen zur [Einhaltung gesetzlicher Bestimmungen](../concepts/regulatory-compliance.md):
+Dies sind die Integrationen zur [Einhaltung gesetzlicher Bestimmungen](../concepts/regulatory-compliance.md) in Azure:
 
+- [ISM PROTECTED der australischen Regierung](./australia-ism.md)
 - [Azure-Sicherheitsvergleichstest v2](./azure-security-benchmark.md)
 - [Azure-Sicherheitsvergleichstest v1](./azure-security-benchmarkv1.md)
 - [Canada Federal PBMM](./canada-federal-pbmm.md)
 - [CIS Microsoft Azure Foundations Benchmark v1.3.0](./cis-azure-1-3-0.md)
 - [CIS Microsoft Azure Foundations Benchmark v1.1.0](./cis-azure-1-1-0.md)
 - [CMMC Level 3](./cmmc-l3.md)
+- [FedRAMP Moderate](./fedramp-moderate.md)
+- [FedRAMP High](./fedramp-high.md)
 - [HIPAA HITRUST 9.2](./hipaa-hitrust-9-2.md)
 - [IRS 1075, September 2016](./irs-1075-sept2016.md)
 - [ISO 27001:2013](./iso-27001.md)
 - [Durch New Zealand ISM eingeschränkt](./new-zealand-ism.md)
-- [NIST SP 800-53 R5](./nist-sp-800-53-r5.md)
-- [NIST SP 800-53 R4](./nist-sp-800-53-r4.md)
+- [NIST SP 800-53 Rev. 5](./nist-sp-800-53-r5.md)
+- [NIST SP 800-53 Rev. 4](./nist-sp-800-53-r4.md)
 - [NIST SP 800-171 R2](./nist-sp-800-171-r2.md)
 - [UK OFFICIAL und UK NHS](./ukofficial-uknhs.md)
+
+Dies sind die Integrationen zur [Einhaltung gesetzlicher Bestimmungen](../concepts/regulatory-compliance.md) in Azure Government:
+
+- [Azure-Sicherheitsvergleichstest v2](./gov-azure-security-benchmark.md)
+- [CIS Microsoft Azure Foundations Benchmark v1.3.0](./gov-cis-azure-1-3-0.md)
+- [CIS Microsoft Azure Foundations Benchmark v1.1.0](./gov-cis-azure-1-1-0.md)
+- [CMMC Level 3](./gov-cmmc-l3.md)
+- [DoD-Auswirkungsstufe 4](./gov-dod-impact-level-4.md)
+- [DoD-Auswirkungsstufe 5](./gov-dod-impact-level-5.md)
+- [FedRAMP Moderate](./gov-fedramp-moderate.md)
+- [FedRAMP High](./gov-fedramp-high.md)
+- [IRS 1075, September 2016](./gov-irs-1075-sept2016.md)
+- [ISO 27001:2013](./gov-iso-27001.md)
+- [NIST SP 800-53 Rev. 5](./gov-nist-sp-800-53-r5.md)
+- [NIST SP 800-53 Rev. 4](./gov-nist-sp-800-53-r4.md)
+- [NIST SP 800-171 R2](./gov-nist-sp-800-171-r2.md)
 
 ## <a name="other-samples"></a>Weitere Beispiele
 

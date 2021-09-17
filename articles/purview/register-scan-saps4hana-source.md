@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: a0e6a02aed59cbe968abb0df5c3fb612c8f2d3b0
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: 811078d18d6659e600cb5b0931dcf2a217a8856e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113551684"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751887"
 ---
 # <a name="register-and-scan-a-sap-s4hana-source"></a>Registrieren und Überprüfen einer SAP S/4HANA-Quelle
 
@@ -54,7 +54,7 @@ Die einzige unterstützte Authentifizierung für eine SAP S/4HANA-Quelle ist die
 Gehen Sie wie folgt vor, um in Ihrem Datenkatalog eine neue SAP S/4HANA-Quelle zu registrieren:
 
 1.  Navigieren Sie zu Ihrem Purview-Konto.
-2.  Wählen Sie im linken Navigationsbereich die Option **Quellen** aus.
+2.  Wählen Sie im linken Navigationsbereich **Data Map** aus.
 3.  Wählen Sie **Registrieren** aus.
 4.  Wählen Sie unter „Quellen registrieren“ die Option **SAP S/4HANA** aus. Wählen Sie **Weiter** aus.
 

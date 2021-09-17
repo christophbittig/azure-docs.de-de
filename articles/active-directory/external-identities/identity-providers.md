@@ -5,23 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 07/26/2021
+ms.date: 08/30/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f867e0091d792ef88b79f1c1bb7f4272a35e928
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: ca0592741018f054640b1d695f643695e4782518
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114721375"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222137"
 ---
 # <a name="identity-providers-for-external-identities"></a>Identitätsanbieter für externe Identitäten
 
 Ein *Identitätsanbieter* erstellt und verwaltet die Identitätsinformationen und stellt gleichzeitig Authentifizierungsdienste für Anwendungen bereit. Wenn Sie Ihre Apps und Ressourcen für externe Benutzer freigeben, ist Azure AD der Standardidentitätsanbieter für die Freigabe. Dies bedeutet Folgendes: Wenn Sie externe Benutzer einladen, die bereits über ein Azure AD- oder Microsoft-Konto verfügen, können sich diese Benutzer automatisch anmelden, ohne dass Sie weitere Konfigurationsschritte ausführen müssen.
 
-Zusätzlich zu Azure AD-Konten bietet External Identities verschiedene Identitätsanbieter.
+External Identities bietet verschiedene Identitätsanbieter.
+
+- **Azure Active Directory-Konten**: Gastbenutzer können ihre Azure AD-Arbeits- oder Schulkonten verwenden, um Ihre Einladungen für die B2B-Zusammenarbeit einzulösen oder Ihre Benutzerflows für die Registrierung abzuschließen. [Azure Active Directory](azure-ad-account.md) ist standardmäßig einer der zulässigen Identitätsanbieter. Es ist keine zusätzliche Konfiguration erforderlich, um diesen Identitätsanbieter für Benutzerflows verfügbar zu machen.
 
 - **Microsoft-Konten**: Gastbenutzer können ihr eigenes persönliches Microsoft-Konto (MSA) verwenden, um Ihre Einladungen zur B2B-Zusammenarbeit anzunehmen. Wenn Sie einen Benutzerflow für die Self-Service-Registrierung einrichten, können Sie [Microsoft-Konto](microsoft-account.md) als einen der zulässigen Identitätsanbieter hinzufügen. Es ist keine zusätzliche Konfiguration erforderlich, um diesen Identitätsanbieter für Benutzerflows verfügbar zu machen.
 

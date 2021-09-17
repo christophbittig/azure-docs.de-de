@@ -10,14 +10,15 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 4d41c4b9157791f29c4d2ba1873c2e5b458d45a9
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: a4fe089672b1d62d321c1306983acfb66f5c0579
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110667984"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688615"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Tutorial: Schützen eines Webservers auf einem virtuellen Windows-Computer in Azure mit in Key Vault gespeicherten TLS/SSL-Zertifikaten
+**Gilt für:** :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
 > [!NOTE]
 > Derzeit gilt dieses Dokument nur für generalisierte Images. Wenn Sie in diesem Tutorial einen spezialisierten Datenträger verwenden, tritt ein Fehler auf. 

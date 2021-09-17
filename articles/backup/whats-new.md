@@ -2,13 +2,13 @@
 title: Neuerungen in Azure Backup
 description: Erfahren Sie mehr über die neuen Features in Azure Backup.
 ms.topic: conceptual
-ms.date: 05/05/2021
-ms.openlocfilehash: 7be5b96a8575c0bed9208ef5d700aca747411aa2
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 08/05/2021
+ms.openlocfilehash: f2c4e3fa492a4dfe3c42ffb615442d3c6c449404
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111959329"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122356415"
 ---
 # <a name="whats-new-in-azure-backup"></a>Neuerungen in Azure Backup
 
@@ -18,6 +18,8 @@ Weitere Informationen zu den neuen Releases erhalten Sie, indem Sie diese Seite 
 
 ## <a name="updates-summary"></a>Übersicht über Updates
 
+- Juli 2021
+  - [Unterstützung der Archivebene für SQL Server in Azure VM for Azure Backup jetzt allgemein verfügbar](#archive-tier-support-for-sql-server-in-azure-vm-for-azure-backup-is-now-generally-available)
 - Mai 2021
   - [Sicherung für Azure-Blobs ist jetzt allgemein verfügbar](#backup-for-azure-blobs-is-now-generally-available)
 - April 2021
@@ -44,6 +46,18 @@ Weitere Informationen zu den neuen Releases erhalten Sie, indem Sie diese Seite 
   - [Sichern von SAP HANA in Azure Virtual Machines unter RHEL (in der Vorschau)](#backup-sap-hana-in-rhel-azure-virtual-machines-in-preview)
   - [Zonenredundanter Speicher (ZRS) für Sicherungsdaten (in der Vorschau)](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Vorläufiges Löschen für SQL Server- und SAP HANA-Workloads auf Azure-VMs](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="archive-tier-support-for-sql-server-in-azure-vm-for-azure-backup-is-now-generally-available"></a>Unterstützung der Archivebene für SQL Server in Azure VM for Azure Backup jetzt allgemein verfügbar
+
+Mit Azure Backup können Sie Ihre langfristigen Aufbewahrungspunkte für Azure Virtual Machines und SQL Server in Azure Virtual Machines auf die kostengünstige Archivebene verschieben. Sie können auch von den Wiederherstellungspunkten der Tresorarchivebene wiederherstellen.
+
+Zusätzlich zur Möglichkeit, die Wiederherstellungspunkte zu verschieben:
+
+- Azure Backup bietet Empfehlungen zum Verschieben einer bestimmten Gruppe von Wiederherstellungspunkten für Azure Virtual Machine-Sicherungen, die Kosteneinsparungen ermöglichen.
+- Mithilfe von Beispielskripts können Sie alle Wiederherstellungspunkte für eine bestimmte Sicherung gleichzeitig verschieben.
+- Sie können die Nutzung des Archivspeichers auf dem Tresordashboard anzeigen.
+
+Weitere Informationen finden Sie unter [Unterstützung der Zugriffsebene „Archiv“](./archive-tier-support.md).
 
 ## <a name="backup-for-azure-blobs-is-now-generally-available"></a>Sicherung für Azure-Blobs ist jetzt allgemein verfügbar
 
@@ -103,7 +117,7 @@ Weitere Informationen finden Sie unter [Azure Resource Manager-Vorlagen für Azu
 
 Azure Backup unterstützt jetzt inkrementelle Sicherungen für SAP HANA-Datenbanken, die auf Azure-VMs gehostet werden. Dies ermöglicht schnellere und kostengünstigere Sicherungen Ihrer SAP HANA-Daten.
 
-Weitere Informationen finden Sie unter den [verschiedenen Optionen, die während der Erstellung einer Sicherungsrichtlinie verfügbar sind](/azure/backup/sap-hana-faq-backup-azure-vm.yml#policy), und unter [Erstellen einer Sicherungsrichtlinie für SAP HANA-Datenbanken](tutorial-backup-sap-hana-db.md#creating-a-backup-policy).
+Weitere Informationen finden Sie unter den [verschiedenen Optionen, die während der Erstellung einer Sicherungsrichtlinie verfügbar sind](/azure/backup/sap-hana-faq-backup-azure-vm#policy), und unter [Erstellen einer Sicherungsrichtlinie für SAP HANA-Datenbanken](tutorial-backup-sap-hana-db.md#creating-a-backup-policy).
 
 ## <a name="backup-center-in-preview"></a>Backup Center (in der Vorschau)
 

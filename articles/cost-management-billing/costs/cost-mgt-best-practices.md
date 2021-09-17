@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: bb40946bc01b6bd241f542b3987e8a2e7d570794
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 26b48e4f5ed50b547c8ec628fc534e24dfeb252e
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331662"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122609543"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Optimieren der Cloudinvestitionen mit Azure Cost Management
 
@@ -162,7 +162,7 @@ Tags sind eine effektive Möglichkeit, um mehrere Teams und Azure-Bereiche über
 
 Auf ähnliche Weise könnten Sie auch Web-Apps oder Umgebungen, wie z. B. für Test oder Produktion, verwenden, die Ressourcen mehrere, im Besitz verschiedener Teams befindliche Abonnements übergreifend verwenden. Um die vollständigen Kosten der Workloads besser zu verstehen, kennzeichnen Sie die Ressourcen, die sie verwenden. Wenn Tags ordnungsgemäß angewendet werden, können Sie sie als Filter in der Kostenanalyse anwenden, um Trends besser zu verstehen.
 
-Nachdem Sie das Kennzeichnen von Ressourcen geplant haben, können Sie eine Azure-Richtlinie konfigurieren, um das Kennzeichnen von Ressourcen zu erzwingen. Sehen Sie sich das Video zum [Überprüfen der Tagrichtlinien mit Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) an, um die Tools zu verstehen, die Ihnen zur Durchsetzung einer skalierbaren Ressourcenkennzeichnung zur Verfügung stehen. Weitere Videos finden Sie im [YouTube-Kanal zu Cost Management](https://www.youtube.com/c/AzureCostManagement).
+Nachdem Sie das Tagging von Ressourcen geplant haben, können Sie eine Azure Policy-Definition konfigurieren, um das Tagging von Ressourcen zu erzwingen. Sehen Sie sich das Video zum [Überprüfen der Tagrichtlinien mit Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) an, um die Tools zu verstehen, die Ihnen zur Durchsetzung einer skalierbaren Ressourcenkennzeichnung zur Verfügung stehen. Weitere Videos finden Sie im [YouTube-Kanal zu Cost Management](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/nHQYcYGKuyw]
 

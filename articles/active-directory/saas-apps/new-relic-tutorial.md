@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/02/2021
 ms.author: jeedes
-ms.openlocfilehash: a2c149bfdf79102779abf7544fed9fb78796a50e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d04d2aa68eecc4b18f0ec1e3bfd1f6cb4d279bc0
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649957"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178861"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic-by-account"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit New Relic by Account
 
@@ -38,6 +38,8 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * New Relic by Account unterstützt **SP-initiiertes** einmaliges Anmelden.
+* New Relic unterstützt die [**automatisierte Benutzerbereitstellung und Bereitstellungsaufhebung**](new-relic-by-organization-provisioning-tutorial.md) (empfohlen).
+
 
 ## <a name="add-new-relic-by-account-from-the-gallery"></a>Hinzufügen von New Relic by Account aus dem Katalog
 

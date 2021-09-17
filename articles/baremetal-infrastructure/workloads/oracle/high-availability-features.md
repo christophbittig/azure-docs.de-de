@@ -4,12 +4,12 @@ description: Hier finden Sie Informationen zu den Features, die in BareMetal fü
 ms.topic: overview
 ms.subservice: baremetal-oracle
 ms.date: 04/16/2021
-ms.openlocfilehash: 52bd9856b9203dfc515d5507fda310d567e1b588
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: 73473cb99521be76be5518ad82dfbb9ec9d1feb0
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110579136"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862478"
 ---
 # <a name="high-availability-features-for-oracle-on-azure-baremetal"></a>Hochverfügbarkeitsfeatures für Oracle in Azure BareMetal
 
@@ -55,9 +55,9 @@ Data Guard bietet Vorteile gegenüber der Replikation auf Speicherebene:
 - Die Lösung verhindert logische blockinterne Beschädigungen sowie Beschädigungen aufgrund von verlorenen Schreibvorgängen (Lost Write). Darüber hinaus sorgt sie dafür, dass durch Speicheradministratoren verursachte Fehler nicht in der Standbydatenbank repliziert werden.
 Die Wiederholung kann für einen vordefinierten Zeitraum verzögert werden, sodass Benutzerfehler nicht sofort in der Standbydatenbank repliziert werden.
 
-## <a name="azure-netapp-files-snapshots"></a>Azure NetApp Files-Momentaufnahmen
+## <a name="baremetal-snapshot-recovery"></a>Wiederherstellung von BareMetal-Momentaufnahmen
 
-Mit der in BareMetal verwendeten NetApp Files-Speicherlösung können Sie Momentaufnahmen von Volumes erstellen. Mithilfe von Momentaufnahmen kann ein Dateisystem schnell auf einen bestimmten Zeitpunkt zurückgesetzt werden. Momentaufnahmetechnologien ermöglichen RTO-Zeiten (Recovery Time Objective), die einem Bruchteil der zeitaufwendigen Wiederherstellung einer Datenbanksicherung entsprechen.
+Die BareMetal-Speicherlösung unter Verwendung von NetApp, die in der Infrastruktur angeboten wird, ermöglicht Ihnen das Erstellen von Momentaufnahmen von Volumes. Mithilfe von Momentaufnahmen kann ein Dateisystem schnell auf einen bestimmten Zeitpunkt zurückgesetzt werden. Momentaufnahmetechnologien ermöglichen RTO-Zeiten (Recovery Time Objective), die einem Bruchteil der zeitaufwendigen Wiederherstellung einer Datenbanksicherung entsprechen.
 
 Die Momentaufnahmefunktion für Oracle-Datenbanken ist über Azure NetApp SnapCenter verfügbar. SnapCenter ermöglicht Momentaufnahmen zu Sicherungszwecken, SnapVault bietet Ihnen einen Offlinetresor, und Snap Clone ermöglicht Self-Service-Wiederherstellung und andere Vorgänge. Weitere Informationen finden Sie unter [SnapCenter-Integration für Oracle in BareMetal-Infrastruktur](netapp-snapcenter-integration-oracle-baremetal.md).
 

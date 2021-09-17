@@ -1,18 +1,21 @@
 ---
 title: Ausdrucks-Generator im Zuordnungsdatenfluss
-description: Erstellen von Ausdrücken mithilfe des Ausdrucks-Generators in Zuordnungsdatenflüssen in Azure Data Factory
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Erstellen von Ausdrücken mithilfe des Ausdrucks-Generators in Zuordnungsdatenflüssen in Azure Data Factory und Azure Synapse Analytics
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
+ms.subservice: data-flows
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 04/29/2021
-ms.openlocfilehash: e335176b5cd7c6c35477ac9318cf20ce4b64b82d
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.date: 08/24/2021
+ms.openlocfilehash: 7dd40b52cbc74e62a6dbb8ed83d19c968e48d9c4
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108291008"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822814"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>Erstellen von Ausdrücken im Zuordnungsdatenfluss
 
@@ -20,7 +23,7 @@ ms.locfileid: "108291008"
 
 Im Zuordnungsdatenfluss werden viele Transformationseigenschaften als Ausdrücke eingegeben. Diese Ausdrücke bestehen aus Spaltenwerten, Parametern, Funktionen, Operatoren und Literalen, die zur Laufzeit zu einem Spark-Datentyp ausgewertet werden. Die Zuordnung von Datenflüssen verfügt über eine dedizierte Funktion, die Sie bei der Erstellung dieser Ausdrücke unterstützen soll, den so genannten **Ausdrucks-Generator**. Der Ausdrucks-Generator nutzt die [IntelliSense](/visualstudio/ide/using-intellisense)-Codevervollständigung für Hervorhebung, Syntaxüberprüfung und automatische Vervollständigung und soll Ihnen das Erstellen von Datenflüssen erleichtern. In diesem Artikel wird erläutert, wie Sie den Ausdrucks-Generator verwenden, um Ihre Geschäftslogik effektiv zu erstellen.
 
-![Ausdrucks-Generator](media/data-flow/expresion-builder.png "Ausdrucks-Generator")
+:::image type="content" source="media/data-flow/expresion-builder.png" alt-text="Ausdrucks-Generator":::
 
 ## <a name="open-expression-builder"></a>Öffnen des Ausdrucks-Generators
 
@@ -173,7 +176,7 @@ toLong( currentTimestamp() - toTimestamp('1970-01-01 00:00:00.000', 'yyyy-MM-dd 
 ### <a name="data-flow-time-evaluation"></a>Auswertung der Datenflusszeit
 
 Der Datenfluss wird millisekundengenau verarbeitet. Für *2018-07-31T20:00:00.2170000* wird in der Ausgabe *2018-07-31T20:00:00.217* angezeigt.
-Im ADF-Portal wird der Zeitstempel in der **aktuellen Browsereinstellung** angezeigt. Dadurch wird „217“ unter Umständen entfernt. Wenn Sie den Datenfluss jedoch vollständig ausführen, wird „217“ (der Teil im Millisekundenbereich) ebenfalls verarbeitet. Sie können „toString(myDateTimeColumn)“ als Ausdruck verwenden und Daten mit vollständiger Genauigkeit in der Vorschau anzeigen. Verarbeiten Sie datetime für alle praktischen Zwecke als datetime und nicht als Zeichenfolge.
+Im Portal für den Dienst wird der Zeitstempel in der **aktuellen Browsereinstellung** angezeigt. Dadurch wird „217“ unter Umständen entfernt. Wenn Sie den Datenfluss jedoch vollständig ausführen, wird „217“ (der Teil im Millisekundenbereich) ebenfalls verarbeitet. Sie können „toString(myDateTimeColumn)“ als Ausdruck verwenden und Daten mit vollständiger Genauigkeit in der Vorschau anzeigen. Verarbeiten Sie datetime für alle praktischen Zwecke als datetime und nicht als Zeichenfolge.
  
 
 ## <a name="next-steps"></a>Nächste Schritte

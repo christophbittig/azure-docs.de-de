@@ -8,14 +8,16 @@ ms.service: virtual-machine-scale-sets
 ms.date: 09/09/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 6f9cc05e244b26ae881f2bc4d501c468a711b007
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f33cedfa9220510e23cfa5b1c72ac4182e9dd028
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934562"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692369"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Erstellen einer VM-Skalierungsgruppe mit Visual Studio
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 In diesem Artikel erfahren Sie, wie Sie eine Azure-VM-Skalierungsgruppe mithilfe einer Visual Studio Ressourcengruppe bereitstellen.
 

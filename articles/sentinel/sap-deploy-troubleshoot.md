@@ -6,14 +6,14 @@ ms.author: bagold
 ms.service: azure-sentinel
 ms.topic: troubleshooting
 ms.custom: mvc
-ms.date: 07/29/2021
+ms.date: 08/09/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: e3503b8f7464f66bd404b9b70196a017d9c058b6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 525048346edc184744a69c70c8fd4dc0db1bd554
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122354749"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681205"
 ---
 # <a name="troubleshooting-your-azure-sentinel-sap-solution-deployment"></a>Problembehandlung bei der Bereitstellung der Azure Sentinel-Lösung für SAP
 
@@ -33,27 +33,36 @@ Weitere Informationen finden Sie in der [Dokumentation zur Docker CLI](https://d
 
 ## <a name="review-system-logs"></a>Überprüfen von Systemprotokollen
 
-Es wird dringend empfohlen, die Systemprotokolle nach dem Installieren oder Zurücksetzen des Datenconnectors zu überprüfen.
+Es wird dringend empfohlen, die Systemprotokolle nach dem Installieren oder [Zurücksetzen des Datenconnectors](#reset-the-sap-data-connector) zu überprüfen.
 
 Führen Sie Folgendes aus:
 
 ```bash
 docker logs -f sapcon-[SID]
 ```
+
 ## <a name="enable-debug-mode-printing"></a>Aktivieren der Debugmodusausgabe
 
-So aktivieren Sie die Debugmodusausgabe
+**So aktivieren Sie die Debugmodusausgabe**
 
 1. Kopieren Sie die folgende Datei in Ihr Verzeichnis **sapcon/[SID]** , und benennen Sie sie dann in `loggingconfig.yaml` um: https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/SAP/template/loggingconfig_DEV.yaml
 
 1. [Setzen Sie den SAP-Datenconnector zurück](#reset-the-sap-data-connector).
 
-Beispiel für SID A4H:
+Beispiel für SID `A4H`:
 
 ```bash
 wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/SAP/template/loggingconfig_DEV.y
               cp loggingconfig.yaml ~/sapcon/A4H
               docker restart sapcon-A4H
+```
+
+**Führen Sie**  aus, um das Drucken im Debugmodus erneut zu deaktivieren:
+
+```bash
+mv loggingconfig.yaml loggingconfig.old
+ls
+docker restart sapcon-[SID]
 ```
 
 ## <a name="view-all-docker-execution-logs"></a>Anzeigen aller Docker-Ausführungsprotokolle
@@ -126,7 +135,13 @@ Mit den folgenden Schritten werden der Connector zurückgesetzt und die SAP-Prot
     docker stop sapcon-[SID]
     ```
 
-1.  Löschen Sie die Datei **metadata.db** aus dem Verzeichnis **sapcon/[SID]** .
+1.  Löschen Sie die Datei **metadata.db** aus dem Verzeichnis **sapcon/[SID]** . Führen Sie Folgendes aus:
+
+    ```bash
+    cd ~/sapcon/<SID>
+    ls
+    mv metadata.db metadata.old
+    ```
 
     > [!NOTE]
     > Die Datei **metadata.db** enthält den letzten Zeitstempel jedes Protokolls und verhindert Duplizierung.
@@ -147,7 +162,7 @@ Nachdem Sie sowohl den SAP-Datenconnector als auch Sicherheitsinhalte bereitgest
 
 ### <a name="corrupt-or-missing-sap-sdk-file"></a>Beschädigte oder fehlende SAP SDK-Datei
 
-Dies tritt auf, wenn der Connector nicht mit PyRfc gestartet werden kann oder ZIP-bezogene Fehlermeldungen angezeigt werden.
+Dieser Fehler liegt möglicherweise vor, wenn der Connector nicht mit PyRfc gestartet werden kann oder ZIP-bezogene Fehlermeldungen angezeigt werden.
 
 1. Installieren Sie das SAP SDK neu.
 1. Vergewissern Sie sich, dass Sie die richtige 64-Bit-Version von Linux haben. Zum jetzigen Zeitpunkt lautet der Dateiname des Release **nwrfc750P_8-70002752.zip**.
@@ -173,7 +188,7 @@ Wenn ABAP Laufzeitfehler in großen Systemen gemeldet werden, versuchen Sie, ein
 ### <a name="empty-or-no-audit-log-retrieved-with-no-special-error-messages"></a>Leeres oder nicht abgerufenes Überwachungsprotokoll ohne spezielle Fehlermeldungen
 
 1. Prüfen Sie, ob die Überwachungsprotokollierung in SAP aktiviert ist.
-1. Überprüfen Sie die Transaktionen **SM19** und **RASU_CONFIG**.
+1. Überprüfen Sie die Transaktionen **SM19** oder **RSAU_CONFIG**.
 1. Aktivieren Sie nach Bedarf alle Ereignisse.
 1. Überprüfen Sie, ob Nachrichten in SAP **SM20** oder **RSAU_READ_LOG** eingehen und vorhanden sind, ohne dass im Connectorprotokoll spezielle Fehler angezeigt werden.
 
@@ -182,20 +197,29 @@ Wenn ABAP Laufzeitfehler in großen Systemen gemeldet werden, versuchen Sie, ein
 
 Wenn Sie feststellen, dass Sie eine falsche Arbeitsbereichs-ID oder einen falschen Schlüssel in Ihr [Bereitstellungsskript](sap-deploy-solution.md#create-key-vault-for-your-sap-credentials) eingegeben haben, aktualisieren Sie die in Azure Key Vault gespeicherten Anmeldeinformationen.
 
+Starten Sie den Container neu, nachdem Sie Ihre Anmeldeinformationen in Azure KeyVault überprüft haben:
+
+```bash
+docker restart sapcon-[SID]
+```
+
 ### <a name="incorrect-sap-abap-user-credentials-in-a-fixed-configuration"></a>Falsche SAP ABAP-Benutzeranmeldeinformationen in einer festen Konfiguration
 
 Eine feste Konfiguration liegt vor, wenn das Kennwort direkt in der Konfigurationsdatei **systemconfig.ini** gespeichert wird.
 
 Wenn Ihre Anmeldeinformationen dort falsch sind, überprüfen Sie Ihre Anmeldeinformationen.
 
-Verwenden Sie die base64-Verschlüsselung, um Benutzer und Kennwort zu verschlüsseln. Hierfür bieten sich Onlineverschlüsselungstools an, z. B. https://www.base64encode.org/.
+Verwenden Sie die base64-Verschlüsselung, um Benutzer und Kennwort zu verschlüsseln. Sie können Tools für die Onlineverschlüsselung verwenden, um Ihre Anmeldeinformationen zu verschlüsseln, beispielsweise https://www.base64encode.org/.
 
 ### <a name="incorrect-sap-abap-user-credentials-in-key-vault"></a>Falsche SAP ABAP-Benutzeranmeldeinformationen in Schlüsseltresor
 
-Überprüfen Sie Ihre Anmeldeinformationen, und korrigieren Sie sie bei Bedarf.
+Überprüfen Sie Ihre Anmeldeinformationen, und korrigieren Sie sie ggf., indem Sie in Azure Key Vault die richtigen Werte für **ABAPUSER** und **ABAPPASS** anwenden.
 
-Versehen Sie die Werte **ABAPUSER** und **ABAPPASS** in Azure Key Vault mit den richtigen Informationen.
+Starten Sie den Container anschließend neu:
 
+```bash
+docker restart sapcon-[SID]
+```
 
 
 ### <a name="missing-abap-sap-user-permissions"></a>Fehlende Berechtigungen für ABAP (SAP-Benutzer)
@@ -235,7 +259,7 @@ Wenn unerwartete Probleme auftreten, die in diesem Artikel nicht aufgeführt sin
 
 ### <a name="retrieving-an-audit-log-fails-with-warnings"></a>Fehler beim Abrufen eines Überwachungsprotokolls mit Warnungen
 
-Wenn Sie versuchen, ein Überwachungsprotokoll abzurufen, ohne dass der [erforderliche Change Request](sap-solution-detailed-requirements.md#required-sap-log-change-requests) bereitgestellt wurde, oder für eine ältere/nicht gepatchte Version und der Prozess mit Warnungen fehlschlägt, überprüfen Sie, ob das SAP-Überwachungsprotokoll mit einer der folgenden Methoden abgerufen werden kann:
+Wenn Sie versuchen, ein Überwachungsprotokoll ohne den [erforderlichen Change Request](sap-solution-detailed-requirements.md#required-sap-log-change-requests) oder mit einer älteren/nicht gepatchten Version abzurufen, und der Prozess mit Warnungen fehlschlägt, überprüfen Sie, ob das SAP-Überwachungsprotokoll mithilfe einer der folgenden Methoden abgerufen werden kann:
 
 - Verwenden eines Kompatibilitätsmodus namens *XAL* in älteren Versionen
 - Verwenden einer Version, die nicht kürzlich gepatcht wurde
@@ -244,7 +268,14 @@ Wenn Sie versuchen, ein Überwachungsprotokoll abzurufen, ohne dass der [erforde
 Eigentlich sollte Ihr System bei Bedarf automatisch in den Kompatibilitätsmodus wechseln, aber u. U. müssen Sie die Umstellung manuell vornehmen. So stellen Sie manuell auf den Kompatibilitätsmodus um
 
 1. Bearbeiten Sie im Verzeichnis **sapcon/SID** die Datei **systemconfig.ini**.
+
 1. Legen Sie Folgendes fest: `auditlogforcexal = True`
+
+1. Starten Sie den Docker-Container neu:
+
+    ```bash
+    docker restart sapcon-[SID]
+    ```
 
 ### <a name="sapcontrol-or-java-subsystems-unable-to-connect"></a>SAPCONTROL- oder JAVA-Subsysteme können keine Verbindung herstellen
 
@@ -265,13 +296,42 @@ Verwenden Sie beispielsweise `javatz = GMT+12` oder `abaptz = GMT-3**`.
 
 Falls Sie die [erforderlichen Change Requests für SAP-Protokolle](sap-solution-detailed-requirements.md#required-sap-log-change-requests) nicht importieren können und eine Fehlermeldung zu einer ungültigen Komponentenversion erhalten, fügen `ignore invalid component version` Sie hinzu, wenn Sie den Change Request importieren.
 
+### <a name="audit-log-data-not-ingested-past-initial-load"></a>Überwachungsprotokolldaten werden nach dem ersten Laden nicht erfasst
+
+Wenn die SAP-Überwachungsprotokolldaten, die entweder in den Transaktionen **RSAU_READ_LOAD** oder **SM200** sichtbar sind, nach dem ersten Ladevorgang nicht in Azure Sentinel erfasst werden, liegt möglicherweise eine Fehlkonfiguration des SAP-Systems und des SAP-Hostbetriebssystems vor.
+
+- Die ersten Ladevorgänge werden nach einer Neuinstallation des SAP-Datenconnectors oder nach dem Löschen der Datei **metadata.db** ausgeführt.
+- Eine falsche Konfiguration kann beispielsweise vorliegen, wenn die Zeitzone für Ihr SAP-System in der Transaktion **STZAC** auf **CET** festgelegt ist, aber die Zeitzone für das SAP-Hostbetriebssystem **UTC** lautet.
+
+Führen Sie den Bericht **RSDBTIME** in der Transaktion **SE38** aus, um nach Fehlkonfigurationen zu suchen. Wenn Sie einen Konflikt zwischen dem SAP-System und dem SAP-Hostbetriebssystem feststellen, gehen Sie folgendermaßen vor:
+
+1. Beenden Sie den Docker-Container. Ausführen
+
+    ```bash
+    docker stop sapcon-[SID]
+    ```
+
+1.  Löschen Sie die Datei **metadata.db** aus dem Verzeichnis **sapcon/[SID]** . Führen Sie Folgendes aus:
+
+    ```bash
+    rm ~/sapcon/[SID]/metadata.db
+    ```
+
+1. Aktualisieren Sie das SAP-System und das SAP-Hostbetriebssystem so, dass ihre Einstellungen (z. B. die Zeitzone) übereinstimmen. Weitere Informationen finden Sie im [SAP Community Wiki](https://wiki.scn.sap.com/wiki/display/Basis/Time+zone+settings%2C+SAP+vs.+OS+level).
+
+1. Starten Sie den Container neu. Führen Sie Folgendes aus:
+
+    ```bash
+    docker start sapcon-[SID]
+    ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter
 
 - [Bereitstellen der kontinuierlichen Bedrohungsüberwachung in SAP (Public Preview)](sap-deploy-solution.md)
 - [Referenz zu Protokollen der Azure Sentinel-Lösung für SAP (Public Preview)](sap-solution-log-reference.md)
-- [Konfigurationsoptionen für Experten, lokale Bereitstellung und SAPControl-Protokollquellen](sap-solution-deploy-alternate.md)
+- [Bereitstellen des Azure Sentinel-Datenconnectors für SAP mit SNC](sap-solution-deploy-snc.md)
+- [Konfigurationsoptionen von Experten, lokale Bereitstellung und SAPControl-Protokollquellen](sap-solution-deploy-alternate.md)
 - [Azure Sentinel-Lösung für SAP: Referenz zu sicherheitsbezogenen Inhalten (Public Preview)](sap-solution-security-content.md)
 - [Detaillierte SAP-Anforderungen für die Azure Sentinel-Lösung für SAP (öffentliche Vorschau)](sap-solution-detailed-requirements.md)

@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/01/2019
-ms.openlocfilehash: df7f1a37ac5b6779220595609a81b76b01952097
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/30/2021
+ms.openlocfilehash: c6fc87d32b70db228c428c0e836aa699694c5fd9
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122639851"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123307714"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Kopieren von Daten aus ServiceNow mithilfe von Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -35,6 +35,30 @@ Azure Data Factory enthält einen integrierten Treiber zum Sicherstellen der Kon
 ## <a name="getting-started"></a>Erste Schritte
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-linked-service-to-servicenow-using-ui"></a>Erstellen eines mit ServiceNow verknüpften Dienstes über die Benutzeroberfläche
+
+Führen Sie die folgenden Schritte aus, um einen mit ServiceNow verknüpften Dienst in der Azure-Portal-Benutzeroberfläche zu erstellen.
+
+1. Navigieren Sie in Ihrem Azure Data Factory- oder Synapse-Arbeitsbereich zur Registerkarte „Verwalten“, wählen Sie „Verknüpfte Dienste“ aus, und klicken Sie auf „Neu“:
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Erstellen Sie einen neuen verknüpften Dienst über die Azure Data Factory-Benutzeroberfläche.":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Erstellen Sie einen neuen verknüpften Dienst über die Azure Synapse-Benutzeroberfläche.":::
+
+2. Suchen Sie nach „ServiceNow“, und wählen Sie den ServiceNow-Connector aus.
+
+    :::image type="content" source="media/connector-servicenow/servicenow-connector.png" alt-text="Wählen Sie den ServiceNow-Connector aus.":::    
+
+1. Konfigurieren Sie die Dienstdetails, testen Sie die Verbindung, und erstellen Sie den neuen verknüpften Dienst.
+
+    :::image type="content" source="media/connector-servicenow/configure-servicenow-linked-service.png" alt-text="Konfigurieren Sie einen mit ServiceNow verknüpften Dienst.":::
+
+## <a name="connector-configuration-details"></a>Details zur Connector-Konfiguration
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den ServiceNow-Connector verwendet werden.
 

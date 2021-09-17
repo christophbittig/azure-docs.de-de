@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/13/2020
 ms.author: jeedes
-ms.openlocfilehash: b70c50e7c2900f884dd4d91c6650205bc626326e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 12471ef2816f5e4cb1e5f545f6d5670be59b4863
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96178040"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183923"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>Tutorial: Azure Active Directory-Integration mit Keeper Password Manager & Digital Vault
 
@@ -40,7 +40,7 @@ Um die Azure AD-Integration mit Keeper Password Manager & Digital Vault konfigur
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Keeper Password Manager & Digital Vault unterstützt SP-initiiertes einmaliges Anmelden.
-
+* Keeper Password Manager unterstützt die [**automatisierte** Benutzerbereitstellung und Bereitstellungsaufhebung](keeper-password-manager-digitalvault-provisioning-tutorial.md) (empfohlen).
 * Keeper Password Manager & Digital Vault unterstützt die Just-In-Time-Benutzerbereitstellung.
 
 ## <a name="add-keeper-password-manager--digital-vault-from-the-gallery"></a>Hinzufügen von Keeper Password Manager & Digital Vault aus dem Katalog

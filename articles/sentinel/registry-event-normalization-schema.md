@@ -15,25 +15,26 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 07/01/2021
 ms.author: bagol
-ms.openlocfilehash: 3e099697845e9d33072d8cf983678f562f3dde4d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 38ab651ec864060aeb3bfcfd7f89a387d604723c
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345848"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515133"
 ---
 # <a name="azure-sentinel-registry-event-normalization-schema-reference-public-preview"></a>Azure Sentinel: Referenz zum Registrierungsereignis-Normalisierungsschema (Öffentliche Vorschau)
 
-Das Registrierungsereignisschema wird verwendet, um die Windows-Aktivität zum Erstellen, Ändern oder Löschen von Windows-Registrierungsentitäten zu beschreiben. 
+Das Registrierungsereignisschema wird verwendet, um die Windows-Aktivität zum Erstellen, Ändern oder Löschen von Windows-Registrierungsentitäten zu beschreiben.
 
 Registrierungsereignisse sind spezifisch für Windows-Systeme, werden aber von verschiedenen Systemen gemeldet, die Windows überwachen, z. B. EDR-Systeme (Endpunkterkennung und -antwort), Sysmon oder Windows selbst.
 
 Weitere Informationen zu Normalisierung in Azure Sentinel finden Sie unter [Normalisierung und das Azure Sentinel Information Model (ASIM)](normalization.md).
 
 > [!IMPORTANT]
-> Das Registrierungsereignis-Normalisierungsschema befindet sich derzeit in der öffentlichen Vorschau.
-> Dieses Feature wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Das Schema für die Normalisierung von Registrierungsereignissen befindet sich derzeit in der VORSCHAU. Dieses Feature wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen.
+>
+> In den [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) finden Sie weitere rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden oder anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+>
 
 ## <a name="parsers"></a>Parser
 
@@ -45,7 +46,7 @@ Azure Sentinel bietet die folgenden integrierten, produktspezifischen Registrier
 
 Um den quellunabhängigen Parser zu verwenden, der alle integrierten Parser vereinheitlicht, und um sicherzustellen, dass Ihre Analyse über alle konfigurierten Quellen hinweg ausgeführt wird, verwenden Sie **imRegistry** als Tabellennamen in der Abfrage.
 
-Stellen Sie die [quellunabhängigen und quellspezifischen Parser](normalization.md#parsers) aus dem [Azure Sentinel GitHub-Repository](https://aka.ms/AzSentinelRegistry) bereit.
+Stellen Sie die [quellunabhängigen und quellspezifischen Parser](normalization-about-parsers.md) aus dem [Azure Sentinel GitHub-Repository](https://aka.ms/AzSentinelRegistry) bereit.
 
 ### <a name="add-your-own-normalized-parsers"></a>Hinzufügen eigener normalisierter Parser
 
@@ -55,7 +56,7 @@ Fügen Sie Ihre KQL-Funktion den quellunabhängigen `imRegistry`-Parsern hinzu, 
 
 ## <a name="normalized-content"></a>Normalisierter Inhalt
 
-Azure Sentinel stellt die Hunting-Abfrage **Persisting Via IFEO Registry Key (Beibehalten über IFEO-Registrierungsschlüssel)** bereit. Diese Abfrage funktioniert mit allen Registrierungsaktivitätsdaten, die mithilfe des Azure Sentinel-Informationsmodells normalisiert wurden.
+Azure Sentinel stellt die Hunting-Abfrage [Persisting Via IFEO Registry Key (Beibehalten über IFEO-Registrierungsschlüssel)](https://github.com/Azure/Azure-Sentinel/blob/master/Hunting%20Queries/MultipleDataSources/PersistViaIFEORegistryKey.yaml) bereit. Diese Abfrage funktioniert mit allen Registrierungsaktivitätsdaten, die mithilfe des Azure Sentinel-Informationsmodells normalisiert wurden.
 
 Weitere Informationen finden Sie unter [Suchen nach Bedrohungen mit Azure Sentinel](hunting.md).
 
@@ -68,7 +69,7 @@ Das Registrierungsereignis-Informationsmodell ist am [OSSEM-Registrierungsentit�
 
 Die folgenden Felder werden von Log Analytics für jeden Datensatz generiert und können beim Erstellen eines benutzerdefinierten Connectors überschrieben werden.
 
-| Feld         | type     | Diskussion (Discussion)      |
+| Feld         | Typ     | Diskussion (Discussion)      |
 | ------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | <a name="timegenerated"></a>**TimeGenerated** | datetime | Der Zeitpunkt, zu dem das Ereignis vom meldenden Gerät generiert wurde.|
 | **_ResourceId**   | guid     | Die Azure-Ressourcen-ID des meldenden Geräts oder Diensts oder die Ressourcen-ID des Protokollforwarders für Ereignisse, die mit Syslog, CEF oder WEF weitergeleitet werden. |
@@ -83,7 +84,7 @@ Die folgenden Felder werden von Log Analytics für jeden Datensatz generiert und
 
 Ereignisfelder sind allen Schemas gemeinsam und beschreiben die Aktivität selbst und das meldende Gerät.
 
-| Feld               | Klasse       | type       |  BESCHREIBUNG        |
+| Feld               | Klasse       | Typ       |  BESCHREIBUNG        |
 |---------------------|-------------|------------|--------------------|
 | **EventMessage**        | Optional    | String     |     Eine allgemeine Nachricht oder Beschreibung, entweder im Datensatz enthalten oder aus ihm generiert.   |
 | **EventCount**          | Obligatorisch.   | Integer    |     Die Anzahl der Ereignisse, die vom Datensatz beschrieben werden. <br><br>Dieser Wert wird verwendet, wenn die Quelle Aggregation unterstützt. Ein einzelner Datensatz kann mehrere Ereignisse darstellen. <br><br>Legen Sie den Wert für andere Quellen auf `1` fest.   |
@@ -104,7 +105,7 @@ Ereignisfelder sind allen Schemas gemeinsam und beschreiben die Aktivität selbs
 | **DvcMacAddr**          | Optional    | MAC        |   Die MAC-Adresse des Geräts, auf dem das Registrierungsereignis aufgetreten ist.  <br><br>Beispiel: `00:1B:44:11:3A:B7`       |
 | **DvcOs**               | Optional    | String     |         Das Betriebssystem, das auf dem Gerät ausgeführt wird, auf dem das Registrierungsereignis aufgetreten ist.    <br><br>Beispiel: `Windows`    |
 | **DvcOsVersion**        | Optional    | String     |   Die Version des Betriebssystems auf dem Gerät, auf dem das Registrierungsereignis aufgetreten ist. <br><br>Beispiel: `10` |
-| **AdditionalFields**    | Optional    | Dynamisch    | Wenn Ihre Quelle zusätzliche Informationen enthält, die erhalten bleiben sollten, behalten Sie sie entweder mit den ursprünglichen Feldnamen bei, oder erstellen Sie das dynamische Feld **AdditionalFields**, und fügen Sie ihm die zusätzlichen Informationen als Schlüssel-Wert-Paare hinzu.    |
+| **AdditionalFields**    | Optional    | Dynamisch    | Wenn Ihre Quelle zusätzliche Informationen enthält, die erhalten bleiben sollten, behalten Sie sie entweder mit den ursprünglichen Feldnamen bei, oder erstellen Sie das dynamische Feld **AdditionalFields**, und fügen Sie die zusätzlichen Informationen als Schlüssel-Wert-Paare hinzu.    |
 
 
 ### <a name="registry-event-specific-fields"></a>Registrierungsereignisspezifische Felder
@@ -113,7 +114,7 @@ Die in der folgenden Tabelle aufgeführten Felder sind spezifisch für Registrie
 
 Weitere Informationen finden Sie unter [Struktur der Registrierung](/windows/win32/sysinfo/structure-of-the-registry) in der Windows-Dokumentation.
 
-| Feld          | Klasse        | type       | BESCHREIBUNG   |
+| Feld          | Klasse        | Typ       | BESCHREIBUNG   |
 |---------------|--------------|------------|-----------------|
 |<a name="registrykey"></a>**RegistryKey**     |     Obligatorisch.    |   String      |Der Registrierungsschlüssel, der dem Vorgang zugeordnet und auf Standardnamenskonventionen für Stammschlüssel normalisiert ist. Weitere Informationen finden Sie unter [Stammschlüssel](#root-keys).<br><br>Registrierungsschlüssel ähneln Ordnern in Dateisystemen. <br><br>Beispiel: `HKEY_LOCAL_MACHINE\SOFTWARE\MTG`        |
 |**RegistryValue**     |    Empfohlen     |  String       |Der dem Vorgang zugeordnete Registrierungswert. Registrierungswerte ähneln Dateien in Dateisystemen. <br><br>Beispiel: `Path`        |
@@ -126,14 +127,14 @@ Weitere Informationen finden Sie unter [Struktur der Registrierung](/windows/win
 |**Benutzer** | Alias | |Alias für das Feld [ActorUsername](#actorusername). <br><br>Beispiel: `CONTOSO\ dadmin` |
 |**Process**     |  Alias       |         |  Alias für das [Feld ActingProcessName](#actingprocessname).<br><br>Beispiel: `C:\Windows\System32\rundll32.exe`       |
 | <a name="actorusername"></a>**ActorUsername**  | Obligatorisch.    | String     | Der Benutzername des Benutzers, der das Ereignis initiiert hat. <br><br>Beispiel: `CONTOSO\WIN-GG82ULGC9GO$`     |
-| **ActorUsernameType**              | Obligatorisch.    | Enumerated |   Gibt den Typ des Benutzernamens an, der im Feld [ActorUsername](#actorusername) gespeichert ist. Weitere Informationen finden Sie unter [Benutzerentität](normalization.md#the-user-entity). <br><br>Beispiel: `Windows`       |
-| <a name="actoruserid"></a>**ActorUserId**    | Empfohlen  | String     |   Eine eindeutige ID des Akteurs. Die jeweilige ID hängt vom System ab, das das Ereignis generiert. Weitere Informationen finden Sie unter [Benutzerentität](normalization.md#the-user-entity).  <br><br>Beispiel: `S-1-5-18`    |
-| **ActorUserIdType**| Empfohlen  | String     |  Der Typ der ID, die im Feld [ActorUserId](#actoruserid) gespeichert ist. Weitere Informationen finden Sie unter [Benutzerentität](normalization.md#the-user-entity). <br><br>Beispiel: `SID`         |
+| **ActorUsernameType**              | Obligatorisch.    | Enumerated |   Gibt den Typ des Benutzernamens an, der im Feld [ActorUsername](#actorusername) gespeichert ist. Weitere Informationen finden Sie unter [Benutzerentität](normalization-about-schemas.md#the-user-entity). <br><br>Beispiel: `Windows`       |
+| <a name="actoruserid"></a>**ActorUserId**    | Empfohlen  | String     |   Eine eindeutige ID des Akteurs. Die jeweilige ID hängt vom System ab, das das Ereignis generiert. Weitere Informationen finden Sie unter [Benutzerentität](normalization-about-schemas.md#the-user-entity).  <br><br>Beispiel: `S-1-5-18`    |
+| **ActorUserIdType**| Empfohlen  | String     |  Der Typ der ID, die im Feld [ActorUserId](#actoruserid) gespeichert ist. Weitere Informationen finden Sie unter [Benutzerentität](normalization-about-schemas.md#the-user-entity). <br><br>Beispiel: `SID`         |
 | **ActorSessionId** | Optional     | String     |   Die eindeutige ID der Anmeldesitzung des Akteurs.  <br><br>Beispiel: `999`<br><br>**Hinweis**: Der Typ ist als *Zeichenfolge* definiert, um unterschiedliche Systeme zu unterstützen, aber unter Windows muss dieser Wert numerisch sein. Wenn Sie einen Windows-Computer verwenden und die Quelle einen anderen Typ sendet, stellen Sie sicher, dass Sie den Wert konvertieren. Wenn die Quelle beispielsweise einen Hexadezimalwert verwendet haben, konvertieren Sie diesen in einen Dezimalwert.   |
-| <a name="actingprocessname"></a>**ActingProcessName**              | Optional     | String     |   Der Dateiname der Imagedatei des agierenden Prozesses. Dieser wird in der Regel als Prozessname betrachtet.  <br><br>Beispiel: `C:\Windows\explorer.exe`  |
+| <a name="actingprocessname"></a>**ActingProcessName**              | Optional     | String     |   Der Dateiname der Imagedatei des agierenden Prozesses. Dieser Name wird in der Regel als Prozessname betrachtet.  <br><br>Beispiel: `C:\Windows\explorer.exe`  |
 | **ActingProcessId**| Obligatorisch.    | Integer        | Die Prozess-ID (PID) des agierenden Prozesses.<br><br>Beispiel: `48610176`           <br><br>**Hinweis**: Der Typ ist als *Zeichenfolge* definiert, um unterschiedliche Systeme zu unterstützen, aber unter Windows und Linux muss dieser Wert numerisch sein. <br><br>Wenn Sie einen Windows- oder Linux-Computer verwenden und einen anderen Typ verwendet haben, stellen Sie sicher, dass Sie die Werte konvertieren. Wenn Sie beispielsweise einen Hexadezimalwert verwendet haben, konvertieren Sie diesen in einen Dezimalwert.    |
 | **ActingProcessGuid**              | Optional     | String     |  Ein generierter eindeutiger Bezeichner (GUID) des agierenden Prozesses.   <br><br> Beispiel: `EF3BD0BD-2B74-60C5-AF5C-010000001E00`            |
-| **ParentProcessName**              | Optional     | String     |  Der Dateiname der Imagedatei des übergeordneten Prozesses. Dieser wird als Prozessname betrachtet.    <br><br>Beispiel: `C:\Windows\explorer.exe` |
+| **ParentProcessName**              | Optional     | String     |  Der Dateiname der Imagedatei des übergeordneten Prozesses. Dieser Wert wird in der Regel als Prozessname betrachtet.    <br><br>Beispiel: `C:\Windows\explorer.exe` |
 | **ParentProcessId**| Obligatorisch.    | Integer    | Die Prozess-ID (PID) des übergeordneten Prozesses.   <br><br>     Beispiel: `48610176`    |
 | **ParentProcessGuid**              | Optional     | String     |  Ein generierter eindeutiger Bezeichner (GUID) des übergeordneten Prozesses.     <br><br> Beispiel: `EF3BD0BD-2B74-60C5-AF5C-010000001E00` |
 
@@ -168,7 +169,7 @@ Verschiedene Quellen stellen Registrierungswerttypen mit unterschiedlichen Darst
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter
 
 - [Normalisierung in Azure Sentinel](normalization.md)
 - [Azure Sentinel: Referenz zum Authentifizierungsnormalisierungsschema (Öffentliche Vorschau)](authentication-normalization-schema.md)

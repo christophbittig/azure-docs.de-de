@@ -7,17 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 08/20/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e2acad2519fbf29aec72b97095318b4131207f91
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 76f765a8255f47215cb03426d139a88aa5d31544
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464546"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123305138"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Konfigurieren der Azure AD-Connector-Kontoberechtigungen 
 
@@ -36,7 +36,7 @@ Die folgende Tabelle bietet eine Zusammenfassung der für AD-Objekte erforderlic
 | Funktion | Berechtigungen |
 | --- | --- |
 | ms-DS-ConsistencyGuid |Lese- und Schreibberechtigungen für das Attribut „ms-DS-ConsistencyGuid“, das unter [Entwurfskonzepte – Verwendung von „ms-DS-ConsistencyGuid“ als „sourceAnchor“](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) dokumentiert ist. | 
-| Kennworthashsynchronisierung |<li>Verzeichnisänderungen replizieren</li>  <li>Verzeichnisänderungen replizieren: Alle |
+| Kennworthashsynchronisierung |<li>Replizieren von Verzeichnisänderungen – erforderlich für grundlegende Leseberechtigung</li>  <li>Verzeichnisänderungen replizieren: Alle |
 | Exchange-Hybridbereitstellung |Lese- und Schreibberechtigungen für die Attribute, die in [Exchange-Hybridrückschreiben](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) für Benutzer, Gruppen und Kontakte dokumentiert sind. |
 | Öffentlicher Exchange-E-Mail-Ordner |Leseberechtigungen für die Attribute, die im [öffentlichen Exchange-E-Mail-Ordner](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) für öffentliche Ordner dokumentiert sind. | 
 | Kennwortrückschreiben |Lese- und Schreibberechtigungen für die Attribute, die in [Erste Schritte mit der Kennwortverwaltung](../authentication/tutorial-enable-sspr-writeback.md) für Benutzer dokumentiert sind. |
@@ -146,6 +146,7 @@ Dieses Cmdlet legt die folgenden Berechtigungen fest:
 |Allow |AD DS-Connector-Konto |Alle Eigenschaften lesen |Nachfolger-Gruppenobjekte| 
 |Allow |AD DS-Connector-Konto |Alle Eigenschaften lesen |Nachfolger-Benutzerobjekte| 
 |Allow |AD DS-Connector-Konto |Alle Eigenschaften lesen |Nachfolger-Kontaktobjekte| 
+|Allow|AD DS-Connector-Konto|Replizieren von Verzeichnisänderungen|Nur dieses Objekt (Domänenstamm)|
 
  
 ### <a name="configure-ms-ds-consistency-guid-permissions"></a>Konfigurieren von MS-DS-Consistency-Guid-Berechtigungen 
@@ -253,7 +254,7 @@ Dieses Cmdlet legt die folgenden Berechtigungen fest:
 |Allow |AD DS-Connector-Konto |Lesen/Schreiben für alle Eigenschaften |Nachfolger-Gruppenobjekte| 
 |Allow |AD DS-Connector-Konto |Lesen/Schreiben für alle Eigenschaften |Nachfolger-Kontaktobjekte| 
 
-### <a name="permissions-for-exchange-mail-public-folders-preview"></a>Berechtigungen für öffentliche Exchange-E-Mail-Ordner (Vorschau) 
+### <a name="permissions-for-exchange-mail-public-folders"></a>Berechtigungen für öffentliche Exchange-E-Mail-Ordner
 Um Berechtigungen für das AD DS-Connector-Konto festzulegen, wenn die Funktion für öffentliche Exchange-E-Mail-Ordner verwendet wird, führen Sie Folgendes aus: 
 
 ``` powershell

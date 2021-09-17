@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java, fasttrack-edit
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 95f4e7e9dcc8c9f16465d2a577d4bdf425dae4a8
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f3a3e4897904dcfd02b6ef3879736d1afb533747
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114470553"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122014715"
 ---
 # <a name="quickstart-set-up-azure-spring-cloud-configuration-server"></a>Schnellstart: Einrichten des Azure Spring Cloud-Konfigurationsservers
 
@@ -27,7 +27,7 @@ Der Azure Spring Cloud-Konfigurationsserver ist ein zentralisierter Konfiguratio
 
 ## <a name="azure-spring-cloud-config-server-procedures"></a>Verfahren für den Azure Spring Cloud-Konfigurationsserver
 
-Richten Sie den Konfigurationsserver mit dem Speicherort des Git-Repositorys für das Projekt ein, indem Sie den folgenden Befehl ausführen. Ersetzen Sie `<service instance name>` durch den Namen des Diensts, den Sie zuvor erstellt haben. Der Standardwert für den Dienstinstanznamen, den Sie in der vorherigen Schnellstartanleitung festgelegt haben, funktioniert nicht mit diesem Befehl.
+Richten Sie den Konfigurationsserver mit dem Speicherort des Git-Repositorys für das Projekt ein, indem Sie den folgenden Befehl ausführen. Ersetzen Sie *\<service instance name>* durch den Namen des Diensts, den Sie zuvor erstellt haben. Der Standardwert für den Dienstinstanznamen, den Sie in der vorherigen Schnellstartanleitung festgelegt haben, funktioniert nicht mit diesem Befehl.
 
 ```azurecli
 az spring-cloud config-server git set -n <service instance name> --uri https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples --search-paths steeltoe-sample/config
@@ -57,7 +57,7 @@ Im folgenden Verfahren wird der Konfigurationsserver mithilfe des Azure-Portals 
 
 2. Geben Sie im Abschnitt **Standardrepository** für **URI** den Wert „https://github.com/azure-samples/spring-petclinic-microservices-config“ ein.
 
-3. Klicken Sie auf **Überprüfen**.
+3. Wählen Sie **Überprüfen** aus.
 
     ![Navigieren zum Konfigurationsserver](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
@@ -66,13 +66,12 @@ Im folgenden Verfahren wird der Konfigurationsserver mithilfe des Azure-Portals 
     ![Überprüfen des Konfigurationsservers](media/spring-cloud-quickstart-launch-app-portal/validate-complete.png)
 
 5. Die Aktualisierung der Konfiguration kann einige Minuten dauern.
- 
-    ![Aktualisieren des Konfigurationsservers](media/spring-cloud-quickstart-launch-app-portal/updating-config.png) 
+
+    ![Aktualisieren des Konfigurationsservers](media/spring-cloud-quickstart-launch-app-portal/updating-config.png)
 
 6. Sie sollten eine Benachrichtigung erhalten, wenn die Konfiguration abgeschlossen ist.
 
 #### <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/Azure-CLI)
-
 
 Im folgenden Verfahren wird die Azure CLI zum Einrichten des Konfigurationsservers und zum Bereitstellen des [PetClinic-Beispiels](https://github.com/azure-samples/spring-petclinic-microservices) eingerichtet.
 
@@ -91,24 +90,24 @@ az spring-cloud config-server git set -n <service instance name> --uri https://g
 
 Im folgenden Verfahren wird erläutert, wie die Konfigurationsservereinstellungen behoben werden.
 
-1. Wechseln Sie im Azure-Portal auf die Dienstseite **Übersicht**, und wählen Sie **Protokolle** aus. 
-1. Wählen Sie **Abfragen** aus, und **zeigen Sie die Anwendungsprotokolle an, die die Begriffe „Fehler“ oder „Ausnahme“ enthalten**. 
-1. Klicken Sie auf **Ausführen**. 
+1. Wechseln Sie im Azure-Portal auf die Dienstseite **Übersicht**, und wählen Sie **Protokolle** aus.
+1. Wählen Sie **Abfragen** aus, und **zeigen Sie die Anwendungsprotokolle an, die die Begriffe „Fehler“ oder „Ausnahme“ enthalten**.
+1. Klicken Sie auf **Run** (Ausführen).
 1. Wenn Sie in den Protokollen den Fehler **java.lang.illegalStateException** finden, deutet dies darauf hin, dass der Spring Cloud-Dienst keine Eigenschaften vom Konfigurationsserver finden kann.
 
     [ ![Über das ASC-Portal ausgeführte Abfrage](media/spring-cloud-quickstart-setup-config-server/setup-config-server-query.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-query.png)
 
 1. Wechseln Sie zur Dienstseite **Übersicht**.
-1. Wählen Sie **Probleme diagnostizieren und beheben** aus. 
+1. Wählen Sie **Probleme diagnostizieren und beheben** aus.
 1. Wählen Sie die Erkennung **Konfigurationsserver** aus.
 
     [ ![Problemdiagnose über das ASC-Portal](media/spring-cloud-quickstart-setup-config-server/setup-config-server-diagnose.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-diagnose.png)
 
-3. Klicken Sie auf **Integritätsüberprüfung des Konfigurationsservers**.
+1. Wählen Sie **Integritätsüberprüfung des Konfigurationsservers** aus.
 
     [ ![ASC-Portal-Genie](media/spring-cloud-quickstart-setup-config-server/setup-config-server-genie.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-genie.png)
 
-4. Klicken Sie auf **Konfigurationsserverstatus**, um weitere Details der Erkennung anzuzeigen.
+1. Wählen Sie **Konfigurationsserverstatus** aus, um weitere Details der Erkennung anzuzeigen.
 
     [ ![Integritätsstatus des ASC-Portals](media/spring-cloud-quickstart-setup-config-server/setup-config-server-health-status.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-health-status.png)
 

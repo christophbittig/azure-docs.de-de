@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 41c39a87375b66e9aaf916f927d09a3b6abb3b0e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 64c77a12f65ebaf9acbc8b16c62f86a7e1e10983
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340136"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122777630"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>Überwachung der Netzwerkkonnektivität mit dem Verbindungsmonitor
 
@@ -74,7 +74,7 @@ Durch Regeln für eine Netzwerksicherheitsgruppe (NSG) oder Firewall kann die Ko
 
 ### <a name="agents-for-on-premises-machines"></a>Agents für lokale Computer
 
-Damit der Verbindungsmonitor die lokalen Computer als Quellen für die Überwachung erkennt, installieren Sie den Log Analytics-Agent auf den Computern.  Dann aktivieren Sie die Netzwerkleistungsmonitor-Lösung. Diese Agents sind mit den Log Analytics-Arbeitsbereichen verknüpft. Daher müssen Sie die Arbeitsbereichs-ID und den Primärschlüssel einrichten, bevor die Agents mit der Überwachung beginnen können.
+Damit der Verbindungsmonitor die lokalen Computer als Quellen für die Überwachung erkennt, installieren Sie den Log Analytics-Agent auf den Computern.  Dann aktivieren Sie die [Netzwerkleistungsmonitor-Lösung](/azure-monitor/insights/network-performance-monitor.md#configure-the-solution). Diese Agents sind mit den Log Analytics-Arbeitsbereichen verknüpft. Daher müssen Sie die Arbeitsbereichs-ID und den Primärschlüssel einrichten, bevor die Agents mit der Überwachung beginnen können.
 
 Informationen zum Installieren des Log Analytics-Agents für Windows finden Sie unter [Installieren des Log Analytics-Agents unter Windows](../azure-monitor/agents/agent-windows.md).
 
@@ -389,7 +389,7 @@ Die Migration hilft beim Liefern der folgenden Ergebnisse:
    
 Es gibt mehrere Gründe für die Migration vom Netzwerkleistungsmonitor und dem Verbindungsmonitor (klassisch) zum Verbindungsmonitor. Im Folgenden finden Sie einige der Anwendungsfälle, die zeigen, wie der Verbindungsmonitor von Azure leistungsmäßig gegenüber dem Netzwerkleistungsmonitor und dem Verbindungsmonitor (klassisch) abschneidet. 
 
- | Komponente  | Netzwerkleistungsmonitor | Verbindungsmonitor (klassisch) | Verbindungsmonitor |
+ | Feature  | Netzwerkleistungsmonitor | Verbindungsmonitor (klassisch) | Verbindungsmonitor |
  | -------  | --------------------------- | -------------------------- | ------------------ | 
  | Einheitliche Erfahrung für die Azure- und Hybridüberwachung | Nicht verfügbar | Nicht verfügbar. | Verfügbar |
  | Abonnement-, regions- und arbeitsbereichsübergreifende Überwachung | Gestattet abonnement- und regionsübergreifende Überwachung, aber keine arbeitsbereichsübergreifende Überwachung. | Nicht verfügbar | Gestattet abonnement- und arbeitsbereichsübergreifende Überwachung. Azure-Agents haben regionale Grenzen.  |

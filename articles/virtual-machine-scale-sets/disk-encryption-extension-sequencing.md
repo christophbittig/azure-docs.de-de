@@ -9,14 +9,16 @@ ms.subservice: disks
 ms.date: 10/10/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 1aff05e51bcbc99f33325efb905ade819ae22e02
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 59f781e1e5969c9d11a0e801fef48e2f6e347832
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90988029"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771355"
 ---
 # <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>Verwenden von Azure Disk Encryption mit Erweiterungssequenzierung der VM-Skalierungsgruppe
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Erweiterungen wie Azure Disk Encryption können einer Azure VM-Skalierungsgruppe in einer angegebenen Reihenfolge hinzugefügt werden. Verwenden Sie zu diesem Zweck die [Erweiterungssequenzierung](virtual-machine-scale-sets-extension-sequencing.md). 
 
@@ -31,7 +33,7 @@ In beiden Fällen legt die Eigenschaft `provisionAfterExtensions` fest, welche E
 
 Wenn Azure Disk Encryption nach einer anderen Erweiterung angewendet werden soll, fügen Sie die Erweiterung `provisionAfterExtensions` im Block der AzureDiskEncryption-Erweiterung ein. 
 
-Hier ist ein Beispiel zur Verwendung von „CustomScriptExtension“, einem PowerShell-Skript, das einen Windows-Datenträger initialisiert und formatiert, gefolgt von „AzureDiskEncryption“:
+Hier sehen Sie ein Beispiel zur Verwendung von „CustomScriptExtension“, einem PowerShell-Skript, das einen Windows-Datenträger initialisiert und formatiert, gefolgt von „AzureDiskEncryption“:
 
 ```json
 "virtualMachineProfile": {

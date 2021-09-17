@@ -1,20 +1,16 @@
 ---
-title: include file
-description: include file
-services: vpn-gateway
 author: cherylmc
+ms.author: cherylmc
+ms.date: 08/19/2021
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 05/05/2021
-ms.author: cherylmc
-ms.custom: include file
-ms.openlocfilehash: 056a45713672922d4e3052d37abdc1b0b171fc14
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 2ab8c7a050dea72162f3d4608649ce20c9933aea
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110165139"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122635625"
 ---
 > [!NOTE]
->Die Azure AD-Authentifizierung wird nur für Verbindungen mit dem OpenVPN®-Protokoll unterstützt und erfordert den Azure-VPN-Client.
+>Die Azure AD-Authentifizierung wird nur für Verbindungen mit dem OpenVPN®-Protokoll unterstützt und erfordert Azure VPN Client.
 >

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 888123d1e1b2b87313f44f8b266d969cbff5bcde
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d45ab7ba80a33658d1a3feaf024cb23ea65d5fab
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114460494"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771799"
 ---
 # <a name="operating-systems-supported-by-update-management"></a>Von der Updateverwaltung unterstützte Betriebssysteme
 
@@ -60,7 +60,7 @@ Softwareanforderungen:
 - Windows PowerShell 5.1 ist erforderlich. ([Windows Management Framework 5.1 herunterladen](https://www.microsoft.com/download/details.aspx?id=54616).)
 - Die Updateverwaltungsfunktion hängt von der Systemrolle Hybrid Runbook Worker ab, und Sie sollten sicherstellen, dass ihre [Systemanforderungen](../automation-windows-hrw-install.md#prerequisites) erfüllt werden.
 
-Windows Update-Agents müssen entweder für die Kommunikation mit einem WSUS-Server (Windows Server Update Services) konfiguriert sein oder über Zugriff auf Microsoft Update verfügen. Für Hybridcomputer empfehlen wir, den Log Analytics-Agent für Windows zu installieren, indem Sie zuerst Ihren Computer mit [Azure Arc-fähigen Servern](../../azure-arc/servers/overview.md) verbinden und dann Azure Policy verwenden, um die integrierte Richtlinie [Log Analytics-Agent für Windows Azure Arc-Computer bereitstellen](../../governance/policy/samples/built-in-policies.md#monitoring) zuzuweisen. Wenn Sie alternativ die Überwachung der VMs mit VM Insights planen, verwenden Sie stattdessen die Initiative [Aktivieren von VM Insights](../../governance/policy/samples/built-in-initiatives.md#monitoring).
+Windows Update-Agents müssen entweder für die Kommunikation mit einem WSUS-Server (Windows Server Update Services) konfiguriert sein oder über Zugriff auf Microsoft Update verfügen. Für Hybridcomputer empfehlen wir, den Log Analytics-Agent für Windows zu installieren, indem Sie zuerst Ihren Computer mit [Azure Arc-fähigen Servern](../../azure-arc/servers/overview.md) verbinden und dann Azure Policy verwenden, um die integrierte Richtliniendefinition [Log Analytics-Agent für Windows-Azure Arc-Computer bereitstellen](../../governance/policy/samples/built-in-policies.md#monitoring) zuzuweisen. Wenn Sie alternativ die Überwachung der VMs mit VM Insights planen, verwenden Sie stattdessen die Initiative [Aktivieren von VM Insights](../../governance/policy/samples/built-in-initiatives.md#monitoring).
 
 Sie können die Updateverwaltung zusammen mit Microsoft Endpoint Configuration Manager verwenden. Weitere Informationen zu Integrationsszenarien finden Sie unter [Integrieren der Updateverwaltung in Windows Endpoint Configuration Manager](mecmintegration.md). Der [Log Analytics-Agent für Windows](../../azure-monitor/agents/agent-windows.md) ist für Windows-Server erforderlich, die von Sites in Ihrer Configuration Manager-Umgebung verwaltet werden.
 
@@ -80,7 +80,7 @@ Softwareanforderungen:
 > [!NOTE]
 > Die Updatebewertung von Linux-Computern wird nur in bestimmten Regionen unterstützt. Informationen finden Sie in der [Zuordnungstabelle](../how-to/region-mappings.md#supported-mappings) für Automation-Konto und Log Analytics-Arbeitsbereich.
 
-Für Hybridcomputer empfehlen wir, den Log Analytics-Agent für Linux zu installieren, indem Sie zuerst Ihren Computer mit [Servern mit Azure Arc-Unterstützung](../../azure-arc/servers/overview.md) verbinden und dann Azure Policy verwenden, um die integrierte Richtlinie [Log Analytics-Agent für Linux-Azure Arc-Computer bereitstellen](../../governance/policy/samples/built-in-policies.md#monitoring) zuzuweisen. Wenn Sie alternativ die Überwachung der Computer mit Azure Monitor für VMs planen, verwenden Sie stattdessen die Methode [Azure Monitor für VMs aktivieren](../../governance/policy/samples/built-in-initiatives.md#monitoring).
+Für Hybridcomputer empfehlen wir, den Log Analytics-Agent für Linux zu installieren, indem Sie zuerst Ihren Computer mit [Azure Arc-fähigen Servern](../../azure-arc/servers/overview.md) verbinden und dann Azure Policy verwenden, um die integrierte Richtliniendefinition [Log Analytics-Agent für Linux-Azure Arc-Computer bereitstellen](../../governance/policy/samples/built-in-policies.md#monitoring) zuzuweisen. Wenn Sie alternativ die Überwachung der Computer mit Azure Monitor für VMs planen, verwenden Sie stattdessen die Methode [Azure Monitor für VMs aktivieren](../../governance/policy/samples/built-in-initiatives.md#monitoring).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

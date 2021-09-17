@@ -4,18 +4,16 @@ description: Erfahren Sie mehr über das verwaltete virtuelle Netzwerk und verwa
 ms.author: lle
 author: lrtoyou1223
 ms.service: data-factory
+ms.subservice: integration-runtime
 ms.topic: conceptual
-ms.custom:
-- seo-lt-2019
-- references_regions
-- devx-track-azurepowershell
-ms.date: 07/15/2020
-ms.openlocfilehash: 61b011a7df52b4df29c23a8e443f8bad6d72240a
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.custom: seo-lt-2019, references_regions, devx-track-azurepowershell
+ms.date: 07/20/2021
+ms.openlocfilehash: 29bd9cf165ef8247a4185b17d479b01c4e14fa87
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110676992"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122639925"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Verwaltetes virtuelles Netzwerk in Azure Data Factory (Vorschauversion)
 
@@ -46,13 +44,13 @@ Vorteile der Verwendung eines verwalteten virtuellen Netzwerks:
 >Für eine vorhandene öffentliche Azure Integration Runtime-Instanz kann keine Umstellung auf eine Azure Integration Runtime-Instanz in einem verwalteten virtuellen Azure Data Factory-Netzwerk durchgeführt werden (und umgekehrt).
  
 
-![Architektur des verwalteten virtuellen ADF-Netzwerks](./media/managed-vnet/managed-vnet-architecture-diagram.png)
+:::image type="content" source="./media/managed-vnet/managed-vnet-architecture-diagram.png" alt-text="Architektur des verwalteten virtuellen ADF-Netzwerks":::
 
 ## <a name="managed-private-endpoints"></a>Verwaltete private Endpunkte
 
 Verwaltete private Endpunkte sind private Endpunkte, die im verwalteten virtuellen Netzwerk von Azure Data Factory erstellt werden und einen privaten Link zu Azure-Ressourcen herstellen. Azure Data Factory verwaltet diese privaten Endpunkte für Sie. 
 
-![Neuer verwalteter privater Endpunkt](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png)
+:::image type="content" source="./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png" alt-text="Neuer verwalteter privater Endpunkt":::
 
 Azure Data Factory unterstützt private Links. Der private Link ermöglicht Ihnen den Zugriff auf Azure-Dienste (PaaS, z. B. Azure Storage, Azure Cosmos DB, Azure Synapse Analytics).
 
@@ -68,18 +66,18 @@ Der private Endpunkt nutzt eine private IP-Adresse im verwalteten virtuellen Net
 
 Wenn Sie einen verwalteten privaten Endpunkt in Azure Data Factory erstellen, wird eine Verbindung mit einem privaten Endpunkt mit dem Status „Ausstehend“ erstellt. Ein Genehmigungsworkflow wird ausgelöst. Der Besitzer der Ressource für private Links ist für die Genehmigung oder Ablehnung der Verbindung verantwortlich.
 
-![Verwalten eines privaten Endpunkts](./media/tutorial-copy-data-portal-private/manage-private-endpoint.png)
+:::image type="content" source="./media/tutorial-copy-data-portal-private/manage-private-endpoint.png" alt-text="Verwalten eines privaten Endpunkts":::
 
 Wenn der Besitzer die Verbindung genehmigt, wird der private Link eingerichtet. Andernfalls wird der private Link nicht eingerichtet. In beiden Fällen wird der verwaltete private Endpunkt mit dem Status der Verbindung aktualisiert.
 
-![Genehmigter verwalteter privater Endpunkt](./media/tutorial-copy-data-portal-private/approve-private-endpoint.png)
+:::image type="content" source="./media/tutorial-copy-data-portal-private/approve-private-endpoint.png" alt-text="Genehmigter verwalteter privater Endpunkt":::
 
 Nur ein verwalteter privater Endpunkt im genehmigten Zustand kann Datenverkehr an eine angegebene Ressource für private Links senden.
 
 ## <a name="interactive-authoring"></a>Interaktive Erstellung
 Interaktive Erstellungsfunktionen werden beispielsweise für Testverbindungen, das Durchsuchen von Ordner- und Tabellenlisten, das Abrufen von Schemas und die Vorschau von Daten verwendet. Sie können die interaktive Erstellung aktivieren, wenn Sie eine Azure Integration Runtime erstellen, die sich in einem per ADF verwalteten virtuellen Netzwerk befindet. Der Back-End-Dienst weist vorab Computeressourcen für die interaktive Erstellung zu. Andernfalls werden Computeressourcen jedes Mal zugewiesen, wenn eine interaktive ausgeführt wird. Dies nimmt mehr Zeit in Anspruch. Die Gültigkeitsdauer für die interaktive Erstellung beträgt 60 Minuten. Das bedeutet, dass das Feature 60 Minuten nach dem letzten interaktiven Erstellungsvorgang deaktiviert wird.
 
-![Interaktive Erstellung](./media/managed-vnet/interactive-authoring.png)
+:::image type="content" source="./media/managed-vnet/interactive-authoring.png" alt-text="Interaktive Erstellung":::
 
 ## <a name="activity-execution-time-using-managed-virtual-network"></a>Aktivitätsausführungszeit mit verwaltetem virtuellen Netzwerk
 Die Warteschlangenzeit der Azure Integration Runtime ist im verwalteten VNet länger als in der öffentlichen Azure Integration Runtime. Der Grund dafür ist, dass nicht ein Serverknoten pro Data Factory reserviert wird und somit vor dem Starten jeder Aktivität eine Aufwärmphase erfolgt. Dies geschieht hauptsächlich beim Beitritt zu einem VNet und nicht in der Azure IR. Für Aktivitäten, die keine Copy-Aktivitäten sind, einschließlich Pipelineaktivitäten und externen Aktivitäten, beträgt die Gültigkeitsdauer (Time To Live, TTL) beim ersten Auslösen 60 Minuten. Innerhalb der TTL ist die Warteschlangenzeit kürzer, da der Knoten bereits aufgewärmt ist. 
@@ -101,7 +99,7 @@ $privateEndpointResourceId = "subscriptions/${subscriptionId}/resourceGroups/${r
 $integrationRuntimeResourceId = "subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/integrationRuntimes/${integrationRuntimeName}"
 
 # Create managed Virtual Network resource
-New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${vnetResourceId}"
+New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${vnetResourceId}" -Properties @{}
 
 # Create managed private endpoint resource
 New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${privateEndpointResourceId}" -Properties @{
@@ -165,6 +163,8 @@ Informationen zum Zugriff auf lokale Datenquellen aus dem verwalteten VNet mithi
 - Kanada, Osten
 - Indien, Mitte
 - USA (Mitte)
+- China, Osten 2
+- China, Norden 2
 - Asien, Osten
 - East US
 - USA (Ost 2)
@@ -181,6 +181,9 @@ Informationen zum Zugriff auf lokale Datenquellen aus dem verwalteten VNet mithi
 - Südostasien
 - Schweiz, Norden
 - Vereinigte Arabische Emirate, Norden
+- US Gov Arizona
+- US Gov Texas
+- US Government, Virginia
 - UK, Süden
 - UK, Westen
 - USA, Westen-Mitte
@@ -197,7 +200,11 @@ Informationen zum Zugriff auf lokale Datenquellen aus dem verwalteten VNet mithi
 - Wenn Sie einen verknüpften Dienst für Azure Key Vault erstellen, gibt es keinen Verweis auf Azure Integration Runtime. Daher können Sie während der Erstellung eines verknüpften Diensts von Azure Key Vault keinen privaten Endpunkt erstellen. Wenn Sie jedoch einen verknüpften Dienst für Datenspeicher erstellen, der auf den verknüpften Dienst von Azure Key Vault verweist, und dieser verknüpfte Dienst auf Azure Integration Runtime mit aktiviertem verwalteten virtuellen Netzwerk verweist, können Sie während der Erstellung einen privaten Endpunkt für den verknüpften Dienst von Azure Key Vault erstellen. 
 - Bei dem Vorgang **Verbindung testen** für den verknüpften Dienst von Azure Key Vault wird nur das URL-Format überprüft. Es werden dabei jedoch keine Netzwerkvorgänge ausgeführt.
 - Die Spalte **Privater Endpunkt wird verwendet** ist immer leer, selbst wenn Sie einen privaten Endpunkt für Azure Key Vault erstellen.
-![Privater Endpunkt für Azure Key Vault](./media/managed-vnet/akv-pe.png)
+
+### <a name="linked-service-creation-of-azure-hdi"></a>Erstellung eines verknüpften Diensts von Azure HDI
+- Die Spalte **Privaten Endpunkt verwenden** wird immer als leer angezeigt, auch wenn Sie einen privaten Endpunkt für HDI mithilfe des Private Link-Diensts und des Lastenausgleichs mit Portweiterleitung erstellen.
+
+:::image type="content" source="./media/managed-vnet/akv-pe.png" alt-text="Privater Endpunkt für Azure Key Vault":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

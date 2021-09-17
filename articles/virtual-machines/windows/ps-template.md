@@ -7,14 +7,16 @@ ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017, devx-track-azurepowershell
-ms.openlocfilehash: f31986b7c202309d41556c47233e8e8400590d3d
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 1be03bee5005cbcc4b2eec3d469631d504d3c504
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110668829"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690153"
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Erstellen eines virtuellen Windows-Computer mit einer Resource Manager-Vorlage
+
+**Gilt für**: :heavy_check_mark: Windows-VMs 
 
 Es wird beschrieben, wie Sie einen virtuellen Windows-Computer mit einer Azure Resource Manager-Vorlage und mit Azure PowerShell über die Azure Cloud Shell erstellen. Mit der in diesem Artikel verwendeten Vorlage wird ein einzelner virtueller Computer mit Windows Server in einem neuen virtuellen Netzwerk mit nur einem Subnetz bereitgestellt. Informationen zum Erstellen eines virtuellen Linux-Computers finden Sie unter [Erstellen eines virtuellen Linux-Computers mithilfe von Azure Resource Manager-Vorlagen](../linux/create-ssh-secured-vm-from-template.md).
 

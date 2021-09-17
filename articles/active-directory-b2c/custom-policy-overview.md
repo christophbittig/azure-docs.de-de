@@ -10,12 +10,13 @@ ms.topic: reference
 ms.date: 04/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2a8aabac6960909f2a3d90fcee01cebb0ad7a832
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.custom: b2c-support
+ms.openlocfilehash: 5c27384e58a23501224e279e987115e4981ebf99
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256938"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122633607"
 ---
 # <a name="azure-ad-b2c-custom-policy-overview"></a>Übersicht über Benutzerdefinierte Azure AD B2C-Richtlinien
 
@@ -34,6 +35,8 @@ Das [Starter Pack](tutorial-create-user-flows.md?pivots=b2c-custom-policy#get-th
 - **SocialAndLocalAccounts** ermöglicht sowohl die Verwendung von lokalen Konten als auch von Konten für soziale Netzwerke. Die meisten unserer Beispiele beziehen sich auf diese Richtlinie.
 - **SocialAndLocalAccountsWithMFA** ermöglicht lokale Optionen und Optionen für soziale Netzwerke sowie zur Multi-Factor Authentication.
 
+Im [Azure AD B2C Beispiele GitHub Repository](https://github.com/azure-ad-b2c/samples) finden Sie Beispiele für mehrere erweiterte Azure AD B2C benutzerdefinierte CIAM-User Journeys, z. B. Verbesserungen der lokalen Kontorichtlinie, Richtlinienerweiterungen für Konten sozialer Netzwerke, MFA-Erweiterungen, Verbesserungen der Benutzeroberfläche, generische Erweiterungen, App-Migration, Benutzermigration, bedingter Zugriff, Webtest und CI/CD.
+ 
 ## <a name="understanding-the-basics"></a>Verstehen der Grundlagen 
 
 ### <a name="claims"></a>Ansprüche

@@ -4,15 +4,16 @@ description: In diesen Tutorials wird veranschaulicht, wie Sie Daten inkrementel
 author: dearandyxu
 ms.author: yexu
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: 7161fb30c8b445681b4cd577d8f8ac9fff5106df
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a7dae1f33583a7350dd273a44efa90e9cb7dd725
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101739244"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638863"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>Inkrementelles Laden von Daten aus einem Quelldatenspeicher in einen Zieldatenspeicher
 
@@ -43,7 +44,7 @@ Das folgende Tutorial enthält eine Schritt-für-Schritt-Anleitung: <br/>
 - [Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage mit Informationen der Änderungsnachverfolgung](tutorial-incremental-copy-change-tracking-feature-powershell.md)
 
 ## <a name="loading-new-and-changed-files-only-by-using-lastmodifieddate"></a>Ausschließliches Laden neuer und geänderter Dateien unter Verwendung von „LastModifiedDate“
-Sie können die neuen und geänderten Dateien nur kopieren, indem Sie „LastModifiedDate“ für den Zielspeicher verwenden. ADF überprüft alle Dateien aus dem Quellspeicher, wendet den Filter auf deren „LastModifiedDate“ an und kopiert nur die Dateien in den Zielspeicher, die neu sind oder seit dem letzten Mal aktualisiert wurden.  Wenn Sie ADF sehr viele Dateien überprüfen lassen, aber nur wenige Dateien in den Zielspeicherort kopieren, müssen Sie trotzdem mit einer langen Ausführungsdauer rechnen, denn auch das Überprüfen von Dateien ist zeitaufwändig.   
+Sie können die neuen und geänderten Dateien nur kopieren, indem Sie „LastModifiedDate“ für den Zielspeicher verwenden. ADF überprüft alle Dateien aus dem Quellspeicher, wendet den Filter auf deren „LastModifiedDate“ an und kopiert nur die Dateien in den Zielspeicher, die neu sind oder seit dem letzten Mal aktualisiert wurden.  Beachten Sie bitte Folgendes: Wenn Sie von ADF große Mengen von Dateien überprüfen lassen, aber nur wenige Dateien in das Ziel kopieren, dauert dies aufgrund des Überprüfungsvorgangs weiterhin lange.   
 
 Das folgende Tutorial enthält eine Schritt-für-Schritt-Anleitung: <br/>
 - [Incrementally copy new and changed files based on LastModifiedDate by using the Copy Data tool](tutorial-incremental-copy-lastmodified-copy-data-tool.md) (Inkrementelles Kopieren neuer und geänderter Dateien auf der Grundlage von „LastModifiedDate“ mithilfe des Tools zum Kopieren von Daten)

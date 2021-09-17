@@ -4,15 +4,15 @@ description: Hier erfahren Sie, wie Azure App Service-Umgebungen Ihnen helfen, I
 author: ccompy
 ms.assetid: 3c7eaefa-1850-4643-8540-428e8982b7cb
 ms.topic: overview
-ms.date: 04/19/2018
+ms.date: 07/28/2021
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 990d1ca07d4cf9e66c50a22f213817dda3ae029c
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 195da1286251ca51c9d36aaf7c2dcfb3c2177766
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113432912"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725733"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Einführung in die App Service-Umgebungen #
 > [!NOTE]
@@ -49,7 +49,7 @@ ASEs hosten Anwendungen von nur einem Kunden in einem seiner VNETs. Kunden haben
 
 ## <a name="dedicated-environment"></a>Dedizierte Umgebung ##
 
-Eine ASE wird dediziert für ein einzelnes Abonnement verwendet und kann 100 App Service-Planinstanzen hosten. Dabei kann es sich um 100 Instanzen in einem einzelnen App Service-Plan oder auch um 100 App Service-Einzelinstanzpläne und alles dazwischen handeln.
+Eine ASE ist eine dedizierte Umgebung, die ausschließlich zu einem einzelnen Kunden gehört und insgesamt 200 App Service-Planinstanzen hosten kann. Ein einzelner isolierter App Service-Plan einer SKU kann bis zu 100 Instanzen enthalten. Wenn Sie alle Instanzen aus allen App Service-Plänen in dieser ASE addieren, muss die Summe kleiner als oder gleich 200 sein.
 
 Eine ASE besteht aus Front-Ends und Worker. Front-Ends sind für die HTTP/HTTPS-Beendigung und den automatischen Lastenausgleich von App-Anforderungen in einer ASE zuständig. Front-Ends werden automatisch hinzugefügt, wenn die App Service-Pläne in der ASE horizontal hochskaliert werden.
 

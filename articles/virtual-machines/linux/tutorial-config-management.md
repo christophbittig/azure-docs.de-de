@@ -1,29 +1,25 @@
 ---
 title: 'Tutorial: Verwalten der Konfiguration eines virtuellen Linux-Computers in Azure'
 description: In diesem Tutorial erfahren Sie, wie Sie auf einem virtuellen Linux-Computer Änderungen ermitteln und Paketupdates verwalten.
-services: virtual-machines
-documentationcenter: virtual-machines
 author: mgoedtel
 manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines
 ms.collection: linux
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: bbc294f006859e30aa891c7aa1b9ad4d1665a21c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: fae7a6065f04b34ea952dd474919d43dad46d0df
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108139955"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690954"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>Tutorial: Überwachen von Änderungen und Aktualisieren eines virtuellen Linux-Computers in Azure
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
 Die [Änderungsnachverfolgung](../../automation/change-tracking/overview.md) von Azure ermöglicht Ihnen das einfache Identifizieren von Änderungen, und mit der [Updateverwaltung](../../automation/update-management/overview.md) können Sie Betriebssystemupdates für Ihre virtuellen Azure-Linux-Computer verwalten.
 

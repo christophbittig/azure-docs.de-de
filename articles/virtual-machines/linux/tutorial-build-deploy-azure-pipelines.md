@@ -1,25 +1,25 @@
 ---
-title: 'Tutorial: CI/CD für Azure-VMs mithilfe von Azure Pipelines'
-description: In diesem Tutorial erfahren Sie, wie Sie mithilfe einer YAML-basierten Azure-Pipeline CI- und CD-Vorgänge (Continuous Integration bzw. Continuous Deployment) einer Node.js-App für Azure-VMs einrichten.
+title: CI/CD für Azure-VMs mithilfe von Azure Pipelines
+description: Erfahren Sie, wie Sie mithilfe einer YAML-basierten Azure-Pipeline CI- und CD-Vorgänge (Continuous Integration bzw. Continuous Deployment) einer Node.js-App für Azure-VMs einrichten.
+ms.service: virtual-machines
 author: ushan
 tags: azure-devops-pipelines
-ms.assetid: ''
-ms.service: virtual-machines
 ms.collection: linux
-ms.topic: tutorial
-ms.tgt_pltfrm: azure-pipelines
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-js
-ms.openlocfilehash: 49282bf6cbc7c24b75fbe3f1bbe68bd1fac62ae3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a50a51d68154654d204149a5e76e5aa94e57683
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552489"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697740"
 ---
-# <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Tutorial: Bereitstellen der App auf virtuellen Linux-Computern in Azure mithilfe von Azure DevOps Services und Azure Pipelines
+# <a name="deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Bereitstellen der App auf virtuellen Linux-Computern in Azure mithilfe von Azure DevOps Services und Azure Pipelines
+
+**Gilt für:** :heavy_check_mark: Linux-VMs 
 
 Continuous Integration (CI) und Continuous Deployment (CD) bilden eine Pipeline, über die Sie Ihren Code nach jedem Codecommit erstellen, freigeben und bereitstellen können. Das vorliegende Dokument enthält die Schritte, die zum Einrichten einer CI/CD-Pipeline für die Bereitstellung auf mehreren Computern über Azure Pipelines ausgeführt werden müssen.
 

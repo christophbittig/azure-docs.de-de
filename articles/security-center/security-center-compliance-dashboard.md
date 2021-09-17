@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: tutorial
-ms.date: 04/21/2021
+ms.date: 08/09/2021
 ms.author: memildin
-ms.openlocfilehash: 970329753d6dd6c6175c26da4288c304e27e3982
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: fae230c3f6dc37a269299fab74400f87198195d2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112237622"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734907"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Tutorial: Verbessern der Einhaltung gesetzlicher Vorschriften
 
@@ -29,6 +29,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
 > * Evaluieren der Einhaltung gesetzlicher Bestimmungen im entsprechenden Dashboard
 > * Verbessern Ihres Konformitätsstatus durch das Ergreifen von Maßnahmen aufgrund von Empfehlungen
+> * Herunterladen von PDF-/CSV-Berichten sowie Zertifizierungsberichten zu Ihrem Konformitätsstatus
 > * Einrichten von Warnungen zu Änderungen Ihres Konformitätsstatus
 > * Exportieren Ihrer Konformitätsdaten als kontinuierlichen Datenstrom und als wöchentliche Momentaufnahmen
 
@@ -41,7 +42,7 @@ Zum Durchlaufen der in diesem Tutorial behandelten Features müssen folgende Vor
 - [Azure Defender](azure-defender.md) muss aktiviert sein. Azure Defender kann 30 Tage lang kostenlos getestet werden.
 - Sie müssen mit einem Konto angemeldet sein, das über Lesezugriff auf die Daten zur Richtlinienkonformität verfügt. (**Sicherheitsleseberechtigter** reicht nicht aus.) Hierzu kann die Rolle **Globaler Leser** für das Abonnement verwendet werden. Ihnen müssen mindestens die Rollen **Mitwirkender bei Ressourcenrichtlinien** und **Sicherheitsadministrator** zugewiesenen sein.
 
-##  <a name="assess-your-regulatory-compliance"></a>Bewerten der Einhaltung gesetzlicher Bestimmungen
+## <a name="assess-your-regulatory-compliance"></a>Bewerten der Einhaltung gesetzlicher Bestimmungen
 
 Auf dem Dashboard zur Einhaltung gesetzlicher Bestimmungen werden Ihre ausgewählten Konformitätsstandards mit allen zugehörigen Anforderungen angezeigt. Die unterstützten Anforderungen sind hierbei jeweils den entsprechenden Sicherheitsbewertungen zugeordnet. Der Status dieser Bewertungen spiegelt Ihre Einhaltung des Standards wider.
 
@@ -49,19 +50,13 @@ Verwenden Sie das Dashboard zur Einhaltung gesetzlicher Bestimmungen, um sich au
 
 1. Wählen Sie im Security Center-Menü die Option **Einhaltung gesetzlicher Bestimmungen** aus.
 
-    Im oberen Bildschirmbereich befindet sich ein Dashboard mit einer Übersicht über Ihren Konformitätsstatus mit den unterstützten Bestimmungen. Es sind Ihr Gesamtstatus der Konformität und die Anzahl von bestandenen und nicht bestandenen Bewertungen der einzelnen Standards angegeben.
+    Im oberen Bildschirmbereich befindet sich ein Dashboard mit einer Übersicht über Ihren Konformitätsstatus und die unterstützten Bestimmungen. Es sind Ihr Gesamtstatus der Konformität und die Anzahl von bestandenen und nicht bestandenen Bewertungen der einzelnen Standards angegeben.
 
     :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="Dashboard für die Einhaltung gesetzlicher Bestimmungen." lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
 
 1. Wählen Sie eine Registerkarte für einen Konformitätsstandard aus, der für Sie relevant ist (1). Sie sehen, auf welche Abonnements der Standard angewendet wird (2), und die Liste mit allen Kontrollen für den Standard (3) wird angezeigt. Sie können für eine Kontrolle jeweils die Details zu den bestandenen und nicht bestandenen Bewertungen (4) sowie die Anzahl betroffener Ressourcen (5) anzeigen. Einige Kontrollen sind abgeblendet. Diesen Kontrollen sind keine Security Center-Bewertungen zugeordnet. Überprüfen Sie deren Anforderungen, und bewerten Sie sie in Ihrer Umgebung. Einige sind möglicherweise prozessbezogen und nicht technischer Art.
 
     :::image type="content" source="./media/security-center-compliance-dashboard/compliance-drilldown.png" alt-text="Erkunden der Compliancedetails für einen bestimmten Standard.":::
-
-1. Wählen Sie **Bericht herunterladen** aus, um einen PDF-Bericht mit einer Zusammenfassung Ihres aktuellen Compliancestatus für einen bestimmten Standard zu generieren.
-
-    Der Bericht enthält eine allgemeine Zusammenfassung des Konformitätsstatus für den ausgewählten Standard auf der Grundlage von Security Center-Bewertungsdaten. Der Bericht ist nach den Kontrollen dieses bestimmten Standards strukturiert. Der Bericht kann an Stakeholder weitergegeben und als Nachweis bei internen und externen Prüfungen genutzt werden.
-
-    :::image type="content" source="./media/security-center-compliance-dashboard/download-report.png" alt-text="Herunterladen des Berichts zur Compliance.":::
 
 ## <a name="improve-your-compliance-posture"></a>Verbessern Ihres Konformitätsstatus
 
@@ -84,10 +79,32 @@ Verbessern Sie mit den Informationen im Dashboard für die Einhaltung gesetzlich
     > [!NOTE]
     > Da die Bewertungen ungefähr alle zwölf Stunden durchgeführt werden, sehen die Auswirkungen auf Ihre Konformitätsdaten jeweils erst nach der nächsten Ausführung der relevanten Bewertung.
 
+## <a name="generate-compliance-status-reports-and-certificates"></a>Generieren von Konformitätsstatusberichten und -zertifikaten
 
-## <a name="export-your-compliance-status-data"></a>Exportieren Ihrer Daten zum Konformitätsstatus
+- Wählen Sie **Bericht herunterladen** aus, um einen PDF-Bericht mit einer Zusammenfassung Ihres aktuellen Compliancestatus für einen bestimmten Standard zu generieren.
 
-Falls Sie Ihren Konformitätsstatus mit anderen Überwachungstools in Ihrer Umgebung nachverfolgen möchten, können Sie den einfachen Exportmechanismus von Security Center nutzen. Konfigurieren Sie den **fortlaufenden Export**, um ausgewählte Daten an eine Azure Event Hub-Instanz oder einen Log Analytics-Arbeitsbereich zu senden.
+    Der Bericht enthält eine allgemeine Zusammenfassung des Konformitätsstatus für den ausgewählten Standard auf der Grundlage von Security Center-Bewertungsdaten. Der Bericht ist nach den Kontrollen dieses bestimmten Standards strukturiert. Der Bericht kann an Stakeholder weitergegeben und als Nachweis bei internen und externen Prüfungen genutzt werden.
+
+    :::image type="content" source="./media/security-center-compliance-dashboard/download-report.png" alt-text="Verwenden der Symbolleiste im Dashboard für die Einhaltung gesetzlicher Bestimmungen des Security Centers, um Konformitätsberichte herunterzuladen.":::
+
+- Verwenden Sie die Option **Überwachungsberichte**, um **Zertifizierungsberichte** von Azure und Dynamics für die auf Ihre Abonnements angewendeten Standards herunterzuladen. 
+
+    :::image type="content" source="media/release-notes/audit-reports-regulatory-compliance-dashboard.png" alt-text="Verwenden der Symbolleiste im Dashboard für die Einhaltung gesetzlicher Bestimmungen des Security Centers, um Zertifizierungsberichte von Azure und Dynamics herunterzuladen.":::
+
+    Wählen Sie die Registerkarte für die relevanten Berichtstypen (PCI, SOC, ISO usw.) aus und verwenden Sie die Filter, um nach den benötigten spezifischen Berichten zu suchen:
+
+    :::image type="content" source="media/release-notes/audit-reports-list-regulatory-compliance-dashboard-ga.png" alt-text="Filtern der Liste der verfügbaren Azure-Überwachungsberichte mithilfe von Registerkarten und Filtern.":::
+
+    Auf der Registerkarte „PCI“ können Sie z. B. eine ZIP-Datei herunterladen, die ein digital signiertes Zertifikat enthält, das die Konformität von Microsoft Azure, Dynamics 365 und anderen Onlinediensten mit dem ISO22301-Framework nachweist, zusammen mit den erforderlichen Unterlagen zur Interpretation und Präsentation des Zertifikats. 
+
+    > [!NOTE]
+    > Wenn Sie einen dieser Zertifizierungsberichte herunterladen, wird Ihnen der folgende Datenschutzhinweis angezeigt:
+    > 
+    > _Durch das Herunterladen dieser Datei geben Sie Microsoft die Erlaubnis, den aktuellen Benutzer und die ausgewählten Abonnements zum Zeitpunkt des Downloads zu speichern. Diese Daten werden verwendet, um Sie im Falle von Änderungen oder Aktualisierungen des heruntergeladenen Auditberichts zu benachrichtigen. Diese Daten werden von Microsoft und den Überwachungsfirmen, welche die Zertifizierung/Berichte erstellen, nur verwendet, wenn eine Benachrichtigung erforderlich ist._
+
+## <a name="configure-frequent-exports-of-your-compliance-status-data"></a>Konfigurieren häufiger Exporte Ihrer Konformitätsstatusdaten
+
+Falls Sie Ihren Konformitätsstatus mit anderen Überwachungstools in Ihrer Umgebung nachverfolgen möchten, können Sie den einfachen Exportmechanismus von Security Center nutzen. Konfigurieren Sie den **fortlaufenden Export**, um ausgewählte Daten an eine Azure Event Hub-Instanz oder einen Log Analytics-Arbeitsbereich zu senden. Weitere Informationen finden Sie unter [Fortlaufendes Exportieren von Security Center-Daten](continuous-export.md).
 
 Verwenden Sie die Daten des fortlaufenden Exports an eine Azure Event Hub-Instanz oder einen Log Analytics-Arbeitsbereich wie folgt:
 
@@ -99,11 +116,8 @@ Verwenden Sie die Daten des fortlaufenden Exports an eine Azure Event Hub-Instan
 
     :::image type="content" source="media/security-center-compliance-dashboard/export-compliance-data-snapshot.png" alt-text="Fortlaufender Export einer wöchentlichen Momentaufnahme mit Daten zur Einhaltung gesetzlicher Bestimmungen." lightbox="media/security-center-compliance-dashboard/export-compliance-data-snapshot.png":::
 
-Sie können auch direkt aus dem Dashboard für die Einhaltung gesetzlicher Bestimmungen einen **PDF-/CSV-Bericht** mit Ihren Konformitätsdaten exportieren:
-
-:::image type="content" source="media/security-center-compliance-dashboard/export-compliance-data-report.png" alt-text="Exportieren Ihrer Daten für die Einhaltung gesetzlicher Bestimmungen als PDF- oder CSV-Bericht." lightbox="media/security-center-compliance-dashboard/export-compliance-data-report.png":::
-
-Weitere Informationen finden Sie unter [Fortlaufendes Exportieren von Security Center-Daten](continuous-export.md).
+> [!TIP]
+> Sie können Berichte für einen einzelnen Zeitpunkt auch manuell direkt aus dem Dashboard für die Einhaltung gesetzlicher Bestimmungen exportieren. Generieren Sie diese **PDF-/CSV-Berichte** oder **Azure- und Dynamics-Zertifizierungsberichte** mithilfe der Symbolleistenoptionen **Bericht herunterladen** oder **Prüfberichte**. Weitere Informationen finden Sie unter [Bewerten der Einhaltung gesetzlicher Bestimmungen](#assess-your-regulatory-compliance). 
 
 
 ## <a name="run-workflow-automations-when-there-are-changes-to-your-compliance"></a>Durchführen von Workflowautomatisierungen bei Änderungen Ihres Konformitätsstatus
@@ -187,11 +201,11 @@ Für andere Richtlinien können Sie direkt in der Richtlinie eine Ausnahme erste
 
 
 ### <a name="what-azure-defender-plans-or-licenses-do-i-need-to-use-the-regulatory-compliance-dashboard"></a>Welche Azure Defender-Pläne oder -Lizenzen benötige ich, um das Dashboard für die Einhaltung gesetzlicher Bestimmungen verwenden zu können?
-Wenn für einen beliebigen Ihrer Azure-Ressourcentypen eines der Azure Defender-Pakete aktiviert ist, haben Sie in Security Center Zugriff auf das Dashboard für die Einhaltung gesetzlicher Bestimmungen mit sämtlichen zugehörigen Daten.
+Wenn Sie *einen* der Azure Defender-Pläne auf *einer* Ihrer Azure-Ressourcen aktiviert haben, können Sie auf das Dashboard für die Einhaltung gesetzlicher Bestimmungen des Security Centers und alle zugehörigen Daten zugreifen.
 
 
 ### <a name="how-do-i-know-which-benchmark-or-standard-to-use"></a>Woher weiß ich, welche Benchmark oder welcher Standard verwendet werden soll?
-[Azure Security Benchmark](/security/benchmark/azure/introduction) (ASB) ist der kanonische Satz von Sicherheitsempfehlungen und bewährten Methoden, die von Microsoft definiert wurden und auf allgemeine Compliancekontrollframeworks ausgerichtet sind, einschließlich [CIS Microsoft Azure Foundations Benchmark](https://www.cisecurity.org/benchmark/azure/) und [NIST SP 800-53](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final). ASB ist eine sehr umfassende Benchmark und wurde entwickelt, um die neuesten Sicherheitsfunktionen einer Vielzahl von Azure-Diensten zu empfehlen. Wir empfehlen ASB Kunden, deren Sicherheitsstatus maximiert werden soll und die die Möglichkeit haben, ihren Konformitätsstatus an Branchenstandards auszurichten.
+[Azure Security Benchmark](/security/benchmark/azure/introduction) (ASB) ist der kanonische Satz von Sicherheitsempfehlungen und bewährten Methoden, die von Microsoft definiert wurden und auf allgemeine Compliancekontrollframeworks ausgerichtet sind, einschließlich [CIS Microsoft Azure Foundations Benchmark](https://www.cisecurity.org/benchmark/azure/) und [NIST SP 800-53](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final). ASB ist eine umfassende Benchmark und wurde entwickelt, um die neuesten Sicherheitsfunktionen einer Vielzahl von Azure-Diensten zu empfehlen. Wir empfehlen ASB Kunden, deren Sicherheitsstatus maximiert und deren Konformitätsstatus an Branchenstandards ausgerichtet werden soll.
 
 Die [CIS-Benchmark](https://www.cisecurity.org/benchmark/azure/) wird von einer unabhängigen Entität – Center for Internet Security (CIS) – erstellt und enthält Empfehlungen für eine Teilmenge der wichtigsten Azure-Dienste. Wir arbeiten mit CIS zusammen, um sicherzustellen, dass die Empfehlungen die neuesten Optimierungen in Azure beinhalten, hin und wieder sind sie jedoch trotzdem veraltet. Dennoch nutzen einige Kunden diese objektive Drittanbieterbewertung von CIS gerne als erste und primäre Sicherheitsbaseline.
 

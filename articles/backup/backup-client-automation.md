@@ -2,14 +2,14 @@
 title: Verwenden von PowerShell zum Sichern von Windows Server in Azure
 description: In diesem Artikel erfahren Sie, wie Sie PowerShell zum Einrichten von Azure Backup auf einem Windows Server-Computer oder einem Windows-Client sowie zum Verwalten von Sicherungen und Wiederherstellungen verwenden.
 ms.topic: conceptual
-ms.date: 12/2/2019
+ms.date: 08/24/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0149fb56a970d2962088a850e3a56a3674cb1a4b
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 1d72dec0e9e2c1df0f93df5b557d72e8ad5c857e
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110672217"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779493"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Bereitstellen und Verwalten der Sicherung in Azure für Windows Server-/Windows-Clientcomputer mit PowerShell
 
@@ -408,6 +408,9 @@ PolicyState     : Valid
 ### <a name="applying-the-policy"></a>Anwenden der Richtlinie
 
 Das Richtlinienobjekt ist jetzt fertig und verfügt über einen zugeordneten Sicherungszeitplan, eine Aufbewahrungsrichtlinie sowie eine Ein-/Ausschlussliste für Dateien. Für diese Richtlinie kann jetzt ein Commit ausgeführt werden, um sie in Azure Backup zu speichern. Bevor Sie die neue Richtlinie anwenden, müssen Sie mithilfe des [Remove-OBPolicy](/powershell/module/msonlinebackup/remove-obpolicy)-Cmdlets sicherstellen, dass dem Server keine vorhandenen Sicherungsrichtlinien zugeordnet sind. Beim Entfernen der Richtlinie werden Sie zur Bestätigung aufgefordert. Sie können die Bestätigung überspringen, indem Sie das `-Confirm:$false`-Kennzeichen mit dem Cmdlet verwenden.
+
+>[!Note]
+>Wenn beim Ausführen des Cmdlets eine Aufforderung zum Festlegen einer Sicherheits-PIN angezeigt wird, lesen Sie den [Abschnitt Methode 1](/azure/backup/backup-azure-delete-vault#method-1).
 
 ```powershell
 Get-OBPolicy | Remove-OBPolicy

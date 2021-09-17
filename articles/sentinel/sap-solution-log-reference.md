@@ -6,14 +6,14 @@ ms.author: bagold
 ms.service: azure-sentinel
 ms.topic: reference
 ms.custom: mvc
-ms.date: 05/12/2021
+ms.date: 07/21/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: 42cd84387d1b5b67a09afcc072c897d6980b3d49
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: a1511581e3cc80d5f2f71bb82dc1bcb0ba639acb
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109815233"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681505"
 ---
 # <a name="azure-sentinel-sap-solution-logs-reference-public-preview"></a>Referenz zu Protokollen der Azure Sentinel-Lösung für SAP (Public Preview)
 
@@ -38,7 +38,7 @@ Dieser Artikel richtet sich an fortgeschrittene SAP-Benutzer.
 
 - **Protokollzweck:** Aufzeichnung des Status einer Anwendungsausführung, sodass Sie sie später bei Bedarf rekonstruieren können.
 
-    Verfügbar unter Verwendung von RFC mit einem benutzerdefinierten Dienst, der auf Standarddiensten der XBP-Schnittstelle basiert.
+    Verfügbar unter Verwendung von RFC mit einem benutzerdefinierten Dienst, der auf Standarddiensten der XBP-Schnittstelle basiert. Dieses Protokoll wird clientbezogen generiert.
 
 
 ### <a name="abapapplog_cl-log-schema"></a>Schema des Protokolls ABAPAppLog_CL
@@ -90,9 +90,9 @@ Dieser Artikel richtet sich an fortgeschrittene SAP-Benutzer.
 
     - Andere Entitäten im SAP-System, z. B. Benutzerdaten, Rollen, Adressen
 
-    Verfügbar unter Verwendung von RFC mit einem benutzerdefinierten Dienst, der auf Standarddiensten basiert.
+    Verfügbar unter Verwendung von RFC mit einem benutzerdefinierten Dienst, der auf Standarddiensten basiert. Dieses Protokoll wird clientbezogen generiert.
 
-### <a name="abapauditlog_cl-log-schema"></a>Schema des Protokolls ABAPAuditLog_CL
+### <a name="abapchangedocslog_cl-log-schema"></a>Schema des Protokolls ABAPChangeDocsLog_CL
 
 
 | Feld                    | BESCHREIBUNG                 |
@@ -134,7 +134,7 @@ Dieser Artikel richtet sich an fortgeschrittene SAP-Benutzer.
 
 - **Protokollzweck**: enthält die CTS-Protokolle (Change & Transport System), einschließlich der Verzeichnisobjekte und Anpassungen, an denen Änderungen erfolgt sind.
 
-    Verfügbar unter Verwendung von RFC mit einem benutzerdefinierten Dienst, der auf Standardtabellen und -diensten basiert.
+    Verfügbar unter Verwendung von RFC mit einem benutzerdefinierten Dienst, der auf Standardtabellen und -diensten basiert. Dieses Protokoll wird mit Daten aller Clients generiert.
 
 > [!NOTE]
 > Neben der Anwendungsprotokollierung, Änderungsdokumenten und Tabellenaufzeichnung werden alle Änderungen, die Sie mit dem Change & Transport System an Ihrem Produktivsystem vornehmen, in den CTS- und TMS-Protokollen dokumentiert.
@@ -170,7 +170,7 @@ Dieser Artikel richtet sich an fortgeschrittene SAP-Benutzer.
 
 - **Protokollzweck**: Bereitstellung einer Protokollierung für die Tabellen, die kritisch oder anfällig für Überwachungen sind.
 
-    Verfügbar unter Verwendung von RFC mit einem benutzerdefinierten Dienst.
+    Verfügbar unter Verwendung von RFC mit einem benutzerdefinierten Dienst. Dieses Protokoll wird mit Daten aller Clients generiert.
 
 ### <a name="abaptabledatalog_cl-log-schema"></a>Schema des Protokolls ABAPTableDataLog_CL
 
@@ -196,13 +196,13 @@ Dieser Artikel richtet sich an fortgeschrittene SAP-Benutzer.
 
 ## <a name="abap-gateway-log"></a>ABAP-Gatewayprotokoll
 
-- **Name in Azure Sentinel**: `GW_CL`
+- **Name in Azure Sentinel**: `ABAPOS_GW_CL`
 
 - **Zugehörige SAP-Dokumentation:** [SAP-Hilfeportal](https://help.sap.com/viewer/62b4de4187cb43668d15dac48fc00732/7.5.7/en-US/48b2a710ca1c3079e10000000a42189b.html)
 
-- **Protokollzweck**: Überwachung von Gatewayaktivitäten. Verfügbar über SAP Control Web Service.
+- **Protokollzweck**: Überwachung von Gatewayaktivitäten. Verfügbar über SAP Control Web Service. Dieses Protokoll wird mit Daten aller Clients generiert.
 
-### <a name="gw_cl-log-schema"></a>Schema des Protokolls GW_CL
+### <a name="abapos_gw_cl-log-schema"></a>Schema des Protokolls ABAPOS_GW_CL
 
 | Feld        | BESCHREIBUNG      |
 | ------------ | ---------------- |
@@ -216,15 +216,15 @@ Dieser Artikel richtet sich an fortgeschrittene SAP-Benutzer.
 
 ## <a name="abap-icm-log"></a>ABAP ICM-Protokoll
 
-- **Name in Azure Sentinel**: `ICM_CL`
+- **Name in Azure Sentinel**: `ABAPOS_ICM_CL`
 
 - **Zugehörige SAP-Dokumentation:** [SAP-Hilfeportal](https://help.sap.com/viewer/683d6a1797a34730a6e005d1e8de6f22/7.52.4/en-US/a10ec40d01e740b58d0a5231736c434e.html)
 
 - **Protokollzweck**: Aufzeichnung ein- und ausgehender Anforderungen und Erstellung von Statistiken zu HTTP-Anforderungen.
 
-    Verfügbar über SAP Control Web Service.
+    Verfügbar über SAP Control Web Service. Dieses Protokoll wird mit Daten aller Clients generiert.
 
-### <a name="icm_cl-log-schema"></a>Schema des Protokolls ICM_CL
+### <a name="abapos_icm_cl-log-schema"></a>Schema des Protokolls ABAPOS_ICM_CL
 
 | Feld        | BESCHREIBUNG      |
 | ------------ | ---------------- |
@@ -244,7 +244,7 @@ Dieser Artikel richtet sich an fortgeschrittene SAP-Benutzer.
 
 - **Protokollzweck**: Kombination aller Protokolle von Aufträgen für die Verarbeitung im Hintergrund (SM37).
 
-    Verfügbar unter Verwendung von RFC mit einem benutzerdefinierten Dienst, der auf Standarddiensten von XBP-Schnittstellen basiert.
+    Verfügbar unter Verwendung von RFC mit einem benutzerdefinierten Dienst, der auf Standarddiensten von XBP-Schnittstellen basiert. Dieses Protokoll wird mit Daten aller Clients generiert.
 
 ### <a name="abapjoblog_cl-log-schema"></a>Schema des Protokolls ABAPJobLog_CL
 
@@ -292,7 +292,7 @@ Dieser Artikel richtet sich an fortgeschrittene SAP-Benutzer.
     - Informationen, die eine höhere Datenebene bieten, z. B. erfolgreiche und nicht erfolgreiche Anmeldeversuche
     - Informationen, die die Wiederherstellung einer Reihe von Ereignissen ermöglichen, z. B. erfolgreiche oder nicht erfolgreiche Transaktionsstarts
 
-    Verfügbar über XAL-/SAL-Schnittstellen von RFC. SAL ist ab Version Basis 7.50 verfügbar.
+    Verfügbar über XAL-/SAL-Schnittstellen von RFC. SAL ist ab Version Basis 7.50 verfügbar. Dieses Protokoll wird mit Daten aller Clients generiert.
 
 ### <a name="abapauditlog_cl-log-schema"></a>Schema des Protokolls ABAPAuditLog_CL
 
@@ -338,7 +338,7 @@ Dieser Artikel richtet sich an fortgeschrittene SAP-Benutzer.
 
 - **Protokollzweck**: Hauptprotokoll für SAP-Druck mit Verlauf der Spoolanforderungen. (SP01).
 
-    Verfügbar unter Verwendung von RFC mit einem benutzerdefinierten Dienst, der auf Standardtabellen basiert.
+    Verfügbar unter Verwendung von RFC mit einem benutzerdefinierten Dienst, der auf Standardtabellen basiert. Dieses Protokoll wird mit Daten aller Clients generiert.
 
 ### <a name="abapspoollog_cl-log-schema"></a>Schema des Protokolls ABAPSpoolLog_CL
 
@@ -397,7 +397,7 @@ Dieser Artikel richtet sich an fortgeschrittene SAP-Benutzer.
 
 - **Protokollzweck**: Hauptprotokoll für SAP-Druck mit Verlauf der Spoolausgabeanforderungen. (SP02).
 
-    Verfügbar unter Verwendung von RFC mit einem benutzerdefinierten Dienst, der auf Standardtabellen basiert.
+    Verfügbar unter Verwendung von RFC mit einem benutzerdefinierten Dienst, der auf Standardtabellen basiert. Dieses Protokoll wird mit Daten aller Clients generiert.
 
 ### <a name="abapspooloutputlog_cl-log-schema"></a>Schema des Protokolls ABAPSpoolOutputLog_CL
 
@@ -442,15 +442,15 @@ Dieser Artikel richtet sich an fortgeschrittene SAP-Benutzer.
 
 ## <a name="abap-syslog"></a>ABAP SysLog
 
-- **Name in Azure Sentinel**: `SysLog_CL`
+- **Name in Azure Sentinel**: `ABAPOS_Syslog_CL`
 
 - **Zugehörige SAP-Dokumentation:** [SAP-Hilfeportal](https://help.sap.com/viewer/56bf1265a92e4b4d9a72448c579887af/7.5.7/en-US/c769bcbaf36611d3a6510000e835363f.html)
 
 - **Protokollzweck**: Aufzeichnung aller ABAP-Systemfehler von SAP NetWeaver Application Server (SAP NetWeaver AS), Warnungen, Benutzersperren aufgrund fehlgeschlagener Anmeldeversuche bekannter Benutzer und Prozessmeldungen.
 
-    Verfügbar über SAP Control Web Service.
+    Verfügbar über SAP Control Web Service. Dieses Protokoll wird mit Daten aller Clients generiert.
 
-### <a name="syslog_cl-log-schema"></a>Schema des Protokolls SysLog_CL
+### <a name="abapos_syslog_cl-log-schema"></a>Schema des Protokolls ABAPOS_Syslog_CL
 
 
 | Feld            | BESCHREIBUNG            |
@@ -479,7 +479,7 @@ Dieser Artikel richtet sich an fortgeschrittene SAP-Benutzer.
 
     Bei nicht abgebildeten Geschäftsprozessen kann es sich z. B. um einfache Freigabe- oder Genehmigungsprozesse handeln oder um komplexere Geschäftsprozesse wie die Erstellung von Basismaterial und die anschließende Koordination der zugehörigen Abteilungen.
 
-    Verfügbar unter Verwendung von RFC mit einem benutzerdefinierten Dienst, der auf Standardtabellen und -diensten basiert.
+    Verfügbar unter Verwendung von RFC mit einem benutzerdefinierten Dienst, der auf Standardtabellen und -diensten basiert. Dieses Protokoll wird clientbezogen generiert.
 
 ### <a name="abapworkflowlog_cl-log-schema"></a>Schema des Protokolls ABAPWorkflowLog_CL
 
@@ -526,15 +526,15 @@ Dieser Artikel richtet sich an fortgeschrittene SAP-Benutzer.
 
 ## <a name="abap-workprocess-log"></a>ABAP WorkProcess-Protokoll
 
-- **Name in Azure Sentinel**: `WP_CL`
+- **Name in Azure Sentinel**: `ABAPOS_WP_CL`
 
 - **Zugehörige SAP-Dokumentation:** [SAP-Hilfeportal](https://help.sap.com/viewer/d0739d980ecf42ae9f3b4c19e21a4b6e/7.3.15/en-US/46fb763b6d4c5515e10000000a1553f6.html)
 
 - **Protokollzweck**: Kombination aller Arbeitsprozessprotokolle. (Standard: `dev_*`).
 
-    Verfügbar über SAP Control Web Service.
+    Verfügbar über SAP Control Web Service. Dieses Protokoll wird mit Daten aller Clients generiert.
 
-### <a name="wp_cl-log-schema"></a>Schema des Protokolls WP_CL
+### <a name="abapos_wp_cl-log-schema"></a>Schema des Protokolls ABAPOS_WP_CL
 
 
 | Feld        | BESCHREIBUNG         |
@@ -557,7 +557,7 @@ Dieser Artikel richtet sich an fortgeschrittene SAP-Benutzer.
 
 - **Protokollzweck** Aufzeichnung von Benutzer- oder versuchten Aktionen in der SAP HANA-Datenbank. Ermöglicht Ihnen beispielsweise, den Lesezugriff auf vertrauliche Daten zu protokollieren und zu überwachen.
 
-    Verfügbar über den Sentinel Linux-Agent für Syslog.
+    Verfügbar über den Sentinel Linux-Agent für Syslog. Dieses Protokoll wird mit Daten aller Clients generiert.
 
 ### <a name="syslog-log-schema"></a>Schema des Protokolls Syslog
 
@@ -581,7 +581,7 @@ Dieser Artikel richtet sich an fortgeschrittene SAP-Benutzer.
 
 - **Protokollzweck**: Kombination aller auf Java-Dateien basierenden Protokolle, einschließlich des Sicherheitsüberwachungsprotokolls und der System- (Cluster- und Serverprozess), Leistungs- und Gatewayprotokolle. Enthält auch Entwicklerablaufverfolgungs- und Standardablaufverfolgungs-Protokolle.
 
-    Verfügbar über SAP Control Web Service.
+    Verfügbar über SAP Control Web Service. Dieses Protokoll wird mit Daten aller Clients generiert.
 
 ### <a name="javafileslogscl-log-schema"></a>Schema des Protokolls JavaFilesLogsCL
 
@@ -618,7 +618,9 @@ Dieser Artikel richtet sich an fortgeschrittene SAP-Benutzer.
 
 Weitere Informationen finden Sie unter
 
-- [Tutorial: Bereitstellen der Azure Sentinel-Lösung für SAP](sap-deploy-solution.md)
+- [Bereitstellen der Azure Sentinel-Lösung für SAP](sap-deploy-solution.md)
 - [Detaillierte SAP-Anforderungen für die Azure Sentinel-Lösung für SAP](sap-solution-detailed-requirements.md)
-- [Lokales Bereitstellen des Azure Sentinel-Datenconnectors für SAP](sap-solution-deploy-alternate.md)
+- [Bereitstellen des Azure Sentinel-Datenconnectors für SAP mit SNC](sap-solution-deploy-snc.md)
+- [Konfigurationsoptionen für Experten, lokale Bereitstellung und SAPControl-Protokollquellen](sap-solution-deploy-alternate.md)
 - [Azure Sentinel-Lösung für SAP: integrierte Sicherheitsinhalte](sap-solution-security-content.md)
+- [Problembehandlung bei der Bereitstellung der Azure Sentinel-Lösung für SAP](sap-deploy-troubleshoot.md)

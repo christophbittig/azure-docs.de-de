@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: cc54ae66cda6bf8ecde07d1830448ec39a15cc29
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad10e8d9f376578a61aaa7f5dc2cb0e896dd29cb
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98120222"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324667"
 ---
 # <a name="cheat-sheet-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytic"></a>Cheatsheet für dedizierte SQL-Pools (ehemals SQL DW) in Azure Synapse Analytics
 
@@ -92,10 +92,10 @@ Weitere Informationen finden Sie im Artikel über [Indizes](sql-data-warehouse-t
 
 ## <a name="partitioning"></a>Partitionierung
 
-Wenn Sie eine große Faktentabellen (mehr als 1 Milliarde Zeilen) haben, empfiehlt sich eventuell eine Partitionierung Ihrer Tabelle. In 99 Prozent der Fälle sollte der Partitionsschlüssel auf dem Datum basieren. Achten Sie darauf, die Partitionierung nicht zu übertreiben, insbesondere bei einem gruppierten Columnstore-Index.
+Wenn Sie eine große Faktentabellen (mehr als 1 Milliarde Zeilen) haben, empfiehlt sich eventuell eine Partitionierung Ihrer Tabelle. In 99 Prozent der Fälle sollte der Partitionsschlüssel auf dem Datum basieren. 
 
 Bei Stagingtabellen, die ELT erfordern, kann eine Partitionierung von Vorteil sein. Sie vereinfacht die Verwaltung des Datenlebenszyklus.
-Achten Sie darauf, die Partitionierung der Daten nicht zu überteiben, insbesondere bei einem gruppierten Columnstore-Index.
+Achten Sie darauf, die Partitionierung Ihrer Fakten- und Stagingtabelle nicht zu übertreiben, insbesondere bei einem gruppierten Columnstore-Index.
 
 Weitere Informationen finden Sie im Artikel über [Partitionen](sql-data-warehouse-tables-partition.md).
 

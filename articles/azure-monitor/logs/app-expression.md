@@ -4,13 +4,13 @@ description: Der app-Ausdruck wird in Azure Monitor-Protokollabfragen verwendet,
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/09/2019
-ms.openlocfilehash: 9d60857503402554381068fc36121fa3f7b61622
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.date: 08/11/2021
+ms.openlocfilehash: 1c7659d8b566649291e135c68c677b3f3a074d9f
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107283557"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515469"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>app()-Ausdruck in Azure Monitor-Abfragen
 
@@ -41,7 +41,7 @@ Der `app`-Ausdruck wird in Azure Monitor-Abfragen verwendet, um Daten aus einer 
 * Sie benötigen Lesezugriff auf die Anwendung.
 * Bei der Identifizierung einer Anwendung über ihren Namen wird vorausgesetzt, dass er in allen zugänglichen Abonnements eindeutig ist. Sollten mehrere Anwendungen mit dem angegebenen Namen vorhanden sein, ist die Abfrage aufgrund der Mehrdeutigkeit nicht erfolgreich. In diesem Fall muss einer der anderen Bezeichner verwendet werden.
 * Verwenden Sie den verwandten Ausdruck [workspace](../logs/workspace-expression.md) für übergreifende Abfragen über Log Analytics-Arbeitsbereiche.
-* Der app()-Ausdruck wird derzeit bei Verwendung des Azure-Portals nur dann zum Erstellen einer [benutzerdefinierten Warnungsregel für die Protokollsuche](../alerts/alerts-log.md) in der Suchabfrage unterstützt, wenn als Ressource für die Warnungsregel eine Application Insights-Anwendung verwendet wird.
+* Der app()-Ausdruck wird derzeit bei Verwendung des Azure-Portals nur dann zum Erstellen einer [benutzerdefinierten Warnungsregel für Protokollabfragen](../alerts/alerts-log.md) in der Protokollabfrage unterstützt, wenn als Ressource für die Warnungsregel eine Application Insights-Anwendung verwendet wird.
 
 ## <a name="examples"></a>Beispiele
 

@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.date: 03/12/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: cb87ca44ecc7ff5c308dbf3a74390e34a0f5daea
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 28198fe22bb20e3bb1e4a08715686eca62f1fbba
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108770009"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689055"
 ---
 # <a name="hbv3-series"></a>HBv3-Serie
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 VMs der HBv3-Serie sind für HPC-Anwendungen wie Strömungssimulationen, explizite und implizite Finite-Elemente-Analysen, Wettermodellierung, seismische Erkundung, Lagerstätten- und RTL-Simulationen optimiert. HBv3-VMs verfügen über bis zu 120 CPU-Kerne der AMD EPYC™ 7003-Serie (Milan), 448 GB RAM und kein Hyperthreading. Außerdem bieten VMs der HBv3-Serie eine Arbeitsspeicherbandbreite von 350 GB/s, bis zu 32 MB L3-Cache pro Kern, bis zu 7 GB/s der Blockgeräte-SSD-Leistung und Taktfrequenzen von bis zu 3,675 GHz. 
 

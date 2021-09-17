@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 62a88350e0bb1fceba635c651f8b831cba30cfce
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1e0af1080a2d56fc01bdeb4bfb5f6475c477b685
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346272"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122777738"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>Hinzufügen eines API-Connectors zu einem Benutzerflow für die Registrierung
 
@@ -315,7 +315,7 @@ Content-type: application/json
 }
 ```
 
-| Parameter                                          | type              | Erforderlich | BESCHREIBUNG                                                                                                                                                                                                                                                                            |
+| Parameter                                          | Typ              | Erforderlich | BESCHREIBUNG                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | version     | String | Ja      | Die Version Ihrer API                                                    |
 | action                                             | String            | Ja      | Der Wert muss `Continue` sein.                                                                                                                                                                                                                                                              |
@@ -336,7 +336,7 @@ Content-type: application/json
 
 ```
 
-| Parameter   | type   | Erforderlich | BESCHREIBUNG                                                                |
+| Parameter   | Typ   | Erforderlich | BESCHREIBUNG                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
 | version     | String | Ja      | Die Version Ihrer API                                                    |
 | action      | String | Ja      | Der Wert muss `ShowBlockPage` sein.                                              |
@@ -360,7 +360,7 @@ Content-type: application/json
 }
 ```
 
-| Parameter   | type    | Erforderlich | BESCHREIBUNG                                                                |
+| Parameter   | Typ    | Erforderlich | BESCHREIBUNG                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
 | version     | String  | Ja      | Die Version Ihrer API                                                    |
 | action      | String  | Ja      | Der Wert muss `ValidationError` sein.                                           |
@@ -576,7 +576,8 @@ Um den Anspruch „Aktionscode“ an die Anwendung der vertrauenden Seite zurüc
 ## <a name="test-the-custom-policy"></a>Testen der benutzerdefinierten Richtlinie
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD-Mandanten enthält, indem Sie im oberen Menü den **Verzeichnis- und Abonnementfilter** und dann das Verzeichnis auswählen, das Ihren Azure AD-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis mit Ihrem Azure AD-Mandanten verwenden, indem Sie in der Portalsymbolleiste das Symbol **Verzeichnisse + Abonnements** auswählen.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse + Abonnements** das Azure AD-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **App-Registrierungen**, und wählen Sie dann diese Option aus.
 1. Wählen Sie **Framework für die Identitätsfunktion** aus.
 1. Wählen Sie **Benutzerdefinierte Richtlinie hochladen** aus, und laden Sie dann die geänderten Richtliniendateien hoch: *TrustFrameworkExtensions.xml*, und *SignUpOrSignin.xml*. 

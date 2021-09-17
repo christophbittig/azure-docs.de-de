@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 05/11/2021
+ms.date: 08/12/2021
 ms.author: alkohli
-ms.openlocfilehash: ae3504b1483dce5678a9d7b53556d9228e53ded0
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.openlocfilehash: 68667c495384320731b8a7898e3590aa8487a13e
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109839131"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860752"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-mini-r"></a>Tutorial: Konfigurieren des Netzwerks für Azure Stack Edge Mini R
 
@@ -49,11 +49,16 @@ Führen Sie diese Schritte aus, um das Netzwerk für Ihr Gerät zu konfigurieren
 
 2. Sollte ein Zero-Day-Update erforderlich sein, können Sie es hier durchführen, indem Sie einen Datenport mit einer Kabelverbindung konfigurieren. Weitere Informationen zur Einrichtung einer Kabelverbindung für dieses Gerät finden Sie unter [Verkabeln Ihres Geräts](azure-stack-edge-mini-r-deploy-install.md#cable-the-device). Nach Abschluss des Updates können Sie die Kabelverbindung entfernen.
 
-3. Erstellen Sie Zertifikate für WLAN und Signaturkette. Sowohl das Signaturkettenzertifikat als auch das WLAN-Zertifikat muss im DER-Format vorliegen und über die Dateierweiterung *.cer* verfügen. Eine entsprechende Anleitung finden Sie unter [Verwenden von Zertifikaten mit einem Azure Stack Edge Pro-GPU-Gerät](azure-stack-edge-gpu-manage-certificates.md).
+3. Erstellen Sie Zertifikate für WLAN und Signaturkette. Sowohl das Signaturkettenzertifikat als auch das WLAN-Zertifikat muss im DER-Format vorliegen und über die Dateierweiterung *.cer* verfügen. Eine entsprechende Anleitung finden Sie unter [Verwenden von Zertifikaten mit einem Azure Stack Edge Pro-GPU-Gerät](azure-stack-edge-gpu-manage-certificates.md). Dieser Schritt ist optional, wenn Sie ein WLAN-Profil statt Zertifikate für die Authentifizierung verwenden.
 
-4. Wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Erste Schritte**. Wählen Sie auf der Kachel **Sicherheit** die Option **Zertifikate** und anschließend **Konfigurieren** aus. 
+   > [!NOTE] 
+   > Wenn Sie kennwortbasierte Authentifizierung in Ihrem persönlichen WLAN-Netzwerk verwenden, können Sie die Zertifikatschritte überspringen. Konfigurieren Sie einfach den WLAN-Port, und laden Sie dann Ihr WLAN-Profil hoch.</br></br> Weitere Informationen zu WLAN-Profilen für ein WPA2 Personal-Netzwerk und Informationen zum Exportieren Ihres WLAN-Profils finden Sie unter [Verwenden von WLAN-Profilen](azure-stack-edge-mini-r-use-wifi-profiles.md).
 
-   [![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/get-started-1.png)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/get-started-1.png#lightbox)
+4. Fügen Sie ihrem Gerät die Zertifikate hinzu: 
+
+   1. Wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Erste Schritte**. Wählen Sie auf der Kachel **Sicherheit** die Option **Zertifikate** und anschließend **Konfigurieren** aus. 
+
+      [![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/get-started-1.png)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/get-started-1.png#lightbox)
 
    1. Wählen Sie **+ Zertifikat hinzufügen** aus. 
     
@@ -73,7 +78,7 @@ Führen Sie diese Schritte aus, um das Netzwerk für Ihr Gerät zu konfigurieren
 
    5. Kehren Sie zu **Erste Schritte** zurück.
 
-5. Wählen Sie auf der Kachel **Netzwerk** die Option **Konfigurieren** aus.  
+5. Konfigurieren Sie den WLAN-Port. Wählen Sie auf der Kachel **Netzwerk** die Option **Konfigurieren** aus.  
 
    Auf Ihrem physischen Gerät stehen fünf Netzwerkschnittstellen zur Verfügung. PORT 1 und PORT 2 sind 1-Gbit/s-Netzwerkschnittstellen. PORT 3 und PORT 4 sind 10-Gbit/s-Netzwerkschnittstellen. Der fünfte Port ist der WLAN-Port. 
 

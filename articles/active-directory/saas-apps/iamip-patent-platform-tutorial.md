@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/10/2020
+ms.date: 07/28/2021
 ms.author: jeedes
-ms.openlocfilehash: dc9be41cd7975610f2779da09b94066c70a91652
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8022ea8ab38dd7b22fe7c51f2700321c40fd9333
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92460528"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752515"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iamip-patent-platform"></a>Tutorial: Integration des einmaligen Anmeldens von Azure Active Directory in IamIP Patent Platform
 
@@ -25,8 +25,6 @@ In diesem Tutorial erfahren Sie, wie Sie IamIP Patent Platform in Azure Active
 * Verwenden Sie Azure AD, um festzulegen, wer auf IamIP Patent Platform zugreifen kann.
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei IamIP Patent Platform anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
-
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -39,16 +37,13 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-IamIP Patent Platform unterstützt SP- und IDP-initiiertes einmaliges Anmelden.
-
-Nach dem Konfigurieren von IamIP Patent Platform können Sie Sitzungssteuerungen erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützen. Sitzungssteuerungen basieren auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
-
+* IamIP Patent Platform unterstützt SP- und IDP-initiiertes einmaliges Anmelden.
 
 ## <a name="add-iamip-patent-platform-from-the-gallery"></a>Hinzufügen von IamIP Patent Platform aus dem Katalog
 
 Zum Konfigurieren der Integration von IamIP Patent Platform in Azure AD müssen Sie IamIP Patent Platform aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Bereich **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
@@ -59,14 +54,14 @@ Zum Konfigurieren der Integration von IamIP Patent Platform in Azure AD müsse
 
 Sie konfigurieren und testen das einmalige Anmelden von Azure AD mit IamIP Patent Platform mithilfe eines Testbenutzers mit dem Namen „B. Simon“. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in IamIP Patent Platform eingerichtet werden.
 
-Führen Sie diese Schritte aus, um das einmalige Anmelden von Azure AD mit IamIP Patent Platform zu konfigurieren und zu testen:
+Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für IamIP Patent Platform die folgenden Schritte aus:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
-    * **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD zu testen.
-    * **[Gewähren der Zugriffsberechtigungen für den Testbenutzer](#grant-access-to-the-test-user)** , um dem Benutzer die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD zu testen.
+    1. **[Gewähren der Zugriffsberechtigungen für den Testbenutzer](#grant-access-to-the-test-user)** , um dem Benutzer die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
 
 1. **[Konfigurieren des einmaligen Anmeldens für IamIP Patent Platform](#configure-iamip-patent-platform-sso)** auf Anwendungsseite.
-    * **[Erstellen eines IamIP Patent Platform-Testbenutzers](#create-iamip-patent-platform-test-user)** als Pendant zur Azure-AD-Darstellung des Benutzers.
+    1. **[Erstellen eines IamIP Patent Platform-Testbenutzers](#create-iamip-patent-platform-test-user)** als Pendant zur Azure AD-Darstellung des Benutzers.
 
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
@@ -74,7 +69,7 @@ Führen Sie diese Schritte aus, um das einmalige Anmelden von Azure AD mit IamI
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren:
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **IamIP Patent Platform** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **IamIP Patent Platform** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
 1. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** das Stiftsymbol für **Grundlegende SAML-Konfiguration** aus, um die Einstellungen zu bearbeiten:
 
@@ -82,30 +77,28 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal
 
 1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** diese Schritte aus, wenn Sie über eine Metadatendatei des Dienstanbieters verfügen und die das einmalige Anmelden im IDP-initiierten Modus konfigurieren möchten:
 
-    a. Wählen Sie **Metadatendatei hochladen** aus:
+    a. Wählen Sie **Metadatendatei hochladen** aus.
 
     ![Metadatendatei hochladen](common/upload-metadata.png)
 
-    b. Wählen Sie die Ordnerschaltfläche, anschließend die Metadatendatei und dann **Hochladen** aus:
+    b. Wählen Sie die Ordnerschaltfläche aus, wählen Sie die Metadatendatei aus, und wählen Sie dann **Hochladen** aus.
 
     ![Ordnerschaltfläche und Schaltfläche für das Hochladen](common/browse-upload-metadata.png)
 
-    c. Nach dem Upload der Metadatendatei werden die Werte unter **Bezeichner** und **Antwort-URL** im Abschnitt **Grundlegende SAML-Konfiguration** automatisch eingefügt:
-
-    ![Werte für Bezeichner und Antwort-URL](common/idp-intiated.png)
+    c. Nach dem Hochladen der Metadatendatei werden im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für **Bezeichner** und **Antwort-URL** automatisch eingefügt.
 
     > [!Note]
     > Sollten die Werte **Bezeichner** und **Antwort-URL** nicht automatisch aufgefüllt werden, geben Sie die erforderlichen Werte manuell ein.
 
 1. Wählen Sie **Zusätzliche URLs festlegen**, und führen Sie die folgenden Schritte aus, wenn Sie die Anwendung im SP-initiierten Modus konfigurieren möchten:
 
-    Geben Sie im Feld **Anmelde-URL** die URL **https:\//patents.iamip.com/login-user** ein.
+    Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://patents.iamip.com/login-user`.
 
-1. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** den Link **Download** für **Zertifikat (Rohdaten)** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer:
+1. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** den Link **Herunterladen** für **Zertifikat (Rohdaten)** aus, um das Zertifikat herunterzuladen, und speichern Sie das Zertifikat auf Ihrem Computer.
 
     ![Downloadlink für Zertifikat](common/certificateraw.png)
 
-1. Kopieren Sie im Abschnitt **IamIP Patent Platform einrichten** die entsprechende URL bzw. die entsprechenden URLs basierend auf Ihren Anforderungen:
+1. Kopieren Sie im Abschnitt **IamIP Patent Platform einrichten** die entsprechende URL bzw. die entsprechenden URLs basierend auf Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/idp-intiated.png))
 
@@ -128,13 +121,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **IamIP Patent Platform** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus:
-
-   ![Benutzer und Gruppen auswählen](common/users-groups-blade.png)
-
-1. Wählen Sie die Schaltfläche **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus:
-
-    ![Auswählen von „Benutzer hinzufügen“](common/add-assign-user.png)
-
+1. Wählen Sie die Schaltfläche **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste **Benutzer** den Eintrag **B. Simon** aus, und klicken Sie dann am unteren Bildschirmrand auf die Schaltfläche **Auswählen**.
 1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
 1. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Schaltfläche **Zuweisen**.
@@ -149,18 +136,20 @@ Wenden Sie sich an das [IamIP Patent Platform-Supportteam](mailto:info@iamip.com
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden (SSO) über den Zugriffsbereich.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-Wenn Sie im Zugriffsbereich die Kachel „IamIP Patent Platform“ wählen, sollten Sie automatisch bei der IamIP Patent Platform-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>SP-initiiert:
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für IamIP Patent Platform weitergeleitet, wo Sie den Anmeldeflow initiieren können.  
 
-- [Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
+* Navigieren Sie direkt zur Anmelde-URL für IamIP Patent Platform, und initiieren Sie dort den Anmeldeflow.
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP-initiiert:
 
-- [Was ist bedingter Zugriff?](../conditional-access/overview.md)
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der IamIP Patent Platform-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
 
-- [IamIP Patent Platform mit Azure AD ausprobieren](https://aad.portal.azure.com/)
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „IamIP Patent Platform“ in „Meine Apps“ geschieht Folgendes: Wenn Sie die Anwendung im SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie die Anwendung im IDP-Modus konfiguriert haben, sollten Sie automatisch bei der IamIP Patent Platform-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
-- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
+## <a name="next-steps"></a>Nächste Schritte
+
+Nach dem Konfigurieren von IamIP Patent Platform können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

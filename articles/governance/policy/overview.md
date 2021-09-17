@@ -3,12 +3,12 @@ title: Übersicht zu Azure-Richtlinien
 description: Azure Policy ist ein Dienst in Azure, mit dem Sie Richtliniendefinitionen in Ihrer Azure-Umgebung erstellen, zuweisen und verwalten können.
 ms.date: 07/27/2021
 ms.topic: overview
-ms.openlocfilehash: 387c52eb1337f6d3aa7046b122fa66ff93be5e64
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 9462281ce37e066a920c17d1dc142a177b97fb2a
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114726683"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770548"
 ---
 # <a name="what-is-azure-policy"></a>Was ist Azure Policy?
 
@@ -83,7 +83,7 @@ Wenn keine der integrierten Rollen über die erforderlichen Berechtigungen verf�
 
 ### <a name="resources-covered-by-azure-policy"></a>Von Azure Policy abgedeckte Ressourcen
 
-Azure Policy wertet alle Azure-Ressourcen auf oder unterhalb der Abonnementebene aus, einschließlich Ressourcen mit Arc-Unterstützung. Für bestimmte Ressourcenanbieter wie [Gastkonfiguration](./concepts/guest-configuration.md), [Azure Kubernetes Service](../../aks/intro-kubernetes.md) und [Azure Key Vault](../../key-vault/general/overview.md) gibt es eine tiefergreifendere Integration für die Verwaltung von Einstellungen und Objekten. Weitere Informationen finden Sie unter [Ressourcenanbietermodi](./concepts/definition-structure.md).
+Azure Policy wertet alle Azure-Ressourcen auf oder unterhalb der Abonnementebene aus, einschließlich Ressourcen mit Arc-Unterstützung. Für bestimmte Ressourcenanbieter wie [Gastkonfiguration](./concepts/guest-configuration.md), [Azure Kubernetes Service](../../aks/intro-kubernetes.md) und [Azure Key Vault](../../key-vault/general/overview.md) gibt es eine tiefergreifende Integration für die Verwaltung von Einstellungen und Objekten. Weitere Informationen finden Sie unter [Ressourcenanbietermodi](./concepts/definition-structure.md).
 
 ### <a name="recommendations-for-managing-policies"></a>Empfehlungen für die Verwaltung von Richtlinien
 

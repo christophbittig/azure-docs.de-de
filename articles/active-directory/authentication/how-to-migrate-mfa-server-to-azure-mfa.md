@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0eff0705208442c09b859c09ac975e044528f833
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 4415e7ce86d2beb9e2903f23d0b6fa9ac7d3ec04
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397756"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597833"
 ---
 # <a name="migrate-from-azure-mfa-server-to-azure-multi-factor-authentication"></a>Migrieren von Azure MFA-Server zu Azure Multi-Factor Authentication
 
@@ -112,7 +112,7 @@ Es gibt Einschränkungen bei der Verwendung von NPS für RADIUS-Clients, und es 
 - Benutzer müssen sich für Azure AD MFA registrieren, bevor sie die NPS-Erweiterung verwenden können. Andernfalls kann die Erweiterung den Benutzer nicht authentifizieren, Was zu Anrufen beim Helpdesk führen kann.
 - Wenn die NPS-Erweiterung MFA anfordert, wird die MFA-Anforderung an die MFA-Standardmethode des Benutzers gesendet. 
   - Da die Anmeldung in Drittanbieteranwendungen erfolgt, ist es unwahrscheinlich, dass ein Benutzer visuelle Benachrichtigungen darüber sieht, dass MFA erforderlich ist und eine Anforderung an sein Gerät gesendet wurde.
-  - Während der MFA-Anforderung müssen Benutzer Zugriff auf seine Standardauthentifizierungsmethode haben, um die MFA-Anforderung zu erfüllen. 
+  - Während der MFA-Anforderung müssen Benutzer Zugriff auf seine Standardauthentifizierungsmethode haben, um die MFA-Anforderung zu erfüllen. Sie können keine alternative Methode auswählen. Die Standardauthentifizierungsmethode wird auch dann verwendet, wenn sie in den Mandantenauthentifizierungsmethoden und MFA-Richtlinien deaktiviert wurde.
   - Benutzer können ihre MFA-Standardmethode auf der Seite „Sicherheitsinformationen“ (aka.ms/mysecurityinfo) ändern.
 - Verfügbare MFA-Methoden für RADIUS-Clients werden von den Clientsystemen gesteuert, die die RADIUS-Zugriffsanforderungen senden.
   - MFA-Methoden, die Benutzereingaben erfordern, nachdem Benutzer ein Kennwort eingegeben haben, können nur mit Systemen verwendet werden, die Access-Challenge-Antworten mit RADIUS unterstützen. Eingabemethoden sind etwa OTP, Hardware-OATH-Token oder die Microsoft Authenticator-App.

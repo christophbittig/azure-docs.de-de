@@ -7,22 +7,23 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: afef05b381bbd1331cdc5af1ec91190839fdea7b
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: bbead4e25df9646c08ec605694cfa7514b011522
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114470219"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015401"
 ---
 # <a name="tutorial-map-an-existing-custom-domain-to-azure-spring-cloud"></a>Tutorial: Zuordnen einer vorhandenen benutzerdefinierten Domäne zu Azure Spring Cloud
 
 **Dieser Artikel gilt für:** ✔️ Java ✔️ C#
 
-DNS (Domain Name Service) wird verwendet, um Namen von Netzwerkknoten im gesamten Netzwerk zu speichern. In diesem Tutorial wird eine Domäne (beispielsweise www.contoso.com) mithilfe eines CNAME-Eintrags zugeordnet. Die benutzerdefinierte Domäne wird durch ein Zertifikat geschützt, und Sie erfahren, wie Sie Transport Layer Security (TLS) erzwingen, was auch als Secure Sockets Layer (SSL) bezeichnet wird. 
+DNS (Domain Name Service) wird verwendet, um Namen von Netzwerkknoten im gesamten Netzwerk zu speichern. In diesem Tutorial wird eine Domäne (beispielsweise www.contoso.com) mithilfe eines CNAME-Eintrags zugeordnet. Die benutzerdefinierte Domäne wird durch ein Zertifikat geschützt, und Sie erfahren, wie Sie Transport Layer Security (TLS) erzwingen, was auch als Secure Sockets Layer (SSL) bezeichnet wird.
 
-Zertifikate dienen zur Verschlüsselung von Webdatenverkehr. Diese TLS-/SSL-Zertifikate können in Azure Key Vault gespeichert werden. 
+Zertifikate dienen zur Verschlüsselung von Webdatenverkehr. Diese TLS-/SSL-Zertifikate können in Azure Key Vault gespeichert werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 * Eine in Azure Spring Cloud bereitgestellte Anwendung. Lesen Sie dazu entweder den Artikel [Schnellstart: Starten einer vorhandenen Azure Spring Cloud-Anwendung über das Azure-Portal](./quickstart.md), oder verwenden Sie eine bereits vorhandene App.
 * Ein Domänenname mit Zugriff auf die DNS-Registrierung für den Domänenanbieter (beispielsweise GoDaddy).
 * Ein privates Zertifikat (d. h. ihr selbst signiertes Zertifikat) von einem Drittanbieter. Das Zertifikat muss der Domäne entsprechen.
@@ -30,14 +31,12 @@ Zertifikate dienen zur Verschlüsselung von Webdatenverkehr. Diese TLS-/SSL-Zert
 
 ## <a name="keyvault-private-link-considerations"></a>Überlegungen zu privaten Key Vault-Verbindungen
 
-Die Azure Spring Cloud-Verwaltungs-IPs sind noch nicht Teil der vertrauenswürdigen Azure-Dienste von Microsoft. Damit Azure Spring Cloud Zertifikate aus einer Key Vault-Instanz laden kann, die durch private Endpunktverbindungen geschützt ist, müssen Sie daher der Azure Key Vault-Firewall die folgenden IP-Adressen hinzufügen:
-
-```
-20.53.123.160 52.143.241.210 40.65.234.114 52.142.20.14 20.54.40.121 40.80.210.49 52.253.84.152 20.49.137.168 40.74.8.134 51.143.48.243
-```
+Die Azure Spring Cloud-Verwaltungs-IPs sind noch nicht Teil der vertrauenswürdigen Azure-Dienste von Microsoft. Damit Azure Spring Cloud Zertifikate aus einer Key Vault-Instanz laden kann, die durch private Endpunktverbindungen geschützt ist, müssen Sie daher der Azure Key Vault-Firewall die folgenden IP-Adressen hinzufügen: `20.53.123.160 52.143.241.210 40.65.234.114 52.142.20.14 20.54.40.121 40.80.210.49 52.253.84.152 20.49.137.168 40.74.8.134 51.143.48.243`
 
 ## <a name="import-certificate"></a>Importieren des Zertifikats
+
 ### <a name="prepare-your-certificate-file-in-pfx-optional"></a>Vorbereiten der Zertifikatsdatei als PFX (optional)
+
 Azure Key Vault unterstützt das Importieren eines privaten Zertifikats im PEM- und PFX-Format. Wenn die PEM-Datei, die Sie von Ihrem Zertifikatanbieter erhalten haben, im folgenden Abschnitt nicht funktioniert, gehen Sie wie folgt vor: [Speichern Sie das Zertifikat in Key Vault](#save-certificate-in-key-vault), und führen Sie die hier beschriebenen Schritte aus, um eine PFX-Datei für Azure Key Vault zu generieren.
 
 #### <a name="merge-intermediate-certificates"></a>Zusammenführen von Zwischenzertifikaten
@@ -48,7 +47,7 @@ Wenn Ihre Zertifizierungsstelle Ihnen mehrere Zertifikate in der Zertifikatskett
 
 Erstellen Sie eine Datei für das zusammengeführte Zertifikat mit dem Namen _mergedcertificate.crt_. Kopieren Sie den Inhalt der einzelnen Zertifikate in einem Text-Editor in diese Datei. Die Reihenfolge Ihrer Zertifikate sollte der Reihenfolge in der Zertifikatkette folgen, beginnend mit Ihrem Zertifikat und endend mit dem Stammzertifikat. Dies sieht in etwa wie im folgenden Beispiel aus:
 
-```
+```crt
 -----BEGIN CERTIFICATE-----
 <your entire Base64 encoded SSL certificate>
 -----END CERTIFICATE-----
@@ -81,12 +80,14 @@ Definieren Sie ein Kennwort für den Export, wenn Sie dazu aufgefordert werden. 
 Wenn Sie IIS oder _Certreq.exe_ zum Generieren Ihrer Zertifikatanforderung verwendet haben, installieren Sie das Zertifikat auf dem lokalen Computer, und klicken Sie anschließend auf [Zertifikat nach PFX exportieren](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754329(v=ws.11)).
 
 ### <a name="save-certificate-in-key-vault"></a>Speichern eines Zertifikats in Key Vault
-Zum Importieren eines Zertifikats muss sich die PEM- oder PFX-codierte Datei auf dem Datenträger befinden, und Sie müssen über den privaten Schlüssel verfügen. 
+
+Zum Importieren eines Zertifikats muss sich die PEM- oder PFX-codierte Datei auf dem Datenträger befinden, und Sie müssen über den privaten Schlüssel verfügen.
+
 #### <a name="portal"></a>[Portal](#tab/Azure-portal)
 So laden Sie Ihr Zertifikat in den Schlüsseltresor hoch:
 1. Navigieren Sie zu Ihrer Schlüsseltresorinstanz.
-1. Klicken Sie im linken Navigationsbereich auf **Zertifikate**.
-1. Klicken Sie im oberen Menü auf **Generieren/importieren**.
+1. Wählen Sie im linken Navigationsbereich die Option **Zertifikate** aus.
+1. Wählen Sie im oberen Menü **Generieren/importieren** aus.
 1. Wählen Sie im Dialogfeld **Zertifikat erstellen** unter **Methode der Zertifikaterstellung** die Option `Import` aus.
 1. Navigieren Sie unter **Zertifikatdatei hochladen** zum Speicherort des Zertifikats, und wählen Sie die Datei aus.
 1. **Kennwort**: Wenn Sie eine kennwortgeschützte Zertifikatsdatei hochladen, geben Sie das Kennwort hier an. Lassen Sie dieses Feld andernfalls leer. Nachdem die Zertifikatsdatei erfolgreich importiert wurde, entfernt Key Vault das Kennwort.
@@ -99,16 +100,18 @@ So laden Sie Ihr Zertifikat in den Schlüsseltresor hoch:
 ```azurecli
 az keyvault certificate import --file <path to .pfx file> --name <certificate name> --vault-name <key vault name> --password <export password>
 ```
+
 ---
 
 ### <a name="grant-azure-spring-cloud-access-to-your-key-vault"></a>Gewähren von Zugriff auf Ihren Schlüsseltresor für Azure Spring Cloud
 
 Sie müssen Azure Spring Cloud Zugriff auf Ihren Schlüsseltresor gewähren, bevor Sie das Zertifikat importieren:
+
 #### <a name="portal"></a>[Portal](#tab/Azure-portal)
 1. Navigieren Sie zu Ihrer Schlüsseltresorinstanz.
-1. Klicken Sie im linken Navigationsbereich auf **Zugriffsrichtlinie**.
-1. Klicken Sie im oberen Menü auf **Zugriffsrichtlinie hinzufügen**.
-1. Geben Sie die Informationen ein, und klicken Sie auf die Schaltfläche **Hinzufügen**. Dann **speichern** Sie die Zugriffsrichtlinie.
+1. Wählen Sie im linken Navigationsbereich **Zugriffsrichtlinie** aus.
+1. Wählen Sie im oberen Menü **Zugriffsrichtlinie hinzufügen** aus.
+1. Geben Sie die Informationen ein, und wählen Sie die Schaltfläche **Hinzufügen** aus. Wählen Sie anschließend **Speichern** aus, um die Zugriffsrichtlinie zu speichern.
 
 | Geheimnisberechtigung | Zertifikatsberechtigung | Prinzipal auswählen |
 |--|--|--|
@@ -118,17 +121,20 @@ Sie müssen Azure Spring Cloud Zugriff auf Ihren Schlüsseltresor gewähren, bev
 
 #### <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/Azure-CLI)
 
-Gewähren Sie Azure Spring Cloud Lesezugriff auf den Schlüsseltresor. Ersetzen Sie dabei `<key vault resource group>` und `<key vault name>` im folgenden Befehl:
-```
+Gewähren Sie Azure Spring Cloud Lesezugriff auf den Schlüsseltresor. Ersetzen Sie dabei *\<key vault resource group>* und *\<key vault name>* im folgenden Befehl.
+
+```azurecli
 az keyvault set-policy -g <key vault resource group> -n <key vault name>  --object-id 938df8e2-2b9d-40b1-940c-c75c33494239 --certificate-permissions get list --secret-permissions get list
-``` 
+```
+
 ---
 
 ### <a name="import-certificate-to-azure-spring-cloud"></a>Importieren eines Zertifikats in Azure Spring Cloud
+
 #### <a name="portal"></a>[Portal](#tab/Azure-portal)
-1. Navigieren Sie zu Ihrer Dienstinstanz. 
+1. Navigieren Sie zu Ihrer Dienstinstanz.
 1. Wählen Sie im linken Navigationsbereich Ihrer App die Option **TLS-/SSL-Einstellungen** aus.
-1. Klicken Sie anschließend auf **Key Vault-Zertifikat importieren**.
+1. Wählen Sie anschließend **Key Vault-Zertifikat importieren** aus.
 
     ![Importieren des Zertifikats](./media/custom-dns-tutorial/import-certificate.png)
 
@@ -138,28 +144,31 @@ az keyvault set-policy -g <key vault resource group> -n <key vault name>  --obje
 
 #### <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/Azure-CLI)
 
-```
+```azurecli
 az spring-cloud certificate add --name <cert name> --vault-uri <key vault uri> --vault-certificate-name <key vault cert name>
 ```
 
 So zeigen Sie eine Liste der importierten Zertifikate an:
 
-```
+```azurecli
 az spring-cloud certificate list --resource-group <resource group name> --service <service name>
 ```
+
 ---
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Das Zertifikat muss noch an eine benutzerdefinierte Domäne gebunden werden, um sie mit diesem Zertifikat zu schützen. Führen Sie die Schritte im folgenden Abschnitt aus: [Hinzufügen von SSL-Bindung](#add-ssl-binding).
 
 ## <a name="add-custom-domain"></a>Hinzufügen einer benutzerdefinierten Domäne
-Sie können einen CNAME-Eintrag verwenden, um Azure Spring Cloud einen benutzerdefinierten DNS-Namen zuzuordnen. 
+Sie können einen CNAME-Eintrag verwenden, um Azure Spring Cloud einen benutzerdefinierten DNS-Namen zuzuordnen.
 
-> [!NOTE] 
-> Der A-Eintrag wird nicht unterstützt. 
+> [!NOTE]
+> Der A-Eintrag wird nicht unterstützt.
 
 ### <a name="create-the-cname-record"></a>Erstellen des CNAME-Eintrags
-Navigieren Sie zu Ihrem DNS-Anbieter, und fügen Sie einen CNAME-Eintrag hinzu, um Ihre Domäne Folgendem zuzuordnen: <Dienstname>.azuremicroservices.io. „<Dienstname>“ ist hierbei der Name Ihrer Azure Spring Cloud-Instanz. Für Domäne und Unterdomäne werden Platzhalter unterstützt. Nach dem Hinzufügen des CNAME-Eintrags sieht die Seite mit den DNS-Einträgen in etwa wie folgt aus: 
+
+Navigieren Sie zu Ihrem DNS-Anbieter, und fügen Sie einen CNAME-Eintrag hinzu, um Ihre Domäne Folgendem zuzuordnen: <Dienstname>.azuremicroservices.io. „<Dienstname>“ ist hierbei der Name Ihrer Azure Spring Cloud-Instanz. Für Domäne und Unterdomäne werden Platzhalter unterstützt.
+Nach dem Hinzufügen des CNAME-Eintrags sieht die Seite mit den DNS-Einträgen in etwa wie folgt aus:
 
 ![Seite der DNS-Einträge](./media/custom-dns-tutorial/dns-records.png)
 
@@ -170,13 +179,13 @@ Sollten Sie über keine Anwendung in Azure Spring Cloud verfügen, gehen Sie wie
 Navigieren Sie zur Anwendungsseite.
 
 1. Wählen Sie **Benutzerdefinierte Domäne** aus.
-2. Wählen Sie **Benutzerdefinierte Domäne hinzufügen** aus. 
+2. Wählen Sie **Benutzerdefinierte Domäne hinzufügen** aus.
 
     ![Benutzerdefinierte Domäne](./media/custom-dns-tutorial/custom-domain.png)
 
 3. Geben Sie den vollqualifizierten Domänennamen ein, für den Sie einen CNAME-Eintrag hinzugefügt haben (beispielsweise www.contoso.com). Vergewissern Sie sich, dass der Typ des Hostnamenseintrags auf „CNAME“ (<Dienstname>.azuremicroservices.io) festgelegt ist.
-4. Klicken Sie auf **Überprüfen**, um die Schaltfläche **Hinzufügen** zu aktivieren.
-5. Klicken Sie auf **Hinzufügen**.
+4. Wählen Sie **Überprüfen** aus, um die Schaltfläche **Hinzufügen** zu aktivieren.
+5. Wählen Sie **Hinzufügen**.
 
     ![Hinzufügen einer benutzerdefinierten Domäne](./media/custom-dns-tutorial/add-custom-domain.png)
 
@@ -185,14 +194,16 @@ Eine App kann über mehrere Domänen verfügen, eine Domäne kann jedoch nur ein
 ![Tabelle mit benutzerdefinierten Domänen](./media/custom-dns-tutorial/custom-domain-table.png)
 
 #### <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/Azure-CLI)
-```
+```azurecli
 az spring-cloud app custom-domain bind --domain-name <domain name> --app <app name> --resource-group <resource group name> --service <service name>
 ```
 
 So zeigen Sie die Liste der benutzerdefinierten Domänen an:
-```
+
+```azurecli
 az spring-cloud app custom-domain list --app <app name> --resource-group <resource group name> --service <service name>
 ```
+
 ---
 
 > [!NOTE]
@@ -201,23 +212,25 @@ az spring-cloud app custom-domain list --app <app name> --resource-group <resour
 ## <a name="add-ssl-binding"></a>Hinzufügen von SSL-Bindung
 
 #### <a name="portal"></a>[Portal](#tab/Azure-portal)
-Wählen Sie in der Tabelle mit den benutzerdefinierten Domänen die Option **Add ssl binding** (SSL-Bindung hinzufügen) aus, wie in der vorherigen Abbildung zu sehen.  
+Wählen Sie in der Tabelle mit den benutzerdefinierten Domänen die Option **Add ssl binding** (SSL-Bindung hinzufügen) aus, wie in der vorherigen Abbildung zu sehen.
 1. Wählen Sie unter **Zertifikat** Ihr Zertifikat aus, oder importieren Sie es.
-1. Klicken Sie auf **Speichern**.
+1. Wählen Sie **Speichern** aus.
 
     ![Hinzufügen von SSL-Bindung 1](./media/custom-dns-tutorial/add-ssl-binding.png)
 
 #### <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/Azure-CLI)
-```
+```azurecli
 az spring-cloud app custom-domain update --domain-name <domain name> --certificate <cert name> --app <app name> --resource-group <resource group name> --service <service name>
 ```
+
 ---
 
-Nach erfolgreichem Hinzufügen der SSL-Bindung ist die Domäne sicher und wird mit folgendem Zustand gekennzeichnet: **Fehlerfrei**. 
+Nach erfolgreichem Hinzufügen der SSL-Bindung ist die Domäne sicher und wird mit folgendem Zustand gekennzeichnet: **Fehlerfrei**.
 
 ![Hinzufügen von SSL-Bindung 2](./media/custom-dns-tutorial/secured-domain-state.png)
 
 ## <a name="enforce-https"></a>Erzwingen von HTTPS
+
 Standardmäßig können Benutzer weiterhin über HTTP auf Ihre App zugreifen, alle HTTP-Anforderungen können jedoch an den HTTPS-Port umgeleitet werden.
 #### <a name="portal"></a>[Portal](#tab/Azure-portal)
 Wählen Sie im linken Navigationsbereich Ihrer App-Seite die Option **Benutzerdefinierte Domäne** aus. Legen Sie **Nur HTTPS** auf *True* fest.
@@ -225,13 +238,16 @@ Wählen Sie im linken Navigationsbereich Ihrer App-Seite die Option **Benutzerde
 ![Hinzufügen von SSL-Bindung 3](./media/custom-dns-tutorial/enforce-http.png)
 
 #### <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/Azure-CLI)
-```
+```azurecli
 az spring-cloud app update -n <app name> --resource-group <resource group name> --service <service name> --https-only
 ```
+
 ---
+
 Navigieren Sie nach Abschluss des Vorgangs zu einer beliebigen HTTPS-URL, die auf Ihre App verweist. Beachten Sie, dass HTTP-URLs nicht funktionieren.
 
 ## <a name="see-also"></a>Weitere Informationen
+
 * [Was ist der Azure-Schlüsseltresor?](../key-vault/general/overview.md)
 * [Importieren eines Zertifikats](../key-vault/certificates/certificate-scenarios.md#import-a-certificate)
 * [Starten einer Spring Cloud-App mit der Azure CLI](./quickstart.md)

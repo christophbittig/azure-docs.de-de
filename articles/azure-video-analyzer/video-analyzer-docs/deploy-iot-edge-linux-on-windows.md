@@ -2,13 +2,13 @@
 title: 'Bereitstellen für IoT Edge für Linux unter Windows: Azure'
 description: Dieser Artikel enthält eine Anleitung für die Bereitstellung für IoT Edge für Linux auf einem Windows-Gerät.
 ms.topic: how-to
-ms.date: 06/01/2021
-ms.openlocfilehash: e80721375cf4b0c912fe47ec76c2cebe92359f90
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/25/2021
+ms.openlocfilehash: 18a08d903fc256790799d8c66d400226f8ac48ef
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346942"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122968670"
 ---
 # <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device"></a>Bereitstellen für IoT Edge für Linux auf einem Windows-Gerät (EFLOW)
 
@@ -29,6 +29,8 @@ Hier ist der Inhalt und Ablauf des Dokuments dargestellt. Sie können fünf einf
 
 1. [Installieren Sie EFLOW](../../iot-edge/how-to-install-iot-edge-on-windows.md) mithilfe der PowerShell auf Ihrem Windows-Gerät.
 
+    > [!NOTE]
+    > Es gibt zwei Möglichkeiten, EFLOW bereitzustellen (PowerShell und Windows Admin Center), und zwei Möglichkeiten, den virtuellen Computer bereitzustellen (manuelle Bereitstellung mithilfe der Verbindungszeichenfolge und manuelle Bereitstellung mit X.509-Zertifikaten). Befolgen Sie die [PowerShell-Bereitstellung](../../iot-edge/how-to-install-iot-edge-on-windows.md#create-a-new-deployment), und [stellen Sie den Computer mithilfe der Verbindungszeichenfolge aus IoT Hub bereit](../../iot-edge/how-to-install-iot-edge-on-windows.md#manual-provisioning-using-the-connection-string).
 
 1. Nachdem EFLOW eingerichtet wurde, geben Sie den Befehl `Connect-EflowVm` in PowerShell ein (mit Administratorrechten), um eine Verbindung herzustellen. Dadurch wird ein Bash-Terminal für die Steuerung des virtuellen EFLOW-Computers in PowerShell angezeigt, in dem Sie Linux-Befehle ausführen können, einschließlich Hilfsprogrammen wie Top und Nano. 
 
@@ -39,7 +41,7 @@ Hier ist der Inhalt und Ablauf des Dokuments dargestellt. Sie können fünf einf
 
     `bash -c "$(curl -sL https://aka.ms/ava-edge/prep_device)"`
 
-    Das Azure Video Analyzer-Modul wird auf dem Edgegerät mit lokalen Benutzerkonten ohne Berechtigungen ausgeführt. Darüber hinaus werden bestimmte lokale Ordner benötigt, um die Daten für die Anwendungskonfiguration zu speichern. Abschließend nutzen wir für diese Schrittanleitung einen [RTSP-Simulator](https://github.com/Azure/video-analyzer/tree/main/edge-modules/sources/rtspsim-live555), mit dem ein Videofeed in Echtzeit zur Analyse an ein AVA-Modul weitergeleitet wird. Für diesen Simulator werden als Eingabe vorab aufgezeichnete Videodateien aus einem Eingabeverzeichnis verwendet. 
+    Für den Azure Video Analyzer werden bestimmte lokale Ordner benötigt, um die Daten für die Anwendungskonfiguration zu speichern. Abschließend nutzen wir für diese Schrittanleitung einen [RTSP-Simulator](https://github.com/Azure/video-analyzer/tree/main/edge-modules/sources/rtspsim-live555), mit dem ein Videofeed in Echtzeit zur Analyse an ein AVA-Modul weitergeleitet wird. Für diesen Simulator werden als Eingabe vorab aufgezeichnete Videodateien aus einem Eingabeverzeichnis verwendet. 
 
     Mit dem obigen Skript zum Vorbereiten des Geräts werden die Aufgaben automatisiert, damit Sie nur einen Befehl ausführen müssen, um nahtlos alle relevanten Eingabe- und Konfigurationsordner, Videoeingabedateien und Benutzerkonten mit Berechtigungen zu erstellen. Nachdem der Befehl erfolgreich abgeschlossen wurde, sollten auf Ihrem Edgegerät die folgenden Ordner erstellt worden sein. 
 
@@ -49,6 +51,7 @@ Hier ist der Inhalt und Ablauf des Dokuments dargestellt. Sie können fünf einf
     * `/var/media`
 
     Achten Sie auf die Videodateien (*.mkv) im Ordner „/home/localedgeuser/samples/input“, die als Eingabedateien für die Analyse dienen. 
+    
 1. Nachdem Sie nun das Edgegerät eingerichtet und die Registrierung beim Hub durchgeführt haben und die Ausführung mit den richtigen erstellten Ordnerstrukturen erfolgreich ist, ist der nächste Schritt die Einrichtung der folgenden zusätzlichen Azure-Ressourcen und die Bereitstellung des AVA-Moduls. Die folgende Bereitstellungsvorlage kümmert sich um die Ressourcenerstellung:
 
     [![In Azure bereitstellen](https://aka.ms/deploytoazurebutton)](https://aka.ms/ava-click-to-deploy)
@@ -71,6 +74,7 @@ Hier ist der Inhalt und Ablauf des Dokuments dargestellt. Sie können fünf einf
     Auf Ihrem Edgegerät sollten die folgenden vier Module bereitgestellt und ausgeführt werden. Beachten Sie Folgendes: Mit dem Skript für die Ressourcenerstellung wird das AVA-Modul zusammen mit den IoT Edge-Modulen („edgeAgent“ und „edgeHub“) und einem RTSP-Simulatormodul bereitgestellt, um die Simulation des RTSP-Videofeeds zu ermöglichen.
     
     ![Bereitgestellte Module](./media/vscode-common-screenshots/avaedge-module.png)
+    
 1. Nachdem die Module bereitgestellt und eingerichtet wurden, können Sie Ihre erste AVA-Pipeline unter EFLOW ausführen. Sie können wie unten angegeben eine einfache Pipeline für die Bewegungserkennung ausführen und die Ergebnisse visualisieren, indem Sie die folgenden Schritte ausführen:
 
     ![Auf Bewegungserkennung basierter Video Analyzer](./media/get-started-detect-motion-emit-events/motion-detection.svg)
@@ -83,10 +87,13 @@ Hier ist der Inhalt und Ablauf des Dokuments dargestellt. Sie können fünf einf
 
         > [!IMPORTANT]
         > Nicht gelöschte Ressourcen können weiterhin aktiv sein und Azure-Kosten verursachen. Stellen Sie sicher, dass Sie die Ressourcen löschen, die Sie nicht verwenden möchten.
-        
+   
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Probieren Sie die Bewegungserkennung mit der Aufzeichnung relevanter Videos in der Cloud aus. Führen Sie die Schritte im Schnellstart [Erkennen von Bewegung und Aufzeichnen von Videoclips](detect-motion-record-video-edge-devices.md) aus.
-* Führen Sie [KI für Livevideos](analyze-live-video-use-your-model-http.md#overview) aus. (Sie können die Erfüllung der Voraussetzungen überspringen, da Sie dies oben bereits durchgeführt haben.)
 * Verwenden Sie unsere [VS Code-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge), um weitere Pipelines anzuzeigen.
 * Verwenden Sie eine [IP-Kamera](https://en.wikipedia.org/wiki/IP_camera) mit RTSP-Unterstützung anstelle des RTSP-Simulators. IP-Kameras, die RTSP unterstützen, finden Sie auf der [Seite mit den ONVIF-konformen Produkten](https://www.onvif.org/conformant-products/). Suchen Sie nach Geräten, die mit den Profilen G, S oder T konform sind.
+* Führen Sie [KI für Livevideos](analyze-live-video-use-your-model-http.md#overview) aus. (Sie können die Erfüllung der Voraussetzungen überspringen, da Sie dies oben bereits durchgeführt haben.)
+
+    > [!WARNING] 
+    > Für fortgeschrittene Benutzer, die speicherintensive KI-Modelle wie YOLO ausführen möchten, müssen Sie möglicherweise die Ressourcen erhöhen, die der EFLOW-VM zugewiesen sind. Beenden Sie zunächst den virtuellen EFLOW-Computer, und kehren Sie zum Windows PowerShell-Terminal zurück, indem Sie `exit` eingeben. Führen Sie dann den Befehl `Set-EflowVM` mit erhöhten Rechten in PowerShell aus. Geben Sie nach dem Ausführen des Befehls die gewünschten [Parameter](../../iot-edge/reference-iot-edge-for-linux-on-windows-functions.md#set-eflowvm) ein, indem Sie den Anweisungen in PowerShell folgen, z. B. `cpuCount: 2`, `memoryInMB: 2048`. Stellen Sie die Edge-Module nach einigen Minuten erneut bereit, und aktivieren Sie die Livepipeline erneut zur Anzeige von Rückschlüssen. Wenn Verbindungsprobleme auftreten (z. B. Fehler 137 oder 255, die auf IoT Hub aufgeführt sind), müssen Sie diesen Schritt möglicherweise erneut ausführen. 

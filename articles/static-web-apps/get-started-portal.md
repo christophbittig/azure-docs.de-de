@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: static-web-apps
 ms.custom:
 - mode-portal
-ms.openlocfilehash: ce4c37091fc56398c9986396d56e2cc66f9b1d8a
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: d83a9f96745e798d307c6e5299da84f1ac717e76
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109813930"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122609083"
 ---
 # <a name="quickstart-building-your-first-static-site-in-the-azure-portal"></a>Schnellstart: Erstellen Ihrer ersten statischen Website im Azure-Portal
 
@@ -67,9 +67,9 @@ Geben Sie nach der Anmeldung mit GitHub die Informationen zum Repository ein.
     # <a name="no-framework"></a>[Kein Framework](#tab/vanilla-javascript)
 
     1. Wählen Sie **Benutzerdefiniert** aus der Dropdownliste _Buildvoreinstellungen_ aus.
-    1. Behalten Sie den Standardwert im Feld _App-Speicherort_ bei.
+    1. Geben Sie **./src** in das Feld _App-Speicherort_ ein.
     1. Lassen Sie das Feld _API-Speicherort_ leer.
-    1. Lassen Sie das Feld _Speicherort für App-Artefakte_ leer.
+    1. Geben Sie **./src** in das Feld _Speicherort für App-Artefakt_ ein.
 
     # <a name="angular"></a>[Angular](#tab/angular)
 

@@ -7,19 +7,20 @@ ms.service: virtual-machines
 ms.subservice: openshift
 ms.collection: linux
 ms.topic: troubleshooting
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.custom: devx-track-ansible
-ms.openlocfilehash: b6dfb4cb697e7d66c7db323df9786ff7ad45e1d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f01a31bbee5a6abe40020a5760ef5a5fafcd3ff
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101672326"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688232"
 ---
 # <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>Behandeln von Problemen beim Bereitstellen von OpenShift Container Platform 3.11 in Azure
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
 Wenn der OpenShift-Cluster nicht erfolgreich bereitgestellt wird, wird im Azure-Portal ein Fehler ausgegeben. Die Ausgabe ist möglicherweise schwer zu lesen, was die Identifizierung der Problemursache erschwert. Suchen Sie in der Ausgabe nach dem Exitcode 3, 4 oder 5. Im Anschluss finden Sie Informationen zu diesen drei Exitcodes:
 

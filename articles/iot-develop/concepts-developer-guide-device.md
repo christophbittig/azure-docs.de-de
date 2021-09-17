@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-develop
 services: iot-develop
 zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: f21ce89c265bc97d393c1ea2766acfb6fe63d6ee
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: f30403adf3c981df62a1e5c5122721400ecc060c
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114406513"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122605944"
 ---
 # <a name="iot-plug-and-play-device-developer-guide"></a>Leitfaden für IoT Plug & Play-Geräteentwickler
 
-Mit IoT Plug & Play können Sie intelligente Geräte erstellen, deren Funktionen für Azure IoT-Anwendungen verfügbar gemacht werden. Bei IoT Plug & Play-Geräten ist keine manuelle Konfiguration erforderlich, wenn ein Kunde sie mit IoT Plug & Play-fähigen Anwendungen verbindet.
+Mit IoT Plug & Play können Sie Geräte erstellen, deren Funktionen für Azure IoT-Anwendungen verfügbar gemacht werden. Bei IoT Plug & Play-Geräten ist keine manuelle Konfiguration erforderlich, wenn ein Kunde sie mit IoT Plug & Play-fähigen Anwendungen verbindet.
 
-Ein intelligentes Gerät kann direkt mithilfe von [Modulen](../iot-hub/iot-hub-devguide-module-twins.md) oder [IoT Edge-Modulen](../iot-edge/about-iot-edge.md) implementiert werden
+Ein IoT-Gerät kann direkt mithilfe von [Modulen](../iot-hub/iot-hub-devguide-module-twins.md) oder [IoT Edge-Modulen](../iot-edge/about-iot-edge.md) implementiert werden.
 
 In dieser Anleitung werden die grundlegenden Schritte beschrieben, die zum Erstellen eines Geräts, Moduls oder IoT Edge-Moduls erforderlich sind, das den [IoT Plug & Play-Konventionen](../iot-develop/concepts-convention.md) entspricht.
 

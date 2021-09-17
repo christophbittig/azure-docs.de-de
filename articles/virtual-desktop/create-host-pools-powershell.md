@@ -1,31 +1,31 @@
 ---
-title: Erstellen eines Azure Virtual Desktop-Hostpools mit PowerShell – Azure
-description: So erstellen Sie einen Hostpool in Azure Virtual Desktop mit PowerShell-Cmdlets.
+title: Erstellen eines Azure Virtual Desktop-Hostpools – Azure
+description: 'Gewusst wie: Erstellen eines Hostpools in Azure Virtual Desktop mit PowerShell oder der Azure CLI.'
 author: Heidilohr
 ms.topic: how-to
-ms.date: 10/02/2020
+ms.date: 07/23/2021
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 0b0822bf7653a076e579a0bec1cbfcc926d4c7b9
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: dbd48f8ff2b3da5cec432f6b1fba7d272621535c
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113651129"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123100824"
 ---
-# <a name="create-a-azure-virtual-desktop-host-pool-with-powershell"></a>Erstellen eines Azure Virtual Desktop-Hostpools mit PowerShell
+# <a name="create-an-azure-virtual-desktop-host-pool-with-powershell-or-the-azure-cli"></a>Erstellen eines Azure Virtual Desktop-Hostpools mit PowerShell oder der Azure CLI
 
 >[!IMPORTANT]
 >Dieser Inhalt gilt für Azure Virtual Desktop mit Azure Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Azure Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/create-host-pools-powershell-2019.md).
 
 Hostpools sind eine Sammlung identischer VMs innerhalb von Azure Virtual Desktop-Mandantenumgebungen. Jeder Hostpool kann mit mehreren RemoteApp-Gruppen, einer Desktop-App-Gruppe und mehreren Sitzungshosts verknüpft werden.
 
-## <a name="prerequisites"></a>Voraussetzungen
+## <a name="create-a-host-pool"></a>Erstellen eines Hostpools
 
-Dieser Artikel setzt voraus, dass Sie die Anweisungen unter [Einrichten des PowerShell-Moduls](powershell-module.md) bereits befolgt haben.
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-## <a name="use-your-powershell-client-to-create-a-host-pool"></a>Verwenden Ihres PowerShell-Clients zum Erstellen eines Hostpools
+Wenn Sie dies nicht bereits getan haben, befolgen Sie die Anweisungen unter [Einrichten des PowerShell-Moduls](powershell-module.md).
 
 Führen Sie das folgende Cmdlet aus, um bei der Azure Virtual Desktop-Umgebung anzumelden:
 
@@ -35,7 +35,7 @@ New-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -W
 
 Mit diesem Cmdlet werden Hostpool, Arbeitsbereich und Desktop-App-Gruppe erstellt. Außerdem wird die Desktop-App-Gruppe beim Arbeitsbereich registriert. Sie können entweder mit diesem Cmdlet einen Arbeitsbereich erstellen oder einen bereits vorhandenen Arbeitsbereich verwenden.
 
-Führen Sie das nächste Cmdlet aus, um ein Registrierungstoken zum Autorisieren eines Sitzungshosts zu erstellen und den Hostpool einzubinden und in einer neuen Datei auf Ihrem lokalen Computer zu speichern. Sie können mit dem Parameter „-ExpirationHours“ angeben, wie lange das Registrierungstoken gültig ist.
+Führen Sie das nächste Cmdlet aus, um ein Registrierungstoken zum Autorisieren eines Sitzungshosts zu erstellen und den Hostpool einzubinden und in einer neuen Datei auf Ihrem lokalen Computer zu speichern. Sie können mit dem Parameter *-ExpirationTime* angeben, wie lange das Registrierungstoken gültig ist.
 
 >[!NOTE]
 >Das Ablaufdatum des Tokens darf nicht weniger als eine Stunde und nicht mehr als einen Monat betragen. Wenn Sie *-ExpirationTime* außerhalb dieser Vorgaben festlegen, erstellt das Cmdlet das Token nicht.
@@ -68,6 +68,31 @@ Führen Sie das folgende Cmdlet aus, um das Registrierungstoken in eine Variable
 $token = Get-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname>
 ```
 
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Bereiten Sie Ihre Umgebung für die Azure CLI vor, falls Sie dies noch nicht erledigt haben:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Verwenden Sie nach der Anmeldung den Befehl [az desktopvirtualization hostpool create](/cli/azure/desktopvirtualization#az_desktopvirtualization_hostpool_create), um den neuen Hostpool zu erstellen, und erstellen Sie optional ein Registrierungstoken für Sitzungshosts, um dem Hostpool beizutreten:
+
+```azurecli
+az desktopvirtualization hostpool create --name "MyHostPool" \
+   --resource-group "MyResourceGroup" \
+   --location "MyLocation" \
+   --host-pool-type "Pooled" \
+   --load-balancer-type "BreadthFirst" \
+   --max-session-limit 999 \
+   --personal-desktop-assignment-type "Automatic" \
+   --registration-info expiration-time="2022-03-22T14:01:54.9571247Z" registration-token-operation="Update" \
+   --sso-context "KeyVaultPath" \
+   --description "Description of this host pool" \
+   --friendly-name "Friendly name of this host pool" \
+   --tags tag1="value1" tag2="value2"
+```
+
+---
+
 ## <a name="create-virtual-machines-for-the-host-pool"></a>Erstellen von virtuellen Computern für den Hostpool
 
 Sie können jetzt einen virtuellen Azure-Computer erstellen, der in Ihren Azure Virtual Desktop-Hostpool eingebunden werden kann.
@@ -76,6 +101,7 @@ Sie können einen virtuellen Computer auf unterschiedliche Arten erstellen:
 
 - [Erstellen eines virtuellen Computers aus einem Azure-Katalogimage](../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
 - [Erstellen eines virtuellen Computers aus einem verwalteten Image](../virtual-machines/windows/create-vm-generalized-managed.md)
+- [Erstellen eines virtuellen Computers aus einem nicht verwalteten Image](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-from-user-image)
 
 >[!NOTE]
 >Wenn Sie einen virtuellen Computer mit Windows 7 als Hostbetriebssystem bereitstellen, ist der Erstellungs- und Bereitstellungsprozess ein wenig anders. Weitere Informationen finden Sie unter [Bereitstellen eines virtuellen Windows 7-Computers in Azure Virtual Desktop](./virtual-desktop-fall-2019/deploy-windows-7-virtual-machine.md).

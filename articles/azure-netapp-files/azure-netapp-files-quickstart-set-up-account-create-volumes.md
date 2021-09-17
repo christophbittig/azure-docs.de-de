@@ -6,14 +6,14 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: quickstart
-ms.date: 09/22/2020
+ms.date: 08/10/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: b90b19edd1cf7f22f7396476866208e7e3bd2523
-ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
+ms.openlocfilehash: 3d97c10236391157dbf0a8d32110e3e1d540a3b3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112574621"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729266"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Schnellstart: Einrichten von Azure NetApp Files und Erstellen eines NFS-Volumes
 
@@ -89,9 +89,7 @@ Weitere Informationen finden Sie unter [Registrieren für Azure NetApp Files](az
 
       ![Auswählen von „Azure NetApp Files“](../media/azure-netapp-files/azure-netapp-files-select-azure-netapp-files.png)
 
-2. Klicken Sie auf **+ Hinzufügen**, um ein neues NetApp-Konto zu erstellen.
-
-     ![Erstellen eines neuen NetApp-Kontos](../media/azure-netapp-files/azure-netapp-files-create-new-netapp-account.png)
+2. Klicken Sie auf **+ Erstellen**, um ein neues NetApp-Konto zu erstellen.
 
 3. Geben Sie im Fenster für das neue NetApp-Konto folgende Informationen an:
    1. Geben Sie **myaccount1** als Kontoname ein.
@@ -287,11 +285,9 @@ Der folgende Codeausschnitt zeigt, wie Sie einen Kapazitätspool in einer Azure 
 
     ![Angeben des NFS-Protokolls für den Schnellstart](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
 
-5. Klicken Sie auf **Überprüfen + erstellen**.
+5. Klicken Sie auf **Überprüfen + erstellen**, um Informationen für das Volume anzuzeigen, das Sie erstellen.  
 
-    ![Fenster „Überprüfen + erstellen“](../media/azure-netapp-files/azure-netapp-files-review-and-create-window.png)
-
-6. Überprüfen Sie die Informationen für das Volume, und klicken Sie anschließend auf **Erstellen**.
+6. Klicken Sie auf **Erstellen**, um das Volume zu erstellen. 
     Das erstellte Volume wird auf dem Blatt „Volumes“ angezeigt.
 
     ![Volume erstellt](../media/azure-netapp-files/azure-netapp-files-create-volume-created.png)

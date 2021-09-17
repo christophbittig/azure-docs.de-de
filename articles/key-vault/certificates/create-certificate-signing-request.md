@@ -9,16 +9,16 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: 77a46beceda451d456dfc4f576f855ebf7312e50
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 54b387892e3ad7d813fb97fb8e9ab399ccdb2a1c
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112463511"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515106"
 ---
-# <a name="create-and-merge-a-csr-in-key-vault"></a>Erstellen und Zusammenführen einer Zertifikatsignieranforderung in Key Vault
+# <a name="create-and-merge-a-certificate-signing-request-in-key-vault"></a>Erstellen und Zusammenführen einer Zertifikatsignieranforderung in Key Vault
 
-Azure Key Vault unterstützt die Speicherung digitaler Zertifikate, die von einer beliebigen Zertifizierungsstelle (ZS) ausgestellt wurden. Key Vault unterstützt die Erstellung einer Zertifikatsignieranforderung (Certificate Signing Request, CSR) mit einem Schlüsselpaar mit einem privaten und einem öffentlichen Schlüssel. Die CSR kann von jeder Zertifizierungsstelle (interne Unternehmenszertifizierungsstelle oder externe öffentliche Zertifizierungsstelle) signiert werden. Bei einer CSR handelt es sich um eine Nachricht, die Sie zum Anfordern eines digitalen Zertifikats an eine Zertifizierungsstelle senden.
+Azure Key Vault unterstützt die Speicherung digitaler Zertifikate, die von einer beliebigen Zertifizierungsstelle (ZS) ausgestellt wurden. Key Vault unterstützt die Erstellung einer Zertifikatsignieranforderung (Certificate Signing Request, CSR) mit einem Schlüsselpaar mit einem privaten und einem öffentlichen Schlüssel. Die CSR kann von jeder Zertifizierungsstelle (interne Unternehmenszertifizierungsstelle oder externe öffentliche Zertifizierungsstelle) signiert werden. Bei einer Zertifikatsignieranforderung handelt es sich um eine Nachricht, die Sie zum Anfordern eines digitalen Zertifikats an eine Zertifizierungsstelle senden.
 
 Weitere allgemeine Informationen zu Zertifikaten finden Sie unter [Informationen zu Azure Key Vault-Zertifikaten](./about-certificates.md).
 

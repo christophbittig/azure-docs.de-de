@@ -3,14 +3,14 @@ title: Verwenden einer benutzerseitig zugewiesenen verwalteten Identität für e
 description: In diesem Artikel wird beschrieben, wie Sie eine benutzerseitig verwaltete Identität für Azure Automation-Konten einrichten.
 services: automation
 ms.subservice: process-automation
-ms.date: 07/09/2021
+ms.date: 08/26/2021
 ms.topic: conceptual
-ms.openlocfilehash: f1e66f63da69a4c8e30db1b7d4bb4f71a4db79d5
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: ce409853cddfd0278692e2c6e233331530296d6b
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114665628"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123214265"
 ---
 # <a name="using-a-user-assigned-managed-identity-for-an-azure-automation-account-preview"></a>Verwenden einer benutzerseitig zugewiesenen verwalteten Identität für ein Azure Automation-Konto (Vorschau)
 
@@ -275,7 +275,7 @@ Führen Sie die folgenden Schritte aus:
     $templateFile = "path\template_ua.json"
     ```
 
-1. Verwenden Sie das PowerShell-Cmdlet [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment), um die Vorlage bereitzustellen.
+1. Verwenden Sie das PowerShell-Cmdlet [New-AzureRmResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment), um die Vorlage bereitzustellen.
 
     ```powershell
     New-AzResourceGroupDeployment `
@@ -303,7 +303,9 @@ Ein Automation-Konto kann mithilfe seiner benutzerseitig zugewiesenen verwaltete
 
 Bevor Sie die benutzerseitig zugewiesene verwaltete Identität für die Authentifizierung verwenden können, richten Sie den Zugriff dieser Identität auf die Azure-Ressource ein, in der Sie die Identität verwenden möchten. Für diese Aufgabe muss der Identität in der Azure-Zielressource die entsprechende Rolle zugewiesen werden.
 
-In diesem Beispiel wird Azure PowerShell verwendet, um zu zeigen, wie die Rolle Mitwirkender im Abonnement der Azure-Zielressource zugewiesen wird. Die Rolle „Mitwirkender“ wird als Beispiel verwendet und kan in Ihrem Fall erforderlich sein oder auch nicht. Alternativ können Sie auch das Portal verwenden, um die Rolle der Azure-Zielressource zuzuweisen.
+Befolgen Sie das Prinzip der geringsten Berechtigung und weisen Sie sorgfältig nur die Berechtigungen zu, die für die Ausführung Ihres Runbooks erforderlich sind. Beispiel: Wenn das Automatisierungskonto nur zum Starten oder Stoppen einer Azure-VM erforderlich ist, dann müssen die dem Konto „Ausführen als“ oder der verwalteten Identität zugewiesenen Berechtigungen nur zum Starten oder Stoppen der VM dienen. Weisen Sie ebenso Lesezugriffsberechtigungen zu, wenn ein Runbook aus Blobspeicher liest.
+
+In diesem Beispiel wird Azure PowerShell verwendet, um zu zeigen, wie die Rolle Mitwirkender im Abonnement der Azure-Zielressource zugewiesen wird. Die Rolle „Mitwirkender“ wird als Beispiel verwendet und kan in Ihrem Fall erforderlich sein oder auch nicht. Alternativ können Sie der Azure-Zielressource die Rolle auch im [Azure-Portal](../role-based-access-control/role-assignments-portal.md) zuweisen.
 
 ```powershell
 New-AzRoleAssignment `

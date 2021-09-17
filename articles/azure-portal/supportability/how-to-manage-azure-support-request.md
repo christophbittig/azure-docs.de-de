@@ -4,13 +4,13 @@ description: In diesem Artikel werden das Anzeigen von Supportanfragen, das Send
 tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
 ms.topic: how-to
-ms.date: 05/25/2021
-ms.openlocfilehash: bc9edecd918668e76c36308a660c47d3a8fd9e8b
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.date: 08/24/2021
+ms.openlocfilehash: 6f1daf2c504be53654c61c5249065cc929ae8066
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110496514"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824128"
 ---
 # <a name="manage-an-azure-support-request"></a>Verwalten einer Azure-Supportanfrage
 
@@ -56,7 +56,7 @@ Auf dieser Seite können Sie Supportanfragen durchsuchen, filtern und sortieren.
 
 ## <a name="share-diagnostic-information-with-azure-support"></a>Teilen von Diagnoseinformationen mit dem Azure-Support
 
-Beim Erstellen einer Supportanfrage ist standardmäßig die Option **Diagnoseinformationen teilen** ausgewählt. Mit dieser Option kann der Azure-Support [Diagnoseinformationen](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) Ihrer Azure-Ressourcen sammeln, die möglicherweise bei der Behebung Ihres Problems helfen können.
+Wenn Sie eine Supportanfrage erstellen, können Sie im Abschnitt **Diagnoseinformationen teilen** entweder **Ja** oder **Nein** auswählen. Diese Option bestimmt, ob der Azure-Support [Diagnoseinformationen](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) zu Ihrer Azure-Ressourcen erfassen kann, die möglicherweise zur Behebung Ihres Problems beitragen.
 
 So ändern Sie Ihre Auswahl bei **Diagnoseinformationen teilen** nachdem die Anforderung erstellt wurde:
 

@@ -2,18 +2,18 @@
 title: 'Schnellstart: Bereitstellen von Azure Spring Cloud mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage)'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie einen Spring Cloud-Cluster mithilfe einer ARM-Vorlage in einem vorhandenen virtuellen Netzwerk bereitstellen.
 services: azure-resource-manager
-author: ryhud
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-java
 ms.author: rhudson
 ms.date: 05/27/2021
-ms.openlocfilehash: 73c24f62e2c4333cb1e8ea826792626591aa1c68
-ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
+ms.openlocfilehash: b012f34501a4b944f0f39d37c74fc91a97bc41c3
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112895884"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122272250"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-using-an-arm-template"></a>Schnellstart: Bereitstellen von Azure Spring Cloud mithilfe einer ARM-Vorlage
 
@@ -30,11 +30,12 @@ Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von A
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Azure-Abonnement. Wenn Sie kein Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
-* Zwei dedizierte Subnetze für den Azure Spring Cloud-Cluster, eines für die Dienstruntime und ein weiteres für die Spring Boot-Microserviceanwendungen. Die Anforderungen an Subnetze und virtuelle Netzwerke finden Sie im Abschnitt [Anforderungen für virtuelle Netzwerke](how-to-deploy-in-azure-virtual-network.md#virtual-network-requirements) des Artikels [Bereitstellen von Azure Spring Cloud in einem virtuellen Netzwerk](how-to-deploy-in-azure-virtual-network.md).
+* Zwei dedizierte Subnetze für den Azure Spring Cloud-Cluster, eines für die Dienstruntime und ein weiteres für die Spring Boot-Microserviceanwendungen. Die Anforderungen an Subnetze und virtuelle Netzwerke finden Sie im Abschnitt [Anforderungen für virtuelle Netzwerke](how-to-deploy-in-azure-virtual-network.md#virtual-network-requirements) des Artikels [Bereitstellen von Azure Spring Cloud in einem virtuellen Netzwerk](how-to-deploy-in-azure-virtual-network.md).
 * Ein vorhandener Log Analytics-Arbeitsbereich für Azure Spring Cloud-Diagnoseeinstellungen und eine arbeitsbereichsbasierte Application Insights-Ressource. Weitere Informationen finden Sie unter [Analysieren von Protokollen und Metriken mit Diagnoseeinstellungen](diagnostic-services.md) und [Java-In-Process-Agent für Application Insights in Azure Spring Cloud](how-to-application-insights.md).
 * Drei interne CIDR-Bereiche (Classless Inter-Domain Routing) (mindestens jeweils */16*), die Sie für die Verwendung durch den Azure Spring Cloud-Cluster identifiziert haben. Diese CIDR-Bereiche sind nicht direkt routingfähig und werden nur intern vom Azure Spring Cloud-Cluster verwendet. Cluster dürfen nicht *169.254.0.0/16*, *172.30.0.0/16*, *172.31.0.0/16* oder *192.0.2.0/24* für die internen Spring Cloud-CIDR-Bereiche verwenden, oder IP-Adressbereiche, die im Adressbereich des virtuellen Netzwerks des Clusters enthalten sind.
 * Dienstberechtigung, die dem virtuellen Netzwerk erteilt wurde. Der Azure Spring Cloud-Ressourcenanbieter erfordert die Berechtigung vom Typ „Besitzer“ für Ihr virtuelles Netzwerk, damit ein dedizierter und dynamischer Dienstprinzipal im virtuellen Netzwerk für die weitere Bereitstellung und Wartung gewährt werden kann. Anweisungen und weitere Informationen finden Sie im Abschnitt [Erteilen der Dienstberechtigung für das virtuelle Netzwerk](how-to-deploy-in-azure-virtual-network.md#grant-service-permission-to-the-virtual-network) des Artikels [Bereitstellen von Azure Spring Cloud in einem virtuellen Netzwerk](how-to-deploy-in-azure-virtual-network.md).
 * Wenn Sie Azure Firewall oder ein virtuelles Netzwerkgerät (Network Virtual Appliance, NVA) verwenden, müssen Sie auch die folgenden Voraussetzungen erfüllen:
+
    * Regeln für Netzwerk- und vollqualifizierte Domänennamen (Fully Qualified Domain Name, FQDN). Weitere Informationen finden Sie unter [Anforderungen für virtuelle Netzwerke](how-to-deploy-in-azure-virtual-network.md#virtual-network-requirements).
    * Eine eindeutige benutzerdefinierte Route (User Defined Route, UDR), die auf die einzelnen Subnetze der Dienstruntime und der Spring Boot-Microserviceanwendungen angewendet wird. Weitere Informationen zum UDRs finden Sie unter [Routing von Datenverkehr für virtuelle Netzwerke](../virtual-network/virtual-networks-udr-overview.md). Die UDR sollte mit einer Route für *0.0.0.0/0* mit einem Ziel Ihres NVA konfiguriert werden, bevor der Spring Cloud-Cluster bereitgestellt wird. Weitere Informationen finden Sie im Abschnitt [Eigene Routingtabelle verwenden](how-to-deploy-in-azure-virtual-network.md#bring-your-own-route-table) des Artikels [Bereitstellen von Azure Spring Cloud in einem virtuellen Netzwerk](how-to-deploy-in-azure-virtual-network.md).
 
@@ -49,7 +50,7 @@ Zwei Azure-Ressourcen sind in der Vorlage definiert:
 * [Microsoft.AppPlatform/Spring](/azure/templates/microsoft.appplatform/spring): Erstellen einer Azure Spring Cloud-Instanz.
 * [Microsoft.Insights/components](/azure/templates/microsoft.insights/components): Erstellen eines Application Insights-Arbeitsbereichs.
 
-Informationen zu Azure CLI- und Terraform-Bereitstellungen finden Sie im [Azure Spring Cloud Reference Architecture](https://github.com/Azure/azure-spring-cloud-reference-architecture)-Repository auf GitHub.
+Informationen zu Azure CLI-, Terraform- und Bicep-Bereitstellungen finden Sie im [Azure Spring Cloud Reference Architecture](https://github.com/Azure/azure-spring-cloud-reference-architecture)-Repository auf GitHub.
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
@@ -61,14 +62,14 @@ Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
 
 2. Geben Sie Werte für die folgenden Felder ein:
 
-- **Ressourcengruppe:** Wählen Sie die Option **Neu erstellen** aus, geben Sie einen eindeutigen Namen für die **Ressourcengruppe** ein, und wählen Sie dann **OK** aus.
-- **springCloudInstanceName:** Geben Sie den Namen der Azure Spring Cloud-Ressource ein.
-- **appInsightsName:** Geben Sie den Namen der Application Insights-Instanz für Azure Spring Cloud ein.
-- **laWorkspaceResourceId:** Geben Sie die Ressourcen-ID des vorhandenen Log Analytics-Arbeitsbereichs ein (z. B. */subscriptions/<your subscription>/resourcegroups/<your log analytics resource group>/providers/Microsoft.OperationalInsights/workspaces/<your log analytics workspace name>* ).
-- **springCloudAppSubnetID:** Geben Sie die resourceID des Azure Spring Cloud App-Subnetzes ein.
-- **springCloudRuntimeSubnetID:** Geben Sie die resourceID des Azure Spring Cloud-Runtimesubnetzes ein.
-- **springCloudServiceCidrs:** Geben Sie eine durch Kommas getrennte Liste von IP-Adressbereichen (insgesamt 3) im CIDR-Format ein. Die IP-Adressbereiche sind zum Hosten der zugrunde liegenden Azure Spring Cloud-Infrastruktur reserviert. Diese drei Bereiche sollten mindestens nicht verwendete */16*- IP-Adressbereiche sein und dürfen sich nicht mit routingfähigen Subnetz-IP-Bereichen überschneiden, die im Netzwerk verwendet werden.
-- **tags:** Geben Sie benutzerdefinierte Tags ein.
+   - **Ressourcengruppe:** Wählen Sie die Option **Neu erstellen** aus, geben Sie einen eindeutigen Namen für die **Ressourcengruppe** ein, und wählen Sie dann **OK** aus.
+   - **springCloudInstanceName:** Geben Sie den Namen der Azure Spring Cloud-Ressource ein.
+   - **appInsightsName:** Geben Sie den Namen der Application Insights-Instanz für Azure Spring Cloud ein.
+   - **laWorkspaceResourceId:** Geben Sie die Ressourcen-ID des vorhandenen Log Analytics-Arbeitsbereichs ein (z. B. */subscriptions/\<your subscription>/resourcegroups/\<your log analytics resource group>/providers/Microsoft.OperationalInsights/workspaces/\<your log analytics workspace name>* ).
+   - **springCloudAppSubnetID:** Geben Sie die resourceID des Azure Spring Cloud App-Subnetzes ein.
+   - **springCloudRuntimeSubnetID:** Geben Sie die resourceID des Azure Spring Cloud-Runtimesubnetzes ein.
+   - **springCloudServiceCidrs:** Geben Sie eine durch Kommas getrennte Liste von IP-Adressbereichen (insgesamt 3) im CIDR-Format ein. Die IP-Adressbereiche sind zum Hosten der zugrunde liegenden Azure Spring Cloud-Infrastruktur reserviert. Diese drei Bereiche sollten mindestens nicht verwendete */16*- IP-Adressbereiche sein und dürfen sich nicht mit routingfähigen Subnetz-IP-Bereichen überschneiden, die im Netzwerk verwendet werden.
+   - **tags:** Geben Sie benutzerdefinierte Tags ein.
 
 3. Wählen Sie **Überprüfen + erstellen** und danach **Erstellen** aus.
 
@@ -82,7 +83,7 @@ Falls Sie mit weiteren Schnellstartanleitungen und Tutorials fortfahren möchten
 
 # <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/azure-cli)
 
-```azurecli-interactive
+```azurecli
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
 az group delete --name $resourceGroupName &&
@@ -96,6 +97,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 Remove-AzResourceGroup -Name $resourceGroupName
 Write-Host "Press [ENTER] to continue..."
 ```
+
 ---
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,22 +1,22 @@
 ---
-title: Ausführen eines Failovers für VMware-VMs auf Azure mit Site Recovery
-description: Hier erfahren Sie, wie Sie ein Failover für VMware-VMs auf Azure in Azure Site Recovery ausführen.
+title: Ausführen eines Failovers für VMware-VMs auf Azure mit Site Recovery – Klassisch
+description: Hier erfahren Sie, wie Sie ein Failover für VMware-VMs auf Azure in Azure Site Recovery ausführen – Klassisch.
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 12/16/2019
+ms.date: 08/19/2021
 ms.custom: MVC
-ms.openlocfilehash: bf47f08ac555cf60f59ba2b1a84750b6a9e2e0a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c1de30fee09da94546ea0f8b5835477e0f83a2a
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86132003"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445304"
 ---
-# <a name="fail-over--vmware-vms"></a>Ausführen eines Failovers für VMware-VMs
+# <a name="fail-over-vmware-vms---classic"></a>Ausführen eines Failovers für VMware-VMs – Klassisch
 
-In diesem Artikel erfahren Sie, wie Sie für einen lokalen virtuellen VMware-Computer (VM) mit [Azure Site Recovery](site-recovery-overview.md) ein Failover auf Azure ausführen.
+In diesem Artikel erfahren Sie, wie Sie für einen lokalen virtuellen VMware-Computer (VM) mit [Azure Site Recovery](site-recovery-overview.md) ein Failover auf Azure ausführen – Klassisch.
 
-Dies ist das fünfte Tutorial einer Reihe zur Einrichtung der Notfallwiederherstellung in Azure für lokale Computer.
+Informationen zum Failover in der Vorschauversion finden Sie in [diesem Artikel](vmware-azure-tutorial-failover-failback-preview.md).
 
 In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 
@@ -34,7 +34,7 @@ In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 Absolvieren Sie die vorherigen Tutorials:
 
 1. Vergewissern Sie sich, dass Sie [Azure ordnungsgemäß eingerichtet haben](tutorial-prepare-azure.md) (für die lokale Notfallwiederherstellung virtueller VMware-Computer, virtueller Hyper-V-Computer und physischer Computer in Azure).
-2. Bereiten Sie Ihre lokale [VMware](vmware-azure-tutorial-prepare-on-premises.md)-Umgebung für die Notfallwiederherstellung vor. 
+2. Bereiten Sie Ihre lokale [VMware](vmware-azure-tutorial-prepare-on-premises.md)-Umgebung für die Notfallwiederherstellung vor.
 3. Richten Sie die Notfallwiederherstellung für [VMware-VMs](vmware-azure-tutorial.md) ein.
 4. Führen Sie ein [Notfallwiederherstellungsverfahren](tutorial-dr-drill-azure.md) durch, um zu überprüfen, ob alles wie erwartet funktioniert.
 
@@ -95,6 +95,7 @@ In einigen Szenarien erfordert ein Failover zusätzliche Verarbeitungsschritte, 
 
 >[!TIP]
 > Sollten nach dem Failover Verbindungsprobleme auftreten, lesen Sie das [Handbuch zur Problembehandlung](site-recovery-failover-to-azure-troubleshoot.md).
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

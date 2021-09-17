@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e45240d9d1a957765dfd362bf612ae2ea93919c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: eeba1c933d049e67e45204ad62d71a0eb52a930d
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355670"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122662431"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD
 
@@ -178,7 +178,7 @@ Azure AD Identity Protection ist ein algorithmusbasiertes Überwachungs- und Be
 
 #### <a name="obtain-your-microsoft-365-secure-score-if-using-microsoft-365"></a>Abrufen Ihres Microsoft 365 Secure Score (bei Verwendung von Microsoft 365)
 
-Secure Score prüft Ihre Einstellungen und Aktivitäten für Microsoft 365-Dienste und vergleicht diese mit einer von Microsoft aufgestellten Baseline. Das Ergebnis sagt aus, in welchem Maß Sie bewährte Sicherheitsmethoden befolgen. Jeder Benutzer, der über Administratorberechtigungen für ein Microsoft 365 Business Standard- oder Enterprise-Abonnement verfügt, kann über [https://securescore.office.com](https://securescore.office.com/) auf Secure Score zugreifen.
+Secure Score prüft Ihre Einstellungen und Aktivitäten für Microsoft 365-Dienste und vergleicht diese mit einer von Microsoft aufgestellten Baseline. Das Ergebnis sagt aus, in welchem Maß Sie bewährte Sicherheitsmethoden befolgen. Jeder Benutzer, der über Administratorberechtigungen für ein Microsoft 365 Business Standard- oder Enterprise-Abonnement verfügt, kann über `https://securescore.office.com` auf Secure Score zugreifen.
 
 #### <a name="review-the-microsoft-365-security-and-compliance-guidance-if-using-microsoft-365"></a>Überprüfen der Microsoft 365-Sicherheit und -Konformität (bei Verwendung von Microsoft 365)
 

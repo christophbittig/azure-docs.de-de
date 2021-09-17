@@ -1,19 +1,21 @@
 ---
-title: Erstellen von Zeitplantriggern in Azure Data Factory
-description: Erfahren Sie, wie in Azure Data Factory ein Trigger erstellt wird, der eine Pipeline gemäß einem Zeitplan ausführt.
+title: Erstellen eines Plantriggers
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Erfahren Sie, wie Sie in Azure Data Factory oder in Azure Synapse Analytics einen Trigger erstellen, der eine Pipeline basierend auf einem Zeitplan ausführt.
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
 ms.topic: conceptual
-ms.date: 10/30/2020
-ms.custom: devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: 96a6b82afb7d3d71b0dd8ce392fa308a3611aa94
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.date: 08/24/2021
+ms.custom: devx-track-python, devx-track-azurepowershell, synapse
+ms.openlocfilehash: 833800da17302d2f28619cd1f66acfc476175a7f
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110675020"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824614"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Erstellen eines Triggers zum Ausführen einer Pipeline gemäß einem Zeitplan
 
@@ -25,18 +27,24 @@ Geben Sie bei der Erstellung eines Zeitplantriggers einen Zeitplan (Startdatum, 
 
 In den folgenden Abschnitten werden die Schritte zum Erstellen eines Zeitplantriggers durch unterschiedliche Methoden erläutert. 
 
-## <a name="data-factory-ui"></a>Data Factory-Benutzeroberfläche
+## <a name="ui-experience"></a>Benutzeroberfläche
 
 Sie können einen **Zeitplantrigger** erstellen, um eine regelmäßige Ausführung der Pipeline (stündlich, täglich usw.) festzulegen. 
 
 > [!NOTE]
 > Eine vollständige exemplarische Vorgehensweise zum Erstellen einer Pipeline und eines Zeitplantriggers, worin der Trigger der Pipeline zugeordnet sowie die Pipeline ausgeführt und überwacht wird, finden Sie im [Schnellstart: Erstellen einer Data Factory über die Azure Data Factory-Benutzeroberfläche](quickstart-create-data-factory-portal.md).
 
-1. Wechseln Sie zur Registerkarte **Bearbeiten**, die mit einem Stiftsymbol angezeigt wird. 
+1. Wechseln Sie in Data Factory zur Registerkarte **Bearbeiten** oder in Azure Synapse zur Registerkarte „Integrieren“. 
 
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
     ![Wechseln zur Registerkarte „Bearbeiten“](./media/how-to-create-schedule-trigger/switch-edit-tab.png)
 
-1. Wählen Sie im Menü **Trigger** und dann **Neu/Bearbeiten** aus. 
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+    ![Wechseln zur Registerkarte „Bearbeiten“](./media/how-to-create-schedule-trigger/switch-edit-tab-synapse.png)
+
+---
+    
+2. Wählen Sie im Menü **Trigger** und dann **Neu/Bearbeiten** aus. 
 
     ![Menü „Neuer Trigger“](./media/how-to-create-schedule-trigger/new-trigger-menu.png)
 
@@ -54,7 +62,9 @@ Sie können einen **Zeitplantrigger** erstellen, um eine regelmäßige Ausführu
         > Bei Zeitzonen mit Umstellung zwischen Sommerzeit und Winterzeit wird die Triggerzeit automatisch zweimal im Jahr angepasst. Um die Anpassung an Sommerzeit/Winterzeit zu deaktivieren, wählen Sie eine Zeitzone aus, in der diese Umstellung nicht erfolgt, z. B. UTC.
 
     1. Legen Sie für den Trigger **Wiederholen** fest. Wählen Sie einen Wert aus der Dropdownliste aus („Minütlich“, „Stündlich“, „Täglich“, „Wöchentlich“ und „Monatlich“). Geben Sie den Multiplikator in das Textfeld ein. Beispiel: Wenn der Trigger einmal alle 15 Minuten ausgeführt werden soll, wählen Sie **Minütlich** aus, und geben Sie **15** in das Textfeld ein. 
-    1. Zum Angeben eines Endzeitpunkts wählen Sie **Enddatum festlegen** aus, legen einen Wert für _Endet am_ fest und klicken dann auf **OK**. Für jede Pipelineausführung fallen Gebühren an. Wenn Sie Tests durchführen, sollten Sie darauf achten, dass die Pipeline nur ein paar Mal ausgelöst wird. Stellen Sie jedoch sicher, dass zwischen Veröffentlichungszeit und Endzeit ausreichend Zeit für die Pipelineausführung bleibt. Der Trigger wird erst wirksam, nachdem Sie die Lösung in Data Factory veröffentlicht haben, nicht beim Speichern des Triggers auf der Benutzeroberfläche.
+    1. Wenn Sie in der Dropdownliste **Wiederholung** die Option für Tage, Wochen oder Monate auswählen, werden erweiterte Wiederholungsoptionen angezeigt.
+    :::image type="content" source="./media/how-to-create-schedule-trigger/advanced.png" alt-text="Erweiterte Wiederholungsoptionen für „Tage“, „Wochen“ oder „Monate“":::
+    1. Zum Angeben eines Endzeitpunkts wählen Sie **Enddatum festlegen** aus, legen einen Wert für _Endet am_ fest und klicken dann auf **OK**. Für jede Pipelineausführung fallen Gebühren an. Wenn Sie Tests durchführen, sollten Sie darauf achten, dass die Pipeline nur ein paar Mal ausgelöst wird. Stellen Sie jedoch sicher, dass zwischen Veröffentlichungszeit und Endzeit ausreichend Zeit für die Pipelineausführung bleibt. Der Trigger wird erst nach Veröffentlichung der Lösung wirksam, nicht beim Speichern des Triggers auf der Benutzeroberfläche.
 
         ![Triggereinstellungen](./media/how-to-create-schedule-trigger/trigger-settings-01.png)
 
@@ -68,17 +78,31 @@ Sie können einen **Zeitplantrigger** erstellen, um eine regelmäßige Ausführu
 
     ![Triggereinstellungen – Schaltfläche „Fertig stellen“](./media/how-to-create-schedule-trigger/new-trigger-finish.png)
 
-1. Wählen Sie **Alle veröffentlichen** aus, um die Änderungen in Data Factory zu veröffentlichen. Der Trigger startet die Pipelineausführung erst, wenn die Änderungen in Data Factory veröffentlicht wurden. 
+1. Klicken Sie auf **Alle veröffentlichen**, um die Änderungen zu veröffentlichen. Der Trigger startet die Pipelineausführung erst, wenn die Änderungen veröffentlicht wurden. 
 
     ![Schaltfläche "Veröffentlichen"](./media/how-to-create-schedule-trigger/publish-2.png)
 
 1. Wechseln Sie auf der linken Seite zur Registerkarte **Pipelineausführung**, und wählen Sie **Aktualisieren** aus, um die Liste zu aktualisieren. Dann werden die Pipelineausführungen angezeigt, die vom geplanten Trigger ausgelöst wurden. Beachten Sie die Werte in der Spalte **Ausgelöst durch**. Wenn Sie die Option **Jetzt auslösen** verwenden, wird die manuelle Triggerausführung in der Liste angezeigt. 
 
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
     ![Überwachen ausgelöster Ausführungen](./media/how-to-create-schedule-trigger/monitor-triggered-runs.png)
 
-1. Wechseln Sie zur Ansicht **Triggerausführungen** \ **Zeitplan**. 
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+    ![Überwachen ausgelöster Ausführungen](./media/how-to-create-schedule-trigger/monitor-triggered-runs-synapse.png)
+    
+---
+
+9. Wechseln Sie zur Ansicht **Triggerausführungen** \ **Zeitplan**. 
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
     ![Überwachen von Triggerausführungen](./media/how-to-create-schedule-trigger/monitor-trigger-runs.png)
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+    ![Überwachen von Triggerausführungen](./media/how-to-create-schedule-trigger/monitor-trigger-runs-synapse.png)
+    
+---
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -286,7 +310,7 @@ Sie können mit einer Azure Resource Manager-Vorlage einen Trigger erstellen. De
 
 ## <a name="pass-the-trigger-start-time-to-a-pipeline"></a>Übergeben der Startzeit des Triggers an eine Pipeline
 
-In Version 1 unterstützt Azure Data Factory das Lesen oder Schreiben von partitionierten Daten mithilfe dieser Systemvariablen: **SliceStart**, **SliceEnd**, **WindowStart** und **WindowEnd**. In der aktuellen Version von Azure Data Factory können Sie dieses Verhalten anhand eines Pipelineparameters erreichen. Die Startzeit und die geplante Zeit für den Trigger werden als Wert für den Pipelineparameter festgelegt. Im folgenden Beispiel wird die geplante Zeit für den Trigger als Wert an den Pipelineparameter **scheduledRunTime** übergeben:
+In Version 1 unterstützt Azure Data Factory das Lesen oder Schreiben von partitionierten Daten mithilfe dieser Systemvariablen: **SliceStart**, **SliceEnd**, **WindowStart** und **WindowEnd**. In der aktuellen Version von Azure Data Factory- und Synapse-Pipelines können Sie dieses Verhalten anhand eines Pipelineparameters festlegen. Die Startzeit und die geplante Zeit für den Trigger werden als Wert für den Pipelineparameter festgelegt. Im folgenden Beispiel wird die geplante Zeit für den Trigger als Wert an den Pipelineparameter **scheduledRunTime** übergeben:
 
 ```json
 "parameters": {
@@ -391,7 +415,7 @@ Im Folgenden finden Sie einige der für Zeitplantrigger unterstützte Zeitzonen:
 | India Standard Time (IST) | +5:30 | `India Standard Time` | Nein  | `'yyyy-MM-ddTHH:mm:ss'` |
 | China Normalzeit | +8 | `China Standard Time` | Nein  | `'yyyy-MM-ddTHH:mm:ss'` |
 
-Diese Liste ist unvollständig. Eine vollständige Liste der Zeitzonenoptionen finden Sie im Data Factory-Portal auf der Seite zur [Triggererstellung](#data-factory-ui).
+Diese Liste ist unvollständig. Eine vollständige Liste der Zeitzonenoptionen finden Sie im Portal auf der Seite zur [Triggererstellung](#ui-experience).
 
 ### <a name="starttime-property"></a>startTime-Eigenschaft
 Die folgende Tabelle zeigt, wie die **startTime**-Eigenschaft eine Triggerausführung steuert:

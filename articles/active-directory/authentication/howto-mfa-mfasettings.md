@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 340c9f549d1d60a19867ea4de58834d921871854
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: d5aa2a2eba1cf6123d81813cab00d2ac7c5309b4
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122356156"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835367"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Konfigurieren von Azure AD Multi-Factor Authentication-Einstellungen
 
@@ -151,11 +151,9 @@ Benutzer verfügen möglicherweise über eine Kombination aus bis zu fünf OATH-
 
 Wenn Benutzer Anrufe für MFA-Eingabeaufforderungen empfangen, können Sie die Anrufer-ID oder die Begrüßung konfigurieren.
 
-Wenn Sie in den USA nicht die MFA-Anrufer-ID konfiguriert haben, stammen Anrufe von Microsoft von folgenden Telefonnummern. Wenn Sie Spamfilter verwenden, stellen Sie sicher, dass diese Nummern nicht gefiltert werden:
+Wenn Sie in den USA nicht die MFA-Anrufer-ID konfiguriert haben, stammen Anrufe von Microsoft von der folgenden Telefonnummer. Wenn Sie Spamfilter verwenden, stellen Sie sicher, dass diese Nummer nicht gefiltert wird:
 
-* *+1 (866) 539 4191*
 * *+1 (855) 330 8653*
-* *+1 (877) 668 6536*
 
 > [!NOTE]
 > Wenn Anrufe im Rahmen von Azure AD Multi-Factor Authentication über das öffentliche Telefonnetz erfolgen, werden sie manchmal über einen Netzbetreiber geroutet, der Anrufer-IDs nicht unterstützt. Aus diesem Grund gibt es keine Garantie für die Anrufer-ID, auch wenn Azure AD Multi-Factor Authentication sie immer sendet. Dies gilt sowohl für Telefonanrufe als auch für SMS-Nachrichten, die von Azure AD Multi-Factor Authentication bereitgestellt werden. Wenn Sie überprüfen müssen, ob eine Textnachricht von Azure AD Multi-Factor Authentication stammt, lesen Sie [Welche SMS-Kurzcodes werden für das Senden von Nachrichten verwendet?](multi-factor-authentication-faq.yml#what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users-)
@@ -338,7 +336,7 @@ Führen Sie die folgenden Schritte aus, um Überprüfungsmethoden zu aktivieren 
 
 ## <a name="remember-multi-factor-authentication"></a>Speichern der Multi-Factor Authentication
 
-Mit dem Feature _Multi-Factor Authentication speichern_ können Benutzer nachfolgende Überprüfungen für eine angegebene Anzahl von Tagen umgehen, nachdem sie sich mithilfe von Multi-Factor Authentication erfolgreich bei einem Gerät angemeldet haben. Wählen Sie eine Dauer von mindestens 90 Tagen aus, um die Benutzerfreundlichkeit zu verbessern und die Häufigkeit zu minimieren, mit der ein Benutzer die MFA auf demselben Gerät ausführen muss.
+Mit dem Feature _Multi-Factor Authentication speichern_ können Benutzer nachfolgende Überprüfungen für eine angegebene Anzahl von Tagen umgehen, nachdem sie sich mithilfe von MFA erfolgreich bei einem Gerät angemeldet haben. Wählen Sie eine Dauer von mindestens 90 Tagen aus, um die Benutzerfreundlichkeit zu verbessern und die Häufigkeit zu minimieren, mit der ein Benutzer die MFA auf demselben Gerät ausführen muss.
 
 > [!IMPORTANT]
 > Wenn ein Konto oder Gerät gefährdet ist, kann das Speichern von Multi-Factor Authentication für vertrauenswürdige Geräte die Sicherheit beeinträchtigen. Wenn ein Unternehmenskonto kompromittiert oder ein vertrauenswürdiges Gerät verloren geht oder gestohlen wird, sollten Sie [MFA-Sitzungen widerrufen](howto-mfa-userdevicesettings.md).

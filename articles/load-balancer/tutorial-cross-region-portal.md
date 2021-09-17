@@ -6,13 +6,13 @@ author: asudbring
 ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
-ms.date: 02/24/2021
-ms.openlocfilehash: 16320021ede4a4e285c4e1973c166d2cdf643c4a
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.date: 08/02/2021
+ms.openlocfilehash: f0004845033493dc7546bb3af467918ea77ebcad
+ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107529526"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122201616"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>Tutorial: Erstellen einer regionsübergreifenden Azure Load Balancer-Instanz mithilfe des Azure-Portals
 
@@ -45,100 +45,86 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 ## <a name="create-cross-region-load-balancer"></a>Erstellen eines regionsübergreifenden Lastenausgleichs
 
-In diesem Abschnitt erstellen Sie einen regionsübergreifenden Lastenausgleich und eine öffentliche IP-Adresse.
+In diesem Abschnitt erstellen Sie Folgendes: 
 
-1. Wählen Sie **Ressource erstellen**. 
-2. Geben Sie im Suchfeld **Load Balancer** ein. Wählen Sie in den Suchergebnissen **Load Balancer** aus.
-3. Wählen Sie auf der Seite **Load Balancer** die Option **Erstellen** aus.
-4. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, bzw. wählen Sie sie aus: 
+* Regionsübergreifender Lastenausgleich
+* Front-End mit einer globalen öffentlichen IP-Adresse
+* Back-End-Pool mit zwei regionalen Lastenausgleichsmodulen
+
+> [!IMPORTANT]
+> Vergewissern Sie sich vor dem Ausführen dieser Schritte, dass zwei regionale Lastenausgleichsmodule mit Back-End-Pools in Ihrem Abonnement bereitgestellt wurden.  Weitere Informationen finden Sie unter **[Schnellstart: Erstellen eines öffentlichen Lastenausgleichs für den Lastenausgleich virtueller Computer über das Azure-Portal](quickstart-load-balancer-standard-public-portal.md)** .
+
+1. Geben Sie am oberen Rand des Portals den Suchbegriff **Lastenausgleich** in das Suchfeld ein. Wählen Sie in den Suchergebnissen **Load Balancer** aus.
+
+2. Wählen Sie auf der Seite **Load Balancer** die Option **Erstellen** aus.
+
+3. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, bzw. wählen Sie sie aus: 
 
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
+    | **Projektdetails** |    |
     | Subscription               | Wählen Sie Ihr Abonnement aus.    |    
-    | Resource group         | Wählen Sie die Option **Neu erstellen** aus, und geben Sie im Textfeld **CreateCRLBTutorial-rg** ein.|
+    | Resource group         | Wählen Sie die Option **Neu erstellen** aus, und geben Sie im Textfeld **CreateCRLBTutorial-rg** ein. |
+    | **Instanzendetails** |   |
     | Name                   | Geben Sie **myLoadBalancer-CR** ein.                                   |
     | Region         | Wählen Sie **USA, Westen** aus.                                        |
     | type          | Wählen Sie **Öffentlich** aus.                                        |
     | SKU           | Übernehmen Sie den Standardwert **Standard**. |
     | Tarif           | Wählen Sie **Global** aus. |
-    | Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**.|
-    | Name der öffentlichen IP-Adresse | Geben Sie **myPublicIP-CR** in das Textfeld ein.|
-    | Routingpräferenz| Wählen Sie **Microsoft-Netzwerk** aus. </br> Weitere Informationen zu den Routingpräferenzen finden Sie unter [Was ist Routingpräferenz (Vorschau)?](../virtual-network/routing-preference-overview.md). |
+
+    :::image type="content" source="./media/tutorial-cross-region-portal/create-cross-region.png" alt-text="Erstellen eines regionsübergreifenden Lastenausgleichs" border="true":::
+  
+4. Wählen Sie unten auf der Seite **Weiter: Front-End-IP-Konfiguration** aus.
+
+5. Wählen Sie unter **Front-End-IP-Konfiguration** die Option **+ Front-End-IP-Adresse hinzufügen** aus.
+
+6. Geben Sie unter **Front-End-IP-Adresse hinzufügen** ins Feld **Name** den Namen **LoadBalancerFrontend** ein.
+
+7. Wählen Sie unter **IP-Version** die Option **IPv4** oder **IPv6** aus.
+
+8. Wählen Sie unter **Öffentliche IP-Adresse** die Option **Neu erstellen** aus. Geben Sie unter **Name** den Namen **myPublicIP** ein.  Klicken Sie auf **OK**.
+
+9. Wählen Sie **Hinzufügen**.
+
+10. Wählen Sie unten auf der Seite **Weiter: Back-End-Pools** aus.
+
+11. Wählen Sie unter **Back-End-Pools** die Option **+ Back-End-Pool hinzufügen** aus.
+
+12. Geben Sie unter **Back-End-Pool hinzufügen** in das Feld **Name** den Namen **myBackendPool-cr** ein.
+
+13. Wählen Sie unter **Lastenausgleichsmodule** die Option **myLoadBalancer-r1** oder im Dropdownfeld **Lastenausgleich** den ersten regionalen Lastenausgleich aus. Überprüfen Sie, ob die Werte für **Front-End-IP-Konfiguration** und **IP-Adresse** den Werten für **myLoadBalancer-r1** entsprechen.
+
+14. Wählen Sie unter **myLoadBalancer-r2** oder im Dropdownfeld **Lastenausgleich** den zweiten regionalen Lastenausgleich aus. Überprüfen Sie, ob die Werte für **Front-End-IP-Konfiguration** und **IP-Adresse** den Werten für **myLoadBalancer-r2** entsprechen.
+
+15. Wählen Sie **Hinzufügen**.
+
+16. Wählen Sie unten auf der Seite **Weiter: Eingangsregeln** aus.
+
+17. Wählen Sie unter **Eingangsregeln** die Option **+ Lastenausgleichsregel hinzufügen** aus.
+
+18. Geben Sie unter **Lastenausgleichsregel hinzufügen** die folgenden Informationen ein, oder wählen Sie sie aus:
+
+    | Einstellung | Wert |
+    | ------- | ----- |
+    | Name | Geben Sie **myHTTPRule-cr** ein. |
+    | IP-Version | Wählen Sie unter **IP-Version** die Option **IPv4** oder **IPv6** aus. |
+    | Front-End-IP-Adresse | Wählen Sie **LoadBalancerFrontEnd** aus. |
+    | Protocol | Wählen Sie **TCP** aus. |
+    | Port | Geben Sie **80** ein. |
+    | Back-End-Pool | Wählen Sie **myBackendPool-cr** aus. |
+    | Sitzungspersistenz | Wählen Sie **Keine**. |
+    | Leerlaufzeitüberschreitung (Minuten) | Geben Sie **15** ein, oder bewegen Sie den Schieberegler auf „15“. |
+    | TCP-Zurücksetzung | Wählen Sie **Aktiviert**. |
+    | Unverankerte IP | Übernehmen Sie den Standardwert **Deaktiviert**. |
+
+19. Wählen Sie **Hinzufügen**.
+
+20. Wählen Sie am unteren Rand der Seite die Option **Bewerten + erstellen** aus.
+
+21. Wählen Sie auf der Registerkarte **Überprüfen und erstellen** die Option **Erstellen** aus.
 
     > [!NOTE]
     > Regionsübergreifender Lastenausgleich kann nur in den folgenden Startregionen bereitgestellt werden: **USA, Osten 2; USA, Westen, Europa, Westen; Asien, Südosten; USA, Mitte; Europa, Norden; Asien, Osten**. Weitere Informationen finden Sie unter **https://aka.ms/homeregionforglb**.
-
-
-3. Übernehmen Sie bei den anderen Einstellungen die Standardwerte, und wählen Sie **Überprüfen + erstellen** aus.
-
-4. Wählen Sie auf der Registerkarte **Bewerten + erstellen** die Option **Erstellen** aus.   
-
-    :::image type="content" source="./media/tutorial-cross-region-portal/create-cross-region.png" alt-text="Erstellen eines regionsübergreifenden Lastenausgleichs" border="true":::
-
-## <a name="create-backend-pool"></a>Erstellen eines Back-End-Pools
-
-In diesem Abschnitt fügen Sie dem Back-End-Pool des regionsübergreifenden Lastenausgleichs zwei regionale Load Balancer Standard-Instanzen hinzu.
-
-> [!IMPORTANT]
-> Vergewissern Sie sich vor dem Ausführen dieser Schritte, dass zwei regionale Lastenausgleichsmodule mit Back-End-Pools in Ihrem Abonnement bereitgestellt wurden.  Weitere Informationen finden Sie unter **[Schnellstart: Erstellen eines öffentlichen Lastenausgleichs für den Lastenausgleich virtueller Computer über das Azure-Portal](quickstart-load-balancer-standard-public-portal.md)** .
-
-Erstellen Sie den Back-End-Adresspool **myBackendPool-CR**, der die regionalen Lastenausgleichsmodule enthalten soll.
-
-1. Wählen Sie im linken Menü **Alle Dienste** > **Alle Ressourcen** und anschließend in der Ressourcenliste den Eintrag **myLoadBalancer-CR** aus.
-
-2. Wählen Sie unter **Einstellungen** die Option **Back-End-Pools** und dann **Hinzufügen** aus.
-
-3. Geben Sie auf der Seite **Back-End-Pool hinzufügen** unter als Name den Namen **myBackendPool-CR** ein.
-
-4. Wählen Sie **Hinzufügen**.
-
-4. Wählen Sie **myBackendPool-CR** aus.
-
-5. Wählen Sie unter **Lastenausgleichsmodule** das Pulldownfeld unter **Lastenausgleich** aus.
-
-5. Wählen Sie **myLoadBalancer-R1** oder den Namen des Lastenausgleichs in Region 1 aus.
-
-6. Wählen Sie unter **Front-End-IP-Konfiguration** das Pulldownfeld aus. Wählen Sie **LoadBalancerFrontEnd**.
-
-7. Wiederholen Sie die Schritte 4 bis 6, um **myLoadBalancer-R2** hinzuzufügen.
-
-8. Wählen Sie **Hinzufügen**.
-
-    :::image type="content" source="./media/tutorial-cross-region-portal/add-to-backendpool.png" alt-text="Hinzufügen von regionalen Lastenausgleichsmodulen zum Back-End-Pool" border="true":::
-
-## <a name="create-a-load-balancer-rule"></a>Erstellen einer Load Balancer-Regel
-
-In diesem Abschnitt wird eine Lastenausgleichsregel mit folgenden Merkmalen erstellt:
-
-* Sie heißt **myHTTPRule**.
-* Sie befindet sich im Front-End **LoadBalancerFrontEnd**.
-* Sie lauscht a **Port 80**.
-* Sie leitet vom Lastenausgleich verteilten Datenverkehr an den **Port 80** des Back-Ends **myBackendPool-CR** weiter.
-
-    > [!NOTE]
-    > Der Front-End-Port muss dem Back-End-Port und dem Front-End-Port der regionalen Lastenausgleichsmodule im Back-End-Pool entsprechen.
-
-1. Wählen Sie im linken Menü **Alle Dienste** > **Alle Ressourcen** und anschließend in der Ressourcenliste den Eintrag **myLoadBalancer-CR** aus.
-
-2. Wählen Sie unter **Einstellungen** die Option **Lastenausgleichsregeln** und dann **Hinzufügen** aus.
-
-3. Konfigurieren Sie die Lastenausgleichsregel mit folgenden Werten:
-    
-    | Einstellung | Wert |
-    | ------- | ----- |
-    | Name | Geben Sie **myHTTPRule** ein. |
-    | IP-Version | Wählen Sie **IPv4** aus. |
-    | Front-End-IP-Adresse | Wählen Sie **LoadBalancerFrontEnd** aus. |
-    | Protocol | Wählen Sie **TCP** aus. |
-    | Port | Geben Sie **80** ein.|
-    | Back-End-Port | Geben Sie **80** ein. |
-    | Back-End-Pool | Wählen Sie **myBackendPool** aus.|
-    | Leerlaufzeitüberschreitung (Minuten) | Bewegen Sie den Schieberegler auf **15**. |
-    | TCP-Zurücksetzung | Wählen Sie **Aktiviert**. |
-
-4. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie dann **OK** aus.
-
-    :::image type="content" source="./media/tutorial-cross-region-portal/create-lb-rule.png" alt-text="Erstellen einer Load Balancer-Regel" border="true":::
 
 ## <a name="test-the-load-balancer"></a>Testen des Lastenausgleichs
 

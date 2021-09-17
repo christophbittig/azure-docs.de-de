@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 04/19/2021
+ms.date: 08/11/2021
 ms.author: alkohli
-ms.openlocfilehash: becd3c0994007b06c74b1bfbd2c88660464d6622
-ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
+ms.openlocfilehash: ab133e05cd08be42b212e72f801ee59ffa104d4a
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112575512"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429640"
 ---
 # <a name="what-is-the-azure-stack-edge-pro-r"></a>Was ist Azure Stack Edge Pro R?
 
@@ -38,6 +38,7 @@ Azure Stack Edge Pro R weist die folgenden Merkmale auf:
 |Datenaktualisierung     | Möglichkeit, lokale Dateien mit den neuesten Informationen aus der Cloud zu aktualisieren.|
 |Doppelte Verschlüsselung    | Sich selbst verschlüsselnde Laufwerke stellen die erste Verschlüsselungsebene dar. VPN bietet die zweite Verschlüsselungsebene. BitLocker-Unterstützung zur lokalen Verschlüsselung von Daten und zur sicheren Datenübertragung in die Cloud über *HTTPS*.|
 |Bandbreiteneinschränkung| Drosselung, um die Bandbreitennutzung während der Spitzenzeiten einzuschränken.|
+|Einfaches Bestellen| Massenbestellung und Nachverfolgung des Geräts über Azure Edge Hardware Center (Vorschau)|
 
 <!--|Scale out file server| Available as 1-node and 4-node cluster configurations|-->
 
@@ -64,6 +65,10 @@ Die Azure Stack Edge Pro R-Lösung umfasst eine Azure Stack Edge Pro R-Ressour
 
     ![Das Azure Stack Edge Pro R-Gerät mit einem Knoten](media/azure-stack-edge-pro-r-overview/device-image-1.png)
 
+    [!INCLUDE [azure-stack-edge-gateway-edge-hardware-center-overview](../../includes/azure-stack-edge-gateway-edge-hardware-center-overview.md)]    
+
+    Weitere Informationen finden Sie unter [Neue Ressource erstellen](azure-stack-edge-pro-r-deploy-prep.md#create-a-new-resource).
+
 - **Azure Stack Edge-Ressource:** Eine Ressource im Azure-Portal, mit der Sie ein robustes Azure Stack Edge Pro R-Gerät über eine zentrale Webbenutzeroberfläche verwalten können, auf die von verschiedenen geografischen Standorten aus zugegriffen werden kann. Verwenden Sie die Azure Stack Edge-Ressource, um Ressourcen zu erstellen und zu verwalten, Geräte und Warnungen anzuzeigen und zu verwalten sowie Freigaben zu verwalten.  
 
 - **Lokale Webbenutzeroberfläche von Azure Stack Edge Pro R**: Eine browserbasierte lokale Benutzeroberfläche auf Ihrem Azure Stack Edge Pro R-Gerät, die in erster Linie der anfänglichen Konfiguration des Geräts dient. Über die lokale Webbenutzeroberfläche können Sie zudem Diagnosen ausführen, das Azure Stack Edge Pro-Gerät herunterfahren und neu starten, Kopierprotokolle anzeigen und den Microsoft-Support kontaktieren, um eine Serviceanfrage zu stellen.
@@ -82,6 +87,8 @@ Das physische Azure Stack Edge Pro R-Gerät, die Azure-Ressource und das Zielsp
 - **Zielspeicherkonten**: Die Speicherkonten, in denen die Daten gespeichert werden, sind in allen Azure-Regionen verfügbar. Die Regionen, in denen die Speicherkonten Azure Stack Edge Pro R-Daten speichern, sollten sich in der Nähe des Gerätestandorts befinden, um optimale Leistung zu erzielen. Ein weit entfernt vom Gerät befindliches Speicherkonto führt zu langen Wartezeiten und einer langsameren Leistung.
 
 Der Azure Stack Edge-Dienst ist ein nicht regionaler Dienst. Weitere Informationen finden Sie unter [Regionen und Verfügbarkeitszonen in Azure](../availability-zones/az-overview.md). Beim Azure Stack Edge-Dienst besteht keine Abhängigkeit von einer bestimmten Azure-Region. Deshalb ist er resilienter gegen zonenweite oder regionsweite Ausfälle.
+
+Überlegungen zur Auswahl einer Region für den Azure Stack Edge-Dienst, das Gerät und die Datenspeicherung finden Sie unter [Auswählen einer Region für Azure Stack Edge](azure-stack-edge-gpu-regions.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 06/30/2021
-ms.openlocfilehash: 4f4e9b51a44ee193a946f76499c95d6fe77f2e5e
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 622e89392dc10f12fe81ed1c1085e5b9cc524999
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114665397"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181297"
 ---
 # <a name="register-and-scan-an-azure-database-for-postgresql"></a>Registrieren und Überprüfen einer Azure Database for PostgreSQL-Datenbank
 
@@ -37,7 +37,7 @@ Purview unterstützt nur die SQL-Authentifizierung für Azure Database for Postg
 
 #### <a name="sql-authentication-for-an-azure-database-for-postgresql"></a>SQL-Authentifizierung für eine Azure Database for PostgreSQL-Datenbank
 
-Für die Verbindungsherstellung mit einer Azure Database for PostgreSQL-Datenbank sind der vollqualifizierte Servername und Anmeldeinformationen erforderlich. Sie können die Anleitung unter [Schnellstart: Verwenden von Python zum Herstellen einer Verbindung mit einem Azure Database for PostgreSQL-Einzelserver sowie zum Abfragen von Daten](/azure/postgresql/connect-python) befolgen, um einen Anmeldenamen für Ihre Azure Database for PostgreSQL-Datenbank zu erstellen, falls Sie noch keinen besitzen. Sie benötigen **Benutzername** und **Kennwort** für die nächsten Schritte.
+Für die Verbindungsherstellung mit einer Azure Database for PostgreSQL-Datenbank sind der vollqualifizierte Servername und Anmeldeinformationen erforderlich. Sie können die Anleitung unter [Schnellstart: Verwenden von Python zum Herstellen einer Verbindung mit einem Azure Database for PostgreSQL-Einzelserver sowie zum Abfragen von Daten](../postgresql/connect-python.md) befolgen, um einen Anmeldenamen für Ihre Azure Database for PostgreSQL-Datenbank zu erstellen, falls Sie noch keinen besitzen. Sie benötigen **Benutzername** und **Kennwort** für die nächsten Schritte.
 
 1. Navigieren Sie im Azure-Portal zu Ihrem Schlüsseltresor.
 1. Wählen Sie **Einstellungen > Geheimnisse** aus.
@@ -52,9 +52,9 @@ Gehen Sie wie folgt vor, um in Ihrem Datenkatalog eine neue Azure Database for P
 
 1. Navigieren Sie zu Ihrem Purview-Konto.
 
-1. Wählen Sie im linken Navigationsbereich die Option **Quellen** aus.
+1. Wählen Sie im linken Navigationsbereich **Data Map** aus.
 
-1. Wählen Sie **Registrieren**.
+1. Wählen Sie **Registrieren** aus.
 
 1. Wählen Sie unter **Register sources** (Quellen registrieren) die Option **Azure Database for PostgreSQL** aus. Wählen Sie **Weiter**.
 
@@ -62,7 +62,7 @@ Gehen Sie wie folgt vor, um in Ihrem Datenkatalog eine neue Azure Database for P
 
 Gehen Sie auf dem Bildschirm **Register sources (Azure Database for PostgreSQL)** (Quellen registrieren (Azure Database for PostgreSQL)) wie folgt vor:
 
-1. Geben Sie unter **Name** einen Namen für die Datenquelle ein. Dies ist der Anzeigename für diese Datenquelle in Ihrem Katalog.
+1. Geben Sie unter **Name** einen Namen für die Datenquelle ein. Dies wird der Anzeigename für diese Datenquelle in Ihrem Katalog.
 1. Wählen Sie die Option **Aus Azure-Abonnement** und dann im Dropdownfeld **Azure-Abonnement** das entsprechende Abonnement und im Dropdownfeld **Servername** den entsprechenden Server aus.
 1. Wählen Sie **Registrieren** aus, um die Datenquelle zu registrieren. 
  

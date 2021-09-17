@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: f2d9d9afb1e31f959c4e219c0c95e435c966ccd1
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: a095d2f6e05957e4a3daac76f3ac745e5a20de4a
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111757065"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122356465"
 ---
 # <a name="understanding-just-in-time-jit-vm-access"></a>Grundlegendes zum Just-In-Time(JIT)-VM-Zugriff
 
@@ -74,7 +74,7 @@ Die Rollen **Reader** und **SecurityReader** können sowohl den JIT-Status als a
 Wenn Sie benutzerdefinierte Rollen erstellen möchten, die mit JIT arbeiten können, benötigen Sie die Details aus der folgenden Tabelle.
 
 > [!TIP]
-> Verwenden Sie das Skript [Set-JitLeastPrivilegedRole](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role) von den GitHub-Communityseiten des Security Center, um für Benutzer, die JIT-Zugriff auf eine VM anfordern und keine anderen JIT-Operationen durchführen müssen, eine Rolle mit den geringsten Berechtigungen zu erstellen.
+> Verwenden Sie das Skript [Set-JitLeastPrivilegedRole](https://github.com/Azure/Azure-Security-Center/tree/main/Powershell%20scripts/JIT%20Scripts/JIT%20Custom%20Role) von den GitHub-Communityseiten des Security Center, um für Benutzer, die JIT-Zugriff auf eine VM anfordern und keine anderen JIT-Operationen durchführen müssen, eine Rolle mit den geringsten Berechtigungen zu erstellen.
 
 | Optionen, die Benutzern ermöglicht werden können: | Festzulegende Berechtigungen|
 | --- | --- |
@@ -89,9 +89,7 @@ Wenn Sie benutzerdefinierte Rollen erstellen möchten, die mit JIT arbeiten kön
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Auf dieser Seite wurde erläutert, _warum_ Just-in-time(JIT)-VM-Zugriff verwendet werden sollte. 
-
-Fahren Sie mit dem Anleitungsartikel fort, um mehr über die Aktivierung von JIT und die Anforderung des Zugriffs auf Ihre JIT-fähigen VMs zu erfahren:
+Auf dieser Seite wurde erläutert, _warum_ Just-in-time(JIT)-VM-Zugriff verwendet werden sollte. Informationen zur _Vorgehensweise_ beim Aktivieren von JIT und Anfordern des Zugriffs auf Ihre JIT-fähigen VMs finden Sie unter folgendem Thema:
 
 > [!div class="nextstepaction"]
 > [Sichern Ihrer Verwaltungsports mit Just-in-Time-Zugriff (JIT)](security-center-just-in-time.md)

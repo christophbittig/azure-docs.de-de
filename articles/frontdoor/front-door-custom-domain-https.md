@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/14/2021
 ms.author: duau
-ms.openlocfilehash: 97a96d439773d7332fda3fe545d950dfe0077ad1
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 16b808200c43324a68bf909b3cf5548f34dbdec4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113765425"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738047"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Front Door-Domäne
 
@@ -136,7 +136,9 @@ Gewähren Sie Azure Front Door Berechtigungen für den Zugriff auf die Zertifika
     - Die verfügbaren Geheimnisversionen
 
     > [!NOTE]
-    >  Legen Sie die Geheimnisversion auf „Neueste“ fest, damit das Zertifikat automatisch zur neuesten Version rotiert wird, wenn eine neuere Version des Zertifikats in Ihrer Key Vault-Instanz verfügbar ist. Wenn eine bestimmte Version ausgewählt ist, müssen Sie die neue Version für die Zertifikatrotation manuell erneut auswählen. Es dauert bis zu 24 Stunden, bis die neue Version des Zertifikats/Geheimnisses bereitgestellt wird. 
+    >  Legen Sie die Geheimnisversion auf „Neueste“ fest, damit das Zertifikat automatisch zur neuesten Version rotiert wird, wenn eine neuere Version des Zertifikats in Ihrer Key Vault-Instanz verfügbar ist. Wenn eine bestimmte Version ausgewählt ist, müssen Sie die neue Version für die Zertifikatrotation manuell erneut auswählen. Es dauert bis zu 24 Stunden, bis die neue Version des Zertifikats/Geheimnisses bereitgestellt wird.
+    >
+    > :::image type="content" source="./media/front-door-custom-domain-https/certificate-version.png" alt-text="Screenshot des Auswählens der Geheimnisversion auf der Seite „Benutzerdefinierte Domäne aktualisieren“.":::
  
 5. Wenn Sie Ihr eigenes Zertifikat verwenden, ist keine Domänenüberprüfung erforderlich. Fahren Sie mit [Warten auf die Weitergabe](#wait-for-propagation) fort.
 

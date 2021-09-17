@@ -10,14 +10,16 @@ ms.workload: infrastructure
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: c70b02bdc554c723f53ad5f8c0d36c5eca87811e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f8aa1b8e50a287861cb6367e21878579d69e2d2d
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107774366"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687880"
 ---
 # <a name="disable-or-remove-the-linux-agent-from-vms-and-images"></a>Deaktivieren oder Entfernen des Linux-Agents aus VMs und Images
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
 Bevor Sie den Linux-Agent entfernen, sollten Sie wissen, welche Aktionen die VM nicht mehr ausführen kann, nachdem der Linux-Agent entfernt wurde.
 

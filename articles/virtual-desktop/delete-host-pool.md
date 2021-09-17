@@ -3,38 +3,22 @@ title: Löschen eines Azure Virtual Desktop-Hostpools – Azure
 description: Erfahren Sie, wie Sie Hostpools in Azure Virtual Desktop löschen.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 07/11/2020
+ms.date: 07/23/2021
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: e4621799389e738bd03e75f84f5c1706f90d69d3
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: f0ea0e89ef70983f5c74b37365305cfab3e984bc
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111751953"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123098504"
 ---
 # <a name="delete-a-host-pool"></a>Löschen eines Hostpools
 
 Alle in Azure Virtual Desktop erstellten Hostpools sind Sitzungshosts und App-Gruppen zugeordnet. Zum Löschen eines Hostpools müssen Sie die zugehörigen App-Gruppen und Sitzungshosts löschen. Das Löschen einer App-Gruppe ist recht einfach, aber das Löschen eines Sitzungshosts ist komplizierter. Wenn Sie einen Sitzungshost löschen, müssen Sie sicherstellen, dass auf ihm keine aktiven Benutzersitzungen ausgeführt werden. Alle Benutzersitzungen auf dem Sitzungshost sollten abgemeldet werden, um zu verhindern, dass Benutzer Daten verlieren.
 
-## <a name="delete-a-host-pool-with-powershell"></a>Löschen eines Hostpools mit PowerShell
-
-Zum Löschen eines Hostpools mithilfe von PowerShell müssen Sie zunächst alle App-Gruppen im Hostpool löschen. Führen Sie das folgende PowerShell-Cmdlet aus, um alle App-Gruppen zu löschen:
-
-```powershell
-Remove-AzWvdApplicationGroup -Name <appgroupname> -ResourceGroupName <resourcegroupname>
-```
-
-Führen Sie anschließend dieses Cmdlet aus, um den Hostpool zu löschen:
-
-```powershell
-Remove-AzWvdHostPool -Name <hostpoolname> -ResourceGroupName <resourcegroupname> -Force:$true
-```
-
-Mit diesem Cmdlet werden alle vorhandenen Benutzersitzungen auf dem Sitzungshost des Hostpools entfernt. Außerdem wird die Registrierung des Sitzungshosts beim Hostpool aufgehoben. Alle zugehörigen virtuellen Computer (Virtual Machines, VMs) sind weiterhin in Ihrem Abonnement vorhanden.
-
-## <a name="delete-a-host-pool-with-the-azure-portal"></a>Löschen eines Hostpools mit dem Azure-Portal
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 So löschen Sie einen Hostpool mit dem Azure-Portal:
 
@@ -55,6 +39,42 @@ So löschen Sie einen Hostpool mit dem Azure-Portal:
 8. Wenn der zu löschende Hostpool Sitzungshosts enthält, wird eine Meldung angezeigt, in der Ihre Erlaubnis zum Fortfahren abgefragt wird. Wählen Sie **Ja** aus.
 
 9. Der Azure-Portal entfernt jetzt alle Sitzungshosts und löscht den Hostpool. Die virtuellen Computer, die mit dem Sitzungshost in Zusammenhang stehen, werden nicht gelöscht und bleiben in Ihrem Abonnement erhalten.
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Zum Löschen eines Hostpools mithilfe von PowerShell müssen Sie zunächst alle App-Gruppen im Hostpool löschen. Führen Sie das folgende PowerShell-Cmdlet aus, um alle App-Gruppen zu löschen:
+
+```powershell
+Remove-AzWvdApplicationGroup -Name <appgroupname> -ResourceGroupName <resourcegroupname>
+```
+
+Führen Sie anschließend dieses Cmdlet aus, um den Hostpool zu löschen:
+
+```powershell
+Remove-AzWvdHostPool -Name <hostpoolname> -ResourceGroupName <resourcegroupname> -Force:$true
+```
+
+Mit diesem Cmdlet werden alle vorhandenen Benutzersitzungen auf dem Sitzungshost des Hostpools entfernt. Außerdem wird die Registrierung des Sitzungshosts beim Hostpool aufgehoben. Alle zugehörigen virtuellen Computer (Virtual Machines, VMs) sind weiterhin in Ihrem Abonnement vorhanden.
+
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Zum Löschen eines Hostpools mithilfe der Azure CLI müssen Sie zunächst alle App-Gruppen im Hostpool löschen. 
+
+Verwenden Sie zum Löschen aller App-Gruppen den Befehl [az desktopvirtualization applicationgroup delete](/cli/azure/desktopvirtualization/applicationgroup#az_desktopvirtualization_applicationgroup_delete).
+
+```azurecli
+az desktopvirtualization applicationgroup delete --name "MyApplicationGroup" --resource-group "MyResourceGroup"
+```
+
+Löschen Sie dann den Hostpool mit dem Befehl [az desktopvirtualization hostpool delete](/cli/azure/desktopvirtualization/hostpool#az_desktopvirtualization_hostpool_delete).
+
+```azurecli
+az desktopvirtualization hostpool delete --force true --name "MyHostPool" --resource-group "MyResourceGroup"
+```
+
+Durch diese Löschung werden alle vorhandenen Benutzersitzungen auf dem Sitzungshost des Hostpools entfernt. Außerdem wird die Registrierung des Sitzungshosts beim Hostpool aufgehoben. Alle zugehörigen virtuellen Computer (Virtual Machines, VMs) sind weiterhin in Ihrem Abonnement vorhanden.
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

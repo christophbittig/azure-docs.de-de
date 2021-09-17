@@ -11,20 +11,20 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: d94b3e56b3b8f70a03b6a3872b085e450043ab70
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: d2a5df40dd16ea7f996caf34b2e0cad7b0a60900
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113585949"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195419"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Tutorial: Exportieren von Daten aus Azure IoT Central und Visualisieren von Erkenntnissen in Power BI
-
 
 In den beiden vorherigen Tutorials haben Sie eine IoT Central-Anwendung erstellt und angepasst, indem Sie die Anwendungsvorlage **In-Store-Analyse – Auschecken** verwendet haben. In diesem Tutorial konfigurieren Sie Ihre IoT Central-Anwendung für den Export der erfassten Telemetriedaten von den Geräten. Anschließend nutzen Sie Power BI zum Erstellen eines benutzerdefinierten Dashboards für den Store Manager, um die aus den Telemetriedaten gewonnenen Erkenntnisse zu visualisieren.
 
 In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
+
 > * Konfigurieren Sie eine IoT Central-Anwendung, um Telemetriedaten in einen Event Hub zu exportieren.
 > * Verwenden Sie Logic Apps, um Daten von einem Event Hub an ein Power BI-Streamingdataset zu senden.
 > * Erstellen Sie ein Power BI-Dashboard, um die Daten des Streamingdatasets zu visualisieren.
@@ -75,7 +75,7 @@ Da Sie nun über einen **Event Hubs-Namespace** verfügen, können Sie einen **E
 
 Sie können den Event Hub jetzt nutzen, wenn Sie den Datenexport aus Ihrer IoT Central-Anwendung konfigurieren:
 
-![Event Hub](./media/tutorial-in-store-analytics-visualize-insights/event-hub.png)
+:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/event-hub.png" alt-text="Event Hub":::
 
 ## <a name="configure-data-export"></a>Konfigurieren des Datenexports
 
@@ -92,7 +92,7 @@ Da Sie jetzt über einen Event Hub verfügen, können Sie Ihre Anwendung **In-St
 
 Es kann einige Minuten dauern, bis der Datenexport abgeschlossen ist und Telemetriedaten an Ihren Event Hub gesendet werden. Sie können den Status des Exports auf der Seite **Datenexporte** anzeigen:
 
-![Konfiguration des kontinuierlichen Datenexports](./media/tutorial-in-store-analytics-visualize-insights/export-configuration.png)
+:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/export-configuration.png" alt-text="Konfiguration des kontinuierlichen Datenexports":::
 
 ## <a name="create-the-power-bi-datasets"></a>Erstellen der Power BI-Datasets
 
@@ -119,7 +119,8 @@ In Ihrem Power BI-Dashboard werden Daten aus Ihrer Überwachungsanwendung für d
 
 Sie verfügen jetzt über zwei Streamingdatasets. Die Logik-App leitet Telemetriedaten von den beiden Umgebungssensoren, die mit Ihrer Anwendung **In-Store-Analyse – Auschecken** verbunden sind, an diese beiden Datasets weiter:
 
-![Zonendatasets](./media/tutorial-in-store-analytics-visualize-insights/dataset-1.png)
+:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/dataset-1.png" alt-text="Zonendatasets":::
+
 
 Bei dieser Lösung wird ein Streamingdataset für jeden Sensor verwendet, da es in Power BI nicht möglich ist, Filter auf Streamingdaten anzuwenden.
 
@@ -143,7 +144,7 @@ Zudem benötigen Sie ein Streamingdataset für die Telemetriedaten der Auslastun
 
 Sie verfügen jetzt über ein drittes Streamingdataset, in dem Werte des simulierten Auslastungssensors gespeichert werden. Dieser Sensor meldet die Länge der Schlangen an den beiden Kassen des Geschäfts und die Wartezeit für Kunden in diesen Schlangen:
 
-![Auslastungsdataset](./media/tutorial-in-store-analytics-visualize-insights/dataset-2.png)
+:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/dataset-2.png" alt-text="Auslastungsdataset":::
 
 ## <a name="create-a-logic-app"></a>Erstellen einer Logik-App
 
@@ -155,7 +156,7 @@ Bevor Sie die Logik-App erstellen, benötigen Sie die Geräte-IDs der beiden Ruu
 1. Wählen Sie im linken Bereich die Option **Geräte** aus. Wählen Sie anschließend **RuuviTag** aus.
 1. Notieren Sie sich die **Geräte-IDs**. Im folgenden Screenshot lauten die IDs **f5dcf4ac32e8** und **e29ffc8d5326**:
 
-    ![Geräte-IDs](./media/tutorial-in-store-analytics-visualize-insights/device-ids.png)
+:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/device-ids.png" alt-text="Geräte-IDs":::
 
 Die folgenden Schritte verdeutlichen, wie Sie im Azure-Portal die Logik-App erstellen:
 
@@ -369,7 +370,7 @@ Wählen Sie **Codeansicht** aus, um die Logik Ihrem Logik-App-Entwurf hinzuzufü
 
 1. Wählen Sie **Speichern** und dann **Designer** aus, um die visuelle Version der von Ihnen hinzugefügten Logik anzuzeigen:
 
-    ![Logik-App-Entwurf](./media/tutorial-in-store-analytics-visualize-insights/logic-app.png)
+    :::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/logic-app.png" alt-text="Logik-App-Entwurf":::
 
 1. Wählen Sie **Switch by DeviceID** (Nach Geräte-ID wechseln) aus, um die Aktion zu erweitern. Wählen Sie anschließend **Zone 1 environment** (Umgebung Zone 1) und die Option **Aktion hinzufügen** aus.
 1. Geben Sie unter **Connectors und Aktionen durchsuchen** den Suchbegriff **Power BI** ein, und drücken Sie anschließend die **EINGABETASTE**.
@@ -383,7 +384,7 @@ Wählen Sie **Codeansicht** aus, um die Logik Ihrem Logik-App-Entwurf hinzuzufü
     * Wählen Sie das Feld **Zeitstempel** und dann in der Liste **Dynamischer Inhalt** die Option **x-opt-enqueuedtime** aus.
     * Wählen Sie das Feld **Luftfeuchtigkeit** und dann neben **Parse Telemetry** (Telemetriedaten analysieren) die Option **Mehr anzeigen** aus. Wählen Sie anschließend **Luftfeuchtigkeit** aus.
     * Wählen Sie das Feld **Temperatur** und dann neben **Parse Telemetry** (Telemetriedaten analysieren) die Option **Mehr anzeigen** aus. Wählen Sie anschließend **Temperatur** aus.
-    * Wählen Sie **Speichern**, um Ihre Änderungen zu speichern. Die Aktion **Zone 1 environment** (Umgebung Zone 1) sieht wie im folgenden Screenshot aus: ![Zone 1 environment (Umgebung Zone 1)](./media/tutorial-in-store-analytics-visualize-insights/zone-1-action.png)
+    * Wählen Sie **Speichern**, um Ihre Änderungen zu speichern. Die Aktion **Zone 1 environment** (Umgebung Zone 1) sieht wie auf dem folgenden Screenshot aus: :::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/zone-1-action.png" alt-text="Zone 1 environment (Umgebung Zone 1)":::
 1. Wählen Sie die Aktion **Zone 2 environment** (Umgebung Zone 2) und dann die Option **Aktion hinzufügen** aus.
 1. Geben Sie unter **Connectors und Aktionen durchsuchen** den Suchbegriff **Power BI** ein, und drücken Sie anschließend die **EINGABETASTE**.
 1. Wählen Sie die Aktion **Zeilen einem Dataset hinzufügen (Vorschauversion)** aus.
@@ -395,7 +396,7 @@ Wählen Sie **Codeansicht** aus, um die Logik Ihrem Logik-App-Entwurf hinzuzufü
     * Wählen Sie das Feld **Zeitstempel** und dann in der Liste **Dynamischer Inhalt** die Option **x-opt-enqueuedtime** aus.
     * Wählen Sie das Feld **Luftfeuchtigkeit** und dann neben **Parse Telemetry** (Telemetriedaten analysieren) die Option **Mehr anzeigen** aus. Wählen Sie anschließend **Luftfeuchtigkeit** aus.
     * Wählen Sie das Feld **Temperatur** und dann neben **Parse Telemetry** (Telemetriedaten analysieren) die Option **Mehr anzeigen** aus. Wählen Sie anschließend **Temperatur** aus.
-    Wählen Sie **Speichern**, um Ihre Änderungen zu speichern.  Die Aktion **Zone 2 environment** (Umgebung Zone 2) sieht wie im folgenden Screenshot aus: ![Zone 2 environment (Umgebung Zone 2)](./media/tutorial-in-store-analytics-visualize-insights/zone-2-action.png)
+    Wählen Sie **Speichern**, um Ihre Änderungen zu speichern.  Die Aktion **Zone 2 environment** (Umgebung Zone 2) sieht wie auf dem folgenden Screenshot aus: :::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/zone-2-action.png" alt-text="Zone 2 environment (Umgebung Zone 2)":::
 1. Wählen Sie die Aktion **Occupancy** (Auslastung) und dann die Aktion **Switch by Interface ID** (Nach Schnittstellen-ID wechseln) aus.
 1. Wählen Sie die Aktion **Dwell Time interface** (Schnittstelle für Wartezeit) und dann die Option **Aktion hinzufügen** aus.
 1. Geben Sie unter **Connectors und Aktionen durchsuchen** den Suchbegriff **Power BI** ein, und drücken Sie anschließend die **EINGABETASTE**.
@@ -408,7 +409,7 @@ Wählen Sie **Codeansicht** aus, um die Logik Ihrem Logik-App-Entwurf hinzuzufü
     * Wählen Sie das Feld **Zeitstempel** und dann in der Liste **Dynamischer Inhalt** die Option **x-opt-enqueuedtime** aus.
     * Wählen Sie das Feld **Dwell Time 1** (Wartezeit 1) und dann neben **Parse Telemetry** (Telemetriedaten analysieren) die Option **Mehr anzeigen** aus. Wählen Sie anschließend **DwellTime1** aus.
     * Wählen Sie das Feld **Dwell Time 2** (Wartezeit 2) und dann neben **Parse Telemetry** (Telemetriedaten analysieren) die Option **Mehr anzeigen** aus. Wählen Sie anschließend **DwellTime2** aus.
-    * Wählen Sie **Speichern**, um Ihre Änderungen zu speichern. Die Aktion **Dwell Time interface** (Schnittstelle für Wartezeit) sieht wie im folgenden Screenshot aus: ![Screenshot: Aktion „Dwell Time interface“ (Schnittstelle für Wartezeit)](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
+    * Wählen Sie **Speichern**, um Ihre Änderungen zu speichern. Die Aktion **Dwell Time interface** (Schnittstelle für Wartezeit) sieht wie auf dem folgenden Screenshot aus: :::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png" alt-text="Dwell Time interface (Schnittstelle für Wartezeit)":::
 1. Wählen Sie die Aktion **People Count interface** (Schnittstelle für Personenanzahl) und dann die Option **Aktion hinzufügen** aus.
 1. Geben Sie unter **Connectors und Aktionen durchsuchen** den Suchbegriff **Power BI** ein, und drücken Sie anschließend die **EINGABETASTE**.
 1. Wählen Sie die Aktion **Zeilen einem Dataset hinzufügen (Vorschauversion)** aus.
@@ -420,7 +421,7 @@ Wählen Sie **Codeansicht** aus, um die Logik Ihrem Logik-App-Entwurf hinzuzufü
     * Wählen Sie das Feld **Zeitstempel** und dann in der Liste **Dynamischer Inhalt** die Option **x-opt-enqueuedtime** aus.
     * Wählen Sie das Feld **Queue Length 1** (Länge der Schlange 1) und dann neben **Parse Telemetry** (Telemetriedaten analysieren) die Option **Mehr anzeigen** aus. Wählen Sie anschließend **count1** aus.
     * Wählen Sie das Feld **Queue Length 2** (Länge der Schlange 2) und dann neben **Parse Telemetry** (Telemetriedaten analysieren) die Option **Mehr anzeigen** aus. Wählen Sie anschließend **count2** aus.
-    * Wählen Sie **Speichern**, um Ihre Änderungen zu speichern. Die Aktion **People Count interface** (Schnittstelle für Personenanzahl) sieht wie im folgenden Screenshot aus: ![Aktion „Occupancy“ (Auslastung)](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-2.png)
+    * Wählen Sie **Speichern**, um Ihre Änderungen zu speichern. Die Aktion **People Count interface** (Schnittstelle für Personenanzahl) sieht wie auf dem folgenden Screenshot aus: :::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/occupancy-action-2.png" alt-text="Occupancy (Auslastung)":::
 
 Die Logik-App wird automatisch ausgeführt. Navigieren Sie zum Anzeigen des Status jeder Ausführung im Azure-Portal zur Seite **Übersicht** für die Logik-App:
 
@@ -449,7 +450,7 @@ Fügen Sie vier Liniendiagrammkacheln hinzu, um die Werte für die Temperatur bz
 
 Im folgenden Screenshot sind die Einstellungen für das erste Diagramm dargestellt:
 
-![Einstellungen für Liniendiagramm](./media/tutorial-in-store-analytics-visualize-insights/line-chart.png)
+:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/line-chart.png" alt-text="Einstellungen für Liniendiagramm":::
 
 ### <a name="add-cards-to-show-environmental-data"></a>Hinzufügen von Karten zum Anzeigen von Umgebungsdaten
 
@@ -465,7 +466,7 @@ Fügen Sie vier Kartenkacheln hinzu, um die aktuellen Temperatur- bzw. Luftfeuch
 
 Im folgenden Screenshot sind die Einstellungen für die erste Karte dargestellt:
 
-![Karteneinstellungen](./media/tutorial-in-store-analytics-visualize-insights/card-settings.png)
+:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/card-settings.png" alt-text="Karteneinstellungen":::
 
 ### <a name="add-tiles-to-show-checkout-occupancy-data"></a>Hinzufügen von Kacheln zum Anzeigen der Auslastungsdaten für Kassen
 
@@ -483,11 +484,11 @@ Fügen Sie vier Kartenkacheln hinzu, um für die beiden Kassen des Geschäfts di
 
 Ändern Sie die Größe und Anordnung der Kacheln in Ihrem Dashboard so, wie dies im folgenden Screenshot dargestellt ist:
 
-![Screenshot: Power BI-Dashboard mit veränderter Größe und neu angeordneten Kacheln](./media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard.png)
+:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard.png" alt-text="Screenshot: Power BI-Dashboard mit veränderter Größe und neu angeordneten Kacheln":::
 
 Sie können einige zusätzliche Grafikressourcen hinzufügen, um das Dashboard weiter anzupassen:
 
-![Power BI-Dashboard](./media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard-graphics.png)
+:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard-graphics.png" alt-text="Power BI-Dashboard":::
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

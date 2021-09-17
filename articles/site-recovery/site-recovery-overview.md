@@ -2,14 +2,14 @@
 title: Informationen zu Azure Site Recovery
 description: Hier erhalten Sie eine Übersicht über den Azure Site Recovery-Dienst und eine Zusammenfassung der Bereitstellungsszenarien für Notfallwiederherstellung und Migration.
 ms.topic: overview
-ms.date: 03/17/2020
+ms.date: 08/19/2021
 ms.custom: MVC
-ms.openlocfilehash: 19860e64182cd73fe9f9fa1246f440a03109d465
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d5558930c77c115ba25cb4b35e88d470afc38a23
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92281883"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445689"
 ---
 # <a name="about-site-recovery"></a>Informationen zu Azure Site Recovery
 
@@ -33,6 +33,7 @@ Site Recovery kann die Replikation für folgende Bereiche verwalten:
 --- | ---
 **Einfache BCDR-Lösung** | Mit Site Recovery können Sie Replikation, Failover und Failback von einem zentralen Ort im Azure-Portal aus einrichten und verwalten.
 **Replikation virtueller Azure-Computer** | Sie können die Notfallwiederherstellung virtueller Azure-Computer aus einer primären Region in einer sekundären Region einrichten.
+**Replikation virtueller VMware-Computer** | Sie können VMware-VMs in Azure replizieren, indem Sie die verbesserte Azure Site Recovery-Replikationsappliance verwenden, die höhere Sicherheit und Resilienz als der Konfigurationsserver bietet. Weitere Informationen finden Sie unter [Informationen zur Notfallwiederherstellung von virtuellen VMware-Computern in Azure](vmware-azure-about-disaster-recovery.md).
 **Replikation lokaler virtueller Computer** | Sie können lokale virtuelle Computer und physische Server in Azure oder in einem sekundären Datencenter replizieren. Mit der Replikation in Azure entfallen die Kosten und die Komplexität, die mit der Verwaltung eines sekundären Datencenters verbunden sind.
 **Workloadreplikation** | Sie können beliebige Workloads replizieren, die auf unterstützten virtuellen Azure-Computern, auf lokalen virtuellen Hyper-V- und VMware-Computern und auf physischen Windows-/Linux-Servern ausgeführt werden.
 **Datenresilienz** | Site Recovery orchestriert die Replikation, ohne dass dies Auswirkungen auf die Anwendungsdaten hat. Wenn Sie Daten in Azure replizieren, werden diese in Azure Storage gespeichert, und Sie profitieren von der entsprechenden Resilienz. Bei einem Failover werden virtuelle Azure-Computer auf der Grundlage der replizierten Daten erstellt.
@@ -58,3 +59,4 @@ Site Recovery kann die Replikation für folgende Bereiche verwalten:
 
 - Informieren Sie sich ausführlicher über [Workloadunterstützung](site-recovery-workload.md).
 - [Erste Schritte](azure-to-azure-quickstart.md) mit der Replikation virtueller Azure-Computer zwischen Regionen
+- Erste Schritte mit der [Replikation virtueller VMware-Computer](vmware-azure-enable-replication.md)

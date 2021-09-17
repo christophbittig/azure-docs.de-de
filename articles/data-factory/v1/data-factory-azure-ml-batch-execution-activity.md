@@ -1,20 +1,20 @@
 ---
 title: Erstellen von Datenpipelines für die Vorhersage mithilfe von Azure Data Factory
-description: Informationen zum Erstellen von Vorhersagepipelines mithilfe von Azure Data Factory und ML Studio (klassisch)
+description: Dieser Artikel beschreibt das Erstellen von Vorhersagepipelines mithilfe von Azure Data Factory und Machine Learning Studio (klassisch).
 author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: a613a48f1787c456885aabb0012efb4d71829aae
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: d4a930677f4760ae5f2d77dd4f148097ae67f465
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122396849"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122598014"
 ---
-# <a name="create-predictive-pipelines-using-ml-studio-classic-and-azure-data-factory"></a>Erstellen von Vorhersagepipelines mithilfe von ML Studio (klassisch) und Azure Data Factory
+# <a name="create-predictive-pipelines-using-machine-learning-studio-classic-and-azure-data-factory"></a>Erstellen einer Vorhersagepipeline mithilfe von Machine Learning Studio (klassisch) und Azure Data Factory
 
 > [!div class="op_single_selector" title1="Transformationsaktivitäten"]
 > * [Hive-Aktivität](data-factory-hive-activity.md)
@@ -32,7 +32,7 @@ ms.locfileid: "122396849"
 > [!NOTE]
 > Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, finden Sie weitere Informationen unter [Transformieren von Daten mithilfe von maschinellem Lernen in Data Factory](../transform-data-using-machine-learning.md).
 
-### <a name="ml-studio-classic"></a>ML Studio (klassisch)
+### <a name="machine-learning-studio-classic"></a>Machine Learning Studio (klassisch)
 [ML Studio (klassisch)](https://azure.microsoft.com/documentation/services/machine-learning/) ermöglicht Ihnen das Erstellen, Testen und Bereitstellen von Predictive Analytics-Lösungen. Allgemein betrachtet, geschieht dies in drei Schritten:
 
 1. **Erstellen eines Trainingsexperiments**. Für diesen Schritt verwenden Sie ML Studio (klassisch). Azure Machine Learning Studio (klassisch) ist eine visuelle Entwicklungsumgebung für die Zusammenarbeit, mit der Sie ein Predictive Analytics-Modell mithilfe von Trainingsdaten trainieren und testen können.

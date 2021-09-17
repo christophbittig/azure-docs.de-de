@@ -3,15 +3,16 @@ title: Laden von Daten aus Office 365 mithilfe von Azure Data Factory
 description: Kopieren von Daten aus Office 365 mithilfe von Azure Data Factory
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 07/05/2021
 ms.author: jianleishen
-ms.openlocfilehash: eae3a83a5354c61db27f38b7b73a396923427073
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: a7c809803df1e84528cc7cd8eb41574591aab8c1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109485619"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122640585"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Laden von Daten aus Office 365 mithilfe von Azure Data Factory
 
@@ -38,15 +39,15 @@ In diesem Artikel wird gezeigt, wie Sie mithilfe von Data Factory _Daten aus Off
 3. Klicken Sie auf **Erstellen**.
 4. Nach Abschluss der Erstellung navigieren Sie zu Ihrer Data Factory. Die Startseite **Data Factory** wird wie in der folgenden Abbildung dargestellt angezeigt:
    
-   ![Data Factory-Startseite](./media/load-office-365-data/data-factory-home-page.png)
+   :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Startseite für Azure Data Factory mit der Kachel „Open Azure Data Factory Studio“":::
 
-5. Wählen Sie die Kachel **Erstellen und überwachen** aus, um die Datenintegrationsanwendung auf einer separaten Registerkarte zu starten.
+5. Klicken Sie auf der Kachel **Open Azure Data Factory Studio** auf **Öffnen**, um die Datenintegration-Anwendung in einer separaten Registerkarte zu starten.
 
 ## <a name="create-a-pipeline"></a>Erstellen einer Pipeline
 
-1. Wählen Sie auf der Seite „Erste Schritte“ die Option **Pipeline erstellen** aus.
+1. Wählen Sie auf der Startseite die Option **Orchestrieren** aus.
  
-    ![Erstellen der Pipeline](./media/load-office-365-data/create-pipeline-entry.png)
+    ![Screenshot, der die ADF-Startseite zeigt.](./media/doc-common-process/get-started-page.png)
 
 2. Geben Sie auf der Registerkarte **Allgemein** der Pipeline als **Name** der Pipeline „CopyPipeline“ ein.
 

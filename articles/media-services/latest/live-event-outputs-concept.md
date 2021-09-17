@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: f1df5c945c5216e82837672ad8aeaa669fc4fb20
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 5269be27a0e31e9626cd26960092356bce0d8ff4
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110786444"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122635029"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Liveereignisse und Liveausgaben in Media Services
 
@@ -224,7 +224,6 @@ Weitere Informationen finden Sie unter [Zeitintensive Vorgänge](media-services-
 Sobald der Stream an das Liveereignis übertragen wird, können Sie das Streamingereignis starten, indem Sie ein [Medienobjekt](/rest/api/media/assets), eine [Liveausgabe](/rest/api/media/liveoutputs) und einen [Streaminglocator](/rest/api/media/streaminglocators) erstellen. Die Liveausgabe archiviert den Stream und macht ihn über den [Streamingendpunkt](/rest/api/media/streamingendpoints) für Zuschauer verfügbar.  
 
 Ausführliche Informationen zu Liveausgaben finden Sie unter [Verwenden von Timeshift und Liveausgaben zum Erstellen der bedarfsgesteuerten Videowiedergabe](live-event-cloud-dvr-time-how-to.md).
-
 ## <a name="live-event-output-questions"></a>Fragen zu Liveereignisausgaben
 
-Weitere Informationen finden Sie im Artikel [Fragen zu Liveereignisausgaben](questions-collection.md#live-streaming).
+Weitere Informationen dazu finden Sie unter den [häufig gestellten Fragen zu Liveereignissen](frequently-asked-questions.yml).

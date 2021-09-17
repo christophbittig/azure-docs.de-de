@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/10/2021
 ms.custom: references_regions
-ms.openlocfilehash: ab899a58bab3c4e37b6aa66669f0e060fb7e7e28
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 73a1ae771ba3e3e5876b2efd3914b9e38ab0e426
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355431"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222349"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>KI-Anreicherung in Azure Cognitive Search
 
@@ -75,7 +75,7 @@ Benutzerdefinierte Fähigkeiten können komplexere Szenarien unterstützen, z. 
 
 ## <a name="enrichment-steps"></a>Anreicherungsschritte <a name="enrichment-steps"></a>
 
-Eine Anreicherungspipeline besteht aus [*Indexern*](search-indexer-overview.md), die über bestimmte [*Skillsets*](cognitive-search-working-with-skillsets.md) verfügen. Ein Skillset definiert die Anreicherungsschritte, und der Indexer steuert das Skillset. Beim Konfigurieren eines Indexers können Sie Eigenschaften wie Ausgabefeldzuordnungen einbeziehen, die angereicherte Inhalte an einen [Suchindex](search-what-is-an-index.md) oder einen [Wissensspeicher](knowledge-store-concept-intro.md) senden.
+Eine Anreicherungspipeline besteht aus [*Indexern*](search-indexer-overview.md), die über bestimmte [*Skillsets*](cognitive-search-working-with-skillsets.md) verfügen. Ein Skillset definiert die Anreicherungsschritte, und der Indexer steuert das Skillset. Beim Konfigurieren eines Indexers können Sie verschiedene Eigenschaften einbeziehen. Dazu gehören beispielsweise Ausgabefeldzuordnungen, die angereicherte Inhalte an einen [Suchindex](search-what-is-an-index.md) senden, oder Projektionen, die Datenstrukturen in einem [Wissensspeicher](knowledge-store-concept-intro.md) definieren.
 
 Nach der Indizierung können Sie über Suchanforderungen über sämtliche [von Azure Cognitive Search unterstützte Abfragetypen](search-query-overview.md) auf Inhalte zugreifen.
 
@@ -143,5 +143,7 @@ Zur Iteration der oben genannten Schritte [setzen Sie den Indexer zurück](searc
 
 + [Schnellstart: Testen der KI-Anreicherung in einer exemplarischen Vorgehensweise im Portal](cognitive-search-quickstart-blob.md)
 + [Tutorial: Informationen zu den REST-APIs für die KI-Anreicherung](cognitive-search-tutorial-blob.md)
-+ [Wissensspeicher](knowledge-store-concept-intro.md)
-+ [Erstellen von Wissensspeichern in REST](knowledge-store-create-rest.md)
++ [Skillsetkonzepte](cognitive-search-working-with-skillsets.md)
++ [Wissensspeicher: Konzepte](knowledge-store-concept-intro.md)
++ [Erstellen eines Skillsets](cognitive-search-defining-skillset.md)
++ [Erstellen von Wissensspeichern](knowledge-store-create-rest.md)

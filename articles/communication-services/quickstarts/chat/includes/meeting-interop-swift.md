@@ -5,12 +5,12 @@ ms.author: askaur
 ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 335e21057d0deaa68b4b791501e59aaa772eb49c
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 06d7b776b49411fece14356f24a91f1a5df2b364
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113113119"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722561"
 ---
 In diesem Schnellstart erfahren Sie, wie Sie mit dem Chat SDK für iOS für Azure Communication Services an einer Teams-Besprechung teilnehmen.
 
@@ -19,15 +19,9 @@ In diesem Schnellstart erfahren Sie, wie Sie mit dem Chat SDK für iOS für Azur
 - Eine  [Teams-Bereitstellung](/deployoffice/teams-install). 
 - Eine funktionierende [Anruf-App](../../voice-video-calling/get-started-teams-interop.md). 
 
-## <a name="enable-teams-interoperability"></a>Aktivieren der Teams-Interoperabilität 
-
-Ein Communication Services-Benutzer, der einer Teams-Besprechung als Gastbenutzer hinzugefügt wird, kann nur auf den Chat der Besprechung zugreifen, wenn er der Teams-Telefonkonferenz beitritt. Weitere Informationen zum Hinzufügen eines Communication Services-Benutzers zu einer Teams-Telefonkonferenz finden Sie in der Dokumentation zur [Teams-Interoperabilität](../../voice-video-calling/get-started-teams-interop.md).
-
-Sie müssen Mitglied der besitzenden Organisation beider Entitäten sein, um dieses Feature verwenden zu können.
-
 ## <a name="joining-the-meeting-chat"></a>Beitritt zum Besprechungschat 
 
-Sobald die Teams-Interoperabilität aktiviert ist, können Communication Services-Benutzer über die Callin SDK als externe Benutzer am Teams-Anruf teilnehmen. Durch das Beitreten zur Anrufkonferenz wird er dem Besprechungschat als Teilnehmer hinzugefügt und kann Nachrichten mit anderen Benutzern der Anrufkonferenz austauschen. Der Benutzer besitzt keinen Zugriff auf Chatnachrichten, die gesendet wurden, bevor er der Anrufkonferenz beigetreten ist. Führen Sie die folgenden Schritte aus, um an der Besprechung teilzunehmen und mit dem Chatten zu beginnen.
+Ein Communication Services-Benutzer kann mithilfe des Calling SDK einer Teams-Besprechung als anonymer Benutzer beitreten. Durch das Beitreten zur Besprechung wird er dem Besprechungschat als Teilnehmer hinzugefügt und kann Nachrichten mit anderen Benutzern der Besprechung austauschen. Der Benutzer hat keinen Zugriff auf Chatnachrichten, die vor seiner Teilnahme an der Besprechung gesendet wurden, und er kann nach dem Ende der Besprechung keine Nachrichten senden oder empfangen. Führen Sie die folgenden Schritte aus, um an der Besprechung teilzunehmen und mit dem Chatten zu beginnen.
 
 ## <a name="add-chat-to-the-teams-calling-app"></a>Hinzufügen von Chat zur Anruf-App von Teams
 

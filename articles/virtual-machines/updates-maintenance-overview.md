@@ -5,16 +5,19 @@ author: mimckitt
 ms.author: mimckitt
 ms.service: virtual-machines
 ms.topic: overview
-ms.date: 03/08/2021
+ms.date: 08/10/2021
 ms.reviewer: cynthn
-ms.openlocfilehash: 81c6fb2e7f25abc9a236c80d1412b84fd6761872
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e2d200e7133074ffc1dc2732cdedb692c1ea30c
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103021957"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698328"
 ---
 # <a name="updates-and-maintenance-overview"></a>Übersicht über Updates und Wartung
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
+
 Dieser Artikel bietet eine Übersicht über die verschiedenen Update- und Wartungsoptionen für virtuelle Azure-Computer.
 
 ## <a name="automatic-os-image-upgrade"></a>Automatisches Upgrade für Betriebssystemimages
@@ -40,17 +43,17 @@ Durch das Aktivieren von [automatischen VM-Gastpatches](automatic-vm-guest-patch
 [Automatische VM-Gastpatches](automatic-vm-guest-patching.md) weisen die folgenden Merkmale auf:
 - Patches, die als *Kritisch* oder *Sicherheit* klassifiziert werden, werden automatisch heruntergeladen und auf die VM angewendet.
 - Patches werden außerhalb der Spitzenzeiten in der Zeitzone der VM angewendet.
-- Die Patchorchestrierung wird von Azure verwaltet, und Patches werden nach den [verfügbarkeitsbasierten Prinzipien](automatic-vm-guest-patching.md#availability-first-patching) angewendet.
+- Die Patchorchestrierung wird von Azure verwaltet, und Patches werden nach den [verfügbarkeitsbasierten Prinzipien](automatic-vm-guest-patching.md#availability-first-updates) angewendet.
 - Die Integrität des virtuellen Computers wird anhand von Integritätssignalen der Plattform ermittelt und überwacht, um Patchfehler zu erkennen.
 - Funktioniert für alle VM-Größen.
 
 
-## <a name="automatic-extension-upgrade-preview"></a>Automatisches Erweiterungsupgrade (Vorschau)
+## <a name="automatic-extension-upgrade"></a>Automatisches Erweiterungsupgrade
 
-Das [automatische Erweiterungsupgrade](automatic-extension-upgrade.md) ist als Vorschau für Azure-VMs und Azure Virtual Machine Scale Sets verfügbar. Wenn das automatische Erweiterungsupgrade für eine VM oder eine Skalierungsgruppe aktiviert ist, wird die Erweiterung automatisch aktualisiert, sobald der Erweiterungsherausgeber eine neue Version für diese Erweiterung freigibt.
+Das [automatische Erweiterungsupgrade](automatic-extension-upgrade.md) ist für Azure-VMs und Azure Virtual Machine Scale Sets verfügbar. Wenn das automatische Erweiterungsupgrade für eine VM oder eine Skalierungsgruppe aktiviert ist, wird die Erweiterung automatisch aktualisiert, sobald der Erweiterungsherausgeber eine neue Version für diese Erweiterung freigibt.
 
  Das automatische Erweiterungsupgrade verfügt über die folgenden Features:
-- Wird für Azure-VMs und Azure-Virtual Machine Scale Sets unterstützt. Service Fabric Virtual Machine Scale Sets werden derzeit nicht unterstützt.
+- Wird für Azure-VMs und Azure-Virtual Machine Scale Sets unterstützt.
 - Upgrades werden in einem verfügbarkeitsbasierten Bereitstellungsmodell angewendet.
 - Für eine VM-Skalierungsgruppe werden maximal 20 Prozent der virtuellen Computer in Skalierungsgruppen in einem einzelnen Batch aktualisiert. Die minimale Batchgröße ist ein virtueller Computer.
 - Unterstützt alle VM-Größen und sowohl Windows- als auch Linux-Erweiterungen.
@@ -59,7 +62,7 @@ Das [automatische Erweiterungsupgrade](automatic-extension-upgrade.md) ist als V
 - Jede unterstützte Erweiterung wird einzeln registriert, und Sie können auswählen, welche Erweiterungen automatisch aktualisiert werden sollen.
 - Wird in allen Regionen der öffentlichen Cloud unterstützt.
 
-## <a name="hotpatch"></a>Hotpatch 
+## <a name="hotpatch"></a>Hotpatch
 
 [Hotpatching](../automanage/automanage-hotpatch.md?context=/azure/virtual-machines/context/context) ist eine neue Methode zur Installation von Updates auf neuen virtuellen Computern (VMs) der Windows Server Azure Edition, die keinen Neustart nach der Installation erfordert. Hotpatches für virtuelle Computer der Windows Server Azure Edition haben die folgenden Vorteile:
 
@@ -74,23 +77,23 @@ Mithilfe der [Updateverwaltung in Azure Automation](../automation/update-managem
 
 ## <a name="maintenance-control"></a>Wartungssteuerung
 
-Verwalten Sie mit der [Wartungssteuerung](maintenance-control.md) Plattformupdates, die keinen Neustart erfordern. Azure aktualisiert die eigene Infrastruktur häufig, um die Zuverlässigkeit, Leistung und Sicherheit zu verbessern oder neue Features zu integrieren. Die meisten Updates sind für Benutzer transparent. Einige empfindliche Workloads wie Gaming, Medienstreaming und Finanztransaktionen können nicht einmal wenige Sekunden tolerieren, in denen eine VM zur Wartung eingefroren oder getrennt wird. Die Wartungssteuerung bietet Ihnen die Möglichkeit, auf Plattformupdates zu warten und diese innerhalb eines 35-tägigen rollierenden Zeitfensters anzuwenden. 
+Verwalten Sie mit der [Wartungssteuerung](maintenance-control.md) Plattformupdates, die keinen Neustart erfordern. Azure aktualisiert die eigene Infrastruktur häufig, um die Zuverlässigkeit, Leistung und Sicherheit zu verbessern oder neue Features zu integrieren. Die meisten Updates sind für Benutzer transparent. Einige empfindliche Workloads wie Gaming, Medienstreaming und Finanztransaktionen können nicht einmal wenige Sekunden tolerieren, in denen eine VM zur Wartung eingefroren oder getrennt wird. Die Wartungssteuerung bietet Ihnen die Möglichkeit, auf Plattformupdates zu warten und diese innerhalb eines 35-tägigen rollierenden Zeitfensters anzuwenden.
 
 Mit der Wartungssteuerung können Sie entscheiden, wann Sie Updates auf Ihre isolierten VMs und dedizierten Azure-Hosts anwenden.
 
 Mit der [Wartungssteuerung](maintenance-control.md) können Sie folgende Aktionen ausführen:
 - Batchupdates in ein Updatepaket
-- Warten von bis zu 35 Tagen bis zur Anwendung der Updates 
+- Warten von bis zu 35 Tagen bis zur Anwendung der Updates
 - Automatisieren Sie Plattformupdates durch Konfigurieren eines Wartungszeitplans oder mithilfe von [Azure Functions](https://github.com/Azure/azure-docs-powershell-samples/tree/master/maintenance-auto-scheduler).
-- Wartungskonfigurationen funktionieren abonnement- und ressourcengruppenübergreifend. 
+- Wartungskonfigurationen funktionieren abonnement- und ressourcengruppenübergreifend.
 
 
 ## <a name="scheduled-events"></a>Geplante Ereignisse
 
-Scheduled Events ist ein Azure-Metadatendienst, der Ihren Anwendungen Zeit zur Vorbereitung auf die Wartung virtueller Computer gibt. Er stellt Informationen zu geplanten Wartungsereignissen (z.B. Neustart) bereit, damit Ihre Anwendung sich darauf vorbereiten und Unterbrechungen begrenzen kann. Der Dienst steht für alle Azure-VM-Typen zur Verfügung, einschließlich PaaS und IaaS unter Windows und Linux. 
+Scheduled Events ist ein Azure-Metadatendienst, der Ihren Anwendungen Zeit zur Vorbereitung auf die Wartung virtueller Computer gibt. Er stellt Informationen zu geplanten Wartungsereignissen (z.B. Neustart) bereit, damit Ihre Anwendung sich darauf vorbereiten und Unterbrechungen begrenzen kann. Der Dienst steht für alle Azure-VM-Typen zur Verfügung, einschließlich PaaS und IaaS unter Windows und Linux.
 
 Informationen zu Scheduled Events finden Sie unter [Instance Metadata Service: Scheduled Events für Windows-VMs](./windows/scheduled-events.md) und [Instance Metadata Service: Scheduled Events für Linux-VMs](./linux/scheduled-events.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Möglichkeiten zur Erhöhung der Betriebszeit Ihrer Anwendungen und Dienste finden Sie in der Dokumentation [Verfügbarkeitsoptionen für virtuelle Computer in Azure](availability.md). 
+Weitere Möglichkeiten zur Erhöhung der Betriebszeit Ihrer Anwendungen und Dienste finden Sie in der Dokumentation [Verfügbarkeitsoptionen für virtuelle Computer in Azure](availability.md).

@@ -1,14 +1,14 @@
 ---
 title: Planen und Bereitstellen von Servern mit Azure Arc-Unterstützung
 description: Erfahren Sie, wie Sie eine große Anzahl von Computern für Server mit Azure Arc-Unterstützung aktivieren, um die Konfiguration wichtiger Sicherheits-, Verwaltungs- und Überwachungsfunktionen in Azure zu vereinfachen.
-ms.date: 07/16/2021
+ms.date: 08/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: c37b6dbe4233afd691c0da7743973b5956f2f720
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 0a31a886d4eb687c92d73c39617a6993e4b3f835
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114391742"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123104918"
 ---
 # <a name="plan-and-deploy-arc-enabled-servers"></a>Planen und Bereitstellen von Servern mit Arc-Unterstützung
 
@@ -26,6 +26,10 @@ Damit die Bereitstellung problemlos fortgesetzt werden kann, sollte Ihr Plan fol
 * Was ist der Eskalationspfad, wenn ein erhebliches Problem auftritt?
 
 Dieser Artikel soll sicherstellen, dass Sie für eine erfolgreiche Bereitstellung von Servern mit Azure Arc-Unterstützung auf mehreren physischen Produktionsservern oder virtuellen Computern in Ihrer Umgebung vorbereitet sind.
+
+Weitere Informationen zu unseren Empfehlungen für die Bereitstellung in großem Umfang finden Sie in diesem Video.
+
+> [!VIDEO https://www.youtube.com/embed/Cf1jUPOB_vs]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

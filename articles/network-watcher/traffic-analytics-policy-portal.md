@@ -12,20 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2021
 ms.author: moagra
-ms.openlocfilehash: d55a3090e9f7c8af73f854074a5823b7fe6eba1e
-ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
+ms.openlocfilehash: 3be6d5b30d270c9687b7100c07ee675268cee5c0
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113688547"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122609148"
 ---
 # <a name="deploy-and-manage-traffic-analytics-using-azure-policy"></a>Bereitstellen und Verwalten von Traffic Analytics mithilfe von Azure Policy 
 
 Azure Policy hilft bei der Durchsetzung von Organisationsstandards und bei der Bewertung der Compliance nach Bedarf. Häufige Anwendungsfälle für Azure Policy sind die Implementierung von Governance für Ressourcenkonsistenz, Einhaltung gesetzlicher Bestimmungen, Sicherheit, Kosten und Verwaltung. In diesem Artikel werden drei integrierte Richtlinien behandelt, die [Traffic Analytics](./traffic-analytics.md) zur Verwaltung Ihrer Einrichtung zur Verfügung stehen.
 
-Wenn Sie zum ersten Mal eine Azure-Richtlinie erstellen, können Sie Folgendes lesen: 
+Wenn Sie zum ersten Mal eine Azure Policy-Definition erstellen, können Sie Folgendes lesen: 
 - [Azure Policy – Übersicht](../governance/policy/overview.md) 
-- [Tutorial zum Erstellen einer Richtlinie](../governance/policy/assign-policy-portal.md#create-a-policy-assignment).
+- [Tutorial zum Erstellen einer Azure Policy-Zuweisung](../governance/policy/assign-policy-portal.md#create-a-policy-assignment).
 
 
 ## <a name="locate-the-policies"></a>Suchen der Richtlinien
@@ -137,7 +137,7 @@ Wenn Ihre Richtlinie ausgeführt wurde, sollte ein Screenshot angezeigt werden, 
 
 ![DINE-Richtlinie: Ergebnisse in Traffic Analytics](./media/traffic-analytics/policy-two-results.png)  
 
-### <a name="remediation"></a>Behebung
+### <a name="remediation"></a>Wiederherstellung
 
 Wählen Sie zur manuellen Wartung die Option *Wartungstask erstellen* auf der oben gezeigten Konformitätsregisterkarte auf.
 

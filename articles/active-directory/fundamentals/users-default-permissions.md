@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db47b66a08ebe1c8a053995d0d8d8d810ae6b564
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 45d03495d0866674352de35c337303a92ff3263b
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340022"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835187"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Welche Standardbenutzerberechtigungen gibt es in Azure Active Directory?
 In Azure Active Directory (Azure AD) wird allen Benutzern ein Satz mit Standardberechtigungen gewährt. Der Zugriffsumfang eines Benutzers basiert auf dem Benutzertyp, den [Rollenzuweisungen](active-directory-users-assign-role-azure-portal.md) und dem Besitz einzelner Objekte. In diesem Artikel werden diese Standardberechtigungen beschrieben, und es werden die Standardberechtigungen für Mitglieder und Gastbenutzer miteinander verglichen. Die Standardberechtigungen für Benutzer können nur in den Benutzereinstellungen in Azure AD geändert werden.
@@ -56,7 +56,8 @@ Möglichkeit zur Erstellung von Microsoft 365-Gruppen | Durch das Festlegen dies
 Zugriff auf Azure AD-Verwaltungsportal einschränken | <p>Wenn Sie diese Option auf „Nein“ festlegen, können Nichtadministratoren das Azure AD-Verwaltungsportal zum Lesen und Verwalten von Ressourcen verwenden. Mit der Einstellung „Ja“ wird der Zugriff auf Azure AD-Daten im Verwaltungsportal für Nichtadministratoren eingeschränkt.</p><p>**Hinweis**: Durch diese Einstellung wird der Zugriff auf Azure AD-Daten mithilfe von PowerShell oder anderen Clients wie Visual Studio nicht eingeschränkt. Wenn diese Einstellung auf „Ja“ festgelegt ist, kann einem bestimmten Benutzer, der kein Administrator ist, die Fähigkeit erteilt werden, das Azure AD-Verwaltungsportal zu verwenden, indem ihm eine beliebige Administratorrolle zugewiesen wird, z. B. die Rolle „Verzeichnisleseberechtigte“.</p><p>**Hinweis**: Durch diese Einstellung wird verhindert, dass Benutzer ohne Administratorrechte, die Besitzer von Gruppen oder Anwendungen sind, das Azure-Portal zum Verwalten ihrer eigenen Ressourcen verwenden können.</p><p>Diese Rolle ermöglicht das Lesen grundlegender Verzeichnisinformationen und ist den Mitgliedsbenutzern (nicht aber Gästen und Dienstprinzipalen) standardmäßig zugewiesen.</p>
 Fähigkeit zum Lesen anderer Benutzer | Diese Einstellung ist nur in PowerShell verfügbar. Das Festlegen dieses Flags auf „$false“ verhindert, dass Nicht-Administratoren Benutzerinformationen aus dem Verzeichnis lesen können. Durch dieses Flag wird jedoch nicht verhindert, dass Benutzerinformationen in anderen Microsoft-Diensten wie z. B. Exchange Online gelesen werden können. Diese Einstellung ist für besondere Umstände bestimmt – die Festlegung dieses Flags auf „$false“ wird nicht empfohlen.
 
->![HINWEIS] Es wird davon ausgegangen, dass der durchschnittliche Benutzer nur das Portal für den Zugriff auf Azure AD und nicht PowerShell oder die Befehlszeilenschnittstelle für den Zugriff auf seine Ressourcen verwendet. Derzeit wird der Zugriff auf die Standardberechtigungen von Benutzern nur eingeschränkt, wenn der Benutzer versucht, im Azure-Portal auf das Verzeichnis zuzugreifen.
+>[!NOTE]
+>Es wird davon ausgegangen, dass der durchschnittliche Benutzer nur das Portal für den Zugriff auf Azure AD und nicht PowerShell oder die Befehlszeilenschnittstelle für den Zugriff auf seine Ressourcen verwendet. Derzeit wird der Zugriff auf die Standardberechtigungen von Benutzern nur eingeschränkt, wenn der Benutzer versucht, im Azure-Portal auf das Verzeichnis zuzugreifen.
 
 ## <a name="restrict-guest-users-default-permissions"></a>Standardberechtigungen von Gastbenutzern einschränken
 
@@ -132,6 +133,9 @@ Benutzer können die folgenden Aktionen für Geräte ausführen, deren Besitzer 
 
 #### <a name="owned-groups"></a>Gruppen im Besitz des Benutzers
 Benutzer können die folgenden Aktionen für Gruppen ausführen, deren Besitzer sie sind.
+
+> [!NOTE]
+> Besitzer dynamischer Gruppen müssen über die Rolle globaler Administrator, Gruppenadministrator, Intune-Administrator oder Benutzeradministrator verfügen, um Gruppenmitgliedschaftsregeln zu bearbeiten. Weitere Informationen finden Sie unter [Erstellen oder Aktualisieren einer dynamischen Gruppe in Azure Active Directory](../enterprise-users/groups-create-rule.md).
 
 | **Aktionen** | **Beschreibung** |
 | --- | --- |

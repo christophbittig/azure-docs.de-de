@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 07/27/2021
+ms.date: 08/25/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f843aebfea4e7c5b956d5e150c4e54dffa764a5c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 558f8b720992f44a747689cb0e69436507b685c4
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349404"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866994"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Konfigurieren von Einstellungen für Azure AD-Rollen in PIM
 
@@ -94,7 +94,7 @@ Sie können verlangen, dass Benutzer bei der Aktivierung eine geschäftliche Beg
 
 ## <a name="require-approval-to-activate"></a>Erzwingen der Genehmigung für die Aktivierung
 
-Wenn Sie mehrere genehmigende Personen festlegen, ist der Genehmigungsvorgang abgeschlossen, sobald eine dieser Personen die Genehmigung gewährt oder verweigert hat. Sie können keine Genehmigung von mindestens zwei Benutzern anfordern. Wenn Sie für die Aktivierung einer Rolle eine Genehmigung anfordern möchten, gehen Sie wie folgt vor.
+Wenn Sie mehrere genehmigende Personen festlegen, ist der Genehmigungsvorgang abgeschlossen, sobald eine dieser Personen die Genehmigung gewährt oder verweigert hat. Sie können die Genehmigung nicht von einer zweiten oder weiteren genehmigenden Person erzwingen. Wenn Sie für die Aktivierung einer Rolle eine Genehmigung anfordern möchten, gehen Sie wie folgt vor.
 
 1. Aktivieren Sie das Kontrollkästchen **Genehmigung zum Aktivieren anfordern**.
 
@@ -102,11 +102,9 @@ Wenn Sie mehrere genehmigende Personen festlegen, ist der Genehmigungsvorgang ab
 
     ![Bereich „Mitglied oder Gruppe auswählen“ zum Auswählen von genehmigenden Personen](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
-1. Wählen Sie mindestens einen Benutzer aus, und klicken Sie dann auf **Auswählen**. Wählen Sie mindestens eine genehmigende Person aus. Wenn keine bestimmten genehmigenden Personen ausgewählt sind, werden Administratoren/globale Administratoren mit privilegierten Rollen standardmäßig als genehmigende Personen festgelegt.
+1. Wählen Sie mindestens einen Benutzer aus, und klicken Sie dann auf **Auswählen**. Wählen Sie mindestens eine genehmigende Person aus. Wenn keine bestimmten genehmigenden Personen ausgewählt sind, werden Administratoren und globale Administratoren mit privilegierten Rollen standardmäßig als genehmigende Personen festgelegt.
 
-    Ihre Auswahl wird in der Liste der ausgewählten genehmigenden Personen angezeigt.
-
-1. Wenn Sie alle gewünschten Rolleneinstellungen angegeben haben, klicken Sie auf **Aktualisieren**, um Ihre Änderungen zu speichern.
+1. Wählen Sie **Aktualisieren** aus, um Ihre Änderungen zu speichern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

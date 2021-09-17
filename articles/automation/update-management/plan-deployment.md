@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 06/07/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5b2303b17a525a6ae394996780fe3ebb89388f44
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 4c29ff09b6d353072cb8486e17ffa605ceff9aea
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111855116"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769354"
 ---
 # <a name="plan-your-update-management-deployment"></a>Planen Ihrer Bereitstellung der Updateverwaltung
 
@@ -34,7 +34,7 @@ Der [Log Analytics-Agent](../../azure-monitor/agents/log-analytics-agent.md) fü
 
 Wenn der Log Analytics-Agent auf Azure-VMs noch nicht installiert ist, wird er automatisch mithilfe der Log Analytics-VM-Erweiterung für [Windows](../../virtual-machines/extensions/oms-windows.md) oder [Linux](../../virtual-machines/extensions/oms-linux.md) installiert, wenn Sie Updateverwaltung für den virtuellen Computer aktivieren. Der Agent ist so konfiguriert, dass er Berichte an den Log Analytics-Arbeitsbereich sendet, der mit dem Automation-Konto verknüpft ist, in dem die Updateverwaltung aktiviert ist.
 
-Für Nicht-Azure-VMs oder -Server muss der Log Analytics-Agent für Windows oder Linux installiert sein und Berichte an den verknüpften Arbeitsbereich senden. Sie sollten den Log Analytics-Agent für Windows oder Linux installieren, indem Sie zuerst Ihren Computer mit [Servern mit Azure Arc-Unterstützung](../../azure-arc/servers/overview.md) verbinden und dann mit Azure Policy die integrierte Richtlinie [Log Analytics-Agent für Linux-/Windows-Azure Arc-Computer bereitstellen](../../governance/policy/samples/built-in-policies.md#monitoring) zuweisen. Wenn Sie alternativ die Überwachung der Computer mit [VM Insights](../../azure-monitor/vm/vminsights-overview.md) planen, verwenden Sie stattdessen die Initiative [Azure Monitor für VMs aktivieren](../../governance/policy/samples/built-in-initiatives.md#monitoring).
+Für Nicht-Azure-VMs oder -Server muss der Log Analytics-Agent für Windows oder Linux installiert sein und Berichte an den verknüpften Arbeitsbereich senden. Sie sollten den Log Analytics-Agent für Windows oder Linux installieren, indem Sie zuerst Ihren Computer mit [Servern mit Azure Arc-Unterstützung](../../azure-arc/servers/overview.md) verbinden und dann mit Azure Policy die integrierte Richtliniendefinition [Log Analytics-Agent für Linux-/Windows-Azure Arc-Computer bereitstellen](../../governance/policy/samples/built-in-policies.md#monitoring) zuweisen. Wenn Sie alternativ die Überwachung der Computer mit [VM Insights](../../azure-monitor/vm/vminsights-overview.md) planen, verwenden Sie stattdessen die Initiative [Azure Monitor für VMs aktivieren](../../governance/policy/samples/built-in-initiatives.md#monitoring).
 
 Wenn Sie einen Computer aktivieren, der aktuell von Operations Manager verwaltet wird, ist kein neuer Agent erforderlich. Die Arbeitsbereichsinformationen werden der Agent-Konfiguration hinzugefügt, wenn Sie die Verwaltungsgruppe mit dem Log Analytics-Arbeitsbereich verbinden.
 
@@ -85,7 +85,7 @@ Aktivieren Sie die Updateverwaltung, und wählen Sie Computer aus, die mit einer
 
 - Verwendung einer [Azure Resource Manager-Vorlage](enable-from-template.md) für die Bereitstellung der Updateverwaltung in einem neuen oder vorhandenen Automation-Konto und Azure Monitor Log Analytics-Arbeitsbereich in Ihrem Abonnement. Sie konfiguriert nicht den Bereich der Computer, die verwaltet werden sollen. Dies erfolgt als gesonderter Schritt nach der Verwendung der Vorlage.
 
-- Über Ihr [Automation-Konto](enable-from-automation-account.md) für einen oder mehrere Azure- und Nicht-Azure-Computer, einschließlich Server mit Arc-Unterstützung
+- Über Ihr [Automation-Konto](enable-from-automation-account.md) für einen oder mehrere Azure- und Nicht-Azure-Computer, einschließlich Servern mit Arc-Unterstützung
 
 - Verwenden des [Runbooks](enable-from-runbook.md) **Enable-AutomationSolution** zum Automatisieren des Onboardings von Azure-VMs.
 

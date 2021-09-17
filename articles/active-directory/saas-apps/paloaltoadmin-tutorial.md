@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 57b1d47fa40c0af4bced1e4169fe60cd759ee2f3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aceaed29b83a190e4e943f0ec1ae99a8daa44682
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97963637"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727592"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>Tutorial: Azure Active Directory-Integration mit Palo Alto Networks - Admin UI
 
@@ -107,7 +107,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     | | |
 
     > [!NOTE]
-    > Der _adminrole_-Wert sollte mit dem in **Palo Alto Networks** wie in Schritt 9 erwähnt konfigurierten Rollennamen identisch sein. 
+    > Der Wert **Name**, der oben als _adminrole_ angezeigt wird, sollte mit dem Wert von _Admin role attribute_ (Administratorrollenattribut) übereinstimmen, der in Schritt 12 des Abschnitts **[Konfigurieren des einmaligen Anmeldens für Palo Alto Networks – Admin UI](#configure-palo-alto-networks---admin-ui-sso)** konfiguriert wurde. Der Wert **Quellattribut**, der oben als _customadmin_ angezeigt wird, sollte mit dem Wert von _Admin Role Profile Name_ (Administratorrollenprofilname) übereinstimmen, der in Schritt 9 des Abschnitts **[Konfigurieren des einmaligen Anmeldens für Palo Alto Networks – Admin UI](#configure-palo-alto-networks---admin-ui-sso)** konfiguriert wurde.  
 
     > [!NOTE]
     > Weitere Informationen zu den Attributen finden Sie in den folgenden Artikeln:

@@ -5,19 +5,18 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 4f2f0678b421ac6965b2848cc25564b4e95c7c6b
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: df82f61559a2ede3da477118f090f664e3389437
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567062"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "122639783"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Visualisieren von Echtzeit-Sensordaten aus Azure IoT Hub in einer Webanwendung
 
@@ -29,11 +28,13 @@ In diesem Artikel erfahren Sie, wie Sie vom IoT-Hub empfangene Echtzeit-Sensorda
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Sie müssen das Tutorial [Verbinden des Raspberry Pi-Onlinesimulators mit Azure IoT Hub (Node.js)](iot-hub-raspberry-pi-web-simulator-get-started.md) oder eines der gerätespezifischen Tutorials abgeschlossen haben. Sie können beispielsweise zu [Verbinden von Raspberry Pi mit Azure IoT Hub (Node.js)](iot-hub-raspberry-pi-kit-node-get-started.md) oder zu einer der Schnellstartanleitungen zum [Senden von Telemetriedaten](quickstart-send-telemetry-dotnet.md) wechseln. In diesen Artikeln werden folgende Anforderungen beschrieben:
+* Sie müssen das Tutorial [Verbinden des Raspberry Pi-Onlinesimulators mit Azure IoT Hub (Node.js)](iot-hub-raspberry-pi-web-simulator-get-started.md) oder eines der gerätespezifischen Tutorials abgeschlossen haben. Sie können beispielsweise zu [Verbinden von Raspberry Pi mit Azure IoT Hub (Node.js)](iot-hub-raspberry-pi-kit-node-get-started.md) oder zu einer der Schnellstartanleitungen zum [Senden von Telemetriedaten](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp) wechseln. In diesen Artikeln werden folgende Anforderungen beschrieben:
 
   * Ein aktives Azure-Abonnement
   * IoT Hub in Ihrem Abonnement
   * Eine Clientanwendung, die Nachrichten an IoT Hub sendet
+
+* [Node.js](https://nodejs.org)-Version 10.6 oder höher. Führen Sie zum Überprüfen der Node-Version `node --version` aus.
 
 * [Herunterladen von Git](https://www.git-scm.com/downloads)
 
@@ -58,7 +59,7 @@ Notieren Sie sich den verwendeten Namen, da Sie ihn später in diesem Tutorial b
 IoT-Hubs werden mit verschiedenen Standardzugriffsrichtlinien erstellt. Eine dieser Richtlinien ist die **Dienstrichtlinie**. Sie gewährt Diensten ausreichende Berechtigungen, um Lese- und Schreibvorgänge in den Endpunkten des IoT-Hubs auszuführen. Führen Sie den folgenden Befehl aus, um eine Verbindungszeichenfolge für den IoT-Hub abzurufen, die die Bedingungen der Dienstrichtlinie erfüllt:
 
 ```azurecli-interactive
-az iot hub show-connection-string --hub-name YourIotHub --policy-name service
+az iot hub connection-string show --hub-name YourIotHub --policy-name service
 ```
 
 Ihre Verbindungszeichenfolge sollte in etwa folgendermaßen aussehen:

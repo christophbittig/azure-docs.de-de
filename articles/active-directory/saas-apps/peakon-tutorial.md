@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: a84d4d71e5190c455441d1e627381be86ef5e129
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2fa227e1aa503cf17da6027da8754a6f51e7f469
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97608526"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183031"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peakon"></a>Tutorial: Azure Active Directory-Integration von Peakon
 
@@ -45,6 +45,7 @@ Um die Azure AD-Integration von Peakon konfigurieren zu können, benötigen Sie 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Peakon unterstützt **SP-** und **IDP-initiiertes** einmaliges Anmelden.
+* Peakon unterstützt die [**automatisierte** Benutzerbereitstellung und Bereitstellungsaufhebung](peakon-provisioning-tutorial.md) (empfohlen).
 
 ## <a name="adding-peakon-from-the-gallery"></a>Hinzufügen von Peakon aus dem Katalog
 

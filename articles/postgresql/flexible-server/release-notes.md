@@ -6,13 +6,13 @@ ms.author: srranga
 ms.custom: references_regions
 ms.service: postgresql
 ms.topic: overview
-ms.date: 06/23/2021
-ms.openlocfilehash: 87af6f9764c2ab01b0e0d02d8eb4a6c7342ca31c
-ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
+ms.date: 07/30/2021
+ms.openlocfilehash: 5423af2f148a56e978bfbe6a1584b3e281f9a1a4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112894624"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740292"
 ---
 # <a name="release-notes---azure-database-for-postgresql---flexible-server"></a>Versionshinweise: Azure Database for PostgreSQL – Flexible Server
 
@@ -20,6 +20,16 @@ Auf dieser Seite finden Sie aktuelle Neuigkeiten und Updates zu Featureergänzun
 
 > [!IMPORTANT]
 > Azure Database for PostgreSQL – Flexible Server befindet sich in der Vorschau.
+
+## <a name="release-july-2021"></a>Release: Juli 2021
+
+* Unterstützung für [neue Regionen](overview.md#azure-regions): „Asien, Osten“, „Deutschland, Westen-Mitte“, „Südkorea, Süden“, „USA, Süden-Mitte“, „Vereinigtes Königreich, Westen“.
+* Unterstützung für die [Erweiterung „pglogical“](concepts-logical.md) v2.3.2 mit PostgreSQL 11, 12 und 13.<sup>$</sup>
+* PgBouncer umfasst jetzt `ignore_startup_parameters` das Ignorieren bestimmter Parameter des clientseitigen Treibers, einschließlich der Parameter `extra_float_digits` und `pgbouncer.query_wait_timeout`.  <sup>$</sup>.
+* Unterstützung für `pg_stat_reset_shared('bgwriter');` und `pg_stat_reset_shared('archiver');` zum Zurücksetzen der in den Ansichten `pg_stat_bgwriter` und `pg_stat_archiver` angezeigten Leistungsindikatoren<sup>$</sup>.
+* Hier finden Sie verschiedene Möglichkeiten zur Fehlerbehebung und Stabilitäts- und Leistungsverbesserungen<sup>$</sup>.
+
+<sup> **$** </sup> Neue Server erhalten diese Features automatisch. Auf Ihren vorhandenen Servern werden diese Features während des zukünftigen Wartungsfensters Ihres Servers aktiviert.
 
 ## <a name="release-june-2021"></a>Release: Juni 2021
 
@@ -31,7 +41,7 @@ Auf dieser Seite finden Sie aktuelle Neuigkeiten und Updates zu Featureergänzun
 * Unterstützung für die lo-Erweiterung. Auf der [Seite „Erweiterungen“](./concepts-extensions.md) finden Sie Versionen, die von den einzelnen Hauptversionen unterstützt werden<sup>$</sup>.
 * Hier finden Sie verschiedene Möglichkeiten zur Fehlerbehebung und Stabilitäts- und Leistungsverbesserungen<sup>$</sup>.
   
-<sup> **$** </sup> Ihre vorhandenen Server werden automatisch auf die neueste unterstützte Nebenversion aktualisiert. Während des zukünftigen Wartungsfensters Ihres Servers werden auch neue Funktionen aktiviert.
+<sup> **$** </sup> Neue Server erhalten diese Features automatisch.  Ihre vorhandenen Server werden automatisch auf die neueste unterstützte Nebenversion aktualisiert. Während des zukünftigen Wartungsfensters Ihres Servers werden auch neue Funktionen aktiviert.
 
 ## <a name="release-may-2021"></a>Release: Mai 2021
 

@@ -9,14 +9,17 @@ ms.workload: infrastructure-services
 ms.date: 04/01/2021
 ms.author: jamesser
 ms.reviewer: cynthn
-ms.openlocfilehash: e8e3567d752627915596645b13246236bad321c9
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 5bd9adb8354c3919a63e3de2e850513641af12a3
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108146309"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696548"
 ---
 # <a name="add-custom-domain-to-azure-vm-or-resource"></a>Hinzufügen einer benutzerdefinierten Domäne zu einer Azure-VM oder -Ressource
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen
+
 
 In Azure gibt es mehrere Möglichkeiten, um eine benutzerdefinierte Domäne mit Ihrer VM oder Ressource zu verbinden. Für Ressourcen mit einer öffentlichen IP-Adresse (VM, Lastenausgleich, Anwendungsgateway) besteht die einfachste Möglichkeit darin, einen A-Eintrag in der entsprechenden Domänenregistrierungsstelle zu erstellen. 
 

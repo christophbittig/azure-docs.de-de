@@ -4,24 +4,31 @@ description: Erfahren Sie etwas über Verfahren zur Bereitstellung von Failoverf
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 08/19/2021
 ms.author: v-erkel
-ms.openlocfilehash: 9159807f55ae52393b8fccec339fcc94c3e4ebb0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a05a281bdf01a01be842e99cc1b08383d0b9c1bc
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87061380"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515015"
 ---
 # <a name="use-multiple-caches-for-regional-failover-recovery"></a>Verwenden mehrerer Caches für die regionale Failoverwiederherstellung
 
-Jede Azure HPC Cache-Instanz wird innerhalb eines bestimmten Abonnements und in genau einer Region ausgeführt. Dies bedeutet, dass der Cacheworkflow möglicherweise unterbrochen wird, wenn die Region vollständig ausfällt.
+Jede Azure HPC Cache-Instanz wird innerhalb eines bestimmten Abonnements und in genau einer Region ausgeführt. Das bedeutet, dass Ihr Cache-Workflow möglicherweise gestört wird, wenn die Region des Caches vollständig ausfällt.
 
 In diesem Artikel wird eine Strategie beschrieben, mit der Sie das Risiko einer Unterbrechung der Arbeit reduzieren können, indem Sie eine zweite Region für das Cachefailover verwenden.
 
 Zentral ist dabei die Verwendung von Back-End-Speicher, auf den von mehreren Regionen aus zugegriffen werden kann. Bei diesem Speicher kann es sich um ein lokales NAS-System mit entsprechender DNS-Unterstützung oder um eine Azure Blob Storage-Instanz handeln, die sich in einer anderen Region als der Cache befindet.
 
 Während Ihr Workflow in Ihrer primären Region ausgeführt wird, werden die Daten im langfristigen Speicher außerhalb der Region gespeichert. Wenn die Cacheregion nicht mehr verfügbar ist, können Sie ein Duplikat der Azure HPC Cache-Instanz in einer sekundären Region erstellen und mit dem gleichen Speicher verbinden und dann die Arbeit mit dem neuen Cache fortsetzen.
+
+> [!NOTE]
+> Dieser Failover-Plan deckt einen kompletten Ausfall in der Region eines *Speicherkontos* nicht ab. Außerdem unterstützt Azure HPC Cache keine geografisch redundanten Speicherkonten (GRS oder GZRS), da ihr asynchrones Kopieren zwischen Regionen für HPC Cache-Workflows nicht konsistent genug ist.
+>
+> HPC Cache **unterstützt** lokal redundanten Speicher (LRS) und zonenredundanten Speicher (ZRS), die Daten [innerhalb einer Azure-Region replizieren](../storage/common/storage-redundancy.md#redundancy-in-the-primary-region).
+>
+> Erwägen Sie eine manuelle Sicherungsstrategie, wenn Sie sich vor Speicherausfällen in der gesamten Region schützen müssen.
 
 ## <a name="planning-for-regional-failover"></a>Planen regionaler Failover
 
@@ -36,8 +43,7 @@ Führen Sie die folgenden Schritte aus, um einen Cache einzurichten, der auf ein
    1. Details zu Clientcomputern, sofern diese sich in derselben Region wie der Cache befinden
    1. Befehl zum Einbinden für die Verwendung durch Cacheclients
 
-   > [!NOTE]
-   > Azure HPC Cache kann programmgesteuert erstellt werden – über eine [Azure Resource Manager-Vorlage](../azure-resource-manager/templates/overview.md) oder durch direkten Zugriff auf die API. Ausführliche Informationen erhalten Sie vom Azure HPC Cache-Team.
+   > [HINWEIS] Azure HPC Cache kann programmgesteuert erstellt werden, entweder über eine [Azure Resource Manager-Vorlage](../azure-resource-manager/templates/overview.md) oder durch direkten Zugriff auf seine API. Ausführliche Informationen erhalten Sie vom Azure HPC Cache-Team.
 
 ## <a name="failover-example"></a>Beispiel für ein Failover
 
@@ -57,4 +63,4 @@ Alle Clients müssen den neuen Cache einbinden, auch wenn sie nicht vom Regionsa
 
 ## <a name="learn-more"></a>Erfahren Sie mehr
 
-Im Leitfaden zur Azure-Anwendungsarchitektur finden Sie weitere Informationen zur [Wiederherstellung nach einer regionsweiten Dienstunterbrechung](<https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region>).
+Im Leitfaden zur Azure-Anwendungsarchitektur finden Sie weitere Informationen zur [Wiederherstellung nach einer regionsweiten Dienstunterbrechung](/azure/architecture/resiliency/recovery-loss-azure-region).

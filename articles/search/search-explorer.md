@@ -1,25 +1,25 @@
 ---
-title: Suchexplorer-Abfragetool im Azure-Portal
+title: 'Schnellstart: Suchexplorer-Abfragetool'
 titleSuffix: Azure Cognitive Search
-description: In diesem Schnellstart im Azure-Portal verwenden Sie den Suchexplorer, um die Abfragesyntax zu lernen, Abfrageausdrücke zu testen oder ein Suchdokument zu untersuchen. Der Suchexplorer fragt Indizes in Azure Cognitive Search ab.
+description: Der Suchexplorer ist ein Abfragetool im Azure-Portal, das Abfrageanforderungen an einen Suchindex in Azure Cognitive Search sendet. Verwenden Sie es, um die Syntax zu erlernen, Abfrageausdrücke zu testen oder ein Suchdokument zu prüfen.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 01/12/2021
-ms.openlocfilehash: e9607a71ed6b045ac704c43bf4ea54c9f181bbf4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/24/2021
+ms.openlocfilehash: d246c9aad024b1086a531c31a2a9559dfa798642
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98179774"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772828"
 ---
 # <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>Schnellstart: Verwenden des Suchexplorers zum Ausführen von Abfragen im Portal
 
-Der **Suchexplorer** ist ein integriertes Abfragetool, das zum Ausführen von Abfragen über einen Suchindex in Azure Cognitive Search verwendet wird. Mit diesem Tool können Sie problemlos Abfragesyntax erlernen, einen Abfrage- oder Filterausdruck testen oder eine Datenaktualisierung bestätigen, indem Sie überprüfen, ob neue Inhalte im Index vorhanden sind.
+Der **Suchexplorer** ist ein integriertes Abfragetool im Azure-Portal, das zum Ausführen von Abfragen über einen Suchindex in Azure Cognitive Search verwendet wird. Mit diesem Tool können Sie problemlos Abfragesyntax erlernen, einen Abfrage- oder Filterausdruck testen oder eine Datenaktualisierung bestätigen, indem Sie überprüfen, ob neue Inhalte im Index vorhanden sind.
 
-In diesem Schnellstart wird der Suchexplorer anhand eines vorhandenen Index veranschaulicht. Anforderungen werden mit der [Search-REST-API](/rest/api/searchservice/search-documents) formuliert, und Antworten werden als ausführliche JSON-Dokumente zurückgegeben.
+In diesem Schnellstart wird der Suchexplorer anhand eines vorhandenen Index veranschaulicht. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -44,6 +44,8 @@ Bevor Sie beginnen können, müssen die folgenden Voraussetzungen erfüllt werde
    :::image type="content" source="media/search-explorer/search-explorer-tab.png" alt-text="Registerkarte „Suchexplorer“" border="true":::
 
 ## <a name="unspecified-query"></a>Abfrage ohne Angabe
+
+Im Suchexplorer werden Anforderungen mit der [Search-REST-API](/rest/api/searchservice/search-documents) formuliert, und Antworten werden als ausführliche JSON-Dokumente zurückgegeben.
 
 Führen Sie für einen ersten Blick auf den Inhalt eine leere Suche aus, indem Sie ohne Angabe von Begriffen auf **Suchen** klicken. Eine leere Suche ist eine sinnvolle erste Abfrage, da sie vollständige Dokumente zurückgibt, sodass Sie sich mit dem Aufbau des Dokuments vertraut machen können. Bei einer leeren Suche gibt es keinen Suchrang, und die Dokumente werden in beliebiger Reihenfolge (`"@search.score": 1` für alle Dokumente) zurückgegeben. Standardmäßig werden in einer Suchanforderung 50 Dokumente zurückgegeben.
 
@@ -153,7 +155,7 @@ In diesem Schnellstart haben Sie den **Suchexplorer** verwendet, um einen Index 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie sich am Ende eines Projekts überlegen, ob Sie die erstellten Ressourcen noch benötigen. Für weiterhin aktive Ressourcen können Kosten anfallen. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
+Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie sich am Ende eines Projekts überlegen, ob Sie die erstellten Ressourcen noch benötigen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
 
 Ressourcen können im Portal über den Link **Alle Ressourcen** oder **Ressourcengruppen** im linken Navigationsbereich gesucht und verwaltet werden.
 
