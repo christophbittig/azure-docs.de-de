@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 08/30/2021
 ms.author: jianleishen
-ms.openlocfilehash: be7aefd231daad2cdefccbcc4648b20bf6159455
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 01680713d0e21baa3433e79474a4ba4567d5c644
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122639972"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123313033"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Kopieren von Daten aus DB2 mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -58,6 +58,30 @@ Die Integrationslaufzeit bietet einen integrierten DB2-Treiber. Daher müssen be
 ## <a name="getting-started"></a>Erste Schritte
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-linked-service-to-db2-using-ui"></a>Erstellen eines verknüpften Diensts für DB2 über die Benutzeroberfläche
+
+Führen Sie die folgenden Schritte aus, um über die Benutzeroberfläche des Azure-Portals einen verknüpften Dienst für DB2 zu erstellen.
+
+1. Navigieren Sie in Ihrem Azure Data Factory- oder Synapse-Arbeitsbereich zur Registerkarte „Verwalten“, wählen Sie „Verknüpfte Dienste“ aus, und klicken Sie dann auf „Neu“:
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Screenshot: Erstellen eines neuen verknüpften Diensts mithilfe der Azure Data Factory-Benutzeroberfläche":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Screenshot: Erstellen eines neuen verknüpften Diensts mithilfe der Azure Synapse-Benutzeroberfläche":::
+
+2. Suchen Sie nach DB2, und wählen Sie den DB2-Connector aus.
+
+    :::image type="content" source="media/connector-db2/db2-connector.png" alt-text="Screenshot des DB2-Connectors":::    
+
+1. Konfigurieren Sie die Dienstdetails, testen Sie die Verbindung, und erstellen Sie den neuen verknüpften Dienst.
+
+    :::image type="content" source="media/connector-db2/configure-db2-linked-service.png" alt-text="Screenshot der Konfiguration eines verknüpften Diensts für DB2":::
+
+## <a name="connector-configuration-details"></a>Details zur Connectorkonfiguration
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den DB2-Connector verwendet werden:
 

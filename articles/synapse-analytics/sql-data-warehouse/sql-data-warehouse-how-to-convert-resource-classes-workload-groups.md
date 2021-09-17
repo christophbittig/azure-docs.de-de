@@ -11,12 +11,12 @@ ms.date: 08/13/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1207f4856882d8aa0e6d1e41712071536bfecf29
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7841a8520e3bd3a01a993054444b8aa4d04d542d
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98728555"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123260879"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>Konvertieren von Ressourcenklassen in Arbeitsauslastungsgruppen
 
@@ -27,7 +27,7 @@ Arbeitsauslastungsgruppen bieten einen Mechanismus zum Isolieren und Kapseln von
 
 ## <a name="understanding-the-existing-resource-class-configuration"></a>Grundlegendes zur vorhandenen Ressourcenklassenkonfiguration
 
-Für Arbeitsauslastungsgruppen ist ein Parameter namens `REQUEST_MIN_RESOURCE_GRANT_PERCENT` erforderlich, der den Prozentsatz der Gesamtsystemressourcen angibt, die pro Anforderung zugeordnet werden.  Die Ressourcenzuordnung erfolgt für [Ressourcenklassen](resource-classes-for-workload-management.md#what-are-resource-classes) durch Zuordnen von Parallelitätsslots.  Um den für `REQUEST_MIN_RESOURCE_GRANT_PERCENT` anzugebenden Wert zu ermitteln, verwenden Sie die DMV „sys.dm_workload_management_workload_groups_stats“ <link tbd>.  Beispielsweise gibt die folgende Abfrage einen Wert zurück, der für den Parameter `REQUEST_MIN_RESOURCE_GRANT_PERCENT` verwendet werden kann, um eine Arbeitsauslastungsgruppe ähnlich wie „staticrc40“ zu erstellen.
+Für Arbeitsauslastungsgruppen ist ein Parameter namens `REQUEST_MIN_RESOURCE_GRANT_PERCENT` erforderlich, der den Prozentsatz der Gesamtsystemressourcen angibt, die pro Anforderung zugeordnet werden.  Die Ressourcenzuordnung erfolgt für [Ressourcenklassen](resource-classes-for-workload-management.md#what-are-resource-classes) durch Zuordnen von Parallelitätsslots.  Um den für `REQUEST_MIN_RESOURCE_GRANT_PERCENT` anzugebenden Wert zu ermitteln, verwenden Sie die DMV [sys.dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest&preserve-view=true).  Beispielsweise gibt die folgende Abfrage einen Wert zurück, der für den Parameter `REQUEST_MIN_RESOURCE_GRANT_PERCENT` verwendet werden kann, um eine Arbeitsauslastungsgruppe ähnlich wie „staticrc40“ zu erstellen.
 
 ```sql
 SELECT Request_min_resource_grant_percent = Effective_request_min_resource_grant_percent
@@ -42,7 +42,7 @@ Da Arbeitsauslastungsgruppen basierend auf dem Prozentsatz der Gesamtsystemresso
 
 ## <a name="create-workload-group"></a>Erstellen einer Arbeitsauslastungsgruppe
 
-Wenn der Parameter `REQUEST_MIN_RESOURCE_GRANT_PERCENT` bekannt ist, können Sie die CREATE WORKLOAD GROUP<link>-Syntax zum Erstellen der Arbeitsauslastungsgruppe verwenden.  Sie können optional einen Wert größer als 0 (null) für `MIN_PERCENTAGE_RESOURCE` angeben, um Ressourcen für die Arbeitsauslastungsgruppe zu isolieren.  Außerdem können Sie optional einen Wert kleiner als 100 für `CAP_PERCENTAGE_RESOURCE` angeben, um die Menge an Ressourcen einzuschränken, die von der Arbeitsauslastungsgruppe genutzt werden kann.  
+Wenn der Parameter `REQUEST_MIN_RESOURCE_GRANT_PERCENT` bekannt ist, können Sie die [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest&preserve-view=true)-Syntax zum Erstellen der Arbeitsauslastungsgruppe verwenden.  Sie können optional einen Wert größer als 0 (null) für `MIN_PERCENTAGE_RESOURCE` angeben, um Ressourcen für die Arbeitsauslastungsgruppe zu isolieren.  Außerdem können Sie optional einen Wert kleiner als 100 für `CAP_PERCENTAGE_RESOURCE` angeben, um die Menge an Ressourcen einzuschränken, die von der Arbeitsauslastungsgruppe genutzt werden kann.  
 
 Unter Verwendung von mediumrc als Basis für ein Beispiel wird im untenstehenden Code `MIN_PERCENTAGE_RESOURCE` so festgelegt, dass zehn Prozent der Systemressourcen für `wgDataLoads` dediziert sind. Außerdem wird sichergestellt, dass eine Abfrage jederzeit ausgeführt werden kann.  Außerdem wird `CAP_PERCENTAGE_RESOURCE` auf 40 Prozent festgelegt und diese Arbeitsauslastungsgruppe auf vier gleichzeitige Anforderungen beschränkt.  Durch Festlegen des Parameters `QUERY_EXECUTION_TIMEOUT_SEC` auf 3600 werden alle Abfragen, die länger als eine Stunde ausgeführt werden, automatisch abgebrochen.
 

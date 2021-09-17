@@ -6,14 +6,14 @@ metadata:
   ms.author: micraft
   author: craftyhouse
   ms.service: service-fabric
-  ms.date: 7/14/2021
+  ms.date: 8/23/2021
   ms.custom: references_regions
-  ms.openlocfilehash: 6b77924cd499eec27175eba1f690c2429420c625
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.openlocfilehash: de8cf3599c35ed9069800353a38c46d353eab53a
+  ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122351092"
+  ms.lasthandoff: 08/25/2021
+  ms.locfileid: "122864983"
 title: Häufig gestellte Fragen zu verwalteten Service Fabric-Clustern
 summary: Hier finden Sie einige häufig gestellte Fragen (FAQs) und Antworten für verwaltete Service Fabric-Cluster.
 sections:
@@ -42,7 +42,7 @@ sections:
   - question: >
       Worin besteht der Unterschied zwischen einem Cluster mit der SKU „Basic“ und der SKU „Standard“?
     answer: >
-      Ein Cluster mit der SKU „Basic“ bedeutet, dass die meisten Konfigurationen vom Service Fabric-Ressourcenanbieter bereitgestellt werden. Cluster mit der SKU „Basic“ sind für die Verwendung mit Test- und Präproduktionsumgebungen vorgesehen. Ein Cluster mit der SKU „Standard“ kann von einem Benutzer so konfiguriert werden, dass seine spezifischen Anforderungen erfüllt werden. Weitere Informationen finden Sie unter [SKUs für verwaltete Service Fabric-Cluster](./overview-managed-cluster.md#service-fabric-managed-cluster-skus).
+      Cluster mit der SKU „Basic“ sind für die Verwendung in Test- und Präproduktionsumgebungen vorgesehen und unterstützen nur minimale Konfigurationsänderungen. Ein Cluster mit der SKU „Standard“ kann von einem Benutzer so konfiguriert werden, dass seine spezifischen Anforderungen erfüllt werden. Weitere Informationen finden Sie unter [SKUs für verwaltete Service Fabric-Cluster](./overview-managed-cluster.md#service-fabric-managed-cluster-skus).
   - question: >
       Wo kann ich geplante Features anzeigen oder vorschlagen?
     answer: "Beachten Sie unser GitHub-Projekt für [verwaltete Cluster](https://github.com/microsoft/service-fabric/projects/17)      \n"
@@ -55,11 +55,18 @@ sections:
   - question: >
       Ich möchte nur einen rein internen Lastenausgleich nutzen. Ist das möglich?
     answer: >
-      Derzeit ist es nicht möglich, einen rein internen Lastenausgleich zu nutzen. Wir empfehlen Ihnen, die Netzwerksicherheitsgruppen-Regeln (NSG) zu sperren, um unerwünschten eingehenden bzw. ausgehenden Datenverkehr zu blockieren.
+      Dies wird ab dem Release 2021-07-01-preview unterstützt. Weitere Informationen finden Sie unter [Konfigurieren von Netzwerkeinstellungen für verwaltete Service Fabric-Cluster](./how-to-managed-cluster-networking.md#byolb).
+  - question: >
+      Ich möchte IPv6 aktivieren, ist das möglich?
+    answer: >
+      Dies wird ab dem Release 2021-07-01-preview unterstützt. Weitere Informationen finden Sie unter [Konfigurieren von Netzwerkeinstellungen für verwaltete Service Fabric-Cluster](./how-to-managed-cluster-networking.md#ipv6).
+  - question: >
+      Ich möchte ein vorhandenes VNet für einen verwalteten Service Fabric-Cluster verwenden. Ist das möglich?
+    answer: >
+      Dies wird ab dem Release 2021-07-01-preview unterstützt. Weitere Informationen finden Sie unter [Konfigurieren von Netzwerkeinstellungen für verwaltete Service Fabric-Cluster](./how-to-managed-cluster-networking.md#byolb).
   - question: >
       Kann ich für meinen Cluster die Autoskalierung nutzen?
-    answer: >
-      Automatische Skalierung wird derzeit nicht unterstützt.
+    answer: "Die automatische Skalierung ist derzeit nicht verfügbar. Weitere Informationen finden Sie in unserem GitHub-Projekt für [verwaltete Cluster](https://github.com/microsoft/service-fabric/projects/17). \n"
   - question: >
       Kann ich meinen Cluster über Verfügbarkeitszonen hinweg bereitstellen?
     answer: >

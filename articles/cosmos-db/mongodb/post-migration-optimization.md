@@ -4,15 +4,15 @@ description: Dieses Dokument enthält Optimierungstechniken nach der Migration v
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 05/19/2021
+ms.date: 08/26/2021
 author: gahl-levy
 ms.author: gahllevy
-ms.openlocfilehash: d627fc4e35a4438926b14159fdfd424361601ad3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6dbcb5e65c99c2009602d660e3cd0cc9e22efdbf
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122338959"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123031566"
 ---
 # <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>Schritte zur Optimierung nach der Migration bei Verwendung der Azure Cosmos DB-API für MongoDB
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -89,6 +89,9 @@ Eine praktische Tatsache bei der [Indizierung](#optimize-the-indexing-policy), [
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen?
+    * Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](../convert-vcore-to-request-unit.md). 
+    * Sollten Ihnen die typischen Anforderungsraten Ihres aktuellen Datenbankworkloads kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe des Azure Cosmos DB Kapazitätsplaners](estimate-ru-capacity-planner.md)
 * [Verbinden einer MongoDB-Anwendung mit Azure Cosmos DB](connect-mongodb-account.md)
 * [Herstellen einer Verbindung mit einem Azure Cosmos DB-Konto mithilfe von Studio 3T](connect-using-mongochef.md)
 * [Globales Verteilen von Lesevorgängen mit der Azure Cosmos DB-API für MongoDB](readpreference-global-distribution.md)

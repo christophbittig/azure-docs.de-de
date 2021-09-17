@@ -9,12 +9,12 @@ ms.author: dinethi
 ms.reviewer: mikeray
 ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: bbf9ab64e1214a5b7676a8e5f506ba627a362198
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a5aac5704463b28ea9bb124f9fb3120d7a1da52b
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355660"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123102074"
 ---
 # <a name="create-an-azure-sql-managed-instance-on-azure-arc"></a>Erstellen einer verwalteten Azure SQL-Instanz in Azure Arc
 
@@ -68,4 +68,4 @@ Sie können die externe IP-Adresse und Portnummer von dort kopieren und mithilfe
 ## <a name="next-steps"></a>Nächste Schritte
 - [Herstellen einer Verbindung mit Azure Arc-fähigen SQL Managed Instance-Instanzen](connect-managed-instance.md)
 - [Registrieren Ihrer Instanz mit Azure und Hochladen von Metriken und Protokollen für Ihre Instanz](upload-metrics-and-logs-to-azure-monitor.md)
-- [Bereitstellen einer verwalteten Azure SQL-Instanz mithilfe von Azure Data Studio](create-sql-managed-instance-azure-data-studio.md)
+- [Bereitstellen einer Instanz von Azure SQL Managed Instance mithilfe von Azure Data Studio](create-sql-managed-instance-azure-data-studio.md)

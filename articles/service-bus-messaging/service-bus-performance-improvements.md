@@ -2,14 +2,13 @@
 title: Bewährte Methoden zur Verbesserung der Leistung mit Azure Service Bus
 description: Beschreibt, wie Service Bus verwendet wird, um die Leistung beim Austausch von Brokernachrichten zu optimieren.
 ms.topic: article
-ms.date: 03/09/2021
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 2171ccd6657bcda2df25e76f48cee23d0f8a48a7
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.date: 08/30/2021
+ms.openlocfilehash: d7bd692809504bb16607a431e879f0abfff953cb
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111886680"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225260"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus Messaging
 
@@ -68,7 +67,7 @@ Sie können auch Azure Monitor verwenden, um den [Service Bus-Namespace automati
 
 ### <a name="sharding-across-namespaces"></a>Namespaceübergreifendes Sharding
 
-Das Hochskalieren von Computeressourcen (Messagingeinheiten), die dem Namespace zugeordnet sind, ist zwar eine einfachere Lösung, **führt jedoch möglicherweise nicht** zu einer linearen Erhöhung des Durchsatzes. Dies liegt an Service Bus-Interna (Speicher, Netzwerk usw.), die den Durchsatz möglicherweise einschränken.
+Das Hochskalieren von Computeressourcen (Messagingeinheiten), die dem Namespace zugeordnet sind, ist zwar eine einfachere Lösung, **führt jedoch möglicherweise nicht** zu einer linearen Erhöhung des Durchsatzes. Dies liegt an Service Bus-Einstellungen (Speicher, Netzwerk usw.), die den Durchsatz möglicherweise einschränken.
 
 Die bessere Lösung besteht in diesem Fall in Sharding Ihrer Entitäten (Warteschlangen und Themen) über verschiedene Service Bus Premium-Namespaces hinweg. Sie können auch Sharding für verschiedene Namespaces in verschiedenen Azure-Regionen in Betracht ziehen.
 
@@ -114,7 +113,7 @@ Service Bus-Clientobjekte, z. B. `QueueClient` oder `MessageSender`, werden üb
 Der folgende Hinweis gilt für alle SDKs:
 
 > [!NOTE]
-> Das Herstellen einer Verbindung ist ein aufwendiger Vorgang, den Sie vermeiden können, indem Sie eine Factory und die Clientobjekte für mehrere Vorgänge verwenden. Sie können diese Clientobjekte sicher für gleichzeitige asynchrone Vorgänge und von mehreren Threads verwenden.
+> Das Herstellen einer Verbindung ist ein aufwendiger Vorgang, den Sie vermeiden können, indem Sie die Factory oder die Clientobjekte für mehrere Vorgänge verwenden. Sie können diese Clientobjekte sicher für gleichzeitige asynchrone Vorgänge und von mehreren Threads verwenden.
 
 ## <a name="concurrent-operations"></a>Parallele Vorgänge
 Vorgänge wie Senden, Empfangen, Löschen usw. nehmen einige Zeit in Anspruch. Dieser Zeitraum umfasst die Zeit, die der Service-Bus-Dienst für die Bearbeitung des Vorgangs benötigt, sowie die Latenzzeit der Anforderung und der Antwort. Die Vorgänge müssen parallel ausgeführt werden, um die Anzahl von Vorgängen pro Zeitraum zu erhöhen.

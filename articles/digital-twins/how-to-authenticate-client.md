@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Hier erfahren Sie, wie Authentifizierungscode in einer Clientanwendung geschrieben wird.
 author: baanders
 ms.author: baanders
-ms.date: 10/7/2020
+ms.date: 8/26/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b72455692ebb114792ecf0b5cdff7b8e0930ed85
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a1b2465f29ae659f3e255a4843a2abd5f9ab75b2
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349624"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224858"
 ---
 # <a name="write-client-app-authentication-code"></a>Schreiben von Authentifizierungscode für die Client-App
 
@@ -20,7 +20,7 @@ Nachdem Sie eine [Azure Digital Twins-Instanz und -Authentifizierung eingerichte
 
 Azure Digital Twins führt die Authentifizierung mithilfe von [Azure AD-Sicherheitstoken basierend auf OAuth 2.0](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims) aus. Zum Authentifizieren Ihres SDK müssen Sie ein Bearertoken mit den richtigen Berechtigungen für Azure Digital Twins abrufen und es zusammen mit ihren API-Aufrufen übergeben. 
 
-In diesem Artikel wird beschrieben, wie Sie mithilfe der `Azure.Identity`-Clientbibliothek Anmeldeinformationen abrufen. Dieser Artikel zeigt Codebeispiele in C#, z. B. Codebeispiele für das [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true). Sie können jedoch unabhängig vom verwendeten SDK eine Version von `Azure.Identity` verwenden (weitere Informationen zu den für Azure Digital Twins verfügbaren SDKs finden Sie unter [Azure Digital Twins-APIs und SDKs](concepts-apis-sdks.md)).
+In diesem Artikel wird beschrieben, wie Sie mithilfe der `Azure.Identity`-Clientbibliothek Anmeldeinformationen abrufen. Dieser Artikel zeigt Codebeispiele in C#, z. B. für das [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true). Sie können jedoch unabhängig vom verwendeten SDK eine Version von `Azure.Identity` verwenden (weitere Informationen zu den für Azure Digital Twins verfügbaren SDKs finden Sie unter [Azure Digital Twins-APIs und SDKs](concepts-apis-sdks.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/06/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 3b6ed39c11e3f90b986ef904ff3f8e9ff3158d0d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc202359e90024ee73c3041013eef9c2da814045
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103574168"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835829"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>Konfigurieren von parallel bestehenden ExpressRoute- und Standort-zu-Standort-Verbindungen mithilfe von PowerShell
 > [!div class="op_single_selector"]
@@ -37,6 +37,7 @@ Dieser Artikel enthält die Schritte für die Konfiguration beider Szenarien. Di
 
 ## <a name="limits-and-limitations"></a>Grenzwerte und Einschränkungen
 * **Nur das routenbasierte VPN-Gateway wird unterstützt.** Sie müssen ein routenbasiertes [VPN-Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) verwenden. Sie können auch ein routenbasiertes VPN-Gateway mit einer VPN-Verbindung verwenden, die für die richtlinienbasierte Datenverkehrsauswahl konfiguriert ist, wie unter [Herstellen einer Verbindung mit mehreren richtlinienbasierten VPN-Geräten](../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md) beschrieben.
+* **Die gemeinsame Verwendung von VPN Gateway und ExpressRoute wird in der Basic-SKU nicht unterstützt.**
 * **Die ASN von Azure VPN Gateway muss auf „65515“ festgelegt werden.** Azure VPN Gateway unterstützt das BGP-Routingprotokoll. Damit ExpressRoute und Azure-VPN zusammenarbeiten können, müssen Sie die autonome Systemnummer (ASN) Ihres Azure VPN-Gateways mit dem Standardwert „65515“ beibehalten. Wenn Sie zuvor eine andere ASN als „65515“ ausgewählt haben und die Einstellung auf „65515“ ändern, müssen Sie das VPN-Gateway zurücksetzen, damit die Einstellung wirksam wird.
 * **Das Gatewaysubnetz muss /27 oder ein kürzeres Präfix sein** (z. B. /26 oder /25), andernfalls erhalten Sie eine Fehlermeldung, wenn Sie das Gateway für das virtuelle ExpressRoute-Netzwerk hinzufügen.
 * **Koexistenz in einem VNET mit dualem Stapel wird nicht unterstützt.** Wenn Sie die IPv6-Unterstützung von ExpressRoute und ein ExpressRoute-Gateway mit dualem Stapel verwenden, ist eine Koexistenz mit VPN Gateway nicht möglich.

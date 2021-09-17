@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/30/2021
 ms.author: jianleishen
-ms.openlocfilehash: 005b50eaa3dc050048a12ac557ebc7ac028dd2dd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: db9861fbefff2613a2989ee379f487d6c3a644e6
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122640681"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123317372"
 ---
 # <a name="copy-data-from-paypal-using-azure-data-factory-preview"></a>Kopieren von Daten aus PayPal mithilfe von Azure Data Factory (Vorschau)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -38,6 +38,31 @@ Azure Data Factory enthält einen integrierten Treiber zum Sicherstellen der Kon
 ## <a name="getting-started"></a>Erste Schritte
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-linked-service-to-paypal-using-ui"></a>Erstellen eines verknüpften Diensts für PayPal über die Benutzeroberfläche
+
+Führen Sie die folgenden Schritte aus, um über die Benutzeroberfläche des Azure-Portals einen verknüpften Dienst für PayPal zu erstellen.
+
+1. Navigieren Sie in Ihrem Azure Data Factory- oder Synapse-Arbeitsbereich zur Registerkarte „Verwalten“, wählen Sie „Verknüpfte Dienste“ aus, und klicken Sie dann auf „Neu“:
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Screenshot: Erstellen eines neuen verknüpften Diensts mithilfe der Azure Data Factory-Benutzeroberfläche":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Screenshot: Erstellen eines neuen verknüpften Diensts mithilfe der Azure Synapse-Benutzeroberfläche":::
+
+2. Suchen Sie nach PayPal, und wählen Sie den PayPal-Connector aus.
+
+   :::image type="content" source="media/connector-paypal/paypal-connector.png" alt-text="Screenshot des PayPal-Connectors":::    
+
+
+1. Konfigurieren Sie die Dienstdetails, testen Sie die Verbindung, und erstellen Sie den neuen verknüpften Dienst.
+
+   :::image type="content" source="media/connector-paypal/configure-paypal-linked-service.png" alt-text="Screenshot der Konfiguration eines verknüpften Diensts für PayPal":::
+
+## <a name="connector-configuration-details"></a>Details zur Connectorkonfiguration
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den PayPal-Connector verwendet werden.
 
