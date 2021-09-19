@@ -1,16 +1,16 @@
 ---
-title: Agent-basierte Sicherheitswarnungen
-description: Hier erhalten Sie Informationen zu Sicherheitswarnungen und empfohlenen Abhilfemaßnahmen unter Verwendung von Features und Diensten von Defender für IoT-Geräte.
+title: Klassische Agent-basierte Sicherheitswarnungen
+description: Hier erhalten Sie Informationen zur klassischen Version der Sicherheitswarnungen von Defender für IoT sowie zu empfohlenen Abhilfemaßnahmen mithilfe von Features der Defender für IoT-Geräte und des Defender für IoT-Dienstes.
 ms.topic: conceptual
-ms.date: 2/16/2021
-ms.openlocfilehash: b586eb4bebfc584e6cec4c27df859dbebb817e2d
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 08/25/2021
+ms.openlocfilehash: 184001243803b64717ac124c116529bab4c4170d
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113016173"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122968262"
 ---
-# <a name="defender-for-iot-devices-security-alerts"></a>Sicherheitswarnungen für Defender für IoT-Geräte
+# <a name="classic-defender-for-iot-devices-security-alerts"></a>Klassische Sicherheitswarnungen für Defender für IoT-Geräte
 
 Defender für IoT analysiert Ihre IoT-Lösung ständig mithilfe von Advanced Analytics- und Threat Intelligence-Funktionen, um Sie vor schädlichen Aktivitäten zu warnen.
 Darüber hinaus können Sie – basierend auf Ihrer Kenntnis des erwarteten Geräteverhaltens – benutzerdefinierte Warnungen erstellen.

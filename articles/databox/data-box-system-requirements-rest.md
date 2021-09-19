@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 10/05/2020
 ms.author: alkohli
-ms.openlocfilehash: ac5f2de383066d6ee399dac3b0ad8c365b2e72bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c62c1e854e55b8817724c78bc325badc703bc27
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91744095"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123250671"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>Blobspeicheranforderungen für Azure Data Box
 
@@ -26,13 +26,13 @@ Sie sollten die Informationen sorgfältig lesen, bevor Sie eine Verbindung mit d
 
 |     Funktion                                             |     Azure Storage                                     |     Data Box-Blobspeicher |
 |---------------------------------------------------------|-------------------------------------------------------|---------------------------|
-|    Azure-Dateispeicher                                   |    Cloudbasierte SMB-Dateifreigaben unterstützt              |    Nicht unterstützt      |
+|    Azure Files                                   |    Cloudbasierte SMB- und NFS-Dateifreigaben werden unterstützt               |    Nicht unterstützt      |
 |    Dienstverschlüsselung für ruhende Daten                  |    256-Bit-AES-Verschlüsselung                             |    256-Bit-AES-Verschlüsselung |
 |    Speicherkontotyp                                 |    Allgemeine Speicherkonten und Azure Blob Storage-Konten    |    Nur Konten vom Typ „Universell V1“|
 |    Blobname                                            |    1\.024 Zeichen (2.048 Bytes)                     |    880 Zeichen (1.760 Bytes)|
-|    Maximale Blockblobgröße                              |    4,75 TB (100 MB X 50.000 Blöcke)                   |    4,75 TB (100 MB × 50.000 Blöcke) für Azure Data Box ab Version 3.0.|
-|    Maximale Seitenblobgröße                               |    8 TB                                               |    1 TB                   |
-|    Seitenblob – Seitengröße                                  |    512 Bytes                                          |    4 KB                   |
+|    Maximale Blockblobgröße                              |    4,75 TiB (100 MB × 50.000 Blöcke)                   |    4,75 TiB (100 MB × 50.000 Blöcke) für Azure Data Box ab Version 3.0.|
+|    Maximale Seitenblobgröße                               |    8 TiB                                               |    1TiB                   |
+|    Seitenblob – Seitengröße                                  |    512 Bytes                                          |    4 KiB                   |
 
 ## <a name="supported-api-versions"></a>Unterstützte API-Versionen
 

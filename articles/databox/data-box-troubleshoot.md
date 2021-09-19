@@ -1,25 +1,29 @@
 ---
-title: Beheben von Problemen mit Azure Data Box, Azure Data Box Heavy
-description: Beschreibt, wie Probleme in Azure Data Box und Azure Data Box Heavy beim Kopieren von Daten auf diese Geräte behoben werden.
+title: Behandeln von Problemen während Datenkopiervorgängen auf Azure Data Box und Azure Data Box Heavy
+description: Beschreibt, wie Probleme beim Kopieren von Daten auf Azure Data Box- und Azure Data Box Heavy-Geräte behoben werden.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: troubleshooting
-ms.date: 07/14/2021
+ms.date: 08/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 06f0408587cc7c5533bdb852f7ad4f59094a33da
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: e3921e8b326be2163981eacc089e16e6fcf6f1bc
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114220257"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772411"
 ---
-# <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Behandeln von Problemen mit Azure Data Box und Azure Data Box Heavy
+# <a name="troubleshoot-data-copy-issues-on-azure-data-box-and-azure-data-box-heavy"></a>Behandeln von Problemen beim Kopieren von Daten auf Azure Data Box und Azure Data Box Heavy
 
-In diesem Artikel finden Sie Informationen zum Beheben von Problemen, die beim Verwenden von Azure Data Box oder Azure Data Box Heavy für Importaufträge auftreten können. Der Artikel enthält die Liste der möglichen Fehler, die beim Kopieren von Daten in Data Box oder beim Hochladen von Daten aus Data Box für einen Importauftrag auftreten können.
+In diesem Artikel wird beschrieben, wie Probleme beim Ausführen von Datenkopier- oder Datenuploadvorgängen für einen Azure Data Box- oder einen Azure Data Box Heavy-Importauftrag behoben werden. Der Artikel enthält die Liste der möglichen Fehler, die beim Kopieren von Daten in die Data Box oder beim Hochladen aus der Data Box auftreten können.
 
-Die Informationen in diesem Artikel gelten nicht für Exportaufträge, die für Data Box erstellt wurden.
+Hilfe bei der Behandlung von Problemen beim Zugriff auf die Freigaben auf Ihrem Gerät finden Sie unter [Problembehandlung bei Fehlschlagen der Freigabeverbindung während des Kopierens von Daten](data-box-troubleshoot-share-access.md).
+
+
+> [!NOTE]
+> Die Informationen in diesem Artikel betreffen nur Importaufträge.
 
 ## <a name="error-classes"></a>Fehlerklassen
 

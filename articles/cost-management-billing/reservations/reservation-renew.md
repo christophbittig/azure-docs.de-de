@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 08/05/2020
+ms.date: 08/20/2021
 ms.author: banders
-ms.openlocfilehash: b038ab5a937105d3fb625f6b17dd71b0073b7080
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3b6f6a0700915263187f4f31b60a4d2d8b72d9fd
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122354925"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634202"
 ---
 # <a name="automatically-renew-reservations"></a>Automatisches Verlängern von Reservierungen
 
@@ -36,7 +36,7 @@ Navigieren Sie im Azure-Portal zu **Reservierungen**.
 
 ## <a name="if-you-dont-renew"></a>Bei ausbleibender Verlängerung
 
-Ihre Dienste werden weiterhin normal ausgeführt. Nach Ablauf der Reservierung werden Ihnen nutzungsbasierte Tarife für Ihre Nutzung in Rechnung gestellt.
+Ihre Dienste werden weiterhin normal ausgeführt. Nach Ablauf der Reservierung werden Ihnen nutzungsbasierte Tarife für Ihre Nutzung in Rechnung gestellt. Falls für die Reservierung keine automatische Verlängerung vor Ablauf festgelegt wurde, können Sie eine abgelaufene Reservierung nicht verlängern. Wenn Sie weiterhin Einsparungen erzielen möchten, können Sie eine neue Reservierung erwerben.
 
 ## <a name="required-renewal-permissions"></a>Erforderliche Erneuerungsberechtigungen
 
@@ -61,7 +61,7 @@ Wenn die vorhandene Reservierung abläuft, wird eine neue Reservierung erworben.
 Wenn Sie eine der folgenden Änderungen an der ablaufenden Reservierung vornehmen, wird die Reservierungsverlängerung storniert:
 
 - Split
-- Merge
+- Zusammenführen
 - Übertragen der Reservierung von einem Konto auf ein anderes
 - Übertragen der Reservierung eines WebDirect-Abonnements auf ein Enterprise Agreement-Abonnement (EA) oder eine beliebige andere Kaufmethode
 - Verlängern der Registrierung

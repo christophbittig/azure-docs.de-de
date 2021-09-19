@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/08/2021
 ms.author: robinsh
-ms.openlocfilehash: abbef6e0e244f7cfc937f738c7c2d0acd89549dd
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: ccbf43eaf10b68f5d23cae5895324dd095932b5e
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114205198"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830063"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>Automatische Verwaltung von IoT-Geräten und -Modulen über die Azure CLI
 
@@ -50,7 +50,7 @@ Für automatische Modulkonfigurationen ist der Einsatz von Modulzwillingen erfor
 
 ## <a name="use-tags-to-target-twins"></a>Verwenden von Tags mit Zwillingen als Ziel
 
-Bevor Sie eine Konfiguration erstellen, müssen Sie angeben, welche Geräte oder Module Sie als Ziel verwenden möchten. Azure IoT Hub identifiziert Geräte, verwendet Tags im Gerätezwilling und identifiziert Module mithilfe von Tags im Modulzwilling. Jedes Gerät oder Modul kann mehrere Tags aufweisen, die sie auf jede beliebige Weise definieren können, die Ihnen für Ihre Lösung sinnvoll erscheint. Wenn Sie beispielsweise Geräte an verschiedenen Standorten verwalten, fügen Sie einem Gerätezwilling die folgenden Tags hinzu:
+Bevor Sie eine Konfiguration erstellen, müssen Sie angeben, welche Geräte oder Module Sie als Ziel verwenden möchten. Azure IoT Hub identifiziert Geräte, verwendet Tags im Gerätezwilling und identifiziert Module mithilfe von Tags im Modulzwilling. Jedes Gerät oder Modul kann mehrere Tags haben, die Sie auf jede für Ihre Lösung sinnvolle Weise definieren können. Wenn Sie beispielsweise Geräte an verschiedenen Standorten verwalten, fügen Sie einem Gerätezwilling die folgenden Tags hinzu:
 
 ```json
 "tags": {
@@ -63,7 +63,7 @@ Bevor Sie eine Konfiguration erstellen, müssen Sie angeben, welche Geräte oder
 
 ## <a name="define-the-target-content-and-metrics"></a>Definieren der Zielinhalte und -metriken
 
-Die Abfragen von Zielinhalten und -metriken werden als JSON-Dokumente angegeben, in denen die gewünschten festzulegenden Eigenschaften des Geräte- oder Modulzwillings und die gemeldeten zu messenden Eigenschaften beschrieben werden.  Speichern Sie die Zielinhalte und -metriken lokal als TXT-Dateien, um eine automatische Konfiguration mithilfe der Azure CLI zu erstellen. Sie verwenden die Dateipfade in einem späteren Abschnitt, wenn Sie den Befehl zum Anwenden der Konfiguration auf Ihr Gerät ausführen.
+Die Abfragen von Zielinhalten und -metriken werden als JSON-Dokumente angegeben, in denen die gewünschten festzulegenden Eigenschaften des Geräte- oder Modulzwillings und die gemeldeten zu messenden Eigenschaften beschrieben werden. Speichern Sie die Zielinhalte und -metriken lokal als TXT-Dateien, um eine automatische Konfiguration mithilfe der Azure CLI zu erstellen. Sie verwenden die Dateipfade in einem späteren Abschnitt, wenn Sie den Befehl zum Anwenden der Konfiguration auf Ihr Gerät ausführen.
 
 Hier sehen Sie ein einfaches Zielinhaltsbeispiel für eine automatische Gerätekonfiguration:
 

@@ -1,21 +1,21 @@
 ---
 title: Behandeln von Problemen mit erweiterten Diagnoseabfragen für die Mongo-API
 titleSuffix: Azure Cosmos DB
-description: Erfahren Sie, wie Sie für die Mongo-API Diagnoseprotokolle zur Problembehandlung für Daten abfragen, die in Azure Cosmos DB gespeichert sind.
+description: Hier erfahren Sie, wie Sie Diagnoseprotokolle zur Problembehandlung bei Daten, die in Azure Cosmos DB gespeichert sind, für die MongoDB-API abfragen.
 services: cosmos-db
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/12/2021
 ms.author: esarroyo
 author: StefArroyo
-ms.openlocfilehash: c658ff8f4d3fcebca9f3362511e7043364423c84
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 07d0942be40cf2834399db198d0c56e9485161c0
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355960"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122605117"
 ---
-# <a name="troubleshoot-issues-with-advanced-diagnostics-queries-for-mongo-api"></a>Behandeln von Problemen mit erweiterten Diagnoseabfragen für die Mongo-API
+# <a name="troubleshoot-issues-with-advanced-diagnostics-queries-for-the-mongodb-api"></a>Behandeln von Problemen bei erweiterten Diagnoseabfragen für die MongoDB-API
 
 [!INCLUDE[appliesto-all-apis-except-table](../includes/appliesto-all-apis-except-table.md)]
 
@@ -26,15 +26,20 @@ ms.locfileid: "122355960"
 > * [Gremlin-API](../queries-gremlin.md)
 >
 
-In diesem Artikel erfahren Sie, wie Sie komplexere Abfragen schreiben, um Probleme mit Ihrem Azure Cosmos DB-Konto mithilfe von Diagnoseprotokollen zu beheben, die an **AzureDiagnostics-Tabellen (Legacy)** und **ressourcenspezifische Tabellen (Vorschauversion)** gesendet werden.
+In diesem Artikel wird erläutert, wie Sie komplexere Abfragen schreiben, um mithilfe von Diagnoseprotokollen, die an **Azure-Diagnose-Tabellen (Legacy)** und **ressourcenspezifische Tabellen (Vorschau)** gesendet werden, Probleme bei Ihrem Azure Cosmos DB-Konto zu beheben.
 
-Bei AzureDiagnostics-Tabellen werden alle Daten in eine einzelne Tabelle geschrieben, und Benutzer müssen angeben, welche Kategorie sie abfragen möchten. Wenn Sie die Volltextabfrage Ihrer Anforderung anzeigen möchten, erfahren Sie in [diesem Artikel](../cosmosdb-monitor-resource-logs.md#full-text-query), wie Sie das Feature aktivieren.
+Bei Azure-Diagnose-Tabellen werden alle Daten in eine einzige Tabelle geschrieben. Benutzer geben an, welche Kategorie sie abfragen möchten. Wenn Sie die Volltextabfrage Ihrer Anforderung anzeigen möchten, lesen Sie den Artikel [Überwachen von Azure Cosmos DB-Daten mithilfe von Diagnoseeinstellungen in Azure](../cosmosdb-monitor-resource-logs.md#full-text-query). Darin erfahren Sie, wie Sie dieses Feature aktivieren können.
 
-Bei [ressourcenspezifischen Tabellen](../cosmosdb-monitor-resource-logs.md#create-setting-portal) werden Daten für jede Kategorie der Ressource in einzelne Tabellen geschrieben. Wir empfehlen diesen Modus, da die Bearbeitung der Daten erheblich erleichert wird, eine bessere Erkennbarkeit der Schemas ermöglicht wird und die Leistung in Bezug auf Erfassungslatenz sowie Abfragezeiten verbessert wird.
+Bei [ressourcenspezifischen Tabellen](../cosmosdb-monitor-resource-logs.md#create-setting-portal) werden Daten in einzelne Tabellen für die jeweilige Kategorie der Ressource geschrieben. Wir empfehlen diesen Modus aus folgenden Gründen:
+
+- Er vereinfacht die Arbeit mit den Daten erheblich. 
+- Er ermöglicht eine bessere Erkennbarkeit der Schemas.
+- Er verbessert die Leistung sowohl im Hinblick auf Erfassungslatenz als auch auf Abfragezeiten.
 
 ## <a name="common-queries"></a>Allgemeine Abfragen
+Allgemeine Abfragen werden in den ressourcenspezifischen und Azure-Diagnose-Tabellen angezeigt.
 
-- N (10) Anforderungen/Abfragen mit dem höchsten RU-Verbrauch in einem bestimmten Zeitrahmen
+### <a name="top-n10-request-unit-ru-consuming-requests-or-queries-in-a-specific-time-frame"></a>Top N(10) Request Unit (RU), die Anforderungen oder Abfragen in einem bestimmten Zeitrahmen verbrauchen
 
 # <a name="resource-specific"></a>[Modus „Ressourcenspezifisch“](#tab/resource-specific)
    ```Kusto
@@ -64,7 +69,7 @@ Bei [ressourcenspezifischen Tabellen](../cosmosdb-monitor-resource-logs.md#creat
    ```    
 ---
 
-- Gedrosselte Anforderungen (statusCode = 429 oder 16500) in einem bestimmten Zeitfenster 
+### <a name="requests-throttled-statuscode--429-or-16500-in-a-specific-time-window"></a>Gedrosselte Anforderungen (statusCode = „429“ oder „16500“) in einem bestimmten Zeitfenster 
 
 # <a name="resource-specific"></a>[Modus „Ressourcenspezifisch“](#tab/resource-specific)
    ```Kusto
@@ -91,7 +96,7 @@ Bei [ressourcenspezifischen Tabellen](../cosmosdb-monitor-resource-logs.md#creat
    ```    
 ---
 
-- Anforderungen mit Zeitüberschreitung (statusCode = 50) in einem bestimmten Zeitfenster 
+### <a name="timed-out-requests-statuscode--50-in-a-specific-time-window"></a>Anforderungen mit Zeitüberschreitung (statusCode = „50“) in einem bestimmten Zeitfenster 
 
 # <a name="resource-specific"></a>[Modus „Ressourcenspezifisch“](#tab/resource-specific)
    ```Kusto
@@ -117,7 +122,7 @@ Bei [ressourcenspezifischen Tabellen](../cosmosdb-monitor-resource-logs.md#creat
    ```    
 ---
 
-- Abfragen mit großer Antwortlänge (Nutzdatengröße der Serverantwort)
+### <a name="queries-with-large-response-lengths-payload-size-of-the-server-response"></a>Abfragen mit langer Antwort (Nutzdatengröße der Serverantwort)
 
 # <a name="resource-specific"></a>[Modus „Ressourcenspezifisch“](#tab/resource-specific)
    ```Kusto
@@ -145,7 +150,7 @@ Bei [ressourcenspezifischen Tabellen](../cosmosdb-monitor-resource-logs.md#creat
    ```    
 ---
 
-- RU-Verbrauch nach physischer Partition (für alle Replikate in der Replikatgruppe)
+### <a name="ru-consumption-by-physical-partition-across-all-replicas-in-the-replica-set"></a>RU-Verbrauch nach physischer Partition (für alle Replikate in der Replikatgruppe)
 
 # <a name="resource-specific"></a>[Modus „Ressourcenspezifisch“](#tab/resource-specific)
    ```Kusto
@@ -173,7 +178,7 @@ Bei [ressourcenspezifischen Tabellen](../cosmosdb-monitor-resource-logs.md#creat
    ```    
 ---
 
-- RU-Verbrauch nach logischer Partition (für alle Replikate in der Replikatgruppe)
+### <a name="ru-consumption-by-logical-partition-across-all-replicas-in-the-replica-set"></a>RU-Verbrauch nach logischer Partition (für alle Replikate in der Replikatgruppe)
 
 # <a name="resource-specific"></a>[Modus „Ressourcenspezifisch“](#tab/resource-specific)
    ```Kusto
@@ -201,6 +206,5 @@ Bei [ressourcenspezifischen Tabellen](../cosmosdb-monitor-resource-logs.md#creat
 ---
 
 ## <a name="next-steps"></a>Nächste Schritte 
-* Weitere Informationen zum Erstellen von Diagnoseeinstellungen für Cosmos DB finden Sie im Artikel zum [Erstellen von Diagnoseeinstellungen](../cosmosdb-monitor-resource-logs.md).
-
-* Ausführliche Informationen zum Erstellen einer Diagnoseeinstellung über das Azure-Portal, die Befehlszeilenschnittstelle oder PowerShell finden Sie unter [Erstellen einer Diagnoseeinstellung zum Sammeln von Plattformprotokollen und Metriken in Azure](../../azure-monitor/essentials/diagnostic-settings.md).
+* Weitere Informationen zum Erstellen von Diagnoseeinstellungen für Azure Cosmos DB finden Sie unter [Erstellen von Diagnoseeinstellungen](../cosmosdb-monitor-resource-logs.md).
+* Ausführliche Informationen zum Erstellen einer Diagnoseeinstellung über das Azure-Portal, die Azure CLI oder PowerShell finden Sie unter [Erstellen von Diagnoseeinstellungen zum Sammeln von Plattformprotokollen und Metriken in Azure](../../azure-monitor/essentials/diagnostic-settings.md).

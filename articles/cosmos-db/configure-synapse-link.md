@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/12/2021
 ms.author: rosouz
 ms.custom: references_regions, synapse-cosmos-db, devx-track-azurepowershell
-ms.openlocfilehash: 86f27f08bd7495e558cd81b122f1daa243dbe313
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 116997c8abbad382dc10014fd76e7933f333c113
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122354962"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123109349"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>Konfigurieren und Verwenden von Azure Synapse Link für Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -268,7 +268,9 @@ Befolgen Sie die Anleitung unter [Herstellen einer Verbindung mit Azure Synapse 
 
 ## <a name="query-analytical-store-using-apache-spark-for-azure-synapse-analytics"></a><a id="query-analytical-store-spark"></a> Abfragen des Analysespeichers mithilfe von Apache Spark für Azure Synapse Analytics
 
-Befolgen Sie die Anleitung im Artikel [Abfragen des Azure Cosmos DB-Analysespeichers](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md), um mit Synapse Spark Abfragen durchzuführen. Dieser Artikel enthält einige Beispiele dafür, wie Sie mithilfe von Synapse-Gesten mit dem Analysespeicher interagieren können. Diese Gesten werden angezeigt, wenn Sie mit der rechten Maustaste auf einen Container klicken. Mit Gesten können Sie schnell Code generieren und an Ihre Anforderungen anpassen. Sie eignen sich auch ideal zum Ermitteln von Daten mit nur einem Mausklick.
+Befolgen Sie die Anleitung im Artikel [Abfragen des Azure Cosmos DB-Analysespeichers mithilfe von Spark 3](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark-3.md), um Abfragen mit Synapse Spark 3 durchzuführen. Dieser Artikel enthält einige Beispiele dafür, wie Sie mithilfe von Synapse-Gesten mit dem Analysespeicher interagieren können. Diese Gesten werden angezeigt, wenn Sie mit der rechten Maustaste auf einen Container klicken. Mit Gesten können Sie schnell Code generieren und an Ihre Anforderungen anpassen. Sie eignen sich auch ideal zum Ermitteln von Daten mit nur einem Mausklick.
+
+Befolgen Sie für die Spark 2-Integration die Anleitung im Artikel [Abfragen des Azure Cosmos DB-Analysespeichers mithilfe von Spark 2](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md).
 
 ## <a name="query-the-analytical-store-using-serverless-sql-pool-in-azure-synapse-analytics"></a><a id="query-analytical-store-sql-on-demand"></a> Abfragen des Analysespeichers mit einem serverlosen SQL-Pool in Azure Synapse Analytics
 

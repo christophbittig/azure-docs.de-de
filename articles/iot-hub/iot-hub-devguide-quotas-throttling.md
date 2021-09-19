@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Operations'
 - 'Role: Technical Support'
 - contperf-fy21q4
-ms.openlocfilehash: 127e511769a7c2aface1531c9f888e9ce213b999
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 2e39a2dcdf0f6e3b56665ca7be415c567ca770e8
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407019"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866292"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenz: IoT Hub-Kontingente und -Drosselung
 
@@ -70,7 +70,7 @@ Die folgende Tabelle zeigt die erzwungenen Drosselungen. Die Werte beziehen sich
 
 *  **Kontingent** ist die aggregierte Anzahl von Nachrichten, die Sie in Ihrem Hub *pro Tag* senden können. Das Kontingentlimit Ihres Hubs finden Sie auf der Seite [IoT Hub – Preise](https://azure.microsoft.com/pricing/details/iot-hub/) in der Spalte **GESAMTANZAHL VON NACHRICHTEN/TAG**.
 
-*  Ihre Cloud-zu-Gerät- und Gerät-zu-Cloud-Drosselung bestimmt die maximale *Rate*, mit der Sie Nachrichten senden können (also die Anzahl von Nachrichten, unabhängig von 4-KB-Blöcken). Jede Nachricht kann bis zu 256 KB groß sein. Hierbei handelt es sich um die [maximale Nachrichtengröße](iot-hub-devguide-quotas-throttling.md#other-limits).
+*  Ihre Cloud-zu-Gerät- und Gerät-zu-Cloud-Drosselung bestimmt die maximale *Rate*, mit der Sie Nachrichten senden können (also die Anzahl von Nachrichten, unabhängig von 4-KB-Blöcken). D2C-Nachrichten können bis zu 256 KB groß sein. C2D-Nachrichten können bis zu 64 KB groß sein. Dies sind die [maximalen Nachrichtengrößen] für jeden Nachrichtentyp.
 
 *  Es empfiehlt sich, Ihre Aufrufe zu drosseln, um die Drosselungslimits nicht zu erreichen oder zu überschreiten. Bei Erreichen des Limits gibt IoT Hub den Fehlercode 429 zurück, und der Client muss den Vorgang nach einem Backoff wiederholen. Diese Limits gelten pro Hub (in einigen Fällen auch pro Hub/Einheit). Weitere Informationen finden Sie unter [Wiederholungsmuster](iot-hub-reliability-features-in-sdks.md#retry-patterns).
 
@@ -111,6 +111,7 @@ IoT Hub erzwingt andere Funktionsbegrenzungen:
 | Automatische IoT Edge-Bereitstellungen<sup>1</sup> | 50 Module pro Bereitstellung 100 Bereitstellungen (einschließlich geschichteter Bereitstellungen) pro kostenpflichtigem SKU-Hub. 10 Bereitstellungen pro kostenfreiem SKU-Hub. |
 | Zwillinge<sup>1</sup> | Die maximale Größe der Abschnitte für gewünschte Eigenschaften und gemeldete Eigenschaften beträgt jeweils 32 KB. Die maximale Größe des Tagabschnitts beträgt 8 KB. |
 | Freigegebene Zugriffsrichtlinien | Die maximale Anzahl von SAS-Richtlinien beträgt 16. |
+| Beschränken des ausgehenden Netzwerkzugriffs | Die maximale Anzahl von zulässigen FQDNs beträgt 20. |
 | X.509-Zertifizierungsstellenzertifikate | Die maximale Anzahl von X.509-Zertifizierungsstellenzertifikaten, die bei IoT Hub registriert werden können, beträgt 25. |
 
 <sup>1</sup>Dieses Feature ist im Tarif „Basic“ von IoT Hub nicht verfügbar. Weitere Informationen finden Sie unter [Wählen des richtigen IoT Hub-Tarifs für Ihre Lösung](iot-hub-scaling.md).

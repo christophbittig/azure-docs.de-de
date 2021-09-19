@@ -7,20 +7,21 @@ ms.topic: conceptual
 ms.date: 04/05/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 63892e4ed71ec435a7068c9c68b9981a71205fb1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 869b28c8c65c402936dcb7b7641a6e4af8db3f47
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345924"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123100914"
 ---
 # <a name="how-to-meet-data-residency-requirements-in-azure-cosmos-db"></a>Vorgehensweise: Erfüllen der Datenresidenzanforderungen in Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 In Azure Cosmos DB können Sie Ihre Daten und Sicherungen so konfigurieren, dass sie in einer einzelnen Region verbleiben, um die [Residenzanforderungen](https://azure.microsoft.com/global-infrastructure/data-residency/) zu erfüllen.
 
 ## <a name="residency-requirements-for-data"></a>Residenzanforderungen für Daten
 
-In Azure Cosmos DB müssen Sie die regionsübergreifende Datenreplikation explizit konfigurieren. Erfahren Sie, wie Sie die Georeplikation mit [Azure-Portal](how-to-manage-database-account.md#addremove-regions-from-your-database-account) und [Azure CLI](scripts/cli/common/regions.md) konfigurieren. Um die Anforderungen an die Datenresidenz zu erfüllen, können Sie eine Azure-Richtlinie erstellen, die bestimmten Regionen ermöglicht, die Datenreplikation in unerwünschten Regionen zu verhindern.
+In Azure Cosmos DB müssen Sie die regionsübergreifende Datenreplikation explizit konfigurieren. Erfahren Sie, wie Sie die Georeplikation mit [Azure-Portal](how-to-manage-database-account.md#addremove-regions-from-your-database-account) und [Azure CLI](scripts/cli/common/regions.md) konfigurieren. Zur Erfüllung der Anforderungen an die Datenresidenz können Sie eine Azure Policy-Definition erstellen, die es bestimmten Regionen ermöglicht, die Datenreplikation in unerwünschte Regionen zu verhindern.
 
 ## <a name="residency-requirements-for-backups"></a>Residenzanforderungen für Sicherungen
 
@@ -37,7 +38,7 @@ Azure Policy ist ein Dienst, mit dem Sie Richtlinien zum Anwenden von Regeln auf
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Konfigurieren und Verwalten der periodischen Sicherung mit dem [Azure-Portal](configure-periodic-backup-restore.md)
-* Bereitstellen der fortlaufende Sicherung mit dem [Azure-Portal](provision-account-continuous-backup.md#provision-portal), [PowerShell](provision-account-continuous-backup.md#provision-powershell), der [CLI](provision-account-continuous-backup.md#provision-cli) oder [Azure Resource Manager](provision-account-continuous-backup.md#provision-arm-template)
-* Wiederherstellen des Kontos für die fortlaufende Sicherung mit dem [Azure-Portal](restore-account-continuous-backup.md#restore-account-portal), [PowerShell](restore-account-continuous-backup.md#restore-account-powershell), der [CLI](restore-account-continuous-backup.md#restore-account-cli) oder [Azure Resource Manager](restore-account-continuous-backup.md#restore-arm-template)
-* [Migrieren eines Konto von der regelmäßigen Sicherung zur fortlaufenden Sicherung](migrate-continuous-backup.md)
+* Bereitstellen der fortlaufenden Sicherung über das [Azure-Portal](provision-account-continuous-backup.md#provision-portal), [PowerShell](provision-account-continuous-backup.md#provision-powershell), die [Befehlszeilenschnittstelle](provision-account-continuous-backup.md#provision-cli) oder [Azure Resource Manager](provision-account-continuous-backup.md#provision-arm-template)
+* Wiederherstellen des Kontos für die fortlaufende Sicherung über das [Azure-Portal](restore-account-continuous-backup.md#restore-account-portal), [PowerShell](restore-account-continuous-backup.md#restore-account-powershell), die [Befehlszeilenschnittstelle](restore-account-continuous-backup.md#restore-account-cli) oder [Azure Resource Manager](restore-account-continuous-backup.md#restore-arm-template)
+* [Migrieren eines Kontos von der regelmäßigen Sicherung zur fortlaufenden Sicherung](migrate-continuous-backup.md)
 

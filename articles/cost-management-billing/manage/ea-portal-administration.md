@@ -3,18 +3,18 @@ title: Azure EA-Portalverwaltung
 description: In diesem Artikel werden die häufigsten Aufgaben erläutert, die Administratoren im Azure EA-Portal durchführen.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/22/2021
+ms.date: 08/25/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: a973fc9dc9cf4b4fe514ddf987fd2052c46a6e6b
-ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
+ms.openlocfilehash: bf887ad515f8c4349fcff54d25be1c70a30d018f
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112519745"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123098318"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA-Portalverwaltung
 
@@ -143,9 +143,11 @@ So bestätigen Sie den Kontobesitz:
 
 ## <a name="change-azure-subscription-or-account-ownership"></a>Ändern des Besitzes von Azure-Abonnements oder -Konten
 
-Dieser Abschnitt gilt nur, wenn ein Abonnementbesitzer geändert wird. Für das Ändern eines Abonnementbesitzes ist kein Azure-Supportticket erforderlich. Unternehmensadministratoren können das Azure Enterprise Portal verwenden, um den Kontobesitz bestimmter oder aller Abonnements in einer Registrierung zu übertragen. Sie haben auch die Möglichkeit, das Abonnementverzeichnis (Mandant) zu ändern. 
+Dieser Abschnitt gilt nur, wenn ein Abonnementbesitzer geändert wird. Zum Ändern eines Abonnementbesitzes ist kein Azure-Supportticket erforderlich. Unternehmensadministratoren können das Azure Enterprise Portal verwenden, um den Kontobesitz bestimmter oder aller Abonnements in einer Registrierung zu übertragen. Sie haben auch die Möglichkeit, das Abonnementverzeichnis (Mandant) zu ändern. 
 
 Ein EA-Administrator kann jedoch kein Konto von einer Registrierung in eine andere Registrierung übertragen. Um ein Konto von einer Registrierung in eine andere zu übertragen, ist eine Supportanfrage erforderlich. Informationen zum Übertragen eines Kontos von einer Registrierung in eine andere Registrierung finden Sie unter [Übertragen eines Unternehmenskontos auf eine neue Registrierung](ea-transfers.md#transfer-an-enterprise-account-to-a-new-enrollment).
+
+Mithilfe desselben Prozesses können Abonnementadministratoren mit nutzungsbasierter Bezahlung den Kontobesitz ihrer Abonnements auch auf eine EA-Registrierung übertragen.
 
 Wenn Sie eine Besitzübertragung für ein Abonnement oder Konto durchführen, aktualisiert Microsoft den Kontobesitzer.
 
