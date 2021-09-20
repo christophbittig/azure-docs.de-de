@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: troubleshooting
 ms.date: 08/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: fff22a9d8b6a7b928fb1aba57301cf949113a785
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 7b0045ccfd54d956ef8ae7fd2eb1b38705aafd31
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444057"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122514967"
 ---
 # <a name="virtual-wan-faq"></a>Virtual WAN – Häufig gestellte Fragen
 
@@ -94,9 +94,13 @@ Es gibt zwei Optionen zum Hinzufügen von DNS-Servern für die P2S-Clients. Die 
 
 ### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>Für Benutzer-VPN (Point-to-Site): Wie viele Clients werden unterstützt?
 
-Jedes Benutzer-VPN-Gateway (P2S) verfügt über zwei Instanzen. Für jede Instanz wird eine bestimmte maximale Anzahl von Verbindungen unterstützt, wenn sich die Skalierungseinheit ändert. Für Skalierungseinheit 1 bis 3 werden 500 Verbindungen, für Skalierungseinheit 4 bis 6 werden 1.000 Verbindungen, für Skalierungseinheit 7 bis 12 werden 5.000 Verbindungen und für Skalierungseinheit 13 bis 18 werden bis zu 10.000 Verbindungen unterstützt.
+Jedes Benutzer-VPN-Gateway (P2S) verfügt über zwei Instanzen. Für jede Instanz wird eine bestimmte maximale Anzahl von Verbindungen unterstützt, wenn sich die Skalierungseinheiten ändern. Für Skalierungseinheit 1 bis 3 werden 500 Verbindungen, für Skalierungseinheit 4 bis 6 werden 1.000 Verbindungen, für Skalierungseinheit 7 bis 12 werden 5.000 Verbindungen und für Skalierungseinheit 13 bis 18 werden bis zu 10.000 Verbindungen unterstützt.
 
 Ein Beispiel: Angenommen, der Benutzer wählt eine Skalierungseinheit aus. Jede Skalierungseinheit steht für ein bereitgestelltes Aktiv/Aktiv-Gateway, und jede Instanz (in diesem Fall zwei) unterstützt bis zu 500 Verbindungen. Da Sie 500 Verbindungen * 2 pro Gateway erhalten können, bedeutet dies nicht, dass Sie 1000 (statt der 500) für diese Skalierungseinheit einplanen. Möglicherweise müssen Instanzen gewartet werden, wobei die Konnektivität für die zusätzlichen 500 unterbrochen werden kann, wenn Sie die empfohlene Anzahl von Verbindungen überschreiten. Planen Sie darüber hinaus auch Ausfallzeit ein, falls Sie für die Skalierungseinheit das Hoch- oder Herunterskalieren durchführen oder die Point-to-Site-Konfiguration auf dem VPN-Gateway ändern möchten.
+
+### <a name="what-are-virtual-wan-gateway-scale-units"></a>Was sind Virtual WAN-Gatewayskalierungseinheiten?
+
+Eine Skalierungseinheit ist eine Einheit, die zum Auswählen eines aggregierten Durchsatzes eines Gateways im virtuellen Hub definiert wird. 1 VPN-Skalierungseinheit = 500 MBit/s. 1 ExpressRoute-Skalierungseinheit = 2 GBits/s. Beispiel: Für 10 VPN-Skalierungseinheiten gilt demnach Folgendes: 500 MBit/s · 10 = 5 GBit/s.
 
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Worin besteht der Unterschied zwischen einem virtuellen Azure-Netzwerkgateway (VPN-Gateway) und einem Azure Virtual WAN-VPN-Gateway?
 
@@ -111,11 +115,6 @@ Das VPN des Gateways für virtuelle Netzwerke ist auf 30 Tunnel begrenzt. Für 
 ### <a name="what-is-the-recommended-packets-per-second-limit-per-ipsec-tunnel"></a>Was ist der empfohlene Grenzwert für „Pakete pro Sekunde“ pro IPSEC-Tunnel?
 
 Es wird empfohlen, ca. 95.000 PPS mit dem GCMAES256-Algorithmus für IPSEC-Verschlüsselung und -Integrität zu senden, um eine optimale Leistung zu erzielen. Obwohl der Datenverkehr nicht blockiert wird, wenn mehr als 95.000 PPS gesendet werden, kann mit Leistungsbeeinträchtigungen wie Latenz- und Paketverlusten gerechnet werden. Erstellen Sie zusätzliche Tunnel, wenn ein größerer PPS-Wert erforderlich ist.
-
-
-### <a name="what-is-a-virtual-wan-gateway-scale-unit"></a>Was ist eine Virtual WAN-Gatewayskalierungseinheit?
-
-Eine Skalierungseinheit ist eine Einheit, die zum Auswählen eines aggregierten Durchsatzes eines Gateways im virtuellen Hub definiert wird. 1 VPN-Skalierungseinheit = 500 MBit/s. 1 ExpressRoute-Skalierungseinheit = 2 GBits/s. Beispiel: Für 10 VPN-Skalierungseinheiten gilt demnach Folgendes: 500 MBit/s · 10 = 5 GBit/s.
 
 ### <a name="which-device-providers-virtual-wan-partners-are-supported"></a>Welche Geräteanbieter (Virtual WAN-Partner) werden unterstützt?
 

@@ -2,19 +2,20 @@
 title: Erstellen von Auslösern für benutzerdefinierte Ereignisse in Azure Data Factory
 description: Hier erfahren Sie, wie in Azure Data Factory ein Auslöser erstellt wird, der eine Pipeline als Antwort auf ein in Event Grid veröffentlichtes Ereignis ausführt.
 ms.service: data-factory
+ms.subservice: orchestration
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 05/07/2021
-ms.openlocfilehash: d91e1f52f0844317b049086489bda25c079ee9be
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 046d94202769845f58c7f528bddb37e29e0c312a
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109634291"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122514426"
 ---
-# <a name="create-a-custom-event-trigger-to-run-a-pipeline-in-azure-data-factory-preview"></a>Erstellen eines benutzerdefinierten Ereignisauslösers zum Ausführen einer Pipeline in Azure Data Factory (Vorschau)
+# <a name="create-a-custom-event-trigger-to-run-a-pipeline-in-azure-data-factory"></a>Erstellen eines benutzerdefinierten Ereignisauslösers zum Ausführen einer Pipeline in Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -93,6 +94,39 @@ Data Factory erwartet, dass die Ereignisse dem [Event Grid-Ereignisschema](../ev
 
 1. Wählen Sie nach Eingabe der Parameter **OK** aus.
 
+## <a name="advanced-filtering"></a>Erweiterte Filterung
+
+Benutzerdefinierte Ereignisauslöser unterstützen erweiterte Filterfunktionen, ähnlich wie [Event Grid: Erweiterte Filterung](../event-grid/event-filtering.md#advanced-filtering). Mit diesen bedingten Filtern können Pipelines basierend auf den _Werten_ der Ereignisnutzdaten ausgelöst werden. Sie können z. B. ein Feld namens „_Department“ in den Ereignisnutzdaten verwenden, und die Pipeline sollte nur ausgelöst werden, wenn _Department_ (Abteilung) gleich _Finance_ (Finanzen) ist. Sie können auch eine komplexe Logik angeben. Beispiel: _date_ field in list [1, 2, 3, 4, 5] (Feld „Datum“ in Liste [1, 2, 3, 4, 5]), _month_ field __not__ in list [11, 12] (Feld „Monat“ nicht in Liste [11, 12]), _tag_ field contains any of ['Fiscal Year 2021', 'FiscalYear2021', 'FY2021'] (Feld „Tag“ enthält eine der folgenden Angaben ['Geschäftsjahr 2021', 'GeschäftsJahr2021', 'GJ2021']).
+
+ :::image type="content" source="media/how-to-create-custom-event-trigger/custom-event-5-advanced-filters.png" alt-text="Screenshot: Festlegen erweiterter Filter für benutzerdefinierte Ereignisauslöser":::
+
+Ab heute unterstützt der benutzerdefinierte Ereignisauslöser eine __Teilmenge__ der [erweiterten Filteroperatoren](../event-grid/event-filtering.md#advanced-filtering) in Event Grid. Die folgenden Filterbedingungen werden unterstützt:
+
+* NumberIn
+* NumberNotIn
+* NumberLessThan
+* NumberGreaterThan
+* NumberLessThanOrEquals
+* NumberGreaterThanOrEquals
+* BoolEquals
+* StringContains
+* StringBeginsWith
+* StringEndsWith
+* StringIn
+* StringNotIn
+
+Klicken Sie auf **+Neu**, um neue Filterbedingungen hinzuzufügen. 
+
+Darüber hinaus gelten für benutzerdefinierte Ereignisauslöser [dieselben Einschränkungen wie für Event Grid](../event-grid/event-filtering.md#limitations), einschließlich:
+
+* 5 erweiterte Filter und 25 Filterwerte für alle Filter pro benutzerdefiniertem Ereignisauslöser
+* 512 Zeichen pro Zeichenfolgenwert
+* Fünf Werte für die Operatoren „in“ und „not in“
+* Schlüssel dürfen keine `.`-Zeichen (Punkt) enthalten, z. B. `john.doe@contoso.com`. Derzeit gibt es keine Unterstützung für Escapezeichen in Schlüsseln.
+* Der gleiche Schlüssel kann in mehr als einem Filter verwendet werden.
+
+Data Factory basiert auf der neuesten _GA_-Version (allgemeine Verfügbarkeit) der Event Grid-[API](../event-grid/whats-new.md). Sobald neue API-Versionen die GA-Phase erreicht haben, wird Data Factory seine Unterstützung für fortgeschrittene Filteroperatoren erweitern.
+
 ## <a name="json-schema"></a>JSON-Schema
 
 Die folgende Tabelle bietet eine Übersicht über die Schemaelemente im Zusammenhang mit Auslösern für benutzerdefinierte Ereignisse:
@@ -101,12 +135,13 @@ Die folgende Tabelle bietet eine Übersicht über die Schemaelemente im Zusammen
 |---|----------------------------|---|---|---|
 | `scope` | Die Azure Resource Manager-Ressourcen-ID des Event Grid-Themas. | String | Azure Resource Manager-ID | Ja |
 | `events` | Der Ereignistyp, die diesen Trigger auslöst. | Array von Zeichenfolgen    |  | Ja, mindestens ein Wert wird erwartet. |
-| `subjectBeginsWith` | Das `subject` Feld muss mit dem angegebenen Muster beginnen, damit der Trigger ausgelöst wird. *Factories* beispielsweise, löst den Trigger nur für Ereignisbetreffe aus, die mit *Factories* beginnen. | String   | | Nein |
+| `subjectBeginsWith` | Das `subject` Feld muss mit dem angegebenen Muster beginnen, damit der Trigger ausgelöst wird. Beispielsweise löst _factories_ nur den Trigger für Ereignisbetreffe aus, die mit *factories* beginnen. | String   | | Nein |
 | `subjectEndsWith` | Das `subject` Feld muss mit dem angegebenen Muster beginnen, damit der Trigger ausgelöst wird. | String   | | Nein |
+| `advancedFilters` | Liste der JSON-Blobs, die jeweils eine Filterbedingung angeben. Jedes Blob gibt `key`, `operatorType` und `values` an. | Liste der JSON-Blobs | | Nein |
 
 ## <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
 
-Azure Data Factory verwendet Azure RBAC, um nicht autorisierten Zugriff zu verhindern. Um ordnungsgemäß zu funktionieren, erfordert Data Factory Zugriff auf:
+Azure Data Factory verwendet die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure, um nicht autorisierten Zugriff zu verhindern. Um ordnungsgemäß zu funktionieren, erfordert Data Factory Zugriff auf:
 - Ereignisse überwachen
 - Abonnieren Sie Updates von Ereignissen.
 - Lösen Sie Pipelines aus, die mit benutzerdefinierten Ereignissen verknüpft sind.
