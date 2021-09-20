@@ -5,17 +5,16 @@ ms.topic: conceptual
 services: automation
 ms.subservice: dsc
 ms.date: 08/31/2021
-ms.openlocfilehash: 600fdfafa64e0827ac023ae01810ec54bdaa95fe
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: e4352c5c2cca0391e4e795b537af16c28ded6f6e
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123438496"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123354462"
 ---
 # <a name="configure-linux-desired-state-with-azure-automation-state-configuration-using-powershell"></a>Konfigurieren des gewünschten Zustands für Linux-Computer mit Azure Automation State Configuration mithilfe von PowerShell
 
 In diesem Tutorial überprüfen Sie mithilfe von Azure Automation State Configuration mit PowerShell, ob ein virtueller Azure Linux-Computer mit einem gewünschten Zustand kompatibel ist. Bei dem gewünschten Zustand handelt es sich um die Frage, ob der Dienst „apache2“ auf dem Knoten vorhanden ist.
-
 Mit Azure Automation State Configuration können Sie Konfigurationen für Ihre Computer festlegen und sicherstellen, dass sich diese Computer im Zeitverlauf in einem angegebenen Zustand befinden. Weitere Informationen zu State Configuration finden Sie unter [Übersicht über Azure Automation State Configuration](./automation-dsc-overview.md).
 
 In diesem Tutorial lernen Sie Folgendes:

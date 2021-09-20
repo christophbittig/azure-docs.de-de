@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: mathapli
 ms.reviewer: cynthn
-ms.openlocfilehash: 970e0931556a787b461b8c614b41fd88271bdf1c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: ed4df5d747dfcd9d5e50e439be63b7682d6b886a
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114469118"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696762"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Übersicht über Red Hat Enterprise Linux-Images
+
+**Gilt für**: :heavy_check_mark: Linux-VMs 
 
 Dieser Artikel beschreibt die verfügbaren Red Hat Enterprise Linux-Images (RHEL) in Azure Marketplace sowie Richtlinien für die Benennung und Aufbewahrung.
 

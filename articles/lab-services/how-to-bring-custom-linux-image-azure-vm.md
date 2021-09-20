@@ -3,12 +3,12 @@ title: 'Azure Lab Services: Importieren eines benutzerdefinierten Linux-Images v
 description: Beschreibt, wie ein benutzerdefiniertes Linux-Image von einem virtuellen Azure-Computer importiert wird.
 ms.date: 07/27/2021
 ms.topic: how-to
-ms.openlocfilehash: d0ddde1be7792e5bc4c0c58c50945aa27920d889
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.openlocfilehash: edb1620b0051e82df3994982eb069e78e22777bf
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122830963"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450933"
 ---
 # <a name="bring-a-linux-custom-image-from-an-azure-virtual-machine"></a>Importieren eines benutzerdefinierten Images von einem virtuellen Azure-Computer
 
@@ -34,7 +34,7 @@ Sie benötigen Berechtigungen zum Erstellen einer Azure-VM im Azure-Abonnement I
 
 ## <a name="import-the-custom-image-into-a-shared-image-gallery"></a>Importieren des benutzerdefinierten Images in eine Shared Image Gallery
 
-1. Erstellen Sie in einer Shared Image Gallery eine [Imagedefinition](../virtual-machines/windows/shared-images-portal.md#create-an-image-definition), oder wählen Sie eine vorhandene Imagedefinition aus.
+1. Erstellen Sie in einer Shared Image Gallery eine [Imagedefinition](../virtual-machines/image-version.md), oder wählen Sie eine vorhandene Imagedefinition aus.
      - Wählen Sie **Gen 1** als **VM-Generation** aus.
      - Wählen Sie aus, ob Sie ein **spezialisiertes** oder **generalisiertes** Image für den **Betriebssystemstatus** erstellen.
 
@@ -42,7 +42,7 @@ Sie benötigen Berechtigungen zum Erstellen einer Azure-VM im Azure-Abonnement I
     
     Sie können auch eine vorhandene Imagedefinition verwenden und eine neue Version für Ihr benutzerdefiniertes Image erstellen.
     
-1. [Erstellen Sie eine Imageversion](../virtual-machines/windows/shared-images-portal.md#create-an-image-version).
+1. [Erstellen Sie eine Imageversion](../virtual-machines/image-version.md).
     - Die Eigenschaft **Versionsnummer** verwendet das folgende Format: *MajorVersion.MinorVersion.Patch*. 
     - Wählen Sie als **Quelle** in der Dropdownliste die Option **Datenträger und/oder Momentaufnahmen** aus.
     - Wählen Sie für die Eigenschaft **Betriebssystemdatenträger** den Datenträger Ihrer Azure-VM aus, die Sie in den vorherigen Schritten erstellt haben.

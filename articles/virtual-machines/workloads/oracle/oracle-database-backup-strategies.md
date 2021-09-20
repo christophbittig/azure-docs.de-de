@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: dbe0fe6d0dadea6e99b406f2de6e16ed4d667741
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 2a61ed8f32fb85c3500ebf191c8bd53808b75eb9
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114461536"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696887"
 ---
 # <a name="oracle-database-in-azure-linux-vm-backup-strategies"></a>Strategien zur Oracle Database-Sicherung auf einer Azure-Linux-VM
+
+**Gilt für**: :heavy_check_mark: Linux-VMs 
 
 Datenbanksicherungen schützen die Datenbank vor Datenverlusten durch Ausfälle von Speicherkomponenten und Rechenzentren. Sie können außerdem zur Wiederherstellung einer Datenbank nach Bedienungsfehlern und für das Klonen einer Datenbank zu Entwicklungs- oder Testzwecken verwendet werden. 
 

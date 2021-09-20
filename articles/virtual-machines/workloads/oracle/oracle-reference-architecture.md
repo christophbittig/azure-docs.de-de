@@ -8,14 +8,16 @@ ms.collection: linux
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
-ms.openlocfilehash: 70d2401545c49bfb8bb1870f4881e51b7134ae59
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: a8171d29dfe88ea34d02d7f48567aeb2df46a8a7
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114450893"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694135"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Referenzarchitekturen für Oracle Database Enterprise Edition in Azure
+
+**Gilt für**: :heavy_check_mark: Linux-VMs 
 
 Dieser Leitfaden enthält Informationen zur Bereitstellung einer hoch verfügbaren Oracle-Datenbank in Azure. Darüber hinaus werden in diesem Leitfaden auch Aspekte der Notfallwiederherstellung beschrieben. Diese Architekturen wurden basierend auf Kundenbereitstellungen erstellt. Der Leitfaden gilt nur für Oracle Database Enterprise Edition.
 
