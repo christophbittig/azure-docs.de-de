@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5caf348b1865b47521ec9df776fd08cc36db47fd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0151f4de30c3bf96fa8c0dca77c90282115c70d7
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355545"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864371"
 ---
 # <a name="how-to-investigate-risk"></a>Anleitung: Untersuchen eines Risikos
 
@@ -76,7 +76,7 @@ Administratoren können dann Aktionen für diese Ereignisse ausführen. Administ
 - Anmeldung als sicher bestätigen
 
 > [!NOTE] 
-> Identity Protection beurteilt das Risiko für alle Authentifizierungsflows, ganz gleich, ob diese interaktiv oder nicht interaktiv sind. Im Anmeldebericht werden jedoch nur die interaktiven Anmeldungen angezeigt. Möglicherweise sehen Sie Risikoanmeldungen, die bei nicht interaktiven Anmeldungen aufgetreten sind, aber die Anmeldung wird im Azure AD-Anmeldebericht nicht angezeigt.
+> Identity Protection beurteilt das Risiko für alle Authentifizierungsflows, ganz gleich, ob diese interaktiv oder nicht interaktiv sind. Im Bericht „Riskante Anmeldungen“ werden jetzt sowohl interaktive als auch nicht interaktive Anmeldungen angezeigt. Verwenden Sie den Filter „Anmeldetyp“, um diese Ansicht zu ändern.
 
 ## <a name="risk-detections"></a>Risikoerkennungen
 

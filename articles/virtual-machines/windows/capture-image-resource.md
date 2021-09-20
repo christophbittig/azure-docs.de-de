@@ -9,65 +9,26 @@ ms.topic: how-to
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: f1c67f9d4fda2e0ca26d8125f30e2f71213b0749
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.collection: windows
+ms.openlocfilehash: 3fb298dc8e01c50b562e3891f02227b416596a04
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111853080"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695253"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure
 
+**Gilt für:** :heavy_check_mark: Windows-VMs 
+
+
 Eine verwaltete Imageressource kann aus einem generalisierten virtuellen Computer erstellt werden, der entweder als verwalteter Datenträger oder als nicht verwalteter Datenträger in einem Speicherkonto gespeichert ist. Mit diesem Image können dann mehrere virtuelle Computer erstellt werden. Weitere Informationen dazu, wie verwaltete Images abgerechnet werden, finden Sie unter [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks/). 
 
-Ein verwaltetes Image unterstützt bis zu 20 Bereitstellungen gleichzeitig. Wenn Sie versuchen, mehr als 20 VMs gleichzeitig aus demselben verwalteten Image zu erstellen, kann dies aufgrund der Einschränkungen bei der Speicherleistung einer einzelnen VHD zu Timeouts bei der Bereitstellung führen. Wenn Sie mehr als 20 VMs gleichzeitig erstellen möchten, verwenden Sie ein Image für [Shared Image Gallerys](../shared-image-galleries.md), das mit jeweils einem Replikat pro 20 gleichzeitige VM-Bereitstellungen konfiguriert wurde.
+Ein verwaltetes Image unterstützt bis zu 20 Bereitstellungen gleichzeitig. Wenn Sie versuchen, mehr als 20 VMs gleichzeitig aus demselben verwalteten Image zu erstellen, kann dies aufgrund der Einschränkungen bei der Speicherleistung einer einzelnen VHD zu Timeouts bei der Bereitstellung führen. Wenn Sie mehr als 20 VMs gleichzeitig erstellen möchten, verwenden Sie ein Image für [Kataloge mit freigegebenen Images](../shared-image-galleries.md), das mit jeweils einem Replikat pro 20 gleichzeitige VM-Bereitstellungen konfiguriert wurde.
 
-## <a name="generalize-the-windows-vm-using-sysprep"></a>Generalisieren der Windows-VM mithilfe von Sysprep
+## <a name="prerequisites"></a>Voraussetzungen
 
-Sysprep entfernt alle persönlichen Konto- und Sicherheitsinformationen und bereitet den Computer darauf vor, als Image verwendet zu werden. Ausführliche Informationen zu Sysprep finden Sie unter [Sysprep (System Preparation) Overview](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview) (Sysprep (Systemvorbereitung): Übersicht).
-
-Stellen Sie sicher, dass die auf dem Computer ausgeführten Serverrollen von Sysprep unterstützt werden. Weitere Informationen finden Sie unter [Sysprep-Unterstützung für Serverrollen](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles) und [Nicht unterstützte Szenarien](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios). 
-
-> [!IMPORTANT]
-> Nachdem Sie Sysprep auf einem virtuellen Computer ausgeführt haben, gilt dieser als *generalisiert* und kann nicht neu gestartet werden. Der Generalisierungsprozess eines virtuellen Computers kann nicht rückgängig gemacht werden. Wenn Sie die ursprüngliche Funktionsweise des virtuellen Computers beibehalten müssen, erstellen Sie eine [Kopie des virtuellen Computers](create-vm-specialized.md#option-3-copy-an-existing-azure-vm) und generalisieren diese Kopie. 
->
->Sysprep erfordert, dass die Laufwerke vollständig entschlüsselt werden. Wenn Sie die Verschlüsselung auf Ihrer VM aktiviert haben, deaktivieren Sie diese in Azure, bevor Sie Sysprep ausführen. 
->
->Verwenden Sie zum Deaktivieren von Azure Disk Encryption mit PowerShell Disable-AzVMDiskEncryption, gefolgt von Remove-AzVMDiskEncryptionExtension. Wenn Sie „Remove-AzVMDiskEncryptionExtension“ ausführen, bevor die Verschlüsselung deaktiviert wurde, tritt ein Fehler auf. Die Befehle auf höherer Ebene entschlüsseln den Datenträger nicht nur auf dem virtuellen Computer, sondern sie aktualisieren auch außerhalb des virtuellen Computers wichtige Verschlüsselungs- und Erweiterungseinstellungen auf Plattformebene, die dem virtuellen Computer zugeordnet sind. Wenn diese Einstellungen nicht einheitlich gehalten werden, kann die Plattform den Verschlüsselungsstatus nicht melden und den virtuellen Computer nicht ordnungsgemäß bereitstellen.
->
-> Wenn Sie Sysprep vor dem Hochladen der virtuellen Festplatte in Azure zum ersten Mal ausführen möchten, stellen Sie sicher, dass Sie [Ihren virtuellen Computer vorbereitet](prepare-for-upload-vhd-image.md) haben.  
-> 
-> 
-
-Führen Sie zum Generalisieren Ihres virtuellen Windows-Computers die folgenden Schritte aus:
-
-1. Melden Sie sich beim virtuellen Windows-Computer an.
-   
-2. Öffnen Sie ein Eingabeaufforderungsfenster als ein Administrator. 
-
-3. Löschen Sie das Verzeichnis „Panther“ (c:\Windows\Panther). Wechseln Sie dann in das Verzeichnis „%windir%\system32\sysprep“, und führen Sie anschließend `sysprep.exe` aus.
-   
-4. Wählen Sie im Dialogfeld **Systemvorbereitungsprogramm** die Option **Out-of-Box-Experience (OOBE) für System aktivieren**, und aktivieren Sie das Kontrollkästchen **Verallgemeinern**.
-   
-5. Wählen Sie unter **Optionen für Herunterfahren** die Option **Herunterfahren** aus.
-   
-6. Klicken Sie auf **OK**.
-   
-    ![Starten von Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
-
-6. Nach Abschluss von Sysprep wird der virtuelle Computer heruntergefahren. Starten Sie den virtuellen Computer nicht neu.
-
-> [!TIP]
-> **Optional:** Verwenden Sie [DISM](/windows-hardware/manufacture/desktop/dism-optimize-image-command-line-options), um Ihr Image zu optimieren und die Zeit für den ersten Start Ihrer VM zu verringern.
->
-> Um das Image zu optimieren, binden Sie die VHD ein, indem Sie in Windows-Explorer darauf doppelklicken und dann DISM mit dem Parameter `/optimize-image` ausführen.
->
-> ```cmd
-> DISM /image:D:\ /optimize-image /boot
-> ```
-> Dabei ist „D:“ der Pfad der eingebundenen VHD.
->
-> Das Ausführen von `DISM /optimize-image` sollte die letzte Änderung sein, die Sie an Ihrer virtuellen Festplatte vornehmen. Wenn Sie vor der Bereitstellung Änderungen an der virtuellen Festplatte vornehmen, müssen Sie `DISM /optimize-image` erneut ausführen.
+Für die Imageerstellung wird ein [generalisierter](../generalize.md) virtueller Computer benötigt.
 
 ## <a name="create-a-managed-image-in-the-portal"></a>Erstellen eines verwalteten Images im Portal 
 

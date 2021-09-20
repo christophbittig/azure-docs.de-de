@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0947f9924e97532b087940ecde08e8a0f8d7e005
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: b77a0a8f1a02fa970965d3393dada2a7720ab3e4
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114449104"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821374"
 ---
 # <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>Schützen von Benutzerkonten vor Angriffen mithilfe von Smart Lockout von Azure Active Directory
 
@@ -44,10 +44,10 @@ Smart Lockout ist in Hybridbereitstellungen integrierbar und kann mittels Kennwo
 
 Bei Verwendung der [Passthrough-Authentifizierung](../hybrid/how-to-connect-pta.md) gilt Folgendes:
 
-* Der Azure AD-Sperrschwellenwert ist **kleiner** als der Schwellenwert für eine AD DS-Kontosperrung. Legen Sie die Werte so fest, dass der Schwellenwert für eine AD DS-Kontosperrung mindestens das Zwei- oder Dreifache des Azure AD-Sperrschwellenwerts beträgt.
+* Der Azure AD-Sperrschwellenwert ist **kleiner** als der Schwellenwert für eine AD DS-Kontosperrung. Legen Sie die Werte so fest, dass der Schwellenwert für eine AD DS-Kontosperrung mindestens doppelt oder dreimal so hoch ist wie der Azure AD-Sperrschwellenwert.
 * Die Azure AD-Sperrdauer muss länger sein als die AD DS-Zurücksetzungsdauer des Kontosperrungszählers. Die Azure AD-Dauer wird in Sekunden festgelegt, die AD-Dauer dagegen in Minuten.
 
-Wenn der Azure AD-Zähler also beispielsweise höher sein soll als der AD DS-Wert, muss der Azure AD-Wert auf 120 Sekunden (2 Minuten) und der Wert Ihrer lokalen AD-Instanz auf eine Minute (60 Sekunden) festgelegt werden.
+Wenn der Wert für die Azure AD Smart Lockout-Dauer beispielsweise höher sein soll als der AD DS-Wert, muss der Azure AD-Wert auf 120 Sekunden (2 Minuten) und der Wert Ihrer lokalen AD-Instanz auf 1 Minute (60 Sekunden) festgelegt werden. Wenn Sie den Azure AD-Sperrschwellenwert auf 5 festlegen möchten, sollte der Sperrschwellenwert Ihrer lokalen AD-Instanz auf 10 festgelegt werden.  Durch diese Konfiguration würde sichergestellt, dass Smart Lockout verhindert, dass Ihre lokalen AD-Konten durch Brute-Force-Angriffe auf Ihre Azure AD-Konten gesperrt werden.
 
 > [!IMPORTANT]
 > Derzeit können die Cloudkonten der Benutzer nicht von einem Administrator entsperrt werden, wenn sie von Smart Lockout gesperrt wurden. Der Administrator muss warten, bis die Sperrdauer abgelaufen ist. Der Benutzer kann das Konto jedoch von einem vertrauenswürdigen Gerät oder Standort aus mithilfe der Self-Service-Kennwortzurücksetzung (SSPR) entsperren.

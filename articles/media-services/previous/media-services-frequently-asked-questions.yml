@@ -4,7 +4,7 @@ metadata:
   description: Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Media Services.
   services: media-services
   documentationcenter: ''
-  author: IngridAtMicrosoft
+  author: jiayali-ms
   manager: femila
   editor: ''
   ms.service: media-services
@@ -12,14 +12,14 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: article
-  ms.date: 03/10/2021
+  ms.date: 08/24/2021
   ms.author: inhenkel
-  ms.openlocfilehash: e8dd8205cc42c4f8ec3946eccdd0f6244e11e7ec
-  ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+  ms.openlocfilehash: 79fba437747c2c9039c0bc8189266fc7b044aa38
+  ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/17/2021
-  ms.locfileid: "112305936"
+  ms.lasthandoff: 08/25/2021
+  ms.locfileid: "122835214"
 title: Häufig gestellte Fragen zu Media Services v2
 summary: >
   [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
@@ -36,8 +36,7 @@ sections:
     answer: >
       Fügen Sie dem Abschnitt „/Manifest“ der URL den Pfad „(format=m3u8-aapl)“ hinzu, um den Ursprungsserver des Streamings anzuweisen, HLS-Inhalte für die Nutzung auf nativen Apple iOS-Geräten zurückzugeben. (Details hierzu finden Sie unter [Übermitteln von Inhalten](media-services-deliver-content-overview.md).)
   - question: Wie wird die Indizierung skaliert?
-    answer: >
-      Die reservierten Einheiten für Codierungs- und Indizierungsaufgaben sind identisch. Folgen Sie den Anweisungen unter [Skalieren von für die Codierung reservierten Einheiten](media-services-scale-media-processing-overview.md). **Hinweis** : Die Indizierungsleistung für Typen reservierter Einheiten ist nicht herabgesetzt.
+    answer: "AMS wird verwendet, um reservierte Einheiten für Medien für die Skalierung zu verwenden. Diese Funktion wird nicht mehr unterstützt. \n"
   - question: Ich habe ein Video hochgeladen, codiert und veröffentlicht. Was könnte die Ursache dafür sein, dass das Video nicht wiedergegeben wird, wenn ich versuche, es zu streamen?
     answer: Einer der häufigsten Gründe ist, dass der Streamingendpunkt, von dem Sie die Wiedergabe versuchen, nicht den Status **Wird ausgeführt** aufweist.
   - question: Ist ein Zusammensetzen bei einem Livestream möglich?

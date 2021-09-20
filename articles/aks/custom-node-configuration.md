@@ -6,16 +6,16 @@ ms.topic: article
 ms.date: 12/03/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: c2173118b58ca92d69286fb36014872c19058bd6
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 7d9b3a6d3a5178354cced3cd5e4a49f7113ecdce
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779973"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123220009"
 ---
 # <a name="customize-node-configuration-for-azure-kubernetes-service-aks-node-pools-preview"></a>Anpassen der Knotenkonfiguration für AKS-Knotenpools (Azure Kubernetes Service) (Vorschau)
 
-Durch Anpassen der Knotenkonfiguration können Sie die Betriebssystemeinstellungen oder die kubelet-Parameter konfigurieren oder optimieren, um die Anforderungen der Workloads zu erfüllen. Wenn Sie einen AKS-Cluster erstellen oder dem Cluster einen Knotenpool hinzufügen, können Sie eine Teilmenge der häufig verwendeten Betriebssystem- und kubelet-Einstellungen anpassen. Um Einstellungen über diese Teilmenge hinaus zu konfigurieren, [verwenden Sie einen Daemonsatz, um die erforderlichen Konfigurationen anzupassen, ohne AKS-Unterstützung für Ihre Knoten zu verlieren](support-policies.md#shared-responsibility).
+Durch Anpassen der Knotenkonfiguration können Sie die Betriebssystemeinstellungen oder die kubelet-Parameter konfigurieren oder optimieren, um die Anforderungen der Workloads zu erfüllen. Wenn Sie einen AKS-Cluster erstellen oder dem Cluster einen Knotenpool hinzufügen, können Sie eine Teilmenge der häufig verwendeten Betriebssystem- und kubelet-Einstellungen anpassen. Um Einstellungen über diese Teilmenge hinaus zu konfigurieren, [verwenden Sie einen Daemonsatz, um die erforderlichen Konfigurationen anzupassen, ohne die AKS-Unterstützung für Ihre Knoten zu verlieren](support-policies.md#shared-responsibility).
 
 ## <a name="register-the-customnodeconfigpreview-preview-feature"></a>Registrieren der Previewfunktion `CustomNodeConfigPreview`
 
@@ -68,6 +68,8 @@ Die unterstützten kubelet-Parameter und akzeptierten Werte werden unten aufgef�
 | `imageGcLowThreshold` | 0 bis 100, nicht größer als `imageGcHighThreshold` | 80 | Der Prozentsatz der Datenträgerauslastung, vor der die Image-Garbage Collection nie ausgeführt wird. Die minimale Datenträgerauslastung, die Garbage Collection auslösen **kann**. |
 | `topologyManagerPolicy` | none, best-effort, restricted, single-numa-node | none | Optimieren der NUMA-Knotenausrichtung. Weitere Informationen finden Sie [hier](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/). Nur Kubernetes v1.18 oder höher. |
 | `allowedUnsafeSysctls` | `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, `net.*` | Keine | Zulässige Liste unsicherer sysctls oder unsicherer sysctl-Muster. | 
+| `containerLogMaxSizeMB` | Größe in Megabyte (MB) | 10 MB | Die maximale Größe (z. B. 10 MB) einer Containerprotokolldatei, bevor sie rotiert wird. | 
+| `containerLogMaxFiles` | ≥ 2 | 5 | Die maximale Anzahl von Containerprotokolldateien, die für einen Container vorhanden sein können | 
 
 ### <a name="linux-os-custom-configuration"></a>Benutzerdefinierte Linux-Betriebssystemkonfiguration
 
@@ -198,7 +200,7 @@ az aks nodepool add --name mynodepool1 --cluster-name myAKSCluster --resource-gr
 [aks-scale-apps]: tutorial-kubernetes-scale.md
 [aks-support-policies]: support-policies.md
 [aks-upgrade]: upgrade-cluster.md
-[aks-view-master-logs]: ./view-control-plane-logs.md#enable-resource-logs
+[aks-view-master-logs]: ../azure-monitor/containers/container-insights-log-query.md#enable-resource-logs
 [autoscaler-profile-properties]: #using-the-autoscaler-profile
 [azure-cli-install]: /cli/azure/install-azure-cli
 [az-aks-show]: /cli/azure/aks#az_aks_show

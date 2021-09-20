@@ -8,12 +8,12 @@ ms.date: 07/02/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: e1736d94c50d5c145a66fc845936c5c26a8725cb
-ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
+ms.openlocfilehash: 1d3688e4051f2883c5316a13e59f5629481799e2
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113224056"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864560"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 [Azure Files](storage-files-introduction.md) kann auf zwei Arten bereitgestellt werden: durch direktes Einbinden der serverlosen Azure-Dateifreigaben oder durch lokales Zwischenspeichern von Azure-Dateifreigaben mithilfe von Azure-Dateisynchronisierung. Welche Bereitstellungsoption Sie auswählen, ändert die Aspekte, die Sie beim Planen der Bereitstellung berücksichtigen müssen. 
@@ -29,7 +29,7 @@ Azure Files unterstützt zwei Branchenstandardprotokolle für die Einbindung von
 
 Mit sowohl SMB- als auch NFS-Dateifreigaben bietet Azure Files Dateifreigaben in Unternehmensqualität, die entsprechend Ihren Speicheranforderungen hochskaliert werden können und auf die Tausende von Clients gleichzeitig zugreifen können.
 
-| Komponente | SMB | NFS (Vorschau) |
+| Funktion | SMB | NFS (Vorschau) |
 |---------|-----|---------------|
 | Unterstützte Protokollversionen | SMB 3.1.1, SMB 3.0, SMB 2.1 | NFS 4.1 |
 | Empfohlenes Betriebssystem | <ul><li>Windows 10, Version 21H1 und höher</li><li>Windows Server 2019 und höher</li><li>Linux-Kernelversion 5.3 und höher</li></ul> | Linux-Kernelversion 4.3 und höher |
@@ -38,7 +38,7 @@ Mit sowohl SMB- als auch NFS-Dateifreigaben bietet Azure Files Dateifreigaben in
 | [Redundanz](storage-files-planning.md#redundancy) | LRS, ZRS, GRS, GZRS | LRS, ZRS |
 | Dateisystemsemantik | Win32 | POSIX |
 | Authentifizierung | Identitätsbasierte Authentifizierung (Kerberos), Authentifizierung mit gemeinsam verwendeten Schlüsseln (NTLMv2) | Hostbasierte Authentifizierung |
-| Autorisierung | Win32-Zugriffssteuerungslisten (Access Control Lists, ACLs) | Berechtigungen im UNIX-Format |
+| Authorization | Win32-Zugriffssteuerungslisten (Access Control Lists, ACLs) | Berechtigungen im UNIX-Format |
 | Groß- und Kleinschreibung | Keine Beachtung von Groß-/Kleinschreibung, Schreibweise wird beibehalten | Groß-/Kleinschreibung beachten |
 | Löschen oder Ändern geöffneter Dateien | Nur mit Sperre | Ja |
 | Dateifreigabe | [Windows-Freigabemodus](/windows/win32/fileio/creating-and-opening-files) | Netzwerksperrungs-Manager im Bytebereich (Empfehlung) |
@@ -111,7 +111,7 @@ Weitere Informationen zur Verschlüsselung während der Übertragung finden Sie 
 Azure Files umfasst einen mehrschichtigen Ansatz, um sicherzustellen, dass Ihre Daten gesichert, wiederhergestellt und vor Sicherheitsbedrohungen geschützt werden können.
 
 ### <a name="soft-delete"></a>Vorläufiges Löschen
-Das vorläufige Löschen von Dateifreigaben (Vorschauversion) ist eine Einstellung auf Speicherkontoebene, die es Ihnen ermöglicht, Ihre Dateifreigabe wiederherzustellen, wenn diese versehentlich gelöscht wird. Wenn eine Dateifreigabe gelöscht wird, geht sie in einen vorläufig gelöschten Zustand über, anstatt dauerhaft gelöscht zu werden. Sie können den Zeitraum konfigurieren, in dem vorläufig gelöschte Daten wiederhergestellt werden können, ehe sie dauerhaft gelöscht werden, und die Löschung der Freigabe während dieses Aufbewahrungszeitraums jederzeit rückgängig machen. 
+Das vorläufige Löschen von Dateifreigaben ist eine Einstellung auf Speicherkontoebene, die es Ihnen ermöglicht, Ihre Dateifreigabe wiederherzustellen, wenn diese versehentlich gelöscht wird. Wenn eine Dateifreigabe gelöscht wird, geht sie in einen vorläufig gelöschten Zustand über, anstatt dauerhaft gelöscht zu werden. Sie können den Zeitraum konfigurieren, in dem vorläufig gelöschte Daten wiederhergestellt werden können, ehe sie dauerhaft gelöscht werden, und die Löschung der Freigabe während dieses Aufbewahrungszeitraums jederzeit rückgängig machen. 
 
 Es wird empfohlen, das vorläufige Löschen für die meisten Dateifreigaben zu aktivieren. Wenn Sie über einen Workflow verfügen, bei dem das Löschen von Dateifreigaben üblich und zu erwarten ist, können Sie sich für einen kurzen Aufbewahrungszeitraum oder die Deaktivierung der Funktion für das vorläufige Löschen entscheiden.
 

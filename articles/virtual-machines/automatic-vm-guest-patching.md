@@ -9,14 +9,16 @@ ms.topic: how-to
 ms.date: 07/29/2021
 ms.author: manayar
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f3ff46312c7836d90aeb8e3281e760d2ab163186
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0043935f46698f694aa76aec816c8bf72a9ee098
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345901"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698168"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-azure-vms"></a>Vorschau: Automatische VM-Gastpatches für Azure-VMs
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Durch das Aktivieren von automatischen VM-Gastpatches für Ihre Azure-VMs können Sie die Updateverwaltung vereinfachen, indem Sie virtuelle Computer sicher und automatisch patchen, um Sicherheitskonformität zu wahren.
 

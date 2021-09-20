@@ -7,12 +7,12 @@ ms.author: jtoland
 ms.custom: mvc
 ms.topic: conceptual
 ms.date: 08/17/2021
-ms.openlocfilehash: 231622c5333875d1051bbdd2c17951c994b6f4d0
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 74b81b095ef969715313c79c90821a8c8e8aaf1d
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351180"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123098249"
 ---
 # <a name="whats-new-in-azure-database-for-mysql---flexible-server-preview"></a>Neuerungen in Azure Database for MySQL Flexible Server (Vorschauversion)
 
@@ -46,6 +46,10 @@ Dieses Release von Azure Database for MySQL Flexible Server enthält die folgend
 
   Dank der Zeitpunktwiederherstellung im Dienst können Kund*innen jetzt Verfügbarkeitszonen konfigurieren und dabei die Datenbankserver und die Standbyanwendungen in derselben Zone bereitstellen, um die Latenz zu reduzieren. Dadurch können Kund*innen sich besser auf Notfallwiederherstellungen und Zonenausfälle vorbereiten. [Weitere Informationen](https://aka.ms/standby-selection)
 
+- **Plug-Ins „validate_password“ und „caching_sha2_password“ in der privaten Vorschau verfügbar**
+
+  Flexible Server unterstützt jetzt die Aktivierung der Plug-Ins „validate_password“ und „caching_sha2_password“ in der privaten Vorschau. Senden Sie uns eine E-Mail unter AskAzureDBforMySQL@service.microsoft.com.
+
 - **Verfügbarkeit in vier zusätzlichen Azure-Regionen**
 
   Die Public Preview von Azure Database for MySQL Flexible Server ist jetzt in den folgenden Azure-Regionen verfügbar. [Weitere Informationen:](overview.md#azure-regions)
@@ -61,6 +65,13 @@ Dieses Release von Azure Database for MySQL Flexible Server enthält die folgend
   - In den folgenden Regionen kann kein Server mit Hochverfügbarkeit in gleicher Zone erstellt werden: „Indien, Mitte“, „Asien, Osten“, „Südkorea, Mitte“, „Südafrika, Norden“ und „Schweiz, Norden“.
   - Nach einem Hochverfügbarkeitsfailover kann es selten vorkommen, dass der primäre Server den Modus read_only annimmt. Sie können dieses Problem beheben, indem Sie den Wert read_only auf dem Blatt für Serverparameter in OFF ändern.
   - Nachdem Sie die Rechenleistung auf dem Blatt „Compute und Speicher“ erfolgreich skaliert haben, werden die IOPS auf den SKU-Standardwert zurückgesetzt. Kund*innen können das Problem umgehen, indem sie die IOPS auf dem Blatt „Compute und Speicher“ nach der Computebereitstellung und der konsequenten IOPS-Zurücksetzung auf den (zuvor festgelegten) gewünschten Wert neu skalieren.
+  - Wenn Sie versuchen, Hochverfügbarkeit für dieselbe Zone zu aktivieren oder bereitzustellen, tritt in den folgenden Regionen ein Fehler bei der Bereitstellung auf: 
+      - Indien, Mitte
+      - Asien, Osten
+      - Korea, Mitte
+      - Südafrika, Norden
+      - Schweiz, Norden
+
 
 ## <a name="july-2021"></a>Juli 2021
 
@@ -200,7 +211,7 @@ Wenn Sie Fragen oder Vorschläge zur Arbeit mit Azure Database for MySQL haben, 
 
 - Wenn Sie den Azure-Support kontaktieren möchten, [fordern Sie im Azure-Portal ein Ticket an](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 - Um ein Problem mit Ihrem Konto zu beheben, richten Sie im Azure-Portal eine [Anfrage an den Support](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
-- Wenn Sie Feedback abgeben oder Vorschläge für neue Features einreichen möchten, erstellen Sie einen Eintrag über [UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql).
+- Wenn Sie Feedback geben oder neue Features anfordern möchten, senden Sie uns eine E-Mail an AskAzureDBforMySQL@service.microsoft.com.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

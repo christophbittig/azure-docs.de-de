@@ -17,12 +17,12 @@ ms.date: 05/06/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 032a8fddb836146a5e902b168ab5aea9763bdc31
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: a5fbc6789fe83f07e0a22239e93a08eb9bd8cf4f
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112376599"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830765"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>Anleitung: Verwalten inaktiver Benutzerkonten in Azure AD
 
@@ -61,6 +61,9 @@ In diesem Abschnitt wird beschrieben, was Sie über die „lastSignInDateTime“
 ### <a name="how-can-i-access-this-property"></a>Wie kann ich auf diese Eigenschaft zugreifen?
 
 Die **lastSignInDateTime**-Eigenschaft wird vom [Ressourcentyp „signInActivity“](/graph/api/resources/signinactivity?view=graph-rest-beta&preserve-view=true) der [Microsoft Graph-REST-API](/graph/overview#whats-in-microsoft-graph) verfügbar gemacht.   
+
+> [!NOTE]
+> Der Graph-API-Endpunkt signInActivity wird in US Government GCC High-Umgebungen noch nicht unterstützt.
 
 ### <a name="is-the-lastsignindatetime-property-available-through-the-get-azureaduser-cmdlet"></a>Ist die lastSignInDateTime-Eigenschaft über das Cmdlet „Get-AzureAdUser“ verfügbar?
 

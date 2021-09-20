@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 08/06/2021
+ms.date: 08/27/2021
 ms.author: tisande
-ms.openlocfilehash: 95e6c74ad03cae30a2b7b6544a490ef86e92e900
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 490510e3b1a46b21123a7cd519a7bf8cb81021d6
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122350443"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123109202"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Verknüpfungen in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -255,7 +255,40 @@ Die Ergebnisse sind:
     ]
 ```
 
-Wenn Ihre Abfrage einen JOIN und Filter enthält, können Sie einen Teil der Abfrage als [geschachtelte Abfrage](sql-query-subquery.md#optimize-join-expressions) erneut generieren, um die Leistung zu verbessern.
+## <a name="subqueries-instead-of-joins"></a>Unterabfragen anstelle von JOINs
+
+Wenn Ihre Abfrage einen JOIN und Filter enthält, können Sie einen Teil der Abfrage als [geschachtelte Abfrage](sql-query-subquery.md#optimize-join-expressions) erneut generieren, um die Leistung zu verbessern. In einigen Fällen können Sie möglicherweise eine Unterabfrage oder [ARRAY_CONTAINS](sql-query-array-contains.md) verwenden, um JOIN vollständig zu vermeiden und die Abfrageleistung zu verbessern.
+
+Betrachten Sie z. B. die vorherige Abfrage, die familyName, givenName des untergeordneten Benutzers, firstName der Kinder und givenName des Haustiers projiziert hat. Wenn diese Abfrage nur nach dem Namen des Haustiers filtern und ihn nicht zurückgeben musste, können Sie `ARRAY_CONTAINS` oder eine [Unterabfrage](sql-query-subquery.md) verwenden, um nach Haustieren zu suchen, bei denen `givenName = "Shadow"`.
+
+### <a name="query-rewritten-with-array_contains"></a>Abfrage mit ARRAY_CONTAINS umgeschrieben
+
+```sql
+    SELECT 
+        f.id AS familyName,
+        c.givenName AS childGivenName,
+        c.firstName AS childFirstName
+    FROM Families f
+    JOIN c IN f.children
+    WHERE ARRAY_CONTAINS(c.pets, {givenName: 'Shadow'})
+```
+
+### <a name="query-rewritten-with-subquery"></a>Abfrage mit Unterabfrage umgeschrieben
+
+```sql
+    SELECT 
+        f.id AS familyName,
+        c.givenName AS childGivenName,
+        c.firstName AS childFirstName
+    FROM Families f
+    JOIN c IN f.children
+    WHERE EXISTS (
+    SELECT VALUE n
+    FROM n IN c.pets
+    WHERE n.givenName = "Shadow"
+    )
+```
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

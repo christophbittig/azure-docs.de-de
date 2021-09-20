@@ -16,12 +16,12 @@ ms.date: 06/21/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e01dd7c32c822f03b8f47147826e085321eeacf
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: a2ff57c06fba085fd28e7e0b13ec6e503517cab7
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472398"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768679"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Voraussetzungen für Azure AD Connect
 In diesem Artikel werden die Voraussetzungen und die Hardwareanforderungen für Azure Active Directory (Azure AD) Connect beschrieben.
@@ -88,7 +88,6 @@ Es wird empfohlen, den Azure AD Connect-Server zuverlässig zu schützen, um di
 - Berücksichtigen Sie diese [zusätzlichen Richtlinien](/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface), um die Angriffsfläche Ihrer Active Directory-Umgebung zu verringern.
 - Folgen Sie den Anweisungen unter [Überwachen von Änderungen an der Verbundkonfiguration](how-to-connect-monitor-federation-changes.md) zum Einrichten von Warnungen zur Überwachung von Änderungen an der zwischen Ihrem Identitätsanbieter und Azure AD eingerichteten Vertrauensstellung. 
 
-
 ### <a name="sql-server-used-by-azure-ad-connect"></a>Von Azure AD Connect verwendete SQL Server-Datenbank
 * Azure AD Connect erfordert eine SQL Server-Datenbank zum Speichern von Identitätsdaten. Standardmäßig wird SQL Server 2019 Express LocalDB (eine einfache Version von SQL Server Express) installiert. Für SQL Server Express gilt eine Größenbeschränkung von 10 GB. Dies ermöglicht Ihnen das Verwalten von ca. 100.000 Objekten. Wenn Sie eine größere Anzahl von Verzeichnisobjekten verwalten möchten, müssen Sie im Installations-Assistenten auf eine andere Installation von SQL Server verweisen. Der SQL Server-Installationstyp kann sich auf die [Leistung von Azure AD Connect](./plan-connect-performance-factors.md#sql-database-factors) auswirken.
 * Wenn Sie eine andere Installation von SQL Server verwenden, gelten die folgenden Anforderungen:
@@ -107,7 +106,7 @@ Es wird empfohlen, den Azure AD Connect-Server zuverlässig zu schützen, um di
 * Wenn Sie in Ihrem Intranet Firewalls verwenden und die Ports zwischen den Azure AD Connect-Servern und Ihren Domänencontrollern öffnen müssen, lesen Sie die Informationen unter [Azure AD Connect-Ports](reference-connect-ports.md).
 * Wenn Ihr Proxy oder Ihre Firewall den Zugriff auf bestimmte URLs beschränkt, müssen die unter [Office 365-URLs und -IP-Adressbereiche](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) dokumentierten URLs geöffnet werden. Weitere Informationen finden Sie auch unter [Hinzufügen der Azure-Portal-URLs zu einer Liste sicherer Adressen für Ihre Firewall oder Ihren Proxyserver](../../azure-portal/azure-portal-safelist-urls.md?tabs=public-cloud)
   * Wenn Sie die Microsoft Cloud in Deutschland oder die Microsoft Azure Government-Cloud verwenden, finden Sie die entsprechenden URLs unter [Azure AD Connect: Besondere Überlegungen zu Instanzen](reference-connect-instances.md).
-* Azure AD Connect (Version 1.1.614.0 und höher) verwendet standardmäßig TLS 1.2 für die Verschlüsselung der Kommunikation zwischen dem Synchronisierungsmodul und Azure AD. Wenn TLS 1.2 auf dem zugrunde liegenden Betriebssystem nicht verfügbar ist, greift Azure AD Connect schrittweise auf älter Protokolle zurück (TLS 1.1 und TLS 1.0). Ab Azure AD ConnectAD Connect-Version 2.0. TLS 1.0 und 1.1 werden nicht mehr unterstützt. Die Installation misslingt, wenn TLS 1.2 nicht verfügbar ist.
+* Azure AD Connect (Version 1.1.614.0 und höher) verwendet standardmäßig TLS 1.2 für die Verschlüsselung der Kommunikation zwischen dem Synchronisierungsmodul und Azure AD. Wenn TLS 1.2 auf dem zugrunde liegenden Betriebssystem nicht verfügbar ist, greift Azure AD Connect schrittweise auf älter Protokolle zurück (TLS 1.1 und TLS 1.0). Ab Azure AD ConnectAD Connect-Version 2.0. TLS 1.0 und TLS 1.1 werden nicht mehr unterstützt, und die Installation kann nur ausgeführt werden, wenn TLS 1.2 aktiviert ist.
 * Vor der Version 1.1.614.0 verwendet Azure AD Connect standardmäßig TLS 1.0 für die Verschlüsselung der Kommunikation zwischen dem Synchronisierungsmodul und Azure AD. Folgen Sie zur Änderung in TLS 1.2 den Schritten in [Aktivieren von TLS 1.2 für Azure AD Connect](#enable-tls-12-for-azure-ad-connect).
 * Wenn Sie einen ausgehenden Proxy für die Verbindung mit dem Internet verwenden, muss die folgende Einstellung in der Datei **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** hinzugefügt werden, um dem Installations-Assistenten und der Azure AD Connect-Synchronisierung das Herstellen einer Verbindung mit dem Internet und Azure AD zu ermöglichen. Dieser Text muss am Ende der Datei eingegeben werden. Im folgenden Code steht *&lt;PROXYADDRESS&gt;* für die tatsächliche Proxy-IP-Adresse oder den tatsächlichen Hostnamen.
 

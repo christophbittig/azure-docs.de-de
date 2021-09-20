@@ -9,18 +9,18 @@ ms.custom: synapse
 ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: jianleishen
-ms.openlocfilehash: 32a1f7f9cc84adc3142bd7f03b399c759b01f824
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: be1407d9b8efe16dea3546161125e7c68213da11
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122640861"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123254991"
 ---
 # <a name="binary-format-in-azure-data-factory"></a>Binärformat in Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Das Binärformat wird für die folgenden Connectors unterstützt: [Amazon S3](connector-amazon-simple-storage-service.md), [Amazon S3-kompatibler Speicher](connector-amazon-s3-compatible-storage.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [Dateisystem](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md), [Oracle Cloud Storage](connector-oracle-cloud-storage.md) und [SFTP](connector-sftp.md).
+Das Binärformat wird für die folgenden Connectors unterstützt: [Amazon S3](connector-amazon-simple-storage-service.md), [Amazon S3-kompatibler Speicher](connector-amazon-s3-compatible-storage.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure Files](connector-azure-file-storage.md), [Dateisystem](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [Hadoop Distributed File System](connector-hdfs.md), [HTTP](connector-http.md), [Oracle Cloud Storage](connector-oracle-cloud-storage.md) und [SFTP](connector-sftp.md).
 
 Sie können ein binäres Dataset in der [Kopieraktivität](copy-activity-overview.md), der [GetMetadata-Aktivität](control-flow-get-metadata-activity.md) oder der [Delete-Aktivität](delete-activity.md) verwenden. Wenn Sie ein binäres Dataset verwenden, analysiert ADF den Dateiinhalt nicht, sondern lässt ihn unverändert. 
 

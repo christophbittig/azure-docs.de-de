@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 03/30/2021
 ms.author: enewman
-ms.openlocfilehash: 5b136a95d841775861c0e4d7c0bba1feec101f0d
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: dc0f2a4f51fb12c61d0e1e16cb23d030a5dc9cc6
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110493778"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122969273"
 ---
 # <a name="use-external-file-storage-in-lab-services"></a>Verwenden von externem Dateispeicher in Lab Services
 
@@ -46,16 +46,16 @@ Wenn Sie einen privaten Endpunkt für die Azure Files-Freigabe verwenden, ist es
 - Dieser Ansatz erfordert, dass das virtuelle Netzwerk der Dateifreigabe mit dem Lab-Konto gepeert ist. Das virtuelle Netzwerk für das Azure Storage-Konto muss mit dem virtuellen Netzwerk für das Lab-Konto gepeert werden, bevor das Lab erstellt wird.
 
 > [!NOTE]
-> Dateifreigaben mit einer Größe von mehr als 5 TB sind nur für [lokal redundante Speicherkonten](../storage/files/storage-files-how-to-create-large-file-share.md#restrictions) verfügbar.
+> Standardmäßig können Standarddateifreigaben einen Umfang von bis zu 5 TiB haben. Informationen zur Erstellung von Dateifreigaben mit einem Umfang von bis zu 100 TiB finden Sie unter [Erstellen einer Azure-Dateifreigabe](../storage/files/storage-how-to-create-file-share.md).
 
-Führen Sie die folgenden Schritte aus, um eine mit einer Azure Files-Freigabe verbundene VM zu erstellen.
+Führen Sie die folgenden Schritte aus, um eine mit einer Azure-Dateifreigabe verbundene VM zu erstellen.
 
 1. Erstellen Sie ein [Azure Storage-Konto](../storage/files/storage-how-to-create-file-share.md). Wählen Sie auf der Seite **Verbindungsmethode** die Option **öffentlicher Endpunkt** oder **privater Endpunkt** aus.
-2. Wenn Sie die private Methode ausgewählt haben, erstellen Sie einen [privaten Endpunkt](../private-link/tutorial-private-endpoint-storage-portal.md), damit aus dem virtuellen Netzwerk auf die Dateifreigaben zugegriffen werden kann. Erstellen Sie eine [private DNS-Zone](../dns/private-dns-privatednszone.md), oder verwenden Sie eine vorhandene Zone. Private Azure DNS-Zonen bieten Namensauflösung in einem virtuellen Netzwerk.
-3. [Erstellen Sie eine Azure-Dateifreigabe](../storage/files/storage-how-to-create-file-share.md). Die Dateifreigabe ist über den öffentlichen Hostnamen des Speicherkontos erreichbar.
+2. Wenn Sie die private Methode ausgewählt haben, erstellen Sie einen [privaten Endpunkt](../private-link/tutorial-private-endpoint-storage-portal.md), damit aus dem virtuellen Netzwerk auf die Dateifreigaben zugegriffen werden kann.
+3. [Erstellen Sie eine Azure-Dateifreigabe](../storage/files/storage-how-to-create-file-share.md). Die Dateifreigabe ist bei Verwendung eines öffentlichen Endpunkts über den öffentlichen Hostnamen des Speicherkontos erreichbar.  Die Dateifreigabe ist bei Verwendung eines privaten Endpunkts über die private IP-Adresse erreichbar.  
 4. Binden Sie die Azure-Dateifreigabe in die Vorlage für virtuelle Computer ein:
     - [Windows](../storage/files/storage-how-to-use-files-windows.md)
-    - [Linux](../storage/files/storage-how-to-use-files-linux.md). Informationen zum Vermeiden von Einbindungsproblemen auf Kursteilnehmer-VMs finden Sie im nächsten Abschnitt.
+    - [Linux](../storage/files/storage-how-to-use-files-linux.md). Weitere Informationen zum Vermeiden von Problemen auf VMs von Kursteilnehmer*innen finden Sie im Abschnitt [Verwenden von Azure Files mit Linux](#use-azure-files-with-linux).
 5. [Veröffentlichen](how-to-create-manage-template.md#publish-the-template-vm) Sie die Vorlage für virtuelle Computer.
 
 > [!IMPORTANT]
@@ -65,6 +65,7 @@ Führen Sie die folgenden Schritte aus, um eine mit einer Azure Files-Freigabe v
 
 Wenn Sie die Standardanweisungen zum Einbinden einer Azure Files-Freigabe verwenden, scheint die Dateifreigabe auf VMs von Kursteilnehmern zu verschwinden, nachdem die Vorlage veröffentlicht wurde. Mit dem folgenden geänderten Skript wird dieses Problem behoben.  
 
+Für Dateifreigaben mit einem öffentlichen Endpunkt:
 ```bash
 #!/bin/bash
 
@@ -88,6 +89,34 @@ fi
 sudo chmod 600 /etc/smbcredentials/$storage_account_name.cred
 
 sudo bash -c "echo ""//$storage_account_name.file.core.windows.net/$fileshare_name /$mount_directory/$fileshare_name cifs nofail,vers=3.0,credentials=/etc/smbcredentials/$storage_account_name.cred,dir_mode=0777,file_mode=0777,serverino"" >> /etc/fstab"
+sudo mount -t cifs //$storage_account_name.file.core.windows.net/$fileshare_name /$mount_directory/$fileshare_name -o vers=3.0,credentials=/etc/smbcredentials/$storage_account_name.cred,dir_mode=0777,file_mode=0777,serverino
+```
+
+Für Dateifreigaben mit einem privaten Endpunkt:
+```bash
+#!/bin/bash
+
+# Assign variables values for your storage account and file share
+storage_account_name=""
+storage_account_ip=""
+storage_account_key=""
+fileshare_name=""
+
+# Do not use 'mnt' for mount directory.
+# Using ‘mnt’ will cause issues on student VMs.
+mount_directory="prm-mnt" 
+
+sudo mkdir /$mount_directory/$fileshare_name
+if [ ! -d "/etc/smbcredentials" ]; then
+    sudo mkdir /etc/smbcredentials
+fi
+if [ ! -f "/etc/smbcredentials/$storage_account_name.cred" ]; then
+    sudo bash -c "echo ""username=$storage_account_name"" >> /etc/smbcredentials/$storage_account_name.cred"
+    sudo bash -c "echo ""password=$storage_account_key"" >> /etc/smbcredentials/$storage_account_name.cred"
+fi
+sudo chmod 600 /etc/smbcredentials/$storage_account_name.cred
+
+sudo bash -c "echo ""//$storage_account_ip/$fileshare_name /$mount_directory/$fileshare_name cifs nofail,vers=3.0,credentials=/etc/smbcredentials/$storage_account_name.cred,dir_mode=0777,file_mode=0777,serverino"" >> /etc/fstab"
 sudo mount -t cifs //$storage_account_name.file.core.windows.net/$fileshare_name /$mount_directory/$fileshare_name -o vers=3.0,credentials=/etc/smbcredentials/$storage_account_name.cred,dir_mode=0777,file_mode=0777,serverino
 ```
 

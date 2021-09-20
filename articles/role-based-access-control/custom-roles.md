@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 06/15/2021
+ms.date: 08/27/2021
 ms.author: rolyon
-ms.openlocfilehash: 6177de5dfc89dcbc33b9ff4291bf65ea909a3b9b
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 9553e53cda41a4fe4d926923bdd71d7d7c5ebb15
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112235714"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123308392"
 ---
 # <a name="azure-custom-roles"></a>Benutzerdefinierte Azure-Rollen
 
@@ -65,13 +65,13 @@ Azure verfügt über Tausende von Berechtigungen, die Sie potenziell zu Ihrer be
 
     Wenn Sie mithilfe des Azure-Portals eine benutzerdefinierte Rolle erstellen, können Sie auch die Ressourcenanbieter ermitteln, indem Sie nach Schlüsselwörtern suchen. Diese Suchfunktion wird unter [Erstellen oder Aktualisieren von benutzerdefinierten Azure-Rollen mithilfe des Azure-Portals](custom-roles-portal.md#step-4-permissions) beschrieben.
 
-    ![Der Bereich „Berechtigungen hinzufügen“ mit Ressourcenanbietern](./media/custom-roles-portal/add-permissions-provider.png)
+    ![Der Bereich „Berechtigungen hinzufügen“ mit Ressourcenanbietern](./media/shared/add-permissions-provider.png)
 
 - Suchen Sie nach den [verfügbaren Berechtigungen](resource-provider-operations.md), um die gewünschten Berechtigungen zu ermitteln.
 
     Wenn Sie über das Azure-Portal eine benutzerdefinierte Rolle erstellen, können Sie anhand von Schlüsselwörtern nach Berechtigungen suchen. Sie können z.B. nach Berechtigungen im Zusammenhang mit *VMs* oder mit der *Abrechnung* suchen. Sie können auch alle Berechtigungen als CSV-Datei herunterladen und dann diese Datei durchsuchen. Diese Suchfunktion wird unter [Erstellen oder Aktualisieren von benutzerdefinierten Azure-Rollen mithilfe des Azure-Portals](custom-roles-portal.md#step-4-permissions) beschrieben.
 
-    ![Die Liste „Berechtigungen hinzufügen“](./media/custom-roles-portal/add-permissions-list.png)
+    ![Die Liste „Berechtigungen hinzufügen“](./media/shared/add-permissions-list.png)
 
 ## <a name="custom-role-example"></a>Beispiel einer benutzerdefinierten Rolle
 
@@ -147,10 +147,6 @@ Im Folgenden wird die gleiche benutzerdefinierte Rolle bei Verwendung der Azure 
 ]
 ```
 
-Wenn Sie eine benutzerdefinierte Rolle erstellt haben, wird sie im Azure-Portal mit einem orangefarbenen Ressourcensymbol angezeigt.
-
-![Symbol der benutzerdefinierten Rolle](./media/custom-roles/roles-custom-role-icon.png)
-
 ## <a name="custom-role-properties"></a>Eigenschaften der benutzerdefinierten Rolle
 
 In der folgenden Tabelle wird erläutert, was die Eigenschaften der benutzerdefinierten Rollen bedeuten.
@@ -210,7 +206,7 @@ In der nachstehenden Liste werden die Grenzwerte bei benutzerdefinierten Rollen 
 - Benutzerdefinierte Rollen mit `DataActions` können im Verwaltungsgruppenbereich nicht zugewiesen werden.
 - Azure Resource Manager überprüft nicht, ob die Verwaltungsgruppe im zuweisbaren Bereich der Rollendefinition vorhanden ist.
 
-Weitere Informationen zu benutzerdefinierten Rollen und Verwaltungsgruppen finden Sie unter [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../governance/management-groups/overview.md#azure-custom-role-definition-and-assignment).
+Weitere Informationen zu benutzerdefinierten Rollen und Verwaltungsgruppen finden Sie unter [Was sind Azure-Verwaltungsgruppen?](../governance/management-groups/overview.md#azure-custom-role-definition-and-assignment).
 
 ## <a name="input-and-output-formats"></a>Eingabe- und Ausgabeformate
 

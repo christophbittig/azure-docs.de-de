@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 08/17/2021
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick; azure-synapse
-ms.openlocfilehash: 1eb42cc923ea5acd23165e9dfa778e35748e4d2e
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: ce3f7b923cec3dec28043f43babbaa86a0c6d92e
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122356633"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122662068"
 ---
 # <a name="performance-tune-with-materialized-views"></a>Leistungsoptimierung mit materialisierten Sichten
 
@@ -54,10 +54,13 @@ Die im dedizierten SQL-Pool implementierten materialisierten Sichten bieten auß
 
 Im Vergleich zu anderen Data Warehouse-Anbietern bieten die im dedizierten SQL-Pool implementierten materialisierten Sichten die folgenden Vorteile:
 
+- Umfassende Unterstützung von Aggregatfunktionen. Lesen Sie dazu [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql).
+- Die Unterstützung für abfragespezifische Empfehlungen von materialisierten Sichten.  Lesen Sie dazu [EXPLAIN (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql).
 - Automatische und synchrone Datenaktualisierung bei Datenänderungen in Basistabellen. Es ist keine Benutzeraktion erforderlich.
-- Umfassende Unterstützung von Aggregatfunktionen. Lesen Sie dazu [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest).
-- Die Unterstützung für abfragespezifische Empfehlungen von materialisierten Sichten.  Lesen Sie dazu [EXPLAIN (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?view=azure-sqldw-latest).
+>[!note] 
+> Eine materialisierte Sicht, die mit CASE-Ausdrücken erstellt wurde, speichert Werte, die die CASE-Kriterien nur zum Zeitpunkt der Ansichtserstellung erfüllen.  Die materialisierte Sicht spiegelt keine inkrementellen Datenänderungen wider, die sich aus den CASE-Ausdrücken ergeben, nachdem die Sicht erstellt wurde.   
 
+ 
 ## <a name="common-scenarios"></a>Häufige Szenarios  
 
 Materialisierte Sichten werden normalerweise in folgenden Szenarios verwendet:

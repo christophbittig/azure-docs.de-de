@@ -9,12 +9,12 @@ ms.custom: synapse
 ms.topic: conceptual
 ms.date: 04/29/2021
 ms.author: jianleishen
-ms.openlocfilehash: 593947e0bd7562172413d254d78eaa31b61b182f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9ee58b4afc33109ad8c205606e52fd1d76695d30
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122639833"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123257314"
 ---
 # <a name="xml-format-in-azure-data-factory"></a>XML-Format in Azure Data Factory
 
@@ -22,7 +22,7 @@ ms.locfileid: "122639833"
 
 Verwenden Sie diesen Artikel, wenn Sie die **XML-Dateien analysieren** möchten. 
 
-Das XML-Format wird für die folgenden Connectors unterstützt: [Amazon S3](connector-amazon-simple-storage-service.md), [Amazon S3-kompatibler Speicher](connector-amazon-s3-compatible-storage.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [Dateisystem](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md), [Oracle Cloud Storage](connector-oracle-cloud-storage.md) und [SFTP](connector-sftp.md). Es wird als Quelle, aber nicht als Senke unterstützt.
+Das XML-Format wird für die folgenden Connectors unterstützt: [Amazon S3](connector-amazon-simple-storage-service.md), [Kompatibler Amazon S3-Speicher](connector-amazon-s3-compatible-storage.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure Files](connector-azure-file-storage.md), [Dateisystem](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md), [Oracle Cloud Storage](connector-oracle-cloud-storage.md) und [SFTP](connector-sftp.md). Es wird als Quelle, aber nicht als Senke unterstützt.
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 

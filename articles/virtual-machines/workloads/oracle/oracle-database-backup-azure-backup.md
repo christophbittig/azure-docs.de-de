@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: 31bb35a096845c489b0f141a601ee604253e6ef9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fd6826370a0292190fc2534585fdb08f7982f447
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355490"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698698"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-backup"></a>Sichern und Wiederherstellen einer Oracle Database 19c-Datenbank auf einer Azure Linux-VM mithilfe von Azure Backup
+
+**Gilt für:** :heavy_check_mark: Linux-VMs 
 
 In diesem Artikel wird das Erstellen von Momentaufnahmen der VM-Datenträger, einschließlich Datenbankdateien und Fast Recovery Area (Bereich für schnelle Wiederherstellung), mithilfe von Azure Backup demonstriert. Mit Azure Backup können Sie vollständige Momentaufnahmen von Datenträgern erstellen, die sich als Sicherungen eignen und im [Recovery Services-Tresor](../../../backup/backup-azure-recovery-services-vault-overview.md) gespeichert werden.  Azure Backup ermöglicht auch anwendungskonsistente Sicherungen, sodass sichergestellt ist, dass zum Wiederherstellen der Daten keine zusätzlichen Korrekturen erforderlich sind. Durch die Wiederherstellung von anwendungskonsistenten Daten wird die Wiederherstellungsdauer reduziert, sodass Sie schnell zum Zustand der normalen Ausführung zurückkehren können.
 

@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/25/2021
+ms.date: 08/30/2021
 ms.author: tisande
-ms.openlocfilehash: 7cc6acc29cf8019bf65d3495cfd8a00a87da11bc
-ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
+ms.openlocfilehash: 8c253abdfc8ded8ab5507d482640d78e6d4469c8
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112914245"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123226601"
 ---
 # <a name="azure-cosmos-db-dedicated-gateway---overview-preview"></a>Dediziertes Azure Cosmos DB-Gateway – Übersicht (Vorschau)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -67,7 +67,7 @@ Abbildung der Gatewaymodusverbindung mit einem dedizierten Gateway:
 
 Ein dedizierter Gatewaycluster kann in API-Kernkonten (SQL) bereitgestellt werden. Ein dedizierter Gatewaycluster kann bis zu fünf Knoten enthalten, und Sie können Knoten jederzeit hinzufügen oder entfernen. Alle dedizierten Gatewayknoten in Ihrem Konto [verwenden dieselbe Verbindungszeichenfolge](how-to-configure-integrated-cache.md#configuring-the-integrated-cache).
 
-Dedizierte Gatewayknoten sind voneinander unabhängig. Wenn Sie mehrere dedizierte Gatewayknoten bereitstellen, kann jeder einzelne Knoten jede beliebige Anforderung weiterleiten. Darüber hinaus verfügt jeder Knoten über einen separaten Cache. Die zwischengespeicherten Daten innerhalb jedes Knotens hängen von den Daten ab, die vor kurzem über diesen spezifischen Knoten [geschrieben oder gelesen](integrated-cache.md#item-cache) wurden. Anders ausgedrückt: Wenn ein Element oder eine Abfrage auf einem Knoten zwischengespeichert wird, wird es bzw. sie nicht unbedingt auf den anderen Knoten zwischengespeichert.
+Dedizierte Gatewayknoten sind voneinander unabhängig. Wenn Sie mehrere dedizierte Gatewayknoten bereitstellen, kann jeder einzelne Knoten jede beliebige Anforderung weiterleiten. Darüber hinaus verfügt jeder Knoten über einen separaten integrierten Cache. Die zwischengespeicherten Daten innerhalb jedes Knotens hängen von den Daten ab, die vor kurzem über diesen spezifischen Knoten [geschrieben oder gelesen](integrated-cache.md#item-cache) wurden. Anders ausgedrückt: Wenn ein Element oder eine Abfrage auf einem Knoten zwischengespeichert wird, wird es bzw. sie nicht unbedingt auf den anderen Knoten zwischengespeichert.
 
 Für die Entwicklung empfiehlt es sich, mit einem Knoten zu beginnen, aber für die Produktion sollten Sie drei oder mehr Knoten bereitstellen, um Hochverfügbarkeit zu erzielen. [Erfahren Sie, wie Sie einen dedizierten Gatewaycluster mit einem integrierten Cache bereitstellen.](how-to-configure-integrated-cache.md) Durch die Bereitstellung mehrerer dedizierter Gatewayknoten kann der dedizierte Gatewaycluster weiterhin Anforderungen weiterleiten und zwischengespeicherte Daten verarbeiten, auch wenn einer der dedizierten Gatewayknoten nicht verfügbar ist.
 
@@ -100,6 +100,28 @@ Für das dedizierte Gateway gelten während der öffentlichen Vorschau die folge
 - Dedizierte Gateways werden nur für SQL-API-Konten unterstützt.
 - Sie können ein dediziertes Gateway nicht in Azure Cosmos DB-Konten mit [IP-Firewalls](how-to-configure-firewall.md) oder [konfigurierten](how-to-configure-private-endpoints.md) Private Link-Verbindungen bereitstellen.
 - Sie können ein dediziertes Gateway nicht in Azure Cosmos DB-Konten mit aktivierten [Verfügbarkeitszonen](high-availability.md#availability-zone-support) bereitstellen.
+- Sie können die [rollenbasierte Zugriffssteuerung (RBAC)](how-to-setup-rbac.md) nicht verwenden, um Datenebenenanforderungen zu authentifizieren, die über das dedizierte Gateway weitergeleitet werden.
+
+## <a name="supported-regions"></a>Unterstützte Regionen
+
+Das dedizierte Gateway befindet sich in der öffentlichen Vorschau und wird noch nicht in jeder Azure-Region unterstützt. Während der gesamten öffentlichen Vorschau werden wir neue Funktionen hinzufügen. Es gelten keine Regionseinschränkungen mehr, wenn das dedizierte Gateway allgemein verfügbar ist.
+
+Aktuelle Liste der unterstützten Azure-Regionen:
+
+| **Amerika** | **Europa und Afrika**  | **Asien-Pazifik**  |
+| ------------ | -------- | ----------- | 
+| Brasilien Süd      | Frankreich, Mitte    | Australien, Mitte |
+| Kanada, Mitte  | Frankreich, Süden    | Australien, Mitte 2 |
+| Kanada, Osten     | Deutschland, Norden   | Australien, Südosten |
+| USA (Mitte)     | Deutschland, Westen-Mitte   | Indien, Mitte |
+| East US     | Nordeuropa   | Asien, Osten |
+| USA (Ost) 2     | Schweiz, Norden   | Japan, Westen |
+| USA Nord Mitte     | UK, Süden   | Korea, Mitte |
+| USA Süd Mitte     | UK, Westen   | Korea, Süden |
+| USA, Westen-Mitte     | Europa, Westen   | Asien, Südosten |
+| USA (Westen)     |   | VAE, Mitte |
+| USA, Westen 2     |    | Indien, Westen |
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -108,3 +130,6 @@ Weitere Informationen zur Verwendung dedizierter Gateways finden Sie in den folg
 - [Integrierter Cache](integrated-cache.md)
 - [Konfigurieren des integrierten Caches](how-to-configure-integrated-cache.md)
 - [Häufig gestellte Fragen zum integrierten Cache](integrated-cache-faq.md)
+- Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen? Sie können Informationen zu Ihrem vorhandenen Datenbankcluster für die Kapazitätsplanung verwenden.
+    - Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](convert-vcore-to-request-unit.md) 
+    - Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbank-Workload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)

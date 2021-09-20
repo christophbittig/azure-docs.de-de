@@ -1,6 +1,6 @@
 ---
-title: Schema des Azure Network Watcher-Verbindungsmonitors | Microsoft-Dokumentation
-description: Machen Sie sich mit dem Schema des Azure Network Watcher-Verbindungsmonitors vertraut.
+title: Schemas des Azure Network Watcher-Verbindungsmonitors | Microsoft-Dokumentation
+description: Lernen Sie das Testdatenschema und das Pfaddatenschema von Azure Network Watcher Verbindungsmonitor kennen.
 services: network-watcher
 documentationcenter: na
 author: mjha
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/05/2021
 ms.author: mjha
-ms.openlocfilehash: 8cc2528a4a8f8a285e8bbf2f99859155c1d9861d
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 4cad1ea0d90f85a12e7d7f9b7dbc869a61a91a39
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114451031"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122969764"
 ---
-# <a name="azure-network-watcher-connection-monitor-schema"></a>Schema des Azure Network Watcher-Verbindungsmonitors
+# <a name="azure-network-watcher-connection-monitor-schemas"></a>Schemas des Azure Network Watcher-Verbindungsmonitors
 
 Der Verbindungsmonitor bietet eine einheitliche End-to-End-Verbindungsüberwachung in Azure Network Watcher. Das Feature für den Verbindungsmonitor unterstützt Hybrid- und Azure-Cloudbereitstellungen. Network Watcher stellt Tools für das Überwachen, Diagnostizieren und Anzeigen von Verbindungsmetriken für Ihre Azure-Bereitstellungen zur Verfügung.
 
@@ -41,14 +41,11 @@ Nachfolgend sind einige Vorteile des Verbindungsmonitors aufgeführt:
 * Unterstützung für Konnektivitätsprüfungen basierend auf HTTP, TCP und ICMP 
 * Metriken und Unterstützung für Log Analytics, sowohl für Azure- als auch für Nicht-Azure-Testsetups
 
-Es gibt zwei Arten von Protokollen/Daten, die in Log Analytics erfasst werden.
-Die Testdaten (NWConnectionMonitorTestResult-Abfrage) werden basierend auf der Überwachungshäufigkeit einer bestimmten Testgruppe aktualisiert.
-Die Pfaddaten (NWConnectionMonitorPathResult-Abfrage) werden aktualisiert, wenn sich der Prozentsatz des Verlusts oder die Roundtripzeit erheblich ändern.
-Daher werden Testdaten für einen bestimmten Zeitraum möglicherweise fortlaufend aktualisiert, während Pfaddaten weniger häufig aktualisiert werden, da beide unabhängig voneinander sind.
+Es gibt zwei Arten von Protokollen bzw. Daten, die in Log Analytics erfasst werden. Die Testdaten (NWConnectionMonitorTestResult-Abfrage) werden basierend auf der Überwachungshäufigkeit einer bestimmten Testgruppe aktualisiert. Die Pfaddaten (NWConnectionMonitorPathResult-Abfrage) werden aktualisiert, wenn sich der Prozentsatz des Verlusts oder die Roundtripzeit erheblich ändern. Testdaten werden für einen bestimmten Zeitraum möglicherweise fortlaufend aktualisiert, während Pfaddaten weniger häufig aktualisiert werden, da beide unabhängig voneinander sind.
 
 ## <a name="connection-monitor-tests-schema"></a>Verbindungsmonitor-Testschema
 
-Nachfolgend werden die Felder im Verbindungsmonitor-Testdatenschema und ihre Bedeutung aufgeführt. 
+In der folgenden Tabelle werden die Felder im Verbindungsmonitor-Testdatenschema und ihre Bedeutung aufgeführt. 
 
 | Feld  |    BESCHREIBUNG   |
 |---|---|
@@ -62,7 +59,7 @@ Nachfolgend werden die Felder im Verbindungsmonitor-Testdatenschema und ihre Bed
 | SourceAddress | Die Adresse der für den Test konfigurierten Quelle |
 | SourceSubnet  | Das Subnetz der Quelle |
 | SourceIP  | Die IP-Adresse der Quelle |
-| SourceName    | Der Name des Quellendpunkts |
+| SourceName    | Der Endpunktname der Quelle |
 | SourceAgentId | Die Quell-Agent-ID |
 | DestinationPort   | Der für den Test konfigurierte Zielport |
 | DestinationType   | Der Typ des Zielcomputers, der für den Test konfiguriert ist |
@@ -78,17 +75,17 @@ Nachfolgend werden die Felder im Verbindungsmonitor-Testdatenschema und ihre Bed
 | TestResult    | Das Ergebnis des Tests |
 | TestResultCriterion   | Die Ergebniskriterien für den Test |
 | ChecksFailedPercentThreshold  | Der für den Test festgelegte Schwellenwert für fehlerhafte Tests in Prozent |
-| RoundTripTimeMsThreshold  | Der für den Test festgelegte Roundtripschwellenwert (ms) |
-| MinRoundTripTimeMs    | Die minimale Roundtripzeit (ms) für den Test |
-| MaxRoundTripTimeMs    | Die maximale Roundtripzeit für den Test |
+| RoundTripTimeMsThreshold  | Der für den Test festgelegte Roundtripschwellenwert (in Millisekunden) |
+| MinRoundTripTimeMs    | Die minimale Roundtripzeit (in Millisekunden) für den Test |
+| MaxRoundTripTimeMs    | Die maximale Roundtripzeit (in Millisekunden) für den Test |
 | AvgRoundTripTimeMs    | Die durchschnittliche Roundtripzeit für den Test |
-| JitterMs  | Die mittleren Abweichung der Roundtripzeit für den Test |
+| JitterMs  | Die mittlere Abweichung der Roundtripzeit für den Test |
 | AdditionalData    | Die zusätzlichen Daten für den Test |
 
 
 ## <a name="connection-monitor-path-schema"></a>Verbindungsmonitor-Pfadschema
 
-Nachfolgend werden die Felder im Verbindungsmonitor-Pfaddatenschema und ihre Bedeutung aufgeführt. 
+In der folgenden Tabelle werden die Felder im Verbindungsmonitor-Pfaddatenschema und ihre Bedeutung aufgeführt. 
 
 | Feld  |    BESCHREIBUNG   |
 |---|---|
@@ -103,7 +100,7 @@ Nachfolgend werden die Felder im Verbindungsmonitor-Pfaddatenschema und ihre Bed
 | SourceAddress | Die Adresse der für den Test konfigurierten Quelle |
 | SourceSubnet  | Das Subnetz der Quelle |
 | SourceIP  | Die IP-Adresse der Quelle | 
-| SourceName    | Der Name des Quellendpunkts |
+| SourceName    | Der Endpunktname der Quelle |
 | SourceAgentId | Die Quell-Agent-ID |
 | DestinationPort   | Der für den Test konfigurierte Zielport |
 | DestinationType   | Der Typ des Zielcomputers, der für den Test konfiguriert ist |
@@ -119,11 +116,11 @@ Nachfolgend werden die Felder im Verbindungsmonitor-Pfaddatenschema und ihre Bed
 | PathTestResult    | Das Ergebnis des Tests |
 | PathResultCriterion   | Die Ergebniskriterien für den Test | 
 | ChecksFailedPercentThreshold  | Der für den Test festgelegte Schwellenwert für fehlerhafte Tests in Prozent |
-| RoundTripTimeMsThreshold  | Der für den Test festgelegte Roundtripschwellenwert (ms) |
-| MinRoundTripTimeMs    | Die minimale Roundtripzeit (ms) für den Test |
-| MaxRoundTripTimeMs    | Die maximale Roundtripzeit für den Test |
+| RoundTripTimeMsThreshold  | Der für den Test festgelegte Roundtripschwellenwert (in Millisekunden) |
+| MinRoundTripTimeMs    | Die minimale Roundtripzeit (in Millisekunden) für den Test |
+| MaxRoundTripTimeMs    | Die maximale Roundtripzeit (in Millisekunden) für den Test |
 | AvgRoundTripTimeMs    | Die durchschnittliche Roundtripzeit für den Test |
-| JitterMs  | Die mittleren Abweichung der Roundtripzeit für den Test |
+| JitterMs  | Die mittlere Abweichung der Roundtripzeit für den Test |
 | HopAddresses | Die für den Test identifizierten Hopadressen |
 | HopTypes  | Die für den Test identifizierten Hoptypen |
 | HopLinkTypes  | Die für den Test identifizierten Hoplinktypen |

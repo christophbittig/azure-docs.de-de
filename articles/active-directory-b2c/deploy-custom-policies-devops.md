@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/01/2021
+ms.date: 08/26/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 470fcebf33e995d4c81d916970d80015b8f7c8f6
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: d24e1cf8394b697348492ffcddc4634646ebbbb6
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110783749"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967086"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Bereitstellen benutzerdefinierter Richtlinien mit Azure Pipelines
 
@@ -56,8 +56,8 @@ Param(
     [Parameter(Mandatory = $true)][string]$ClientID,
     [Parameter(Mandatory = $true)][string]$ClientSecret,
     [Parameter(Mandatory = $true)][string]$TenantId,
-    [Parameter(Mandatory = $true)][string]$PolicyId,
-    [Parameter(Mandatory = $true)][string]$PathToFile
+    [Parameter(Mandatory = $true)][string]$Folder,
+    [Parameter(Mandatory = $true)][string]$Files
 )
 
 try {
@@ -70,15 +70,42 @@ try {
     $headers.Add("Content-Type", 'application/xml')
     $headers.Add("Authorization", 'Bearer ' + $token)
 
-    $graphuri = 'https://graph.microsoft.com/beta/trustframework/policies/' + $PolicyId + '/$value'
-    $policycontent = Get-Content $PathToFile
+    # Get the list of files to upload
+    $filesArray = $Files.Split(",")
 
-    # Optional: Change the content of the policy. For example, replace the tenant-name with your tenant name.
-    # $policycontent = $policycontent.Replace("your-tenant.onmicrosoft.com", "contoso.onmicrosoft.com")     
+    Foreach ($file in $filesArray) {
 
-    $response = Invoke-RestMethod -Uri $graphuri -Method Put -Body $policycontent -Headers $headers
+        $filePath = $Folder + $file.Trim()
 
-    Write-Host "Policy" $PolicyId "uploaded successfully."
+        # Check if file exists
+        $FileExists = Test-Path -Path $filePath -PathType Leaf
+
+        if ($FileExists) {
+            $policycontent = Get-Content $filePath
+
+            # Optional: Change the content of the policy. For example, replace the tenant-name with your tenant name.
+            # $policycontent = $policycontent.Replace("your-tenant.onmicrosoft.com", "contoso.onmicrosoft.com")     
+    
+    
+            # Get the policy name from the XML document
+            $match = Select-String -InputObject $policycontent  -Pattern '(?<=\bPolicyId=")[^"]*'
+    
+            If ($match.matches.groups.count -ge 1) {
+                $PolicyId = $match.matches.groups[0].value
+    
+                Write-Host "Uploading the" $PolicyId "policy..."
+    
+                $graphuri = 'https://graph.microsoft.com/beta/trustframework/policies/' + $PolicyId + '/$value'
+                $response = Invoke-RestMethod -Uri $graphuri -Method Put -Body $policycontent -Headers $headers
+    
+                Write-Host "Policy" $PolicyId "uploaded successfully."
+            }
+        }
+        else {
+            $warning = "File " + $filePath + " couldn't be not found."
+            Write-Warning -Message $warning
+        }
+    }
 }
 catch {
     Write-Host "StatusCode:" $_.Exception.Response.StatusCode.value__
@@ -145,35 +172,18 @@ Eine Pipelineaufgabe ist ein vorgepacktes Skript, das eine Aktion ausführt. Fü
     * **Anzeigename**: Der Name der Richtlinie, die dieser Task hochladen soll, zum Beispiel *B2C_1A_TrustFrameworkBase*.
     * **Typ:** Dateipfad
     * **Skriptpfad:** Wählen Sie die Auslassungspunkte (**_..._* _) aus, navigieren Sie zum Ordner _Skripts*, und wählen Sie dann die Datei *DeployToB2C.ps1* aus.
-    * **Argumente**:
+    * **Argumente**: Geben Sie das folgende PowerShell-Skript ein. 
 
-        Geben Sie als **Argumente** die folgenden Werte ein. Ersetzen Sie `{alias-name}` durch den Alias, den Sie im vorherigen Abschnitt angegeben haben. Ersetzen Sie `{policy-id}` durch den Richtliniennamen. Ersetzen Sie `{policy-file-name}` durch den Namen der Richtliniendatei.
-
-        Die erste Richtlinie, die Sie hochladen, muss *TrustFrameworkBase.xml* sein.
 
         ```PowerShell
-        -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -PolicyId {policy-id} -PathToFile $(System.DefaultWorkingDirectory)/{alias-name}/B2CAssets/{policy-file-name}
+        -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -Folder $(System.DefaultWorkingDirectory)/policyRepo/B2CAssets/ -Files "TrustFrameworkBase.xml,TrustFrameworkExtensions.xml,SignUpOrSignin.xml,ProfileEdit.xml,PasswordReset.xml"
         ```
-
-        `PolicyId` ist ein Wert, der sich am Anfang jeder XML-Richtliniendatei im TrustFrameworkPolicy-Knoten befindet. Beispiel: `PolicyId` in der folgenden XML-Richtliniendatei lautet *B2C_1A_TrustFrameworkBase*:
-
-        ```xml
-        <TrustFrameworkPolicy
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-        xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
-        PolicySchemaVersion="0.3.0.0"
-        TenantId="your-tenant.onmicrosoft.com"
-        PolicyId= "B2C_1A_TrustFrameworkBase"
-        PublicPolicyUri="http://your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
-        ```
-
-        Ihre endgültigen Argumente sollten nun wie im folgenden Beispiel gezeigt aussehen:
-
-        ```PowerShell
-        -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -PolicyId B2C_1A_TrustFrameworkBase -PathToFile $(System.DefaultWorkingDirectory)/policyRepo/B2CAssets/TrustFrameworkBase.xml
-        ```
-
+        
+        Der Parameter `-Files` ist eine Liste mit Kommatrennzeichen der bereitzustellenden Richtliniendateien. Aktualisieren Sie die Liste mit Ihren Richtliniendateien.
+        
+        > [!IMPORTANT]
+        >  Stellen Sie sicher, dass die Richtlinien in der richtigen Reihenfolge hochgeladen werden. Zuerst die Basisrichtlinie, dann die Erweiterungsrichtlinie und anschließend die Richtlinien der vertrauenden Seite. z. B. `TrustFrameworkBase.xml,TrustFrameworkExtensions.xml,SignUpOrSignin.xml`.
+        
 1. Wählen Sie **Speichern** aus, um den Agent-Auftrag zu speichern.
 
 ## <a name="test-your-pipeline"></a>Testen Ihrer Pipeline
@@ -186,17 +196,6 @@ So testen Sie Ihre Pipeline
 
 Es sollte ein Benachrichtigungsbanner mit dem Hinweis angezeigt werden, dass eine Freigabe in die Warteschlange gestellt wurde. Um deren Status anzuzeigen, wählen Sie den Link im Benachrichtigungsbanner oder die Freigabe in der Liste auf der Registerkarte **Freigaben** aus.
 
-## <a name="add-more-pipeline-tasks"></a>Hinzufügen weiterer Pipelinetasks
-
-Wiederholen Sie die [vorherigen Schritte](#add-pipeline-tasks) für jede der benutzerdefinierten Richtliniendateien, um die restlichen Richtlinien bereitzustellen.
-
-Stellen Sie beim Ausführen der Agents und beim Hochladen der Richtliniendateien unbedingt die richtige Reihenfolge sicher:
-
-1. *TrustFrameworkBase.xml*
-1. *TrustFrameworkExtensions.xml*
-1. *SignUpOrSignin.xml*
-1. *ProfileEdit.xml*
-1. *PasswordReset.xml*
 
 ## <a name="next-steps"></a>Nächste Schritte
 

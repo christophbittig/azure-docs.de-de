@@ -8,12 +8,12 @@ ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: b881b7b87ef704102df7c5d8a9d24542b3d89bb2
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 741f20a19c4bfe842ed2c14cee51c1ae19c1d9da
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112118596"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258461"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planung für die Bereitstellung einer Azure-Dateisynchronisierung
 
@@ -180,6 +180,33 @@ In der folgenden Tabelle wird der Interop-Status der NTFS-Dateisystemfeatures ge
 | \\System Volume Information | Volumespezifischer Ordner |
 | $RECYCLE.BIN| Ordner |
 | \\SyncShareState | Ordner für die Synchronisierung |
+
+### <a name="consider-how-much-free-space-you-need-on-your-local-disk"></a>Überlegungen zum benötigten freien Speicherplatz auf dem lokalen Datenträger
+Berücksichtigen Sie bei der Planung der Verwendung der Azure-Dateisynchronisierung, wie viel freien Speicherplatz Sie auf dem lokalen Datenträger benötigen, auf dem Sie einen Serverendpunkt verwenden möchten.
+
+Für die Azure-Dateisynchronisierung müssen Sie die folgenden Faktoren berücksichtigen, die Speicherplatz auf Ihrem lokalen Datenträger belegen:
+- Bei aktiviertem Cloudtiering:
+    - Analysepunkte für Tieringdateien
+    - Metadatendatenbank der Azure-Dateisynchronisierung
+    - Wärmespeicher der Azure-Dateisynchronisierung
+    - Vollständig heruntergeladene Dateien in Ihrem Hot Cache (sofern vorhanden)
+    - Anforderungen der Richtlinie für freien Volumespeicherplatz
+
+- Bei deaktiviertem Cloudtiering:  
+    - Vollständig heruntergeladene Dateien
+    - Wärmespeicher der Azure-Dateisynchronisierung
+    - Metadatendatenbank der Azure-Dateisynchronisierung
+
+Anhand eines Beispiels wird veranschaulicht, wie Sie den auf Ihrem lokalen Datenträger benötigten freien Speicherplatz ermitteln können. Angenommen, Sie haben Ihren Azure-Dateisynchronisierungs-Agent auf Ihrem virtuellen Azure Windows-Computer installiert und planen die Erstellung eines Serverendpunkts auf Datenträger F. Sie verfügen über 1 Million Dateien und möchten alle Dateien, 100.000 Verzeichnisse und einen Datenträgercluster mit einer Größe von 4 KiB per Tiering auslagern. Die Datenträgergröße beträgt 1000 GiB. Sie möchten Cloudtiering aktivieren und die Richtlinie für freien Volumespeicherplatz auf 20 % festlegen. 
+
+1. NTFS ordnet jeder Tieringdatei eine Clustergröße zu. 1 Million Dateien * 4 KiB Clustergröße = 4.000.000 KiB (4 GiB)
+> [!Note]  
+> Der von Tieringdateien belegte Speicherplatz wird von NTFS zugeordnet. Aus diesem Grund wird er auf keiner Benutzeroberfläche angezeigt.
+3. Synchronisierungsmetadaten nehmen eine Clustergröße pro Element ein. (1 Million Dateien + 100.000 Verzeichnisse) * 4 KiB Clustergröße = 4.400.000 KiB (4,4 GiB)
+4. Der Wärmespeicher der Azure-Dateisynchronisierung belegt 1,1 KiB pro Datei. 1 Million Dateien * 1,1 KiB = 1.100.000 KiB (1,1 GiB)
+5. Die Richtlinie für freien Volumespeicherplatz ist auf 20 % festgelegt. 1000 GiB * 0,2 = 200 GiB
+
+In diesem Fall würde die Azure-Dateisynchronisierung etwa 209.500.000 KiB (209,5 GiB) Speicherplatz für diesen Namespace benötigen. Fügen Sie diese Speicherplatzmenge zu jedem gewünschten zusätzlichen freien Speicherplatz hinzu, um herauszufinden, wie viel freier Speicherplatz für diesen Datenträger erforderlich ist.
 
 ### <a name="failover-clustering"></a>Failoverclustering
 Windows Server-Failoverclustering wird von der Azure-Dateisynchronisierung für die Bereitstellungsoption „Dateiserver zur allgemeinen Verwendung“ unterstützt. Failoverclustering wird auf einem „Dateiserver mit horizontaler Skalierung für Anwendungsdaten“ (SOFS) oder auf freigegebenen Volumes (CSV) nicht unterstützt.

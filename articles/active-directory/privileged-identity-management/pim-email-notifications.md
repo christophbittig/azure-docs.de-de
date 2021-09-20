@@ -1,5 +1,5 @@
 ---
-title: E-Mail-Benachrichtigungen in PIM – Azure Active Directory | Microsoft-Dokumentation
+title: E-Mail-Benachrichtigungen in Privileged Identity Management (PIM) – Azure Active Directory | Microsoft-Dokumentation
 description: Dieser Artikel enthält eine Beschreibung der E-Mail-Benachrichtigungen in Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 06/30/2021
+ms.date: 08/24/2021
 ms.author: curtand
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18aa1e49ad3f87ab3e222f250354c2bc5e2aca16
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 68fac3501cd13dd4766c519185459c9ef89b6299
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355914"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123311222"
 ---
 # <a name="email-notifications-in-pim"></a>E-Mail-Benachrichtigungen in PIM
 
@@ -37,6 +37,21 @@ Die von Privileged Identity Management für Azure AD-Rollen und Azure-Ressourcen
 Diese E-Mails enthalten in der Betreffzeile das Präfix **PIM**. Hier sehen Sie ein Beispiel:
 
 - PIM: Alain Charon wurde permanent die Rolle des Benutzers mit Leseberechtigung für Sicherungsfunktionen zugewiesen.
+
+## <a name="email-timing-for-activation-approvals"></a>E-Mail-Timing für Aktivierungsgenehmigungen
+
+Wenn Benutzer ihre Rolle aktivieren und die Rolleneinstellung genehmigt werden muss, erhalten genehmigende Personen für jede Genehmigung zwei E-Mails:
+
+- Anforderung zum Genehmigen oder Ablehnen der Aktivierungsanforderung des Benutzers (vom Genehmigungsanforderungsmodul gesendet)
+- Die Anforderung des Benutzers wird genehmigt (vom Genehmigungsanforderungsmodul gesendet)
+
+Außerdem erhalten globale Administratoren und Administratoren für privilegierte Rollen eine E-Mail für jede Genehmigung:
+
+- Die Rolle des Benutzers wird aktiviert (von Privileged Identity Management gesendet)
+
+Bei den ersten beiden vom Genehmigungsanforderungsmodul gesendeten E-Mails können Verzögerungen auftreten. Bei 90 % der E-Mails dauert das Versenden derzeit drei bis zehn Minuten, aber bei 1 % der Kunden kann es viel länger dauern, bis zu fünfzehn Minuten.
+
+Wird im Azure-Portal eine Genehmigungsanforderung vor dem Senden der ersten E-Mail genehmigt, wird die erste E-Mail nicht mehr ausgelöst, und andere genehmigende Personen werden nicht per E-Mail über die Genehmigungsanforderung benachrichtigt. Es mag den Anschein haben, als hätten sie keine E-Mail erhalten, aber dies ist das erwartete Verhalten.
 
 ## <a name="notifications-for-azure-ad-roles"></a>Benachrichtigungen für Azure AD-Rollen
 
@@ -77,22 +92,7 @@ Die E-Mail enthält:
 
 Im Abschnitt **Overview of your top roles** (Übersicht über Ihre wichtigsten Rollen) sind die fünf wichtigsten Rollen in Ihrer Organisation basierend auf der Gesamtzahl der permanenten und berechtigten Administratoren für jede Rolle aufgeführt. Über den Link **Aktion ausführen** wird [Ermittlung und Erkenntnisse](pim-security-wizard.md) geöffnet, wo Sie permanente Administratoren in Batches in berechtigte Administratoren umwandeln können.
 
-## <a name="email-timing-for-activation-approvals"></a>E-Mail-Timing für Aktivierungsgenehmigungen
-
-Wenn Benutzer ihre Rolle aktivieren und die Rolleneinstellung genehmigt werden muss, erhalten genehmigende Personen für jede Genehmigung zwei E-Mails:
-
-- Anforderung zum Genehmigen oder Ablehnen der Aktivierungsanforderung des Benutzers (vom Genehmigungsanforderungsmodul gesendet)
-- Die Anforderung des Benutzers wird genehmigt (vom Genehmigungsanforderungsmodul gesendet)
-
-Außerdem erhalten globale Administratoren und Administratoren für privilegierte Rollen eine E-Mail für jede Genehmigung:
-
-- Die Rolle des Benutzers wird aktiviert (von Privileged Identity Management gesendet)
-
-Bei den ersten beiden vom Genehmigungsanforderungsmodul gesendeten E-Mails können Verzögerungen auftreten. Bei 90 % der E-Mails dauert das Versenden derzeit drei bis zehn Minuten, aber bei 1 % der Kunden kann es viel länger dauern, bis zu fünfzehn Minuten.
-
-Wird im Azure-Portal eine Genehmigungsanforderung vor dem Senden der ersten E-Mail genehmigt, wird die erste E-Mail nicht mehr ausgelöst, und andere genehmigende Personen werden nicht per E-Mail über die Genehmigungsanforderung benachrichtigt. Es mag den Anschein haben, als hätten sie keine E-Mail erhalten, aber dies ist das erwartete Verhalten.
-
-## <a name="pim-emails-for-azure-resource-roles"></a>PIM-E-Mails für Azure-Ressourcenrollen
+## <a name="notifications-for-azure-resource-roles"></a>Benachrichtigungen für Azure-Ressourcenrollen
 
 Privileged Identity Management sendet bei folgenden Ereignissen für Azure-Ressourcenrollen E-Mails an Besitzer und Benutzerzugriffsadministratoren:
 
@@ -113,6 +113,25 @@ Privileged Identity Management sendet bei folgenden Ereignissen für Azure-Resso
 Nachstehend finden Sie eine Beispiel-E-Mail, die gesendet wird, wenn einem Benutzer eine Azure-Ressourcenrolle für die fiktive Organisation Contoso zugewiesen wird.
 
 ![Neue Privileged Identity Management-E-Mail für Azure-Ressourcenrollen](./media/pim-email-notifications/email-resources-new.png)
+
+## <a name="notifications-for-privileged-access-groups"></a>Benachrichtigungen für Privileged Access-Gruppen
+
+Privileged Identity Management sendet nur dann E-Mails an Besitzer, wenn die folgenden Ereignisse für Privileged Access-Gruppenzuweisungen auftreten:
+
+- Wenn die Genehmigung einer „Besitzer“- oder „Mitglied“-Rollenzuweisung aussteht
+- Wenn eine „Besitzer“- oder „Mitglied“-Rolle zugewiesen wird
+- Wenn eine „Besitzer“- oder „Mitglied“-Rolle demnächst abläuft
+- Wenn eine „Besitzer“- oder „Mitglied“-Rolle verlängerungsberechtigt ist
+- Wenn eine „Besitzer“- oder „Mitglied“-Rolle von einem Endbenutzer erneuert wird
+- Wenn eine Aktivierungsanforderung für die Rolle „Besitzer“ oder „Mitglied“ abgeschlossen wird
+
+Privileged Identity Management sendet nur dann E-Mails an Endbenutzer, wenn die folgenden Ereignisse für Privileged Access-Gruppenzuweisungen auftreten:
+
+- Wenn dem Benutzer eine „Besitzer“- oder „Mitglied“-Rolle zugewiesen wird
+- Wenn die „Besitzer“- oder „Mitglied“-Rolle eines Benutzers abgelaufen ist
+- Wenn die „Besitzer“- oder „Mitglied“-Rolle eines Benutzers verlängert wird
+- Wenn eine Aktivierungsanforderung eines Benutzers für die Rolle „Besitzer“ oder „Mitglied“ abgeschlossen wird
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

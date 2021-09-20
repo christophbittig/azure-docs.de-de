@@ -7,20 +7,29 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 05/28/2021
+ms.date: 08/26/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 623799b894846034dcf3f58a4bd6e53c56d526df
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 7b0b5a35a85a8b0564112d62401c722e65505f2e
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110690484"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123186225"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Abrechnungsmodell für Azure Active Directory B2C
 
 Die Preisgestaltung für Azure Active Directory B2C (Azure AD B2C) basiert auf den monatlich aktiven Benutzern (MAU), d. h. die Anzahl eindeutiger Benutzer mit Authentifizierungsaktivität innerhalb eines Kalendermonats. Dieses Abrechnungsmodell gilt sowohl für Azure AD B2C-Mandanten als auch für die [Zusammenarbeit mit Azure AD-Gastbenutzern (B2B)](../active-directory/external-identities/external-identities-pricing.md). Das MAU-Abrechnungsmodell hilft Ihnen, Ihre Kosten zu senken, da es einen kostenlosen Tarif sowie eine flexible, vorhersehbare Preisgestaltung bietet. In diesem Artikel finden Sie Informationen zur MAU-Abrechnung, zum Verknüpfen Ihrer Azure AD B2C-Mandanten mit einem Abonnement und zum Ändern Ihres Tarifs.
+
+## <a name="mau-overview"></a>Übersicht über MAU
+
+Monatlich aktive Benutzer*innen (MAU) sind eindeutige Benutzer*innen, die innerhalb eines bestimmten Monats eine Authentifizierung durchführen. Benutzer*innen, die sich innerhalb eines bestimmten Monats mehrmals authentifizieren, werden als MAU gezählt. Kund*innen werden weder die nachfolgenden Authentifizierungen eines MAU während des Monats noch inaktive Benutzer*innen in Rechnung gestellt. Authentifizierungen können Folgendes umfassen:
+
+- Aktives, interaktives Anmelden der Benutzer*innen (z. B. durch [Registrierung oder Anmeldung](add-sign-up-and-sign-in-policy.md), [Self-Service-Kennwortzurücksetzungen](add-password-reset-policy.md), [Profilbearbeitungen](add-profile-editing-policy.md), beliebige Arten von [Benutzerflows](user-flow-overview.md) oder [benutzerdefinierte Richtlinien](custom-policy-overview.md))
+- Passives, nicht interaktives Anmelden (z. B. durch [einmaliges Anmelden (SSO)](session-behavior.md) oder eine beliebige Art von Tokenbeschaffung wie Autorisierungscodeflows, Tokenaktualisierungen oder [Kennwortanmeldeinformationen des Ressourcenbesitzers (ROPC)](add-ropc-policy.md))
+
+Wenn Sie ein höheres Maß an Sicherheit mithilfe der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für Sprachanrufe und SMS bereitstellen möchten, wird Ihnen weiterhin eine globale Pauschalgebühr für jeden MFA-Versuch in diesem Monat in Rechnung gestellt, unabhängig davon, ob die Anmeldung erfolgreich oder nicht erfolgreich war. 
 
 > [!IMPORTANT]
 > Dieser Artikel enthält keine Preisinformationen. Die aktuellen Informationen zur Nutzungsabrechnung und zu den Preisen finden Sie unter [Azure Active Directory B2C – Preise](https://azure.microsoft.com/pricing/details/active-directory-b2c/). Ausführliche Informationen zu den Orten, an denen der Azure AD B2C-Dienst verfügbar ist und Benutzerdaten gespeichert werden, finden Sie unter [Regionale Verfügbarkeit und Datenresidenz in Azure AD B2C](data-residency.md).

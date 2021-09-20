@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie „Mit Apple anmelden“ als Identitätsanbie
 ms.topic: article
 ms.date: 11/19/2020
 ms.reviewer: mikarmar
-ms.openlocfilehash: 01216b7527fd6479f43c3bf0b9d4abeb60d06435
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 4b123b0711954e45108b934622f0fabab5be15e0
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113093047"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259332"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-sign-in-using-a-sign-in-with-apple-provider-preview"></a>Konfigurieren Ihrer App Service- oder Azure Functions-App für die Anmeldung über einen „Mit Apple anmelden“-Anbieter (Vorschau)
 
@@ -81,7 +81,7 @@ Weitere Informationen zum Generieren und Überprüfen von Token finden Sie in de
 ### <a name="sign-the-client-secret-jwt"></a>Signieren des JWT-Tokens des geheimen Clientschlüssels
 Verwenden Sie die `.p8`-Datei, die Sie zuvor heruntergeladen haben, um das JWT-Token des geheimen Clientschlüssels zu signieren. Bei dieser Datei handelt es sich um eine [PCKS#8-Datei](https://en.wikipedia.org/wiki/PKCS_8) die den privaten Signaturschlüssel im PEM-Format enthält. Das JWT-Token kann in vielen verfügbaren Bibliotheken erstellt und signiert werden. 
 
-Es gibt verschiedene Arten von Open-Source-Bibliotheken, die online zum Erstellen und Signieren von JWT-Token zur Verfügung stehen. Weitere Informationen zum Generieren von JWT-Token finden Sie unter jwt.io. Eine Möglichkeit, den geheimen Clientschlüssel zu generieren, besteht beispielsweise darin, das NuGet-Paket [Microsoft.IdentityModel.Tokens](https://www.nuget.org/packages/Microsoft.IdentityModel.Tokens/) zu importieren und einen kleinen Teil des unten gezeigten C#-Codes auszuführen.
+Es gibt verschiedene Arten von Open-Source-Bibliotheken, die online zum Erstellen und Signieren von JWT-Token zur Verfügung stehen. Weitere Informationen zum Generieren von JWT-Token finden Sie unter [JSON Web Token (JWT)](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims). Eine Möglichkeit, den geheimen Clientschlüssel zu generieren, besteht beispielsweise darin, das NuGet-Paket [Microsoft.IdentityModel.Tokens](https://www.nuget.org/packages/Microsoft.IdentityModel.Tokens/) zu importieren und einen kleinen Teil des unten gezeigten C#-Codes auszuführen.
 
 ```csharp
 using Microsoft.IdentityModel.Tokens;

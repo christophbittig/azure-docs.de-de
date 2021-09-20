@@ -13,14 +13,14 @@ ms.date: 08/10/2021
 ms.author: ombongifaith
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: scenarios:getting-started
-ms.openlocfilehash: 55076f382b24c8bcf994b452e8c26e5bb6cc23b9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3cc084fe1b9df8a4ab4db5b926bb7b44646f17c2
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349559"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123030323"
 ---
-# <a name="how-to-create-a-self-signed-public-certificate-to-authenticate-your-application"></a>Vorgehensweise: Erstellen eines selbstsignierten öffentlichen Zertifikats zum Authentifizieren Ihrer Anwendung
+# <a name="create-a-self-signed-public-certificate-to-authenticate-your-application"></a>Erstellen Sie ein selbstsigniertes öffentliches Zertifikat zum Authentifizieren Ihrer Anwendung.
 
 Azure Active Directory (Azure AD) unterstützt zwei Authentifizierungsarten für Dienstprinzipale: **kennwortbasierte Authentifizierung** (App-Geheimnis) und **zertifikatbasierte Authentifizierung**. Obwohl App-Geheimnisse ohne großen Aufwand im Azure-Portal erstellt werden können, wird jedoch empfohlen, für Ihre Anwendung ein Zertifikat zu verwenden.
 

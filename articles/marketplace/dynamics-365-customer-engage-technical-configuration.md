@@ -1,6 +1,6 @@
 ---
-title: Einrichten der technischen Konfiguration eines Angebots für Dynamics 365 for Customer Engagement und PowerApps in Microsoft AppSource – Azure Marketplace
-description: Richten Sie die technische Konfiguration eines Angebots für Dynamics 365 for Customer Engagement und PowerApps in Microsoft AppSource (Azure Marketplace) ein.
+title: 'Einrichten der technischen Konfiguration eines Angebots für Dynamics 365 for Customer Engagement und Power Apps in Microsoft AppSource: Azure Marketplace'
+description: Einrichten der technischen Konfiguration eines Angebots für Dynamics 365 for Customer Engagement und Power Apps in Microsoft AppSource (Azure Marketplace)
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
@@ -8,12 +8,12 @@ ms.custom: references_regions
 author: vamahtan
 ms.author: vamahtan
 ms.date: 06/29/2021
-ms.openlocfilehash: 6d58fbdd2f6b4b89d2584b9f82e0f0fd0417ad35
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 247c36391826ef427ffe1ed8bcc8f7a8991a44d8
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113085108"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864425"
 ---
 # <a name="set-up-dynamics-365-for-customer-engagement--power-apps-offer-technical-configuration"></a>Einrichten der technischen Konfiguration eines Angebots für Dynamics 365 for Customer Engagement und PowerApps
 

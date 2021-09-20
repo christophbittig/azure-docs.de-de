@@ -1,37 +1,43 @@
 ---
-title: Deaktivieren von Netzwerkrichtlinien für private Endpunkte
+title: Verwalten von Netzwerkrichtlinien für private Endpunkte
 titleSuffix: Azure Private Link
-description: Erfahren Sie, wie Sie Netzwerkrichtlinien für private Endpunkte deaktivieren.
+description: Hier erfahren Sie, wie Sie Netzwerkrichtlinien für private Endpunkte verwalten.
 services: private-link
 author: asudbring
 ms.service: private-link
 ms.topic: how-to
-ms.date: 07/14/2021
+ms.date: 08/26/2021
 ms.author: allensu
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 41cdefd340ace93d5a068c9a74543965834d01ca
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: c06ad374e46e9900ba99a95708e19a63498719ec
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114221352"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123101546"
 ---
-# <a name="disable-network-policies-for-private-endpoints"></a>Deaktivieren von Netzwerkrichtlinien für private Endpunkte
+# <a name="manage-network-policies-for-private-endpoints"></a>Verwalten von Netzwerkrichtlinien für private Endpunkte
 
-Netzwerkrichtlinien wie Netzwerksicherheitsgruppen (NSG) werden für private Endpunkte nicht unterstützt. Zum Bereitstellen eines privaten Endpunkts in einem bestimmten Subnetz ist eine explizite Einstellung zum Deaktivieren in diesem Subnetz erforderlich. Diese Einstellung gilt nur für den privaten Endpunkt. Für andere Ressourcen im Subnetz wird der Zugriff basierend auf Sicherheitsregeln in der Netzwerksicherheitsgruppe gesteuert.
- 
+Netzwerkrichtlinien wie Netzwerksicherheitsgruppen (NSG) wurden für private Endpunkte bisher nicht unterstützt. Zum Bereitstellen eines privaten Endpunkts in einem bestimmten Subnetz war eine explizite Einstellung zum Deaktivieren in diesem Subnetz erforderlich. Diese Einstellung gilt nur für den privaten Endpunkt. Für andere Ressourcen im Subnetz wird der Zugriff basierend auf Sicherheitsregeln in der Netzwerksicherheitsgruppe gesteuert.
+
+> [!IMPORTANT]
+> Die NSG- und UDR-Unterstützung für private Endpunkte befindet sich in der öffentlichen Vorschau.
+> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 Wenn Sie das Portal zum Erstellen eines privaten Endpunkts verwenden, wird die `PrivateEndpointNetworkPolicies`-Einstellung im Rahmen des Erstellungsprozesses automatisch deaktiviert. Für die Bereitstellung mit anderen Clients ist ein zusätzlicher Schritt erforderlich, um diese Einstellung zu ändern. 
 
-Sie können die Einstellung mit folgenden Funktionen deaktivieren:
+Sie können die Einstellung mit folgenden Funktionen deaktivieren und aktivieren:
 
 * Cloud Shell im Azure-Portal.
 * Azure PowerShell
 * Azure CLI
-* Azure Resource Manager-Vorlagen
+* Azure-Ressourcen-Manager-Vorlagen
  
-In den folgenden Beispielen wird beschrieben, wie `PrivateEndpointNetworkPolicies` für ein virtuelles Netzwerk namens **myVNet** mit einem **standardmäßigen** Subnetz in einer Ressourcengruppe namens **myResourceGroup** deaktiviert wird.
+In den folgenden Beispielen wird beschrieben, wie `PrivateEndpointNetworkPolicies` für ein virtuelles Netzwerk namens **myVNet** mit einem **standardmäßigen** Subnetz in einer Ressourcengruppe namens **myResourceGroup** deaktiviert und aktiviert wird.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
+
+### <a name="disable-network-policy"></a>Deaktivieren von Netzwerkrichtlinien
 
 In diesem Abschnitt wird beschrieben, wie Sie Subnetzrichtlinien für private Endpunkte mit Azure PowerShell deaktivieren können. Verwenden Sie [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) und [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork), um die Richtlinie zu deaktivieren.
 
@@ -42,11 +48,30 @@ $net =@{
 }
 $vnet = Get-AzVirtualNetwork @net
 
-($vnet | Select -ExpandProperty subnets).PrivateEndpointNetworkPolicies = "Disabled"
+($vnet | Select -ExpandProperty subnets | Where-Object {$_.Name -eq 'default'}).PrivateEndpointNetworkPolicies = "Disabled"
+
+$vnet | Set-AzVirtualNetwork
+```
+
+### <a name="enable-network-policy"></a>Aktivieren von Netzwerkrichtlinien
+
+In diesem Abschnitt wird beschrieben, wie Sie Subnetzrichtlinien für private Endpunkte mit Azure PowerShell aktivieren können. Verwenden Sie [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) und [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork), um die Richtlinie zu aktivieren.
+
+```azurepowershell
+$net =@{
+    Name = 'myVNet'
+    ResourceGroupName = 'myResourceGroup'
+}
+$vnet = Get-AzVirtualNetwork @net
+
+($vnet | Select -ExpandProperty subnets | Where-Object {$_.Name -eq 'default'}).PrivateEndpointNetworkPolicies = "Enabled"
 
 $vnet | Set-AzVirtualNetwork
 ```
 ## <a name="azure-cli"></a>Azure CLI
+
+### <a name="disable-network-policy"></a>Deaktivieren von Netzwerkrichtlinien
+
 In diesem Abschnitt wird beschrieben, wie Sie Subnetzrichtlinien für private Endpunkte mit der Azure CLI deaktivieren können. Verwenden Sie [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update), um die Richtlinie zu deaktivieren.
 
 ```azurecli
@@ -57,7 +82,23 @@ az network vnet subnet update \
   --vnet-name myVirtualNetwork \ 
   
 ```
+
+### <a name="enable-network-policy"></a>Aktivieren von Netzwerkrichtlinien
+
+In diesem Abschnitt wird beschrieben, wie Sie Subnetzrichtlinien für private Endpunkte mit der Azure CLI aktivieren können. Verwenden Sie [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update), um die Richtlinie zu aktivieren.
+
+```azurecli
+az network vnet subnet update \ 
+  --disable-private-endpoint-network-policies false \
+  --name default \ 
+  --resource-group myResourceGroup \ 
+  --vnet-name myVirtualNetwork \ 
+  
+```
 ## <a name="resource-manager-template"></a>Resource Manager-Vorlage
+
+### <a name="disable-network-policy"></a>Deaktivieren von Netzwerkrichtlinien
+
 In diesem Abschnitt wird beschrieben, wie Sie Subnetzrichtlinien für private Endpunkte mit einer Azure Resource Manager-Vorlage deaktivieren können.
 
 ```json
@@ -78,6 +119,35 @@ In diesem Abschnitt wird beschrieben, wie Sie Subnetzrichtlinien für private En
                                 "properties": { 
                                     "addressPrefix": "10.0.0.0/24", 
                                     "privateEndpointNetworkPolicies": "Disabled" 
+                                 } 
+                         } 
+                  ] 
+          } 
+} 
+```
+
+### <a name="enable-network-policy"></a>Aktivieren von Netzwerkrichtlinien
+
+In diesem Abschnitt wird beschrieben, wie Sie Subnetzrichtlinien für private Endpunkte mit einer Azure Resource Manager-Vorlage aktivieren können.
+
+```json
+{ 
+          "name": "myVirtualNetwork", 
+          "type": "Microsoft.Network/virtualNetworks", 
+          "apiVersion": "2019-04-01", 
+          "location": "WestUS", 
+          "properties": { 
+                "addressSpace": { 
+                     "addressPrefixes": [ 
+                          "10.0.0.0/16" 
+                        ] 
+                  }, 
+                  "subnets": [ 
+                         { 
+                                "name": "default", 
+                                "properties": { 
+                                    "addressPrefix": "10.0.0.0/24", 
+                                    "privateEndpointNetworkPolicies": "Enabled" 
                                  } 
                          } 
                   ] 

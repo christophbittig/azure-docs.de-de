@@ -9,12 +9,12 @@ ms.date: 06/21/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7173477e01faddb3c8aa3c18dc2781ef21dee012
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 61f57e0ee0f1df5b66526a190e583c72ecde7151
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346755"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965382"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol"></a>Einbinden von Azure Blob Storage mithilfe des NFS 3.0-Protokolls (Network File System)
 
@@ -106,6 +106,7 @@ Erstellen Sie ein Verzeichnis auf Ihrem Linux-System, und binden Sie dann einen 
 |`EROFS ("Read-only file system"`) |Dieser Fehler kann auftreten, wenn ein Client versucht, folgende Aktionen durchzuführen:<li>Schreiben in ein Blob oder Löschen ein Blobs, das über eine aktive Lease verfügt.<li>Schreiben in ein Blob oder Löschen eines Blobs in einem Container, der eine aktive WORM-Richtlinie (Write Once, Read Many) aufweist. |
 |`NFS3ERR_IO/EIO ("Input/output error"`) |Dieser Fehler kann auftreten, wenn ein Client versucht, Attribute für Blobs zu lesen, zu schreiben oder zu festlegen, die in der Archivzugriffsebene gespeichert sind. |
 |`OperationNotSupportedOnSymLink` Fehler| Dieser Fehler kann bei einem Schreibvorgang über eine Blob- oder Azure Data Lake Storage Gen2-API zurückgegeben werden. Die Verwendung dieser APIs zum Schreiben oder Löschen symbolischer Verknüpfungen, die mit NFS 3.0 erstellt werden, ist nicht zulässig. Sie müssen den NFS v3-Endpunkt verwenden, um mit symbolischen Verknüpfungen zu arbeiten. |
+|`mount: /mnt/test: bad option;`| Installieren Sie das nfs-Hilfsprogramm mit dem Befehl **sudo apt install nfs-common**.|
 
 ## <a name="see-also"></a>Weitere Informationen
 

@@ -1,14 +1,14 @@
 ---
 title: Verwaltung von VM-Erweiterungen mit Azure Arc-fähigen Servern
 description: Mit Azure Arc-fähigen Servern kann die Bereitstellung von Erweiterungen für virtuelle Computer verwaltet werden, die Konfigurations- und Automatisierungsaufgaben nach der Bereitstellung für nicht in Azure gehostete VMs bereitstellen.
-ms.date: 08/11/2021
+ms.date: 08/24/2021
 ms.topic: conceptual
-ms.openlocfilehash: 20ae8b6cbb29a9a0b43592c3b242707bb2d3add6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b09a5ecc2121d2ff1cc377bde7619b834a58e474
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122354936"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824641"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Verwaltung von Erweiterungen für virtuelle Computer mit Azure Arc-fähigen Servern
 
@@ -22,7 +22,7 @@ Mit Azure Arc-fähigen Servern können Sie Azure-VM-Erweiterungen für nicht in 
 - [Azure Resource Manager-Vorlagen](manage-vm-extensions-template.md)
 
 > [!NOTE]
-> Das Bereitstellen und Verwalten von VM-Erweiterungen auf Azure-VMs wird auf Servern mit Azure Arc-Unterstützung nicht unterstützt. Informationen zu virtuellen Azure-Computern finden Sie im Artikel [Erweiterungen und Features für virtuelle Azure-Computer](../../virtual-machines/extensions/overview.md).
+> Das Bereitstellen und Verwalten von VM-Erweiterungen auf Azure-VMs wird auf Servern mit Azure Arc-Unterstützung nicht unterstützt. Informationen zu Azure-VMs finden Sie im Artikel [Erweiterungen und Features für virtuelle Azure-Computer](../../virtual-machines/extensions/overview.md).
 
 > [!NOTE]
 > Derzeit können Sie Erweiterungen nur über das Azure-Portal aktualisieren. Das Ausführen dieses Vorgangs über die Azure CLI, Azure PowerShell oder mit einer Azure Resource Manager-Vorlage wird derzeit nicht unterstützt.
@@ -52,7 +52,7 @@ Weitere Informationen zum Azure Connected Machine-Agent-Paket und Details zur Er
 > [!NOTE]
 > Vor Kurzem wurde die Unterstützung für die DSC-VM-Erweiterung für Azure Arc-fähige Server entfernt. Alternativ empfiehlt es sich, die benutzerdefinierte Skripterweiterung zu verwenden, um die Konfiguration nach der Bereitstellung des Servers oder Computers zu verwalten.
 
-Arc-fähige Server unterstützen das Verschieben von Computern, auf denen eine oder mehrere VM-Erweiterungen installiert sind, zwischen Ressourcengruppen oder einem anderen Azure-Abonnement, ohne dass sich dies auf die Konfiguration auswirkt. Quell- und Zielabonnement müssen im selben [Azure Active Directory-Mandanten](../../active-directory/develop/quickstart-create-new-tenant.md) vorhanden sein. Weitere Informationen zum Verschieben von Ressourcen und Überlegungen vor dem Fortfahren finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
+Arc-fähige Server unterstützen das Verschieben von Computern, auf denen eine oder mehrere VM-Erweiterungen installiert sind, zwischen Ressourcengruppen oder einem anderen Azure-Abonnement, ohne dass sich dies auf die Konfiguration auswirkt. Quell- und Zielabonnement müssen im selben [Azure Active Directory-Mandanten](../../active-directory/develop/quickstart-create-new-tenant.md) vorhanden sein. Diese Unterstützung wird ab der Connected Machine-Agent-Version **1.8.21197.005** aktiviert. Weitere Informationen zum Verschieben von Ressourcen und Überlegungen vor dem Fortfahren finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 ### <a name="windows-extensions"></a>Windows-Erweiterungen
 

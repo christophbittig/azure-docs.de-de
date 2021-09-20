@@ -3,12 +3,12 @@ title: 'Azure Event Grid: Festlegen benutzerdefinierter Header für übermittelt
 description: Hier erfahren Sie, wie Sie benutzerdefinierte Header (oder Übermittlungseigenschaften) für übermittelte Ereignisse festlegen.
 ms.topic: conceptual
 ms.date: 08/13/2021
-ms.openlocfilehash: de16c3b4981dc02a54a68269d4eef743d9f48c4b
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 3600d74d91ad218f3fcab99002762d605fba3139
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340525"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122831350"
 ---
 # <a name="custom-delivery-properties"></a>Benutzerdefinierte Übermittlungseigenschaften
 Mit Ereignisabonnements können Sie HTTP-Header einrichten, die in übermittelte Ereignisse eingeschlossen werden. Diese Funktion ermöglicht es Ihnen, benutzerdefinierte Header festzulegen, die für ein Ziel erforderlich sind. Beim Erstellen eines Ereignisabonnements können bis zu zehn Header festgelegt werden. Die einzelnen Headerwert dürfen nicht größer als 4.096 Bytes (4K) sein.
@@ -62,11 +62,8 @@ Legen Sie einen Wert für einen Autorisierungsheader fest, um die Anforderung mi
 Ausgehende Anforderungen sollten jetzt den für das Ereignisabonnement festgelegten Header enthalten:
 
 ```console
-GET /home.html HTTP/1.1
-
+POST /home.html HTTP/1.1
 Host: acme.com
-
-User-Agent: <user-agent goes here>
 
 Authorization: BEARER SlAV32hkKG...
 ```
@@ -75,20 +72,31 @@ Authorization: BEARER SlAV32hkKG...
 > Das Definieren von Autorisierungsheadern ist sinnvoll, wenn es sich bei dem Ziel um einen Webhook handelt. Für [mit einer Ressourcen-ID abonnierte Funktionen](/rest/api/eventgrid/version2020-06-01/eventsubscriptions/createorupdate#azurefunctioneventsubscriptiondestination), Service Bus, Event Hubs und Hybridverbindungen sollte diese Option nicht verwendet werden, da diese Ziele bei Verwendung mit Event Grid ihre eigenen Authentifizierungsschemas unterstützen.
 
 ### <a name="service-bus-example"></a>Service Bus-Beispiel
-Von Azure Service Bus wird die Verwendung eines [HTTP-Headers vom Typ „BrokerProperties“](/rest/api/servicebus/message-headers-and-properties#message-headers) unterstützt, um Nachrichteneigenschaften beim Senden einzelner Nachrichten zu definieren. Der Wert des Headers `BrokerProperties` muss im JSON-Format angegeben werden. Wenn Sie also beispielsweise beim Senden einer einzelnen Nachricht an Service Bus Nachrichteneigenschaften festlegen müssen, können Sie den Header wie folgt festlegen:
+Von Azure Service Bus wird die Verwendung der folgenden Nachrichteneigenschaften beim Senden einzelner Nachrichten unterstützt. 
 
-| Headername | Headertyp | Headerwert |
-| :-- | :-- | :-- |
-|`BrokerProperties` | statischen     | `BrokerProperties:  { "MessageId": "{701332E1-B37B-4D29-AA0A-E367906C206E}", "TimeToLive" : 90}` |
+| Headername | Headertyp |
+| :-- | :-- |
+| `MessageId` | Dynamisch |  
+| `PartitionKey` | Statisch oder dynamisch |
+| `SessionId` | Statisch oder dynamisch |
+| `CorrelationId` | Statisch oder dynamisch |
+| `Label` | Statisch oder dynamisch |
+| `ReplyTo` | Statisch oder dynamisch | 
+| `ReplyToSessionId` | Statisch oder dynamisch |
+| `To` |Statisch oder dynamisch |
+| `ViaPartitionKey` | Statisch oder dynamisch |
 
+> [!NOTE]
+> - Der Standardwert von `MessageId` ist die interne ID des Event Grid Ereignisses. Sie kann außer Kraft gesetzt werden. Beispielsweise `data.field`.
+> - Sie können nur `SessionId` oder `MessageId` festlegen. 
 
 ### <a name="event-hubs-example"></a>Event Hubs-Beispiel
 
-Wenn Sie Ereignisse für eine bestimmte Partition innerhalb eines Event Hub veröffentlichen müssen, definieren Sie einen [HTTP-Header vom Typ „BrokerProperties“](/rest/api/eventhub/event-hubs-runtime-rest#common-headers) für Ihr Ereignisabonnement, um den Partitionsschlüssel zur Identifizierung der Event Hub-Zielpartition anzugeben.
+Wenn Sie Ereignisse für eine bestimmte Partition innerhalb eines Event Hub veröffentlichen müssen, legen Sie die `ParitionKey`-Eigenschaft für Ihr Ereignisabonnement fest, um den Partitionsschlüssel zur Identifizierung der Event Hub-Zielpartition anzugeben.
 
-| Headername | Headertyp | Headerwert                                  |
-| :-- | :-- | :-- |
-|`BrokerProperties` | statischen | `BrokerProperties: {"PartitionKey": "0000000000-0000-0000-0000-000000000000000"}`  |
+| Headername | Headertyp |
+| :-- | :-- |
+|`PartitionKey` | statischen |
 
 
 ### <a name="configure-time-to-live-on-outgoing-events-to-azure-storage-queues"></a>Konfigurieren der Gültigkeitsdauer für ausgehende Ereignisse in Azure Storage-Warteschlangen

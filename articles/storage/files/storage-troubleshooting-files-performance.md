@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 07/06/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 65b703a4f193e6b1197c3c8f2cb03ffbc349471b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 03fb94571e5e41a99688bf912cab36fa10edd2a4
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346863"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867525"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Problembehandlung bei Leistungsproblemen mit Azure-Dateifreigaben
 
@@ -118,7 +118,7 @@ Eine mögliche Ursache ist das Fehlen von SMB-Unterstützung für mehrere Kanäl
 
 ### <a name="workaround"></a>Problemumgehung
 
-- [Aktivieren Sie SMB Multichannel für ein FileStorage-Konto](storage-files-enable-smb-multichannel.md) bei Premium-Dateifreigaben.
+- [Aktivieren Sie SMB Multichannel](files-smb-protocol.md#smb-multichannel) für Premium-Dateifreigaben.
 - Durch Bereitstellen eines virtuellen Computers mit einem größeren Kern könnte der Durchsatz möglicherweise erhöht werden.
 - Durch Ausführen der Clientanwendung auf mehreren virtuellen Computern wird der Durchsatz erhöht.
 - Verwenden Sie nach Möglichkeit REST-APIs.
@@ -201,16 +201,6 @@ Zugriffe auf Azure-Dateifreigaben haben für E/A-intensive Workloads eine höher
 ### <a name="workaround"></a>Problemumgehung
 
 - Installieren Sie den verfügbaren [Hotfix](https://support.microsoft.com/help/3114025/slow-performance-when-you-access-azure-files-storage-from-windows-8-1).
-
-## <a name="smb-multichannel-option-not-visible-under-file-share-settings"></a>Die Option „SMB Multichannel“ wird unter den Einstellungen für „Dateifreigabe“ nicht angezeigt. 
-
-### <a name="cause"></a>Ursache
-
-Entweder wurde das Abonnement für das Feature nicht registriert, oder die Region und der Kontotyp werden nicht unterstützt.
-
-### <a name="solution"></a>Lösung
-
-Stellen Sie sicher, dass Ihr Abonnement für das Feature „SMB Multichannel“ registriert wird. Lesen Sie dazu in [Erste Schritte](storage-files-enable-smb-multichannel.md#getting-started) auf der Seite mit der Kontoübersicht den Abschnitt „Ensure that the account kind is FileStorage (premium file account)“ (Sicherstellen, dass die Kontoart „FileStorage“ ist (Premium-Dateikonto)). 
 
 ## <a name="smb-multichannel-is-not-being-triggered"></a>SMB Multichannel wird nicht ausgelöst.
 

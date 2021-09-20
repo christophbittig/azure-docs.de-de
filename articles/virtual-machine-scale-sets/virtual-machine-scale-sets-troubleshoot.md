@@ -9,15 +9,18 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 10bbcae3437f150ff8364abff2a500bdd39936e1
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 7f625f1b179d36f1326397adfb5e99d8707b03d1
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112286523"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691231"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Beheben von Problemen bei der automatischen Skalierung von VM-Skalierungsgruppen
-**Problem:** Sie haben in Azure Resource Manager mithilfe von VM-Skalierungsgruppen eine Infrastruktur mit automatischer Skalierung erstellt, beispielsweise durch Bereitstellung der folgenden Vorlage: https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/python/vmss-bottle-autoscale/azuredeploy.json. Sie haben die Skalierungsregeln festgelegt, und alles funktioniert einwandfrei, aber auch bei hoher Auslastung der virtuellen Computer erfolgt keine automatische Skalierung.
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Einheitliche Skalierungsgruppen
+
+**Problem:** Sie haben im Azure Resource Manager mithilfe von VM-Skalierungsgruppen eine Infrastruktur mit automatischer Skalierung erstellt, beispielsweise durch Bereitstellung der folgenden Vorlage: https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/python/vmss-bottle-autoscale/azuredeploy.json. Sie haben die Skalierungsregeln festgelegt, und alles funktioniert einwandfrei, aber auch bei hoher Auslastung der virtuellen Computer erfolgt keine automatische Skalierung.
 
 ## <a name="troubleshooting-steps"></a>Schritte zur Problembehandlung
 Folgende Punkte sollten berücksichtigt werden:

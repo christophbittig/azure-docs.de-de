@@ -2,14 +2,14 @@
 title: Azure Backup-Unterstützungsmatrix für die SQL Server-Sicherung auf Azure-VMs
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen für die Sicherung von SQL Server auf Azure-VMs mit dem Azure Backup-Dienst.
 ms.topic: conceptual
-ms.date: 06/07/2021
+ms.date: 08/20/2021
 ms.custom: references_regions
-ms.openlocfilehash: 678a3e63205d986681016fe64971e9bd874f9c71
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 78dace2a60ff566af3485e6be0b7d9efc42d8654
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112119926"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123103877"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Unterstützungsmatrix für die SQL Server-Sicherung auf Azure-VMs
 
@@ -24,6 +24,7 @@ Mit Azure Backup können Sie SQL Server-Datenbanken auf Azure-VMs sichern, die
 **Unterstützte Betriebssysteme** | Windows Server 2019, Windows Server 2016, Windows Server 2012, Windows Server 2008 R2 SP1 <br/><br/> Linux wird derzeit nicht unterstützt.
 **Unterstützte SQL Server-Versionen** | SQL Server 2019, SQL Server 2017 wie auf der Seite [Lebenszyklus für Produkt suchen](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017) beschrieben, SQL Server 2016 und SPs wie auf der Seite [Lebenszyklus für Produkt suchen](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack) beschrieben, SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008 <br/><br/> Enterprise, Standard, Web, Developer, Express<br><br>Lokale Express-Datenbankversionen werden nicht unterstützt.
 **Unterstützte .NET-Versionen** | .NET Framework 4.5.2 oder höher auf dem virtuellen Computer installiert
+**Unterstützte Bereitstellungen** | SQL-Marketplace-Azure-VMs und Nicht-Marketplace-VMs (manuelle SQL Server-Installation) werden unterstützt. Unterstützung für eigenständige Instanzen ist immer in [Verfügbarkeitsgruppen](backup-sql-server-on-availability-groups.md) verfügbar.
 
 ## <a name="feature-considerations-and-limitations"></a>Überlegungen und Einschränkungen in Bezug auf Features
 
@@ -43,55 +44,6 @@ _*Der Grenzwert für die Datenbankgröße hängt von der unterstützten Datenüb
 * Für TDE aktivierte Datenbanksicherungen werden unterstützt. Wenn Sie eine mit TDE verschlüsselte Datenbank in einer anderen SQL Server-Instanz wiederherstellen möchten, müssen Sie zuerst [das Zertifikat auf dem Zielserver wiederherstellen](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server). Eine Komprimierung der Sicherungen für TDE-fähige Datenbanken für SQL Server 2016 und höhere Versionen ist verfügbar, allerdings für geringere Übertragungsgrößen, wie [hier](https://techcommunity.microsoft.com/t5/sql-server/backup-compression-for-tde-enabled-databases-important-fixes-in/ba-p/385593) erläutert.
 * Sicherungs- und Wiederherstellungsvorgänge für Spiegeldatenbanken und Datenbankmomentaufnahmen werden nicht unterstützt.
 * Eine SQL Server-**Failoverclusterinstanz (FCI)** wird nicht unterstützt.
-* Die Verwendung mehrerer Sicherungslösungen zum Sichern Ihrer eigenständigen SQL Server-Instanz oder SQL-Always On-Verfügbarkeitsgruppe kann zu Fehlern bei der Sicherung führen. Es ist daher ratsam, von dieser Vorgehensweise abzusehen. Das Sichern von zwei Knoten einer Verfügbarkeitsgruppe mit derselben Lösung oder anderen Lösungen kann auch zu Fehlern bei der Sicherung führen.
-* Wenn Verfügbarkeitsgruppen konfiguriert sind, beruht die Erstellung von Sicherungen der verschiedenen Knoten auf mehreren Faktoren. Das Sicherungsverhalten für eine Verfügbarkeitsgruppe ist unten zusammengefasst.
-
-### <a name="back-up-behavior-with-always-on-availability-groups"></a>Sicherungsverhalten bei Verwendung von Always On-Verfügbarkeitsgruppen
-
-Wir empfehlen, die Sicherung nur auf einem Knoten der Verfügbarkeitsgruppe zu konfigurieren. Konfigurieren Sie die Sicherung immer in derselben Region wie den primären Knoten. Anders ausgedrückt: Der primäre Knoten muss sich immer in der Region befinden, in der Sie die Sicherung konfigurieren. Wenn sich alle Knoten der Verfügbarkeitsgruppe in der Region befinden, in der die Sicherung konfiguriert ist, ist alles in Ordnung.
-
-#### <a name="for-cross-region-ag"></a>Für regionsübergreifende Verfügbarkeitsgruppe
-
-* Sicherungen werden unabhängig von der Sicherungseinstellung nur für die Knoten ausgeführt, die sich in der Region befinden, in der die Sicherung konfiguriert ist. Dies liegt daran, dass regionsübergreifende Sicherungen nicht unterstützt werden. Wenn Sie nur zwei Knoten haben und sich der sekundäre Knoten in der anderen Region befindet, werden die Sicherungen weiterhin über den primären Knoten ausgeführt (sofern Ihre Sicherungseinstellung nicht „Nur sekundär“ lautet).
-* Wenn für einen Knoten ein Failover auf eine Region erfolgt, bei der es sich nicht um die Region handelt, in der die Sicherung konfiguriert ist, schlagen Sicherungen auf den Knoten in der Failoverregion fehl.
-
-Abhängig von der Sicherungseinstellung und den Sicherungstypen (Vollständig/Differenziell/Protokoll/Nur vollständig kopieren) werden die Sicherungen von einem bestimmten Knoten (Primär/Sekundär) erstellt.
-
-#### <a name="backup-preference-primary"></a>Sicherungseinstellung: Primär
-
-**Sicherungstyp** | **Node**
---- | ---
-Vollständig | Primär
-Differenziell | Primär
-Log |  Primär
-Nur vollständig kopieren |  Primär
-
-#### <a name="backup-preference-secondary-only"></a>Sicherungseinstellung: Nur sekundär
-
-**Sicherungstyp** | **Node**
---- | ---
-Vollständig | Primär
-Differenziell | Primär
-Log |  Secondary
-Nur vollständig kopieren |  Secondary
-
-#### <a name="backup-preference-secondary"></a>Sicherungseinstellung: Secondary
-
-**Sicherungstyp** | **Node**
---- | ---
-Vollständig | Primär
-Differenziell | Primär
-Log |  Secondary
-Nur vollständig kopieren |  Secondary
-
-#### <a name="no-backup-preference"></a>Keine Sicherungseinstellung
-
-**Sicherungstyp** | **Node**
---- | ---
-Vollständig | Primär
-Differenziell | Primär
-Log |  Secondary
-Nur vollständig kopieren |  Secondary
 
 ## <a name="backup-throughput-performance"></a>Durchsatzleistung bei der Sicherung
 

@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 0f33b5a28d7c83be7e546c3f61bc517047c51312
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: be51077c5aad6056cf4e28656c0552bc052a7ead
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88934853"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122829910"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>OData-Syntax von „$filter“ in der kognitiven Azure-Suche
 
@@ -242,6 +242,12 @@ Suche nach Hotels, bei denen die Begriffe „hotel“ und „airport“ in der B
 
 ```odata-filter-expr
     $filter=search.ismatch('"hotel airport"~5', 'Description', 'full', 'any') and not Rooms/any(room: room/SmokingAllowed)
+```
+
+Suchen Sie im Feld „Beschreibung“ nach Dokumenten mit einem Wort, das mit den Buchstaben „lux“ beginnt. Diese Abfrage verwendet die [Präfixsuche](query-simple-syntax.md#prefix-queries) in Kombination mit `search.ismatch`.
+
+```odata-filter-expr
+    $filter=search.ismatch('lux*', 'Description')
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte  

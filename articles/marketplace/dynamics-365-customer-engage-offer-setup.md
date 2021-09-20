@@ -1,22 +1,22 @@
 ---
-title: Erstellen Sie ein Dynamics 365 for Customer Engagement & PowerApps Angebot auf Microsoft AppSource (Azure Marketplace).
-description: Erstellen Sie ein Dynamics 365 for Customer Engagement & PowerApps Angebot auf Microsoft AppSource (Azure Marketplace).
+title: Erstellen Sie ein Angebot für Dynamics 365 for Customer Engagement und Power Apps in Microsoft AppSource (Azure Marketplace).
+description: Erstellen Sie ein Angebot für Dynamics 365 for Customer Engagement und Power Apps in Microsoft AppSource (Azure Marketplace).
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/30/2021
-ms.openlocfilehash: ea640bc4f5b191c3b01ed2a00ecb1d247f1a602d
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 1a4bd560603b16a1a2b9fe0a66bc4f1adce25a73
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112240285"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867471"
 ---
-# <a name="how-to-create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Wie man ein Dynamics 365 for Customer Engagement & PowerApps Angebot erstellt
+# <a name="how-to-create-a-dynamics-365-for-customer-engagement--power-apps-offer"></a>Erstellen eines Angebots für Dynamics 365 for Customer Engagement und Power Apps
 
-In diesem Artikel wird erläutert, wie Sie ein neues Angebot für Dynamics 365 for Customer Engagement und PowerApps erstellen. Alle Angebote für Dynamics 365 for Operations müssen unseren Zertifizierungsprozess durchlaufen. Die Testversion ermöglicht es Benutzern, Ihre Lösung in einer Dynamics 365-Liveumgebung bereitzustellen.
+In diesem Artikel erfahren Sie, wie Sie ein Angebot für Dynamics 365 for Customer Engagement und Power Apps erstellen. Alle Angebote für Dynamics 365 for Operations müssen unseren Zertifizierungsprozess durchlaufen. Die Testversion ermöglicht es Benutzern, Ihre Lösung in einer Dynamics 365-Liveumgebung bereitzustellen.
 
 Erstellen Sie, bevor Sie beginnen, ein Konto für den kommerziellen Marketplace in [Partner Center](./create-account.md), und stellen Sie sicher, dass es für das kommerzielle Marketplace-Programm registriert ist.
 

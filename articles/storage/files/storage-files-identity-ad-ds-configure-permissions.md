@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: e88a8df21d1161351a97434b3bf70656a09ea2ae
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: efa2ec8873374604e252677e436e6883867f982a
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114731042"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255484"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Teil 3: Konfigurieren von Berechtigungen auf Verzeichnis- und Dateiebene über SMB 
 
@@ -68,10 +68,10 @@ Die folgenden Berechtigungen sind im Stammverzeichnis einer Dateifreigabe enthal
 |Benutzer|Definition|
 |---|---|
 |BUILTIN\Administrators|Alle Benutzer, die Domänenadministratoren der lokalen AD DS-Umgebung sind.
-|BUILTIN\Users|Integrierte Sicherheitsgruppe in AD. Sie beinhaltet standardmäßig „NT AUTHORITY\Authenticated Users“. Für einen herkömmlichen Dateiserver können Sie die Mitgliedschaftsdefinition pro Server konfigurieren. Für Azure Files gibt es keinen Hostingserver, daher umfasst „BUILTIN\Users“ dieselbe Gruppe von Benutzern wie „NT AUTHORITY\Authenticated Users“.|
-|NT AUTHORITY\SYSTEM|Das Dienstkonto des Betriebssystems des Dateiservers. Ein derartiges Dienstkonto ist im Azure Files-Kontext nicht gültig. Es ist im Stammverzeichnis enthalten, um Konsistenz mit dem Verhalten von Windows Files Server in Hybridszenarien sicherzustellen.|
+|BUILTIN\Users|Integrierte Sicherheitsgruppe in AD. Sie beinhaltet standardmäßig „NT AUTHORITY\Authenticated Users“. Für einen herkömmlichen Dateiserver können Sie die Mitgliedschaftsdefinition pro Server konfigurieren. Für Azure Files gibt es keinen Hostingserver. Daher umfasst „BUILTIN\Users“ dieselbe Gruppe von Benutzern wie „NT AUTHORITY\Authenticated Users“.|
+|NT AUTHORITY\SYSTEM|Das Dienstkonto des Betriebssystems des Dateiservers. Ein derartiges Dienstkonto ist im Azure Files-Kontext nicht gültig. Es ist im Stammverzeichnis enthalten, um Konsistenz mit dem Verhalten von Windows Files Server in Hybridszenarien sicherzustellen.|
 |NT AUTHORITY\Authenticated Users|Alle Benutzer in AD, die ein gültiges Kerberos-Token erhalten können.|
-|CREATOR OWNER|Jedes Objekt, gleich ob Verzeichnis oder Datei, weist einen Besitzer für dieses Objekt auf. Wenn „CREATOR OWNER“ ACLs für dieses Objekt zugewiesen sind, besitzt der Benutzer, der Besitzer dieses Objekts ist, die durch die ACL definierten Berechtigungen für das Objekt.|
+|CREATOR OWNER|Jedes Objekt, gleich ob Verzeichnis oder Datei, weist einen Besitzer für dieses Objekt auf. Wenn „CREATOR OWNER“ Zugriffssteuerungslisten für dieses Objekt zugewiesen sind, verfügt der Benutzer, der Besitzer dieses Objekts ist, über die durch die ACL definierten Berechtigungen für das Objekt.|
 
 
 

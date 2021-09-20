@@ -10,14 +10,16 @@ ms.date: 10/27/2020
 ms.author: cynthn
 ms.reviewer: olayemio
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d4a3d1e8b1eb1c3a959e9f48e0c46379d6162644
-ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+ms.openlocfilehash: c747a62307f7f08892f3609f410a40875666bd33
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114653042"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687714"
 ---
 # <a name="export-an-image-version-to-a-managed-disk"></a>Exportieren einer Imageversion auf einen verwalteten Datenträger
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Sie können den Betriebssystemdatenträger oder einen einzelnen Datenträger aus einer Imageversion als verwalteten Datenträger aus einer Imageversion exportieren, die in einem Katalog mit freigegebenen Images gespeichert ist.
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 01/23/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 09fc8f9697f418533131e86c069afd3157a71c78
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: b6b0fa5e1af60b65c513fd3fa6250dba2a978879
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142979"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965895"
 ---
 # <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>NFS v4.1-Volumes unter Azure NetApp Files für SAP HANA
 
@@ -57,11 +57,11 @@ Wenn Sie Azure NetApp Files für die Hochverfügbarkeitsarchitektur von SAP NetW
 
 Der Durchsatz eines Azure NetApp-Volumes ist eine Funktion der Volumegröße und der Dienstebene, wie in [Dienstebenen für Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-service-levels.md) beschrieben. 
 
-Es ist wichtig, die Leistungsbeziehung und die Größe zu kennen, und zu wissen, dass es physikalische Grenzwerte für eine LIF (Logical Interface, logische Schnittstelle) der SVM (Storage Virtual Machine, Speicher-VM) gibt.
+Es ist wichtig, die Leistungsbeziehung und die Größe zu kennen, und zu wissen, dass es physikalische Grenzwerte für einen Speicherendpunkt des Diensts gibt. Jeder Speicherendpunkt wird bei der Volumeerstellung dynamisch in das [Azure NetApp Files delegierte Subnetz](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md) eingefügt und erhält eine IP-Adresse. Azure NetApp Files-Volumes können – je nach verfügbarer Kapazität und Bereitstellungslogik – einen gemeinsamen Speicherendpunkt nutzen.
 
-Die folgende Tabelle zeigt, dass es sinnvoll sein kann, ein großes „Standard“-Volume zum Speichern von Sicherungen zu erstellen, und dass es nicht sinnvoll ist, ein „Ultra“-Volume zu erstellen, das größer als 12 TB ist, da die physikalische Bandbreitenkapazität einer einzelnen LIF überschritten würde. 
+Die folgende Tabelle zeigt, dass es sinnvoll sein kann, ein großes „Standard“-Volume zum Speichern von Sicherungen zu erstellen, und dass es nicht sinnvoll ist, ein „Ultra“-Volume zu erstellen, das größer als 12 TB ist, da die maximale physikalische Bandbreitenkapazität eines einzelnen Volume überschritten würde. 
 
-Der maximale Durchsatz für eine LIF und eine einzelne Linux-Sitzung liegt zwischen 1,2 und 1,4 GB/s. Wenn Sie mehr Durchsatz für /hana/data benötigen, können Sie die SAP HANA-Partitionierung für Datenvolumes verwenden, um für die E/A-Aktivität während des erneuten Ladens von Daten oder HANA-Sicherungspunkten über mehrere HANA-Datendateien ein Striping vorzunehmen, die sich auf mehreren NFS-Freigaben befinden. Weitere Informationen zum Striping von HANA-Datenvolumen finden Sie in diesen Artikeln:
+Der maximale Schreibdurchsatz für ein Volume und eine einzelne Linux-Sitzung liegt zwischen 1,2 und 1,4 GB/s. Wenn Sie mehr Durchsatz für /hana/data benötigen, können Sie die SAP HANA-Partitionierung für Datenvolumes verwenden, um für die E/A-Aktivität während des erneuten Ladens von Daten oder HANA-Sicherungspunkten über mehrere HANA-Datendateien ein Striping vorzunehmen, die sich auf mehreren NFS-Freigaben befinden. Weitere Informationen zum Striping von HANA-Datenvolumen finden Sie in diesen Artikeln:
 
 - [HANA-Administratorhandbuch](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/40b2b2a880ec4df7bac16eae3daef756.html?q=hana%20data%20volume%20partitioning)
 - [Blog zu SAP HANA-Datenvolumepartitionierung](https://blogs.sap.com/2020/10/07/sap-hana-partitioning-data-volumes/)
@@ -95,7 +95,7 @@ Da alle drei KPIs erforderlich sind, muss das **/hana/data**-Volume auf die grö
 Für HANA-Systeme, die keine hohe Bandbreite erfordern, kann die ANF-Volumegröße geringer sein. Für den Fall, dass ein HANA-System mehr Durchsatz erfordert, kann das Volume angepasst werden, indem die Größe der Kapazität online geändert wird. Für Sicherungsvolumes sind keine KPIs definiert. Der Durchsatz des Sicherungsvolumes ist jedoch für eine gut funktionierende Umgebung entscheidend. Die Leistung von Protokoll- und Datenvolume muss auf die Kundenerwartungen zugeschnitten werden.
 
 > [!IMPORTANT]
-> Unabhängig von der Kapazität, die Sie auf einem einzelnen NFS-Volume bereitstellen, wird erwartet, dass der Durchsatz im Bereich von 1,2 bis 1,4 GB/Sek. Bandbreite von einem Consumer in einem virtuellen Computer genutzt wird. Dies hat mit der zugrundeliegenden Architektur des ANF-Angebots und den damit verbundenen Einschränkungen der Linux-Sitzungen bezüglich NFS zu tun. Die Leistungs- und Durchsatzzahlen, die im Artikel [Ergebnisse des Leistungsbenchmarktests für Azure NetApp Files](../../../azure-netapp-files/performance-benchmarks-linux.md) beschrieben werden, wurden für ein gemeinsam genutztes NFS-Volume mit mehreren Client-VMs und daher mit mehreren Sitzungen durchgeführt. Dieses Szenario unterscheidet sich von dem Szenario, das wird in SAP messen. Dabei messen wir den Durchsatz von einer einzelnen VM für ein NFS-Volume, Auf ANF gehostet.
+> Unabhängig von der Kapazität, die Sie auf einem einzelnen NFS-Volume bereitstellen, wird erwartet, dass der Durchsatz im Bereich von 1,2 bis 1,4 GB/Sek. Bandbreite von einem Consumer in einer einzelnen Sitzung genutzt wird. Dies hat mit der zugrundeliegenden Architektur des ANF-Angebots und den damit verbundenen Einschränkungen der Linux-Sitzungen bezüglich NFS zu tun. Die Leistungs- und Durchsatzzahlen, die im Artikel [Ergebnisse des Leistungsbenchmarktests für Azure NetApp Files](../../../azure-netapp-files/performance-benchmarks-linux.md) beschrieben werden, wurden für ein gemeinsam genutztes NFS-Volume mit mehreren Client-VMs und daher mit mehreren Sitzungen durchgeführt. Dieses Szenario unterscheidet sich von dem Szenario, das wird in SAP messen. Dabei messen wir den Durchsatz von einer einzelnen VM für ein NFS-Volume, Auf ANF gehostet.
 
 Um die SAP-Mindestanforderungen für den Durchsatz für Daten und Protokolle und die Richtlinien für **/hana/shared** zu erfüllen, werden folgende Größen empfohlen:
 
@@ -104,7 +104,7 @@ Um die SAP-Mindestanforderungen für den Durchsatz für Daten und Protokolle und
 | /hana/log/ | 4 TiB | 2 TiB | v4.1 |
 | /hana/data | 6,3 TiB | 3,2 TiB | v4.1 |
 | /hana/shared hochskalieren | Min(1 TB, 1 x RAM)  | Min(1 TB, 1 x RAM) | v3 oder v4.1 |
-| /hana/shared aufskalieren | 1 x RAM des Workerknotens<br /> pro 4 Workerknoten  | 1 x RAM des Workerknotens<br /> pro 4 Workerknoten  | v3 oder v4.1 |
+| /hana/shared aufskalieren | 1 x RAM des Workerknotens<br /> pro vier Workerknoten  | 1 x RAM des Workerknotens<br /> pro vier Workerknoten  | v3 oder v4.1 |
 | /hana/logbackup | 3 × RAM  | 3 × RAM | v3 oder v4.1 |
 | /hana/backup | 2 × RAM  | 2 × RAM | v3 oder v4.1 |
 
@@ -128,9 +128,9 @@ Updates und Upgrades von ANF-Systemen werden ohne Beeinträchtigung der Kundenum
 
 
 ## <a name="volumes-and-ip-addresses-and-capacity-pools"></a>Volumes, IP-Adressen und Kapazitätspools
-Bei ANF ist es wichtig zu verstehen, wie die zugrunde liegende Infrastruktur erstellt wird. Ein Kapazitätspool ist nur eine Struktur, die das Erstellen eines Abrechnungsmodells für ANF vereinfacht. Ein Kapazitätspool hat keine physische Beziehung zur zugrunde liegenden Infrastruktur. Wenn Sie einen Kapazitätspool erstellen, wird nur eine Shell erstellt, die in Rechnung gestellt werden kann, nicht mehr. Wenn Sie ein Volume erstellen, wird die erste SVM (Speicher-VM) auf einem Cluster mit mehreren NetApp-Systemen erstellt. Für diese SVM wird eine einzelne IP-Adresse für den Zugriff auf das Volume erstellt. Wenn Sie mehrere Volumes erstellen, werden alle Volumes in dieser SVM über diesen Multicontroller-NetApp-Cluster verteilt. Auch wenn Sie nur eine IP-Adresse erhalten, werden die Daten über mehrere Controller verteilt. Die ANF verfügt über eine Logik, die Kundenworkloads automatisch verteilt, sobald die Volumes oder/und die Kapazität des konfigurierten Speichers eine interne vordefinierte Stufe erreichen. Solche Fälle fallen Ihnen möglicherweise auf, da zum Zugriff auf die Volumes eine neue IP-Adresse zugewiesen wird.
+Bei ANF ist es wichtig zu verstehen, wie die zugrunde liegende Infrastruktur erstellt wird. Ein Kapazitätspool ist nur ein Konstrukt, das basierend auf der Dienstebene des Kapazitätspools ein Kapazitäts- und Leistungsbudget und eine Abrechnungseinheit bereitstellt. Ein Kapazitätspool hat keine physische Beziehung zur zugrunde liegenden Infrastruktur. Wenn Sie ein Volume im den Dienst erstellen, wird ein Speicherendpunkt erstellt. Diesem Speicherendpunkt wird eine einzelne IP-Adresse zugewiesen, um Datenzugriff auf das Volume zu ermöglichen. Wenn Sie mehrere Volumes erstellen, werden alle Volumes auf die zugrunde liegende Bare-Metal-Flotte verteilt, die an diesen Speicherendpunkt gebunden ist. Die ANF verfügt über eine Logik, die Kundenworkloads automatisch verteilt, sobald die Volumes oder/und die Kapazität des konfigurierten Speichers eine interne vordefinierte Stufe erreichen. Sie werden solche Fälle bemerken, da automatisch ein neuer Speicherendpunkt mit einer neuen IP-Adresse erstellt wird, um auf die Volumes zuzugreifen. Der ANF-Dienst bietet keine Kundenkontrolle über diese Verteilungslogik.
 
-##<a name="log-volume-and-log-backup-volume"></a>Protokollvolume und Protokollsicherungsvolume
+## <a name="log-volume-and-log-backup-volume"></a>Protokollvolume und Protokollsicherungsvolume
 Das „Protokollvolume“ ( **/hana/log**) wird zum Schreiben des Onlinewiederholungsprotokolls verwendet. Daher befinden sich in diesem Volume geöffnete Dateien, und es ist nicht sinnvoll, Momentaufnahmen dieses Volumes zu erstellen. Eine Onlinewiederholungsprotokoll-Datei wird im Protokollsicherungsvolume archiviert oder gesichert, sobald sie voll ist oder eine Wiederholungsprotokollsicherung ausgeführt wird. Um eine angemessene Sicherungsleistung zu gewährleisten, erfordert das Protokollsicherungsvolume einen guten Durchsatz. Um die Speicherkosten zu optimieren, kann es sinnvoll sein, das Protokollsicherungsvolume mehrerer HANA-Instanzen zu konsolidieren. Dann würden mehrere HANA-Instanzen das gleiche Volume nutzen und ihre Sicherungen in verschiedene Verzeichnisse schreiben. Mithilfe einer solchen Konsolidierung können Sie einen höheren Durchsatz erzielen, da Sie das Volume etwas vergrößern müssen. 
 
 Das gleiche gilt für das Volume, das Sie für das Schreiben vollständiger HANA-Datenbanksicherungen verwenden.  
@@ -182,8 +182,8 @@ Für Benutzer von Commvault-Sicherungsprodukten ist Commvault IntelliSnap V.11.
 
 
 ### <a name="back-up-the-snapshot-using-azure-blob-storage"></a>Sichern der Momentaufnahme mit Azure Blob Storage
-Die Sicherung in Azure Blob Storage ist eine kostengünstige und schnelle Methode zum Speichern von Momentaufnahmensicherungen auf ANF basierenden HANA-Datenbankspeichers. Zum Speichern der Momentaufnahmen in Azure Blob Storage wird das Tool azcopy bevorzugt. Laden Sie die neueste Version dieses Tools herunter, und installieren Sie sie z. B. im Verzeichnis „bin“, wo das Python-Skript von GitHub installiert ist.
-Laden Sie das aktuellste azcopy-Tool herunter:
+Die Sicherung in Azure Blob Storage ist eine kostengünstige und schnelle Methode zum Speichern von Momentaufnahmensicherungen auf ANF basierenden HANA-Datenbankspeichers. Zum Speichern der Momentaufnahmen in Azure Blob Storage wird das Tool AzCopy bevorzugt. Laden Sie die neueste Version dieses Tools herunter, und installieren Sie sie z. B. im Verzeichnis „bin“, wo das Python-Skript von GitHub installiert ist.
+Laden Sie das aktuellste AzCopy-Tool herunter:
 
 ```
 root # wget -O azcopy_v10.tar.gz https://aka.ms/downloadazcopy-v10-linux && tar -xf azcopy_v10.tar.gz --strip-components=1

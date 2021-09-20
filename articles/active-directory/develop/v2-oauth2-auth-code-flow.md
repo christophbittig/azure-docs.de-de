@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/19/2021
+ms.date: 08/30/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0042d12941107c4704364dc261f95d3521b8208f
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f73951e34ada242dd70b9e9f99839d3072a52f76
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464146"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223735"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity Platform und der OAuth 2.0-Autorisierungscodeflow
 
@@ -220,7 +220,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `redirect_uri`  | required  | Derselbe Wert für den Umleitungs-URI, der zum Abrufen des Autorisierungscodes verwendet wurde |
 | `grant_type` | required   | Muss der `authorization_code` für den Autorisierungscodefluss sein.   |
 | `code_verifier` | empfohlen  | Derselbe code_verifier-Parameter, der auch zum Abrufen von „authorization_code“ verwendet wurde. Erforderlich, wenn PKCE bei der Anforderung für die Gewährung des Autorisierungscodes verwendet wurde. Weitere Informationen finden Sie unter [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
-| `client_secret` | Für vertrauliche Web-Apps erforderlich | Der geheime App-Schlüssel, den Sie im App-Registrierungsportal für Ihre App erstellt haben. Sie sollten den geheimen Anwendungsschlüssel nicht in einer nativen App oder in einer Single-Page-Webanwendung verwenden, weil geheime Clientschlüssel nicht zuverlässig auf Geräten oder Webseiten gespeichert werden können. Er ist erforderlich für Web-Apps und Web-APIs, die die Möglichkeit haben, den geheimen Client-Schlüssel sicher auf dem Server zu speichern.  Wie alle hier erläuterten Parameter muss der geheime Clientschlüssel vor dem Senden URL-codiert werden. Dieser Schritt wird normalerweise vom SDK durchgeführt. Weitere Informationen zur URI-Codierung finden Sie in der [Spezifikation der generischen URI-Syntax](https://tools.ietf.org/html/rfc3986#page-12). |
+| `client_secret` | Für vertrauliche Web-Apps erforderlich | Der geheime App-Schlüssel, den Sie im App-Registrierungsportal für Ihre App erstellt haben. Sie sollten den geheimen Anwendungsschlüssel nicht in einer nativen App oder in einer Single-Page-Webanwendung verwenden, weil geheime Clientschlüssel nicht zuverlässig auf Geräten oder Webseiten gespeichert werden können. Er ist erforderlich für Web-Apps und Web-APIs, die die Möglichkeit haben, den geheimen Client-Schlüssel sicher auf dem Server zu speichern.  Wie alle hier erläuterten Parameter muss der geheime Clientschlüssel vor dem Senden URL-codiert werden. Dieser Schritt wird normalerweise vom SDK durchgeführt. Weitere Informationen zur URI-Codierung finden Sie in der [Spezifikation der generischen URI-Syntax](https://tools.ietf.org/html/rfc3986#page-12).  Das Standardauthentifizierungsmuster der Bereitstellung von Anmeldeinformationen im Autorisierungsheader gemäß [RFC 6749](https://datatracker.ietf.org/doc/html/rfc6749#section-2.3.1) wird ebenfalls unterstützt. |
 
 ### <a name="request-an-access-token-with-a-certificate-credential"></a>Anfordern eines Zugriffstokens mit Zertifikatanmeldeinformationen
 

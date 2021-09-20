@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/03/2021
+ms.date: 08/25/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3eeed53c16bbd6b2c1170512606472ac5329b126
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: aa60cf86a8bc59b9eed2adc8ac0ba2cfb89be584
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355219"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835610"
 ---
 # <a name="page-layout-versions"></a>Seitenlayoutversionen
 
@@ -155,6 +155,7 @@ Das Azure AD B2C-Seitenlayout verwendet die folgende Versionen der [jQuery-Bibli
 
 - Unterstützung für mehrere Registrierungslinks hinzugefügt.
 - Unterstützung für die Validierung von Benutzereingaben gemäß den in der Richtlinie definierten Prädikatsregeln hinzugefügt.
+- Wenn die [Anmeldeoption](sign-in-options.md) auf „E-Mail“ festgelegt ist, wird im Anmeldeheader der Text „Mit Ihrem Anmeldenamen anmelden“ angezeigt. Im Feld „Benutzername“ wird „Anmeldename“ angezeigt. Weitere Informationen finden Sie unter [Lokalisierung](localization-string-ids.md#sign-up-or-sign-in-page-elements).
 
 **1.2.0**
 

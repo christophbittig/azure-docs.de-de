@@ -8,12 +8,12 @@ ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: a5af992bdfe3bb97383d3c8ed1ccd0e57dd1efb7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8429ed368e8465c45137e555444a18b8a66769dd
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339350"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123271951"
 ---
 # <a name="powershell-functions-for-iot-edge-for-linux-on-windows"></a>PowerShell-Funktionen für IoT Edge für Linux unter Windows
 
@@ -43,7 +43,7 @@ Wenn Ihr PowerShell-Verzeichnis nicht den Ordner **AzureEflow** enthält, führe
 
    Sie können benutzerdefinierte Installations- und VHDX-Verzeichnisse angeben, indem Sie dem Installationsbefehl die Parameter `INSTALLDIR="<FULLY_QUALIFIED_PATH>"` und `VHDXDIR="<FULLY_QUALIFIED_PATH>"` hinzufügen.
 
-1. Legen Sie die Ausführungsrichtlinie auf dem Zielgerät auf `AllSigned` fest, wenn dies noch nicht geschehen ist.
+1. Legen Sie die Ausführungsrichtlinie auf dem Zielgerät auf `AllSigned` fest, wenn dies noch nicht so eingestellt ist.
 
    ```powershell
    Set-ExecutionPolicy -ExecutionPolicy AllSigned -Force
@@ -81,7 +81,7 @@ Der Befehl **Deploy-Eflow** ist die Hauptbereitstellungsmethode. Der Bereitstell
 | acceptOptionalTelemetry | **Ja** oder **Nein** |  Eine Verknüpfung zum Akzeptieren/Verweigern von optionaler Telemetrie und zum Umgehen der Telemetrieaufforderung. |
 | cpuCount | Ganzzahliger Wert zwischen 1 und den CPU-Kernen des Geräts |  Anzahl der CPU-Kerne für den virtuellen Computer.<br><br>**Standardwert:** 1 virtueller Kern. |
 | memoryInMB | Ganzzahliger Wert zwischen 1.024 und der maximalen Menge an freiem Arbeitsspeicher des Geräts |Der für den virtuellen Computer zugeordnete Arbeitsspeicher.<br><br>**Standardwert**: 1.024 MB. |
-| vmDiskSize | Zwischen 8 GB und 256 GB | Maximale Datenträgergröße der dynamisch erweiterbaren virtuellen Festplatte.<br><br>**Standardwert**: 16 GB. |
+| vmDiskSize | Zwischen 8 GB und 256 GB | Maximale Datenträgergröße der dynamisch erweiterbaren virtuellen Festplatte.<br><br>**Standardwert**: 10 GB |
 | vswitchName | Name des virtuellen Netzwerks |  Name des virtuellen Switches, der dem virtuellen EFLOW-Computer zugewiesen wurde. |
 | vswitchType | **Intern** oder **Extern** | Typ des virtuellen Switches, der dem virtuellen EFLOW-Computer zugewiesen wurde. |
 | ip4Address | IPv4-Adresse im Bereich des DCHP-Serverbereichs | Statische Ipv4-Adresse des virtuellen EFLOW-Computers. _HINWEIS: Wird nur beim ICS-Standardswitch unterstützt_. |
@@ -120,7 +120,7 @@ Der Befehl **Get-EflowVm** gibt die aktuelle Konfiguration des virtuellen Comput
 * EdgeRuntimeStatus
 * SystemStatistics
 
-Wenn Sie eine bestimmte Eigenschaft in einer lesbaren Liste anzeigen möchten, führen Sie den Befehl `Get-EflowVM` mit der erweiterten Eigenschaft aus. Zum Beispiel:
+Wenn Sie eine bestimmte Eigenschaft in einer lesbaren Liste anzeigen möchten, führen Sie den Befehl `Get-EflowVM` mit der erweiterten Eigenschaft aus. Beispiel:
 
 ```powershell
 Get-EflowVM | Select -ExpandProperty VmConfiguration | Format-List

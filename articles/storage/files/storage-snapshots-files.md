@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9ada4235539c96fee6969f9731c1b5a63934e825
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: ba229ed81cd5ece4a6013654a11c21740c00c844
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112115621"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123254066"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Übersicht über Freigabemomentaufnahmen für Azure Files
 Azure Files bietet die Möglichkeit, Freigabemomentaufnahmen von Dateifreigaben zu erstellen. Freigabemomentaufnahmen erfassen den Freigabestatus zum jeweiligen Zeitpunkt. In diesem Artikel erfahren Sie, welche Möglichkeiten Freigabemomentaufnahmen bieten und wie Sie in Ihrem speziellen Fall von ihnen profitieren können.
@@ -67,7 +67,7 @@ Um Speicherplatz zu sparen, können Sie die Freigabemomentaufnahme für den Zeit
 
 Obwohl Freigabemomentaufnahmen inkrementell gespeichert werden, müssen Sie nur die jeweils letzte Freigabemomentaufnahme aufbewahren, um die Freigabe wiederherstellen zu können. Wenn Sie eine Freigabemomentaufnahme löschen, werden nur die für diese Freigabemomentaufnahme eindeutigen Daten entfernt. Aktive Momentaufnahmen enthalten sämtliche Informationen, die Sie benötigen, um die Daten (von dem Zeitpunkt, zu dem die Freigabemomentaufnahme erstellt wurde) zu durchsuchen und am ursprünglichen oder an einem anderen Speicherort wiederherzustellen. Die Wiederherstellung kann auf der Elementebene durchgeführt werden.
 
-Momentaufnahmen zählen nicht zu Ihrem 5-TB-Freigabelimit. Es gibt keine Beschränkung für die Speicherplatzbelegung durch Freigabemomentaufnahmen. Die Beschränkungen für Speicherkonten gelten weiterhin.
+Momentaufnahmen werden nicht auf den Grenzwert für die Freigabegröße angerechnet. Es gibt keine Beschränkung für die Speicherplatzbelegung durch Freigabemomentaufnahmen. Die Beschränkungen für Speicherkonten gelten weiterhin.
 
 ## <a name="limits"></a>Einschränkungen
 

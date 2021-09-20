@@ -6,14 +6,14 @@ services: storage
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 5/25/2021
+ms.date: 8/25/2021
 ms.author: jeffpatt
-ms.openlocfilehash: 7cd1b08b572dc000ac3346e493302437eb32ae98
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 1cc88641f93a29c2436b5ce579c2f3e5dcc73d0d
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340455"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864299"
 ---
 # <a name="azure-files-and-azure-netapp-files-comparison"></a>Vergleich von Azure Files und Azure NetApp Files
 
@@ -49,7 +49,7 @@ Die meisten Workloads, die Clouddateispeicher erfordern, funktionieren gut für 
 | Maximale Dateigröße | 4 TiB | 16 TiB |
 | Maximaler IOPS pro Datei | Premium<br><ul><li>Bis zu 8.000</li></ul><br>Standard<br><ul><li>1\.000</li></ul> | Alle Ebenen<br><ul><li>Volumelimit</li></ul> |
 | Maximaler Durchsatz pro Datei | Premium<br><ul><li>300 MiB/s (bis zu 1 GiB/s bei SMB Multichannel)</li></ul><br>Standard<br><ul><li>60 MiB/s</li></ul> | Alle Ebenen<br><ul><li>Volumelimit</li></ul> |
-| SMB Multichannel | Ja ([Vorschau](./storage-files-smb-multichannel-performance.md)) | Ja |
+| SMB Multichannel | Ja | Ja |
 | Latency | Minimale Wartezeit im einstelligen Millisekundenbereich (2 ms bis 3 ms für kleine E/A-Vorgänge) | Minimale Wartezeit unter einer Millisekunde (unter 1 ms für zufällige E/A-Vorgänge)<br><br>Weitere Informationen finden Sie unter [Leistungsbenchmarks](../../azure-netapp-files/performance-benchmarks-linux.md). |
 
 Weitere Informationen zur Skalierbarkeit und zu Leistungszielen finden Sie unter [Azure Files](./storage-files-scale-targets.md#azure-files-scale-targets) und [Azure NetApp Files](../../azure-netapp-files/azure-netapp-files-resource-limits.md).

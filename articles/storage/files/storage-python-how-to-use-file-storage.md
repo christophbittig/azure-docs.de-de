@@ -8,12 +8,12 @@ ms.date: 10/08/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-python
-ms.openlocfilehash: 39e3cfb58e5965ac44d1cfe07b605d46037ab5d8
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 51355be32464facc51193596b90eca23522d617b
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112117725"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251865"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Entwickeln für Azure Files mit Python
 
@@ -44,7 +44,7 @@ Lernen Sie die Grundlagen der Verwendung von Python zur Entwicklung von Apps ode
 
 # <a name="azure-python-sdk-v12"></a>[Azure Python SDK v12](#tab/python)
 
-Für die [Azure File Storage-Clientbibliothek v12.x für Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-share) wird Python 2.7 oder 3.6 oder höher benötigt.
+Für die [Azure Files-Clientbibliothek v12.x für Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-share) wird Python 2.7 oder 3.6 oder höher benötigt.
 
 # <a name="azure-python-sdk-v2"></a>[Azure Python SDK v2](#tab/python2)
 
@@ -150,7 +150,7 @@ file_service.create_directory('myshare', 'sampledir')
 
 ## <a name="upload-a-file"></a>Hochladen einer Datei
 
-In diesem Abschnitt erfahren Sie, wie Sie eine Datei aus dem lokalen Speicher in Azure File Storage hochladen können.
+In diesem Abschnitt erfahren Sie, wie Sie eine Datei aus dem lokalen Speicher in Azure Files hochladen können.
 
 # <a name="azure-python-sdk-v12"></a>[Azure Python SDK v12](#tab/python)
 
@@ -160,7 +160,7 @@ Mit der folgenden Methode wird der Inhalt der angegebenen Datei in das angegeben
 
 # <a name="azure-python-sdk-v2"></a>[Azure Python SDK v2](#tab/python2)
 
-Eine Azure-Dateifreigabe enthält mindestens ein Stammverzeichnis, in dem Dateien gespeichert werden können. Um eine Datei zu erstellen und Daten hochzuladen, verwenden Sie die Methoden [create_file_from_path](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#create-file-from-path-share-name--directory-name--file-name--local-file-path--content-settings-none--metadata-none--validate-content-false--progress-callback-none--max-connections-2--file-permission-none--smb-properties--azure-storage-file-models-smbproperties-object---timeout-none-), [create_file_from_stream](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#create-file-from-stream-share-name--directory-name--file-name--stream--count--content-settings-none--metadata-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--file-permission-none--smb-properties--azure-storage-file-models-smbproperties-object--), [create_file_from_bytes](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#create-file-from-bytes-share-name--directory-name--file-name--file--index-0--count-none--content-settings-none--metadata-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--file-permission-none--smb-properties--azure-storage-file-models-smbproperties-object--) oder [create_file_from_text](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#create-file-from-text-share-name--directory-name--file-name--text--encoding--utf-8---content-settings-none--metadata-none--validate-content-false--timeout-none--file-permission-none--smb-properties--azure-storage-file-models-smbproperties-object--). Dies sind allgemeine Methoden zur Durchführung der erforderlichen Teilung, wenn die Größe der Daten 64 MB übersteigt.
+Eine Azure-Dateifreigabe enthält mindestens ein Stammverzeichnis, in dem Dateien gespeichert werden können. Um eine Datei zu erstellen und Daten hochzuladen, verwenden Sie die Methoden [create_file_from_path](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#create-file-from-path-share-name--directory-name--file-name--local-file-path--content-settings-none--metadata-none--validate-content-false--progress-callback-none--max-connections-2--file-permission-none--smb-properties--azure-storage-file-models-smbproperties-object---timeout-none-), [create_file_from_stream](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#create-file-from-stream-share-name--directory-name--file-name--stream--count--content-settings-none--metadata-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--file-permission-none--smb-properties--azure-storage-file-models-smbproperties-object--), [create_file_from_bytes](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#create-file-from-bytes-share-name--directory-name--file-name--file--index-0--count-none--content-settings-none--metadata-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--file-permission-none--smb-properties--azure-storage-file-models-smbproperties-object--) oder [create_file_from_text](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#create-file-from-text-share-name--directory-name--file-name--text--encoding--utf-8---content-settings-none--metadata-none--validate-content-false--timeout-none--file-permission-none--smb-properties--azure-storage-file-models-smbproperties-object--). Dies sind allgemeine Methoden zur Durchführung der erforderlichen Teilung, wenn die Größe der Daten 64 MiB übersteigt.
 
 `create_file_from_path` lädt den Inhalt einer Datei aus dem angegebenen Pfad, `create_file_from_stream` den Inhalt einer Datei aus einer bereits geöffneten Datei/einem bereits geöffneten Stream hoch. `create_file_from_bytes` lädt ein Byte-Array, `create_file_from_text` den angegebenen Textwert wie vorgegeben codiert hoch (Standardcodierung ist UTF-8).
 
@@ -210,7 +210,7 @@ Das folgende Beispiel veranschaulicht die Verwendung von `download_file`, um den
 
 # <a name="azure-python-sdk-v2"></a>[Azure Python SDK v2](#tab/python2)
 
-Verwenden Sie zum Herunterladen von Daten aus einer Datei die Methoden [get_file_to_path](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#get-file-to-path-share-name--directory-name--file-name--file-path--open-mode--wb---start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--snapshot-none-), [get_file_to_stream](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#get-file-to-stream-share-name--directory-name--file-name--stream--start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--snapshot-none-), [get_file_to_bytes](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#get-file-to-bytes-share-name--directory-name--file-name--start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--snapshot-none-) oder [get_file_to_text](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#get-file-to-text-share-name--directory-name--file-name--encoding--utf-8---start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--snapshot-none-). Dies sind allgemeine Methoden zur Durchführung der erforderlichen Teilung, wenn die Größe der Daten 64 MB übersteigt.
+Verwenden Sie zum Herunterladen von Daten aus einer Datei die Methoden [get_file_to_path](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#get-file-to-path-share-name--directory-name--file-name--file-path--open-mode--wb---start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--snapshot-none-), [get_file_to_stream](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#get-file-to-stream-share-name--directory-name--file-name--stream--start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--snapshot-none-), [get_file_to_bytes](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#get-file-to-bytes-share-name--directory-name--file-name--start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--snapshot-none-) oder [get_file_to_text](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#get-file-to-text-share-name--directory-name--file-name--encoding--utf-8---start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--snapshot-none-). Dies sind allgemeine Methoden zur Durchführung der erforderlichen Teilung, wenn die Größe der Daten 64 MiB übersteigt.
 
 Das folgende Beispiel verwendet `get_file_to_path`, um den Inhalt der Datei **myfile** herunterzuladen und in der Datei *out-sunset.png* zu speichern.
 

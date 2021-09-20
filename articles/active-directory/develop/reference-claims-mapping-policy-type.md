@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 07/01/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 567c9172317a15ef2b3bd18e46909fb444d34c65
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 52de257461c796f7a477091801f4bdc52f46f5c8
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113214629"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123101531"
 ---
 # <a name="claims-mapping-policy-type"></a>Richtlinientyp einer Anspruchszuordnung
 
@@ -270,6 +270,9 @@ Legen Sie das Quellelement auf einen der folgenden Werte fest:
 Wenn die Quelle „transformation“ ist, muss das **TransformationID**-Element in dieser Anspruchsdefinition auch enthalten sein.
 
 Das ID-Element identifiziert, welche Eigenschaft in der Quelle den Wert für den Anspruch bereitstellt. Die folgende Tabelle listet die ID-Werte auf, die für jeden Wert der Quelle gültig sind.
+
+> [!WARNING]
+> Derzeit sind die einzigen verfügbaren mehrwertigen Anspruchsquellen für ein Benutzerobjekt mehrwertige Erweiterungsattribute, die von AADConnect synchronisiert wurden.  Andere Eigenschaften (z. B. „othermail“ und „tags“) sind mehrwertige Eigenschaften, aber es wird nur ein Wert ausgegeben, wenn sie als Quelle ausgewählt werden.
 
 #### <a name="table-3-valid-id-values-per-source"></a>Tabelle 3: Gültige ID-Werte pro Quelle
 

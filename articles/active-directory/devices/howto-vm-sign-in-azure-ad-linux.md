@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 05/20/2021
+ms.date: 07/26/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
-ms.custom: references_regions, devx-track-azurecli
+ms.custom: references_regions, devx-track-azurecli, subject-rbac-steps
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34a43212e8883e1ae727d18c53d5c28f873d9e94
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 1cac67a60f5ebcd0b7075d9caa6c453209ce0121
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110458081"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122606009"
 ---
 # <a name="preview-login-to-a-linux-virtual-machine-in-azure-with-azure-active-directory-using-ssh-certificate-based-authentication"></a>Vorschau: Anmelden bei einem virtuellen Linux-Computer in Azure mit Azure Active Directory mithilfe der zertifikatbasierten SSH-Authentifizierung
 
@@ -102,9 +102,10 @@ Stellen Sie sicher, dass Ihr virtueller Computer mit der folgenden Funktionalit�
 
 Stellen Sie sicher, dass Ihr Client folgende Anforderungen erfüllt:
 
-- Der SSH-Client muss OpenSSH-basierte Zertifikate für die Authentifizierung unterstützen. Sie können die Azure CLI (2.21.1 oder höher) oder Azure Cloud Shell verwenden, um diese Anforderung zu erfüllen. 
-- SSH-Erweiterung für Azure CLI. Sie können diese Erweiterung mithilfe von „az“ installieren. Sie müssen diese Erweiterung jedoch nicht installieren, wenn Sie Azure Cloud Shell verwenden, da sie vorinstalliert ist.
-- Wenn Sie einen anderen SSH-Client als die Azure CLI oder Azure Cloud Shell verwenden, der OpenSSH unterstützt, müssen Sie trotzdem die Azure CLI mit der SSH-Erweiterung verwenden, um kurzlebige SSH-Zertifikate in eine Konfigurationsdatei abzurufen und dann die Konfigurationsdatei mit Ihrem SSH-Client zu verwenden.
+- Der SSH-Client muss OpenSSH-basierte Zertifikate für die Authentifizierung unterstützen. Zur Erfüllung dieser Anforderung können Sie Az CLI (2.21.1 oder höher) mit OpenSSH (enthalten in Windows 10, Version 1803 oder höher) oder Azure Cloud Shell verwenden. 
+- SSH-Erweiterung für Azure CLI. Diese Erweiterung können Sie mithilfe von `az extension add --name ssh` installieren. Sie müssen diese Erweiterung jedoch nicht installieren, wenn Sie Azure Cloud Shell verwenden, da sie vorinstalliert ist.
+- Wenn Sie einen anderen SSH-Client als die Azure CLI oder Azure Cloud Shell verwenden, der OpenSSH-Zertifikate unterstützt, müssen Sie weiterhin die Azure CLI mit der SSH-Erweiterung zum Abrufen von kurzlebigen SSH-Zertifikaten (und optional einer Konfigurationsdatei) und dann die Konfigurationsdatei bei Ihrem SSH-Client verwenden.
+- TCP-Konnektivität vom Client zur öffentlichen oder privaten IP-Adresse des virtuellen Computers („ProxyCommand“ oder SSH-Weiterleitung an einen Computer mit Konnektivität funktioniert ebenfalls).
 
 ## <a name="enabling-azure-ad-login-in-for-linux-vm-in-azure"></a>Aktivieren der Azure AD-Anmeldung für virtuelle Linux-Computer in Azure
 
@@ -189,12 +190,18 @@ Es gibt mehrere Möglichkeiten, Rollenzuweisungen für virtuelle Computer zu kon
 
 So konfigurieren Sie Rollenzuweisungen für Azure AD-fähige virtuelle Linux-Computer
 
-1. Navigieren Sie zu dem virtuellen Computer, der konfiguriert werden soll.
-1. Wählen Sie in den Menüoptionen **Zugriffssteuerung (IAM)** aus.
-1. Wählen Sie **Hinzufügen** und dann **Rollenzuweisung hinzufügen** aus, um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen.
-1. Wählen Sie in der Dropdownliste **Rolle** die Rolle **VM-Administratoranmeldung** oder **VM-Benutzeranmeldung** aus.
-1. Wählen Sie im Feld **Auswählen** einen Benutzer, eine Gruppe, einen Dienstprinzipal oder eine verwaltete Identität aus. Wenn der Sicherheitsprinzipal in der Liste nicht angezeigt wird, können Sie im Feld **Auswählen** einen Begriff eingeben, um das Verzeichnis nach Anzeigenamen, E-Mail-Adressen und Objektbezeichner zu durchsuchen.
-1. Wählen Sie **Speichern** aus, um die Rolle zuzuweisen.
+1. Wählen Sie die Option **Zugriffssteuerung (IAM)** aus.
+
+1. Wählen Sie **Hinzufügen** > **Rollenzuweisung hinzufügen** aus, um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen.
+
+1. Weisen Sie die folgende Rolle zu. Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
+    
+    | Einstellung | Wert |
+    | --- | --- |
+    | Rolle | **VM-Administratoranmeldung** oder **VM-Benutzeranmeldung** |
+    | Zugriff zuweisen zu | Benutzer, Gruppe, Dienstprinzipal oder verwaltete Identität |
+
+    ![Seite „Rollenzuweisung hinzufügen“ im Azure-Portal](../../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
 Nach einigen Augenblicken wird dem Sicherheitsprinzipal die Rolle für den Bereich zugewiesen.
  
@@ -317,7 +324,7 @@ Bei der Anmeldung bei einem virtuellen Linux-Computer in Azure mithilfe von Azur
 az ssh config --file ~/.ssh/config -n myVM -g AzureADLinuxVMPreview
 ```
 
-Alternativ können Sie die Konfiguration exportieren, indem Sie nur die IP-Adresse angeben. Ersetzen Sie die IP-Adresse im Beispiel durch die öffentliche oder private IP-Adresse für Ihren virtuellen Computer. Geben Sie `az ssh config -h` ein, um Hilfe zu diesem Befehl zu erhalten.
+Alternativ können Sie die Konfiguration exportieren, indem Sie nur die IP-Adresse angeben. Ersetzen Sie die IP-Adresse im Beispiel durch die öffentliche oder private IP-Adresse (für private IP-Adressen müssen Sie Ihre eigene Konnektivität verwenden) für Ihren virtuellen Computer. Geben Sie `az ssh config -h` ein, um Hilfe zu diesem Befehl zu erhalten.
 
 ```azurecli
 az ssh config --file ~/.ssh/config --ip 10.11.123.456
@@ -345,7 +352,7 @@ Installieren Sie die Azure AD-Erweiterung in Ihrer VM-Skalierungsgruppe.
 az vmss extension set --publisher Microsoft.Azure.ActiveDirectory --name Azure ADSSHLoginForLinux --resource-group AzureADLinuxVMPreview --vmss-name myVMSS
 ```
 
-In der Regel verfügen VM-Skalierungsgruppen nicht über öffentliche IP-Adressen. Daher müssen Sie von einem anderen Computer, der mit dem virtuellen Azure-Netzwerk verbunden ist, eine Verbindung herstellen. In diesem Beispiel wird gezeigt, wie sie die private IP-Adresse eines virtuellen Computers der VM-Skalierungsgruppe verwenden, um eine Verbindung herzustellen. 
+In der Regel verfügen VM-Skalierungsgruppen nicht über öffentliche IP-Adressen. Daher müssen Sie von einem anderen Computer, der mit dem virtuellen Azure-Netzwerk verbunden ist, eine Verbindung herstellen. In diesem Beispiel wird gezeigt, wie Sie mithilfe der privaten IP-Adresse eines virtuellen Computers der VM-Skalierungsgruppe eine Verbindung von einem Computer in demselben virtuellen Netzwerk herstellen. 
 
 ```azurecli
 az ssh vm --ip 10.11.123.456
@@ -373,7 +380,7 @@ Führen Sie für Kunden, die eine frühere Version der Azure AD-Anmeldung für 
       ```
 ## <a name="using-azure-policy-to-ensure-standards-and-assess-compliance"></a>Verwenden von Azure Policy zum Sicherstellen von Standards und für die Konformitätsbewertung
 
-Verwenden Sie Azure Policy, um sicherzustellen, dass die Azure AD-Anmeldung für Ihre neuen und vorhandenen virtuellen Linux-Computer aktiviert ist, und bewerten Sie bedarfsgerecht die Konformität Ihrer Umgebung auf dem Compliance-Dashboard von Azure Policy. Mit dieser Funktion können Sie viele Erzwingungsstufen verwenden: Sie können neue und vorhandene virtuelle Linux-Computer in Ihrer Umgebung kennzeichnen, für die keine Azure AD-Anmeldung aktiviert ist. Sie können Azure Policy auch zum Bereitstellen der Azure AD-Erweiterung auf neuen virtuellen Linux-Computern verwenden, auf denen diese noch nicht aktiviert ist. Sie können aber auch vorhandene virtuelle Linux-Computer auf denselben Standard aktualisieren. Neben diesen Funktionen können Sie Azure Policy auch zum Erkennen und Kennzeichnen von virtuellen Linux-Computern verwenden, auf denen nicht genehmigte lokale Konten erstellt wurden. Weitere Informationen finden Sie unter [Azure Policy](https://www.aka.ms/AzurePolicy).
+Verwenden Sie Azure Policy, um sicherzustellen, dass die Azure AD-Anmeldung für Ihre neuen und vorhandenen virtuellen Linux-Computer aktiviert ist, und bewerten Sie bedarfsgerecht die Konformität Ihrer Umgebung auf dem Compliancedashboard von Azure Policy. Mit dieser Funktion können Sie viele Erzwingungsstufen verwenden: Sie können neue und vorhandene virtuelle Linux-Computer in Ihrer Umgebung kennzeichnen, für die keine Azure AD-Anmeldung aktiviert ist. Sie können Azure Policy auch zum Bereitstellen der Azure AD-Erweiterung auf neuen virtuellen Linux-Computern verwenden, auf denen diese noch nicht aktiviert ist. Sie können aber auch vorhandene virtuelle Linux-Computer auf denselben Standard aktualisieren. Neben diesen Funktionen können Sie Azure Policy auch zum Erkennen und Kennzeichnen von virtuellen Linux-Computern verwenden, auf denen nicht genehmigte lokale Konten erstellt wurden. Weitere Informationen finden Sie unter [Was ist Azure Policy?](../../governance/policy/overview.md).
 
 ## <a name="troubleshoot-sign-in-issues"></a>Beheben von Problemen bei der Anmeldung
 

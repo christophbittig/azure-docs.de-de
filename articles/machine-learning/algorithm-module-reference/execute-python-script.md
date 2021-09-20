@@ -10,12 +10,12 @@ ms.custom: devx-track-python, has-adal-ref
 author: likebupt
 ms.author: keli19
 ms.date: 06/15/2021
-ms.openlocfilehash: d4ac33619d653b99de32dcd86cf226f217382f43
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: fe98144b204c0baa22bc17972162799b6f341675
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429764"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122831359"
 ---
 # <a name="execute-python-script-module"></a>Execute Python Script-Modul
 
@@ -135,6 +135,46 @@ Nachdem die Pipelineausführung abgeschlossen ist, können Sie eine Vorschau des
 
 > [!div class="mx-imgBorder"]
 > ![Vorschau für hochgeladenes Bild](media/module/upload-image-in-python-script.png)
+
+Sie können die Datei auch mit dem folgenden Code in einen beliebigen Datenspeicher hochladen. Sie können die Datei nur in Ihrem Speicherkonto in der Vorschau anzeigen.
+```Python
+import pandas as pd
+
+# The entry point function MUST have two input arguments.
+# If the input port is not connected, the corresponding
+# dataframe argument will be None.
+#   Param<dataframe1>: a pandas.DataFrame
+#   Param<dataframe2>: a pandas.DataFrame
+def azureml_main(dataframe1 = None, dataframe2 = None):
+
+    # Execution logic goes here
+    print(f'Input pandas.DataFrame #1: {dataframe1}')
+
+    from matplotlib import pyplot as plt
+    import os
+
+    plt.plot([1, 2, 3, 4])
+    plt.ylabel('some numbers')
+    img_file = "line.png"
+
+    # Set path
+    path = "./img_folder"
+    os.mkdir(path)
+    plt.savefig(os.path.join(path,img_file))
+
+    # Get current workspace
+    from azureml.core import Run
+    run = Run.get_context(allow_offline=True)
+    ws = run.experiment.workspace
+    
+    # Get a named datastore from the current workspace and upload to specified path
+    from azureml.core import Datastore 
+    datastore = Datastore.get(ws, datastore_name='workspacefilestore')
+    datastore.upload(path)
+
+    return dataframe1,
+```
+
 
 ## <a name="how-to-configure-execute-python-script"></a>Konfigurieren von „Execute Python Script“ (Python-Skript ausführen)
 

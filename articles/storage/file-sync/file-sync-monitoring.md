@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 8e9fbd5fd8fc90681432ee8403b6dd139d02a5a5
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 4f339427a7839e3b622b2d33bf3ef8bd137d39dc
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107796133"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258429"
 ---
 # <a name="monitor-azure-file-sync"></a>Überwachen der Azure-Dateisynchronisierung
 
@@ -45,12 +45,14 @@ In Azure Monitor sind die folgenden Metriken für die Azure-Dateisynchronisierun
 | Metrikname | BESCHREIBUNG |
 |-|-|
 | Bytes synchronisiert | Größe der übertragenen Daten (Upload und Download).<br><br>Einheit: Byte<br>Aggregationstyp: SUM<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
-| Cloudtieringrückruf | Größe der zurückgerufenen Daten.<br><br>**Hinweis**: Diese Metrik wird in Zukunft entfernt. Verwenden Sie die Metrik „ Cloudtiering-Rückrufgröße“, um die Größe der zurückgerufenen Daten zu überwachen.<br><br>Einheit: Byte<br>Aggregationstyp: SUM<br>Verfügbare Dimension: Servername |
+| Cachetrefferrate für Cloudtiering | Prozentsatz von Bytes (keine ganzen Dateien), die aus dem Cache und nicht aus der Cloud abgerufen wurden<br><br>Einheit: Prozentsatz<br>Aggregationstyp: Average<br>Verfügbare Dimensionen: Name des Serverendpunkts, Servername, Name der Synchronisierungsgruppe |
 | Cloudtiering-Rückrufgröße | Größe der zurückgerufenen Daten.<br><br>Einheit: Byte<br>Aggregationstyp: SUM<br>Verfügbare Dimensionen: Servername, Name der Synchronisierungsgruppe |
 | Cloudtiering-Rückrufgröße nach Anwendung | Größe der zurückgerufenen Daten nach Anwendung.<br><br>Einheit: Byte<br>Aggregationstyp: SUM<br>Verfügbare Dimensionen: Anwendungsname, Servername, Name der Synchronisierungsgruppe |
+| Erfolgsquote beim Cloudtieringabruf | Prozentsatz der erfolgreichen Rückrufanforderungen<br><br>Einheit: Prozentsatz<br>Aggregationstyp: Average<br>Verfügbare Dimensionen: Name des Serverendpunkts, Servername, Name der Synchronisierungsgruppe |
 | Cloudtiering-Rückrufdurchsatz | Größe des Datenrückruf-Durchsatzes.<br><br>Einheit: Byte<br>Aggregationstyp: SUM<br>Verfügbare Dimensionen: Servername, Name der Synchronisierungsgruppe |
 | Dateien ohne Synchronisierung | Anzahl von Dateien, für die keine Synchronisierung möglich ist.<br><br>Einheit: Anzahl<br>Aggregationstypen: Durchschnitt, Summe<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
 | Dateien synchronisiert | Anzahl der übertragenen Dateien (Upload und Download)<br><br>Einheit: Anzahl<br>Aggregationstyp: SUM<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
+| Größe des Servercaches | Größe der auf dem Server zwischengespeicherten Daten<br><br>Einheit: Byte<br>Aggregationstyp: Average<br>Verfügbare Dimensionen: Name des Serverendpunkts, Servername, Name der Synchronisierungsgruppe |
 | Onlinestatus des Servers | Anzahl von Taktsignalen, die vom Server empfangen wurden.<br><br>Einheit: Anzahl<br>Aggregationstyp: Maximum<br>Verfügbare Dimension: Servername |
 | Ergebnis der Synchronisierungssitzung | Ergebnis der Synchronisierungssitzung (1 = erfolgreiche Synchronisierungssitzung, 0 = fehlerhafte Synchronisierungssitzung)<br><br>Einheit: Anzahl<br>Aggregationstypen: Maximum<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
 
@@ -148,7 +150,7 @@ Synchronisierungsintegrität
 
 - Ereignis-ID 9121 wird für jeden Fehler pro Element protokolliert, sobald die Synchronisierungssitzung abgeschlossen ist. Bestimmen Sie anhand dieses Ereignisses die Anzahl der Dateien, bei denen die Synchronisierung mit diesem Fehler (**PersistentCount** und **TransientCount**) nicht erfolgreich ist. Wie Sie persistente Fehler auf Elementebene untersuchen sollten, erfahren Sie unter [Woran erkenne ich, dass bestimmte Dateien oder Ordner nicht synchronisiert wurden?](file-sync-troubleshoot.md?tabs=server%252cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing).
 
-- Die Ereignis-ID 9302 wird alle 5 bis 10 Minuten protokolliert, wenn eine aktive Synchronisierungssitzung vorliegt. Verwenden Sie dieses Ereignis, um die Anzahl der Elemente zu ermitteln, die synchronisiert werden sollen (**TotalItemCount**), sowie die Anzahl der bisher synchronisierten Elemente (**AppliedItemCount**) und die Anzahl der Elemente, die aufgrund eines elementspezifischen Fehlers nicht synchronisiert werden konnten (**PerItemErrorCount**). Wenn die Synchronisierung keinen Fortschritt zeigt (**AppliedItemCount=0**), tritt für die Synchronisierungssitzung irgendwann ein Fehler auf, und die Ereignis-ID 9102 wird mit dem Fehler protokolliert. Weitere Informationen finden Sie in der [Dokumentation zum Synchronisierungsfortschritt](file-sync-troubleshoot.md?tabs=server%252cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session).
+- Die Ereignis-ID 9302 wird alle 5 bis 10 Minuten protokolliert, wenn eine aktive Synchronisierungssitzung vorliegt. Verwenden Sie dieses Ereignis, um die Anzahl der Elemente zu ermitteln, die synchronisiert werden sollen (**TotalItemCount**), sowie die Anzahl der bisher synchronisierten Elemente (**AppliedItemCount**) und die Anzahl der Elemente, die aufgrund eines elementspezifischen Fehlers nicht synchronisiert werden konnten (**PerItemErrorCount**). Wenn die Synchronisierung keinen Fortschritt zeigt (**AppliedItemCount=0**), tritt für die Synchronisierungssitzung irgendwann ein Fehler auf, und die Ereignis-ID 9102 wird mit dem Fehler protokolliert. Weitere Informationen finden Sie in der [Dokumentation zum Synchronisierungsfortschritt](file-sync-troubleshoot.md?tabs=server%252cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session).
 
 Integrität registrierter Server
 

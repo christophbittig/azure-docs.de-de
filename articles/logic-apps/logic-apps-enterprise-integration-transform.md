@@ -1,117 +1,114 @@
 ---
-title: Transformieren von XML zwischen Formaten
-description: Erstellen von Transformationen oder Zuordnungen zum Konvertieren von XML zwischen Formaten in Azure Logic Apps mit Enterprise Integration Pack
+title: Transformieren von XML für die B2B-Unternehmensintegration
+description: Transformieren Sie XML mithilfe von Zuordnungen in Azure Logic Apps mit dem Enterprise Integration Pack.
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, logicappspm
-ms.topic: article
-ms.date: 07/08/2016
-ms.openlocfilehash: 038c1d4c0f0b5ffd7b9aabea2de32e3a44e3b221
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: estfan, azla
+ms.topic: how-to
+ms.date: 08/26/2021
+ms.openlocfilehash: 30895da003122b760d6437b3cd14a270482f7a0a
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97654131"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123105239"
 ---
-# <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Erstellen von Zuordnungen zum Transformieren von XML zwischen Formaten in Azure Logic Apps mit Enterprise Integration Pack
+# <a name="transform-xml-for-workflows-in-azure-logic-apps"></a>Transformieren von XML für Workflows in Azure Logic Apps
 
-Der Unternehmensintegrationsconnector „Transformieren“ wandelt Daten von einem Format in ein anderes um. Angenommen, es gibt eine eingehende Nachricht, die das aktuelle Datum im Format „JahrMonatTag“ enthält. Mithilfe einer Transformation können Sie das Datum in das Format „TagMonatJahr“ umformatieren.
+In B2B-Szenarios (Business-to-Business) für die Unternehmensintegration müssen Sie möglicherweise XML in ein anderes Format konvertieren. In Azure Logic Apps können Sie XML mithilfe Ihres Logik-App-Workflows unter Verwendung einer XSLT-Zuordnung (Extensible Stylesheet Language Transformation) und der Aktion **XML transformieren** transformieren. Eine Zuordnung ist ein XML-Dokument, in dem die Konvertierung von Daten von XML in ein anderes Format beschrieben wird. Dieses Dokument besteht aus einem XML-Quellschema als Eingabe und einem XML-Zielschema als Ausgabe.  Sie können verschiedene integrierte Funktionen verwenden, um Daten zu ändern oder zu steuern, einschließlich Zeichenfolgenbearbeitungen, bedingter Zuordnungen, arithmetischer Ausdrücke, Datum-Uhrzeit-Formatierungen und sogar Schleifenkonstrukten.
 
-## <a name="what-does-a-transform-do"></a>Aufgaben einer Transformation
-Eine Transformation, auch als Zuordnung bezeichnet, besteht aus einem XML-Quellschema (der Eingabe) und einem XML-Zielschema (der Ausgabe). Sie können verschiedene integrierte Funktionen verwenden, um Daten zu ändern oder zu steuern, einschließlich Zeichenfolgenbearbeitungen, bedingter Zuordnungen, arithmetischer Ausdrücke, Datum-Uhrzeit-Formatierungen und sogar Schleifenkonstrukten.
+Angenommen, Sie erhalten von einem Kunden regelmäßig B2B-Aufträge oder -Rechnungen im Datumsformat „JJJJMMTT“ (Jahr/Monat/Tag). In Ihrer Organisation wird jedoch das Datumsformat „MMTTJJJJ“ (Monat/Tag/Jahr) verwendet. Mithilfe einer Zuordnung können Sie das Format „JJJJMMTT“ in das Format „MMTTJJJJ“ transformieren, bevor Auftrags- oder Rechnungsdetails in Ihrer Datenbank für Kundenaktivitäten gespeichert werden.
 
-## <a name="how-to-create-a-transform"></a>Erstellen einer Transformation
-Sie können mit dem Visual Studio [Enterprise Integration SDK](https://aka.ms/vsmapsandschemas)eine Transformation/Zuordnung erstellen. Nachdem Sie das Erstellen und Testen der Transformation abgeschlossen haben, laden Sie sie in Ihr Integrationskonto hoch. 
+Nachdem Sie eine [Zuordnung erstellt](logic-apps-enterprise-integration-maps.md#create-maps) und ihre Funktion überprüft haben, fügen Sie diese Zuordnung dem Integrationskonto hinzu, das mit Ihrer auf dem Verbrauchstarif basierenden Logik-App für mehrere Mandanten oder der auf dem ISE-Plan basierenden Logik-App verknüpft ist. Alternativ dazu können Sie diese Zuordnung auch direkt Ihrer auf dem Standardtarif basierenden Logik-App für einen Mandanten hinzufügen. Weitere Informationen finden Sie unter [Hinzufügen von XSLT-Zuordnungen für XML-Transformationen in Azure Logic Apps](logic-apps-enterprise-integration-maps.md). Sobald Ihr Workflow die Aktion **XML transformieren** enthält, wird die Aktion ausgeführt, wenn der Workflow ausgelöst wird und XML-Inhalte für die Transformation verfügbar sind.
 
-## <a name="how-to-use-a-transform"></a>Verwenden einer Transformation
-Nachdem Sie die Transformation/Zuordnung in Ihr Integrationskonto hochgeladen haben, können Sie sie zum Erstellen einer Logik-App nutzen. Die Logik-App führt Ihre Transformationen aus, sobald sie ausgelöst wird (und es eingegebenen Inhalt gibt, der transformiert werden muss).
+Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen in den folgenden Artikeln:
 
-**So erfolgt eine Transformation**:
+* [Was ist Azure Logic Apps: Ressourcentyp und Hostumgebungen](logic-apps-overview.md#resource-type-and-host-environment-differences)
 
-### <a name="prerequisites"></a>Voraussetzungen
+* [Erstellen eines Integrationsworkflows mit der Azure Logic Apps-Einzelmandanteninstanz (Standard)](create-single-tenant-workflows-azure-portal.md)
 
-* Erstellen eines Integrationskontos und Hinzufügen einer Zuordnung  
+* [Erstellen eines Logik-App-Workflows mit einem Mandanten](create-single-tenant-workflows-azure-portal.md)
 
-Sobald die Voraussetzungen erfüllt sind, können Sie Ihre Logik-App erstellen:  
+* [Modelle für Verbrauchsmessung, Abrechnung und Preise für Azure Logic Apps](logic-apps-pricing.md)
 
-1. Erstellen Sie eine Logik-App, und [verknüpfen Sie sie mit Ihrem Integrationskonto](./logic-apps-enterprise-integration-create-integration-account.md "Weitere Informationen zum Verknüpfen eines Integrationskontos mit einer Logik-App"), das die Zuordnung enthält.
-2. Fügen Sie Ihrer Logik-App einen **Anforderungstrigger** hinzu.  
-   ![Screenshot der Dropdownliste „Von Microsoft verwaltete APIs anzeigen“ mit ausgewähltem Anforderungstrigger. Das Dropdown befindet sich in einer Logik-App, die mithilfe des Visual Studio Enterprise Integration SDK erstellt wurde.](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
-3. Fügen Sie die Aktion **XML transformieren** hinzu, indem Sie zuerst **Aktion hinzufügen**  auswählen.  
-   ![Screenshot der im Bildschirm des Anforderungstriggers ausgewählten Schaltfläche „Aktion hinzufügen“.](./media/logic-apps-enterprise-integration-transforms/transform-2.png)   
-4. Geben Sie *transformieren* in das Suchfeld ein, um die Aktion herauszufiltern, die Sie verwenden möchten.  
-   ![Screenshot, der zeigt, wie Sie in der Dropdownliste „Von Microsoft verwaltete APIs anzeigen“ nach der Aktion „XML transformieren“ suchen, damit sie dem Anforderungstrigger hinzugefügt werden kann.](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
-5. Wählen Sie die Aktion **XML transformieren** aus.   
-6. Fügen Sie den XML-**INHALT** hinzu, der transformiert werden soll. Sie können beliebige XML-Daten verwenden, die Sie in der HTTP-Anforderung als **INHALT** empfangen. Wählen Sie in diesem Beispiel den Text der HTTP-Anforderung aus, die die Logik-App ausgelöst hat.
+## <a name="prerequisites"></a>Voraussetzungen
+
+* Ein Azure-Konto und ein Azure-Abonnement. Sollten Sie noch kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+* Ein Logik-App-Workflow, der bereits mit einem Trigger beginnt, sodass Sie die Aktion **XML transformieren** an der gewünschten Stelle in Ihrem Workflow hinzufügen können.
+
+* Wenn Sie den Ressourcentyp **Logik-App (Standard)** verwenden, benötigen Sie kein Integrationskonto. In diesem Fall können Sie Ihrer Logik-App-Ressource Zuordnungen direkt im Azure-Portal oder in Visual Studio Code hinzufügen. Derzeit wird nur XSLT 1.0 unterstützt. Sie können diese Zuordnungen dann in mehreren Workflows innerhalb *derselben Logik-App-Ressource* verwenden.
+
+* Wenn Sie den Ressourcentyp **Logik-App (Verbrauch)** verwenden, benötigen Sie eine [Integrationskontoressource](logic-apps-enterprise-integration-create-integration-account.md), in der Sie Ihre Zuordnungen und anderen Artefakte für die Verwendung in Unternehmensintegrations- und B2B-Lösungen (Business-to-Business) speichern können. Diese Ressource muss die folgenden Anforderungen erfüllen:
+
+  * Sie muss demselben Azure-Abonnement zugeordnet sein wie Ihre Logik-App-Ressource.
+
+  * Sie muss sich am selben Standort oder in derselben Azure-Region wie Ihre Logik-App-Ressource befinden, für die Sie die Aktion **XML transformieren** verwenden möchten.
+
+  * Sie muss mit Ihrer Logik-App-Ressource, für die Sie die Aktion **XML transformieren** verwenden möchten, [verknüpft](logic-apps-enterprise-integration-create-integration-account.md#link-account) sein.
+
+## <a name="add-transform-xml-action"></a>Hinzufügen der Aktion „XML transformieren“
+
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) Ihre Logik-App und den Workflow in der Designeransicht.
+
+1. Fügen Sie im Falle einer leeren Logik-App ohne Trigger einen Trigger Ihrer Wahl hinzu. In diesem Beispiel wird der Anforderungstrigger verwendet. Fahren Sie andernfalls mit dem nächsten Schritt fort.
+
+   Geben Sie zum Hinzufügen des Anforderungstriggers im Suchfeld des Designers `HTTP request` ein, und wählen Sie den Anforderungstrigger mit dem Namen **Beim Empfang einer HTTP-Anforderung** aus.
+
+1. Führen Sie unter dem Schritt in Ihrem Workflow, für den Sie die Aktion **XML transformieren** hinzufügen möchten, einen der folgenden Schritte aus:
+
+   Wählen Sie für eine auf dem Verbrauchstarif oder dem ISE-Plan basierende Logik-App einen der folgenden Schritte aus:
+
+   * Wenn Sie die Aktion **XML transformieren** am Ende des Workflows hinzufügen möchten, klicken Sie auf **Neuer Schritt**.
+
+   * Wenn Sie die Aktion **XML transformieren** zwischen zwei vorhandenen Schritten hinzufügen möchten, zeigen Sie auf den Pfeil, der die beiden Schritte miteinander verbindet. Daraufhin wird ein Pluszeichen ( **+** ) angezeigt. Wählen Sie dieses Pluszeichen und anschließend die Option **Aktion hinzufügen** aus.
+
+   Wählen Sie für eine auf dem Standardtarif basierende Logik-App einen der folgenden Schritt aus:
+
+   * Wenn Sie die Aktion **XML transformieren** am Ende des Workflows hinzufügen möchten, klicken Sie auf das Pluszeichen ( **+** ) und anschließend auf **Aktion hinzufügen**.
+
+   * Wenn Sie die Aktion **XML transformieren** zwischen zwei vorhandenen Schritten hinzufügen möchten, klicken Sie auf das Pluszeichen ( **+** ) zwischen diesen Schritten und dann auf **Aktion hinzufügen**.
+
+1. Wählen Sie unter **Vorgang auswählen** die Option **Integriert** aus. Geben Sie im Suchfeld `transform xml`ein. Wählen Sie in der Liste der Aktionen die Aktion **XML transformieren** aus.
+
+1. Verwenden Sie zur Angabe des XML-Inhalts, den Sie transformieren möchten, beliebige XML-Daten, die Sie in der HTTP-Anforderung erhalten. Klicken Sie in das Feld **Inhalt**, sodass die dynamische Inhaltsliste angezeigt wird.
+
+   Die Liste mit den dynamischen Inhalten enthält Eigenschaftstoken, die die Ausgaben der vorherigen Schritte im Workflow darstellen. Sollte eine erwartete Eigenschaft in der Liste fehlen, überprüfen Sie in der Trigger- oder Aktionsüberschrift der Liste, ob die Option **Mehr anzeigen** vorhanden ist.
+
+   Für eine auf dem Verbrauchstarif oder dem ISE-Plan basierende Logik-App sieht der Designer wie im folgenden Beispiel aus:
+
+   ![Screenshot: Designer mit mehreren Mandanten, mit geöffneter Liste „Dynamischer Inhalt“ und Cursor im Feld „Inhalt“](./media/logic-apps-enterprise-integration-transform/open-dynamic-content-list-multi-tenant.png)
+
+   Für eine auf dem Standardtarif basierende Logik-App sieht der Designer wie im folgenden Beispiel aus:
+
+   ![Screenshot: Designer mit einem Mandanten, mit geöffneter Liste „Dynamischer Inhalt“ und Cursor im Feld „Inhalt“](./media/logic-apps-enterprise-integration-transform/open-dynamic-content-list-single-tenant.png)
+
+1. Wählen Sie in der Liste „Dynamischer Inhalt“ das Eigenschaftstoken für den Inhalt aus, den Sie überprüfen möchten.
+
+   In diesem Beispiel wird das Token **Text** für den Trigger ausgewählt.
 
    > [!NOTE]
-   > Stellen Sie sicher, dass der Inhalt von **XML transformieren** XML ist. Wenn der Inhalt nicht XML ist oder wenn er Base64-codiert ist, müssen Sie einen Ausdruck angeben, der den Inhalt verarbeitet. Beispielsweise können Sie [Funktionen](logic-apps-workflow-definition-language.md#functions) verwenden, z.B. ```@base64ToBinary``` zum Decodieren des Inhalts oder ```@xml``` zum Verarbeiten des Inhalts als XML.
- 
+   > Vergewissern Sie sich, dass der ausgewählte Inhalt im XML-Format vorhanden ist. Befindet sich der Inhalt nicht im XML-Format oder ist er Base64-codiert, müssen Sie einen Ausdruck für die Verarbeitung des Inhalts angeben. Hierfür können Sie z. B. [Ausdrucksfunktionen](workflow-definition-language-functions-reference.md) wie `base64ToBinary()` zum Decodieren des Inhalts oder `xml()` zum Verarbeiten des Inhalts im XML-Format verwenden.
 
-7. Wählen Sie den Namen der **ZUORDNUNG** aus, mit deren Hilfe die Transformation erfolgen soll. Die Zuordnung muss bereits in Ihrem Integrationskonto enthalten sein. In einem früheren Schritt haben Sie Ihrer Logik-App bereits Zugriff auf Ihr Integrationskonto gewährt, das Ihre Zuordnung enthält.      
-   ![Screenshot der Felder „Inhalt und Zuordnung“ im Bildschirm „XML transformieren“ für den Anforderungstrigger.](./media/logic-apps-enterprise-integration-transforms/transform-4.png) 
-8. Speichern Sie Ihre Arbeit.  
-    ![Screenshot der Schaltfläche „Speichern“ im Logic Apps-Designer.](./media/logic-apps-enterprise-integration-transforms/transform-5.png) 
+1. Öffnen Sie zur Angabe der Zuordnung für die Transformation die Liste **Zuordnung**, und wählen Sie die zuvor hinzugefügte Zuordnung aus.
 
-An diesem Punkt ist das Einrichten der Zuordnung abgeschlossen. In einer realen Anwendung werden die transformierten Daten in einer branchenspezifischen Anwendung wie Salesforce gespeichert. Sie können problemlos eine Aktion zum Senden der Ausgabe der Transformation an Salesforce hinzufügen. 
+1. Speichern Sie anschließend Ihren Logik-App-Workflow.
 
-Sie können jetzt Ihre Transformation testen, indem Sie eine Anforderung an den HTTP-Endpunkt stellen.  
+   Sie haben die Aktion **XML transformieren** nun fertig eingerichtet. Für eine reale App sollten Sie die transformierten Daten ggf. in einer branchenspezifischen App wie Salesforce speichern. Fügen Sie zum Senden der transformierten Ausgabe an Salesforce eine Salesforce-Aktion hinzu.
 
+1. Wenn Sie die Transformationsaktion testen möchten, lösen Sie Ihren Workflow aus, und führen Sie ihn aus. Senden Sie beispielsweise für den Anforderungstrigger eine Anforderung an die Endpunkt-URL des Triggers.
 
-## <a name="features-and-use-cases"></a>Features und Anwendungsfälle
-* Die in einer Zuordnung erstellte Transformation kann einfach sein, beispielsweise das Kopieren eines Namen und einer Adresse aus einem Dokument in ein anderes. Oder Sie können mithilfe der standardmäßigen Zuordnungsvorgänge komplexere Transformationen erstellen.  
-* Mehrere Zuordnungsvorgänge oder Funktionen sind verfügbar, einschließlich Zeichenfolgen, Datum-Uhrzeit-Funktionen usw.  
-* Sie können Daten zwischen den Schemas direkt kopieren. Im Mapper, der im SDK enthalten ist, ist dies so einfach wie das Zeichnen einer Linie, die die Elemente im Quellschema mit ihren Gegenstücken im Zielschema verbindet.  
-* Wenn Sie eine Zuordnung erstellen, zeigen Sie eine grafische Darstellung der Zuordnung einschließlich aller erstellten Beziehungen und Links an.
-* Verwenden Sie das Feature Testzuordnung zum Hinzufügen einer XML-Beispielnachricht. Mit einem einfachen Mausklick können Sie die erstellte Zuordnung testen und die generierte Ausgabe anzeigen.  
-* Hochladen vorhandener Zuordnungen  
-* Unterstützung für das XML-Format.
+## <a name="advanced-capabilities"></a>Erweiterte Funktionen
 
-## <a name="advanced-features"></a>Erweiterte Funktionen
+### <a name="reference-assembly-or-custom-code-from-maps"></a>Referenzassembly oder benutzerdefinierter Code aus Zuordnungen
 
-### <a name="reference-assembly-or-custom-code-from-maps"></a>Referenzassembly oder benutzerdefinierter Code aus Zuordnungen 
-Die Transformationsaktion unterstützt auch Zuordnungen oder Transformationen mit Verweis auf eine externe Assembly. Diese Funktion ermöglicht Aufrufe von benutzerdefiniertem .NET-Code direkt aus XSLT-Zuordnungen. Hier sind die Voraussetzungen für die Verwendung von Assemblys in Zuordnungen angegeben.
-
-* Die Zuordnung und die in der Zuordnung referenzierte Assembly müssen [in das Integrationskonto hochgeladen werden](./logic-apps-enterprise-integration-maps.md). 
-
-  > [!NOTE]
-  > Die Zuordnung und Assembly müssen in einer bestimmten Reihenfolge hochgeladen werden. Sie müssen die Assembly hochladen, bevor Sie den Upload für die Zuordnung durchführen, in der auf die Assembly verwiesen wird.
-
-* Außerdem muss die Zuordnung über die folgenden Attribute und einen CDATA-Abschnitt verfügen, der den Aufruf des Assemblycodes enthält:
-
-    * **name** ist der Name der benutzerdefinierten Assembly.
-    * **namespace** ist der Namespace in Ihrer Assembly, der den benutzerdefinierten Code enthält.
-
-  Dieses Beispiel enthält eine Zuordnung, in der auf eine Assembly mit dem Namen „XslUtilitiesLib“ verwiesen und die `circumreference`-Methode der Assembly aufgerufen wird.
-
-  ```xml
-  <?xml version="1.0" encoding="UTF-8"?>
-  <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:user="urn:my-scripts">
-  <msxsl:script language="C#" implements-prefix="user">
-    <msxsl:assembly name="XsltHelperLib"/>
-    <msxsl:using namespace="XsltHelpers"/>
-    <![CDATA[public double circumference(int radius){ XsltHelper helper = new XsltHelper(); return helper.circumference(radius); }]]>
-  </msxsl:script>
-  <xsl:template match="data">
-   <circles>
-    <xsl:for-each select="circle">
-      <circle>
-        <xsl:copy-of select="node()"/>
-          <circumference>
-            <xsl:value-of select="user:circumference(radius)"/>
-          </circumference>
-      </circle>
-    </xsl:for-each>
-   </circles>
-  </xsl:template>
-    </xsl:stylesheet>
-  ```
-
+In Workflows vom Typ **Logik-App (Verbrauch)** unterstützt die Aktion **XML transformieren** Zuordnungen, die auf eine externe Assembly verweisen. Weitere Informationen finden Sie unter [Hinzufügen von XSLT-Zuordnungen für Workflows in Azure Logic Apps](logic-apps-enterprise-integration-maps.md#add-assembly).
 
 ### <a name="byte-order-mark"></a>Bytereihenfolge-Marke
-Die Antwort der Transformation beginnt standardmäßig mit der Bytereihenfolge-Marke (BOM). Sie können auf diese Funktionalität nur zugreifen, wenn Sie im Codeansicht-Editor arbeiten. Wenn Sie diese Funktion deaktivieren möchten, geben Sie `disableByteOrderMark` für die Eigenschaft `transformOptions` an:
+
+Die Antwort der Transformation beginnt standardmäßig mit der Bytereihenfolge-Marke (Byte Order Mark, BOM). Sie können auf diese Funktion nur im Codeansicht-Editor zugreifen. Wenn Sie diese Funktion deaktivieren möchten, legen Sie die Eigenschaft `transformOptions` auf `disableByteOrderMark` fest:
 
 ```json
 "Transform_XML": {
@@ -129,10 +126,7 @@ Die Antwort der Transformation beginnt standardmäßig mit der Bytereihenfolge-M
 }
 ```
 
+## <a name="next-steps"></a>Nächste Schritte
 
-
-
-
-## <a name="learn-more"></a>Weitere Informationen
-* [Weitere Informationen zum Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Erfahren Sie mehr zum Enterprise Integration Pack.")  
-* [Weitere Informationen über Zuordnungen](../logic-apps/logic-apps-enterprise-integration-maps.md "Weitere Informationen zu Zuordnungen für die Unternehmensintegration")  
+* [Hinzufügen von XSLT-Zuordnungen für XML-Transformationen in Azure Logic Apps](logic-apps-enterprise-integration-maps.md)
+* [XML-Überprüfung für Workflows in Azure Logic Apps](logic-apps-enterprise-integration-xml-validation.md)

@@ -7,26 +7,32 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.author: peterlu
-author: peterclu
-ms.date: 05/14/2021
+ms.author: jhirono
+author: jhirono
+ms.date: 08/04/2021
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 8233edd12d4bde5c71d69cfbeab49ebdc8137dbc
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: b4b7f35173b4f1d6d83d9b7ffd937704750f5502
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110071986"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122603968"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Schützen einer Azure Machine Learning-Trainingsumgebung mit virtuellen Netzwerken
 
 In diesem Artikel erfahren Sie, wie Sie Trainingsumgebungen mit einem virtuellen Netzwerk in Azure Machine Learning schützen.
 
-Der Artikel ist Teil 3 einer fünfteiligen Artikelreihe, in der Sie schrittweise durch die Absicherung eines Azure Machine Learning-Workflows geführt werden. Es wird dringend empfohlen, zunächst [Teil 1: Virtuelle Netzwerke im Überblick](how-to-network-security-overview.md) zu lesen, um die Gesamtarchitektur besser zu verstehen. 
-
-Sehen Sie sich auch die anderen Artikel in dieser Reihe an:
-
-[1. Übersicht zu VNETs](how-to-network-security-overview.md) > [2. Schützen des Arbeitsbereichs](how-to-secure-workspace-vnet.md) > **3. Schützen der Trainingsumgebung** > [4. Schützen der Rückschlussumgebung](how-to-secure-inferencing-vnet.md)  > [5. Verwenden von Studio in einem virtuellen Netzwerk](how-to-enable-studio-virtual-network.md)
+> [!TIP]
+> Dieser Artikel ist Teil einer Reihe zum Schützen eines Azure Machine Learning-Workflows. Sehen Sie sich auch die anderen Artikel in dieser Reihe an:
+>
+> * [Virtuelle Netzwerke im Überblick](how-to-network-security-overview.md)
+> * [Schützen von Arbeitsbereichsressourcen](how-to-secure-workspace-vnet.md)
+> * [Schützen der Rückschlussumgebung](how-to-secure-inferencing-vnet.md)
+> * [Aktivieren von Studio-Funktionalität](how-to-enable-studio-virtual-network.md)
+> * [Verwenden von benutzerdefiniertem DNS](how-to-custom-dns.md)
+> * [Verwenden einer Firewall](how-to-access-azureml-behind-firewall.md)
+>
+> Ein Tutorial zum Erstellen eines sicheren Arbeitsbereichs, eines Computeclusters und einer Compute-Instanz finden Sie unter [Tutorial: Erstellen eines sicheren Arbeitsbereichs](tutorial-create-secure-workspace.md).
 
 In diesem Artikel erfahren Sie, wie Sie die folgenden Trainingscomputeressourcen in einem virtuellen Netzwerk schützen:
 > [!div class="checklist"]
@@ -44,164 +50,102 @@ In diesem Artikel erfahren Sie, wie Sie die folgenden Trainingscomputeressourcen
 
 + Ihr Benutzerkonto muss über die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) zu den folgenden Aktionen berechtigt werden, um Ressourcen in einem virtuellen Netzwerk oder Subnetz bereitstellen zu können:
 
-    - „Microsoft.Network/virtualNetworks/*/read“ für die VNET-Ressource
+    - „Microsoft.Network/virtualNetworks/*/read“ für die VNET-Ressource Dies ist für ARM-Vorlagenbereitstellungen nicht erforderlich.
     - „Microsoft.Network/virtualNetworks/subnet/join/action“ auf der Subnetzressource
 
     Weitere Informationen zur rollenbasierten Zugriffssteuerung von Azure in Netzwerken finden Sie unter [Integrierte Netzwerkrollen](../role-based-access-control/built-in-roles.md#networking).
 
+### <a name="azure-machine-learning-compute-clusterinstance"></a>Azure Machine Learning-Computecluster/-Instanz
+
+* Das virtuelle Netzwerk muss sich im selben Abonnement befinden wie der Azure Machine Learning-Arbeitsbereich.
+* Das für die Compute-Instanz oder den Computecluster verwendete Subnetz muss über ausreichend nicht zugewiesene IP-Adressen verfügen.
+
+    * Ein Computecluster kann dynamisch skaliert werden. Wenn nicht ausreichend freie IP-Adressen vorhanden sind, wird der Cluster teilweise zugeordnet.
+    * Eine Compute-Instanz erfordert nur eine IP-Adresse.
+
+* Stellen Sie sicher, dass keine Sicherheitsrichtlinien oder Sperren vorhanden sind, die Berechtigungen zum Verwalten des virtuellen Netzwerks einschränken. Wenn Sie auf Richtlinien oder Sperren prüfen, betrachten Sie sowohl das Abonnement als auch die Ressourcengruppe für das virtuelle Netzwerk.
+* Überprüfen Sie, ob Berechtigungen für die Verwaltung des virtuellen Netzwerks durch Ihre Sicherheitsrichtlinien oder -sperren für das Abonnement oder die Ressourcengruppe Ihres virtuellen Netzwerks eingeschränkt werden. 
+* Wenn Sie das virtuelle Netzwerk durch Einschränkung des Datenverkehrs sichern möchten, lesen Sie den Abschnitt [Erforderlicher öffentlicher Internetzugriff](#required-public-internet-access).
+* Das zum Bereitstellen des Computeclusters/der Compute-Instanz verwendete Subnetz darf nicht an einen anderen Dienst delegiert werden. Beispielsweise sollte es nicht an ACI delegiert werden.
+
+### <a name="azure-databricks"></a>Azure Databricks
+
+* Das virtuelle Netzwerk muss sich im selben Abonnement und in derselben Region befinden wie der Azure Machine Learning-Arbeitsbereich.
+* Wenn die Azure Storage-Konten für den Arbeitsbereich ebenfalls in einem virtuellen Netzwerk geschützt sind, müssen sie sich im selben virtuellen Netzwerk befinden wie der Azure Databricks-Cluster.
+
+## <a name="limitations"></a>Einschränkungen
+
+### <a name="azure-machine-learning-compute-clusterinstance"></a>Azure Machine Learning-Computecluster/-Instanz
+
+* Wenn Sie mehrere Compute-Instanzen oder Computecluster in einem einzelnen virtuellen Netzwerk platzieren möchten, müssen Sie möglicherweise eine Kontingenterhöhung für eine oder mehrere Ihrer Ressourcen anfordern. Die Machine Learning-Compute-Instanz bzw. der Cluster ordnet __in der Ressourcengruppe mit dem virtuellen Netzwerk__ automatisch zusätzliche Netzwerkressourcen zu. Für alle Compute-Instanzen und -cluster ordnet der Dienst folgende Ressourcen zu:
+
+    * Eine Netzwerksicherheitsgruppe (NSG) Diese NSG enthält die folgenden Regeln, die spezifisch für Computecluster und Compute-Instanzen sind:
+
+        * Zulassen des eingehenden TCP-Datenverkehrs an den Ports 29876-29877 vom Diensttag `BatchNodeManagement`.
+        * Zulassen des eingehenden TCP-Datenverkehrs am Port 44224 vom Diensttag `AzureMachineLearning`.
+
+        Im folgenden Screenshot sehen Sie ein Beispiel für diese Regeln:
+
+        :::image type="content" source="./media/how-to-secure-training-vnet/compute-instance-cluster-network-security-group.png" alt-text="Screenshot: NSG":::
+
+    * Eine öffentliche IP-Adresse. Sollte die Erstellung einer öffentlichen IP-Adresse durch Azure-Richtlinienzuweisungen verhindert werden, wird die Cluster-/Instanzenbereitstellung fehlschlagen.
+    * Ein Lastenausgleichsmodul
+
+    Bei Computeclustern werden diese Ressourcen bei jedem Herunterskalieren des Clusters auf 0 Knoten gelöscht und beim Hochskalieren erstellt.
+
+    Bei einer Compute-Instanz werden diese Ressourcen beibehalten, bis die Instanz gelöscht wird. Durch das Beenden der Instanz werden die Ressourcen nicht entfernt. 
+
+    > [!IMPORTANT]
+    > Diese Ressourcen werden durch die [Ressourcenkontingente](../azure-resource-manager/management/azure-subscription-service-limits.md) des Abonnements beschränkt. Ist die Ressourcengruppe des virtuellen Netzwerks gesperrt, kann der Computecluster/die Compute-Instanz nicht erfolgreich gelöscht werden. Der Lastenausgleich kann erst nach dem Löschen des Computeclusters/der Compute-Instanz gelöscht werden. Stellen Sie außerdem sicher, dass keine Azure-Richtlinienzuweisungen vorhanden sind, die die Erstellung von Netzwerksicherheitsgruppen verhindern.
+
+* Wenn sich Azure Storage-Konten für den Arbeitsbereich auch im virtuellen Netzwerk befinden, verwenden Sie die folgende Anleitung zu Subnetzeinschränkungen:
+
+    * Wenn Sie Azure Machine Learning __Studio__ zur Visualisierung von Daten oder zur Verwendung von Designer verwenden möchten, muss sich das Speicherkonto __im selben Subnetz wie die Compute-Instanz oder der Cluster befinden__.
+    * Wenn Sie planen, das __SDK__ zu verwenden, kann sich das Speicherkonto in einem anderen Subnetz befinden.
+
+    > [!NOTE]
+    > Das Aktivieren des Kontrollkästchens „Hiermit erlauben Sie vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Konto.“ reicht nicht aus, um die ausgehende Kommunikation der Compute-Instanz zuzulassen.
+
+* Wenn Ihr Arbeitsbereich einen privaten Endpunkt verwendet, ist der Zugriff auf die Compute-Instanz nur innerhalb des virtuellen Netzwerks möglich. Wenn Sie eine benutzerdefinierte DNS- oder Hostsdatei verwenden, fügen Sie einen Eintrag für `<instance-name>.<region>.instances.azureml.ms` hinzu. Ordnen Sie diesen Eintrag der privaten IP-Adresse des privaten Endpunkts des Arbeitsbereichs zu. Weitere Informationen finden Sie im Artikel [Benutzerdefiniertes DNS](./how-to-custom-dns.md).
+* VNet-Dienstendpunktrichtlinien funktionieren für Systemspeicherkonten des Computeclusters/der Compute-Instanz nicht.
+* Wenn sich Speicher- und Compute-Instanzen in unterschiedlichen Regionen befinden, können zeitweilig Timeouts auftreten.
+* Wenn Sie Jupyter Notebooks auf einer Compute-Instanz verwenden möchten:
+
+    * Deaktivieren Sie die WebSocket-Kommunikation nicht. Vergewissern Sie sich, dass Ihr Netzwerk die Websocket-Kommunikation mit `*.instances.azureml.net` und `*.instances.azureml.ms` gestattet.
+    * Vergewissern Sie sich, dass Ihr Notebook auf einer Computeressource ausgeführt wird, die sich hinter demselben virtuellen Netzwerk und Subnetz wie Ihre Daten befindet. Verwenden Sie beim Erstellen der Compute-Instanz die Option **Erweiterte Einstellungen** > **Virtuelles Netzwerk konfigurieren**, um das Netzwerk und das Subnetz auszuwählen.
+
+* __Computecluster__ können in einer anderen Region als der Ihres Arbeitsbereichs erstellt werden. Diese Funktionalität befindet sich in der __Vorschau__ und ist nur für __Computecluster__ und nicht für Compute-Instanzen verfügbar. Wenn Sie eine andere Region für den Cluster verwenden, gelten die folgenden Einschränkungen:
+
+    * Wenn sich Ihre mit dem Arbeitsbereich verbundenen Ressourcen, z. B. Speicher, in einem anderen virtuellen Netzwerk befinden als der Cluster, richten Sie ein globales Peering virtueller Netzwerke zwischen den Netzwerken ein. Weitere Informationen finden Sie unter [Peering in virtuellen Netzwerken](../virtual-network/virtual-network-peering-overview.md).
+    * Wenn Sie einen Arbeitsbereich mit privaten Endpunkten verwenden, wird das Erstellen des Clusters in einer anderen Region __nicht unterstützt__.
+    * Es kann sein, dass sich die Netzwerklatenz und die Datenübertragungskosten erhöhen. Latenz und Kosten können beim Erstellen des Clusters und beim Anwenden von Aufträgen auf den Cluster anfallen.
+
+    Anleitungen wie die Verwendung von NSG-Regeln, benutzerdefinierten Routen und Eingabe-/Ausgabeanforderungen werden ganz normal angewendet, wenn eine andere Region als für den Arbeitsbereich verwendet wird.
+
+### <a name="azure-databricks"></a>Azure Databricks
+
+* Zusätzlich zu den von Azure Databricks verwendeten Subnetzen __databricks-private__ und __databricks-public__ ist auch das für das virtuelle Netzwerk erstellte __standardmäßige__ Subnetz erforderlich.
+* Azure Databricks verwendet keinen privaten Endpunkt zur Kommunikation mit dem virtuellen Netzwerk.
+
+Weitere Informationen zur Verwendung von Azure Databricks mit einem virtuellen Netzwerk finden Sie unter [Bereitstellen von Azure Databricks in Ihrem Azure Virtual Network](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject).
+
+### <a name="azure-hdinsight-or-virtual-machine"></a>Azure HDInsight oder virtueller Computer
+
+* Azure Machine Learning unterstützt nur virtuelle Computer, auf denen Ubuntu ausgeführt wird.
+
+## <a name="required-public-internet-access"></a>Erforderlicher öffentlicher Internetzugriff
+
+[!INCLUDE [machine-learning-required-public-internet-access](../../includes/machine-learning-public-internet-access.md)]
+
+Informationen zur Verwendung einer Firewalllösung finden Sie unter [Verwenden einer Firewall mit Azure Machine Learning](how-to-access-azureml-behind-firewall.md).
 
 ## <a name="compute-clusters--instances"></a><a name="compute-instance"></a>Computecluster und -instanzen 
 
-Wenn Sie ein [verwaltetes Azure Machine Learning-__Computeziel__](concept-compute-target.md#azure-machine-learning-compute-managed) oder eine [Azure Machine Learning-__Computeinstanz__](concept-compute-instance.md) in einem virtuellen Netzwerk verwenden möchten, müssen die folgenden Netzwerkanforderungen erfüllt sein:
+Verwenden Sie die folgenden Registerkarten, um auszuwählen, wie Sie einen Computecluster erstellen möchten:
 
-> [!div class="checklist"]
-> * Das virtuelle Netzwerk muss sich im selben Abonnement und in derselben Region befinden wie der Azure Machine Learning-Arbeitsbereich.
-> * Das für die Computeinstanz oder den Computecluster angegebene Subnetz muss für die vorgesehene Anzahl virtueller Computer über genügend nicht zugewiesene IP-Adressen verfügen. Falls das Subnetz nicht genügend zugewiesene IP-Adressen hat, wird ein Computecluster teilweise zugeordnet.
-> * Überprüfen Sie, ob Berechtigungen für die Verwaltung des virtuellen Netzwerks durch Ihre Sicherheitsrichtlinien oder -sperren für das Abonnement oder die Ressourcengruppe Ihres virtuellen Netzwerks eingeschränkt werden. Wenn Sie zum Schutz des virtuellen Netzwerks den Datenverkehr einschränken möchten, lassen Sie einige Ports für den Compute-Dienst geöffnet. Weitere Informationen finden Sie im Abschnitt [Erforderliche Ports](#mlcports).
-> * Wenn Sie mehrere Compute-Instanzen oder -cluster in einem einzelnen virtuellen Netzwerk platzieren möchten, müssen Sie möglicherweise eine Kontingenterhöhung für eine oder mehrere Ihrer Ressourcen anfordern.
-> * Wenn das/die Azure Storage-Konto/en für den Arbeitsbereich ebenfalls in einem virtuellen Netzwerk geschützt ist/sind, müssen sie sich im selben virtuellen Netzwerk befinden wie die Azure Machine Learning Compute-Instanz oder der Cluster. Konfigurieren Sie Ihre Speicherfirewalleinstellungen so, dass die Kommunikation mit dem virtuellen Netzwerk und dem Subnetz möglich ist, in dem sich die Compute-Instanz befindet. Hinweis: Das Aktivieren des Kontrollkästchens „Hiermit erlauben Sie vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Konto.“ reicht nicht aus, um die ausgehende Kommunikation der Compute-Instanz zuzulassen.
-> * Damit die Jupyter-Funktionen für Computeinstanzen eingesetzt werden können, stellen Sie sicher, dass die Websocketkommunikation nicht deaktiviert ist. Stellen Sie sicher, dass Ihr Netzwerk WebSocket-Verbindungen mit *.instances.azureml.net und *.instances.azureml.ms zulässt. 
-> * Wenn eine Compute-Instanz in einem Private Link-Arbeitsbereich bereitgestellt wird, kann nur im virtuellen Netzwerk darauf zugegriffen werden. Wenn Sie benutzerdefiniertes DNS oder HOSTS-Dateien verwenden, fügen Sie einen Eintrag für `<instance-name>.<region>.instances.azureml.ms` mit der privaten IP-Adresse des privaten Endpunkts des Arbeitsbereichs hinzu. Weitere Informationen finden Sie im Artikel [Benutzerdefiniertes DNS](./how-to-custom-dns.md).
-> * Das zum Bereitstellen des Computeclusters/der Compute-Instanz verwendete Subnetz darf nicht an einen anderen Dienst (beispielsweise ACI) delegiert werden.
-> * VNET-Dienstendpunktrichtlinien funktionieren für Systemspeicherkonten des Computeclusters/der Compute-Instanz nicht.
-> * Wenn sich Speicher- und Compute-Instanzen in unterschiedlichen Regionen befinden, können zeitweilig Timeouts auftreten.
+# <a name="studio"></a>[Studio](#tab/azure-studio)
 
-    
-> [!TIP]
-> Die Machine Learning-Compute-Instanz bzw. der Cluster ordnet __in der Ressourcengruppe mit dem virtuellen Netzwerk__ automatisch zusätzliche Netzwerkressourcen zu. Für alle Compute-Instanzen und -cluster ordnet der Dienst folgende Ressourcen zu:
-> 
-> * Eine Netzwerksicherheitsgruppe
-> * Eine öffentliche IP-Adresse. Sollte die Erstellung einer öffentlichen IP-Adresse durch eine Azure-Richtlinie verhindert werden, ist die Cluster-/Instanzenbereitstellung nicht erfolgreich.
-> * Ein Lastenausgleichsmodul
-> 
-> Bei Clustern werden diese Ressourcen jedes Mal, wenn der Cluster auf 0 Knoten herunterskaliert wird, gelöscht (und neu erstellt). Die Ressourcen werden jedoch noch einen Moment lang beibehalten, bis die Instanz vollständig gelöscht ist (durch Beenden werden die Ressourcen nicht entfernt). 
-> Diese Ressourcen werden durch die [Ressourcenkontingente](../azure-resource-manager/management/azure-subscription-service-limits.md) des Abonnements beschränkt. Ist die Ressourcengruppe des virtuellen Netzwerks gesperrt, kann der Computecluster/die Compute-Instanz nicht erfolgreich gelöscht werden. Der Lastenausgleich kann erst nach dem Löschen des Computeclusters/der Compute-Instanz gelöscht werden. Stellen Sie außerdem sicher, dass keine Azure-Richtlinie vorhanden ist, die die Erstellung von Netzwerksicherheitsgruppen verhindert.
-
-
-### <a name="required-ports"></a><a id="mlcports"></a>Erforderliche Ports
-
-Wenn Sie planen, das virtuelle Netzwerk zu schützen, indem Sie den Netzwerkverkehr zum bzw. aus dem öffentlichen Internet einschränken, müssen Sie eingehende Kommunikation vom Azure Batch-Dienst zulassen.
-
-Der Batch-Dienst fügt Netzwerksicherheitsgruppen (NSG) auf der Ebene der Netzwerkschnittstellen (NIC) hinzu, die an virtuelle Computer angefügt sind. Diese NSGs konfigurieren automatisch Eingangs- und Ausgangsregeln, um folgenden Datenverkehr zuzulassen:
-
-- Eingehender TCP-Datenverkehr an den Ports 29876 und 29877 aus einem __Diensttag__ von __BatchNodeManagement__. Datenverkehr über diese Ports wird verschlüsselt und von Azure Batch für die Planer-/Knotenkommunikation verwendet.
-
-    ![Eine Regel für eingehenden Datenverkehr, die das BatchNodeManagement-Diensttag verwendet.](./media/how-to-enable-virtual-network/batchnodemanagement-service-tag.png)
-
-- (Optional) Eingehender TCP-Datenverkehr an Port 22, um Remotezugriff zu ermöglichen. Verwenden Sie diesen Port nur, wenn Sie mithilfe von SSH über die öffentliche IP-Adresse eine Verbindung herstellen möchten.
-
-- Ausgehender Datenverkehr an allen Ports zum virtuellen Netzwerk
-
-- Ausgehender Datenverkehr an allen Ports zum Internet
-
-- Für eingehenden TCP-Datenverkehr für Computeinstanzen an Port 44224 vom __Diensttag__ von __AzureMachineLearning__. Datenverkehr über diesen Port wird verschlüsselt und von Azure Machine Learning für die Kommunikation mit Anwendungen verwendet, die in Compute-Instanzen ausgeführt werden.
-
-> [!IMPORTANT]
-> Seien Sie vorsichtig, wenn Sie Eingangs- und Ausgangsregeln in von Batch konfigurierten NSGs ändern. Wenn eine NSG die Kommunikation mit den Computeknoten blockiert, legt der Compute-Dienst den Zustand der Computeknoten auf „Nicht verwendbar“ fest.
->
-> Sie müssen keine NSGs auf der Subnetzebene angeben, da der Azure Batch-Dienst eigene NSGs konfiguriert. Wenn dem Subnetz, in dem sich das Azure Machine Learning-Compute befindet, jedoch NSGs oder eine Firewall zugeordnet sind, müssen Sie auch den zuvor aufgelisteten Datenverkehr zulassen.
-
-Die NSG-Regelkonfiguration im Azure-Portal wird in den folgenden Abbildungen dargestellt:
-
-:::image type="content" source="./media/how-to-enable-virtual-network/amlcompute-virtual-network-inbound.png" alt-text="Die NSG-Eingangsregeln für Machine Learning Compute" border="true":::
-
-
-
-![NSG-Eingangsregeln für Machine Learning Compute](./media/how-to-enable-virtual-network/experimentation-virtual-network-outbound.png)
-
-### <a name="limit-outbound-connectivity-from-the-virtual-network"></a><a id="limiting-outbound-from-vnet"></a> Beschränken ausgehender Verbindungen aus dem virtuellen Netzwerk
-
-Wenn Sie die Standardausgangsregeln nicht verwenden möchten und den ausgehenden Zugriff auf Ihr virtuelles Netzwerk beschränken möchten, gehen Sie wie folgt vor:
-
-- Verweigern Sie ausgehende Internetverbindungen mit NSG-Regeln.
-
-- Beschränken Sie für eine __Compute-Instanz__ oder einen __Computecluster__ den ausgehenden Verkehr auf die folgenden Elemente:
-   - Azure Storage mithilfe der __Dienstkennung__ von __Storage.RegionName__. Dabei ist `{RegionName}` der Name einer Azure-Region.
-   - Azure Container Registry mithilfe der __Dienstkennung__ von __AzureContainerRegistry.RegionName__. Dabei ist `{RegionName}` der Name einer Azure-Region.
-   - Azure Machine Learning, mit dem __Diensttag__ von __AzureMachineLearning__
-   - Azure Resource Manager, mit dem __Diensttag__ von __Azure Resource Manager__
-   - Azure Active Directory mithilfe der __Dienstkennung__ von __AzureActiveDirectory__
-
-Die NSG-Regelkonfiguration im Azure-Portal wird in der folgenden Abbildung dargestellt:
-
-[![Die NSG-Ausgangsregeln für Machine Learning Compute](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png)](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png#lightbox)
-
-> [!NOTE]
-> Wenn Sie planen, die von Microsoft bereitgestellten standardmäßigen Docker-Images zu verwenden und vom Benutzer verwaltete Abhängigkeiten zu aktivieren, müssen Sie auch die folgenden __Diensttags__ verwenden:
->
-> * __MicrosoftContainerRegistry__
-> * __AzureFrontDoor.FirstParty__
->
-> Diese Konfiguration ist erforderlich, wenn Sie in Ihrem Trainingsskript über Code ähnlich den folgenden Codeausschnitten verfügen:
->
-> __RunConfig-Training__
-> ```python
-> # create a new runconfig object
-> run_config = RunConfiguration()
-> 
-> # configure Docker 
-> run_config.environment.docker.enabled = True
-> # For GPU, use DEFAULT_GPU_IMAGE
-> run_config.environment.docker.base_image = DEFAULT_CPU_IMAGE 
-> run_config.environment.python.user_managed_dependencies = True
-> ```
->
-> __Schätzungstraining__
-> ```python
-> est = Estimator(source_directory='.',
->                 script_params=script_params,
->                 compute_target='local',
->                 entry_script='dummy_train.py',
->                 user_managed=True)
-> run = exp.submit(est)
-> ```
-
-### <a name="forced-tunneling"></a>Tunnelerzwingung
-
-Wenn Sie das [erzwungene Tunneling](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) mit Azure Machine Learning Compute verwenden, müssen Sie dem Subnetz mit der Computeressource die Kommunikation mit dem öffentlichen Internet erlauben. Diese Kommunikation wird für die Aufgabenplanung und den Zugriff auf Azure Storage verwendet.
-
-Es gibt zwei Möglichkeiten, wie Sie diese Kommunikation zulassen können:
-
-* Verwenden Sie [Virtual Network NAT](../virtual-network/nat-overview.md). Ein NAT-Gateway stellt für ein oder mehrere Subnetze in Ihrem virtuellen Netzwerk die ausgehende Internetverbindung bereit. Weitere Informationen hierzu finden Sie unter [Entwerfen von virtuellen Netzwerken mit NAT-Gatewayressourcen](../virtual-network/nat-gateway-resource.md).
-
-* Fügen Sie dem Subnetz mit der Computeressource [Benutzerdefinierte Routen (UDRs)](../virtual-network/virtual-networks-udr-overview.md) hinzu. Richten Sie für jede IP-Adresse eine benutzerdefinierte Route ein, die vom Azure Batch-Dienst in der Region Ihrer Ressourcen verwendet wird. Diese benutzerdefinierten Routen ermöglichen dem Batch-Dienst, für die zeitliche Planung von Tasks mit den Serverknoten zu kommunizieren. Fügen Sie auch die IP-Adresse für Azure Machine Learning Service hinzu, da die IP-Adresse für den Zugriff auf Compute-Instanzen erforderlich ist. Wenn Sie die IP-Adresse für Azure Machine Learning Service hinzufügen, müssen Sie die IP-Adresse für die __primären und sekundären__ Azure-Regionen hinzufügen. Die primäre Region ist diejenige, in der sich Ihr Arbeitsbereich befindet.
-
-    Informationen zum Auffinden der sekundären Region finden Sie im Abschnitt [Sicherstellen von Geschäftskontinuität und Notfallwiederherstellung mit Azure-Regionspaaren](../best-practices-availability-paired-regions.md#azure-regional-pairs). Wenn sich Ihr Azure Machine Learning Service z. B. in „USA, Osten 2“ befindet, ist die sekundäre Region „USA, Mitte“. 
-
-    Über die folgenden Methoden können Sie eine Liste der IP-Adressen des Batch-Diensts und von Azure Machine Learning Service abrufen:
-
-    * Laden Sie die [Azure-IP-Adressbereiche und Diensttags](https://www.microsoft.com/download/details.aspx?id=56519) herunter, und suchen Sie in der Datei nach `BatchNodeManagement.<region>` und `AzureMachineLearning.<region>`, wobei `<region>` Ihre Azure-Region ist.
-
-    * Laden Sie die Informationen mithilfe der [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli) herunter. Im folgenden Beispiel werden die IP-Adressinformationen heruntergeladen und die Informationen für die Region „USA, Osten 2“ (primär) und „USA, Mitte“ (sekundär) herausgefiltert:
-
-        ```azurecli-interactive
-        az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
-        # Get primary region IPs
-        az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='eastus2']"
-        # Get secondary region IPs
-        az network list-service-tags -l "Central US" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='centralus']"
-        ```
-
-        > [!TIP]
-        > Wenn Sie die Regionen „USA – Virginia“, „USA – Arizona“ oder „China, Osten 2“ verwenden, geben diese Befehle keine IP-Adressen zurück. Verwenden Sie stattdessen einen der folgenden Links zum Herunterladen einer Liste von IP-Adressen:
-        >
-        > * [Azure IP Ranges and Service Tags for Azure Government](https://www.microsoft.com/download/details.aspx?id=57063) (Azure-IP-Bereiche und -Diensttags für Azure Government)
-        > * [Azure IP Ranges and Service Tags for Azure China](https://www.microsoft.com//download/details.aspx?id=57062) (Azure-IP-Bereiche und -Diensttags für Azure China)
-    
-    Wenn Sie die benutzerdefinierten Routen hinzufügen, definieren Sie die Route für jedes zugehörige Batch-IP-Adresspräfix, und legen Sie den __Typ des nächsten Hops__ auf __Internet__ fest. Die folgende Abbildung zeigt ein Beispiel dieser benutzerdefinierten Route im Azure-Portal:
-
-    ![Beispiel für eine benutzerdefinierte Route für ein Adresspräfix](./media/how-to-enable-virtual-network/user-defined-route.png)
-
-    > [!IMPORTANT]
-    > Die IP-Adressen können sich im Laufe der Zeit ändern.
-
-    Zusätzlich zu allen von Ihnen angegebenen benutzerdefinierten Routen muss der ausgehende Datenverkehr zu Azure Storage über Ihre lokale Netzwerkappliance zugelassen werden. Die speziellen URLs für diesen Datenverkehr sind in folgenden Formularen zu finden: `<account>.table.core.windows.net`, `<account>.queue.core.windows.net` und `<account>.blob.core.windows.net`. 
-
-    Weitere Informationen finden Sie unter [Erstellen eines Azure Batch-Pools in einem virtuellen Netzwerk](../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling).
-
-### <a name="create-a-compute-cluster-in-a-virtual-network"></a>Erstellen eines Computeclusters in einem virtuellen Netzwerk
-
-Gehen Sie zum Erstellen eines Machine Learning Compute-Clusters wie folgt vor:
+Verwenden Sie die folgenden Schritte, um einen Computecluster im Azure Machine Learning Studio zu erstellen:
 
 1. Melden Sie sich bei [Azure Machine Learning Studio](https://ml.azure.com/) an, und wählen Sie dann Ihr Abonnement und den Arbeitsbereich aus.
 1. Wählen Sie auf der linken Seite __Compute__, in der Mitte __Computecluster__ und dann __+ Neu__ aus.
@@ -221,7 +165,9 @@ Gehen Sie zum Erstellen eines Machine Learning Compute-Clusters wie folgt vor:
 
 1. Wählen Sie __Erstellen__ aus, um den Computecluster zu erstellen.
 
-Ein Machine Learning Compute-Cluster kann auch mithilfe des Azure Machine Learning SDK erstellt werden. Der folgende Code erstellt einen neuen Machine Learning Compute-Cluster im Subnetz `default` eines virtuellen Netzwerks namens `mynetwork`:
+# <a name="python"></a>[Python](#tab/python)
+
+Der folgende Code erstellt einen neuen Machine Learning Compute-Cluster im Subnetz `default` eines virtuellen Netzwerks namens `mynetwork`:
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -246,6 +192,7 @@ except ComputeTargetException:
     compute_config = AmlCompute.provisioning_configuration(vm_size="STANDARD_D2_V2",
                                                            min_nodes=0,
                                                            max_nodes=4,
+                                                           location="westus2",
                                                            vnet_resourcegroup_name=vnet_resourcegroup_name,
                                                            vnet_name=vnet_name,
                                                            subnet_name=subnet_name)
@@ -257,33 +204,25 @@ except ComputeTargetException:
     cpu_cluster.wait_for_completion(show_output=True)
 ```
 
+---
+
 Nach Abschluss des Erstellungsprozesses trainieren Sie Ihr Modell, indem Sie den Cluster in einem Experiment verwenden. Weitere Informationen finden Sie unter [Auswählen und Verwenden eines Computeziels für das Training](how-to-set-up-training-targets.md).
 
 [!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
-### <a name="access-data-in-a-compute-instance-notebook"></a>Zugreifen auf Daten auf einem Compute-Instanz-Notebook
+### <a name="inbound-traffic"></a>Eingehender Datenverkehr
 
-Wenn Sie Notebooks auf einer Azure Machine Learning-Compute-Instanz verwenden, müssen Sie sicherstellen, dass Ihr Notebook auf einer Computeressource hinter dem gleichen virtuellen Netzwerk und Subnetz wie Ihre Daten ausgeführt wird. 
+[!INCLUDE [udr info for computes](../../includes/machine-learning-compute-user-defined-routes.md)]
 
-Sie müssen die Compute-Instanz so konfigurieren, das sie sich während der Erstellung unter **Erweiterte Einstellungen** > **Konfigurieren des virtuellen Netzwerks** in demselben virtuellen Netzwerk befindet. Eine vorhandene Compute-Instanz kann in einem virtuellen Netzwerk nicht hinzugefügt werden.
+Weitere Informationen zu den Anforderungen an den Datenverkehr für Azure Machine Learning finden Sie unter [Verwenden eines Arbeitsbereichs hinter einer Firewall](how-to-access-azureml-behind-firewall.md).
 
 ## <a name="azure-databricks"></a>Azure Databricks
-
-Damit Sie Azure Databricks in einem virtuellen Netzwerk mit Ihrem Arbeitsbereich verwenden können, müssen die folgenden Voraussetzungen erfüllt sein:
-
-> [!div class="checklist"]
-> * Das virtuelle Netzwerk muss sich im selben Abonnement und in derselben Region befinden wie der Azure Machine Learning-Arbeitsbereich.
-> * Wenn die Azure Storage-Konten für den Arbeitsbereich ebenfalls in einem virtuellen Netzwerk geschützt sind, müssen sie sich im selben virtuellen Netzwerk befinden wie der Azure Databricks-Cluster.
-> * Zusätzlich zu den von Azure Databricks verwendeten Subnetzen __databricks-private__ und __databricks-public__ ist auch das für das virtuelle Netzwerk erstellte __standardmäßige__ Subnetz erforderlich.
 
 Weitere Informationen zur Verwendung von Azure Databricks mit einem virtuellen Netzwerk finden Sie unter [Bereitstellen von Azure Databricks in Ihrem Azure Virtual Network](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject).
 
 <a id="vmorhdi"></a>
 
 ## <a name="virtual-machine-or-hdinsight-cluster"></a>Virtueller Computer oder HDInsight-Cluster
-
-> [!IMPORTANT]
-> Azure Machine Learning unterstützt nur virtuelle Computer, auf denen Ubuntu ausgeführt wird.
 
 In diesem Abschnitt erfahren Sie, wie Sie einen virtuellen Computer oder einen Azure HDInsight-Cluster in einem virtuellen Netzwerk mit Ihrem Arbeitsbereich verwenden.
 
@@ -316,7 +255,7 @@ Damit Azure Machine Learning mit dem SSH-Port des virtuellen Computers oder des 
 
 Behalten Sie die Standardausgangsregeln für die Netzwerksicherheitsgruppe bei. Weitere Informationen finden Sie unter [Sicherheitsgruppen](../virtual-network/network-security-groups-overview.md#default-security-rules) bei den Standardsicherheitsregeln.
 
-Wenn Sie die Standardausgangsregeln nicht verwenden möchten und den ausgehenden Zugriff auf Ihr virtuelles Netzwerk beschränken möchten, finden Sie weitere Informationen im Abschnitt [Beschränken der ausgehenden Konnektivität aus dem virtuellen Netzwerk](#limiting-outbound-from-vnet).
+Wenn Sie die Standardausgangsregeln nicht verwenden und den ausgehenden Zugriff auf Ihr virtuelles Netzwerk beschränken möchten, lesen Sie den Abschnitt [Erforderlicher öffentlicher Internetzugriff](#required-public-internet-access).
 
 ### <a name="attach-the-vm-or-hdinsight-cluster"></a>Anfügen der VM oder des HDInsight-Clusters
 
@@ -324,11 +263,11 @@ Fügen Sie den virtuellen Computer oder den HDInsight-Cluster an Ihren Azure Mac
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Dieser Artikel ist der dritte Teil einer fünfteiligen Serie zu virtuellen Netzwerken. Weitere Informationen zum Schützen eines virtuellen Netzwerks finden Sie in den verbleibenden Artikeln:
+Dieser Artikel ist Teil einer Reihe zum Schützen eines Azure Machine Learning-Workflows. Sehen Sie sich auch die anderen Artikel in dieser Reihe an:
 
-* [Teil 1: Virtuelle Netzwerke im Überblick](how-to-network-security-overview.md)
-* [Teil 2: Schützen von Arbeitsbereichsressourcen](how-to-secure-workspace-vnet.md)
-* [Teil 4: Schützen der Rückschlussumgebung](how-to-secure-inferencing-vnet.md)
-* [Teil 5: Verwenden von Studio in einem virtuellen Netzwerk](how-to-enable-studio-virtual-network.md)
-
-Sehen Sie sich ebenso den Artikel zur Verwendung des [benutzerdefinierten DNS](how-to-custom-dns.md) für die Namensauflösung an.
+* [Virtuelle Netzwerke im Überblick](how-to-network-security-overview.md)
+* [Schützen von Arbeitsbereichsressourcen](how-to-secure-workspace-vnet.md)
+* [Schützen der Rückschlussumgebung](how-to-secure-inferencing-vnet.md)
+* [Aktivieren von Studio-Funktionalität](how-to-enable-studio-virtual-network.md)
+* [Verwenden von benutzerdefiniertem DNS](how-to-custom-dns.md)
+* [Verwenden einer Firewall](how-to-access-azureml-behind-firewall.md)

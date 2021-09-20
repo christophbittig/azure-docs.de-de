@@ -1,23 +1,25 @@
 ---
 title: Berechtigungen zum Anzeigen und Verwalten von Azure-Reservierungen
 description: Hier erfahren Sie, wie Sie Azure-Reservierungen im Azure-Portal anzeigen und verwalten.
-author: yashesvi
-ms.reviewer: yashar
+author: bandersmsft
+ms.reviewer: primittal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 04/15/2021
+ms.date: 08/11/2021
 ms.author: banders
-ms.openlocfilehash: d7bb27e511d799a0afe203b8147546647cc658fd
-ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
+ms.openlocfilehash: 0c278256c952fce12833a8f4c5fe55e18c3b40b0
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112989073"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123099897"
 ---
 # <a name="permissions-to-view-and-manage-azure-reservations"></a>Berechtigungen zum Anzeigen und Verwalten von Azure-Reservierungen
 
-In diesem Artikel wird erläutert, wie Reservierungsberechtigungen funktionieren und wie Benutzer Azure-Reservierungen im Azure-Portal anzeigen und verwalten können.
+In diesem Artikel wird erläutert, wie Reservierungsberechtigungen funktionieren und wie Benutzer*innen Azure-Reservierungen im Azure-Portal und mit Azure PowerShell anzeigen und verwalten können.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="who-can-manage-a-reservation-by-default"></a>Wer kann eine Reservierung standardmäßig verwalten?
 
@@ -26,12 +28,14 @@ Die folgenden Benutzer können Reservierungen standardmäßig anzeigen und verwa
 - Die Person, die eine Reservierung erwirbt, und der Kontoadministrator des Abrechnungsabonnements, mit dem die Reservierung erworben wird, werden der Reservierungsreihenfolge hinzugefügt.
 - Abrechnungsadministratoren für Konzernvertrag (Enterprise Agreement, EA) und Microsoft-Kundenvereinbarung.
 - Benutzer mit erhöhten Zugriffsrechten zum Verwalten aller Azure-Abonnements und Verwaltungsgruppen
+- Reservierungsadministrator*innen für Reservierungen in Azure Active Directory-Mandanten (Azure AD) (Verzeichnis)
+- Reservierungsleser*innen mit schreibgeschütztem Zugriff auf Reservierungen in Azure Active Directory-Mandanten (Verzeichnis)
 
 Der Reservierungslebenszyklus ist unabhängig von einem Azure-Abonnement. Daher handelt es sich bei der Reservierung nicht um eine Ressource unter dem Azure-Abonnement. Stattdessen ist es eine Ressource auf Mandantenebene mit eigener Azure RBAC-Berechtigung, die von Abonnements getrennt ist. Reservierungen erben nach dem Kauf keine Berechtigungen von Abonnements.
 
-## <a name="how-billing-administrators-can-view-or-manage-reservations"></a>Anzeigen oder Verwalten von Reservierungen durch Abrechnungsadministratoren
+## <a name="view-and-manage-reservations"></a>Anzeigen und Verwalten von Reservierungen
 
-Führen Sie als Abrechnungsadministrator die folgenden Schritte aus, um alle Reservierungen und Reservierungstransaktionen anzuzeigen und zu verwalten.
+Führen Sie als Abrechnungsadministrator*in die folgenden Schritte aus, um alle Reservierungen und Reservierungstransaktionen im Azure-Portal anzuzeigen und zu verwalten.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu **Kostenverwaltung + Abrechnung**.
     - Wenn Sie EA-Administrator sind, wählen Sie im Menü auf der linken Seite die Option **Abrechnungsbereiche** und dann in der Liste der Abrechnungsbereiche einen Bereich aus.
@@ -40,9 +44,9 @@ Führen Sie als Abrechnungsadministrator die folgenden Schritte aus, um alle Res
 1. Die vollständige Liste der Reservierungen für Ihr EA-Registrierungsprofil oder -Abrechnungsprofil wird angezeigt.
 1. Abrechnungsadministratoren können den Besitz einer Reservierung übernehmen, indem sie sie auswählen und dann im angezeigten Fenster die Option **Zugriff gewähren** auswählen.
 
-### <a name="how-to-add-billing-administrators"></a>Hinzufügen von Abrechnungsadministratoren
+### <a name="add-billing-administrators"></a>Hinzufügen von Abrechnungsadministrator*innen
 
-Hinzufügen eines Benutzers als Abrechnungsadministrator zu einem Konzernvertrag oder einer Microsoft-Kundenvereinbarung:
+Fügen Sie als Abrechnungsadministrator*in im Azure-Portal Benutzer*innen zu einem Enterprise Agreement oder einer Microsoft-Kundenvereinbarung hinzu.
 
 - Fügen Sie bei einem Konzernvertrag Benutzer mit der Rolle _Unternehmensadministrator_ hinzu, um alle für diesen Vertrag geltenden Reservierungsaufträge anzuzeigen und zu verwalten. Unternehmensadministratoren können Reservierungen in **Cost Management + Billing** anzeigen und verwalten.
     - Benutzer mit der Rolle _Unternehmensadministrator (schreibgeschützt)_ können die Reservierung nur in **Cost Management + Billing** anzeigen. 
@@ -52,12 +56,12 @@ Hinzufügen eines Benutzers als Abrechnungsadministrator zu einem Konzernvertrag
 
 ## <a name="view-reservations-with-azure-rbac-access"></a>Anzeigen von Reservierungen mit Azure RBAC-Zugriff
 
-Wenn Sie die Reservierung erworben haben oder einer Reservierung hinzugefügt werden, führen Sie die folgenden Schritte aus, um Reservierungen anzuzeigen und zu verwalten:
+Wenn Sie die Reservierung erworben haben oder einer Reservierung hinzugefügt werden, führen Sie die folgenden Schritte aus, um Reservierungen im Azure-Portal anzuzeigen und zu verwalten.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie **Alle Dienste** > **Reservierungen** aus, um Reservierungen aufzulisten, auf die Sie Zugriff haben.
+1. Klicken Sie auf **Alle Dienste** > **Reservierungen**, um Reservierungen aufzulisten, auf die Sie Zugriff haben.
 
-## <a name="users-with-elevated-access-can-manage-all-azure-subscriptions-and-management-groups"></a>Benutzer mit erhöhten Zugriffsrechten können alle Azure-Abonnements und Verwaltungsgruppen verwalten.
+## <a name="manage-subscriptions-and-management-groups-with-elevated-access"></a>Verwalten von Abonnements und Verwaltungsgruppen mit erhöhten Zugriffsberechtigungen
 
 Sie können die [Zugriffsrechte eines Benutzers zum Verwalten aller Azure-Abonnements und Verwaltungsgruppen erhöhen](../../role-based-access-control/elevate-access-global-admin.md?toc=/azure/cost-management-billing/reservations/toc.json).
 
@@ -66,9 +70,9 @@ Nach dem Erhöhen der Zugriffsberechtigungen:
 1. Navigieren Sie zu **Alle Dienste** > **Reservierung**, um alle Reservierungen im Mandanten anzuzeigen.
 1. Um Änderungen an der Reservierung vorzunehmen, fügen Sie sich selbst mithilfe der Zugriffssteuerung (IAM) als Besitzer des Reservierungsauftrags hinzu.
 
-## <a name="give-users-azure-rbac-access-to-individual-reservations"></a>Gewähren von Azure RBAC-Zugriff auf einzelne Reservierungen für Benutzer
+## <a name="grant-access-to-individual-reservations"></a>Gewähren des Zugriffs auf einzelne Reservierungen
 
-Benutzer mit Besitzerzugriff auf die Reservierungen und Abrechnungsadministratoren können die Zugriffsverwaltung für einen einzelnen Reservierungsauftrag delegieren.
+Benutzer*innen mit Besitzerzugriff auf die Reservierungen und Abrechnungsadministrator*innen können die Zugriffsverwaltung für einen einzelnen Reservierungsauftrag im Azure-Portal delegieren.
 
 Damit andere Personen Reservierungen verwalten können, haben Sie zwei Optionen:
 
@@ -81,6 +85,114 @@ Damit andere Personen Reservierungen verwalten können, haben Sie zwei Optionen:
         _Unternehmensadministratoren können den Besitz einer Reservierungsreihenfolge übernehmen und andere Benutzer mithilfe der Zugriffssteuerung (Identity & Access Management, IAM) zu einer Reservierung hinzufügen._
     - Bei einer Microsoft-Kundenvereinbarung können Benutzer mit der Rolle „Besitzer des Abrechnungsprofils“ oder „Mitwirkender am Abrechnungsprofil“ alle mit dem Abrechnungsprofil getätigten Reservierungseinkäufe verwalten. Benutzer mit Leseberechtigung für das Abrechnungsprofil und Rechnungs-Manager können alle Reservierungen anzeigen, die für das Abrechnungsprofil bezahlt werden. Sie können allerdings keine Änderungen an den Reservierungen vornehmen.
     Weitere Informationen finden Sie unter [Rollen und Aufgaben für ein Abrechnungsprofil](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks).
+
+## <a name="grant-access-with-powershell"></a>Gewähren des Zugriffs mit PowerShell
+
+Benutzer*innen mit Besitzerzugriff für Reservierungsaufträge, Benutzer*innen mit erhöhtem Zugriff und [Benutzerzugriffsadministrator*innen](../../role-based-access-control/built-in-roles.md#user-access-administrator) können die Zugriffsverwaltung für alle Reservierungsaufträge delegieren, auf die sie Zugriff haben.
+
+## <a name="assign-the-owner-role-for-all-reservations"></a>Zuweisen der Rolle „Besitzer“ für alle Reservierungen
+
+Verwenden Sie das folgende Azure PowerShell-Skript, um Benutzer*innen RBAC-Zugriff in Azure auf alle Reservierungsaufträge in ihren Azure AD-Mandanten (Verzeichnis) zu gewähren.
+
+```azurepowershell
+
+Import-Module Az.Accounts
+Import-Module Az.Resources
+ 
+Connect-AzAccount -Tenant <TenantId>
+ 
+$response = Invoke-AzRestMethod -Path /providers/Microsoft.Capacity/reservations?api-version=2020-06-01 -Method GET
+ 
+$responseJSON = $response.Content | ConvertFrom-JSON
+ 
+$reservationObjects = $responseJSON.value
+ 
+foreach ($reservation in $reservationObjects)
+{
+  $reservationOrderId = $reservation.id.substring(0, 84)
+  Write-Host "Assiging Owner role assignment to "$reservationOrderId
+  New-AzRoleAssignment -Scope $reservationOrderId -ObjectId <ObjectId> -RoleDefinitionName Owner
+}
+```
+
+### <a name="parameters"></a>Parameter
+
+**-ObjectId**: Dies ist die Azure AD-Objekt-ID von Benutzer*innen, der Gruppe oder des Dienstprinzipals.
+- Typ: String
+- Aliase: Id, PrincipalId
+- Position: Benannt
+- Standardwert: Keiner
+- Pipelineeingabe akzeptieren: TRUE
+- Platzhalterzeichen akzeptieren: FALSE
+
+**-TenantId** Eindeutiger Bezeichner von Mandant*innen.
+- Typ: String
+- Position: 5
+- Standardwert: Keiner
+- Pipelineeingabe akzeptieren: FALSE
+- Platzhalterzeichen akzeptieren: FALSE
+
+[Benutzerzugriffsadministrator*innen](../../role-based-access-control/built-in-roles.md#user-access-administrator) können Benutzer*innen zu den Rollen „Reservierungsadministrator*in“ und „Reservierungsleser*in“ hinzufügen.
+
+## <a name="add-a-reservation-administrator-role-at-the-tenant-level"></a>Hinzufügen der Rolle „Reservierungsadministrator*in“ auf Mandantenebene
+
+Verwenden Sie das folgende Azure PowerShell-Skript, um mit PowerShell die Rolle „Reservierungsadministrator*in“ auf Mandantenebene hinzuzufügen.
+
+```azurepowershell
+Import-Module Az.Accounts
+Import-Module Az.Resources
+Connect-AzAccount -Tenant <TenantId>
+New-AzRoleAssignment -Scope "/providers/Microsoft.Capacity" -PrincipalId <ObjectId> -RoleDefinitionName "Reservations Administrator"
+```
+
+### <a name="parameters"></a>Parameter
+
+**-ObjectId**: Dies ist die Azure AD-Objekt-ID von Benutzer*innen, der Gruppe oder des Dienstprinzipals.
+- Typ: String
+- Aliase: Id, PrincipalId
+- Position: Benannt
+- Standardwert: Keiner
+- Pipelineeingabe akzeptieren: TRUE
+- Platzhalterzeichen akzeptieren: FALSE
+
+**-TenantId** Eindeutiger Bezeichner von Mandant*innen.
+- Typ: String
+- Position: 5
+- Standardwert: Keiner
+- Pipelineeingabe akzeptieren: FALSE
+- Platzhalterzeichen akzeptieren: FALSE
+
+## <a name="assign-a-reservation-reader-role-at-the-tenant-level"></a>Zuweisen der Rolle „Reservierungsleser*in“ auf Mandantenebene
+
+Verwenden Sie das folgende Azure PowerShell-Skript, um mit PowerShell die Rolle „Reservierungsleser*in“ auf Mandantenebene zuzuweisen.
+
+```azurepowershell
+
+Import-Module Az.Accounts
+Import-Module Az.Resources
+
+Connect-AzAccount -Tenant <TenantId>
+
+New-AzRoleAssignment -Scope "/providers/Microsoft.Capacity" -PrincipalId <ObjectId> -RoleDefinitionName "Reservations Reader"
+```
+
+### <a name="parameters"></a>Parameter
+
+**-ObjectId**: Dies ist die Azure AD-Objekt-ID von Benutzer*innen, der Gruppe oder des Dienstprinzipals.
+- Typ: String
+- Aliase: Id, PrincipalId
+- Position: Benannt
+- Standardwert: Keiner
+- Pipelineeingabe akzeptieren: TRUE
+- Platzhalterzeichen akzeptieren: FALSE
+
+**-TenantId** Eindeutiger Bezeichner von Mandant*innen.
+- Typ: String
+- Position: 5
+- Standardwert: Keiner
+- Pipelineeingabe akzeptieren: FALSE
+- Platzhalterzeichen akzeptieren: FALSE
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

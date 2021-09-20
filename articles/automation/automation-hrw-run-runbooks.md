@@ -3,15 +3,15 @@ title: Ausführen von Azure Automation-Runbooks in einem Hybrid Runbook Worker
 description: In diesem Artikel wird beschrieben, wie Sie Runbooks auf Computern in Ihrem lokalen Rechenzentrum oder bei anderen Cloudanbietern mit dem Hybrid Runbook Worker ausführen.
 services: automation
 ms.subservice: process-automation
-ms.date: 07/27/2021
+ms.date: 08/12/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ef4c688fbe41db046b77d45090d77200d1c782cf
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5f27f9366b388c090ca689a2011c777973b8a894
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345942"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122968052"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Ausführen von Runbooks in einer Hybrid Runbook Worker-Instanz
 
@@ -21,13 +21,18 @@ Wenn Sie ein Runbook zur Ausführung auf einem Hybrid Runbook Worker erstellen, 
 
 ## <a name="plan-for-azure-services-protected-by-firewall"></a>Planen von Azure-Diensten mit Firewallschutz
 
-Durch das Aktivieren von Azure Firewall für [Azure Storage](../storage/common/storage-network-security.md), [Azure Key Vault](../key-vault/general/network-security.md) oder [Azure SQL](../azure-sql/database/firewall-configure.md) wird der Zugriff von Azure Automation-Runbooks für diese Dienste blockiert. Der Zugriff wird auch dann blockiert, wenn die Firewallausnahme zum Zulassen vertrauenswürdiger Microsoft-Dienste aktiviert ist, da Automation nicht in der Liste der vertrauenswürdigen Dienste enthalten ist. Bei aktivierter Firewall kann der Zugriff nur mithilfe eines Hybrid Runbook Workers und eines [VNet-Dienstendpunkts](../virtual-network/virtual-network-service-endpoints-overview.md) erfolgen.
+Durch das Aktivieren von Azure Firewall für [Azure Storage](../storage/common/storage-network-security.md), [Azure Key Vault](../key-vault/general/network-security.md) oder [Azure SQL](../azure-sql/database/firewall-configure.md) wird der Zugriff von Azure Automation-Runbooks für diese Dienste blockiert. Der Zugriff wird auch dann blockiert, wenn die Firewallausnahme zum Zulassen vertrauenswürdiger Microsoft-Dienste aktiviert ist, da Automation nicht zur Liste der vertrauenswürdigen Dienste gehört. Bei aktivierter Firewall kann der Zugriff nur mithilfe eines Hybrid Runbook Workers und eines [VNT-Dienstendpunkts](../virtual-network/virtual-network-service-endpoints-overview.md) erfolgen.
 
 ## <a name="plan-runbook-job-behavior"></a>Planen des Verhaltens von Runbookaufträgen
 
 Azure Automation behandelt Aufträge in Hybrid Runbook Workern anders als Aufträge, die in Azure-Sandboxes ausgeführt werden. Bei einem zeitintensiven Runbook müssen Sie sicherstellen, dass das Runbook auch nach einem möglichen Neustart stabil läuft. Ausführliche Informationen zum Auftragsverhalten finden Sie unter [Hybrid Runbook Worker-Aufträge](automation-hybrid-runbook-worker.md#hybrid-runbook-worker-jobs).
 
-Aufträge für Hybrid Runbook Worker werden unter Windows mit dem lokalen Konto **System** oder unter Linux mit dem Konto **nxautomation** ausgeführt. Stellen Sie unter Linux sicher, dass das Konto **nxautomation** Zugriff auf den Speicherort der Runbookmodule hat. Wenn Sie das Cmdlet [Install-Module](/powershell/module/powershellget/install-module) verwenden, stellen Sie sicher, dass Sie „AllUsers“ für den Parameter `Scope` angeben, um sicherzustellen, dass das Konto **nxautomation** Zugriff hat. Weitere Informationen zu PowerShell unter Linux finden Sie unter [Bekannte Probleme bei PowerShell auf anderen Plattformen als Windows](/powershell/scripting/whats-new/what-s-new-in-powershell-70).
+Aufträge für Hybrid Runbook Worker werden unter Windows mit dem lokalen Konto **System** oder unter Linux mit dem Konto **nxautomation** ausgeführt. Stellen Sie unter Linux sicher, dass das Konto **nxautomation** Zugriff auf den Speicherort der Runbookmodule hat. So stellen Sie den Zugriff auf das **nxautomation**-Konto sicher:
+
+- Wenn Sie das Cmdlet [Install-Module](/powershell/module/powershellget/install-module) verwenden, stellen Sie sicher, dass Sie `AllUsers` für den Parameter `Scope` angeben.
+- Wenn Sie `pip install`, `apt install` oder eine andere Methode zum Installieren von Paketen unter Linux verwenden, stellen Sie sicher, dass das Paket für alle Benutzer installiert ist. Beispiel: `sudo -H pip install <package_name>`.
+
+Weitere Informationen zu PowerShell unter Linux finden Sie unter [Bekannte Probleme bei PowerShell auf anderen Plattformen als Windows](/powershell/scripting/whats-new/what-s-new-in-powershell-70).
 
 ## <a name="configure-runbook-permissions"></a>Konfigurieren von Runbookberechtigungen
 
@@ -315,7 +320,7 @@ Signieren Sie das Runbook nach dem Konfigurieren der Signaturprüfung mit dem fo
 gpg --clear-sign <runbook name>
 ```
 
-Das signierte Runbook heißt **<runbook name>.asc**.
+Das signierte Runbook heißt **\<runbook name>.asc**.
 
 Sie können nun das signierte Runbook in Azure Automation hochladen und es wie ein herkömmliches Runbook ausführen.
 

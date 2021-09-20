@@ -5,32 +5,42 @@ description: Beschrieben werden die Einschränkungen, die für das Format des Um
 author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
-ms.date: 06/23/2021
+ms.date: 08/06/2021
 ms.topic: conceptual
 ms.subservice: develop
 ms.custom: contperf-fy21q4-portal, aaddev
 ms.service: active-directory
 ms.reviewer: marsma, lenalepa, manrath
-ms.openlocfilehash: b9484973e724246db76ccc927437fccf2c4c7be1
-ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
+ms.openlocfilehash: 96fe21b4f1df662e72ec88abc68d74db25257de1
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112966462"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122662037"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Einschränkungen für Umleitungs-URI/Antwort-URL
 
 Ein Umleitungs-URI oder eine Antwort-URL definiert den Ort, an den der Autorisierungsserver den Benutzer leitet, sobald die App erfolgreich autorisiert und ein Autorisierungscode oder Zugriffstoken erteilt wurde. Der Autorisierungsserver sendet den Code oder das Token an den Umleitungs-URI. Daher ist es wichtig, dass Sie beim App-Registrierungsvorgang den richtigen Ort registrieren.
 
- Für Umleitungs-URIs gelten die folgenden Einschränkungen:
+Das Azure Active Directory (Azure AD) Anwendungsmodul gibt die folgenden Einschränkungen zum Umleiten von URIs an:
 
 * Der Umleitungs-URI muss mit dem Schema `https` beginnen. Bei Umleitungs-URIs gibt es einige [Ausnahmen für „localhost“](#localhost-exceptions).
 
-* Beim Umleitungs-URI wird die Groß-/Kleinschreibung beachtet. Die Groß-/Kleinschreibung muss der Groß-/Kleinschreibung des URL-Pfads Ihrer ausgeführten Anwendung entsprechen. Wenn der Pfad für Ihre Anwendung z. B. `.../abc/response-oidc` als Bestandteil enthält, dürfen Sie im Umleitungs-URI nicht `.../ABC/response-oidc` angeben. Weil der Webbrowser bei Pfaden die Groß-/Kleinschreibung beachtet, werden Cookies, die `.../abc/response-oidc` zugeordnet sind, möglicherweise ausgeschlossen, wenn eine Umleitung an die anders geschriebene (nicht übereinstimmende) URL `.../ABC/response-oidc` erfolgt.
+* Bei Umleitungs-URIs wird die Kleinschreibung beachtet, und sie müssen mit der Schreibweise des URL-Pfads Ihrer ausgeführten Anwendung übereinstimmen. Wenn der Pfad für Ihre Anwendung z. B. `.../abc/response-oidc` als Bestandteil enthält, dürfen Sie im Umleitungs-URI nicht `.../ABC/response-oidc` angeben. Weil der Webbrowser bei Pfaden die Groß-/Kleinschreibung beachtet, werden Cookies, die `.../abc/response-oidc` zugeordnet sind, möglicherweise ausgeschlossen, wenn eine Umleitung an die anders geschriebene (nicht übereinstimmende) URL `.../ABC/response-oidc` erfolgt.
 
-* Bei einem Umleitungs-URI ohne Pfadsegment wird in der Antwort ein nachgestellter Schrägstrich an den URI angefügt. Für URIs wie https://contoso.com und http://localhost:7071 wird beispielsweise https://contoso.com/ bzw. http://localhost:7071/ zurückgegeben. Dies gilt nur, wenn der Antwortmodus entweder „query“ (Abfrage) oder „fragment“ (Fragment) lautet.
+* Umleitungs-URIs, die *nicht* mit einem Pfadsegment konfiguriert sind, werden in der Antwort mit einem nachgestellten Schrägstrich ('`/`') zurückgegeben. Dies gilt nur, wenn der Antwortmodus `query` oder `fragment` ist.
 
-* Bei Umleitungs-URIs mit Pfadsegment wird kein nachgestellter Schrägstrich angefügt. (Beispiel: https://contoso.com/abc und https://contoso.com/abc/response-oidc werden unverändert in der Antwort verwendet.)
+    Beispiele:
+
+    * `https://contoso.com` wird als `https://contoso.com/` zurückgegeben.
+    * `http://localhost:7071` wird als `http://localhost:7071/` zurückgegeben.
+
+* Umleitungs-URIs, die ein Pfadsegment enthalten, werden in der Antwort *nicht* mit einem nachgestellten Schrägstrich zurückgegeben.
+
+    Beispiele:
+
+    * `https://contoso.com/abc` wird als `https://contoso.com/abc` zurückgegeben.
+    * `https://contoso.com/abc/response-oidc` wird als `https://contoso.com/abc/response-oidc` zurückgegeben.
 
 ## <a name="maximum-number-of-redirect-uris"></a>Maximale Anzahl von Umleitungs-URIs
 
@@ -47,11 +57,20 @@ Für jeden Umleitungs-URI, den Sie einer App-Registrierung hinzufügen, können 
 
 ## <a name="supported-schemes"></a>Unterstützte Schemas
 
-Das Azure Active Directory (Azure AD)-Anwendungsmodell unterstützt derzeit bei Apps, die Geschäfts-, Schul- oder Unikonten in einem Azure AD-Mandanten eines Unternehmens anmelden, sowohl das HTTP- als auch das HTTPS-Schema. Diese Kontotypen werden im Feld `signInAudience` des Anwendungsmanifests durch die Werte `AzureADMyOrg` und `AzureADMultipleOrgs` angegeben. Bei Apps, die persönliche Microsoft-Konten *und* Geschäfts-, Schul- oder Unikonten anmelden (d. h., `signInAudience` ist auf `AzureADandPersonalMicrosoftAccount` festgelegt), ist nur das HTTPS-Schema zulässig.
+**HTTPS**: Das HTTPS-Schema (`https://`) wird für alle HTTP-basierten Umleitungs-URIs unterstützt.
 
-Verwenden Sie im Azure-Portal unter [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) den Anwendungsmanifest-Editor, um Umleitungs-URIs mit einem HTTP-Schema zu App-Registrierungen hinzuzufügen, die Geschäfts-, Schul- oder Unikonten anmelden. Auch wenn Sie mit dem Manifest-Editor einen HTTP-basierten Umleitungs-URI festlegen können, empfehlen wir *dringend*, für Ihre Umleitungs-URIs das HTTPS-Schema zu verwenden.
+**HTTP**: Das HTTP-Schema (`http://`) wird *nur* für *localhost*-URIs unterstützt und sollte nur während der Entwicklung und Tests der aktiven lokalen Anwendung verwendet werden.
 
-## <a name="localhost-exceptions"></a>Ausnahmen für Localhost
+| Beispiel für Umleitungs-URI                    | Gültigkeitsdauer |
+|-----------------------------------------|----------|
+| `https://contoso.com`                   | Gültig    |
+| `https://contoso.com/abc/response-oidc` | Gültig    |
+| `https://localhost`                     | Gültig    |
+| `http://contoso.com/abc/response-oidc`  | Ungültig  |
+| `http://localhost`                      | Gültig    |
+| `http://localhost/abc`                  | Gültig    |
+
+### <a name="localhost-exceptions"></a>Ausnahmen für Localhost
 
 Gemäß [RFC 8252, Abschnitte 8.3](https://tools.ietf.org/html/rfc8252#section-8.3) und [7.3](https://tools.ietf.org/html/rfc8252#section-7.3), gelten für die Umleitungs-URIs „loopback“ und „localhost“ zwei Besonderheiten:
 

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/30/2021
 ms.author: cherylmc
-ms.openlocfilehash: 25e12ce4fd361cb053eae8b0d9992031a91d4616
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d3cffbe9ebaa71ca5c4dfd8681159f83ff06eb38
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114469014"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821464"
 ---
 # <a name="monitoring-virtual-wan"></a>Überwachen von Virtual WAN
 
@@ -34,16 +34,42 @@ Metriken in Azure Monitor sind numerische Werte, die einen Aspekt eines Systems 
 
 Die folgenden Metriken sind für Site-to-Site-VPN-Gateways in Azure verfügbar:
 
+#### <a name="tunnel-packet-drop-metrics"></a>Metriken zu gelöschten Paketen von Tunneln
+| Metrik | BESCHREIBUNG|
+| --- | --- |
+| **Anzahl ausgehender gelöschter Pakete eines Tunnels** | Anzahl der ausgehenden gelöschten Pakete nach Tunnel|
+| **Anzahl eingehender gelöschter Pakete eines Tunnels** | Anzahl der eingehenden gelöschten Pakete nach Tunnel|
+| **Tunnel-NAT-Paketverluste** | Anzahl der in einem Tunnel einer NAT unterzogenen gelöschten Pakete, nach Verlusttyp und NAT-Regel|
+| **Ausgehende gelöschte Pakete eines Tunnels durch einen TS-Konflikt** | Anzahl der aufgrund eines Konflikts mit dem Datenverkehrsselektor eines Tunnels gelöschten ausgehenden Pakete|
+| **Eingehende gelöschte Pakete eines Tunnels durch einen TS-Konflikt** | Anzahl der aufgrund eines Konflikts mit dem Datenverkehrsselektor eines Tunnels gelöschten eingehenden Pakete|
+
+#### <a name="ipsec-metrics"></a>IPSEC-Metriken
+| Metrik | BESCHREIBUNG|
+| --- | --- |
+| **MMSA-Anzahl des Tunnels** | Anzahl der MMSAs, die erstellt oder gelöscht wurden|
+| **QMSA-Anzahl des Tunnels** | Anzahl der IPSEC-QMSAs, die erstellt oder gelöscht werden|
+
+#### <a name="routing-metrics"></a>Routingmetriken
+| Metrik | BESCHREIBUNG|
+| --- | --- |
+| **Status des BGP-Peers** | BGP-Konnektivitätsstatus pro Peer und pro Instanz|
+| **Angekündigte BGP-Routen** | Anzahl der pro Peer und pro Instanz angekündigten Routen|
+| **Gelernte BGP-Routen** | Anzahl der pro Peer und pro Instanz gelernten Routen|
+| **Anzahl der VNet-Adresspräfixe** | Anzahl der VNet-Adresspräfixe, die vom Gateway verwendet/angekündigt wurden|
+
+Sie können die Metriken pro Peer und Instanz überprüfen, indem Sie **Aufteilen anwenden** auswählen und den bevorzugten Wert auswählen. 
+
+#### <a name="traffic-flow-metrics"></a>Flowmetriken des Datenverkehrs
 | Metrik | BESCHREIBUNG|
 | --- | --- |
 | **Bandbreite des Gateways** | Durchschnittliche aggregierte Site-to-Site-Bandbreite eines Gateways, angegeben in Byte pro Sekunde|
 | **Bandbreite des Tunnels** | Durchschnittliche Bandbreite eines Tunnels, angegeben in Byte pro Sekunde|
 | **Vom Tunnel ausgehende Bytes** | Ausgehende Bytes für einen Tunnel |
 | **Vom Tunnel ausgehende Pakete** | Anzahl ausgehender Pakete für einen Tunnel |
-| **Ausgehende gelöschte Pakete eines Tunnels durch einen TS-Konflikt** | Anzahl der aufgrund eines Konflikts mit dem Datenverkehrsselektor eines Tunnels gelöschten ausgehenden Pakete|
 | **In Tunnel eingehende Bytes** | Eingehende Bytes für einen Tunnel|
 | **In Tunnel eingehende Pakete** | Anzahl eingehender Pakete für einen Tunnel|
-| **Eingehende gelöschte Pakete eines Tunnels durch einen TS-Konflikt** | Anzahl der aufgrund eines Konflikts mit dem Datenverkehrsselektor eines Tunnels gelöschten eingehenden Pakete|
+| **PPS-Spitzenwert eines Tunnels** | Anzahl der Pakete pro Sekunde pro Linkverbindung in der letzten Minute|
+| **Tunnel-Flowanzahl** | Anzahl der pro Linkverbindung erstellten unterschiedlichen Flows|
 
 ### <a name="point-to-site-vpn-gateways"></a>Point-to-Site-VPN-Gateways
 
@@ -53,6 +79,7 @@ Die folgenden Metriken sind für Point-to-Site-VPN-Gateways in Azure verfügbar:
 | --- | --- |
 | **P2S-Gatewaybandbreite** | Durchschnittliche aggregierte Point-to-Site-Bandbreite eines Gateways, angegeben in Byte pro Sekunde |
 | **Anzahl der P2S-Verbindungen** |Anzahl der Point-to-Site-Verbindungen eines Gateways. Anzahl der Point-to-Site-Verbindungen eines Gateways. Um sicherzustellen, dass in Azure Monitor genaue Metriken angezeigt werden, legen Sie als **Aggregationstyp** für **P2S-Verbindungsanzahl** die Option **Summe** fest. Sie können auch **Max** auswählen, wenn Sie zusätzlich eine Aufteilung nach **Instanz** festgelegt haben. |
+| **Anzahl der Benutzer-VPN-Routen** | Anzahl der Benutzer-VPN-Routen, die auf dem VPN Gateway konfiguriert sind Diese Metrik kann in **statische** und **dynamische** Routen unterteilt werden.
 
 ### <a name="azure-expressroute-gateways"></a>Azure ExpressRoute-Gateways
 

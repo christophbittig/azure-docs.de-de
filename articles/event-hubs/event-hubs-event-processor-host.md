@@ -4,12 +4,12 @@ description: Dieser Artikel beschreibt den Event Processor Host in Azure Event H
 ms.topic: conceptual
 ms.date: 08/04/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0e10a472c261c14fcdd3debf1caaf9f00fdeb5e0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ea8beeafd7be3f1e586fc0eaf542d4ee946262fe
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339418"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123101264"
 ---
 # <a name="event-processor-host"></a>Ereignisprozessorhost
 > [!NOTE]
@@ -86,7 +86,8 @@ Anschließend wird eine [EventProcessorHost](/dotnet/api/microsoft.azure.eventhu
 - **storageConnectionString:** Das für die interne Ressourcenverwaltung verwendete Speicherkonto.
 
 > [!IMPORTANT]
-> Aktivieren Sie das Feature für vorläufiges Löschen nicht für das Speicherkonto, das als Prüfpunktspeicher verwendet wird. 
+> - Aktivieren Sie das Feature für vorläufiges Löschen nicht für das Speicherkonto, das als Prüfpunktspeicher verwendet wird. 
+> - Verwenden Sie keinen hierarchischen Speicher (Azure Data Lake Storage Gen 2) als Prüfpunktspeicher.
 
 Schließlich registrieren die Consumer die [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)-Instanz bei dem Event Hubs-Dienst. Die Registrierung einer Ereignisprozessorklasse mit einer Instanz von EventProcessorHost startet die Ereignisverarbeitung. Durch die Registrierung wird der Event Hubs-Dienst angewiesen, dass eine Verarbeitung der Ereignisse aus einigen zugehörigen Partitionen durch die Consumeranwendung zu erwarten ist, uns dass der [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor)-Implementierungscode bei jedem Übertragen von zu verarbeitenden Ereignissen aufgerufen werden soll. 
 

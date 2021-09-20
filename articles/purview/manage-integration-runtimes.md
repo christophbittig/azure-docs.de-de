@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/03/2021
-ms.openlocfilehash: 2c1f967e596b4ba19d121f3c0332259b92f78d06
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 1b2748664046c97258ee3414b741075627064bbc
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114730609"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867480"
 ---
 # <a name="create-and-manage-a-self-hosted-integration-runtime"></a>Erstellen und Verwalten einer selbstgehosteten Integration Runtime
 
@@ -20,6 +20,9 @@ In diesem Artikel wird beschrieben, wie Sie eine selbstgehostete Integration Run
 
 > [!NOTE]
 > Die Purview-Integration Runtime kann nicht zusammen mit einer Azure Synapse Analytics- oder Azure Data Factory-Integration Runtime auf demselben Computer verwendet werden. Sie muss auf einem separaten Computer installiert werden.
+
+> [!IMPORTANT]
+> Wenn Sie Ihr Azure Purview-Konto nach dem 18. August 2021 erstellt haben, stellen Sie sicher, dass Sie die neueste Version der selbstgehosteten Integration Runtime aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717) herunterladen und installieren.
 
 ## <a name="create-a-self-hosted-integration-runtime"></a>Erstellen einer selbstgehosteten Integration Runtime
 
@@ -77,10 +80,18 @@ Nachfolgend werden die Domänen und Ports aufgeführt, die über Unternehmens- u
 | `*.frontend.clouddatahub.net` | 443            | Globale Infrastruktur, die Purview zum Ausführen der Überprüfungen verwendet. Der Platzhalter ist erforderlich, da keine dedizierte Ressource vorhanden ist. |
 | `<managed Purview storage account>.core.windows.net`          | 443            | Wird von der selbstgehosteten Integration Runtime verwendet, um eine Verbindung mit dem verwalteten Azure Storage-Konto herzustellen.|
 | `<managed Purview storage account>.queue.core.windows.net` | 443            | Warteschlangen, die von Purview zum Ausführen des Überprüfungsprozesses verwendet werden. |
-| `<your Key Vault Name>.vault.azure.net` | 443           | Erforderlich, wenn Anmeldeinformationen in Azure Key Vault gespeichert werden. |
 | `download.microsoft.com` | 443           | Optional, für SHIR-Updates. |
+
+Basierend auf Ihren Quellen müssen Sie möglicherweise auch die Domänen anderer Azure- oder externer Quellen zulassen. Im Folgenden finden Sie einige Beispiele sowie die Azure Key Vault-Domäne, wenn Sie eine Verbindung mit Anmeldeinformationen herstellen, die im Key Vault gespeichert sind.
+
+| Domänennamen                  | Ausgehende Ports | BESCHREIBUNG                              |
+| ----------------------------- | -------------- | ---------------------------------------- |
+| `<storage account>.core.windows.net`          | 443            | Optional, zum Herstellen der Verbindung mit einem Azure Storage-Konto |
+| `*.database.windows.net`      | 1433           | Optional, zum Herstellen der Verbindung mit einer Azure SQL-Datenbank oder Azure Synapse Analytics |
+| `*.azuredatalakestore.net`<br>`login.microsoftonline.com/<tenant>/oauth2/token`    | 443            | Optional, zum Herstellen der Verbindung mit Azure Data Lake Storage Gen 1. |
+| `<datastoragename>.dfs.core.windows.net`    | 443            | Optional, zum Herstellen der Verbindung mit Azure Data Lake Storage Gen 2. |
+| `<your Key Vault Name>.vault.azure.net` | 443           | Erforderlich, wenn Anmeldeinformationen in Azure Key Vault gespeichert werden. |
 | Verschiedene Domänen | Abhängig von Umgebung          | Domänen für weitere Quellen zur Verbindungsherstellung über SHIR. |
-  
   
 > [!IMPORTANT]
 > In den meisten Umgebungen müssen Sie außerdem bestätigen, dass DNS ordnungsgemäß konfiguriert ist. Dient der Bestätigung, dass Sie von Ihrem SHIR-Computer aus mithilfe von **nslookup** die Konnektivität mit jeder der oben genannten Domänen überprüfen können. Jede nslookup-Abfrage sollte die IP-Adresse der Ressource zurückgeben. Wenn Sie [private Endpunkte](catalog-private-link.md) verwenden, sollte die private IP-Adresse und nicht die öffentliche IP-Adresse zurückgegeben werden. Wenn keine IP-Adresse oder bei Verwendung privater Endpunkte die öffentliche IP-Adresse zurückgegeben wird, müssen Sie Ihre DNS-/VNet-Zuordnung oder Ihr privates Endpunkt-/VNet-Peering überprüfen.
@@ -97,4 +108,6 @@ Sie können eine selbstgehostete Integration Runtime löschen, indem Sie im Verw
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[So werden gelöschte Ressourcen bei Scans erkannt](concept-detect-deleted-assets.md)
+- [So werden gelöschte Ressourcen bei Scans erkannt](concept-scans-and-ingestion.md#how-scans-detect-deleted-assets)
+
+- [Verwenden privater Endpunkte mit Purview](catalog-private-link.md)

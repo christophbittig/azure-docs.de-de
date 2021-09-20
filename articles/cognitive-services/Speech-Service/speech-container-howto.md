@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/10/2021
+ms.date: 08/27/2021
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: Lokal, Docker, Container
-ms.openlocfilehash: ccca7f1deeeef49b734313c30d13290e47b6ab57
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a78408759492cdba97bca8b6e4b71411af192f9f
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339124"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224121"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Installieren und Ausführen von Docker-Containern für die APIs des Speech-Diensts 
 
@@ -30,15 +30,14 @@ Mit Speech-Containern können Kunden eine Speech-basierte Anwendungsarchitektur 
 | Spracherkennung | Analysiert die Stimmung und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen mit Zwischenergebnissen.  | 2.13.0 | Allgemein verfügbar |
 | Benutzerdefinierte Spracherkennung | Verwendet ein benutzerdefiniertes Modell aus dem [Custom Speech-Portal](https://speech.microsoft.com/customspeech) und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen in Text mit Zwischenergebnissen. | 2.13.0 | Allgemein verfügbar |
 | Text-zu-Sprache | Konvertiert Text in natürlich klingende Sprache mit Nur-Text-Eingaben oder SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). | 1.14.1 | Allgemein verfügbar |
-| Speech-Sprachenerkennung | Erkennen der in Audiodateien gesprochenen Sprache | 1.3.0 | Beschränkte Vorschauversion |
+| Speech-Sprachenerkennung | Erkennen der in Audiodateien gesprochenen Sprache | 1.3.0 | preview |
 | Text-zu-Sprache (neuronal) | Konvertiert Text mithilfe von Deep Neural Network-Technologie in natürlich klingende Sprache, die eine natürlichere synthetische Sprache ermöglicht. | 1.8.0 | Allgemein verfügbar |
-
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 > [!IMPORTANT]
-> Wenn Sie die Speech-Container verwenden möchten, müssen Sie eine Onlineanfrage einreichen und diese genehmigen lassen. Weitere Informationen finden Sie weiter unten im Abschnitt **Anfordern der Genehmigung für die Containerausführung**.
+> * Wenn Sie die Speech-Container verwenden möchten, müssen Sie eine Onlineanfrage einreichen und diese genehmigen lassen. Weitere Informationen finden Sie weiter unten im Abschnitt **Anfordern der Genehmigung für die Containerausführung**. 
+> * *Allgemein verfügbare Container* erfüllen die Stabilitäts- und Supportanforderungen von Microsoft. Container in der *Vorschau* befinden sich noch in der Entwicklung.
 
 Für die Verwendung von Speech-Dienstcontainern müssen folgende Voraussetzungen erfüllt sein: Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
 

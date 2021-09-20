@@ -9,26 +9,28 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/7/2020
+ms.date: 08/30/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 74cbbf13b3ecb0b784138df69a8436930c2766ef
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 15f62d7d0fa05a925878683af1b41ca3421d1765
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108130897"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222673"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity Platform und der On-Behalf-Of-Fluss von OAuth2.0
 
-
 Der On-Behalf-Of-Fluss von OAuth 2.0 (OBO) wird verwendet, wenn eine Anwendung eine Dienst- oder Web-API aufruft, die wiederum einen andere Dienst- oder Web-API aufrufen muss. Die Idee dabei ist, die delegierte Benutzeridentität und Berechtigungen über die Anforderungskette weiterzugeben. Damit der Dienst auf der mittleren Ebene Authentifizierungsanforderungen an den Downstreamdienst stellen kann, muss für den Benutzer ein Zugriffstoken der Microsoft Identity Platform gesichert werden.
 
-In diesem Artikel wird beschrieben, wie Sie direkt mit dem Protokoll in Ihrer Anwendung programmieren.  Es wird stattdessen empfohlen, ggf. die unterstützten Microsoft Authentication Libraries (MSAL) zu verwenden, um [Token zu erhalten und gesicherte Web-APIs aufzurufen](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Sehen Sie sich auch die [Beispiel-Apps an, die MSAL verwenden](sample-v2-code.md).
+Der OBO-Fluss funktioniert zurzeit nur bei Benutzerprinzipalen. Ein Dienstprinzipal kann kein Nur-App-Token anfordern, es an eine API senden und diese API gegen diejenige für ein anderes Token austauschen lassen, das diesen ursprünglichen Dienstprinzipal darstellt. Darüber hinaus konzentriert sich der OBO-Fluss auf das Handeln im Auftrag einer anderen Partei, was als „delegiertes Szenario“ bezeichnet wird. Dies bedeutet, dass er nur delegierte *Bereiche* und nicht Anwendungs *rollen* verwendet, um Berechtigungen zu beurteilen. *Rollen* bleiben an den Prinzipal (dem Benutzer) im Fluss angefügt – nie der Anwendung, die im Auftrag der Benutzer ausgeführt wird.
 
+In diesem Artikel wird beschrieben, wie Sie direkt mit dem Protokoll in Ihrer Anwendung programmieren. Es wird stattdessen empfohlen, ggf. die unterstützten Microsoft Authentication Libraries (MSAL) zu verwenden, um [Token zu erhalten und gesicherte Web-APIs aufzurufen](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Sehen Sie sich auch die [Beispiel-Apps an, die MSAL verwenden](sample-v2-code.md).
 
 Ab Mai 2018 können einige implizit vom Fluss abgeleitete `id_token` nicht für den OBO-Fluss verwendet werden. Single-Page-Anwendungen (SPAs) müssen ein **Zugriffstoken** an einen vertraulichen Client der mittleren Ebene übergeben, um stattdessen OBO-Flüsse auszuführen. Weitere Informationen dazu, welche Clients OBO-Aufrufe ausführen können, finden Sie unter [Einschränkungen](#client-limitations).
+
+[!INCLUDE [try-in-postman-link](includes/try-in-postman-link.md)]
 
 ## <a name="protocol-diagram"></a>Protokolldiagramm
 
@@ -64,7 +66,7 @@ Bei Verwendung eines gemeinsamen Geheimnisses enthält eine Dienst-zu-Dienst-Zug
 | --- | --- | --- |
 | `grant_type` | Erforderlich | Typ der Tokenanforderung. Bei einer Anforderung mit JWT muss der Wert `urn:ietf:params:oauth:grant-type:jwt-bearer` sein. |
 | `client_id` | Erforderlich | Die Anwendungs-ID (Client-ID), die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
-| `client_secret` | Erforderlich | Der geheime Clientschlüssel, den Sie im Azure-Portal auf der Seite „App-Registrierungen“ für Ihre App generiert haben. |
+| `client_secret` | Erforderlich | Der geheime Clientschlüssel, den Sie im Azure-Portal auf der Seite „App-Registrierungen“ für Ihre App generiert haben.  Das Standardauthentifizierungsmuster der Bereitstellung von Anmeldeinformationen im Autorisierungsheader gemäß [RFC 6749](https://datatracker.ietf.org/doc/html/rfc6749#section-2.3.1) wird ebenfalls unterstützt. |
 | `assertion` | Erforderlich | Das Zugriffstoken, das an die API der mittleren Ebene gesendet wurde.  Dieses Token muss über einen Zielgruppenanspruch (`aud`) der App verfügen, von der diese OBO-Anforderung stammt (durch das Feld `client-id` gekennzeichnete App). Anwendungen können kein Token für eine andere App einlösen. (Wenn also beispielsweise ein Client ein für MS Graph vorgesehenes Token an eine API sendet, kann die API dieses nicht mit OBO einlösen.  Stattdessen muss das Token abgelehnt werden.)  |
 | `scope` | Erforderlich | Eine durch Leerzeichen getrennte Liste von Bereichen für die Tokenanforderung. Weitere Informationen finden Sie unter [Bereiche](v2-permissions-and-consent.md). |
 | `requested_token_use` | Erforderlich | Gibt an, wie die Anforderung verarbeitet werden soll. Im OBO-Fluss muss der Wert muss auf `on_behalf_of` festgelegt werden. |
@@ -81,8 +83,8 @@ Host: login.microsoftonline.com/<tenant>
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
-&client_id=2846f71b-a7a4-4987-bab3-760035b2f389
-&client_secret=BYyVnAt56JpLwUcyo47XODd
+client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
+&client_secret=sampleCredentia1s
 &assertion=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCJ9.eyJhdWQiOiIyO{a lot of characters here}
 &scope=https://graph.microsoft.com/user.read+offline_access
 &requested_token_use=on_behalf_of
@@ -153,16 +155,16 @@ Das folgende Beispiel zeigt eine erfolgreiche Antwort auf eine Anforderung eines
 
 Das obige Zugriffstoken ist ein Token mit v1.0-Formatierung für Microsoft Graph. Dies liegt daran, dass das Tokenformat auf der **Ressource** basiert, auf die zugegriffen wird, und nicht mit den Endpunkten in Zusammenhang steht, die für deren Anforderung verwendet werden. Microsoft Graph akzeptiert gemäß seiner Einrichtung v1.0-Token. Microsoft Identity Platform erzeugt daher v1.0-Zugriffstoken, wenn ein Client Token für Microsoft Graph anfordert. Andere Apps können signalisieren, dass sie Token im v2.0- oder v1.0-Format oder sogar proprietäre oder verschlüsselte Tokenformate bevorzugen.  Die Endpunkte der Versionen 1.0 und 2.0 können jedes beliebige Tokenformat ausgeben. Dadurch kann die Ressource immer das richtige Tokenformat abrufen, unabhängig davon, wie oder wo das Token vom Client angefordert wurde. 
 
-Nur Anwendungen sollten Zugriffstoken betrachten. Clients **dürfen sie nicht** überprüfen. Das Überprüfen von Zugriffstoken für andere Apps in Ihrem Code hat zur Folge, dass Ihre App unerwartet angehalten wird, wenn diese das Format ihrer Token ändert oder mit deren Verschlüsselung beginnt. 
+[!INCLUDE [remind-not-to-validate-access-tokens](includes/remind-not-to-validate-access-tokens.md)]
 
 ### <a name="error-response-example"></a>Beispiel für eine fehlerhafte Antwort
 
-Beim Versuch, ein Zugriffstoken für die nachgelagerte API abzurufen, gibt der Tokenendpunkt einen Fehler zurück, wenn für die nachgelagerte API eine Richtlinie für bedingten Zugriff (z. B. [mehrstufige Authentifizierung](../authentication/concept-mfa-howitworks.md)) festgelegt ist. Der Dienst der mittleren Ebene zeigt diesen Fehler der Clientanwendung an, damit die Clientanwendung die entsprechende Benutzerinteraktion bereitstellen kann, um die Richtlinie für bedingten Zugriff zu erfüllen.
+Beim Versuch, ein Zugriffstoken für die Downstream-API abzurufen, gibt der Tokenendpunkt einen Fehler zurück, wenn bei dieser API eine Richtlinie für bedingten Zugriff (z. B. [mehrstufige Authentifizierung](../authentication/concept-mfa-howitworks.md)) festgelegt wurde. Der Dienst der mittleren Ebene zeigt diesen Fehler der Clientanwendung an, damit die Clientanwendung die entsprechende Benutzerinteraktion bereitstellen kann, um die Richtlinie für bedingten Zugriff zu erfüllen.
 
 ```json
 {
     "error":"interaction_required",
-    "error_description":"AADSTS50079: Due to a configuration change made by your administrator, or because you moved to a new location, you must enroll in multi-factor authentication to access 'bf8d80f9-9098-4972-b203-500f535113b1'.\r\nTrace ID: b72a68c3-0926-4b8e-bc35-3150069c2800\r\nCorrelation ID: 73d656cf-54b1-4eb2-b429-26d8165a52d7\r\nTimestamp: 2017-05-01 22:43:20Z",
+    "error_description":"AADSTS50079: Due to a configuration change made by your administrator, or because you moved to a new location, you must enroll in multifactor authentication to access 'bf8d80f9-9098-4972-b203-500f535113b1'.\r\nTrace ID: b72a68c3-0926-4b8e-bc35-3150069c2800\r\nCorrelation ID: 73d656cf-54b1-4eb2-b429-26d8165a52d7\r\nTimestamp: 2017-05-01 22:43:20Z",
     "error_codes":[50079],
     "timestamp":"2017-05-01 22:43:20Z",
     "trace_id":"b72a68c3-0926-4b8e-bc35-3150069c2800",
@@ -201,8 +203,8 @@ Eine Dienst-zu-Dienst-Anforderung für eine SAML-Assertion weist die folgenden P
 | grant_type |required | Typ der Tokenanforderung Bei Anforderungen mit einem JWT muss der Wert **urn:ietf:params:oauth:grant-type:jwt-bearer** lauten. |
 | assertion |required | Der Wert des bei der Anforderung verwendeten Zugriffstoken.|
 | client_id |required | Die dem aufrufenden Dienst während der Registrierung bei Azure AD zugewiesene App-ID. Wählen Sie zum Ermitteln der App-ID im Azure-Portal zuerst **Active Directory**, dann das Verzeichnis und schließlich den Anwendungsnamen aus. |
-| client_secret |required | Schlüssel, der für den aufrufenden Dienst in Azure AD registriert ist. Dieser Wert sollte zum Zeitpunkt der Registrierung notiert worden sein. |
-| resource |Erforderlich | Der App-ID-URI des empfangenden Diensts (geschützte Ressource). Dies ist die Ressource, die die Zielgruppe des SAML-Token darstellt. Wählen Sie zum Ermitteln des App-ID-URIs im Azure-Portal **Active Directory** und dann das Verzeichnis aus. Wählen Sie den Namen der Anwendung, **Alle Einstellungen** und dann **Eigenschaften** aus. |
+| client_secret |required | Schlüssel, der für den aufrufenden Dienst in Azure AD registriert ist. Dieser Wert sollte zum Zeitpunkt der Registrierung notiert worden sein.  Das Standardauthentifizierungsmuster der Bereitstellung von Anmeldeinformationen im Autorisierungsheader gemäß [RFC 6749](https://datatracker.ietf.org/doc/html/rfc6749#section-2.3.1) wird ebenfalls unterstützt. |
+| scope |required | Eine durch Leerzeichen getrennte Liste von Bereichen für die Tokenanforderung. Weitere Informationen finden Sie unter [Bereiche](v2-permissions-and-consent.md). Beispiel: 'https://testapp.contoso.com/user_impersonation openid' |
 | requested_token_use |Erforderlich | Gibt an, wie die Anforderung verarbeitet werden soll. Im Im-Auftrag-Fluss muss der Wert **on_behalf_of** lauten. |
 | requested_token_type | required | Gibt den Typ des angeforderten Token an. Abhängig von den Anforderungen der Ressource, auf die zugegriffen wird, kann der Wert **urn:Ietf:params:oauth:token-type:saml2** oder **urn:Ietf:params:oauth:token-type:saml1** lauten. |
 

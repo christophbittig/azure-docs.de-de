@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: 7aa866706a181014e104f7f9e7f8cded520f4ac9
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: a554a58c8cb94fb4ec1f86b433050f440330918b
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114711831"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123252607"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Beibehalten von Dateien in Azure Cloud Shell
-Cloud Shell nutzt Azure-Dateispeicher, um Dateien sitzungsübergreifend beizubehalten. Beim ersten Start fordert Cloud Shell Sie auf, eine neue oder vorhandene Dateifreigabe zu verknüpfen, um Dateien sitzungsübergreifend beizubehalten.
+Cloud Shell nutzt Azure Files, um Dateien sitzungsübergreifend beizubehalten. Beim ersten Start fordert Cloud Shell Sie auf, eine neue oder vorhandene Dateifreigabe zu verknüpfen, um Dateien sitzungsübergreifend beizubehalten.
 
 > [!NOTE]
 > Für Bash und PowerShell wird dieselbe Dateifreigabe verwendet. In Cloud Shell kann der automatischen Bereitstellung nur eine Dateifreigabe zugeordnet werden.

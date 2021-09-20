@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/21/2021
 ms.author: yelevin
-ms.openlocfilehash: 5faf675d4e5d188840b3e9ab457ec28829f52dc0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 20e9920921afe1eae8babb76212a6de7ea2e1321
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339008"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251848"
 ---
 # <a name="connect-azure-active-directory-azure-ad-data-to-azure-sentinel"></a>Verknüpfen von Azure AD-Daten (Azure Active Directory) mit Azure Sentinel
 
@@ -62,7 +62,7 @@ Sie können den in Azure Sentinel integrierten Connector verwenden, um Daten aus
 
 1. Wählen Sie im Katalog für Datenconnectors **Azure Active Directory** aus, und klicken Sie anschließend auf **Open connector page** (Connectorseite öffnen).
 
-1. Aktivieren Sie die Kontrollkästchen neben den Protokolltypen, die Sie an Azure Sentinel streamen möchten (wie weiter oben beschrieben), und klicken Sie auf **Verbinden**.
+1. Aktivieren Sie die Kontrollkästchen neben den Protokolltypen, die Sie an Azure Sentinel streamen möchten (wie weiter oben beschrieben), und wählen Sie **Verbinden** aus.
 
 ## <a name="find-your-data"></a>Suchen von Daten
 

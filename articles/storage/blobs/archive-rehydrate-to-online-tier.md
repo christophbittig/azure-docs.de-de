@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/11/2021
+ms.date: 08/25/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.custom: devx-track-azurepowershell
 ms.subservice: blobs
-ms.openlocfilehash: bdafee650ae6162e3943120fc9a9b460fd9e698a
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: c033920b88f2863d34f43bf0affe4b9165995a3a
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122356258"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258788"
 ---
 # <a name="rehydrate-an-archived-blob-to-an-online-tier"></a>Aktivieren eines archivierten Blobs auf einer Onlineebene
 
@@ -89,7 +89,7 @@ az storage blob copy start \
 
 Um ein Blob zu aktivieren, indem Sie seine Ebene von „Archiv“ in „Heiß“ oder „Kalt“ ändern, verwenden Sie das Azure-Portal, PowerShell oder die Azure-Befehlszeilenschnittstelle.
 
-### <a name="azure-portal"></a>[Azure-Portal](#tab/portal)
+### <a name="azure-portal"></a>[Azure portal](#tab/portal)
 
 Führen Sie die folgenden Schritte aus, um die Ebene eines Blobs im Azure-Portal von „Archiv“ in „Heiß“ oder „Kalt“ zu ändern:
 
@@ -121,7 +121,7 @@ $ctx = (Get-AzStorageAccount `
 
 # Change the blob’s access tier to hot with standard priority.
 $blob = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $ctx
-$blob.ICloudBlob.SetStandardBlobTier("Hot", "Standard")
+$blob.BlobClient.SetAccessTier("Hot", $null, "High")
 ```
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
@@ -129,16 +129,20 @@ $blob.ICloudBlob.SetStandardBlobTier("Hot", "Standard")
 Um die Ebene eines Blobs mit der Azure-Befehlszeilenschnittstelle von „Archiv“ in „Heiß“ oder „Kalt“ zu ändern, rufen Sie den Befehl [az storage blob set-tier](/cli/azure/storage/blob#az_storage_blob_set_tier) auf. Denken Sie daran, Platzhalter in spitzen Klammern durch Ihre eigenen Werte zu ersetzen:
 
 ```azurecli
-az storage blob set-tier /
-    --container-name <container> /
-    --name <archived-blob> /
-    --tier Hot /
-    --account-name <account-name> /
-    --rehydrate-priority High /
+az storage blob set-tier \
+    --container-name <container> \
+    --name <archived-blob> \
+    --tier Hot \
+    --account-name <account-name> \
+    --rehydrate-priority High \
     --auth-mode login
 ```
 
 ---
+
+## <a name="rehydrate-a-large-number-of-blobs"></a>Aktivieren einer großen Anzahl von Blobs
+
+Um eine große Anzahl von Blobs auf einmal zu aktivieren, müssen Sie den Vorgang [Blob Batch](/rest/api/storageservices/blob-batch) aufrufen, damit [Set Blob Tier](/rest/api/storageservices/set-blob-tier) als Massenvorgang aufgerufen wird. Ein Codebeispiel, in dem die Ausführung des Batchvorgangs veranschaulicht wird, finden Sie unter [AzBulkSetBlobTier](/samples/azure/azbulksetblobtier/azbulksetblobtier/).
 
 ## <a name="check-the-status-of-a-rehydration-operation"></a>Überprüfen des Status eines Aktivierungsvorgangs
 
@@ -146,7 +150,7 @@ Während das Blob aktiviert wird, können Sie seinen Status und seine Aktivierun
 
 Beachten Sie, dass die Aktivierung eines archivierten Blobs bis zu 15 Stunden dauern kann, und das wiederholte Abrufen des Blobstatus, um festzustellen, ob die Aktivierung abgeschlossen ist, ist ineffizient. Die Verwendung von Azure Event Grid zur Erfassung des Ereignisses, das bei Abschluss der Aktivierung ausgelöst wird, bietet eine bessere Leistungs- und Kostenoptimierung. Informationen zur Ausführung einer Azure-Funktion, wenn nach der Blobaktivierung ein Ereignis ausgelöst wird, finden Sie unter [Run an Azure Function in response to a blob rehydration event](archive-rehydrate-handle-event.md) (Ausführen einer Azure-Funktion als Reaktion auf ein Blob-Aktivierungsereignis).
 
-### <a name="azure-portal"></a>[Azure-Portal](#tab/portal)
+### <a name="azure-portal"></a>[Azure portal](#tab/portal)
 
 Um den Status und die Priorität eines ausstehenden Aktivierungsvorgangs im Azure-Portal zu überprüfen, zeigen Sie das Dialogfeld **Ebene ändern** für das Blob an:
 
@@ -158,12 +162,12 @@ Wenn die Aktivierung abgeschlossen ist, sehen Sie im Azure-Portal, dass das voll
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Um den Status und die Priorität eines ausstehenden Aktivierungsvorgangs mit PowerShell zu überprüfen, rufen Sie den Befehl [Get-AzStorageBlob](/powershell/module/az.storage/get-azstorageblob) auf, und überprüfen Sie die Eigenschaften **RehydrationStatus** und **RehydratePriority** des Blobs. Wenn es sich bei der Aktivierung um einen Kopiervorgang handelt, überprüfen Sie diese Eigenschaften im Zielblob. Denken Sie daran, Platzhalter in spitzen Klammern durch Ihre eigenen Werte zu ersetzen:
+Um den Status und die Priorität eines ausstehenden Aktivierungsvorgangs mit PowerShell zu überprüfen, rufen Sie den Befehl [Get-AzStorageBlob](/powershell/module/az.storage/get-azstorageblob) auf, und überprüfen Sie die Eigenschaften **ArchiveStatus** und **RehydratePriority** des Blobs. Wenn es sich bei der Aktivierung um einen Kopiervorgang handelt, überprüfen Sie diese Eigenschaften im Zielblob. Denken Sie daran, Platzhalter in spitzen Klammern durch Ihre eigenen Werte zu ersetzen:
 
 ```powershell
 $rehydratingBlob = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $ctx
+$rehydratingBlob.BlobProperties.ArchiveStatus
 $rehydratingBlob.BlobProperties.RehydratePriority
-$rehydratingBlob.ICloudBlob.Properties.RehydrationStatus
 ```
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)

@@ -2,25 +2,27 @@
 title: Azure Storage-Lösungen für ML Services in HDInsight – Azure
 description: Lernen Sie die verschiedenen Speicheroptionen kennen, die mit ML Services in HDInsight zur Verfügung stehen.
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 01/02/2020
-ms.openlocfilehash: ddc48025de164ff68fb539a293e06bae09171742
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ROBOTS: NOINDEX
+ms.openlocfilehash: 56b7181cafc9a17c2fdb468e1a47d664499dcdcc
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98943898"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123252907"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure Storage-Lösungen für ML Services in Azure HDInsight
+
+[!INCLUDE [retirement banner](../includes/ml-services-retirement.md)]
 
 ML Services in HDInsight kann verschiedene Speicherlösungen zum dauerhaften Speichern von Daten, Codes oder Objekten, die Ergebnisse aus der Analyse enthalten, verwenden. Diese Lösungen umfassen die folgenden Optionen:
 
 - [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/)
 - [Azure Data Lake Storage Gen1](https://azure.microsoft.com/services/storage/data-lake-storage/)
-- [Azure File Storage](https://azure.microsoft.com/services/storage/files/)
+- [Azure Files](https://azure.microsoft.com/services/storage/files/)
 
-Sie haben auch die Möglichkeit, mit Ihrem HDInsight-Cluster auf mehrere Azure-Speicherkonten oder -Container zuzugreifen. Azure File Storage ist eine komfortable Datenspeicheroption zur Verwendung auf dem Edgeknoten, mit der Sie eine Azure Storage-Dateifreigabe z. B. auf einem Linux-Dateisystem bereitstellen können. Die Dateifreigaben können mit Azure File jedoch von allen Systemen mit einem unterstützten Betriebssystem, z.B. Windows oder Linux, bereitgestellt und verwendet werden.
+Sie haben auch die Möglichkeit, mit Ihrem HDInsight-Cluster auf mehrere Azure-Speicherkonten oder -Container zuzugreifen. Azure Files ist eine komfortable Datenspeicheroption zur Verwendung auf dem Edgeknoten, mit der Sie eine Azure-Dateifreigabe z. B. auf einem Linux-Dateisystem bereitstellen können. Die Dateifreigaben können mit Azure File jedoch von allen Systemen mit einem unterstützten Betriebssystem, z. B. Windows oder Linux, bereitgestellt und verwendet werden.
 
 Bei der Erstellung eines Apache Hadoop-Clusters in HDInsight geben Sie entweder ein **Azure-Blobspeicher**-Konto oder einen **Data Lake Storage Gen1** an. Ein spezieller Speichercontainer dieses Kontos enthält das Dateisystem für den von Ihnen erstellten Cluster (z.B. das Hadoop Distributed File System). Weitere Informationen und Anleitungen finden Sie unter:
 
@@ -95,7 +97,7 @@ hdfsFS <- RxHdfsFileSystem(hostName=myNameNode, port=myPort)
 inputFile <-file.path(bigDataDirRoot,"mysamplefile1.csv")
 ```
 
-Alle Verzeichnis- und Dateiverweise zeigen jetzt auf das Speicherkonto `wasbs://container2@storage2.blob.core.windows.net`. Dies ist der **Namensknoten**, den Sie angegeben haben.
+Alle Verzeichnis- und Dateiverweise zeigen jetzt auf das Speicherkonto `wasbs://container2@storage2.blob.core.windows.net`. Dies ist der von Ihnen angegebene **Namensknoten**.
 
 Konfigurieren Sie das Verzeichnis `/user/RevoShare/<SSH username>` unter **storage2** wie folgt:
 
@@ -162,14 +164,14 @@ hadoop fs -copyFromLocal /usr/lib64/R Server-7.4.1/library/RevoScaleR/SampleData
 hadoop fs –ls adl://rkadl1.azuredatalakestore.net/share
 ```
 
-## <a name="use-azure-file-storage-with-ml-services-on-hdinsight"></a>Verwenden von Azure File Storage mit ML Services in HDInsight
+## <a name="use-azure-files-with-ml-services-on-hdinsight"></a>Verwenden von Azure Files mit ML Services in HDInsight
 
 Es gibt auch eine komfortable Datenspeicheroption zur Verwendung auf dem Edgeknoten mit der Bezeichnung [Azure Files](https://azure.microsoft.com/services/storage/files/). Hiermit können Sie eine Azure Storage-Dateifreigabe auf einem Linux-Dateisystem bereitstellen. Diese Option kann zum Speichern von Datendateien, R-Skripts und Ergebnisobjekten nützlich sein, die unter Umständen später benötigt werden, besonders wenn es sinnvoll ist, anstelle von HDFS das native Dateisystem auf dem Edgeknoten zu verwenden.
 
 Ein großer Vorteil von Azure Files besteht darin, dass die Dateifreigaben von allen Systemen mit einem unterstützten Betriebssystem, z.B. Windows oder Linux, bereitgestellt und verwendet werden können. Beispielsweise ist die Verwendung durch einen anderen HDInsight-Cluster, der Ihnen oder einem Mitglied Ihres Teams gehört, eine Azure VM oder sogar ein lokales System möglich. Weitere Informationen finden Sie unter
 
-- [Verwenden des Azure-Dateispeichers unter Linux](../../storage/files/storage-how-to-use-files-linux.md)
-- [Verwenden von Azure File Storage unter Windows](../../storage/files/storage-dotnet-how-to-use-files.md)
+- [How to use Azure Files with Linux (Verwenden von Azure Files mit Linux)](../../storage/files/storage-how-to-use-files-linux.md)
+- [Verwenden von Azure Files auf Windows](../../storage/files/storage-dotnet-how-to-use-files.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

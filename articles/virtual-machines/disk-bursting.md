@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 6af3d66afe107bae470f4081407f2293fe04f0fb
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 7cd3c1d4a0da5ca0741f6d7f05a1cf082d2e922e
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113356946"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696539"
 ---
 # <a name="managed-disk-bursting"></a>Verwaltetes Datenträgerbursting
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Azure bietet die Möglichkeit, die IOPS- und MB/s-Leistung für Datenträger zu steigern. Dies wird sowohl bei virtuellen Computern als auch bei Datenträgern als „Bursting“ bezeichnet. Das Bursting für VMs und Datenträger lässt sich effektiv nutzen, um sowohl auf Ihren VMs als auch auf dem Datenträger eine bessere Burstingleistung zu erzielen.
 

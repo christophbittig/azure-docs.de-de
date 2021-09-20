@@ -9,12 +9,12 @@ ms.date: 07/27/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 442eef44f727ce7ef6059fa0bdfbf440c0345a09
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: f1eae19bda4fae0744483a647eed47104e366e52
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114727150"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867048"
 ---
 # <a name="create-an-azure-file-share"></a>Erstellen einer Azure-Dateifreigabe
 Um eine Azure-Dateifreigabe zu erstellen, müssen Sie drei Fragen zur Verwendung beantworten:
@@ -65,7 +65,7 @@ Der erste Abschnitt bei der Erstellung eines Speicherkontos hat die Bezeichnung 
 
 Stellen Sie zum Erstellen eines FileStorage-Speicherkontos sicher, dass das Optionsfeld **Leistung** auf *Premium* festgelegt und in der Dropdownliste **Premium-Kontoart** die Option **Dateifreigaben** ausgewählt ist.
 
-:::image type="content" source="media/storage-how-to-create-file-share/files-create-smb-share-performance-premium.png" alt-text="Screenshot: Optionsfeld „Leistung“ mit Auswahl von „Premium“ und Auswahl von „FileStorage“ für „Kontoart“.":::
+:::image type="content" source="media/storage-how-to-create-file-share/files-create-smb-share-performance-premium.png" alt-text="Screenshot des Optionsfelds „Leistung“, in dem „Premium“ ausgewählt ist und als Kontotyp der Eintrag „Dateifreigaben“ ausgewählt ist.":::
 
 Die anderen Felder für die Grundlagen sind unabhängig von der Auswahl des Speicherkontos:
 - **Speicherkontoname**: Der Name der Speicherkontoressource, die erstellt werden soll. Dieser Name muss global eindeutig sein, aber ansonsten gelten keine weiteren Einschränkungen. Der Name des Speicherkontos wird als Servername verwendet, wenn Sie eine Azure-Dateifreigabe per SMB einbinden.
@@ -180,7 +180,7 @@ Bevor Sie eine Azure-Dateifreigabe für ein vorhandenes Konto erstellen, ist es 
 1. Wählen Sie **Übersicht** und dann **Aktualisieren** aus.
 1. Wählen Sie unter **Freigabekapazität** den Wert **100 TiB** und anschließend **Speichern** aus.
 
-    :::image type="content" source="media/storage-files-how-to-create-large-file-share/files-enable-large-file-share-existing-account.png" alt-text="Screenshot: Azure-Speicherkonto, Blatt „Dateifreigaben“ mit hervorgehobenen 100 TiB-Freigaben":::
+    :::image type="content" source="media/storage-files-how-to-create-large-file-share/files-enable-large-file-share-existing-account.png" alt-text="Screenshot des Speicherkontos mit dem Blatt „Dateifreigaben“, auf dem im Bereich „Freigabekapazität“ die Option „100 TiB“ hervorgehoben ist.":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Verwenden Sie den folgenden Befehl, um große Dateifreigaben für Ihr vorhandenes Konto zu aktivieren. Ersetzen Sie `<yourStorageAccountName>` und `<yourResourceGroup>` durch Ihre Angaben.
@@ -231,7 +231,7 @@ Wählen Sie **Erstellen** aus, um die Erstellung der neuen Freigabe abzuschließ
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Sie können eine Azure-Dateifreigabe mit dem Cmdlet [`New-AzRmStorageShare`](/powershell/module/az.storage/New-AzRmStorageShare) erstellen. Bei den folgenden PowerShell-Befehlen wird davon ausgegangen, dass Sie die Variablen `$resourceGroupName` und `$storageAccountName` gemäß der obigen Definition im Abschnitt zum „Erstellen eines Speicherkontos mit Azure PowerShell“ festgelegt haben. 
 
-Das folgende Beispiel zeigt das Erstellen einer Dateifreigabe mit einer expliziten Ebene mithilfe des Parameters `-AccessTier`. Dies erfordert die Verwendung des Az.Storage-Vorschaumoduls, wie im Beispiel angegeben. Wenn keine Ebene angegeben wird, weil Sie entweder das Az.Storage-GA-Modul verwenden oder Sie diesen Befehl nicht einbezogen haben, ist die Standardebene für Standarddateifreigaben transaktionsoptimiert.
+Das folgende Beispiel zeigt das Erstellen einer Dateifreigabe mit einer expliziten Ebene mithilfe des Parameters `-AccessTier`. Wenn keine Ebene angegeben ist, wird für Standarddateifreigaben die Standardebene „transaktionsoptimiert“ verwendet.
 
 > [!Important]  
 > Bei Premium-Dateifreigaben verweist der Parameter `-QuotaGiB` auf die bereitgestellte Größe der Dateifreigabe. Die bereitgestellte Größe der Dateifreigabe ist die Menge, die Ihnen unabhängig von der Nutzung berechnet wird. Standard-Dateifreigaben werden nicht basierend auf der Nutzung, sondern auf der bereitgestellten Größe berechnet.

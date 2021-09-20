@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 3ad91e8a275fca61dfc70cdf98c84984ac08f754
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: e2cdcf3b42fbb71751644efbaa394c51d2f861fc
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340420"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258328"
 ---
 # <a name="troubleshoot-azure-nfs-file-share-problems"></a>Behandeln von Problemen mit Azure NFS-Dateifreigaben
 
@@ -40,7 +40,7 @@ Auch wenn idmapping ordnungsgemäß deaktiviert wurde, werden die Einstellungen 
 - Heben Sie die Einbindung der Freigabe auf.
 - Deaktivieren Sie id-mapping mit # echo Y > /sys/module/nfs/parameters/nfs4_disable_idmapping
 - Binden Sie die Freigabe wieder ein
-- Wenn rsync ausgeführt wird, führen Sie rsync mit dem Argument „–numeric-ids“ in einem Verzeichnis aus, das keine ungültigen Datei-/Verzeichnisnamen aufweist.
+- Wenn rsync ausgeführt wird, führen Sie rsync mit dem Argument „–numeric-ids“ in einem Verzeichnis aus, das keine ungültigen Verzeichnis-/Dateinamen aufweist.
 
 ## <a name="unable-to-create-an-nfs-share"></a>Es kann keine NFS-Freigabe erstellt werden.
 

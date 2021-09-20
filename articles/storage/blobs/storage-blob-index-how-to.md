@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0814f2896ec429650668a08590ffe7165fb120a3
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 682f855232ef021b10d148b3ede71a35dbaee760
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112282023"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867651"
 ---
 # <a name="use-blob-index-tags-to-manage-and-find-data-on-azure-blob-storage"></a>Verwenden von Blobindextags zum Verwalten und Suchen von Daten in Azure Blob Storage
 
@@ -191,6 +191,9 @@ static async Task BlobIndexTagsExample()
 ## <a name="filter-and-find-data-with-blob-index-tags"></a>Filtern und Suchen von Daten mit Blobindextags
 
 Diese Aufgabe kann von einem [Besitzer von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) oder einem Sicherheitsprinzipal ausgeführt werden, dem über eine benutzerdefinierte Azure-Rolle die Berechtigung für den [Azure-Ressourcenanbietervorgang](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` erteilt wurde.
+
+> [!NOTE]
+> Indextags können nicht verwendet werden, um frühere Versionen abzurufen. Tags für Vorgängerversionen werden nicht an das Blobindexmodul übermittelt. Weitere Informationen finden Sie unter [Bedingungen und bekannte Probleme](storage-manage-find-blobs.md#conditions-and-known-issues).
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 

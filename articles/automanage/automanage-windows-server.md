@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: 8ada2b5dbf58791da7bfbd11201a683c6a060f94
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: 68269b511d101f7c2c346a4bee45aef86bda8fe3
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113649604"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223110"
 ---
 # <a name="azure-automanage-for-machines-best-practices---windows-server"></a>Bewährte Methoden für Azure Automanage für Computer: Windows Server
 
@@ -28,7 +28,6 @@ Automanage unterstützt die folgenden Windows Server-Versionen:
 - Windows Server 2012/R2
 - Windows Server 2016
 - Windows Server 2019
-- Windows Server 2019 Azure Edition
 - Windows Server 2022
 - Windows Server 2022 Azure Edition
 
@@ -42,8 +41,9 @@ Automanage unterstützt die folgenden Windows Server-Versionen:
 |[Microsoft Antimalware](../security/fundamentals/antimalware.md)    |Microsoft Antimalware für Azure ist eine kostenlose Echtzeit-Schutzfunktion zum Erkennen und Entfernen von Viren, Spyware und anderer Schadsoftware. Das Tool generiert Warnungen, wenn bekannte schädliche oder unerwünschte Software versucht, sich selbst auf Ihren Azure-Systemen zu installieren oder dort auszuführen. **Hinweis**: Microsoft Antimalware setzt für eine ordnungsgemäße Funktion voraus, dass keine andere Antimalware-Software installiert ist.  [Weitere Informationen](../security/fundamentals/antimalware.md). |Produktion, Dev/Test    |Ja    |
 |[Updateverwaltung](../automation/update-management/overview.md)    |Sie können die Updateverwaltung in Azure Automation verwenden, um Betriebssystemupdates für Ihre Computer zu verwalten. Sie können den Status der verfügbaren Updates auf allen Agent-Computern schnell auswerten und die Installation der für den Server erforderlichen Updates initiieren. [Weitere Informationen](../automation/update-management/overview.md).    |Produktion, Dev/Test    |Nein    |
 |[Änderungsnachverfolgung und Bestand](../automation/change-tracking/overview.md) |„Änderungsnachverfolgung und Bestand“ kombiniert Änderungsnachverfolgungs- und Bestandsfunktionen, mit denen Sie Änderungen an virtuellen Computern und Serverinfrastrukturen nachverfolgen können. Da der Dienst auch eine Änderungsnachverfolgung für Dienste, Daemons, Software, Registrierung und Dateien in Ihrer Umgebung unterstützt, können Sie unerwünschte Änderungen ermitteln und entsprechende Warnungen auslösen. Durch die Unterstützung einer Bestandserfassung ist es zudem möglich, Ressourcen auf Gastsystemen abzurufen, um sich über die installierten Anwendungen und andere Konfigurationselemente zu informieren.  [Weitere Informationen](../automation/change-tracking/overview.md).    |Produktion, Dev/Test    |Nein    |
-|[Azure-Gastkonfiguration](../governance/policy/concepts/guest-configuration.md) | Die Gastkonfigurationsrichtlinie dient zur Überwachung der Konfiguration sowie zur Generierung von Berichten zur Konformität des Computers. Der Automanage-Dienst installiert die [Windows-Sicherheitsbaselines](/windows/security/threat-protection/windows-security-baselines) mithilfe der Gastkonfigurationserweiterung. Bei Windows-Computern wendet der Gastkonfigurationsdienst die Baselineeinstellungen automatisch erneut an, wenn sie nicht mehr konform sind. [Weitere Informationen](../governance/policy/concepts/guest-configuration.md).    |Produktion, Dev/Test    |Nein    |
+|[Gastkonfiguration](../governance/policy/concepts/guest-configuration.md) | Die Gastkonfigurationsrichtlinie dient zur Überwachung der Konfiguration sowie zur Generierung von Berichten zur Konformität des Computers. Der Automanage-Dienst installiert die [Windows-Sicherheitsbaselines](/windows/security/threat-protection/windows-security-baselines) mithilfe der Gastkonfigurationserweiterung. Bei Windows-Computern wendet der Gastkonfigurationsdienst die Baselineeinstellungen automatisch erneut an, wenn sie nicht mehr konform sind. [Weitere Informationen](../governance/policy/concepts/guest-configuration.md).    |Produktion, Dev/Test    |Nein    |
 |[Startdiagnose](../virtual-machines/boot-diagnostics.md)    | Die Startdiagnose ist ein Debuggingfeature für Azure-VMs, die eine Diagnose von Fehlern beim Starten von VMs ermöglicht. Mit der Startdiagnose können Benutzer anhand von Informationen des seriellen Protokolls und Screenshots den Zustand ihrer VMs beim Systemstart beobachten. Dies wird nur für Computer aktiviert, die verwaltete Datenträger verwenden. |Produktion, Dev/Test    |Nein    |
+|[Windows Admin Center](/windows-server/manage/windows-admin-center/azure/manage-vm)    | Verwenden Sie Windows Admin Center (Vorschau) im Azure-Portal, um das Betriebssystem Windows Server auf einem virtuellen Azure-Computer zu verwalten. Dies wird nur für Computer unterstützt, die Windows Server 2016 oder höher verwenden. Automanage konfiguriert Windows Admin Center über eine private IP-Adresse. Wenn Sie über eine öffentliche IP-Adresse eine Verbindung mit Windows Admin Center herstellen möchten, öffnen Sie eine Eingangsportregel für Port 6516. Automanage führt standardmäßig ein Onboarding von Windows Admin Center für das Dev/Test-Profil durch. Verwenden Sie die Einstellungen, um Windows Admin Center für die Produktions- und Dev/Testumgebungen zu aktivieren oder zu deaktivieren. |Produktion, Dev/Test    |Ja    |
 |[Azure Automation-Konto](../automation/automation-create-standalone-account.md)    |Azure Automation unterstützt die Verwaltung des gesamten Lebenszyklus Ihrer Infrastruktur und Anwendungen. [Weitere Informationen](../automation/automation-intro.md).    |Produktion, Dev/Test    |Nein    |
 |[Log Analytics-Arbeitsbereich](../azure-monitor/logs/log-analytics-overview.md) |Azure Monitor speichert Protokolldaten in einem Log Analytics-Arbeitsbereich, bei dem es sich um eine Azure-Ressource und einen Container handelt, in dem Daten gesammelt und aggregiert werden und der als eine administrative Grenze dient. [Weitere Informationen](../azure-monitor/logs/design-logs-deployment.md).    |Produktion, Dev/Test    |Nein    |
 

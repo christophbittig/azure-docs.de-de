@@ -10,12 +10,12 @@ ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d403bb00099de4a1fb5f4b9799f45386beb6a9f0
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 8ff972965533dac423cafc731aa4a10165570977
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110679251"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258766"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Verschieben eines Azure Storage-Kontos in eine andere Region
 
@@ -239,7 +239,7 @@ Sie können auch Azure Data Factory verwenden, um Ihre Daten zu verschieben. Die
 
   - [Kopieren von Daten nach oder aus Azure Blob Storage mit Azure Data Factory](/azure/data-factory/connector-azure-blob-storage)
   - [Kopieren von Daten nach und aus Azure Data Lake Storage Gen2 mithilfe von Azure Data Factory](/azure/data-factory/connector-azure-data-lake-storage)
-  - [Kopieren von Daten aus bzw. in Azure File Storage mithilfe von Azure Data Factory](/azure/data-factory/connector-azure-file-storage)
+  - [Kopieren von Daten aus bzw. in Azure Files mithilfe von Azure Data Factory](/azure/data-factory/connector-azure-file-storage)
   - [Kopieren von Daten nach und aus Azure Table Storage mit Azure Data Factory](/azure/data-factory/connector-azure-table-storage)
 
 ---

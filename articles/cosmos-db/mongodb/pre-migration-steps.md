@@ -4,15 +4,15 @@ description: In diesem Artikel erhalten Sie einen Überblick über die Vorausset
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 05/17/2021
+ms.date: 08/26/2021
 author: gahl-levy
 ms.author: gahllevy
-ms.openlocfilehash: c871dbdc8d668b7f4e6f9c84d7b94e292d7f8d00
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 80bb166925964624dc4a4b9811989ab15a5cfe9a
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122354781"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123035673"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Vorbereitende Schritte für Datenmigrationen von MongoDB zur Azure Cosmos DB-API für MongoDB
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -80,6 +80,12 @@ Wenn die Ermittlungs- und Bewertungsschritte abgeschlossen sind, ist die MongoDB
 * Der Dedizierte und gemeinsam genutzter Durchsatz im Vergleich
 
 Weitere Details hierzu finden Sie in den folgenden Abschnitten.
+
+### <a name="capacity-planning"></a>Kapazitätsplanung
+
+Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen?
+* Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](../convert-vcore-to-request-unit.md) 
+* Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbank-Workload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-capacity-planner.md)
 
 ### <a name="considerations-when-using-azure-cosmos-dbs-api-for-mongodb"></a>Aspekte beim Verwenden der Azure Cosmos DB-API für MongoDB
 
@@ -155,7 +161,8 @@ Nachdem Sie nun einen Überblick über Ihren bestehenden Datenbestand und ein De
    |Online|[Azure Database Migration Service](../../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; Nutzt die Azure Cosmos DB-BulkExecutor-Bibliothek <br/>&bull; Eignet sich für große Datasets und übernimmt die Replikation von Liveänderungen <br/>&bull; Funktioniert nur mit anderen MongoDB-Quellen|
    |Offline|[Azure Database Migration Service](../../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; Nutzt die Azure Cosmos DB-BulkExecutor-Bibliothek <br/>&bull; Eignet sich für große Datasets und übernimmt die Replikation von Liveänderungen <br/>&bull; Funktioniert nur mit anderen MongoDB-Quellen|
    |Offline|[Azure Data Factory](../../data-factory/connector-azure-cosmos-db.md)|&bull; Einfache Einrichtung und Unterstützung mehrerer Quellen <br/>&bull; Nutzt die Azure Cosmos DB-BulkExecutor-Bibliothek <br/>&bull; Geeignet für große Datasets <br/>&bull; Fehlende Prüfpunktausführung: Wenn während der Migration ein Problem auftritt, muss der gesamte Migrationsprozess neu gestartet werden.<br/>&bull; Fehlende Warteschlange für unzustellbare Nachrichten: Dies bedeutet, dass wenige fehlerhafte Dateien den gesamten Migrationsprozess unterbrechen können. <br/>&bull; Erfordert benutzerdefinierten Code, um den Lesedurchsatz für bestimmte Datenquellen zu erhöhen|
-   |Offline|[Vorhandene Mongo-Tools (mongodump, mongorestore, Studio3T)](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|&bull; Einfache Einrichtung und Integration <br/>&bull; Erfordert die benutzerdefinierte Behandlung von Drosselungen|
+   |Offline|[Vorhandene Mongo-Tools (mongodump, mongorestore, Studio3T)](tutorial-mongotools-cosmos-db.md)|&bull; Einfache Einrichtung und Integration <br/>&bull; Erfordert die benutzerdefinierte Behandlung von Drosselungen|
+   |offline / online|[Azure Databricks und Spark](migrate-databricks.md)|&bull; Vollständige Steuerung der Migrationsrate und Datentransformation <br/>&bull; Erfordert benutzerdefinierten Code|
     
    * Wenn Ihre Ressource eine Offline-Migration tolerieren kann, verwenden Sie das folgende Diagramm, um das entsprechende Migrationstool zu wählen:
 
@@ -195,7 +202,16 @@ Nehmen Sie sich in der Migrationsvorbereitungsphase etwas Zeit, um zu planen, we
 * Die beste Anleitung für die Migrationsnachbereitung finden Sie [hier](post-migration-optimization.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Migrieren von MongoDB-Daten in Cosmos DB mit dem Database Migration Service.](../../dms/tutorial-mongodb-cosmos-db.md) 
+
+* Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen?
+    * Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](../convert-vcore-to-request-unit.md) 
+    * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbank-Workload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-capacity-planner.md)
+* Migrieren zur Azure Cosmos DB-API für MongoDB
+   * [Offline-Migration mit nativen MongoDB-Tools](tutorial-mongotools-cosmos-db.md)
+   * [Offline-Migration mit dem Azure Database Migration Service (DMS)](../../dms/tutorial-mongodb-cosmos-db.md)
+   * [Online-Migration mit dem Azure-Datenbank-Migration Service (DMS)](../../dms/tutorial-mongodb-cosmos-db-online.md)
+   * [Offline/Online-Migration unter Verwendung von Azure Databricks und Spark](migrate-databricks.md)
+* [Leitfaden nach der Migration](post-migration-optimization.md): Optimierungsschritte nach der Migration zu Azure Cosmos DB-API für MongoDB
 * [Bereitstellen des Durchsatzes für Azure Cosmos-Container und -Datenbanken](../set-throughput.md)
 * [Partitioning in Azure Cosmos DB](../partitioning-overview.md) (Partitionierung in Azure Cosmos DB)
 * [Globale Verteilung in Azure Cosmos DB](../distribute-data-globally.md)

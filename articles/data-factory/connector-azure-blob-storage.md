@@ -1,20 +1,22 @@
 ---
 title: Kopieren und Transformieren von Daten in Azure Blob Storage
-description: Hier erfahren Sie, wie Sie Daten mithilfe von Data Factory in und aus Blob Storage kopieren sowie Daten in Blob Storage transformieren.
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Hier erfahren Sie, wie Sie Daten mithilfe von Azure Data Factory oder Azure Synapse Analytics in und aus Blob Storage kopieren sowie Daten in Blob Storage transformieren.
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 03/17/2021
-ms.openlocfilehash: 7f3880b74fe570410d24b28752f5b3d4068d978d
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.custom: synapse
+ms.date: 08/30/2021
+ms.openlocfilehash: e7d9e4da611bbbf13bacee60ed73248f5b39c14c
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109481389"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123307056"
 ---
-# <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure Blob Storage mithilfe von Azure Data Factory
+# <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory-or-azure-synapse-analytics"></a>Kopieren und Transformieren von Daten in Azure Blobspeicher mithilfe von Azure Data Factory oder Azure Synapse Analytics
 
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > - [Version 1](v1/data-factory-azure-blob-connector.md)
@@ -22,10 +24,10 @@ ms.locfileid: "109481389"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten in und aus Azure Blob Storage zu kopieren. Außerdem erfahren Sie, wie Sie die Datenflussaktivität zum Transformieren von Daten in Azure Blob Storage verwenden. Informationen zu Azure Data Factory finden Sie im [Einführungsartikel](introduction.md).
+In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory- und Azure Synapse-Pipelines verwenden, um Daten aus und in Azure Blobspeicher zu kopieren. Außerdem erfahren Sie, wie Sie die Datenflussaktivität zum Transformieren von Daten in Azure Blob Storage verwenden. Weitere Informationen finden Sie in den Einführungsartikeln zu [Azure Data Factory](introduction.md) und [Azure Synapse Analytics](..\synapse-analytics\overview-what-is.md).
 
 >[!TIP]
->Für Data Lake- oder Data Warehouse-Migrationsszenarios finden Sie weitere Informationen unter [Verwenden von Azure Data Factory zum Migrieren von Daten aus einem Data Lake oder Data Warehouse zu Azure](data-migration-guidance-overview.md).
+>Für Data Lake- oder Data Warehouse-Migrationsszenarios finden Sie weitere Informationen unter [Migrieren von Daten aus einem Data Lake oder Data Warehouse zu Azure](data-migration-guidance-overview.md).
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -49,7 +51,31 @@ Bei der Kopieraktivität unterstützt dieser Blob Storage-Connector Folgendes:
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für Blob Storage verwendet werden.
+## <a name="create-an-azure-blob-storage-linked-service-using-ui"></a>Erstellen eines verknüpften Azure Blob Storage-Diensts über die Benutzeroberfläche
+
+Führen Sie die folgenden Schritte aus, um einen verknüpften Azure Blobspeicherdienst in der Azure-Portal-Benutzeroberfläche zu erstellen.
+
+1. Navigieren Sie in Ihrem Azure Data Factory- oder Synapse-Arbeitsbereich zur Registerkarte „Verwalten“, wählen Sie „Verknüpfte Dienste“ aus, und klicken Sie dann auf „Neu“:
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Screenshot: Erstellen eines neuen verknüpften Diensts mithilfe der Azure Data Factory-Benutzeroberfläche":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Screenshot: Erstellen eines neuen verknüpften Diensts mithilfe der Azure Synapse-Benutzeroberfläche":::
+
+2. Suchen Sie nach Blob, und wählen Sie den Connector „Azure Blob Storage“ aus.
+
+    :::image type="content" source="media/connector-azure-blob-storage/azure-blob-storage-connector.png" alt-text="Wählen Sie den Azure Blobspeicher-Connector aus.":::    
+
+1. Konfigurieren Sie die Dienstdetails, testen Sie die Verbindung, und erstellen Sie den neuen verknüpften Dienst.
+
+    :::image type="content" source="media/connector-azure-blob-storage/configure-azure-blob-storage-linked-service.png" alt-text="Screenshot der Konfiguration für einen verknüpften Azure Blobspeicherdienst":::
+
+## <a name="connector-configuration-details"></a>Details zur Connectorkonfiguration
+
+Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zur Definition von Data Factory- und Synapse-Pipeline-Entitäten speziell für Blobspeicher verwendet werden.
 
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 
@@ -58,22 +84,23 @@ Dieser Blob Storage-Connector unterstützt die folgenden Authentifizierungsypen.
 - [Kontoschlüsselauthentifizierung](#account-key-authentication)
 - [SAS-Authentifizierung (Shared Access Signature)](#shared-access-signature-authentication)
 - [Dienstprinzipalauthentifizierung](#service-principal-authentication)
-- [Verwaltete Identitäten für Azure-Ressourcenauthentifizierung](#managed-identity)
+- [Authentifizierung mit einer systemseitig zugewiesenen verwalteten Identität](#managed-identity)
+- [Authentifizierung mit einer benutzerseitig zugewiesenen verwalteten Identität](#user-assigned-managed-identity-authentication)
 
 >[!NOTE]
 >- Wenn Sie die öffentliche Azure Integration Runtime-Instanz zum Herstellen einer Verbindung mit Blob Storage verwenden möchten, indem Sie in der Azure Storage-Firewall die Option **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben** aktivieren, müssen Sie die [Authentifizierung per verwalteter Identität](#managed-identity) verwenden.
->- Wenn Sie Daten mit PolyBase oder der COPY-Anweisung in Azure Synapse Analytics laden und Ihr Quell- oder Stagingblobspeicher mit einem Azure Virtual Network-Endpunkt konfiguriert wurde, müssen Sie die Authentifizierung per verwalteter Identität – wie für Synapse erforderlich – verwenden. Im Abschnitt [Verwaltete Identitäten für Azure-Ressourcenauthentifizierung](#managed-identity) sind weitere Konfigurationsvoraussetzungen aufgeführt.
+>- Wenn Sie Daten mit PolyBase oder der COPY-Anweisung in Azure Synapse Analytics laden und Ihr Quell- oder Stagingblobspeicher mit einem Azure Virtual Network-Endpunkt konfiguriert wurde, müssen Sie die Authentifizierung per verwalteter Identität – wie für Azure Synapse erforderlich – verwenden. Im Abschnitt [Verwaltete Identitäten für Azure-Ressourcenauthentifizierung](#managed-identity) sind weitere Konfigurationsvoraussetzungen aufgeführt.
 
 >[!NOTE]
 >Azure HDInsights- und Azure Machine Learning-Aktivitäten unterstützen nur die Authentifizierung mit Azure Blob Storage-Kontoschlüsseln.
 
 ### <a name="account-key-authentication"></a>Kontoschlüsselauthentifizierung
 
-Data Factory unterstützt die folgenden Eigenschaften für die Authentifizierung mit Speicherkontoschlüsseln:
+Die folgenden Eigenschaften werden für die Authentifizierung von Speicherkontoschlüsseln in Azure Data Factory- oder Synapse-Pipelines unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die `type`-Eigenschaft muss auf `AzureBlobStorage` (empfohlen) oder `AzureStorage` (siehe Hinweise unten) festgelegt werden. | Ja |
+| Typ | Die `type`-Eigenschaft muss auf `AzureBlobStorage` (empfohlen) oder `AzureStorage` (siehe Hinweise unten) festgelegt werden. | Ja |
 | connectionString | Geben Sie für die `connectionString`-Eigenschaft die Informationen ein, die zum Herstellen einer Verbindung mit Azure Storage erforderlich sind. <br/> Sie können auch den Kontoschlüssel in Azure Key Vault speichern und die `accountKey`-Konfiguration aus der Verbindungszeichenfolge pullen. Weitere Informationen finden Sie in den folgenden Beispielen und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn diese Eigenschaft nicht angegeben ist, verwendet der Dienst die normale Azure Integration Runtime. | Nein |
 
@@ -136,15 +163,15 @@ Sie müssen die Zugriffsschlüssel für Ihr Konto nicht freigeben. Die SAS ist e
 Weitere Informationen zu Shared Access Signatures finden Sie unter [Shared Access Signatures (SAS): Verstehen des Shared Access Signature-Modells](../storage/common/storage-sas-overview.md).
 
 > [!NOTE]
->- Data Factory unterstützt jetzt *SAS (Shared Access Signatures) für Dienste* sowie für *Konten*. Weitere Informationen zu SAS (Shared Access Signatures) finden Sie unter [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)](../storage/common/storage-sas-overview.md).
+>- Der Dienst unterstützt jetzt *SAS (Shared Access Signatures) für Dienste* sowie für *Konten*. Weitere Informationen zu SAS (Shared Access Signatures) finden Sie unter [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)](../storage/common/storage-sas-overview.md).
 >- Bei späteren Datasetkonfigurationen ist der Ordnerpfad der absolute Pfad ab der Containerebene. Sie müssen einen Pfad konfigurieren, der sich am Pfad in Ihrem SAS-URI orientiert.
 
-Data Factory unterstützt die folgenden Eigenschaften für die Verwendung der SAS-Authentifizierung:
+Für die Verwendung der SAS-Authentifizierung werden die folgenden Eigenschaften unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die `type`-Eigenschaft muss auf `AzureBlobStorage` (empfohlen) oder `AzureStorage` (siehe Hinweise unten) festgelegt werden. | Ja |
-| sasUri | Geben Sie den SAS-URI für Azure Storage-Ressourcen wie Blobs oder Container an. <br/>Markieren Sie dieses Feld als `SecureString`, um es sicher in Data Factory zu speichern. Sie können auch das SAS-Token in Azure Key Vault speichern, um die automatische Rotation zu nutzen und den Tokenabschnitt zu entfernen. Weitere Informationen finden Sie in den folgenden Beispielen sowie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| Typ | Die `type`-Eigenschaft muss auf `AzureBlobStorage` (empfohlen) oder `AzureStorage` (siehe Hinweise unten) festgelegt werden. | Ja |
+| sasUri | Geben Sie den SAS-URI für Azure Storage-Ressourcen wie Blobs oder Container an. <br/>Markieren Sie dieses Feld als `SecureString`, um es sicher zu speichern. Sie können auch das SAS-Token in Azure Key Vault speichern, um die automatische Rotation zu nutzen und den Tokenabschnitt zu entfernen. Weitere Informationen finden Sie in den folgenden Beispielen sowie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn diese Eigenschaft nicht angegeben ist, verwendet der Dienst die normale Azure Integration Runtime. | Nein |
 
 >[!NOTE]
@@ -202,13 +229,13 @@ Data Factory unterstützt die folgenden Eigenschaften für die Verwendung der SA
 
 Berücksichtigen Sie beim Erstellen eines SAS-URIs die folgenden Aspekte:
 
-- Legen Sie geeignete Lese-/Schreib-Berechtigungen für Objekte fest, basierend auf der Verwendung des verknüpften Diensts in Ihrer Data Factory (Lesen, Schreiben, Lesen/Schreiben).
+- Legen Sie geeignete Lese-/Schreib-Berechtigungen für Objekte fest, basierend auf der Verwendung des verknüpften Diensts (Lesen, Schreiben, Lesen/Schreiben).
 - Legen Sie für **Ablaufzeit** einen geeigneten Wert fest. Stellen Sie sicher, dass der Zugriff auf Storage-Objekte nicht während des aktiven Zeitraums der Pipeline abläuft.
-- Der URI sollte je nach Bedarf auf der richtigen Container- oder Blobebene erstellt werden. Ein SAS-URI zu einem Blob ermöglicht Data Factory den Zugriff auf dieses spezielle Blob. Ein SAS-URI zu einem Blobspeichercontainer ermöglicht Data Factory das Durchlaufen von Blobs in diesem Container. Wenn Sie den Zugriff später auf mehr Objekte ausweiten oder auf weniger Objekte beschränken oder den SAS-URI aktualisieren möchten, denken Sie daran, den verknüpften Dienst mit dem neuen URI zu aktualisieren.
+- Der URI sollte je nach Bedarf auf der richtigen Container- oder Blobebene erstellt werden. Ein SAS-URI zu einem Blob ermöglicht der Data Factory- oder Synapse-Pipeline den Zugriff auf dieses spezielle Blob. Ein SAS-URI zu einem Blobspeichercontainer ermöglicht der Data Factory- oder Synapse-Pipeline das Durchlaufen von Blobs in diesem Container. Wenn Sie den Zugriff später auf mehr Objekte ausweiten oder auf weniger Objekte beschränken oder den SAS-URI aktualisieren möchten, denken Sie daran, den verknüpften Dienst mit dem neuen URI zu aktualisieren.
 
 ### <a name="service-principal-authentication"></a>Dienstprinzipalauthentifizierung
 
-Allgemeine Informationen zur Dienstprinzipalauthentifizierung für Azure Storage finden Sie unter [Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory](../storage/common/storage-auth-aad.md).
+Allgemeine Informationen zur Dienstprinzipalauthentifizierung für Azure Storage finden Sie unter [Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory](../storage/blobs/authorize-access-azure-active-directory.md).
 
 Zum Verwenden der Dienstprinzipalauthentifizierung führen Sie die folgenden Schritte aus:
 
@@ -218,7 +245,7 @@ Zum Verwenden der Dienstprinzipalauthentifizierung führen Sie die folgenden Sch
     - Anwendungsschlüssel
     - Mandanten-ID
 
-2. Erteilen Sie dem Dienstprinzipal die entsprechenden Berechtigung in Azure Blob Storage. Weitere Informationen zu den Rollen finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten über das Azure-Portal](../storage/common/storage-auth-aad-rbac-portal.md).
+2. Erteilen Sie dem Dienstprinzipal die entsprechenden Berechtigung in Azure Blob Storage. Weitere Informationen zu den Rollen finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten über das Azure-Portal](../storage/blobs/assign-azure-role-data-access.md).
 
     - Erteilen Sie ihm **als Quelle** in der **Zugriffssteuerung (IAM)** mindestens die Rolle **Storage-Blobdatenleser**.
     - Weisen Sie ihm **Als Senke** in der **Zugriffssteuerung (IAM)** mindestens die Rolle **Mitwirkender an Storage-Blobdaten** zu.
@@ -231,15 +258,15 @@ Diese Eigenschaften werden für den mit Azure Blob Storage verknüpften Dienst u
 | serviceEndpoint | Geben Sie den Azure Blob Storage-Dienstendpunkt mit dem Muster `https://<accountName>.blob.core.windows.net/` an. | Ja |
 | accountKind | Geben Sie die Art Ihres Speicherkontos an. Zulässige Werte sind: **Storage** (Universell v1), **StorageV2** (Universell v2), **BlobStorage** oder **BlockBlobStorage**. <br/><br/>Bei Verwendung des mit Azure Blob verknüpften Diensts im Datenfluss wird die Authentifizierung per verwalteter Identität oder Dienstprinzipal nicht unterstützt, wenn der Kontotyp leer ist oder der Wert „Storage“ lautet. Geben Sie die richtige Kontoart an, wählen Sie eine andere Authentifizierung aus, oder aktualisieren Sie Ihr Speicherkonto auf „Universell v2“. | Nein |
 | servicePrincipalId | Geben Sie die Client-ID der Anwendung an. | Ja |
-| servicePrincipalKey | Geben Sie den Schlüssel der Anwendung an. Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
+| servicePrincipalKey | Geben Sie den Schlüssel der Anwendung an. Markieren Sie dieses Feld als einen **SecureString**, um es sicher zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | tenant | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie im Azure-Portal mit der Maus auf den Bereich oben rechts zeigen. | Ja |
-| azureCloudType | Geben Sie für die Dienstprinzipalauthentifizierung die Art der Azure-Cloudumgebung an, bei der Ihre Azure Active Directory-Anwendung registriert ist. <br/> Zulässige Werte sind **AzurePublic**, **AzureChina**, **AzureUsGovernment** und **AzureGermany**. Standardmäßig wird die Cloudumgebung der Data Factory verwendet. | Nein |
+| azureCloudType | Geben Sie für die Dienstprinzipalauthentifizierung die Art der Azure-Cloudumgebung an, bei der Ihre Azure Active Directory-Anwendung registriert ist. <br/> Zulässige Werte sind **AzurePublic**, **AzureChina**, **AzureUsGovernment** und **AzureGermany**. Standardmäßig wird die Cloudumgebung der Data Factory oder der Synapse-Pipeline verwendet. | Nein |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn diese Eigenschaft nicht angegeben ist, verwendet der Dienst die normale Azure Integration Runtime. | Nein |
 
 >[!NOTE]
 >
 >- Wenn für Ihr Blobkonto die Option [Vorläufiges Löschen](../storage/blobs/soft-delete-blob-overview.md) freigeschaltet ist, wird die Authentifizierung des Dienstprinzipals in Datenflüssen nicht unterstützt.
->- Wenn Sie über einen privaten Endpunkt mithilfe von Data Flow auf den Blob-Speicher zugreifen, müssen Sie beachten, dass Data Flow bei Verwendung von Dienstprinzipalauthentifizierung mit dem ADLS Gen2-Endpunkt statt mit dem Blob-Endpunkt verbunden wird. Stellen Sie sicher, dass Sie den entsprechenden privaten Endpunkt in ADF erstellen, um den Zugriff zu ermöglichen.
+>- Wenn Sie über einen privaten Endpunkt mithilfe von Data Flow auf den Blob-Speicher zugreifen, müssen Sie beachten, dass Data Flow bei Verwendung von Dienstprinzipalauthentifizierung mit dem ADLS Gen2-Endpunkt statt mit dem Blob-Endpunkt verbunden wird. Stellen Sie sicher, dass Sie den entsprechenden privaten Endpunkt in Ihrer Data Factory oder Ihrem Synapse-Arbeitsbereich erstellen, um den Zugriff zu ermöglichen.
 
 >[!NOTE]
 >Die Dienstprinzipalauthentifizierung wird nur durch den verknüpften Dienst vom Typ „AzureBlobStorage“unterstützt, nicht jedoch vom vorherigen verknüpften Dienst vom Typ „AzureStorage“.
@@ -269,21 +296,18 @@ Diese Eigenschaften werden für den mit Azure Blob Storage verknüpften Dienst u
 }
 ```
 
-### <a name="managed-identities-for-azure-resource-authentication"></a><a name="managed-identity"></a> Verwaltete Identitäten für Azure-Ressourcenauthentifizierung
+### <a name="system-assigned-managed-identity-authentication"></a><a name="managed-identity"></a> Authentifizierung mit einer systemseitig zugewiesenen verwalteten Identität
 
-Eine Data Factory kann einer [verwalteten Identität für Azure-Ressourcen](data-factory-service-identity.md) zugeordnet werden, die diese spezielle Data Factory darstellt. Sie können diese verwaltete Identität direkt für die Blob Storage-Authentifizierung verwenden, ähnlich wie bei der Verwendung Ihres eigenen Dienstprinzipals. Sie erlaubt dieser bestimmten Factory den Zugriff auf und das Kopieren von Daten aus bzw. in Blob Storage.
+Eine Data Factory- oder Synapse-Pipeline kann einer [systemseitig zugewiesenen verwalteten Identität für Azure-Ressourcen](data-factory-service-identity.md#system-assigned-managed-identity) zugeordnet werden, die diese Ressource für die Authentifizierung bei anderen Azure-Diensten darstellt. Sie können diese systemseitig zugewiesene verwaltete Identität direkt für die Blob Storage-Authentifizierung verwenden, ähnlich wie bei der Verwendung Ihres eigenen Dienstprinzipals. Sie erlaubt dieser bestimmten Ressource den Zugriff auf und das Kopieren von Daten aus bzw. in Blob Storage. Weitere Informationen zu verwalteten Identitäten für Azure-Ressourcen finden Sie unter [Verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md)
 
-Weitere allgemeine Informationen zur Azure Storage-Authentifizierung finden Sie unter [Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory](../storage/common/storage-auth-aad.md). Wenn Sie verwaltete Identitäten für die Azure-Ressourcenauthentifizierung verwenden möchten, gehen Sie folgendermaßen vor:
+Weitere allgemeine Informationen zur Azure Storage-Authentifizierung finden Sie unter [Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory](../storage/blobs/authorize-access-azure-active-directory.md). Wenn Sie verwaltete Identitäten für die Azure-Ressourcenauthentifizierung verwenden möchten, gehen Sie folgendermaßen vor:
 
-1. [Rufen Sie die Informationen zur verwalteten Data Factory-Identität ab](data-factory-service-identity.md#retrieve-managed-identity), indem Sie den Wert der Objekt-ID der verwalteten Identität kopieren, der zusammen mit Ihrer Factory generiert wurde.
+1. [Rufen Sie die Informationen zur systemseitig zugewiesenen verwalteten Identität ab](data-factory-service-identity.md#retrieve-managed-identity), indem Sie den Wert der Objekt-ID der systemseitig zugewiesenen verwalteten Identität kopieren, die zusammen mit Ihrer Factory- oder Ihrem Synapse-Arbeitsbereich generiert wurde.
 
-2. Erteilen Sie der verwalteten Identität Berechtigungen in Azure Blob Storage. Weitere Informationen zu den Rollen finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten über das Azure-Portal](../storage/common/storage-auth-aad-rbac-portal.md).
+2. Erteilen Sie der verwalteten Identität Berechtigungen in Azure Blob Storage. Weitere Informationen zu den Rollen finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten über das Azure-Portal](../storage/blobs/assign-azure-role-data-access.md).
 
     - Erteilen Sie ihm **als Quelle** in der **Zugriffssteuerung (IAM)** mindestens die Rolle **Storage-Blobdatenleser**.
     - Weisen Sie ihm **Als Senke** in der **Zugriffssteuerung (IAM)** mindestens die Rolle **Mitwirkender an Storage-Blobdaten** zu.
-
->[!IMPORTANT]
->Wenn Sie Daten mithilfe von PolyBase oder der COPY-Anweisung aus Blob Storage (als Quelle oder Stagingkomponente) in Azure Synapse Analytics laden und dazu die Authentifizierung per verwalteter Identität für Blob Storage verwenden, müssen Sie unbedingt auch die Schritte 1 bis 3 in [dieser Anleitung](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage) befolgen. Mit diesen Schritten wird der Server bei Azure AD registriert, und Ihrem Server wird die Rolle „Mitwirkender an Storage-Blobdaten“ zugewiesen. Data Factory kümmert sich um den Rest. Wenn Sie Blob Storage mit einem Azure Virtual Network-Endpunkt konfigurieren, muss außerdem im Einstellungsmenü **Firewalls und virtuelle Netzwerke** des Azure Storage-Kontos die Option **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben** aktiviert sein (wie für Synapse erforderlich).
 
 Diese Eigenschaften werden für den mit Azure Blob Storage verknüpften Dienst unterstützt:
 
@@ -293,14 +317,6 @@ Diese Eigenschaften werden für den mit Azure Blob Storage verknüpften Dienst u
 | serviceEndpoint | Geben Sie den Azure Blob Storage-Dienstendpunkt mit dem Muster `https://<accountName>.blob.core.windows.net/` an. | Ja |
 | accountKind | Geben Sie die Art Ihres Speicherkontos an. Zulässige Werte sind: **Storage** (Universell v1), **StorageV2** (Universell v2), **BlobStorage** oder **BlockBlobStorage**. <br/><br/>Bei Verwendung des mit Azure Blob verknüpften Diensts im Datenfluss wird die Authentifizierung per verwalteter Identität oder Dienstprinzipal nicht unterstützt, wenn der Kontotyp leer ist oder der Wert „Storage“ lautet. Geben Sie die richtige Kontoart an, wählen Sie eine andere Authentifizierung aus, oder aktualisieren Sie Ihr Speicherkonto auf „Universell v2“. | Nein |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn diese Eigenschaft nicht angegeben ist, verwendet der Dienst die normale Azure Integration Runtime. | Nein |
-
-> [!NOTE]
->
-> - Wenn für Ihr Blobkonto die Option [Vorläufiges Löschen](../storage/blobs/soft-delete-blob-overview.md) freigeschaltet ist, wird die Authentifizierung von verwalteten Identitäten in Datenflüssen nicht unterstützt.
-> - Wenn Sie über einen privaten Endpunkt mithilfe von Data Flow auf den Blob-Speicher zugreifen, müssen Sie beachten, dass das Datenfluss bei Verwendung von Authentifizierung mit verwalteten Identitäten mit dem ADLS Gen2-Endpunkt statt mit dem Blob-Endpunkt verbunden wird. Stellen Sie sicher, dass Sie den entsprechenden privaten Endpunkt in ADF erstellen, um den Zugriff zu ermöglichen.
-
-> [!NOTE]
-> Verwaltete Identitäten für die Azure-Ressourcenauthentifizierung werden nur vom verknüpften Dienst vom Typ „AzureBlobStorage“ unterstützt, nicht jedoch vom vorherigen verknüpften Dienst vom Typ „AzureStorage“.
 
 **Beispiel:**
 
@@ -320,6 +336,63 @@ Diese Eigenschaften werden für den mit Azure Blob Storage verknüpften Dienst u
     }
 }
 ```
+
+### <a name="user-assigned-managed-identity-authentication"></a>Authentifizierung mit einer benutzerseitig zugewiesenen verwalteten Identität
+Eine Data Factory kann mit einer oder mehreren [benutzerseitig zugewiesenen verwalteten Identitäten](data-factory-service-identity.md#user-assigned-managed-identity) zugewiesen werden. Sie können diese benutzerseitig zugewiesene verwaltete Identität für die Blob Storage-Authentifizierung verwenden, die den Zugriff auf und das Kopieren von Daten aus oder in Blobspeicher ermöglicht. Weitere Informationen zu verwalteten Identitäten für Azure-Ressourcen finden Sie unter [Verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md)
+
+Weitere allgemeine Informationen zur Azure Storage-Authentifizierung finden Sie unter [Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory](../storage/blobs/authorize-access-azure-active-directory.md). Führen Sie die folgenden Schritte aus, um die Authentifizierung mit einer benutzerseitig zugewiesenen verwalteten Identität zu verwenden:
+
+1. [Erstellen Sie eine oder mehrere benutzerseitig zugewiesene verwaltete Identitäten](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md), und gewähren Sie ihnen Berechtigungen in Azure Blob Storage. Weitere Informationen zu den Rollen finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten über das Azure-Portal](../storage/blobs/assign-azure-role-data-access.md).
+
+    - Erteilen Sie ihm **als Quelle** in der **Zugriffssteuerung (IAM)** mindestens die Rolle **Storage-Blobdatenleser**.
+    - Weisen Sie ihm **Als Senke** in der **Zugriffssteuerung (IAM)** mindestens die Rolle **Mitwirkender an Storage-Blobdaten** zu.
+     
+2. Weisen Sie Ihrer Data Factory eine oder mehrere benutzerseitig zugewiesene verwaltete Identitäten zu, und [erstellen Sie Anmeldeinformationen](data-factory-service-identity.md#credentials) für jede benutzerseitig zugewiesene verwaltete Identität. 
+
+
+Diese Eigenschaften werden für den mit Azure Blob Storage verknüpften Dienst unterstützt:
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| type | Die **type**-Eigenschaft muss auf **AzureBlobStorage** festgelegt sein. | Ja |
+| serviceEndpoint | Geben Sie den Azure Blob Storage-Dienstendpunkt mit dem Muster `https://<accountName>.blob.core.windows.net/` an. | Ja |
+| accountKind | Geben Sie die Art Ihres Speicherkontos an. Zulässige Werte sind: **Storage** (Universell v1), **StorageV2** (Universell v2), **BlobStorage** oder **BlockBlobStorage**. <br/><br/>Bei Verwendung des mit Azure Blob verknüpften Diensts im Datenfluss wird die Authentifizierung per verwalteter Identität oder Dienstprinzipal nicht unterstützt, wenn der Kontotyp leer ist oder der Wert „Storage“ lautet. Geben Sie die richtige Kontoart an, wählen Sie eine andere Authentifizierung aus, oder aktualisieren Sie Ihr Speicherkonto auf „Universell v2“. | Nein |
+| Anmeldeinformationen | Geben Sie die benutzerseitig zugewiesene verwaltete Identität als Anmeldeinformationsobjekt an. | Ja |
+| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn diese Eigenschaft nicht angegeben ist, verwendet der Dienst die normale Azure Integration Runtime. | Nein |
+
+**Beispiel:**
+
+```json
+{
+    "name": "AzureBlobStorageLinkedService",
+    "properties": {
+        "type": "AzureBlobStorage",
+        "typeProperties": {            
+            "serviceEndpoint": "https://<accountName>.blob.core.windows.net/",
+            "accountKind": "StorageV2",
+            "credential": {
+                "referenceName": "credential1",
+                "type": "CredentialReference"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+>[!IMPORTANT]
+>Wenn Sie Daten mithilfe von PolyBase oder der COPY-Anweisung aus Blob Storage (als Quelle oder Stagingkomponente) in Azure Synapse Analytics laden und dazu die Authentifizierung per verwalteter Identität für Blob Storage verwenden, müssen Sie unbedingt auch die Schritte 1 bis 3 in [dieser Anleitung](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage) befolgen. Mit diesen Schritten wird der Server bei Azure AD registriert, und Ihrem Server wird die Rolle „Mitwirkender an Storage-Blobdaten“ zugewiesen. Data Factory kümmert sich um den Rest. Wenn Sie Blob Storage mit einem Azure Virtual Network-Endpunkt konfigurieren, muss außerdem im Einstellungsmenü **Firewalls und virtuelle Netzwerke** des Azure Storage-Kontos die Option **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben** aktiviert sein (wie für Azure Synapse erforderlich).
+
+> [!NOTE]
+>
+> - Wenn für Ihr Blobkonto die Option [Vorläufiges Löschen](../storage/blobs/soft-delete-blob-overview.md) freigeschaltet ist, wird die Authentifizierung von systemseitig/benutzerseitig zugewiesenen verwalteten Identitäten in Datenflüssen nicht unterstützt.
+> - Wenn Sie über einen privaten Endpunkt mithilfe von Data Flow auf den Blob-Speicher zugreifen, müssen Sie beachten, dass das Datenfluss bei Verwendung von Authentifizierung mit systemseitig/benutzerseitig zugewiesenen verwalteten Identitäten mit dem ADLS Gen2-Endpunkt statt mit dem Blob-Endpunkt verbunden wird. Stellen Sie sicher, dass Sie den entsprechenden privaten Endpunkt in ADF erstellen, um den Zugriff zu ermöglichen.
+
+> [!NOTE]
+> Systemseitig/benutzerseitig zugewiesene verwaltete Identitäten für die Azure-Ressourcenauthentifizierung werden nur vom verknüpften Dienst vom Typ „AzureBlobStorage“ unterstützt, nicht jedoch vom vorherigen verknüpften Dienst vom Typ „AzureStorage“.
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 
@@ -392,7 +465,7 @@ Folgende Eigenschaften werden für Azure Blob Storage unter den `storeSettings`-
 | maxConcurrentConnections |Die Obergrenze gleichzeitiger Verbindungen mit dem Datenspeicher während der Aktivitätsausführung. Geben Sie diesen Wert nur an, wenn Sie die Anzahl der gleichzeitigen Verbindungen begrenzen möchten.| Nein                                            |
 
 > [!NOTE]
-> Beim Parquet-Format/Textformat mit Trennzeichen wird die im nächsten Abschnitt beschriebene Quelle der Kopieraktivität vom Typ **BlobSource** aus Gründen der Abwärtskompatibilität weiterhin unverändert unterstützt. Es wird allerdings empfohlen, das neue Modell zu verwenden, bis die Data Factory-Erstellungsoberfläche für die Generierung dieser neuen Typen angepasst wurde.
+> Beim Parquet-Format/Textformat mit Trennzeichen wird die im nächsten Abschnitt beschriebene Quelle der Kopieraktivität vom Typ **BlobSource** aus Gründen der Abwärtskompatibilität weiterhin unverändert unterstützt. Es wird allerdings empfohlen, das neue Modell zu verwenden, bis die Erstellungsoberfläche für die Generierung dieser neuen Typen angepasst wurde.
 
 **Beispiel:**
 
@@ -436,7 +509,7 @@ Folgende Eigenschaften werden für Azure Blob Storage unter den `storeSettings`-
 ```
 
 > [!NOTE]
-> Der Container `$logs`, der während der Aktivierung von Storage Analytics für eine Speicherkonto automatisch erstellt wird, wird beim Ausführen eines Auflistungsvorgangs für Container über die Data Factory-Benutzeroberfläche nicht angezeigt. Der Dateipfad muss direkt angegeben werden, damit Data Factory Dateien aus dem Container `$logs` verwenden kann.
+> Der Container `$logs`, der während der Aktivierung von Storage Analytics für eine Speicherkonto automatisch erstellt wird, wird beim Ausführen eines Auflistungsvorgangs für Container über die Benutzeroberfläche nicht angezeigt. Der Dateipfad muss direkt angegeben werden, damit Ihre Data Factory- oder Synapse-Pipeline Dateien aus dem Container `$logs` verwenden kann.
 
 ### <a name="blob-storage-as-a-sink-type"></a>Blob Storage als Senkentyp
 
@@ -446,10 +519,11 @@ Folgende Eigenschaften werden für Azure Blob Storage unter den `storeSettings`-
 
 | Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | Die `type`-Eigenschaft unter `storeSettings` muss auf `AzureBlobStorageWriteSettings` festgelegt werden. | Ja      |
+| Typ                     | Die `type`-Eigenschaft unter `storeSettings` muss auf `AzureBlobStorageWriteSettings` festgelegt werden. | Ja      |
 | copyBehavior             | Definiert das Kopierverhalten, wenn es sich bei der Quelle um Dateien aus einem dateibasierten Datenspeicher handelt.<br/><br/>Zulässige Werte sind:<br/><b>- PreserveHierarchy (Standard)</b>: Behält die Dateihierarchie im Zielordner bei. Der relative Pfad der Quelldatei zum Quellordner ist mit dem relativen Pfad der Zieldatei zum Zielordner identisch.<br/><b>- FlattenHierarchy</b>: Alle Dateien aus dem Quellordner befinden sich auf der ersten Ebene des Zielordners. Die Namen für die Zieldateien werden automatisch generiert. <br/><b>- MergeFiles</b>: Alle Dateien aus dem Quellordner werden in einer Datei zusammengeführt. Wenn der Datei- oder Blobname angegeben wurde, entspricht der Name der Zusammenführungsdatei dem angegebenen Namen. Andernfalls wird der Dateiname automatisch generiert. | Nein       |
-| blockSizeInMB | Geben Sie die Blockgröße, die zum Schreiben von Daten in Blockblobs verwendet wird, in Megabyte an. Informieren Sie sich ausführlicher über [Blockblobs](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs). <br/>Der zulässige Wert liegt *zwischen 4 und 100 MB*. <br/>Standardmäßig bestimmt Data Factory automatisch die Blockgröße, basierend auf dem Quellspeichertyp und den Daten. Bei einer nicht binären Kopie in Blob Storage beträgt die Standardblockgröße 100 MB, damit sie in maximal 4,95 TB Daten passt. Dies ist möglicherweise nicht optimal, wenn Ihre Daten nicht groß sind – insbesondere, wenn Sie eine selbstgehostete Integration Runtime mit einer schlechten Netzwerkverbindung verwenden, was zu einem Timeout des Vorgangs oder Leistungsproblemen führt. Sie können explizit eine Blockgröße angeben und gleichzeitig sicherstellen, dass `blockSizeInMB*50000` groß genug ist, um die Daten zu speichern. Andernfalls tritt bei der Ausführung der Kopieraktivität ein Fehler auf. | Nein |
+| blockSizeInMB | Geben Sie die Blockgröße, die zum Schreiben von Daten in Blockblobs verwendet wird, in Megabyte an. Informieren Sie sich ausführlicher über [Blockblobs](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs). <br/>Der zulässige Wert liegt *zwischen 4 und 100 MB*. <br/>Standardmäßig bestimmt der Dienst automatisch die Blockgröße, basierend auf dem Quellspeichertyp und den Daten. Bei einer nicht binären Kopie in Blob Storage beträgt die Standardblockgröße 100 MB, damit sie in maximal 4,95 TB Daten passt. Dies ist möglicherweise nicht optimal, wenn Ihre Daten nicht groß sind – insbesondere, wenn Sie eine selbstgehostete Integration Runtime mit einer schlechten Netzwerkverbindung verwenden, was zu einem Timeout des Vorgangs oder Leistungsproblemen führt. Sie können explizit eine Blockgröße angeben und gleichzeitig sicherstellen, dass `blockSizeInMB*50000` groß genug ist, um die Daten zu speichern. Andernfalls tritt bei der Ausführung der Kopieraktivität ein Fehler auf. | Nein |
 | maxConcurrentConnections |Die Obergrenze gleichzeitiger Verbindungen mit dem Datenspeicher während der Aktivitätsausführung. Geben Sie diesen Wert nur an, wenn Sie die Anzahl der gleichzeitigen Verbindungen begrenzen möchten.| Nein       |
+| metadata |Hiermit werden beim Kopieren in die Senke benutzerdefinierte Metadaten festgelegt. Jedes Objekt unter dem Array `metadata` stellt eine zusätzliche Spalte dar. `name` definiert den Namen des Metadatenschlüssels, und `value` gibt den Datenwert dieses Schlüssels an. Wenn das [Feature zum Beibehalten von Attributen](./copy-activity-preserve-metadata.md#preserve-metadata) verwendet wird, werden die angegebenen Metadaten mit den Metadaten der Quelldatei vereint/überschrieben.<br/><br/>Zulässige Datenwerte sind:<br/>- `$$LASTMODIFIED`: Eine reservierte Variable gibt an, dass der Zeitpunkt der letzten Änderung der Quelldateien gespeichert werden soll. Gilt nur für dateibasierte Quellen im Binärformat.<br/><b>– Ausdruck<b><br/>- <b>Statischer Wert<b>| Nein       |
 
 **Beispiel:**
 
@@ -478,7 +552,21 @@ Folgende Eigenschaften werden für Azure Blob Storage unter den `storeSettings`-
                 "type": "ParquetSink",
                 "storeSettings":{
                     "type": "AzureBlobStorageWriteSettings",
-                    "copyBehavior": "PreserveHierarchy"
+                    "copyBehavior": "PreserveHierarchy",
+                    "metadata": [
+                        {
+                            "name": "testKey1",
+                            "value": "value1"
+                        },
+                        {
+                            "name": "testKey2",
+                            "value": "value2"
+                        },
+                        {
+                            "name": "lastModifiedKey",
+                            "value": "$$LASTMODIFIED"
+                        }
+                    ]
                 }
             }
         }
@@ -503,7 +591,7 @@ In diesem Abschnitt wird das resultierende Verhalten beschrieben, wenn ein Datei
 
 Angenommen, Sie haben die folgende Quellordnerstruktur und möchten die Dateien kopieren, deren Namen fett formatiert sind:
 
-| Beispielquellstruktur                                      | Inhalt in „FileListToCopy.txt“                             | Konfiguration der Data Factory                                            |
+| Beispielquellstruktur                                      | Inhalt in „FileListToCopy.txt“                             | Konfiguration 
 | ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------ |
 | Container<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Metadaten<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy.txt | Datei1.csv<br>Unterordner1/Datei3.csv<br>Unterordner1/Datei5.csv | **Im Dataset:**<br>– Container: `container`<br>– Ordnerpfad: `FolderA`<br><br>**In der Quelle der Kopieraktivität:**<br>– Dateilistenpfad: `container/Metadata/FileListToCopy.txt` <br><br>Der Dateilistenpfad verweist auf eine Textdatei im selben Datenspeicher, der eine Liste der zu kopierenden Dateien enthält, und zwar eine Datei pro Zeile. Diese enthält den relativen Pfad zu dem im Dataset konfigurierten Pfad. |
 
@@ -543,7 +631,7 @@ Bei der Quelltransformation können Sie in Azure Blob Storage Daten aus einem Co
 
 ![Quelloptionen](media/data-flow/sourceOptions1.png "Quelloptionen")
 
-**Platzhalterpfade:** Mithilfe eines Platzhaltermusters wird Data Factory angewiesen, die einzelnen übereinstimmenden Ordner und Dateien in einer einzigen Quelltransformation zu durchlaufen. Dies ist eine effektive Methode zur Verarbeitung von mehreren Dateien in einem einzigen Datenfluss. Über das Pluszeichen (+), das angezeigt wird, wenn Sie mit dem Cursor auf Ihr vorhandenes Platzhaltermuster zeigen, können Sie weitere Platzhaltermuster hinzufügen.
+**Platzhalterpfade:** Mithilfe eines Platzhaltermusters wird der Dienst angewiesen, die einzelnen übereinstimmenden Ordner und Dateien in einer einzigen Quelltransformation zu durchlaufen. Dies ist eine effektive Methode zur Verarbeitung von mehreren Dateien in einem einzigen Datenfluss. Über das Pluszeichen (+), das angezeigt wird, wenn Sie mit dem Cursor auf Ihr vorhandenes Platzhaltermuster zeigen, können Sie weitere Platzhaltermuster hinzufügen.
 
 Wählen Sie in Ihrem Quellcontainer eine Reihe von Dateien aus, die einem Muster entsprechen. Es kann nur ein Container im Dataset angegeben werden. Daher muss Ihr Platzhalterpfad auch den Ordnerpfad des Stammordners enthalten.
 
@@ -565,7 +653,7 @@ Legen Sie zunächst einen Platzhalter fest, um darin alle Pfade, die die partiti
 
 ![Einstellungen für die Partitionsquelldatei](media/data-flow/partfile2.png "Einstellung der Partitionsdatei")
 
-Verwenden Sie die Einstellung **Partition root path** (Partitionsstammpfad), um zu definieren, was die oberste Ebene der Ordnerstruktur ist. Wenn Sie die Inhalte Ihrer Daten über die Datenvorschau anzeigen, sehen Sie, dass Data Factory die aufgelösten Partitionen hinzufügen wird, die auf den einzelnen Ordnerebenen gefunden werden.
+Verwenden Sie die Einstellung **Partition root path** (Partitionsstammpfad), um zu definieren, was die oberste Ebene der Ordnerstruktur ist. Wenn Sie die Inhalte Ihrer Daten über die Datenvorschau anzeigen, sehen Sie, dass der Dienst die aufgelösten Partitionen hinzufügen wird, die auf Ihren einzelnen Ordnerebenen gefunden werden.
 
 ![Partitionsstammpfad](media/data-flow/partfile1.png "Vorschau des Partitionsstammpfads")
 
@@ -628,13 +716,13 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivi
 ## <a name="legacy-models"></a>Legacy-Modelle
 
 >[!NOTE]
->Die folgenden Modelle werden aus Gründen der Abwärtskompatibilität weiterhin unverändert unterstützt. Es wird empfohlen, das oben erwähnte neue Modell zu verwenden. Die Data Factory-Benutzeroberfläche für die Erstellung ist zum Generieren des neuen Modells gewechselt.
+>Die folgenden Modelle werden aus Gründen der Abwärtskompatibilität weiterhin unverändert unterstützt. Es wird empfohlen, das oben erwähnte neue Modell zu verwenden. Die Erstellungsbenutzeroberfläche für die Erstellung ist zum Generieren des neuen Modells gewechselt.
 
 ### <a name="legacy-dataset-model"></a>Legacy-Datasetmodell
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die `type`-Eigenschaft des Datasets muss auf `AzureBlob` festgelegt sein. | Ja |
+| Typ | Die `type`-Eigenschaft des Datasets muss auf `AzureBlob` festgelegt sein. | Ja |
 | folderPath | Der Pfad zum Container und Ordner in Blob Storage. <br/><br/>Für den Pfad mit Ausnahme des Containernamens werden Platzhalterfilter unterstützt. Folgende Platzhalter sind zulässig: `*` (entspricht null [0] oder mehr Zeichen) und `?` (entspricht null [0] oder einem einzelnen Zeichen). Verwenden Sie `^` als Escapezeichen, wenn Ihr Ordnername einen Platzhalter oder dieses Escapezeichen enthält. <br/><br/>Ein Beispiel ist `myblobcontainer/myblobfolder/`. Weitere Beispiele finden Sie unter [Beispiele für Ordner- und Dateifilter](#folder-and-file-filter-examples). | „Ja“ für die Kopier- oder Suchaktivität, „Nein“ für die GetMetadata-Aktivität |
 | fileName | Name oder Platzhalterfilter für die Blobs unter dem angegebenen Wert für `folderPath`. Wenn Sie für diese Eigenschaft keinen Wert angeben, zeigt das Dataset auf alle Blobs im Ordner. <br/><br/>Für Filter sind folgende Platzhalter zulässig: `*` (entspricht null (0) oder mehr Zeichen) und `?` (entspricht null (0) oder einem einzelnen Zeichen).<br/>- Beispiel 1: `"fileName": "*.csv"`<br/>- Beispiel 2: `"fileName": "???20180427.txt"`<br/>Verwenden Sie `^` als Escapezeichen, wenn der tatsächliche Dateiname einen Platzhalter oder dieses Escapezeichen enthält.<br/><br/>Wenn `fileName` nicht für ein Ausgabedataset und `preserveHierarchy` nicht in der Aktivitätssenke angegeben ist, generiert die Kopieraktivität den Blobnamen automatisch mit dem folgenden Muster: *Data.[GUID der Aktivitätsausführungs-ID].[GUID bei Verwendung von „FlattenHierarchy“].[Format, sofern konfiguriert].[Komprimierung, sofern konfiguriert]* . Beispiel: „Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz“. <br/><br/>Wenn Sie Daten aus einer Quelle im Tabellenformat kopieren und dabei anstelle einer Abfrage den Tabellennamen verwenden, lautet das Namensmuster `[table name].[format].[compression if configured]`. Beispiel: „MyTable.csv“. | Nein |
 | modifiedDatetimeStart | Die Dateien werden anhand des Attributs „Letzte Änderung“ gefiltert. Die Dateien werden ausgewählt, wenn der Zeitpunkt der letzten Änderung innerhalb des Zeitbereichs zwischen `modifiedDatetimeStart` und `modifiedDatetimeEnd` liegt. Die Zeit wird auf die UTC-Zeitzone im Format „2018-12-01T05:00:00Z“ angewandt. <br/><br/> Hinweis: Die Aktivierung dieser Einstellung wirkt sich auf die Gesamtleistung der Datenverschiebung aus, wenn Sie große Dateimengen filtern möchten. <br/><br/> Die Eigenschaften können `NULL` sein, was bedeutet, dass kein Dateiattributfilter auf das Dataset angewendet wird.  Wenn `modifiedDatetimeStart` einen datetime-Wert aufweist, aber `modifiedDatetimeEnd` `NULL` ist, werden die Dateien ausgewählt, deren Attribut für die letzte Änderung größer oder gleich dem datetime-Wert ist.  Wenn `modifiedDatetimeEnd` den datetime-Wert aufweist, aber `modifiedDatetimeStart` `NULL` ist, werden die Dateien ausgewählt, deren Attribut für die letzte Änderung kleiner als der datetime-Wert ist.| Nein |
@@ -679,7 +767,7 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivi
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die `type`-Eigenschaft der Quelle der Kopieraktivität muss auf `BlobSource` festgelegt werden. | Ja |
+| Typ | Die `type`-Eigenschaft der Quelle der Kopieraktivität muss auf `BlobSource` festgelegt werden. | Ja |
 | recursive | Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. Beachten Sie Folgendes: Wenn `recursive` auf `true` festgelegt ist und es sich bei der Senke um einen dateibasierten Speicher handelt, wird ein leerer Ordner oder Unterordner nicht in die Senke kopiert oder dort erstellt.<br/>Zulässige Werte sind `true` (Standard) und `false`. | Nein |
 | maxConcurrentConnections |Die Obergrenze gleichzeitiger Verbindungen mit dem Datenspeicher während der Aktivitätsausführung. Geben Sie diesen Wert nur an, wenn Sie die Anzahl der gleichzeitigen Verbindungen begrenzen möchten.| Nein |
 
@@ -719,7 +807,7 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivi
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die `type`-Eigenschaft der Senke der Kopieraktivität muss auf `BlobSink` festgelegt werden. | Ja |
+| Typ | Die `type`-Eigenschaft der Senke der Kopieraktivität muss auf `BlobSink` festgelegt werden. | Ja |
 | copyBehavior | Definiert das Kopierverhalten, wenn es sich bei der Quelle um Dateien aus einem dateibasierten Datenspeicher handelt.<br/><br/>Zulässige Werte sind:<br/><b>- PreserveHierarchy (Standard)</b>: Behält die Dateihierarchie im Zielordner bei. Der relative Pfad der Quelldatei zum Quellordner entspricht dem relativen Pfad der Zieldatei zum Zielordner.<br/><b>- FlattenHierarchy</b>: Alle Dateien aus dem Quellordner befinden sich auf der ersten Ebene des Zielordners. Die Namen für die Zieldateien werden automatisch generiert. <br/><b>- MergeFiles</b>: Alle Dateien aus dem Quellordner werden in einer Datei zusammengeführt. Wenn der Datei- oder Blobname angegeben wurde, entspricht der Name der Zusammenführungsdatei dem angegebenen Namen. Andernfalls wird der Dateiname automatisch generiert. | Nein |
 | maxConcurrentConnections |Die Obergrenze gleichzeitiger Verbindungen mit dem Datenspeicher während der Aktivitätsausführung. Geben Sie diesen Wert nur an, wenn Sie die Anzahl der gleichzeitigen Verbindungen begrenzen möchten.| Nein |
 
@@ -757,4 +845,4 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine Liste der Datenspeicher, die von der Kopieraktivität in Data Factory als Quellen und Senken unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die diese Kopieraktivität als Quellen und Senken unterstützt, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

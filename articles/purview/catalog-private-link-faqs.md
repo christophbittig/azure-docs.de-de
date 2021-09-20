@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 05/11/2021
-ms.openlocfilehash: 6f9af57ad381604ffdf3882602a5dfa4163b8b25
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 3d7a37565b46137a95f0dd30a3e29b750bed3afe
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113090581"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515565"
 ---
 # <a name="faq-about-azure-purview-private-endpoints"></a>Häufig gestellte Fragen zu privaten Azure Purview-Endpunkten
 
@@ -74,11 +74,11 @@ Azure Key Vault oder Dienstprinzipale
 
 ### <a name="what-private-dns-zones-are-required-for-azure-purview-for-a-private-endpoint"></a>Welche privaten DNS-Zonen werden für Azure Purview für einen privaten Endpunkt benötigt?
 
-Für eine Azure Purview-Ressource:
+Für private Endpunkte für Azure Purview-_Konto_ und _Portal_:
 
 - `privatelink.purview.azure.com`
 
-Für verwaltete Azure Purview-Ressourcen:
+Für private Endpunkte für Azure Purview _Datenerfassung_:
 
 - `privatelink.blob.core.windows.net`
 - `privatelink.queue.core.windows.net`
@@ -133,4 +133,4 @@ Weitere Informationen zu den DNS-Einstellungen für private Endpunkte finden Sie
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Einrichten von Azure Purview mit Private Link finden Sie unter [Verwenden privater Endpunkte für Ihr Purview-Konto](./catalog-private-link.md).
+Weitere Informationen zum Einrichten von Azure Purview mit Private Link finden Sie unter [Verwenden privater Endpunkte für Ihr Azure Purview-Konto](./catalog-private-link.md).

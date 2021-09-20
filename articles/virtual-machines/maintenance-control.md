@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/19/2020
 ms.author: cynthn
-ms.openlocfilehash: b85614bce6ddaee98a271e3bf7f34fd3e0301580
-ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
+ms.openlocfilehash: 01152d1e422088503621e684f8908182c5caa3a4
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112369427"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691676"
 ---
 # <a name="managing-platform-updates-with-maintenance-control"></a>Verwalten von Plattformupdates mit der Wartungssteuerung 
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Verwalten Sie mit der Wartungssteuerung Plattformupdates, die keinen Neustart erfordern. Azure aktualisiert die eigene Infrastruktur häufig, um die Zuverlässigkeit, Leistung und Sicherheit zu verbessern oder neue Features zu integrieren. Die meisten Updates sind für Benutzer transparent. Einige empfindliche Workloads wie Gaming, Medienstreaming und Finanztransaktionen können nicht einmal wenige Sekunden tolerieren, in denen eine VM zur Wartung eingefroren oder getrennt wird. Die Wartungssteuerung bietet Ihnen die Möglichkeit, auf Plattformupdates zu warten und diese innerhalb eines 35-tägigen rollierenden Zeitfensters anzuwenden. 
 

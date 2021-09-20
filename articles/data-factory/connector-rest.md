@@ -1,19 +1,22 @@
 ---
-title: Kopieren von Daten von und zu einem REST-Endpunkt mithilfe von Azure Data Factory
-description: Erfahren Sie, wie Sie eine Kopieraktivität in einer Azure Data Factory-Pipeline verwenden, um Daten aus einer Cloud- oder lokalen REST-Quelle in unterstützte Senkendatenspeicher oder aus unterstützten Quelldatenspeichern in eine REST-Senke zu kopieren.
+title: Kopieren und Transformieren von Daten von und zu einem REST-Endpunkt mithilfe von Azure Data Factory
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Hier erfahren Sie, wie Sie mithilfe der Kopieraktivität Daten kopieren und Data Flow zum Transformieren von Daten aus einer cloudbasierten oder lokalen REST-Quelle in unterstützte Senkendatenspeicher oder aus unterstützten Quelldatenspeichern in eine REST-Senke in Azure Data Factory- oder Azure Synapse Analytics-Pipelines verwenden.
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 03/16/2021
-ms.author: jianleishen
-ms.openlocfilehash: 24269fcfe7c60140c3d0fe9497eefeba71338bd7
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.date: 08/30/2021
+ms.author: makromer
+ms.openlocfilehash: 16bb4ac7062c39ad57becce4d5280ed227160690
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109487077"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123311576"
 ---
-# <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>Kopieren von Daten von und zu einem REST-Endpunkt mithilfe von Azure Data Factory
+# <a name="copy-and-transform-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten von und zu einem REST-Endpunkt mithilfe von Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten von und zu einem REST-Endpunkt zu kopieren. Dieser Artikel baut auf dem Artikel zur [Kopieraktivität in Azure Data Factory](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
@@ -45,6 +48,30 @@ Dieser allgemeine REST-Connector unterstützt Folgendes:
 ## <a name="get-started"></a>Erste Schritte
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-rest-linked-service-using-ui"></a>Erstellen eines verknüpften REST-Diensts über die Benutzeroberfläche
+
+Verwenden Sie die folgenden Schritte, um einen verknüpften REST-Dienst auf der Azure-Portal Benutzeroberfläche zu erstellen.
+
+1. Navigieren Sie in Ihrem Azure Data Factory- oder Synapse-Arbeitsbereich zur Registerkarte „Verwalten“, wählen Sie „Verknüpfte Dienste“ aus, und klicken Sie dann auf „Neu“:
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Screenshot: Erstellen eines neuen verknüpften Diensts mithilfe der Azure Data Factory-Benutzeroberfläche":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Screenshot: Erstellen eines neuen verknüpften Diensts mithilfe der Azure Synapse-Benutzeroberfläche":::
+
+2. Suchen Sie nach REST, und wählen Sie den REST-Connector aus.
+
+    :::image type="content" source="media/connector-rest/rest-connector.png" alt-text="Wählen Sie REST-Connector aus.":::    
+
+1. Konfigurieren Sie die Dienstdetails, testen Sie die Verbindung, und erstellen Sie den neuen verknüpften Dienst.
+
+    :::image type="content" source="media/connector-rest/configure-rest-linked-service.png" alt-text="Konfigurieren sie den mit REST verknüpften Dienst.":::
+
+## <a name="connector-configuration-details"></a>Details zur Connectorkonfiguration
 
 In den folgenden Abschnitten finden Sie Details zu Eigenschaften, mit denen Sie Data Factory-Entitäten definieren können, die für den REST-Connector spezifisch sind.
 
@@ -132,7 +159,7 @@ Legen Sie die **authenticationType**-Eigenschaft auf **AadServicePrincipal** fes
 }
 ```
 
-### <a name="use-managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a> So verwenden Sie verwaltete Identitäten für die Azure-Ressourcenauthentifizierung
+### <a name="use-system-assigned-managed-identity-authentication"></a><a name="managed-identity"></a> Verwenden der systemseitig zugewiesenen Authentifizierung mit einer verwalteten Identität
 
 Legen Sie die **authenticationType**-Eigenschaft auf **ManagedServiceIdentity** fest. Geben Sie zusätzlich zu den im vorherigen Abschnitt beschriebenen generischen Eigenschaften die folgenden Eigenschaften an:
 
@@ -151,6 +178,39 @@ Legen Sie die **authenticationType**-Eigenschaft auf **ManagedServiceIdentity** 
             "url": "<REST endpoint e.g. https://www.example.com/>",
             "authenticationType": "ManagedServiceIdentity",
             "aadResourceId": "<AAD resource URL e.g. https://management.core.windows.net>"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="use-user-assigned-managed-identity-authentication"></a>Verwenden der benutzerseitig zugewiesenen Authentifizierung mit einer verwalteten Identität
+Legen Sie die **authenticationType**-Eigenschaft auf **ManagedServiceIdentity** fest. Geben Sie zusätzlich zu den im vorherigen Abschnitt beschriebenen generischen Eigenschaften die folgenden Eigenschaften an:
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| aadResourceId | Geben Sie die AAD-Ressource an, für die Sie eine Autorisierung anfordern, z. B. `https://management.core.windows.net`.| Ja |
+| Anmeldeinformationen | Geben Sie die benutzerseitig zugewiesene verwaltete Identität als Anmeldeinformationsobjekt an. | Ja |
+
+
+**Beispiel**
+
+```json
+{
+    "name": "RESTLinkedService",
+    "properties": {
+        "type": "RestService",
+        "typeProperties": {
+            "url": "<REST endpoint e.g. https://www.example.com/>",
+            "authenticationType": "ManagedServiceIdentity",
+            "aadResourceId": "<AAD resource URL e.g. https://management.core.windows.net>",
+            "credential": {
+                "referenceName": "credential1",
+                "type": "CredentialReference"
+            }    
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -376,6 +436,57 @@ Ein REST-Connector als Senke funktioniert mit den REST-APIs, die JSON akzeptiere
         }
     }
 ]
+```
+
+## <a name="mapping-data-flow-properties"></a>Eigenschaften von Mapping Data Flow
+
+REST wird in Datenflüssen sowohl für Integrationsdatasets als auch für Inlinedatasets unterstützt.
+
+### <a name="source-transformation"></a>Quellentransformation
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| requestMethod | Die HTTP-Methode. Zulässige Werte sind **GET** und **POST**. | Ja |
+| relativeUrl | Eine relative URL zu der Ressource, die die Daten enthält. Wenn die Eigenschaft nicht angegeben ist, wird nur die URL verwendet, die in der Definition des verknüpften Diensts angegeben ist. Der HTTP-Connector kopiert Daten aus der kombinierten URL: `[URL specified in linked service]/[relative URL specified in dataset]`. | Nein |
+| additionalHeaders | Zusätzliche HTTP-Anforderungsheader | Nein |
+| httpRequestTimeout | Das Timeout (der Wert **TimeSpan**) für die HTTP-Anforderung, um eine Antwort zu empfangen. Bei diesem Wert handelt es sich um das Timeout für den Empfang einer Antwort, nicht um das Timeout für das Schreiben der Daten. Der Standardwert ist **00:01:40**.  | Nein |
+| requestInterval | Das Zeitintervall zwischen verschiedenen Anforderungen in Millisekunden. Der Wert für das Anforderungsintervall sollte eine Zahl zwischen 10 und 60000 sein. |  Nein |
+| QueryParameters.*request_query_parameter* OR QueryParameters['request_query_parameter'] | „request_query_parameter“ wird vom Benutzer definiert und verweist auf einen Abfrageparameternamen in der nächsten HTTP-Anforderungs-URL. | Nein |
+
+### <a name="sink-transformation"></a>Senkentransformation
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| additionalHeaders | Zusätzliche HTTP-Anforderungsheader | Nein |
+| httpRequestTimeout | Das Timeout (der Wert **TimeSpan**) für die HTTP-Anforderung, um eine Antwort zu empfangen. Bei diesem Wert handelt es sich um das Timeout für den Empfang einer Antwort, nicht um das Timeout für das Schreiben der Daten. Der Standardwert ist **00:01:40**.  | Nein |
+| requestInterval | Das Zeitintervall zwischen verschiedenen Anforderungen in Millisekunden. Der Wert für das Anforderungsintervall sollte eine Zahl zwischen 10 und 60000 sein. |  Nein |
+| httpCompressionType | Der HTTP-Komprimierungstyp, der zum Senden von Daten mit der optimalen Komprimierungsstufe verwendet werden soll. Zulässige Werte sind **none** und **gzip**. | Nein |
+| writeBatchSize | Die Anzahl von Datensätzen, die pro Batch in die REST-Senke geschrieben werden sollen. Der Standardwert ist 10.000. | Nein |
+
+Sie können die Methoden delete, insert, update und upsert sowie die relativen Zeilendaten festlegen, die für CRUD-Vorgänge an die REST-Senke gesendet werden sollen.
+
+![Datenfluss-REST-Senke](media/data-flow/data-flow-sink.png)
+
+## <a name="sample-data-flow-script"></a>Beispiel-Datenflussskript
+
+Beachten Sie die Verwendung einer Zeilenänderungstransformation vor der Senke, um ADF anzuweisen, welche Art von Aktion mit Ihrer REST-Senke erfolgen soll. Das heißt, insert, update, upsert, delete.
+
+```
+AlterRow1 sink(allowSchemaDrift: true,
+    validateSchema: false,
+    deletable:true,
+    insertable:true,
+    updateable:true,
+    upsertable:true,
+    rowRelativeUrl: 'periods',
+    insertHttpMethod: 'PUT',
+    deleteHttpMethod: 'DELETE',
+    upsertHttpMethod: 'PUT',
+    updateHttpMethod: 'PATCH',
+    timeout: 30,
+    requestFormat: ['type' -> 'json'],
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> sink1
 ```
 
 ## <a name="pagination-support"></a>Unterstützung der Paginierung

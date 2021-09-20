@@ -3,19 +3,19 @@ title: Geräteentwicklung für Azure IoT Central | Microsoft-Dokumentation
 description: Azure IoT Central ist eine IoT-Anwendungsplattform, die die Erstellung von IoT-Lösungen vereinfacht. Dieser Artikel enthält eine Übersicht über die Entwicklung von Geräten zum Herstellen einer Verbindung mit Ihrer IoT Central-Anwendung. Von Geräten werden Telemetriedaten zum Senden von Streamingdaten und Eigenschaften verwendet, um den Gerätestatus zu melden. Mit IoT Central kann der Gerätestatus festgelegt werden, indem schreibbare Eigenschaften und Aufrufbefehle auf einem Gerät verwendet werden.
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/05/2020
+ms.date: 08/30/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: e7ec54a85c2b5f964327d7d60c9f856e70320225
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f2131ec5a0b939172097494dcd457b9d661614ad
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114467860"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123473494"
 ---
 # <a name="iot-central-device-development-guide"></a>Entwicklungshandbuch für IoT Central-Geräte
 
@@ -85,7 +85,7 @@ Weitere Informationen zu bewährten Methoden zum Bearbeiten eines Modells finden
 
 Jedes Modell verfügt über einen eindeutigen _Gerätezwilling-Modellbezeichner_ (Device Twin Model Identifier, DTMI), z. B. `dtmi:com:example:Thermostat;1`. Wenn ein Gerät eine Verbindung mit IoT Central herstellt, sendet es den Gerätezwilling-Modellbezeichner des implementierten Modells. IoT Central kann dem Gerät dann die richtige Gerätevorlage zuordnen.
 
-Bei [IoT Plug & Play](../../iot-develop/overview-iot-plug-and-play.md) wird eine Reihe von Konventionen definiert, die von einem Gerät eingehalten werden müssen, wenn es ein DTDL-Modell implementiert.
+Bei [IoT Plug & Play](../../iot-develop/overview-iot-plug-and-play.md) wird eine Reihe von [Konventionen](../../iot-develop/concepts-convention.md) definiert, die von einem Gerät eingehalten werden müssen, wenn es ein DTDL-Modell implementiert.
 
 Die [Azure IoT-Geräte-SDKs](#languages-and-sdks) verfügen auch über Unterstützung für die IoT Plug & Play-Konventionen.
 
