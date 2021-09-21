@@ -9,18 +9,16 @@ ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 37367cc4608c1bfbf9c621388bcbc6ecaabd8aa4
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 0d06e40fc33a713904fb171a3a44ba8e977a254f
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110679320"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123467638"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Änderungsfeed in Azure Blob Storage
 
 Zweck des Änderungsfeeds ist es, Transaktionsprotokolle für alle Änderungen bereitzustellen, die in den Blobs und Blobmetadaten in Ihrem Speicherkonto auftreten. Der Änderungsfeed bietet **sortierte**, **garantierte**, **permanente**, **unveränderliche** und **schreibgeschützte** Protokolle dieser Änderungen. Clientanwendungen können diese Protokolle jederzeit lesen, entweder im Streaming- oder im Batchmodus. Der Änderungsfeed ermöglicht es Ihnen, effiziente und skalierbare Lösungen zu erstellen, mit denen Änderungsereignisse, die in Ihrem Blob Storage-Konto auftreten, kostengünstig verarbeitet werden.
-
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="how-the-change-feed-works"></a>Funktionsweise des Änderungsfeeds
 
@@ -298,6 +296,17 @@ Dieser Abschnitt enthält Informationen zu bekannten Problemen und Bedingungen i
 - Die `LastConsumable`-Eigenschaft der segments.json-Datei listet das allererste Segment, das vom Änderungsfeed abgeschlossen wird, nicht auf. Dieses Problem tritt nur nach Abschluss des ersten Segments auf. Alle nachfolgenden Segmente nach der ersten Stunde werden ordnungsgemäß in der `LastConsumable`-Eigenschaft aufgezeichnet.
 - Der Container **$blobchangefeed** kann zurzeit nicht angezeigt werden, wenn Sie die ListContainers-API aufrufen, und er wird auch nicht im Azure-Portal oder im Speicher-Explorer angezeigt. Sie können den Inhalt anzeigen, indem Sie die ListBlobs-API für den $blobchangefeed-Container direkt aufrufen.
 - Bei Speicherkonten, für die zuvor ein [Kontofailover](../common/storage-disaster-recovery-guidance.md) initiiert wurde, kann es vorkommen, dass die Protokolldatei nicht angezeigt wird. Auch bei zukünftigen Kontofailovern kann es zu Problemen mit der Protokolldatei kommen.
+
+## <a name="feature-support"></a>Featureunterstützung
+
+In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf den Support hat. 
+
+| Speicherkontotyp                | Blob Storage (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) |![Nein](../media/icons/no-icon.png)              | ![Nein](../media/icons/no-icon.png) | 
+| Premium-Blockblobs          | ![Nein](../media/icons/no-icon.png)|![Nein](../media/icons/no-icon.png) | ![Nein](../media/icons/no-icon.png) |
+
+<sup>1</sup>    Für Data Lake Storage Gen2 und das NFS 3.0-Protokoll (Network File System) ist ein Speicherkonto mit aktiviertem hierarchischem Namespace erforderlich.
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 

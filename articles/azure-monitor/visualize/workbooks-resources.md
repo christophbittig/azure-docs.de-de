@@ -2,17 +2,15 @@
 title: Ressourcenparameter in Azure Monitor-Arbeitsmappen
 description: Erfahren Sie, wie Sie Ressourcen in Arbeitsmappen mithilfe von Ressourcenparametern auswählen können. Verwenden Sie die Ressourcenparameter, um den Bereich festzulegen, aus dem die Daten abgerufen werden sollen.
 services: azure-monitor
-manager: carmonm
-ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: d4a6d04f88544b3a4f9f9c0c0b290d17f5ef148d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dba84320bb753fa162d1c4eced5de5ae79de6f48
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101725576"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123436156"
 ---
 # <a name="workbook-resource-parameters"></a>Ressourcenparameter für Arbeitsmappen
 
@@ -100,9 +98,9 @@ Die Werte der Ressourcenauswahl können aus dem Arbeitsmappenkontext, einer stat
 ## <a name="resource-parameter-options"></a>Optionen für Ressourcenparameter
 | Parameter | Erklärung | Beispiel |
 | ------------- |:-------------|:-------------|
-| `{Applications}` | Die ausgewählte Ressourcen-ID | _/subscriptions/<sub-id>/resourceGroups/<resource-group>/providers/<resource-type>/acmeauthentication_ |
+| `{Applications}` | Die ausgewählte Ressourcen-ID | _/subscriptions/\<sub-id\>/resourceGroups/\<resource-group\>/providers/\<resource-type\>/acmeauthentication_ |
 | `{Applications:label}` | Die Bezeichnung der ausgewählten Ressource | `acmefrontend` |
-| `{Applications:value}` | Der Wert der ausgewählten Ressource | _'/subscriptions/<sub-id>/resourceGroups/<resource-group>/providers/<resource-type>/acmeauthentication'_ |
+| `{Applications:value}` | Der Wert der ausgewählten Ressource | _'/subscriptions/\<sub-id\>/resourceGroups/\<resource-group\>/providers/\<resource-type\>/acmeauthentication'_ |
 | `{Applications:name}` | Der Name der ausgewählten Ressource | `acmefrontend` |
 | `{Applications:resourceGroup}` | Die Ressourcengruppe der ausgewählten Ressource | `acmegroup` |
 | `{Applications:resourceType}` | Der Typ der ausgewählten Ressource | _microsoft.insights/components_ |

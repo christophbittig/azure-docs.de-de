@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: f70b876bd76eaf2fb7f8ca18cf3dabb7e66bf9b5
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 5338c3173d84d3a72d17876dfec259f6769acf65
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733890"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123481144"
 ---
 # <a name="authorize-access-to-blobs-using-azure-active-directory"></a>Autorisieren des Zugriffs auf Blobs mithilfe von Azure Active Directory
 
@@ -100,6 +100,17 @@ In der Azure-Befehlszeilenschnittstelle und PowerShell ist die Anmeldung mit Azu
 
 - [Auswählen der Autorisierung des Zugriffs auf Blobdaten mit der Azure CLI](authorize-data-operations-cli.md)
 - [Ausführen von PowerShell-Befehlen mit Azure AD-Anmeldeinformationen für den Zugriff auf Blobdaten](authorize-data-operations-powershell.md)
+
+## <a name="feature-support"></a>Featureunterstützung
+
+In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf den Support hat. 
+
+| Speicherkontotyp                | Blob Storage (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) |![Ja](../media/icons/yes-icon.png)              | ![Nein](../media/icons/no-icon.png) | 
+| Premium-Blockblobs          | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png)| ![Nein](../media/icons/no-icon.png) |
+
+<sup>1</sup>    Für Data Lake Storage Gen2 und das NFS 3.0-Protokoll (Network File System) ist ein Speicherkonto mit aktiviertem hierarchischem Namespace erforderlich.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

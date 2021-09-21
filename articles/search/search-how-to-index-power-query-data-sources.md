@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/25/2021
 ms.custom: references_regions
-ms.openlocfilehash: e943452a285f943c05982a558c92315428e9829c
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: fb7a16824ccb74ad2cab7c0175532d297ebaf88c
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114729531"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123451203"
 ---
 # <a name="index-data-using-power-query-connectors-preview"></a>Indizieren von Daten mit Power Query-Connectors (Vorschau)
 
@@ -63,7 +63,7 @@ Vergewissern Sie sich, dass Ihre Datenquelle Daten enthält. Zur Ableitung eines
 ### <a name="step-2--start-import-data-wizard"></a>Schritt 2: Starten des Datenimport-Assistenten
 Nachdem Sie für die Vorschau genehmigt wurden, stellt Ihnen das Azure Cognitive Search-Team einen Azure-Portal-Link bereit, der ein Featureflag verwendet, damit Sie auf die Power Query-Connectors zugreifen können. Öffnen Sie diese Seite, und starten Sie den Assistenten über die Befehlsleiste auf der Seite des Azure Cognitive Search-Diensts, indem Sie **Daten importieren** auswählen.
 
-![Befehl „Daten importieren“ im Portal](./media/search-import-data-portal/import-data-cmd2.png "Starten des Datenimport-Assistenten")
+:::image type="content" source="media/search-import-data-portal/import-data-cmd.png" alt-text="Screenshot des Befehls „Daten importieren“" border="true":::
 
 ### <a name="step-3--select-your-data-source"></a>Schritt 3: Auswählen der Datenquelle
 Es gibt einige Datenquellen, aus denen Sie Daten mithilfe dieser Vorschau abrufen können. Alle Datenquellen, für die Power Query verwendet wird, enthalten den Hinweis „Powered By Power Query“ auf ihrer Kachel. Wählen Sie Ihre Datenquelle aus. 

@@ -1,14 +1,14 @@
 ---
 title: Grundlegendes zur Abfragesprache
 description: Beschreibt Resource Graph-Tabellen und die verfügbaren Kusto-Datentypen, -Operatoren und -Funktionen, die mit Azure Resource Graph verwendet werden können.
-ms.date: 08/11/2021
+ms.date: 09/03/2021
 ms.topic: conceptual
-ms.openlocfilehash: 7d23a8958ebfa90658ec5769b077f07091eff89d
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 8d537d0816ef4d32d6ce85cf363e08bece28ec84
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122356108"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536083"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Grundlegendes zur Azure Resource Graph-Abfragesprache
 
@@ -32,9 +32,11 @@ Resource Graph umfasst mehrere Tabellen für die Daten, die in Bezug auf Azure R
 |ResourceContainers |Ja |Umfasst die Ressourcentypen und Daten der Verwaltungsgruppe (`Microsoft.Management/managementGroups`), des Abonnements (`Microsoft.Resources/subscriptions`) und der Ressourcengruppe (`Microsoft.Resources/subscriptions/resourcegroups`). |
 |AdvisorResources |Ja (Vorschau) |Umfasst Ressourcen, die mit `Microsoft.Advisor`_in Zusammenhang stehen_. |
 |AlertsManagementResources |Ja (Vorschau) |Umfasst Ressourcen, die mit `Microsoft.AlertsManagement`_in Zusammenhang stehen_. |
+|DesktopVirtualizationResources |Ja |Umfasst Ressourcen, die mit `Microsoft.DesktopVirtualization`_in Zusammenhang stehen_. |
 |ExtendedLocationResources |Nein |Umfasst Ressourcen, die mit `Microsoft.ExtendedLocation`_in Zusammenhang stehen_. |
 |GuestConfigurationResources |Nein |Umfasst Ressourcen, die mit `Microsoft.GuestConfiguration`_in Zusammenhang stehen_. |
 |HealthResources|Ja |Umfasst Ressourcen, die mit `Microsoft.ResourceHealth/availabilitystatuses`_in Zusammenhang stehen_. |
+|IoTSecurityResources |Nein |Umfasst Ressourcen, die mit `Microsoft.IoTSecurity`_in Zusammenhang stehen_. |
 |KubernetesConfigurationResources |Nein |Umfasst Ressourcen, die mit `Microsoft.KubernetesConfiguration`_in Zusammenhang stehen_. |
 |MaintenanceResources |Teilweise, nur Beitritt _zu_. (Vorschauversion) |Umfasst Ressourcen, die mit `Microsoft.Maintenance`_in Zusammenhang stehen_. |
 |PatchAssessmentResources|No |Umfasst Ressourcen _im Zusammenhang mit_ der Azure Virtual Machines-Patchbewertung. |
