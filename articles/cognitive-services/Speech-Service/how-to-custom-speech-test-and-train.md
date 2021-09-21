@@ -3,19 +3,19 @@ title: Vorbereiten von Daten für Custom Speech – Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: Wenn Sie die Genauigkeit der Spracherkennung von Microsoft testen oder Ihre benutzerdefinierten Modelle trainieren möchten, benötigen Sie Audio- und Textdaten. Auf dieser Seite werden die einzelnen Datentypen, ihre Verwendung und ihre Verwaltung beschrieben.
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
-ms.author: lajanuar
-ms.openlocfilehash: e4c5efc165c864576191b6d74030d1dc2f5dc2a5
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.author: pafarley
+ms.openlocfilehash: 79846dcb5acb50549231d247530512564ae1beea
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343674"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123542517"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Vorbereiten von Daten für Custom Speech
 
@@ -49,14 +49,14 @@ Die folgende Tabelle enthält die zulässigen Datentypen, gibt an, wann der jewe
 | Datentyp | Zum Testen verwendet | Empfohlene Menge | Für Training verwendet | Empfohlene Menge |
 |-----------|-----------------|----------|-------------------|----------|
 | [Audio](#audio-data-for-testing) | Ja<br>Zur visuellen Prüfung verwendet | Mindestens 5 Audiodateien | Nein | – |
+| [Audio + menschenmarkierte Transkripte](#audio--human-labeled-transcript-data-for-trainingtesting) | Ja<br>Zur Bewertung der Genauigkeit verwendet | 0,5 – 5 Stunden Audio | Ja | 1–20 Stunden Audiodaten |
 | [Nur-Text](#plain-text-data-for-training) | Nein | Nicht zutreffend | Ja | 1 – 200 MB zugehöriger Text |
 | [Aussprache](#pronunciation-data-for-training) | Nein | Nicht zutreffend | Ja | 1 KB – 1 MB Aussprachetext |
-| [Audio + menschenmarkierte Transkripte](#audio-and-human-labeled-transcript-data) | Ja<br>Zur Bewertung der Genauigkeit verwendet | 0,5 – 5 Stunden Audio | Ja | 1–20 Stunden Audiodaten |
 
 Dateien sollten nach Typ in einem Dataset gruppiert und als ZIP-Datei hochgeladen werden. Jedes Dataset darf nur einen einzelnen Datentyp enthalten.
 
 > [!TIP]
-> Wenn Sie ein neues Modell trainieren, beginnen Sie mit [Text](#plain-text-data-for-training). Diese Daten verbessern das Erkennen von speziellen Begriffen und Ausdrücken bereits. Training mit Textdaten ist deutlich schneller als das Training mit Audiodaten (Minuten vs. Tage).
+> Wenn Sie ein neues Modell trainieren, beginnen Sie mit einfachem Text. Diese Daten verbessern das Erkennen von speziellen Begriffen und Ausdrücken bereits. Training mit Textdaten ist deutlich schneller als das Training mit Audiodaten (Minuten vs. Tage).
 
 > [!NOTE]
 > Nicht alle Basismodelle unterstützen das Training mit Audiodaten. Wenn es von einem Basismodell nicht unterstützt wird, verwendet der Speech-Dienst nur den Text aus den Transkriptionen und ignoriert die Audiodaten. Eine Liste mit Basismodellen, die das Training mit Audiodaten unterstützen, finden Sie unter [Sprachunterstützung](language-support.md#speech-to-text). Selbst wenn ein Basismodell das Training mit Audiodaten unterstützt, verwendet der Dienst möglicherweise nur einen Teil der Audiodaten. Dennoch werden alle Transkriptionen verwendet.
@@ -69,9 +69,9 @@ Dateien sollten nach Typ in einem Dataset gruppiert und als ZIP-Datei hochgelade
 
 ## <a name="upload-data"></a>Hochladen von Daten
 
-Navigieren Sie zum Hochladen der Daten zum <a href="https://speech.microsoft.com/customspeech" target="_blank">Custom Speech-Portal</a>. Navigieren Sie nach dem Erstellen eines Projekts zur Registerkarte **Speech-Datasets**, und klicken Sie auf **Daten hochladen**, um den Assistenten zu starten und Ihr erstes Dataset zu erstellen. Sie werden aufgefordert, einen Sprachdatentyp für das Dataset auszuwählen, bevor Sie die Daten hochladen können.
+Navigieren Sie zum Hochladen der Daten zum <a href="https://speech.microsoft.com/customspeech" target="_blank">Custom Speech-Portal</a>. Navigieren Sie nach dem Erstellen eines Projekts zur Registerkarte **Speech-Datasets**, und klicken Sie auf **Daten hochladen**, um den Assistenten zu starten und Ihr erstes Dataset zu erstellen. Wählen Sie einen Speech-Datentyp für Ihr Dataset aus, und laden Sie Ihre Daten hoch.
 
-Zunächst müssen Sie angeben, ob das Dataset für **Training** oder **Testen** verwendet werden soll. Und es gibt mehrere Arten von Daten, die hochgeladen und zum **Trainieren** oder **Testen** verwendet werden können. Jedes hochgeladene Dataset muss den Anforderungen für den ausgewählten Datentyp entsprechen. Ihre Daten müssen ordnungsgemäß formatiert sein, bevor sie hochgeladen werden. Durch die richtige Formatierung wird sichergestellt, dass die Daten vom Custom Speech-Dienst korrekt verarbeitet werden. Die Anforderungen sind in den folgenden Abschnitten aufgelistet.
+Zunächst müssen Sie angeben, ob das Dataset für **Training** oder **Testen** verwendet werden soll. Es gibt viele Arten von Daten, die hochgeladen und zum **Trainieren** oder **Testen** verwendet werden können. Jedes hochgeladene Dataset muss vor dem Upload korrekt formatiert werden und den Anforderungen für den ausgewählten Datentyp entsprechen. Die Anforderungen sind in den folgenden Abschnitten aufgelistet.
 
 Nach dem Hochladen des Datasets haben Sie verschiedene Möglichkeiten:
 
@@ -79,62 +79,7 @@ Nach dem Hochladen des Datasets haben Sie verschiedene Möglichkeiten:
 * Sie können zur Registerkarte **Testmodelle** navigieren, um die Qualität nur mit Audiodaten visuell zu überprüfen oder die Genauigkeit mit Audio- und Humantranskriptionsdaten auszuwerten.
 
 
-## <a name="plain-text-data-for-training"></a>Nur-Text-Daten für das Training
-
-Domänenbezogene Sätze können verwendet werden, um die Genauigkeit bei der Erkennung von Produktnamen oder branchenspezifischem Fachjargon zu verbessern. Sätze können als einzelne Textdatei bereitgestellt werden. Um die Genauigkeit zu erhöhen, verwenden Sie Textdaten, die näher an den erwarteten gesprochenen Äußerungen liegen. 
-
-Das Training mit Nur-Text kann in der Regel innerhalb weniger Minuten abgeschlossen werden.
-
-Um ein benutzerdefiniertes Modell mithilfe von Sätzen zu erstellen, müssen Sie eine Liste von Beispieläußerungen bereitstellen. Diese Äußerungen müssen _keine_ vollständigen oder grammatikalisch korrekten Sätze sein, doch sie müssen der gesprochenen Eingabe, die Sie in der Produktionsumgebung erwarten, genau entsprechen. Wenn bestimmte Begriffe eine höhere Gewichtung haben sollen, fügen Sie mehrere Sätze hinzu, die diese Begriffe enthalten.
-
-Als allgemeine Richtlinie gilt: Die Modellanpassung ist am effektivsten, wenn der Trainingstext so nah wie möglich an dem in der Produktion zu erwartenden Text liegt. Themenspezifischer Jargon und Ausdrücke, die Sie ergänzen möchten, sollten im Trainingstext enthalten sein. Versuchen Sie nach Möglichkeit, einen Satz oder ein Schlüsselwort auf einer separaten Zeile einzufügen. Schlüsselwörter und Ausdrücke, die für Sie wichtig sind (z. B. Produktnamen), können Sie mehrmals kopieren. Achten Sie jedoch darauf, nicht zu viel zu kopieren, da sich dies auf die Gesamterkennungsrate auswirken kann.
-
-Stellen Sie anhand der folgenden Tabelle sicher, dass die zugehörige Datendatei für Äußerungen richtig formatiert ist:
-
-| Eigenschaft | Wert |
-|----------|-------|
-| Textcodierung | UTF-8 BOM |
-| Anzahl von Äußerungen pro Zeile | 1 |
-| Maximale Dateigröße | 200 MB |
-
-Darüber hinaus sollten Sie die folgenden Einschränkungen beachten:
-
-* Vermeiden Sie es, mehr als dreimal Zeichen, Wörter oder Wortgruppen zu wiederholen. Zum Beispiel: „aaaa“, „yeah yeah yeah yeah“ oder „that's it that's it that's it that's it“. Der Sprachdienst kann Zeilen mit zu vielen Wiederholungen löschen.
-* Verwenden Sie keine Sonderzeichen oder UTF-8-Zeichen über `U+00A1`.
-* URIs werden zurückgewiesen.
-
-## <a name="pronunciation-data-for-training"></a>Aussprachedaten für das Training
-
-Wenn die Benutzer auf selten vorkommende Begriffe ohne Standardaussprache treffen oder diese verwenden werden, können Sie eine benutzerdefinierte Aussprachedatei bereitstellen, um die Erkennung zu verbessern. 
-> [!IMPORTANT]
-> Es wird davon abgeraten, benutzerdefinierte Aussprachedateien zu verwenden, um die Aussprache gebräuchlicher Wörter zu ändern.
-
-Aussprache sollte als eine einzige Textdatei bereitgestellt werden. Hier sehen Sie Beispiele für eine gesprochene Äußerung und die jeweilige benutzerdefinierte Aussprache:
-
-| Erkannte/angezeigte Form | Gesprochene Form |
-|--------------|--------------------------|
-| 3CPO | drei c p o |
-| CNTK | c n t k |
-| IEEE | i doppel e |
-
-Die gesprochene Form ist die jeweilige Lautfolge. Sie kann aus Buchstaben, Wörtern, Silben oder einer Kombination aus allen drei bestehen.
-
-Eine benutzerdefinierte Aussprache ist für Englisch (`en-US`) und Deutsch (`de-DE`) verfügbar. Die folgende Tabelle enthält die unterstützten Zeichen nach Sprache:
-
-| Sprache | Gebietsschema | Zeichen |
-|----------|--------|------------|
-| Englisch | `en-US` | `a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
-| Deutsch | `de-DE` | `ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
-
-Stellen Sie anhand der folgenden Tabelle sicher, dass die zugehörige Datendatei für Aussprache richtig formatiert ist. Aussprachedateien sind klein und sollten einige KB nicht übersteigen.
-
-| Eigenschaft | Wert |
-|----------|-------|
-| Textcodierung | UTF-8 BOM (ANSI wird für Englisch ebenfalls unterstützt) |
-| Anzahl der Aussprachen pro Zeile | 1 |
-| Maximale Dateigröße | 1 MB (1 KB für Free-Tarif) |
-
-## <a name="audio-and-human-labeled-transcript-data"></a>Audio- und Humantranskriptionsdaten
+## <a name="audio--human-labeled-transcript-data-for-trainingtesting"></a>Audio- und Humantranskriptionsdaten für Training/Tests
 
 Audio- und Humantranskriptionsdaten können sowohl zu Trainings- als auch zu Testzwecken verwendet werden. Um die akustischen Aspekte wie geringfügige Akzente, Sprechweisen, Hintergrundgeräusche oder die Genauigkeit der Spracherkennung von Microsoft bei der Verarbeitung Ihrer Audiodateien zu verbessern, müssen Sie Humantranskriptionen (Wort für Wort) für den Vergleich bereitstellen. Zwar ist das Erstellen einer menschenmarkierten Transkription oft sehr zeitaufwendig, doch wird sie benötigt, um die Genauigkeit zu bewerten und das Modell für Ihre Anwendungsfälle zu trainieren. Denken Sie daran, dass die Verbesserung der Erkennung nur so gut ist wie die bereitgestellten Daten. Aus diesem Grund ist es wichtig, dass nur qualitativ hochwertige Transkripte hochgeladen werden.
 
@@ -151,13 +96,6 @@ Audiodateien können am Anfang und am Ende der Aufzeichnung Stille aufweisen. Sc
 | Maximale ZIP-Dateigröße         | 2 GB                                |
 
 [!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
-
-> [!TIP]
-> Haben Sie nicht einmal echte Audiodaten? Sie können auch eine Textdatei (TXT) hochladen, indem Sie den Typ **Transkript (automatische Audiosynthese)** als **Testdaten** auswählen, um ein ungefähres Gefühl für die aktuellen Genauigkeitsgrade zu bekommen. Die Audiopaare für jede gesprochene Äußerung werden automatisch mithilfe der [Sprachsynthese](text-to-speech.md) synthetisiert. 
-> 
-> Beachten Sie, dass die synthetisierten Audiodaten in der Regel **NICHT** zur Verwendung als **Trainingsdaten** empfohlen werden.
-> 
-> Die maximale Dateigröße beträgt 500 KB. Für jede Zeile wird ein Ton synthetisiert, und die maximale Größe jeder Zeile beträgt 65535 Byte.
 
 > [!NOTE]
 > Beim Hochladen von Trainings- und Testdaten darf die ZIP-Datei maximal 2 GB groß sein. Sie können nur aus *einem* Dataset testen. Achten Sie darauf, dass dieses die geeignete Dateigröße einhält. Darüber hinaus dürfen die einzelnen Trainingsdateien 60 Sekunden nicht überschreiten, andernfalls tritt ein Fehler auf.
@@ -188,11 +126,67 @@ Unter [Einrichten Ihres Azure-Kontos](custom-speech-overview.md#set-up-your-azur
 
 Nicht alle Basismodelle unterstützen das Training mit Audiodaten. Wenn das Basismodell das Training mit Audiodaten nicht unterstützt, ignoriert der Dienst die Audiodaten und nutzt nur den Text der Transkriptionen für das Training. In diesem Fall ist das Training identisch mit dem Training mit zugehörigem Text. Eine Liste mit Basismodellen, die das Training mit Audiodaten unterstützen, finden Sie unter [Sprachunterstützung](language-support.md#speech-to-text).
 
+## <a name="plain-text-data-for-training"></a>Nur-Text-Daten für das Training
+
+Sie können domänenbezogene Sätze verwenden, um die Genauigkeit bei der Erkennung von Produktnamen oder branchenspezifischem Fachjargon zu verbessern. Stellen Sie Sätze in einer einzelnen Textdatei zur Verfügung. Um die Genauigkeit zu erhöhen, verwenden Sie Textdaten, die näher an den erwarteten gesprochenen Äußerungen liegen. 
+
+Das Training mit Nur-Text kann in der Regel innerhalb weniger Minuten abgeschlossen werden.
+
+Um ein benutzerdefiniertes Modell mithilfe von Sätzen zu erstellen, müssen Sie eine Liste von Beispieläußerungen bereitstellen. Diese Äußerungen müssen _keine_ vollständigen oder grammatikalisch korrekten Sätze sein, doch sie müssen der gesprochenen Eingabe, die Sie in der Produktionsumgebung erwarten, genau entsprechen. Wenn bestimmte Begriffe eine höhere Gewichtung haben sollen, fügen Sie mehrere Sätze hinzu, die diese Begriffe enthalten.
+
+Als allgemeine Richtlinie gilt: Die Modellanpassung ist am effektivsten, wenn der Trainingstext so nah wie möglich an dem in der Produktion zu erwartenden Text liegt. Themenspezifischer Jargon und Ausdrücke, die Sie ergänzen möchten, sollten im Trainingstext enthalten sein. Versuchen Sie nach Möglichkeit, einen Satz oder ein Schlüsselwort auf einer separaten Zeile einzufügen. Schlüsselwörter und Ausdrücke, die für Sie wichtig sind (z. B. Produktnamen), können Sie mehrmals kopieren. Achten Sie jedoch darauf, nicht zu viel zu kopieren, da sich dies auf die Gesamterkennungsrate auswirken kann.
+
+Stellen Sie anhand der folgenden Tabelle sicher, dass die zugehörige Datendatei für Äußerungen richtig formatiert ist:
+
+| Eigenschaft | Wert |
+|----------|-------|
+| Textcodierung | UTF-8 BOM |
+| Anzahl von Äußerungen pro Zeile | 1 |
+| Maximale Dateigröße | 200 MB |
+
+Darüber hinaus sollten Sie die folgenden Einschränkungen beachten:
+
+* Vermeiden Sie es, mehr als dreimal Zeichen, Wörter oder Wortgruppen zu wiederholen. Zum Beispiel: „aaaa“, „yeah yeah yeah yeah“ oder „that's it that's it that's it that's it“. Der Sprachdienst kann Zeilen mit zu vielen Wiederholungen löschen.
+* Verwenden Sie keine Sonderzeichen oder UTF-8-Zeichen über `U+00A1`.
+* URIs werden zurückgewiesen.
+* Bei einigen Sprachen (z. B. Japanisch oder Koreanisch) kann das Importieren großer Mengen von Textdaten sehr lange dauern oder ein Timeout verursachen. Erwägen Sie, die hochgeladenen Daten in Textdateien mit jeweils bis zu 20.000 Zeilen zu unterteilen.
+
+## <a name="pronunciation-data-for-training"></a>Aussprachedaten für das Training
+
+Wenn die Benutzer auf selten vorkommende Begriffe ohne Standardaussprache treffen oder diese verwenden werden, können Sie eine benutzerdefinierte Aussprachedatei bereitstellen, um die Erkennung zu verbessern. 
+> [!IMPORTANT]
+> Es wird davon abgeraten, benutzerdefinierte Aussprachedateien zu verwenden, um die Aussprache gebräuchlicher Wörter zu ändern.
+
+Stellen Sie die Aussprache in einer einzelnen Textdatei bereit. Hier sehen Sie Beispiele für eine gesprochene Äußerung und die jeweilige benutzerdefinierte Aussprache:
+
+| Erkannte/angezeigte Form | Gesprochene Form |
+|--------------|--------------------------|
+| 3CPO | drei c p o |
+| CNTK | c n t k |
+| IEEE | i doppel e |
+
+Die gesprochene Form ist die jeweilige Lautfolge. Sie kann aus Buchstaben, Wörtern, Silben oder einer Kombination aus allen drei bestehen.
+
+Eine benutzerdefinierte Aussprache ist für Englisch (`en-US`) und Deutsch (`de-DE`) verfügbar. Die folgende Tabelle enthält die unterstützten Zeichen nach Sprache:
+
+| Sprache | Gebietsschema | Zeichen |
+|----------|--------|------------|
+| Englisch | `en-US` | `a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
+| Deutsch | `de-DE` | `ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
+
+Stellen Sie anhand der folgenden Tabelle sicher, dass die zugehörige Datendatei für Aussprache richtig formatiert ist. Aussprachedateien sind klein und sollten einige KB nicht übersteigen.
+
+| Eigenschaft | Wert |
+|----------|-------|
+| Textcodierung | UTF-8 BOM (ANSI wird für Englisch ebenfalls unterstützt) |
+| Anzahl der Aussprachen pro Zeile | 1 |
+| Maximale Dateigröße | 1 MB (1 KB für Free-Tarif) |
+
 ## <a name="audio-data-for-testing"></a>Audiodaten für Tests
 
-Audiodaten eignen sich optimal, um die Genauigkeit des Microsoft-Basismodells für die Spracherkennung oder eines benutzerdefinierten Modells zu testen. Denken Sie daran, dass mit Audiodaten die Genauigkeit der Spracherkennung im Hinblick auf die Leistung eines bestimmten Modells überprüft wird. Wenn Sie die Genauigkeit eines Modells bemessen möchten, verwenden Sie [Audio- und menschenmarkierte Transkriptionsdaten](#audio-and-human-labeled-transcript-data).
+Audiodaten eignen sich optimal, um die Genauigkeit des Microsoft-Basismodells für die Spracherkennung oder eines benutzerdefinierten Modells zu testen. Denken Sie daran, dass mit Audiodaten die Genauigkeit der Spracherkennung im Hinblick auf die Leistung eines bestimmten Modells überprüft wird. Wenn Sie die Genauigkeit eines Modells bemessen möchten, verwenden Sie [Audio- und Humantranskriptionsdaten](#audio--human-labeled-transcript-data-for-trainingtesting).
 
-Anhand der folgenden Tabelle können Sie sicherstellen, dass Ihre Audiodateien für die Verwendung mit Custom Speech richtig formatiert sind:
+Custom Speech erfordert Audiodateien mit den folgenden Eigenschaften:
 
 | Eigenschaft                 | Wert                 |
 |--------------------------|-----------------------|
@@ -206,15 +200,15 @@ Anhand der folgenden Tabelle können Sie sicherstellen, dass Ihre Audiodateien f
 
 [!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
-> [!TIP]
+> [!NOTE]
 > Beim Hochladen von Trainings- und Testdaten darf die ZIP-Datei maximal 2 GB groß sein. Sollten Sie mehr Daten zum Trainieren benötigen, teilen Sie sie auf mehrere ZIP-Dateien auf, und laden Sie sie separat hoch. Später können Sie auswählen, dass Sie *mehrere* Datasets zum Trainieren verwenden möchten. Sie können jedoch nur aus *einem* Dataset testen.
 
-Verwenden Sie <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">SoX</a>, um Audioeigenschaften zu überprüfen oder vorhandene Audiodaten in die entsprechenden Formate zu konvertieren. Im Folgenden finden Sie einige Beispiele für das Ausführen der einzelnen Aktivitäten über die SoX-Befehlszeile:
+Verwenden Sie <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">SoX</a>, um Audioeigenschaften zu überprüfen oder vorhandene Audiodaten in die entsprechenden Formate zu konvertieren. Im Folgenden sind einige SoX-Beispielbefehle aufgeführt:
 
-| Aktivität | BESCHREIBUNG | SoX-Befehl |
-|----------|-------------|-------------|
-| Audioformat überprüfen | Verwenden Sie diesen Befehl zum Überprüfen<br>des Dateiformats der Audiodaten. | `sox --i <filename>` |
-| Audioformat konvertieren | Verwenden Sie diesen Befehl zum Konvertieren<br>der Audiodatei für einen einzelnen Kanal mit 16 Bit und 16 kHz. | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
+| Aktivität | SoX-Befehl |
+|---------|-------------|
+| Überprüfen des Dateiformats der Audiodaten | `sox --i <filename>` |
+| Konvertieren der Audiodatei in einen einzelnen Kanal mit 16 Bit und 16 kHz | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
