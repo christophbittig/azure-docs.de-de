@@ -7,12 +7,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/14/2021
-ms.openlocfilehash: 29a6041206496d7970e3ea58deed1754c062b663
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 389ecc550fd2b9e0fa41b7437b47aa5b40af3712
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122347137"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450915"
 ---
 # <a name="index-data-from-azure-cosmos-db-using-sql-or-mongodb-apis"></a>Indizieren von Daten aus Azure Cosmos DB mit SQL- oder MongoDB-APIs
 
@@ -29,10 +29,6 @@ Mit dem Cosmos DB-Indexer in Azure Cognitive Search können Sie [Azure Cosmos�
 + Für die allgemein verfügbare [SQL-API](../cosmos-db/sql-query-getting-started.md) können Sie das [Portal](#cosmos-indexer-portal), die [REST-API](/rest/api/searchservice/indexer-operations), das [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer) oder ein anderes Azure SDK verwenden, um die Datenquelle und den Indexer zu erstellen.
 
 + Für die [MongoDB-API (Vorschauversion)](../cosmos-db/mongodb-introduction.md) können Sie entweder das [Portal](#cosmos-indexer-portal) oder die [REST-API-Version 2020-06-30-Preview](search-api-preview.md) verwenden, um die Datenquelle und den Indexer zu erstellen.
-
-> [!Note]
-> Bei User Voice können Sie für die [Tabellen-API](https://feedback.azure.com/forums/263029-azure-search/suggestions/32759746-azure-search-should-be-able-to-index-cosmos-db-tab) abstimmen, wenn Sie möchten, dass sie in Azure Cognitive Search unterstützt wird.
->
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -59,7 +55,7 @@ Stellen Sie sicher, dass Ihre Cosmos DB-Datenbank Daten enthält. Der [Datenimpo
 
 Sie können den Assistenten auf der Seite des Azure Cognitive Search-Diensts über die Befehlsleiste starten. (Weitere Informationen finden Sie [hier](search-import-data-portal.md).) Falls Sie eine Verbindung mit der Cosmos DB-SQL-API herstellen, können Sie alternativ im Abschnitt **Einstellungen** (im linken Navigationsbereich Ihres Cosmos DB-Kontos) auf **Azure Cognitive Search hinzufügen** klicken.
 
-   ![Befehl „Daten importieren“ im Portal](./media/search-import-data-portal/import-data-cmd2.png "Starten des Datenimport-Assistenten")
+   :::image type="content" source="media/search-import-data-portal/import-data-cmd.png" alt-text="Screenshot des Befehls „Daten importieren“" border="true":::
 
 ### <a name="step-3---set-the-data-source"></a>Schritt 3: Festlegen der Datenquelle
 
@@ -172,7 +168,7 @@ Formulieren Sie zum Erstellen einer Datenquelle eine POST-Anforderung:
 
 Der Anforderungstext umfasst die Datenquellendefinition, welche die folgenden Felder enthalten sollte:
 
-| Feld   | BESCHREIBUNG |
+| Feld   | Beschreibung |
 |---------|-------------|
 | **name** | Erforderlich. Wählen Sie für Ihr Datenquellenobjekt einen beliebigen Namen aus. |
 |**type**| Erforderlich. Muss `cosmosdb`lauten. |
@@ -185,7 +181,7 @@ Der Anforderungstext umfasst die Datenquellendefinition, welche die folgenden Fe
 Sie können eine SQL-Abfrage angeben, um geschachtelte Eigenschaften oder Arrays zu vereinfachen, JSON-Eigenschaften zu projizieren und die zu indizierenden Daten zu filtern. 
 
 > [!WARNING]
-> Für die **MongoDB-API** werden keine benutzerdefinierten Abfragen unterstützt: Der Parameter `container.query` muss auf null festgelegt oder weggelassen werden. Wenn Sie eine benutzerdefinierte Abfrage verwenden möchten, informieren Sie uns auf [User Voice](https://feedback.azure.com/forums/263029-azure-search).
+> Für die **MongoDB-API** werden keine benutzerdefinierten Abfragen unterstützt: Der Parameter `container.query` muss auf null festgelegt oder weggelassen werden. 
 
 Beispieldokument:
 
