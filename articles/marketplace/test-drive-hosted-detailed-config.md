@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 04/20/2021
-ms.openlocfilehash: d3458d456793a3853fc2277bc1443c6fdfbc5865
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: c3b2672f8cda046cbd6276ebaa6cf8cf2ceb5e0f
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340514"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867030"
 ---
 # <a name="detailed-configuration-for-hosted-test-drives"></a>Detaillierte Konfigurationsschritte für gehostete Testversionen
 
@@ -27,7 +27,7 @@ In diesem Artikel wird beschrieben, wie Sie eine gehostete Testversion für Dyna
 
     [![Auswählen des Kontrollkästchens „Testversion aktivieren“](media/test-drive/enable-test-drive-check-box.png)](media/test-drive/enable-test-drive-check-box.png#lightbox)
 
-    - **Typ der Testversion**: Wählen Sie die Option **Von Microsoft gehostet (Dynamics 365 for Customer Engagement & PowerApps)** aus. Dies weist darauf hin, dass Microsoft den Dienst hosten und warten wird, durch den die Benutzerbereitstellung für die Testversion ausgeführt und wieder aufgehoben wird.
+    - **Typ der Testversion**: Wählen Sie die Option **Von Microsoft gehostet (Dynamics 365 Customer Engagement und Power Apps)** aus. Dies weist darauf hin, dass Microsoft den Dienst hosten und warten wird, durch den die Benutzerbereitstellung für die Testversion ausgeführt und wieder aufgehoben wird.
 
 5. Erteilen Sie die Microsoft AppSource-Berechtigung, durch die die Benutzerbereitstellung für die Testversion im Mandanten ausgeführt und wieder aufgehoben werden kann. Befolgen Sie dazu die [hier](./test-drive-azure-subscription-setup.md) beschriebenen Anweisungen. In diesem Schritt generieren Sie die unten erwähnten Werte **Azure AD-App-ID** und **Azure AD-App-Schlüssel**.
 6. Füllen Sie diese Felder auf der Seite **Technische Konfiguration der Testversion** aus.

@@ -15,23 +15,24 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 06/22/2021
 ms.author: bagol
-ms.openlocfilehash: 80f3779829b54c70fd79251b7c2076deb34dc2ca
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 37671dcb12f2ed1f230e236d68dcf2e6a49bae30
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343323"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515492"
 ---
 # <a name="azure-sentinel-file-event-normalization-schema-reference-public-preview"></a>Azure Sentinel: Referenz zum Dateiereignis-Normalisierungsschema (Public Preview)
 
 Das Dateiereignis-Normalisierungsschema wird dazu verwendet, Dateiaktivitäten wie das Erstellen, Ändern oder Löschen von Dateien oder Dokumenten zu beschreiben. Solche Ereignisse werden von Betriebssystemen, Dateispeichersystemen wie Azure Files und Dokumentenverwaltungssystemen wie Microsoft SharePoint gemeldet.
 
-Weitere Informationen zur Normalisierung in Azure Sentinel finden Sie unter [Normalisierung und das Azure Sentinel Information Model (ASIM)](normalization.md).
+Weitere Informationen zu Normalisierung in Azure Sentinel finden Sie unter [Normalisierung und das Azure Sentinel Information Model (ASIM)](normalization.md).
 
 > [!IMPORTANT]
-> Das Dateiereignis-Normalisierungsschema ist derzeit als Public Preview verfügbar.
-> Dieses Feature wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Das Dateiereignis-Normalisierungsschema ist derzeit als Vorschau verfügbar. Dieses Feature wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen.
+>
+> In den [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) finden Sie weitere rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden oder anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+>
 
 ## <a name="parsers"></a>Parser
 
@@ -44,7 +45,7 @@ Azure Sentinel bietet die folgenden integrierten, produktspezifischen Dateiereig
 
 Verwenden Sie imFileEvent als Tabellennamen in der Abfrage, um den quellunabhängigen Parser zu verwenden, der alle integrierten Parser vereinheitlicht, und um sicherzustellen, dass Ihre Analyse für alle konfigurierten Quellen ausgeführt wird.
 
-Stellen Sie die [quellunabhängigen und quellspezifischen Parser](normalization.md#parsers) aus dem [Azure Sentinel GitHub-Repository](https://aka.ms/AzSentinelFileEvent) bereit.
+Stellen Sie die [quellunabhängigen und quellspezifischen Parser](normalization-about-parsers.md) aus dem [Azure Sentinel GitHub-Repository](https://aka.ms/AzSentinelFileEvent) bereit.
 
 ## <a name="add-your-own-normalized-parsers"></a>Hinzufügen eigener normalisierter Parser
 
@@ -55,13 +56,15 @@ Fügen Sie Ihre KQL-Funktion dem quellunabhängigen Parser `imFileEvent` hinzu, 
 
 ## <a name="normalized-content-for-process-activity-data"></a>Normalisierter Inhalt für Prozessaktivitätsdaten
 
-Die folgenden Azure Sentinel-**Analyseregeln** funktionieren mit jeder Dateiaktivität, die mithilfe des Informationsmodells von Azure Sentinel normalisiert wird:
+Zur Unterstützung des ASIM-Schemas für Dateiaktivität gehört auch die Unterstützung der folgenden integrierten Analyseregeln mit normalisierten Authentifizierungsparsern. Im Folgenden finden Sie Links zum Azure Sentinel GitHub-Repository. Sie können diese Regeln aber auch in dem [Azure Sentinel Analytics-Regelkatalog](detect-threats-built-in.md) finden. Verwenden Sie die verlinkten GitHub-Seiten, um alle relevanten Hunting-Abfragen für die aufgeführten Regeln zu kopieren.
 
-- SUNBURST- und SUPERNOVA-Hintertürhashes (normalisierte Dateiereignisse)
-- Exchange Server: im März 2021 offengelegte Sicherheitsrisiken – IoC-Übereinstimmung
-- Schreiben verdächtiger Dateien durch den HAFNIUM UM-Dienst
-- NOBELIUM – Domänen-, Hash- und IP-IOCs – März 2021
-- SUNSPOT-Protokolldateierstellung 
+
+- [SUNBURST- und SUPERNOVA-Hintertürhashes (normalisierte Dateiereignisse)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimFileEvent/imFileESolarWindsSunburstSupernova.yaml)
+- [Exchange Server: im März 2021 offengelegte Sicherheitsrisiken – IoC-Übereinstimmung](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ExchangeServerVulnerabilitiesMarch2021IoCs.yaml)
+- [Schreiben verdächtiger Dateien durch den HAFNIUM UM-Dienst](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/HAFNIUMUmServiceSuspiciousFile.yaml)
+- [NOBELIUM – Domänen-, Hash- und IP-IOCs – März 2021](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/NOBELIUM_IOCsMay2021.yaml)
+- [SUNSPOT-Protokolldateierstellung](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/SUNSPOTLogFile.yaml)
+- [Bekannte ZINC Comebacker- und Klackring-Schadsoftwarehashes](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ZincJan272021IOCs.yaml)
 
 Weitere Informationen finden Sie unter [Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen](detect-threats-custom.md).
 
@@ -74,7 +77,7 @@ Das Dateiereignis-Informationsmodell ist auf das [OSSEM-Prozessentitätsschema](
 
 Die folgenden Felder werden von Log Analytics für jeden Datensatz generiert und können beim Erstellen eines benutzerdefinierten Connectors überschrieben werden.
 
-| Feld         | type     | Diskussion (Discussion)      |
+| Feld         | Typ     | Diskussion (Discussion)      |
 | ------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | <a name="timegenerated"></a>**TimeGenerated** | datetime | Der Zeitpunkt, zu dem das Ereignis vom meldenden Gerät generiert wurde.|
 | **_ResourceId**   | guid     | Die Azure-Ressourcen-ID des meldenden Geräts oder Diensts oder die Ressourcen-ID des Protokollforwarders für Ereignisse, die mit Syslog, CEF oder WEF weitergeleitet werden. |
@@ -88,15 +91,15 @@ Die folgenden Felder werden von Log Analytics für jeden Datensatz generiert und
 
 Ereignisfelder sind allen Schemas gemeinsam und beschreiben die Aktivität selbst und das meldende Gerät.
 
-| Feld               | Klasse       | type       |  BESCHREIBUNG       |
+| Feld               | Klasse       | Typ       |  BESCHREIBUNG       |
 |---------------------|-------------|------------|--------------------|
 | **EventMessage**        | Optional    | String     |     Eine allgemeine Nachricht oder Beschreibung, entweder im Datensatz enthalten oder aus ihm generiert.   |
-| **EventCount**          | Obligatorisch.   | Integer    |     Die Anzahl der Ereignisse, die vom Datensatz beschrieben werden. <br><br>Dieser Wert wird verwendet, wenn die Quelle Aggregation unterstützt. Ein einzelner Datensatz kann mehrere Ereignisse darstellen. <br><br>Legen Sie den Wert für andere Quellen auf `1` fest.   |
+| **EventCount**          | Obligatorisch.   | Integer    |     Die Anzahl der Ereignisse, die im Datensatz beschrieben werden. <br><br>Dieser Wert wird verwendet, wenn die Quelle Aggregation unterstützt. Ein einzelner Datensatz kann mehrere Ereignisse darstellen. <br><br>Legen Sie den Wert für andere Quellen auf `1` fest.   |
 | **EventStartTime**      | Obligatorisch.   | Datum/Uhrzeit  |      Wenn die Quelle Aggregation unterstützt und der Datensatz mehrere Ereignisse darstellt, gibt dieses Feld die Zeit an, zu der das erste Ereignis generiert wurde. Andernfalls wird in diesem Feld ein Alias für das Feld [TimeGenerated](#timegenerated) verwendet. |
 | **EventEndTime**        | Obligatorisch.   | Alias      |      Alias für das Feld [TimeGenerated](#timegenerated).    |
 | **EventType**           | Obligatorisch.   | Enumerated |    Beschreibt den vom Datensatz gemeldeten Vorgang. <br><br>Für Dateidatensätze werden folgende Werte unterstützt: <br><br>- `FileCreated`<br>- `FileModified`<br>- `FileDeleted`<br>- `FileRenamed`<br>- `FileCopied`<br>- `FileMoved`<br>- `FolderCreated`<br>- `FolderDeleted` |
 | **EventResult**         | Obligatorisch.   | Enumerated |  Beschreibt das Ergebnis des Ereignisses, das auf einen der folgenden unterstützten Werte normalisiert wird: <br><br>- `Success`<br>- `Partial`<br>- `Failure`<br>- `NA` (nicht zutreffend) <br><br>Die Quelle stellt möglicherweise nur einen Wert für das Feld [EventOriginalResultDetails](#eventoriginalresultdetails) bereit, das analysiert werden muss, um den Wert **EventResult** zu erhalten. |
-| <a name="eventoriginalresultdetails"></a>**EventOriginalResultDetails**  | Optional    | String     | Beschreibt das Ergebnis des Ereignisses. Beachten Sie, dass dieser Wert nicht normalisiert ist und für den ursprünglichen Wert vorgesehen ist, wie er von der Quelle bereitgestellt wird. Zu diesem Zeitpunkt gibt es kein verwandtes normalisiertes Feld, d. h. EventResultDetails, für dieses Schema. |
+| <a name="eventoriginalresultdetails"></a>**EventOriginalResultDetails**  | Optional    | String     | Beschreibt das Ergebnis des Ereignisses. <br><br>**Hinweis**: Dieser Wert ist nicht normalisiert und ist für den ursprünglichen Wert vorgesehen, wie er von der Datenquelle bereitgestellt wird. Für das Dateiereignis-Normalisierungsschema gibt es derzeit kein verwandtes normalisiertes Feld wie z. B. *EventResultDetails*. |
 | **EventOriginalUid**    | Optional    | String     | Eine eindeutige ID des ursprünglichen Datensatzes, sofern von der Quelle bereitgestellt.<br><br>Beispiel: `69f37748-ddcd-4331-bf0f-b137f1ea83b`|
 | **EventOriginalType**   | Optional    | String     | Der ursprüngliche Ereignistyp oder die ursprüngliche Ereignis-ID, sofern von der Quelle bereitgestellt.<br><br>Beispiel: `4663`|
 | <a name ="eventproduct"></a>**EventProduct**       | Obligatorisch.   | String     | Das Produkt, das das Ereignis erzeugt. <br><br>Beispiel: `Sysmon`<br><br>**Hinweis**: Dieses Feld ist möglicherweise nicht im Quelldatensatz verfügbar. In solchen Fällen muss dieses Feld vom Parser festgelegt werden.           |
@@ -131,24 +134,24 @@ Die Beziehung zwischen diesen Entitäten wird am besten wie folgt demonstriert: 
 
 Beispiel: `JohnDoe` (**Actor**) verwendet `Windows File Explorer` (**handelnder Prozess**), um `new.doc` (**Quelldatei**) in `old.doc` (**Zieldatei**) umzubenennen.
 
-| Feld          | Klasse        | type       | BESCHREIBUNG   |
+| Feld          | Klasse        | Typ       | BESCHREIBUNG   |
 |---------------|--------------|------------|-----------------|
 | **ActingProcessCommandLine** |Optional  |String  | Die Befehlszeile zum Ausführen des Programms. <br><br>Beispiel: `"choco.exe" -v` |
 |**ActingProcessGuid** |Optional     | String     |  Ein generierter eindeutiger Bezeichner (GUID) des handelnden Prozesses. Ermöglicht die systemübergreifende Identifizierung des Prozesses.  <br><br> Beispiel: `EF3BD0BD-2B74-60C5-AF5C-010000001E00`            |
 | **ActingProcessId**| Obligatorisch.    | Integer        | Die Prozess-ID (PID) des handelnden Prozesses.<br><br>Beispiel: `48610176`           <br><br>**Hinweis**: Der Typ ist als *Zeichenfolge* definiert, um unterschiedliche Systeme zu unterstützen, aber unter Windows und Linux muss dieser Wert numerisch sein. <br><br>Wenn Sie einen Windows- oder Linux-Computer verwenden und einen anderen Typ verwendet haben, stellen Sie sicher, dass Sie die Werte konvertieren. Wenn Sie beispielsweise einen Hexadezimalwert verwendet haben, konvertieren Sie diesen in einen Dezimalwert.    |
 | <a name="actingprocessname"></a>**ActingProcessName**              | Optional     | String     |   Der Name des handelnden Prozesses. Dieser Name wird häufig vom Image oder von der ausführbaren Datei abgeleitet, die zum Definieren des ursprünglichen Codes und der Daten verwendet wird, die dem virtuellen Adressraum des Prozesses zugeordnet sind.<br><br>Beispiel: `C:\Windows\explorer.exe`  |
 |**Process**| Alias| | Alias für [ActingProcessName](#actingprocessname)|
-| <a name="actoruserid"></a>**ActorUserId**    | Empfohlen  | String     |   Eine eindeutige ID des **Akteurs**. Die jeweilige ID hängt vom System ab, das das Ereignis generiert. Weitere Informationen finden Sie unter [Benutzerentität](normalization.md#the-user-entity).  <br><br>Beispiel: `S-1-5-18`    |
-| **ActorUserIdType**| Empfohlen  | String     |  Der Typ der ID, die im Feld [ActorUserId](#actoruserid) gespeichert ist. Weitere Informationen finden Sie unter [Benutzerentität](normalization.md#the-user-entity). <br><br>Beispiel: `SID`         |
+| <a name="actoruserid"></a>**ActorUserId**    | Empfohlen  | String     |   Eine eindeutige ID des **Akteurs**. Die jeweilige ID hängt vom System ab, das das Ereignis generiert. Weitere Informationen finden Sie unter [Benutzerentität](normalization-about-schemas.md#the-user-entity).  <br><br>Beispiel: `S-1-5-18`    |
+| **ActorUserIdType**| Empfohlen  | String     |  Der Typ der ID, die im Feld [ActorUserId](#actoruserid) gespeichert ist. Weitere Informationen finden Sie unter [Benutzerentität](normalization-about-schemas.md#the-user-entity). <br><br>Beispiel: `SID`         |
 | <a name="actorusername"></a>**ActorUsername**  | Obligatorisch.    | String     | Der Benutzername des Benutzers, der das Ereignis initiiert hat. <br><br>Beispiel: `CONTOSO\WIN-GG82ULGC9GO$`     |
-| **ActorUsernameType**              | Obligatorisch.    | Enumerated |   Gibt den Typ des Benutzernamens an, der im Feld [ActorUsername](#actorusername) gespeichert ist. Weitere Informationen finden Sie unter [Benutzerentität](normalization.md#the-user-entity). <br><br>Beispiel: `Windows`       |
+| **ActorUsernameType**              | Obligatorisch.    | Enumerated |   Gibt den Typ des Benutzernamens an, der im Feld [ActorUsername](#actorusername) gespeichert ist. Weitere Informationen finden Sie unter [Benutzerentität](normalization-about-schemas.md#the-user-entity). <br><br>Beispiel: `Windows`       |
 |**Benutzer** | Alias| | Alias für das Feld [ActorUsername](#actorusername). <br><br>Beispiel: `CONTOSO\dadmin`|
 | **ActorUserType**|Optional | Enumerated| Der Typ des **Akteurs**. Unterstützte Werte sind: <br><br>- `Regular`<br>- `Machine`<br>- `Admin`<br>- `System`<br>- `Application`<br>- `Service Principal`<br>- `Other` <br><br>**Hinweis**: Die Quelle stellt möglicherweise nur einen Wert für das Feld [ActorOriginalUserType](#actororiginalusertype) bereit, das analysiert werden muss, um den Wert **ActorUserType** zu erhalten.|
 |<a name="actororiginalusertype"></a>**ActorOriginalUserType** |Optional |String | Der Benutzertyp des **Akteurs**, wie vom meldenden Gerät bereitgestellt. |
 |**HttpUserAgent** |Optional | String |Der verwendete Benutzer-Agent, wenn der Vorgang von einem Remotesystem über HTTP oder HTTPS initiiert wird.<br><br>Zum Beispiel:<br>`Mozilla/5.0 (Windows NT 10.0; Win64; x64)`<br>`AppleWebKit/537.36 (KHTML, like Gecko)`<br>` Chrome/42.0.2311.135`<br>`Safari/537.36 Edge/12.246`|
 | **NetworkApplicationProtocol**| Optional|String | Wenn der Vorgang von einem Remotesystem initiiert wird, ist dieser Wert das Anwendungsschichtprotokoll, das im OSI-Modell verwendet wird. <br><br>Obwohl dies kein aufzählbares Feld ist und jeder Wert akzeptiert wird, sind folgende Werte zu bevorzugen: `HTTP`, `HTTPS`, `SMB`, `FTP` und `SSH`.<br><br>Beispiel: `SMB`|
 |**SrcIpAddr** |Empfohlen |IP-Adresse | Die IP-Adresse dieses Systems, wenn der Vorgang von einem Remotesystem initiiert wird.<br><br>Beispiel: `185.175.35.214`|
-| **SrcFileCreationTime**|Optional |Datum/Uhrzeit |Der Zeitpunkt, zu dem die Quelldatei erstellt wurde. |
+| **SrcFileCreationTime**|Optional |Date/Time |Der Zeitpunkt, zu dem die Quelldatei erstellt wurde. |
 |**SrcFileDirectory** | Optional| String| Der Quelldateiordner oder -speicherort. Dieses Feld sollte dem Feld [SrcFilePath](#srcfilepath) unter Ausschluss des letzten Elements gleichen. <br><br>**Hinweis**: Ein Parser kann diesen Wert bereitstellen, wenn der Wert in der Protokollquelle verfügbar ist und nicht aus dem vollständigen Pfad extrahiert werden muss.|
 | **SrcFileExtension**|Optional | String|Die Quelldateierweiterung. <br><br>**Hinweis**: Ein Parser kann diesen Wert bereitstellen, wenn der Wert in der Protokollquelle verfügbar ist und nicht aus dem vollständigen Pfad extrahiert werden muss.|
 |**SrcFileMimeType** |Optional |Enumerated |    Der MIME- oder Medientyp der Quelldatei. Die unterstützten Werte sind im [IANA-Medientypen](https://www.iana.org/assignments/media-types/media-types.xhtml)-Repository aufgeführt. |
@@ -160,7 +163,7 @@ Beispiel: `JohnDoe` (**Actor**) verwendet `Windows File Explorer` (**handelnder 
 |**SrcFileSHA256** | Optional|SHA256 |Der SHA-256-Hash der Quelldatei. <br><br>Beispiel:<br> `e81bb824c4a09a811af17deae22f22dd`<br>`2e1ec8cbb00b22629d2899f7c68da274`|
 |**SrcFileSHA512** |Optional | SHA512|Der SHA-512-Hash der Quelldatei. |
 |**SrcFileSize**| Optional|Integer | Die Größe der Quelldatei in Byte.|
-|**TargetFileCreationTime** | Optional|Datum/Uhrzeit |Der Zeitpunkt, zu dem die Zieldatei erstellt wurde. |
+|**TargetFileCreationTime** | Optional|Date/Time |Der Zeitpunkt, zu dem die Zieldatei erstellt wurde. |
 |**TargetFileDirectory** | Optional|String |Der Zieldateiordner oder -speicherort. Dieses Feld sollte dem Feld [TargetFilePath](#targetfilepath) unter Ausschluss des letzten Elements gleichen. <br><br>**Hinweis**: Ein Parser kann diesen Wert bereitstellen, wenn der Wert in der Protokollquelle verfügbar ist und nicht aus dem vollständigen Pfad extrahiert werden muss.|
 |**TargetFileExtension** |Optional |String | Die Zieldateierweiterung<br><br>**Hinweis**: Ein Parser kann diesen Wert bereitstellen, wenn der Wert in der Protokollquelle verfügbar ist und nicht aus dem vollständigen Pfad extrahiert werden muss.|
 | **TargetFileMimeType**|Optional | Enumerated| Der MIME- oder Medientyp der Zieldatei. Die zulässigen Werte sind im [IANA-Medientypen](https://www.iana.org/assignments/media-types/media-types.xhtml)-Repository aufgeführt.|
@@ -187,15 +190,15 @@ Der Pfad muss so normalisiert werden, dass er einem der folgenden Formate entspr
 |---------|---------|---------|
 |**Windows Lokal**     |   `C:\Windows\System32\notepad.exe`      |      Da bei Windows-Pfadnamen die Groß-/Kleinschreibung nicht beachtet wird, impliziert dieser Typ, dass bei dem Wert die Groß-/Kleinschreibung nicht beachtet wird.   |
 |**Windows-Freigabe**     |      `\\Documents\My Shapes\Favorites.vssx`   | Da bei Windows-Pfadnamen die Groß-/Kleinschreibung nicht beachtet wird, impliziert dieser Typ, dass bei dem Wert die Groß-/Kleinschreibung nicht beachtet wird.        |
-|**Unix**     |  `/etc/init.d/networking`       |     Da bei Unix-Pfadnamen die Groß-/Kleinschreibung beachtet wird, impliziert dieser Typ, dass bei dem Wert die Groß-/Kleinschreibung beachtet wird.  <br><br>– Verwenden Sie diesen Typ für AWS S3. Verketten Sie den Bucket und die Schlüsselnamen, um den Pfad zu erstellen. <br><br>– Verwenden Sie diesen Typ für Azure Blob Storage-Objektschlüssel.   |
-|**URL**     |  `https://1drv.ms/p/s!Av04S_*********we`       | Verwenden Sie diesen Typ, wenn der Dateipfad als URL verfügbar ist. URLs sind nicht auf HTTP oder HTTPS als Schema beschränkt. Jeder gültige Wert, einschließlich eines FTP-Werts, ist gültig.         |
+|**Unix**     |  `/etc/init.d/networking`       |     Da bei Unix-Pfadnamen die Groß-/Kleinschreibung relevant ist, impliziert dieser Typ, dass bei dem Wert die Groß-/Kleinschreibung zu beachten ist.  <br><br>– Verwenden Sie diesen Typ für AWS S3. Verketten Sie den Bucket und die Schlüsselnamen, um den Pfad zu erstellen. <br><br>– Verwenden Sie diesen Typ für Azure Blob Storage-Objektschlüssel.   |
+|**URL**     |  `https://1drv.ms/p/s!Av04S_*********we`       | Verwenden Sie diesen Typ, wenn der Dateipfad als URL verfügbar ist. URLs sind nicht auf *HTTP* oder *HTTPS* als Schema beschränkt. Jeder gültige Wert, einschließlich eines FTP-Werts, ist gültig. |
 |     |         |         |
 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter
 
 - [Normalisierung in Azure Sentinel](normalization.md)
 - [Azure Sentinel: Referenz zum Authentifizierungsnormalisierungsschema (Public Preview)](authentication-normalization-schema.md)

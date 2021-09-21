@@ -3,18 +3,18 @@ title: Verwalten und Finden von Azure-Blobdaten mit Blobindextags
 description: Erfahren Sie, wie Sie Blobindextags verwenden, um Blobobjekte zu kategorisieren, zu verwalten und abzufragen.
 author: normesta
 ms.author: normesta
-ms.date: 06/14/2021
+ms.date: 08/25/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: c4ff918be67d74d536159ebbd3e707c1d7e68e8b
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 95262d66be9300cc1c88ec80e3da4a5367705c76
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113730746"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122969414"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags"></a>Verwalten und Finden von Azure-Blobdaten mit Blobindextags
 
@@ -23,8 +23,11 @@ Wenn der Umfang von Datasets zunimmt, kann die Suche nach einem bestimmten Objek
 Blobindextags ermöglichen Ihnen Folgendes:
 
 - Dynamisches Kategorisieren Ihrer Blobs mit Schlüssel-Wert-Indextags
+
 - Schnelles Auffinden bestimmter getaggter Blobs innerhalb einer gesamten Speicherkontoumgebung
+
 - Angeben von bedingtem Verhalten für Blob-APIs basierend auf der Auswertung von Indextags
+
 - Verwenden von Indextags für erweiterte Steuerungsmöglichkeiten bei Features wie der [Lebenszyklusverwaltung für Blobs](storage-lifecycle-management-concepts.md)
 
 Stellen Sie sich ein Szenario vor, bei dem Sie über Millionen von Blobs in Ihrem Speicherkonto verfügen, auf die von vielen verschiedenen Anwendungen zugegriffen wird. Sie möchten alle zugehörigen Daten eines einzelnen Projekts finden. Sie sind sich nicht sicher, was alles dazugehört, weil die Daten über mehrere Container mit unterschiedlichen Namenskonventionen verteilt sein können. Alle Daten werden von Ihren Anwendungen aber mit projektabhängigen Tags hochgeladen. Anstatt Millionen von Blobs zu durchsuchen, um Namen und Eigenschaften zu vergleichen, können Sie `Project = Contoso` als Kriterium für die Ermittlung verwenden. Per Blobindex werden alle Container innerhalb Ihres gesamten Speicherkontos gefiltert, um in kürzester Zeit nur die 50 Blobs aus `Project = Contoso` zurückzugeben.
@@ -38,9 +41,13 @@ Bei Container- und Blobnamenpräfixen handelt es sich um eindimensionale Kategor
 Gehen wir von den folgenden fünf Blobs in Ihrem Speicherkonto aus:
 
 - *container1/transaction.csv*
+
 - *container2/campaign.docx*
+
 - *photos/bannerphoto.png*
+
 - *archives/completed/2019review.pdf*
+
 - *logs/2020/01/01/logfile.txt*
 
 Diese Blobs werden durch ein Präfix getrennt, das aus *Containername/Name des virtuellen Ordners/Blobname* besteht. Sie können das Indextagattribut `Project = Contoso` für diese fünf Blobs festlegen, um sie derselben Kategorie zuzuweisen, ohne die aktuelle Präfixorganisation zu ändern. Durch das Hinzufügen von Indextags müssen Daten nicht mehr verschoben werden, weil sie über den Index gefiltert und gefunden werden können.
@@ -65,20 +72,30 @@ Sie können mehrere Tags auf Ihr Blob anwenden, um eine ausführlichere Beschrei
 > "Status" = 'Unprocessed'  
 > "Priority" = '01'
 
-Um die vorhandenen Indextagattribute zu ändern, rufen Sie die vorhandenen Tagattribute ab, ändern sie und ersetzen sie durch den Vorgang [Set Blob Tags](/rest/api/storageservices/set-blob-tags). Um alle Indextags aus dem Blob zu entfernen, rufen Sie den Vorgang `Set Blob Tags` ohne Tagattribute auf. Da Blobindextags eine Unterressource der Blobdateninhalte sind, ändert `Set Blob Tags` weder die zugrunde liegenden Inhalte, noch die Uhrzeit der letzten Änderung oder das ETag eines Blobs. Sie können Indextags für alle aktuellen Basisblobs und die vorherigen Versionen erstellen oder ändern. Tags in Momentaufnahmen oder vorläufig gelöschten Blobs können aber nicht geändert werden.
+Um die vorhandenen Indextagattribute zu ändern, rufen Sie die vorhandenen Tagattribute ab, ändern sie und ersetzen sie durch den Vorgang [Set Blob Tags](/rest/api/storageservices/set-blob-tags). Um alle Indextags aus dem Blob zu entfernen, rufen Sie den Vorgang `Set Blob Tags` ohne Tagattribute auf. Da Blobindextags eine Unterressource der Blobdateninhalte sind, ändert `Set Blob Tags` weder die zugrunde liegenden Inhalte, noch die Uhrzeit der letzten Änderung oder das ETag eines Blobs. Sie können Indextags für alle aktuellen Basisblobs erstellen oder ändern. Indextags werden auch für frühere Versionen beibehalten, aber nicht an die Blobindex-Engine übergeben, sodass Sie Indextags nicht abfragen können, um frühere Versionen abzurufen. Tags in Momentaufnahmen oder vorläufig gelöschten Blobs können nicht geändert werden.
 
 Die nachstehenden Einschränkungen gelten für Blobindextags:
 
 - Jedes Blob kann über bis zu zehn Blobindextags verfügen
+
 - Tagschlüssel müssen zwischen einem und 128 Zeichen umfassen
+
 - Tagwerte müssen zwischen 0 und 256 Zeichen umfassen
+
 - Bei Tagschlüsseln und -werten wird die Groß-/Kleinschreibung beachtet
+
 - Für Tagschlüssel und -werte werden nur Zeichenfolgen-Datentypen unterstützt. Alle Zahlen, Datumsangaben, Uhrzeiten oder Sonderzeichen werden als Zeichenfolgen gespeichert.
+
 - Tagschlüssel und -werte müssen den folgenden Benennungsregeln entsprechen:
+
   - Alphanumerische Zeichen:
+
     - **a** bis **z** (Kleinbuchstaben)
+
     - **A** bis **Z** (Großbuchstaben)
+
     - **0** bis **9** (Zahlen)
+
   - Zulässige Sonderzeichen: Leerzeichen, Pluszeichen, Minuszeichen, Punkt, Doppelpunkt, Gleichheitszeichen, Unterstrich, Schrägstrich (` +-.:=_/`)
 
 ## <a name="getting-and-listing-blob-index-tags"></a>Abrufen und Auflisten von Blobindextags
@@ -106,11 +123,17 @@ Mit dem Indizierungsmodul werden Ihre Schlüssel-Wert-Attribute in einem mehrdim
 Für die Filterung des Blobindex gelten folgende Kriterien:
 
 - Tagschlüssel müssen in doppelte Anführungszeichen (") eingeschlossen werden
+
 - Tagwerte und Containernamen müssen in einfache Anführungszeichen (') eingeschlossen werden
+
 - Das @-Zeichen ist nur für das Filtern nach einem bestimmten Containernamen zulässig (z. B. `@container = 'ContainerName'`)
+
 - Filter werden mit lexikografischer Sortierung auf Zeichenfolgen angewendet
+
 - Vorgänge für einseitige Bereiche sind für ein und denselben Schlüssel unzulässig (z. B. `"Rank" > '10' AND "Rank" >= '15'`)
+
 - Bei Verwendung von REST zum Erstellen von Filterausdrücken müssen Zeichen URI-codiert sein
+
 - Tagabfragen werden zum Gleichheitsabgleich mithilfe eines einzelnen Tags optimiert (z. B. StoreID = „100“).  Bereichsabfragen, die ein einzelnes Tag mit „>“, „>=“, „<“, „<=“ verwenden, sind ebenfalls effizient. Jede Abfrage, die „UND“ mit mehr als einem Tag verwendet, ist nicht so effizient.  Beispielsweise ist „Kosten > „01“ UND Kosten <= „100““ effizient. „Kosten > „01 UND StoreID = „2““ ist nicht so effizient.
 
 In der Tabelle unten sind alle zulässigen Operatoren für `Find Blobs by Tags` aufgeführt:
@@ -220,7 +243,9 @@ Die folgende Beispielregel für die Lebenszyklusverwaltung gilt für Blockblobs 
 Sie können Zugriffsberechtigungen für Blobindextags erteilen, indem Sie einen der folgenden Ansätze verwenden:
 
 - Verwenden Sie die rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC), um Berechtigungen für einen Azure Active Directory-Sicherheitsprinzipal (Azure AD) zu erteilen. Verwenden Sie Azure AD, um eine höhere Sicherheit und Benutzerfreundlichkeit zu erzielen. Weitere Informationen zur Verwendung von Azure AD mit Blobvorgängen finden Sie unter [Autorisieren des Zugriffs auf die Daten in Azure Storage](../common/authorize-data-access.md).
+
 - Verwenden Sie eine Shared Access Signature (SAS), um den Zugriff auf den Blobindex zu delegieren. Weitere Informationen zu SAS (Shared Access Signatures) finden Sie unter [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)](../common/storage-sas-overview.md).
+
 - Verwenden Sie die Kontozugriffsschlüssel zur Autorisierung von Vorgängen mit gemeinsam verwendetem Schlüssel. Weitere Informationen finden Sie unter [Authentifizieren mit gemeinsam verwendetem Schlüssel](/rest/api/storageservices/authorize-with-shared-key).
 
 Blobindextags sind eine Unterressource der Blobdaten. Ein Benutzer mit Berechtigungen oder SAS-Token für das Lesen oder Schreiben von Blobs kann möglicherweise nicht auf die Blobindextags zugreifen.
@@ -292,19 +317,22 @@ Blobindextags sind derzeit in allen öffentlichen Regionen verfügbar.
 Weitere Informationen zum Einstieg in Blobindex finden Sie unter [Verwenden von Blobindextags (Vorschau) zum Verwalten und Suchen von Daten in Azure Blob Storage](storage-blob-index-how-to.md).
 
 > [!IMPORTANT]
-> Sie müssen Ihr Abonnement registrieren, bevor Sie den Blobindex für Ihre Speicherkonten verwenden können. Weitere Informationen finden Sie im Abschnitt [Bedingungen und bekannte Probleme](#conditions-and-known-issues) dieses Artikels.
+> Weitere Informationen finden Sie im Abschnitt [Bedingungen und bekannte Probleme](#conditions-and-known-issues) dieses Artikels.
 
 ## <a name="conditions-and-known-issues"></a>Bedingungen und bekannte Probleme
 
 In diesem Abschnitt werden bekannte Probleme und Bedingungen beschrieben.
 
 - Nur Konten vom Typ „Allgemein v2“ werden unterstützt. Premium-Blockblobs, Legacyblobs und Konten mit aktiviertem hierarchischem Namespace werden nicht unterstützt. Konten vom Typ „Universell V1“ werden nicht unterstützt.
+
 - Beim Hochladen von Seitenblobs mit Indextags werden die Tags nicht beibehalten. Legen Sie die Tags nach dem Hochladen eines Seitenblobs fest.
-- Wenn die Filterung auf einen einzelnen Container beschränkt ist, kann `@container` nur übergeben werden, wenn alle Indextags im Filterausdruck Gleichheitsprüfungen sind (Schlüssel=Wert).
-- Wenn der Bereichsoperator mit der `AND`-Bedingung verwendet wird, muss derselbe Indextag-Schlüsselname angegeben werden (`"Age" > '013' AND "Age" < '100'`).
-- Bei aktivierter Versionsverwaltung können weiterhin Indextags für die aktuelle Version verwendet werden. Für Vorgängerversionen werden Indextags werden für verschiedene Versionen beibehalten, aber nicht an das Blobindexmodul übermittelt. Indextags können nicht abgefragt werden, um frühere Versionen abzurufen.
+
+- Bei aktivierter Blobspeicher-Versionsverwaltung können weiterhin Indextags für die aktuelle Version verwendet werden. Indextags werden für frühere Versionen beibehalten, aber nicht an die Blobindex-Engine übergeben, sodass Sie sie nicht zum Abrufen früherer Versionen verwenden können. Wenn Sie eine frühere Version auf die aktuelle Version höherstufen, werden die Tags dieser vorherigen Version zu den Tags der aktuellen Version. Da diese Tags der aktuellen Version zugeordnet sind, werden sie an die Blobindex-Engine übergeben und können von Ihnen abgefragt werden. 
+
 - Es gibt keine API, mit der Sie ermitteln können, ob Indextags indiziert wurden.
+
 - Die Lebenszyklusverwaltung unterstützt bei einem Blobindexabgleich nur Gleichheitsprüfungen.
+
 - Bei `Copy Blob` werden keine Blobindextags vom Quellblob in das neue Zielblob kopiert. Sie können während des Kopiervorgangs die Tags angeben, die auf das Zielblob angewendet werden sollen.
 
 ## <a name="faq"></a>Häufig gestellte Fragen

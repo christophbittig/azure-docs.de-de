@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 05/10/2021
+ms.date: 08/19/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
-ms.custom: references_regions, devx-track-azurecli
+ms.custom: references_regions, devx-track-azurecli, subject-rbac-steps
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e29aab4db0e568d06ab3d5f0f898b2fec9fee181
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: ea5ad0ed61ac0d2b9603752efc6bbc998cf189a6
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109732792"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122608112"
 ---
 # <a name="login-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Anmelden bei einem virtuellen Windows-Computer in Azure mit der Azure Active Directory-Authentifizierung
 
@@ -32,7 +32,6 @@ Die Verwendung der Azure AD-gestützten Authentifizierung für die Anmeldung be
 - Verwenden Sie Azure-Bereitstellungs- und Überwachungsrichtlinien, um die Azure AD-Anmeldung für virtuelle Windows-Computer zu erzwingen und die Verwendung nicht genehmigter lokaler Konten auf virtuellen Computern zu kennzeichnen.
 - Die Anmeldung bei virtuellen Windows-Computern mit Azure Active Directory funktioniert auch bei Kunden, die Verbunddienste nutzen.
 - Automatisieren und skalieren Sie die Azure AD-Einbindung mit der automatischen MDM-Registrierung bei Intune von virtuellen Azure Windows-Computern, die Teil Ihrer VDI-Bereitstellungen sind. Die automatische MDM-Registrierung erfordert eine Azure AD P1-Lizenz. Bei virtuellen Computern mit Windows Server 2019 wird keine MDM-Registrierung unterstützt.
-
 
 > [!NOTE]
 > Nachdem Sie diese Funktion aktiviert haben, werden Ihre virtuellen Windows-Computer in Azure mit Azure AD verknüpft. Es ist nicht möglich, sie mit einer anderen Domäne wie dem lokalen Active Directory oder Azure AD DS zu verknüpfen. Wenn dies erforderlich ist, müssen Sie die VM von Ihrem Azure AD-Mandanten trennen, indem Sie die Erweiterung deinstallieren.
@@ -55,8 +54,6 @@ Diese Funktion ist jetzt in den folgenden Azure-Clouds verfügbar:
 - Azure Government
 - Azure China
 
-
-
 ### <a name="network-requirements"></a>Netzwerkanforderungen
 
 Zum Aktivieren der Azure AD-Authentifizierung für Ihre virtuellen Windows-Computer in Azure müssen Sie sicherstellen, dass die Netzwerkkonfiguration der virtuellen Computer den ausgehenden Zugriff auf die folgenden Endpunkte über TCP-Port 443 zulässt:
@@ -67,20 +64,17 @@ Azure Global
 - `https://login.microsoftonline.com`: Für Authentifizierungsflows.
 - `https://pas.windows.net`: Für Azure RBAC-Flows.
 
-
 Azure Government
 - `https://enterpriseregistration.microsoftonline.us`: Für die Geräteregistrierung.
 - `http://169.254.169.254`: Azure Instance Metadata Service.
 - `https://login.microsoftonline.us`: Für Authentifizierungsflows.
 - `https://pasff.usgovcloudapi.net`: Für Azure RBAC-Flows.
 
-
 Azure China
 - `https://enterpriseregistration.partner.microsoftonline.cn`: Für die Geräteregistrierung.
 - `http://169.254.169.254`: Endpunkt des Azure Instance Metadata Service.
 - `https://login.chinacloudapi.cn`: Für Authentifizierungsflows.
 - `https://pas.chinacloudapi.cn`: Für Azure RBAC-Flows.
-
 
 ## <a name="enabling-azure-ad-login-in-for-windows-vm-in-azure"></a>Aktivieren der Azure AD-Anmeldung für einen virtuellen Windows-Computer in Azure
 
@@ -179,16 +173,18 @@ Es gibt mehrere Möglichkeiten, wie Sie Rollenzuweisungen für den virtuellen Co
 
 So konfigurieren Sie Rollenzuweisungen für Azure AD-fähige virtuelle Computer unter Windows Server 2019 Datacenter
 
-1. Navigieren Sie zur Übersichtsseite des jeweiligen virtuellen Computers.
-1. Wählen Sie **Zugriffssteuerung (IAM)** in den Menüoptionen aus.
-1. Wählen Sie **Hinzufügen** und dann **Rollenzuweisung hinzufügen** aus, um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen.
-1. Wählen Sie in der Dropdownliste **Rolle** eine Rolle aus, z. B. **VM-Administratoranmeldung** oder **VM-Benutzeranmeldung**.
-1. Wählen Sie im Feld **Auswählen** einen Benutzer, eine Gruppe, einen Dienstprinzipal oder eine verwaltete Identität aus. Wird der Sicherheitsprinzipal in der Liste nicht angezeigt, können Sie im Feld **Auswählen** einen Begriff eingeben, um das Verzeichnis nach Anzeigenamen, E-Mail-Adressen und Objektbezeichner zu durchsuchen.
-1. Wählen Sie **Speichern** aus, um die Rolle zuzuweisen.
+1. Wählen Sie die Option **Zugriffssteuerung (IAM)** aus.
 
-Nach einigen Augenblicken wird dem Sicherheitsprinzipal die Rolle für den Bereich zugewiesen.
+1. Wählen Sie **Hinzufügen** > **Rollenzuweisung hinzufügen** aus, um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen.
 
-![Zuweisen von Rollen zu Benutzern, die auf den virtuellen Computer zugreifen](./media/howto-vm-sign-in-azure-ad-windows/azure-portal-access-control-assign-role.png)
+1. Weisen Sie die folgende Rolle zu. Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
+    
+    | Einstellung | Wert |
+    | --- | --- |
+    | Rolle | **VM-Administratoranmeldung** oder **VM-Benutzeranmeldung** |
+    | Zugriff zuweisen zu | Benutzer, Gruppe, Dienstprinzipal oder verwaltete Identität |
+
+    ![Seite „Rollenzuweisung hinzufügen“ im Azure-Portal](../../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
 ### <a name="using-the-azure-cloud-shell-experience"></a>Verwenden von Azure Cloud Shell
 
@@ -215,7 +211,7 @@ Weitere Informationen zur Verwendung der rollenbasierten Zugriffssteuerung (Azur
 
 ## <a name="using-conditional-access"></a>Verwenden von bedingtem Zugriff
 
-Sie können Richtlinien für bedingten Zugriff erzwingen, z. B. die mehrstufige Authentifizierung oder Überprüfung des Anmelderisikos für Benutzer, bevor der Zugriff auf virtuelle Windows-Computer in Azure gewährt wird, für die die Azure AD-Anmeldung aktiviert ist. Zum Anwenden einer Richtlinie für bedingten Zugriff müssen Sie die App Azure Windows VM Sign-In über die Zuweisungsoption für Cloud-Apps oder Aktionen auswählen und dann „Anmelderisiko“ als Bedingung und/oder „Mehrstufige Authentifizierung erforderlich“ als Zugriffssteuerung verwenden. 
+Sie können Richtlinien für bedingten Zugriff erzwingen, z. B. die mehrstufige Authentifizierung oder Überprüfung des Anmelderisikos für Benutzer, bevor der Zugriff auf virtuelle Windows-Computer in Azure gewährt wird, für die die Azure AD-Anmeldung aktiviert ist. Zum Anwenden einer Richtlinie für bedingten Zugriff müssen Sie die App **Azure Windows VM Sign-In** über die Zuweisungsoption für Cloud-Apps oder Aktionen auswählen und dann „Anmelderisiko“ als Bedingung und/oder „Mehrstufige Authentifizierung erforderlich“ als Zugriffssteuerung verwenden. 
 
 > [!NOTE]
 > Wenn Sie „Mehrstufige Authentifizierung erforderlich“ als Zugriffssteuerung für das Anfordern des Zugriffs auf die App Azure Windows VM Sign-In verwenden, müssen Sie den Anspruch der mehrstufigen Authentifizierung als Teil des Clients angeben, der die RDP-Sitzung für den virtuellen Windows-Zielcomputer in Azure initiiert. Dies kann auf einem Windows 10-Client nur durch Verwendung der Windows Hello for Business-PIN oder der biometrischen Authentifizierung mit dem RDP-Client erreicht werden. Die Unterstützung für die biometrische Authentifizierung wurde dem RDP-Client in Windows 10 Version 1809 hinzugefügt. Remotedesktop unter Verwendung der Windows Hello for Business-Authentifizierung ist nur für Bereitstellungen verfügbar, die das Modell der Zertifikatvertrauensstellung verwenden und derzeit nicht für das Modell der schlüsselbasierten Vertrauensstellung verfügbar sind.
@@ -244,7 +240,7 @@ Sie sind nun mit den entsprechend zugewiesenen Rollenberechtigungen (z. B. „V
 
 ## <a name="using-azure-policy-to-ensure-standards-and-assess-compliance"></a>Verwenden von Azure Policy zum Sicherstellen von Standards und für die Konformitätsbewertung
 
-Verwenden Sie Azure Policy, um sicherzustellen, dass die Azure AD-Anmeldung für Ihre neuen und vorhandenen virtuellen Windows-Computer aktiviert ist, und bewerten Sie bedarfsgerecht die Konformität Ihrer Umgebung auf dem Compliance-Dashboard von Azure Policy. Mit dieser Funktion können Sie viele Erzwingungsstufen verwenden: Sie können neue und vorhandene virtuelle Windows-Computer in Ihrer Umgebung kennzeichnen, für die keine Azure AD-Anmeldung aktiviert ist. Sie können Azure Policy auch zum Bereitstellen der Azure AD-Erweiterung auf neuen virtuellen Windows-Computern verwenden, auf denen diese noch nicht aktiviert ist. Sie können aber auch vorhandene virtuelle Windows-Computer auf denselben Standard aktualisieren. Neben diesen Funktionen können Sie Azure Policy auch zum Erkennen und Kennzeichnen von virtuellen Windows-Computern verwenden, auf denen nicht genehmigte lokale Konten erstellt wurden. Weitere Informationen finden Sie unter [Azure Policy](https://www.aka.ms/AzurePolicy).
+Verwenden Sie Azure Policy, um sicherzustellen, dass die Azure AD-Anmeldung für Ihre neuen und vorhandenen virtuellen Windows-Computer aktiviert ist, und bewerten Sie bedarfsgerecht die Konformität Ihrer Umgebung auf dem Compliancedashboard von Azure Policy. Mit dieser Funktion können Sie viele Erzwingungsstufen verwenden: Sie können neue und vorhandene virtuelle Windows-Computer in Ihrer Umgebung kennzeichnen, für die keine Azure AD-Anmeldung aktiviert ist. Sie können Azure Policy auch zum Bereitstellen der Azure AD-Erweiterung auf neuen Windows-VMs verwenden, auf denen diese noch nicht aktiviert ist. Sie können aber auch vorhandene virtuelle Windows-Computer auf denselben Standard aktualisieren. Neben diesen Funktionen können Sie Azure Policy auch zum Erkennen und Kennzeichnen von Windows-VMs verwenden, auf denen nicht genehmigte lokale Konten erstellt wurden. Weitere Informationen finden Sie unter [Was ist Azure Policy?](../../governance/policy/overview.md).
 
 ## <a name="troubleshoot"></a>Problembehandlung
 
@@ -258,7 +254,7 @@ Die Erweiterung AADLoginForWindows muss installiert sein, damit der Azure AD-Ei
 
    > [!NOTE]
    > Wenn die Erweiterung nach dem anfänglichen Fehler neu gestartet wird, wird das Protokoll mit dem Bereitstellungsfehler als `CommandExecution_YYYYMMDDHHMMSSSSS.log` gespeichert. "
-1. Öffnen Sie eine PowerShell-Eingabeaufforderung auf dem virtuellen Computer, und überprüfen Sie, ob diese Abfragen für den auf dem Azure-Host ausgeführten Instance Metadata Service (IMDS)-Endpunkt Folgendes zurückgeben:
+1. Öffnen Sie ein PowerShell-Fenster auf dem virtuellen Computer, und überprüfen Sie, ob diese Abfragen für den auf dem Azure-Host ausgeführten Instance Metadata Service-Endpunkt (IMDS) Folgendes zurückgeben:
 
    | Auszuführender Befehl | Erwartete Ausgabe |
    | --- | --- |
@@ -269,18 +265,17 @@ Die Erweiterung AADLoginForWindows muss installiert sein, damit der Azure AD-Ei
    > [!NOTE]
    > Das Zugriffstoken kann mithilfe eines Tools wie [calebb.net](http://calebb.net/) decodiert werden. Vergewissern Sie sich, dass die `appid` im Zugriffstoken mit der verwalteten Identität übereinstimmt, die dem virtuellen Computer zugewiesen ist.
 
-1. Überprüfen Sie mithilfe der Befehlszeile, ob über den virtuellen Computer auf die erforderlichen Endpunkte zugegriffen werden kann:
+1. Überprüfen Sie mit PowerShell, ob über den virtuellen Computer auf die erforderlichen Endpunkte zugegriffen werden kann:
    
    - `curl https://login.microsoftonline.com/ -D -`
    - `curl https://login.microsoftonline.com/<TenantID>/ -D -`
-
-   > [!NOTE]
-   > Ersetzen Sie `<TenantID>` durch die ID des Azure AD-Mandanten, die dem Azure-Abonnement zugeordnet ist.
-
    - `curl https://enterpriseregistration.windows.net/ -D -`
    - `curl https://device.login.microsoftonline.com/ -D -`
    - `curl https://pas.windows.net/ -D -`
 
+   > [!NOTE]
+   > Ersetzen Sie `<TenantID>` durch die ID des Azure AD-Mandanten, die dem Azure-Abonnement zugeordnet ist.<br/> `enterpriseregistration.windows.net` und `pas.windows.net` sollten „404 Nicht gefunden“ zurückgeben, was dem erwarteten Verhalten entspricht.
+            
 1. Der Gerätestatus kann durch Ausführen von `dsregcmd /status` angezeigt werden. Ziel ist, dass der Gerätestatus `AzureAdJoined : YES` angezeigt wird.
 
    > [!NOTE]
@@ -294,7 +289,7 @@ Dieser Exitcode ergibt `DSREG_E_MSI_TENANTID_UNAVAILABLE`, da die Erweiterung di
 
 1. Vergewissern Sie sich, dass der virtuelle Azure-Computer die Mandanten-ID von Instance Metadata Service abrufen kann.
 
-   - Stellen Sie als lokaler Administrator eine RDP-Verbindung mit dem virtuellen Computer her, und überprüfen Sie, ob der Endpunkt eine gültige Mandanten-ID zurückgibt. Führen Sie dazu den folgenden Befehl über eine Befehlszeile mit erhöhten Rechten auf dem virtuellen Computer aus:
+   - Stellen Sie als lokaler Administrator eine RDP-Verbindung mit dem virtuellen Computer her, und überprüfen Sie, ob der Endpunkt eine gültige Mandanten-ID zurückgibt. Führen Sie dazu den folgenden Befehl über ein PowerShell-Fenster mit erhöhten Rechten auf dem virtuellen Computer aus:
       
       - `curl -H Metadata:true http://169.254.169.254/metadata/identity/info?api-version=2018-02-01`
 
@@ -304,17 +299,16 @@ Dieser Exitcode ergibt `DSREG_E_MSI_TENANTID_UNAVAILABLE`, da die Erweiterung di
 
 Dieser Exitcode ergibt `DSREG_AUTOJOIN_DISC_FAILED`, da die Erweiterung den Endpunkt `https://enterpriseregistration.windows.net` nicht erreichen kann.
 
-1. Überprüfen Sie über die Befehlszeile, ob über den virtuellen Computer auf die erforderlichen Endpunkte zugegriffen werden kann:
+1. Überprüfen Sie mit PowerShell, ob über den virtuellen Computer auf die erforderlichen Endpunkte zugegriffen werden kann:
 
    - `curl https://login.microsoftonline.com/ -D -`
    - `curl https://login.microsoftonline.com/<TenantID>/ -D -`
-   
-   > [!NOTE]
-   > Ersetzen Sie `<TenantID>` durch die ID des Azure AD-Mandanten, die dem Azure-Abonnement zugeordnet ist. Wenn Sie die Mandanten-ID suchen möchten, können Sie auf den Namen Ihres Kontos zeigen, um die Verzeichnis-ID oder Mandanten-ID abzurufen, oder im Azure-Portal die Optionen **Azure Active Directory > Eigenschaften > Verzeichnis-ID** auswählen.
-
    - `curl https://enterpriseregistration.windows.net/ -D -`
    - `curl https://device.login.microsoftonline.com/ -D -`
    - `curl https://pas.windows.net/ -D -`
+   
+   > [!NOTE]
+   > Ersetzen Sie `<TenantID>` durch die ID des Azure AD-Mandanten, die dem Azure-Abonnement zugeordnet ist. Wenn Sie die Mandanten-ID suchen möchten, können Sie auf den Namen Ihres Kontos zeigen, um die Verzeichnis-ID oder Mandanten-ID abzurufen, oder im Azure-Portal die Optionen **Azure Active Directory > Eigenschaften > Verzeichnis-ID** auswählen.<br/>`enterpriseregistration.windows.net` und `pas.windows.net` sollten „404 Nicht gefunden“ zurückgeben, was dem erwarteten Verhalten entspricht.
 
 1. Wenn bei einem der Befehle der Fehler „Der Hostname `<URL>` konnte nicht aufgelöst werden“ auftritt, führen Sie den folgenden Befehl aus, um den DNS-Server zu ermitteln, der von dem virtuellen Computer verwendet wird.
    
@@ -383,7 +377,30 @@ Beim Initiieren einer Remotedesktopverbindung mit dem virtuellen Computer wird d
 
 Wenn Sie eine Richtlinie für bedingten Zugriff konfiguriert haben, die die mehrstufige Authentifizierung (MFA) erforderlich macht, damit Sie auf die Ressource zugreifen können, müssen Sie sicherstellen, dass die Anmeldung auf dem Windows 10-PC, über den die Remotedesktopverbindung mit dem virtuellen Computer initiiert wird, mithilfe einer starken Authentifizierungsmethode erfolgt, z. B. mit Windows Hello. Wenn Sie keine starke Authentifizierungsmethode für die Remotedesktopverbindung verwenden, wird dieser Fehler angezeigt.
 
-Wenn Sie Windows Hello for Business nicht bereitgestellt haben und dies derzeit keine Option ist, können Sie die MFA-Anforderung ausschließen, indem Sie eine Richtlinie für bedingten Zugriff konfigurieren, die die App Azure Windows VM Sign-In aus der Liste der Cloud-Apps ausschließt, für die die mehrstufige Authentifizierung erforderlich ist. Weitere Informationen zu Windows Hello for Business finden Sie in der [Übersicht zu Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification).
+- Ihre Anmeldeinformationen haben nicht funktioniert.
+
+![Mit den Anmeldeinformationen konnte keine Verbindung hergestellt werden](./media/howto-vm-sign-in-azure-ad-windows/your-credentials-did-not-work.png)
+
+> [!WARNING]
+> Eine aktivierte/erzwungene Authentifizierung über Azure AD Multi-Factor Authentication pro Benutzer wird für VM-Anmeldungen nicht unterstützt. Diese Einstellung führt dazu, dass bei der Anmeldung die Fehlermeldung „Ihre Anmeldeinformationen funktionieren nicht" angezeigt wird.
+
+Sie können das oben genannte Problem beheben, indem Sie die MFA-Einstellung pro Benutzer mit folgenden Schritten entfernen:
+
+```
+
+# Get StrongAuthenticationRequirements configure on a user
+(Get-MsolUser -UserPrincipalName username@contoso.com).StrongAuthenticationRequirements
+ 
+# Clear StrongAuthenticationRequirements from a user
+$mfa = @()
+Set-MsolUser -UserPrincipalName username@contoso.com -StrongAuthenticationRequirements $mfa
+ 
+# Verify StrongAuthenticationRequirements are cleared from the user
+(Get-MsolUser -UserPrincipalName username@contoso.com).StrongAuthenticationRequirements
+
+```
+
+Wenn Sie Windows Hello for Business nicht bereitgestellt haben und dies derzeit keine Option ist, können Sie die MFA-Anforderung ausschließen, indem Sie eine Richtlinie für bedingten Zugriff konfigurieren, die die App **Azure Windows VM Sign-In** aus der Liste der Cloud-Apps ausschließt, für die die mehrstufige Authentifizierung erforderlich ist. Weitere Informationen zu Windows Hello for Business finden Sie in der [Übersicht zu Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification).
 
 > [!NOTE]
 > Die Authentifizierung über die Windows Hello for Business-PIN mit RDP wird unter Windows 10 in mehreren Versionen unterstützt. Die Unterstützung für die biometrische Authentifizierung mit RDP wurde dagegen in Windows 10 Version 1809 hinzugefügt. Die Verwendung der Windows Hello for Business-Authentifizierung bei der RDP-Verbindung ist nur für Bereitstellungen verfügbar, die das Modell der Zertifikatvertrauensstellung verwenden und derzeit nicht für das Modell der schlüsselbasierten Vertrauensstellung verfügbar sind.

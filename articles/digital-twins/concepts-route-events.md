@@ -7,20 +7,20 @@ ms.author: baanders
 ms.date: 6/1/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b9038840142be64918b22f1aefc32d505252d71d
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 2718dd070cc12cb58f8033d5a2757d8aedf05e05
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351172"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771202"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Weiterleiten von Ereignissen innerhalb und außerhalb von Azure Digital Twins
 
 Azure Digital Twins verwendet **Ereignisrouten** zum Senden von Daten an Consumer außerhalb des Diensts. 
 
 Es gibt zwei Hauptfälle für das Senden von Azure Digital Twins-Daten:
-* Der erste Fall ist das Senden von Daten von einem Zwilling im Azure Digital Twins-Graph an einen anderen. Wenn sich beispielsweise eine Eigenschaft in einem digitalen Zwilling ändert, sollten Sie einen anderen digitalen Zwilling entsprechend benachrichtigen und aktualisieren.
-* Der zweite Fall ist das Senden von Daten an Downstreamdatendienste zur zusätzlichen Speicherung oder Verarbeitung (auch als *ausgehende Daten* bezeichnet). Beispiel:
+* Der erste Fall ist das Senden von Daten von einem Zwilling im Azure Digital Twins-Graph an einen anderen. Wenn sich beispielsweise eine Eigenschaft in einem digitalen Zwilling ändert, sollten Sie einen anderen digitalen Zwilling im Hinblick auf die aktualisierten Daten benachrichtigen und aktualisieren.
+* Der zweite Fall ist das Senden von Daten an Downstreamdatendienste zur weiteren Speicherung oder Verarbeitung (auch als *ausgehende Daten* bezeichnet). Beispiel:
   - Ein Krankenhaus möchte möglicherweise Azure Digital Twins-Ereignisdaten an [Time Series Insights (TSI)](../time-series-insights/overview-what-is-tsi.md) senden, um Zeitreihendaten von Ereignissen im Zusammenhang mit Händewaschen für eine Massenanalyse aufzuzeichnen.
   - Ein Unternehmen, das bereits [Azure Maps](../azure-maps/about-azure-maps.md) verwendet, möchte möglicherweise Azure Digital Twins verwenden, um seine Lösung zu verbessern. Nach dem Einrichten von Azure Digital Twins kann es schnell eine Azure Maps-Instanz aktivieren, Azure Maps-Entitäten in Azure Digital Twins als [digitale Zwillinge](concepts-twins-graph.md) in den Zwillingsgraphen aufnehmen oder leistungsstarke Abfragen ausführen, die sowohl die Daten aus Azure Maps als auch aus Azure Digital Twins nutzen.
 
@@ -38,11 +38,11 @@ Typische Downstreamziele für Ereignisrouten sind Ressourcen wie TSI und Azure M
 
 ### <a name="event-routes-for-internal-digital-twin-events"></a>Ereignisrouten für interne Ereignisse in Bezug auf digitale Zwillinge
 
-Ereignisrouten werden auch verwendet, um Ereignisse innerhalb des Zwillingsgraphen zu verarbeiten und Daten von einem digitalen Zwilling an einen anderen zu senden. Dies erfolgt durch Herstellen einer Verbindung zwischen Ereignisrouten und Computeressourcen wie [Azure Functions](../azure-functions/functions-overview.md) über Event Grid. Diese Funktionen definieren dann, wie Zwillinge Ereignisse empfangen und auf diese reagieren sollen. 
+Ereignisrouten werden auch verwendet, um Ereignisse innerhalb des Zwillingsgraphen zu verarbeiten und Daten von einem digitalen Zwilling an einen anderen zu senden. Diese Art der Ereignisverarbeitung erfolgt durch Herstellen einer Verbindung zwischen Ereignisrouten und Computeressourcen wie [Azure Functions](../azure-functions/functions-overview.md) über Event Grid. Diese Funktionen definieren dann, wie Zwillinge Ereignisse empfangen und auf diese reagieren sollen. 
 
 Wenn eine Computeressource den Zwillingsgraphen auf Grundlage eines über die Ereignisroute empfangenen Ereignisses ändern möchte, ist es hilfreich, wenn sie im Voraus weiß, welcher Zwilling geändert werden soll. 
 
-Alternativ enthält die Ereignisnachricht auch die ID des Quellzwillings, der diese gesendet hat, sodass die Computeressource Abfragen verwenden oder Beziehungen durchlaufen kann, um einen Zielzwilling für den gewünschten Vorgang zu finden. 
+Die Ereignisnachricht enthält auch die ID des Quellzwillings, der sie gesendet hat, sodass die Computeressource Abfragen verwenden oder Beziehungen durchlaufen kann, um einen Zielzwilling für den gewünschten Vorgang zu finden. 
 
 Darüber hinaus muss die Computeressource Sicherheits -und Zugriffsberechtigungen unabhängig einrichten.
 

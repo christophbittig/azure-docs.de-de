@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 01/19/2021
 ms.custom: references_region
-ms.openlocfilehash: 83ad2245ec010bd91907ae27e077f86b4d6b1d5e
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 7dca96e05860bb399435ac95ed81107c268ebc5c
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112122395"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122662227"
 ---
 # <a name="data-collection-rules-in-azure-monitor"></a>Datensammlungsregeln in Azure Monitor
 Mit Datensammlungsregeln werden die in Azure Monitor eingehenden Daten definiert, und es wird angegeben, wohin die Daten gesendet bzw. wo sie gespeichert werden sollen. Dieser Artikel enthält eine Übersicht über die Datensammlungsregeln, z. B. zu Inhalt und Struktur und zur Erstellung und Nutzung.
@@ -53,8 +53,10 @@ Jede Datenquelle hat einen Datenquellentyp. Mit jedem Typ wird eine eindeutige G
 ## <a name="limits"></a>Grenzwerte
 Informationen zu Grenzwerten, die für die einzelnen Datensammlungsregeln gelten, finden Sie unter [Azure Monitor-Diensteinschränkungen](../service-limits.md#data-collection-rules).
 
-## <a name="data-residency"></a>Datenresidenz 
+## <a name="data-resiliency-and-high-availability"></a>Datenresilienz und Hochverfügbarkeit
 Datensammlungsregeln werden als Dienst regional bereitgestellt. Eine Regel wird in der von Ihnen angegebenen Region erstellt und gespeichert und in der [gekoppelten Region](../../best-practices-availability-paired-regions.md#azure-regional-pairs) innerhalb desselben geografischen Raums gesichert.  
+Darüber hinaus wird der Dienst in allen drei [Verfügbarkeitszonen](../../availability-zones/az-overview.md#availability-zones) innerhalb der Region bereitgestellt, wodurch er zu einem **zonenredundanten Dienst** wird, der die Hochverfügbarkeit weiter erhöht.
+
 
 **Datenresidenz in einer Region**: Die Vorschaufunktion zum Aktivieren der Speicherung von Kundendaten in einer einzelnen Region ist derzeit nur in der Region „Asien, Südosten“ (Singapur) des geografischen Raums „Asien-Pazifik“ und in der Region „Brasilien, Süden“ (São Paulo, Bundesstaat) des geografischen Raums „Brasilien“ verfügbar. Die Residenz in einer einzelnen Region ist in diesen Regionen standardmäßig aktiviert.
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.openlocfilehash: 131f30c523c3a99bcbd3494833e060ffd3b5ff16
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 06ed84bf63f79087efef33b1061e21b61315e78e
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444816"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122969457"
 ---
 # <a name="access-control-in-azure-purview"></a>Zugriffssteuerung in Azure Purview
 
@@ -20,8 +20,10 @@ Azure Purview verwendet **Sammlungen**, um den Zugriff auf seine Quellen, Ressou
 
 > [!NOTE]
 > Derzeit gelten diese Informationen nur für Purview-Konten, die **am oder nach dem 18. August 2021** erstellt wurden. Vor dem 18. August erstellte Instanzen können Sammlungen erstellen, aber keine Berechtigungen über diese Sammlungen verwalten. Informationen über die Zugriffssteuerung für Purview-Instanzen, die vor dem 18. August erstellt wurden, finden Sie im [**Leitfaden zu Legacyberechtigungen**](#legacy-permission-guide) am Ende dieses Artikels.
+>
+> Alle Legacykonten erhalten in den kommenden Wochen automatisch ein Upgrade. Sie erhalten eine E-Mail-Benachrichtigung, wenn Ihr Purview-Konto aktualisiert wird. Bei der Aktualisierung des Kontos werden alle zugewiesenen Berechtigungen für die Stammsammlung automatisch erneut bereitgestellt. Zu diesem Zeitpunkt sollten Berechtigungen über Sammlungen und nicht über Access Control (IAM) verwaltet werden. IAM-Berechtigungen gelten nicht mehr für Purview-Artefakte.
 
-## <a name="collections"></a>Auflistungen
+## <a name="collections"></a>Sammlungen
 
 Eine Sammlung ist ein Tool, das in Azure Purview zum Gruppieren von Ressourcen, Quellen und anderen Artefakte in einer Hierarchie eingesetzt wird. Dies dient der verbesserten Auffindbarkeit und der Verwaltung der Zugriffssteuerung. Der gesamte Zugriff auf die Purview-Ressourcen wird über die Sammlungen im Purview-Konto verwaltet.
 
@@ -45,6 +47,8 @@ Azure Purview verwendet eine Reihe vordefinierter Rollen, um zu steuern, wer inn
 |Ich muss Überprüfungen über das Studio-Feature von Purview einrichten|Datenquellenadministrator und mindestens Datenleser **oder** Datenkurator für die Sammlung, in der die Quelle registriert ist.|
 |Ich muss einen Dienstprinzipal oder eine Gruppe aktivieren, um Überprüfungen in Azure Purview einzurichten und zu überwachen, ohne dass diese Zugriff auf die Informationen des Katalogs haben. |Datenquellenadministrator|
 |Ich muss Benutzern in Azure Purview Rollen zuweisen | Sammlungsadministrator |
+
+:::image type="content" source="./media/catalog-permissions/collection-permissions-roles.png" alt-text="Diagramm mit Purview-Rollen" lightbox="./media/catalog-permissions/collection-permissions-roles.png":::
 
 ## <a name="understand-how-to-use-azure-purviews-roles-and-collections"></a>Grundlegendes zur Verwendung der Rollen und Sammlungen von Azure Purview
 
@@ -156,6 +160,8 @@ Benutzer, die Zugriff auf das [Azure-Portal](https://portal.azure.com) des Unter
 |Ich muss Überprüfungen über das Studio-Feature von Purview einrichten|Rolle „Datenquellenadministrator für Purview“ sowie mindestens die Rolle „Datenleseberechtigter für Purview“ oder „Datenkurator für Purview“|
 |Ich muss einen Dienstprinzipal oder eine andere programmgesteuerte Identität aktivieren, um Überprüfungen in Azure Purview einzurichten und zu überwachen, ohne dass die programmgesteuerte Identität Zugriff auf die Informationen des Katalogs hat |Rolle „Datenquellenadministrator für Purview“|
 |Ich muss Benutzern in Azure Purview Rollen zuweisen | „Besitzer“ oder „Benutzerzugriffsadministrator“ |
+
+:::image type="content" source="./media/catalog-permissions/collection-permissions-roles-legacy.png" alt-text="Diagramm mit Purview-Legacyrollen" lightbox="./media/catalog-permissions/collection-permissions-roles-legacy.png":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

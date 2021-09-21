@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f0bf41e1a847335a99b3e8f2e9ecbac504c3179e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 40715f8076ac112ea6479fb4a134933d90b3dbf9
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107796193"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123252258"
 ---
 # <a name="choose-cloud-tiering-policies"></a>Auswählen von Cloudtieringrichtlinien
 
@@ -25,22 +25,22 @@ Dieser Artikel enthält eine Anleitung für Benutzer, die ihre Cloudtieringricht
 
 ### <a name="minimum-file-size-for-a-file-to-tier"></a>Mindestdateigröße für Dateien, für die das Tiering durchgeführt werden soll
 
-Die Mindestdateigröße für Dateien, für die ein Tiering durchgeführt werden soll, basiert ab den Agent-Versionen 9.x auf der Größe des Dateisystemclusters. Die Mindestdateigröße für Cloudtiering wird durch Verdopplung der Clustergröße berechnet und muss mindestens 8 KB betragen. In der folgenden Tabelle sind die Mindestdateigrößen auf Grundlage der Volumeclustergröße aufgeführt, für die ein Tiering möglich ist:
+Die Mindestdateigröße für Dateien, für die ein Tiering durchgeführt werden soll, basiert ab den Agent-Versionen 9.x auf der Größe des Dateisystemclusters. Die Mindestdateigröße für Cloudtiering wird durch Verdopplung der Clustergröße berechnet und muss mindestens 8 KiB betragen. In der folgenden Tabelle sind die Mindestdateigrößen auf Grundlage der Volumeclustergröße aufgeführt, für die ein Tiering möglich ist:
 
-|Volumeclustergröße (Byte) |Mindestdateigröße für Tiering  |
+|Volumeclustergröße  |Mindestdateigröße für Tiering  |
 |----------------------------|---------|
-|4 KB oder kleiner (4096)      | 8 KB    |
-|8 KB (8192)                 | 16 KB   |
-|16 KB (16384)               | 32 KB   |
-|32 KB (32768)               | 64 KB   |
-|64 KB (65536)    | 128 KB  |
-|128 KB (131072) | 256 KB |
-|256 KB (262144) | 512 KB |
-|512 KB (524288) | 1 MB |
-|1 MB (1048576) | 2 MB |
-|2 MB (2097152) | 4 MB |
+|4 KiB oder kleiner (4096 Bytes)      | 8 KiB    |
+|8 KiB (8192 Bytes)                 | 16 KiB   |
+|16 KiB (16384 Bytes)               | 32 KiB   |
+|32 KiB (32768 Bytes)               | 64 KiB   |
+|64 KiB (65536 Bytes)    | 128 KiB  |
+|128 KiB (131072 Bytes) | 256 KiB |
+|256 KiB (262144 Bytes) | 512 KiB |
+|512 KiB (524288 Bytes) | 1 MiB |
+|1 MiB (1048576 Bytes) | 2 MiB |
+|2 MiB (2097152 Bytes) | 4 MiB |
 
-Clustergrößen bis zu 2 MB werden mit Azure-Dateisynchronisierungs-Agent, Version 12, unterstützt, aber bei größeren Größen funktioniert das Cloudtiering nicht.
+Clustergrößen bis zu 2 MB werden mit dem Azure-Dateisynchronisierungs-Agent, Version 12, unterstützt, aber bei größeren Größen funktioniert das Cloudtiering nicht.
 
 Alle von Windows verwendeten Dateisysteme organisieren Ihre Festplatte auf Grundlage der Clustergröße (auch als Größe der Zuordnungseinheiten bezeichnet). Die Clustergröße stellt die kleinste Menge an Speicherplatz dar, die zum Speichern einer Datei verwendet werden kann. Wenn Dateigrößen kein gerades Vielfaches der Clustergröße ergeben, muss zum Speichern der Datei zusätzlicher Speicherplatz verwendet werden – bis zum nächsten Vielfachen der Clustergröße.
 
@@ -48,21 +48,13 @@ Die Azure-Dateisynchronisierung wird auf NTFS-Volumes mit Windows Server 2012 R2
 
 |Volumegröße    |Windows Server 2019             |
 |---------------|--------------------------------|
-|7 MB–16 TB   | 4 KB                |
-|16 TB–32 TB   | 8 KB                |
-|32 TB–64 TB   | 16 KB               |
-|64 TB–128 TB  | 32 KB               |
-|128 TB–256 TB | 64 KB (früher max.) |
-|256 TB - 512 TB| 128 KB              |
-|512 TB - 1 PB  | 256 KB              |
-|1 PB - 2 PB    | 512 KB              |
-|2 PB - 4 PB    | 1024 KB             |
-|4 PB - 8 PB    | 2048 KB (max. Größe)  |
-|> 8 PB         | Nicht unterstützt       |
+|7 MiB – 16 TiB   | 4 KiB                |
+|16 TiB – 32 TiB   | 8 KiB                |
+|32 TiB – 64 TiB   | 16 KiB               |
 
-Möglicherweise haben Sie das Volume bei der Erstellung manuell mit einer anderen Clustergröße formatiert. Wenn das Volume von einer älteren Version von Windows stammt, können die Standardclustergrößen ebenfalls abweichen. [In diesem Artikel finden Sie weitere Informationen zu den Standardclustergrößen.](https://support.microsoft.com/help/140365/default-cluster-size-for-ntfs-fat-and-exfat) Auch wenn Sie eine Clustergröße unter 4 KB auswählen, gilt weiterhin der Grenzwert von 8 KB als kleinste Dateigröße, für die ein Tiering durchgeführt werden kann. (Auch wenn technisch gesehen das Doppelte der Clustergröße weniger als 8 KB wäre.)
+Möglicherweise haben Sie das Volume bei der Erstellung manuell mit einer anderen Clustergröße formatiert. Wenn das Volume von einer älteren Version von Windows stammt, können die Standardclustergrößen ebenfalls abweichen. [In diesem Artikel finden Sie weitere Informationen zu den Standardclustergrößen.](https://support.microsoft.com/help/140365/default-cluster-size-for-ntfs-fat-and-exfat) Auch wenn Sie eine Clustergröße unter 4 KiB auswählen, gilt weiterhin der Grenzwert von 8 KiB als kleinste Dateigröße, für die ein Tiering durchgeführt werden kann. (Auch wenn technisch gesehen das Doppelte der Clustergröße weniger als 8 KiB wäre.)
 
-Der Grund für diesen absoluten Minimalwert findet sich in der Art und Weise, in der NTFS sehr kleine Dateien speichert, also mit Dateigrößen von 1 bis 4 KB. Je nach den Parametern des Volumes ist es möglich, dass kleine Dateien überhaupt nicht in einem Cluster oder auf einem Datenträger gespeichert werden. Möglicherweise ist es effizienter, solche Dateien direkt im Datensatz der Masterdateitabelle (Master File Table, MFT) des Volumes zu speichern. Der Analysepunkt für das Cloudtiering wird immer auf dem Datenträger gespeichert und belegt genau einen Cluster. Bei so kleinen Dateien spart ein Tiering möglicherweise keinen Speicherplatz. In extremen Fällen könnte es sogar vorkommen, dass ein aktiviertes Tiering zu einer höheren Speicherplatzbelegung führt. Zum Schutz vor solchen Situationen ist die kleinste Dateigröße, für die ein Cloudtiering ausgeführt werden kann, 8 KB in einem Cluster mit 4 KB oder weniger. 
+Der Grund für diesen absoluten Minimalwert findet sich in der Art und Weise, in der NTFS sehr kleine Dateien speichert, also mit Dateigrößen von 1 bis 4 KiB. Je nach den Parametern des Volumes ist es möglich, dass kleine Dateien überhaupt nicht in einem Cluster oder auf einem Datenträger gespeichert werden. Möglicherweise ist es effizienter, solche Dateien direkt im Datensatz der Masterdateitabelle (Master File Table, MFT) des Volumes zu speichern. Der Analysepunkt für das Cloudtiering wird immer auf dem Datenträger gespeichert und belegt genau einen Cluster. Bei so kleinen Dateien spart ein Tiering möglicherweise keinen Speicherplatz. In extremen Fällen könnte es sogar vorkommen, dass ein aktiviertes Tiering zu einer höheren Speicherplatzbelegung führt. Zum Schutz vor solchen Situationen ist die kleinste Dateigröße, für die ein Cloudtiering ausgeführt werden kann, 8 KiB in einem Cluster mit 4 KiB oder weniger. 
 
 ## <a name="selecting-your-initial-policies"></a>Auswählen Ihrer anfänglichen Richtlinien
 
@@ -78,7 +70,7 @@ Falls die Menge an ständig aus Azure abgerufenen Dateien größer als gewünsch
 
 Wenn Sie mehr Daten lokal speichern, fallen geringere Kosten für ausgehenden Datenverkehr an, da weniger Dateien aus Azure zurückgerufen werden. Sie müssen aber eine größere Menge von lokalem Speicher vorhalten, und dies ist ebenfalls mit Kosten verbunden. 
 
-Beim Anpassen Ihrer Richtlinie für den freien Volumespeicherplatz wird die Menge an Daten, die Sie lokal vorhalten sollten, anhand der folgenden Faktoren bestimmt: Ihrer Bandbreite, dem Zugriffsmuster des Datasets und dem Budget. Bei einer Verbindung mit geringer Bandbreite kann es unter Umständen hilfreich sein, mehr Daten lokal zu speichern, um die Verzögerung für Benutzer möglichst gering zu halten. Andernfalls können Sie als Baseline die Änderungsrate in einem bestimmten Zeitraum verwenden. Wenn Sie beispielsweise wissen, dass sich jeden Monat 10 % Ihres 1-TB-Datasets ändern bzw. hierfür aktive Zugriffe erfolgen, sollten Sie 100 GB lokal speichern, damit nicht zu häufig Dateien abgerufen werden müssen. Wenn das Volume 2 TB groß ist, sollten Sie 5 % (100 GB) lokal speichern. Dies bedeutet, dass die verbleibenden 95 % der Anteil des freien Speicherplatzes auf dem Volume sind. Es ist aber ratsam, einen Puffer für Zeiträume mit höheren Datenänderungsraten einzubauen. Anders ausgedrückt: Sie sollten mit einem höheren Anteil an freiem Speicherplatz auf dem Volume beginnen und diesen später dann je nach Bedarf anpassen.
+Beim Anpassen Ihrer Richtlinie für den freien Volumespeicherplatz wird die Menge an Daten, die Sie lokal vorhalten sollten, anhand der folgenden Faktoren bestimmt: Ihrer Bandbreite, dem Zugriffsmuster des Datasets und dem Budget. Bei einer Verbindung mit geringer Bandbreite kann es unter Umständen hilfreich sein, mehr Daten lokal zu speichern, um die Verzögerung für Benutzer möglichst gering zu halten. Andernfalls können Sie als Baseline die Änderungsrate in einem bestimmten Zeitraum verwenden. Wenn Sie beispielsweise wissen, dass sich jeden Monat 10 % Ihres 1-TiB-Datasets ändern bzw. hierfür aktive Zugriffe erfolgen, sollten Sie 100 GiB lokal speichern, damit nicht zu häufig Dateien abgerufen werden müssen. Wenn das Volume 2 TiB groß ist, sollten Sie 5 % (100 GiB) lokal speichern. Dies bedeutet, dass die verbleibenden 95 % der Anteil des freien Speicherplatzes auf dem Volume sind. Es ist aber ratsam, einen Puffer für Zeiträume mit höheren Datenänderungsraten einzubauen. Anders ausgedrückt: Sie sollten mit einem höheren Anteil an freiem Speicherplatz auf dem Volume beginnen und diesen später dann je nach Bedarf anpassen.
 
 ## <a name="standard-operating-procedures"></a>Standardverfahren für den Betrieb
 

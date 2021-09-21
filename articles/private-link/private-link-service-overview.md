@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: a5eeb8fbadda24a811893a02f42b428a8365c5aa
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 50d918cb6cb096674dc5b79d478d37d65422106e
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113110257"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123186009"
 ---
 # <a name="what-is-azure-private-link-service"></a>Was ist der Azure Private Link-Dienst?
 
@@ -97,7 +97,7 @@ Vollständiger Alias:  *Präfix*. {GUID}.*region*.azure.privatelinkservice
 
 Der Private Link-Dienst bietet Ihnen drei Optionen für die Einstellung **Sichtbarkeit**, um die Sichtbarkeit Ihres Diensts zu steuern. Ihre Sichtbarkeitseinstellung bestimmt, ob ein Benutzer eine Verbindung mit Ihrem Dienst herstellen kann. Im Folgenden finden Sie die Optionen für die Sichtbarkeitseinstellungen, die von der restriktivsten zur am wenigsten restriktivsten geordnet sind:
  
-- **Nur rollenbasierte Zugriffssteuerung:** Wenn Ihr Dienst für den privaten Verbrauch über verschiedene VNets konzipiert ist, deren Besitzer Sie sind, können Sie die rollenbasierte Zugriffssteuerung als Zugriffssteuerungsmechanismus in Abonnements verwenden, die demselben AD DS-Mandanten zugeordnet sind. 
+- **Nur rollenbasierte Zugriffssteuerung:** Wenn Ihr Dienst für den privaten Verbrauch über verschiedene VNets konzipiert ist, deren Besitzer Sie sind, können Sie die rollenbasierte Zugriffssteuerung als Zugriffssteuerungsmechanismus in Abonnements verwenden, die demselben AD DS-Mandanten zugeordnet sind. Hinweis: Mandantenübergreifende Sichtbarkeit ist über RBAC zulässig.
 - **Eingeschränkt nach Abonnement:** Wenn Ihr Dienst von verschiedenen Mandanten genutzt wird, können Sie die Sichtbarkeit auf eine begrenzte Anzahl von Abonnements beschränken, die Sie als vertrauenswürdig erachten. Autorisierungen können vorab genehmigt werden.
 - **Jeder mit Ihrem Alias:** Wählen Sie diese Option aus, wenn Sie Ihren Dienst öffentlich verfügbar machen möchten, sodass jeder mit Ihrem Private Link-Dienstalias eine Verbindung anfordern kann. 
 

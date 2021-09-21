@@ -13,14 +13,14 @@ ms.date: 06/23/2021
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: contperf-fy21q4, aaddev
-ms.openlocfilehash: 43fef26f3006120cb62676bfd5675c1e79b849d4
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 7cf9918216c70bcbabf9c64c9b0ebf91c02b45fd
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112579970"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123029240"
 ---
-# <a name="how-to-configure-an-applications-publisher-domain"></a>Gewusst wie: Konfigurieren der Herausgeberdomäne einer Anwendung
+# <a name="configure-an-applications-publisher-domain"></a>Konfigurieren der Herausgeberdomäne einer Anwendung
 
 Die Herausgeberdomäne einer Anwendung wird für Benutzer in der [Zustimmungsaufforderung der Anwendung](application-consent-experience.md) angezeigt, damit sie wissen, wohin ihre Informationen gesendet werden. Mehrinstanzenfähige Anwendungen, die nach dem 21. Mai 2019 registriert werden und über keine Herausgeberdomäne verfügen, werden als **nicht überprüft** angezeigt. Mehrinstanzenfähige Anwendungen sind Anwendungen, in denen Konten außerhalb eines einzelnen Organisationsverzeichnisses unterstützt werden, z. B. in denen alle Azure AD-Konten oder alle Azure AD-Konten und persönlichen Microsoft-Konten unterstützt werden.
 
@@ -61,7 +61,7 @@ Gehen Sie folgendermaßen vor, um die Herausgeberdomäne Ihrer App festzulegen.
 
 Wenn Ihre App in einem Mandanten registriert ist, werden zwei auszuwählende Registerkarten angezeigt: **Verifizierte Domäne auswählen** und **Neue Domäne verifizieren**.
 
-Wenn Ihre App nicht in einem Mandanten registriert ist, wird nur die Option zum Verifizieren einer neuen Domäne für Ihre App angezeigt.
+Wenn Ihre Domäne nicht im Mandanten registriert ist, wird nur die Option zum Verifizieren einer neuen Domäne für Ihre Anwendung angezeigt.
 
 ### <a name="to-verify-a-new-domain-for-your-app"></a>So verifizieren Sie eine neue Domäne für Ihre App
 

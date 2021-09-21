@@ -6,15 +6,15 @@ author: vladvino
 ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04
 ms.service: api-management
 ms.topic: include
-ms.date: 07/07/2021
+ms.date: 08/20/2021
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 053f1372067284e2b2d10bac508156b6ef38e4af
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d3317bafa2ff03e83bd79e9a3efa0ecfaffd4124
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346109"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122752805"
 ---
 | Resource | Begrenzung |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -33,10 +33,10 @@ ms.locfileid: "122346109"
 | Maximale Gesamtdauer der Anforderungen<sup>8</sup> | 30 Sekunden |
 | Maximale Größe der Anforderungspayload<sup>8</sup> | 1 GiB |
 | Maximale gepufferte Nutzlastgröße<sup>8</sup> | 2 MiB |
-| Maximale Größe der Anforderungs-URL<sup>9</sup> | 4096 Bytes |
+| Maximale Größe der Anforderungs-URL<sup>9</sup> | 16384 Bytes |
 | Maximale Länge des URL-Pfadsegments<sup>10</sup> | 260 Zeichen |
 | Maximale Größe des von der [Überprüfungsrichtlinie](../articles/api-management/validation-policies.md) verwendeten API-Schemas<sup>10</sup> | 4 MB |
-| Maximale Größe des Anforderungs- oder Antworttexts in der [validate-content-Richtlinie](../articles/api-management/validation-policies.md#validate-content) | 100 KB |
+| Maximale Größe des Anforderungs- oder Antworttexts in der [validate-content-Richtlinie](../articles/api-management/validation-policies.md#validate-content)<sup>10</sup> | 100 KB |
 | Maximale Anzahl von selbstgehosteten Gateways<sup>11</sup> | 25 |
 
 <sup>1</sup>Die Skalierungsgrenzen sind vom Tarif abhängig. Details zu den Tarifen und den dazugehörigen Grenzwerten für die Skalierung finden Sie unter [API Management – Preise](https://azure.microsoft.com/pricing/details/api-management/).<br/>

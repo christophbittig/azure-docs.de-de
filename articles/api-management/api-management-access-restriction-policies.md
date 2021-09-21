@@ -6,14 +6,14 @@ documentationcenter: ''
 author: vladvino
 ms.service: api-management
 ms.topic: article
-ms.date: 06/22/2021
+ms.date: 08/20/2021
 ms.author: apimpm
-ms.openlocfilehash: be920fa3cd35d2b1e92891d5595dfbe27a258447
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8d3370558e8dde2227834fa8f67577ca393b9564
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346844"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687723"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management-Richtlinien für die Zugriffsbeschränkung
 
@@ -138,7 +138,7 @@ Im folgenden Beispiel beträgt das Ratenlimit pro Abonnement 20 Aufrufe pro 90�
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | name           | Der Name der API, auf die die Ratenbegrenzung angewendet werden soll.                                                | Ja      | –     |
 | calls          | Die maximale Gesamtanzahl von Aufrufen, die während des in `renewal-period` angegebenen Zeitraums zulässig sind | Ja      | –     |
-| renewal-period | Die Länge des gleitenden Fensters in Sekunden, in der die Anzahl zulässiger Anforderungen den in `calls` angegebenen Wert nicht überschreiten darf.                                              | Ja      | –     |
+| renewal-period | Die Länge des gleitenden Fensters in Sekunden, in der die Anzahl zulässiger Anforderungen den in `calls` angegebenen Wert nicht überschreiten darf. Maximal zulässiger Wert: 300 Sekunden.                                            | Ja      | –     |
 | retry-after-header-name    | Der Name eines Antwortheaders, dessen Wert das empfohlene Wiederholungsintervall in Sekunden ist, nach dem die angegebene Aufrufrate überschritten wird. |  Nein | –  |
 | retry-after-variable-name    | Der Name einer Richtlinienausdrucksvariablen, die das empfohlene Wiederholungsintervall in Sekunden speichert, nach dem die angegebene Aufrufrate überschritten wird. |  Nein | –  |
 | remaining-calls-header-name    | Der Name einer Antwortheaders, dessen Wert nach jeder Richtlinienausführung die Anzahl der verbleibenden Aufrufe ist, die für den Zeitraum zulässig sind, der in `renewal-period` angegeben ist. |  Nein | –  |
@@ -211,10 +211,10 @@ Im folgenden Beispiel wird die Ratenbegrenzung von 10 Aufrufen pro 60 Sekunden
 
 | Name                | BESCHREIBUNG                                                                                           | Erforderlich | Standard |
 | ------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| calls               | Die maximale Gesamtanzahl von Aufrufen, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind. | Ja      | –     |
+| calls               | Die maximale Gesamtanzahl von Aufrufen, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind. Der Richtlinienausdruck ist zulässig. | Ja      | –     |
 | counter-key         | Der Schlüssel, der für die Ratenbegrenzungsrichtlinie verwendet werden soll.                                                             | Ja      | –     |
 | increment-condition | Der boolesche Ausdruck, der angibt, ob die Anforderung für die Rate gezählt werden soll (`true`).        | Nein       | –     |
-| renewal-period      | Die Länge des gleitenden Fensters in Sekunden, in der die Anzahl zulässiger Anforderungen den in `calls` angegebenen Wert nicht überschreiten darf.                                           | Ja      | –     |
+| renewal-period      | Die Länge des gleitenden Fensters in Sekunden, in der die Anzahl zulässiger Anforderungen den in `calls` angegebenen Wert nicht überschreiten darf. Der Richtlinienausdruck ist zulässig. Maximal zulässiger Wert: 300 Sekunden.                 | Ja      | –     |
 | retry-after-header-name    | Der Name eines Antwortheaders, dessen Wert das empfohlene Wiederholungsintervall in Sekunden ist, nach dem die angegebene Aufrufrate überschritten wird. |  Nein | –  |
 | retry-after-variable-name    | Der Name einer Richtlinienausdrucksvariablen, die das empfohlene Wiederholungsintervall in Sekunden speichert, nach dem die angegebene Aufrufrate überschritten wird. |  Nein | –  |
 | remaining-calls-header-name    | Der Name einer Antwortheaders, dessen Wert nach jeder Richtlinienausführung die Anzahl der verbleibenden Aufrufe ist, die für den Zeitraum zulässig sind, der in `renewal-period` angegeben ist. |  Nein | –  |

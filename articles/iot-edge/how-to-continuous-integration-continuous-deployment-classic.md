@@ -3,22 +3,22 @@ title: Continuous Integration und Continuous Deployment für Azure IoT Edge-Ger�
 description: Einrichten von Continuous Integration und Continuous Deployment mithilfe des klassischen Editors – Azure IoT Edge mit Azure DevOps, Azure Pipelines
 author: kgremban
 ms.author: kgremban
-ms.date: 08/26/2020
+ms.date: 08/26/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 757ae7f71e5b03a5dc38b6e5438cdf22a0083965
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5af2216423e625d2ba9545a37e58bb08529ebd55
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339724"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123031996"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices-classic-editor"></a>Continuous Integration und Continuous Deployment für Azure IoT Edge-Geräte (klassischer Editor)
 
 [!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
-Sie können DevOps mit den integrierten Azure IoT Edge-Aufgaben in Azure Pipelines ganz einfach in Ihren Azure IoT Edge-Anwendungen übernehmen. In diesem Artikel wird gezeigt, wie Sie die Features für Continuous Integration und Continuous Deployment von Azure Pipelines zum schnellen und effizienten Erstellen, Testen und Bereitstellen von Anwendungen in Azure IoT Edge mithilfe des klassischen Editors verwenden können. Alternativ können Sie [YAML verwenden](how-to-continuous-integration-continuous-deployment.md).
+Azure Pipelines enthält eine integrierte Azure IoT Edge-Aufgabe, mit der Sie DevOps in Ihre Azure IoT Edge-Anwendungen übernehmen können. In diesem Artikel wird gezeigt, wie Sie die Features für Continuous Integration und Continuous Deployment von Azure Pipelines zum schnellen und effizienten Erstellen, Testen und Bereitstellen von Anwendungen in Azure IoT Edge mithilfe des klassischen Editors verwenden können. Alternativ können Sie [YAML verwenden](how-to-continuous-integration-continuous-deployment.md).
 
 ![Diagramm – CI- und CD-Branches für Entwicklung und Produktion](./media/how-to-continuous-integration-continuous-deployment-classic/model.png)
 
@@ -86,21 +86,21 @@ In diesem Abschnitt erstellen Sie eine neue Buildpipeline. Konfigurieren Sie die
 
    Wählen Sie in der Pipelinebeschreibung, basierend auf Ihrer Zielplattform, die richtige Agentspezifikation aus:
 
-   * Wenn Sie Ihre Module auf der Plattform amd64 für Linux-Container erstellen möchten, wählen Sie **ubuntu-16.04** aus.
+   * Wenn Sie Ihre Module auf der amd64-Plattform für Linux-Container erstellen möchten, wählen Sie **ubuntu-18.04** aus.
 
    * Wenn Sie Ihre Module auf der Plattform amd64 für Windows 1809-Container erstellen möchten, müssen Sie [einen selbstgehosteten Agent unter Windows einrichten](/azure/devops/pipelines/agents/v2-windows).
 
    * Wenn Sie Ihre Module auf der Plattform arm32v7 oder arm64 für Linux-Container erstellen möchten, müssen Sie [einen selbstgehosteten Agent unter Linux einrichten](https://devblogs.microsoft.com/iotdev/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent).
 
-    ![Konfigurieren der Build-Agent-Spezifikation](./media/how-to-continuous-integration-continuous-deployment-classic/configure-env.png)
+   :::image type="content" source="./media/how-to-continuous-integration-continuous-deployment-classic/configure-env.png" alt-text="Konfigurieren der Build-Agent-Spezifikation":::
 
 6. Die Pipeline wird mit einem Auftrag mit dem Namen **Agent job 1** vorkonfiguriert. Wählen Sie das Pluszeichen ( **+** ) aus, um dem Auftrag vier Aufgaben hinzuzufügen: Zweimal **Azure IoT Edge**, einmal **Dateien kopieren** und einmal **Buildartefakte veröffentlichen**. Suchen Sie nach jeder Aufgabe, und zeigen Sie auf deren Namen, um die Schaltfläche **Hinzufügen** anzuzeigen.
 
-   ![Hinzufügen der Azure IoT Edge-Aufgabe](./media/how-to-continuous-integration-continuous-deployment-classic/add-iot-edge-task.png)
+   :::image type="content" source="./media/how-to-continuous-integration-continuous-deployment-classic/add-iot-edge-task.png" alt-text="Hinzufügen der Azure IoT Edge-Aufgabe":::
 
    Wenn alle vier Aufgaben hinzugefügt werden, sieht Ihr Agent-Auftrag wie im folgenden Beispiel aus:
 
-   ![Vier Aufgaben in der Buildpipeline](./media/how-to-continuous-integration-continuous-deployment-classic/add-tasks.png)
+   :::image type="content" source="./media/how-to-continuous-integration-continuous-deployment-classic/add-tasks.png" alt-text="Vier Aufgaben in der Buildpipeline":::
 
 7. Wählen Sie die erste zu bearbeitende **Azure IoT Edge**-Aufgabe aus. Diese Aufgabe erstellt alle Module in der Projektmappe mit der angegebenen Zielplattform. Bearbeiten Sie die Aufgabe mit den folgenden Werten:
 
@@ -116,7 +116,7 @@ In diesem Abschnitt erstellen Sie eine neue Buildpipeline. Konfigurieren Sie die
 
    Diese Konfigurationen verwenden das Imagerepository und -tag, die in der `module.json`-Datei definiert sind, um das Modulimage zu benennen und zu kennzeichnen. Das **Erstellen von Modulimages** hilft auch dabei, die Variablen durch die exakten Werte zu ersetzen, die Sie in der Datei `module.json` definiert haben. In Visual Studio oder Visual Studio Code geben Sie den tatsächlichen Wert in einer `.env`-Datei an. In Azure Pipelines legen Sie den Wert auf der Registerkarte **Pipelinevariablen** fest. Wählen Sie im Menü des Pipeline-Editors die Registerkarte **Variablen** aus, und konfigurieren Sie den Namen und den Wert folgendermaßen:
 
-   * **ACR_ADDRESS**: Der Wert **Anmeldeserver** für Ihre Azure Container Registry. Den Wert für „Anmeldeserver“ finden Sie im Azure-Portal auf der Seite „Übersicht“ Ihrer Containerregistrierung.
+   * **ACR_ADDRESS**: Der Wert **Anmeldeserver** für Ihre Azure Container Registry. Den Wert des Anmeldeservers finden Sie im Azure-Portal auf der Übersichtsseite der Containerregistrierung.
 
    Wenn in Ihrem Projekt noch weitere Variablen vorhanden sind, können Sie die Namen und Werte auf diese Registerkarte angeben. Das **Erstellen von Modulimages** erkennt nur Variablen, die im `${VARIABLE}`-Format vorliegen. Stellen Sie sicher, dass Sie dieses Format in ihren `**/module.json`-Dateien verwenden.
 

@@ -1,15 +1,15 @@
 ---
 title: Unterstützte Azure Resource Manager-Ressourcentypen
 description: Stellen Sie eine Liste der Azure Resource Manager-Ressourcentypen bereit, die von Azure Resource Graph und dem Änderungsverlauf unterstützt werden.
-ms.date: 04/06/2021
+ms.date: 08/31/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 6161c2f53690140e2cd1140deaa8a22b3388dd2b
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 330c406ef1d45a3cd72ac7316ca3985d2a6cd647
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505262"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123309768"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph-Tabelle und Ressourcentypreferenz
 
@@ -17,8 +17,11 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 
 ## <a name="advisorresources"></a>advisorresources
 
+Beispielabfragen für diese Tabelle finden Sie unter [Resource Graph-Beispielabfragen für advisorresources](../samples/samples-by-table.md#advisorresources).
+
 - microsoft.advisor/configurations
 - microsoft.advisor/recommendations
+  - Beispielabfrage: [Abrufen der Zusammenfassung der Kosteneinsparungen aus Azure Advisor](../samples/samples-by-category.md#get-cost-savings-summary-from-azure-advisor)
 - microsoft.advisor/recommendations/suppressions
 - microsoft.advisor/suppressions
 
@@ -26,25 +29,55 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 
 - microsoft.alertsmanagement/alerts
 
+## <a name="desktopvirtualizationresources"></a>desktopvirtualizationresources
+
+- microsoft.desktopvirtualization/hostpools/sessionhosts
+
 ## <a name="extendedlocationresources"></a>extendedlocationresources
 
+Beispielabfragen für diese Tabelle finden Sie unter [Resource Graph-Beispielabfragen für extendedlocationresources](../samples/samples-by-table.md#extendedlocationresources).
+
 - microsoft.extendedlocation/customlocations/enabledresourcetypes
+  - Beispielabfrage: [Abrufen aktivierter Ressourcentypen für benutzerdefinierte Speicherorte mit Azure Arc-Unterstützung](../samples/samples-by-category.md#get-enabled-resource-types-for-azure-arc-enabled-custom-locations)
+  - Beispielabfrage: [Auflisten benutzerdefinierter Standorte mit Azure Arc-Unterstützung mit VMware- oder SCVMM-Unterstützung](../samples/samples-by-category.md#list-azure-arc-enabled-custom-locations-with-vmware-or-scvmm-enabled)
 
 ## <a name="guestconfigurationresources"></a>guestconfigurationresources
 
+Beispielabfragen für diese Tabelle finden Sie unter [Resource Graph-Beispielabfragen für guestconfigurationresources](../samples/samples-by-table.md#guestconfigurationresources).
+
 - microsoft.guestconfiguration/guestconfigurationassignments
+  - Beispielabfrage: [Anzahl der Computer im Bereich der Gastkonfigurationsrichtlinien](../samples/samples-by-category.md#count-machines-in-scope-of-guest-configuration-policies)
+  - Beispielabfrage:[Anzahl der nicht konformen Gastkonfigurationszuweisungen](../samples/samples-by-category.md#count-of-non-compliant-guest-configuration-assignments)
+  - Beispielabfrage: [Ermitteln aller Gründe dafür, warum ein Computer nicht konform für Gastkonfigurationszuweisungen ist](../samples/samples-by-category.md#find-all-reasons-a-machine-is-non-compliant-for-guest-configuration-assignments)
+
+## <a name="healthresources"></a>healthresources
+
+Beispielabfragen für diese Tabelle finden Sie unter [Resource Graph-Beispielabfragen für healthresources](../samples/samples-by-table.md#healthresources).
+
+- microsoft.resourcehealth/availabilitystatuses
+  - Beispielabfrage: [Anzahl der virtuellen Computer nach Verfügbarkeitsstatus und Abonnement-ID](../samples/samples-by-category.md#count-of-virtual-machines-by-availability-state-and-subscription-id)
+  - Beispielabfrage: [Liste der virtuellen Computer und ihres Verfügbarkeitsstatus nach Ressourcen-IDs](../samples/samples-by-category.md#list-of-virtual-machines-and-associated-availability-states-by-resource-ids)
+  - Beispielabfrage: [Liste der virtuellen Computer nach Verfügbarkeitsstatus und Energiezustand mit Ressourcen-IDs und Ressourcengruppen](../samples/samples-by-category.md#list-of-virtual-machines-by-availability-state-and-power-state-with-resource-ids-and-resource-groups)
+  - Beispielabfrage: [Liste der virtuellen Computer, die nicht verfügbar sind, nach Ressourcen-IDs](../samples/samples-by-category.md#list-of-virtual-machines-that-are-not-available-by-resource-ids)
 
 ## <a name="kubernetesconfigurationresources"></a>kubernetesconfigurationresources
 
+Beispielabfragen für diese Tabelle finden Sie unter [Resource Graph-Beispielabfragen für kubernetesconfigurationresources](../samples/samples-by-table.md#kubernetesconfigurationresources).
+
 - microsoft.kubernetesconfiguration/extensions
+  - Beispielabfrage: [Auflisten aller Azure Arc-fähigen Kubernetes-Cluster mit der Azure Monitor-Erweiterung](../samples/samples-by-category.md#list-all-azure-arc-enabled-kubernetes-clusters-with-azure-monitor-extension)
+  - Beispielabfrage: [Auflisten aller Azure Arc-fähigen Kubernetes-Cluster ohne Azure Monitor-Erweiterung](../samples/samples-by-category.md#list-all-azure-arc-enabled-kubernetes-clusters-without-azure-monitor-extension)
 - microsoft.kubernetesconfiguration/sourcecontrolconfigurations
 
 ## <a name="maintenanceresources"></a>maintenanceresources
 
+- microsoft.maintenance/applyupdates
 - microsoft.maintenance/configurationassignments
 - microsoft.maintenance/updates
 
 ## <a name="patchassessmentresources"></a>patchassessmentresources
+
+Beispielabfragen für diese Tabelle finden Sie unter [Resource Graph-Beispielabfragen für patchassessmentresources](../samples/samples-by-table.md#patchassessmentresources).
 
 - microsoft.compute/virtualmachines/patchassessmentresults
 - microsoft.compute/virtualmachines/patchassessmentresults/softwarepatches
@@ -60,7 +93,14 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 
 ## <a name="policyresources"></a>policyresources
 
+Beispielabfragen für diese Tabelle finden Sie unter [Resource Graph-Beispielabfragen für policyresources](../samples/samples-by-table.md#policyresources).
+
 - microsoft.policyinsights/policystates
+  - Beispielabfrage: [Konformität nach Richtlinienzuweisung](../samples/samples-by-category.md#compliance-by-policy-assignment)
+  - Beispielabfrage: [Konformität nach Ressourcentyp](../samples/samples-by-category.md#compliance-by-resource-type)
+  - Beispielabfrage: [Auflisten aller nicht konformen Ressourcen](../samples/samples-by-category.md#list-all-non-compliant-resources)
+  - Beispielabfrage: [Zusammenfassen der Ressourcenkonformität nach Zustand](../samples/samples-by-category.md#summarize-resource-compliance-by-state)
+  - Beispielabfrage: [Zusammenfassen der Ressourcenkonformität nach Speicherort](../samples/samples-by-category.md#summarize-resource-compliance-by-state-per-location)
 
 ## <a name="recoveryservicesresources"></a>recoveryservicesresources
 
@@ -74,22 +114,38 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 
 ## <a name="resourcecontainers"></a>resourcecontainers
 
+Beispielabfragen für diese Tabelle finden Sie unter [Resource Graph-Beispielabfragen für resourcecontainers](../samples/samples-by-table.md#resourcecontainers).
+
+- microsoft.management/managementgroups
+  - Beispielabfrage: [Anzahl der Abonnements pro Verwaltungsgruppe](../samples/samples-by-category.md#count-of-subscriptions-per-management-group)
+  - Beispielabfrage: [Auflisten aller Verwaltungsgruppenvorgänger für eine angegebene Verwaltungsgruppe](../samples/samples-by-category.md#list-all-management-group-ancestors-for-a-specified-management-group)
 - microsoft.resources/subscriptions (Abonnements)
+  - Beispielabfrage: [Anzahl der Abonnements pro Verwaltungsgruppe](../samples/samples-by-category.md#count-of-subscriptions-per-management-group)
+  - Beispielabfrage: [Schlüsseltresore mit Abonnementname](../samples/samples-by-category.md#key-vaults-with-subscription-name)
+  - Beispielabfrage: [Auflisten aller Verwaltungsgruppenvorgänger für ein angegebenes Abonnement](../samples/samples-by-category.md#list-all-management-group-ancestors-for-a-specified-subscription)
+  - Beispielabfrage: [Auflisten aller Abonnements unter einer angegebenen Verwaltungsgruppe](../samples/samples-by-category.md#list-all-subscriptions-under-a-specified-management-group)
+  - Beispielabfrage: [Entfernen von Spalten aus den Ergebnissen](../samples/samples-by-category.md#remove-columns-from-results)
+  - Beispielabfrage: [Sicherheitsbewertung pro Verwaltungsgruppe](../samples/samples-by-category.md#secure-score-per-management-group)
 - Microsoft.Resources/subscriptions/resourceGroups (Ressourcengruppen)
+  - Beispielabfrage: [Suchen von Speicherkonten mit einem bestimmten Tag (unter Vernachlässigung der Groß-/Kleinschreibung) in der Ressourcengruppe](../samples/samples-by-category.md#find-storage-accounts-with-a-specific-case-insensitive-tag-on-the-resource-group)
+  - Beispielabfrage: [Suchen von Speicherkonten mit einem bestimmten Tag (unter Berücksichtigung der Groß-/Kleinschreibung) in der Ressourcengruppe](../samples/samples-by-category.md#find-storage-accounts-with-a-specific-case-sensitive-tag-on-the-resource-group)
 
 ## <a name="resources"></a>ressourcen
+
+Beispielabfragen für diese Tabelle finden Sie unter [Resource Graph-Beispielabfragen für resources](../samples/samples-by-table.md#resources).
 
 - 84codes.CloudAMQP/servers (CloudAMQP)
 - Citrix.Services/XenAppEssentials (Citrix Virtual Apps Essentials)
 - Citrix.Services/XenDesktopEssentials (Citrix Virtual Desktops Essentials)
-- Conexlink.MyCloudIt/accounts (MyCloudIT – Azure-Desktophosting)
-- Crypteron.DataSecurity/apps (Crypteron)
+- conexlink.mycloudit/accounts
+- crypteron.datasecurity/apps
+- dynatrace.observability/monitors
 - GitHub.Enterprise/accounts (GitHub AE)
 - gridpro.evops/accounts
 - gridpro.evops/accounts/eventrules
 - gridpro.evops/accounts/requesttemplates
 - gridpro.evops/accounts/views
-- Hive.Streaming/services (Hive-Streaming)
+- hive.streaming/services
 - incapsula.waf/accounts
 - LiveArena.Broadcast/services (LiveArena-Broadcast)
 - Mailjet.Email/services (Mailjet Email Service)
@@ -97,7 +153,7 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - microsoft.aadiam/azureadmetrics
 - microsoft.aadiam/privateLinkForAzureAD (Private Link für Azure AD)
 - microsoft.aadiam/tenants
-- Microsoft.AgFoodPlatform/farmBeats (Azure FarmBeats PaaS)
+- Microsoft.AgFoodPlatform/farmBeats (Azure FarmBeats)
 - microsoft.aisupercomputer/accounts
 - microsoft.aisupercomputer/accounts/jobgroups
 - microsoft.aisupercomputer/accounts/jobgroups/jobs
@@ -105,7 +161,7 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - microsoft.alertsmanagement/resourcehealthalertrules
 - microsoft.alertsmanagement/smartdetectoralertrules
 - Microsoft.AnalysisServices/servers (Analysis Services)
-- microsoft.anybuild/clusters
+- Microsoft.AnyBuild/clusters (AnyBuild-Cluster)
 - Microsoft.ApiManagement/service (API Management-Dienste)
 - microsoft.appassessment/migrateprojects
 - Microsoft.AppConfiguration/configurationStores (App Configuration)
@@ -115,6 +171,7 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - Microsoft.Authorization/resourceManagementPrivateLinks (private Ressourcenmanagementverbindung)
 - microsoft.automanage/accounts
 - microsoft.automanage/configurationprofilepreferences
+- microsoft.automanage/configurationprofiles
 - Microsoft.Automation/AutomationAccounts (Automation-Konten)
 - microsoft.automation/automationaccounts/configurations
 - Microsoft.Automation/automationAccounts/runbooks (Runbook)
@@ -125,7 +182,7 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - Microsoft.AzureActiveDirectory/b2cDirectories (B2C-Mandanten)
 - Microsoft.AzureActiveDirectory/guestUsages (Gastnutzung)
 - Microsoft.AzureArcData/dataControllers (Azure Arc-Datencontroller)
-- Microsoft.AzureArcData/postgresInstances (Azure Database for PostgreSQL-Servergruppen – Azure Arc)
+- Microsoft.AzureArcData/postgresInstances (Azure Arc-fähige PostgreSQL Hyperscale-Servergruppen)
 - Microsoft.AzureArcData/sqlManagedInstances (SQL Managed Instance – Azure Arc)
 - Microsoft.AzureArcData/sqlServerInstances (SQL Server – Azure Arc)
 - microsoft.azurecis/autopilotenvironments
@@ -137,6 +194,10 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - microsoft.azuredata/sqlmanagedinstances
 - microsoft.azuredata/sqlserverinstances
 - Microsoft.AzureData/sqlServerRegistrations (SQL Server-Registrierungen)
+- Microsoft.AzurePercept/accounts (Azure Percept-Konten)
+- microsoft.azuresphere/catalogs
+- microsoft.azuresphere/catalogs/products
+- microsoft.azuresphere/catalogs/products/devicegroups
 - microsoft.azurestack/edgesubscriptions
 - microsoft.azurestack/linkedsubscriptions
 - Microsoft.Azurestack/registrations (Azure Stack Hub)
@@ -146,6 +207,7 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - microsoft.azurestackhci/virtualharddisks
 - Microsoft.AzureStackHci/virtualMachines (Azure Stack HCI virtual machine - Azure Arc)
 - microsoft.azurestackhci/virtualnetworks
+- microsoft.backupsolutions/vmwareapplications
 - microsoft.baremetal/consoleconnections
 - Microsoft.BareMetal/crayServers (Cray-Server)
 - Microsoft.BareMetal/monitoringServers (Überwachungsserver)
@@ -156,7 +218,7 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - microsoft.batchai/jobs
 - microsoft.batchai/workspaces
 - Microsoft.Bing/accounts (Bing-Ressourcen)
-- Microsoft.BingMaps/mapApis (Bing Maps API for Enterprise)
+- microsoft.bingmaps/mapapis
 - microsoft.biztalkservices/biztalk
 - Microsoft.Blockchain/blockchainMembers (Azure Blockchain-Dienst)
 - Microsoft.Blockchain/cordaMembers (Corda)
@@ -167,10 +229,11 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - microsoft.cascade/sites
 - Microsoft.Cdn/CdnWebApplicationFirewallPolicies (Web Application Firewall-Richtlinien (WAF))
 - microsoft.cdn/profiles (Front Door Standard/Premium (Vorschau))
-- microsoft.cdn/profiles/afdendpoints
+- Microsoft.Cdn/Profiles/AfdEndpoints (Endpunkte)
 - microsoft.cdn/profiles/endpoints (Endpunkte)
 - Microsoft.CertificateRegistration/certificateOrders (App Service Certificate)
-- Microsoft.chaos/chaosexperiments (Chaosexperimente)
+- microsoft.chaos/chaosexperiments (Chaosexperimente)
+- microsoft.chaos/experiments
 - microsoft.classicCompute/domainNames (Clouddienste (klassisch))
 - Microsoft.ClassicCompute/VirtualMachines (VMs (klassisch))
 - Microsoft.ClassicNetwork/networkSecurityGroups (Netzwerksicherheitsgruppe (klassisch))
@@ -184,6 +247,7 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - Microsoft.CloudTest/images (CloudTest-Images)
 - Microsoft.CloudTest/pools (CloudTest-Pools)
 - Microsoft.ClusterStor/nodes (ClusterStors)
+- microsoft.codesigning/codesigningaccounts
 - microsoft.codespaces/plans
 - Microsoft.Cognition/syntheticsAccounts (Synthetics-Konten)
 - Microsoft.CognitiveServices/accounts (Cognitive Services)
@@ -196,15 +260,15 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - Microsoft.Compute/diskEncryptionSets (Datenträgerverschlüsselungssätze)
 - Microsoft.Compute/disks (Datenträger)
 - Microsoft.Compute/galleries (Kataloge mit freigegebenen Images)
-- microsoft.compute/galleries/applications
-- microsoft.compute/galleries/applications/versions
+- Microsoft.Compute/galleries/applications (Kataloganwendungen)
+- Microsoft.Compute/galleries/applications/versions (Kataloganwendungsversionen)
 - Microsoft.Compute/galleries/images (Imagedefinitionen)
 - Microsoft.Compute/galleries/images/versions (Imageversionen)
 - Microsoft.Compute/hostgroups (Hostgruppen)
 - Microsoft.Compute/hostgroups/hosts (Hosts)
 - Microsoft.Compute/images (Images)
 - Microsoft.Compute/ProximityPlacementGroups (Näherungsplatzierungsgruppen)
-- microsoft.compute/restorepointcollections
+- Microsoft.Compute/restorePointCollections (Wiederherstellungspunktsammlungen)
 - microsoft.compute/sharedvmextensions
 - microsoft.compute/sharedvmextensions/versions
 - microsoft.compute/sharedvmimages
@@ -213,12 +277,28 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - Microsoft.Compute/sshPublicKeys (SSH-Schlüssel)
 - microsoft.compute/swiftlets
 - Microsoft.Compute/VirtualMachines (VMs)
+  - Beispielabfrage: [Anzahl der virtuellen Computer nach Energiezustand](../samples/samples-by-category.md#count-of-virtual-machines-by-power-state)
+  - Beispielabfrage: [Anzahl der virtuellen Computer nach Betriebssystemtyp](../samples/samples-by-category.md#count-virtual-machines-by-os-type)
+  - Beispielabfrage: [Anzahl der virtuellen Computer nach Betriebssystemtyp mit Erweiterungen](../samples/samples-by-category.md#count-virtual-machines-by-os-type-with-extend)
+  - Beispielabfrage: [Auflisten aller Erweiterungen, die auf einem virtuellen Computer installiert sind](../samples/samples-by-category.md#list-all-extensions-installed-on-a-virtual-machine)
+  - Beispielabfrage: [Auflisten nicht ausgeführter Computer und des letzten Konformitätsstatus](../samples/samples-by-category.md#list-machines-that-are-not-running-and-the-last-compliance-status)
+  - Beispielabfrage: [Auflisten der virtuellen Computer nach Verfügbarkeitsstatus und Energiezustand mit Ressourcen-IDs und Ressourcengruppen](../samples/samples-by-category.md#list-of-virtual-machines-by-availability-state-and-power-state-with-resource-ids-and-resource-groups)
+  - Beispielabfrage: [Auflisten virtueller Computer mit zugehöriger Netzwerkschnittstelle und öffentlicher IP-Adresse](../samples/samples-by-category.md#list-virtual-machines-with-their-network-interface-and-public-ip)
+  - Beispielabfrage: [Anzeigen aller virtuellen Computer nach Name in absteigender Reihenfolge](../samples/samples-by-category.md#show-all-virtual-machines-ordered-by-name-in-descending-order)
+  - Beispielabfrage: [Anzeigen der ersten fünf virtuellen Computer nach Name und Betriebssystemtyp](../samples/samples-by-category.md#show-first-five-virtual-machines-by-name-and-their-os-type)
+  - Beispielabfrage: [Zusammenfassen virtueller Computer anhand der erweiterten Eigenschaft für Energiezustände](../samples/samples-by-category.md#summarize-virtual-machine-by-the-power-states-extended-property)
+  - Beispielabfrage: [Einem regulären Ausdruck entsprechende virtuelle Computer](../samples/samples-by-category.md#virtual-machines-matched-by-regex)
 - microsoft.compute/virtualmachines/extensions
+  - Beispielabfrage: [Auflisten aller Erweiterungen, die auf einem virtuellen Computer installiert sind](../samples/samples-by-category.md#list-all-extensions-installed-on-a-virtual-machine)
 - microsoft.compute/virtualmachines/runcommands
 - Microsoft.Compute/virtualMachineScaleSets (VM-Skalierungsgruppen)
+  - Beispielabfrage: [Abrufen der Kapazität und Größe von VM-Skalierungsgruppen](../samples/samples-by-category.md#get-virtual-machine-scale-set-capacity-and-size)
+- Microsoft.ConfidentialLedger/ledgers (Confidential Ledgers)
 - Microsoft.Confluent/organizations (Confluent-Organisationen)
 - Microsoft.ConnectedCache/cacheNodes (Connected Cache-Ressourcen)
-- microsoft.connectedvehicle/platformaccounts
+- Microsoft.ConnectedVehicle/platformAccounts (Connected Vehicle-Plattformen)
+- microsoft.connectedvmwarevsphere/clusters
+- microsoft.connectedvmwarevsphere/datastores
 - microsoft.connectedvmwarevsphere/resourcepools
 - Microsoft.connectedVMwareVSphere/vCenters (VMware vCenters)
 - Microsoft.ConnectedVMwarevSphere/VirtualMachines (VMware + AVS Virtuelle Computer)
@@ -238,11 +318,13 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - microsoft.containerservice/openshiftmanagedclusters
 - microsoft.contoso/clusters
 - microsoft.contoso/employees
+- microsoft.contoso/installations
 - microsoft.contoso/towers
 - microsoft.costmanagement/connectors
 - microsoft.customproviders/resourceproviders
 - microsoft.d365customerinsights/instances
-- Microsoft.DataBox/jobs (Data Box)
+- Microsoft.Dashboard/grafana (Grafana-Arbeitsbereiche)
+- Microsoft.DataBox/jobs (Azure Data Box)
 - Microsoft.DataBoxEdge/dataBoxEdgeDevices (Azure Stack Edge/Data Box Gateway)
 - Microsoft.Databricks/workspaces (Azure Databricks-Dienste)
 - Microsoft.DataCatalog/catalogs (Data Catalog)
@@ -259,8 +341,10 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - microsoft.datamigration/slots
 - microsoft.datamigration/sqlmigrationservices
 - Microsoft.DataProtection/BackupVaults (Sicherungstresore)
-- microsoft.dataprotection/resourceguards
+- Microsoft.DataProtection/resourceGuards (Ressourcenwächter (Vorschau))
 - microsoft.dataprotection/resourceoperationgatekeepers
+- microsoft.datareplication/replicationfabrics
+- microsoft.datareplication/replicationvaults
 - Microsoft.DataShare/accounts (Datenfreigaben)
 - Microsoft.DBforMariaDB/servers (Azure Database for MariaDB-Server)
 - Microsoft.DBforMySQL/flexibleServers (flexible Azure Database for MySQL-Server)
@@ -274,6 +358,7 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - microsoft.delegatednetwork/controller
 - microsoft.delegatednetwork/delegatedsubnets
 - microsoft.delegatednetwork/orchestratorinstances
+- microsoft.delegatednetwork/orchestrators
 - microsoft.deploymentmanager/artifactsources
 - Microsoft.DeploymentManager/Rollouts (Rollouts)
 - microsoft.deploymentmanager/servicetopologies
@@ -300,11 +385,14 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - Microsoft.DigitalTwins/digitalTwinsInstances (Azure Digital Twins)
 - Microsoft.DocumentDB/cassandraClusters (Azure Managed Instance for Apache Cassandra)
 - Microsoft.DocumentDb/databaseAccounts (Azure Cosmos DB-Konten)
+  - Beispielabfrage: [Auflisten von Azure Cosmos DB mit bestimmten Schreibstandorten](../samples/samples-by-category.md#list-azure-cosmos-db-with-specific-write-locations)
 - Microsoft.DomainRegistration/domains (App Service-Domänen)
-- microsoft.edgeorder/addresses
+- microsoft.dynamics365fraudprotection/instances
+- Microsoft.EdgeOrder/addresses (Azure Edge Hardware Center-Adresse)
 - microsoft.edgeorder/ordercollections
-- Microsoft.EdgeOrder/orders (Azure Edge)
-- Microsoft.Elastic/monitors (Elasticsearch)
+- Microsoft.EdgeOrder/orderItems (Azure Edge Hardware Center)
+- microsoft.edgeorder/orders
+- Microsoft.Elastic/monitors (Elasticsearch (Elastic Cloud))
 - microsoft.enterpriseknowledgegraph/services
 - Microsoft.EventGrid/domains (Event Grid-Domänen)
 - Microsoft.EventGrid/partnerNamespaces (Event Grid-Partnernamespaces)
@@ -316,7 +404,14 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - Microsoft.EventHub/namespaces (Event Hubs-Namespaces)
 - Microsoft.Experimentation/experimentWorkspaces (Experimentarbeitsbereiche)
 - Microsoft.ExtendedLocation/CustomLocations (benutzerdefinierte Standorte)
+  - Beispielabfrage: [Auflisten benutzerdefinierter Standorte mit Azure Arc-Unterstützung mit VMware- oder SCVMM-Unterstützung](../samples/samples-by-category.md#list-azure-arc-enabled-custom-locations-with-vmware-or-scvmm-enabled)
 - microsoft.falcon/namespaces
+- Microsoft.Fidalgo/devcenters (Fidalgo-DevCenters)
+- microsoft.fidalgo/machinedefinitions
+- microsoft.fidalgo/networksettings
+- Microsoft.Fidalgo/projects (Fidalgo-Projekte)
+- Microsoft.Fidalgo/projects/environments (Fidalgo-Umgebungen)
+- Microsoft.FluidRelay/fluidRelayServers (Fluid Relay)
 - microsoft.footprintmonitoring/profiles
 - microsoft.gaming/titles
 - Microsoft.Genomics/accounts (Genomics-Konten)
@@ -324,16 +419,23 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - Microsoft.HanaOnAzure/hanaInstances (SAP HANA in Azure)
 - Microsoft.HanaOnAzure/sapMonitors (Azure Monitor für SAP-Lösungen)
 - microsoft.hardwaresecuritymodules/dedicatedhsms
-- microsoft.hdinsight/clusterpools
-- microsoft.hdinsight/clusterpools/clusters
+- Microsoft.HDInsight/clusterpools (HDInsight-Clusterpools)
+- Microsoft.HDInsight/clusterpools/clusters (HDInsight gen2-Cluster)
+- microsoft.hdinsight/clusterpools/clusters/sessionclusters
 - Microsoft.HDInsight/clusters (HDInsight-Cluster)
 - Microsoft.HealthBot/healthBots (Azure Health Bot)
 - Microsoft.HealthcareApis/services (Azure API for FHIR)
 - microsoft.healthcareapis/services/privateendpointconnections
-- microsoft.healthcareapis/workspaces
-- microsoft.healthcareapis/workspaces/dicomservices
+- Microsoft.HealthcareApis/workspaces (Healthcare APIs-Arbeitsbereiche)
+- Microsoft.HealthcareApis/workspaces/dicomservices (DICOM-Dienste)
+- Microsoft.HealthcareApis/workspaces/fhirservices (FHIR-Dienste)
+- Microsoft.HealthcareApis/workspaces/iotconnectors (IoT-Connectors)
+- Microsoft.HpcWorkbench/instances (HPC Workbenches (Vorschau))
 - Microsoft.HybridCompute/machines (Server – Azure Arc)
+  - Beispielabfrage: [Abrufen der Anzahl und des Prozentsatzes von Arc-fähigen Servern nach Domäne](../samples/samples-by-category.md#get-count-and-percentage-of-arc-enabled-servers-by-domain)
+  - Beispielabfrage: [Auflisten aller Erweiterungen, die auf einem Server mit Azure Arc-Unterstützung installiert sind](../samples/samples-by-category.md#list-all-extensions-installed-on-an-azure-arc-enabled-server)
 - microsoft.hybridcompute/machines/extensions
+  - Beispielabfrage: [Auflisten aller Erweiterungen, die auf einem Server mit Azure Arc-Unterstützung installiert sind](../samples/samples-by-category.md#list-all-extensions-installed-on-an-azure-arc-enabled-server)
 - Microsoft.HybridCompute/privateLinkScopes (Azure Arc: Private Link-Bereiche)
 - Microsoft.HybridData/dataManagers (StorSimple Data Manager)
 - Microsoft.HybridNetwork/devices (Azure-Netzwerkfunktions-Manager – Geräte (Vorschau))
@@ -342,6 +444,7 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - Microsoft.ImportExport/jobs (Import-/Exportaufträge)
 - microsoft.industrydatalifecycle/basemodels
 - microsoft.industrydatalifecycle/custodiancollaboratives
+- microsoft.industrydatalifecycle/dataconsumercollaboratives
 - microsoft.industrydatalifecycle/derivedmodels
 - microsoft.industrydatalifecycle/membercollaboratives
 - microsoft.industrydatalifecycle/modelmappings
@@ -351,6 +454,7 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - microsoft.insights/alertrules
 - microsoft.insights/autoscalesettings
 - microsoft.insights/components (Application Insights)
+- microsoft.insights/datacollectionendpoints (Datensammlungsendpunkte)
 - microsoft.insights/datacollectionrules (Datensammlungsregeln)
 - microsoft.insights/guestdiagnosticsettings
 - microsoft.insights/metricalerts
@@ -372,7 +476,11 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - microsoft.keyvault/hsmpools
 - microsoft.keyvault/managedhsms
 - Microsoft.KeyVault/vaults (Schlüsseltresore)
+  - Beispielabfrage: [Anzahl von Key Vault-Ressourcen](../samples/samples-by-category.md#count-key-vault-resources)
+  - Beispielabfrage: [Schlüsseltresore mit Abonnementname](../samples/samples-by-category.md#key-vaults-with-subscription-name)
 - Microsoft.Kubernetes/connectedClusters (Kubernetes – Azure Arc)
+  - Beispielabfrage: [Auflisten aller Azure Arc-fähigen Kubernetes-Cluster ohne Azure Monitor-Erweiterung](../samples/samples-by-category.md#list-all-azure-arc-enabled-kubernetes-clusters-without-azure-monitor-extension)
+  - Beispielabfrage: [Auflisten aller Azure Arc-fähigen Kubernetes-Ressourcen](../samples/samples-by-category.md#list-all-azure-arc-enabled-kubernetes-resources)
 - Microsoft.Kusto/clusters (Azure Data Explorer-Cluster)
 - Microsoft.Kusto/clusters/databases (Azure Data Explorer-Datenbanken)
 - Microsoft.LabServices/labAccounts (Lab Services)
@@ -390,6 +498,7 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - Microsoft.MachineLearning/workspaces (Machine Learning Studio (klassisch): Arbeitsbereiche)
 - microsoft.machinelearningcompute/operationalizationclusters
 - microsoft.machinelearningexperimentation/accounts/workspaces
+- microsoft.machinelearningservices/aisysteminventories
 - microsoft.machinelearningservices/modelinventories
 - microsoft.machinelearningservices/modelinventory
 - microsoft.machinelearningservices/virtualclusters
@@ -410,8 +519,8 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - microsoft.managednetwork/managednetworks/managednetworkgroups
 - microsoft.managednetwork/managednetworks/managednetworkpeeringpolicies
 - Microsoft.Maps/accounts (Azure Maps-Konten)
-- microsoft.maps/accounts/creators
-- Microsoft.Maps/accounts/privateAtlases (Azure Maps Creator-Ressourcen)
+- Microsoft.Maps/accounts/creators (Azure Maps-Erstellerressourcen)
+- microsoft.maps/accounts/privateatlases
 - Microsoft.MarketplaceApps/classicDevServices (klassische Entwicklungsdienste)
 - microsoft.media/mediaservices (Media Services)
 - microsoft.media/mediaservices/liveevents (Liveereignisse)
@@ -429,9 +538,18 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - Microsoft.MixedReality/remoteRenderingAccounts (Remote Rendering-Konten)
 - Microsoft.MixedReality/spatialAnchorsAccounts (Spatial Anchors-Konten)
 - microsoft.mixedreality/surfacereconstructionaccounts
+- Microsoft.MobileNetwork/mobileNetworks (Mobile Netzwerke)
+- microsoft.mobilenetwork/mobilenetworks/datanetworks
+- microsoft.mobilenetwork/mobilenetworks/services
+- microsoft.mobilenetwork/mobilenetworks/simpolicies
+- Microsoft.MobileNetwork/mobileNetworks/sites (Mobile Netzwerkstandorte)
+- microsoft.mobilenetwork/mobilenetworks/slices
 - microsoft.mobilenetwork/networks
 - microsoft.mobilenetwork/networks/sites
-- microsoft.mobilenetwork/sims
+- Microsoft.MobileNetwork/packetCoreControlPlanes (Arc für Netzwerkfunktionen – Paketkerne)
+- microsoft.mobilenetwork/packetcorecontrolplanes/packetcoredataplanes
+- microsoft.mobilenetwork/packetcorecontrolplanes/packetcoredataplanes/attacheddatanetworks
+- Microsoft.MobileNetwork/sims (Sims)
 - microsoft.mobilenetwork/sims/simprofiles
 - Microsoft.NetApp/netAppAccounts (NetApp-Konten)
 - microsoft.netapp/netappaccounts/backuppolicies
@@ -439,15 +557,18 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - Microsoft.NetApp/netAppAccounts/capacityPools/Volumes (Volumes)
 - microsoft.netapp/netappaccounts/capacitypools/volumes/mounttargets
 - Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots (Momentaufnahmen)
+- Microsoft.NetApp/netAppAccounts/snapshotPolicies (Snapshot-Richtlinien)
 - Microsoft.Network/applicationGateways (Anwendungsgateways)
 - Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies (Web Application Firewall-Richtlinien (WAF))
 - Microsoft.Network/applicationSecurityGroups (Anwendungssicherheitsgruppen)
 - Microsoft.Network/azureFirewalls (Firewalls)
 - Microsoft.Network/bastionHosts (Bastion)
 - Microsoft.Network/connections (Verbindungen)
-- microsoft.network/customipprefixes
+- Microsoft.Network/customIpPrefixes (benutzerdefinierte IP-Präfixe)
 - microsoft.network/ddoscustompolicies
 - Microsoft.Network/ddosProtectionPlans (DDoS-Schutzpläne)
+- microsoft.network/dnsforwardingrulesets
+- microsoft.network/dnsresolvers
 - Microsoft.Network/dnsZones (DNS-Zonen)
 - microsoft.network/dscpconfigurations
 - Microsoft.Network/expressRouteCircuits (ExpressRoute-Leitungen)
@@ -466,9 +587,13 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - Microsoft.Network/NetworkExperimentProfiles (Internet Analyzer-Profile)
 - microsoft.network/networkintentpolicies
 - Microsoft.Network/networkinterfaces (Netzwerkschnittstellen)
+  - Beispielabfrage: [Abrufen von virtuellen Netzwerken und Subnetzen von Netzwerkschnittstellen](../samples/samples-by-category.md#get-virtual-networks-and-subnets-of-network-interfaces)
+  - Beispielabfrage: [Auflisten virtueller Computer mit zugehöriger Netzwerkschnittstelle und öffentlicher IP-Adresse](../samples/samples-by-category.md#list-virtual-machines-with-their-network-interface-and-public-ip)
 - Microsoft.Network/networkManagers (Netzwerk-Manager)
 - microsoft.network/networkprofiles
 - Microsoft.Network/NetworkSecurityGroups (Netzwerksicherheitsgruppen)
+  - Beispielabfrage: [Anzeigen nicht zugeordneter Netzwerksicherheitsgruppen](../samples/samples-by-category.md#show-unassociated-network-security-groups)
+- microsoft.network/networksecurityperimeters
 - microsoft.network/networkvirtualappliances
 - microsoft.network/networkwatchers (Network Watcher)
 - microsoft.network/networkwatchers/connectionmonitors
@@ -482,6 +607,7 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - Microsoft.Network/privateEndpoints (private Endpunkte)
 - Microsoft.Network/privateLinkServices (Private Link-Dienste)
 - Microsoft.Network/PublicIpAddresses (öffentliche IP-Adressen)
+  - Beispielabfrage: [Auflisten virtueller Computer mit zugehöriger Netzwerkschnittstelle und öffentlicher IP-Adresse](../samples/samples-by-category.md#list-virtual-machines-with-their-network-interface-and-public-ip)
 - Microsoft.Network/publicIpPrefixes (öffentliche IP-Präfixe)
 - Microsoft.Network/routeFilters (Routenfilter)
 - Microsoft.Network/routeTables (Routingtabellen)
@@ -500,6 +626,7 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - microsoft.network/vpngateways
 - microsoft.network/vpnserverconfigurations
 - microsoft.network/vpnsites
+- microsoft.networkfunction/azuretrafficcollectors
 - Microsoft.NotificationHubs/namespaces (Notification Hub-Namespaces)
 - Microsoft.NotificationHubs/namespaces/notificationHubs (Notification Hub)
 - microsoft.nutanix/interfaces
@@ -510,6 +637,7 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - microsoft.offazure/mastersites
 - microsoft.offazure/serversites
 - microsoft.offazure/vmwaresites
+- microsoft.openlogisticsplatform/applicationworkspaces
 - Microsoft.OpenLogisticsPlatform/workspaces (Open Supply Chain-Plattform)
 - microsoft.operationalinsights/clusters
 - Microsoft.OperationalInsights/querypacks (Log Analytics-Abfragepakete)
@@ -517,6 +645,11 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - Microsoft.OperationsManagement/solutions (Lösungen)
 - microsoft.operationsmanagement/views
 - Microsoft.Orbital/contactProfiles (ContactProfiles)
+- microsoft.orbital/groundstations
+- microsoft.orbital/orbitalendpoints
+- microsoft.orbital/orbitalgateways
+- microsoft.orbital/orbitalgateways/orbitall2connections
+- microsoft.orbital/orbitalgateways/orbitall3connections
 - Microsoft.Orbital/spacecrafts (Spacecrafts)
 - Microsoft.Peering/peerings (Peerings)
 - Microsoft.Peering/peeringServices (Peering Service)
@@ -527,10 +660,14 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - microsoft.powerbi/workspacecollections
 - microsoft.powerbidedicated/autoscalevcores
 - Microsoft.PowerBIDedicated/capacities (Power BI Embedded)
+- microsoft.powerplatform/accounts
 - microsoft.powerplatform/enterprisepolicies
 - microsoft.projectbabylon/accounts
 - Microsoft.Purview/Accounts (Purview-Konten)
 - Microsoft.Quantum/Workspaces (Quantum-Arbeitsbereiche)
+- Microsoft.RecommendationsService/accounts (Intelligent Recommendations-Konten)
+- Microsoft.RecommendationsService/accounts/modeling (Modellierung)
+- Microsoft.RecommendationsService/accounts/serviceEndpoints (Dienstendpunkte)
 - Microsoft.RecoveryServices/vaults (Recovery Services-Tresore)
 - Microsoft.RedHatOpenShift/openShiftClusters (OpenShift-Cluster)
 - Microsoft.Relay/namespaces (Relays)
@@ -544,6 +681,7 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - Microsoft.SaaS/applications (Software-as-a-Service (SaaS, klassisch))
 - Microsoft.SaaS/resources (SaaS)
 - Microsoft.Scheduler/jobCollections (Scheduler-Auftragssammlungen)
+- Microsoft.Scom/managedInstances (Aquila-Ressourcen)
 - microsoft.scvmm/clouds
 - Microsoft.scvmm/virtualMachines (SCVMM-VM – Azure Arc)
 - microsoft.scvmm/virtualmachinetemplates
@@ -552,12 +690,13 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - Microsoft.Search/searchServices (Suchdienste)
 - microsoft.security/automations
 - microsoft.security/iotsecuritysolutions
+- microsoft.security/securityconnectors
 - Microsoft.SecurityDetonation/chambers (Sicherheitsdetonationskammern)
 - Microsoft.ServiceBus/namespaces (Service Bus-Namespaces)
 - Microsoft.ServiceFabric/clusters (Service Fabric-Cluster)
 - microsoft.servicefabric/containergroupsets
 - Microsoft.ServiceFabric/managedclusters (verwaltete Service Fabric-Cluster)
-- Microsoft.ServiceFabricMesh/applications (Gitteranwendungen)
+- microsoft.servicefabricmesh/applications
 - microsoft.servicefabricmesh/gateways
 - microsoft.servicefabricmesh/networks
 - microsoft.servicefabricmesh/secrets
@@ -566,6 +705,7 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - Microsoft.SignalRService/SignalR (SignalR)
 - Microsoft.SignalRService/WebPubSub (Web PubSub Service)
 - microsoft.singularity/accounts
+- microsoft.skytap/nodes
 - microsoft.solutions/appliancedefinitions
 - microsoft.solutions/appliances
 - Microsoft.Solutions/applicationDefinitions (Dienstkatalog: verwaltete Anwendungsdefinitionen)
@@ -577,7 +717,9 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - Microsoft.Sql/managedInstances/databases (verwaltete Datenbanken)
 - Microsoft.Sql/servers (SQL-Server)
 - Microsoft.Sql/servers/databases (SQL-Datenbanken)
+  - Beispielabfrage: [Auflisten von SQL-Datenbanken und den zugehörigen Pools für elastische Datenbanken](../samples/samples-by-category.md#list-sql-databases-and-their-elastic-pools)
 - Microsoft.Sql/servers/elasticpools (elastische SQL-Pools)
+  - Beispielabfrage: [Auflisten von SQL-Datenbanken und den zugehörigen Pools für elastische Datenbanken](../samples/samples-by-category.md#list-sql-databases-and-their-elastic-pools)
 - microsoft.sql/servers/jobaccounts
 - Microsoft.Sql/servers/jobAgents (Agent für elastische Aufträge)
 - Microsoft.Sql/virtualClusters (virtuelle Cluster)
@@ -585,6 +727,9 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - Microsoft.SqlVirtualMachine/SqlVirtualMachines (SQL-VMs)
 - microsoft.sqlvm/dwvm
 - Microsoft.Storage/StorageAccounts (Speicherkonten)
+  - Beispielabfrage: [Suchen von Speicherkonten mit einem bestimmten Tag (unter Vernachlässigung der Groß-/Kleinschreibung) in der Ressourcengruppe](../samples/samples-by-category.md#find-storage-accounts-with-a-specific-case-insensitive-tag-on-the-resource-group)
+  - Beispielabfrage: [Suchen von Speicherkonten mit einem bestimmten Tag (unter Berücksichtigung der Groß-/Kleinschreibung) in der Ressourcengruppe](../samples/samples-by-category.md#find-storage-accounts-with-a-specific-case-sensitive-tag-on-the-resource-group)
+  - Beispielabfrage: [Auflisten aller Speicherkonten mit einem bestimmten Tagwert](../samples/samples-by-category.md#list-all-storage-accounts-with-specific-tag-value)
 - microsoft.storagecache/amlfilesystems
 - Microsoft.StorageCache/caches (HPC-Caches)
 - Microsoft.StoragePool/diskPools (Disk Pools)
@@ -599,16 +744,20 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - Microsoft.Synapse/privateLinkHubs (Azure Synapse Analytics (Private Link-Hubs))
 - Microsoft.Synapse/workspaces (Azure Synapse Analytics)
 - Microsoft.Synapse/workspaces/bigDataPools (Apache Spark-Pools)
-- microsoft.synapse/workspaces/kustopools
+- microsoft.synapse/workspaces/eventstreams
+- Microsoft.Synapse/workspaces/kustopools (Data Explorer-Pools, Vorschau)
 - microsoft.synapse/workspaces/sqldatabases
 - Microsoft.Synapse/workspaces/sqlPools (dedizierte SQL-Pools)
 - microsoft.terraformoss/providerregistrations
+- Microsoft.TestBase/testBaseAccounts (Test Base-Konten)
+- microsoft.testbase/testbaseaccounts/packages
 - microsoft.testbase/testbases
 - Microsoft.TimeSeriesInsights/environments (Time Series Insights-Umgebungen)
 - Microsoft.TimeSeriesInsights/environments/eventsources (Time Series Insights-Ereignisquellen)
 - Microsoft.TimeSeriesInsights/environments/referenceDataSets (Time Series Insights-Referenzdatasets)
 - microsoft.token/stores
 - microsoft.tokenvault/vaults
+- Microsoft.VideoIndexer/accounts (Video Analyzer for Media)
 - Microsoft.VirtualMachineImages/imageTemplates (Imagevorlagen)
 - microsoft.visualstudio/account (Azure DevOps-Organisationen)
 - microsoft.visualstudio/account/extension
@@ -638,23 +787,26 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - Microsoft.Web/sites (App Services)
 - microsoft.web/sites/premieraddons
 - Microsoft.Web/sites/slots (App Service (Slots))
-- Microsoft.Web/StaticSites (Static Web Apps (Vorschau))
+- Microsoft.Web/StaticSites (Static Web Apps)
+- Microsoft.Web/WorkerApps (Container Apps)
 - Microsoft.WindowsESU/multipleActivationKeys (Windows-Mehrfachaktivierungsschlüssel)
 - Microsoft.WindowsIoT/DeviceServices (Windows 10 IoT Core Services)
 - microsoft.workloadbuilder/migrationagents
 - microsoft.workloadbuilder/workloads
-- MyGet.PackageManagement/services (MyGet – NuGet, NPM, Bower und Vsix gehostet)
+- myget.packagemanagement/services
+- NGINX.NGINXPLUS/nginxDeployments (NGINX-Bereitstellung)
 - Paraleap.CloudMonix/services (CloudMonix)
 - Pokitdok.Platform/services (PokitDok-Plattform)
+- Providers.Test/statefulIbizaEngines (Anwendungsbewertungen)
 - RavenHq.Db/databases (RavenHQ)
 - Raygun.CrashReporting/apps (Raygun)
 - Sendgrid.Email/accounts (SendGrid-Konten)
-- Sparkpost.Basic/services (SparkPost)
-- stackify.retrace/services (Stackify)
+- sparkpost.basic/services
+- stackify.retrace/services
 - test.shoebox/testresources
 - test.shoebox/testresources2
 - TrendMicro.DeepSecurity/accounts (Deep Security SaaS)
-- U2uconsult.TheIdentityHub/services (The Identity Hub)
+- u2uconsult.theidentityhub/services
 - Wandisco.Fusion/fusionGroups (LiveData Planes)
 - Wandisco.Fusion/fusionGroups/azureZones (Azure-Zonen)
 - Wandisco.Fusion/fusionGroups/azureZones/plugins (Plug-Ins)
@@ -663,26 +815,55 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - wandisco.fusion/fusiongroups/onpremzones
 - Wandisco.Fusion/fusionGroups/replicationRules (Replikationsregeln)
 - Wandisco.Fusion/migrators (LiveData-Migrationen)
+- Wandisco.Fusion/migrators/exclusionTemplates (Ausschlüsse)
 - Wandisco.Fusion/migrators/liveDataMigrations (Migrationen)
+- Wandisco.Fusion/migrators/metadataMigrations (Metadatenmigrationen)
+- Wandisco.Fusion/migrators/metadataTargets (Metadatenziele)
+- Wandisco.Fusion/migrators/pathMappings (Pfadzuordnungen)
 - Wandisco.Fusion/migrators/targets (Ziele)
 
 ## <a name="securityresources"></a>securityresources
 
+Beispielabfragen für diese Tabelle finden Sie unter [Resource Graph-Beispielabfragen für securityresources](../samples/samples-by-table.md#securityresources).
+
 - microsoft.security/assessments
+  - Beispielabfrage: [Anzahl fehlerfreier, fehlerhafter und nicht anwendbarer Ressourcen pro Empfehlung](../samples/samples-by-category.md#count-healthy-unhealthy-and-not-applicable-resources-per-recommendation)
+  - Beispielabfrage: [Auflisten von Azure Security Center-Empfehlungen](../samples/samples-by-category.md#list-azure-security-center-recommendations)
+  - Beispielabfrage: [Auflisten der Ergebnisse der Sicherheitsrisikobewertung für die Containerregistrierung](../samples/samples-by-category.md#list-container-registry-vulnerability-assessment-results)
+  - Beispielabfrage: [Auflisten der Ergebnisse der Sicherheitsrisikobewertung von Qualys](../samples/samples-by-category.md#list-qualys-vulnerability-assessment-results)
 - microsoft.security/assessments/subassessments
-- microsoft.security/insights/classification
+  - Beispielabfrage: [Auflisten der Ergebnisse der Sicherheitsrisikobewertung für die Containerregistrierung](../samples/samples-by-category.md#list-container-registry-vulnerability-assessment-results)
+  - Beispielabfrage: [Auflisten der Ergebnisse der Sicherheitsrisikobewertung von Qualys](../samples/samples-by-category.md#list-qualys-vulnerability-assessment-results)
+- microsoft.security/insights/classification (Data Sensitivity Security Insights (Vorschau))
 - microsoft.security/iotalerts
+  - Beispielabfrage: [Abrufen aller IoT-Warnungen auf dem Hub, nach Typ gefiltert](../samples/samples-by-category.md#get-all-iot-alerts-on-hub-filtered-by-type)
+  - Beispielabfrage: [Abrufen bestimmter IoT-Warnungen](../samples/samples-by-category.md#get-specific-iot-alert)
 - microsoft.security/locations/alerts (Sicherheitswarnungen)
 - microsoft.security/pricings
+  - Beispielabfrage: [Anzeigen des Azure Defender-Tarifs pro Abonnement](../samples/samples-by-category.md#show-azure-defender-pricing-tier-per-subscription)
 - microsoft.security/regulatorycompliancestandards
+  - Beispielabfrage: [Einhaltung gesetzlicher Bestimmungen pro Konformitätsstandard](../samples/samples-by-category.md#regulatory-compliance-state-per-compliance-standard)
 - microsoft.security/regulatorycompliancestandards/regulatorycompliancecontrols
 - microsoft.security/regulatorycompliancestandards/regulatorycompliancecontrols/regulatorycomplianceassessments
+  - Beispielabfrage: [Bewertungen der Einhaltung gesetzlicher Bestimmungen](../samples/samples-by-category.md#regulatory-compliance-assessments-state)
 - microsoft.security/securescores
+  - Beispielabfrage: [Sicherheitsbewertung pro Verwaltungsgruppe](../samples/samples-by-category.md#secure-score-per-management-group)
+  - Beispielabfrage: [Sicherheitsbewertung pro Abonnement](../samples/samples-by-category.md#secure-score-per-subscription)
 - microsoft.security/securescores/securescorecontrols
+  - Beispielabfrage: [Kontrolle von Sicherheitsbewertungen pro Abonnement](../samples/samples-by-category.md#controls-secure-score-per-subscription)
+- microsoft.security/softwareinventories
+- microsoft.security/softwareinventory
 
 ## <a name="servicehealthresources"></a>servicehealthresources
 
+Beispielabfragen für diese Tabelle finden Sie unter [Resource Graph-Beispielabfragen für servicehealthresources](../samples/samples-by-table.md#servicehealthresources).
+
 - microsoft.resourcehealth/events
+  - Beispielabfrage: [Auswirkungen von Active Service Health-Ereignisabonnements](../samples/samples-by-category.md#active-service-health-event-subscription-impact)
+  - Beispielabfrage: [Alle aktiven Ereignisse zur Integritätsempfehlung](../samples/samples-by-category.md#all-active-health-advisory-events)
+  - Beispielabfrage: [Alle aktiven geplante Wartungsereignisse](../samples/samples-by-category.md#all-active-planned-maintenance-events)
+  - Beispielabfrage: [Alle aktiven Service Health-Ereignisse](../samples/samples-by-category.md#all-active-service-health-events)
+  - Beispielabfrage: [Alle aktiven Dienstproblem-Ereignisse](../samples/samples-by-category.md#all-active-service-issue-events)
 
 ## <a name="workloadmonitorresources"></a>workloadmonitorresources
 

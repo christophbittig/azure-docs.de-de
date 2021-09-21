@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 07/28/2021
-ms.openlocfilehash: 7a477122e9a0642233a5bac7a1884818f216d2f3
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 085b9a187ce574c5138867f7a2ce929218717c37
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122350931"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123253824"
 ---
 # <a name="azure-sentinel-workspace-architecture-best-practices"></a>Bewährte Methoden für die Azure Sentinel-Arbeitsbereichsarchitektur
 
@@ -25,6 +25,9 @@ Wenn Sie die Bereitstellung Ihres Azure Sentinel-Arbeitsbereichs planen, müssen
 - die Kostenauswirkungen verschiedener Szenarien
 
 Weitere Informationen finden Sie unter [Entwerfen Ihrer Azure Sentinel-Arbeitsbereichsarchitektur](design-your-workspace-architecture.md), [Beispielentwürfe von Arbeitsbereichen](sample-workspace-designs.md) für gängige Szenarien und [Aktivitäten vor der Bereitstellung und Voraussetzungen für die Bereitstellung von Azure Sentinel](prerequisites.md).
+
+Weitere Informationen finden Sie in unserem Video: [Entwerfen erfolgreicher SecOps: Bewährte Methoden zum Bereitstellen von Azure Sentinel](https://youtu.be/DyL9MEMhqmI).
+
 
 ## <a name="tenancy-considerations"></a>Überlegungen zu Mandanten
 
@@ -44,7 +47,7 @@ Connectors, die auf Diagnoseeinstellungen basieren, können nicht mit einem Arbe
 Nutzen Sie [Azure Lighthouse](../lighthouse/how-to/onboard-customer.md), um mehrere Azure Sentinel-Instanzen in verschiedenen Mandanten zu verwalten.
 
 > [!NOTE]
-> [Partnerdatenconnectors](partner-data-connectors.md) basieren in der Regel auf API- oder Agent-Sammlungen und sind daher nicht an einen bestimmten Azure AD-Mandanten angefügt.
+> [Partnerdatenconnectors](data-connectors-reference.md) basieren in der Regel auf API- oder Agent-Sammlungen und sind daher keinem bestimmten Azure AD-Mandanten angefügt.
 >
 
 

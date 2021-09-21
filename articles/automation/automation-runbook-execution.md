@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 08/13/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 454c59b5f5f5d0781f99f21b612ac2a3fc904fb9
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 9a00022227959d8506bd976c33787bcc5a23273f
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122350232"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122778800"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Ausführen von Runbooks in Azure Automation
 
@@ -238,7 +238,7 @@ Externe Dienste wie Azure DevOps Services und GitHub, können ein Runbook in Azu
 
 Für Azure wird das Konzept der gleichmäßigen Verteilung (Fair Share) verwendet, damit Ressourcen auf alle Runbooks der Cloud verteilt werden. Bei der gleichmäßigen Verteilung werden von Azure alle Aufträge vorübergehend entladen bzw. angehalten, deren Ausführung bereits länger als drei Stunden dauert. Aufträge für [PowerShell-Runbooks](automation-runbook-types.md#powershell-runbooks) und [Python-Runbooks](automation-runbook-types.md#python-runbooks) werden beendet und nicht neu gestartet, und der Auftragsstatus ändert sich in „Stopped“.
 
-Für zeitintensive Azure Automation-Aufgaben sollten Sie einen Hybrid Runbook Worker verwenden. Hybrid Runbook Worker unterliegen nicht der gleichmäßigen Verteilung und keiner Einschränkung hinsichtlich der Ausführungszeit eines Runbooks. Die anderen [Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) für Aufträge gelten sowohl für Azure-Sandboxes als auch für Hybrid Runbook Workers. Für Hybrid Runbook Worker gilt zwar nicht die dreistündige Begrenzung für die gleichmäßige Verteilung, aber Sie sollten Runbooks für die Ausführung auf den Workern entwickeln, die einen Neustart nach unerwarteten lokalen Infrastrukturproblemen unterstützen.
+Für zeitintensive Azure Automation-Aufgaben sollten Sie einen [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) verwenden. Hybrid Runbook Worker unterliegen nicht der gleichmäßigen Verteilung und keiner Einschränkung hinsichtlich der Ausführungszeit eines Runbooks. Die anderen [Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) für Aufträge gelten sowohl für Azure-Sandboxes als auch für Hybrid Runbook Workers. Für Hybrid Runbook Worker gilt zwar nicht die dreistündige Begrenzung für die gleichmäßige Verteilung, aber Sie sollten Runbooks für die Ausführung auf den Workern entwickeln, die einen Neustart nach unerwarteten lokalen Infrastrukturproblemen unterstützen.
 
 Eine weitere Möglichkeit ist das Optimieren eines Runbooks durch Verwendung untergeordneter Runbooks. Beispielsweise kann Ihr Runbook die gleiche Funktion auf mehreren Ressourcen durchlaufen, z. B. bei einem Datenbankvorgang in mehreren Datenbanken. Sie können diese Funktion in ein [untergeordnetes Runbook](automation-child-runbooks.md) verschieben und veranlassen, dass Ihr Runbook es mit [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) aufruft. Untergeordnete Runbooks werden in separaten Prozessen parallel ausgeführt.
 

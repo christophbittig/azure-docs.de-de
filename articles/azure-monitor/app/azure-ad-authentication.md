@@ -3,15 +3,15 @@ title: Azure AD-Authentifizierung für Application Insights (Vorschau)
 description: Erfahren Sie, wie Sie die Azure AD-Authentifizierung aktivieren, um sicherzustellen, dass nur authentifizierte Telemetriedaten in Ihren Application Insights-Ressourcen erfasst werden.
 ms.topic: conceptual
 ms.date: 08/02/2021
-ms.openlocfilehash: 3b50948d5dcc408595ccc8434d7fb29c07c68ab0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9d93da1a8567a7c50dac43c29e3a962652ceee33
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122347208"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123111467"
 ---
 # <a name="azure-ad-authentication-for-application-insights-preview"></a>Azure AD-Authentifizierung für Application Insights (Vorschau)
-Für Application Insights wird jetzt die Azure Active Directory-Authentifizierung unterstützt. Mit Azure AD können Sie jetzt sicherstellen, dass nur authentifizierte Telemetriedaten in Ihren Application Insights-Ressourcen erfasst werden. 
+Für Application Insights wird jetzt die Azure Active Directory-Authentifizierung unterstützt. Mit Azure AD können Sie sicherstellen, dass nur authentifizierte Telemetriedaten in Ihren Application Insights-Ressourcen erfasst werden. 
 
 In der Regel ist die Nutzung verschiedener Authentifizierungssysteme sehr umständlich und risikoreich, da es schwierig ist, Anmeldeinformationen in großem Umfang zu verwalten. Sie können nun die lokale Authentifizierung deaktivieren und sicherstellen, dass ausschließlich Telemetriedaten in Ihren Application Insights-Ressourcen erfasst werden, die mit [verwalteten Identitäten](../../active-directory/managed-identities-azure-resources/overview.md) und [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) authentifiziert wurden. Dieses Feature ist eine Möglichkeit zur Verbesserung der Sicherheit und Zuverlässigkeit von Telemetriedaten, die als Grundlage für operative (Warnungen, automatische Skalierung usw.) und geschäftliche Entscheidungen verwendet werden.
 
@@ -274,7 +274,7 @@ tracer = Tracer(
 
 Nachdem die Azure AD Authentifizierung aktiviert wurde, können Sie die lokale Authentifizierung deaktivieren. Dies ermöglicht Ihnen das Erfassen von Telemetriedaten, die ausschließlich durch Azure AD authentifiziert wurden, und wirkt sich darüber hinaus auf den Datenzugriff aus (z. B. über API-Schlüssel). 
 
-Sie können die lokale Authentifizierung mithilfe des Azure-Portals, der Azure-Richtlinie oder über ein Programm deaktivieren.
+Sie können die lokale Authentifizierung mithilfe des Azure-Portals, über Azure Policy oder über ein Programm deaktivieren.
 
 ### <a name="azure-portal"></a>Azure-Portal
 
@@ -290,11 +290,11 @@ Sie können die lokale Authentifizierung mithilfe des Azure-Portals, der Azure-R
 
     :::image type="content" source="./media/azure-ad-authentication/overview.png" alt-text="Screenshot der Registerkarte „Übersicht“ mit hervorgehobener Option „Deaktiviert (zum Ändern klicken)“":::
 
-### <a name="azure-policy"></a>Azure-Richtlinie 
+### <a name="azure-policy"></a>Azure Policy 
 
-Die Azure-Richtlinie für „DisableLocalAuth“ verweigert Benutzern das Erstellen einer neuen Application Insights-Ressource, wenn diese Eigenschaft nicht auf „true“ festgelegt ist. Der Richtlinienname lautet „Application Insights Components should block non-AAD auth ingestion“ (Application Insights-Komponenten sollten die Erfassung von Nicht-AAD-Authentifizierungen blockieren).
+Die Azure Policy-Instanz für „DisableLocalAuth“ verweigert Benutzern das Erstellen einer neuen Application Insights-Ressource, wenn diese Eigenschaft nicht auf TRUE festgelegt ist. Der Richtlinienname lautet „Application Insights Components should block non-AAD auth ingestion“ (Application Insights-Komponenten sollten die Erfassung von Nicht-AAD-Authentifizierungen blockieren).
 
-Um diese Richtlinie auf Ihr Abonnement anzuwenden, [erstellen Sie zunächst eine neue Richtlinienzuweisung und weisen Sie die Richtlinie dann zu](../..//governance/policy/assign-policy-portal.md).
+Um diese Richtliniendefinition auf Ihr Abonnement anzuwenden, [erstellen Sie eine neue Richtlinienzuweisung, und weisen Sie die Richtlinie dann zu](../../governance/policy/assign-policy-portal.md).
 
 Im Folgenden finden Sie die Richtlinienvorlagendefinition:
 ```JSON

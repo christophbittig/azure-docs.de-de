@@ -4,15 +4,15 @@ description: In diesem Artikel erfahren Sie, wie Sie die rollenbasierte Zugriffs
 keywords: Automation RBAC, rollenbasierte Zugriffssteuerung, Azure RBAC
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 06/15/2021
+ms.date: 08/26/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5484f1fb798022e59e71f153d087a880bca5c983
-ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
+ms.openlocfilehash: 30bc4a306eecf8be3177fb045f9904d775cab9bd
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113032559"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123215002"
 ---
 # <a name="manage-role-permissions-and-security"></a>Verwalten von Berechtigungen und Sicherheit für Rollen
 
@@ -27,6 +27,7 @@ Der Zugriff wird in Azure Automation erteilt, indem den Benutzern, Gruppen und A
 | Besitzer |Die Rolle „Besitzer“ erlaubt den Zugriff auf alle Ressourcen und Aktionen innerhalb eines Automation-Kontos, z.B. den Zugriff auf andere Benutzer, Gruppen und Anwendungen, um das Automation-Konto zu verwalten. |
 | Mitwirkender |Die Rolle „Mitwirkender“ erlaubt Ihnen, fast alles zu verwalten. Das Einzige, was Sie nicht können, ist das Ändern der Zugriffsberechtigungen für ein Automation-Konto anderer Benutzer. |
 | Leser |Mit der Rolle „Leser“ können Sie alle Ressourcen in einem Automation-Konto anzeigen, aber keine Änderungen vornehmen. |
+| Mitwirkender für Automatisierung | Mit der Rolle „Mitwirkender für Automatisierung“ können Sie alle Ressourcen im Automation-Konto verwalten, mit Ausnahme von Änderungen an den Zugriffsberechtigungen anderer Benutzer für ein Automation-Konto. |
 | Operator für Automation |Die Rolle „Operator für Automation“ ermöglicht das Anzeigen des Namens und der Eigenschaften des Runbooks sowie das Erstellen und Verwalten von Aufträgen für alle Runbooks in einem Automation-Konto. Diese Rolle ist hilfreich, wenn Sie Ihre Automation-Konten-Ressourcen wie Anmeldeinformationsobjekte und Runbooks vor Einblicken und Änderungen schützen, Mitgliedern Ihrer Organisation aber dennoch ermöglichen möchten, diese Runbooks auszuführen. |
 |Automation-Auftragsoperator|Die Rolle „Automation-Auftragsoperator“ ermöglicht das Erstellen und Verwalten von Aufträgen für alle Runbooks in einem Automation-Konto.|
 |Automation-Runbookoperator|Die Rolle „Automation-Runbookoperator“ ermöglicht das Lesen des Namens und der Eigenschaften eines Runbooks.|
@@ -67,6 +68,23 @@ Ein Leser kann alle Ressourcen in einem Automation-Konto anzeigen, aber keine Ä
 |**Aktionen**  |**Beschreibung**  |
 |---------|---------|
 |Microsoft.Automation/automationAccounts/read|Anzeigen aller Ressourcen in ein Automation-Konto |
+
+### <a name="automation-contributor"></a>Mitwirkender für Automatisierung
+
+Ein Mitwirkender für Automatisierung kann alle Ressourcen im Automation-Konto mit Ausnahme des Zugriffs verwalten. Die folgende Tabelle zeigt die Berechtigungen für die Rolle:
+
+|**Aktionen**  |**Beschreibung**  |
+|---------|---------|
+|Microsoft.Automation/automationAccounts/*|Erstellen und Verwalten von Ressourcen aller Typen unter dem Automation-Konto|
+|Microsoft.Authorization/*/read|Lesen von Rollen und Rollenzuweisungen|
+|Microsoft.Resources/deployments/*|Erstellen und Verwalten von Ressourcengruppenbereitstellungen|
+|Microsoft.Resources/subscriptions/resourceGroups/read|Lesen von Ressourcengruppenbereitstellungen|
+|Microsoft.Support/*|Erstellen und Verwalten von Supporttickets|
+
+> [!NOTE]
+> Die Rolle „Mitwirkender für Automatisierung“ kann verwendet werden, um mithilfe der verwalteten Identität, sofern entsprechende Berechtigungen für die Zielressource festgelegt sind, oder mithilfe eines ausführenden Kontos auf eine beliebige Ressource zuzugreifen. Ein ausführendes Automation-Konto ist standardmäßig mit den Rechten von Mitwirkenden für das Abonnement konfiguriert. Befolgen Sie das Prinzip der geringsten Berechtigung, und weisen Sie sorgfältig nur die Berechtigungen zu, die für die Ausführung Ihres Runbooks erforderlich sind. Beispiel: Wenn das Automatisierungskonto nur zum Starten oder Stoppen einer Azure-VM erforderlich ist, dann müssen die dem ausführenden Konto oder der verwalteten Identität zugewiesenen Berechtigungen nur zum Starten oder Beenden der VM dienen. Weisen Sie ebenso Lesezugriffsberechtigungen zu, wenn ein Runbook aus Blobspeicher liest.
+> 
+> Beim Zuweisen von Berechtigungen wird empfohlen, die rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC) von Azure zu verwenden, die einer verwalteten Identität zugewiesen ist. Sehen Sie sich unsere Empfehlungen für den [besten Ansatz](../active-directory/managed-identities-azure-resources/managed-identity-best-practice-recommendations.md) zur Verwendung einer system- oder benutzerseitig zugewiesenen verwalteten Identität an, einschließlich Verwaltung und Governance während der Lebensdauer.
 
 ### <a name="automation-operator"></a>Operator für Automation
 
@@ -273,9 +291,11 @@ Führen Sie die folgenden Schritte aus, um die benutzerdefinierte Azure Automati
    ```json
    {
     "properties": {
-        "roleName": "Automation account Contributor (custom)",
+        "roleName": "Automation Account Contributor (Custom)",
         "description": "Allows access to manage Azure Automation and its resources",
-        "type": "CustomRole",
+        "assignableScopes": [
+            "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX"
+        ],
         "permissions": [
             {
                 "actions": [
@@ -292,9 +312,6 @@ Führen Sie die folgenden Schritte aus, um die benutzerdefinierte Azure Automati
                 "dataActions": [],
                 "notDataActions": []
             }
-        ],
-        "assignableScopes": [
-            "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX"
         ]
       }
    }

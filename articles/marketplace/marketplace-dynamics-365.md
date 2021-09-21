@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/30/2021
-ms.openlocfilehash: de9f88d7505f91c9075167a5adf81e3e5463cf0b
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: f83fb2b1dbcadf9d40431c7670a1d8618557b047
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122350263"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866955"
 ---
 # <a name="plan-a-microsoft-dynamics-365-offer"></a>Planen eines Microsoft Dynamics 365-Angebots
 
-In diesem Artikel werden die verschiedenen Optionen und Features für Dynamics 365-Angebote in Microsoft AppSource im kommerziellen Marketplace erläutert. AppSource enthält Angebote, die auf Microsoft 365, Dynamics 365, Power Apps und Power BI aufbauen oder diese erweitern.
+In diesem Artikel werden die verschiedenen Optionen und Features für Dynamics 365-Angebote in Microsoft AppSource im kommerziellen Marketplace erläutert. AppSource enthält Angebote, die auf Microsoft 365, Dynamics 365, Power Apps und Power BI aufbauen oder diese Anwendungen erweitern.
 
 Erstellen Sie, bevor Sie beginnen, ein Konto für den kommerziellen Marketplace in [Partner Center](./create-account.md), und stellen Sie sicher, dass es für das kommerzielle Marketplace-Programm registriert ist. Lesen Sie außerdem die Informationen zum [Veröffentlichungsprozess und die Richtlinien](/office/dev/store/submit-to-appsource-via-partner-center).
 
