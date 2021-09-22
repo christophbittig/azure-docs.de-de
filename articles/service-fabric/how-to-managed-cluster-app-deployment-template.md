@@ -1,17 +1,17 @@
 ---
-title: Bereitstellen einer Anwendung in einem verwalteten Service Fabric-Cluster mithilfe einer ARM-Vorlage
-description: Stellen Sie mithilfe einer Azure Resource Manager-Vorlage eine Anwendung in einem verwalteten Azure Service Fabric-Cluster bereit.
+title: Bereitstellen einer Anwendung in einem verwalteten Cluster mithilfe von Azure Resource Manager
+description: Erfahren Sie, wie Sie eine Service Fabric-Anwendung in einem verwalteten Azure Service Fabric-Cluster mithilfe von Azure Resource Manager bereitstellen, löschen oder ein Upgrade durchführen.
 ms.topic: how-to
-ms.date: 5/10/2021
+ms.date: 8/23/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6a40dc23b0eeda4c680d0151b08cb1c8f1a84053
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 4e981e58cd5efb1430ab35772ab84428f7482977
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114290148"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434518"
 ---
-# <a name="deploy-a-service-fabric-managed-cluster-application-using-arm-template"></a>Bereitstellen einer Anwendung in einem verwalteten Service Fabric-Cluster mithilfe einer ARM-Vorlage
+# <a name="manage-application-lifecycle-on-a-managed-cluster-using-azure-resource-manager"></a>Verwalten des Anwendungslebenszyklus in einem verwalteten Cluster mit Azure Resource Manager
 
 Sie haben für die Bereitstellung von Azure Service Fabric-Anwendungen in Ihrem verwalteten Service Fabric-Cluster mehrere Optionen. Es wird empfohlen, Azure Resource Manager zu verwenden. Bei Verwenden von Resource Manager können Anwendungen und Dienste in JSON beschrieben und anschließend in der gleichen Resource Manager-Vorlage wie der Cluster bereitgestellt werden. Im Unterschied zur Verwendung von PowerShell oder Azure CLI zur Bereitstellung und Verwaltung von Anwendungen müssen Sie bei Einsatz von Resource Manager nicht darauf warten, dass der Cluster bereit ist. Die Registrierung und Bereitstellung von Anwendungen kann in einem Schritt erfolgen. Resource Manager ist die beste Möglichkeit, den Anwendungslebenszyklus in Ihrem Cluster zu verwalten. Weitere Informationen finden Sie unter [Bewährte Methoden: Infrastructure-as-Code](service-fabric-best-practices-infrastructure-as-code.md#service-fabric-resources).
 
@@ -25,11 +25,11 @@ In diesem Dokument erfahren Sie Folgendes:
 
 > [!div class="checklist"]
 >
-> * Bereitstellen von Anwendungsressourcen mithilfe von Resource Manager
-> * Aktualisieren von Anwendungsressourcen mithilfe von Resource Manager
-> * Löschen von Anwendungsressourcen
+> * Bereitstellen von Service Fabric-Anwendungsressourcen mithilfe von Resource Manager
+> * Durchführen eines Upgrades von Service Fabric-Anwendungsressourcen mithilfe von Resource Manager
+> * Löschen von Service Fabric-Anwendungsressourcen
 
-## <a name="deploy-application-resources"></a>Bereitstellen von Anwendungsressourcen
+## <a name="deploy-service-fabric-application-resources"></a>Bereitstellen von Service Fabric-Anwendungsressourcen
 
 Die allgemeinen Schritte, um eine Anwendung und ihre Dienste mithilfe des Anwendungsressourcenmodells von Resource Manager bereitzustellen, sind wie folgt:
 1. Packen des Anwendungscodes
@@ -38,7 +38,7 @@ Die allgemeinen Schritte, um eine Anwendung und ihre Dienste mithilfe des Anwend
 
 Weitere Informationen finden Sie unter [Packen einer Anwendung](service-fabric-package-apps.md#create-an-sfpkg).
 
-Erstellen Sie dann eine Resource Manager-Vorlage, aktualisieren Sie die Parameterdatei mit Anwendungsdetails, und stellen Sie die Vorlage im Service Fabric-Cluster bereit. [Erkunden Sie Beispiele](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/voting-sample-no-reverse-proxy/ARM-Managed-Cluster).
+Danach erstellen Sie eine Resource Manager-Vorlage, aktualisieren die Parameterdatei mit Anwendungsdetails und stellen die Vorlage im verwalteten Service Fabric-Cluster bereit. [Erkunden Sie Beispiele](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/voting-sample-no-reverse-proxy/ARM-Managed-Cluster).
 
 ### <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
@@ -84,7 +84,7 @@ Nachdem das Staging für die Anwendung erfolgt ist, können Sie die Resource Man
 
 ### <a name="create-the-resource-manager-template"></a>Erstellen der Resource Manager-Vorlage
 
-Die Beispielanwendung enthält [Azure Resource Manager-Vorlagen](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM), die Sie zum Bereitstellen der Anwendung verwenden können. Die Vorlagendateien heißen *UserApp.json* und *UserApp.Parameters.json*.
+Die Beispielanwendung enthält [Azure Resource Manager-Vorlagen](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM-Managed-Cluster), die Sie zum Bereitstellen der Anwendung verwenden können. Die Vorlagendateien heißen *UserApp.json* und *UserApp.Parameters.json*.
 
 > [!NOTE]
 > Die Datei *UserApp.Parameters.json* muss mit dem Namen Ihres Clusters aktualisiert werden.
@@ -127,7 +127,7 @@ Die Beispielanwendung enthält [Azure Resource Manager-Vorlagen](https://github.
 }
 ```
 
-### <a name="deploy-the-application"></a>Bereitstellen der Anwendung
+### <a name="deploy-the-service-fabric-application"></a>Bereitstellen der Service Fabric-Anwendung
 
 Führen Sie das Cmdlet **New-AzResourceGroupDeployment** aus, um die Anwendung in der Ressourcengruppe bereitzustellen, die Ihren Cluster enthält:
 
@@ -138,12 +138,12 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
 ## <a name="upgrade-the-service-fabric-application-by-using-resource-manager"></a>Aktualisieren der Service Fabric-Anwendung mithilfe von Azure Resource Manager
 
 > [!IMPORTANT]
-> Per ARM-JSON-Definition bereitgestellte Dienste müssen aus dem Abschnitt „DefaultServices“ der entsprechenden Datei „ApplicationManifest.xml“ entfernt werden.
+> Alle Dienste, die über eine ARM-Vorlage (Azure Resource Manager) bereitgestellt wurden, müssen aus dem Abschnitt „DefaultServices“ der entsprechenden ApplicationManifest.xml-Datei entfernt werden.
 
 
 Sie müssen eine Anwendung, die bereits in einem Service Fabric-Cluster bereitgestellt wurde, ggf. aus einem dieser Gründe aktualisieren:
 
-* Der Anwendung wird ein neuer Dienst hinzugefügt. Den Dateien *service-manifest.xml* und *application-manifest.xml* muss eine Dienstdefinition hinzugefügt werden, wenn ein Dienst zur Anwendung hinzugefügt wird. Um eine neue Version einer Anwendung widerzuspiegeln, müssen Sie auch in [UserApp.Parameters.json](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM/UserApp.Parameters.json) die Version des Anwendungstyps von 1.0.0 in 1.0.1 ändern:
+* Der Anwendung wird ein neuer Dienst hinzugefügt. Den Dateien *service-manifest.xml* und *application-manifest.xml* muss eine Dienstdefinition hinzugefügt werden, wenn ein Dienst zur Anwendung hinzugefügt wird. Um eine neue Version einer Anwendung widerzuspiegeln, müssen Sie auch in [UserApp.Parameters.json](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM-Managed-Cluster/UserApp.Parameters.json) die Version des Anwendungstyps von 1.0.0 in 1.0.1 ändern:
 
     ```json
     "applicationTypeVersion": {
@@ -164,9 +164,11 @@ Sie müssen eine Anwendung, die bereits in einem Service Fabric-Cluster bereitge
         "value": "1.0.1"
     },
     ```
-## <a name="delete-application-resources"></a>Löschen von Anwendungsressourcen
+## <a name="delete-service-fabric-application-resources"></a>Löschen von Service Fabric-Anwendungsressourcen
+> [!NOTE]
+> Anwendungen sollten nicht über eine ARM-Vorlage (Azure Resource Manager) gelöscht werden, da es keine deklarative Möglichkeit gibt, einzelne Ressourcen zu bereinigen.
 
-So löschen Sie eine Anwendung, die mithilfe des Anwendungsressourcenmodells in Resource Manager bereitgestellt wurde
+So löschen Sie eine Service Fabric-Anwendung, die mithilfe des Anwendungsressourcenmodells in Resource Manager bereitgestellt wurde:
 
 1. Rufen Sie mit dem Cmdlet [Get-AzResource](/powershell/module/az.resources/get-azresource) die Ressourcen-ID für die Anwendung ab:
 

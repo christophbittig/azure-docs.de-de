@@ -9,12 +9,12 @@ ms.reviewer: dineshm
 ms.date: 09/04/2020
 ms.subservice: blobs
 ms.custom: devx-track-js
-ms.openlocfilehash: 3b64b77d4e9061e122c627154c4623fcebfce631
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 53153c7ea154b77ee4d0d348818c891ce22bc5f8
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122350356"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123470956"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hosten von statischen Websites in Azure Storage
 
@@ -46,24 +46,18 @@ Inhalte können mit einem der folgenden Tools in den Container **$web** hochgela
 > * [AzCopy](../common/storage-use-azcopy-v10.md)
 > * [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/)
 > * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
-> * [Visual Studio Code-Erweiterung](/azure/developer/javascript/tutorial-vscode-static-website-node-01)
+> * [Visual Studio Code-Erweiterung](- https://channel9.msdn.com/Shows/Docs-Azure/Deploy-static-website-to-Azure-from-Visual-Studio-Code/player)
 
 ## <a name="viewing-content"></a>Anzeigen von Inhalten
 
 Benutzer können Websiteinhalte in einem Browser unter der öffentlichen URL der Website anzeigen. Die URL können Sie im Azure-Portal, über die Azure-Befehlszeilenschnittstelle oder mithilfe von PowerShell ermitteln. Siehe [Suchen der Website-URL](storage-blob-static-website-how-to.md#portal-find-url).
 
+Das Indexdokument, das Sie angeben, wenn Sie das Hosten von statischen Websites aktivieren, wird angezeigt, wenn Benutzer beim Aufrufen der Website keine bestimmte Datei angeben (Beispiel: `https://contosoblobaccount.z22.web.core.windows.net`).
+
 Wenn der Server einen 404-Fehler zurückgibt und Sie beim Aktivieren der Website kein Fehlerdokument angegeben haben, wird an den Benutzer eine 404-Standardseite zurückgegeben.
 
 > [!NOTE]
 > [Cross-Origin Resource Sharing-Unterstützung (CORS) für Azure Storage](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) wird bei statischen Websites nicht unterstützt.
-
-### <a name="regional-codes"></a>Regionscodes
-
-Die URL Ihrer Website enthält einen Regionscode. Die URL `https://contosoblobaccount.z22.web.core.windows.net/` enthält beispielsweise den Regionscode `z22`.
-
-Dieser Code muss zwar in der URL verbleiben, wird jedoch nur intern genutzt und muss nicht anderweitig verwendet werden.
-
-Das Indexdokument, das Sie beim Aktivieren des Hostens von statischen Websites angeben, wird angezeigt, wenn Benutzer beim Aufrufen der Website keine bestimmte Datei angeben (Beispiel: `https://contosoblobaccount.z22.web.core.windows.net`).
 
 ### <a name="secondary-endpoints"></a>Sekundäre Endpunkte
 
@@ -120,15 +114,26 @@ Sie können Metriken für Seiten der statischen Website aktivieren. Nachdem Sie 
 
 Informationen zum Aktivieren von Metriken für Seiten Ihrer statischen Website finden Sie unter [Enable metrics on static website pages](storage-blob-static-website-how-to.md#metrics) (Aktivieren von Metriken auf Seiten der statischen Website).
 
+## <a name="feature-support"></a>Featureunterstützung
+
+In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf den Support hat. 
+
+| Speicherkontotyp                | Blob Storage (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) |![Ja](../media/icons/yes-icon.png)              | ![Ja](../media/icons/yes-icon.png) | 
+| Premium-Blockblobs          | ![Ja](../media/icons/yes-icon.png)|![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) |
+
+<sup>1</sup>    Für Data Lake Storage Gen2 und das NFS 3.0-Protokoll (Network File System) ist ein Speicherkonto mit aktiviertem hierarchischem Namespace erforderlich.
+
 ## <a name="faq"></a>Häufig gestellte Fragen
 
 ##### <a name="does-the-azure-storage-firewall-work-with-a-static-website"></a>Funktioniert die Azure Storage Firewall mit einer statischen Website?
 
-Das Speicherkonto verfügt über eine integrierte [Firewallfunktion](../common/storage-network-security.md), die aber keine Auswirkung auf den statischen Websiteendpunkt hat. Die Firewall kann nur zum Schutz anderer Speicherendpunkte wie Blob-, Datei-, Tabellen- und Warteschlangen-Dienstendpunkte verwendet werden. 
+Ja. [Netzwerksicherheitsregeln](../common/storage-network-security.md) für das Speicherkonto, einschließlich IP-basierter und VNET-Firewalls, werden für den Endpunkt der statischen Website unterstützt und können zum Schutz Ihrer Website verwendet werden.
 
 ##### <a name="do-static-websites-support-azure-active-directory-azure-ad"></a>Unterstützen statische Websites Azure Active Directory (Azure AD)?
 
-Ja. Es gibt jedoch keine Option zum Verwenden von Social Media-Identitätsanbietern wie Google-Authentifizierung oder Facebook mit OpenID.
+Nein. Eine statische Website unterstützt nur anonymen öffentlichen Lesezugriff für Dateien im Container **$web**.
 
 ##### <a name="how-do-i-use-a-custom-domain-with-a-static-website"></a>Wie verwende ich eine benutzerdefinierte Domäne mit einer statischen Website?
 
