@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/16/2021
-ms.openlocfilehash: 749caf37ee09f9dc794dee60c6d4a5b93da43c6e
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 81c82152bf87944c7aed191c12e067567ec2b086
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114386315"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122662245"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent"></a>Konfigurieren der Datensammlung für den Azure Monitor-Agent
 
@@ -89,6 +89,7 @@ Eine Liste der Einschränkungen in XPath, die vom Windows-Ereignisprotokoll unte
 > Get-WinEvent -LogName 'Application' -FilterXPath $XPath
 > ```
 >
+> - **Im obigen Cmdlet ist der Wert für den Parameter „-LogName“ der erste Teil der XPath-Abfrage bis zum „!“, während nur der Rest der XPath-Abfrage in den $XPath-Parameter übernommen wird.**
 > - Werden Ereignisse zurückgegeben, ist die Abfrage gültig.
 > - Wenn Sie die Meldung *Es wurden keine Ereignisse gefunden, die mit den angegebenen Auswahlkriterien übereinstimmen* erhalten, ist die Abfrage möglicherweise gültig, aber es sind keine übereinstimmenden Ereignisse auf dem lokalen Computer vorhanden.
 > - Wenn Sie die Meldung *Die angegebene Abfrage ist ungültig* erhalten, ist die Abfragesyntax ungültig. 

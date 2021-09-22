@@ -5,13 +5,13 @@ ms.service: digital-twins
 author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
-ms.date: 7/20/2020
-ms.openlocfilehash: 9a5191533b336d9d0cbefcf9b58f56d6648a60df
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.date: 8/20/2021
+ms.openlocfilehash: b3ad9c84e35483cf81bde83703b01ef0ff3d8a9d
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114456152"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772330"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>Fehler bei Service Request. Status: 403 (Unzulässig)
 
@@ -25,11 +25,11 @@ Dieser Fehler kann bei vielen Service Request-Typen auftreten, für die eine Aut
 
 ### <a name="cause-1"></a>Ursache 1
 
-In den meisten Fällen zeigt dieser Fehler an, dass Ihre Azure RBAC-Berechtigungen (Role-Based Access Control, rollenbasierte Zugriffssteuerung in Azure) für den Dienst nicht ordnungsgemäß eingerichtet wurden. Viele Aktionen für eine Azure Digital Twins-Instanz erfordern die Rolle *Azure Digital Twins Data Owner* (Azure Digital Twins-Datenbesitzer) **für die Instanz, die Sie verwalten möchten**. 
+In den meisten Fällen zeigt dieser Fehler an, dass die Azure RBAC-Berechtigungen (Role-Based Access Control, rollenbasierte Zugriffssteuerung in Azure) für den Dienst nicht ordnungsgemäß eingerichtet wurden. Viele Aktionen für eine Azure Digital Twins-Instanz erfordern die Rolle Azure Digital Twins Data Owner (Azure Digital Twins-Datenbesitzer) **für die Instanz, die Sie verwalten möchten**. 
 
 ### <a name="cause-2"></a>Ursache 2
 
-Wenn Sie für die Kommunikation mit Azure Digital Twins eine Client-App verwenden, die sich mit einer [App-Registrierung](./how-to-create-app-registration-portal.md) authentifiziert, kann dieser Fehler auftreten, da Ihre App-Registrierung keine eingerichteten Berechtigungen für den Azure Digital Twins-Dienst aufweist.
+Wenn Sie für die Kommunikation mit Azure Digital Twins eine Client-App verwenden, die sich mit einer [App-Registrierung](./how-to-create-app-registration-portal.md) authentifiziert, kann dieser Fehler auftreten, da für Ihre App-Registrierung keine Berechtigungen für den Azure Digital Twins-Dienst eingerichtet wurden.
 
 Die App-Registrierung muss über konfigurierte Zugriffsberechtigungen für die Azure Digital Twins-APIs verfügen. Wenn Ihre Client-App dann bei der App-Registrierung authentifiziert wird, erhält sie die für die App-Registrierung konfigurierten Berechtigungen.
 
@@ -37,12 +37,12 @@ Die App-Registrierung muss über konfigurierte Zugriffsberechtigungen für die A
 
 ### <a name="solution-1"></a>Lösung 1
 
-Die erste Lösung besteht darin sicherzustellen, dass Ihr Azure-Benutzer über die Rolle _**Azure Digital Twins Data Owner**_ (Azure Digital Twins-Datenbesitzer) für die zu verwaltende Instanz verfügt. Wenn Sie nicht über diese Rolle verfügen, richten Sie sie ein.
+Die erste Lösung besteht darin sicherzustellen, dass Ihr Azure-Benutzer über die Rolle „Azure Digital Twins-Datenbesitzer“ für die zu verwaltende Instanz verfügt. Wenn diese Rolle noch nicht vorhanden ist, richten Sie sie ein.
 
-Beachten Sie, dass sich diese Rolle von folgenden Rollen unterscheidet:
-* Vom früheren Namen für diese Rolle während der Vorschauphase: *Azure Digital Twins-Besitzer (Vorschau)* (Die Rolle ist dieselbe, der Name hat sich jedoch geändert.)
-* Rolle *Besitzer* für das gesamte Azure-Abonnement. *Azure Digital Twins Data Owner* (Azure Digital Twins-Datenbesitzer) ist eine Rolle in Azure Digital Twins und bezieht sich auf diese einzelne Azure Digital Twins-Instanz.
-* Rolle *Besitzer* in Azure Digital Twins. Es handelt sich um zwei verschiedene Verwaltungsrollen für Azure Digital Twins, und *Azure Digital Twins Data Owner* ist die Rolle, die für die Verwaltung verwendet werden sollte.
+Diese Rolle unterscheidet sich von Folgendem:
+* Früherer Name dieser Rolle während der Vorschau: Azure Digital Twins-Besitzer (Vorschau). In diesem Fall ist die Rolle identisch, aber der Name wurde geändert.
+* Rolle Besitzer für das gesamte Azure-Abonnement. Azure Digital Twins Data Owner (Azure Digital Twins-Datenbesitzer) ist eine Rolle in Azure Digital Twins und bezieht sich auf diese einzelne Azure Digital Twins-Instanz.
+* Rolle Besitzer in Azure Digital Twins. Es handelt sich um zwei verschiedene Verwaltungsrollen für Azure Digital Twins, und Azure Digital Twins Data Owner ist die Rolle, die für die Verwaltung verwendet werden sollte.
 
 #### <a name="check-current-setup"></a>Überprüfen des aktuellen Setups
 
@@ -50,7 +50,7 @@ Beachten Sie, dass sich diese Rolle von folgenden Rollen unterscheidet:
 
 #### <a name="fix-issues"></a>Beheben von Problemen 
 
-Wenn Sie nicht über diese Rollenzuweisung verfügen, sollte eine Person mit der Rolle „Besitzer“ in Ihrem **Azure-Abonnement** den folgenden Befehl ausführen, um Ihrem Azure-Benutzer die Rolle *Azure Digital Twins Data Owner* (Azure Digital Twins-Datenbesitzer) für die **Azure Digital Twins-Instanz** zuzuweisen. 
+Wenn Sie nicht über diese Rollenzuweisung verfügen, muss eine Person mit der Rolle „Besitzer“ in Ihrem **Azure-Abonnement** den folgenden Befehl ausführen, um Ihrem Azure-Benutzer die Rolle „Azure Digital Twins-Datenbesitzer“ für die **Azure Digital Twins-Instanz** zuzuweisen. 
 
 Wenn Sie ein Besitzer des Abonnements sind, können Sie diesen Befehl selbst ausführen. Bitten Sie andernfalls einen Besitzer, diesen Befehl für Sie auszuführen.
 
@@ -58,9 +58,9 @@ Wenn Sie ein Besitzer des Abonnements sind, können Sie diesen Befehl selbst aus
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-Azure-AD-email>" --role "Azure Digital Twins Data Owner"
 ```
 
-Weitere Informationen zu dieser Rollenanforderung und zum Zuweisungsvorgang finden Sie im Abschnitt [Einrichten der Zugriffsberechtigungen für Ihren Benutzer](how-to-set-up-instance-CLI.md#set-up-user-access-permissions) unter *Gewusst wie: Einrichten einer Instanz und der Authentifizierung (CLI oder Portal)* .
+Weitere Informationen zu dieser Rollenanforderung und zum Zuweisungsprozess finden Sie im Abschnitt [Einrichten von Benutzerzugriffsberechtigungen](how-to-set-up-instance-CLI.md#set-up-user-access-permissions) im Artikel *Einrichten einer Azure Digital Twins-Instanz und der Authentifizierung (CLI)* .
 
-Wenn Sie bereits über diese Rollenzuweisung verfügen *und* eine Azure AD-App-Registrierung zur Authentifizierung einer Client-App verwenden, können Sie mit der nächsten Lösung fortfahren, falls diese Lösung das 403-Problem nicht gelöst hat.
+Wenn diese Rollenzuweisung bereits vorhanden ist **und** Sie eine Azure AD-App-Registrierung zur Authentifizierung einer Client-App verwenden, können Sie mit der nächsten Lösung fortfahren, falls die vorliegende Lösung das 403-Problem nicht behoben hat.
 
 ### <a name="solution-2"></a>Lösung 2
 
@@ -68,19 +68,19 @@ Wenn Sie eine Azure AD-App-Registrierung verwenden, um eine Client-App zu authen
 
 #### <a name="check-current-setup"></a>Überprüfen des aktuellen Setups
 
-Wenn Sie überprüfen möchten, ob die Berechtigungen ordnungsgemäß konfiguriert wurden, navigieren Sie im Azure-Portal zur [Übersichtsseite der Azure AD-App-Registrierung](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Sie können selbst auf diese Seite gelangen, indem Sie über die Portalsuchleiste nach *App-Registrierungen* suchen.
+Wenn Sie überprüfen möchten, ob die Berechtigungen ordnungsgemäß konfiguriert wurden, navigieren Sie im Azure-Portal zur [Übersichtsseite der Azure AD-App-Registrierung](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Sie können selbst auf diese Seite gelangen, indem Sie über die Portalsuchleiste nach **App-Registrierungen** suchen.
 
-Wechseln Sie zur Registerkarte *Alle Anwendungen*, um alle App-Registrierungen anzuzeigen, die in Ihrem Abonnement erstellt wurden.
+Wechseln Sie zur Registerkarte **Alle Anwendungen**, um alle App-Registrierungen anzuzeigen, die in Ihrem Abonnement erstellt wurden.
 
-Die soeben erstellte App-Registrierung sollte in der Liste angezeigt werden. Wählen Sie sie aus, um die Details zu öffnen.
+Die von Ihnen erstellte App-Registrierung sollte in der Liste angezeigt werden. Wählen Sie sie aus, um die Details zu öffnen.
 
 :::image type="content" source="media/troubleshoot-error-403/app-registrations.png" alt-text="Screenshot der Seite „App-Registrierungen“ im Azure-Portal.":::
 
-Vergewissern Sie sich zunächst, dass die Azure Digital Twins-Berechtigungseinstellungen für die Registrierung ordnungsgemäß festgelegt wurden. Wählen Sie hierzu auf der Menüleiste *Manifest* aus, um den Manifestcode der App-Registrierung anzuzeigen. Scrollen Sie zum unteren Bereich des Codefensters, und suchen Sie nach diesen Feldern unter `requiredResourceAccess`. Die Werte sollten den Werten im folgenden Screenshot entsprechen:
+Vergewissern Sie sich zunächst, dass die Einstellungen für die Azure Digital Twins-Berechtigungen ordnungsgemäß in der Registrierung festgelegt wurden: Wählen Sie in der Menüleiste die Option **Manifest** aus, um den Manifestcode der App-Registrierung anzuzeigen. Scrollen Sie zum unteren Bereich des Codefensters, und suchen Sie nach diesen Feldern unter `requiredResourceAccess`. Die Werte sollten den Werten im folgenden Screenshot entsprechen:
 
 :::image type="content" source="media/troubleshoot-error-403/verify-manifest.png" alt-text="Screenshot des Manifests für die Azure AD-App-Registrierung im Azure-Portal.":::
 
-Wählen Sie als Nächstes auf der Menüleiste *API-Berechtigungen* aus, um sich zu vergewissern, dass diese App-Registrierung Lese-/Schreibberechtigungen für Azure Digital Twins enthält. Es sollte ein Eintrag wie der folgende angezeigt werden:
+Wählen Sie als Nächstes auf der Menüleiste **API-Berechtigungen** aus, um sich zu vergewissern, dass diese App-Registrierung Lese-/Schreibberechtigungen für Azure Digital Twins enthält. Es sollte ein Eintrag wie der folgende angezeigt werden:
 
 :::image type="content" source="media/troubleshoot-error-403/verify-api-permissions.png" alt-text="Screenshot der API-Berechtigungen für die Azure AD-App-Registrierung im Azure-Portal mit „Lese-/Schreibzugriff“ für Azure Digital Twins.":::
 

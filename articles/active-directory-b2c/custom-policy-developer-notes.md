@@ -12,12 +12,12 @@ ms.date: 06/21/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 36e0b286cc073f5c6843f1bab59af5a811cbf281
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 33389224bcc4abf05ffbb261e23409eb95896781
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112452924"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123220858"
 ---
 # <a name="developer-notes-for-azure-active-directory-b2c"></a>Entwicklerhinweise für Azure Active Directory B2C
 
@@ -74,7 +74,7 @@ In der folgenden Tabelle sind die Security Assertion Markup Language (SAML)-Anwe
 |Funktion  |Benutzerflow  |Benutzerdefinierte Richtlinie  |Notizen  |
 |---------|:---------:|:---------:|---------|
 [SP-initiiert](saml-service-provider.md) | Nicht verfügbar | Allgemein verfügbar | POST- und Umleitungsbindungen |
-[IDP-initiiert](saml-service-provider-options.md#identity-provider-initiated-flow) | Nicht verfügbar | Allgemein verfügbar | Gibt an, wo der initiierende Identitätsanbieter Azure AD B2C ist.  |
+[IDP-initiiert](saml-service-provider-options.md#configure-idp-initiated-flow) | Nicht verfügbar | Allgemein verfügbar | Gibt an, wo der initiierende Identitätsanbieter Azure AD B2C ist.  |
 
 ## <a name="user-experience-customization"></a>Anpassung der Benutzererfahrung
 
@@ -123,7 +123,7 @@ In der folgenden Tabelle sind die Security Assertion Markup Language (SAML)-Anwe
 |[OAuth2](oauth2-technical-profile.md) | Nicht verfügbar | Allgemein verfügbar | Beispiel: [Google](identity-provider-google.md), [GitHub](identity-provider-github.md), und [Facebook.](identity-provider-facebook.md)|
 |[OAuth1](oauth1-technical-profile.md) | Nicht verfügbar | Allgemein verfügbar | Beispiel: [Twitter](identity-provider-twitter.md). |
 |[OpenID Connect](openid-connect-technical-profile.md) | Allgemein verfügbar | Allgemein verfügbar | Zum Beispiel, [Azure AD](identity-provider-azure-ad-single-tenant.md).  |
-|[SAML2](identity-provider-generic-saml.md) | Nicht verfügbar | Allgemein verfügbar | Zum Beispiel, [Salesforce](identity-provider-salesforce-saml.md) und[AD-FS].(identity-provider-adfs.md) |
+|[SAML2](identity-provider-generic-saml.md) | Nicht verfügbar | Allgemein verfügbar | Beispiel: [Salesforce](identity-provider-salesforce-saml.md) und [AD-FS](identity-provider-adfs.md). |
 | WSFED | Nicht verfügbar | Nicht verfügbar | |
 
 ### <a name="api-connectors"></a>API-Connectors

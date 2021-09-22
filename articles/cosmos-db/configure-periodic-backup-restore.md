@@ -4,15 +4,15 @@ description: In diesem Artikel wird beschrieben, wie Azure Cosmos DB-Konten mit
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 04/05/2021
+ms.date: 08/30/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: d0470759a589927b65462f258b20446af608175c
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 56e9bfe95a78c8bf0771acdc98c761df9994a708
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284033"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221059"
 ---
 # <a name="configure-azure-cosmos-db-account-with-periodic-backup"></a>Konfigurieren eines Azure Cosmos DB-Kontos mit regelmäßiger Sicherung
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -31,6 +31,9 @@ Azure Cosmos DB erstellt in regelmäßigen Abständen automatisch Sicherungen Ih
 
 * Die Sicherungen erfolgen ohne Beeinträchtigung der Leistung oder Verfügbarkeit Ihrer Anwendungen. Azure Cosmos DB erstellt die Datensicherung im Hintergrund, ohne zusätzlichen bereitgestellten Durchsatz (Anforderungseinheiten, RUs) zu beanspruchen oder die Leistung und Verfügbarkeit Ihrer Datenbank zu beeinträchtigen.
 
+> [!Note]
+> Bei Konten mit aktiviertem Azure Synapse Link sind Analysespeicherdaten nicht in den Sicherungen und Wiederherstellungen enthalten. Wenn Synapse Link aktiviert ist, erstellt Azure Cosmos DB weiterhin automatisch im geplanten Sicherungsintervall Sicherungen Ihrer Daten im Transaktionsspeicher. Die automatische Sicherung und Wiederherstellung Ihrer Daten im Analysespeicher wird derzeit nicht unterstützt.
+
 ## <a name="backup-storage-redundancy"></a><a id="backup-storage-redundancy"></a>Redundanz für Sicherungsspeicher
 
 Standardmäßig speichert Azure Cosmos DB regelmäßig Sicherungsdaten im georedundanten [Blobspeicher](../storage/common/storage-redundancy.md), der in einem [Regionspaar](../best-practices-availability-paired-regions.md) repliziert wird.  
@@ -46,7 +49,7 @@ Sicherungsdaten in Azure Cosmos DB werden dreimal in der primären Region repliz
 * **Lokal redundanter Sicherungsspeicher:** Mit dieser Option werden Ihre Daten asynchron innerhalb eines einzelnen physischen Standorts in der primären Region kopiert.
 
 > [!NOTE]
-> Zonenredundanter Speicher steht zurzeit nur in [bestimmten Regionen](high-availability.md#availability-zone-support) zur Verfügung. Basierend auf der ausgewählten Region. Diese Option ist für neue oder vorhandene Konten nicht verfügbar.
+> Zonenredundanter Speicher steht zurzeit nur in [bestimmten Regionen](high-availability.md#availability-zone-support) zur Verfügung. Je nachdem, welche Region Sie für ein neues Konto auswählen oder in welcher Region ein Konto vorhanden ist, ist die zonenredundante Option möglicherweise nicht verfügbar.
 >
 > Die Aktualisierung der Redundanz für den Sicherungsspeicher wirkt sich nicht auf die Preise für den Sicherungsspeicher aus.
 
@@ -173,5 +176,7 @@ Es wird empfohlen, den Container oder die Datenbank sofort nach der Migration zu
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Wenn Sie eine Wiederherstellungsanforderung übermitteln möchten, kontaktieren Sie den Azure-Support, und [erstellen Sie im Azure-Portal ein Ticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
-* Konfigurieren und verwalten Sie die fortlaufende Sicherung über das [Azure-Portal](continuous-backup-restore-portal.md) oder aber mithilfe von [PowerShell](continuous-backup-restore-powershell.md), [CLI](continuous-backup-restore-command-line.md) oder [Azure Resource Manager](continuous-backup-restore-template.md).
+* Bereitstellen der fortlaufenden Sicherung über das [Azure-Portal](provision-account-continuous-backup.md#provision-portal), [PowerShell](provision-account-continuous-backup.md#provision-powershell), die [Befehlszeilenschnittstelle](provision-account-continuous-backup.md#provision-cli) oder [Azure Resource Manager](provision-account-continuous-backup.md#provision-arm-template)
+* Wiederherstellen des Kontos für die fortlaufende Sicherung über das [Azure-Portal](restore-account-continuous-backup.md#restore-account-portal), [PowerShell](restore-account-continuous-backup.md#restore-account-powershell), die [Befehlszeilenschnittstelle](restore-account-continuous-backup.md#restore-account-cli) oder [Azure Resource Manager](restore-account-continuous-backup.md#restore-arm-template)
+* [Migrieren eines Kontos von der regelmäßigen Sicherung zur fortlaufenden Sicherung](migrate-continuous-backup.md)
 * [Verwalten Sie Berechtigungen](continuous-backup-restore-permissions.md), die zum Wiederherstellen von Daten mit dem fortlaufenden Sicherungsmodus erforderlich sind.

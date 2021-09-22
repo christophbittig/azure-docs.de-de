@@ -4,19 +4,19 @@ description: Dieser Artikel bietet eine Übersicht über die Azure Application G
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 07/20/2020
+ms.date: 08/31/2021
 ms.author: azhussai
 ms.topic: conceptual
-ms.openlocfilehash: 23544743946c42f36a8b82c23713a0794d3bb2a3
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: b2a8c8054096a8d93a3160a3cb5af935276224b1
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122356080"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272815"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Anwendungsgateways – Hosten mehrerer Websites
 
-Das Hosten mehrerer Websites ermöglicht es Ihnen, mehr als eine Webanwendung am selben Port eines Anwendungsgateways zu konfigurieren. Sie können eine effizientere Topologie für Ihre Bereitstellungen konfigurieren, indem Sie bis zu hundert Websites zu einem einzigen Anwendungsgateway hinzufügen. Jede Website kann an ihren eigenen Back-End-Pool weitergeleitet werden. Beispielsweise können die drei Domänen „contoso.com“, „fabrikam.com“ und „adatum.com“ auf die IP-Adresse des Anwendungsgateways verweisen. Sie erstellen drei Listener vom Typ „Mehrere Websites“ und konfigurieren jeden Listener für den jeweiligen Port und die jeweilige Protokolleinstellung. 
+Das Hosten mehrerer Websites ermöglicht es Ihnen, mithilfe von öffentlichen Listenern mehrere Webanwendungen am selben Port eines Anwendungsgateways zu konfigurieren. Sie können eine effizientere Topologie für Ihre Bereitstellungen konfigurieren, indem Sie bis zu hundert Websites zu einem einzigen Anwendungsgateway hinzufügen. Jede Website kann an ihren eigenen Back-End-Pool weitergeleitet werden. Beispielsweise können die drei Domänen „contoso.com“, „fabrikam.com“ und „adatum.com“ auf die IP-Adresse des Anwendungsgateways verweisen. Sie erstellen drei Listener vom Typ „Mehrere Websites“ und konfigurieren jeden Listener für den jeweiligen Port und die jeweilige Protokolleinstellung. 
 
 Sie können auch Hostnamen mit Platzhaltern in einem Listener für mehrere Standorte und bis zu fünf Hostnamen pro Listener definieren. Weitere Informationen finden Sie unter [Hostnamen mit Platzhaltern in Listenern](#wildcard-host-names-in-listener-preview).
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/01/2021
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 5b888ca7655f4de267ed89229559e4b0b1785f6c
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 1fc3f423c1ca02c6acb995ab4469d7d33607000f
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113799142"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255543"
 ---
 # <a name="migrate-data-offline-to-azure-file-sync-with-azure-data-box"></a>Durchführen einer Offlinemigration von Daten zur Azure-Dateisynchronisierung mit Azure Data Box
 
@@ -144,7 +144,7 @@ Die registrierte lokale Windows Server-Instanz muss für diesen Prozess vorberei
 :::row-end:::
 
 > [!NOTE]
-> Wenn Sie dieses Kontrollkästchen aktivieren, wird der Modus für die erste Synchronisierung auf *Überschreiben Sie autorisierend Dateien und Ordner in der Azure-Dateifreigabe mit Inhalt im Pfad dieses Servers.* festgelegt. Diese Option ist nur für den ersten Serverendpunkt in einer Synchronisierungsgruppe verfügbar.
+> Wenn Sie dieses Kontrollkästchen aktivieren, wird der Modus für die **erste Synchronisierung** auf *Dateien und Ordner in der Azure-Dateifreigabe autoritativ mit Inhalt im Pfad dieses Servers überschreiben* festgelegt. Diese Option ist nur für den ersten Serverendpunkt in einer Synchronisierungsgruppe verfügbar.
 
 Nachdem Sie den autoritativen Upload für diesen neuen Serverendpunkt konfiguriert haben, können Sie optional Cloudtiering aktivieren.
 
@@ -163,6 +163,6 @@ Wiederholen Sie die Schritte zum Erstellen von Synchronisierungsgruppen und zum 
 Machen Sie sich weiter mit Azure-Dateifreigaben und der Azure-Dateisynchronisierung vertraut. In den folgenden Artikeln werden erweiterte Optionen und bewährte Methoden behandelt. Sie bieten auch Hilfestellung bei der Problembehandlung. Diese Artikel enthalten gegebenenfalls Links zur [Dokumentation zu Azure-Dateifreigaben](storage-files-introduction.md).
 
 * [Migration overview (Übersicht über die Migration)](storage-files-migration-overview.md)
-* [Planung für die Bereitstellung der Azure-Dateisynchronisierung](../file-sync/file-sync-planning.md)
+* [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](../file-sync/file-sync-planning.md)
 * [Erstellen einer Dateifreigabe](storage-how-to-create-file-share.md)
 * [Problembehandlung für die Azure-Dateisynchronisierung](../file-sync/file-sync-troubleshoot.md)

@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/19/2021
 ms.author: yexu
-ms.openlocfilehash: ab17ad8c47f7cc49588e5caf556282c40a9c0a76
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: e2263db67214fb6fea91c8a8cefa65a981475ec3
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351223"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681597"
 ---
 # <a name="build-large-scale-data-copy-pipelines-with-metadata-driven-approach-in-copy-data-tool-preview"></a>Erstellen umfangreicher Datenkopierpipelines mit dem metadatengesteuerten Ansatz im Tool zum Kopieren von Daten (Vorschau)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -204,7 +204,7 @@ Diese Pipeline kopiert Objekte aus einer Gruppe. Die Objekte, die zu dieser Grup
 ### <a name="known-limitations"></a>Bekannte Einschränkungen
 - Das Tool zum Kopieren von Daten unterstützt derzeit keine metadatengesteuerte Erfassung zum inkrementellen Kopieren ausschließlich neuer Dateien. Dazu können Sie jedoch eigene parametrisierte Pipelines verwenden.
 - IR-Name, Datenbanktyp und Dateiformattyp können in ADF nicht parametrisiert werden. Wenn Sie beispielsweise Daten sowohl von Oracle Server als auch von SQL Server erfassen möchten, benötigen Sie zwei verschiedene parametrisierte Pipelines. Die einzelne Steuertabelle kann jedoch von zwei Sätzen von Pipelines gemeinsam genutzt werden. 
-
+- In generierten SQL-Skripts verwendet das Tool zum Kopieren von Daten OPENJSON. Wenn Sie SQL Server zum Hosten der Steuertabelle verwenden, muss es sich um SQL Server 2016 (13.x) oder höher handeln, damit die OPENJSON-Funktion unterstützt wird.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

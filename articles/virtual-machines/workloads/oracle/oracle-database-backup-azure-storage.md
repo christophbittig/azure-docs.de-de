@@ -1,6 +1,6 @@
 ---
-title: Sichern einer Oracle Database 19c-Datenbank auf einer Azure-Linux-VM mithilfe von RMAN und Azure Storage
-description: Erfahren Sie, wie Sie eine Oracle Database 19c-Datenbank im Azure-Cloudspeicher sichern.
+title: Sichern einer Oracle Database 19c-Datenbank auf einer Azure-Linux-VM mithilfe von RMAN und Azure Files
+description: Erfahren Sie, wie Sie eine Oracle Database 19c-Datenbank in Azure Files sichern.
 author: cro27
 ms.service: virtual-machines
 ms.subservice: oracle
@@ -9,16 +9,18 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: 44d1345a8c02c2cde5d0bc34d1b509af321c42c0
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: f30a7fcbc99f6a47574d101e3792d992dc2c1af8
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111952290"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123260034"
 ---
-# <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-storage"></a>Sichern und Wiederherstellen einer Oracle Database 19c-Datenbank auf einer Azure-Linux-VM mithilfe von Azure Storage
+# <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-files"></a>Sichern und Wiederherstellen einer Oracle Database 19c-Datenbank auf einer Azure Linux-VM mithilfe von Azure Files
 
-In diesem Artikel wird die Verwendung von Azure Storage als Medium zum Sichern und Wiederherstellen einer Oracle-Datenbank erläutert, die auf einer Azure-VM ausgeführt wird. Sie sichern die Datenbank mithilfe von Oracle RMAN in Azure File Storage, der über das SMB-Protokoll auf der VM eingebunden ist. Die Verwendung von Azure Storage als Sicherungsmedium ist äußerst kostengünstig und leistungsstark. Bei sehr umfangreichen Datenbanken ist Azure Backup jedoch die bessere Lösung.
+**Gilt für**: :heavy_check_mark: Linux-VMs 
+
+Dieser Artikel veranschaulicht die Verwendung von Azure Files als Medium zum Sichern und Wiederherstellen einer Oracle-Datenbank, die auf einer Azure-VM ausgeführt wird. Sie sichern die Datenbank mithilfe von Oracle RMAN in einer Azure-Dateifreigabe, die über das SMB-Protokoll auf der VM eingebunden ist. Die Verwendung von Azure Files als Sicherungsmedium ist ausgesprochen kosteneffektiv und leistungsstark. Bei sehr umfangreichen Datenbanken ist Azure Backup jedoch die bessere Lösung.
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../../includes/azure-cli-prepare-your-environment.md)]
 
@@ -166,14 +168,14 @@ In diesem Artikel wird die Verwendung von Azure Storage als Medium zum Sichern u
 
 Führen Sie für die Sicherung in Azure Files die folgenden Schritte aus:
 
-1. Richten Sie Azure File Storage ein.
-1. Binden Sie die Azure Storage-Dateifreigabe auf der VM ein.
+1. Richten Sie Azure Files ein.
+1. Binden Sie die Azure-Dateifreigabe auf der VM ein.
 1. Sichern Sie die Datenbank.
 1. Stellen Sie die Datenbank wieder her.
 
-### <a name="set-up-azure-file-storage"></a>Einrichten von Azure File Storage
+### <a name="set-up-azure-files"></a>Einrichten von Azure Files
 
-In diesem Schritt wird die Oracle-Datenbank mithilfe von Oracle Recovery Manager (RMAN) in Azure Files-Speicher gesichert. Azure-Dateifreigaben sind vollständig verwaltete Dateifreigaben, die in der Cloud gespeichert werden. Der Zugriff erfolgt entweder über das SMB-Protokoll (Server Message Block) oder das NFS-Protokoll (Network File System). In diesem Schritt wird eine Dateifreigabe erstellt, die über das SMB-Protokoll auf der VM eingebunden wird. Informationen zur Einbindung über NFS finden Sie unter [Einbinden von Azure Blob Storage mithilfe des NFS 3.0-Protokolls](../../../storage/blobs/network-file-system-protocol-support-how-to.md).
+In diesem Schritt sichern Sie die Oracle-Datenbank mithilfe von Oracle Recovery Manager (RMAN) in Azure Files. Azure-Dateifreigaben sind vollständig verwaltete Dateifreigaben, die in der Cloud gespeichert werden. Der Zugriff erfolgt entweder über das SMB-Protokoll (Server Message Block) oder das NFS-Protokoll (Network File System). In diesem Schritt wird eine Dateifreigabe erstellt, die über das SMB-Protokoll auf der VM eingebunden wird. Informationen zur Einbindung über NFS finden Sie unter [Einbinden von Azure Blob Storage mithilfe des NFS 3.0-Protokolls](../../../storage/blobs/network-file-system-protocol-support-how-to.md).
 
 Beim Einbinden von Azure Files wird mit `cache=none` das Zwischenspeichern von Dateifreigabedaten deaktiviert. Um sicherzustellen, dass die in der Freigabe erstellten Dateien im Besitz des Oracle-Benutzers sind, werden auch die Optionen `uid=oracle` und `gid=oinstall` festgelegt. 
 
@@ -181,9 +183,7 @@ Beim Einbinden von Azure Files wird mit `cache=none` das Zwischenspeichern von D
 
 Richten Sie zunächst das Speicherkonto ein.
 
-1. Konfigurieren von File Storage im Azure-Portal
-
-    Wählen Sie im Azure-Portal die Option * **+ Ressource erstellen** _ aus. Suchen Sie nach *_Speicherkonto_**, und wählen Sie diese Option aus.
+1. Wählen Sie im Azure-Portal die Option * **+ Ressource erstellen** _ aus. Suchen Sie nach *_Speicherkonto_**, und wählen Sie diese Option aus.
     
     ![Screenshot, der zeigt, wo Sie eine Ressource erstellen und ein Speicherkonto auswählen.](./media/oracle-backup-recovery/storage-1.png)
     
@@ -191,11 +191,9 @@ Richten Sie zunächst das Speicherkonto ein.
     
     ![Screenshot, der zeigt, wo Sie Ihre vorhandene Ressourcengruppe auswählen können.](./media/oracle-backup-recovery/file-storage-1.png)
    
-   
 3. Klicken Sie auf die Registerkarte ***Erweitert** _, und legen Sie unter „Azure Files“ die Einstellung _*_Große Dateifreigaben_*_ auf *_Aktiviert_** fest. Klicken Sie auf Überprüfen + erstellen und dann auf Erstellen.
     
     ![Screenshot, der zeigt, wo Sie „Große Dateifreigaben“ als „Aktiviert“ festlegen.](./media/oracle-backup-recovery/file-storage-2.png)
-    
     
 4. Navigieren Sie nach dem Erstellen des Speicherkontos zu der Ressource, und wählen Sie ***Dateifreigaben*** aus.
     
@@ -354,9 +352,9 @@ In diesem Abschnitt wird mit Oracle Recovery Manager (RMAN) eine vollständige S
     RMAN> backup as compressed backupset database plus archivelog;
     ```
 
-Damit haben Sie die Datenbank mithilfe von Oracle RMAN online erstellt, wobei sich die Sicherung in Azure File Storage befindet. Diese Methode hat den Vorteil, dass die Funktionen von RMAN genutzt werden, wenn Sicherungen in Azure File Storage gespeichert werden. Dort kann über andere VMs auf sie zugegriffen werden. Dies ist nützlich, wenn Sie die Datenbank klonen möchten.  
+Damit haben Sie die Datenbank mithilfe von Oracle RMAN online gesichert, wobei sich die Sicherung in Azure Files befindet. Diese Methode hat den Vorteil, dass Sie von den Funktionen von RMAN profitieren, die Sicherungen aber in Azure Files gespeichert werden, wo andere VMs darauf zugreifen können. Dies ist nützlich, wenn Sie die Datenbank klonen möchten.  
     
-Die Verwendung von RMAN und Azure File Storage für die Datenbanksicherung hat zwar viele Vorteile, aber die Sicherungs- und Wiederherstellungszeit hängt mit der Größe der Datenbank zusammen, sodass diese Vorgänge bei sehr umfangreichen Datenbanken sehr lange dauern können.  Bei einem alternativen Sicherungsmechanismus, bei dem anwendungskonsistente VM-Sicherungen von Azure Backup verwendet werden, wird die Momentaufnahmetechnologie zur Ausführung von Sicherungen genutzt. Dies hat den Vorteil, dass die Sicherungen unabhängig von der Datenbankgröße sehr schnell erstellt werden. Die Integration in einen Recovery Services-Tresor ermöglicht eine sichere Speicherung der Oracle Database-Sicherungen im Azure-Cloudspeicher, auf die von anderen VMs und Azure-Regionen zugegriffen werden kann. 
+Die Verwendung von RMAN und Azure Files für die Datenbanksicherung hat zwar viele Vorteile, aber die Sicherungs- und Wiederherstellungszeit hängt mit der Größe der Datenbank zusammen. Daher können diese Vorgänge bei sehr umfangreichen Datenbanken sehr lange dauern. Bei einem alternativen Sicherungsmechanismus, bei dem anwendungskonsistente VM-Sicherungen von Azure Backup verwendet werden, wird die Momentaufnahmetechnologie zur Ausführung von Sicherungen genutzt. Dies hat den Vorteil, dass die Sicherungen unabhängig von der Datenbankgröße sehr schnell erstellt werden. Die Integration in einen Recovery Services-Tresor ermöglicht eine sichere Speicherung der Oracle Database-Sicherungen im Azure-Cloudspeicher, auf die von anderen VMs und Azure-Regionen zugegriffen werden kann. 
 
 ### <a name="restore-and-recover-the-database"></a>Wiederherstellen der Datenbank
 

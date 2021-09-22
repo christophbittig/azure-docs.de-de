@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 11/07/2020
+ms.date: 9/01/2021
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 619c29b2c28c04e1cbf4d4dcda8fe3048234e7dd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 828f4bc269e5d7ec5b0d46c473d2abbf2c200222
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340329"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123220604"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>Automatisieren der Verwaltung mit der SQL Server-IaaS-Agent-Erweiterung
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -31,6 +31,9 @@ ms.locfileid: "122340329"
 Die Erweiterung für den SQL Server-IaaS-Agent (SqlIaasExtension) kann auf virtuellen Azure-Computern ausgeführt werden, um Verwaltungsaufgaben zu automatisieren. 
 
 Dieser Artikel bietet eine Übersicht über die Erweiterung. Informationen zum Installieren der SQL Server-IaaS-Erweiterung für SQL Server auf Azure-VMs finden Sie in den Artikeln zur [automatischen Installation](sql-agent-extension-automatic-registration-all-vms.md) und zur [Installation auf einzelnen VMs](sql-agent-extension-manually-register-single-vm.md) bzw. zur [Masseninstallation auf VMs](sql-agent-extension-manually-register-vms-bulk.md). 
+
+> [!NOTE]
+> Ab September 2021 ist für die Registrierung bei der SQL-IaaS-Erweiterung im vollständigen Modus kein Neustart des SQL Server-Diensts mehr erforderlich. 
 
 ## <a name="overview"></a>Übersicht
 
@@ -85,9 +88,9 @@ Diese Vorteile werden in der folgenden Tabelle genauer erläutert:
 
 Sie können Ihre SQL-IaaS-Erweiterung in drei Verwaltungsmodi registrieren: 
 
-- Im Modus **Lightweight** werden Erweiterungsbinärdateien auf den virtuellen Computer kopiert. Der Agent wird jedoch nicht installiert, und der SQL Server-Dienst wird auch nicht neu gestartet. Der Modus „Lightweight“ unterstützt nur das Ändern des Lizenztyps und der Edition von SQL Server und bietet eine eingeschränkte Portalverwaltung. Verwenden Sie diese Option für SQL Server-VMs mit mehreren Instanzen oder für den Einsatz mit einer Failoverclusterinstanz (FCI). Der Lightweight-Modus ist der Standardverwaltungsmodus bei Verwendung des Features [Automatische Registrierung](sql-agent-extension-automatic-registration-all-vms.md) und wenn bei der manuellen Registrierung kein Verwaltungstyp angegeben wurde. Die Verwendung des Modus „Lightweight“ hat keine Auswirkungen auf den Arbeitsspeicher oder die CPU. Außerdem fallen keine Kosten an. Es wird empfohlen, die SQL Server-VM zunächst im Modus „Lightweight“ zu registrieren und dann während eines Fenster für die geplante Wartung ein Upgrade auf den Modus „Vollständig“ auszuführen. 
+- Der **Lightweight**-Modus kopiert Erweiterungsbinärdateien auf die VM, installiert jedoch nicht den Agent. Der Lightweight-Modus unterstützt _nur_ das Ändern des Lizenztyps und der Edition von SQL Server und bietet eine eingeschränkte Portalverwaltung. Verwenden Sie diese Option für SQL Server-VMs mit mehreren Instanzen oder für den Einsatz mit einer Failoverclusterinstanz (FCI). Der Lightweight-Modus ist der Standardverwaltungsmodus bei Verwendung des Features [Automatische Registrierung](sql-agent-extension-automatic-registration-all-vms.md) und wenn bei der manuellen Registrierung kein Verwaltungstyp angegeben wurde. Die Verwendung des Modus „Lightweight“ hat keine Auswirkungen auf den Arbeitsspeicher oder die CPU. Außerdem fallen keine Kosten an. 
 
-- Im Modus **Vollständig** wird der SQL-IaaS-Agent auf dem virtuellen Computer installiert, um alle Funktionen bereitzustellen. Dafür sind jedoch ein Neustart des SQL Server-Diensts sowie Systemadministratorberechtigungen erforderlich. Verwenden Sie diesen Modus zum Verwalten einer SQL Server-VM mit einer einzelnen Instanz. Für den Modus „Vollständig“ werden zwei Windows-Dienste installiert, die minimale Auswirkungen auf den Arbeitsspeicher und die CPU haben. Diese Dienste können über den Task-Manager überwacht werden. Mit der Verwendung des Verwaltbarkeitsmodus „Vollständig“ sind keine Kosten verbunden. 
+- Der **vollständige** Modus installiert den SQL-IaaS-Agent auf der VM, um vollständige Funktionen bereitzustellen. Verwenden Sie diesen Modus zum Verwalten einer SQL Server-VM mit einer einzelnen Instanz. Für den Modus „Vollständig“ werden zwei Windows-Dienste installiert, die minimale Auswirkungen auf den Arbeitsspeicher und die CPU haben. Diese Dienste können über den Task-Manager überwacht werden. Mit der Verwendung des Verwaltbarkeitsmodus „Vollständig“ sind keine Kosten verbunden. Es sind Systemadministratorberechtigungen erforderlich. Ab September 2021 ist ein Neustart des SQL Server-Diensts nicht mehr erforderlich, wenn Sie Ihre SQL Server-VM im vollständigen Verwaltungsmodus registrieren. 
 
 - Der Modus **NoAgent** ist speziell für Installationen von SQL Server 2008 und SQL Server 2008 R2 unter Windows Server 2008 vorgesehen. Es gibt keine Auswirkung auf den Arbeitsspeicher oder die CPU, wenn der Modus „NoAgent“ verwendet wird. Es fallen keine Kosten für die Verwendung des Verwaltbarkeitsmodus „NoAgent“ an, der SQL Server-Dienst wird nicht neu gestartet, und es wird kein Agent auf dem virtuellen Computer installiert. 
 
@@ -102,11 +105,11 @@ Sie können Ihre SQL-IaaS-Erweiterung in drei Verwaltungsmodi registrieren:
 
 ## <a name="installation"></a>Installation
 
-Registrieren Sie Ihre SQL Server-VM mit der SQL Server-IaaS-Agent-Erweiterung, um die _Ressource_ **Virtueller SQL-Computer** in Ihrem Abonnement zu erstellen. Dabei handelt es sich um eine _andere_ Ressource als die Ressource für Ihren virtuellen Computer. Wenn Sie die Registrierung der Erweiterung für Ihre SQL Server-VM aufheben, wird die _Ressource_ **Virtueller SQL-Computer** entfernt, während der tatsächliche virtuelle Computer jedoch erhalten bleibt.
+Registrieren Sie Ihre SQL Server-VM mit der SQL Server-IaaS-Agent-Erweiterung, um die [_Ressource_ **Virtueller SQL-Computer**](manage-sql-vm-portal.md) in Ihrem Abonnement zu erstellen. Dabei handelt es sich um eine _andere_ Ressource als die Ressource für Ihren virtuellen Computer. Wenn Sie die Registrierung der Erweiterung für Ihre SQL Server-VM aufheben, wird die _Ressource_ **Virtueller SQL-Computer** entfernt, während der tatsächliche virtuelle Computer jedoch erhalten bleibt.
 
-Beim Bereitstellen eines Azure Marketplace-Images einer SQL Server-VM über das Azure-Portal wird die SQL Server-VM mit der Erweiterung automatisch registriert. Wenn Sie jedoch SQL Server auf einer Azure-VM selbst installieren oder eine Azure-VM von einer benutzerdefinierten VHD bereitstellen, müssen Sie Ihre SQL Server-VM mit der SQL-IaaS-Agent-Erweiterung registrieren, um die Featurevorteile nutzen zu können. 
+Wenn Sie ein Azure Marketplace-Image einer SQL Server-VM über das Azure-Portal bereitstellen, wird die SQL Server-VM mit der Erweiterung automatisch im vollständigen Modus registriert. Wenn Sie jedoch SQL Server auf einer Azure-VM selbst installieren oder eine Azure-VM von einer benutzerdefinierten VHD bereitstellen, müssen Sie Ihre SQL Server-VM mit der SQL-IaaS-Agent-Erweiterung registrieren, um die Featurevorteile nutzen zu können. 
 
-Wenn Sie die Erweiterung im Modus „Lightweight“ registrieren, werden die Binärdateien kopiert, der Agent wird jedoch nicht auf dem virtuellen Computer installiert. Der Agent wird auf dem virtuellen Computer installiert, wenn die Erweiterung auf den Verwaltungsmodus „Vollständig“ aktualisiert wird. 
+Wenn Sie die Erweiterung im Lightweight-Modus registrieren, werden die Binärdateien kopiert, der Agent wird jedoch nicht auf der VM installiert. Der Agent wird auf der VM installiert, wenn die Erweiterung im vollständigen Verwaltungsmodus installiert wird. 
 
 Es gibt drei Möglichkeiten, VMs mit der Erweiterung zu registrieren: 
 - [Automatisch für alle aktuellen und zukünftigen VMs in einem Abonnement](sql-agent-extension-automatic-registration-all-vms.md)
@@ -125,7 +128,7 @@ Falls Sie stattdessen eine benannte Instanz mit einem SQL Server-Image aus dem 
    1. [Heben Sie die Registrierung der SQL-IaaS-Agent-Erweiterung für die SQL Server-VM auf](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension). 
    1. Deinstallieren Sie SQL Server in der SQL Server-VM vollständig.
    1. Installieren Sie SQL Server mit einer benannten Instanz in der SQL Server-VM. 
-   1. [Registrieren Sie die VM mit der SQL-IaaS-Agent-Erweiterung](sql-agent-extension-manually-register-single-vm.md#register-with-extension). 
+   1. [Registrieren Sie die VM mit der SQL-IaaS-Agent-Erweiterung](sql-agent-extension-manually-register-single-vm.md#full-mode). 
 
 ## <a name="verify-status-of-extension"></a>Überprüfen des Status der Erweiterung
 
@@ -166,6 +169,7 @@ Die SQL-IaaS-Agent-Erweiterung unterstützt nur Folgendes:
 
 
 ## <a name="in-region-data-residency"></a>Data Residency in der Region
+
 Die Azure SQL-VM und die SQL-IaaS-Agent-Erweiterung verschieben oder speichern keine Kundendaten außerhalb der Region, in der sie bereitgestellt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte

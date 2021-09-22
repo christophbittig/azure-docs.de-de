@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: dbd4e9c6e8a58738ac0a8db6c64133301d1aebe5
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 9015e3ce69042a2e7d96588956becff889827ab3
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107950584"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225187"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage-Explorer – Leitfaden zur Problembehandlung
 
@@ -89,21 +89,30 @@ Es gibt mehrere integrierte Azure-Rollen, die die Berechtigungen bereitstellen k
 > [!NOTE]
 > Die Rollen „Besitzer“, „Mitwirkender“ und „Speicherkontomitwirkender“ gewähren Zugriff auf den Kontoschlüssel.
 
-## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Error: Selbstsigniertes Zertifikat in der Zertifikatkette (und vergleichbare Fehler)
+## <a name="ssl-certificate-issues"></a>SSL-Zertifikatprobleme
 
-Zertifikatfehler treten in der Regel in einer der folgenden Situationen auf:
+### <a name="understanding-ssl-certificate-issues"></a>Grundlegendes zu SSL-Zertifikatproblemen
 
-- Die App wird über einen _transparenten Proxy_ verbunden. Dies bedeutet, dass ein Server (z. B. Ihr Firmenserver) HTTPS-Datenverkehr abfängt, ihn entschlüsselt und ihn dann mit einem selbstsignierten Zertifikat verschlüsselt.
-- Sie führen eine Anwendung aus, die ein selbstsigniertes TLS/SSL-Zertifikat in die empfangenen HTTPS-Nachrichten einfügt. Beispiele für Anwendungen, die Zertifikate einfügen, sind u. a. Antivirenprogramme und Prüfsoftware für den Netzwerkverkehr.
+Machen Sie sich bei Bedarf zunächst mit dem [Abschnitt zu SSL-Zertifikaten](./storage-explorer-network.md#ssl-certificates) in der Netzwerkdokumentation für Storage-Explorer vertraut, bevor Sie fortfahren.
 
-Wenn Storage-Explorer ein selbstsigniertes oder nicht vertrauenswürdiges Zertifikat sieht, kann er nicht mehr erkennen, ob die empfangene HTTPS-Nachricht geändert wurde. Wenn Sie über eine Kopie des selbstsignierten Zertifikats verfügen, können Sie Storage-Explorer anweisen, es als vertrauenswürdig zu behandeln. Führen Sie dazu die folgenden Schritte aus:
+### <a name="use-system-proxy"></a>Verwenden eines Systemproxys
+
+Wenn Sie nur Features verwenden, die die Einstellung **Systemproxy verwenden** unterstützen, versuchen Sie, diese Einstellung zu verwenden. Weitere Informationen zur Systemproxyeinstellung finden Sie [hier](./storage-explorer-network.md#use-system-proxy-preview).
+
+### <a name="importing-ssl-certificates"></a>Importieren von SSL-Zertifikaten
+
+Wenn Sie über eine Kopie der selbstsignierten Zertifikate verfügen, können Sie Storage-Explorer anweisen, sie als vertrauenswürdig zu behandeln. Führen Sie dazu die folgenden Schritte aus:
 
 1. Rufen Sie eine X.509-Kopie (CER) des Zertifikats mit Base64-Verschlüsselung ab.
 2. Wechseln Sie zu **Bearbeiten** > **SSL-Zertifikate** > **Zertifikate importieren**, suchen Sie über die Dateiauswahl die CER-Datei, wählen Sie sie aus, und öffnen Sie sie.
 
-Dieses Problem kann auch auftreten, wenn es mehrere Zertifikate gibt (Stamm- und Zwischenzertifikat). Um diesen Fehler zu beheben, müssen beide Zertifikate hinzugefügt werden.
+Dieses Problem kann auch auftreten, wenn es mehrere Zertifikate gibt (Stamm- und Zwischenzertifikat). Um diesen Fehler zu beheben, müssen alle Zertifikate importiert werden.
 
-Wenn Sie nicht sicher sind, woher das Zertifikat kommt, können Sie zur Lösung die folgenden Schritte befolgen:
+### <a name="finding-ssl-certificates"></a>Suchen nach SSL-Zertifikaten
+
+Wenn Sie über keine Kopie der selbstsignierten Zertifikate verfügen, bitten Sie Ihren IT-Administrator um Unterstützung.
+
+Sie können versuchen, sie mithilfe der folgenden Schritte zu finden:
 
 1. Installieren Sie OpenSSL.
     * [Windows](https://slproweb.com/products/Win32OpenSSL.html): Eine Light-Version sollte ausreichend sein.
@@ -111,18 +120,20 @@ Wenn Sie nicht sicher sind, woher das Zertifikat kommt, können Sie zur Lösung 
 2. Führen Sie OpenSSL aus.
     * Windows: Öffnen Sie das Installationsverzeichnis, wählen Sie **/bin/** aus, und doppelklicken Sie dann auf **openssl.exe**.
     * Mac und Linux: Führen Sie `openssl` über ein Terminal aus.
-3. Führen Sie `s_client -showcerts -connect microsoft.com:443` aus.
-4. Suchen Sie nach selbstsignierten Zertifikaten. Wenn Sie sich nicht sicher sind, welche Zertifikate selbst signiert sind, notieren Sie sich, wo immer der Betreff `("s:")` und der Zertifikataussteller `("i:")` identisch sind.
-5. Wenn Sie selbstsignierte Zertifikate gefunden haben, kopieren Sie für jedes Zertifikat den gesamten Inhalt von (und einschließlich) `-----BEGIN CERTIFICATE-----` bis `-----END CERTIFICATE-----`, und fügen Sie ihn in eine neue CER-Datei ein.
+3. Führen Sie den Befehl `s_client -showcerts -connect <hostname>:443` für einen der Microsoft- oder Azure-Hostnamen aus, hinter denen sich Ihre Speicherressourcen befinden. Hier finden Sie eine Liste mit Hostnamen, auf die häufig von Storage-Explorer zugegriffen wird.
+4. Suchen Sie nach selbstsignierten Zertifikaten. Sind Antragsteller (`("s:")`) und Zertifikataussteller (`("i:")`) identisch, handelt es sich höchstwahrscheinlich um ein selbstsigniertes Zertifikat.
+5. Wenn Sie die selbstsignierten Zertifikate gefunden haben, kopieren Sie jeweils den gesamten Inhalt von (einschließlich) `-----BEGIN CERTIFICATE-----` bis `-----END CERTIFICATE-----`, und fügen Sie ihn in eine neue CER-Datei ein.
 6. Öffnen Sie Storage-Explorer, und navigieren Sie zu **Bearbeiten** > **SSL-Zertifikate** > **Zertifikate importieren**. Verwenden Sie dann die Dateiauswahl, um die von Ihnen erstellten CER-Dateien zu suchen, auszuwählen und zu öffnen.
 
-Wenn Sie durch Befolgen dieser Schritte keine selbstsignierten Zertifikate finden können, wenden Sie sich über das Feedbacktool an uns. Sie können Storage-Explorer auch über die Befehlszeile öffnen, indem Sie das `--ignore-certificate-errors`-Flag verwenden. Wenn Storage-Explorer mit diesem Flag geöffnet wird, werden Zertifikatfehler ignoriert.
+### <a name="disabling-ssl-certificate-validation"></a>Deaktivieren der SSL-Zertifikatüberprüfung
+
+Wenn Sie durch Befolgen dieser Schritte keine selbstsignierten Zertifikate finden können, wenden Sie sich über das Feedbacktool an uns. Sie können Storage-Explorer auch über die Befehlszeile öffnen. Verwenden Sie hierzu das Flag `--ignore-certificate-errors`. Wenn Storage-Explorer mit diesem Flag geöffnet wird, werden Zertifikatfehler ignoriert. **Dieses Flag wird nicht empfohlen.**
 
 ## <a name="sign-in-issues"></a>Probleme bei der Anmeldung
 
 ### <a name="understanding-sign-in"></a>Grundlegendes zur Anmeldung
 
-Stellen Sie sicher, dass Sie den Artikel [Anmeldung beim Storage-Explorer](./storage-explorer-sign-in.md) gelesen haben.
+Lesen Sie bei Bedarf zunächst die Dokumentation [Anmelden bei Storage-Explorer](./storage-explorer-sign-in.md), bevor Sie fortfahren.
 
 ### <a name="frequently-having-to-reenter-credentials"></a>Häufige Aufforderung zur erneuten Eingabe von Anmeldeinformationen
 
@@ -139,7 +150,7 @@ Wenn für Ihr Konto Richtlinien für bedingten Zugriff gelten, stellen Sie siche
 
 ### <a name="browser-complains-about-http-redirect-during-sign-in"></a>Browser gibt bei der Anmeldung eine Warnung zur HTTP-Umleitung aus
 
-Wenn die Anmeldung beim Storage-Explorer über den Webbrowser durchgeführt wird, erfolgt am Ende des Anmeldevorgangs eine Umleitung an `localhost`. Browser geben gelegentlich eine Warnung oder einen Fehler dazu aus, dass die Umleitung mit HTTP anstelle von HTTPS ausgeführt wird. Einige Browser versuchen möglicherweise auch, eine Umleitung mit HTTPS zu erzwingen. Falls einer dieser Fälle eintritt, stehen abhängig vom verwendeten Browser verschiedene Optionen zur Auswahl:
+Wenn die Anmeldung beim Storage-Explorer über den Webbrowser durchgeführt wird, erfolgt am Ende des Anmeldevorgangs eine Umleitung an `localhost`. Browser geben gelegentlich eine Warnung oder einen Fehler dazu aus, dass die Umleitung mit HTTP anstelle von HTTPS ausgeführt wird. Einige Browser versuchen möglicherweise auch, eine Umleitung mit HTTPS zu erzwingen. In diesen Fällen haben Sie abhängig vom verwendeten Browser verschiedene Möglichkeiten:
 - Ignorieren Sie die Warnung.
 - Fügen Sie eine Ausnahme für `localhost` hinzu.
 - Deaktivieren Sie das Erzwingen von HTTPS, entweder global oder nur für `localhost`.
@@ -148,7 +159,7 @@ Falls keine dieser Optionen verwendet werden kann, können Sie alternativ den [A
 
 ### <a name="unable-to-acquire-token-tenant-is-filtered-out"></a>Token kann nicht abrufen werden, Mandant wurde herausgefiltert
 
-Wenn Sie in einer Fehlermeldung darauf hingewiesen werden, dass kein Token abgerufen werden kann, weil ein Mandant herausgefiltert wurde, versuchen Sie auf einen Mandanten zuzugreifen, der aufgrund eines Filters nicht angezeigt wird. Wechseln Sie zum Aufheben des Filters für den Mandanten zum **Kontobereich**, und stellen Sie sicher, dass das Kontrollkästchen für den in der Fehlermeldung genannten Mandanten aktiviert ist. Weitere Informationen zum Filtern von Mandanten im Storage-Explorer finden Sie unter [Verwalten von Konten](./storage-explorer-sign-in.md#managing-accounts).
+Wenn Sie in einer Fehlermeldung darauf hingewiesen werden, dass kein Token abgerufen werden kann, weil ein Mandant herausgefiltert wurde, bedeutet das, dass Sie versuchen, auf einen Mandanten zuzugreifen, der aufgrund eines Filters nicht angezeigt wird. Wechseln Sie zum Aufheben des Filters für den Mandanten zum **Kontobereich**, und stellen Sie sicher, dass das Kontrollkästchen für den in der Fehlermeldung genannten Mandanten aktiviert ist. Weitere Informationen zum Filtern von Mandanten im Storage-Explorer finden Sie unter [Verwalten von Konten](./storage-explorer-sign-in.md#managing-accounts).
 
 ### <a name="authentication-library-failed-to-start-properly"></a>Authentifizierungsbibliothek kann nicht ordnungsgemäß gestartet werden
 
@@ -535,7 +546,7 @@ Teil 1: Installieren und Konfigurieren von Fiddler
 14. Klicken Sie auf „In Datei kopieren...“.
 15. Wählen Sie im Export-Assistenten die folgenden Optionen aus:
     - Base64-codiertes X.509
-    - Für den Dateinamen klicken Sie auf „Durchsuchen...“ in C:\Users\<your user dir>\AppData\Roaming\StorageExplorer\certs, und dann können Sie die Datei unter einem beliebigen Dateinamen speichern.
+    - Für den Dateinamen klicken Sie auf „Durchsuchen...“ Speichern Sie das Zertifikat in `C:\Users\<your user dir>\AppData\Roaming\StorageExplorer\certs` unter einem beliebigen Dateinamen.
 16. Schließen Sie das Fenster „Zertifikat“.
 17. Starten Sie den Storage-Explorer.
 18. Wechseln Sie zu „Bearbeiten > Proxy konfigurieren“.

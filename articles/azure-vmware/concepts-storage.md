@@ -3,13 +3,13 @@ title: 'Konzepte: Speicher'
 description: Erfahren Sie mehr über Speicherkapazität, Speicherrichtlinien, Fehlertoleranz und Speicherintegration in Azure VMware Solution Private Clouds.
 ms.topic: conceptual
 ms.custom: contperf-fy21q4
-ms.date: 04/26/2021
-ms.openlocfilehash: 8aa421cdee105573bd8edd91a4297ed773f7a459
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.date: 08/31/2021
+ms.openlocfilehash: fb6397752893640bed426e668e833126537d028a
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108069793"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255405"
 ---
 # <a name="azure-vmware-solution-storage-concepts"></a>Speicherkonzepte von Azure VMware Solution
 
@@ -33,20 +33,22 @@ Der lokale Speicher in Clusterhosts wird im clusterweiten vSAN-Datenspeicher ver
 
 ## <a name="storage-policies-and-fault-tolerance"></a>Speicherrichtlinien und Fehlertoleranz
 
-Diese Standardspeicherrichtlinie ist auf RAID-1 (Mirroring), FTT-1 und Thick Provisioning eingestellt.  Sofern Sie die Speicherrichtlinie nicht anpassen oder eine neue Richtlinie anwenden, wird der Cluster mit dieser Konfiguration weiter wachsen. In einem Drei-Host-Cluster gleicht FTT-1 den Ausfall eines einzelnen Hosts aus. Microsoft reguliert Ausfälle regelmäßig und tauscht die Hardware aus, sobald Ereignisse aus Sicht der Architektur erkannt werden.
+Diese Standardspeicherrichtlinie ist auf RAID-1 (Mirroring), FTT-1 und Thick Provisioning eingestellt. Wenn Sie die Speicherrichtlinie nicht anpassen oder eine neue Richtlinie anwenden, wächst der Cluster mit dieser Konfiguration. Informationen zum Festlegen der Speicherrichtlinie finden Sie unter [Konfigurieren der Speicherrichtlinie](configure-storage-policy.md).
 
-:::image type="content" source="media/vsphere-vm-storage-policies.png" alt-text="Screenshot, der die VM-Speicherrichtlinien des vSphere-Clients zeigt.":::
+In einem Drei-Host-Cluster gleicht FTT-1 den Ausfall eines einzelnen Hosts aus. Microsoft reguliert Ausfälle regelmäßig und tauscht die Hardware aus, sobald Ereignisse aus Sicht der Architektur erkannt werden.
+
+:::image type="content" source="media/concepts/vsphere-vm-storage-policies.png" alt-text="Screenshot, der die VM-Speicherrichtlinien des vSphere-Clients zeigt.":::
 
 
 |Bereitstellungstyp  |Beschreibung  |
 |---------|---------|
-|**Thick**      | Ist ein reservierter oder vorab zugewiesener Speicherplatz. Dies schützt Systeme, indem sie auch dann funktionieren, wenn der vSAN-Datenspeicher voll ist, da der Speicherplatz bereits reserviert ist. Wenn Sie zum Beispiel einen virtuellen Datenträger mit 10 GB mit Thick Provisioning erstellen, dann wird die gesamte Speicherkapazität des virtuellen Datenträgers auf dem physischen Speicher des virtuellen Datenträgers vorbelegt und verbraucht den gesamten ihm zugewiesenen Speicherplatz im Datenspeicher. Andere virtuelle Maschinen (VMs) können den Speicherplatz des Datenspeichers nicht mitbenutzen.         |
+|**Thick**      | Reservierter oder vorab zugewiesener Speicherplatz. Dies schützt Systeme, indem sie auch dann funktionieren, wenn der vSAN-Datenspeicher voll ist, da der Speicherplatz bereits reserviert ist. Ein Beispiel: Sie erstellen einen virtuellen 10-GB-Datenträger mit Thick Provisioning. In diesem Fall wird die gesamte Speicherkapazität des virtuellen Datenträgers im physischen Speicher des virtuellen Datenträgers vorab zugewiesen, und die Kapazität nutzt den gesamten ihr zugewiesenen Speicherplatz im Datenspeicher. Andere virtuelle Maschinen (VMs) können den Speicherplatz des Datenspeichers nicht mitbenutzen.         |
 |**Dünn**      | Verbraucht den Speicherplatz, den er zunächst benötigt und wächst auf den im Datenspeicher verwendeten Speicherplatzbedarf an. Über den Standard (Thick Provisioning) hinaus können Sie VMs mit FTT-1 Thin Provisioning erstellen. Verwenden Sie für die Dedupe-Einrichtung Thin Provisioning für Ihre VM-Vorlage.         |
 
 >[!TIP]
 >Sollten Sie sich nicht sicher sein, ob der Cluster auf vier oder mehr anwachsen wird, dann verwenden Sie die Standardrichtlinie.  Falls Sie sicher sind, dass Ihr Cluster wachsen wird, dann empfehlen wir, anstatt den Cluster nach dem ersten Einsatz zu erweitern, die zusätzlichen Hosts während des Einsatzes einzusetzen. Während die VMs im Cluster bereitgestellt werden, ändern Sie die Speicherrichtlinie der Festplatte in den VM-Einstellungen entweder auf RAID-5 FTT-1 oder RAID-6 FTT-2. 
 >
->:::image type="content" source="media/vsphere-vm-storage-policies-2.png" alt-text="Screenshot":::
+>:::image type="content" source="media/concepts/vsphere-vm-storage-policies-2.png" alt-text="Screenshot: Hervorgehobene Optionen „RAID-5 FTT-1“ und „RAID-6 Ftt-2“":::
 
 
 ## <a name="data-at-rest-encryption"></a>Verschlüsselung ruhender Daten
@@ -59,15 +61,21 @@ Sie können Azure-Speicherdienste in Workloads verwenden, die in Ihrer privaten 
 
 ## <a name="alerts-and-monitoring"></a>Benachrichtigungen und Überwachung
 
-Wenn die Kapazitätsauslastung 75 % überschreitet, gibt Microsoft Warnungen aus.  Sie können Metriken zum Kapazitätsverbrauch überwachen, die in Azure Monitor integriert sind. Weitere Informationen finden Sie unter [Konfigurieren von Azure-Warnungen in Azure VMware Solution](configure-alerts-for-azure-vmware-solution.md).
+Wenn die Kapazitätsauslastung 75 % überschreitet, gibt Microsoft Warnungen aus. Darüber hinaus können Sie Metriken zum Kapazitätsverbrauch überwachen, die in Azure Monitor integriert sind. Weitere Informationen finden Sie unter [Konfigurieren von Azure-Warnungen in Azure VMware Solution](configure-alerts-for-azure-vmware-solution.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie sich mit den Speicherkonzepten von Azure VMware Solution vertraut gemacht haben, informieren Sie sich über die folgenden Themen:
 
-- [Skalieren von Clustern in der privaten Cloud][tutorial-scale-private-cloud]
-- [Azure NetApp Files mit Azure VMware Solution](netapp-files-with-azure-vmware-solution.md)
-- [Rollenbasierte Zugriffskontrolle in vSphere für Azure VMware Solution](concepts-identity.md)
+- [Anfügen von Datenträgerpools an Azure VMware Solution-Hosts (Vorschau)](attach-disk-pools-to-azure-vmware-solution-hosts.md): Sie können Datenträger als beständigen Speicher für Azure VMware Solution verwenden, um die Kosten und die Leistung zu optimieren.
+
+- [Konfigurieren der Speicherrichtlinie](configure-storage-policy.md): Jeder in einem vSAN-Datenspeicher bereitgestellten VM wird mindestens eine VM-Speicherrichtlinie zugewiesen. Sie können eine VM-Speicherrichtlinie zuweisen, wenn Sie eine VM erstmals bereitstellen oder wenn Sie andere VM-Vorgänge ausführen (z. B. Klonen oder Migrieren).
+
+- [Skalieren von Clustern in der privaten Cloud][tutorial-scale-private-cloud]: Sie können die Cluster und Hosts in einer privaten Cloud gemäß dem Bedarf Ihrer Anwendungsworkload skalieren. Leistungs- und Verfügbarkeitseinschränkungen für bestimmte Dienste sollten von Fall zu Fall behandelt werden.
+
+- [Azure NetApp Files mit Azure VMware Solution](netapp-files-with-azure-vmware-solution.md): Sie können Azure NetApp für die Migration und die Ausführung besonders anspruchsvoller Unternehmensdateiworkloads in der Cloud (Datenbanken, SAP und High Performance Computing-Anwendungen) ohne Codeänderungen verwenden. 
+
+- [Rollenbasierte Zugriffssteuerung von vSphere für Azure VMware Solution](concepts-identity.md): Mit vCenter können Sie VM-Workloads und NSX-T Manager verwenden, um die private Cloud zu verwalten und zu erweitern. Zugriffs- und Identitätsverwaltung übernehmen die Rolle CloudAdmin für vCenter und eingeschränkte Administratorrechte für NSX-T Manager.
 
 
 <!-- LINKS - external-->

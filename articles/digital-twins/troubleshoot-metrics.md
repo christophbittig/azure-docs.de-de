@@ -7,22 +7,22 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ae3c214cb1e1d58098dddd29a31d6403aa2e42c6
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 8dc18662431e750301db7e3d2c4e56d5fbaea674
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475619"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770932"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Problembehandlung von Azure Digital Twins: Metriken
 
-Die in diesem Artikel beschriebenen Metriken liefern Informationen zum Zustand der Azure Digital Twins-Ressourcen in Ihrem Azure-Abonnement. Azure Digital Twins-Metriken helfen Ihnen, die allgemeine Integrität des Azure Digital Twins-Diensts und der damit verbundenen Ressourcen zu bewerten. Anhand dieser benutzerorientierten Statistiken können Sie Vorgänge in Azure Digital Twins erkennen und die Ursache von Problemen analysieren, ohne sich an den Azure-Support wenden zu müssen.
+Die in diesem Artikel beschriebenen Metriken liefern Informationen zum Zustand der Azure Digital Twins-Ressourcen in Ihrem Azure-Abonnement. Azure Digital Twins-Metriken helfen Ihnen, die allgemeine Integrität des Azure Digital Twins-Diensts und der damit verbundenen Ressourcen zu bewerten. Anhand dieser benutzerorientierten Statistiken können Sie Vorgänge in Azure Digital Twins überwachen und die Ursache von Problemen analysieren, ohne sich an den Azure-Support wenden zu müssen.
 
 Metriken sind standardmäßig aktiviert. Azure Digital Twins-Metriken können über das [Azure-Portal](https://portal.azure.com) angezeigt werden.
 
 ## <a name="how-to-view-azure-digital-twins-metrics"></a>Anzeigen von Azure Digital Twins-Metriken
 
-1. Erstellen Sie eine Azure Digital Twins-Instanz. Anweisungen zum Einrichten einer Azure Digital Twins-Instanz finden Sie unter [Vorgehensweise: Einrichten einer Instanz und der Authentifizierung](how-to-set-up-instance-portal.md).
+1. Erstellen Sie eine Azure Digital Twins-Instanz. Anweisungen zum Einrichten einer Azure Digital Twins-Instanz finden Sie unter [Einrichten einer Azure Digital Twins-Instanz und der Authentifizierung (Portal)](how-to-set-up-instance-portal.md).
 
 2. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach Ihrer Azure Digital Twins-Instanz (Sie können die Seite für die Instanz öffnen, indem Sie ihren Namen in die Suchleiste des Portals eingeben). 
 
@@ -53,7 +53,7 @@ In den folgenden Tabellen werden die Metriken beschrieben, die von jeder Azure D
 
 Sie können diese Metriken so konfigurieren, dass überwacht wird, wann Sie sich einem [veröffentlichten Dienstlimit](reference-service-limits.md#functional-limits) für einen bestimmten Aspekt Ihrer Lösung nähern. 
 
-Verwenden Sie das Feature [Warnungen](troubleshoot-alerts.md) in Azure Monitor, um dies einzurichten. Sie können Schwellenwerte für diese Metriken definieren, sodass Sie eine Warnung erhalten, wenn eine Metrik einen bestimmten Prozentsatz dieses veröffentlichten Limits erreicht.
+Verwenden Sie zum Einrichten der Nachverfolgung das Feature [Warnungen](troubleshoot-alerts.md) in Azure Monitor. Sie können Schwellenwerte für diese Metriken definieren, sodass Sie eine Warnung erhalten, wenn eine Metrik einen bestimmten Prozentsatz dieses veröffentlichten Limits erreicht.
 
 | Metrik | Anzeigename der Metrik | Einheit | Aggregationstyp| BESCHREIBUNG | Dimensionen |
 | --- | --- | --- | --- | --- | --- |
@@ -68,7 +68,7 @@ Metriken im Zusammenhang mit API-Anforderungen:
 | --- | --- | --- | --- | --- | --- |
 | ApiRequests | API-Anforderungen | Anzahl | Gesamt | Die Anzahl der API-Anforderungen, die für Lese-, Schreib-, Lösch- und Abfragevorgänge für Digital Twins durchgeführt wurden. |  Authentifizierung, <br>Betrieb, <br>Protokoll, <br>Statuscode, <br>Statuscodeklasse, <br>Statustext |
 | ApiRequestsFailureRate | API-Anforderungsfehlerrate | Percent | Average | Der Prozentsatz der API-Anforderungen, die der Dienst für Ihre Instanz erhält und die einen internen Fehler (500) als Antwortcode für Lese-, Schreib-, Lösch- und Abfragevorgänge von Digital Twins angeben. | Authentifizierung, <br>Betrieb, <br>Protokoll, <br>Statuscode, <br>Statuscodeklasse, <br>Statustext
-| ApiRequestsLatency | API-Anforderungslatenz | Millisekunden | Average | Die Antwortzeit für API-Anforderungen. Dies bezieht sich auf den Zeitraum zwischen dem Eingang der Anforderung bei Azure Digital Twins und dem Zeitpunkt, zu dem der Dienst ein Erfolgs- bzw. Fehlerergebnis für Lese-, Schreib-, Lösch- und Abfragevorgänge von Digital Twins sendet. | Authentifizierung, <br>Betrieb, <br>Protocol |
+| ApiRequestsLatency | API-Anforderungslatenz | Millisekunden | Average | Die Antwortzeit für API-Anforderungen. Dieser Wert bezieht sich auf den Zeitraum zwischen dem Eingang der Anforderung bei Azure Digital Twins und dem Zeitpunkt, zu dem der Dienst ein Erfolgs- bzw. Fehlerergebnis für Lese-, Schreib-, Lösch- und Abfragevorgänge von Digital Twins sendet. | Authentifizierung, <br>Betrieb, <br>Protocol |
 
 #### <a name="billing-metrics"></a>Abrechnungsmetriken
 
@@ -77,10 +77,10 @@ Metriken im Zusammenhang mit Abrechnung:
 | Metrik | Anzeigename der Metrik | Einheit | Aggregationstyp| BESCHREIBUNG | Dimensionen |
 | --- | --- | --- | --- | --- | --- |
 | BillingApiOperations | API-Abrechnungsvorgänge | Anzahl | Gesamt | Abrechnungsmetrik für die Anzahl aller API-Anforderungen, die für den Azure Digital Twins-Dienst durchgeführt wurden. | Messungs-ID |
-| BillingMessagesProcessed | Verarbeitete Abrechnungsnachrichten | Anzahl | Gesamt | Abrechnungsmetrik für die Anzahl von Nachrichten, die von Azure Digital Twins Zwillingen an externe Endpunkte gesendet werden.<br><br>Nutzdaten dürfen maximal 1 KB groß sein, da sie ansonsten nicht als einzelne Nachricht für die Abrechnung betrachtet wird. Umfangreichere Nutzdaten werden als zusätzliche Nachrichten in Schritten von 1 KB gezählt. (Eine Nachricht zwischen 1 und 2 KB wird also als zwei Nachrichten gezählt, eine Nachricht zwischen 2 und 3 KB als drei Nachrichten usw.)<br>Diese Einschränkung gilt auch für Antworten: Ein Aufruf, der 1,5 KB im Antworttext zurückgibt, wird beispielsweise als zwei Vorgänge in Rechnung gestellt. | Messungs-ID |
-| BillingQueryUnits | Abrechnungsabfrageeinheiten | Anzahl | Gesamt | Die Anzahl der Abfrageeinheiten (ein intern berechnetes Measure der Dienstressourcennutzung), die zum Ausführen von Abfragen genutzt werden. Es ist auch eine Hilfs-API zum Messen von Abfrageeinheiten verfügbar: [QueryChargeHelper-Klasse](/dotnet/api/azure.digitaltwins.core.querychargehelper?view=azure-dotnet&preserve-view=true) | Messungs-ID |
+| BillingMessagesProcessed | Verarbeitete Abrechnungsnachrichten | Anzahl | Gesamt | Abrechnungsmetrik für die Anzahl von Nachrichten, die von Azure Digital Twins Zwillingen an externe Endpunkte gesendet werden.<br><br>Nutzdaten dürfen maximal 1 KB groß sein, da sie ansonsten nicht als einzelne Nachricht für die Abrechnung betrachtet wird. Umfangreichere Nutzdaten werden als zusätzliche Nachrichten in Schritten von 1 KB gezählt (eine Nachricht zwischen 1 KB und 2 KB wird also als zwei Nachrichten gezählt, eine Nachricht zwischen 2 KB und 3 KB als drei Nachrichten usw.).<br>Diese Einschränkung gilt auch für Antworten: Ein Aufruf, der 1,5 KB im Antworttext zurückgibt, wird beispielsweise als zwei Vorgänge in Rechnung gestellt. | Messungs-ID |
+| BillingQueryUnits | Abrechnungsabfrageeinheiten | Anzahl | Gesamt | Die Anzahl der Abfrageeinheiten (ein intern berechnetes Measure der Dienstressourcennutzung), die zum Ausführen von Abfragen genutzt werden. Es ist auch eine Hilfs-API zum Messen von Abfrageeinheiten verfügbar: die [QueryChargeHelper-Klasse](/dotnet/api/azure.digitaltwins.core.querychargehelper?view=azure-dotnet&preserve-view=true). | Messungs-ID |
 
-Weitere Informationen zur Art und Weise, wie Azure Digital Twins abgerechnet wird, finden Sie unter [Azure Digital Twins-Preise](https://azure.microsoft.com/pricing/details/digital-twins/).
+Weitere Informationen zur Abrechnung für Azure Digital Twins finden Sie unter [Preise für Azure Digital Twins](https://azure.microsoft.com/pricing/details/digital-twins/).
 
 #### <a name="ingress-metrics"></a>Eingangsmetriken
 
@@ -100,7 +100,7 @@ Metriken im Zusammenhang mit Routing:
 | --- | --- | --- | --- | --- | --- |
 | MessagesRouted | Weitergeleitete Nachrichten | Anzahl | Gesamt | Die Anzahl der Nachrichten, die an einen Azure-Endpunktdienst (z. B. Event Hub, Service Bus oder Event Grid) weitergeleitet werden. | Endpunkttyp, <br>Ergebnis |
 | RoutingFailureRate | Routingfehlerrate | Percent | Average | Der Prozentsatz der Ereignisse, die zu einem Fehler führen, wenn sie von Azure Digital Twins zu einem Azure-Endpunktdienst wie Event Hub, Service Bus oder Event Grid weitergeleitet werden. | Endpunkttyp, <br>Ergebnis |
-| RoutingLatency | Routinglatenz | Millisekunden | Average | Die Zeit, die zwischen der Weiterleitung eines Ereignisses von Azure Digital Twins bis zu dem Zeitpunkt verstrichen ist, an dem es an den Azure-Endpunktdienst wie Event Hub, Service Bus oder Event Grid gesendet wird. | Endpunkttyp, <br>Ergebnis |
+| RoutingLatency | Routinglatenz | Millisekunden | Average | Die Zeit zwischen der Weiterleitung eines Ereignisses von Azure Digital Twins bis zu dem Zeitpunkt, an dem es an den Azure-Endpunktdienst wie Event Hub, Service Bus oder Event Grid gesendet wird. | Endpunkttyp, <br>Ergebnis |
 
 ## <a name="dimensions"></a>Dimensionen
 

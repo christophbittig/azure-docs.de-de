@@ -5,12 +5,12 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 08/16/2021
-ms.openlocfilehash: 9b97170e3ff434d40007e46952a52335e5f900b3
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: a83c0f442e88bc2fe0320fe8affe5b114a28a897
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122356457"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123314324"
 ---
 # <a name="resource-functions-for-bicep"></a>Ressourcenfunktionen für Bicep
 
@@ -20,6 +20,7 @@ Resource Manager stellt die folgenden Funktionen zum Abrufen von Ressourcenwerte
 * [getSecret](#getsecret)
 * [list*](#list)
 * [pickZones](#pickzones)
+* [providers (veraltet)](#providers)
 * [Referenz](#reference)
 * [Ressourcen-ID](#resourceid)
 * [subscriptionResourceId](#subscriptionresourceid)
@@ -181,7 +182,7 @@ Sie können eine Listenfunktion für jeden Ressourcentyp mit einem Vorgang aufru
 
 Die Syntax für diese Funktion variiert je nach dem Namen des Auflistungsvorgangs. Die zurückgegebenen Werte variieren auch je nach Vorgang. Bicep unterstützt derzeit keine Vervollständigungen und Validierungen für `list*`-Funktionen.
 
-**Ab Bicep-Version 0.4.412** rufen Sie die Listenfunktion mit dem [Accessor-Operator](operators-access.md#function-accessor) auf. Beispiel: `stg.listKeys()`. 
+**Ab Bicep-Version 0.4.412** rufen Sie die Listenfunktion mit dem [Accessor-Operator](operators-access.md#function-accessor) auf. Beispielsweise `stg.listKeys()`. 
 
 ### <a name="parameters"></a>Parameter
 
@@ -476,6 +477,10 @@ Die Ausgabe aus den vorherigen Beispielen gibt drei Arrays zurück.
 | notSupportedType | array | [] |
 
 Sie können anhand der Antwort von pickZones bestimmen, ob NULL für Zonen bereitgestellt werden soll oder virtuelle Computer verschiedenen Zonen zugewiesen werden sollen.
+
+## <a name="providers"></a>providers
+
+**Die providers-Funktion wurde als veraltet markiert.** Ihre Verwendung wird nicht mehr empfohlen. Wenn Sie diese Funktion verwendet haben, um eine API-Version für den Ressourcenanbieter abzurufen, empfehlen wir, dass Sie eine bestimmte API-Version in Ihrer Vorlage bereitstellen. Die Verwendung einer dynamisch zurückgegebenen API-Version kann Ihre Vorlage beschädigen, wenn sich die Eigenschaften zwischen Versionen ändern.
 
 ## <a name="reference"></a>Referenz
 

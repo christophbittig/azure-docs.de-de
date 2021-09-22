@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 75a6064ba44f803837719e0cb1f574d4295f8ac4
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 88ac65c35b29c2113576594788f820973331d64b
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113732888"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515009"
 ---
 # <a name="migrate-from-vault-access-policy-to-an-azure-role-based-access-control-permission-model"></a>Migrieren von Key Vault-Zugriffsrichtlinien zu einem Berechtigungsmodell für die rollenbasierte Zugriffssteuerung in Azure
 
@@ -76,7 +76,7 @@ Die folgenden vordefinierten Berechtigungsvorlagen für Zugriffsrichtlinien sind
 | Zertifikatverwaltung | Zertifikate: alle Vorgänge | Key Vault-Zertifikatbeauftragter|
 | SQL Server-Connector | Schlüssel: GET-, LIST-, WRAP KEY-, UNWRAP KEY-Vorgänge | Key Vault Crypto Service Encryption-Benutzer|
 | Azure Data Lake Storage oder Azure Storage | Schlüssel: GET-, LIST-, UNWRAP KEY-Vorgänge | –<br> Benutzerdefinierte Rolle erforderlich|
-| Azure Backup | Schlüssel: GET-, LIST-, BACKUP-Vorgänge<br> Zertifikate: GET-, LIST-, BACKUP-Vorgänge | –<br> Benutzerdefinierte Rolle erforderlich|
+| Azure Backup | Schlüssel: GET-, LIST-, BACKUP-Vorgänge<br> Geheimnisse: GET-, LIST-, BACKUP-Vorgänge | –<br> Benutzerdefinierte Rolle erforderlich|
 | Exchange Online-Kundenschlüssel | Schlüssel: GET-, LIST-, WRAP KEY-, UNWRAP KEY-Vorgänge | Key Vault Crypto Service Encryption-Benutzer|
 | Exchange Online-Kundenschlüssel | Schlüssel: GET-, LIST-, WRAP KEY-, UNWRAP KEY-Vorgänge | Key Vault Crypto Service Encryption-Benutzer|
 | Azure Information-BYOK | Schlüssel: GET-, DECRYPT-, SIGN-Vorgänge | –<br>Benutzerdefinierte Rolle erforderlich|

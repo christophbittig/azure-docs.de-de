@@ -13,14 +13,14 @@ ms.date: 07/22/2021
 ms.author: shermanouko
 ms.custom: aaddev, has-adal-ref
 ms.reviewer: aiwang, marsma
-ms.openlocfilehash: 9d9c0f9787360ed599d586295181ef359fdff293
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 07f6c7f481e815e788b22782f01ad9369bd2c9f6
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418668"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123039695"
 ---
-# <a name="how-to-get-a-complete-list-of-apps-using-adal-in-your-tenant"></a>Gewusst wie: Abrufen einer vollständigen Liste von Apps, die in Ihrem Mandanten die ADAL verwenden
+# <a name="get-a-complete-list-of-apps-using-adal-in-your-tenant"></a>Abrufen einer vollständigen Liste von Apps, die in Ihrem Mandanten die ADAL verwenden
 
 Die Unterstützung der Active Directory-Authentifizierungsbibliothek (ADAL) endet am 30. Juni 2022. Apps, die die ADAL unter vorhandenen Betriebssystemversionen nutzen, funktionieren anschließend weiterhin, erhalten aber keinen technischen Support und keine Sicherheitsupdates mehr. Ohne laufende Sicherheitsupdates werden Apps, die die ADAL verwenden, zunehmend anfälliger für die neuesten Sicherheitsangriffsmuster. Dieser Artikel enthält Anleitungen zur Verwendung von Azure Monitor-Arbeitsmappen, um eine Liste aller Apps zu erhalten, die in Ihrem Mandanten die ADAL verwenden.
 

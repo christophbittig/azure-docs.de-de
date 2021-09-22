@@ -8,14 +8,16 @@ ms.date: 07/22/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: bd1c2d9a9d428a765a9b621652aa23fdec94f212
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 1fd010e645370389a657f70aeb2e821b69477ef1
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114456401"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687569"
 ---
 # <a name="use-the-azure-portal-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Verwenden des Azure-Portals zum Aktivieren der End-to-End-Verschlüsselung mit Verschlüsselung auf dem Host
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs
 
 Wenn Sie die Verschlüsselung auf dem Host aktivieren, werden die auf dem VM-Host gespeicherten Daten ruhend verschlüsselt und verschlüsselt an den Speicherdienst übermittelt. Informationen zum Konzept der Verschlüsselung auf dem Host sowie zu anderen Verschlüsselungstypen für verwaltete Datenträger finden Sie unter [Verschlüsselung auf dem Host: End-to-End-Verschlüsselung für Ihre VM-Daten](./disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data).
 
@@ -58,7 +60,7 @@ Melden Sie sich mit dem [bereitgestellten Link](https://aka.ms/diskencryptionupd
 
 ## <a name="deploy-a-vm-with-platform-managed-keys"></a>Bereitstellen eines virtuellen Computers mit plattformseitig verwalteten Schlüsseln
 
-1. Melden Sie sich beim [Azure-Portal](https://aka.ms/diskencryptionupdates) an.
+1. Melden Sie sich am [Azure-Portal](https://aka.ms/diskencryptionupdates) an.
 1. Suchen Sie nach **Virtuelle Computer**, und wählen Sie **+ Hinzufügen** aus, um eine VM zu erstellen.
 1. Erstellen Sie einen neuen virtuellen Computer, und wählen Sie eine geeignete Region und eine unterstützte VM-Größe aus.
 1. Füllen Sie die anderen Werte im Bereich **Grundlagen** nach Ihren Vorstellungen aus, und fahren Sie dann mit dem Bereich **Datenträger** fort.
@@ -88,7 +90,7 @@ Nach dem Aktivieren des Features müssen Sie eine Azure Key Vault-Instanz und ei
 
 Nachdem Sie nun einen Azure Key Vault und einen Datenträgerverschlüsselungssatz eingerichtet haben, können Sie eine VM bereitstellen, die Verschlüsselung auf dem Host verwendet.
 
-1. Melden Sie sich beim [Azure-Portal](https://aka.ms/diskencryptionupdates) an.
+1. Melden Sie sich am [Azure-Portal](https://aka.ms/diskencryptionupdates) an.
 1. Suchen Sie nach **Virtuelle Computer**, und wählen Sie **+ Hinzufügen** aus, um eine VM zu erstellen.
 1. Erstellen Sie einen neuen virtuellen Computer, und wählen Sie eine geeignete Region und eine unterstützte VM-Größe aus.
 1. Füllen Sie die anderen Werte im Bereich **Grundlagen** nach Ihren Vorstellungen aus, und fahren Sie dann mit dem Bereich **Datenträger** fort.

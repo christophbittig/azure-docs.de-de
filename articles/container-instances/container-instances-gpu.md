@@ -3,12 +3,12 @@ title: Bereitstellen GPU-fähiger Containerinstanzen
 description: Erfahren Sie, wie Sie Azure-Containerinstanzen zur Ausführung rechenintensiver Container-Apps unter Verwendung von GPU-Ressourcen bereitstellen.
 ms.topic: article
 ms.date: 07/22/2020
-ms.openlocfilehash: cff887f434230fbc24dfbe27b1f14a463d00cf5d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fd9441f0ba92f4753271df4daba88ed690c9ee30
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339176"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123108377"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Bereitstellen von Containerinstanzen, die GPU-Ressourcen verwenden
 
@@ -68,11 +68,14 @@ Wenn Sie GPU-Ressourcen bereitstellen, legen Sie die für die Workload geeignete
   * [tensorflow/tensorflow: 1.12.0-gpu-py3](https://hub.docker.com/r/tensorflow/tensorflow)
 
   > [!NOTE]
-  > Um die Zuverlässigkeit bei der Verwendung eines öffentlichen Containerimages aus Docker Hub zu verbessern, importieren und verwalten Sie das Image in einer privaten Azure-Containerregistrierung, und aktualisieren Sie Ihr Dockerfile so, dass es Ihr privat verwaltetes Basisimage verwendet. Weitere Informationen zur Verwendung öffentlicher Images finden Sie [hier](../container-registry/buffer-gate-public-content.md).
+  > Um die Zuverlässigkeit bei der Verwendung eines öffentlichen Containerimages aus Docker Hub zu verbessern, importieren und verwalten Sie das Image in einer privaten Azure-Containerregistrierung, und aktualisieren Sie Ihr Dockerfile so, dass es Ihr privat verwaltetes Basisimage verwendet. [Weitere Informationen zum Arbeiten mit öffentlichen Images](../container-registry/buffer-gate-public-content.md).
     
 ## <a name="yaml-example"></a>Beispiel mit YAML-Datei
 
 Eine Möglichkeit zum Hinzufügen von GPU-Ressourcen besteht darin, eine Containergruppe unter Verwendung einer [YAML-Datei](container-instances-multi-container-yaml.md) bereitzustellen. Kopieren Sie den folgenden YAML-Code in eine neue Datei namens *gpu-deploy-aci.yaml*. Mit diesem YAML-Code wird eine Containergruppe namens *gpucontainergroup* erstellt, die eine Containerinstanz mit einer K80-GPU angibt. Die Instanz führt eine Beispielanwendung für eine Vektoraddition in CUDA aus. Die Ressourcenanforderungen reichen zum Ausführen der Workload aus.
+
+ > [!NOTE]
+  > Das folgende Beispiel verwendet ein öffentliches Containerimage. Um die Zuverlässigkeit zu verbessern, importieren und verwalten Sie das Image in einer privaten Azure-Containerregistrierung, und aktualisieren Sie Ihre YAML-Datei so, dass sie Ihr privat verwaltetes Basisimage verwendet. [Weitere Informationen zum Arbeiten mit öffentlichen Images](../container-registry/buffer-gate-public-content.md).
 
 ```YAML
 additional_properties: {}

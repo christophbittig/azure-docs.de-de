@@ -16,12 +16,12 @@ ms.date: 07/01/2021
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4fcd11f88cb25ef3afb199b147856d0a0140e44c
-ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
+ms.openlocfilehash: 4ea285c078061ed6009aff8dfd1c17b1f0528b9a
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113491981"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967248"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Ändern der Anforderungseinstellungen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
@@ -158,6 +158,9 @@ Gehen Sie folgendermaßen vor, wenn Sie Zugriffsanforderungen umgehen und Admini
     Nach der Erstellung des Zugriffspakets können Sie direkt bestimmte interne und externe Benutzer dem Zugriffspaket zuweisen. Wenn Sie einen externen Benutzer angeben, wird ein Gastbenutzerkonto in Ihrem Verzeichnis erstellt. Weitere Informationen zum direkten Zuweisen eines Benutzers finden Sie unter [Anzeigen, Hinzufügen und Entfernen von Zuweisungen für ein Zugriffspaket ](entitlement-management-access-package-assignments.md).
 
 1. Fahren Sie mit dem Abschnitt [Anforderungen aktivieren](#enable-requests) fort.
+
+> [!NOTE]
+> Beim Zuweisen von Benutzern zu einem Zugriffspaket müssen Administratoren überprüfen, ob die Benutzer basierend auf den vorhandenen Richtlinienanforderungen für dieses Zugriffspaket berechtigt sind. Andernfalls werden die Benutzer dem Zugriffspaket nicht erfolgreich zugewiesen. Wenn das Zugriffspaket eine Richtlinie enthält, die erfordert, dass Benutzeranforderungen genehmigt werden, können Benutzer dem Paket nicht direkt zugewiesen werden, ohne dass diese Zuweisung von den festgelegten genehmigenden Benutzern genehmigt wurde.
 
 
 ## <a name="open-and-edit-an-existing-policy-of-request-settings"></a>Öffnen und Bearbeiten einer vorhandenen Richtlinie mit Anforderungseinstellungen

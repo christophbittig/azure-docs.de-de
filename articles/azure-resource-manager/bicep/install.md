@@ -2,14 +2,14 @@
 title: Richten Sie die Bicep-Entwicklungs- und Einsatzumgebungen ein
 description: Konfigurieren von Bicep-Entwicklungs- und -Bereitstellungsumgebungen
 ms.topic: conceptual
-ms.date: 06/04/2021
+ms.date: 08/26/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 89212841ca4f17802f6b7288b441a5f22ea2c9d6
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: c95c05923d9685232c50d694f2b858e2de9e4776
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111537059"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123099563"
 ---
 # <a name="install-bicep-tools"></a>Installieren von Bicep-Tools
 
@@ -35,6 +35,10 @@ Um zu überprüfen, ob Sie die Erweiterung installiert haben, öffnen Sie eine b
 ## <a name="deployment-environment"></a>Bereitstellungsumgebung
 
 Am einfachsten erhalten Sie die Befehle, die Sie zum Bereitstellen einer Bicep-Datei benötigen, über die Installation der neuesten Azure CLI-Version. Sie können auch PowerShell verwenden, dafür ist jedoch eine zusätzliche Installation erforderlich.
+
+- [Azure-Befehlszeilenschnittstelle](#azure-cli)
+- [Azure PowerShell](#azure-powershell)
+- [Manuelle Installation](#install-manually)
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -64,12 +68,39 @@ Führen Sie zum Aktualisieren auf die aktuelle Version den folgenden Befehl aus:
 az bicep upgrade
 ```
 
+Verwenden Sie Folgendes, um die Installation zu überprüfen:
+
+```azurecli
+az bicep version
+```
+
 Weitere Befehle finden Sie unter [Befehle der Bicep-Befehlszeilenschnittstelle](bicep-cli.md).
 
 > [!IMPORTANT]
 > Die Azure CLI installiert eine eigenständige Instanz der Bicep-Befehlszeilenschnittstelle. Bei dieser Instanz tritt kein Konflikt mit Versionen auf, die Sie möglicherweise manuell installiert haben. Von der Azure CLI wird Ihrem Pfad (PATH) keine Bicep-Befehlszeilenschnittstelle hinzugefügt.
 
-### <a name="powershell"></a>PowerShell
+#### <a name="install-on-an-air-gapped-cloud"></a>Installieren in einer Cloud mit Air Gap
+
+Zum Installieren der Bicep-CLI in einer Umgebung mit Air Gap müssen Sie die ausführbare Datei für die Bicep-CLI manuell herunterladen und an einem bestimmten Speicherort speichern.
+
+- **Linux**
+
+    1. Laden Sie **bicep-linux-x64** von der [Bicep-Releaseseite](https://github.com/Azure/bicep/releases/latest/) in eine Umgebung ohne Air Gap herunter.
+    1. Kopieren Sie die ausführbare Datei auf einem Computer mit Air Gap in das Verzeichnis **$HOME/.azure/bin**.
+
+- **macOS**
+
+    1. Laden Sie **bicep-osx-x64** von der [Bicep-Releaseseite](https://github.com/Azure/bicep/releases/latest/) in eine Umgebung ohne Air Gap herunter.
+    1. Kopieren Sie die ausführbare Datei auf einem Computer mit Air Gap in das Verzeichnis **$HOME/.azure/bin**.
+
+- **Windows**
+
+    1. Laden Sie **bicep-win-x64.exe** von der [Bicep-Releaseseite](https://github.com/Azure/bicep/releases/latest/) in eine Umgebung ohne Air Gap herunter.
+    1. Kopieren Sie die ausführbare Datei auf einem Computer mit Air Gap in das Verzeichnis **%UserProfile%/.azure/bin**.
+
+Beachten Sie, dass die Befehle `bicep install` und `bicep upgrade` in einer Umgebung mit Air Gap nicht funktionieren.
+
+### <a name="azure-powershell"></a>Azure PowerShell
 
 Sie müssen mindestens Azure PowerShell-Version 5.6.0 installiert haben. Informationen zur Aktualisierung oder Installation finden Sie unter [Installieren des Azure Az PowerShell-Moduls](/powershell/azure/install-az-ps).
 
@@ -89,6 +120,10 @@ bicep --version
 ### <a name="install-manually"></a>Manuelle Installation
 
 Mit den folgenden Methoden wird die Bicep-Befehlszeilenschnittstelle installiert und Ihrem Pfad hinzugefügt. Für eine andere Verwendung als mit der Azure CLI ist eine manuelle Installation erforderlich.
+
+- [Linux](#linux)
+- [macOS](#macos)
+- [Windows](#windows)
 
 #### <a name="linux"></a>Linux
 

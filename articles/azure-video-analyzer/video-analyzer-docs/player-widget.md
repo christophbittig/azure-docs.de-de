@@ -1,121 +1,124 @@
 ---
-title: Verwenden des Player-Widgets des Azure Video Analyzers
+title: Verwenden des Azure Video Analyzer-Player-Widgets
 description: In diesem Referenzartikel wird erläutert, wie Sie Ihrer Anwendung ein Video Analyzer-Player-Widget hinzufügen.
 ms.service: azure-video-analyzer
 ms.topic: reference
-ms.date: 05/11/2021
-ms.openlocfilehash: f4c2d3f7d13002d0de231859bc31a74b72b1c7fd
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 06/01/2021
+ms.openlocfilehash: b70bfc9a10e357c6f1e64c1737fdb4c049b505f5
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111555126"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123037442"
 ---
-# <a name="using-the-azure-video-analyzer-player-widget"></a>Verwenden des Player-Widgets des Azure Video Analyzers
+# <a name="use-the-azure-video-analyzer-player-widget"></a>Verwenden des Azure Video Analyzer-Player-Widgets
 
-In diesem Tutorial erfahren Sie, wie Sie das Azure Video Analyzer Player-Widget in Ihrer Anwendung verwenden.  Bei diesem Code handelt es sich um einen leicht einzubettenden Widget, das es Ihren Endbenutzern ermöglicht, Videos abzuspielen und durch Teile einer segmentierten Videodatei zu navigieren.  Erstellen Sie für diesen Zweck eine statische HTML-Seite mit eingebettetem Widget und allen Teilen, damit es funktioniert.
+In diesem Tutorial erfahren Sie, wie Sie ein Player-Widget in Ihrer Anwendung verwenden können. Bei diesem Code handelt es sich um einen leicht einzubettendes Widget, das es Ihren Endbenutzern ermöglicht, Videos wiederzugeben und durch Teile einer segmentierten Videodatei zu navigieren. Dazu erstellen Sie eine statische HTML-Seite, in die das Widget eingebettet ist und die alle notwendigen Elemente enthält, damit es funktioniert.
 
-In diesem Lernprogramm führen Sie folgende Schritte aus:
+In diesem Lernprogramm lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen Sie ein Token
 > * Listen Sie Videos auf
 > * Erhalten Sie die Basis-URL zur Wiedergabe einer [Videoanwendungsressource](./terminology.md#video)
 > * Erstellen Sie eine Seite mit dem Player
-> * Übergeben Sie den Streaming-Endpunkt plus Token an den Player
-
-## <a name="suggested-pre-reading"></a>Empfohlene Lektüre zur Vorbereitung
-
-- [Webkomponenten](https://developer.mozilla.org/en-US/docs/Web/Web_Components)
-- [TypeScript](https://www.typescriptlang.org)
+> * Übergeben eines Streamingendpunkts und eines Tokens an den Player
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Dies sind die Voraussetzungen für dieses Tutorial:
-* Ein Azure-Konto mit einem aktiven Abonnement. Sie können ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), falls Sie noch keins besitzen 
+Für dieses Tutorial benötigen Sie Folgendes:
+
+* Ein Azure-Konto mit einem aktiven Abonnement. Sie können ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), falls Sie noch keins besitzen.
 * [Visual Studio Code](https://code.visualstudio.com/) oder einen anderen Editor für die HTML-Datei.
-.
-* Entweder [kontinuierliche Videoaufzeichnung und -Wiedergabe](./use-continuous-video-recording.md) oder [Bewegungserkennung und Videoaufzeichnung auf Edge-Geräten](./detect-motion-record-video-clips-cloud.md)
+* Entweder [kontinuierliche Videoaufzeichnung und -Wiedergabe](./use-continuous-video-recording.md) oder [Bewegungserkennung und Videoaufzeichnung auf Edgegeräten](./detect-motion-record-video-clips-cloud.md).
+
+Darüber hinaus ist es hilfreich, sich mit den folgenden Ressourcen vertraut zu machen:
+
+- [Webkomponenten](https://developer.mozilla.org/docs/Web/Web_Components)
+- [TypeScript](https://www.typescriptlang.org)
 
 ## <a name="create-a-token"></a>Erstellen Sie ein Token
 
-In diesem Abschnitt erstellen wir ein JWT-Token, das wir später im Dokument verwenden.  Wir verwenden eine Beispielanwendung, die das JWT-Token erstellt und Ihnen alle Felder zur Verfügung stellt, die zum Erstellen der Zugriffsrichtlinie erforderlich sind.
+In diesem Abschnitt erstellen Sie ein JSON Web Token (JWT), das Sie später in diesem Artikel verwenden werden. Sie verwenden eine Beispielanwendung, die das JWT-Token erstellt und Ihnen alle Felder zur Verfügung stellt, die zum Erstellen der Zugriffsrichtlinie erforderlich sind.
 
 > [!NOTE] 
 > Wenn Sie mit dem Generieren eines JWT-Tokens auf der Grundlage eines RSA- oder ECC-Zertifikats vertraut sind, können Sie diesen Abschnitt überspringen.
 
-1. Laden Sie die JWTTokenIssuer-Anwendung [hier](https://github.com/Azure-Samples/video-analyzer-iot-edge-csharp/tree/main/src/jwt-token-issuer/) herunter.
+1. Klonen Sie das [Repository mit AVA-C#-Beispielen](https://github.com/Azure-Samples/video-analyzer-iot-edge-csharp). Wechseln Sie dann in den Ordner *src/jwt-token-issuer*, und suchen Sie die Anwendung *JWTTokenIssuer*.
 
-   > [!NOTE] 
-   > Weitere Informationen zum Konfigurieren ihrer Zielgruppenwerte finden Sie in diesem [Artikel](./access-policies.md)
+    > [!NOTE] 
+    > Weitere Informationen zum Konfigurieren Ihrer Zielgruppenwerte finden Sie unter [Zugriffsrichtlinien](./access-policies.md).
 
-2. Starten Sie Visual Studio Code, und öffnen Sie den Ordner, der die *.sln-Datei enthält.
-3. Navigieren Sie im Explorer-Bereich zur Datei „program.cs“
-4. Passen Sie Zeile 77 an: Ändern Sie die Zielgruppe in Ihren Video Analyzer-Endpunkt plus /videos/*, sodass sie wie folgt aussieht:
+2. Öffnen Sie Visual Studio Code, und wechseln Sie in den Ordner, in den Sie die Anwendung *JWTTokenIssuer* heruntergeladen haben. Dieser Ordner sollte die *\*CSPROJ*-Datei enthalten.
+3. Wechseln Sie im Explorer-Bereich zur Datei *program.cs*.
+4. Ändern Sie in Zeile 77 die Zielgruppe in Ihren Azure Video Analyzer-Endpunkt, gefolgt von „/videos/\*“. Die Anzeige sollte folgendermaßen aussehen:
 
    ```
    https://{Azure Video Analyzer Account ID}.api.{Azure Long Region Code}.videoanalyzer.azure.net/videos/*
    ```
-5. Passen Sie Zeile 78 an: Ändern Sie den Aussteller in den Ausstellerwert Ihres Zertifikats.  Beispiel: https://contoso.com
 
    > [!NOTE] 
-   > Den Video Analyzer-Endpunkt finden Sie im Übersicht-Abschnitt der Video Analyzer-Ressource in Azure. Klicken Sie auf den Link „JSON-View" 
+   > Sie finden den Video Analyzer-Endpunkt im Abschnitt „Übersicht“ der Video Analyzer-Ressource im Azure-Portal. Auf diesen Wert wird in der [Liste der Videoressourcen](#list-video-resources) weiter unten in diesem Artikel als `clientApiEndpointUrl` verwiesen.
 
-   > [!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/player-widget/endpoint.png" alt-text="Playe-Widget – Endpunkt":::
-6. Speichern Sie die Datei .
-7. Drücken Sie `F5`, um die JWTTokenIssuer-Anwendung auszuführen.
+   :::image type="content" source="media/player-widget/client-api-url.png" alt-text="Screenshot: Endpunkt des Player-Widgets":::
+    
+5. Ändern Sie in Zeile 78 den Aussteller in den Ausstellerwert Ihres Zertifikats (Beispiel: `https://contoso.com`).
+6. Speichern Sie die Datei . Möglicherweise werden Sie mit der folgenden Meldung aufgefordert: **Erforderliche Ressource zum Erstellen und Debuggen fehlen im „JWT-Tokenaussteller“. Möchten Sie diese hinzufügen?** Wählen Sie **Ja**.
+   
+   :::image type="content" source="media/player-widget/visual-studio-code-required-assets.png" alt-text="Screenshot: Eingabeaufforderung für erforderliche Ressource in Visual Studio Code":::
+   
+7. Öffnen Sie das Eingabeaufforderungsfenster, und wechseln Sie in den Ordner mit den *JWTTokenIssuer*-Dateien. Führen Sie die folgenden beiden Befehle aus: `dotnet build`, gefolgt von `dotnet run`. Wenn Sie über die C#-Erweiterung für Visual Studio Code verfügen, können Sie auch F5 auswählen, um die *JWTTokenIssuer*-Anwendung auszuführen.
 
-Hiermit wird die Anwendung erstellt und ausgeführt.  Nach dem Erstellen wird sie ausgeführt, indem ein Zertifikat über openssl erstellt wird.  Sie können auch die JWTTokenIssuer.exe Datei ausführen, die sich im Debug-Ordner befindet.  Der Vorteil der Ausführung der Anwendung besteht darin, dass Sie Eingabeoptionen wie folgt angeben können:
+Die Anwendung wird erstellt und ausgeführt. Nach dem Erstellen erstellt es ein selbstsigniertes Zertifikat und generiert die JWT-Tokeninformationen aus diesem Zertifikat. Sie können auch die Datei *JWTTokenIssuer.exe* ausführen, die sich im Debugordner des Verzeichnisses befindet, in dem *JWTTokenIssuer* erstellt wurde. Der Vorteil der Ausführung der Anwendung besteht darin, dass Sie Eingabeoptionen wie folgt angeben können:
 
-- .JwtTokenIssuer [--audience=<audience>] [--issuer=<issuer>] [--expiration=<expiration>] [--certificatePath=<filepath> --certificatePassword=<password>]
+- `JwtTokenIssuer [--audience=<audience>] [--issuer=<issuer>] [--expiration=<expiration>] [--certificatePath=<filepath> --certificatePassword=<password>]`
 
-JWTTokenIssuer erstellt das JWT-Token und die folgenden erforderlichen Komponenten:
+*JWTTokenIssuer* erstellt das JWT und die folgenden erforderlichen Komponenten:
 
-- `kty`; `alg`; `kid`; `n`; `e`
+- `Issuer`, `Audience`, `Key Type`, `Algorithm`, `Key Id`, `RSA Key Modulus`, `RSA Key Exponent`, `Token`
 
-Stellen Sie sicher, dass Sie diese Werte zur späteren Verwendung kopieren.
+**Achten Sie darauf, diese Werte zur späteren Verwendung zu kopieren und zu speichern.**
 
 ## <a name="create-an-access-policy"></a>Erstellen einer Zugriffsrichtlinie
 
-Die Zugriffsrichtlinien bestimmen die Berechtigungen und die Dauer des Zugriffs auf einen bestimmten Video Analyzer-Videostream.  Für dieses Tutorial konfigurieren wir eine Zugriffsrichtlinie für den Video Analyzer im Azure-Portal.  
+Die Zugriffsrichtlinien bestimmen die Berechtigungen und die Dauer des Zugriffs auf einen bestimmten Videostream. Für dieses Tutorial konfigurieren Sie eine Zugriffsrichtlinie für Video Analyzer im Azure-Portal.  
 
 1. Melden Sie sich beim Azure-Portal an, und navigieren Sie zu Ihrer Ressourcengruppe, in der sich Ihr Video Analyzer-Konto befindet.
 1. Wählen Sie die Azure Video Analyzer-Ressource aus.
-1. Wählen Sie unter Video Analyzer die Option Zugriffsrichtlinien aus
+1. Wählen Sie unter **Video Analyzer** die Option **Zugriffsrichtlinien** aus.
 
-   > [!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/player-widget/portal-access-policies.png" alt-text="Player-Widget - Portal-Zugriffsrichtlinien":::    
-1. Klicken Sie auf neu, und geben Sie Folgendes ein:
+   :::image type="content" source="./media/player-widget/portal-access-policies.png" alt-text="Screenshot: Option „Zugriffsrichtlinien“":::
+   
+1. Wählen Sie **Neu** aus, und geben Sie die folgenden Informationen ein:
 
+   - **Name der Zugriffsrichtlinie**: Sie können einen beliebigen Namen auswählen.
+
+   - **Aussteller**: Dieser Wert muss mit dem JWT-Aussteller übereinstimmen. 
+
+   - **Zielgruppe**: Die Zielgruppe für das JWT. `${System.Runtime.BaseResourceUrlPattern}` ist die Standardeinstellung. Weitere Informationen über die Zielgruppe und `${System.Runtime.BaseResourceUrlPattern}` finden Sie unter [Zugriffsrichtlinien](./access-policies.md).
+
+   - **Schlüsseltyp**: RSA 
+
+   - **Algorithmus**: Die unterstützten Werte sind RS256, RS384, RS512.
+
+   - **Schlüssel-ID**: Diese ID wird aus Ihrem Zertifikat generiert. Weitere Informationen finden Sie unter [Erstellen eines Tokens](#create-a-token).
+
+   - **RSA-Schlüsselmodulus**: Dieser Wert wird aus Ihrem Zertifikat generiert. Weitere Informationen finden Sie unter [Erstellen eines Tokens](#create-a-token).
+
+   - **RSA-Schlüsselexponent**: Dieser Wert wird aus Ihrem Zertifikat generiert. Weitere Informationen finden Sie unter [Erstellen eines Tokens](#create-a-token).
+
+   :::image type="content" source="./media/player-widget/access-policies-portal.png" alt-text="Screenshot: Portal für Zugriffsrichtlinien"::: 
+   
    > [!NOTE] 
-   > Diese Werte entstammen der JWTTokenIssuer-Anwendung, die im vorherigen Schritt erstellt wurde.
+   > Diese Werte entstammen der *JWTTokenIssuer*-Anwendung, die im vorherigen Schritt erstellt wurde.
 
-   - Name der Zugriffsrichtlinie – beliebiger Name
+1. Wählen Sie **Speichern** aus.
 
-   - Aussteller – muss mit dem JWT-Token-Aussteller übereinstimmen 
+## <a name="list-video-resources"></a>Auflisten von Videoressourcen
 
-   - Zielgruppe - Zielgruppe für das JWT-Token - ${System.Runtime.BaseResourceUrlPattern} ist die Standardeinstellung.  Weitere Informationen zur Zielgruppe und ${System.Runtime.BaseResourceUrlPattern} finden Sie in diesem [Artikel](./access-policies.md)
+Als nächstes generieren Sie eine Liste von Videoressourcen. Sie führen einen REST-Aufruf für den zuvor verwendeten Kontoendpunkt durch und authentifizieren sich mit dem von Ihnen generierten Token.
 
-   - Schlüsseltyp – kty – RSA 
-
-   - Algorithmus - die unterstützten Werte sind RS256, RS384, RS512
-
-   - Schlüssel-ID – Kind – von Ihrem Zertifikat erstellt
-
-   - N-Wert - Für RSA ist der N-Wert der Modulus
-
-   - E-Wert - Für RSA ist der E-Wert der öffentliche Exponent
-
-   > [!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/player-widget/access-policies-portal.png" alt-text="Player-Widget - Portal-Zugriffsrichtlinien":::     
-1. klicken `save`.
-
-## <a name="list-video-analyzer-video-resources"></a>Videoressourcen des Video Analyzers auflisten
-
-Als Nächstes müssen wir eine Liste von Videoressourcen erstellen.  Dies erfolgt über einen REST-Aufruf an den Kontoendpunkt, den wir oben verwendeten, und der anhand des von uns erstellten Tokens authentifiziert wird.
-
-Es sind viele Möglichkeiten vorhanden, eine GET-Anforderung an eine REST-API zu senden, dafür verwenden wir jedoch eine JavaScript-Funktion.  Der folgende Code verwendet [xmlHttpRequest](https://www.w3schools.com/xml/ajax_xmlhttprequest_create.asp) in Verbindung mit Werten, die wir in den `clientApiEndpointUrl` und `token`-Feldern auf der Seite speichern, um eine synchrone Anforderung zu `GET` senden.  Anschließend wird die resultierende Liste der Videos verwendet und im `videoList` Textbereich gespeichert, den wir auf der Seite eingerichtet haben.
+Es sind viele Möglichkeiten vorhanden, eine GET-Anforderung an eine REST-API zu senden, dafür verwenden Sie jedoch eine JavaScript-Funktion. Der folgende Code verwendet [XMLHttpRequest](https://www.w3schools.com/xml/ajax_xmlhttprequest_create.asp) in Verbindung mit Werten, die wir in den Feldern `clientApiEndpointUrl` und `token` auf der Seite speichern, um eine synchrone `GET`-Anforderung zu senden. Anschließend wird die resultierende Liste der Videos verwendet und im `videoList`-Textbereich gespeichert, den Sie auf der Seite eingerichtet haben.
 
 ```javascript
 function getVideos()
@@ -128,16 +131,18 @@ function getVideos()
     document.getElementById("videoList").value = xhttp.responseText.toString();
 }
 ```
+   > [!NOTE]
+   >Der `clientApiEndPoint` und das Token werden aus [Erstellen eines Tokens](#create-a-token) gesammelt.
 
-## <a name="add-the-video-analyzer-player-component"></a>Fügen Sie die Video Analyzer Player-Komponente hinzu
+## <a name="add-the-video-analyzer-player-component"></a>Hinzufügen der Video Analyzer-Playerkomponente
 
-Da wir nun über eine Client-API-Endpunkt-URL, ein Token und einen Videonamen verfügen, können wir den Player zur Seite hinzufügen.
+Da Sie nun über eine Client-API-Endpunkt-URL, ein Token und einen Videonamen verfügen, können Sie den Player zur Seite hinzufügen.
 
-1. Schließen Sie das Player-Modul selbst ein, indem Sie das Paket direkt zu Ihrer Seite hinzufügen.  Sie können entweder die NPM-Paketrichtung in Ihre Anwendung einbinden oder zur Laufzeit dynamisch einbetten lassen, wie hier zu sehen:
+1. Schließen Sie das Player-Modul selbst ein, indem Sie das Paket direkt zu Ihrer Seite hinzufügen. Sie können entweder die NPM-Paketrichtung in Ihre Anwendung einbinden oder zur Laufzeit dynamisch einbetten lassen, wie im Folgenden zu sehen:
    ```html
    <script async type="module" src="https://unpkg.com/@azure/video-analyzer-widgets"></script>
    ```
-1. Fügen Sie ein AVA-Player-Element zum Dokument hinzu:
+1. Fügen Sie dem Dokument ein `AVA-Player`-Element hinzu:
    ```html
    <ava-player width="720px" id="avaPlayer"></ava-player>
    ```
@@ -153,14 +158,14 @@ Da wir nun über eine Client-API-Endpunkt-URL, ein Token und einen Videonamen ve
       videoName: document.getElementById("videoName").value
    } );
    ```
-1. Laden sie das Video in den Player, um zu beginnen
+1. Laden Sie das Video in den Player, um zu beginnen.
    ```javascript
    avaPlayer.load();
    ```
 
 ## <a name="put-it-all-together"></a>Korrektes Zusammenfügen
 
-Wenn wir die oben genannten Webelemente kombinieren, erhalten wir die folgende statische HTML-Seite, die es uns ermöglicht, einen Kontoendpunkt und ein Token zum Anzeigen eines Videos zu verwenden.
+Wenn Sie die vorangehenden Webelemente kombinieren, erhalten Sie die folgende statische HTML-Seite. Auf dieser Seite können Sie einen Kontoendpunkt und ein Token verwenden, um ein Video anzuzeigen.
 
 ```html
 <html>
@@ -202,82 +207,84 @@ Video name: <input type="text" id="videoName" /><br><br>
 
 ## <a name="host-the-page"></a>Hosten der Seite
 
-Sie können diese Seite lokal testen, Sie möchten jedoch möglicherweise eine gehostete Version testen.  Falls Sie über keine schnelle Möglichkeit zum Hosten einer Seite verfügen, finden Sie hier Anweisungen zur Verwendung [statischer Websites](../../storage/blobs/storage-blob-static-website.md) mit Storage.  Wie folgt, finden Sie eine verkürzte Version [dieser ausführlicheren Anweisungen,](../../storage/blobs/storage-blob-static-website-how-to.md) die für die in diesem Tutorial verwendeten Dateien aktualisiert wurden.
+Sie können diese Seite lokal testen, aber vielleicht möchten Sie auch eine gehostete Version testen. Falls Sie über keine schnelle Möglichkeit zum Hosten einer Seite verfügen, finden Sie hier Anweisungen zur Verwendung [statischer Websites](../../storage/blobs/storage-blob-static-website.md) mit Azure Storage. Die folgenden Schritte sind eine gekürzte Version [dieser ausführlicheren Anweisungen](../../storage/blobs/storage-blob-static-website-how-to.md). Die Schritte werden für die Dateien aktualisiert, die Sie in diesem Tutorial verwenden.
 
-1. Erstellen eines Speicherkontos
-1. Klicken Sie unter `Data management`, auf der linken Seite auf `Static website`
-1. `Enable` die statische Website im Speicherkonto
-1. Für `Index document name`, geben Sie `index.html` ein
-1. Für `Error document path`, geben Sie `404.html` ein
-1. Wählen Sie oben `Save` aus
-1. Beachten Sie `Primary endpoint` dass angezeigt wird - dies wird Ihre Website sein
-1. Klicken Sie auf `$web` oben`Primary endpoint`
-1. Laden Sie ihre `Upload` statische HTML-Seite mithilfe der oberen Schaltfläche als `index.html` hoch
+1. Erstellen Sie ein Speicherkonto.
+1. Wählen Sie unter **Datenverwaltung** die Option **Statische Website** aus.
+1. Aktivieren Sie die statische Website für das Speicherkonto.
+1. Geben Sie **index.html** als **Name des Indexdokuments** ein.
+1. Für **Pfad zum Fehlerdokument** geben Sie **404.html** ein.
+1. Wählen Sie **Speichern** aus.
+1. Beachten Sie den **primären Endpunkt**, der angezeigt wird. Dies wird Ihre Website sein.
+1. Wählen Sie über **Primärer Endpunkt** die Option **$web** aus.
+1. Verwenden Sie mithilfe der Schaltfläche **Hochladen** oben Ihre statische HTML-Seite als **index.html** hoch.
 
 ## <a name="play-a-video"></a>Spielen Sie ein Video ab
 
-Nachdem Sie nun die Seite gehostet haben, navigieren Sie dorthin, und Sie sollten die Schritte ausführen können.
+Nachdem Sie jetzt die Seite gehostet haben, wechseln Sie dorthin und führen Sie die Schritte aus, um ein Video wiederzugeben.
 
-1. Fügen Sie `Client API endpoint URL` und `Token` ein
-1. Wählen Sie `Get videos`.
-1. Wählen Sie in der Videoliste einen Videonamen aus, und füllen Sie ihn im `Video name` Eingabefeld aus
-1. Wählen Sie `Play video`.
+1. Geben Sie die Werte **Endpunkt-URL der Client-API** und **Token** ein.
+1. Wählen Sie **Videos abrufen** aus.
+1. Wählen Sie in der Videoliste einen Videonamen aus, und geben Sie ihn in das Feld **Videoname** ein.
+1. Wählen Sie **Video wiedergeben** aus.
 
 ## <a name="additional-details"></a>Zusätzliche Details
 
-### <a name="refreshing-the-access-token"></a>Aktualisieren des Zugriffstokens
+Die folgenden Abschnitte enthalten einige wichtige zusätzliche Details, die Sie beachten sollten.
 
-Der Player verwendet das Zugriffstoken, das wir zuvor erstellt haben, um ein Wiedergabe-Autorisierungstoken abzurufen.  Token laufen in regelmäßigen Abständen ab, daher müssen sie aktualisiert werden.  Es gibt zwei Möglichkeiten, das Zugriffstoken für den Player zu aktualisieren, nachdem Sie ein neues generiert haben.
+### <a name="refresh-the-access-token"></a>Aktualisieren des Zugriffstokens
 
-* Aktiv die Widget-Methode `setAccessToken` aufrufen
+Der Player verwendet das Zugriffstoken, das Sie zuvor erstellt haben, um ein Autorisierungstoken für die Wiedergabe abzurufen. Token laufen in regelmäßigen Abständen ab und müssen aktualisiert werden. Es gibt zwei Möglichkeiten, das Zugriffstoken für den Player zu aktualisieren, nachdem Sie ein neues generiert haben:
+
+* Aktiv die Widget-Methode `setAccessToken` aufrufen.
     ```typescript
     avaPlayer.setAccessToken('<NEW-ACCESS-TOKEN>');
     ```
-* Handeln auf das `TOKEN_EXPIRED`-Ereignis durch Abhören dieses Ereignisses
+* Auf das `TOKEN_EXPIRED`-Ereignis durch Lauschen auf dieses Ereignis reagieren.
     ```typescript
     avaPlayer.addEventListener(PlayerEvents.TOKEN_EXPIRED, () => {
         avaPlayer.setAccessToken('<YOUR-NEW-TOKEN>');
     });
     ```
 
-Das `TOKEN_EXPIRED`-Ereignis tritt 5 Sekunden vor Ablauf des Tokens auf.  Wenn Sie einen Ereignishörer einstellen, empfiehlt es sich, dies vor dem Aufrufen der `load`-Funktion im Player-Widget vorzunehmen.
+Das `TOKEN_EXPIRED`-Ereignis tritt 5 Sekunden vor Ablauf des Tokens auf. Wenn Sie einen Ereignislistener festlegen, sollten Sie dies durchführen, bevor Sie die `load`-Funktion für das Player-Widget aufrufen.
 
 ### <a name="configuration-details"></a>Konfigurationsdetails
 
-Wir haben eine einfache Konfiguration für den obengenannten Player vorgenommen, es unterstützt jedoch eine größere Auswahl an Optionen für Konfigurationswerte.  Die unterstützten Werte sind nachfolgend aufgeführt:
+Der vorangehende Player weist eine einfache Konfiguration auf, aber Sie können eine breitere Palette von Optionen für Konfigurationswerte verwenden. Die folgenden Felder werden unterstützt:
 
-| Name   | Typ             | Beschreibung                         |
+| Name   | type             | BESCHREIBUNG                         |
 | ------ | ---------------- | ----------------------------------- |
-| token  | Zeichenfolge | Ihr JWT-Token für das Widget |
-| Videoname | Zeichenfolge | Die Bezeichnung der Video-Ressource  |
-| clientApiEndpointUrl | Zeichenfolge | Die Endpunkt-URL für die Client-API |
+| `token`  | Zeichenfolge | Ihr JWT-Token für das Widget |
+| `videoName` | Zeichenfolge | Die Bezeichnung der Video-Ressource  |
+| `clientApiEndpointUrl` | Zeichenfolge | Die Endpunkt-URL für die Client-API |
 
 ### <a name="alternate-ways-to-load-the-code-into-your-application"></a>Alternative Möglichkeiten zum Laden des Codes in Ihre Anwendung
 
-Das Paket, das zum Herunterladen des Codes in Ihre Anwendung verwendet wird, ist ein NPM-Paket [hier](https://www.npmjs.com/package/video-analyzer-widgets).  Während im obigen Beispiel die neueste Version zur Laufzeit direkt aus dem Repositorium geladen wurde, können Sie das Paket auch herunterladen und lokal installieren:
+Das Paket, das zum Herunterladen des Codes in Ihre Anwendung verwendet wird, ist ein [NPM-Paket](https://www.npmjs.com/package/@azure/video-analyzer-widgets). Im vorherigen Beispiel wurde die neueste Version zur Laufzeit direkt aus dem Repository geladen. Sie können das Paket jedoch auch lokal herunterladen und installieren, indem Sie Folgendes verwenden:
 
 ```bash
 npm install @azure/video-analyzer/widgets
 ```
 
-Sie können sie auch in Ihren Anwendungscode importieren, indem Sie dies für Typescript verwenden:
+Sie können es auch in Ihren Anwendungscode importieren, indem Sie Folgendes für TypeScript verwenden:
 
 ```typescript
 import { Player } from '@video-analyzer/widgets';
 ```
 
-Oder für JavaScript, wenn Sie ein Player-Widget dynamisch erstellen möchten:
+Wenn Sie ein Player-Widget dynamisch erstellen möchten, können Sie Folgendes für JavaScript verwenden:
 ```javascript
 <script async type="module" src="https://unpkg.com/@azure/video-analyzer-widgets@latest/dist/global.min.js"></script>
 ```
 
-Wenn Sie diese Methode zum Importieren verwenden, müssen Sie das Player-Objekt programmgesteuert erstellen, nachdem der Import abgeschlossen ist.  Im obigen Beispiel haben Sie das Modul mithilfe des `ava-player`-HTML-Tags zur Seite hinzugefügt.  Um ein Player-Objekt mithilfe von Code zu erstellen, können Sie in die folgenden Schritte ausführen, entweder in JavaScript:
+Wenn Sie diese Methode zum Importieren verwenden, müssen Sie das Player-Objekt programmgesteuert erstellen, nachdem der Import abgeschlossen ist. Im vorherigen Beispiel haben Sie das Modul mithilfe des `ava-player`-HTML-Tags zur Seite hinzugefügt. Um ein Playerobjekt mithilfe von Code zu erstellen, können Sie in JavaScript wie folgt vorgehen:
 
 ```javascript
 const avaPlayer = new ava.widgets.player();
 ```
 
-oder in Typescript:
+Oder in TypeScript:
 
 ```typescript
 const avaPlayer = new Player();
@@ -291,4 +298,4 @@ document.firstElementChild.appendChild(avaPlayer);
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zum [API-Widget](https://github.com/Azure/video-analyzer/widgets)
+* Weitere Informationen zur [Widget-API](https://github.com/Azure/video-analyzer/tree/main/widgets).

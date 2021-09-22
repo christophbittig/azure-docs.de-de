@@ -7,16 +7,16 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 11/19/2020
-ms.openlocfilehash: 1accce46358c360be83ebc3ea85f0f2257b567c8
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 233fc2d15ce4e80ed305fd38006b5a0fd9d3c5ab
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114456539"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867003"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Onboardingleitfaden für das Microsoft Business Applications-ISV-Connect-Programm
 
-Das [Business Applications ISV Connect Program](https://partner.microsoft.com/solutions/business-applications/isv-overview) zielt darauf ab, das Wachstum und den Gesamterfolg unabhängiger Softwarehersteller (Independent Software Vendors, ISVs) zu steigern und moderne, cloudbasierte Branchenlösungen mit Dynamics 365 Customer Engagement and PowerApps („Dynamics CE-Anwendungen“) oder Dynamics 365 Finance and Operations („Dynamics Ops-Anwendungen“) zu entwickeln.
+Das [Business Applications ISV Connect Program](https://partner.microsoft.com/solutions/business-applications/isv-overview) zielt darauf ab, das Wachstum und den Gesamterfolg unabhängiger Softwarehersteller (Independent Software Vendors, ISVs) zu beschleunigen und moderne cloudbasierte Branchenlösungen mit Dynamics 365 Customer Engagement and Power Apps („Dynamics CE-Anwendungen“) oder Dynamics 365 Finance and Operations („Dynamics Ops-Anwendungen“) zu entwickeln.
 
 Arbeiten Sie die folgenden Abschnitte dieses Artikels durch, um sich zu registrieren und in den Genuss sämtlicher Technik-, Marketing- und Vertriebsvorteile zu kommen, die mit dem Business Applications ISV Connect Program verbunden sind.
 

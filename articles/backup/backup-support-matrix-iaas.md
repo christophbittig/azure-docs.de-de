@@ -2,14 +2,14 @@
 title: Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen bei der Sicherung virtueller Azure-Computer mit dem Azure Backup-Dienst.
 ms.topic: conceptual
-ms.date: 08/06/2021
+ms.date: 08/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: af008e8f14e3df60f0ce48a23cb32d45716645d0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9244b7c5a62be57b1f8ec9ea0f27918c7aa62457
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346098"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770977"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 
@@ -174,6 +174,7 @@ Freigegebener Speicher| Das Sichern von VMs mit freigegebenem Clustervolume (Clu
 SSD Ultra-Datenträger | Wird nicht unterstützt. Weitere Informationen finden Sie unter [Einschränkungen](selective-disk-backup-restore.md#limitations).
 [Temporäre Datenträger](../virtual-machines/managed-disks-overview.md#temporary-disk) | Temporäre Datenträger werden nicht von Azure Backup gesichert.
 NVMe/[kurzlebige Datenträger](../virtual-machines/ephemeral-os-disks.md) | Wird nicht unterstützt.
+[ReFS](/windows-server/storage/refs/refs-overview)-Wiederherstellung | Unterstützt. VSS unterstützt App-konsistente Sicherungen unter ReFS ebenso wie unter NFS.
 
 ## <a name="vm-network-support"></a>Netzwerkunterstützung bei virtuellen Computern
 

@@ -2,14 +2,14 @@
 title: Erstellen eines Kontos über das Azure-Portal
 description: Hier erfahren Sie, wie Sie ein Azure Batch-Konto im Azure-Portal erstellen, um umfangreiche parallele Workloads in der Cloud auszuführen.
 ms.topic: how-to
-ms.date: 07/01/2021
+ms.date: 08/31/2021
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 745a2fc2e1279d05fa380b7bc053171d20a3fa4c
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 037ada644f60eabf498c59047513f4ad8292f239
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113213271"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123308693"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Erstellen eines Batch-Kontos mit dem Azure-Portal
 
@@ -85,7 +85,7 @@ Wenn Sie Ihr erstes Batch-Konto im Modus „Benutzerabonnement“ erstellen, mü
 
 1. Navigieren Sie zurück zur Seite **Abonnement**, und wählen Sie dann **Zugriffssteuerung (IAM)** aus.
 
-1. Weisen Sie der Batch-API die Rolle **Mitwirkender** oder **Besitzer** zu. Sie können nach **Microsoft Azure Batch** oder **MicrosoftAzureBatch** suchen, um dieses Konto zu finden. (Die Objekt-ID für die Batch-API lautet **f520d84c-3fd3-4cc8-88d4-2ed25b00d27a**, und die Anwendungs-ID lautet **ddbf3205-c6bd-46ae-8127-60eb93363864**.)
+1. Weisen Sie der Batch-API die Rolle **Mitwirkender** oder **Besitzer** zu. Sie finden dieses Konto, indem Sie nach **Microsoft Azure Batch** suchen. (Die Anwendungs-ID für dieses Konto lautet **ddbf3205-c6bd-46ae-8127-60eb93363864**.)
 
    Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).
 

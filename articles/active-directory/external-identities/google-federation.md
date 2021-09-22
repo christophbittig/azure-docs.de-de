@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 08/17/2021
+ms.date: 08/24/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1be96c86d99a5d2fdb01fcf870a2216ab5167d5e
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: 687e23c7267991eee171e205a537a45546da73b2
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122428891"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864578"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Hinzufügen von Google als Identitätsanbieter für B2B-Gastbenutzer
 
@@ -31,7 +31,7 @@ Durch die Einrichtung eines Verbunds mit Google können Sie eingeladenen Benutze
 > [!IMPORTANT]
 >
 > - Wenn Azure AD B2B-Kunden **ab dem 12. Juli 2021** neue Google-Integrationen zur Verwendung mit Self-Service-Registrierung oder zum Einladen externer Benutzer für ihre benutzerdefinierten oder branchenspezifischen Anwendungen einrichten, kann die Authentifizierung für Gmail-Benutzer blockiert werden (im folgenden Fehlerbildschirm unter [Was ist zu erwarten?](#what-to-expect)). Dieses Problem tritt nur auf, wenn Sie Benutzerflows für die Google-Integration zur Self-Service-Registrierung oder Einladungen nach dem 12. Juli 2021 erstellen und Gmail-Authentifizierungen in Ihren benutzerdefinierten oder branchenspezifischen Anwendungen nicht in Systemwebansichten verschoben wurden. Da Systemwebansichten standardmäßig aktiviert sind, sind die meisten Apps nicht betroffen. Um das Problem zu vermeiden, sollten Sie unbedingt Gmail-Authentifizierungen in Systembrowser verschieben, bevor Sie neue Google-Integrationen zur Self-Service-Registrierung erstellen. Weitere Informationen finden Sie unter [Für eingebettete Webansichten erforderliche Aktion](#action-needed-for-embedded-frameworks).
-> - Ab dem **30. September 2021** wird Google die [Unterstützung für die Anmeldung in der Webansicht einstellen](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html). Wenn Ihre Apps Benutzer mit einer eingebetteten Webansicht authentifizieren und Sie den Google-Verbund mit [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) oder Azure AD B2B für externe Benutzereinladungen oder die [Self-Service-Registrierung](identity-providers.md) verwenden, können sich Google Gmail-Benutzer nicht authentifizieren. [Weitere Informationen](#deprecation-of-web-view-sign-in-support)
+> - Ab dem **30. September 2021** wird Google die [Unterstützung für die Anmeldung in der Webansicht einstellen](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html). Wenn Ihre Apps Benutzer mit einer eingebetteter Webansicht authentifizieren und Sie den Google-Verbund mit [ Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) oder Azure AD B2B für externe Benutzereinladungen oder die [Self-Service-Registrierung](identity-providers.md) verwenden, werden sich Google Gmail-Benutzer nicht authentifizieren können. [Weitere Informationen](#deprecation-of-web-view-sign-in-support)
 
 ## <a name="what-is-the-experience-for-the-google-user"></a>Wie läuft der Vorgang für Google-Benutzer ab?
 
@@ -58,10 +58,10 @@ Sie können Google-Gastbenutzern auch einen direkten Link zu einer Anwendung ode
 
 ## <a name="deprecation-of-web-view-sign-in-support"></a>Einstellung der Unterstützung für die WebView-Anmeldung
 
-Ab dem 30. September 2021 wird Google die [Unterstützung für die Anmeldung in der eingebetteten Webansicht einstellen](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html). Wenn Ihre Apps Benutzer mit einer eingebetteten Webansicht authentifizieren und Sie den Google-Verbund mit [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) oder Azure AD B2B für [externe Benutzereinladungen](google-federation.md) oder die [Self-Service-Registrierung](identity-providers.md) verwenden, können sich Google Gmail-Benutzer nicht authentifizieren.
+Ab dem 30. September 2021 wird Google die [Unterstützung für die Anmeldung in der eingebetteten Webansicht einstellen](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html). Wenn Ihre Apps Benutzer mit einer eingebetteter Webansicht authentifizieren und Sie den Google-Verbund mit [ Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) oder Azure AD B2B für [externe Benutzereinladungen](google-federation.md) oder die [Self-Service-Registrierung](identity-providers.md) verwenden, werden sich Google Gmail-Benutzer nicht authentifizieren können.
 
 Im Folgenden finden Sie bekannte Szenarien mit Auswirkungen auf Gmail-Benutzer:
-- Microsoft-Apps (z. B. Teams und PowerApps) auf Windows 
+- Microsoft-Apps (z. B. Teams und Power Apps) unter Windows 
 - Windows-Apps, die das [WebView](/windows/communitytoolkit/controls/wpf-winforms/webview)-Steuerelement [WebView2](/microsoft-edge/webview2/) oder das ältere WebBrowser-Steuerelement für die Authentifizierung verwenden. Diese Apps sollten mithilfe des WAM-Flows (Web Account Manager) migriert werden.
 - Android-Anwendungen, die das WebView-Benutzeroberflächenelement verwenden 
 - iOS-Anwendungen, die UIWebView/WKWebview verwenden 
@@ -69,6 +69,7 @@ Im Folgenden finden Sie bekannte Szenarien mit Auswirkungen auf Gmail-Benutzer:
 
 Diese Änderung wirkt sich nicht auf Folgendes aus:
 - Web-Apps
+- Microsoft 365-Dienste, auf die über eine Website zugegriffen wird (z. B. SharePoint Online, Office-Web-Apps und Teams-Web-App)
 - Mobile Apps, die Systemwebansichten für die Authentifizierung verwenden ([SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) unter iOS, [Benutzerdefinierte Registerkarten](https://developer.chrome.com/docs/android/custom-tabs/overview/) unter Android).  
 - Google Workspace-Identitäten, z. B. bei Verwendung eines [SAML-basierten Verbunds](direct-federation.md) mit Google Workspace
 

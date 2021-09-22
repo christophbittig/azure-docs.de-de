@@ -3,12 +3,12 @@ title: Grenzwerte und Kontingente von Azure-Abonnements
 description: Stellt eine Liste allgemeiner Azure-Abonnements und Diensteinschränkungen, Kontingenten und Einschränkungen bereit. Dieser Artikel enthält Informationen zum Erhöhen von Grenzwerten und Höchstwerten.
 ms.topic: conceptual
 ms.date: 07/29/2021
-ms.openlocfilehash: 952b5521a16ebc955e71319efe1f0b2bc48e47a9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2d3af7c035518ace6abca01b9e9e3867c49d4330
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346104"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123099383"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
 
@@ -335,10 +335,6 @@ Die folgende Tabelle gilt für v1, v2, Standard und WAF SKUs, sofern nichts ande
 
 [!INCLUDE [private-link-limits](../../../includes/private-link-limits.md)]
 
-## <a name="purview-limits"></a>Purview-Grenzwerte
-
-Die aktuellen Werte für Azure Purview-Kontingente finden Sie auf der [Seite „Azure Purview-Kontingent“](../../purview/how-to-manage-quotas.md)
-
 ### <a name="traffic-manager-limits"></a>Traffic Manager-Grenzwerte
 
 [!INCLUDE [traffic-manager-limits](../../../includes/traffic-manager-limits.md)]
@@ -362,6 +358,10 @@ Die aktuellen Werte für Azure Purview-Kontingente finden Sie auf der [Seite „
 ## <a name="notification-hubs-limits"></a>Grenzwerte für Notification Hubs
 
 [!INCLUDE [notification-hub-limits](../../../includes/notification-hub-limits.md)]
+
+## <a name="purview-limits"></a>Purview-Grenzwerte
+
+Die aktuellen Werte für Azure Purview-Kontingente finden Sie auf der Seite [Azure Purview-Kontingente](../../purview/how-to-manage-quotas.md).
 
 ## <a name="service-bus-limits"></a>Service Bus-Grenzwerte
 
