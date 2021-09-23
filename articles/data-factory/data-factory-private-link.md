@@ -8,12 +8,12 @@ ms.subservice: integration-runtime
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/16/2021
-ms.openlocfilehash: f4ae3d0653ce99be2017b1ef08ca0645c599ee10
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fd0fb07ad96d9897859281ef368452c96798d542
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339739"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123428648"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Private Link für Azure Data Factory
 
@@ -75,8 +75,8 @@ Beim oben gezeigten Beispiel lauten die DNS-Ressourceneinträge für die Data Fa
 
 | Name | type | Wert |
 | ---------- | -------- | --------------- |
-| DataFactoryA.{region}.datafactory.azure.net | CNAME   | DataFactoryA.{region}.privatelink.datafactory.azure.net |
-| DataFactoryA.{region}.privatelink.datafactory.azure.net | CNAME   | < öffentlicher Endpunkt des Data Factory-Diensts > |
+| DataFactoryA.{region}.datafactory.azure.net | CNAME   | DataFactoryA.{region}.datafactory.azure.net |
+| DataFactoryA.{region}.datafactory.azure.net | CNAME   | < öffentlicher Endpunkt des Data Factory-Diensts > |
 | < öffentlicher Endpunkt des Data Factory-Diensts >  | Ein | < öffentliche IP-Adresse des Data Factory-Diensts > |
 
 Die DNS-Ressourceneinträge für „DataFactoryA“ lauten nach dem Auflösen im VNET, das den privaten Endpunkt hostet, wie folgt:
@@ -86,7 +86,7 @@ Die DNS-Ressourceneinträge für „DataFactoryA“ lauten nach dem Auflösen im
 | DataFactoryA.{region}.datafactory.azure.net | CNAME   | DataFactoryA.{region}.privatelink.datafactory.azure.net |
 | DataFactoryA.{region}.privatelink.datafactory.azure.net   | Ein | < IP-Adresse des privaten Endpunkts > |
 
-Wenn Sie einen benutzerdefinierten DNS-Server in Ihrem Netzwerk verwenden, müssen Clients in der Lage sein, den FQDN für den Data Factory-Endpunkt in die IP-Adresse des privaten Endpunkts aufzulösen. Sie sollten den DNS-Server so konfigurieren, dass die Unterdomäne der privaten Verbindung an die private DNS-Zone für das VNET delegiert wird, oder konfigurieren Sie die A-Einträge für „DataFactoryA.{region}.privatelink.datafactory.azure.net“ mit der IP-Adresse des privaten Endpunkts.
+Wenn Sie einen benutzerdefinierten DNS-Server in Ihrem Netzwerk verwenden, müssen Clients in der Lage sein, den FQDN für den Data Factory-Endpunkt in die IP-Adresse des privaten Endpunkts aufzulösen. Konfigurieren Sie den DNS-Server so, dass die Unterdomäne der privaten Verbindung an die private DNS-Zone für das VNet delegiert wird, oder konfigurieren Sie die A-Einträge für „DataFactoryA.{region}.datafactory.azure.net“ mit der IP-Adresse des privaten Endpunkts.
 
 Weitere Informationen zum Konfigurieren des eigenen DNS-Servers für die Unterstützung privater Endpunkte finden Sie in den folgenden Artikeln:
 - [Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)

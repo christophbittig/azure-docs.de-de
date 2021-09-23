@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 34a8d0d732863f5fe40056f25460269f131fbf7c
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 3a19493657e368bf65921f4be7bdd5c9154b77a4
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866499"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536777"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Häufig gestellte Fragen (FAQ) zu Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll [Server Message Block (SMB)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) sowie über das [Network File System-Protokoll (NFS)](https://en.wikipedia.org/wiki/Network_File_System) (Vorschau) zugegriffen werden kann. Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem die Azure-Dateisynchronisierung verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
@@ -105,6 +105,23 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
   **Wieviel Zeit benötigt die Azure-Dateisynchronisierung, um 1 TiB Daten hochzuladen?**
   
     Die Leistung variiert abhängig von den Umgebungseinstellungen und der Konfiguration sowie davon, ob es sich um eine anfängliche oder laufende Synchronisierung handelt. Weitere Informationen finden Sie unter [Leistungsmetriken der Azure-Dateisynchronisierung](storage-files-scale-targets.md#azure-file-sync-performance-metrics).
+
+* <a id="afs-initial-upload"></a>
+  **Was ist der erste Upload von Daten für die Azure-Dateisynchronisierung?**
+  
+    **Erstsynchronisierung von Daten von Windows Server zur Azure-Dateifreigabe**: Viele Bereitstellungen einer Azure-Dateisynchronisierung beginnen mit einer leeren Azure-Dateifreigabe, weil alle Daten auf dem Windows-Server gespeichert sind. In diesen Fällen ist die anfängliche Enumeration von Cloudänderungen schnell, und der Großteil der Zeit wird für die Synchronisierung von Änderungen vom Windows-Server in die Azure-Dateifreigabe(n) benötigt.
+
+Obwohl die Synchronisierung Daten in die Azure-Dateifreigabe hochlädt, gibt es auf dem lokalen Dateiserver keine Ausfallzeiten, und Administratoren können Netzwerklimits einrichten, um die für das Hochladen von Hintergrunddaten beanspruchte Bandbreite einzuschränken.
+
+Die Erstsynchronisierung wird normalerweise durch die anfängliche Uploadrate von 20 Dateien pro Sekunde pro Synchronisierungsgruppe begrenzt. Mithilfe der folgenden Formel zur Berechnung des Zeitraums in Tagen können Kunden schätzen, wie lange es dauert, bis alle ihre Daten in Azure hochgeladen sind:
+
+**Zeitraum (in Tagen) zum Hochladen von Dateien in eine Synchronisierungsgruppe = (Anzahl von Objekten am Serverendpunkt)/(20 × 60 × 60 × 24)**
+
+* <a id="afs-initial-upload-server-restart"></a>
+  **Welche Auswirkungen hat es, wenn der Server während des ersten Uploads beendet und neu gestartet wird?** Es gibt keine Auswirkungen. Die Azure-Dateisynchronisierung wird nach dem Neustart des Servers von der Synchronisierung aus an dem Punkt fortgesetzt, an dem sie unterbrochen wurde.
+
+* <a id="afs-initial-upload-server-changes"></a>
+  **Welche Auswirkungen hat es, wenn während des ersten Uploads Änderungen an den Daten auf dem Serverendpunkt vorgenommen werden?** Es gibt keine Auswirkungen. Die Azure-Dateisynchronisierung gleicht die am Serverendpunkt vorgenommenen Änderungen ab, um sicherzustellen, dass der Cloudendpunkt und der Serverendpunkt synchron sind.
 
 * <a id="afs-conflict-resolution"></a>**Was passiert, wenn dieselbe Datei ungefähr zur gleichen Zeit auf zwei Servern geändert wird?**  
     Für die Azure-Dateisynchronisierung wird eine einfache Strategie zur Konfliktlösung verwendet: Die Änderungen der Dateien, die gleichzeitig in zwei Endpunkten vorgenommen werden, werden jeweils beibehalten. Für die zuletzt vorgenommene Änderung wird der ursprüngliche Dateiname beibehalten. Die ältere Datei (ermittelt durch LastWriteTime) weist den Endpunktnamen und die Konfliktnummer auf, die an den Dateinamen angefügt werden. Bei Serverendpunkten ist der Endpunktname der Name des Servers. Bei Cloudendpunkten lautet der Endpunktname **Cloud**. Für den Namen wird die folgende Taxonomie verwendet: 
@@ -226,6 +243,9 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 **Welche Richtlinien zur Datenkonformität werden von Azure Files unterstützt?**  
 
    Azure Files wird zusätzlich zu der gleichen Speicherarchitektur ausgeführt, die auch in anderen Speicherdiensten in Azure Storage genutzt wird. Für Azure Files werden die gleichen Richtlinien zur Datenkonformität wie in anderen Azure-Speicherdiensten angewendet. Weitere Informationen zur Datenkonformität von Azure Storage finden Sie unter [Azure Storage-Complianceangebote](../common/storage-compliance-offerings.md) und im [Microsoft Trust Center](https://microsoft.com/trustcenter/default.aspx).
+
+* <a id="afs-power-outage"></a>
+  **Wie wirkt sich ein Stromausfall, durch den der Serverendpunkt heruntergefahren wird, auf die Azure-Dateisynchronisierung aus?** Es gibt keine Auswirkungen. Sobald der Serverendpunkt wieder online ist, gleicht die Azure-Dateisynchronisierung die am Serverendpunkt vorgenommenen Änderungen ab, um sicherzustellen, dass der Cloudendpunkt und der Serverendpunkt synchron sind.
 
 * <a id="file-auditing"></a>
 **Wie kann ich den Dateizugriff und Änderungen in Azure Files überwachen?**

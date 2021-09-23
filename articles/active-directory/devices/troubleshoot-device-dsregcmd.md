@@ -1,6 +1,6 @@
 ---
-title: Problembehandlung mit dem Befehl „dsregcmd“ – Azure Active Directory
-description: Verwenden der Ausgabe von „dsregcmd“, um den Zustand von Geräten in Azure AD zu verstehen
+title: Problembehandlung bei Geräten über den Befehl „dsregcmd“ – Azure Active Directory
+description: In diesem Artikel wird beschrieben, wie Sie die Ausgabe des Befehls „dsregcmd“ verwenden, um den Zustand von Geräten in Azure AD zu ermitteln.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff1c0d1e552ad26832b2c142f5ca1506654a9a0c
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: a4965835581aa6d257faaf9681fe3bdf9b14b933
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114219536"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426650"
 ---
-# <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Problembehandlung von Geräten mit dem Befehl „dsregcmd“
+# <a name="troubleshoot-devices-by-using-the-dsregcmd-command"></a>Problembehandlung bei Geräten über den Befehl „dsregcmd“
 
-Das Hilfsprogramm „dsregcmd /status“ muss als Domänenbenutzerkonto ausgeführt werden.
+In diesem Artikel wird beschrieben, wie Sie die Ausgabe des Befehls `dsregcmd` verwenden, um den Zustand von Geräten in Azure Active Directory (Azure AD) zu ermitteln. Das Hilfsprogramm `dsregcmd /status` muss unter einem Domänenbenutzerkonto ausgeführt werden.
 
 ## <a name="device-state"></a>Gerätestatus
 
-In diesem Abschnitt werden die Statusparameter für den Geräte-Join aufgelistet. In der folgenden Tabelle sind die Kriterien für das Gerät in verschiedenen Join-Zuständen aufgeführt.
+In diesem Abschnitt werden die Statusparameter für den Geräte-Join aufgelistet. In der folgenden Tabelle sind die Kriterien aufgeführt, die erforderlich sind, damit sich das Gerät in verschiedenen Einbindungszuständen befindet:
 
 | AzureAdJoined | EnterpriseJoined | DomainJoined | Gerätestatus |
 | ---   | ---   | ---   | ---   |
@@ -32,14 +32,15 @@ In diesem Abschnitt werden die Statusparameter für den Geräte-Join aufgelistet
 | Nein | Nein | YES | In die Domäne eingebunden |
 | YES | Nein | YES | In Hybrid-AD eingebunden |
 | Nein | YES | YES | In lokales DRS eingebunden |
+| | |
 
 > [!NOTE]
-> Der Status „Workplace Join“ (bei Azure AD registered) wird im Abschnitt „Benutzerstatus“ angezeigt.
+> Der Zustand „In den Arbeitsplatz eingebunden“ (bei Azure AD registriert) wird im Abschnitt [Benutzerstatus](#user-state) angezeigt.
 
-- **AzureAdJoined:** Auf „JA“ festlegen, wenn das Gerät in Azure AD eingebunden ist. Andernfalls „NEIN“.
-- **EnterpriseJoined:** Auf „JA“ festlegen, wenn das Gerät in ein lokales DRS eingebunden ist. Für ein Gerät kann nicht gleichzeitig „EnterpriseJoined“ und „AzureAdJoined“ aktiviert sein.
-- **DomainJoined:** Auf „JA“ festlegen, wenn das Gerät in eine Domäne (AD) eingebunden ist.
-- **DomainName:** Auf den Namen der Domäne festlegen, wenn das Gerät in eine Domäne eingebunden ist.
+- **AzureAdJoined**: Der Zustand wird auf *YES* festgelegt, wenn das Gerät in Azure AD eingebunden ist. Andernfalls wird der Zustand auf *NO* festgelegt.
+- **EnterpriseJoined**: Der Zustand wird auf *YES* festgelegt, wenn das Gerät in einen lokalen Datenreplikationsdienst (DRS) eingebunden ist. Für ein Gerät kann nicht gleichzeitig „EnterpriseJoined“ und „AzureAdJoined“ aktiviert sein.
+- **DomainJoined**: Der Zustand wird auf *YES* festgelegt, wenn das Gerät in eine Domäne (Active Directory) eingebunden ist.
+- **DomainName**: Der Zustand wird auf den Namen der Domäne festgelegt, wenn das Gerät in eine Domäne eingebunden ist.
 
 ### <a name="sample-device-state-output"></a>Beispielstatusausgabe für Gerät
 
@@ -56,22 +57,20 @@ In diesem Abschnitt werden die Statusparameter für den Geräte-Join aufgelistet
 
 ## <a name="device-details"></a>Gerätedetails
 
-Wird nur angezeigt, wenn das Gerät in Azure AD oder Azure AD Hybrid eingebunden ist (nicht bei Azure AD registriert). In diesem Abschnitt werden die in Azure AD gespeicherten Gerätedetails aufgelistet.
+Der Zustand wird nur angezeigt, wenn das Gerät in Azure AD oder Azure AD Hybrid eingebunden (nicht bei Azure AD registriert) ist. In diesem Abschnitt werden die in Azure AD gespeicherten Details zur Identifikation von Geräten aufgelistet.
 
-- **DeviceId:** Eindeutige ID des Geräts im Azure AD-Mandanten.
-- **Thumbprint:** Fingerabdruck des Gerätezertifikats.
-- **DeviceCertificateValidity:** Gültigkeit des Gerätezertifikats.
-- **KeyContainerId:** Container-ID des privaten Schlüssels des Geräts, der dem Gerätezertifikat zugeordnet ist.
-- **KeyProvider:** KeyProvider (Hardware/Software), der zum Speichern des privaten Schlüssels des Geräts verwendet wird.
-- **TpmProtected:** „JA“, wenn der private Schlüssel des Geräts in einem Hardware-TPM gespeichert ist.
-
-> [!NOTE]
-> Das Feld **DeviceAuthStatus** wurde in **Windows 10 Update vom 10. Mai 2021 (Version 21H1)** hinzugefügt.
-
-- **DeviceAuthStatus:** Führt eine Überprüfung aus, um die Integrität des Geräts in Azure AD zu bestimmen.  
-„SUCCESS“, wenn das Gerät in Azure AD vorhanden und aktiviert ist  
-„FAILED. Device is either disabled or deleted.“, wenn das Gerät entweder deaktiviert oder gelöscht ist, [weitere Informationen](faq.yml#why-do-my-users-see-an-error-message-saying--your-organization-has-deleted-the-device--or--your-organization-has-disabled-the-device--on-their-windows-10-devices)  
-„FAILED. ERROR“, wenn der Test nicht ausgeführt werden konnte. Für diesen Test ist eine Netzwerkverbindung zu Azure AD erforderlich.  
+- **DeviceId**: Die eindeutige ID des Geräts im Azure AD-Mandanten.
+- **Thumbprint**: Der Fingerabdruck des Gerätezertifikats.
+- **DeviceCertificateValidity**: Der Gültigkeitsstatus des Gerätezertifikats.
+- **KeyContainerId**: Die containerId des privaten Geräteschlüssels, der dem Gerätezertifikat zugeordnet ist.
+- **KeyProvider**: Der KeyProvider (Hardware/Software), der zum Speichern des privaten Geräteschlüssels verwendet wird.
+- **TpmProtected**: Der Zustand ist auf *YES* festgelegt, wenn der private Geräteschlüssel in einem Hardware-TPM (Trusted Platform Module) gespeichert ist.
+- **DeviceAuthStatus**: Eine Überprüfung wird ausgeführt, um die Integrität des Geräts in Azure AD zu ermitteln. Mögliche Integritätsstatus:  
+  * *SUCCESS*, wenn das Gerät in Azure AD vorhanden und aktiviert ist.  
+  * *FAILED. Device is either disabled or deleted*, wenn das Gerät deaktiviert oder gelöscht wurde. Weitere Informationen zu diesem Problem finden Sie unter [Häufig gestellte Fragen zur Azure Active Directory-Geräteverwaltung](faq.yml#why-do-my-users-see-an-error-message-saying--your-organization-has-deleted-the-device--or--your-organization-has-disabled-the-device--on-their-windows-10-devices).  
+  * *FAILED. ERROR*, wenn der Test nicht ausgeführt werden konnte. Für diesen Test ist eine Netzwerkverbindung zu Azure AD erforderlich.
+    > [!NOTE]
+    > Das Feld **DeviceAuthStatus** wurde im Windows 10-Update vom 10. Mai 2021 (Version 21H1) hinzugefügt.  
 
 ### <a name="sample-device-details-output"></a>Beispieldetailausgabe des Geräts
 
@@ -92,10 +91,10 @@ Wird nur angezeigt, wenn das Gerät in Azure AD oder Azure AD Hybrid eingebunden
 
 ## <a name="tenant-details"></a>Mandantendetails
 
-Wird nur angezeigt, wenn das Gerät in Azure AD oder Azure AD Hybrid eingebunden ist (nicht bei Azure AD registriert). In diesem Abschnitt werden die allgemeinen Mandantendetails aufgelistet, wenn ein Gerät in Azure AD eingebunden wird.
+Die Mandantendetails werden nur angezeigt, wenn das Gerät in Azure AD oder Azure AD Hybrid eingebunden (nicht bei Azure AD registriert) ist. In diesem Abschnitt werden die allgemeinen Mandantendetails aufgeführt, die bei Einbindung eines Geräts in Azure AD angezeigt werden.
 
 > [!NOTE]
-> Wenn die MDM-URLs in diesem Abschnitt leer sind, wird angezeigt, dass die MDM entweder nicht konfiguriert wurde oder sich der aktuelle Benutzer nicht im Bereich der MDM-Registrierung befindet. Überprüfen Sie die Mobilitätseinstellungen in Azure AD, um Ihre MDM-Konfiguration zu überprüfen.
+> Wenn die URL-Felder der Verwaltung mobiler Geräte (MDM) in diesem Abschnitt leer sind, weist dies darauf hin, dass die MDM nicht konfiguriert wurde oder dass sich der aktuelle Benutzer nicht im Bereich der MDM-Registrierung befindet. Überprüfen Sie die Mobilitätseinstellungen in Azure AD, um Ihre MDM-Konfiguration zu überprüfen.
 
 > [!NOTE]
 > Auch wenn MDM-URLs angezeigt werden, bedeutet dies nicht, dass das Gerät von einer MDM verwaltet wird. Die Informationen werden angezeigt, wenn der Mandant über eine MDM-Konfiguration für die automatische Registrierung verfügt, auch wenn das Gerät selbst nicht verwaltet wird.
@@ -133,20 +132,20 @@ Wird nur angezeigt, wenn das Gerät in Azure AD oder Azure AD Hybrid eingebunden
 
 ## <a name="user-state"></a>Benutzerzustand
 
-In diesem Abschnitt wird der Status verschiedener Attribute für den aktuell am Gerät angemeldeten Benutzer aufgelistet.
+In diesem Abschnitt werden die Status verschiedener Attribute für Benutzer aufgeführt, die zurzeit beim Gerät angemeldet sind.
 
 > [!NOTE]
 > Der Befehl muss in einem Benutzerkontext ausgeführt werden, um einen gültigen Status abzurufen.
 
-- **NgcSet:** Auf „JA“ festlegen, wenn für den derzeit angemeldeten Benutzer eine Windows Hello-Taste eingestellt ist.
-- **NgcKeyId:** ID der Windows Hello-Taste, wenn diese für den derzeit angemeldeten Benutzer eingestellt ist.
-- **CanReset:** Gibt an, ob die Windows Hello-Taste vom Benutzer zurückgesetzt werden kann.
-- **Mögliche Werte:** „DestructiveOnly“, „NonDestructiveOnly“, „DestructiveAndNonDestructive“ oder „Unknown“ bei einem Fehler.
-- **WorkplaceJoined:** Auf „JA“ festlegen, wenn für Azure AD registrierte Konten im aktuellen NTUSER-Kontext zum Gerät hinzugefügt wurden.
-- **WamDefaultSet:** Auf „JA“ festlegen, wenn für den angemeldeten Benutzer ein standardmäßiges WAM-WebAccount erstellt wird. In diesem Feld wird u.U. ein Fehler angezeigt, wenn „dsregcmd /status“ von einer Eingabeaufforderung mit erhöhten Rechten ausgeführt wird.
-- **WamDefaultAuthority:** Für Azure AD auf „organizations“ (Organisationen) festgelegt.
-- **WamDefaultId:** Immer „https://login.microsoft.com“ für Azure AD.
-- **WamDefaultGUID:** Die GUID des WAM-Anbieters (Azure AD/Microsoft-Konto) für das standardmäßige WAM-WebAccount.
+- **NgcSet**: Der Zustand wird auf *YES* festgelegt, wenn für den derzeit angemeldeten Benutzer ein Windows Hello-Schlüssel festgelegt wurde.
+- **NgcKeyId**: ID des Windows Hello-Schlüssels, wenn für den derzeit angemeldeten Benutzer ein Schlüssel festgelegt wurde.
+- **CanReset**: Gibt an, ob der Windows Hello-Schlüssel vom Benutzer zurückgesetzt werden kann.
+- **Mögliche Werte**: „DestructiveOnly“, „NonDestructiveOnly“, „DestructiveAndNonDestructive“ oder „Unknown“ bei einem Fehler.
+- **WorkplaceJoined**: Der Zustand wird auf *YES* festgelegt, wenn dem Gerät bei Azure AD registrierte Konten im aktuellen NTUSER-Kontext hinzugefügt wurden.
+- **WamDefaultSet**: Der Zustand wird auf *YES* festgelegt, wenn für den angemeldeten Benutzer ein standardmäßiges WAM-WebAccount (Web Account Manager) erstellt wird. In diesem Feld wird unter Umständen ein Fehler angezeigt, wenn `dsregcmd /status` an einer Eingabeaufforderung mit erweiterten Rechten ausgeführt wird.
+- **WamDefaultAuthority**: Der Zustand wird für Azure AD auf *organizations* festgelegt.
+- **WamDefaultId**: Verwenden Sie für Azure AD immer *https://login.microsoft.com* .
+- **WamDefaultGUID**: Die GUID des WAM-Anbieters (Azure AD/Microsoft-Konto) für das standardmäßige WAM-WebAccount.
 
 ### <a name="sample-user-state-output"></a>Beispielausgabe für den Benutzerstatus
 
@@ -169,46 +168,44 @@ In diesem Abschnitt wird der Status verschiedener Attribute für den aktuell am 
 
 ## <a name="sso-state"></a>SSO-Status
 
-Dieser Abschnitt kann für in Azure AD registrierte Geräte ignoriert werden.
+Dieser Abschnitt kann für Geräte, die bei Azure AD registriert sind, ignoriert werden.
 
 > [!NOTE]
 > Der Befehl muss in einem Benutzerkontext ausgeführt werden, um einen gültigen Status für diesen Benutzer abzurufen.
 
-- **AzureAdPrt:** Auf „JA“ festlegen, wenn auf dem Gerät für den angemeldeten Benutzer ein PRT vorhanden ist.
-- **AzureAdPrtUpdateTime:** Wird auf die Zeit in UTC festgelegt, zu der das PRT zuletzt aktualisiert wurde.
-- **AzureAdPrtExpiryTime:** Wird auf die Zeit in UTC festgelegt, wann das PRT abläuft, wenn es nicht erneuert wird.
-- **AzureAdPrtAuthority:** Autoritäts-URL von Azure AD.
-- **EnterprisePrt:** Auf „JA“ festlegen, wenn das Gerät über ein PRT von einem lokalen ADFS verfügt. Für Azure AD Hybrid eingebundene Geräte könnte das Gerät gleichzeitig ein PRT von Azure AD und lokalem AD erhalten. Lokal eingebundene Geräte verfügen nur über ein Enterprise PRT.
-- **EnterprisePrtUpdateTime:** Wird auf die Zeit in UTC festgelegt, zu der das Enterprise PRT zuletzt aktualisiert wurde.
-- **EnterprisePrtExpiryTime:** Wird auf die Zeit in UTC festgelegt, wann das PRT abläuft, wenn es nicht erneuert wird.
-- **EnterprisePrtAuthority:** Autoritäts-URL für ADFS.
+- **AzureAdPrt**: Der Zustand wird auf *YES* festgelegt, wenn für den angemeldeten Benutzer auf dem Gerät ein primäres Aktualisierungstoken (Primary Refresh Token, PRT) vorhanden ist.
+- **AzureAdPrtUpdateTime**: Der Zustand wird auf den Zeitpunkt in koordinierter Weltzeit (UTC) festgelegt, zu dem das PRT zuletzt aktualisiert wurde.
+- **AzureAdPrtExpiryTime**: Der Zustand wird auf den Zeitpunkt in UTC festgelegt, zu dem das PRT abläuft, wenn es nicht erneuert wird.
+- **AzureAdPrtAuthority**: Die URL der Azure AD-Autorität.
+- **EnterprisePrt**: Der Zustand wird auf *YES* festgelegt, wenn das Gerät über ein PRT der lokalen Active Directory-Verbunddienste (AD FS) verfügt. Hybride, in Azure AD eingebundene Geräte können gleichzeitig ein PRT von Azure AD und von der lokalen Active Directory-Instanz aufweisen. Lokal eingebundene Geräte verfügen nur über ein Unternehmens-PRT.
+- **EnterprisePrtUpdateTime**: Der Zustand wird auf den Zeitpunkt in UTC festgelegt, zu dem das Unternehmens-PRT zuletzt aktualisiert wurde.
+- **EnterprisePrtExpiryTime**: Der Zustand wird auf den Zeitpunkt in UTC festgelegt, zu dem das PRT abläuft, wenn es nicht erneuert wird.
+- **EnterprisePrtAuthority**: Die URL der AD FS-Autorität.
 
 >[!NOTE]
-> Die folgenden PRT-Diagnosefelder wurden in **Windows 10 Update vom 10. Mai 2021 (Version 21H1)** hinzugefügt.
+> Die folgenden Felder der PRT-Diagnose wurden im Windows 10-Update vom 10. Mai 2021 (Version 21H1) hinzugefügt.
 
 >[!NOTE]
-> Diagnoseinformationen, die im Feld **AzureAdPrt** angezeigt werden, gelten für AzureAD PRT-Erwerb/-Aktualisierung und Diagnoseinformationen, die unter **EnterprisePrt** bzw. für Enterprise PRT-Abruf/-Aktualisierung angezeigt werden.
+> * Die im Feld **AzureAdPrt** angezeigten Diagnoseinformationen sind für den Abruf oder die Aktualisierung eines Azure AD-PRT vorgesehen, und die im Feld **EnterprisePrt** angezeigten Diagnoseinformationen sind für den Abruf oder die Aktualisierung eines Unternehmens-PRT bestimmt.
+> * Die Diagnoseinformationen werden nur angezeigt, wenn der Abruf- oder Aktualisierungsfehler nach dem Zeitpunkt der letzten erfolgreichen PRT-Aktualisierung (AzureAdPrtUpdateTime/EnterprisePrtUpdateTime) aufgetreten ist.  
+>Auf einem freigegebenen Gerät können diese Diagnoseinformationen vom Anmeldeversuch eines anderen Benutzers herrühren.
 
->[!NOTE]
->Diagnoseinformationen werden nur angezeigt, wenn der Abruf-/Aktualisierungsfehler nach der letzten erfolgreichen PRT-Updatezeit (AzureAdPrtUpdateTime/EnterprisePrtUpdateTime) erfolgt ist.  
->Auf einem freigegebenen Gerät können diese Diagnoseinformationen vom Anmeldeversuch eines anderen Benutzers stammen.
-
-- **AcquirePrtDiagnostics:** Legen Sie diese Einstellung auf „PRESENT“ fest, wenn in den Protokollen Abruf-PRT-Diagnoseinformationen vorhanden sind.  
+- **AcquirePrtDiagnostics**: Der Zustand wird auf *PRESENT* festgelegt, wenn die abgerufenen PRT-Diagnoseinformationen in den Protokollen enthalten sind.  
+   Dieses Feld wird übersprungen, wenn keine Diagnoseinformationen verfügbar sind.
+- **Previous Prt Attempt**: Die Ortszeit in UTC, zu der der fehlerhafte PRT-Versuch erfolgt ist.  
+- **Attempt Status**: Der zurückgegebene Clientfehlercode (HRESULT).
+- **User Identity**: Der UPN des Benutzers, für den der PRT-Versuch stattgefunden hat.
+- **Credential Type**: Die Anmeldeinformationen, die zum Abrufen oder Aktualisieren des PRT verwendet wurden. Gängige Anmeldeinformationstypen: Kennwort und NGC (Next Generation Credential, für Windows Hello).
+- **Correlation ID**: Die Korrelations-ID, die vom Server für den fehlerhaften PRT-Versuch gesendet wird.
+- **Endpoint URI**: Der vor dem Fehler zuletzt aufgerufene Endpunkt.
+- **HTTP Method**: Die HTTP-Methode, die für den Zugriff auf den Endpunkt verwendet wird.
+- **HTTP Error**: Der Fehlercode für den WinHttp-Transport. [Hier](/windows/win32/winhttp/error-messages) finden Sie weitere Netzwerkfehlercodes.
+- **HTTP Status**: Der vom Endpunkt zurückgegebene HTTP-Status.
+- **Server Error Code**: Der vom Server gesendete Fehlercode.  
+- **Server Error Description**: Die vom Server gesendete Fehlermeldung.
+- **RefreshPrtDiagnostics**: Der Zustand wird auf *PRESENT* festgelegt, wenn die abgerufenen PRT-Diagnoseinformationen in den Protokollen enthalten sind.  
 Dieses Feld wird übersprungen, wenn keine Diagnoseinformationen verfügbar sind.
-- **Previos Prt Attempt:** Ortszeit in UTC, zu der der fehlgeschlagene PRT-Versuch aufgetreten ist  
-- **Attempt Status:** Der zurückgegebene Clientfehlercode (HRESULT)
-- **User Identity:** UPN des Benutzers, für den der PRT-Versuch stattgefunden hat
-- **Credential Type:** Anmeldeinformationen, die zum Abrufen/Aktualisieren von PRT verwendet wurden Gängige Anmeldeinformationstypen sind Password und NGC (Windows Hello).
-- **Correlation ID:** Korrelations-ID, die vom Server für den fehlgeschlagenen PRT-Versuch gesendet wurde
-- **Endpoint URI:** Letzter Zugriff auf den Endpunkt vor dem Fehler
-- **HTTP Method:** HTTP-Methode, die für den Zugriff auf den Endpunkt verwendet wurde
-- **HTTP-Fehler:** WinHttp-Transportfehlercode WinHttp-Fehler finden Sie [hier](/windows/win32/winhttp/error-messages).
-- **HTTP Status:** Der vom Endpunkt zurückgegebene HTTP-Status
-- **Server Error Code:** Fehlercode vom Server  
-- **Server Error Description:** Fehlermeldung vom Server
-- **RefreshPrtDiagnostics:** Legen Sie diese Einstellung auf „PRESENT“ fest, wenn in den Protokollen Abruf-PRT-Diagnoseinformationen vorhanden sind.  
-Dieses Feld wird übersprungen, wenn keine Diagnoseinformationen verfügbar sind.
-Die Diagnoseinformationsfelder sind identisch mit **AcquirePrtDiagnostics**.
+Die Diagnoseinformationsfelder sind mit denen von **AcquirePrtDiagnostics** identisch.
 
 
 ### <a name="sample-sso-state-output"></a>Beispielausgabe für den SSO-Status
@@ -240,51 +237,51 @@ Die Diagnoseinformationsfelder sind identisch mit **AcquirePrtDiagnostics**.
 +----------------------------------------------------------------------+
 ```
 
-## <a name="diagnostic-data"></a>Diagnosedaten
+## <a name="diagnostics-data"></a>Diagnosedaten
 
 ### <a name="pre-join-diagnostics"></a>Diagnose vor dem Join
 
-Dieser Abschnitt wird nur angezeigt, wenn das Gerät in eine Domäne eingebunden ist und nicht in Azure AD Hybrid eingebunden werden kann.
+Dieser Diagnoseabschnitt wird nur angezeigt, wenn das Gerät in eine Domäne eingebunden ist und nicht hybrid in Azure AD eingebunden werden kann.
 
-In diesem Abschnitt werden verschiedene Tests durchgeführt, um die Diagnose von Join-Fehlern zu erleichtern. Dieser Abschnitt enthält auch die Details des vorherigen (?). Diese Informationen umfassen die Fehlerphase, den Fehlercode, die Serveranfrage-ID, den HTTP-Status der Serverantwort und die Fehlermeldung der Serverantwort.
+In diesem Abschnitt werden verschiedene Tests durchgeführt, um die Diagnose von Join-Fehlern zu erleichtern. Die Informationen umfassen die Fehlerphase, den Fehlercode, die Serveranforderungs-ID, den HTTP-Status der Serverantwort und die Fehlermeldung der Serverantwort.
 
-- **Benutzerkontext:** Der Kontext, in dem die Diagnose durchgeführt wird. Mögliche Werte: SYSTEM, UN-ELEVATED User (Benutzer ohne erhöhte Rechte), ELEVATED User (Benutzer mit erhöhten Rechten).
+- **User Context**: Der Kontext, in dem die Diagnose durchgeführt wird. Mögliche Werte: SYSTEM, UN-ELEVATED User (Benutzer ohne erhöhte Rechte), ELEVATED User (Benutzer mit erhöhten Rechten).
 
    > [!NOTE]
-   > Da der eigentliche Join im SYSTEM-Kontext durchgeführt wird, ist die Ausführung der Diagnose im SYSTEM-Kontext dem tatsächlichen Join-Szenario am nächsten. Um die Diagnose im SYSTEM-Kontext auszuführen, muss der Befehl „dsregcmd /status“ über eine Befehlszeile mit erhöhten Rechten ausgeführt werden.
+   > Da die eigentliche Einbindung im SYSTEM-Kontext durchgeführt wird, ist die Ausführung der Diagnose im SYSTEM-Kontext dem tatsächlichen Einbindungsszenario am nächsten. Um die Diagnose im SYSTEM-Kontext auszuführen, muss der Befehl `dsregcmd /status` über eine Befehlszeile mit erweiterten Rechten ausgeführt werden.
 
-- **Client Time (Clientzeit):** Die Systemzeit in UTC.
-- **AD Connectivity Test (AD-Verbindungstest):** Der Test führt einen Verbindungstest mit dem Domänencontroller durch. Ein Fehler in diesem Test wird wahrscheinlich zu Join-Fehlern in der Vorabprüfungsphase führen.
-- **AD Configuration Test (AD-Konfigurationstest):** Der Test liest und überprüft, ob das SCP-Objekt in der lokalen AD-Gesamtstruktur ordnungsgemäß konfiguriert ist. Fehler in diesem Test würden wahrscheinlich zu Join-Fehlern mit dem Fehlercode 0x801c001d in der Ermittlungsphase führen.
-- **DRS Discovery Test (DRS-Ermittlungstest):** Der Test ruft die DRS-Endpunkte vom Endpunkt für die Ermittlung von Metadaten ab und führt eine Benutzerbereichsanforderung aus. Fehler in diesem Test würden wahrscheinlich zu Join-Fehlern in der Ermittlungsphase führen.
-- **DRS Connectivity Test (DRS-Verbindungstest):** Der Test führt einen grundlegenden Verbindungstest mit dem DRS-Endpunkt aus.
-- **Token acquisition Test (Tokenbeschaffungstest):** Der Test versucht, ein Azure AD-Authentifizierungstoken abzurufen, wenn der Benutzermandant einem Verbund hinzugefügt wird. Fehler in diesem Test würden wahrscheinlich zu Join-Fehlern in der Authentifizierungsphase führen. Wenn bei der Authentifizierung ein Fehler auftritt, wird „sync join“ als Fallback versucht, sofern der Fallback nicht explizit mit den folgenden Registrierungsschlüsseleinstellungen deaktiviert wird.
+- **Client Time**: Die Systemzeit in UTC.
+- **AD Connectivity Test**: Dieser Test führt einen Konnektivitätstest für den Domänencontroller durch. Ein Fehler bei diesem Test führt wahrscheinlich zu Einbindungsfehlern in der Vorabprüfungsphase.
+- **AD Configuration Test**: Dieser Test liest das SCP-Objekt (Special Containment Procedures) und überprüft, ob es in der lokalen Active Directory-Gesamtstruktur ordnungsgemäß konfiguriert ist. Fehler bei diesem Test führen wahrscheinlich zu Einbindungsfehlern mit dem Fehlercode 0x801c001d in der Ermittlungsphase.
+- **DRS Discovery Test**: Dieser Test ruft die DRS-Endpunkte vom Endpunkt für Ermittlungsmetadaten ab und führt eine Benutzerbereichsanforderung aus. Fehler bei diesem Test führen wahrscheinlich zu Einbindungsfehlern in der Ermittlungsphase.
+- **DRS Connectivity Test**: Dieser Test führt einen grundlegenden Konnektivitätstest für den DRS-Endpunkt aus.
+- **Token Acquisition Test**: Dieser Test versucht, ein Azure AD-Authentifizierungstoken abzurufen, wenn der Benutzermandant einem Verbund angehört. Fehler bei diesem Test führen wahrscheinlich zu Einbindungsfehlern in der Authentifizierungsphase. Bei einem Authentifizierungsfehler wird „sync join“ als Fallback versucht, sofern Fallbacks nicht explizit über die folgenden Registrierungsschlüsseleinstellungen deaktiviert werden:
 
-```
-Keyname: Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ
-Value: FallbackToSyncJoin
-Type:  REG_DWORD
-Value: 0x0 -> Disabled
-Value: 0x1 -> Enabled
-Default (No Key): Enabled
-```
+  ```
+  Keyname: Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ
+  Value: FallbackToSyncJoin
+  Type:  REG_DWORD
+  Value: 0x0 -> Disabled
+  Value: 0x1 -> Enabled
+  Default (No Key): Enabled
+  ```
 
-- **Fallback zu Sync-Join:** Auf „Aktiviert“ festlegen, wenn der obige Registrierungsschlüssel NICHT vorhanden ist, um den Fallback zu „Sync Join“ mit Authentifizierungsfehlern zu vermeiden. Diese Option ist ab Windows 10 1803 verfügbar.
-- **Previous Registration (Vorherige Registrierung):** Zeitpunkt des vorherigen Join-Versuchs. Es werden nur fehlerhafte Join-Versuche protokolliert.
-- **Error Phase (Fehlerphase):** Die Join-Phase, in der der Abbruch erfolgte. Mögliche Werte sind „pre-check“, „discover“, „auth“, „join“.
-- **Client ErrorCode (Clientfehlercode):** Der zurückgegebene Clientfehlercode (HRESULT).
-- **Server ErrorCode (Serverfehlercode):** Serverfehlercode, wenn eine Anforderung an den Server gesendet wurde und der Server mit einem Fehlercode geantwortet hat.
-- **Server Message (Servermeldung):** Servermeldung, die zusammen mit dem Fehlercode zurückgegeben wird.
-- **Https Status:** Der vom Server zurückgegebene HTTP-Status.
-- **Request ID (Anforderungs-ID):** Die an den Server gesendete Clientanforderungs-ID. Praktisch zum Korrelieren mit serverseitigen Protokollen.
+- **Fallback to Sync-Join**: Der Zustand wird auf *Enabled* festgelegt, wenn der obige Registrierungsschlüssel *nicht* vorhanden ist, um Fallbacks auf „Sync Join“ bei Authentifizierungsfehlern zu vermeiden. Diese Option ist ab Windows 10 1803 verfügbar.
+- **Previous Registration**: Der Zeitpunkt des vorherigen Einbindungsversuchs. Es werden nur fehlerhafte Einbindungsversuche protokolliert.
+- **Error Phase**: Die Einbindungsphase, in der der Abbruch erfolgte. Mögliche Werte: *pre-check*, *discover*, *auth* und *join*.
+- **Client ErrorCode**: Der zurückgegebene Clientfehlercode (HRESULT).
+- **Server ErrorCode**: Der Serverfehlercode, der angezeigt wird, wenn eine Anforderung an den Server gesendet wurde und der Server mit einem Fehlercode geantwortet hat.
+- **Server Message**: Die Servermeldung, die zusammen mit dem Fehlercode zurückgegeben wird.
+- **Https Status**: Der vom Server zurückgegebene HTTP-Status.
+- **Request ID**: Die an den Server gesendete Anforderungs-ID (requestId) des Clients. Die Anforderungs-ID ist nützlich, um Zusammenhänge mit serverseitigen Protokollen herzustellen.
 
 ### <a name="sample-pre-join-diagnostics-output"></a>Beispielausgabe für Diagnose vor dem Join
 
-Das folgende Beispiel zeigt, dass der Diagnosetest mit einem Ermittlungsfehler fehlschlägt.
+Das folgende Beispiel zeigt einen Diagnosetest mit einem Ermittlungsfehler.
 
 ```
 +----------------------------------------------------------------------+
-| Diagnostic Data                                                      |
+| Diagnostic Data                                                       |
 +----------------------------------------------------------------------+
 
      Diagnostics Reference : www.microsoft.com/aadjerrors
@@ -304,11 +301,11 @@ Das folgende Beispiel zeigt, dass der Diagnosetest mit einem Ermittlungsfehler f
 +----------------------------------------------------------------------+
 ```
 
-Das folgende Beispiel zeigt, dass Diagnosetests erfolgreich durchgeführt werden, aber beim Registrierungsversuch ein Verzeichnisfehler aufgetreten ist, der für „sync join“ erwartet wird. Nachdem der Synchronisierungsauftrag von Azure AD Connect abgeschlossen ist, kann das Gerät eingebunden werden.
+Das folgende Beispiel zeigt, dass Diagnosetests erfolgreich durchgeführt werden, aber beim Registrierungsversuch ein Verzeichnisfehler aufgetreten ist. Dies ist für „sync-join“ ein erwartetes Verhalten. Nachdem der Synchronisierungsauftrag von Azure AD Connect abgeschlossen wurde, kann das Gerät eingebunden werden.
 
 ```
 +----------------------------------------------------------------------+
-| Diagnostic Data                                                      |
+| Diagnostic Data                                                       |
 +----------------------------------------------------------------------+
 
      Diagnostics Reference : www.microsoft.com/aadjerrors
@@ -326,7 +323,7 @@ Das folgende Beispiel zeigt, dass Diagnosetests erfolgreich durchgeführt werden
                Error Phase : join
           Client ErrorCode : 0x801c03f2
           Server ErrorCode : DirectoryError
-            Server Message : The device object by the given id (e92325d0-7ac4-4714-88a1-94ae875d5245) is not found.
+            Server Message : The device object by the given id (e92325d0-7ac4-4714-88a1-94ae875d5245) isn't found.
               Https Status : 400
                 Request Id : 6bff0bd9-820b-484b-ab20-2a4f7b76c58e
 
@@ -335,10 +332,12 @@ Das folgende Beispiel zeigt, dass Diagnosetests erfolgreich durchgeführt werden
 
 ### <a name="post-join-diagnostics"></a>Diagnose nach dem Join
 
-In diesem Abschnitt wird die Ausgabe von Integritätsprüfungen angezeigt, die für ein in die Cloud eingebundenes Gerät durchgeführt wurden.
+In diesem Diagnoseabschnitt wird die Ausgabe von Integritätsprüfungen angezeigt, die für ein in die Cloud eingebundenes Gerät durchgeführt werden.
 
-- **AadRecoveryEnabled:** Bei „JA“ sind die im Gerät gespeicherten Schlüssel nicht verwendbar, und das Gerät ist für die Wiederherstellung markiert. Die nächste Anmeldung löst den Wiederherstellungsflow aus und führt zu einer erneuten Registrierung des Geräts.
-- **KeySignTest:** Bei „PASSED“ (Erfolgreich) ist die Integrität der Geräteschlüssel nicht beeinträchtigt. Wenn bei „KeySignTest“ ein Fehler auftritt, wird das Gerät in der Regel zur Wiederherstellung markiert. Die nächste Anmeldung löst den Wiederherstellungsflow aus und führt zu einer erneuten Registrierung des Geräts. Für in Azure AD Hybrid eingebundene Geräte erfolgt die Wiederherstellung im Hintergrund. Obwohl sie in Azure AD eingebunden oder in Azure AD registriert sind, fordern die Geräte zur Benutzerauthentifizierung auf, um das Gerät wiederherzustellen und ggf. neu zu registrieren. **KeySignTest erfordert erhöhte Berechtigungen.**
+- **AadRecoveryEnabled**: Wenn der Wert *YES* lautet, sind die im Gerät gespeicherten Schlüssel nicht verwendbar, und das Gerät wird für die Wiederherstellung markiert. Die nächste Anmeldung löst den Wiederherstellungsflow aus und führt zu einer erneuten Registrierung des Geräts.
+- **KeySignTest**: Wenn der Wert *PASSED* lautet, sind die Geräteschlüssel fehlerfrei. Wenn bei „KeySignTest“ ein Fehler auftritt, wird das Gerät in der Regel für die Wiederherstellung markiert. Die nächste Anmeldung löst den Wiederherstellungsflow aus und führt zu einer erneuten Registrierung des Geräts. Für hybride, in Azure AD eingebundene Geräte erfolgt die Wiederherstellung im Hintergrund. Wenn die Geräte in Azure AD eingebunden oder bei Azure AD registriert sind, fordern sie zur Benutzerauthentifizierung auf, um das Gerät wiederherzustellen und ggf. neu zu registrieren. 
+   > [!NOTE]
+   > KeySignTest erfordert erhöhte Berechtigungen.
 
 #### <a name="sample-post-join-diagnostics-output"></a>Beispielausgabe für Diagnose nach dem Join
 
@@ -352,26 +351,26 @@ In diesem Abschnitt wird die Ausgabe von Integritätsprüfungen angezeigt, die f
 +----------------------------------------------------------------------+
 ```
 
-## <a name="ngc-prerequisite-check"></a>Überprüfung der NGC-Voraussetzung
+## <a name="ngc-prerequisites-check"></a>Überprüfung der NGC-Voraussetzungen
 
-In diesem Abschnitt werden die Voraussetzungen für die Bereitstellung von Windows Hello for Business (WHFB) überprüft.
+In diesem Diagnoseabschnitt werden die Voraussetzungen für die Einrichtung von Windows Hello for Business (WHFB) überprüft.
 
 > [!NOTE]
-> Wenn der Benutzer WHFB bereits erfolgreich konfiguriert hat, werden in „dsregcmd/status“ möglicherweise keine Details zur Überprüfung der NGC-Voraussetzung angezeigt.
+> Wenn der Benutzer WHFB bereits erfolgreich konfiguriert hat, werden in `dsregcmd /status` unter Umständen keine Details zur Überprüfung der Voraussetzungen angezeigt.
 
-- **IsDeviceJoined:** „YES“ (JA), wenn das Gerät in Azure AD eingebunden ist.
-- **IsUserAzureAD:** „YES“ (JA), wenn der angemeldete Benutzer in Azure AD vorhanden ist
-- **PolicyEnabled:** „YES“ (JA), wenn die WHFB-Richtlinie auf dem Gerät aktiviert ist.
-- **PostLogonEnabled:** „YES“ (JA), wenn die WHFB-Registrierung nativ durch die Plattform ausgelöst wird. „NO“ (NEIN) gibt an, dass die Registrierung für Windows Hello for Business durch einen benutzerdefinierten Mechanismus ausgelöst wird.
-- **DeviceEligible:** „YES“ (JA), wenn das Gerät die Hardwareanforderungen für die WHFB-Registrierung erfüllt.
-- **SessionIsNotRemote:** „YES“ (JA), wenn der Benutzer nicht remote, sondern direkt bei dem Gerät angemeldet ist.
-- **CertEnrollment:** Spezifisch für die Bereitstellung der WHFB-Zertifikatvertrauensstellung. Gibt die Zertifikatregistrierungsstelle für WHFB an. Festgelegt auf „enrollment authority“ (Registrierungsstelle), wenn es sich bei der Quelle der WHFB-Richtlinie um eine Gruppenrichtlinie handelt, oder auf „mobile device management“ (mobile Geräteverwaltung), wenn es sich bei der Quelle um die mobile Geräteverwaltung handelt. Andernfalls „none“ (keine).
-- **AdfsRefreshToken:** Spezifisch für die Bereitstellung der WHFB-Zertifikatvertrauensstellung. Nur vorhanden, wenn „CertEnrollment“ den Wert „enrollment authority“ (Registrierungsstelle) hat. Gibt an, ob das Gerät über ein Enterprise PRT für den Benutzer verfügt.
-- **AdfsRaIsReady:** Spezifisch für die Bereitstellung der WHFB-Zertifikatvertrauensstellung.  Nur vorhanden, wenn „CertEnrollment“ den Wert „enrollment authority“ (Registrierungsstelle) hat. „YES“ (JA), wenn in Ermittlungsmetadaten von ADFS angegeben wurde, dass WHFB unterstützt wird, *und* wenn eine Anmeldezertifikatvorlage verfügbar ist.
-- **LogonCertTemplateReady:** Spezifisch für die Bereitstellung der WHFB-Zertifikatvertrauensstellung. Nur vorhanden, wenn „CertEnrollment“ den Wert „enrollment authority“ (Registrierungsstelle) hat. „YES“ (JA), wenn der Zustand der Anmeldezertifikatvorlage gültig ist. Hilfreich beim Behandeln von Problemen mit der ADFS-Registrierungsstelle.
-- **PreReqResult:** Gibt das Gesamtergebnis der Auswertung der WHFB-Voraussetzungen an. „Will Provision“ (Wird bereitgestellt), wenn die WHFB-Registrierung nach der nächsten Benutzeranmeldung gestartet wird.
+- **IsDeviceJoined**: Der Zustand wird auf *YES* festgelegt, wenn das Gerät in Azure AD eingebunden ist.
+- **IsUserAzureAD**: Der Zustand wird auf *YES* festgelegt, wenn der angemeldete Benutzer in Azure AD enthalten ist.
+- **PolicyEnabled**: Der Zustand wird auf *YES* festgelegt, wenn die WHFB-Richtlinie auf dem Gerät aktiviert ist.
+- **PostLogonEnabled**: Der Zustand wird auf *YES* festgelegt, wenn die WHFB-Registrierung nativ durch die Plattform ausgelöst wird. Wenn der Zustand auf *NO* festgelegt ist, weist dies darauf hin, dass die Registrierung für Windows Hello for Business durch einen benutzerdefinierten Mechanismus ausgelöst wird.
+- **DeviceEligible**: Der Zustand wird auf *YES* festgelegt, wenn das Gerät die Hardwareanforderungen für die WHFB-Registrierung erfüllt.
+- **SessionIsNotRemote**: Der Zustand wird auf *YES* festgelegt, wenn der aktuelle Benutzer nicht remote, sondern direkt beim Gerät angemeldet ist.
+- **CertEnrollment**: Diese Einstellung ist spezifisch für die Bereitstellung der WHFB-Zertifikatvertrauensstellung und gibt die Zertifikatregistrierungsstelle für WHFB an. Der Zustand wird auf *enrollment authority* festgelegt, wenn es sich bei der Quelle der WHFB-Richtlinie um eine Gruppenrichtlinie handelt, bzw. auf *mobile device management*, wenn es sich bei der Quelle um die Verwaltung mobiler Geräte handelt. Wenn keine der beiden Quellen zutrifft, wird der Zustand auf *none* festgelegt.
+- **AdfsRefreshToken**: Diese Einstellung ist spezifisch für die Bereitstellung der WHFB-Zertifikatvertrauensstellung und nur vorhanden, wenn der CertEnrollment-Zustand auf *enrollment authority* festgelegt ist. Die Einstellung gibt an, ob das Gerät über ein Unternehmens-PRT für den Benutzer verfügt.
+- **AdfsRaIsReady**: Diese Einstellung ist spezifisch für die Bereitstellung der WHFB-Zertifikatvertrauensstellung und nur vorhanden, wenn der CertEnrollment-Zustand auf *enrollment authority* festgelegt ist. Der Zustand wird auf *YES* festgelegt, wenn AD FS in Ermittlungsmetadaten angibt, dass WHFB unterstützt wird *und* die Anmeldezertifikatvorlage verfügbar ist.
+- **LogonCertTemplateReady**: Diese Einstellung ist spezifisch für die Bereitstellung der WHFB-Zertifikatvertrauensstellung und nur vorhanden, wenn der CertEnrollment-Zustand auf *enrollment authority* festgelegt ist. Der Zustand wird auf *YES* festgelegt, wenn der Zustand der Anmeldezertifikatvorlage gültig ist und zur Problembehandlung der AD FS-Registrierungsstelle beiträgt.
+- **PreReqResult**: Gibt das Gesamtergebnis der Auswertung der WHFB-Voraussetzungen an. Der Zustand wird auf *Will Provision* festgelegt, wenn die WHFB-Registrierung bei der nächsten Benutzeranmeldung als Aufgabe nach der Anmeldung gestartet wird.
 
-### <a name="sample-ngc-prerequisite-check-output"></a>Beispielausgabe für die Überprüfung der NGC-Voraussetzung
+### <a name="sample-ngc-prerequisites-check-output"></a>Beispielausgabe für die Überprüfung der NGC-Voraussetzungen
 
 ```
 +----------------------------------------------------------------------+
@@ -394,4 +393,4 @@ In diesem Abschnitt werden die Voraussetzungen für die Bereitstellung von Windo
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Das Microsoft-Fehlersuchtool](/windows/win32/debug/system-error-code-lookup-tool)
+Wechseln Sie zum [Microsoft-Fehlersuchtool](/windows/win32/debug/system-error-code-lookup-tool).

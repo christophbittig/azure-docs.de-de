@@ -3,12 +3,12 @@ title: Bereitstellen mehrerer Instanzen von Ressourcen
 description: Verwenden des copy-Vorgangs und von Arrays in einer Azure Resource Manager-Vorlage (ARM), um einen Ressourcentyp mehrere Male bereitzustellen.
 ms.topic: conceptual
 ms.date: 05/07/2021
-ms.openlocfilehash: 305a05f10683c879e9f002f02aa6d00edbb43d0a
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: fc1b8389280880372e8209f5c699b39363e286bf
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111954655"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123449781"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>Ressourceniteration in ARM-Vorlagen
 
@@ -248,6 +248,7 @@ Die folgenden Beispiele zeigen allgemeine Szenarien für das Erstellen mehrerer 
 |[Speicher kopieren](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |Stellt mehrere Speicherkonten mit einer Indexnummer im Namen bereit. |
 |[Speicher seriell kopieren](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |Stellt mehrere Speicherkonten nacheinander bereit. Der Name enthält die Indexnummer. |
 |[Speicher mit Array kopieren](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystoragewitharray.json) |Stellt mehrere Speicherkonten bereit. Der Name enthält einen Wert aus einem Array. |
+| [Ressourcengruppe kopieren](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyRG.json) | Stellt Sie mehrere Ressourcengruppen bereit. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

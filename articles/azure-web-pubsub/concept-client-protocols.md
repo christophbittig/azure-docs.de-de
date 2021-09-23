@@ -6,12 +6,12 @@ ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: conceptual
 ms.date: 08/16/2021
-ms.openlocfilehash: 06f4b3050b90f27d1f30ba59b26eeed4d76c6bc8
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: e08f595e2dc80abe06fa68d1a3e30ac68ff0097c
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446849"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426344"
 ---
 #  <a name="websocket-client-protocols-for-azure-web-pubsub"></a>WebSocket-Clientprotokolle für Azure Web PubSub
 
@@ -53,15 +53,27 @@ var client2 = new WebSocket('wss://test.webpubsub.azure.com/client/hubs/hub1', '
 
 ## <a name="the-pubsub-websocket-client"></a>PubSub-WebSocket-Client
 
-Der PubSub-WebSocket-Client stellt eine Verbindung mit Unterprotokoll `json.webpubsub.azure.v1` her.
+Der PubSub-WebSocket-Client unterstützt zwei Unterprotokolle: `json.webpubsub.azure.v1` und `protobuf.webpubsub.azure.v1`
 
-Beispielsweise kann in JS ein PubSub-WebSocket-Client mithilfe folgender Komponenten erstellt werden:
+#### <a name="json-subprotocol"></a>JSON-Unterprotokoll
+
+In JS kann ein PubSub-WebSocket-Client mit dem JSON-Unterprotokoll beispielsweise folgendermaßen erstellt werden:
 ```js
 // PubSub WebSocket client
 var pubsub = new WebSocket('wss://test.webpubsub.azure.com/client/hubs/hub1', 'json.webpubsub.azure.v1');
 ```
 
-Wenn der Client dieses Unterprotokoll verwendet, wird erwartet, dass sowohl der ausgehende als auch der eingehende Datenframe JSON-Nutzdaten sind. Ein authentifizierter Client kann Nachrichten direkt über den Azure Web PubSub-Dienst für andere Clients veröffentlichen.
+#### <a name="protobuf-subprotocol"></a>Protobuf-Unterprotokoll
+
+Protobuf ist ein sprachneutrales, plattformneutrales Protokoll im Binärformat, das zum benutzerfreundlichen Senden von Binärdaten geeignet ist. Protobuf stellt Tools zum Generieren von Clients für viele Sprachen wie z. B. Java, Python, Objective-C, C# und C++ zur Verfügung. [Weitere Informationen zu Protobuf](https://developers.google.com/protocol-buffers).
+
+In JS kann ein PubSub-WebSocket-Client mit dem Protobuf-Unterprotokoll beispielsweise folgendermaßen erstellt werden:
+```js
+// PubSub WebSocket client
+var pubsub = new WebSocket('wss://test.webpubsub.azure.com/client/hubs/hub1', 'protobuf.webpubsub.azure.v1');
+```
+
+Wenn der Client ein Unterprotokoll verwendet, wird erwartet, dass sowohl der ausgehende als auch der eingehende Datenframe JSON-Nutzdaten sind. Ein authentifizierter Client kann Nachrichten direkt über den Azure Web PubSub-Dienst für andere Clients veröffentlichen.
 
 ### <a name="permissions"></a>Berechtigungen
 
@@ -75,7 +87,8 @@ Möglicherweise haben Sie bemerkt, dass - wenn wir über PubSub-WebSocket-Client
 | `webpubsub.joinLeaveGroup.<group>` | Der Client kann Gruppe `<group>` beitreten/verlassen.
 | `webpubsub.sendToGroup.<group>` | Der Client kann Nachrichten in Gruppe `<group>` veröffentlichen.
 
-Details zum Unterprotokoll sind unter [JSON-Unterprotokoll](./reference-json-webpubsub-subprotocol.md) beschrieben.
+* Details zum JSON-Unterprotokoll werden unter [JSON-Unterprotokoll](./reference-json-webpubsub-subprotocol.md) beschrieben.
+* Details zum Protobuf-Unterprotokoll werden unter [Protobuf-Unterprotokoll](./reference-protobuf-webpubsub-subprotocol.md) beschrieben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

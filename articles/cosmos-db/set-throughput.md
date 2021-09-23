@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/25/2021
-ms.openlocfilehash: 1d5fba12ce9b1ce8d30c59a08aa36e1222abe3c7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3c2e900090b3f3908318bfbc3f1ea1e6f2588dee
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102433929"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123431276"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Einführung zum bereitgestellten Durchsatz in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -123,6 +123,8 @@ Wenn Sie den **bereitgestellten Durchsatz verringern**, ist dies bis zum [Mindes
 
 Wenn Sie den **bereitgestellten Durchsatz erhöhen**, erfolgt der Vorgang in den meisten Fällen sofort. Es gibt jedoch Fälle in denen der Zeitaufwand aufgrund der Systemtasks für die Bereitstellung der erforderlichen Ressourcen höher sein kann. In diesem Fall führt der Versuch, den bereitgestellten Durchsatz zu ändern, während dieser Vorgang ausgeführt wird, zu einer HTTP 423-Antwort mit einer Fehlermeldung, die angibt, dass ein anderer Skalierungsvorgang ausgeführt wird.
 
+Weitere Informationen finden Sie im Artikel [Bewährte Methoden für das Skalieren des bereitgestellten Durchsatzes (RU/s)](scaling-provisioned-throughput-best-practices.md).
+
 > [!NOTE]
 > Wenn Sie eine sehr große Erfassungsworkload planen, die einen hohen Zuwachs an bereitgestelltem Durchsatz erfordert, denken Sie daran, dass für den Skalierungsvorgang keine SLA besteht und es – wie im vorherigen Absatz bereits erwähnt – bei einem hohen Zuwachs sehr lange dauern kann. Möglicherweise möchten Sie im Voraus planen und mit der Skalierung beginnen, bevor die Workload startet, und die unten aufgeführten Methoden zum Überprüfen des Fortschritts verwenden.
 
@@ -160,3 +162,6 @@ Diese Tabelle zeigt einen Vergleich zwischen dem standardmäßig (manuell) berei
 * Erfahren Sie mehr über das [Bereitstellen von Durchsatz für einen Azure Cosmos-Container](how-to-provision-container-throughput.md).
 * Erfahren Sie mehr über das [Bereitstellen des Durchsatzes für eine Datenbank in Azure Cosmos DB](how-to-provision-database-throughput.md).
 * Erfahren Sie mehr über das [Bereitstellen von automatisch skaliertem Durchsatz für eine Datenbank oder einen Container in Azure Cosmos DB](how-to-provision-autoscale-throughput.md).
+* Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen? Sie können Informationen zu Ihrem vorhandenen Datenbankcluster für die Kapazitätsplanung verwenden.
+    * Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](convert-vcore-to-request-unit.md). 
+    * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbank-Workload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)

@@ -1,19 +1,17 @@
 ---
 title: Best Practices für das Azure Maps-Web-SDK | Microsoft Azure Maps
 description: Hier lernen Sie Tipps und Tricks für eine optimale Verwendung des Azure Maps-Web-SDK kennen.
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 3/22/2021
 ms.topic: conceptual
 ms.service: azure-maps
-services: azure-maps
-manager: cpendle
-ms.openlocfilehash: 630b354768e3ad0882911f11a99cca06fc87154e
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 3bcf3125e09ee2023e36b3eefc5d34d4a1215c4e
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112234427"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123439360"
 ---
 # <a name="azure-maps-web-sdk-best-practices"></a>Best Practices für das Azure Maps-Web-SDK
 
@@ -25,7 +23,7 @@ Allgemein sollten Sie, wenn Sie die Leistung der Karte verbessern möchten, nach
 
 ## <a name="security-basics"></a>Grundlagen zur Sicherheit
 
-Der wichtigste Teil Ihrer Anwendung ist deren Sicherheit. Wenn Ihre Anwendung nicht sicher ist, können Hacker Schaden verursachen, unabhängig davon, wie gut die Benutzerfreundlichkeit möglicherweise ist. Im Folgenden sind einige Tipps aufgeführt, die Ihnen dabei helfen, die Sicherheit Ihrer Azure Maps-Anwendung zu gewährleisten. Wenn Sie Azure verwenden, denken Sie daran, sich mit den Sicherheitstools vertraut zu machen, die Ihnen zur Verfügung stehen. Eine Einführung zum Thema Sicherheit in Azure finden Sie in [diesem Dokument](../security/fundamentals/overview.md).
+Der wichtigste Teil Ihrer Anwendung ist deren Sicherheit. Wenn Ihre Anwendung nicht sicher ist, können Hacker selbst die beste Benutzeroberfläche ruinieren. Im Folgenden sind einige Tipps aufgeführt, die Ihnen dabei helfen, die Sicherheit Ihrer Azure Maps-Anwendung zu gewährleisten. Wenn Sie Azure verwenden, denken Sie daran, sich mit den Sicherheitstools vertraut zu machen, die Ihnen zur Verfügung stehen. Eine Einführung zum Thema Sicherheit in Azure finden Sie in [diesem Dokument](../security/fundamentals/overview.md).
 
 > [!IMPORTANT]
 > Azure Maps bietet zwei Authentifizierungsmethoden.
@@ -37,7 +35,7 @@ Der wichtigste Teil Ihrer Anwendung ist deren Sicherheit. Wenn Ihre Anwendung ni
 
 ### <a name="secure-your-private-data"></a>Schützen privater Daten
 
-Wenn Daten zu den Azure Maps-SDKs mit interaktiven Karten hinzugefügt werden, werden diese lokal auf dem Gerät des Endbenutzers gerendert und in keinem Fall und aus keinem Grund wieder an das Internet gesendet.
+Wenn den Azure Maps-SDKs mit interaktiven Karten Daten hinzugefügt werden, werden diese lokal auf dem Gerät des Endbenutzers gerendert und in keinem Fall und aus keinem Grund wieder an das Internet gesendet.
 
 Wenn Ihre Anwendung Daten lädt, die nicht öffentlich zugänglich sein sollten, stellen Sie sicher, dass die Daten an einem sicheren Ort gespeichert werden, dass auf sichere Weise auf sie zugegriffen wird und dass die Anwendung selbst gesperrt und nur für die gewünschten Benutzer verfügbar ist. Wenn einer dieser Schritte übersprungen wird, können nicht autorisierte Personen möglicherweise auf diese Daten zugreifen. Azure Active Directory kann Sie bei dieser Sperrung unterstützen.
 
@@ -57,20 +55,20 @@ Wenn Sie das Azure Maps-Web-SDK selbst über das NPM-Modul hosten, stellen Sie s
 
 ## <a name="optimize-initial-map-load"></a>Optimieren des anfänglichen Ladens von Karten
 
-Wenn eine Webseite geladen wird, sollte direkt so schnell wie möglich mit dem Rendern von Inhalten begonnen werden, damit dem Benutzer kein leerer Bildschirm angezeigt wird.
+Beim Laden einer Webseite sollte so schnell wie möglich mit dem Rendern von Inhalten begonnen werden, damit dem Benutzer kein leerer Bildschirm angezeigt wird.
 
 ### <a name="watch-the-maps-ready-event"></a>Ansehen des ready-Ereignisses für Karten
 
-Analog dazu wird oft gewünscht, dass beim anfänglichen Laden der Karte die Daten darauf so schnell wie möglich geladen werden, damit der Benutzer keine leere Karte sieht. Da die Karte Ressourcen asynchron lädt, müssen Sie warten, bis die Karte bereit für Interaktionen ist, bevor Sie versuchen, Ihre eigenen Daten darauf zu rendern. Es gibt zwei Ereignisse, auf die Sie warten können, das `load`- und das `ready`-Ereignis. Das load-Ereignis wird ausgelöst, wenn das Laden der anfänglichen Ansicht der Karte vollständig abgeschlossen ist und alle Kartenkacheln geladen wurden. Das ready-Ereignis wird ausgelöst, wenn die für eine Interaktion mit der Karte mindestens erforderlichen Kartenressourcen geladen wurden. Das ready-Ereignis kann oft bereits nach der Hälfte der für das load-Ereignis benötigten Zeit ausgelöst werden, wodurch Sie schneller mit dem Laden Ihrer Daten in die Karte beginnen können.
+Analog dazu ist es wünschenswert, beim anfänglichen Laden der Karte die darauf befindlichen Daten so schnell wie möglich zu laden, damit der Benutzer keine leere Karte sieht. Da die Karte Ressourcen asynchron lädt, müssen Sie warten, bis die Karte bereit für Interaktionen ist, bevor Sie versuchen, Ihre eigenen Daten darauf zu rendern. Es gibt zwei Ereignisse, auf die Sie warten können, das `load`- und das `ready`-Ereignis. Das load-Ereignis wird ausgelöst, wenn das Laden der anfänglichen Ansicht der Karte vollständig abgeschlossen ist und alle Kartenkacheln geladen wurden. Das ready-Ereignis wird ausgelöst, wenn die für eine Interaktion mit der Karte mindestens erforderlichen Kartenressourcen geladen wurden. Das ready-Ereignis kann oft bereits nach der Hälfte der für das load-Ereignis benötigten Zeit ausgelöst werden, wodurch Sie schneller mit dem Laden Ihrer Daten in die Karte beginnen können.
 
 ### <a name="lazy-load-the-azure-maps-web-sdk"></a>Lazy Loading des Azure Maps-Web-SDK
 
-Wenn die Karte nicht sofort benötigt wird, laden Sie das Azure Maps-Web-SDK per Lazy Loading („träges Laden“), bis es benötigt wird. Dadurch wird das Laden der JavaScript- und CSS-Dateien, die das Azure Maps-Web-SDK verwendet, so lange verzögert, bis diese benötigt werden. Ein häufiges Szenario hierfür ist das Laden der Karte auf einer Registerkarte oder in einem Flyoutpanel, die bzw. das beim Laden der Seite nicht angezeigt wird.
+Wenn die Karte nicht sofort benötigt wird, laden Sie das Azure Maps-Web-SDK per Lazy Loading („verzögertes Laden“), bis es benötigt wird. Dadurch wird das Laden der JavaScript- und CSS-Dateien, die das Azure Maps-Web-SDK verwendet, so lange verzögert, bis diese benötigt werden. Ein häufiges Szenario hierfür ist das Laden der Karte auf einer Registerkarte oder in einem Flyoutpanel, die bzw. das beim Laden der Seite nicht angezeigt wird.
 Im folgenden Codebeispiel wird gezeigt, wie Sie das Laden des Azure Maps-Web-SDK verzögern, bis auf eine Schaltfläche geklickt wird.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Lazy Loading der Karte" src="https://codepen.io/azuremaps/embed/vYEeyOv?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="Lazy Loading der Karte" src="https://codepen.io/azuremaps/embed/vYEeyOv?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Sehen Sie sich den Pen <a href='https://codepen.io/azuremaps/pen/vYEeyOv'>Lazy load the map</a> (Lazy Loading der Karte) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a> an.
 </iframe>
 
@@ -126,7 +124,7 @@ Ein gängiges Szenario, in dem dies bei Anwendungen oft der Fall ist, ist wenn d
 
 ### <a name="remove-unused-features-and-properties"></a>Entfernen nicht verwendeter Features und Eigenschaften
 
-Wenn Ihr Dataset Features enthält, die in Ihrer App nicht verwendet werden, entfernen Sie diese. Entfernen Sie ebenso alle Eigenschaften für Features, die nicht benötigt werden. Dies hat mehrere Vorteile:
+Wenn Ihr Dataset Features enthält, die in Ihrer App nicht verwendet werden, entfernen Sie sie. Entfernen Sie ebenso alle Eigenschaften für Features, die nicht benötigt werden. Dies hat mehrere Vorteile:
 
 * Die Datenmenge, die heruntergeladen werden muss, wird verringert.
 * Die Anzahl der beim Rendern der Daten in einer Schleife zu durchlaufenden Features wird verringert.
@@ -180,7 +178,7 @@ Im Gegensatz zu den meisten Ebenen in der Azure Maps-Websteuerung, die für das 
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Wiederverwenden eines Popups für mehrere Stecknadeln' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Informationen hierzu finden Sie unter <a href='https://codepen.io/azuremaps/pen/rQbjvK/'>Reusing Popup with Multiple Pins</a> (Wiederverwenden eines Popups mit mehreren Stecknadeln) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Wiederverwenden eines Popups für mehrere Stecknadeln' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true'>Informationen hierzu finden Sie unter <a href='https://codepen.io/azuremaps/pen/rQbjvK/'>Reusing Popup with Multiple Pins</a> (Wiederverwenden eines Popups mit mehreren Stecknadeln) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 Wenn nur ein paar wenige Punkte auf der Karte gerendert werden müssen, sind jedoch die einfacheren HTML-Marker möglicherweise vorzuziehen. Darüber hinaus können HTML-Marker bei Bedarf leicht ziehbar gemacht werden.
@@ -225,7 +223,7 @@ Im folgenden Codebeispiel sehen Sie eine einfache Vorgehensweise für das Animie
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Animation auf einer Symbolebene" src="https://codepen.io/azuremaps/embed/oNgGzRd?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="Animation auf einer Symbolebene" src="https://codepen.io/azuremaps/embed/oNgGzRd?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Sehen Sie sich den Pen <a href='https://codepen.io/azuremaps/pen/oNgGzRd'>Symbol layer animation</a> (Animation auf einer Symbolebene) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a> an.
 </iframe>
 
@@ -234,7 +232,7 @@ Sehen Sie sich den Pen <a href='https://codepen.io/azuremaps/pen/oNgGzRd'>Symbol
 Wenn Ihre Daten eines der folgenden Kriterien erfüllen, achten Sie darauf, den minimalen und maximalen Zoomfaktor der Ebene anzugeben, damit die Rendering-Engine Zoomvorgänge außerhalb des Zoomfaktorbereichs überspringen kann.
 
 * Wenn die Daten aus einer Vektorkachelquelle stammen, sind häufig Quellebenen für verschiedene Datentypen nur für einen bestimmten Zoomfaktorbereich verfügbar.
-* Sie verwenden eine Kachelebene, die nicht über Kacheln für alle Zoomfaktoren von 0 bis 24 verfügt, und möchten, dass diese Ebene nur bei Zoomfaktoren gerendert wird, für die Kacheln verfügbar sind, und nicht versucht wird, bei fehlenden Kacheln solche für andere Zoomfaktoren zu verwenden.
+* Sie verwenden eine Kachelebene, die nicht über Kacheln für alle Zoomfaktoren von 0 bis 24 verfügt, und möchten, dass diese Ebene nur bei Zoomfaktoren gerendert wird, für die Kacheln verfügbar sind. Es soll nicht versucht werden, fehlende Kacheln durch Kacheln aus anderen Zoomfaktoren zu ersetzen.
 * Sie möchten eine Ebene nur für bestimmte Zoomfaktoren rendern.
 Alle Ebenen verfügen über die Optionen `minZoom` und `maxZoom`, bei denen die Ebene basierend auf der Logik ` maxZoom > zoom >= minZoom` zwischen den angegebenen Zoomfaktoren gerendert wird.
 
@@ -296,7 +294,7 @@ Weitere Informationen finden Sie im Abschnitt über Clustering und Wärmebilder 
 
 ### <a name="keep-image-resources-small"></a>Verwenden kleiner Bildressourcen
 
-Bilder können dem Kartenbildsprite zum Rendern von Icons auf einer Symbolebene oder Mustern auf einer Polygonebene hinzugefügt werden. Verwenden Sie hierfür kleine Bilder, um die Datenmenge, die heruntergeladen werden muss, sowie den von diesen Bildern genutzten Platz im Kartenbildsprite zu minimieren. Wenn Sie eine Symbolebene verwenden, die das Icon mithilfe der Option `size` skaliert, verwenden Sie ein Bild, das die für das Anzeigen auf der Karte geplante Maximalgröße aufweist und nicht mehr. Dadurch wird sichergestellt, dass das Icon mit einer hohen Auflösung gerendert wird, während die verwendeten Ressourcen minimiert werden. Darüber hinaus kann auch SVG als kleineres Dateiformat für einfache Iconbilder verwendet werden.
+Bilder können dem Kartenbildsprite zum Rendern von Icons auf einer Symbolebene oder Mustern auf einer Polygonebene hinzugefügt werden. Verwenden Sie hierfür kleine Bilder, um die Datenmenge, die heruntergeladen werden muss, sowie den von diesen Bildern genutzten Platz im Kartenbildsprite zu minimieren. Wenn Sie eine Symbolebene verwenden, die das Icon mithilfe der Option `size` skaliert, verwenden Sie ein Bild, das die für das Anzeigen auf der Karte geplante Maximalgröße aufweist und nicht mehr. Dadurch wird sichergestellt, dass das Icon mit einer hohen Auflösung gerendert wird, während die verwendeten Ressourcen minimiert werden. Darüber hinaus kann auch SVG als kleineres Dateiformat für einfache Symbolbilder verwendet werden.
 
 ## <a name="optimize-expressions"></a>Optimieren von Ausdrücken
 
@@ -357,12 +355,12 @@ Im Folgenden sind Tipps zum Debuggen für einige bei der Entwicklung mit dem Azu
 
 Gehen Sie folgendermaßen vor:
 
-* Stellen Sie sicher, dass Sie der Karte Ihre hinzugefügten Authentifizierungsoptionen hinzugefügt haben. Wenn diese nicht hinzugefügt werden, lädt die Karte eine leere Canvas, da sie ohne Authentifizierung nicht auf die Basiskartendaten zugreifen kann, und auf der Netzwerk-Registerkarte der Entwicklertools des Browsers werden 401-Fehler angezeigt.
+* Stellen Sie sicher, dass Sie der Karte Ihre hinzugefügten Authentifizierungsoptionen hinzugefügt haben. Wenn diese nicht hinzugefügt werden, lädt die Karte eine leere Canvas, da sie ohne Authentifizierung nicht auf die Basiskartendaten zugreifen kann. Auf der Netzwerkregisterkarte der Entwicklertools des Browsers werden 401-Fehler angezeigt.
 * Stellen Sie sicher, dass Sie mit dem Internet verbunden sind.
 * Überprüfen Sie die Konsole in den Entwicklertools des Browsers auf Fehler. Einige Fehler können dazu führen, dass die Karte nicht gerendert wird. Debuggen Sie die Anwendung.
 * Vergewissern Sie sich, dass Sie einen [unterstützten Browser](supported-browsers.md) verwenden.
 
-**Alle meine Daten werden auf der anderen Seite der Welt angezeigt. Was ist passiert?**
+**All meine Daten werden auf der anderen Seite der Welt angezeigt. Was ist passiert?**
 Für Koordinaten (auch Positionen genannt) in den Azure Maps-SDKs wird das in der Branche für räumliche Daten übliche Standardformat `[longitude, latitude]` verwendet. Im GeoJSON-Schema wird für Koordinaten ebenfalls dieses Format verwendet. Hierbei handelt es sich um das Datenformat, das hauptsächlich in den Azure Maps-SDKs verwendet wird. Wenn Ihre Daten auf der gegenüberliegenden Seite der Welt angezeigt werden, liegt dies höchstwahrscheinlich daran, dass die Werte für die Längen- und Breitengrade in den Koordinaten-/Positionsinformationen umgekehrt wurden.
 
 **Warum werden HTML-Marker in der Websteuerung an der falschen Stelle angezeigt?**
@@ -375,8 +373,8 @@ Für Koordinaten (auch Positionen genannt) in den Azure Maps-SDKs wird das in de
 
 **Warum werden Icons oder Text auf der Symbolebene an der falschen Stelle angezeigt?**
 Überprüfen Sie, ob die Optionen `anchor` und `offset` richtig so konfiguriert sind, dass der gewünschte Teil Ihres Bilds oder Texts an der Koordinate auf der Karte ausgerichtet wird.
-Wenn das Symbol nur an der falschen Stelle ist, wenn die Karte gedreht wird, überprüfen Sie die Option `rotationAlignment`. Standardmäßig drehen sich die Symbole mit dem Kartenviewport, sodass sie dem Benutzer stehend angezeigt werden. Abhängig von Ihrem Szenario kann es jedoch wünschenswert sein, die Ausrichtung der Karte als Grundlage für die Ausrichtung des Symbols zu verwenden. Legen Sie hierzu die Option `rotationAlignment` auf `’map’` fest.
-Wenn das Symbol nur dann an der falschen Stelle angezeigt wird, wenn die Karte geneigt/gekippt wird, überprüfen Sie die Option `pitchAlignment`. Standardmäßig werden Symbole für den Kartenviewport stehend angezeigt, wenn die Karte geneigt oder gekippt wird. Abhängig von Ihrem Szenario kann es jedoch wünschenswert sein, die Neigung der Karte als Grundlage für die Ausrichtung des Symbols zu verwenden. Legen Sie hierzu die Option `pitchAlignment` auf `’map’` fest.
+Wenn das Symbol nur an der falschen Stelle ist, wenn die Karte gedreht wird, überprüfen Sie die Option `rotationAlignment`. Standardmäßig drehen sich die Symbole mit dem Kartenviewport, sodass sie dem Benutzer stehend angezeigt werden. Abhängig von Ihrem Szenario kann es jedoch wünschenswert sein, die Ausrichtung der Karte als Grundlage für die Ausrichtung des Symbols zu verwenden. Legen Sie hierzu die Option `rotationAlignment` auf `'map'` fest.
+Wenn das Symbol nur dann an der falschen Stelle angezeigt wird, wenn die Karte geneigt/gekippt wird, überprüfen Sie die Option `pitchAlignment`. Standardmäßig werden Symbole für den Kartenviewport stehend angezeigt, wenn die Karte geneigt oder gekippt wird. Abhängig von Ihrem Szenario kann es jedoch wünschenswert sein, die Neigung der Karte als Grundlage für die Ausrichtung des Symbols zu verwenden. Legen Sie hierzu die Option `pitchAlignment` auf `'map'` fest.
 
 **Warum werden keine meiner Daten auf der Karte angezeigt?**
 

@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über die Symptome, Ursachen und Lösungen von Az
 ms.topic: troubleshooting
 ms.date: 05/25/2021
 ms.service: backup
-ms.openlocfilehash: 57a0002d353ebb75570dc3b70c55d2f17f70db35
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 72e2ce2c32a1be1e6f116ef5513c1c24a42284bc
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110472472"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123438193"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Behandeln von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -45,7 +45,7 @@ Die häufigsten Sicherungsfehler können mithilfe der unten aufgeführten Schrit
 - Stellen Sie sicher, dass alle [Erweiterungsprobleme](../virtual-machines/extensions/overview.md#troubleshoot-extensions) gelöst sind, und wiederholen Sie den Sicherungsvorgang.
 - **Stellen Sie sicher, dass die COM+-Systemanwendung** ausgeführt wird. Außerdem sollte der **Distributed Transaction Coordinator-Dienst** als **Netzwerkdienstkonto** ausgeführt werden. Führen Sie die Schritte in diesem Artikel aus, um [COM+- und MSDTC-Fehler zu beheben](backup-azure-vms-troubleshoot.md#extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error).
 
-### <a name="step-4-check-azure-backup-vm-extension-health"></a>Schritt 4: Überprüfen der Integrität der Azure Backup-VM-Erweiterung
+### <a name="step-4-check-azure-backup-extension-health"></a>Schritt 4: Überprüfen der Integrität der Azure Backup-Erweiterung
 
 Azure Backup führt mithilfe der VM-Momentaufnahmenerweiterung eine anwendungskonsistente Sicherung des virtuellen Azure-Computers durch. Azure Backup installiert die Erweiterung als Teil der ersten geplanten Sicherung, die nach der Aktivierung der Sicherung ausgelöst wird.
 

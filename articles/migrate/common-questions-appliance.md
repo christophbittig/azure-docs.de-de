@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/22/2021
-ms.openlocfilehash: a814cce09a134f007fbd136b8c142a60fb099a1b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 11360af784f456559955152772ba099ad4d48d73
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339346"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123423870"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate-Appliance: Häufig gestellte Fragen
 
@@ -57,7 +57,7 @@ Die Azure Migrate-Appliance erstellt fortlaufend Profile von lokalen Servern zur
 
 ## <a name="can-i-harden-the-appliance"></a>Kann ich die Appliance härten?
 
-Wenn Sie die Appliance mithilfe der heruntergeladenen Vorlage erstellen, können Sie der Vorlage zusätzliche Komponenten (z. B. Antivirensoftware) hinzufügen, solange die für die Azure Migrate-Appliance erforderlichen Kommunikations- und Firewallregeln bestehen bleiben.
+Wenn Sie die heruntergeladene Vorlage zum Erstellen der Appliance verwenden, können Sie der Vorlage Komponenten (beispielsweise ein Antivirenprogramm) hinzufügen. Stellen Sie sicher, dass Sie über Azure Firewall Zugriff auf die richtigen [URLs](migrate-appliance.md#public-cloud-urls) gewährt haben und dass der Ordner *%ProgramData%\MicrosoftAzure* von der Antivirenprüfung ausgeschlossen ist.
 
 ## <a name="what-network-connectivity-is-required"></a>Welche Netzwerkkonnektivität ist erforderlich?
 

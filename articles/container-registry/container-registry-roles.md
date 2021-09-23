@@ -2,14 +2,14 @@
 title: Registrierungsrollen und -berechtigungen
 description: Verwenden Sie die rollenbasierte Zugriffssteuerung (Azure RBAC) und das Identity & Access Management (IAM) von Azure, um differenzierte Berechtigungen für Ressourcen in einer Azure-Containerregistrierung bereitzustellen.
 ms.topic: article
-ms.date: 06/07/2021
+ms.date: 09/02/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6923e356f60916e34325b9b6815dbae8aeaf5c51
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 494373a299eb0f4d2bb100e71a1e1000336d1613
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854790"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123451635"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry: Rollen und Berechtigungen
 
@@ -89,7 +89,7 @@ Wie bei anderen Azure-Ressourcen können Sie [benutzerdefinierte Rollen](../role
 
 Um festzustellen, welche Berechtigungen für eine benutzerdefinierte Rolle gelten sollen, lesen Sie die Liste der Microsoft.ContainerRegistry-[Aktionen](../role-based-access-control/resource-provider-operations.md#microsoftcontainerregistry), überprüfen Sie die zulässigen Aktionen der [integrierten ACR-Rollen](../role-based-access-control/built-in-roles.md), oder führen Sie den folgenden Befehl aus:
 
-### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 ```azurecli
 az provider operation show --namespace Microsoft.ContainerRegistry
@@ -97,16 +97,19 @@ az provider operation show --namespace Microsoft.ContainerRegistry
 
 Um eine benutzerdefinierte Rolle zu definieren, lesen Sie [Schritte zum Erstellen einer benutzerdefinierten Rolle](../role-based-access-control/custom-roles.md#steps-to-create-a-custom-role).
 
-> [!IMPORTANT]
-> In einer benutzerdefinierten Rolle unterstützt Azure Container Registry zurzeit keine Platzhalter wie `Microsoft.ContainerRegistry/*` oder `Microsoft.ContainerRegistry/registries/*`, die Zugriff auf alle übereinstimmenden Aktionen gewähren. Geben Sie die erforderlichen Aktionen einzeln in der Rolle an.
+> [!NOTE]
+> In Mandanten, die mit einer [privaten Azure Resource Manager-Verbindung](../azure-resource-manager/management/create-private-link-access-portal.md) konfiguriert sind, unterstützt Azure Container Registry Platzhalteraktionen wie `Microsoft.ContainerRegistry/*/read` oder `Microsoft.ContainerRegistry/registries/*/write` in benutzerdefinierten Rollen und gewährt Zugriff auf alle entsprechenden Aktionen. Geben Sie in einem Mandanten ohne private ARM-Verbindung alle erforderlichen Registrierungsaktionen einzeln in einer benutzerdefinierten Rolle an.
 
-### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 Get-AzProviderOperation -OperationSearchString Microsoft.ContainerRegistry/*
 ```
 
 Um eine benutzerdefinierte Rolle zu definieren, lesen Sie [Schritte zum Erstellen einer benutzerdefinierten Rolle](../role-based-access-control/custom-roles.md#steps-to-create-a-custom-role).
+
+> [!NOTE]
+> In Mandanten, die mit einer [privaten Azure Resource Manager-Verbindung](../azure-resource-manager/management/create-private-link-access-portal.md) konfiguriert sind, unterstützt Azure Container Registry Platzhalteraktionen wie `Microsoft.ContainerRegistry/*/read` oder `Microsoft.ContainerRegistry/registries/*/write` in benutzerdefinierten Rollen und gewährt Zugriff auf alle entsprechenden Aktionen. Geben Sie in einem Mandanten ohne private ARM-Verbindung alle erforderlichen Registrierungsaktionen einzeln in einer benutzerdefinierten Rolle an.
 
 ---
 

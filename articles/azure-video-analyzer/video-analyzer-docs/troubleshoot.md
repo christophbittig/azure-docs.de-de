@@ -3,12 +3,12 @@ title: Fehlerbehebung bei Azure Video Analyzer - Azure
 description: Dieser Artikel beschreibt Schritte zur Fehlerbehebung für den Azure Video Analyzer.
 ms.topic: troubleshooting
 ms.date: 07/15/2021
-ms.openlocfilehash: c3b95936eabfcaefa12b9271b152d196790841c4
-ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
+ms.openlocfilehash: 0d3a089fee6d374dd8109f2430cfdb9fec19bc30
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114362644"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429350"
 ---
 # <a name="troubleshoot-azure-video-analyzer"></a>Fehlerbehebung beim Azure Video Analyzer
 
@@ -39,7 +39,7 @@ Wenn die Edge-Infrastruktur in Ordnung ist, können Sie nach Problemen in der Be
 az iot edge set-modules --hub-name <iot-hub-name> --device-id avasample-iot-edge-device --content <path-to-deployment_manifest.json>
 ```
 
-Wenn der JSON-Code nicht ordnungsgemäß geformt ist, erhalten Sie möglicherweise den folgenden Fehler: &nbsp;&nbsp;&nbsp; **Failed to parse JSON from file: '<deployment manifest.json>' for argument 'content' with exception: "Extra data: line 101 column 1 (char 5325)"** (Das Parsen von JSON aus der Datei ist fehlgeschlagen: für Argument „content“ mit Ausnahme: „Zusätzliche Daten: Zeile 101 Spalte 1 (Char 5325))“
+Wenn der JSON-Code nicht ordnungsgemäß geformt ist, erhalten Sie möglicherweise den folgenden Fehler: &nbsp;&nbsp;&nbsp; **Failed to parse JSON from file: '\<deployment manifest.json\>' for argument 'content' with exception: "Extra data: line 101 column 1 (char 5325)"** (Das Parsen von JSON aus der Datei ist fehlgeschlagen: für Argument „content“ mit Ausnahme: „Zusätzliche Daten: Zeile 101 Spalte 1 (Char 5325))“
 
 Wenn dieser Fehler auftritt, empfiehlt es sich, den JSON-Code auf fehlende Klammern oder andere Probleme in der Dateistruktur zu überprüfen. Zum Überprüfen der Dateistruktur können Sie einen Client wie [Notepad++ mit dem JSON Viewer-Plug-In](https://riptutorial.com/notepadplusplus/example/18201/json-viewer) oder ein Onlinetool wie [JSON Formatter & Validator](https://jsonformatter.curiousconcept.com/) verwenden.
 
@@ -289,11 +289,11 @@ Die Dokumentation zu gRPC in .NET Core enthält außerdem einige wertvolle Infor
 
 Sie haben verschiedene Möglichkeiten, weitere Informationen zu diesem Problem zu erhalten.
 
-- Fügen Sie die **mediaPipeline**-Protokollkategorie in die gewünschten Eigenschaften des Azure Video Analyzer-Moduls ein und stellen Sie sicher, dass die Protokollebene auf `Information` eingestellt ist.
+- Fügen Sie die Protokollkategorie **mediaPipeline** in die gewünschten Eigenschaften des Video Analyzer-Moduls ein, und stellen Sie sicher, dass der Protokolliergrad auf `Information` eingestellt ist.
 - Zum Testen der Netzwerkkonnektivität können Sie auf dem Edgegerät den folgenden Befehl ausführen.
 
   ```
-  sudo docker exec avaedge /bin/bash -c “apt update; apt install -y telnet; telnet <inference-host> <inference-port>”
+  sudo docker exec avaedge /bin/bash -c "apt update; apt install -y telnet; telnet <inference-host> <inference-port>"
   ```
 
   Wenn der Befehl eine kurze Zeichenfolge ungeordneter Zeichen zurückgibt, konnte Telnet erfolgreich eine Verbindung zu Ihrem Rückschlussserver herstellen und einen binären gRPC-Kanal öffnen. Wenn Sie dies nicht sehen, meldet Telnet einen Netzwerkfehler.

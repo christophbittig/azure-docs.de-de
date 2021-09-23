@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 07/12/2020
+ms.date: 09/05/2021
 ms.author: memildin
-ms.openlocfilehash: 977284ba735eef4f02907d63ee1ae65332d7990f
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: 5a61ad8addfcb2840bbed1b9d56f37dfbb01b0bf
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122778440"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541385"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Sichern Ihrer Verwaltungsports mit Just-in-Time-Zugriff (JIT)
 
@@ -68,7 +68,7 @@ Jede dieser Optionen wird auf einer separaten Registerkarte unten erläutert.
         - Letzter Benutzer
     - **Nicht konfiguriert**: VMs ohne aktiviertes JIT, die aber JIT unterstützen können. Es wird empfohlen, JIT für diese VMS zu aktivieren.
     - **Nicht unterstützt**: VMs ohne aktiviertes JIT, die das Feature auch nicht unterstützen. Ihre VM befindet sich aus folgenden Gründen möglicherweise auf dieser Registerkarte:
-      - Fehlende Netzwerksicherheitsgruppe (NSG) – JIT erfordert die Konfiguration einer NSG
+      - Fehlende Netzwerksicherheitsgruppe (NSG) oder Azure Firewall: JIT erfordert die Konfiguration einer NSG oder eine Firewallkonfiguration (oder beides).
       - Klassische VM – JIT unterstützt VMs, die über Azure Resource Manager und nicht die „klassische Bereitstellung“ bereitgestellt werden. [Erfahren Sie mehr über klassische und Azure Resource Manager-Bereitstellungsmodelle](../azure-resource-manager/management/deployment-models.md).
       - Sonstige – Ihre VM befindet sich möglicherweise auf dieser Registerkarte, wenn die JIT-Lösung in der Sicherheitsrichtlinie des Abonnements oder der Ressourcengruppe deaktiviert ist.
 

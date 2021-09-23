@@ -1,14 +1,14 @@
 ---
 title: Verwalten von Sensoren über die lokale Verwaltungskonsole
-description: Erfahren Sie, wie Sie Sensoren über die Verwaltungskonsole verwalten können. Dazu gehören das Aktualisieren von Sensorversionen, Übertragen von Systemeinstellungen per Push an Sensoren sowie das Aktivieren und Deaktivieren von Engines für Sensoren.
+description: Erfahren Sie, wie Sie Sensoren über die Verwaltungskonsole verwalten können. Dazu gehören das Aktualisieren von Sensorversionen, das Übertragen von Systemeinstellungen per Push an Sensoren, das Verwalten von Zertifikaten sowie das Aktivieren und Deaktivieren von Engines für Sensoren.
 ms.date: 07/08/2021
 ms.topic: how-to
-ms.openlocfilehash: 46571552295bcaf71a03bd20cdf9f4f71f0ed308
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: dbdee98fc1f7e6bc294bd54d72e64fa8f053eb8e
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444291"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123431186"
 ---
 # <a name="manage-sensors-from-the-management-console"></a>Verwalten von Sensoren über die Verwaltungskonsole
 
@@ -111,7 +111,7 @@ Sie können den Updatestatus jedes Sensors im Fenster **Standortverwaltung** üb
 
 Sie können den Updatestatus Ihrer Sensoren über die Verwaltungskonsole anzeigen. Wenn das Update fehlgeschlagen ist, können Sie erneut versuchen, den Sensor über die lokale Verwaltungskonsole (Versionen 2.3.5 und höher) zu aktualisieren.
 
-So aktualisieren Sie den Sensor über die lokale Verwaltungskonsole:
+**So aktualisieren Sie den Sensor über die lokale Verwaltungskonsole:**
 
 1. Melden Sie sich bei der lokalen Verwaltungskonsole an, und navigieren Sie zur Seite **Standortverwaltung**.
 
@@ -131,7 +131,7 @@ Das Datenpaket für Threat Intelligence wird mit jeder neuen Defender für IoT-V
 
 Sie können diese Datei manuell von der Seite **Updates** im Defender für IoT-Portal hochladen und automatisch auf Sensoren aktualisieren. 
 
-Zum Aktualisieren von Threat Intelligence-Daten gehen Sie folgendermaßen vor: 
+**Zum Aktualisieren von Threat Intelligence-Daten gehen Sie folgendermaßen vor:**
 
 1. Navigieren Sie zur Defender für IoT-Seite **Updates**. 
 
@@ -174,7 +174,7 @@ Sensoren werden von fünf Defender für IoT-Engines geschützt. Sie können die 
 | Betriebs-Engine | Diese Engine erkennt Betriebsvorfälle oder Entitäten mit Funktionsfehlern. | `Device is Suspected to be Disconnected (Unresponsive)`Warnung. Diese Warnung wird ausgelöst, wenn ein Gerät für einen vordefinierten Zeitraum auf keine Anforderungen reagiert. Sie kann auf einen Ausfall, eine Trennung oder eine Fehlfunktion des Geräts hindeuten.
 |
 
-Zum Aktivieren oder Deaktivieren von Engines für verbundene Sensoren gehen Sie folgendermaßen vor:
+**Zum Aktivieren oder Deaktivieren von Engines für verbundene Sensoren gehen Sie folgendermaßen vor:**
 
 1. Wählen Sie im linken Bereich der Konsole die Option **Systemeinstellungen** aus.
 
@@ -238,7 +238,7 @@ Wenn Sie die definierte Anzahl beibehaltener Sicherungen überschreiten, wird di
 
 Sensorsicherungsdateien werden automatisch im folgenden Format benannt: `<sensor name>-backup-version-<version>-<date>.tar`. Beispiel: `Sensor_1-backup-version-2.6.0.102-2019-06-24_09:24:55.tar`. 
 
-Zum Sichern von Sensoren gehen Sie folgendermaßen vor:
+**Zum Sichern von Sensoren gehen Sie folgendermaßen vor:**
 
 1. Wählen Sie im Fenster **Systemeinstellungen** die Option **Sensorsicherung planen** aus. Sensoren, die von der lokalen Verwaltungskonsole verwaltet werden, werden im Dialogfeld **Sensorsicherungszeitplan** angezeigt.  
 
@@ -258,7 +258,7 @@ Zum Sichern von Sensoren gehen Sie folgendermaßen vor:
 
 1. Wählen Sie **Speichern** aus. 
 
-Zum sofortigen Sichern gehen Sie folgendermaßen vor: 
+**Zum sofortigen Sichern gehen Sie folgendermaßen vor:**
 
 - Wählen Sie **Jetzt sichern** aus. Die lokale Verwaltungskonsole erstellt und sammelt Sensorsicherungsdateien. 
 
@@ -284,7 +284,7 @@ Wenn ein Fehler auftritt, können Sie eine E-Mail-Benachrichtigung, Syslog-Updat
 
 Sie können Sicherungen über die lokale Verwaltungskonsole und mithilfe der CLI wiederherstellen.  
 
-Zum Wiederherstellen über die Konsole gehen Sie folgendermaßen vor: 
+**Wiederherstellen über die Konsole:**
 
 - Wählen Sie im Einstellungsfenster **Sensorsystem** die Option **Abbild wiederherstellen** aus.
 
@@ -298,7 +298,7 @@ Zum Wiederherstellen mithilfe der CLI gehen Sie folgendermaßen vor:
 
 ### <a name="save-a-sensor-backup-to-an-external-smb-server"></a>Speichern einer Sensorsicherung auf einem externen SMB-Server
 
-Zum Einrichten eines SMB-Servers für das Speichern einer Sensorsicherung auf einem externen Laufwerk gehen Sie folgendermaßen vor: 
+**Zum Einrichten eines SMB-Servers für das Speichern einer Sensorsicherung auf einem externen Laufwerk gehen Sie folgendermaßen vor:**
 
 1. Erstellen Sie einen freigegebenen Ordner auf dem externen SMB-Server. 
 

@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 08/10/2021
-ms.openlocfilehash: a6ff17795cfb65ddc5dc8b3bf8c55d3d8084efc8
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.date: 08/25/2021
+ms.openlocfilehash: b47efc959518b7a4d35fb5ef79cd04f18cdfaa22
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122350903"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433510"
 ---
 # <a name="how-to-get-lineage-from-azure-synapse-analytics-into-azure-purview"></a>Abrufen der Datenherkunft aus Azure Synapse Analytics in Azure Purview
 
@@ -22,18 +22,23 @@ In diesem Dokument werden die Schritte erläutert, die zum Verbinden eines Azure
 
 Derzeit erfasst Azure Purview die Runtimeherkunft aus den folgenden Azure Synapse-Pipelineaktivitäten:
 
-- [Daten kopieren](../data-factory/copy-activity-overview.md)
+- [Daten kopieren](../data-factory/copy-activity-overview.md?context=/azure/synapse-analytics/context/context)
+- [Datenfluss](../data-factory/concepts-data-flow-overview.md?context=/azure/synapse-analytics/context/context)
 
 > [!IMPORTANT]
 > Azure Purview verwirft die Herkunft, wenn die Quelle oder das Ziel ein nicht unterstütztes Datenspeichersystem verwendet.
 
 [!INCLUDE[azure-synapse-supported-activity-lineage-capabilities](includes/data-factory-common-supported-capabilities.md)]
 
+## <a name="access-secured-azure-purview-account"></a>Zugreifen auf ein geschütztes Azure Purview-Konto
+      
+Wenn Ihr Purview-Konto durch eine Firewall geschützt ist, erfahren Sie, wie Sie Azure Synapse über private Purview-Endpunkte den [Zugriff auf ein geschütztes Purview-Konto](../synapse-analytics/catalog-and-governance/how-to-access-secured-purview-account.md) ermöglichen können.
+
 ## <a name="bring-azure-synapse-lineage-into-purview"></a>Integrieren der Datenherkunft von Azure Synapse in Purview
 
 ### <a name="step-1-connect-azure-synapse-workspace-to-your-purview-account"></a>Schritt 1: Verbinden Sie den Azure Synapse-Arbeitsbereich mit Ihrem Purview-Konto
 
-Sie können einen Azure Synapse-Arbeitsbereich mit Purview verbinden. Durch diese Verbindung ist es Azure Synapse möglich, Datenherkunftsinformationen zu Purview zu übertragen. Befolgen Sie die Schritte unter [Verbinden eines Azure Purview-Kontos mit Synapse](../synapse-analytics/catalog-and-governance/quickstart-connect-azure-purview.md). Es können auch mehrere Azure Synapse-Arbeitsbereiche mit einem einzelnen Azure Purview-Konto verbunden werden, damit eine ganzheitliche Nachverfolgung der Datenherkunft möglich ist.
+Sie können einen Azure Synapse-Arbeitsbereich mit Purview verbinden. Durch diese Verbindung ist es Azure Synapse möglich, Datenherkunftsinformationen zu Purview zu übertragen. Befolgen Sie die Schritte in [Verbinden eines Synapse-Arbeitsbereichs mit Azure Purview](../synapse-analytics/catalog-and-governance/quickstart-connect-azure-purview.md). Es können auch mehrere Azure Synapse-Arbeitsbereiche mit einem einzelnen Azure Purview-Konto verbunden werden, damit eine ganzheitliche Nachverfolgung der Datenherkunft möglich ist.
 
 ### <a name="step-2-run-pipeline-in-azure-synapse-workspace"></a>Schritt 2: Führen Sie eine Pipeline im Azure Synapse-Arbeitsbereich aus
 
@@ -43,7 +48,7 @@ Sie können Pipelines mit Copy-Aktivität im Azure Synapse-Arbeitsbereich erstel
 
 Nachdem Sie die Azure Synapse-Pipeline ausgeführt haben, können Sie in der Überwachungsansicht der Synapse-Pipeline den Status der Datenherkunftsberichte überprüfen. Klicken Sie dazu auf die folgende Schaltfläche **Datenherkunftsstatus**. Dieselben Informationen sind ebenfalls in der JSON-Aktivitätsausgabe zu finden -> Abschnitt `reportLineageToPurvew`.
 
-:::image type="content" source="../data-factory/media/data-factory-purview/monitor-lineage-reporting-status.png" alt-text="Überwachen des Status der Datenherkunftsberichte in der Pipeline-Überwachungsansicht.":::
+:::image type="content" source="../data-factory/media/data-factory-purview/monitor-lineage-reporting-status.png" alt-text="Überwachen Sie den Status der Datenherkunftsberichte in der Pipeline-Überwachungsansicht.":::
 
 ### <a name="step-4-view-lineage-information-in-your-purview-account"></a>Schritt 4: Anzeigen von Herkunftsinformationen in Ihrem Purview-Konto
 

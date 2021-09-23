@@ -1,5 +1,5 @@
 ---
-title: Untersuchen der Ausgabe von Azure Video Analyzer for Media (früher Video Indexer), die von der v2-API erzeugt wurde – Azure
+title: Untersuchen der v2-API-Ausgabe von Azure Video Analyzer for Media (früher Video Indexer)
 titleSuffix: Azure Video Analyzer for Media
 description: In diesem Thema wird die Ausgabe von Azure Video Analyzer for Media (früher Video Indexer) untersucht, die von der v2-API erzeugt wurde.
 services: azure-video-analyzer
@@ -9,12 +9,12 @@ ms.topic: article
 ms.subservice: azure-video-analyzer-media
 ms.date: 11/16/2020
 ms.author: juliako
-ms.openlocfilehash: 11fcc36ec8ad6d5feb030d00be4fbf470237634f
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: b60eb67b734bfc6d180153e88144282a431f0f6f
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112115263"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123431348"
 ---
 # <a name="examine-the-video-analyzer-for-media-output"></a>Untersuchen der Ausgabe von Video Analyzer for Media
 
@@ -61,7 +61,7 @@ Weitere Informationen finden Sie unter [View and edit video insights](video-inde
 |userName|Der Name des Benutzers, der die Wiedergabeliste erstellt hat.|
 |created|Die Erstellungszeit der Wiedergabeliste.|
 |privacyMode|Der Datenschutzmodus der Wiedergabeliste (privat/öffentlich).|
-|state|Der Status der Wiedergabeliste (uploaded (Hochgeladen), processing (Wird verarbeitet), processed (Verarbeitet), failed (Fehler), quarantined (Quarantäne)).|
+|state|Der Status der Wiedergabeliste (hochgeladen, wird verarbeitet, verarbeitet, Fehler, Quarantäne).|
 |isOwned|Gibt an, ob die Wiedergabeliste vom aktuellen Benutzer erstellt wurde.|
 |isEditable|Gibt an, ob der aktuelle Benutzer zum Bearbeiten der Wiedergabeliste berechtigt ist.|
 |isBase|Gibt an, ob die Wiedergabeliste eine Basiswiedergabeliste (ein Video) oder eine Wiedergabeliste ist, die aus anderen Videos zusammengestellt (abgeleitet) wurde.|
@@ -92,7 +92,7 @@ Weitere Informationen finden Sie unter [View and edit video insights](video-inde
 
 In diesem Abschnitt wird die Zusammenfassung der Erkenntnisse angezeigt.
 
-|attribute | BESCHREIBUNG|
+|attribute | Beschreibung|
 |---|---|
 |name|Der Name des Videos. Beispiel: Azure Monitor.|
 |id|Die ID des Videos. Beispiel: 63c6d532ff.|
@@ -117,7 +117,7 @@ In diesem Abschnitt wird die Zusammenfassung der Erkenntnisse angezeigt.
 |accountId|Die VI-Konto-ID des Videos.|
 |id|Die ID des Videos.|
 |name|Der Name des Videos.
-|state|Der Status des Videos (uploaded (Hochgeladen), processing (Wird verarbeitet), processed (Verarbeitet), failed (Fehler), quarantined (Quarantäne)).|
+|state|Der Status des Videos (hochgeladen, wird verarbeitet, verarbeitet, Fehler, Quarantäne).|
 |processingProgress|Der Status der Verarbeitung während des Verarbeitungsprozesses (z.B. 20%).|
 |failureCode|Der Fehlercode, wenn bei der Verarbeitung ein Fehler aufgetreten ist (z.B. „UnsupportedFileType“).|
 |failureMessage|Die Fehlermeldung, wenn bei der Verarbeitung ein Fehler aufgetreten ist.|
@@ -333,7 +333,7 @@ Beispiel:
 
 Das `animatedCharacters`-Element ersetzt `faces` für den Fall, dass das Video mit einem Modell mit animierten Zeichen indiziert wurde. Dies erfolgt mithilfe eines benutzerdefinierten Modells in Custom Vision, das Video Analyzer for Media in Keyframes ausführt.
 
-Wenn Gesichter (keine animierten Zeichen) vorhanden sind, verwendet Video Analyzer for Media die Gesichtserkennungs-API in allen Frames des Videos, um Gesichter und Prominente zu erkennen.
+Wenn Gesichter (keine animierten Figuren) vorhanden sind, verwendet Video Analyzer for Media die Gesichtserkennungs-API in allen Frames des Videos, um Gesichter und Prominente zu erkennen.
 
 |Name|BESCHREIBUNG|
 |---|---|
@@ -855,7 +855,7 @@ Video Analyzer for Media zieht in den Transkripten einen Rückschluss auf Hauptt
 |Name|BESCHREIBUNG|
 |---|---|
 |id|Die Sprecher-ID.|
-|name|Der Name des Sprechers in der Form „Speaker # *<number>* “ (Sprecher Nr. <Nummer>), z. B.: „Speaker #1“.|
+|name|Der Name des Sprechers in der Form „Speaker # *\<number\>* “ (Sprecher Nr. <Nummer>), z. B.: „Speaker #1“.|
 |instances |Eine Liste der Zeitbereiche, in denen dieser Sprecher vorgekommen ist.|
 
 ```json

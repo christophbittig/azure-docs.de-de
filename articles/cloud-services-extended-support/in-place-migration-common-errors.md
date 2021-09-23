@@ -9,12 +9,12 @@ ms.author: hirshah
 ms.reviewer: mimckitt
 ms.date: 2/08/2021
 ms.custom: ''
-ms.openlocfilehash: cdfb7dd5d09d6925de23be70df18037165776a18
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ce0c3bb4386e2fcc48ca57a1cd53978fc684d98c
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340264"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123540953"
 ---
 # <a name="common-errors-and-known-issues-when-migration-to-azure-cloud-services-extended-support"></a>Häufige Fehler und bekannte Probleme bei der Migration zu Azure Cloud Services (erweiterter Support)
 
@@ -69,6 +69,8 @@ Häufige Fehler bei der Migration und Gegenmaßnahmen.
 | XrpVirtualNetworkMigrationError: Fehler bei der Migration des virtuellen Netzwerks. | Wenden Sie sich an [Microsoft Q&A](/answers/topics/azure-cloud-services-extended-support.html) oder an den Support. | 
 | Die Bereitstellung {0} in HostedService {1}  gehört zum virtuellen Netzwerk {2}. Migrieren Sie das virtuelle Netzwerk {2} zum Migrieren dieses HostedService {1}. | Siehe [Migration des virtuellen Netzwerks](in-place-migration-technical-details.md#virtual-network-migration). | 
 | Das aktuelle Kontingent für den Ressourcennamen in Azure Resource Manager reicht nicht aus, um die Migration abzuschließen. Das aktuelle Kontingent ist {0}, zusätzlich erforderlich ist {1}. Senden Sie eine Supportanfrage, um das Kontingent zu erhöhen, und wiederholen Sie die Migration, wenn das Kontingent erhöht wurde.    | Befolgen Sie die entsprechenden Kanäle, um die Kontingenterhöhung anzufordern: <br>[Kontingenterhöhung für Netzwerkressourcen](../azure-portal/supportability/networking-quota-requests.md) <br>[Kontingenterhöhung für Computerressourcen](../azure-portal/supportability/per-vm-quota-requests.md) | 
+|XrpPaaSMigrationCscfgCsdefValidationMismatch: Die Migration konnte für die Bereitstellung „Bereitstellungsname“ im gehosteten Dienst „Dienstname“ nicht abgeschlossen werden, weil die Metadaten der Bereitstellung veraltet sind. Brechen Sie die Migration ab, und führen Sie ein Upgrade der Bereitstellung durch, bevor Sie die Migration wiederholen. Überprüfungsmeldung: Der Dienstname „Dienstname“ in der Dienstdefinitionsdatei stimmt nicht mit dem Namen „Dienstname-in-Konfigurationsdatei“ in der Dienstkonfigurationsdatei überein.|Gleichen Sie die Dienstnamen in der CSDEF-Datei und in der CSCFG-Datei miteinander ab.|
+|NetworkingInternalOperationError beim Bereitstellen einer Clouddienstressource (erweiterter Support)| Das Problem kann auftreten, wenn der Dienstname mit dem Rollennamen identisch ist. Die empfohlene Korrektur besteht in der Verwendung unterschiedlicher Namen für Dienste und Rollen.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu den Anforderungen der Migration finden Sie unter [Technische Details der Migration zu Azure Cloud Services (erweiterter Support)](in-place-migration-technical-details.md)

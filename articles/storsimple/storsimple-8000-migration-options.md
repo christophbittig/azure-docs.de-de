@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/15/2019
+ms.date: 09/02/2021
 ms.author: alkohli
-ms.openlocfilehash: cc67b678fabeb2a7878490a4ea713acb5709cdbc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 31fe8293abb25ed9a6f44660f32398dd44072c37
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643792"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123470110"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>Optionen zum Migrieren von Daten aus StorSimple Serie 5000/7000 
 
@@ -45,6 +45,12 @@ Diese völlig neue Migrationsoption ermöglicht es Kunden, die Dateifreigaben ih
 
 Weitere Informationen zum Migrieren von Daten mithilfe der Azure-Dateisynchronisierung finden Sie unter [Migrieren von Daten aus StorSimple Serie 5000/7000 zur Azure-Dateisynchronisierung](../storage/files/storage-files-migration-storsimple-8000.md).
 
+#### <a name="migrate-to-azure-netapp-files"></a>Migrieren zu Azure NetApp Files
+
+Die Kunden der StorSimple-Serien 5000 bis 7000 können zu Azure NetApp Files (ANF) mit NetApp Global File Cache (GFC) migrieren, um kritische Daten weiterhin in Azure zu speichern und gleichzeitig Inhalte an Remotestandorten zu verwalten. Kunden können IT-Speicher und -Infrastruktur optimieren und vereinfachen, indem sie die unstrukturierten Daten in Microsoft Azure mithilfe von Azure NetApp Files zentralisieren, um schnellen lokalen und geografisch verteilten Zugriff mit dem Global File Cache von NetApp zu ermöglichen.
+
+Eine Übersicht über die Funktionen, Bereitstellungsmethoden und Migration finden Sie unter [Referenzarchitektur: Global verteilte Enterprise-Dateifreigabe mit Azure NetApp Files und NetApp Global File Cache](https://f.hubspotusercontent20.net/hubfs/525875/r3_NA-581-0521-Ref-Arch-ANF-GFC-StorSimple%20(1)%20(1)%20(2).pdf) von NetApp.<!--Not included: 1) Partnership with MS; 2) How to initiate migration with NetApp (other providers point people to their site).-->
+
 ### <a name="third-party-options"></a>Drittanbieteroptionen
 
 #### <a name="migrate-to-panzura-freedom-nas"></a>Migration zu Panzura Freedom NAS
@@ -64,12 +70,6 @@ Erfahren Sie mehr zur [Migration zu Cohesity DataPlatform](https://info.cohesity
 Nasuni erleichtert es für Kunden von StorSimple 5000-7000, zu migrieren und ihre Daten in Azure zu speichern.  Nasuni ist eine führende Lösung für Azure-basierte NAS-Speicher, die Kunden die Leistung und Sicherheit bietet, die sie bei lokalen Lösungen erwarten – mit Wirtschaftlichkeit und Skalierung der Cloud.  Zusätzlich zum Hochleistungsdatenspeicher erledigen Nasuni und Azure Sicherung und Datenwiederherstellung, während Sie Ihre Daten auf der ganzen Welt mit zentralisierter Dateispeicherverwaltung freigeben und daran zusammenarbeiten können. 
 
 Nasuni verfügt über die Erfahrung, damit Ihre Migration möglichst einfach wird – beginnen Sie noch heute: https://www.nasuni.com/blog-migrating-off-storsimple/
-
-#### <a name="migrate-to-talon-fast"></a>Migrieren zu Talon FAST
-
-Dank Talon können Kunden mit StorSimple 5000-7000 weiterhin die geschätzten Vorteile der StorSimple-Plattform (platzsparend durch unbegrenzte Cloudressourcen) nutzen und von einem noch größeren Funktionsumfang profitieren.  Mit der Talon FAST-Lösung können Kunden Ihre Daten zu Azure migrieren und dort speichern. Diese reine Softwarelösung ist somit noch platzsparender und bietet zusätzliche Vorteile wie globale Dateisperre, globale Namespaces und Funktionen für die Kollaboration an mehreren Standorten.  Talon ist eine führende Lösung im Azure-Ökosystem und wird weltweit von Kunden dazu genutzt, ihre lokalen Dateiserverworkloads ohne Beeinträchtigung der Benutzerworkflows oder -erfahrungen zu einem konsolidierten, Azure-basierten Speicher zu migrieren.  
-
-Weitere Informationen zur Entwicklung eines cloudkonsolidierten Unternehmens finden Sie unter
 
 ## <a name="migration---frequently-asked-questions"></a>Häufig gestellte Fragen zur Migration
 

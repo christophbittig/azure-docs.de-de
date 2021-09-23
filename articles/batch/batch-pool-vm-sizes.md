@@ -2,14 +2,14 @@
 title: Auswählen von VM-Größen und Images für Pools
 description: 'Vorgehensweise: Auswahl aus den verfügbaren VM-Größen und Betriebssystemversionen für Computeknoten in Azure Batch-Pools'
 ms.topic: conceptual
-ms.date: 08/27/2021
+ms.date: 09/02/2021
 ms.custom: seodec18
-ms.openlocfilehash: bff6ef88345b280e2c977661814630af38fbe9d5
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 64dc4f11d5b80f0b493ca393f9a04521090c02cb
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123224817"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123437056"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Auswählen einer VM-Größe und eines Images für Computeknoten in einem Azure Batch-Pool
 
@@ -19,7 +19,16 @@ Wenn Sie eine Knotengröße für einen Azure Batch-Pool wählen, können Sie aus
 
 ### <a name="pools-in-virtual-machine-configuration"></a>Pools in der Konfiguration des virtuellen Computers
 
-Batch-Pools in der Konfiguration des virtuellen Computers unterstützen nahezu alle [VM-Größen](../virtual-machines/sizes.md). In der folgenden Tabelle finden Sie weitere Informationen zu unterstützten Größen und Einschränkungen.
+Batch-Pools in der Konfiguration des virtuellen Computers unterstützen nahezu alle [VM-Größen](../virtual-machines/sizes.md). Die unterstützten VM-Größen in einer Region können über [Batchverwaltungs-APIs](batch-apis-tools.md#batch-management-apis) sowie über die [Befehlszeilentools](batch-apis-tools.md#batch-command-line-tools) (PowerShell-Cmdlets und Azure CLI) ermittelt werden.  Der [Azure Batch-CLI-Befehl](/cli/azure/batch/location#az_batch_location_list_skus) zum Auflisten der unterstützten VM-Größen in einer Region lautet beispielsweise wie folgt:
+
+```azurecli-interactive
+az batch location list-skus --location
+                            [--filter]
+                            [--maxresults]
+                            [--subscription] 
+```
+
+Für jede VM-Serie wird in der folgenden Tabelle auch aufgeführt, ob die VM-Serie und die VM-Größen von Batch unterstützt werden.
 
 | VM-Serie  | Unterstützte Größen |
 |------------|---------|
