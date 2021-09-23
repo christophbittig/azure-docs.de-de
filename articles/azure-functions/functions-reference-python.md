@@ -4,12 +4,12 @@ description: Entwickeln von Funktionen mit Python
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 601982058a333f23cf5895351db7bc6475617256
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d44de94ef30976a35bbfeddf68b60068b952fbde
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346820"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450879"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Python-Entwicklerhandbuch für Azure Functions
 
@@ -19,7 +19,7 @@ Für Python-Entwickler sind möglicherweise auch folgende Artikel interessant:
 
 | Erste Schritte | Konzepte| Szenarien/Beispiele |
 |--|--|--|
-| <ul><li>[Python-Funktion unter Verwendung von Visual Studio Code](./create-first-function-vs-code-csharp.md?pivots=programming-language-python)</li><li>[Python-Funktion mit Terminal/Eingabeaufforderung](./create-first-function-cli-csharp.md?pivots=programming-language-python)</li></ul> | <ul><li>[Entwicklerhandbuch](functions-reference.md)</li><li>[Hostingoptionen](functions-scale.md)</li><li>[Überlegungen&nbsp;zur Leistung](functions-best-practices.md)</li></ul> | <ul><li>[Imageklassifizierung mit PyTorch](machine-learning-pytorch.md)</li><li>[Azure-Automatisierungsbeispiel](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[Maschinelles Lernen mit TensorFlow](functions-machine-learning-tensorflow.md)</li><li>[Durchsuchen von Python-Beispielen](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
+| <ul><li>[Python-Funktion unter Verwendung von Visual Studio Code](./create-first-function-vs-code-python.md)</li><li>[Python-Funktion mit Terminal/Eingabeaufforderung](./create-first-function-cli-python.md)</li></ul> | <ul><li>[Entwicklerhandbuch](functions-reference.md)</li><li>[Hostingoptionen](functions-scale.md)</li><li>[Überlegungen&nbsp;zur Leistung](functions-best-practices.md)</li></ul> | <ul><li>[Imageklassifizierung mit PyTorch](machine-learning-pytorch.md)</li><li>[Azure-Automatisierungsbeispiel](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[Maschinelles Lernen mit TensorFlow](functions-machine-learning-tensorflow.md)</li><li>[Durchsuchen von Python-Beispielen](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
 
 > [!NOTE]
 > Obwohl Sie Ihre [Python-basierten Azure-Funktionen lokal unter Windows entwickeln](create-first-function-vs-code-python.md#run-the-function-locally) können, wird Python bei der Ausführung in Azure nur in einem Linux-basierten Hostingplan unterstützt. Sehen Sie sich die Liste der unterstützten [Betriebssystem- und Runtimekombinationen](functions-scale.md#operating-systemruntime) an.
@@ -267,11 +267,11 @@ Weitere Informationen über Protokollierung finden Sie unter [Überwachen von Az
 
 ### <a name="log-custom-telemetry"></a>Protokollieren benutzerdefinierter Telemetriedaten
 
-Ausgaben werden von Functions standardmäßig als Ablaufverfolgungen in Application Insights geschrieben. Sollten Sie mehr Steuerungsmöglichkeiten benötigen, können Sie stattdessen die [OpenCensus Python Extensions](https://github.com/census-ecosystem/opencensus-python-extensions-azure) verwenden, um benutzerdefinierte Telemetriedaten an Ihre Application Insights-Instanz zu senden. 
+Standardmäßig erfasst die Functions-Runtime Protokolle und andere Telemetriedaten, die von Ihren Funktionen generiert werden. Diese Telemetriedaten werden in Application Insights zu Ablaufverfolgungen. Anforderungs- und Abhängigkeitstelemetriedaten für bestimmte Azure-Dienste werden standardmäßig auch über [Trigger und Bindungen](functions-triggers-bindings.md#supported-bindings) erfasst. Zum Erfassen benutzerdefinierter Anforderungs-/Abhängigkeitstelemetriedaten unabhängig von Bindungen können Sie die [OpenCensus Python-Erweiterungen](https://github.com/census-ecosystem/opencensus-python-extensions-azure) verwenden. Damit werden benutzerdefinierte Telemetriedaten an Ihre Application Insights-Instanz gesendet. Eine Liste unterstützter Erweiterungen finden Sie im [OpenCensus-Repository](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib).
 
 >[!NOTE]
-> Um die OpenCensus Python Extensions zu verwenden, müssen Sie die [Python Extensions](#python-worker-extensions) aktivieren, indem Sie in `local.settings.json` und den Anwendungseinstellungen `PYTHON_ENABLE_WORKER_EXTENSIONS` auf `1` festlegen.
->
+>Um die OpenCensus Python-Erweiterungen zu verwenden, müssen Sie die [Python-Workererweiterungen](#python-worker-extensions) in Ihrer Funktions-App aktivieren, indem Sie `PYTHON_ENABLE_WORKER_EXTENSIONS` in den [Anwendungseinstellungen](functions-how-to-use-azure-function-app-settings.md#settings) auf `1` festlegen.
+
 
 ```
 // requirements.txt
@@ -390,9 +390,16 @@ def main(req):
 
 ## <a name="environment-variables"></a>Umgebungsvariablen
 
-In Functions werden [Anwendungseinstellung](functions-app-settings.md), z.B. Dienstverbindungszeichenfolgen, während der Ausführung als Umgebungsvariablen verfügbar gemacht. Sie können auf diese Einstellungen zugreifen, indem Sie `import os` deklarieren und dann `setting = os.environ["setting-name"]` verwenden.
+In Functions werden [Anwendungseinstellung](functions-app-settings.md), z.B. Dienstverbindungszeichenfolgen, während der Ausführung als Umgebungsvariablen verfügbar gemacht. Es gibt zwei Hauptmöglichkeiten, auf diese Einstellungen in Ihrem Code zuzugreifen. 
 
-Im folgenden Beispiel wird die [Anwendungseinstellung](functions-how-to-use-azure-function-app-settings.md#settings) mit dem Schlüssel `myAppSetting` ermittelt:
+| Methode | BESCHREIBUNG |
+| --- | --- |
+| **`os.environ["myAppSetting"]`** | Versucht, die Anwendungseinstellung nach Schlüsselnamen abzurufen, und gibt einen Fehler aus, wenn dies nicht erfolgreich ist.  |
+| **`os.getenv("myAppSetting")`** | Versucht, die Anwendungseinstellung nach Schlüsselnamen abzurufen, und gibt NULL zurück, wenn dies nicht erfolgreich ist.  |
+
+Beide Methoden erfordern, dass Sie `import os` deklarieren.
+
+Im folgenden Beispiel wird `os.environ["myAppSetting"]` verwendet, um die [Anwendungseinstellung](functions-how-to-use-azure-function-app-settings.md#settings) mit dem Schlüssel namens `myAppSetting` abzurufen:
 
 ```python
 import logging
@@ -702,7 +709,7 @@ Für den Functions-Python-Worker wird ein bestimmter Satz mit Bibliotheken benö
 > Wenn die Datei „requirements.txt“ Ihrer Funktions-App einen Eintrag `azure-functions-worker` enthält, entfernen Sie ihn. Der Funktionsworker wird automatisch von der Azure Functions-Plattform verwaltet, und wir aktualisieren ihn regelmäßig mit neuen Features und Fehlerbehebungen. Die manuelle Installation einer alten Version des Workers in „requirements.txt“ kann zu unerwarteten Problemen führen.
 
 > [!NOTE]
->  Wenn Ihr Paket bestimmte Bibliotheken enthält, die mit den Abhängigkeiten des Workers in Konflikt stehen können (z. B. protobuf, tensorflow, grpcio), konfigurieren Sie `PYTHON_ISOLATE_WORKER_DEPENDENCIES` in den App-Einstellungen mit `1`, um zu verhindern, dass Ihre Anwendung auf die Abhängigkeiten des Workers verweist.
+>  Wenn Ihr Paket bestimmte Bibliotheken enthält, die mit den Abhängigkeiten des Workers in Konflikt stehen können (z. B. protobuf, tensorflow, grpcio), konfigurieren Sie [`PYTHON_ISOLATE_WORKER_DEPENDENCIES`](functions-app-settings.md#python_isolate_worker_dependencies-preview) in den App-Einstellungen mit `1`, um zu verhindern, dass Ihre Anwendung auf die Abhängigkeiten des Workers verweist. Dieses Feature befindet sich in der Vorschauphase.
 
 ### <a name="azure-functions-python-library"></a>Azure Functions-Python-Bibliothek
 

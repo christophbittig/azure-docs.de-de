@@ -1,16 +1,15 @@
 ---
 title: 'Gewusst wie: Erstellen einer Azure-Supportanfrage'
 description: Kunden, die Unterstützung benötigen, können das Azure-Portal verwenden, um Self-Service-Lösungen zu finden und Supportanfragen zu erstellen und zu verwalten.
-ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.topic: how-to
 ms.custom: support-help-page
-ms.date: 08/24/2021
-ms.openlocfilehash: a9a5c7aedb9278a4832f485d4bc8107cc141cc5e
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/01/2021
+ms.openlocfilehash: 768c778926024288b0d331b5cb6b60c8e9c16a57
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122821428"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429459"
 ---
 # <a name="create-an-azure-support-request"></a>Erstellen einer Azure-Supportanfrage
 
@@ -22,12 +21,6 @@ Azure ermöglicht das Erstellen und Verwalten von Supportanfragen (auch Supportt
 >* Azure-Portal zur kommerziellen Verwendung: [https://portal.azure.com](https://portal.azure.com)
 >* Azure-Portal für Deutschland: [https://portal.microsoftazure.de](https://portal.microsoftazure.de).
 >* Azure-Portal für die US-Regierung: [https://portal.azure.us](https://portal.azure.us).
-
-Die Oberfläche für Supportanfragen ist auf drei Hauptziele konzentriert:
-
-* **Optimierung**: Einfacheres Auffinden von Support und Problembehandlung und vereinfachtes Absenden einer Supportanfrage.
-* **Integration**: Bei der Behandlung eines Problems mit einer Azure-Ressource können Sie eine Supportanfrage ganz einfach öffnen, ohne den Kontext zu wechseln.
-* **Effizient**: Sammeln Sie die wichtigen Informationen, die Ihr Supporttechniker benötigt, um das Problem effizient zu lösen.
 
 In Azure wird unbegrenzter Support für die Abonnementverwaltung bereitgestellt, einschließlich Abrechnung, Kontingentanpassungen und Kontenübertragungen. Für technischen Support benötigen Sie einen Supportplan. Weitere Informationen finden Sie unter [Supportpläne vergleichen](https://azure.microsoft.com/support/plans).
 
@@ -45,11 +38,11 @@ So starten Sie von einer beliebigen Stelle im Azure-Portal aus eine Supportanfra
 
 1. Wählen Sie das **?** im globalen Header aus, und klicken Sie dann auf **Hilfe und Support**.
 
-   ![Hilfe und Support](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
+   :::image type="content" source="media/how-to-create-azure-support-request/helpandsupportnewlower.png" alt-text="Screenshot des Hilfemenüs im Azure-Portal":::
 
-1. Wählen Sie **Neue Supportanfrage** aus. Befolgen Sie die Anweisungen, Informationen zu Ihrem Problem zur Verfügung zu stellen. Wir schlagen einige mögliche Lösungen vor, sammeln Details zum Problem und helfen Ihnen, die Supportanfrage zu übermitteln und zu verfolgen.
+1. Klicken Sie auf **Supportanfrage erstellen**. Befolgen Sie die Anweisungen, Informationen zu Ihrem Problem zur Verfügung zu stellen. Wir schlagen einige mögliche Lösungen vor, sammeln Details zum Problem und helfen Ihnen, die Supportanfrage zu übermitteln und zu verfolgen.
 
-   ![Neue Supportanfrage](./media/how-to-create-azure-support-request/newsupportrequest2lower.png)
+   :::image type="content" source="media/how-to-create-azure-support-request/newsupportrequest2lower.png" alt-text="Screenshot der Seite „Hilfe und Support“ mit dem Link „Supportanfrage erstellen“":::
 
 ### <a name="go-to-help--support-from-a-resource-menu"></a>Aus einem Ressourcenmenü zu „Hilfe + Support“ wechseln
 
@@ -57,46 +50,49 @@ So starten Sie eine Supportanfrage im Kontext der Ressource, mit der Sie gerade 
 
 1. Wählen Sie im Ressourcenmenü im Abschnitt **Support + Problembehandlung** die Option **Neue Supportanfrage** aus.
 
-   ![Im Kontext](./media/how-to-create-azure-support-request/incontext2lower.png)
+   :::image type="content" source="media/how-to-create-azure-support-request/incontext2lower.png" alt-text="Screenshot der Option „Neue Supportanfrage“ im Ressourcenbereich":::
 
-1. Befolgen Sie die Anweisungen, um uns Informationen zu Ihrem Problem zu geben. Wenn Sie den Supportanfrageprozess von der Ressource aus starten, sind einige Optionen für Sie vorab ausgewählt.
+1. Befolgen Sie die Anweisungen, um uns Informationen zu Ihrem Problem zu geben. Wenn Sie den Supportanfrageprozess von einer Ressource aus starten, sind einige Optionen vorab für Sie ausgewählt.
 
 ## <a name="create-a-support-request"></a>Erstellen einer Supportanfrage
 
 Wir führen Sie durch einige Schritte, um Informationen zu Ihrem Problem zu sammeln und Ihnen bei dessen Behebung zu helfen. Jeder dieser Schritte wird in den folgenden Abschnitten beschrieben.
 
-### <a name="basics"></a>Grundlagen
+### <a name="problem-description"></a>Problembeschreibung
 
-Im ersten Schritt des Prozesses für Supportanfragen werden grundlegende Informationen zu Ihrem Problem und Supportplan gesammelt.
+Der erste Schritt des Supportanfrageprozesses besteht darin, einen Problemtyp auszuwählen. Sie werden dann zur Angabe weiterer Informationen aufgefordert, die je nach ausgewählter Art des Problems variieren können. In den meisten Fällen müssen Sie ein Abonnement angeben, Ihr Problem kurz beschreiben und einen Problemtyp auswählen. Wenn Sie **Technisch** auswählen, müssen Sie den Dienst angeben, auf den sich Ihr Problem bezieht. Je nach Dienst werden zusätzliche Optionen für **Problemtyp** und **Problemuntertyp** angezeigt.
 
-Verwenden Sie auf der Registerkarte **Grundlagen** von **Neue Supportanfrage** die Selektoren, um uns erste Informationen über das Problem mitzuteilen. Zuerst identifizieren Sie einige allgemeine Kategorien für den Problemtyp und wählen das zugehörige Abonnement aus. Wählen Sie den Dienst aus, z. B. **Virtueller Computer mit Windows**. Wählen Sie die Ressource aus, z. B. den Namen Ihres virtuellen Computers. Beschreiben Sie das Problem kurz mit eigenen Worten, und wählen Sie dann **Problemtyp** und **Problemuntertyp** aus, um genauere Informationen anzugeben.
+:::image type="content" source="media/how-to-create-azure-support-request/basics2lower.png" alt-text="Screenshot des Schritts „Problembeschreibung“ des Supportanfrageprozesses":::
 
-![Blatt "Grundlagen"](./media/how-to-create-azure-support-request/basics2lower.png)
+Nachdem Sie all diese Details angegeben haben, klicken Sie auf **Weiter**.
 
-### <a name="solutions"></a>Lösungen
+### <a name="recommended-solution"></a>Empfohlene Lösung
 
-Nach dem Sammeln der grundlegenden Informationen zeigen wir Ihnen als Nächstes Lösungen, die Sie selbst ausprobieren können. In einigen Fällen können wir sogar eventuell eine schnelle Diagnose ausführen. Lösungen werden von Azure-Experten geschrieben und unterstützen Sie beim Beheben der am häufigsten auftretenden Probleme.
+Basierend auf den von Ihnen bereitgestellten Informationen zeigen wir Ihnen empfohlene Lösungen an, die Sie zum Beheben des Problems verwenden können. In einigen Fällen können wir sogar eventuell eine schnelle Diagnose ausführen. Lösungen werden von Azure-Experten geschrieben und unterstützen Sie beim Beheben der am häufigsten auftretenden Probleme.
 
-### <a name="details"></a>Details
+Wenn Sie das Problem noch immer nicht beheben können, fahren Sie mit dem Erstellen Ihrer Supportanfrage fort, indem Sie auf **Weiter** klicken.
+
+### <a name="additional-details"></a>Zusätzliche Details
 
 Als Nächstes sammeln wir zusätzliche Details über das Problem. Wenn Sie in diesem Schritt ausführliche und detaillierte Informationen bereitstellen, können wir Ihre Supportanfrage besser an den richtigen Techniker weiterleiten.
 
-1. Teilen Sie uns wenn möglich mit, wann das Problem begonnen hat und durch welche Schritte es hervorgerufen wird. Sie können eine Datei hochladen, z. B. eine Protokolldatei oder eine Ausgabe der Diagnose. Weitere Informationen zu Dateiuploads finden Sie unter [Richtlinien für den Dateiupload](how-to-manage-azure-support-request.md#file-upload-guidelines).
+1. Füllen Sie die **Problemdetails** aus, um uns weitere Informationen zu Ihrem Problem bereitzustellen. Teilen Sie uns wenn möglich mit, wann das Problem begonnen hat und durch welche Schritte es hervorgerufen wird. Sie können eine Datei hochladen, z. B. eine Protokolldatei oder eine Ausgabe der Diagnose. Weitere Informationen zu Dateiuploads finden Sie unter [Richtlinien für den Dateiupload](how-to-manage-azure-support-request.md#file-upload-guidelines).
 
 1. Wählen Sie im Abschnitt **Diagnoseinformationen freigeben** die Option **Ja** oder **Nein** aus. Wenn Sie **Ja** auswählen, kann der Azure-Support [Diagnoseinformationen](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) aus Ihren Azure-Ressourcen erfassen. Wenn Sie diese Informationen nicht freigeben möchten, wählen Sie **Nein** aus. In einigen Fällen stehen zusätzliche Optionen zur Auswahl, z. B. ob der Zugriff auf den Arbeitsspeicher eines virtuellen Computers zugelassen werden soll.
 
-1. Wählen Sie im Abschnitt **Supportmethode** der Registerkarte **Details** den Schweregrad der Auswirkungen aus. Der maximale Schweregrad richtet sich nach Ihrem [Supportplan](https://azure.microsoft.com/support/plans).
+1. Wählen Sie im Abschnitt **Supportmethode** den Schweregrad der Auswirkungen aus. Der maximale Schweregrad richtet sich nach Ihrem [Supportplan](https://azure.microsoft.com/support/plans).
 
 1. Geben Sie Ihre bevorzugte Kontaktmethode, Ihre Verfügbarkeit und Ihre bevorzugte Supportsprache an.
 
 1. Füllen Sie als Nächstes den Abschnitt **Kontaktinformationen** aus, damit wir wissen, wie wir Sie kontaktieren können.
 
-### <a name="review--create"></a>Bewerten + erstellen
+Klicken Sie auf **Weiter**, wenn Sie alle erforderlichen Informationen angegeben haben.
 
-Füllen Sie alle erforderlichen Informationen auf jeder Registerkarte aus, und wählen Sie dann **Überprüfen + erstellen** aus. Überprüfen Sie die Details, die Sie an den Support senden. Wechseln Sie zu jeder Registerkarte zurück, um ggf. Änderungen vorzunehmen. Wenn Sie damit zufrieden sind und die Supportanfrage vollständig ist, wählen Sie **Erstellen** aus.
+### <a name="review--create"></a>Überprüfen + erstellen
+
+Bevor Sie Ihre Anfrage erstellen, überprüfen Sie alle Details, die Sie an den Support senden. Sie können auf **Zurück** klicken, um zu einer beliebigen Registerkarte zurückzukehren und Änderungen vorzunehmen. Wenn Sie damit zufrieden sind und die Supportanfrage vollständig ist, wählen Sie **Erstellen** aus.
 
 Ein Supporttechniker setzt sich mit Ihnen mithilfe der von Ihnen angeführten Methode in Verbindung. Informationen zur anfänglichen Reaktionszeit finden Sie unter [Supportumfang und Reaktionszeiten](https://azure.microsoft.com/support/plans/response/).
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -108,7 +104,6 @@ Weitere Informationen finden Sie unter folgenden Links:
 
 * [Verwalten einer Azure-Supportanfrage](how-to-manage-azure-support-request.md)
 * [Azure-Supportticket-REST-API](/rest/api/support)
-* [Senden Ihres Feedbacks und Ihrer Anregungen an uns](https://feedback.azure.com/forums/266794-support-feedback)
 * Kontaktaufnahme mit uns auf [Twitter](https://twitter.com/azuresupport)
 * Hilfe von Kollegen über die [Microsoft Q&A-Frageseite](/answers/products/azure)
 * Weitere Informationen in den [Häufig gestellten Fragen zum Azure-Support](https://azure.microsoft.com/support/faq)
