@@ -7,14 +7,16 @@ ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: mimckitt
-ms.openlocfilehash: 5920a7c0aecd02e4d5b7bbcac9c5254a14d7f192
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3166ba5015c4d3a8e8d449c497eade6bc8bc56f6
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340300"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688288"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3- und Esv3-Serie
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Die Serien Ev3 und Esv3 werden auf dem Intel® Xeon® Platinum-Prozessor 8272CL (Cascade Lake), dem Intel® Xeon®-Prozessor 8171M mit 2,1 GHz (Skylake) oder dem Intel® Xeon®-Prozessor E5-2673 v4 mit 2,3 GHz (Broadwell) in einer Hyperthreadkonfiguration ausgeführt und bieten ein besseres Preis-Leistungs-Verhältnis für die meisten universellen Workloads und besseren Einklang von Ev3 mit den universellen VMs der meisten anderen Clouds.  Der Speicher wurde erweitert (von 7 GiB/vCPU auf 8 GiB/vCPU), während die Datenträger- und Netzwerkgrenzwerte pro Kern angepasst wurden, um sich für den Übergang zum Hyperthreading anzupassen. Die Ev3-Serie ist der Nachfolger für die VMs mit großen Arbeitsspeichergrößen der D/Dv2-Familien.
 

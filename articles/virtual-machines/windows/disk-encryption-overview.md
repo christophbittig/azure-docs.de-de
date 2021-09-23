@@ -9,14 +9,16 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: e283ff2de003146c8228d36843f00ca8e4faced9
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: fc3c40e9f4bad9a15b94ee7aa529438f45b97498
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111748569"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692609"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Azure Disk Encryption für virtuelle Windows-Computer
+
+**Gilt für:** :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
 Azure Disk Encryption unterstützt Sie beim Schutz Ihrer Daten gemäß den Sicherheits- und Complianceanforderungen Ihrer Organisation. Der Dienst stellt mithilfe des Windows-Features [BitLocker](https://en.wikipedia.org/wiki/BitLocker) Volumeverschlüsselung für das Betriebssystem und die Datenträger von virtuellen Azure-Computern (virtual machines, VMs) bereit und ist in [Azure Key Vault](../../key-vault/index.yml) integriert, um die Steuerung und Verwaltung von Verschlüsselungsschlüsseln und Geheimnissen für Datenträger zu ermöglichen.
 
@@ -38,12 +40,13 @@ Anhand der Schnellstartanleitungen [Erstellen und Verschlüsseln eines virtuelle
 
 Windows-VMs sind in [verschiedenen Größen](../sizes-general.md) verfügbar. Azure Disk Encryption wird für virtuelle Computer der 1. und 2. Generation unterstützt. Azure Disk Encryption ist auch für virtuelle Computer mit Storage Premium verfügbar.
 
-Azure Disk Encryption ist nicht verfügbar auf [Basic-VMs der A-Serie](https://azure.microsoft.com/pricing/details/virtual-machines/series/) und auf virtuellen Computern mit weniger als 2 GB Arbeitsspeicher.  Auch für VM-Images ohne temporäre Datenträger (Dv4, Dsv4, Ev4 und Esv4) ist Azure Disk Encryption nicht verfügbar.  Weitere Informationen finden Sie unter [Azure-VM-Größen ohne lokalen temporären Datenträger](../azure-vms-no-temp-disk.md).  Weitere Ausnahmen finden Sie unter [Azure Disk Encryption: Nicht unterstützte Szenarien](disk-encryption-windows.md#unsupported-scenarios).
+Azure Disk Encryption ist nicht verfügbar auf [Basic-VMs der A-Serie](https://azure.microsoft.com/pricing/details/virtual-machines/series/) und auf virtuellen Computern mit weniger als 2 GB Arbeitsspeicher.  Weitere Ausnahmen finden Sie unter [Azure Disk Encryption: Nicht unterstützte Szenarien](disk-encryption-windows.md#unsupported-scenarios).
 
 ### <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
 - Windows-Client: Windows 8 und höher.
-- Windows-Server: Windows Server 2008 R2 und höher.  
+- Windows-Server: Windows Server 2008 R2 und höher.
+- Windows 10 Enterprise (mehrere Sitzungen)  
  
 > [!NOTE]
 > Für Windows Server 2008 R2 muss .NET Framework 4.5 für die Verschlüsselung installiert sein. Sie können die Installation über Windows Update mit dem optionalen Update Microsoft .NET Framework 4.5.2 für Windows Server 2008 R2-basierte Systeme (x64) durchführen ([KB2901983](https://www.catalog.update.microsoft.com/Search.aspx?q=KB2901983)).  
@@ -58,12 +61,13 @@ Die VMs müssen die folgenden Konfigurationsanforderungen an den Netzwerkendpunk
   - Die Windows-VM muss eine Verbindung mit dem Azure Storage-Endpunkt herstellen können, an dem das Azure-Erweiterungsrepository gehostet wird, sowie mit einem Azure Storage-Konto, das die VHD-Dateien hostet.
   -  Wenn Ihre Sicherheitsrichtlinie den Zugriff von virtuellen Azure-Computern auf das Internet beschränkt, können Sie den obigen URI auflösen und eine spezielle Regel konfigurieren, um ausgehende Verbindungen mit den IP-Adressen zuzulassen. Weitere Informationen finden Sie unter [Zugreifen auf Azure Key Vault hinter einer Firewall](../../key-vault/general/access-behind-firewall.md).    
 
-
 ## <a name="group-policy-requirements"></a>Gruppenrichtlinienanforderungen
 
 Azure Disk Encryption verwendet für virtuelle Windows-Computer die externe Schlüsselschutzvorrichtung BitLocker. Für VMs, die der Domäne beigetreten sind, sollten Sie keine Gruppenrichtlinien nutzen, mit denen TPM-Schutzvorrichtungen durchgesetzt werden. Informationen zur Gruppenrichtlinie „BitLocker ohne kompatibles TPM zulassen“ finden Sie unter [BitLocker Group Policy Reference](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1) (Referenz zur BitLocker-Gruppenrichtlinie).
 
-Die BitLocker-Richtlinie für VMs mit Domänenbeitritt und benutzerdefinierten Gruppenrichtlinien muss die folgende Einstellung enthalten: [Speichern von BitLocker-Wiederherstellungsinformationen durch Benutzer konfigurieren -> 256-Bit-Wiederherstellungsschlüssel zulassen](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Bei Azure Disk Encryption tritt ein Fehler auf, wenn benutzerdefinierte Einstellungen für die Gruppenrichtlinie nicht mit BitLocker kompatibel sind. Auf Computern ohne korrekte Richtlinieneinstellung müssen Sie die neue Richtlinie anwenden und die Aktualisierung der neuen Richtlinie erzwingen (gpupdate.exe /force). Danach ist möglicherweise ein Neustart erforderlich.
+Die BitLocker-Richtlinie für VMs mit Domänenbeitritt und benutzerdefinierten Gruppenrichtlinien muss die folgende Einstellung enthalten: [Speichern von BitLocker-Wiederherstellungsinformationen durch Benutzer konfigurieren -> 256-Bit-Wiederherstellungsschlüssel zulassen](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Bei Azure Disk Encryption tritt ein Fehler auf, wenn benutzerdefinierte Einstellungen für die Gruppenrichtlinie nicht mit BitLocker kompatibel sind. Auf Computern ohne korrekte Richtlinieneinstellung müssen Sie die neue Richtlinie anwenden und die Aktualisierung der neuen Richtlinie erzwingen (gpupdate.exe /force).  Danach ist möglicherweise ein Neustart erforderlich.
+
+MBAM-Gruppenrichtlinienfeatures (Microsoft Bitlocker Administration and Monitoring) sind nicht mit Azure Disk Encryption kompatibel.
 
 > [!WARNING]
 > Azure Disk Encryption **speichert keine Wiederherstellungsschlüssel**. Wenn die Sicherheitseinstellung [Interaktive Anmeldung: Schwellenwert für Computerkontosperrung](/windows/security/threat-protection/security-policy-settings/interactive-logon-machine-account-lockout-threshold) aktiviert ist, können Computer nur wiederhergestellt werden, indem ein Wiederherstellungsschlüssel über die serielle Konsole bereitgestellt wird. Anweisungen, wie Sie sicherstellen, dass die entsprechenden Richtlinien für die Wiederherstellung aktiviert sind, finden Sie im [Leitfaden zur Bitlocker-Wiederherstellung](/windows/security/information-protection/bitlocker/bitlocker-recovery-guide-plan).

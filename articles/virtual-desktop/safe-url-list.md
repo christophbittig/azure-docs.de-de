@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: da8cc0ea77de3b544b4bcb97d2ed699c74329e68
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 95081b661d4f33577df07420ab194ec48488221a
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113757643"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768085"
 ---
 # <a name="required-url-list"></a>Erforderliche URL-Liste
 
@@ -29,7 +29,7 @@ Dabei sollten Sie unbedingt folgendes berücksichtigen:
 - Sie können das erforderliche URL-Überprüfungstool nur für Bereitstellungen in kommerziellen Clouds verwenden.
 - Das erforderliche URL-Überprüfungstool kann URLs nicht mit Platzhaltern überprüfen. Stellen Sie daher sicher, dass Sie die Blockierung dieser URLs zuerst entsperren.
 
-### <a name="requirements"></a>Requirements (Anforderungen)
+### <a name="requirements"></a>Anforderungen
 
 Sie benötigen Folgendes, um das erforderliche URL-Überprüfungstool zu verwenden:
 
@@ -42,7 +42,7 @@ Sie benötigen Folgendes, um das erforderliche URL-Überprüfungstool zu verwend
 Wie das erforderliche URL-Überprüfungstool verwendet wird:
 
 1. Öffnen Sie als Administrator eine Eingabeaufforderung auf ihrem VM.
-2. Führen Sie den folgenden Befehl aus, um das Verzeichnis in den gleichen Ordner wie der Build-Agent zu ändern:
+2. Führen Sie den folgenden Befehl aus, um das Verzeichnis in denselben Ordner wie den aktuelle Build-Agent zu ändern (in diesem Beispiel RDAgent_1.0.2944.1200):
 
     ```console
     cd C:\Program Files\Microsoft RDInfra\RDAgent_1.0.2944.1200

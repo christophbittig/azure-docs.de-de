@@ -3,12 +3,12 @@ title: Verwenden einer verwalteten Identität mit einer Anwendung
 description: Verwenden von verwalteten Identitäten in Azure Service Fabric-Anwendungscode für den Zugriff auf Azure-Dienste.
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: e26a29020f26583f7e4aa16434c7e8647ba9a5a3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc7eff8119e6b79ca991543cdc09cfe106989fd3
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98871060"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867057"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>Nutzen der verwalteten Identität einer Service Fabric-Anwendung für den Zugriff auf Azure-Dienste
 
@@ -427,7 +427,8 @@ Es empfiehlt sich, die Anforderungen, die aufgrund einer Drosselung nicht ausgef
 Eine Liste mit Ressourcen, die Azure AD unterstützen, und den dazugehörigen Ressourcen-IDs finden Sie unter [Azure-Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Bereitstellen einer Azure Service Fabric-Anwendung mit einer systemseitig zugewiesenen verwalteten Identität](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
-* [Bereitstellen einer Azure Service Fabric-Anwendung mit einer benutzerseitig zugewiesenen verwalteten Identität](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-* [Gewähren des Zugriffs auf andere Azure-Ressourcen für eine Azure Service Fabric-Anwendung](./how-to-grant-access-other-resources.md)
+* [Bereitstellen einer Service Fabric-Anwendung mit verwalteter Identität in einem verwalteten Cluster](how-to-managed-cluster-application-managed-identity.md)
+* [Bereitstellen einer Service Fabric-Anwendung mit einer systemseitig zugewiesenen verwalteten Identität in einem klassischen Cluster](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
+* [Bereitstellen einer Service Fabric-Anwendung mit einer benutzerseitig zugewiesenen verwalteten Identität in einem klassischen Cluster](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
+* [Gewähren des Zugriffs der verwalteten Identität einer Service Fabric-Anwendung auf Azure-Ressourcen](./how-to-grant-access-other-resources.md)
 * [Untersuchen einer Beispielanwendung mit der verwalteten Service Fabric-Identität](https://github.com/Azure-Samples/service-fabric-managed-identity)

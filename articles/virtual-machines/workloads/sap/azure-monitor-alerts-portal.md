@@ -6,19 +6,25 @@ ms.author: sakhare
 ms.topic: how-to
 ms.service: virtual-machines-sap
 ms.subservice: baremetal-sap
-ms.date: 07/16/2021
-ms.openlocfilehash: 3d75f08ea921e5a29709c697e7677f97891d9b3e
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.date: 08/30/2021
+ms.openlocfilehash: c41674763a417f0060206b365a99fcc4bf680b67
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122343023"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123256137"
 ---
 # <a name="configure-alerts-in-azure-monitor-for-sap-solutions-by-using-the-azure-portal"></a>Konfigurieren von Warnungen in Azure Monitor für SAP-Lösungen über das Azure-Portal
 
-In diesem Artikel werden wir die Schritte zur Konfiguration von Warnungen in Azure Monitor für SAP-Lösungen (AMS) über das [Azure-Portal](https://azure.microsoft.com/features/azure-portal) erläutern. Über die browserbasierte Benutzeroberfläche des Portals konfigurieren wir Warnungen und Benachrichtigungen.
+In diesem Artikel werden die Schritte zur Konfiguration von Warnungen in Azure Monitor für SAP-Lösungen erläutert. Wir konfigurieren Warnungen und Benachrichtigungen über das [Azure-Portal](https://azure.microsoft.com/features/azure-portal) mit seiner browserbasierten Benutzeroberfläche.
 
-Voraussetzung: Sie müssen die AMS-Ressource mit mindestens einem Anbieter bereitstellen. Sie können Anbieter für SAP Application (NetWeaver), SAP HANA, Microsoft SQL Server oder Hochverfügbarkeitscluster (Pacemaker) konfigurieren. 
+## <a name="prerequisites"></a>Voraussetzungen
+
+Stellen Sie die Ressource „Azure Monitor für SAP-Lösungen“ mit mindestens einem Anbieter bereit. Sie können Anbietern für Folgendes konfigurieren: 
+- SAP-Anwendung (NetWeaver)
+- SAP HANA
+- Microsoft SQL Server
+- Hochverfügbarkeitscluster (Pacemaker)
 
 ## <a name="sign-in-to-the-portal"></a>Anmelden beim Portal
 
@@ -26,8 +32,8 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 ## <a name="create-an-alert-rule"></a>Erstellen einer Warnungsregel
 
-1.  Navigieren Sie im Azure-Portal zu Ihrer AMS-Ressource (Azure Monitor für SAP-Lösungen), und wählen Sie sie aus. Stellen Sie sicher, dass mindestens ein Anbieter für diese AMS-Ressource konfiguriert ist. 
-2.  Navigieren Sie zu Arbeitsmappen Ihrer Wahl, z. B. SAP HANA, und wählen Sie eine HANA-Instanz aus.
+1.  Navigieren Sie im Azure-Portal zur Ressource „Azure Monitor für SAP-Lösungen“, und wählen Sie sie aus. Stellen Sie sicher, dass mindestens ein Anbieter für diese Ressource konfiguriert ist. 
+2.  Navigieren Sie zu Arbeitsmappen Ihrer Wahl. Beispielsweise zu SAP HANA, und wählen Sie eine HANA-Instanz aus.
 
     :::image type="content" source="./media/ams-alerts/ams-alert-1.png" alt-text="Screenshot: Platzierung der Schaltfläche „Warnung“" lightbox="./media/ams-alerts/ams-alert-1.png":::
   
@@ -36,16 +42,16 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
     :::image type="content" source="./media/ams-alerts/ams-alert-2.png" alt-text="Screenshot: Liste der Warnungsvorlage" lightbox="./media/ams-alerts/ams-alert-2.png":::
     
 4.  Klicken Sie auf **Regel erstellen**, um eine Warnung Ihrer Wahl zu konfigurieren.
-5.  Geben Sie den **Warnungsschwellenwert** ein, wählen Sie **Anbieterinstanz** aus, wählen Sie eine **Aktionsgruppe** aus oder erstellen Sie eine, um die Benachrichtigungseinstellung zu konfigurieren. Sie können die Häufigkeits- und Schweregradinformationen gemäß Ihren Anforderungen bearbeiten.
+5.  Geben Sie den **Warnungsschwellenwert** ein, wählen Sie **Anbieterinstanz** aus, wählen Sie eine **Aktionsgruppe** aus, oder erstellen Sie eine Aktionsgruppe, um die Benachrichtigungseinstellung zu konfigurieren. Sie können die Häufigkeits- und Schweregradinformationen gemäß Ihren Anforderungen bearbeiten.
 
     >[!Tip]
     > Weitere Informationen zu [Aktionsgruppen](../../../azure-monitor/alerts/action-groups.md). 
     
-7.  Klicken Sie auf **Benachrichtigungsregel aktivieren**.
+7.  Wählen Sie **Benachrichtigungsregel aktivieren** aus.
 
     :::image type="content" source="./media/ams-alerts/ams-alert-3.png" alt-text="Screenshot: Seite „Warnungskonfiguration“" lightbox="./media/ams-alerts/ams-alert-3.png":::
     
-7.  Klicken Sie auf **Warnungsregel bereitstellen**, um die Konfiguration der Warnungsregel abzuschließen. Sie können die Vorlage für die Warnung anzeigen lassen, indem Sie auf **Vorlage anzeigen** klicken.
+7.  Wählen Sie **Warnungsregel bereitstellen** aus, um die Konfiguration Ihrer Warnungsregel abzuschließen. Sie können die Vorlage für die Warnung anzeigen, indem Sie auf **Vorlage anzeigen** klicken.
 
     :::image type="content" source="./media/ams-alerts/ams-alert-4.png" alt-text="Screenshot: Letzter Schritt der Warnungskonfiguration" lightbox="./media/ams-alerts/ams-alert-4.png":::
     
@@ -58,4 +64,4 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 Weitere Informationen zu Azure Monitor für SAP-Lösungen:
 
 > [!div class="nextstepaction"]
-> [Azure Monitor für SAP-Lösungen](azure-monitor-overview.md)
+> [Überwachen von SAP in Azure](monitor-sap-on-azure.md)

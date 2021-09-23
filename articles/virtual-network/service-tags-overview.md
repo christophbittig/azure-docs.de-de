@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 4/23/2021
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: a06a488473264a992d947ef78ad69c61776d34ae
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 11f8c7ddd7e06e9cc4c27173d5bb8f9dd14cbd42
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343454"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768472"
 ---
 # <a name="virtual-network-service-tags"></a>Diensttags in virtuellen Netzwerken
 <a name="network-service-tags"></a>
@@ -87,6 +87,7 @@ Standardmäßig spiegeln Diensttags die Bereiche für die gesamte Cloud wider. E
 | **AzureSignalR** | Azure SignalR | Ausgehend | Nein | Nein |
 | **AzureSiteRecovery** | Azure Site Recovery.<br/><br/>*Hinweis:* Dieses Tag weist eine Abhängigkeit von den Tags **AzureActiveDirectory**, **AzureKeyVault**, **EventHub**,**GuestAndHybridManagement** und **Storage** auf. | Ausgehend | Nein | Nein |
 | **AzureTrafficManager** | Test-IP-Adressen von Azure Traffic Manager.<br/><br/>Weitere Informationen zu Test-IP-Adressen von Traffic Manager finden Sie unter [Häufig gestellte Fragen (FAQ) zu Traffic Manager](../traffic-manager/traffic-manager-faqs.md). | Eingehend | Nein | Ja |  
+| **AzureUpdateDelivery** | Für den Zugriff auf Windows-Updates. <br/><br/>*Hinweis*: Dieses Tag bietet Zugriff auf Windows Update-Metadatendienste. Zum erfolgreichen Herunterladen von Updates müssen Sie auch das Diensttag **AzureFrontDoor.FirstParty** aktivieren und Ausgangssicherheitsregeln mit wie folgt definiertem Protokoll und Port konfigurieren: <ul><li>AzureUpdateDelivery: TCP, Port 443</li><li>AzureFrontDoor.FirstParty: TCP, Port 80</li></ul>*Dieses Tag ist derzeit nicht über das Azure-Portal konfigurierbar.*| Ausgehend | Nein | Nein |  
 | **BatchNodeManagement** | Verwaltungsdatenverkehr für dedizierte Azure Batch-Bereitstellungen. | Beide | Nein | Ja |
 | **CognitiveServicesManagement** | Die Adressbereiche des Datenverkehrs für Azure Cognitive Services. | Beide | Nein | Nein |
 | **DataFactory**  | Azure Data Factory | Beide | Nein | Nein |
@@ -110,6 +111,7 @@ Standardmäßig spiegeln Diensttags die Bereiche für die gesamte Cloud wider. E
 | **SqlManagement** | Verwaltungsdatenverkehr für dedizierte SQL-Bereitstellungen. | Beide | Nein | Ja |
 | **Storage** | „Azure Storage“. <br/><br/>*Hinweis:* Dieses Tag steht für den Dienst, nicht für bestimmte Instanzen des Diensts. Beispielsweise steht das Tag für den Azure Storage-Dienst, aber nicht für ein bestimmtes Azure Storage-Konto. | Ausgehend | Ja | Ja |
 | **StorageSyncService** | Speichersynchronisierungsdienst | Beide | Nein | Nein |
+| **WindowsAdminCenter** | Ermöglicht dem Windows Admin Center-Back-End-Dienst die Kommunikation mit der Kundeninstallation von Windows Admin Center. *Hinweis: Dieses Tag ist derzeit nicht über das Azure-Portal konfigurierbar.* | Ausgehend | Nein | Ja |
 | **WindowsVirtualDesktop** | Windows Virtual Desktop | Beide | Nein | Ja |
 | **VirtualNetwork** | Der Adressraum des virtuellen Netzwerks (alle für das virtuelle Netzwerk definierten IP-Adressbereiche), alle verbundenen lokalen Adressräume, [per Peering verknüpfte](virtual-network-peering-overview.md) virtuelle Netzwerke, virtuelle Netzwerke, die mit einem [Gateway des virtuellen Netzwerks](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json) verbunden sind, die [virtuelle IP-Adresse des Hosts](./network-security-groups-overview.md#azure-platform-considerations) und Adresspräfixe, die in [benutzerdefinierten Routen](virtual-networks-udr-overview.md) verwendet werden. Dieses Tag kann auch Standardrouten enthalten. | Beide | Nein | Nein |
 

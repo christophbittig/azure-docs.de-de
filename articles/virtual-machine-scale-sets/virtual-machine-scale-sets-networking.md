@@ -9,14 +9,16 @@ ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
-ms.openlocfilehash: 452d24d95fc0c43d8301e29b2304b9f0baa3cb25
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 85a4305abf1708d45627f775a583ae219db22b8e
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673923"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693987"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Netzwerk für Azure-VM-Skalierungsgruppen
+
+**Gilt für:** :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Wenn Sie eine Azure-VM-Skalierungsgruppe über das Portal bereitstellen, werden bestimmte Standardnetzwerkeigenschaften verwendet (beispielsweise ein Azure Load Balancer mit NAT-Eingangsregeln). Dieser Artikel beschreibt die Verwendung einiger der erweiterten Netzwerkfeatures, die Sie mit Skalierungsgruppen konfigurieren können.
 
@@ -516,6 +518,24 @@ Im folgenden Beispiel wird gezeigt, wie Sie Ihrer NIC eine zweite IP-Konfigurati
     }
     ```
 
+
+## <a name="explicit-network-outbound-connectivity-for-flexible-scale-sets"></a>Explizite ausgehende Netzwerkkonnektivität für flexible Skalierungsgruppen 
+
+Um die Standardnetzwerksicherheit zu verbessern, erfordern [VM-Skalierungsgruppen mit der Orchestrierung „Flexibel“](..\virtual-machines\flexible-virtual-machine-scale-sets.md), dass implizit über das Profil für die automatische Skalierung erstellte Instanzen über ausgehende Konnektivität verfügen, die explizit durch eine der folgenden Methoden definiert wird: 
+
+- Für die meisten Szenarien wird empfohlen, ein [NAT Gateway an das Subnetz anzufügen](../virtual-network/nat-gateway/tutorial-create-nat-gateway-portal.md).
+- Im Fall von Szenarien mit hohen Sicherheitsanforderungen oder bei Verwendung von Azure Firewall oder virtuellen Netzwerkappliances (Network Virtual Appliance, NVA) können Sie eine benutzerdefinierte Route als nächsten Hop durch die Firewall festlegen. 
+- Instanzen befinden sich im Back-End-Pool einer Azure Load Balancer-Instanz der Standard-SKU. 
+- Sie fügen eine öffentliche IP-Adresse an die Netzwerkschnittstelle der Instanz an. 
+
+Bei Einzelinstanz-VMs und VM-Skalierungsgruppen mit der Orchestrierung „Einheitlich“ wird ausgehende Konnektivität automatisch bereitgestellt. 
+
+Dies sind häufige Szenarios, die explizite ausgehende Konnektivität erfordern: 
+
+- Die Aktivierung einer Windows-VM erfordert, dass Sie ausgehende Konnektivität zwischen der VM-Instanz mit dem Schlüsselverwaltungsdienst (Key Management Service, KMS) definiert haben. Weitere Informationen finden Sie unter [Behandlung von Problemen bei der VM-Aktivierung](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems).  
+- Zugriff auf Speicherkonten oder Key Vault. Die Verbindung mit Azure-Diensten kann auch über [Private Link](../private-link/private-link-overview.md) hergestellt werden. 
+
+Weitere Details zum Definieren von sicheren ausgehenden Verbindungen finden Sie unter [Ausgehender Standardzugriff in Azure](https://aka.ms/defaultoutboundaccess).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

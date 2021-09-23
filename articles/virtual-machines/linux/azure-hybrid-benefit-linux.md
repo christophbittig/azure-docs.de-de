@@ -12,14 +12,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 72bf18bee387dc0602f543161afc20c73c2e4144
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c794d3e18eaf25241cb9c55c14a32e4e5c9ff7b0
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355596"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692257"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Anwendung des Azure-Hybridvorteils auf virtuelle Linux-Computer
+
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
 Der Azure-Hybridvorteil ist ein Lizenzierungsvorteil, der Ihnen hilft, die Kosten für die Ausführung Ihrer VMs auf Red Hat Enterprise Linux (RHEL) und SUSE Linux Enterprise Server (SLES) in der Cloud erheblich zu senken. Dank diesem Vorteil bezahlen Sie lediglich die Infrastrukturkosten Ihres virtuellen Computers, da die Softwaregebühr durch Ihr RHEL- bzw. SLES-Abonnement abgedeckt ist. Der Vorteil ist für alle RHEL- und SLES-Images im Marketplace mit nutzungsbasierter Bezahlung verfügbar.
 
@@ -96,7 +98,7 @@ So aktivieren Sie den Vorteil für eine vorhandene VM
 
 So aktivieren Sie den Vorteil, wenn Sie die VM erstellen (der SUSE-Workflow ist derselbe wie das hier gezeigte RHEL-Beispiel):
 
-1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com/).
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/).
 1. Navigieren Sie im Portal zur Seite „Virtuellen Computer erstellen“.
  ![Azure-Hybridvorteil beim Erstellen einer VM](./media/azure-hybrid-benefit/create-vm-ahb.png)
 1. Aktivieren Sie das Kontrollkästchen, um die AHB-Konvertierung zu aktivieren und Cloudzugriffslizenzen zu verwenden.

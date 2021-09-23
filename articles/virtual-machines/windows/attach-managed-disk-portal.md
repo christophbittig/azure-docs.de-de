@@ -8,21 +8,24 @@ ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: ba6691e343276445bd881d2cbe2f8fcb5d1d314f
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 7b6b29307ce936ee6b95f68d15f383fc9b2f8c40
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114666525"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692626"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>Anfügen eines verwalteten Datenträgers an einen virtuellen Windows-Computer im Azure-Portal
+
+**Gilt für:** :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
+
 
 In diesem Artikel wird beschrieben, wie Sie im Azure-Portal einen neuen verwalteten Datenträger an einen virtuellen Windows-Computer (Virtual Machine, VM) anfügen. Die Größe des virtuellen Computers bestimmt, wie viele Datenträger Sie anfügen können. Weitere Informationen finden Sie unter [Größen für virtuelle Computer](../sizes.md).
 
 
 ## <a name="add-a-data-disk"></a>Hinzufügen eines Datenträgers
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an.
 1. Suchen Sie nach **Virtuelle Computer**, und wählen Sie diese Option aus.
 1. Wählen Sie in der Liste einen virtuellen Computer aus.
 1. Wählen Sie im Bereich **Virtueller Computer** die Option **Datenträger** aus.

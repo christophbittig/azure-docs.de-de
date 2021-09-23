@@ -2,13 +2,13 @@
 title: Bereitstellen eines verwalteten Service Fabric-Clusters mit zustandslosen Knotentypen
 description: Erfahren Sie, wie Sie zustandslose Knotentypen in Azure Service Fabric-Clustern erstellen und bereitstellen.
 ms.topic: how-to
-ms.date: 5/10/2021
-ms.openlocfilehash: 2e7ebd2ec3098cc90c8fb044472c348c68aed689
-ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
+ms.date: 8/23/2021
+ms.openlocfilehash: 1d6cd328a195e35bd2523fa24aed9153267bd83e
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113033711"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867336"
 ---
 # <a name="deploy-a-service-fabric-managed-cluster-with-stateless-node-types"></a>Bereitstellen eines verwalteten Service Fabric-Clusters mit zustandslosen Knotentypen
 
@@ -16,7 +16,8 @@ Für Service Fabric-Knotentypen gilt die Annahme, dass zu einem bestimmten Zeitp
 
 * Primäre Knotentypen können nicht als zustandslos konfiguriert werden.
 * Zustandslose Knotentypen erfordern eine API-Version von **2021-05-01** oder höher.
-
+* Dadurch wird die Eigenschaft **multipleplacementgroup** automatisch auf **true** festgelegt, über die Sie [hier mehr erfahren](how-to-managed-cluster-large-virtual-machine-scale-sets.md) können.
+* Dies ermöglicht Unterstützung von bis zu 1.000 Knoten für den angegebenen Knotentyp.
 
 Es sind Beispielvorlagen verfügbar: [Vorlage für zustandslose Service Fabric-Knotentypen](https://github.com/Azure-Samples/service-fabric-cluster-templates)
 

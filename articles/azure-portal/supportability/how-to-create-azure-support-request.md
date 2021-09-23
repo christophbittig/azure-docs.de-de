@@ -3,13 +3,14 @@ title: 'Gewusst wie: Erstellen einer Azure-Supportanfrage'
 description: Kunden, die Unterstützung benötigen, können das Azure-Portal verwenden, um Self-Service-Lösungen zu finden und Supportanfragen zu erstellen und zu verwalten.
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.topic: how-to
-ms.date: 05/25/2021
-ms.openlocfilehash: 3b38a010fa23605019f1969a80e9f9a3cda467c8
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.custom: support-help-page
+ms.date: 08/24/2021
+ms.openlocfilehash: a9a5c7aedb9278a4832f485d4bc8107cc141cc5e
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110496576"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821428"
 ---
 # <a name="create-an-azure-support-request"></a>Erstellen einer Azure-Supportanfrage
 
@@ -82,11 +83,11 @@ Als Nächstes sammeln wir zusätzliche Details über das Problem. Wenn Sie in di
 
 1. Teilen Sie uns wenn möglich mit, wann das Problem begonnen hat und durch welche Schritte es hervorgerufen wird. Sie können eine Datei hochladen, z. B. eine Protokolldatei oder eine Ausgabe der Diagnose. Weitere Informationen zu Dateiuploads finden Sie unter [Richtlinien für den Dateiupload](how-to-manage-azure-support-request.md#file-upload-guidelines).
 
-1. Nachdem wir alle Informationen zum Problem erhalten haben, können Sie auswählen, wie Sie Support erhalten möchten. Wählen Sie im Abschnitt **Supportmethode** der Registerkarte **Details** den Schweregrad der Auswirkungen aus. Der maximale Schweregrad richtet sich nach Ihrem [Supportplan](https://azure.microsoft.com/support/plans).
+1. Wählen Sie im Abschnitt **Diagnoseinformationen freigeben** die Option **Ja** oder **Nein** aus. Wenn Sie **Ja** auswählen, kann der Azure-Support [Diagnoseinformationen](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) aus Ihren Azure-Ressourcen erfassen. Wenn Sie diese Informationen nicht freigeben möchten, wählen Sie **Nein** aus. In einigen Fällen stehen zusätzliche Optionen zur Auswahl, z. B. ob der Zugriff auf den Arbeitsspeicher eines virtuellen Computers zugelassen werden soll.
 
-    Standardmäßig ist die Option **Diagnoseinformationen teilen** ausgewählt. Dadurch kann Azure [Diagnoseinformationen](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) zu Ihren Azure-Ressourcen sammeln. Sie können diese Option deaktivieren, wenn Sie lieber keine Diagnoseinformationen teilen möchten. In einigen Fällen gibt es eine zweite Frage, die nicht standardmäßig ausgewählt ist, etwa das Anfordern des Zugriffs auf den Arbeitsspeicher eines virtuellen Computers.
+1. Wählen Sie im Abschnitt **Supportmethode** der Registerkarte **Details** den Schweregrad der Auswirkungen aus. Der maximale Schweregrad richtet sich nach Ihrem [Supportplan](https://azure.microsoft.com/support/plans).
 
-1. Geben Sie Ihre bevorzugte Kontaktmethode an, einen guten Zeitpunkt für die Kontaktaufnahme mit Ihnen sowie Ihre Supportsprache.
+1. Geben Sie Ihre bevorzugte Kontaktmethode, Ihre Verfügbarkeit und Ihre bevorzugte Supportsprache an.
 
 1. Füllen Sie als Nächstes den Abschnitt **Kontaktinformationen** aus, damit wir wissen, wie wir Sie kontaktieren können.
 

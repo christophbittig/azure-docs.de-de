@@ -6,12 +6,12 @@ ms.author: daperlov
 ms.service: purview
 ms.topic: conceptual
 ms.date: 08/16/2021
-ms.openlocfilehash: 20fdf362524a7a1a801aabd5a307b41216a81f31
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 77c1d203808683d50e0a7648c686f84c7d23b354
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351164"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122607915"
 ---
 # <a name="azure-purview-product-glossary"></a>Azure Purview-Produktglossar
 
@@ -42,7 +42,7 @@ Ein regulärer Ausdruck in einer Klassifizierungsregel, der den Spaltennamen ent
 ## <a name="contact"></a>Contact
 Eine Person, die einer Entität im Datenkatalog zugeordnet ist 
 ## <a name="control-plane-operation"></a>Vorgang auf Steuerungsebene
-Vorgänge, die Ressourcen in Ihrem Abonnement verwalten, z. B. rollenbasierte Zugriffssteuerung und Azure-Richtlinien, die an den Azure Resource Manager-Endpunkt gesendet werden. 
+Vorgänge, die Ressourcen in Ihrem Abonnement verwalten, z. B. rollenbasierte Zugriffssteuerung und Azure Policy, die an den Azure Resource Manager-Endpunkt gesendet werden. 
 ## <a name="credential"></a>Anmeldeinformationen
 Eine Überprüfung der Identität oder des Tools, die bzw. das in einem Zugriffssteuerungssystem verwendet wird. Anmeldeinformationen können zum Authentifizieren einer Person oder Gruppe verwendet werden, um Zugriff auf ein Datenasset zu gewähren. 
 ## <a name="data-catalog"></a>Datenkatalog
@@ -103,7 +103,7 @@ Ein Azure Purview-Prozess, der eine Quelle oder einen Satz von Quellen untersuch
 Eine Reihe von Regeln, die definieren, welche Datentypen und Klassifizierungen eine Überprüfung in einem Katalog erfasst. 
 ## <a name="scan-trigger"></a>Überprüfungstrigger
 Ein Zeitplan für die Wiederholung einer Überprüfung.
-## <a name="search"></a>Suche
+## <a name="search"></a>Suchen,
 Ein Datenermittlungsfeature von Azure Purview, das eine Liste von Ressourcen zurückgibt, die mit einem Schlüsselwort übereinstimmen. 
 ## <a name="search-relevance"></a>Suchrelevanz
 Die Bewertung von Datenressourcen, die die Reihenfolge der Suchergebnisse bestimmen, wird zurückgegeben. Mehrere Faktoren bestimmen die Relevanz einer Ressource.

@@ -10,14 +10,16 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: ec4f09249bda14eb29d7dc9704a6096848a78557
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: b715fd2f292ae7633d7581ec9604bc4e12b459af
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122343131"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693846"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Installieren von AMD-GPU-Treibern für virtuelle Computer der N-Serie unter Windows
+
+**Gilt für:** Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
 Um die GPU-Funktionen von virtuellen Computern der neuen Azure NVv4-Serie unter Windows nutzen zu können, müssen AMD-GPU-Treiber installiert werden. Die [AMD-GPU-Treibererweiterung](../extensions/hpccompute-amd-gpu-windows.md) installiert AMD-GPU-Treiber auf einer VM der NVv4-Reihe. Installieren oder verwalten Sie die Erweiterung mithilfe des Azure-Portals oder mit Tools wie Azure PowerShell oder Azure Resource Manager-Vorlagen. Informationen zu unterstützten Betriebssystemen und Bereitstellungsschritten finden Sie in der [Dokumentation zur AMD-GPU-Treibererweiterung](../extensions/hpccompute-amd-gpu-windows.md).
 

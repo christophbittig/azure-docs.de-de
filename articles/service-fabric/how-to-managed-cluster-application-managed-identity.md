@@ -1,18 +1,18 @@
 ---
-title: Konfigurieren und Verwenden einer verwalteten Anwendungsidentität auf durch Service Fabric verwalteten Clusterknoten
-description: Erfahren Sie, wie Sie eine verwaltete Identität einer Anwendung in einer ARM-Vorlage konfigurieren und verwenden, die in durch Azure Service Fabric verwalteten Cluster bereitgestellt wird.
+title: Konfigurieren und Verwenden von Anwendungen mit einer verwalteten Identität auf einem verwalteten Service Fabric-Cluster
+description: Erfahren Sie, wie Sie eine Anwendung mit einer verwalteten Identität in einer ARM-Vorlage (Azure Resource Manager) konfigurieren und verwenden, die in einem verwalteten Azure Service Fabric-Cluster bereitgestellt wird.
 ms.topic: how-to
-ms.date: 5/10/2021
-ms.openlocfilehash: 4e488f9ebb78208617ca59fdb88dbec454de10e1
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 8/23/2021
+ms.openlocfilehash: 5007f17754572c03ff820ecda1bb09f6e8a8020e
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111958274"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864749"
 ---
-# <a name="deploy-a-service-fabric-application-with-managed-identity"></a>Bereitstellen einer Service Fabric-Anwendung mit Managed Identity
+# <a name="deploy-an-application-with-managed-identity-to-a-service-fabric-managed-cluster"></a>Bereitstellen einer Anwendung mit verwalteter Identität in einem verwalteten Service Fabric-Cluster
 
-Zum Bereitstellen einer Service Fabric Anwendung mit verwalteter Identität muss die Anwendung über Azure Resource Manager bereitgestellt werden – in der Regel mit einer Azure Resource Manager-Vorlage. Weitere Informationen zum Bereitstellen von Service Fabric Anwendung über Azure Resource Manager finden Sie unter [Verwalten von Anwendungen und Diensten als Azure Resource Manager-Ressourcen](service-fabric-application-arm-resource.md).
+Zum Bereitstellen einer Service Fabric Anwendung mit verwalteter Identität muss die Anwendung über Azure Resource Manager bereitgestellt werden – in der Regel mit einer Azure Resource Manager-Vorlage. Weitere Informationen zur Bereitstellung von Service Fabric-Anwendungen über Azure Resource Manager finden Sie unter [Bereitstellen einer Anwendung in einem verwalteten Cluster mit Azure Resource Manager](how-to-managed-cluster-app-deployment-template.md).
 
 > [!NOTE] 
 > 
@@ -195,6 +195,5 @@ Diese Eigenschaft deklariert (gegenüber Azure Resource Manager sowie gegenüber
     Dies ist die gleiche Zuordnung einer Identität zu einem Dienst, die oben beschrieben wurde, diesmal allerdings aus der Perspektive der Dienstdefinition. Auf die Identität wird hier anhand ihres im Anwendungsmanifest deklarierten Anzeigenamens (`WebAdmin`) verwiesen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-* [Nutzen der verwalteten Identität einer Service Fabric-Anwendung aus dem Dienstcode](./how-to-managed-identity-service-fabric-app-code.md)
-* [Gewähren des Zugriffs auf andere Azure-Ressourcen für eine Azure Service Fabric-Anwendung](./how-to-grant-access-other-resources.md)
+* [Nutzen der verwalteten Identität einer Service Fabric-Anwendung aus dem Dienstcode](how-to-managed-identity-service-fabric-app-code.md)
+* [Gewähren des Zugriffs auf andere Azure-Ressourcen für eine Azure Service Fabric-Anwendung](how-to-grant-access-other-resources.md)

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 08/17/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 574a10f6ef79ff3d40f5d62e49db9ebf198d2a79
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: d479dbc34bd8c08ebc471de74be1558f6dccc6e1
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122356539"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123273247"
 ---
 # <a name="multimedia-redirection-for-azure-virtual-desktop-preview"></a>Multimediaumleitung für Azure Virtual Desktop (Vorschau)
 
@@ -32,11 +32,9 @@ Bevor Sie die Multimediaumleitung in Azure Virtual Desktop verwenden können, m�
 
 1. [Installieren Sie den Windows-Desktopclient](./user-documentation/connect-windows-7-10.md#install-the-windows-desktop-client) auf einem Windows 10- oder Windows 10 IoT Enterprise-Gerät, das die [Hardwareanforderungen für Teams auf einem Windows-PC](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/) erfüllt. Wenn Sie Version 1.2.2222 oder höher des Clients installieren, wird auch das Multimediaumleitungs-Plug-In (MsMmrDVCPlugin.dll) auf dem Clientgerät installiert. Weitere Informationen zu Updates und neuen Versionen finden Sie unter [Neuigkeiten im Windows-Desktopclient](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-whatsnew).
 
-2. [Konfigurieren Sie den Clientcomputer für die Insider-Gruppe.](create-host-pools-azure-marketplace.md)
+2. [Erstellen Sie einen Hostpool für Ihre Benutzer](create-host-pools-azure-marketplace.md).
 
-3. Installieren Sie den [Multimediaumleitungsdienst](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWIzIk) und alle erforderlichen Browsererweiterungen auf der VM.
-
-4. Konfigurieren Sie den Clientcomputer so, dass Ihre Benutzer auf das Insider-Programm zugreifen können. Um den Client für die Gruppe „Insider“ zu konfigurieren, legst du die folgenden Registrierungsinformationen fest:
+3. Konfigurieren Sie den Clientcomputer so, dass Ihre Benutzer auf das Insider-Programm zugreifen können. Um den Client für die Gruppe „Insider“ zu konfigurieren, legst du die folgenden Registrierungsinformationen fest:
 
    - **Schlüssel:** HKLM\\Software\\Microsoft\\MSRDC\\Policies
    - **Typ**: REG_SZ
@@ -45,13 +43,13 @@ Bevor Sie die Multimediaumleitung in Azure Virtual Desktop verwenden können, m�
 
    Weitere Informationen zum Insider-Programm finden Sie unter [Windows-Desktopclient für Administratoren](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-admin#configure-user-groups).
 
-5. Verwenden Sie das [MSI-Installationsprogramm (MsMmrHostMri)](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWIzIk), um die Erweiterung für die Multimediaumleitung für Ihren Internetbrowser auf Ihrer Azure-VM zu installieren. Die Multimediaumleitung für Azure Virtual Desktop unterstützt derzeit nur Microsoft Edge und Google Chrome.
+4. Verwenden Sie das [MSI-Installationsprogramm (MsMmrHostMri)](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWIzIk), um die Erweiterung für die Multimediaumleitung für Ihren Internetbrowser auf Ihrer Azure-VM zu installieren. Die Multimediaumleitung für Azure Virtual Desktop unterstützt derzeit nur Microsoft Edge und Google Chrome.
 
 ## <a name="managing-group-policies-for-the-multimedia-redirection-browser-extension"></a>Verwalten von Gruppenrichtlinien für die Browsererweiterung für die Multimediaumleitung
 
 Mit dem MSI-Paket für die Multimediaumleitung werden auch die Browsererweiterungen installiert. Da sich dieser Dienst jedoch noch in der öffentlichen Vorschau befindet, kann die Benutzeroberfläche abweichen. Weitere Informationen zu bekannten Problemen finden Sie unter [Bekannte Probleme](#known-issues-and-limitations).
 
-In einigen Fällen können Sie die Gruppenrichtlinie ändern, um die Browsererweiterungen zu verwalten und die Benutzerfreundlichkeit zu verbessern. Zum Beispiel:
+In einigen Fällen können Sie die Gruppenrichtlinie ändern, um die Browsererweiterungen zu verwalten und die Benutzerfreundlichkeit zu verbessern. Beispiel:
 
 - Sie können die Erweiterung ohne Benutzerinteraktion installieren.
 - Sie können einschränken, für welche Websites die Multimediaumleitung verwendet werden soll.
@@ -103,13 +101,14 @@ Um schnell zu erkennen, ob die Multimediaumleitung in Ihrem Browser aktiv ist, w
 
 | Symbolzustand  | Definition  |
 |-----------------|-----------------|
-| [Das Standardprogrammsymbol von Azure Virtual Desktop ohne angewandten Status](/media/icon-default.png) | Die Darstellung des Standardsymbols ohne angewandten Status |
-| [Das Programmsymbol von Azure Virtual Desktop mit einem roten Quadrat und einem „X“, das angibt, dass die Multimediaumleitung nicht funktioniert](/media/icon-disconnect.png) | Das rote Quadrat mit einem „X“ darin bedeutet, dass der Client keine Verbindung mit der Multimediaumleitung herstellen konnte. |
-| [Das Programmsymbol von Azure Virtual Desktop mit einem grünen Quadrat und einem Häkchen, das angibt, dass die Multimediaumleitung funktioniert](/media/icon-connect.png) | Das grüne Quadrat mit einem Häkchen darin bedeutet, dass der Client erfolgreich eine Verbindung mit der Multimediaumleitung hergestellt hat. |
+| ![Das Standardprogrammsymbol von Azure Virtual Desktop ohne angewandten Status.](./media/icon-default.png) | Die Darstellung des Standardsymbols ohne angewandten Status |
+| ![Das Programmsymbol von Azure Virtual Desktop mit einem roten Quadrat und einem „X“, das angibt, dass die Multimediaumleitung nicht funktioniert.](./media/icon-disconnect.png) | Das rote Quadrat mit einem „X“ darin bedeutet, dass der Client keine Verbindung mit der Multimediaumleitung herstellen konnte. |
+| ![Das Programmsymbol von Azure Virtual Desktop mit einem grünen Quadrat und einem Häkchen, das angibt, dass die Multimediaumleitung funktioniert.](./media/icon-connect.png) | Das grüne Quadrat mit einem Häkchen darin bedeutet, dass der Client erfolgreich eine Verbindung mit der Multimediaumleitung hergestellt hat. |
 
 Wenn Sie das Symbol auswählen, wird ein Popupmenü mit einem Kontrollkästchen angezeigt, über das Sie die Multimediaumleitung auf allen Websites aktivieren oder deaktivieren können. Außerdem werden die Versionsnummern aller Komponenten des Diensts aufgeführt.
 
-## <a name="send-feedback-during-public-preview"></a>Übermitteln von Feedback während der öffentlichen Vorschau
+## <a name="support-during-public-preview"></a>Support in der öffentlichen Vorschau
+Microsoft-Support behandelt keine Probleme bei der Multimediaumleitung während der öffentlichen Vorschau.
 
 Wenn bei Ihnen Probleme auftreten, können Sie uns dies im Feedback-Hub auf dem Client und dem VM-Host mitteilen.
 
@@ -137,7 +136,7 @@ So übermitteln Sie Feedback
 
     ![Screenshot des Fensters „2. Wählen Sie eine Kategorie aus“. Der Benutzer hat die Blase „Problem“ und dann in den Dropdownmenüs darunter „Apps“ und „Remotedesktop“ ausgewählt.](media/problem-category.png)
 
-7. Klicken Sie auf **Weiter**.
+7. Wählen Sie **Weiter** aus.
 
 8. Überprüfen Sie, ob in der Liste ein ähnliches Problem enthalten ist wie das, das Sie übermitteln möchten.
    
@@ -149,7 +148,7 @@ So übermitteln Sie Feedback
 
     ![Screenshot des Fensters „3. Find similar feedback“ (3. Ähnliches Feedback finden). Dieses Mal fehlt die Option „Link to bug“ (Mit Fehler verknüpfen), und der Benutzer hat stattdessen „Make new bug“ (Neuen Fehler erstellen) ausgewählt.](media/make-new-bug.png)
 
-9. Klicken Sie auf **Weiter**.
+9. Wählen Sie **Weiter** aus.
 
 10. Wählen Sie im Fenster **Weitere Details hinzufügen** die Option **Include data about Remote Desktop (Default)** (Daten zu Remotedesktop einschließen (Standard)) aus, und beantworten Sie dann alle Fragen so detailliert wie möglich.
 

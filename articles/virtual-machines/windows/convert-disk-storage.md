@@ -8,14 +8,16 @@ ms.topic: how-to
 ms.date: 02/13/2021
 ms.author: albecker
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 994b24110399057741b9f62f7ecf30a8a505fd6d
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: bbc05a6a0485a11bf73640f8239882eb6363eadc
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122350592"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779628"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>Aktualisieren des Speichertyps eines verwalteten Datenträgers
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows 
 
 Es gibt vier Typen verwalteter Azure-Datenträger: Azure Disk Ultra, SSD Premium, SSD Standard und HDD Standard. Sie können basierend auf Ihren Leistungsanforderungen zwischen den Datenträgertypen SSD Premium, SSD Standard und HDD Standard wechseln. Derzeit ist noch kein Wechsel von oder zu Disk Ultra möglich. Sie müssen in diesem Fall einen neuen Datenträger bereitstellen.
 

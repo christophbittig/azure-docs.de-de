@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 08/17/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 34de5fbfbccd84c716684d1f98a16c4d0a5e6344
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 4e63e2603b6625c7eaee602b107c2d01c40a8ac8
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343514"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830666"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – IBM DB2-DBMS-Bereitstellung für SAP-Workload
 
@@ -55,11 +55,15 @@ Informationen zu den unterstützten SAP-Produkten und Typen der Azure-VM erhalte
 
 ## <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Konfigurationsrichtlinien für IBM Db2 für Linux, UNIX und Windows für SAP-Installationen in Azure-VMs
 ### <a name="storage-configuration"></a>Speicherkonfiguration
-Eine Übersicht über Azure Storage-Typen für die SAP-Workload finden Sie im Artikel [Azure Storage-Typen für die SAP-Workload](./planning-guide-storage.md). Sämtliche Datenbankdateien müssen auf eingebundenen Datenträgern von Azure Block Storage (Windows: NTFS, Linux: xfs oder ext3) gespeichert werden. Jegliche Arten von Netzlaufwerken und Remotefreigaben wie die folgenden Azure-Dienste werden für Datenbankdateien **NICHT** unterstützt: 
+Eine Übersicht über Azure Storage-Typen für die SAP-Workload finden Sie im Artikel [Azure Storage-Typen für die SAP-Workload](./planning-guide-storage.md). Sämtliche Datenbankdateien müssen auf eingebundenen Datenträgern von Azure Block Storage (Windows: NTFS, Linux: xfs oder ext3) gespeichert werden. Freigegebene Remotevolumes wie die Azure-Dienste in den aufgeführten Szenarien werden für Db2-Datenbankdateien **NICHT** unterstützt: 
 
-* [Microsoft Azure-Dateidienst](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
+* [Microsoft Azure-Dateidienst](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service) für alle Gastbetriebssysteme
 
-* [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)
+* [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) für Db2, ausgeführt in Windows Gastbetriebssystem. 
+
+Freigegebene Remotevolumes wie die Azure-Dienste in den aufgeführten Szenarien werden für Db2-Datenbankdateien unterstützt: 
+ 
+* Das Hosten von auf dem Linux-Gastbetriebssystem basierenden Db2-Daten- und -Protokolldateien auf NFS-Freigaben, die unter Azure NetApp Files gehostet werden, wird unterstützt!
 
 Die in Artikel [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md) getroffenen Aussagen gelten auch für Bereitstellungen mit dem Db2-DBMS, wenn Sie Datenträger auf Basis von Azure Page Blob Storage oder Managed Disks verwenden.
 

@@ -3,12 +3,12 @@ title: Authentifizieren von Event Grid-Veröffentlichungsclients mit Azure Activ
 description: In diesem Artikel wird beschrieben, wie ein Azure Event Grid-Veröffentlichungsclient mithilfe von Azure Active Directory authentifiziert wird.
 ms.topic: conceptual
 ms.date: 08/10/2021
-ms.openlocfilehash: c34ce75d02d4e3044819e5e310bdb9e74c1b0004
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6572c85fd13803372caa2c614a32cdc5f30b055e
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355618"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038090"
 ---
 # <a name="authentication-and-authorization-with-azure-active-directory-preview"></a>Authentifizierung und Autorisierung mit Azure Active Directory (Vorschau)
 In diesem Artikel wird beschrieben, wie Azure Event Grid-Veröffentlichungsclients mithilfe von Azure Active Directory (Azure AD) authentifiziert werden.
@@ -30,8 +30,8 @@ Unabhängig vom verwendeten Sicherheitsprinzipal, einer verwalteten Identität o
  
 Wenn Sie das Event Grid-SDK verwenden, müssen Sie sich keine Gedanken darüber machen, wie Sie den Abruf von Zugriffstoken implementieren und in jede Anforderung an Event Grid integrieren, da dies von den [Event Grid-Datenebenen-SDKs](#publish-events-using-event-grids-client-sdks) für Sie erledigt wird. 
 
-### <a name="high-level-steps"></a>Allgemeine Schritte
-Führen Sie die folgenden Schritte aus, um Ihren Client für die Verwendung von Azure AD-Authentifizierung beim Senden von Ereignissen an ein Thema, eine Domäne oder einen Partnernamespace vorzubereiten.
+### <a name="client-configuration-steps-to-use-azure-ad-authentication"></a>Clientkonfigurationsschritte zur Verwendung von Azure AD-Authentifizierung
+Führen Sie die folgenden Schritte aus, um Ihren Client für die Verwendung von Azure AD-Authentifizierung beim Senden von Ereignissen an ein Thema, eine Domäne oder einen Partnernamespace zu konfigurieren.
 
 1. Erstellen oder verwenden Sie einen Sicherheitsprinzipal, den Sie für die Authentifizierung verwenden möchten. Sie können eine verwaltete [Identität](#authenticate-using-a-managed-identity) oder einen [Anwendungssicherheitsprinzipal](#authenticate-using-a-security-principal-of-a-client-application) verwenden.
 2. [Erteilen Sie einem Sicherheitsprinzipal die Berechtigung zum Veröffentlichen von Ereignissen](#assign-permission-to-a-security-principal-to-publish-events), indem Sie dem Sicherheitsprinzipal die Rolle **EventGrid-Datensender** zuweisen.
@@ -77,7 +77,7 @@ Im Folgenden finden Sie die Voraussetzungen für die Authentifizierung bei Event
 - Installieren Sie das SDK für Ihre Anwendung.
    - [Java](/java/api/overview/azure/messaging-eventgrid-readme#include-the-package)
    - [.NET](/dotnet/api/overview/azure/messaging.eventgrid-readme-pre#install-the-package)
-   - [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/eventgrid/eventgrid.md#install-the-azureeventgrid-package)
+   - [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/eventgrid/eventgrid#install-the-azureeventgrid-package)
    - [Python](https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/eventgrid/azure-eventgrid#install-the-package)
 - Installieren Sie die Azure Identity-Clientbibliothek. Das Event Grid-SDK ist für Authentifizierung von der Azure Identity-Clientbibliothek abhängig. 
    - [Azure Identity-Clientbibliothek für Java](/java/api/overview/azure/identity-readme)
@@ -148,7 +148,7 @@ New-AzResource -ResourceGroupName <ResourceGroupName> -ResourceType Microsoft.Ev
     - Java-SDK: [github](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventgrid/azure-messaging-eventgrid) | [samples](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventgrid/azure-messaging-eventgrid/src/samples/java/com/azure/messaging/eventgrid) | [migration guide from previous SDK version](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventgrid/azure-messaging-eventgrid/migration-guide.md)
     - .NET-SDK: [github](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventgrid/Azure.Messaging.EventGrid) | [samples](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventgrid/Azure.Messaging.EventGrid/samples) | [migration guide from previous SDK version](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventgrid/Azure.Messaging.EventGrid/MigrationGuide.md)
     - Python-SDK: [github](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventgrid/azure-eventgrid) | [samples](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventgrid/azure-eventgrid/samples) | [migration guide from previous SDK version](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventgrid/azure-eventgrid/migration_guide.md)
-    - JavaScript-SDK: [github](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventgrid/eventgrid/) | [samples](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventgrid/eventgrid/samples) | [migration guide from previous SDK version](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventgrid/eventgrid/migration.md)
+    - JavaScript-SDK: [github](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventgrid/eventgrid/) | [samples](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventgrid/eventgrid/samples) | [migration guide from previous SDK version](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/eventgrid/eventgrid/MIGRATION.md)
 - [Blog zum Event Grid-SDK](https://devblogs.microsoft.com/azure-sdk/event-grid-ga/)
 - Azure Identity-Clientbibliothek
    - [Java](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/identity/azure-identity/README.md)
