@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: 5c8858e50707209b47eb61d554a8e4f7313c92c8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 56f79028b2424d8383a0a4a3cb27639f3924ff90
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355100"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779619"
 ---
 # <a name="scale-agentless-migration-of-vmware-virtual-machines-to-azure"></a>Skalieren der Migration von virtuellen VMware-Computern zu Azure ohne Agents
 
@@ -70,7 +70,7 @@ Klicken Sie unter **Download Azure Migrate appliance** (Azure Migrate-Appliance 
 > 2. Führen Sie den folgenden Befehl aus, um den Hash für die gezippte Datei zu generieren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Beispielverwendung: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
-> 3. Laden Sie die neueste Version des Installationsprogramms für die Appliance für die horizontale Skalierung aus dem Portal herunter, wenn der berechnete Hashwert nicht mit dieser Zeichenfolge identisch ist: b4668be44c05836bf0f2ac1c8b1f48b7a9538afcf416c5212c7190629e3683b2
+> 3. Laden Sie die neueste Version des Installationsprogramms für die Appliance für die horizontale Skalierung aus dem Portal herunter, wenn der berechnete Hashwert nicht mit dieser Zeichenfolge identisch ist: CA8CEEE4C7AC13328ECA56AE9EB35137336CD3D73B1F867C4D736286EF61A234
 
 ### <a name="3-run-the-azure-migrate-installer-script"></a>3. Ausführen des Azure Migrate-Installationsskripts
 
@@ -95,7 +95,7 @@ Klicken Sie unter **Download Azure Migrate appliance** (Azure Migrate-Appliance 
         - **Konfigurationsdateien**: %Programdata%\Microsoft Azure\Config
         - **Protokolldateien**: %Programdata%\Microsoft Azure\Logs
 
-Nach der erfolgreichen Ausführung des Skripts wird der Appliancekonfigurations-Manager automatisch gestartet.
+Nach der erfolgreichen Ausführung des Skripts wird der Appliance-Konfigurations-Manager automatisch gestartet.
 
 > [!NOTE]
 > Bei Problemen können Sie zum Troubleshooting unter „C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Zeitstempel</em>.log“ auf die Skriptprotokolle zugreifen.

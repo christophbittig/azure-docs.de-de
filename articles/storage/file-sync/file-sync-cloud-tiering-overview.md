@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 1f58aa4e2aa4637dfb9fc8b29c52209975e3e367
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 06b82bf78c7a4d66e2c4da6d053f8ab77c400e00
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107796187"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258716"
 ---
 # <a name="cloud-tiering-overview"></a>Übersicht über Cloudtiering
 Cloudtiering, ein optionales Feature der Azure-Dateisynchronisierung, verringert die benötigte Menge an lokalem Speicher, ohne die Leistung eines lokalen Dateiservers zu beeinträchtigen.
@@ -29,9 +29,7 @@ Wenn Sie das Cloudtiering aktivieren, können Sie mithilfe von zwei Richtlinien 
 #### <a name="volume-free-space-policy"></a>Richtlinie für freien Volumespeicherplatz
 Die **Richtlinie für freien Volumespeicherplatz** weist die Azure-Dateisynchronisierung an, kalte Dateien in die Cloud auszulagern, wenn auf Ihrem lokalen Datenträger eine bestimmte Menge an Speicherplatz belegt ist. 
 
-Wenn die Kapazität des lokalen Datenträgers beispielsweise 200 GB beträgt und Sie möchten, dass immer mindestens 40 GB auf dem lokalen Datenträger frei bleiben, legen Sie die Richtlinie für freien Volumespeicherplatz auf 20 % fest. Der freie Volumespeicherplatz gilt auf Volumeebene und nicht auf der Ebene der einzelnen Verzeichnisse oder Serverendpunkte. 
-
-Informationen dazu, wie sich die Richtlinie für freien Volumespeicherplatz auf Dateien auswirkt, die anfänglich beim Hinzufügen eines neuen Serverendpunkts heruntergeladen werden, finden Sie im Abschnitt [Synchronisierungsrichtlinien, die sich auf das Cloudtiering auswirken](#sync-policies-that-affect-cloud-tiering).
+Wenn die Kapazität des lokalen Datenträgers beispielsweise 200 GiB beträgt und Sie möchten, dass immer mindestens 40 GiB auf dem lokalen Datenträger frei bleiben, legen Sie die Richtlinie für freien Volumespeicherplatz auf 20 % fest. Der freie Volumespeicherplatz gilt auf Volumeebene und nicht auf der Ebene der einzelnen Verzeichnisse oder Serverendpunkte. 
 
 #### <a name="date-policy"></a>Datumsrichtlinie
 Mit der **Datumsrichtlinie** werden kalte Dateien in die Cloud ausgelagert, auf die für eine bestimmte Anzahl von Tagen nicht zugegriffen wurde (d. h. kein Lese- oder Schreibzugriff). Wenn Sie beispielsweise feststellen, dass es sich bei den Dateien, auf die seit mehr als 15 Tagen nicht zugegriffen wurde, in der Regel um Archivdateien handelt, legen Sie die Datumsrichtlinie auf 15 Tage fest. 
@@ -48,42 +46,24 @@ Zur Bestimmung der relativen Position einer einzelnen Datei im Wärmebild legt d
 
 In der Regel wird der Zeitpunkt des letzten Zugriffs nachverfolgt und verfügbar gemacht. Wenn jedoch ein neuer Serverendpunkt mit aktiviertem Cloudtiering erstellt wird, ist nicht genügend Zeit zum Überwachen des Dateizugriffs vergangen. Ist kein gültiger Zeitpunkt des letzten Zugriffs verfügbar, wird stattdessen der Zeitpunkt der letzten Änderung verwendet, um die relative Position im Wärmebild zu ermitteln.  
 
-Die Datumsrichtlinie funktioniert auf die gleiche Weise. Wenn der Zeitpunkt des letzten Zugriffs nicht verfügbar ist, zieht die Datumsrichtlinie den Zeitpunkt der letzten Änderung heran. Sollte dieser nicht verfügbar sein, wird auf den Erstellungszeitpunkt einer Datei zurückgegriffen. Das System überwacht im Laufe der Zeit mehr und mehr Dateizugriffsanforderungen und verwendet dann automatisch die von ihm selbst nachverfolgte Zeit des letzten Zugriffs.
+Die Datumsrichtlinie funktioniert auf die gleiche Weise. Wenn der Zeitpunkt des letzten Zugriffs nicht verfügbar ist, zieht die Datumsrichtlinie den Zeitpunkt der letzten Änderung heran. Sollte dieser nicht verfügbar sein, wird auf den Erstellungszeitpunkt einer Datei zurückgegriffen. Das System überwacht im Laufe der Zeit mehr Dateizugriffsanforderungen und verwendet dann automatisch die von ihm selbst nachverfolgte Zeit des letzten Zugriffs.
 
 > [!Note]
 > Das Cloudtiering ist nicht von der NTFS-Funktion für die Überwachung des Zeitpunkts des letzten Zugriffs abhängig. Diese NTFS-Funktion ist standardmäßig deaktiviert. Um die Leistung nicht zu beeinträchtigen, wird empfohlen, diese Funktion nicht manuell zu aktivieren. Das Cloudtiering verfolgt den Zeitpunkt des letzten Zugriffs separat.
 
-### <a name="sync-policies-that-affect-cloud-tiering"></a>Synchronisierungsrichtlinien, die sich auf das Cloudtiering auswirken
+### <a name="proactive-recalling"></a>Proaktiver Abruf
 
-In Version 11 des Azure-Dateisynchronisierungs-Agents sind zwei zusätzliche Richtlinien für die Azure-Dateisynchronisierung verfügbar, die Sie festlegen können und sich auf das Cloudtiering auswirken: **anfänglicher Download** und **proaktiver Abruf**.
+Wenn eine Datei erstellt oder geändert wird, können Sie sie proaktiv auf von Ihnen angegebene Server abrufen. Durch einen proaktiven Aufruf wird die neue oder geänderte Datei auf jedem angegebenen Server zur Nutzung bereitgestellt. 
 
-#### <a name="initial-download"></a>Anfänglicher Download
+Angenommen, ein globales Unternehmen verfügt über Zweigstellen in den USA und in Indien. Am Morgen (US-Zeit) erstellen Information Worker einen neuen Ordner und neue Dateien für ein ganz neues Projekt, an dem sie den gesamten Tag arbeiten. Die Azure-Dateisynchronisierung synchronisiert Ordner und Dateien auf die Azure-Dateifreigabe (den Cloudendpunkt). Information Worker in Indien setzen die Arbeit an dem Projekt in ihrer Zeitzone fort. Wenn diese am Morgen eintreffen, müssen auf dem lokalen, für Azure-Dateisynchronisierung aktivierten Server in Indien diese neuen Dateien lokal verfügbar sein, damit das Team in Indien effizient aus einem lokalen Cache heraus weiterarbeiten kann. Wenn Sie diesen Modus aktivieren, wird verhindert, dass der anfängliche Dateizugriff aufgrund eines bedarfsgesteuerten Abrufs langsamer ist, und dem Server wird ermöglicht, die Dateien proaktiv abzurufen, sobald sie in der Azure-Dateifreigabe geändert oder erstellt wurden.
 
-Wenn ein Server eine Verbindung mit einer Azure-Dateifreigabe herstellt, die Dateien enthält, können Sie jetzt auswählen, wie der Server die Dateifreigabedaten anfänglich herunterladen soll. Wenn das Cloudtiering aktiviert ist, haben Sie zwei Möglichkeiten. 
+Wenn Dateien, die auf den Server abgerufen werden, lokal nicht benötigt werden, kann der unnötige Abruf den ausgehenden Datenverkehr und die Kosten erhöhen. Aktivieren Sie den proaktiven Abruf daher nur, wenn Sie wissen, dass das Vorabauffüllen eines Servercaches mit aktuellen Änderungen aus der Cloud von Vorteil ist für Benutzer oder Anwendungen, die die Dateien auf diesem Server verwenden. 
 
-![Screenshot des anfänglichen Downloads bei aktiviertem Cloudtiering](media/storage-sync-cloud-tiering-overview/cloud-tiering-overview-3.png)  
-
-Die erste Option besteht darin, zuerst den Namespace und dann die Dateiinhalte nach dem Zeitstempel der letzten Änderung abzurufen, bis die Kapazität des lokalen Datenträgers erreicht ist. Wenn ausreichend Speicherplatz verfügbar ist und Sie wissen, dass die zuletzt geänderten Dateien lokal zwischengespeichert werden sollten, ist diese Option ideal. Dateien, die aufgrund von unzureichendem Speicherplatz nicht lokal gespeichert werden können, werden ausgelagert.        
-
-Die zweite Option besteht darin, den anfänglichen Abruf auf den Namespace zu beschränken und die Dateiinhalte nur dann abzurufen, wenn auf sie zugegriffen wird. Diese Option eignet sich, wenn Sie die auf dem lokalen Datenträger verwendete Kapazität minimieren möchten und Benutzer entscheiden sollen, welche Dateien lokal zwischengespeichert werden. Bei Verwendung dieser Option sind zunächst alle Dateien ausgelagerte Dateien.
-
-![Screenshot des anfänglichen Downloads bei deaktiviertem Cloudtiering](media/storage-sync-cloud-tiering-overview/cloud-tiering-overview-4.png)
-
-Wenn das Cloudtiering deaktiviert ist, haben Sie eine dritte Option, nämlich ausgelagerte Dateien vollständig zu vermeiden. In diesem Fall werden Dateien erst auf dem Server angezeigt, nachdem sie vollständig heruntergeladen wurden. Wenn Sie Anwendungen haben, für die vollständige Dateien vorhanden sein müssen und auslagerte Dateien im Namespace nicht akzeptabel sind, ist diese Lösung ideal.      
-
-#### <a name="proactive-recalling"></a>Proaktiver Abruf
-
-Wenn eine Datei erstellt oder geändert wird, können Sie sie proaktiv auf von Ihnen angegebene Server abrufen. Dadurch wird die neue oder geänderte Datei auf jedem angegebenen Server zur Nutzung bereitgestellt. 
-
-Angenommen, ein globales Unternehmen verfügt über Zweigstellen in den USA und in Indien. Am Morgen (US-Zeit) erstellen Information-Worker einen neuen Ordner und neue Dateien für ein ganz neues Projekt, an dem sie den gesamten Tag arbeiten. Die Azure-Dateisynchronisierung synchronisiert Ordner und Dateien auf die Azure-Dateifreigabe (den Cloudendpunkt). Information Worker in Indien setzen die Arbeit an dem Projekt in ihrer Zeitzone fort. Wenn diese am Morgen eintreffen, müssen auf dem lokalen, für Azure-Dateisynchronisierung aktivierten Server in Indien diese neuen Dateien lokal verfügbar sein, damit das Team in Indien effizient aus einem lokalen Cache heraus weiterarbeiten kann. Wenn Sie diesen Modus aktivieren, wird verhindert, dass der anfängliche Dateizugriff aufgrund eines bedarfsgesteuerten Abrufs langsamer ist, und dem Server wird ermöglicht, die Dateien proaktiv abzurufen, sobald sie in der Azure-Dateifreigabe geändert oder erstellt wurden.
-
-Wenn Dateien, die auf den Server abgerufen werden, eigentlich nicht lokal benötigt werden, kann der unnötige Abruf den ausgehenden Datenverkehr und die Kosten erhöhen. Aktivieren Sie den proaktiven Abruf daher nur, wenn Sie wissen, dass das Vorabauffüllen eines Servercaches mit aktuellen Änderungen aus der Cloud von Vorteil ist für Benutzer oder Anwendungen, die die Dateien auf diesem Server verwenden. 
-
-Das Aktivieren des proaktiven Abrufs kann auch zu einer erhöhten Bandbreitennutzung auf dem Server führen und dazu, dass andere relativ neue Inhalte auf dem lokalen Server aufgrund der Zunahme der abgerufenen Dateien aggressiv ausgelagert werden. Dies kann wiederum zu mehr Abrufen führen, wenn die ausgelagerten Dateien von Servern als „heiß“ eingestuft werden. 
+Das Aktivieren des proaktiven Abrufs kann auch zu einer erhöhten Bandbreitennutzung auf dem Server führen und dazu, dass andere relativ neue Inhalte auf dem lokalen Server aufgrund der Zunahme der abgerufenen Dateien aggressiv ausgelagert werden. Ein zu frühes Tiering kann wiederum zu mehr Abrufen führen, wenn die per Tiering ausgelagerten Dateien von Servern als „heiß“ eingestuft werden. 
 
 :::image type="content" source="media/storage-sync-files-deployment-guide/proactive-download.png" alt-text="Eine Abbildung, die das Downloadverhalten der Azure-Dateifreigabe für einen derzeit gültigen Serverendpunkt darstellt sowie eine Schaltfläche zum Öffnen eines Menüs, das dessen Änderung gestattet.":::
 
-Weitere Informationen zum proaktiven Abruf finden Sie unter [Bereitstellen der Azure-Dateisynchronisierung](file-sync-deployment-guide.md#proactively-recall-new-and-changed-files-from-an-azure-file-share).
+Weitere Informationen zu proaktiven Abrufen finden Sie unter [Proaktives Abrufen neuer und geänderter Dateien von einer Azure-Dateifreigabe](file-sync-deployment-guide.md#proactively-recall-new-and-changed-files-from-an-azure-file-share).
 
 ## <a name="tiered-vs-locally-cached-file-behavior"></a>Verhalten von ausgelagerten und lokal zwischengespeicherten Dateien
 
@@ -101,7 +81,7 @@ Wenn eine Datei auf einem lokalen Dateiserver gespeichert wird, entspricht die G
 
 ![Screenshot der Eigenschaften einer nicht ausgelagerten Datei – Namespace und Dateiinhalt](media/storage-sync-cloud-tiering-overview/cloud-tiering-overview-1.png) 
 
-Für eine Datei kann das Tiering auch teilweise durchgeführt werden (bzw. teilweise zurückgerufen werden). Bei einer teilweise per Tiering ausgelagerten Datei befindet sich ein Teil der Datei auf dem Datenträger. Dies kann vorkommen, wenn Dateien von Anwendungen, die den Streamingzugriff auf Dateien unterstützen (z. B. Multimedia-Player oder ZIP-Hilfsprogramme), teilweise gelesen werden. Die intelligente Azure-Dateisynchronisierung ruft nur die angeforderten Informationen aus der verbundenen Azure-Dateifreigabe ab.
+Für eine Datei kann das Tiering auch teilweise durchgeführt werden (bzw. teilweise zurückgerufen werden). Bei einer partiell per Tiering ausgelagerten Datei wird nur ein Teil auf dem Datenträger gespeichert. Sie verfügen möglicherweise über partiell abgerufene Dateien in Ihrem Volume, wenn Dateien partiell von Anwendungen gelesen werden, die den Streamingzugriff auf Dateien unterstützen. Einige Beispiele hierfür sind Multimediaplayer und ZIP-Hilfsprogramme. Die Azure-Dateisynchronisierung ist effizient und ruft nur die angeforderten Informationen aus der verbundenen Azure-Dateifreigabe ab.
 
 > [!NOTE]
 > „Größe“ steht für die logische Größe der Datei. „Größe auf Datenträger“ steht für die physische Größe des Dateidatenstroms, der auf dem Datenträger gespeichert ist.

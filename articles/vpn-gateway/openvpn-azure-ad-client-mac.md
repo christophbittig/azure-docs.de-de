@@ -6,21 +6,22 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 08/04/2021
+ms.date: 08/19/2021
 ms.author: cherylmc
-ms.openlocfilehash: 25049323d8dc9259c2f6edc439ecb5b624490009
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f2b23c469e7ababb9aab439e33cffd2de6e20eae
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355057"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122514678"
 ---
 # <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections---macos"></a>Azure Active Directory-Authentifizierung: Konfigurieren eines VPN-Clients für P2S-OpenVPN-Protokollverbindungen: macOS
 
 Dieser Artikel unterstützt Sie beim Konfigurieren eines VPN-Clients für einen Computer mit macOS 10.15 und höher für die Verbindung zu einem virtuellen Netzwerk mit einem Point-to-Site-VPN und Azure Active Directory-Authentifizierung. Damit Sie mit Azure AD eine Verbindung herstellen und eine Authentifizierung durchführen können, müssen Sie zuerst Ihren Azure AD-Mandanten konfigurieren. Weitere Informationen finden Sie unter [Konfigurieren eines Azure AD-Mandanten](openvpn-azure-ad-tenant.md). Weitere Informationen zu Point-to-Site-Verbindungen finden Sie unter [Informationen zu Point-to-Site-VPN](point-to-site-about.md).
 
 > [!NOTE]
-> Die Azure AD-Authentifizierung wird nur für Verbindungen mit dem OpenVPN®-Protokoll unterstützt und erfordert den Azure-VPN-Client.
+> * Die Azure AD-Authentifizierung wird nur für Verbindungen mit dem OpenVPN®-Protokoll unterstützt und erfordert den Azure-VPN-Client.
+> * Azure VPN Client ist aufgrund lokaler Bestimmungen möglicherweise nicht in allen Regionen verfügbar.
 >
 
 Für jeden Computer, den Sie über eine Point-to-Site-VPN-Verbindung mit einem VNet verbinden möchten, müssen Sie folgende Schritte ausführen:

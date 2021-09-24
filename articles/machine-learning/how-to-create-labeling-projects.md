@@ -1,7 +1,7 @@
 ---
 title: Bildbeschriftung und Textbeschriftung
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie Projekte erstellen und ausführen, um Bilder oder Text zu beschriften. Verwenden Sie zur Unterstützung bei dieser Aufgabe die ML-gestützte Beschriftung sowie die Human-in-the-Loop-Beschriftung.
+description: Verwenden Sie unser Datenbeschriftungstool, um Bilder oder Text zu beschriften. Verwenden Sie zur Unterstützung bei dieser Aufgabe die ML-gestützte Beschriftung sowie die Human-in-the-Loop-Beschriftung.
 author: sdgilley
 ms.author: sgilley
 ms.service: machine-learning
@@ -9,16 +9,16 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 04/29/2021
 ms.custom: data4ml
-ms.openlocfilehash: 54ed2504063cc3a0479d37127888ccb727fbd671
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c29e3dbbcb892127fc89963866dab684fe45095f
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355380"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123108533"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Erstellen eines Datenbeschriftungsprojekts und Exportieren der Beschriftungen
 
-Erfahren Sie, wie Sie in Azure Machine Learning Projekte erstellen und ausführen, um Bilder oder Textdaten zu beschriften.  Verwenden Sie zur Unterstützung bei dieser Aufgabe die ML-gestützte Datenbeschriftung sowie die Human-in-the-Loop-Beschriftung.
+Erfahren Sie, wie Sie in Azure Machine Learning Datenbeschriftungsprojekte erstellen und ausführen, um Bilder oder Textdaten zu beschriften.  Verwenden Sie zur Unterstützung bei dieser Aufgabe die ML-gestützte Datenbeschriftung sowie die Human-in-the-Loop-Beschriftung.
 
 
 ## <a name="data-labeling-capabilities"></a>Datenbeschriftungsfunktionen

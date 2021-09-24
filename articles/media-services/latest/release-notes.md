@@ -8,15 +8,16 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: na
+ms.custom: references_regions
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 7eff89301fa54312ffef323023100660237185a4
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 46ebdd1f5cb3093b0c1c1a5bc3273cf1aa1afd8f
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111955342"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634827"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Versionshinweise zu Azure Media Services v3
 
@@ -29,11 +30,80 @@ Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben,
 * Behebung von Programmfehlern
 * Veraltete Funktionen
 
+## <a name="july-2021"></a>Juli 2021
+
+### <a name="net-sdk-microsoftazuremanagementmedia--500-release-available-in-nuget-coming-soon---early-september-2021"></a>.NET SDK (Microsoft.Azure.Management.Media ) Release 5.0.0 in NuGet verfügbar (In Kürze verfügbar – Anfang September 2021!)
+
+Das [Microsoft.Azure.Management.Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/5.0.0) .NET SDK Version 5.0.0 wird jetzt auf NuGet veröffentlicht. Diese Version wird generiert, um mit der stabilen Version [2021-06-01](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-06-01) der Open-API (Swagger) ARM-REST-API zu arbeiten.
+
+Ausführliche Informationen zu Änderungen ab Version 4.0.0 finden Sie im [Änderungsprotokoll](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/mediaservices/Microsoft.Azure.Management.Media/CHANGELOG.md).
+
+#### <a name="changes-in-the-500-net-sdk-release-coming-soon---early-september-2021"></a>Änderungen am .NET SDK Release 5.0.0 (In Kürze verfügbar – Anfang September 2021!)
+
+* Das Media Services-Konto unterstützt jetzt systemseitig und benutzerseitig zugewiesene verwaltete Identitäten.
+* Die Option **PublicNetworkAccess** wurde Media Services-Konten hinzugefügt. Diese Option kann zusammen mit dem Private Link-Feature verwendet werden, um nur den Zugriff von privaten Netzwerken zuzulassen und den Zugriff auf öffentliche Netzwerke zu blockieren.
+* Einfacher Passthrough: Ein neuer Liveereignistyp wird hinzugefügt. Liveereignisse mit einfachem Passthrough haben ähnliche Funktionen wie Liveereignisse mit Standard-Passthrough mit einigen Ein- und Ausgabeeinschränkungen und werden zu einem reduzierten Preis angeboten.
+* **PresetConfigurations**: Ermöglicht Ihnen das Anpassen der Ausgabeeinstellungen sowie der minimalen und maximalen Bitraten, die für die [Voreinstellungen der inhaltsbezogenen Codierung](./encode-content-aware-concept.md) verwendet werden. Dies hilft Ihnen bei der besseren Schätzung und Planung für eine genauere Abrechnung, wenn Sie inhaltsbezogene Codierung mithilfe von begrenzten Ausgabenachverfolgungsnummern und Auflösungen verwenden.
+
+#### <a name="breaking-changes-in-tht-500-net-sdk-release"></a>Breaking Changes in Version 5.0.0 des .NET SDK
+
+* **ApiErrorException** wurde durch **ErrorResponseException** ersetzt, um mit allen anderen Azure SDKs konsistent zu sein. Der Ausnahmetext hat sich nicht geändert.
+* Der Media Service-Konstruktor verfügt über einen neuen optionalen PublicNetworkAccess-Parameter hinter dem KeyDelivery-Parameter.
+* Die Type-Eigenschaft in „MediaServiceIdentity“ wurde von Enumeration (enum) in Zeichenfolge (string) für „ManagedIdentityType“ geändert, um mehrere durch Komma getrennte Typen zu ermöglichen. Gültige Zeichenfolgen für den Typ sind „SystemAssigned“ oder „SystemAssigned,UserAssigned“ oder „UserAssigned“.
+
+## <a name="june-2021"></a>Juni 2021
+
+### <a name="additional-live-event-ingest-heartbeat-properties-for-improved-diagnostics"></a>Zusätzliche Liveereignis-Erfassungstakteigenschaften für verbesserte Diagnosen
+
+Der Event Grid-Nachricht wurden zusätzliche Liveereignis-Erfassungstakteigenschaften hinzugefügt. Dazu gehören die folgenden neuen Felder, die bei der Diagnose von Problemen während der Liveerfassung helfen.  Der **ingestDriftValue** ist in Szenarien hilfreich, in denen Sie die Netzwerklatenz vom Quellerfassungsencoder überwachen müssen, der in das Liveereignis pusht. Wenn dieser Wert zu stark abweicht, kann dies ein Hinweis darauf sein, dass die Netzwerklatenz für ein erfolgreiches Livestreamingereignis zu hoch ist.
+
+Weitere Informationen finden Sie unter [LiveEventIngestHeartbeat-Schema](./monitoring/media-services-event-schemas.md#liveeventingestheartbeat).
+
+### <a name="private-links-support-is-now-ga"></a>Unterstützung für private Verbindungen ist jetzt allgemein verfügbar
+
+Die Unterstützung für die Verwendung von Media Services mit [privaten Verbindungen](../../private-link/index.yml) ist jetzt allgemein (GA) und in allen Azure-Regionen verfügbar, einschließlich Azure Government-Clouds.
+Mit Azure Private Link können Sie über einen privaten Endpunkt in Ihrem virtuellen Netzwerk auf Azure-PaaS-Dienste sowie auf in Azure gehostete kundeneigene Dienste/Partnerdienste zugreifen.
+Der Datenverkehr zwischen Ihrem virtuellen Netzwerk und dem Dienst wird über das Microsoft-Backbone-Netzwerk übertragen und dadurch vom öffentlichen Internet isoliert.
+
+Informationen zum Verwenden von Media Services mit privaten Verbindungen finden Sie unter [Erstellen eines Media Services- und Speicherkontos mit einem privaten Link](./security-private-link-how-to.md).
+
+### <a name="new-us-west-3-region-is-ga"></a>Neue Region „USA, Westen 3“ ist allgemein verfügbar
+
+Die Region „USA, Westen 3“ ist jetzt allgemein verfügbar und kann von Kunden verwendet werden, wenn sie neue Media Services-Konten erstellen.
+
+### <a name="key-delivery-supports-ip-allowlist-restrictions"></a>Schlüsselübermittlung unterstützt Einschränkungen der Liste zugelassener IP-Adressen
+
+Media Services-Konten können jetzt mit Einschränkungen der Liste zugelassener IP-Adressen für die Schlüsselübermittlung konfiguriert werden. Die neue Einstellung für die Positivliste ist auf der Media Services-Kontoressource über das SDK sowie im Portal und über die CLI verfügbar.
+Dies ermöglicht es den Operatoren, die Bereitstellung von DRM-Lizenzen und symmetrischen AES-128-Schlüsseln auf bestimmte IPv4-Bereiche zu beschränken.
+
+Dieses Feature kann auch verwendet werden, um alle öffentlichen Internetübermittlungen von DRM-Lizenzen oder AES-128-Schlüsseln zu deaktivieren und die Übermittlung auf einen privaten Endpunkt zu beschränken.
+
+Weitere Informationen finden Sie im Artikel [Einschränken des Zugriffs auf die DRM-Lizenz- und AES-Schlüsselübermittlung mithilfe von Listen zugelassener IP-Adressen](./drm-content-protection-key-delivery-ip-allow.md).
+
+### <a name="new-samples-for-python-and-nodejs-with-typescript"></a>Neue Beispiele für Python und Node.js (mit TypeScript)
+Aktualisierte Beispiele für **Node.js**, die die neueste TypeScript-Unterstützung im Azure SDK verwenden.
+
+|Beispiel|BESCHREIBUNG|
+|---|---|
+|[Livestreaming](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/main/AMSv3Samples/Live/index.ts)| Einfaches Livestreaming-Beispiel. **WARNUNG**: Stellen Sie sicher, dass alle Ressourcen bereinigt sind und im Portal nicht mehr abgerechnet werden, wenn Sie Livestreaming verwenden.|
+|[Hochladen und Streamen von HLS und DASH](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/main/AMSv3Samples/StreamFilesSample/index.ts)| Einfaches Beispiel für das Hochladen einer lokalen Datei oder Codieren aus einer Quell-URL. Das Beispiel zeigt, wie Sie Storage SDK zum Herunterladen von Inhalten verwenden und wie Sie an einen Player streamen. |
+|[Hochladen und Streamen von HLS und DASH mit Playready und Widevine DRM](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/main/AMSv3Samples/StreamFilesWithDRMSample/index.ts)| Zeigt, wie Sie mithilfe von Widevine und PlayReady DRM codieren und streamen. |
+|[Hochladen und Verwenden von KI zum Indizieren von Video- und Audiodaten](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/main/AMSv3Samples/VideoIndexerSample/index.ts)| Beispiel für die Verwendung von Voreinstellungen für das Video- und Audioanalysetool zum Generieren von Metadaten und Erkenntnissen aus einer Video- oder Audiodatei. |
+
+
+Neues **Python**-Beispiel, das zeigt, wie Azure Functions und Event Grid verwendet werden, um die Voreinstellung für die Gesichtsbearbeitung auszulösen.
+
+|Beispiel|BESCHREIBUNG|
+|---|---|
+|[Gesichtsbearbeitung mithilfe von Ereignissen und Funktionen](https://github.com/Azure-Samples/media-services-v3-python/tree/main/VideoAnalytics/FaceRedactorEventBased) | Dies ist ein Beispiel für einen ereignisbasierten Ansatz, bei dem ein Azure Media Services-Auftrag zur Gesichtsbearbeitung für ein Video ausgelöst wird, sobald es in einem Azure Storage-Konto hinzugefügt wird. Für die Lösung werden Azure Media Services, Azure Functions, Event Grid und Azure Storage verwendet. Eine vollständige Beschreibung der Lösung finden Sie in der Datei [README.md](https://github.com/Azure-Samples/media-services-v3-python/blob/main/VideoAnalytics/FaceRedactorEventBased/README.md). |
+
+
 ## <a name="may-2021"></a>Mai 2021
 
 ### <a name="availability-zones-default-support-in-media-services"></a>Verfügbarkeitszonen: Standardunterstützung in Media Services
 
 Media Services unterstützt jetzt [Verfügbarkeitszonen](concept-availability-zones.md), die fehlerisolierte Standorte innerhalb einer Azure-Region bieten.  Media Services-Konten sind jetzt standardmäßig zonenredundante Konten, und es sind keine zusätzlichen Konfigurationen oder Einstellungen erforderlich. Dies gilt nur für Regionen, in denen [Verfügbarkeitszonen unterstützt](../../availability-zones/az-region.md#azure-regions-with-availability-zones) werden.
+
 
 ## <a name="march-2021"></a>März 2021
 
@@ -274,7 +344,7 @@ Unterstützung für die folgenden neuen, empfohlenen Partner-Encoder für RTMP-L
 - Die Standardcodierung behält nun bei Verwendung der zeitbasierten GOP-Einstellung einen regelmäßigen GOP-Rhythmus für Inhalte mit variablen Frameraten (VFR) bei der VOD-Codierung bei.  Dies bedeutet, dass Kunden, die Inhalte mit gemischten Bildfrequenzen übermitteln, die beispielsweise zwischen 15 und 30 fps variieren, nun feststellen sollten, dass bei der Ausgabe in MP4-Dateien mit Adaptive Bitrate Streaming regelmäßige GOP-Abstände berechnet werden. Hierdurch wird die Möglichkeit verbessert, nahtlos zwischen den Spuren zu wechseln, wenn über HLS oder DASH geliefert wird. 
 -  Verbesserte AV-Synchronisierung für Quellinhalte mit variabler Framerate (VFR)
 
-### <a name="video-indexer-video-analytics"></a>Video Indexer, Videoanalyse
+### <a name="azure-video-analyzer-for-media-video-analytics"></a>Azure Video Analyzer for Media, Videoanalyse
 
 - Keyframes, die mithilfe der VideoAnalyzer-Voreinstellung extrahiert wurden, sind jetzt in der ursprünglichen Auflösung des Videos, anstatt dass ihre Größe angepasst wird. Die hochauflösende Keyframe-Extraktion bietet Ihnen Bilder in Originalqualität und ermöglicht Ihnen die Verwendung bildbasierter KI-Modelle (künstliche Intelligenz), die von den Microsoft-Diensten Maschinelles Sehen und Custom Vision bereitgestellt werden, um noch mehr Erkenntnisse zu Ihrem Video zu erhalten.
 
@@ -290,9 +360,9 @@ Media Services v3 gibt die Vorschauversion von 24 Stunden x 365 Tagen linearer L
 
 #### <a name="deprecation-of-media-processors"></a>Einstellung von Medienprozessoren
 
-Wir kündigen die Einstellung von *Azure Media Indexer* und *Azure Media Indexer 2 Preview* an. Die Daten zur Einstellung finden Sie im Artikel [Legacykomponenten](../previous/legacy-components.md). Azure Media Services Video Indexer ersetzt diese Legacy-Medienprozessoren.
+Wir kündigen die Einstellung von *Azure Media Indexer* und *Azure Media Indexer 2 Preview* an. Die Daten zur Einstellung finden Sie im Artikel [Legacykomponenten](../previous/legacy-components.md). Azure Video Analyzer for Media ersetzt diese Legacy-Medienprozessoren.
 
-Weitere Informationen finden Sie unter [Migration von Azure Media Indexer v1 und Azure Media Indexer v2 zu Azure Media Services Video Indexer](../previous/migrate-indexer-v1-v2.md).
+Weitere Informationen finden Sie unter [Migration von Azure Media Indexer v1 und Azure Media Indexer v2 zu **Azure Media Services Video Indexer**](../previous/migrate-indexer-v1-v2.md).
 
 ## <a name="august-2019"></a>August 2019
 

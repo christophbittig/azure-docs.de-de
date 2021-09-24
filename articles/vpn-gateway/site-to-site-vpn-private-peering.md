@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: 4c84b46fe3265b5ada792cbe47d92768e602fa20
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 68dee7e8d00f3f1b6853a7be5c9328647d96371d
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108229034"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272077"
 ---
 # <a name="configure-a-site-to-site-vpn-connection-over-expressroute-private-peering"></a>Konfigurieren einer Site-to-Site-VPN-Verbindung über privates ExpressRoute-Peering
 
@@ -22,6 +22,8 @@ Sie können ein Site-to-Site-VPN über ein privates ExpressRoute-Peering mithilf
 * Datenverkehr über privates Peering wird verschlüsselt.
 
 * Point-to-Site-Benutzer, die sich mit einem virtuellen Netzwerkgateway verbinden, können mithilfe von ExpressRoute (über den Site-to-Site-Tunnel) auf lokale Ressourcen zugreifen.
+
+* Es ist möglich, Site-to-Site-VPN-Verbindungen über privates ExpressRoute-Peering gleichzeitig mit Site-to-Site-VPN-Verbindungen über das Internet auf demselben VPN-Gateway bereitzustellen.
 
 >[!NOTE]
 >Dieses Feature wird nur bei zonenredundanten Gateways unterstützt. Beispiel: VpnGw1AZ, VpnGw2AZ usw.

@@ -11,18 +11,25 @@ ms.subservice: service-overview
 ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 07/21/2021
-ms.openlocfilehash: c8f8699d58d26c745be8cb1207a88cdad6857f1a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/01/2021
+ms.openlocfilehash: e891ab3812c78e8878a0e4341b8fa6b671a7af14
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122356068"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223700"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Dokumentationsänderungen für SQL Server auf virtuellen Azure-Computern
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 In Azure können Sie einen virtuellen Computer (VM) mit einem integrierten SQL Server-Image bereitstellen. In diesem Artikel werden die Dokumentationsänderungen zusammengefasst, die mit neuen Funktionen und Verbesserungen in den neuesten Releases von [SQL Server in Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/sql-server/) in Zusammenhang stehen. 
+
+## <a name="september-2021"></a>September 2021
+
+| Änderungen | Details |
+| --- | --- |
+| **Für den vollständigen Modus der SQL IaaS-Erweiterung ist kein Neustart mehr erforderlich** | Ein Neustart des SQL Server-Diensts ist nicht mehr notwendig, wenn Sie Ihre SQL Server-VM mit der [SQL IaaS-Agent-Erweiterung](sql-server-iaas-agent-extension-automate-management.md) im [Modus „Vollständig“](sql-agent-extension-manually-register-single-vm.md#full-mode) registrieren! | 
+
 
 ## <a name="july-2021"></a>Juli 2021
 

@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Erfahren Sie, wie eine Azure AD-App-Registrierung als Authentifizierungsoption für Client-Apps mit dem Azure-Portal erstellt wird.
 author: baanders
 ms.author: baanders
-ms.date: 10/13/2020
+ms.date: 8/27/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 55f8c0008a055f5703ffe563fe7925446246f134
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: da935038599b86d9c86a1f55071d4b4d1ea4ce16
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114466165"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223054"
 ---
 # <a name="create-an-app-registration-to-use-with-azure-digital-twins-portal"></a>Erstellen einer App-Registrierung für die Verwendung mit Azure Digital Twins (Portal)
 
@@ -20,7 +20,7 @@ ms.locfileid: "114466165"
 
 Beim Arbeiten mit einer Azure Digital Twins-Instanz ist es üblich, über Clientanwendungen mit dieser Instanz zu interagieren, z. B. mit der in [Programmieren einer Client-App](tutorial-code.md) erstellten benutzerdefinierten Client-App. Diese Anwendungen müssen sich bei Azure Digital Twins authentifizieren, um damit zu interagieren, und einige der [Authentifizierungsmechanismen](how-to-authenticate-client.md), die Apps verwenden können, umfassen eine [Azure AD](../active-directory/fundamentals/active-directory-whatis.md)-**App-Registrierung** (Azure Active Directory).
 
-Dies ist nicht für alle Authentifizierungsszenarien erforderlich. Wenn Sie jedoch eine Authentifizierungsstrategie oder ein Codebeispiel verwenden, die bzw. das eine App-Registrierung erfordert, zeigt Ihnen dieser Artikel, wie Sie diese(s) mithilfe des [Azure-Portals](https://portal.azure.com) einrichten. Außerdem wird erläutert, wie Sie [wichtige Werte sammeln](#collect-important-values), die Sie benötigen, um die App-Registrierung für die Authentifizierung zu verwenden.
+Die App-Registrierung ist nicht für alle Authentifizierungsszenarien erforderlich. Wenn Sie jedoch eine Authentifizierungsstrategie oder ein Codebeispiel verwenden, die bzw. das eine App-Registrierung erfordert, zeigt Ihnen dieser Artikel, wie Sie diese(s) mithilfe des [Azure-Portals](https://portal.azure.com) einrichten. Außerdem wird erläutert, wie Sie [wichtige Werte sammeln](#collect-important-values), die Sie benötigen, um die App-Registrierung für die Authentifizierung zu verwenden.
 
 ## <a name="azure-ad-app-registrations"></a>Azure AD-App-Registrierungen
 
@@ -131,7 +131,7 @@ Wenn diese Werte fehlen, wiederholen Sie die Schritte im [Abschnitt zum Hinzufü
 
 ## <a name="other-possible-steps-for-your-organization"></a>Weitere mögliche Schritte für Ihre Organisation
 
-Ihre Organisation erfordert möglicherweise zusätzliche Aktionen von Abonnementbesitzern/Administratoren, um eine App-Registrierung erfolgreich einzurichten. Welche Schritte erforderlich sind, hängt von den spezifischen Einstellungen Ihrer Organisation ab.
+Ihre Organisation erfordert möglicherweise weitere Aktionen von Abonnementbesitzern/Administratoren, um eine App-Registrierung erfolgreich einzurichten. Welche Schritte erforderlich sind, hängt von den spezifischen Einstellungen Ihrer Organisation ab.
 
 Im Folgenden finden Sie einige häufig vorkommende Aktivitäten, die ein Besitzer/Administrator für das Abonnement möglicherweise ausführen muss. Diese und andere Vorgänge können über die Seite [Azure AD-App-Registrierungen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) im Azure-Portal ausgeführt werden.
 * Erteilen Sie eine Administratoreinwilligung für die App-Registrierung. In Ihrer Organisation ist möglicherweise die Einstellung *Administratoreinwilligung erforderlich* global in Azure AD für alle App-Registrierungen in Ihrem Abonnement aktiviert. Wenn dies der Fall ist, muss der Besitzer/Administrator diese Schaltfläche für Ihr Unternehmen auf der Seite *API-Berechtigungen* der App-Registrierung auswählen, damit die App-Registrierung gültig ist:

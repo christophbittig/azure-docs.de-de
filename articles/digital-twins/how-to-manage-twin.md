@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b670c244c502049cc9eb419aa6570ad40e5aafa7
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: 0873d6f0bfff73fc0bdc44ce90b322af23d4df28
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114689924"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835733"
 ---
 # <a name="manage-digital-twins"></a>Verwalten digitaler Zwillinge
 
@@ -167,7 +167,10 @@ Im Folgenden finden Sie ein Beispiel für JSON Patch-Code. Dieses Dokument erset
 
 :::code language="json" source="~/digital-twins-docs-samples/models/patch.json":::
 
-Aktualisierungsaufrufe für Zwillinge und Beziehungen verwenden die [JSON-Patchstruktur](http://jsonpatch.com/). Patches können mithilfe von [JsonPatchDocument](/dotnet/api/azure.jsonpatchdocument?view=azure-dotnet&preserve-view=true) des Azure .NET SDK erstellt werden. Beispiel:
+>[!NOTE]
+> Dieses Beispiel zeigt den JSON Patch-Vorgang `replace`, der den Wert einer vorhandenen Eigenschaft ersetzt. Eine vollständige Liste der JSON Patch-Vorgänge, die verwendet werden können, einschließlich `add` und `remove`, finden Sie im Abschnitt [Vorgänge für JSON Patch](http://jsonpatch.com/#operations). 
+
+Wenn Sie einen Zwilling aus einem Codeprojekt mit dem .NET SDK aktualisieren, können Sie JSON-Patches mit [JsonPatchDocument](/dotnet/api/azure.jsonpatchdocument?view=azure-dotnet&preserve-view=true) aus dem Azure .NET SDK erstellen. Beispiel:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="UpdateTwin":::
 

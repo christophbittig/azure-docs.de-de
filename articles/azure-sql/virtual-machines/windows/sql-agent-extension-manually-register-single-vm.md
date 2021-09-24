@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 07/21/2021
+ms.date: 09/01/2021
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, contperf-fy21q2
-ms.openlocfilehash: 649bf52c48867f4508a7071cb1443b62eae36010
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 3dfcfcab7421b6aa8710310fdffa08f54688c4fd
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349835"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123219925"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>Registrieren einer SQL Server-VM mit der SQL-IaaS-Agent-Erweiterung
 
@@ -28,15 +28,18 @@ ms.locfileid: "122349835"
 
 Wenn Sie Ihre SQL Server-VM mit der [SQL-IaaS-Agent-Erweiterung](sql-server-iaas-agent-extension-automate-management.md) registrieren, können Sie viele Features für SQL Server auf Azure-VMs nutzen.
 
-In diesem Artikel erfahren Sie, wie Sie eine einzelne SQL Server-VM mit der SQL-IaaS-Agent-Erweiterung registrieren. Alternativ können Sie alle SQL Server-VMs [automatisch](sql-agent-extension-automatic-registration-all-vms.md) oder [mehrere VMs per Skript in einem Massenvorgang](sql-agent-extension-manually-register-vms-bulk.md) registrieren.
+In diesem Artikel erfahren Sie, wie Sie eine einzelne SQL Server-VM mit der SQL-IaaS-Agent-Erweiterung registrieren. Alternativ können Sie alle SQL Server-VMs in einem Abonnement [automatisch](sql-agent-extension-automatic-registration-all-vms.md) oder [mehrere VMs per Skript in einem Massenvorgang](sql-agent-extension-manually-register-vms-bulk.md) registrieren.
+
+> [!NOTE]
+> Ab September 2021 ist für die Registrierung bei der SQL-IaaS-Erweiterung im vollständigen Modus kein Neustart des SQL Server-Diensts mehr erforderlich. 
 
 ## <a name="overview"></a>Übersicht
 
-Durch die Registrierung mit der [SQL Server-IaaS-Agent-Erweiterung](sql-server-iaas-agent-extension-automate-management.md) wird die _Ressource_ **Virtueller SQL-Computer** in Ihrem Abonnement erstellt. Dabei handelt es sich um eine _andere_ Ressource als die Ressource für Ihren virtuellen Computer. Wenn Sie die Registrierung der Erweiterung für Ihre SQL Server-VM aufheben, wird die _Ressource_ **Virtueller SQL-Computer** entfernt, während der tatsächliche virtuelle Computer jedoch erhalten bleibt.
+Durch die Registrierung mit der [SQL Server-IaaS-Agent-Erweiterung](sql-server-iaas-agent-extension-automate-management.md) wird die [**Virtueller SQL-Computer**-_Ressource_](manage-sql-vm-portal.md) in Ihrem Abonnement erstellt. Dabei handelt es sich um eine _andere_ Ressource als die Ressource für Ihren virtuellen Computer. Wenn Sie die Registrierung der Erweiterung für Ihre SQL Server-VM aufheben, wird die _Ressource_ **Virtueller SQL-Computer** entfernt, während der tatsächliche virtuelle Computer jedoch erhalten bleibt.
 
 Beim Bereitstellen eines Azure Marketplace-Images einer SQL Server-VM über das Azure-Portal wird die SQL Server-VM mit der Erweiterung automatisch registriert. Wenn Sie jedoch SQL Server auf einer Azure-VM selbst installieren oder eine Azure-VM von einer benutzerdefinierten VHD bereitstellen, müssen Sie Ihre SQL Server-VM mit der SQL-IaaS-Agent-Erweiterung registrieren, um alle Featurevorteile nutzen und von einer einfachen Verwaltbarkeit profitieren zu können.
 
-Wenn Sie die SQL-IaaS-Agent-Erweiterung verwenden möchten, müssen Sie zunächst [Ihr Abonnement beim Anbieter **Microsoft.SqlVirtualMachine** registrieren](#register-subscription-with-resource-provider). Dadurch kann die SQL-IaaS-Agent-Erweiterung Ressourcen in diesem bestimmten Abonnement erstellen.
+Wenn Sie die SQL-IaaS-Agent-Erweiterung verwenden möchten, müssen Sie zunächst [Ihr Abonnement beim Anbieter **Microsoft.SqlVirtualMachine** registrieren](#register-subscription-with-rp). Dadurch kann die SQL-IaaS-Agent-Erweiterung Ressourcen in diesem bestimmten Abonnement erstellen.
 
 > [!IMPORTANT]
 > Die SQL-IaaS-Agent-Erweiterung sammelt Daten ausschließlich, um Kunden zu ermöglichen, bei der Verwendung von SQL Server in Azure Virtual Machines optionale Vorteile zu nutzen. Microsoft verwendet diese Daten ohne vorherige Zustimmung des Kunden nicht für Lizenzierungsüberprüfungen. Weitere Informationen finden Sie unter [Ergänzende Datenschutzbestimmungen zu SQL Server](/sql/sql-server/sql-server-privacy#non-personal-data).
@@ -49,9 +52,9 @@ Um Ihre SQL Server-VM mit der Erweiterung registrieren zu können, benötigen S
 - Ein in der öffentlichen Cloud oder Azure Government-Cloud bereitgestelltes Azure-Ressourcenmodell des Typs [Windows Server 2008-VM (oder höher)](../../../virtual-machines/windows/quick-create-portal.md) mit [SQL Server 2008 (oder höher)](https://www.microsoft.com/sql-server/sql-server-downloads).
 - Die aktuelle Version von [Azure CLI](/cli/azure/install-azure-cli) oder [Azure PowerShell (mindestens 5.0)](/powershell/azure/install-az-ps).
 
-## <a name="register-subscription-with-resource-provider"></a>Registrieren eines Abonnements bei einem Ressourcenanbieter
+## <a name="register-subscription-with-rp"></a>Registrieren eines Abonnements mit RP
 
-Um Ihre SQL Server-VM mit der SQL-IaaS-Agent-Erweiterung registrieren zu können, müssen Sie zunächst Ihr Abonnement beim Ressourcenanbieter **Microsoft.SqlVirtualMachine** registrieren. Dadurch kann die SQL-IaaS-Agent-Erweiterung Ressourcen in Ihrem Abonnement erstellen.  Verwenden Sie hierzu das Azure-Portal, die Azure CLI oder Azure PowerShell.
+Um Ihre SQL Server-VM mit der SQL-IaaS-Agent-Erweiterung registrieren zu können, müssen Sie zunächst Ihr Abonnement beim Ressourcenanbieter **Microsoft.SqlVirtualMachine** registrieren. Dadurch kann die SQL-IaaS-Agent-Erweiterung Ressourcen in Ihrem Abonnement erstellen. Verwenden Sie hierzu das Azure-Portal, die Azure CLI oder Azure PowerShell.
 
 ### <a name="azure-portal"></a>Azure-Portal
 
@@ -83,19 +86,74 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 ---
 
-## <a name="register-with-extension"></a>Registrieren der Erweiterung
+## <a name="full-mode"></a>Modus „Vollständig“
 
-Für die [SQL Server-IaaS-Agent-Erweiterung](sql-server-iaas-agent-extension-automate-management.md#management-modes) gibt es drei Verwaltungsmodi.
+Um Ihre SQL Server-VM direkt im Modus „Vollständig“ zu registrieren, verwenden Sie den folgenden Azure PowerShell-Befehl:
 
-Beim Registrieren der Erweiterung im Verwaltungsmodus „Vollständig“ wird der SQL Server-Dienst neu gestartet. Es wird daher empfohlen, die Erweiterung zunächst im Modus „Lightweight“ zu registrieren und sie dann in einem Wartungsfenster [auf „Vollständig“ zu aktualisieren](#upgrade-to-full).
+  ```powershell-interactive
+  # Get the existing  Compute VM
+  $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
 
-### <a name="lightweight-management-mode"></a>Verwaltungsmodus „Lightweight“
+  # Register with SQL IaaS Agent extension in full mode
+  New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
+  
+  ```
 
-Verwenden Sie die Azure-Befehlszeilenschnittstelle oder Azure PowerShell, um Ihre SQL Server-VM mit der Erweiterung im Modus „Lightweight“ zu registrieren. Dadurch wird der SQL Server-Dienst nicht neu gestartet. Sie können dann jederzeit ein Upgrade auf den Modus „Vollständig“ ausführen. Da hierdurch jedoch der SQL Server-Dienst neu gestartet wird, wird empfohlen, auf ein Fenster für die geplante Wartung zu warten.
+Weitere Informationen zum Modus „Vollständig“ finden Sie unter [Verwaltungsmodi](sql-server-iaas-agent-extension-automate-management.md#management-modes).
+
+### <a name="upgrade-to-full"></a>Upgrade auf „Vollständig“
+
+Für SQL Server-VMs, auf denen die Erweiterung im Modus *Lightweight* registriert wurde, können Sie über das Azure-Portal, die Azure-Befehlszeilenschnittstelle oder Azure PowerShell ein Upgrade auf den Modus _Vollständig_ durchführen. Für SQL Server-VMs im Modus _NoAgent_ kann ein Upgrade auf _Vollständig_ durchgeführt werden, nachdem das Betriebssystem auf Windows 2008 R2 oder höher aktualisiert wurde. Es ist nicht möglich, ein Downgrade auszuführen. Dazu müssen Sie die [Registrierung der SQL-IaaS-Agent-Erweiterung für die SQL Server-VM aufheben](#unregister-from-extension). Dadurch wird die _Ressource_ **Virtueller SQL-Computer** entfernt, der tatsächliche virtuelle Computer aber nicht gelöscht.
+
+#### <a name="azure-portal"></a>Azure-Portal
+
+Führen Sie die folgenden Schritte aus, um die Erweiterung im Azure-Portal auf den Modus „Vollständig“ zu aktualisieren:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wechseln Sie zu Ihrer Ressource [Virtuelle SQL-Computer](manage-sql-vm-portal.md#access-the-resource).
+1. Wählen Sie Ihre SQL Server-VM aus, und navigieren Sie zur Seite **Übersicht**.
+1. Wählen Sie für SQL Server-VMs mit dem IaaS-Erweiterungsmodus „NoAgent“ oder „Lightweight“ die Meldung **Mit dem aktuellen SQL-IaaS-Erweiterungsmodus sind nur Lizenztyp- und Editionsaktualisierungen verfügbar...** aus.
+
+   ![Auswahlmöglichkeiten zum Ändern des Modus im Portal](./media/sql-agent-extension-manually-register-single-vm/change-sql-iaas-mode-portal.png)
+
+1. Wählen Sie **Bestätigen** aus, um ein Upgrade des SQL Server-IaaS-Erweiterungsmodus auf „Vollständig“ durchzuführen.
+
+    ![Wählen Sie **Bestätigen** aus, um ein Upgrade des SQL Server-IaaS-Erweiterungsmodus auf „Vollständig“ durchzuführen.](./media/sql-agent-extension-manually-register-single-vm/enable-full-mode-iaas.png)
+
+#### <a name="command-line"></a>Befehlszeile
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/bash)
+
+Führen Sie zum Aktualisieren der Erweiterung auf den Modus „Vollständig“ den folgenden Azure CLI-Code aus:
+
+  ```azurecli-interactive
+  # Update to full mode
+  az sql vm update --name <vm_name> --resource-group <resource_group_name> --sql-mgmt-type full  
+  ```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+Führen Sie zum Aktualisieren der Erweiterung auf den Modus „Vollständig“ den folgenden Azure PowerShell-Code aus:
+
+  ```powershell-interactive
+  # Get the existing  Compute VM
+  $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
+
+  # Register with SQL IaaS Agent extension in full mode
+  Update-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full -Location $vm.Location
+  ```
+
+---
+
+## <a name="lightweight-mode"></a>Modus „Lightweight“
+
+Verwenden Sie die Azure-Befehlszeilenschnittstelle oder Azure PowerShell, um Ihre SQL Server-VM mit der Erweiterung im Modus „Lightweight“ für eingeschränkte Funktionalität zu registrieren. 
 
 Geben Sie den SQL Server-Lizenztyp an. Sie können zwischen nutzungsbasierter Bezahlung (`PAYG`), Azure-Hybridvorteil (`AHUB`) zum Verwenden Ihrer eigenen Lizenz und Notfallwiederherstellung (`DR`) zum Aktivieren des [kostenlosen DR-Replikats](business-continuity-high-availability-disaster-recovery-hadr-overview.md#free-dr-replica-in-azure) auswählen.
 
 Failoverclusterinstanzen und Bereitstellungen mit mehreren Instanzen können nur mit der SQL-IaaS-Agent-Erweiterung im Modus „Lightweight“ registriert werden.
+
+Weitere Informationen zum Modus „Lightweight“ finden Sie unter [Verwaltungsmodi](sql-server-iaas-agent-extension-automate-management.md#management-modes).
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/bash)
 
@@ -118,26 +176,11 @@ Registrieren einer SQL Server-VM im Modus „Lightweight“ mit Azure PowerShell
   New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
     -LicenseType <license_type>  -SqlManagementType LightWeight  
   ```
-
 ---
 
-### <a name="full-management-mode"></a>Verwaltungsmodus „Vollständig“
+## <a name="noagent-management-mode"></a>Verwaltungsmodus „NoAgent“
 
-Beim Registrieren Ihrer SQL Server-VM im Modus „Vollständig“ wird der SQL Server-Dienst neu gestartet. Sie sollten daher mit Vorsicht vorgehen.
-
-Verwenden Sie den folgenden Azure PowerShell-Befehl, um Ihre SQL Server-VM direkt im Modus „Vollständig“ zu registrieren (und ggf. den SQL Server-Dienst neu zu starten):
-
-  ```powershell-interactive
-  # Get the existing  Compute VM
-  $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
-
-  # Register with SQL IaaS Agent extension in full mode
-  New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
-  ```
-
-### <a name="noagent-management-mode"></a>Verwaltungsmodus „NoAgent“
-
-Installationen von SQL Server 2008 und SQL Server 2008 R2 unter Windows Server 2008 (_nicht R2_) können mit der SQL-IaaS-Agent-Erweiterung im [Modus „NoAgent“](sql-server-iaas-agent-extension-automate-management.md#management-modes) registriert werden. Diese Option stellt die Konformität sicher und ermöglicht die Überwachung der SQL Server-VM im Azure-Portal mit eingeschränktem Funktionsumfang.
+Installationen von SQL Server 2008 und SQL Server 2008 R2 unter Windows Server 2008 (_nicht R2_) können nur mit der SQL-IaaS-Agent-Erweiterung im [Modus „NoAgent“](sql-server-iaas-agent-extension-automate-management.md#management-modes) registriert werden. Diese Option stellt die Konformität sicher und ermöglicht die Überwachung der SQL Server-VM im Azure-Portal mit eingeschränktem Funktionsumfang.
 
 Geben Sie als **Lizenztyp** entweder `AHUB`, `PAYG` oder `DR` an. Geben Sie als **Imageangebot** entweder `SQL2008-WS2008` oder `SQL2008R2-WS2008` an.
 
@@ -167,9 +210,10 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ---
 
+
 ## <a name="check-extension-mode"></a>Überprüfen des Erweiterungsmodus
 
-Verwenden Sie Azure PowerShell, um zu überprüfen, in welchem Modus sich Ihre SQL Server IaaS-Agent-Erweiterung befindet. 
+Verwenden Sie Azure PowerShell, um zu überprüfen, in welchem Verwaltungsmodus sich Ihre SQL Server IaaS-Agent-Erweiterung befindet. 
 
 Um den Modus der Erweiterung zu überprüfen, verwenden Sie das folgende Azure PowerShell-Cmdlet: 
 
@@ -183,9 +227,6 @@ $sqlvm.SqlManagementType
 
 Für SQL Server-VMs, auf denen die Erweiterung im Modus *Lightweight* registriert wurde, können Sie über das Azure-Portal, die Azure-Befehlszeilenschnittstelle oder Azure PowerShell ein Upgrade auf den Modus _Vollständig_ durchführen. Für SQL Server-VMs im Modus _NoAgent_ kann ein Upgrade auf _Vollständig_ durchgeführt werden, nachdem das Betriebssystem auf Windows 2008 R2 oder höher aktualisiert wurde. Es ist nicht möglich, ein Downgrade auszuführen. Dazu müssen Sie die [Registrierung der SQL-IaaS-Agent-Erweiterung für die SQL Server-VM aufheben](#unregister-from-extension). Dadurch wird die _Ressource_ **Virtueller SQL-Computer** entfernt, der tatsächliche virtuelle Computer aber nicht gelöscht.
 
-> [!NOTE]
-> Wenn Sie ein Upgrade des Verwaltungsmodus für die SQL-IaaS-Erweiterung auf „Vollständig“ durchführen, wird der SQL Server-Dienst neu gestartet. In einigen Fällen kann ein Neustart dazu führen, dass die Dienstprinzipalnamen (SPNs), die dem SQL Server-Dienst zugeordnet sind, in ein falsches Benutzerkonto geändert werden. Wenn nach dem Upgrade des Verwaltungsmodus Konnektivitätsprobleme auftreten, [heben Sie die Registrierung der Dienstprinzipalnamen auf, und registrieren Sie die Namen dann erneut](/sql/database-engine/configure-windows/register-a-service-principal-name-for-kerberos-connections).
-
 ### <a name="azure-portal"></a>Azure-Portal
 
 Führen Sie die folgenden Schritte aus, um die Erweiterung im Azure-Portal auf den Modus „Vollständig“ zu aktualisieren:
@@ -193,13 +234,13 @@ Führen Sie die folgenden Schritte aus, um die Erweiterung im Azure-Portal auf d
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wechseln Sie zu Ihrer Ressource [Virtuelle SQL-Computer](manage-sql-vm-portal.md#access-the-resource).
 1. Wählen Sie Ihre SQL Server-VM aus, und klicken Sie auf **Übersicht**.
-1. Wählen Sie für SQL Server-VMs mit dem IaaS-Modus „NoAgent“ oder „Lightweight“ die Meldung **Mit der SQL-IaaS-Erweiterung sind nur Lizenztyp- und Editionsaktualisierungen verfügbar** aus.
+1. Wählen Sie für SQL Server-VMs mit dem IaaS-Modus „NoAgent“ oder „Lightweight“ die Meldung **Mit der aktuellen SQL-IaaS-Erweiterung sind nur Lizenztyp- und Editionsaktualisierungen verfügbar...** aus.
 
    ![Auswahlmöglichkeiten zum Ändern des Modus im Portal](./media/sql-agent-extension-manually-register-single-vm/change-sql-iaas-mode-portal.png)
 
-1. Aktivieren Sie das Kontrollkästchen **Ich stimme dem Neustart des SQL Server-Diensts auf dem virtuellen Computer** zu, und klicken Sie dann auf **Bestätigen**, um ein Upgrade des IaaS-Modus auf „Vollständig“ durchzuführen.
+1. Wählen Sie **Bestätigen** aus, um ein Upgrade des SQL Server-IaaS-Erweiterungsmodus auf „Vollständig“ durchzuführen.
 
-    ![Kontrollkästchen für die Zustimmung zum Neustart des SQL Server-Diensts auf dem virtuellen Computer](./media/sql-agent-extension-manually-register-single-vm/enable-full-mode-iaas.png)
+    ![Wählen Sie **Bestätigen** aus, um ein Upgrade des SQL Server-IaaS-Erweiterungsmodus auf „Vollständig“ durchzuführen.](./media/sql-agent-extension-manually-register-single-vm/enable-full-mode-iaas.png)
 
 ### <a name="command-line"></a>Befehlszeile
 
@@ -281,7 +322,6 @@ Es ist möglich, dass sich Ihre SQL IaaS-Agent-Erweiterung in einem fehlerhaften
 1. Wenn der Bereitstellungsstatus **Fehler** ist, wählen Sie **Reparieren** aus, um die Erweiterung zu reparieren. Wenn der Status **Erfolgreich** ist, können Sie das Kontrollkästchen neben **Reparatur erzwingen** aktivieren, um die Erweiterung unabhängig vom Status zu reparieren. 
 
    ![Wenn der Bereitstellungsstatus **Fehler** ist, wählen Sie **Reparieren** aus, um die Erweiterung zu reparieren. Wenn der Status **Erfolgreich** ist, können Sie das Kontrollkästchen neben **Reparatur erzwingen** aktivieren, um die Erweiterung unabhängig vom Status zu reparieren.](./media/sql-agent-extension-manually-register-single-vm/force-repair-extension.png)
-
 
 
 ## <a name="unregister-from-extension"></a>Aufheben der Registrierung der Erweiterung

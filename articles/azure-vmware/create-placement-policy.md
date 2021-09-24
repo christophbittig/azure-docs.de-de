@@ -3,12 +3,12 @@ title: Erstellen einer Platzierungsrichtlinie (Vorschau)
 description: Hier erfahren Sie, wie Sie in Azure VMware Solution eine Platzierungsrichtlinie erstellen, um über das Azure-Portal die Platzierung von virtuellen Computern auf Hosts in einem Cluster zu steuern.
 ms.topic: how-to
 ms.date: 8/18/2021
-ms.openlocfilehash: b7a29abfc0a59da445323c0aa651928c02e65a9b
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 85146ce86dea0d3cfa7397cdaae6fefc8cf4a23b
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444574"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967542"
 ---
 # <a name="create-a-placement-policy-in-azure-vmware-solution-preview"></a>Erstellen einer Platzierungsrichtlinie in Azure VMware Solution (Vorschau)
 
@@ -63,7 +63,7 @@ Für einen **VM-Host**-Richtlinie müssen Sie zusätzlich zum Namen und Cluster 
 - Richtlinien vom Typ **VM-Host-Antiaffinität** weisen DRS an, zu versuchen, die angegebenen VMs auf anderen als den definierten Hosts auszuführen.
 
 
-## <a name="considerations"></a>Weitere Überlegungen
+## <a name="considerations"></a>Überlegungen
 
 ### <a name="cluster-scale-in"></a>Abskalieren eines Clusters
 
@@ -206,20 +206,20 @@ Darüber hinaus können Sie auf der Registerkarte „Überwachen“ des Clusters
 ## <a name="faqs"></a>Häufig gestellte Fragen
 
 ### <a name="are-these-the-same-as-drs-affinity-rules"></a>Sind diese Regeln dieselben wie DRS-Affinititätsregeln?
-Ja und nein. vSphere DRS implementiert den aktuellen Richtliniensatz, aber wir haben die Funktionen etwas vereinfacht. Das Optimieren von VM-Gruppen und Hostgruppen ist eine mühselige Angelegenheit, insbesondere weil Hosts von Natur aus vergänglich sind und in einer Cloudumgebung schnell ausgetauscht werden können. Wenn Hosts im vSphere-Bestand einer lokalen Umgebung ausgetauscht werden, muss der vSphere-Administrator die Hostgruppe ändern, um sicherzustellen, dass die gewünschten Einschränkungen für die VM-Host-Platzierung weiter gelten. Platzierungsrichtlinien in Azure VMware Solution aktualisieren die Hostgruppen, wenn ein Host rotiert oder geändert wird. Ähnliches gilt für die Skalierung: Wenn Sie einen Cluster abskalieren, wird die Hostgruppe automatisch entsprechend aktualisiert. Damit entfällt für die Kunden der Aufwand für die Verwaltung von Hostgruppen.
+Ja und nein. vSphere DRS implementiert den aktuellen Richtliniensatz, aber wir haben die Funktionen etwas vereinfacht. Das Ändern von VM-Gruppen und Hostgruppen ist eine mühselige Angelegenheit, insbesondere weil Hosts von Natur aus vergänglich sind und in einer Cloudumgebung schnell ausgetauscht werden können. Wenn Hosts im vSphere-Bestand einer lokalen Umgebung ausgetauscht werden, muss der vSphere-Administrator die Hostgruppe ändern, um sicherzustellen, dass die gewünschten Einschränkungen für die VM-Host-Platzierung weiter gelten. Platzierungsrichtlinien in Azure VMware Solution aktualisieren die Hostgruppen, wenn ein Host rotiert oder geändert wird. Ähnliches gilt für die Skalierung: Wenn Sie einen Cluster abskalieren, wird die Hostgruppe automatisch entsprechend aktualisiert. Damit entfällt für die Kunden der Aufwand für die Verwaltung von Hostgruppen.
 
 
 ### <a name="as-this-is-an-existing-functionality-available-in-vcenter-why-cant-i-use-it-directly"></a>Es handelt sich ja um eine vorhandene Funktionalität in vCenter, warum kann ich sie nicht direkt verwenden? 
 
 Azure VMware Solution bietet eine private VMware-Cloud in Azure. In dieser verwalteten VMware-Infrastruktur verwaltet Microsoft die Cluster, Host, Datenspeicher und verteilten virtuellen Switches in der privaten Cloud. Gleichzeitig ist der Mandant für die Verwaltung der in der privaten Cloud bereitgestellten Workloads zuständig. Daher hat der Mandant, der die private Cloud verwaltet, [nicht dieselben Berechtigungen](concepts-identity.md), die einem VMware-Administrator in einer lokalen Bereitstellung zur Verfügung stehen. 
 
-Darüber hinaus stellt das Fehlen des gewünschten Differenzierungsgrads in den vSphere-Berechtigungen einige Herausforderungen bei der Verwaltung der Platzierung der Workloads in der privaten Cloud dar. Beispielsweise können vSphere DRS-Regeln, die häufig lokal zum Definieren von Affinitäts- und Antiaffinitätsregeln verwendet werden, nicht unverändert in einer VMware-Cloudumgebung verwendet werden, da einige dieser Regeln die täglichen Vorgänge in der privaten Cloud blockieren können. Platzierungsrichtlinien bieten Ihnen eine Möglichkeit, diese Regeln über das AVS-Portal zu definieren und damit die Notwendigkeit zur Verwendung von DRS-Regeln zu umgehen. In Kombination mit einer vereinfachten Funktionalität können sie auch sicherstellen, dass die Regeln keine täglichen Wartungs- und Betriebsaufgaben in der Infrastruktur beeinträchtigen. 
+Darüber hinaus stellt das Fehlen des gewünschten Differenzierungsgrads in den vSphere-Berechtigungen einige Herausforderungen bei der Verwaltung der Platzierung der Workloads in der privaten Cloud dar. Beispielsweise können vSphere DRS-Regeln, die häufig lokal zum Definieren von Affinitäts- und Antiaffinitätsregeln verwendet werden, nicht unverändert in einer VMware-Cloudumgebung verwendet werden, da einige dieser Regeln die täglichen Vorgänge in der privaten Cloud blockieren können. Platzierungsrichtlinien bieten eine Möglichkeit, diese Regeln mithilfe des Azure VMware Solution-Portals zu definieren, wodurch die Notwendigkeit der Verwendung von DRS-Regeln umgangen wird. In Kombination mit einer vereinfachten Funktionalität können sie auch sicherstellen, dass die Regeln keine täglichen Wartungs- und Betriebsaufgaben in der Infrastruktur beeinträchtigen. 
 
 
-###  <a name="what-caveats-should-i-be-aware-of"></a>Welche Einschränkungen kann es geben?
+###  <a name="what-caveats-should-i-know-about"></a>Welche Vorbehalte sollte ich kennen?
 
-Die MUSS-Regeln für den VM-Host blockieren Wartungsvorgänge und werden von Platzierungsrichtlinien nicht unterstützt. 
+Die **MUSS**-Regeln des VM-Hosts werden nicht unterstützt, da sie Wartungsvorgänge blockieren. 
 
-Die KANN-Regeln für VM-Hosts sind fakultativ, und vSphere DRS versucht, die Regeln soweit wie möglich umzusetzen. vSphere DRS kann virtuelle Computer, die den KANN-Regeln für VM-Hosts unterliegen, gelegentlich per vMotion migrieren. So wird sichergestellt, dass die Workloads die Ressourcen erhalten, die sie benötigen. Das ist ein Standardverhalten von vSphere DRS, und das Feature der Platzierungsregeln ändert dieses zugrunde liegende Verhalten nicht.
+Die **KANN**-Regeln für VM-Hosts sind fakultativ, und vSphere DRS versucht, die Regeln soweit wie möglich umzusetzen. Gelegentlich kann vSphere DRS virtuelle Computer, die den **KANN**-Regeln für VM-Hosts unterliegen, per vMotion migrieren. So wird sichergestellt, dass die Workloads die Ressourcen erhalten, die sie benötigen. Das ist ein Standardverhalten von vSphere DRS, und das Feature der Platzierungsregeln ändert dieses zugrunde liegende Verhalten nicht.
 
 Wenn Sie in Konflikt stehende Regeln erstellen, können diese Konflikte sich in vCenter zeigen, und die neu definierten Regeln treten möglicherweise nicht in Kraft. Das ist ein Standardverhalten von vSphere DRS, für das Protokolle in vCenter überwacht werden können.

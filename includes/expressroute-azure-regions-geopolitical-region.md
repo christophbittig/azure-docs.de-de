@@ -1,5 +1,5 @@
 ---
-title: Datei einfügen
+title: include file
 description: Datei einfügen
 services: expressroute
 author: duongau
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/11/2021
 ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: 3cecb6a9a45aa3413e43fb9099a258ed2ef21a3a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 83835941ae2ec1f45eab7de25d862034069770f2
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346708"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123213881"
 ---
 ## <a name="azure-regions-to-expressroute-locations-within-a-geopolitical-region"></a><a name="locations"></a>Azure-Regionen mit ExpressRoute-Standorten in einer geopolitischen Region.
 Die folgende Tabelle bietet eine Übersicht über die Azure-Regionen mit ExpressRoute-Standorten in einer geopolitischen Region.
@@ -27,7 +27,7 @@ Die folgende Tabelle bietet eine Übersicht über die Azure-Regionen mit Express
 | **Indien** | Indien, Westen, Indien, Mitte, Indien, Süden |Chennai, Chennai2, Mumbai, Mumbai2, Pune |
 | **Japan** | Japan West, Japan Ost |Osaka, Tokio, Tokio2 |
 | **Ozeanien** | Südostaustralien, Ostaustralien |Auckland, Melbourne, Perth, Sydney, Sydney2 |
-| **Südkorea** | Korea, Mitte, Korea, Süden |Busan, Seoul|
+| **Südkorea** | Korea, Mitte, Korea, Süden |Busan, Seoul, Seoul2|
 | **Vereinigte Arabische Emirate** | VAE, Mitte; VAE, Norden | Dubai, Dubai2 |
 | **Südafrika** | „Südafrika, Westen“, „Südafrika, Norden“ |Kapstadt, Johannesburg |
 | **Südamerika** | Brasilien Süd |Bogota, Campinas, Rio de Janeiro, Sao Paulo, Sao Paulo2 |

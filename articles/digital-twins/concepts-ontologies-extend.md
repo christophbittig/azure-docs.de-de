@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 4051f8fe4b338f223b36c3a87ebcc3e3d3e51979
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 30d7282d6f6f30b34b522991d6fd4e79b194d7dd
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472971"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771586"
 ---
 # <a name="extending-ontologies"></a>Erweitern von Ontologien 
 
@@ -53,7 +53,7 @@ Nachdem Sie die Schnittstelle für Fokusräume hinzugefügt haben, zeigt die erw
 
 :::image type="content" source="media/concepts-ontologies-extend/real-estate-core-extended-1.png" alt-text="Diagramm, das einen Teil der RealEstateCore-Bereichshierarchie illustriert, einschließlich der neuen Hinzufügung."::: 
 
-### <a name="add-additional-capabilities-to-existing-interfaces"></a>Hinzufügen zusätzlicher Funktionen zu vorhandenen Schnittstellen 
+### <a name="add-extra-capabilities-to-existing-interfaces"></a>Hinzufügen zusätzlicher Funktionen zu vorhandenen Schnittstellen 
 
 In diesem Fall möchten Sie weitere Eigenschaften (oder Beziehungen, Komponenten, Telemetrie oder Befehle) zu Schnittstellen in der Branchenontologie hinzufügen.
 

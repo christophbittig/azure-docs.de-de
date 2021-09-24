@@ -3,7 +3,7 @@ title: Skalieren der Medienverarbeitung mithilfe des Azure-Portals | Microsoft-D
 description: Dieses Tutorial führt Sie durch die Schritte zur Skalierung der Medienverarbeitung mithilfe des Azure-Portals.
 services: media-services
 documentationcenter: ''
-author: IngridAtMicrosoft
+author: jiayali
 manager: femila
 editor: ''
 ms.assetid: e500f733-68aa-450c-b212-cf717c0d15da
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/10/2021
+ms.date: 08/24/2021
 ms.author: inhenkel
-ms.openlocfilehash: 49c3899b912a88605e9269cdb1c34c7e18ed5247
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1040ffa8bc3af3734a5c37961676b0914f72e991
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103009724"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835871"
 ---
 # <a name="change-the-reserved-unit-type"></a>Ändern Sie den Typ reservierter Einheiten
 
@@ -36,19 +36,15 @@ ms.locfileid: "103009724"
 
 ## <a name="overview"></a>Übersicht
 
-Ein Media Services-Konto ist dem Typ einer reservierten Einheit zugeordnet, der die Geschwindigkeit bestimmt, mit der Medienverarbeitungsaufgaben erfolgen. Sie können zwischen den folgenden reservierten Einheitentypen wählen: **S1**, **S2** oder **S3**. Derselbe Codierungsauftrag wird bei Verwendung der reservierten Einheit **S2** beispielsweise schneller ausgeführt als mit dem Typ **S1**.
-
-Neben der Art der reservierten Einheit können Sie angeben, dass für Ihr Konto **reservierte Einheiten** (Reserved Units, RUs) bereitgestellt werden sollen. Die Anzahl bereitgestellter RUs bestimmt die Anzahl von Medienaufgaben, die gleichzeitig unter einem bestimmten Konto verarbeitet werden können.
-
->[!NOTE]
->RUs dienen der Parallelisierung der gesamten Medienverarbeitung, einschließlich der Indizierung von Aufträgen mit Azure Media Indexer. Allerdings erfolgt die Indizierung von Aufträgen im Gegensatz zur Codierung mit schnelleren reservierten Einheiten nicht schneller.
+Reservierte Media-Einheiten werden standardmäßig nicht mehr benötigt und von Azure Media Services nicht unterstützt. Aus Kompatibilitätsgründen verfügt das aktuelle Azure-Portal über eine Option, mit der Sie MRUs verwalten und skalieren können. Standardmäßig wird jedoch keine der von Ihnen festgelegten MRU-Konfigurationen verwendet, um die Parallelität oder Leistung der Codierung zu steuern.
 
 > [!IMPORTANT]
 > Lesen Sie unbedingt das [Übersichtsthema](media-services-scale-media-processing-overview.md) , um weitere Informationen zum Skalieren der Medienverarbeitung zu erhalten.
-> 
-> 
 
 ## <a name="scale-media-processing"></a>Skalieren der Medienverarbeitung
+>[!NOTE]
+>Die Auswahl von MRUs hat keinen Einfluss auf die Parallelität oder Leistung in Azure Media Services V3. 
+
 Führen Sie folgende Schritte aus, um den Typ reservierter Einheiten und die Anzahl reservierter Einheiten zu ändern:
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Azure Media Services-Konto aus.

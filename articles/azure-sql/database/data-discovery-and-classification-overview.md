@@ -11,14 +11,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 08/16/2021
+ms.date: 08/24/2021
 tags: azure-synapse
-ms.openlocfilehash: e61660a5c559012cbf4940356bd1a204f3203db6
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: bcda86cd166e410bfc546c802466180557a92dc8
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122350876"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122825055"
 ---
 # <a name="data-discovery--classification"></a>Datenermittlung und -klassifizierung
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -114,7 +114,27 @@ Nachdem die organisationsweite Richtlinie definiert wurde, können Sie die Klass
 
 Ein wichtiger Aspekt der Klassifizierung ist die Möglichkeit, den Zugriff auf vertrauliche Daten zu überwachen. Die [Azure SQL-Überwachung](../../azure-sql/database/auditing-overview.md) wurde erweitert, um ein neues Feld mit dem Namen `data_sensitivity_information` in das Überwachungsprotokoll zu integrieren. Dieses Feld protokolliert die Vertraulichkeitsklassifizierungen (Bezeichnungen) der Daten, die von einer Abfrage zurückgegeben wurden. Hier sehen Sie ein Beispiel:
 
-![Überwachungsprotokoll](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png)
+[ ![Überwachungsprotokoll](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png)](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png#lightbox)
+
+Dies sind die Aktivitäten, die tatsächlich mit vertraulichen Informationen geprüft werden können:
+- ALTER TABLE ... DROP COLUMN
+- BULK INSERT
+- Delete
+- INSERT
+- MERGE
+- UPDATE
+- UPDATETEXT
+- WRITETEXT
+- DROP TABLE
+- BACKUP
+- DBCC CloneDatabase
+- SELECT INTO
+- INSERT INTO EXEC
+- TRUNCATE TABLE
+- DBCC SHOW_STATISTICS
+- sys.dm_db_stats_histogram
+
+Verwenden Sie [sys.fn_get_audit_file](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql), um Informationen aus einer Überwachungsdatei zurückzugeben, die in einem Azure Storage-Konto gespeichert ist.
 
 ## <a name="permissions"></a><a id="permissions"></a>Berechtigungen
 
@@ -126,15 +146,25 @@ Diese integrierten Rollen können die Datenklassifizierung einer Datenbank lesen
 - SQL-Sicherheits-Manager
 - Benutzerzugriffsadministrator
 
+Dies sind die erforderlichen Aktionen, um die Datenklassifizierung einer Datenbank zu lesen:
+
+- Microsoft.Sql/servers/databases/currentSensitivityLabels/*
+- Microsoft.Sql/servers/databases/recommendedSensitivityLabels/*
+- Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/*
+
 Diese integrierten Rollen können die Datenklassifizierung einer Datenbank ändern:
 
 - Besitzer
 - Mitwirkender
 - SQL-Sicherheits-Manager
 
+Dies ist die erforderliche Aktion, um die Datenklassifizierung einer Datenbank zu ändern:
+
+- Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/*
+
 Hier erfahren Sie mehr über rollenbasierte Berechtigungen unter [Azure RBAC](../../role-based-access-control/overview.md).
 
-## <a name="manage-classifications"></a><a id="manage-classification"></a>Verwalten von Klassifizierungen
+## <a name="manage-classifications"></a>Verwalten von Klassifizierungen
 
 Sie können zum Verwalten von Klassifizierungen T-SQL, eine REST-API oder PowerShell verwenden.
 
@@ -184,14 +214,21 @@ Sie können die REST-API verwenden, um Klassifizierungen und Empfehlungen progra
 - [Aktuelle nach Datenbank auflisten:](/rest/api/sql/sensitivitylabels/listcurrentbydatabase) Ruft die aktuellen Vertraulichkeitsbezeichnungen der angegebenen Datenbank ab.
 - [Empfohlene nach Datenbank auflisten:](/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) Ruft die empfohlenen Vertraulichkeitsbezeichnungen für die angegebene Datenbank ab.
 
+## <a name="retrieve-classifications-metadata-using-sql-drivers"></a>Abrufen von Klassifizierungsmetadaten mit SQL-Treibern
+
+Sie können die folgenden SQL-Treiber verwenden, um Klassifizierungsmetadaten abzurufen:
+
+- [ODBC-Treiber](https://docs.microsoft.com/sql/connect/odbc/data-classification)
+- [OLE DB-Treiber](https://docs.microsoft.com/sql/connect/oledb/features/using-data-classification)
+- [JDBC-Treiber](https://docs.microsoft.com/sql/connect/jdbc/data-discovery-classification-sample)
+- [Microsoft-Treiber für PHP für SQL Server](https://docs.microsoft.com/sql/connect/php/release-notes-php-sql-driver)
 
 ## <a name="faq---advanced-classification-capabilities"></a>FAQ: Erweiterte Klassifizierungsfunktionen
 
 **Frage:** Ersetzt [Azure Purview](../../purview/overview.md) SQL-Datenermittlung und -klassifizierung, oder wird SQL-Datenermittlung und -klassifizierung bald eingestellt?
 **Antwort:** Wir unterstützen weiterhin SQL-Datenerkennung und -klassifizierung und empfehlen, [Azure Purview](../../purview/overview.md) zu verwenden, damit Sie über umfangreichere Funktionen für erweiterte Klassifizierungsmöglichkeiten und Data Governance verfügen. Wenn wir uns entscheiden, einen Service, eine Funktion, eine API oder eine SKU einzustellen, erhalten Sie eine Vorankündigung, die einen Migrations- oder Übergangspfad enthält. Weitere Informationen zu Microsoft-Lebenszyklusrichtlinien finden Sie hier.
 
-
-## <a name="next-steps"></a><a id="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 - Erwägen Sie, die [Azure SQL-Überwachung](../../azure-sql/database/auditing-overview.md) für die Überwachung und Überprüfung des Zugriffs auf Ihre klassifizierten vertraulichen Daten zu konfigurieren.
 - Eine Präsentation mit Informationen zur Datenermittlung und -klassifizierung finden Sie unter [Ermitteln, Klassifizieren, Bezeichnen und Schützen von SQL-Daten | Data Exposed](https://www.youtube.com/watch?v=itVi9bkJUNc).

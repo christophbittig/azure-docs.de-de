@@ -1,14 +1,25 @@
 ---
-ms.openlocfilehash: d7780da3ad23c0c157284839c5063c6c015a42a6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 57d211a7a080cc07d30a5810c4e1660c575acff3
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121801195"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123078168"
 ---
 In diesem Artikel werden die veröffentlichten Versionen und Features des Azure Active Directory Connect-Bereitstellungs-Agent aufgeführt. Das Azure AD-Team aktualisiert den Bereitstellungs-Agent regelmäßig mit neuen Features und Funktionen. 
 
 Microsoft stellt direkte Unterstützung für die neueste Agent-Version und die unmittelbare Vorgängerversion bereit.
+
+## <a name="download-link"></a>Downloadlink
+Sie können die neueste Version des Agent über [diesen Link](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/provisioningAgentInstaller) herunterladen.
+
+## <a name="115840"></a>1.1.584.0 
+
+20. August 2021 – Für den Download veröffentlicht
+
+### <a name="fixed-issues"></a>Behobene Probleme
+
+- Wir haben einen Fehler behoben, bei dem die Kennworthashsynchronisierung beim Umbenennen einer Domäne fehlschlägt und im Ereignisprotokoll die Meldung „Eine angegebene Umwandlung ist ungültig“ steht. Dies ist eine Regression aus früheren Builds.
 
 ## <a name="115820"></a>1.1.582.0
 
@@ -16,7 +27,6 @@ Microsoft stellt direkte Unterstützung für die neueste Agent-Version und die u
 
 >[!NOTE] 
 >Dies ist ein Sicherheitsupdaterelease von Azure AD Connect. Mit diesem Release soll wie in [diesem CVE-Bericht](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36949) dokumentiert ein Sicherheitsrisiko behoben werden. Weitere Informationen zu diesem Sicherheitsrisiko finden Sie im CVE-Bericht.
->Sie können dieses Release über [diesen Link](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/provisioningAgentInstaller) herunterladen.
 
 ## <a name="113590"></a>1.1.359.0
 
@@ -49,7 +59,7 @@ Microsoft stellt direkte Unterstützung für die neueste Agent-Version und die u
 ### <a name="fixed-issues"></a>Behobene Probleme
 -    Verhindern der Quarantäne, wenn sich die Bereichsgruppe nicht im Bereich befindet
 -   Bei Konfiguration von Bereichsfiltern: PHS-Auftrag gilt ausschließlich für Benutzer im Bereich
--   Agent bleibt mitunter während eines Upgrades hängen
+-   Der Agent reagiert manchmal nicht mehr während des Upgrades
 -   Anfängliche Synchronisierung für Objekte in geschachtelten Organisationseinheiten bei der Bereichsdefinition von Organisationseinheiten
 -   Cmdlet Repair-AADCloudSyncToolsAccount nun stabiler
 -   Reduzierung der großen Arbeitsspeicherbelegung von Bereichsfiltern für Organisationseinheiten

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 6307c99c0796fb4159da7563c951304ceef6ece2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 125f3aa1cb3cfec0b7e8ec3cfafebdf2fae53e59
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340252"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771211"
 ---
 # <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Hochverfügbarkeit und Notfallwiederherstellung: Azure Digital Twins
 
@@ -28,11 +28,11 @@ Allgemeine Azure-Anleitungen zum Entwerfen von Hochverfügbarkeit/Notfallwiederh
 
 ## <a name="intra-region-ha"></a>Regionale Hochverfügbarkeit
  
-Azure Digital Twins bietet Hochverfügbarkeit zwischen Regionen, indem Redundanzen innerhalb des Diensts implementiert werden. Dies spiegelt sich in der [SLA des Diensts](https://azure.microsoft.com/support/legal/sla/digital-twins) für die Uptime wider. **Für die Entwickler einer Azure Digital Twins-Lösung entsteht kein zusätzlicher Aufwand, um die Vorteile dieser Hochverfügbarkeitsfunktionen zu nutzen.** Obwohl Azure Digital Twins eine relativ hohe Betriebszeitgarantie bietet, können hier wie bei jeder verteilten Verarbeitungsplattform auch vorübergehende Fehler auftreten. Entsprechende Wiederholungsrichtlinien sollten in die Komponenten integriert werden, die mit einer Cloudanwendung interagieren, um vorübergehende Fehler zu behandeln.
+Azure Digital Twins bietet Hochverfügbarkeit zwischen Regionen, indem Redundanzen innerhalb des Diensts implementiert werden. Diese Funktionalität spiegelt sich in der [SLA des Diensts](https://azure.microsoft.com/support/legal/sla/digital-twins) für die Uptime wider. **Für die Entwickler einer Azure Digital Twins-Lösung entsteht kein zusätzlicher Aufwand, um die Vorteile dieser Hochverfügbarkeitsfunktionen zu nutzen.** Obwohl Azure Digital Twins eine relativ hohe Betriebszeitgarantie bietet, können hier wie bei jeder verteilten Verarbeitungsplattform auch vorübergehende Fehler auftreten. Entsprechende Wiederholungsrichtlinien sollten in die Komponenten integriert werden, die mit einer Cloudanwendung interagieren, um vorübergehende Fehler zu behandeln.
 
 ## <a name="cross-region-dr"></a>Regionenübergreifende Notfallwiederherstellung
 
-Es kann in einigen seltenen Fällen dazu kommen, dass ein Rechenzentrum aufgrund von Stromausfällen oder anderen Ereignissen in der Region ausfällt. Solche Ereignisse sind selten, und bei solchen Ausfällen ist die oben beschriebene Hochverfügbarkeit zwischen Regionen nicht immer hilfreich. Azure Digital Twins löst dieses Problem durch ein von Microsoft initiiertes Failover.
+Es kann in einigen seltenen Fällen dazu kommen, dass ein Rechenzentrum aufgrund von Stromausfällen oder anderen Ereignissen in der Region ausfällt. Solche Ereignisse sind selten, und bei solchen Ausfällen ist die oben beschriebene Hochverfügbarkeit zwischen Regionen nicht immer hilfreich. Azure Digital Twins löst dieses Szenario durch ein von Microsoft initiiertes Failover.
 
 Das **von Microsoft initiierte Failover** wird in seltenen Fällen angewendet, um ein Failover für alle Azure Digital Twins-Instanzen einer betroffenen Region in die entsprechende [geografisch gekoppelte Region](../best-practices-availability-paired-regions.md) auszuführen. Dieser Prozess ist eine Standardoption (Benutzer können sie also nicht abwählen), für die kein Eingriff des Benutzers erforderlich ist. Microsoft behält sich das Recht vor, zu bestimmen, wann diese Option angewendet wird. Dieser Mechanismus bedarf nicht der Zustimmung des Benutzers, bevor ein Failover für die Instanz des Benutzers ausgeführt wird.
 
@@ -65,7 +65,7 @@ So zeigen Sie Service Health-Ereignisse an:
     :::image type="content" source="media/concepts-high-availability-disaster-recovery/issue-updates.png" alt-text="Screenshot des Azure-Portals mit der Seite „Integritätsverlauf“ mit hervorgehobener Registerkarte „Problemupdates“. Auf der Registerkarte wird der Status von Einträgen angezeigt." lightbox="media/concepts-high-availability-disaster-recovery/issue-updates.png":::
 
 
-Beachten Sie, dass die in diesem Tool angezeigten Informationen nicht für eine spezifische Azure Digital Twins-Instanz sind. Nachdem Sie Service Health verwenden haben, um die aktuelle Situation eines Azure Digital Twins-Diensts in einer bestimmten Region oder einem bestimmten Abonnement zu untersuchen, können Sie die Überwachung ausweiten, indem Sie das [Resource Health-Tool](troubleshoot-resource-health.md) verwenden, um spezifische Instanzen zu analysieren und zu sehen, ob diese betroffen sind.
+Die in diesem Tool angezeigten Informationen sind nicht spezifisch für eine Azure Digital-Instanz. Nachdem Sie Service Health verwenden haben, um die aktuelle Situation eines Azure Digital Twins-Diensts in einer bestimmten Region oder einem bestimmten Abonnement zu untersuchen, können Sie die Überwachung ausweiten, indem Sie das [Resource Health-Tool](troubleshoot-resource-health.md) verwenden, um spezifische Instanzen zu analysieren und zu sehen, ob diese betroffen sind.
 
 ## <a name="best-practices"></a>Bewährte Methoden
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: fa70dce0e245f706e5278e7274ac17855b50622f
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: e757dac8cb7b81c5a1a24a7008f3eb453a7f977d
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122396898"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221567"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Erstellen einer FCI mit einer Premium-Dateifreigabe (SQL Server auf Azure-VMs)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -191,7 +191,7 @@ Nachdem Sie den Failovercluster konfiguriert haben, können Sie die SQL Server-F
 
 ## <a name="register-with-the-sql-vm-rp"></a>Registrieren beim SQL-VM-RP
 
-Wenn Sie Ihre SQL Server-VM im Portal verwalten möchten, registrieren Sie die VM mit der SQL-IaaS-Agent-Erweiterung im [Verwaltungsmodus „Lightweight“](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode). Dies ist derzeit der einzige Modus, der mit FCI und SQL Server auf Azure-VMs unterstützt wird. 
+Wenn Sie Ihre SQL Server-VM im Portal verwalten möchten, registrieren Sie die VM mit der SQL-IaaS-Agent-Erweiterung im [Verwaltungsmodus „Lightweight“](sql-agent-extension-manually-register-single-vm.md#lightweight-mode). Dies ist derzeit der einzige Modus, der mit FCI und SQL Server auf Azure-VMs unterstützt wird. 
 
 Registrieren Sie eine SQL Server-VM im Modus „Lightweight“ mit PowerShell (-LicenseType `PAYG` oder `AHUB`):
 
@@ -214,7 +214,8 @@ Sie können einen VNet-Namen oder einen Namen für ein verteiltes Netzwerk für 
 - Filestream wird für einen Failovercluster mit einer Premium-Dateifreigabe nicht unterstützt. Um Filestream zu verwenden, stellen Sie den Cluster stattdessen mithilfe von [Direkte Speicherplätze](failover-cluster-instance-storage-spaces-direct-manually-configure.md) oder von [freigegebenen Azure-Datenträgern](failover-cluster-instance-azure-shared-disks-manually-configure.md) bereit.
 - Nur die Registrierung mit der SQL-IaaS-Agent-Erweiterung im [Verwaltungsmodus „Lightweight“](sql-server-iaas-agent-extension-automate-management.md#management-modes) wird unterstützt. 
 - Datenbankmomentaufnahmen werden [bei Azure Files aufgrund von Einschränkungen für Sparsedateien](/rest/api/storageservices/features-not-supported-by-the-azure-file-service)derzeit nicht unterstützt.
-- Das Ausführen von DBCC CHECKDB wird derzeit nicht unterstützt, da keine Datenbankmomentaufnahmen erstellt werden können. 
+- Da Datenbankmomentaufnahmen nicht unterstützt werden, greift CHECKDB für Benutzerdatenbanken auf CHECKDB WITH TABLOCK zurück. TABLOCK beschränkt die ausgeführten Überprüfungen. DBCC CHECKCATALOG wird nicht für die Datenbank ausgeführt, und die Service Broker-Daten werden nicht überprüft.
+- CHECKDB für die MASTER- und MSDB-Datenbank wird nicht unterstützt. 
 - Datenbanken, die das In-Memory-OLTP-Feature verwenden, werden auf einer Failoverclusterinstanz, die mit einer Premium-Dateifreigabe bereitgestellt wird, nicht unterstützt. Wenn Ihr Unternehmen In-Memory-OLTP erfordert, sollten Sie stattdessen die Bereitstellung Ihrer FCI mit [freigegebenen Azure-Datenträgern](failover-cluster-instance-azure-shared-disks-manually-configure.md) oder [direkten Speicherplätzen](failover-cluster-instance-storage-spaces-direct-manually-configure.md) in Betracht ziehen.
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -228,6 +229,6 @@ Weitere Informationen finden Sie unter:
 
 - [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
 - [Failoverclusterinstanzen mit SQL Server auf Azure-VMs](failover-cluster-instance-overview.md)
-- [Übersicht über Failoverclusterinstanzen](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [AlwaysOn-Failoverclusterinstanzen (SQL Server)](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
 - [HADR-Einstellungen für SQL Server auf Azure-VMs](hadr-cluster-best-practices.md)
 

@@ -1,19 +1,19 @@
 ---
-title: Datei einfügen
+title: include file
 description: include file
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/15/2021
+ms.date: 08/25/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3e05dd70ab0919ca4429cee15ecfc9d6ac9ee627
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 6a8a503f5357ec69a1bab007f4ae2849582fed3b
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122261720"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835589"
 ---
 Das erstmalige Einrichten von kundenseitig verwalteten Schlüssel für Ihre Datenträger erfordert die Erstellung von Ressourcen in einer bestimmten Reihenfolge. Zuerst müssen Sie eine Azure Key Vault-Instanz erstellen und einrichten.
 
@@ -60,11 +60,8 @@ Nachdem Sie den Azure-Schlüsseltresor und einen Schlüssel erstellt haben, müs
 
 1. Suchen Sie nach **Datenträgerverschlüsselungssätze**, und wählen Sie sie aus.
 1. Wählen Sie im Bereich **Datenträgerverschlüsselungssätze** die Option **+Erstellen** aus.
-
-    ![Screenshot des Hauptbildschirms des Datenträgerverschlüsselungs-Portals. Die Schaltfläche „Hinzufügen“ ist hervorgehoben.](./media/virtual-machines-disk-encryption-portal/sever-side-encryption-create-disk-encryption-set.png)
-
 1. Wählen Sie Ihre Ressourcengruppe aus, geben Sie Ihrem Verschlüsselungssatz einen Namen, und wählen Sie dieselbe Region aus wie Ihr Schlüsseltresor.
-1. Wählen Sie als **Verschlüsselungstyp** die Option **Verschlüsselung ruhender Daten mit einem kundenseitig verwalteten Schlüssel** aus.
+1. Wählen Sie als **SSE-Verschlüsselungstyp** die Option **Verschlüsselung ruhender Daten mit einem kundenseitig verwalteten Schlüssel** aus.
 
     > [!NOTE]
     > Nachdem Sie einen Datenträgerverschlüsselungssatz mit einem bestimmten Verschlüsselungstyp erstellt haben, kann er nicht mehr geändert werden. Wenn Sie einen anderen Verschlüsselungstyp verwenden möchten, müssen Sie einen neuen Datenträgerverschlüsselungssatz erstellen.
@@ -72,6 +69,7 @@ Nachdem Sie den Azure-Schlüsseltresor und einen Schlüssel erstellt haben, müs
 1. Wählen Sie die Option **Klicken Sie hier, um einen Schlüssel auszuwählen**.
 1. Wählen Sie den Schlüsseltresor und den Schlüssel, die Sie zuvor erstellt haben, sowie die Version aus.
 1. Drücken Sie **Auswählen**.
+1. Wenn Sie die [automatische Rotation von kundenseitig verwalteten Schlüsseln](../articles/virtual-machines/disk-encryption.md#automatic-key-rotation-of-customer-managed-keys) aktivieren möchten, wählen Sie **Automatische Schlüsselrotation** aus.
 1. Wählen Sie **Überprüfen + erstellen** und danach **Erstellen** aus.
 
-    ![Screenshot des Bereichs zum Erstellen der Datenträgerverschlüsselung. Dargestellt sind das Abonnement, die Ressourcengruppe, der Name des Datenträgerverschlüsselungssatzes, die Region und das Auswahlelement für den Schlüsseltresor und den Schlüssel.](./media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-set-blade.png)
+    :::image type="content" source="media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-set-blade.png" alt-text="Screenshot: Bereich zum Erstellen der Datenträgerverschlüsselung. Zeigt das Abonnement, die Ressourcengruppe, den Namen der Datenträgerverschlüsselungsgruppe, die Region und den Schlüsseltresor sowie die Schlüsselauswahl an." lightbox="media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-set-blade.png":::

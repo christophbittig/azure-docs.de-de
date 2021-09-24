@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/28/2021
-ms.openlocfilehash: a620d1cbd9ae0f9a4f03e6bf744cf2febd8ac240
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 67d28d7f218debde1bd29abf0e4bbdaa0c7c49dd
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355374"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867597"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Bereitstellen eines Modells in einem Azure Kubernetes Service-Cluster
 
@@ -60,6 +60,9 @@ Bei der Bereitstellung in Azure Kubernetes Service führen Sie die Bereitstellun
 - Ein Azure Kubernetes Service-Cluster, der mit Ihrem Arbeitsbereich verbunden ist. Weitere Informationen finden Sie unter [Erstellen und Anfügen eines Azure Kubernetes Service-Clusters](how-to-create-attach-kubernetes.md).
 
     - Wenn Sie Modelle auf GPU-Knoten oder FPGA-Knoten (oder einer bestimmten SKU) bereitstellen möchten, müssen Sie einen Cluster mit der jeweiligen SKU erstellen. Das Erstellen eines sekundären Knotenpools in einem vorhandenen Cluster und Bereitstellen von Modellen im sekundären Knotenpool wird nicht unterstützt.
+
+> [!IMPORTANT]
+> Derzeit unterstützt Azure Machine Learning die Bereitstellung von Modellen in AKS Version **1.21.x**  nicht.
 
 ## <a name="understand-the-deployment-processes"></a>Grundlegendes zu Bereitstellungsvorgängen
 
@@ -166,6 +169,7 @@ Um ein Modell für Azure Kubernetes Service bereitzustellen, erstellen Sie eine 
 ```python
 from azureml.core.webservice import AksWebservice, Webservice
 from azureml.core.model import Model
+from azureml.core.compute import AksCompute
 
 aks_target = AksCompute(ws,"myaks")
 # If deploying to a cluster configured for dev/test, ensure that it was created with enough

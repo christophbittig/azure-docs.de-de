@@ -9,14 +9,14 @@ ms.subservice: management
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 11/07/2020
+ms.date: 9/01/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f40e3478a10a1a141e02510d88f4564062ff2ce5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 894d16e1a72243bee9aff1fff2778ec75c2af6ec
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122356066"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123227137"
 ---
 # <a name="automatic-registration-with-sql-iaas-agent-extension"></a>Automatische Registrierung von VMs mit der SQL-IaaS-Agent-Erweiterung
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -24,6 +24,9 @@ ms.locfileid: "122356066"
 Aktivieren Sie die automatische Registrierungsfunktion im Azure-Portal, um alle aktuellen und zukünftigen SQL Server-Instanzen auf virtuellen Azure-Computern (Virtual Machines, VMs) mit der [SQL-IaaS-Agent-Erweiterung](sql-server-iaas-agent-extension-automate-management.md) automatisch im Modus „Lightweight“ zu registrieren. 
 
 In diesem Artikel erfahren Sie, wie Sie die automatische Registrierungsfunktion aktivieren. Alternativ können Sie [eine einzelne VM](sql-agent-extension-manually-register-single-vm.md) oder [mehrere Ihrer VMs in einem Massenvorgang](sql-agent-extension-manually-register-vms-bulk.md) mit der SQL-IaaS-Agent-Erweiterung registrieren. 
+
+> [!NOTE]
+> Ab September 2021 ist für die Registrierung bei der SQL-IaaS-Erweiterung im vollständigen Modus kein Neustart des SQL Server-Diensts mehr erforderlich. 
 
 ## <a name="overview"></a>Übersicht
 

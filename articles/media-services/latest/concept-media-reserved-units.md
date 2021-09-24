@@ -3,7 +3,7 @@ title: 'Reservierte Einheiten für Medien: Azure'
 description: Mit reservierten Einheiten für Medien können Sie den Medienprozess skalieren und die Geschwindigkeit Ihrer Medienverarbeitungstasks ermitteln.
 services: media-services
 documentationcenter: ''
-author: IngridAtMicrosoft
+author: jiayali-ms
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,49 +11,30 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 08/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 44205bc628a839dd28cd574dbd19a22e9856d999
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 3fc68505712bc5cae0defd216b30a3c5913c3c77
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114719412"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866436"
 ---
 # <a name="media-reserved-units"></a>Reservierte Einheiten für Medien
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Mit Azure Media Services können Sie die Medienverarbeitung skalieren, indem Sie reservierte Einheiten für Medien (Media Reserved Units, MRUs) verwalten. Eine MRU bietet zusätzliche Rechenkapazität, die für die Codierung von Medien erforderlich ist. Die Anzahl der MRUs bestimmt, mit welcher Geschwindigkeit die Medientasks verarbeitet werden und wie viele Medientasks gleichzeitig in einem Konto verarbeitet werden können. Wenn Ihr Konto beispielsweise über fünf MRUs verfügt und Tasks verarbeitet werden müssen, können fünf Medientasks gleichzeitig ausgeführt werden. Die restlichen Aufgaben werden in eine Warteschlange eingereiht und können nacheinander für die Verarbeitung aufgerufen werden, wenn ein aktiver Task abgeschlossen wird. Für jede von Ihnen bereitgestellte MRU wird zwar Kapazität reserviert, es wird jedoch keine dedizierte Ressource bereitgestellt. In Zeiten mit extrem hoher Nachfrage wird die Verarbeitung aller MRUs möglicherweise nicht umgehend gestartet.
+Reservierte Einheiten für Medien (Media Reserved Units, MRUs) wurden vormals in Azure Media Services v2 eingesetzt, um die Parallelität und Leistung der Codierung zu steuern. Sie müssen keine MRUs mehr verwalten oder Kontingenterhöhungen für ein Media Services-Konto anfordern, da das System basierend auf der Last automatisch hoch- und herunterskaliert wird. Sie werden außerdem feststellen, dass die erzielte Leistung im Vergleich zur Verwendung von MRUs genauso hoch oder höher ist. 
 
-Ein Task ist ein einzelner Arbeitsvorgang in einem Medienobjekt, z. B. die Codierung von adaptivem Streaming. Wenn Sie einen Auftrag übermitteln, muss Media Services diesen in einzelne Vorgänge (z. B. Tasks) aufteilen, die anschließend mit separaten MRUs verknüpft werden.
-
-## <a name="choosing-between-different-reserved-unit-types"></a>Auswählen zwischen verschiedenen Typen reservierter Einheiten
-
-Die folgende Tabelle hilft Ihnen bei der Entscheidung, wenn Sie zwischen verschiedenen Codierungsgeschwindigkeiten wählen müssen.  Es zeigt die Dauer der Codierung für ein 7-minütiges Video mit 1080p in Abhängigkeit von der verwendeten MRU an.
-
-|Art der Anforderungseinheit|Szenario|Beispielergebnisse für das Video, 7 Min., 1080 Px |
-|---|---|---|
-| **S1**|Single-Bitrate-Codierung. <br/>Dateien mit SD-Auflösung oder einer niedrigeren Auflösung, nicht zeitkritisch, niedrige Kosten.|Die Codierung für eine MP4-Datei mit Einzelbitrate und SD-Auflösung unter Verwendung von „H264 Single Bitrate SD 16x9“ dauert ungefähr 7 Minuten.|
-| **S2**|Single-Bitrate- und Multi-Bitrate-Codierung.<br/>Normale Verwendung für SD- und HD-Codierung.|Die Codierung mit der Voreinstellung „H264 Single Bitrate 720p“ dauert etwa 6 Minuten.<br/><br/>Die Codierung mit der Voreinstellung „H264 Multiple Bitrate 720p“ dauert etwa 12 Minuten.|
-| **S3**|Single-Bitrate- und Multi-Bitrate-Codierung.<br/>Videos mit Full HD- und 4K-Auflösung. Zeitkritisch, schnellere Codierung|Die Codierung mit der Voreinstellung „H264 Single Bitrate 1080p“ dauert etwa 3 Minuten.<br/><br/>Die Codierung mit der Voreinstellung „H264 Multiple Bitrate 1080p“ dauert etwa 8 Minuten.|
-
-> [!NOTE]
-> Wenn Sie für Ihr Konto keine MRUs bereitstellen, werden Ihre Medientasks mit der Leistung einer S1-MRU verarbeitet und nacheinander aufgerufen. Es wird keine Verarbeitungskapazität reserviert. Die Wartezeit zwischen dem Abschließen eines Tasks und dem Start des nächsten hängt also von der Verfügbarkeit von Ressourcen im System ab.
-
-## <a name="considerations"></a>Überlegungen
-
-* Für Audio- und Videoanalyseaufträge, die von Media Services v3 oder Azure Video Analyzer for Media ausgelöst werden, wird dringend empfohlen, das Konto mit zehn S3-Einheiten bereitzustellen. Erstellen Sie im [Azure-Portal](https://portal.azure.com/) ein Supportticket, falls Sie mehr als zehn S3-MRUs benötigen.
-* Bei der Codierung von Tasks ohne MRUs können sich die Tasks beliebig lange in der Warteschlange befinden, und es wird immer nur maximal ein Task ausgeführt.
+Wenn Sie über ein Konto verfügen, das mithilfe einer Version vor der API 2020-05-01 erstellt wurde, haben Sie weiterhin Zugriff auf APIs zum Verwalten von MRUs. Allerdings wird keine der von Ihnen festgelegten MRU-Konfigurationen angewandt, um die Parallelität oder Leistung bei der Codierung zu steuern. Wenn die Option zum Verwalten von reservierten Einheiten für Medien im Azure-Portal nicht angezeigt wird, bedeutet dies, dass Sie über ein Konto verfügen, das mit einer API ab Version 2020-05-01 erstellt wurde. 
 
 ## <a name="billing"></a>Abrechnung
 
-Die Abrechnung erfolgt nach der Anzahl der Minuten, in denen die MRUs in Ihrem Konto bereitgestellt werden und unabhängig davon, ob Aufträge ausgeführt werden oder nicht. Eine ausführliche Erläuterung finden Sie im Abschnitt mit den häufig gestellten Fragen auf der Seite [Media Services – Preise](https://azure.microsoft.com/pricing/details/media-services/).
+Während zuvor Kosten für reservierte Einheiten für Medien anfielen, werden ab dem 17. April 2021 keine Gebühren mehr für Konten in Rechnung gestellt, die über eine Konfiguration für reservierte Einheiten für Medien verfügen. Weitere Informationen zur Abrechnung von Codierungsaufträgen finden Sie unter [Codieren von Video- und Audiodaten mit Media Services](encoding-concept.md).
 
-## <a name="next-step"></a>Nächster Schritt
-[Skalieren von reservierten Einheiten für Medien mit der CLI](media-reserved-units-cli-how-to.md)
-[Analysieren von Videos](analyze-videos-tutorial.md)
+Für Konten, die in der Version **2020-05-01** der API (d. h. der Version v3) oder über das Azure-Portal erstellt werden, sind Skalierungseinheiten und reservierte Einheiten für Medien nicht mehr erforderlich. Die Skalierung wird jetzt automatisch vom Dienst selbst intern vorgenommen. Reservierte Einheiten für Medien werden für kein Azure Media Services-Konto mehr benötigt oder unterstützt. Weitere Informationen finden Sie unter [Reservierte Einheiten für die Codierung (Legacy)](concept-media-reserved-units.md).
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Kontingente und Grenzwerte](limits-quotas-constraints-reference.md)
+* [Migrieren von Media Services V2 zu V3](migrate-v-2-v-3-migration-introduction.md)
+* [Skalieren von reservierten Einheiten für Medien mit der CLI](media-reserved-units-cli-how-to.md)

@@ -4,13 +4,13 @@ description: Beschreibt Spalten, die mehreren Datentypen in Azure Monitor-Protok
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/25/2021
-ms.openlocfilehash: 5b906bdbd07d59d2acc88f6b30f0db6b6cbc961a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 08/16/2021
+ms.openlocfilehash: 909c02c53f753579d6788933277bca8f75f53859
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103562245"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122514866"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Standardspalten in Azure Monitor-Protokollen
 Daten in Azure Monitor-Protokollen werden [als Gruppe von Datensätzen in einem Log Analytics-Arbeitsbereich oder einer Application Insights-Anwendung gespeichert](../logs/data-platform-logs.md). Diese haben jeweils einen bestimmten Datentyp, der über eine eindeutigen Satz von Spalten verfügt. Viele Datentypen weisen Standardspalten auf, die sie mit mehreren Typen gemein haben. In diesem Artikel werden diese Spalten beschrieben, zusammen mit Beispielen für ihre Verwendung in Abfragen.
@@ -24,10 +24,13 @@ Arbeitsbereichsbasierte Anwendungen in Application Insights speichern ihre Daten
 ## <a name="tenantid"></a>TenantId
 In der Spalte **TenantId** ist die Arbeitsbereichs-ID für den Log Analytics-Arbeitsbereich enthalten.
 
-## <a name="timegenerated-and-timestamp"></a>TimeGenerated und timestamp
-Die Spalten **TimeGenerated** (Log Analytics-Arbeitsbereich) und **timestamp** (Application Insights-Anwendung) enthalten das Datum und die Uhrzeit der Erstellung des Datensatzes durch die Datenquelle. Weitere Informationen finden Sie unter [Protokolldatenerfassungszeit in Azure Monitor](../logs/data-ingestion-time.md).
+## <a name="timegenerated"></a>TimeGenerated
+Die Spalte **TimeGenerated** enthält das Datum und die Uhrzeit, zu der der Datensatz von der Datenquelle erstellt wurde. Weitere Informationen finden Sie unter [Protokolldatenerfassungszeit in Azure Monitor](../logs/data-ingestion-time.md).
 
-**TimeGenerated** und **timestamp** bieten eine gemeinsame Spalte, die zum zeitbezogenen Filtern oder Zusammenfassen verwendet werden kann. Wenn Sie im Azure-Portal einen Zeitbereich für eine Ansicht oder ein Dashboard auswählen, wird „TimeGenerated“ oder „timestamp“ zum Filtern der Ergebnisse verwendet. 
+**TimeGenerated** bietet eine gemeinsame Spalte, die zum zeitbezogenen Filtern oder Zusammenfassen verwendet werden kann. Wenn Sie im Azure-Portal einen Zeitbereich für eine Ansicht oder ein Dashboard auswählen, verwendet es **TimeGenerated**, um die Ergebnisse zu filtern. 
+
+> [!NOTE]
+> Tabellen, die klassische Application Insights-Ressourcen unterstützen, verwenden die **Timestamp**-Spalte anstelle der **TimeGenerated**-Spalte.
 
 ### <a name="examples"></a>Beispiele
 
@@ -40,16 +43,6 @@ Event
 | summarize count() by bin(TimeGenerated, 1day) 
 | sort by TimeGenerated asc 
 ```
-
-Die folgende Abfrage gibt die Anzahl der Ausnahmen zurück, die für jeden Tag der vorherigen Woche erstellt wurden.
-
-```Kusto
-exceptions
-| where timestamp between(startofweek(ago(7days))..endofweek(ago(7days))) 
-| summarize count() by bin(TimeGenerated, 1day) 
-| sort by timestamp asc 
-```
-
 ## <a name="_timereceived"></a>\_TimeReceived
 Die Spalte **\_TimeReceived** enthält den Zeitpunkt (Datum und Uhrzeit), zu dem der Datensatz vom Azure Monitor-Erfassungspunkt in der Azure-Cloud empfangen wurde. Dies kann hilfreich sein, um Probleme im Zusammenhang mit der Wartezeit zwischen Datenquelle und Cloud zu ermitteln. Ein Beispiel wäre etwa ein Netzwerkproblem, das zu einer Verzögerung bei Daten führt, die von einem Agent gesendet werden. Weitere Informationen finden Sie unter [Protokolldatenerfassungszeit in Azure Monitor](../logs/data-ingestion-time.md).
 
@@ -68,8 +61,11 @@ Event
 | summarize avg(AgentLatency), avg(TotalLatency) by bin(TimeGenerated,1hr)
 ``` 
 
-## <a name="type-and-itemtype"></a>Type und itemType
-Die Spalten **Type** (Log Analytics-Arbeitsbereich) und **itemType** (Application Insights-Anwendung) enthalten den Namen der Tabelle, aus der der Datensatz abgerufen wurde, der auch als Datensatztyp betrachtet werden kann. Diese Spalte ist bei Abfragen hilfreich, die Datensätze aus mehreren Tabellen kombinieren, z. B. Abfragen mit dem Operator `search`, um zwischen Datensätzen verschiedener Typen zu unterscheiden. An einigen Stellen kann **$table** anstelle von **Type** verwendet werden.
+## <a name="type"></a>Typ
+Die **Type**-Spalte enthält den Namen der Tabelle, aus der der Datensatz abgerufen wurde, der auch als Datensatztyp betrachtet werden kann. Diese Spalte ist bei Abfragen hilfreich, die Datensätze aus mehreren Tabellen kombinieren, z. B. Abfragen mit dem Operator `search`, um zwischen Datensätzen verschiedener Typen zu unterscheiden. In einigen Abfragen kann **$table** anstelle von **Type** verwendet werden.
+
+> [!NOTE]
+> Tabellen, die klassische Application Insights-Ressourcen unterstützen, verwenden die **itemType**-Spalte anstelle der **Type**-Spalte.
 
 ### <a name="examples"></a>Beispiele
 Die folgende Abfrage gibt die Anzahl der Datensätze nach Typ zurück, die in der letzten Stunde gesammelt wurden.
@@ -145,7 +141,7 @@ Mit der folgenden Abfrage werden die Leistungsdaten für Computer eines bestimmt
 ```Kusto
 Perf 
 | where TimeGenerated > ago(24h) and CounterName == "memoryAllocatableBytes"
-| where _SubscriptionId == "57366bcb3-7fde-4caf-8629-41dc15e3b352"
+| where _SubscriptionId == "ebb79bc0-aa86-44a7-8111-cabbe0c43993"
 | summarize avgMemoryAllocatableBytes = avg(CounterValue) by Computer
 ```
 

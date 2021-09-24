@@ -3,7 +3,7 @@ title: Legacy-Komponenten von Azure Media Services | Microsoft-Dokumentation
 description: In diesem Thema werden die Legacy-Komponenten von Azure Media Services behandelt.
 services: media-services
 documentationcenter: ''
-author: IngridAtMicrosoft
+author: jiayali-ms
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2021
+ms.date: 08/24/2021
 ms.author: inhenkel
-ms.openlocfilehash: 588eb1f93fa953a9051b4e3228980217c63ea27b
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: d86a77e724bffeaea6cb39ffc1a20e8737ef6d81
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114719403"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835538"
 ---
 # <a name="azure-media-services-legacy-components"></a>Legacy-Komponenten von Azure Media Services
 
@@ -38,13 +38,14 @@ Die folgenden Media Analytics-Medienprozessoren sind entweder veraltet oder gelt
  
 | **Medienprozessorname** | **Datum der Deaktivierung** | **Zusätzliche Hinweise** |
 | --- | --- | ---|
-| Azure Media Indexer 2 | 1\. Januar 2020 | Dieser Medienprozessor wird durch den [AudioAnalyzerPreset-Standardmodus von Media Services v3](../latest/analyze-video-audio-files-concept.md) ersetzt. Weitere Informationen finden Sie unter [Migration von Azure Media Indexer 2 zu Azure Video Analyzer for Media (ehemals Video Indexer)](migrate-indexer-v1-v2.md). |
-| Azure Media Indexer | 1\. März 2023 | Dieser Medienprozessor wird durch den [AudioAnalyzerPreset-Standardmodus von Media Services v3](../latest/analyze-video-audio-files-concept.md) ersetzt. Weitere Informationen finden Sie unter [Migration von Azure Media Indexer 2 zu Azure Video Analyzer for Media](migrate-indexer-v1-v2.md). |
+| Azure Media Indexer | 1\. Januar 2020 | Dieser Medienprozessor wird durch den [AudioAnalyzerPreset-Standardmodus von Media Services v3](../latest/analyze-video-audio-files-concept.md) ersetzt. Weitere Informationen finden Sie unter [Migration von Azure Media Indexer 2 zu Azure Video Analyzer for Media](migrate-indexer-v1-v2.md) (ehemals Video Indexer). |
+| Azure Media Indexer 2 | 1\. März 2023 | Dieser Medienprozessor wird durch den [AudioAnalyzerPreset-Standardmodus von Media Services v3](../latest/analyze-video-audio-files-concept.md) ersetzt. Weitere Informationen finden Sie unter [Migration von Azure Media Indexer 2 zu Azure Video Analyzer for Media](migrate-indexer-v1-v2.md) (ehemals Video Indexer). |
 | Bewegungserkennung | 1\. Juni 2020|Derzeit keine Austauschpläne. |
 | Videozusammenfassung |1\. Juni 2020|Derzeit keine Austauschpläne.|
 | Optische Zeichenerkennung in Video | 1\. Juni 2020 |Dieser Medienprozessor wurde durch Azure Video Analyzer for Media ersetzt. Erwägen Sie auch den Einsatz der [Azure Media Services v3-API](../latest/analyze-video-audio-files-concept.md). <br/>Weitere Informationen finden Sie unter [Vergleich der Voreinstellungen von Azure Media Services v3 und Video Analyzer for Media](../../azure-video-analyzer/video-analyzer-for-media-docs/compare-video-indexer-with-media-services-presets.md). |
 | Face Detector | 1\. Juni 2020 | Dieser Medienprozessor wurde durch Azure Video Analyzer for Media ersetzt. Erwägen Sie auch den Einsatz der [Azure Media Services v3-API](../latest/analyze-video-audio-files-concept.md). <br/>Weitere Informationen finden Sie unter [Vergleich der Voreinstellungen von Azure Media Services v3 und Video Analyzer for Media](../../azure-video-analyzer/video-analyzer-for-media-docs/compare-video-indexer-with-media-services-presets.md). |
 | Content Moderator | 1\. Juni 2020 |Dieser Medienprozessor wurde durch Azure Video Analyzer for Media ersetzt. Erwägen Sie auch den Einsatz der [Azure Media Services v3-API](../latest/analyze-video-audio-files-concept.md). <br/>Weitere Informationen finden Sie unter [Vergleich der Voreinstellungen von Azure Media Services v3 und Video Analyzer for Media](../../azure-video-analyzer/video-analyzer-for-media-docs/compare-video-indexer-with-media-services-presets.md). |
+| Media Encoder Premium Workflow | 29. Februar 2024 | Der Premium-Encoder wird von der AMS v2-API nicht mehr unterstützt. Wenn Sie zuvor den workflowbasierten Premium-Encoder für die HEVC-Codierung verwendet haben, sollten Sie zum neuen [v3-Standard-Encoder](../latest/encode-media-encoder-standard-formats-reference.md) mit Unterstützung für die HEVC-Codierung migrieren. <br/> Wenn Sie die erweiterten Workflowfunktionen des Premium-Encoders benötigen, sollten Sie einen der erweiterten Partner für die Codierung in Azure von [Imagine Communications](https://imaginecommunications.com/), [Telestream](https://telestream.net) oder [Bitmovin](https://bitmovin.com) einsetzen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

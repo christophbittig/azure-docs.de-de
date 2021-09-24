@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: lajanuar
-ms.openlocfilehash: 92ee092f50b334ac1be05ea4d37cf42d3dc91a62
-ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
+ms.openlocfilehash: 17d6120a951af052c82f06ed62025279011018a6
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114361435"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867552"
 ---
 # <a name="translator-language-support"></a>Sprachunterstützung für den Übersetzer
 
@@ -43,6 +43,7 @@ ms.locfileid: "114361435"
 | Bulgarisch | `bg` |✔|✔|✔|✔|✔|
 | Chinesisch (traditionell) | `yue` |✔|✔||||
 | Katalanisch | `ca` |✔|✔|✔|✔|✔|
+| Chinesisch (literarisch) | `lzh` |✔|||||
 | Chinesisch (vereinfacht) | `zh-Hans` |✔|✔|✔|✔|✔|
 | Chinesisch (traditionell) | `zh-Hant` |✔|✔|✔|✔||
 | Kroatisch | `hr` |✔|✔|✔|✔|✔|
@@ -171,7 +172,7 @@ Der [Transliterate-Vorgang](reference/v3-0-transliterate.md) im Textübersetzung
 ## <a name="other-cognitive-services"></a>Andere Cognitive Services
 Fügen Sie Ihren Apps und Workflows zusätzliche Funktionen hinzu, indem Sie andere Cognitive Services mit dem Translator verwenden. Nachstehend finden Sie Sprachlisten für zusätzliche Dienste.
 * [Maschinelles Sehen](../computer-vision/language-support.md) 
-* [Spracherkennung](../speech-service/language-support.md) 
+* [Speech](../speech-service/language-support.md) 
 * [Textanalyse](../text-analytics/language-support.md) 
 
 Alle [Cognitive Services](../index.yml) anzeigen 

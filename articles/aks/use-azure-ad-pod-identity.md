@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie verwaltete AAD-Podidentitäten in Azur
 services: container-service
 ms.topic: article
 ms.date: 3/12/2021
-ms.openlocfilehash: 44f4415e09ca9e2942eb1da4c69cf98759f737ce
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 1ecf9b45983dbc34938593424644a646dc3d96cb
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122356523"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123101228"
 ---
 # <a name="use-azure-active-directory-pod-managed-identities-in-azure-kubernetes-service-preview"></a>Verwenden von verwalteten Azure Active Directory-Podidentitäten in Azure Kubernetes Service (Vorschauversion)
 
@@ -68,9 +68,9 @@ az aks create -g myResourceGroup -n myAKSCluster --enable-pod-identity --network
 > [!NOTE]
 > Azure Active Directory-Podidentität unterstützt zwei Betriebsmodi:
 > 
-> 1. Standardmodus: In diesem Modus werden die beiden folgenden Komponenten im AKS-Cluster bereitgestellt: 
->     * [Managed Identity Controller (MIC):](https://azure.github.io/aad-pod-identity/docs/concepts/mic/) Ein Kubernetes-Controller, der das System über den Kubernetes-API-Server auf Änderungen an Pods, [AzureIdentity](https://azure.github.io/aad-pod-identity/docs/concepts/azureidentity/) und [AzureIdentityBinding](https://azure.github.io/aad-pod-identity/docs/concepts/azureidentitybinding/) überwacht. Wenn eine relevante Änderung erkannt wird, fügt der MIC nach Bedarf [AzureAssignedIdentity](https://azure.github.io/aad-pod-identity/docs/concepts/azureassignedidentity/) hinzu oder löscht sie. Insbesondere bei der Planung eines Pods weist der MIC die verwaltete Identität in Azure der zugrunde liegenden VMSS zu, die während der Erstellungsphase vom Knotenpool verwendet wird. Wenn alle Pods, die die Identität verwenden, gelöscht werden, wird die Identität aus der VMSS des Knotenpools entfernt, es sei denn, die gleiche verwaltete Identität wird von anderen Pods verwendet. Der MIC führt ähnliche Aktionen aus, wenn „AzureIdentity“ oder „AzureIdentityBinding“ erstellt oder gelöscht wird.
->     * [Node Management Identity (NMI):](https://azure.github.io/aad-pod-identity/docs/concepts/nmi/) Dies ist ein Pod, der auf jedem Knoten im AKS-Cluster als DaemonSet ausgeführt wird. NMI fängt Sicherheitstokenanforderungen an [Azure Instance Metadata Service](../virtual-machines/linux/instance-metadata-service.md?tabs=linux) auf jedem Knoten ab, leitet sie an sich selbst weiter und überprüft, ob der Pod Zugriff auf die Identität hat, für die er ein Token anfordert. Anschließend wird das Token im Auftrag der Anwendung vom Azure Active Directory-Mandanten abgerufen.
+> 1. Standardmodus: In diesem Modus werden die folgenden zwei Komponenten im AKS-Cluster bereitgestellt: 
+>     * [Managed Identity Controller (MIC)](https://azure.github.io/aad-pod-identity/docs/concepts/mic/): Ein Kubernetes-Controller, der über den Kubernetes-API-Server auf Änderungen an Pods, [AzureIdentity](https://azure.github.io/aad-pod-identity/docs/concepts/azureidentity/) und [AzureIdentityBinding](https://azure.github.io/aad-pod-identity/docs/concepts/azureidentitybinding/) überwacht. Wenn eine relevante Änderung erkannt wird, fügt der MIC nach Bedarf [AzureAssignedIdentity](https://azure.github.io/aad-pod-identity/docs/concepts/azureassignedidentity/) hinzu oder löscht sie. Insbesondere bei der Planung eines Pods weist der MIC die verwaltete Identität in Azure der zugrunde liegenden VMSS zu, die während der Erstellungsphase vom Knotenpool verwendet wird. Wenn alle Pods, die die Identität verwenden, gelöscht werden, wird die Identität aus der VMSS des Knotenpools entfernt, es sei denn, dieselbe verwaltete Identität wird von anderen Pods verwendet. Der MIC führt ähnliche Aktionen aus, wenn AzureIdentity oder AzureIdentityBinding erstellt oder gelöscht werden.
+>     * [Node Management Identity (NMI)](https://azure.github.io/aad-pod-identity/docs/concepts/nmi/): Dies ist ein Pod, der auf jedem Knoten im AKS-Cluster als DaemonSet ausgeführt wird. NMI fängt Sicherheitstokenanforderungen an den [Azure Instance Metadata Service](../virtual-machines/linux/instance-metadata-service.md?tabs=linux) auf jedem Knoten ab, leitet sie an sich selbst weiter und überprüft, ob der Pod Zugriff auf die Identität hat, für die er ein Token anfordert, und ruft das Token im Auftrag der Anwendung vom Azure Active Directory-Mandanten ab.
 > 2. Verwalteter Modus: In diesem Modus gibt es nur die NMI. Die Identität muss vom Benutzer manuell zugewiesen und verwaltet werden. Weitere Informationen finden Sie unter [Podidentität im verwalteten Modus](https://azure.github.io/aad-pod-identity/docs/configure/pod_identity_in_managed_mode/).
 >
 >Wenn Sie die Azure Active Directory-Podidentität mittels Helm-Chart oder YAML-Manifest installieren (wie in den [Installationsanweisungen](https://azure.github.io/aad-pod-identity/docs/getting-started/installation/) gezeigt), können Sie zwischen den Modi `standard` und `managed` wählen. Wenn Sie die Azure Active Directory-Podidentität dagegen mithilfe des [AKS-Cluster-Add-Ons](/azure/aks/use-azure-ad-pod-identity) installieren (wie in diesem Artikel gezeigt), wird der Modus `managed` verwendet.
@@ -180,6 +180,7 @@ az aks pod-identity add --resource-group myResourceGroup --cluster-name myAKSClu
 
 > [!NOTE]
 > Wenn Sie verwaltete Podidentitäten in Ihrem AKS-Cluster aktivieren, wird dem Namespace *kube-system* eine AzurePodIdentityException mit dem Namen *aks-addon-exception* hinzugefügt. AzurePodIdentityException ermöglicht Pods mit bestimmten Bezeichnungen den Zugriff auf den Azure Instance Metadata Service-Endpunkt (IMDS), ohne dass dieser Vorgang vom Node Managed Identity-Server (NMI) unterbrochen wird. Mit *aks-addon-exception* können AKS-Erstanbieter-Add-Ons, z. B. eine verwaltete AAD-Podidentität, betrieben werden, ohne dass eine manuelle Konfiguration von AzurePodIdentityException erfolgen muss. Optional können Sie ein AzurePodIdentityException-Element hinzufügen, entfernen und aktualisieren, indem Sie `az aks pod-identity exception add`, `az aks pod-identity exception delete`, `az aks pod-identity exception update` oder `kubectl` verwenden.
+> POD_IDENTITY_NAME muss ein gültiger [DNS-Unterdomänenname] sein, wie in [RFC 1123] definiert. 
 
 > [!NOTE]
 > Wenn Sie die Podidentität mithilfe von `pod-identity add` zuweisen, wird von der Azure CLI versucht, der Clusteridentität über die Podidentität (*IDENTITY_RESOURCE_ID*) die Rolle „Operator für verwaltete Identität“ zuzuweisen.
@@ -383,3 +384,5 @@ Weitere Informationen zu verwalteten Identitäten finden Sie unter [Was sind ver
 [az-identity-create]: /cli/azure/identity#az_identity_create
 [az-managed-identities]: ../active-directory/managed-identities-azure-resources/overview.md
 [az-role-assignment-create]: /cli/azure/role/assignment#az_role_assignment_create
+[RFC 1123]: https://tools.ietf.org/html/rfc1123
+[DNS-Unterdomänenname]: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-subdomain-names

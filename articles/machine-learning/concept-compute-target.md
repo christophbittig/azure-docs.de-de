@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2021
-ms.openlocfilehash: a3c52783cf88e9890ffa1a96feb3a332e43c5e1c
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: bb7baa20b5bc7e47e231e3e15937dde941ac0e03
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340362"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122608258"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Was sind Computeziele in Azure Machine Learning?
 
@@ -23,14 +23,14 @@ Ein *Computeziel* ist eine festgelegte Computeressource oder -Umgebung, in der I
 In einem typischen Modellentwicklungslebenszyklus gehen Sie unter Umständen wie folgt vor:
 
 1. Sie entwickeln und experimentieren zunächst mit einer kleinen Datenmenge. In dieser Phase verwenden Sie Ihre lokale Umgebung, z. B. einen lokalen Computer oder einen cloudbasierten virtuellen Computer (VM), als Ihr Computeziel.
-1. Skalieren Sie Ihre Umgebung für größere Datenmengen hoch, oder führen Sie ein verteiltes Training mithilfe eines dieser [Trainingscomputeziele](#train) durch.
+1. Skalieren Sie Ihre Umgebung für größere Datenmengen hoch, oder führen Sie ein [verteiltes Training](how-to-train-distributed-gpu.md) mithilfe eines dieser [Trainingscomputeziele](#train) durch.
 1. Wenn Ihr Modell bereit ist, stellen Sie es in einer Webhostingumgebung mit einem [dieser Bereitstellungscomputeziele](#deploy) bereit.
 
 Die Computeressourcen, die Sie für Ihre Computeziele verwenden, werden an einen [Arbeitsbereich](concept-workspace.md) angefügt. Andere Computeressourcen als der lokale Computer werden von Benutzern des Arbeitsbereichs gemeinsam genutzt.
 
 ## <a name="training-compute-targets"></a><a name="train"></a> Trainieren von Computezielen
 
-Azure Machine Learning bietet unterschiedliche Unterstützung für verschiedene Computeziele. Ein typischer Lebenszyklus der Modellentwicklung beginnt mit der Entwicklung oder dem Experimentieren mit einer kleinen Menge von Daten. In dieser Phase verwenden Sie eine lokale Umgebung wie Ihren lokalen Computer oder eine cloudbasierte VM. Wenn Sie Ihr Training zur Verwendung größerer Datasets hochskalieren oder sich für ein verteiltes Training entscheiden, verwenden Sie Azure Machine Learning Compute, um einen Cluster mit einem einzelnen oder mehreren Knoten zu erstellen, der bei jeder Übermittlung einer Ausführung automatisch skaliert wird. Sie können auch Ihre eigene Computeressource anfügen. Die Unterstützung für verschiedene Szenarien kann jedoch variieren.
+Azure Machine Learning bietet unterschiedliche Unterstützung für verschiedene Computeziele. Ein typischer Lebenszyklus der Modellentwicklung beginnt mit der Entwicklung oder dem Experimentieren mit einer kleinen Menge von Daten. In dieser Phase verwenden Sie eine lokale Umgebung wie Ihren lokalen Computer oder eine cloudbasierte VM. Wenn Sie Ihr Training zur Verwendung größerer Datasets hochskalieren oder sich für ein [verteiltes Training](how-to-train-distributed-gpu.md) entscheiden, verwenden Sie Azure Machine Learning Compute, um einen Cluster mit einem einzelnen oder mehreren Knoten zu erstellen, der bei jeder Übermittlung einer Ausführung automatisch skaliert wird. Sie können auch Ihre eigene Computeressource anfügen. Die Unterstützung für verschiedene Szenarien kann jedoch variieren.
 
 [!INCLUDE [aml-compute-target-train](../../includes/aml-compute-target-train.md)]
 

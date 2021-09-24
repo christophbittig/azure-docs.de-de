@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/10/2021
 ms.author: xpouyat
-ms.openlocfilehash: 5a0dd1c0e19d008d729b2c68d8fcae8ac17223e5
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 5ad7cd598e3970532e3a14795b78edcf1f9f61c4
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111749201"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123226136"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Lizenzieren des Portierungskits für den Microsoft&reg; Smooth Streaming-Client
 
@@ -96,25 +96,28 @@ Lizenznehmer von SSPK-Lizenzen (Interim und final) können sich bei technischen 
 * ZTE Corporation
 
 ## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>Lizenznehmer der Microsoft Smooth Streaming Client Final Product Agreement
+* Advanced Digital Broadcast SA
 * AmTRAN Technology Co., Ltd 
 * Arcadyan Technology Corporation
 * Arcelik A.S
 * Compal Electronics, Inc.
 * Enseo, LLC
 * EXPRESS LUCK TECHNOLOGY LIMITED
+* FAIRWIT HONGKONG CO., LIMITED
 * Fluendo S.A.
 * FUNAI ELECTRIC CO., LTD
+* Guangdong Asano Technology CO.,Ltd.
 * Hisense Broadband Multimedia Technologies Co. Ltd.
 * Hisense International Co., Ltd.
 * Hisense Visual Technology Co., Ltd
 * HKC Corporation Limited
 * Hong Kong Konka Ltd
-* Innolux Corporation
 * Jinpin Electrical Company Ltd.Zhuhai.S.E.Z
 * KAONMEDIA CO., Ltd.
 * KDDI Corporation
 * K-Tronics (Suzhou) Technology Co., Ltd.
 * LG Electronics, Inc.
+* Liberty Global Technology Services BV
 * Mega Fame Electronics Co. Limited
 * MINGCAI NEW CENTURY (HK) CO., LIMITED
 * MIRC Electronics Limited
@@ -122,6 +125,7 @@ Lizenznehmer von SSPK-Lizenzen (Interim und final) können sich bei technischen 
 * ONEPLUS ELECTRONICS (SHENZHEN) CO., LTD.
 * Panasonic Corporation
 * Qingdao Haier Optronics Co., Ltd.
+* SAGEMCOM BROADBAND SAS
 * Sharp Consumer Electronics Poland Sp. z o.o.
 * Shenzhen ATEKO PHOTO Electricity Co.,Ltd.
 * Shenzhen Chuangwei-RGB Electronics Co.,Ltd.
@@ -129,15 +133,18 @@ Lizenznehmer von SSPK-Lizenzen (Interim und final) können sich bei technischen 
 * Shenzhen KTC Technology Co., Ltd. 
 * Shenzhen Maxmade Technology Co., Ltd
 * Shenzhen MTC Co., Ltd
+* SHENZHEN QIYUE OPTRONICS CO.,LTD
 * Shenzhen Skyworth Digital Technology Co., Ltd
 * Sichuan Changhong Electric Co., Ltd.
 * SKARDIN INDUSTRIAL CORP
 * Sky CP Ltd
 * SMARDTV GLOBAL SAS
+* Sony Corporation
 * SoftAtHome
 * Technicolor Delivery Technologies, SAS
 * Top Victory Investments, Ltd.
 * Vizio, Inc.
+* Walton Hi-Tech Industries Ltd.
 * ZTE CORPORATION
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade

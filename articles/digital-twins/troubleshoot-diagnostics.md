@@ -4,19 +4,19 @@ titleSuffix: Azure Digital Twins
 description: Erfahren Sie, wie Sie die Protokollierung mit Diagnoseeinstellungen aktivieren und die Protokolle für eine sofortige Anzeige abfragen.
 author: baanders
 ms.author: baanders
-ms.date: 2/24/2021
+ms.date: 8/24/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ced6f28bb7174bc3510de9025569646210e87782
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 1479e2b6b715e8f80ea9e02b0b57a3995da2bfd9
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475704"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123219717"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Problembehandlung von Azure Digital Twins: Diagnoseprotokollierung
 
-Azure Digital Twins kann Protokolle für Ihre Dienstinstanz zur Überwachung von Leistung, Zugriff und anderen Daten erfassen. Anhand dieser Protokolle können Sie eine Vorstellung davon erhalten, was in Ihrer Azure Digital Twins-Instanz geschieht, und eine Ursachenanalyse für Probleme durchführen, ohne sich an den Azure-Support wenden zu müssen.
+Azure Digital Twins kann Protokolle für Ihre Dienstinstanz zur Überwachung von Leistung, Zugriff und anderen Daten erfassen. Anhand dieser Protokolle können Sie eine Vorstellung davon erhalten, was in Ihrer Azure Digital Twins-Instanz geschieht, und die Ursachen von Problemen analysieren, ohne den Azure-Support kontaktieren zu müssen.
 
 In diesem Artikel wird das [Konfigurieren von Diagnoseeinstellungen](#turn-on-diagnostic-settings) im [Azure-Portal](https://portal.azure.com) erläutert, um mit der Erfassung von Protokollen von Ihrer Azure Digital Twins-Instanz zu beginnen. Sie können auch angeben, wo die Protokolle gespeichert werden sollen (z. B. Log Analytics oder ein Speicherkonto Ihrer Wahl).
 
@@ -65,12 +65,12 @@ Nachfolgend finden Sie weitere Details zu den Protokollkategorien, die von Azure
 
 | Protokollkategorie | BESCHREIBUNG |
 | --- | --- |
-| ADTModelsOperation | Protokolliert alle API-Aufrufe im Zusammenhang mit Modellen. |
-| ADTQueryOperation | Protokolliert alle API-Aufrufe im Zusammenhang mit Abfragen. |
-| ADTEventRoutesOperation | Protokolliert alle API-Aufrufe im Zusammenhang mit Ereignisrouten sowie ausgehende Ereignisse von Azure Digital Twins an einen Endpunktdienst wie Event Grid, Event Hubs und Service Bus. |
-| ADTDigitalTwinsOperation | Protokollieren aller API-Aufrufe im Zusammenhang mit einzelnen Zwillingen |
+| ADTModelsOperation | Protokollieren aller API-Aufrufe in Bezug auf Modelle |
+| ADTQueryOperation | Protokollieren aller API-Aufrufe in Bezug auf Abfragen |
+| ADTEventRoutesOperation | Protokolliert alle API-Aufrufe in Bezug auf Ereignisrouten sowie ausgehende Ereignisse von Azure Digital Twins an einen Endpunktdienst wie Event Grid, Event Hubs und Service Bus. |
+| ADTDigitalTwinsOperation | Protokollieren aller API-Aufrufe in Bezug auf einzelne Zwillinge |
 
-Jede Protokollkategorie besteht aus Schreib-, Lese-, Lösch- und Aktionsvorgängen.  Diese lassen sich REST-API-Aufrufen wie folgt zuordnen:
+Jede Protokollkategorie besteht aus Schreib-, Lese-, Lösch- und Aktionsvorgängen. Diese Kategorien lassen sich REST-API-Aufrufen wie folgt zuordnen:
 
 | Ereignistyp | REST-API-Vorgänge |
 | --- | --- |
@@ -279,7 +279,7 @@ Hier sehen Sie einen JSON-Beispieltext für `ADTEventRoutesOperation`, der **nic
 
 ### <a name="egress-log-schemas"></a>Ausgangsprotokollschemas
 
-Dies ist das Schema für `ADTEventRoutesOperation`-Protokolle, die für den Vorgangsnamen `Microsoft.DigitalTwins/eventroutes/action` spezifisch sind. Diese enthalten Details zu Ausnahmen und den API-Vorgängen für Ausgangsendpunkte, die mit einer Instanz von Azure Digital Twins verbunden sind.
+Das folgende Beispiel ist das Schema für `ADTEventRoutesOperation`-Protokolle, die für den Vorgangsnamen `Microsoft.DigitalTwins/eventroutes/action` spezifisch sind. Diese enthalten Details zu Ausnahmen und den API-Vorgängen für Ausgangsendpunkte, die mit einer Instanz von Azure Digital Twins verbunden sind.
 
 |Feldname | Datentyp | BESCHREIBUNG |
 |-----|------|-------------|
@@ -353,7 +353,7 @@ Nachfolgend wird beschrieben, wie Sie die Protokolle für Ihre Instanz abfragen.
 
     :::image type="content" source="media/troubleshoot-diagnostics/logs.png" alt-text="Screenshot der Seite „Protokolle“ für eine Azure Digital Twins-Instanz im Azure-Portal mit überlagertem Fenster „Abfragen“, in dem vordefinierten Abfragen angezeigt werden." lightbox="media/troubleshoot-diagnostics/logs.png":::
 
-    Dies sind vorgefertigte Beispielabfragen, die für verschiedene Protokolle geschrieben wurden. Sie können eine der Abfragen auswählen, um sie in den Abfrage-Editor zu laden, und die Abfrage ausführen, um diese Protokolle für Ihre Instanz anzuzeigen.
+    Diese Abfragen sind vorgefertigte Beispiele, die für verschiedene Protokolle geschrieben wurden. Sie können eine der Abfragen auswählen, um sie in den Abfrage-Editor zu laden, und die Abfrage ausführen, um diese Protokolle für Ihre Instanz anzuzeigen.
 
     Sie können das Fenster *Abfragen* auch ohne Ausführen einer Abfrage schließen, um direkt zur Seite mit dem Abfrage-Editor zu gelangen, auf der Sie benutzerdefinierten Abfragecode schreiben oder bearbeiten können.
 

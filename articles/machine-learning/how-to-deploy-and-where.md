@@ -12,12 +12,12 @@ ms.date: 04/21/2021
 ms.topic: how-to
 ms.custom: devx-track-python, deploy, devx-track-azurecli, contperf-fy21q2, contperf-fy21q4
 adobe-target: true
-ms.openlocfilehash: 6fc1fbb6a665d03e250beec85c66178feaa55189
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 22161ee49c2527b92b11b4c1fe197fa06d48fcb9
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122356125"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122661981"
 ---
 # <a name="deploy-machine-learning-models-to-azure"></a>Bereitstellen von Machine Learning-Modellen für Azure 
 
@@ -180,7 +180,10 @@ Eine Rückschlusskonfiguration beschreibt den Docker-Container und die Dateien, 
 
 Die unten gezeigte Rückschlusskonfiguration gibt an, dass die Machine Learning-Bereitstellung die Datei `echo_score.py` im `./source_dir` Verzeichnis verwendet, um eingehende Anforderungen zu verarbeiten, und dass das Docker-Image mit den in der`project_environment`-Umgebung angegebenen Python-Paketen verwendet wird.
 
-Sie können jede [zusammengestellte Azure Machine Learning-Umgebung](./resource-curated-environments.md) als Docker-Basisimage verwenden, wenn Sie Ihre Projektumgebung erstellen. Wir installieren darauf die erforderlichen Abhängigkeiten und speichern das resultierende Docker-Image in dem Repository, das Ihrem Arbeitsbereich zugeordnet ist.
+Sie können alle [zusammengestellten Azure Machine Learning-Rückschlussumgebungen](concept-prebuilt-docker-images-inference.md#list-of-prebuilt-docker-images-for-inference) als Docker-Basisimage verwenden, wenn Sie Ihre Projektumgebung erstellen. Wir installieren darauf die erforderlichen Abhängigkeiten und speichern das resultierende Docker-Image in dem Repository, das Ihrem Arbeitsbereich zugeordnet ist.
+
+> [!NOTE]
+> Beim Hochladen des [Rückschlussquellverzeichnisses](/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py#constructor&preserve-view=true) von Azure Machine Learning wird **.gitignore** oder **.amlignore** nicht beachtet.
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azcli)
 

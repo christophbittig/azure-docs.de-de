@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2021
-ms.openlocfilehash: bba8329075ecb47d367fc04afa1f2df0b4fcf721
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fccbd763818facfa429451ce0c53d74ee8f6b8a4
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346870"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122609266"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Was ist eine Azure Machine Learning-Compute-Instanz?
 
@@ -47,7 +47,7 @@ Eine Compute-Instanz ist eine vollständig verwaltete cloudbasierte Arbeitsstati
 * Die Compute-Instanz ist ähnlich Computeclustern ebenfalls ein sicheres Computeziel, es handelt sich aber um einen einzelnen Knoten.
 * Sie können selbst eine [Compute-Instanz erstellen](how-to-create-manage-compute-instance.md?tabs=python#create) oder ein Administrator kann eine **[Compute-Instanz für Sie erstellen](how-to-create-manage-compute-instance.md?tabs=python#on-behalf)** .
 * Sie können auch ein **[Setupskript (Vorschau) verwenden](how-to-create-manage-compute-instance.md#setup-script)** , um die Computeinstanz gemäß Ihren Anforderungen automatisch anzupassen und zu konfigurieren.
-* Um Kosten zu sparen, **[erstellen Sie einen Zeitplan (Vorschau)](how-to-create-manage-compute-instance.md#schedule)** , um die Compute-Instanz (Vorschau) automatisch zu starten und zu beenden.
+* Um Kosten zu sparen, **[erstellen Sie einen Zeitplan (Vorschau)](how-to-create-manage-compute-instance.md#schedule)** , um die Compute-Instanz automatisch zu starten und zu beenden.
 
 ## <a name="tools-and-environments"></a><a name="contents"></a>Tools und Umgebungen
 
@@ -131,7 +131,7 @@ Folgendes gilt für eine Compute-Instanz:
 * Sie verfügt über eine Auftragswarteschlange.
 * Sie führt Aufträge sicher in einer virtuellen Netzwerkumgebung aus, ohne dass Unternehmen hierfür SSH-Ports öffnen müssen. Der Auftrag wird in einer Containerumgebung ausgeführt und packt die Abhängigkeiten Ihres Modells in einen Docker-Container.
 * Sie kann mehrere kleine Aufträge parallel ausführen (Vorschauversion).  Zwei Aufträge pro Kern können parallel ausgeführt werden, während die restlichen Aufträge in die Warteschlange eingereiht werden.
-* Unterstützt verteilte Trainingsaufträge mit einem einzelnen Knoten mit mehreren GPUs
+* Unterstützt [verteilte Trainingsaufträge](how-to-train-distributed-gpu.md) mit einem einzelnen Knoten mit mehreren GPUs
 
 Sie können die Compute-Instanz als gefolgertes lokales Bereitstellungsziel für Test-/Debugszenarien verwenden.
 

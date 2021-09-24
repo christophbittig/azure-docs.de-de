@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/13/2021
-ms.openlocfilehash: 91bfa04c9fab179cf3935e703f13004f3aadd170
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: eb00a9fa81b6fadd999c6c824ff7be06f76c8f4a
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114220068"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221757"
 ---
 # <a name="recommended-settings-for-network-isolation"></a>Empfohlene Einstellungen für die Netzwerkisolation
 
@@ -110,9 +110,9 @@ Die Cognitive Search-Instanz kann über einen privaten Endpunkt isoliert werden,
      > [!div class="mx-imgBorder"]
      > [ ![Screenshot der Benutzeroberfläche zum Erstellen eines privaten Endpunkts mit ausgefüllten Subnetzfeld]( ../media/network-isolation/subnet.png) ](  ../media/network-isolation/subnet.png#lightbox)
 
-    5. Aktivieren Sie die VNET-Integration für die reguläre App Service-Instanz. Sie können diesen Schritt für die ASE überspringen, da diese bereits Zugriff auf das VNET hat.
-        - Navigieren Sie zum Abschnitt **Netzwerk** der App Service-Instanz, und öffnen Sie **VNET-Integration**.
-        - Erstellen Sie eine Verknüpfung zu dem in Schritt 2 erstellten Subnetz (appservicevnet) im dedizierten App Service-VNET.
+5. Aktivieren Sie die VNET-Integration für die reguläre App Service-Instanz. Sie können diesen Schritt für die ASE überspringen, da diese bereits Zugriff auf das VNET hat.
+    - Navigieren Sie zum Abschnitt **Netzwerk** der App Service-Instanz, und öffnen Sie **VNET-Integration**.
+    - Erstellen Sie eine Verknüpfung zu dem in Schritt 2 erstellten Subnetz (appservicevnet) im dedizierten App Service-VNET.
     
      > [!div class="mx-imgBorder"]
      > [ ![Screenshot der Benutzeroberfläche für die VNET-Integration]( ../media/network-isolation/integration.png) ](  ../media/network-isolation/integration.png#lightbox)

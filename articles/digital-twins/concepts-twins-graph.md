@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Enthält grundlegende Informationen zum Konzept eines digitalen Zwillings und die Erstellung eines Graphen basierend auf den entsprechenden Beziehungen.
 author: baanders
 ms.author: baanders
-ms.date: 6/1/2021
+ms.date: 8/26/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 1145525fe3d2e7c42204aa675153d4eb099cccce
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 42cce83683df789aeaabe53ca170f17319ec3603
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351171"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224838"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Grundlegendes zu digitalen Zwillingen und zum zugehörigen Zwillingsgraphen
 
@@ -25,7 +25,7 @@ In einer Azure Digital Twins-Lösung werden die Entitäten in Ihrer Umgebung dur
 
 Bevor Sie auf Ihrer Azure Digital Twins-Instanz einen digitalen Zwilling erstellen können, müssen Sie ein *Modell* in den Dienst hochladen. Mit einem Modell wird unter anderem die Gruppe mit den Eigenschaften, Telemetrienachrichten und Beziehungen beschrieben, über die ein bestimmter Zwilling verfügen kann. Informationen zu den Informationsarten, die in einem Modell definiert sind, finden Sie unter [Benutzerdefinierte Modelle](concepts-models.md).
 
-Nachdem Sie ein Modell erstellt und hochgeladen haben, kann Ihre Client-App eine Instanz des entsprechenden Typs erstellen. Hierbei handelt es sich um einen digitalen Zwilling. Nachdem Sie beispielsweise ein Modell vom Typ Floor (Etage) erstellt haben, können Sie einen oder mehrere digitale Zwillinge erstellen, die diesen Typ nutzen (z. B. ein Zwilling vom Typ Floor mit dem Namen GroundFloor, einen anderen mit dem Namen Floor2 usw.).
+Nachdem Sie ein Modell erstellt und hochgeladen haben, kann Ihre Client-App eine Instanz des entsprechenden Typs erstellen. Diese Instanz ist ein digitaler Zwilling. Nachdem Sie beispielsweise ein Modell vom Typ „Floor“ (Etage) erstellt haben, können Sie einen oder mehrere digitale Zwillinge erstellen, die diesen Typ nutzen (z. B. ein Zwilling vom Typ „Floor“ mit dem Namen „GroundFloor“, einen anderen mit dem Namen „Floor2“ usw.).
 
 [!INCLUDE [digital-twins-versus-device-twins](../../includes/digital-twins-versus-device-twins.md)]
 
@@ -43,7 +43,7 @@ Das Ergebnis dieses Prozesses ist eine Gruppe mit Knoten (die digitalen Zwilling
 
 ## <a name="create-with-the-apis"></a>Erstellen mit den APIs
 
-In diesem Abschnitt wird gezeigt, wie das Erstellen digitaler Zwillinge und Beziehungen über eine Clientanwendung aussieht. Es sind .NET-Codebeispiele enthalten, die die [DigitalTwins-APIs](/rest/api/digital-twins/dataplane/twins) nutzen, um zusätzlichen Kontext darüber bereitzustellen, was innerhalb der verschiedenen Konzepte passiert.
+In diesem Abschnitt wird gezeigt, wie das Erstellen digitaler Zwillinge und Beziehungen über eine Clientanwendung aussieht. Es sind .NET-Codebeispiele enthalten, die die [DigitalTwins-APIs](/rest/api/digital-twins/dataplane/twins) nutzen, um mehr Kontext darüber bereitzustellen, was innerhalb der verschiedenen Konzepte passiert.
 
 ### <a name="create-digital-twins"></a>Erstellen digitaler Zwillinge
 
@@ -66,7 +66,7 @@ Im Folgenden finden Sie Beispielclientcode, der die [DigitalTwins-APIs](/rest/ap
 
 ## <a name="json-representations-of-graph-elements"></a>JSON-Darstellungen von Graphelementen
 
-Daten zu digitalen Zwillingen und Beziehungsdaten werden jeweils im JSON-Format gespeichert. Dies bedeutet Folgendes: Wenn Sie auf Ihrer Azure Digital Twins-Instanz den [Zwillingsgraphen abfragen](how-to-query-graph.md), ist das Ergebnis eine JSON-Darstellung der von Ihnen erstellten digitalen Zwillinge und Beziehungen.
+Sowohl die Daten des digitalen Zwillings als auch die Beziehungsdaten werden im JSON-Format gespeichert. Das heißt, wenn Sie den [Zwillingsgraphen in Ihrer Azure Digital Twins-Instanz abfragen](how-to-query-graph.md), ist das Ergebnis eine JSON-Darstellung der von Ihnen erstellten digitalen Zwillinge und Beziehungen.
 
 ### <a name="digital-twin-json-format"></a>JSON-Format von digitalen Zwillingen
 

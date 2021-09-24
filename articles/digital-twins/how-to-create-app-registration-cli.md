@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Erfahren Sie, wie eine Azure AD-App-Registrierung als Authentifizierungsoption für Client-Apps mit der CLI erstellt wird.
 author: baanders
 ms.author: baanders
-ms.date: 5/13/2021
+ms.date: 8/27/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a42a09af845bce160689718fb74eb393409740d3
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 7c9f69d33c89fba209ecf7ad76bc1aa8e2b6b666
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114437928"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224895"
 ---
 # <a name="create-an-app-registration-to-use-with-azure-digital-twins-cli"></a>Erstellen einer App-Registrierung für die Verwendung mit Azure Digital Twins (CLI)
 
@@ -20,7 +20,7 @@ ms.locfileid: "114437928"
 
 Bei der Verwendung einer Azure Digital Twins-Instanz ist es üblich, über Clientanwendungen mit dieser Instanz zu interagieren – etwa mit einer benutzerdefinierten Client-App oder mit einem Beispiel wie [Azure Digital Twins-Explorer](quickstart-azure-digital-twins-explorer.md). Diese Anwendungen müssen sich bei Azure Digital Twins authentifizieren, um damit zu interagieren, und einige der [Authentifizierungsmechanismen](how-to-authenticate-client.md), die Apps verwenden können, umfassen eine [Azure AD](../active-directory/fundamentals/active-directory-whatis.md)-**App-Registrierung** (Azure Active Directory).
 
-Dies ist nicht für alle Authentifizierungsszenarien erforderlich. Wenn Sie jedoch eine Authentifizierungsstrategie oder ein Codebeispiel verwenden, die bzw. das eine App-Registrierung erfordert, zeigt Ihnen dieser Artikel, wie Sie diese(s) mithilfe der [Azure CLI](/cli/azure/what-is-azure-cli) einrichten. Außerdem wird erläutert, wie Sie [wichtige Werte sammeln](#collect-important-values), die Sie benötigen, um die App-Registrierung für die Authentifizierung zu verwenden.
+Die App-Registrierung ist nicht für alle Authentifizierungsszenarien erforderlich. Wenn Sie jedoch eine Authentifizierungsstrategie oder ein Codebeispiel verwenden, die bzw. das eine App-Registrierung erfordert, zeigt Ihnen dieser Artikel, wie Sie diese(s) mithilfe der [Azure CLI](/cli/azure/what-is-azure-cli) einrichten. Außerdem wird erläutert, wie Sie [wichtige Werte sammeln](#collect-important-values), die Sie benötigen, um die App-Registrierung für die Authentifizierung zu verwenden.
 
 ## <a name="azure-ad-app-registrations"></a>Azure AD-App-Registrierungen
 
@@ -59,7 +59,7 @@ Speichern Sie die fertige Datei.
 
 ### <a name="upload-to-cloud-shell"></a>Hochladen in Cloud Shell
 
-Laden Sie als Nächstes die soeben erstellte Manifestdatei in die Cloud Shell hoch, damit Sie beim Konfigurieren der App-Registrierung in Cloud Shell-Befehlen darauf zugreifen können.
+Laden Sie als Nächstes die erstellte Manifestdatei in die Cloud Shell hoch, damit Sie beim Konfigurieren der App-Registrierung in Cloud Shell-Befehlen darauf zugreifen können.
 
 Um die Datei hochzuladen, wechseln Sie in Ihrem Browser zum Fenster „Cloud Shell“. auf das Symbol „Dateien hochladen/herunterladen“ und dann auf „Hochladen“.
 
@@ -125,7 +125,7 @@ Um einen **geheimen Clientschlüssel** für Ihre App-Registrierung zu erstellen,
 az ad app credential reset --id <client-ID> --append
 ```
 
-Sie können diesem Befehl auch optionale Parameter hinzufügen, um eine Beschreibung der Anmeldeinformationen, ein Enddatum und andere Details anzugeben. Weitere Informationen zu dem Befehl und seinen zusätzlichen Parametern finden Sie in der [Dokumentation zu „az ad app credential reset“](/cli/azure/ad/app/credential?view=azure-cli-latest&preserve-view=true#az_ad_app_credential_reset).
+Sie können diesem Befehl auch optionale Parameter hinzufügen, um eine Beschreibung der Anmeldeinformationen, ein Enddatum und andere Details anzugeben. Weitere Informationen zu dem Befehl und seinen Parametern finden Sie in der [Dokumentation zu „az ad app credential reset“](/cli/azure/ad/app/credential?view=azure-cli-latest&preserve-view=true#az_ad_app_credential_reset).
 
 Die Ausgabe dieses Befehls enthält Informationen zu dem geheimen Clientschlüssel, den Sie erstellt haben. Kopieren Sie den Wert für `password`, um ihn zu verwenden, wenn Sie den geheimen Clientschlüssel für die Authentifizierung benötigen.
 
@@ -136,7 +136,7 @@ Die Ausgabe dieses Befehls enthält Informationen zu dem geheimen Clientschlüss
 
 ## <a name="other-possible-steps-for-your-organization"></a>Weitere mögliche Schritte für Ihre Organisation
 
-Ihre Organisation erfordert möglicherweise zusätzliche Aktionen von Abonnementbesitzern/Administratoren, um eine App-Registrierung erfolgreich einzurichten. Welche Schritte erforderlich sind, hängt von den spezifischen Einstellungen Ihrer Organisation ab.
+Ihre Organisation erfordert möglicherweise weitere Aktionen von Abonnementbesitzern/Administratoren, um eine App-Registrierung erfolgreich einzurichten. Welche Schritte erforderlich sind, hängt von den spezifischen Einstellungen Ihrer Organisation ab.
 
 Im Folgenden finden Sie einige häufig vorkommende Aktivitäten, die ein Besitzer oder Administrator für das Abonnement möglicherweise ausführen muss.
 * Erteilen Sie eine Administratoreinwilligung für die App-Registrierung. In Ihrer Organisation ist möglicherweise die Einstellung **Administratoreinwilligung erforderlich** global in Azure AD für alle App-Registrierungen in Ihrem Abonnement aktiviert. In diesem Falle muss der Besitzer/Administrator möglicherweise zusätzliche delegierte Berechtigungen oder Anwendungsberechtigungen erteilen.

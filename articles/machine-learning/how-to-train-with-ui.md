@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines Trainingsauftrags über die Benutzeroberfläche
+title: Erstellen eines Trainingsauftrags mit der Benutzeroberfläche für die Auftragserstellung
 titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie die Benutzeroberfläche für die Auftragserstellung in Azure Machine Learning Studio verwenden, um einen Trainingsauftrag zu erstellen.
 services: machine-learning
@@ -11,12 +11,12 @@ author: wenxwei
 ms.author: wenxwei
 ms.date: 06/22/2021
 ms.reviewer: laobri
-ms.openlocfilehash: f059bd6dfdec212c6e5c5b343b9930bbee64e6e7
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 4da4cb933f24a0ca172c6b0fd6b8b9827d615859
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419346"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823462"
 ---
 # <a name="create-a-training-job-with-the-job-creation-ui-preview"></a>Erstellen eines Trainingsauftrags mit der Benutzeroberfläche für die Auftragserstellung (Vorschau)
 
@@ -69,7 +69,7 @@ Wenn Sie zum ersten Mal Azure Machine Learning verwenden, werden eine leere List
 
 Weitere Informationen zum Erstellen der verschiedenen Typen finden Sie unter:
 
-| Computetyp | Vorgehensweise | 
+| Computetyp | Anleitung | 
 | --- | --- | 
 | Compute-Instanz | [Erstellen und Verwalten einer Azure Machine Learning-Compute-Instanz](how-to-create-manage-compute-instance.md) | 
 | Computecluster | [Erstellen eines Computeclusters für Azure Machine Learning](how-to-create-attach-compute-cluster.md) | 

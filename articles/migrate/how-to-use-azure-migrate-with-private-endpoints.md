@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 05/10/2020
-ms.openlocfilehash: fad5a625de4b39163c893d1fb35efc68261d0145
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 10f46f5788cd2f17be4b46c2f655fb4e05fed1d9
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122342755"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965943"
 ---
 # <a name="use-azure-migrate-with-private-endpoints"></a>Verwenden von Azure Migrate mit privaten Endpunkten
 
@@ -35,7 +35,7 @@ Sie benötigen die Berechtigungen „Mitwirkender“ und „Benutzerzugriffsadmi
 
 ### <a name="supported-scenarios-and-tools"></a>Unterstützte Szenarien und Tools
 
-**Bereitstellung** | **Details** | **Tools**
+**Bereitstellung** | **Details** | **Extras**
 --- | --- | ---
 **Ermittlung und Bewertung** | Führen Sie eine bedarfsorientierte Ermittlung und Bewertung Ihrer Server ohne Agent im großen Stil durch, die auf beliebigen Plattformen ausgeführt werden. Beispiele hierfür sind Hypervisorplattformen wie [VMware vSphere](./tutorial-discover-vmware.md) oder [Microsoft Hyper-V](./tutorial-discover-hyper-v.md), öffentliche Clouds wie [AWS](./tutorial-discover-aws.md) oder [GCP](./tutorial-discover-gcp.md) und sogar [Bare-Metal-Server](./tutorial-discover-physical.md). | Azure Migrate: Ermittlung und Bewertung <br/>
 **Softwareinventur** | Entdecken von Apps, Rollen und Features, die auf VMware-VMs ausgeführt werden | Azure Migrate: Ermittlung und Bewertung
@@ -101,7 +101,7 @@ In diesem Abschnitt wird beschrieben, wie Sie die Azure Migrate-Appliance einric
 Für das Azure Migrate-Tool zur Ermittlung und Bewertung wird eine einfache Azure Migrate-Appliance verwendet. Die Appliance führt die Serverermittlung durch und sendet Metadaten zur Serverkonfiguration und -leistung an Azure Migrate.
 
 > [!Note]
-> Die Option zum Bereitstellen einer Appliance mithilfe einer Vorlage (OVA für Server in einer VMware-Umgebung und VHD-Hyper-V-Umgebung) wird für Azure Migrate Projekte mit privater Endpunktkonnektivität nicht unterstützt.
+> Wenn Sie eine Appliance mithilfe einer Vorlage (OVA für Server in einer VMware-Umgebung und VHD für eine Hyper-V-Umgebung) bereitgestellt haben, können Sie dieselbe Appliance verwenden und sie bei einem Azure Migrate-Projekt mit Verbindungen über private Endpunkte registrieren.
 
 Richten Sie die Appliance wie folgt ein:
   1. Laden Sie die ZIP-Datei mit dem Installationsskript aus dem Portal herunter.
@@ -121,7 +121,7 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
 
     **Download** | **Hashwert**
     --- | ---
-    [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2160648) | b4668be44c05836bf0f2ac1c8b1f48b7a9538afcf416c5212c7190629e3683b2
+    [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2160648) | CA8CEEE4C7AC13328ECA56AE9EB35137336CD3D73B1F867C4D736286EF61A234
 
 > [!NOTE]
 > Das gleiche Skript kann verwendet werden, um eine Appliance mit privater Endpunktkonnektivität für jedes der ausgewählten Szenarien (z. B. VMware, Hyper-V, physisch usw.), um eine Appliance mit der gewünschten Konfiguration bereitzustellen.

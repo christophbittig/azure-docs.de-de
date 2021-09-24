@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma
 ms.date: 7/8/2021
-ms.openlocfilehash: ca9bfaa6155c2d0f4600ed56bf5a3cab3880274c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bd5a9d64b237fe8c6591cac841b13f96a9c16f1d
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345801"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864452"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-Dienstebene
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -141,6 +141,11 @@ Mit dem folgenden T-SQL-Befehl wird eine Datenbank in die Dienstebene „Hypersc
 ALTER DATABASE [DB2] MODIFY (EDITION = 'Hyperscale', SERVICE_OBJECTIVE = 'HS_Gen5_4');
 GO
 ```
+
+> [!NOTE]
+> Um eine Datenbank, die Teil einer [Georeplikationsbeziehung](active-geo-replication-overview.md) ist, entweder als primäre oder als sekundäre Datenbank nach Hyperscale zu verschieben, müssen Sie die Replikation beenden. Datenbanken in einer [Failovergruppe](auto-failover-group-overview.md) müssen zuerst aus der Gruppe entfernt werden.
+>
+> Nachdem eine Datenbank nach Hyperscale verschoben wurde, können Sie ein neues Hyperscale-Georeplikat für diese Datenbank erstellen. Die Georeplikation für Hyperscale befindet sich in der Vorschauversion mit bestimmten [Einschränkungen](active-geo-replication-overview.md).
 
 ## <a name="database-high-availability-in-hyperscale"></a>Hochverfügbarkeit von Datenbanken in Hyperscale
 

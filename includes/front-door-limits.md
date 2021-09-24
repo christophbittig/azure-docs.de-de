@@ -1,19 +1,19 @@
 ---
-title: Datei einfügen
+title: include file
 description: include file
 services: frontdoor
 author: duongau
 ms.service: frontdoor
 ms.topic: include
-ms.date: 06/25/2021
+ms.date: 08/24/2021
 ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: a7035cff720b7eee4467f355a533a19f059c4baa
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b64cf919c0197ccc8e7128a045db0eee27356c78
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346105"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123355212"
 ---
 | Resource | Begrenzung |
 | --- | --- |
@@ -27,7 +27,7 @@ ms.locfileid: "122346105"
 | Benutzerdefinierte Web Application Firewall-Regeln pro Richtlinie | 100 |
 | Web Application Firewall-Richtlinie pro Abonnement | 100 |
 | Web Application Firewall – Übereinstimmungsbedingungen pro benutzerdefinierter Regel | 10 |
-| Web Application Firewall – IP-Adressbereiche pro Übereinstimmungsbedingung | 600 |
+| Web Application Firewall – IP-Adressbereiche pro benutzerdefinierter Regel | 600 |
 | Web Application Firewall – Zeichenfolgen-Übereinstimmungswerte pro Übereinstimmungsbedingung | 10 |
 | Web Application Firewall – Länge des Zeichenfolgen-Übereinstimmungswerts | 256 |
 | Web Application Firewall – Länge des POST-Textparameternamens | 256 |
@@ -55,7 +55,7 @@ ms.locfileid: "122346105"
 | URLs in einem einzigen Cachebereinigungsaufruf | 100 | 100 |
 | Benutzerdefinierte Web Application Firewall-Regeln pro Richtlinie | 100 | 100 |
 | Web Application Firewall – Übereinstimmungsbedingungen pro benutzerdefinierter Regel | 10 | 10 |
-| Web Application Firewall – IP-Adressbereiche pro Übereinstimmungsbedingung | 600 | 600 |
+| Web Application Firewall – IP-Adressbereiche pro benutzerdefinierter Regel | 600 | 600 |
 | Web Application Firewall – Zeichenfolgen-Übereinstimmungswerte pro Übereinstimmungsbedingung | 10 | 10 |
 | Web Application Firewall – Länge des Zeichenfolgen-Übereinstimmungswerts | 256 | 256 |
 | Web Application Firewall – Länge des POST-Textparameternamens | 256 | 256 |

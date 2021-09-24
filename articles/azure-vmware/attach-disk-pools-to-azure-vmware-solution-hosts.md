@@ -2,13 +2,13 @@
 title: Anfügen von Datenträgerpools an Azure VMware Solution-Hosts (Vorschau)
 description: Hier erfahren Sie, wie Sie einen Datenträgerpool anfügen, der über ein iSCSI-Ziel als VMware-Datenspeicher einer privaten Azure VMware Solution-Cloud verfügbar gemacht wird. Sobald der Datenspeicher konfiguriert ist, können Sie darin Volumes erstellen und an Ihre VMware-Instanzen anfügen.
 ms.topic: how-to
-ms.date: 07/13/2021
-ms.openlocfilehash: fefb014f221a121259c0b8d6411de362e11a63c0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/20/2021
+ms.openlocfilehash: 2487e26d887935f0d66f13d51ce7894edb2b2b6e
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122347081"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769300"
 ---
 # <a name="attach-disk-pools-to-azure-vmware-solution-hosts-preview"></a>Anfügen von Datenträgerpools an Azure VMware Solution-Hosts (Vorschau)
 
@@ -53,83 +53,83 @@ Sie fügen einen Datenträgerpool an, der über ein iSCSI-Ziel als VMware-Datens
 >[!IMPORTANT]
 >In der **Vorschauphase** sollten Sie einen Datenträgerpool lediglich an einen Test- oder Nichtproduktionscluster anfügen.
 
-1. Überprüfen Sie, ob das Abonnement bei `Microsoft.AVS` registriert ist:
+1. Überprüfen Sie, ob das Abonnement bei `Microsoft.AVS` registriert ist.
 
    ```azurecli
    az provider show -n "Microsoft.AVS" --query registrationState
    ```
 
-   Falls nicht, registrieren Sie das Abonnement:
+   Falls es nicht bereits registriert ist, registrieren Sie das Abonnement.
 
    ```azurecli
    az provider register -n "Microsoft.AVS"
    ```
 
-1. Überprüfen Sie, ob das Abonnement bei `CloudSanExperience` AFEC in Microsoft.AVS registriert ist:
+2. Überprüfen Sie, ob das Abonnement bei `CloudSanExperience` AFEC in Microsoft.AVS registriert ist.
 
    ```azurecli
    az feature show --name "CloudSanExperience" --namespace "Microsoft.AVS"
    ```
 
-   - Falls nicht, registrieren Sie das Abonnement:
+   - Falls es nicht bereits registriert ist, registrieren Sie das Abonnement.
 
       ```azurecli
       az feature register --name "CloudSanExperience" --namespace "Microsoft.AVS"
       ```
 
-      Die Registrierung kann ca. 15 Minuten dauern. Sie können den aktuellen Status überprüfen:
+      Die Registrierung kann ca. 15 Minuten dauern. Sie können den aktuellen Status überprüfen.
       
       ```azurecli
       az feature show --name "CloudSanExperience" --namespace "Microsoft.AVS" --query properties.state
       ```
 
       >[!TIP]
-      >Wenn die Registrierung länger als 15 Minuten in einem Zwischenzustand verbleibt, müssen Sie die Registrierung aufheben und das Flag erneut registrieren:
+      >Wenn die Registrierung länger als 15 Minuten in einem Zwischenzustand verbleibt, müssen Sie die Registrierung aufheben und das Flag erneut registrieren.
       >
       >```azurecli
       >az feature unregister --name "CloudSanExperience" --namespace "Microsoft.AVS"
       >az feature register --name "CloudSanExperience" --namespace "Microsoft.AVS"
       >```
 
-1. Überprüfen Sie, ob die `vmware `-Erweiterung installiert ist: 
+3. Überprüfen Sie, ob die `vmware `-Erweiterung installiert ist. 
 
    ```azurecli
    az extension show --name vmware
    ```
 
-   - Wenn die Erweiterung bereits installiert ist, überprüfen Sie, ob die Version **3.0.0** lautet. Wenn eine ältere Version installiert ist, aktualisieren Sie die Erweiterung:
+   - Wenn die Erweiterung bereits installiert ist, überprüfen Sie, ob die Version **3.0.0** lautet. Wenn eine ältere Version installiert ist, aktualisieren Sie die Erweiterung.
 
       ```azurecli
       az extension update --name vmware
       ```
 
-   - Falls die Erweiterung noch nicht installiert ist, installieren Sie sie:
+   - Falls die Erweiterung noch nicht installiert ist, installieren Sie sie.
 
       ```azurecli
       az extension add --name vmware
       ```
 
-3. Erstellen Sie einen iSCSI-Datenspeicher und fügen Sie ihn unter Verwendung des von `Microsoft.StoragePool` bereitgestellten iSCSI-Ziels im privaten Azure VMware Solution-Cloudcluster an:
+4. Erstellen Sie einen iSCSI-Datenspeicher und fügen Sie ihn unter Verwendung des von `Microsoft.StoragePool` bereitgestellten iSCSI-Ziels im privaten Azure VMware Solution-Cloudcluster an. Der Datenträgerpool wird über ein delegiertes Subnetz an ein VNet angefügt, was mit dem Ressourcenanbieter „Microsoft.StoragePool/diskPools“ erfolgt.  Wenn das Subnetz nicht delegiert ist, tritt bei der Bereitstellung ein Fehler auf.
 
    ```bash
    az vmware datastore disk-pool-volume create --name iSCSIDatastore1 --resource-group MyResourceGroup --cluster Cluster-1 --private-cloud MyPrivateCloud --target-id /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/ResourceGroup1/providers/Microsoft.StoragePool/diskPools/mpio-diskpool/iscsiTargets/mpio-iscsi-target --lun-name lun0
    ```
 
    >[!TIP]
-   >Sie können die Hilfe zu den Datenspeichern anzeigen:
+   >Sie können die Hilfe zu den Datenspeichern anzeigen.
    >
    >   ```azurecli
    >   az vmware datastore -h
    >   ```
    
 
-4. Zeigen Sie die Details eines iSCSI-Datenspeichers in einem privaten Cloudcluster an:
+5. Zeigen Sie die Details eines iSCSI-Datenspeichers in einem privaten Cloudcluster an.
    
    ```azurecli
    az vmware datastore show --name MyCloudSANDatastore1 --resource-group MyResourceGroup --cluster -Cluster-1 --private-cloud MyPrivateCloud
    ```
 
-5. Listen Sie alle Datenspeicher in einem privaten Cloudcluster auf:
+6. Listen Sie alle Datenspeicher in einem privaten Cloudcluster auf.
 
    ```azurecli
    az vmware datastore list --resource-group MyResourceGroup --cluster Cluster-1 --private-cloud MyPrivateCloud
@@ -147,7 +147,7 @@ Wenn Sie den Datenspeicher einer privaten Cloud löschen, werden die Ressourcen 
 
    - Momentaufnahmen
 
-2. Löschen Sie den Datenspeicher der privaten Cloud:
+2. Löschen Sie den Datenspeicher der privaten Cloud.
 
    ```azurecli
    az vmware datastore delete --name MyCloudSANDatastore1 --resource-group MyResourceGroup --cluster Cluster-1 --private-cloud MyPrivateCloud
@@ -157,7 +157,7 @@ Wenn Sie den Datenspeicher einer privaten Cloud löschen, werden die Ressourcen 
 
 Nachdem Sie einen Datenträgerpool an Ihre Azure VMware Solution-Hosts angefügt haben, informieren Sie sich über die folgenden Themen:
 
-- [Verwalten eines Azure-Datenträgerpools](../virtual-machines/disks-pools-manage.md ).  Nachdem Sie einen Datenträgerpool bereitgestellt haben, stehen verschiedene Verwaltungsaktionen zur Verfügung. Sie können einen Datenträger zu einem Datenträgerpool hinzufügen oder daraus entfernen, die iSCSI-LUN-Zuordnung aktualisieren oder ACLs hinzufügen.
+- [Verwalten eines Azure-Datenträgerpools](../virtual-machines/disks-pools-manage.md).  Nachdem Sie einen Datenträgerpool bereitgestellt haben, stehen verschiedene Verwaltungsaktionen zur Verfügung. Sie können einen Datenträger zu einem Datenträgerpool hinzufügen oder daraus entfernen, die iSCSI-LUN-Zuordnung aktualisieren oder ACLs hinzufügen.
 
 - [Löschen eines Datenträgerpools](../virtual-machines/disks-pools-deprovision.md#delete-a-disk-pool). Wenn Sie einen Datenträgerpool löschen, werden alle Ressourcen in der verwalteten Ressourcengruppe ebenfalls gelöscht.
 

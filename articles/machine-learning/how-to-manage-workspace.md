@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 04/22/2021
 ms.topic: how-to
 ms.custom: fasttrack-edit, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 2d0d0f70f5a610e77169685a716282bcc0456cab
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fc0cdbcb85470fb9f1e0eb4d4bf6cc43c3ae4e23
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346161"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123034412"
 ---
 # <a name="manage-azure-machine-learning-workspaces-in-the-portal-or-with-the-python-sdk"></a>Verwalten von Azure Machine Learning-Arbeitsbereichen im Portal oder mit dem Python SDK
 
@@ -372,6 +372,10 @@ Wählen Sie im [Azure-Portal](https://portal.azure.com/) am oberen Rand des zu l
 * **Azure-Portal**: 
   * Wenn Sie direkt über einen Freigabelink aus dem SDK oder dem Azure-Portal zu Ihrem Arbeitsbereich gelangen, können Sie die standardmäßige **Übersichtsseite** mit Abonnementinformationen in der Erweiterung nicht anzeigen. In diesem Szenario können Sie auch nicht zu einem anderen Arbeitsbereich wechseln. Um einen anderen Arbeitsbereich anzuzeigen, wechseln Sie direkt zu [Azure Machine Learning-Studio](https://ml.azure.com) und suchen nach dem Namen des Arbeitsbereichs.
   * Alle Assets (Datasets, Experimente, Computes usw.) sind nur in [Azure Machine Learning Studio](https://ml.azure.com) verfügbar. Sie sind *nicht* über das Azure-Portal verfügbar.
+
+### <a name="workspace-diagnostics"></a>Arbeitsbereichsdiagnose
+
+[!INCLUDE [machine-learning-workspace-diagnostics](../../includes/machine-learning-workspace-diagnostics.md)]
 
 ### <a name="resource-provider-errors"></a>Fehler der Ressourcenanbieter
 

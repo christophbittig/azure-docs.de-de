@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 07/21/2021
+ms.date: 08/19/2021
 ms.author: cherylmc
-ms.openlocfilehash: 2589c96e6b1de95ef93e942f382eb57f2eb4b53c
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 7986b592496ee558b76202ecf32f5121f6b30e37
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114722470"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122514615"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-using-azure-certificate-authentication-azure-portal"></a>Konfigurieren einer Point-to-Site-VPN-Verbindung unter Verwendung der Azure-Zertifikatauthentifizierung: Azure-Portal
 
@@ -168,11 +168,11 @@ Schritte zum Erstellen und Installieren von VPN-Clientkonfigurationsdateien find
 
 ### <a name="to-connect-from-a-mac-vpn-client"></a>So stellen Sie eine Verbindung von einem Mac-VPN-Client her
 
-Suchen Sie im Dialogfeld „Netzwerk“ nach dem gewünschten Clientprofil, geben Sie die Einstellungen aus der Datei [VpnSettings.xml](point-to-site-vpn-client-configuration-azure-cert.md#installmac) an, und wählen Sie dann **Verbinden** aus.
+Suchen Sie im Dialogfeld „Netzwerk“ nach dem gewünschten Clientprofil, geben Sie die Einstellungen aus der Datei [VpnSettings.xml](point-to-site-vpn-client-configuration-azure-cert.md#installmac) an, und wählen Sie dann **Verbinden** aus. Ausführliche Anweisungen finden Sie unter [Generieren und Installieren von VPN-Clientkonfigurationsdateien – macOS](./point-to-site-vpn-client-configuration-azure-cert.md#installmac). 
 
-Ausführliche Anweisungen finden Sie unter [Installieren – macOS](./point-to-site-vpn-client-configuration-azure-cert.md#installmac). Wenn beim Herstellen einer Verbindung Probleme auftreten, stellen Sie sicher, dass das Gateway des virtuellen Netzwerks nicht die Basic-SKU verwendet. Die Basic-SKU wird für Mac-Clients nicht unterstützt.
+Wenn beim Herstellen einer Verbindung Probleme auftreten, stellen Sie sicher, dass das Gateway des virtuellen Netzwerks nicht die Basic-SKU verwendet. Die Basic-SKU wird für Mac-Clients nicht unterstützt.
 
-:::image type="content" source="./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png" alt-text="VPN-Clientverbindung unter Mac." border="false":::
+   :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/select-connect.png" alt-text="Screenshot: Schaltfläche „Verbinden“" lightbox="./media/point-to-site-vpn-client-configuration-azure-cert/expanded/select-connect.png":::
 
 ## <a name="to-verify-your-connection"></a><a name="verify"></a>So überprüfen Sie Ihre Verbindung
 

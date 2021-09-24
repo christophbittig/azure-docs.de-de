@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 02/12/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: fcf3167e4f407a64d474275e495b73f511feabdf
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8690f69bace02e73f144b563a5541073cb976f22
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349364"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770608"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Integrieren von Azure Digital Twins in Azure SignalR Service
 
@@ -33,7 +33,7 @@ Folgende Voraussetzungen müssen erfüllt sein, bevor Sie fortfahren können:
     
 * Auf Ihrem Computer muss [Node.js](https://nodejs.org/) installiert sein.
 
-Sie sollten sich auch mit Ihrem Azure-Konto direkt am [Azure-Portal](https://portal.azure.com/) anmelden.
+Stellen Sie sicher, dass Sie sich mit Ihrem Azure-Konto beim [Azure-Portal](https://portal.azure.com/) anmelden, da Sie es in diesem Leitfaden verwenden müssen.
 
 ## <a name="solution-architecture"></a>Lösungsarchitektur
 
@@ -43,14 +43,14 @@ Sie fügen Azure SignalR Service über den unten angegebenen Pfad an Azure Digit
 
 ## <a name="download-the-sample-applications"></a>Herunterladen der Beispielanwendungen
 
-Laden Sie zunächst die erforderlichen Beispiel-Apps herunter. Sie benötigen Folgendes:
+Laden Sie zunächst die erforderlichen Beispiel-Apps herunter. Sie benötigen die beiden folgenden Beispiele:
 * [End-to-End-Beispiele für Azure Digital Twins:](/samples/azure-samples/digital-twins-samples/digital-twins-samples/) Dieses Beispiel enthält eine *AdtSampleApp* mit zwei Azure-Funktionen zum Verschieben von Daten in eine Azure Digital Twins-Instanz (weitere Informationen zu diesem Szenario finden Sie unter [Verbinden einer End-to-End-Lösung](tutorial-end-to-end.md)). Es enthält auch eine *DeviceSimulator*-Beispielanwendung, die ein IOT-Gerät simuliert und jede Sekunde einen neuen Temperaturwert generiert.
-    - Wenn Sie das Beispiel nicht bereits als Teil des Tutorials unter [Voraussetzungen](#prerequisites) heruntergeladen haben, [navigieren Sie zum Beispiel](/samples/azure-samples/digital-twins-samples/digital-twins-samples/), und wählen die Schaltfläche *Code durchsuchen* unter dem Titel aus. Dadurch gelangen Sie zum GitHub-Repository für die Beispiele, die Sie als .zip-Datei herunterladen können. Wählen Sie hierzu die Schaltfläche *Code* und anschließend *ZIP herunterladen* aus.
+    - Wenn Sie das Beispiel nicht bereits als Teil des Tutorials unter [Voraussetzungen](#prerequisites) heruntergeladen haben, [navigieren Sie zum Beispiel](/samples/azure-samples/digital-twins-samples/digital-twins-samples/), und wählen die Schaltfläche *Code durchsuchen* unter dem Titel aus. Dadurch gelangen Sie zum GitHub-Repository für die Beispiele, die Sie als ZIP-Datei herunterladen können. Wählen Sie hierzu die Schaltfläche *Code* und anschließend *ZIP herunterladen* aus.
 
         :::image type="content" source="media/includes/download-repo-zip.png" alt-text="Screenshot des Repositorys „digital-twins-samples“ auf GitHub und der Schritte zum Herunterladen des Repositorys als ZIP-Datei." lightbox="media/includes/download-repo-zip.png":::
 
-    Dadurch wird eine Kopie des Beispielrepositorys als **digital-twins-samples-master.zip** auf Ihren Computer heruntergeladen. Entpacken Sie den Ordner.
-* [Web-App-Beispiel für SignalR-Integration](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/): Dies ist eine Beispiel-Web-App (React), für die Azure Digital Twins-Telemetriedaten über eine Azure SignalR Service-Instanz genutzt werden.
+    Diese Schaltfläche lädt eine Kopie des Beispielrepositorys als **digital-twins-samples-master.zip** auf Ihren Computer herunter. Entpacken Sie den Ordner.
+* [Web-App-Beispiel für SignalR-Integration](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/): Diese Beispiel-Web-App (React) nutzt Azure Digital Twins-Telemetriedaten über eine Azure SignalR Service-Instanz.
     -  Navigieren Sie zum Link des Beispiels, und führen Sie den gleichen Downloadprozess durch, um eine Kopie des Beispiels auf Ihren Computer herunterzuladen (_**digitaltwins-signalr-webapp-sample-main.zip**_). Entpacken Sie den Ordner.
 
 [!INCLUDE [Create instance](../azure-signalr/includes/signalr-quickstart-create-instance.md)]
@@ -65,7 +65,7 @@ In diesem Abschnitt richten Sie zwei Azure-Funktionen ein:
 
 Starten Sie Visual Studio (oder einen anderen Code-Editor Ihrer Wahl), und öffnen Sie die Codeprojektmappe im Ordner *digital-twins-samples-master > ADTSampleApp*. Führen Sie dann die folgenden Schritte aus, um die Funktionen zu erstellen:
 
-1. Erstellen Sie im Projekt *SampleFunctionsApp* eine neue C#-Klasse namens **SignalRFunctions.cs**. Anweisungen dazu finden Sie unter [Entwickeln von Azure Functions mit Visual Studio](../azure-functions/functions-develop-vs.md#add-a-function-to-your-project).
+1. Erstellen Sie im Projekt *SampleFunctionsApp* eine neue C#-Klasse namens **SignalRFunctions.cs**. Anweisungen zum Erstellen einer neuen Klasse finden Sie unter [Entwickeln von Azure Functions mithilfe von Visual Studio](../azure-functions/functions-develop-vs.md#add-a-function-to-your-project).
 
 1. Ersetzen Sie den Inhalt der Klassendatei durch den folgenden Code:
     
@@ -76,7 +76,7 @@ Starten Sie Visual Studio (oder einen anderen Code-Editor Ihrer Wahl), und öffn
     dotnet add package Microsoft.Azure.WebJobs.Extensions.SignalRService --version 1.2.0
     ```
 
-    Dadurch sollten alle Abhängigkeitsprobleme in der Klasse behoben werden.
+    Die Ausführung dieses Befehls sollte alle Abhängigkeitsprobleme in der Klasse beheben.
 
 1. Veröffentlichen Sie Ihre Funktion in Azure. Sie können sie in der gleichen App Service-/Funktions-App veröffentlichen, die Sie im End-to-End-[Voraussetzungstutorial](#prerequisites) verwendet haben, oder Sie erstellen eine neue App. Wahrscheinlich möchten Sie jedoch dieselbe App verwenden, um Duplizierungen zu minimieren. Anweisungen zum Veröffentlichen einer Funktion mithilfe von Visual Studio finden Sie unter [Entwickeln von Azure Functions mithilfe von Visual Studio](../azure-functions/functions-develop-vs.md#publish-to-azure).
 
@@ -102,19 +102,19 @@ Konfigurieren Sie als Nächstes die Funktion für die Kommunikation mit Ihrer Az
 
 ## <a name="connect-the-function-to-event-grid"></a>Verbinden der Funktion mit Event Grid
 
-Abonnieren Sie als Nächstes die Azure-Funktion *broadcast* für das **Event Grid-Thema**, das Sie beim Erfüllen der [Voraussetzungen für das Tutorial](how-to-integrate-azure-signalr.md#prerequisites) erstellt haben. Dies ermöglicht es, dass Telemetriedaten vom Zwilling „thermostat67“ über das Event Grid-Thema an die Funktion gesendet werden. Von hier aus kann die Funktion die Daten an alle Clients übertragen.
+Abonnieren Sie als Nächstes die Azure-Funktion *broadcast* für das **Event Grid-Thema**, das Sie beim Erfüllen der [Voraussetzungen für das Tutorial](how-to-integrate-azure-signalr.md#prerequisites) erstellt haben. Diese Aktion ermöglicht es, dass Telemetriedaten vom Zwilling „thermostat67“ über das Event Grid-Thema an die Funktion gesendet werden. Von hier aus kann die Funktion die Daten an alle Clients übertragen.
 
-Erstellen Sie hierfür ein **Ereignisabonnement** aus Ihrem Event Grid-Thema mit der Azure-Funktion *broadcast* als Endpunkt.
+Sie erstellen zum Übertragen der Daten ein **Ereignisabonnement** aus Ihrem Event Grid-Thema mit der Azure-Funktion *broadcast* als Endpunkt.
 
 Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrem Event Grid-Thema, indem Sie in der oberen Suchleiste nach dessen Namen suchen. Klicken Sie auf *+ Ereignisabonnement*.
 
 :::image type="content" source="media/how-to-integrate-azure-signalr/event-subscription-1b.png" alt-text="Screenshot des Erstellens eines Ereignisabonnements im Azure-Portal.":::
 
-Fügen Sie auf der Seite *Ereignisabonnement erstellen* die Felder wie folgt aus (standardmäßig ausgefüllte Felder werden nicht angegeben):
+Füllen Sie auf der Seite *Ereignisabonnement erstellen* die Felder wie folgt aus (standardmäßig ausgefüllte Felder werden nicht angegeben):
 * *DETAILS ZUM EREIGNISABONNEMENT* > **Name**: Geben Sie Ihrem Ereignisabonnement einen Namen.
 * *ENDPUNKTDETAILS* > **Endpunkttyp**: Wählen Sie im Menü die Option *Azure-Funktion* aus.
-* *ENDPUNKTDETAILS* > **Endpunkt**: Wählen Sie den Link *Endpunkt auswählen* aus. Das Fenster *Azure-Funktion auswählen* wird geöffnet:
-    - Füllen Sie die Felder **Abonnement**, **Ressourcengruppe**, **Funktions-App** und **Funktion** (*broadcast*) aus. Einige Felder werden unter Umständen automatisch ausgefüllt, nachdem Sie das Abonnement ausgewählt haben.
+* *ENDPUNKTDETAILS* > **Endpunkt**: Wählen Sie den Link *Endpunkt auswählen* aus. Dadurch wird das Fenster *Azure-Funktion auswählen* geöffnet:
+    - Füllen Sie die Felder **Abonnement**, **Ressourcengruppe**, **Funktions-App** und **Funktion** (*broadcast*) aus. Einige dieser Felder werden unter Umständen automatisch ausgefüllt, nachdem Sie das Abonnement ausgewählt haben.
     - Klicken Sie auf **Auswahl bestätigen**.
 
 :::image type="content" source="media/how-to-integrate-azure-signalr/create-event-subscription.png" alt-text="Screenshot des Formulars zum Erstellen eines Ereignisabonnements im Azure-Portal.":::
@@ -137,7 +137,7 @@ Konfigurieren Sie als Nächstes die Beispielclient-Web-App. Ermitteln Sie zunäc
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/functions-negotiate.png" alt-text="Screenshot der Functions-Apps im Azure-Portal, wobei „Functions“ im Menü und „negotiate“ in der Liste der Funktionen hervorgehoben ist.":::
 
-1. Wählen Sie *Funktions-URL abrufen* aus, und kopieren Sie den Wert **bis zu _/api_ (schließen Sie die letzte Angabe _/negotiate?_ nicht ein)** . Sie benötigen diesen Wert im nächsten Schritt.
+1. Wählen Sie *Funktions-URL abrufen* aus, und kopieren Sie den Wert **bis zu _/api_ (schließen Sie die letzte Angabe _/negotiate?_ nicht ein)** . Dieser Wert wird im nächsten Schritt verwendet.
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="Screenshot des Azure-Portals mit der Funktion „negotiate“ und hervorgehobener Schaltfläche „Funktions-URL abrufen“ sowie hervorgehobener Funktions-URL.":::
 
@@ -171,7 +171,7 @@ Nun müssen Sie nur noch das Simulatorprojekt starten, das sich in *digital-twin
 
 :::image type="content" source="media/how-to-integrate-azure-signalr/start-button-simulator.png" alt-text="Screenshot der Visual Studio-Startschaltfläche mit geöffnetem Projekt „DeviceSimulator“.":::
 
-Im geöffneten Konsolenfenster werden Meldungen mit simulierten Telemetriedaten zur Temperatur angezeigt. Diese werden über Ihre Azure Digital Twins-Instanz gesendet. Dort werden sie dann von Azure Functions und SignalR übernommen.
+Im geöffneten Konsolenfenster werden Meldungen mit simulierten Telemetriedaten zur Temperatur angezeigt. Diese Nachrichten werden über Ihre Azure Digital Twins-Instanz gesendet. Dort werden sie dann von Azure Functions und SignalR übernommen.
 
 Sie müssen in dieser Konsole keine weiteren Schritte ausführen, aber Sie sollten sie während des nächsten Schritts geöffnet lassen.
 
@@ -183,7 +183,7 @@ Um die Ergebnisse in Aktion zu sehen, starten Sie das **SignalR-Integrations-Web
 npm start
 ```
 
-Dadurch wird ein Browserfenster geöffnet, in dem die Beispiel-App ausgeführt wird, die ein visuelles Temperaturmessgerät angezeigt. Sobald die App ausgeführt wird, sollten Sie die Temperaturtelemetriewerte vom Gerätesimulator sehen, die über Azure Digital Twins weitergegeben und in Echtzeit von der Web-App angezeigt werden.
+Durch die Ausführung dieses Befehls wird ein Browserfenster geöffnet, in dem die Beispiel-App ausgeführt wird, die ein visuelles Temperaturmessgerät angezeigt. Sobald die App ausgeführt wird, sollten Sie die Temperaturtelemetriewerte vom Gerätesimulator sehen, die über Azure Digital Twins weitergegeben und in Echtzeit von der Web-App angezeigt werden.
 
 :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-webapp-output.png" alt-text="Screenshot der Beispielclient-Web-App, der ein visuelles Temperaturmessgerät anzeigt. Die gezeigt Temperatur ist 67,52.":::
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/12/2021
 ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: 4b029686098ece115202e8929902955418113e79
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4648693bc0dd7cebd8f8aec1cf878a8c3abfc49e
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346108"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122636452"
 ---
 | Resource | Begrenzung |
 | --- | --- |
@@ -23,7 +23,8 @@ ms.locfileid: "122346108"
 | Maximale Anzahl der für das private Azure-Peering angekündigten IPv4-Routen mit ExpressRoute Premium-Add-On |10.000 |
 | Maximale Anzahl der für das private Azure-Peering angekündigten IPv6-Routen mit ExpressRoute Standard |100 |
 | Maximale Anzahl der für das private Azure-Peering angekündigten IPv6-Routen mit ExpressRoute Premium-Add-On |100 |
-| Maximale Anzahl der vom privaten Azure-Peering angekündigten Routen aus dem VNET-Adressraum für eine ExpressRoute-Verbindung | 1\.000 |
+| Maximale Anzahl der vom privaten Azure-Peering angekündigten IPv4-Routen aus dem VNet-Adressraum für eine ExpressRoute-Verbindung | 1\.000 |
+| Maximale Anzahl der vom privaten Azure-Peering angekündigten IPv6-Routen aus dem VNet-Adressraum für eine ExpressRoute-Verbindung | 1\.000 |
 | Maximale Anzahl der für das Microsoft-Peering angekündigten Routen mit ExpressRoute Standard |200 |
 | Maximale Anzahl der für das Microsoft-Peering angekündigten Routen mit ExpressRoute Premium-Add-On |200 |
 | Maximale Anzahl von ExpressRoute-Verbindungen, die mit dem gleichen virtuellen Netzwerk am selben Peeringstandort verknüpft sind |4 |

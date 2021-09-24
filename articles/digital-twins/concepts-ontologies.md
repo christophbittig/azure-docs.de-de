@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/1/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d87f6a7a536f4dc9d15d87fe141f14760cab8aaa
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: f4beb002a1bfd8a885157099228747213e754253
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351135"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772357"
 ---
 # <a name="what-is-an-ontology"></a>Was ist eine Ontologie? 
 
@@ -20,13 +20,13 @@ Das Vokabular einer Azure Digital Twins-Lösung wird mit [Modellen](concepts-mod
 
 Wenn es sich bei Ihrer Lösung um eine branchenspezifische Lösung handelt, kann es manchmal einfacher und effektiver sein, mit einer Gruppe bereits vorhandener Modelle für diese Branche zu arbeiten statt ein eigenes Modell von Grund auf neu zu erstellen. Diese Gruppen bereits vorhandener Modelle werden **Ontologien** genannt. 
 
-Allgemein ist eine Ontologie eine Gruppe von Modellen für eine bestimmte Domäne (z. B. eine Gebäudestruktur, ein IoT-System, eine Smart City, ein Energienetz oder Webinhalte). Ontologien werden häufig als Schemas für Zwillingsgraphen verwendet, da sie Folgendes ermöglichen können:
+Allgemein ist eine Ontologie eine Gruppe von Modellen für eine bestimmte Domäne (z. B. eine Gebäudestruktur, ein IoT-System, eine Smart City, das Energienetz, Webinhalte usw.). Ontologien werden häufig als Schemas für Zwillingsgraphen verwendet, da sie Folgendes ermöglichen können:
 * Harmonisierung von Softwarekomponenten, Dokumentation, Abfragebibliotheken usw.
 * Geringerer Investitionsaufwand für konzeptionelle Modellierung und Systementwicklung
 * Einfachere Interoperabilität von Daten auf Semantikebene
 * Wiederverwendung unter Berücksichtigung bewährter Methoden statt von Grund auf neu zu beginnen oder das Rad neu zu erfinden
 
-In diesem Artikel werden die Verwendung von Ontologien für Ihre Azure Digital Twins-Modelle und Gründe dafür erläutert. Außerdem erfahren Sie, welche Ontologien und Tools Ihnen für diese Modelle aktuell zur Verfügung stehen.
+In diesem Artikel wird erläutert, warum Sie Ontologien für Ihre Azure Digital Twins-Modelle verwenden sollten und wie Sie dabei vorgehen können. Außerdem wird erläutert, welche Ontologien und Tools für sie derzeit verfügbar sind.
 
 ## <a name="using-ontologies-for-azure-digital-twins"></a>Verwenden von Ontologien für Azure Digital Twins
 
@@ -51,12 +51,12 @@ Es gibt drei mögliche Strategien für das Integrieren von Branchenstandardontol
 Unabhängig davon, für welche Strategie zur Integration einer Ontologie in Azure Digital Twins Sie sich entscheiden, kann der gesamte folgende Pfad Sie durch das Erstellen und Hochladen Ihrer Ontologie als DTDL-Modelle führen.
 
 1. Beginnen Sie damit, sich über [DTDL-Modellierung in Azure Digital Twins](concepts-models.md) zu informieren und ein Verständnis dafür zu entwickeln.
-1. Fahren Sie dann mit der gewählten Strategie für die Ontologieintegration von oben fort: [Übernehmen](concepts-ontologies-adopt.md), [konvertieren](concepts-ontologies-convert.md) oder [erstellen](concepts-models.md) Sie Ihre Modelle basierend auf Ihrer Ontologie.
+1. Fahren Sie mit der von Ihnen gewählten Ontologie-Integrationsstrategie fort: [Übernehmen](concepts-ontologies-adopt.md), [Konvertieren](concepts-ontologies-convert.md) oder [Erstellen](concepts-models.md) Sie Ihre Modelle auf der Grundlage Ihrer Ontologie.
     1. [Erweitern](concepts-ontologies-extend.md) Sie ggf. Ihre Ontologie, um sie an Ihre Anforderungen anzupassen.
 1. [Überprüfen](how-to-parse-models.md) Sie Ihre Modelle, um sicherzustellen, dass es sich um funktionierende DTDL-Dokumente handelt.
 1. Laden Sie Ihre fertigen Modelle über die [APIs](how-to-manage-model.md#upload-models) oder eine Beispielanwendung wie [Azure Digital Twins Model Uploader](https://github.com/Azure/opendigitaltwins-tools/tree/master/ADTTools#uploadmodels) in Azure Digital Twins hoch.
 
-Danach sollten Sie Ihre Modelle in Ihrer Azure Digital Twins-Instanz verwenden können. 
+Nachdem Sie diese Folge von Artikeln gelesen haben, sollten Sie Ihre Modelle in Ihrer Azure Digital Twins-Instanz verwenden können. 
 
 >[!TIP]
 > Sie können die Modelle in Ihrer Ontologie mit dem [Azure Digital Twins-Explorer](concepts-azure-digital-twins-explorer.md) oder dem [Azure Digital Twins-Modellvisualisierer](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer) visualisieren.

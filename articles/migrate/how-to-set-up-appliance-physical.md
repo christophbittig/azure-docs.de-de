@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
-ms.openlocfilehash: 7dd11143e3852d17787de5e20ebe53290f5af96f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3e7780f2214cd603bbf4bd7955a8be7bc7128b89
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339277"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122777621"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Einrichten einer Appliance für physische Server
 
@@ -32,13 +32,13 @@ Die Einrichtung der Appliance umfasst Folgendes:
 1. Geben Sie einen Appliancenamen ein, und generieren Sie einen Projektschlüssel im Portal.
 2. Herunterladen einer gezippten Datei mit dem Azure Migrate-Installationsskript aus dem Azure-Portal.
 3. Extrahieren der Inhalte aus der gezippten Datei. Starten der PowerShell-Konsole mit Administratorrechten.
-4. Führen Sie das PowerShell-Skript aus, um den Appliancekonfiguration-Manager zu starten.
+4. Führen Sie das PowerShell-Skript zum Starten des Appliance-Konfigurations-Manager aus.
 5. Führen Sie die Erstkonfiguration der Appliance aus, und registrieren Sie sie unter Verwendung des Projektschlüssels im Projekt.
 
 ### <a name="generate-the-project-key"></a>Generieren des Projektschlüssels
 
 1. Wählen Sie unter **Migrationsziele** > **Windows, Linux and SQL Servers (Windows-/Linux-Server und SQL Server-Instanzen)**  > **Azure Migrate: Ermittlung und Bewertung** die Option **Ermitteln** aus.
-2. Wählen Sie unter **Discover servers** > **Are your servers virtualized?** („Server ermitteln“ > „Sind Ihre Server virtualisiert?“) die Option **Physical or other (AWS, GCP, Xen, etc.)** (Physische oder andere (AWS, GCP, Xen usw.)) aus.
+2. Wählen Sie unter **Discover servers (Server ermitteln)**  > **Sind Ihre Server virtualisiert?** die Option **Physische oder andere (AWS, GCP, Xen usw.)** aus.
 3. Geben Sie unter **1: Generate project key** (Projektschlüssel generieren) einen Namen für die Azure Migrate-Appliance ein, die Sie für die Ermittlung physischer oder virtueller Server einrichten. Für den Namen können bis zu 14 alphanumerische Zeichen angegeben werden.
 1. Klicken Sie auf **Schlüssel generieren**, um mit der Erstellung der erforderlichen Azure-Ressourcen zu beginnen. Schließen Sie die Seite „Discover servers“ (Server ermitteln) nicht, während die Ressourcen erstellt werden.
 1. Nach der erfolgreichen Erstellung der Azure-Ressourcen wird ein **Projektschlüssel** generiert.
@@ -62,7 +62,7 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
 
     **Download** | **Hashwert**
     --- | ---
-    [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140334) | b4668be44c05836bf0f2ac1c8b1f48b7a9538afcf416c5212c7190629e3683b2
+    [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140334) | CA8CEEE4C7AC13328ECA56AE9EB35137336CD3D73B1F867C4D736286EF61A234
 
 > [!NOTE]
 > Dasselbe Skript kann verwendet werden, um die physische Appliance für die öffentliche Azure-Cloud oder die Azure Government-Cloud einzurichten.
@@ -77,7 +77,7 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
     
     ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
 
-5. Treffen Sie eine Auswahl aus den Szenario-, Cloud- und Konnektivitätsoptionen, um eine Appliance mit der gewünschten Konfiguration bereitzustellen. Mit der nachfolgend gezeigten Auswahl richten Sie beispielsweise eine Appliance zum Ermitteln und Bewerten von **physischen Servern** _(oder in anderen Clouds wie AWS, GCP, Xen usw. ausgeführten Servers)_ für ein Azure Migrate-Projekt mit **Standardkonnektivität** _(öffentlicher Endpunkt)_ in einer **öffentlichen Azure-Cloud** ein.
+5. Treffen Sie eine Auswahl aus den Szenario-, Cloud- und Konnektivitätsoptionen, um eine Appliance mit der gewünschten Konfiguration bereitzustellen. Mit der nachfolgend gezeigten Auswahl richten Sie beispielsweise eine Appliance zum Ermitteln und Bewerten **physischer Server** _(oder in anderen Clouds wie AWS, GCP, Xen, usw. ausgeführter Server)_ für ein Azure Migrate-Projekt mit **Standardkonnektivität** _(öffentlicher Endpunkt)_ in einer **öffentlichen Azure-Cloud** ein.
 
     :::image type="content" source="./media/tutorial-discover-physical/script-physical-default-1.png" alt-text="Screenshot: Einrichten einer Appliance mit der gewünschten Konfiguration":::
 
@@ -91,7 +91,7 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
         - **Konfigurationsdateien**: %Programdata%\Microsoft Azure\Config
         - **Protokolldateien**: %Programdata%\Microsoft Azure\Logs
 
-Nach der erfolgreichen Ausführung des Skripts wird der Appliancekonfigurations-Manager automatisch gestartet.
+Nach der erfolgreichen Ausführung des Skripts wird der Appliance-Konfigurations-Manager automatisch gestartet.
 
 > [!NOTE]
 > Bei Problemen können Sie zum Troubleshooting unter „C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Zeitstempel</em>.log“ auf die Skriptprotokolle zugreifen.
