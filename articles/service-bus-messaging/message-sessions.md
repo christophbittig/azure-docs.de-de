@@ -2,31 +2,31 @@
 title: Azure Service Bus-Nachrichtensitzungen | Microsoft-Dokumentation
 description: In diesem Artikel wird erläutert, wie Nachrichtensitzungen zum Ermöglichen der gemeinsamen und geordneten Verarbeitung unbegrenzter Sequenzen verwandter Nachrichten verwendet werden.
 ms.topic: article
-ms.date: 04/19/2021
-ms.openlocfilehash: f3b6eae7b7f4d609df5067187595230aa6b86dba
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.date: 09/01/2021
+ms.openlocfilehash: 98430d7b9db857de6dc3dfb37e61908b236591f2
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987162"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433438"
 ---
 # <a name="message-sessions"></a>Nachrichtensitzungen
-Microsoft Azure Service Bus-Sitzungen ermöglichen die gemeinsame und geordnete Verarbeitung unbegrenzter Sequenzen zusammengehöriger Nachrichten. Sitzungen können mit **FIFO**-Mustern (First in, First Out) und **Anforderung/Antwort**-Mustern verwendet werden. In diesem Artikel wird gezeigt, wie Sie diese Muster mithilfe von Sitzungen implementieren, wenn Sie Service Bus verwenden. 
+Azure Service Bus-Sitzungen ermöglichen die gemeinsame und geordnete Verarbeitung unbegrenzter Sequenzen verwandter Nachrichten. Sitzungen können mit **FIFO**-Mustern (First in, First Out) und **Anforderung/Antwort**-Mustern verwendet werden. In diesem Artikel wird gezeigt, wie Sie diese Muster mithilfe von Sitzungen implementieren, wenn Sie Service Bus verwenden. 
 
 > [!NOTE]
 > Der Basic-Tarif von Service Bus unterstützt keine Sitzungen. Die Standard- und Premium-Tarife unterstützen Sitzungen. Informationen zu den Unterschieden zwischen diesen Tarifen finden Sie unter [Service Bus-Preise](https://azure.microsoft.com/pricing/details/service-bus/).
 
 ## <a name="first-in-first-out-fifo-pattern"></a>FIFO-Muster (First in, First Out)
-Um eine FIFO-Garantie in Service Bus umzusetzen, müssen Sie Sitzungen verwenden. Service Bus macht keine Vorgaben zur Art der Beziehung zwischen den Nachrichten und definiert auch kein bestimmtes Modell zur Bestimmung, wo eine Nachrichtensequenz beginnt oder endet.
+Um eine FIFO-Garantie in Service Bus umzusetzen, müssen Sie Sitzungen verwenden. Service Bus macht keine Vorgaben zur Art der Beziehung zwischen Nachrichten und definiert auch kein bestimmtes Modell zur Bestimmung, wo eine Nachrichtensequenz beginnt oder endet.
 
-Jeder Absender kann eine Sitzung erstellen, wenn er Nachrichten an ein Thema oder eine Warteschlange sendet, indem er die Eigenschaft **Sitzungs-ID** auf einen von der Anwendung definierten Bezeichner festlegt, der für die Sitzung eindeutig ist. Auf der AMQP 1.0-Protokollebene ist dieser Wert der *group-id*-Eigenschaft zugeordnet.
+Jeder Absender kann eine Sitzung erstellen, wenn er Nachrichten an ein Thema oder eine Warteschlange sendet, indem er die Eigenschaft **Sitzungs-ID** auf einen von der Anwendung definierten Bezeichner festlegt, der für die Sitzung eindeutig ist. Auf der **AMQP 1.0**-Protokollebene ist dieser Wert der **group-id**-Eigenschaft zugeordnet.
 
 Bei sitzungsabhängigen Warteschlangen oder Abonnements entstehen Sitzungen, wenn mindestens eine Nachricht mit der Sitzungs-ID vorhanden ist. Sobald eine Sitzung vorhanden ist, gibt es keine definierte Uhrzeit oder API für den Zeitpunkt, an dem die Sitzung abläuft oder erlischt. Theoretisch kann eine Nachricht für eine Sitzung heute und die nächste Nachricht in einem Jahr empfangen werden. Wenn die Sitzungs-ID übereinstimmt, ist die Sitzung aus Service Bus-Sicht identisch.
 
 Typischerweise verfügt eine Anwendung jedoch über klare Informationen dazu, wo eine Reihe zusammengehöriger Nachrichten beginnt und endet. Service Bus legt allerdings keine spezifischen Regeln fest. Ihre Anwendung kann die **Label**-Eigenschaft beispielsweise für die erste Nachricht auf **start** festlegen, für die Zwischennachrichten auf **content** und für die letzte Nachricht auf **end**. Die relative Position der content-Nachrichten kann als *SequenceNumber*-Delta der aktuellen Nachricht von der *SequenceNumber* der **Start**-Nachricht berechnet werden.
 
 > [!IMPORTANT]
-> Wenn Sitzungen für eine Warteschlange oder ein Abonnement aktiviert sind, können die Clientanwendungen ***keine*** regulären Nachrichten mehr senden/empfangen. Alle Nachrichten müssen im Rahmen einer Sitzung (durch Festlegen der Sitzungs-ID) gesendet und durch Akzeptieren der Sitzung empfangen werden.
+> Wenn Sitzungen für eine Warteschlange oder ein Abonnement aktiviert sind, können die Clientanwendungen ***keine*** regulären Nachrichten mehr senden oder empfangen. Alle Nachrichten müssen im Rahmen einer Sitzung (durch Festlegen der Sitzungs-ID) gesendet und durch Akzeptieren der Sitzung empfangen werden.
 
 Die APIs für Sitzungen sind für Warteschlangen- und Abonnementclients vorhanden. Es gibt ein verbindliches Modell, das steuert, wann Sitzungen und Nachrichten empfangen werden, und ein auf einem Handler basierendes Modell, das die Komplexität bei der Verwaltung der Empfangsschleife verbirgt. 
 
@@ -40,7 +40,7 @@ Sitzungen ermöglichen das gleichzeitige Demultiplexing von verschachtelten Nach
 
 Ein Sitzungsempfänger wird von einem Client erstellt, der eine Sitzung akzeptiert. Wenn die Sitzung von einem Client akzeptiert und aufrechterhalten wird, hält der Client eine exklusive Sperre für alle Nachrichten mit der **Sitzungs-ID** dieser Sitzung, die in der Warteschlange oder im Abonnement vorhanden sind. Er hält auch exklusive Sperren für alle Nachrichten mit der **Sitzungs-ID**, die später eingehen.
 
-Die Sperre wird freigegeben, wenn Sie die mit dem Schließen verknüpften Methoden auf der Empfängerseite aufrufen oder die Sperre abläuft. Auf der Empfängerseite sind auch Methoden zum Verlängern der Sperren verfügbar. Sie können stattdessen das Feature für die automatische Verlängerung von Sperren verwenden und dort den Zeitraum angeben, für den die Sperre verlängert werden soll. Die Sitzungssperre sollte wie eine exklusive Sperre für eine Datei behandelt werden, d. h. die Anwendung muss die Sitzung schließen, sobald sie diese nicht mehr benötigt und/oder keine weiteren Nachrichten erwartet.
+Die Sperre wird freigegeben, wenn Methoden für Schließvorgänge auf der Empfängerseite aufgerufen werden oder die Sperre abläuft. Auf der Empfängerseite sind auch Methoden zum Verlängern der Sperren verfügbar. Sie können stattdessen das Feature für die automatische Verlängerung von Sperren verwenden und dort den Zeitraum angeben, für den die Sperre verlängert werden soll. Die Sitzungssperre sollte wie eine exklusive Sperre für eine Datei behandelt werden, d. h. die Anwendung muss die Sitzung schließen, sobald sie diese nicht mehr benötigt und/oder keine weiteren Nachrichten erwartet.
 
 Wenn mehrere gleichzeitige Empfänger auf die Warteschlange zugreifen, werden die zu einer bestimmten Sitzung gehörenden Nachrichten an den spezifischen Empfänger gesendet, der gerade die Sperre für diese Sitzung hält. Mit diesem Vorgang erfolgt für einen geschachtelten Nachrichtendatenstrom, der sich in einer Warteschlange oder einem Abonnement befindet, ein ordnungsgemäßes Demultiplexing an verschiedene Empfänger. Diese Empfänger können sich auch auf verschiedenen Clientcomputern befinden, da die Sperrverwaltung in Service Bus auf Dienstseite erfolgt.
 
@@ -88,7 +88,7 @@ Sehen Sie sich die Beispiele in der Sprache Ihrer Wahl an, um sich mit Azure Se
 - [Azure Service Bus-Clientbibliothekbeispiele für .NET (neueste Version)](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/)
 - [Azure Service Bus-Clientbibliothekbeispiele für Java (neueste Version)](/samples/azure/azure-sdk-for-java/servicebus-samples/)
 - [Azure Service Bus-Clientbibliothekbeispiele für Python](/samples/azure/azure-sdk-for-python/servicebus-samples/)
-- [Azure Service Bus-Clientbibliothekbeispiele für JavaScript](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
+- [Azure Service Bus-Clientbibliothekbeispiele für JavaScript](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
 - [Azure Service Bus-Clientbibliothekbeispiele für TypeScript](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
 
 Hier finden Sie Beispiele für die älteren .NET- und Java-Clientbibliotheken:

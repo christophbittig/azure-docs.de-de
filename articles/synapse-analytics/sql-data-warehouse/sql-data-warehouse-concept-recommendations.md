@@ -11,12 +11,12 @@ ms.date: 06/26/2020
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: b418b46199c524ca92d60dece6031073938e159b
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: e747c6ab94f76411cf727bc46637798e903772b6
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107568419"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123537686"
 ---
 # <a name="azure-advisor-recommendations-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Advisor-Empfehlungen für dedizierte SQL-Pools in Azure Synapse Analytics
 
@@ -73,4 +73,4 @@ Die Abfrageleistung kann sich bei hohen tempdb-Konflikten verschlechtern.  Tempd
 
 ## <a name="data-loading-misconfiguration"></a>Fehlkonfiguration beim Laden von Daten
 
-Sie sollten Daten immer aus einem Speicherkonto in derselben Region wie der dedizierte SQL-Pool laden, um die Latenz zu minimieren. Verwenden Sie die [COPY-Anweisung für hohen Durchsatz bei der Datenerfassung](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true), und teilen Sie Ihre Stagingdateien in Ihrem Speicherkonto auf, um den Durchsatz zu maximieren. Wenn Sie die COPY-Anweisung nicht verwenden können, können Sie für einen besseren Durchsatz die SqlBulkCopy-API oder bcp mit einer hohen Batchgröße verwenden. Weitere Anleitungen zum Laden von Daten finden Sie in der folgenden [Dokumentation](./guidance-for-loading-data.md).
+Sie sollten Daten immer aus einem Speicherkonto in derselben Region wie der dedizierte SQL-Pool laden, um die Latenz zu minimieren. Verwenden Sie die [COPY-Anweisung für hohen Durchsatz bei der Datenerfassung](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true), und teilen Sie Ihre Stagingdateien in Ihrem Speicherkonto auf, um den Durchsatz zu maximieren. Wenn Sie die COPY-Anweisung nicht verwenden können, können Sie für einen besseren Durchsatz die SqlBulkCopy-API oder bcp mit einer hohen Batchgröße verwenden. Weitere Anleitungen zum Laden von Daten finden Sie unter [Bewährte Methoden für das Laden von Daten](../sql/data-loading-best-practices.md).

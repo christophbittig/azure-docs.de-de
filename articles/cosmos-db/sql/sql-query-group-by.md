@@ -5,19 +5,22 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 07/30/2021
+ms.date: 09/01/2021
 ms.author: tisande
-ms.openlocfilehash: 2aa08f0d2cf0ccb78d231e30e7c60cde47ba4c86
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 50d30ac0636f74715b3472c35b2801ac6452b624
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122350491"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123428806"
 ---
 # <a name="group-by-clause-in-azure-cosmos-db"></a>GROUP BY-Klausel in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
 
 Die GROUP BY-Klausel unterteilt die Ergebnisse der Abfrage anhand der Werte einer oder mehrerer angegebener Eigenschaften.
+
+> [!NOTE]
+> Die GROUP BY-Klausel wird im Azure Cosmos DB Python SDK nicht unterstützt.
 
 ## <a name="syntax"></a>Syntax
 
@@ -44,7 +47,7 @@ Die GROUP BY-Klausel unterteilt die Ergebnisse der Abfrage anhand der Werte eine
   Wenn eine Abfrage eine GROUP BY-Klausel verwendet, kann die SELECT-Klausel nur die Teilmenge der Eigenschaften und Systemfunktionen enthalten, die in der GROUP BY-Klausel enthalten ist. Eine Ausnahme bilden [aggregierte Funktionen](sql-query-aggregate-functions.md), die in der SELECT-Klausel vorkommen können, ohne in der GROUP BY-Klausel enthalten zu sein. Sie können in die SELECT-Klausel auch stets Literalwerte einschließen.
 
   Die GROUP BY-Klausel muss hinter der SELECT-, FROM- und WHERE-Klausel und vor der OFFSET LIMIT-Klausel stehen. GROUP BY kann derzeit nicht mit einer ORDER BY-Klausel verwendet werden, was jedoch in Planung ist.
-
+  
   Die GROUP BY-Klausel erlaubt keines der folgenden Elemente:
   
 - Aliase von Eigenschaften oder Systemfunktionen (in der SELECT-Klausel sind Aliase weiterhin zulässig)

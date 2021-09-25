@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: 69ddda7bd88218a3667b16bfdc9fa33aa5349ff6
-ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
+ms.openlocfilehash: 7eb1855717817da1f7b46e512c1a14268ce1a937
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112573938"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123478480"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Failover und Patching für Azure Cache for Redis
 
@@ -74,13 +74,43 @@ Bei jedem Failover müssen in den Standard- und Premium-Caches Daten von einem a
 
 ## <a name="how-does-a-failover-affect-my-client-application"></a>Wie wirkt sich ein Failover auf meine Clientanwendung aus?
 
-Die Anzahl der von der Clientanwendung erkannten Fehler hängt davon ab, wie viele Vorgänge zum Zeitpunkt des Failovers für die entsprechende Verbindung ausstehend waren. Bei jeder Verbindung, die über den Knoten weitergeleitet werden, dessen Verbindungen geschlossen wurden, treten Fehler auf. Viele Clientbibliotheken können unterschiedliche Arten von Fehlern auslösen, wenn Verbindungen unterbrochen werden, einschließlich Timeoutausnahmen, Verbindungsausnahmen oder Socketausnahmen. Anzahl und Typ der Ausnahmen hängen davon ab, wo sich die Anforderung im Codepfad befindet, wenn die Verbindungen im Cache geschlossen werden. Beispielsweise tritt bei einem Vorgang, bei dem eine Anforderung gesendet wird, für die zum Zeitpunkt des Failovers jedoch noch keine Antwort zurückgegeben wurde, möglicherweise eine Timeoutausnahme auf. Bei neuen Anforderungen für das geschlossene Verbindungsobjekt treten Verbindungsausnahmen auf, bis die Verbindung erfolgreich wiederhergestellt wird.
+Clientanwendungen können einige Fehler von ihrer Azure Cache For Redis-Anwendung erhalten. Die Anzahl der Fehler, die eine Clientanwendung verzeichnet, hängt davon ab, wie viele Vorgänge zum Zeitpunkt des Failovers in dieser Verbindung ausstanden. Bei jeder Verbindung, die über den Knoten weitergeleitet wird, dessen Verbindungen geschlossen wurden, treten Fehler auf.
+
+Viele Clientbibliotheken können bei Verbindungsabbrüchen verschiedene Arten von Fehlern auslösen, darunter:
+
+- Timeoutausnahmen
+- Verbindungsausnahmen
+- Socketausnahmen
+
+Anzahl und Typ der Ausnahmen hängen davon ab, wo sich die Anforderung im Codepfad befindet, wenn der Cache die Verbindungen schließt. Beispielsweise tritt bei einem Vorgang, bei dem eine Anforderung gesendet wird, für die zum Zeitpunkt des Failovers jedoch noch keine Antwort zurückgegeben wurde, möglicherweise eine Timeoutausnahme auf. Bei neuen Anforderungen für das geschlossene Verbindungsobjekt treten Verbindungsausnahmen auf, bis die Verbindung erfolgreich wiederhergestellt wird.
 
 Die meisten Clientbibliotheken versuchen, erneut eine Verbindung mit dem Cache herzustellen, wenn sie entsprechend konfiguriert sind. Durch unvorhergesehene Fehler können die Bibliotheksobjekte jedoch gelegentlich in einen nicht wiederherstellbaren Zustand gesetzt werden. Wenn Fehler länger als eine vorkonfigurierte Zeitspanne andauern, sollte das Verbindungsobjekt neu erstellt werden. In Microsoft .NET und anderen objektorientierten Sprachen kann die Neuerstellung der Verbindung ohne Neustart der Anwendung durch Verwendung eines [Lazy\<T\>-Musters](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#reconnecting-with-lazyt-pattern) erreicht werden.
 
-### <a name="can-i-be-notified-in-advance-of-a-planned-maintenance"></a>Kann ich im Voraus über eine geplante Wartung informiert werden?
+### <a name="can-i-be-notified-in-advance-of-planned-maintenance"></a>Kann ich im Voraus über eine geplante Wartung informiert werden?
 
-Azure Cache for Redis veröffentlicht jetzt Benachrichtigungen auf einem Kanal mit Veröffentlichungs- und Abonnementarchitektur namens [AzureRedisEvents](https://github.com/Azure/AzureCacheForRedis/blob/main/AzureRedisEvents.md) etwa 30 Sekunden vor geplanten Aktualisierungen. Bei den Benachrichtigungen handelt es um Laufzeitbenachrichtigungen. Diese wurden speziell für Anwendungen entwickelt, die Leistungsschutzschalter verwenden können, um den Cache zu umgehen oder Befehle zu puffern, z. B. bei geplanten Updates. Es handelt sich nicht um einen Mechanismus, der Sie Tage oder Stunden im Voraus benachrichtigen kann.
+Azure Cache for Redis veröffentlicht Benachrichtigungen auf einem Kanal mit Veröffentlichungs- und Abonnementarchitektur (pub/sub) namens [AzureRedisEvents](https://github.com/Azure/AzureCacheForRedis/blob/main/AzureRedisEvents.md) etwa 30 Sekunden vor geplanten Aktualisierungen. Bei den Benachrichtigungen handelt es um Laufzeitbenachrichtigungen.
+
+Die Benachrichtigungen gelten für Anwendungen, die Leistungsschutzschalter verwenden, um den Cache zu umgehen, oder Anwendungen, die Befehle puffern. Beispielsweise könnte der Cache während geplanter Updates umgangen werden.
+
+Der `AzureRedisEvents`-Kanal ist kein Mechanismus, der Sie Tage oder Stunden im Voraus benachrichtigen kann. Der Kanal kann Clients über anstehende geplante Serverwartungsereignisse benachrichtigen, die sich auf die Serververfügbarkeit auswirken können.
+
+Viele beliebte Redis-Clientbibliotheken unterstützen das Abonnieren von Pub-/Sub-Kanälen. Das Empfangen von Benachrichtigungen vom `AzureRedisEvents`-Kanal ist in der Regel eine einfache Ergänzung Ihrer Clientanwendung.
+
+Sobald Ihre Anwendung `AzureRedisEvents` abonniert hat, erhält sie 30 Sekunden, bevor ein Knoten von einem Wartungsereignis betroffen ist, eine Benachrichtigung. Die Benachrichtigung enthält Details zum bevorstehenden Ereignis und gibt an, ob es sich auf einen primären Knoten oder auf einen Replikatknoten auswirkt.
+
+Eine weitere Benachrichtigung wird Minuten später gesendet, nachdem der Wartungsvorgang abgeschlossen wurde.
+
+Ihre Anwendung verwendet den Inhalt in der Benachrichtigung, um Maßnahmen zu ergreifen, um die Verwendung des Caches während der Wartung zu vermeiden. Ein Cache kann ein Leistungsschutzschalter-Muster implementieren, bei dem der Datenverkehr während des Wartungsvorgangs den Cache umgeht. Stattdessen wird Datenverkehr direkt an einen persistenten Speicher gesendet. Die Benachrichtigung ist nicht dazu gedacht, einer Person Zeit zu geben, um gewarnt zu werden und selbst Maßnahmen zu ergreifen.
+
+In den meisten Fällen muss Ihre Anwendung weder `AzureRedisEvents` abonnieren noch auf Benachrichtigungen reagieren. Stattdessen wird empfohlen, die [integrierte Resilienz](#build-in-resiliency) zu implementieren.
+
+Mit einer ausreichenden Resilienz können Anwendungen jeden kurzen Verbindungsverlust oder die Nichtverfügbarkeit des Caches, wie sie bei der Knotenwartung auftritt, problemlos bewältigen. Es ist auch möglich, dass Ihre Anwendung aufgrund von Netzwerkfehlern oder anderen Ereignissen unerwartet und ohne Warnung von `AzureRedisEvents` die Verbindung mit dem Cache verliert.
+
+Wir empfehlen das Abonnieren von `AzureRedisEvents` nur in einigen wenigen bemerkenswerten Fällen:
+
+- Für Anwendungen mit extremen Leistungsanforderungen, bei denen auch geringfügige Verzögerungen vermieden werden müssen. In solchen Szenarien könnte der Datenverkehr nahtlos zu einem Sicherungscache umgeleitet werden, bevor die Wartung des aktuellen Caches beginnt.
+- Für Anwendungen, die Daten explizit aus Replikaten und nicht aus primären Knoten lesen. Während der Wartung eines Replikationsknotens könnte die Anwendung vorübergehend dazu übergehen, Daten von primären Knoten zu lesen.
+- Für Anwendungen, die nicht riskieren können, dass Schreibvorgänge unbemerkt fehlschlagen oder ohne Bestätigung erfolgreich sind, was passieren kann, wenn Verbindungen zu Wartungszwecken geschlossen werden. Wenn diese Fälle zu einem gefährlichen Datenverlust führen würden, kann die Anwendung proaktiv Schreibbefehle anhalten oder umleiten, bevor die Wartung beginnt.
 
 ### <a name="client-network-configuration-changes"></a>Änderungen der Clientnetzwerkkonfiguration
 
@@ -106,6 +136,8 @@ Die folgenden Entwurfsmustern helfen Ihnen bei der Erstellung robuster Clients. 
 Verwenden Sie zum Testen der Resilienz einer Clientanwendung einen [Neustart](cache-administration.md#reboot) als manuellen Auslöser für Verbindungsunterbrechungen.
 
 Darüber hinaus empfiehlt sich die [Planung von Updates](cache-administration.md#schedule-updates) für einen Cache, um Redis-Runtimepatches während bestimmter wöchentlicher Zeitfenster anzuwenden. Bei diesen Zeitfenstern handelt es sich normalerweise um Zeiträume, in denen der Datenverkehr der Clientanwendung gering ist.
+
+Weitere Informationen finden Sie unter [Verbindungsresilienz](cache-best-practices-connection.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
