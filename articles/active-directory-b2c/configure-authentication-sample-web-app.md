@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/23/2021
+ms.date: 09/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: b05aa59f465eafd65fa111fff811d2f0909f601d
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 60f3383c58ab297fd5c2199d532591b1d3a38b8f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123471856"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128572490"
 ---
 # <a name="configure-authentication-in-a-sample-web-app-by-using-azure-ad-b2c"></a>Konfigurieren der Authentifizierung in einem Beispiel einer ASP.NET-Webanwendung mithilfe von Azure AD B2C
 
@@ -32,7 +32,7 @@ OpenID Connect (OIDC) ist ein Authentifizierungsprotokoll, das auf OAuth 2.0 ba
 Der Anmeldeflow umfasst die folgenden Schritte:
 
 1. Benutzer navigieren zur Web-App und wählen **Anmelden** aus. 
-1. Die App löst eine Authentifizierungsanforderung aus und leitet Benutzer zu Azure AD B2C um.
+1. Die App löst eine Authentifizierungsanforderung aus und leitet Benutzer an Azure AD B2C um.
 1. Benutzer [registrieren oder melden sich an](add-sign-up-and-sign-in-policy.md) und [setzen das Kennwort](add-password-reset-policy.md) zurück. Alternativ können sie sich mit einem [Social Media-Konto](add-identity-provider.md) anmelden.
 1. Nachdem die Benutzer sich erfolgreicher angemeldet haben, gibt Azure AD B2C ein ID-Token an die App zurück.
 1. Die App überprüft das ID-Token, liest die Ansprüche und gibt eine sichere Seite an die Benutzer zurück.
@@ -75,8 +75,9 @@ Bei der App-Registrierung geben Sie den *Umleitungs-URI* an. Der Umleitungs-URI 
 Gehen Sie zum Erstellen der Web-App-Registrierung folgendermaßen vor:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
-1. Suchen Sie nach **Azure AD B2C**, und wählen Sie diese Option aus.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
+1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
 1. Wählen Sie **App-Registrierungen** aus, und wählen Sie dann **Registrierung einer neuen Anwendung** aus.
 1. Geben Sie unter **Name** einen Namen für die Anwendung ein, (z. B. *webapp1*).
 1. Wählen Sie unter **Unterstützte Kontotypen** die Option **Konten in einem beliebigen Identitätsanbieter oder Organisationsverzeichnis (zum Authentifizieren von Benutzern mit Benutzerflows)** aus. 
@@ -135,7 +136,7 @@ Die endgültige Konfigurationsdatei sollte wie die folgende JSON aussehen:
 ## <a name="step-5-run-the-sample-web-app"></a>Schritt 5: Ausführen der Beispiel-Web-App
 
 1. Erstellen Sie das Projekt, und führen Sie es aus.
-1. Navigieren Sie zu `https://localhost:5001`. 
+1. Gehe zu `https://localhost:5001`. 
 1. Wählen Sie **Registrieren/Anmelden** aus.
 
     ![Ein Screenshot, der die Schaltfläche „Registrieren/Anmelden“ auf der Willkommensseite des Projekts zeigt.](./media/configure-authentication-sample-web-app/web-app-sign-in.png)

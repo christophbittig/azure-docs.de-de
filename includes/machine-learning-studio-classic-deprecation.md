@@ -5,12 +5,12 @@ ms.subservice: studio-classic
 ms.topic: include
 ms.date: 08/23/2021
 ms.author: cgronlun
-ms.openlocfilehash: 7a4265328293e23d12ab118b108738d92d68efa1
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 8de6d84d8202131a46cfb3093640f3d8c932fc6e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122688034"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "126056888"
 ---
 <!-- Deprecation notice for Machine Learning Studio (classic) docs
 -->
@@ -20,7 +20,7 @@ ms.locfileid: "122688034"
 >
 > Ab dem 1. Dezember 2021 können Sie keine neuen Ressourcen in Machine Learning Studio (klassisch) mehr erstellen. Bis zum 31. August 2024 können Sie die vorhandenen Ressourcen in Machine Learning Studio (klassisch) weiterhin verwenden.  
 > 
-> - Siehe [Migrieren zu Azure Machine Learning](/azure/machine-learning/migrate-overview) 
-> - [Weitere Informationen zu Azure Machine Learning](/azure/machine-learning/overview-what-is-azure-machine-learning)
+> - Siehe [Migrieren zu Azure Machine Learning](../articles/machine-learning/migrate-overview.md) 
+> - [Weitere Informationen zu Azure Machine Learning](../articles/machine-learning/overview-what-is-azure-machine-learning.md)
 > 
 > Die Dokumentation zu ML Studio (klassisch) wird nicht mehr fortgeführt und kann künftig nicht mehr aktualisiert werden.

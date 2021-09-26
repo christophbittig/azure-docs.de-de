@@ -8,15 +8,15 @@ ms.topic: reference
 ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6048ee9237640799b7bec37083e607fc74ffb8e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eeb1d3bac4cb1ca6bc5849ba743c83922f0283cc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85252966"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128620975"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10-Roamingeinstellungen – Referenz
 
@@ -26,7 +26,7 @@ Die folgende Liste enthält die Einstellungen, für die unter Windows 10 Roamin
 
 Die folgende Tabelle enthält eine Zusammenfassung der Geräte und Kontotypen, die unter Windows 10 vom Framework für die Synchronisierung, Sicherung und Wiederherstellung unterstützt werden.
 
-| Kontotyp und Vorgang | Desktop | Mobil |
+| Kontotyp und Vorgang | Desktop | Mobile |
 | --- | --- | --- |
 | Azure Active Directory: Synchronisierung |Ja |Nein |
 | Azure Active Directory: Sicherung/Wiederherstellung |Nein |Nein |
@@ -69,7 +69,7 @@ In der folgenden Tabelle bezieht sich „Sonstige“ in der Spalte „Gruppe“ 
 Die Einträge „Intern“ in der Spalte „Gruppe“ beziehen sich auf Einstellungen und Apps, für die die Synchronisierung nur in der App selbst oder für das gesamte Gerät per MDM- oder Gruppenrichtlinien-Einstellungen deaktiviert werden kann.
 Einstellungen, für die kein Roaming oder keine Synchronisierung durchgeführt wird, gehören keiner Gruppe an.
 
-| Einstellungen | Desktop | Mobil | Gruppieren |
+| Einstellungen | Desktop | Mobile | Gruppieren |
 | --- | --- | --- | --- |
 | **Konten**: Kontobild |sync |X |Design |
 | **Konten**: weitere Kontoeinstellungen |X |X | |

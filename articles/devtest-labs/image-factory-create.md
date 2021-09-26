@@ -1,14 +1,14 @@
 ---
-title: Erstellen einer Image Factory in Azure DevTest Labs | Microsoft-Dokumentation
+title: Erstellen einer Imagefactory
 description: In diesem Artikel wird beschrieben, wie Sie eine benutzerdefinierte Image Factory einrichten, indem Sie Beispielskripts aus dem Git-Repository (Azure DevTest Labs) verwenden.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 14c8338d6a5ae21847da3a9c774ea6dcdac33ae4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0e4ed8444475d1cd396dfa6c54083858b7671d5e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85482070"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128623587"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Erstellen einer benutzerdefinierten Image Factory in Azure DevTest Labs
 In diesem Artikel wird beschrieben, wie Sie eine benutzerdefinierte Image Factory einrichten, indem Sie Beispielskripts aus dem [Git-Repository](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory) verwenden.

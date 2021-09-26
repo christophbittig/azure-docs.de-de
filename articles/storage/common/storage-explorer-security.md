@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: best-practice
 ms.date: 07/30/2020
 ms.author: cralvord
-ms.openlocfilehash: 283ec9999f9b4362035b6770383984efb0879d49
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b82071c393cea168fccb5e06db85e71852bbd4f8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92783758"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128636760"
 ---
 # <a name="azure-storage-explorer-security-guide"></a>Sicherheitsleitfaden für Azure Storage-Explorer
 
@@ -98,7 +98,7 @@ Storage-Explorer ermöglicht Ihnen das Ändern der Zugriffsebene Ihrer Azure Blo
 Wenn Sie den öffentlichen Zugriff für einen Blobcontainer aktivieren, empfehlen wir, die folgenden Richtlinien zu befolgen:
 
 - **Aktivieren Sie den öffentlichen Zugriff nicht für Blobcontainer, die möglicherweise vertrauliche Daten enthalten.** Stellen Sie unbedingt sicher, dass sich keine privaten Daten in Ihrem Blobcontainer befinden.
-- **Laden Sie keine potenziell vertraulichen Daten in einen Blobcontainer mit Blob- oder Containerzugriff hoch.** 
+- **Laden Sie keine potenziell vertraulichen Daten in einen Blobcontainer mit Blob- oder Containerzugriff hoch.**
 
 ## <a name="next-steps"></a>Nächste Schritte
 

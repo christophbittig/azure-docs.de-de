@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 95081b661d4f33577df07420ab194ec48488221a
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: ea5cd9dffeb8efdeb9dc29fa9d38696973285e47
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768085"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128549234"
 ---
 # <a name="required-url-list"></a>Erforderliche URL-Liste
 
@@ -87,7 +87,7 @@ Die Azure-VMs, die Sie für Azure Virtual Desktop erstellen, müssen über Zugri
 | 168.63.129.16 | 80 | [Sitzungshost-Systemüberwachung](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | – |
 
 >[!IMPORTANT]
->Azure Virtual Desktop unterstützt jetzt das FQDN-Tag. Weitere Informationen finden Sie unter [Verwenden von Azure Firewall zum Schutz von Windows Virtual Desktop-Bereitstellungen](../firewall/protect-windows-virtual-desktop.md).
+>Azure Virtual Desktop unterstützt jetzt das FQDN-Tag. Weitere Informationen finden Sie unter [Verwenden von Azure Firewall zum Schutz von Windows Virtual Desktop-Bereitstellungen](../firewall/protect-azure-virtual-desktop.md).
 >
 >Wir empfehlen Ihnen, FQDN- oder Diensttags anstelle von URLs zu verwenden, um Dienstprobleme zu verhindern. Die aufgeführten URLs und Tags beziehen sich nur auf Azure Virtual Desktop-Websites und -Ressourcen. Sie enthalten keine URLs für andere Dienste, z. B. Azure Active Directory.
 

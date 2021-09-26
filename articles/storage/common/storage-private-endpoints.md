@@ -10,12 +10,12 @@ ms.date: 03/16/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 3fcc58f626622bcc728265e782906226859e1bf9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a52460db452d519c51fb7a1b191766b21da67f88
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104600461"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128592278"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Verwenden privater Endpunkte für Azure Storage
 
@@ -47,7 +47,7 @@ Speicherkontobesitzer können Einwilligungsanforderungen und die privaten Endpun
 Sie können Ihr Speicherkonto schützen, indem nur Verbindungen über das VNET akzeptiert werden. Dazu [konfigurieren Sie die Speicherfirewall](storage-network-security.md#change-the-default-network-access-rule) so, dass der Zugriff über den öffentlichen Endpunkt standardmäßig verweigert wird. Sie brauchen keine Firewallregel, um Datenverkehr aus einem VNET mit einem privaten Endpunkt zuzulassen, da die Speicherfirewall nur den Zugriff über den öffentlichen Endpunkt steuert. Private Endpunkte verwenden stattdessen den Einwilligungsflow, um Subnetzen den Zugriff auf den Speicherdienst zu gewähren.
 
 > [!NOTE]
-> Beim Kopieren von Blobs zwischen Speicherkonten benötigt der Client Netzwerkzugriff auf beide Konten. Wenn Sie also einen privaten Link für ein einziges Konto (Quelle oder Ziel) verwenden möchten, stellen Sie sicher, dass der Client über Netzwerkzugriff auf das andere Konto verfügt. Weitere Informationen zu anderen Möglichkeiten zum Konfigurieren des Netzwerkzugriffs finden Sie unter [Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage](storage-network-security.md?toc=/azure/storage/blobs/toc.json). 
+> Beim Kopieren von Blobs zwischen Speicherkonten benötigt der Client Netzwerkzugriff auf beide Konten. Wenn Sie also einen privaten Link für ein einziges Konto (Quelle oder Ziel) verwenden möchten, stellen Sie sicher, dass der Client über Netzwerkzugriff auf das andere Konto verfügt. Weitere Informationen zu anderen Möglichkeiten zum Konfigurieren des Netzwerkzugriffs finden Sie unter [Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage](storage-network-security.md?toc=/azure/storage/blobs/toc.json).
 
 <a id="private-endpoints-for-azure-storage"></a>
 
@@ -61,11 +61,9 @@ Wie Sie einen privaten Endpunkt mithilfe von PowerShell oder der Azure-CLI erste
 
 - [Erstellen eines privaten Endpunkts mit Azure PowerShell](../../private-link/create-private-endpoint-powershell.md)
 
+Wenn Sie einen privaten Endpunkt erstellen, müssen Sie das Speicherkonto und den Speicherdienst angeben, mit dem eine Verbindung hergestellt wird.
 
-
-Wenn Sie einen privaten Endpunkt erstellen, müssen Sie das Speicherkonto und den Speicherdienst angeben, mit dem eine Verbindung hergestellt wird. 
-
-Sie benötigen einen separaten privaten Endpunkt für jede Speicherressource, auf die Sie zugreifen müssen. Dies sind [Blobs](../blobs/storage-blobs-overview.md), [Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md), [Dateien](../files/storage-files-introduction.md), [Warteschlangen](../queues/storage-queues-introduction.md), [Tabellen](../tables/table-storage-overview.md) oder [statische Websites](../blobs/storage-blob-static-website.md). Für den privaten Endpunkt sind diese Speicherdienste als **untergeordnete Zielressourcen** des zugeordneten Speicherkontos definiert. 
+Sie benötigen einen separaten privaten Endpunkt für jede Speicherressource, auf die Sie zugreifen müssen. Dies sind [Blobs](../blobs/storage-blobs-overview.md), [Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md), [Dateien](../files/storage-files-introduction.md), [Warteschlangen](../queues/storage-queues-introduction.md), [Tabellen](../tables/table-storage-overview.md) oder [statische Websites](../blobs/storage-blob-static-website.md). Für den privaten Endpunkt sind diese Speicherdienste als **untergeordnete Zielressourcen** des zugeordneten Speicherkontos definiert.
 
 Wenn Sie einen privaten Endpunkt für die Speicherressource „Data Lake Storage Gen2“ erstellen, sollten Sie auch einen für die Ressource „Blob Storage“ erstellen. Der Grund: Vorgänge, deren Ziel der Endpunkt „Data Lake Storage Gen2“ ist, werden möglicherweise an den Endpunkt „Blob“ umgeleitet. Durch das Erstellen eines privaten Endpunkts für beide Ressourcen sorgen Sie dafür, dass Vorgänge erfolgreich abgeschlossen werden können.
 
@@ -94,24 +92,24 @@ Wenn Sie die Speicherendpunkt-URL von außerhalb des VNET mit dem privaten Endpu
 
 Beim oben gezeigten Beispiel lauten die DNS-Ressourceneinträge für das Speicherkonto „StorageAccountA“ bei Auflösung von außerhalb des VNET, das den privaten Endpunkt hostet, wie folgt:
 
-| Name                                                  | Typ  | Wert                                                 |
+| Name                                                  | type  | Wert                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
-| ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
-| ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<storage service public endpoint\>                   |
+| `StorageAccountA.blob.core.windows.net`             | CNAME | `StorageAccountA.privatelink.blob.core.windows.net` |
+| `StorageAccountA.privatelink.blob.core.windows.net` | CNAME | \<storage service public endpoint\>                   |
 | \<storage service public endpoint\>                   | Ein     | \<storage service public IP address\>                 |
 
 Wie bereits erwähnt, können Sie den Zugriff für Clients außerhalb des VNET über den öffentlichen Endpunkt mithilfe der Speicherfirewall verweigern oder steuern.
 
 Die DNS-Ressourceneinträge für „StorageAccountA“ lauten nach dem Auflösen durch einen Client im VNET, das den privaten Endpunkt hostet, wie folgt:
 
-| Name                                                  | Typ  | Wert                                                 |
-| :---------------------------------------------------- | :---: | :---------------------------------------------------- |
-| ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
-| ``StorageAccountA.privatelink.blob.core.windows.net`` | Ein     | 10.1.1.5                                              |
+| Name  | type | Wert |
+| :--- | :---: | :--- |
+| `StorageAccountA.blob.core.windows.net` | CNAME | `StorageAccountA.privatelink.blob.core.windows.net` |
+| `StorageAccountA.privatelink.blob.core.windows.net` | Ein | `10.1.1.5` |
 
 Diese Vorgehensweise ermöglicht den Zugriff auf das Speicherkonto **mithilfe derselben Verbindungszeichenfolge** für Clients in dem VNET, das die privaten Endpunkte hostet, als auch Clients außerhalb des VNET.
 
-Wenn Sie einen benutzerdefinierten DNS-Server in Ihrem Netzwerk verwenden, müssen Clients in der Lage sein, den FQDN für den Speicherkontoendpunkt in die IP-Adresse des privaten Endpunkts aufzulösen. Sie sollten den DNS-Server so konfigurieren, dass die Unterdomäne der privaten Verbindung an die private DNS-Zone für das VNET delegiert wird, oder konfigurieren Sie die A-Einträge für *StorageAccountA.privatelink.blob.core.windows.net* mit der IP-Adresse des privaten Endpunkts.
+Wenn Sie einen benutzerdefinierten DNS-Server in Ihrem Netzwerk verwenden, müssen Clients in der Lage sein, den FQDN für den Speicherkontoendpunkt in die IP-Adresse des privaten Endpunkts aufzulösen. Sie sollten den DNS-Server so konfigurieren, dass die Unterdomäne der privaten Verbindung an die private DNS-Zone für das VNET delegiert wird, oder konfigurieren Sie die A-Einträge für `StorageAccountA.privatelink.blob.core.windows.net` mit der IP-Adresse des privaten Endpunkts.
 
 > [!TIP]
 > Wenn Sie einen benutzerdefinierten oder lokalen DNS-Server verwenden, sollten Sie ihn so konfigurieren, dass der Speicherkontoname in der Unterdomäne `privatelink` in die IP-Adresse des privaten Endpunkts aufgelöst wird. Hierzu können Sie die Unterdomäne `privatelink` an die private DNS-Zone des VNET delegieren oder die DNS-Zone auf dem DNS-Server konfigurieren und die DNS-A-Einträge hinzufügen.
@@ -152,9 +150,9 @@ Derzeit können keine [Netzwerksicherheitsgruppen](../../virtual-network/network
 
 ### <a name="copying-blobs-between-storage-accounts"></a>Kopieren von Blobs zwischen Speicherkonten
 
-Sie können Blobs zwischen Speicherkonten über private Endpunkte nur kopieren, wenn Sie die Azure-REST-API oder Tools verwenden, bei denen die REST-API verwendet wird. Zu diesen Tools gehören AzCopy, Storage-Explorer, Azure PowerShell, die Azure-Befehlszeilenschnittstelle und die Azure Blob Storage-SDKs. 
+Sie können Blobs zwischen Speicherkonten über private Endpunkte nur kopieren, wenn Sie die Azure-REST-API oder Tools verwenden, bei denen die REST-API verwendet wird. Zu diesen Tools gehören AzCopy, Storage-Explorer, Azure PowerShell, die Azure-Befehlszeilenschnittstelle und die Azure Blob Storage-SDKs.
 
-Nur private Endpunkte mit der Blob Storage-Ressource als Ziel werden unterstützt. Private Endpunkte mit Data Lake Storage Gen2 oder der Dateiressource als Ziel werden noch nicht unterstützt. Außerdem wird das Kopieren zwischen Speicherkonten über das NFS-Protokoll (Network File System) noch nicht unterstützt. 
+Nur private Endpunkte mit der Blob Storage-Ressource als Ziel werden unterstützt. Private Endpunkte mit Data Lake Storage Gen2 oder der Dateiressource als Ziel werden noch nicht unterstützt. Außerdem wird das Kopieren zwischen Speicherkonten über das NFS-Protokoll (Network File System) noch nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

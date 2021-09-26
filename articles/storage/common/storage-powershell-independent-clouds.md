@@ -10,20 +10,20 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e924a5f6c765b5b964fe3b1492393b063d9d23b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 181dd9531ec8aa3630ff1ef3e3356ead5120c512
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92783571"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605960"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Verwalten von Speicher in den unabhängigen Azure-Clouds mithilfe von PowerShell
 
 Die meisten Benutzer verwenden Azure Public Cloud für die globale Bereitstellung von Azure. Es gibt allerdings auch einige unabhängige Bereitstellungen von Microsoft Azure, die beispielsweise durch bestimmte Anforderungen an Datenhoheit motiviert sind. Diese unabhängigen Bereitstellungen werden als „Umgebungen“ bezeichnet. Nachfolgend sind die derzeit verfügbaren unabhängigen Clouds aufgeführt:
 
-* [Azure Government-Cloud](https://azure.microsoft.com/features/gov/)
-* [Azure China 21Vianet-Cloud, betrieben von 21Vianet in China](http://www.windowsazure.cn/)
-* [Azure German Cloud](../../germany/germany-welcome.md)
+- [Azure Government-Cloud](https://azure.microsoft.com/features/gov/)
+- [Azure China 21Vianet-Cloud, betrieben von 21Vianet in China](http://www.windowsazure.cn/)
+- [Azure German Cloud](../../germany/germany-welcome.md)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -31,9 +31,9 @@ Die meisten Benutzer verwenden Azure Public Cloud für die globale Bereitstellun
 
 Zur Verwendung von Azure Storage in einer der unabhängigen Clouds stellen Sie nicht mit Azure Public, sondern mit der gewünschten Cloud eine Verbindung her. So verwenden Sie anstelle von Azure Public eine der unabhängigen Clouds:
 
-* Sie geben die *Umgebung* an, mit der eine Verbindung hergestellt werden soll.
-* Sie bestimmen und verwenden die verfügbaren Regionen.
-* Sie verwenden das richtige Endpunktsuffix. Dieses Suffix unterscheidet sich von Azure Public.
+- Sie geben die *Umgebung* an, mit der eine Verbindung hergestellt werden soll.
+- Sie bestimmen und verwenden die verfügbaren Regionen.
+- Sie verwenden das richtige Endpunktsuffix. Dieses Suffix unterscheidet sich von Azure Public.
 
 Für die Beispiele ist mindestens Version 0.7 des Azure PowerShell-Moduls Az erforderlich. Führen Sie in einem PowerShell-Fenster `Get-Module -ListAvailable Az` aus, um die Version zu ermitteln. Wenn nichts aufgeführt ist oder Sie ein Upgrade ausführen müssen, lesen Sie die Informationen unter [Install and configure Azure PowerShell](/powershell/azure/install-Az-ps) (Installieren und Konfigurieren von Azure PowerShell).
 
@@ -45,7 +45,7 @@ Führen Sie das Cmdlet [Get-AzEnvironment](/powershell/module/az.accounts/get-az
 Get-AzEnvironment
 ```
 
-Melden Sie sich bei dem Konto an, mit dem Sie Zugriff auf die Cloud haben, mit der Sie eine Verbindung herstellen möchten, und legen Sie die Umgebung fest. Dieses Beispiel zeigt, wie Sie sich bei einem Konto anmelden, das die Azure Government-Cloud verwendet.   
+Melden Sie sich bei dem Konto an, mit dem Sie Zugriff auf die Cloud haben, mit der Sie eine Verbindung herstellen möchten, und legen Sie die Umgebung fest. Dieses Beispiel zeigt, wie Sie sich bei einem Konto anmelden, das die Azure Government-Cloud verwendet.
 
 ```powershell
 Connect-AzAccount –Environment AzureUSGovernment
@@ -65,7 +65,6 @@ Die folgende Tabelle enthält die für die Deutschland-Cloud zurückgegebenen St
 |----|----|
 | `germanycentral` | Deutschland, Mitte|
 | `germanynortheast` | Deutschland, Nordosten |
-
 
 ## <a name="endpoint-suffix"></a>Endpunktsuffix
 
@@ -166,8 +165,8 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Speichern von Benutzeranmeldungen zwischen PowerShell-Sitzungen](/powershell/azure/context-persistence)
-* [Azure Government-Speicher](../../azure-government/compare-azure-government-global-azure.md)
-* [Microsoft Azure Government-Entwicklerhandbuch](../../azure-government/documentation-government-developer-guide.md)
-* [Entwicklerhinweise zu Azure China 21Vianet-Anwendungen](https://msdn.microsoft.com/library/azure/dn578439.aspx)
-* [Azure Deutschland-Dokumentation](../../germany/germany-welcome.md)
+- [Speichern von Benutzeranmeldungen zwischen PowerShell-Sitzungen](/powershell/azure/context-persistence)
+- [Azure Government-Speicher](../../azure-government/compare-azure-government-global-azure.md)
+- [Microsoft Azure Government-Entwicklerhandbuch](../../azure-government/documentation-government-developer-guide.md)
+- [Entwicklerhinweise zu Azure China 21Vianet-Anwendungen](https://msdn.microsoft.com/library/azure/dn578439.aspx)
+- [Azure Deutschland-Dokumentation](../../germany/germany-welcome.md)

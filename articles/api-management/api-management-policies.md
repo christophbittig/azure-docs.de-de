@@ -3,17 +3,17 @@ title: Richtlinien in Azure API Management | Microsoft Docs
 description: Erfahren Sie mehr über die Richtlinien, die für die Verwendung in Azure API Management verfügbar sind. Mithilfe von Richtlinien kann der Herausgeber das API-Verhalten über die Konfiguration ändern.
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 ms.service: api-management
 ms.topic: article
 ms.date: 07/19/2021
-ms.author: apimpm
-ms.openlocfilehash: c6856226c1eda0e8d5fde7df6d2b251007a47fa2
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.author: danlep
+ms.openlocfilehash: c593d9d9f2d957564eed5be98f3f92f29ce79a27
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114468516"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128551097"
 ---
 # <a name="api-management-policies"></a>Richtlinien für die API-Verwaltung
 Dieser Abschnitt enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](api-management-howto-policies.md).

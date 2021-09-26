@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: e0ba3363b6004afb8e42f420fae681b2827106fb
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: b568b11b7e0e630dcceef53e4c0f513dc0a7732c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114707089"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128547555"
 ---
 # <a name="set-up-a-file-share-for-msix-app-attach"></a>Einrichten einer Dateifreigabe für das MSIX-Feature zum Anfügen von Apps
 
@@ -44,12 +44,12 @@ Im Folgenden finden Sie weitere Empfehlungen zum Optimieren der Leistung des MSI
 - Die Speicherlösung, die Sie für das MSIX-Feature zum Anfügen von Apps verwenden, sollte sich an demselben Rechenzentrumsstandort wie die Sitzungshosts befinden.
 - Um Leistungsengpässe zu vermeiden, schließen Sie die folgenden VHD-, VHDX- und CIM-Dateien von Antivirenscans aus:
    
-    - <MSIXAppAttachFileShare\>\*.VHD
-    - <MSIXAppAttachFileShare\>\*.VHDX
-    - \\\\storageaccount.file.core.windows.net\\share\*\*.VHD
-    - \\\\storageaccount.file.core.windows.net\\share\*\*.VHDX
-    - <MSIXAppAttachFileShare>.CIM
-    - \\\\storageaccount.file.core.windows.net\\share\*\*.CIM
+    - `<MSIXAppAttachFileShare\>\*.VHD`
+    - `<MSIXAppAttachFileShare\>\*.VHDX`
+    - `\\storageaccount.file.core.windows.net\share*.VHD`
+    - `\\storageaccount.file.core.windows.net\share*.VHDX`
+    - `<MSIXAppAttachFileShare>.CIM`
+    - `\\storageaccount.file.core.windows.net\share**.CIM`
 
 - Trennen Sie das Speicherfabric für das MSIX-Feature zum Anfügen von Apps von den FSLogix-Profilcontainern.
 - Alle VM-Systemkonten und -Benutzerkonten müssen über Leseberechtigungen für den Zugriff auf die Dateifreigabe verfügen.

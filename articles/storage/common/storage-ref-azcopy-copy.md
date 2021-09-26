@@ -8,12 +8,12 @@ ms.date: 09/01/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 09994e329072ab0ed67a9cb29c09ff245b288923
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 4cb943230c0211c67caf5d7a074d21077358c143
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123432070"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605447"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -67,6 +67,7 @@ Hochladen einer einzelnen Datei unter Verwendung der OAuth-Authentifizierung. We
 ```azcopy
 azcopy cp "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
 ```
+
 Wie oben, aber berechnen Sie hierbei außerdem den MD5-Hash des Dateiinhalts, und speichern Sie ihn als „Content-MD5“-Eigenschaft des Blobs:
 
 ```azcopy
@@ -80,13 +81,13 @@ azcopy cp "/path/to/file.txt" "https://[account].blob.core.windows.net/[containe
 ```
 
 Hochladen einer einzelnen Datei unter Verwendung eines SAS-Tokens und einer Weiterleitung (nur Blockblobs):
-  
+
 ```azcopy
 cat "/path/to/file.txt" | azcopy cp "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]
 ```
 
 Hochladen eines gesamten Verzeichnisses unter Verwendung eines SAS-Tokens:
-  
+
 ```azcopy
 azcopy cp "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive
 ```
@@ -98,7 +99,7 @@ azcopy cp "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[p
 ```
 
 Hochladen einer Gruppe von Dateien unter Verwendung eines SAS-Tokens und Platzhalterzeichen (*):
- 
+
 ```azcopy
 azcopy cp "/path/*foo/*bar/*.pdf" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]"
 ```
@@ -109,10 +110,10 @@ Hochladen von Dateien und Verzeichnissen unter Verwendung eines SAS-Tokens und P
 azcopy cp "/path/*foo/*bar*" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive
 ```
 
-Hochladen von Dateien und Verzeichnissen in ein Azure Storage-Konto und Festlegen der in der Abfragezeichenfolge codierten Tags für das Blob. 
+Hochladen von Dateien und Verzeichnissen in ein Azure Storage-Konto und Festlegen der in der Abfragezeichenfolge codierten Tags für das Blob.
 
 - Verwenden Sie die folgende Syntax, um die Tags „{key = "bla bla", val = "foo"}“ und „{key = "bla bla 2", val = "bar"}“ festzulegen: `azcopy cp "/path/*foo/*bar*" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --blob-tags="bla%20bla=foo&bla%20bla%202=bar"`
-    
+
 - Schlüssel und Werte werden URL-codiert, und Schlüssel-Wert-Paare werden durch ein kaufmännisches Und-Zeichen (&) getrennt.
 
 - Wenn Sie Tags für die Blobs festlegen, sind in SAS zusätzliche Berechtigungen („t“ für Tags) erforderlich, ohne die der Dienst einen Autorisierungsfehler zurückgibt.
@@ -130,27 +131,27 @@ azcopy cp "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[S
 ```
 
 Herunterladen einer einzelnen Datei unter Verwendung eines SAS-Tokens und anschließendes Weiterleiten der Ausgabe in eine Datei (nur Blockblobs):
- 
+
 ```azcopy
 azcopy cp "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]" > "/path/to/file.txt"
-``` 
+```
 
 Herunterladen eines gesamten Verzeichnisses unter Verwendung eines SAS-Tokens:
- 
+
 ```azcopy
 azcopy cp "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" "/path/to/dir" --recursive
-``` 
+```
 
 Hinweis zur Verwendung eines Platzhalterzeichens (*) in URLs:
 
-Es gibt nur zwei Möglichkeiten, ein Platzhalterzeichen in einer URL zu verwenden. 
+Es gibt nur zwei Möglichkeiten, ein Platzhalterzeichen in einer URL zu verwenden.
 
-- Sie können einen Platzhalter direkt nach dem letzten Schrägstrich (/) einer URL verwenden. Durch die Verwendung des Platzhalterzeichens werden alle Dateien in einem Verzeichnis direkt an das Ziel kopiert, ohne sie in ein Unterverzeichnis einzufügen. 
+- Sie können einen Platzhalter direkt nach dem letzten Schrägstrich (/) einer URL verwenden. Durch die Verwendung des Platzhalterzeichens werden alle Dateien in einem Verzeichnis direkt an das Ziel kopiert, ohne sie in ein Unterverzeichnis einzufügen.
 
-- Sie können auch im Namen eines Containers ein Platzhalterzeichen verwenden, sofern die URL nur auf einen Container und nicht auf ein Blob verweist. Mit diesem Ansatz können Sie Dateien aus einer Teilmenge von Containern abrufen. 
+- Sie können auch im Namen eines Containers ein Platzhalterzeichen verwenden, sofern die URL nur auf einen Container und nicht auf ein Blob verweist. Mit diesem Ansatz können Sie Dateien aus einer Teilmenge von Containern abrufen.
 
 Herunterladen der Inhalte eines Verzeichnisses, ohne das Verzeichnis selbst zu kopieren.
- 
+
 ```azcopy
 azcopy cp "https://[srcaccount].blob.core.windows.net/[container]/[path/to/folder]/*?[SAS]" "/path/to/dir"
 ```
@@ -173,7 +174,7 @@ Kopieren eines einzelnen Blobs in ein anderes Blob unter Verwendung eines SAS-To
 azcopy cp "https://[srcaccount].blob.core.windows.net/[container]/[path/to/blob]?[SAS]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
 ```
 
-Kopieren eines einzelnen Blobs in ein anderes Blob unter Verwendung eines SAS-Tokens und eines Authentifizierungstokens. Sie müssen am Ende der URL für das Quellkonto ein SAS-Token verwenden. Für das Zielkonto ist jedoch kein Token erforderlich, wenn Sie sich mit dem Befehl `azcopy login` bei AzCopy anmelden. 
+Kopieren eines einzelnen Blobs in ein anderes Blob unter Verwendung eines SAS-Tokens und eines Authentifizierungstokens. Sie müssen am Ende der URL für das Quellkonto ein SAS-Token verwenden. Für das Zielkonto ist jedoch kein Token erforderlich, wenn Sie sich mit dem Befehl `azcopy login` bei AzCopy anmelden.
 
 ```azcopy
 azcopy cp "https://[srcaccount].blob.core.windows.net/[container]/[path/to/blob]?[SAS]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/blob]"
@@ -192,27 +193,27 @@ azcopy cp "https://[srcaccount].blob.core.windows.net?[SAS]" "https://[destaccou
 ```
 
 Kopieren eines einzelnen Objekts aus Amazon Web Services (AWS) S3 in Blob Storage unter Verwendung eines Zugriffsschlüssels und eines SAS-Tokens. Legen Sie zunächst die Umgebungsvariablen `AWS_ACCESS_KEY_ID` und `AWS_SECRET_ACCESS_KEY` für die AWS S3-Quelle fest.
-  
+
 ```azcopy
 azcopy cp "https://s3.amazonaws.com/[bucket]/[object]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
 ```
 
 Kopieren eines gesamten Verzeichnisses aus AWS S3 in Blob Storage unter Verwendung eines Zugriffsschlüssels und eines SAS-Tokens. Legen Sie zunächst die Umgebungsvariablen `AWS_ACCESS_KEY_ID` und `AWS_SECRET_ACCESS_KEY` für die AWS S3-Quelle fest.
- 
+
 ```azcopy
 azcopy cp "https://s3.amazonaws.com/[bucket]/[folder]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive
 ```
-    
+
   Unter https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html finden Sie ausführlichere Informationen zum Platzhalter „[folder]“.
 
 Kopieren aller Buckets aus Amazon Web Services (AWS) in Blob Storage unter Verwendung eines Zugriffsschlüssels und eines SAS-Tokens. Legen Sie zunächst die Umgebungsvariablen `AWS_ACCESS_KEY_ID` und `AWS_SECRET_ACCESS_KEY` für die AWS S3-Quelle fest.
- 
+
 ```azcopy
 azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive
 ```
 
 Kopieren aller Buckets aus einer Amazon Web Services (AWS)-Region in Blob Storage unter Verwendung eines Zugriffsschlüssels und eines SAS-Tokens. Legen Sie zunächst die Umgebungsvariablen `AWS_ACCESS_KEY_ID` und `AWS_SECRET_ACCESS_KEY` für die AWS S3-Quelle fest.
- 
+
 ```azcopy
 - azcopy cp "https://s3-[region].amazonaws.com/" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive
 ```
@@ -223,22 +224,22 @@ Kopieren einer Teilmenge der Buckets unter Verwendung eines Platzhaltersymbols (
 - azcopy cp "https://s3.amazonaws.com/[bucket*name]/" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive
 ```
 
-Übertragen von Dateien und Verzeichnissen in ein Azure Storage-Konto und Festlegen der in der angegebenen Abfragezeichenfolge codierten Tags für das Blob. 
+Übertragen von Dateien und Verzeichnissen in ein Azure Storage-Konto und Festlegen der in der angegebenen Abfragezeichenfolge codierten Tags für das Blob.
 
 - Verwenden Sie die folgende Syntax, um die Tags „{key = "bla bla", val = "foo"}“ und „{key = "bla bla 2", val = "bar"}“ festzulegen: `azcopy cp "https://[account].blob.core.windows.net/[source_container]/[path/to/directory]?[SAS]" "https://[account].blob.core.windows.net/[destination_container]/[path/to/directory]?[SAS]" --blob-tags="bla%20bla=foo&bla%20bla%202=bar"`
-        
+
 - Schlüssel und Werte werden URL-codiert, und Schlüssel-Wert-Paare werden durch ein kaufmännisches Und-Zeichen (&) getrennt.
-    
+
 - Wenn Sie Tags für die Blobs festlegen, sind in SAS zusätzliche Berechtigungen („t“ für Tags) erforderlich, ohne die der Dienst einen Autorisierungsfehler zurückgibt.
 
 Kopieren Sie ein einzelnes Objekt mithilfe eines Dienstkontoschlüssels und eines SAS-Tokens aus Google Cloud Storage in Blob Storage. Legen Sie zunächst die Umgebungsvariable GOOGLE_APPLICATION_CREDENTIALS für die Google Cloud Storage-Quelle fest.
-  
+
 ```azcopy
 azcopy cp "https://storage.cloud.google.com/[bucket]/[object]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
 ```
 
 Kopieren Sie ein gesamtes Verzeichnis mithilfe eines Dienstkontoschlüssels und eines SAS-Tokens aus Google Cloud Storage in Blob Storage. Legen Sie zunächst die Umgebungsvariable GOOGLE_APPLICATION_CREDENTIALS für die Google Cloud Storage-Quelle fest.
- 
+
 ```azcopy
   - azcopy cp "https://storage.cloud.google.com/[bucket]/[folder]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true
 ```
@@ -256,7 +257,7 @@ Kopieren Sie alle Buckets mithilfe eines Dienstkontoschlüssels und eines SAS-To
 ```
 
 Kopieren Sie mithilfe eines Dienstkontoschlüssels und eines SAS-Tokens als Ziel eine Teilmenge der Buckets mithilfe eines Platzhalterzeichens (*) im Bucketnamen aus Google Cloud Storage. Legen Sie zunächst die Umgebungsvariablen GOOGLE_APPLICATION_CREDENTIALS und GOOGLE_CLOUD_PROJECT=<`project-id`> als Google Cloud Storage-Quelle fest.
- 
+
 ```azcopy
 azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccount].blob.core.windows.net/?[SAS]" --recursive=true
 ```
@@ -299,7 +300,7 @@ azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccoun
 
 **--exclude-attributes** string (nur Windows): schließt Dateien aus, deren Attribute mit der Attributliste übereinstimmen. Beispiel: A;S;R
 
-**--exclude-blob-type** string: gibt optional den Blobtyp (`BlockBlob`/ `PageBlob`/ `AppendBlob`) an, der ausgeschlossen werden soll, wenn Blobs aus dem Container oder Konto kopiert werden. Die Verwendung dieses Flags gilt nicht für das Kopieren von Daten von einem nicht zu Azure gehörenden Dienst zu einem Dienst. Bei Angabe von mehreren Blobs sollte `;` als Trennzeichen verwendet werden. 
+**--exclude-blob-type** string: gibt optional den Blobtyp (`BlockBlob`/ `PageBlob`/ `AppendBlob`) an, der ausgeschlossen werden soll, wenn Blobs aus dem Container oder Konto kopiert werden. Die Verwendung dieses Flags gilt nicht für das Kopieren von Daten von einem nicht zu Azure gehörenden Dienst zu einem Dienst. Bei Angabe von mehreren Blobs sollte `;` als Trennzeichen verwendet werden.
 
 **--exclude-path** string: schließt diese Pfade beim Kopieren aus. Diese Option unterstützt keine Platzhalterzeichen (*). Überprüft das Präfix des relativen Pfads (z. B. `myFolder;myFolder/subDirName/file.pdf`). Wenn die Option in Verbindung mit einem Kontodurchlauf verwendet wird, enthalten Pfade keinen Containernamen.
 
@@ -331,7 +332,7 @@ azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccoun
 
 **--list-of-versions** string: gibt eine Datei an, bei der jede Versions-ID in einer separaten Zeile steht. Beachten Sie, dass die Quelle auf ein einzelnes Blob verweisen muss und dass alle in der Datei mit diesem Flag angegebenen Versions-IDs nur zum Quellblob gehören dürfen. AzCopy lädt die angegebenen Versionen in den bereitgestellten Zielordner herunter. Weitere Informationen finden Sie unter [Herunterladen früherer Versionen eines Blobs](./storage-use-azcopy-v10.md#transfer-data).
 
-**--log-level** string: definiert, wie ausführlich die Protokolldatei sein soll. Verfügbare Stufen: INFO (alle Anforderungen/Antworten), WARNING (langsame Antworten), ERROR (nur fehlgeschlagene Anforderungen) und NONE (keine Ausgabeprotokolle). (Standardwert: `INFO`) 
+**--log-level** string: definiert, wie ausführlich die Protokolldatei sein soll. Verfügbare Stufen: INFO (alle Anforderungen/Antworten), WARNING (langsame Antworten), ERROR (nur fehlgeschlagene Anforderungen) und NONE (keine Ausgabeprotokolle). (Standardwert: `INFO`)
 
 **--metadata** string: führt Uploads in Azure Storage mit diesen Schlüssel-Wert-Paaren als Metadaten aus.
 
@@ -348,7 +349,6 @@ azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccoun
 **--preserve-smb-info**: Standardmäßig TRUE. Behält SMB-Eigenschaftsinformationen ( letzte Schreibzeit, Erstellungszeit, Attributbits) zwischen SMB-fähigen Ressourcen (Windows und Azure Files) bei. Es werden nur die von Azure Files unterstützten Attributbits übertragen. Alle anderen werden ignoriert. Dieses Flag gilt sowohl für Dateien als auch für Ordner, es sei denn, ein reiner Dateifilter ist angegeben (z. B. „include-pattern“). Die für Ordner übertragenen Informationen sind die gleichen wie die für Dateien, mit Ausnahme der letzten Schreibzeit, die für Ordner nicht gespeichert wird.
 
 **--preserve-permissions**: Standardmäßig FALSE. Behält ACLs zwischen kompatiblen Ressourcen (Windows und Azure Files oder Data Lake Storage Gen 2 zu Data Lake Storage Gen 2) bei. Für Konten mit einem hierarchischen Namespace benötigen Sie eine Container-SAS oder ein OAuth-Token mit den Berechtigungen „Besitz ändern“ und „Berechtigungen ändern“. Für Downloads müssen Sie auch das --backup-Flag verwenden, um Berechtigungen wiederherzustellen, bei denen der neue Besitzer nicht der Benutzer ist, der AzCopy ausführt. Dieses Flag gilt sowohl für Dateien als auch für Ordner, es sei denn, ein reiner Dateifilter ist angegeben (z. B. include-pattern).
-
 
 **--put-md5:** erstellt einen MD5-Hash jeder Datei und speichert den Hash als „Content-MD5“-Eigenschaft des Zielblobs bzw. der Zieldatei. (Standardmäßig wird der Hash NICHT erstellt.) Nur beim Hochladen verfügbar.
 

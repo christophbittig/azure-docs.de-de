@@ -78,12 +78,6 @@
           href: ../reports-monitoring/concept-provisioning-logs.md?context=%2fazure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
     - name: Lokale App-Bereitstellung
       items:
-        - name: Voraussetzungen für den ECMA-Connectorhost
-          href: on-premises-ecma-prerequisites.md
-        - name: Installation des ECMA-Connectorhosts
-          href: on-premises-ecma-install.md
-        - name: Konfiguration des ECMA-Connectorhosts
-          href: on-premises-ecma-configure.md
         - name: Konfiguration des generischen SQL-Connectors
           href: on-premises-sql-connector-configure.md
         - name: Lokale Anwendungsbereitstellung in SCIM-fähigen Apps

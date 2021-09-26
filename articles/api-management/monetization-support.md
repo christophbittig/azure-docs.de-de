@@ -1,17 +1,17 @@
 ---
 title: Azure API Management Support für Monetarisierung
 description: Lernen Sie, wie Azure API Management Monetarisierungsstrategien für Ihre API-Produkte unterstützt.
-author: v-hhunter
-ms.author: v-hhunter
+author: dlepow
+ms.author: danlep
 ms.date: 08/23/2021
 ms.topic: article
 ms.service: api-management
-ms.openlocfilehash: 88323145b9b6bb66babe77b19d6b834afc2831ab
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: ad6e4358ebd312c498504da6650045d9019fadbe
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122825267"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128548711"
 ---
 # <a name="how-api-management-supports-monetization"></a>Unterstützung der Monetarisierung durch API Management
 
@@ -132,7 +132,7 @@ Die Beispielprojekte verwenden die API zur Programmsteuerung von:
 - Abrufen von API Management Produkten und Richtlinien, um eine synchronisierte Konfiguration ähnlicher Konzepte bei Zahlungsanbietern wie Stripe zu ermöglichen.
 - Regelmäßiges Befragen von API Management, um API-Nutzungsmetriken für jedes Abonnement abzurufen und den Abrechnungsprozess zu betreiben.
 
-Weitere Informationen finden Sie unter der[REST API Azure API Management](https://docs.microsoft.com/rest/api/apimanagement/#rest-operation-groups) Übersicht.
+Weitere Informationen finden Sie unter der[REST API Azure API Management](/rest/api/apimanagement/#rest-operation-groups) Übersicht.
 
 ## <a name="devops"></a>DevOps
 

@@ -10,12 +10,12 @@ ms.date: 08/16/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1cdc40b8aebe2d80553a23deec3990d4349ebd79
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 2aeedab7e8ec7204137ec12fdcc049c0ad01881f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123255618"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606283"
 ---
 # <a name="configure-immutability-policies-for-containers"></a>Konfigurieren von Unveränderlichkeitsrichtlinien für Container
 
@@ -112,7 +112,7 @@ Um eine nicht gesperrte Richtlinie zu löschen, rufen Sie den Befehl [Remove-AzR
 ```azurepowershell
 Remove-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName <resource-group> `
     -AccountName <storage-account> `
-    -ContainerName <container> 
+    -ContainerName <container>
     -Etag $policy.Etag
 ```
 
@@ -125,7 +125,7 @@ $etag=$(az storage container immutability-policy show /
         --account-name <storage-account> /
         --container-name <container> /
         --query etag /
-        --output tsv) 
+        --output tsv)
 
 az storage container immutability-policy \
     --resource-group <resource-group>
@@ -133,7 +133,7 @@ az storage container immutability-policy \
     --container-name <container> \
     --period 21 \
     --if-match $etag \
-    --allow-protected-append-writes true 
+    --allow-protected-append-writes true
 ```
 
 Um eine nicht gesperrte Richtlinie zu löschen, rufen Sie den Befehl [az storage container immutability-policy delete](/cli/azure/storage/container/immutability-policy#az_storage_container_immutability_policy_delete) auf.
@@ -180,7 +180,7 @@ $etag=$(az storage container immutability-policy show /
         --account-name <storage-account> /
         --container-name <container> /
         --query etag /
-        --output tsv) 
+        --output tsv)
 
 az storage container immutability-policy lock /
     --resource-group <resource-group> /
@@ -226,7 +226,7 @@ Um eine Aufbewahrungrichtlinie für juristische Zwecke zu löschen, rufen Sie de
 ```azurepowershell
 Remove-AzRmStorageContainerLegalHold -ResourceGroupName <resource-group> `
     -StorageAccountName <storage-account> `
-    -Name <container> ` 
+    -Name <container> `
     -Tag <tag1>,<tag2>,...
 ```
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d9e402b2015370eca5782ec91dd6afb8f7c6d962
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: f4d5de43786952b3581067c69e2b8840d3aa7296
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110701278"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128553334"
 ---
 # <a name="manage-a-private-endpoint-connection"></a>Verwalten einer Verbindung mit einem privatem Endpunkt
 Azure Private Link arbeitet an einem Ablaufmodell für den Genehmigungsaufruf, bei dem der Private Link-Dienstconsumer eine Verbindung mit dem Dienstanbieter anfordern kann, um den Dienst zu nutzen. Der Dienstanbieter kann dann entscheiden, ob er es dem Consumer gestattet, die Verbindung herzustellen. Azure Private Link ermöglicht es den Dienstanbietern, die private Endpunktverbindung über ihre Ressourcen zu verwalten. Dieser Artikel enthält Anweisungen zur Verwaltung der privaten Endpunktverbindungen.
@@ -36,7 +36,8 @@ Die folgende Tabelle zeigt die verschiedenen Aktionen des Dienstanbieters und di
 |   |         |         |
    
 ## <a name="manage-private-endpoint-connections-on-azure-paas-resources"></a>Verwalten privater Endpunktverbindungen auf Azure PaaS-Ressourcen
-Das Portal ist die bevorzugte Methode für die Verwaltung privater Endpunktverbindungen auf Azure PaaS-Ressourcen. Derzeit verfügen wir nicht über die PowerShell/CLI-Unterstützung für die Verwaltung von Verbindungen auf Azure PaaS-Ressourcen.
+Das Portal ist die bevorzugte Methode für die Verwaltung privater Endpunktverbindungen auf Azure PaaS-Ressourcen. 
+
 1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 2. Navigieren Sie zum Private Link Center.
 3. Wählen Sie unter **Ressourcen** den gewünschten Ressourcentyp zum Verwalten der privaten Endpunktverbindungen aus.
@@ -46,7 +47,7 @@ Das Portal ist die bevorzugte Methode für die Verwaltung privater Endpunktverbi
 
 ## <a name="manage-private-endpoint-connections-on-a-customerpartner-owned-private-link-service"></a>Verwalten von privaten Endpunktverbindungen auf einem Private Link-Dienst, der sich im Besitz eines Kunden/Partners befindet
 
-Azure PowerShell und Azure CLI sind die bevorzugten Methoden für die Verwaltung von privaten Endpunktverbindungen für Microsoft Partner Services oder kundeneigene Dienste. Derzeit verfügen wir nicht über eine Portalunterstützung zum Verwalten von Verbindungen über einen Private Link-Dienst.  
+Azure PowerShell und Azure CLI sind die bevorzugten Methoden für die Verwaltung von privaten Endpunktverbindungen für Microsoft Partner Services oder kundeneigene Dienste. 
  
 ### <a name="powershell"></a>PowerShell 
   

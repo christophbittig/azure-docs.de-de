@@ -1,17 +1,17 @@
 ---
 title: Monetarisierung mit Azure API Management
 description: Lernen Sie, wie Sie Ihre Monetarisierungsstrategie für Azure API Management in sechs einfachen Stages einrichten.
-author: v-hhunter
-ms.author: v-hhunter
+author: dlepow
+ms.author: danlep
 ms.date: 08/23/2021
 ms.topic: article
 ms.service: api-management
-ms.openlocfilehash: 3e969ad51232007a04f3391090e122bf865aec20
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 222a253d35775bd89e6042181937d6c7a7ff624c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122825281"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128594159"
 ---
 # <a name="monetization-with-azure-api-management"></a>Monetarisierung mit Azure API Management
 
@@ -164,10 +164,10 @@ Kalibrieren Sie die Preise über das Ertragsmodell hinweg, um:
 
 Wählen Sie eine geeignete Lösung, um Zahlungen für die Nutzung Ihrer APIs einzuziehen.  Die Anbieter tendieren dazu, sich in zwei Gruppen aufzuteilen:
 
-- **Zahlungsplattformen, wie[Bereichsstreifen](https://stripe.com/)**
+- **Zahlungsplattformen, wie [Bereichsstreifen](https://stripe.com/)**
     
     Berechnen Sie die Zahlung auf der Grundlage der rohen API-Nutzungsmetriken, indem Sie das spezifische Ertragsmodell anwenden, das der Kunde gewählt hat. Konfigurieren Sie die Zahlungsplattform so, dass sie Ihre Monetarisierungsstrategie widerspiegelt.
-- **Zahlungsanbieter wie[Adyen](https://www.adyen.com/)**
+- **Zahlungsanbieter wie [Adyen](https://www.adyen.com/)**
 
     Kümmern sich nur um die Erleichterung der Transaktion. Sie müssen Ihre Monetarisierungsstrategie anwenden (z. B. API-Nutzungsmetriken in eine Zahlung umwandeln), bevor Sie diesen Dienst aufrufen.
 

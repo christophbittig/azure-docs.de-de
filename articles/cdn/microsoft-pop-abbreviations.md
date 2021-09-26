@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/18/2021
 ms.author: duau
 ms.custom: references_regions
-ms.openlocfilehash: d0a58639de2d03458a68c283d00e49e0988db701
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: abf23ead4d5ba46364c354e0c63a4d09ea89b959
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110482650"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593912"
 ---
 # <a name="microsoft-pop-locations-by-abbreviation-for-azure-cdn"></a>POP-Standorte von Microsoft nach Abkürzung
 
@@ -31,5 +31,5 @@ In diesem Artikel werden die POP-Standorte von Microsoft nach POP-Abkürzung sor
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Sehen Sie sich [Azure CDN POP-Standorte von Microsoft nach Metropolregion](cdn-pop-locations.md#microsoft) an.
-* Informationen zum Abrufen der aktuellen IP-Adressen für Positivlisten finden Sie unter der [Azure CDN-Edgeknoten-API](/rest/api/cdn/cdn/edgenodes).
+* Informationen zum Abrufen der aktuellen IP-Adressen für Positivlisten finden Sie unter der [Azure CDN-Edgeknoten-API](/rest/api/cdn/edge-nodes/list).
 * Erfahren Sie, wie Sie ein [Azure CDN-Profil erstellen](cdn-create-new-endpoint.md).

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: justinha
-ms.openlocfilehash: f2f421d95dfc376aed373c718198db33a870d9dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 78a9db37a83c9e53ee336c0b1760b111a78dbcbf
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96619605"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128547009"
 ---
 # <a name="join-a-suse-linux-enterprise-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Einbinden eines virtuellen SUSE Linux Enterprise-Computers in eine durch Azure Active Directory Domain Services verwaltete Domäne
 
@@ -34,6 +34,7 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
 * Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
     * Falls Sie keine solche Domäne haben, gehen Sie wie im ersten Tutorial beschrieben vor, um eine [verwaltete Azure Active Directory Domain Services-Domäne zu erstellen und zu konfigurieren][create-azure-ad-ds-instance].
 * Ein Benutzerkonto, das Teil der verwalteten Domäne ist.
+* Eindeutige Linux-VM-Namen, die maximal 15 Zeichen umfassen. So vermeiden Sie Konflikte in Active Directory, die durch abgeschnittene Namen entstehen.
 
 ## <a name="create-and-connect-to-a-sle-linux-vm"></a>Erstellen einer SLE-VM und Herstellen einer Verbindung
 

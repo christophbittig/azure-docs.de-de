@@ -1,10 +1,5 @@
 - name: Dokumentation zu Cloud Foundry
   href: index.yml
-- name: Schnellstarts
-  expanded: true
-  items:
-    - name: Marketplace-Vorlage
-      href: 'https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry'
 - name: Tutorials
   items:
     - name: Erstellen einer CF-Instanz in Azure

@@ -2,13 +2,13 @@
 title: Azure IoT Hub als Event Grid-Quelle
 description: In diesem Artikel werden die Eigenschaften und das Schema für Azure IoT Hub-Ereignisse beschrieben. Dabei werden die verfügbaren Ereignistypen, ein Beispielereignis und Ereigniseigenschaften aufgelistet.
 ms.topic: conceptual
-ms.date: 02/11/2021
-ms.openlocfilehash: 5f43b9d0041fa5842bc2557a61c5145ce588758a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/15/2021
+ms.openlocfilehash: ac3cac72cc9998d4fb78ed0459e5e07df1125df0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363525"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606321"
 ---
 # <a name="azure-iot-hub-as-an-event-grid-source"></a>Azure IoT Hub als Event Grid-Quelle
 In diesem Artikel werden die Eigenschaften und das Schema für Azure IoT Hub-Ereignisse beschrieben. Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md). 
@@ -247,7 +247,7 @@ Das Schema für DeviceCreated- und DeviceDeleted-Ereignisse verfügen über die 
 
 Alle Ereignisse enthalten die gleichen Daten der obersten Ebene: 
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | `id` | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
 | `topic` | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
@@ -263,7 +263,7 @@ Alle Ereignisse enthalten die gleichen Daten der obersten Ebene:
 Alle Ereignisse enthalten die gleichen Daten der obersten Ebene: 
 
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | `id` | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
 | `source` | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
@@ -277,7 +277,7 @@ Alle Ereignisse enthalten die gleichen Daten der obersten Ebene:
 
 Für IoT Hub-Ereignisse enthält das Datenobjekt die folgenden Eigenschaften:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | `hubName` | Zeichenfolge | Name des IoT Hubs, in dem das Gerät erstellt bzw. aus dem das Gerät gelöscht wurde. |
 | `deviceId` | Zeichenfolge | Der eindeutige Bezeichner des Geräts. Eine Zeichenfolge mit Beachtung von Groß-/Kleinschreibung, die bis zu 128 Zeichen lang sein kann und alphanumerische 7-Bit-ASCII-Zeichen sowie die folgenden Sonderzeichen unterstützt: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
@@ -286,7 +286,7 @@ Die Inhalte des Datenobjekts unterscheiden sich für jeden Ereignisherausgeber.
 
 Für die IoT Hub-Ereignisse **Gerät verbunden** und **Gerät getrennt** enthält das Datenobjekt die folgenden Eigenschaften:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | `moduleId` | Zeichenfolge | Der eindeutige Bezeichner des Moduls. Dieses Feld dient nur der Ausgabe für Modulgeräte. Eine Zeichenfolge mit Beachtung von Groß-/Kleinschreibung, die bis zu 128 Zeichen lang sein kann und alphanumerische 7-Bit-ASCII-Zeichen sowie die folgenden Sonderzeichen unterstützt: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
 | `deviceConnectionStateEventInfo` | Objekt (object) | Ereignisinformationen zum Verbindungsstatus des Geräts

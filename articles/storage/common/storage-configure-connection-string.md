@@ -10,20 +10,20 @@ ms.date: 10/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: d7ca1707c89f03683960822591065143d3f8aa4f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 435f5376a0a84cf2d9d706e4391142814b0f0141
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92783877"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593076"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Konfigurieren von Azure Storage-Verbindungszeichenfolgen
 
 Eine Verbindungszeichenfolge enthält die erforderlichen Autorisierungsinformationen für den Zugriff auf Daten in einem Azure Storage-Konto aus Ihrer Anwendung zur Laufzeit mithilfe der Autorisierung mit gemeinsam verwendetem Schlüssel. Sie können Verbindungszeichenfolgen konfigurieren, um Folgendes zu tun:
 
-* Verbinden mit dem Azurite-Speicheremulator
-* Zugreifen auf ein Speicherkonto in Azure
-* Zugreifen auf angegebene Ressourcen in Azure über eine Shared Access Signature (SAS)
+- Verbinden mit dem Azurite-Speicheremulator
+- Zugreifen auf ein Speicherkonto in Azure
+- Zugreifen auf angegebene Ressourcen in Azure über eine Shared Access Signature (SAS)
 
 Informationen zum Anzeigen der Zugriffsschlüssel für Ihr Konto und zum Kopieren einer Verbindungszeichenfolge finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](storage-account-keys-manage.md).
 
@@ -33,9 +33,9 @@ Informationen zum Anzeigen der Zugriffsschlüssel für Ihr Konto und zum Kopiere
 
 Die Anwendung muss zur Laufzeit auf die Verbindungszeichenfolge zugreifen, um bei Azure Storage eingehende Anforderungen zu autorisieren. Es gibt mehrere Möglichkeiten, die Verbindungszeichenfolge zu speichern:
 
-* Sie können die Verbindungszeichenfolge in einer Umgebungsvariable speichern.
-* Eine Anwendung, die auf dem Desktop oder auf einem Gerät ausgeführt wird, kann die Verbindungszeichenfolge in der Datei **app.config** oder **web.config** speichern. Fügen Sie die Verbindungszeichenfolge dem Abschnitt **AppSettings** in diesen Dateien hinzu.
-* Eine Anwendung, die in einem Clouddienst in Azure ausgeführt wird, kann die Verbindungszeichenfolge zumeist im [Azure-Dienstkonfigurationsschema (CSCFG-Datei)](/previous-versions/azure/reference/ee758710(v=azure.100)) speichern. Fügen Sie die Verbindungszeichenfolge zum Abschnitt **ConfigurationSettings** der Dienstkonfigurationsdatei hinzu.
+- Sie können die Verbindungszeichenfolge in einer Umgebungsvariable speichern.
+- Eine Anwendung, die auf dem Desktop oder auf einem Gerät ausgeführt wird, kann die Verbindungszeichenfolge in der Datei **app.config** oder **web.config** speichern. Fügen Sie die Verbindungszeichenfolge dem Abschnitt **AppSettings** in diesen Dateien hinzu.
+- Eine Anwendung, die in einem Clouddienst in Azure ausgeführt wird, kann die Verbindungszeichenfolge zumeist im [Azure-Dienstkonfigurationsschema (CSCFG-Datei)](/previous-versions/azure/reference/ee758710(v=azure.100)) speichern. Fügen Sie die Verbindungszeichenfolge zum Abschnitt **ConfigurationSettings** der Dienstkonfigurationsdatei hinzu.
 
 Das Speichern der Verbindungszeichenfolge in der Konfigurationsdatei erleichtert die Aktualisierung der Verbindungszeichenfolge, um zwischen dem [Azurite-Speicheremulator](../common/storage-use-azurite.md) und einem Azure-Speicherkonto in der Cloud zu wechseln. Sie müssen die Verbindungszeichenfolge nur so bearbeiten, dass sie auf Ihre Zielumgebung verweist.
 
@@ -141,6 +141,6 @@ EndpointSuffix=core.chinacloudapi.cn;
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Verwenden des Azurite-Emulators für die lokale Azure Storage-Entwicklung](../common/storage-use-azurite.md)
-* [Azure Storage-Explorer](storage-explorers.md)
-* [Verwenden von Shared Access Signatures (SAS)](storage-sas-overview.md)
+- [Verwenden des Azurite-Emulators für die lokale Azure Storage-Entwicklung](../common/storage-use-azurite.md)
+- [Azure Storage-Explorer](storage-explorers.md)
+- [Verwenden von Shared Access Signatures (SAS)](storage-sas-overview.md)
