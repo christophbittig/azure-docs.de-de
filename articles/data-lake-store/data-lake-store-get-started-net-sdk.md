@@ -1,18 +1,18 @@
 ---
 title: Verwalten eines Azure Data Lake Storage Gen1-Kontos mit .NET
 description: Hier erfahren Sie, wie Sie das .NET SDK für Azure Data Lake Storage Gen1-Kontoverwaltungsvorgänge verwenden.
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
-ms.author: twooley
+ms.author: normesta
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2c4ed092604e9511023a7025a69dc7a78652ea56
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c15b0ad3f1dff39fc3d8e292eeb7a7f86c7f2ed9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102430478"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128611527"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Kontoverwaltungsvorgänge für Azure Data Lake Storage Gen1 mithilfe des .NET SDK
 > [!div class="op_single_selector"]

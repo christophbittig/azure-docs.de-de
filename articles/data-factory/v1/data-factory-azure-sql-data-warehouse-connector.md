@@ -3,16 +3,17 @@ title: Kopieren von Daten in und aus Azure Synapse Analytics
 description: Erfahren Sie, wie Daten mithilfe von Azure Data Factory in und aus Azure Synapse Analytics kopiert werden.
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e46d4c07f3de2441f53648b228ab7a9d2a41ab61
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 489c4ee4c48c0d38d46d4ce3b73d820261f65616
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108753358"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128653406"
 ---
 # <a name="copy-data-to-and-from-azure-synapse-analytics-using-azure-data-factory"></a>Kopieren von Daten in und aus Azure Synapse Analytics mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -76,7 +77,7 @@ Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren vo
 
 Der Abschnitt "typeProperties" unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt **typeProperties** für ein Dataset des Typs **AzureSqlDWTable** weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | tableName |Der Name der Tabelle oder Sicht in der Azure Synapse Analytics-Datenbank, auf die der verknüpfte Dienst verweist. |Ja |
 

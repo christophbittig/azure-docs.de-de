@@ -1,14 +1,14 @@
 ---
-title: Konfigurieren einer Lab-Identität in Azure DevTest Labs
+title: Konfigurieren einer Lab-Identität
 description: Erfahren Sie, wie Sie eine Lab-Identität in Azure DevTest konfigurieren.
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/20/2020
-ms.openlocfilehash: a652eb5751f9b723911a1c1baaaaf9860febc5b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3cc14d87cfea331d8a11e09071005c23be942405
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88719574"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128638727"
 ---
 # <a name="configure-a-lab-identity"></a>Konfigurieren einer Lab-Identität
 

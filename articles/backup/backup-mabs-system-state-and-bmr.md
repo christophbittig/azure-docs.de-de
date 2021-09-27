@@ -3,12 +3,12 @@ title: Systemstatus- und Bare-Metal-Recovery-Schutz
 description: Verwenden Sie Azure Backup Server, um Ihren Systemstatus zu sichern und BMR-Schutz (Bare-Metal-Recovery) bereitzustellen.
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: c5096158ca0e76ca03577347d8dd3e1419a33ca0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 864a20ce806d1bf8e9e728c77a9c8f17adeed18b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96021621"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656187"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-by-using-azure-backup-server"></a>Sichern des Systemstatus und Durchführen einer Bare-Metal-Wiederherstellung mithilfe von Azure Backup Server
 
@@ -251,11 +251,11 @@ Sie können die Systemstatuswiederherstellung auch an einer Eingabeaufforderung 
 
 1. Geben Sie zum Abrufen des Versionsbezeichners an der Eingabeaufforderung Folgendes ein:
 
-   ```wbadmin get versions -backuptarget \<servername\sharename\>```
+   `wbadmin get versions -backuptarget \<servername\sharename\>`
 
 1. Verwenden Sie den Versionsbezeichner zum Starten der Systemstatuswiederherstellung. Geben Sie an der Eingabeaufforderung Folgendes ein:
 
-    ```wbadmin start systemstaterecovery -version:<versionidentified> -backuptarget:<servername\sharename>```
+   `wbadmin start systemstaterecovery -version:<versionidentified> -backuptarget:<servername\sharename>`
 
 1. Bestätigen Sie, dass Sie die Wiederherstellung starten möchten. Der Prozess wird im Eingabeaufforderungsfenster angezeigt. Ein Wiederherstellungsprotokoll wird erstellt.
 

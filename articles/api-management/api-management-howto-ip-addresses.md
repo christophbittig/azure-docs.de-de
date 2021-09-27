@@ -3,17 +3,17 @@ title: IP-Adressen des Azure API Management-Diensts | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie die IP-Adressen eines Azure API Management-Diensts abrufen und wann sie sich ändern.
 services: api-management
 documentationcenter: ''
-author: mikebudzynski
+author: dlepow
 ms.service: api-management
 ms.topic: article
 ms.date: 04/13/2021
-ms.author: apimpm
-ms.openlocfilehash: 5939292b6e810634723fada17521bb227764b989
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.author: danlep
+ms.openlocfilehash: d0fe9c305b9592aad7b08437d6e9d14150748ed6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534038"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128680735"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>IP-Adressen von Azure API Management
 

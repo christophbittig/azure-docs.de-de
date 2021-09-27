@@ -2,13 +2,13 @@
 title: Behandeln von AMQP-Fehlern in Azure Event Hubs | Microsoft-Dokumentation
 description: Enthält eine Liste der AMQP-Fehler, die bei der Verwendung von Azure Event Hubs auftreten können, sowie die Ursache für diese Fehler.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 51b96792f6921bae9364212c6e5f9c987ff05e2a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/20/2021
+ms.openlocfilehash: 7e73c85f65a6ea9edef36ab810110e576b7ea0c0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466064"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128649395"
 ---
 # <a name="amqp-errors-in-azure-event-hubs"></a>AMQP-Fehler in Azure Event Hubs
 In diesem Artikel werden einige der Fehler beschrieben, die bei der Verwendung von AMQP mit Azure Event Hubs auftreten können. Sie stellen alle das Standardverhalten des Diensts dar. Sie können sie vermeiden, indem Sie Sende-/Empfangsaufrufe für die Verbindung bzw. den Link vornehmen, die automatisch die Verbindung oder den Link wiederherstellen.

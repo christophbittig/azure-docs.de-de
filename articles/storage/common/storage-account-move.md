@@ -10,12 +10,12 @@ ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8ff972965533dac423cafc731aa4a10165570977
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: c447d5cacc0c1d60a7594c1b6e6f2082941f7ae9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123258766"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128587440"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Verschieben eines Azure Storage-Kontos in eine andere Region
 
@@ -24,13 +24,13 @@ Erstellen Sie eine Kopie Ihres Speicherkontos in einer anderen Region, um ein Sp
 In diesem Artikel lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> 
-> * Exportieren einer Vorlage.
-> * Ändern der Vorlage, indem Sie die Zielregion und den Namen des Speicherkontos hinzufügen.
-> * Bereitstellen der Vorlage zur Erstellung des neuen Speicherkontos.
-> * Konfigurieren des neuen Speicherkontos.
-> * Verschieben der Daten in das neue Speicherkonto.
-> * Löschen der Ressourcen in der Quellregion.
+>
+> - Exportieren einer Vorlage.
+> - Ändern der Vorlage, indem Sie die Zielregion und den Namen des Speicherkontos hinzufügen.
+> - Bereitstellen der Vorlage zur Erstellung des neuen Speicherkontos.
+> - Konfigurieren des neuen Speicherkontos.
+> - Verschieben der Daten in das neue Speicherkonto.
+> - Löschen der Ressourcen in der Quellregion.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -42,11 +42,11 @@ In diesem Artikel lernen Sie Folgendes:
 
 ## <a name="prepare"></a>Vorbereiten
 
-Exportieren Sie zunächst eine Resource Manager-Vorlage und ändern Sie sie anschließend. 
+Exportieren Sie zunächst eine Resource Manager-Vorlage und ändern Sie sie anschließend.
 
 ### <a name="export-a-template"></a>Exportieren einer Vorlage
 
-Diese Vorlage enthält Einstellungen, die Ihr Speicherkonto beschreiben. 
+Diese Vorlage enthält Einstellungen, die Ihr Speicherkonto beschreiben.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -73,6 +73,7 @@ So exportieren Sie eine Vorlage mithilfe von PowerShell
    ```azurepowershell-interactive
    Connect-AzAccount
    ```
+
 2. Wenn Ihre Identität mehreren Abonnements zugeordnet ist, legen Sie das aktive Abonnement auf das Abonnement des Speicherkontos fest, das Sie verschieben möchten.
 
    ```azurepowershell-interactive
@@ -94,7 +95,7 @@ So exportieren Sie eine Vorlage mithilfe von PowerShell
 
 ---
 
-### <a name="modify-the-template"></a>Ändern der Vorlage 
+### <a name="modify-the-template"></a>Ändern der Vorlage
 
 Ändern Sie die Vorlage, indem Sie den Namen und die Region des Speicherkontos ändern.
 
@@ -117,7 +118,7 @@ So stellen Sie die Vorlage mithilfe des Azure-Portals bereit
 6. Wählen Sie **Datei laden** aus, und befolgen Sie dann die Anweisungen zum Laden der Datei **template.json**, die Sie im vorherigen Abschnitt heruntergeladen haben.
 
 7. Benennen Sie in der Datei **template.json** das Zielspeicherkonto, indem Sie den Standardwert des Speicherkontonamens festlegen. In diesem Beispiel wird der Standardwert des Speicherkontonamens auf `mytargetaccount` festgelegt.
-    
+
     ```json
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
@@ -127,7 +128,7 @@ So stellen Sie die Vorlage mithilfe des Azure-Portals bereit
             "type": "String"
         }
     },
- 
+
 8. Edit the **location** property in the **template.json** file to the target region. This example sets the target region to `centralus`.
 
     ```json
@@ -138,6 +139,7 @@ So stellen Sie die Vorlage mithilfe des Azure-Portals bereit
          "location": "centralus"
          }]          
     ```
+
     Informationen zum Abrufen von Regionsstandortcodes finden Sie unter [Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).  Der Code für eine Region ist der Regionsname ohne Leerzeichen, **USA, Mitte** = **centralus**.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -145,7 +147,7 @@ So stellen Sie die Vorlage mithilfe des Azure-Portals bereit
 So stellen Sie die Vorlage mithilfe von PowerShell bereit
 
 1. Benennen Sie in der Datei **template.json** das Zielspeicherkonto, indem Sie den Standardwert des Speicherkontonamens festlegen. In diesem Beispiel wird der Standardwert des Speicherkontonamens auf `mytargetaccount` festgelegt.
-    
+
     ```json
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
@@ -155,7 +157,7 @@ So stellen Sie die Vorlage mithilfe von PowerShell bereit
             "type": "String"
         }
     },
-    ``` 
+    ```
 
 2. Bearbeiten Sie die **location**-Eigenschaft in der Datei **template.json** in der Zielregion. Dieses Beispiel legt den Zielbereich auf `eastus` fest.
 
@@ -173,13 +175,14 @@ So stellen Sie die Vorlage mithilfe von PowerShell bereit
     ```azurepowershell-interactive
     Get-AzLocation | format-table 
     ```
+
 ---
 
 <a id="move"></a>
 
 ## <a name="move"></a>Move
 
-Stellen Sie die Vorlage bereit, um ein neues Speicherkonto in der Zielregion zu erstellen. 
+Stellen Sie die Vorlage bereit, um ein neues Speicherkonto in der Zielregion zu erstellen.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -187,11 +190,11 @@ Stellen Sie die Vorlage bereit, um ein neues Speicherkonto in der Zielregion zu 
 
 2. Geben Sie die Eigenschaftswerte ein oder wählen Sie sie aus:
 
-- **Abonnement**: Wählen Sie ein Azure-Abonnement aus.
+   - **Abonnement**: Wählen Sie ein Azure-Abonnement aus.
 
-- **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, und benennen Sie die Ressourcengruppe.
+   - **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, und benennen Sie die Ressourcengruppe.
 
-- **Standort**: Wählen Sie einen Azure-Standort aus.
+   - **Standort**: Wählen Sie einen Azure-Standort aus.
 
 3. Klicken Sie auf das Kontrollkästchen **Ich stimme den oben genannten Geschäftsbedingungen zu** und dann auf die Schaltfläche **Kauf auswählen**.
 
@@ -212,11 +215,12 @@ Stellen Sie die Vorlage bereit, um ein neues Speicherkonto in der Zielregion zu 
    New-AzResourceGroup -Name $resourceGroupName -Location "$location"
    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "<name of your local template file>"  
    ```
+
 ---
 
 ### <a name="configure-the-new-storage-account"></a>Konfigurieren des neuen Speicherkontos
 
-Einige Features werden nicht in eine Vorlage exportiert, daher müssen Sie sie dem neuen Speicherkonto hinzufügen. 
+Einige Features werden nicht in eine Vorlage exportiert, daher müssen Sie sie dem neuen Speicherkonto hinzufügen.
 
 In der folgenden Tabelle sind diese Features zusammen mit einer Anleitung zum Hinzufügen zu Ihrem neuen Speicherkonto aufgeführt.
 
@@ -228,14 +232,14 @@ In der folgenden Tabelle sind diese Features zusammen mit einer Anleitung zum Hi
 | **Warnungen** | [Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor](../../azure-monitor/alerts/alerts-activity-log.md) |
 | **Content Delivery Network (CDN)** | [Verwenden von Azure CDN zum Zugreifen auf Blobs mit benutzerdefinierten Domänen über HTTPS](../blobs/storage-https-custom-domain-cdn.md) |
 
-> [!NOTE] 
-> Wenn Sie ein CDN für das Quellspeicherkonto einrichten, ändern Sie einfach den Ursprung Ihres bestehenden CDNs in den primären Blobdienstendpunkt (oder den primären statischen Webseitenendpunkt) Ihres neuen Kontos. 
+> [!NOTE]
+> Wenn Sie ein CDN für das Quellspeicherkonto einrichten, ändern Sie einfach den Ursprung Ihres bestehenden CDNs in den primären Blobdienstendpunkt (oder den primären statischen Webseitenendpunkt) Ihres neuen Kontos.
 
 ### <a name="move-data-to-the-new-storage-account"></a>Verschieben der Daten in das neue Speicherkonto
 
 AzCopy ist das bevorzugte Tool zum Verschieben Ihrer Daten. Er ist für die Leistung optimiert.  Ein Grund für die höhere Leistung besteht darin, dass Daten direkt zwischen Speicherservern kopiert werden, sodass AzCopy nicht die Netzwerkbandbreite Ihres Computers nutzt. Verwenden Sie AzCopy über die Befehlszeile oder als Teil eines benutzerdefinierten Skripts. Informationen finden Sie unter [Übertragen von Daten mit AzCopy v10](/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-Sie können auch Azure Data Factory verwenden, um Ihre Daten zu verschieben. Die Anwendung bietet eine intuitive Benutzeroberfläche. Informationen zur Verwendung von Azure Data Factory finden Sie unter den folgenden Links: 
+Sie können auch Azure Data Factory verwenden, um Ihre Daten zu verschieben. Die Anwendung bietet eine intuitive Benutzeroberfläche. Informationen zur Verwendung von Azure Data Factory finden Sie unter den folgenden Links:
 
   - [Kopieren von Daten nach oder aus Azure Blob Storage mit Azure Data Factory](/azure/data-factory/connector-azure-blob-storage)
   - [Kopieren von Daten nach und aus Azure Data Lake Storage Gen2 mithilfe von Azure Data Factory](/azure/data-factory/connector-azure-data-lake-storage)
@@ -267,12 +271,12 @@ Verwenden Sie den Befehl [Remove-AzStorageAccount](/powershell/module/az.storage
 ```powershell
 Remove-AzStorageAccount -ResourceGroupName  $resourceGroup -AccountName $storageAccount
 ```
+
 ---
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial haben Sie ein Azure-Speicherkonto aus einer Region in eine andere verschoben und die Quellressourcen bereinigt.  Weitere Informationen zum Verschieben von Ressourcen zwischen Regionen und zur Notfallwiederherstellung in Azure finden Sie unter:
-
 
 - [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
 - [Verschieben virtueller Azure-Computer in eine andere Region](../../site-recovery/azure-to-azure-tutorial-migrate.md)

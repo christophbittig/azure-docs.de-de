@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ebe1f337e2799e2ebeafc0f4a051ed7c3d81e434
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: f6581638379154675f1d93213ecaecf8b1ccb012
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108162003"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648998"
 ---
 # <a name="scenario-azure-firewall---custom"></a>Szenario: Azure Firewall: Benutzerdefiniert
 
@@ -26,7 +26,7 @@ Sie können eine Verbindungsmatrix erstellen, in der jede Zelle angibt, ob eine 
 
 **Konnektivitätsmatrix**
 
-| Von           | Nach:      | *VNETs*      | *Branches*    | *Internet*   |
+| From           | Nach:      | *VNETs*      | *Branches*    | *Internet*   |
 |---             |---       |---           |---            |---           |
 | **VNETs**      |   &#8594;|    Direkt    |     AzFW      |     AzFW     |
 | **Branches**   |   &#8594;|    AzFW      |    Direkt     |    Direkt    |
@@ -68,8 +68,6 @@ Dies führt, wie in **Abbildung 1** gezeigt, zu Änderungen an der Routingkonfi
 
 :::image type="content" source="./media/routing-scenarios/between-vnets-firewall/routing.png" alt-text="Abbildung 1":::
 
-> [!NOTE]
-> Die Virtual WAN-Hubs und die verbundenen virtuellen Netzwerke sollten sich in derselben Azure-Region befinden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
