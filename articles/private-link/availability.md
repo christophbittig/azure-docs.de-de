@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 3/15/2021
 ms.custom: template-concept,references_regions
-ms.openlocfilehash: 052a59ede2acc751d6847646ca1b103de0c1b78a
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: aaa013a25e9131ec55f002db089de0d353f13f7c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446455"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128585764"
 ---
 # <a name="azure-private-link-availability"></a>Azure Private Link-Verfügbarkeit
 
@@ -82,7 +82,7 @@ In den folgenden Tabellen sind die Private Link-Dienste und die Regionen, in den
 
 | Unterstützte Dienste | Verfügbare Regionen | Andere Aspekte | Status  |
 | ------------ | ----------------| ------------| ----------------|
-| Azure-Automatisierung  | Alle öffentlichen Regionen<br/> Alle Government-Regionen |  | Vorschau </br> [Erfahren Sie, wie Sie einen privaten Endpunkt für Azure Automation erstellen.](../automation/how-to/private-link-security.md)|
+| Azure-Automatisierung  | Alle öffentlichen Regionen<br/> Alle Government-Regionen |  | Allgemein verfügbar </br> [Erfahren Sie, wie Sie einen privaten Endpunkt für Azure Automation erstellen.](../automation/how-to/private-link-security.md)|
 |Azure Backup | Alle öffentlichen Regionen<br/> Alle Government-Regionen   |  | Allgemein verfügbar <br/> [Erfahren Sie, wie Sie einen privaten Endpunkt für Azure Backup erstellen.](../backup/private-endpoints.md)   |
 
 ### <a name="security"></a>Sicherheit

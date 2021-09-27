@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/30/2020
+ms.date: 09/20/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2560c294b63d0554708eda1f804bf279d16d7d74
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 03b2f3a4b0a9876b1880194233c81138589d1331
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257958"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128583295"
 ---
 # <a name="configure-itsme-openid-connect-oidc-with-azure-active-directory-b2c"></a>Konfigurieren von itsme OpenID Connect (OIDC) mit Azure Active Directory B2C
 
@@ -40,7 +40,7 @@ Zunächst benötigen Sie Folgendes:
 Please clarify step 1 in the description below - we don't have steps in this tutorial for "adapting in the Azure AD B2C Custom Policy- User Journeys" - should this be added somewhere?
 -->
 
-| Schritt | BESCHREIBUNG |
+| Schritt | Beschreibung |
 |------|------|
 |1     | Fügen Sie auf Ihrer Website bzw. in Ihrer Anwendung die Schaltfläche **Log in with itsme** (Mit itsme anmelden) hinzu, indem Sie den Azure AD B2C-Benutzerflow anpassen. Der Interaktionsfluss beginnt, wenn Benutzer auf diese Schaltfläche klicken.  |
 |2     | Azure AD B2C startet den OpenID Connect-Ablauf, indem eine „Authorize“-Anforderung an die itsme-API für den geheimen Clientschlüssel gesendet wird. Es ist ein bekannter bzw. OpenID-Konfigurationsendpunkt verfügbar, der Informationen zu den Endpunkten enthält.  |
@@ -59,11 +59,11 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 1. Greifen Sie auf dem [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) auf itsme zu, um ein Konto dafür zu erstellen.
 
-2. Aktivieren Sie Ihr itsme-Konto, indem Sie eine E-Mail an onboarding@itsme.be senden. Sie erhalten einen **Partnercode** und einen **Dienstcode**, die Sie für Ihre B2C-Einrichtung benötigen.
+1. Aktivieren Sie Ihr itsme-Konto, indem Sie eine E-Mail an onboarding@itsme.be senden. Sie erhalten einen **Partnercode** und einen **Dienstcode**, die Sie für Ihre B2C-Einrichtung benötigen.
 
-3. Nachdem Sie Ihr itsme-Partnerkonto aktiviert haben, erhalten Sie eine E-Mail mit einem einmaligen Link zum **geheimen Clientschlüssel**.
+1. Nachdem Sie Ihr itsme-Partnerkonto aktiviert haben, erhalten Sie eine E-Mail mit einem einmaligen Link zum **geheimen Clientschlüssel**.
 
-4. Befolgen Sie die Anleitung unter [itsme](https://business.itsme.be/en), um die Konfiguration abzuschließen.
+1. Befolgen Sie die Anleitung unter [itsme](https://business.itsme.be/en), um die Konfiguration abzuschließen.
 
 ## <a name="integrate-with-azure-ad-b2c"></a>Integration in Azure AD B2C
 
@@ -72,13 +72,11 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 > [!NOTE]
 > Wenn Sie noch nicht über einen Azure AD B2C-Mandanten verfügen, [erstellen Sie einen](tutorial-create-tenant.md), der mit Ihrem Azure-Abonnement verknüpft ist.
 
-1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das den Azure AD B2C-Mandanten enthält. Wählen Sie im Hauptmenü den **Verzeichnis- und Abonnementfilter** aus, und wählen Sie das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
-
-2. Wählen Sie unter **Azure-Dienste** die Option **Azure AD B2C** aus (oder **Weitere Dienste**, und verwenden Sie dann das Suchfeld **Alle Dienste**, um nach *Azure AD B2C* zu suchen).
-
-3. Wählen Sie **Identitätsanbieter** und dann **Neuer OpenID Connect-Anbieter** aus.
-
-4. Füllen Sie das Formular mit den folgenden Informationen aus:
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das den Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
+1. Wählen Sie unter **Azure-Dienste** die Option **Azure AD B2C** aus (oder **Weitere Dienste**, und verwenden Sie dann das Suchfeld **Alle Dienste**, um nach *Azure AD B2C* zu suchen).
+1. Wählen Sie **Identitätsanbieter** und dann **Neuer OpenID Connect-Anbieter** aus.
+1. Füllen Sie das Formular mit den folgenden Informationen aus:
 
    |Eigenschaft | Wert |
    |------------ |------- |
@@ -96,25 +94,25 @@ Please clarify step 1 in the description below - we don't have steps in this tut
    |Surname | family_name |
    |Email | email|
 
-5. Wählen Sie **Speichern** aus.
+1. Wählen Sie **Speichern** aus.
 
 ### <a name="configure-a-user-flow"></a>Konfigurieren eines Benutzerflows
 
 1. Wählen Sie auf Ihrem Azure AD B2C-Mandanten unter **Richtlinien** die Option **Benutzerflows** aus.
 
-2. Wählen Sie die Option **Neuer Benutzerflow** aus.
+1. Wählen Sie die Option **Neuer Benutzerflow** aus.
 
-3. Wählen Sie **Registrierung und Anmeldung**, dann eine Version und anschließend **Erstellen** aus.
+1. Wählen Sie **Registrierung und Anmeldung**, dann eine Version und anschließend **Erstellen** aus.
 
-4. Geben Sie einen **Namen** ein.
+1. Geben Sie einen **Namen** ein.
 
-5. Wählen Sie im Abschnitt **Identitätsanbieter** die Option **itsme** aus.
+1. Wählen Sie im Abschnitt **Identitätsanbieter** die Option **itsme** aus.
 
-6. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Erstellen**.
 
-7. Öffnen Sie den neu erstellten Benutzerflow, indem Sie dessen Namen auswählen.
+1. Öffnen Sie den neu erstellten Benutzerflow, indem Sie dessen Namen auswählen.
 
-8. Wählen Sie **Eigenschaften** aus, und passen Sie die folgenden Werte an:
+1. Wählen Sie **Eigenschaften** aus, und passen Sie die folgenden Werte an:
 
    * Ändern Sie **Lebensdauer von Zugriffs- und ID-Token (Minuten)** in **5**.
    * Ändern Sie **Lebensdauer für gleitendes Fenster des Aktualisierungstokens** in **Kein Ablauf**.
@@ -123,11 +121,11 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 1. Wählen Sie auf Ihrem B2C-Mandanten unter **Verwalten** die Option **App-Registrierungen** > **Neue Registrierung** aus.
 
-2. Geben Sie unter **Name** einen Namen für die Anwendung und Ihren **Umleitungs-URI** ein. Geben Sie zu Testzwecken `https://jwt.ms` ein.
+1. Geben Sie unter **Name** einen Namen für die Anwendung und Ihren **Umleitungs-URI** ein. Geben Sie zu Testzwecken `https://jwt.ms` ein.
 
-3. Stellen Sie sicher, dass die mehrstufige Authentifizierung **Deaktiviert** ist.
+1. Stellen Sie sicher, dass die mehrstufige Authentifizierung **Deaktiviert** ist.
 
-4. Wählen Sie **Registrieren**.
+1. Wählen Sie **Registrieren**.
 
    a. Wählen Sie zu Testzwecken die Option **Authentifizierung** aus, und aktivieren Sie unter **Implizite Gewährung** die Kontrollkästchen **Zugriffstoken** und **ID-Token**.  
 
@@ -137,19 +135,19 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 1. Wählen Sie auf Ihrem B2C-Mandanten unter **Richtlinien** die Option **Benutzerflows** aus.
 
-2. Wählen Sie den zuvor erstellten Benutzerflow aus.
+1. Wählen Sie den zuvor erstellten Benutzerflow aus.
 
-3. Wählen Sie **Benutzerflow ausführen** aus.
+1. Wählen Sie **Benutzerflow ausführen** aus.
 
    a. **Anwendung**: *Wählen Sie die registrierte App aus*.
 
    b. **Antwort-URL**: *Wählen Sie die Umleitungs-URL aus*.
 
-4. Die itsme-Seite für die Identifikation (**Identify yourself**) wird angezeigt.  
+1. Die itsme-Seite für die Identifikation (**Identify yourself**) wird angezeigt.  
 
-5. Geben Sie Ihre Mobiltelefonnummer ein, und wählen Sie **Send** (Senden) aus.
+1. Geben Sie Ihre Mobiltelefonnummer ein, und wählen Sie **Send** (Senden) aus.
 
-6. Bestätigen Sie die Aktion in der itsme-App.
+1. Bestätigen Sie die Aktion in der itsme-App.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

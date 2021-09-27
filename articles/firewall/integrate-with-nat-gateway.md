@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 04/23/2021
 ms.author: jocorte
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6afce8903c5fe821e080983ab50a444f9f508554
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 591f2882e6886f208a5452ac547a5bb1e4024906
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346514"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128610159"
 ---
 # <a name="scale-snat-ports-with-azure-nat-gateway"></a>Skalierung der SNAT-Ports mit Azure NAT Gateway
 
-Azure Firewall bietet 2048 SNAT-Ports pro konfigurierter öffentlicher IP-Adresse, so dass Sie bis zu [250 öffentliche IP-Adressen](./deploy-multi-public-ip-powershell.md) zuordnen können. Je nach Architektur und Datenverkehrsmustern benötigen Sie möglicherweise mehr als 512.000 verfügbare SNAT-Ports mit dieser Konfiguration. Wenn Sie z. B. damit große [Windows Virtual Desktop-Bereitstellungen](./protect-windows-virtual-desktop.md) schützen, die in Microsoft 365 Apps integriert sind.
+Azure Firewall bietet 2048 SNAT-Ports pro konfigurierter öffentlicher IP-Adresse, so dass Sie bis zu [250 öffentliche IP-Adressen](./deploy-multi-public-ip-powershell.md) zuordnen können. Je nach Architektur und Datenverkehrsmustern benötigen Sie möglicherweise mehr als 512.000 verfügbare SNAT-Ports mit dieser Konfiguration. Wenn Sie z. B. damit große [Windows Virtual Desktop-Bereitstellungen](./protect-azure-virtual-desktop.md) schützen, die in Microsoft 365 Apps integriert sind.
 
 Eine weitere Herausforderung bei der Nutzung einer großen Anzahl von öffentlichen IP-Adressen ist, wenn es nachgelagerte Anforderungen an die IP-Adressfilterung gibt. Azure Firewall wählt zufällig die öffentliche Quell-IP-Adresse aus, die Sie für eine Verbindung verwenden möchten, daher müssen Sie alle damit verbundenen öffentlichen IP-Adressen zulassen. Sogar wenn Sie [Präfixe für öffentliche IP-Adressen](../virtual-network/public-ip-address-prefix.md) verwenden und Sie 250 öffentliche IP-Adressen zuordnen müssen, um die Anforderungen an den ausgehenden SNAT-Port zu erfüllen, müssen Sie dennoch 16 Präfixe für öffentliche IP-Adressen erstellen und zulassen.
 

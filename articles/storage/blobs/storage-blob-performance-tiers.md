@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: e701ac76672712f98930d0a2d87e3da5b2afdc51
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 222a0f3c327c476ef372117ff0734b6739faf9db
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122356336"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588692"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>Leistungsstufen für Blockblobspeicher
 
@@ -57,7 +57,7 @@ Die Standardleistung unterstützt verschiedene [Zugriffsebenen](storage-blob-sto
 
 - **Sicherung und Datasets für die Notfallwiederherstellung**. Speicher des Typs „Standardleistung“ bietet kostengünstige Ebenen, sodass er für kurz- und langfristige Notfallwiederherstellungs-Datasets, sekundäre Sicherungen sowie die Archivierung von Konformitätsdaten ein perfekter Anwendungsfall ist.
 
-- **Medieninhalt**. Auf Bilder und Videos wird oft zugegriffen, wenn sie zum ersten Mal erstellt und gespeichert werden, doch dieser Inhaltstyp wird seltener verwendet, wenn er älter wird. Speicher des Typs „Standardleistung“ bietet geeignete Ebenen für Anforderungen von Medieninhalten. 
+- **Medieninhalt**. Auf Bilder und Videos wird oft zugegriffen, wenn sie zum ersten Mal erstellt und gespeichert werden, doch dieser Inhaltstyp wird seltener verwendet, wenn er älter wird. Speicher des Typs „Standardleistung“ bietet geeignete Ebenen für Anforderungen von Medieninhalten.
 
 - **Datenverarbeitung in Massen**. Diese Arten von Workloads eignen sich für Standardspeicher, weil sie statt konsistenter niedriger Latenz kostengünstigen Speicher mit hohem Durchsatz erfordern. Große, rohe Datasets werden zur Verarbeitung bereitgestellt und schließlich zu kälteren Ebenen migriert.
 
@@ -74,7 +74,7 @@ Die Blob Storage-Lebenszyklusverwaltung bietet eine umfassende, regelbasierte Ri
 - **Premium:** Die Daten laufen am Ende ihres Lebenszyklus ab.
 - **Standard:** Die Daten werden auf die bestmögliche Zugriffsebene übertragen und am Ende des Lebenszyklus laufen die Daten ab.
 
-Weitere Informationen finden Sie unter [Verwalten des Azure Blob Storage-Lebenszyklus](storage-lifecycle-management-concepts.md).
+Weitere Informationen finden Sie unter [Verwalten des Azure Blob Storage-Lebenszyklus](./lifecycle-management-overview.md).
 
 Daten, die in einem Premium-Blockblob-Speicherkonto gespeichert sind, können nicht zwischen den Ebenen „Heiß“, „Kalt“ und „Archiv“ verschoben werden. Sie können jedoch Blobs von einem Blockblob-Speicherkonto auf die Zugriffsebene „Heiß“ in einem *anderen* Konto kopieren. Verwenden Sie die API [Put Block From URL](/rest/api/storageservices/put-block-from-url) oder [AzCopy v10](../common/storage-use-azcopy-v10.md), um Daten in ein anderes Konto zu kopieren. Die API **Put Block From URL** kopiert Daten synchron auf dem Server. Der Aufruf wird erst abgeschlossen, wenn alle Daten vom ursprünglichen Serverstandort zum Zielstandort verschoben wurden.
 

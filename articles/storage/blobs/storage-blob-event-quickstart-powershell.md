@@ -9,16 +9,16 @@ ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 06be168ff9dfd55a56578b3afcdab8d984416756
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39f5e15bc0300981f2dc504a9eecd8039d6ec237
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89078009"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643686"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>Schnellstart: Weiterleiten von Speicherereignissen an einen Webendpunkt per PowerShell
 
-Azure Event Grid ist ein Ereignisdienst für die Cloud. In diesem Artikel abonnieren Sie mithilfe von Azure PowerShell Blob Storage-Ereignisse, lösen ein Ereignis aus und zeigen das Ergebnis an. 
+Azure Event Grid ist ein Ereignisdienst für die Cloud. In diesem Artikel abonnieren Sie mithilfe von Azure PowerShell Blob Storage-Ereignisse, lösen ein Ereignis aus und zeigen das Ergebnis an.
 
 Üblicherweise senden Sie Ereignisse an einen Endpunkt, der die Ereignisdaten verarbeitet und entsprechende Aktionen ausführt. Der Einfachheit halber senden Sie die Ereignisse in diesem Artikel allerdings an eine Web-App, die die Nachrichten sammelt und anzeigt.
 
@@ -52,7 +52,7 @@ Event Grid-Themen sind Azure-Ressourcen und müssen in einer Azure-Ressourcengru
 
 Erstellen Sie mit dem Befehl [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe.
 
-Das folgende Beispiel erstellt eine Ressourcengruppe namens **gridResourceGroup** am Standort **westus2**.  
+Das folgende Beispiel erstellt eine Ressourcengruppe namens **gridResourceGroup** am Standort **westus2**.
 
 ```powershell
 $resourceGroup = "gridResourceGroup"
@@ -63,7 +63,7 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 Blob Storage-Ereignisse stehen in Speicherkonten vom Typ „Allgemein v2“ und in Blob Storage-Konten zur Verfügung. Speicherkonten vom Typ **Allgemein v2** unterstützen alle Features für alle Speicherdienste – einschließlich Blobs, Dateien, Warteschlangen und Tabellen. **Blob Storage-Konten** sind spezielle Speicherkonten und dienen dazu, unstrukturierte Daten als Blobs (Objekte) in Azure Storage zu speichern. BLOB-Speicherkonten sind wie allgemeine Speicherkonten und besitzen die gleichen Haltbarkeits-, Verfügbarkeits-, Skalierbarkeits- und Leistungseigenschaften, die Sie schon heute verwenden – einschließlich vollständiger API-Konsistenz für Blockblobs und Anfügeblobs. Weitere Informationen finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).
 
-Erstellen Sie mithilfe von [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) ein Blob Storage-Konto mit LRS-Replikation, und rufen Sie anschließend den Kontext des Speicherkontos ab, der das zu verwendende Speicherkonto definiert. Wenn Sie Aktionen für ein Speicherkonto ausführen, verweisen Sie auf den Kontext, anstatt wiederholt die Anmeldeinformationen anzugeben. In diesem Beispiel wird ein Speicherkonto namens **gridstorage** mit lokal redundantem Speicher (LRS) erstellt. 
+Erstellen Sie mithilfe von [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) ein Blob Storage-Konto mit LRS-Replikation, und rufen Sie anschließend den Kontext des Speicherkontos ab, der das zu verwendende Speicherkonto definiert. Wenn Sie Aktionen für ein Speicherkonto ausführen, verweisen Sie auf den Kontext, anstatt wiederholt die Anmeldeinformationen anzugeben. In diesem Beispiel wird ein Speicherkonto namens **gridstorage** mit lokal redundantem Speicher (LRS) erstellt.
 
 > [!NOTE]
 > Speicherkontonamen sind in einem globalen Namespace angegeben, sodass Sie dem in diesem Skript angegebenen Namen zufällig gewählte Zeichen anfügen müssen.
@@ -163,6 +163,7 @@ Sie haben das Ereignis ausgelöst, und Event Grid hat die Nachricht an den Endpu
 ```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
 Wenn Sie das Speicherkonto und das Ereignisabonnement weiterverwenden möchten, überspringen Sie die Bereinigung der in diesem Artikel erstellten Ressourcen. Führen Sie andernfalls den folgenden Befehl aus, um die in diesem Artikel erstellten Ressourcen zu löschen.
 
 ```powershell

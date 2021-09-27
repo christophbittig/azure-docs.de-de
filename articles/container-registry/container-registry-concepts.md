@@ -3,12 +3,12 @@ title: Informationen zu Registrierungen, Repositorys, Images und Artefakten
 description: Einführung in die grundlegenden Konzepte von Azure-Containerregistrierungen, Repositorys, Containerimages und anderen Artefakten
 ms.topic: article
 ms.date: 01/29/2021
-ms.openlocfilehash: 64ab3812b3f23a7b3a480d3530c82bd39f2d29a5
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: add8c20de07a2d520095f257dac0356d1c21af57
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784081"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128596142"
 ---
 # <a name="about-registries-repositories-and-artifacts"></a>Informationen zu Registrierungen, Repositorys und Artefakten
 
@@ -68,7 +68,7 @@ Um sichere Isolation und Schutz vor potenzieller Ebenenmanipulation zu ermöglic
 
 ### <a name="manifest"></a>Manifest
 
-Jedes Containerimage oder Artefakt, das per Push an eine Containerregistrierung übertragen wird, ist einem *Manifest* zugeordnet. Das Manifest wird von der Registrierung generiert, wenn der Inhalt per Push übertragen wird. Es identifiziert die Artefakte und gibt die Ebenen an. Sie können die Manifeste für ein Repository mit dem Azure CLI-Befehl [az acr repository show-manifests][az-acr-repository-show-manifests] auflisten. 
+Jedes Containerimage oder Artefakt, das per Push an eine Containerregistrierung übertragen wird, ist einem *Manifest* zugeordnet. Das Manifest wird von der Registrierung generiert, wenn der Inhalt per Push übertragen wird. Es identifiziert die Artefakte und gibt die Ebenen an.
 
 Ein einfaches Manifest für ein Linux-`hello-world`-Image sieht in etwa wie folgt aus:
 

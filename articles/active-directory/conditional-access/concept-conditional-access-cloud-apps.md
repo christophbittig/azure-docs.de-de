@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 06/15/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6208066f324fed289e59b63d88f2302c60fb2db1
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d1e409fa879f4a541f1f3da7b1c68c06d01e1f8d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114459606"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128587117"
 ---
 # <a name="conditional-access-cloud-apps-actions-and-authentication-context"></a>Bedingter Zugriff: Cloud-Apps, Aktionen und Authentifizierungskontext
 
@@ -40,7 +40,7 @@ Administratoren können den folgenden Cloud-Apps von Microsoft eine Richtlinie f
 - Azure Event Hubs
 - Azure Service Bus
 - [Azure SQL Database und Azure Synapse Analytics](../../azure-sql/database/conditional-access-configure.md)
-- Dynamics CRM Online
+- Common Data Service
 - Microsoft Application Insights Analytics
 - [Microsoft Azure Information Protection](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
 - [Microsoft Azure Management](#microsoft-azure-management)
@@ -48,12 +48,12 @@ Administratoren können den folgenden Cloud-Apps von Microsoft eine Richtlinie f
 - Microsoft Cloud App Security
 - Portal für die Zugriffssteuerung auf Microsoft Commerce-Tools
 - Authentifizierungsdienst für Microsoft Commerce-Tools
-- Microsoft Flow
 - Microsoft Forms
 - Microsoft Intune
 - [Microsoft Intune-Registrierung](/intune/enrollment/multi-factor-authentication)
 - Microsoft Planner
-- Microsoft PowerApps
+- Microsoft Power Apps
+- Microsoft Power Automate
 - Microsoft-Suche in Bing
 - Microsoft StaffHub
 - Microsoft Stream
@@ -85,7 +85,6 @@ Administratoren können bestimmte Apps von der Richtlinie ausschließen, indem s
 
 Die Client-App von Office 365 enthält u. a. die folgenden wichtigen Anwendungen:
 
-   - Microsoft Flow
    - Microsoft Forms
    - Microsoft Stream
    - Microsoft To-Do
@@ -98,7 +97,8 @@ Die Client-App von Office 365 enthält u. a. die folgenden wichtigen Anwendung
    - Office Online
    - Office.com
    - OneDrive
-   - PowerApps
+   - Power Automate
+   - Power Apps
    - Skype for Business Online
    - Sway
 
@@ -175,7 +175,7 @@ Administratoren können veröffentlichte Authentifizierungskontexte in ihren Ric
 
 Weitere Informationen zur Verwendung des Authentifizierungskontexts in Anwendungen finden Sie in den folgenden Artikeln.
 
-- [Microsoft Information Protection Vertraulichkeitsbezeichnungen zum Schützen SharePoint Websites](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide#more-information-about-the-dependencies-for-the-authentication-context-option)
+- [Microsoft Information Protection Vertraulichkeitsbezeichnungen zum Schützen SharePoint Websites](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#more-information-about-the-dependencies-for-the-authentication-context-option)
 - [Microsoft Cloud App Security](/cloud-app-security/session-policy-aad?branch=pr-en-us-2082#require-step-up-authentication-authentication-context)
 - [Benutzerdefinierte Anwendungen](../develop/developer-guide-conditional-access-authentication-context.md)
 

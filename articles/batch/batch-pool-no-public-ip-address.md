@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/9/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: 22c9163b0b8e809fba3c870393c03dd7c0d3c194
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: c229bd53dffa079b32d41f52b8450616e55498fc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113433758"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128665585"
 ---
 # <a name="create-an-azure-batch-pool-without-public-ip-addresses"></a>Erstellen eines Azure Batch-Pools ohne öffentliche IP-Adressen
 
@@ -33,9 +33,14 @@ Um den Zugriff auf diese Knoten einzuschränken und die Auffindbarkeit dieser Kn
 - **Authentifizierung**. Um einen Pool ohne öffentliche IP-Adressen innerhalb eines [virtuellen Netzwerks](./batch-virtual-network.md) zu verwenden, muss die Batch-Client-API die Azure Active Directory-Authentifizierung (AAD) verwenden. Die Azure Batch-Unterstützung für Azure AD ist unter [Authentifizieren von Lösungen des Azure Batch-Diensts mit Active Directory](batch-aad-auth.md) dokumentiert. Wenn Sie Ihren Pool nicht innerhalb eines virtuellen Netzwerks erstellen, kann entweder die Azure AD-Authentifizierung oder die schlüsselbasierte Authentifizierung verwendet werden.
 
 - **Ein Azure VNET** Wenn Sie Ihren Pool in einem [virtuellen Netzwerk](batch-virtual-network.md) erstellen, befolgen Sie diese Anforderungen und Konfigurationen. Um ein VNET mit mindestens einem Subnetz vorzubereiten, können Sie das Azure-Portal, Azure PowerShell, die Azure-Befehlszeilenschnittstelle (CLI) oder andere Methoden verwenden.
+
   - Das VNET muss sich im gleichen Abonnement und in der gleichen Region befinden wie das für die Poolerstellung verwendete Batch-Konto.
+
   - Das für den Pool angegebene Subnetz muss über ausreichend nicht zugewiesene IP-Adressen verfügen, um die Anzahl virtueller Computer aufnehmen zu können, die für den Pool geplant sind, d. h. die Summe der `targetDedicatedNodes`- und `targetLowPriorityNodes`-Eigenschaften des Pools. Wenn das Subnetz nicht über ausreichend nicht zugewiesene IP-Adressen verfügt, belegt der Pool teilweise die Computeknoten und es tritt ein Anpassungsfehler auf.
-  - Sie müssen die Netzwerkrichtlinien für den Private Link-Dienst und Endpunkte deaktivieren. Dies kann mithilfe der Azure CLI erfolgen: ```az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --resource-group <resourcegroup> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies```
+
+  - Sie müssen die Netzwerkrichtlinien für den Private Link-Dienst und Endpunkte deaktivieren. Dies kann mithilfe der Azure CLI erfolgen: 
+
+    `az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --resource-group <resourcegroup> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies`
 
 > [!IMPORTANT]
 > Dabei ordnet Azure Batch pro 100 dedizierten Knoten oder Knoten mit niedriger Priorität jeweils einen Private Link-Dienst und einen Lastenausgleich zu. Diese Ressourcen werden durch die [Ressourcenkontingente](../azure-resource-manager/management/azure-subscription-service-limits.md) des Abonnements beschränkt. Bei umfangreichen Pools muss ggf. für eine oder mehrere der Ressourcen [eine Kontingenterhöhung angefordert](batch-quota-limit.md#increase-a-quota) werden. Darüber hinaus dürfen keine Ressourcensperren auf von Azure Batch erstellte Ressourcen angewendet werden. Ansonsten wird möglicherweise die Bereinigung von Ressourcen infolge der vom Benutzer ausgelösten Aktionen (etwa Löschen eines Pools oder Verkleinern auf 0) verhindert.

@@ -4,16 +4,16 @@ titleSuffix: Azure Digital Twins
 description: In diesem Artikel werden Prozesse zum Exportieren und Löschen personenbezogener Daten in Azure Digital Twins gezeigt.
 author: baanders
 ms.author: baanders
-ms.date: 05/05/2020
+ms.date: 9/14/2021
 ms.topic: conceptual
 ms.service: digital-twins
 services: digital-twins
-ms.openlocfilehash: c50ff2e1a8e63fd775b7b09863ffcd9d832d8683
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: ef68e552d57df0fc202b9d75ae76065e3119ccff
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205717"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128642793"
 ---
 # <a name="azure-digital-twins-customer-data-request-features"></a>Features für Kundendatenanforderungen in Azure Digital Twins
 
@@ -31,7 +31,7 @@ Zum Anzeigen, Exportieren und Löschen personenbezogener Daten, auf die möglich
 
 Als *personenbezogene Daten* werden in Azure Digital Twins Daten betrachtet, die mit den zugehörigen Administratoren und Benutzern verknüpft sind. 
 
-Von Azure Digital Twins wird die [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)-*Objekt-ID* von Benutzern mit Zugriff auf die Umgebung gespeichert. Im Azure-Portal werden von Azure Digital Twins zwar Benutzer-E-Mail-Adressen angezeigt, diese E-Mail-Adressen werden jedoch nicht in Azure Digital Twins gespeichert. Sie werden dynamisch in Azure Active Directory unter Verwendung der Azure Active Directory-Objekt-ID nachgeschlagen.
+Von Azure Digital Twins wird die [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)-**Objekt-ID** von Benutzern mit Zugriff auf die Umgebung gespeichert. Im Azure-Portal werden von Azure Digital Twins zwar Benutzer-E-Mail-Adressen angezeigt, diese E-Mail-Adressen werden jedoch nicht in Azure Digital Twins gespeichert. Sie werden dynamisch in Azure Active Directory unter Verwendung der Azure Active Directory-Objekt-ID nachgeschlagen.
 
 ## <a name="deleting-customer-data"></a>Löschen von Kundendaten
 

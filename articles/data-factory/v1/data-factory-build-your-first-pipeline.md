@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: e7114dae2a9cfef4a9b710831beb63a65c862643
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 06d5821fd6841f0fce5b657a49ecbca6fe232be1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785375"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128557791"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Tutorial: Erstellen Ihrer ersten Pipeline zur Transformierung von Daten mithilfe eines Hadoop-Clusters
 > [!div class="op_single_selector"]
@@ -51,7 +52,7 @@ Eine ausführliche Übersicht über Azure Data Factory finden Sie im Artikel [Ei
 
 Die Diagrammansicht der Beispiel-Data Factory, die Sie in diesem Tutorial erstellen, finden Sie **hier** . **MyFirstPipeline** weist eine Aktivität vom Typ „Hive“ auf, die das **AzureBlobInput**-Dataset als Eingabe verbraucht und das **AzureBlobOutput**-Dataset als Ausgabe erstellt.
 
-![Diagrammansicht im Data Factory-Tutorial](media/data-factory-build-your-first-pipeline/data-factory-tutorial-diagram-view.png)
+:::image type="content" source="media/data-factory-build-your-first-pipeline/data-factory-tutorial-diagram-view.png" alt-text="Diagrammansicht im Data Factory-Tutorial":::
 
 
 In diesem Tutorial enthält der Ordner **inputdata** des Azure-Blobcontainers **adfgetstarted** eine Datei namens „input.log“. Diese Protokolldatei enthält Einträge von drei Monaten: Januar, Februar und März 2016. Hier sind die Beispielzeilen für jeden Monat in der Eingabedatei.

@@ -3,7 +3,7 @@ title: Benutzerprofilvorlagen in Azure API Management | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie den Inhalt der Benutzerprofilseiten im Entwicklerportal in Azure API Management anpassen.
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: erikre
 editor: ''
 ms.assetid: 2e3b73ef-d223-44fe-9280-c3af3fd4a030
@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: apimpm
-ms.openlocfilehash: 1aef238ec0b947dda1417b567b343ae9d92754d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: 6e239c81ebf5c2ead95e9015c9b7d2a9c244810d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86249511"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128639943"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Benutzerprofilvorlagen in Azure API Management
 Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des Entwicklerportals mit einem Satz von Vorlagen anzupassen, die den Inhalt konfigurieren. Unter Verwendung dieser Vorlagen können Sie die Seiteninhalte mithilfe von [DotLiquid](http://dotliquidmarkup.org/)-Syntax und dem Editor Ihrer Wahl (beispielsweise [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)) sowie verschiedenen lokalisierten [Zeichenfolgenressourcen](api-management-template-resources.md#strings), [Glyph-Ressourcen](api-management-template-resources.md#glyphs) und [Seitensteuerelementen](api-management-page-controls.md) an Ihre Bedürfnisse anpassen.  
@@ -326,7 +326,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 > [!NOTE]
 >  Die Vorlagen [Profil](#Profile), [Anwendungen](#Applications) und [Abonnements](#Subscriptions) nutzen das gleiche Datenmodell und empfangen die gleichen Vorlagendaten.  
   
-|Eigenschaft|type|BESCHREIBUNG|  
+|Eigenschaft|type|Beschreibung|  
 |--------------|----------|-----------------|  
 |`firstName`|Zeichenfolge|Vorname des aktuellen Benutzers.|  
 |`lastName`|Zeichenfolge|Nachname des aktuellen Benutzers.|  
@@ -489,7 +489,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 > [!NOTE]
 >  Die Vorlagen [Profil](#Profile), [Anwendungen](#Applications) und [Abonnements](#Subscriptions) nutzen das gleiche Datenmodell und empfangen die gleichen Vorlagendaten.  
   
-|Eigenschaft|type|BESCHREIBUNG|  
+|Eigenschaft|type|Beschreibung|  
 |--------------|----------|-----------------|  
 |`firstName`|Zeichenfolge|Vorname des aktuellen Benutzers.|  
 |`lastName`|Zeichenfolge|Nachname des aktuellen Benutzers.|  

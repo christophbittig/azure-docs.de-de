@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: 95b5cc191ac6857bf8e1b09e70b22d928473fe03
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b8e4395cd2ac46acb94abced52aa28eccf4f3d7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92314843"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615983"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Ausführen von Aktionen basierend auf dem Gruppenstatus unter Verwendung von Bereichen in Azure Logic Apps
 
@@ -111,13 +111,13 @@ Sie können Ihre Logik-App jederzeit speichern, machen Sie also häufig Gebrauch
 
    1. Geben Sie im Feld **Betreff** diesen Text ein:
 
-      ```Time to leave: Traffic more than 10 minutes```
+     `Time to leave: Traffic more than 10 minutes`
 
    1. Geben Sie im Feld **Text** diesen Text mit einem nachgestellten Leerzeichen ein: 
 
-      ```Travel time:```
+     `Travel time:`
 
-      Während der Cursor im Feld **Text** angezeigt wird, bleibt die Liste mit den dynamischen Inhalten geöffnet, damit Sie alle Parameter auswählen können, die an diesem Punkt verfügbar sind.
+     Während der Cursor im Feld **Text** angezeigt wird, bleibt die Liste mit den dynamischen Inhalten geöffnet, damit Sie alle Parameter auswählen können, die an diesem Punkt verfügbar sind.
 
    1. Wenn die Liste mit den dynamischen Inhalten erscheint, wählen Sie **Ausdruck** aus.
 

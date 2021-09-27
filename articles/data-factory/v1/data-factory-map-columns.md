@@ -4,15 +4,16 @@ description: Erfahren Sie, wie Sie Quellspalten Zielspalten zuordnen.
 author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
 robots: noindex
-ms.openlocfilehash: fef2c6f120ae25e6aa1846d4971ff707da9bab92
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac8da7dcfcc95a57606b9590e897a66bfab1675e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100371123"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128602952"
 ---
 # <a name="map-source-dataset-columns-to-destination-dataset-columns"></a>Zuordnen von Spalten im Quelldataset zu Spalten im Zieldataset
 > [!NOTE]
@@ -133,7 +134,7 @@ Der folgende JSON-Code definiert eine Kopieraktivität in einer Pipeline. Die Sp
 ```
 **Ablauf der Spaltenzuordnung:**
 
-![Ablauf der Spaltenzuordnung](./media/data-factory-map-columns/column-mapping-flow.png)
+:::image type="content" source="./media/data-factory-map-columns/column-mapping-flow.png" alt-text="Ablauf der Spaltenzuordnung":::
 
 ## <a name="sample-2--column-mapping-with-sql-query-from-azure-sql-to-azure-blob"></a>Beispiel 2 – Spaltenzuordnung mit SQL-Abfrage von Azure SQL zu Azure-Blob
 In diesem Beispiel wird eine SQL-Abfrage zum Extrahieren von Daten aus Azure SQL verwendet, statt einfach den Tabellennamen und die Spaltennamen im Abschnitt „structure“ anzugeben. 
@@ -172,7 +173,7 @@ In diesem Fall werden die Abfrageergebnisse zuerst den in „structure“ der Qu
 
 **Ablauf der Spaltenzuordnung**
 
-![Ablauf der Spaltenzuordnung-2](./media/data-factory-map-columns/column-mapping-flow-2.png)
+:::image type="content" source="./media/data-factory-map-columns/column-mapping-flow-2.png" alt-text="Ablauf der Spaltenzuordnung-2":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 Im folgenden Artikel finden Sie ein Tutorial zur Verwendung der Kopieraktivität: 

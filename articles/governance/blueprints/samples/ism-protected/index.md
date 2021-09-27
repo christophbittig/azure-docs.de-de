@@ -1,14 +1,14 @@
 ---
 title: 'Blaupausenbeispiel für ISM PROTECTED der australischen Regierung: Übersicht'
 description: Enthält eine Übersicht über das Blaupausenbeispiel für „ISM PROTECTED der australischen Regierung“. Dieses Blaupausenbeispiel unterstützt Kunden bei der Bewertung spezifischer ISM PROTECTED-Steuerungen.
-ms.date: 04/02/2021
+ms.date: 09/08/2021
 ms.topic: sample
-ms.openlocfilehash: d7fc5cb73c6bee01d2499930771bd4cd2153aaaa
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 2054cfc99b041e2de1635f0eb6a09932d778f095
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108763179"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128675084"
 ---
 # <a name="overview-of-the-australian-government-ism-protected-blueprint-sample"></a>Übersicht über das Blaupausenbeispiel für „ISM PROTECTED der australischen Regierung“
 

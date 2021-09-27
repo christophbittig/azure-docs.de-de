@@ -7,12 +7,12 @@ ms.author: jtoland
 ms.custom: mvc
 ms.topic: conceptual
 ms.date: 08/17/2021
-ms.openlocfilehash: 74b81b095ef969715313c79c90821a8c8e8aaf1d
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: cfbff4be8048090ec606fd8640281dccd17fe084
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123098249"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "128598004"
 ---
 # <a name="whats-new-in-azure-database-for-mysql---flexible-server-preview"></a>Neuerungen in Azure Database for MySQL Flexible Server (Vorschauversion)
 
@@ -28,11 +28,11 @@ Dieses Release von Azure Database for MySQL Flexible Server enthält die folgend
 
 - **Hochverfügbarkeit innerhalb einer Zone mithilfe von Hochverfügbarkeit in gleicher Zone**
 
-  Mit diesem Dienst können Kund*innen jetzt flexibel ihre bevorzugte Verfügbarkeitszone für den Standbyserver auswählen, wenn sie Hochverfügbarkeit aktivieren. Zudem ermöglicht dieses Feature es Kund*innen, einen Standbyserver in derselben Zone wie der primäre Server bereitzustellen, wodurch die Replikationsverzögerung zwischen dem primären Server und dem Standbyserver reduziert wird. Dadurch entstehen auch niedrigere Latenzen zwischen dem Anwendungsserver und dem Datenbankserver, wenn diese in derselben Azure-Zone bereitgestellt werden. [Weitere Informationen](https://aka.ms/SameZone-HA)
+  Mit diesem Dienst können Kund*innen jetzt flexibel ihre bevorzugte Verfügbarkeitszone für den Standbyserver auswählen, wenn sie Hochverfügbarkeit aktivieren. Zudem ermöglicht dieses Feature es Kund*innen, einen Standbyserver in derselben Zone wie der primäre Server bereitzustellen, wodurch die Replikationsverzögerung zwischen dem primären Server und dem Standbyserver reduziert wird. Dadurch entstehen auch niedrigere Latenzen zwischen dem Anwendungsserver und dem Datenbankserver, wenn diese in derselben Azure-Zone bereitgestellt werden. [Weitere Informationen](/azure/mysql/flexible-server/concepts-high-availability#same-zone-high-availability)
 
 - **Auswahl der Standbyzone mit zonenredundanter Hochverfügbarkeit**
 
-  Der Dienst bietet Kund*innen jetzt die Möglichkeit, den Standort der Standbyserverzone zu wählen. Mit diesem Feature können Kund*innen ihren Standbyserver in der Zone ihrer Wahl bereitstellen. Durch das Bereitstellen der Standby-Datenbankserver und Standbyanwendungen in derselben Zone werden Latenzen reduziert, und Kund*innen können sich besser auf Notfallwiederherstellungen und Zonenausfälle vorbereiten. [Weitere Informationen](https://aka.ms/standby-selection)
+  Der Dienst bietet Kund*innen jetzt die Möglichkeit, den Standort der Standbyserverzone zu wählen. Mit diesem Feature können Kund*innen ihren Standbyserver in der Zone ihrer Wahl bereitstellen. Durch das Bereitstellen der Standby-Datenbankserver und Standbyanwendungen in derselben Zone werden Latenzen reduziert, und Kund*innen können sich besser auf Notfallwiederherstellungen und Zonenausfälle vorbereiten. [Weitere Informationen](/azure/mysql/flexible-server/concepts-high-availability#standby-zone-selection)
 
 - **Integration in private DNS-Zonen**
 
@@ -44,7 +44,7 @@ Dieses Release von Azure Database for MySQL Flexible Server enthält die folgend
 
 - **Zeitpunktwiederherstellung für einen Server in einer Verfügbarkeitszone**
 
-  Dank der Zeitpunktwiederherstellung im Dienst können Kund*innen jetzt Verfügbarkeitszonen konfigurieren und dabei die Datenbankserver und die Standbyanwendungen in derselben Zone bereitstellen, um die Latenz zu reduzieren. Dadurch können Kund*innen sich besser auf Notfallwiederherstellungen und Zonenausfälle vorbereiten. [Weitere Informationen](https://aka.ms/standby-selection)
+  Dank der Zeitpunktwiederherstellung im Dienst können Kund*innen jetzt Verfügbarkeitszonen konfigurieren und dabei die Datenbankserver und die Standbyanwendungen in derselben Zone bereitstellen, um die Latenz zu reduzieren. Dadurch können Kund*innen sich besser auf Notfallwiederherstellungen und Zonenausfälle vorbereiten. [Weitere Informationen](/azure/mysql/flexible-server/concepts-high-availability#standby-zone-selection)
 
 - **Plug-Ins „validate_password“ und „caching_sha2_password“ in der privaten Vorschau verfügbar**
 
@@ -65,13 +65,6 @@ Dieses Release von Azure Database for MySQL Flexible Server enthält die folgend
   - In den folgenden Regionen kann kein Server mit Hochverfügbarkeit in gleicher Zone erstellt werden: „Indien, Mitte“, „Asien, Osten“, „Südkorea, Mitte“, „Südafrika, Norden“ und „Schweiz, Norden“.
   - Nach einem Hochverfügbarkeitsfailover kann es selten vorkommen, dass der primäre Server den Modus read_only annimmt. Sie können dieses Problem beheben, indem Sie den Wert read_only auf dem Blatt für Serverparameter in OFF ändern.
   - Nachdem Sie die Rechenleistung auf dem Blatt „Compute und Speicher“ erfolgreich skaliert haben, werden die IOPS auf den SKU-Standardwert zurückgesetzt. Kund*innen können das Problem umgehen, indem sie die IOPS auf dem Blatt „Compute und Speicher“ nach der Computebereitstellung und der konsequenten IOPS-Zurücksetzung auf den (zuvor festgelegten) gewünschten Wert neu skalieren.
-  - Wenn Sie versuchen, Hochverfügbarkeit für dieselbe Zone zu aktivieren oder bereitzustellen, tritt in den folgenden Regionen ein Fehler bei der Bereitstellung auf: 
-      - Indien, Mitte
-      - Asien, Osten
-      - Korea, Mitte
-      - Südafrika, Norden
-      - Schweiz, Norden
-
 
 ## <a name="july-2021"></a>Juli 2021
 
@@ -100,7 +93,7 @@ Dieses Release von Azure Database for MySQL Flexible Server enthält die folgend
 
 - **Kostenloses Angebot für 12 Monate**
 
-  Ab dem 15. Juni 2021 haben Kund*innen mit [kostenlosem Azure-Konto](https://azure.microsoft.com/free/) zwölf Monate lang kostenlosen Zugriff auf Azure Database for MySQL Flexible Server. Darin sind monatlich 750 Nutzungsstunden und 32 GB Speicher enthalten. Kund*innen können dieses Angebot zum Entwickeln und Bereitstellen von Anwendungen nutzen, die Azure Database for MySQL Flexible Server verwenden. [Weitere Informationen](https://go.microsoft.com/fwlink/?linkid=2165892)
+  Ab dem 15. Juni 2021 haben Kund*innen mit [kostenlosem Azure-Konto](https://azure.microsoft.com/free/) zwölf Monate lang kostenlosen Zugriff auf Azure Database for MySQL Flexible Server. Darin sind monatlich 750 Nutzungsstunden und 32 GB Speicher enthalten. Kund*innen können dieses Angebot zum Entwickeln und Bereitstellen von Anwendungen nutzen, die Azure Database for MySQL Flexible Server verwenden. [Weitere Informationen](./how-to-deploy-on-azure-free-account.md)
 
 - **Automatische Speichervergrößerung**
 

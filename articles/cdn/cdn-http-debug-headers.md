@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: allensu
-ms.openlocfilehash: 4154c6a1e739f935022271e7a101f39d3ee5c500
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b0171b2bf74f60e2cc1ea7600f313934737103e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84343019"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128639639"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>HTTP-Header „X-EC-Debug“ für Azure CDN-Regel-Engine
 Der Debugcache-Anforderungsheader (`X-EC-Debug`) stellt zusätzliche Informationen zur Cacherichtlinie bereit, die auf das angeforderte Objekt angewendet wird. Diese Header sind spezifisch für **Azure CDN Premium-Produkte von Verizon**.
 
-## <a name="usage"></a>Verbrauch
+## <a name="usage"></a>Verwendung
 Die an einen Benutzer von den POP-Servern gesendete Antwort enthält die `X-EC-Debug`-Header nur, wenn die folgenden Bedingungen erfüllt sind:
 
 - Das Feature [Debug Cache Response Headers](https://docs.vdms.com/cdn/Content/HRE/F/Debug-Cache-Response-Headers.htm) wurde für die Regel-Engine für die angegebene Anforderung aktiviert.
@@ -103,7 +103,7 @@ Der Antwortheader `X-EC-Debug`, der meldet, ob eine Anforderung hätte zwischeng
 
 Der oben in der Antwortheadersyntax verwendete Begriff ist folgendermaßen definiert:
 
-Wert  | BESCHREIBUNG
+Wert  | Beschreibung
 -------| --------
 YES    | Gibt an, dass der angeforderte Inhalt für das Zwischenspeichern geeignet war.
 Nein     | Gibt an, dass der angeforderte Inhalt für das Zwischenspeichern nicht geeignet war. Dieses Status ergibt sich möglicherweise aufgrund einer der folgenden Ursachen: <br /> – Kundenspezifische Konfiguration: Eine für Ihr Konto spezifische Konfiguration kann verhindern, dass die POP-Server ein Objekt zwischenspeichern. Beispielsweise kann die Regel-Engine verhindern, dass ein Objekt zwischengespeichert wird, indem sie das Feature „Cache umgehen“ für die betreffenden Anforderungen aktiviert.<br /> – Cacheantwortheader: Die angeforderten Header „Cache-Control“ und „Expires“ des Objekts können verhindern, dass POP-Server es zwischenspeichern.
@@ -169,5 +169,4 @@ Die oben in der Antwortheadersyntax verwendeten Begriffe sind folgendermaßen de
 
 Der folgende Beispielantwortheader gibt den Cachestatus des angeforderten Inhalts zum Zeitpunkt der Anforderung an:
 
-```X-EC-Debug: x-ec-cache-state: max-age=604800 (7d); cache-ts=1341802519 (Mon, 09 Jul 2012 02:55:19 GMT); cache-age=0 (0s); remaining-ttl=604800 (7d); expires-delta=none```
-
+`X-EC-Debug: x-ec-cache-state: max-age=604800 (7d); cache-ts=1341802519 (Mon, 09 Jul 2012 02:55:19 GMT); cache-age=0 (0s); remaining-ttl=604800 (7d); expires-delta=none`

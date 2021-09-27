@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: 76bbe60397ebb01aed5694d933b3067f778a4c21
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 165ad5bcb53de49d192103cd8a3df25ad2e48a20
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85505595"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664483"
 ---
 # <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>Verschieben von Daten in den vFXT-Cluster – Parallele Datenerfassung
 
@@ -319,7 +319,7 @@ Befolgen Sie diese Anweisungen, um mit ``msrsync`` ein Azure-Cloudvolume mit ein
 
    Dieser Befehl ist z. B. so konzipiert, dass 11.000 Dateien in 64 Prozessen von „/test/source-repository“ nach „/mnt/vfxt/repository“ verschoben werden:
 
-   ``msrsync -P --stats -p 64 -f 170 --rsync "-ahv --inplace" /test/source-repository/ /mnt/vfxt/repository && msrsync -P --stats -p 64 -f 170 --rsync "-ahv --inplace" /test/source-repository/ /mnt/vfxt/repository``
+   `msrsync -P --stats -p 64 -f 170 --rsync "-ahv --inplace" /test/source-repository/ /mnt/vfxt/repository && msrsync -P --stats -p 64 -f 170 --rsync "-ahv --inplace" /test/source-repository/ /mnt/vfxt/repository`
 
 ## <a name="use-the-parallel-copy-script"></a>Verwenden des Skripts zum parallelen Kopieren
 

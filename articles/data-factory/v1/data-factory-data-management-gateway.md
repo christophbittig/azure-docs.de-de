@@ -3,17 +3,18 @@ title: Datenverwaltungsgateway für Data Factory
 description: Verwenden Sie das Datenverwaltungsgateway in Azure Data Factory zum Verschieben Ihrer Daten.
 author: nabhishek
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 ms.custom: devx-track-azurepowershell
 robots: noindex
-ms.openlocfilehash: 50e9dbddd0a84f104aed9275f985f444990dbc30
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 14f3a838fb5c2893e25828234121f053ee951afc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677162"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128661990"
 ---
 # <a name="data-management-gateway"></a>Gateway zur Datenverwaltung
 > [!NOTE]
@@ -47,7 +48,7 @@ Das Datenverwaltungsgateway bietet die folgenden Funktionen:
 ### <a name="command-flow-and-data-flow"></a>Befehls- und Datenfluss
 Wenn Sie Daten mithilfe einer Kopieraktivität zwischen der lokalen Umgebung und der Cloud kopieren, verwendet diese Aktivität ein Gateway, um die Daten aus einer lokalen Datenquelle in die Cloud und umgekehrt zu übertragen.
 
-Im Anschluss finden Sie eine Darstellung des allgemeinen Datenflusses sowie eine Zusammenfassung der Schritte für das Kopieren mit dem Datengateway: ![Datenfluss über ein Gateway](./media/data-factory-data-management-gateway/data-flow-using-gateway.png).
+Im Anschluss finden Sie eine Darstellung des allgemeinen Datenflusses sowie eine Zusammenfassung der Schritte für das Kopieren mit dem Datengateway: :::image type="content" source="./media/data-factory-data-management-gateway/data-flow-using-gateway.png" alt-text="Datenfluss über ein Gateway":::.
 
 1. Der Datenentwickler erstellt entweder über das [Azure-Portal](https://portal.azure.com) oder mit einem [PowerShell-Cmdlet](/powershell/module/az.datafactory/) ein Gateway für Azure Data Factory.
 2. Der Datenentwickler erstellt durch Angabe des Gateways einen verknüpften Dienst für einen lokalen Datenspeicher. Als Teil der Einrichtung des verknüpften Diensts verwendet der Datenentwickler die Anwendung „Anmeldeinformationen festlegen“, um Authentifizierungstypen und Anmeldeinformationen anzugeben. Die Anwendung „Anmeldeinformationen festlegen“ kommuniziert mit dem Datenspeicher, um die Verbindung zu testen, und mit dem Gateway, um die Anmeldeinformationen zu speichern.
@@ -108,31 +109,31 @@ Um im Portal ein Gateway zu erstellen und auf der Seite **Konfigurieren** den Sc
 #### <a name="if-you-have-already-created-the-logical-gateway-in-the-portal"></a>Wenn Sie bereits ein logisches Gateway im Portal erstellt haben
 1. Wechseln Sie im Azure-Portal zur Seite **Data Factory**, und klicken Sie auf die Kachel **Verknüpfte Dienste**.
 
-    ![Seite „Data Factory“](media/data-factory-data-management-gateway/data-factory-blade.png)
+    :::image type="content" source="media/data-factory-data-management-gateway/data-factory-blade.png" alt-text="Seite „Data Factory“":::
 2. Wählen Sie auf der Seite **Verknüpfte Dienste** das logische **Gateway** aus, das Sie im Portal erstellt haben.
 
-    ![Logisches Gateway](media/data-factory-data-management-gateway/data-factory-select-gateway.png)
+    :::image type="content" source="media/data-factory-data-management-gateway/data-factory-select-gateway.png" alt-text="Logisches Gateway":::
 3. Klicken Sie auf der Seite **Datengateway** auf **Datengateway herunterladen und installieren**.
 
-    ![Link zum Herunterladen im Portal](media/data-factory-data-management-gateway/download-and-install-link-on-portal.png)
+    :::image type="content" source="media/data-factory-data-management-gateway/download-and-install-link-on-portal.png" alt-text="Link zum Herunterladen im Portal":::
 4. Klicken Sie auf der Seite **Konfigurieren** auf **Schlüssel neu erstellen**. Klicken Sie in der Warnmeldung auf „Ja“, nachdem Sie sie sorgfältig gelesen haben.
 
-    ![Schaltfläche „Schlüssel neu erstellen“](media/data-factory-data-management-gateway/recreate-key-button.png)
+    :::image type="content" source="media/data-factory-data-management-gateway/recreate-key-button.png" alt-text="Schaltfläche „Schlüssel neu erstellen“":::
 5. Klicken Sie neben dem Schlüssel auf die Schaltfläche „Kopieren“. Der Schlüssel wird in die Zwischenablage kopiert.
 
-    ![Kopieren des Schlüssels](media/data-factory-data-management-gateway/copy-gateway-key.png)
+    :::image type="content" source="media/data-factory-data-management-gateway/copy-gateway-key.png" alt-text="Kopieren des Schlüssels":::
 
 ### <a name="system-tray-icons-notifications"></a>Symbole und Benachrichtigungen in der Taskleiste
 Die folgende Abbildung enthält einige Symbole, die auf der Taskleiste angezeigt werden.
 
-![Taskleistensymbole](./media/data-factory-data-management-gateway/gateway-tray-icons.png)
+:::image type="content" source="./media/data-factory-data-management-gateway/gateway-tray-icons.png" alt-text="Taskleistensymbole":::
 
 Wenn Sie den Cursor auf der Taskleiste auf das Symbol oder die Benachrichtigung bewegen, werden in einem Popupfenster Details zum Zustand des Gateways bzw. des Aktualisierungsvorgangs angezeigt.
 
 ### <a name="ports-and-firewall"></a>Ports und Firewall
 Zwei Firewalls müssen berücksichtigt werden: Die **Unternehmensfirewall**, die auf dem zentralen Router des Unternehmens ausgeführt wird, und die **Windows-Firewall**, die als Daemon auf dem lokalen Computer konfiguriert ist, auf dem das Gateway installiert ist.
 
-![Firewalls](./media/data-factory-data-management-gateway/firewalls2.png)
+:::image type="content" source="./media/data-factory-data-management-gateway/firewalls2.png" alt-text="Firewalls":::
 
 Auf Ebene der Unternehmensfirewall müssen Sie die folgenden Domänen und ausgehenden Ports konfigurieren:
 
@@ -167,11 +168,11 @@ Führen Sie beispielsweise die folgenden Schritte aus, um Daten aus **einem loka
 ### <a name="proxy-server-considerations"></a>Proxyserver-Aspekte
 Wenn die Netzwerkumgebung Ihres Unternehmens einen Proxyserver für den Internetzugriff verwendet, konfigurieren Sie das Datenverwaltungsgateway mit den geeigneten Proxyeinstellungen. Sie können den Proxy während der anfänglichen Registrierungsphase festlegen.
 
-![Einrichten des Proxys während der Registrierung](media/data-factory-data-management-gateway/SetProxyDuringRegistration.png)
+:::image type="content" source="media/data-factory-data-management-gateway/SetProxyDuringRegistration.png" alt-text="Einrichten des Proxys während der Registrierung":::
 
 Das Gateway verwendet den Proxyserver, um eine Verbindung mit dem Clouddienst herzustellen. Klicken Sie während des Anfangssetups auf **Ändern** . Sie sehen das Dialogfeld **Proxyeinstellung** .
 
-![Einrichten des Proxys mithilfe des Konfigurations-Managers 1](media/data-factory-data-management-gateway/SetProxySettings.png)
+:::image type="content" source="media/data-factory-data-management-gateway/SetProxySettings.png" alt-text="Einrichten des Proxys mithilfe des Konfigurations-Managers 1":::
 
 Es gibt drei Konfigurationsoptionen:
 
@@ -190,7 +191,7 @@ Wenn Sie die Proxyeinstellungen nach der erfolgreichen Registrierung des Gateway
 
 Sie können den HTTP-Proxy im Konfigurations-Manager anzeigen und aktualisieren.
 
-![Einrichten des Proxys mithilfe des Konfigurations-Managers 2](media/data-factory-data-management-gateway/SetProxyConfigManager.png)
+:::image type="content" source="media/data-factory-data-management-gateway/SetProxyConfigManager.png" alt-text="Einrichten des Proxys mithilfe des Konfigurations-Managers 2":::
 
 > [!NOTE]
 > Wenn Sie einen Proxyserver mit NTLM-Authentifizierung einrichten, wird der Gatewayhostdienst im Domänenkonto ausgeführt. Wenn Sie das Kennwort für das Domänenkonto später ändern, denken Sie daran, die Konfigurationseinstellungen für den Dienst entsprechend zu aktualisieren und neu zu starten. Aufgrund dieser Anforderung empfiehlt es sich, ein dediziertes Domänenkonto für den Zugriff auf den Proxyserver zu verwenden, in dem das Kennwort nicht regelmäßig geändert werden muss.
@@ -260,15 +261,15 @@ Sie sehen die geplante Aktualisierungszeit an folgenden Stellen:
 
 Auf der Registerkarte „Startseite“ des Datenverwaltungsgateway-Konfigurations-Managers werden der Aktualisierungszeitplan und der Zeitpunkt der letzten Installation bzw. Aktualisierung des Gateways angezeigt.
 
-![Planen von Updates](media/data-factory-data-management-gateway/UpdateSection.png)
+:::image type="content" source="media/data-factory-data-management-gateway/UpdateSection.png" alt-text="Planen von Updates":::
 
 Sie können das Update sofort installieren oder warten, bis das Gateway zum geplanten Zeitpunkt automatisch aktualisiert wird. Die folgende Abbildung zeigt beispielsweise die Benachrichtigung, die im Datenverwaltungsgateway-Konfigurations-Manager zusammen mit der Schaltfläche „Aktualisieren“ angezeigt wird, auf die Sie zum sofortigen Installieren klicken können.
 
-![Update im Datenverwaltungsgateway-Konfigurations-Manager](./media/data-factory-data-management-gateway/gateway-auto-update-config-manager.png)
+:::image type="content" source="./media/data-factory-data-management-gateway/gateway-auto-update-config-manager.png" alt-text="Update im Datenverwaltungsgateway-Konfigurations-Manager":::
 
 Die Benachrichtigung in der Taskleiste sieht wie in der folgenden Abbildung aus:
 
-![Meldung in der Taskleiste](./media/data-factory-data-management-gateway/gateway-auto-update-tray-message.png)
+:::image type="content" source="./media/data-factory-data-management-gateway/gateway-auto-update-tray-message.png" alt-text="Meldung in der Taskleiste":::
 
 Der Status des Aktualisierungsvorgangs (manuell oder automatisch) wird auf der Taskleiste angezeigt. Wenn Sie den Datenverwaltungsgateway-Konfigurations-Manager das nächste Mal öffnen, wird auf der Benachrichtigungsleiste eine Meldung mit dem Hinweis eingeblendet, dass das Gateway aktualisiert wurde. Außerdem ist ein Link zu [Neuigkeiten](data-factory-gateway-release-notes.md) angegeben.
 
@@ -347,16 +348,16 @@ Im Azure-Portal können Sie auf einem Gatewaycomputer nahezu in Echtzeit Momenta
 
 1. Navigieren Sie im Azure-Portal zur Data Factory-Startseite, und klicken Sie auf die Kachel **Verknüpfte Dienste**.
 
-    ![Data Factory-Startseite](./media/data-factory-data-management-gateway/monitor-data-factory-home-page.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/monitor-data-factory-home-page.png" alt-text="Data Factory-Startseite":::
 2. Wählen Sie auf der Seite **Verknüpfte Dienste** das **Gateway** aus.
 
-    ![Seite „Verknüpfte Dienste“](./media/data-factory-data-management-gateway/monitor-linked-services-blade.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/monitor-linked-services-blade.png" alt-text="Seite „Verknüpfte Dienste“":::
 3. Auf der Seite **Gateway** wird die Arbeitsspeicher- und CPU-Nutzung des Gateways angezeigt.
 
-    ![CPU- und Arbeitsspeicherauslastung des Gateways](./media/data-factory-data-management-gateway/gateway-simple-monitoring.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/gateway-simple-monitoring.png" alt-text="CPU- und Arbeitsspeicherauslastung des Gateways":::
 4. Aktivieren Sie die Option **Erweiterte Einstellungen**, um weitere Details anzuzeigen, z.B. die Netzwerkauslastung.
     
-    ![Erweiterte Überwachung des Gateways](./media/data-factory-data-management-gateway/gateway-advanced-monitoring.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/gateway-advanced-monitoring.png" alt-text="Erweiterte Überwachung des Gateways":::
 
 Die folgende Tabelle enthält Beschreibungen von Spalten in der Liste **Gatewayknoten**:
 
@@ -406,29 +407,29 @@ Dieser Abschnitt enthält Anweisungen zum Verschieben des Gatewayclients von ein
 
 1. Wechseln Sie im Portal zur **Data Factory-Startseite**, und klicken Sie auf die Kachel **Verknüpfte Dienste**.
 
-    ![Link „Datengateways“](./media/data-factory-data-management-gateway/DataGatewaysLink.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/DataGatewaysLink.png" alt-text="Link „Datengateways“":::
 2. Wählen Sie auf der Seite **Verknüpfte Dienste** im Abschnitt **DATENGATEWAYS** Ihr Gateway aus.
 
-    ![Seite „Verknüpfte Dienste“ mit ausgewähltem Gateway](./media/data-factory-data-management-gateway/LinkedServiceBladeWithGateway.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/LinkedServiceBladeWithGateway.png" alt-text="Seite „Verknüpfte Dienste“ mit ausgewähltem Gateway":::
 3. Klicken Sie auf der Seite **Datengateway** auf **Datengateway herunterladen und installieren**.
 
-    ![Link „Gateway herunterladen“](./media/data-factory-data-management-gateway/DownloadGatewayLink.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/DownloadGatewayLink.png" alt-text="Link „Gateway herunterladen“":::
 4. Klicken Sie auf der Seite **Konfigurieren** auf **Datengateway herunterladen und installieren**, und befolgen Sie die Anweisungen, um das Datengateway auf dem Computer zu installieren.
 
-    ![Konfigurieren, Seite](./media/data-factory-data-management-gateway/ConfigureBlade.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/ConfigureBlade.png" alt-text="Konfigurieren, Seite":::
 5. Lassen Sie den **Microsoft-Datenverwaltungsgateway-Konfigurations-Manager** geöffnet.
 
-    ![Konfigurations-Manager](./media/data-factory-data-management-gateway/ConfigurationManager.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/ConfigurationManager.png" alt-text="Configuration Manager":::
 6. Klicken Sie im Portal auf der Seite **Konfigurieren** in der Befehlsleiste auf **Schlüssel neu erstellen** und anschließend in der Warnmeldung auf **Ja**. Klicken Sie auf die Schaltfläche **Kopieren** neben dem Schlüsseltext, um den Schlüssel in die Zwischenablage zu kopieren. Sobald Sie den Schlüssel neu erstellen, funktioniert das Gateway auf dem alten Computer nicht mehr.
 
-    ![Schlüssel neu erstellen 2](./media/data-factory-data-management-gateway/RecreateKey.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/RecreateKey.png" alt-text="Schlüssel neu erstellen 2":::
 7. Fügen Sie auf Ihrem Computer im **Datenverwaltungsgateway-Konfigurations-Manager** auf der Seite **Gateway registrieren** den **Schlüssel** in das Textfeld ein. (Optional) Aktivieren Sie das Kontrollkästchen **Gatewayschlüssel anzeigen**, um den Schlüsseltext anzuzeigen.
 
-    ![Schlüssel kopieren und registrieren](./media/data-factory-data-management-gateway/CopyKeyAndRegister.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/CopyKeyAndRegister.png" alt-text="Schlüssel kopieren und registrieren":::
 8. Klicken Sie auf **Registrieren** , um das Gateway beim Clouddienst zu registrieren.
 9. Klicken Sie auf der Registerkarte **Einstellungen** auf **Ändern**, um das gleiche Zertifikat auszuwählen, das mit dem alten Gateway verwendet wurde. Geben Sie dann das **Kennwort** ein, und klicken Sie auf **Fertig stellen**.
 
-   ![Zertifikat angeben](./media/data-factory-data-management-gateway/SpecifyCertificate.png)
+   :::image type="content" source="./media/data-factory-data-management-gateway/SpecifyCertificate.png" alt-text="Zertifikat angeben":::
 
    Ein Zertifikat des alten Gateways können Sie wie folgt exportieren: Starten Sie auf dem alten Computer den Konfigurations-Manager des Datenverwaltungsgateways, wechseln Sie zur Registerkarte **Zertifikat**, klicken Sie auf **Exportieren**, und befolgen Sie die Anweisungen.
 10. Nach erfolgreicher Registrierung des Gateways sollten auf der Startseite des Gateway-Konfigurations-Managers **Registrierung** auf **Registriert** und die Option **Status** auf **Gestartet** festgelegt sein.
@@ -443,7 +444,7 @@ Zum Verschlüsseln der Anmeldeinformationen im Data Factory-Editor gehen Sie wie
 5. Geben Sie den Datenbanknamen für die **Initial Catalog**-Eigenschaft in **connectionString** ein.
 6. Klicken Sie auf der Befehlsleiste auf **Verschlüsseln**, um die ClickOnce-Anwendung **Anmeldeinformationsverwaltung** zu starten. Das Dialogfeld **Anmeldeinformationen festlegen** wird angezeigt.
 
-    ![Dialogfeld „Anmeldeinformationen festlegen“](./media/data-factory-data-management-gateway/setting-credentials-dialog.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/setting-credentials-dialog.png" alt-text="Dialogfeld „Anmeldeinformationen festlegen“":::
 7. Gehen Sie im Dialogfeld **Anmeldeinformationen festlegen** folgendermaßen vor:
    1. Wählen Sie die **Authentifizierung** aus, die der Data Factory-Dienst für die Verbindung mit der Datenbank verwenden soll.
    2. Geben Sie für die Einstellung **BENUTZERNAME** den Namen des Benutzers ein, der auf die Datenbank zugreifen kann.

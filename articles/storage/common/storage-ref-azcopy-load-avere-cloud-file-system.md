@@ -9,12 +9,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 910d6196228315fa8bcb86ef2be113e542a2bf8e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: b678b2830ede076169f82c4a3280845edd7db90b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110478721"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128624916"
 ---
 # <a name="azcopy-load-clfs"></a>azcopy load clfs
 
@@ -26,16 +26,16 @@ Der Befehl „load“ kopiert Daten in Azure Blob Storage-Container und speicher
 
 Um diesen Befehl zu nutzen, installieren Sie die erforderliche Erweiterung über: pip3 install clfsload~=1.0.23. Stellen Sie sicher, dass sich „CLFSLoad.py“ in Ihrem Pfad befindet. Weitere Informationen zu diesem Schritt finden Sie unter [https://aka.ms/azcopy/clfs](https://aka.ms/azcopy/clfs).
 
-Dieser Befehl stellt eine einfache Option zum Verschieben vorhandener Daten in den Cloudspeicher dar, wo sie mit bestimmten Microsoft-HPC-Produkten (High Performance Computing) verwendet werden können. 
+Dieser Befehl stellt eine einfache Option zum Verschieben vorhandener Daten in den Cloudspeicher dar, wo sie mit bestimmten Microsoft-HPC-Produkten (High Performance Computing) verwendet werden können.
 
-Da diese Produkte ein proprietäres Format als Clouddateisystem für die Datenverwaltung verwenden, können diese Daten nicht über den nativen Kopierbefehl geladen werden. 
+Da diese Produkte ein proprietäres Format als Clouddateisystem für die Datenverwaltung verwenden, können diese Daten nicht über den nativen Kopierbefehl geladen werden.
 
 Stattdessen müssen die Daten über das Cacheprodukt selbst oder über diesen load-Befehl geladen werden, der das korrekte proprietäre Format verwendet.
 Mit diesem Befehl können Sie Daten übertragen, ohne den Cache zu verwenden, um beispielsweise Speicher vorab aufzufüllen oder Dateien einem Workingset hinzuzufügen, ohne die Cacheauslastung zu erhöhen.
 
 Das Ziel ist ein leerer Azure Storage-Container. Nach Abschluss der Übertragung kann der Zielcontainer mit einer Azure HPC Cache-Instanz oder einem Avere vFXT for Azure-Cluster verwendet werden.
 
-> [!NOTE] 
+> [!NOTE]
 > Dies ist eine Vorschauversion des load-Befehls. Melden Sie bitte mögliche Probleme über das GitHub-Repository von AzCopy.
 
 ```

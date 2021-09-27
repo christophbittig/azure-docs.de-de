@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie Ihre Sicherheitsmeldungen unter Verwendu
 ms.topic: how-to
 ms.date: 2/8/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 2f5c6581772599c5527f037987e34bca643781bd
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 791e49c4e8f0e503c67f24e440fc229998b7b9da
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113016402"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128680495"
 ---
 # <a name="send-security-messages-sdk"></a>Senden von Sicherheitsmeldungen (SDK)
 
@@ -26,14 +26,14 @@ In diesem Artikel lernen Sie Folgendes:
 
 ## <a name="defender-for-iot-capabilities"></a>Defender für IoT-Funktionen
 
-Defender für IoT kann beliebige Sicherheitsmeldungsdaten verarbeiten und analysieren, solange die gesendeten Daten dem [Defender für IoT-Schema](https://aka.ms/iot-security-schemas) entsprechen und die Meldung als Sicherheitsmeldung festgelegt ist.
+Defender für IoT kann beliebige Sicherheitsmeldungsdaten verarbeiten und analysieren, solange die gesendeten Daten dem Defender für IoT-Schema entsprechen und die Meldung als Sicherheitsmeldung festgelegt ist.
 
 ## <a name="security-message"></a>Sicherheitsmeldung
 
 Defender für IoT definiert eine Sicherheitsmeldung anhand folgender Kriterien:
 
 - Ob die Meldung mit dem Azure IoT SDK gesendet wurde
-- Ob die Meldung dem [Sicherheitsmeldungsschema](https://aka.ms/iot-security-schemas) entspricht
+- Ob die Meldung dem Sicherheitsmeldungsschema entspricht
 - Ob die Meldung vor dem Senden als Sicherheitsmeldung festgelegt wurde
 
 Jede Sicherheitsmeldung enthält die Metadaten des Senders, z. B. `AgentId`, `AgentVersion` oder `MessageSchemaVersion`, und eine Liste der Sicherheitsereignisse.
@@ -85,7 +85,7 @@ Sie können Sicherheitsmeldungen *ohne* Verwendung des Defender für IoT-Agents 
 
 Wenn Sie Daten Ihrer Geräte zur Verarbeitung an Defender für IoT senden möchten, verwenden Sie eine der folgenden APIs, um Meldungen für die korrekte Weiterleitung an die Verarbeitungspipeline von Defender für IoT-Verarbeitungspipeline zu markieren.
 
-Alle gesendeten Daten müssen dem [Meldungsschema von Defender für IoT](https://aka.ms/iot-security-schemas) entsprechen. Das gilt auch für Daten, die mit dem korrekten Header markiert wurden.
+Alle gesendeten Daten müssen dem Meldungsschema von Defender für IoT entsprechen. Das gilt auch für Daten, die mit dem korrekten Header markiert wurden.
 
 ### <a name="send-security-message-api"></a>API zum Senden von Sicherheitsmeldungen
 

@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 03/24/2021
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: 6c7c0adb35901186cb967d416f8b91c4cf54ff9a
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 2e880a3f38a1341123bec8309f5a80dcefcdb4e7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110792664"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128603123"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Verwenden der Abhängigkeitsinjektion in Azure Functions (.NET)
 
@@ -141,7 +141,7 @@ Application Insights wird von Azure Functions automatisch hinzugefügt.
 > - Fügen Sie `AddApplicationInsightsTelemetry()`, wodurch Dienste registriert werden, die zu Konflikten mit den von der Umgebung bereitgestellten Diensten führen können, nicht der Dienstsammlung hinzu.
 > - Registrieren Sie keine eigene Instanz von `TelemetryConfiguration` oder `TelemetryClient`, wenn Sie die integrierten Application Insights-Funktionen verwenden. Wenn Sie Ihre eigene `TelemetryClient`-Instanz konfigurieren müssen, erstellen Sie diese über die eingefügte `TelemetryConfiguration`, wie in [Protokollieren von benutzerdefinierter Telemetrie in C#-Funktionen](functions-dotnet-class-library.md?tabs=v2%2Ccmd#log-custom-telemetry-in-c-functions) gezeigt.
 
-### <a name="iloggert-and-iloggerfactory"></a>„ILogger<T>“ und „ILoggerFactory“
+### <a name="iloggert-and-iloggerfactory"></a>„ILogger\<T\>“ und „ILoggerFactory“
 
 Vom Host werden die Dienste `ILogger<T>` und `ILoggerFactory` in Konstruktoren eingefügt.  Diese neuen Protokollierungsfilter werden jedoch standardmäßig aus den Funktionsprotokollen herausgefiltert.  Sie müssen die Datei `host.json` ändern, um zusätzliche Filter und Kategorien verwenden zu können.
 

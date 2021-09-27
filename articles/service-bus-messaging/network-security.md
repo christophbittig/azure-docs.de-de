@@ -2,13 +2,13 @@
 title: Netzwerksicherheit für Azure Service Bus
 description: In diesem Artikel werden Netzwerksicherheitsfeatures wie Diensttags, IP-Firewallregeln, Dienstendpunkte und private Endpunkte beschrieben.
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: db0dd89d1f902699c27b724609505ba681757454
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/20/2021
+ms.openlocfilehash: db09ca367d228100eb344c63cca31047fd5e3624
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92310463"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128575951"
 ---
 # <a name="network-security-for-azure-service-bus"></a>Netzwerksicherheit für Azure Service Bus 
 In diesem Artikel wird beschrieben, wie Sie die folgenden Sicherheitsfunktionen mit Azure Service Bus verwenden: 

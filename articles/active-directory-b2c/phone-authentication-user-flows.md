@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/17/2021
+ms.date: 09/20/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b0d0c77ffbf6e8c8493abe2f9356aaa0e171f1f2
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 76d9010bed698dfe49650675bdb15abe7eb1dfe7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122967293"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128596484"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-for-user-flows"></a>Richten Sie die Telefonregistrierung und -anmeldung für Benutzerströme ein
 
@@ -39,14 +39,11 @@ Die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) ist standar
 In den Einstellungen des Identitätsanbieters „Lokales Konto“ ist standardmäßig die Registrierung mit E-Mail-Adresse aktiviert. Sie können die in Ihrem Mandanten unterstützten Identitätstypen ändern, indem Sie die Registrierung mit E-Mail-Adresse, Benutzername oder Telefonnummer aktivieren bzw. deaktivieren.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-
-2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü den Filter **Verzeichnis und Abonnement** und dann das Verzeichnis auswählen, das Ihren Azure AD-Mandanten enthält.
-
-3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
-
-4. Wählen Sie unter **Verwalten** die Option **Identitätsanbieter** aus.
-
-5. Wählen Sie in der Liste der Identitätsanbieter die Option **Lokales Konto** aus.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
+1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
+1. Wählen Sie unter **Verwalten** die Option **Identitätsanbieter** aus.
+1. Wählen Sie in der Liste der Identitätsanbieter die Option **Lokales Konto** aus.
 
    ![„Lokales Konto“ als Identitätsanbieter ausgewählt](media/phone-authentication-user-flows/identity-provider-local-account.png)
 
@@ -63,29 +60,27 @@ Nachdem Sie die telefonische Registrierung als Identitätsoption für lokale Kon
 Das folgende Beispiel zeigt, wie Sie die telefonische Registrierung zu einem neuen Benutzerflow hinzufügen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** und dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
-
-    ![B2C-Mandant, Bereich „Verzeichnis und Abonnement“, Azure-Portal](./media/phone-authentication-user-flows/directory-subscription-pane.png)
-
-3. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
-4. Wählen Sie unter **Richtlinien** die Option **Benutzerflows** und dann **Neuer Benutzerflow** aus.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
+1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
+1. Wählen Sie unter **Richtlinien** die Option **Benutzerflows** und dann **Neuer Benutzerflow** aus.
 
     ![Seite „Benutzerflows“ im Portal mit hervorgehobener Schaltfläche „Neuer Benutzerflow“](./media/phone-authentication-user-flows/sign-up-sign-in-user-flow.png)
 
-5. Wählen Sie auf der Seite **Benutzerflow erstellen** den Benutzerflow **Registrierung und Anmeldung** aus.
+1. Wählen Sie auf der Seite **Benutzerflow erstellen** den Benutzerflow **Registrierung und Anmeldung** aus.
 
     ![Seite „Benutzerflowtyp auswählen“ mit hervorgehobenem Benutzerflow „Registrierung und Anmeldung“](./media/phone-authentication-user-flows/select-user-flow-type.png)
 
-6. Wählen Sie unter **Version auswählen** die Option **Empfohlen** und dann **Erstellen** aus. (Weitere Informationen zu [Benutzerflowversionen](user-flow-versions.md))
+1. Wählen Sie unter **Version auswählen** die Option **Empfohlen** und dann **Erstellen** aus. (Weitere Informationen zu [Benutzerflowversionen](user-flow-versions.md))
 
     ![Schaltfläche „Erstellen“ für einen Benutzerflow](./media/phone-authentication-user-flows/select-version.png)
 
-7. Geben Sie unter **Name** einen Namen für den Benutzerflow ein. Beispiel: *signupsignin1*.
-8. Wählen Sie im Abschnitt **Identitätsanbieter** unter **Lokale Konten** die Option **Telefonische Registrierung** aus.
+1. Geben Sie unter **Name** einen Namen für den Benutzerflow ein. Beispiel: *signupsignin1*.
+1. Wählen Sie im Abschnitt **Identitätsanbieter** unter **Lokale Konten** die Option **Telefonische Registrierung** aus.
 
    ![Option „Telefonische Registrierung“ für Benutzerflow ausgewählt](media/phone-authentication-user-flows/user-flow-phone-signup.png)
 
-9. Wählen Sie unter **Soziales Netzwerk als Identitätsanbieter** alle anderen Identitätsanbieter aus, die in diesem Benutzerflow zulässig sein sollen.
+1. Wählen Sie unter **Soziales Netzwerk als Identitätsanbieter** alle anderen Identitätsanbieter aus, die in diesem Benutzerflow zulässig sein sollen.
 
    > [!NOTE]
    > Die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) ist bei Benutzerflows für die Registrierung standardmäßig deaktiviert. Sie können MFA für Benutzerflows mit telefonischer Registrierung zwar aktivieren. Als zweiter Authentifizierungsfaktor steht jedoch nur die Einmalkennung per E-Mail zur Verfügung, da die Telefonnummer als primärer Bezeichner verwendet wird.
@@ -110,19 +105,20 @@ Diese Eingabeaufforderung kann in den Eigenschaften des Benutzerflows aktiviert 
 ### <a name="to-enable-the-recovery-email-prompt"></a>So aktivieren Sie die Aufforderung zur Eingabe einer Wiederherstellungs-E-Mail-Adresse
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
-3. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
-4. Wählen Sie in Azure AD B2C unter **Richtlinien** die Option **Benutzerflows** aus.
-5. Wählen Sie den Benutzerflow in der Liste aus.
-6. Wählen Sie unter **Einstellungen** die Option **Eigenschaften** aus.
-7. Wählen Sie neben **Aufforderung zur Eingabe einer Wiederherstellungs-E-Mail-Adresse für die telefonische Registrierung und Anmeldung aktivieren (Vorschau)** Folgendes aus:
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
+1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
+1. Wählen Sie in Azure AD B2C unter **Richtlinien** die Option **Benutzerflows** aus.
+1. Wählen Sie den Benutzerflow in der Liste aus.
+1. Wählen Sie unter **Einstellungen** die Option **Eigenschaften** aus.
+1. Wählen Sie neben **Aufforderung zur Eingabe einer Wiederherstellungs-E-Mail-Adresse für die telefonische Registrierung und Anmeldung aktivieren (Vorschau)** Folgendes aus:
 
    - **Ein**: Die Aufforderung zur Eingabe einer Wiederherstellungs-E-Mail-Adresse wird bei der Registrierung und Anmeldung angezeigt.
    - **Aus**: Die Aufforderung zur Eingabe einer Wiederherstellungs-E-Mail-Adresse wird ausgeblendet.
 
     ![Eigenschaften des Benutzerflows mit aktivierter Aufforderung zur Eingabe einer Wiederherstellungs-E-Mail-Adresse](./media/phone-authentication-user-flows/recovery-email-settings.png)
 
-8. Wählen Sie **Speichern** aus.
+1. Wählen Sie **Speichern** aus.
 
 ### <a name="to-test-the-recovery-email-prompt"></a>So testen Sie die Aufforderung zur Eingabe einer Wiederherstellungs-E-Mail-Adresse
 
@@ -130,14 +126,14 @@ Nachdem Sie die telefonische Registrierung und Anmeldung sowie die Aufforderung 
 
 1. Wählen Sie **Richtlinien** > **Benutzerflows** aus, und wählen Sie dann den erstellten Benutzerflow aus. Wählen Sie auf der Übersichtsseite des Benutzerflows die Option **Benutzerflow ausführen** aus.
 
-2. Wählen Sie als **Anwendung** die Webanwendung aus, die Sie in Schritt 1 registriert haben. Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
+1. Wählen Sie als **Anwendung** die Webanwendung aus, die Sie in Schritt 1 registriert haben. Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
 
-3. Wählen Sie **Benutzerflow ausführen** aus, und überprüfen Sie das folgende Verhalten:
+1. Wählen Sie **Benutzerflow ausführen** aus, und überprüfen Sie das folgende Verhalten:
 
    - Ein Benutzer, der sich zum ersten Mal registriert, wird aufgefordert, eine Wiederherstellungs-E-Mail-Adresse anzugeben. 
    - Ein Benutzer, der sich bereits registriert hat, aber noch keine Wiederherstellungs-E-Mail-Adresse angegeben hat, wird bei der Anmeldung dazu aufgefordert.
 
-4. Geben Sie eine E-Mail-Adresse ein, und wählen Sie dann **Überprüfungscode senden** aus. Überprüfen Sie, ob ein Code an den von Ihnen angegebenen E-Mail-Posteingang gesendet wird. Rufen Sie den Code ab, und geben Sie ihn im Feld **Überprüfungscode** ein. Wählen Sie dann **Code überprüfen** aus.
+1. Geben Sie eine E-Mail-Adresse ein, und wählen Sie dann **Überprüfungscode senden** aus. Überprüfen Sie, ob ein Code an den von Ihnen angegebenen E-Mail-Posteingang gesendet wird. Rufen Sie den Code ab, und geben Sie ihn im Feld **Überprüfungscode** ein. Wählen Sie dann **Code überprüfen** aus.
 
 ## <a name="enable-consent-information"></a>Zustimmungsinformationen erlauben
 
@@ -150,22 +146,23 @@ Es wird dringend empfohlen, die Zustimmungsinformationen in Ihren Registrierungs
 Zum Aktivieren von Zustimmungsinformationen
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
-3. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
-4. Wählen Sie in Azure AD B2C unter **Richtlinien** die Option **Benutzerflows** aus.
-5. Wählen Sie den Benutzerflow in der Liste aus.
-6. Wählen **Sie unter Anpassen** die Option Sprachen **aus.**
-7. Um den Zustimmungstext anzuzeigen, wählen Sie **Sprachanpassung aktivieren**.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
+1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
+1. Wählen Sie in Azure AD B2C unter **Richtlinien** die Option **Benutzerflows** aus.
+1. Wählen Sie den Benutzerflow in der Liste aus.
+1. Wählen **Sie unter Anpassen** die Option Sprachen **aus.**
+1. Um den Zustimmungstext anzuzeigen, wählen Sie **Sprachanpassung aktivieren**.
   
     ![Sprachanpassung aktivieren](./media/phone-authentication-user-flows/enable-language-customization.png)
 
-8. Um die Zustimmungsinformationen anzupassen, wählen Sie eine Sprache in der Liste aus.
-9. Wählen Sie im Sprachbereich **Telefonanmeldeseite aus.**
-10. Wählen Sie Standards herunterladen.
+1. Um die Zustimmungsinformationen anzupassen, wählen Sie eine Sprache in der Liste aus.
+1. Wählen Sie im Sprachbereich **Telefonanmeldeseite aus.**
+1. Wählen Sie Standards herunterladen.
 
     ![Standard herunterladen](./media/phone-authentication-user-flows/phone-sign-in-language-override.png)
 
-11. Die heruntergeladene JSON-Datei öffnen. Suchen Sie nach dem folgenden Text, und passen Sie ihn an:
+1. Die heruntergeladene JSON-Datei öffnen. Suchen Sie nach dem folgenden Text, und passen Sie ihn an:
 
     - **disclaimer_link_1_url**: Setzen Sie **override** auf "true" und fügen Sie die URL für Ihre Datenschutzinformationen hinzu.
 
@@ -173,9 +170,8 @@ Zum Aktivieren von Zustimmungsinformationen
 
     - **disclaimer_msg_intro**: Ändern Sie **die Außerkraftsetzung** in "true", und ändern Sie den Wert **in** die gewünschten Haftungsausschlusszeichenfolgen.  
 
-12. Speichern Sie die Datei . Durchsuchen Sie **Neue Außerkraftsetzungen hochladen** nach der Datei und wählen Sie diese aus. Stellen Sie sicher, dass Sie eine Benachrichtigung „Erfolgreich hochgeladene Außerkraftsetzungen“ sehen.
-
-13. Wählen Sie die **Seite Telefonanmeldung** und wiederholen Sie dann die Schritte 10 bis 12. 
+1. Speichern Sie die Datei . Durchsuchen Sie **Neue Außerkraftsetzungen hochladen** nach der Datei und wählen Sie diese aus. Stellen Sie sicher, dass Sie eine Benachrichtigung „Erfolgreich hochgeladene Außerkraftsetzungen“ sehen.
+1. Wählen Sie die **Seite Telefonanmeldung** und wiederholen Sie dann die Schritte 10 bis 12. 
 
 
 ## <a name="get-a-users-phone-number-in-your-directory"></a>Abrufen der Telefonnummer eines Benutzers in Ihrem Verzeichnis

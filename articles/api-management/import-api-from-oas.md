@@ -3,7 +3,7 @@ title: Importieren einer OpenAPI-Spezifikation mit dem Azure-Portal | Microsoft-
 description: Hier erfahren Sie, wie Sie eine OpenAPI-Spezifikation mit API Management importieren und die API dann im Azure- und im Entwicklerportal testen.
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -11,13 +11,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/20/2020
-ms.author: apimpm
-ms.openlocfilehash: 2fd06fa92d7ad028aa45d78268f5a992d4b2b862
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.author: danlep
+ms.openlocfilehash: 438e779d5eb7718a5cf9b56cf9bbe7404f6861c9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123186351"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128679331"
 ---
 # <a name="import-an-openapi-specification"></a>Importieren einer OpenAPI-Spezifikation
 
@@ -31,7 +31,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Absolvieren Sie den folgende Schnellstart: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md)
+Bearbeiten Sie den folgenden Schnellstart: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 

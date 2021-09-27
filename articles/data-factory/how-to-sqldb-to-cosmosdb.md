@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: d37496d8f29585c8a9ad956e3f5790ac11fb748e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 75f2f31bc3ef280b17e6bae6926d5cd3ba66b83e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355174"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128600682"
 ---
 # <a name="migrate-normalized-database-schema-from-azure-sql-database-to-azure-cosmosdb-denormalized-container"></a>Migrieren eines normalisierten Datenbankschemas von Azure SQL-Datenbank zu einem denormalisierten Azure Cosmos DB-Container
 
@@ -41,7 +41,7 @@ FROM SalesLT.SalesOrderHeader o;
 
 Der resultierende Cosmos DB-Container bettet die innere Abfrage in ein einzelnes Dokument ein. Das Ergebnis sieht dann wie folgt aus:
 
-![Collection](media/data-flow/cosmosb3.png)
+:::image type="content" source="media/data-flow/cosmosb3.png" alt-text="Sammlung":::
 
 ## <a name="create-a-pipeline"></a>Erstellen einer Pipeline
 
@@ -53,7 +53,7 @@ Der resultierende Cosmos DB-Container bettet die innere Abfrage in ein einzelne
 
 4. Wir erstellen diesen Datenflussgraphen weiter unten.
 
-![Datenflussgraph](media/data-flow/cosmosb1.png)
+:::image type="content" source="media/data-flow/cosmosb1.png" alt-text="Datenflussgraph":::
 
 5. Definieren Sie die Quelle für „SourceOrderDetails“. Erstellen Sie ein neues Azure SQL-Datenbank-Dataset, das auf die Tabelle ```SalesOrderDetail``` zeigt.
 
@@ -63,19 +63,19 @@ Der resultierende Cosmos DB-Container bettet die innere Abfrage in ein einzelne
 
 8. Fügen Sie eine weitere abgeleitete Spalte hinzu, und geben Sie ihr den Namen „MakeStruct“. Hier erstellen Sie eine hierarchische Struktur zum Speichern der Werte aus der Tabelle „details“. Denken Sie daran, dass „details“ in einer ```M:1```-Beziehung zu „header“ steht. Geben Sie der neuen Struktur den Namen ```orderdetailsstruct```, und erstellen Sie die Hierarchie auf diese Weise, indem Sie jede Unterspalte auf den Namen der eingehenden Spalte festlegen:
 
-![Create Structure](media/data-flow/cosmosb9.png)
+:::image type="content" source="media/data-flow/cosmosb9.png" alt-text="Create Structure":::
 
 9. Nun geht es mit der Quelle für den Vertriebsheader weiter. Fügen Sie eine Jointransformation hinzu. Wählen Sie für die rechte Seite „MakeStruct“ aus. Legen Sie sie auf den inneren Join festgelegt, und wählen Sie für beide Seiten der Joinbedingung ```SalesOrderID``` aus.
 
 10. Klicken Sie im neu hinzugefügten Join auf die Registerkarte „Datenvorschau“, damit Sie die Ergebnisse bis zu diesem Punkt sehen können. Es sollten alle Headerzeilen verknüpft mit den Detailzeilen angezeigt werden. Dies ist das Ergebnis des aus der ```SalesOrderID``` gebildeten Joins. Als Nächstes kombinieren Sie die Details aus den gemeinsamen Zeilen in die Struktur „details“ und aggregieren die gemeinsamen Zeilen.
 
-![Join](media/data-flow/cosmosb4.png)
+:::image type="content" source="media/data-flow/cosmosb4.png" alt-text="Join":::
 
 11. Bevor Sie die Arrays zum Denormalisieren dieser Zeilen erstellen können, müssen Sie zunächst unerwünschte Spalten entfernen und sicherstellen, dass die Datenwerte den Cosmos DB-Datentypen entsprechen.
 
 12. Fügen Sie als Nächstes eine Auswahltransformation hinzu, und legen Sie die Feldzuordnung wie folgt fest:
 
-![Spaltenscrubber](media/data-flow/cosmosb5.png)
+:::image type="content" source="media/data-flow/cosmosb5.png" alt-text="Spaltenscrubber":::
 
 13. Nun fügen Sie eine Währungsspalte ein: ```TotalDue```. Legen Sie wie oben in Schritt 7 die Formel auf ```toDouble(round(TotalDue,2))``` fest.
 
@@ -85,21 +85,21 @@ Der resultierende Cosmos DB-Container bettet die innere Abfrage in ein einzelne
 
 16. Die Aggregationstransformation gibt nur Spalten aus, die ein Teil von „aggregate“- oder „group by“-Formeln sind. Daher müssen Sie auch die Spalten aus dem Vertriebsheader einschließen. Fügen Sie zu diesem Zweck ein Spaltenmuster in derselben Aggregattransformation hinzu. Dieses Muster enthält alle anderen Spalten in der Ausgabe:
 
-```instr(name,'OrderQty')==0&&instr(name,'UnitPrice')==0&&instr(name,'SalesOrderID')==0```
+   `instr(name,'OrderQty')==0&&instr(name,'UnitPrice')==0&&instr(name,'SalesOrderID')==0`
 
 17. Verwenden Sie die „this“-Syntax in den anderen Eigenschaften, um dieselben Spaltennamen beizubehalten, und verwenden Sie die ```first()```-Funktion als Aggregat:
 
-![Aggregat](media/data-flow/cosmosb6.png)
+:::image type="content" source="media/data-flow/cosmosb6.png" alt-text="Aggregat":::
 
 18. Sie sind bereit, den Migrationsflow durch Hinzufügen einer Senkentransformation abzuschließen. Klicken Sie neben dem Dataset auf „Neu“, und fügen Sie ein Cosmos DB-Dataset hinzu, das auf Ihre Cosmos DB-Datenbank verweist. Für die Sammlung nennen Sie es „orders“. Es weist kein Schema und keine Dokumente auf, da es dynamisch erstellt wird.
 
 19. Legen Sie in den Einstellungen für die Senke den Partitionsschlüssel auf ```\SalesOrderID``` und die Sammlungsaktion auf „recreate“ fest. Stellen Sie sicher, dass die Registerkarte der Zuordnung wie folgt aussieht:
 
-![Screenshot der Registerkarte „Zuordnung“](media/data-flow/cosmosb7.png)
+:::image type="content" source="media/data-flow/cosmosb7.png" alt-text="Screenshot der Registerkarte „Zuordnung“":::
 
 20. Klicken Sie auf „Datenvorschau“, um sicherzustellen, dass diese 32 Zeilen, die als neue Dokumente in Ihren neuen Container eingefügt werden sollen, angezeigt werden:
 
-![Screenshot der Registerkarte „Datenvorschau“](media/data-flow/cosmosb8.png)
+:::image type="content" source="media/data-flow/cosmosb8.png" alt-text="Screenshot der Registerkarte „Datenvorschau“":::
 
 Wenn alles gut aussieht, können Sie jetzt eine neue Pipeline erstellen, ihr diese Datenflussaktivität hinzufügen und sie ausführen. Die Ausführung kann aus dem Debuggen oder einer ausgelösten Ausführung erfolgen. Nach einigen Minuten sollten Sie in Ihrer Cosmos DB-Datenbank über einen neuen denormalisierten Container für Bestellungen mit dem Namen „orders“ verfügen.
 
