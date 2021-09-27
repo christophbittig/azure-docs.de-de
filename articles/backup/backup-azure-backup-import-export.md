@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Azure Backup verwenden können, um mithilfe d
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 3ea470c2e732b7e0ef46e9e5fa78c744aa30c955
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 36646c148fb42503b8bdc78cbcd11a1f497127b0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98704362"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128644066"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Workflow zur Offlinesicherung in Azure Backup
 
@@ -116,7 +116,7 @@ In diesem Abschnitt wird erläutert, wie Sie den Workflow zur Offlinesicherung d
 
 Das Hilfsprogramm *AzureOfflineBackupDiskPrep* bereitet die SATA-Laufwerke vor, die an das nächstgelegene Azure-Datencenter gesendet werden. Dieses Hilfsprogramm steht im Installationsverzeichnis des Azure Backup-Agents unter folgendem Pfad zur Verfügung:
 
-```*\Microsoft Azure Recovery Services Agent\Utils\\*```
+`*\Microsoft Azure Recovery Services Agent\Utils\\*`
 
 1. Navigieren Sie zu diesem Verzeichnis, und kopieren Sie das Verzeichnis *AzureOfflineBackupDiskPrep* auf einen anderen Computer, mit dem die SATA-Laufwerke verbunden sind. Vergewissern Sie sich, dass auf dem Computer mit den verbundenen SATA-Laufwerken Folgendes erfüllt ist:
 
@@ -131,9 +131,9 @@ Das Hilfsprogramm *AzureOfflineBackupDiskPrep* bereitet die SATA-Laufwerke vor, 
 
 1. Öffnen Sie auf dem Kopiercomputer eine Eingabeaufforderung mit erhöhten Rechten und dem Verzeichnis des Hilfsprogramms *AzureOfflineBackupDiskPrep* als aktuelles Verzeichnis. Führen Sie den folgenden Befehl aus:
 
-    ```.\AzureOfflineBackupDiskPrep.exe s:<Staging Location Path>```
+    `.\AzureOfflineBackupDiskPrep.exe s:<Staging Location Path>`
 
-    | Parameter | BESCHREIBUNG |
+    | Parameter | Beschreibung |
     | --- | --- |
     | s:&lt;*Pfad zum Stagingspeicherort*&gt; |Mit dieser obligatorischen Eingabe wird der Pfad zum Stagingspeicherort angegeben, den Sie im Workflow im Abschnitt „Initiieren der Offlinesicherung“ eingegeben haben. |
     | p:&lt;*Pfad zu PublishSettingsFile*&gt; |Mit dieser optionalen Eingabe wird der Pfad zur Datei mit den Azure-Veröffentlichungseinstellungen bereitgestellt.  |

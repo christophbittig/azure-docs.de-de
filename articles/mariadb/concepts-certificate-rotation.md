@@ -6,19 +6,19 @@ ms.author: sumuth
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/18/2021
-ms.openlocfilehash: 105bc7f14f9ddcc4a64564edc1eebcd17b898bc6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8a8a7fec5b5c5f62fb44f6c0ccf6859b1141295b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101698993"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646509"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>Grundlegendes zu den Änderungen im Zusammenhang mit der Stammzertifizierungsstelle für Azure Database for MariaDB
 
 Die Änderung des Stammzertifikats am **15. Februar 2021 (15.02.2021)** wurde für Azure Database for MariaDB im Rahmen der standardmäßigen Wartung und bewährten Sicherheitsmethoden erfolgreich abgeschlossen. In diesem Artikel erhalten Sie ausführlichere Informationen zu den Änderungen, den betroffenen Ressourcen sowie den Schritten, die erforderlich sind, um sicherzustellen, dass die Konnektivität Ihrer Anwendung mit dem Datenbankserver bestehen bleibt.
 
 > [!NOTE]
-> Dieser Artikel enthält Verweise auf den Begriff _Slave_, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
+> Dieser Artikel enthält Verweise auf den Begriff *Slave*, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
 >
 
 ## <a name="why-root-certificate-update-is-required"></a>Warum muss das Stammzertifikat aktualisiert werden?
@@ -58,8 +58,8 @@ Es ist keine Änderung auf Clientseite erforderlich. Wenn Sie die frühere Empfe
 
     Ersetzen Sie dann die ursprüngliche Keystore-Datei durch die neu generierte Datei:
 
-    - System.setProperty("javax.net.ssl.trustStore","Pfad_zur_Truststore-Datei");
-    - System.setProperty("javax.net.ssl.trustStorePassword","password");
+    - `System.setProperty("javax.net.ssl.trustStore","path_to_truststore_file");`
+    - `System.setProperty("javax.net.ssl.trustStorePassword","password");`
 
   - Stellen Sie bei .NET-Benutzern (MariaDB-Connector/NET, MariaDBConnector) sicher, dass **BaltimoreCyberTrustRoot** und **DigiCertGlobalRootG2** im Windows-Zertifikatspeicher unter vertrauenswürdigen Stammzertifizierungsstellen enthalten sind. Ist eines der Zertifikate nicht vorhanden, importieren Sie das fehlende Zertifikat.
 

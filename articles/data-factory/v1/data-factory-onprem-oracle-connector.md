@@ -3,16 +3,17 @@ title: Kopieren von Daten in bzw. aus Oracle mit Data Factory
 description: Informationen zum Kopieren von Daten in eine und aus einer lokalen Oracle-Datenbank mit Azure Data Factory.
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 087afa7425d1244c38514c5388e242281bdab3dc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ef5bf35cabf0edddae1922d8acae56dbbef317e7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339541"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128616401"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopieren von Daten in eine bzw. aus einer lokalen Oracle-Instanz mit Azure Data Factory
 
@@ -94,7 +95,7 @@ Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Defini
 
 In der folgenden Tabelle werden die JSON-Elemente beschrieben, die für den verknüpften Oracle-Dienst spezifisch sind:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | type |Die Eigenschaft **type** muss auf **OnPremisesOracle** festgelegt sein. |Ja |
 | driverType | Legen Sie fest, welcher Treiber für das Kopieren von Daten aus einer bzw. in eine Oracle-Datenbank verwendet wird. Zulässige Werte sind **Microsoft** und **ODP** (Standardwert). Details zu den Treibern finden Sie unter [Unterstützte Versionen und Installation](#supported-versions-and-installation). | Nein |

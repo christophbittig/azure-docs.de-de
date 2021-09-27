@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 4ed2458b09d200542ce8789d90250027a07a970d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7670430d112482addea26c9fc1bc97c2434bc2e2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735470"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128555339"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Verwenden von Azure Data Lake Storage Gen2 für Big Data-Anforderungen
 
 Es gibt vier wichtige Phasen in der Big Data-Verarbeitung:
 
 > [!div class="checklist"]
-> * Erfassung von großen Datenmengen in einem Datenspeicher, in Echtzeit oder in Batches
-> * Verarbeiten der Daten
-> * Herunterladen der Daten
-> * Visualisieren der Daten
+> - Erfassung von großen Datenmengen in einem Datenspeicher, in Echtzeit oder in Batches
+> - Verarbeiten der Daten
+> - Herunterladen der Daten
+> - Visualisieren der Daten
 
 In diesem Artikel werden die Optionen und Tools für die einzelnen Verarbeitungsphasen behandelt.
 
@@ -37,7 +37,7 @@ In diesem Abschnitt werden die unterschiedlichen Quellen von Daten sowie die ver
 
 ### <a name="ad-hoc-data"></a>Ad-hoc-Daten:
 
-Dies steht für kleinere Datasets, die zum Erstellen von Prototypen einer Big Data-Anwendung verwendet werden. Es gibt, abhängig von der Quelle der Daten, verschiedene Möglichkeiten zum Erfassen von Ad-hoc-Daten. 
+Dies steht für kleinere Datasets, die zum Erstellen von Prototypen einer Big Data-Anwendung verwendet werden. Es gibt, abhängig von der Quelle der Daten, verschiedene Möglichkeiten zum Erfassen von Ad-hoc-Daten.
 
 Hier ist eine Liste der Tools, die Sie zum Erfassen von Ad-hoc-Daten verwenden können.
 
@@ -104,13 +104,13 @@ Große Datenmengen können in vorhandenen Hadoop-Clustern oder lokal auf Compute
 
 ### <a name="really-large-datasets"></a>Sehr große Datasets
 
-Das Hochladen von Datasets im Bereich mehrerer Terabyte kann mithilfe der oben beschriebenen Methoden manchmal langsam und kostspielig sein. In solchen Fällen können Sie Azure ExpressRoute verwenden.  
+Das Hochladen von Datasets im Bereich mehrerer Terabyte kann mithilfe der oben beschriebenen Methoden manchmal langsam und kostspielig sein. In solchen Fällen können Sie Azure ExpressRoute verwenden.
 
 Azure ExpressRoute ermöglicht Ihnen, private Verbindungen zwischen Azure-Rechenzentren und Ihrer lokalen Infrastruktur zu erstellen. Dies ist eine zuverlässige Option zur Übertragung großer Datenmengen. Weitere Informationen finden Sie in der [Dokumentation zu Azure ExpressRoute](../../expressroute/expressroute-introduction.md).
 
 ## <a name="process-the-data"></a>Verarbeiten der Daten
 
-Sobald die Daten in Data Lake Storage Gen2 verfügbar sind, können Sie mit den unterstützten Big Data-Anwendungen Analysen für diese Daten ausführen. 
+Sobald die Daten in Data Lake Storage Gen2 verfügbar sind, können Sie mit den unterstützten Big Data-Anwendungen Analysen für diese Daten ausführen.
 
 ![Analysieren von Daten in Data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/analyze-data.png "Analysieren von Daten in Data Lake Storage Gen2")
 
@@ -129,9 +129,9 @@ Verwenden Sie den Power BI-Connector, um visuelle Darstellungen von in Data Lake
 
 Ggf. möchten Sie auch für Szenarien wie die folgenden Daten aus Azure Data Lake Storage Gen2 herunterladen oder verschieben:
 
-* Verschieben von Daten aus anderen Repositorys zur Verbindung mit Ihren vorhandenen Datenverarbeitungspipelines. Sie möchten z. B. Daten aus Data Lake Storage Gen2 in die Azure SQL-Datenbank oder eine SQL Server-Instanz verschieben.
+- Verschieben von Daten aus anderen Repositorys zur Verbindung mit Ihren vorhandenen Datenverarbeitungspipelines. Sie möchten z. B. Daten aus Data Lake Storage Gen2 in die Azure SQL-Datenbank oder eine SQL Server-Instanz verschieben.
 
-* Herunterladen von Daten auf Ihren lokalen Computer für die Verarbeitung in IDE-Umgebungen beim Erstellen von Anwendungsprototypen.
+- Herunterladen von Daten auf Ihren lokalen Computer für die Verarbeitung in IDE-Umgebungen beim Erstellen von Anwendungsprototypen.
 
 ![Ausgang von Daten aus Data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/egress-data.png "Ausgang von Daten aus Data Lake Storage Gen2")
 

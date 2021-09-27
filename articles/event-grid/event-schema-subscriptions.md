@@ -2,13 +2,13 @@
 title: Azure-Abonnement als Event Grid-Quelle
 description: Beschreibt die Eigenschaften, die mit Azure Event Grid für Abonnementereignisse bereitgestellt werden
 ms.topic: reference
-ms.date: 02/12/2021
-ms.openlocfilehash: b9753ecfb46f5ac5f383f19e3d409e703c144d48
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/15/2021
+ms.openlocfilehash: b7a09dd16d6620dca74a45f796cccf2308a53396
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363184"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629216"
 ---
 # <a name="azure-subscription-as-an-event-grid-source"></a>Azure-Abonnement als Event Grid-Quelle
 
@@ -419,7 +419,7 @@ Im folgenden Beispiel wird das Schema für ein **ResourceActionSuccess**-Ereigni
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | `topic` | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
 | `subject` | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |

@@ -3,16 +3,17 @@ title: Aufrufen von gespeicherten Prozeduren aus der Kopieraktivität in Azure D
 description: Erfahren Sie, wie eine gespeicherte Prozedur in Azure SQL-Datenbank oder SQL-Server aus einer Kopieraktivität von Azure Data Factory aufgerufen wird.
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6f06b84ac0807a37c7adc603a557894be85a4cea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e662797c3ab3c2b3b26f78010ba51a9ae4327886
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100374965"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128670954"
 ---
 # <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>Aufrufen von gespeicherten Prozeduren aus der Kopieraktivität in Azure Data Factory
 > [!NOTE]

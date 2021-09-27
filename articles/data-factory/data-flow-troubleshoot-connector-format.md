@@ -4,14 +4,15 @@ description: Hier erfahren Sie, wie Sie connector- und formatbezogene Datenfluss
 author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: troubleshooting
 ms.date: 08/17/2021
-ms.openlocfilehash: a83b3d772331432cd3c65caeff0144c228c97824
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: a4125b5755d262a441d470e8fc970ef55ea74de2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444902"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128641862"
 ---
 # <a name="troubleshoot-connector-and-format-issues-in-mapping-data-flows-in-azure-data-factory"></a>Behandeln von Connector- und Formatproblemen in Zuordnungsdatenflüssen in Azure Data Factory
 
@@ -75,7 +76,7 @@ ADF bietet Optionen zum Anpassen des Quellschemas, um das Standardverhalten zu �
 
     1. Verwenden Sie die **Debugeinstellungen** für die Datenflussquelle, um **Import projection** (Projektion importieren) mit Beispieldateien/-tabellen zu konfigurieren und somit das vollständige Schema zu erhalten. Sie können die in der folgenden Abbildung gezeigten Schritte ausführen:<br/>
 
-        ![Screenshot: Erster Teil der ersten Option zum Anpassen des Quellschemas](./media/data-flow-troubleshoot-connector-format/customize-schema-option-1-1.png)<br/>
+        :::image type="content" source="./media/data-flow-troubleshoot-connector-format/customize-schema-option-1-1.png" alt-text="Screenshot: Erster Teil der ersten Option zum Anpassen des Quellschemas":::<br/>
          1. Wählen Sie auf der Datenflusscanvas die Option **Debugeinstellungen** aus.
          1. Wählen Sie im Popupbereich unter der Registerkarte **cosmosSource** die Option **Beispieltabelle** aus, und geben Sie den Namen Ihrer Tabelle in den Block **Tabelle** ein.
          1. Klicken Sie auf **Save** (Speichern), um Ihre Einstellungen zu speichern.
@@ -83,7 +84,7 @@ ADF bietet Optionen zum Anpassen des Quellschemas, um das Standardverhalten zu �
     
     1. Ändern Sie die **Debugeinstellungen** zurück, um das Quelldataset für die restliche Datenverschiebung/-transformation zu verwenden. Fahren Sie mit den Schritten aus der folgenden Abbildung fort:<br/>
 
-        ![Screenshot: Zweiter Teil der ersten Option zum Anpassen des Quellschemas](./media/data-flow-troubleshoot-connector-format/customize-schema-option-1-2.png) <br/>   
+        :::image type="content" source="./media/data-flow-troubleshoot-connector-format/customize-schema-option-1-2.png" alt-text="Screenshot: Zweiter Teil der ersten Option zum Anpassen des Quellschemas"::: <br/>   
          1. Wählen Sie auf der Datenflusscanvas die Option **Debugeinstellungen** aus.
          1. Wählen Sie im Popupbereich unter der Registerkarte **cosmosSource** die Option **Quelldataset** aus.
          1. Klicken Sie auf **Save** (Speichern), um Ihre Einstellungen zu speichern.<br/>
@@ -92,7 +93,7 @@ ADF bietet Optionen zum Anpassen des Quellschemas, um das Standardverhalten zu �
 
 - **2. Option:** Wenn Sie mit dem Schema und der domänenspezifischen Sprache der Quelldaten vertraut sind, können Sie das Datenflussquellskript manuell aktualisieren, um zusätzliche/fehlende Spalten hinzuzufügen, die beim Lesen der Daten berücksichtigt werden sollen. Die folgende Abbildung zeigt ein entsprechendes Beispiel: 
 
-    ![Screenshot: Zweite Option zum Anpassen des Quellschemas](./media/data-flow-troubleshoot-connector-format/customize-schema-option-2.png)
+    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/customize-schema-option-2.png" alt-text="Screenshot: Zweite Option zum Anpassen des Quellschemas":::
 
 ### <a name="support-map-type-in-the-source"></a>Unterstützungszuordnungstyp in der Quelle
 
@@ -247,7 +248,7 @@ Wenn Sie den flexiblen Server oder Hyperscale (Citus) für Ihren Azure PostgreSQ
 - [MCW-Real-time-data-with-Azure-Database-for-PostgreSQL-Hyperscale](https://github.com/microsoft/MCW-Real-time-data-with-Azure-Database-for-PostgreSQL-Hyperscale/blob/master/Hands-on%20lab/HOL%20step-by%20step%20-%20Real-time%20data%20with%20Azure%20Database%20for%20PostgreSQL%20Hyperscale.md)<br/>
     Weitere Informationen finden Sie in der folgenden Abbildung in diesem Artikel:<br/>
 
-    ![Screenshot: Verweisender Inhalt aus dem Artikel oben.](./media/data-flow-troubleshoot-connector-format/handshake-failure-cause-2.png)
+    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/handshake-failure-cause-2.png" alt-text="Screenshot: Verweisender Inhalt aus dem Artikel oben.":::
 
 #### <a name="recommendation"></a>Empfehlung
 Sie können versuchen, dieses Problems mithilfe von Kopieraktivitäten zu beheben. 
@@ -395,7 +396,7 @@ Sie können versuchen, dieses Problem mit den folgenden Methoden zu beheben:
 #### <a name="symptoms"></a>Symptome
 Wenn Sie Synapse als Quelle/Senke im Datenfluss verwenden, um eine Vorschau von Daten anzuzeigen, zu debuggen oder eine Ausführung auszulösen usw. und Staging für die Verwendung von PolyBase aktivieren, und der verknüpfte Dienst des Stagingspeichers (Blob, Gen2 usw.) erstellt wird, um Authentifizierung der verwalteten Identität (MI) zu verwenden, kann der Auftrag mit dem folgenden Fehler fehlschlagen, der in der Abbildung gezeigt wird: <br/>
 
-![Screenshots: Fehler der Dienstidentität.](./media/data-flow-troubleshoot-connector-format/service-identity-error.png)
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/service-identity-error.png" alt-text="Screenshots: Fehler der Dienstidentität.":::
 
 #### <a name="error-message"></a>Fehlermeldung
 `shaded.msdataflow.com.microsoft.sqlserver.jdbc.SQLServerException: Managed Service Identity has not been enabled on this server. Please enable Managed Service Identity and try again.`
@@ -480,7 +481,7 @@ Ersetzen Sie die Sonderzeichen im Dateinamen. Dies funktioniert in der Synapse, 
 #### <a name="symptoms"></a>Symptome
 Wenn Sie die Datei „manifest.json“ für CDM verwenden, werden keine Daten in der Datenvorschau oder nach dem Ausführen einer Pipeline angezeigt. Es werden nur Header angezeigt. Die folgende Abbildung zeigt dieses Problem.<br/>
 
-![Screenshot: Symptom „Keine Datenausgabe“.](./media/data-flow-troubleshoot-connector-format/no-data-output.png)
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/no-data-output.png" alt-text="Screenshot: Symptom „Keine Datenausgabe“.":::
 
 #### <a name="cause"></a>Ursache
 Das Manifestdokument beschreibt den CDM-Ordner (z. B. die im Ordner vorhandenen Entitäten, Verweise auf diese Entitäten und die Daten, die dieser Instanz entsprechen). In Ihrem Manifestdokument fehlen die `dataPartitions`-Informationen, die für ADF angeben, wo die Daten gelesen werden sollen, und da es leer ist, werden keine Daten zurückgegeben. 
@@ -495,11 +496,11 @@ Möglicherweise tritt ein Problem auf, bei dem ein Attribut (Zeichenfolgentyp) d
 
 - In den CSV-Quelldaten (siehe zweite Spalte): <br/>
 
-    ![Screenshot: Attribut in den CSV-Quelldaten.](./media/data-flow-troubleshoot-connector-format/json-array-csv.png)
+    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/json-array-csv.png" alt-text="Screenshot: Attribut in den CSV-Quelldaten.":::
 
 - In der Vorschau der CDM-Quelldaten: <br/>
 
-    ![Screenshot: Separate Spalte in den CDM-Quelldaten.](./media/data-flow-troubleshoot-connector-format/json-array-cdm.png)
+    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/json-array-cdm.png" alt-text="Screenshot: Separate Spalte in den CDM-Quelldaten.":::
 
  
 Sie können auch versuchen, abweichende Spalten zuzuordnen und den Datenflussausdruck zu verwenden, um dieses Attribut als Array zu transformieren. Da dieses Attribut beim Lesen jedoch als separate Spalte gelesen wird, funktioniert die Transformation in ein Array nicht.  
@@ -538,7 +539,7 @@ Entfernen Sie den `@snapshot=2020-10-02T13:26:10.6681248Z`-Teil aus dem Namen de
 #### <a name="symptoms"></a>Symptome
 Wenn Sie CDM im Datenfluss mit dem Modellformat verwenden, können Sie keine Vorschau der Daten anzeigen, und der folgende Fehler tritt auf: `DF-CDM_005 The corpus path is null or empty`. Der Fehler wird in der folgenden Abbildung gezeigt:  
 
-![Screenshot: Korpuspfadfehler.](./media/data-flow-troubleshoot-connector-format/corpus-path-error.png)
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/corpus-path-error.png" alt-text="Screenshot: Korpuspfadfehler.":::
 
 #### <a name="cause"></a>Ursache
 Ihr Datenpartitionspfad in „model.json“ verweist auf einen Blobspeicherort und nicht auf Ihren Data Lake. Der Speicherort sollte die Basis-URL **.dfs.core.windows.net** für ADLS Gen2 aufweisen. 
@@ -546,14 +547,14 @@ Ihr Datenpartitionspfad in „model.json“ verweist auf einen Blobspeicherort u
 #### <a name="recommendation"></a>Empfehlung
 Um dieses Problem zu beheben, lesen Sie diesen Artikel: [ADF fügt Unterstützung für Inlinedatasets und Common Data Model zu Datenflüssen hinzu](https://techcommunity.microsoft.com/t5/azure-data-factory/adf-adds-support-for-inline-datasets-and-common-data-model-to/ba-p/1441798). Die folgende Abbildung zeigt, wie Sie den Korpuspfadfehler gemäß diesem Artikel beheben können.
 
-![Screenshot: Beheben des Korpuspfadfehlers.](./media/data-flow-troubleshoot-connector-format/fix-format-issue.png)
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/fix-format-issue.png" alt-text="Screenshot: Beheben des Korpuspfadfehlers.":::
 
 ### <a name="unable-to-read-csv-data-files"></a>CSV-Datendateien können nicht gelesen werden
 
 #### <a name="symptoms"></a>Symptome 
 Sie verwenden das Inlinedataset als allgemeines Datenmodell mit dem Manifest als Quelle und haben die Eintragsmanifestdatei, den Stammpfad, den Entitätsnamen und den Pfad angegeben. Im Manifest befinden sich die Datenpartitionen mit dem Speicherort der CSV-Datei. In der Zwischenzeit sind das Entitätsschema und das CSV-Schema identisch, und alle Überprüfungen waren erfolgreich. In der Datenvorschau werden jedoch nur das Schema und nicht die Daten geladen, und die Daten sind unsichtbar. Die folgende Abbildung zeigt dies:
 
-![Screenshot: Problem, dass Datendateien nicht gelesen werden können.](./media/data-flow-troubleshoot-connector-format/unable-read-data.png)
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/unable-read-data.png" alt-text="Screenshot: Problem, dass Datendateien nicht gelesen werden können.":::
 
 #### <a name="cause"></a>Ursache
 Ihr CDM-Ordner ist nicht in logische und physische Modelle getrennt, und nur physische Modelle sind im CDM-Ordner vorhanden. In den folgenden beiden Artikeln wird der Unterschied beschrieben: [Logische Definitionen](/common-data-model/sdk/logical-definitions) und [Auflösen einer logischen Entitätsdefinition](/common-data-model/sdk/convert-logical-entities-resolved-entities).<br/> 
@@ -613,11 +614,11 @@ Das erste Symptom und das zweite Symptom können derzeit nicht behoben werden. F
 Wenn Sie Datenflüsse verwenden, um Dateien wie CSV- und Excel-Dateien mit unterschiedlichen Schemas zu lesen, schlägt das Debuggen des Datenflusses, die Sandbox oder die Aktivitätsausführung fehl.
 - Bei CSV-Dateien liegt ein Datenfehlabgleich vor, wenn das Schema der Dateien unterschiedlich ist. 
 
-    ![Screenshot: Erster Schemafehler.](./media/data-flow-troubleshoot-connector-format/schema-error-1.png)
+    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/schema-error-1.png" alt-text="Screenshot: Erster Schemafehler.":::
 
 - Bei Excel tritt ein Fehler auf, wenn das Schema der Datei unterschiedlich ist.
 
-    ![Screenshot: Zweiter Schemafehler.](./media/data-flow-troubleshoot-connector-format/schema-error-2.png)
+    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/schema-error-2.png" alt-text="Screenshot: Zweiter Schemafehler.":::
 
 #### <a name="cause"></a>Ursache
 
@@ -816,7 +817,7 @@ Weitere Hilfe zur Problembehandlung finden Sie in diesen Ressourcen:
 
 *  [Problembehandlung bei Zuordnungsdatenflüssen in Azure Data Factory](data-flow-troubleshoot-guide.md)
 *  [Data Factory-Blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [Data Factory-Funktionsanfragen](https://feedback.azure.com/forums/270578-data-factory)
+*  [Data Factory-Funktionsanfragen](/answers/topics/azure-data-factory.html)
 *  [Azure-Videos](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Stack Overflow-Forum für Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Twitter-Informationen über Data Factory](https://twitter.com/hashtag/DataFactory)

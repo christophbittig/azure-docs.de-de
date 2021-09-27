@@ -3,16 +3,17 @@ title: Hinzufügen von Fehlertoleranz zur Kopieraktivität von Azure Data Factor
 description: Erfahren Sie, wie Sie Fehlertoleranz der Kopieraktivität von Azure Data Factory durch Überspringen inkompatibler Zeilen hinzufügen.
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 10e4bedae5b7c429152a3503fff2cb2769d66eb5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 81e92c73c27d70e2f21ede7d732e5cda4f03289b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100377175"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629444"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>Hinzufügen von Fehlertoleranz der Kopieraktivität durch Überspringen inkompatibler Zeilen
 
@@ -75,7 +76,7 @@ Das folgende Beispiel umfasst eine JSON-Definition zum Konfigurieren des Übersp
 ## <a name="monitoring"></a>Überwachung
 Nach Abschluss der Kopieraktivität wird die Anzahl übersprungener Zeilen im Überwachungsabschnitt angezeigt:
 
-![Überwachen übersprungener inkompatibler Zeilen](./media/data-factory-copy-activity-fault-tolerance/skip-incompatible-rows-monitoring.png)
+:::image type="content" source="./media/data-factory-copy-activity-fault-tolerance/skip-incompatible-rows-monitoring.png" alt-text="Überwachen übersprungener inkompatibler Zeilen":::
 
 Wenn Sie das Protokollieren inkompatibler Zeilen konfiguriert haben, finden Sie die Protokolldatei unter folgendem Pfad: `https://[your-blob-account].blob.core.windows.net/[path-if-configured]/[copy-activity-run-id]/[auto-generated-GUID].csv` In der Protokolldatei können Sie die übersprungenen Zeilen und die Ursache der Inkompatibilität einsehen.
 

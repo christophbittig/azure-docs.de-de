@@ -8,18 +8,18 @@ ms.date: 04/27/2021
 ms.service: storage
 ms.reviewer: stewu
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 30be4b09c5fc85a272734468d30f11e939ded48b
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: a2d9c23e5a6819c9e74cea10e78caab242d5cb35
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108125508"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128600321"
 ---
 # <a name="create-a-storage-account-to-use-with-azure-data-lake-storage-gen2"></a>Erstellen eines Speicherkontos für die Verwendung mit Azure Data Lake Storage Gen2
 
 Um die Funktionen von Data Lake Storage Gen2 zu verwenden, erstellen Sie ein Speicherkonto mit einem hierarchischen Namespace.
 
-Eine Schrittanleitung finden Sie unter [Erstellen eines Speicherkontos](../common/storage-account-create.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json). 
+Eine Schrittanleitung finden Sie unter [Erstellen eines Speicherkontos](../common/storage-account-create.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json).
 
 Stellen Sie beim Erstellen des Kontos sicher, dass Sie die in diesem Artikel beschriebenen Optionen auswählen.
 
@@ -32,11 +32,11 @@ Die Funktionen von Data Lake Storage werden von den folgenden Typen von Speicher
 
 Informationen zum Auswählen zwischen diesen Optionen finden Sie unter [Übersicht über Azure Storage-Konten](../common/storage-account-overview.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json).
 
-Auf der Seite **Speicherkonto erstellen** können Sie auf der Registerkarte **Grundlagen** zwischen diesen beiden Kontotypen wählen. 
+Auf der Seite **Speicherkonto erstellen** können Sie auf der Registerkarte **Grundlagen** zwischen diesen beiden Kontotypen wählen.
 
 Wählen Sie **Standard** aus, um ein Standard-Konto vom Typ „Universell V2“ zu erstellen.
 
-Wählen Sie **Premium** aus, um ein Premium-Konto vom Typ „Blockblob“ zu erstellen. Wählen Sie dann in der Dropdownliste **Premium-Kontotyp** die Option **Blockblobs** aus. 
+Wählen Sie **Premium** aus, um ein Premium-Konto vom Typ „Blockblob“ zu erstellen. Wählen Sie dann in der Dropdownliste **Premium-Kontotyp** die Option **Blockblobs** aus.
 
 > [!div class="mx-imgBorder"]
 > ![Option für Premium-Blockblob](./media/create-data-lake-storage-account/premium-block-blob-option.png)

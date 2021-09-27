@@ -1,14 +1,14 @@
 ---
-title: Grundlegendes zu freigegebenen IP-Adressen in Azure DevTest Labs | Microsoft-Dokumentation
+title: Grundlegendes zu freigegebenen IP-Adressen
 description: Erfahren Sie, wie Azure DevTest Labs freigegebene IP-Adressen verwendet, um die Anzahl von öffentlichen IP-Adressen zu minimieren, die für den Zugriff auf die virtuellen Computer Ihres Labs erforderlich sind.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 36a5da1b2b6252d0adb480a622c461b33425e675
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3d5afd69b898a4f17440a81fc41a065c1c79a3e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85484093"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128659776"
 ---
 # <a name="understand-shared-ip-addresses-in-azure-devtest-labs"></a>Grundlegendes zu freigegebenen IP-Adressen in Azure DevTest Labs
 
@@ -44,8 +44,3 @@ Wenn dem Subnetz ein virtueller Computer mit aktivierter IP-Adressfreigabe hinzu
 
 * [Definieren von Labrichtlinien in Azure DevTest Labs](devtest-lab-set-lab-policy.md)
 * [Konfigurieren eines virtuellen Netzwerks in Azure DevTest Labs](devtest-lab-configure-vnet.md)
-
-
-
-
-

@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/01/2021
 ms.author: memildin
-ms.openlocfilehash: de0983d981aa4bc229f29e151c37cda0be90cdec
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 4bfacebc9961cdbac89252783f47267002a69a66
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123434686"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597244"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Secure Score in Azure Security Center
 
@@ -100,14 +100,8 @@ Die zugewiesenen Azure Policy-Initiativen sollten von jeder Organisation sorgf�
 > Ausführliche Informationen zur Überprüfung und Bearbeitung von Initiativen finden Sie unter [Arbeiten mit Sicherheitsrichtlinien](tutorial-security-policy.md). 
 
 Die Standardsicherheitsinitiative von Security Center basiert zwar auf branchenüblichen bewährten Methoden und Standards, es gibt jedoch Szenarien, in denen die unten aufgeführten integrierten Empfehlungen möglicherweise nicht uneingeschränkt für Ihre Organisation geeignet sind. Daher ist es manchmal erforderlich, die Standardinitiative anzupassen (ohne die Sicherheit zu beeinträchtigen). Dadurch wird sichergestellt, dass sie mit den Richtlinien Ihrer Organisation sowie mit Branchenstandards, gesetzlichen Standards und Benchmarks in Einklang steht, die Sie erfüllen müssen.<br><br>
-<div class="foo">
-
-<style type="text/css"> .tg  {border-collapse:collapse;border-spacing:0;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:18px; font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-cly1{text-align:left;vertical-align:middle} .tg .tg-lboi{border-color:inherit;text-align:left;vertical-align:middle} </style>
 
 [!INCLUDE [security-center-controls-and-recommendations](../../includes/asc/security-control-recommendations.md)]
-
-</div>
-
 
 
 

@@ -2,22 +2,22 @@
 title: Migrieren von Xamarin Android-Apps mithilfe von Brokern zu MSAL.NET
 titleSuffix: Microsoft identity platform
 description: Hier erfahren Sie, wie Xamarin Android-Apps, die Microsoft Authenticator oder das Intune-Unternehmensportal verwenden, von ADAL.NET zu MSAL.NET migriert werden.
-author: aiwang
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/31/2020
-ms.author: aiwang
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: eca1a3246853bafbf498dd3a751bf86f60c2bdde
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 8573666d5b3f590ca17779bfe03a035968c801ed
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419035"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615033"
 ---
 # <a name="migrate-android-applications-that-use-a-broker-from-adalnet-to-msalnet"></a>Migrieren von Android-Anwendungen, die einen Broker verwenden, von ADAL.NET zu MSAL.NET
 

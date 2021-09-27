@@ -1,14 +1,14 @@
 ---
 title: Index der Richtlinienbeispiele
 description: Index der Integrationen für Azure Policy Kategorietags, Einhaltung gesetzlicher Bestimmungen, Key Vault, Kubernetes, Gastkonfiguration und vieles mehr
-ms.date: 08/13/2021
+ms.date: 09/08/2021
 ms.topic: sample
-ms.openlocfilehash: ca5c973b8efe6ec97eb5d4e6dada5418d7433c0f
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 2c8dbaa1496d8f67c30cc3021697760d67206b8f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122180082"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128650475"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy-Beispiele
 
@@ -38,8 +38,7 @@ Nachfolgend finden Sie Beispiele für verschiedene Muster, in der die Sprache un
 Dies sind die Integrationen zur [Einhaltung gesetzlicher Bestimmungen](../concepts/regulatory-compliance.md) in Azure:
 
 - [ISM PROTECTED der australischen Regierung](./australia-ism.md)
-- [Azure-Sicherheitsvergleichstest v2](./azure-security-benchmark.md)
-- [Azure-Sicherheitsvergleichstest v1](./azure-security-benchmarkv1.md)
+- [Einführung zum Azure Security-Vergleichstest](./azure-security-benchmark.md)
 - [Canada Federal PBMM](./canada-federal-pbmm.md)
 - [CIS Microsoft Azure Foundations Benchmark v1.3.0](./cis-azure-1-3-0.md)
 - [CIS Microsoft Azure Foundations Benchmark v1.1.0](./cis-azure-1-1-0.md)
@@ -57,7 +56,7 @@ Dies sind die Integrationen zur [Einhaltung gesetzlicher Bestimmungen](../concep
 
 Dies sind die Integrationen zur [Einhaltung gesetzlicher Bestimmungen](../concepts/regulatory-compliance.md) in Azure Government:
 
-- [Azure-Sicherheitsvergleichstest v2](./gov-azure-security-benchmark.md)
+- [Einführung zum Azure Security-Vergleichstest](./gov-azure-security-benchmark.md)
 - [CIS Microsoft Azure Foundations Benchmark v1.3.0](./gov-cis-azure-1-3-0.md)
 - [CIS Microsoft Azure Foundations Benchmark v1.1.0](./gov-cis-azure-1-1-0.md)
 - [CMMC Level 3](./gov-cmmc-l3.md)

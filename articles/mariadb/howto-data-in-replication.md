@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/18/2021
-ms.openlocfilehash: 67e4da13d6954342b9979eb57a35c812cb63bb3e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7590ac05693f7731ee444e0e6ecb243eef80d3e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98665122"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128652166"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>Konfigurieren der Datenreplikation in Azure Database for MariaDB
 
@@ -25,7 +25,7 @@ Bei der [Datenreplikation](concepts-data-in-replication.md) werden Daten von ein
 > Wenn Ihr Quellserver die Version 10.2 oder höher hat, wird empfohlen, die Datenreplikation mithilfe der [globalen Transaktions-ID](https://mariadb.com/kb/en/library/gtid/) einzurichten.
 
 > [!NOTE]
-> Dieser Artikel enthält Verweise auf den Begriff _Slave_, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
+> Dieser Artikel enthält Verweise auf den Begriff *Slave*, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
 
 ## <a name="create-a-mariadb-server-to-use-as-a-replica"></a>Erstellen eines als Replikat zu verwendenden MariaDB-Servers
 

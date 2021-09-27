@@ -8,18 +8,18 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: c6a4745c4059c81384448deba37495030c4bf3a3
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: ac68ea66250a906cf42c489c8ad8dcb0fe972003
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107503370"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673196"
 ---
 # <a name="azcopy-jobs-remove"></a>azcopy jobs remove
 
 Entfernt alle Dateien, die der angegebenen Auftrags-ID zugeordnet sind.
 
-> [!NOTE] 
+> [!NOTE]
 > Sie können den Speicherort von Protokoll- und Plandateien anpassen. Weitere Informationen finden Sie unter dem Befehl [azcopy env](storage-ref-azcopy-env.md).
 
 ```

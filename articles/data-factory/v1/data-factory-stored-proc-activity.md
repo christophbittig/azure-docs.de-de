@@ -2,17 +2,18 @@
 title: SQL Server-Aktivität "Gespeicherte Prozedur"
 description: Hier erfahren Sie, wie Sie die SQL Server-Aktivität „Gespeicherte Prozedur“ in einer Data Factory-Pipeline zum Aufrufen einer gespeicherten Prozedur in einer Azure SQL-Datenbank- oder Azure Synapse Analytics-Instanz verwenden.
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 88a4281d564b7061e831a66b35e768e6377a0115
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: bc69be48f172267c2d8894eb2a82f32a4970386f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397308"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128559338"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server-Aktivität "Gespeicherte Prozedur"
 > [!div class="op_single_selector" title1="Transformationsaktivitäten"]
@@ -64,7 +65,7 @@ In der folgenden exemplarischen Vorgehensweise wird die Aktivität einer gespeic
     ```
     `Id` ist der eindeutige Bezeichner, und die Spalte `datetimestamp` enthält das Datum und die Uhrzeit, an dem bzw. zu der die entsprechende ID generiert wird.
     
-    ![Beispieldaten](./media/data-factory-stored-proc-activity/sample-data.png)
+    :::image type="content" source="./media/data-factory-stored-proc-activity/sample-data.png" alt-text="Beispieldaten":::
 
     In diesem Beispiel befindet sich die gespeicherte Prozedur in einer Azure SQL-Datenbank. Bei einer gespeicherten Prozedur in Azure Synapse Analytics und SQL Server-Datenbank ist der Ansatz ähnlich. Für eine SQL Server-Datenbank müssen Sie ein [Datenverwaltungsgateway](data-factory-data-management-gateway.md) installieren.
     
@@ -87,10 +88,10 @@ In der folgenden exemplarischen Vorgehensweise wird die Aktivität einer gespeic
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Klicken Sie im Menü auf der linken Seite auf **NEU**, und klicken Sie auf **Intelligence + Analyse** und dann auf **Data Factory**.
 
-    ![Neue Data Factory 1](media/data-factory-stored-proc-activity/new-data-factory.png)
+    :::image type="content" source="media/data-factory-stored-proc-activity/new-data-factory.png" alt-text="Neue Data Factory 1":::
 3. Geben Sie auf dem Blatt **Neue Data Factory** unter „Name“ die Zeichenfolge **SProcDF** ein. Azure Data Factory-Namen sind **global eindeutig**. Sie müssen dem Namen der Data Factory Ihren Namen voranstellen, damit die Factory erfolgreich erstellt werden kann.
 
-   ![Neue Data Factory 2](media/data-factory-stored-proc-activity/new-data-factory-blade.png)
+   :::image type="content" source="media/data-factory-stored-proc-activity/new-data-factory-blade.png" alt-text="Neue Data Factory 2":::
 4. Wählen Sie Ihr Azure-**Abonnement** aus.
 5. Führen Sie unter **Ressourcengruppe** einen der folgenden Schritte aus:
    1. Klicken Sie auf **Neu erstellen**, und geben Sie einen Namen für die Ressourcengruppe ein.
@@ -100,7 +101,7 @@ In der folgenden exemplarischen Vorgehensweise wird die Aktivität einer gespeic
 8. Klicken Sie auf dem Blatt **Neue Data Factory** auf **Erstellen**.
 9. Im **Dashboard** des Azure-Portals sehen Sie, dass die Data Factory erstellt wird. Nachdem die Data Factory erfolgreich erstellt wurde, sehen Sie die Data Factory-Seite mit dem Inhalt der Data Factory.
 
-   ![Data Factory-Startseite](media/data-factory-stored-proc-activity/data-factory-home-page.png)
+   :::image type="content" source="media/data-factory-stored-proc-activity/data-factory-home-page.png" alt-text="Data Factory-Startseite":::
 
 ### <a name="create-an-azure-sql-linked-service"></a>Erstellen eines mit Azure SQL verknüpften Diensts
 Nach dem Erstellen der Data Factory können Sie einen verknüpften Azure SQL-Dienst erstellen, der Ihre Datenbank in Azure SQL-Datenbank – mit der Beispieltabelle „sampletable“ und der gespeicherten Prozedur „usp_sample“ – mit Ihrer Data Factory verknüpft.
@@ -108,7 +109,7 @@ Nach dem Erstellen der Data Factory können Sie einen verknüpften Azure SQL-Di
 1. Klicken Sie auf dem Blatt **Data Factory** für **SProcDF** auf **Verfassen und bereitstellen**, um den Data Factory-Editor zu starten.
 2. Klicken Sie in der Befehlsleiste auf **Neuer Datenspeicher**, und wählen Sie **Azure SQL-Datenbank**. Das JSON-Skript zum Erstellen eines mit Azure SQL verknüpften Diensts wird im Editor angezeigt.
 
-   ![Neuer Datenspeicher 1](media/data-factory-stored-proc-activity/new-data-store.png)
+   :::image type="content" source="media/data-factory-stored-proc-activity/new-data-store.png" alt-text="Neuer Datenspeicher 1":::
 3. Nehmen Sie die folgenden Änderungen am JSON-Skript vor:
 
    1. Ersetzen Sie `<servername>` durch den Namen Ihres Servers.
@@ -116,17 +117,17 @@ Nach dem Erstellen der Data Factory können Sie einen verknüpften Azure SQL-Di
    3. Ersetzen Sie `<username@servername>` durch das Benutzerkonto, das über Zugriff auf die Datenbank verfügt.
    4. Ersetzen Sie `<password>` durch das Kennwort für das Benutzerkonto.
 
-      ![Neuer Datenspeicher 2](media/data-factory-stored-proc-activity/azure-sql-linked-service.png)
+      :::image type="content" source="media/data-factory-stored-proc-activity/azure-sql-linked-service.png" alt-text="Neuer Datenspeicher 2":::
 4. Klicken Sie in der Befehlsleiste auf **Bereitstellen**, um den verknüpften Dienst bereitzustellen. Vergewissern Sie sich, dass AzureSqlLinkedService in der Strukturansicht links angezeigt wird.
 
-    ![Strukturansicht mit verknüpftem Dienst 1](media/data-factory-stored-proc-activity/tree-view.png)
+    :::image type="content" source="media/data-factory-stored-proc-activity/tree-view.png" alt-text="Strukturansicht mit verknüpftem Dienst 1":::
 
 ### <a name="create-an-output-dataset"></a>Erstellen eines Ausgabedatasets
 Sie müssen auch dann ein Ausgabedataset für eine Aktivität der gespeicherten Prozedur angeben, wenn die gespeicherte Prozedur keine Daten erzeugt. Der Grund dafür ist, dass das Ausgabedataset den Zeitplan der Aktivität steuert (also wie oft die Aktivität ausgeführt wird – stündlich, täglich usw.). Das Ausgabedataset muss einen **verknüpften Dienst** verwenden, der auf eine Azure SQL-Datenbank, eine Azure Synapse Analytics-Instanz oder eine SQL Server-Datenbank verweist, in der die gespeicherte Prozedur ausgeführt werden soll. Das Ausgabedataset kann verwendet werden, um das Ergebnis der gespeicherten Prozedur für die nachfolgende Verarbeitung durch eine andere Aktivität in der Pipeline zu übergeben ([Verketten von Aktivitäten](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)). Data Factory schreibt die Ausgabe einer gespeicherten Prozedur jedoch nicht automatisch in dieses Dataset. Die gespeicherte Prozedur schreibt die Ausgabe in eine SQL-Tabelle, auf die das Ausgabedataset verweist. In einigen Fällen kann das Ausgabedataset ein **Dummydataset** sein (ein Dataset, das auf eine Tabelle verweist, die keine Ausgabe der gespeicherten Prozedur enthält). Dieses Dummydataset wird nur verwendet, um den Zeitplan für die Ausführung der Aktivität der gespeicherten Prozedur anzugeben.
 
 1. Klicken Sie in der Symbolleiste auf **... Weitere**, klicken Sie auf **Neues Dataset**, und klicken Sie auf **Azure SQL**. **Neues Dataset**, und wählen Sie **Azure SQL**.
 
-    ![Strukturansicht mit verknüpftem Dienst 2](media/data-factory-stored-proc-activity/new-dataset.png)
+    :::image type="content" source="media/data-factory-stored-proc-activity/new-dataset.png" alt-text="Strukturansicht mit verknüpftem Dienst 2":::
 2. Kopieren Sie das folgende JSON-Skript, und fügen Sie es in den JSON-Editor ein.
 
     ```JSON
@@ -147,7 +148,7 @@ Sie müssen auch dann ein Ausgabedataset für eine Aktivität der gespeicherten 
     ```
 3. Klicken Sie in der Befehlsleiste auf **Bereitstellen**, um das Dataset bereitzustellen. Vergewissern Sie sich, dass das Dataset in der Strukturansicht angezeigt wird.
 
-    ![Strukturansicht mit verknüpften Diensten](media/data-factory-stored-proc-activity/tree-view-2.png)
+    :::image type="content" source="media/data-factory-stored-proc-activity/tree-view-2.png" alt-text="Strukturansicht mit verknüpften Diensten":::
 
 ### <a name="create-a-pipeline-with-sqlserverstoredprocedure-activity"></a>Erstellen einer Pipeline mit der Aktivität "SqlServerStoredProcedure"
 Wir erstellen jetzt eine Pipeline mit einer Aktivität der gespeicherten Prozedur.
@@ -197,16 +198,16 @@ Beachten Sie die folgenden Eigenschaften:
 ### <a name="monitor-the-pipeline"></a>Überwachen der Pipeline
 1. Klicken Sie auf **X**, um die Data Factory-Editor-Blätter zu schließen und zum Blatt „Data Factory“ zurückzukehren, und klicken Sie auf **Diagramm**.
 
-    ![Diagrammkachel 1](media/data-factory-stored-proc-activity/data-factory-diagram-tile.png)
+    :::image type="content" source="media/data-factory-stored-proc-activity/data-factory-diagram-tile.png" alt-text="Diagrammkachel 1":::
 2. In der **Diagrammansicht** sehen Sie eine Übersicht über die in diesem Tutorial verwendeten Pipelines und Datasets.
 
-    ![Diagrammkachel 2](media/data-factory-stored-proc-activity/data-factory-diagram-view.png)
+    :::image type="content" source="media/data-factory-stored-proc-activity/data-factory-diagram-view.png" alt-text="Diagrammkachel 2":::
 3. Doppelklicken Sie in der Diagrammansicht auf das Dataset `sprocsampleout`. Die Slices werden im Zustand „Bereit“ angezeigt. Es sollten fünf Slices vorhanden sein, da ein Slice für jede Stunde zwischen der Startzeit und Endzeit aus der JSON erstellt wird.
 
-    ![Diagrammkachel 3](media/data-factory-stored-proc-activity/data-factory-slices.png)
+    :::image type="content" source="media/data-factory-stored-proc-activity/data-factory-slices.png" alt-text="Diagrammkachel 3":::
 4. Wenn sich ein Slice im Zustand **Bereit** befindet, führen Sie eine `select * from sampletable`-Abfrage in der Datenbank aus, um sicherzustellen, dass die Daten durch die gespeicherte Prozedur in die Tabelle eingefügt wurden.
 
-   ![Ausgabedaten](./media/data-factory-stored-proc-activity/output.png)
+   :::image type="content" source="./media/data-factory-stored-proc-activity/output.png" alt-text="Ausgabedaten":::
 
    Unter [Überwachen der Pipeline](data-factory-monitor-manage-pipelines.md) finden Sie ausführliche Informationen zur Überwachung von Azure Data Factory-Pipelines.
 
@@ -300,7 +301,7 @@ So sieht das JSON-Format zum Definieren der Aktivität „Gespeicherte Prozedur�
 
 In der folgenden Tabelle werden diese JSON-Eigenschaften beschrieben:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | name | Der Name der Aktivität |Ja |
 | description |Ein Text, der beschreibt, wofür die Aktivität verwendet wird. |Nein |
@@ -313,7 +314,7 @@ In der folgenden Tabelle werden diese JSON-Eigenschaften beschrieben:
 ## <a name="passing-a-static-value"></a>Übergeben eines statischen Werts
 Nun fügen wir der Tabelle eine weitere Spalte mit dem Namen „Scenario“ hinzu, die den statischen Wert „Document sample“ enthält.
 
-![Beispieldaten 2](./media/data-factory-stored-proc-activity/sample-data-2.png)
+:::image type="content" source="./media/data-factory-stored-proc-activity/sample-data-2.png" alt-text="Beispieldaten 2":::
 
 **Tabelle:**
 

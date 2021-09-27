@@ -1,14 +1,14 @@
 ---
-title: Sicherheitswarnungen für Umgebungen in Azure DevTest Labs
+title: Sicherheitswarnungen für Umgebungen
 description: In diesem Artikel erfahren Sie, wie Sie Sicherheitswarnungen für eine Umgebung in DevTest Labs anzeigen und eine entsprechende Aktion durchführen.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: c9f7cf9fe7ab0e3f573470228ee1962aa92ccaef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 437117e29ac09e52d2cd15740d60d942170b9c0d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91308689"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128654193"
 ---
 # <a name="security-alerts-for-environments-in-azure-devtest-labs"></a>Sicherheitswarnungen für Umgebungen in Azure DevTest Labs
 Als Labbenutzer können Sie jetzt Azure Security Center-Warnungen für Ihre Lab-Umgebungen anzeigen. Security Center erfasst, analysiert und vereinigt automatisch Protokolldaten von Ihren Azure-Ressourcen, vom Netzwerk und von verbundenen Partnerlösungen, z.B. Lösungen zum Schutz von Firewalls und Endpunkten, um echte Bedrohungen zu erkennen und falsch positive Ergebnisse zu reduzieren. Eine Liste mit priorisierten Sicherheitswarnungen wird im Security Center zusammen mit den Informationen angezeigt, die Sie zum schnellen Untersuchen des Problems benötigen. Außerdem sind Empfehlungen zum Reagieren auf einen Angriff vorhanden. [Weitere Informationen zu Sicherheitswarnungen in Azure Security Center](../security-center//security-center-alerts-overview.md).  

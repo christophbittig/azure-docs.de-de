@@ -3,19 +3,17 @@ title: Senden von Anforderungen an die Bing-Vorschlagssuche-API
 titleSuffix: Azure Cognitive Services
 description: Die Bing-Vorschlagssuche-API gibt eine Liste vorgeschlagener Abfragen basierend auf der unvollständigen Abfragezeichenfolge im Suchfeld zurück. Erfahren Sie mehr über das Senden von Anforderungen.
 services: cognitive-services
-author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.author: scottwhi
-ms.openlocfilehash: dd845c0fb877afa76b84eb5c2d86392f763eccf7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fd52dcbeef16fec75c5ea49483b03a676da692a9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96353390"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128576220"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>Senden von Anforderungen an die Bing-Vorschlagssuche-API
 

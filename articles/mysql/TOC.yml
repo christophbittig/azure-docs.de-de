@@ -106,7 +106,7 @@
             - name: Azure-Portal
               href: howto-server-parameters.md
               displayName: server parameters
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: howto-configure-server-parameters-using-cli.md
               displayName: 'server parameters, cli'
             - name: Azure PowerShell
@@ -238,7 +238,7 @@
               items:
                 - name: Azure-Portal
                   href: tutorial-design-database-using-portal.md
-                - name: Azure-Befehlszeilenschnittstelle
+                - name: Azure CLI
                   href: tutorial-design-database-using-cli.md
                 - name: Azure PowerShell
                   href: tutorial-design-database-using-powershell.md
@@ -384,6 +384,8 @@
                   displayName: 'debug, slow query log , performance'
     - name: Beispiele
       items:
+        - name: Azure CLI-Beispiele
+          href: sample-scripts-azure-cli.md
         - name: Konfigurieren von Java-Verbindungspooling
           href: sample-scripts-java-connection-pooling.md
 - name: Flexible Server (Vorschau)
@@ -403,7 +405,7 @@
           items:
             - name: Azure-Portal
               href: flexible-server/quickstart-create-server-portal.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: flexible-server/quickstart-create-server-cli.md
             - name: ARM-Vorlage
               displayName: Resource Manager
@@ -517,7 +519,7 @@
               items:
                 - name: Azure-Portal
                   href: flexible-server/how-to-stop-start-server-portal.md
-                - name: Azure-Befehlszeilenschnittstelle
+                - name: Azure CLI
                   href: flexible-server/how-to-restart-stop-start-server-cli.md
             - name: Neustarten des Servers
               items:
@@ -590,6 +592,10 @@
               href: flexible-server/how-to-troubleshoot-common-connection-issues.md
             - name: Behandeln von CLI-Fehlern
               href: flexible-server/how-to-troubleshoot-cli-errors.md
+    - name: Beispiele
+      items:
+        - name: Azure CLI-Beispiele
+          href: flexible-server/sample-scripts-azure-cli.md
 - name: Migration
   items:
     - name: Migrieren von lokalen MySQL-Daten zu Azure Database for MySQL >
@@ -643,7 +649,7 @@
       displayName: corrupt data
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/mysql
     - name: REST-API
       href: /rest/api/mysql

@@ -3,7 +3,7 @@ title: Datenmodellreferenz zu Azure API Management-Vorlagen | Microsoft-Dokument
 description: Lernen Sie die Entitäts- und Typendarstellungen für gängige Elemente kennen, die in den Datenmodellen für die Entwicklerportalvorlagen in Azure API Management verwendet werden.
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: erikre
 editor: ''
 ms.assetid: b0ad7e15-9519-4517-bb73-32e593ed6380
@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: apimpm
-ms.openlocfilehash: 868ad3d1c6e7e7ef2cf32dcf675bc471a614f3ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: 7b5ccd7f539332885cdaae242e9e33416633bea9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86243153"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128639069"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Datenmodellreferenz zu Azure API Management-Vorlagen
 In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Elemente beschrieben, die in den Datenmodellen für die Entwicklerportalvorlagen in Azure API Management verwendet werden.  
@@ -59,7 +59,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 ##  <a name="api"></a><a name="API"></a>-API  
  Die `API`-Entität weist die folgenden Eigenschaften auf:  
   
-|Eigenschaft|type|BESCHREIBUNG|  
+|Eigenschaft|type|Beschreibung|  
 |--------------|----------|-----------------|  
 |`id`|Zeichenfolge|Ressourcenbezeichner. Zur eindeutigen Identifizierung der API in der aktuellen Instanz des API Management-Diensts. Der Wert ist eine gültige relative URL im Format `apis/{id}`, wobei `{id}` einen API-Bezeichner darstellt. Diese Eigenschaft ist schreibgeschützt.|  
 |`name`|Zeichenfolge|Der Name der API. Darf nicht leer sein. Die maximale Länge beträgt 100 Zeichen.|  
@@ -73,7 +73,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 ##  <a name="api-summary"></a><a name="APISummary"></a> API-Zusammenfassung  
  Die `API summary`-Entität weist die folgenden Eigenschaften auf:  
   
-|Eigenschaft|type|BESCHREIBUNG|  
+|Eigenschaft|type|Beschreibung|  
 |--------------|----------|-----------------|  
 |`id`|Zeichenfolge|Ressourcenbezeichner. Zur eindeutigen Identifizierung der API in der aktuellen Instanz des API Management-Diensts. Der Wert ist eine gültige relative URL im Format `apis/{id}`, wobei `{id}` einen API-Bezeichner darstellt. Diese Eigenschaft ist schreibgeschützt.|  
 |`name`|Zeichenfolge|Der Name der API. Darf nicht leer sein. Die maximale Länge beträgt 100 Zeichen.|  
@@ -82,7 +82,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 ##  <a name="application"></a><a name="Application"></a> Anwendung  
  Die `application`-Entität weist die folgenden Eigenschaften auf:  
   
-|Eigenschaft|type|BESCHREIBUNG|  
+|Eigenschaft|type|Beschreibung|  
 |--------------|----------|-----------------|  
 |`Id`|Zeichenfolge|Der eindeutige Bezeichner der Anwendung.|  
 |`Title`|Zeichenfolge|Der Titel der Anwendung.|  
@@ -100,7 +100,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 ##  <a name="attachment"></a><a name="Attachment"></a> Anlage  
  Die `attachment`-Entität weist die folgenden Eigenschaften auf:  
   
-|Eigenschaft|type|BESCHREIBUNG|  
+|Eigenschaft|type|Beschreibung|  
 |--------------|----------|-----------------|  
 |`UniqueId`|Zeichenfolge|Der eindeutige Bezeichner für die Anlage.|  
 |`Url`|Zeichenfolge|Die URL der Ressource.|  
@@ -109,7 +109,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
   
 ##  <a name="code-sample"></a><a name="Sample"></a> Codebeispiel  
   
-|Eigenschaft|type|BESCHREIBUNG|  
+|Eigenschaft|type|Beschreibung|  
 |--------------|----------|-----------------|  
 |`title`|Zeichenfolge|Der Name des Vorgangs.|  
 |`snippet`|Zeichenfolge|Diese Eigenschaft ist veraltet und sollte nicht verwendet werden.|  
@@ -137,7 +137,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 ##  <a name="issue"></a><a name="Issue"></a> Problem  
  Die `issue`-Entität weist die folgenden Eigenschaften auf.  
   
-|Eigenschaft|type|BESCHREIBUNG|  
+|Eigenschaft|type|Beschreibung|  
 |--------------|----------|-----------------|  
 |`Id`|Zeichenfolge|Der eindeutige Bezeichner für das Problem.|  
 |`ApiID`|Zeichenfolge|Die ID für die API, für die dieses Problem gemeldet wurde.|  
@@ -174,7 +174,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 ##  <a name="http-request"></a><a name="HTTPRequest"></a> HTTP-Anforderung  
  In diesem Abschnitt wird die `request`-Darstellung beschrieben.  
   
-|Eigenschaft|type|BESCHREIBUNG|  
+|Eigenschaft|type|Beschreibung|  
 |--------------|----------|-----------------|  
 |`description`|Zeichenfolge|Vorgangsanforderungsbeschreibung.|  
 |`headers`|Array von [Header](#Header)-Entitäten.|Anforderungsheader.|  
@@ -238,7 +238,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 ##  <a name="parameter"></a><a name="Parameter"></a> Parameter  
  In diesem Abschnitt wird die `parameter`-Darstellung beschrieben.  
   
-|Eigenschaft|type|BESCHREIBUNG|  
+|Eigenschaft|type|Beschreibung|  
 |--------------|-----------------|----------|  
 |`name`|Zeichenfolge|Parametername.|  
 |`description`|Zeichenfolge|Beschreibung des Parameters.|  
@@ -251,7 +251,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 ##  <a name="product"></a><a name="Product"></a> Produkt  
  Die `product`-Entität weist die folgenden Eigenschaften auf:  
   
-|Eigenschaft|type|BESCHREIBUNG|  
+|Eigenschaft|type|Beschreibung|  
 |--------------|----------|-----------------|  
 |`Id`|Zeichenfolge|Ressourcenbezeichner. Zur eindeutigen Identifizierung des Produkts in der aktuellen Instanz des API Management-Diensts. Der Wert ist eine gültige relative URL im Format `products/{pid}`, wobei `{pid}` einen Produktbezeichner darstellt. Diese Eigenschaft ist schreibgeschützt.|  
 |`Title`|Zeichenfolge|Der Name des Produkts. Darf nicht leer sein. Die maximale Länge beträgt 100 Zeichen.|  
@@ -315,7 +315,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 ##  <a name="user-account-info"></a><a name="UserAccountInfo"></a> Benutzerkontoinformationen  
  Die `user account info`-Entität weist die folgenden Eigenschaften auf:  
   
-|Eigenschaft|type|BESCHREIBUNG|  
+|Eigenschaft|type|Beschreibung|  
 |--------------|----------|-----------------|  
 |`FirstName`|Zeichenfolge|Vorname. Darf nicht leer sein. Die maximale Länge beträgt 100 Zeichen.|  
 |`LastName`|Zeichenfolge|Nachname. Darf nicht leer sein. Die maximale Länge beträgt 100 Zeichen.|  
@@ -328,7 +328,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 ##  <a name="user-sign-in"></a><a name="UseSignIn"></a> Benutzeranmeldung  
  Die `user sign in`-Entität weist die folgenden Eigenschaften auf:  
   
-|Eigenschaft|type|BESCHREIBUNG|  
+|Eigenschaft|type|Beschreibung|  
 |--------------|----------|-----------------|  
 |`Email`|Zeichenfolge|E-Mail-Adresse. Darf nicht leer sein und muss innerhalb der Dienstinstanz eindeutig sein. Die maximale Länge beträgt 254 Zeichen.|  
 |`Password`|Zeichenfolge|Kennwort des Benutzerkontos.|  
@@ -346,7 +346,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 ##  <a name="user-sign-up"></a><a name="UserSignUp"></a> Benutzerregistrierung  
  Die `user sign up`-Entität weist die folgenden Eigenschaften auf:  
   
-|Eigenschaft|type|BESCHREIBUNG|  
+|Eigenschaft|type|Beschreibung|  
 |--------------|----------|-----------------|  
 |`PasswordConfirm`|boolean|Der vom [Anmeldesteuerelement](api-management-page-controls.md#sign-up) verwendete Wert.|  
 |`Password`|Zeichenfolge|Kennwort des Benutzerkontos.|  

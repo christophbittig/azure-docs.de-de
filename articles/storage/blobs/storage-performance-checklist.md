@@ -9,12 +9,12 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 249d2e266c0f72336091133a52426602491b3c68
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 5f0cbf0c83d8ea7caba84f681c71659cef119f17
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111900735"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643610"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Checkliste zu Leistung und Skalierbarkeit für Blob Storage
 
@@ -71,7 +71,7 @@ Wenn Sie die maximal zulässige Anzahl von Speicherkonten für eine bestimmte Ko
 
 ### <a name="capacity-and-transaction-targets"></a>Kapazitäts- und Transaktionsziele
 
-Wenn sich Ihre Anwendung den Skalierbarkeitszielen für ein Speicherkonto nähert, sollten Sie eine der folgenden Vorgehensweisen wählen:  
+Wenn sich Ihre Anwendung den Skalierbarkeitszielen für ein Speicherkonto nähert, sollten Sie eine der folgenden Vorgehensweisen wählen:
 
 - Wenn Ihre Anwendung das Transaktionsziel erreicht, sollten Sie die Verwendung von Blockblob-Speicherkonten in Erwägung ziehen, die für hohe Transaktionsraten und niedrige, gleichbleibende Wartezeiten optimiert sind. Weitere Informationen finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).
 - Berücksichtigen Sie die Arbeitsauslastung, aufgrund derer Ihre Anwendung das Skalierbarkeitsziel erreicht oder überschreitet. Können Sie diese anders konzipieren, um weniger Bandbreite bzw. Kapazität oder weniger Transaktionen zu verwenden?
@@ -92,7 +92,7 @@ In anderen Szenarien (z. B. bei wissenschaftlichen Simulationen, in denen die D
 
 Ein einzelnes Blob unterstützt bis zu 500 Anforderungen pro Sekunde. Wenn Sie über mehrere Clients verfügen, die dasselbe Blob lesen müssen, und Sie diesen Grenzwert wahrscheinlich überschreiten, sollten Sie die Verwendung eines Blockblob-Speicherkontos in Erwägung ziehen. Ein Blockblob-Speicherkonto unterstützt eine höhere Anforderungsrate oder mehr E/A-Vorgänge pro Sekunde (IOPS).
 
-Sie können auch ein Content Delivery Network (CDN) wie Azure CDN verwenden, um Vorgänge auf das Blob zu verteilen. Weitere Informationen zum Azure CDN finden Sie in der [Übersicht zum Azure CDN](../../cdn/cdn-overview.md).  
+Sie können auch ein Content Delivery Network (CDN) wie Azure CDN verwenden, um Vorgänge auf das Blob zu verteilen. Weitere Informationen zum Azure CDN finden Sie in der [Übersicht zum Azure CDN](../../cdn/cdn-overview.md).
 
 ## <a name="partitioning"></a>Partitionierung
 
@@ -106,19 +106,19 @@ So können z.B. alle Blobs in einem Container als ein einziger Server behandelt 
 
 Jeder Lastausgleichsvorgang kann die Latenz der Speicheraufrufe während des Vorgangs beeinflussen. Die Fähigkeit des Diensts, einen plötzlichen Anstieg des an eine Partition gerichteten Datenverkehrs zu bewältigen, wird durch die Skalierbarkeit eines einzelnen Partitionsservers begrenzt, bis der Lastenausgleich wirksam wird und den Partitionsschlüsselbereich ausgleicht.
 
-Sie können die Zahl dieser Vorgänge mit einigen bewährten Vorgehensweisen reduzieren.  
+Sie können die Zahl dieser Vorgänge mit einigen bewährten Vorgehensweisen reduzieren.
 
 - Verwenden Sie nach Möglichkeit Blob- oder Blockgrößen über 4 MiB für Standardspeicherkonten und über 256 KiB für Storage Premium-Konten. Durch höhere Blob- oder Blockgrößen werden automatisch Blockblobs mit hohem Durchsatz aktiviert. Blockblobs mit hohem Durchsatz unterstützen eine leistungsfähige Datenerfassung, die von Partitionsnamen unabhängig ist.
 - Untersuchen Sie die Namenskonvention, die Sie für Konten, Container, Blobs, Tabellen und Warteschlangen verwenden. Sie sollten überlegen, Konto-, Container- oder Blobnamen mithilfe einer Hashfunktion, die Ihren Anforderungen am besten gerecht wird, mit einem dreistelligen Hashpräfix zu versehen.
 - Wenn Sie Ihre Daten mit Zeitstempeln oder numerischen Bezeichnern organisieren, sollten Sie sicherstellen, dass Sie keine Datenverkehrsmuster verwenden, bei denen Daten nur angefügt (oder vorangestellt) werden. Diese Muster sind für ein bereichsbasiertes Partitionierungssystem nicht geeignet. Die Muster können dazu führen, dass der gesamte Datenverkehr an eine einzelne Partition weitergeleitet wird und dass das System daran gehindert wird, einen effektiven Lastenausgleich durchzuführen.
 
     Beispiel: Wenn Vorgänge täglich ein Blob mit dem Zeitstempel *yyyymmdd* nutzen, wird der gesamte Datenverkehr für diesen täglichen Vorgang an ein einzelnes Blob weitergeleitet, das von einem einzigen Partitionsserver bedient wird. Prüfen Sie, ob die Grenzwerte pro Blob und pro Partition Ihren Bedürfnissen entsprechen, und erwägen Sie, diesen Vorgang bei Bedarf in mehrere Blobs aufzuteilen. Auch wenn Sie Zeitreihendaten in Ihren Tabellen speichern, kann der gesamte Datenverkehr an den letzten Teil des Schlüsselnamespaces weitergeleitet werden. Wenn Sie numerische IDs verwenden, stellen Sie der ID einen dreistelligen Hash als Präfix voran. Wenn Sie Zeitstempel verwenden, stellen Sie dem Zeitstempel den Sekundenwert voran, z. B. *ssyyyymmdd*. Wenn Ihre Anwendung routinemäßig Auflistungs- und Abfragevorgänge ausführt, wählen Sie eine Hashfunktion, die die Anzahl der Abfragen begrenzt. In einigen Fällen ist möglicherweise ein zufälliges Präfix ausreichend.
-  
+
 - Weitere Informationen über das in Azure Storage verwendete Partitionierungsschema finden Sie unter [Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf) (Hochverfügbarer Cloud-Speicherdienst mit starker Konsistenz).
 
 ## <a name="networking"></a>Netzwerk
 
-Die physischen Netzwerkeinschränkungen der Anwendung können erhebliche Auswirkungen auf die Leistung haben. In den folgenden Abschnitten werden einige Einschränkungen beschrieben, die Benutzer bemerken können.  
+Die physischen Netzwerkeinschränkungen der Anwendung können erhebliche Auswirkungen auf die Leistung haben. In den folgenden Abschnitten werden einige Einschränkungen beschrieben, die Benutzer bemerken können.
 
 ### <a name="client-network-capability"></a>Client-Netzwerkkapazität
 
@@ -130,27 +130,27 @@ Bei der Bandbreite liegt das Problem häufig in der Clientkapazität. Größere 
 
 #### <a name="link-quality"></a>Verbindungsqualität
 
-Bedenken Sie wie bei jeder Netzwerknutzung, dass Netzwerkbedingungen, die zu Fehlern und Paketverlusten führen, den effektiven Durchsatz verringern.  Die Verwendung von WireShark oder NetMon kann bei der Diagnose dieses Problems helfen.  
+Bedenken Sie wie bei jeder Netzwerknutzung, dass Netzwerkbedingungen, die zu Fehlern und Paketverlusten führen, den effektiven Durchsatz verringern.  Die Verwendung von WireShark oder NetMon kann bei der Diagnose dieses Problems helfen.
 
 ### <a name="location"></a>Standort
 
-In jeder verteilten Umgebung wird die beste Leistung erzielt, indem der Client in der Nähe des Servers platziert wird. Zum Zugriff auf den Azure-Speicher mit der niedrigsten Latenz befindet sich der beste Standort für den Client innerhalb derselben Azure-Region. Wenn Sie beispielsweise über eine Azure-Web-App verfügen, die Azure Storage verwendet, sollten Sie beide in derselben Region bereitstellen (z. B. „USA, Westen“ oder „Asien, Südosten“). Durch die räumliche Zusammenlegung von Ressourcen werden die Wartezeit und die Kosten verringert, da die Bandbreitennutzung innerhalb einer Region kostenlos ist.  
+In jeder verteilten Umgebung wird die beste Leistung erzielt, indem der Client in der Nähe des Servers platziert wird. Zum Zugriff auf den Azure-Speicher mit der niedrigsten Latenz befindet sich der beste Standort für den Client innerhalb derselben Azure-Region. Wenn Sie beispielsweise über eine Azure-Web-App verfügen, die Azure Storage verwendet, sollten Sie beide in derselben Region bereitstellen (z. B. „USA, Westen“ oder „Asien, Südosten“). Durch die räumliche Zusammenlegung von Ressourcen werden die Wartezeit und die Kosten verringert, da die Bandbreitennutzung innerhalb einer Region kostenlos ist.
 
 Wenn Clientanwendungen auf Azure Storage zugreifen, aber nicht in Azure gehostet werden (z. B. Apps für mobile Geräte oder lokale Unternehmensdienste), können Sie die Wartezeit reduzieren, indem Sie für das Speicherkonto eine Region in der Nähe dieser Clients verwenden. Wenn Ihre Clients weit verteilt sind (z. B. einige in Nordamerika und andere in Europa), kann es sinnvoll sein, ein Speicherkonto pro Region zu verwenden. Diese Vorgehensweise ist einfacher zu implementieren, wenn die in der Anwendung gespeicherten Daten speziell für bestimmte Benutzer gelten und keine Datenreplikation zwischen den Speicherkonten erforderlich ist.
 
-Verwenden Sie für die breite Verteilung von Blobinhalten ein Content Delivery Network wie Azure CDN. Weitere Informationen zum Azure CDN finden Sie unter [Azure CDN](../../cdn/cdn-overview.md).  
+Verwenden Sie für die breite Verteilung von Blobinhalten ein Content Delivery Network wie Azure CDN. Weitere Informationen zum Azure CDN finden Sie unter [Azure CDN](../../cdn/cdn-overview.md).
 
 ## <a name="sas-and-cors"></a>SAS und CORS
 
 Angenommen, Sie müssen im Webbrowser eines Benutzers oder in einer Mobiltelefon-App ausgeführten Code (z. B. JavaScript) für den Zugriff auf Daten in Azure Storage autorisieren. Eine Möglichkeit besteht darin, eine Dienstanwendung zu erstellen, die als Proxy fungiert. Das Gerät des Benutzers wird beim Dienst authentifiziert, der wiederum den Zugriff auf Azure Storage-Ressourcen autorisiert. Auf diese Weise müssen Sie den Speicherkontoschlüssel nicht gegenüber unsicheren Geräten offenbaren. Dieser Ansatz führt für die Dienstanwendung jedoch zu einem erheblichen Mehraufwand, da alle zwischen dem Benutzergerät und Azure Storage übertragenen Daten über die Dienstanwendung gesendet werden müssen.
 
-Mit SAS (Shared Access Signature) können Sie die Verwendung einer Dienstanwendung als Proxy für Azure Storage vermeiden. SAS ermöglicht es dem Benutzergerät, Anforderungen mithilfe eines beschränkten Zugriffstokens direkt an Azure Storage zu senden. Wenn ein Benutzer beispielsweise ein Foto in Ihre Anwendung hochladen möchte, kann die Dienstanwendung eine SAS generieren und an das Gerät des Benutzers senden. Das SAS-Token kann die Berechtigung zum Schreiben in eine Azure Storage Ressource für einen bestimmten Zeitraum erteilen, nach dem das SAS-Token dann abläuft. Weitere Informationen zu SAS finden Sie unter [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signatures)](../common/storage-sas-overview.md).  
+Mit SAS (Shared Access Signature) können Sie die Verwendung einer Dienstanwendung als Proxy für Azure Storage vermeiden. SAS ermöglicht es dem Benutzergerät, Anforderungen mithilfe eines beschränkten Zugriffstokens direkt an Azure Storage zu senden. Wenn ein Benutzer beispielsweise ein Foto in Ihre Anwendung hochladen möchte, kann die Dienstanwendung eine SAS generieren und an das Gerät des Benutzers senden. Das SAS-Token kann die Berechtigung zum Schreiben in eine Azure Storage Ressource für einen bestimmten Zeitraum erteilen, nach dem das SAS-Token dann abläuft. Weitere Informationen zu SAS finden Sie unter [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signatures)](../common/storage-sas-overview.md).
 
 Normalerweise lässt ein Webbrowser nicht zu, dass JavaScript-Code in einer Seite, die von einer Website in einer Domäne gehostet wird, bestimmte Vorgänge (z. B. Schreibvorgänge) in einer anderen Domäne ausführt. Diese als Richtlinie des gleichen Ursprungs bezeichnete Richtlinie verhindert, dass ein schädliches Skript auf einer Seite Zugriff auf Daten auf einer anderen Webseite erhält. Beim Erstellen einer Lösung in der Cloud kann sich die Richtlinie des gleichen Ursprungs jedoch als Einschränkung erweisen. CORS (Cross-Origin Resource Sharing) ist eine Browserfunktion, mit deren Hilfe die Zieldomäne dem Browser mitteilen kann, dass sie Anforderungen aus der Quelldomäne vertraut.
 
-Angenommen, eine in Azure ausgeführte Webanwendung sendet eine Ressourcenanforderung an ein Azure Storage-Konto. Die Webanwendung ist die Quelldomäne und das Speicherkonto die Zieldomäne. Sie können CORS für alle Azure Storage-Dienste konfigurieren, um dem Webbrowser mitzuteilen, dass Azure Storage Anforderungen aus der Quelldomäne als vertrauenswürdig einstuft. Weitere Informationen zu CORS finden Sie unter [Unterstützung von Cross-Origin Resource Sharing (CORS) für Azure Storage](/rest/api/storageservices/Cross-Origin-Resource-Sharing--CORS--Support-for-the-Azure-Storage-Services).  
-  
-Sowohl SAS als auch CORS können Ihnen dabei helfen, eine unnötige Belastung Ihrer Webanwendung zu vermeiden.  
+Angenommen, eine in Azure ausgeführte Webanwendung sendet eine Ressourcenanforderung an ein Azure Storage-Konto. Die Webanwendung ist die Quelldomäne und das Speicherkonto die Zieldomäne. Sie können CORS für alle Azure Storage-Dienste konfigurieren, um dem Webbrowser mitzuteilen, dass Azure Storage Anforderungen aus der Quelldomäne als vertrauenswürdig einstuft. Weitere Informationen zu CORS finden Sie unter [Unterstützung von Cross-Origin Resource Sharing (CORS) für Azure Storage](/rest/api/storageservices/Cross-Origin-Resource-Sharing--CORS--Support-for-the-Azure-Storage-Services).
+
+Sowohl SAS als auch CORS können Ihnen dabei helfen, eine unnötige Belastung Ihrer Webanwendung zu vermeiden.
 
 ## <a name="caching"></a>Caching
 
@@ -164,9 +164,9 @@ Eine Möglichkeit, das Abrufen eines Blobs zu verhindern, wenn es seit der Zwisc
 
 Sie können Ihre Anwendung auch so entwerfen, dass sie davon ausgeht, dass das Blob eine kurze Zeitspanne nach dem Abrufen unverändert bleibt. In diesem Fall muss die Anwendung nicht überprüfen, ob das Blob in diesem Intervall geändert wurde.
 
-Konfigurations-, Such- und andere Daten, die häufig von der Anwendung verwendet werden, sind gut für die Zwischenspeicherung geeignet.  
+Konfigurations-, Such- und andere Daten, die häufig von der Anwendung verwendet werden, sind gut für die Zwischenspeicherung geeignet.
 
-Weitere Informationen zur Verwendung bedingter Header finden Sie unter [Angeben von bedingten Headern für Vorgänge des Blob-Diensts](/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations).  
+Weitere Informationen zur Verwendung bedingter Header finden Sie unter [Angeben von bedingten Headern für Vorgänge des Blob-Diensts](/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations).
 
 ### <a name="uploading-data-in-batches"></a>Hochladen von Daten in Batches
 
@@ -174,7 +174,7 @@ In einigen Szenarien können Sie Daten lokal aggregieren und dann regelmäßig a
 
 ## <a name="net-configuration"></a>.NET-Konfiguration
 
-Für die Verwendung des .NET Frameworks sind in diesem Abschnitt einige Schnellkonfigurationseinstellungen aufgelistet, die eine deutliche Leistungsoptimierung bewirken.  Bei Verwendung anderer Sprachen sollten Sie sich informieren, ob es ähnliche Konzepte für die jeweilige Sprache gibt.  
+Für die Verwendung des .NET Frameworks sind in diesem Abschnitt einige Schnellkonfigurationseinstellungen aufgelistet, die eine deutliche Leistungsoptimierung bewirken.  Bei Verwendung anderer Sprachen sollten Sie sich informieren, ob es ähnliche Konzepte für die jeweilige Sprache gibt.
 
 ### <a name="use-net-core"></a>Verwenden von .NET Core
 
@@ -193,9 +193,9 @@ In .NET wird das Standardverbindungslimit (in der Regel zwei Verbindungen in ein
 ServicePointManager.DefaultConnectionLimit = 100; //(Or More)  
 ```
 
-Für andere Programmiersprachen erfahren Sie in der zugehörigen Dokumentation, wie Sie das Verbindungslimit festlegen.  
+Für andere Programmiersprachen erfahren Sie in der zugehörigen Dokumentation, wie Sie das Verbindungslimit festlegen.
 
-Weitere Informationen finden Sie im Blogbeitrag [Webdienste: Gleichzeitige Verbindungen](/archive/blogs/darrenj/web-services-concurrent-connections).  
+Weitere Informationen finden Sie im Blogbeitrag [Webdienste: Gleichzeitige Verbindungen](/archive/blogs/darrenj/web-services-concurrent-connections).
 
 ### <a name="increase-minimum-number-of-threads"></a>Erhöhen der Mindestanzahl von Threads
 
@@ -205,11 +205,11 @@ Wenn Sie synchrone Aufrufe zusammen mit asynchronen Aufgaben verwenden, können 
 ThreadPool.SetMinThreads(100,100); //(Determine the right number for your application)  
 ```
 
-Weitere Informationen finden Sie unter der [ThreadPool.SetMinThreads](/dotnet/api/system.threading.threadpool.setminthreads)-Methode.  
+Weitere Informationen finden Sie unter der [ThreadPool.SetMinThreads](/dotnet/api/system.threading.threadpool.setminthreads)-Methode.
 
 ## <a name="unbounded-parallelism"></a>Uneingeschränkte Parallelität
 
-Parallelität kann großartig für die Leistung sein. Bei der Verwendung von uneingeschränkter Parallelität ist jedoch Vorsicht geboten, da in diesem Fall keine Beschränkung für die Anzahl der Threads oder parallelen Anforderungen erzwungen wird. Beschränken Sie parallele Anforderungen zum Hoch- oder Herunterladen von Daten auf den Zugriff auf mehrere Partitionen im selben Speicherkonto oder auf mehrere Elemente in derselben Partition. Bei uneingeschränkter Parallelität können die Kapazität des Clientgeräts oder die Skalierbarkeitsziele des Speicherkontos überschritten werden, sodass es zu längeren Wartezeiten und Drosselung kommt.  
+Parallelität kann großartig für die Leistung sein. Bei der Verwendung von uneingeschränkter Parallelität ist jedoch Vorsicht geboten, da in diesem Fall keine Beschränkung für die Anzahl der Threads oder parallelen Anforderungen erzwungen wird. Beschränken Sie parallele Anforderungen zum Hoch- oder Herunterladen von Daten auf den Zugriff auf mehrere Partitionen im selben Speicherkonto oder auf mehrere Elemente in derselben Partition. Bei uneingeschränkter Parallelität können die Kapazität des Clientgeräts oder die Skalierbarkeitsziele des Speicherkontos überschritten werden, sodass es zu längeren Wartezeiten und Drosselung kommt.
 
 ## <a name="client-libraries-and-tools"></a>Clientbibliotheken und -tools
 
@@ -221,9 +221,9 @@ Azure Storage gibt einen Fehler zurück, wenn der Dienst eine Anforderung nicht
 
 ### <a name="timeout-and-server-busy-errors"></a>Timeoutfehler und Fehler durch ausgelasteten Server
 
-Azure Storage kann Ihre Anwendung drosseln, wenn sie sich den Skalierbarkeitsgrenzwerten nähert. In einigen Fällen kann Azure Storage eine Anforderung möglicherweise aufgrund vorübergehender Bedingungen nicht verarbeiten. In beiden Fällen kann der Dienst einen Fehler 503 (Server ausgelastet) oder 500 (Timeout) zurückgeben. Diese Fehler können auch auftreten, wenn der Dienst Datenpartitionen ausgleicht, um einen höheren Durchsatz zu ermöglichen. In der Regel wiederholt die Clientanwendung den Vorgang, der einen dieser Fehler verursacht. Wenn Azure Storage Ihre Anwendung drosselt, weil die Skalierbarkeitsziele überschritten wurden, oder der Dienst die Anforderung aus einem anderen Grund nicht ausführen konnte, verschlimmern aggressive Wiederholungsversuche jedoch meist das Problem. Aus diesem Grund wird eine Wiederholungsrichtlinie mit exponentiellem Backoff empfohlen (dies ist das Standardverhalten der Clientbibliotheken). Beispielsweise kann Ihre Anwendung nach 2 Sekunden, dann nach 4 Sekunden, nach 10 Sekunden und nach 30 Sekunden einen Wiederholungsversuch starten und dann komplett aufgeben. So kann die Anwendung die Last des Diensts deutlich reduzieren, anstatt Probleme, die zu einer Drosselung führen können, weiter zu verschärfen.  
+Azure Storage kann Ihre Anwendung drosseln, wenn sie sich den Skalierbarkeitsgrenzwerten nähert. In einigen Fällen kann Azure Storage eine Anforderung möglicherweise aufgrund vorübergehender Bedingungen nicht verarbeiten. In beiden Fällen kann der Dienst einen Fehler 503 (Server ausgelastet) oder 500 (Timeout) zurückgeben. Diese Fehler können auch auftreten, wenn der Dienst Datenpartitionen ausgleicht, um einen höheren Durchsatz zu ermöglichen. In der Regel wiederholt die Clientanwendung den Vorgang, der einen dieser Fehler verursacht. Wenn Azure Storage Ihre Anwendung drosselt, weil die Skalierbarkeitsziele überschritten wurden, oder der Dienst die Anforderung aus einem anderen Grund nicht ausführen konnte, verschlimmern aggressive Wiederholungsversuche jedoch meist das Problem. Aus diesem Grund wird eine Wiederholungsrichtlinie mit exponentiellem Backoff empfohlen (dies ist das Standardverhalten der Clientbibliotheken). Beispielsweise kann Ihre Anwendung nach 2 Sekunden, dann nach 4 Sekunden, nach 10 Sekunden und nach 30 Sekunden einen Wiederholungsversuch starten und dann komplett aufgeben. So kann die Anwendung die Last des Diensts deutlich reduzieren, anstatt Probleme, die zu einer Drosselung führen können, weiter zu verschärfen.
 
-Verbindungsfehler können sofort wiederholt werden, da sie kein Ergebnis einer Drosselung sind und nur vorübergehend bestehen sollten.  
+Verbindungsfehler können sofort wiederholt werden, da sie kein Ergebnis einer Drosselung sind und nur vorübergehend bestehen sollten.
 
 ### <a name="non-retryable-errors"></a>Nicht behebbare Fehler
 
@@ -239,11 +239,11 @@ Azure Storage bietet eine Reihe von Lösungen zum Kopieren und Verschieben von B
 
 Um Blobs übergreifend über Speicherkonten zu kopieren, verwenden Sie den [Put Block From URL](/rest/api/storageservices/put-block-from-url)-Vorgang. Mit diesem Vorgang werden Daten synchron aus einer beliebigen URL-Quelle in ein Blockblob kopiert. Durch die Verwendung des `Put Block from URL`-Vorgangs kann die erforderliche Bandbreite erheblich reduziert werden, wenn Daten übergreifend über Speicherkonten migriert werden. Da der Kopiervorgang auf der Dienstseite erfolgt, müssen Sie die Daten nicht herunterladen und erneut hochladen.
 
-Um Daten innerhalb desselben Speicherkontos zu kopieren, verwenden Sie den [Copy Blob](/rest/api/storageservices/Copy-Blob)-Vorgang. Daten werden im selben Speicherkonto normalerweise schnell kopiert.  
+Um Daten innerhalb desselben Speicherkontos zu kopieren, verwenden Sie den [Copy Blob](/rest/api/storageservices/Copy-Blob)-Vorgang. Daten werden im selben Speicherkonto normalerweise schnell kopiert.
 
 ### <a name="use-azcopy"></a>Verwenden von AzCopy
 
-Das Befehlszeilenprogramm AzCopy bietet eine einfache und effiziente Möglichkeit für die Massenübertragung von Blobs in, aus und übergreifend über Speicherkonten. AzCopy ist für dieses Szenario optimiert und kann hohe Übertragungsraten erzielen. AzCopy, Version 10, verwendet den `Put Block From URL`-Vorgang, um Blobdaten übergreifend über Speicherkonten zu kopieren. Weitere Informationen finden Sie unter [Kopieren oder Verschieben von Daten in Azure Storage mit AzCopy v10](../common/storage-use-azcopy-v10.md).  
+Das Befehlszeilenprogramm AzCopy bietet eine einfache und effiziente Möglichkeit für die Massenübertragung von Blobs in, aus und übergreifend über Speicherkonten. AzCopy ist für dieses Szenario optimiert und kann hohe Übertragungsraten erzielen. AzCopy, Version 10, verwendet den `Put Block From URL`-Vorgang, um Blobdaten übergreifend über Speicherkonten zu kopieren. Weitere Informationen finden Sie unter [Kopieren oder Verschieben von Daten in Azure Storage mit AzCopy v10](../common/storage-use-azcopy-v10.md).
 
 ### <a name="use-azure-data-box"></a>Verwenden von Azure Data Box
 
@@ -251,17 +251,17 @@ Zum Importieren großer Datenmengen in Blob Storage sollten Sie die Azure Data B
 
 ## <a name="content-distribution"></a>Inhaltsverteilung
 
-Manchmal muss eine Anwendung denselben Inhalt für mehrere Benutzer bereitstellen (zum Beispiel ein Produkt-Demovideo auf der Startseite einer Website), die sich entweder in derselben oder in verschiedenen Regionen befinden. Verwenden Sie in diesem Szenario ein Content Delivery Network (CDN) wie Azure CDN, um Blobinhalte geografisch zu verteilen. Im Gegensatz zum Azure-Speicherkonto, das in genau einer Region vorhanden ist und Inhalte nicht mit niedriger Latenz an andere Regionen liefern kann, verwendet das Azure CDN Server in mehreren Rechenzentren weltweit. Darüber hinaus unterstützt ein CDN in der Regel höhere Ausgangsgrenzwerte als ein einzelnes Speicherkonto.  
+Manchmal muss eine Anwendung denselben Inhalt für mehrere Benutzer bereitstellen (zum Beispiel ein Produkt-Demovideo auf der Startseite einer Website), die sich entweder in derselben oder in verschiedenen Regionen befinden. Verwenden Sie in diesem Szenario ein Content Delivery Network (CDN) wie Azure CDN, um Blobinhalte geografisch zu verteilen. Im Gegensatz zum Azure-Speicherkonto, das in genau einer Region vorhanden ist und Inhalte nicht mit niedriger Latenz an andere Regionen liefern kann, verwendet das Azure CDN Server in mehreren Rechenzentren weltweit. Darüber hinaus unterstützt ein CDN in der Regel höhere Ausgangsgrenzwerte als ein einzelnes Speicherkonto.
 
 Weitere Informationen zum Azure CDN finden Sie unter [Azure CDN](../../cdn/cdn-overview.md).
 
 ## <a name="use-metadata"></a>Verwenden von Metadaten
 
-Der Blob-Dienst unterstützt HEAD-Anforderungen, die Blobeigenschaften oder -metadaten enthalten können. Wenn Ihre Anwendung beispielsweise die EXIF (Exchangeable Image File Format)-Daten eines Fotos benötigt, kann sie das Foto abrufen und diese extrahieren. Um Bandbreite zu sparen und die Leistung zu verbessern, kann die Anwendung die EXIF-Daten in den Metadaten des Blobs speichern, wenn das Foto von der Anwendung hochgeladen wird. Anschließend können Sie einfach mithilfe einer HEAD-Anforderung die EXIF-Daten aus den Metadaten abrufen. Wenn Sie nur Metadaten und nicht den vollständigen Blobinhalt abrufen, sparen Sie eine beträchtliche Bandbreite und verringern die Verarbeitungszeit, die zum Extrahieren der EXIF-Daten erforderlich ist. Beachten Sie, dass pro Blob 8 KiB Metadaten gespeichert werden können.  
+Der Blob-Dienst unterstützt HEAD-Anforderungen, die Blobeigenschaften oder -metadaten enthalten können. Wenn Ihre Anwendung beispielsweise die EXIF (Exchangeable Image File Format)-Daten eines Fotos benötigt, kann sie das Foto abrufen und diese extrahieren. Um Bandbreite zu sparen und die Leistung zu verbessern, kann die Anwendung die EXIF-Daten in den Metadaten des Blobs speichern, wenn das Foto von der Anwendung hochgeladen wird. Anschließend können Sie einfach mithilfe einer HEAD-Anforderung die EXIF-Daten aus den Metadaten abrufen. Wenn Sie nur Metadaten und nicht den vollständigen Blobinhalt abrufen, sparen Sie eine beträchtliche Bandbreite und verringern die Verarbeitungszeit, die zum Extrahieren der EXIF-Daten erforderlich ist. Beachten Sie, dass pro Blob 8 KiB Metadaten gespeichert werden können.
 
 ## <a name="upload-blobs-quickly"></a>Schnelles Hochladen von Blobs
 
-Um BLOBs schnell hochzuladen, bestimmen Sie zunächst, ob Sie eines oder mehrere Blobs hochladen. Befolgen Sie die Anleitung unten, um die richtige Methode für Ihr Szenario auszuwählen.  
+Um BLOBs schnell hochzuladen, bestimmen Sie zunächst, ob Sie eines oder mehrere Blobs hochladen. Befolgen Sie die Anleitung unten, um die richtige Methode für Ihr Szenario auszuwählen.
 
 ### <a name="upload-one-large-blob-quickly"></a>Schnelles Hochladen eines großen Blobs
 
@@ -272,7 +272,7 @@ Um ein einzelnes großes Blob schnell hochzuladen, kann eine Clientanwendung Bl�
 
 ### <a name="upload-many-blobs-quickly"></a>Schnelles Hochladen von mehreren Blobs
 
-Um viele Blobs schnell hochzuladen, laden Sie die Blobs parallel hoch. Das gleichzeitige Hochladen funktioniert schneller als das Hochladen einzelner Blobs mit parallelen Blockuploads, da der Hochladevorgang auf mehrere Partitionen des Speicherdiensts verteilt wird. AzCopy führt Uploads standardmäßig parallel aus, was für dieses Szenario empfohlen wird. Weitere Informationen finden Sie unter [Erste Schritte mit AzCopy](../common/storage-use-azcopy-v10.md).  
+Um viele Blobs schnell hochzuladen, laden Sie die Blobs parallel hoch. Das gleichzeitige Hochladen funktioniert schneller als das Hochladen einzelner Blobs mit parallelen Blockuploads, da der Hochladevorgang auf mehrere Partitionen des Speicherdiensts verteilt wird. AzCopy führt Uploads standardmäßig parallel aus, was für dieses Szenario empfohlen wird. Weitere Informationen finden Sie unter [Erste Schritte mit AzCopy](../common/storage-use-azcopy-v10.md).
 
 ## <a name="choose-the-correct-type-of-blob"></a>Auswählen des richtigen Blobtyps
 
@@ -282,7 +282,7 @@ Blockblobs sind geeignet, wenn Sie große Datenmengen effizient hochladen möcht
 
 Anfügeblobs ähneln Blockblobs insofern, dass sie aus Blöcken bestehen. Wenn Sie ein Anfügeblob ändern, werden Blöcke nur am Ende des Blobs hinzugefügt. Anfügeblobs eignen sich beispielsweise für die Protokollierung, wenn eine Anwendung einem vorhandenen Blob Daten hinzufügen muss.
 
-Seitenblobs sind geeignet, wenn die Anwendung zufällige Schreibvorgänge in den Daten ausführen muss. Beispielsweise werden Datenträger virtueller Azure-Computer als Seitenblobs gespeichert. Weitere Informationen finden Sie unter [Grundlegendes zu Blockblobs, Anfügeblobs und Seitenblobs](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).  
+Seitenblobs sind geeignet, wenn die Anwendung zufällige Schreibvorgänge in den Daten ausführen muss. Beispielsweise werden Datenträger virtueller Azure-Computer als Seitenblobs gespeichert. Weitere Informationen finden Sie unter [Grundlegendes zu Blockblobs, Anfügeblobs und Seitenblobs](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,5 +1,5 @@
 ---
-title: Datei einfügen
+title: include file
 titleSuffix: Azure
 description: include file
 services: internet-peering
@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c4fee795996809b0ed3878e8904f10aca50c722e
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: f7e9b1ed926918496e1205f4a9e642f1cb59522d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110721868"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128909437"
 ---
 Im folgenden Beispiel wird gezeigt, wie Sie ein Direct-Peering mit 10 GBit/s in Seattle erstellen.
 
@@ -33,7 +33,7 @@ $connection1 = New-AzPeeringDirectConnectionObject `
 ```
 
 > [!NOTE]
-> Der Wert für <index> **$peeringLocation[]** <index> im obigen Beispiel sollte dem gewünschten Peeringstandort entsprechen.
+> Der Wert für  **$peeringLocation[]** im obigen Beispiel sollte dem gewünschten Peeringstandort entsprechen.
 
 Erstellen Sie eine weitere Verbindung, falls Redundanz an einem bestimmten Peeringstandort erforderlich ist.
 

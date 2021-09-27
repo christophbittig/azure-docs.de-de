@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f8149be4e7e22366cf5d2ce130d3b6ec596ac782
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 5a770e6f5105dd3525e2aac0e502f35cb6a6f050
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122356557"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128645833"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Konfigurieren des anonymen, öffentlichen Lesezugriffs auf Container und Blobs
 
@@ -81,7 +81,7 @@ $location = "<location>"
 New-AzStorageAccount -ResourceGroupName $rgName `
     -Name $accountName `
     -Location $location `
-    -SkuName Standard_GRS
+    -SkuName Standard_GRS `
     -AllowBlobPublicAccess $false
 
 # Read the AllowBlobPublicAccess property for the newly created storage account.
@@ -202,7 +202,7 @@ Führen Sie die folgenden Schritte aus, um die öffentliche Zugriffsebene für e
 1. Wählen Sie aus der Dropdownliste **Öffentliche Zugriffsebene** den gewünschten Eintrag aus, und klicken Sie auf „OK“, damit die Änderungen auf die ausgewählten Container angewendet werden.
 
     :::image type="content" source="media/anonymous-read-access-configure/configure-public-access-container.png" alt-text="Screenshot: Festlegen der öffentlichen Zugriffsebene im Azure-Portal." lightbox="media/anonymous-read-access-configure/configure-public-access-container.png":::
-    
+
 Wenn der öffentliche Zugriff für das Speicherkonto verweigert wird, kann die öffentliche Zugriffsebene eines Containers nicht festgelegt werden. Wenn Sie die öffentliche Zugriffsebene eines Containers festlegen möchten, stellen Sie fest, dass die Einstellung deaktiviert ist, da der öffentliche Zugriff für dieses Konto verweigert wird.
 
 :::image type="content" source="media/anonymous-read-access-configure/container-public-access-blocked.png" alt-text="Screenshot: Festlegen der öffentlichen Zugriffsebene des Containers wird blockiert, wenn der öffentliche Zugriff verweigert wird":::
@@ -296,6 +296,17 @@ $ctx = $storageAccount.Context
 
 Get-AzStorageContainer -Context $ctx | Select Name, PublicAccess
 ```
+
+## <a name="feature-support"></a>Featureunterstützung
+
+In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf die Unterstützung hat.
+
+| Speicherkontotyp                | Blob Storage (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) |![Ja](../media/icons/yes-icon.png)              | ![Ja](../media/icons/yes-icon.png) |
+| Premium-Blockblobs          | ![Ja](../media/icons/yes-icon.png)| ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) |
+
+<sup>1</sup>    Für Data Lake Storage Gen2 und das NFS 3.0-Protokoll (Network File System) ist ein Speicherkonto mit aktiviertem hierarchischem Namespace erforderlich.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

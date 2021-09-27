@@ -1,14 +1,14 @@
 ---
-title: Verwenden von Platform-as-a-Service-Diensten (PaaS) in Azure DevTest Labs
+title: Verwenden von PaaS-Diensten (Platform-as-a-Service)
 description: Erfahren Sie, wie Sie die Platform-as-a-Service-Dienste (PaaS) in Azure DevTest Labs verwenden können.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: eec37527386098174906dc2737d7b763241da3f2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d4bcf98d425e322c18e13ec99b525cf1442bc49
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85478738"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128548125"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>Verwenden von Platform-as-a-Service-Diensten (PaaS) in Azure DevTest Labs
 PaaS wird in DevTest Labs über das Umgebungenfeature unterstützt. In DevTest Labs werden Umgebungen von vorkonfigurierten Azure Resource Manager-Vorlagen in einem Git-Repository unterstützt. Umgebungen können sowohl PaaS- als auch IaaS-Ressourcen enthalten. Sie ermöglichen Ihnen die Erstellung komplexer Systeme, die Azure-Ressourcen wie virtuelle Computer, Datenbanken, virtuelle Netzwerke und Web-Apps enthalten können, die zum Zusammenwirken angepasst sind. Diese Vorlagen erlauben konsistente Bereitstellung und verbesserte Verwaltung von Umgebungen mithilfe der Quellcodeverwaltung. 
@@ -37,7 +37,7 @@ Der Labbesitzer kann Labumgebungen anpassen, um die Rolle des Benutzers innerhal
 Es gibt einige benutzerdefinierte Labinformationen, die außerhalb der Ressourcengruppe liegen und sich auf Umgebungen beziehen, auf die die Vorlage zugreifen kann. Hier sind einige davon: 
 
 - Labnetzwerkidentifizierung
-- Location
+- Standort
 - Speicherkonto, unter dem die Resource Manager-Vorlagendateien gespeichert werden. 
  
 #### <a name="lab-virtual-network"></a>Virtuelles Labnetzwerk
@@ -51,7 +51,7 @@ DevTest Labs unterstützt die Verwendung [geschachtelter Resource Manager-Vorlag
 ## <a name="developer"></a>Entwickler
 Entwickler verwenden den gleichen Workflow für das Erstellen eines virtuellen Computers, um eine bestimmte Umgebung zu erstellen. Sie wählen die Umgebung gemäß dem Computerimage aus und geben die von der Vorlage benötigten Informationen ein. Wenn jeder Entwickler eine Umgebung hat, ist die Bereitstellung von Änderungen und verbessertes Debuggen in der inneren Schleife möglich. Die Umgebung kann zu einem beliebigen Zeitpunkt mit der aktuellen Vorlage erstellt werden.  Dieses Feature ermöglicht, Umgebungen zu zerstören und neu zu erstellen, um die Downtime zu verringern, die anfällt, wenn das System manuell erstellt oder nach Fehlertests wiederhergestellt werden muss.  
 
-### <a name="testing"></a>Test
+### <a name="testing"></a>Testen
 DevTest Labs-Umgebungen ermöglichen unabhängiges asynchrones Testen spezifischer Codes und Konfigurationen. Gängige Praxis ist, die Umgebung mit dem Code aus dem einzelnen Pull Request einzurichten und automatisiertes Testen zu starten. Sobald das automatisierte Testen abgeschlossen ist, kann jegliches manuelles Testen für die spezifische Umgebung ausgeführt werden. Dieser Prozess erfolgt normalerweise als Teil der CI/CD-Pipeline. 
 
 ## <a name="management-experience"></a>Verwaltungserfahrung
@@ -78,8 +78,3 @@ Die folgenden Artikel enthalten ausführliche Informationen zu Umgebungen:
 - [Herstellen einer Verbindung zwischen einer Umgebung und dem virtuellen Netzwerk Ihres Labs in Azure DevTest Labs](connect-environment-lab-virtual-network.md)
 - [Integrieren von Umgebungen in Ihre Azure DevOps-CI/CD-Pipelines](integrate-environments-devops-pipeline.md)
  
-
-
-
-
-

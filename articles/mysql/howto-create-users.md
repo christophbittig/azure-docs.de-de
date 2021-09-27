@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2021
-ms.openlocfilehash: 7319e0bf5a1c382d6a6f0b2984d5428be6131c5e
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 479fe6c4f30c8272d73c9d1d085f541beeefe229
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113088600"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128579657"
 ---
 # <a name="create-databases-and-users-in-azure-database-for-mysql"></a>Erstellen von Datenbanken und Benutzern in Azure Database for MySQL
 
@@ -20,7 +20,7 @@ ms.locfileid: "113088600"
 In diesem Artikel wird beschrieben, wie Benutzer in Azure Database for MySQL erstellt werden.
 
 > [!NOTE]
-> Dieser Artikel enthält Verweise auf den Begriff _Slave_, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
+> Dieser Artikel enthält Verweise auf den Begriff *Slave*, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
 
 Bei der ersten Erstellung Ihrer Azure Database for MySQL-Serverinstanz haben Sie einen Serveradministrator-Benutzernamen und das zugehörige Kennwort angegeben. Weitere Informationen finden Sie in diesem [Schnellstart](quickstart-create-mysql-server-database-using-azure-portal.md). Sie können den Benutzernamen Ihres Serveradministrators im Azure-Portal festlegen.
 

@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/21/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5add931f71dfdb5034e614b3d6c3ddc8703293a2
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 6e37ab692b1e8f4a498d4b279ef3e45940e7d7f2
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114461570"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128708318"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA-Netzwerkarchitektur (große Instanzen)
 
@@ -201,7 +201,7 @@ Für die Notfallwiederherstellung müssen Sie über Einheiten von HANA (große I
  - Kopieren von Sicherungen zwischen HANA-Einheiten (große Instanzen) in verschiedenen Regionen zum Erstellen von Systemkopien oder Durchführen von Systemaktualisierungen.
 
 
-![Mit Azure-Umfeldern der großen Instanz in verschiedenen Azure-Regionen verbundene virtuelle Netzwerke](./media/hana-overview-architecture/image8-multiple-regions.png)
+[![Mit Azure-Umfeldern der großen Instanz in verschiedenen Azure-Regionen verbundene virtuelle Netzwerke](./media/hana-overview-architecture/image8-multiple-regions.png)](./media/hana-overview-architecture/image8-multiple-regions.png#lightbox)
 
 Die vorangehende Abbildung zeigt, wie die virtuellen Netzwerke in beiden Regionen mit zwei ExpressRoute-Leitungen verbunden sind. Die Leitungen werden für die Verbindung zu SAP HANA in Azure (große Instanzen) in beiden Azure-Regionen verwendet (graue Linien). Der Grund für die beiden Querverbindungen ist, dass ein Schutz vor dem Ausfall der MSEEs auf beiden Seiten vorhanden sein soll. Für den Kommunikationsfluss zwischen den beiden virtuellen Netzwerken in den beiden Azure-Regionen wird erwartet, dass er über das [globale Peering](/archive/blogs/azureedu/how-to-setup-global-vnet-peering-in-azure) der beiden virtuellen Netzwerke in den beiden unterschiedlichen Regionen verarbeitet wird (blaue gepunktete Linie). Die dichte rote Linie beschreibt die ExpressRoute Global Reach-Verbindung. Diese Verbindung ermöglicht es den Einheiten von HANA (große Instanzen) Ihrer Mandanten in verschiedenen Regionen, miteinander zu kommunizieren. 
 

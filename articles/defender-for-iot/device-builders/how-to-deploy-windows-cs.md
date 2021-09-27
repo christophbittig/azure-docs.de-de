@@ -3,12 +3,12 @@ title: Installieren des C#-basierten Agents auf einem Windows-Gerät
 description: Hier erfahren Sie, wie Sie den Defender für IoT-Agent auf Geräten unter Windows (32 Bit oder 64 Bit) installieren.
 ms.topic: conceptual
 ms.date: 05/26/2021
-ms.openlocfilehash: f76d9122b4f50d475efbbac465096022261a9ef4
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 1a9bab1f9e24fba6a2b04b6d0bb5d9f2560dcc1d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113016050"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643971"
 ---
 # <a name="deploy-a-defender-for-iot-c-based-security-agent-for-windows"></a>Bereitstellen eines C#-basierten Sicherheits-Agents von Defender für IoT unter Windows
 
@@ -73,7 +73,7 @@ Beispiel für „Get-Help“: ```Get-Help .\InstallSecurityAgent.ps1```
 
 Führen Sie Folgendes aus, um den Bereitstellungsstatus des Agents zu überprüfen:
 
-```sc.exe query "ASC IoT Agent"```
+`sc.exe query "ASC IoT Agent"`
 
 ### <a name="uninstall-the-agent"></a>Deinstallieren des Agents
 

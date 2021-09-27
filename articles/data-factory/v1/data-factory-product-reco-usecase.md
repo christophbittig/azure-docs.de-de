@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 44c66f5fa89e7293667c930bfd1720d72dc26bf4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a9a194fb1f1db5723643f9f73a6c2018f5daa59f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785069"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128665338"
 ---
 # <a name="use-case---product-recommendations"></a>Anwendungsfall – Produktempfehlungen
 Azure Data Factory ist einer der zahlreichen Dienste, die zum Implementieren der Cortana Intelligence Suite von Lösungsoptimierungen verwendet werden.  Auf der Seite [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics) finden Sie Details zu dieser Suite. In diesem Dokument wird ein allgemeiner Anwendungsfall beschrieben, den Azure-Benutzer bereits mithilfe von Azure Data Factory und anderen Cortana Intelligence-Komponentendiensten gelöst und implementiert haben.
@@ -40,7 +41,7 @@ Der Onlinehändler verwendet einen Azure-Blobspeicher, einen lokalen SQL Server,
 
 Alle Daten werden kombiniert und einem Produktempfehlungssystem hinzugefügt, um personalisierte Empfehlungen auf der Grundlage der Interessen und Aktionen der Kunden zu präsentieren, während der Benutzer die Produkte im Katalog auf der Website durchsucht. Auf der Grundlage allgemeiner, nicht benutzerspezifischer Website-Nutzungsmuster werden den Kunden auch Produkte angezeigt, die mit dem betrachteten Produkt in Verbindung stehen.
 
-![Anwendungsfalldiagramm](./media/data-factory-product-reco-usecase/diagram-1.png)
+:::image type="content" source="./media/data-factory-product-reco-usecase/diagram-1.png" alt-text="Anwendungsfalldiagramm":::
 
 Gigabytes an unformatierten Webprotokolldateien werden tagtäglich von der Website des Onlinehändlers als teilstrukturierte Daten erzeugt. Die unformatierten Webprotokolldateien sowie die Kunden- und Produktkataloginformationen werden regelmäßig in einer Azure Blob Storage-Instanz erfasst. Dazu wird die global als Dienst bereitgestellte Datenverschiebung von Data Factory verwendet. Die unformatierten Protokolldateien für den jeweiligen Tag werden im Blobspeicher zur langfristigen Speicherung nach Jahr und Monat partitioniert.  Zum Partitionieren der unformatierten Protokolldateien im Blobspeicher sowie zum bedarfsgerechten Verarbeiten der erfassten Protokolle mithilfe von Hive- und Pig-Skripts wird [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) verwendet. Die partitionierten Webprotokolldaten werden anschließend verarbeitet, um die erforderlichen Eingaben für ein durch maschinelles Lernen gestütztes Empfehlungssystem zu extrahieren, das zum Erzeugen der personalisierten Produktempfehlungen dient.
 

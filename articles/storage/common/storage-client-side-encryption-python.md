@@ -11,29 +11,32 @@ ms.date: 02/18/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: b76a1b8fa3a7d42f8b649adc225af89b4a40f15c
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 82a5dadb813a15cf278811ab80e358444bc1d5e6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110461809"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626701"
 ---
 # <a name="client-side-encryption-with-python"></a>Clientseitige Verschlüsselung mit Python
 
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
 ## <a name="overview"></a>Übersicht
+
 Die [Azure Storage-Clientbibliothek für Python](https://pypi.python.org/pypi/azure-storage) unterstützt die Verschlüsselung von Daten innerhalb von Clientanwendungen vor dem Hochladen der Daten nach Azure Storage sowie die Entschlüsselung von Daten während des Herunterladens auf den Client.
 
 > [!NOTE]
 > Die Azure Storage Python-Bibliothek befindet sich in der Vorschau.
-> 
-> 
+>
+>
 
 ## <a name="encryption-and-decryption-via-the-envelope-technique"></a>Verschlüsselung und Entschlüsselung über das Umschlagverfahren
+
 Die Prozesse bei der Verschlüsselung und Entschlüsselung folgen dem Umschlagverfahren.
 
 ### <a name="encryption-via-the-envelope-technique"></a>Verschlüsselung über das Umschlagverfahren
+
 Die Verschlüsselung über das Umschlagverfahren funktioniert wie folgt:
 
 1. Die Azure-Speicherclientbibliothek generiert einen Inhaltsverschlüsselungsschlüssel (Content Encryption Key, CEK), bei dem es sich um einen einmalig verwendeten symmetrischen Schlüssel handelt.
@@ -43,6 +46,7 @@ Die Verschlüsselung über das Umschlagverfahren funktioniert wie folgt:
 4. Die verschlüsselten Daten werden dann in den Azure Storage-Dienst hochgeladen. Der umschlossene Schlüssel und einige zusätzliche Verschlüsselungsmetadaten werden entweder als Metadaten (in einem Blob) gespeichert oder mit den verschlüsselten Daten (Warteschlangennachrichten und Tabellenentitäten) interpoliert.
 
 ### <a name="decryption-via-the-envelope-technique"></a>Entschlüsselung über das Umschlagverfahren
+
 Die Entschlüsselung über das Umschlagverfahren funktioniert wie folgt:
 
 1. Die Clientbibliothek geht davon aus, dass der Benutzer den KEK verwaltet. Der Benutzer muss den spezifischen Schlüssel, der für die Verschlüsselung verwendet wurde, nicht kennen. Stattdessen kann ein Schlüsselresolver eingerichtet und verwendet werden, der verschiedene Schlüsselbezeichner in Schlüssel auflöst.
@@ -51,17 +55,19 @@ Die Entschlüsselung über das Umschlagverfahren funktioniert wie folgt:
 4. Der Inhaltsverschlüsselungsschlüssel (CEK) wird dann zum Entschlüsseln der verschlüsselten Benutzerdaten verwendet.
 
 ## <a name="encryption-mechanism"></a>Verschlüsselungsmechanismus
+
 Die Speicherclientbibliothek verwendet [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) , um Benutzerdaten zu verschlüsseln. Insbesondere wird der [CBC-Modus (Blockchiffreverkettung, Cipher Block Chaining)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) mit AES verwendet. Da jeder Dienst eine andere Funktionsweise aufweist, werden die Dienste hier erörtert.
 
 ### <a name="blobs"></a>BLOBs
+
 Die Clientbibliothek unterstützt momentan nur die Verschlüsselung vollständiger Blobs. Die Verschlüsselung wird unterstützt, wenn Benutzer die **create**\*-Methoden verwenden. Es werden sowohl vollständige als auch Bereichsdownloads unterstützt, und Uploads und Downloads können parallelisiert werden.
 
 Bei der Verschlüsselung generiert die Clientbibliothek einen zufälligen Initialisierungsvektor (IV) mit einer Größe von 16 Byte zusammen mit einem zufälligen Inhaltsverschlüsselungsschlüssel (CEK) mit einer Größe von 32 Byte. Mithilfe dieser Informationen wird die Umschlagverschlüsselung der Blobdaten ausgeführt. Der umschlossene CEK und einige zusätzliche Verschlüsselungsmetadaten werden dann als Blobmetadaten zusammen mit dem verschlüsselten Blob für den Dienst gespeichert.
 
 > [!WARNING]
 > Wenn Sie eigene Metadaten für den Blob bearbeiten oder hochladen, müssen Sie sicherstellen, dass diese Metadaten beibehalten werden. Wenn Sie neue Metadaten ohne diese Metadaten hochladen, gehen der umschlossene CEK, der IV und andere Metadaten verloren und der Blobinhalt wird nie wieder abrufbar sein.
-> 
-> 
+>
+>
 
 Beim Herunterladen eines verschlüsselten Blobs wird der Inhalt des gesamten Blobs mit den **get**\*-Hilfsmethoden abgerufen. Der umschlossene CEK wird entpackt und zusammen mit dem IV (in diesem Fall als Blobmetadaten gespeichert) verwendet, um die entschlüsselten Daten an die Benutzer zurückzugeben.
 
@@ -70,6 +76,7 @@ Beim Herunterladen eines beliebigen Bereichs (**get**\*-Methoden mit übergebene
 Es können nur Blockblobs und Seitenblobs mit diesem Schema verschlüsselt/entschlüsselt werden. Das Verschlüsseln von Anfügeblobs wird zurzeit nicht unterstützt.
 
 ### <a name="queues"></a>Warteschlangen
+
 Da Warteschlangenmeldungen ein beliebiges Format aufweisen können, definiert die Clientbibliothek ein benutzerdefiniertes Format, das den Initialisierungsvektor (IV) und den verschlüsselten Inhaltsverschlüsselungsschlüssel (CEK) im Meldungstext enthält.
 
 Bei der Verschlüsselung generiert die Clientbibliothek einen zufälligen IV mit einer Größe von 16 Byte zusammen mit einem zufälligen CEK mit einer Größe von 32 Byte. Mithilfe dieser Informationen wird die Umschlagverschlüsselung des Texts der Warteschlangenmeldung durchgeführt. Der umschlossene CEK und einige zusätzliche Verschlüsselungsmetadaten werden der verschlüsselten Warteschlangenmeldung dann hinzugefügt. Diese geänderte Meldung (siehe unten) wird für den Dienst gespeichert.
@@ -81,12 +88,13 @@ Bei der Verschlüsselung generiert die Clientbibliothek einen zufälligen IV mit
 Bei der Entschlüsselung wird der umschlossene Schlüssel aus der Warteschlangenmeldung extrahiert und entpackt. Der Initialisierungsvektor wird ebenfalls aus der Warteschlangenmeldung extrahiert und zusammen mit dem entpackten Schlüssel verwendet, um die Daten der Warteschlangenmeldung zu entschlüsseln. Beachten Sie, dass die Verschlüsselungsmetadaten eine geringe Größe aufweisen (weniger als 500 Byte). Dies wird zwar für die 64-KB-Begrenzung für eine Warteschlangenmeldung angerechnet, die Auswirkungen sollten vertretbar sein.
 
 ### <a name="tables"></a>Tabellen
+
 Die Clientbibliothek unterstützt die Verschlüsselung von Entitätseigenschaften für Einfüge- und Ersetzungsvorgänge.
 
 > [!NOTE]
 > Das Zusammenführen wird derzeit nicht unterstützt. Da eine Teilmenge der Eigenschaften möglicherweise bereits mit einem anderen Schlüssel verschlüsselt wurde, führen das einfache Zusammenführen der neuen Eigenschaften und das Aktualisieren der Metadaten zu Datenverlusten. Das Zusammenführen erfordert entweder zusätzliche Dienstaufrufe, um die bereits vorhandene Entität aus dem Dienst zu lesen, oder die Verwendung eines neuen Schlüssels pro Eigenschaft. Beide Verfahren sind aus Leistungsgründen nicht geeignet.
-> 
-> 
+>
+>
 
 Die Verschlüsselung von Tabellendaten funktioniert wie folgt:
 
@@ -100,54 +108,59 @@ Die Verschlüsselung von Tabellendaten funktioniert wie folgt:
    Für Tabellen müssen die Benutzer zusätzlich zur Verschlüsselungsrichtlinie die Eigenschaften angeben, die verschlüsselt werden sollen. Dies kann erfolgen, indem entweder diese Eigenschaften in TableEntity-Objekten vom Typ EdmType.STRING gespeichert werden und die Verschlüsselung auf TRUE festgelegt wird, oder indem die „encryption_resolver_function“ im tableservice-Objekt festgelegt wird. Ein Verschlüsselungsresolver ist eine Funktion, die einen Partitionsschlüssel, einen Zeilenschlüssel und einen Eigenschaftennamen annimmt und einen booleschen Wert zurückgibt, der angibt, ob die Eigenschaft verschlüsselt werden soll. Bei der Verschlüsselung verwendet die Clientbibliothek diese Informationen, um zu entscheiden, ob eine Eigenschaft beim Schreiben in das Netzwerk verschlüsselt werden soll. Der Delegat bietet zudem die Möglichkeit einer Logik bezüglich der Verschlüsselung der Eigenschaften. (Beispiel: Wenn X, dann wird Eigenschaft A verschlüsselt, andernfalls werden die Eigenschaften A und B verschlüsselt.) Beachten Sie, dass es nicht notwendig ist, diese Informationen beim Lesen oder Abfragen von Entitäten bereitzustellen.
 
 ### <a name="batch-operations"></a>Batchvorgänge
+
 Für alle Zeilen im Batch gilt eine einzige Verschlüsselungsrichtlinie. Die Clientbibliothek generiert intern einen neuen zufälligen IV und einen zufälligen CEK pro Zeile im Batch . Die Benutzer können auch verschiedene Eigenschaften für jeden Vorgang im Batch verschlüsseln, indem dieses Verhalten im Verschlüsselungsresolver definiert wird.
 Wenn ein Batch als Kontext-Manager durch die Methode „tableservice batch()“ erstellt wird, wird die Verschlüsselungsrichtlinie automatisch auf das Batch angewendet. Wenn ein Batch explizit durch Aufrufen des Konstruktors erstellt wird, muss die Verschlüsselungsrichtlinie als Parameter übergeben werden und darf sich während der gesamten Lebensdauer des Batches nicht ändern.
 Beachten Sie Folgendes: Entitäten werden beim Einfügen in das Batch mithilfe der Verschlüsselungsrichtlinie des Batches verschlüsselt (Entitäten werden NICHT zum Zeitpunkt des Commits des Batches über die Verschlüsselungsrichtlinie von „tableservice“ verschlüsselt).
 
 ### <a name="queries"></a>Abfragen
+
 > [!NOTE]
 > Da die Entitäten verschlüsselt sind, können Sie keine Abfragen ausführen, die nach einer verschlüsselten Eigenschaft filtern.  Wenn Sie dies versuchen, erhalten Sie falsche Ergebnisse, da der Dienst verschlüsselte Daten mit unverschlüsselten Daten vergleicht.
-> 
-> 
+>
+>
 > Zum Ausführen von Abfragevorgängen müssen Sie einen Schlüsselresolver angeben, der alle Schlüssel im Resultset auflösen kann. Wenn eine im Abfrageergebnis enthaltene Entität nicht in einen Anbieter aufgelöst werden kann, löst die Clientbibliothek einen Fehler aus. Für jede Abfrage, die serverseitige Projektionen ausführt, fügt die Clientbibliothek den ausgewählten Spalten standardmäßig die spezifischen Verschlüsselungsmetadateneigenschaften (\_ClientEncryptionMetadata1 und \_ClientEncryptionMetadata2) hinzu.
-> 
+>
 > [!IMPORTANT]
 > Beachten Sie bei Verwendung einer clientseitigen Verschlüsselung die folgenden wichtigen Punkte:
-> 
-> * Verwenden Sie beim Lesen aus einem verschlüsselten Blob oder beim Schreiben in diesen Befehle zum Hochladen des vollständigen Blobs und zum Herunterladen des bereichsbasierten oder vollständigen Blobs. Vermeiden Sie beim Schreiben in einen verschlüsselten Blob Protokollvorgänge wie z. B. "Put Block", "Put Block List", "Write Pages" oder "Clear Pages". Andernfalls wird der verschlüsselte Blob möglicherweise beschädigt und kann nicht mehr gelesen werden.
-> * Für Tabellen gilt eine ähnliche Einschränkung. Achten Sie darauf, dass Sie beim Aktualisieren verschlüsselter Eigenschaften auch die Verschlüsselungsmetadaten aktualisieren.
-> * Wenn Sie Metadaten für den verschlüsselten Blob festlegen, werden die für die Entschlüsselung erforderlichen verschlüsselungsbezogenen Metadaten möglicherweise überschrieben, da das Festlegen von Metadaten kein additiver Vorgang ist. Dies gilt auch für Momentaufnahmen: Geben Sie während der Erstellung einer Momentaufnahme eines verschlüsselten Blobs keine Metadaten an. Wenn Metadaten festgelegt werden müssen, rufen Sie zunächst die **get_blob_metadata**-Methode auf, um die aktuellen Verschlüsselungsmetadaten abzurufen. Vermeiden Sie zudem gleichzeitige Schreibvorgänge, während Metadaten festgelegt werden.
-> * Aktivieren Sie das **require_encryption**-Flag im Dienstobjekt für Benutzer, die nur mit verschlüsselten Daten arbeiten sollen. Weitere Details finden Sie nachstehend.
+>
+> - Verwenden Sie beim Lesen aus einem verschlüsselten Blob oder beim Schreiben in diesen Befehle zum Hochladen des vollständigen Blobs und zum Herunterladen des bereichsbasierten oder vollständigen Blobs. Vermeiden Sie beim Schreiben in einen verschlüsselten Blob Protokollvorgänge wie z. B. "Put Block", "Put Block List", "Write Pages" oder "Clear Pages". Andernfalls wird der verschlüsselte Blob möglicherweise beschädigt und kann nicht mehr gelesen werden.
+> - Für Tabellen gilt eine ähnliche Einschränkung. Achten Sie darauf, dass Sie beim Aktualisieren verschlüsselter Eigenschaften auch die Verschlüsselungsmetadaten aktualisieren.
+> - Wenn Sie Metadaten für den verschlüsselten Blob festlegen, werden die für die Entschlüsselung erforderlichen verschlüsselungsbezogenen Metadaten möglicherweise überschrieben, da das Festlegen von Metadaten kein additiver Vorgang ist. Dies gilt auch für Momentaufnahmen: Geben Sie während der Erstellung einer Momentaufnahme eines verschlüsselten Blobs keine Metadaten an. Wenn Metadaten festgelegt werden müssen, rufen Sie zunächst die **get_blob_metadata**-Methode auf, um die aktuellen Verschlüsselungsmetadaten abzurufen. Vermeiden Sie zudem gleichzeitige Schreibvorgänge, während Metadaten festgelegt werden.
+> - Aktivieren Sie das **require_encryption**-Flag im Dienstobjekt für Benutzer, die nur mit verschlüsselten Daten arbeiten sollen. Weitere Details finden Sie nachstehend.
 
 Die Clientbibliothek des Speichers erwartet den bereitgestellten KEK und Schlüsselresolver, um die folgende Schnittstelle zu implementieren. [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) -Unterstützung für die Python-KEK-Verwaltung steht noch aus und wird in diese Bibliothek integriert, sobald sie fertig gestellt ist.
 
 ## <a name="client-api--interface"></a>Client-API/Schnittstelle
+
 Nachdem ein Speicherdienstobjekt (d.h. „blockblobservice“) erstellt wurde, kann der Benutzer Werte für die Felder zuweisen, aus denen sich eine Verschlüsselungsrichtlinie zusammensetzt: „key_encryption_key“, „key_resolver_function“ und „require_encryption“. Benutzer können entweder nur einen KEK, nur einen Resolver oder beides bereitstellen. „key_encryption_key“ ist der grundlegende Schlüsseltyp, der mit einer Schlüsselkennung gekennzeichnet wird und die Logik für das Einschließen/Entpacken bereitstellt. „key_resolver_function“ wird verwendet, um einen Schlüssel während des Entschlüsselungsvorgangs aufzulösen. Die Funktion gibt einen gültigen KEK zu einem Schlüsselbezeichner zurück. Dies ermöglicht den Benutzern die Auswahl zwischen mehreren Schlüsseln, die an mehreren Speicherorten verwaltet werden.
 
 Der KEK muss die folgenden Methoden implementieren, um Daten erfolgreich verschlüsseln zu können:
 
-* wrap_key(cek): Umschließt den angegebenen CEK (Bytes) mithilfe eines Algorithmus, den der Benutzer auswählt. Gibt den umschlossenen Schlüssel zurück.
-* get_key_wrap_algorithm(): Gibt den Algorithmus zurück, der für das Umschließen von Schlüsseln verwendet wird.
-* get_kid(): Gibt die Zeichenfolgenschlüssel-ID für diesen KEK zurück.
+- wrap_key(cek): Umschließt den angegebenen CEK (Bytes) mithilfe eines Algorithmus, den der Benutzer auswählt. Gibt den umschlossenen Schlüssel zurück.
+- get_key_wrap_algorithm(): Gibt den Algorithmus zurück, der für das Umschließen von Schlüsseln verwendet wird.
+- get_kid(): Gibt die Zeichenfolgenschlüssel-ID für diesen KEK zurück.
   Der KEK muss die folgenden Methoden implementieren, um Daten erfolgreich entschlüsseln zu können:
-* unwrap_key(cek, algorithm): Gibt die nicht umschlossene Form des angegebenen CEK mithilfe des durch die Zeichenfolge angegebenen Algorithmus zurück.
-* get_kid(): Gibt eine Zeichenfolgenschlüssel-ID für diesen KEK zurück.
+- unwrap_key(cek, algorithm): Gibt die nicht umschlossene Form des angegebenen CEK mithilfe des durch die Zeichenfolge angegebenen Algorithmus zurück.
+- get_kid(): Gibt eine Zeichenfolgenschlüssel-ID für diesen KEK zurück.
 
 Der Schlüsselresolver muss mindestens eine Methode implementieren, die nach Empfang eines Schlüsselbezeichners den entsprechenden KEK zurückgibt, der die obige Schnittstelle implementiert. Nur diese Methode darf der key_resolver_function-Eigenschaft im Dienstobjekt zugewiesen werden.
 
-* Für die Verschlüsselung wird immer der Schlüssel verwendet. Ein fehlender Schlüssel führt zu einem Fehler.
-* Für die Entschlüsselung gilt:
+- Für die Verschlüsselung wird immer der Schlüssel verwendet. Ein fehlender Schlüssel führt zu einem Fehler.
+- Für die Entschlüsselung gilt:
 
-  * Der Schlüsselresolver wird aufgerufen, wenn er angegeben wurde, um den Schlüssel abzurufen. Wenn der Resolver angegeben wird, dieser aber nicht über eine Zuordnung für die Schlüsselkennung verfügt, wird ein Fehler ausgelöst.
-  * Ist kein Resolver, aber ein Schlüssel angegeben, wird der Schlüssel verwendet, wenn seine Kennung mit der geforderten Schlüsselkennung übereinstimmt. Stimmt die Kennung nicht überein, wird ein Fehler ausgelöst.
+  - Der Schlüsselresolver wird aufgerufen, wenn er angegeben wurde, um den Schlüssel abzurufen. Wenn der Resolver angegeben wird, dieser aber nicht über eine Zuordnung für die Schlüsselkennung verfügt, wird ein Fehler ausgelöst.
+  - Ist kein Resolver, aber ein Schlüssel angegeben, wird der Schlüssel verwendet, wenn seine Kennung mit der geforderten Schlüsselkennung übereinstimmt. Stimmt die Kennung nicht überein, wird ein Fehler ausgelöst.
 
     Die Verschlüsselungsbeispiele in „azure.storage.samples“ veranschaulichen ein ausführlicheres End-to-End-Szenario für Blobs, Warteschlangen und Tabellen.
       Beispielimplementierungen des KEK und des Schlüsselresolvers werden in den Beispieldateien als KeyWrapper bzw. KeyResolver bereitgestellt.
 
 ### <a name="requireencryption-mode"></a>RequireEncryption-Modus
+
 Benutzer können optional einen Betriebsmodus aktivieren, in dem alle hoch- oder herunterzuladenden Daten verschlüsselt werden müssen. In diesem Modus schlagen Versuche, Daten ohne eine Verschlüsselungsrichtlinie hochzuladen oder Daten herunterzuladen, die nicht für den Dienst verschlüsselt sind, auf dem Client fehl. Das Flag **require_encryption** im Dienstobjekt steuert dieses Verhalten.
 
 ### <a name="blob-service-encryption"></a>Blob-Diensterschlüsselung
+
 Legen Sie die Felder für die Verschlüsselungsrichtlinie auf das blockblobservice-Objekt fest. Alles Weitere wird intern von der Clientbibliothek behandelt.
 
 # <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
@@ -177,9 +190,11 @@ my_block_blob_service.create_blob_from_stream(
 # Download and decrypt the encrypted contents from the blob.
 blob = my_block_blob_service.get_blob_to_bytes(container_name, blob_name)
 ```
+
 ---
 
 ### <a name="queue-service-encryption"></a>Warteschlangendienst-Verschlüsselung
+
 Legen Sie die Felder für die Verschlüsselungsrichtlinie auf das queueservice-Objekt fest. Alles Weitere wird intern von der Clientbibliothek behandelt.
 
 # <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
@@ -208,9 +223,11 @@ my_queue_service.put_message(queue_name, content)
 # Retrieve message
 retrieved_message_list = my_queue_service.get_messages(queue_name)
 ```
+
 ---
 
 ### <a name="table-service-encryption"></a>Tabellendienstverschlüsselung
+
 Zusätzlich zum Erstellen einer Verschlüsselungsrichtlinie und zum Festlegen der Richtlinie für die Anforderungsoptionen müssen Sie entweder eine **encryption_resolver_function** im **tableservice** angeben oder das encrypt-Attribut für die EntityProperty festlegen.
 
 ### <a name="using-the-resolver"></a>Verwenden des Resolvers
@@ -233,12 +250,10 @@ key_resolver.put_key(kek)
 
 # Define the encryption resolver_function.
 
-
 def my_encryption_resolver(pk, rk, property_name):
     if property_name == 'foo':
         return True
     return False
-
 
 # Set the KEK and key resolver on the service object.
 my_table_service.key_encryption_key = kek
@@ -253,9 +268,11 @@ my_table_service.insert_entity(table_name, entity)
 my_table_service.get_entity(
     table_name, entity['PartitionKey'], entity['RowKey'])
 ```
+
 ---
 
 ### <a name="using-attributes"></a>Verwenden von Attributen
+
 Wie oben erwähnt, kann eine Eigenschaft zur Verschlüsselung gekennzeichnet werden, indem sie in einem EntityProperty-Objekt gespeichert und das Verschlüsselungsfeld festgelegt wird.
 
 # <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
@@ -267,11 +284,14 @@ Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storag
 ```python
 encrypted_property_1 = EntityProperty(EdmType.STRING, value, encrypt=True)
 ```
+
 ---
 
 ## <a name="encryption-and-performance"></a>Verschlüsselung und Leistung
+
 Beachten Sie, dass ein Verschlüsseln Ihrer Storage-Daten einen zusätzlichen Leistungsaufwand verursacht. Der Inhaltsschlüssel und der IV müssen generiert, der Inhalt selbst muss verschlüsselt, und zusätzliche Metadaten müssen formatiert und hochgeladen werden. Dieser Aufwand variiert abhängig von der Menge der zu verschlüsselnden Daten. Es empfiehlt sich, dass Kunden ihre Anwendungen während der Entwicklung immer hinsichtlich der Leistung testen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Herunterladen der [Azure Storage-Clientbibliothek für das Java-PyPi-Paket](https://pypi.python.org/pypi/azure-storage)
-* Herunterladen der [Azure Storage-Clientbibliothek für Python-Quellcode aus GitHub](https://github.com/Azure/azure-storage-python)
+
+- Herunterladen der [Azure Storage-Clientbibliothek für das Java-PyPi-Paket](https://pypi.python.org/pypi/azure-storage)
+- Herunterladen der [Azure Storage-Clientbibliothek für Python-Quellcode aus GitHub](https://github.com/Azure/azure-storage-python)

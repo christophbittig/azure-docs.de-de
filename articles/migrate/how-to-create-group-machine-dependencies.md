@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 235dc8fa484212a8322b24d32f7516af5441978a
-ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+ms.openlocfilehash: 757a10473c2f6776ef3a84310b42209ddd12ed45
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114652922"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643648"
 ---
 # <a name="set-up-dependency-visualization"></a>Einrichten der Abhängigkeitsvisualisierung
 
@@ -96,18 +96,20 @@ Sie können den Agent über die Befehlszeile oder mithilfe einer automatisierten
 So installieren Sie den MMA auf einem Linux-Server:
 
 1. Übertragen Sie das entsprechende Paket (x86 oder x64) mithilfe von scp/sftp auf Ihren Linux-Computer.
+
 2. Installieren Sie das Bundle mit dem Argument „--install“.
 
-    ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
+   `sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>`
 
 [Erfahren Sie mehr](../azure-monitor/agents/agents-overview.md#supported-operating-systems) über die Liste der Unterstützungen durch den MMA für Linux-Betriebssysteme. 
 
 ## <a name="install-the-dependency-agent"></a>Installieren des Abhängigkeits-Agents
 
 1. Doppelklicken Sie zum Installieren des Abhängigkeits-Agents auf einem Windows-Server auf die Setupdatei, und befolgen Sie die Schritte im Assistenten.
+
 2. Installieren Sie den Abhängigkeits-Agent auf einem Linux-Server als „root“, indem Sie den folgenden Befehl verwenden:
 
-    ```sh InstallDependencyAgent-Linux64.bin```
+   `sh InstallDependencyAgent-Linux64.bin`
 
 - [Erfahren Sie mehr](../azure-monitor/vm/vminsights-enable-hybrid.md#dependency-agent) darüber, wie Sie den Dependency-Agent mithilfe von Skripts installieren können.
 - [Erfahren Sie mehr](../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems) über die vom Abhängigkeits-Agent unterstützten Betriebssysteme.

@@ -8,16 +8,16 @@ ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 352497f0f4d23250abe9f84121f358589664002b
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: c1171ada070131477c06292628da6eca9ee9c2ec
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502911"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128590986"
 ---
 # <a name="upload-files-to-azure-blob-storage-by-using-azcopy"></a>Hochladen von Dateien in Azure Blob Storage mithilfe von AzCopy
 
-Mit dem Befehlszeilenprogramm AzCopy v10 können Sie Dateien und Verzeichnisse in Blob Storage hochladen. 
+Mit dem Befehlszeilenprogramm AzCopy v10 können Sie Dateien und Verzeichnisse in Blob Storage hochladen.
 
 Beispiele für andere Arten von Aufgaben, z. B. das Herunterladen von Dateien, das Synchronisieren mit Blob Storage oder das Kopieren von Blobs zwischen Konten, finden Sie unter den Links im Abschnitt [Nächste Schritte](#next-steps) dieses Artikels.
 
@@ -25,7 +25,7 @@ Beispiele für andere Arten von Aufgaben, z. B. das Herunterladen von Dateien, 
 
 Lesen Sie den Artikel [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md), um AzCopy herunterzuladen und zu erfahren, wie Sie dem Speicherdienst Autorisierungsanmeldeinformationen bereitstellen können.
 
-> [!NOTE] 
+> [!NOTE]
 > In den Beispielen in diesem Artikel wird davon ausgegangen, dass Sie Anmeldeinformationen für Autorisierung mithilfe von Azure Active Directory (Azure AD) bereitgestellt haben.
 >
 > Wenn Sie lieber ein SAS-Token für die Autorisierung des Zugriffs auf Blobdaten verwenden möchten, können Sie dieses Token in jedem AzCopy-Befehl an die Ressourcen-URL anfügen. Beispiel: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.
@@ -84,7 +84,7 @@ Sie können eine Datei auch mit einem Platzhaltersymbol (*) an einer beliebigen 
 
 ## <a name="upload-a-directory"></a>Hochladen eines Verzeichnisses
 
-Laden Sie ein Verzeichnis mithilfe des Befehls [azcopy copy](storage-ref-azcopy-copy.md) hoch. 
+Laden Sie ein Verzeichnis mithilfe des Befehls [azcopy copy](storage-ref-azcopy-copy.md) hoch.
 
 Dieses Beispiel kopiert ein Verzeichnis (sowie alle in diesem Verzeichnis enthaltenen Dateien) in einen Blobcontainer. Das Resultat ist ein gleichnamiges Verzeichnis im Container.
 
@@ -132,7 +132,7 @@ Laden Sie den Inhalt eines Verzeichnisses mithilfe des Befehls [azcopy copy](sto
 
 **Syntax**
 
-`azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>'` 
+`azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>'`
 
 **Beispiel**
 
@@ -159,9 +159,9 @@ Sie können bestimmte Dateien mithilfe von vollständigen Dateinamen, partiellen
 
 Verwenden Sie den Befehl [azcopy copy](storage-ref-azcopy-copy.md) mit der Option `--include-path`. Trennen Sie einzelne Dateinamen durch ein Semikolon (`;`).
 
-**Syntax** 
+**Syntax**
 
-`azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --include-path <semicolon-separated-file-list>` 
+`azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --include-path <semicolon-separated-file-list>`
 
 **Beispiel**
 
@@ -181,11 +181,11 @@ Mit der Option `--exclude-path` können Sie auch Dateien ausschließen. Weitere 
 
 ### <a name="use-wildcard-characters"></a>Verwenden von Platzhalterzeichen
 
-Verwenden Sie den Befehl [azcopy copy](storage-ref-azcopy-copy.md) mit der Option `--include-pattern`. Geben Sie Namen mithilfe von Platzhalterzeichen teilweise an. Trennen Sie die Namen durch Semikolons (`;`). 
+Verwenden Sie den Befehl [azcopy copy](storage-ref-azcopy-copy.md) mit der Option `--include-pattern`. Geben Sie Namen mithilfe von Platzhalterzeichen teilweise an. Trennen Sie die Namen durch Semikolons (`;`).
 
 **Syntax**
 
-`azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` 
+`azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>`
 
 **Beispiel**
 
@@ -203,15 +203,15 @@ Mit der Option `--exclude-pattern` können Sie auch Dateien ausschließen. Weite
 
 Die Optionen `--include-pattern` und `--exclude-pattern` gelten nur für Dateinamen und nicht für den Pfad.  Wenn Sie alle Textdateien in einer Verzeichnisstruktur kopieren möchten, verwenden Sie die Option `–recursive`, um die gesamte Verzeichnisstruktur abzurufen. Verwenden Sie dann `–include-pattern`, und geben Sie `*.txt` an, um alle Textdateien abzurufen.
 
-### <a name="upload-files-that-were-modified-before-or-after-a-date-and-time"></a>Hochladen von Dateien, die vor oder nach einem bestimmten Datum und einer bestimmten Uhrzeit geändert wurden 
+### <a name="upload-files-that-were-modified-before-or-after-a-date-and-time"></a>Hochladen von Dateien, die vor oder nach einem bestimmten Datum und einer bestimmten Uhrzeit geändert wurden
 
-Verwenden Sie den Befehl [azcopy copy](storage-ref-azcopy-copy.md) mit der Option `--include-before` oder `--include-after`. Geben Sie ein Datum und eine Uhrzeit im ISO 8601-Format an (z. B. `2020-08-19T15:04:00Z`). 
+Verwenden Sie den Befehl [azcopy copy](storage-ref-azcopy-copy.md) mit der Option `--include-before` oder `--include-after`. Geben Sie ein Datum und eine Uhrzeit im ISO 8601-Format an (z. B. `2020-08-19T15:04:00Z`).
 
 In den folgenden Beispielen werden Dateien hochgeladen, die am oder nach dem angegebenen Datum geändert wurden.
 
 **Syntax**
 
-`azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>'  --include-after <Date-Time-in-ISO-8601-format>` 
+`azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>'  --include-after <Date-Time-in-ISO-8601-format>`
 
 **Beispiel**
 
@@ -229,11 +229,11 @@ Ausführliche Informationen finden Sie in den [azcopy copy](storage-ref-azcopy-c
 
 ## <a name="upload-with-index-tags"></a>Hochladen mit Indextags
 
-Sie können eine Datei hochladen und dem Zielblob [Blobindextags (Vorschau)](../blobs/storage-manage-find-blobs.md) hinzufügen.  
+Sie können eine Datei hochladen und dem Zielblob [Blobindextags (Vorschau)](../blobs/storage-manage-find-blobs.md) hinzufügen.
 
 Wenn Sie Azure AD-Autorisierung verwenden, muss Ihrem Sicherheitsprinzipal die Rolle [Besitzer von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) zugewiesen werden, oder ihm muss über eine benutzerdefinierte Azure-Rolle die Berechtigung für `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [Vorgänge für Azure-Ressourcenanbieter](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) erteilt werden. Wenn Sie ein SAS-Token (Shared Access Signature) verwenden, muss es über die SAS-Berechtigung `t` den Zugriff auf die Blobtags ermöglichen.
 
-Verwenden Sie zum Hinzufügen von Tags die Option `--blob-tags` zusammen mit einem URL-codierten Schlüssel-Wert-Paar. Wenn Sie beispielsweise den Schlüssel `my tag` und den Wert `my tag value` hinzufügen möchten, würden Sie dem Zielparameter `--blob-tags='my%20tag=my%20tag%20value'` hinzufügen. 
+Verwenden Sie zum Hinzufügen von Tags die Option `--blob-tags` zusammen mit einem URL-codierten Schlüssel-Wert-Paar. Wenn Sie beispielsweise den Schlüssel `my tag` und den Wert `my tag value` hinzufügen möchten, würden Sie dem Zielparameter `--blob-tags='my%20tag=my%20tag%20value'` hinzufügen.
 
 Trennen Sie mehrere Indextags durch ein kaufmännisches Und-Zeichen (`&`).  Wenn Sie beispielsweise den Schlüssel `my second tag` und den Wert `my second tag value` hinzufügen möchten, würde die gesamte Optionszeichenfolge wie folgt lauten: `--blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'`.
 
@@ -290,4 +290,4 @@ Lesen Sie diese Artikel, um Einstellungen zu konfigurieren, die Leistung zu opti
 
 - [AzCopy v10-Konfigurationseinstellungen (Azure Storage)](storage-ref-azcopy-configuration-settings.md)
 - [Optimieren der Leistung von AzCopy mit Azure Storage](storage-use-azcopy-optimize.md)
-- [Ermitteln von Fehlern und Fortsetzen von Aufträgen mithilfe von Protokoll- und Plandateien in AzCopy](storage-use-azcopy-configure.md)
+- [Konfigurieren, Optimieren und Problembehandlung in AzCopy](storage-use-azcopy-configure.md)

@@ -8,12 +8,12 @@ author: trkeya
 ms.author: trkeya
 ms.date: 07/09/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: ae8cdb3b6f470d8dd9f1500d5dd0af51d594b8e8
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: d13b76e406398dcad37abb170b1f43439ab8bad4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123432286"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662899"
 ---
 # <a name="update-existing-offers-in-the-commercial-marketplace"></a>Aktualisieren bestehender Angebote im kommerziellen Marketplace
 
@@ -32,12 +32,12 @@ Gehen Sie wie folgt vor, um ein Angebot zu aktualisieren, das erfolgreich im Zus
     - **Unvollständige Informationen**: Die im Abschnitt erfolgten Aktualisierungen haben zu Fehlern geführt, die behoben werden müssen, oder erfordern eine Ergänzung der Informationen.
 2. Wählen Sie **Veröffentlichen** aus, um das aktualisierte Angebot zur Veröffentlichung zu übermitteln. Das Angebot durchläuft dann die üblichen [Schritte für die Validierung und Veröffentlichung](review-publish-offer.md#validation-and-publishing-steps).
 
+> [!IMPORTANT]
+> Sie müssen die Vorschau Ihres Angebots überprüfen, sobald diese verfügbar ist, und **Live schalten** auswählen, um Ihr aktualisiertes Angebot für Ihre Zielgruppe (öffentlich oder privat) zu veröffentlichen.
+
 ## <a name="changing-offer-type"></a>Ändern des Angebotstyps
 
 [!INCLUDE [change-offer-type](includes/change-offer-type.md)]
-
-> [!IMPORTANT]
-> Sie müssen die Vorschau Ihres Angebots überprüfen, sobald diese verfügbar ist, und **Live schalten** auswählen, um Ihr aktualisiertes Angebot für Ihre Zielgruppe (öffentlich oder privat) zu veröffentlichen.
 
 ## <a name="add-a-plan-to-an-existing-offer"></a>Hinzufügen eines Plans zu einem bestehenden Angebot
 

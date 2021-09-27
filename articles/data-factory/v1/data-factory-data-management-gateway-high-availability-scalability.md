@@ -3,16 +3,17 @@ title: Hochverfügbarkeit mit Datenverwaltungsgateway in Azure Data Factory
 description: In diesem Artikel wird beschrieben, wie Sie ein Datenverwaltungsgateway aufskalieren können, indem Sie mehr Knoten hinzufügen. Außerdem erfahren Sie, wie Sie das Hochskalieren durchführen, indem Sie die Anzahl von gleichzeitigen Aufträgen erhöhen, die für einen Knoten ausgeführt werden können.
 author: nabhishek
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: a76479a358366591d1c4edef0755dd26ce23cd81
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 5274c7fe926b1766d0b7767b2b44718a33139b97
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112289871"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658524"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Datenverwaltungsgateway – Hochverfügbarkeit und Skalierbarkeit (Vorschauversion)
 > [!NOTE]
@@ -40,7 +41,7 @@ Mit dem Azure-Portal können Sie den Status dieser Knoten überwachen, um leicht
 ## <a name="architecture"></a>Aufbau 
 Das folgende Diagramm enthält die Architekturübersicht zur Skalierbarkeits- und Verfügbarkeitsfunktion des Datenverwaltungsgateways: 
 
-![Datenverwaltungsgateway – Hochverfügbarkeit und Skalierbarkeit](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-high-availability-and-scalability.png)
+:::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-high-availability-and-scalability.png" alt-text="Datenverwaltungsgateway – Hochverfügbarkeit und Skalierbarkeit":::
 
 Ein **logisches Gateway** ist das Gateway, das Sie einer Data Factory im Azure-Portal hinzufügen. Bisher konnten Sie nur einen lokalen Windows-Computer mit installiertem Datenverwaltungsgateway einem logischen Gateway zuordnen. Dieser lokale Gatewaycomputer wird als Knoten bezeichnet. Jetzt können Sie einem logischen Gateway bis zu **vier physische Knoten** zuordnen. Ein logisches Gateway, das über mehrere Knoten verfügt, wird als **Gateway mit mehreren Knoten** bezeichnet.  
 
@@ -61,31 +62,31 @@ In diesem Abschnitt wird davon ausgegangen, dass Sie die beiden folgenden Artike
 
 1. Aktivieren Sie in der [exemplarischen Vorgehensweise](data-factory-move-data-between-onprem-and-cloud.md#create-gateway) beim Erstellen eines logischen Gateways das Feature **Hochverfügbarkeit und Skalierbarkeit**. 
 
-    ![Datenverwaltungsgateway – Aktivieren der Hochverfügbarkeit und Skalierbarkeit](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-enable-high-availability-scalability.png)
+    :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-enable-high-availability-scalability.png" alt-text="Datenverwaltungsgateway – Aktivieren der Hochverfügbarkeit und Skalierbarkeit":::
 2. Verwenden Sie auf der Seite **Konfigurieren** entweder den Link **Express-Setup** oder **Manuelles Setup**, um auf dem ersten Knoten (lokaler Windows-Computer) ein Gateway zu installieren.
 
-    ![Datenverwaltungsgateway – Express-Setup oder manuelles Setup](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-express-manual-setup.png)
+    :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-express-manual-setup.png" alt-text="Datenverwaltungsgateway – Express-Setup oder manuelles Setup":::
 
     > [!NOTE]
     > Bei Verwendung der Option „Express-Setup“ wird die Kommunikation von Knoten zu Knoten ohne Verschlüsselung durchgeführt. Der Knotenname entspricht dem Computernamen. Verwenden Sie das manuelle Setup, wenn die Kommunikation von Knoten zu Knoten verschlüsselt werden muss oder wenn Sie einen Knotennamen Ihrer Wahl angeben möchten. Knotennamen können später nicht mehr geändert werden.
 3. Bei Auswahl von **Express-Setup**:
     1. Nach der erfolgreichen Installation des Gateways wird die folgende Meldung angezeigt:
 
-        ![Datenverwaltungsgateway – Express-Setup erfolgreich](media/data-factory-data-management-gateway-high-availability-scalability/express-setup-success.png)
+        :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/express-setup-success.png" alt-text="Datenverwaltungsgateway – Express-Setup erfolgreich":::
     2. Starten Sie für das Gateway den Konfigurations-Manager für die Datenverwaltung, indem Sie [diese Anleitung](data-factory-data-management-gateway.md#configuration-manager) befolgen. Folgendes wird angezeigt: Gatewayname, Knotenname, Status usw.
 
-        ![Screenshot: Benutzeroberfläche mit dem Gatewaynamen, dem Namen des Knoten und dem Status](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png)
+        :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png" alt-text="Screenshot: Benutzeroberfläche mit dem Gatewaynamen, dem Namen des Knoten und dem Status":::
 4. Bei Auswahl von **Manuelles Setup**:
     1. Laden Sie das Installationspaket über das Microsoft Download Center herunter, und führen Sie es aus, um das Gateway auf Ihrem Computer zu installieren.
     2. Verwenden Sie den **Authentifizierungsschlüssel** von der Seite **Konfigurieren**, um das Gateway zu registrieren.
     
-        ![Screenshot: Benutzeroberfläche, in der der Authentifizierungsschlüssel verwendet wird](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-authentication-key.png)
+        :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-authentication-key.png" alt-text="Screenshot: Benutzeroberfläche, in der der Authentifizierungsschlüssel verwendet wird":::
     3. Auf der Seite **Neuer Gatewayknoten** können Sie einen benutzerdefinierten **Namen** für den Gatewayknoten angeben. Standardmäßig entspricht der Knotenname dem Computernamen.    
 
-        ![Datenverwaltungsgateway – Name angeben](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-name.png)
+        :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-name.png" alt-text="Datenverwaltungsgateway – Name angeben":::
     4. Auf der nächsten Seite können Sie auswählen, **ob Sie die Verschlüsselung für die Kommunikation von Knoten zu Knoten aktivieren möchten**. Klicken Sie auf **Überspringen**, um die Verschlüsselung zu deaktivieren (Standardeinstellung).
 
-        ![Datenverwaltungsgateway – Verschlüsselung aktivieren](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-node-encryption.png)  
+        :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-node-encryption.png" alt-text="Datenverwaltungsgateway – Verschlüsselung aktivieren":::  
     
         > [!NOTE]
         > Das Ändern des Verschlüsselungsmodus wird nur unterstützt, wenn Sie auf dem logischen Gateway über einen einzelnen Gatewayknoten verfügen. Führen Sie die folgenden Schritte aus, um den Verschlüsselungsmodus zu ändern, wenn ein Gateway mehrere Knoten hat: Löschen Sie alle Knoten bis auf einen, ändern Sie den Verschlüsselungsmodus, und fügen Sie die Knoten dann wieder hinzu.
@@ -93,35 +94,35 @@ In diesem Abschnitt wird davon ausgegangen, dass Sie die beiden folgenden Artike
         > Der Abschnitt [TLS/SSL-Zertifikatanforderungen](#tlsssl-certificate-requirements) enthält eine Liste mit Anforderungen zur Verwendung eines TLS/SSL-Zertifikats. 
     5. Klicken Sie auf „Konfigurations-Manager starten“, nachdem das Gateway erfolgreich installiert wurde:
     
-        ![Manuelles Setup – Konfigurations-Manager starten](media/data-factory-data-management-gateway-high-availability-scalability/manual-setup-launch-configuration-manager.png)     
+        :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/manual-setup-launch-configuration-manager.png" alt-text="Manuelles Setup – Konfigurations-Manager starten":::     
     6. Der Konfigurations-Manager für das Datenverwaltungsgateway auf dem Knoten (lokaler Windows-Computer) mit dem Verbindungsstatus, **Gatewaynamen** und **Knotennamen** wird angezeigt.  
 
-        ![Datenverwaltungsgateway – Installation erfolgreich](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png)
+        :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png" alt-text="Datenverwaltungsgateway – Installation erfolgreich":::
 
         > [!NOTE]
         > Wenn Sie das Gateway auf einer Azure-VM bereitstellen, können Sie [diese Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.datafactory/mutiple-vms-with-data-management-gateway) verwenden. Mit diesem Skript wird ein logisches Gateway erstellt, und es werden VMs mit installierter Datenverwaltungsgateway-Software eingerichtet und für das logische Gateway registriert. 
 6. Starten Sie im Azure-Portal die Seite **Gateway**: 
     1. Klicken Sie auf der Data Factory-Startseite im Portal auf **Verknüpfte Dienste**.
     
-        ![Screenshot: Kachel „Verknüpfte Dienste“ hervorgehoben](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-home-page.png)
+        :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-home-page.png" alt-text="Screenshot: Kachel „Verknüpfte Dienste“ hervorgehoben":::
     2. Wählen Sie das **Gateway** aus, um die Seite **Gateway** anzuzeigen:
     
-        ![Data Factory-Startseite](media/data-factory-data-management-gateway-high-availability-scalability/linked-services-gateway.png)
+        :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/linked-services-gateway.png" alt-text="Data Factory-Startseite":::
     4. Die Seite **Gateway** wird angezeigt:   
 
-        ![Gateway mit Ansicht für einzelnen Knoten](media/data-factory-data-management-gateway-high-availability-scalability/gateway-first-node-portal-view.png) 
+        :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/gateway-first-node-portal-view.png" alt-text="Gateway mit Ansicht für einzelnen Knoten"::: 
 7. Klicken Sie in der Symbolleiste auf **Knoten hinzufügen**, um dem logischen Gateway einen Knoten hinzuzufügen. Wenn Sie die Verwendung des Express-Setups planen, sollten Sie diesen Schritt auf dem lokalen Computer ausführen, der dem Gateway als Knoten hinzugefügt werden soll. 
 
-    ![Datenverwaltungsgateway – Menü „Knoten hinzufügen“](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-add-node-menu.png)
+    :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-add-node-menu.png" alt-text="Datenverwaltungsgateway – Menü „Knoten hinzufügen“":::
 8. Die Schritte ähneln hierbei der Einrichtung des ersten Knotens. Auf der Benutzeroberfläche des Konfigurations-Managers können Sie den Knotennamen einrichten, wenn Sie die Option für die manuelle Installation wählen: 
 
-    ![Konfigurations-Manager – Installation des zweiten Gateways](media/data-factory-data-management-gateway-high-availability-scalability/install-second-gateway.png)
+    :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/install-second-gateway.png" alt-text="Konfigurations-Manager – Installation des zweiten Gateways":::
 9. Nachdem die Installation des Gateways auf dem Knoten erfolgreich abgeschlossen wurde, wird im Konfigurations-Manager-Tool Folgendes angezeigt:  
 
-    ![Konfigurations-Manager – Installation des zweiten Gateways erfolgreich](media/data-factory-data-management-gateway-high-availability-scalability/second-gateway-installation-successful.png)
+    :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/second-gateway-installation-successful.png" alt-text="Konfigurations-Manager – Installation des zweiten Gateways erfolgreich":::
 10. Wenn Sie die Seite **Gateway** im Portal öffnen, werden jetzt zwei Gatewayknoten angezeigt: 
 
-    ![Gateway mit zwei Knoten im Portal](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring.png)
+    :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring.png" alt-text="Gateway mit zwei Knoten im Portal":::
 11. Klicken Sie zum Löschen eines Gatewayknotens in der Symbolleiste auf **Knoten löschen**, wählen Sie den zu löschenden Knoten aus, und klicken Sie dann in der Symbolleiste auf **Löschen**. Mit dieser Aktion wird der ausgewählte Knoten aus der Gruppe gelöscht. Beachten Sie Folgendes: Mit dieser Aktion wird die Datenverwaltungsgateway-Software nicht vom Knoten (lokaler Windows-Computer) deinstalliert. Verwenden Sie auf dem lokalen Computer in der Systemsteuerung die Option **Programme hinzufügen oder entfernen**, um das Gateway zu deinstallieren. Wenn Sie das Gateway vom Knoten deinstallieren, wird es im Portal automatisch gelöscht.   
 
 ## <a name="upgrade-an-existing-gateway"></a>Aktualisieren eines vorhandenen Gateways
@@ -130,18 +131,18 @@ Sie können ein vorhandenes Gateway aktualisieren, um das Feature für Hochverf�
 1. Aktualisieren Sie das Gateway auf dem lokalen Computer auf die aktuelle Version, indem Sie über das [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717) ein MSI-Setuppaket herunterladen und ausführen. Der Abschnitt [Installation](data-factory-data-management-gateway.md#installation) enthält entsprechende Details hierzu.  
 2. Navigieren Sie zum Azure-Portal. Starten Sie die **Data Factory-Seite** für Ihre Data Factory. Klicken Sie auf die Kachel „Verknüpfte Dienste“, um die **Seite „Verknüpfte Dienste“** zu starten. Wählen Sie das Gateway, um die **Seite „Gateway“** zu starten. Klicken Sie wie hier gezeigt auf **Vorschaufeature**, und aktivieren Sie die Option: 
 
-    ![Datenverwaltungsgateway – Vorschaufeature aktivieren](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-existing-gateway-enable-high-availability.png)   
+    :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-existing-gateway-enable-high-availability.png" alt-text="Datenverwaltungsgateway – Vorschaufeature aktivieren":::   
 2. Schließen Sie alle Seiten, nachdem Sie das Vorschaufeature im Portal aktiviert haben. Öffnen Sie die **Seite „Gateway“** erneut, um die neue Benutzeroberfläche der Vorschauversion anzuzeigen.
  
-    ![Datenverwaltungsgateway – Vorschaufeature aktivieren – Erfolgreich](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-preview-success.png)
+    :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-preview-success.png" alt-text="Datenverwaltungsgateway – Vorschaufeature aktivieren – Erfolgreich":::
 
-    ![Datenverwaltungsgateway – Benutzeroberfläche der Vorschauversion](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-preview.png)
+    :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-preview.png" alt-text="Datenverwaltungsgateway – Benutzeroberfläche der Vorschauversion":::
 
     > [!NOTE]
     > Beim Upgradevorgang ist der Name des ersten Knotens der Name des Computers. 
 3. Fügen Sie nun einen Knoten hinzu. Klicken Sie auf der Seite **Gateway** auf **Knoten hinzufügen**.  
 
-    ![Datenverwaltungsgateway – Menü „Knoten hinzufügen“](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-add-node-menu.png)
+    :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-add-node-menu.png" alt-text="Datenverwaltungsgateway – Menü „Knoten hinzufügen“":::
 
     Befolgen Sie die Anleitung aus dem vorherigen Abschnitt, um den Knoten einzurichten. 
 
@@ -174,7 +175,7 @@ Das Aktivieren der Verschlüsselung kann einen gewissen Aufwand für Ihre Infras
 ### <a name="multi-node-gateway-monitoring"></a>Überwachung eines Gateways mit mehreren Knoten
 Im Azure-Portal können Sie auf jedem Knoten nahezu in Echtzeit Momentaufnahmen der Ressourcenverwendung (CPU, Arbeitsspeicher, Netzwerk (Eingang/Ausgang) usw.) sowie die Status der Gatewayknoten anzeigen. 
 
-![Datenverwaltungsgateway – Überwachung mehrerer Knoten](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring.png)
+:::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring.png" alt-text="Datenverwaltungsgateway – Überwachung mehrerer Knoten":::
 
 Sie können auf der Seite **Gateway** die Option **Erweiterte Einstellungen** aktivieren, um beispielsweise die folgenden erweiterten Metriken anzuzeigen: **Netzwerk** (Eingang/Ausgang), **Status von Rollen und Anmeldeinformationen**, die beim Debuggen von Gatewayproblemen hilfreich ist, und **Gleichzeitige Aufträge** (ausgeführt/Limit), die bei der Leistungsoptimierung modifiziert bzw. geändert werden kann. Die folgende Tabelle enthält Beschreibungen von Spalten in der Liste **Gatewayknoten**:  
 
@@ -189,7 +190,7 @@ Netzwerk (Eingang/Ausgang) | Netzwerkauslastung eines Gatewayknotens. Dieser Wer
 Gleichzeitige Aufträge (ausgeführt/Limit) | Anzahl von Aufträgen oder Aufgaben, die auf den einzelnen Knoten ausgeführt werden. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. Mit „Limit“ wird angegeben, wie viele Aufträge für einen Knoten jeweils gleichzeitig ausgeführt werden können. Dieser Wert wird basierend auf der Größe des Computers definiert. Sie können das Limit erhöhen, um die Ausführung von gleichzeitigen Aufträgen in erweiterten Szenarien hochzuskalieren, in denen CPU, Arbeitsspeicher und Netzwerk nicht voll ausgelastet sind, aber Zeitüberschreitungen für Aktivitäten auftreten. Diese Funktion ist auch für ein Gateway mit nur einem Knoten verfügbar (auch wenn die Skalierbarkeits- und Verfügbarkeitsfunktion nicht aktiviert ist). Weitere Informationen finden Sie im Abschnitt [Aspekte der Skalierung](#scale-considerations). 
 Role | Es gibt zwei Arten von Rollen: „Verteiler“ und „Worker“. Alle Knoten sind Worker. Dies bedeutet, dass alle Knoten zum Ausführen von Aufträgen verwendet werden können. Es ist nur ein Verteilerknoten vorhanden, der zum Durchführen der Pullvorgänge für Aufgaben bzw. Aufträge von Clouddiensten und Verteilen an die einzelnen Workerknoten (einschließlich sich selbst) genutzt wird. 
 
-![Datenverwaltungsgateway – Erweiterte Überwachung mehrerer Knoten](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring-advanced.png)
+:::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring-advanced.png" alt-text="Datenverwaltungsgateway – Erweiterte Überwachung mehrerer Knoten":::
 
 ### <a name="gateway-status"></a>Gatewaystatus
 
@@ -216,9 +217,9 @@ Eingeschränkt | Nicht alle Knoten dieses Gateways befinden sich in einem fehler
 ### <a name="pipeline-activities-monitoring"></a>Pipeline-/Aktivitätsüberwachung
 Das Azure-Portal enthält einen Bereich für die Pipelineüberwachung mit präzisen Knotenebenendetails. Es wird beispielsweise angezeigt, welche Aktivitäten auf welchem Knoten ausgeführt wurden. Diese Informationen können für das Verständnis von Leistungsproblemen, z.B. aufgrund der Netzwerkdrosselung, auf einem bestimmten Knoten hilfreich sein. 
 
-![Datenverwaltungsgateway – Überwachung mehrerer Knoten für Pipelines](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring-pipelines.png)
+:::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring-pipelines.png" alt-text="Datenverwaltungsgateway – Überwachung mehrerer Knoten für Pipelines":::
 
-![Datenverwaltungsgateway – Pipelinedetails](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-pipeline-details.png)
+:::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-pipeline-details.png" alt-text="Datenverwaltungsgateway – Pipelinedetails":::
 
 ## <a name="scale-considerations"></a>Aspekte der Skalierung
 
@@ -228,7 +229,7 @@ Wenn **nur wenig Arbeitsspeicher verfügbar** und die **CPU-Auslastung hoch ist*
 ### <a name="scale-up"></a>Hochskalieren
 Wenn die Auslastung des verfügbaren Arbeitsspeichers und der CPU nicht hoch ist, aber die Kapazität im Leerlauf den Wert „0“ hat, sollten Sie hochskalieren. Erhöhen Sie hierfür die Anzahl von gleichzeitigen Aufträgen, die auf einem Knoten ausgeführt werden können. Es kann auch hilfreich sein, das Hochskalieren durchzuführen, wenn für Aktivitäten eine Zeitüberschreitung auftritt, weil das Gateway überlastet ist. Wie in der folgenden Abbildung gezeigt, können Sie die maximale Kapazität für einen Knoten erhöhen. Es wird empfohlen, den Wert erst einmal zu verdoppeln.  
 
-![Datenverwaltungsgateway – Aspekte der Skalierung](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-scale-considerations.png)
+:::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-scale-considerations.png" alt-text="Datenverwaltungsgateway – Aspekte der Skalierung":::
 
 
 ## <a name="known-issuesbreaking-changes"></a>Bekannte Probleme/Wichtige Änderungen

@@ -3,17 +3,17 @@ title: Cacherichtlinien in Azure API Management | Microsoft-Dokumentation
 description: Erfahren Sie mehr über die Cacherichtlinien, die für die Verwendung in Azure API Management verfügbar sind. Sehen Sie sich Beispiele an, und zeigen Sie zusätzliche verfügbare Ressourcen an.
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 ms.service: api-management
 ms.topic: article
 ms.date: 03/08/2021
-ms.author: apimpm
-ms.openlocfilehash: 4ff1e12aa6748ba6aa9b2d5465bbfa6603f67bbf
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.author: danlep
+ms.openlocfilehash: 014891a9ed16e075b8f21c0a177a38d416f2f3a9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113106495"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629709"
 ---
 # <a name="api-management-caching-policies"></a>Cacherichtlinien für API Management
 
@@ -181,7 +181,7 @@ Weitere Informationen finden Sie unter [Richtlinienausdrücke](api-management-po
 
 ### <a name="elements"></a>Elemente
 
-|Name|BESCHREIBUNG|Erforderlich|
+|Name|Beschreibung|Erforderlich|
 |----------|-----------------|--------------|
 |cache-store|Stammelement|Ja|
 
@@ -225,13 +225,13 @@ Weitere Informationen und Beispiele zu dieser Richtlinie finden Sie unter [Benut
 
 ### <a name="elements"></a>Elemente
 
-|Name|BESCHREIBUNG|Erforderlich|
+|Name|Beschreibung|Erforderlich|
 |----------|-----------------|--------------|
 |cache-lookup-value|Stammelement|Ja|
 
 ### <a name="attributes"></a>Attributes
 
-| Name             | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                 | Erforderlich | Standard           |
+| Name             | Beschreibung                                                                                                                                                                                                                                                                                                                                                 | Erforderlich | Standard           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
 | caching-type | Wählen Sie aus den folgenden Attributwerten:<br />- `internal` zur Verwendung des integrierten API Management-Caches,<br />- `external` zur Verwendung des externen Caches (siehe [Verwenden eines externen Azure Caches für Redis in Azure API Management](api-management-howto-cache-external.md)),<br />- `prefer-external` zur Verwendung des externen Caches (sofern konfiguriert); andernfalls wird der interne Cache verwendet. | Nein       | `prefer-external` |
 | default-value    | Ein Wert, der der Variablen zugewiesen wird, wenn die Cacheschlüsselsuche zu keinem Ergebnis führt. Wenn dieses Attribut nicht angegeben wird, wird `null` zugewiesen.                                                                                                                                                                                                           | Nein       | `null`            |

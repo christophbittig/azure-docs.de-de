@@ -6,19 +6,19 @@ ms.author: sunaray
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/18/2021
-ms.openlocfilehash: cbabc94f1aa8a2dcd8d8022ab81b7d772006b574
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 0197d3c4a76158663d721604cdd8e033b3d78153
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114203473"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589642"
 ---
 # <a name="tutorial-migrate-azure-database-for-mysql--single-server-to-azure-database-for-mysql--flexible-server-with-minimal-downtime"></a>Tutorial: Migrieren von Azure Database for MySQL Single Server zu Azure Database for MySQL Flexible Server mit minimaler Downtime
 
 Sie können eine Instanz von Azure Database for MySQL Single Server zu Azure Database for MySQL Flexible Server mit minimaler Downtime auf Ihren Anwendungen migrieren, indem Sie eine Kombination aus Open-Source-Tools wie mydumper/myloader und der Datenreplikation nutzen.
 
 > [!NOTE]
-> Dieser Artikel enthält Verweise auf den Begriff _Slave_, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
+> Dieser Artikel enthält Verweise auf den Begriff *Slave*, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
 
 Die Datenreplikation ist ein Verfahren, bei dem basierend auf der position-Methode für binäre Protokolldateien Datenänderungen vom Quellserver auf den Zielserver repliziert werden. In diesem Szenario schreibt die MySQL-Instanz, die als Quelle fungiert (und von der die Datenbankänderungen stammen), Updates und Änderungen als „Ereignisse“ in das binäre Protokoll. Die Informationen im binären Protokoll werden je nach aufgezeichneten Datenbankänderungen in unterschiedlichen Protokollierungsformaten gespeichert. Replikate sind so konfiguriert, dass sie das binäre Protokoll aus der Quelle lesen und die Ereignisse im binären Protokoll in der lokalen Datenbank des Replikats ausführen.
 

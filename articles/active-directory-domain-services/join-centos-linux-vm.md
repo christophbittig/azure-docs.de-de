@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 06/17/2021
 ms.author: justinha
-ms.openlocfilehash: d78416308647af62bac1e44366b0ea978670889b
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: dc82c2c2793495009b9200ac0976c796ef2ccc9c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112284435"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128603750"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Einbinden eines virtuellen CentOS Linux-Computers in eine verwaltete Azure Active Directory Domain Services-Domäne
 
@@ -35,6 +35,7 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
 * Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
     * Falls Sie keine solche Domäne haben, gehen Sie wie im ersten Tutorial beschrieben vor, um eine [verwaltete Azure Active Directory Domain Services-Domäne zu erstellen und zu konfigurieren][create-azure-ad-ds-instance].
 * Ein Benutzerkonto, das Teil der verwalteten Domäne ist.
+* Eindeutige Linux-VM-Namen, die maximal 15 Zeichen umfassen. So vermeiden Sie Konflikte in Active Directory, die durch abgeschnittene Namen entstehen.
 
 ## <a name="create-and-connect-to-a-centos-linux-vm"></a>Erstellen einer CentOS Linux-VM und Herstellen einer Verbindung
 

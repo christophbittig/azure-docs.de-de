@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: b3e33fecc1df930cf4fb01808b2a8400a210fce8
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: e804168d56092b6e5451aa26c7a2106b96672865
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114707157"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128587345"
 ---
 # <a name="prepare-an-msix-image-for-azure-virtual-desktop"></a>Vorbereiten eines MSIX-Images für Azure Virtual Desktop
 
@@ -86,7 +86,7 @@ So erweitern Sie das MSIX-Image
 
     Nachdem das Entpacken abgeschlossen ist, sollte die folgende Meldung angezeigt werden:
 
-    > Die ACLs für das Paket wurden erfolgreich entpackt und angewandt: <package name>.msix
+    > Die ACLs für das Paket wurden erfolgreich entpackt und angewandt: \<package name\>.msix
 
     >[!NOTE]
     > Bei der Verwendung von Paketen aus dem Microsoft Store for Business (oder Education) in Ihrem Netzwerk oder auf Geräten, die nicht mit dem Internet verbunden sind, müssen Sie die Paketlizenzen aus dem Microsoft Store abrufen und installieren, um die Apps ausführen zu können. Informationen zum Erhalt der Lizenzen finden Sie unter [Offlineverwendung von Paketen](app-attach.md#use-packages-offline).
@@ -103,7 +103,7 @@ Nachdem Sie das MSIX-Paket erstellt haben, müssen Sie die resultierende VHD-, V
 
 Stellen Sie unserer [Azure Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) Fragen zu dieser Funktion.
 
-Sie können auch Feedback zu Azure Virtual Desktop im [Azure Virtual Desktop-Feedback-Hub](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app) bereitstellen.
+Sie können Ihr Feedback bezüglich Azure Virtual Desktop auch im [Azure Virtual Desktop-Feedback-Hub](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app) hochladen.
 
 Folgende Artikel sind eventuell hilfreich:
 

@@ -8,14 +8,14 @@ editor: ''
 ms.service: api-management
 ms.topic: article
 ms.date: 01/29/2021
-ms.author: apimpm
+ms.author: danlep
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3dda6f18c2bf92b537c2f4be1c6a0a3b70cdc28a
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 01a7a7c34b7253acdcf046c47643d42dcdee2cb6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107815880"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128666759"
 ---
 # <a name="set-up-a-service-fabric-backend-in-api-management-using-the-azure-portal"></a>Einrichten eines Service Fabric-Back-Ends in API Management über das Azure-Portal
 

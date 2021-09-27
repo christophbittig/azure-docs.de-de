@@ -14,12 +14,12 @@ ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6754ac10f614082f09a460b55dc712f5bc0c27be
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 2b4db3701ee5d66616d6e3888a12cb73232f62b5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110702625"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128603085"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>Diagnoseprotokolle: Azure Content Delivery Network
 
@@ -196,12 +196,11 @@ Informationen zum Herunterladen des Tools finden Sie unter [Azure Storage-Explor
 6.  Jede *PT1H.json*-Datei des Blobs steht für die Analyseprotokolle für eine Stunde eines bestimmten CDN-Endpunkts oder dessen benutzerdefinierter Domäne.
 7.  Das Schema der Inhalte dieser JSON-Datei wird im Abschnitt „Schema der Basisanalyseprotokolle“ beschrieben.
 
-
 #### <a name="blob-path-format"></a>Blobpfadformat
 
-Basisanalyseprotokolle werden stündlich generiert. Die Daten werden gesammelt und als JSON-Nutzlast in einem einzelnen Azure-Blob gespeichert. Das Storage-Explorer-Tool interpretiert „/“ als Verzeichnistrennzeichen und zeigt die Hierarchie an. Der Pfad zum Azure-Blob wird angezeigt, als ob es eine hierarchische Struktur gebe, und stellt den Blobnamen dar. Für den Namen des Blobs wird die folgende Benennungskonvention verwendet:    
+Basisanalyseprotokolle werden stündlich generiert. Die Daten werden gesammelt und als JSON-Nutzlast in einem einzelnen Azure-Blob gespeichert. Das Storage-Explorer-Tool interpretiert „/“ als Verzeichnistrennzeichen und zeigt die Hierarchie an. Der Pfad zum Azure-Blob wird angezeigt, als ob es eine hierarchische Struktur gebe, und stellt den Blobnamen dar. Für den Namen des Blobs wird die folgende Benennungskonvention verwendet:
 
-```resourceId=/SUBSCRIPTIONS/{Subscription Id}/RESOURCEGROUPS/{Resource Group Name}/PROVIDERS/MICROSOFT.CDN/PROFILES/{Profile Name}/ENDPOINTS/{Endpoint Name}/ y={Year}/m={Month}/d={Day}/h={Hour}/m={Minutes}/PT1H.json```
+`resourceId=/SUBSCRIPTIONS/{Subscription Id}/RESOURCEGROUPS/{Resource Group Name}/PROVIDERS/MICROSOFT.CDN/PROFILES/{Profile Name}/ENDPOINTS/{Endpoint Name}/ y=/m=/d=/h=/m=/PT1H.json`
 
 **Beschreibung der Felder:**
 

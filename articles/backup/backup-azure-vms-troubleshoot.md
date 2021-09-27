@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Fehler beheben können, die
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 06/02/2021
-ms.openlocfilehash: 6170c6e00d232e65125963680c522610cb5239ec
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d3afc24f11400a5d2e7e099690ba9312e9b25ae7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345797"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599865"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Problembehandlung bei Sicherungsfehlern auf virtuellen Azure-Computern
 
@@ -257,7 +257,7 @@ So wird sichergestellt, dass die Momentaufnahmen nicht über den Gast, sondern �
 
 **Schritt 2:** Versuchen Sie, den Sicherungszeitplan auf einen Zeitpunkt zu ändern, zu dem die VM eine geringere Auslastung (wie z. B. weniger CPU oder IOPS) aufweist.
 
-**Schritt 3:** Versuchen Sie, [die Größe der VM zu erhöhen](../virtual-machines/windows/resize-vm.md) und den Vorgang dann erneut durchzuführen.
+**Schritt 3:** Versuchen Sie, [die Größe der VM zu erhöhen](../virtual-machines/resize-vm.md) und den Vorgang dann erneut durchzuführen.
 
 ### <a name="320001-resourcenotfound---could-not-perform-the-operation-as-vm-no-longer-exists--400094-bcmv2vmnotfound---the-virtual-machine-doesnt-exist--an-azure-virtual-machine-wasnt-found"></a>320001, ResourceNotFound: Der Vorgang konnte nicht ausgeführt werden, weil der virtuelle Computer nicht mehr vorhanden ist./400094, BCMV2VMNotFound: Der virtuelle Computer ist nicht vorhanden/Der virtuelle Azure-Computer wurde nicht gefunden.
 

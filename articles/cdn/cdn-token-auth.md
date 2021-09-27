@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mazha
-ms.openlocfilehash: 21ef06f37e6840df08b1477f9c0ff24f6e15d1a3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b28041d0bfcc60b3973e17d1883ef63be521a515
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95978035"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128613097"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>Schützen von Azure CDN-Assets mit Tokenauthentifizierung
 
@@ -70,11 +70,11 @@ Im folgenden Flussdiagramm wird veranschaulicht, wie Azure CDN eine Clientanford
 
       Das OpenSSL-Tool hat die folgende Syntax:
 
-      ```rand -hex <key length>```
+      `rand -hex <key length>`
 
       Beispiel:
 
-      ```OpenSSL> rand -hex 32``` 
+      `OpenSSL> rand -hex 32` 
 
       Erstellen Sie sowohl einen Primär- als auch einen Sicherungsschlüssel, um Downtime zu vermeiden. Ein Sicherungsschlüssel ermöglicht während der Aktualisierung des Primärschlüssels unterbrechungsfreien Zugriff auf Ihre Inhalte.
     

@@ -2,13 +2,13 @@
 title: Azure Maps als Event Grid-Quelle
 description: Beschreibt die Eigenschaften und das Schema, die für Azure Maps-Ereignisse im Azure Event Grid verfügbar sind
 ms.topic: conceptual
-ms.date: 02/11/2021
-ms.openlocfilehash: 88cf0c8274d685a45862bc7b7884b5e4a686c22d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/15/2021
+ms.openlocfilehash: 2715cd4ea67ebac0767332a90770ffae9a5d6069
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363678"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626948"
 ---
 # <a name="azure-maps-as-an-event-grid-source"></a>Azure Maps als Event Grid-Quelle
 
@@ -196,7 +196,7 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | `apiCategory` | Zeichenfolge | API-Kategorie des Ereignisses. |
 | `apiName` | Zeichenfolge | API-Name des Ereignisses. |
@@ -212,7 +212,7 @@ Das Fehlerobjekt wird zurückgegeben, wenn in der Maps-API ein Fehler auftritt. 
 
 Das ErrorDetails-Objekt wird zurückgegeben, wenn in der Maps-API ein Fehler auftritt. ErrorDetails oder das Objekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | `code` | Zeichenfolge | Der HTTP-Statuscode. |
 | `message` | Zeichenfolge | Sofern verfügbar eine lesbare Beschreibung des Fehlers. |
@@ -220,7 +220,7 @@ Das ErrorDetails-Objekt wird zurückgegeben, wenn in der Maps-API ein Fehler auf
 
 InnerError ist ein Objekt, das dienstspezifische Informationen zum Fehler enthält. Das InnerError-Objekt weist die folgenden Eigenschaften auf: 
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | `code` | Zeichenfolge | Die Fehlermeldung. |
 

@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: a0f3e3b927f5f3aed0a29473af4046fb5c09cf4f
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: a24675bb1dc0977165dfe891f36f2f83476198f7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114465071"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615128"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Arbeiten mit der vorherigen Version von Azure Migrate
 
@@ -247,7 +247,7 @@ Gehen Sie wie folgt vor, um einen Agent auf einem Linux-Computer zu installieren
 1. Übertragen Sie das entsprechende Paket (x86 oder x64) mithilfe von scp/sftp auf Ihren Linux-Computer.
 2. Installieren Sie das Bundle mit dem Argument „--install“.
 
-    ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
+    `sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>`
 
 [Erfahren Sie mehr](../azure-monitor/agents/agents-overview.md#supported-operating-systems) über die Liste der Unterstützungen durch den MMA für Linux-Betriebssysteme.
 
@@ -260,7 +260,7 @@ Bei Computern, die von System Center Operations Manager 2012 R2 oder höher übe
 1. Doppelklicken Sie zum Installieren des Abhängigkeits-Agents auf einem Windows-Computer auf die Setupdatei, und befolgen Sie die Schritte im Assistenten.
 2. Installieren Sie den Abhängigkeits-Agent auf einem Linux-Computer als „root“, indem Sie den folgenden Befehl verwenden:
 
-    ```sh InstallDependencyAgent-Linux64.bin```
+    `sh InstallDependencyAgent-Linux64.bin`
 
 - Erfahren Sie mehr zur [Unterstützung des Dependency-Agents](../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems) für die Betriebssysteme Windows und Linux.
 - [Erfahren Sie mehr](../azure-monitor/vm/vminsights-enable-hybrid.md#dependency-agent) darüber, wie Sie den Dependency-Agent mithilfe von Skripts installieren können.

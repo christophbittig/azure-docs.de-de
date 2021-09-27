@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 07/06/2021
 ms.author: aahi
-ms.openlocfilehash: e10c1f8622e1bbb60a3fbb4f5d6fd5bd3da46255
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: 044c435052f6b49ed0736943b46e8d9bc6911be6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113550442"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672379"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>Migration zu Version 3 der Textanalyse-API
 
@@ -143,7 +143,7 @@ Abgesehen von der Endpunktversion wurden in Version 3 keine Änderungen am Feat
 
 #### <a name="rest-api"></a>REST-API
 
-Wenn Ihre Anwendung die REST-API nutzt, ändern Sie den Anforderungsendpunkt in den Endpunkt der Version 3 für die Schlüsselbegriffserkennung. Beispiel: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`
+Wenn Ihre Anwendung die REST-API nutzt, ändern Sie den Anforderungsendpunkt in den Endpunkt der Version 3 für die Schlüsselbegriffserkennung. Beispiel: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.1/keyPhrases`
 
 Beispiele für die JSON-Antwort finden Sie in der Referenzdokumentation.
 * [Version 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)

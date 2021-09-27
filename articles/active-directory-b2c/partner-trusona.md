@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/30/2020
+ms.date: 09/20/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2efd5fdc49f5ae6724b9d1dc3b45d54329f17a61
-ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
+ms.openlocfilehash: 67e0601430b7c1f6f2fc97b78534080e0731fc7a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113223948"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595634"
 ---
 # <a name="integrating-trusona-with-azure-active-directory-b2c"></a>Integrieren von Trusona mit Azure Active Directory B2C
 
@@ -55,24 +55,24 @@ In diesem Szenario fungiert Trusona als Identitätsanbieter für Azure AD B2C, u
 
 1. Füllen Sie das [Formular](https://www.trusona.com/) aus, um ein Trusona-Konto zu erstellen und zu beginnen.
 
-2. Laden Sie die mobile Trusona-App aus dem App Store herunter. Installieren Sie die App, und registrieren Sie Ihre E-Mail-Adresse.
+1. Laden Sie die mobile Trusona-App aus dem App Store herunter. Installieren Sie die App, und registrieren Sie Ihre E-Mail-Adresse.
 
-3. Verifizieren Sie Ihre E-Mail-Adresse mit dem sicheren „magischen Link“, der von der Software gesendet wurde.  
+1. Verifizieren Sie Ihre E-Mail-Adresse mit dem sicheren „magischen Link“, der von der Software gesendet wurde.  
 
-4. Navigieren Sie zum [Trusona Developer-Dashboard](https://dashboard.trusona.com), um das Self-Service-Verfahren durchzuführen.
+1. Navigieren Sie zum [Trusona Developer-Dashboard](https://dashboard.trusona.com), um das Self-Service-Verfahren durchzuführen.
 
-5. Wählen Sie **I’m Ready** (Ich bin bereit) aus, und authentifizieren Sie sich mit Ihrer Trusona-App.
+1. Wählen Sie **I’m Ready** (Ich bin bereit) aus, und authentifizieren Sie sich mit Ihrer Trusona-App.
 
-6. Wählen Sie im linken Navigationsbereich die Option **OIDC Integrations** (OIDC-Integrationen) aus.
+1. Wählen Sie im linken Navigationsbereich die Option **OIDC Integrations** (OIDC-Integrationen) aus.
 
-7. Wählen Sie **Create OpenID Connect Integration** (OpenID Connect-Integration erstellen) aus.
+1. Wählen Sie **Create OpenID Connect Integration** (OpenID Connect-Integration erstellen) aus.
 
-8. Geben Sie im Feld **Name** einen Namen Ihrer Wahl an, und verwenden Sie die zuvor angegebenen Domäneninformationen (z. B. Contoso) im Feld **Client Redirect Host** (Clientumleitungshost).  
+1. Geben Sie im Feld **Name** einen Namen Ihrer Wahl an, und verwenden Sie die zuvor angegebenen Domäneninformationen (z. B. Contoso) im Feld **Client Redirect Host** (Clientumleitungshost).  
 
    > [!NOTE]
    > Der ursprüngliche Domänenname von Azure Active Directory wird als Clientumleitungshost verwendet.
 
-9. Befolgen Sie die Anleitung im [Leitfaden zur Trusona-Integration](https://docs.trusona.com/integrations/aad-b2c-integration/). Verwenden Sie nach entsprechender Aufforderung den ursprünglichen Domänennamen (z. B. Contoso) aus dem vorherigen Schritt.  
+1. Befolgen Sie die Anleitung im [Leitfaden zur Trusona-Integration](https://docs.trusona.com/integrations/aad-b2c-integration/). Verwenden Sie nach entsprechender Aufforderung den ursprünglichen Domänennamen (z. B. Contoso) aus dem vorherigen Schritt.  
 
 ## <a name="integrate-with-azure-ad-b2c"></a>Integration in Azure AD B2C
 
@@ -82,22 +82,18 @@ In diesem Szenario fungiert Trusona als Identitätsanbieter für Azure AD B2C, u
 > Wenn Sie noch nicht über einen Azure AD B2C-Mandanten verfügen, [erstellen Sie einen](tutorial-create-tenant.md), der mit Ihrem Azure-Abonnement verknüpft ist.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Administrator Ihres Azure AD B2C-Mandanten an.
-
-2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
-
-3. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **Azure AD B2C**, und klicken Sie darauf.
-
-4. Navigieren Sie zu **Dashboard** > **Azure Active Directory B2C** > **Identitätsanbieter**.
-
-3. Wählen Sie **Identitätsanbieter** aus.
-
-4. Wählen Sie **Hinzufügen**.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
+1. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **Azure AD B2C**, und klicken Sie darauf.
+1. Navigieren Sie zu **Dashboard** > **Azure Active Directory B2C** > **Identitätsanbieter**.
+1. Wählen Sie **Identitätsanbieter** aus.
+1. Wählen Sie **Hinzufügen**.
 
 ### <a name="configure-an-identity-provider"></a>Konfigurieren eines Identitätsanbieters  
 
 1. Wählen Sie **Identitätsanbietertyp** > **OpenID Connect (Vorschau)** aus.
 
-2. Füllen Sie das Formular aus, um den Identitätsanbieter einzurichten:  
+1. Füllen Sie das Formular aus, um den Identitätsanbieter einzurichten:  
 
    | Eigenschaft | Wert  |
    | :--- | :--- |
@@ -107,11 +103,11 @@ In diesem Szenario fungiert Trusona als Identitätsanbieter für Azure AD B2C, u
    | Antworttyp | Id_token |
    | Antwortmodus  | Form_post |
 
-3. Klicken Sie auf **OK**.  
+1. Klicken Sie auf **OK**.  
 
-4. Wählen Sie **Ansprüche dieses Identitätsanbieters zuordnen** aus.  
+1. Wählen Sie **Ansprüche dieses Identitätsanbieters zuordnen** aus.  
 
-5. Füllen Sie das Formular aus, um den Identitätsanbieter zuzuordnen:
+1. Füllen Sie das Formular aus, um den Identitätsanbieter zuzuordnen:
 
    | Eigenschaft | Wert  |
    | :--- | :--- |
@@ -121,7 +117,7 @@ In diesem Szenario fungiert Trusona als Identitätsanbieter für Azure AD B2C, u
    | Surname | Family_name |
    | Antwortmodus | email |
 
-6. Wählen Sie **OK** aus, um die Einrichtung für Ihren neuen OIDC-Identitätsanbieter abzuschließen.
+1. Wählen Sie **OK** aus, um die Einrichtung für Ihren neuen OIDC-Identitätsanbieter abzuschließen.
 
 ### <a name="create-a-user-flow-policy"></a>Erstellen einer Benutzerflowrichtlinie
 

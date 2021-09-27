@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 05/11/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 67a28bccf3353ed7e33826b0ef5b82fc1cc5f981
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 8f661ea1462ad00cdf0ddc5caa802b53d5d8fc20
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110376880"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123480442"
 ---
 # <a name="http-features"></a>HTTP-Features
 
@@ -277,7 +277,8 @@ Die Möglichkeit, HTTP-APIs direkt von Orchestratorfunktionen zu nutzen, ist bei
 Die API „call HTTP“ kann die Clientseite des Polling Consumer Pattern automatisch implementieren. Wenn eine aufgerufene API eine HTTP 202-Antwort mit einem Location-Header zurückgibt, ruft die Orchestratorfunktion automatisch die Location-Ressource ab, bis eine Antwort zurückgegeben wird, die nicht 202 ist. Dies ist die Antwort, die an den Orchestratorfunktionscode zurückgegeben wird.
 
 > [!NOTE]
-> Orchestratorfunktionen bieten auch native Unterstützung für das serverseitige Polling Consumer Pattern, wie unter [Nachverfolgen von asynchronen Vorgängen](#async-operation-tracking) beschrieben. Diese Unterstützung bedeutet, dass Orchestrierungen in einer Funktions-App die Orchestratorfunktionen in anderen Funktions-Apps problemlos koordinieren können. Dies ähnelt dem Konzept der [untergeordneten Orchestrierung](durable-functions-sub-orchestrations.md), jedoch mit Unterstützung für die App-übergreifende Kommunikation. Diese Unterstützung ist insbesondere beim Entwickeln von Apps im Stil von Microservices praktisch.
+> 1. Orchestratorfunktionen bieten auch native Unterstützung für das serverseitige Polling Consumer Pattern, wie unter [Nachverfolgen von asynchronen Vorgängen](#async-operation-tracking) beschrieben. Diese Unterstützung bedeutet, dass Orchestrierungen in einer Funktions-App die Orchestratorfunktionen in anderen Funktions-Apps problemlos koordinieren können. Dies ähnelt dem Konzept der [untergeordneten Orchestrierung](durable-functions-sub-orchestrations.md), jedoch mit Unterstützung für die App-übergreifende Kommunikation. Diese Unterstützung ist insbesondere beim Entwickeln von Apps im Stil von Microservices praktisch.
+> 2. Aufgrund einer vorübergehenden Einschränkung ist das integrierte HTTP-Abrufmuster derzeit in JavaScript/TypeScript und Python nicht verfügbar.
 
 ### <a name="managed-identities"></a>Verwaltete Identitäten
 

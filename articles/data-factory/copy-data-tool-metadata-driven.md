@@ -3,15 +3,16 @@ title: Erstellen umfangreicher Datenkopierpipelines mit dem metadatengesteuerten
 description: Dieser Artikel enthält Informationen zum metadatengesteuerten Ansatz im ADF-Tool zum Kopieren von Daten.
 author: dearandyxu
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
 ms.date: 06/19/2021
 ms.author: yexu
-ms.openlocfilehash: e2263db67214fb6fea91c8a8cefa65a981475ec3
-ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
+ms.openlocfilehash: 02d7b741ec0c3fb9547d10bde759900ce3a69dd6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122681597"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128663343"
 ---
 # <a name="build-large-scale-data-copy-pipelines-with-metadata-driven-approach-in-copy-data-tool-preview"></a>Erstellen umfangreicher Datenkopierpipelines mit dem metadatengesteuerten Ansatz im Tool zum Kopieren von Daten (Vorschau)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -26,15 +27,15 @@ Das Tool zum Kopieren von Daten in ADF erleichtert das Erstellen solcher metadat
 
    Sie müssen die Verbindung und den Tabellennamen Ihrer Steuertabelle eingeben, damit die generierte Pipeline Metadaten daraus liest.
 
-   ![Auswählen des Aufgabentyps](./media/copy-data-tool-metadata-driven/select-task-type.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/select-task-type.png" alt-text="Auswählen des Aufgabentyps":::
 
 2. Geben Sie die **Verbindung Ihrer Quelldatenbank** ein. Sie können auch den [parametrisierten verknüpften Dienst](parameterize-linked-services.md) verwenden.
 
-   ![Auswählen des parametrisierten verknüpften Diensts](./media/copy-data-tool-metadata-driven/select-parameterized-linked-service.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/select-parameterized-linked-service.png" alt-text="Auswählen des parametrisierten verknüpften Diensts":::
 
 3. Wählen Sie den zu kopierenden **Tabellennamen** aus.
 
-   ![Tabelle auswählen](./media/copy-data-tool-metadata-driven/select-table.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/select-table.png" alt-text="Tabelle auswählen":::
 
    > [!NOTE]
    > Wenn Sie tabellarischen Datenspeicher auswählen, können Sie auf der nächsten Seite entweder vollständiges Laden oder inkrementelles Laden auswählen. Wenn Sie Speicher auswählen, können Sie auf der nächsten Seite nur das vollständige Laden auswählen. Das inkrementelle Laden ausschließlich neuer Dateien aus dem Speicher wird derzeit nicht unterstützt.  
@@ -47,11 +48,11 @@ Das Tool zum Kopieren von Daten in ADF erleichtert das Erstellen solcher metadat
 
 6. Auf der Seite **Einstellungen** können Sie mit der Option **Number of concurrent copy tasks** (Anzahl gleichzeitiger Kopieraufgaben) die maximale Anzahl von Kopieraktivitäten zum gleichzeitigen Kopieren von Daten aus Ihrem Quellspeicher festlegen. Der Standardwert lautet 20. 
 
-   ![Seite "Einstellungen"](./media/copy-data-tool-metadata-driven/settings.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/settings.png" alt-text="Einstellungsseite":::
 
 7. Nach der Pipelinebereitstellung können Sie die SQL-Skripts von der Benutzeroberfläche kopieren oder herunterladen, um eine Steuertabelle und eine gespeicherte Prozedur zu erstellen. 
 
-   ![Herunterladen von Skripts](./media/copy-data-tool-metadata-driven/download-scripts.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/download-scripts.png" alt-text="Herunterladen von Skripts":::
 
    Es werden zwei SQL-Skripts angezeigt.
    
@@ -60,15 +61,15 @@ Das Tool zum Kopieren von Daten in ADF erleichtert das Erstellen solcher metadat
 
 8. Öffnen Sie **SSMS**, um eine Verbindung mit dem Steuertabellenserver herzustellen, und führen Sie die beiden SQL-Skripts aus, um Steuertabellen und die gespeicherte Prozedur zu erstellen.
 
-   ![Erstellen eines Steuertabellenskripts](./media/copy-data-tool-metadata-driven/create-control-table-script.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/create-control-table-script.png" alt-text="Erstellen eines Steuertabellenskripts":::
 
 9. Fragen Sie die Hauptsteuertabelle und die Verbindungssteuertabelle ab, um die darin enthaltenen Metadaten zu überprüfen.
 
    **Hauptsteuertabelle**
-   ![Abfragen von Steuertabellenskript 1](./media/copy-data-tool-metadata-driven/query-control-table.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/query-control-table.png" alt-text="Abfragen von Steuertabellenskript 1":::
 
    **Verbindungssteuertabelle**
-   ![Abfragen von Steuertabellenskript 2](./media/copy-data-tool-metadata-driven/query-connection-control-table.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/query-connection-control-table.png" alt-text="Abfragen von Steuertabellenskript 2":::
 
 10. Kehren Sie zum ADF-Portal zurück, um Pipelines anzuzeigen und zu debuggen. Es wird ein Ordner mit dem Namen „MetadataDrivenCopyTask_### _######“ angezeigt. **Klicken** Sie auf die Pipeline mit dem Namen „MetadataDrivenCopyTask_###_TopLevel“, und klicken Sie dann auf **debug run** (Debugausführung). 
 
@@ -85,7 +86,7 @@ Das Tool zum Kopieren von Daten in ADF erleichtert das Erstellen solcher metadat
 
 11. Aktivieren Sie den Trigger, um die Pipelines zu operationalisieren.
 
-    ![Aktivieren des Triggers](./media/copy-data-tool-metadata-driven/enable-trigger.png)
+    :::image type="content" source="./media/copy-data-tool-metadata-driven/enable-trigger.png" alt-text="Aktivieren des Triggers":::
 
 
 ## <a name="update-control-table-by-copy-data-tool"></a>Aktualisieren der Steuertabelle mithilfe des Tools zum Kopieren von Daten
@@ -93,15 +94,15 @@ Sie können die Steuertabelle jederzeit direkt aktualisieren, indem Sie das zu k
 
 1. Klicken Sie mit der rechten Maustaste auf die Pipeline der obersten Ebene, **MetadataDrivenCopyTask_xxx_TopLevel**, und wählen Sie dann **Edit control table** (Steuertabelle bearbeiten) aus.
 
-   ![Bearbeiten der Steuertabelle 1](./media/copy-data-tool-metadata-driven/edit-control-table.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/edit-control-table.png" alt-text="Bearbeiten der Steuertabelle 1":::
 
 2. Wählen Sie Zeilen in der Steuertabelle aus, die Sie bearbeiten möchten.
 
-   ![Bearbeiten der Steuertabelle 2](./media/copy-data-tool-metadata-driven/edit-control-table-select-tables.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/edit-control-table-select-tables.png" alt-text="Bearbeiten der Steuertabelle 2":::
 
 3. Führen Sie das Tool zum Kopieren von Daten aus, und es wird ein neues SQL-Skript für Sie erstellt. Führen Sie das SQL-Skript erneut aus, um die Steuertabelle zu aktualisieren.
 
-   ![Bearbeiten der Steuertabelle 3](./media/copy-data-tool-metadata-driven/edit-control-table-create-script.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/edit-control-table-create-script.png" alt-text="Bearbeiten der Steuertabelle 3":::
 
    > [!NOTE]
    > Die Pipeline wird NICHT erneut bereitgestellt. Mit dem neu erstellten SQL-Skript können Sie nur die Steuertabelle aktualisieren. 
@@ -130,7 +131,7 @@ Jede Zeile in der Steuertabelle enthält die Metadaten für ein zu kopierendes O
 ### <a name="connection-control-table"></a>Verbindungssteuertabelle
 Jede Zeile in der Steuertabelle enthält eine Verbindungseinstellung für den Datenspeicher.
 
-| Spaltenname | BESCHREIBUNG | 
+| Spaltenname | Beschreibung | 
 |:--- |:--- |
 | Name | Name der parametrisierten Verbindung in der Hauptsteuertabelle. |
 | ConnectionSettings | Die Verbindungseinstellungen. Dabei kann es sich um den Datenbanknamen, Servernamen usw. handeln. |

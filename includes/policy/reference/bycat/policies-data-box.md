@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/03/2021
+ms.date: 09/17/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 2dd6ad7878e9ec2b105bcdc2684299598e929f34
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: ced65b2f28d5958909433b642a51f2a68c1a8a52
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123471988"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128553916"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Azure Data Box-Aufträge müssen die Mehrfachverschlüsselung für ruhende Daten auf dem Gerät aktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc349d81b-9985-44ae-a8da-ff98d108ede8) |Aktivieren Sie eine zweite Ebene der softwarebasierten Verschlüsselung für ruhende Daten auf dem Gerät. Das Gerät ist bereits über eine AES-256-Verschlüsselung (Advanced Encryption Standard) für ruhende Daten geschützt. Mit dieser Option wird eine zweite Ebene der Datenverschlüsselung hinzugefügt. |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Box/DataBox_DoubleEncryption_Audit.json) |
 |[Azure Data Box-Aufträge müssen einen kundenseitig verwalteten Schlüssel zum Verschlüsseln des Kennworts für die Geräteentsperrung verwenden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F86efb160-8de7-451d-bc08-5d475b0aadae) |Verwenden Sie einen kundenseitig verwalteten Schlüssel, um die Verschlüsselung des Kennworts für die Geräteentsperrung für Azure Data Box zu steuern. Kundenseitig verwaltete Schlüssel bieten zudem Unterstützung beim Verwalten des Zugriffs auf das Kennwort zur Geräteentsperrung durch den Data Box Dienst, um das Gerät vorzubereiten und Daten automatisiert zu kopieren. Die Daten auf dem Gerät selbst sind bereits im Ruhezustand mit einer AES-256-Verschlüsselung (Advanced Encryption Standard) verschlüsselt, und das Kennwort zur Geräteentsperrung wird standardmäßig mit einem von Microsoft verwalteten Schlüssel verschlüsselt. |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Box/DataBox_CMK_Audit.json) |

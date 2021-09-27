@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.author: normesta
 ms.reviewer: klaasl
 ms.subservice: blobs
-ms.openlocfilehash: e7b92b2b9c4885e09bc2a700fbf3a8f1a37dbfa4
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 67bd943028ba321aa4fa3a5acca30e80cfc36a32
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343487"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615565"
 ---
 # <a name="enable-azure-storage-blob-inventory-reports"></a>Aktivieren von Berichten zur Azure Storage-Blobinventur
 
-Der Blobinventur-Feature von Azure Storage bietet eine Übersicht über Ihre Container, Blobs, Momentaufnahmen und Blobversionen innerhalb eines Speicherkontos. Nutzen Sie den Inventurbericht, um verschiedene Attribute von Blobs und Containern zu verstehen, z. B. die Gesamtdatengröße, das Alter, den Verschlüsselungsstatus, die Unveränderlichkeitsrichtlinie, die gesetzliche Aufbewahrungspflicht und so weiter. Der Bericht enthält eine Übersicht über Ihre Daten, die Sie auch für Geschäfts- und Complianceanforderungen nutzen können. 
+Der Blobinventur-Feature von Azure Storage bietet eine Übersicht über Ihre Container, Blobs, Momentaufnahmen und Blobversionen innerhalb eines Speicherkontos. Nutzen Sie den Inventurbericht, um verschiedene Attribute von Blobs und Containern zu verstehen, z. B. die Gesamtdatengröße, das Alter, den Verschlüsselungsstatus, die Unveränderlichkeitsrichtlinie, die gesetzliche Aufbewahrungspflicht und so weiter. Der Bericht enthält eine Übersicht über Ihre Daten, die Sie auch für Geschäfts- und Complianceanforderungen nutzen können.
 
 Weitere Informationen zu Blobinventurberichten finden Sie unter [Azure Storage-Blobinventur](blob-inventory.md).
 
@@ -44,7 +44,7 @@ Sie aktivieren Blobinventurberichte, indem Sie Ihrem Speicherkonto eine Richtlin
 
 7. Wählen Sie unter **Objekttyp für die Inventur**, ob Sie einen Bericht für die Blobs oder für die Container erstellen möchten.
 
-   Wenn Sie **Blob** auswählen, können Sie unter **Blob-Untertyp** die Blobtypen auswählen, die in den Bericht aufgenommen werden sollen. Darüber hinaus können Sie wählen, ob Blobversionen und/oder Momentaufnahmen in Ihren Inventurbericht aufgenommen werden sollen. 
+   Wenn Sie **Blob** auswählen, können Sie unter **Blob-Untertyp** die Blobtypen auswählen, die in den Bericht aufgenommen werden sollen. Darüber hinaus können Sie wählen, ob Blobversionen und/oder Momentaufnahmen in Ihren Inventurbericht aufgenommen werden sollen.
 
    > [!NOTE]
    > Versionen und Momentaufnahmen müssen im Konto aktiviert sein, damit eine neue Regel mit der entsprechenden aktivierten Option gespeichert werden kann.
@@ -91,30 +91,30 @@ Sie können das Hosting statischer Websites über das Azure PowerShell-Modul akt
    $ctx = $storageAccount.Context
    ```
 
-   * Ersetzen Sie den Platzhalterwert `<resource-group-name>` durch den Namen Ihrer Ressourcengruppe.
+   - Ersetzen Sie den Platzhalterwert `<resource-group-name>` durch den Namen Ihrer Ressourcengruppe.
 
-   * Ersetzen Sie den Platzhalterwert `<storage-account-name>` durch den Namen Ihres Speicherkontos.
+   - Ersetzen Sie den Platzhalterwert `<storage-account-name>` durch den Namen Ihres Speicherkontos.
 
 6. Erstellen Sie Inventurregeln mithilfe des Befehls [New-AzStorageBlobInventoryPolicyRule](/powershell/module/az.storage/new-azstorageblobinventorypolicyrule). Jede Regel listet Berichtsfelder auf. Eine vollständige Liste der Berichtsfelder finden Sie unter [Azure Storage-Blobinventur](blob-inventory.md).
 
-   ```Powershell
+   ```powershell
     $containerName = "my-container"
 
     $rule1 = New-AzStorageBlobInventoryPolicyRule -Name Test1 -Destination $containerName -Disabled -Format Csv -Schedule Daily -PrefixMatch con1,con2 `
-                -ContainerSchemaField Name,Metadata,PublicAccess,Last-modified,LeaseStatus,LeaseState,LeaseDuration,HasImmutabilityPolicy,HasLegalHold 
+                -ContainerSchemaField Name,Metadata,PublicAccess,Last-modified,LeaseStatus,LeaseState,LeaseDuration,HasImmutabilityPolicy,HasLegalHold
 
     $rule2 = New-AzStorageBlobInventoryPolicyRule -Name test2 -Destination $containerName -Format Parquet -Schedule Weekly  -BlobType blockBlob,appendBlob -PrefixMatch aaa,bbb `
                 -BlobSchemaField name,Last-Modified,Metadata,LastAccessTime
 
     $rule3 = New-AzStorageBlobInventoryPolicyRule -Name Test3 -Destination $containerName -Format Parquet -Schedule Weekly -IncludeBlobVersion -IncludeSnapshot -BlobType blockBlob,appendBlob -PrefixMatch aaa,bbb `
-                -BlobSchemaField name,Creation-Time,Last-Modified,Content-Length,Content-MD5,BlobType,AccessTier,AccessTierChangeTime,Expiry-Time,hdi_isfolder,Owner,Group,Permissions,Acl,Metadata,LastAccessTime 
+                -BlobSchemaField name,Creation-Time,Last-Modified,Content-Length,Content-MD5,BlobType,AccessTier,AccessTierChangeTime,Expiry-Time,hdi_isfolder,Owner,Group,Permissions,Acl,Metadata,LastAccessTime
 
     $rule4 = New-AzStorageBlobInventoryPolicyRule -Name test4 -Destination $containerName -Format Csv -Schedule Weekly -BlobType blockBlob -BlobSchemaField Name,BlobType,Content-Length,Creation-Time
 
    ```
 
-7. Nutzen Sie [Set-AzStorageBlobInventoryPolicy](/powershell/module/az.storage/set-azstorageblobinventorypolicy), um eine Blobinventurrichtlinie zu erstellen. Übergeben Sie mithilfe des `-Rule`-Parameters Regeln für diesen Befehl. 
-  
+7. Nutzen Sie [Set-AzStorageBlobInventoryPolicy](/powershell/module/az.storage/set-azstorageblobinventorypolicy), um eine Blobinventurrichtlinie zu erstellen. Übergeben Sie mithilfe des `-Rule`-Parameters Regeln für diesen Befehl.
+
    ```powershell
    $policy = Set-AzStorageBlobInventoryPolicy -StorageAccount $storageAccount -Rule $rule1,$rule2,$rule3,$rule4  
    ```
@@ -132,9 +132,10 @@ Sie können das Hosting statischer Websites über die [Azure-Befehlszeilenschnit
    ```azurecli
       az account set --subscription <subscription-id>
    ```
+
    Ersetzen Sie den Platzhalterwert `<subscription-id>` durch die ID Ihres Abonnements.
 
-3. Definieren Sie die Regeln Ihrer Richtlinie in einem JSON-Dokument. Im Folgenden wird der Inhalt einer JSON-Beispieldatei mit dem Namen `policy.json` dargestellt. 
+3. Definieren Sie die Regeln Ihrer Richtlinie in einem JSON-Dokument. Im Folgenden wird der Inhalt einer JSON-Beispieldatei mit dem Namen `policy.json` dargestellt.
 
     ```json
     {
@@ -178,7 +179,8 @@ Sie können das Hosting statischer Websites über die [Azure-Befehlszeilenschnit
       }
      ]
    }
-   ``` 
+
+   ```
 
 4. Erstellen Sie eine Blobinventurrichtlinie mithilfe des [az storage account blob-inventory-policy](/cli/azure/storage/account/blob-inventory-policy#az_storage_account_blob_inventory_policy_create)-Befehls. Geben Sie den Namen Ihres JSON-Dokuments mithilfe des Parameters `--policy` an.
 
@@ -191,4 +193,4 @@ Sie können das Hosting statischer Websites über die [Azure-Befehlszeilenschnit
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Berechnen der Anzahl und Gesamtgröße von Blobs pro Container](calculate-blob-count-size.md)
-- [Verwalten des Azure Blob Storage-Lebenszyklus](storage-lifecycle-management-concepts.md)
+- [Verwalten des Azure Blob Storage-Lebenszyklus](./lifecycle-management-overview.md)

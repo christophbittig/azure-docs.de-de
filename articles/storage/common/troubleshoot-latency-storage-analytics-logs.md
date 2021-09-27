@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: 72220b33ea0d10b16ec5be94da6a26d91b9bfc1e
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 4b59b7d42b162a369862974c0599d972fa1957ee
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108161841"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128636684"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Behandeln von Latenzproblemen mithilfe von Storage Analytics-Protokollen
 
@@ -80,18 +80,18 @@ In den folgenden Schritten wird veranschaulicht, wie Sie Latenzprobleme mithilfe
 
 5. Folgende Werte sind während des Zeitraums, in dem das Problem auftrat, von Bedeutung:
 
-   * Operation-type = GetBlob
-   * request-status = SASNetworkError
-   * End-to-End-Latency-In-Ms = 8453
-   * Server-Latency-In-Ms = 391
+   - Operation-type = GetBlob
+   - request-status = SASNetworkError
+   - End-to-End-Latency-In-Ms = 8453
+   - Server-Latency-In-Ms = 391
 
    Die End-to-End-Latenz wird mithilfe der folgenden Formel berechnet:
 
-   * End-to-End-Latenz = Server-Latency + Client Latency
+   - End-to-End-Latenz = Server-Latency + Client Latency
 
    Berechnen Sie die Clientlatenz anhand des Protokolleintrags:
 
-   * Clientlatenz = End-to-End Latency – Server-Latency
+   - Clientlatenz = End-to-End Latency – Server-Latency
 
         Beispiel: 8453 – 391 = 8062 ms
 
@@ -110,58 +110,58 @@ In den folgenden Schritten wird veranschaulicht, wie Sie Latenzprobleme mithilfe
 
 Überprüfen Sie die folgenden Werte, wie es in Schritt 5 des Abschnitts „Empfohlene Schritte“ angegeben ist:
 
-* End-to-End Latency
-* Server-Latency
-* Client-Latency
+- End-to-End Latency
+- Server-Latency
+- Client-Latency
 
 Wenn bei einem **GetBlob-Vorgang** mit **RequestStatus = Success** der Zeitraum **Max Time** für **Client-Latency** aufgewendet wird, bedeutet dies, dass Azure Storage viel Zeit für das Schreiben von Daten an den Client braucht. Diese Verzögerung deutet auf ein clientseitiges Problem hin.
 
 **Empfehlung:**
 
-* Untersuchen Sie den Code in Ihrem Client.
-* Verwenden Sie Wireshark, Microsoft Message Analyzer oder TCPing, um Netzwerkverbindungsprobleme des Client zu untersuchen.
+- Untersuchen Sie den Code in Ihrem Client.
+- Verwenden Sie Wireshark, Microsoft Message Analyzer oder TCPing, um Netzwerkverbindungsprobleme des Client zu untersuchen.
 
 ### <a name="getblob-operation-requeststatus--sasnetworkerror"></a>GetBlob-Vorgang: RequestStatus = (SAS)NetworkError
 
 Überprüfen Sie die folgenden Werte, wie es in Schritt 5 des Abschnitts „Empfohlene Schritte“ angegeben ist:
 
-* End-to-End Latency
-* Server-Latency
-* Client-Latency
+- End-to-End Latency
+- Server-Latency
+- Client-Latency
 
 Wenn bei einem **GetBlob-Vorgang** mit **RequestStatus = (SAS)NetworkError** der Zeitraum **Max Time** für **Client-Latency** aufgewendet wird, ist das Problem zumeist, dass der Client die Verbindung abbricht, bevor ein Zeitlimit im Speicherdienst abläuft.
 
 **Empfehlung:**
 
-* Untersuchen Sie den Code in Ihrem Client, um herauszufinden, warum und wann der Client die Verbindung zum Speicherdienst abbricht.
-* Verwenden Sie Wireshark, Microsoft Message Analyzer oder TCPing, um Netzwerkverbindungsprobleme des Client zu untersuchen.
+- Untersuchen Sie den Code in Ihrem Client, um herauszufinden, warum und wann der Client die Verbindung zum Speicherdienst abbricht.
+- Verwenden Sie Wireshark, Microsoft Message Analyzer oder TCPing, um Netzwerkverbindungsprobleme des Client zu untersuchen.
 
 ### <a name="put-operation-requeststatus--success"></a>Put-Vorgang: RequestStatus = Success
 
 Überprüfen Sie die folgenden Werte, wie es in Schritt 5 des Abschnitts „Empfohlene Schritte“ angegeben ist:
 
-* End-to-End Latency
-* Server-Latency
-* Client-Latency
+- End-to-End Latency
+- Server-Latency
+- Client-Latency
 
 Wenn bei einem **Put-Vorgang** mit **RequestStatus = Success** der Zeitraum **Max Time** für **Client-Latency** aufgewendet wird, bedeutet dies, dass der Client mehr Zeit zum Senden von Daten an Azure Storage braucht. Diese Verzögerung deutet auf ein clientseitiges Problem hin.
 
 **Empfehlung:**
 
-* Untersuchen Sie den Code in Ihrem Client.
-* Verwenden Sie Wireshark, Microsoft Message Analyzer oder TCPing, um Netzwerkverbindungsprobleme des Client zu untersuchen.
+- Untersuchen Sie den Code in Ihrem Client.
+- Verwenden Sie Wireshark, Microsoft Message Analyzer oder TCPing, um Netzwerkverbindungsprobleme des Client zu untersuchen.
 
 ### <a name="put-operation-requeststatus--sasnetworkerror"></a>Put-Vorgang: RequestStatus = (SAS)NetworkError
 
 Überprüfen Sie die folgenden Werte, wie es in Schritt 5 des Abschnitts „Empfohlene Schritte“ angegeben ist:
 
-* End-to-End Latency
-* Server-Latency
-* Client-Latency
+- End-to-End Latency
+- Server-Latency
+- Client-Latency
 
 Wenn bei einem **PutBlob-Vorgang** mit **RequestStatus = (SAS)NetworkError** der Zeitraum **Max Time** für **Client-Latency** aufgewendet wird, ist das Problem zumeist, dass der Client die Verbindung abbricht, bevor ein Zeitlimit im Speicherdienst abläuft.
 
 **Empfehlung:**
 
-* Untersuchen Sie den Code in Ihrem Client, um herauszufinden, warum und wann der Client die Verbindung zum Speicherdienst abbricht.
-* Verwenden Sie Wireshark, Microsoft Message Analyzer oder TCPing, um Netzwerkverbindungsprobleme des Client zu untersuchen.
+- Untersuchen Sie den Code in Ihrem Client, um herauszufinden, warum und wann der Client die Verbindung zum Speicherdienst abbricht.
+- Verwenden Sie Wireshark, Microsoft Message Analyzer oder TCPing, um Netzwerkverbindungsprobleme des Client zu untersuchen.

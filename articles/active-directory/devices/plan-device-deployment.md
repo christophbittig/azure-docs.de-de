@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: baselden
 author: BarbaraSelden
-manager: daveba
+manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f2ae8a38305b74f2bccba55b02d98626b5afc1d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7f8198b7f4bbb7c710e899349766d0345655d7f8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122338986"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633429"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Planen Ihrer Azure Active Directory-Gerätebereitstellung
 
@@ -48,7 +48,7 @@ Die wichtigsten Vorteile, wenn Sie Ihren Geräten eine Azure AD Identität zuwei
 
 * Verbessern der Benutzererfahrung – mit Geräteidentitäten in Azure AD ermöglichen Sie Ihren Benutzern einfachen Zugriff auf die cloudbasierten Ressourcen Ihrer Organisation sowohl über persönliche und als auch über unternehmenseigene Geräte. Administratoren können [Enterprise State Roaming](enterprise-state-roaming-overview.md) für eine einheitliche Darstellung auf allen Windows-Geräten aktivieren.
 
-* Vereinfachen der Bereitstellung und der Verwaltung – die Geräteidentitätsverwaltung vereinfacht das Bereitstellen von Geräten in Azure AD mit [Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot), [Massenbereitstellung](/mem/intune/enrollment/windows-bulk-enroll) und [Self-Service: Out of Box Experience (OOBE)](../user-help/user-help-join-device-on-network.md). Sie können diese Geräte mit MDM-Tools (Mobile Device Management, mobile Geräteverwaltung) wie [Microsoft Intune](/mem/intune/fundamentals/what-is-intune) und ihre Identitäten im [Azure-Portal](https://portal.azure.com/) verwalten.
+* Vereinfachen der Bereitstellung und der Verwaltung – die Geräteidentitätsverwaltung vereinfacht das Bereitstellen von Geräten in Azure AD mit [Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot), [Massenbereitstellung](/mem/intune/enrollment/windows-bulk-enroll) und [Self-Service: Out of Box Experience (OOBE)](https://support.microsoft.com/account-billing/join-your-work-device-to-your-work-or-school-network-ef4d6adb-5095-4e51-829e-5457430f3973). Sie können diese Geräte mit MDM-Tools (Mobile Device Management, mobile Geräteverwaltung) wie [Microsoft Intune](/mem/intune/fundamentals/what-is-intune) und ihre Identitäten im [Azure-Portal](https://portal.azure.com/) verwalten.
 
 ### <a name="training-resources"></a>Schulungsressourcen
 
@@ -149,7 +149,7 @@ Wenn die Registrierung Ihrer Geräte die beste Option für Ihre Organisation ist
 
 * Die Übersicht über [bei Azure AD registrierte Geräte](concept-azure-ad-register.md)
 
-* Die Dokumentation für Endbenutzer zum [Registrieren Ihres persönlichen Geräts im Netzwerk Ihrer Organisation](../user-help/user-help-register-device-on-network.md)
+* Die Dokumentation für Endbenutzer zum [Registrieren Ihres persönlichen Geräts im Netzwerk Ihrer Organisation](https://support.microsoft.com/account-billing/register-your-personal-device-on-your-work-or-school-network-8803dd61-a613-45e3-ae6c-bd1ab25bf8a8)
 
 ## <a name="azure-ad-join"></a>Azure AD-Einbindung
 
@@ -171,7 +171,7 @@ Zum Bereitstellen von Azure AD Join stehen Ihnen die folgenden Vorgehensweisen z
 
 Wenn Windows 10 Professional oder Windows 10 Enterprise auf einem Gerät installiert ist, wird standardmäßig der Setupprozess für firmeneigene Geräte übernommen.
 
-* [Out of Box Experience (OOBE) von Windows oder über die Windows-Einstellungen](../user-help/user-help-join-device-on-network.md)
+* [Out of Box Experience (OOBE) von Windows oder über die Windows-Einstellungen](https://support.microsoft.com/account-billing/join-your-work-device-to-your-work-or-school-network-ef4d6adb-5095-4e51-829e-5457430f3973)
 
 * [Windows Autopilot](/windows/deployment/windows-autopilot/windows-autopilot)
 

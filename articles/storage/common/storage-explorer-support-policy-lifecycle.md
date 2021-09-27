@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: marayerm
-ms.openlocfilehash: 87520d26ac4f83297d076ff7539a7731ddbd09fd
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: 37486f22aba1be1ac987238d38e69b95553a8629
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114708803"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128638214"
 ---
 # <a name="azure-storage-explorer-support-lifecycle-and-policy"></a>Supportlebenszyklus und -richtlinie für den Azure Storage-Explorer
 
@@ -39,7 +39,7 @@ Ab Version 1.13.0 wird eine In-App-Warnung angezeigt, wenn eine Version in unge
 
 In der folgenden Tabelle sind jeweils das Veröffentlichungsdatum und das Supportende für die einzelnen Azure Storage-Explorer-Releases aufgeführt.
 
-| Storage-Explorer-Version  | Veröffentlichungsdatum       | Supportende |
+| Storage-Explorer-Version  | Veröffentlichungsdatum         | Supportende |
 |:-------------------------:|:------------------:|:-------------------:|
 | v1.20.1                   | 23. Juli 2021      | 23. Juli 2022       |
 | v1.20.0                   | 25. Juni 2021      | 25. Juni 2022       |
@@ -56,7 +56,7 @@ In der folgenden Tabelle sind jeweils das Veröffentlichungsdatum und das Suppor
 | 1\.14.0                   | 24. Juni 2020      | 14. Juli 2021       |
 | 1\.13.1                   | 18. Mai 2020       | 14. Juli 2021       |
 | 1\.13.0                   | 1\. Mai 2020        | 14. Juli 2021       |
-| 1\.12.0                   | 16. Januar 2020   | 14. Juli 2021       |
+| 1\.12.0                   | 16. Januar 2020     | 14. Juli 2021       |
 | 1\.11.2                   | 17. Dezember 2019  | 14. Juli 2021       |
 | 1\.11.1                   | 20. November 2019  | 14. Juli 2021       |
 | 1\.11.0                   | 4\. November 2019   | 14. Juli 2021       |
@@ -69,7 +69,7 @@ In der folgenden Tabelle sind jeweils das Veröffentlichungsdatum und das Suppor
 | 1\.6.2                    | 8\. Januar 2019    | 14. Juli 2021       |
 | 1\.6.1                    | 18. Dezember 2018  | 14. Juli 2021       |
 | 1\.6.0                    | 4\. Dezember 2018   | 14. Juli 2021       |
-| 1\.5.0                    | 29. Oktober 2018   | 14. Juli 2021       |
+| 1\.5.0                    | 29. Oktober 2018     | 14. Juli 2021       |
 | 1\.4.4                    | 15. Oktober 2018   | 14. Juli 2021       |
 | 1\.4.2                    | 24. September 2018 | 14. Juli 2021       |
 | 1\.4.1                    | 28. August 2018    | 14. Juli 2021       |

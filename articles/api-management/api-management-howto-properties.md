@@ -3,17 +3,17 @@ title: Verwenden von benannten Werten in Azure API Management-Richtlinien
 description: Erfahren Sie, wie benannte Werte in Azure API Management-Richtlinien verwendet werden. Benannte Werte können Literalzeichenfolgen, Richtlinienausdrücke und Geheimnisse enthalten, die in Azure Key Vault gespeichert sind.
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 ms.service: api-management
 ms.topic: article
 ms.date: 02/09/2021
-ms.author: apimpm
-ms.openlocfilehash: a970eb23c171522907b6066454d9ca15d85f0835
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.author: danlep
+ms.openlocfilehash: 65f45758ab00d9e549ac0e52287a198bf5734acd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812262"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128671201"
 ---
 # <a name="use-named-values-in-azure-api-management-policies"></a>Verwenden von benannten Werten in Azure API Management-Richtlinien
 

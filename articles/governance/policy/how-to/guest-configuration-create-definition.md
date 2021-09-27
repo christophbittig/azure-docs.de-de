@@ -3,12 +3,12 @@ title: Erstellen benutzerdefinierter Richtliniendefinitionen für die Gastkonfig
 description: Erfahren Sie, wie Sie eine Gastkonfigurationsrichtlinie erstellen können.
 ms.date: 07/22/2021
 ms.topic: how-to
-ms.openlocfilehash: 28ad60284912261510a55438919924138d4e2b5e
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 1dd1620d0ef41bf28a276cfe2412ca4bdc09d183
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122773013"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128644902"
 ---
 # <a name="how-to-create-custom-guest-configuration-policy-definitions"></a>Erstellen benutzerdefinierter Richtliniendefinitionen für die Gastkonfiguration
 
@@ -80,7 +80,7 @@ Erstellen Sie eine Richtliniendefinition, die mithilfe eines benutzerdefinierten
 
 ```powershell
 New-GuestConfigurationPolicy `
-  -PolicyId 'My GUID'
+  -PolicyId 'My GUID' `
   -ContentUri '<paste the ContentUri output from the Publish command>' `
   -DisplayName 'My audit policy.' `
   -Description 'Details about my policy.' `
@@ -94,7 +94,7 @@ Erstellen Sie eine Richtliniendefinition, die mithilfe eines benutzerdefinierten
 
 ```powershell
 New-GuestConfigurationPolicy `
-  -PolicyId 'My GUID'
+  -PolicyId 'My GUID' `
   -ContentUri '<paste the ContentUri output from the Publish command>' `
   -DisplayName 'My audit policy.' `
   -Description 'Details about my policy.' `
@@ -166,8 +166,8 @@ $PolicyParameterInfo = @(
   }
 )
 
-New-GuestConfigurationPolicy
-  -PolicyId 'My GUID'
+New-GuestConfigurationPolicy `
+  -PolicyId 'My GUID' `
   -ContentUri '<paste the ContentUri output from the Publish command>' `
   -DisplayName 'Audit Windows Service.' `
   -Description 'Audit if a Windows Service isn't enabled on Windows machine.' `
@@ -229,4 +229,4 @@ Die einfachste Möglichkeit zum Freigeben eines aktualisierten Pakets ist das Wi
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Weisen Sie Ihre Richtliniendefinition](../assign-policy-portal.md) mithilfe des Azure-Portals zu.
-- Erfahren Sie, wie Sie die [Konformitätsdetails für die Zuweisung von Gastkonfigurationsrichtlinien](./determine-non-compliance.md#compliance-details-for-guest-configuration) anzeigen.
+- Informieren Sie sich, wie Sie die [Compliancedetails für die Richtlinienzuweisungen der Gastkonfiguration](./determine-non-compliance.md#compliance-details-for-guest-configuration) anzeigen.

@@ -2,14 +2,14 @@
 title: Zonenredundante Registrierung für Hochverfügbarkeit
 description: Hier erfahren Sie, wie Sie Zonenredundanz in Azure Container Registry aktivieren. Erstellen Sie eine Containerregistrierung oder Replikation in einer Azure-Verfügbarkeitszone. Zonenredundanz ist ein Feature der Dienstebene „Premium“.
 ms.topic: article
-ms.date: 02/23/2021
+ms.date: 09/13/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 69714f25263b0b26fe4854b0303c3c9106b18f9a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ca475f61c3164f54682a22f459e1f8f768073f1f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339742"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128586815"
 ---
 # <a name="enable-zone-redundancy-in-azure-container-registry-for-resiliency-and-high-availability"></a>Aktivieren von Zonenredundanz in Azure Container Registry für Resilienz und Hochverfügbarkeit
 
@@ -21,7 +21,12 @@ Zonenredundanz ist eine **Preview** funktion der Containerregistrierungs-Dienste
 
 ## <a name="preview-limitations"></a>Einschränkungen der Vorschau
 
-* Derzeit in den folgenden Regionen unterstützt: USA, Osten, USA, Osten 2, USA, Westen 2, Europa, Norden; Europa, Westen; Japan, Osten.
+* Derzeit nur in den folgenden Regionen unterstützt: 
+  
+    |Amerika  |Europa  |Afrika  |Asien-Pazifik  |
+    |---------|---------|---------|---------|
+    |Brasilien Süd<br/>Kanada, Mitte<br/>USA (Mitte)<br/>East US<br/>USA (Ost) 2<br/>USA Süd Mitte<br/>US-Regierung Virginia<br/>USA, Westen 2<br/>USA, Westen 3     |Frankreich, Mitte<br/>Deutschland, Westen-Mitte<br/>Nordeuropa<br/>Norwegen, Osten<br/>Europa, Westen<br/>UK, Süden      |Südafrika, Norden<br/>        |Australien (Osten)<br/>Indien, Mitte<br/>Japan, Osten<br/>Korea, Mitte<br/>  |
+
 * Regionskonvertierungen in Verfügbarkeitszonen werden derzeit nicht unterstützt. Um die Unterstützung für Verfügbarkeitszonen in einer Region zu aktivieren, muss die Registrierung entweder in der gewünschten Region mit aktivierter Verfügbarkeitszonenunterstützung erstellt werden, oder sie muss mit aktivierter Unterstützung für Verfügbarkeitszonen hinzugefügt werden.
 * Zonenredundanz kann in einer Region nicht deaktiviert werden.
 * [ACR Tasks](container-registry-tasks-overview.md) unterstützt noch keine Verfügbarkeitszonen.
