@@ -8,12 +8,12 @@ ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 03/08/2021
-ms.openlocfilehash: 7d8f014b752d4ff0838195671ef8c919a164ebef
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 925288281f19869f68baca1b22b7fdb3da8d05a1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122699128"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "128614655"
 ---
 # <a name="migrate-execute-r-script-modules-in-studio-classic"></a>Migrieren von „R-Skript ausführen“-Modulen in Studio (Classic)
 
@@ -87,7 +87,7 @@ azureml_main <- function(dataframe1, dataframe2){
   return(list(dataset1=data.set)) 
 } 
 ```
-Weitere Informationen finden Sie in der [Referenz zum Modul „R-Skript ausführen“](/algorithm-module-reference/execute-r-script.md).
+Weitere Informationen finden Sie in der [Referenz zum Modul „R-Skript ausführen“](./algorithm-module-reference/execute-r-script.md).
 
 ### <a name="install-r-packages-from-the-internet"></a>Installieren von R-Paketen über das Internet
 

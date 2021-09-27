@@ -1,7 +1,6 @@
 ---
 title: Verwalten des Zugriffs auf SaaS-Apps mithilfe von Mandanteneinschränkungen – Azure AD
 description: Hier erfahren Sie, wie Sie mithilfe von Mandanteneinschränkungen auf der Grundlage des verwendeten Azure AD-Mandanten steuern, welcher Benutzer auf Apps zugreifen kann.
-services: active-directory
 author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
@@ -12,12 +11,12 @@ ms.date: 7/30/2021
 ms.author: davidmu
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d013d383192b206fdc05f36f320b01fe57526bb8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 19f3017aafdf15905d4418213fd1020545e57880
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339562"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128644294"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Verwalten des Zugriffs auf SaaS-Cloudanwendungen mithilfe von Mandanteneinschränkungen
 
@@ -83,7 +82,7 @@ Die Header müssen folgende Elemente enthalten:
 > [!TIP]
 > Ihre Verzeichnis-ID finden Sie im [Azure Active Directory-Portal](https://aad.portal.azure.com/). Melden Sie sich als Administrator an, und wählen Sie **Azure Active Directory** und anschließend **Eigenschaften** aus.
 >
-> Zur Überprüfung, ob eine Verzeichnis-ID oder ein Domänenname sich auf denselben Mandanten beziehen, verwenden Sie diese ID oder Domäne anstelle von <tenant> in der folgenden URL: `https://login.microsoftonline.com/<tenant>/v2.0/.well-known/openid-configuration`.  Wenn die Ergebnisse mit der Domäne und der ID identisch sind, beziehen sie sich auf denselben Mandanten.
+> Zur Überprüfung, ob eine Verzeichnis-ID oder ein Domänenname sich auf denselben Mandanten beziehen, verwenden Sie diese ID oder Domäne anstelle von \<tenant\> in der folgenden URL: `https://login.microsoftonline.com/<tenant>/v2.0/.well-known/openid-configuration`.  Wenn die Ergebnisse mit der Domäne und der ID identisch sind, beziehen sie sich auf denselben Mandanten.
 
 Um zu verhindern, dass Benutzer ihre eigenen HTTP-Header mit nicht genehmigten Mandanten einfügen, muss der Proxy den *Restrict-Access-To-Tenants*-Header ersetzen, falls er in der eingehenden Anforderung bereits vorhanden ist.
 

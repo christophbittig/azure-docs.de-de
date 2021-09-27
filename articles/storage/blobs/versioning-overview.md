@@ -10,18 +10,16 @@ ms.date: 05/10/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1742679fbca38b878325bd56fa01fc2efebf4f82
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 1feb78c381a189ae2db1d2aa658f8d0782769f99
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733698"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664787"
 ---
 # <a name="blob-versioning"></a>Blobversionsverwaltung
 
 Sie können die Blob Storage-Versionsverwaltung aktivieren, um frühere Versionen eines Objekts automatisch zu verwalten. Wenn Blobversionsverwaltung aktiviert ist, können Sie eine frühere Version eines Blobs wiederherstellen, um Daten wiederherzustellen, wenn diese irrtümlich geändert oder gelöscht wurden.
-
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="recommended-data-protection-configuration"></a>Empfohlene Datenschutzkonfiguration
 
@@ -47,7 +45,7 @@ Die folgende Abbildung zeigt, wie Versionen bei Schreibvorgängen erstellt werde
 
 Blobversionen sind unveränderlich. Inhalte oder Metadaten einer vorhandenen Blobversion können nicht geändert werden.
 
-Wenn eine große Anzahl von Versionen pro Blob vorhanden ist, kann sich die Latenz bei Auflistungsvorgängen für Blobs erhöhen. Microsoft empfiehlt die Beibehaltung von weniger als 1000 Versionen pro Blob. Sie können die Lebenszyklusverwaltung verwenden, um alte Versionen automatisch zu löschen. Weitere Informationen zur Lebenszyklusverwaltung finden Sie unter [Optimieren der Kosten durch Automatisieren der Azure Blob Storage-Zugriffsebenen](storage-lifecycle-management-concepts.md).
+Wenn eine große Anzahl von Versionen pro Blob vorhanden ist, kann sich die Latenz bei Auflistungsvorgängen für Blobs erhöhen. Microsoft empfiehlt die Beibehaltung von weniger als 1000 Versionen pro Blob. Sie können die Lebenszyklusverwaltung verwenden, um alte Versionen automatisch zu löschen. Weitere Informationen zur Lebenszyklusverwaltung finden Sie unter [Optimieren der Kosten durch Automatisieren der Azure Blob Storage-Zugriffsebenen](./lifecycle-management-overview.md).
 
 Die Blobversionsverwaltung ist für Standardkonten vom Typ „Allgemein v2“, für Premium-Blockblobkonten und für Legacy-Blobspeicherkonten verfügbar. Speicherkonten mit einem hierarchischen Namespace, die für die Verwendung mit Azure Data Lake Storage Gen2 aktiviert sind, werden derzeit nicht unterstützt.
 
@@ -113,7 +111,7 @@ Wenn neue Daten in das Blob geschrieben werden, wird eine neue aktuelle Version 
 
 Sie können jede beliebige Version eines Blockblobs (einschließlich der aktuellen Version) in eine andere Blobzugriffsebene verschieben, indem Sie den Vorgang [Set Blob Tier](/rest/api/storageservices/set-blob-tier) aufrufen. Sie können niedrigere Kapazitätspreise nutzen, indem Sie ältere Versionen eines Blobs in die kalte Ebene oder die Archivebene verschieben. Weitere Informationen finden Sie unter [Azure Blob Storage: Archivzugriffsebenen „Heiß“, „Kalt“ und „Archiv“](storage-blob-storage-tiers.md).
 
-Verwenden Sie Bloblebenszyklusverwaltung, um den Prozess des Verschiebens von Blockblobs in die entsprechende Ebene zu automatisieren. Weitere Informationen zur Lebenszyklusverwaltung finden Sie unter [Verwalten des Lebenszyklus von Azure Blob Storage](storage-lifecycle-management-concepts.md).
+Verwenden Sie Bloblebenszyklusverwaltung, um den Prozess des Verschiebens von Blockblobs in die entsprechende Ebene zu automatisieren. Weitere Informationen zur Lebenszyklusverwaltung finden Sie unter [Verwalten des Lebenszyklus von Azure Blob Storage](./lifecycle-management-overview.md).
 
 ## <a name="enable-or-disable-blob-versioning"></a>Aktivieren/Deaktivieren von Blobversionsverwaltung
 
@@ -297,6 +295,17 @@ In der folgenden Tabelle wird das Abrechnungsverhalten für ein vorläufig gelö
 |-|-|
 | Vorläufiges Löschen und Versionsverwaltung wurden für das Blob aktiviert. | Alle vorhandenen Versionen mit ihrem vollständigen Inhalt – unabhängig von der Dienstebene |
 | Vorläufiges Löschen für das Blob wurde aktiviert, aber die Versionsverwaltung wurde deaktiviert. | Alle vorhandenen Momentaufnahmen mit vorläufigem Löschen mit ihrem vollständigen Inhalt – unabhängig von der Dienstebene |
+
+## <a name="feature-support"></a>Featureunterstützung
+
+In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf die Unterstützung hat.
+
+| Speicherkontotyp                | Blob Storage (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) |![Nein](../media/icons/no-icon.png)              | ![Nein](../media/icons/no-icon.png) |
+| Premium-Blockblobs          | ![Ja](../media/icons/yes-icon.png) |![Nein](../media/icons/no-icon.png)              | ![Nein](../media/icons/no-icon.png) |
+
+<sup>1</sup>    Für Data Lake Storage Gen2 und das NFS 3.0-Protokoll (Network File System) ist ein Speicherkonto mit aktiviertem hierarchischem Namespace erforderlich.
 
 ## <a name="see-also"></a>Siehe auch
 

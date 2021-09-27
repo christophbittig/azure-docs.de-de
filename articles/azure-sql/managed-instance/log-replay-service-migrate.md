@@ -9,13 +9,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: mathoma
-ms.date: 03/31/2021
-ms.openlocfilehash: e76493aa83383e4ce59da77cfb0ce050475ad303
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/07/2021
+ms.openlocfilehash: 85bf8c07da9d283011d17f1f96ad76e0fa411213
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340280"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123535309"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-by-using-log-replay-service-preview"></a>Migrieren von Datenbanken aus SQL Server zu SQL Managed Instance mit dem Protokollwiedergabedienst (Vorschau)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -393,6 +393,7 @@ Für den Protokollwiedergabedienst gelten die folgenden funktionalen Beschränku
 - Für den Protokollwiedergabedienst müssen Datenbanken unter SQL Server mit aktivierter Option `CHECKSUM` gesichert werden.
 - Das SAS-Token, das vom Protokollwiedergabedienst verwendet wird, muss für den gesamten Azure Blob Storage-Container generiert werden und darf nur über die Berechtigungen „Lesen“ und „Auflisten“ verfügen.
 - Sicherungsdateien für verschiedene Datenbanken müssen in Blob Storage in separaten Ordnern abgelegt werden.
+- Sicherungsdateien, die die Zeichen % und $ im Dateinamen enthalten, können von LRS nicht verarbeitet werden. Erwägen Sie, solche Dateinamen umzubenennen.
 - Der Protokollwiedergabedienst muss separat für jede Datenbank gestartet werden, die auf separate Ordner mit Sicherungsdateien in Blob Storage verweist.
 - Für den Protokollwiedergabedienst können bis zu 100 gleichzeitige Wiederherstellungsprozesse pro verwalteter Instanz unterstützt werden.
 

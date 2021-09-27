@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 08/10/2021
-ms.openlocfilehash: 0a5ab1b8e79c3cfacb2944369b5f9234355ba4c8
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.date: 08/25/2021
+ms.openlocfilehash: 40b1652bec99844675e030cfd12ef8ff28a0f01f
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122350915"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435454"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Verbinden von Azure Data Factory und Azure Purview
 
@@ -20,7 +20,7 @@ In diesem Dokument werden die Schritte erläutert, die zum Verbinden eines Azure
 
 ## <a name="view-existing-data-factory-connections"></a>Anzeigen vorhandener Data Factory-Verbindungen
 
-Mehrere Azure Data Factorys können eine Verbindung mit einem einzelnen Azure Purview Data Catalog herstellen, um Herkunftsinformationen per Push zu übertragen. Gemäß den aktuellen Grenzwerten können Sie vom Purview-Verwaltungscenter eine Verbindung mit bis zu zehn Data Factory-Konten gleichzeitig herstellen. Um die Liste der mit Ihrem Purview Data Catalog verbundenen Data Factory-Konten anzuzeigen, gehen Sie folgendermaßen vor:
+Mehrere Azure Data Factory-Instanzen können eine Verbindung mit einer einzelnen Azure Purview-Instanz herstellen, um Herkunftsinformationen per Push zu übertragen. Gemäß den aktuellen Grenzwerten können Sie vom Purview-Verwaltungscenter eine Verbindung mit bis zu zehn Data Factory-Konten gleichzeitig herstellen. Um die Liste der mit Ihrem Purview-Konto verbundenen Data Factory-Konten anzuzeigen, gehen Sie folgendermaßen vor:
 
 1. Wählen Sie im linken Navigationsbereich **Verwaltung** aus.
 2. Wählen Sie unter **Herkunftsverbindungen** **Data Factory** aus.
@@ -30,26 +30,25 @@ Mehrere Azure Data Factorys können eine Verbindung mit einem einzelnen Azure Pu
 
 4. Beachten Sie die verschiedenen Werte für den **Status** einer Verbindung:
 
-    - **Verbunden**: Die Data Factory ist mit dem Data Catalog verbunden.
+    - **Verbunden**: Die Data Factory ist mit dem Purview-Konto verbunden.
     - **Getrennt**: Die Data Factory hat Zugriff auf den Katalog, ist aber mit einem anderen Katalog verbunden. Daher wird die Datenherkunft nicht automatisch an den Katalog gemeldet.
     - **CannotAccess**: Der aktuelle Benutzer hat keine Zugriff auf die Data Factory, daher ist der Verbindungsstatus unbekannt.
- >[!Note]
- >Um die Data Factory-Verbindungen anzeigen zu können, muss Ihnen eine der Purview-Rollen zugewiesen sein. Die Vererbung von Rollen aus der Verwaltungsgruppe wird **nicht unterstützt**:
- >- Mitwirkender
- >- Besitzer
- >- Leser
- >- Benutzerzugriffsadministrator
+
+>[!Note]
+>Damit Sie die Data Factory-Verbindungen anzeigen können, muss Ihnen die folgende Rolle zugewiesen sein. Die Vererbung von Rollen aus der Verwaltungsgruppe wird nicht unterstützt.
+>- Für ein Purview-Konto, das **am oder nach dem 18. August 2021** erstellt wurde: Rolle **Sammlungsadministratoren** für die Stammsammlung.
+>- Für ein Purview-Konto, das **vor dem 18. August 2021** erstellt wurde: Integrierte Azure-Rolle **Besitzer**, **Mitwirkender**, **Leser** oder **Benutzerzugriffsadministrator**.
 
 ## <a name="create-new-data-factory-connection"></a>Erstellen einer neuen Data Factory-Verbindung
 
 >[!Note]
->Um die Data Factory-Verbindungen hinzuzufügen oder entfernen zu können, muss Ihnen eine der Purview-Rollen zugewiesen sein. Die Vererbung von Rollen aus der Verwaltungsgruppe wird **nicht unterstützt**:
->- Besitzer
->- Benutzerzugriffsadministrator
+>Um die Data Factory-Verbindungen hinzufügen oder entfernen zu können, muss Ihnen die folgende Rolle zugewiesen sein. Die Vererbung von Rollen aus der Verwaltungsgruppe wird nicht unterstützt.
+>- Für ein Purview-Konto, das **am oder nach dem 18. August 2021** erstellt wurde: Rolle **Sammlungsadministratoren** für die Stammsammlung.
+>- Für ein Purview-Konto, das **vor dem 18. August 2021** erstellt wurde: Rolle **Besitzer** oder **Benutzerzugriffsadministrator**. 
 >
-> Außerdem müssen die Benutzer „Besitzer“ oder „Mitwirkender“ der Data Factory sein. 
+> Außerdem müssen die Benutzer die Rolle „Besitzer“ oder „Mitwirkender“ für die Data Factory aufweisen. 
 
-Führen Sie die folgenden Schritte aus, um eine vorhandene Data Factory mit Ihrem Purview Data Catalog zu verbinden.
+Führen Sie die folgenden Schritte aus, um eine vorhandene Data Factory mit Ihrem Purview-Konto zu verbinden. Sie können auch [über ADF eine Verbindung zwischen der Data Factory und dem Purview-Konto herstellen](../data-factory/connect-data-factory-to-azure-purview.md).
 
 1. Wählen Sie im linken Navigationsbereich **Verwaltung** aus.
 2. Wählen Sie unter **Herkunftsverbindungen** **Data Factory** aus.
@@ -66,20 +65,18 @@ Führen Sie die folgenden Schritte aus, um eine vorhandene Data Factory mit Ihre
     :::image type="content" source="./media/how-to-link-azure-data-factory/warning-for-disconnect-factory.png" alt-text="Screenshot: Warnung vor dem Trennen einer Azure Data Factory-Verbindung" lightbox="./media/how-to-link-azure-data-factory/warning-for-disconnect-factory.png":::
 
 >[!Note]
->Zurzeit wird das gleichzeitige Hinzufügen von nicht mehr als 10 Data Factorys unterstützt. Wenn Sie mehr als 10 Data Factorys gleichzeitig hinzufügen möchten, erstellen Sie ein Supportticket.
+>Zurzeit wird das gleichzeitige Hinzufügen von höchstens zehn Data Factorys unterstützt. Wenn Sie mehr als zehn Data Factorys gleichzeitig hinzufügen möchten, erstellen Sie ein Supportticket.
 
-### <a name="how-does-the-authentication-work"></a>Wie funktioniert die Authentifizierung?
+### <a name="how-authentication-works"></a>Funktionsweise der Authentifizierung
 
-Wenn ein Purview-Benutzer eine Data Factory registriert, auf die er Zugriff hat, erfolgt im Back-End Folgendes:
+Die verwaltete Identität für die Data Factory wird verwendet, um Pushvorgänge für Herkunftsdaten von der Data Factory zu Purview zu authentifizieren. Wenn Sie die Data Factory über die Benutzeroberfläche mit Purview verbinden, wird die Rollenzuweisung automatisch hinzugefügt. 
 
-1. Die **verwaltete Data Factory-Identität** wird zur RBAC-Rolle für Purview hinzugefügt: **Datenkurator für Purview**.
+- Weisen Sie für Purview-Konten, die **am oder nach dem 18. August 2021** erstellt wurden, der verwalteten Identität der Data Factory die Rolle **Datenkurator** für die Purview-**Stammsammlung** zu. Weitere Informationen finden Sie unter [Zugriffssteuerung in Azure Purview](../purview/catalog-permissions.md) und unter [Hinzufügen von Rollen und Einschränken des Zugriffs über Sammlungen](../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections).
 
-    :::image type="content" source="./media/how-to-link-azure-data-factory/adf-msi.png" alt-text="Screenshot, der die Azure Data Factory-MSI zeigt." lightbox="./media/how-to-link-azure-data-factory/adf-msi.png":::
-     
-2. Die Data Factory-Pipeline muss erneut ausgeführt werden, sodass die Herkunftsmetadaten per Push zurück an Purview übertragen werden können.
-3. Nach der Ausführung werden die Data Factory-Metadaten per Push an Purview übertragen.
+- Weisen Sie für Purview-Konten, die **vor dem 18. August 2021** erstellt wurden, der verwalteten Identität für die Data Factory die in Azure integrierte Rolle [**Datenkurator für Purview**](../role-based-access-control/built-in-roles.md#purview-data-curator) für das Purview-Konto zu. Weitere Informationen zu Legacyberechtigungen für die Zugriffssteuerung in Azure Purview finden Sie [hier](../purview/catalog-permissions.md#legacy-permission-guide).
 
 ### <a name="remove-data-factory-connections"></a>Entfernen von Data Factory-Verbindungen
+
 Um eine Data Factory-Verbindung zu entfernen, gehen Sie folgendermaßen vor:
 
 1. Klicken Sie auf der Seite **Data Factory-Verbindung** auf die Schaltfläche **Entfernen** neben mindestens einer Data Factory-Verbindung.
@@ -102,25 +99,13 @@ Die Integration zwischen Data Factory und Purview unterstützt nur eine Teilmeng
 
 [!INCLUDE[data-factory-supported-lineage-capabilities](includes/data-factory-common-supported-capabilities.md)]
 
-### <a name="data-flow-support"></a>Dataflow-Unterstützung
-
-| Datenspeicher | Unterstützt |
-| ------------------- | ------------------- | 
-| Azure Blob Storage | Ja |
-| Azure Cosmos DB (SQL-API) \* | Ja | 
-| Azure Data Lake Storage Gen1 | Ja |
-| Azure Data Lake Storage Gen2 | Ja |
-| Azure Database for MySQL \* | Ja | 
-| Azure Database for PostgreSQL \* | Ja |
-| Azure SQL-Datenbank \* | Ja |
-| Azure SQL Managed Instance \* | Ja | 
-| Azure Synapse Analytics \* | Ja |
-
-*\* Azure Purview unterstützt derzeit keine Abfrage oder gespeicherte Prozedur für die Erfassung der Herkunft oder Überprüfung. Die Herkunft ist auf Tabellen- und Ansichtsquellen beschränkt.*
-
 ### <a name="execute-ssis-package-support"></a>Unterstützung der Aktivität „SSIS-Paket ausführen“
 
 Weitere Informationen finden Sie in der [Liste mit unterstützten Datenspeichern](how-to-lineage-sql-server-integration-services.md#supported-data-stores).
+
+## <a name="access-secured-azure-purview-account"></a>Zugreifen auf ein geschütztes Azure Purview-Konto
+      
+Wenn Ihr Purview-Konto durch eine Firewall geschützt ist, erfahren Sie, wie Sie Data Factory über private Purview-Endpunkte den [Zugriff auf ein geschütztes Purview-Konto](../data-factory/how-to-access-secured-purview-account.md) ermöglichen können.
 
 ## <a name="bring-data-factory-lineage-into-purview"></a>Einbringen von Data Factory-Herkunftsdaten in Purview
 

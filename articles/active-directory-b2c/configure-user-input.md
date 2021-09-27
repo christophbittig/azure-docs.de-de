@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/03/2021
+ms.date: 09/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: eb700a4432082f75cf1ddf1ce007cee801597948
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: f2b7eade30ad675b9c64fbe8d21ce5c7f6d63e43
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111409449"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128558417"
 ---
 #  <a name="add-user-attributes-and-customize-user-input-in-azure-active-directory-b2c"></a>Hinzufügen von Benutzerattributen und Anpassen der Benutzereingabe in Azure Active Directory B2C
 
@@ -322,7 +322,8 @@ Um den Anspruch „Ort“ an die Anwendung der vertrauenden Seite zurückzugeben
 
 ## <a name="upload-and-test-your-updated-custom-policy"></a>Hochladen und Testen Ihrer aktualisierten benutzerdefinierten Richtlinie
 
-1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Suchen Sie nach **Azure AD B2C**, und wählen Sie diese Option aus.
 1. Wählen Sie unter **Richtlinien** die Option **Identity Experience Framework** aus.
 1. Wählen Sie **Benutzerdefinierte Richtlinie hochladen** aus.

@@ -2,13 +2,13 @@
 title: Azure Container Registry als Event Grid-Quelle
 description: In diesem Artikel werden die Eigenschaften beschrieben, die mit Azure Event Grid für Container Registry-Ereignisse bereitgestellt werden.
 ms.topic: conceptual
-ms.date: 02/11/2021
-ms.openlocfilehash: 7e19b223e43f30a532c1cd8bdc86f9a29220f5aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/15/2021
+ms.openlocfilehash: 9be7a7b8b9674aa755bc40d56394257783753edd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363575"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651083"
 ---
 # <a name="azure-container-registry-as-an-event-grid-source"></a>Azure Container Registry als Event Grid-Quelle
 
@@ -326,7 +326,7 @@ Das Zielobjekt weist die folgenden Eigenschaften auf:
 
 Das Anforderungsobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | `id` | Zeichenfolge | Die ID der Anforderung, die das Ereignis initiiert hat. |
 | `addr` | Zeichenfolge | Die IP-Adresse oder der Hostname und u.U. der Port der Clientverbindung, die das Ereignis initiiert hat. Dieser Wert ist die „RemoteAddr“ aus der standardmäßigen HTTP-Anforderung. |

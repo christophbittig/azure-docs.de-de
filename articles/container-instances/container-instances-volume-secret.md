@@ -3,12 +3,12 @@ title: Einbinden eines geheimen Volumes in eine Containergruppe
 description: Hier erfahren Sie, wie Sie ein geheimes Volume zum Speichern vertraulicher Informationen einbinden, auf das von Ihren Containerinstanzen zugegriffen werden kann.
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: cd8bd4d59b5e53a0db2455bdfbaf56c05c93d65f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 63fb5ded667ce2d46d97ed51c6b16754c46f2a7b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107770997"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128676274"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>Einbinden eines geheimen Volumes in Azure Container Instances
 
@@ -110,7 +110,7 @@ Füllen Sie als Nächstes für jeden Container in der Containergruppe, in die Si
 Die folgende Resource Manager-Vorlage definiert eine Containergruppe mit einem Container, der ein *geheimes* Volume unter `/mnt/secrets` einbindet. Das geheime Volume verfügt über zwei Geheimnisse, „mysecret1“ und „mysecret2“.
 
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-secret.json -->
-[!code-json[volume-secret](~/azure-docs-json-samples/container-instances/aci-deploy-volume-secret.json)]
+[!code-json[volume-secret](~/resourcemanager-templates/container-instances/aci-deploy-volume-secret.json)]
 
 Um mit der Resource Manager-Vorlage bereitzustellen, speichern Sie den vorherigen JSON-Code in einer Datei namens `deploy-aci.json`, und führen Sie dann den Befehl [az deployment group create][az-deployment-group-create] mit dem Parameter `--template-file` aus:
 

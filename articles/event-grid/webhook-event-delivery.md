@@ -2,13 +2,13 @@
 title: Webhook-Ereignisbereitstellung
 description: In diesem Artikel werden die Webhook-Ereignisbereitstellung und die Endpunktüberprüfung bei der Verwendung von Webhooks beschrieben.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 42ba36a21d307ca85d9cdae850c0c9a991e4f30e
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.date: 09/02/2021
+ms.openlocfilehash: 04ae18ca6aab01331bdc1005498820177dfec56d
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967998"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450195"
 ---
 # <a name="webhook-event-delivery"></a>Webhook-Ereignisbereitstellung
 Ein Webhook ist eine der vielen Möglichkeiten, um Ereignisse aus Azure Event Grid zu empfangen. Wenn ein neues Ereignis bereit ist, sendet der Event Grid-Dienst per POST-Vorgang eine HTTP-Anforderung an den konfigurierten Endpunkt, wobei das Ereignis im Anforderungstext enthalten ist.
@@ -38,13 +38,13 @@ Falls Sie einen anderen Typ von Endpunkt nutzen, z. B. eine auf einem HTTP-Trigg
 ### <a name="validation-details"></a>Überprüfungsdetails
 
 - Zum Zeitpunkt der Erstellung/Aktualisierung des Ereignisabonnements sendet Event Grid ein Abonnementüberprüfungsereignis an den Zielendpunkt.
-- Das Ereignis enthält den Headerwert „aeg-event-type: SubscriptionValidation“.
+- Das Ereignis enthält einen `aeg-event-type: SubscriptionValidation`-Headerwert.
 - Der Hauptteil des Ereignisses weist dasselbe Schema wie andere Event Grid-Ereignisse auf.
-- Die eventType-Eigenschaft des Ereignisses lautet `Microsoft.EventGrid.SubscriptionValidationEvent`.
-- Die Dateneigenschaft des Ereignisses enthält eine `validationCode`-Eigenschaft mit einer zufällig generierten Zeichenfolge. Beispiel: „validationCode: acb13…“.
+- Die `eventType`-Eigenschaft des Ereignisses lautet `Microsoft.EventGrid.SubscriptionValidationEvent`.
+- Die `data`-Eigenschaft des Ereignisses enthält eine `validationCode`-Eigenschaft mit einer zufällig generierten Zeichenfolge. Beispiel: `validationCode: acb13…`.
 - Die Ereignisdaten enthalten auch die `validationUrl`-Eigenschaft mit einer URL für die manuelle Überprüfung des Abonnements.
 - Das Array enthält ausschließlich das Validierungsereignis. Andere Ereignisse werden in einer separaten Anforderung gesendet, nachdem Sie den Validierungscode zurückgegeben haben.
-- Die EventGrid-DataPlane-SDKs verfügen über Klassen, die den Daten des Abonnementüberprüfungsereignisses und der Abonnementüberprüfungsantwort entsprechen.
+- Die EventGrid-SDKs der Datenebene verfügen über Klassen, die den Daten des Abonnementüberprüfungsereignisses und der Abonnementüberprüfungsantwort entsprechen.
 
 Ein Beispiel für „SubscriptionValidationEvent“ finden Sie im folgenden Beispiel:
 
@@ -56,17 +56,17 @@ Ein Beispiel für „SubscriptionValidationEvent“ finden Sie im folgenden Beis
     "subject": "",
     "data": {
       "validationCode": "512d38b6-c7b8-40c8-89fe-f46f9e9622b6",
-      "validationUrl": "https://rp-eastus2.eventgrid.azure.net:553/eventsubscriptions/estest/validate?id=512d38b6-c7b8-40c8-89fe-f46f9e9622b6&t=2018-04-26T20:30:54.4538837Z&apiVersion=2018-05-01-preview&token=1A1A1A1A"
+      "validationUrl": "https://rp-eastus2.eventgrid.azure.net:553/eventsubscriptions/myeventsub/validate?id=0000000000-0000-0000-0000-00000000000000&t=2021-09-01T20:30:54.4538837Z&apiVersion=2018-05-01-preview&token=1A1A1A1A"
     },
     "eventType": "Microsoft.EventGrid.SubscriptionValidationEvent",
-    "eventTime": "2018-01-25T22:12:19.4556811Z",
+    "eventTime": "2021-00-01T22:12:19.4556811Z",
     "metadataVersion": "1",
     "dataVersion": "1"
   }
 ]
 ```
 
-Senden Sie wie im folgenden Beispiel gezeigt den Validierungscode zurück an die Eigenschaft „validationResponse“, um den Besitz des Endpunkts nachzuweisen:
+Senden Sie wie im folgenden Beispiel gezeigt den Validierungscode zurück an die Eigenschaft `validationResponse`, um den Besitz des Endpunkts nachzuweisen:
 
 ```json
 {
@@ -74,14 +74,14 @@ Senden Sie wie im folgenden Beispiel gezeigt den Validierungscode zurück an die
 }
 ```
 
-Sie müssen den Antwortstatuscode „HTTP 200 OK“ zurückgeben. „HTTP 202 Akzeptiert“ wird nicht als gültige Antwort zur Überprüfung des Event Grid-Abonnements erkannt. Die HTTP-Anforderung muss innerhalb von 30 Sekunden abgeschlossen werden. Wenn der Vorgang nicht innerhalb von 30 Sekunden abgeschlossen wird, wird er abgebrochen und kann nach 5 Sekunden wiederholt werden. Wenn alle Versuche zu Fehlern führen, wird dies als Handshake-Validierungsfehler gewertet.
+Sie müssen den Antwortstatuscode **HTTP 200 OK** zurückgeben. **HTTP 202 Accepted** wird nicht als gültige Antwort zur Überprüfung des Event Grid-Abonnements erkannt. Die HTTP-Anforderung muss innerhalb von 30 Sekunden abgeschlossen werden. Wenn der Vorgang nicht innerhalb von 30 Sekunden abgeschlossen wird, wird er abgebrochen und kann nach 5 Sekunden wiederholt werden. Wenn alle Versuche zu Fehlern führen, wird dies als Handshake-Validierungsfehler gewertet.
 
 Alternativ können Sie das Abonnement manuell überprüfen, indem Sie eine GET-Anforderung an die Überprüfungs-URL senden. Das Ereignisabonnement bleibt im Status „Ausstehend“, bis es überprüft wurde. Die Überprüfungs-URL verwendet den Port 553. Wenn die Firewallregeln Port 553 blockieren, müssen die Regeln für einen erfolgreichen manuellen Handshake möglicherweise angepasst werden.
 
 Ein Beispiel für die Handhabung des Handshakes zur Abonnementüberprüfung finden Sie in einem [C#-Beispiel](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs).
 
 ## <a name="endpoint-validation-with-cloudevents-v10"></a>Endpunktüberprüfung mit CloudEvents 1.0
-Wenn Sie mit Event Grid bereits vertraut sind, kennen Sie wahrscheinlich auch den Event Grid-Überprüfungshandshake für Endpunkte, mit dem Missbrauch verhindert werden soll. CloudEvents 1.0 implementiert eine eigene [Semantik für den Schutz vor Missbrauch](webhook-event-delivery.md) über die HTTP OPTIONS-Methode. Weitere Informationen dazu finden Sie [hier](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection). Wenn das CloudEvents-Schema für die Ausgabe verwendet wird, verwendet Event Grid anstelle des Event Grid-Mechanismus für Überprüfungsereignisse den Missbrauchschutz von CloudEvents 1.0.
+CloudEvents 1.0 implementiert eine eigene [Semantik für den Schutz vor Missbrauch](webhook-event-delivery.md) über die **HTTP OPTIONS**-Methode. Weitere Informationen dazu finden Sie [hier](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection). Wenn das CloudEvents-Schema für die Ausgabe verwendet wird, verwendet Event Grid anstelle des Event Grid-Mechanismus für Überprüfungsereignisse den Missbrauchschutz von CloudEvents 1.0.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Im folgenden Artikel finden Sie Informationen zur Behandlung von Problemen bei der Überprüfung von Ereignisabonnements: 

@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie „Mit Apple anmelden“ als Identitätsanbie
 ms.topic: article
 ms.date: 11/19/2020
 ms.reviewer: mikarmar
-ms.openlocfilehash: 4b123b0711954e45108b934622f0fabab5be15e0
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: c0da83a20440fabcf5f149c8acbf49077eb91a07
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123259332"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657156"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-sign-in-using-a-sign-in-with-apple-provider-preview"></a>Konfigurieren Ihrer App Service- oder Azure Functions-App für die Anmeldung über einen „Mit Apple anmelden“-Anbieter (Vorschau)
 
@@ -72,7 +72,7 @@ In Apple muss der geheime Clientschlüssel die Base64-Codierung eines JWT-Tokens
 - **aud:** Apple empfängt das Token, daher ist Apple die Zielgruppe.
 - **exp**: nicht mehr als sechs Monate nach **nbf**
 
-Die Base64-codierte Version der Nutzdaten oben sieht wie folgt aus: ```eyJhbGciOiJFUzI1NiIsImtpZCI6IlVSS0VZSUQwMDEifQ.eyJzdWIiOiJjb20ueW91cmNvbXBhbnkuYXBwMSIsIm5iZiI6MTU2MDIwMzIwNywiZXhwIjoxNTYwMjg5NjA3LCJpc3MiOiJBQkMxMjNERUZHIiwiYXVkIjoiaHR0cHM6Ly9hcHBsZWlkLmFwcGxlLmNvbSJ9.ABSXELWuTbgqfrIUz7bLi6nXvkXAz5O8vt0jB2dSHTQTib1x1DSP4__4UrlKI-pdzNg1sgeocolPNTmDKazO8-BHAZCsdeeTNlgFEzBytIpMKFfVEQbEtGRkam5IeclUK7S9oOva4EK4jV4VmgDrr-LGWWO3TaAxAvy3_ZoKohvFFkVG```
+Die Base64-codierte Version der Nutzdaten oben sieht wie folgt aus: `eyJhbGciOiJFUzI1NiIsImtpZCI6IlVSS0VZSUQwMDEifQ.eyJzdWIiOiJjb20ueW91cmNvbXBhbnkuYXBwMSIsIm5iZiI6MTU2MDIwMzIwNywiZXhwIjoxNTYwMjg5NjA3LCJpc3MiOiJBQkMxMjNERUZHIiwiYXVkIjoiaHR0cHM6Ly9hcHBsZWlkLmFwcGxlLmNvbSJ9.ABSXELWuTbgqfrIUz7bLi6nXvkXAz5O8vt0jB2dSHTQTib1x1DSP4__4UrlKI-pdzNg1sgeocolPNTmDKazO8-BHAZCsdeeTNlgFEzBytIpMKFfVEQbEtGRkam5IeclUK7S9oOva4EK4jV4VmgDrr-LGWWO3TaAxAvy3_ZoKohvFFkVG`
 
 _Hinweis: Apple akzeptiert keine JWT-Token für geheime Clientschlüssel mit einem Ablaufdatum von mehr als sechs Monaten nach dem Erstellungsdatum (oder nbf). Das bedeutet, dass Sie den geheimen Clientschlüssel mindestens alle sechs Monate rotieren müssen._
 

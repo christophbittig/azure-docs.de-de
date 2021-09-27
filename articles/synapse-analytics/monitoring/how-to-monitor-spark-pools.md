@@ -9,20 +9,20 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 8d95897e0c2d58b2a3955918be945800eed9ba56
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c6148f2bd5d3b1555ae61d2da3e922c9cfe632cb
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96465442"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123539657"
 ---
 # <a name="use-synapse-studio-to-monitor-your-apache-spark-pools"></a>Überwachen Ihrer Apache Spark-Pools mit Synapse Studio
 
-Mit Azure Synapse Analytics können Sie mithilfe von Spark Notebooks, Aufträge und andere Arten von Anwendungen in Spark-Pools in Ihrem Arbeitsbereich ausführen.
+Mit Azure Synapse Analytics können Sie mithilfe von Apache Spark Notebooks, Aufträge und andere Arten von Anwendungen in Apache Spark-Pools in Ihrem Arbeitsbereich ausführen.
 
 In diesem Artikel wird erläutert, wie Sie Ihre Apache Spark-Pools überwachen, damit Sie den Status Ihrer Pools im Blick behalten, einschließlich der Anzahl von virtuellen Kernen, die von einzelnen Arbeitsbereichsbenutzern verwendet werden.
 
-## <a name="access-spark-pools-list"></a>Zugreifen auf die Spark-Poolliste
+## <a name="access-apache-spark-pools-list"></a>Zugreifen auf die Apache Spark-Poolliste
 
 Um die Liste der Apache Spark-Pools in Ihrem Arbeitsbereich anzuzeigen, [öffnen Sie zunächst Synapse Studio](https://web.azuresynapse.net/), und wählen Sie Ihren Arbeitsbereich aus.
 
@@ -36,17 +36,17 @@ Wählen Sie **Apache Spark-Pools** aus, um die Liste der Apache Spark-Pools anzu
 
  ![Auswählen von Apache Spark-Pools](./media/how-to-monitor-spark-pools/monitor-hub-nav-spark-pools.png)
 
-## <a name="filter-your-spark-pools"></a>Filtern Ihrer Spark-Pools
+## <a name="filter-your-apache-spark-pools"></a>Filtern Ihrer Apache Spark-Pools
 
-Sie können die Liste nach den Spark-Pools filtern, die Sie interessieren. Mit den Filtern am oberen Rand des Bildschirms können Sie ein Feld angeben, nach dem Sie filtern möchten.
+Sie können die Liste nach den Apache Spark-Pools filtern, die Sie interessieren. Mit den Filtern am oberen Rand des Bildschirms können Sie ein Feld angeben, nach dem Sie filtern möchten.
 
-Beispielsweise können Sie die Ansicht so filtern, dass nur Spark-Pools angezeigt werden, die den Namen „dataprep“ enthalten:
+Beispielsweise können Sie die Ansicht so filtern, dass nur Apache Spark-Pools angezeigt werden, die den Namen „dataprep“ enthalten:
 
 ![Beispielfilter](./media/how-to-monitor-spark-pools/filter-example.png)
 
-## <a name="view-details-about-a-specific-spark-pool"></a>Anzeigen von Details zu einem bestimmten Spark-Pool
+## <a name="view-details-about-a-specific-apache-spark-pool"></a>Anzeigen von Details zu einem bestimmten Apache Spark-Pool
 
-Um Details zu einem Ihrer Spark-Pools anzuzeigen, wählen Sie den Spark-Pool aus.
+Um Details zu einem Ihrer Apache Spark-Pools anzuzeigen, wählen Sie den Apache Spark-Pool aus.
 
 ![Details zum Apache Spark-Pool](./media/how-to-monitor-spark-pools/spark-pool-details.png)
 

@@ -4,13 +4,13 @@ ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: include
-ms.date: 08/25/2021
-ms.openlocfilehash: 61f0dc4bf556c992721b5cd7cd2859ef30d8cbb9
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.date: 09/15/2021
+ms.openlocfilehash: cb10d36bd426655db6a059dad3bda70cf21cf123
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123355385"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128908804"
 ---
 ### <a name="copy-activity-support"></a>Unterstützung der Copy-Aktivität
 
@@ -47,7 +47,6 @@ Wenn Sie die folgenden Funktionen der Kopieraktivität verwenden, wird die Erfas
 - Kopieren von Daten in Azure Synapse Analytics mithilfe von PolyBase oder der COPY-Anweisung
 - Komprimierungseinstellung für Binärdateien, durch Trennzeichen getrennte Textdateien, Excel-, JSON- und XML-Dateien
 - Quellpartitionsoptionen für Azure SQL-Datenbank, Azure SQL Managed Instance, Azure Synapse Analytics, SQL Server und SAP-Tabelle
-- Option zur Quellpartitionsermittlung für dateibasierte Speicher
 - Kopieren von Daten in eine dateibasierte Senke mit Einstellung für maximale Zeilenanzahl pro Datei
 
 Zusätzlich zur Datenherkunft wird das Datenobjektschema (siehe Registerkarte Objekte -> Schema) für die folgenden Konnektoren gemeldet:

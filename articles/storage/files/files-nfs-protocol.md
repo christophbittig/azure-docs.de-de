@@ -8,12 +8,12 @@ ms.date: 07/01/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 4e12f578fe8bd2eff97deec7b23656086e80475c
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 9a76298b829df96ca6fcf7c483eeec98e1f5b36d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340412"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673215"
 ---
 # <a name="nfs-file-shares-in-azure-files-preview"></a>NFS-Dateifreigaben in Azure Files (Vorschau)
 Azure Files unterstützt zwei Branchenstandardprotokolle für die Einbindung von Azure-Dateifreigaben: das [SMB-Protokoll (Server Message Block)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) und das [NFS-Protokoll (Network File System)](https://en.wikipedia.org/wiki/Network_File_System) (Vorschau). In Azure Files können Sie das Dateisystemprotokoll auswählen, das sich für Ihre Workload am besten eignet. Bei Azure-Dateifreigaben ist der Zugriff auf eine einzelne Azure-Dateifreigabe über das SMB- oder das NFS-Protokoll nicht möglich. Sie können jedoch SMB- und NFS-Dateifreigaben innerhalb desselben Speicherkontos erstellen. Für alle Dateifreigaben ermöglicht Azure Files Dateifreigaben in Unternehmensqualität, die entsprechend Ihren Speicheranforderungen hochskaliert werden können und auf die Tausende von Clients gleichzeitig zugreifen können.
@@ -99,7 +99,6 @@ NFS-Dateifreigaben in Azure werden nur für Premium-Dateifreigaben angeboten, be
 Die NFS-Vorschauversion funktioniert nachgewiesenermaßen gut mit Workloads wie Basisverzeichnisse für universelle Dateiserver und Inhaltsrepositorys für Anwendungsworkloads.
 
 Bei den folgenden Workloads sind Probleme bekannt. Eine Liste bekannter Probleme finden Sie im Artikel zur [Problembehandlung bei NFS-Dateifreigaben in Azure](storage-troubleshooting-files-nfs.md):
-- Bei IBM MQ kommt es zu Sperrproblemen.
 - Bei Oracle Database besteht eine Inkompatibilität mit dem dNFS-Feature.
 - Aufgrund eines [bekannten bestehenden Problems mit „ls -l“](storage-troubleshooting-files-nfs.md#ls-la-throws-io-error) tritt in der SAP-Anwendungsschicht ein inkonsistentes Verhalten auf.
 

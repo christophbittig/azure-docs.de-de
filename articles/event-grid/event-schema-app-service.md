@@ -3,14 +3,14 @@ title: Azure App Service als Event Grid-Quelle
 description: In diesem Artikel wird beschrieben, wie Azure App Service als Event Grid-Ereignisquelle verwendet wird. Er enthält das Schema sowie Links zu Tutorials und Artikeln mit Vorgehensweisen.
 author: jasonfreeberg
 ms.topic: conceptual
-ms.date: 03/06/2021
+ms.date: 09/15/2021
 ms.author: jafreebe
-ms.openlocfilehash: 404fac634a628da49dee72b10b52785820fe1bf6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 92667242b52ee58383f68e5b032eb5580cad2826
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443776"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128647440"
 ---
 # <a name="azure-app-service-as-an-event-grid-source"></a>Azure App Service als Event Grid-Quelle
 
@@ -44,7 +44,7 @@ Azure App Service gibt die folgenden Ereignistypen aus:
 Wenn ein Ereignis ausgelöst wird, sendet der Event Grid-Dienst Daten zum Ereignis an den Endpunkt, der über ein entsprechendes Abonnement verfügt.
 In diesem Abschnitt wird anhand eines Beispiels gezeigt, wie diese Daten für jedes Ereignis aussehen. Jedes Ereignis weist die folgenden Daten auf oberster Ebene auf:
 
-|     Eigenschaft          |     Typ     |     Beschreibung                                                                                                                                |
+|     Eigenschaft          |     type     |     Beschreibung                                                                                                                                |
 |-----------------------|--------------|------------------------------------------------------------------------------------------------------------------------------------------------|
 |    `topic`              |    Zeichenfolge    |    Vollständiger Ressourcenpfad zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt.                                      |
 |    `subject`            |    Zeichenfolge    |    Vom Herausgeber definierter Pfad zum Ereignisbetreff.                                                                                              |
@@ -60,7 +60,7 @@ In diesem Abschnitt wird anhand eines Beispiels gezeigt, wie diese Daten für je
 Wenn ein Ereignis ausgelöst wird, sendet der Event Grid-Dienst Daten zum Ereignis an den Endpunkt, der über ein entsprechendes Abonnement verfügt.
 In diesem Abschnitt wird anhand eines Beispiels gezeigt, wie diese Daten für jedes Ereignis aussehen. Jedes Ereignis weist die folgenden Daten auf oberster Ebene auf:
 
-|     Eigenschaft          |     Typ     |     Beschreibung                                                                                                                                |
+|     Eigenschaft          |     type     |     Beschreibung                                                                                                                                |
 |-----------------------|--------------|------------------------------------------------------------------------------------------------------------------------------------------------|
 |    `source`              |    Zeichenfolge    |    Vollständiger Ressourcenpfad zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt.                                      |
 |    `subject`            |    Zeichenfolge    |    Vom Herausgeber definierter Pfad zum Ereignisbetreff.                                                                                              |
@@ -128,7 +128,7 @@ In diesem Abschnitt wird anhand eines Beispiels gezeigt, wie diese Daten für je
 
 Das Datenobjekt enthält die folgenden Eigenschaften:
 
-|    Eigenschaft                |    Typ      |    BESCHREIBUNG                                                                                                       |
+|    Eigenschaft                |    type      |    BESCHREIBUNG                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    `appEventTypeDetail`      |    Objekt (object)    |    Detail einer Aktion für die App                                                                                       |
 |    `action`                  |    Zeichenfolge    |    Typ der Aktion des Vorgangs                                                                                   |
@@ -194,7 +194,7 @@ Das Datenobjekt enthält die folgenden Eigenschaften:
 
 Das Datenobjekt enthält die folgenden Eigenschaften:
 
-|    Eigenschaft                |    Typ      |    BESCHREIBUNG                                                                                                       |
+|    Eigenschaft                |    type      |    BESCHREIBUNG                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    `appEventTypeDetail`      |    Objekt (object)    |    Detail einer Aktion für die App                                                                                       |
 |    `action`                  |    Zeichenfolge    |    Typ der Aktion des Vorgangs                                                                                   |
@@ -260,7 +260,7 @@ Das Datenobjekt enthält die folgenden Eigenschaften:
 
 Das Datenobjekt enthält die folgenden Eigenschaften:
 
-|    Eigenschaft                |    Typ      |    BESCHREIBUNG                                                                                                       |
+|    Eigenschaft                |    type      |    BESCHREIBUNG                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    `appEventTypeDetail`      |    Objekt (object)    |    Detail einer Aktion für die App                                                                                       |
 |    `action`                 |    Zeichenfolge    |    Typ der Aktion des Vorgangs                                                                                   |
@@ -327,7 +327,7 @@ Das Datenobjekt enthält die folgenden Eigenschaften:
 
 Das Datenobjekt enthält die folgenden Eigenschaften:
 
-|    Eigenschaft                |    Typ      |    BESCHREIBUNG                                                                                                       |
+|    Eigenschaft                |    type      |    BESCHREIBUNG                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    `appEventTypeDetail`      |    Objekt (object)    |    Detail einer Aktion für die App                                                                                       |
 |    `action`                 |    Zeichenfolge    |    Typ der Aktion des Vorgangs                                                                                   |
@@ -393,7 +393,7 @@ Das Datenobjekt enthält die folgenden Eigenschaften:
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
-|    Eigenschaft                |    Typ      |    BESCHREIBUNG                                                                                                       |
+|    Eigenschaft                |    type      |    BESCHREIBUNG                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    `appEventTypeDetail`      |    Objekt (object)    |    Detail einer Aktion für die App                                                                                       |
 |    `action`                  |    Zeichenfolge    |    Typ der Aktion des Vorgangs                                                                                   |
@@ -477,7 +477,7 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
-|    Eigenschaft                         |    Typ      |    BESCHREIBUNG                                                                                                       |
+|    Eigenschaft                         |    type      |    BESCHREIBUNG                                                                                                       |
 |-------------------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    `appServicePlanEventTypeDetail`    |    Objekt (object)    |    Detail einer Aktion für den App Service-Plan                                                                          |
 |    `stampKind`                        |    Zeichenfolge    |    Art der Umgebung, in der sich der App Service-Plan befindet                                                                     |

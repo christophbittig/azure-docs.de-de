@@ -3,16 +3,16 @@ title: Testen des selbstgehosteten Entwicklerportals
 titleSuffix: Azure API Management
 description: Hier erfahren Sie, wie Sie Komponententests und End-to-End-Tests für Ihr selbstgehostetes API Management-Portal einrichten.
 author: dlepow
-ms.author: apimpm
+ms.author: danlep
 ms.date: 03/25/2021
 ms.service: api-management
 ms.topic: how-to
-ms.openlocfilehash: ab6a7aa8fc4f11c34126415379294ef1e48fa286
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 62c5ab98e067bb735bcfa1510cae405b17461cac
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107741210"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646437"
 ---
 # <a name="test-the-self-hosted-developer-portal"></a>Testen des selbstgehosteten Entwicklerportals
 

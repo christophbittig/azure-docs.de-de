@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/18/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 87fd5de90896a1a5b97cf9fa07a880ebcea1f35b
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: f5928815b6559c257319eb625587135cbf99df0d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122420619"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128645738"
 ---
 # <a name="best-practices-for-disaster-recovery-with-azure-file-sync"></a>Bewährte Methoden für die Notfallwiederherstellung mit der Azure-Dateisynchronisierung
 
@@ -30,7 +30,6 @@ Aufgrund der Hybridität funktionieren einige herkömmliche Strategien zur Serve
 - Klonen des Betriebssystems eines Servers auf einen anderen Server
 - Zurückkehren zu einem vorherigen Prüfpunkt eines virtuellen Computers
 - Wiederherstellen von Dateien aus einer lokalen Sicherung, wenn Cloudtiering aktiviert ist
-
 
 ## <a name="high-availability"></a>Hochverfügbarkeit
 
@@ -67,8 +66,8 @@ Beim Azure-Dateisynchronisierungs-Agent ab Version 9 werden [VSS-Momentaufnahmen
 Um eine stabile Notfallwiederherstellungslösung sicherzustellen, fügen Sie Ihrer Infrastruktur eine Form von Datenredundanz hinzu. Es gibt vier Redundanzangebote für Azure Files: [lokal redundanter Speicher (LRS)](../common/storage-redundancy.md#locally-redundant-storage), [zonenredundanter Speicher (ZRS)](../common/storage-redundancy.md#zone-redundant-storage), [georedundanter Speicher (GRS)](../common/storage-redundancy.md#geo-redundant-storage) und [geozonenredundanter Speicher (GZRS)](../common/storage-redundancy.md#geo-zone-redundant-storage).
 
 - [Lokal redundanter Speicher (LRS)](../common/storage-redundancy.md#locally-redundant-storage): Bei LRS wird jede Datei in einem Azure-Speichercluster dreimal gespeichert. Dies schützt vor Datenverlusten aufgrund von Hardwarefehlern, z. B. bei einem schadhaften Laufwerk. Bei einem Katastrophenfall in einem Rechenzentrum (Feuer, Überschwemmung usw.) gehen jedoch eventuell alle Replikate in einem Speicherkonto, das LRS verwendet, verloren oder können nicht mehr wiederhergestellt werden.
-- [Zonenredundanter Speicher (ZRS)](../common/storage-redundancy.md#zone-redundant-storage): Bei ZRS werden drei Kopien jeder Datei gespeichert. Diese Kopien werden jedoch physisch in drei verschiedenen Speicherclustern in verschiedenen Azure-*Verfügbarkeitszonen* isoliert. Verfügbarkeitszonen sind eindeutige physische Standorte in einer Azure-Region. Jede Zone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren. Ein Schreibvorgang in den Speicher wird erst akzeptiert, wenn die Daten in allen drei Verfügbarkeitszonen in die Speichercluster geschrieben wurden. 
-- [Georedundanter Speicher (GRS)](../common/storage-redundancy.md#geo-redundant-storage): Bei GRS verfügen Sie über zwei Regionen, eine primäre und eine sekundäre Region. Dateien werden dreimal in einem Azure-Speichercluster in der primären Region gespeichert. Schreibvorgänge werden asynchron in eine von Microsoft definierte sekundäre Region repliziert. GRS bietet sechs Kopien Ihrer Daten, die auf zwei Azure-Regionen verteilt sind.
+- [Zonenredundanter Speicher (ZRS)](../common/storage-redundancy.md#zone-redundant-storage) : Bei ZRS werden drei Kopien jeder Datei gespeichert. Diese Kopien werden jedoch physisch in drei verschiedenen Speicherclustern in verschiedenen Azure-*Verfügbarkeitszonen* isoliert. Verfügbarkeitszonen sind eindeutige physische Standorte in einer Azure-Region. Jede Zone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren. Ein Schreibvorgang in den Speicher wird erst akzeptiert, wenn die Daten in allen drei Verfügbarkeitszonen in die Speichercluster geschrieben wurden.
+- [Georedundanter Speicher (GRS)](../common/storage-redundancy.md#geo-redundant-storage) : Bei GRS verfügen Sie über zwei Regionen, eine primäre und eine sekundäre Region. Dateien werden dreimal in einem Azure-Speichercluster in der primären Region gespeichert. Schreibvorgänge werden asynchron in eine von Microsoft definierte sekundäre Region repliziert. GRS bietet sechs Kopien Ihrer Daten, die auf zwei Azure-Regionen verteilt sind.
 - [Geozonenredundanter Speicher (GZRS)](../common/storage-redundancy.md#geo-zone-redundant-storage): Sie können sich GZRS wie ZRS vorstellen, jedoch mit Georedundanz. Bei GZRS werden Dateien dreimal in drei verschiedenen Speicherclustern in der primären Region gespeichert. Alle Schreibvorgänge werden dann asynchron in eine von Microsoft definierte sekundäre Region repliziert.
 
 Für eine stabile Notfallwiederherstellungslösung sollten die meisten Kunden ZRS in Betracht ziehen. ZRS bringt die geringsten Zusatzkosten für die zusätzlichen Datenredundanzvorteile mit sich und ist auch die nahtloseste Option bei einem Ausfall. Wenn die Richtlinien Ihrer Organisation oder gesetzliche Anforderungen Georedundanz für Ihre Daten erfordern, sollten Sie entweder GRS oder GZRS in Betracht ziehen.

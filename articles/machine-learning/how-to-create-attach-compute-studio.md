@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/16/2021
 ms.topic: how-to
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 8f74b21e2c40b441c48cc3a2837f396252408224
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: be6bc9166ffc0bddae5433734d3213b53e6f6f0e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346512"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673652"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Erstellen von Computezielen für Modelltraining und -bereitstellung in Azure Machine Learning Studio
 
@@ -110,7 +110,7 @@ Wählen Sie **Weiter** aus, um mit **Erweiterte Einstellungen** fortzufahren, un
 
 ### <a name="enable-ssh-access"></a><a name="enable-ssh"></a> Aktivieren des SSH-Zugriffs
 
-Der SSH-Zugriff ist standardmäßig deaktiviert.  Der SSH-Zugriff kann nach dem Erstellen nicht mehr geändert werden. Stellen Sie sicher, dass Sie den Zugriff aktivieren, wenn Sie das interaktive Debuggen mit [VS Code Remote](how-to-set-up-vs-code-remote.md) planen.  
+Der SSH-Zugriff ist standardmäßig deaktiviert.  Der SSH-Zugang kann nach der Erstellung nicht geändert werden. Stellen Sie sicher, dass Sie den Zugriff aktivieren, wenn Sie das interaktive Debuggen mit [VS Code Remote](how-to-set-up-vs-code-remote.md) planen.  
 
 [!INCLUDE [amlinclude-info](../../includes/machine-learning-enable-ssh.md)]
 
@@ -198,10 +198,10 @@ Wenn Sie Ihre Compute-Instanz oder Ihren Computecluster mit aktiviertem SSH-Zugr
 
 1. Kopieren Sie die Verbindungszeichenfolge.
 1. Unter Windows öffnen Sie PowerShell oder eine Eingabeaufforderung:
-    1. Wechseln Sie in das Verzeichnis oder den Ordner, in dem Ihr Schlüssel gespeichert ist.
-    1. Fügen Sie der Verbindungszeichenfolge das Flag „-i“ hinzu, um den privaten Schlüssel zu finden und auf seinen Speicherort zu verweisen:
+   1. Wechseln Sie in das Verzeichnis oder den Ordner, in dem Ihr Schlüssel gespeichert ist.
+   1. Fügen Sie der Verbindungszeichenfolge das Flag „-i“ hinzu, um den privaten Schlüssel zu finden und auf seinen Speicherort zu verweisen:
     
-        ```ssh -i <keyname.pem> azureuser@... (rest of connection string)```
+      `ssh -i <keyname.pem> azureuser@... (rest of connection string)`
 
 1. Führen Sie für Linux-Benutzer die Schritte unter [Erstellen und Verwenden eines SSH-Schlüsselpaars für virtuelle Linux-Computer in Azure](../virtual-machines/linux/mac-create-ssh-keys.md) aus.
 

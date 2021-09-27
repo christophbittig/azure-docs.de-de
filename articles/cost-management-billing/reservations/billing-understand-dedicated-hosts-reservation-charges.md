@@ -5,14 +5,14 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/28/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 8d273aae3588a006f7b0a55d2798b7a43c040c9b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3e0f6bc30ca86653ff7a05f2874236a51d359955
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148376"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128631094"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-azure-dedicated-hosts"></a>Anwendung des Azure-Reservierungsrabatts auf Azure Dedicated Host-Instanzen
 
@@ -30,7 +30,7 @@ Durch eine reservierte Azure Dedicated Host-Instanz erhalten Sie einen Rabatt 
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Kontakt
 
-Sollten Sie weitere Fragen haben oder Hilfe benötigen,  [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

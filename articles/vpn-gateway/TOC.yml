@@ -261,7 +261,7 @@
       href: create-zone-redundant-vnet-gateway.md
     - name: Konfigurieren von Paketerfassungen
       href: packet-capture.md
-    - name: Systemüberwachung
+    - name: Überwachung
       items:
         - name: "Überwachen von VPN\_Gateway"
           href: monitor-vpn-gateway.md
@@ -270,8 +270,9 @@
         - name: Einrichten von Warnungen auf der Grundlage von Ressourcenprotokollen
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md
     - name: Problembehandlung
-      href: vpn-gateway-troubleshoot.md
       items:
+        - name: Beheben von Problemen beim VPN Gateway
+          href: vpn-gateway-troubleshoot.md
         - name: Problembehandlung bei Azure VPN Gateway mithilfe von Diagnoseprotokollen
           href: troubleshoot-vpn-with-azure-diagnostics.md
         - name: Von der Community vorgeschlagene VPN- oder Firewallgeräteeinstellungen

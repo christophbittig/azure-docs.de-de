@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/14/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c5d4c390110a5b3eef7509508d35c9554f7be984
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: cb19372e5b97a9f508367366faa9ae49d0d11261
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110065978"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128596959"
 ---
 # <a name="storage-account-overview"></a>Speicherkontoübersicht
 
@@ -66,7 +66,7 @@ Erstellen Sie die URL für den Zugriff auf ein Objekt in einem Speicherkonto, in
 
 `http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*`
 
-Sie können Ihr Speicherkonto auch für die Verwendung einer benutzerdefinierten Domäne konfigurieren. Weitere Informationen finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für Ihr Azure Storage-Konto](../blobs/storage-custom-domain-name.md).  
+Sie können Ihr Speicherkonto auch für die Verwendung einer benutzerdefinierten Domäne konfigurieren. Weitere Informationen finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für Ihr Azure Storage-Konto](../blobs/storage-custom-domain-name.md).
 
 ## <a name="migrate-a-storage-account"></a>Migrieren eines Speicherkontos
 

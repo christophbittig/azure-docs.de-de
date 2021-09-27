@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/29/2021
 ms.author: tamram
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 7c4e0fed78eb85e0e5326cbee6c6823466811c16
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 0d5d9eb7d2d8097da47d6639b1b6bb6887825207
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321865"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128649112"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“
 
@@ -77,8 +77,8 @@ Blobzugriffsebenen ermöglichen es, den kostengünstigsten Speicher basierend au
 
 Standardmäßig wird ein neues Speicherkonto auf der heißen Zugriffsebene erstellt. Für ein Speicherkonto vom Typ „Universell V1“ kann ein Upgrade auf die heiße oder kalte Kontoebene durchgeführt werden. Wenn beim Upgrade keine Kontozugriffsebene angegeben wird, wird sie standardmäßig auf „Heiß“ aktualisiert. Wenn Sie untersuchen, welche Zugriffsebene nach dem Upgrade verwendet werden soll, sollten Sie das Szenario Ihrer aktuellen Datennutzung berücksichtigen. Es gibt zwei typische Benutzerszenarien für die Migration auf ein Konto vom Typ „Allgemein v2“:
 
-* Sie verfügen über ein vorhandenes Speicherkonto vom Typ „Allgemein v1“ und möchten ein Upgrade auf ein Speicherkonto vom Typ „Allgemein v2“ mit der richtigen Speicherzugriffsebene für Blobdaten bewerten.
-* Sie haben sich für die Nutzung eines Speicherkontos vom Typ „Allgemein v2“ entschieden oder besitzen bereits ein Konto dieser Art und möchten ermitteln, ob Sie die Speicherzugriffsebene „Heiß“ oder „Kalt“ für Blobdaten verwenden sollen.
+- Sie verfügen über ein vorhandenes Speicherkonto vom Typ „Allgemein v1“ und möchten ein Upgrade auf ein Speicherkonto vom Typ „Allgemein v2“ mit der richtigen Speicherzugriffsebene für Blobdaten bewerten.
+- Sie haben sich für die Nutzung eines Speicherkontos vom Typ „Allgemein v2“ entschieden oder besitzen bereits ein Konto dieser Art und möchten ermitteln, ob Sie die Speicherzugriffsebene „Heiß“ oder „Kalt“ für Blobdaten verwenden sollen.
 
 In beiden Fällen sollten Sie zuerst die Kosten für Speicherung, Zugriff und Arbeiten mit Ihren Daten in einem Speicherkonto vom Typ „Allgemein v2“ schätzen und diesen Betrag mit Ihren derzeitigen Kosten vergleichen.
 
@@ -88,17 +88,17 @@ Ein Upgrade Ihres Speicherkontos des Typs „v1“ auf „Allgemein v2“ ist ko
 
 Für alle Speicherkonten wird ein Blobspeicher-Preismodell verwendet, das auf der Ebene der einzelnen Blobs basiert. Bei Verwendung eines Speicherkontos sollten folgende Abrechnungsaspekte berücksichtigt werden:
 
-* **Speicherkosten:** Die Kosten für die Datenspeicherung hängen nicht nur von der gespeicherten Datenmenge ab, sondern auch von der Speicherzugriffsebene. Je „cooler“ die Ebene, desto geringer die Kosten pro GB.
+- **Speicherkosten:** Die Kosten für die Datenspeicherung hängen nicht nur von der gespeicherten Datenmenge ab, sondern auch von der Speicherzugriffsebene. Je „cooler“ die Ebene, desto geringer die Kosten pro GB.
 
-* **Kosten für den Datenzugriff:** Je „kälter“ die Ebene, desto höher die Gebühren für den Datenzugriff. Bei den Speicherzugriffsebenen „Kalt“ und „Archiv“ fallen Zugriffsgebühren für Lesevorgänge pro Gigabyte an.
+- **Kosten für den Datenzugriff:** Je „kälter“ die Ebene, desto höher die Gebühren für den Datenzugriff. Bei den Speicherzugriffsebenen „Kalt“ und „Archiv“ fallen Zugriffsgebühren für Lesevorgänge pro Gigabyte an.
 
-* **Transaktionskosten:** Für alle Ebenen fällt eine Gebühr pro Transaktion an, die sich erhöht, je „kälter“ die Ebene ist.
+- **Transaktionskosten:** Für alle Ebenen fällt eine Gebühr pro Transaktion an, die sich erhöht, je „kälter“ die Ebene ist.
 
-* **Datenübertragungskosten bei Georeplikation:** Diese Gebühr gilt nur für Konten mit konfigurierter Georeplikation (einschließlich GRS und RA-GRS). Die Datenübertragung für die Georeplikation wird pro Gigabyte abgerechnet.
+- **Datenübertragungskosten bei Georeplikation:** Diese Gebühr gilt nur für Konten mit konfigurierter Georeplikation (einschließlich GRS und RA-GRS). Die Datenübertragung für die Georeplikation wird pro Gigabyte abgerechnet.
 
-* **Kosten für ausgehende Datenübertragungen:** Ausgehende Datenübertragungen (Daten, die aus einer Azure-Region übertragen werden) werden genau wie bei allgemeinen Speicherkonten nach Bandbreitennutzung pro Gigabyte abgerechnet.
+- **Kosten für ausgehende Datenübertragungen:** Ausgehende Datenübertragungen (Daten, die aus einer Azure-Region übertragen werden) werden genau wie bei allgemeinen Speicherkonten nach Bandbreitennutzung pro Gigabyte abgerechnet.
 
-* **Änderung der Speicherzugriffsebene:** Bei einem Wechsel der Zugriffsebene des Speicherkontos von „Kalt“ zu „Heiß“ fällt eine Gebühr an, die den Kosten entspricht, die durch das Lesen aller im Speicherkonto vorhandenen Daten entstehen. Beim Ändern der Zugriffsebene des Kontos von „Heiß“ in „Kalt“ fällt aber eine Gebühr an, die dem Schreiben aller Daten auf die Ebene „Kalt“ entspricht (nur GPv2-Konten).
+- **Änderung der Speicherzugriffsebene:** Bei einem Wechsel der Zugriffsebene des Speicherkontos von „Kalt“ zu „Heiß“ fällt eine Gebühr an, die den Kosten entspricht, die durch das Lesen aller im Speicherkonto vorhandenen Daten entstehen. Beim Ändern der Zugriffsebene des Kontos von „Heiß“ in „Kalt“ fällt aber eine Gebühr an, die dem Schreiben aller Daten auf die Ebene „Kalt“ entspricht (nur GPv2-Konten).
 
 > [!NOTE]
 > Weitere Informationen zum Preismodell für Speicherkonten finden Sie auf der Seite [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/). Weitere Informationen zu den Kosten für ausgehende Datenübertragungen finden Sie auf der Seite [Datenübertragungen – Preisdetails](https://azure.microsoft.com/pricing/details/data-transfers/).
@@ -107,13 +107,13 @@ Für alle Speicherkonten wird ein Blobspeicher-Preismodell verwendet, das auf de
 
 Zur Ermittlung der Kosten für die Speicherung und den Zugriff auf Blobdaten in einem Speicherkonto vom Typ „Allgemein v2“ auf einer bestimmten Ebene, evaluieren Sie Ihr bestehendes Nutzungsmuster oder schätzen Sie Ihr erwartetes Nutzungsmuster. Dazu benötigen Sie im Allgemeinen folgende Informationen:
 
-* Ihr Blobspeicherverbrauch in GB, einschließlich:
-  * Wie viele Daten werden im Speicherkonto gespeichert?
-  * Wie ändert sich das Datenvolumen monatlich; werden alte Daten beständig durch neue Daten ersetzt?
+- Ihr Blobspeicherverbrauch in GB, einschließlich:
+  - Wie viele Daten werden im Speicherkonto gespeichert?
+  - Wie ändert sich das Datenvolumen monatlich; werden alte Daten beständig durch neue Daten ersetzt?
 
-* Das primäre Zugriffsmuster für Ihre Blobspeicherdaten, einschließlich:
-  * Wie viele Daten werden aus dem Speicherkonto gelesen und in das Speicherkonto geschrieben?
-  * Wie viele Lesevorgänge finden im Vergleich zu Schreibvorgängen für die Daten im Speicherkonto statt?
+- Das primäre Zugriffsmuster für Ihre Blobspeicherdaten, einschließlich:
+  - Wie viele Daten werden aus dem Speicherkonto gelesen und in das Speicherkonto geschrieben?
+  - Wie viele Lesevorgänge finden im Vergleich zu Schreibvorgängen für die Daten im Speicherkonto statt?
 
 Um die für Ihre Bedürfnisse am besten geeignete Zugriffsebene zu bestimmen, kann es hilfreich sein zu ermitteln, wie viel Kapazität Ihre Blobdaten nutzen und wie diese Daten verwendet werden. Dazu überprüfen Sie am besten die Überwachungsmetriken für Ihr Konto.
 
@@ -155,9 +155,9 @@ Die Summe von *'TotalBillableRequests'* über alle Einträge für eine API in de
 
 Zur Ermittlung der ungefähren Transaktionskosten für Blob-Speicherkonten müssen die Transaktionen in drei Gruppen unterteilt werden, da jeweils unterschiedliche Preise gelten.
 
-* Schreibtransaktionen wie *'PutBlob'* , *'PutBlock'* , *'PutBlockList'* , *'AppendBlock'* , *'ListBlobs'* , *'ListContainers'* , *'CreateContainer'* , *'SnapshotBlob'* und *'CopyBlob'* .
-* Löschtransaktionen wie *'DeleteBlob'* und *'DeleteContainer'* .
-* Alle anderen Transaktionen.
+- Schreibtransaktionen wie *'PutBlob'* , *'PutBlock'* , *'PutBlockList'* , *'AppendBlock'* , *'ListBlobs'* , *'ListContainers'* , *'CreateContainer'* , *'SnapshotBlob'* und *'CopyBlob'* .
+- Löschtransaktionen wie *'DeleteBlob'* und *'DeleteContainer'* .
+- Alle anderen Transaktionen.
 
 Um die Transaktionskosten für GPv1-Speicherkonten zu schätzen, müssen Sie alle Transaktionen unabhängig vom Vorgang bzw. von der API aggregieren.
 
@@ -167,9 +167,9 @@ Die Speicheranalyse liefert zwar nicht die Menge der Daten, die aus einem Speich
 
 Zur Ermittlung der ungefähren Datenzugriffskosten für Blob-Speicherkonten müssen die Transaktionen in zwei Gruppen unterteilt werden.
 
-* Die Menge der Daten, die aus dem Speicherkonto abgerufen werden, kann geschätzt werden, indem vor allem für die Vorgänge *'GetBlob'* und *'CopyBlob'* die Summe von *'TotalEgress'* geprüft wird.
+- Die Menge der Daten, die aus dem Speicherkonto abgerufen werden, kann geschätzt werden, indem vor allem für die Vorgänge *'GetBlob'* und *'CopyBlob'* die Summe von *'TotalEgress'* geprüft wird.
 
-* Die Menge der Daten, die in das Speicherkonto geschrieben werden, kann anhand der Summe von *'TotalIngress'* für die Vorgänge *'PutBlob'* , *'PutBlock'* , *'CopyBlob'* und *'AppendBlock'* geschätzt werden.
+- Die Menge der Daten, die in das Speicherkonto geschrieben werden, kann anhand der Summe von *'TotalIngress'* für die Vorgänge *'PutBlob'* , *'PutBlock'* , *'CopyBlob'* und *'AppendBlock'* geschätzt werden.
 
 Bei Verwendung eines GRS- oder RA-GRS-Speicherkontos können die Datenübertragungskosten mit Georeplikation für Blob-Speicherkonten auch auf der Grundlage der Schätzung für die Menge an geschriebenen Daten berechnet werden.
 
@@ -178,7 +178,7 @@ Bei Verwendung eines GRS- oder RA-GRS-Speicherkontos können die Datenübertragu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Speicherkontoübersicht](storage-account-overview.md)
-* [Erstellen eines Speicherkontos](storage-account-create.md)
-* [Verschieben eines Azure Storage-Kontos in eine andere Region](storage-account-move.md)
-* [Wiederherstellen eines gelöschten Speicherkontos](storage-account-recover.md)
+- [Speicherkontoübersicht](storage-account-overview.md)
+- [Erstellen eines Speicherkontos](storage-account-create.md)
+- [Verschieben eines Azure Storage-Kontos in eine andere Region](storage-account-move.md)
+- [Wiederherstellen eines gelöschten Speicherkontos](storage-account-recover.md)

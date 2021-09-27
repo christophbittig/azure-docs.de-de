@@ -6,15 +6,15 @@ author: kromerm
 ms.service: synapse-analytics
 ms.subservice: pipeline
 ms.topic: conceptual
-ms.date: 08/25/2021
+ms.date: 09/07/2021
 ms.author: makromer
 ms.reviewer: jrasnick
-ms.openlocfilehash: 46a94faaf3159f93cce34f2d6816185af62f286f
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: d8320c6356f310584d24c51a384446dfdcb22afa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122966894"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128608164"
 ---
 # <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Datenintegration in Azure Synapse Analytics im Vergleich zu Azure Data Factory
 
@@ -30,18 +30,11 @@ Sehen Sie in der folgenden Tabelle nach, welche Funktionen zur Verfügung stehen
 | **Integration Runtime**  | Verwenden von SSIS und SSIS Integration Runtime | ✓ | ✗ |
 |                          | Unterstützung für regionsübergreifende Integration Runtime (Datenflüsse) | ✓ | ✗ |
 |                          | Integration Runtime-Freigabe | ✓<br><small>*Kann für verschiedene Data Factory-Instanzen freigegeben werden* | ✗ |
-|                          | Gültigkeitsdauer | ✓ | ✗ |
 | **Azure Pipelines-Aktivitäten** | Aktivität „SSIS-Paket“ | ✓ | ✗ |
 |                          | Unterstützung für Power Query-Aktivität | ✓ | ✗ |
 | **Vorlagenkatalog und Knowledge Center** | Lösungsvorlagen | ✓<br><small>*Azure Data Factory-Vorlagenkatalog* | ✓<br><small>*Knowledge Center für den Synapse-Arbeitsbereich* |
 | **Integration von Git-Repository** | Git-Integration | ✓ | ✓ |
 | **Überwachung**           | Überwachen von Spark-Aufträgen für den Datenfluss | ✗ | ✓<br><small>*Nutzen der Synapse Spark-Pools* |
-|                          | Integration in Azure Monitor | ✓ | ✗ |
-
-> [!Note]
-> **Gültigkeitsdauer** ist eine Azure Integration Runtime-Einstellung, die es dem Spark-Cluster ermöglicht, während eines bestimmten Zeitraums nach einer Ausführung des Datenflusses *betriebsbereit zu bleiben*.
->
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

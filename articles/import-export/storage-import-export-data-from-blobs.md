@@ -9,12 +9,12 @@ ms.date: 03/03/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
-ms.openlocfilehash: 2d4885f23e775f84a412d176568d992ebe01166b
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 32605a78336c8d9e1aeb730be50441d43b8fe45c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107875699"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128659132"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Verwenden des Azure Import/Export-Diensts zum Exportieren von Daten aus Azure Blob Storage
 
@@ -395,16 +395,13 @@ Mit diesem *optionalen* Schritt können Sie die Anzahl von Laufwerken ermitteln,
 
 4. Um die erforderliche Anzahl von Datenträgern für die ausgewählten Blobs zu überprüfen, führen Sie den folgenden Befehl aus:
 
-   `WAImportExport.exe PreviewExport /sn:<Storage account name> /sk:<Storage account key> /ExportBlobListFile:<Path to XML blob list file> /DriveSize:<Size of drives used>`
+   `WAImportExport.exe PreviewExport /ExportBlobListFile:<Path to XML blob list file> /DriveSize:<Size of drives used>`
 
     Die Parameter werden in der folgenden Tabelle beschrieben:
 
     |Befehlszeilenparameter|BESCHREIBUNG|
     |--------------------------|-----------------|
     |**/logdir:**|Optional. Das Protokollverzeichnis In dieses Verzeichnis werden ausführliche Protokolldateien geschrieben. Ohne spezielle Angabe wird das aktuelle Verzeichnis als Protokollverzeichnis verwendet.|
-    |**/sn:**|Erforderlich. Der Name des Speicherkontos für den Exportauftrag.|
-    |**/sk:**|Nur erforderlich, wenn keine Container-SAS angegeben wurde. Der Kontoschlüssel des Speicherkontos für den Exportauftrag.|
-    |**/csas:**|Nur erforderlich, wenn kein Speicherkontoschlüssel angegeben wurde. Die Container-SAS zum Auflisten der Blobs, die im Exportauftrag exportiert werden sollen.|
     |**/ExportBlobListFile:**|Erforderlich. Pfad zur XML-Datei mit der Liste der Blobpfade oder Blobpfadpräfixe für die zu exportierenden Blobs. Das Dateiformat entspricht dem Format, das im Element `BlobListBlobPath` im [Put Job](/rest/api/storageimportexport/jobs)-Vorgang der REST-API des Import/Export-Diensts verwendet wird.|
     |**/DriveSize:**|Erforderlich. Die Größe der Laufwerke, die für einen Exportauftrag verwendet werden sollen, *beispielsweise* 500 GB oder 1,5 TB.|
 
@@ -417,7 +414,7 @@ Mit diesem *optionalen* Schritt können Sie die Anzahl von Laufwerken ermitteln,
 Das folgende Beispiel veranschaulicht die Verwendung des Befehls `PreviewExport`:
 
 ```powershell
-    WAImportExport.exe PreviewExport /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /ExportBlobListFile:C:\WAImportExport\mybloblist.xml /DriveSize:500GB
+    WAImportExport.exe PreviewExport /ExportBlobListFile:C:\WAImportExport\mybloblist.xml /DriveSize:500GB
 ```
 
 Die Datei mit der Blobliste für den Export kann wie hier gezeigt Blobnamen und Blobpräfixe enthalten:

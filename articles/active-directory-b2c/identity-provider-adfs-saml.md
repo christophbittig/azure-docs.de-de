@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 09/16/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 90e16f89a6b591841ed28942c44f7dc1223e975a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3114a182ff381213a06fbf91e038439ac5007bdc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122354733"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128575112"
 ---
 # <a name="add-ad-fs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Hinzufügen von AD FS als SAML-Identitätsanbieter mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
 
@@ -49,14 +49,15 @@ In diesem Artikel wird beschrieben, wie Sie die Anmeldung für ein AD FS-Benutz
 Sie müssen Ihr Zertifikat in Ihrem Azure AD B2C-Mandanten speichern.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Mandanten enthält.
-3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
-4. Wählen Sie auf der Seite „Übersicht“ die Option **Framework für die Identitätsfunktion** aus.
-5. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.
-6. Klicken Sie unter **Optionen** auf `Upload`.
-7. Geben Sie einen **Namen** für den Richtlinienschlüssel ein. Beispiel: `SAMLSigningCert`. Dem Namen Ihres Schlüssels wird automatisch das Präfix `B2C_1A_` hinzugefügt.
-8. Navigieren Sie zur PFX-Datei Ihres Zertifikats mit dem privaten Schlüssel, und wählen Sie sie aus.
-9. Klicken Sie auf **Erstellen**.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
+1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
+1. Wählen Sie auf der Seite „Übersicht“ die Option **Framework für die Identitätsfunktion** aus.
+1. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.
+1. Klicken Sie unter **Optionen** auf `Upload`.
+1. Geben Sie einen **Namen** für den Richtlinienschlüssel ein. Beispiel: `SAMLSigningCert`. Dem Namen Ihres Schlüssels wird automatisch das Präfix `B2C_1A_` hinzugefügt.
+1. Navigieren Sie zur PFX-Datei Ihres Zertifikats mit dem privaten Schlüssel, und wählen Sie sie aus.
+1. Klicken Sie auf **Erstellen**.
 
 ## <a name="add-a-claims-provider"></a>Hinzufügen eines Anspruchsanbieters
 
@@ -200,7 +201,8 @@ Ersetzen Sie die folgenden Werte:
 ## <a name="test-your-custom-policy"></a>Testen der benutzerdefinierten Richtlinie
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
 1. Wählen Sie unter **Richtlinien** die Option **Identity Experience Framework** aus.
 1. Wählen Sie die Richtliniendatei für die vertrauende Seite aus, z. B. `B2C_1A_signup_signin`.

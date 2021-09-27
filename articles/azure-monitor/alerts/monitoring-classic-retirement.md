@@ -6,18 +6,18 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 02/14/2021
 ms.author: yalavi
-ms.openlocfilehash: bfa92a2fc58d479edd328dba9bf02d57ec66c0c9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 64e9c454bfe8df9b65176fe344999e88204720d0
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102041092"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123539117"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Einheitliche Benachrichtigung und Überwachung in Azure Monitor tritt an die Stelle von klassischer Benachrichtigung und Überwachung
 
 Bei Azure Monitor handelt es sich um einen einheitlichen Überwachungsstapel, der eine Lösung für Metriken und eine Lösung für Warnungen für alle Azure-Ressourcen bietet. Weitere Informationen finden Sie in diesem [Blogbeitrag](https://azure.microsoft.com/blog/new-full-stack-monitoring-capabilities-in-azure-monitor/). Die neuen Plattformen für Überwachung und Warnungen wurde so entwickelt, dass sie schneller und intelligenter sind und einfacher erweitert werden können. So können Sie dafür sorgen, dass Sie mit dem steigenden Anstieg des Cloud Computings Schritt halten und mit der Philosophie einer intelligenten Cloud von Microsoft konform bleiben.
 
-Mit der neuen Azure-Plattform für Überwachung und Warnungen werden klassische Warnungen in Azure Monitor für Benutzer der öffentlichen Cloud eingestellt. Für Ressourcen sind sie jedoch noch beschränkt bis zum **31. Mai 2021** im Einsatz. Klassische Warnungen für die Azure Government-Cloud und Azure China 21Vianet werden am **29. Februar 2024** eingestellt.
+Mit der neuen Azure-Plattform für Überwachung und Warnungen werden klassische Warnungen in Azure Monitor für Benutzer der öffentlichen Cloud eingestellt. Klassische Warnungen für die Azure Government-Cloud und Azure China 21Vianet werden am **29. Februar 2024** eingestellt.
 
  ![Klassische Warnung im Azure-Portal](media/monitoring-classic-retirement/monitor-alert-screen2.png) 
 

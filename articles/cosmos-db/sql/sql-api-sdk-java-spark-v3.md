@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 06/21/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 8dde6c0a9bffd9d34b1e7d36588e8b04bb80079e
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: ffa863ba95614a680b933a612e1695ea3c8abbb7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123114775"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128644579"
 ---
 # <a name="azure-cosmos-db-apache-spark-3-oltp-connector-for-core-sql-api-release-notes-and-resources"></a>Apache Spark 3-OLTP-Connector von Azure Cosmos DB für die Core-API (SQL): Versionshinweise und Ressourcen
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -39,41 +39,4 @@ ms.locfileid: "123114775"
 > * [Bulk Executor – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk Executor – Java](sql-api-sdk-bulk-executor-java.md)
 
-**Apache Spark 3-OLTP-Connector von Azure Cosmos DB** verfügt über Apache Spark v3-Unterstützung für Azure Cosmos DB per SQL-API.
-[Azure Cosmos DB](../introduction.md) ist ein global verteilter Datenbankdienst, der Entwicklern durch eine Vielzahl von Standard-APIs wie SQL, MongoDB, Cassandra, Graph und Tabellen die Arbeit mit Daten ermöglicht.
-
-## <a name="documentation"></a>Dokumentation
-
-- [Erste Schritte](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/cosmos/azure-cosmos-spark_3-1_2-12/docs/quick-start.md)
-- [Katalog-API](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/cosmos/azure-cosmos-spark_3-1_2-12/docs/catalog-api.md)
-- [Konfigurationsparameterreferenz](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/cosmos/azure-cosmos-spark_3-1_2-12/docs/configuration-reference.md)
-
-
-## <a name="version-compatibility"></a>Versionskompatibilität
-
-| Connector     | Spark         | Java-Mindestversion | Unterstützte Scala-Versionen |
-| ------------- | ------------- | -------------------- | -----------------------  |
-| 4.0.0         | 3.1.1         |        8             | 2,12                     |
-
-## <a name="download"></a>Herunterladen 
-
-Sie können die Maven-Koordinate der JAR-Datei verwenden, um den Spark-Connector automatisch über Databricks Runtime 8 von Maven zu installieren: `com.azure.cosmos.spark:azure-cosmos-spark_3-1_2-12:4.1.0`
-
-Sie können die Integration auch im Cosmos DB-Spark-Connector in Ihr SBT-Projekt integrieren:
-```scala
-libraryDependencies += "com.azure.cosmos.spark" % "azure-cosmos-spark_3-1_2-12" % "4.1.0"
-```
-
-Der Cosmos DB-Spark-Connector ist im [zentralen Maven-Repository verfügbar](https://search.maven.org/artifact/com.azure.cosmos.spark/azure-cosmos-spark_3-1_2-12/).
-
-### <a name="general"></a>Allgemein
-
-Wenn ein Fehler auftreten sollte, melden Sie [hier](https://github.com/Azure/azure-sdk-for-java/issues/new) ein Problem.
-
-Wenn Sie ein neues Feature oder Änderungen vorschlagen möchten, die vorgenommen werden könnten, melden Sie ein Problem auf die gleiche Weise wie bei einem Fehler.
-
-[!INCLUDE[Changelog](~/azure-sdk-for-java-cosmos-db/sdk/cosmos/azure-cosmos-spark_3-1_2-12/CHANGELOG.md)]
-
-## <a name="next-steps"></a>Nächste Schritte
-
-Lesen Sie unsere [Schnellstartanleitung für die Arbeit mit dem 3-OLTP-Connector von Azure Cosmos DB Spark](create-sql-api-spark.md).
+[!INCLUDE[README](~/azure-sdk-for-java-cosmos-db/sdk/cosmos/azure-cosmos-spark_3-1_2-12/README.md)]

@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: f613a14f84999fced888ae72de11328bc7c90811
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9cce6dfcda5c506f27c3527c5a417cbe712ebcca
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104780003"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128661049"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory – Planung und Ausführung
 > [!NOTE]
@@ -48,7 +49,7 @@ Nicht die Pipeline wird ausgeführt. Es handelt sich um die Aktivitäten in der 
 
 Wie im folgenden Diagramm dargestellt, wird durch die Angabe eines Zeitplans für eine Aktivität eine Reihe rollierender Fenster zwischen Start- und Endzeit der Pipeline erzeugt. Rollierende Fenster sind eine Reihe nichtüberlappender, aneinandergrenzender Zeitintervalle fester Größe. Diese logischen rollierenden Fenster für eine Aktivität werden als **Aktivitätsfenster** bezeichnet.
 
-![„scheduler“-Beispiel für Aktivität](media/data-factory-scheduling-and-execution/scheduler-example.png)
+:::image type="content" source="media/data-factory-scheduling-and-execution/scheduler-example.png" alt-text="„scheduler“-Beispiel für Aktivität":::
 
 Die Eigenschaft **scheduler** für eine Aktivität ist optional. Wenn Sie diese Eigenschaft angeben, muss sie mit dem Rhythmus übereinstimmen, den Sie in der Definition des Ausgabedatasets für die Aktivität angeben. Derzeit steuert das Ausgabedataset den Zeitplan. Darum müssen Sie auch dann ein Ausgabedataset erstellen, wenn die Aktivität keine Ausgabe erzeugt. 
 
@@ -162,7 +163,7 @@ In diesem Beispiel wird die Aktivität stündlich zwischen der Start- und Endzei
 
 Jede Einheit von Daten, die von einer Aktivitätsausführung genutzt oder produziert wird, wird als **Datenslice** bezeichnet. Das folgende Diagramm zeigt das Beispiel einer Aktivität mit einem Eingabedataset und einem Ausgabedataset: 
 
-![Scheduler für "availability"](./media/data-factory-scheduling-and-execution/availability-scheduler.png)
+:::image type="content" source="./media/data-factory-scheduling-and-execution/availability-scheduler.png" alt-text="Scheduler für &quot;availability&quot;":::
 
 Im Diagramm sind die stündlichen Datenslices für das Eingabe- und Ausgabedataset dargestellt. Das Diagramm enthält drei Eingabeslices, die bereit für die Verarbeitung sind. Die Aktivität von 10 bis 11 Uhr ist in Bearbeitung und produziert den Ausgabeslice für „10-11 AM“. 
 
@@ -178,7 +179,7 @@ Sie haben die Verwendung der Eigenschaften „frequency“ und „interval“ im
 ### <a name="dataset-availability"></a>Dataset: availability 
 In der folgenden Tabelle werden die Eigenschaften beschrieben, die Sie im Abschnitt **availability** verwenden können:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich | Standard |
+| Eigenschaft | Beschreibung | Erforderlich | Standard |
 | --- | --- | --- | --- |
 | frequency |Gibt die Zeiteinheit für die Erstellung der Datasetslices an.<br/><br/><b>Unterstützte Häufigkeit</b>: „Minute“, „Hour“, „Day“, „Week“, „Month“ |Ja |Nicht verfügbar |
 | interval |Gibt einen Multiplikator für die Häufigkeit an<br/><br/>„Frequency x interval“ bestimmt, wie oft der Slice erzeugt wird.<br/><br/>Wenn Sie das Dataset auf Stundenbasis in Slices aufteilen möchten, legen Sie <b>Frequency</b> auf <b>Hour</b> und <b>interval</b> auf <b>1</b> fest.<br/><br/><b>Hinweis</b>: Wenn Sie „Frequency“ auf „Minute“ festlegen, sollten Sie „interval“ mindestens auf „15“ festlegen. |Ja |Nicht verfügbar |
@@ -284,7 +285,7 @@ Tritt ein Fehler bei der Verarbeitung eines Datenslices auf, können Sie mithilf
 
 Betrachten Sie das folgende Beispiel mit zwei Aktivitäten. Activity1 und Activity2. Activity1 nutzt einen Slice von Dataset1 und erzeugt einen Slice von Dataset2, der von Activity2 als Eingabe genutzt wird, um einen Slice des Final Dataset zu erzeugen.
 
-![Fehlerhafter Slice](./media/data-factory-scheduling-and-execution/failed-slice.png)
+:::image type="content" source="./media/data-factory-scheduling-and-execution/failed-slice.png" alt-text="Fehlerhafter Slice":::
 
 Das Diagramm zeigt, dass bei den letzten drei Slices ein Fehler beim Erstellen des Slice „9-10 AM“ für Dataset2 aufgetreten ist. Data Factory verfolgt die Abhängigkeit für das Zeitreihen-Dataset automatisch. Aus diesem Grund wird die Aktivitätsausführung für den nachgelagerten Slice für den Zeitraum von 9 bis 10 Uhr nicht gestartet.
 
@@ -292,7 +293,7 @@ Mit den Data Factory-Überwachungs- und Verwaltungstools können Sie die Diagnos
 
 Nachdem Sie den Slice „9-10 AM“ für **Dataset2** erneut ausgeführt haben, startet Data Factory die Ausführung für den von „9-10 AM“ abhängigen Slice im endgültigen Dataset.
 
-![Wiederholen eines fehlerhaften Slices](./media/data-factory-scheduling-and-execution/rerun-failed-slice.png)
+:::image type="content" source="./media/data-factory-scheduling-and-execution/rerun-failed-slice.png" alt-text="Wiederholen eines fehlerhaften Slices":::
 
 ## <a name="multiple-activities-in-a-pipeline"></a>Mehrere Aktivitäten in einer Pipeline
 Sie können mehrere Aktivitäten in einer Pipeline verwenden. Wenn in einer Pipeline mehrere Aktivitäten vorliegen und die Ausgabe einer Aktivität nicht die Eingabe für eine andere Aktivität ist, können die Aktivitäten parallel ausgeführt werden, sofern Eingabedatenslices für die Aktivitäten bereitstehen.
@@ -308,11 +309,11 @@ In diesem Szenario befinden sich die Aktivitäten A1 und A2 in der gleichen Pipe
 
 Die Diagrammansicht mit beiden Aktivitäten in derselben Pipeline sieht wie im folgenden Diagramm dargestellt aus:
 
-![Verketten von Aktivitäten in derselben Pipeline](./media/data-factory-scheduling-and-execution/chaining-one-pipeline.png)
+:::image type="content" source="./media/data-factory-scheduling-and-execution/chaining-one-pipeline.png" alt-text="Verketten von Aktivitäten in derselben Pipeline":::
 
 Wie bereits erwähnt, könnten sich die Aktivitäten in verschiedenen Pipelines befinden. Die Diagrammansicht sieht in einem solchen Szenario wie im folgenden Diagramm dargestellt aus:
 
-![Verketten von Aktivitäten in zwei Pipelines](./media/data-factory-scheduling-and-execution/chaining-two-pipelines.png)
+:::image type="content" source="./media/data-factory-scheduling-and-execution/chaining-two-pipelines.png" alt-text="Verketten von Aktivitäten in zwei Pipelines":::
 
 Im Abschnitt „Sequenzielles Kopieren“ des Anhangs finden Sie ein Beispiel.
 
@@ -435,7 +436,7 @@ Das Hive-Skript empfängt wie im folgenden Codeausschnitt dargestellt durch Verw
 
 Das folgende Diagramm zeigt das Szenario im Hinblick auf eine Datenabhängigkeit.
 
-![Datenabhängigkeit](./media/data-factory-scheduling-and-execution/data-dependency.png)
+:::image type="content" source="./media/data-factory-scheduling-and-execution/data-dependency.png" alt-text="Datenabhängigkeit":::
 
 Der Ausgabeslice für jeden Tag hängt von 24 stündlichen Slices aus einem Eingabedataset ab. Data Factory berechnet diese Abhängigkeiten automatisch, indem die Eingabedatenslices ermittelt werden, die in demselben Zeitraum wie der zu erzeugende Ausgabeslice liegen. Ist einer der 24 Eingabeslices nicht verfügbar, wartet Data Factory, bis der Eingabeslice bereit ist. Erst dann wird die tägliche Aktivitätsausführung gestartet.
 

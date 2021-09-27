@@ -2,18 +2,19 @@
 title: 'Transformieren von Daten mit dem U-SQL-Skript: Azure'
 description: Hier wird die Datenverarbeitung oder -transformation durch Ausführen von U-SQL-Skripts für einen Azure Data Lake Analytics-Computedienst (Version 1) erläutert.
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 10/01/2017
 author: nabhishek
 ms.author: abnarain
 ms.custom: devx-track-csharp
 robots: noindex
-ms.openlocfilehash: 5931cb28721e8658a771ceea1cd94624a0c09f7c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6bf6cf9b2bdf538c7d21e47c8f4e98f834a73ecd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100392917"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128580356"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Transformieren von Daten durch Ausführen von U-SQL-Skripts für Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -41,7 +42,7 @@ Sie erstellen einen mit **Azure Data Lake Analytics** verknüpften Dienst, um ei
 
 Die folgende Tabelle enthält Beschreibungen der allgemeinen Eigenschaften, die in der JSON-Definition verwendet werden. Sie können überdies zwischen der Authentifizierung per Dienstprinzipal und per Benutzeranmeldeinformationen wählen.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | **type** |Legen Sie die type-Eigenschaft auf **AzureDataLakeAnalytics** fest. |Ja |
 | **accountName** |Name des Azure Data Lake Analytics-Kontos. |Ja |
@@ -57,7 +58,7 @@ Wenn Sie die Dienstprinzipalauthentifizierung verwenden möchten, registrieren S
 
 Verwenden Sie die Dienstprinzipalauthentifizierung, indem Sie die folgenden Eigenschaften angeben:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | **servicePrincipalId** | Geben Sie die Client-ID der Anwendung an. | Ja |
 | **servicePrincipalKey** | Geben Sie den Schlüssel der Anwendung an. | Ja |
@@ -85,7 +86,7 @@ Verwenden Sie die Dienstprinzipalauthentifizierung, indem Sie die folgenden Eige
 ### <a name="user-credential-authentication"></a>Authentifizierung mit Benutzeranmeldeinformationen
 Alternativ können Sie die Authentifizierung mit Benutzeranmeldeinformationen für Data Lake Analytics verwenden, indem Sie die folgenden Eigenschaften angeben:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | **Autorisierung** | Klicken Sie im Data Factory-Editor auf die Schaltfläche **Autorisieren**, und geben Sie Ihre Anmeldeinformationen ein. Hierdurch wird die automatisch generierte Autorisierungs-URL dieser Eigenschaft zugewiesen. | Ja |
 | **sessionId** | OAuth-Sitzungs-ID aus der OAuth-Autorisierungssitzung. Jede Sitzungs-ID ist eindeutig und darf nur einmal verwendet werden. Diese Einstellung wird automatisch generiert, wenn Sie den Data Factory-Editor verwenden. | Ja |
@@ -201,7 +202,7 @@ Der folgende JSON-Ausschnitt definiert eine Pipeline mit einer U-SQL-Aktivität 
 
 Die folgende Tabelle beschreibt die Namen und Eigenschaften, die für diese Aktivität spezifisch sind. 
 
-| Eigenschaft            | BESCHREIBUNG                              | Erforderlich                                 |
+| Eigenschaft            | Beschreibung                              | Erforderlich                                 |
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
 | type                | Die type-Eigenschaft muss auf **DataLakeAnalyticsU-SQL** festgelegt werden. | Ja                                      |
 | linkedServiceName   | Verweis auf den Azure Data Lake Analytics-Dienst, der als verknüpfter Dienst in Data Factory registriert ist | Ja                                      |

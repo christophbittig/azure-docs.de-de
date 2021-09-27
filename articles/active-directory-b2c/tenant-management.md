@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/10/2021
+ms.date: 09/20/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8aeb818104e1424d96374bf535d4c02a870f4705
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 3851f9893799902c9cdcda71db67a9152de028ec
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112453878"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595805"
 ---
 # <a name="manage-your-azure-active-directory-b2c-tenant"></a>Verwalten Ihres Azure Active Directory B2C-Mandanten
 
@@ -76,7 +76,8 @@ Bei der Planung Ihrer Zugriffssteuerungsstrategie ist es am besten, Benutzern di
 Führen Sie diese Schritte aus, um ein neues Administratorenkonto zu erstellen:
 
 1. Melden Sie sich im [Azure-Portal](https://portal.azure.com/) als Benutzer mit Berechtigungen der Rollen „Globaler Administrator“ oder „Administrator für privilegierte Rollen“ an.
-1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Wählen Sie unter **Azure-Dienste** die Option **Azure AD B2C** aus. Oder verwenden Sie das Suchfeld, um nach **Azure AD B2C** zu suchen und diese Option auszuwählen.
 1. Wählen Sie unter **Verwalten** die Option **Benutzer** aus.
 1. Wählen Sie **Neuer Benutzer** aus.
@@ -101,7 +102,8 @@ Sie können auch einen neuen Gastbenutzer einladen, um Ihren Mandanten zu verwal
 Um einen Benutzer einzuladen, befolgen Sie diese Schritte:
 
 1. Melden Sie sich im [Azure-Portal](https://portal.azure.com/) als Benutzer mit Berechtigungen der Rollen „Globaler Administrator“ oder „Administrator für privilegierte Rollen“ an.
-1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Wählen Sie unter **Azure-Dienste** die Option **Azure AD B2C** aus. Oder verwenden Sie das Suchfeld, um nach **Azure AD B2C** zu suchen und diese Option auszuwählen.
 1. Wählen Sie unter **Verwalten** die Option **Benutzer** aus.
 1. Wählen Sie **Neues Gastkonto** aus.
@@ -123,13 +125,13 @@ Eine Einladungs-E-Mail wird an den Benutzer gesendet. Der Benutzer muss die Einl
 Wenn der Gast die Einladungs-E-Mail nicht erhalten hat oder die Einladung abgelaufen ist, können Sie die Einladung erneut senden. Alternativ zur Einladungs-E-Mail können Sie einem Gast einen direkten Link zu Ihrer App zur Verfügung stellen, um die Einladung anzunehmen. So senden Sie die Einladung erneut und erhalten den direkten Link:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Wählen Sie unter **Azure-Dienste** die Option **Azure AD B2C** aus. Oder verwenden Sie das Suchfeld, um nach **Azure AD B2C** zu suchen und diese Option auszuwählen.
 1. Wählen Sie unter **Verwalten** die Option **Benutzer** aus.
 1. Suchen Sie nach dem Benutzer, an den Sie die Einladung erneut senden möchten, und wählen Sie diesen aus.
 1. Wählen Sie auf der **Benutzer | Profil**-Seite unter **Identität** die Option **(Verwalten)** aus.
-    
-    ![Screenshot: Erneutes Senden der Einladungs-E-Mail an das Gastkonto.](./media/tenant-management/guest-account-resend-invite.png)
+        ![Screenshot: Erneutes Senden der Einladungs-E-Mail an das Gastkonto.](./media/tenant-management/guest-account-resend-invite.png)
 
 1. Wählen Sie für **Einladung erneut senden?** die Option **Ja** aus. Wenn **Sind Sie sicher, dass Sie die Einladung erneut senden möchten?** angezeigt wird, wählen Sie **Ja** aus.
 1. Azure AD B2C sendet die Einladung. Sie können die Einladungs-URL auch kopieren und direkt für den Gast bereitstellen.
@@ -141,7 +143,8 @@ Wenn der Gast die Einladungs-E-Mail nicht erhalten hat oder die Einladung abgela
 Sie können eine Rolle zuweisen, wenn Sie [einen Benutzer erstellen](#add-an-administrator-work-account) oder [einen Gastbenutzer einladen](#invite-an-administrator-guest-account). Sie können eine Rolle hinzufügen, die Rolle ändern oder eine Rolle für einen Benutzer entfernen:
 
 1. Melden Sie sich im [Azure-Portal](https://portal.azure.com/) als Benutzer mit Berechtigungen der Rollen „Globaler Administrator“ oder „Administrator für privilegierte Rollen“ an.
-1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Wählen Sie unter **Azure-Dienste** die Option **Azure AD B2C** aus. Oder verwenden Sie das Suchfeld, um nach **Azure AD B2C** zu suchen und diese Option auszuwählen.
 1. Wählen Sie unter **Verwalten** die Option **Benutzer** aus.
 1. Wählen Sie den Benutzer, dessen Rolle Sie ändern möchten. Wählen Sie **Zugewiesene Rollen** aus.
@@ -159,7 +162,8 @@ Wenn Sie eine Rollenzuweisung von einem Benutzer entfernen müssen, führen Sie 
 Im Rahmen eines Überwachungsprozesses überprüfen Sie in der Regel, welche Benutzer bestimmten Rollen im Azure AD B2C zugewiesen sind. Verwenden Sie die folgenden Schritte, um zu überwachen, welchen Benutzern derzeit privilegierte Rollen zugewiesen sind.
 
 1. Melden Sie sich im [Azure-Portal](https://portal.azure.com/) als Benutzer mit Berechtigungen der Rollen „Globaler Administrator“ oder „Administrator für privilegierte Rollen“ an.
-1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Wählen Sie unter **Azure-Dienste** die Option **Azure AD B2C** aus. Oder verwenden Sie das Suchfeld, um nach **Azure AD B2C** zu suchen und diese Option auszuwählen.
 1. Wählen Sie unter **Verwalten** den Eintrag **Rollen und Administratoren** aus.
 1. Wählen Sie eine Rolle aus, z. B. **Globaler Administrator**. Die auf der Seite **Rolle | Zuweisungen**  werden die Benutzer mit dieser Rolle aufgeführt.
@@ -186,7 +190,8 @@ Sie können die [Azure AD Sicherheitsstandards](../active-directory/fundamentals
 Führen Sie die folgenden Schritte aus, um den Namen Ihres Azure AD B2C-Mandanten abzurufen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
 1. Kopieren Sie in der **Übersicht** den **Domänennamen**.
 
@@ -197,7 +202,8 @@ Führen Sie die folgenden Schritte aus, um den Namen Ihres Azure AD B2C-Mandan
 Führen Sie die folgenden Schritte aus, um Ihre Azure AD B2C-Mandanten-ID abzurufen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Suchen Sie im Azure-Portal nach **Azure Active Directory**, und wählen Sie es aus.
 1. Kopieren Sie in der **Übersicht** die **Mandanten-ID**.
 

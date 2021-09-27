@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 11ea9c759bdb4bb2b837028407ce6e83f6e25a8c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c3765114c73be73beba6d898385077b83d46e3bc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92784047"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128638290"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>Auswählen einer Azure-Lösung für die Datenübertragung
 
@@ -33,10 +33,10 @@ Das Verschieben der Daten kann auf die folgende Weise erfolgen:
 
 - **Netzwerkübertragung**: Sie übertragen Ihre Daten über Ihre Netzwerkverbindung in Azure. Dies kann auf verschiedene Weise erfolgen.
 
-    - **Grafische Benutzeroberfläche**: Wenn Sie gelegentlich nur wenige Dateien übertragen und die Datenübertragung nicht automatisieren müssen, können Sie ein grafisches Benutzeroberflächentool wie Azure Storage Explorer oder ein webbasiertes Durchsuchungstool im Azure-Portal auswählen.
-    - **Übertragung mit Skripts oder programmgesteuerte Übertragung**: Sie können optimierte Softwaretools verwenden, die von uns bereitgestellt werden, oder unsere REST-APIs/SDKs direkt aufrufen. Die verfügbaren skriptfähigen Tools sind AzCopy, Azure PowerShell und die Azure CLI. Verwenden Sie für eine programmgesteuerte Schnittstelle eines der SDKs für .NET, Java, Python, Node/JS, C++, Go, PHP oder Ruby.
-    - **Lokale Geräte**: Wir stellen ein physisches oder virtuelles Gerät bereit, das sich in Ihrem Datencenter befindet und die Datenübertragung über das Netzwerk optimiert. Diese Geräte bieten auch einen lokalen Cache für häufig verwendete Dateien. Das physische Gerät ist Azure Stack Edge, das virtuelle Gerät ist das Data Box Gateway. Beide werden in Ihrer lokalen Umgebung dauerhaft ausgeführt und sind über das Netzwerk mit Azure verbunden.
-    - **Verwaltete Datenpipeline**: Sie können eine Cloudpipeline einrichten, um regelmäßig Dateien zwischen mehreren Azure-Diensten, lokal oder in einer Kombination aus beidem zu übertragen. Verwenden Sie Azure Data Factory, um Datenpipelines einzurichten und zu verwalten sowie Daten zur Analyse zu verschieben und zu transformieren.
+  - **Grafische Benutzeroberfläche**: Wenn Sie gelegentlich nur wenige Dateien übertragen und die Datenübertragung nicht automatisieren müssen, können Sie ein grafisches Benutzeroberflächentool wie Azure Storage Explorer oder ein webbasiertes Durchsuchungstool im Azure-Portal auswählen.
+  - **Übertragung mit Skripts oder programmgesteuerte Übertragung**: Sie können optimierte Softwaretools verwenden, die von uns bereitgestellt werden, oder unsere REST-APIs/SDKs direkt aufrufen. Die verfügbaren skriptfähigen Tools sind AzCopy, Azure PowerShell und die Azure CLI. Verwenden Sie für eine programmgesteuerte Schnittstelle eines der SDKs für .NET, Java, Python, Node/JS, C++, Go, PHP oder Ruby.
+  - **Lokale Geräte**: Wir stellen ein physisches oder virtuelles Gerät bereit, das sich in Ihrem Datencenter befindet und die Datenübertragung über das Netzwerk optimiert. Diese Geräte bieten auch einen lokalen Cache für häufig verwendete Dateien. Das physische Gerät ist Azure Stack Edge, das virtuelle Gerät ist das Data Box Gateway. Beide werden in Ihrer lokalen Umgebung dauerhaft ausgeführt und sind über das Netzwerk mit Azure verbunden.
+  - **Verwaltete Datenpipeline**: Sie können eine Cloudpipeline einrichten, um regelmäßig Dateien zwischen mehreren Azure-Diensten, lokal oder in einer Kombination aus beidem zu übertragen. Verwenden Sie Azure Data Factory, um Datenpipelines einzurichten und zu verwalten sowie Daten zur Analyse zu verschieben und zu transformieren.
 
 Die folgende Abbildung veranschaulicht die Richtlinien für die Auswahl der verschiedenen Azure-Datenübertragungstools in Abhängigkeit von der für die Übertragung verfügbaren Netzwerkbandbreite, der für die Übertragung vorgesehenen Datengröße und der Häufigkeit der Übertragung.
 
@@ -49,7 +49,7 @@ Die folgende Abbildung veranschaulicht die Richtlinien für die Auswahl der vers
 Beantworten Sie die folgenden Fragen, um die Auswahl einer Datenübertragungslösung zu erleichtern:
 
 - Ist Ihre verfügbare Netzwerkbandbreite begrenzt oder nicht vorhanden, und Sie möchten große Datasets übertragen?
-  
+
     Wenn dies der Fall ist, sehen Sie sich das folgende Szenario an: [Szenario 1: Übertragen großer Datasets mit keiner oder niedriger Netzwerkbandbreite](storage-solution-large-dataset-low-network.md).
 - Möchten Sie große Datasets über das Netzwerk übertragen, und nutzen Sie eine mittlere bis hohe Netzwerkbandbreite?
 
@@ -66,7 +66,7 @@ Beantworten Sie die folgenden Fragen, um die Auswahl einer Datenübertragungslö
 
 ## <a name="data-transfer-feature-in-azure-portal"></a>Datenübertragungsfunktion im Azure-Portal
 
-Sie können auch zu Ihrem Azure Storage-Konto im Azure-Portal wechseln und die Funktion **Datenübertragung** auswählen. Geben Sie die Netzwerkbandbreite in Ihrer Umgebung, die Größe der zu übertragenden Daten und die Häufigkeit der Datenübertragung an. Es werden Ihnen die optimalen Datenübertragungslösungen angezeigt, die den von Ihnen bereitgestellten Informationen entsprechen. 
+Sie können auch zu Ihrem Azure Storage-Konto im Azure-Portal wechseln und die Funktion **Datenübertragung** auswählen. Geben Sie die Netzwerkbandbreite in Ihrer Umgebung, die Größe der zu übertragenden Daten und die Häufigkeit der Datenübertragung an. Es werden Ihnen die optimalen Datenübertragungslösungen angezeigt, die den von Ihnen bereitgestellten Informationen entsprechen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -76,10 +76,10 @@ Sie können auch zu Ihrem Azure Storage-Konto im Azure-Portal wechseln und die F
 - [Schnellstart: Erstellen, Herunterladen und Auflisten von Blobs mit der Azure-Befehlszeilenschnittstelle](../blobs/storage-quickstart-blobs-cli.md)
 - Sie erhalten Informationen zu folgenden Themen:
 
-    - [Azure Data Box, Azure Data Box Disk und Azure Data Box Heavy für Offlineübertragungen](../../databox/index.yml).
-    - [Azure Data Box Gateway und Azure Stack Edge für Onlineübertragungen](../../databox-online/index.yml).
+  - [Azure Data Box, Azure Data Box Disk und Azure Data Box Heavy für Offlineübertragungen](../../databox/index.yml).
+  - [Azure Data Box Gateway und Azure Stack Edge für Onlineübertragungen](../../databox-online/index.yml).
 - [Was ist Azure Data Factory](../../data-factory/copy-activity-overview.md)?
 - Verwenden der REST-APIs zum Übertragen von Daten
 
-    - [In .NET](/dotnet/api/overview/azure/storage)
-    - [In Java](/java/api/overview/azure/storage)
+  - [In .NET](/dotnet/api/overview/azure/storage)
+  - [In Java](/java/api/overview/azure/storage)

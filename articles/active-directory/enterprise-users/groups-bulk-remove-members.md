@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 09/02/2021
+ms.date: 09/22/2021
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: enterprise-users
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52aa3c4b2f9ec34139debf008a5cb291e443c689
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 254b92907c04559f0e63fee9daa4db25e0df0965
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123431962"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128707756"
 ---
 # <a name="bulk-remove-group-members-in-azure-active-directory"></a>Massenentfernung von Gruppenmitgliedern in Azure Active Directory
 
@@ -57,7 +57,7 @@ Die Zeilen der heruntergeladenen CSV-Vorlage lauten wie folgt:
 
 1. Öffnen Sie die CSV-Datei, und fügen Sie für jedes aus der Gruppe zu entfernende Gruppenmitglied eine Zeile hinzu (die erforderlichen Werte sind „Mitgliedsobjekt-ID“ oder „Benutzerprinzipalname“). Speichern Sie dann die Datei.
 
-    :::image type="content" source="./media/groups-bulk-import-members/csv-file.png" alt-text="Die CSV-Datei enthält Namen und IDs der zu entfernenden Mitglieder":::
+    :::image type="content" source="./media/groups-bulk-remove-members/csv-file.png" alt-text="Die CSV-Datei enthält Namen und IDs der zu entfernenden Mitglieder":::
 
 1. Navigieren Sie auf der Seite **Massenentfernung von Gruppenmitgliedern** unter **CSV-Datei hochladen** zur entsprechenden Datei. Wenn Sie die Datei auswählen, wird mit der Überprüfung der CSV-Datei begonnen.
 1. Nach der Überprüfung des Dateiinhalts wird auf der Seite für den Massenimport die Meldung **Datei erfolgreich hochgeladen** angezeigt. Wenn Fehler vorliegen, müssen Sie diese beheben, bevor Sie den Auftrag übermitteln können.

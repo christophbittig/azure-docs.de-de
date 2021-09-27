@@ -1,20 +1,15 @@
 ---
 title: Erstellen eines mit Azure verbundenen Kontos für Azure Video Analyzer for Media (früher Video Indexer)
-titleSuffix: Azure Video Analyzer for Media
 description: Erfahren Sie, wie Sie ein mit Azure verbundenes Konto für Azure Video Analyzer for Media (früher Video Indexer) erstellen.
-services: azure-video-analyzer
-author: Juliako
-manager: femila
-ms.topic: article
-ms.subservice: azure-video-analyzer-media
+ms.topic: tutorial
 ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: 7bc5188c5987d393d63049a0a87a84605e4fa372
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 13bf5c4eb6fc34848e90b80eb7cd242abf8824c9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112121587"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662134"
 ---
 # <a name="create-a-video-analyzer-for-media-account"></a>Erstellen eines Video Analyzer for Media-Kontos
 
@@ -146,7 +141,7 @@ Klicken Sie auf der [Video Analyzer for Media](https://www.videoindexer.ai/)-Sei
 
 Geben Sie im Dialogfeld die folgenden Informationen ein:
 
-|Einstellung|BESCHREIBUNG|
+|Einstellung|Beschreibung|
 |---|---|
 |Video Analyzer for Media-Kontoregion|Der Name der Region des Video Analyzer for Media-Kontos. Zur Verbesserung der Leistung und Senkung der Kosten wird dringend empfohlen, den Namen der Region anzugeben, in der sich die Azure Media Services-Ressourcen und das Azure Storage-Konto befinden. |
 |Azure AD-Mandant|Der Name des Azure AD-Mandanten, z.B. „contoso.onmicrosoft.com“. Die Informationen zum Mandanten können über das Azure-Portal abgerufen werden. Platzieren Sie den Cursor in der oberen rechten Ecke über dem Namen des angemeldeten Benutzers. Der Name befindet sich rechts neben **Domäne**.|
@@ -245,7 +240,7 @@ Das Konto wird in 90 Tagen dauerhaft gelöscht.
 
 ## <a name="firewall"></a>Firewall
 
-Weitere Informationen finden Sie unter [Speicherkonto befindet sich hinter einer Firewall](faq.md#can-a-storage-account-connected-to-the-media-services-account-be-behind-a-firewall).
+Weitere Informationen finden Sie unter [Speicherkonto befindet sich hinter einer Firewall](faq.yml#can-a-storage-account-connected-to-the-media-services-account-be-behind-a-firewall).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

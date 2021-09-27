@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 4c50c7de84f92f1050b88a9c5c7179c69211bb42
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 78e0973cd4e187f819332e23ead056f57d4cd378
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108766931"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128653057"
 ---
 # <a name="datasets-in-azure-data-factory-version-1"></a>Datasets in Azure Data Factory (Version 1)
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -38,7 +39,7 @@ Hier ist ein Beispielszenario. Erstellen Sie zwei verknüpfte Dienste, um Daten 
 
 Das folgende Diagramm zeigt die Beziehung zwischen Pipeline, Aktivität, Dataset und verknüpftem Dienst in der Data Factory an:
 
-![Beziehung zwischen Pipeline, Aktivität, Dataset und verknüpften Diensten](media/data-factory-create-datasets/relationship-between-data-factory-entities.png)
+:::image type="content" source="media/data-factory-create-datasets/relationship-between-data-factory-entities.png" alt-text="Beziehung zwischen Pipeline, Aktivität, Dataset und verknüpften Diensten":::
 
 ## <a name="dataset-json"></a>JSON-DataSet
 Ein Dataset in Data Factory wird wie folgt im JSON-Format definiert:
@@ -227,7 +228,7 @@ Das Ausgabedataset wird zwischen Start- und Endzeit der Pipeline stündlich erze
 
 In der folgenden Tabelle werden die Eigenschaften beschrieben, die Sie im Abschnitt „availability“ verwenden können:
 
-| Eigenschaft | Beschreibung | Erforderlich | Standard |
+| Eigenschaft | BESCHREIBUNG | Erforderlich | Standard |
 | --- | --- | --- | --- |
 | frequency |Gibt die Zeiteinheit für die Erstellung der Datasetslices an.<br/><br/><b>Unterstützte Häufigkeit</b>: „Minute“, „Hour“, „Day“, „Week“, „Month“ |Ja |Nicht verfügbar |
 | interval |Gibt einen Multiplikator für die Häufigkeit an.<br/><br/>„frequency x interval“ bestimmt, wie oft der Slice erzeugt wird. Wenn Sie das Dataset beispielsweise auf Stundenbasis in Slices aufteilen möchten, legen Sie <b>frequency</b> auf <b>Hour</b> und <b>interval</b> auf <b>1</b> fest.<br/><br/>Wenn Sie **frequency** als **Minute** angeben, sollten Sie „interval“ auf mindestens „15“ festlegen. |Ja |Nicht verfügbar |
@@ -310,7 +311,7 @@ Externe Datasets werden nicht durch eine Pipeline erstellt, die in der Data Fact
 
 Ein Dataset sollte, sofern es nicht von Data Factory erzeugt wird, es als **extern** markiert werden. Diese Einstellung gilt im Allgemeinen für die Eingaben der ersten Aktivität in einer Pipeline, wenn weder Aktivitäts- noch Pipelineverkettung genutzt wird.
 
-| Name | Beschreibung | Erforderlich | Standardwert |
+| Name | BESCHREIBUNG | Erforderlich | Standardwert |
 | --- | --- | --- | --- |
 | dataDelay |Die Zeitspanne, um die die Prüfung der Verfügbarkeit der externen Daten für den angegebenen Slice verzögert wird. Beispielsweise können Sie eine stündliche Überprüfung verzögern, indem Sie diese Einstellung verwenden.<br/><br/>Die Einstellung gilt nur für die aktuelle Zeit. Beispiel: Wenn es gerade 13:00 Uhr ist und dieser Wert 10 Minuten beträgt, beginnt die Überprüfung um 13:10 Uhr.<br/><br/>Diese Einstellung wirkt sich nicht auf Slices in der Vergangenheit aus. Slices mit **Segmentendzeit** + **dataDelay** < **Jetzt** werden ohne Verzögerung verarbeitet.<br/><br/>Zeiträume, die länger als 23 Stunden 59 Minuten sind, müssen im Format `day.hours:minutes:seconds` angegeben werden. Um beispielsweise 24 Stunden anzugeben, verwenden Sie nicht 24:00:00. Verwenden Sie stattdessen 1.00:00:00. Wenn Sie 24:00:00 verwenden, wird dies als 24 Tage (24.00:00:00) gewertet. Für 1 Tag und 4 Stunden geben Sie „1:04:00:00“ an. |Nein |0 |
 | retryInterval |Die Wartezeit zwischen einem Fehler und dem nächsten Versuch. Diese Einstellung gilt für die aktuelle Zeit. Wenn beim vorherigen Versuch ein Fehler auftrat, wird der nächste Versuch nach Verstreichen des **retryInterval**-Zeitraums durchgeführt. <br/><br/>Wenn es gerade 13:00 Uhr ist, beginnt der erste Versuch. Wenn die Ausführung der ersten Überprüfung 1 Minute gedauert hat und ein Fehler aufgetreten ist, findet die nächste Wiederholung um 13:00 + 1 Min. (Dauer) + 1 Min. (Wiederholungsintervall) = 13:02 Uhr statt. <br/><br/>Für Slices in der Vergangenheit gibt es keine Verzögerung. Der erneute Versuch erfolgt sofort. |Nein |00:01:00 (1 Minute) |

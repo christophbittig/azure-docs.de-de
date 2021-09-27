@@ -3,12 +3,12 @@ title: Parameter in Vorlagen
 description: Beschreibt, wie Parameter in einer Azure Resource Manager-Vorlage (ARM-Vorlage) definiert werden.
 ms.topic: conceptual
 ms.date: 05/14/2021
-ms.openlocfilehash: 4fa624763b3a0eaa0277882fcb8493e96e24e7a5
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 5c94dc3f4d37fa6c08e29e03e88dd3ba54e68271
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111960201"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625523"
 ---
 # <a name="parameters-in-arm-templates"></a>Parameter in ARM-Vorlagen
 
@@ -199,7 +199,7 @@ Um auf den Wert eines Parameters zu verweisen, verwenden Sie die Funktion[parame
   "resources": [
     {
       "type": "Microsoft.KeyVault/vaults",
-      "apiVersion": "2019-09-01",
+      "apiVersion": "2021-06-01-preview",
       "name": "[parameters('vaultName')]",
       ...
     }
@@ -245,7 +245,7 @@ Das folgende Beispiel zeigt einen Parameter, bei dem es sich um ein Objekt hande
   "resources": [
     {
       "type": "Microsoft.Network/virtualNetworks",
-      "apiVersion": "2020-06-01",
+      "apiVersion": "2021-02-01",
       "name": "[parameters('vNetSettings').name]",
       "location": "[parameters('vNetSettings').location]",
       "properties": {

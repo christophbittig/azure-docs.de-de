@@ -10,16 +10,16 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: davidmu
 ms.reviewer: ergreenl
-ms.openlocfilehash: 32b099b72a55e768087f6123e684f0107e1e1e57
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0c3f95559b891cfff9e704883365ca6b7bc1630b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339698"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658201"
 ---
 # <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>Behandeln von Problemen beim kennwortbasierten einmaligen Anmelden in Azure AD
 
-Wenn Sie kennwortbasiertes einmaliges Anmelden (Single Sign-on, SSO) in „Meine Apps“ verwenden möchten, muss die Browsererweiterung installiert sein. Die Erweiterung wird automatisch heruntergeladen, wenn Sie eine App auswählen, die für kennwortbasiertes SSO konfiguriert ist. Informationen zur Verwendung von „Meine Apps“ aus der Sicht eines Endbenutzers finden Sie unter [Hilfe zum Portal „Meine Apps“](../user-help/my-apps-portal-end-user-access.md).
+Wenn Sie kennwortbasiertes einmaliges Anmelden (Single Sign-on, SSO) in „Meine Apps“ verwenden möchten, muss die Browsererweiterung installiert sein. Die Erweiterung wird automatisch heruntergeladen, wenn Sie eine App auswählen, die für kennwortbasiertes SSO konfiguriert ist. Informationen zur Verwendung von „Meine Apps“ aus der Sicht eines Endbenutzers finden Sie unter [Hilfe zum Portal „Meine Apps“](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="my-apps-browser-extension-not-installed"></a>Browsererweiterung für „Meine Apps“ nicht installiert
 
@@ -251,7 +251,9 @@ In den folgenden Informationen wird erläutert, was die einzelnen Elemente der B
 
 - **Fehler kopieren**: Ermöglicht Ihnen, das Symbol **Kopieren** rechts neben dem Textfeld **Fehler kopieren** auszuwählen, um die Details der Benachrichtigung zu kopieren, die Sie an den Support weiterleiten möchten.
 
-    Beispiel: ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
+    Beispiel:
+    
+    `{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}`
 
 ## <a name="next-steps"></a>Nächste Schritte
 

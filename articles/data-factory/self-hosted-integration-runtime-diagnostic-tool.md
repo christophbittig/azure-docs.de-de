@@ -4,18 +4,19 @@ description: Diagnosetool für die selbstgehostete Integration Runtime
 ms.author: lle
 author: lrtoyou1223
 ms.service: data-factory
+ms.subservice: integration-runtime
 ms.topic: conceptual
 ms.custom:
 - seo-lt-2019
 - references_regions
 - devx-track-azurepowershell
 ms.date: 07/28/2021
-ms.openlocfilehash: b8aa070759ea29c9c2853d0c8a6af184bc169569
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b3c98d4e85b1a7d04b017eea2da00f36a479eeac
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122347065"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128598573"
 ---
 # <a name="diagnostic-tool-for-self-hosted-integration-runtime"></a>Diagnosetool für die selbstgehostete Integration Runtime
 Die selbstgehostete Integration Runtime ist die Compute-Infrastruktur, mit der Azure Data Factory Datenintegrationsfunktionen für verschiedene Netzwerkumgebungen bereitstellt. Für die Installation einer selbstgehosteten Integration Runtime ist ein lokaler Computer oder ein virtueller Computer in einem privaten Netzwerk erforderlich. Manchmal ist es schwierig, Probleme auf lokalen Computern zu untersuchen, z. B. Probleme im Zusammenhang mit Netzwerk, Firewall, Abhängigkeit oder Betriebssystem. In diesem Artikel wird ein neues Diagnosetool für die Problembehandlung in lokalen Umgebungen beschrieben.

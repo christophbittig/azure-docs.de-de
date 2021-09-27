@@ -9,34 +9,34 @@ ms.date: 11/17/2020
 ms.service: storage
 ms.custom: references_regions
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: a0d02530ba2b8758b467b77ff639437675e4cc81
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cee20d5104ceb09dc0ba3d826b28108e543cc3d1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99508928"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664901"
 ---
 # <a name="meet-demanding-migration-requirements-with-wandisco-livedata-platform-for-azure-preview"></a>WANdisco LiveData Platform for Azure (Vorschauversion) für anspruchsvolle Migrationsanforderungen
 
-Migrieren Sie lokale Hadoop-Daten mithilfe der [WANdisco LiveData Platform for Azure](https://docs.wandisco.com/live-data-platform/docs/landing/) nach Azure Data Lake Storage Gen2. Mit dieser Plattform umgehen Sie Anwendungsausfallzeiten und die Gefahr eines Datenverlusts und stellen sicher, dass die Datenkonsistenz während der Fortführung des lokalen Betriebs gewahrt bleibt.  
+Migrieren Sie lokale Hadoop-Daten mithilfe der [WANdisco LiveData Platform for Azure](https://docs.wandisco.com/live-data-platform/docs/landing/) nach Azure Data Lake Storage Gen2. Mit dieser Plattform umgehen Sie Anwendungsausfallzeiten und die Gefahr eines Datenverlusts und stellen sicher, dass die Datenkonsistenz während der Fortführung des lokalen Betriebs gewahrt bleibt.
 
 > [!NOTE]
 > WANdisco LiveData Platform for Azure befindet sich in der öffentlichen Vorschauphase. Informationen zur regionalen Verfügbarkeit finden Sie unter [Supported regions](https://docs.wandisco.com/live-data-platform/docs/prereq#supported-regions) (Unterstützte Regionen).
 
-Die Plattform besteht aus zwei Diensten: [LiveData Migrator for Azure](https://www.wandisco.com/products/livedata-migrator-for-azure) für die Migration aktiv genutzter Daten aus lokalen Umgebungen in Azure Storage und [LiveData Plane for Azure](https://www.wandisco.com/products/livedata-plane-for-azure) zur Sicherstellung der konsistenten Replikation aller geänderten oder erfassten Daten. 
+Die Plattform besteht aus zwei Diensten: [LiveData Migrator for Azure](https://www.wandisco.com/products/livedata-migrator-for-azure) für die Migration aktiv genutzter Daten aus lokalen Umgebungen in Azure Storage und [LiveData Plane for Azure](https://www.wandisco.com/products/livedata-plane-for-azure) zur Sicherstellung der konsistenten Replikation aller geänderten oder erfassten Daten.
 
 > [!div class="mx-imgBorder"]
 > ![Übersichtsschaubild zur LiveData Platform](./media/migrate-gen2-wandisco-live-data-platform/live-data-platform-overview.png)
 
 Sie können beide Dienste über das Azure-Portal und die Azure CLI verwalten, und beide folgen dem gleichen getakteten Abrechnungsmodell mit nutzungsbasierter Bezahlung wie alle anderen Azure-Dienste. Die Nutzung der LiveData Platform for Azure wird auf der gleichen monatlichen Azure-Rechnung aufgeführt, sodass Sie die Nutzung konsistent und bequem nachverfolgen können.
 
-Im Gegensatz zur _Offlinemigration_ von Daten durch [Kopieren statischer Informationen in Azure Data Box](./data-lake-storage-migrate-on-premises-hdfs-cluster.md) und zur Verwendung von Hadoop-Tools wie [DistCp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html) bleiben Ihre Unternehmenssysteme während der _Onlinemigration_ mit WANdisco LiveData for Azure vollständig funktionsfähig. Ihre Big Data-Umgebungen bleiben auch beim Verschieben der Daten nach Azure in Betrieb.
+Im Gegensatz zur *Offlinemigration* von Daten durch [Kopieren statischer Informationen in Azure Data Box](./data-lake-storage-migrate-on-premises-hdfs-cluster.md) und zur Verwendung von Hadoop-Tools wie [DistCp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html) bleiben Ihre Unternehmenssysteme während der *Onlinemigration* mit WANdisco LiveData for Azure vollständig funktionsfähig. Ihre Big Data-Umgebungen bleiben auch beim Verschieben der Daten nach Azure in Betrieb.
 
 ## <a name="key-features-of-wandisco-livedata-platform-for-azure"></a>Wichtige Funktionen der WANdisco LiveData Platform für Azure
 
 [WANdisco LiveData Platform für Azure](https://docs.wandisco.com/live-data-platform/docs/landing/) verwendet ein einzigartiges Konsensmodul mit WAN-Unterstützung, um Datenkonsistenz zu erzielen, und führt Datenreplikation im großen Stil durch, während die replizierten Daten weiterhin von Anwendungen geändert werden können. <br><br>
 
->[!VIDEO https://www.youtube.com/embed/KRrmcYPxEho] 
+> [!VIDEO https://www.youtube.com/embed/KRrmcYPxEho]
 
 Einige der wichtigsten Funktionen der Plattform:
 
@@ -64,12 +64,12 @@ Die Migration umfasst die folgenden drei einfachen Schritte:
 1. Stellen Sie die LiveData Migrator-Instanz über das Azure-Portal in Ihrem lokalen Hadoop-Cluster bereit. Es sind keine Änderungen am Cluster oder Ausfallzeiten erforderlich, und Anwendungen können weiterhin ausgeführt werden.
 
    > [!div class="mx-imgBorder"]
-   >![Erstellen einer LiveData Migrator-Instanz](./media/migrate-gen2-wandisco-live-data-platform/create-live-data-migrator.png)
+   > ![Erstellen einer LiveData Migrator-Instanz](./media/migrate-gen2-wandisco-live-data-platform/create-live-data-migrator.png)
 
 2. Definieren Sie das Speicherkonto mit aktiviertem Azure Data Lake Storage Gen2.
 
    > [!div class="mx-imgBorder"]
-   >![Erstellen eines LiveData Migrator-Ziels](./media/migrate-gen2-wandisco-live-data-platform/create-target.png)
+   > ![Erstellen eines LiveData Migrator-Ziels](./media/migrate-gen2-wandisco-live-data-platform/create-target.png)
 
 3. Definieren Sie den Speicherort der Daten, die Sie migrieren möchten, z. B. `/user/hive/warehouse`, und starten Sie die Migration.
 
@@ -97,7 +97,7 @@ LiveData Plane for Azure stellt die Datenkonsistenz ohne nennenswerte Auswirkung
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [LiveData Platform for Azure](https://docs.wandisco.com/live-data-platform/docs/landing/) kann wie jede andere Azure-Ressource verwendet werden und ist jetzt als Vorschauversion verfügbar. 
+- [LiveData Platform for Azure](https://docs.wandisco.com/live-data-platform/docs/landing/) kann wie jede andere Azure-Ressource verwendet werden und ist jetzt als Vorschauversion verfügbar.
 
 - Machen Sie sich mit den [Voraussetzungen](https://docs.wandisco.com/live-data-platform/docs/prereq/) vertraut, planen Sie die Migration, und führen Sie eine umfassende Migration mit LiveData Migrator for Azure in kürzester Zeit durch.
 
@@ -111,7 +111,7 @@ LiveData Plane for Azure stellt die Datenkonsistenz ohne nennenswerte Auswirkung
 
 - [LiveData Migrator for Azure – Pläne + Preise](https://azuremarketplace.microsoft.com/marketplace/apps/wandisco.ldm?tab=PlansAndPrice)
 
-- [LiveData Plane for Azure – Pläne + Preise](https://azuremarketplace.microsoft.com/marketplace/apps/wandisco.ldp?tab=PlansAndPrice) 
+- [LiveData Plane for Azure – Pläne + Preise](https://azuremarketplace.microsoft.com/marketplace/apps/wandisco.ldp?tab=PlansAndPrice)
 
 - [LiveData Platform for Azure – Häufig gestellte Fragen](https://docs.wandisco.com/live-data-platform/docs/faq/)
 

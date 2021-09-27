@@ -1,14 +1,14 @@
 ---
 title: Hochladen von VHD-Dateien in Azure DevTest Labs mit Storage-Explorer
 description: Hochladen einer VHD-Datei in das Speicherkonto eines Labs mithilfe des Microsoft Azure Storage-Explorers
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: d4e421932ebba5d4f389000c12bcf44ac2f37599
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d5571beda476e5e5cac7e899af062a969e798b29
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91282526"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128610406"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Hochladen einer VHD-Datei in das Speicherkonto eines Labs mithilfe des Microsoft Azure Storage-Explorers
 

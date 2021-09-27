@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 9ff151071d42308137bdb8e9064f9b27ed194cae
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 63295e27791252e3b978fb83801182b7b8814f82
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688843"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128559823"
 ---
 # <a name="terms-in-your-microsoft-partner-agreement-invoice"></a>Bestimmungen auf der Rechnung Ihrer Microsoft-Partnervereinbarung
 
@@ -42,7 +42,7 @@ Den Abschnitt **Rechnungszusammenfassung** finden Sie oben auf der ersten Seite.
 | P.O. number |Eine optionale Bestellnummer, die Ihnen zur Nachverfolgung zugewiesen wird |
 | Invoice number (Rechnungsnummer) |Eine eindeutige, von Microsoft generierte Rechnungsnummer, die für Nachverfolgungszwecke verwendet wird |
 | Invoice Date |Datum, an dem die Rechnung generiert wurde, in der Regel fünf bis zwölf Tage nach dem Ende des Abrechnungszyklus. Sie können das Rechnungsdatum auch in den Angaben des Abrechnungsprofils überprüfen.|
-| Zahlungsbestimmungen |Die Zahlungsbedingungen Ihrer Microsoft-Rechnung. *60 Tage netto* bedeutet, das die Zahlung innerhalb von 60 Tagen nach dem Rechnungsdatum getätigt werden muss. |
+| Zahlungsbedingungen |Die Zahlungsbedingungen Ihrer Microsoft-Rechnung. *60 Tage netto* bedeutet, das die Zahlung innerhalb von 60 Tagen nach dem Rechnungsdatum getätigt werden muss. |
 
 ## <a name="billing-summary"></a>Billing summary (Abrechnungsübersicht)
 
@@ -53,7 +53,7 @@ Im Abschnitt **Billing summary** (Abrechnungsübersicht) werden alle in Rechnung
 | Begriff | BESCHREIBUNG |
 | --- | --- |
 | Charges|Microsoft-Gesamtgebühren für dieses Abrechnungsprofil seit dem letzten Abrechnungszeitraum |
-| Guthaben |Gutschriften durch Rückgaben |
+| Mitwirkende |Gutschriften durch Rückgaben |
 | Azure credits applied (Angewendete Azure-Gutschriften) | Azure-Gutschriften, die in jedem Abrechnungszeitraum automatisch mit den Azure-Gebühren verrechnet werden |
 | Subtotal (Zwischensumme) |Der fällige Betrag ohne Steuern |
 | Tax (Steuern) |Art und Menge der berechneten Steuer, abhängig vom Land bzw. der Region des Abrechnungsprofils. Wenn Sie keine Steuern zahlen müssen, werden auf Ihrer Rechnung keine Steuern aufgeführt. |
@@ -84,4 +84,4 @@ Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Support
 - [Grundlegendes zu den Gebühren auf der Rechnung für Ihr Abrechnungsprofil](review-customer-agreement-bill.md)
 - [Abrufen von Azure-Rechnungen und täglichen Nutzungsdaten](../manage/download-azure-invoice-daily-usage-date.md)
 - [Anzeigen der Azure Enterprise Agreement-Preise für Ihre Organisation](../manage/ea-pricing.md)
-- [Anzeigen der Steuerdokumente für Ihre Microsoft-Kundenvereinbarung](mca-download-tax-document.md)
+- [Anzeigen der Steuerdokumente für Ihr Abrechnungsprofil](mca-download-tax-document.md)

@@ -200,6 +200,8 @@
       items:
         - name: Sicherheitsbaseline
           href: /security/benchmark/azure/baselines/site-recovery-security-baseline?toc=/azure/site-recovery/toc.json
+        - name: Transport Layer Security
+          href: transport-layer-security.md
 - name: Anleitungen
   items:
     - name: Azure-zu-Azure-Notfallwiederherstellung

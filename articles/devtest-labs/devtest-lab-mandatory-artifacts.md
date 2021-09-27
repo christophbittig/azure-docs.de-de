@@ -1,14 +1,14 @@
 ---
-title: Festlegen verbindlicher Artefakte für Ihre Azure DevTest Labs | Microsoft-Dokumentation
+title: Angeben verbindlicher Artefakte
 description: Erfahren Sie, wie Sie erforderliche Elemente angeben, die vor der Installation der vom Benutzer ausgewählten Elemente auf virtuellen Computern (VMs) im Lab installiert werden müssen.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 0677f8bea35cb34735fdcf34e717eea349fad8bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8963db2f99cc893937365a4eac0a656e1ba90613
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85480302"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128678495"
 ---
 # <a name="specify-mandatory-artifacts-for-your-lab-in-azure-devtest-labs"></a>Festlegen verbindlicher Artefakte für Ihr Lab in Azure DevTest Labs
 Als Besitzer eines Labs können Sie die verbindlichen Elemente festlegen, die auf jeden Computer im Lab angewendet werden. Stellen Sie sich ein Szenario vor, in dem jeder Computer in Ihrem Lab mit dem Unternehmensnetzwerk verbunden werden soll. In diesem Fall müsste jeder Lab-Benutzer beim Erstellen eines virtuellen Computers ein Artefakt für den Domänenbeitritt erstellen, um sicherzustellen, dass ihr Computer mit der Domäne des Unternehmens verbunden ist. Lab-Benutzer müssten also einen Computer neu erstellen, wenn sie vergessen, erforderliche Artefakte auf ihrem Computer anzuwenden. Als Besitzer eines Labs legen Sie das Artefakt für den-Domänenbeitritt als obligatorisches Artefakt in Ihrem Lab fest. So wird sichergestellt, dass jeder Computer mit dem Unternehmensnetzwerk verbunden ist und Ihre Lab-Benutzer Zeit und Aufwand sparen.
@@ -76,4 +76,3 @@ Als Lab-Benutzer können Sie jetzt beim Erstellen einer VM im Lab die Liste der 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie, wie Sie einem [ein Git-Artefaktrepository zu einem Lab hinzufügen](devtest-lab-add-artifact-repo.md).
-
