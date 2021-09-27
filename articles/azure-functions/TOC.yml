@@ -158,8 +158,10 @@
   items:
     - name: Bewährte Methoden
       items:
-        - name: Leistung und Zuverlässigkeit
+        - name: Allgemeine bewährte Methoden
           href: functions-best-practices.md
+        - name: Leistung und Zuverlässigkeit
+          href: performance-reliability.md
           displayName: best practices
         - name: Verwalten von Verbindungen
           href: manage-connections.md
@@ -184,12 +186,12 @@
           href: functions-premium-plan.md
         - name: Dedizierter Plan
           href: dedicated-plan.md
-        - name: Ereignisgesteuerte Skalierung
-          href: event-driven-scaling.md
     - name: Bereitstellungen
       href: functions-deployment-technologies.md
     - name: Ereignisse und Messaging
       items:
+        - name: Ereignisgesteuerte Skalierung
+          href: event-driven-scaling.md
         - name: Zuverlässige Ereignisverarbeitung
           href: functions-reliable-event-processing.md
         - name: Entwerfen für identische Eingaben
@@ -259,6 +261,8 @@
       href: ip-addresses.md
     - name: Benutzerdefinierte Handler
       href: functions-custom-handlers.md
+    - name: Hochverfügbarkeit
+      href: azure-functions-az-redundancy.md
 - name: Anleitungen
   items:
     - name: Entwickeln
@@ -459,7 +463,7 @@
               href: functions-add-output-binding-storage-queue-vs.md
         - name: Starten/Beenden von virtuellen Computern
           items:
-            - name: Überblick
+            - name: Übersicht
               href: start-stop-vms/overview.md
             - name: Bereitstellen und konfigurieren
               href: start-stop-vms/deploy.md

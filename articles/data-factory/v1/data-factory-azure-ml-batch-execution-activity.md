@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: d4a930677f4760ae5f2d77dd4f148097ae67f465
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.openlocfilehash: fd666c51042811a8008657d965d629d1b17848f4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122598014"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128571271"
 ---
 # <a name="create-predictive-pipelines-using-machine-learning-studio-classic-and-azure-data-factory"></a>Erstellen einer Vorhersagepipeline mithilfe von Machine Learning Studio (klassisch) und Azure Data Factory
 
@@ -65,9 +66,9 @@ Mit Azure Data Factory können Sie die Verschiebung und Verarbeitung von Daten o
    2. Den **API-Schlüssel** für den veröffentlichten Webdienst von Azure Machine Learning Studio (klassisch). Den API-Schlüssel erhalten Sie durch Klicken auf den Webdienst, den Sie veröffentlicht haben.
    3. Verwenden Sie die Aktivität **AzureMLBatchExecution** .
 
-      ![Dashboard von Machine Learning Studio (klassisch)](./media/data-factory-azure-ml-batch-execution-activity/AzureMLDashboard.png)
+      :::image type="content" source="./media/data-factory-azure-ml-batch-execution-activity/AzureMLDashboard.png" alt-text="Dashboard von Machine Learning Studio (klassisch)":::
 
-      ![Batch-URI](./media/data-factory-azure-ml-batch-execution-activity/batch-uri.png)
+      :::image type="content" source="./media/data-factory-azure-ml-batch-execution-activity/batch-uri.png" alt-text="Batch-URI":::
 
 ### <a name="scenario-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>Szenario: Experimente mit Eingaben/Ausgaben für den Webdienst, die auf Daten in Azure Blob Storage verweisen
 In diesem Szenario werden Vorhersagen mit dem Azure Machine Learning Studio-Webdienst (klassisch) anhand der Daten aus einer Datei in Azure Blob Storage erstellt und die Vorhersageergebnisse in Blob Storage gespeichert. Das folgende JSON-Skript definiert eine Data Factory-Pipeline mit einer AzureMLBatchExecution-Aktivität. Die Aktivität enthält das Dataset **DecisionTreeInputBlob** als Eingabe und **DecisionTreeResultBlob** als Ausgabe. **DecisionTreeInputBlob** wird als Eingabe an den Webdienst übergeben, indem die **webServiceInput**-JSON-Eigenschaft verwendet wird. **DecisionTreeResultBlob** wird als Ausgabe an den Webdienst übergeben, indem die **webServiceOutputs**-JSON-Eigenschaft verwendet wird.
@@ -349,7 +350,7 @@ Große Datenpipelines mit Aktivitäten wie Pig und Hive können eine oder mehrer
 
 Wenn Sie das Reader-Modul in einem Azure Machine Learning Studio-Experiment (klassisch) verwenden, können Sie das Azure-Blob als Eingabe angeben. Bei den Dateien in Azure Blob Storage kann es sich um die Ausgabedateien (Beispiel: 000000_0) handeln, die von einem Pig- und Hive-Skript unter HDInsight erstellt werden. Mit dem Reader-Modul können Sie Dateien lesen (ohne Erweiterungen), indem Sie **Path to container, directory/blob**(Pfad zum Container, Verzeichnis/Blob) konfigurieren. **Path to container** verweist auf den Container, und **directory/blob** verweist auf den Ordner, der die Dateien enthält, wie in der folgenden Abbildung dargestellt. Das Sternchen (\*) **gibt an, dass alle Dateien im Container/Ordner (d.h. „data/aggregateddata/year=2014/month=6/\*“)** als Teil des Experiments gelesen werden.
 
-![Azure-Blobeigenschaften](./media/data-factory-create-predictive-pipelines/azure-blob-properties.png)
+:::image type="content" source="./media/data-factory-create-predictive-pipelines/azure-blob-properties.png" alt-text="Azure-Blobeigenschaften":::
 
 ### <a name="example"></a>Beispiel
 #### <a name="pipeline-with-azuremlbatchexecution-activity-with-web-service-parameters"></a>Pipeline mit "AzureMLBatchExecution"-Aktivität mit Webdienstparametern

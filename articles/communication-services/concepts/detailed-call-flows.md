@@ -8,12 +8,13 @@ ms.author: nmurav
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 332af91806da4514aad9ccc320a5498539682879
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.subservice: calling
+ms.openlocfilehash: 064586d0fadac917359a7de70145a10ab6e2cb45
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123252256"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672037"
 ---
 # <a name="call-flow-topologies"></a>Topologien für Anrufabläufe
 Dieser Artikel enthält eine Beschreibung der Topologien für Anrufabläufe in Azure Communication Services. Die Informationen in diesem Artikel sind gut für Sie geeignet, wenn Sie als Unternehmenskunde Communication Services in ein von Ihnen verwaltetes Netzwerk integrieren möchten. Eine Einführung in Communication Services-Anrufabläufe finden Sie in der [Dokumentation zu den Konzepten von Anrufabläufen](./call-flows.md).

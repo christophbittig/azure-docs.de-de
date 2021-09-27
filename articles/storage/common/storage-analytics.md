@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 3ccd5cf9ebc1c5183571dcdfbe3beeabe1b28a63
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 01283dd9607dbe3f9b5b0c2103345cb73d56e093
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114448115"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128579513"
 ---
 # <a name="storage-analytics"></a>Speicheranalyse
 
@@ -34,8 +34,8 @@ Alle Metrikdaten werden von den Diensten eines Speicherkontos geschrieben. Desha
 
 Die folgenden Aktionen der Speicheranalyse sind gebührenpflichtig:
 
-* Anforderungen zum Erstellen von Blobs für die Protokollierung
-* Anforderungen zum Erstellen von Tabellenentitäten für Metriken
+- Anforderungen zum Erstellen von Blobs für die Protokollierung
+- Anforderungen zum Erstellen von Tabellenentitäten für Metriken
 
 Wenn Sie eine Datenaufbewahrungsrichtlinie konfiguriert haben, können Sie die Ausgaben reduzieren, indem Sie alte Protokoll- und Metrikdaten löschen. Weitere Informationen zu Aufbewahrungsrichtlinien finden Sie unter [Festlegen einer Beibehaltungsrichtlinie für Speicheranalysedaten](/rest/api/storageservices/Setting-a-Storage-Analytics-Data-Retention-Policy).
 
@@ -46,6 +46,7 @@ Jede Anforderung, die an den Speicherdienst eines Kontos erfolgt, ist entweder g
 Wenn Sie Speicheranalysedaten überprüfen, können Sie anhand der Tabellen im Thema [Protokollierte Speicheranalysevorgänge und Statusmeldungen](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) bestimmen, welche Anforderungen gebührenpflichtig sind. Anschließend können Sie die Protokolle und Metrikdaten mit den Statusmeldungen vergleichen, um zu ermitteln, ob Ihnen eine bestimmte Anforderung in Rechnung gestellt wurde. Sie können auch die Tabellen im vorherigen Thema verwenden, um die Verfügbarkeit für einen Speicherdienst oder einen einzelnen API-Vorgang zu bestimmen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Überwachen eines Speicherkontos im Azure-Portal](./manage-storage-analytics-logs.md)
-* [Metriken der Speicheranalyse](storage-analytics-metrics.md)
-* [Protokollierung durch die Speicheranalyse](storage-analytics-logging.md)
+
+- [Überwachen eines Speicherkontos im Azure-Portal](./manage-storage-analytics-logs.md)
+- [Metriken der Speicheranalyse](storage-analytics-metrics.md)
+- [Protokollierung durch die Speicheranalyse](storage-analytics-logging.md)

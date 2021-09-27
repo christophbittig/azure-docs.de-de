@@ -9,12 +9,12 @@ ms.reviewer: dineshm
 ms.date: 09/04/2020
 ms.subservice: blobs
 ms.custom: devx-track-js
-ms.openlocfilehash: 53153c7ea154b77ee4d0d348818c891ce22bc5f8
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 388b84dc831984cf03b91ff16e4cfb8962b88c73
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123470956"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662721"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hosten von statischen Websites in Azure Storage
 
@@ -41,12 +41,12 @@ Bei Dateien im Container **$web** wird die Groß-/Kleinschreibung beachtet. Sie 
 Inhalte können mit einem der folgenden Tools in den Container **$web** hochgeladen werden:
 
 > [!div class="checklist"]
-> * [Azure-Befehlszeilenschnittstelle](storage-blob-static-website-how-to.md?tabs=azure-cli)
-> * [Azure PowerShell-Modul](storage-blob-static-website-how-to.md?tabs=azure-powershell)
-> * [AzCopy](../common/storage-use-azcopy-v10.md)
-> * [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/)
-> * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
-> * [Visual Studio Code-Erweiterung](- https://channel9.msdn.com/Shows/Docs-Azure/Deploy-static-website-to-Azure-from-Visual-Studio-Code/player)
+> - [Azure-Befehlszeilenschnittstelle](storage-blob-static-website-how-to.md?tabs=azure-cli)
+> - [Azure PowerShell-Modul](storage-blob-static-website-how-to.md?tabs=azure-powershell)
+> - [AzCopy](../common/storage-use-azcopy-v10.md)
+> - [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/)
+> - [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
+> - [Visual Studio Code-Erweiterung](- https://channel9.msdn.com/Shows/Docs-Azure/Deploy-static-website-to-Azure-from-Visual-Studio-Code/player)
 
 ## <a name="viewing-content"></a>Anzeigen von Inhalten
 
@@ -102,7 +102,7 @@ Wenn Sie beabsichtigen, eine Website in mehreren Regionen zu hosten, empfiehlt e
 
 ## <a name="permissions"></a>Berechtigungen
 
-Die Berechtigung zum Aktivieren der statischen Website ist Microsoft.Storage/storageAccounts/blobServices/write oder ein gemeinsam verwendeter Schlüssel.  Zu den integrierten Rollen, die diesen Zugriff ermöglichen, gehören Speicherkontomitwirkende.  
+Die Berechtigung zum Aktivieren der statischen Website ist Microsoft.Storage/storageAccounts/blobServices/write oder ein gemeinsam verwendeter Schlüssel.  Zu den integrierten Rollen, die diesen Zugriff ermöglichen, gehören Speicherkontomitwirkende.
 
 ## <a name="pricing"></a>Preise
 
@@ -116,11 +116,11 @@ Informationen zum Aktivieren von Metriken für Seiten Ihrer statischen Website f
 
 ## <a name="feature-support"></a>Featureunterstützung
 
-In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf den Support hat. 
+In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf die Unterstützung hat.
 
-| Speicherkontotyp                | Blob Storage (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| Speicherkontotyp                | Blob Storage (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) |![Ja](../media/icons/yes-icon.png)              | ![Ja](../media/icons/yes-icon.png) | 
+| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) |![Ja](../media/icons/yes-icon.png)              | ![Ja](../media/icons/yes-icon.png) |
 | Premium-Blockblobs          | ![Ja](../media/icons/yes-icon.png)|![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) |
 
 <sup>1</sup>    Für Data Lake Storage Gen2 und das NFS 3.0-Protokoll (Network File System) ist ein Speicherkonto mit aktiviertem hierarchischem Namespace erforderlich.
@@ -137,7 +137,7 @@ Nein. Eine statische Website unterstützt nur anonymen öffentlichen Lesezugriff
 
 ##### <a name="how-do-i-use-a-custom-domain-with-a-static-website"></a>Wie verwende ich eine benutzerdefinierte Domäne mit einer statischen Website?
 
-Derzeit können Sie eine [benutzerdefinierte Domäne](./static-website-content-delivery-network.md) mit einer statischen Website mithilfe von [Microsoft Azure Content Delivery Network (Azure CDN)](./storage-custom-domain-name.md#map-a-custom-domain-with-https-enabled) konfigurieren. Azure CDN ermöglicht für Ihre Website für alle Zugriffe weltweit eine dauerhaft niedrige Latenz. 
+Derzeit können Sie eine [benutzerdefinierte Domäne](./static-website-content-delivery-network.md) mit einer statischen Website mithilfe von [Microsoft Azure Content Delivery Network (Azure CDN)](./storage-custom-domain-name.md#map-a-custom-domain-with-https-enabled) konfigurieren. Azure CDN ermöglicht für Ihre Website für alle Zugriffe weltweit eine dauerhaft niedrige Latenz.
 
 ##### <a name="how-do-i-use-a-custom-ssl-certificate-with-a-static-website"></a>Wie verwende ich ein benutzerdefiniertes SSL-Zertifikat mit der statischen Website?
 
@@ -153,13 +153,13 @@ Dies kann passieren, wenn Sie mit einer falschen Schreibweise auf einen Dateinam
 
 ##### <a name="why-isnt-the-root-directory-of-the-website-not-redirecting-to-the-default-index-page"></a>Warum wird das Stammverzeichnis der Website nicht auf die Standardindexseite umgeleitet?
 
-Öffnen Sie im Azure-Portal die Konfigurationsseite der statischen Website Ihres Kontos, und suchen Sie den Namen und die Erweiterung, die im Feld **Indexdokumentname** festgelegt sind. Stellen Sie sicher, dass dieser Name genau mit dem Namen der Datei im **$web**-Container des Speicherkontos identisch ist. Bei Dateinamen und Erweiterungen in der URL einer statischen Website wird die Groß-/Kleinschreibung beachtet, auch wenn Sie über HTTP bereitgestellt werden. 
+Öffnen Sie im Azure-Portal die Konfigurationsseite der statischen Website Ihres Kontos, und suchen Sie den Namen und die Erweiterung, die im Feld **Indexdokumentname** festgelegt sind. Stellen Sie sicher, dass dieser Name genau mit dem Namen der Datei im **$web**-Container des Speicherkontos identisch ist. Bei Dateinamen und Erweiterungen in der URL einer statischen Website wird die Groß-/Kleinschreibung beachtet, auch wenn Sie über HTTP bereitgestellt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Host a static website in Azure Storage](storage-blob-static-website-how-to.md) (Hosten einer statischen Website in Azure Storage)
-* [Zuordnen einer benutzerdefinierten Domäne zu einem Azure Blob Storage-Endpunkt](storage-custom-domain-name.md)
-* [Azure-Funktionen](../../azure-functions/functions-overview.md)
-* [Azure App Service](../../app-service/overview.md)
-* [Build a serverless web app in Azure](/azure/functions/tutorial-static-website-serverless-api-with-database) (Erstellen einer serverlosen Web-App in Azure)
-* [Tutorial: Hosten Ihrer Domäne in Azure DNS](../../dns/dns-delegate-domain-azure-dns.md)
+- [Host a static website in Azure Storage](storage-blob-static-website-how-to.md) (Hosten einer statischen Website in Azure Storage)
+- [Zuordnen einer benutzerdefinierten Domäne zu einem Azure Blob Storage-Endpunkt](storage-custom-domain-name.md)
+- [Azure-Funktionen](../../azure-functions/functions-overview.md)
+- [Azure App Service](../../app-service/overview.md)
+- [Build a serverless web app in Azure](/azure/functions/tutorial-static-website-serverless-api-with-database) (Erstellen einer serverlosen Web-App in Azure)
+- [Tutorial: Hosten Ihrer Domäne in Azure DNS](../../dns/dns-delegate-domain-azure-dns.md)

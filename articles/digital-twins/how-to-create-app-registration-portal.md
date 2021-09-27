@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Erfahren Sie, wie eine Azure AD-App-Registrierung als Authentifizierungsoption für Client-Apps mit dem Azure-Portal erstellt wird.
 author: baanders
 ms.author: baanders
-ms.date: 8/27/2021
+ms.date: 9/8/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: da935038599b86d9c86a1f55071d4b4d1ea4ce16
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 8350ff149b54ef8cf8f4061abd64df73dc688962
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123223054"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128653108"
 ---
 # <a name="create-an-app-registration-to-use-with-azure-digital-twins-portal"></a>Erstellen einer App-Registrierung für die Verwendung mit Azure Digital Twins (Portal)
 
@@ -64,7 +64,7 @@ In den folgenden Abschnitten wird beschrieben, wie Sie die anderen Werte finden.
 
 Die Werte für **Client-ID** und **Mandanten-ID** können auf der Detailseite der App-Registrierung im Azure-Portal abgefragt werden:
 
-:::image type="content" source="media/how-to-create-app-registration/client-id-tenant-id.png" alt-text="Screenshot des Azure-Portals mit den wichtigen Werten für die App-Registrierung":::
+:::image type="content" source="media/how-to-create-app-registration/client-id-tenant-id.png" alt-text="Screenshot des Azure-Portals mit den wichtigen Werten für die App-Registrierung"  lightbox="media/how-to-create-app-registration/client-id-tenant-id.png":::
 
 Notieren Sie sich die **Anwendungs-ID (Client)** und die **Verzeichnis-ID (Mandant)** , die auf **Ihrer** Seite angezeigt werden.
 
@@ -78,7 +78,13 @@ Zum Einrichten eines **geheimen Clientschlüssels** für Ihre App-Registrierung 
 
 1. Geben Sie die gewünschten Werte für die Beschreibung und den Ablauf ein, und wählen Sie **Hinzufügen** aus.
 
-    :::image type="content" source="media/how-to-create-app-registration/add-client-secret.png" alt-text="Screenshot des Azure-Portals beim Hinzufügen eines geheimen Clientschlüssels":::
+    :::row:::
+        :::column:::
+            :::image type="content" source="media/how-to-create-app-registration/add-client-secret.png" alt-text="Screenshot des Azure-Portals beim Hinzufügen eines geheimen Clientschlüssels":::
+        :::column-end:::
+        :::column:::
+        :::column-end:::
+    :::row-end:::
 
 1. Vergewissern Sie sich, dass der geheime Clientschlüssel auf der Seite **Zertifikate und Geheimnisse** mit den Feldern „Ablauf“ und „Wert“ angezeigt wird. 
 

@@ -60,8 +60,6 @@
           href: howto-find-activity-reports.md
         - name: Beheben von Anmeldefehlern für einen Benutzer
           href: howto-troubleshoot-sign-in-errors.md
-        - name: Bereinigen von Benutzern mit Risikomarkierung
-          href: howto-remediate-users-flagged-for-risk.md
         - name: Konfigurieren der Voraussetzungen für die Berichterstellungs-API
           href: howto-configure-prerequisites-for-reporting-api.md
         - name: Verwenden von Azure AD-Arbeitsmappen

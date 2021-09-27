@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f0d29e55e0bf1a88f5fb787b96b5bc549107fe8f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 638199df27c04548bfb7a2e1433b212c489b25ce
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110469395"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626777"
 ---
 # <a name="use-geo-redundancy-to-design-highly-available-applications"></a>Verwenden von Georedundanz zum Entwerfen von hochverfügbaren Anwendungen
 
@@ -24,11 +24,11 @@ Ein Feature von cloudbasierten Infrastrukturen wie Azure Storage ist, dass sie e
 
 Azure Storage bietet zwei Optionen für georedundante Replikation. Der einzige Unterschied zwischen diesen beiden Optionenbesteht in der Art, wie Daten in der primären Region repliziert werden:
 
-* [Geozonenredundanter Speicher (GZRS)](storage-redundancy.md): Die Daten werden synchron über drei Azure-Verfügbarkeitszonen in die primären Region mithilfe von *zonenredundantem Speicher (ZRS)* repliziert und anschließend asynchron in die sekundäre Region repliziert. Aktivieren Sie für den Lesezugriff auf Daten in der sekundären Region den geozonenredundanten Speicher mit Lesezugriff (RA-GZRS).
+- [Geozonenredundanter Speicher (GZRS)](storage-redundancy.md): Die Daten werden synchron über drei Azure-Verfügbarkeitszonen in die primären Region mithilfe von *zonenredundantem Speicher (ZRS)* repliziert und anschließend asynchron in die sekundäre Region repliziert. Aktivieren Sie für den Lesezugriff auf Daten in der sekundären Region den geozonenredundanten Speicher mit Lesezugriff (RA-GZRS).
 
     Microsoft empfiehlt die Verwendung von GZRS/RA-GZRS für Szenarien, die eine maximale Verfügbarkeit und Dauerhaftigkeit erfordern.
 
-* [Georedundanter Speicher (Geo-Redundant Storage, GRS)](storage-redundancy.md): Die Daten werden in der primären Region unter Verwendung von *lokal redundantem Speicher (LRS)* drei Mal synchron repliziert und dann asynchron in die sekundäre Region repliziert. Aktivieren Sie für den Lesezugriff auf die Daten in der sekundären Region den georedundanten Speicher mit Lesezugriff (RA-GRS).
+- [Georedundanter Speicher (Geo-Redundant Storage, GRS)](storage-redundancy.md): Die Daten werden in der primären Region unter Verwendung von *lokal redundantem Speicher (LRS)* drei Mal synchron repliziert und dann asynchron in die sekundäre Region repliziert. Aktivieren Sie für den Lesezugriff auf die Daten in der sekundären Region den georedundanten Speicher mit Lesezugriff (RA-GRS).
 
 In diesem Artikel wird gezeigt, wie Sie Ihre Anwendung so entwerfen, dass sie einen Ausfall in der primären Region verarbeiten kann. Wenn die primäre Region nicht mehr verfügbar ist, kann sich Ihre Anwendung anpassen, um stattdessen Lesevorgänge in der sekundären Region durchzuführen. Stellen Sie sicher, dass Ihr Speicherkonto für RA-GRS oder RA-GZRS konfiguriert ist, bevor Sie beginnen.
 
@@ -38,21 +38,21 @@ Der Zweck dieses Artikels ist, zu veranschaulichen, wie Sie eine Anwendung entwe
 
 Berücksichtigen Sie beim Entwerfen Ihrer Anwendung für RA-GRS oder RA-GZRS folgende wichtige Punkte:
 
-* Azure Storage verwaltet eine schreibgeschützte Kopie der Daten, die Sie in Ihrer primären Region speichern, in einer sekundären Region. Wie oben bereits erwähnt, bestimmt der Speicherdienst den Speicherort der sekundären Region.
+- Azure Storage verwaltet eine schreibgeschützte Kopie der Daten, die Sie in Ihrer primären Region speichern, in einer sekundären Region. Wie oben bereits erwähnt, bestimmt der Speicherdienst den Speicherort der sekundären Region.
 
-* Die schreibgeschützte Kopie ist [letztendlich konsistent](https://en.wikipedia.org/wiki/Eventual_consistency) mit den Daten in der primären Region.
+- Die schreibgeschützte Kopie ist [letztendlich konsistent](https://en.wikipedia.org/wiki/Eventual_consistency) mit den Daten in der primären Region.
 
-* Für Blobs, Tabellen und Warteschlangen können Sie den Wert für den *Zeitpunkt der letzten Synchronisierung* von der sekundären Region abfragen, der anzeigt, wann die letzte Replikation von der primären zur sekundären Region ausgeführt wurde. (Dies wird für Azure Files nicht unterstützt, da RA-GRS-Redundanz zum aktuellen Zeitpunkt dort nicht verfügbar ist.)
+- Für Blobs, Tabellen und Warteschlangen können Sie den Wert für den *Zeitpunkt der letzten Synchronisierung* von der sekundären Region abfragen, der anzeigt, wann die letzte Replikation von der primären zur sekundären Region ausgeführt wurde. (Dies wird für Azure Files nicht unterstützt, da RA-GRS-Redundanz zum aktuellen Zeitpunkt dort nicht verfügbar ist.)
 
-* Sie können die Speicherclientbibliothek zum Lesen und Schreiben von Daten in der primären oder sekundären Region verwenden. Sie können Anforderungen auch automatisch an die sekundäre Region leiten, wenn bei einer Leseanforderung an die primäre Region eine Zeitüberschreitung auftritt.
+- Sie können die Speicherclientbibliothek zum Lesen und Schreiben von Daten in der primären oder sekundären Region verwenden. Sie können Anforderungen auch automatisch an die sekundäre Region leiten, wenn bei einer Leseanforderung an die primäre Region eine Zeitüberschreitung auftritt.
 
-* Wenn die primäre Region nicht verfügbar ist, können Sie ein Kontofailover einleiten. Wenn Sie ein Failover auf die sekundäre Region ausführen, werden die DNS-Einträge, die auf die primäre Region verweisen, so geändert, dass sie auf die sekundäre Region verweisen. Nachdem das Failover abgeschlossen ist, wird der Schreibzugriff für GRS und RA-GRS-Konten wiederhergestellt. Weitere Informationen finden Sie unter [Notfallwiederherstellung und Failover des Speicherkontos](storage-disaster-recovery-guidance.md).
+- Wenn die primäre Region nicht verfügbar ist, können Sie ein Kontofailover einleiten. Wenn Sie ein Failover auf die sekundäre Region ausführen, werden die DNS-Einträge, die auf die primäre Region verweisen, so geändert, dass sie auf die sekundäre Region verweisen. Nachdem das Failover abgeschlossen ist, wird der Schreibzugriff für GRS und RA-GRS-Konten wiederhergestellt. Weitere Informationen finden Sie unter [Notfallwiederherstellung und Failover des Speicherkontos](storage-disaster-recovery-guidance.md).
 
 ### <a name="using-eventually-consistent-data"></a>Verwenden von letztendlich konsistenten Daten
 
 Die vorgeschlagene Lösung setzt voraus, dass es akzeptabel ist, möglicherweise veraltete Daten an die aufrufende Anwendung zurückzugeben. Da die Daten in der sekundären Region letztendlich konsistent sind, ist es möglich, dass erst dann auf die primäre Region zugegriffen werden kann, wenn die Replikation eines Updates in die sekundäre Region fertig gestellt ist.
 
-Nehmen Sie beispielsweise an, dass Ihr Kunde erfolgreich ein Update sendet, aber die primäre Region ausfällt, bevor das Update an die sekundäre Region weitergegeben wird. Wenn der Kunde dann das Zurücklesen der Daten anfordert, empfängt er in diesem Fall statt der aktualisierten Daten die veralteten Daten aus der sekundären Region. Beim Entwurf Ihrer Anwendung müssen Sie entscheiden, ob dies akzeptabel ist, und wenn ja, wie Sie den Kunden darüber informieren möchten. 
+Nehmen Sie beispielsweise an, dass Ihr Kunde erfolgreich ein Update sendet, aber die primäre Region ausfällt, bevor das Update an die sekundäre Region weitergegeben wird. Wenn der Kunde dann das Zurücklesen der Daten anfordert, empfängt er in diesem Fall statt der aktualisierten Daten die veralteten Daten aus der sekundären Region. Beim Entwurf Ihrer Anwendung müssen Sie entscheiden, ob dies akzeptabel ist, und wenn ja, wie Sie den Kunden darüber informieren möchten.
 
 Weiter unten in diesem Artikel wird dargestellt, wie Sie den Zeitpunkt der letzten Synchronisierung der sekundären Daten überprüfen, um festzustellen, ob die sekundäre Region auf dem neuesten Stand ist.
 
@@ -68,11 +68,11 @@ Dies hängt letztendlich von der Komplexität Ihrer Anwendung ab. Sie können si
 
 Dies sind die weiteren Überlegungen, die im weiteren Verlauf dieses Artikels beschrieben werden.
 
-* Verarbeiten von Wiederholungen von Leseanforderungen mit dem Trennschalter-Muster
+- Verarbeiten von Wiederholungen von Leseanforderungen mit dem Trennschalter-Muster
 
-* Letztendlich konsistente Daten und Zeitpunkt der letzten Synchronisierung
+- Letztendlich konsistente Daten und Zeitpunkt der letzten Synchronisierung
 
-* Testen
+- Testen
 
 ## <a name="running-your-application-in-read-only-mode"></a>Ausführen der Anwendung im schreibgeschützten Modus
 
@@ -88,11 +88,11 @@ Ein weiterer Vorteil der Anwendungsausführung im schreibgeschützten Modus lieg
 
 Es gibt viele Möglichkeiten, Aktualisierungsanforderungen bei der Ausführung im schreibgeschützten Modus zu verarbeiten. Dies wird hier nicht umfassend beschrieben, aber es gibt im Allgemeinen eine Reihe von Mustern, die Sie berücksichtigen sollten.
 
-1. Sie können auf Ihren Benutzer reagieren und ihm erläutern, dass derzeit keine Aktualisierungen akzeptiert werden. Mit einem Kontaktverwaltungssystem könnten Kunden beispielsweise auf Kontaktinformationen zugreifen, jedoch keine Aktualisierungen vornehmen.
+- Sie können auf Ihren Benutzer reagieren und ihm erläutern, dass derzeit keine Aktualisierungen akzeptiert werden. Mit einem Kontaktverwaltungssystem könnten Kunden beispielsweise auf Kontaktinformationen zugreifen, jedoch keine Aktualisierungen vornehmen.
 
-2. Sie können die Aktualisierungen in einer anderen Region der Warteschlange hinzufügen. In diesem Fall schreiben Sie die ausstehende Aktualisierungsanforderung in eine Warteschlange einer anderen Region und haben dadurch eine Möglichkeit, diese Anforderungen zu verarbeiten, wenn das primäre Rechenzentrum wieder online geschaltet wird. In diesem Szenario sollten Sie den Kunden darüber informieren, dass sich die angeforderte Aktualisierung für die spätere Verarbeitung in der Warteschlange befindet.
+- Sie können die Aktualisierungen in einer anderen Region der Warteschlange hinzufügen. In diesem Fall schreiben Sie die ausstehende Aktualisierungsanforderung in eine Warteschlange einer anderen Region und haben dadurch eine Möglichkeit, diese Anforderungen zu verarbeiten, wenn das primäre Rechenzentrum wieder online geschaltet wird. In diesem Szenario sollten Sie den Kunden darüber informieren, dass sich die angeforderte Aktualisierung für die spätere Verarbeitung in der Warteschlange befindet.
 
-3. Sie können Ihre Aktualisierungen in ein Speicherkonto in einer anderen Region schreiben. Wenn das primäre Rechenzentrum wieder online geschaltet wird, haben Sie die Möglichkeit, diese Aktualisierungen je nach Datenstruktur mit den primären Daten zusammenzuführen. Wenn Sie beispielsweise separate Dateien mit einem Datums-/Zeitstempel im Namen erstellen, können Sie die Dateien zur primären Region kopieren. Dies funktioniert für einige Workloads wie z.B. Protokollierung und IoT-Daten.
+- Sie können Ihre Aktualisierungen in ein Speicherkonto in einer anderen Region schreiben. Wenn das primäre Rechenzentrum wieder online geschaltet wird, haben Sie die Möglichkeit, diese Aktualisierungen je nach Datenstruktur mit den primären Daten zusammenzuführen. Wenn Sie beispielsweise separate Dateien mit einem Datums-/Zeitstempel im Namen erstellen, können Sie die Dateien zur primären Region kopieren. Dies funktioniert für einige Workloads wie z.B. Protokollierung und IoT-Daten.
 
 ## <a name="handling-retries"></a>Verarbeiten von Wiederholungsversuchen
 
@@ -102,23 +102,23 @@ Mit der Azure Storage-Clientbibliothek können Sie feststellen, für welche Fehl
 
 Leseanforderungen können in den sekundären Speicher umgeleitet werden, wenn ein Problem mit dem primären Speicher vorliegt. Wie oben unter [Verwenden von letztendlich konsistenten Daten](#using-eventually-consistent-data) beschrieben, muss Ihre Anwendung das Lesen möglicherweise veralteter Daten zulassen. Wenn Sie die Speicherclientbibliothek für den Zugriff auf Daten aus der sekundären Region verwenden, können Sie das Wiederholungsverhalten einer Leseanforderung angeben, indem Sie einen der folgenden Werte für die **LocationMode**-Eigenschaft festlegen:
 
-* **PrimaryOnly** (Standard)
+- **PrimaryOnly** (Standard)
 
-* **PrimaryThenSecondary**
+- **PrimaryThenSecondary**
 
-* **SecondaryOnly**
+- **SecondaryOnly**
 
-* **SecondaryThenPrimary**
+- **SecondaryThenPrimary**
 
 Wenn Sie **LocationMode** auf **PrimaryThenSecondary** festlegen und bei der ursprünglichen Leseanforderung an den primären Endpunkt ein Fehler auftritt, für den ein Wiederholungsversuch ausgeführt werden kann, führt der Client automatisch eine weitere Leseanforderung an den sekundären Endpunkt aus. Wenn es sich beim Fehler um ein Servertimeout handelt, muss der Client warten, bis das Timeout abläuft, bevor er einen wiederholbaren Fehler vom Dienst empfängt.
 
 Es gibt im Grunde zwei zu berücksichtigende Szenarien bei der Reaktion auf einen wiederholbaren Fehler:
 
-* Dies ist ein isoliertes Problem, und nachfolgende Anforderungen an den primären Endpunkt geben keinen wiederholbaren Fehler zurück. Dies kann beispielsweise vorkommen, wenn ein vorübergehender Netzwerkfehler vorliegt.
+- Dies ist ein isoliertes Problem, und nachfolgende Anforderungen an den primären Endpunkt geben keinen wiederholbaren Fehler zurück. Dies kann beispielsweise vorkommen, wenn ein vorübergehender Netzwerkfehler vorliegt.
 
     In diesem Szenario entstehen keine signifikanten Leistungseinbußen dadurch, dass **LocationMode** auf **PrimaryThenSecondary** festgelegt wird, da dies nur selten vorkommt.
 
-* Es handelt sich um ein Problem mit mindestens einem der Speicherdienste in der primären Region, und alle nachfolgenden Anforderungen an diesen Dienst in der primären Region geben wahrscheinlich für eine bestimmte Zeit einen wiederholbaren Fehler zurück. Dies kann beispielsweise vorkommen, wenn auf die primäre Region absolut nicht zugegriffen werden kann.
+- Es handelt sich um ein Problem mit mindestens einem der Speicherdienste in der primären Region, und alle nachfolgenden Anforderungen an diesen Dienst in der primären Region geben wahrscheinlich für eine bestimmte Zeit einen wiederholbaren Fehler zurück. Dies kann beispielsweise vorkommen, wenn auf die primäre Region absolut nicht zugegriffen werden kann.
 
     In diesem Szenario treten Leistungseinbußen auf, da alle Leseanforderungen zunächst auf dem primären Endpunkt ausgeführt werden, dann warten, bis das Timeout abläuft, und anschließend zum sekundären Endpunkt wechseln.
 
@@ -146,7 +146,7 @@ Ein weiterer Aspekt ist, wie mehrere Instanzen einer Anwendung verarbeitet werde
 
 Sie haben drei Hauptoptionen für die Überwachung der Fehlerhäufigkeit in der primären Region, mit denen Sie bestimmen können, wann der Wechsel zur sekundären Region und in den schreibgeschützten Modus der Anwendung stattfindet.
 
-* Fügen Sie dem [**OperationContext**](/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext)-Objekt, das Sie an die Speicheranforderungen übergeben, einen Handler für das [**Wiederholungsereignis**](/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) hinzu – dies ist die Methode, die in diesem Artikel erläutert und im zugehörigen Beispiel verwendet wird. Diese Ereignisse werden ausgelöst, wenn der Client eine Anforderung wiederholt. Dadurch können Sie verfolgen, wie oft der Client wiederholbare Fehler auf einem primären Endpunkt feststellt.
+- Fügen Sie dem [**OperationContext**](/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext)-Objekt, das Sie an die Speicheranforderungen übergeben, einen Handler für das [**Wiederholungsereignis**](/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) hinzu – dies ist die Methode, die in diesem Artikel erläutert und im zugehörigen Beispiel verwendet wird. Diese Ereignisse werden ausgelöst, wenn der Client eine Anforderung wiederholt. Dadurch können Sie verfolgen, wie oft der Client wiederholbare Fehler auf einem primären Endpunkt feststellt.
 
     # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/current)
 
@@ -162,9 +162,10 @@ Sie haben drei Hauptoptionen für die Überwachung der Fehlerhäufigkeit in der 
             ...
     };
     ```
+
     ---
 
-* In der Methode [**Evaluieren**](/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) in einer benutzerdefinierten Wiederholungsrichtlinie können Sie benutzerdefinierten Code ausführen, sobald ein erneuter Versuch stattfindet. Zusätzlich zur Erfassung des Zeitpunkts einer Wiederholung erhalten Sie auch die Möglichkeit, das Wiederholungsverhalten zu ändern.
+- In der Methode [**Evaluieren**](/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) in einer benutzerdefinierten Wiederholungsrichtlinie können Sie benutzerdefinierten Code ausführen, sobald ein erneuter Versuch stattfindet. Zusätzlich zur Erfassung des Zeitpunkts einer Wiederholung erhalten Sie auch die Möglichkeit, das Wiederholungsverhalten zu ändern.
 
     # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/current)
 
@@ -197,9 +198,10 @@ Sie haben drei Hauptoptionen für die Überwachung der Fehlerhäufigkeit in der 
         return info;
     }
     ```
+
     ---
 
-* Der dritte Ansatz besteht darin, eine benutzerdefinierte Komponente in der Anwendung zu implementieren, die fortlaufend Ping-Nachrichten mit leeren Leseanforderungen (z.B. das Lesen eines kleinen Blobs) an den primären Speicherendpunkt sendet, um den Systemzustand zu ermitteln. Dies nimmt zwar einige Ressourcen in Anspruch, jedoch in einem unerheblichen Maß. Wenn ein Problem festgestellt wird, durch das der Schwellenwert erreicht wird, führen Sie einen Wechsel in den schreibgeschützten Modus **SecondaryOnly** durch.
+- Der dritte Ansatz besteht darin, eine benutzerdefinierte Komponente in der Anwendung zu implementieren, die fortlaufend Ping-Nachrichten mit leeren Leseanforderungen (z.B. das Lesen eines kleinen Blobs) an den primären Speicherendpunkt sendet, um den Systemzustand zu ermitteln. Dies nimmt zwar einige Ressourcen in Anspruch, jedoch in einem unerheblichen Maß. Wenn ein Problem festgestellt wird, durch das der Schwellenwert erreicht wird, führen Sie einen Wechsel in den schreibgeschützten Modus **SecondaryOnly** durch.
 
 Zu einem späteren Zeitpunkt möchten Sie wahrscheinlich zum primären Endpunkt zurückwechseln und Aktualisierungen wieder zulassen. Wenn Sie eine der ersten beiden oben aufgeführten Methoden verwenden, können Sie einfach zurück zum primären Endpunkt wechseln und den Aktualisierungsmodus nach einem beliebig gewählten Zeitraum oder einer Anzahl von Vorgängen aktivieren. Anschließend können Sie die Wiederholungslogik erneut ausführen lassen. Wenn das Problem behoben wurde, wird der primäre Endpunkt weiterhin verwendet, und Aktualisierungen werden zugelassen. Wenn weiterhin ein Problem vorliegt, wird erneut zum sekundären Endpunkt und in den schreibgeschützten Modus gewechselt, nachdem die festgelegten Fehlerkriterien nicht erfüllt wurden.
 
@@ -212,7 +214,7 @@ Georedundanter Speicher funktioniert durch die Replikation von Transaktionen von
 Die folgende Tabelle zeigt ein Beispiel dafür, was passieren kann, wenn Sie die Details einer Mitarbeiterin aktualisieren, um sie zu einem Mitglied der Rolle *Administratoren* zu machen. Für dieses Beispiel müssen Sie die **Mitarbeiterentität** und eine **Administratorrollenentität** mit der Gesamtanzahl der Administratoren aktualisieren. Beachten Sie, dass die Aktualisierungen in der sekundären Region in falscher Reihenfolge angewendet werden.
 
 | **Time** | **Transaktion**                                            | **Replikation**                       | **Zeitpunkt der letzten Synchronisierung** | **Ergebnis** |
-|----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
+|----------|------------------------------------------------------------|---------------------------------------|--------------------|------------|
 | T0       | Transaktion A: <br> Mitarbeiterentität <br> in primäre Region einfügen |                                   |                    | Transaktion A in primäre Region eingefügt,<br> noch nicht repliziert. |
 | T1       |                                                            | Transaktion A <br> in sekundäre Region<br> repliziert | T1 | Transaktion A in sekundäre Region repliziert. <br>Zeitpunkt der letzten Synchronisierung aktualisiert.    |
 | T2       | Transaktion B:<br>Aktualisieren<br> Mitarbeiterentität<br> in primärer Region  |                                | T1                 | Transaktion B in primäre Region geschrieben,<br> noch nicht repliziert.  |
@@ -252,6 +254,8 @@ static function OnBeforeResponse(oSession: Session) {
 Sie könnten dieses Beispiel erweitern, um ein größeres Spektrum an Anforderungen abzufangen, und nur den **responseCode** für einige Anforderungen ändern, um ein realistischeres Szenario zu simulieren. Weitere Informationen zum Anpassen von Fiddler-Skripts finden Sie unter [Modifying a Request or Response](https://docs.telerik.com/fiddler/KnowledgeBase/FiddlerScript/ModifyRequestOrResponse) (Ändern einer Anforderung oder Antwort) in der Fiddler-Dokumentation.
 
 Wenn Sie die Schwellenwerte für den Wechsel Ihrer Anwendung in den schreibgeschützten Modus konfigurierbar gemacht haben, ist das Testen des Verhaltens anhand von Transaktionsvolumes außerhalb von Produktionsumgebungen einfacher.
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

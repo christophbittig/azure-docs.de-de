@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 05/25/2021
 ms.author: duau
 ms.custom: references_regions
-ms.openlocfilehash: 9fde9f99792fd450d38cbd0e1935cdb7feaf9585
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 68f45b730ac7ec3d2075a0774c20831b287b77a6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110482593"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625086"
 ---
 # <a name="azure-front-door-edge-locations-by-metro"></a>Azure Front Door-Edgestandorte nach Metro
 > [!div class="op_single_selector"]
@@ -31,5 +31,5 @@ In diesem Artikel werden die aktuellen Metros mit Edgestandorten nach Region fü
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Azure Front Door Edgestandorte nach Abkürzung](edge-locations-abbreviation.md) anzeigen
-* Die aktuelle Liste der Edgeknoten für Azure Front Door finden sie unter [Edgeknotenliste – REST-API](/rest/api/cdn/cdn/edgenodes/list).
+* Die aktuelle Liste der Edgeknoten für Azure Front Door finden sie unter [Edgeknotenliste – REST-API](/rest/api/cdn/edge-nodes/list).
 * Erfahren Sie, wie Sie [ein Azure Front Door-Profil erstellen](quickstart-create-front-door.md).

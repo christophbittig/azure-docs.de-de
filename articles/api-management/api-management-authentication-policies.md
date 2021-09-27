@@ -3,7 +3,7 @@ title: Azure API Management-Authentifizierungsrichtlinien | Microsoft Docs
 description: Erfahren Sie mehr über die Authentifizierungsrichtlinien, die für die Verwendung in Azure API Management verfügbar sind.
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: erikre
 editor: ''
 ms.assetid: 061702a7-3a78-472b-a54a-f3b1e332490d
@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/27/2021
-ms.author: apimpm
-ms.openlocfilehash: 47c687a85249b21e25dc282b47fb76fed0158a91
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.author: danlep
+ms.openlocfilehash: d43310918f1aaeb7905d22f22726709f8d0ed1f4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113551306"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629766"
 ---
 # <a name="api-management-authentication-policies"></a>API Management-Authentifizierungsrichtlinien
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](./api-management-policies.md).
@@ -48,7 +48,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 ### <a name="elements"></a>Elemente
 
-|Name|BESCHREIBUNG|Erforderlich|
+|Name|Beschreibung|Erforderlich|
 |----------|-----------------|--------------|
 |authentication-basic|Stammelement|Ja|
 
@@ -176,13 +176,13 @@ Sowohl eine systemseitig zugewiesene Identität als auch eine der benutzerseitig
 
 ### <a name="elements"></a>Elemente  
   
-|Name|BESCHREIBUNG|Erforderlich|  
+|Name|Beschreibung|Erforderlich|  
 |----------|-----------------|--------------|  
 |authentication-managed-identity |Stammelement|Ja|  
   
 ### <a name="attributes"></a>Attributes  
   
-|Name|BESCHREIBUNG|Erforderlich|Standard|  
+|Name|Beschreibung|Erforderlich|Standard|  
 |----------|-----------------|--------------|-------------|  
 |resource|Eine Zeichenfolge. Die App-ID der Ziel-Web-API (geschützte Ressource) in Azure Active Directory.|Ja|–|
 |client-id|Eine Zeichenfolge. Die App-ID der benutzerseitig zugewiesenen Identität in Azure Active Directory.|Nein|Systemseitig zugewiesene Identität|

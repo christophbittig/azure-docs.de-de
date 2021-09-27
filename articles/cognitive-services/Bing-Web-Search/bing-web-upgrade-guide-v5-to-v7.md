@@ -3,20 +3,18 @@ title: Upgrade der API von Version 5 auf Version 7 – Bing-Websuche-API
 titleSuffix: Azure Cognitive Services
 description: Bestimmen Sie, welche Teile Ihrer Anwendung Updates benötigen, um die Bing-Websuche-APIs der Version 7 zu verwenden.
 services: cognitive-services
-author: swhite-msft
 manager: nitinme
 ms.assetid: E8827BEB-4379-47CE-B67B-6C81AD7DAEB1
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.author: scottwhi
-ms.openlocfilehash: d930543671a5328d76a38aa7e1b421c111e89e39
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 485505fec1a3f187b16af3496c6385be117d931b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96349519"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128613002"
 ---
 # <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>Upgrade der Bing-Websuche-API von Version 5 auf Version 7
 

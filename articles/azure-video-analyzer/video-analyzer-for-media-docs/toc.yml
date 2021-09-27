@@ -116,8 +116,8 @@
       displayName: location
       href: regions.md
     - name: Häufig gestellte Fragen
-      href: faq.md
-    - name: Kompatibilität
+      href: faq.yml
+    - name: Compliance
       href: 'https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942'
     - name: Versionshinweise
       href: release-notes.md

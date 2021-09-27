@@ -1,14 +1,14 @@
 ---
-title: Azure PowerShell-Beispiele für Azure Lab Services | Microsoft-Dokumentation
+title: Azure PowerShell-Beispiele
 description: 'Azure PowerShell-Beispiele: Skripts, die Ihnen beim Verwalten von Labs in Azure Lab Services helfen'
-ms.topic: article
+ms.topic: landing-page
 ms.date: 06/26/2020
-ms.openlocfilehash: ce7a4f77aa0ea309afb81a54fd2f8f0a8f373e58
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0e9ac94a89e62653448ed53d0bfd26ac12c108ca
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86187726"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128670783"
 ---
 # <a name="azure-powershell-samples-for-azure-lab-services"></a>Azure PowerShell-Beispiele für Azure Lab Services
 
@@ -21,4 +21,3 @@ Die folgende Tabelle enthält Links zu Azure PowerShell-Beispielskripts für Azu
 |[Erstellen eines benutzerdefinierten Images anhand einer VHD](scripts/create-custom-image-from-vhd.md)| Dieses PowerShell-Skript erstellt ein benutzerdefiniertes Image in einem Lab in Azure DevTest Labs. |
 |[Erstellen einer benutzerdefinierten Rolle in einem Lab](scripts/create-custom-role-in-lab.md)| Dieses PowerShell-Skript erstellt eine benutzerdefinierte Rolle in einem Lab in Azure Lab Services. |
 |[Festlegen zulässiger VM-Größen in einem Lab](scripts/set-allowed-vm-sizes-in-lab.md)| Dieses PowerShell-Skript legt die zulässigen Größen virtueller Computer (VMs) in einem Lab fest. |
-

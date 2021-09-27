@@ -3,20 +3,18 @@ title: Verwendung von Dekorationsmarkierungen zum Hervorheben von Text – Bing-
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie mit der Bing-Websuche-API Textverzierungen und Hervorhebungen in Ihren Suchergebnissen verwenden können.
 services: cognitive-services
-author: swhite-msft
 manager: nitinme
 ms.assetid: 5365B568-EA55-4D97-8FBE-0AF60158D4D5
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.author: scottwhi
-ms.openlocfilehash: 32c3279cacddf10e77e8d245ba525ab766efd6fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 47ac724cfe62aac91e862702f6af8f949b1ea047
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96351877"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128676350"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>Verwenden von Dekorationsmarkierungen zum Markieren von Text
 

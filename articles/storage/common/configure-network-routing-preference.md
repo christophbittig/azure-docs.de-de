@@ -10,22 +10,22 @@ ms.date: 03/17/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: e9d1f7f520a7613abde520c35fbacc7355973021
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: c871a1ec4feec89cc3250f1fbfefefa69ed927bb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208219"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589319"
 ---
 # <a name="configure-network-routing-preference-for-azure-storage"></a>Konfigurieren der Netzwerkroutingpräferenz für Azure Storage
 
-In diesem Artikel wird beschrieben, wie Sie die Netzwerkroutingpräferenz und routenspezifische Endpunkte für Ihr Speicherkonto konfigurieren können. 
+In diesem Artikel wird beschrieben, wie Sie die Netzwerkroutingpräferenz und routenspezifische Endpunkte für Ihr Speicherkonto konfigurieren können.
 
 Die Netzwerkroutingpräferenz legt fest, wie Netzwerkdatenverkehr von Clients über das Internet zu Ihrem Konto geleitet wird. Routenspezifische Endpunkte sind neue Endpunkte, die Azure Storage für Ihr Speicherkonto erstellt. Diese Endpunkte leiten den Datenverkehr über einen gewünschten Pfad weiter, ohne die Standardroutingpräferenz zu ändern. Weitere Informationen finden Sie unter [Konfigurieren der Netzwerkroutingpräferenz für Azure Storage](network-routing-preference.md).
 
 ## <a name="configure-the-routing-preference-for-the-default-public-endpoint"></a>Konfigurieren der Routingpräferenz für den öffentlichen Standardendpunkt
 
-Standardmäßig ist die Routingpräferenz für den öffentlichen Endpunkt des Speicherkontos auf das globale Microsoft-Netzwerk festgelegt. Sie können zwischen dem globalen Microsoft-Netzwerk und dem Internetrouting als standardmäßige Routingpräferenz für den öffentlichen Endpunkt Ihres Speicherkontos wählen. Weitere Informationen zum Unterschied zwischen diesen beiden Routingtypen finden Sie unter [Konfigurieren der Netzwerkroutingpräferenz für Azure Storage (Vorschau)](network-routing-preference.md). 
+Standardmäßig ist die Routingpräferenz für den öffentlichen Endpunkt des Speicherkontos auf das globale Microsoft-Netzwerk festgelegt. Sie können zwischen dem globalen Microsoft-Netzwerk und dem Internetrouting als standardmäßige Routingpräferenz für den öffentlichen Endpunkt Ihres Speicherkontos wählen. Weitere Informationen zum Unterschied zwischen diesen beiden Routingtypen finden Sie unter [Konfigurieren der Netzwerkroutingpräferenz für Azure Storage (Vorschau)](network-routing-preference.md).
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -40,9 +40,9 @@ So ändern Sie die Routingpräferenz in das Internetrouting:
     > [!div class="mx-imgBorder"]
     > ![Menüoption „Netzwerk“](./media/configure-network-routing-preference/networking-option.png)
 
-4.  Ändern Sie auf der Registerkarte **Firewalls und virtuelle Netzwerke** unter **Netzwerkrouting** die Einstellung für die **Routingpräferenz** in **Internetrouting**.
+4. Ändern Sie auf der Registerkarte **Firewalls und virtuelle Netzwerke** unter **Netzwerkrouting** die Einstellung für die **Routingpräferenz** in **Internetrouting**.
 
-5.  Klicken Sie auf **Speichern**.
+5. Klicken Sie auf **Speichern**.
 
     > [!div class="mx-imgBorder"]
     > ![Internetrouting-Option](./media/configure-network-routing-preference/internet-routing-option.png)
@@ -87,6 +87,7 @@ So ändern Sie die Routingpräferenz in das Internetrouting:
      ```azurecli
      az login
      ```
+
 2. Wenn Ihre Identität mehreren Abonnements zugeordnet ist, legen Sie das aktive Abonnement auf das Abonnement des Speicherkontos fest, auf dem Ihre statische Website gehostet wird.
 
    ```azurecli
@@ -109,15 +110,15 @@ So ändern Sie die Routingpräferenz in das Internetrouting:
 
 Sie können auch einen routenspezifischen Endpunkt konfigurieren. Beispielsweise können Sie die Routingpräferenz für den Standardendpunkt auf *Internetrouting* festlegen und dann einen routenspezifischen Endpunkt veröffentlichen, der ermöglicht, dass der Datenverkehr zwischen Clients im Internet und Ihrem Speicherkonto über das globale Microsoft-Netzwerk weitergeleitet wird.
 
-Diese Einstellung wirkt sich nur auf den routenspezifischen Endpunkt aus. Diese Einstellung wirkt sich nicht auf Ihre Standardroutingpräferenz aus.  
+Diese Einstellung wirkt sich nur auf den routenspezifischen Endpunkt aus. Diese Einstellung wirkt sich nicht auf Ihre Standardroutingpräferenz aus.
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1.  Navigieren Sie im Portal zu Ihrem Speicherkonto.
+1. Navigieren Sie im Portal zu Ihrem Speicherkonto.
 
-2.  Wählen Sie unter **Einstellungen** die Option **Netzwerk** aus.
+2. Wählen Sie unter **Einstellungen** die Option **Netzwerk** aus.
 
-3.  Wählen Sie auf der Registerkarte **Firewalls und virtuelle Netzwerke** unter **Routenspezifische Endpunkte veröffentlichen** die Routingpräferenz Ihres routenspezifischen Endpunkts aus, und klicken Sie dann auf **Speichern**.
+3. Wählen Sie auf der Registerkarte **Firewalls und virtuelle Netzwerke** unter **Routenspezifische Endpunkte veröffentlichen** die Routingpräferenz Ihres routenspezifischen Endpunkts aus, und klicken Sie dann auf **Speichern**.
 
     In der folgenden Abbildung ist die Option **Microsoft-Netzwerkrouting** ausgewählt.
 
@@ -126,11 +127,11 @@ Diese Einstellung wirkt sich nur auf den routenspezifischen Endpunkt aus. Diese 
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. Um einen routenspezifischen Endpunkt zu konfigurieren, verwenden Sie den Befehl [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount). 
+1. Um einen routenspezifischen Endpunkt zu konfigurieren, verwenden Sie den Befehl [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount).
 
-   - Legen Sie zum Erstellen eines routenspezifischen Endpunkts, der die Routingeinstellungen für das Microsoft-Netzwerk verwendet, den `-PublishMicrosoftEndpoint`-Parameter auf `true` fest. 
+   - Legen Sie zum Erstellen eines routenspezifischen Endpunkts, der die Routingeinstellungen für das Microsoft-Netzwerk verwendet, den `-PublishMicrosoftEndpoint`-Parameter auf `true` fest.
 
-   - Legen Sie zum Erstellen eines routenspezifischen Endpunkts, der die Internetroutingeinstellungen verwendet, den `-PublishInternetEndpointTo`- Parameter auf `true` fest.  
+   - Legen Sie zum Erstellen eines routenspezifischen Endpunkts, der die Internetroutingeinstellungen verwendet, den `-PublishInternetEndpointTo`- Parameter auf `true` fest.
 
    Im folgenden Beispiel wird ein routenspezifischer Endpunkt erstellt, der die Routingeinstellungen für das Microsoft-Netzwerk verwendet.
 
@@ -146,11 +147,11 @@ Diese Einstellung wirkt sich nur auf den routenspezifischen Endpunkt aus. Diese 
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-1. Verwenden Sie den Befehl [az storage account update](/cli/azure/storage/account#az_storage_account_update), um einen routenspezifischen Endpunkt zu konfigurieren. 
+1. Verwenden Sie den Befehl [az storage account update](/cli/azure/storage/account#az_storage_account_update), um einen routenspezifischen Endpunkt zu konfigurieren.
 
-   - Legen Sie zum Erstellen eines routenspezifischen Endpunkts, der die Routingeinstellungen für das Microsoft-Netzwerk verwendet, den `--publish-microsoft-endpoints`-Parameter auf `true` fest. 
+   - Legen Sie zum Erstellen eines routenspezifischen Endpunkts, der die Routingeinstellungen für das Microsoft-Netzwerk verwendet, den `--publish-microsoft-endpoints`-Parameter auf `true` fest.
 
-   - Legen Sie zum Erstellen eines routenspezifischen Endpunkts, der die Internetroutingeinstellungen verwendet, den `--publish-internet-endpoints`- Parameter auf `true` fest.  
+   - Legen Sie zum Erstellen eines routenspezifischen Endpunkts, der die Internetroutingeinstellungen verwendet, den `--publish-internet-endpoints`- Parameter auf `true` fest.
 
    Im folgenden Beispiel wird ein routenspezifischer Endpunkt erstellt, der die Routingeinstellungen für das Microsoft-Netzwerk verwendet.
 
@@ -168,12 +169,12 @@ Wenn Sie einen routenspezifischen Endpunkt konfiguriert haben, finden Sie den En
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1.  Wählen Sie unter **Einstellungen** die Option **Eigenschaften** aus.
+1. Wählen Sie unter **Einstellungen** die Option **Eigenschaften** aus.
 
     > [!div class="mx-imgBorder"]
     > ![Menüoption „Eigenschaften“](./media/configure-network-routing-preference/properties.png)
 
-2.  Der **Microsoft-Netzwerkrouting**-Endpunkt wird für jeden Dienst angezeigt, der Routingpräferenzen unterstützt. Diese Abbildung zeigt den Endpunkt für die Blob- und Dateidienste.
+2. Der **Microsoft-Netzwerkrouting**-Endpunkt wird für jeden Dienst angezeigt, der Routingpräferenzen unterstützt. Diese Abbildung zeigt den Endpunkt für die Blob- und Dateidienste.
 
     > [!div class="mx-imgBorder"]
     > ![Option „Microsoft-Netzwerkrouting“ für routenspezifische Endpunkte](./media/configure-network-routing-preference/routing-url.png)

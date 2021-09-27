@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-python
-ms.openlocfilehash: a2db4734650f4af2f0ed67040c7f94eeda5f7c69
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f6374d502a292fc25ecf2a0f7fadc2dc26157f7c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114453100"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128667880"
 ---
 # <a name="use-python-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>Verwenden von Python zum Verwalten von Verzeichnissen und Dateien in Azure Data Lake Storage Gen2
 
@@ -49,11 +49,11 @@ from azure.storage.filedatalake._models import ContentSettings
 
 ## <a name="connect-to-the-account"></a>Herstellen einer Verbindung mit dem Konto
 
-Wenn Sie die Codeausschnitte in diesem Artikel verwenden möchten, müssen Sie eine **DataLakeServiceClient**-Instanz erstellen, die das Speicherkonto darstellt. 
+Wenn Sie die Codeausschnitte in diesem Artikel verwenden möchten, müssen Sie eine **DataLakeServiceClient**-Instanz erstellen, die das Speicherkonto darstellt.
 
 ### <a name="connect-by-using-an-account-key"></a>Herstellen einer Verbindung per Kontoschlüssel
 
-Dies ist die einfachste Möglichkeit, eine Verbindung mit einem Konto herzustellen. 
+Dies ist die einfachste Möglichkeit, eine Verbindung mit einem Konto herzustellen.
 
 In diesem Beispiel wird eine **DataLakeServiceClient**-Instanz mithilfe eines Kontoschlüssels erstellt.
 
@@ -86,13 +86,13 @@ In diesem Beispiel wird ein Container namens `my-file-system` erstellt.
 
 Erstellen Sie eine Verzeichnisreferenz, indem Sie die Methode **FileSystemClient.create_directory** aufrufen.
 
-In diesem Beispiel wird einem Container das Verzeichnis `my-directory` hinzugefügt. 
+In diesem Beispiel wird einem Container das Verzeichnis `my-directory` hinzugefügt.
 
 :::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_CreateDirectory":::
 
 ## <a name="rename-or-move-a-directory"></a>Umbenennen oder Verschieben eines Verzeichnisses
 
-Rufen Sie die Methode **DataLakeDirectoryClient.rename_directory** auf, um ein Verzeichnis umzubenennen oder zu verschieben. Übergeben Sie den Pfad des gewünschten Verzeichnisses als Parameter. 
+Rufen Sie die Methode **DataLakeDirectoryClient.rename_directory** auf, um ein Verzeichnis umzubenennen oder zu verschieben. Übergeben Sie den Pfad des gewünschten Verzeichnisses als Parameter.
 
 Im folgenden Beispiel wird ein Unterverzeichnis in `my-directory-renamed` umbenannt.
 
@@ -102,7 +102,7 @@ Im folgenden Beispiel wird ein Unterverzeichnis in `my-directory-renamed` umbena
 
 Sie können ein Verzeichnis löschen, indem Sie die Methode **DataLakeDirectoryClient.delete_directory** aufrufen.
 
-In diesem Beispiel wird das Verzeichnis `my-directory` gelöscht.  
+In diesem Beispiel wird das Verzeichnis `my-directory` gelöscht.
 
 :::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_DeleteDirectory":::
 
@@ -110,12 +110,12 @@ In diesem Beispiel wird das Verzeichnis `my-directory` gelöscht.
 
 Erstellen Sie zunächst eine Dateireferenz im Zielverzeichnis, in dem Sie eine Instanz der Klasse **DataLakeFileClient** erstellen. Laden Sie eine Datei hoch, indem Sie die Methode **DataLakeFileClient.append_data** aufrufen. Stellen Sie sicher, dass Sie den Uploadvorgang durch Aufrufen der Methode **DataLakeFileClient.flush_data** abschließen.
 
-In diesem Beispiel wird eine Textdatei in das Verzeichnis `my-directory` hochgeladen.   
+In diesem Beispiel wird eine Textdatei in das Verzeichnis `my-directory` hochgeladen.
 
 :::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_UploadFile":::
 
 > [!TIP]
-> Wenn Ihre Datei groß ist, muss Ihr Code die **DataLakeFileClient.append_data**-Methode mehrmals aufrufen. Erwägen Sie stattdessen die **DataLakeFileClient.upload_data**-Methode. Auf diese Weise können Sie die gesamte Datei in einem einzigen Aufruf hochladen. 
+> Wenn Ihre Datei groß ist, muss Ihr Code die **DataLakeFileClient.append_data**-Methode mehrmals aufrufen. Erwägen Sie stattdessen die **DataLakeFileClient.upload_data**-Methode. Auf diese Weise können Sie die gesamte Datei in einem einzigen Aufruf hochladen.
 
 ## <a name="upload-a-large-file-to-a-directory"></a>Hochladen einer großen Datei in ein Verzeichnis
 
@@ -123,9 +123,9 @@ Verwenden Sie die **DataLakeFileClient.upload_data**-Methode, um große Dateien 
 
 :::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_UploadFileBulk":::
 
-## <a name="download-from-a-directory"></a>Herunterladen aus einem Verzeichnis 
+## <a name="download-from-a-directory"></a>Herunterladen aus einem Verzeichnis
 
-Öffnen Sie eine lokale Datei zum Schreiben. Erstellen Sie dann eine **DataLakeFileClient**-Instanz, die die herunterzuladende Datei darstellt. Rufen Sie die Methode **DataLakeFileClient.read_file** auf, um Bytes aus der Datei zu lesen und anschließend in die lokale Datei zu schreiben. 
+Öffnen Sie eine lokale Datei zum Schreiben. Erstellen Sie dann eine **DataLakeFileClient**-Instanz, die die herunterzuladende Datei darstellt. Rufen Sie die Methode **DataLakeFileClient.read_file** auf, um Bytes aus der Datei zu lesen und anschließend in die lokale Datei zu schreiben.
 
 :::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_DownloadFromDirectory":::
 

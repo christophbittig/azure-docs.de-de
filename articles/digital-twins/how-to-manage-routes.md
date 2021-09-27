@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/30/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: dd63a04616848acfb3971a97f8363498e6ba4e55
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 4e9bfa2dc340f567a6c2b7c4ab5d45cfeaa41e6c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835742"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128661011"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>Verwalten von Endpunkten und Routen in Azure Digital Twins
 
@@ -77,7 +77,7 @@ Navigieren Sie im [Azure-Portal](https://portal.azure.com) zur Seite Ihrer Insta
 1. Geben Sie einen **Namen** für Ihren Endpunkt ein, und wählen Sie den **Endpunkttyp**.
 
 1. Geben Sie die restlichen für Ihren Endpunkttyp erforderlichen Informationen an, einschließlich Ihres Abonnements und der [oben](#prerequisite-create-endpoint-resources) beschriebenen Endpunktressourcen.
-    1. Nur für Event Hub- und Service Bus-Endpunkte müssen Sie einen **Authentifizierungstyp** auswählen. Sie können die schlüsselbasierte Authentifizierung mit einer vorab erstellten Autorisierungsregel verwenden. Sie können auch die identitätsbasierte Authentifizierung verwenden, wenn Sie den Endpunkt mit einer [verwalteten Identität](concepts-security.md#managed-identity-for-accessing-other-resources-preview) für Ihre Azure Digital Twins-Instanz nutzen. 
+    1. Nur für Event Hub- und Service Bus-Endpunkte müssen Sie einen **Authentifizierungstyp** auswählen. Sie können die schlüsselbasierte Authentifizierung mit einer vorab erstellten Autorisierungsregel verwenden. Sie können auch die identitätsbasierte Authentifizierung verwenden, wenn Sie den Endpunkt mit einer [verwalteten Identität](concepts-security.md#managed-identity-for-accessing-other-resources) für Ihre Azure Digital Twins-Instanz nutzen. 
 
     :::row:::
         :::column:::
@@ -132,7 +132,7 @@ Nachdem Sie diese Befehle erfolgreich ausgeführt haben, steht das Event Grid-, 
 
 #### <a name="create-an-endpoint-with-identity-based-authentication"></a>Erstellen eines Endpunkts mit identitätsbasierter Authentifizierung
 
-Sie können auch einen Endpunkt mit identitätsbasierter Authentifizierung erstellen, um den Endpunkt mit einer [verwalteten Identität](concepts-security.md#managed-identity-for-accessing-other-resources-preview) zu verwenden. Diese Option ist nur für Event Hub- und Service Bus-Endpunkte verfügbar (sie wird nicht für Event Grid unterstützt).
+Sie können auch einen Endpunkt mit identitätsbasierter Authentifizierung erstellen, um den Endpunkt mit einer [verwalteten Identität](concepts-security.md#managed-identity-for-accessing-other-resources) zu verwenden. Diese Option ist nur für Event Hub- und Service Bus-Endpunkte verfügbar (sie wird nicht für Event Grid unterstützt).
 
 Den CLI-Befehl zum Erstellen dieser Art von Endpunkt finden Sie unten. Sie benötigen die folgenden Werte, um die Platzhalter im Befehl einzuschließen:
 * die Azure-Ressourcen-ID Ihrer Azure Digital Twins-Instanz
@@ -235,7 +235,7 @@ Alternativ können Sie Endpunkte für unzustellbare Nachrichten mithilfe der [Az
 
 #### <a name="create-a-dead-letter-endpoint-with-identity-based-authentication"></a>Erstellen eines Endpunkts für unzustellbare Nachrichten mit identitätsbasierter Authentifizierung
 
-Sie können auch einen Endpunkt für unzustellbare Nachrichten mit identitätsbasierter Authentifizierung erstellen, um den Endpunkt mit einer [verwalteten Identität](concepts-security.md#managed-identity-for-accessing-other-resources-preview) zu verwenden. Diese Option ist nur für Event Hub- und Service Bus-Endpunkte verfügbar (sie wird nicht für Event Grid unterstützt).
+Sie können auch einen Endpunkt für unzustellbare Nachrichten mit identitätsbasierter Authentifizierung erstellen, um den Endpunkt mit einer [verwalteten Identität](concepts-security.md#managed-identity-for-accessing-other-resources) zu verwenden. Diese Option ist nur für Event Hub- und Service Bus-Endpunkte verfügbar (sie wird nicht für Event Grid unterstützt).
 
 Verwenden Sie zum Erstellen dieser Art von Endpunkt denselben CLI-Befehl wie oben, um einen [Endpunkt mit identitätsbasierter Authentifizierung](#create-an-endpoint-with-identity-based-authentication) mit einem zusätzlichen Feld in den JSON-Nutzdaten für einen `deadLetterUri` zu erstellen.
 

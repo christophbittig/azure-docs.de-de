@@ -9,12 +9,12 @@ ms.date: 02/04/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1c5dcd5e65a46208a365dc828f41a83099944653
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: a3c662e336043b78864a1a30e35dcb62777374f4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110477687"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591043"
 ---
 # <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>Erstellen oder Löschen eines Containers in Azure Storage mit .NET
 
@@ -96,6 +96,7 @@ private static async Task<CloudBlobContainer> CreateSampleContainerAsync(CloudBl
     return container;
 }
 ```
+
 ---
 
 ## <a name="create-the-root-container"></a>Erstellen des Stammcontainers
@@ -139,6 +140,7 @@ private static void CreateRootContainer(CloudBlobClient blobClient)
     }
 }
 ```
+
 ---
 
 ## <a name="delete-a-container"></a>Löschen eines Containers
@@ -194,6 +196,7 @@ private static async Task DeleteSampleContainerAsync(CloudBlobClient blobClient,
     }
 }
 ```
+
 ---
 
 Im folgenden Beispiel wird gezeigt, wie alle Container gelöscht werden, die mit einem angegebenen Präfix beginnen.
@@ -226,6 +229,7 @@ private static async Task DeleteContainersWithPrefixAsync(CloudBlobClient blobCl
     }
 }
 ```
+
 ---
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]

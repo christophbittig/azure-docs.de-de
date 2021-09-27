@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 5c9421397b6e5fbfe8688e5ceeff6056de25674a
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 771674a3c8d4023b307982f8460f956dd422eb04
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122356129"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128567144"
 ---
 # <a name="security-best-practices"></a>Bewährte Sicherheitsmethoden
 
@@ -208,27 +208,6 @@ Die folgenden Betriebssysteme unterstützen die Verwendung der Windows Defender-
 
 >[!NOTE]
 >Wenn Sie die Windows Defender-Anwendungssteuerung verwenden, wird empfohlen, nur Richtlinien auf Geräteebene als Ziel zu verwenden. Obwohl es möglich ist, Richtlinien auf einzelne Benutzer auszurichten, wirkt sich die Richtlinie, sobald sie angewendet wird, auf alle Benutzer des Geräts gleichermaßen aus.
-
-## <a name="ip-virtualization"></a>IP-Virtualisierung
-
-Wenn Sie die IP-Virtualisierung unter Windows Server 2019 verwenden möchten, führen Sie die folgenden Schritte aus:
-
-1. Benennen Sie in einem Windows PowerShell-Administratorfenster den folgenden Schlüssel um: 
-```powershell
-Rename-Item HKLM:\SYSTEM\ControlSet001\Services\WinSock2\Parameters\AppId_Catalog\2C69D9F1 Backup_2C69D9F1
-```
->[!NOTE]
->Das Löschen des Schlüssels würde das Gleiche bewirken, aber die Umbenennung bietet die Möglichkeit, den Vorgang bei Bedarf leichter rückgängig zu machen. Dies sind die Daten, die standardmäßig vorhanden sind:
->       
->HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\WinSock2\Parameters\AppId_Catalog\2C69D9F1\
->AppFullPath: C:\Windows\System32\svchost.exe\
->PermittedLspCategories: 0x40000000
-
-2. Starten Sie den virtuellen Computer neu.
-
-3. Aktivieren Sie das Feature „IP-Virtualisierung“ durch Öffnen von **gpedit.msc**. Wechseln Sie dann zu **Computerkonfiguration** > **Administrative Vorlagen** > **Windows-Komponenten** > **Remotedesktopdienste** > **Remotedesktop-Sitzungshost** > **Anwendungskompatibilität**. Aktivieren Sie die Richtlinie **Remotedesktop-IP-Virtualisierung aktivieren**, und geben Sie dann die IP-Adresse an, die die Richtlinie verwenden soll.
-
-4. Starten Sie den virtuellen Computer neu.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

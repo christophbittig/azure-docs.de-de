@@ -3,16 +3,17 @@ title: Verschieben von Daten aus einer Webtabelle mithilfe von Azure Data Factor
 description: Erfahren Sie, wie Sie Daten aus einer Tabelle auf einer Webseite mithilfe von Azure Data Factory verschieben.
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7663848bd06244de7efb169a576e11a5c78204c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0e3472393587fe117e342bbc1dce5d990520760d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100392900"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651216"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Verschieben von Daten aus einer Webtabelle mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -65,7 +66,7 @@ Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Defini
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den verknüpften Webdienst spezifisch sind.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Web** |Ja |
 | url |URL der Webquelle |Ja |
@@ -93,7 +94,7 @@ Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren vo
 
 Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der „typeProperties“-Abschnitt für ein Dataset des Typs **WebTable** hat die folgenden Eigenschaften:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type |Die Art des Datasets. Muss auf **WebTable** festgelegt sein. |Ja |
 | path |Eine relative URL zu der Ressource, die die Tabelle enthält. |Nein. Wenn der Pfad nicht angegeben ist, wird nur die URL verwendet, die in der Definition des verknüpften Diensts angegeben ist. |
@@ -282,24 +283,24 @@ Unter „WebSource-Typeigenschaften“ finden Sie die Liste der von WebSource un
 1. Starten Sie **Excel 2016**, und wechseln Sie zur Registerkarte **Daten**.  
 2. Klicken Sie auf der Symbolleiste auf **Neue Abfrage**, zeigen Sie auf **Aus anderen Quellen**, und klicken Sie auf **Aus dem Web**.
 
-    ![Power Query-Menü](./media/data-factory-web-table-connector/PowerQuery-Menu.png)
+    :::image type="content" source="./media/data-factory-web-table-connector/PowerQuery-Menu.png" alt-text="Power Query-Menü":::
 3. Geben Sie im Dialogfeld **Aus dem Web** die **URL**, die Sie im JSON-Code für den verknüpften Dienst verwenden möchten (Beispiel: https://en.wikipedia.org/wiki/) ), sowie den Pfad ein, den Sie für das Dataset angeben möchten (Beispiel: AFI%27s_100_Years...100_Movies), und klicken Sie anschließend auf **OK**.
 
-    ![Aus dem Web (Dialogfeld)](./media/data-factory-web-table-connector/FromWeb-DialogBox.png)
+    :::image type="content" source="./media/data-factory-web-table-connector/FromWeb-DialogBox.png" alt-text="Aus dem Web (Dialogfeld)":::
 
     Die in diesem Beispiel verwendete URL lautet wie folgt: https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
 4. Falls das Dialogfeld **Auf Webinhalt zugreifen** angezeigt wird, wählen Sie die richtige **URL** und **Authentifizierung** aus, und klicken Sie auf **Verbinden**.
 
-   ![Webinhalt aufrufen (Dialogfeld)](./media/data-factory-web-table-connector/AccessWebContentDialog.png)
+   :::image type="content" source="./media/data-factory-web-table-connector/AccessWebContentDialog.png" alt-text="Webinhalt aufrufen (Dialogfeld)":::
 5. Klicken Sie in der Strukturansicht auf ein **Tabellenelement** um Inhalte aus der Tabelle anzuzeigen, und klicken Sie dann am unteren Rand auf **Bearbeiten**.  
 
-   ![Navigator (Dialogfeld)](./media/data-factory-web-table-connector/Navigator-DialogBox.png)
+   :::image type="content" source="./media/data-factory-web-table-connector/Navigator-DialogBox.png" alt-text="Navigator (Dialogfeld)":::
 6. Klicken Sie im Fenster **Abfrage-Editor** auf der Symbolleiste auf die Schaltfläche **Erweiterter Editor**.
 
-    ![Erweiterter Editor (Schaltfläche)](./media/data-factory-web-table-connector/QueryEditor-AdvancedEditorButton.png)
+    :::image type="content" source="./media/data-factory-web-table-connector/QueryEditor-AdvancedEditorButton.png" alt-text="Erweiterter Editor (Schaltfläche)":::
 7. Im Dialogfeld „Erweiterter Editor“ ist die Zahl neben „Quelle“ der Index.
 
-    ![Erweiterter Editor – Index](./media/data-factory-web-table-connector/AdvancedEditor-Index.png)
+    :::image type="content" source="./media/data-factory-web-table-connector/AdvancedEditor-Index.png" alt-text="Erweiterter Editor – Index":::
 
 Rufen Sie den Index bei Verwendung von Excel 2013 mit [Microsoft Power Query für Excel](https://www.microsoft.com/download/details.aspx?id=39379) ab. Ausführlichere Informationen finden Sie im Artikel [Connect to a web page](https://support.office.com/article/Connect-to-a-web-page-Power-Query-b2725d67-c9e8-43e6-a590-c0a175bd64d8) (Verbinden mit einer Webseite). Bei Verwendung von [Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)werden ähnliche Schritte verwendet.
 

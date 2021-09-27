@@ -6,12 +6,12 @@ ms.author: jaawasth
 ms.service: virtual-machines-sap
 ms.topic: how-to
 ms.date: 04/19/2021
-ms.openlocfilehash: 3da8c2a0147136ad5da90489e4f8db511cad7378
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 7f5f554f6563c2d0275bca7b6db48f2521379b11
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113217447"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626606"
 ---
 # <a name="azure-large-instances-high-availability-for-sap-on-rhel"></a>Hohe Verfügbarkeit von Azure (große Instanzen) für SAP auf RHEL
 
@@ -19,7 +19,7 @@ ms.locfileid: "113217447"
 > Dieser Artikel enthält Verweise auf den Begriff *Blacklist*, der von Microsoft nicht mehr verwendet wird. Sobald dieser Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
 
 > [!NOTE]
-> Dieser Artikel enthält Verweise auf den Begriff Slave, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wird, wird er auch aus diesem Artikel entfernt.
+> Dieser Artikel enthält Verweise auf den Begriff *Slave*, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wird, wird er auch aus diesem Artikel entfernt.
 
 In diesem Artikel erfahren Sie, wie Sie den Pacemaker-Cluster in RHEL 7 konfigurieren, um ein SAP HANA-Datenbankfailover zu automatisieren. Sie müssen mit Linux, SAP HANA und Pacemaker vertraut sein, um die Schritte in dieser Anleitung ausführen zu können.
 
@@ -1226,10 +1226,12 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
 
 Verwenden Sie den folgenden Befehl, um die Verschiebung der SAPHana-Ressource von einem Knoten zu einem anderen zu testen. Beachten Sie, dass die Option `--primary` bei der Ausführung des folgenden Befehls nicht verwendet werden sollte, da die SAPHana-Ressource intern funktioniert.
-```pcs resource move SAPHana_HR2_00-primary```
+
+`pcs resource move SAPHana_HR2_00-primary`
 
 Nach jedem Aufruf des Befehls zum Verschieben der PCS-Ressource erstellt der Cluster Ortseinschränkungen, um die Verschiebung der Ressource zu erreichen. Diese Einschränkungen müssen entfernt werden, um in Zukunft ein automatisches Failover zuzulassen.
 Um Sie zu entfernen, können Sie den folgenden Befehl verwenden.
+
 ```
 pcs resource clear SAPHana_HR2_00-primary
 crm_mon -A1

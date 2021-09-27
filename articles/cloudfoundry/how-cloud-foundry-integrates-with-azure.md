@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: ff2a6618b60ff2cfa5faa74c905e140466a14359
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2fcb89ccbebf557a1a4068f6fe08b0d27226b1fa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102563318"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591765"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>Integrieren von Cloud Foundry in Azure
 
@@ -87,7 +87,7 @@ Verwaltete Datenträger unterstützen kleinere Datenträgergrößen, z.B. P4 (32
 #### <a name="use-azure-first-party-services"></a>Verwenden des Azure-Erstanbieterdiensts: 
 Profitieren Sie zusätzlich zur Hochverfügbarkeit und Zuverlässigkeit (wie weiter oben erwähnt) vom Vorteil des Erstanbieterdiensts von Azure, und sparen Sie langfristig Administrationskosten. 
 
-Pivotal hat eine [Small Footprint-ERT](https://docs.pivotal.io/pivotalcf/2-0/customizing/small-footprint.html) für PCF-Kunden veröffentlicht. Die Komponenten sind in nur 4 VMs zusammengestellt und führen bis zu 2500 Anwendungsinstanzen aus. Die Testversion ist nun über den [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry) verfügbar.
+Pivotal hat eine [Small Footprint-ERT](https://docs.pivotal.io/pivotalcf/2-0/customizing/small-footprint.html) für PCF-Kunden veröffentlicht. Die Komponenten sind in nur 4 VMs zusammengestellt und führen bis zu 2500 Anwendungsinstanzen aus. Die Testversion ist nun über den Azure Marketplace verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Azure-Integrationsfeatures sind zuerst auf der [Open Source-Cloud Foundry-Plattform](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/) verfügbar, bevor sie auf Pivotal Cloud Foundry verfügbar sind. Features, die mit einem Sternchen (*) markiert sind, sind noch nicht über PCF verfügbar. Die Cloud Foundry-Integration mit Azure Stack wird in diesem Dokument nicht behandelt.

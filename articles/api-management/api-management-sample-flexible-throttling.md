@@ -3,7 +3,7 @@ title: Erweiterte Anforderungsbegrenzung mit Azure API Management
 description: Erfahren Sie, wie Sie mit Azure API Management flexibel Richtlinien zur Kontingents- und Ratenbegrenzung erstellen und anwenden.
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: erikre
 editor: ''
 ms.assetid: fc813a65-7793-4c17-8bb9-e387838193ae
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2018
-ms.author: apimpm
-ms.openlocfilehash: 3f91ed2238a7a23b967cd3e3556c8ade88af0044
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.author: danlep
+ms.openlocfilehash: 177d393041b397e504c1c8c155fe9b2b1f99b451
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449731"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128653683"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>Erweiterte Anforderungsbegrenzung mit Azure API Management
 Die Fähigkeit, eingehende Anforderungen zu begrenzen oder zu drosseln, ist für Azure API Management von großer Bedeutung. Mit API Management lässt sich entweder die Rate der Anforderungen oder die Gesamtzahl der Anforderungen bzw. die Gesamtmenge der übertragenen Daten steuern. Dies ermöglicht es den API-Anbietern, ihre APIs vor Missbrauch zu schützen und mit verschiedenen API-Produkttarifen Mehrwert zu schaffen.
