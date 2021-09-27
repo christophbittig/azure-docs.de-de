@@ -2,13 +2,13 @@
 title: Ausgaben in Bicep
 description: Beschreibt, wie Sie Ausgabevariablen in Bicep definieren.
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 1468f1a8a42f51dec1d195d39fe9096746c8193f
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.date: 09/02/2021
+ms.openlocfilehash: 4cdf21eddcf14f5563c0c638f962585ad021e8ed
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122635139"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123428756"
 ---
 # <a name="outputs-in-bicep"></a>Ausgaben in Bicep
 
@@ -18,9 +18,7 @@ Das Format der einzelnen Ausgabewerte muss sich zu einem der [Datentypen](data-t
 
 ## <a name="define-output-values"></a>Definieren von Ausgabewerten
 
-Im folgenden Beispiel wird gezeigt, wie Sie das Schlüsselwort `output` verwenden, um eine Eigenschaft von einer bereitgestellten Ressource zurückzugeben.
-
-Im folgenden Beispiel ist `publicIP` der Bezeichner (symbolischer Name) einer öffentlichen IP-Adresse, die in der Bicep-Datei bereitgestellt wird. Der Ausgabewert erhält den vollqualifizierten Domänennamen für die öffentliche IP-Adresse.
+Im folgenden Beispiel wird gezeigt, wie Sie das Schlüsselwort `output` verwenden, um eine Eigenschaft von einer bereitgestellten Ressource zurückzugeben. Im Beispiel ist `publicIP` der Bezeichner (symbolischer Name) einer öffentlichen IP-Adresse, die in der Bicep-Datei bereitgestellt wird. Der Ausgabewert erhält den vollqualifizierten Domänennamen für die öffentliche IP-Adresse.
 
 ```bicep
 output hostname string = publicIP.properties.dnsSettings.fqdn
@@ -35,6 +33,11 @@ var user = {
 
 output stringOutput string = user['user-name']
 ```
+
+Im nächsten Beispiel wird veranschaulicht, wie Ausgaben verschiedener Typen zurückgegeben werden.
+
+:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/outputs/output.bicep":::
+
 
 ## <a name="conditional-output"></a>Bedingte Ausgabe
 
@@ -105,14 +108,6 @@ publicIPAddress: {
   id: publicIP.outputs.resourceID
 }
 ```
-
-## <a name="example-template"></a>Beispielvorlage
-
-Von der folgenden Vorlage werden keine Ressourcen bereitgestellt. Sie zeigt einige Möglichkeiten für die Rückgabe von Ausgaben unterschiedlicher Typen.
-
-Bicep unterstützt derzeit keine Schleifen.
-
-:::code language="bicep" source="~/azure-docs-bicep-samples/bicep/output.bicep":::
 
 ## <a name="get-output-values"></a>Abrufen von Ausgabewerten
 

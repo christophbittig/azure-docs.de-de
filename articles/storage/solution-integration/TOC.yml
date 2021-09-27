@@ -33,6 +33,8 @@
       href: ./validated-partners/data-management/komprise-quick-start-guide.md
     - name: Leitfaden zu den ersten Schritten mit StorageX
       href: ./validated-partners/data-management/storagex-quick-start-guide.md
+    - name: Leitfaden zu den ersten Schritte mit Cirrus Data
+      href: ./validated-partners/data-management/cirrus-data-migration-guide.md
   expanded: false
 - name: Partner für primären und sekundären Speicher
   items:

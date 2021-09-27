@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/26/2021
 ms.author: jushiman
-ms.openlocfilehash: 284b4bc69446e12f70c3f0310fa494723aff1f1d
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 6135d675f2f719f7fa471a886715bce5d6036eb7
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696346"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425601"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Unterstützung für VMs der Generation 2 in Azure
 
@@ -27,7 +27,7 @@ VMs der Generation 2 verwenden die neue UEFI-basierte Startarchitektur und nicht
 
 ## <a name="generation-2-vm-sizes"></a>VM-Größen der Generation 2
 
-VMs der Generation 1 werden von allen VM-Größen in Azure unterstützt (Ausnahme: VMs der Mv2-Serie). Azure bietet jetzt Unterstützung für die Generation 2 der folgenden ausgewählten VM-Serien:
+VMs der Generation 1 werden von allen VM-Größen in Azure unterstützt (mit Ausnahme von VMs der Mv2-Serie und der Msv2- und Mdsv2-Serie mit mittlerem Arbeitsspeicher). Azure bietet jetzt Unterstützung für die Generation 2 der folgenden ausgewählten VM-Serien:
 
 
 * [B-Serie](sizes-b-series-burstable.md)
@@ -49,6 +49,7 @@ VMs der Generation 1 werden von allen VM-Größen in Azure unterstützt (Ausnah
 * [Lsv2-Serie](lsv2-series.md)
 * [M-Serie](m-series.md)
 * [Mv2-Serie](mv2-series.md)<sup>1</sup>
+* [Msv2- und Mdsv2-Serie mit mittlerem Arbeitsspeicher](msv2-mdsv2-series.md)<sup>1</sup>
 * [NCv2-Serie](ncv2-series.md) 
 * [NCv3-Serie](ncv3-series.md)
 * [ND-Serie](nd-series.md)
@@ -56,7 +57,7 @@ VMs der Generation 1 werden von allen VM-Größen in Azure unterstützt (Ausnah
 * [NVv4-Serie](nvv4-series.md)
 * [NCasT4_v3-Serie](nct4-v3-series.md)
 
-<sup>1</sup> Die Mv2-Serie unterstützt keine VM-Images der Generation 1 und nur eine Teilmenge von Images der Generation 2. Ausführliche Informationen finden Sie in der [Dokumentation zur Mv2-Serie](mv2-series.md).
+<sup>1</sup> Die Mv2-Serie sowie die Msv2- und Mdsv2-Serie mit mittlerem Arbeitsspeicher unterstützen keine VM-Images der Generation 1 und nur eine Teilmenge von Images der Generation 2. Details finden Sie in der [Dokumentation zur Mv2-Serie](mv2-series.md) und unter [Msv2- und Mdsv2-Serie mit mittlerem Arbeitsspeicher](msv2-mdsv2-series.md).
 
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>VM-Images der Generation 2 in Azure Marketplace

@@ -1,14 +1,14 @@
 ---
 title: Bewährte Methoden
 description: Erfahren Sie, welche bewährten Methoden und nützlichen Tipps es für das Entwickeln Ihrer Azure Batch-Lösungen gibt.
-ms.date: 04/29/2021
+ms.date: 09/03/2021
 ms.topic: conceptual
-ms.openlocfilehash: db67f91257db1ddb44f7dfb103ac02e49febe562
-ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+ms.openlocfilehash: 5227b738ab5d7af19ed2877a1c3d6b37ea08c556
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113126462"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123535813"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch: bewährte Methoden
 
@@ -48,6 +48,8 @@ Die Poollebensdauer kann abhängig von der Zuordnungsmethode und den auf die Poo
 - **Erneutes Erstellen von Pools:** Vermeiden Sie es in diesem Zusammenhang auch, Pools täglich zu löschen und neu zu erstellen. Erstellen Sie stattdessen einen neuen Pool, und aktualisieren Sie die vorhandenen Aufträge, sodass sie auf den neuen Pool verweisen. Nachdem alle Aufgaben in den neuen Pool verschoben wurden, löschen Sie den alten Pool.
 
 - **Pooleffizienz und -abrechnung**: Für Batch selbst fallen keine zusätzlichen Gebühren an, aber es fallen Gebühren für die verwendeten Computeressourcen an. Ihnen wird jeder Computeknoten im Pool in Rechnung gestellt, unabhängig davon, in welchem Zustand er sich befindet. Dies schließt alle Gebühren ein, die für die Ausführung des Knotens erforderlich sind, z. B. Speicher- und Netzwerkkosten. Weitere Informationen zu bewährten Methoden finden Sie im Artikel zu [Kostenanalyse und Budgets für Azure Batch](budget.md).
+
+- **Kurzlebige Betriebssystemdatenträger:** VM-Konfigurationspools können [kurzlebige Betriebssystemdatenträger](create-pool-ephemeral-os-disk.md) verwenden. Sie erstellen den Betriebssystemdatenträger im VM-Cache oder temporären SSD, um zusätzliche Kosten im Zusammenhang mit verwalteten Datenträgern zu vermeiden.
 
 ### <a name="pool-allocation-failures"></a>Fehler bei der Poolzuordnung
 

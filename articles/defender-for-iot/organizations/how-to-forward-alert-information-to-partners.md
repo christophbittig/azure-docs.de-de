@@ -1,14 +1,14 @@
 ---
 title: Weiterleiten von Warnungsinformation
 description: Sie können Weiterleitungsregeln verwenden, um Warnungsinformation an Partnersysteme zu senden.
-ms.date: 07/12/2021
+ms.date: 08/29/2021
 ms.topic: how-to
-ms.openlocfilehash: 8bad8461435d2ff223fe39d1bd4257cdf0948a4d
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 2136a58a383bb623edca69cb03c1c9c5530a107f
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114446836"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123432359"
 ---
 # <a name="forward-alert-information"></a>Weiterleiten von Warnungsinformation
 
@@ -26,21 +26,36 @@ Defender für IoT-Administratoren verfügen über die Berechtigung, Weiterleitun
 
 Warnungen informieren über ein umfangreiches Spektrum an Sicherheits- und Betriebsereignissen. Beispiel:
 
-  - Datum und Uhrzeit der Warnung
+- Datum und Uhrzeit der Warnung
 
-  - Engine, die das Ereignis erkannt hat
+- Engine, die das Ereignis erkannt hat
 
-  - Warnungstitel und beschreibende Meldung
+- Warnungstitel und beschreibende Meldung
 
-  - Schweregrad der Warnung
+- Schweregrad der Warnung
 
-  - Quell- und -Zielname und IP-Adresse
+- Quell- und -Zielname und IP-Adresse
 
-  - Verdächtiger Datenverkehr erkannt
+- Verdächtiger Datenverkehr erkannt
 
 :::image type="content" source="media/how-to-work-with-alerts-sensor/address-scan-detected-screen.png" alt-text="Adressüberprüfung erkannt.":::
 
 Wenn Weiterleitungsregeln erstellt wurden, werden relevante Informationen an Partnersysteme gesendet.
+
+## <a name="about-forwarding-rules-and-certificates"></a>Informationen zu Weiterleitungsregeln und Zertifikaten
+
+Bestimmte Weiterleitungsregeln ermöglichen die Verschlüsselung und Zertifikatüberprüfung zwischen dem Sensor oder der lokalen Verwaltungskonsole sowie dem Server des integrierten Anbieters.
+
+In diesen Fällen ist der Sensor oder die lokale Verwaltungskonsole der Client und Initiator der Sitzung.  Die Zertifikate werden normalerweise vom Server empfangen, oder sie verwenden die asymmetrische Verschlüsselung, bei der ein bestimmtes Zertifikat zum Einrichten der Integration bereitgestellt wird.
+
+Ihr Defender für IoT-System wurde so eingerichtet, dass entweder Zertifikate überprüft oder die Zertifikatüberprüfung ignoriert wird.  Informationen zum Aktivieren und Deaktivieren der Überprüfung finden Sie unter [Informationen zur Zertifikatüberprüfung](how-to-deploy-certificates.md#about-certificate-validation).
+
+Wenn die Überprüfung aktiviert wurde und das Zertifikat nicht überprüft werden kann, wird die Kommunikation zwischen Defender für IoT und dem Server angehalten.  Der Sensor zeigt eine Fehlermeldung zum Überprüfungsfehler an.  Wenn die Überprüfung deaktiviert wurde und das Zertifikat ungültig ist, wird die Kommunikation weiterhin durchgeführt.
+
+Die folgenden Weiterleitungsregeln ermöglichen die Verschlüsselung und Zertifikatüberprüfung:
+- Syslog CEF
+- Azure Sentinel
+- QRadar
 
 ## <a name="create-forwarding-rules"></a>Erstellen von Weiterleitungsregeln
 
@@ -54,7 +69,7 @@ Wenn Weiterleitungsregeln erstellt wurden, werden relevante Informationen an Par
 
    :::image type="content" source="media/how-to-work-with-alerts-sensor/create-forwarding-rule-screen.png" alt-text="Erstellen Sie das Symbol „Weiterleitungsregel“.":::
 
-1. Geben Sie einen Namen für die Weiterleitungsregel ein. 
+1. Geben Sie einen Namen für die Weiterleitungsregel ein.
 
 1. Wählen Sie den Schweregrad aus.
 
@@ -111,7 +126,7 @@ Legen Sie die folgenden Parameter fest:
 - Zeitzone für den Zeitstempel für die Warnungserkennung in SIEM.
 
 - TLS-Verschlüsselungszertifikatdatei und Schlüsseldatei für CEF-Server (optional).
-    
+
 :::image type="content" source="media/how-to-work-with-alerts-sensor/configure-encryption.png" alt-text="Konfigurieren der Verschlüsselung für die Weiterleitungsregel.":::
 
 | Ausgabefelder für Syslog-Textnachrichten | BESCHREIBUNG |
@@ -122,34 +137,32 @@ Legen Sie die folgenden Parameter fest:
 | Protocol | TCP oder UDP |
 | `Message` | Sensor: Der Name des Sensors.<br /> Warnung: Der Titel der Warnung.<br /> Typ: Der Typ der Warnung. Kann **Protocol Violation**, **Policy Violation**, **Malware**, **Anomaly** oder **Operational** lauten.<br /> Schweregrad: Der Schweregrad der Warnung. Kann **Warning**, **Minor**, **Major** oder **Critical** lauten.<br /> Quelle: Der Namen des Quellgeräts.<br /> Quell-IP: Die IP-Adresse des Quellgeräts.<br /> Ziel: Der Name des Zielgeräts.<br /> Ziel-IP: Die IP-Adresse des Zielgeräts.<br /> Meldung: Der Meldungstext der Warnung.<br /> Warnungsgruppe: Die der Warnung zugeordnete Warnungsgruppe. |
 
-
 | Syslog-Objektausgabe | BESCHREIBUNG |
 |--|--|
-| Datum und Uhrzeit |   Datum und Uhrzeit des Empfangs der Informationen durch den Syslog-Servercomputer. |  
-| Priorität |    User.Alert | 
-| Hostname |    Sensor-IP | 
+| Datum und Uhrzeit | Datum und Uhrzeit des Empfangs der Informationen durch den Syslog-Servercomputer. |  
+| Priorität | User.Alert |
+| Hostname | Sensor-IP |
 | `Message` | Sensorname: Der Name der Appliance. <br /> Zeitpunkt der Warnung: Der Zeitpunkt, zu dem die Warnung erkannt wurde: Kann von der Zeit des Syslog-Servercomputers abweichen und hängt von der Zeitzonenkonfiguration der Weiterleitungsregel ab. <br /> Titel der Warnung: Der Titel der Warnung. <br /> Warnmeldung: Der Meldungstext der Warnung. <br /> Schweregrad der Warnung: Der Schweregrad der Warnung: **Warning**, **Minor**, **Major** oder **Critical**. <br /> Warnungstyp: **Protocol Violation**, **Policy Violation**, **Malware**, **Anomaly** oder **Operational**. <br /> Protokoll: Protokoll der Warnung.  <br /> **Source_MAC**: IP-Adresse, Name, Hersteller oder Betriebssystem des Quellgeräts. <br /> Destination_MAC: IP-Adresse, Name, Hersteller oder Betriebssystem des Ziels. Wenn Daten fehlen, lautet der Wert **N/A**. <br /> alert_group: Die der Warnung zugeordnete Warnungsgruppe. |
-
 
 | Syslog-CEF-Ausgabeformat | BESCHREIBUNG |
 |--|--|
 | Datum und Uhrzeit | Datum und Uhrzeit des Empfangs der Informationen durch den Syslog-Servercomputer. |
-| Priorität | User.Alert | 
+| Priorität | User.Alert |
 | Hostname | IP-Adresse des Sensors |
 | `Message` | CEF:0 <br />Azure Defender für IoT <br />Sensorname: Der Name der Sensor-Appliance. <br />Sensorversion <br />Titel der Warnung: Der Titel der Warnung. <br />msg: Der Meldungstext der Warnung. <br />Protokoll: Protokoll der Warnung. <br />Schweregrad:  **Warning**, **Minor**, **Major** oder **Critical**. <br />Typ:  **Protocol Violation**, **Policy Violation**, **Malware**, **Anomaly** oder **Operational**. <br /> start: Der Zeitpunkt, zu dem die Warnung erkannt wurde. <br />Kann von der Zeit des Syslog-Servercomputers abweichen und hängt von der Zeitzonenkonfiguration der Weiterleitungsregel ab. <br />src_ip: IP-Adresse des Quellgeräts.  <br />dst_ip: IP-Adresse des Zielgeräts.<br />cat: Die der Warnung zugeordnete Warnungsgruppe.  |
 
 | Syslog-LEEF-Ausgabeformat | BESCHREIBUNG |
 |--|--|
-| Datum und Uhrzeit |   Datum und Uhrzeit des Empfangs der Informationen durch den Syslog-Servercomputer. |  
-| Priorität |    User.Alert | 
-| Hostname |    Sensor-IP |
+| Datum und Uhrzeit | Datum und Uhrzeit des Empfangs der Informationen durch den Syslog-Servercomputer. |  
+| Priorität | User.Alert |
+| Hostname | Sensor-IP |
 | `Message` | Sensorname: Der Name der Azure Defender für IoT-Appliance. <br />LEEF:1.0 <br />Azure Defender für IoT <br />Sensor  <br />Sensorversion <br />Azure Defender für IoT-Warnung <br />Titel: Der Titel der Warnung. <br />msg: Der Meldungstext der Warnung. <br />Protokoll: Protokoll der Warnung.<br />Schweregrad:  **Warning**, **Minor**, **Major** oder **Critical**. <br />Typ: Der Typ der Warnung: **Protocol Violation**, **Policy Violation**, **Malware**, **Anomaly** oder **Operational**. <br />start: Der Zeitpunkt der Warnung.Der Zeitpunkt kann von der Uhrzeit des Syslog-Servercomputers abweichen. (Dies hängt von der Zeitzonenkonfiguration ab.) <br />src_ip: IP-Adresse des Quellgeräts.<br />dst_ip: IP-Adresse des Zielgeräts. <br />cat: Die der Warnung zugeordnete Warnungsgruppe. |
 
 Nachdem Sie die Informationen eingegeben haben, wählen Sie **Senden** aus.
 
 ### <a name="webhook-server-action"></a>Webhookserveraktion
 
-Senden Sie Warnungsinformationen an einen Webhookserver. Mit Webhookservern können Sie Integrationen einrichten, die Warnungsereignisse mit Defender für IoT abonnieren. Wenn ein Warnungsereignis ausgelöst wird, sendet die Verwaltungskonsole entsprechende HTTP POST-Nutzdaten an die konfigurierte URL des Webhooks. Webhooks können verwendet werden, um ein externes SIEM-System, SOAR-Systeme, Incident Management-Systeme usw. zu aktualisieren.   
+Senden Sie Warnungsinformationen an einen Webhookserver. Mit Webhookservern können Sie Integrationen einrichten, die Warnungsereignisse mit Defender für IoT abonnieren. Wenn ein Warnungsereignis ausgelöst wird, sendet die Verwaltungskonsole entsprechende HTTP POST-Nutzdaten an die konfigurierte URL des Webhooks. Webhooks können verwendet werden, um ein externes SIEM-System, SOAR-Systeme, Incident Management-Systeme usw. zu aktualisieren.
 
 **So definieren Sie eine Webhookaktion**
 
@@ -162,6 +175,58 @@ Senden Sie Warnungsinformationen an einen Webhookserver. Mit Webhookservern kön
 1. Passen Sie in den Feldern **Schlüssel** und **Wert** den HTTP-Header mit einer Schlüssel- und Wertdefinition an. Dieses Feld darf nur Buchstaben, Ziffern, Bindestriche und Unterstriche enthalten. Werte dürfen nur ein führendes und/oder ein nachstehendes Leerzeichen enthalten.
 
 1. Wählen Sie **Speichern** aus.
+
+### <a name="webhook-extended"></a>Webhook erweitert
+
+Erweiterte Webhooks können zum Senden von zusätzlichen Daten an den Endpunkt verwendet werden. Das erweiterte Feature enthält alle Informationen in der Webhookwarnung und fügt dem Bericht die folgenden Informationen hinzu:
+
+- sensorID
+- sensorName
+- zoneID
+- zoneName
+- siteID
+- siteName
+- sourceDeviceAddress
+- destinationDeviceAddress
+- remediationSteps
+- handled (verarbeitet)
+- additionalInformation
+
+**So definieren Sie eine erweiterte Webhookaktion**:
+
+1. Wählen Sie in der Verwaltungskonsole im linken Bereich **Weiterleitung** aus.
+
+1. Fügen Sie eine Weiterleitungsregel hinzu, indem Sie die Schaltfläche :::image type="icon" source="media/how-to-forward-alert-information-to-partners/add-icon.png" border="false"::: auswählen.
+
+1. Fügen Sie einen aussagekräftigen Namen für die Weiterleitungswarnung hinzu.
+
+1. Wählen Sie einen Schweregrad aus.
+
+1. Wählen Sie **Hinzufügen**.
+
+1. Wählen Sie im Dropdownfenster „Typ auswählen“ die Option **Webhook erweitert** aus.
+
+   :::image type="content" source="media/how-to-forward-alert-information-to-partners/webhook-extended.png" alt-text="Wählen Sie im Dropdownmenü mit Optionen für „Typ auswählen“ die Option „Webhook erweitert“ aus.":::
+
+1. Fügen Sie im Feld „URL“ die Endpunktdaten-URL ein.
+
+1. (Optional) Passen Sie den HTTP-Header mit einer Schlüssel- und Wertdefinition an. Fügen Sie zusätzliche Header hinzu, indem Sie die Schaltfläche :::image type="icon" source="media/how-to-forward-alert-information-to-partners/add-header.png" border="false"::: auswählen.
+
+1. Wählen Sie **Speichern** aus.
+
+Nachdem die Weiterleitungsregel „Webhook erweitert“ konfiguriert wurde, können Sie die Warnung in der Verwaltungskonsole über den Bildschirm „Weiterleitung“ testen.
+
+**So testen Sie die Weiterleitungsregel „Webhook erweitert“** :
+
+1. Wählen Sie in der Verwaltungskonsole im linken Bereich **Weiterleitung** aus.
+
+1. Wählen Sie die Schaltfläche **Ausführen** aus, um Ihre Warnung zu testen.
+
+    :::image type="content" source="media/how-to-forward-alert-information-to-partners/run-button.png" alt-text="Wählen Sie die Schaltfläche „Ausführen“ aus, um Ihre Weiterleitungsregel zu testen.":::
+
+Wenn die Erfolgsmeldung angezeigt wird, wissen Sie, dass die Weiterleitungsregel funktioniert.
+
+:::image type="content" source="media/how-to-forward-alert-information-to-partners/success.png" alt-text="Wenn die Erfolgsmeldung angezeigt wird, hat die Warnung ordnungsgemäß funktioniert.":::
 
 ### <a name="netwitness-action"></a>NetWitness-Aktion
 

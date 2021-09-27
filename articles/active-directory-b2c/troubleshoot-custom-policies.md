@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 05/25/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0a2f1e40b85eea5f02aec93a0cac97acc5dfeaf9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0a340096875669acc63cef5f797fff8b5919b8bd
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346267"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123478858"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies"></a>Beheben von Problemen mit benutzerdefinierten Richtlinien in Azure AD B2C
 
@@ -362,7 +362,7 @@ Beispiel: technisches Profil mit dem Ausgabeanspruch *schoolId*. Der Ausgabeansp
 </OutputClaims>
 ```
 
-Um diese Art von Fehler zu beheben, überprüfen Sie, ob der Wert `ClaimTypeReferenceId` möglicherweise falsch geschrieben wurde oder nicht im Schema vorhanden ist. Wenn der Anspruch in der Erweiterungsrichtlinie definiert ist, aber auch in der Basisrichtlinie verwendet wird, stellen Sie sicher, dass der Anspruch in der Richtlinie, in der er verwendet wird, oder in einer Richtlinie der oberen Ebene definiert ist.
+Um diese Art von Fehler zu beheben, überprüfen Sie, ob der Wert `ClaimTypeReferenceId` möglicherweise falsch geschrieben wurde oder nicht im Schema vorhanden ist. Wenn der Anspruch in der Erweiterungsrichtlinie definiert ist, aber auch in der Basisrichtlinie verwendet wird, Stellen Sie sicher, dass der Anspruch in der Richtlinie, in der er verwendet wird, oder in einer Richtlinie der oberen Ebene definiert ist.
 
 Durch das Hinzufügen des Anspruchs zum Anspruchsschema wird diese Art von Fehler behoben.
 

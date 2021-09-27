@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: ef8c2756d6e11dc38ac488abb0ed6d8ae8e9a78b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2a0a104b4ad76c94d467c01fe8be421e5b96c435
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340005"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541655"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Playbook für den Umgang mit allgemeinen Sicherheitsanforderungen für Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -647,7 +647,7 @@ Mit Advanced Threat Protection können Sie potenzielle Bedrohungen erkennen, sob
 
 **Bewährte Methoden:**
 
-- Konfigurieren Sie [Azure Defender für SQL](azure-defender-for-sql.md)  für einen spezifischen Server oder eine verwaltete Instanz. Sie können Azure Defender für SQL auch für alle Server und verwalteten Instanzen in einem Abonnement konfigurieren, indem Sie in den [Standardtarif von Azure Security Center](../../security-center/security-center-pricing.md) wechseln.
+- Konfigurieren Sie [Azure Defender für SQL](azure-defender-for-sql.md)  für einen spezifischen Server oder eine verwaltete Instanz. Sie können Azure Defender für SQL auch für alle Server und verwalteten Instanzen in einem Abonnement konfigurieren, indem Sie [Azure Defender](../../security-center/security-center-pricing.md) aktivieren.
 
 - Für eine vollständige Untersuchung wird empfohlen, die  [SQL-Datenbanküberwachung](../../azure-sql/database/auditing-overview.md) zu aktivieren. Mit der Überwachung können Sie Datenbankereignisse nachverfolgen und in ein Überwachungsprotokoll in einem Azure Storage-Konto oder Azure Log Analytics-Arbeitsbereich schreiben.
 

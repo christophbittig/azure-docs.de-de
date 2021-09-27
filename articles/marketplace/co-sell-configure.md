@@ -4,16 +4,16 @@ description: Die auf der Registerkarte „Co-Selling mit Microsoft“ für Ihr A
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-author: palanis-MSFT
-ms.author: palanis
+author: sharath-satish-msft
+ms.author: shsatish
 ms.reviewer: stmummer
-ms.date: 07/13/2021
-ms.openlocfilehash: 74bc41fb84f63f4705da95f80d6f27dea009ea43
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.date: 09/03/2021
+ms.openlocfilehash: 39212b2e9ef5456ecc4f1343cc51fd83064a8840
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866735"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123535651"
 ---
 # <a name="configure-co-sell-for-a-commercial-marketplace-offer"></a>Konfigurieren von Co-Selling für ein Angebot im kommerziellen Marketplace
 
@@ -79,11 +79,11 @@ Lösungstypen helfen bei der Definition der Szenarien, für die Ihr Angebot konz
 
 ### <a name="select-solution-areas"></a>Auswählen von Lösungsbereichen
 
-Lösungsbereiche helfen, Ihre Lösung näher zu definieren. So können Microsoft-Vertriebsteams den Wertbeitrag Ihrer Lösung ermitteln und nachvollziehen. Sie müssen mindestens einen und maximal drei Lösungsbereiche für Ihr Angebot auswählen. Für jeden Lösungsbereich können Sie zudem bis zu zwei Lösungsteilbereiche auswählen.
+Lösungsbereiche helfen, Ihre Lösung näher zu definieren. So können Microsoft-Vertriebsteams den Wertbeitrag Ihrer Lösung ermitteln und nachvollziehen. Sie müssen mindestens einen und maximal fünf Lösungsbereiche für Ihr Angebot auswählen. Für jeden Lösungsbereich können Sie zudem bis zu fünf Lösungsteilbereiche auswählen.
 
-1. Klicken Sie auf den Link **+ Lösungsbereich hinzufügen (max. 3)** .
+1. Klicken Sie auf den Link **+ Lösungsbereich hinzufügen (max. 5)** .
 1. Wählen Sie aus der angezeigten Dropdownliste einen Lösungsbereich aus.
-1. Wählen Sie einen oder zwei Teilbereiche für die Lösung aus. Um mehrere Teilbereiche auszuwählen, verwenden Sie die `Ctrl`-Taste (unter Windows) bzw. die `Command`-Taste (unter macOS).
+1. Wählen Sie einen oder fünf Teilbereiche für die Lösung aus. Um mehrere Teilbereiche auszuwählen, verwenden Sie die `Ctrl`-Taste (unter Windows) bzw. die `Command`-Taste (unter macOS).
 1. Wiederholen Sie die Schritte 1 bis 3, um einen weiteren Lösungsbereich hinzuzufügen.
 
 ## <a name="upload-documents"></a>Hochladen von Dokumenten

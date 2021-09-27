@@ -5,8 +5,6 @@
   items:
     - name: Worum handelt es sich bei der Anwendungsverwaltung?
       href: what-is-application-management.md
-    - name: 'Worum handelt es sich beim einmaligen Anmelden (Single Sign-On, SSO)?'
-      href: what-is-single-sign-on.md
     - name: Neues in der Dokumentation
       href: whats-new-docs.md
 - name: Schnellstarts
@@ -57,22 +55,10 @@
           href: my-apps-deployment-plan.md
     - name: Einmaliges Anmelden
       items:
-        - name: Planen einer Bereitstellung für einmaliges Anmelden
+        - name: Worum handelt es sich beim einmaligen Anmelden?
+          href: what-is-single-sign-on.md
+        - name: Planen der Bereitstellung des einmaligen Anmeldens
           href: plan-sso-deployment.md
-        - name: Optionen für einmaliges Anmelden
-          href: sso-options.md
-        - name: OIDC-basiertes SSO
-          href: configure-oidc-single-sign-on.md
-        - name: SAML-basiertes SSO
-          href: configure-saml-single-sign-on.md
-        - name: Kennwortbasiertes einmaliges Anmelden
-          href: configure-password-single-sign-on-non-gallery-applications.md
-        - name: Auf Verknüpfungen basiertes SSO
-          href: configure-linked-sign-on.md
-        - name: Headerbasiertes einmaliges Anmelden (lokale Apps)
-          href: ../app-proxy/application-proxy-configure-single-sign-on-with-headers.md
-        - name: Einmaliges Anmelden mit einem Klick
-          href: one-click-sso-tutorial.md
     - name: Anwendungssicherheit
       items:
         - name: Optionen für den App-Zugriff
@@ -158,16 +144,18 @@
       items:
         - name: Sichern des Hybridzugriffs mit Azure AD
           href: secure-hybrid-access.md
-        - name: Schützen des Hybridzugriffs mit Partnerintegrationen
-          href: secure-hybrid-access-integrations.md
-        - name: Datawiza
-          href: datawiza-with-azure-ad.md
-        - name: F5
+        - name: Integration von F5 und Azure AD
           href: f5-aad-integration.md
         - name: Bereitstellung von F5 BIG-IP VE in Azure IaaS
           href: f5-bigip-deployment-guide.md
-        - name: F5 BIG-IP-VPN ohne Kennwort
+        - name: F5 Big-IP mit Azure AD für kennwortloses VPN
           href: f5-aad-password-less-vpn.md
+    - name: Einmaliges Anmelden
+      items:
+        - name: Kennwortbasiertes einmaliges Anmelden
+          href: configure-password-single-sign-on-non-gallery-applications.md
+        - name: Einmaliges Anmelden (SSO) über Link
+          href: configure-linked-sign-on.md
     - name: Problembehandlung
       items:
         - name: Behandeln von Problemen beim kennwortbasierten einmaligen Anmelden

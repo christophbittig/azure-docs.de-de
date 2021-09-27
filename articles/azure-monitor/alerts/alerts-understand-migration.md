@@ -2,19 +2,19 @@
 title: Grundlegendes zur Migration von Azure Monitor-Warnungen
 description: Enthält eine Beschreibung der Funktionsweise der Warnungsmigration sowie Informationen zur Problembehandlung.
 ms.topic: conceptual
-ms.date: 02/14/2021
+ms.date: 09/06/2021
 ms.author: yalavi
 author: yalavi
-ms.openlocfilehash: 88b75c46898e1a74b33051d8996af96201f639c7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2167e0ea05206bc9c991353d6518090773934635
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102037709"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123543653"
 ---
 # <a name="understand-migration-options-to-newer-alerts"></a>Grundlegendes zu den Optionen zur Migration zu neueren Warnungen
 
-Klassische Warnungen werden für Benutzer der öffentlichen Cloud [eingestellt](./monitoring-classic-retirement.md), sind jedoch bis zum **31. Mai 2021** weiterhin beschränkt im Einsatz. Klassische Warnungen für die Azure Government-Cloud und Azure China 21Vianet werden am **29. Februar 2024** eingestellt.
+Klassische Warnungen werden für Benutzer der öffentlichen Cloud [eingestellt](./monitoring-classic-retirement.md). Klassische Warnungen für die Azure Government-Cloud und Azure China 21Vianet werden am **29. Februar 2024** eingestellt.
 
 In diesem Artikel wird erläutert, wie das Tool für die manuelle Migration und die freiwillige Migration verwendet wird, mit dem die verbleibenden Warnungsregeln migriert werden. Außerdem werden Lösungen für einige häufig auftretende Probleme beschrieben.
 

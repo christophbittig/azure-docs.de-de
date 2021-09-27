@@ -4,18 +4,18 @@ titleSuffix: Azure API Management
 description: Hier finden Sie Informationen zum Einrichten und Konfigurieren von Azure API Management in einem internen virtuellen Netzwerk mit Application Gateway (Web Application Firewall) als Front-End.
 services: api-management
 documentationcenter: ''
-author: solankisamir
+author: dlepow
 ms.service: api-management
 ms.topic: how-to
-ms.author: sasolank
+ms.author: danlep
 ms.date: 06/10/2021
 ms.custom: devx-track-azurepowershell,contperf-fy21q4
-ms.openlocfilehash: e7c4583797719ca3b9cbb47d5dead48138d22fe1
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: e7db405d43ef41f4ebe90272498dae61bf56d817
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123543122"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128679540"
 ---
 # <a name="integrate-api-management-in-an-internal-virtual-network-with-application-gateway"></a>Integrieren von API Management in ein internes virtuelles Netzwerk mit Application Gateway
 

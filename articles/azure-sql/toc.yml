@@ -104,6 +104,8 @@
                   href: database/authentication-aad-directory-readers-role.md
                 - name: "Reine Azure\_AD-Authentifizierung"
                   href: database/authentication-azure-ad-only-authentication.md
+                - name: Azure Policy für reine Azure AD Authentifizierung
+                  href: database/authentication-azure-ad-only-authentication-policy.md
             - name: TDE (Transparent Data Encryption)
               items:
                 - name: Übersicht
@@ -191,6 +193,8 @@
                   href: database/authentication-aad-directory-readers-role-tutorial.md
                 - name: "Aktivieren der reinen Azure\_AD-Authentifizierung"
                   href: database/authentication-azure-ad-only-authentication-tutorial.md
+                - name: "Durchsetzen der reinen Azure\_AD-Authentifizierung mithilfe von Azure Policy"
+                  href: database/authentication-azure-ad-only-authentication-policy-how-to.md
                 - name: "Erstellen eines Servers mit aktivierter reiner Azure\_AD-Authentifizierung"
                   href: database/authentication-azure-ad-only-authentication-create-server.md
             - name: Konfigurieren von TDE mit BYOK

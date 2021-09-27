@@ -11,14 +11,14 @@ ms.date: 07/31/2020
 ms.topic: how-to
 ms.custom: deploy
 ms.reviewer: larryfr
-ms.openlocfilehash: 094005b471bd1f4ea996defddf1f080481fa7c7b
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 8735898a462d9488aec95bf9f5840bf9b9be2bb6
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114296385"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123428432"
 ---
-# <a name="preview-no-code-model-deployment"></a>(Vorschau) Modellimplementierung ohne Code
+# <a name="no-code-model-deployment-preview"></a>Modellimplementierung ohne Code (Vorschau)
 
 Die Modellimplementierung ohne Code ist derzeit in der Vorschauphase und unterstützt die folgenden Frameworks für maschinelles Lernen:
 

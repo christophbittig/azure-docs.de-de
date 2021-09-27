@@ -8,14 +8,14 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 07/14/2021
+ms.date: 09/04/2021
 ms.author: rolyon
-ms.openlocfilehash: 64f164c7d5e60e92e30986f8a39b34e92b1fdce4
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 19e9d6c76e30828b0aac0fba139963ff25ae2cba
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114202477"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123542312"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Übertragen eines Azure-Abonnements in ein anderes Azure AD-Verzeichnis
 
@@ -89,6 +89,8 @@ Mehrere Azure-Ressourcen weisen eine Abhängigkeit von einem Abonnement oder ein
 
 > [!WARNING]
 > Wenn Sie die Verschlüsselung ruhender Daten für eine Ressource verwenden (z. B. ein Speicherkonto oder eine SQL-Datenbank), die von einem Schlüsseltresor abhängig ist, der sich **nicht** im selben Abonnement befindet, das übertragen wird, kann dies zu einem nicht wiederherstellbaren Szenario führen. In dieser Situation sollten Sie Maßnahmen ergreifen, um einen anderen Schlüsseltresor zu verwenden oder kundenseitig verwaltete Schlüssel vorübergehend zu deaktivieren, um dieses nicht wiederherstellbare Szenario zu vermeiden.
+
+Um eine Liste einiger Azure-Ressourcen abzurufen, die bei der Übertragung eines Abonnements betroffen sind, können Sie auch eine Abfrage in [Azure Resource Graph](../governance/resource-graph/overview.md) ausführen. Eine Beispielabfrage finden Sie unter [Auflisten betroffener Ressourcen beim Übertragen eines Azure-Abonnements](../governance/resource-graph/samples/samples-by-category.md#list-impacted-resources-when-transferring-an-azure-subscription).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

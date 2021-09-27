@@ -61,7 +61,7 @@
           href: ./security-controls-policy.md
     - name: Netzwerk
       href: concepts-network.md
-    - name: Speicher
+    - name: Storage
       href: concepts-storage.md
     - name: Skalieren
       href: concepts-scale.md
@@ -207,6 +207,8 @@
           href: azure-files-dynamic-pv.md
         - name: 'Azure Files: Statisch'
           href: azure-files-volume.md
+        - name: Azure HPC Cache
+          href: azure-hpc-cache.md
         - name: 'NFS-Server: statisch'
           href: azure-nfs-volume.md
         - name: Azure NetApp Files
@@ -367,7 +369,11 @@
             - name: Übersicht über OSM
               href: open-service-mesh-about.md
             - name: Bereitstellen des OSM-AKS-Add-Ons
-              href: open-service-mesh-deploy-add-on.md
+              items:
+                - name: Verwenden der Azure CLI
+                  href: open-service-mesh-deploy-addon-az-cli.md
+                - name: Verwenden der Bicep-Vorlage
+                  href: open-service-mesh-deploy-addon-bicep.md
             - name: Herunterladen der OSM-Clientbibliothek
               href: open-service-mesh-binary.md
             - name: OSM-Tutorials
@@ -414,7 +420,7 @@
           href: aks-resource-health.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/aks
     - name: REST
       href: /rest/api/aks

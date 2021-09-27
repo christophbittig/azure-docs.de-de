@@ -57,7 +57,7 @@ items:
               - name: Azure-Portal
                 href: quickstart-create-workspace.md
                 displayName: quickstart
-              - name: Azure-Befehlszeilenschnittstelle
+              - name: Azure CLI
                 href: quickstart-create-workspace-cli.md
                 displayName: quickstart
               - name: Azure PowerShell
@@ -140,6 +140,8 @@ items:
                     href: ./sql/mfa-authentication.md
                   - name: SQL-Autorisierung
                     href: ./sql/sql-authentication.md
+                  - name: Bedingter Zugriff
+                    href: ./security/workspace-conditional-access.md
               - name: Zugriffssteuerung
                 items:
                   - name: Übersicht
@@ -671,6 +673,8 @@ items:
                 href: ./spark/data-sources/apache-spark-sql-connector.md
               - name: JSON
                 href: how-to-analyze-complex-schema.md
+              - name: Externer Hive-Metastore
+                href: ./spark/apache-spark-external-metastore.md
   - name: Synapse Link
     items:
       - name: Übersicht
@@ -787,6 +791,8 @@ items:
                 href: ../data-factory/connector-overview.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: Amazon Marketplace Web Service
                 href: ../data-factory/connector-amazon-marketplace-web-service.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
+              - name: Amazon RDS für Oracle
+                href: ../data-factory/connector-amazon-rds-for-oracle.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: Amazon Redshift
                 href: ../data-factory/connector-amazon-redshift.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: Amazon S3

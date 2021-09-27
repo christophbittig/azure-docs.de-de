@@ -102,6 +102,8 @@
           href: troubleshoot-conditional-access.md
         - name: Troubleshooting mithilfe des What If-Tools
           href: troubleshoot-conditional-access-what-if.md
+        - name: Problembehandlung bei der fortlaufenden Zugriffsevaluierung
+          href: howto-continuous-access-evaluation-troubleshoot.md
         - name: Häufig gestellte Fragen
           href: faqs.md
     - name: Migrieren von klassischen Richtlinien

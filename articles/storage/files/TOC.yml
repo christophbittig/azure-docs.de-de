@@ -9,14 +9,8 @@
   items:
     - name: 'Erstellen/Verwenden von Dateifreigaben: Windows'
       href: storage-files-quick-create-use-windows.md
-    - name: 'Erstellen von Dateifreigaben: Portal'
+    - name: Erstellen von Dateifreigaben
       href: storage-how-to-use-files-portal.md
-    - name: 'Erstellen von Dateifreigaben: PowerShell'
-      href: storage-how-to-use-files-powershell.md
-    - name: 'Erstellen von Dateifreigaben: CLI'
-      href: storage-how-to-use-files-cli.md
-    - name: 'Erstellen von Dateifreigaben: Storage-Explorer'
-      href: storage-how-to-use-files-storage-explorer.md
 - name: Tutorials
   items:
     - name: Erweitern von Windows-Dateiservern mit der Azure-Dateisynchronisierung
@@ -177,7 +171,7 @@
           href: storage-files-migration-overview.md
         - name: Verwenden einer reinen Cloudbereitstellung als Ziel
           items:
-            - name: Kopieren in Azure-Dateifreigaben mithilfe von RoboCopy
+            - name: RoboCopy zum Migrieren zu Azure-Dateifreigaben
               href: storage-files-migration-robocopy.md
             - name: Migrieren von einem lokalen NAS zu Azure-Dateifreigaben mit DataBox
               href: storage-files-migration-nas-cloud-databox.md

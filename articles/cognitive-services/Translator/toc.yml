@@ -100,7 +100,7 @@
       href: document-translation/get-started-with-document-translation.md
     - name: Anleitungen
       items:
-        - name: Erstellen von SAS-Token für die Dokumentübersetzung
+        - name: Generieren von SAS-Token für die Dokumentübersetzung
           href: document-translation/create-sas-tokens.md
         - name: Erstellen und Verwenden einer verwalteten Identität
           href: document-translation/managed-identity.md

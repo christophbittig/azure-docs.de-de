@@ -256,6 +256,12 @@
             - name: Einrichten von AMD GPU-Treibern
               displayName: 'AMD GPU drivers, AMD, GPU drivers, GPU'
               href: ./windows/n-series-amd-driver-setup.md
+            - name: Einstellung der NC-Serie
+              href: nc-series-retirement.md
+            - name: Einstellung der NCv2-Serie
+              href: ncv2-series-retirement.md
+            - name: Einstellung der ND-Serie
+              href: nd-series-retirement.md
             - name: 'GPU-Compute: Migrationsleitfaden'
               displayName: GPU compute migration guide
               href: ./n-series-migration.md
@@ -337,13 +343,8 @@
         - name: Auswahltool für virtuelle Computer
           href: 'https://aka.ms/vm-selector'
         - name: Ändern der VM-Größe
-          items:
-            - name: Befehlszeilenschnittstelle (CLI)
-              displayName: 'Change, resize, update size'
-              href: ./linux/change-vm-size.md
-            - name: Portal oder PowerShell
-              displayName: 'Change, resize, update size'
-              href: ./windows/resize-vm.md
+          displayName: 'Change, resize, update size'
+          href: resize-vm.md
         - name: Zustandswerte und Abrechnung
           href: states-billing.md
         - name: Virtuelle Azure-Computer ohne temporären Datenträger
@@ -403,28 +404,28 @@
           href: reserved-vm-instance-size-flexibility.md
     - name: Kapazitätsreservierung (Vorschau)
       items:
-        - name: Übersicht (Vorschau)
+        - name: Übersicht
           displayName: on-demand capacity reservation
           href: capacity-reservation-overview.md
-        - name: Erstellen einer Kapazitätsreservierung (Vorschau)
+        - name: Erstellen Sie eine Kapazitätsreservierung
           displayName: on-demand capacity reservation
           href: capacity-reservation-create.md
-        - name: Überlasten der Kapazitätsreservierung (Vorschau)
+        - name: Überlasten der Kapazitätsreservierung
           displayName: on-demand capacity reservation
           href: capacity-reservation-overallocate.md
-        - name: Ändern einer Kapazitätsreservierung (Vorschau)
+        - name: Ändern einer Kapazitätsreservierung
           displayName: on-demand capacity reservation
           href: capacity-reservation-modify.md
-        - name: Zuordnen eines virtuellen Computers (Vorschau)
+        - name: Zuordnen einer VM
           displayName: on-demand capacity reservation
           href: capacity-reservation-associate-vm.md
-        - name: Entfernen eines virtuellen Computers (Vorschau)
+        - name: Entfernen einer VM
           displayName: on-demand capacity reservation
           href: capacity-reservation-remove-vm.md
-        - name: Zuordnen einer VM-Skalierungsgruppe (Vorschau)
+        - name: Zuordnen einer VM-Skalierungsgruppe
           displayName: on-demand capacity reservation
           href: capacity-reservation-associate-virtual-machine-scale-set.md
-        - name: Entfernen einer VM-Skalierungsgruppe (Vorschau)
+        - name: Entfernen einer VM-Skalierungsgruppe
           displayName: on-demand capacity reservation
           href: capacity-reservation-remove-virtual-machine-scale-set.md
     - name: Erstellen von virtuellen Computern
@@ -1385,7 +1386,7 @@
           href: ../virtual-network/virtual-network-deploy-static-pip-arm-portal.md?context=/azure/virtual-machines/context/context
         - name: Azure PowerShell
           href: ../virtual-network/virtual-network-deploy-static-pip-arm-ps.md?context=/azure/virtual-machines/context/context
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: ../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?context=/azure/virtual-machines/context/context
         - name: Hinzufügen einer öffentlichen IP-Adresse zu einem vorhanden virtuellen Computer
           href: ../virtual-network/associate-public-ip-address-vm.md?context=/azure/virtual-machines/context/context
@@ -1405,7 +1406,7 @@
           href: ../virtual-network/virtual-network-multiple-ip-addresses-portal.md?context=/azure/virtual-machines/context/context
         - name: Azure PowerShell
           href: ../virtual-network/virtual-network-multiple-ip-addresses-powershell.md?context=/azure/virtual-machines/context/context
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: ../virtual-network/virtual-network-multiple-ip-addresses-cli.md?context=/azure/virtual-machines/context/context
         - name: Hinzufügen oder Entfernen von Netzwerkschnittstellen
           href: ../virtual-network/virtual-network-network-interface-vm.md?context=/azure/virtual-machines/context/context
@@ -1413,7 +1414,7 @@
           items:
             - name: Azure PowerShell
               href: ./windows/multiple-nics.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: ./linux/multiple-nics.md
     - name: 'Erstellen eines virtuellen Computers: beschleunigter Netzwerkbetrieb'
       items:

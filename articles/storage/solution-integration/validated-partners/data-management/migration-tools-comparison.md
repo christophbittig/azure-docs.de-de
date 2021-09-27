@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/04/2021
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 63796f3e569849227dd4fa9c2396f3b052540586
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: d266f059869bb0f25df10dcc4fad317d3d3da7c3
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122340550"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426704"
 ---
 # <a name="comparison-matrix"></a>Vergleichsmatrix
 
@@ -60,12 +60,12 @@ In der folgenden Vergleichsmatrix sind die grundlegenden Funktionen der untersch
 | **Berichterstellung zur Rückverfolgbarkeit**            | Nein  | Ja                        | Nein  | Ja                            |
 | **Unterstützung alternativer Datenströme**    | Nein  | Ja                        | Ja | Nein                             |
 | **Planen der Migration**              | Nein  | Ja                        | Ja | Ja                            |
-| **Beibehalten der ACL**                        | Nein  | Ja                        | Ja | Ja                            |
+| **Beibehalten der ACL**                        | Ja  | Ja                        | Ja | Ja                            |
 | **DACL-Unterstützung**                          | Ja | Ja                        | Ja | Ja                            |
 | **SACL-Unterstützung**                          | Ja | Ja                        | Ja | Nein                             |
 | **Beibehalten der Zugriffszeit**                | Ja | Ja                        | Ja | Ja                            |
 | **Beibehalten der Änderungszeit**              | Ja | Ja                        | Ja | Ja                            |
-| **Beibehalten der Erstellungszeit**              | Nein  | Ja                        | Ja | Ja                            |
+| **Beibehalten der Erstellungszeit**              | Ja  | Ja                        | Ja | Ja                            |
 | **Azure Data Box-Unterstützung**       | Ja | Ja                        | Nein  | Nein                             |
 | **Migration von Momentaufnahmen**                | Nein  | Manuell                     | Ja | Nein                             |
 | **Unterstützung von symbolischen Verknüpfungen**                 | Nein  | Ja                        | Nein  | Ja                            |
@@ -101,6 +101,9 @@ In der folgenden Vergleichsmatrix sind die grundlegenden Funktionen der untersch
 ### <a name="azure-file-sync"></a>Azure-Dateisynchronisierung
 
 - Interne Hashüberprüfung
+
+> [!TIP]
+> Die Azure-Dateisynchronisierung ist als permanente Hybridlösung für die lokale Zwischenspeicherung/Synchronisierung einer Reihe von Azure-Dateifreigaben vorgesehen. In dieser Funktion ermöglicht sie die Cloudmigration ohne Ausfallzeiten. Wenn Sie nicht planen, Ihre Azure-Dateifreigaben lokal zwischenzuspeichern, wird die Azure-Dateisynchronisierung als Migrationstool nicht empfohlen. Weitere Informationen finden Sie in der [Übersicht über die Migration von Azure-Dateifreigaben](../../../files/storage-files-migration-overview.md) oder unter den anderen in diesem Artikel beschriebenen Partnertools.
 
 ### <a name="datadobi-dobimigrate"></a>Datadobi DobiMigrate
 

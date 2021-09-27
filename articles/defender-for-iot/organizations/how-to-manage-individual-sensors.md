@@ -1,14 +1,14 @@
 ---
 title: Verwalten einzelner Sensoren
-description: Erfahren Sie, wie Sie einzelne Sensoren verwalten. Dazu gehören das Verwalten von Aktivierungsdateien, Ausführen von Sicherungen und Aktualisieren eines eigenständigen Sensors.
-ms.date: 05/26/2021
+description: Hier erfahren Sie, wie Sie einzelne Sensoren verwalten können. Dazu gehören das Verwalten von Aktivierungsdateien und Zertifikaten, das Ausführen von Sicherungen sowie das Aktualisieren eines eigenständigen Sensors.
+ms.date: 08/25/2021
 ms.topic: how-to
-ms.openlocfilehash: 7c54c2eef98cdf3c68f4c03f09f95972d57aba71
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fd708b2ab259b38ea6983c4d4a6dac319e416218
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355737"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123424280"
 ---
 # <a name="manage-individual-sensors"></a>Verwalten einzelner Sensoren
 
@@ -46,7 +46,7 @@ In folgenden Fällen müssen Sie möglicherweise eine neue Aktivierungsdatei fü
 
 - Sie möchten einem mit der Cloud verbundenen Sensor einen neuen Defender für IoT-Hub zuweisen.
 
-Zum Hinzufügen einer neuen Aktivierungsdateien gehen Sie folgendermaßen vor:
+**Zum Hinzufügen einer neuen Aktivierungsdateien gehen Sie folgendermaßen vor:**
 
 1. Navigieren Sie zur Seite **Sensorverwaltung**.
 
@@ -86,237 +86,33 @@ Sie erhalten eine Fehlermeldung, wenn die Aktivierungsdatei nicht hochgeladen we
 
 ## <a name="manage-certificates"></a>Verwalten von Zertifikaten
 
-Nach der Sensorinstallation wird ein lokales selbstsigniertes Zertifikat generiert und für den Zugriff auf die Sensorwebanwendung verwendet. Bei der ersten Anmeldung beim Sensor werden Administratoren aufgefordert, ein SSL/TLS-Zertifikat anzugeben.  Weitere Informationen zur erstmaligen Einrichtung finden Sie unter [Anmelden und Aktivieren eines Sensors](how-to-activate-and-set-up-your-sensor.md).
+Nach der Sensorinstallation wird ein lokales selbstsigniertes Zertifikat generiert und für den Zugriff auf die Sensorwebanwendung verwendet. Bei der ersten Anmeldung beim Sensor werden Administratoren aufgefordert, ein SSL/TLS-Zertifikat anzugeben. 
 
-Dieser Artikel enthält Informationen zum Aktualisieren von Zertifikaten, zum Arbeiten mit CLI-Befehlen für Zertifikate sowie zu unterstützten Zertifikaten und Zertifikatparametern.
+Möglicherweise müssen Sensoradministratoren Zertifikate aktualisieren, die nach der ersten Anmeldung hochgeladen wurden. Dies kann beispielsweise vorkommen, wenn ein Zertifikat abgelaufen ist.
 
-### <a name="about-certificates"></a>Informationen zu Zertifikaten
-
-Azure Defender für IoT verwendet SSL/TLS-Zertifikate für folgende Zwecke:
-
-- Erfüllen spezifischer Zertifikat- und Verschlüsselungsanforderungen, die von Ihrer Organisation angefordert wurden, durch Hochladen des von der Zertifizierungsstelle signierten Zertifikats.
-
-- Zulassen der Überprüfung zwischen der Verwaltungskonsole und verbundenen Sensoren sowie zwischen einer Verwaltungskonsole und einer Verwaltungskonsole für Hochverfügbarkeit. Die Überprüfung wird anhand einer Zertifikatssperrliste (Certificate Revocation List, CRL) und des Ablaufdatums für das Zertifikat ausgewertet. *Wenn bei der Überprüfung ein Fehler auftritt, wird die Kommunikation zwischen der Verwaltungskonsole und dem Sensor angehalten, und in der Konsole wird ein Überprüfungsfehler angezeigt*. Diese Option ist nach der Installation standardmäßig aktiviert.
-
-- Weiterleitungsregeln von Drittanbietern, z. B. Warnungsinformationen, die an SYSLOG, Splunk oder ServiceNow gesendet werden, oder die Kommunikation mit Active Directory werden überprüft.
-
-### <a name="about-crl-servers"></a>Informationen zu CRL-Servern
-
-Wenn die Überprüfung aktiviert wurde, sollte die Appliance eine Verbindung mit dem durch das Zertifikat definierten CRL-Server herstellen können. Standardmäßig verweist das Zertifikat auf die URL der Zertifikatssperrliste (CRL-URL) an HTTP-Port 80. Einige Sicherheitsrichtlinien der Organisation blockieren möglicherweise den Zugriff auf diesen Port. Wenn Ihre Organisation auf Port 80 nicht zugreifen kann, haben Sie folgende Möglichkeiten:
-1. Definieren Sie eine andere URL und einen bestimmten Port im Zertifikat. 
-- Die URL sollte als „http://“ und nicht als „https://“ definiert werden.
-- Überprüfen Sie, ob der CRL-Zielserver an dem von Ihnen definierten Port lauschen kann. 
-1. Verwenden Sie einen Proxyserver, der auf die Zertifikatssperrliste an Port 80 zugreift.
-1. Führen Sie keine Überprüfung der Zertifikatssperrliste durch. Entfernen Sie in diesem Fall den Verweis auf die Zertifikatssperrlisten-URL im Zertifikat.
-
-### <a name="about-ssltls-certificates"></a>Informationen zu SSL/TLS-Zertifikaten
-
-Der Defender für IoT-Sensor und die lokale Verwaltungskonsole verwenden SSL- und TLS-Zertifikate für die folgenden Funktionen:
-
- - Sichere Kommunikation zwischen Benutzern und der Webkonsole der Appliance.
- 
- - Sichere Kommunikation mit der REST-API im Sensor und der lokalen Verwaltungskonsole.
- 
- - Sichere Kommunikation zwischen den Sensoren und einer lokalen Verwaltungskonsole.
-
-Nach der Installation generiert die Appliance ein lokales selbstsigniertes Zertifikat, um den vorläufigen Zugriff auf die Webkonsole zuzulassen.
-
- > [!NOTE]
- > Für Integrationen und Weiterleitungsregeln, bei denen es sich bei der Appliance um den Client und den Initiator der Sitzung handelt, werden spezifische Zertifikate verwendet, die nicht mit den Systemzertifikaten verknüpft sind.  
- >
- >In diesen Fällen werden die Zertifikate normalerweise vom Server empfangen, oder sie verwenden die asymmetrische Verschlüsselung, bei der ein bestimmtes Zertifikat zum Einrichten der Integration bereitgestellt wird.
-
-Appliances können eindeutige Zertifikatdateien verwenden. Wenn Sie ein Zertifikat ersetzen müssen, das Sie hochgeladen haben:
-
-- Ab Version 10.0 kann das Zertifikat aus dem Menü „Systemeinstellungen“ ersetzt werden.
-
-- Für Versionen vor 10.0 kann das SSL-Zertifikat mithilfe des Befehlszeilentools ersetzt werden.
-
-### <a name="update-certificates"></a>Aktualisieren von Zertifikaten
-
-Sensoradministratoren können Zertifikate aktualisieren.
-
-Zum Aktualisieren eines Zertifikats gehen Sie folgendermaßen vor:  
+**So aktualisieren Sie ein Zertifikat**
 
 1. Wählen Sie **Systemeinstellungen** aus.
 
 1. Wählen Sie **SSL/TLS-Zertifikate** aus.
-1. Löschen oder bearbeiten Sie das Zertifikat, und fügen Sie ein neues Zertifikat hinzu.
+
+    :::image type="content" source="media/how-to-manage-individual-sensors/certificate-upload.png" alt-text="Hochladen eines Zertifikats":::
+
+1. Löschen Sie im Dialogfeld „SSL/TLS-Zertifikate“ das vorhandene Zertifikat, und fügen Sie ein neues hinzu.
 
     - Fügen Sie einen Zertifikatnamen hinzu.
-    
-    - Laden Sie eine CRT-Datei und eine Schlüsseldatei hoch, und geben Sie eine Passphrase ein.
+    - Laden Sie eine CRT-Datei und eine Schlüsseldatei hoch.
     - Laden Sie bei Bedarf eine PEM-Datei hoch.
 
-So ändern Sie die Überprüfungseinstellung
+Wenn der Upload fehlschlägt, wenden Sie sich an Ihren Sicherheits- oder IT-Administrator, oder aber lesen Sie die Informationen unter [Informationen zu Zertifikaten](how-to-deploy-certificates.md).
 
-1. Aktivieren oder deaktivieren Sie mit dem Umschalter **Serverzertifikatüberprüfung aktivieren**.
+**So ändern Sie die Zertifikatsüberprüfungseinstellung:**
+
+1. Aktivieren oder deaktivieren Sie den Umschalter **Serverzertifikatüberprüfung aktivieren**. Wenn die Option aktiviert ist und bei der Überprüfung ein Fehler auftritt, wird die Kommunikation zwischen relevanten Komponenten angehalten, und in der Konsole wird ein Überprüfungsfehler angezeigt. Wenn sie deaktiviert ist, wird keine Zertifikatüberprüfung durchgeführt. Weitere Informationen finden Sie unter [Informationen zur Zertifikatüberprüfung](how-to-deploy-certificates.md#about-certificate-validation).
 
 1. Wählen Sie **Speichern** aus.
 
-Wenn die Option aktiviert ist und bei der Überprüfung ein Fehler auftritt, wird die Kommunikation zwischen der Verwaltungskonsole und dem Sensor angehalten, und in der Konsole wird ein Überprüfungsfehler angezeigt.
-
-### <a name="certificate-support"></a>Zertifikatunterstützung
-
-Die folgenden Zertifikate werden unterstützt:
-
-- Private und Enterprise Key-Infrastruktur (Private PKI)
-
-- Public Key-Infrastruktur (Public PKI) 
-
-- Lokal auf der Appliance generiert (lokal selbstsigniert) 
-
-> [!IMPORTANT]
-> Die Verwendung selbstsignierter Zertifikate wird nicht empfohlen. Diese Art der Verbindung ist nicht sicher und darf nur für Testumgebungen verwendet werden. Da der Besitzer des Zertifikats nicht überprüft und die Sicherheit Ihres Systems nicht aufrechterhalten werden kann, sollten selbstsignierte Zertifikate niemals für Produktionsnetzwerke verwendet werden.
-
-### <a name="supported-ssl-certificates"></a>Unterstützte SSL-Zertifikate 
-
-Die folgenden Parameter werden unterstützt. 
-
-**CRT-Datei des Zertifikats**
-
-- Die primäre Zertifikatsdatei für Ihren Domänennamen
-
-- Signaturalgorithmus = SHA256RSA
-- Signaturhashalgorithmus = SHA256
-- Gültig von = gültiges Datum in der Vergangenheit
-- Gültig bis = gültiges Datum in der Zukunft
-- Öffentlicher Schlüssel = RSA 2.048 Bits (mindestens) oder 4.096 Bits
-- CRL-Verteilungspunkt = URL zu CRL-Datei
-- Antragsteller-CN = URL, kann ein Platzhalterzertifikat sein, z. B. Sensor.contoso.<span>com oder *.contoso.<span>com
-- Land des Antragsstellers = definiert, z. B. USA
-- Organisationseinheit des Antragsstellers = definiert, z. B. Contoso Labs
-- Organisationseinheit des Antragsstellers = definiert, z. B. Contoso Inc.
-
-**Schlüsseldatei**
-
-- Die Schlüsseldatei, die beim Erstellen der CSR generiert wurde.
-
-- RSA 2.048 Bits (mindestens) oder 4.096 Bits.
-
- > [!Note]
- > Bei einer Schlüssellänge von 4096 Bit gilt Folgendes:
- > - Der SSL-Handshake zu Beginn jeder Verbindung erfolgt langsamer.  
- > - Die CPU-Auslastung erhöht sich bei Handshakes. 
-
-**Zertifikatkette**
-
-- Die von Ihrer Zertifizierungsstelle bereitgestellte Zwischenversion der Zertifikatsdatei (sofern vorhanden)
-
-- Das Zertifizierungsstellenzertifikat, das das Serverzertifikat ausgestellt hat, sollte sich an erster Stelle in der Datei befinden, gefolgt von allen anderen bis zum Stammzertifikat. 
-- Kann Bag-Attribute enthalten.
-
-**Passphrase**
-
-- Ein Schlüssel wird unterstützt.
-
-- Richten Sie ihn beim Importieren des Zertifikats ein.
-
-Zertifikate mit anderen Parametern funktionieren möglicherweise, werden aber von Microsoft nicht unterstützt.
-
-#### <a name="encryption-key-artifacts"></a>Verschlüsselungsschlüsselartefakte
-
-**.pem: Zertifikatcontainerdatei**
-
-PEM-Dateien (Privacy Enhanced Mail) wurden früher als allgemeiner Dateityp zum Schützen von E-Mails verwendet. Heutzutage werden PEM-Dateien mit Zertifikaten und X.509 ASN1-Schlüssel verwendet.  
-
-Die Containerdatei ist in den RFCs 1421 bis 1424 definiert: ein Containerformat, das lediglich das öffentliche Zertifikat enthalten kann. Beispielsweise Apache-Installationen, Zertifikatdateien von Zertifizierungsstellen und ETC-, SSL- oder CERTS-Dateien. Dabei kann es sich um eine vollständige Zertifikatkette handeln, einschließlich öffentlichem Schlüssel, privatem Schlüssel und Stammzertifikaten.  
-
-Außerdem kann eine CSR-Datei im PKCS10-Format codiert werden, die in PEM umgewandelt werden kann.
-
-**.cert .cer .crt: Zertifikatcontainerdatei**
-
-Eine Datei im `.pem`- oder `.der`-Format mit einer anderen Erweiterung. Die Datei wird in Windows-Explorer als Zertifikat erkannt. Die `.pem` -Datei wird in Windows-Explorer nicht erkannt.
-
-**.key – Datei mit dem privaten Schlüssel**
-
-Eine Schlüsseldatei weist das gleiche Format wie eine PEM-Datei auf, aber eine andere Erweiterung.
-
-#### <a name="other-commonly-available-key-artifacts"></a>Weitere allgemein verfügbare Schlüsselartefakte
-
-**.csr: Zertifikatsignieranforderung**.  
-
-Diese Datei wird für die Übermittlung an Zertifizierungsstellen verwendet. Das tatsächliche Format ist PKCS10, das in RFC 2986 definiert ist, und kann einige oder alle Schlüsseldetails des angeforderten Zertifikats enthalten. Beispielsweise Antragsteller, Organisation und Status. Es handelt sich um den öffentlichen Schlüssel des Zertifikats, das von der Zertifizierungsstelle signiert wird und auf das ein Zertifikat zurückgegeben wird.  
-
-Das zurückgegebene Zertifikat ist das öffentliche Zertifikat, das den öffentlichen Schlüssel, jedoch nicht den privaten Schlüssel enthält. 
-
-**.pkcs12 .pfx .p12: Kennwortcontainer**. 
-
-Ursprünglich durch RSA in den Public-Key Cryptography Standards (PKCS) definiert, wurde die PKCS12-Variante ursprünglich von Microsoft erweitert und später als RFC 7292 übermittelt.  
-
-Dieses Containerformat erfordert ein Kennwort, das öffentliche sowie private Zertifikatpaare enthält. Im Unterschied zu `.pem` -Dateien ist dieser Container vollständig verschlüsselt.  
-
-Mithilfe von OpenSSL können Sie die Datei in eine `.pem` -Datei mit öffentlichen und privaten Schlüsseln umwandeln: `openssl pkcs12 -in file-to-convert.p12 -out converted-file.pem -nodes`  
-
-**.der: Binär codierte PEM-Datei**.
-
-Die Methode zum Codieren der ASN.1-Syntax in das binäre Format erfolgt über eine `.pem` -Datei, bei der es sich lediglich um eine Base64-codierte `.der`-Datei handelt. 
-
-Mit OpenSSL können diese Dateien in `.pem`: `openssl x509 -inform der -in to-convert.der -out converted.pem` konvertiert werden.  
-
-Diese Dateien werden unter Windows als Zertifikatdateien erkannt. Unter Windows werden Zertifikate standardmäßig als Dateien im `.der`-Format mit einer anderen Erweiterung exportiert.  
-
-**.crl: Zertifikatsperrliste**.  
-Zertifizierungsstellen können diese Dateien erstellen, um die Autorisierung von Zertifikaten vor deren Ablauf aufzuheben.
- 
-##### <a name="cli-commands"></a>CLI-Befehle
-
-Importieren Sie Zertifikate mit dem CLI-Befehl `cyberx-xsense-certificate-import`. Zur Verwendung dieses Tools müssen Zertifikatdateien mithilfe von Tools wie WinSCP oder Wget auf das Gerät hochgeladen werden.
-
-Der Befehl unterstützt die folgenden Eingabeflags:
-
-- `-h`:  Zeigt die Syntax der Befehlszeilenhilfe.
-
-- `--crt`:  Pfad zu einer Zertifikatdatei (CRT-Erweiterung)
-
-- `--key`: \*.Schlüsseldatei. Die Schlüssellänge muss mindestens 2.048 Bits betragen.
-
-- `--chain`:  Pfad zu einer Zertifikatskettendatei (optional).
-
-- `--pass`:  Passphrase zum Verschlüsseln des Zertifikats (optional).
-
-- `--passphrase-set`:  Standard = `False`, nicht verwendet. Legen Sie die Einstellung auf `True` fest, um die vorherige Passphrase zu verwenden, die mit dem vorherigen Zertifikat bereitgestellt wurde (optional).
-
-Bei Verwendung des CLI-Befehls gilt Folgendes:
-
-- Überprüfen Sie, ob die Zertifikatdateien auf der Appliance lesbar sind.
-
-- Überprüfen Sie, ob der Domänenname und die IP-Adresse im Zertifikat der von der IT-Abteilung vorgesehenen Konfiguration entsprechen.
-
-### <a name="use-openssl-to-manage-certificates"></a>Verwalten von Zertifikaten mithilfe von OpenSSL
-
-Sie können Zertifikate mit den folgenden Befehlen verwalten:
-
-| Beschreibung | CLI-Befehl |
-|--|--|
-| Generieren eines neuen privaten Schlüssels und einer Zertifikatsignieranforderung | `openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key` |
-| Generieren eines selbstsignierten Zertifikats | `openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt` |
-| Generieren einer Zertifikatsignieranforderung (Certificate Signing Request, CSR) für einen vorhandenen privaten Schlüssel | `openssl req -out CSR.csr -key privateKey.key -new` |
-| Generieren einer Zertifikatsignieranforderung basierend auf einem vorhandenen Zertifikat | `openssl x509 -x509toreq -in certificate.crt -out CSR.csr -signkey privateKey.key` |
-| Entfernen einer Passphrase aus einem privaten Schlüssel | `openssl rsa -in privateKey.pem -out newPrivateKey.pem` |
-
-Wenn Sie die Informationen in einem Zertifikat, einer Zertifikatsignieranforderung oder einem privaten Schlüssel überprüfen möchten, verwenden Sie die folgenden Befehle:
-
-| Beschreibung | CLI-Befehl |
-|--|--|
-| Überprüfen einer Zertifikatsignieranforderung (CSR) | `openssl req -text -noout -verify -in CSR.csr` |
-| Überprüfen eines privaten Schlüssels | `openssl rsa -in privateKey.key -check` |
-| Überprüfen eines Zertifikats | `openssl x509 -in certificate.crt -text -noout`  |
-
-Wenn in einer Fehlermeldung angezeigt wird, dass der private Schlüssel nicht mit dem Zertifikat übereinstimmt oder dass ein in einer Site installiertes Zertifikat nicht vertrauenswürdig ist, können Sie den Fehler mit den folgenden Befehlen beheben:
-
-| Beschreibung | CLI-Befehl |
-|--|--|
-| Überprüfen eines MD5-Hash des öffentlichen Schlüssels, um sicherzustellen, dass er mit dem Inhalt einer Zertifikatsignieranforderung oder einem privaten Schlüssel übereinstimmt | 1. `openssl x509 -noout -modulus -in certificate.crt | openssl md5` <br /> 2. `openssl rsa -noout -modulus -in privateKey.key | openssl md5` <br /> 3. `openssl req -noout -modulus -in CSR.csr | openssl md5 ` |
-
-Führen Sie die folgenden Befehle aus, um Zertifikate und Schlüssel in unterschiedliche Formate zu konvertieren, sodass sie mit bestimmten Servertypen oder spezifischer Software kompatibel sind.
-
-| Beschreibung | CLI-Befehl |
-|--|--|
-| Konvertieren einer DER-Datei (.crt .cer .der) in PEM  | `openssl x509 -inform der -in certificate.cer -out certificate.pem`  |
-| Konvertieren einer PEM-Datei in DER | `openssl x509 -outform der -in certificate.pem -out certificate.der`  |
-| Konvertieren einer PKCS#12-Datei (.pfx .p12) mit einem privaten Schlüssel und Zertifikaten in PEM | `openssl pkcs12 -in keyStore.pfx -out keyStore.pem -nodes` <br />Sie können `-nocerts` hinzufügen, um nur den privaten Schlüssel auszugeben, oder `-nokeys`, um nur die Zertifikate auszugeben. |
-| Konvertieren einer PEM-Zertifikatdatei und eines privaten Schlüssels in PKCS#12 (.pfx .p12) | `openssl pkcs12 -export -out certificate.pfx -inkey privateKey.key -in certificate.crt -certfile CACert.crt` |
+Weitere Informationen zum erstmaligen Hochladen von Zertifikaten finden Sie unter [Prüfliste für die erstmalige Anmeldung und Aktivierung](how-to-activate-and-set-up-your-sensor.md#first-time-sign-in-and-activation-checklist).
 
 ## <a name="connect-a-sensor-to-the-management-console"></a>Verbinden eines Sensors mit der Verwaltungskonsole
 
@@ -394,7 +190,7 @@ Wenn Sie eine neue IP-Adresse erstellen, müssen Sie sich möglicherweise erneut
 
 Zum Ändern der Konfiguration gehen Sie folgendermaßen vor:
 
-1. Wählen Sie im Menü an der Seite **System Settings** (Systemeinstellungen) aus.
+1. Wählen Sie im seitlichen Menü **Systemeinstellungen** aus.
 
 2. Wählen Sie im Fenster **Systemeinstellungen** die Option **Netzwerk** aus.
 
@@ -427,7 +223,7 @@ Sie können die Uhrzeit und die Region des Sensors so konfigurieren, dass allen 
 
 Zum Konfigurieren der Sensorzeit gehen Sie folgendermaßen vor:
 
-1. Wählen Sie im Menü an der Seite **System Settings** (Systemeinstellungen) aus.
+1. Wählen Sie im seitlichen Menü **Systemeinstellungen** aus.
 
 2. Wählen Sie im Fenster **Systemeinstellungen** die Option für **Zeit- und Regionseinstellungen** aus.
 
@@ -461,7 +257,7 @@ So stellen Sie die neueste Sicherungsdatei wieder her
 
 So speichern Sie die Sicherung auf einem externen SMB-Server
 
-1. Erstellen Sie auf dem externen SMB-Server einen freigegebenen Ordner.
+1. Erstellen Sie einen freigegebenen Ordner auf dem externen SMB-Server.
 
     Rufen Sie den Ordnerpfad, den Benutzernamen und das Kennwort ab, die für den Zugriff auf den SMB-Server erforderlich sind.
 

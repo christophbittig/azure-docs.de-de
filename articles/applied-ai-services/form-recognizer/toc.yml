@@ -41,6 +41,8 @@
       href: /legal/cognitive-services/form-recognizer/fr-data-privacy-security?context=/azure/applied-ai-services/form-recognizer/context/context
 - name: Anleitungen
   items:
+    - name: Generieren von SAS-Token für Azure-Blobcontainer
+      href: generate-sas-tokens.md
     - name: Trainieren eines benutzerdefinierten Modells mit dem Tool für die Beschriftung von Beispielen
       href: label-tool.md
     - name: Erstellen eines Trainingsdatasets

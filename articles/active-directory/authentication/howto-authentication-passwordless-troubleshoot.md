@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 435b27255ce58a3541d6b0d3a76bdf4080aa3962
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 70230b5324d94065e414e0bc76d7e2f092369ba9
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101648779"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123431980"
 ---
 # <a name="troubleshooting-for-hybrid-deployments-of-fido2-security-keys-in-azure-ad"></a>Problembehandlung bei Hybridbereitstellungen von FIDO2-Sicherheitsschlüsseln in Azure AD 
 
@@ -145,7 +145,7 @@ Der erste Satz von Eigenschaften stammt aus den Objekten in der lokalen AD DS-U
 | Id                 | Die eindeutige *ID* des AD DS-Domänencontrollerobjekts. |
 | DomainDnsName      | Der DNS-Domänenname der AD DS-Domäne. |
 | ComputerAccount    | Das Computerkontoobjekt des Azure AD Kerberos-Serverobjekts (der DC). |
-| UserAccount        | Das deaktivierte Benutzerkontoobjekt, das den TGT-Verschlüsselungsschlüssel des Azure AD Kerberos-Servers enthält. Der DN dieses Kontos lautet: *CN=krbtgt_AzureAD,CN=Users,<Domain-DN>* . |
+| UserAccount        | Das deaktivierte Benutzerkontoobjekt, das den TGT-Verschlüsselungsschlüssel des Azure AD Kerberos-Servers enthält. Der DN dieses Kontos lautet: *CN=krbtgt_AzureAD,CN=Users,\<Domain-DN\>* |
 | KeyVersion         | Die Schlüsselversion des TGT-Verschlüsselungsschlüssels des Azure AD Kerberos-Servers. Die Version wird beim Erstellen des Schlüssels zugewiesen. Die Version wird dann bei jeder Rotation des Schlüssels inkrementiert. Die Inkremente basieren auf Replikationsmetadaten und werden wahrscheinlich größer als ein Inkrement sein.<br /><br /> Die anfängliche Schlüsselversion (*KeyVersion*) könnte beispielsweise *192272* lauten. Bei der ersten Rotation des Schlüssels könnte die Version auf *212621* erhöht werden.<br /><br /> Sie müssen unbedingt überprüfen, ob die *KeyVersion* für das lokale Objekt und die *CloudKeyVersion* für das Cloudobjekt identisch sind. |
 | KeyUpdatedOn       | Das Datum und die Uhrzeit der Aktualisierung oder Erstellung des TGT-Verschlüsselungsschlüssels des Azure AD Kerberos-Servers. |
 | KeyUpdatedFrom     | Der DC, auf dem der TGT-Verschlüsselungsschlüssel des Azure AD Kerberos-Servers zuletzt aktualisiert wurde. |

@@ -8,12 +8,12 @@ ms.author: srahaman
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: a5181a5a95c3e6eb33eb084d41674746096dd8c2
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 7b0ac0fdb6ee5b734d642612c1fea16665e07684
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123259116"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435508"
 ---
 # <a name="best-practices-azure-communication-services-calling-sdks"></a>Bewährte Methoden: Azure Communication Services Calling SDKs
 Dieser Artikel enthält Informationen zu bewährten Methoden im Zusammenhang mit Azure Communication Services (ACS) Calling SDKs.
@@ -44,6 +44,16 @@ Communication Services-Anwendungen müssen `VideoStreamRendererView` oder die ü
 
 ### <a name="hang-up-the-call-on-onbeforeunload-event"></a>Beenden des Aufrufs beim Ereignis onbeforeunload
 Ihre Anwendung sollte `call.hangup` aufrufen, wenn das Ereignis `onbeforeunload` ausgegeben wird.
+
+### <a name="handling-multiple-calls-on-multiple-tabs-on-mobile"></a>Umgang mit mehreren Anrufen auf mehreren Registerkarten auf Mobilgeräten
+Ihre Anwendung sollte eine Verbindung mit Anrufen von mehreren Browserregisterkarten nicht gleichzeitig herstellen, da dies aufgrund der Ressourcenzuordnung für Mikrofon und Kamera auf dem Gerät zu undefiniertem Verhalten führen kann. Entwicklern wird empfohlen, Anrufe grundsätzlich zu beenden, wenn sie im Hintergrund durchgeführt werden, bevor sie einen neuen Anruf starten.
+```JavaScript 
+document.addEventListener("visibilitychange", function() {
+    if (document.visibilityState != 'visible') {
+            // call.hangUp
+    }
+});
+ ```
 
 ### <a name="hang-up-the-call-on-microphonemuteunexpectedly-ufd"></a>Beenden des Anrufs für UFD microphoneMuteUnexpectedly
 Wenn ein iOS-/Safari-Benutzer einen PSTN-Anruf empfängt, verliert Azure Communication Services den Mikrofonzugriff. Azure Communication Services gibt das Anrufdiagnoseereignis `microphoneMuteUnexpectedly` aus, und an diesem Punkt kann Communication Services den Zugriff auf das Mikrofon nicht wiedererlangen.

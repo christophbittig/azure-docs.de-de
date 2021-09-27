@@ -545,6 +545,8 @@
                   href: service-fabric-cluster-security-update-certs-azure.md
                 - name: Herstellen einer Remoteverbindung mit dem virtuellen Clusterknotencomputer
                   href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
+                - name: Aktualisieren des Linux-Betriebssystems für Azure Service Fabric
+                  href: service-fabric-cluster-upgrade-os.md
         - name: Eigenständige Cluster
           items:
             - name: Erstellen

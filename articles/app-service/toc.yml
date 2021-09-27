@@ -2,7 +2,7 @@
   href: index.yml
 - name: Übersicht
   items:
-    - name: Informationen zu Web-Apps
+    - name: Informationen zu App Service
       href: overview.md
     - name: Informationen zu App Service-Umgebungen
       href: environment/intro.md
@@ -36,7 +36,7 @@
       href: quickstart-arc.md
 - name: Tutorials
   items:
-    - name: 'Sichere App: Zugriff, Speicher und Microsoft Graph'
+    - name: Sicherer Speicher für App-Zugriffe und Microsoft Graph
       items:
         - name: Übersicht
           href: scenario-secure-app-overview.md
@@ -92,6 +92,8 @@
       items:
         - name: ASP.NET Core mit einem Container
           href: app-service-sql-github-actions.md
+        - name: ASP.NET
+          href: app-service-sql-asp-github-actions.md
 - name: Beispiele
   items:
     - name: Azure CLI

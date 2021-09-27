@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.custom: inference server, local development, local debugging, devplatv2
 ms.date: 05/14/2021
-ms.openlocfilehash: 924995fe9330a44b52a40a8e3eb651efdeb24398
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 48dda26415113bff4ff20305ee8779804859be33
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340318"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123428306"
 ---
 # <a name="azure-machine-learning-inference-http-server-preview"></a>HTTP-Rückschlussserver von Azure Machine Learning (Vorschau)
 
@@ -132,6 +132,15 @@ In den folgenden Schritten wird erläutert, wie der HTTP-Rückschlussserver für
 1. Schließlich wird die Anforderung an Ihr Einstiegsskript gesendet. Das Einstiegsskript sendet dann einen Rückschlussaufruf an das geladene Modell und gibt eine Antwort zurück.
 
 :::image type="content" source="./media/how-to-inference-server-http/inference-server-architecture.png" alt-text="Diagramm des HTTP-Serverprozesses":::
+
+## <a name="how-to-integrate-with-visual-studio-code"></a>Integrieren mit Visual Studio Code
+
+Es gibt zwei Möglichkeiten, Visual Studio Code (VSCode) und die [Python-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-python.python) zum Debuggen mit dem Paket [azureml-inference-server-http](https://pypi.org/project/azureml-inference-server-http/) zu verwenden. 
+
+1. Der Benutzer startet den AzureML-Rückschlussserver über eine Befehlszeile und verwendet VSCode und die Python-Erweiterung zum Anfügen an den Prozess.
+1. Der Benutzer richtet die `launch.json` in VSCode ein und startet den AzureML-Rückschlussserver in VSCode.
+
+Auf beide Arten kann der Benutzer den Breakpoint festlegen und schrittweise debuggen.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 

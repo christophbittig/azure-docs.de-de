@@ -13,18 +13,18 @@
     - name: Erstellen einer Instanz
       expanded: true
       items:
-        - name: Portal
+        - name: Das Azure-Portal
           href: howto-develop-create-instance.md
-        - name: Befehlszeilenschnittstelle (CLI)
+        - name: Die Azure CLI
           href: quickstart-cli-create.md
     - name: Herstellen einer Verbindung mit der Instanz
       expanded: true
       items:
-        - name: Veröffentlichen/Abonnieren über den Browser
+        - name: PubSub über den Browser
           href: quickstart-live-demo.md
-        - name: Veröffentlichen/Abonnieren über die CLI
+        - name: PubSub über die Azure CLI
           href: quickstart-cli-try.md
-        - name: Veröffentlichen/Abonnieren per Dienst-SDK
+        - name: PubSub mit dem Dienst-SDK
           href: quickstart-use-sdk.md
 - name: Tutorials
   expanded: true
@@ -32,7 +32,7 @@
     - name: Serverlose Entwicklung
       expanded: true
       items:
-        - name: Erstellen einer Benachrichtigungs-App mit Azure-Funktion
+        - name: Erstellen einer Benachrichtigungs-App mit Azure Functions
           href: tutorial-serverless-notification.md
         - name: Erstellen einer Echtzeitchat-App mit Clientauthentifizierung
           href: quickstart-serverless.md
@@ -65,7 +65,7 @@
       items:
         - name: Erfassen einer Netzwerkablaufverfolgung
           href: howto-troubleshoot-network-trace.md
-        - name: Erfassen von Diagnoseprotokollen
+        - name: Capture-Diagnoseprotokolle
           href: howto-troubleshoot-diagnostic-logs.md
 - name: Konzepte
   expanded: true

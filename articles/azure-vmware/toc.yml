@@ -110,6 +110,8 @@
           href: configure-dns-azure-vmware-solution.md
         - name: Konfigurieren der HCX-Netzwerkerweiterung
           href: configure-hcx-network-extension.md
+        - name: Konfigurieren von NSX-Netzwerkkomponenten
+          href: configure-nsx-network-components-azure-portal.md
         - name: Konfigurieren der Portspiegelung
           href: configure-port-mirroring-azure-vmware-solution.md
         - name: Konfigurieren eines Site-to-Site-VPN in einem vWAN
@@ -120,12 +122,16 @@
           href: vmware-hcx-mon-guidance.md
     - name: Konfigurieren von Speicherrichtlinien
       href: configure-storage-policy.md
+    - name: Konfigurieren von VMware-Syslog-Protokollen
+      href: configure-vmware-syslogs.md
     - name: Konfigurieren von Windows Server-Failoverclustern
       href: configure-windows-server-failover-cluster.md
     - name: Verbinden mehrerer privater Clouds in der gleichen Region
       href: connect-multiple-private-clouds-same-region.md
     - name: Bereitstellen der Notfallwiederherstellung
       items:
+        - name: Bereitstellen der JetStream-Notfallwiederherstellung
+          href: deploy-disaster-recovery-using-jetstream.md
         - name: Bereitstellen von VMware HCX für die Notfallwiederherstellung
           href: deploy-disaster-recovery-using-vmware-hcx.md
         - name: Bereitstellen von VMware SRM für die Notfallwiederherstellung
@@ -148,6 +154,10 @@
           href: ecosystem-back-up-vms.md
         - name: Migrationslösungen für virtuelle Computer
           href: ecosystem-migration-vms.md
+        - name: Sicherheitslösungen für Azure VMware Solution
+          href: ecosystem-security-solutions.md
+        - name: Bereitstellung der Bitnami-Appliance
+          href: bitnami-appliances-deployment.md
     - name: VMware Solutions
       items:
         - name: Konfigurieren der HCX-Netzwerkerweiterung
@@ -158,12 +168,6 @@
           href: azure-vmware-solution-horizon.md
         - name: Bereitstellen virtueller Computer aus der Inhaltsbibliothek
           href: deploy-vm-content-library.md
-        - name: Notfallwiederherstellung
-          items:
-            - name: VMware SRM für die Notfallwiederherstellung
-              href: disaster-recovery-using-vmware-site-recovery-manager.md
-            - name: VMware HCX für die Notfallwiederherstellung
-              href: deploy-disaster-recovery-using-vmware-hcx.md
         - name: "Upgraden der VMware\_HCX-Appliance"
           href: 'https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-02DB88E1-EC81-434B-9AE9-D100E427B31C.html'
 - name: Ressourcen

@@ -1,6 +1,6 @@
 ### YamlMime:FAQ
 metadata:
-  title: Häufig gestellte Fragen zum Ausführen integrierter Container
+  title: App Service unter Linux – häufig gestellte Fragen
   description: Hier finden Sie Antworten auf häufig gestellte Fragen zu den integrierten Linux-Containern in Azure App Service.
   keywords: azure app service, web app, faq, linux, oss, web app for containers, multi-container, multicontainer
   author: msangapu-msft
@@ -9,12 +9,12 @@ metadata:
   ms.date: 10/30/2018
   ms.author: msangapu
   ms.custom: seodec18
-  ms.openlocfilehash: b908a804041d2278be5e9f88b23c7fe160511fe6
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.openlocfilehash: 7d061a32032fd1edcbe0e2b8dc38290db2664f9d
+  ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122351075"
+  ms.lasthandoff: 09/07/2021
+  ms.locfileid: "123542579"
 title: Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux
 summary: >
   Mit dem Release von App Service unter Linux erweitern wir unsere Plattform um Features und nehmen Verbesserungen an ihr vor. Dieser Artikel enthält Antworten auf Fragen, die uns kürzlich von Kunden gestellt wurden.
@@ -111,9 +111,7 @@ sections:
       ```nodejs
 
       const io = require('socket.io')(server,{
-
-        perMessageDeflate :false
-
+        perMessageDeflate :false
       });
 
       ```
@@ -134,7 +132,7 @@ sections:
   - question: >
       Ich verwende meinen eigenen benutzerdefinierten Container. Ich möchte die Plattform in eine SMB-Freigabe im Verzeichnis `/home/` einbinden.
     answer: >
-      Wenn die Einstellung `WEBSITES_ENABLE_APP_SERVICE_STORAGE`**nicht angegeben** oder auf *false* festgelegt ist, wird das Verzeichnis `/home/` **nicht über Skalierungsinstanzen freigegeben**, und geschriebene Dateien werden über Neustarts hinweg **nicht beibehalten**. Das explizite Festlegen von `WEBSITES_ENABLE_APP_SERVICE_STORAGE` auf *true* aktiviert die Einbindung.
+      Wenn die Einstellung `WEBSITES_ENABLE_APP_SERVICE_STORAGE`**nicht angegeben** oder auf *false* festgelegt ist, wird das Verzeichnis `/home/` **nicht über Skalierungsinstanzen freigegeben**, und geschriebene Dateien werden über Neustarts hinweg **nicht beibehalten**. Das explizite Festlegen von `WEBSITES_ENABLE_APP_SERVICE_STORAGE` auf *true* aktiviert die Einbindung. Sobald dies auf „true“ festgelegt ist und Sie die Bereitstellung deaktivieren möchten, müssen Sie `WEBSITES_ENABLE_APP_SERVICE_STORAGE` explizit auf *false* festlegen.
   - question: >
       Mein benutzerdefinierter Container benötigt für den Start sehr lange, und die Plattform startet den Container neu, bevor er den Startvorgang abgeschlossen hat.
     answer: >
@@ -160,19 +158,9 @@ sections:
     answer: >
       Die SCM-Website wird in einem separaten Container ausgeführt. Sie können das Dateisystem oder aktive Prozesse des App-Containers nicht überprüfen.
   - question: >
-      Mein benutzerdefinierter Container lauscht auf einen anderen Port als Port 80. Wie kann ich meine App so konfigurieren, dass Anforderungen an diesen Port weitergeleitet werden?
-    answer: >
-      Die Porterkennung erfolgt automatisch. Sie können auch eine Anwendungseinstellung mit dem Namen *WEBSITES_PORT* und für diese den Wert der erwarteten Portnummer angeben. Zuvor wurde von der Plattform die App-Einstellung *PORT* verwendet. Es ist geplant, diese App-Einstellung einzustellen und ausschließlich *WEBSITES_PORT* zu verwenden.
-  - question: >
       Muss ich HTTPS in meinem benutzerdefinierten Container implementieren?
     answer: >
       Nein. Die Plattform handhabt die HTTPS-Beendigung an den freigegebenen Front-Ends.
-  - question: >
-      Muss ich die PORT-Variable im Code für integrierte Container verwenden?
-    answer: >
-      Nein. Die PORT-Variable ist aufgrund der automatischen Porterkennung nicht erforderlich. Sollte kein Port erkannt werden, wird standardmäßig Port 80 verwendet.
-
-      Wenn Sie manuell einen benutzerdefinierten Port konfigurieren möchten, können Sie die EXPOSE-Anweisung im Dockerfile sowie die App-Einstellung „WEBSITES_PORT“ mit einem Portwert verwenden, der für den Container gebunden werden soll.
   - question: >
       Muss ich „WEBSITES_PORT“ für benutzerdefinierte Container verwenden?
     answer: >
@@ -225,13 +213,54 @@ sections:
       - Der erste Container, der Port 80 oder 8080 definiert
 
       - Wenn keiner der oben genannten Punkte zutrifft, kann auf den in der Datei zuerst definierten (verfügbar gemachten) Container zugegriffen werden
+  - question: >
+      Wie verwende ich depends_on?
+    answer: >
+      Die `depends_on`-Option wird in App Service *nicht unterstützt* und wird ignoriert. Wie bei der [Docker-Empfehlung zur Steuerung des Startens und Herunterfahrens](https://docs.docker.com/compose/startup-order/) sollten App Service-Multicontainer-Apps Abhängigkeiten durch Anwendungscode überprüfen – sowohl beim Start als auch beim Trennen.
 
+
+      Der folgende Beispielcode zeigt eine Python-App, die überprüft, ob ein Redis-Container ausgeführt wird.
+
+
+      ```python
+
+      import time
+
+
+      import redis
+
+      from flask import Flask
+
+
+      app = Flask(__name__)
+
+      cache = redis.Redis(host='redis', port=6379)
+
+
+      def get_hit_count():
+          retries = 5
+          while True:
+              try:
+                  return cache.incr('hits')
+              except redis.exceptions.ConnectionError as exc:
+                  if retries == 0:
+                      raise exc
+                  retries -= 1
+                  time.sleep(0.5)
+
+      @app.route('/')
+
+      def hello():
+          count = get_hit_count()
+          return 'Hello from Azure App Service team! I have been seen {} times.\n'.format(count)
+
+      if __name__ == "__main__":
+          app.run(host="0.0.0.0", port=80, debug=True)
+      ```
 
       ## <a name="web-sockets"></a>Websockets
 
-
       Websockets werden für Linux-Apps unterstützt.
-
 
       > [!IMPORTANT]
 
@@ -245,9 +274,19 @@ sections:
 - name: Andere Fragen
   questions:
   - question: >
-      Kann ich eine dateibasierte Datenbank (wie SQLight) mit meiner Linux-Web-App verwenden?
+      Wie gebe ich den Port in meinem Linux-Container an?
     answer: >
-      Das Dateisystem Ihrer Anwendung ist eine eingebundene Netzwerkfreigabe. Dadurch sind Aufskalierungsszenarios möglich, in denen Ihr Code auf mehreren Hosts ausgeführt werden muss. Leider wird so die Nutzung von dateibasierten Datenbankanbietern wie SQLite verhindert, da es nicht möglich ist, exklusive Sperren für die Datenbankdatei abzurufen. Es empfiehlt sich, einen der vollständig verwalteten Datenbankdienste in Azure zu verwenden: [Azure SQL](https://azure.microsoft.com/products/azure-sql/), [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/) oder [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql/).
+      | Containertyp | Beschreibung | Festlegen/Verwenden des Ports |
+
+      |----------------|-------------|---------------------|
+
+      | Integrierte Container | Wenn Sie eine Sprach-/Frameworkversion für eine Linux-App auswählen, wird ein vordefinierter Container für Sie ausgewählt. | Verwenden Sie die Umgebungsvariable PORT, um Ihren App-Code auf den richtigen Port zu verweisen. |
+
+      | Benutzerdefinierte Container | Sie haben die vollständige Kontrolle über den Container. | App Service hat keine Kontrolle darüber, an welchem Port Ihr Container lauscht. Es muss jedoch bekannt sein, an welchen Port Anforderungen weitergeleitet werden sollen. Wenn Ihr Container an Port 80 oder 8080 lauscht, kann App Service ihn automatisch erkennen. Wenn er an einem anderen Port lauscht, müssen Sie die App-Einstellung WEBSITES_PORT auf die Portnummer festlegen, und App Service leitet Anforderungen an diesen Port im Container weiter. Die App-Einstellung WEBSITES_PORT hat innerhalb des Containers keine Auswirkungen, und Sie können nicht als Umgebungsvariable innerhalb des Containers darauf zugreifen. |
+  - question: >
+      Kann ich eine dateibasierte Datenbank (wie SQLite) mit meiner Linux-Web-App verwenden?
+    answer: >
+      Das Dateisystem Ihrer Anwendung ist eine eingebundene Netzwerkfreigabe. Dadurch sind Aufskalierungsszenarios möglich, in denen Ihr Code auf mehreren Hosts ausgeführt werden muss. Leider wird so die Nutzung von dateibasierten Datenbankanbietern wie SQLite verhindert, da es nicht möglich ist, exklusive Sperren für die Datenbankdatei abzurufen. Wir empfehlen einen verwalteten Datenbankdienst: [Azure SQL](https://azure.microsoft.com/products/azure-sql/), [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/) oder [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql/).
   - question: >
       Welche Zeichen werden in den Namen von Anwendungseinstellungen unterstützt?
     answer: >
@@ -256,4 +295,16 @@ sections:
       Wo kann ich neue Funktionen beantragen?
     answer: >
       Sie können Ihre Idee im [Web-Apps-Feedbackforum](https://aka.ms/webapps-uservoice) einreichen. Fügen Sie im Titel Ihrer Idee „[Linux]“ hinzu.
-additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\n- [Was ist Azure App Service unter Linux?](overview.md#app-service-on-linux)\n- [Einrichten von Stagingumgebungen in Azure App Service](deploy-staging-slots.md)\n- [Continuous Deployment mit Web-App für Container](./deploy-ci-cd-custom-container.md)\n- [Wissenswertes: Web-Apps und Linux](https://techcommunity.microsoft.com/t5/apps-on-azure/things-you-should-know-web-apps-and-linux/ba-p/392472)\n- [Referenz zu Umgebungsvariablen und App-Einstellungen](reference-app-settings.md)"
+additionalContent: >-
+  ## <a name="next-steps"></a>Nächste Schritte
+
+
+  - [Was ist Azure App Service unter Linux?](overview.md#app-service-on-linux)
+
+  - [Einrichten von Stagingumgebungen in Azure App Service](deploy-staging-slots.md)
+
+  - [Continuous Deployment mit Web-App für Container](./deploy-ci-cd-custom-container.md)
+
+  - [Wissenswertes: Web-Apps und Linux](https://techcommunity.microsoft.com/t5/apps-on-azure/things-you-should-know-web-apps-and-linux/ba-p/392472)
+
+  - [Referenz zu Umgebungsvariablen und App-Einstellungen](reference-app-settings.md)

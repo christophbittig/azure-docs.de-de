@@ -11,12 +11,12 @@ ms.date: 05/11/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: Verarbeiten von Dokumenten
-ms.openlocfilehash: decd5b23f0b88e078cee47a833cc913d5cb095b4
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: d463a45064a9f6b342a7cb735372a3c5098539c4
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351256"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123431746"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -201,12 +201,16 @@ Derzeit werden die folgenden Werttypen und Variationen unterstützt:
 
 * `number`
   * Standardwert, `currency`
+  * Als Gleitkommawert formatiert. 
+  * Beispiel: 1234.98 auf dem Dokument wird in der Ausgabe in 1234,98 formatiert.
 
 * `date`
   * Standardwert, `dmy`, `mdy`, `ymd`
 
 * `time`
 * `integer`
+  * Als ganzzahliger Wert formatiert. 
+  * Beispiel: 1234.98 auf dem Dokument wird in der Ausgabe in 123498 formatiert.
 * `selectionMark`
 
 > [!NOTE]

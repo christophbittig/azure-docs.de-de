@@ -324,6 +324,12 @@
           href: stream-analytics-machine-learning-anomaly-detection.md
         - name: Verwenden von ML-REST-APIs
           href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
+    - name: Exportieren aus Application Insights
+      items:
+        - name: Exportieren nach Stream Analytics
+          href: app-insights-export-stream-analytics.md
+        - name: Exportieren nach SQL mit Stream Analytics
+          href: app-insights-export-sql-stream-analytics.md
     - name: Debuggen mithilfe des Auftragsdiagramms
       href: stream-analytics-job-diagram-with-metrics.md
     - name: Skalieren mit ML-Funktionen

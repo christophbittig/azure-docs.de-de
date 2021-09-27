@@ -3,17 +3,25 @@ title: Upgrade von Mobility Service- und Appliancekomponenten - Vorschau
 description: In diesem Artikel werden automatische Updates für den Mobilitäts-Agent und das Verfahren im Zusammenhang mit manuellen Updates beschrieben - Vorschau
 ms.service: site-recovery
 ms.topic: article
-ms.date: 08/19/2021
-ms.openlocfilehash: 3f9b29eedb5e379bf13657e3619c498ccec90e7e
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.date: 09/01/2021
+ms.openlocfilehash: 97cfba3e14268385632a47a5898b21e8d68811cb
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446838"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123539729"
 ---
 # <a name="upgrade-mobility-service-and-appliance-components-preview"></a>Upgrade von Mobility Service- und Appliancekomponenten (Vorschau)
 
+Ab dieser Vorschau müssen Sie die Root-/Administratoranmeldeinformationen des Quellcomputers nicht verwalten, um Upgrades durchzuführen. Die Anmeldeinformationen sind nur für die Erstinstallation des Agents erforderlich. Anschließend können Sie die Anmeldeinformationen entfernen.
+
+
+## <a name="update-mobility-agent-automatically"></a>Automatisches Update des Mobilitäts-Agents
+
 Standardmäßig sind automatische Updates für einen Tresor aktiviert. Automatische Updates werden täglich um 24:00 Uhr Ortszeit ausgelöst, wenn eine neue Version verfügbar ist.
+
+> [!NOTE]
+> Wenn Sie private Vorschaubits verwenden, werden automatische Updates für die geschützten Computer blockiert. Stellen Sie sicher, dass Site Recovery mithilfe einer neuen Vorschau-Appliance wieder auf Ihrem Computer eingerichtet haben.
 
 Um die neuesten Features, Verbesserungen und Fehlerbehebungen zu nutzen, empfehlen wir Ihnen, in den **Upgradeeinstellungen des Mobilitäts-Agents (Vorschau)** die Option **Site Recovery-Verwaltung zulassen** auszuwählen. Automatische Updates erfordern keinen Neustart und wirken sich nicht auf die aktuelle Replikation Ihrer virtuellen Computer aus. Automatische Updates stellen außerdem sicher, dass alle Replikationsappliances im Tresor automatisch aktualisiert werden.
 
@@ -23,8 +31,6 @@ Um die automatischen Updates zu deaktivieren, schalten Sie die Schaltfläche **S
 
 ![Automatische Updates für Mobilitäts-Agent deaktiviert](./media/upgrade-mobility-service-preview/automatic-updates-off.png)
 
-> [!NOTE]
-> Wenn Sie private Vorschaubits verwenden, werden automatische Updates für die geschützten Computer blockiert. Stellen Sie sicher, dass Site Recovery mithilfe einer neuen Vorschau-Appliance wieder auf Ihrem Computer eingerichtet haben.
 
 ## <a name="update-mobility-agent-manually"></a>Manuelles Update des Mobilitäts-Agents
 

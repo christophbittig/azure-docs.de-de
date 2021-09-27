@@ -221,10 +221,12 @@
           href: sql/sql-api-python-samples.md
         - name: PowerShell
           href: sql/powershell-samples.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: sql/cli-samples.md
         - name: Azure Resource Manager
           href: sql/templates-samples-sql.md
+        - name: Bicep
+          href: sql/bicep-samples.md
     - name: Konzepte
       items:
         - name: Modellierung und Partitionierung
@@ -788,7 +790,7 @@
                 - name: Problembehandlung bei langsamen Anforderungen
                   href: sql/troubleshoot-dot-net-sdk-slow-request.md
                 - name: Problembehandlung bei einem Fehler vom Typ „Nicht verfügbar“
-                  href: troubleshoot-service-unavailable.md
+                  href: sql/troubleshoot-service-unavailable.md
             - name: .Java
               items:
                 - name: Problembehandlung für das Java SDK v4
@@ -1065,6 +1067,8 @@
         - name: Verwalten mithilfe von Resource Manager-Vorlagen
           href: cassandra/templates-samples.md
           displayName: ARM
+        - name: Verwalten mit Bicep
+          href: cassandra/manage-with-bicep.md
         - name: Verwalten mit PowerShell
           href: cassandra/powershell-samples.md
         - name: Verwalten mithilfe der Azure-Befehlszeilenschnittstelle
@@ -1205,6 +1209,8 @@
         - name: Verwalten mithilfe von Resource Manager-Vorlagen
           href: mongodb/resource-manager-template-samples.md
           displayName: ARM
+        - name: Verwalten mit Bicep
+          href: mongodb/manage-with-bicep.md
         - name: Verwalten mit PowerShell
           href: mongodb/powershell-samples.md
         - name: Verwalten mithilfe der Azure-Befehlszeilenschnittstelle
@@ -1289,6 +1295,8 @@
         - name: Verwalten mithilfe von Resource Manager-Vorlagen
           href: graph/resource-manager-template-samples.md
           displayName: ARM
+        - name: Verwalten mit Bicep
+          href: graph/manage-with-bicep.md
         - name: Verwalten mit PowerShell
           href: graph/powershell-samples.md
         - name: Verwalten mithilfe der Azure-Befehlszeilenschnittstelle
@@ -1364,6 +1372,8 @@
           href: table/find-request-unit-charge.md
         - name: Verwalten mithilfe von Resource Manager-Vorlagen
           href: table/resource-manager-templates.md
+        - name: Verwalten mit Bicep
+          href: table/manage-with-bicep.md
           displayName: ARM
         - name: Verwalten mit PowerShell
           href: table/powershell-samples.md
@@ -1402,6 +1412,9 @@
           href: sql/manage-with-powershell.md
         - name: Verwenden der Azure-Befehlszeilenschnittstelle
           href: sql/manage-with-cli.md
+        - name: Verwenden von Bicep
+          href: sql/manage-with-bicep.md
+          displayName: ARM
         - name: Verwenden von Resource Manager-Vorlagen
           href: sql/manage-with-templates.md
           displayName: ARM
@@ -1504,6 +1517,8 @@
               href: monitor-server-side-latency.md
             - name: Überwachen der Nutzung von Anforderungseinheiten
               href: monitor-request-unit-usage.md
+            - name: Überwachen wichtiger Updates
+              href: monitor-account-key-updates.md
             - name: Überwachen der normalisierten Nutzung von Anforderungseinheiten
               href: monitor-normalized-request-units.md
         - name: Verwenden von Azure Monitor-Protokollen

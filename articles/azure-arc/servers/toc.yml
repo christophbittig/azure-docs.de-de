@@ -41,10 +41,12 @@
           href: agent-overview.md
         - name: Planen für die Bereitstellung
           href: plan-at-scale-deployment.md
-        - name: Verbinden von Computern mit Azure Arc über das Azure-Portal
+        - name: Verbinden von Computern mithilfe eines Bereitstellungsskripts
           href: onboard-portal.md
         - name: Verbinden von Computern im großen Stil mithilfe eines Dienstprinzipals
           href: onboard-service-principal.md
+        - name: Verbinden von Computern über die Automation-Updateverwaltung
+          href: onboard-update-management-machines.md
         - name: Verbinden von Computern mit Azure Arc mithilfe von PowerShell DSC
           href: onboard-dsc.md
         - name: Verbinden von Computern über Windows Admin Center

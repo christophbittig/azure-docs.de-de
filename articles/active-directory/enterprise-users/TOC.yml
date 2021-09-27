@@ -2,7 +2,7 @@
   href: index.yml
 - name: Übersicht
   items:
-    - name: 'Benutzer, Gruppen, Lizenzierung und Rollen in Azure AD'
+    - name: 'Benutzer, Gruppen und Lizenzierung in Azure AD'
       href: directory-overview-user-model.md
 - name: Schnellstarts
   items:
@@ -30,7 +30,7 @@
 - name: Anleitungen
   expanded: true
   items:
-    - name: Verwalten von Benutzern
+    - name: Benutzer
       items:
         - name: Erstellen von Benutzern
           href: ../fundamentals/add-users-azure-active-directory.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
@@ -62,25 +62,25 @@
           href: users-restrict-guest-permissions.md
         - name: Dynamische Gruppen und Gäste
           href: ../external-identities/use-dynamic-groups.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
-    - name: Verwalten Ihrer Organisation
+    - name: Organization
       items:
-        - name: Azure AD-Organisationen
+        - name: Mandantenorganisationen in Azure AD
           href: ../fundamentals/active-directory-whatis.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+        - name: Löschen eines Mandanten
+          href: directory-delete-howto.md
+        - name: Mehrere Mandanten
+          href: licensing-directory-independence.md
+        - name: Übernehmen eines Mandanten
+          href: domains-admin-takeover.md
         - name: Verwalten von Domänennamen
           href: domains-manage.md
         - name: 'Überprüfen, ob die Unterdomänen verwaltet sind'
           href: domains-verify-custom-subdomain.md
-        - name: Löschen eines Verzeichnisses
-          href: directory-delete-howto.md
-        - name: Mehrere Verzeichnisse
-          href: licensing-directory-independence.md
         - name: Self-Service-Registrierung
           href: directory-self-service-signup.md
-        - name: Übernehmen eines Verzeichnisses
-          href: domains-admin-takeover.md
         - name: Azure AD Connect
           href: ../hybrid/whatis-hybrid-identity.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
-    - name: Verwalten von Gruppen
+    - name: Gruppen
       items:
         - name: Verwalten des Zugriffs mit Gruppen
           href: ../fundamentals/active-directory-manage-groups.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
@@ -130,7 +130,7 @@
           href: groups-self-service-management.md
         - name: Zuweisen von Vertraulichkeitsbezeichnungen
           href: groups-assign-sensitivity-labels.md
-    - name: Zuweisen von Lizenzen
+    - name: Lizenzen
       items:
         - name: Zuweisen von Lizenzen zu Benutzern
           href: ../fundamentals/license-users-groups.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
@@ -148,7 +148,7 @@
           href: licensing-ps-examples.md
         - name: Diensttarif-IDs für die Lizenzierung
           href: licensing-service-plan-reference.md
-    - name: Verwalten der Anmeldung
+    - name: Anmeldung
       items:
         - name: Anpassen des Unternehmensbrandings
           href: ../fundamentals/customize-branding.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context

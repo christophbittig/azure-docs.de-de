@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: f1af7fd0dc4b1e790a120c8fb9086d886487c34d
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: 67010d698c51e0eb66abcfa35fc629ec58d28789
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113302786"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123424220"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-azure-powershell-preview"></a>Hinzufügen von IPv6-Unterstützung für privates Peering mithilfe von Azure PowerShell (Vorschau)
 
@@ -136,6 +136,8 @@ Führen Sie die folgenden Schritte aus, wenn Sie eine vorhandene Umgebung von Az
     $gw = Get-AzVirtualNetworkGateway -Name "GatewayName" -ResourceGroupName "ExpressRouteResourceGroup"
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw
     ```
+>[!NOTE]
+> Wenn Sie über ein vorhandenes Gateway verfügen, das nicht zonenredundant ist (d. h. eine Standard-SKU, Hochleistungs-SKU oder Höchstleistungs-SKU), müssen Sie das Gateway löschen und mit einer beliebigen SKU und einer statischen öffentlichen Standard-IP-Adresse [neu erstellen](./expressroute-howto-add-gateway-resource-manager.md#add-a-gateway).
 
 ## <a name="create-a-connection-to-a-new-virtual-network"></a>Herstellen einer Verbindung mit einem neuen virtuellen Netzwerk
 

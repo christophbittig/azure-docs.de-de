@@ -1,14 +1,14 @@
 ---
-title: Azure DevTest Labs | Microsoft-Dokumentation
+title: Informationen zu Azure DevTest Labs
 description: Erfahren Sie, wie DevTest Labs das Erstellen, Verwalten und Überwachen von virtuellen Azure-Computern erleichtern kann.
-ms.topic: article
+ms.topic: overview
 ms.date: 08/20/2021
-ms.openlocfilehash: 2d15bfd34e37036e95e06529e6c14588da15b34d
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: cad1bb218722c72d6b7f7c2d28ad92a460e3d051
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122969861"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128563168"
 ---
 # <a name="about-azure-devtest-labs"></a>Informationen zu Azure DevTest Labs
 Azure DevTest Labs ermöglicht es Entwicklern in Teams, virtuelle Computer (VMs) und PaaS-Ressourcen effizient selbst zu verwalten, ohne auf Genehmigungen warten zu müssen.
@@ -42,11 +42,11 @@ DevTest Labs bietet Entwicklern, die mit PaaS-Umgebungen arbeiten, die folgenden
 
 DevTest Labs ermöglicht der zentralen IT-Abteilung, die Verschwendung von Ressourcen zu kontrollieren, deren Kosten zu optimieren und das Budget einzuhalten, indem folgende Aufgaben ausgeführt werden:  
 
-- Festlegen von Zeitplänen für das automatische Herunterfahren und Starten für virtuelle Computer.
-- Festlegen von Richtlinien für die Anzahl virtueller Computer, die der Benutzer erstellen kann.
-- Festlegen von Richtlinien für die Größen der virtuellen Computer und Katalogimages, aus denen die Benutzer auswählen können.
-- Nachverfolgen der Kosten und Festlegen von Zielen in den Labs.
-- Erhalten von Benachrichtigungen bei hohen voraussichtlichen Kosten für Labs, damit Sie die notwendigen Maßnahmen ergreifen können.
+- Legen Sie die Zeitpläne für das automatische Herunterfahren und Starten für virtuelle Computer fest.
+- Legen Sie Richtlinien für die Anzahl virtueller Computer fest, die der Benutzer erstellen kann.
+- Legen Sie Richtlinien für die Größen der virtuellen Computer und Katalogimages fest, aus denen die Benutzer auswählen können.
+- Verfolgen Sie die Kosten nach, und legen Sie Ziele in den Labs fest.
+- Weisen Sie auf hohe voraussichtliche Kosten für Labs hin, damit Sie die notwendigen Maßnahmen ergreifen können.
 
 DevTest Labs bietet beim Erstellen, Konfigurieren und Verwalten von Umgebungen in der Cloud die folgenden Vorteile.
 

@@ -366,7 +366,7 @@ items:
                     items:
                       - name: PowerShell
                         href: storage-blob-user-delegation-sas-create-powershell.md
-                      - name: Azure-Befehlszeilenschnittstelle
+                      - name: Azure CLI
                         href: storage-blob-user-delegation-sas-create-cli.md
                       - name: .NET
                         href: storage-blob-user-delegation-sas-create-dotnet.md
@@ -376,6 +376,8 @@ items:
                     href: ../common/storage-account-sas-create-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                   - name: Definieren einer gespeicherten Zugriffsrichtlinie
                     href: ../common/storage-stored-access-policy-define-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                  - name: Erstellen einer Richtlinie für den SAS-Ablauf
+                    href: ../common/sas-expiration-policy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               - name: Verwalten des anonymen Lesezugriffs auf Blobdaten
                 items:
                   - name: Konfigurieren des anonymen Lesezugriff für Container und Blobs
@@ -875,23 +877,13 @@ items:
           - name: Verwenden mit Azure-Diensten
             href: data-lake-storage-integrate-with-services-tutorials.md
           - name: Optimieren der Leistung
-            items:
-              - name: Übersicht über Leistungsoptimierungen
-                href: data-lake-storage-performance-tuning-guidance.md
-              - name: Optimieren von Spark in HDInsight
-                href: data-lake-storage-performance-tuning-spark.md
-              - name: Optimieren von Hive in HDInsight
-                href: data-lake-storage-performance-tuning-hive.md
-              - name: Optimieren von MapReduce in HDInsight
-                href: data-lake-storage-performance-tuning-mapreduce.md
-              - name: Optimieren von Storm in HDInsight
-                href: data-lake-storage-performance-tuning-storm.md
+            href: data-lake-storage-performance-tuning-guidance.md
       - name: Verweis
         items:
           - name: .NET
             href: /dotnet/api/azure.storage.files.datalake
           - name: Java
-            href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html'
+            href: 'https://docs.microsoft.com/java/api/overview/azure/storage-file-datalake-readme'
           - name: Python
             href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html'
           - name: JavaScript

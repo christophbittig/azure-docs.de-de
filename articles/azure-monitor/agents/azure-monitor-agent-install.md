@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 07/19/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: f787a01cb4e83b05b30a1e802658ed95a983e6a2
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 77a5390b2bd4888c0fe43fb0b0d94b07563d1a68
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114461038"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434896"
 ---
 # <a name="install-the-azure-monitor-agent"></a>Installieren des Azure Monitor-Agents:
 In diesem Artikel werden die verschiedenen Optionen beschrieben, die derzeit für die Installation des [Azure Monitor-Agents](azure-monitor-agent-overview.md) auf Azure-VMs und Servern mit Azure Arc-Unterstützung verfügbar sind, sowie die Optionen zum Erstellen von [Zuordnungen für Datensammlungsregeln](data-collection-rule-azure-monitor-agent.md), die definieren, welche Daten der Agent erfassen soll.
@@ -27,7 +27,7 @@ Vor der Installation des Azure Monitor-Agents müssen die folgenden Voraussetzun
   - *.control.monitor.azure.com
 
 > [!IMPORTANT]
-> Der Azure Monitor-Agent unterstützt derzeit keine Netzwerkproxys oder privaten Verbindungen.
+> Der Azure Monitor-Agent unterstützt derzeit keine privaten Verbindungen.
 
 ## <a name="virtual-machine-extension-details"></a>Details zur VM-Erweiterung
 Der Azure Monitor-Agent wird als [Azure-VM-Erweiterung](../../virtual-machines/extensions/overview.md) mit den Details aus der folgenden Tabelle implementiert: Er kann mit einer der Methoden zum Installieren von VM-Erweiterungen installiert werden, einschließlich der in diesem Artikel beschriebenen Methoden.
@@ -37,6 +37,15 @@ Der Azure Monitor-Agent wird als [Azure-VM-Erweiterung](../../virtual-machines/
 | Herausgeber | Microsoft.Azure.Monitor  | Microsoft.Azure.Monitor |
 | type      | AzureMonitorWindowsAgent | AzureMonitorLinuxAgent  |
 | TypeHandlerVersion  | 1.0 | 1.5 |
+
+## <a name="extension-versions"></a>Erweiterungsversionen
+Es wird dringend empfohlen, auf GA+-Versionen zu aktualisieren, anstatt Vorschauversionen zu verwenden.
+
+| Veröffentlichungsdatum | Versionshinweise | Windows | Linux |
+|:---|:---|:---|:---|:---|
+| Juni 2021 | Allgemeine Verfügbarkeit angekündigt. <ul><li>Alle Features mit Ausnahme des Metrikenziels jetzt allgemein verfügbar.</li><li>Produktionsqualität, Sicherheit und Compliance</li><li>Verfügbarkeit in allen öffentlichen Regionen</li><li>Leistungs- und Skalierungsverbesserungen für höhere EPS-Werte</li></ul> [Weitere Informationen](https://azure.microsoft.com/updates/azure-monitor-agent-and-data-collection-rules-now-generally-available/) | 1.0.12.0 | 1.9.1.0 |
+| Juli 2021 | <ul><li>Unterstützung für direkte Proxys</li><li>Unterstützung des Log Analytics-Gateways</li></ul> [Weitere Informationen](https://azure.microsoft.com/updates/general-availability-azure-monitor-agent-and-data-collection-rules-now-support-direct-proxies-and-log-analytics-gateway/) | 1.1.1.0 | 1.10.5.0 |
+| August 2021 | Das Problem, das Azure Monitor-Metriken als einziges Ziel zulässt, wurde behoben. | 1.1.2.0 | 1.10.9.0 (nicht 1.10.7.0 verwenden) |
 
 
 ## <a name="install-with-azure-portal"></a>Installieren über das Azure-Portal

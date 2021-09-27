@@ -618,6 +618,8 @@
       items:
         - name: Übersicht über Speech Studio
           href: speech-studio-overview.md
+        - name: Rollenbasierte Zugriffssteuerung in Speech Studio
+          href: speech-studio-role-based-access-control.md
     - name: Unternehmensfähigkeit
       items:
         - name: Unterstützung für Regionen

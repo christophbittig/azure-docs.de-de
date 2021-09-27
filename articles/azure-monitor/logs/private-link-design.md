@@ -5,29 +5,38 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 08/01/2021
-ms.openlocfilehash: ccee8017bce3109cc6d47bbeb225ca7c1edf5d66
-ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
+ms.openlocfilehash: 3b7316bf7d21a117c80eb49978a807b085db004b
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122343206"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123432538"
 ---
 # <a name="design-your-private-link-setup"></a>Entwerfen Ihres Private Link-Setups
 
-Vor dem Einrichten Ihres Azure Monitor Private Link-Setups sollten Sie Ihre Netzwerktopologie und insbesondere Ihre DNS-Routingtopologie berücksichtigen.
+Vor dem Einrichten Ihrer Azure Monitor Private Link-Instanz sollten Sie Ihre Netzwerktopologie und insbesondere Ihre DNS-Routingtopologie berücksichtigen.
 Wie unter [Funktionsweise](./private-link-security.md#how-it-works) erläutert, wirkt sich das Einrichten eines Private Link auf den Datenverkehr zu allen Azure Monitor-Ressourcen aus. Dies gilt insbesondere für Application Insights-Ressourcen. Darüber hinaus ist nicht nur das Netzwerk betroffen, das mit dem privaten Endpunkt verbunden ist, sondern auch alle anderen Netzwerke, die dasselbe DNS verwenden.
 
-> [!NOTE]
-> Der einfachste und sicherste Ansatz sieht wie folgt aus:
-> 1. Erstellen Sie eine einzelne Private Link-Verbindung mit einem einzelnen privaten Endpunkt und einer einzelnen AMPLS-Instanz. Wenn für Ihre Netzwerke ein Peering besteht, erstellen Sie die Private Link-Verbindung im gemeinsam genutzten VNET (oder Hub-VNET).
-> 2. Fügen Sie dieser AMPLS-Instanz *alle* Azure Monitor-Ressourcen (Application Insights-Komponenten und Log Analytics-Arbeitsbereiche) hinzu.
-> 3. Blockieren Sie den ausgehenden Netzwerkdatenverkehr so weit wie möglich.
+Der einfachste und sicherste Ansatz sieht wie folgt aus:
+1. Erstellen Sie eine einzelne Private Link-Verbindung mit einem einzelnen privaten Endpunkt und einer einzelnen AMPLS-Instanz. Wenn für Ihre Netzwerke ein Peering besteht, erstellen Sie die Private Link-Verbindung im gemeinsam genutzten VNET (oder Hub-VNET).
+2. Fügen Sie dieser AMPLS-Instanz *alle* Azure Monitor-Ressourcen (Application Insights-Komponenten und Log Analytics-Arbeitsbereiche) hinzu.
+3. Blockieren Sie den ausgehenden Netzwerkdatenverkehr so weit wie möglich.
 
-Wenn es aus irgendeinem Grund nicht möglich ist, eine einzelne Private Link-Verbindung und eine einzelne AMPLS-Instanz (Azure Monitor Private Link Scope) zu verwenden, ist die nächstbeste Lösung, isolierte Private Link-Verbindungen für Isolationsnetzwerke zu erstellen. Wenn Sie Spoke-VNETs verwenden (oder sich daran ausrichten können), befolgen Sie die Anweisungen unter [Hub-Spoke-Netzwerktopologie in Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke). Richten Sie dann separate Private Link-Einstellungen in den entsprechenden Spoke-VNETs ein. **Stellen Sie auch sicher, dass DNS-Zonen getrennt werden**, da die gemeinsame Nutzung von DNS-Zonen mit anderen Spoke-Netzwerken zu DNS-Außerkraftsetzungen führt.
 
 ## <a name="plan-by-network-topology"></a>Planen nach Netzwerktopologie
-### <a name="hub-spoke-networks"></a>Hub-Spoke-Netzwerke
-Hub-Spoke-Topologien können das Problem von DNS-Außerkraftsetzungen durch die Einrichtung von Private Link im Hub-VNet (Haupt-VNet) anstelle einer Instanz für jedes Spoke-VNet vermeiden. Dieses Setup ist insbesondere dann sinnvoll, wenn die von den Spoke-VNETs verwendeten Azure Monitor-Ressourcen gemeinsam genutzt werden. 
+
+### <a name="guiding-principle-avoid-dns-overrides-by-using-a-single-ampls"></a>Leitprinzip: Vermeiden Sie DNS-Außerkraftsetzungen mithilfe einer einzelnen AMPLS-Instanz.
+Einige Netzwerke bestehen aus mehreren VNETs oder anderen verbundenen Netzwerken. Wenn diese Netzwerke dasselbe DNS nutzen, würde das Einrichten einer Private Link-Instanz für eines der Netzwerke das DNS aktualisieren und sich auf den Datenverkehr in allen Netzwerken auswirken.
+
+Im folgenden Diagramm stellt VNET 10.0.1.x zuerst eine Verbindung mit AMPLS1 her und ordnet IP-Adressen aus seinem Bereich die globalen Azure Monitor-Endpunkte zu. Später stellt VNET 10.0.2.x eine Verbindung mit AMPLS2 her und setzt mit IP-Adressen aus seinem Bereich die DNS-Zuordnung der **gleichen globalen Endpunkte** außer Kraft. Da zwischen diesen VNETs keine Peerbeziehung besteht, kann das erste VNET diese Endpunkte nun nicht erreichen.
+
+Um diesen Konflikt zu vermeiden, erstellen Sie nur ein einzelnes AMPLS-Objekt pro DNS.
+
+![Diagramm der DNS-Außerkraftsetzungen in mehreren VNETs](./media/private-link-security/dns-overrides-multiple-vnets.png)
+
+
+### <a name="hub-and-spoke-networks"></a>Hub-and-Spoke-Netzwerke
+Hub-and-Spoke-Netzwerke sollten eine einzelne Private Link-Verbindung verwenden, die auf das Hubnetzwerk (Hauptnetzwerk) und nicht auf jedes Spoke-VNet festgelegt wird. 
 
 ![Hub-and-Spoke: privater Endpunkt](./media/private-link-security/hub-and-spoke-with-single-private-endpoint.png)
 
@@ -35,17 +44,40 @@ Hub-Spoke-Topologien können das Problem von DNS-Außerkraftsetzungen durch die 
 > Möglicherweise bevorzugen Sie absichtlich separate Private Link-Instanzen für Ihre Spoke-VNETs, um z. B. jedem VNET Zugriff auf eine begrenzte Anzahl von Überwachungsressourcen zu gewähren. In solchen Fällen können Sie einen dedizierten privaten Endpunkt und eine AMPLS-Instanz für jedes VNET erstellen, **müssen jedoch auch überprüfen, ob sie nicht die gleichen DNS-Zonen gemeinsam verwenden, um DNS-Außerkraftsetzungen zu vermeiden**.
 
 ### <a name="peered-networks"></a>Netzwerke mit Peering
-Das Peering von Netzwerken wird in verschiedenen anderen Topologien als Hub-Spoke verwendet. Solche Netzwerke können die IP-Adressen der jeweils anderen erreichen und nutzen wahrscheinlich dasselbe DNS. In solchen Fällen ähnelt die Empfehlung der Hub-Spoke-Topologie: Wählen Sie ein einzelnes Netzwerk aus, das von allen anderen (relevanten) Netzwerken erreicht wird, und legen Sie die Private Link-Verbindung in diesem Netzwerk fest. Vermeiden Sie es, mehrere private Endpunkte und AMPLS-Objekte zu erstellen, da letztlich nur die letzte Festlegung im DNS gilt.
+Das Peering von Netzwerken wird in verschiedenen anderen Topologien als Hub-Spoke verwendet. Solche Netzwerke können die IP-Adressen der jeweils anderen erreichen und nutzen wahrscheinlich dasselbe DNS. Auch in diesem Fall empfehlen wir, eine einzelne Private Link-Instanz in einem Netzwerk zu erstellen, auf das Ihre anderen Netzwerke zugreifen können. Vermeiden Sie es, mehrere private Endpunkte und AMPLS-Objekte zu erstellen, da letztlich nur die letzte Festlegung im DNS gilt.
 
 ### <a name="isolated-networks"></a>Isolierte Netzwerke
-#<a name="if-your-networks-arent-peered-you-must-also-separate-their-dns-in-order-to-use-private-links-once-thats-done-you-can-create-a-private-link-for-one-or-many-network-without-affecting-traffic-of-other-networks-that-means-creating-a-separate-private-endpoint-for-each-network-and-a-separate-ampls-object-your-ampls-objects-can-link-to-the-same-workspacescomponents-or-to-different-ones"></a>Wenn für Ihre Netzwerke kein Peering vorhanden ist, **müssen Sie auch deren DNS trennen, um Private Links verwenden zu können**. Sobald dies geschehen ist, können Sie einen Private Link für ein Netzwerk (oder mehrere) erstellen, ohne den Datenverkehr anderer Netzwerke zu beeinträchtigen. Das bedeutet, dass Sie einen separaten privaten Endpunkt für jedes Netzwerk und ein separates AMPLS-Objekt erstellen. Ihre AMPLS-Objekte können mit denselben oder anderen Arbeitsbereichen/Komponenten verknüpft sein.
+Wenn für Ihre Netzwerke kein Peering vorhanden ist, **müssen Sie auch deren DNS trennen, um Private Links verwenden zu können**. Danach erstellen Sie für jedes Netzwerk einen eigenen privaten Endpunkt und ein eigenes AMPLS-Objekt. Ihre AMPLS-Objekte können mit denselben oder anderen Arbeitsbereichen/Komponenten verknüpft sein.
 
 ### <a name="testing-locally-edit-your-machines-hosts-file-instead-of-the-dns"></a>Lokales Testen: Bearbeiten der Hostdatei Ihres Computers anstelle des DNS 
-Als lokale Umgehung des Alles-oder-nichts-Verhaltens können Sie festlegen, dass Ihr DNS nicht mit den Private Link-Einträgen aktualisiert wird, und stattdessen die Hostdateien auf ausgewählten Computern bearbeiten, sodass nur diese Computer Anforderungen an die Private Link-Endpunkte senden.
+Zum lokalen Testen von Private Links, ohne andere Clients in Ihrem Netzwerk zu beeinträchtigen, stellen Sie sicher, dass Sie Ihr DNS nicht aktualisieren, wenn Sie Ihren privaten Endpunkt erstellen. Bearbeiten Sie stattdessen die Datei „hosts“ auf Ihrem Computer so, dass sie Anforderungen an die Private Link-Endpunkte sendet:
 * Richten Sie einen Private Link ein, aber wählen Sie bei der Verbindung mit einem privaten Endpunkt aus, dass die automatische Integration mit dem DNS **nicht** erfolgen soll (Schritt 5b).
 * Konfigurieren Sie die relevanten Endpunkte in den Hostdateien Ihrer Computer. Informationen zum Überprüfen der Azure Monitor-Endpunkte, die zugeordnet werden müssen, finden Sie unter [Überprüfen der DNS-Einstellungen Ihres Endpunkts](./private-link-configure.md#reviewing-your-endpoints-dns-settings).
 
 Dieser Ansatz wird für Produktionsumgebungen nicht empfohlen.
+
+## <a name="control-how-private-links-apply-to-your-networks"></a>Steuern der Anwendung von Private Links auf Ihre Netzwerke
+Mit den Private Links-Zugriffsmodi (eingeführt im September 2021) können Sie steuern, wie Private Links Ihren Netzwerkdatenverkehr beeinflusst. Diese Einstellungen können für Ihr AMPLS-Objekt (für alle verbundenen Netzwerke) oder für bestimmte Netzwerke gelten, die mit ihm verbunden sind.
+
+Die Wahl des richtigen Zugriffsmodus wirkt sich nachteilig auf Ihren Netzwerkdatenverkehr aus. Jeder dieser Modi kann für Datenerfassung und Abfragen getrennt festgelegt werden:
+
+* Nur privat – Ermöglicht es dem VNet, nur Private Link-Ressourcen (Ressourcen im AMPLS) zu erreichen. Das ist der sicherste Arbeitsmodus, der eine Datenexfiltration verhindert. Um dies zu erreichen, wird der Datenverkehr zu Azure Monitor-Ressourcen aus dem AMPLS heraus blockiert.
+![Diagramm des AMPLS-Zugriffsmodus „Nur privat“](./media/private-link-security/ampls-private-only-access-mode.png)
+* Offen – Ermöglicht es dem VNet, sowohl Private Link-Ressourcen als auch Ressourcen außerhalb des AMPLS zu erreichen (wenn sie [Datenverkehr aus öffentlichen Netzwerken akzeptieren](./private-link-design.md#control-network-access-to-your-resources)). Der Zugriffsmodus „Offen“ verhindert zwar nicht die Datenexfiltration, bietet aber dennoch die anderen Vorteile von Private Links: Der Datenverkehr zu Private Link-Ressourcen wird über private Endpunkte gesendet, überprüft und über das Microsoft-Backbone übertragen. Der Modus „Offen“ eignet sich für eine gemischte Arbeitsweise (Zugriff auf einige Ressourcen öffentlich und auf andere über Private Link) oder während eines schrittweisen Onboardingprozesses.
+![Diagramm für den AMPLS-Zugriffsmodus „Offen“](./media/private-link-security/ampls-open-access-mode.png) Zugriffsmodi werden separat für Erfassung und Abfragen festgelegt. Sie können z. B. den Modus „Nur privat“ für die Erfassung und den Modus „Offen“ für Abfragen festlegen.
+
+
+Seien Sie vorsichtig, wenn Sie Ihren Zugriffsmodus auswählen. Die Verwendung des Zugriffsmodus „Nur privat“ blockiert den Datenverkehr zu Ressourcen, die nicht im AMPLS enthalten sind, in allen Netzwerken, die dasselbe DNS nutzen, unabhängig von Abonnement oder Mandant (mit Ausnahme von Log Analytics-Erfassungsanforderungen, wie nachfolgend erläutert). Wenn Sie nicht alle Azure Monitor-Ressourcen zum AMPLS hinzufügen können, beginnen Sie mit dem Hinzufügen ausgewählter Ressourcen und der Anwendung des Zugriffsmodus „Offen“. Erst nachdem Sie *alle* Azure Monitor-Ressourcen zu Ihrem AMPLS hinzugefügt haben, wechseln Sie in den Modus „Nur privat“, um maximale Sicherheit zu gewährleisten.
+
+> [!NOTE]
+> Die Log Analytics-Erfassung verwendet ressourcenspezifische Endpunkte. Daher entspricht sie nicht den AMPLS-Zugriffsmodi. Die Erfassung in Arbeitsbereichen im AMPLS wird über die private Verbindung gesendet, während die Erfassung in Arbeitsbereichen, die sich nicht im AMPLS befinden, die öffentlichen Standardendpunkte verwendet. Um sicherzustellen, dass Erfassungsanforderungen nicht auf Ressourcen außerhalb des AMPLS zugreifen können, blockieren Sie den Zugriff des Netzwerks auf öffentliche Endpunkte.
+
+### <a name="setting-access-modes-for-specific-networks"></a>Festlegen von Zugriffsmodi für bestimmte Netzwerke
+Die in der AMPLS-Ressource festgelegten Zugriffsmodi gelten für alle Netzwerke, aber Sie können diese Einstellungen für bestimmte Netzwerke außer Kraft setzen.
+
+Im folgenden Diagramm verwendet VNet1 den Modus „Offen“ und VNet2 den Modus „Nur privat“. Folglich können Anforderungen von VNet1 „Arbeitsbereich1“ und „Komponente2“ über Private Link erreichen und „Komponente3“ nicht über eine Private Link-Instanz (wenn sie [Datenverkehr aus öffentlichen Netzwerken akzeptiert](./private-link-design.md#control-network-access-to-your-resources)). Allerdings können die Anforderungen von „VNet2“ die „Komponente3“ nicht erreichen. 
+![Diagramm der gemischten Zugriffsmodi](./media/private-link-security/ampls-mixed-access-modes.png)
+
 
 ## <a name="consider-ampls-limits"></a>Berücksichtigen von AMPLS-Einschränkungen
 Für das AMPLS-Objekt gelten die folgenden Einschränkungen:
@@ -64,9 +96,33 @@ Im Diagramm unten ist Folgendes dargestellt:
 
 
 ## <a name="control-network-access-to-your-resources"></a>Festlegen des Netzwerkzugriffs auf Ihre Ressourcen
-Ihre Log Analytics-Arbeitsbereiche oder Application Insights-Komponenten können so festgelegt werden, dass sie den Zugriff aus öffentlichen Netzwerken, d. h. Netzwerken, die nicht mit der AMPLS-Instanz der Ressource verbunden sind, akzeptieren oder blockieren.
-Diese Granularität ermöglicht es Ihnen, den Zugriff je nach Bedarf pro Arbeitsbereich festzulegen. Sie können beispielsweise die Erfassung nur über mit Private Link verbundene Netzwerke (d. h. bestimmte VNETs) zulassen, aber dennoch Abfragen aus allen öffentlichen und privaten Netzwerken akzeptieren. Beachten Sie, dass das Blockieren von Abfragen aus öffentlichen Netzwerken bedeutet, dass Clients (Computer, SDKs usw.) außerhalb der verbundenen AMPLS-Instanzen keine Daten in der Ressource abfragen können. Dies schließt den Zugriff auf Protokolle, Metriken, den Livemetrikstream sowie darauf aufsetzende Funktionalität ein, wie z. B. Arbeitsmappen, Dashboards, auf Abfrage-APIs basierende Clientfunktionen, Erkenntnisse im Azure-Portal und vieles mehr. Funktionen, die außerhalb des Azure-Portals ausgeführt werden und Log Analytics-Daten abfragen, sind ebenfalls von dieser Einstellung betroffen.
+Ihre Log Analytics-Arbeitsbereiche oder Application Insights-Komponenten können wie folgt festgelegt werden:
+* Akzeptieren oder Blockieren der Erfassung aus öffentlichen Netzwerken (Netzwerke, die nicht mit der Ressourcen-AMPLS verbunden sind).
+* Akzeptieren oder Blockieren von Abfragen aus öffentlichen Netzwerken (Netzwerke, die nicht mit der Ressourcen-AMPLS verbunden sind).
 
+Diese Granularität ermöglicht es Ihnen, den Zugriff je nach Bedarf pro Arbeitsbereich festzulegen. Sie können beispielsweise die Erfassung nur über mit Private Link verbundene Netzwerke (d. h. bestimmte VNets) zulassen, aber dennoch Abfragen aus allen öffentlichen und privaten Netzwerken akzeptieren. 
+
+Das Blockieren von Abfragen aus öffentlichen Netzwerken bedeutet, dass Clients (Computer, SDKs usw.) außerhalb der verbundenen AMPLS-Instanzen keine Daten in der Ressource abfragen können. Diese Daten umfassen Protokolle, Metriken und den Live Metrics Stream. Das Blockieren von Abfragen aus öffentlichen Netzwerken wirkt sich auf alle Erfahrungen aus, die diese Abfragen ausführen, z. B. Arbeitsmappen, Dashboards, Insights im Azure-Portal und Abfragen, die außerhalb des Azure-Portals ausgeführt werden.
+
+### <a name="exceptions"></a>Ausnahmen
+
+#### <a name="diagnostic-logs"></a>Diagnoseprotokolle
+Protokolle und Metriken, die über [Diagnoseeinstellungen](../essentials/diagnostic-settings.md) in einen Arbeitsbereich hochgeladen werden, werden über einen sicheren privaten Microsoft-Kanal geleitet und nicht durch diese Einstellungen gesteuert.
+
+#### <a name="azure-resource-manager"></a>Azure Resource Manager
+Die Einschränkung des Zugriffs in der oben beschriebenen Weise gilt für Daten in der Ressource. Konfigurationsänderungen – einschließlich Aktivierung und Deaktivierung dieser Zugriffseinstellungen – werden jedoch von Azure Resource Manager verwaltet. Zum Steuern dieser Einstellungen sollten Sie den Zugriff auf Ressourcen mithilfe geeigneter Rollen, Berechtigungen, Netzwerkkontrollen und Überwachungsfunktionen einschränken. Weitere Informationen finden Sie unter [Rollen, Berechtigungen und Sicherheit in Azure Monitor](../roles-permissions-security.md).
+
+> [!NOTE]
+> Abfragen, die über die ARM-API (Azure Resource Management) gesendet werden, können Azure Monitor Private Links nicht verwenden. Diese Abfragen werden nur dann nicht blockiert, wenn die Zielressource Abfragen aus öffentlichen Netzwerken zulässt (festgelegt über das Blatt „Netzwerkisolation“ oder [mithilfe der CLI](./private-link-configure.md#set-resource-access-flags)).
+>
+> Die folgenden Erfahrungen sind für die Ausführung von Abfragen über die ARM-API bekannt:
+> * Sentinel
+> * LogicApp-Connector
+> * Lösung für die Updateverwaltung
+> * Lösung für die Änderungsnachverfolgung
+> * VM Insights
+> * Container Insights
+> * Log Analytics-Blatt „Zusammenfassung zum Arbeitsbereich“ (zeigt das Lösungsdashboard)
 
 ## <a name="application-insights-considerations"></a>Überlegungen für Application Insights
 * Sie müssen Ressourcen zum Hosten der überwachten Workloads einem Private Link hinzufügen. Ein Beispiel finden Sie unter [Verwenden privater Endpunkte für eine Azure-Web-App](../../app-service/networking/private-endpoint.md).
@@ -97,7 +153,7 @@ Beim Erfassungsprozess für benutzerdefinierte Protokolle werden Speicherkonten 
 Weitere Informationen zum Verbinden Ihres eigenen Speicherkontos finden Sie unter [Kundeneigene Speicherkonten für die Protokollerfassung](private-storage.md).
 
 ### <a name="automation"></a>Automation
-Wenn Sie Log Analytics-Lösungen verwenden, die ein Automation-Konto erfordern, z. B. Updateverwaltung, Änderungsnachverfolgung oder den Bestand, sollten Sie auch eine separate Private Link-Instanz für Ihr Automation-Konto einrichten. Weitere Informationen finden Sie unter [Verwenden von Azure Private Link zum sicheren Verbinden von Netzwerken mit Azure Automation](../../automation/how-to/private-link-security.md).
+Wenn Sie Log Analytics-Lösungen verwenden, die ein Automation-Konto erfordern (z. B. Updateverwaltung, Änderungsnachverfolgung oder den Bestand), sollten Sie auch eine Private Link-Instanz für Ihr Automation-Konto erstellen. Weitere Informationen finden Sie unter [Verwenden von Azure Private Link zum sicheren Verbinden von Netzwerken mit Azure Automation](../../automation/how-to/private-link-security.md).
 
 > [!NOTE]
 > Einige Produkte und Azure-Portalfunktionen fragen Daten über Azure Resource Manager ab und sind daher nicht in der Lage, Daten über einen Private Link abzufragen, es sei denn, Private Link-Einstellungen werden auch auf Resource Manager angewendet. Um dies zu umgehen, können Sie Ihre Ressourcen so konfigurieren, dass Abfragen aus öffentlichen Netzwerken akzeptiert werden, wie es unter [Steuern des Netzwerkzugriffs auf Ihre Ressourcen](./private-link-design.md#control-network-access-to-your-resources) erläutert ist (die Erfassung kann auf Private Link-Netzwerke beschränkt bleiben).

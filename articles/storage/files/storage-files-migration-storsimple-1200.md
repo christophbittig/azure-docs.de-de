@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 96cc983cba992452882a8f3307974e83683c39a9
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 1208beab46a9ceb29abd75eec587dc7628e07801
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "114462188"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435382"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200: Migration zur Azure-Dateisynchronisierung
 
@@ -28,9 +28,6 @@ Die StorSimple 1200-Serie erreicht im Dezember 2022 das [Ende des Lebenszyklus](
 | Premium-Dateifreigaben (FileStorage), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
 
 ## <a name="azure-file-sync&quot;></a>Azure-Dateisynchronisierung
-
-> [!IMPORTANT]
-> Microsoft ist bestrebt, Kunden bei der Migration zu unterstützen. Senden Sie eine E-Mail an AzureFilesMigration@microsoft.com, um einen angepassten Migrationsplan oder Unterstützung bei der Migration zu erhalten.
 
 Die Azure-Dateisynchronisierung ist ein Microsoft-Clouddienst, der auf zwei Hauptkomponenten basiert:
 
@@ -173,6 +170,12 @@ Sie können auch auf andere Probleme mit der Azure-Dateisynchronisierung stoßen
 Dies ist sehr unwahrscheinlich, aber falls es geschieht, lesen Sie das **Handbuch zur Problembehandlung bei der Azure-Dateisynchronisierung**.
 
 [!INCLUDE [storage-files-migration-robocopy-optimize](../../../includes/storage-files-migration-robocopy-optimize.md)]
+
+---
+
+> [!NOTE]
+> Haben Sie noch Fragen, oder sind Probleme aufgetreten?</br>
+> Wir sind hier, um Ihnen zu helfen: :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-migration-email.png" alt-text="E-Mail-Adresse in einem Wort: Azure Files migration at microsoft dot com":::
 
 ## <a name="relevant-links"></a>Relevante Links
 

@@ -3,12 +3,12 @@ title: Einrichten des Netzwerks
 description: Erfahren Sie mehr über Lösungsarchitektur, Netzwerkvorbereitung, Voraussetzungen und weitere Informationen, die erforderlich sind, um sicherzustellen, dass Sie Ihr Netzwerk erfolgreich für die Arbeit mit Azure Defender für IoT-Appliances einrichten.
 ms.date: 07/25/2021
 ms.topic: how-to
-ms.openlocfilehash: 196474c368ee5683a5fb7a25343faba17da0fa18
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7dc9e41b3bfdcbeab86aaabbdf0c97b0339b3df3
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339987"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434086"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>Azure Defender für IoT: Netzwerkeinrichtung
 
@@ -32,7 +32,11 @@ Zu den Aufgaben bei der lokalen Bereitstellung gehören:
 
 - [Vorbereiten einer Konfigurations-Arbeitsstation](#prepare-a-configuration-workstation)
 
-- [Planen der Rackinstallation](#planning-rack-installation)
+- [Einrichten von Zertifikaten](#set-up-certificates)
+
+- [Vorbereiten einer Konfigurations-Arbeitsstation](#prepare-a-configuration-workstation)
+
+- [Planen der Rackinstallation](#plan-rack-installation)
 
 ### <a name="collect-site-information"></a>Sammeln von Standortinformationen
 
@@ -90,6 +94,10 @@ Die folgenden Browser werden für die Sensoren und Webanwendungen der lokalen Ve
 
 Weitere Informationen zu unterstützten Browsern finden Sie unter [Empfohlene Browser](../../azure-portal/azure-portal-supported-browsers-devices.md#recommended-browsers).
 
+### <a name="set-up-certificates"></a>Einrichten von Zertifikaten
+
+Nach der Sensorinstallation und der Installation der lokalen Verwaltungskonsole wird ein lokales selbstsigniertes Zertifikat generiert und für den Zugriff auf die Sensorwebanwendung verwendet. Bei ihrer ersten Anmeldung bei Defender für IoT werden Administratoren aufgefordert, ein SSL/TLS-Zertifikat anzugeben. Außerdem wird eine Option zum Überprüfen auf dieses Zertifikat und andere Systemzertifikate automatisch aktiviert. Einzelheiten dazu finden Sie unter [Informationen zu Zertifikaten](how-to-deploy-certificates.md).
+
 ### <a name="network-access-requirements"></a>Netzwerk-Zugriffsanforderungen
 
 Überprüfen Sie, ob die Sicherheitsrichtlinie Ihrer Organisation den Zugriff auf Folgendes zulässt:
@@ -111,7 +119,7 @@ Weitere Informationen zu unterstützten Browsern finden Sie unter [Empfohlene Br
 | Tunneling | TCP | IN | 9000 <br /><br />- zusätzlich zum Port 443 <br /><br />Vom Endbenutzer zur lokalen Verwaltungskonsole <br /><br />- Port 22 vom Sensor zur lokalen Verwaltungskonsole  | Überwachung | Tunneling | Sensor | Lokale Verwaltungskonsole |
 | HTTP| TCP | OUT | 80 | Zertifikatüberprüfung  | Herunterladen der CRL-Datei | Sensor | CRL-Server |
 
-### <a name="planning-rack-installation"></a>Planen der Rackinstallation
+### <a name="plan-rack-installation"></a>Planen der Rackinstallation
 
 So planen Sie Ihre Rackinstallation:
 
@@ -121,7 +129,7 @@ So planen Sie Ihre Rackinstallation:
 
 1. Stellen Sie die Netzstromversorgung für die Appliance bereit.
 1. Bereiten Sie das LAN-Kabel zum Verbinden der Verwaltungslösung mit dem Netzwerkswitch vor.
-1. Bereiten Sie die LAN-Kabel zum Verbinden der SPAN-Ports (gespiegelten Ports) und/oder der Netzwerkanzapfungen mit der Defender für IoT-Appliance vor. 
+1. Bereiten Sie die LAN-Kabel zum Verbinden der SPAN-Ports (gespiegelten Ports) und/oder der Netzwerkanzapfungen mit der Defender für IoT-Appliance vor.
 1. Konfigurieren, verbinden und überprüfen Sie die SPAN-Ports in den gespiegelten Switches, wie in der Sitzung zur Architekturüberprüfung beschrieben.
 1. Verbinden Sie den konfigurierten SPAN-Port mit einem Computer, auf dem Wireshark ausgeführt wird, und überprüfen Sie, ob der Port ordnungsgemäß konfiguriert ist.
 1. Öffnen Sie alle relevanten Firewallports.
@@ -138,7 +146,7 @@ In den folgenden Abschnitten sind Purdue-Ebenen beschrieben.
 
 :::image type="content" source="media/how-to-set-up-your-network/purdue-model.png" alt-text="Diagramm des Purdue-Modells.":::
 
-####  <a name="level-0-cell-and-area"></a>Ebene 0: Zelle und Bereich  
+#### <a name="level-0-cell-and-area"></a>Ebene 0: Zelle und Bereich  
 
 Ebene 0 besteht aus einer Vielzahl von Sensoren, Aktoren und Geräten, die am grundlegenden Fertigungsprozess beteiligt sind. Diese Geräte führen die grundlegenden Funktionen des Industrie-Automatisierungs- und Steuerungssystems aus, wie etwa:
 
@@ -234,7 +242,7 @@ Dies sind einige Empfehlungen für das Bereitstellen mehrerer Sensoren:
 
 #### <a name="traffic-mirroring"></a>Datenverkehrsspiegelung  
 
-Um nur die relevanten Informationen für die Datenverkehrsanalyse anzuzeigen, müssen Sie die Defender für IoT-Plattform mit einem Spiegelungsport an einem Switch oder einem TAP verbinden, der nur Industrie-ICS- und SCADA-Datenverkehr enthält. 
+Um nur die relevanten Informationen für die Datenverkehrsanalyse anzuzeigen, müssen Sie die Defender für IoT-Plattform mit einem Spiegelungsport an einem Switch oder einem TAP verbinden, der nur Industrie-ICS- und SCADA-Datenverkehr enthält.
 
 :::image type="content" source="media/how-to-set-up-your-network/switch.jpg" alt-text="Verwenden Sie diesen Switch für Ihr Setup.":::
 
@@ -607,7 +615,7 @@ Mithilfe einer Übersicht des Industrienetzwerkdiagramms können Sie den richtig
 
     Wie lautet die Richtlinie des Anbieters? __________________________________ 
 
-    Zum Beispiel:
+    Beispiel:
 
     - Siemens
 

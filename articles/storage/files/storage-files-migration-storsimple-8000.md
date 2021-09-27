@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: f51f4b9a838a7a08259b280c4d9cd185b42e588b
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: dbf422beeea23cee975b5721c7becae95bf24b6c
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112116982"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434615"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100- und 8600-Migration zur Azure-Dateisynchronisierung
 
@@ -585,9 +585,11 @@ Bevor Sie damit beginnen, ist es ratsam, die neue Bereitstellung der Azure-Datei
 
 Die Migration ist abgeschlossen.
 
+---
+
 > [!NOTE]
 > Haben Sie noch Fragen, oder sind Probleme aufgetreten?</br>
-> Wenden Sie sich an AzureFilesMigration@microsoft.com, falls Sie Hilfe benötigen.
+> Wir sind hier, um Ihnen zu helfen: :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-migration-email.png" alt-text="E-Mail-Adresse in einem Wort: Azure Files migration at microsoft dot com":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

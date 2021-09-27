@@ -1,21 +1,21 @@
 ---
-title: Übersicht über Unveränderlichkeitsspeicher für Blob Storage
+title: Übersicht über unveränderliche Speicher für Blobdaten
 titleSuffix: Azure Storage
 description: Azure Storage bietet WORM-Unterstützung (Write Once, Read Many – einmal schreiben, oft lesen) für Blob Storage. Dadurch können Benutzer Daten in einem nicht löschbaren, nicht änderbaren Zustand speichern. Mithilfe zeitbasierter Aufbewahrungsrichtlinien werden Blobdaten für ein angegebenes Intervall in einem WORM-Zustand gespeichert. Richtlinien zur Aufbewahrung für juristische Zwecke bleiben dabei weiterhin so lange wirksam, bis sie explizit gelöscht werden.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/22/2021
+ms.date: 08/31/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 1096b23305a4048f2e6ade860e322fed282711f7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 01ea434081b83065f510a246591af2d05a8d7276
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122347130"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123469588"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Speichern unternehmenskritischer Blobdaten mit unveränderlichem Speicher
 
@@ -58,9 +58,9 @@ Unveränderlichkeitsrichtlinien können für eine Blobversion (Vorschau) oder ei
 
 Sie können je nach Bereich sowohl eine Richtlinie für die zeitbasierte Aufbewahrung als auch eine Richtlinie zur Aufbewahrung für juristische Zwecke für eine Ressource (Container oder Blobversion) konfigurieren. In der folgenden Tabelle sind die Unveränderlichkeitsrichtlinien aufgeführt, die für die einzelnen Ressourcenbereiche unterstützt werden:
 
-| `Scope` | Zur Unterstützung von Unveränderlichkeitsrichtlinien auf Versionsebene wird ein Container konfiguriert | Zur Unterstützung von Unveränderlichkeitsrichtlinien auf Versionsebene wird kein Container konfiguriert |
+| `Scope` | Der Container unterstützt Unveränderlichkeitsrichtlinien auf Versionsebene. | Der Container unterstützt keine Unveränderlichkeitsrichtlinien auf Versionsebene. |
 |--|--|--|
-| Container | Unterstützt eine Standardunveränderlichkeitsrichtlinie auf Versionsebene. Unterstützt keine Aufbewahrung für juristische Zwecke. | Unterstützt eine Unveränderlichkeitsrichtlinie auf Containerebene und eine Richtlinie zur Aufbewahrung für juristische Zwecke. |
+| Container | Unterstützt eine Standardunveränderlichkeitsrichtlinie auf Versionsebene. Die Standardrichtlinie wird auf alle neuen Versionen angewendet, die nach der Konfiguration im Container erstellt wurden.<br /><br /> Unterstützt keine Aufbewahrung für juristische Zwecke. | Unterstützt eine Unveränderlichkeitsrichtlinie auf Containerebene und eine Richtlinie zur Aufbewahrung für juristische Zwecke. Eine Richtlinie für eine Blobversion kann eine im Container angegebene Standardrichtlinie überschreiben. |
 | Blobversion | Unterstützt eine Unveränderlichkeitsrichtlinie auf Versionsebene und eine Richtlinie zur Aufbewahrung für juristische Zwecke. | – |
 
 ### <a name="about-the-preview"></a>Informationen zur Vorschau
@@ -163,8 +163,23 @@ Beim Erstellen, Ändern oder Löschen einer zeitbasierten Aufbewahrungsrichtlini
 
 Wenn Sie Ihre Rechnung nicht begleichen und Ihr Konto über eine aktive zeitbasierte Aufbewahrungsrichtlinie verfügt, werden die normalen Datenaufbewahrungsrichtlinien gemäß den Bestimmungen Ihres Vertrags mit Microsoft angewendet. Weitere Informationen finden Sie unter [Datenverwaltung bei Microsoft](https://www.microsoft.com/trust-center/privacy/data-management).
 
+## <a name="feature-support"></a>Featureunterstützung
+
+In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf den Support hat. 
+
+| Speicherkontotyp                | Blob Storage (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) |![Ja](../media/icons/yes-icon.png)  <sup>2</sup>              | ![Ja](../media/icons/yes-icon.png)  <sup>2</sup> | 
+| Premium-Blockblobs          | ![Ja](../media/icons/yes-icon.png) |![Ja](../media/icons/yes-icon.png)  <sup>2</sup> | ![Ja](../media/icons/yes-icon.png)  <sup>2</sup> |
+
+<sup>1</sup>    Für Data Lake Storage Gen2 und das NFS 3.0-Protokoll (Network File System) ist ein Speicherkonto mit aktiviertem hierarchischem Namespace erforderlich.
+
+<sup>2</sup>    Die Funktion wird auf der Vorschauebene unterstützt.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
+- [Übersicht zum Datenschutz](data-protection-overview.md)
 - [Zeitbasierte Aufbewahrungsrichtlinien für unveränderliche Blobdaten](immutable-time-based-retention-policy-overview.md)
 - [Gesetzliche Aufbewahrungspflichten für unveränderliche Blobdaten](immutable-legal-hold-overview.md)
-- [Übersicht zum Datenschutz](data-protection-overview.md)
+- [Konfigurieren von Unveränderlichkeitsrichtlinien für Blobversionen (Vorschau)](immutable-policy-configure-version-scope.md)
+- [Konfigurieren von Unveränderlichkeitsrichtlinien für Container](immutable-policy-configure-container-scope.md)

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/25/2021
-ms.openlocfilehash: 0d7cb5c8747707b950075c7201d90c5e208298db
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: a02b7d6fa5ef8369578f89a452df95a50ca34204
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112123442"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425174"
 ---
 # <a name="troubleshoot-vm-insights-guest-health-preview"></a>Problembehandlung für das Feature „Gastintegrität“ von VM Insights (Vorschau)
 Dieser Artikel enthält eine Beschreibung der Problembehandlungsschritte, die Sie ausführen können, wenn Probleme mit der Integrität in VM Insights auftreten.
@@ -74,7 +74,7 @@ Wahrscheinlich konnte der VM-Gast-Agent die Sperre für die Dienstdatei nicht ab
   - Für Linux: Der Daemon ist *vmGuestHealthAgent*. Der Statusordner ist */var/opt/vmGuestHealthAgent/* *.
   - Für Windows: Der Dienst ist *VM-Gastintegritäts-Agent*. Der Statusordner ist _%ProgramData%\Microsoft\VMGuestHealthAgent\\*_ .
 - Überprüfen Sie, ob der Azure Monitor-Agent über Netzwerkkonnektivität verfügt. 
-  - Versuchen Sie, vom virtuellen Computer einen Pingbefehl an _<region>.handler.control.monitor.azure.com_ zu senden. Bei einem virtuellen Computer in Westeuropa versuchen Sie beispielsweise, den Pingbefehl _westeurope.handler.control.monitor.azure.com:443_ zu senden.
+  - Versuchen Sie, vom virtuellen Computer einen Pingbefehl an _\<region\>.handler.control.monitor.azure.com_ zu senden. Bei einem virtuellen Computer in Westeuropa versuchen Sie beispielsweise, den Pingbefehl _westeurope.handler.control.monitor.azure.com:443_ zu senden.
 - Vergewissern Sie sich, dass der virtuelle Computer eine Zuordnung zu einer Datensammlungsregel in derselben Region wie der Log Analytics-Arbeitsbereich aufweist.
   -  Informationen zur Überprüfung, ob die Struktur der Datensammlungsregel korrekt ist, finden Sie im Abschnitt **Erstellen einer Datensammlungsregel** unter [Aktivieren des Features „Gastintegrität“ von Azure Monitor für VMs (Vorschau)](vminsights-health-enable.md). Achten Sie insbesondere auf das Vorhandensein des Abschnitts *performanceCounters* für die Datenquellen, die zum Abrufen von drei Leistungsindikatoren eingerichtet wurden, und auf das Vorhandensein des Abschnitts *inputDataSources* in der Konfiguration der Integritätserweiterung, um Leistungsindikatoren an die Erweiterung zu senden.
 -  Überprüfen Sie den virtuellen Computer auf Fehler bei der Erweiterung für die Gastintegrität.

@@ -12,12 +12,12 @@ metadata:
   author: beber-msft
   ms.author: beber
   ms.date: 03/15/2021
-  ms.openlocfilehash: 89a8004096a691965f08fe14169324021e18b5e4
-  ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+  ms.openlocfilehash: 41924e71fbbad4b1bae5b2eecfd7751cc25c5820
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/17/2021
-  ms.locfileid: "112287441"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128591005"
 landingContent:
 - title: Partner für Analysen und Big Data
   linkLists:
@@ -61,6 +61,8 @@ landingContent:
       url: ./validated-partners/data-management/komprise-quick-start-guide.md
     - text: Leitfaden zu den ersten Schritten mit StorageX
       url: ./validated-partners/data-management/storagex-quick-start-guide.md
+    - text: Leitfaden zu den ersten Schritte mit Cirrus Data
+      url: ./validated-partners/data-management/cirrus-data-migration-guide.md
 - title: Partner für primären und sekundären Speicher
   linkLists:
   - linkListType: overview

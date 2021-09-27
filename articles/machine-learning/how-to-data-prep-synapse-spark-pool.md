@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/02/2021
 ms.custom: devx-track-python, data4ml, synapse-azureml, contperf-fy21q4
-ms.openlocfilehash: 424e1908df6d3e92d365e2dd3e10a42f7d1ddb2a
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 3cd6a3243b4bfb4441f6be82f3957c325ceec3d2
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114296414"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433564"
 ---
 # <a name="data-wrangling-with-apache-spark-pools-preview"></a>Data Wrangling mit Apache Spark-Pools (Vorschau) 
 
@@ -62,7 +62,7 @@ Geben Sie für die Datenaufbereitung mit dem Apache Spark-Pool zunächst den Nam
 ![Abrufen des Namens einer angefügten Computeressource](media/how-to-data-prep-synapse-spark-pool/attached-compute.png)
 
 > [!IMPORTANT]
-> Wenn Sie den Apache Spark-Pool weiterhin verwenden möchten, müssen Sie angeben, welche Computeressource in den Data Wrangling-Aufgaben verwendet werden soll. Verwenden Sie `%synapse` für einzelne Codezeilen und `%%synapse` für mehrere Zeilen. 
+> Wenn Sie den Apache Spark-Pool weiterhin verwenden möchten, müssen Sie angeben, welche Computeressource in den Data Wrangling-Aufgaben verwendet werden soll. Verwenden Sie `%synapse` für einzelne Codezeilen und `%%synapse` für mehrere Zeilen. [Erfahren Sie mehr über den Magic-Befehl %synapse](/python/api/azureml-synapse/azureml.synapse.magics.remotesynapsemagics(class)).
 
 ```python
 %synapse start -c SynapseSparkPoolAlias

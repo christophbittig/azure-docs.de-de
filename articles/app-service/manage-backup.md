@@ -3,14 +3,14 @@ title: Sichern einer App
 description: Erfahren Sie, wie Sie Sicherungen Ihrer Apps in Azure App Service erstellen. Ausführen manueller oder geplanter Sicherungen. Anpassen von Sicherungen durch Einschließen der angefügten Datenbank.
 ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
-ms.date: 10/16/2019
+ms.date: 09/02/2021
 ms.custom: seodec18
-ms.openlocfilehash: aed7e341cf190e6daac237b87f17254c5c65bbab
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f1bd37c1b3557a8106981377f9ed75c50a28c773
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345810"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433051"
 ---
 # <a name="back-up-your-app-in-azure"></a>Sichern einer App in Azure
 
@@ -45,12 +45,12 @@ Die folgenden Datenbanklösungen werden von der Sicherungsfunktion unterstützt:
 
 * Die Funktion zum Sichern und Wiederherstellen erfordert einen App Service-Plan im Tarif **Standard**, **Premium** oder **Isoliert**. Weitere Informationen zum Skalieren des App Service-Plans zur Verwendung eines höheren Tarifs finden Sie unter [Hochskalieren einer App in Azure](manage-scale-up.md). Im Tarif **Premium** und **Isoliert** ist eine größere Anzahl täglicher Sicherungen zulässig als im Tarif **Standard**.
 * Sie benötigen ein Azure-Speicherkonto und einen Container im selben Abonnement wie die App, die Sie sichern möchten. Weitere Informationen zu Azure-Speicherkonten finden Sie unter [Azure Storage-Konto – Übersicht](../storage/common/storage-account-overview.md).
-* Sicherungen können bis zu 10GB an App- und Datenbankinhalten umfassen. Wenn die Sicherungsgröße diesen Grenzwert überschreitet, erhalten Sie eine Fehlermeldung.
-* Sicherungen von Azure Database for MySQL mit aktiviertem TLS werden nicht unterstützt. Wenn eine Sicherung konfiguriert ist, treten Sicherungsfehler auf.
-* Sicherungen von Azure Database for PostgreSQL mit aktiviertem TLS werden nicht unterstützt. Wenn eine Sicherung konfiguriert ist, treten Sicherungsfehler auf.
-* In-App-MySQL-Datenbanken werden automatisch ohne Konfiguration gesichert. Wenn Sie manuell Einstellungen für In-App-MySQL-Datenbanken festlegen (beispielsweise durch Hinzufügen von Verbindungszeichenfolgen), funktionieren die Sicherungen unter Umständen nicht ordnungsgemäß.
-* Die Verwendung eines Speicherkontos mit aktivierter Firewall als Ziel für Ihre Sicherungen wird nicht unterstützt. Wenn eine Sicherung konfiguriert ist, treten Sicherungsfehler auf.
-* Derzeit können Sie die Sicherungs- und Wiederherstellungsfunktion nicht mit Azure-Speicherkonten verwenden, die für die Verwendung des privaten Endpunkts konfiguriert sind.
+* Sicherungen können bis zu 10 GB App- und Datenbankinhalt umfassen, von denen bis zu 4 GB die Datenbanksicherung umfassen können. Wenn die Sicherungsgröße diesen Grenzwert überschreitet, erhalten Sie eine Fehlermeldung.
+* Sicherungen von [Azure Database for MySQL mit aktiviertem TLS](../mysql/concepts-ssl-connection-security.md) werden nicht unterstützt. Wenn eine Sicherung konfiguriert ist, treten Sicherungsfehler auf.
+* Sicherungen von [Azure Database for PostgreSQL mit aktiviertem TLS](../postgresql/concepts-ssl-connection-security.md) werden nicht unterstützt. Wenn eine Sicherung konfiguriert ist, treten Sicherungsfehler auf.
+* In-App-MySQL-Datenbanken werden automatisch ohne Konfiguration gesichert. Wenn Sie manuelle Einstellungen für In-App-MySQL-Datenbanken festlegen (beispielsweise durch Hinzufügen von Verbindungszeichenfolgen), funktionieren die Sicherungen unter Umständen nicht ordnungsgemäß.
+* Die Verwendung eines [Speicherkontos mit aktivierter Firewall](../storage/common/storage-network-security.md) als Ziel für Ihre Sicherungen wird nicht unterstützt. Wenn eine Sicherung konfiguriert ist, treten Sicherungsfehler auf.
+* Die Verwendung eines [Speicherkontos mit aktiviertem privaten Endpunkt](../storage/common/storage-private-endpoints.md) für die Sicherung und Wiederherstellung wird nicht unterstützt.
 
 <a name="manualbackup"></a>
 

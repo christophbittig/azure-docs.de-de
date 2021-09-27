@@ -1,14 +1,14 @@
 ---
 title: Azure Policy-Erweiterung für Visual Studio Code
 description: In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure Policy-Erweiterung für Visual Studio Code nach Azure Resource Manager-Aliassen suchen.
-ms.date: 08/17/2021
+ms.date: 09/01/2021
 ms.topic: how-to
-ms.openlocfilehash: 870559a2f3d36257cb1246e340163f25ef016eb2
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 93b59114c6a89e9219389341d541d7850a90ccc7
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122356623"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433690"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Verwenden der Azure Policy-Erweiterung für Visual Studio Code
 
@@ -195,6 +195,20 @@ Die Auswertungsergebnisse enthalten Informationen zur Richtliniendefinition und 
 > Die VS Code-Erweiterung unterstützt nur die Auswertung von Eigenschaften des Resource Manager-Modus. Weitere Informationen zu den Modi finden Sie in den [Modusdefinitionen](../concepts/definition-structure.md#mode).
 >
 > Die Auswertungsfunktion funktioniert nicht bei Installationen der Erweiterung unter macOS und Linux.
+
+### <a name="create-policy-definition-from-constraint-template"></a>Erstellen einer Richtliniendefinition aus einer Einschränkungsvorlage
+
+Die VS Code-Erweiterung kann eine Richtliniendefinition aus einer vorhandenen [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) GateKeeper v3-[Einschränkungsvorlage](https://open-policy-agent.github.io/gatekeeper/website/docs/howto/#constraint-templates) erstellen. Die YAML-Datei muss in VS Code geöffnet sein, damit die Befehlspalette eine Option ist.
+
+1. Öffnen Sie eine gültige OPA GateKeeper v3-YAML-Einschränkungsvorlagendatei.
+
+1. Wechseln Sie in der Menüleiste zu **Ansicht** > **Befehlspalette**, und geben Sie **Azure Policy für Kubernetes: Richtliniendefinition aus Einschränkungsvorlage erstellen** ein.
+
+1. Wählen Sie den entsprechenden _sourceType_-Wert aus.
+
+1. Füllen Sie die `/* EDIT HERE */`-Teile der JSON-Datei der Richtliniendefinition aus.
+
+Während die Erweiterung die JSON-Datei einer Richtliniendefinition generiert, wird die Definition in Azure nicht erstellt. Nachdem Sie die entsprechenden Felder „edit here“ („Hier bearbeiten“) ausgefüllt haben, verwenden Sie die fertige JSON-Datei der Richtliniendefinition und das Azure-Portal oder das unterstützte SDK, um die Richtliniendefinition in Ihrer Azure-Umgebung zu erstellen.
 
 ### <a name="sign-out"></a>Abmelden
 

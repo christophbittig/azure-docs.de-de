@@ -8,12 +8,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 8c40af42248e41346d10ec0028c1f13ff7ef22d6
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 6f3cd38985b6bbf1f0095ef124d2690cce00181f
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114457945"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123473728"
 ---
 # <a name="cognitive-services-development-options"></a>Entwicklungsoptionen für Cognitive Services
 
@@ -39,7 +39,6 @@ Die Tools, die Sie zum Anpassen und Konfigurieren von Modellen verwenden, unters
 
 * Sie können ein Bild an den Dienst für maschinelles Sehen senden, um Wörter und Sätze zu erkennen oder die Anzahl der Personen im Bild zu erfassen
 * Sie können eine Audiodatei an den Speech-Dienst senden und Transkriptionen sowie zugleich eine Übertragung der Sprache in Text abrufen
-* Sie können eine PDF-Datei an den Formularerkennungsdienst senden, um Tabellen, Zellen und Text innerhalb dieser Zellen zu ermitteln, und eine JSON-Ausgabe mit Koordinaten und Details abzurufen
 
 Azure bietet eine große Bandbreite an Tools, die für unterschiedliche Benutzertypen entwickelt wurden, und viele von ihnen lassen sich zusammen mit Cognitive Services verwenden. Vom Designer gesteuerte Tools lassen sich besonders einfach verwenden und sind schnell einzurichten und zu automatisieren, viele bieten aber nur eingeschränkte Möglichkeiten zur Anpassung. Unsere REST-APIs und Clientbibliotheken bieten Benutzern mehr Kontrolle und Flexibilität, das Erstellen einer Lösung erfordert aber mehr Anstrengung, Zeit und Fachwissen. Wenn Sie REST-APIs und Clientbibliotheken verwenden, wird von der Annahme ausgegangen, dass Sie mit dem Arbeiten in modernen Programmiersprachen wie C#, Java, Python, JavaScript, oder einer anderen beliebten Programmiersprache vertraut sind. 
 
@@ -96,7 +95,7 @@ Power Automate ist ein Dienst der [Power Platform](/power-platform/) und unterst
 
 ### <a name="ai-builder"></a>AI Builder 
 
-[AI Builder](/ai-builder/overview) ist eine Microsoft Power Platform-Funktion, die Sie verwenden können, um die Unternehmensleistung zu steigern, indem Sie Prozesse automatisieren und Ergebnisse vorhersagen. AI Builder macht die Möglichkeiten von KI über eine Point-and-Click-Benutzeroberfläche für Ihre Lösungen verfügbar. Viele Cognitive Services, wie die Formularerkennung, die Textanalyse und maschinelles Sehen, wurden hier direkt integriert, und Sie brauchen keine eigenen Cognitive Services zu erschaffen. 
+[AI Builder](/ai-builder/overview) ist eine Microsoft Power Platform-Funktion, die Sie verwenden können, um die Unternehmensleistung zu steigern, indem Sie Prozesse automatisieren und Ergebnisse vorhersagen. AI Builder macht die Möglichkeiten von KI über eine Point-and-Click-Benutzeroberfläche für Ihre Lösungen verfügbar. Viele Cognitive Services, wie die Textanalyse und maschinelles Sehen, wurden hier direkt integriert, und Sie brauchen keine eigenen Cognitive Services zu erschaffen. 
 
 * **Zielbenutzer**: Geschäftsbenutzer (Analysten) und SharePoint-Administratoren
 * **Vorteile:** Eine schlüsselfertige Lösung, die die Leistungsfähigkeit von KI über eine Point-and-Klick-Benutzeroberfläche verfügbar macht. Es sind keine Fähigkeiten zur Codeerstellung oder Datenanalyse erforderlich.
@@ -125,7 +124,6 @@ Die Tools, die Sie zum Trainieren und Konfigurieren von Modellen verwenden, unte
 | Säule | Dienst | Benutzeroberfläche für die Anpassung | Schnellstart |
 |--------|---------|------------------|------------|
 | Bildanalyse | Custom Vision | https://www.customvision.ai/ | [Schnellstart](./custom-vision-service/quickstarts/image-classification.md?pivots=programming-language-csharp) | 
-| Bildanalyse | Formularerkennung | [Tool für die Beschriftung von Beispielen](https://aka.ms/fott-2.1-ga) | [Schrittanleitungsartikel](./form-recognizer/label-tool.md?tabs=v2-0) |
 | Entscheidung | Content Moderator | https://contentmoderator.cognitive.microsoft.com/dashboard | [Schnellstart](./content-moderator/review-tool-user-guide/human-in-the-loop.md) |
 | Entscheidung | Personalisierung | Eine Benutzeroberfläche steht im Azure-Portal unter Ihrer Personalisierungsressource zur Verfügung. | [Schnellstart](./personalizer/quickstart-personalizer-sdk.md) |
 | Sprache | Language Understanding (LUIS) | https://www.luis.ai/ | |

@@ -87,70 +87,102 @@
       href: storage-service-add-ons.md
     - name: Bedeutung der Umstellung auf harte Kontingentgrenzen für Volumes
       href: volume-hard-quota-guidelines.md
-- name: Anleitungen
+    - name: Azure NetApp Files für Azure Government
+      href: azure-government.md
+- name: Exemplarische Vorgehensweisen
   items:
-    - name: Registrieren für Azure NetApp Files
-      href: azure-netapp-files-register.md
-    - name: Erstellen eines NetApp-Kontos
-      href: azure-netapp-files-create-netapp-account.md
-    - name: Erstellen und Verwalten von Kapazitätspools
+    - name: Registrieren und einrichten
+      items:
+        - name: Registrieren für Azure NetApp Files
+          href: azure-netapp-files-register.md
+        - name: Erstellen eines NetApp-Kontos
+          href: azure-netapp-files-create-netapp-account.md
+        - name: Delegieren eines Subnetzes an Azure NetApp Files
+          href: azure-netapp-files-delegate-subnet.md
+    - name: Verwalten von Active Directory
+      items:
+        - name: "Erstellen und Verwalten von Active\_Directory-Verbindungen"
+          href: create-active-directory-connections.md
+        - name: "Konfigurieren von ADDS\_LDAP über TLS"
+          href: configure-ldap-over-tls.md
+    - name: Verwalten von Kapazitätspools
       items:
         - name: Einrichten eines Kapazitätspools
           href: azure-netapp-files-set-up-capacity-pool.md
         - name: Verwalten eines manuellen QoS-Kapazitätspools
           href: manage-manual-qos-capacity-pool.md
-    - name: Delegieren eines Subnetzes an Azure NetApp Files
-      href: azure-netapp-files-delegate-subnet.md
-    - name: "Erstellen und Verwalten von Active\_Directory-Verbindungen"
-      href: create-active-directory-connections.md
-    - name: Erstellen und Verwalten von NFS-Volumes
+        - name: Verwalten der Abrechnung mithilfe von Tags
+          href: manage-billing-tags.md
+    - name: Verwalten von Volumes
       items:
-        - name: Erstellen eines NFS-Volumes
-          href: azure-netapp-files-create-volumes.md
-        - name: Konfigurieren der NFSv4.1-Standarddomäne
-          href: azure-netapp-files-configure-nfsv41-domain.md
-        - name: Konfigurieren der NFSv4.1-Kerberos-Verschlüsselung
-          href: configure-kerberos-encryption.md
-        - name: "Konfigurieren von ADDS\_LDAP mit erweiterten Gruppen für NFS"
-          href: configure-ldap-extended-groups.md
-        - name: Konfigurieren eines NFS-Clients für Azure NetApp Files
-          href: configure-nfs-clients.md
-    - name: Erstellen und Verwalten von SMB-Volumes
+        - name: Verwalten von NFS-Volumes
+          items:
+            - name: Erstellen eines NFS-Volumes
+              href: azure-netapp-files-create-volumes.md
+            - name: Konfigurieren der NFSv4.1-Standarddomäne
+              href: azure-netapp-files-configure-nfsv41-domain.md
+            - name: Konfigurieren der NFSv4.1-Kerberos-Verschlüsselung
+              href: configure-kerberos-encryption.md
+            - name: "Konfigurieren von ADDS\_LDAP mit erweiterten Gruppen für NFS"
+              href: configure-ldap-extended-groups.md
+            - name: Konfigurieren eines NFS-Clients für Azure NetApp Files
+              href: configure-nfs-clients.md
+        - name: Verwalten von SMB-Volumes
+          items:
+            - name: Erstellen eines SMB-Volumes
+              href: azure-netapp-files-create-volumes-smb.md
+            - name: Aktivieren der fortlaufenden Verfügbarkeit auf vorhandenen SMB-Volumes
+              href: enable-continuous-availability-existing-SMB.md
+        - name: Verwalten von Dual-Protokoll-Volumes
+          items:
+            - name: Erstellen eines Dual-Protokoll-Volumes
+              href: create-volumes-dual-protocol.md
+        - name: Verwalten des Volumezugriffs und der Verschlüsselung
+          items:
+            - name: Konfigurieren der Exportrichtlinie für NFS oder Dual-Protokoll
+              href: azure-netapp-files-configure-export-policy.md
+            - name: Konfigurieren von Unix-Berechtigungen und des Modus zum Ändern des Besitzers
+              href: configure-unix-permissions-change-ownership-mode.md
+        - name: Mounten oder unmounten eines Volumes
+          items:
+            - name: Mounten oder unmounten eines Volumes
+              href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
+        - name: Verwalten der Volumekapazität und -leistung
+          items:
+            - name: Überwachen der Kapazität eines Volumes
+              href: monitor-volume-capacity.md
+            - name: Ändern der Größe eines Kapazitätspools oder Volumes
+              href: azure-netapp-files-resize-capacity-pools-or-volumes.md
+            - name: Dynamisches Ändern der Dienstebene eines Volumes
+              href: dynamic-change-volume-service-level.md
+    - name: Verwalten von Datenschutz
       items:
-        - name: Erstellen eines SMB-Volumes
-          href: azure-netapp-files-create-volumes-smb.md
-        - name: Aktivieren der fortlaufenden Verfügbarkeit auf vorhandenen SMB-Volumes
-          href: enable-continuous-availability-existing-SMB.md
-    - name: Erstellen eines Dual-Protokoll-Volumes
-      href: create-volumes-dual-protocol.md
-    - name: "Konfigurieren von ADDS\_LDAP über TLS"
-      href: configure-ldap-over-tls.md
-    - name: Konfigurieren der Exportrichtlinie für NFS oder Dual-Protokoll
-      href: azure-netapp-files-configure-export-policy.md
-    - name: Mounten oder unmounten eines Volumes
-      href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
-    - name: Konfigurieren von Unix-Berechtigungen und des Modus zum Ändern des Besitzers
-      href: configure-unix-permissions-change-ownership-mode.md
-    - name: Verwalten von Momentaufnahmen
-      href: azure-netapp-files-manage-snapshots.md
-    - name: Ändern der Größe eines Kapazitätspools oder Volumes
-      href: azure-netapp-files-resize-capacity-pools-or-volumes.md
-    - name: Überwachen der Kapazität eines Volumes
-      href: monitor-volume-capacity.md
-    - name: Dynamisches Ändern der Dienstebene eines Volumes
-      href: dynamic-change-volume-service-level.md
-    - name: Verwalten der regionsübergreifenden Replikation
-      items:
-        - name: Erstellen der Volumereplikation
-          href: cross-region-replication-create-peering.md
-        - name: Anzeigen des Integritätsstatus der Replikationsbeziehung
-          href: cross-region-replication-display-health-status.md
-        - name: Verwalten der Notfallwiederherstellung
-          href: cross-region-replication-manage-disaster-recovery.md
-        - name: Löschen von Volumereplikationen oder Volumes
-          href: cross-region-replication-delete.md
-    - name: Verwalten der Abrechnung mithilfe von Tags
-      href: manage-billing-tags.md
+        - name: Verwalten von Volumemomentaufnahmen
+          items:
+            - name: Erstellen einer Momentaufnahme bei Bedarf
+              href: azure-netapp-files-manage-snapshots.md
+            - name: Verwalten von Momentaufnahmenrichtlinien
+              href: snapshots-manage-policy.md
+            - name: Bearbeiten von „Momentaufnahmepfad ausblenden“
+              href: snapshots-edit-hide-path.md
+            - name: Wiederherstellen einer Momentaufnahme auf einem neuen Volume
+              href: snapshots-restore-new-volume.md
+            - name: Wiederherstellen einer Datei aus einer Momentaufnahme mithilfe eines Clients
+              href: snapshots-restore-file-client.md
+            - name: Wiederherstellen eines Volumes mit „Momentaufnahme wiederherstellen“
+              href: snapshots-revert-volume.md
+            - name: Löschen von Momentaufnahmen
+              href: snapshots-delete.md
+        - name: Verwalten der regionsübergreifenden Replikation
+          items:
+            - name: Erstellen der Volumereplikation
+              href: cross-region-replication-create-peering.md
+            - name: Anzeigen des Integritätsstatus der Replikationsbeziehung
+              href: cross-region-replication-display-health-status.md
+            - name: Verwalten der Notfallwiederherstellung
+              href: cross-region-replication-manage-disaster-recovery.md
+            - name: Löschen von Volumereplikationen oder Volumes
+              href: cross-region-replication-delete.md
     - name: Entwickeln
       items:
         - name: REST-API

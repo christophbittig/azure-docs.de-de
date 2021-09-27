@@ -29,15 +29,19 @@ items:
           - name: Azure Purview MSI-Konfiguration im großen Stil
             href: tutorial-msi-configuration.md
       - name: Lokalen SQL-Server registrieren und scannen
-        href: register-scan-on-premises-sql-server.md
-      - name: Aufrufen der REST-APIs für den Katalog
+        href: tutorial-register-scan-on-premises-sql-server.md
+      - name: Verwenden von REST-APIs für Purview-Datenebenen
         href: tutorial-using-rest-apis.md
   - name: Konzepte
     items:
       - name: Verwenden von Purview Studio
         href: use-purview-studio.md
-      - name: Best Practices für die Bereitstellung
-        href: deployment-best-practices.md
+      - name: Bewährte Methoden
+        items:
+          - name: Best Practices für die Bereitstellung
+            href: deployment-best-practices.md
+          - name: Sammlungsarchitektur
+            href: concept-best-practices-collections.md
       - name: Azure Purview-Grenzwerte
         href: how-to-manage-quotas.md
       - name: Überprüfungen und Erfassung
@@ -231,12 +235,10 @@ items:
             items:
               - name: Übersicht über private Endpunkte
                 href: catalog-private-link.md
-              - name: Isolieren des Netzwerks für das Purview-Konto und das Portal
-                href: catalog-private-link-account-portal.md
-              - name: Isolieren des Netzwerks für Überprüfungen
-                href: catalog-private-link-ingestion.md
               - name: End-to-End-Netzwerkisolation
                 href: catalog-private-link-end-to-end.md
+              - name: Isolieren des Netzwerks für das Purview-Konto und das Portal
+                href: catalog-private-link-account-portal.md
               - name: Konfigurieren von DNS für den privaten Endpunkt
                 href: catalog-private-link-name-resolution.md
               - name: Problembehandlung bei privaten Endpunkten

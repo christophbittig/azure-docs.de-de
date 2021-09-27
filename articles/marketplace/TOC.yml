@@ -343,7 +343,23 @@
               href: power-bi-app-supplemental-content.md
     - name: "Angebote für Power\_BI-Visuals"
       items:
-        - name: Häufig gestellte Fragen zur Migration zu Partner Center
+        - name: Planen des Angebots
+          href: marketplace-power-bi-visual.md
+        - name: Erstellen des Angebots
+          items:
+            - name: Angebotseinrichtung
+              href: power-bi-visual-offer-setup.md
+            - name: Eigenschaften
+              href: power-bi-visual-properties.md
+            - name: Angebotsliste
+              href: power-bi-visual-offer-listing.md
+            - name: Verfügbarkeit
+              href: power-bi-visual-availability.md
+            - name: Technische Konfiguration
+              href: power-bi-visual-technical-configuration.md
+            - name: Verwalten von Angebotsnamen
+              href: power-bi-visual-manage-names.md
+        - name: Häufig gestellte Fragen zur Migration zum kommerziellen Marketplace
           href: power-bi-visual-faq.yml
     - name: SaaS-Angebote
       items:
@@ -484,7 +500,7 @@
     - name: Überprüfungsrichtlinien für den kommerziellen Marketplace
       href: /legal/marketplace/rating-review-policies?context=/azure/marketplace/context/context
     - name: Azure Marketplace-Nutzungsbedingungen
-      href: /legal/marketplace/terms?context=/azure/marketplace/context/context
+      href: 'https://azure.microsoft.com/support/legal/marketplace-terms/'
     - name: Microsoft-Herausgebervereinbarung
       href: /legal/marketplace/msft-publisher-agreement
     - name: Änderungsverlauf für die Microsoft-Herausgebervereinbarung

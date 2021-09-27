@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 04/27/2021
+ms.date: 09/01/2021
 ms.author: cherylmc
-ms.openlocfilehash: 6d8420f0138dc26e2f265ac7c4f48e646a6bfe69
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 51b254c42f06c3ae6a0609a05e6f36056106139b
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108165117"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123432034"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>Herstellen einer Verbindung zwischen einem VPN Gateway (VNet-Gateway) und Virtual WAN
 
@@ -45,7 +45,7 @@ Aktivieren Sie auf der Seite **Konfiguration** des Gateways für virtuelle Netzw
 
 ### <a name="bgp-setting"></a><a name="BGP"></a>BGP-Einstellung
 
-Auf der Seite **Konfiguration** des Gateways für virtuelle Netzwerke können Sie die **BGP-ASN** konfigurieren. Ändern Sie die BGP-ASN. Die BGP-ASN kann nicht 65515 sein. 65515 wird von Azure Virtual WAN verwendet.
+Auf der Seite **Konfiguration** des Gateways für virtuelle Netzwerke können Sie (optional) **BGP-ASN konfigurieren** auswählen. Wenn Sie BGP konfigurieren, ändern Sie den Standardwert der ASN, der im Portal angezeigt wird. Für diese Konfiguration darf die BGP-ASN nicht 65515 lauten. 65515 wird von Azure Virtual WAN verwendet.
 
 ![Screenshot der Seite „Konfiguration“ des Gateways eines virtuellen Netzwerks mit Auswahl von „BGP-ASN konfigurieren“.](./media/connect-virtual-network-gateway-vwan/bgp.png "bgp")
 
@@ -95,6 +95,7 @@ In diesem Abschnitt erstellen Sie zwei lokale Azure VPN Gateway Netzwerkgateways
 
    * **IP-Adresse**: Verwenden Sie die IP-Adresse von Instance0 für *gatewayconfiguration* aus der Konfigurationsdatei.
    * **BGP**: Wenn die Verbindung über BGP erfolgt, wählen Sie **BGP-Einstellungen konfigurieren** aus und geben Sie die ASN „65515“ ein. Geben Sie die BGP-Peer-IP-Adresse ein. Verwenden Sie „Instance0 BgpPeeringAddresses“ für *gatewayconfiguration* aus der Konfigurationsdatei.
+   * **Adressraum** Wenn die Verbindung nicht über BGP erfolgt, stellen Sie sicher, dass **BGP-Einstellungen konfigurieren** deaktiviert bleibt.  Geben Sie die Adressräume ein, die Sie über die Gatewayseite des virtuellen Netzwerks ankündigen werden. Sie können mehrere Adressraumbereiche hinzufügen. Achten Sie darauf, dass sich die hier angegebenen Bereiche nicht mit den Bereichen anderer Netzwerke überschneiden, mit denen Sie eine Verbindung herstellen möchten. 
    * **Abonnement, Ressourcengruppe und Standort** stimmen mit den Werten für den Virtual WAN-Hub überein.
 2. Überprüfen und erstellen Sie das lokalen Netzwerkgateway. Das lokale Netzwerkgateway sollte ungefähr wie in diesem Beispiel aussehen.
 

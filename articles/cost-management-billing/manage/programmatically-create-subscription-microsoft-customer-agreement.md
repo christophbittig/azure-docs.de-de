@@ -5,16 +5,16 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 06/22/2021
+ms.date: 09/01/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: b68d78f4fbb26b8c7be24727eb3b0b0f5e406945
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: ea619824223e5f424b7a2edd88c9adb826ea7927
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771577"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123478750"
 ---
 # <a name="programmatically-create-azure-subscriptions-for-a-microsoft-customer-agreement-with-the-latest-apis"></a>Programmgesteuertes Erstellen von Azure-Abonnements für eine Microsoft-Kundenvereinbarung mit den neuesten APIs
 
@@ -438,9 +438,9 @@ Sie erhalten die Abonnement-ID (subscriptionId) als Teil der Befehlsantwort.
 
 ---
 
-## <a name="use-arm-template"></a>Verwenden einer ARM-Vorlage
+## <a name="use-arm-template-or-bicep"></a>Verwenden Sie ARM-Vorlagen oder Bicep
 
-Im vorherigen Abschnitt wurde gezeigt, wie Sie ein Abonnement mit PowerShell, der CLI oder der REST-API erstellen. Wenn Sie das Erstellen von Abonnements automatisieren müssen, verwenden Sie ggf. eine Azure Resource Manager-Vorlage (ARM-Vorlage).
+Im vorherigen Abschnitt wurde gezeigt, wie Sie ein Abonnement mit PowerShell, der CLI oder der REST-API erstellen. Wenn Sie das Erstellen von Abonnements automatisieren müssen, verwenden Sie ggf. eine Azure Resource Manager-Vorlage (ARM-Vorlage) oder eine [Bicep-Datei](../../azure-resource-manager/bicep/overview.md).
 
 Mit der folgenden Vorlage wird ein Abonnement erstellt. Geben Sie für `billingScope` die ID des Rechnungsabschnitts an. Das Abonnement wird in der Stammverwaltungsgruppe erstellt. Nachdem Sie das Abonnement erstellt haben, können Sie es in eine andere Verwaltungsgruppe verschieben.
 
@@ -479,7 +479,29 @@ Mit der folgenden Vorlage wird ein Abonnement erstellt. Geben Sie für `billingS
 }
 ```
 
-Stellen Sie die Vorlage auf [Verwaltungsgruppenebene](../../azure-resource-manager/templates/deploy-to-management-group.md) bereit.
+Alternativ können Sie eine Bicep-Datei verwenden, um das Abonnement zu erstellen.
+
+```bicep
+targetScope = 'managementGroup'
+
+@description('Provide a name for the alias. This name will also be the display name of the subscription.')
+param subscriptionAliasName string
+
+@description('Provide the full resource ID of billing scope to use for subscription creation.')
+param billingScope string
+
+resource subscriptionAlias 'Microsoft.Subscription/aliases@2020-09-01' = {
+  scope: tenant()
+  name: subscriptionAliasName
+  properties: {
+    workload: 'Production'
+    displayName: subscriptionAliasName
+    billingScope: billingScope
+  }
+}
+```
+
+Stellen Sie die Vorlage auf [Verwaltungsgruppenebene](../../azure-resource-manager/templates/deploy-to-management-group.md) bereit. Die folgenden Beispiele zeigen die Bereitstellung der JSON-ARM-Vorlage, aber Sie können stattdessen auch eine Bicep-Datei bereitstellen.
 
 ### <a name="rest"></a>[REST](#tab/rest)
 
@@ -534,7 +556,7 @@ az deployment mg create \
 
 ---
 
-Verwenden Sie die folgende Vorlage, um ein Abonnement in eine neue Verwaltungsgruppe zu verschieben.
+Um ein Abonnement in eine neue Verwaltungsgruppe zu verschieben, verwenden Sie die folgende ARM-Vorlage.
 
 ```json
 {
@@ -565,6 +587,23 @@ Verwenden Sie die folgende Vorlage, um ein Abonnement in eine neue Verwaltungsgr
         }
     ],
     "outputs": {}
+}
+```
+
+Verwenden Sie alternativ die folgende Bicep-Datei.
+
+```bicep
+targetScope = 'managementGroup'
+
+@description('Provide the ID of the management group that you want to move the subscription to.')
+param targetMgId string
+
+@description('Provide the ID of the existing subscription to move.')
+param subscriptionId string
+
+resource subToMG 'Microsoft.Management/managementGroups/subscriptions@2020-05-01' = {
+  scope: tenant()
+  name: '${targetMgId}/${subscriptionId}'
 }
 ```
 

@@ -6,13 +6,13 @@ ms.author: thvankra
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
-ms.date: 05/20/2020
-ms.openlocfilehash: f3b6c41006c18e1b5e211b36756250dba28ae1d8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/03/2021
+ms.openlocfilehash: 192d18349b783cccb8548dc0983c6d3e386f39e9
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346614"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123468328"
 ---
 # <a name="partitioning-in-azure-cosmos-db-cassandra-api"></a>Partitionierung in der Cassandra-API von Azure Cosmos DB
 [!INCLUDE[appliesto-cassandra-api](../includes/appliesto-cassandra-api.md)]
@@ -86,9 +86,20 @@ Wenn Daten zurückgegeben werden, werden diese, wie in Apache Cassandra erwartet
 
 :::image type="content" source="./media/cassandra-partitioning/select-from-pk.png" alt-text="Screenshot der zurückgegebenen Daten nach Clusteringschlüssel sortiert":::
 
+> [!WARNING]
+> Wenn Sie beim Abfragen von Daten *nur* nach dem Partitionsschlüsselwertelement eines zusammengesetzten Primärschlüssels filtern möchten (wie oben), stellen Sie sicher, dass Sie *explizit einen sekundären Index für den Partitionsschlüssel hinzufügen*:
+>
+>    ```shell
+>    CREATE INDEX ON uprofile.user (user);
+>    ```
+>
+> Die Azure Cosmos DB Cassandra-API wendet standardmäßig keine Indizes auf Partitionsschlüssel an, und der Index in diesem Szenario kann die Abfrageleistung erheblich verbessern. Weitere Informationen finden Sie in unserem Artikel zur [sekundären Indizierung](secondary-indexing.md).
+
 Mit einem solchen Datenmodell können jeder Partition mehrere Datensätze gruppiert nach Benutzer zugewiesen werden. Sie können daher eine Abfrage ausgeben, die durch den `partition key` (in diesem Fall `user`) effizient weitergeleitet wird, um alle Nachrichten für einen bestimmten Benutzer abzurufen. 
 
 :::image type="content" source="./media/cassandra-partitioning/cassandra-partitioning2.png" alt-text="Diagramm der möglichen Zuweisung mehrerer Datensätze zu jeder Partition gruppiert nach Benutzer" border="false":::
+
+
 
 
 ## <a name="composite-partition-key"></a>Zusammengesetzter Partitionsschlüssel

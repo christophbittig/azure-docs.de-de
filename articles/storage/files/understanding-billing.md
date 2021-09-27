@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/17/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7f133600f800881f462583ca5bee2972a5c914fa
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 07d89aab2f957b6161f81525cfd9ae703be65d48
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343610"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123476266"
 ---
 # <a name="understand-azure-files-billing"></a>Grundlegendes zur Abrechnung für Azure Files
 Für Azure Files gibt es zwei Abrechnungsmodelle: „Bereitgestellt“ und „Nutzungsbasierte Zahlung“. Das Modell „Bereitgestellt“ ist nur für Premium-Dateifreigaben verfügbar, d. h. für Dateifreigaben, die in einem Speicherkonto des Typs **FileStorage** bereitgestellt werden. Das Modell „Nutzungsbasierte Zahlung“ ist nur für Standarddateifreigaben verfügbar, d. h. für Dateifreigaben, die in einem Speicherkonto des Typs **Universell, Version 2** bereitgestellt werden. In diesem Artikel wird die Funktionsweise beider Modelle erklärt, um Ihnen zu helfen, Ihre monatliche Azure Files-Rechnung zu verstehen.
@@ -83,30 +83,31 @@ Wenn Sie eine Premium-Dateifreigabe bereitstellen, geben Sie an, wie viele GiBs 
 | Bereitstellungseinheit | 1 GiB |
 | Baseline-IOPS-Formel | `MIN(400 + 1 * ProvisionedGiB, 100000)` |
 | Burstgrenzwert | `MIN(MAX(4000, 3 * BaselineIOPS), 100000)` |
+| Burstguthaben | `BurstLimit * 3600` |
 | Eingangsrate | `40 MiB/sec + 0.04 * ProvisionedGiB` |
 | Ausgangsrate | `60 MiB/sec + 0.06 * ProvisionedGiB` |
 
 Die folgende Tabelle zeigt einige Beispiele dieser Formeln für die bereitgestellten Freigabengrößen:
 
-| Kapazität (GiB) | IOPS-Grundwert | Burst-IOPS | Ausgehend (MiB/s) | Eingehend (MiB/s) |
-|-|-|-|-|-|
-| 100 | 500 | Bis zu 4.000 | 66 | 44 |
-| 500 | 900 | Bis zu 4.000 | 90 | 60 |
-| 1\.024 | 1\.424 | Bis zu 4.000 | 122 | 81 |
-| 5\.120 | 5\.520 | Bis zu 15.360 | 368 | 245 |
-| 10.240 | 10.640 | Bis zu 30.720 | 675 | 450 |
-| 33.792 | 34.192 | Bis zu 100.000 | 2\.088 | 1\.392 |
-| 51.200 | 51.600 | Bis zu 100.000 | 3\.132 | 2\.088 |
-| 102.400 | 100.000 | Bis zu 100.000 | 6\.204 | 4\.136 |
+| Kapazität (GiB) | IOPS-Grundwert | Burst-IOPS | Burstguthaben | Eingehend (MiB/s) | Ausgehend (MiB/s) |
+|-|-|-|-|-|-|
+| 100 | 500 | Bis zu 4.000 | 14.400.000 | 44 | 66 |
+| 500 | 900 | Bis zu 4.000 | 14.400.000 | 60 | 90 |
+| 1\.024 | 1\.424 | Bis zu 4.000 | 14.400.000 | 81 | 122 |
+| 5\.120 | 5\.520 | Bis zu 15.360 | 55.296.000 | 245 | 368 |
+| 10.240 | 10.640 | Bis zu 30.720 | 110.592.000 | 450 | 675 |
+| 33.792 | 34.192 | Bis zu 100.000 | 360.000.000 | 1\.392 | 2\.088 |
+| 51.200 | 51.600 | Bis zu 100.000 | 360.000.000 | 2\.088 | 3\.132 |
+| 102.400 | 100.000 | Bis zu 100.000 | 360.000.000 | 4\.136 | 6\.204 |
 
-Die effektive Leistung der Dateifreigabe hängt u. a. von den Grenzwerten des Computernetzwerks, der verfügbaren Netzwerkbandbreite, den E/A-Größen und der Parallelität ab. Beispielsweise kann ein einzelner virtueller Windows-Computer ohne aktivierte Funktion SMB Multichannel namens *Standard F16s_v2*, der mit einer Premium-Dateifreigabe über SMB verbunden ist, laut internen Tests mit Lese-/Schreibvorgängen mit einer E/A-Größe von 8 KiB 20 K Lese-IOPS und 15 K Schreib-IOPS erzielen. Bei Lese-/Schreibvorgängen mit einer E/A-Größe von 512 MiB kann derselbe virtuelle Computer einen Durchsatz von 1,1 GiB/s ausgehend und 370 MiB/s eingehend erzielen. Der gleiche Client kann eine bis zu \~dreifache Leistung erzielen, wenn SMB Multichannel für die Premium-Freigaben aktiviert ist. Um eine maximale Leistung zu erreichen, [aktivieren Sie SMB Multichannel](storage-files-enable-smb-multichannel.md), und verteilen Sie die Last auf mehrere VMs. Weitere Informationen zur [Leistung von SMB Multichannel](storage-troubleshooting-files-performance.md) und zu gängigen Leistungsproblemen sowie deren Lösungen finden Sie im [Leitfaden zur Problembehandlung](storage-files-smb-multichannel-performance.md).
+Die effektive Leistung der Dateifreigabe hängt u. a. von den Grenzwerten des Computernetzwerks, der verfügbaren Netzwerkbandbreite, den E/A-Größen und der Parallelität ab. Beispielsweise kann ein einzelner virtueller Windows-Computer ohne aktivierte Funktion SMB Multichannel namens *Standard F16s_v2*, der mit einer Premium-Dateifreigabe über SMB verbunden ist, laut internen Tests mit Lese-/Schreibvorgängen mit einer E/A-Größe von 8 KiB 20 K Lese-IOPS und 15 K Schreib-IOPS erzielen. Bei Lese-/Schreibvorgängen mit einer E/A-Größe von 512 MiB kann derselbe virtuelle Computer einen Durchsatz von 1,1 GiB/s ausgehend und 370 MiB/s eingehend erzielen. Der gleiche Client kann eine bis zu \~dreifache Leistung erzielen, wenn SMB Multichannel für die Premium-Freigaben aktiviert ist. Um eine maximale Leistung zu erreichen, [aktivieren Sie SMB Multichannel](files-smb-protocol.md#smb-multichannel), und verteilen Sie die Last auf mehrere VMs. Weitere Informationen zur [Leistung von SMB Multichannel](storage-troubleshooting-files-performance.md) und zu gängigen Leistungsproblemen sowie deren Lösungen finden Sie im [Leitfaden zur Problembehandlung](storage-files-smb-multichannel-performance.md).
 
 ### <a name="bursting"></a>Bursting
-Wenn Ihre Workload die zusätzliche Leistung benötigt, um den Spitzenbedarf zu erfüllen, kann Ihre Freigabe Burstgutschriften verwenden, um den IOPS-Grundwert für die Freigabe zu überschreiten und die erforderliche Freigabeleistung bereitzustellen. Premium-Dateifreigaben können ihren IOPS-Wert bis auf 4.000 oder um den Faktor drei erhöhen (je nachdem, welcher Wert höher ist). Bursting wird automatisiert und funktioniert auf Basis eines Guthabensystems. Die Burstübertragung funktioniert auf Best-Effort-Basis, und der Burstgrenzwert ist keine Garantie. Bei Dateifreigaben ist eine Burstübertragung *bis zum* Grenzwert für eine maximale Dauer von 60 Minuten möglich.
+Wenn Ihre Workload die zusätzliche Leistung benötigt, um den Spitzenbedarf zu erfüllen, kann Ihre Freigabe Burstgutschriften verwenden, um den IOPS-Grundwert für die Freigabe zu überschreiten und die erforderliche Freigabeleistung bereitzustellen. Premium-Dateifreigaben können ihren IOPS-Wert bis auf 4.000 oder um den Faktor drei erhöhen (je nachdem, welcher Wert höher ist). Bursting wird automatisiert und funktioniert auf Basis eines Guthabensystems. Das Bursting funktioniert nach dem Prinzip der bestmöglichen Leistung, und die Burstgrenze ist nicht garantiert.
 
 Guthaben sammeln sich in einem Burstbucket an, wenn Datenverkehr für Ihre Dateifreigabe unterhalb des IOPS-Grundwerts liegt. Beispielsweise weist eine Freigabe mit 100 GiB 500 IOPS-Grundwerte auf. Wenn der tatsächliche Datenverkehr auf der Freigabe 100 IOPS für ein bestimmtes 1-Sekunden-Intervall betrug, werden die 400 nicht verwendeten IOPS einem Burstbucket gutgeschrieben. Auf ähnliche Weise fällt eine Burstgutschrift in Höhe von 1.424 IOPS für eine 1-TiB-Leerlauffreigabe an. Diese Guthaben werden dann später verwendet, wenn Vorgänge die IOPS-Grundwerte überschreiten.
 
-Wenn eine Freigabe den IOPS-Grundwert überschreitet und Guthaben in einem Burstbucket hat, führt sie Burstübertragungen mit der maximal zulässigen Spitzenburstrate durch. Freigaben können bis zu einer Dauer von maximal 60 Minuten weiterhin Bursts ausführen, solange Guthaben verbleibt. Dies hängt aber von der Höhe des aufgelaufenen Burstguthabens ab. Jede E/A über dem IOPS-Grundwert verbraucht ein Guthaben, und wenn alle Guthaben verbraucht sind, kehrt die Freigabe zum IOPS-Grundwert zurück.
+Wenn eine Freigabe den IOPS-Grundwert überschreitet und Guthaben in einem Burstbucket hat, führt sie Burstübertragungen bis zur maximal zulässigen Spitzenburstrate durch. Freigaben können weiterhin Bursts ausführen, solange Guthaben verbleibt. Dies hängt aber von der Höhe des aufgelaufenen Burstguthabens ab. Jede E/A über dem IOPS-Grundwert verbraucht ein Guthaben, und wenn alle Guthaben verbraucht sind, kehrt die Freigabe zum IOPS-Grundwert zurück.
 
 Freigabeguthaben können drei Zustände aufweisen:
 

@@ -4,18 +4,18 @@ description: Erfahren Sie, wie Sie Resource Manager-Vorlagen zum Erstellen einer
 author: rboucher
 ms.author: robb
 ms.topic: conceptual
-ms.date: 02/14/2021
-ms.openlocfilehash: 15be0be2fc6d00f5a1fde9e716cf00f306537521
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 09/06/2021
+ms.openlocfilehash: 4be599679310e91205b6c95ae27ee5d6f78ad407
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111956410"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123539153"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Erstellen einer klassischen Metrikwarnung anhand einer Resource Manager-Vorlage
 
 > [!WARNING]
-> In diesem Artikel erfahren Sie, wie Sie ältere klassische Metrikwarnungen erstellen. Azure Monitor unterstützt nun [neuere Metrikwarnungen, die nahezu in Echtzeit stattfinden, und eine neue Oberfläche für Warnungen](./alerts-overview.md). Klassische Warnungen werden für Benutzer der öffentlichen Cloud [eingestellt](./monitoring-classic-retirement.md), sind jedoch bis zum **31. Mai 2021** weiterhin beschränkt im Einsatz. Klassische Warnungen für Azure Government Cloud und Azure China 21ViaNet werden am **29. Februar 2024** eingestellt.
+> In diesem Artikel erfahren Sie, wie Sie ältere klassische Metrikwarnungen erstellen. Azure Monitor unterstützt nun [neuere Metrikwarnungen, die nahezu in Echtzeit stattfinden, und eine neue Oberfläche für Warnungen](./alerts-overview.md). Klassische Warnungen werden für Benutzer der öffentlichen Cloud [eingestellt](./monitoring-classic-retirement.md). Klassische Warnungen für Azure Government Cloud und Azure China 21ViaNet werden am **29. Februar 2024** eingestellt.
 >
 
 In diesem Artikel erfahren Sie, wie Sie mit einer [Azure Resource Manager-Vorlage](../../azure-resource-manager/templates/syntax.md) klassische Metrikwarnungen in Azure konfigurieren. So können Sie Warnungen für Ihre Ressourcen gleich bei der Erstellung automatisch einrichten, um sicherzustellen, dass alle Ressourcen ordnungsgemäß überwacht werden.

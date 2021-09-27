@@ -7,14 +7,14 @@ metadata:
   author: mgoedtel
   ms.service: azure-arc
   ms.topic: landing-page
-  ms.date: 08/17/2021
+  ms.date: 09/21/2021
   ms.author: magoedte
-  ms.openlocfilehash: 1af908e1c778a9e390ef644cf1e3d211af335c88
-  ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+  ms.openlocfilehash: ed9df4d3242f64f950e52ecd3003150b1eb103f7
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122322057"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128624442"
 landingContent:
 - title: Verbinden von Computern mit Azure über Server mit Azure Arc-Unterstützung
   linkLists:
@@ -28,18 +28,24 @@ landingContent:
       url: plan-at-scale-deployment.md
   - linkListType: get-started
     links:
-    - text: Verbinden von Computern mit Azure Arc über das Azure-Portal
+    - text: Verbinden von Computern mit Azure Arc mithilfe eines Bereitstellungskripts
       url: onboard-portal.md
     - text: Verbinden von Computern im großen Stil mithilfe eines Dienstprinzipals
       url: onboard-service-principal.md
-    - text: Verbinden von Computern mit Azure mithilfe von PowerShell DSC
-      url: onboard-dsc.md
+    - text: Verbinden von Computern mit Azure über Windows Admin Center
+      url: onboard-windows-admin-center.md
 - title: Zehnminütige Schnellstartanleitungen
   linkLists:
   - linkListType: quickstart
     links:
     - text: Bereitstellen eines Agents für Server mit Arc-Unterstützung
       url: ./learn/quick-enable-hybrid-vm.md
+- title: Training
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Microsoft Learn-Lernpfad
+      url: /learn/paths/manage-hybrid-infrastructure-with-azure-arc
 - title: Proof of Concept
   linkLists:
   - linkListType: sample

@@ -11,12 +11,12 @@ author: scoriani
 ms.author: scoriani
 ms.reviewer: mathoma
 ms.date: 12/04/2018
-ms.openlocfilehash: 8656202685db424cd6047e6a8b58191c6293e9ff
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 99d620847c12d194fbd8cd51b53d8820c32dd0c0
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110694343"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123438208"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Bereitstellen eines Split-Merge-Diensts, um Daten zwischen Sharddatenbanken zu verschieben
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -185,7 +185,7 @@ Die enthaltenen Skriptdateien lauten:
 4. *ShardManagement.psm1*: Hilfsskript, das die ShardManagement-API umschließt
 5. *SqlDatabaseHelpers.psm1*: Hilfsskript zum Erstellen und Verwalten von Datenbanken in Azure SQL-Datenbank
 
-   <table style="width:100%">
+   <table width="100%">
      <tr>
        <th>PowerShell-Datei</th>
        <th>Schritte</th>
@@ -207,7 +207,7 @@ Die enthaltenen Skriptdateien lauten:
        <td>5. Deklariert SchemaInfo für die Shardtabelle.</td>
      </tr>
    </table>
-   <table style="width:100%">
+   <table width="100%">
      <tr>
        <th>PowerShell-Datei</th>
        <th>Schritte</th>
@@ -321,8 +321,8 @@ Der Dienst kann Daten sowohl in Shardtabellen als auch in Verweistabellen versch
 
 Um einen Teilungs-/Zusammenführungsvorgang auszuführen, müssen Sie die zu verschiebenden Shardtabellen und Verweistabellen deklarieren. Sie verwenden dazu die **SchemaInfo** -API. Diese API befindet sich im **Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.Schema** -Namespace.
 
-1. Erstellen Sie für jede Shardtabelle ein **ShardedTableInfo** -Objekt, das den Namen des übergeordneten Schemas der Tabelle (optional, standardmäßig „dbo“), den Tabellennamen und den Spaltennamen in der Tabelle angibt, die den Shardingschlüssel enthält.
-2. Erstellen Sie für jede Verweistabelle ein **ReferenceTableInfo** -Objekt, das den Namen des übergeordneten Schemas der Tabelle (optional, standardmäßig „dbo“) und den Tabellennamen angibt.
+1. Erstellen Sie für jede Shardtabelle ein **ShardedTableInfo**-Objekt, das den Namen des übergeordneten Schemas der Tabelle (optional, standardmäßig „dbo“), den Tabellennamen und den Spaltennamen in der Tabelle angibt, die den Shardschlüssel enthält.
+2. Erstellen Sie für jede Verweistabelle ein **ReferenceTableInfo**-Objekt, das den Namen des übergeordneten Schemas der Tabelle (optional, standardmäßig „dbo“) und den Tabellennamen angibt.
 3. Fügen Sie die oben beschriebenen TableInfo-Objekte einem neuen **SchemaInfo** -Objekt hinzu.
 4. Rufen Sie einen Verweis auf ein **ShardMapManager**-Objekt ab, und rufen Sie **GetSchemaInfoCollection** auf.
 5. Fügen Sie **SchemaInfo** unter Angabe des Namens der Shard Map dem **SchemaInfoCollection**-Element hinzu.

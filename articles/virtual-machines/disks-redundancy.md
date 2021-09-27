@@ -3,23 +3,23 @@ title: Redundanzoptionen für verwaltete Azure-Datenträger
 description: Erfahren Sie mehr über zonenredundanten Speicher und lokal redundanten Speicher für verwaltete Azure-Datenträger.
 author: roygara
 ms.author: rogarana
-ms.date: 07/12/2021
+ms.date: 09/01/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: b24f24547e45b8ef580715828839ec1b1e5b4618
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 5bb77a9a5c7a1a33fe1d95213d9ceb3f83406ac2
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122692692"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429980"
 ---
 # <a name="redundancy-options-for-managed-disks"></a>Redundanzoptionen für verwaltete Datenträger
 
 **Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
-Verwaltete Azure-Datenträger bieten zwei Optionen für die Speicherredundanz: zonenredundanten Speicher (ZRS) als Vorschau und lokal redundanten Speicher. Zonenredundanter Speicher (ZRS) bietet eine höhere Verfügbarkeit für verwaltete Datenträger als lokal redundanter Speicher (LRS). Allerdings ist die Wartezeit beim Schreiben bei LRS-Datenträgern besser als bei ZRS-Datenträgern, da LRS-Datenträger Daten synchron auf drei Kopien in einem einzelnen Rechenzentrum schreiben.
+Verwaltete Azure-Datenträger bieten zwei Optionen für die Speicherredundanz: zonenredundanten Speicher (ZRS) und lokal redundanten Speicher. Zonenredundanter Speicher (ZRS) bietet eine höhere Verfügbarkeit für verwaltete Datenträger als lokal redundanter Speicher (LRS). Allerdings ist die Wartezeit beim Schreiben bei LRS-Datenträgern besser als bei ZRS-Datenträgern, da LRS-Datenträger Daten synchron auf drei Kopien in einem einzelnen Rechenzentrum schreiben.
 
 ## <a name="locally-redundant-storage-for-managed-disks"></a>Lokal redundanter Speicher für verwaltete Datenträger
 
@@ -32,11 +32,11 @@ Bei lokal redundantem Speicher (LRS) werden die Daten innerhalb eines einzelnen 
 
 Wenn Ihr Workflow keine zonenübergreifenden synchronen Schreibvorgänge auf Anwendungsebene unterstützt oder Ihre Anwendung ein Null-RPO erfüllen muss, dann wären ZRS-Datenträger ideal.
 
-## <a name="zone-redundant-storage-for-managed-disks-preview"></a>Zonenredundanter Speicher für verwaltete Datenträger (Vorschau)
+## <a name="zone-redundant-storage-for-managed-disks"></a>Zonenredundanter Speicher für verwaltete Datenträger
 
 Bei zonenredundantem Speicher (ZRS) wird Ihr verwalteter Azure-Datenträger synchron in drei Azure-Verfügbarkeitszonen in der von Ihnen ausgewählten Region repliziert. Jede Verfügbarkeitszone ist ein getrennter physischer Standort mit unabhängigen Stromversorgungs-, Kühlungs- und Netzwerkgeräten. 
 
-Ein ZRS-Datenträger (Vorschau) ermöglicht die Wiederherstellung nach Ausfällen in Verfügbarkeitszonen. Wenn eine Zone ausgefallen ist, kann ein ZRS-Datenträger an einen virtuellen Computer (VM) in einer anderen Zone angefügt werden. ZRS-Datenträger können auch von VMs gemeinsam genutzt werden, um die Verfügbarkeit mit gruppierten oder verteilten Anwendungen wie SQL FCI, SAP ASCS/SCS oder GFS2 zu verbessern. Ein freigegebener ZRS-Datenträger kann an primäre und sekundäre VMs in verschiedenen Zonen angefügt werden, um sowohl ZRS als auch [Verfügbarkeitszonen](../availability-zones/az-overview.md) zu nutzen. Wenn bei der primären Zone ein Fehler auftritt, können Sie mithilfe von [permanenter SCSI-Reservierung](disks-shared-enable.md#supported-scsi-pr-commands) schnell ein Failover auf den sekundären virtuellen Computer durchführen.
+Ein ZRS-Datenträger ermöglicht die Wiederherstellung nach Ausfällen in Verfügbarkeitszonen. Wenn eine Zone ausgefallen ist, kann ein ZRS-Datenträger an einen virtuellen Computer (VM) in einer anderen Zone angefügt werden. ZRS-Datenträger können auch von VMs gemeinsam genutzt werden, um die Verfügbarkeit mit gruppierten oder verteilten Anwendungen wie SQL FCI, SAP ASCS/SCS oder GFS2 zu verbessern. Ein freigegebener ZRS-Datenträger kann an primäre und sekundäre VMs in verschiedenen Zonen angefügt werden, um sowohl ZRS als auch [Verfügbarkeitszonen](../availability-zones/az-overview.md) zu nutzen. Wenn bei der primären Zone ein Fehler auftritt, können Sie mithilfe von [permanenter SCSI-Reservierung](disks-shared-enable.md#supported-scsi-pr-commands) schnell ein Failover auf den sekundären virtuellen Computer durchführen.
 
 ### <a name="billing-implications"></a>Hinweise zur Gebührenberechnung
 

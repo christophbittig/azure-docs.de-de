@@ -1,7 +1,6 @@
 - name: Bicep-Dokumentation
   href: index.yml
 - name: Übersicht
-  expanded: true
   items:
     - name: Was ist Bicep?
       href: overview.md
@@ -35,9 +34,9 @@
             - name: Bedingte Bereitstellung
               href: conditional-resource-deployment.md
               displayName: runtime
-            - name: Name und Typ der untergeordneten Ressource
+            - name: Untergeordnete Ressourcen
               href: child-resource-name-type.md
-              displayName: 'parent,parent resource'
+              displayName: 'parent,parent resource,sub,nested'
             - name: Erweiterungsressourcen
               href: scope-extension-resources.md
         - name: Parameter
@@ -84,7 +83,23 @@
               href: deploy-to-tenant.md
               displayName: assign role
         - name: Linter
-          href: linter.md
+          items:
+            - name: Linter
+              href: linter.md
+            - name: Linter-Regeln
+              items:
+                - name: Keine hartcodierten Umgebungs-URLs
+                  href: linter-rule-no-hardcoded-environment-urls.md
+                - name: Keine nicht verwendeten Parameter
+                  href: linter-rule-no-unused-parameters.md
+                - name: Keine nicht verwendeten Variablen
+                  href: linter-rule-no-unused-variables.md
+                - name: Interpolation bevorzugt
+                  href: linter-rule-prefer-interpolation.md
+                - name: Sicherer Parameterstandard
+                  href: linter-rule-secure-parameter-default.md
+                - name: Die Interpolation vereinfachen
+                  href: linter-rule-simplify-interpolation.md
         - name: Bewährte Methoden
           href: best-practices.md
         - name: Muster
@@ -121,8 +136,10 @@
               href: add-template-to-azure-pipelines.md
             - name: Bicep mit GitHub Actions
               href: deploy-github-actions.md
-    - name: Verwenden der Bicep-Befehlszeilenschnittstelle
+    - name: Migrieren zu Bicep
       items:
+        - name: Empfohlener Workflow
+          href: migrate.md
         - name: Dekompilieren
           href: decompile.md
           displayName: 'conversion issues,export,convert,playground'
@@ -179,5 +196,5 @@
       displayName: 'build,decompile,install,list-versions,list versions,upgrade,version'
     - name: Azure PowerShell
       href: /powershell/module/az.resources
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/resource

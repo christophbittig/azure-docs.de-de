@@ -11,12 +11,12 @@ ms.date: 05/25/2021
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt
-ms.openlocfilehash: 0548b309f84f46d7e1a8c904115167d59cc6f10e
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: db019c225b3e3caaad1a02b30ec0b7278e5b9dcc
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112417395"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435904"
 ---
 # <a name="prebuilt-docker-images-for-inference-preview"></a>Vordefinierte Docker-Images für Rückschlüsse (Vorschau)
 
@@ -35,6 +35,7 @@ Vordefinierte Docker-Containerimages für Rückschlüsse [(Vorschau)](https://az
 ## <a name="list-of-prebuilt-docker-images-for-inference"></a>Liste der vordefinierten Docker-Images für Rückschlüsse 
 
 * Alle Docker-Images werden als Nicht-Root-Benutzer ausgeführt.
+* Es wird empfohlen, für Docker-Images das Tag `latest` zu verwenden. Vordefinierte Docker-Images für Rückschlüsse werden in der Microsoft-Containerregistrierung (MCR) veröffentlicht. Um eine Liste der verfügbaren Tags abzufragen, befolgen Sie die [Anweisungen im entsprechenden GitHub-Repository](https://github.com/microsoft/ContainerRegistry#browsing-mcr-content).
 
 ### <a name="tensorflow"></a>TensorFlow
 

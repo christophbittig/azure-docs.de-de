@@ -1,14 +1,14 @@
 ---
 title: Problembehandlung für häufige Fehler
 description: Erfahren Sie, wie Sie Probleme beim Erstellen von Richtliniendefinitionen, mit dem jeweiligen SDK und dem Add-On für Kubernetes beheben.
-ms.date: 06/29/2021
+ms.date: 09/01/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 45c5b420ddd4eab70e381f31e7c46eeeb380b2b5
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 0ab4319a7a0d515b51c8bbe259ad0ea49ed2b940
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113087088"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433600"
 ---
 # <a name="troubleshoot-errors-with-using-azure-policy"></a>Problembehandlung mit Azure Policy
 
@@ -79,6 +79,7 @@ Befolgen Sie diese Schritte zur Problembehandlung bei der Richtliniendefinition:
 1. Bei einer nicht konformen Ressource, bei der Konformität erwartet wurde, informieren Sie sich über das [Ermitteln der Ursachen für Nichtkonformität](../how-to/determine-non-compliance.md). Der Vergleich der Definition mit dem ausgewerteten Eigenschaftswert gibt an, warum eine Ressource nicht konform war.
    - Wenn der **Zielwert** falsch ist, überarbeiten Sie die Richtliniendefinition.
    - Wenn der **aktuelle Wert** falsch ist, überprüfen Sie die Ressourcennutzlast mit `resources.azure.com`.
+1. Überprüfen Sie für eine [Ressourcenanbietermodus](../concepts/definition-structure.md#resource-provider-modes)-Definition, die einen RegEx-Zeichenfolgenparameter unterstützt (wie `Microsoft.Kubernetes.Data` und die integrierte Definition „Containerimages dürfen nur aus vertrauenswürdigen Registrierungen bereitgestellt werden“), dass der [RegEx](/dotnet/standard/base-types/regular-expression-language-quick-reference)-Zeichenfolgenparameter korrekt ist.
 1. Weitere häufige Probleme und deren Lösung finden Sie unter [Problembehandlung: Erzwingung nicht wie erwartet](#scenario-enforcement-not-as-expected).
 
 Wenn Sie immer noch ein Problem mit Ihrer duplizierten und angepassten integrierten Richtliniendefinition oder benutzerdefinierten Definition haben, erstellen Sie ein Supportticket unter **Erstellen einer Richtlinie**, um das Problem ordnungsgemäß weiterzuleiten.
@@ -327,6 +328,26 @@ Dieser Fehler bedeutet, dass das Abonnement als problematisch eingestuft wurde u
 #### <a name="resolution"></a>Lösung
 
 [Wenden Sie sich an das für das Feature zuständige Team](mailto:azuredg@microsoft.com), um dieses Problem zu untersuchen und zu beheben.
+
+### <a name="scenario-definitions-in-category-guest-configuration-cannot-be-duplicated-from-azure-portal"></a>Szenario: Definitionen in der Kategorie „Gastkonfiguration“ können nicht über das Azure-Portal dupliziert werden
+
+#### <a name="issue"></a>Problem
+
+Wenn Sie versuchen, eine benutzerdefinierte Richtliniendefinition über die Azure-Portal-Seite für Richtliniendefinitionen zu erstellen, wählen Sie die Schaltfläche „Definition duplizieren“ aus. Nach dem Zuweisen der Richtlinie werden Sie feststellen, dass Computer nicht konform (_NonCompliant_) sind, da keine Gastkonfigurationszuweisungsressource vorhanden ist.
+
+#### <a name="cause"></a>Ursache
+
+Die Gastkonfiguration basiert auf benutzerdefinierten Metadaten, die Richtliniendefinitionen beim Erstellen von Gastkonfigurationszuweisungsressourcen hinzugefügt werden. Mit der Aktivität „Definition duplizieren“ im Azure-Portal werden keine benutzerdefinierten Metadaten kopiert.
+
+#### <a name="resolution"></a>Lösung
+
+Anstatt das Portal zu verwenden, duplizieren Sie die Richtliniendefinition mithilfe der Policy Insights-API. Das folgende PowerShell-Beispiel stellt eine Option bereit.
+
+```powershell
+# duplicates the built-in policy which audits Windows machines for pending reboots
+$def = Get-AzPolicyDefinition -id '/providers/Microsoft.Authorization/policyDefinitions/4221adbc-5c0f-474f-88b7-037a99e6114c' | % Properties
+New-AzPolicyDefinition -name (new-guid).guid -DisplayName "$($def.DisplayName) (Copy)" -Description $def.Description -Metadata ($def.Metadata | convertto-json) -Parameter ($def.Parameters | convertto-json) -Policy ($def.PolicyRule | convertto-json -depth 15)
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

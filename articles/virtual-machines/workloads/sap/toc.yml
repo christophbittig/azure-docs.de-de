@@ -260,6 +260,8 @@
               href: sap-ascs-ha-multi-sid-wsfc-shared-disk.md
         - name: SAP mit Dateifreigabe
           items:
+            - name: "Installieren von SAP\_NetWeaver mit Hochverfügbarkeit mit Azure Files SMB"
+              href: high-availability-guide-windows-azure-files-smb.md
             - name: "Installieren von SAP\_NetWeaver mit Hochverfügbarkeit mit Azure NetApp Files (SMB)"
               href: high-availability-guide-windows-netapp-files-smb.md
             - name: SAP ASCS/SCS-Instanz mit WSFC und SOFS-Dateifreigabe

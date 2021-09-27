@@ -4,15 +4,15 @@ description: Die Umsetzung dieser Empfehlungen erleichtert es Ihnen, Ihre Sicher
 author: msmbaldwin
 manager: barbkess
 ms.topic: conceptual
-ms.date: 06/17/2019
+ms.date: 09/02/2021
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 09dbe0fbefb8b90b4c4e1ddef57abf3b13856183
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 452c0479834ab7929696af2c95454662adfecfab
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92148091"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538325"
 ---
 # <a name="security-recommendations-for-app-service"></a>Sicherheitsempfehlungen für App Service
 
@@ -56,7 +56,7 @@ Dieser Artikel enthält Sicherheitsempfehlungen für Azure App Service. Die Umse
 
 | Empfehlung | Kommentare |
 |-|-|
-|Verwenden Sie den Standard-Tarif von Azure Security Center. | [Azure Security Center](../security-center/defender-for-app-service-introduction.md) ist nativ in Azure App Service integriert. Mit diesem Dienst können Sie Bewertungen durchführen und Sicherheitsempfehlungen bereitstellen. |
+|Verwenden von Azure Defender für App Service von Azure Security Center | [Azure Defender für App Service](../security-center/defender-for-app-service-introduction.md) ist nativ in Azure App Service integriert. Security Center bewertet die von Ihrem App Service-Plan abgedeckten Ressourcen und generiert Sicherheitsempfehlungen auf der Grundlage der Ergebnisse. Befolgen Sie die ausführlichen Anweisungen in [diesen Empfehlungen]()../security-center/recommendations-reference.md#appservices-recommendations), um die Sicherheit Ihrer App Service-Ressourcen zu verbessern. Azure Defender bietet auch einen Bedrohungsschutz und kann eine Vielzahl von Bedrohungen erkennen, die fast die vollständige Liste der MITRE ATT-&CK-Taktiken abdecken – von Bedrohungen vor einem Angriff bis hin zu Command and Control. Eine vollständige Liste der Azure App Service-Warnungen finden Sie unter [Azure Defender for App Service alerts](../security-center/alerts-reference.md#alerts-azureappserv) (Azure Defender für App Service-Warnungen).|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

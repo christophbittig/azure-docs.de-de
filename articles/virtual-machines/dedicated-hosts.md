@@ -1,20 +1,20 @@
 ---
 title: Übersicht über dedizierte Azure-Hosts für virtuelle Computer
 description: Erfahren Sie mehr darüber, wie dedizierte Azure-Hosts für die Bereitstellung virtueller Computer verwendet werden können.
-author: brittanyrowe
+author: cynthn
 ms.service: virtual-machines
 ms.subservice: dedicated-hosts
 ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 12/07/2020
-ms.author: brittanyrowe
-ms.reviewer: brittanyrowe
-ms.openlocfilehash: 6e34d5c638c8501840c9ef8d9bbaf22ae2874ff1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.author: cynthn
+ms.reviewer: zivr
+ms.openlocfilehash: 957bc2f34ddbc1af019afe0154d3a27ca6e3e368
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128557096"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123451563"
 ---
 # <a name="azure-dedicated-hosts"></a>Dedizierte Azure-Hosts
 
@@ -80,6 +80,7 @@ Hostgruppen, die für automatische Platzierung aktiviert sind, erfordern keine a
 
 Bekannte Probleme und Einschränkungen bei der Verwendung der automatischen VM-Platzierung:
 
+- Sie können für Ihre dedizierten Hosts keine Azure-Hybridvorteile anwenden.
 - Sie können Ihre VMs nicht erneut bereitstellen.
 - Sie können in Verbindung mit dedizierten Hosts keine VMs der Serien Lsv2, NVasv4, NVsv3, Msv2 oder M verwenden.
 

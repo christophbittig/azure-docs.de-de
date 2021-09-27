@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47815bcca9c6630392cb86284d8e8c3cf4d08e67
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 39855746d6cfc52ada19850d6bc9650b3e95a54a
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733194"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123437362"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Hinzufügen von Branding zur Azure Active Directory-Anmeldeseite Ihrer Organisation
 Verwenden Sie das Logo und benutzerdefinierte Farbschemas Ihrer Organisation, um Ihren Azure Active Directory-Anmeldeseiten (Azure AD) ein konsistentes Aussehen und Verhalten zu verleihen. Ihre Anmeldeseiten werden angezeigt, wenn sich Benutzer bei webbasierten Apps Ihrer Organisation wie Microsoft 365 anmelden, die Azure AD als Identitätsanbieter verwenden.
@@ -88,6 +88,9 @@ Ihr benutzerdefiniertes Branding wird nicht sofort angezeigt, wenn Ihre Benutzer
             Das Bild darf nicht größer als 240 x 240 Pixel sein und muss eine Dateigröße von weniger als 10 KB einhalten. Wir empfehlen, ein transparentes Bild zu verwenden, weil der Hintergrund unter Umständen nicht mit Ihrem Logohintergrund übereinstimmt. Wir empfehlen ferner, um das Bild herum keine Auffüllung vorzunehmen, da Ihr Logo sonst klein wirken könnte.
     
         - **Quadratisches Logobild, dunkles Design.** Identisch mit dem oben genannten Bild für quadratisches Logo. Dieses Logobild ersetzt das Bild für quadratisches Logo, wenn ein dunkler Hintergrund verwendet wird, z. B. bei Windows 10 Azure AD Join-Bildschirmen auf der Windows-Willkommensseite.  Wenn Ihr Logo auf weißen, dunkelblauen und schwarzen Hintergründen gut aussieht, müssen Sie dieses Bild nicht hinzufügen. 
+        
+            >[!IMPORTANT]
+            > Transparente Logos werden beim Bild für quadratisches Logo unterstützt. Die im transparenten Logo verwendete Farbpalette kann jedoch mit Hintergründen (z. B. weiß, hellgrau, dunkelgrau und schwarz) in Microsoft 365-Apps und -Diensten in Konflikt stehen, die das Bild für quadratisches Logo verwenden. Unter Umständen müssen Hintergründe in Volltonfarben verwendet werden, um sicherzustellen, dass das Quadratbildlogo in allen Situationen ordnungsgemäß gerendert wird.
         
         - **Option zum angemeldet bleiben anzeigen.** Sie können Ihren Benutzern gestatten, bei Azure AD bis zur expliziten Abmeldung angemeldet zu bleiben. Wenn Sie **Nein** auswählen, wird diese Option ausgeblendet, und Benutzer müssen sich jedes Mal anmelden, wenn der Browser geschlossen und erneut geöffnet wird.
 

@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/27/2019
+ms.date: 08/25/2021
 ms.author: davidmu
 ms.reviewer: phsignor
-ms.openlocfilehash: 7893a73650e90411aa45f35d014b394eab0ad67d
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: a6bf1ec1616d45edd08b943b55f2859d7942c908
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113568512"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425831"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>Verwalten der Einwilligung zu Anwendungen und Auswerten von Einwilligungsanforderungen
 
@@ -116,9 +116,9 @@ Führen Sie die folgenden Schritte aus, um alle zukünftigen Vorgänge der Benut
 1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 2. Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
-4. Wählen Sie im Navigationsmenü **Benutzer und Gruppen** aus.
-5. Wählen Sie **Benutzereinstellungen** aus.
-6. Deaktivieren Sie alle zukünftigen Vorgänge der Benutzerzustimmung, indem Sie **Benutzer können Apps Zugriff auf ihre Daten gewähren** auf **Nein** festlegen und dann auf die Schaltfläche **Speichern** klicken.
+4. Wählen Sie **Unternehmensanwendungen** aus, und wählen Sie im Abschnitt **Verwalten** die Option **Benutzereinstellungen** aus.
+:::image type="content" source="media/manage-consent-requests/disable-user-consent-operations.png" alt-text="Deaktivieren von Vorgängen der Benutzerzustimmung für alle Apps":::
+5. Deaktivieren Sie alle zukünftigen Vorgänge der Benutzerzustimmung, indem Sie die Umschaltfläche **Benutzer können Apps den Zugriff auf Unternehmensdaten in ihrem Namen gestatten** auf **Nein** festlegen und dann auf die Schaltfläche **Speichern** klicken.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
