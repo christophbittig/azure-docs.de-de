@@ -1,14 +1,14 @@
 ---
-title: Verschlüsseln von Betriebssystemdatenträgern mithilfe von kundenseitig verwalteten Schlüsseln in Azure DevTest Labs
+title: Verschlüsseln von Betriebssystemdatenträgern mithilfe von kundenseitig verwalteten Schlüsseln
 description: Erfahren Sie, wie Sie Betriebssystemdatenträger mithilfe von kundenseitig verwalteten Schlüsseln in Azure DevTest Labs verschlüsseln.
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/01/2020
-ms.openlocfilehash: 26ef4ff1529483da9956c6dcc43807af0ffd6463
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2da0e89c5a3f34d9ba967088ea3881f6a30bc1e2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96341206"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632346"
 ---
 # <a name="encrypt-operating-system-os-disks-using-customer-managed-keys-in-azure-devtest-labs"></a>Verschlüsseln von Betriebssystem-Datenträgern mithilfe von kundenseitig verwalteten Schlüsseln in Azure DevTest Labs
 Die serverseitige Verschlüsselung (Server-side Encryption, SSE) schützt Ihre Daten und unterstützt Sie beim Einhalten der Sicherheits- und Complianceanforderungen Ihrer Organisation. Durch SSE werden Ihre auf verwalteten Datenträgern (Betriebssystemdatenträger und reguläre Datenträger) in Azure gespeicherten ruhenden Daten standardmäßig automatisch verschlüsselt, wenn sie in der Cloud gespeichert werden. Erfahren Sie mehr über [Datenträgerverschlüsselung](../virtual-machines/disk-encryption.md) in Azure. 

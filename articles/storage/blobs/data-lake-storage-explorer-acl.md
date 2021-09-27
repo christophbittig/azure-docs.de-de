@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 3f5bd22619e49246583d8b9fc4e62ad8ab266993
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d97df947309f9ccc9886e45878cfc91ea6423b23
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100656341"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128590364"
 ---
 # <a name="use-azure-storage-explorer-to-manage-acls-in-azure-data-lake-storage-gen2"></a>Verwenden von Azure Storage-Explorer zum Verwalten von Zugriffssteuerungslisten in Azure Data Lake Storage Gen2
 
 In diesem Artikel wird beschrieben, wie Sie mit [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) Zugriffssteuerungslisten (Access Control Lists, ACLs) in Speicherkonten verwalten, für die der hierarchische Namespace (HNS) aktiviert ist.
 
-Sie können mit Storage-Explorer die Zugriffssteuerungslisten von Verzeichnissen und Dateien anzeigen und aktualisieren. Die Vererbung von Zugriffssteuerungslisten (ACLs) ist für neue untergeordnete Elemente, die unter einem übergeordneten Verzeichnis erstellt werden, bereits verfügbar. Sie können jedoch auch Einstellungen von Zugriffssteuerungslisten rekursiv auf die vorhandenen untergeordneten Elemente eines übergeordneten Verzeichnisses anwenden, ohne diese Änderungen für jedes untergeordnete Element einzeln vornehmen zu müssen. 
+Sie können mit Storage-Explorer die Zugriffssteuerungslisten von Verzeichnissen und Dateien anzeigen und aktualisieren. Die Vererbung von Zugriffssteuerungslisten (ACLs) ist für neue untergeordnete Elemente, die unter einem übergeordneten Verzeichnis erstellt werden, bereits verfügbar. Sie können jedoch auch Einstellungen von Zugriffssteuerungslisten rekursiv auf die vorhandenen untergeordneten Elemente eines übergeordneten Verzeichnisses anwenden, ohne diese Änderungen für jedes untergeordnete Element einzeln vornehmen zu müssen.
 
 In diesem Artikel erfahren Sie, wie Sie die Zugriffssteuerungslisten von Dateien oder Verzeichnissen ändern und die Einstellungen der Zugriffssteuerungslisten rekursiv auf untergeordnete Verzeichnisse anwenden.
 
@@ -46,11 +46,11 @@ Nach dem erstmaligen Starten von Storage-Explorer wird das Fenster **Microsoft A
 
 Wählen Sie **Azure-Konto hinzufügen**, und klicken Sie auf **Anmelden...** . Befolgen Sie die Anweisungen auf dem Bildschirm, um sich an Ihrem Azure-Konto anzumelden.
 
-![Screenshot: Microsoft Azure Storage-Explorer mit hervorgehobener Option „Azure-Konto hinzufügen“ und der Schaltfläche „Anmelden“](media/storage-quickstart-blobs-storage-explorer/connect.png)
+![Screenshot: Microsoft Azure Storage-Explorer mit hervorgehobener Option „Azure-Konto hinzufügen“ und der Schaltfläche „Anmelden“](media/quickstart-storage-explorer/storage-explorer-connect.png)
 
 Nach Abschluss des Verbindungsvorgangs wird Azure Storage-Explorer geladen, und die Registerkarte **Explorer** wird angezeigt. So erhalten Sie einen Einblick in Ihre gesamten Azure Storage-Konten und in den lokalen Speicher, der über den [Azurite-Speicheremulator](../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), [Cosmos DB](../../cosmos-db/storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)-Konten oder [Azure Stack](/azure-stack/user/azure-stack-storage-connect-se?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)-Umgebungen konfiguriert wurde.
 
-![Fenster „Microsoft Azure Storage-Explorer – Verbinden“](media/storage-quickstart-blobs-storage-explorer/mainpage.png)
+![Fenster „Microsoft Azure Storage-Explorer – Verbinden“](media/quickstart-storage-explorer/storage-explorer-main-page.png)
 
 ## <a name="manage-an-acl"></a>Verwalten einer Zugriffssteuerungsliste
 

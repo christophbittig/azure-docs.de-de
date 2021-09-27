@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/10/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 6169d3b0f99b2044fbe6076283e176d4dc1a76a7
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 8cc39325f8c993afb6901e9700376fc73ecbefe7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272437"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128602857"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device"></a>Installieren und Bereitstellen von Azure IoT Edge für Linux auf einem Windows-Gerät
 
@@ -81,8 +81,8 @@ Azure IoT Edge für Linux unter Windows unterstützt die folgenden Bereitstellun
 
   * Wählen Sie die gewünschte Authentifizierungsmethode aus, und befolgen Sie dann die Schritte im entsprechenden Artikel, um eine Instanz von DPS und eine Registrierung zum Bereitstellen Ihrer Geräte zu erstellen. Weitere Informationen zu den Registrierungstypen finden Sie unter den [Konzepten von Azure IoT Hub Device Provisioning Service](../iot-dps/concepts-service.md#enrollment).
 
-    * [Bereitstellen eines IoT Edge-Geräts mit DPS und symmetrischen Schlüsseln](how-to-auto-provision-symmetric-keys.md)
-    * [Bereitstellen eines IoT Edge-Geräts mit DPS und X.509-Zertifikaten](how-to-auto-provision-x509-certs.md)
+    * [Bereitstellen eines IoT Edge-Geräts mit DPS und symmetrischen Schlüsseln](how-to-provision-devices-at-scale-linux-on-windows-symmetric.md)
+    * [Bereitstellen eines IoT Edge-Geräts mit DPS und X.509-Zertifikaten](how-to-provision-devices-at-scale-linux-on-windows-x509.md)
     * [Bereitstellen eines IoT Edge-Geräts mit DPS und TPM-Nachweis](how-to-auto-provision-tpm-linux-on-windows.md)
 
 ## <a name="create-a-new-deployment"></a>Erstellen einer neuen Bereitstellung
@@ -240,8 +240,8 @@ Sie können für das Bereitstellen Ihrer Geräte Windows Admin Center oder eine 
 
 * Automatische Bereitstellung:
 
-  * [Automatische Bereitstellung mit Device Provisioning Service (DPS) und symmetrischen Schlüsseln](how-to-auto-provision-symmetric-keys.md?tabs=eflow#configure-the-device-with-provisioning-information)
-  * [Automatische Bereitstellung mithilfe von DPS und X.509-Zertifikaten](how-to-auto-provision-x509-certs.md?tabs=eflow#configure-the-device-with-provisioning-information)
+  * [Automatische Bereitstellung mit Device Provisioning Service (DPS) und symmetrischen Schlüsseln](how-to-provision-devices-at-scale-linux-on-windows-symmetric.md#configure-the-device-with-provisioning-information)
+  * [Automatische Bereitstellung mithilfe von DPS und X.509-Zertifikaten](how-to-provision-devices-at-scale-linux-on-windows-x509.md#configure-the-device-with-provisioning-information)
   * [Automatische Bereitstellung mithilfe von DPS und TPM-Nachweis](how-to-auto-provision-tpm-linux-on-windows.md#configure-the-device-with-provisioning-information)
 
 ### <a name="manual-provisioning-using-the-connection-string"></a>Manuelle Bereitstellung mit der Verbindungszeichenfolge
@@ -321,6 +321,9 @@ Vergewissern Sie sich, dass IoT Edge für Linux unter Windows erfolgreich auf Ih
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
+> [!IMPORTANT]
+> Wenn Sie öffentliche PowerShell-Funktionen für IoT Edge für Linux unter Windows verwenden, müssen Sie die Ausführungsrichtlinie für das Zielgerät auf `AllSigned` festlegen. Stellen Sie sicher, dass alle Voraussetzungen für [PowerShell-Funktionen für IoT Edge für Linux unter Windows](reference-iot-edge-for-linux-on-windows-functions.md) erfüllt sind.
+
 1. Melden Sie sich mithilfe des folgenden Befehls in Ihrer PowerShell-Sitzung bei Ihrem virtuellen IoT Edge für Linux-Computer unter Windows an.
 
    ```powershell
@@ -351,9 +354,6 @@ Vergewissern Sie sich, dass IoT Edge für Linux unter Windows erfolgreich auf Ih
        ```
 
 # <a name="windows-admin-center"></a>[Windows Admin Center](#tab/windowsadmincenter)
-
-> [!NOTE]
-> Wenn Sie öffentliche PowerShell-Funktionen für IoT Edge für Linux unter Windows verwenden, müssen Sie die Ausführungsrichtlinie für das Zielgerät auf `AllSigned` festlegen. Stellen Sie sicher, dass alle Voraussetzungen für [PowerShell-Funktionen für IoT Edge für Linux unter Windows](reference-iot-edge-for-linux-on-windows-functions.md) erfüllt sind.
 
 1. Wählen Sie Ihr IoT Edge-Gerät in der Liste der verbundenen Geräte in Windows Admin Center aus, um eine Verbindung damit herzustellen.
 

@@ -5,18 +5,18 @@ services: active-directory-b2c
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: how-to
-ms.date: 05/03/2021
+ms.date: 08/24/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1e0af1080a2d56fc01bdeb4bfb5f6475c477b685
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: 288cffbaa90db2725d2aa2985c003474b2c7eb7b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122777738"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128570727"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>Hinzufügen eines API-Connectors zu einem Benutzerflow für die Registrierung
 
@@ -45,18 +45,18 @@ Sie können die Interaktion auch als Orchestrierungsschritt entwerfen. Dies biet
 Um einen [API-Connector](api-connectors-overview.md) zu verwenden, erstellen Sie zunächst den API-Connector und aktivieren ihn anschließend in einem Benutzerflow.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Wählen Sie unter **Azure-Dienste** die Option **Azure AD B2C** aus.
-4. Wählen Sie **API-Connectors** und dann **Neuer API-Connector** aus.
+1. Wählen Sie unter **Azure-Dienste** die Option **Azure AD B2C** aus.
+1. Wählen Sie **API-Connectors** und dann **Neuer API-Connector** aus.
 
    ![Screenshot der grundlegenden Konfiguration für einen API-Connector](media/add-api-connector/api-connector-new.png)
 
-5. Geben Sie einen Anzeigenamen für den Aufruf an, beispielsweise **Benutzerinformationen überprüfen**.
-6. Geben Sie die **Endpunkt-URL** für den API-Aufruf an.
-7. Wählen Sie den **Authentifizierungstyp** aus, und konfigurieren Sie die Authentifizierungsinformationen zum Aufrufen Ihrer API. Erfahren Sie mehr über das [Schützen Ihres API-Connectors](secure-rest-api.md).
+1. Geben Sie einen Anzeigenamen für den Aufruf an, beispielsweise **Benutzerinformationen überprüfen**.
+1. Geben Sie die **Endpunkt-URL** für den API-Aufruf an.
+1. Wählen Sie den **Authentifizierungstyp** aus, und konfigurieren Sie die Authentifizierungsinformationen zum Aufrufen Ihrer API. Erfahren Sie mehr über das [Schützen Ihres API-Connectors](secure-rest-api.md).
 
    ![Screenshot der Authentifizierungskonfiguration für einen API-Connector](media/add-api-connector/api-connector-config.png)
 
-8. Wählen Sie **Speichern** aus.
+1. Wählen Sie **Speichern** aus.
 
 ## <a name="the-request-sent-to-your-api"></a>An die API gesendete Anforderung
 Ein API-Connector wird als **HTTP POST**-Anforderung dargestellt und sendet Benutzerattribute („Ansprüche“) als Schlüssel-Wert-Paare in einem JSON-Text. Attribute werden ähnlich wie [Microsoft Graph](/graph/api/resources/user#properties)-Benutzereigenschaften serialisiert. 
@@ -103,7 +103,7 @@ Darüber hinaus werden in der Regel die folgenden Ansprüche in allen Anforderun
   - `PostAttributeCollection` – entspricht "Vor dem Erstellen des Benutzers".
   - `PreTokenIssuance` – entspricht "Vor dem Senden des Tokens (Vorschauversion)". [Weitere Informationen zu diesem Schritt](add-api-connector-token-enrichment.md)
 - **Client-ID ('client_id')** : Der `appId`-Wert der Anwendung, der für die Authentifizierung des Endbenutzers in einem Benutzerflow verwendet wird. Dabei handelt es sich *nicht* um den `appId`-Wert der Ressourcenanwendung in Zugriffstoken.
-- **E-Mail-Adresse ('email')** oder [**Identitäten ('identities')** ](/graph/api/resources/objectidentity): Diese Ansprüche können von Ihrer API zum Identifizieren des Endbenutzers verwendet werden, der sich bei der Anwendung authentifiziert.
+- **E-Mail-Adresse ('email')** oder [**Identitäten ('identities')**](/graph/api/resources/objectidentity): Diese Ansprüche können von Ihrer API zum Identifizieren des Endbenutzers verwendet werden, der sich bei der Anwendung authentifiziert.
   
 > [!IMPORTANT]
 > Wenn ein Anspruch zum Zeitpunkt des Aufrufs des API-Endpunkts keinen Wert enthält, wird der Anspruch nicht an die API gesendet. Ihre API sollte so entworfen sein, dass explizit geprüft wird, ob ein Anspruch in der Anforderung enthalten ist. Fehlt der Anspruch, sollte eine entsprechende Verarbeitung erfolgen.
@@ -113,9 +113,9 @@ Darüber hinaus werden in der Regel die folgenden Ansprüche in allen Anforderun
 Führen Sie die folgenden Schritte aus, um einem Benutzerflow für die Registrierung einen API-Connector hinzuzufügen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Wählen Sie unter **Azure-Dienste** die Option **Azure AD B2C** aus.
-4. Wählen Sie **Benutzerflows** und dann den Benutzerflow aus, dem Sie den API-Connector hinzufügen möchten.
-5. Wählen Sie **API-Connectors** und dann die API-Endpunkte aus, die bei den folgenden Schritten im Benutzerflow aufgerufen werden sollen:
+1. Wählen Sie unter **Azure-Dienste** die Option **Azure AD B2C** aus.
+1. Wählen Sie **Benutzerflows** und dann den Benutzerflow aus, dem Sie den API-Connector hinzufügen möchten.
+1. Wählen Sie **API-Connectors** und dann die API-Endpunkte aus, die bei den folgenden Schritten im Benutzerflow aufgerufen werden sollen:
 
    - **Nach dem Verbund mit einem Identitätsanbieter während der Registrierung**
    - **Vor dem Erstellen des Benutzers**
@@ -123,7 +123,7 @@ Führen Sie die folgenden Schritte aus, um einem Benutzerflow für die Registrie
 
    ![Auswählen eines API-Connectors für einen Schritt im Benutzerflow](media/add-api-connector/api-connectors-user-flow-select.png)
 
-6. Wählen Sie **Speichern** aus.
+1. Wählen Sie **Speichern** aus.
 
 Diese Schritte sind nur für **Registrieren und Anmelden (empfohlen)** und **Registrieren (empfohlen)** vorhanden, gelten aber nur für den Registrierungsteil der Benutzerfunktionalität.
 
@@ -315,7 +315,7 @@ Content-type: application/json
 }
 ```
 
-| Parameter                                          | Typ              | Erforderlich | BESCHREIBUNG                                                                                                                                                                                                                                                                            |
+| Parameter                                          | type              | Erforderlich | BESCHREIBUNG                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | version     | String | Ja      | Die Version Ihrer API                                                    |
 | action                                             | String            | Ja      | Der Wert muss `Continue` sein.                                                                                                                                                                                                                                                              |
@@ -336,7 +336,7 @@ Content-type: application/json
 
 ```
 
-| Parameter   | Typ   | Erforderlich | BESCHREIBUNG                                                                |
+| Parameter   | type   | Erforderlich | BESCHREIBUNG                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
 | version     | String | Ja      | Die Version Ihrer API                                                    |
 | action      | String | Ja      | Der Wert muss `ShowBlockPage` sein.                                              |
@@ -360,7 +360,7 @@ Content-type: application/json
 }
 ```
 
-| Parameter   | Typ    | Erforderlich | BESCHREIBUNG                                                                |
+| Parameter   | type    | Erforderlich | BESCHREIBUNG                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
 | version     | String  | Ja      | Die Version Ihrer API                                                    |
 | action      | String  | Ja      | Der Wert muss `ValidationError` sein.                                           |

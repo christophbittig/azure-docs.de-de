@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 08/03/2021
-ms.openlocfilehash: f46f5a01765d03c521c7bbc21b51aef9f3a8f93a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e2dfb0eda9d4e10c97591a6cc534adaa188d87e1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122347031"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128602012"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-configuration-options"></a>Azure Database for PostgreSQL – Konfigurationsoptionen für Hyperscale (Citus)
 
@@ -77,7 +77,7 @@ Für den gesamten Hyperscale (Citus)-Cluster belaufen sich die aggregierten IOPS
 
 Beim [Basic-Tarif](concepts-hyperscale-tiers.md) von Hyperscale (Citus) handelt es sich um eine Servergruppe mit nur einem Knoten.  Da nicht zwischen Koordinator- und Workerknoten unterschieden wird, ist die Wahl von Compute- und Speicherressourcen weniger kompliziert.
 
-| Ressource              | Verfügbare Optionen     |
+| Resource              | Verfügbare Optionen     |
 |-----------------------|-----------------------|
 | Compute, virtuelle Kerne       | 2, 4, 8               |
 | Arbeitsspeicher pro V-Kern, GiB | 4                     |
@@ -115,12 +115,13 @@ Hyperscale (Citus)-Servergruppen sind in den folgenden Azure-Regionen verfügbar
 * Asien-Pazifik:
     * Australien (Osten)
     * Japan, Osten
+    * Japan, Westen
     * Korea, Mitte
     * Asien, Südosten
 * Europa:
     * Frankreich, Mitte
     * Deutschland, Westen-Mitte
-    * Europa, Norden
+    * Nordeuropa
     * Schweiz, Norden
     * UK, Süden
     * Europa, Westen

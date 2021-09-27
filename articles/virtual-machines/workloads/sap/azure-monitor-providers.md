@@ -7,12 +7,12 @@ ms.subservice: baremetal-sap
 ms.topic: article
 ms.date: 07/06/2021
 ms.author: radeltch
-ms.openlocfilehash: e6d5ad24176c779055fbde2c2ec6e6506cea3285
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 5061ee2131ee708c38a68dca02c18a21085b5430
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114392168"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128616857"
 ---
 # <a name="azure-monitor-for-sap-solutions-providers-preview"></a>Anbieter von Azure Monitor für SAP-Lösungen (Vorschau)
 
@@ -118,7 +118,7 @@ Die Konfiguration eines Anbieters von Hochverfügbarkeitsclustern erfolgt in zwe
    Zum Konfigurieren des Anbieters für Hochverfügbarkeitscluster sind die folgenden Informationen erforderlich:
    
    - **Name**. Ein Name für diesen Anbieter. Dieser sollte für die Instanz der Azure Monitor für SAP-Lösung eindeutig sein.
-   - **Prometheus-Endpunkt:** http\://\<servername or ip address\>:9664/metrics.
+   - **Prometheus-Endpunkt:** `http://<servername or ip address>:9664/metrics`.
    - **SID:** Verwenden Sie für SAP-Systeme die SAP-SID. Verwenden Sie für andere Systeme (z. B. NFS-Cluster) einen aus drei Zeichen bestehenden Namen für den Cluster. Die SID muss sich von anderen überwachten Clustern unterscheiden.   
    - **Clustername:** Der Clustername, der beim Erstellen des Clusters verwendet wird. Sie finden den Clusternamen in der Clustereigenschaft `cluster-name`.
    - **Hostname**. Der Linux-Hostname des virtuellen Computers (VM).  
@@ -141,7 +141,7 @@ Die Konfiguration eines Betriebssystemanbieters (Linux) erfolgt in zwei Hauptsch
 2. Konfigurieren Sie einen Betriebssystemanbieter (Linux) für jede BareMetal- oder VM-Knoteninstanz in Ihrer Umgebung. 
    Zum Konfigurieren des Betriebssystemanbieters (Linux) sind die folgenden Informationen erforderlich: 
       - Name. Ein Name für diesen Anbieter. Dieser sollte für die Instanz der Azure Monitor für SAP-Lösungen eindeutig sein. 
-      - Endpunkt von Node Exporter. In der Regel http://<servername or ip address>:9100/metrics. 
+      - Endpunkt von Node Exporter. Normalerweise `http://<servername or ip address>:9100/metrics`. 
 
 > [!NOTE]
 > 9100 ist ein Port, der für den Endpunkt von Node_Exporter verfügbar gemacht wird.

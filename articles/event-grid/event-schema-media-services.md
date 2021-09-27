@@ -2,13 +2,13 @@
 title: Azure Media Services als Event Grid-Quelle
 description: Beschreibt die Eigenschaften, die mit Azure Event Grid für Media Services-Ereignisse bereitgestellt werden.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: c3b40f1a40cd0a5ee611a00f2f0361a8a522d3ad
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.date: 09/15/2021
+ms.openlocfilehash: 4177fc6edb283b0e81e40c7fc1de608dd7726a31
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340427"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589927"
 ---
 # <a name="azure-media-services-as-an-event-grid-source"></a>Azure Media Services als Event Grid-Quelle
 
@@ -149,7 +149,7 @@ Das folgende Beispiel zeigt das Schema des **JobStateChange**-Ereignisses:
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | `previousState` | Zeichenfolge | Der Status des Auftrags vor dem Ereignis. |
 | `state` | Zeichenfolge | Der neue Status des Auftrags, über den in diesem Ereignis eine Benachrichtigung erfolgt. Beispiel: „Geplant: Der Auftrag ist startbereit“ oder „Abgeschlossen: Der Auftrag wurde abgeschlossen“.|
@@ -396,7 +396,7 @@ Das folgende Beispiel zeigt das Schema des **LiveEventConnectionRejected**-Ereig
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | `streamId` | Zeichenfolge | Bezeichner des Streams oder der Verbindung. Der Encoder bzw. der Kunde ist dafür verantwortlich, diese ID in die Erfassungs-URL einzufügen. |  
 | `ingestUrl` | Zeichenfolge | Erfassungs-URL, die vom Liveereignis bereitgestellt wird. |  
@@ -600,7 +600,7 @@ Das folgende Beispiel zeigt das Schema des **LiveEventIncomingDataChunkDropped**
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | `trackType` | Zeichenfolge | Spurtyp (Audio/Video) |
 | `trackName` | Zeichenfolge | Name der Spur |
@@ -672,7 +672,7 @@ Das folgende Beispiel zeigt das Schema des **LiveEventIncomingStreamReceived**-E
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | `trackType` | Zeichenfolge | Spurtyp (Audio/Video) |
 | `trackName` | Zeichenfolge | Name der Spur (entweder vom Encoder oder (bei RTMP) vom Server im Format *SpurTyp_Bitrate* generiert). |
@@ -740,7 +740,7 @@ Das folgende Beispiel zeigt das Schema des **LiveEventIncomingStreamsOutOfSync**
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | `minLastTimestamp` | Zeichenfolge | Minimum der letzten Zeitstempel für alle Spuren (Audio oder Video). |
 | `typeOfTrackWithMinLastTimestamp` | Zeichenfolge | Der Typ der Spur (Audio oder Video) mit dem niedrigsten letzten Zeitstempel. |
@@ -804,7 +804,7 @@ Das folgende Beispiel zeigt das Schema des **LiveEventIncomingVideoStreamsOutOfS
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | `firstTimestamp` | Zeichenfolge | Zeitstempel, der für eine der Spuren/Qualitätsstufen vom Typ Video empfangen wurde. |
 | `firstDuration` | Zeichenfolge | Dauer des Datenblocks mit dem ersten Zeitstempel. |
@@ -965,7 +965,7 @@ Das folgende Beispiel zeigt das Schema des **LiveEventTrackDiscontinuityDetected
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | `trackType` | Zeichenfolge | Spurtyp (Audio/Video) |
 | `trackName` | Zeichenfolge | Name der Spur (entweder vom Encoder oder (bei RTMP) vom Server im Format *SpurTyp_Bitrate* generiert). |
@@ -981,7 +981,7 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | `topic` | Zeichenfolge | Das Event Grid-Thema. Diese Eigenschaft enthält die Ressourcen-ID für das Media Services-Konto. |
 | `subject` | Zeichenfolge | Ressourcenpfad für den Media Services-Kanal unter dem Media Services-Konto. Durch Verketten von topic und subject erhalten Sie die Ressourcen-ID für den Auftrag. |
@@ -996,7 +996,7 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | `source` | Zeichenfolge | Das Event Grid-Thema. Diese Eigenschaft enthält die Ressourcen-ID für das Media Services-Konto. |
 | `subject` | Zeichenfolge | Ressourcenpfad für den Media Services-Kanal unter dem Media Services-Konto. Durch Verketten von topic und subject erhalten Sie die Ressourcen-ID für den Auftrag. |

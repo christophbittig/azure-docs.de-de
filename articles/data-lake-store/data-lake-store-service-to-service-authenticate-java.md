@@ -1,18 +1,18 @@
 ---
 title: Dienst-zu-Dienst-Authentifizierung – Data Lake Storage Gen1 – Java SDK
 description: Hier erfahren Sie, wie Sie mithilfe von Azure Active Directory und Java die Dienst-zu-Dienst-Authentifizierung bei Azure Data Lake Storage Gen1 implementieren.
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.custom: devx-track-java
-ms.author: twooley
-ms.openlocfilehash: 0e320557a7372af6a41038d9b3196db23d2496c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: normesta
+ms.openlocfilehash: 05e8b7a8e86a45e8bf217af443fa0bb61c0ca7bb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96000384"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606473"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-java"></a>Dienst-zu-Dienst-Authentifizierung bei Azure Data Lake Storage Gen1 mithilfe von Java
 

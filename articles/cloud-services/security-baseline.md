@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 12b6e3d0202de03c6378438457900601e4d091b8
-ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+ms.openlocfilehash: 814514ede598d0de435c767ee29ef6aa4564d003
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113129369"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128616572"
 ---
 # <a name="azure-security-baseline-for-azure-cloud-services"></a>Azure-Sicherheitsbaseline für Azure Cloud Services
 
@@ -193,7 +193,7 @@ Erstellen Sie eine Diagnoseeinstellung, mit der das Aktivitätsprotokoll an Azur
 
 **Leitfaden**: Microsoft verwaltet Zeitquellen für Azure-Ressourcen für Azure Cloud Services. Kunden müssen möglicherweise eine Netzwerkregel erstellen, um den Zugriff auf einen in ihrer Umgebung verwendeten Zeitserver über Port 123 mit UDP-Protokoll zu ermöglichen.
 
-- [NTP-Serverzugriff](../firewall/protect-windows-virtual-desktop.md#additional-considerations)
+- [NTP-Serverzugriff](../firewall/protect-azure-virtual-desktop.md#additional-considerations)
 
 **Verantwortlichkeit**: Shared
 

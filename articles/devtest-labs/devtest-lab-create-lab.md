@@ -1,14 +1,14 @@
 ---
-title: Erstellen eines Labs in Azure DevTest Labs | Microsoft Docs
+title: Erstellen eines Labs
 description: Dieser Artikel beschreibt das Erstellen eines Labs mit dem Azure-Portal und Azure DevTest Labs.
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/12/2020
-ms.openlocfilehash: 9fa33a59dd35bfe3469f30f2349f8a08c45bd5e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68b560125a4cacceee613b5c7c9bfaafc5c95c06
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92058342"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128602895"
 ---
 # <a name="create-a-lab-in-azure-devtest-labs"></a>Erstellen eines Labs in Azure DevTest Labs
 
@@ -98,4 +98,3 @@ Nachdem das Lab erstellt wurde, sollten Sie ggf. die folgenden Schritte ausführ
 * [Erstellen einer Labvorlage](devtest-lab-create-template.md)
 * [Erstellen benutzerdefinierter Artefakte für Ihre VMs](devtest-lab-artifact-author.md)
 * [Hinzufügen eines virtuellen Computers zu einem Lab](devtest-lab-add-vm.md)
-

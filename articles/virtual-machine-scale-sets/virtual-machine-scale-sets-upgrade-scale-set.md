@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: cf79bc16ed717a71820b7226c0c97cfd263c7fef
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 5fd9fd2e2077ceeccc4fed0d63e759b7c8ec2e67
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122693743"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128608145"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Ändern einer VM-Skalierungsgruppe
 
@@ -356,7 +356,7 @@ Einige Eigenschaften können mit Ausnahmen je nach aktuellem Wert geändert werd
 ### <a name="properties-that-require-deallocation-to-change"></a>Eigenschaften, für die zur Änderung die Aufhebung der Zuordnung erforderlich ist
 Einige Eigenschaften können nur in bestimmte Werte geändert werden, wenn die Zuordnung der virtuellen Computer in der Skalierungsgruppe aufgehoben wird. Zu diesen Eigenschaften zählen folgende:
 
-- **SKU-Name:** Wird die neue VM-SKU auf der Hardware, auf der sich die Skalierungsgruppe derzeit befindet, nicht unterstützt, müssen Sie die Zuordnung der virtuellen Computer in der Skalierungsgruppe aufheben, bevor Sie den SKU-Namen ändern. Weitere Informationen finden Sie unter [Ändern der Größe einer Azure-VM](../virtual-machines/windows/resize-vm.md). 
+- **SKU-Name:** Wird die neue VM-SKU auf der Hardware, auf der sich die Skalierungsgruppe derzeit befindet, nicht unterstützt, müssen Sie die Zuordnung der virtuellen Computer in der Skalierungsgruppe aufheben, bevor Sie den SKU-Namen ändern. Weitere Informationen finden Sie unter [Ändern der Größe einer Azure-VM](../virtual-machines/resize-vm.md). 
 
 ## <a name="vm-specific-updates"></a>VM-spezifische Updates
 Bestimmte Änderungen können statt auf die globalen Skalierungsgruppeneigenschaften auf spezifische virtuelle Computer angewendet werden. Derzeit wird als VM-spezifische Aktualisierung nur das Anfügen von Datenträgern an virtuelle Computer in der Skalierungsgruppe bzw. das Trennen dieser Datenträger unterstützt. Dieses Feature befindet sich in der Vorschauphase. Weitere Informationen finden Sie in der [Vorschaudokumentation](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk).

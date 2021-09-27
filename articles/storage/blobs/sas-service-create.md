@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 49b01e8322647a35ba24ccc9a7708b2a8754553f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 5e2674a3e9227f5cf5cf2a6ebff0a317f4377f3a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110477739"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606167"
 ---
 # <a name="create-a-service-sas-for-a-container-or-blob"></a>Erstellen einer Dienst-SAS für einen Container oder ein Blob
 
@@ -39,7 +39,7 @@ Eine Dienst-SAS wird mit dem Kontozugriffsschlüssel signiert. Verwenden Sie die
 Um eine Dienst-SAS für einen Container zu erstellen, rufen Sie die Methode [CloudBlobContainer.GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getsharedaccesssignature) auf.
 
 ```csharp
-private static string GetContainerSasUri(CloudBlobContainer container, 
+private static string GetContainerSasUri(CloudBlobContainer container,
                                          string storedPolicyName = null)
 {
     string sasContainerToken;

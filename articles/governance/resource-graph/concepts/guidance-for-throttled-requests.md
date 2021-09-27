@@ -1,15 +1,15 @@
 ---
 title: Leitfaden für gedrosselte Anforderungen
 description: Lernen Sie, parallel zu gruppieren, zu staffeln, zu paginieren und abzufragen, um zu vermeiden, dass Anforderungen durch Azure Resource Graph gedrosselt werden.
-ms.date: 08/17/2021
+ms.date: 09/13/2021
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 745f90fd82c4ee0bd233f6b074c7c3a637820609
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: eece1d35cdabcca957e4ce1e72e32f243a1747e1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122356691"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589737"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Leitfaden für gedrosselte Anforderungen in Azure Resource Graph
 
@@ -200,7 +200,7 @@ Da Azure Resource Graph in einer einzelnen Abfrageantwort höchstens 1.000 Eint
   var results = new List<object>();
   var queryRequest = new QueryRequest(
       subscriptions: new[] { mySubscriptionId },
-      query: "Resources | project id, name, type | top 5000");
+      query: "Resources | project id, name, type");
   var azureOperationResponse = await this.resourceGraphClient
       .ResourcesWithHttpMessagesAsync(queryRequest, header)
       .ConfigureAwait(false);
@@ -215,18 +215,6 @@ Da Azure Resource Graph in einer einzelnen Abfrageantwort höchstens 1.000 Eint
 
       // Inspect throttling headers in query response and delay the next call if needed.
   }
-  ```
-
-- Azure CLI/Azure PowerShell
-
-  Wenn Sie die Azure CLI oder Azure PowerShell verwenden, werden Abfragen an Azure Resource Graph automatisch paginiert, um maximal 5.000 Einträge zu fetchen. Die Abfrageergebnisse geben eine kombinierte Liste mit Einträgen aus allen paginierten Aufrufen zurück. In diesem Fall nutzt eine einzelne paginierte Abfrage (je nach Anzahl der Einträge im Abfrageergebnis) möglicherweise mehr als ein Abfragekontingent. Im folgenden Beispiel werden bei der einzelnen Ausführung einer Abfrage etwa bis zu fünf Abfragekontingente verwendet:
-
-  ```azurecli-interactive
-  az graph query -q 'Resources | project id, name, type' --first 5000
-  ```
-
-  ```azurepowershell-interactive
-  Search-AzGraph -Query 'Resources | project id, name, type' -First 5000
   ```
 
 ## <a name="still-get-throttled"></a>Werden die Anforderungen weiterhin gedrosselt?

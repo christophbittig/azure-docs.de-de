@@ -11,17 +11,17 @@ ms.date: 06/01/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0731e35eab3a2872cd3c07e5401577fd51c33323
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: b96d3ec481d21d937a9c8810c6f2601966672ff1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114437295"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128551541"
 ---
 # <a name="export-a-microsoft-identity-manager-connector-for-use-with-the-azure-ad-ecma-connector-host"></a>Exportieren eines Microsoft Identity Manager-Connectors für die Verwendung mit dem Azure AD-ECMA-Connectorhost
 
 >[!IMPORTANT]
-> Die Vorschauversion zur lokalen Bereitstellung ist derzeit nur mit Einladung verfügbar. Verwenden Sie das [Zugriffsanforderungsformular](https://aka.ms/onpremprovisioningpublicpreviewaccess), um Zugriff auf die Funktion anzufordern. Wir öffnen die Vorschauversion im Rahmen der Vorbereitung auf die allgemeine Verfügbarkeit in den nächsten Monaten für weitere Kunden und Connectors.
+> Die Vorschauversion zur lokalen Bereitstellung ist derzeit nur mit Einladung verfügbar. Um Zugriff auf die Funktion anzufordern, verwenden Sie das [Zugriffsanforderungsformular](https://aka.ms/onpremprovisioningpublicpreviewaccess). Wir öffnen die Vorschauversion im Rahmen der Vorbereitung auf die allgemeine Verfügbarkeit in den nächsten Monaten für weitere Kunden und Connectors.
 
 Sie können eine Konfiguration für einen bestimmten Connector aus einer Forefront Identity Manager-Synchronisierungsdienst- oder Microsoft Identity Manager Synchronization Service-Installation (MIM Sync) in den Azure Active Directory (Azure AD) ECMA-Connectorhost importieren. Die MIM Sync-Installation kann nur für die Konfiguration und nicht für die laufende Synchronisierung mit Azure AD verwendet werden.
 
@@ -55,7 +55,4 @@ An diesem Punkt wird der MIM Sync-Server nicht mehr benötigt.
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [App-Bereitstellung](user-provisioning.md)
-- [Azure AD-ECMA-Connectorhost: Voraussetzungen](on-premises-ecma-prerequisites.md)
-- [Azure AD-ECMA-Connectorhost: Installation](on-premises-ecma-install.md)
-- [Azure AD-ECMA-Connectorhost: Konfiguration](on-premises-ecma-configure.md)
 - [Generischer SQL-Connector](on-premises-sql-connector-configure.md)

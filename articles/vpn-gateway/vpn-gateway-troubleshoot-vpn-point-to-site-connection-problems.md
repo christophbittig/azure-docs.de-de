@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: genli
-ms.openlocfilehash: 136ea5fcb8dd446cfff6400616df058722fa2827
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: c30dc859a7cfc139d1402eadc3b4e0ae812125c2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075371"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128603465"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Problembehandlung: Azure Point-to-Site-Verbindungsprobleme
 
@@ -341,9 +341,9 @@ Aktualisieren Sie den NIC-Treiber:
 4. Wenn Windows keinen neuen Treiber findet, können Sie auf der Website des Geräteherstellers nach Treibern suchen und sie gemäß den Anweisungen installieren.
 5. Starten Sie den Computer neu, und versuchen Sie erneut, eine Verbindung herzustellen.
 
-## <a name="vpn-client-error-dialing-vpn-connection-vpn-connection-name-status--vpn-platform-did-not-trigger-connection"></a>VPN-Clientfehler: Wählen von VPN-Verbindung <VPN Connection Name>, Status: VPN-Plattform hat Verbindung nicht hergestellt
+## <a name="vpn-client-error-dialing-vpn-connection-vpn-connection-name-status--vpn-platform-did-not-trigger-connection"></a>VPN-Clientfehler: Wählen von VPN-Verbindung \<VPN Connection Name\>, Status: VPN-Plattform hat Verbindung nicht hergestellt
 
-Möglicherweise wird auch der folgende Fehler in der Ereignisanzeige von RasClient angezeigt: "Der Benutzer <User> hat eine Verbindung mit dem Namen <VPN Connection Name> gewählt, die jedoch nicht hergestellt werden konnte. Der durch den Fehler zurückgegebene Ursachencode lautet 1460."
+Möglicherweise wird auch der folgende Fehler in der Ereignisanzeige von RasClient angezeigt: "Der Benutzer \<User\> hat eine Verbindung mit dem Namen \<VPN Connection Name\> gewählt, die jedoch nicht hergestellt werden konnte. Der durch den Fehler zurückgegebene Ursachencode lautet 1460."
 
 ### <a name="cause"></a>Ursache
 

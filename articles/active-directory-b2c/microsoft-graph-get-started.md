@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/05/2021
+ms.date: 09/20/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 28e7a6be84a260c26b27b9e6042a6c323d4167ec
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 62b1f81f0e2a1582e78dff044a3109c3b1525939
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128755"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588958"
 ---
 # <a name="register-a-microsoft-graph-application"></a>Registrieren einer Microsoft Graph-Anwendung
 
@@ -47,7 +47,8 @@ Der Flow für die Gewährung von OAuth 2.0-Clientanmeldeinformationen wird derz
 Bevor Ihre Skripts und Anwendungen mit der [Microsoft Graph-API][ms-graph-api] interagieren können, um Azure AD B2C-Ressourcen zu verwalten, müssen Sie eine Anwendungsregistrierung in Ihrem Azure AD B2C-Mandanten erstellen, die die erforderlichen API-Berechtigungen erteilt.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
 1. Wählen Sie **App-Registrierungen** aus, und wählen Sie dann **Registrierung einer neuen Anwendung** aus.
 1. Geben Sie unter **Name** einen Namen für die Anwendung ein. Zum Beispiel *managementapp1*.
@@ -74,7 +75,9 @@ Wenn Ihre Anwendung oder Ihr Skript Benutzer löschen oder deren Kennwörter akt
 
 Führen Sie die folgenden Schritte aus, um die *Benutzer-Administrator*-Rolle hinzuzufügen:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wechseln Sie mit **Verzeichnis + Abonnement** zu Ihrem Azure AD B2C-Mandanten.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Suchen Sie nach **Azure AD B2C**, und wählen Sie diese Option aus.
 1. Wählen Sie unter **Verwalten** den Eintrag **Rollen und Administratoren** aus.
 1. Wählen Sie die Rolle **Benutzeradministrator** aus. 

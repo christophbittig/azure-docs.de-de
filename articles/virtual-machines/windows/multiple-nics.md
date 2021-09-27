@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9cda129c1df1ebb1f880424cd77e65144ef8bd0d
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 81173fa34bec38168233c5f740d49832cf9cb795
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122693884"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589186"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Erstellen und Verwalten eines virtuellen Windows-Computers mit mehrere Netzwerkkarten
 
@@ -124,7 +124,7 @@ Beginnen Sie jetzt damit, Ihre VM-Konfiguration zu erstellen. Jede VM-Größe we
 6. Fügen Sie Routen für sekundäre NICs zum Betriebssystem hinzu. Führen Sie dazu die Schritte unter [Erstellen und Verwalten eines virtuellen Windows-Computers mit mehreren Netzwerkkarten](#configure-guest-os-for-multiple-nics) aus.
 
 ## <a name="add-a-nic-to-an-existing-vm"></a>Hinzufügen einer Netzwerkkarte auf einem vorhandenen virtuellen Computer
-Wenn Sie einem vorhandenen virtuellen Computer eine virtuelle Netzwerkkarte hinzufügen möchten, heben Sie die Zuordnung des virtuellen Computers auf, fügen Sie die virtuelle Netzwerkkarte hinzu, und starten Sie anschließend den virtuellen Computer. Verschiedene [VM-Größen](../sizes.md) unterstützen eine unterschiedliche Anzahl von Netzwerkkarten, passen Sie die Größe Ihres virtuellen Computers daher entsprechend an. Bei Bedarf können Sie die [Größe eines virtuellen Computers ändern](resize-vm.md).
+Wenn Sie einem vorhandenen virtuellen Computer eine virtuelle Netzwerkkarte hinzufügen möchten, heben Sie die Zuordnung des virtuellen Computers auf, fügen Sie die virtuelle Netzwerkkarte hinzu, und starten Sie anschließend den virtuellen Computer. Verschiedene [VM-Größen](../sizes.md) unterstützen eine unterschiedliche Anzahl von Netzwerkkarten, passen Sie die Größe Ihres virtuellen Computers daher entsprechend an. Bei Bedarf können Sie die [Größe eines virtuellen Computers ändern](../resize-vm.md).
 
 1. Heben Sie mit [Stop-AzVM](/powershell/module/az.compute/stop-azvm) die Zuordnung des virtuellen Computers auf. Im folgenden Beispiel wird die Zuordnung für den virtuellen Computer *myVM* in *myResourceGroup* aufgehoben:
 

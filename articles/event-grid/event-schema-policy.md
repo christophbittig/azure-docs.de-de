@@ -4,13 +4,13 @@ description: In diesem Artikel wird beschrieben, wie Azure Policy als Event Grid
 ms.topic: conceptual
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/29/2021
-ms.openlocfilehash: 7723b618910f52d58204711468b482db85ab502c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 09/15/2021
+ms.openlocfilehash: 3b5c984ca1374c50a312665c3f5e3bb063ed8feb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105734907"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589775"
 ---
 # <a name="azure-policy-as-an-event-grid-source"></a>Azure Policy als Event Grid-Quelle
 
@@ -22,8 +22,8 @@ Azure Policy gibt die folgenden Ereignistypen aus:
 
 | Ereignistyp | BESCHREIBUNG |
 | ---------- | ----------- |
-| Microsoft.PolicyInsights.PolicyStateCreated | Wird ausgelöst, wenn ein Richtlinienkonformitätszustand erstellt wird. |
-| Microsoft.PolicyInsights.PolicyStateChanged | Wird ausgelöst, wenn ein Richtlinienkonformitätszustand geändert wird. |
+| Microsoft.PolicyInsights.PolicyStateCreated | Wird ausgelöst, wenn ein Zustand der Richtlinienkonformität erstellt wird. |
+| Microsoft.PolicyInsights.PolicyStateChanged | Wird ausgelöst, wenn ein Status der Richtlinienkonformität geändert wird. |
 | Microsoft.PolicyInsights.PolicyStateDeleted | Wird ausgelöst, wenn ein Richtlinienkonformitätszustand gelöscht wird. |
 
 ## <a name="example-event"></a>Beispielereignis
@@ -131,7 +131,7 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 | Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | `topic` | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
-| `subject` | Zeichenfolge | Die vollqualifizierte ID der Ressource, auf die sich die Konformitätszustandsänderung bezieht, einschließlich des Ressourcennamens und des Ressourcentyps. Verwendet das Format `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroup>/providers/<ProviderNamespace>/<ResourceType>/<ResourceName>`. |
+| `subject` | Zeichenfolge | Die vollständig qualifizierte ID der Ressource, für die die Änderung des Konformitätsstatus gilt, einschließlich des Ressourcennamens und des Ressourcentyps. Verwendet das Format `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroup>/providers/<ProviderNamespace>/<ResourceType>/<ResourceName>`. |
 | `eventType` | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
 | `eventTime` | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
 | `id` | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
@@ -143,10 +143,10 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | `source` | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
-| `subject` | Zeichenfolge | Die vollqualifizierte ID der Ressource, auf die sich die Konformitätszustandsänderung bezieht, einschließlich des Ressourcennamens und des Ressourcentyps. Verwendet das Format `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroup>/providers/<ProviderNamespace>/<ResourceType>/<ResourceName>`. |
+| `subject` | Zeichenfolge | Die vollständig qualifizierte ID der Ressource, für die die Änderung des Konformitätsstatus gilt, einschließlich des Ressourcennamens und des Ressourcentyps. Verwendet das Format `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroup>/providers/<ProviderNamespace>/<ResourceType>/<ResourceName>`. |
 | `type` | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
 | `time` | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
 | `id` | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
@@ -159,7 +159,7 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| `timestamp` | Zeichenfolge | Die Uhrzeit (in UTC), zu der die Ressource von Azure Policy überprüft wurde. Verwenden Sie zum Sortieren von Ereignissen diese Eigenschaft anstelle der Eigenschaften der obersten Ebene `eventTime` oder `time`. |
+| `timestamp` | Zeichenfolge | Die Zeit (in UTC), zu der die Ressource von Azure Policy gescannt wurde. Verwenden Sie zum Sortieren von Ereignissen diese Eigenschaft anstelle der Eigenschaften der obersten Ebene `eventTime` oder `time`. |
 | `policyAssignmentId` | Zeichenfolge | Die Ressourcen-ID der Richtlinienzuweisung. |
 | `policyDefinitionId` | Zeichenfolge | Die Ressourcen-ID der Richtliniendefinition. |
 | `policyDefinitionReferenceId` | Zeichenfolge | Die Verweis-ID für die Richtliniendefinition innerhalb der Initiativendefinition, wenn die Richtlinienzuweisung für eine Initiative vorgesehen ist. Kann leer sein. |

@@ -8,15 +8,15 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 07/21/2021
 ms.author: alkohli
-ms.openlocfilehash: a649383ab6998715de9a696cc1abd86926c81432
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 00ff58c2d11ba76889e1293bdb386c199cb3de00
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419469"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589281"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>Lösungen für eine regelmäßige Datenübertragung
- 
+
 Dieser Artikel gibt einen Überblick über die Datenübertragungslösungen für regelmäßige Datenübertragungen. Die regelmäßige Datenübertragung über das Netzwerk kann als in regelmäßigen Abständen wiederkehrend oder als kontinuierliche Datenverschiebung kategorisiert werden. Der Artikel beschreibt auch die empfohlenen Datenübertragungsoptionen sowie die jeweilige Schlüsselfunktionsmatrix für dieses Szenario.
 
 Eine Übersicht über alle verfügbaren Datenübertragungsoptionen finden Sie unter [Auswählen einer Azure-Datenübertragungslösung](storage-choose-data-transfer-solution.md).
@@ -27,14 +27,14 @@ Die empfohlenen Optionen für die regelmäßige Datenübertragung lassen sich in
 
 - **Skripts/programmgesteuerte Tools**: Für eine Datenübertragung, die in regelmäßigen Abständen stattfindet, verwenden Sie Skripts und programmgesteuerte Tools wie AzCopy und die Azure Storage REST-APIs. Diese Tools sind für IT-Profis und Entwickler geeignet.
 
-    - **AzCopy**: Verwenden Sie dieses Befehlszeilentool, um Daten einfach und schnell in und aus Azure Blobs, Files und Table Storage mit optimaler Leistung zu kopieren. AzCopy unterstützt Nebenläufigkeit und Parallelität sowie die Fortsetzung unterbrochener Kopiervorgänge.
-    - **Azure Storage REST-APIs/SDKs**: Beim Erstellen einer Anwendung können Sie die Anwendung mithilfe von Azure Storage REST-APIs entwickeln und die in mehreren Sprachen angebotenen Azure SDKs verwenden. Die REST-APIs können auch die Azure Storage-Datenverschiebungsbibliothek nutzen, die speziell für das leistungsstarke Kopieren von Daten aus und in Azure entwickelt wurde.
+  - **AzCopy**: Verwenden Sie dieses Befehlszeilentool, um Daten einfach und schnell in und aus Azure Blobs, Files und Table Storage mit optimaler Leistung zu kopieren. AzCopy unterstützt Nebenläufigkeit und Parallelität sowie die Fortsetzung unterbrochener Kopiervorgänge.
+  - **Azure Storage REST-APIs/SDKs**: Beim Erstellen einer Anwendung können Sie die Anwendung mithilfe von Azure Storage REST-APIs entwickeln und die in mehreren Sprachen angebotenen Azure SDKs verwenden. Die REST-APIs können auch die Azure Storage-Datenverschiebungsbibliothek nutzen, die speziell für das leistungsstarke Kopieren von Daten aus und in Azure entwickelt wurde.
 
 - **Tools für kontinuierliche Datenerfassung**: Für kontinuierliche, fortlaufende Datenerfassung können Sie eine der folgenden Optionen auswählen.
 
-    - **Objektreplikation**: Die Objektreplikation kopiert Blockblobs asynchron zwischen Containern in einem Quell- und einem Zielspeicherkonto. Verwenden Sie die Objektreplikation als Lösung, um Container in zwei verschiedenen Speicherkonten synchron zu halten.
-    - **Azure Data Factory**: Data Factory sollte verwendet werden, um einen Übertragungsvorgang aufzuskalieren, und wenn es Bedarf für Orchestrierung und Überwachungsfunktionen auf Unternehmensebene gibt. Verwenden Sie Azure Data Factory, um eine Cloudpipeline einzurichten, die regelmäßig Dateien zwischen mehreren Azure-Diensten, lokal oder einer Kombination aus beidem überträgt. Mit Azure Data Factory können Sie datengesteuerte Workflows orchestrieren, die Daten aus unterschiedlichen Datenspeichern erfassen, und die Datenverschiebung und Datentransformation automatisieren.
-    - **Azure Data Box-Produktfamilie für Onlineübertragungen**: Data Box Edge und Data Box Gateway sind Onlinenetzwerkgeräte, die Daten in und aus Azure übertragen können. Data Box Edge verwendet KI-fähiges (künstliche Intelligenz) Edge-Compute, um Daten vor dem Hochladen zu vorzuverarbeiten. Data Box Gateway ist eine virtuelle Version des Geräts mit den gleichen Datenübertragungsfunktionen.
+  - **Objektreplikation**: Die Objektreplikation kopiert Blockblobs asynchron zwischen Containern in einem Quell- und einem Zielspeicherkonto. Verwenden Sie die Objektreplikation als Lösung, um Container in zwei verschiedenen Speicherkonten synchron zu halten.
+  - **Azure Data Factory**: Data Factory sollte verwendet werden, um einen Übertragungsvorgang aufzuskalieren, und wenn es Bedarf für Orchestrierung und Überwachungsfunktionen auf Unternehmensebene gibt. Verwenden Sie Azure Data Factory, um eine Cloudpipeline einzurichten, die regelmäßig Dateien zwischen mehreren Azure-Diensten, lokal oder einer Kombination aus beidem überträgt. Mit Azure Data Factory können Sie datengesteuerte Workflows orchestrieren, die Daten aus unterschiedlichen Datenspeichern erfassen, und die Datenverschiebung und Datentransformation automatisieren.
+  - **Azure Data Box-Produktfamilie für Onlineübertragungen**: Data Box Edge und Data Box Gateway sind Onlinenetzwerkgeräte, die Daten in und aus Azure übertragen können. Data Box Edge verwendet KI-fähiges (künstliche Intelligenz) Edge-Compute, um Daten vor dem Hochladen zu vorzuverarbeiten. Data Box Gateway ist eine virtuelle Version des Geräts mit den gleichen Datenübertragungsfunktionen.
 
 Data Box-Onlineübertragungsgeräte oder Azure Data Factory werden von IT-Profis eingerichtet und können die Datenübertragung transparent automatisieren.
 
@@ -70,6 +70,6 @@ In der folgenden Tabelle werden die Unterschiede der Schlüsselfunktionen zusamm
 - [Übertragen von Daten mit AzCopy](./storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json).
 - [Weitere Informationen zu Datenübertragungen mit Storage REST-APIs](/dotnet/api/overview/azure/storage).
 - Informationen zum
-    - [Übertragen von Daten mit Data Box Gateway](../../databox-gateway/data-box-gateway-deploy-add-shares.md)
-    - [Transformieren von Daten mit Data Box Edge vor dem Senden an Azure](../../databox-online/azure-stack-edge-deploy-configure-compute.md).
+  - [Übertragen von Daten mit Data Box Gateway](../../databox-gateway/data-box-gateway-deploy-add-shares.md)
+  - [Transformieren von Daten mit Data Box Edge vor dem Senden an Azure](../../databox-online/azure-stack-edge-deploy-configure-compute.md).
 - [Informationen zum Übertragen von Daten mit Azure Data Factory](../../data-factory/tutorial-bulk-copy-portal.md).

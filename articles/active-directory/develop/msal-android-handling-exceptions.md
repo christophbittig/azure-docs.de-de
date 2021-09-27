@@ -3,21 +3,21 @@ title: Fehler und Ausnahmen (MSAL Android) | Azure
 titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie Sie Fehler und Ausnahmen, den bedingten Zugriff und Anspruchsabfragen in MSAL-Android-Anwendungen verarbeiten.
 services: active-directory
-author: hamiltonha
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: troubleshooting
 ms.workload: identity
 ms.date: 08/07/2020
-ms.author: hahamil
+ms.author: marsma
 ms.reviewer: marsma
-ms.openlocfilehash: 4185206e92a78c2684ba1690f03700ef2532cc5e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a4efe81fae5e98c588141e6dff85544dea2961a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98761396"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128567989"
 ---
 # <a name="handle-exceptions-and-errors-in-msal-for-android"></a>Behandeln von Ausnahmen und Fehlern in der MSAL für Android
 

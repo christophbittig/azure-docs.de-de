@@ -10,12 +10,12 @@ ms.date: 8/05/2021
 ms.author: ronytho
 ms.reviewer: jrasnick, wiassaf
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 6a604c4e2a3b1f12fa5d296558023be9bc31cd96
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 3aa47a247ead1a388ce9fda030f348ac9a6b75c4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349976"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588597"
 ---
 # <a name="how-to-set-up-access-control-for-your-azure-synapse-workspace"></a>Einrichten der Zugriffssteuerung für Ihren Azure Synapse-Arbeitsbereich 
 
@@ -139,7 +139,7 @@ Zum Ausführen von Pipelines und Systemaufgaben in Azure Synapse muss eine vom A
     
     | Einstellung | Wert |
     | --- | --- |
-    | Role | Mitwirkender an Storage-Blob |
+    | Role | Mitwirkender an Storage-Blobdaten |
     | Zugriff zuweisen zu | MANAGEDIDENTITY |
     | Member | Name der verwalteten Identität  |
 

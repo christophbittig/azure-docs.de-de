@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/08/2020
+ms.date: 09/20/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9a7f22b05238fb495422a02edd6ca382b4df041a
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 6937318e3d2e8d1a42279242a0d8b476cdab892f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257805"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606682"
 ---
 # <a name="integrating-twilio-verify-app-with-azure-active-directory-b2c"></a>Integrieren der Twilio Verify App mit Azure Active Directory B2C
 
@@ -56,9 +56,9 @@ Die Twilio-Lösung besteht aus den folgenden Komponenten:
 
 1. Eröffnen Sie ein [Testkonto](https://www.twilio.com/try-twilio) bei Twilio.
 
-2. Erwerben Sie bei Twilio eine Telefonnummer. Dies ist in [diesem Artikel](https://support.twilio.com/hc/articles/223135247-How-to-Search-for-and-Buy-a-Twilio-Phone-Number-from-Console) beschrieben.
+1. Erwerben Sie bei Twilio eine Telefonnummer. Dies ist in [diesem Artikel](https://support.twilio.com/hc/articles/223135247-How-to-Search-for-and-Buy-a-Twilio-Phone-Number-from-Console) beschrieben.
 
-3. Navigieren Sie in der Twilio-Konsole zur [Verify API](https://www.twilio.com/console/verify/services), und befolgen Sie die [Anleitung](https://www.twilio.com/docs/verify/verifying-transactions-psd2), um einen Dienst zu erstellen und die PSD2-Option zu aktivieren.  
+1. Navigieren Sie in der Twilio-Konsole zur [Verify API](https://www.twilio.com/console/verify/services), und befolgen Sie die [Anleitung](https://www.twilio.com/docs/verify/verifying-transactions-psd2), um einen Dienst zu erstellen und die PSD2-Option zu aktivieren.  
 
 ## <a name="configure-the-psd2-demo-app"></a>Konfigurieren der PSD2-Demo-App
 
@@ -73,7 +73,7 @@ Die Twilio-Lösung besteht aus den folgenden Komponenten:
    <add key="ida:RedirectUri" value="https://your hosted psd2 demo app url/" />
    ```
 
-2. Die [Web-App](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/source-code/PSD2%20Demo%20App) hostet auch den Generator für ID-Tokenhinweise und den Metadatenendpunkt.
+1. Die [Web-App](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/source-code/PSD2%20Demo%20App) hostet auch den Generator für ID-Tokenhinweise und den Metadatenendpunkt.
    - Erstellen Sie Ihr Signaturzertifikat anhand [dieser Beispielbeschreibung](https://github.com/azure-ad-b2c/samples/tree/master/policies/invite#creating-a-signing-certificate).
    - Aktualisieren Sie die folgenden Zeilen basierend auf Ihrem Zertifikat in „web.config“:
    
@@ -82,35 +82,29 @@ Die Twilio-Lösung besteht aus den folgenden Komponenten:
    <add key="ida:SigningCertAlgorithm" value="RS256" />
    ```
 
-3. Laden Sie die Demoanwendung für den Hostinganbieter Ihrer Wahl hoch. Eine Anleitung für Azure App Service finden Sie in  [dieser Beispielbeschreibung](https://github.com/azure-ad-b2c/samples/tree/master/policies/invite#hosting-the-application-in-azure-app-service). Sie enthält auch Hinweise zum Hochladen Ihres Zertifikats.
+1. Laden Sie die Demoanwendung für den Hostinganbieter Ihrer Wahl hoch. Eine Anleitung für Azure App Service finden Sie in  [dieser Beispielbeschreibung](https://github.com/azure-ad-b2c/samples/tree/master/policies/invite#hosting-the-application-in-azure-app-service). Sie enthält auch Hinweise zum Hochladen Ihres Zertifikats.
 
-4. Aktualisieren Sie die Registrierung Ihrer Azure AD B2C-Anwendung, indem Sie der URL, unter der die Anwendung gehostet wird, eine Entsprechung einer Antwort-URL hinzufügen.
+1. Aktualisieren Sie die Registrierung Ihrer Azure AD B2C-Anwendung, indem Sie der URL, unter der die Anwendung gehostet wird, eine Entsprechung einer Antwort-URL hinzufügen.
 
-5. Öffnen Sie die [Richtliniendateien](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/policy), und ersetzen Sie alle Instanzen von `contoso` durch Ihren Mandantennamen.
+1. Öffnen Sie die [Richtliniendateien](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/policy), und ersetzen Sie alle Instanzen von `contoso` durch Ihren Mandantennamen.
 
-6. Suchen Sie nach dem technischen Profil  **Custom-SMS-Enroll** der Twilio-REST-API. Aktualisieren Sie die `ServiceURL` mit Ihrer Twilio AccountSID und der Absendernummer Ihrer erworbenen Telefonnummer.
+1. Suchen Sie nach dem technischen Profil  **Custom-SMS-Enroll** der Twilio-REST-API. Aktualisieren Sie die `ServiceURL` mit Ihrer Twilio AccountSID und der Absendernummer Ihrer erworbenen Telefonnummer.
 
-7. Suchen Sie nach den technischen Profilen **TwilioRestAPI-Verify-Step1** und **TwilioRestAPI-Verify-Step2** der Twilio-REST-API, und aktualisieren Sie die `ServiceURL` mit Ihrer Twilio AccountSID.
+1. Suchen Sie nach den technischen Profilen **TwilioRestAPI-Verify-Step1** und **TwilioRestAPI-Verify-Step2** der Twilio-REST-API, und aktualisieren Sie die `ServiceURL` mit Ihrer Twilio AccountSID.
 
 ## <a name="integrate-with-azure-ad-b2c"></a>Integration in Azure AD B2C
 
 Fügen Sie Azure AD B2C die Richtliniendateien hinzu:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Administrator Ihres Azure AD B2C-Mandanten an.
-
-2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
-
-3. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **Azure AD B2C**, und klicken Sie darauf.
-
-4. Navigieren Sie zu **Azure AD B2C** > **Identity Experience Framework** > **Richtlinienschlüssel**.
-
-5. Fügen Sie einen neuen Schlüssel mit dem Namen **B2cRestTwilioClientId** hinzu. Wählen Sie **manual** (manuell) aus, und geben Sie den Wert der Twilio AccountSID an.
-
-6. Fügen Sie einen neuen Schlüssel mit dem Namen **B2cRestTwilioClientSecret** hinzu. Wählen Sie **manual** (manuell) aus, und geben Sie den Wert des Twilio-Authentifizierungstokens an.
-
-7. Laden Sie alle Richtliniendateien in Ihren Mandanten hoch.
-
-8. Passen Sie die Zeichenfolge in der GenerateOTPMessageEnrol-Anspruchstransformation für Ihren SMS-Text für die Registrierung an.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
+1. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **Azure AD B2C**, und klicken Sie darauf.
+1. Navigieren Sie zu **Azure AD B2C** > **Identity Experience Framework** > **Richtlinienschlüssel**.
+1. Fügen Sie einen neuen Schlüssel mit dem Namen **B2cRestTwilioClientId** hinzu. Wählen Sie **manual** (manuell) aus, und geben Sie den Wert der Twilio AccountSID an.
+1. Fügen Sie einen neuen Schlüssel mit dem Namen **B2cRestTwilioClientSecret** hinzu. Wählen Sie **manual** (manuell) aus, und geben Sie den Wert des Twilio-Authentifizierungstokens an.
+1. Laden Sie alle Richtliniendateien in Ihren Mandanten hoch.
+1. Passen Sie die Zeichenfolge in der GenerateOTPMessageEnrol-Anspruchstransformation für Ihren SMS-Text für die Registrierung an.
 
 ## <a name="test-the-solution"></a>Testen der Lösung
 

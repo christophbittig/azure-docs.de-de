@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.openlocfilehash: 753d214b520affb59722bc29dbabc50c6e5968f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 92991ef4b9889b0be2e887884ed46086b87ff9f3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91538720"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588882"
 ---
 # <a name="iterative-app-design-for-luis"></a>Iteratives App-Design für LUIS
 
@@ -52,8 +52,6 @@ Der Schematyp der Absicht kann über Entitäten verfügen, wenn dies LUIS beim B
 Ein Entitätsschema konzentriert sich auf die Entitäten, die ihrerseits die Daten darstellen, die aus den Benutzeräußerungen extrahiert werden sollen. Angenommen, ein Benutzer sagt: „Ich möchte drei Pizzas bestellen“. In diesem Fall werden zwei Entitäten extrahiert: _drei_ und _Pizzas_. Mit diesen wird der Zweck der Absicht erfüllt, nämlich das Aufgeben einer Bestellung.
 
 Bei einem Entitätsschema ist die Absicht der Äußerung für die Clientanwendung weniger oder gar nicht wichtig.
-
-Eine gängige Methode zum Organisieren eines Entitätsschemas besteht darin, alle Beispieläußerungen der Absicht **None** hinzuzufügen.
 
 ### <a name="example-of-a-mixed-schema"></a>Beispiel für ein gemischtes Schema
 

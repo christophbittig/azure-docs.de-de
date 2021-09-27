@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/06/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 3a26a181dc8fd25ad93ebba9aaa496f3421bbffc
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 69d95ea67064ad45e60a6c38e37ab425bed27b76
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113354581"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128616876"
 ---
 # <a name="recover-a-deleted-storage-account"></a>Wiederherstellen eines gelöschten Speicherkontos
 
@@ -23,7 +23,7 @@ In einigen Fällen kann ein gelöschtes Speicherkonto möglicherweise über das 
 - Das Speicherkonto wurde innerhalb der letzten 14 Tage gelöscht.
 - Das Speicherkonto wurde mit dem Azure Resource Manager-Bereitstellungsmodell erstellt.
 - Seit dem Löschen des ursprünglichen Kontos wurde kein neues Speicherkonto mit demselben Namen erstellt.
-- Dem Benutzer, der das Speicherkonto wiederherstellt, muss eine Azure RBAC-Rolle zugewiesen werden, die die Berechtigung **Microsoft.Storage/storageAccounts/write** erteilt. Informationen zu integrierten Azure RBAC-Rollen, die diese Berechtigung erteilen, finden Sie unter [Integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md). 
+- Dem Benutzer, der das Speicherkonto wiederherstellt, muss eine Azure RBAC-Rolle zugewiesen werden, die die Berechtigung **Microsoft.Storage/storageAccounts/write** erteilt. Informationen zu integrierten Azure RBAC-Rollen, die diese Berechtigung erteilen, finden Sie unter [Integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md).
 
 Bevor Sie ein gelöschtes Speicherkonto wiederherzustellen versuchen, vergewissern Sie sich, dass die Ressourcengruppe für dieses Konto vorhanden ist. Wenn die Ressourcengruppe gelöscht wurde, müssen Sie sie neu erstellen. Eine Ressourcengruppe kann nicht wiederhergestellt werden. Weitere Informationen finden Sie unter [Verwalten von Ressourcengruppen](../../azure-resource-manager/management/manage-resource-groups-portal.md).
 

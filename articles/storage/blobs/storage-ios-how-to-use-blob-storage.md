@@ -1,18 +1,18 @@
 ---
 title: 'Verwenden des Objektspeichers (Blob-Speichers) in iOS: Azure | Microsoft-Dokumentation'
 description: Speichern Sie nicht strukturierte Daten in der Cloud mit Azure Blob Storage (Objektspeicher).
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 11/20/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: 1b0653c997930c60950da335e79b0388edd43897
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 999b9d5b700dc807255b695b3254cf11e7d37f80
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278353"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128603959"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Verwenden des Blobspeichers mit iOS
 
@@ -39,7 +39,7 @@ Sie benötigen Folgendes, um diese Bibliothek zu verwenden:
     sudo gem install cocoapods
     ```
 
-2. Erstellen Sie als Nächstes im Projektverzeichnis (das Verzeichnis mit Ihrer XCODEPROJ-Datei) eine neue Datei namens _Podfile_ (ohne Erweiterung). Fügen Sie _Podfile_ das Folgende hinzu, und speichern Sie die Datei.
+2. Erstellen Sie als Nächstes im Projektverzeichnis (das Verzeichnis mit Ihrer XCODEPROJ-Datei) eine neue Datei namens *Podfile* (ohne Erweiterung). Fügen Sie *Podfile* das Folgende hinzu, und speichern Sie die Datei.
 
     ```ruby
     platform :ios, '8.0'
@@ -224,12 +224,12 @@ Das folgende Beispiel zeigt, wie alle Blobs in einem Container aufgelistet werde
 - **prefix** – Sie können das Präfix angeben, das für die Blobliste verwendet werden soll. Nur Blobs, die mit diesem Präfix beginnen, werden aufgelistet.
 - **useFlatBlobListing** – Wie im Abschnitt [Benennen von Containern und Blobs und verweisen auf diese](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) erwähnt, können Sie eine virtuelle Hierarchie durch Benennen von Blobs mit Pfadinformationen erstellen, selbst wenn der Blob-Dienst ein flaches Speicherschema ist. Allerdings wird derzeit die nicht-flache Auflistung nicht unterstützt. Diese Funktion ist in Kürze verfügbar. Bis dahin sollte der folgende Wert verwendet werden: **JA**.
 - **blobListingDetails** – Sie können angeben, welche Elemente beim Auflisten der Blobs einbezogen werden sollen.
-  - _AZSBlobListingDetailsNone_: Listen Sie nur zugesicherte Blobs auf, und geben Sie keine Blobmetadaten zurück.
-  - _AZSBlobListingDetailsSnapshots_: Listen Sie zugesicherte Blobs und Blobmomentaufnahmen auf.
-  - _AZSBlobListingDetailsMetadata_: Rufen Sie Blobmetadaten für jedes Blob auf, das in der Liste zurückgegeben wird.
-  - _AZSBlobListingDetailsUncommittedBlobs_: Listen Sie zugesicherte und nicht zugesicherte Blobs auf.
-  - _AZSBlobListingDetailsCopy_: Schließen Sie Kopiereigenschaften in die Liste ein.
-  - _AZSBlobListingDetailsAll_: Listen Sie alle verfügbaren zugesicherten Blobs, nicht zugesicherten Blobs und Momentaufnahmen auf, und geben Sie alle Metadaten und den Kopierstatus für diese Blobs zurück.
+  - *AZSBlobListingDetailsNone*: Listen Sie nur zugesicherte Blobs auf, und geben Sie keine Blobmetadaten zurück.
+  - *AZSBlobListingDetailsSnapshots*: Listen Sie zugesicherte Blobs und Blobmomentaufnahmen auf.
+  - *AZSBlobListingDetailsMetadata*: Rufen Sie Blobmetadaten für jedes Blob auf, das in der Liste zurückgegeben wird.
+  - *AZSBlobListingDetailsUncommittedBlobs*: Listen Sie zugesicherte und nicht zugesicherte Blobs auf.
+  - *AZSBlobListingDetailsCopy*: Schließen Sie Kopiereigenschaften in die Liste ein.
+  - *AZSBlobListingDetailsAll*: Listen Sie alle verfügbaren zugesicherten Blobs, nicht zugesicherten Blobs und Momentaufnahmen auf, und geben Sie alle Metadaten und den Kopierstatus für diese Blobs zurück.
 - **maxResults** – Die maximale Anzahl von Ergebnissen, die für diesen Vorgang zurückgegeben werden. Verwenden Sie -1, um keinen Grenzwert festzulegen.
 - **completionHandler** – Der auszuführende Codeblock mit den Ergebnissen des Auflistungsvorgangs.
 
