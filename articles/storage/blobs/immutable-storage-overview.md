@@ -10,12 +10,12 @@ ms.date: 08/31/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 01ea434081b83065f510a246591af2d05a8d7276
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: ca0ec185721b0e35c15dfe99e361ff024cf01a78
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123469588"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128584207"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Speichern unternehmenskritischer Blobdaten mit unveränderlichem Speicher
 
@@ -53,7 +53,7 @@ Der Cohasset-Bericht ist im [Microsoft Service Trust Center](https://aka.ms/Azur
 
 Unveränderlichkeitsrichtlinien können für eine Blobversion (Vorschau) oder einen Container festgelegt werden. Das Verhalten eines Objekts im Rahmen einer Unveränderlichkeitsrichtlinie hängt vom Geltungsbereich der Richtlinie ab. Weitere Informationen zum Geltungsbereich der einzelnen Typen von Unveränderlichkeitsrichtlinien finden Sie in den folgenden Abschnitten:
 
-- [Geltungsbereich von Richtlinien zur zeitbasierten Aufbewahrung](immutable-time-based-retention-policy-overview.md#time-based-retention-policy-scope) 
+- [Geltungsbereich von Richtlinien zur zeitbasierten Aufbewahrung](immutable-time-based-retention-policy-overview.md#time-based-retention-policy-scope)
 - [Geltungsbereich von Richtlinien zur Aufbewahrung für juristische Zwecke](immutable-legal-hold-overview.md#legal-hold-scope)
 
 Sie können je nach Bereich sowohl eine Richtlinie für die zeitbasierte Aufbewahrung als auch eine Richtlinie zur Aufbewahrung für juristische Zwecke für eine Ressource (Container oder Blobversion) konfigurieren. In der folgenden Tabelle sind die Unveränderlichkeitsrichtlinien aufgeführt, die für die einzelnen Ressourcenbereiche unterstützt werden:
@@ -165,11 +165,11 @@ Wenn Sie Ihre Rechnung nicht begleichen und Ihr Konto über eine aktive zeitbasi
 
 ## <a name="feature-support"></a>Featureunterstützung
 
-In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf den Support hat. 
+In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf die Unterstützung hat.
 
-| Speicherkontotyp                | Blob Storage (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| Speicherkontotyp                | Blob Storage (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) |![Ja](../media/icons/yes-icon.png)  <sup>2</sup>              | ![Ja](../media/icons/yes-icon.png)  <sup>2</sup> | 
+| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) |![Ja](../media/icons/yes-icon.png)  <sup>2</sup>              | ![Ja](../media/icons/yes-icon.png)  <sup>2</sup> |
 | Premium-Blockblobs          | ![Ja](../media/icons/yes-icon.png) |![Ja](../media/icons/yes-icon.png)  <sup>2</sup> | ![Ja](../media/icons/yes-icon.png)  <sup>2</sup> |
 
 <sup>1</sup>    Für Data Lake Storage Gen2 und das NFS 3.0-Protokoll (Network File System) ist ein Speicherkonto mit aktiviertem hierarchischem Namespace erforderlich.

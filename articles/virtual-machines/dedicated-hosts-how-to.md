@@ -8,17 +8,17 @@ ms.subservice: dedicated-hosts
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 09/01/2021
-ms.reviewer: cynthn, zivr
-ms.openlocfilehash: c4d895551f852c26d9083c570de29d5cbdedfa53
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.reviewer: brittanyrowe
+ms.openlocfilehash: 3bae87c87c7ab8dd1090f40b4e0589c84e2c54ec
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123440740"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128557115"
 ---
 # <a name="deploy-vms-and-scale-sets-to-dedicated-hosts"></a>Bereitstellen von VMs und Skalierungsgruppen auf dedizierten Hosts
 
-**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Einheitliche Skalierungsgruppen
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Dieser Artikel führt Sie durch die Erstellung eines [dedizierten Azure-Hosts](dedicated-hosts.md) zum Hosten Ihrer virtuellen Computer (VMs) und Skalierungsgruppeninstanzen.
 
@@ -174,7 +174,7 @@ $dHost = New-AzHost `
 
 ---
 
-## <a name="create-a-vm"></a>Erstellen einer VM
+## <a name="create-a-vm"></a>Erstellen eines virtuellen Computers (VM)
 
 Erstellen Sie nun einen virtuellen Computer (VM) auf dem Host.
 

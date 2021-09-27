@@ -8,12 +8,12 @@ ms.date: 09/21/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 5ea7c1afd57fa566f9dcc5f92760f8350b978783
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8556dc719aa8abcfa1506b4d1147c29959b32746
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128605409"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427622"
 ---
 # <a name="azcopy-remove"></a>azcopy remove
 
@@ -40,7 +40,7 @@ azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[S
 ```
 
 Entfernen eines gesamten virtuellen Verzeichnisses mithilfe eines SAS-Tokens:
-
+ 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true
 ```
@@ -72,7 +72,6 @@ azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/parent/d
     blob1
     blob2
 ```
-
 Entfernen Sie eine einzelne Datei aus einem Blob Storage-Konto, das über einen hierarchischen Namespace verfügt („include“/„exclude“ nicht unterstützt):
 
 ```azcopy
@@ -105,9 +104,9 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 **--include-pattern** string  Schließt nur Dateien ein, deren Name der Musterliste entspricht. Beispiel: *`.jpg`;* `.pdf`;`exactName`
 
-**--list-of-files** string  Definiert den Speicherort einer Datei, die die Liste der zu löschenden Dateien und Verzeichnisse enthält. Die relativen Pfade sollten durch Zeilenumbrüche getrennt werden, und die Pfade sollten NICHT URL-codiert sein.
+**--list-of-files** string  Definiert den Speicherort einer Datei, die die Liste der zu löschenden Dateien und Verzeichnisse enthält. Die relativen Pfade sollten durch Zeilenumbrüche getrennt werden, und die Pfade sollten NICHT URL-codiert sein. 
 
-**--list-of-versions** string   Gibt eine Datei an, bei der jede Versions-ID in einer separaten Zeile aufgeführt wird. Beachten Sie, dass die Quelle auf ein einzelnes Blob verweisen muss und dass alle in der Datei mit diesem Flag angegebenen Versions-IDs nur zum Quellblob gehören dürfen. Die angegebenen Versions-IDs des jeweiligen Blobs werden aus Azure Storage gelöscht.
+**--list-of-versions** string   Gibt eine Datei an, bei der jede Versions-ID in einer separaten Zeile aufgeführt wird. Beachten Sie, dass die Quelle auf ein einzelnes Blob verweisen muss und dass alle in der Datei mit diesem Flag angegebenen Versions-IDs nur zum Quellblob gehören dürfen. Die angegebenen Versions-IDs des jeweiligen Blobs werden aus Azure Storage gelöscht. 
 
 **--log-level** string  Definiert, wie ausführlich die Protokolldatei sein soll. Verfügbare Ebenen umfassen: `INFO`(alle Anforderungen/Antworten), `WARNING`(langsame Antworten), `ERROR`(nur fehlerhafte Anforderungen) und `NONE`(keine Ausgabeprotokolle). (Standard `INFO`) (Standard `INFO`)
 

@@ -3,12 +3,12 @@ title: Bereitstellen von Zertifikaten
 description: Es wird beschrieben, wie Sie Zertifikate für Defender für IoT einrichten und bereitstellen.
 ms.date: 08/29/2021
 ms.topic: how-to
-ms.openlocfilehash: 83345d9ad0267e39093bc310c8ebd940f878c47e
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: d6a67a84dab6df165346ff2739d0ac56e2b8eff2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123440735"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128602819"
 ---
 # <a name="about-certificates"></a>Informationen zu Zertifikaten
 
@@ -193,9 +193,9 @@ In diesem Abschnitt wird beschrieben, wie Sie vorhandene Zertifikatsdateien in u
 
 |**Beschreibung** | **CLI-Befehl** |
 |--|--|
-| Konvertieren einer CRT-Datei in eine PEM-Datei   | openssl x509 -inform PEM -in <full path>/<Name der PEM-Datei>.pem -out <fullpath>/<Name der CRT-Datei>.crt  | 
-| Konvertieren einer PEM-Datei in eine CRT-Datei   | openssl x509 -inform PEM -in <full path>/<Name der PEM-Datei>.pem -out <fullpath>/<Name der CRT-Datei>.crt |  
-| Konvertieren einer PKCS#12-Datei (.pfx, .p12) mit einem privaten Schlüssel und Zertifikaten in PEM   | openssl pkcs12 -in keyStore.pfx -out keyStore.pem -nodes. Sie können „-nocerts“ hinzufügen, um nur den privaten Schlüssel auszugeben, oder „-nokeys“, um nur die Zertifikate auszugeben.  |  
+| Konvertieren einer CRT-Datei in eine PEM-Datei   | `openssl x509 -inform PEM -in <full path>/<pem-file-name>.pem -out <fullpath>/<crt-file-name>.crt`  | 
+| Konvertieren einer PEM-Datei in eine CRT-Datei   | `openssl x509 -inform PEM -in <full path>/<pem-file-name>.pem -out <fullpath>/<crt-file-name>.crt` |  
+| Konvertieren einer PKCS#12-Datei (.pfx, .p12) mit einem privaten Schlüssel und Zertifikaten in PEM   | `openssl pkcs12 -in keyStore.pfx -out keyStore.pem -nodes`. Sie können „-nocerts“ hinzufügen, um nur den privaten Schlüssel auszugeben, oder „-nokeys“, um nur die Zertifikate auszugeben.  |  
 
 ## <a name="troubleshooting"></a>Problembehandlung  
 

@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 08/30/2021
 ms.author: chuye
-ms.openlocfilehash: 8a54d02d434ba9a0552668e24022108d3ad561b9
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 0d097e769bfea8ff9c65921e8f0d851372187a02
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123452534"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128564902"
 ---
 # <a name="azure-storage-explorer-soft-delete-guide"></a>Azure Storage-Explorer – Leitfaden zum vorläufigen Löschen
 
@@ -20,7 +20,7 @@ Vorläufiges Löschen trägt dazu bei, die Auswirkungen des versehentlichen Lös
 
 ## <a name="configuring-delete-retention-policy"></a>Konfigurieren einer Aufbewahrungsrichtlinie für Löschungen
 
-Sie können die Aufbewahrungsrichtlinie für Löschungen für jedes Speicherkonto im Storage-Explorer konfigurieren. Öffnen Sie das Kontextmenü für einen "Blobcontainer"-Knoten unter dem Speicherkonto, und wählen Sie **Configure Soft Delete Policy...** (Richtlinie für vorläufiges Löschen konfigurieren...) aus. 
+Sie können die Aufbewahrungsrichtlinie für Löschungen für jedes Speicherkonto im Storage-Explorer konfigurieren. Öffnen Sie das Kontextmenü für einen "Blobcontainer"-Knoten unter dem Speicherkonto, und wählen Sie **Configure Soft Delete Policy...** (Richtlinie für vorläufiges Löschen konfigurieren...) aus.
 
 Das Festlegen einer neuen Richtlinie kann bis zu 30 Sekunden dauern, bis sie wirksam wird. Das Löschen von Daten, ohne darauf zu warten, dass die neue Richtlinie wirksam wird, kann zu unerwartetem Verhalten führen. Der Storage-Explorer wartet 30 Sekunden, bevor eine erfolgreich konfigurierte Richtlinie im Aktivitätsprotokoll gemeldet wird.
 
@@ -61,7 +61,7 @@ Sie können Blobs auch rekursiv unter einem Verzeichnis wiederherstellen. Wenn e
 
 In Blobcontainern mit HNS-Aktivierung ist das Wiederherstellen eines Blobs nicht möglich, wenn bereits ein aktives Blob mit demselben Namen vorhanden ist.
 
-> [!Note]
+> [!NOTE]
 > Vorläufig gelöschte Momentaufnahmen können nur wiederhergestellt werden, indem das Basisblob wiederhergestellt wird. Es gibt keine Möglichkeit, einzelne Momentaufnahmen wiederherzustellen.
 
 ## <a name="undelete-blobs-by-date-range"></a>Wiederherstellen von Blobs nach Datumsbereich
@@ -74,5 +74,5 @@ Wählen Sie zum Wiederherstellen von Blobs nach Datumsbereich die vorläufig gel
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Azure Storage-Explorer – Leitfaden zur Blobversionsverwaltung](./storage-explorer-blob-versioning.md)
-* [Vorläufiges Löschen für Blobs](../blobs/soft-delete-blob-overview.md)
+- [Azure Storage-Explorer – Leitfaden zur Blobversionsverwaltung](./storage-explorer-blob-versioning.md)
+- [Vorläufiges Löschen für Blobs](../blobs/soft-delete-blob-overview.md)

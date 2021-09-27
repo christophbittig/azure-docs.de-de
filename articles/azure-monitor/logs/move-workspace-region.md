@@ -5,12 +5,12 @@ author: yossiy
 ms.topic: how-to
 ms.date: 08/17/2021
 ms.author: yossiy
-ms.openlocfilehash: 8d8a12fe1fcc53b5e268ca412f3e0320cf8d95d9
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: cecfa72493545f40c2e7326fece88cb85f99974b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123427244"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128565411"
 ---
 # <a name="move-a-log-analytics-workspace-to-another-region-by-using-the-azure-portal"></a>Verschieben eines Log Analytics-Arbeitsbereichs in eine andere Region über das Azure-Portal
 
@@ -25,7 +25,7 @@ Eine Arbeitsbereichsumgebung kann komplex sein und verbundene Quellen, verwaltet
 - Um die Arbeitsbereichskonfiguration in eine Vorlage zu exportieren, die in einer anderen Region bereitgestellt werden kann, benötigen Sie die Rolle [Log Analytics-Mitwirkender](../../role-based-access-control/built-in-roles.md#log-analytics-contributor) oder [Mitwirkender an der Überwachung](../../role-based-access-control/built-in-roles.md#monitoring-contributor) bzw. höhere Berechtigungen.
 
 - Identifizieren Sie alle Ressourcen, die Ihrem Arbeitsbereich derzeit zugeordnet sind, darunter:
-  - *Verbundene Agents*: Geben Sie **Protokolle** in Ihren Arbeitsbereich ein, und fragen Sie die Tabelle [Heartbeat](../insights/solution-agenthealth.md#heartbeat-records) ab, um verbundene Agents aufzulisten.
+  - *Verbundene Agents*: Geben Sie **Protokolle** in Ihren Arbeitsbereich ein, und fragen Sie die Tabelle [Heartbeat](../insights/solution-agenthealth.md#azure-monitor-log-records) ab, um verbundene Agents aufzulisten.
     ```kusto
     Heartbeat
     | summarize by Computer, Category, OSType, _ResourceId
@@ -320,7 +320,7 @@ Wenn Sie den Quellarbeitsbereich verwerfen möchten, löschen Sie die exportiert
    - Wenn Sie eine neue Ressourcengruppe für diese Bereitstellung erstellt haben, wählen Sie auf der Symbolleiste **Ressourcengruppe löschen** aus, um die Ressourcengruppe zu löschen.
    - Wenn die Vorlage für eine bestehende Ressourcengruppe bereitgestellt wurde, wählen Sie die Ressourcen aus, die mit der Vorlage bereitgestellt wurden, und wählen Sie dann auf der Symbolleiste **Löschen** aus, um die ausgewählten Ressourcen zu löschen.
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Während neue Daten in Ihren neuen Arbeitsbereich erfasst werden, stehen ältere Daten im ursprünglichen Arbeitsbereich weiterhin für Abfragen zur Verfügung und unterliegen der im Arbeitsbereich definierten Aufbewahrungsrichtlinie. Es wird empfohlen, den ursprünglichen Arbeitsbereich so lange beizubehalten, wie Sie ältere Daten zur [arbeitsbereichübergreifenden Abfrage](./cross-workspace-query.md#performing-a-query-across-multiple-resources) benötigen. 
 

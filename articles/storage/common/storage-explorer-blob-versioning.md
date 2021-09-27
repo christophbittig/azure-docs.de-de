@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: chuye
-ms.openlocfilehash: ea0b0470c83df147526a145a7c54f7245a72c4c4
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: dfff19eee4c852e336d0d943a9509d286d510347
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123450321"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626682"
 ---
 # <a name="azure-storage-explorer-blob-versioning-guide"></a>Azure Storage-Explorer – Leitfaden zur Blobversionsverwaltung
 
@@ -62,7 +62,7 @@ In dieser Ansicht zeigt Storage-Explorer Folgendes an:
 
 - Aktive Blobs ohne Versionsangabe
 - Aktuelle Versionen
-- Neueste aktive Vorgängerversionen. 
+- Neueste aktive Vorgängerversionen.
 
 Bei Blobs, die über keine aktuelle Version, aber eine aktive Vorgängerversion verfügen, zeigt Storage-Explorer deren neueste aktive Vorgängerversion als Darstellung des jeweiligen Blobs an.
 
@@ -73,13 +73,13 @@ In dieser Ansicht zeigt Storage-Explorer Folgendes an:
 - Aktive Blobs ohne Versionsangabe
 - Vorläufig gelöschte Blobs ohne Versionsangabe
 - Aktuelle Versionen
-- Neueste Vorgängerversionen. 
+- Neueste Vorgängerversionen.
 
 Bei Blobs, die über keine aktuelle Version verfügen, zeigt Storage-Explorer deren neueste Vorgängerversion als Darstellung des jeweiligen Blobs an.
 
-> [!Note]
+> [!NOTE]
 > Aufgrund einer Diensteinschränkung benötigt Storage-Explorer einige zusätzliche Verarbeitungsschritte, damit beim Auflisten von Blobversionen eine hierarchische Ansicht Ihrer virtuellen Verzeichnisse angezeigt wird. Das Auflisten von Blobs in den folgenden Ansichten dauert länger:
-> 
+>
 > - Aktive Blobs und Blobs ohne aktuelle Version
 > - Alle Blobs und Blobs ohne aktuelle Version
 
@@ -117,6 +117,6 @@ Jede Blobversion hat eine eigene Zugriffsebene. Wenn Sie die Zugriffsebene von B
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Blobversionsverwaltung](../blobs/versioning-overview.md)
-* [Vorläufiges Löschen für Blobs](../blobs/soft-delete-blob-overview.md)
-* [Azure Storage-Explorer – Leitfaden zum vorläufigen Löschen](./storage-explorer-soft-delete.md)
+- [Blobversionsverwaltung](../blobs/versioning-overview.md)
+- [Vorläufiges Löschen für Blobs](../blobs/soft-delete-blob-overview.md)
+- [Azure Storage-Explorer – Leitfaden zum vorläufigen Löschen](./storage-explorer-soft-delete.md)
