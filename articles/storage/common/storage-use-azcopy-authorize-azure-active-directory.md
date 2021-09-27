@@ -7,20 +7,20 @@ ms.topic: how-to
 ms.date: 04/01/2021
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: e6b2e331c274013ccad445c4e203388b8b7b8048
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: d5aced875863f892ec9dda0022f4571ce15349c4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111903867"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128638233"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>Autorisieren des Zugriffs auf Blobs mit AzCopy und Azure Active Directory (Azure AD)
 
-Sie können AzCopy mit Autorisierungsanmeldeinformationen bereitstellen, indem Sie Azure AD verwenden. Auf diese Weise müssen Sie nicht jedem Befehl ein Shared Access Signature-Token (SAS) anfügen. 
+Sie können AzCopy mit Autorisierungsanmeldeinformationen bereitstellen, indem Sie Azure AD verwenden. Auf diese Weise müssen Sie nicht jedem Befehl ein Shared Access Signature-Token (SAS) anfügen.
 
-Überprüfen Sie zunächst Ihre Rollenzuweisungen. Wählen Sie dann aus, welchen Typ von _Sicherheitsprinzipal_ Sie autorisieren möchten. Eine [Benutzeridentität](../../active-directory/fundamentals/add-users-azure-active-directory.md), eine [verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md) und ein [Dienstprinzipal](../../active-directory/develop/app-objects-and-service-principals.md) sind jeweils Sicherheitsprinzipaltypen.
+Überprüfen Sie zunächst Ihre Rollenzuweisungen. Wählen Sie dann aus, welchen Typ von *Sicherheitsprinzipal* Sie autorisieren möchten. Eine [Benutzeridentität](../../active-directory/fundamentals/add-users-azure-active-directory.md), eine [verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md) und ein [Dienstprinzipal](../../active-directory/develop/app-objects-and-service-principals.md) sind jeweils Sicherheitsprinzipaltypen.
 
-Eine Benutzeridentität ist ein beliebiger Benutzer, der über eine Identität in Azure AD verfügt. Dieser Sicherheitsprinzipal lässt sich am einfachsten autorisieren. Verwaltete Identitäten und Dienstprinzipale sind eine gute Option, wenn Sie AzCopy in einem Skript verwenden möchten, das ohne Benutzerinteraktion ausgeführt wird. Eine verwaltete Identität eignet sich besser für Skripts, die auf einem virtuellen Azure-Computer (VM) ausgeführt werden, und ein Dienstprinzipal eignet sich besser für Skripts, die lokal ausgeführt werden. 
+Eine Benutzeridentität ist ein beliebiger Benutzer, der über eine Identität in Azure AD verfügt. Dieser Sicherheitsprinzipal lässt sich am einfachsten autorisieren. Verwaltete Identitäten und Dienstprinzipale sind eine gute Option, wenn Sie AzCopy in einem Skript verwenden möchten, das ohne Benutzerinteraktion ausgeführt wird. Eine verwaltete Identität eignet sich besser für Skripts, die auf einem virtuellen Azure-Computer (VM) ausgeführt werden, und ein Dienstprinzipal eignet sich besser für Skripts, die lokal ausgeführt werden.
 
 Weitere Informationen zu AzCopy finden Sie unter [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md).
 
@@ -145,7 +145,7 @@ $env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
 ```
 
 > [!NOTE]
-> Erwägen Sie, eine Eingabeaufforderung wie in diesem Beispiel zu verwenden. So erscheint das Kennwort nicht im Befehlsverlauf Ihrer Konsole.  
+> Erwägen Sie, eine Eingabeaufforderung wie in diesem Beispiel zu verwenden. So erscheint das Kennwort nicht im Befehlsverlauf Ihrer Konsole.
 
 Geben Sie dann den folgenden Befehl ein, und drücken Sie die EINGABETASTE.
 
@@ -153,7 +153,7 @@ Geben Sie dann den folgenden Befehl ein, und drücken Sie die EINGABETASTE.
 azcopy login --service-principal  --application-id application-id --tenant-id=tenant-id
 ```
 
-Ersetzen Sie den Platzhalter `<application-id>` mit der Anwendungs-ID der App-Registrierung Ihres Dienstprinzipals. Ersetzen Sie den Platzhalter `<tenant-id>` mit der Mandanten-ID der Organisation, zu der das Speicherkonto gehört. Wählen Sie **Azure Active Directory > Eigenschaften > Verzeichnis-ID** im Azure-Portal aus, um die Mandanten-ID zu finden. 
+Ersetzen Sie den Platzhalter `<application-id>` mit der Anwendungs-ID der App-Registrierung Ihres Dienstprinzipals. Ersetzen Sie den Platzhalter `<tenant-id>` mit der Mandanten-ID der Organisation, zu der das Speicherkonto gehört. Wählen Sie **Azure Active Directory > Eigenschaften > Verzeichnis-ID** im Azure-Portal aus, um die Mandanten-ID zu finden.
 
 #### <a name="authorize-a-service-principal-by-using-a-certificate"></a>Autorisieren eines Dienstprinzipals mithilfe eines Zertifikats
 
@@ -181,13 +181,13 @@ azcopy login --service-principal --certificate-path <path-to-certificate-file> -
 Ersetzen Sie den Platzhalter `<path-to-certificate-file>` mit einem relativen oder vollqualifizierten Pfad zur Zertifikatdatei. AzCopy speichert den Pfad zu diesem Zertifikat, speichert jedoch keine Kopie des Zertifikats. Achten Sie darauf, dass das Zertifikat dort bleibt, wo es ist. Ersetzen Sie den Platzhalter `<tenant-id>` mit der Mandanten-ID der Organisation, zu der das Speicherkonto gehört. Wählen Sie **Azure Active Directory > Eigenschaften > Verzeichnis-ID** im Azure-Portal aus, um die Mandanten-ID zu finden.
 
 > [!NOTE]
-> Erwägen Sie, eine Eingabeaufforderung wie in diesem Beispiel zu verwenden. So erscheint das Kennwort nicht im Befehlsverlauf Ihrer Konsole. 
+> Erwägen Sie, eine Eingabeaufforderung wie in diesem Beispiel zu verwenden. So erscheint das Kennwort nicht im Befehlsverlauf Ihrer Konsole.
 
 ## <a name="authorize-without-a-secret-store"></a>Autorisieren ohne Geheimnisspeicher
 
-Mit dem Befehl `azcopy login` wird ein OAuth-Token abgerufen und in einem Geheimnisspeicher auf Ihrem System gespeichert. Wenn Ihr Betriebssystem über keinen Geheimnisspeicher verfügt (z. B. *keyring* unter Linux`azcopy login`), funktioniert der Befehl nicht, da es keinen Speicherort für das Token gibt. 
+Mit dem Befehl `azcopy login` wird ein OAuth-Token abgerufen und in einem Geheimnisspeicher auf Ihrem System gespeichert. Wenn Ihr Betriebssystem über keinen Geheimnisspeicher verfügt (z. B. *keyring* unter Linux`azcopy login`), funktioniert der Befehl nicht, da es keinen Speicherort für das Token gibt.
 
-Anstatt den Befehl `azcopy login` zu verwenden, können Sie In-Memory-Umgebungsvariablen festlegen. Führen Sie dann einen beliebigen AzCopy-Befehl aus. Der AzCopy-Befehl ruft das erforderliche Authentifizierungstoken für den Vorgang ab. Nach Abschluss des Vorgangs wird das Token aus dem Arbeitsspeicher gelöscht. 
+Anstatt den Befehl `azcopy login` zu verwenden, können Sie In-Memory-Umgebungsvariablen festlegen. Führen Sie dann einen beliebigen AzCopy-Befehl aus. Der AzCopy-Befehl ruft das erforderliche Authentifizierungstoken für den Vorgang ab. Nach Abschluss des Vorgangs wird das Token aus dem Arbeitsspeicher gelöscht.
 
 ### <a name="authorize-a-user-identity"></a>Autorisieren einer Benutzeridentität
 
@@ -264,10 +264,10 @@ export AZCOPY_SPA_CLIENT_SECRET=<client-secret>
 export AZCOPY_TENANT_ID=<tenant-id>
 ```
 
-Ersetzen Sie den Platzhalter `<application-id>` mit der Anwendungs-ID der App-Registrierung Ihres Dienstprinzipals. Ersetzen Sie den Platzhalter `<client-secret>` durch den geheimen Clientschlüssel. Ersetzen Sie den Platzhalter `<tenant-id>` mit der Mandanten-ID der Organisation, zu der das Speicherkonto gehört. Wählen Sie **Azure Active Directory > Eigenschaften > Verzeichnis-ID** im Azure-Portal aus, um die Mandanten-ID zu finden. 
+Ersetzen Sie den Platzhalter `<application-id>` mit der Anwendungs-ID der App-Registrierung Ihres Dienstprinzipals. Ersetzen Sie den Platzhalter `<client-secret>` durch den geheimen Clientschlüssel. Ersetzen Sie den Platzhalter `<tenant-id>` mit der Mandanten-ID der Organisation, zu der das Speicherkonto gehört. Wählen Sie **Azure Active Directory > Eigenschaften > Verzeichnis-ID** im Azure-Portal aus, um die Mandanten-ID zu finden.
 
 > [!NOTE]
-> Verwenden Sie ggf. eine Eingabeaufforderung, um das Kennwort vom Benutzer zu erfassen. Auf diese Weise wird Ihr Kennwort in Ihrem Befehlsverlauf nicht angezeigt. 
+> Verwenden Sie ggf. eine Eingabeaufforderung, um das Kennwort vom Benutzer zu erfassen. Auf diese Weise wird Ihr Kennwort in Ihrem Befehlsverlauf nicht angezeigt.
 
 Führen Sie dann einen beliebigen azcopy-Befehl aus (beispielsweise: `azcopy list https://contoso.blob.core.windows.net`).
 
@@ -275,7 +275,7 @@ Führen Sie dann einen beliebigen azcopy-Befehl aus (beispielsweise: `azcopy lis
 
 Wenn Sie lieber Ihre eigenen Anmeldedaten für die Autorisierung verwenden möchten, dann können Sie ein Zertifikat in Ihre App-Registrierung hochladen und dieses zum Anmelden verwenden.
 
-Sie müssen nicht nur Ihr Zertifikat in Ihre App-Registrierung hochladen, sondern benötigen außerdem eine Kopie des Zertifikat, die auf dem Computer oder dem virtuellen Computer gespeichert ist, auf dem AzCopy ausgeführt wird. Diese Kopie des Zertifikats sollte das .PFX oder .PEM-Format haben und den privaten Schlüssel enthalten. Der private Schlüssel sollte mit einem Kennwort geschützt sein. 
+Sie müssen nicht nur Ihr Zertifikat in Ihre App-Registrierung hochladen, sondern benötigen außerdem eine Kopie des Zertifikat, die auf dem Computer oder dem virtuellen Computer gespeichert ist, auf dem AzCopy ausgeführt wird. Diese Kopie des Zertifikats sollte das .PFX oder .PEM-Format haben und den privaten Schlüssel enthalten. Der private Schlüssel sollte mit einem Kennwort geschützt sein.
 
 Geben Sie den folgenden Befehl ein, und drücken Sie die EINGABETASTE.
 
@@ -286,10 +286,10 @@ export AZCOPY_SPA_CERT_PASSWORD=<certificate-password>
 export AZCOPY_TENANT_ID=<tenant-id>
 ```
 
-Ersetzen Sie den Platzhalter `<path-to-certificate-file>` mit einem relativen oder vollqualifizierten Pfad zur Zertifikatdatei. AzCopy speichert den Pfad zu diesem Zertifikat, speichert jedoch keine Kopie des Zertifikats. Achten Sie darauf, dass das Zertifikat dort bleibt, wo es ist. Ersetzen Sie den Platzhalter `<certificate-password>` durch das Kennwort des Zertifikats. Ersetzen Sie den Platzhalter `<tenant-id>` mit der Mandanten-ID der Organisation, zu der das Speicherkonto gehört. Wählen Sie **Azure Active Directory > Eigenschaften > Verzeichnis-ID** im Azure-Portal aus, um die Mandanten-ID zu finden. 
+Ersetzen Sie den Platzhalter `<path-to-certificate-file>` mit einem relativen oder vollqualifizierten Pfad zur Zertifikatdatei. AzCopy speichert den Pfad zu diesem Zertifikat, speichert jedoch keine Kopie des Zertifikats. Achten Sie darauf, dass das Zertifikat dort bleibt, wo es ist. Ersetzen Sie den Platzhalter `<certificate-password>` durch das Kennwort des Zertifikats. Ersetzen Sie den Platzhalter `<tenant-id>` mit der Mandanten-ID der Organisation, zu der das Speicherkonto gehört. Wählen Sie **Azure Active Directory > Eigenschaften > Verzeichnis-ID** im Azure-Portal aus, um die Mandanten-ID zu finden.
 
 > [!NOTE]
-> Verwenden Sie ggf. eine Eingabeaufforderung, um das Kennwort vom Benutzer zu erfassen. Auf diese Weise wird Ihr Kennwort in Ihrem Befehlsverlauf nicht angezeigt. 
+> Verwenden Sie ggf. eine Eingabeaufforderung, um das Kennwort vom Benutzer zu erfassen. Auf diese Weise wird Ihr Kennwort in Ihrem Befehlsverlauf nicht angezeigt.
 
 Führen Sie dann einen beliebigen azcopy-Befehl aus (beispielsweise: `azcopy list https://contoso.blob.core.windows.net`).
 

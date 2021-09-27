@@ -2,13 +2,13 @@
 title: Azure Machine Learning als Event Grid-Quelle
 description: Beschreibt die Eigenschaften, die mit Azure Event Grid für Machine Learning-Arbeitsbereichsereignisse bereitgestellt werden.
 ms.topic: conceptual
-ms.date: 02/11/2021
-ms.openlocfilehash: e47c2137840e21eab73906d42b1e1536422f872d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/15/2021
+ms.openlocfilehash: 7b2a4bb1fafed62669ded2e6ff1dd0f8b7aaac74
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363388"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128638633"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Azure Machine Learning als Event Grid-Quelle
 
@@ -349,7 +349,7 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | `source` | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
 | `subject` | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
@@ -366,7 +366,7 @@ Das Datenobjekt weist für jeden Ereignistyp die folgenden Eigenschaften auf:
 
 ### <a name="microsoftmachinelearningservicesmodelregistered"></a>Microsoft.MachineLearningServices.ModelRegistered
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | `ModelName` | Zeichenfolge | Der Name des Modells, das registriert wurde. |
 | `ModelVersion` | Zeichenfolge | Die Version des Modells, das registriert wurde. |
@@ -375,7 +375,7 @@ Das Datenobjekt weist für jeden Ereignistyp die folgenden Eigenschaften auf:
 
 ### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Microsoft.MachineLearningServices.ModelDeployed
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | `ServiceName` | Zeichenfolge | Der Name des bereitgestellten Diensts. |
 | `ServiceComputeType` | Zeichenfolge | Der Computetyp (z. B. ACI, AKS) des bereitgestellten Diensts. |
@@ -385,7 +385,7 @@ Das Datenobjekt weist für jeden Ereignistyp die folgenden Eigenschaften auf:
 
 ### <a name="microsoftmachinelearningservicesruncompleted"></a>Microsoft.MachineLearningServices.RunCompleted
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | `experimentId` | Zeichenfolge | Die ID des Experiments, zu der die Ausführung gehört. |
 | `experimentName` | Zeichenfolge | Der Name des Experiments, zu der die Ausführung gehört. |

@@ -1,14 +1,14 @@
 ---
 title: Verteilte gemeinsame Entwicklung von Azure DevTest Labs-Ressourcen
 description: Bietet bewährte Methoden zum Einrichten einer verteilten und gemeinsamen Entwicklungsumgebung für die Entwicklung von DevTest Labs-Ressourcen.
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: caf4bd13f2ec9c45db392a027db269b492cbd802
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f24ab6e612762df5ee0a0f869507c51ac9e5f538
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102550075"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128644313"
 ---
 # <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>Bewährte Methoden für die verteilte und gemeinsame Entwicklung von Azure DevTest Labs-Ressourcen
 Mithilfe der verteilten gemeinsamen Entwicklung können unterschiedliche Teams oder Personen eine Codebasis entwickeln und verwalten. Der Erfolg des Entwicklungsprozesses hängt von der Fähigkeit ab, Informationen zu erstellen, freizugeben und zu integrieren. Dieses wichtige Entwicklungsprinzip kann in Azure DevTest Labs verwendet werden. Es gibt mehrere Arten von Ressourcen innerhalb eines Labs, die häufig zwischen verschiedenen Labs innerhalb eines Unternehmens verteilt werden. Die verschiedenen Arten von Ressourcen sind in zwei Bereiche unterteilt:

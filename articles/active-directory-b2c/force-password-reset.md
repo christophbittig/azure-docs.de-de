@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/10/2021
+ms.date: 09/16/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a8fc74a298450ad2581a8a147eaff9f996dca8dc
-ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+ms.openlocfilehash: bff08cb924e33090b80f44dd908e2b9964290d5c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112198798"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128572401"
 ---
 # <a name="set-up-a-force-password-reset-flow-in-azure-active-directory-b2c"></a>Einrichten eines Flows zum Erzwingen der Kennwortzurücksetzung in Azure Active Directory B2C
 
@@ -44,7 +44,8 @@ Der Flow für die Kennwortzurücksetzung wird für lokale Konten in Azure AD B
 Gehen Sie wie folgt vor, um die Einstellung **Erzwungene Kennwortzurücksetzung** in einem Flow für die Registrierung oder Anmeldung zu aktivieren:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
 1. Wählen Sie **Benutzerflows** aus.
 1. Wählen Sie den (**empfohlenen**) Benutzerflow für die Registrierung/Anmeldung oder nur für die Anmeldung aus, den Sie anpassen möchten.
@@ -55,7 +56,8 @@ Gehen Sie wie folgt vor, um die Einstellung **Erzwungene Kennwortzurücksetzung*
 ## <a name="test-the-user-flow"></a>Testen des Benutzerflows
 
 1. Melden Sie sich als Benutzer- oder Kennwortadministrator beim [Azure-Portal](https://portal.azure.com) an. Weitere Informationen zu den verfügbaren Rollen finden Sie unter [Zuweisen von Administratorrollen in Azure AD](../active-directory/roles/permissions-reference.md#all-roles).
-1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
 1. Wählen Sie **Benutzer** aus. Suchen Sie nach dem Benutzer, den Sie zum Testen der Kennwortzurücksetzung verwenden möchten, und wählen Sie ihn aus. Wählen Sie anschließend die Option **Kennwort zurücksetzen** aus.
 1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.

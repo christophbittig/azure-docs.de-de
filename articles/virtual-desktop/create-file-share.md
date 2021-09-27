@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: ab9a70dccdeff6ed16eb3f25e9dc78fb274b2449
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 013a2d377ef4e30848d29c43c7275c6644cf4549
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746931"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593057"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Erstellen eines Profilcontainers mit Azure Files und AD DS
 
@@ -176,8 +176,8 @@ So konfigurieren Sie NTFS-Berechtigungen:
      icacls <mounted-drive-letter>: /remove "Builtin\Users"
      ```
 
-     - Ersetzen Sie <mounted-drive-letter> durch den Buchstaben des Laufwerks, den Sie zum Zuordnen des Laufwerks verwendet haben.
-     - Ersetzen Sie <user-email> durch den UPN des Benutzers oder der Active Directory-Gruppe, die die Benutzer mit erforderlichem Zugriff auf die Freigabe enthält.
+     - Ersetzen Sie \<mounted-drive-letter\> durch den Buchstaben des Laufwerks, den Sie zum Zuordnen des Laufwerks verwendet haben.
+     - Ersetzen Sie \<user-email\> durch den UPN des Benutzers oder der Active Directory-Gruppe, die die Benutzer mit erforderlichem Zugriff auf die Freigabe enthält.
 
      Beispiel:
 

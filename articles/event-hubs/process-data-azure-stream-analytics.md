@@ -1,14 +1,14 @@
 ---
 title: Verarbeiten von Daten aus Event Hubs mit Azure Stream Analytics | Microsoft-Dokumentation
 description: In diesem Artikel wird veranschaulicht, wie Sie Daten aus Ihrem Azure-Event Hub mit einem Azure Stream Analytics-Auftrag verarbeiten.
-ms.date: 06/23/2020
+ms.date: 09/15/2021
 ms.topic: article
-ms.openlocfilehash: 2db4fba59a1a06a24ee2939c51ecdf65aa06cef3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 31f8e6b7c5e45006b359c5e9545703f454dbacad
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85312897"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128679804"
 ---
 # <a name="process-data-from-your-event-hub-using-azure-stream-analytics"></a>Verarbeiten von Daten aus einem Event Hub mit Azure Stream Analytics 
 Der Azure Stream Analytics-Dienst vereinfacht das Erfassen, Verarbeiten und Analysieren von Streamingdaten von Azure Event Hubs und ermöglicht damit Erkenntnisse für Aktionen in Echtzeit. Mit dieser Integration können Sie schnell eine Analysepipeline über einen heißen Pfad erstellen. Sie können im Azure-Portal eingehende Daten visualisieren und eine Stream Analytics-Abfrage schreiben. Wenn die Abfrage fertig ist, können Sie sie mit nur wenigen Klicks in die Produktion verschieben. 

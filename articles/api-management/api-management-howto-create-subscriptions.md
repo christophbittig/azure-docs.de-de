@@ -3,7 +3,7 @@ title: Erstellen von Abonnements in Azure API Management | Microsoft-Dokumentati
 description: Hier erfahren Sie, wie Sie Abonnements in Azure API Management erstellen. Ein Abonnement ist erforderlich, um Abonnementschlüssel abzurufen, die den Zugriff auf APIs ermöglichen.
 services: api-management
 documentationcenter: ''
-author: miaojiang
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -11,13 +11,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/14/2018
-ms.author: apimpm
-ms.openlocfilehash: d15249bc5a7451931c6bdc23d590aa96512dbb26
-ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+ms.author: danlep
+ms.openlocfilehash: e647c237f4cebeef197b1d096dcc36a5fb6531f1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112202452"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128556562"
 ---
 # <a name="create-subscriptions-in-azure-api-management"></a>Erstellen von Abonnements in Azure API Management (APIM)
 

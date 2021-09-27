@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/03/2021
+ms.date: 09/17/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: f8cd48669aa13240eee8a80f890d791eb5d93b21
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 62730432551eb785103e59f385464084814aa8f4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123467485"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128559199"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Tag zu Ressourcengruppen hinzufügen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F726aca4c-86e9-4b04-b0c5-073027359532) |Hiermit werden das angegebene Tag und der zugehörige Wert hinzugefügt, wenn eine Ressourcengruppe erstellt oder aktualisiert wird, in der dieses Tag fehlt. Vorhandene Ressourcengruppen können korrigiert werden, indem eine Korrekturaufgabe ausgelöst wird. Wenn das Tag mit einem anderen Wert vorhanden ist, erfolgt keine Änderung. |modify |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddTag_ResourceGroup_Modify.json) |
 |[Tag zu Ressourcen hinzufügen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4f9dc7db-30c1-420c-b61a-e1d640128d26) |Hiermit werden das angegebene Tag und der zugehörige Wert hinzugefügt, wenn eine Ressource erstellt oder aktualisiert wird, in der dieses Tag fehlt. Bereits vorhandene Ressourcen können durch Auslösen eines Wartungstasks gewartet werden. Wenn das Tag mit einem anderen Wert vorhanden ist, erfolgt keine Änderung. Tags für Ressourcengruppen werden nicht geändert. |modify |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddTag_Modify.json) |

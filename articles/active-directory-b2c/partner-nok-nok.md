@@ -8,15 +8,15 @@ manager: martinco
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/04/2021
+ms.date: 09/20/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 586c8373e32f210d6f2f53c773fbe58ef5a2181b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 26842d40034527e5b7b785cfc94e4f7a37e36e04
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346654"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128587212"
 ---
 # <a name="tutorial-configure-nok-nok-with-azure-active-directory-b2c-to-enable-passwordless-fido2-authentication"></a>Tutorial: Konfigurieren von Nok Nok mit Azure Active Directory B2C zum Aktivieren der kennwortlosen FIDO2-Authentifizierung
 
@@ -46,7 +46,7 @@ Im folgenden Architekturdiagramm ist die Implementierung dargestellt. Nok Nok fu
 
 ![Abbildung: Architekturdiagramm von Nok Nok und Azure AD B2C](./media/partner-nok-nok/nok-nok-architecture-diagram.png)
 
-| Schritt | BESCHREIBUNG |
+| Schritt | Beschreibung |
 |:------|:-----------|
 | 1. | Der Benutzer gelangt auf eine Anmeldeseite. Der Benutzer wählt die Anmeldung oder Registrierung aus und gibt den Benutzernamen ein. |
 | 2. | Azure AD B2C leitet den Benutzer an den OIDC-Authentifizierungsanbieter für Nok Nok um. |
@@ -70,23 +70,19 @@ Füllen Sie das [Nok Nok-Cloudformular](https://noknok.com/contact/) aus, um ein
 Führen Sie zum Hinzufügen eines neuen Identitätsanbieters die folgenden Schritte aus:
 
 1. Melden Sie sich beim **[Azure-Portal](https://portal.azure.com/#home)** als globaler Administrator Ihres Azure AD B2C-Mandanten an.
-
-2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü den **Verzeichnis- und Abonnementfilter** und das entsprechende Verzeichnis auswählen.
-
-3. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **Azure AD B2C**, und klicken Sie darauf.
-
-4. Navigieren Sie zu **Dashboard** > **Azure Active Directory B2C** >  **Identitätsanbieter**.
-
-5. Wählen Sie **Identitätsanbieter** aus.
-
-6. Wählen Sie **Hinzufügen**.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
+1. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **Azure AD B2C**, und klicken Sie darauf.
+1. Navigieren Sie zu **Dashboard** > **Azure Active Directory B2C** >  **Identitätsanbieter**.
+1. Wählen Sie **Identitätsanbieter** aus.
+1. Wählen Sie **Hinzufügen**.
 
 ### <a name="configure-an-identity-provider"></a>Konfigurieren eines Identitätsanbieters 
 
 Führen Sie zum Konfigurieren eines Identitätsanbieters die folgenden Schritte aus:
 
 1. Wählen Sie **Identitätsanbietertyp** > **OpenID Connect (Vorschau)** aus.
-2. Füllen Sie das Formular aus, um den Identitätsanbieter einzurichten:
+1. Füllen Sie das Formular aus, um den Identitätsanbieter einzurichten:
 
    |Eigenschaft | Wert |
    |:-----| :-----------|
@@ -98,11 +94,11 @@ Führen Sie zum Konfigurieren eines Identitätsanbieters die folgenden Schritte 
    | Antworttyp | code |
    | Antwortmodus | form_post|
 
-3. Klicken Sie auf **OK**.
+1. Klicken Sie auf **OK**.
 
-4. Wählen Sie **Ansprüche dieses Identitätsanbieters zuordnen** aus.
+1. Wählen Sie **Ansprüche dieses Identitätsanbieters zuordnen** aus.
 
-5. Füllen Sie das Formular aus, um den Identitätsanbieter zuzuordnen:
+1. Füllen Sie das Formular aus, um den Identitätsanbieter zuzuordnen:
 
    |Eigenschaft | Wert |
    |:-----| :-----------|
@@ -110,7 +106,7 @@ Führen Sie zum Konfigurieren eines Identitätsanbieters die folgenden Schritte 
    | `Display name` | Aus Abonnement |
    | Antwortmodus | Aus Abonnement |
 
-6. Wählen Sie **Speichern** aus, um die Einrichtung Ihres neuen OIDC-Identitätsanbieters abzuschließen.
+1. Wählen Sie **Speichern** aus, um die Einrichtung Ihres neuen OIDC-Identitätsanbieters abzuschließen.
 
 ### <a name="create-a-user-flow-policy"></a>Erstellen einer Benutzerflowrichtlinie
 

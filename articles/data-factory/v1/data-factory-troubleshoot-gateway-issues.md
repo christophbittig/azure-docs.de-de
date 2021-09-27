@@ -3,16 +3,17 @@ title: Beheben von Problemen mit dem Datenverwaltungsgateway
 description: Tipps zur Problembehandlung im Zusammenhang mit dem Datenverwaltungsgateway.
 author: nabhishek
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 284486c5db248ced8ada6e7194c7bc5a9be5689f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e136ec96cc2a698f0b0e794830403dcbc284341c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100388344"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128554238"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Behandeln von Problemen bei der Verwendung des Datenverwaltungsgateways
 Dieser Artikel enthält Informationen zur Problembehandlung bei der Verwendung des Datenverwaltungsgateways.
@@ -69,7 +70,7 @@ Möglicherweise wird beim Registrieren eines Gateways die folgende Fehlermeldung
 
 
 
-![Inhalt oder Format des Schlüssels ist ungültig](media/data-factory-troubleshoot-gateway-issues/invalid-format-gateway-key.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/invalid-format-gateway-key.png" alt-text="Inhalt oder Format des Schlüssels ist ungültig":::
 
 #### <a name="cause"></a>Ursache
 Der Inhalt oder das Format des eingegebenen Gatewayschlüssels ist falsch. Mögliche Gründe sind, dass Sie nur einen Teil des Texts aus dem Portal kopiert haben oder einen ungültigen Schlüssel verwenden.
@@ -82,7 +83,7 @@ Möglicherweise wird beim Registrieren eines Gateways die folgende Fehlermeldung
 
 `Error: The gateway key is invalid or empty. Specify a valid gateway key from the portal.`
 
-![Screenshot mit hervorgehobener Fehlermeldung, derzufolge der Gatewayschlüssel ungültig oder leer ist.](media/data-factory-troubleshoot-gateway-issues/gateway-key-is-invalid-or-empty.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/gateway-key-is-invalid-or-empty.png" alt-text="Screenshot mit hervorgehobener Fehlermeldung, derzufolge der Gatewayschlüssel ungültig oder leer ist.":::
 
 #### <a name="cause"></a>Ursache
 Der Gatewayschlüssel wurde neu generiert, oder das Gateway wurde im Azure-Portal gelöscht. Es ist auch möglich, dass das Datenverwaltungsgateway nicht das neueste Setup aufweist.
@@ -97,7 +98,7 @@ Möglicherweise wird beim Registrieren eines Gateways die folgende Fehlermeldung
 
 `Error: Gateway has been online for a while, then shows "Gateway is not registered" with the status "Gateway key is invalid"`
 
-![Gatewayschlüssel ist ungültig oder leer](media/data-factory-troubleshoot-gateway-issues/gateway-not-registered-key-invalid.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/gateway-not-registered-key-invalid.png" alt-text="Gatewayschlüssel ist ungültig oder leer":::
 
 #### <a name="cause"></a>Ursache
 Dieser Fehler kann auftreten, wenn das Gateway gelöscht wurde oder der zugehörige Gatewayschlüssel neu generiert wurde.
@@ -110,12 +111,12 @@ Wenn das Gateway noch vorhanden ist, aber der Schlüssel neu generiert wurde, ve
 ### <a name="7-problem"></a>7. Problem
 Wenn Sie ein Gateway registrieren, müssen Sie ggf. den Pfad und das Kennwort für ein Zertifikat angeben.
 
-![Screenshot, der zeigt, wo der Pfad und das Kennwort für das Zertifikat eingeben werden](media/data-factory-troubleshoot-gateway-issues/specify-certificate.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/specify-certificate.png" alt-text="Screenshot, der zeigt, wo der Pfad und das Kennwort für das Zertifikat eingeben werden":::
 
 #### <a name="cause"></a>Ursache
 Das Gateway wurde zuvor auf anderen Computern registriert. Bei der ersten Registrierung eines Gateways wurde ihm ein Verschlüsselungszertifikat zugeordnet. Das Zertifikat kann durch das Gateway selbst generiert oder vom Benutzer bereitgestellt werden.  Mit diesem Zertifikat werden die Anmeldeinformationen des Datenspeichers (verknüpfter Dienst) verschlüsselt.  
 
-![Exportieren des Zertifikats](media/data-factory-troubleshoot-gateway-issues/export-certificate.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/export-certificate.png" alt-text="Exportieren eines Zertifikats":::
 
 Beim Wiederherstellen des Gateways auf einem anderen Hostcomputer fragt der Registrierungsassistent nach diesem Zertifikat zum Entschlüsseln von Anmeldeinformationen, die zuvor mit diesem Zertifikat verschlüsselt wurden.  Ohne dieses Zertifikat können die Anmeldeinformationen nicht vom neuen Gateway entschlüsselt werden, und das Ausführen von nachfolgenden Kopiervorgängen im Zusammenhang mit diesem neuen Gateway führt zu Fehlern.  
 
@@ -155,7 +156,7 @@ Sie erhalten den folgenden Fehler.
 
 `Error: Gateway cannot connect to cloud service through service bus`
 
-![Das Gateway kann keine Verbindung mit dem Clouddienst herstellen.](media/data-factory-troubleshoot-gateway-issues/gateway-cannot-connect-to-cloud-service.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/gateway-cannot-connect-to-cloud-service.png" alt-text="Das Gateway kann keine Verbindung mit dem Clouddienst herstellen.":::
 
 #### <a name="cause"></a>Ursache
 Das Gateway kann über Service Bus keine Verbindung mit dem Clouddienst herstellen.
@@ -189,7 +190,7 @@ Dieser Fehler wird möglicherweise angezeigt, wenn Sie versuchen, mit der Anmeld
 
 Wenn dieser Fehler angezeigt wird, kann die Seite „Einstellungen“ des Datenverwaltungsgateway-Konfigurations-Managers wie der folgende Screenshot aussehen.
 
-![Die Datenbank wurde nicht gefunden](media/data-factory-troubleshoot-gateway-issues/database-cannot-be-reached.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/database-cannot-be-reached.png" alt-text="Die Datenbank wurde nicht gefunden":::
 
 #### <a name="cause"></a>Ursache
 Möglicherweise ist das TLS/SSL-Zertifikat auf dem Gatewaycomputer nicht mehr vorhanden. Das derzeit für die TLS-Verschlüsselung verwendete Zertifikat kann vom Gatewaycomputer nicht geladen werden. Sie erhalten möglicherweise auch eine Fehlermeldung im Ereignisprotokoll, die der folgenden Meldung ähnlich ist.
@@ -203,10 +204,10 @@ Führen Sie die folgenden Schritte aus, um das Problem zu beheben:
 2. Wechseln Sie zur Registerkarte **Einstellungen**.  
 3. Klicken Sie auf die Schaltfläche **Ändern**, um das TLS/SSL-Zertifikat zu ändern.
 
-   ![Schaltfläche „Zertifikat ändern“](media/data-factory-troubleshoot-gateway-issues/change-button-ssl-certificate.png)
+   :::image type="content" source="media/data-factory-troubleshoot-gateway-issues/change-button-ssl-certificate.png" alt-text="Schaltfläche „Zertifikat ändern“":::
 4. Wählen Sie ein neues Zertifikat als das TLS/SSL-Zertifikat aus. Sie können ein beliebiges TLS/SSL-Zertifikat verwenden, das von Ihnen oder einer beliebigen Organisation generiert wurde.
 
-   ![Angeben des Zertifikats](media/data-factory-troubleshoot-gateway-issues/specify-http-end-point.png)
+   :::image type="content" source="media/data-factory-troubleshoot-gateway-issues/specify-http-end-point.png" alt-text="Angeben des Zertifikats":::
 
 ## <a name="copy-activity-fails"></a>Fehler bei Kopieraktivität
 ### <a name="problem"></a>Problem
@@ -232,7 +233,7 @@ Wenn Sie Fehler bei der Datenspeicherverbindung oder den Datenspeichertreibern b
 3. Fügen Sie in **Verbindung testen** die Werte der Gatewaygruppe hinzu.
 4. Klicken Sie auf **Testen**, um festzustellen, ob Sie vom Gatewaycomputer aus mithilfe der Verbindungs- und Anmeldeinformationen eine Verbindung mit der lokalen Datenquelle herstellen können. Wenn das Testen der Verbindung weiter misslingt, nachdem Sie einen Treiber installiert haben, starten Sie das Gateway neu, damit es die letzte Änderung übernimmt.
 
-![„Verbindung testen“ auf der Registerkarte „Diagnose“](media/data-factory-troubleshoot-gateway-issues/test-connection-in-diagnostics-tab.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/test-connection-in-diagnostics-tab.png" alt-text="„Verbindung testen“ auf der Registerkarte „Diagnose“":::
 
 ## <a name="gateway-logs"></a>Gatewayprotokolle
 ### <a name="send-gateway-logs-to-microsoft"></a>Senden der Gatewayprotokolle an Microsoft
@@ -240,21 +241,21 @@ Wenn Sie sich im Zusammenhang mit Gatewayproblemen an den Microsoft-Support wend
 
 1. Wechseln Sie im Datenverwaltungsgateway-Konfigurations-Manager zur Registerkarte **Diagnose**.
 
-    ![Datenverwaltungsgateway: Registerkarte „Diagnose“](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-diagnostics-tab.png)
+    :::image type="content" source="media/data-factory-troubleshoot-gateway-issues/data-management-gateway-diagnostics-tab.png" alt-text="Datenverwaltungsgateway: Registerkarte „Diagnose“":::
 2. Klicken Sie auf den Link **Protokolle senden**, um das folgende Dialogfeld anzuzeigen.
 
-    ![Datenverwaltungsgateway: Senden von Protokollen](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-dialog.png)
+    :::image type="content" source="media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-dialog.png" alt-text="Datenverwaltungsgateway: Senden von Protokollen":::
 3. (Optional) Klicken Sie auf **Protokolle anzeigen**, um Protokolle in der Ereignisanzeige durchzusehen.
 4. (Optional) Klicken Sie auf **Datenschutz**, um die Datenschutzbestimmungen der Onlinedienste von Microsoft anzuzeigen.
 5. Wenn Sie zum Hochladen bereit sind, klicken Sie auf **Protokolle senden**, um Protokolle der letzten sieben Tage zur Problembehandlung an Microsoft zu senden. Daraufhin sollte der Status des Vorgangs „Protokolle senden“ wie in der folgenden Abbildung angezeigt werden.
 
-    ![Screenshot, der zeigt, wo der Status des Protokollsendevorgangs angezeigt werden kann](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-status.png)
+    :::image type="content" source="media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-status.png" alt-text="Screenshot, der zeigt, wo der Status des Protokollsendevorgangs angezeigt werden kann":::
 6. Nach Abschluss des Vorgangs wird ein Dialogfeld wie in der folgenden Abbildung angezeigt.
 
-    ![Datenverwaltungsgateway: Senden des Status von Protokollen](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-result.png)
+    :::image type="content" source="media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-result.png" alt-text="Datenverwaltungsgateway: Senden des Status von Protokollen":::
 7. Notieren Sie sich die **Berichts-ID**, und teilen Sie sie dem Microsoft Support mit. Die Berichts-ID wird verwendet, um die Gatewayprotokolle zu suchen, die Sie zur Problembehandlung hochgeladen haben.  Die Berichts-ID wird auch in der Ereignisanzeige gespeichert.  Sie finden sie anhand der Ereignis-ID „25“ sowie von Datum und Uhrzeit.
 
-    ![Datenverwaltungsgateway: Senden der Berichts-ID von Protokollen](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-report-id.png)    
+    :::image type="content" source="media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-report-id.png" alt-text="Datenverwaltungsgateway: Senden der Berichts-ID von Protokollen":::    
 
 ### <a name="archive-gateway-logs-on-gateway-host-machine"></a>Archivieren von Gatewayprotokollen auf dem Gatewayhostcomputer
 Es gibt einige Szenarien, in denen Gatewayprobleme auftreten, und Sie Gatewayprotokolle nicht direkt freigeben können:
@@ -265,11 +266,11 @@ Es gibt einige Szenarien, in denen Gatewayprobleme auftreten, und Sie Gatewaypro
 
 Bei diesen Szenarien können Sie Gatewayprotokolle als ZIP-Datei speichern und später beim Kontakt mit dem Microsoft Support freigeben. Beispiel: Sie erhalten beim Registrieren des Gateways eine Fehlermeldung wie in der folgenden Abbildung dargestellt.   
 
-![Datenverwaltungsgateway: Fehler bei der Registrierung](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-registration-error.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/data-management-gateway-registration-error.png" alt-text="Datenverwaltungsgateway: Fehler bei der Registrierung":::
 
 Klicken Sie auf den Link **Gatewayprotokolle archivieren**, um Protokolle zu archivieren und zu speichern und dann die ZIP-Datei für den Microsoft Support freizugeben.
 
-![Datenverwaltungsgateway: Archivieren von Protokollen](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-archive-logs.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/data-management-gateway-archive-logs.png" alt-text="Datenverwaltungsgateway: Archivieren von Protokollen":::
 
 ### <a name="locate-gateway-logs"></a>Suchen von Gatewayprotokollen
 Ausführliche Informationen hierzu finden Sie in den Gateway-Protokollinformationen und Windows-Ereignisprotokollen.
@@ -279,4 +280,4 @@ Ausführliche Informationen hierzu finden Sie in den Gateway-Protokollinformatio
 
    Wenn Sie Probleme mit dem Gateway beheben müssen, suchen Sie in der Ereignisanzeige nach Ereignissen des Typs „Fehler“.
 
-![Datenverwaltungsgateway: Protokolle in der Ereignisanzeige](media/data-factory-troubleshoot-gateway-issues/gateway-logs-event-viewer.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/gateway-logs-event-viewer.png" alt-text="Datenverwaltungsgateway: Protokolle in der Ereignisanzeige":::

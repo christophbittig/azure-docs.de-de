@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 07/05/2021
+ms.date: 09/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: ffda1151054b887114523704498a97d2ab7f7c44
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1ea2ae3644ae22fd06a5bae650fa3f5beb955aba
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339314"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128572509"
 ---
 # <a name="configure-authentication-in-a-sample-single-page-application-by-using-azure-ad-b2c"></a>Konfigurieren der Authentifizierung in einem Beispiel einer Single-Page-Webanwendung (SPA) mithilfe von Azure AD B2C
 
@@ -31,7 +31,7 @@ OpenID Connect (OIDC) ist ein Authentifizierungsprotokoll, das auf OAuth 2.0 ba
 Der Anmeldeflow umfasst die folgenden Schritte:
 
 1. Benutzer navigieren zur Web-App und wählen **Anmelden** aus.
-1. Die App löst eine Authentifizierungsanforderung aus und leitet Benutzer zu Azure AD B2C um.
+1. Die App löst eine Authentifizierungsanforderung aus und leitet Benutzer an Azure AD B2C um.
 1. Benutzer [registrieren oder melden sich an](add-sign-up-and-sign-in-policy.md) und [setzen das Kennwort](add-password-reset-policy.md) zurück. Alternativ können sie sich mit einem [Social Media-Konto](add-identity-provider.md) anmelden.
 1. Nach erfolgreicher Benutzeranmeldung gibt Azure AD B2C einen Autorisierungscode an die App zurück.
 1. Die Single-Page-Webanwendung überprüft das ID-Token, liest die Ansprüche und ermöglicht es dem Benutzer wiederum, geschützte Ressourcen/APIs aufzurufen.
@@ -40,7 +40,7 @@ Der Anmeldeflow umfasst die folgenden Schritte:
 
 Damit sich Ihre App bei Azure AD B2C anmelden und eine Web-API aufrufen kann, registrieren Sie im Azure AD B2C-Verzeichnis zwei Anwendungen.  
 
-- Durch die **Webanwendungsregistrierung** kann sich Ihre App bei Azure AD B2C anmelden. Bei der Registrierung geben Sie den *Umleitungs-URI* an. Der Umleitungs-URI ist der Endpunkt, an den Benutzer von Azure AD B2C umgeleitet werden, nachdem die Authentifizierung mithilfe von Azure AD B2C abgeschlossen ist. Beim App-Registrierungsprozess wird eine *Anwendungs-ID* generiert, die auch als *Client-ID* bezeichnet wird und Ihre App eindeutig identifiziert.
+- Durch die **Webanwendungsregistrierung** kann sich Ihre App bei Azure AD B2C anmelden. Während der Registrierung geben Sie den *Umleitungs-URI* an. Der Umleitungs-URI ist der Endpunkt, an den Benutzer von Azure AD B2C umgeleitet werden, nachdem die Authentifizierung mithilfe von Azure AD B2C abgeschlossen ist. Beim App-Registrierungsprozess wird eine *Anwendungs-ID* generiert, die auch als *Client-ID* bezeichnet wird und Ihre App eindeutig identifiziert.
 
 - Durch die **Web-API**-Registrierung kann Ihre App eine sichere Web-API aufrufen. Die Registrierung umfasst die Web-API-*Bereiche*. Die Bereiche bieten eine Möglichkeit, Berechtigungen für geschützte Ressourcen wie Ihre Web-API zu verwalten. Sie erteilen der Webanwendung Berechtigungen für die Bereiche der Web-API. Wenn ein Zugriffstoken angefordert wird, gibt Ihre App im Bereichsparameter der Anforderung die gewünschten Berechtigungen an.  
 
@@ -84,8 +84,8 @@ In diesem Schritt erstellen Sie die SPA- und Web-API-Anwendungsregistrierungen u
 Gehen Sie zur Erstellung der SPA-Registrierung folgendermaßen vor:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-
-1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Suchen Sie nach **Azure AD B2C**, und wählen Sie diese Option aus.
 1. Wählen Sie **App-Registrierungen** aus, und wählen Sie dann **Registrierung einer neuen Anwendung** aus.
 1. Geben Sie einen **Namen** für die Anwendung ein, z. B. *MyApp*.

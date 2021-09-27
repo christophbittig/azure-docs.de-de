@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 07/26/2021
 ms.author: inhenkel
-ms.openlocfilehash: a9a101afad5bfcdd8ca7ec20bc39b3080790a09b
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 4271224c3ebb78274d13617ac30d8e376c301108
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114720767"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646059"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Analysieren von Video- und Audiodateien mit Azure Media Services
 
@@ -29,7 +29,7 @@ Um Ihren Inhalt mit Media Services v3 zu analysieren, erstellen Sie eine **Trans
 
 ## <a name="compliance-privacy-and-security"></a>Compliance, Datenschutz und Sicherheit
 
-Wichtig: Ihre Nutzung von Video Analyzer for Media darf nicht gegen geltende Gesetze verstoßen, und weder Video Analyzer for Media noch ein anderer Azure-Dienst darf auf eine Weise verwendet werden, die die Rechte Dritter verletzt oder für Dritte schädlich ist. Bevor Sie Videos, einschließlich biometrischer Daten, zur Verarbeitung und Speicherung in den Azure Video Analyzer for Media-Dienst hochladen, müssen Sie über alle erforderlichen Rechte, einschließlich aller entsprechenden Zustimmungen der Person(en) im Video, verfügen. Weitere Informationen zu Compliance, Datenschutz und Sicherheit in Zusammenhang mit dem Azure Video Analyzer for Media finden Sie in den [Azure Cognitive Services-Bestimmungen](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/). Informationen zu den Datenschutzauflagen und zur Behandlung Ihrer Daten durch Microsoft finden Sie in den [Datenschutzbestimmungen](https://privacy.microsoft.com/PrivacyStatement), in den [Lizenzbedingungen für Onlinedienste](https://www.microsoft.com/licensing/product-licensing/products) (Online Services Terms, OST) und im [Nachtrag zur Datenverarbeitung](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) (Data Processing Addendum, DPA). Weitere Datenschutzinformationen (unter anderem zu Datenaufbewahrung und Datenlöschung/-vernichtung) finden Sie in den Lizenzbedingungen für Onlinedienste und [hier](../../azure-video-analyzer/video-analyzer-for-media-docs/faq.md). Wenn Sie den Azure Video Analyzer for Media verwenden, akzeptieren Sie die Cognitive Services-Bedingungen, die OST, die DPA und die Datenschutzbestimmungen.
+Wichtig: Ihre Nutzung von Video Analyzer for Media darf nicht gegen geltende Gesetze verstoßen, und weder Video Analyzer for Media noch ein anderer Azure-Dienst darf auf eine Weise verwendet werden, die die Rechte Dritter verletzt oder für Dritte schädlich ist. Bevor Sie Videos, einschließlich biometrischer Daten, zur Verarbeitung und Speicherung in den Azure Video Analyzer for Media-Dienst hochladen, müssen Sie über alle erforderlichen Rechte, einschließlich aller entsprechenden Zustimmungen der Person(en) im Video, verfügen. Weitere Informationen zu Compliance, Datenschutz und Sicherheit in Zusammenhang mit dem Azure Video Analyzer for Media finden Sie in den [Azure Cognitive Services-Bestimmungen](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/). Informationen zu den Datenschutzauflagen und zur Behandlung Ihrer Daten durch Microsoft finden Sie in den [Datenschutzbestimmungen](https://privacy.microsoft.com/PrivacyStatement), in den [Lizenzbedingungen für Onlinedienste](https://www.microsoft.com/licensing/product-licensing/products) (Online Services Terms, OST) und im [Nachtrag zur Datenverarbeitung](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) (Data Processing Addendum, DPA). Weitere Datenschutzinformationen (unter anderem zu Datenaufbewahrung und Datenlöschung/-vernichtung) finden Sie in den Lizenzbedingungen für Onlinedienste und [hier](../../azure-video-analyzer/video-analyzer-for-media-docs/faq.yml). Wenn Sie den Azure Video Analyzer for Media verwenden, akzeptieren Sie die Cognitive Services-Bedingungen, die OST, die DPA und die Datenschutzbestimmungen.
 
 ## <a name="built-in-presets"></a>Integrierte Voreinstellungen
 

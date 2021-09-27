@@ -5,15 +5,16 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b2c166da02d145e9995526279121c1dd360557ad
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: e764623fa84be4ffe023545495528e18f3a9adb2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397681"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128624412"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Pipelines und Aktivitäten in Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -35,7 +36,7 @@ Eine Data Factory kann eine oder mehrere Pipelines haben. Bei einer Pipeline han
 
 Eine Aktivität kann über null oder mehr [Eingabedatasets](data-factory-create-datasets.md) verfügen und ein oder mehrere [Ausgabedatasets](data-factory-create-datasets.md) erstellen. Das folgende Diagramm zeigt die Beziehung zwischen Pipeline, Aktivität und Dataset in der Data Factory an:
 
-![Beziehung zwischen Pipeline, Aktivität und Dataset](media/data-factory-create-pipelines/relationship-pipeline-activity-dataset.png)
+:::image type="content" source="media/data-factory-create-pipelines/relationship-pipeline-activity-dataset.png" alt-text="Beziehung zwischen Pipeline, Aktivität und Dataset":::
 
 Eine Pipeline ermöglicht Ihnen das Verwalten der Aktivitäten als Gruppe – anstatt für jede Aktivität einzeln. Sie können eine Pipeline z.B. bereitstellen, planen, anhalten und fortsetzen, anstatt mit Aktivitäten in der Pipeline unabhängig umzugehen.
 
@@ -89,7 +90,7 @@ Sehen wir uns an, wie eine Pipeline im JSON-Format definiert wird. Die generisch
 }
 ```
 
-| Tag | BESCHREIBUNG | Erforderlich |
+| Tag | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | name |Name der Pipeline. Geben Sie einen Namen an, der die Aktion darstellt, die die Pipeline durchführt. <br/><ul><li>Maximale Anzahl von Zeichen: 260</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (\_) beginnen.</li><li>Folgende Zeichen sind nicht zulässig: “.”, “+”, “?”, “/”, “<”,”>”,”\*”,”%”,”&”,”:”,”\\”</li></ul> |Ja |
 | description | Geben Sie den Text an, der beschreibt, wofür die Pipeline verwendet wird. |Ja |
@@ -271,13 +272,13 @@ Wenn in einer Pipeline mehrere Aktivitäten vorliegen und die Ausgabe einer Akti
 
 Sie können zwei Aktivitäten verketten, indem Sie das Ausgabedataset einer Aktivität als Eingabedataset der anderen Aktivität verwenden. Die zweite Aktivität wird nur ausgeführt, wenn die erste erfolgreich abgeschlossen wurde.
 
-![Verketten von Aktivitäten in derselben Pipeline](./media/data-factory-create-pipelines/chaining-one-pipeline.png)
+:::image type="content" source="./media/data-factory-create-pipelines/chaining-one-pipeline.png" alt-text="Verketten von Aktivitäten in derselben Pipeline":::
 
 In diesem Beispiel enthält die Pipeline zwei Aktivitäten: „Activity1“ und „Activity2“. „Activity1“ akzeptiert „Dataset1“ als Eingabe und erzeugt die Ausgabe „Dataset2“. Die Aktivität akzeptiert „Dataset2“ als Eingabe und erzeugt die Ausgabe „Dataset3“. Da die Ausgabe von „Activity1“ („Dataset2“) die Eingabe von „Activity2“ ist, wird „Activity2“ nur ausgeführt, nachdem die Aktivität erfolgreich abgeschlossen wurde und den Slice „Dataset2“ erzeugt hat. Wenn bei „Activity1“ aus beliebigen Gründen ein Fehler auftritt, und der Slice „Dataset2“ nicht erzeugt wird, wird „Activity2“ nicht für diesen Slice ausgeführt (z. B. 9 Uhr bis 10 Uhr).
 
 Sie können auch Aktivitäten verketten, die sich in verschiedenen Pipelines befinden.
 
-![Verketten von Aktivitäten in zwei Pipelines](./media/data-factory-create-pipelines/chaining-two-pipelines.png)
+:::image type="content" source="./media/data-factory-create-pipelines/chaining-two-pipelines.png" alt-text="Verketten von Aktivitäten in zwei Pipelines":::
 
 In diesem Beispiel hat „Pipeline1“ nur eine Aktivität, die „Dataset1“ als Eingabe akzeptiert und „Dataset2“ als Ausgabe erzeugt. „Pipeline2“ hat ebenfalls nur eine Aktivität, die „Dataset2“ als Eingabe akzeptiert und „Dataset3“ als Ausgabe erzeugt.
 

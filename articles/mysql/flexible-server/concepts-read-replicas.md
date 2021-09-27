@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/17/2021
-ms.openlocfilehash: c83e8a93d41cde3c7a3debbbcfa9d3522ffe2939
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 601b3659cd23cbd12d96f4e73c24a3a4a6c3fe55
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122396960"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128602259"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>Lesereplikate in Azure Database for MySQL – Flexible Server
 
@@ -31,7 +31,7 @@ Replikate sind neue Server, die Sie ähnlich wie Ihre flexiblen Azure Database f
 Weitere Informationen zu Features und Problemen der MySQL-Replikation finden Sie in der [Dokumentation zur MySQL-Replikation](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html).
 
 > [!NOTE]
-> Dieser Artikel enthält Verweise auf den Begriff _Slave_, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
+> Dieser Artikel enthält Verweise auf den Begriff *Slave*, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
 
 ## <a name="common-use-cases-for-read-replica"></a>Allgemeine Anwendungsfälle für Lesereplikate
 
@@ -127,7 +127,7 @@ Die folgenden Serverparameter sind für die Konfiguration des globalen Transakti
 >
 > * Wenn GTID aktiviert ist, können Sie ihn nicht wieder deaktivieren. Wenn Sie GTID deaktivieren müssen, wenden Sie sich an den Support. 
 >
-> * Das Ändern von GTIDs von einem Wert in einen anderen kann nur schrittweise in aufsteigender Reihenfolge der Modi erfolgen. Wenn z. B. gtid_mode derzeit auf OFF_PERMISSIVE festgelegt ist, ist eine Änderung in ON_PERMISSIVE möglich, aber nicht in ON.
+> * Das Ändern der GTIDs von einem Wert in einen anderen kann nur schrittweise in aufsteigender Reihenfolge der Modi erfolgen. Wenn z. B. gtid_mode derzeit auf OFF_PERMISSIVE festgelegt ist, ist eine Änderung in ON_PERMISSIVE möglich, aber nicht in ON.
 >
 > * Um die Replikation konsistent zu halten, können Sie die Einstellung nicht für einen Master-/Replikatserver aktualisieren.
 >
@@ -135,7 +135,7 @@ Die folgenden Serverparameter sind für die Konfiguration des globalen Transakti
 
 Um GTID zu aktivieren und das Konsistenzverhalten zu konfigurieren, aktualisieren Sie die Serverparameter `gtid_mode` und `enforce_gtid_consistency` über das [Azure-Portal](how-to-configure-server-parameters-portal.md) oder die [Azure CLI](how-to-configure-server-parameters-cli.md).
 
-Wenn GTID auf einem Quellserver aktiviert ist (`gtid_mode` = ON), wird für neu erstellte Replikate GTID ebenfalls aktiviert und die GTID-Replikation verwendet. Um sicherzustellen, dass die Replikation konsistent ist, kann `gtid_mode` nicht geändert werden, nachdem der Master- oder die Replikatserver mit aktivierter GTID erstellt wurden.
+Wenn GTID auf einem Quellserver aktiviert ist (`gtid_mode` = ON), wird für neu erstellte Replikate GTID ebenfalls aktiviert und die GTID-Replikation verwendet. Um sicherzustellen, dass die Replikation konsistent ist, kann `gtid_mode` nicht geändert werden, nachdem der Master- oder die Replikatserver mit aktivierter GTID erstellt wurde.
 
 ## <a name="considerations-and-limitations"></a>Überlegungen und Einschränkungen
 

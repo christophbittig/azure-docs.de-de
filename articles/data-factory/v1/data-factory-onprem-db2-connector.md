@@ -3,16 +3,17 @@ title: Verschieben von Daten aus DB2 mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Sie Daten aus einer lokalen DB2-Datenbank mit der Kopieraktivität von Azure Data Factory verschieben.
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: bcd1e6f9f9be1765e76399707ae36776a9f1987d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4538939b4b991e181d3b08c7834b201269a7f651
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100387358"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128661201"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Verschieben von Daten aus DB2 mithilfe der Kopieraktivität von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -73,7 +74,7 @@ Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Defini
 ## <a name="db2-linked-service-properties"></a>Eigenschaften des mit DB2 verknüpften Diensts
 Die folgende Tabelle enthält die JSON-Eigenschaften, die spezifisch für einen mit DB2 verknüpften Dienst sind.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | **type** |Diese Eigenschaft muss auf **OnPremisesDb2** festgelegt werden. |Ja |
 | **server** |Der Name des DB2-Servers |Ja |
@@ -89,7 +90,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt **typeProperties** für ein DataSet vom Typ **RelationalTable** (das das DB2-DataSet einschließt) hat die folgende Eigenschaft:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | **tableName** |Der Name der Tabelle in der DB2-Datenbankinstanz, auf die der verknüpfte Dienst verweist. Diese Eigenschaft erfordert die Beachtung der Groß-/Kleinschreibung. |Nein (wenn die **query**-Eigenschaft einer Kopieraktivität vom Typ **RelationalSource** angegeben wurde) |
 

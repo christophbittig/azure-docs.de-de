@@ -1,18 +1,18 @@
 ---
 title: Herstellen einer Verbindung mit einem internen virtuellen Netzwerk mit Azure API Management
 description: Hier erfahren Sie, wie Azure API Management über den internen Modus in einem virtuellen Netzwerk eingerichtet und konfiguriert wird.
-author: vladvino
+author: dlepow
 ms.service: api-management
 ms.topic: how-to
 ms.date: 08/10/2021
-ms.author: apimpm
+ms.author: danlep
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 83c0e0a7e04130a25267f7a9dafc1cdd888eb53a
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: ee5d0ac639cbd36215df5545d684909af3acd748
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123537270"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128563828"
 ---
 # <a name="connect-to-a-virtual-network-in-internal-mode-using-azure-api-management"></a>Herstellen einer Verbindung mit einem virtuellen Netzwerk im internen Modus mithilfe von Azure API Management 
 Über virtuelle Azure-Netzwerke (VNets) kann Azure API Management APIs verwalten, die nicht über das Internet zugänglich sind. Hierbei werden mehrere VPN-Technologien zum Herstellen der Verbindung verwendet. Sie können API Management über [externe](./api-management-using-with-vnet.md) oder interne Modi bereitstellen. Informationen zu VNet-Konnektivitätsoptionen, Anforderungen und Überlegungen finden Sie unter [Verwenden eines virtuellen Netzwerks mit Azure API Management](virtual-network-concepts.md).
@@ -208,7 +208,7 @@ Weitere Informationen:
 [api-management-custom-domain-name]: ./media/api-management-using-with-internal-vnet/updated-api-management-custom-domain-name.png
 
 [Create API Management service]: get-started-create-service-instance.md
-[Common network configuration problems]: api-management-using-with-vnet.md#network-configuration
+[Common network configuration problems]: api-management-using-with-vnet.md#network-configuration-issues
 
 [ServiceTags]: ../virtual-network/network-security-groups-overview.md#service-tags
 

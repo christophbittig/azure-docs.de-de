@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 06/21/2021
 ms.author: rogarana
-ms.openlocfilehash: 6f179fe2e91da9e68a0809763bd9f38a5947e8a4
-ms.sourcegitcommit: 9caa850a2b26773e238f8ba6f4ca151c47260915
+ms.openlocfilehash: 3dcc0a93473e5f0b14f8921114172dbf6506d8aa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2021
-ms.locfileid: "113600602"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128636741"
 ---
 # <a name="compare-access-to-azure-files-blob-storage-and-azure-netapp-files-with-nfs"></a>Vergleich des Zugriffs auf Azure Files, Azure Blob Storage und Azure NetApp Files mit NFS
 
@@ -29,7 +29,6 @@ Einen allgemeineren Vergleich finden Sie in [diesem Artikel](storage-introductio
 |Leistung (pro Volume)     |Bis zu 20.000 IOPS, bis zu 100 GiB/s Durchsatz         |Bis zu 100.000 IOPS, bis zu 80 GiB/s Durchsatz         |Bis zu 460.000 IOPS, bis zu 36 GiB/s Durchsatz         |
 |Skalieren     | Bis zu 2 PiB für ein einzelnes Volume <br></br> Bis zu ca. 4,75 TiB für eine einzelne Datei<br></br>Keine Mindestkapazitätsanforderungen         |Bis zu 100 TiB für eine einzelne Dateifreigabe<br></br>Bis zu 4 TiB für eine einzelne Datei<br></br>100 GiB Mindestkapazität         |Bis zu 100 TiB für ein einzelnes Volume<br></br>Bis zu 16 TiB für eine einzelne Datei<br></br>Konsistente Hybrid Cloud-Umgebung         |
 |Preise     |[Preise für Azure Blob Storage](https://azure.microsoft.com/pricing/details/storage/blobs/)         |[Preise für Azure Files](https://azure.microsoft.com/pricing/details/storage/files/)         |[Preise für Azure NetApp Files](https://azure.microsoft.com/pricing/details/netapp/)         |
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

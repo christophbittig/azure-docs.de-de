@@ -3,17 +3,17 @@ title: Häufige Anwendungsbereiche der Kostenanalyse in Azure Cost Management
 description: In diesem Artikel wird erläutert, wie Sie in Azure Cost Management Ergebnisse für häufige Kostenanalyseaufgaben erhalten.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/24/2020
+ms.date: 09/15/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 72b371fd1184c9c9e69593c5ad7e57310abf1de2
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: e17a30f5210f77c8fcabdeaf6b719814025b87fa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600035"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599846"
 ---
 # <a name="common-cost-analysis-uses"></a>Häufige Anwendungsbereiche der Kostenanalyse
 

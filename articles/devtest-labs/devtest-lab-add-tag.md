@@ -1,14 +1,14 @@
 ---
-title: Hinzufügen von Tags zu einem Lab in Azure DevTest Labs | Microsoft-Dokumentation
+title: Hinzufügen von Tags zu einem Lab
 description: In diesem Artikel erfahren Sie, wie Sie in Azure DevTest Labs benutzerdefinierte Tags erstellen und Tags verwenden, um Ressourcen zu kategorisieren. Sie können alle Ressourcen in Ihrem Abonnement anzeigen, die mit einem Tag versehen sind.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: a4d2b328626f0d0f096082fa88bb170894ccf3e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f301987a43dccdec91c08f6956986dcc7c48596a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88270732"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621659"
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>Hinzufügen von Tags zu einem Lab in Azure DevTest Labs
 
