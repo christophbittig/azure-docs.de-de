@@ -6,12 +6,12 @@ ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: conceptual
 ms.date: 08/16/2021
-ms.openlocfilehash: a132fdf16fa62360827a516f034bcd37c38b2928
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 6503433f164e0b8153aa8832473fd06ad3959bae
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446832"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434860"
 ---
 #  <a name="cloudevents-extension-for-azure-web-pubsub"></a>CloudEvents-Erweiterung für Azure Web PubSub
 
@@ -62,6 +62,7 @@ Diese Erweiterung definiert Attribute, die von der Web PubSub-Anwendung für jed
 | `connectionId` | `string` | Die connectionId ist für die Clientverbindung eindeutig definiert. | |
 | `eventName` | `string` | Der Name des Ereignisses ohne Präfix | |
 | `subprotocol` | `string` | Das Unterprotokoll, das der Client verwendet, sofern vorhanden. | |
+| `connectionState` | `string` | Legt den Status der Verbindung fest. Sie können denselben Antwort-Header verwenden, um den Wert des Status zurückzusetzen. Mehrere `connectionState`-Header sind nicht zulässig. Kodieren Sie den String-Wert base64, wenn er komplexe Zeichen enthält, z. B. können Sie `base64(jsonString)` verwenden, um ein komplexes Objekt mit diesem Attribut zu übergeben.| |
 | `signature` | `string` | Die Signatur für den Upstreamwebhook, um zu überprüfen, ob die eingehende Anforderung vom erwarteten Ursprung stammt. Der Dienst berechnet den Wert mithilfe des primären Zugriffsschlüssels und des sekundären Zugriffsschlüssels als HMAC-Schlüssel: `Hex_encoded(HMAC_SHA256(accessKey, connectionId))`. Der Upstream sollte vor der Verarbeitung überprüfen, ob die Anforderung gültig ist. | |
 
 ## <a name="events"></a>Events
@@ -115,12 +116,14 @@ ce-eventName: connect
 ```
 
 #### <a name="success-response-format"></a>Format der Antwort bei Erfolg:
-
-* `204`: Erfolg; ohne Inhalt.
-* `200`: Erfolg; der Inhalt SOLLTE ein JSON-Format mit den folgenden zulässigen Eigenschaften aufweisen:
-
+* Statuscode:
+    * `204`: Erfolg; ohne Inhalt.
+    * `200`: Erfolg; der Inhalt SOLLTE ein JSON-Format mit den folgenden zulässigen Eigenschaften aufweisen:
+* Kopfzeile `ce-connectionState`: Wenn dieser Header existiert, wird der Verbindungsstatus dieser Verbindung auf den Wert des Headers aktualisiert. Bitte beachten Sie, dass nur *blockierende* Ereignisse den Verbindungsstatus aktualisieren können. Das folgende Beispiel verwendet einen base64-kodierten JSON-String, um den komplexen Status der Verbindung zu speichern.
+* 
 ```HTTP
 HTTP/1.1 200 OK
+ce-connectionState: eyJrZXkiOiJhIn0=
 
 {
     "groups": [],
@@ -164,6 +167,7 @@ HTTP/1.1 401 Unauthorized
 
 * `ce-type`: `azure.webpubsub.sys.connected`
 * `Content-Type`: `application/json`
+* `ce-connectionState`: `eyJrZXkiOiJhIn0=`
 
 Der Anforderungstext ist ein leerer JSON-Code.
 
@@ -186,6 +190,7 @@ ce-connectionId: {connectionId}
 ce-hub: {hub}
 ce-eventName: connect
 ce-subprotocol: abc
+ce-connectionState: eyJrZXkiOiJhIn0=
 
 {}
 
@@ -228,6 +233,7 @@ ce-connectionId: {connectionId}
 ce-hub: {hub}
 ce-eventName: disconnect
 ce-subprotocol: abc
+ce-connectionState: eyJrZXkiOiJhIn0=
 
 {
     "reason": "{Reason}"
@@ -277,6 +283,7 @@ ce-userId: {userId}
 ce-connectionId: {connectionId}
 ce-hub: {hub}
 ce-eventName: message
+ce-connectionState: eyJrZXkiOiJhIn0=
 
 UserPayload
 
@@ -288,6 +295,8 @@ UserPayload
     * `204`: Erfolg; ohne Inhalt.
     * `200`: Erfolg; das Format von `UserResponsePayload` hängt von `Content-Type` der Antwort ab.
 * `Content-Type`: `application/octet-stream` für binären Frame; `text/plain` für Textframe; 
+* Kopfzeile `Content-Type`: `application/octet-stream` für Binärrahmen; `text/plain` für Textrahmen; 
+* Kopfzeile `ce-connectionState`: Wenn dieser Header existiert, wird der Verbindungsstatus dieser Verbindung auf den Wert des Headers aktualisiert. Bitte beachten Sie, dass nur *blockierende* Ereignisse den Verbindungsstatus aktualisieren können. Das folgende Beispiel verwendet einen base64-kodierten JSON-String, um den komplexen Status der Verbindung zu speichern.
 
 Wenn `Content-Type` `application/octet-stream` ist, sendet der Dienst `UserResponsePayload` mithilfe des `binary` WebSocket-Frames an den Client. Wenn `Content-Type` `text/plain` ist, sendet der Dienst `UserResponsePayload` mithilfe des `text` WebSocket-Frames `UserResponsePayload` an den Client. 
 
@@ -295,6 +304,7 @@ Wenn `Content-Type` `application/octet-stream` ist, sendet der Dienst `UserRespo
 HTTP/1.1 200 OK
 Content-Type: application/octet-stream (for binary frame) or text/plain (for text frame)
 Content-Length: nnnn
+ce-connectionState: eyJrZXkiOiJhIn0=
 
 UserResponsePayload
 ```
@@ -336,6 +346,7 @@ ce-connectionId: {connectionId}
 ce-hub: {hub_name}
 ce-eventName: <event_name>
 ce-subprotocol: json.webpubsub.azure.v1
+ce-connectionState: eyJrZXkiOiJhIn0=
 
 text data
 
@@ -372,6 +383,7 @@ ce-connectionId: {connectionId}
 ce-hub: {hub_name}
 ce-eventName: <event_name>
 ce-subprotocol: json.webpubsub.azure.v1
+ce-connectionState: eyJrZXkiOiJhIn0=
 
 {
     "hello": "world"
@@ -425,8 +437,8 @@ UserResponsePayload
 * Statuscode
     * `204`: Erfolg; ohne Inhalt.
     * `200`: Erfolg; daten, die an den PubSub WebSocket-Client gesendet werden, hängen von `Content-Type` ab. 
-
-* Wenn `Content-Type` `application/octet-stream` ist, sendet der Dienst mit base64-codierten Nutzdaten `UserResponsePayload` mit `dataType` als `binary` an den Client zurück. Eine Beispielantwort:
+* Kopfzeile `ce-connectionState`: Wenn dieser Header existiert, wird der Verbindungsstatus dieser Verbindung auf den Wert des Headers aktualisiert. Bitte beachten Sie, dass nur *blockierende* Ereignisse den Verbindungsstatus aktualisieren können. Das folgende Beispiel verwendet einen base64-kodierten JSON-String, um den komplexen Status der Verbindung zu speichern.
+* Wenn Kopfzeile `Content-Type` gleich `application/octet-stream` ist, sendet der Dienst `UserResponsePayload` unter Verwendung von `dataType` als `binary` mit base64-kodierter Nutzlast an den Client zurück. Eine Beispielantwort:
     ```json
     {
         "type": "message",

@@ -10,12 +10,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 83e6cfa8589e7ba2df4d6d8452496cf7680cf5c6
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 391541569f237b98c46f001b511c86c17f00e058
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110676282"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123468130"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Zuordnen einer benutzerdefinierten Domäne zu einem Azure Blob Storage-Endpunkt
 
@@ -413,6 +413,19 @@ Wenn die Benutzer nicht über HTTPS auf Ihren Blob- oder Webinhalt zugreifen mü
    * [HTTP-zu-HTTPS-Umleitung – Azure CDN](../../cdn/cdn-storage-custom-domain-https.md#http-to-https-redirection)
 
    * [Preise und Abrechnung bei Verwendung von Blob Storage – Azure CDN](../../cdn/cdn-storage-custom-domain-https.md#pricing-and-billing)
+
+## <a name="feature-support"></a>Featureunterstützung
+
+Diese Tabelle zeigt, wie diese Funktion in Ihrem Konto unterstützt wird und welche Auswirkungen es auf den Support hat, wenn Sie bestimmte Funktionen aktivieren. 
+
+| Speicherkontotyp                | Blob-Speicher (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3,0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png)  <sup>2</sup> | ![Ja](../media/icons/yes-icon.png)  <sup>2</sup> | 
+| Premium-Blockblobs          | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png)  <sup>2</sup> | ![Ja](../media/icons/yes-icon.png)  <sup>2</sup> |
+
+<sup>1</sup>    Data Lake Storage Gen2 und das Network File System (NFS) 3.0-Protokoll erfordern beide ein Speicherkonto mit einem aktivierten hierarchischen Namespace.
+
+<sup>2</sup>    Die Funktion wird auf der Ebene der Vorschau unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

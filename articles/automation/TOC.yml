@@ -30,6 +30,8 @@
   items:
     - name: Übersicht über die Automation-Kontoauthentifizierung
       href: automation-security-overview.md
+    - name: Kontextwechsel in Automation
+      href: context-switching.md
     - name: Übersicht über die Runbookausführung
       href: automation-runbook-execution.md
     - name: Übersicht über Hybrid Runbook Worker

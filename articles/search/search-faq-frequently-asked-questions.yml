@@ -9,12 +9,12 @@ metadata:
   ms.service: cognitive-search
   ms.topic: conceptual
   ms.date: 04/10/2020
-  ms.openlocfilehash: 70fe8e6f82d51ddb55b1763556f4684ef6244ddc
-  ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+  ms.openlocfilehash: 2bfa41d8a68d9640995ae6989ebd79a4b44c7c24
+  ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/22/2021
-  ms.locfileid: "112467911"
+  ms.lasthandoff: 09/03/2021
+  ms.locfileid: "123449085"
 title: Kognitive Azure-Suche – Häufig gestellte Fragen (FAQ)
 summary: Hier finden Sie Antworten auf häufig gestellte Fragen zu Konzepten, Code und Szenarien der kognitiven Azure-Suche.
 sections:
@@ -32,7 +32,7 @@ sections:
   questions:
   - question: >
       Können Indizes oder Indexmomentaufnahmen verschoben, gesichert und wiederhergestellt werden?
-    answer: "Während der Entwicklungsphase möchten Sie den Index möglicherweise zwischen den Suchdiensten verschieben. Beispielsweise möchten Sie einen Tarif „Basic“ oder „Free“ verwenden, um ihren Index zu entwickeln, und ihn dann für den Einsatz in der Produktionsumgebung in den Tarif „Standard“ oder einen höheren Tarif verschieben. \n\nOder Sie möchten eine Indexmomentaufnahme in Dateien sichern, die später zum Wiederherzustellen verwendet werden können. \n\nFür all dies können Sie den **index-backup-restore**-Beispielcode in diesem [.NET-Beispielrepository für die kognitive Azure-Suche](https://github.com/Azure-Samples/azure-search-dotnet-samples) verwenden. \n\nSie können auch jederzeit mit der REST-API für die kognitive Azure-Suche eine [Indexdefinition abrufen](/rest/api/searchservice/get-index).\n\nZurzeit gibt es im Azure-Portal keine integrierten Features für Indexextrahierung, Momentaufnahme oder Sicherung/Wiederherstellung. Wir erwägen jedoch, in einem zukünftigen Release Funktionen für Sicherung und Wiederherstellung hinzuzufügen. Wenn Sie Ihre Unterstützung dieses Feature ausdrücken möchten, können Sie auf [User Voice](https://feedback.azure.com/forums/263029-azure-search/suggestions/8021610-backup-snapshot-of-index) Ihre Stimme dafür abgeben.\n"
+    answer: "Während der Entwicklungsphase möchten Sie den Index möglicherweise zwischen den Suchdiensten verschieben. Beispielsweise möchten Sie einen Tarif „Basic“ oder „Free“ verwenden, um ihren Index zu entwickeln, und ihn dann für den Einsatz in der Produktionsumgebung in den Tarif „Standard“ oder einen höheren Tarif verschieben. \n\nOder Sie möchten eine Indexmomentaufnahme in Dateien sichern, die später zum Wiederherzustellen verwendet werden können. \n\nFür all dies können Sie den **index-backup-restore**-Beispielcode in diesem [.NET-Beispielrepository für die kognitive Azure-Suche](https://github.com/Azure-Samples/azure-search-dotnet-samples) verwenden. \n\nSie können auch jederzeit mit der REST-API für die kognitive Azure-Suche eine [Indexdefinition abrufen](/rest/api/searchservice/get-index).\n         \n"
   - question: >
       Kann ich meinen Index oder Dienst wiederherstellen, nachdem er gelöscht wurde?
     answer: "Nein, wenn Sie einen Index oder Dienst für die kognitive Azure-Suche löschen, kann er nicht wiederhergestellt werden. Wenn Sie einen Dienst für die kognitive Azure-Suche löschen, werden alle Indizes im Dienst dauerhaft gelöscht. Wenn Sie eine Azure-Ressourcengruppe löschen, die einen oder mehrere Dienste für die kognitive Azure-Suche enthält, werden alle Dienste dauerhaft gelöscht.  \n\nUm Ressourcen wie Indizes, Indexer, Datenquellen und Qualifikationsgruppen wiederherzustellen, müssen Sie sie aus dem Code neu erstellen. \n\nUm einen Index neu zu erstellen, müssen Sie Daten aus externen Quellen neu indizieren. Aus diesem Grund wird empfohlen, eine Masterkopie oder Sicherung der Originaldaten in einem anderen Datenspeicher, wie z.B. Azure SQL-Datenbank oder Cosmos DB, zu speichern.\n\nAlternativ können Sie den **index-backup-restore**-Beispielcode in diesem [.NET-Beispielrepository für die kognitive Azure-Suche](https://github.com/Azure-Samples/azure-search-dotnet-samples) verwenden, um eine Indexdefinition und die Indexmomentaufnahme in einer Reihe von JSON-Dateien zu sichern. Später können Sie das Tool und die Dateien bei Bedarf verwenden, um den Index wiederherzustellen.  \n"
@@ -49,7 +49,7 @@ sections:
   - question: >
       Kann ich den Zugriff auf den Suchindex nach Benutzeridentität beschränken?
     answer: >
-      Sie können [Sicherheitsfilter](./search-security-trimming-for-azure-search.md) mit einem `search.in()`-Filter implementieren. Der Filter lässt sich gut mit [Identitätsverwaltungsdiensten wie Azure Active Directory(AAD)](./search-security-trimming-for-azure-search-with-aad.md) kombinieren, um Suchergebnisse auf der Grundlage definierter Benutzergruppenzugehörigkeit zu trimmen.
+      Sie können [Sicherheitsfilter](./search-security-trimming-for-azure-search.md) mit einem `search.in()`-Filter implementieren. Der Filter lässt sich gut mit [Identitätsverwaltungsdiensten wie Azure Active Directory(AAD)](./search-security-trimming-for-azure-search-with-aad.md) kombinieren, um Suchergebnisse auf der Grundlage definierter Benutzergruppenzugehörigkeit zu trimmen. Sie können sich auch für den [rollenbasierten Zugriff](search-security-rbac.md) registrieren, der derzeit als Public Preview verfügbar ist.
   - question: >
       Warum ergeben sich keine Übereinstimmungen für Begriffe, von denen ich weiß, dass sie gültig sind?
     answer: >
@@ -83,4 +83,4 @@ sections:
       Was ist der beste Ansatz zum Implementieren der lokalisierten Suche?
     answer: >
       Die meisten Kunden wählen keine Sammlung, sondern dedizierte Felder, wenn in demselben Index unterschiedliche Gebietsschemas (Sprachen) unterstützt werden sollen. Gebietsschemaspezifische Felder ermöglichen die Zuweisung eines passenden Analysemoduls. Beispiel: Der Microsoft French Analyzer wird einem Feld zugewiesen, das französische Zeichenfolgen enthält. Hierdurch wird auch die Filterung vereinfacht. Wenn Sie wissen, dass eine Abfrage auf einer französischsprachigen Seite (fr-fr) initiiert wird, können Sie die Suchergebnisse auf dieses Feld beschränken. Oder erstellen Sie ein [Bewertungsprofil](/rest/api/searchservice/add-scoring-profiles-to-a-search-index), um dem Feld eine höhere relative Gewichtung zu verleihen. Für die kognitive Azure-Suche stehen über [50 unterstützte Sprachanalysetools](./search-language-support.md) zur Auswahl.
-additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n   Haben Sie eine Frage zu einem fehlenden Feature bzw. einer fehlenden Funktion? Fordern Sie das Feature auf der [User Voice-Website](https://feedback.azure.com/forums/263029-azure-search) an.\n        \n## <a name=\"see-also\"></a>Weitere Informationen\n   [StackOverflow: Kognitive Azure-Suche](https://stackoverflow.com/questions/tagged/azure-search)   \n   [Funktionsweise der Volltextsuche in Azure Cognitive Search](search-lucene-query-architecture.md)  \n   [Was ist Azure Cognitive Search?](search-what-is-azure-search.md)"
+additionalContent: "\n## <a name=\"see-also\"></a>Weitere Informationen\n   [StackOverflow: Kognitive Azure-Suche](https://stackoverflow.com/questions/tagged/azure-search)   \n   [Funktionsweise der Volltextsuche in Azure Cognitive Search](search-lucene-query-architecture.md)  \n   [Was ist Azure Cognitive Search?](search-what-is-azure-search.md)"

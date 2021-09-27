@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/26/2021
-ms.openlocfilehash: 0eaa73fa7e0a9896a875af7e3a3aab22db2a37d0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b87354ca6b7a079f60f8d64e2deae53b65cef167
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104657058"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123543851"
 ---
 # <a name="collect-windows-event-log-data-sources-with-log-analytics-agent"></a>Datenquellen für das Sammeln von Windows-Ereignisprotokolldaten mit dem Log Analytics-Agent
 Windows-Ereignisprotokolle sind eine der gängigsten [Datenquellen](../agents/agent-data-sources.md) für Log Analytics-Agents auf virtuellen Windows-Computern, weil viele Anwendungen Daten in das Windows-Ereignisprotokoll schreiben.  Sie können Ereignisse aus Standardprotokollen wie beispielsweise dem System- und dem Anwendungsprotokoll sammeln und darüber hinaus benutzerdefinierte Protokolle angeben, die von den zu überwachenden Anwendungen erstellt werden.
@@ -30,7 +30,7 @@ Während der Eingabe des Namens des Ereignisprotokolls bietet Azure Monitor Vors
 [![Windows-Ereignisse konfigurieren](media/data-sources-windows-events/configure.png)](media/data-sources-windows-events/configure.png#lightbox)
 
 > [!IMPORTANT]
-> Die Erfassung von Sicherheitsereignissen kann nicht im Arbeitsbereich konfiguriert werden. Sie müssen [Azure Security Center](../../security-center/security-center-enable-data-collection.md) oder [Azure Sentinel](../../sentinel/connect-windows-security-events.md) zum Erfassen von Sicherheitsereignissen verwenden.
+> Die Erfassung von Sicherheitsereignissen kann nicht im Arbeitsbereich konfiguriert werden. Sie müssen [Azure Security Center](../../security-center/security-center-enable-data-collection.md) oder [Azure Sentinel](../../sentinel/connect-windows-security-events.md) verwenden, um Sicherheitsereignisse zu sammeln.
 
 
 > [!NOTE]

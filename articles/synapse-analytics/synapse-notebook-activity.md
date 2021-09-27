@@ -10,12 +10,12 @@ ms.date: 05/19/2021
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 9c021b8b0aec025458179ffb4859c351572762ee
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: c8c2246822cdf9faa06833020cd1951bde9e86a3
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123186981"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123449295"
 ---
 # <a name="transform-data-by-running-a-synapse-notebook"></a>Weitere Informationen finden Sie unter Transformieren von Daten durch Ausführen eines Synapse-Notebooks
 
@@ -32,6 +32,10 @@ Sie können eine Synapse-Notebookaktivität direkt über die Canvas der Synapse-
 Ziehen Sie das **Synapse-Notebook** unter **Aktivitäten** in die Synapse-Pipelinecanvas. Wählen Sie das Feld für Synapse-Notebookaktivitäten aus, und konfigurieren Sie die **Einstellungen** der Notebookinhalte für die aktuelle Aktivität. Sie können ein vorhandenes Notebook aus dem aktuellen Arbeitsbereich auswählen oder ein neues hinzufügen. 
 
 ![screenshot-showing-create-notebook-activity](./media/synapse-notebook-activity/create-synapse-notebook-activity.png)
+
+> [!NOTE]
+> Die Ausführung paralleler Spark-Notebooks in Azure Synapse-Pipelines wird in die Warteschlange eingereiht und nach dem FIFO-Prinzip ausgeführt. Die Auftragsreihenfolge in der Warteschlange erfolgt gemäß der Zeitabfolge, und die Ablaufzeit eines Auftrags in der Warteschlange beträgt drei Tage. Beachten Sie, dass die Warteschlange für Notebooks nur in der Synapse-Pipeline funktioniert.
+
 
 ### <a name="add-a-notebook-to-synapse-pipeline"></a>Hinzufügen eines Notebooks zur Synapse-Pipeline
 

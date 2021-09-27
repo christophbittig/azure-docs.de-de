@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 09/02/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
-ms.openlocfilehash: 39eb6c164751ebdfa293798850a8d663fe988b82
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 51e70fb16988c0f72cb9b1a35444f55e164839c9
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107875681"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123451797"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Verwenden des Azure Import/Export-Diensts zum Importieren von Daten in Azure Blob Storage
 
@@ -73,7 +73,7 @@ Führen Sie zum Vorbereiten der Laufwerke die folgenden Schritte aus.
     ```powershell
     ./WAImportExport.exe PrepImport /j:<journal file name> /id:session<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite
     ```
-
+    
     Eine Journaldatei wird in demselben Ordner erstellt, in dem Sie das Tool ausgeführt haben. Es werden noch zwei weitere Dateien erstellt: eine *XML*-Datei (im Ordner, in dem Sie das Tool ausführen) und die Datei *LaufwerkManifest.xml* (im Ordner, in dem sich die Daten befinden).
 
     Die verwendeten Parameter werden in der folgenden Tabelle beschrieben:
@@ -89,11 +89,16 @@ Führen Sie zum Vorbereiten der Laufwerke die folgenden Schritte aus.
     |/blobtype:     |Diese Option gibt den Typ des Blobs an, in den die Daten importiert werden sollen. Bei Blockblobs ist der Blobtyp `BlockBlob`, für Seitenblobs `PageBlob`.         |
     |/skipwrite:     | Gibt an, dass keine neuen Daten kopiert werden müssen und vorhandene Daten auf dem Datenträger vorbereitet werden sollen.          |
     |/enablecontentmd5:     |Wenn diese Option aktiviert ist, wird sichergestellt, dass MD5 berechnet und als `Content-md5`-Eigenschaft für jeden Blob festgelegt wird. Verwenden Sie diese Option nur, wenn Sie nach dem Hochladen der Daten in Azure das Feld `Content-md5` verwenden möchten. <br> Diese Option wirkt sich nicht auf die Datenintegritätsprüfung aus (diese wird standardmäßig ausgeführt). Durch diese Einstellung wird die Zeit zum Hochladen von Daten in die Cloud nicht verlängert.          |
-8. Wiederholen Sie den vorherigen Schritt für jeden Datenträger, der versendet werden muss. Für jede Ausführung an der Befehlszeile wird eine Journaldatei mit dem bereitgestellten Namen erstellt.
 
-    > [!IMPORTANT]
-    > * Zusammen mit der Journaldatei wird auch eine `<Journal file name>_DriveInfo_<Drive serial ID>.xml`-Datei erstellt, und zwar im gleichen Ordner, in dem sich das Tool befindet. Die XML-Datei wird beim Erstellen eines Auftrags anstelle der Journaldatei verwendet, wenn die Journaldatei zu groß ist.
-   > * Die maximale Größe der Journaldatei, die das Portal zulässt, beträgt 2 MB. Wenn die Journaldatei diesen Grenzwert überschreitet, wird ein Fehler zurückgegeben.
+8. Wiederholen Sie den vorherigen Schritt für jeden Datenträger, der versendet werden muss. 
+
+   Für jede Ausführung an der Befehlszeile wird eine Journaldatei mit dem bereitgestellten Namen erstellt. 
+
+   Zusammen mit der Journaldatei wird auch eine `<Journal file name>_DriveInfo_<Drive serial ID>.xml`-Datei erstellt, und zwar im gleichen Ordner, in dem sich das Tool befindet. Die XML-Datei wird beim Erstellen eines Auftrags anstelle der Journaldatei verwendet, wenn die Journaldatei zu groß ist.
+
+> [!IMPORTANT]
+> * Ändern Sie die Journaldateien oder die Daten auf den Laufwerken nicht, und formatieren Sie keine Festplatten neu, nachdem Sie die Vorbereitung der Festplatten abgeschlossen haben.
+> * Die maximale Größe der Journaldatei, die das Portal zulässt, beträgt 2 MB. Wenn die Journaldatei diesen Grenzwert überschreitet, wird ein Fehler zurückgegeben.
 
 ## <a name="step-2-create-an-import-job"></a>Schritt 2: Erstellen eines Importauftrags
 

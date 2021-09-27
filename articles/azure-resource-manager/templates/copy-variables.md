@@ -3,12 +3,12 @@ title: Definieren mehrerer Instanzen einer Variablen
 description: Verwenden des copy-Vorgangs in einer Azure Resource Manager-Vorlage (ARM), um sie beim Erstellen einer Variable mehrere Male zu durchlaufen.
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 5f6459335fa3f059a76128edde4ee7096790fe13
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: bf04a93d8ec6626bfbb2083789dbd6db08e2af51
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111957957"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123452175"
 ---
 # <a name="variable-iteration-in-arm-templates"></a>Variableniteration in ARM-Vorlagen
 
@@ -314,10 +314,11 @@ Im nächsten Beispiel werden die verschiedenen Möglichkeiten gezeigt, mit denen
 
 Die folgenden Beispiele zeigen allgemeine Szenarien für das Erstellen mehrerer Werte für eine Variable.
 
-|Vorlage  |Beschreibung  |
+|Vorlage  |BESCHREIBUNG  |
 |---------|---------|
 |[Variablen kopieren](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Veranschaulicht die verschiedenen Methoden zum Durchlaufen von Variablen |
 |[Mehrere Sicherheitsregeln](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Stellt mehrere Sicherheitsregeln in einer Netzwerksicherheitsgruppe bereit. Die Sicherheitsregeln werden aus einem Parameter generiert. Informationen zum Parameter finden Sie im Artikel zur [Datei mit mehreren NSG-Parametern](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json). |
+|[Speicher mit Variablen kopieren](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystoragewithvariables.json) | Beispiel für die Iteration einer Variablen und die Erstellung mehrerer Speicherkonten. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

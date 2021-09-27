@@ -1,15 +1,15 @@
 ---
 title: Unterstützte Azure Resource Manager-Ressourcentypen
 description: Stellen Sie eine Liste der Azure Resource Manager-Ressourcentypen bereit, die von Azure Resource Graph und dem Änderungsverlauf unterstützt werden.
-ms.date: 08/31/2021
+ms.date: 09/03/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 330c406ef1d45a3cd72ac7316ca3985d2a6cd647
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 9dfdd77d400dfa91ec26df23d323f8290dc97da0
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123309768"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536065"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph-Tabelle und Ressourcentypreferenz
 
@@ -22,6 +22,7 @@ Beispielabfragen für diese Tabelle finden Sie unter [Resource Graph-Beispielabf
 - microsoft.advisor/configurations
 - microsoft.advisor/recommendations
   - Beispielabfrage: [Abrufen der Zusammenfassung der Kosteneinsparungen aus Azure Advisor](../samples/samples-by-category.md#get-cost-savings-summary-from-azure-advisor)
+  - Beispiel-Abfrage: [Liste der Arc-fähigen Server, auf denen nicht die letzte freigegebene Agentenversion läuft](../samples/samples-by-category.md#list-arc-enabled-servers-not-running-latest-released-agent-version)
 - microsoft.advisor/recommendations/suppressions
 - microsoft.advisor/suppressions
 
@@ -59,6 +60,15 @@ Beispielabfragen für diese Tabelle finden Sie unter [Resource Graph-Beispielabf
   - Beispielabfrage: [Liste der virtuellen Computer und ihres Verfügbarkeitsstatus nach Ressourcen-IDs](../samples/samples-by-category.md#list-of-virtual-machines-and-associated-availability-states-by-resource-ids)
   - Beispielabfrage: [Liste der virtuellen Computer nach Verfügbarkeitsstatus und Energiezustand mit Ressourcen-IDs und Ressourcengruppen](../samples/samples-by-category.md#list-of-virtual-machines-by-availability-state-and-power-state-with-resource-ids-and-resource-groups)
   - Beispielabfrage: [Liste der virtuellen Computer, die nicht verfügbar sind, nach Ressourcen-IDs](../samples/samples-by-category.md#list-of-virtual-machines-that-are-not-available-by-resource-ids)
+
+## <a name="iotsecurityresources"></a>iotsecurityRessourcen
+
+- microsoft.iotsecurity/standorte/geraetegruppen/alarmierungen
+- microsoft.iotsecurity/standorte/geraetegruppen/geraete
+- microsoft.iotsecurity/standorte/geraetegruppen/empfehlungen
+- microsoft.iotsecurity/vor-Ort-Sensoren
+- microsoft.iotsecurity/sensoren
+- microsoft.iotsecurity/standorte
 
 ## <a name="kubernetesconfigurationresources"></a>kubernetesconfigurationresources
 
@@ -315,6 +325,7 @@ Beispielabfragen für diese Tabelle finden Sie unter [Resource Graph-Beispielabf
 - Microsoft.ContainerRegistry/registries/webhooks (Webhooks für Containerregistrierungen)
 - microsoft.containerservice/containerservices
 - Microsoft.ContainerService/managedClusters (Kubernetes-Dienste)
+  - Beispielabfrage: [Liste der betroffenen Ressourcen bei der Übertragung eines Azure-Abonnements](../samples/samples-by-category.md#list-impacted-resources-when-transferring-an-azure-subscription)
 - microsoft.containerservice/openshiftmanagedclusters
 - microsoft.contoso/clusters
 - microsoft.contoso/employees
@@ -335,6 +346,7 @@ Beispielabfragen für diese Tabelle finden Sie unter [Resource Graph-Beispielabf
 - Microsoft.DataFactory/factories (Data Factorys (V2))
 - Microsoft.DataLakeAnalytics/accounts (Data Lake Analytics)
 - Microsoft.DataLakeStore/accounts (Data Lake Storage Gen1)
+  - Beispielabfrage: [Liste der betroffenen Ressourcen bei der Übertragung eines Azure-Abonnements](../samples/samples-by-category.md#list-impacted-resources-when-transferring-an-azure-subscription)
 - microsoft.datamigration/controllers
 - Microsoft.DataMigration/services (Azure Database Migration Service)
 - Microsoft.DataMigration/services/projects (Azure-Datenbankmigrationsprojekte)
@@ -434,6 +446,7 @@ Beispielabfragen für diese Tabelle finden Sie unter [Resource Graph-Beispielabf
 - Microsoft.HybridCompute/machines (Server – Azure Arc)
   - Beispielabfrage: [Abrufen der Anzahl und des Prozentsatzes von Arc-fähigen Servern nach Domäne](../samples/samples-by-category.md#get-count-and-percentage-of-arc-enabled-servers-by-domain)
   - Beispielabfrage: [Auflisten aller Erweiterungen, die auf einem Server mit Azure Arc-Unterstützung installiert sind](../samples/samples-by-category.md#list-all-extensions-installed-on-an-azure-arc-enabled-server)
+  - Beispiel-Abfrage: [Liste der Arc-fähigen Server, auf denen nicht die letzte freigegebene Agentenversion läuft](../samples/samples-by-category.md#list-arc-enabled-servers-not-running-latest-released-agent-version)
 - microsoft.hybridcompute/machines/extensions
   - Beispielabfrage: [Auflisten aller Erweiterungen, die auf einem Server mit Azure Arc-Unterstützung installiert sind](../samples/samples-by-category.md#list-all-extensions-installed-on-an-azure-arc-enabled-server)
 - Microsoft.HybridCompute/privateLinkScopes (Azure Arc: Private Link-Bereiche)
@@ -478,6 +491,7 @@ Beispielabfragen für diese Tabelle finden Sie unter [Resource Graph-Beispielabf
 - Microsoft.KeyVault/vaults (Schlüsseltresore)
   - Beispielabfrage: [Anzahl von Key Vault-Ressourcen](../samples/samples-by-category.md#count-key-vault-resources)
   - Beispielabfrage: [Schlüsseltresore mit Abonnementname](../samples/samples-by-category.md#key-vaults-with-subscription-name)
+  - Beispielabfrage: [Liste der betroffenen Ressourcen bei der Übertragung eines Azure-Abonnements](../samples/samples-by-category.md#list-impacted-resources-when-transferring-an-azure-subscription)
 - Microsoft.Kubernetes/connectedClusters (Kubernetes – Azure Arc)
   - Beispielabfrage: [Auflisten aller Azure Arc-fähigen Kubernetes-Cluster ohne Azure Monitor-Erweiterung](../samples/samples-by-category.md#list-all-azure-arc-enabled-kubernetes-clusters-without-azure-monitor-extension)
   - Beispielabfrage: [Auflisten aller Azure Arc-fähigen Kubernetes-Ressourcen](../samples/samples-by-category.md#list-all-azure-arc-enabled-kubernetes-resources)
@@ -513,6 +527,7 @@ Beispielabfragen für diese Tabelle finden Sie unter [Resource Graph-Beispielabf
 - microsoft.maintenance/maintenancepolicies
 - microsoft.managedidentity/groups
 - Microsoft.ManagedIdentity/userAssignedIdentities (verwaltete Identitäten)
+  - Beispielabfrage: [Liste der betroffenen Ressourcen bei der Übertragung eines Azure-Abonnements](../samples/samples-by-category.md#list-impacted-resources-when-transferring-an-azure-subscription)
 - microsoft.managednetwork/managednetworkgroups
 - microsoft.managednetwork/managednetworkpeeringpolicies
 - microsoft.managednetwork/managednetworks
@@ -717,6 +732,7 @@ Beispielabfragen für diese Tabelle finden Sie unter [Resource Graph-Beispielabf
 - Microsoft.Sql/managedInstances/databases (verwaltete Datenbanken)
 - Microsoft.Sql/servers (SQL-Server)
 - Microsoft.Sql/servers/databases (SQL-Datenbanken)
+  - Beispielabfrage: [Liste der betroffenen Ressourcen bei der Übertragung eines Azure-Abonnements](../samples/samples-by-category.md#list-impacted-resources-when-transferring-an-azure-subscription)
   - Beispielabfrage: [Auflisten von SQL-Datenbanken und den zugehörigen Pools für elastische Datenbanken](../samples/samples-by-category.md#list-sql-databases-and-their-elastic-pools)
 - Microsoft.Sql/servers/elasticpools (elastische SQL-Pools)
   - Beispielabfrage: [Auflisten von SQL-Datenbanken und den zugehörigen Pools für elastische Datenbanken](../samples/samples-by-category.md#list-sql-databases-and-their-elastic-pools)
@@ -730,6 +746,7 @@ Beispielabfragen für diese Tabelle finden Sie unter [Resource Graph-Beispielabf
   - Beispielabfrage: [Suchen von Speicherkonten mit einem bestimmten Tag (unter Vernachlässigung der Groß-/Kleinschreibung) in der Ressourcengruppe](../samples/samples-by-category.md#find-storage-accounts-with-a-specific-case-insensitive-tag-on-the-resource-group)
   - Beispielabfrage: [Suchen von Speicherkonten mit einem bestimmten Tag (unter Berücksichtigung der Groß-/Kleinschreibung) in der Ressourcengruppe](../samples/samples-by-category.md#find-storage-accounts-with-a-specific-case-sensitive-tag-on-the-resource-group)
   - Beispielabfrage: [Auflisten aller Speicherkonten mit einem bestimmten Tagwert](../samples/samples-by-category.md#list-all-storage-accounts-with-specific-tag-value)
+  - Beispielabfrage: [Liste der betroffenen Ressourcen bei der Übertragung eines Azure-Abonnements](../samples/samples-by-category.md#list-impacted-resources-when-transferring-an-azure-subscription)
 - microsoft.storagecache/amlfilesystems
 - Microsoft.StorageCache/caches (HPC-Caches)
 - Microsoft.StoragePool/diskPools (Disk Pools)

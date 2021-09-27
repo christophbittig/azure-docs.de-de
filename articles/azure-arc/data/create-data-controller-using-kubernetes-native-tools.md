@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 9f7f5569d5381a7d1ff4d7ebbeac535105f22c93
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: 0650691e9786ac88184c8354052ea96329e8f933
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122356419"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128639715"
 ---
 # <a name="create-azure-arc-data-controller-using-kubernetes-tools"></a>Erstellen eines Azure Arc-Datencontrollers unter Verwendung von Kubernetes-Tools
 
@@ -250,7 +250,7 @@ Das folgende Beispiel zeigt die vollständige YAML-Datei eines Datencontrollers.
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: sa-mssql-controller
+  name: sa-arc-controller
 ---
 apiVersion: arcdata.microsoft.com/v1
 kind: DataController

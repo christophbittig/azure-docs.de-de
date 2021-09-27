@@ -2,15 +2,14 @@
 title: Verwalten einer Azure-Supportanfrage
 description: In diesem Artikel werden das Anzeigen von Supportanfragen, das Senden von Nachrichten, das Ändern des Schweregrads von Anfragen, das Freigeben von Diagnoseinformationen mit Azure-Support, das erneute Öffnen einer geschlossenen Supportanfrage und das Hochladen von Dateien erläutert.
 tags: billing
-ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
 ms.topic: how-to
-ms.date: 08/24/2021
-ms.openlocfilehash: 6f1daf2c504be53654c61c5249065cc929ae8066
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/01/2021
+ms.openlocfilehash: f1930402c0f458962c95f8f4fe0f1011f1dcca49
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122824128"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426380"
 ---
 # <a name="manage-an-azure-support-request"></a>Verwalten einer Azure-Supportanfrage
 
@@ -36,13 +35,10 @@ Auf dieser Seite können Sie Supportanfragen durchsuchen, filtern und sortieren.
 
 > [!NOTE]
 > Der maximale Schweregrad richtet sich nach Ihrem [Supportplan](https://azure.microsoft.com/support/plans).
->
 
 1. Wählen Sie auf der Seite **Alle Supportanfragen** die Supportanfrage aus.
 
 1. Wählen Sie auf der Seite **Supportanfrage** die Option **Change** (Ändern) aus.
-
-    :::image type="content" source="media/how-to-manage-azure-support-request/change-severity.png" alt-text="Ändern des Schweregrads der Supportanfrage":::
 
 1. Im Azure-Portal wird einer von zwei Bildschirmen angezeigt, der davon abhängt, ob die Anfrage bereits einem Supporttechniker zugewiesen ist:
 
@@ -61,11 +57,11 @@ Wenn Sie eine Supportanfrage erstellen, können Sie im Abschnitt **Diagnoseinfor
 So ändern Sie Ihre Auswahl bei **Diagnoseinformationen teilen** nachdem die Anforderung erstellt wurde:
 
 1. Wählen Sie auf der Seite **Alle Supportanfragen** die Supportanfrage aus.
-    
+
 1. Suchen Sie auf der Seite **Supportanfrage** nach **Dignoseinformationen freigeben**, und wählen Sie dann **Ändern** aus.
-    
-1.  Wählen Sie **Ja** oder **Nein** aus, und klicken Sie dann auf **OK**, um dies zu bestätigen.
-    
+
+1. Wählen Sie **Ja** oder **Nein** aus, und klicken Sie dann auf **OK**, um dies zu bestätigen.
+
     :::image type="content" source="media/how-to-manage-azure-support-request/grant-permission-manage.png" alt-text="Erteilen von Berechtigungen für Diagnoseinformationen":::
 
 ## <a name="upload-files"></a>Hochladen von Dateien
@@ -82,11 +78,11 @@ Sie können mithilfe der Dateiupload-Option Diagnosedateien oder andere Dateien 
 
 Befolgen Sie diese Richtlinien, wenn Sie die Dateiupload-Option verwenden:
 
-* Um Ihre Privatsphäre zu schützen, fügen Sie keine persönlichen Informationen in Ihren Upload ein.
-* Der Dateiname darf nicht länger als 110 Zeichen sein.
-* Sie können nicht mehrere Dateien hochladen.
-* Dateien dürfen nicht größer als 4 MB sein.
-* Alle Dateien müssen ein Suffix aufweisen, z. B. *.docx* oder *.xlsx*. In der folgenden Tabelle sind die für den Upload zulässigen Dateinamenerweiterungen aufgeführt.
+- Um Ihre Privatsphäre zu schützen, fügen Sie keine persönlichen Informationen in Ihren Upload ein.
+- Der Dateiname darf nicht länger als 110 Zeichen sein.
+- Sie können nicht mehrere Dateien hochladen.
+- Dateien dürfen nicht größer als 4 MB sein.
+- Alle Dateien müssen ein Suffix aufweisen, z. B. *.docx* oder *.xlsx*. In der folgenden Tabelle sind die für den Upload zulässigen Dateinamenerweiterungen aufgeführt.
 
 | 0-9, A-C    | D – G   | H-N         | O-Q   | R-T      | U-W        | X-Z     |
 |-------------|-------|-------------|-------|----------|------------|---------|
@@ -121,18 +117,17 @@ Befolgen Sie diese Richtlinien, wenn Sie die Dateiupload-Option verwenden:
 
 ## <a name="close-a-support-request"></a>Schließen einer Supportanfrage
 
-Wenn Sie eine Supportanfrage schließen möchten, [senden Sie eine Nachricht](#send-a-message) mit einer Anforderung zum Schließen.
+Um eine Supportanfrage zu schließen, [senden Sie eine Nachricht](#send-a-message) mit der Bitte, die Anfrage zu schließen.
 
 ## <a name="reopen-a-closed-request"></a>Erneutes Öffnen einer geschlossenen Anfrage
 
-Wenn Sie eine geschlossene Supportanfrage erneut öffnen müssen, erstellen Sie eine [neue Nachricht](#send-a-message). Dadurch wird die Anfrage automatisch erneut geöffnet.
+Um eine geschlossene Supportanfrage wieder zu öffnen, erstellen Sie eine [neue Nachricht](#send-a-message), die die Anfrage automatisch wieder öffnet.
 
 ## <a name="cancel-a-support-plan"></a>Kündigen eines Supportplans
 
-Wenn Sie einen Supportplan kündigen möchten, finden Sie unter [Kündigen eines Supportplans](../../cost-management-billing/manage/cancel-azure-subscription.md#cancel-a-support-plan) weitere Informationen.
+Um einen Support-Plan zu kündigen, siehe [Kündigen eines Support-Plans](../../cost-management-billing/manage/cancel-azure-subscription.md#cancel-a-support-plan).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Erstellen einer Azure-Supportanfrage](how-to-create-azure-support-request.md)
-
-[Azure-Supportticket-REST-API](/rest/api/support)
+- Überprüfen Sie den Prozess zur [Erstellung einer Azure-Supportanfrage](how-to-create-azure-support-request.md).
+- Erfahren Sie mehr über die [Azure Support Ticket REST API](/rest/api/support).

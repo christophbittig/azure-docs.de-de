@@ -9,13 +9,13 @@ ms.custom:
 - iot-p0-scenario
 ms.author: avneets
 author: avneet723
-ms.date: 11/27/2019
-ms.openlocfilehash: 13b1e22f1e1e5f51d524e80d0bf102b744fbec3d
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.date: 08/20/2021
+ms.openlocfilehash: b4d169a46f499e83d0abf5d3145d67a3f6fdf03b
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109684593"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123439215"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>Verbinden eines RuuviTag-Sensors mit Ihrer Azure IoT Central-Anwendung
 
@@ -46,8 +46,8 @@ Für das Onboarding eines RuuviTag-Sensors in Ihrer Azure IoT Central-Anwendungs
 
 So fügen Sie eine RuuviTag-Gerätevorlage hinzu
 
-1. Navigieren Sie im linken Bereich zur Registerkarte ***Gerätevorlagen** _, und wählen Sie aus _*+ Neu**: ![Neue Gerätevorlage erstellen](./media/howto-connect-ruuvi/devicetemplate-new.png). Auf der dann angezeigten Seite gibt es eine Option zum ***Erstellen einer benutzerdefinierten Vorlage**_ oder zum _ *_Verwenden einer vorkonfigurierten Gerätevorlage_**.
-1. Wählen Sie in der Liste der vorkonfigurierten Gerätevorlagen die RuuviTag-Gerätevorlage aus, wie unten dargestellt:  ![Auswählen der RuuviTag-Gerätevorlage](./media/howto-connect-ruuvi/devicetemplate-preconfigured.png)
+1. Navigieren Sie im linken Bereich zur Registerkarte ***Gerätevorlagen** _, und wählen Sie aus _*+ Neu**: ![Neue Gerätevorlage erstellen](./media/howto-connect-ruuvi/device-template-new.png). Auf der dann angezeigten Seite gibt es eine Option zum ***Erstellen einer benutzerdefinierten Vorlage**_ oder zum _ *_Verwenden einer vorkonfigurierten Gerätevorlage_**.
+1. Wählen Sie die RuuviTag Multisensor-Gerätevorlage aus der Liste der vorkonfigurierten Gerätevorlagen wie unten dargestellt:  ![RuuviTag Gerätevorlage auswählen](./media/howto-connect-ruuvi/device-template-pre-configured.png)
 1. Klicken Sie auf ***Weiter: Anpassen***, um mit dem nächsten Schritt fortzufahren.
 1. Wählen Sie auf dem nächsten Bildschirm ***Erstellen*** aus, um das Onboarding der C500-Gerätevorlage in Ihrer IoT Central-Anwendung durchzuführen.
 
@@ -59,7 +59,7 @@ Wie bereits erwähnt, müssen Sie ein Gatewaygerät einrichten, um das RuuviTag-
 1. Nehmen Sie die Abdeckung des RuuviTag-Geräts ab, und ziehen Sie die Plastiklasche heraus, um die Akkusicherung aufzuheben.
 1. Ordnen Sie das RuuviTag-Gerät in der Nähe eines Rigado Cascade 500-Gateways an, das in Ihrer IoT Central-Anwendung bereits konfiguriert ist.
 1. Nach wenigen Sekunden sollte Ihr RuuviTag-Gerät in der Liste der Geräte in IoT Central angezeigt werden.  
-    ![RuuviTag-Geräteliste](./media/howto-connect-ruuvi/ruuvi-devicelist.png)
+    ![RuuviTag-Geräteliste](./media/howto-connect-ruuvi/ruuvi-device-list.png)
 
 Sie können dieses RuuviTag-Gerät nun in Ihrer IoT Central-Anwendung verwenden.  
 

@@ -6,48 +6,41 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/11/2021
+ms.date: 09/02/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: d061b766a973f8c867fb97da6d42c625589d2f27
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: b53f861dc361463a44202874820955c9bdb5d0f6
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109783403"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123472936"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>Konfigurieren der Objektreplikation für Blockblobs
 
-Die Objektreplikation kopiert Blockblobs asynchron zwischen einem Quellspeicherkonto und einem Zielkonto. Weitere Informationen zur Objektreplikation finden Sie unter [Objektreplikation](object-replication-overview.md).
+Die Objektreplikation kopiert Blockblobs asynchron zwischen einem Quellspeicherkonto und einem Zielkonto. Wenn Sie die Objektreplikation konfigurieren, erstellen Sie eine Replikationsrichtlinie, in der das Quellspeicherkonto und das Zielkonto angegeben werden. Eine Replikationsrichtlinie enthält mindestens eine Regel, die einen Quellcontainer und einen Zielcontainer angibt sowie anzeigt, welche Blockblobs im Quellcontainer repliziert werden. Weitere Informationen zur Objektreplikation finden Sie unter [Objektreplikation für Blockblobs](object-replication-overview.md).
 
-Wenn Sie die Objektreplikation konfigurieren, erstellen Sie eine Replikationsrichtlinie, in der das Quellspeicherkonto und das Zielkonto angegeben werden. Eine Replikationsrichtlinie enthält mindestens eine Regel, die einen Quellcontainer und einen Zielcontainer angibt sowie anzeigt, welche Blockblobs im Quellcontainer repliziert werden.
+In diesem Artikel wird beschrieben, wie Sie eine Objektreplikationsrichtlinie über das Azure-Portal, PowerShell oder die Azure CLI konfigurieren. Sie können auch eine der Azure Storage-Ressourcenanbieter-Clientbibliotheken verwenden, um die Objektreplikation zu konfigurieren.
 
-In diesem Artikel wird beschrieben, wie Sie die Objektreplikation für Ihr Speicherkonto über das Azure-Portal, die PowerShell oder die Azure CLI konfigurieren. Sie können auch eine der Azure Storage-Ressourcenanbieter-Clientbibliotheken verwenden, um die Objektreplikation zu konfigurieren.
+## <a name="prerequisites"></a>Voraussetzungen
 
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
-
-## <a name="create-a-replication-policy-and-rules"></a>Erstellen einer Replikationsrichtlinie und von Regeln
-
-Bevor Sie die Objektreplikation konfigurieren, erstellen Sie die Quell- und Zielspeicherkonten, wenn diese noch nicht vorhanden sind. Beide Konten müssen Speicherkonten vom Typ „Universell v2“ sein. Weitere Informationen finden Sie unter [Erstellen eines Azure Storage-Kontos](../common/storage-account-create.md).
+Bevor Sie die Objektreplikation konfigurieren, erstellen Sie die Quell- und Zielspeicherkonten, wenn diese noch nicht vorhanden sind. Bei den Quell- und Zielkonten kann es sich entweder um Speicherkonten vom Typ „Allgemein v2“ oder um Premium-Blockblobkonten (Vorschauversion) handeln. Weitere Informationen finden Sie unter [Erstellen eines Azure Storage-Kontos](../common/storage-account-create.md).
 
 Für die Objektreplikation muss die Blobversionsverwaltung sowohl für das Quell- als auch für das Zielkonto aktiviert sein. Darüber hinaus muss für das Quellkonto der Blobänderungsfeed aktiviert sein. Informationen zur Blobversionsverwaltung finden Sie unter [Blobversionsverwaltung](versioning-overview.md). Weitere Informationen zum Änderungsfeed finden Sie unter [Unterstützung für den Änderungsfeed in Azure Blob Storage](storage-blob-change-feed.md). Beachten Sie, dass die Aktivierung dieser Features zu zusätzlichen Kosten führen kann.
 
-Ein Speicherkonto kann als Quellkonto für bis zu zwei Zielkonten fungieren. Die Quell- und Zielkonten dürfen sich in derselben oder in unterschiedlichen Regionen befinden. Sie können sich auch in unterschiedlichen Abonnements und in verschiedenen Azure Active Directory-Mandanten (Azure AD) befinden. Für jedes Kontopaar darf nur eine Replikationsrichtlinie erstellt werden.
-
-Wenn Sie die Objektreplikation konfigurieren, wird über den Azure Storage-Ressourcenanbieter eine Replikationsrichtlinie für das Zielkonto erstellt. Nachdem die Replikationsrichtlinie erstellt wurde, weist Azure Storage ihr eine Richtlinien-ID zu. Anschließend müssen Sie diese Replikationsrichtlinie dem Quellkonto mithilfe der Richtlinien-ID zuordnen. Die Richtlinien-ID muss für das Quell- und das Zielkonto identisch sein, damit die Replikation stattfinden kann.
-
 Zum Konfigurieren einer Richtlinie für die Objektreplikation für ein Speicherkonto muss Ihnen die Azure Resource Manager-Rolle **Mitwirkender** zugewiesen sein, die auf Ebene des Speicherkontos oder höher gilt. Weitere Informationen finden Sie in der Dokumentation zur rollenbasierten Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC) unter [In Azure integrierte Rollen](../../role-based-access-control/built-in-roles.md).
 
-### <a name="configure-object-replication-when-you-have-access-to-both-storage-accounts"></a>Konfigurieren der Objektreplikation, wenn Sie Zugriff auf beide Speicherkonten haben
+> [!IMPORTANT]
+> Die Objektreplikation für Blockblobkonten vom Typ „Premium“ befindet sich derzeit in der **Vorschauversion**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten rechtliche Bedingungen. Sie gelten für diejenigen Azure-Features, die sich in der Beta- oder Vorschauversion befinden oder aber anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 
-Wenn Sie Zugriff auf das Quell- und das Zielspeicherkonto haben, können Sie die Richtlinie für die Objektreplikation für beide Konten konfigurieren.
+## <a name="configure-object-replication-with-access-to-both-storage-accounts"></a>Konfigurieren der Objektreplikation mit Zugriff auf beide Speicherkonten
 
-Bevor Sie die Objektreplikation im Azure-Portal konfigurieren, erstellen Sie die Quell- und Zielcontainer in ihren jeweiligen Speicherkonten, wenn diese noch nicht vorhanden sind. Aktivieren Sie außerdem die Blobversionsverwaltung und den Änderungsfeed für das Quellkonto, und aktivieren Sie die Blobversionsverwaltung für das Zielkonto.
+Wenn Sie Zugriff auf das Quell- und das Zielspeicherkonto haben, können Sie die Richtlinie für die Objektreplikation für beide Konten konfigurieren. Die folgenden Beispiele zeigen, wie die Objektreplikation mit dem Azure-Portal, mit PowerShell oder mit der Azure CLI konfiguriert wird.
 
-# <a name="azure-portal"></a>[Azure portal](#tab/portal)
+### <a name="azure-portal"></a>[Azure portal](#tab/portal)
 
-Das Azure-Portal erstellt die Richtlinie für das Quellkonto automatisch, nachdem Sie sie für das Zielkonto konfiguriert haben.
+Wenn Sie die Objektreplikation im Azure-Portal konfigurieren, müssen Sie nur die Richtlinie für das Quellkonto konfigurieren. Das Azure-Portal erstellt die Richtlinie für das Zielkonto automatisch, nachdem Sie sie für das Quellkonto konfiguriert haben.
 
 Führen Sie die folgenden Schritte aus, um eine Replikationsrichtlinie im Azure-Portal zu erstellen:
 
@@ -79,11 +72,11 @@ Nachdem Sie die Objektreplikation konfiguriert haben, werden die Replikationsric
 
 :::image type="content" source="media/object-replication-configure/object-replication-policies-portal.png" alt-text="Screenshot der Richtlinie für die Objektreplikation im Azure-Portal":::
 
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
+### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Um eine Replikationsrichtlinie mit PowerShell zu erstellen, installieren Sie zunächst Version [2.5.0](https://www.powershellgallery.com/packages/Az.Storage/2.5.0) oder höher des PowerShell-Moduls „Az.Storage“. Weitere Informationen zum Installieren von Azure PowerShell finden Sie unter [Installieren von Azure PowerShell mit PowerShellGet](/powershell/azure/install-az-ps).
 
-Im folgenden Beispiel wird gezeigt, wie Sie eine Replikationsrichtlinie für das Quell- und Zielkonto erstellen. Denken Sie daran, die Werte in eckigen Klammern durch Ihre eigenen Werte zu ersetzen:
+Im folgenden Beispiel wird gezeigt, wie Sie eine Replikationsrichtlinie zuerst für das Zielkonto und dann für das Quellkonto erstellen. Denken Sie daran, die Werte in eckigen Klammern durch Ihre eigenen Werte zu ersetzen:
 
 ```powershell
 # Sign in to your Azure account.
@@ -131,7 +124,7 @@ $rule1 = New-AzStorageObjectReplicationPolicyRule -SourceContainer $srcContainer
     -PrefixMatch b
 $rule2 = New-AzStorageObjectReplicationPolicyRule -SourceContainer $srcContainerName2 `
     -DestinationContainer $destContainerName2  `
-    -MinCreationTime 2020-05-10T00:00:00Z
+    -MinCreationTime 2021-09-01T00:00:00Z
 
 # Create the replication policy on the destination account.
 $destPolicy = Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
@@ -146,7 +139,7 @@ Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
     -InputObject $destPolicy
 ```
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Installieren Sie zum Erstellen einer Replikationsrichtlinie über die Azure-Befehlszeilenschnittstelle zunächst mindestens Version 2.11.1 der Azure CLI. Weitere Informationen finden Sie unter [Erste Schritte mit der Azure-Befehlszeilenschnittstelle](/cli/azure/get-started-with-azure-cli).
 
@@ -185,7 +178,7 @@ az storage container create \
     --auth-mode login
 az storage container create \
     --account-name <dest-storage-account> \
-    --name dest-container-1 \
+    --name dest-container-2 \
     --auth-mode login
 ```
 
@@ -199,7 +192,7 @@ az storage account or-policy create \
     --destination-account <dest-storage-account> \
     --source-container source-container-1 \
     --destination-container dest-container-1 \
-    --min-creation-time '2020-09-10T00:00:00Z' \
+    --min-creation-time '2021-09-01T00:00:00Z' \
     --prefix-match a
 
 ```
@@ -230,43 +223,14 @@ az storage account or-policy show \
 
 ---
 
-### <a name="configure-object-replication-when-you-have-access-only-to-the-destination-account"></a>Konfigurieren der Objektreplikation, wenn Sie nur Zugriff auf das Zielkonto haben
+## <a name="configure-object-replication-with-access-to-only-the-destination-account"></a>Konfigurieren der Objektreplikation mit reinem Zugriff auf das Zielkonto
 
 Wenn Sie keine Berechtigungen für das Quellspeicherkonto haben, können Sie die Objektreplikation für das Zielkonto konfigurieren und eine JSON-Datei mit der Richtliniendefinition bereitstellen, damit ein anderer Benutzer die gleiche Richtlinie für das Quellkonto erstellen kann. Wenn sich das Quellkonto z. B. in einem anderen Azure AD-Mandanten als das Zielkonto befindet, können Sie mit diesem Ansatz die Objektreplikation konfigurieren.
 
-Beachten Sie, dass Ihnen die Azure Resource Manager-Rolle **Mitwirkender** zugewiesen sein muss, die auf die Ebene des Zielspeicherkontos oder höher gilt, damit Sie die Richtlinie erstellen können. Weitere Informationen finden Sie in der Dokumentation zur rollenbasierten Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC) unter [In Azure integrierte Rollen](../../role-based-access-control/built-in-roles.md).
+> [!NOTE]
+> Die mandantenübergreifende Objektreplikation ist für ein Speicherkonto standardmäßig zulässig. Um die Mandantenreplikation zu verhindern, können Sie die Eigenschaft **AllowCrossTenantReplication** (Vorschau) so festlegen, dass die mandantenübergreifende Objektreplikation für Ihre Speicherkonten nicht zugelassen wird. Weitere Informationen finden Sie unter [Verhindern der Objektreplikation zwischen Azure Active Directory-Mandanten](object-replication-prevent-cross-tenant-policies.md).
 
-In der folgenden Tabelle sind die Werte zusammengefasst, die in den einzelnen Szenarien in der JSON-Datei für die Richtlinien-ID und die Regel-IDs verwendet werden sollen.
-
-| Wenn Sie die JSON-Datei für dieses Konto erstellen: | Legen Sie die Richtlinien-ID auf diesen Wert fest | Legen Sie die Regel-IDs auf diesen Wert fest |
-|-|-|-|
-| Zielkonto | Zeichenfolgenwert *default*. Azure Storage erstellt den Richtlinien-ID-Wert für Sie. | Eine leere Zeichenfolge. Azure Storage erstellt die Regel-ID-Werte für Sie. |
-| Quellkonto | Der Wert der Richtlinien-ID, der zurückgegeben wird, wenn Sie die für das Zielkonto definierte Richtlinie als JSON-Datei herunterladen. | Die Werte der Regel-IDs, die zurückgegeben werden, wenn Sie die für das Zielkonto definierte Richtlinie als JSON-Datei herunterladen. |
-
-Im folgenden Beispiel wird eine Replikationsrichtlinie für das Zielkonto mit einer einzigen Regel definiert, die eine Übereinstimmung mit dem Präfix *b* sucht und die Mindesterstellungszeit für Blobs festlegt, die repliziert werden sollen. Denken Sie daran, die Werte in eckigen Klammern durch Ihre eigenen Werte zu ersetzen:
-
-```json
-{
-  "properties": {
-    "policyId": "default",
-    "sourceAccount": "<source-account>",
-    "destinationAccount": "<dest-account>",
-    "rules": [
-      {
-        "ruleId": "",
-        "sourceContainer": "<source-container>",
-        "destinationContainer": "<destination-container>",
-        "filters": {
-          "prefixMatch": [
-            "b"
-          ],
-          "minCreationTime": "2020-08-028T00:00:00Z"
-        }
-      }
-    ]
-  }
-}
-```
+Die Beispiele in diesem Abschnitt zeigen, wie Sie die Objektreplikationsrichtlinie für das Zielkonto konfigurieren und dann die JSON-Datei für diese Richtlinie abrufen, die ein anderer Benutzer zum Konfigurieren der Richtlinie für das Quellkonto verwenden kann.
 
 # <a name="azure-portal"></a>[Azure portal](#tab/portal)
 
@@ -310,7 +274,9 @@ $destPolicy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
 $destPolicy | ConvertTo-Json -Depth 5 > c:\temp\json.txt
 ```
 
-Wenn Sie die JSON-Datei verwenden möchten, um die Replikationsrichtlinie für das Quellkonto mit PowerShell zu definieren, müssen Sie die lokale Datei abrufen und aus JSON in ein Objekt konvertieren. Rufen Sie dann den Befehl [Set-AzStorageObjectReplicationPolicy](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) auf, um die Richtlinie für das Quellkonto zu konfigurieren, wie im folgenden Beispiel gezeigt. Denken Sie daran, die Werte in eckigen Klammern und den Dateipfad durch Ihre eigenen Werte zu ersetzen:
+Wenn Sie die JSON-Datei verwenden möchten, um die Replikationsrichtlinie für das Quellkonto mit PowerShell zu definieren, müssen Sie die lokale Datei abrufen und aus JSON in ein Objekt konvertieren. Rufen Sie dann den Befehl [Set-AzStorageObjectReplicationPolicy](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) auf, um die Richtlinie für das Quellkonto zu konfigurieren, wie im folgenden Beispiel gezeigt.
+
+Stellen Sie beim Ausführen des Beispiels sicher, dass Sie den Parameter `-ResourceGroupName` auf die Ressourcengruppe für das Quellkonto und den Parameter `-StorageAccountName` auf den Namen des Quellkontos festlegen. Denken Sie außerdem daran, die Werte in eckigen Klammern und den Dateipfad durch Ihre eigenen Werte zu ersetzen:
 
 ```powershell
 $object = Get-Content -Path C:\temp\json.txt | ConvertFrom-Json
@@ -443,6 +409,7 @@ az storage account or-policy delete \
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Übersicht über die Objektreplikation](object-replication-overview.md)
+- [Objektreplikation für Blockblobs](object-replication-overview.md)
+- [Verhindern der Objektreplikation zwischen Azure Active Directory-Mandanten](object-replication-prevent-cross-tenant-policies.md)
 - [Aktivieren und Verwalten der Blobversionsverwaltung](versioning-enable.md)
 - [Verarbeiten von Änderungsfeeds in Azure Blob Storage](storage-blob-change-feed-how-to.md)

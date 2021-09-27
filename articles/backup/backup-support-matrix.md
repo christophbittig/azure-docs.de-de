@@ -2,14 +2,14 @@
 title: Matrix zur Azure Backup-Unterstützung
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen für den Azure Backup-Dienst.
 ms.topic: conceptual
-ms.date: 07/05/2021
+ms.date: 08/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: 8f953cf2bdacaa983061a04168345d1add1842f2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f6101485f7dfab8d956a552edc2e77d85a6e2d9e
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355014"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425852"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Supportmatrix für Azure Backup
 
@@ -39,7 +39,7 @@ In der folgenden Tabelle werden die Features von Recovery Services-Tresoren besc
 **Verschieben von Tresoren** | Sie können Tresore zwischen Abonnements oder Ressourcengruppen innerhalb desselben Abonnements [verschieben](./backup-azure-move-recovery-services-vault.md). Das Verschieben von Tresoren zwischen Regionen wird hingegen nicht unterstützt.
 **Daten zwischen Tresoren verschieben** | Das Verschieben von gesicherten Daten zwischen Tresoren wird nicht unterstützt.
 **Tresorspeichertyp ändern** | Sie können den Speicherreplikationstyp für einen Tresor anpassen (entweder georedundanter Speicher oder lokal redundanter Speicher), bevor Sicherungen gespeichert werden. Nachdem Sicherungsvorgänge im Tresor begonnen haben, kann der Replikationstyp nicht mehr geändert werden.
-**Zonenredundanter Speicher (ZRS)** | Unterstützt in der Vorschauphase in „Vereinigtes Königreich, Süden“, „Asien, Südosten“, „Australien, Osten“, „Europa, Norden“, „USA, Mitte“ und „Japan, Osten“.
+**Zonenredundanter Speicher (ZRS)** | Unterstützt in der Vorschau in Großbritannien Süd, Südostasien, Australien Ost, Nordeuropa, Zentral-USA, Ost-USA 2, Brasilien Süd und Japan Ost.
 **Private Endpunkte** | In [diesem Abschnitt](./private-endpoints.md#before-you-start) finden Sie Informationen zu den Anforderungen für die Erstellung privater Endpunkte aus einem Recovery Services-Tresor.  
 
 ## <a name="on-premises-backup-support"></a>Unterstützung von lokalen Sicherungen
@@ -163,7 +163,7 @@ Die Ressourcenintegritätsprüfung funktioniert unter folgenden Bedingungen:
 |     |     |
 | --- | --- |
 | **Unterstützte Ressourcen** | Recovery Services-Tresor |
-| **Unterstützte Regionen** | „USA, Osten 2“, „Asien, Osten“ und „Frankreich, Mitte“ |
+| **Unterstützte Regionen** | USA, Osten 2; USA, Mitte; Europa, Norden; Frankreich, Mitte; Asien, Osten; Japan, Osten; Japan, Westen; Australien, Osten; Südafrika, Norden. |
 | **Nicht unterstützte Regionen** | Der Ressourcenintegritätsstatus wird als „Unbekannt“ angezeigt. |
 
 

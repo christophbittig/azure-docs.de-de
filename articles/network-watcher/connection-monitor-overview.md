@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 64c77a12f65ebaf9acbc8b16c62f86a7e1e10983
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: 4e8f1847459d16f82b029f9719d87b61dd243524
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122777630"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123542372"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>Überwachung der Netzwerkkonnektivität mit dem Verbindungsmonitor
 
@@ -92,6 +92,23 @@ Auf Linux-Computern müssen die zu verwendenden Portnummern manuell geändert we
 Das Skript erstellt die für die Lösung erforderlichen Registrierungsschlüssel. Außerdem erstellt es Regeln für die Windows-Firewall, damit Agents TCP-Verbindungen miteinander herstellen können. Die vom Skript erstellten Registrierungsschlüssel geben an, ob die Debugprotokolle und der Pfad zur Protokolldatei protokolliert werden sollen. Ferner definiert das Skript den für die Kommunikation verwendeten TCP-Port des Agents. Die Werte für diese Schlüssel werden vom Skript automatisch festgelegt. Ändern Sie diese Schlüssel nicht manuell. Standardmäßig wird Port 8084 geöffnet. Sie können einen benutzerdefinierten Port verwenden, indem Sie im Skript den Parameter „portNumber“ angeben. Verwenden Sie auf allen Computern, auf denen das Skript ausgeführt wird, den gleichen Port. [Erfahren Sie mehr](../azure-monitor/agents/log-analytics-agent.md#network-requirements) über die Netzwerkanforderungen für Log Analytics-Agents.
 
 Das Skript konfiguriert nur die lokale Windows-Firewall. Bei Verwendung einer Netzwerkfirewall müssen Sie sicherstellen, dass diese den Datenverkehr zum TCP-Port erlaubt, der vom Netzwerkleistungsmonitor verwendet wird.
+
+Der LA-Windows-Agent kann mehrfach vernetzt werden, um Daten an mehrere Arbeitsbereiche und System Center Operations Manager-Verwaltungsgruppen zu senden. Der Linux-Agent kann nur an ein einzelnes Ziel senden, entweder einen Arbeitsbereich oder eine Verwaltungsgruppe.
+
+#### <a name="enable-network-performance-monitor-solution-for-on-premise-machines"></a>Aktivieren der Netzwerkleistungsmonitor-Lösung für lokale Computer 
+
+Führen Sie die folgenden Schritte aus, um die Netzwerkleistungsmonitor-Lösung für lokale Computer zu aktivieren. 
+
+1. Navigieren Sie auf der Startseite des Azure-Portals zu „Network Watcher“.
+2. Wählen Sie links im Abschnitt „Überwachung“ die Option „Netzwerkleistungsmonitor“ aus. 
+3. Im Portal wird eine Liste der Arbeitsbereiche mit aktivierter NPM-Lösung angezeigt, die nach Abonnements gefiltert ist. 
+4. Klicken Sie zum Hinzufügen der NPM-Lösung in einem neuen Arbeitsbereich oben links im Portal auf „NPM hinzufügen“. 
+5. Wählen Sie das Abonnement und den Arbeitsbereich aus, in dem Sie die Lösung aktivieren möchten, und klicken Sie auf „Erstellen“.
+6. Es dauert nach dem Aktivieren der Lösung einige Minuten, bis der Arbeitsbereich im Portal angezeigt wird.
+
+:::image type="content" source="./media/connection-monitor/network-performance-monitor-solution-enable.png" alt-text="Screenshot: Hinzufügen der NPM-Lösung in Verbindungsmonitor" lightbox="./media/connection-monitor/network-performance-monitor-solution-enable.png":::
+
+Im Gegensatz zu LA-Agents kann die NPM-Lösung nur zum Senden von Daten an einen einzelnen LA-Arbeitsbereich konfiguriert werden.
 
 ## <a name="enable-network-watcher-on-your-subscription"></a>Aktivieren von Network Watcher für Ihr Abonnement
 
@@ -374,7 +391,7 @@ Bei Netzwerken, deren Quellen sich auf Azure-VMs befinden, können die folgenden
 * BGP ist für die Gatewayverbindung nicht aktiviert.
 * Der DIP-Test ist beim Lastenausgleich nicht verfügbar.
 
-## <a name="comparision-between-azures-connectivity-monitoring-support"></a>Vergleich zwischen der Konnektivitätsüberwachungsunterstützung von Azure 
+## <a name="comparison-between-azures-connectivity-monitoring-support"></a>Vergleich der Konnektivitätsüberwachungsunterstützung von Azure 
 
 Sie können Tests vom Netzwerkleistungsmonitor (NPM) und dem Verbindungsmonitor (klassisch) mit nur einem Mausklick und ohne jegliche Ausfallzeit zum neuen, verbesserten Verbindungsmonitor migrieren.
  
@@ -389,7 +406,7 @@ Die Migration hilft beim Liefern der folgenden Ergebnisse:
    
 Es gibt mehrere Gründe für die Migration vom Netzwerkleistungsmonitor und dem Verbindungsmonitor (klassisch) zum Verbindungsmonitor. Im Folgenden finden Sie einige der Anwendungsfälle, die zeigen, wie der Verbindungsmonitor von Azure leistungsmäßig gegenüber dem Netzwerkleistungsmonitor und dem Verbindungsmonitor (klassisch) abschneidet. 
 
- | Feature  | Netzwerkleistungsmonitor | Verbindungsmonitor (klassisch) | Verbindungsmonitor |
+ | Komponente  | Netzwerkleistungsmonitor | Verbindungsmonitor (klassisch) | Verbindungsmonitor |
  | -------  | --------------------------- | -------------------------- | ------------------ | 
  | Einheitliche Erfahrung für die Azure- und Hybridüberwachung | Nicht verfügbar | Nicht verfügbar. | Verfügbar |
  | Abonnement-, regions- und arbeitsbereichsübergreifende Überwachung | Gestattet abonnement- und regionsübergreifende Überwachung, aber keine arbeitsbereichsübergreifende Überwachung. | Nicht verfügbar | Gestattet abonnement- und arbeitsbereichsübergreifende Überwachung. Azure-Agents haben regionale Grenzen.  |

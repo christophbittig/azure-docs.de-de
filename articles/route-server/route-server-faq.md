@@ -5,21 +5,16 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: article
-ms.date: 06/07/2021
+ms.date: 09/01/2021
 ms.author: duau
-ms.openlocfilehash: f76c996f75dce0ea1f6aae8dc8c86ac80f6006a5
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: e17d49654b3c658ed133686e11d70c72b7f7f3b8
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123253862"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426020"
 ---
-# <a name="azure-route-server-preview-faq"></a>Häufig gestellte Fragen zu Azure Route Server (Vorschau)
-
-> [!IMPORTANT]
-> Azure Route Server (Vorschau) befindet sich derzeit in der öffentlichen Vorschauphase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="azure-route-server-faq"></a>Häufig gestellte Fragen zu Azure Route Server
 
 ## <a name="what-is-azure-route-server"></a>Was ist Azure Route Server?
 
@@ -93,11 +88,14 @@ Azure Route Server weist die folgenden Grenzwerte auf (pro Bereitstellung).
 | Resource | Begrenzung |
 |----------|-------|
 | Anzahl unterstützter BGP-Peers | 8 |
-| Anzahl von Routen, die jeder BGP-Peer für Azure Route Server ankündigen kann | 200 |
+| Anzahl von Routen, die jeder BGP-Peer für Azure Route Server ankündigen kann | 1000 |
 | Anzahl von Routen, die Azure Route Server für ein ExpressRoute- oder VPN-Gateway ankündigen kann | 200 |
-| Anzahl der virtuellen Computer im virtuellen Netzwerk (einschließlich gepeerter virtueller Netzwerke), die von Azure Route Server unterstützt werden | 6000 |
+| Anzahl der virtuellen Computer im virtuellen Netzwerk (einschließlich gepeerter virtueller Netzwerke), die von Azure Route Server unterstützt werden | 2000 |
+
+Die Anzahl der VMs, die Azure Route Server unterstützen kann, ist nicht fest begrenzt. Dies hängt davon ab, wie die Route Server-Infrastruktur innerhalb einer Azure-Region bereitgestellt wird.
 
 Wenn Ihr NVA mehr Routen als den Grenzwert ankündigt, wird die BGP-Sitzung gelöscht. Wenn die BGP-Sitzung zwischen dem Gateway und Azure Route Server gelöscht wird, verlieren Sie die Verbindung zwischen Ihrem lokalen Netzwerk und Azure. Weitere Informationen finden Sie unter [Diagnose des Routingproblems einer Azure-VM](../virtual-network/diagnose-network-routing-problem.md).
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

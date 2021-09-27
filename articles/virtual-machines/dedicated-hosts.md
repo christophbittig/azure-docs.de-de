@@ -1,20 +1,20 @@
 ---
 title: Übersicht über dedizierte Azure-Hosts für virtuelle Computer
 description: Erfahren Sie mehr darüber, wie dedizierte Azure-Hosts für die Bereitstellung virtueller Computer verwendet werden können.
-author: cynthn
+author: brittanyrowe
 ms.service: virtual-machines
 ms.subservice: dedicated-hosts
 ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 12/07/2020
-ms.author: cynthn
-ms.reviewer: zivr
-ms.openlocfilehash: bbc2cda053a2a9fafd88f974eaf10be4ae0c1784
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.author: brittanyrowe
+ms.reviewer: brittanyrowe
+ms.openlocfilehash: 6e34d5c638c8501840c9ef8d9bbaf22ae2874ff1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122687524"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128557096"
 ---
 # <a name="azure-dedicated-hosts"></a>Dedizierte Azure-Hosts
 
@@ -80,7 +80,6 @@ Hostgruppen, die für automatische Platzierung aktiviert sind, erfordern keine a
 
 Bekannte Probleme und Einschränkungen bei der Verwendung der automatischen VM-Platzierung:
 
-- Sie können für Ihre dedizierten Hosts keine Azure-Hybridvorteile anwenden.
 - Sie können Ihre VMs nicht erneut bereitstellen.
 - Sie können in Verbindung mit dedizierten Hosts keine VMs der Serien Lsv2, NVasv4, NVsv3, Msv2 oder M verwenden.
 
@@ -176,7 +175,7 @@ Azure überwacht und verwaltet den Integritätsstatus Ihrer Hosts. Die folgenden
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sie können einen dedizierten Host über [Azure PowerShell](./windows/dedicated-hosts-powershell.md), das [Portal](./dedicated-hosts-portal.md) und die [Azure-Befehlszeilenschnittstelle](./linux/dedicated-hosts-cli.md) bereitstellen.
+- Zur Bereitstellung eines dedizierten Hosts siehe [Bereitstellung von VMs und Skalierungssets auf dedizierten Hosts](./dedicated-hosts-how-to.md).
 
 - Es gibt eine [Beispielvorlage](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-dedicated-hosts/README.md), die sowohl Zonen als auch Fehlerdomänen verwendet, um für maximale Resilienz in einer Region zu sorgen.
 

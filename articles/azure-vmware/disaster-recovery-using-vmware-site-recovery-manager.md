@@ -3,12 +3,12 @@ title: Bereitstellen der Notfallwiederherstellung mit VMware Site Recovery Manag
 description: Stellen Sie die Notfallwiederherstellung mit VMware Site Recovery Manager (SRM) in Ihrer privaten Azure VMware Solution Cloud bereit.
 ms.topic: how-to
 ms.date: 08/18/2021
-ms.openlocfilehash: cc3d1183ab294834572dd5edc9c4509287c502ee
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: d9a224f0aba33420359d50441fe44e6602df7fb0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444993"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128668921"
 ---
 # <a name="deploy-disaster-recovery-with-vmware-site-recovery-manager"></a>Bereitstellen der Notfallwiederherstellung mit VMware Site Recovery Manager
 
@@ -233,7 +233,6 @@ Skalierungseinschränkungen gelten pro privater Cloud.
 \* Informationen zu RPOs (Recovery Point Objective) von unter 15 Minuten finden Sie unter [Funktionsweise von 5-Minuten-RPOs](https://docs.vmware.com/en/vSphere-Replication/8.3/com.vmware.vsphere.replication-admin.doc/GUID-9E17D567-A947-49CD-8A84-8EA2D676B55A.html) im _vSphere Replication-Verwaltungshandbuch_.
 
 
-Weitere Informationen finden Sie unter [Betriebsgrenzwerte für VMware Site Recovery](https://docs.vmware.com/en/VMware-Site-Recovery/services/com.vmware.srmaas.install_config.doc/GUID-D4EE4AE4-FF80-4355-977A-CF211EEC5E1F.html) 
 
 ## <a name="srm-licenses"></a>SRM-Lizenzen
 
@@ -310,7 +309,7 @@ Die Supportteams von VMware und Microsoft treten bei Bedarf miteinander in Konta
 - [Betriebsgrenzwerte von vSphere Replication 8.3](https://docs.vmware.com/en/vSphere-Replication/8.3/com.vmware.vsphere.replication-admin.doc/GUID-E114BAB8-F423-45D4-B029-91A5D551AC47.html)
 - [Berechnen der Bandbreite für vSphere Replication](https://docs.vmware.com/en/vSphere-Replication/8.3/com.vmware.vsphere.replication-admin.doc/GUID-4A34D0C9-8CC1-46C4-96FF-3BF7583D3C4F.html)
 - [SRM-Installation und -Konfiguration](https://docs.vmware.com/en/Site-Recovery-Manager/8.3/com.vmware.srm.install_config.doc/GUID-B3A49FFF-E3B9-45E3-AD35-093D896596A0.html)
-- [Verwaltung von vSphere Replication](https://docs.vmware.com/en/vSphere-Replication/8.3/com.vmware.vsphere.replication-admin.doc/GUID-35C0A355-C57B-430B-876E-9D2E6BE4DDBA.html)
+- [Verwaltung von vSphere Replication](https://docs.vmware.com/en/vSphere-Replication/8.2/com.vmware.vsphere.replication-admin.doc/GUID-35C0A355-C57B-430B-876E-9D2E6BE4DDBA.html)
 - [Voraussetzungen und bewährte Methoden für die SRM-Installation](https://docs.vmware.com/en/Site-Recovery-Manager/8.3/com.vmware.srm.install_config.doc/GUID-BB0C03E4-72BE-4C74-96C3-97AC6911B6B8.html)
 - [Netzwerkports für SRM](https://docs.vmware.com/en/Site-Recovery-Manager/8.3/com.vmware.srm.install_config.doc/GUID-499D3C83-B8FD-4D4C-AE3D-19F518A13C98.html)
 - [Netzwerkports für vSphere Replication](https://kb.vmware.com/s/article/2087769)

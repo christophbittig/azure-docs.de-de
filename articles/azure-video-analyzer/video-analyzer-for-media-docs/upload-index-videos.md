@@ -1,20 +1,15 @@
 ---
 title: Hochladen und Indizieren von Videos mit Azure Video Analyzer for Media (früher Video Indexer)
-titleSuffix: Azure Video Analyzer for Media
 description: In diesem Thema wird veranschaulicht, wie Sie APIs zum Hochladen und Indizieren Ihrer Videos mit Azure Video Analyzer for Media (früher Video Indexer) verwenden.
-author: Juliako
-manager: femila
 ms.service: azure-video-analyzer
 ms.topic: article
-ms.subservice: azure-video-analyzer-media
 ms.date: 05/12/2021
-ms.author: juliako
-ms.openlocfilehash: ce8804d1f057bc8f67331211c7ed4b734750aa19
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 4020050cdcc1f9910ab14117b45bb007f5915dca
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112119065"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658771"
 ---
 # <a name="upload-and-index-your-videos"></a>Hochladen und Indizieren Ihrer Videos  
 
@@ -353,7 +348,7 @@ Die in der folgenden Tabelle aufgeführten Statuscodes können über den Uploadv
 
 ## <a name="firewall"></a>Firewall
 
-Weitere Informationen finden Sie unter [Speicherkonto befindet sich hinter einer Firewall](faq.md#can-a-storage-account-connected-to-the-media-services-account-be-behind-a-firewall).
+Weitere Informationen finden Sie unter [Speicherkonto befindet sich hinter einer Firewall](faq.yml#can-a-storage-account-connected-to-the-media-services-account-be-behind-a-firewall).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

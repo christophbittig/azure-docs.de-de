@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 56feecac6edae1c25c8706891ed7c2697a2508e1
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: a55a49232e18c61f1c5b1915c06cd61e1f13ab0b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114221194"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128674431"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Key Vault-VM-Erweiterung für Linux
 
@@ -28,6 +28,7 @@ Die Key Vault-VM-Erweiterung unterstützt folgende Linux-Distributionen:
 
 - Ubuntu-1804
 - Suse-15 
+- [CBL-Mariner](https://github.com/microsoft/CBL-Mariner)
 
 > [!NOTE]
 > Um erweiterte sicherheitsbezogene Features zu erhalten, bereiten Sie sich auf ein Upgrade von Ubuntu-1604- und Debian-9-Systemen vor, da diese Versionen das Ende des vorgesehenen Supportzeitraums erreichen.
@@ -286,7 +287,7 @@ Die Key Vault-VM-Erweiterungsprotokolle sind nur lokal auf dem virtuellen Comput
 |--|--|
 | /var/log/waagent.log  | Zeigt an, wann ein Update der Erweiterung erfolgt ist. |
 | /var/log/azure/Microsoft.Azure.KeyVault.KeyVaultForLinux/*    | Untersuchen Sie die Protokolle des Key Vault-VM-Erweiterungsdiensts, um den Status des Diensts „akvvm_service“ und des Zertifikatdownloads zu ermitteln. Der Speicherort für den Download von PEM-Dateien ist ebenfalls in diesen Dateien mit einem Eintrag namens „Zertifikatdateiname“ zu finden. Wenn „certificateStoreLocation“ nicht angegeben ist, wird standardmäßig „/var/lib/waagent/Microsoft.Azure.KeyVault.Store/“ verwendet. |
-| /var/lib/waagent/Microsoft.Azure.KeyVault.KeyVaultForLinux-<most recent version>/config/* | Die Konfiguration und die Binärdateien für den Key Vault-VM-Erweiterungsdienst. |
+| /var/lib/waagent/Microsoft.Azure.KeyVault.KeyVaultForLinux-\<most recent version\>/config/*   | Die Konfiguration und die Binärdateien für den Key Vault-VM-Erweiterungsdienst. |
 |||
   
 ### <a name="using-symlink"></a>Verwenden von Symlink

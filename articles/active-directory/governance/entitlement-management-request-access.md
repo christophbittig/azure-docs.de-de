@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 08/31/2021
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 726507fa6ea0651b23d46424bda669a2d8ad41e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 945679db60f78e03d8f4385acdbc97d8155922bb
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95996643"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434482"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Anfordern des Zugriffs auf ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
@@ -86,6 +86,9 @@ Wenn Sie Zugriff auf ein Zugriffspaket anfordern, für das mehrere Richtlinien g
 Möglicherweise fordern Sie Zugriff auf ein Zugriffspaket an, das eine geschäftliche Begründung und zusätzliche Informationen zum Anforderer erfordert, bevor Ihnen Zugriff auf das Zugriffspaket gewährt wird. Geben Sie alle Informationen zum Anforderer ein, die für den Zugriff auf das Zugriffspaket erforderlich sind.
 
 ![Portal „Mein Zugriff“ – Zugriff anfordern – Informationen zum Anforderer angeben](./media/entitlement-management-request-access/my-access-requestor-information.png)
+
+> [!NOTE]
+> Möglicherweise werden Sie feststellen, dass einige der zusätzlichen Antragstellerinformationen bereits ausgefüllt sind. Dies ist in der Regel der Fall, wenn für Ihr Konto bereits Attributinformationen festgelegt wurden, die entweder aus einer früheren Anfrage oder einem anderen Prozess stammen. Diese Werte können je nach den Einstellungen der ausgewählten Richtlinie editierbar sein oder nicht.
 
 ## <a name="resubmit-a-request"></a>Erneutes Übermitteln einer Anforderung
 

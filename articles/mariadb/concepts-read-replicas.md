@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/18/2021
 ms.custom: references_regions
-ms.openlocfilehash: 39547e3156a684293a0624f974a8b0930f656485
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b7306555e59759f79ffad8e984f0688820247de
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98664213"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128641292"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Lesereplikate in Azure Database for MariaDB
 
@@ -23,7 +23,7 @@ Replikate sind neue Server, die Sie ähnlich wie normale Azure Database for Mari
 Weitere Informationen zur GTID-Replikation finden Sie in der [Dokumentation zur MariaDB-Replikation](https://mariadb.com/kb/en/library/gtid/).
 
 > [!NOTE]
-> Dieser Artikel enthält Verweise auf den Begriff _Slave_, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
+> Dieser Artikel enthält Verweise auf den Begriff *Slave*, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
 
 ## <a name="when-to-use-a-read-replica"></a>Einsatzmöglichkeiten von Lesereplikaten
 

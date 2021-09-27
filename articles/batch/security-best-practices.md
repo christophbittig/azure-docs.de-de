@@ -1,14 +1,14 @@
 ---
 title: Best Practices für Sicherheit und Compliance in Batch
 description: Informieren Sie sich über Best Practices und nützliche Tipps für die Verbesserung der Sicherheit Ihrer Azure Batch-Lösungen.
-ms.date: 12/18/2020
+ms.date: 09/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6ec4a1d89ebaa9318986fc0d51e832652ba51683
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f9bfbeb7a89e3ca1bc71001b173926302548a988
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98723811"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435544"
 ---
 # <a name="batch-security-and-compliance-best-practices"></a>Best Practices für Sicherheit und Compliance in Batch
 
@@ -32,13 +32,13 @@ Viele Sicherheitsfeatures sind nur für Pools verfügbar, die per [VM-Konfigurat
 
 Für den Zugriff auf Batch-Konten werden zwei Authentifizierungsmethoden unterstützt: Gemeinsam verwendeter Schlüssel und [Azure Active Directory (Azure AD)](batch-aad-auth.md).
 
-Es wird dringend empfohlen, Azure AD für die Authentifizierung von Batch-Konten zu verwenden. Für einige Batch-Funktionen ist diese Authentifizierungsmethode obligatorisch. Dies schließt auch viele der hier beschriebenen sicherheitsbezogenen Features ein.
+Es wird dringend empfohlen, Azure AD für die Authentifizierung von Batch-Konten zu verwenden. Für einige Batch-Funktionen ist diese Authentifizierungsmethode obligatorisch. Dies schließt auch viele der hier beschriebenen sicherheitsbezogenen Features ein. Der Dienst-API-Authentifizierungsmechanismus für ein Batch-Konto kann mithilfe der Eigenschaft [allowedAuthenticationModes](/rest/api/batchmanagement/batch-account/create) auf Azure AD beschränkt werden. Wenn diese Eigenschaft festgelegt ist, werden API-Aufrufe mit Shared Key-Authentifizierung abgelehnt.
 
 ### <a name="batch-account-pool-allocation-mode"></a>Poolzuordnungsmodus für Batch-Konten
 
 Beim Erstellen eines Batch-Kontos können Sie zwischen zwei [Poolzuordnungsmodi](accounts.md#batch-accounts) wählen:
 
-- **Batch-Dienst**: Dies ist die Standardoption. Die zugrunde liegenden Ressourcen für den Clouddienst oder die VM-Skalierungsgruppe, die zum Zuordnen und Verwalten von Poolknoten verwendet werden, werden in internen Abonnements erstellt und sind im Azure-Portal nicht direkt sichtbar. Sichtbar sind nur die Batch-Pools und -Knoten. 
+- **Batch-Dienst**: Dies ist die Standardoption. Die zugrunde liegenden Ressourcen für den Clouddienst oder die VM-Skalierungsgruppe, die zum Zuordnen und Verwalten von Poolknoten verwendet werden, werden in internen Abonnements erstellt und sind im Azure-Portal nicht direkt sichtbar. Sichtbar sind nur die Batch-Pools und -Knoten.
 - **Benutzerabonnement**: Die zugrunde liegenden Ressourcen für den Clouddienst oder die VM-Skalierungsgruppe werden im selben Abonnement erstellt, in dem sich auch das Batch-Konto befindet. Daher sind diese Ressourcen im Abonnement zusätzlich zu den entsprechenden Batch-Ressourcen sichtbar.
 
 Im Benutzerabonnementmodus werden virtuelle Batchcomputer und andere Ressourcen direkt in Ihrem Abonnement erstellt, wenn ein Pool erstellt wird. Der Benutzerabonnementmodus ist erforderlich, wenn Sie Batch-Pools mithilfe von Azure Reserved VM Instances erstellen, Azure Policy in VM-Skalierungsgruppenressourcen verwenden und/oder das Kernkontingent im Abonnement verwalten möchten (das Kontingent wird von allen Batch-Konten im Abonnement gemeinsam genutzt). Wenn Sie ein Batch-Konto im Benutzerabonnementmodus erstellen möchten, müssen Sie auch Ihr Abonnement in Azure Batch registrieren und das Konto einer Azure Key Vault-Instanz zuordnen.
@@ -143,13 +143,13 @@ Um für zusätzliche Sicherheit zu sorgen, verschlüsseln Sie diese Datenträger
 
 ## <a name="securely-access-services-from-compute-nodes"></a>Sicherer Zugriff auf Dienste von Computeknoten
 
-Batch-Knoten können [sicher auf Anmeldeinformationen und Geheimnisse zugreifen](credential-access-key-vault.md), die in [Azure Key Vault](../key-vault/general/overview.md) gespeichert sind und von Aufgabenanwendungen für den Zugriff auf andere Dienste verwendet werden können. Den Poolknoten wird mithilfe eines Zertifikats Zugriff auf Key Vault gewährt.
+Batch-Knoten können sicher auf in [Azure Key Vault](../key-vault/general/overview.md) gespeicherte Anmeldeinformationen zugreifen, die von Task-Anwendungen für den Zugriff auf andere Dienste verwendet werden können. Den Poolknoten wird mithilfe eines Zertifikats Zugriff auf Key Vault gewährt. Durch [Aktivierung der automatischen Zertifikatsrotation in Ihrem Batch-Pool](automatic-certificate-rotation.md) werden die Berechtigungsnachweise automatisch erneuert. Dies ist die empfohlene Option für Batch-Knoten für den Zugriff auf in Azure Key Vault gespeicherte Anmeldeinformationen, obwohl Sie auch [Batch-Knoten für den sicheren Zugriff auf Anmeldeinformationen und Geheimnisse mit einem Zertifikat](credential-access-key-vault.md) ohne automatische Zertifikatsrotation einrichten können.
 
 ## <a name="governance-and-compliance"></a>Governance und Einhaltung
 
 ### <a name="compliance"></a>Konformität
 
-Um Kunden bei der Erfüllung ihrer Complianceverpflichtungen in stark regulierten Branchen und Märkten auf der ganzen Welt zu unterstützen, pflegt Azure ein [umfangreiches Portfolio mit Complianceangeboten](https://azure.microsoft.com/overview/trusted-cloud/compliance). 
+Um Kunden bei der Erfüllung ihrer Complianceverpflichtungen in stark regulierten Branchen und Märkten auf der ganzen Welt zu unterstützen, pflegt Azure ein [umfangreiches Portfolio mit Complianceangeboten](https://azure.microsoft.com/overview/trusted-cloud/compliance).
 
 Diese Angebote basieren auf unterschiedlichen Arten von Zusicherungen, z. B. formale Zertifizierungen, Nachweise, Validierungen, Autorisierungen und Bewertungen, die von unabhängigen externen Prüfunternehmen erstellt wurden, sowie Vertragsänderungen, Selbstbewertungen und Kundenleitfäden, die von Microsoft erstellt wurden. Sehen Sie sich [umfassende Übersicht über unsere Complianceangebote](https://aka.ms/AzureCompliance) an, um herauszufinden, welche Angebote für Ihre Batch-Lösungen relevant sein können.
 

@@ -10,12 +10,12 @@ ms.date: 12/07/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ee77fd8ee7f9b209fa1639c787295e380e8dce0b
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 746d908065523651f9147a721531514d1a0f84c0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111901995"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673272"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Abrufen eines Tokens von Azure AD zum Autorisieren von Anforderungen von einer Clientanwendung
 
@@ -35,7 +35,7 @@ Um einen Sicherheitsprinzipal aus Ihrer Azure Storage-Anwendung authentifizieren
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>Registrieren der Anwendung bei einem Azure AD-Mandanten
 
-Der erste Schritt bei der Verwendung von Azure AD zum Autorisieren des Zugriffs auf Speicherressourcen ist die Registrierung Ihrer Clientanwendung mit einem Azure AD-Mandanten im [Azure-Portal](https://portal.azure.com). Wenn Sie Ihre Clientanwendung registrieren, liefern Sie Azure AD Informationen zu Ihrer Anwendung. Azure AD stellt dann eine Client-ID (auch als *Anwendungs-ID* bezeichnet) bereit, mit der Sie Ihre Anwendung zur Laufzeit Azure AD zuordnen. Weitere Informationen zur Client-ID finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory (Azure AD)](../../active-directory/develop/app-objects-and-service-principals.md). Um Ihre Azure Storage-Anwendung zu registrieren, führen Sie die in der folgenden Anleitung gezeigten Schritte aus [Schnellstart: Registrieren einer Anwendung bei der Microsoft Identity Platform](../../active-directory/develop/quickstart-configure-app-access-web-apis.md). 
+Der erste Schritt bei der Verwendung von Azure AD zum Autorisieren des Zugriffs auf Speicherressourcen ist die Registrierung Ihrer Clientanwendung mit einem Azure AD-Mandanten im [Azure-Portal](https://portal.azure.com). Wenn Sie Ihre Clientanwendung registrieren, liefern Sie Azure AD Informationen zu Ihrer Anwendung. Azure AD stellt dann eine Client-ID (auch als *Anwendungs-ID* bezeichnet) bereit, mit der Sie Ihre Anwendung zur Laufzeit Azure AD zuordnen. Weitere Informationen zur Client-ID finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory (Azure AD)](../../active-directory/develop/app-objects-and-service-principals.md). Um Ihre Azure Storage-Anwendung zu registrieren, führen Sie die in der folgenden Anleitung gezeigten Schritte aus [Schnellstart: Registrieren einer Anwendung bei der Microsoft Identity Platform](../../active-directory/develop/quickstart-configure-app-access-web-apis.md).
 
 Die folgende Abbildung zeigt die allgemeinen Einstellungen zum Registrieren einer Webanwendung. In diesem Beispiel ist der Umleitungs-URI zum Testen der Beispielanwendung in der Entwicklungsumgebung auf `http://localhost:5000/signin-oidc` festgelegt. Diese Einstellung können Sie später unter der Einstellung **Authentifizierung** für Ihre registrierte Anwendung im Azure-Portal ändern:
 
@@ -140,7 +140,7 @@ Wenn Ihre Anwendung auf Azure Storage zugreift, dann im Namen des Benutzers. Der
 
 Eine vollständige Beispielwebanwendung, die ein Token abruft und zum Erstellen eines Blobs in Azure Storage verwendet, steht unter [GitHub](https://aka.ms/aadstorage) zur Verfügung. Durch Überprüfen und Ausführen des vollständigen Beispiels können Sie die Codebeispiele möglicherweise besser verstehen. Informationen zum Ausführen des vollständigen Beispiels finden Sie im Abschnitt [View and run the completed sample (Anzeigen und Ausführen des vollständigen Beispiels)](#view-and-run-the-completed-sample).
 
-#### <a name="add-references-and-using-statements"></a>Hinzufügen von Verweisen und using-Anweisungen  
+#### <a name="add-references-and-using-statements"></a>Hinzufügen von Verweisen und using-Anweisungen
 
 Installieren Sie von Visual Studio aus die Azure Storage-Clientbibliothek. Wählen Sie im Menü **Extras** den Eintrag **NuGet-Paket-Manager** und danach **Paket-Manager-Konsole**. Geben Sie im Konsolenfenster die folgenden Befehle ein, um die erforderlichen Pakete aus der Azure Storage-Clientbibliothek für .NET zu installieren:
 

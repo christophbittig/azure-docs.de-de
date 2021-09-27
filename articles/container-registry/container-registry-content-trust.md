@@ -2,14 +2,14 @@
 title: Verwalten von signierten Images
 description: Erfahren Sie, wie Inhaltsvertrauen für Ihre Azure-Containerregistrierung aktiviert wird und signierte Images gepusht und gepullt werden. Das Inhaltsvertrauen implementiert Docker-Inhaltsvertrauen und ist ein Feature der Dienstebene „Premium“.
 ms.topic: how-to
-ms.date: 06/25/2021
+ms.date: 07/26/2021
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: ddaded0ff733ea717a48bfe2bcaac4a84e102ad8
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.openlocfilehash: e6f4eb302d2ac5f6fc711e438a48a064efef0d27
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112983615"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450951"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Inhaltsvertrauen in Azure Container Registry
 
@@ -76,6 +76,9 @@ Nur Benutzer oder Systeme, denen Sie die entsprechende Berechtigung erteilt habe
 > Sie können den folgenden Administratorkonten keine Pushberechtigung für vertrauenswürdige Images erteilen: 
 > * dem [Administratorkonto](container-registry-authentication.md#admin-account) einer Azure Container Registry
 > * einem Benutzerkonto in Azure Active Directory mit der [klassischen Systemadministratorrolle](../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
+
+> [!NOTE]
+> Ab Juli 2021 umfasst die Rolle `AcrImageSigner` sowohl die Aktion `Microsoft.ContainerRegistry/registries/sign/write` als auch die Datenaktion `Microsoft.ContainerRegistry/registries/trustedCollections/write`.
 
 Details zum Erteilen der Rolle `AcrImageSigner` im Azure-Portal und in der Azure CLI folgen.
 

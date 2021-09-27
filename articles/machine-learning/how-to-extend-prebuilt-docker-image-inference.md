@@ -11,14 +11,14 @@ ms.date: 05/25/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt
-ms.openlocfilehash: b84255a4148322f9aa1b5c0d59eb220c2555102f
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: c4a1b52f87f0c5053e357fcb67a2e90962dc37c1
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967621"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433528"
 ---
-# <a name="extend-a-prebuilt-docker-image-preview"></a>Erweitern eines vordefinierten Docker-Images (Vorschau)
+# <a name="extend-a-prebuilt-docker-image-preview"></a>Erweitern eines vorgefertigten Docker-Images (Vorschau)
 
 Es kann vorkommen, dass die [vordefinierten Docker-Images für Modellrückschlüsse](concept-prebuilt-docker-images-inference.md) und die [Erweiterbarkeitslösungen](./how-to-prebuilt-docker-images-inference-python-extensibility.md) für Azure Machine Learning Ihre Anforderungen an den Rückschlussdienst nicht vollständig erfüllen.
 

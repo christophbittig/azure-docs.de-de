@@ -3,21 +3,21 @@ title: Worum handelt es sich bei der Bare-Metal-Infrastruktur für Oracle?
 description: Hier finden Sie Informationen zu den Features der Bare-Metal-Infrastruktur für Oracle-Workloads.
 ms.topic: conceptual
 ms.subservice: baremetal-oracle
-ms.date: 04/14/2021
-ms.openlocfilehash: f3ecb1fbcad04455515408e4aadadfb2cef3cf9a
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.date: 09/03/2021
+ms.openlocfilehash: e74d1a3e3b6cb1b2cd0b99927a57a88117715e7b
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110578583"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123542438"
 ---
 # <a name="what-is-baremetal-infrastructure-for-oracle"></a>Worum handelt es sich bei der Bare-Metal-Infrastruktur für Oracle?
 
-Dieser Artikel enthält eine Übersicht über die Features der Bare-Metal-Infrastruktur für Oracle-Workloads.
+In diesem Artikel geben wir einen Überblick über die Funktionen, die BareMetal Infrastructure für Oracle-Workloads bietet.
 
-Die Bare-Metal-Infrastruktur für Oracle basiert auf dem von Oracle zertifizierten Unified Computing System (UCS) sowie auf FLexPod. Die FlexPod-Plattform zeichnet sich durch vorab überprüfte Speicher-, Netzwerk- und Servertechnologien aus. Sie bietet NFS-Speicher und ermöglicht die Integration über das DirectNFS-Protokoll. Die Bare-Metal-Server sind dedizierte Server ohne Hypervisor für die Bare-Metal-Instanzen. 
+Die Bare-Metal-Infrastruktur für Oracle basiert auf dem von Oracle zertifizierten Unified Computing System (UCS) sowie auf FLexPod. Die FlexPod-Plattform zeichnet sich durch vorab überprüfte Speicher-, Netzwerk- und Servertechnologien aus. Es bietet NetApp Network File System (NFS)-Speicher und ermöglicht die Integration über das Direct NFS-Protokoll. Die Bare-Metal-Server sind dedizierte Server ohne Hypervisor für die Bare-Metal-Instanzen. 
 
-Diese Instanzen sind für die Ausführung unternehmenskritischer Anwendungen vorgesehen, die eine Oracle-Workload erfordern. Bare-Metal-Instanzen zeichnen sich durch eine geringe Wartezeit (0,35 ms) für Ihre auf virtuellen Azure-Computern (virtual machines, VMs) ausgeführten Anwendungen aus. Die Bare-Metal-Lösung bietet einen freigegebenen Speicherdatenträger und unterstützt das für die Knoten-zu-Knoten-Kommunikation mit einem dedizierten privaten Verbindungsnetzwerk erforderliche Multicasting. 
+Diese Instanzen sind für die Ausführung unternehmenskritischer Anwendungen vorgesehen, die eine Oracle-Workload erfordern. Bare-Metal-Instanzen zeichnen sich durch eine geringe Wartezeit (0,35 ms) für Ihre auf virtuellen Azure-Computern (virtual machines, VMs) ausgeführten Anwendungen aus. BareMetal bietet gemeinsamen Speicher. Es unterstützt auch Multi-Casting, das für die Knoten-zu-Knoten-Kommunikation mit einem dedizierten privaten Verbindungsnetzwerk erforderlich ist. 
 
 Weitere Features der Bare-Metal-Infrastruktur für Oracle:
 

@@ -3,12 +3,12 @@ title: Erstellen und Verwalten von Benutzern
 description: Erfahren Sie, wie Sie Benutzer von Sensoren und der lokalen Verwaltungskonsole erstellen und verwalten. Benutzern kann eine der Rollen „Administrator“, „Sicherheitsanalyst“ oder „Benutzer mit Lesezugriff“ zugewiesen werden.
 ms.date: 05/20/2021
 ms.topic: article
-ms.openlocfilehash: 256b97f08f687b444375135d0b809423b8a73796
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: fa10961218d536faf09a1f7062c8a8c77dc99ce4
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113017637"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434032"
 ---
 # <a name="about-defender-for-iot-console-users"></a>Grundlegendes zu Benutzern der Defender für IoT-Konsole
 
@@ -135,20 +135,24 @@ Administratorbenutzer können die Abmeldung bei Inaktivität aktivieren und deak
 
 Um die Abmeldezeiten zu aktualisieren, ändern Sie den Wert von `= <number>` in die erforderliche Zeit.
 
-## <a name="track-user-activity"></a>Nachverfolgen der Benutzeraktivität 
+## <a name="track-user-activity"></a>Nachverfolgen der Benutzeraktivität
 
 Sie können die Benutzeraktivität auf jedem Sensor auf der Ereigniszeitachse nachverfolgen. Die Zeitachse zeigt das Ereignis oder das betroffene Gerät sowie das Datum und die Uhrzeit an, zu der der Benutzer die Aktivität ausgeführt hat.
 
 **So zeigen Sie Benutzeraktivitäten an:**
 
 1. Melden Sie sich beim Sensor an.
-1. Aktivieren Sie auf der Ereigniszeitachse die Option **Vorgänge für Benutzer**. 
+
+1. Aktivieren Sie auf der Ereigniszeitachse die Option **Vorgänge für Benutzer**.
 
     :::image type="content" source="media/how-to-create-azure-for-defender-users-and-roles/User-login-attempts.png" alt-text="Anzeigen einer Benutzeraktivität":::
 
-## <a name="integrate-with-active-directory-servers"></a>Integration mit Active Directory-Servern 
+## <a name="integrate-with-active-directory-servers"></a>Integration mit Active Directory-Servern
 
 Sie können den Sensor oder die lokale Verwaltungskonsole für die Zusammenarbeit mit Active Directory konfigurieren. Dadurch können Active Directory-Benutzer mithilfe ihrer Active Directory-Anmeldeinformationen auf die Defender für IoT-Konsolen zugreifen.
+
+> [!Note]
+> LDAP v3 wird unterstützt.
 
 Zwei LDAP-basierte Authentifizierungstypen werden unterstützt:
 
@@ -166,20 +170,20 @@ Sie können den hier definierten Active Directory-Gruppen bestimmte Berechtigung
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-system-settings-v2.png" alt-text="Anzeigen Ihrer Active Directory-Systemeinstellungen":::
 
-2. Wählen Sie im Bereich **Systemeinstellungen** die Option **Active Directory** aus.
+1. Wählen Sie im Bereich **Systemeinstellungen** die Option **Active Directory** aus.
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-configurations-v2.png" alt-text="Bearbeiten Ihrer Active Directory-Konfigurationen":::
 
-3. Wählen Sie im Dialogfeld **Edit Active Directory Configuration** (Active Directory Konfiguration bearbeiten) die Option **Active Directory Integration Enabled (Active Directory-Integration aktiviert)**  > **Speichern** aus. Das Dialogfeld **Edit Active Directory Configuration** (Active Directory Konfiguration bearbeiten) wird erweitert, sodass Sie nun die Parameter zum Konfigurieren von Active Directory eingeben können.
+1. Wählen Sie im Dialogfeld **Edit Active Directory Configuration** (Active Directory Konfiguration bearbeiten) die Option **Active Directory Integration Enabled (Active Directory-Integration aktiviert)**  > **Speichern** aus. Das Dialogfeld **Edit Active Directory Configuration** (Active Directory Konfiguration bearbeiten) wird erweitert, sodass Sie nun die Parameter zum Konfigurieren von Active Directory eingeben können.
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-integration-enabled-v2.png" alt-text="Eingeben der Parameter zum Konfigurieren von Active Directory":::
 
-    > [!NOTE]
-    > - Sie müssen die LDAP-Parameter hier genau so definieren, wie sie in Active Directory angezeigt werden.
-    > - Verwenden Sie für alle Active Directory-Parameter nur Kleinbuchstaben. Verwenden Sie selbst dann Kleinbuchstaben, wenn bei den Konfigurationen in Active Directory Großbuchstaben verwendet werden.
-    > - Es ist nicht möglich, sowohl LDAP als auch LDAPS für dieselbe Domäne zu konfigurieren. Sie können jedoch beide gleichzeitig für verschiedene Domänen verwenden.
+> [!NOTE]
+> - Sie müssen die LDAP-Parameter hier genau so definieren, wie sie in Active Directory angezeigt werden.
+> - Verwenden Sie für alle Active Directory-Parameter nur Kleinbuchstaben. Verwenden Sie selbst dann Kleinbuchstaben, wenn bei den Konfigurationen in Active Directory Großbuchstaben verwendet werden.
+> - Es ist nicht möglich, sowohl LDAP als auch LDAPS für dieselbe Domäne zu konfigurieren. Sie können jedoch beide gleichzeitig für verschiedene Domänen verwenden.
 
-4. Legen Sie die Parameter für Active Directory-Server wie folgt fest:
+1. Legen Sie die Parameter für Active Directory-Server wie folgt fest:
 
    | Serverparameter | BESCHREIBUNG |
    |--|--|
@@ -195,7 +199,7 @@ Wenn Sie Active Directory-Gruppen für Benutzer der lokalen Verwaltungskonsole e
 
 1. Wählen Sie **Speichern** aus.
 
-2. Wählen Sie zum Hinzufügen eines vertrauenswürdigen Servers **Server hinzufügen** aus, und konfigurieren Sie einen weiteren Server.
+1. Wählen Sie zum Hinzufügen eines vertrauenswürdigen Servers **Server hinzufügen** aus, und konfigurieren Sie einen weiteren Server.
 
 ## <a name="change-a-users-password"></a>Ändern des Kennworts eines Benutzers
 

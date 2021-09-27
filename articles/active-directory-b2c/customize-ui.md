@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/27/2021
+ms.date: 09/15/2021
 ms.custom: project-no-code, b2c-support
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: cf4e674e1aca47b0f1ea4fa05aae110f8270b721
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: 583c9fb66708cee46cbd0b7c7f341c1a6a9b7a55
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114688897"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128575311"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Anpassen der Benutzeroberfläche in Azure Active Directory B2C
 
@@ -72,7 +72,8 @@ Das folgende Beispiel zeigt eine Seite für die *Registrierung und Anmeldung* mi
 ::: zone pivot="b2c-user-flow"
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
 1. Wählen Sie **Benutzerflows** aus.
 1. Wählen Sie einen Benutzerflow aus, den Sie anpassen möchten.
@@ -198,7 +199,8 @@ Zum Anpassen Ihrer Benutzerflowseiten konfigurieren Sie zuerst das Unternehmensb
 Legen Sie zuerst das Bannerlogo, das Hintergrundbild und die Hintergrundfarbe in **Unternehmensbranding** fest.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
 1. Wählen Sie unter **Verwalten** die Option **Unternehmensbranding** aus.
 1. Führen Sie die unter [Hinzufügen von Branding zur Azure Active Directory-Anmeldeseite Ihrer Organisation](../active-directory/fundamentals/customize-branding.md) aufgeführten Schritte aus.
@@ -210,10 +212,9 @@ Beachten Sie beim Konfigurieren des Unternehmensbrandings in Azure AD B2C die fo
 * Das Bannerlogo wird in den Überprüfungs-E-Mails angezeigt, die an Ihre Benutzer gesendet werden, wenn sie einen Benutzerflow für die Registrierung initiieren.
 
 
+::: zone pivot="b2c-user-flow"
 
 ## <a name="enable-company-branding-in-user-flow-pages"></a>Aktivieren des Unternehmensbrandings auf Benutzerflowseiten
-
-::: zone pivot="b2c-user-flow"
 
 Nachdem Sie das Unternehmensbranding konfiguriert haben, können Sie es in Ihren Benutzerflows aktivieren.
 
@@ -231,6 +232,8 @@ Wenn Sie alle Seiten im Benutzerflow mit Branding versehen möchten, legen Sie d
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
+
+## <a name="enable-company-branding-in-custom-policy-pages"></a>Aktivieren Sie das Branding Ihres Unternehmens auf benutzerdefinierten Richtlinienseiten
 
 Nachdem Sie das Unternehmensbranding konfiguriert haben, können Sie es in Ihrer benutzerdefinierten Richtlinie aktivieren. Konfigurieren Sie die [Seitenlayoutversion](contentdefinitions.md#migrating-to-page-layout) mit der `contract`-Version der Seite für *alle* Inhaltsdefinitionen in Ihrer benutzerdefinierten Richtlinie. Das Format des Werts muss das Wort `contract` enthalten: _urn:com:microsoft:aad:b2c:elements:**contract**:page-name:version_. Sie können das Seitenlayout in Ihren benutzerdefinierten Richtlinien angeben, die einen alten **DataUri**-Wert verwenden. Erfahren Sie, wie Sie mit der Seitenversion eine [Migration zum Seitenlayout](contentdefinitions.md#migrating-to-page-layout) durchführen.
 

@@ -4,16 +4,16 @@ description: Dieser Artikel enthält Referenzinformationen zum Befehl „azcopy 
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 07/24/2020
+ms.date: 09/21/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: ca436ee440ad7c1dd2caee3a65790f8b630fd949
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 31bbabd194b2b2ef06266feb39b4d9618bbc0794
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107503285"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435814"
 ---
 # <a name="azcopy-list"></a>azcopy list
 
@@ -46,6 +46,7 @@ azcopy list [containerURL]
 |-h, --help|Zeigt Hilfeinhalt zum Befehl „list“.|
 |–machine-readable|Listet Dateigrößen in Byte auf.|
 |–mega-units|Zeigt Einheiten in Reihenfolgen von 1000 (nicht 1024) an.|
+| --properties |   Durch Trennzeichen (;) getrennte Werte von Eigenschaften, die in der Listenausgabe erforderlich sind |
 |–running-tally|Zählt die Gesamtzahl von Dateien und deren Größen.|
 
 ## <a name="options-inherited-from-parent-commands"></a>Von übergeordneten Befehlen geerbte Optionen

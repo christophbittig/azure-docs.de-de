@@ -7,13 +7,13 @@ author: mgottein
 ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/27/2021
-ms.openlocfilehash: 49aad9132d57c07022fd5515cbc07c32d94a5132
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.date: 09/07/2021
+ms.openlocfilehash: 650f5f40bf8b8fc0909b4fec85ef6b5724a2e3c7
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112982886"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123539822"
 ---
 # <a name="indexer-troubleshooting-guidance-for-azure-cognitive-search"></a>Leitfaden zur Indexer-Problembehandlung bei Azure Cognitive Search
 
@@ -61,6 +61,12 @@ In diesen Fällen können der virtuelle Azure-Computer oder die verwaltete SQL-I
 Das `AzureCognitiveSearch`-Diensttag kann direkt in den [NSG-Regeln](../virtual-network/manage-network-security-group.md#work-with-security-rules) für eingehenden Datenverkehr verwendet werden, ohne den zugehörigen IP-Adressbereich zu suchen.
 
 Weitere Informationen zum Zugreifen auf Daten in einer verwalteten SQL-Instanz finden Sie [hier](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md).
+
+## <a name="azure-sql-database-serverless-indexing-error-code-40613"></a>Azure SQL-Datenbank – serverlos: Indizierung (Fehlercode 40613)
+
+Wenn sich Ihre SQL-Datenbank auf einer [serverlosen Computeebene](../azure-sql/database/serverless-tier-overview.md) befindet, müssen Sie sicherstellen, dass die Datenbank ausgeführt wird (und nicht angehalten wurde), wenn der Indexer eine Verbindung mit ihr herstellt.
+
+Wenn die Datenbank angehalten wurde, wird sie bei der ersten Anmeldung Ihres Suchdiensts automatisch fortgesetzt. Darüber hinaus wird jedoch ein Fehler mit dem Fehlercode 40613 und dem Hinweis zurückgegeben, dass die Datenbank nicht verfügbar ist. Wenn die Datenbank ausgeführt wird, wiederholen Sie den Anmeldeversuch, um eine Verbindung herzustellen.
 
 ## <a name="sharepoint-online-conditional-access-policies"></a>Richtlinien für bedingten SharePoint Online-Zugriff
 

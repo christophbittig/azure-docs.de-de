@@ -106,6 +106,8 @@
           href: vs-key-vault-add-connected-service.md
     - name: Überwachen und Steuern
       items:
+        - name: Überwachen von Key Vault
+          href: monitor-key-vault.md
         - name: Event Grid-Benachrichtigungen
           items:
             - name: Empfangen von Benachrichtigungen über Logic Apps
@@ -114,7 +116,9 @@
               href: event-grid-tutorial.md
         - name: Aktivieren der Protokollierung
           href: howto-logging.md
-        - name: Konfigurieren von Überwachung und Warnungen für Azure Key Vault mit Azure Monitor
+        - name: Überwachen von Azure Key Vault
+          href: monitor-key-vault.md
+        - name: Konfigurieren von Warnungen für Azure Key Vault
           href: alert.md
         - name: Wiederherstellungsverwaltung mit Schutz durch vorläufiges Löschen und Bereinigungsschutz
           href: key-vault-recovery.md
@@ -146,6 +150,8 @@
   items:
     - name: Neues
       href: whats-new.md
+    - name: Überwachen von Key Vault-Datenverweisen
+      href: monitor-key-vault-reference.md
     - name: Clientbibliotheken
       href: client-libraries.md
     - name: REST-API-Fehlercodes
@@ -158,7 +164,7 @@
       href: versions.md
     - name: Azure PowerShell
       href: /powershell/module/az.keyvault/#key_vault
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/keyvault
     - name: .NET
       href: /dotnet/api/overview/azure/key-vault

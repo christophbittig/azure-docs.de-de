@@ -1,19 +1,18 @@
 ---
 title: Aktivieren einer Edge-Containerregistrierung auf einem Azure Stack Edge Pro-GPU-Gerät
 description: Erfahren Sie, wie Sie eine lokale Edge-Containerregistrierung auf einem Azure Stack Edge Pro-GPU-Gerät aktivieren.
-services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 56b691b2755b5e248b16e338f8fd82864f5bf218
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 18fa68b6d0d0922bad0a632ba10bd82a8cfe8506
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105560334"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643021"
 ---
 # <a name="enable-edge-container-registry-on-your-azure-stack-edge-pro-gpu-device"></a>Aktivieren einer Edge-Containerregistrierung auf Ihrem Azure Stack Edge Pro-GPU-Gerät
 
@@ -59,7 +58,7 @@ Der erste Schritt besteht darin, die Edge-Containerregistrierung als Add-On zu a
     
     Dieser Vorgang kann mehrere Minuten dauern.
 
-    Nachfolgend finden Sie die Beispielausgabe dieses Befehls:  
+    Nachfolgend finden Sie die Beispielausgabe dieses Befehls:    
             
     ```powershell
     [10.128.44.40]: PS>Set-HcsKubernetesContainerRegistry
@@ -78,9 +77,9 @@ Der erste Schritt besteht darin, die Edge-Containerregistrierung als Add-On zu a
     Endpoint                                   IPAddress    Username     Password
     --------                                   ---------    --------     --------
     ecr.dbe-hw6h1t2.microsoftdatabox.com:31001 10.128.44.41 ase-ecr-user i3eTsU4zGYyIgxV
-    ``` 
+    ```    
 
-1. Notieren Sie sich den Benutzernamen und das Kennwort aus der Ausgabe von `Get-HcsKubernetesContainerRegistryInfo`. Diese Anmeldeinformationen werden verwendet, um sich beim Pushen von Images bei der Edge-Containerregistrierung anzumelden.         
+1. Notieren Sie sich den Benutzernamen und das Kennwort aus der Ausgabe von `Get-HcsKubernetesContainerRegistryInfo`. Diese Anmeldeinformationen werden verwendet, um sich beim Pushen von Images bei der Edge-Containerregistrierung anzumelden.            
 
 
 ## <a name="manage-container-registry-images"></a>Verwalten der Images der Containerregistrierung
@@ -95,7 +94,7 @@ Führen Sie die folgenden Schritte aus, um auf die Edge-Containerregistrierung z
         ![Endpunkt der Edge-Containerregistrierung auf der Seite „Gerät“](media/azure-stack-edge-gpu-edge-container-registry/get-edge-container-registry-endpoint-1.png) 
     1. Kopieren Sie diesen Endpunkt, und erstellen Sie einen entsprechenden DNS-Eintrag in der Datei `C:\Windows\System32\Drivers\etc\hosts` des Clients, um eine Verbindung mit dem Endpunkt der Edge-Containerregistrierung herzustellen. 
 
-        <IP address of the Kubernetes main node>    <Edge container registry endpoint> 
+        \<IP address of the Kubernetes main node\>    \<Edge container registry endpoint\> 
         
         ![DNS-Eintrag für den Endpunkt der Edge-Containerregistrierung hinzufügen](media/azure-stack-edge-gpu-edge-container-registry/add-domain-name-service-entry-hosts-1.png)    
 

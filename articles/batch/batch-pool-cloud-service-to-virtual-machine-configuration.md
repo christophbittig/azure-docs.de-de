@@ -2,13 +2,13 @@
 title: Migrieren der Batch-Poolkonfiguration von Cloud Services zu Virtual Machines
 description: Erfahren Sie, wie Sie Ihre Poolkonfiguration auf die neueste und empfohlene Konfiguration aktualisieren.
 ms.topic: how-to
-ms.date: 03/11/2021
-ms.openlocfilehash: a176c4df1737a340a546b4ab7926447cd821350d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/03/2021
+ms.openlocfilehash: 9d4ce46c5291333f161f260c3b4706ea9dcf9a24
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200557"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538883"
 ---
 # <a name="migrate-batch-pool-configuration-from-cloud-services-to-virtual-machine"></a>Migrieren der Batch-Poolkonfiguration von Cloud Services zu Virtual Machines
 
@@ -36,7 +36,7 @@ Einige der Hauptunterschiede zwischen den beiden Konfigurationen sind:
 - Poolknoten mit „virtualMachineConfiguration“ verwenden verwaltete Betriebssystem-Datenträger. Der für die jeweiligen Knoten verwendete [Typ der verwalteten Datenträger](../virtual-machines/disks-types.md) richtet sich nach der für den Pool ausgewählten VM-Größe. Wenn die für den Pool angegebene VM-Größe ein „s“ enthält (z. B. Standard_D2s_v3), wird ein Premium-SSD verwendet. Wenn die VM-Größe kein „s“ enthält (z. B. Standard_D2_v3), wird ein Standard-Festplattenlaufwerk verwendet.
 
    > [!IMPORTANT]
-   > Ebenso wie bei Virtual Machines und Virtual Machine Scale Sets verursachen die verwalteten Betriebssystem-Datenträger der einzelnen Knoten Kosten, die zusätzlich zu den VM-Gebühren anfallen. Da die Betriebssystem-Datenträger auf den lokalen SSDs der Knoten erstellt werden, fallen für cloudServiceConfiguration-Knoten keine Kosten für diese Datenträger an.
+   > Ebenso wie bei Virtual Machines und Virtual Machine Scale Sets verursachen die verwalteten Betriebssystem-Datenträger der einzelnen Knoten Kosten, die zusätzlich zu den VM-Gebühren anfallen. 'virtualMachineConfiguration'-Pools können [ephemerale OS-Disks](create-pool-ephemeral-os-disk.md) verwenden, bei denen die OS-Disk auf dem VM-Cache oder einer temporären SSD erstellt wird, um zusätzliche Kosten für verwalteter Datenträger zu vermeiden. cloudServiceConfiguration'-Knoten verursachen keine OS-Disk-Kosten, da die OS-Disk auf der lokalen SSD des Knotens erstellt wird.
 
 ## <a name="azure-data-factory-custom-activity-pools"></a>Pools benutzerdefinierter Azure Data Factory-Aktivitäten
 

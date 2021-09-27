@@ -10,12 +10,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: 94d90a173ef935bc6ac029707e4c3f78495ca0df
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 1f7b4152bee090e39c598b559ffa9d2e8aea8e88
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515974"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123477742"
 ---
 # <a name="optimize-costs-by-automatically-managing-the-data-lifecycle"></a>Optimieren von Kosten durch automatisches Verwalten des Datenlebenszyklus
 
@@ -32,8 +32,6 @@ Mit der Richtlinie für die Lebenszyklusverwaltung können Sie die folgenden Auf
 Stellen Sie sich ein Szenario vor, bei dem in den frühen Stages des Lebenszyklus häufig auf Daten zugegriffen wird, nach zwei Wochen aber nur noch gelegentlich. Nach dem ersten Monat wird auf das Dataset nur noch selten zugegriffen. In diesem Szenario empfiehlt sich in den frühen Phasen heißer Speicher. Die kalte Speicherebene eignet sich am besten für den gelegentlichen Zugriff. Die Archivspeicherebene ist die beste Option, wenn die Daten mehr als einen Monat alt sind. Indem Sie Daten basierend auf ihrem Alter mit Richtlinienregeln für die Lebenszyklusverwaltung auf die entsprechende Speicherebene verschieben, können Sie die kostengünstigste Lösung für Ihre Anforderungen entwerfen.
 
 Lebenszyklusverwaltungsrichtlinien werden für Blockblobs und Anfügeblobs in Konten vom Typ „Allgemein v2“, „Premium-Blockblob“ und „Blob Storage“ unterstützt. Die Lebenszyklusverwaltung hat keinen Einfluss auf Systemcontainer wie die *$logs* oder *$web*-Container.
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 > [!IMPORTANT]
 > Wenn ein DataSet lesbar sein muss, legen Sie keine Richtlinie zum Verschieben von Blobs auf die Archivebene fest. Blobs auf der Archivebene können nur gelesen werden, wenn sie zum ersten Mal aktiviert werden. Dies ist ein Prozess, der zeitaufwändig und teuer sein kann. Weitere Informationen finden Sie unter [Übersicht über die Aktivierung von Blobs aus der Archivebene](archive-rehydrate-overview.md).
@@ -364,9 +362,20 @@ Für Daten, die während ihrer gesamten Lebensdauer regelmäßig geändert werde
 }
 ```
 
-## <a name="availability-and-pricing"></a>Verfügbarkeit und Preismodell
+## <a name="feature-support"></a>Featureunterstützung
 
-Das Feature zur Lebenszyklusverwaltung ist in allen Azure-Regionen für GPv2-Konten (General Purpose v2), Blob Storage-Konten und Premium-Blockblob-Speicherkonten verfügbar. Konten mit einem hierarchischen Namespace werden unterstützt. Weitere Informationen zu Typen von Speicherkonten finden Sie unter [Übersicht über Storage-Konten](../common/storage-account-overview.md).
+Diese Tabelle zeigt, wie diese Funktion in Ihrem Konto unterstützt wird und welche Auswirkungen es auf den Support hat, wenn Sie bestimmte Funktionen aktivieren. 
+
+| Speicherkontotyp                | Blob-Speicher (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3,0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) |![Ja](../media/icons/yes-icon.png)              | ![Ja](../media/icons/yes-icon.png) | 
+| Premium-Blockblobs          | ![Ja](../media/icons/yes-icon.png)|![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) |
+
+<sup>1</sup>    Data Lake Storage Gen2 und das Network File System (NFS) 3.0-Protokoll erfordern beide ein Speicherkonto mit einem aktivierten hierarchischen Namespace.
+
+## <a name="regional-availability-and-pricing"></a>Regionale Verfügbarkeit und Preise
+
+Die Funktion zur Lebenszyklusverwaltung ist in allen Azure-Regionen verfügbar.
 
 Richtlinien für die Lebenszyklusverwaltung sind kostenlos. Kunden werden die regulären Betriebskosten für die [Set Blob Tier](/rest/api/storageservices/set-blob-tier) (Blobebene festlegen)-API-Aufrufe in Rechnung gestellt. Löschvorgänge sind kostenfrei.
 
@@ -382,7 +391,7 @@ Die Plattform führt die Lebenszyklusrichtlinie ein Mal täglich aus. Nachdem Si
 
 **Wie lange dauert es nach dem Aktualisieren einer vorhandenen Richtlinie, bis die Aktionen ausgeführt werden?**
 
-Es dauert bis zu 24 Stunden, bis die aktualisierte Richtlinie in Kraft tritt. Sobald die Richtlinie gültig ist, kann es bis zu 24 Stunden dauern, bis die Aktionen ausgeführt werden. Daher kann der Abschluss von Richtlinieaktionen bis zu 48 Stunden dauern. Wenn das Update eine Regel deaktivieren oder löschen soll und „enableAutoTierToHotFromCool“ verwendet wurde, wird dennoch das automatische Tiering auf die heiße Speicherebene durchgeführt. Legen Sie beispielsweise basierend auf dem letzten Zugriff eine Regel einschließlich „enableAutoTierToHotFromCool“ fest. Wenn die Regel deaktiviert oder gelöscht wird, sich ein Blob derzeit auf der kalten Speicherebene befindet und dann darauf zugegriffen wird, wird er wieder auf die heiße Speicherebene zurückgesetzt, da diese für den Zugriff außerhalb der Lebenszyklusverwaltung verwendet wird. Das Blob wird dann nicht von der heißen auf die kalte Speicherebene verschoben, da die Lebenszyklusverwaltungsregel deaktiviert bzw. gelöscht wurde.  Die einzige Möglichkeit, „autoTierToHotFromCool“ zu verhindern, besteht darin, die Nachverfolgung des letzten Zugriffszeitpunkts zu deaktivieren.
+Es dauert bis zu 24 Stunden, bis die aktualisierte Richtlinie in Kraft tritt. Sobald die Richtlinie gültig ist, kann es bis zu 24 Stunden dauern, bis die Aktionen ausgeführt werden. Daher kann der Abschluss von Richtlinieaktionen bis zu 48 Stunden dauern. Wenn das Update eine Regel deaktivieren oder löschen soll und „enableAutoTierToHotFromCool“ verwendet wurde, wird dennoch das automatische Tiering auf die heiße Speicherebene durchgeführt. Legen Sie beispielsweise basierend auf dem letzten Zugriff eine Regel einschließlich „enableAutoTierToHotFromCool“ fest. Wenn die Regel deaktiviert oder gelöscht wird, sich ein Blob derzeit auf der kalten Speicherebene befindet und dann darauf zugegriffen wird, wird er wieder auf die heiße Speicherebene zurückgesetzt, da diese für den Zugriff außerhalb der Lebenszyklusverwaltung verwendet wird. Das Blob wird dann nicht von der heißen auf die kalte Speicherebene verschoben, da die Regel für die Lebenszyklusverwaltung deaktiviert bzw. gelöscht wurde.  Die einzige Möglichkeit, „autoTierToHotFromCool“ zu verhindern, besteht darin, die Nachverfolgung des letzten Zugriffszeitpunkts zu deaktivieren.
 
 **Ich habe ein archiviertes Blob manuell wieder aktiviert. Wie kann ich vorübergehend verhindern, dass es zurück auf die Archivspeicherebene verschoben wird?**
 

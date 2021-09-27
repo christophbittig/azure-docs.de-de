@@ -5,21 +5,21 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 06/11/2021
+ms.date: 09/01/2021
 ms.author: victorh
-ms.openlocfilehash: f28092c050e58c6ef90a3faf07034be21198008a
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: 1aaea272e83bf39f2f4aa7e373b26ae28aadbda0
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112017197"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430322"
 ---
 # <a name="use-fqdn-filtering-in-network-rules"></a>Verwenden der FQDN-Filterung in Netzwerkregeln
 
 Ein vollqualifizierter Domänenname (Fully Qualified Domain Name, FQDN) stellt den Domänennamen eines Hosts oder von IP-Adressen dar. Sie können FQDNs in Netzwerkregeln verwenden, basierend auf der DNS-Auflösung in Azure Firewall und der Firewallrichtlinie. Diese Funktion ermöglicht es Ihnen, ausgehenden Datenverkehr mit einem beliebigen TCP/UDP-Protokoll (einschließlich NTP, SSH, RDP und mehr) zu filtern. Für die Verwendung von FQDNs in Ihren Netzwerkregeln müssen Sie den DNS-Proxy aktivieren. Weitere Informationen finden Sie unter [DNS-Einstellungen für Azure Firewall](dns-settings.md).
 
 > [!NOTE]
-> Die FQDN-Filterung unterstützt standardmäßig keine Platzhalter.
+> Die FQDN-Filterung in Netzwerkregeln unterstützt keine Wildcards.
 
 ## <a name="how-it-works"></a>Funktionsweise
 

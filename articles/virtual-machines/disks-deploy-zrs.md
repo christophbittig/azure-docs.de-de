@@ -1,25 +1,25 @@
 ---
-title: Bereitstellen eines verwalteten ZRS-Datenträgers (Vorschauversion)
+title: Bereitstellen einer ZRS-verwalteten Festplatte
 description: Erfahren Sie, wie Sie einen verwalteten Datenträger bereitstellen, der zonenredundanten Speicher (ZRS) verwendet.
 author: roygara
 ms.author: rogarana
-ms.date: 07/12/2021
+ms.date: 09/01/2021
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 7afa1a5416651dc7e93ff354e63fefb259ea81b4
-ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
+ms.openlocfilehash: 23629a5a15603697eb1feb6e964e63754fbed14c
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113667259"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426728"
 ---
-# <a name="deploy-a-managed-disk-that-uses-zone-redundant-storage-preview"></a>Bereitstellen eines verwalteten Datenträgers, der zonenredundanten Speicher (Vorschau) verwendet
+# <a name="deploy-a-managed-disk-that-uses-zone-redundant-storage"></a>Bereitstellen einer verwalteten Festplatte, die zonenredundanten Speicher verwendet
 
-In diesem Artikel wird beschrieben, wie Sie einen Datenträger bereitstellen, der zonenredundanten Speicher (ZRS) als Redundanzoption (Vorschauversion) verwendet. Bei ZRS wird Ihr verwalteter Azure-Datenträger synchron über drei Azure-Verfügbarkeitszonen hinweg in der ausgewählten Region repliziert. Jede Verfügbarkeitszone ist ein getrennter physischer Standort mit unabhängigen Stromversorgungs-, Kühlungs- und Netzwerkgeräten.
+In diesem Artikel wird beschrieben, wie Sie eine Festplatte bereitstellen, die zonenredundanten Speicher (ZRS) als Redundanzoption verwendet. Bei ZRS wird Ihr verwalteter Azure-Datenträger synchron über drei Azure-Verfügbarkeitszonen hinweg in der ausgewählten Region repliziert. Jede Verfügbarkeitszone ist ein getrennter physischer Standort mit unabhängigen Stromversorgungs-, Kühlungs- und Netzwerkgeräten.
 
-Konzeptionelle Informationen zu ZRS finden Sie unter [Zonenredundanter Speicher für verwaltete Datenträger (Vorschau)](disks-redundancy.md#zone-redundant-storage-for-managed-disks-preview).
+Konzeptuelle Informationen zu ZRS finden Sie unter [Zonenredundanter Speicher für verwaltete Festplatten](disks-redundancy.md#zone-redundant-storage-for-managed-disks)
 
 ## <a name="limitations"></a>Einschränkungen
 

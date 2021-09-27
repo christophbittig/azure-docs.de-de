@@ -7,21 +7,22 @@ ms.subservice: azure-arc-data
 author: dnethi
 ms.author: dinethi
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 09/1/2021
 ms.topic: how-to
-ms.openlocfilehash: e84d5be7252f81c4e80d6070ada2151fcc3960f1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b95688eca33400956997b44bda43565454f82479
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346952"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123481216"
 ---
 # <a name="configure-azure-arc-enabled-sql-managed-instance"></a>Konfigurieren von SQL Managed Instance mit Azure Arc-Unterstützung
 
 In diesem Artikel wird erläutert, wie SQL Managed Instance mit Azure Arc-Unterstützung konfiguriert wird.
 
 
-## <a name="configure-resources"></a>Konfigurieren der Ressourcen
+## <a name="configure-resources-such-as-cores-memory"></a>Konfigurieren von Ressourcen, etwa Kerne und Arbeitsspeicher
+
 
 ### <a name="configure-using-cli"></a>Konfigurieren mithilfe der Befehlszeilenschnittstelle
 
@@ -31,13 +32,19 @@ Sie können die Konfiguration von SQL Managed Instance mit Azure Arc-Unterstütz
 az sql mi-arc edit --help
 ```
 
-Im folgenden Beispiel werden die CPU-Kern- und Arbeitsspeicheranforderungen und Grenzwerte festgelegt.
+Mithilfe des folgenden Befehls können Sie den verfügbaren Arbeitsspeicher und die verfügbaren Kerne für eine verwaltete SQL-Instanz mit Azure Arc-Unterstützung aktualisieren:
 
 ```azurecli
 az sql mi-arc edit --cores-limit 4 --cores-request 2 --memory-limit 4Gi --memory-request 2Gi -n <NAME_OF_SQL_MI> --k8s-namespace <namespace> --use-k8s
 ```
 
-Zum Anzeigen der Änderungen, die an der SQL Managed Instance-Instanz vorgenommen wurden, können Sie die folgenden Befehle verwenden, um die YAML-Konfigurationsdatei anzuzeigen:
+Im folgenden Beispiel werden die CPU-Kern- und Arbeitsspeicheranforderungen und Grenzwerte festgelegt.
+
+```azurecli
+az sql mi-arc edit --cores-limit 4 --cores-request 2 --memory-limit 4Gi --memory-request 2Gi -n sqlinstance1 --k8s-namespace arc --use-k8s
+```
+
+Zum Anzeigen der Änderungen, die an der verwalteten SQL-Instanz mit Azure Arc-Unterstützung vorgenommen wurden, können Sie die folgenden Befehle verwenden, um die YAML-Konfigurationsdatei anzuzeigen:
 
 ```azurecli
 az sql mi-arc show -n <NAME_OF_SQL_MI> --k8s-namespace <namespace> --use-k8s
@@ -47,32 +54,23 @@ az sql mi-arc show -n <NAME_OF_SQL_MI> --k8s-namespace <namespace> --use-k8s
 
 Nach der Erstellung können Sie Serverkonfigurationseinstellungen für SQL Managed Instance mit Azure Arc-Unterstützung konfigurieren. In diesem Artikel wird beschrieben, wie Einstellungen wie das Aktivieren oder Deaktivieren des MSSQL-Agents oder das Aktivieren bestimmter Ablaufverfolgungsflags für Problembehandlungsszenarien festgelegt werden können.
 
-Führen Sie die folgenden Schritte aus, um diese Einstellungen zu konfigurieren:
 
-1. Erstellen Sie eine benutzerdefinierte `mssql-custom.conf`-Datei, die die gewünschten Einstellungen enthält. Im folgenden Beispiel werden der SQL-Agent und das Ablaufverfolgungsflag 1204 aktiviert:
+### <a name="enable-sql-server-agent"></a>Aktivieren des SQL Server-Agents
 
-   ```
-   [sqlagent]
-   enabled=true
-   
-   [traceflag]
-   traceflag0 = 1204
-   ```
+Der SQL Server-Agent ist standardmäßig deaktiviert. Er kann durch Ausführen des folgenden Befehls aktiviert werden:
 
-1. Kopieren Sie die `mssql-custom.conf`-Datei in `/var/opt/mssql` im `mssql-miaa`-Container, der sich im `master-0`-Pod befindet. Ersetzen Sie `<namespaceName>` durch den Namen des Arc-Namespace.
+```azurecli
+az sql mi-arc edit -n <NAME_OF_SQL_MI> --k8s-namespace <namespace> --use-k8s --agent-enabled true
+```
+Beispiel:
+```azurecli
+az sql mi-arc edit -n sqlinstance1 --k8s-namespace arc --use-k8s --agent-enabled true
+```
 
-   ```bash
-   kubectl cp mssql-custom.conf master-0:/var/opt/mssql/mssql-custom.conf -c mssql-server -n <namespaceName>
-   ```
+### <a name="enable-trace-flags"></a>Aktivieren von Ablaufverfolgungsflags
 
-1. Starten Sie die SQL Server-Instanz neu.  Ersetzen Sie `<namespaceName>` durch den Namen des Arc-Namespace.
+Ablaufverfolgungsflags können wie folgt aktiviert werden:
+```azurecli
+az sql mi-arc edit -n <NAME_OF_SQL_MI> --k8s-namespace <namespace> --use-k8s --trace-flags "3614,1234" 
+```
 
-   ```bash
-   kubectl exec -it master-0  -c mssql-server -n <namespaceName> -- /bin/bash
-   supervisorctl restart mssql-server
-   exit
-   ```
-
-
-**Bekannte Einschränkungen**
-- Für die oben genannten Schritte sind Administratorberechtigungen für den Kubernetes-Cluster erforderlich.

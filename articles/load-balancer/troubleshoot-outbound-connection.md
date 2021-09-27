@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 05/7/2020
 ms.author: anavin
-ms.openlocfilehash: 71472a89b2aa3138c83dac1f5c2dfc5649c9b9ce
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: e51a74ef4f01bda57e7cdef026aed9aa85111ca3
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112583165"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123437398"
 ---
 # <a name="troubleshooting-outbound-connections-failures"></a><a name="obconnecttsg"></a> Problembehandlung für Fehler bei ausgehenden Verbindungen
 
@@ -71,7 +71,7 @@ Wenn Sie auf die nächstgrößere Back-End-Poolgröße aufskalieren, erfolgt mö
 ## <a name="use-keepalives-to-reset-the-outbound-idle-timeout"></a><a name="idletimeout"></a>Verwenden von Keepalives zum Zurücksetzen des Leerlauftimeouts für ausgehende Verbindungen
 Ausgehende Verbindungen haben einen 4-Minuten-Leerlauftimeout. Dieses Zeitlimit kann über [Ausgangsregeln](outbound-rules.md) angepasst werden. Sie können Keepalives auf der Transportschicht (z. B. TCP-Keepalives) oder der Anwendungsschicht verwenden, um einen im Leerlauf befindlichen Datenfluss zu aktualisieren und den Leerlauftimeout bei Bedarf zurückzusetzen.  
 
-Wenn TCP-Keepalives verwendet werden, genügt es, sie auf einer Seite der Verbindung zu aktivieren. Beispielsweise genügt es, sie nur auf der Serverseite zu aktivieren, um den Leerlauftimer des Datenflusses zurückzusetzen, und es ist nicht erforderlich, TCP-Keepalives auf beiden Seiten auszulösen.  Ähnliche Konzepte gibt es für die Anwendungsschicht, einschließlich Client/Server-Konfigurationen für Datenbanken.  Überprüfen Sie auf der Serverseite, welche Optionen es für anwendungsspezifische Keepalives gibt.
+Wenn TCP-Keepalives verwendet werden, genügt es, sie auf einer Seite der Verbindung zu aktivieren. So reicht es beispielsweise aus, sie auf der Serverseite nur zu aktivieren, um den Leerlauf-Timer des Datenflusses zurückzusetzen, und es ist nicht erforderlich, dass beide Seiten TCP-Keepalives initiieren.  Ähnliche Konzepte gibt es für die Anwendungsschicht, einschließlich Client/Server-Konfigurationen für Datenbanken.  Überprüfen Sie auf der Serverseite, welche Optionen es für anwendungsspezifische Keepalives gibt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wir möchten die Benutzerfreundlichkeit für unsere Kunden immer weiter verbessern. Wenn Probleme mit der ausgehenden Konnektivität auftreten, die in diesem Artikel nicht aufgeführt oder gelöst werden, senden Sie uns Ihr Feedback über GitHub unten auf dieser Seite. Wir werden so schnell wie möglich auf Ihr Feedback reagieren.

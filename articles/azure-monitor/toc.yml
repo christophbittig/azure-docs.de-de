@@ -79,6 +79,8 @@
               href: app/resource-manager-web-app.md
             - name: Azure-Funktionen
               href: app/resource-manager-function-app.md
+            - name: Verwalten mit der Azure CLI
+              href: insights/azure-cli-application-insights-component.md
         - name: Container Insights
           href: containers/resource-manager-container-insights.md
         - name: Regeln für die Datensammlung
@@ -1021,10 +1023,6 @@
           items:
             - name: Fortlaufendem Export
               href: app/export-telemetry.md
-            - name: Exportieren nach Stream Analytics
-              href: app/export-stream-analytics.md
-            - name: Exportieren nach SQL mit Stream Analytics
-              href: app/code-sample-export-sql-stream-analytics.md
             - name: Exportdatenmodell
               href: app/export-data-model.md
         - name: Visual Studio

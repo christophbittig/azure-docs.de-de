@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-azurepowershell
-ms.openlocfilehash: 0470813cf19305124956925a0730344c3183866a
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: a5e23ed381ad1e973e0ae6343fb3c0566aac6a7d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110666773"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673253"
 ---
 # <a name="enable-and-manage-azure-storage-analytics-logs-classic"></a>Aktivieren und Verwalten von Azure Storage Analytics-Protokollen (klassisch)
 
@@ -50,8 +50,7 @@ Sie können Azure Storage anweisen, Diagnoseprotokolle für Lese-, Schreib- und 
 3. Stellen Sie sicher, dass **Status** auf **Ein** festgelegt ist, und wählen Sie die **Dienste**, für die Sie die Protokollierung aktivieren möchten.
 
    > [!div class="mx-imgBorder"]
-   > ![Konfigurieren Sie die Protokollierung im Azure-Portal.](./media/manage-storage-analytics-logs/enable-diagnostics.png)    
-
+   > ![Konfigurieren Sie die Protokollierung im Azure-Portal.](./media/manage-storage-analytics-logs/enable-diagnostics.png)
 
 4. Stellen Sie sicher, dass das Kontrollkästchen **Daten löschen** aktiviert ist.  Legen Sie dann die Anzahl von Tagen fest, während denen die Protokolldaten aufbewahrt werden sollen, indem Sie den Schieberegler unter dem Kontrollkästchen verschieben oder den im Textfeld neben dem Schieberegler angezeigten Wert direkt ändern. Die Standardeinstellung für neue Speicherkonten beträgt sieben Tage. Wenn Sie keine Aufbewahrungsrichtlinie festlegen möchten, geben Sie null (0) ein. Wenn es keine Aufbewahrungsrichtlinie gibt, müssen Sie die Protokolldaten selbst löschen.
 
@@ -90,28 +89,28 @@ Sie können Azure Storage anweisen, Diagnoseprotokolle für Lese-, Schreib- und 
    $ctx = $storageAccount.Context
    ```
 
-   * Ersetzen Sie den Platzhalterwert `<resource-group-name>` durch den Namen Ihrer Ressourcengruppe.
+   - Ersetzen Sie den Platzhalterwert `<resource-group-name>` durch den Namen Ihrer Ressourcengruppe.
 
-   * Ersetzen Sie den Platzhalterwert `<storage-account-name>` durch den Namen Ihres Speicherkontos. 
+   - Ersetzen Sie den Platzhalterwert `<storage-account-name>` durch den Namen Ihres Speicherkontos.
 
-6. Verwenden Sie die Eigenschaft **Set-AzStorageServiceLoggingProperty** zum Ändern der aktuellen Protokolleinstellungen. Die Cmdlets, über die die Speicherprotokollierung gesteuert wird, verwenden einen **LoggingOperations**-Parameter. Dabei handelt es sich um eine Zeichenfolge mit einer durch Trennzeichen getrennten Liste von zu protokollierenden Anforderungstypen. Die drei möglichen Anforderungstypen sind **read**, **write** und **delete**. Um die Protokollierung zu deaktivieren, verwenden Sie den Wert **none** für den Parameter **LoggingOperations**.  
+6. Verwenden Sie die Eigenschaft **Set-AzStorageServiceLoggingProperty** zum Ändern der aktuellen Protokolleinstellungen. Die Cmdlets, über die die Speicherprotokollierung gesteuert wird, verwenden einen **LoggingOperations**-Parameter. Dabei handelt es sich um eine Zeichenfolge mit einer durch Trennzeichen getrennten Liste von zu protokollierenden Anforderungstypen. Die drei möglichen Anforderungstypen sind **read**, **write** und **delete**. Um die Protokollierung zu deaktivieren, verwenden Sie den Wert **none** für den Parameter **LoggingOperations**.
 
-   Mit dem folgenden Befehl wird die Protokollierung für read-, write- und delete-Anforderungen im Warteschlangendienst mit einem Aufbewahrungszeitraum von fünf Tagen in Ihrem Standardspeicherkonto aktiviert:  
+   Mit dem folgenden Befehl wird die Protokollierung für read-, write- und delete-Anforderungen im Warteschlangendienst mit einem Aufbewahrungszeitraum von fünf Tagen in Ihrem Standardspeicherkonto aktiviert:
 
    ```powershell
    Set-AzStorageServiceLoggingProperty -ServiceType Queue -LoggingOperations read,write,delete -RetentionDays 5 -Context $ctx
-   ```  
+   ```
 
    > [!WARNING]
    > Protokolle werden in Ihrem Konto als Daten gespeichert. Protokolldaten können sich im Laufe der Zeit in Ihrem Konto ansammeln und so die Speicherkosten erhöhen. Wenn Sie Protokolldaten nur für einen kurzen Zeitraum benötigen, können Sie Ihre Kosten durch eine Änderung der Datenaufbewahrungsrichtlinie senken. Veraltete Protokolldaten (Daten, die älter als Ihre Aufbewahrungsrichtlinie sind) werden vom System gelöscht. Wir empfehlen, eine Aufbewahrungsrichtlinie entsprechend dem Zeitraum festzulegen, in dem Sie die Protokolldaten für Ihr Konto aufbewahren möchten. Weitere Informationen finden Sie unter [Abrechnung für Speichermetriken](storage-analytics-metrics.md#billing-on-storage-metrics).
-   
-   Mit dem folgenden Befehl wird die Protokollierung für den Tabellenspeicherdienst in Ihrem Standardspeicherkonto deaktiviert:  
+
+   Mit dem folgenden Befehl wird die Protokollierung für den Tabellenspeicherdienst in Ihrem Standardspeicherkonto deaktiviert:
 
    ```powershell
    Set-AzStorageServiceLoggingProperty -ServiceType Table -LoggingOperations none -Context $ctx 
-   ```  
+   ```
 
-   Informationen zum Konfigurieren der Azure PowerShell-Cmdlets für Ihr Azure-Abonnement sowie zum Auswählen des zu verwendenden Standardspeicherkontos finden Sie unter: [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/).  
+   Informationen zum Konfigurieren der Azure PowerShell-Cmdlets für Ihr Azure-Abonnement sowie zum Auswählen des zu verwendenden Standardspeicherkontos finden Sie unter: [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/).
 
 ### <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
@@ -122,13 +121,13 @@ Sie können Azure Storage anweisen, Diagnoseprotokolle für Lese-, Schreib- und 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  
 var queueClient = storageAccount.CreateCloudQueueClient();  
-var serviceProperties = queueClient.GetServiceProperties();  
+var serviceProperties = queueClient.GetServiceProperties();
 
 serviceProperties.Logging.LoggingOperations = LoggingOperations.All;  
-serviceProperties.Logging.RetentionDays = 2;  
+serviceProperties.Logging.RetentionDays = 2;
 
 queueClient.SetServiceProperties(serviceProperties);  
-``` 
+```
 
 ---
 
@@ -154,7 +153,7 @@ Protokolldaten können sich im Laufe der Zeit in Ihrem Konto ansammeln und so di
    > ![Ändern des Aufbewahrungszeitraums im Azure-Portal](./media/manage-storage-analytics-logs/modify-retention-period.png)
 
    Die Standardanzahl von Tagen für neue Speicherkonten beträgt sieben Tage. Wenn Sie keine Aufbewahrungsrichtlinie festlegen möchten, geben Sie null (0) ein. Ist keine Aufbewahrungsrichtlinie festgelegt, müssen Sie die Überwachungsdaten selbst löschen.
-   
+
 4. Klicken Sie auf **Speichern**.
 
    Die Diagnoseprotokolle werden in einem Blobcontainer namens *$logs* in Ihrem Speicherkonto gespeichert. Sie können die Protokolldaten über einen Speicher-Explorer wie [Microsoft Azure Storage-Explorer](https://storageexplorer.com) oder programmgesteuert mit der Speicherclientbibliothek oder PowerShell anzeigen.
@@ -187,28 +186,28 @@ Protokolldaten können sich im Laufe der Zeit in Ihrem Konto ansammeln und so di
    $ctx = $storageAccount.Context
    ```
 
-   * Ersetzen Sie den Platzhalterwert `<resource-group-name>` durch den Namen Ihrer Ressourcengruppe.
+   - Ersetzen Sie den Platzhalterwert `<resource-group-name>` durch den Namen Ihrer Ressourcengruppe.
 
-   * Ersetzen Sie den Platzhalterwert `<storage-account-name>` durch den Namen Ihres Speicherkontos. 
+   - Ersetzen Sie den Platzhalterwert `<storage-account-name>` durch den Namen Ihres Speicherkontos.
 
 6. Verwenden Sie die Eigenschaft [Get-AzStorageServiceLoggingProperty](/powershell/module/az.storage/get-azstorageserviceloggingproperty) zum Anzeigen der aktuellen Protokollaufbewahrungsrichtlinie. Im folgenden Beispiel wird der Aufbewahrungszeitraum für Blob- und Warteschlangenspeicherdienste in der Konsole ausgegeben.
 
    ```powershell
    Get-AzStorageServiceLoggingProperty -ServiceType Blob, Queue -Context $ctx
-   ```  
+   ```
 
    In der Konsolenausgabe wird der Aufbewahrungszeitraum unter der Spaltenüberschrift `RetentionDays` angezeigt.
 
    > [!div class="mx-imgBorder"]
    > ![Aufbewahrungsrichtlinie in der PowerShell-Ausgabe](./media/manage-storage-analytics-logs/retention-period-powershell.png)
 
-7. Verwenden Sie die Eigenschaft [Set-AzStorageServiceLoggingProperty](/powershell/module/az.storage/set-azstorageserviceloggingproperty) zum Ändern des Aufbewahrungszeitraums. Im folgenden Beispiel wird der Aufbewahrungszeitraum in „4 Tage“ geändert.  
+7. Verwenden Sie die Eigenschaft [Set-AzStorageServiceLoggingProperty](/powershell/module/az.storage/set-azstorageserviceloggingproperty) zum Ändern des Aufbewahrungszeitraums. Im folgenden Beispiel wird der Aufbewahrungszeitraum in „4 Tage“ geändert.
 
    ```powershell
    Set-AzStorageServiceLoggingProperty -ServiceType Blob, Queue -RetentionDays 4 -Context $ctx
-   ```  
+   ```
 
-   Informationen zum Konfigurieren der Azure PowerShell-Cmdlets für Ihr Azure-Abonnement sowie zum Auswählen des zu verwendenden Standardspeicherkontos finden Sie unter: [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/).  
+   Informationen zum Konfigurieren der Azure PowerShell-Cmdlets für Ihr Azure-Abonnement sowie zum Auswählen des zu verwendenden Standardspeicherkontos finden Sie unter: [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/).
 
 ### <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
@@ -216,7 +215,7 @@ Im folgenden Beispiel wird der Aufbewahrungszeitraum für Blob- und Warteschlang
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/Monitoring.cs" id="snippet_ViewRetentionPeriod":::
 
-Im folgenden Beispiel wird der Aufbewahrungszeitraum in „4 Tage“ geändert. 
+Im folgenden Beispiel wird der Aufbewahrungszeitraum in „4 Tage“ geändert.
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/Monitoring.cs" id="snippet_ModifyRetentionPeriod":::
 
@@ -240,7 +239,7 @@ Console.WriteLine("Retention period for logs from the queue service is: " +
    queueserviceProperties.Logging.RetentionDays.ToString());
 ```
 
-Im folgenden Beispiel wird der Aufbewahrungszeitraum für Protokolle für den Blob- und Warteschlangenspeicherdienst auf 4 Tage geändert. 
+Im folgenden Beispiel wird der Aufbewahrungszeitraum für Protokolle für den Blob- und Warteschlangenspeicherdienst auf 4 Tage geändert.
 
 ```csharp
 
@@ -249,7 +248,7 @@ queueserviceProperties.Logging.RetentionDays = 4;
 
 blobClient.SetServiceProperties(blobserviceProperties);
 queueClient.SetServiceProperties(queueserviceProperties);  
-``` 
+```
 
 ---
 
@@ -264,18 +263,18 @@ Sie können überprüfen, ob Protokolle gelöscht werden, indem Sie den Inhalt d
 
 ## <a name="view-log-data"></a>Anzeigen von Protokolldaten
 
- Zum Anzeigen und Analysieren der Protokolldaten sollten Sie die Blobs, die die gewünschten Protokolldaten enthalten, auf einen lokalen Computer herunterladen. Mit vielen Tools zum Durchsuchen des Speichers können Sie Blobs von Ihrem Speicherkonto herunterladen. Außerdem können Sie das vom Azure Storage-Team bereitgestellte Befehlszeilentool Azure Copy ([AzCopy](storage-use-azcopy-v10.md)) zum Herunterladen der Protokolldaten verwenden.  
- 
->[!NOTE]
-> Der Container `$logs` ist nicht in Event Grid integriert. Sie erhalten daher keine Benachrichtigungen, wenn Protokolldateien geschrieben werden. 
+ Zum Anzeigen und Analysieren der Protokolldaten sollten Sie die Blobs, die die gewünschten Protokolldaten enthalten, auf einen lokalen Computer herunterladen. Mit vielen Tools zum Durchsuchen des Speichers können Sie Blobs von Ihrem Speicherkonto herunterladen. Außerdem können Sie das vom Azure Storage-Team bereitgestellte Befehlszeilentool Azure Copy ([AzCopy](storage-use-azcopy-v10.md)) zum Herunterladen der Protokolldaten verwenden.
 
- So stellen Sie sicher, dass Sie die gewünschten Protokolldaten herunterladen und dieselben Protokolldaten nicht mehrmals herunterladen  
+> [!NOTE]
+> Der Container `$logs` ist nicht in Event Grid integriert. Sie erhalten daher keine Benachrichtigungen, wenn Protokolldateien geschrieben werden.
 
--   Verwenden Sie die Benennungskonvention für Datum und Uhrzeit für Blobs, die Protokolldaten enthalten, um nachzuverfolgen, welche Blobs bereits zur Analyse heruntergeladen wurden, und zu vermeiden, dass dieselben Daten mehrmals erneut heruntergeladen werden.  
+ So stellen Sie sicher, dass Sie die gewünschten Protokolldaten herunterladen und dieselben Protokolldaten nicht mehrmals herunterladen
 
--   Verwenden Sie die Metadaten für die Blobs mit Protokolldaten, um den jeweiligen Zeitraum zu identifizieren, für den das Blob Protokolldaten enthält, und so zu das genaue herunterzuladende Blob zu ermitteln.  
+-   Verwenden Sie die Benennungskonvention für Datum und Uhrzeit für Blobs, die Protokolldaten enthalten, um nachzuverfolgen, welche Blobs bereits zur Analyse heruntergeladen wurden, und zu vermeiden, dass dieselben Daten mehrmals erneut heruntergeladen werden.
 
-Informationen zu den ersten Schritten mit AzCopy finden Sie unter [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md). 
+-   Verwenden Sie die Metadaten für die Blobs mit Protokolldaten, um den jeweiligen Zeitraum zu identifizieren, für den das Blob Protokolldaten enthält, und so zu das genaue herunterzuladende Blob zu ermitteln.
+
+Informationen zu den ersten Schritten mit AzCopy finden Sie unter [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md).
 
 Im folgenden Beispiel wird veranschaulicht, wie Sie die Protokolldaten für den Warteschlangendienst für die Stunden ab 9 Uhr, 10 Uhr und 11 Uhr am 20. Mai 2014 herunterladen können.
 
@@ -289,7 +288,7 @@ Nach dem Herunterladen der Protokolldaten können Sie die Protokolleinträge in 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu Storage Analytics finden Sie unter [Storage Analytics](storage-analytics.md) für Storage Analytics.
-* Weitere Informationen zum Verwenden einer .NET-Programmiersprache zum Konfigurieren der Speicherprotokollierung finden Sie in der [Referenz zur Speicherclientbibliothek](/previous-versions/azure/dn261237(v=azure.100)). 
-* Allgemeine Informationen zum Konfigurieren der Speicherprotokollierung mithilfe der REST-API finden Sie unter [Aktivieren und Konfigurieren von Storage Analytics](/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics).
-* Informieren Sie sich über das Format von Storage Analytics-Protokollen. Lesen Sie dazu [Storage Analytics-Protokollformat](/rest/api/storageservices/storage-analytics-log-format).
+- Weitere Informationen zu Storage Analytics finden Sie unter [Storage Analytics](storage-analytics.md) für Storage Analytics.
+- Weitere Informationen zum Verwenden einer .NET-Programmiersprache zum Konfigurieren der Speicherprotokollierung finden Sie in der [Referenz zur Speicherclientbibliothek](/previous-versions/azure/dn261237(v=azure.100)).
+- Allgemeine Informationen zum Konfigurieren der Speicherprotokollierung mithilfe der REST-API finden Sie unter [Aktivieren und Konfigurieren von Storage Analytics](/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics).
+- Informieren Sie sich über das Format von Storage Analytics-Protokollen. Lesen Sie dazu [Storage Analytics-Protokollformat](/rest/api/storageservices/storage-analytics-log-format).

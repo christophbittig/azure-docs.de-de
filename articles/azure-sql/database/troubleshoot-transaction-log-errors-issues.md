@@ -11,12 +11,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 07/23/2021
-ms.openlocfilehash: 0b9e47d23968c29a0c69a2da198bcf8d183f1bb0
-ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
+ms.openlocfilehash: 2bddb630cd2dad83992cfd740fb44b127a770c51
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114675110"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672797"
 ---
 # <a name="troubleshooting-transaction-log-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>Problembehandlung von Transaktionsprotokollfehlern mit Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -130,7 +130,7 @@ Weitere Informationen zum Verwalten des Dateispeicherplatzes von Datenbanken und
 
 ### <a name="error-40552-the-session-has-been-terminated-because-of-excessive-transaction-log-space-usage"></a>Fehler 40552: Die Sitzung wurde aufgrund übermäßiger Belegung des Speicherplatzes für das Transaktionsprotokoll beendet
 
-``40552: The session has been terminated because of excessive transaction log space usage. Try modifying fewer rows in a single transaction.``
+`40552: The session has been terminated because of excessive transaction log space usage. Try modifying fewer rows in a single transaction.`
 
 Probieren Sie die folgenden Methoden aus, um dieses Problem zu beheben:
 
@@ -154,4 +154,3 @@ Informationen zur Größe des Transaktionsprotokolls finden Sie hier:
 - Informationen zu DTU-Ressourcenlimits für einen Singleton finden Sie unter [Ressourcenlimits für Singletons, die das DTU-Kaufmodell verwenden](resource-limits-dtu-single-databases.md).
 - Informationen zu DTU-Ressourcenlimits für Pools für elastische Datenbanken finden Sie unter [Ressourcenlimits für Pools für elastische Datenbanken, die das DTU-Kaufmodell verwenden](resource-limits-dtu-elastic-pools.md).
 - Informationen zu Ressourcenlimits für SQL Managed Instance finden Sie unter [resource limits for SQL Managed Instance](../managed-instance/resource-limits.md) (Ressourcenlimits für SQL Managed Instance).
-

@@ -11,12 +11,12 @@ ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: d8ddd49202faac6a9fc5ba34ac5b5e8e92d5b704
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f8d1d3cf8553c768bb2bee015be2f5995214fe62
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355515"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123478714"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reagieren auf IoT Hub-Ereignisse mithilfe von Event Grid zum Auslösen von Aktionen
 
@@ -34,7 +34,7 @@ Die Event Grid-Integration ist für IoT-Hubs verfügbar, die sich in den Regione
 
 IoT Hub veröffentlicht die folgenden Ereignistypen:
 
-| Ereignistyp | BESCHREIBUNG |
+| Ereignistyp | Beschreibung |
 | ---------- | ----------- |
 | Microsoft.Devices.DeviceCreated | Wird ausgelöst, wenn ein Gerät bei einem IoT Hub registriert wird. |
 | Microsoft.Devices.DeviceDeleted | Wird ausgelöst, wenn ein Gerät aus einem IoT Hub gelöscht wird. |
@@ -197,7 +197,7 @@ Zum Empfang von Ereignissen beim Geräteverbindungsstatus muss ein Gerät entwed
 
 Die Gerät-zu-Cloud-Verbindung bleibt geöffnet, solange das Gerät Telemetriedaten sendet.
 
-Wenn die Geräteverbindung flackert, d. h., wenn das Gerät eine Verbindung häufig herstellt und trennt, sendet IoT Hub nicht jeden einzelnen Verbindungsstatus, sondern veröffentlicht den aktuellen Verbindungsstatus, der bei einer regelmäßigen Momentaufnahme von 60 Sekunden erfasst wurde, bis das Flackern beendet wird. Wenn dasselbe Verbindungszustandsereignis mit unterschiedlichen Folgenummern oder unterschiedliche Verbindungszustandsereignissen empfangen werden, bedeutet dies, dass sich der Geräteverbindungsstatus geändert hat.
+Wenn das Gerät häufig eine Verbindung herstellt und trennt, sendet IoT Hub nicht jeden einzelnen Verbindungsstatus, sondern veröffentlicht den aktuellen Verbindungsstatus, der bei einer regelmäßigen Momentaufnahme von 60 Sekunden erfasst wurde. Wenn dasselbe Verbindungszustandsereignis mit unterschiedlichen Folgenummern oder unterschiedliche Verbindungszustandsereignissen empfangen werden, bedeutet dies, dass sich der Geräteverbindungsstatus geändert hat.
 
 ## <a name="tips-for-consuming-events"></a>Tipps zum Nutzen von Ereignissen
 

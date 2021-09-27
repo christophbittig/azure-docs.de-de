@@ -9,12 +9,12 @@ ms.date: 06/21/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 61f57e0ee0f1df5b66526a190e583c72ecde7151
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 54d406303019ebfa967133c26bd5487c848575b2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122965382"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664882"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol"></a>Einbinden von Azure Blob Storage mithilfe des NFS 3.0-Protokolls (Network File System)
 
@@ -41,17 +41,17 @@ Das NFS 3.0-Protokoll wird für Standardspeicherkonten vom Typ „Universell V
 
 Wenn Sie das Konto konfigurieren, wählen Sie die folgenden Werte aus:
 
-|Einstellung | Premium-Leistung | Standardleistung  
+|Einstellung | Premium-Leistung | Standardleistung
 |----|---|---|
-|Ort|Alle verfügbaren Regionen |Alle verfügbaren Regionen    
+|Ort|Alle verfügbaren Regionen |Alle verfügbaren Regionen
 |Leistung|Premium| Standard
 |Kontoart|BlockBlobStorage| Allgemein v2
 |Replikation|Lokal redundanter Speicher (LRS), zonenredundanter Speicher (ZRS)| Lokal redundanter Speicher (LRS), zonenredundanter Speicher (ZRS)
 |Konnektivitätsmethode|Öffentlicher Endpunkt (ausgewählte Netzwerke) oder privater Endpunkt |Öffentlicher Endpunkt (ausgewählte Netzwerke) oder privater Endpunkt
 |Hierarchischer Namespace|Aktiviert|Aktiviert
-|NFS V3|Aktiviert |Aktiviert 
+|NFS V3|Aktiviert |Aktiviert
 
-Sie können die Standardwerte für alle anderen Einstellungen übernehmen. 
+Sie können die Standardwerte für alle anderen Einstellungen übernehmen.
 
 ## <a name="step-4-create-a-container"></a>Schritt 4: Erstellen eines Containers
 
@@ -89,7 +89,7 @@ Erstellen Sie ein Verzeichnis auf Ihrem Linux-System, und binden Sie dann einen 
    mount -o sec=sys,vers=3,nolock,proto=tcp <storage-account-name>.blob.core.windows.net:/<storage-account-name>/<container-name>  /mnt/test
    ```
 
-   - Ersetzen Sie den Platzhalter `<storage-account-name>`, der in diesem Befehl vorkommt, durch den Namen Ihres Speicherkontos.  
+   - Ersetzen Sie den Platzhalter `<storage-account-name>`, der in diesem Befehl vorkommt, durch den Namen Ihres Speicherkontos.
 
    - Ersetzen Sie den Platzhalter `<container-name>` durch den Namen Ihres Containers.
 
@@ -102,8 +102,8 @@ Erstellen Sie ein Verzeichnis auf Ihrem Linux-System, und binden Sie dann einen 
 |`Access denied by server while mounting`|Stellen Sie sicher, dass der Client in einem unterstützten Subnetz ausgeführt wird. Siehe [Unterstützte Netzwerkadressen](network-file-system-protocol-support.md#supported-network-connections).|
 |`No such file or directory`| Sie müssen den Befehl zum Einbinden und die zugehörigen Parameter direkt im Terminal eingeben. Wenn Sie diesen Befehl oder einen Teil davon aus einer anderen Anwendung kopieren und in das Terminal einfügen, kann dies dazu führen, dass ausgeblendete Zeichen in den eingefügten Informationen diesen Fehler verursachen.|
 |`Permision denied`| Der Standardmodus eines neu erstellten NFS v3-Containers ist 0750. Nicht-Root-Benutzer haben keinen Zugriff auf das Volume. Wenn ein Zugriff von Nicht-Root-Benutzern erforderlich ist, muss der Root-Benutzer den Modus in 0755 ändern. Beispiel für einen Befehl: `sudo chmod 0755 /mnt/<newcontainer>`|
-|`EINVAL ("Invalid argument"`) |Dieser Fehler kann auftreten, wenn ein Client versucht, folgende Aktionen durchzuführen:<li>Schreiben in ein Blob, das von einem Blobendpunkt erstellt wurde.<li>Löschen eines Blobs, das über eine Momentaufnahme verfügt oder sich in einem Container befindet, der eine aktive WORM-Richtlinie (Write Once, Read Many) aufweist.|
-|`EROFS ("Read-only file system"`) |Dieser Fehler kann auftreten, wenn ein Client versucht, folgende Aktionen durchzuführen:<li>Schreiben in ein Blob oder Löschen ein Blobs, das über eine aktive Lease verfügt.<li>Schreiben in ein Blob oder Löschen eines Blobs in einem Container, der eine aktive WORM-Richtlinie (Write Once, Read Many) aufweist. |
+|`EINVAL ("Invalid argument"`) |Dieser Fehler kann auftreten, wenn ein Client versucht, folgende Aktionen durchzuführen:<li>Schreiben in ein Blob, das von einem Blobendpunkt erstellt wurde.<li>Löschen eines Blobs, das über eine Momentaufnahme verfügt oder sich in einem Container befindet, der eine aktive WORM-Richtlinie (Write Once, Read Many) aufweist.|
+|`EROFS ("Read-only file system"`) |Dieser Fehler kann auftreten, wenn ein Client versucht, folgende Aktionen durchzuführen:<li>Schreiben in ein Blob oder Löschen ein Blobs, das über eine aktive Lease verfügt.<li>Schreiben in ein Blob oder Löschen eines Blobs in einem Container, der eine aktive WORM-Richtlinie (Write Once, Read Many) aufweist. |
 |`NFS3ERR_IO/EIO ("Input/output error"`) |Dieser Fehler kann auftreten, wenn ein Client versucht, Attribute für Blobs zu lesen, zu schreiben oder zu festlegen, die in der Archivzugriffsebene gespeichert sind. |
 |`OperationNotSupportedOnSymLink` Fehler| Dieser Fehler kann bei einem Schreibvorgang über eine Blob- oder Azure Data Lake Storage Gen2-API zurückgegeben werden. Die Verwendung dieser APIs zum Schreiben oder Löschen symbolischer Verknüpfungen, die mit NFS 3.0 erstellt werden, ist nicht zulässig. Sie müssen den NFS v3-Endpunkt verwenden, um mit symbolischen Verknüpfungen zu arbeiten. |
 |`mount: /mnt/test: bad option;`| Installieren Sie das nfs-Hilfsprogramm mit dem Befehl **sudo apt install nfs-common**.|

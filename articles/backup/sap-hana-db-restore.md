@@ -2,13 +2,13 @@
 title: Wiederherstellen von SAP HANA-Datenbanken auf virtuellen Azure-Computern
 description: In diesem Artikel erfahren Sie, wie Sie SAP HANA-Datenbanken wiederherstellen, die in Azure Virtual Machines ausgeführt werden. Zum Wiederherstellen von Datenbanken in einer sekundären Region können Sie auch die regionsübergreifende Wiederherstellung verwenden.
 ms.topic: conceptual
-ms.date: 08/06/2021
-ms.openlocfilehash: c6ad108cc0377411c144fade97b3fec2c5a8b633
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/01/2021
+ms.openlocfilehash: 7bf9734cafa003132fdef97026c76c8bdf8b329d
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346002"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426488"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>Wiederherstellen von SAP HANA-Datenbanken auf virtuellen Azure-Computern
 
@@ -127,6 +127,9 @@ Zum Wiederherstellen benötigen Sie folgende Berechtigungen:
 1. Wählen Sie unter **Wiederherstellungspunkt auswählen** die Option **Protokolle (Zeitpunkt)** aus, um [einen bestimmten Zeitpunkt wiederherzustellen](#restore-to-a-specific-point-in-time). Oder wählen Sie **Vollständig und differenziell** aus, um einen [bestimmten Wiederherstellungspunkt](#restore-to-a-specific-recovery-point) wiederherzustellen.
 
 ### <a name="restore-as-files"></a>Wiederherstellen als Dateien
+
+>[!Note]
+>Wiederherstellen als Dateien funktioniert nicht bei CIFS-Freigaben, aber bei NFS.
 
 Um die Sicherungsdaten als Dateien und nicht als Datenbank wiederherzustellen, wählen Sie **Als Dateien wiederherstellen** aus. Nachdem die Dateien in einem angegebenen Pfad gesichert wurden, können Sie diese Dateien auf jeden SAP HANA-Computer verschieben, auf dem sie als Datenbank wiederhergestellt werden sollen. Da Sie diese Dateien auf einen beliebigen Computer verschieben können, können Sie nun die Daten über Abonnements und Regionen hinweg wiederherstellen.
 
@@ -282,7 +285,7 @@ Die Benutzeroberfläche zur Wiederherstellung in der sekundären Region ähnelt 
 
 >[!NOTE]
 >* Nachdem die Wiederherstellung ausgelöst wurde und sich in der Datenübertragungsphase befindet, kann der Wiederherstellungsauftrag nicht abgebrochen werden.
->* Für die übergreifende Durchführung von Wiederherstellungsvorgängen sind folgende Rolle und Zugriffsebene erforderliche: die Rolle _Sicherungsoperator_ im Abonnement und _Mitwirkender(Schreib)_ -Zugriff auf den virtuellen Quell- und Zielcomputern. Zum Anzeigen von Sicherungsaufträgen ist „Sicherungsleseberechtigter“ die minimale Berechtigung, die im Abonnement erforderlich ist.
+>* Für die regionsübergreifende Durchführung von Wiederherstellungsvorgängen sind die folgende Rolle und Zugriffsebene erforderlich: die Rolle _Sicherungsoperator_ im Abonnement und die Zugriffsberechtigung _Mitwirkender (Schreiben)_ für die virtuellen Quell- und Zielcomputer. Zum Anzeigen von Sicherungsaufträgen ist „Sicherungsleseberechtigter“ die minimale Berechtigung, die im Abonnement erforderlich ist.
 
 ### <a name="monitoring-secondary-region-restore-jobs"></a>Überwachen von Wiederherstellungsaufträgen für die sekundäre Regionen
 

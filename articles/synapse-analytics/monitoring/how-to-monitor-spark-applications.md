@@ -9,16 +9,16 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 5f9733866e85d79bdb85b8a24d1878e1169c2479
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9666b8c9424b03c34b1ac332ef7ceb2f617c96a3
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97586039"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123542294"
 ---
-# <a name="how-to-use-synapse-studio-to-monitor-your-apache-spark-applications"></a>Verwenden von Synapse Studio zur Überwachung Ihrer Apache Spark-Anwendungen
+# <a name="monitor-your-apache-spark-applications-in-synapse-studio"></a>Überwachen Sie Ihre Apache Spark-Anwendungen in Synapse Studio
 
-Mit Azure Synapse Analytics können Sie mithilfe von Spark Notebooks, Aufträge und andere Arten von Anwendungen in ihren Spark-Pools in Ihrem Arbeitsbereich ausführen.
+Mit Azure Synapse Analytics können Sie mithilfe von Apache Spark Notebooks, Aufträge und andere Arten von Anwendungen in ihren Apache Spark-Pools in Ihrem Arbeitsbereich ausführen.
 
 In diesem Artikel wird erläutert, wie Sie Ihre Apache Spark-Anwendungen überwachen, was es Ihnen gestattet, den aktuellen Status, die aktuellen Probleme und den Fortschritt im Auge zu behalten.
 

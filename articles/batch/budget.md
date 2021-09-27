@@ -2,13 +2,13 @@
 title: Abrufen der Kostenanalyse und Festlegen von Budgets für Azure Batch
 description: Erfahren Sie, wie Sie eine Kostenanalyse erhalten, ein Budget festlegen und die Kosten für die zugrunde liegenden Computeressourcen und Softwarelizenzen reduzieren, die für die Ausführung Ihrer Batch-Workloads verwendet werden.
 ms.topic: how-to
-ms.date: 01/29/2021
-ms.openlocfilehash: d1fc2d15a7037e56a8056efa67d2017badb77ffd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/03/2021
+ms.openlocfilehash: a590d8687c51b1693494c11d95de720f7f2c7eb0
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99091326"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538847"
 ---
 # <a name="get-cost-analysis-and-set-budgets-for-azure-batch"></a>Abrufen der Kostenanalyse und Festlegen von Budgets für Azure Batch
 
@@ -78,11 +78,9 @@ Abhängig von Ihrem Szenario möchten Sie Ihre Kosten eventuell so weit wie mög
 
 [VMs mit niedriger Priorität](batch-low-pri-vms.md) führen zu einer Reduzierung der Kosten von Batch-Workloads, indem in Azure überschüssige Rechenkapazität genutzt wird. Wenn Sie in Ihren Pools VMs mit niedriger Priorität angeben, nutzt Batch diese überschüssige Kapazität zum Ausführen Ihrer Workload. Wenn Sie VMs mit niedriger Priorität anstelle von dedizierten VMs verwenden, kann dies zu erheblichen Kosteneinsparungen führen.
 
-### <a name="select-a-standard-virtual-machine-os-disk-type"></a>Auswählen eines Standarddatenträgertyps für das Betriebssystem des virtuellen Computers
+### <a name="use-ephemeral-os-disks"></a>Verwendung ephemerer OS-Festplatten
 
-Azure bietet mehrere [Typen von Betriebssystemdatenträgern für VMs](../virtual-machines/disks-types.md). Die meisten VM-Serien verfügen über Größen, die sowohl Premium- als auch Standard-Speicher unterstützen. Wenn für einen Pool die VM-Größe „S“ ausgewählt wird, werden von Batch SSD Premium-Betriebssystemdatenträger konfiguriert. Bei Auswahl einer anderen VM-Größe als „S“ wird der kostengünstigere Datenträgertyp „HDD Standard“ verwendet. Beispielsweise werden SSD Premium-Betriebssystemdatenträger für `Standard_D2s_v3` und HDD Standard-Betriebssystemdatenträger für `Standard_D2_v3` verwendet.
-
-SSD Premium-Betriebssystemdatenträger sind teurer, bieten aber eine höhere Leistung. VMs mit Premium-Datenträgern werden etwas schneller gestartet als VMs mit HDD Standard-Betriebssystemdatenträgern. Bei Batch wird der Betriebssystemdatenträger häufig nicht viel genutzt, da sich die Anwendungen und Taskdateien auf dem temporären SSD-Datenträger der VMs befinden. Aus diesem Grund können Sie häufig eine andere VM-Größe als „S“ auswählen, um die höheren Kosten für SSD Premium zu vermeiden, die bei der Bereitstellung einer „S“-VM-Größe anfallen.
+Konfigurationspools für virtuelle Maschinen können [ephemerale OS-Festplatten](create-pool-ephemeral-os-disk.md) verwenden, bei denen die OS-Festplatte auf dem VM-Cache oder einer temporären SSD erstellt wird, um zusätzliche Kosten im Zusammenhang mit verwalteten Datenträgern zu vermeiden.
 
 ### <a name="purchase-reservations-for-virtual-machine-instances"></a>Kaufen von Reservierungen für VM-Instanzen
 

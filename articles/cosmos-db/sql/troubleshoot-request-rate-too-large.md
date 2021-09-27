@@ -4,16 +4,16 @@ description: Erfahren Sie mehr über das Diagnostizieren und Beheben von Problem
 author: j82w
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.date: 07/13/2020
+ms.date: 08/25/2021
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: b6cc09868b65cc6ea71904973904f35a03e8eb21
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 44ecb59508b93347ba57fb40a88c274adfedd320
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123115243"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434050"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-rate-too-large-429-exceptions"></a>Diagnostizieren und Behandeln von Problemen im Zusammenhang mit der Azure Cosmos DB-Ausnahme „Zu hohe Anforderungsrate“ (429)
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -56,10 +56,10 @@ Im Allgemeinen gilt für eine Workload in der Produktion: Wenn 1-5 % der Anford
 Es kommt zu einer heißen Partition, wenn mindestens ein logischer Partitionsschlüssel aufgrund eines höheren Anforderungsvolumens einen unverhältnismäßig großen Teil der gesamten RU/s beansprucht. Dies kann durch einen Partitionsschlüsselentwurf verursacht werden, aufgrund dessen Anforderungen nicht gleichmäßig verteilt werden. Dies führt dazu, dass viele Anforderungen an eine kleine Teilmenge logischer (d. h. physischer) Partitionen weitergeleitet werden, die „heiß“ werden. Da sich alle Daten für eine logische Partition in einer physischen Partition befinden und die gesamten RU/s gleichmäßig auf die physischen Partitionen verteilt sind, kann eine heiße Partition zum Fehlercode 429 und einer ineffizienten Durchsatznutzung führen. 
 
 Es folgen einige Beispiele für Partitionierungsstrategien, die zu heißen Partitionen führen:
-- Sie verfügen über einen Container, der IoT-Gerätedaten für eine Workload mit hohem Schreibaufwand speichert, die nach Datum partitioniert ist. Alle Daten für ein einzelnes Datum befinden sich in derselben logischen und physischen Partition. Da alle täglich geschriebenen Daten das gleiche Datum haben, würde dies jeden Tag zu einer heißen Partition führen. 
-    - Stattdessen erzielt für dieses Szenario ein Partitionsschlüssel wie ID (entweder GUID oder Geräte-ID) oder ein [synthetischer Partitionsschlüssel](./synthetic-partition-keys.md), der ID und Datum kombiniert, eine höhere Kardinalität der Werte und eine bessere Verteilung des Anforderungvolumens.
-- Sie haben ein Szenario mit mehreren Mandanten und einem nach Mandanten-ID partitionierten Container. Wenn ein Mandant deutlich aktiver als die anderen ist, führt dies zu einer heißen Partition. Wenn z. B. der größte Mandant 100.000 Benutzer hat, die meisten Mandanten aber weniger als 10 Benutzer haben, tritt bei Partitionierung nach Mandanten-ID eine heiße Partition auf. 
-    - Erwägen Sie für dieses Szenario einen dedizierten Container für den größten Mandanten, der nach einer detaillierteren Eigenschaft wie Benutzer-ID partitioniert ist. 
+- Sie verfügen über einen Container, der IoT-Gerätedaten für eine Workload mit hohem Schreibaufwand speichert, die nach `date` partitioniert ist. Alle Daten für ein einzelnes Datum befinden sich in derselben logischen und physischen Partition. Da alle täglich geschriebenen Daten das gleiche Datum haben, würde dies jeden Tag zu einer heißen Partition führen. 
+    - Stattdessen erzielt für dieses Szenario ein Partitionsschlüssel wie `id` (entweder GUID oder Geräte-ID) oder ein [synthetischer Partitionsschlüssel](./synthetic-partition-keys.md), der `id` und `date` kombiniert, eine höhere Kardinalität der Werte und eine bessere Verteilung des Anforderungvolumens.
+- Sie haben ein Szenario mit mehreren Mandanten und einem nach `tenantId` partitionierten Container. Wenn ein Mandant deutlich aktiver als die anderen ist, führt dies zu einer heißen Partition. Wenn z. B. der größte Mandant 100.000 Benutzer hat, die meisten Mandanten aber weniger als 10 Benutzer haben, tritt bei Partitionierung nach `tenantID` eine heiße Partition auf. 
+    - Erwägen Sie für dieses Szenario einen dedizierten Container für den größten Mandanten, der nach einer detaillierteren Eigenschaft wie `UserId` partitioniert ist. 
     
 #### <a name="how-to-identify-the-hot-partition"></a>Erkennen der heißen Partition
 
@@ -95,7 +95,7 @@ Diese Beispielausgabe zeigt, dass in einer bestimmten Minute der logische Partit
 Lesen Sie die Anleitung [zur Auswahl eines geeigneten Partitionsschlüssels](../partitioning-overview.md#choose-partitionkey).
 
 Wenn es einen hohen Prozentsatz an Anforderungen mit Ratenbegrenzung und keine heiße Partition gibt:
-- Sie können mithilfe von Client-SDKs, Azure-Portal, PowerShell, CLI oder ARM-Vorlage die [RU/s für die Datenbank oder den Container erhöhen](../set-throughput.md).  
+- Sie können mithilfe von Client-SDKs, Azure-Portal, PowerShell, CLI oder ARM-Vorlage die [RU/s für die Datenbank oder den Container erhöhen](../set-throughput.md). Halten Sie sich an die [bewährten Methoden für das Skalieren des bereitgestellten Durchsatzes (RU/s)](../scaling-provisioned-throughput-best-practices.md), um den richtigen Durchsatz zu ermitteln, der festgelegt werden sollte.
 
 Wenn es einen hohen Prozentsatz an Anforderungen mit Ratenbegrenzung und eine zugrunde liegende heiße Partition gibt:
 -  Langfristig sollten Sie aus Kosten- und Leistungsgründen das **Ändern des Partitionsschlüssels** erwägen. Weil der Partitionsschlüssel nicht direkt aktualisiert werden kann, müssen die Daten in einen neuen Container mit einem anderen Partitionsschlüssel migriert werden. Zu diesem Zweck unterstützt Azure Cosmos DB ein [Tool für die Migration von Livedaten](https://devblogs.microsoft.com/cosmosdb/how-to-change-your-partition-key/).

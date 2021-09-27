@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: mathoma, wiassaf, danil
-ms.date: 07/20/2021
-ms.openlocfilehash: 4b7b17ab75f2614a99d791118dc908cd1f7c3b97
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.date: 08/28/2021
+ms.openlocfilehash: 2a6213a0359daf58d0ef34986d1bf3edbd4e1c9a
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349992"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123424412"
 ---
 # <a name="automated-backups---azure-sql-database--azure-sql-managed-instance"></a>Automatisierte Sicherungen – Azure SQL-Datenbank und Azure SQL Managed Instance
 
@@ -97,7 +97,7 @@ Informationen zum Durchführen einer Wiederherstellung finden Sie unter [Wiederh
 
 | Vorgang | Azure-Portal | Azure PowerShell |
 |---|---|---|
-| **Ändern der Sicherungsaufbewahrung** | [SQL-Datenbank](automated-backups-overview.md?tabs=single-database#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [SQL Managed Instance](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [SQL-Datenbank](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[SQL Managed Instance](/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
+| **Ändern der Sicherungsaufbewahrung** | [SQL-Datenbank](#change-the-short-term-retention-policy-using-the-azure-portal) <br/> [SQL Managed Instance](#change-the-short-term-retention-policy-using-the-azure-portal) | [SQL-Datenbank](#change-the-short-term-retention-policy-using-powershell) <br/>[SQL Managed Instance](#change-the-short-term-retention-policy-using-powershell) |
 | **Ändern der Langzeitaufbewahrung von Sicherungen** | [SQL-Datenbank](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/> [SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md#using-the-azure-portal) | [SQL-Datenbank](long-term-backup-retention-configure.md)<br/>[SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md#using-powershell)  |
 | **Wiederherstellen einer Datenbank bis zu einem Zeitpunkt** | [SQL-Datenbank](recovery-using-backups.md#point-in-time-restore)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md) | [SQL-Datenbank](/powershell/module/az.sql/restore-azsqldatabase) <br/> [SQL Managed Instance](/powershell/module/az.sql/restore-azsqlinstancedatabase) |
 | **Wiederherstellen einer gelöschten Datenbank** | [SQL-Datenbank](recovery-using-backups.md)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md#restore-a-deleted-database) | [SQL-Datenbank](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [SQL Managed Instance](/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
@@ -138,7 +138,7 @@ Für Datenbanken auf virtuellen Kernen wird der verbrauchte Speicher für jeden 
 
 Der Speicherverbrauch für Sicherungen bis zur maximalen Datengröße für eine Datenbank wird nicht in Rechnung gestellt. Der zusätzliche Sicherungsspeicherverbrauch hängt von der Workload und der maximalen Größe der einzelnen Datenbanken ab. Ziehen Sie einige der folgenden Optimierungstechniken in Betracht, um den Sicherungsspeicherverbrauch zu reduzieren:
 
-- Reduzieren Sie den [Aufbewahrungszeitraum für Sicherungen](#change-the-pitr-backup-retention-period-by-using-the-azure-portal) auf die Mindestanforderungen für Ihre Zwecke.
+- Reduzieren Sie den [Aufbewahrungszeitraum für Sicherungen](#change-the-short-term-retention-policy-using-the-azure-portal) auf die Mindestanforderungen für Ihre Zwecke.
 - Vermeiden Sie es, große Schreibvorgänge, wie z.B. die Neuerstellung von Indizes, öfter als nötig durchzuführen.
 - Bei umfangreichen Datenladevorgängen sollten Sie [gruppierte Columnstore-Indizes](/sql/relational-databases/indexes/columnstore-indexes-overview) verwenden und die entsprechenden [Best Practices](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance) befolgen oder die Anzahl der nicht gruppierten Indizes reduzieren.
 - Auf der Dienstebene „Universell“ ist der bereitgestellte Datenspeicher günstiger als die Kosten für den Sicherungsspeicher. Wenn ständig hohe Kosten durch zusätzlichen Sicherungsspeicher anfallen, können Sie eine Vergrößerung des Datenspeichers in Betracht ziehen, um beim Sicherungsspeicher zu sparen.
@@ -147,7 +147,16 @@ Der Speicherverbrauch für Sicherungen bis zur maximalen Datengröße für eine 
 
 ## <a name="backup-retention"></a>Sicherungsaufbewahrung
 
-Für alle neuen, wiederhergestellten und kopierten Datenbanken behalten Azure SQL-Datenbank und Azure SQL Managed Instance standardmäßig ausreichende Sicherungen für die Point-in-Time-Wiederherstellung in den letzten sieben Tagen bei. Mit Ausnahme von Datenbanken in den Tarifen „Hyperscale“ und „Basic“ können Sie den [Aufbewahrungszeitraum von Sicherungen](#change-the-pitr-backup-retention-period) pro aktiver Datenbank im Bereich von 1 bis 35 Tagen ändern. Wie unter [Sicherungsspeicherverbrauch](#backup-storage-consumption) beschrieben, liegen Sicherungen, die zum Ermöglichen der Point-in-Time-Wiederherstellung gespeichert wurden, möglicherweise zeitlich vor der Beibehaltungsdauer. Nur für Azure SQL Managed Instance ist es möglich, die PITR-Sicherungsaufbewahrungsrate festzulegen, nachdem eine Datenbank innerhalb des Zeitraums von 0 bis 35 Tagen gelöscht wurde. 
+Azure SQL Database und Azure SQL Managed Instance bieten sowohl eine kurzfristige als auch eine langfristige Aufbewahrung von Backups. Die kurzfristige Aufbewahrung von Backups ermöglicht Point-In-Time-Restore (PITR) mit dem Aufbewahrungszeitraum für die Datenbank, während die langfristige Aufbewahrung Backups für verschiedene Compliance-Anforderungen bietet.  
+
+### <a name="short-term-retention"></a>Kurzfristige Aufbewahrung
+
+Für alle neuen, wiederhergestellten und kopierten Datenbanken behalten Azure SQL-Datenbank und Azure SQL Managed Instance standardmäßig ausreichende Sicherungen für die Point-in-Time-Wiederherstellung in den letzten sieben Tagen bei. Es werden regelmäßig Voll-, Differenz- und Protokollsicherungen durchgeführt, um sicherzustellen, dass Datenbanken zu jedem beliebigen Zeitpunkt innerhalb des für die Datenbank oder verwaltete Instanz festgelegten Aufbewahrungszeitraums wiederherstellbar sind. Zusätzlich können für Azure SQL-Datenbanken differenzielle Backups entweder auf eine 12-Stunden-Frequenz (Standard) oder eine 24-Stunden-Frequenz konfiguriert werden. 
+
+> [!NOTE]
+> Eine 24-Stunden-Frequenz für differenzielle Backups kann die für die Wiederherstellung der Datenbank erforderliche Zeit erhöhen. 
+
+Mit Ausnahme von Datenbanken in den Tarifen „Hyperscale“ und „Basic“ können Sie den [Aufbewahrungszeitraum von Sicherungen](#change-the-short-term-retention-policy) pro aktiver Datenbank im Bereich von 1 bis 35 Tagen ändern. Wie unter [Sicherungsspeicherverbrauch](#backup-storage-consumption) beschrieben, liegen Sicherungen, die zum Ermöglichen der Point-in-Time-Wiederherstellung gespeichert wurden, möglicherweise zeitlich vor der Beibehaltungsdauer. Nur für Azure SQL Managed Instance ist es möglich, die PITR-Sicherungsaufbewahrungsrate festzulegen, nachdem eine Datenbank innerhalb des Zeitraums von 0 bis 35 Tagen gelöscht wurde. 
 
 Wenn Sie eine Datenbank löschen, behält das System Sicherungen genauso bei, wie dies für eine Onlinedatenbank mit der jeweiligen Beibehaltungsdauer gelten würde. Die Beibehaltungsdauer für eine gelöschte Datenbank kann nicht geändert werden.
 
@@ -247,13 +256,13 @@ Alle Datenbanksicherungen werden mit der Option „CHECKSUM“ erstellt, um eine
 
 ## <a name="compliance"></a>Compliance
 
-Wenn Sie Ihre Datenbank von einer DTU-basierten Dienstebene zu einer Dienstebene auf Basis virtueller Kerne migrieren, wird die PITR-Aufbewahrung beibehalten. So soll sichergestellt werden, dass die Datenwiederherstellungsrichtlinie Ihrer Anwendung nicht kompromittiert wird. Falls die Standardaufbewahrung Ihre Complianceanforderungen nicht erfüllt, können Sie die PITR-Aufbewahrungsdauer ändern. Weitere Informationen finden Sie unter [Ändern des PITR-Aufbewahrungszeitraums von Sicherungen](#change-the-pitr-backup-retention-period).
+Wenn Sie Ihre Datenbank von einer DTU-basierten Dienstebene zu einer Dienstebene auf Basis virtueller Kerne migrieren, wird die PITR-Aufbewahrung beibehalten. So soll sichergestellt werden, dass die Datenwiederherstellungsrichtlinie Ihrer Anwendung nicht kompromittiert wird. Falls die Standardaufbewahrung Ihre Complianceanforderungen nicht erfüllt, können Sie die PITR-Aufbewahrungsdauer ändern. Weitere Informationen finden Sie unter [Ändern des PITR-Aufbewahrungszeitraums von Sicherungen](#change-the-short-term-retention-policy).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="change-the-pitr-backup-retention-period"></a>Ändern des PITR-Aufbewahrungszeitraums von Sicherungen
+## <a name="change-the-short-term-retention-policy"></a>Ändern der kurzfristigen Aufbewahrungsrichtlinie
 
-Sie können den Standardzeitraum für die Aufbewahrung von PITR-Sicherungen im Azure-Portal, mit PowerShell oder der REST-API ändern. In den folgenden Beispielen wird veranschaulicht, wie Sie die PITR-Aufbewahrungsdauer in 28 Tage ändern.
+Sie können die Standardaufbewahrungszeit für PITR-Sicherungen und die Häufigkeit der differenziellen Sicherungen über das Azure-Portal, PowerShell oder die REST-API ändern. Die folgenden Beispiele veranschaulichen, wie Sie die PITR-Aufbewahrung auf 28 Tage und die differenziellen Backups auf ein Intervall von 24 Stunden ändern.
 
 > [!WARNING]
 > Wenn Sie die aktuelle Beibehaltungsdauer verringern, verlieren Sie die Möglichkeit, Zeitpunkte wiederherzustellen, die älter als die neue Beibehaltungsdauer sind. Sicherungen, die für die Bereitstellung von Point-in-Time-Wiederherstellungen innerhalb der neuen Beibehaltungsdauer nicht mehr benötigt werden, werden gelöscht. Wenn Sie die aktuelle Beibehaltungsdauer verringern, wird die Möglichkeit, Zeitpunkte innerhalb der neuen Beibehaltungsdauer wiederherzustellen, nicht sofort hergestellt. Sie erhalten diese Möglichkeit im Lauf der Zeit, während das System beginnt, Sicherungen länger aufzubewahren.
@@ -261,9 +270,9 @@ Sie können den Standardzeitraum für die Aufbewahrung von PITR-Sicherungen im A
 > [!NOTE]
 > Diese APIs wirken sich nur auf die PITR-Aufbewahrungsdauer aus. Falls Sie für Ihre Datenbank LTR konfiguriert haben, ist sie nicht betroffen. Informationen zum Ändern von LTR-Aufbewahrungsdauern finden Sie unter [Langfristige Aufbewahrung](long-term-retention-overview.md).
 
-### <a name="change-the-pitr-backup-retention-period-by-using-the-azure-portal"></a>Ändern der PITR-Aufbewahrungsdauer im Azure-Portal
+### <a name="change-the-short-term-retention-policy-using-the-azure-portal"></a>Ändern der kurzfristigen Aufbewahrungsrichtlinie über das Azure-Portal
 
-Um die PITR-Aufbewahrungsdauer von Sicherungen für aktive Datenbanken im Azure-Portal zu ändern, navigieren Sie im Portal zum Server oder zur verwalteten Instanz mit den Datenbanken, deren Aufbewahrungsdauer geändert werden soll. Wählen Sie im linken Bereich **Sicherungen** und dann die Registerkarte **Aufbewahrungsrichtlinien** aus. Wählen Sie die Datenbank(en) aus, für die Sie die PITR-Sicherungsaufbewahrung ändern möchten. Wählen Sie dann in der Aktionsleiste die Option **Aufbewahrung konfigurieren** aus.
+Um die PITR-Sicherungsaufbewahrungszeit oder die Häufigkeit der differenziellen Sicherung für aktive Datenbanken über das Azure-Portal zu ändern, wechseln Sie zu dem Server oder der verwalteten Instanz mit den Datenbanken, deren Aufbewahrungszeit Sie ändern möchten. Wählen Sie im linken Bereich **Sicherungen** und dann die Registerkarte **Aufbewahrungsrichtlinien** aus. Wählen Sie die Datenbank(en) aus, für die Sie die PITR-Sicherungsaufbewahrung ändern möchten. Wählen Sie dann in der Aktionsleiste die Option **Aufbewahrung konfigurieren** aus.
 
 #### <a name="sql-database"></a>[SQL-Datenbank](#tab/single-database)
 
@@ -275,7 +284,7 @@ Um die PITR-Aufbewahrungsdauer von Sicherungen für aktive Datenbanken im Azure-
 
 ---
 
-### <a name="change-the-pitr-backup-retention-period-by-using-powershell"></a>Ändern der PITR-Aufbewahrungsdauer mit PowerShell
+### <a name="change-the-short-term-retention-policy-using-powershell"></a>Ändern der kurzfristigen Aufbewahrungsrichtlinie mithilfe von PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -283,12 +292,18 @@ Um die PITR-Aufbewahrungsdauer von Sicherungen für aktive Datenbanken im Azure-
 
 #### <a name="sql-database"></a>[SQL-Datenbank](#tab/single-database)
 
-Verwenden Sie das folgende PowerShell-Beispiel, um die PITR-Aufbewahrungsdauer von Sicherungen für aktive Azure SQL-Datenbanken zu ändern.
+Verwenden Sie das folgende PowerShell-Beispiel, um die PITR-Sicherungsaufbewahrung und die Häufigkeit der differenziellen Sicherung für aktive Azure SQL-Datenbanken zu ändern.
 
 ```powershell
 # SET new PITR backup retention period on an active individual database
 # Valid backup retention must be between 1 and 35 days
 Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -ServerName testserver -DatabaseName testDatabase -RetentionDays 28
+```
+
+```powershell
+# SET new PITR differental backup frequency on an active individual database
+# Valid differential backup frequency must be ether 12 or 24. 
+Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -ServerName testserver -DatabaseName testDatabase -RetentionDays 28 -DiffBackupIntervalInHours 24
 ```
 
 #### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
@@ -330,7 +345,48 @@ Nachdem die PITR-Aufbewahrungsdauer von Sicherungen für eine gelöschte Datenba
 
 ---
 
-### <a name="change-the-pitr-backup-retention-period-by-using-the-rest-api"></a>Ändern der PITR-Aufbewahrungsdauer über die REST-API
+### <a name="change-the-short-term-retention-policy-using-the-rest-api"></a>Ändern der kurzfristigen Aufbewahrungsrichtlinie mithilfe der REST-API
+
+Die folgende Anforderung aktualisiert den Aufbewahrungszeitraum auf 28 Tage und setzt die Häufigkeit der differenziellen Sicherung auf 24 Stunden.
+
+
+#### <a name="sql-database"></a>[SQL-Datenbank](#tab/single-database)
+
+#### <a name="sample-request"></a>Beispiel für eine Anforderung
+
+```http
+PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroup/providers/Microsoft.Sql/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default?api-version=2021-02-01-preview
+```
+
+#### <a name="request-body"></a>Anforderungstext
+
+```json
+{ 
+    "properties":{
+        "retentionDays":28
+        "diffBackupIntervalInHours":24
+  }
+}
+```
+
+#### <a name="sample-response"></a>Beispielantwort: 
+
+```json
+{ 
+  "id": "/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Sql/resourceGroups/resourceGroup/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default",
+  "name": "default",
+  "type": "Microsoft.Sql/resourceGroups/servers/databases/backupShortTermRetentionPolicies",
+  "properties": {
+    "retentionDays": 28
+    "diffBackupIntervalInHours":24
+  }
+}
+```
+
+
+Weitere Informationen finden Sie unter [REST-API für die Aufbewahrung von Sicherungen](/rest/api/sql/backupshorttermretentionpolicies).
+
+#### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
 
 #### <a name="sample-request"></a>Beispiel für eine Anforderung
 
@@ -365,38 +421,7 @@ Statuscode: 200
 
 Weitere Informationen finden Sie unter [REST-API für die Aufbewahrung von Sicherungen](/rest/api/sql/backupshorttermretentionpolicies).
 
-#### <a name="sample-request"></a>Beispiel für eine Anforderung
-
-```http
-PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroup/providers/Microsoft.Sql/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default?api-version=2017-10-01-preview
-```
-
-#### <a name="request-body"></a>Anforderungstext
-
-```json
-{
-  "properties":{
-    "retentionDays":28
-  }
-}
-```
-
-#### <a name="sample-response"></a>Beispiel für eine Antwort
-
-Statuscode: 200
-
-```json
-{
-  "id": "/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Sql/resourceGroups/resourceGroup/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default",
-  "name": "default",
-  "type": "Microsoft.Sql/resourceGroups/servers/databases/backupShortTermRetentionPolicies",
-  "properties": {
-    "retentionDays": 28
-  }
-}
-```
-
-Weitere Informationen finden Sie unter [REST-API für die Aufbewahrung von Sicherungen](/rest/api/sql/backupshorttermretentionpolicies).
+---
 
 ## <a name="configure-backup-storage-redundancy"></a>Konfigurieren der Redundanz für Sicherungsspeicher
 

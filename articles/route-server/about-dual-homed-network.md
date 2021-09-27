@@ -1,20 +1,20 @@
 ---
-title: Informationen zu Dual-Homed-Netzwerken mit Azure Route Server (Vorschau)
-description: Erfahren Sie mehr über die Funktionsweise von Azure Route Server (Vorschau) in einem Dual-Homed-Netzwerk.
+title: 'Informationen zu einem Dual-Homed-Netzwerk mit Azure Route Server '
+description: Hier erfahren Sie mehr über die Funktionsweise von Azure Route Server in einem Dual-Homed-Netzwerk.
 services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: conceptual
-ms.date: 05/04/2021
+ms.date: 09/01/2021
 ms.author: duau
-ms.openlocfilehash: b786c58efd193eebbd43a4bd40f29201347c1309
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 76c1a1e424e4f8ae372f53ceab5da43ca9d40629
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108776729"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434572"
 ---
-# <a name="about-dual-homed-network-with-azure-route-server-preview"></a>Informationen zu Dual-Homed-Netzwerken mit Azure Route Server (Vorschau)
+# <a name="about-dual-homed-network-with-azure-route-server"></a>Informationen zu einem Dual-Homed-Netzwerk mit Azure Route Server
 
 Azure Route Server unterstützt die typische Hub-and-Spoke-Netzwerktopologie. Bei dieser Konfiguration befinden sich sowohl der Routenserver als auch das virtuelle Netzwerkgerät (Network Virtual Appliance, NVA) im virtuellen Hubnetzwerk. Azure Route Server ermöglicht Ihnen auch, eine andere Topologie zu konfigurieren, die als Dual-Homed-Netzwerk bezeichnet wird. Bei dieser Konfiguration verwenden Sie ein virtuelles Spokenetzwerk, das per Peering mit zwei oder mehr virtuellen Hubnetzwerken gekoppelt ist. VMs im virtuellen Spokenetzwerk können über ein virtuelles Hubnetzwerk entweder mit Ihrer lokalen Umgebung oder mit dem Internet kommunizieren.
 
