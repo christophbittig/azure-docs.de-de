@@ -3,16 +3,17 @@ title: Kopieren von Daten in ein und aus einem Dateisystem mithilfe von Azure Da
 description: Erfahren Sie, wie Daten mit Azure Data Factory in ein und aus einem lokalen Dateisystem kopiert werden.
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 186aeeaba01d07a33afd0de8d348a110df8fb44f
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 8ef1f7b9fca7d21c06aa33f552cdf77b7f92e0bc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108741651"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128611672"
 ---
 # <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Kopieren von Daten in ein und aus einem lokalen Dateisystem mit Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]

@@ -8,12 +8,12 @@ ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: 9c1d861da7a312ce94bbc7bc4074037bdb27d02b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: af31e49228f655d5b16cc20fdc07cd9a7da597d6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346572"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128620215"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>Verwenden des Azure Data Lake Storage Gen2-URI
 
@@ -27,7 +27,7 @@ Wenn das zu adressierende Data Lake Storage Gen2-fähige Konto während der Kont
 
 <pre>abfs[s]<sup>1</sup>://&lt;file_system&gt;<sup>2</sup>@&lt;account_name&gt;<sup>3</sup>.dfs.core.windows.net/&lt;path&gt;<sup>4</sup>/&lt;file_name&gt;<sup>5</sup></pre>
 
-1. **Schemabezeichner**: Das `abfs`-Protokoll wird als Schemabezeichner verwendet. Wenn Sie am Ende ein „s“ hinzufügen (abfs<b><i>s</i></b>), verwendet der ABFS-Hadoop-Clienttreiber <i>IMMER</i> TLS (Transport Layer Security), unabhängig von der ausgewählten Authentifizierungsmethode. Wenn Sie OAuth als Authentifizierung auswählen, verwendet der Clienttreiber immer TLS, auch wenn Sie „abfs“ anstelle von „abfss“ angeben, da OAuth ausschließlich auf der TLS-Ebene aufbaut. Wenn Sie schließlich die ältere Methode mit Speicherkontoschlüssel verwenden, interpretiert der Clienttreiber „abfs“ so, dass Sie TLS nicht verwenden möchten. 
+1. **Schemabezeichner**: Das `abfs`-Protokoll wird als Schemabezeichner verwendet. Wenn Sie am Ende ein „s“ hinzufügen (abfs<b><i>s</i></b>), verwendet der ABFS-Hadoop-Clienttreiber <i>IMMER</i> TLS (Transport Layer Security), unabhängig von der ausgewählten Authentifizierungsmethode. Wenn Sie OAuth als Authentifizierung auswählen, verwendet der Clienttreiber immer TLS, auch wenn Sie „abfs“ anstelle von „abfss“ angeben, da OAuth ausschließlich auf der TLS-Ebene aufbaut. Wenn Sie schließlich die ältere Methode mit Speicherkontoschlüssel verwenden, interpretiert der Clienttreiber „abfs“ so, dass Sie TLS nicht verwenden möchten.
 
 2. **Dateisystem**: Der übergeordnete Speicherort, in dem sich die Dateien und Ordner befinden. Dies entspricht Containern in Azure Storage-Blobs.
 
@@ -44,7 +44,6 @@ Wenn jedoch das Konto, das Sie adressieren möchten, während der Kontoerstellun
 1. **Pfad**: Eine durch Schrägstriche (`/`) getrennte Darstellung der Verzeichnisstruktur.
 
 2. **Dateiname**: Der Name der jeweiligen Datei.
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

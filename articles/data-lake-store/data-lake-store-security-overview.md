@@ -1,18 +1,17 @@
 ---
 title: Übersicht über die Sicherheit in Azure Data Lake Storage Gen1 | Microsoft Docs
 description: Erfahren Sie mehr über die Sicherheitsfunktionen von Azure Data Lake Storage Gen1, einschließlich Authentifizierung, Autorisierung, Netzwerkisolation, Datenschutz und Überwachung.
-services: data-lake-store
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.author: twooley
-ms.openlocfilehash: 240018381a3139a6378141d78514e43ae469de5d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: normesta
+ms.openlocfilehash: f6ea097209666d75696203163b2b99b927344fdc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92146298"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651178"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Sicherheit in Azure Data Lake Storage Gen1
 
@@ -101,7 +100,7 @@ Zeigen Sie für Überwachungspfade der Kontoverwaltung die Spalten an, die Sie p
 
 ![Aktivitätsprotokoll](./media/data-lake-store-security-overview/activity-logs.png "Aktivitätsprotokoll")
 
-Weitere Informationen zur Verwendung von Aktivitätsprotokollen finden Sie unter [Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen](../azure-resource-manager/management/view-activity-logs.md).
+Weitere Informationen zur Verwendung von Aktivitätsprotokollen finden Sie unter [Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen](../azure-monitor/essentials/activity-log.md).
 
 ### <a name="diagnostics-logs"></a>Diagnoseprotokolle
 

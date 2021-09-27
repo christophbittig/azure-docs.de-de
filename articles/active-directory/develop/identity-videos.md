@@ -12,12 +12,12 @@ ms.date: 08/03/2020
 ms.author: marsma
 ms.custom: aaddev, has-adal-ref
 ms.reviewer: celested
-ms.openlocfilehash: f9fac943ee19334eb241a6e0ee8601a8a0fc797c
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 18a097e0677aa97a6af56d1ed1930355354c276c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419065"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615337"
 ---
 # <a name="microsoft-identity-platform-videos"></a>Videos zu Microsoft Identity Platform
 
@@ -208,122 +208,122 @@ ___
         >[!Video https://www.youtube.com/embed/bNlcFuIo3r8]
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=apbbx2n4tnU" target="_blank">Microsoft Graph und die MSAL (Microsoft Authentication Library) </a>
-    :::column-end:::
-    :::column:::
-        >[!Video https://www.youtube.com/embed/apbbx2n4tnU]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
         <a href="https://www.youtube.com/watch?v=yLVEBU9Z96Q" target="_blank">Was ist die MSAL-Familie von Bibliotheken?</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/yLVEBU9Z96Q]
     :::column-end:::
+:::row-end:::
+:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=eiPHOoLmGJs" target="_blank">Erläuterung der Bereiche </a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/eiPHOoLmGJs]
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=Zd_Uubnu0U0" target="_blank">Was sind Broker? </a>
     :::column-end:::
     :::column:::
-        >[!Video https://www.youtube.com/embed/Zd_Uubnu0U0]
+       >[!Video https://www.youtube.com/embed/Zd_Uubnu0U0]
     :::column-end:::
+:::row-end:::
+:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=znSN_3JAuoU" target="_blank">Funktionsweise von Umleitungs-URIs</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/znSN_3JAuoU]
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=mDhT4Zv1fZU" target="_blank">Mandanten in der Übersicht </a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/mDhT4Zv1fZU]
     :::column-end:::
+:::row-end:::
+:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=zDEC7A5ZS2Q" target="_blank">Rolle von Azure AD </a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/zDEC7A5ZS2Q]
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=HEpq_YSmuWw" target="_blank">Rolle von Azure AD-App-Objekten</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/HEpq_YSmuWw]
     :::column-end:::
+:::row-end:::
+:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=E2OUluQQKSk" target="_blank">Unterschiede zwischen Organisations- und privaten Microsoft-Konten</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/E2OUluQQKSk]
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=ZJirt7eTVw8" target="_blank">Unterschiede zwischen SPAs und Web-Apps</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/ZJirt7eTVw8]
     :::column-end:::
+:::row-end:::
+:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=6R3W9T01gdE" target="_blank">Was sind Anwendungsberechtigungen und delegierte Berechtigungen?</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/6R3W9T01gdE]
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=Gm6sALdXtpg" target="_blank">Welche Bedeutung hat die OpenID Connect-Zertifizierung der Microsoft Identity Platform?</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/Gm6sALdXtpg]
     :::column-end:::
+:::row-end:::
+:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=NrydwrckYaw" target="_blank">Was sind die verschiedenen Azure Active Directory-App-Typen, und worin unterscheiden sie sich?</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/NrydwrckYaw]
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=cZKgTqF4o88" target="_blank">Mit welchen grundlegenden Protokollkonzepten sollten Sie bei der Verwendung von MSAL vertraut sein?</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/cZKgTqF4o88]
     :::column-end:::
+:::row-end:::
+:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=41vmzPdbfXM" target="_blank">Was ist der Unterschied zwischen ID-Token, Zugriffstoken, Aktualisierungstoken und Sitzungstoken?</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/41vmzPdbfXM]
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=jEEwN7XAtUo" target="_blank">Welche Beziehung besteht zwischen Autorisierungsanforderung und Token?</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/jEEwN7XAtUo]
     :::column-end:::
+:::row-end:::
+:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=4pwuRYcZbz4" target="_blank">Welche Aspekte der Protokollverwendung werden durch die MSAL-Bibliotheken vereinfacht?</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/4pwuRYcZbz4]
+    :::column-end:::
+    :::column:::
+
+    :::column-end:::
+    :::column:::
+
     :::column-end:::
 :::row-end:::
 

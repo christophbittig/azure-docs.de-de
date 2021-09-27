@@ -7,14 +7,14 @@ ms.topic: how-to
 ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 91e771554c5ce1940243eaec4a0ea3cf965c3f8f
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 3e60815b2361f4ba14b6a40ded2734c748f8d4ae
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114468568"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633695"
 ---
-# <a name="transfer-data-with-azcopy-and-file-storage"></a>Übertragen von Daten mit AzCopy und Dateispeicher 
+# <a name="transfer-data-with-azcopy-and-file-storage"></a>Übertragen von Daten mit AzCopy und Dateispeicher
 
 AzCopy ist ein Befehlszeilenhilfsprogramm, mit dem Sie Dateien in ein Speicherkonto oder daraus kopieren können. Dieser Artikel enthält Beispielbefehle, die mit Azure Files funktionieren.
 
@@ -46,10 +46,10 @@ Sie können den Befehl [azcopy copy](storage-ref-azcopy-copy.md) verwenden, um D
 Dieser Abschnitt enthält folgende Beispiele:
 
 > [!div class="checklist"]
-> * Hochladen einer Datei
-> * Hochladen eines Verzeichnisses
-> * Hochladen der Inhalte eines Verzeichnisses
-> * Hochladen einer bestimmten Datei
+> - Hochladen einer Datei
+> - Hochladen eines Verzeichnisses
+> - Hochladen der Inhalte eines Verzeichnisses
+> - Hochladen einer bestimmten Datei
 
 > [!TIP]
 > Sie können den Uploadvorgang mit optionalen Flags optimieren. Hier sind einige Beispiele angegeben.  
@@ -58,7 +58,7 @@ Dieser Abschnitt enthält folgende Beispiele:
 > |---|---|
 > |Kopieren von Zugriffssteuerungslisten (ACLs) zusammen mit den Dateien|**--preserve-smb-permissions**=\[true\|false\]|
 > |Kopieren von SMB-Eigenschaftsinformationen zusammen mit den Dateien|**--preserve-smb-info**=\[true\|false\]|
-> 
+>
 > Eine vollständige Liste finden Sie unter [Optionen](storage-ref-azcopy-copy.md#options).
 
 > [!NOTE]
@@ -159,9 +159,9 @@ Mit der Option `--exclude-pattern` können Sie auch Dateien ausschließen. Weite
 
 Die Optionen `--include-pattern` und `--exclude-pattern` gelten nur für Dateinamen und nicht für den Pfad.  Wenn Sie alle Textdateien in einer Verzeichnisstruktur kopieren möchten, verwenden Sie die Option `--recursive`, um die gesamte Verzeichnisstruktur abzurufen. Verwenden Sie dann `--include-pattern`, und geben Sie `*.txt` an, um alle Textdateien abzurufen.
 
-#### <a name="upload-files-that-were-modified-after-a-date-and-time"></a>Hochladen von Dateien, die nach einem bestimmten Datum und einer bestimmten Uhrzeit geändert wurden 
+#### <a name="upload-files-that-were-modified-after-a-date-and-time"></a>Hochladen von Dateien, die nach einem bestimmten Datum und einer bestimmten Uhrzeit geändert wurden
 
-Verwenden Sie den Befehl [azcopy copy](storage-ref-azcopy-copy.md) mit der Option `--include-after`. Geben Sie ein Datum und eine Uhrzeit im ISO 8601-Format an (z. B. `2020-08-19T15:04:00Z`). 
+Verwenden Sie den Befehl [azcopy copy](storage-ref-azcopy-copy.md) mit der Option `--include-after`. Geben Sie ein Datum und eine Uhrzeit im ISO 8601-Format an (z. B. `2020-08-19T15:04:00Z`).
 
 **Syntax**
 
@@ -182,10 +182,10 @@ Sie können den Befehl [azcopy copy](storage-ref-azcopy-copy.md) verwenden, um D
 Dieser Abschnitt enthält folgende Beispiele:
 
 > [!div class="checklist"]
-> * Herunterladen einer Datei
-> * Herunterladen eines Verzeichnisses
-> * Herunterladen der Inhalte eines Verzeichnisses
-> * Herunterladen bestimmter Dateien
+> - Herunterladen einer Datei
+> - Herunterladen eines Verzeichnisses
+> - Herunterladen der Inhalte eines Verzeichnisses
+> - Herunterladen bestimmter Dateien
 
 > [!TIP]
 > Sie können den Downloadvorgang mit optionalen Flags optimieren. Hier sind einige Beispiele angegeben.
@@ -195,7 +195,7 @@ Dieser Abschnitt enthält folgende Beispiele:
 > |Kopieren von Zugriffssteuerungslisten (ACLs) zusammen mit den Dateien|**--preserve-smb-permissions**=\[true\|false\]|
 > |Kopieren von SMB-Eigenschaftsinformationen zusammen mit den Dateien|**--preserve-smb-info**=\[true\|false\]|
 > |Automatisches Dekomprimieren von Dateien|**DECOMPRESS**|
-> 
+>
 > Eine vollständige Liste finden Sie unter [Optionen](storage-ref-azcopy-copy.md#options).
 
 > [!NOTE]
@@ -284,9 +284,9 @@ Mit der Option `--exclude-pattern` können Sie auch Dateien ausschließen. Weite
 
 Die Optionen `--include-pattern` und `--exclude-pattern` gelten nur für Dateinamen und nicht für den Pfad.  Wenn Sie alle Textdateien in einer Verzeichnisstruktur kopieren möchten, verwenden Sie die Option `--recursive`, um die gesamte Verzeichnisstruktur abzurufen. Verwenden Sie dann `--include-pattern`, und geben Sie `*.txt` an, um alle Textdateien abzurufen.
 
-#### <a name="download-files-that-were-modified-after-a-date-and-time"></a>Herunterladen von Dateien, die nach einem bestimmten Datum und einer bestimmten Uhrzeit geändert wurden 
+#### <a name="download-files-that-were-modified-after-a-date-and-time"></a>Herunterladen von Dateien, die nach einem bestimmten Datum und einer bestimmten Uhrzeit geändert wurden
 
-Verwenden Sie den Befehl [azcopy copy](storage-ref-azcopy-copy.md) mit der Option `--include-after`. Geben Sie ein Datum und eine Uhrzeit im ISO 8601-Format an (z. B. `2020-08-19T15:04:00Z`). 
+Verwenden Sie den Befehl [azcopy copy](storage-ref-azcopy-copy.md) mit der Option `--include-after`. Geben Sie ein Datum und eine Uhrzeit im ISO 8601-Format an (z. B. `2020-08-19T15:04:00Z`).
 
 **Syntax**
 
@@ -302,7 +302,7 @@ Ausführliche Informationen finden Sie in den [azcopy copy](storage-ref-azcopy-c
 
 #### <a name="download-from-a-share-snapshot"></a>Herunterladen von einer Freigabemomentaufnahme
 
-Sie können eine bestimmte Version einer Datei oder eines Verzeichnisses herunterladen, indem Sie auf den **DateTime**-Wert einer Freigabemomentaufnahme verweisen. Weitere Informationen zu Freigabemomentaufnahmen finden Sie unter [Übersicht über Freigabemomentaufnahmen für Azure Files](../files/storage-snapshots-files.md). 
+Sie können eine bestimmte Version einer Datei oder eines Verzeichnisses herunterladen, indem Sie auf den **DateTime**-Wert einer Freigabemomentaufnahme verweisen. Weitere Informationen zu Freigabemomentaufnahmen finden Sie unter [Übersicht über Freigabemomentaufnahmen für Azure Files](../files/storage-snapshots-files.md).
 
 **Syntax**
 
@@ -326,15 +326,15 @@ Sie können AzCopy verwenden, um Dateien in andere Speicherkonten zu kopieren. D
 
 AzCopy verwendet die [Server-zu-Server](/rest/api/storageservices/put-block-from-url)-[APIs](/rest/api/storageservices/put-page-from-url), sodass Daten direkt zwischen Speicherservern kopiert werden. Für diese Kopiervorgänge wird nicht die Netzwerkbandbreite Ihres Computers genutzt. Sie können den Durchsatz dieser Vorgänge erhöhen, indem Sie den Wert der Umgebungsvariable `AZCOPY_CONCURRENCY_VALUE` festlegen. Weitere Informationen finden Sie unter [Erhöhen der Parallelität](storage-use-azcopy-optimize.md#increase-concurrency).
 
-Sie können auch bestimmte Versionen von Dateien herunterladen, indem Sie auf den **DateTime**-Wert einer Freigabemomentaufnahme verweisen. Weitere Informationen zu Freigabemomentaufnahmen finden Sie unter [Übersicht über Freigabemomentaufnahmen für Azure Files](../files/storage-snapshots-files.md). 
+Sie können auch bestimmte Versionen von Dateien herunterladen, indem Sie auf den **DateTime**-Wert einer Freigabemomentaufnahme verweisen. Weitere Informationen zu Freigabemomentaufnahmen finden Sie unter [Übersicht über Freigabemomentaufnahmen für Azure Files](../files/storage-snapshots-files.md).
 
 Dieser Abschnitt enthält folgende Beispiele:
 
 > [!div class="checklist"]
-> * Kopieren einer Datei in ein anderes Speicherkonto
-> * Kopieren eines Verzeichnisses in ein anderes Speicherkonto
-> * Kopieren einer Dateifreigabe in ein anderes Speicherkonto
-> * Kopieren aller Dateifreigaben, Verzeichnisse und Dateien in ein anderes Speicherkonto
+> - Kopieren einer Datei in ein anderes Speicherkonto
+> - Kopieren eines Verzeichnisses in ein anderes Speicherkonto
+> - Kopieren einer Dateifreigabe in ein anderes Speicherkonto
+> - Kopieren aller Dateifreigaben, Verzeichnisse und Dateien in ein anderes Speicherkonto
 
 > [!TIP]
 > Sie können den Kopiervorgang mit optionalen Flags optimieren. Hier sind einige Beispiele angegeben.
@@ -343,7 +343,7 @@ Dieser Abschnitt enthält folgende Beispiele:
 > |---|---|
 > |Kopieren von Zugriffssteuerungslisten (ACLs) zusammen mit den Dateien|**--preserve-smb-permissions**=\[true\|false\]|
 > |Kopieren von SMB-Eigenschaftsinformationen zusammen mit den Dateien|**--preserve-smb-info**=\[true\|false\]|
-> 
+>
 > Eine vollständige Liste finden Sie unter [Optionen](storage-ref-azcopy-copy.md#options).
 
 ### <a name="copy-a-file-to-another-storage-account"></a>Kopieren einer Datei in ein anderes Speicherkonto
@@ -431,7 +431,7 @@ Sie können den Inhalt eines lokalen Dateisystems mit einer Dateifreigabe oder d
 
 - Wenn Sie das Flag `--delete-destination` auf `true` festlegen, löscht AzCopy Dateien, ohne zur Bestätigung aufzufordern. Wenn eine Bestätigungsaufforderung angezeigt werden soll, bevor AzCopy eine Datei löscht, legen Sie das `--delete-destination`-Flag auf `prompt` fest.
 
-- Wenn Sie das Flag `--delete-destination` auf `prompt` oder `false` festlegen möchten, sollten Sie den Befehl [copy](storage-ref-azcopy-copy.md) anstelle des Befehls [sync](storage-ref-azcopy-sync.md) verwenden und den Parameter `--overwrite` auf `ifSourceNewer` festlegen. Der Befehl [copy](storage-ref-azcopy-copy.md) verbraucht weniger Arbeitsspeicher und verursacht weniger Abrechnungskosten, weil die Quelle oder das Ziel bei einem Kopiervorgang vor dem Verschieben von Dateien nicht indiziert werden muss. 
+- Wenn Sie das Flag `--delete-destination` auf `prompt` oder `false` festlegen möchten, sollten Sie den Befehl [copy](storage-ref-azcopy-copy.md) anstelle des Befehls [sync](storage-ref-azcopy-sync.md) verwenden und den Parameter `--overwrite` auf `ifSourceNewer` festlegen. Der Befehl [copy](storage-ref-azcopy-copy.md) verbraucht weniger Arbeitsspeicher und verursacht weniger Abrechnungskosten, weil die Quelle oder das Ziel bei einem Kopiervorgang vor dem Verschieben von Dateien nicht indiziert werden muss.
 
 - Der Computer, auf dem Sie den Synchronisierungsbefehl ausführen, sollte über eine genaue Systemuhr verfügen, weil die Zeiten der letzten Änderung maßgeblich sind, um über die Übertragung einer Datei zu entscheiden. Wenn die Zeit Ihres Systems erheblich abweicht, sollten Sie Dateien am Ziel nicht zu nahe an dem Zeitpunkt ändern, zu dem Sie einen Synchronisierungsbefehl ausführen möchten.
 
@@ -444,12 +444,12 @@ Sie können den Inhalt eines lokalen Dateisystems mit einer Dateifreigabe oder d
 > |Kopieren von SMB-Eigenschaftsinformationen zusammen mit den Dateien|**--preserve-smb-info**=\[true\|false\]|
 > |Ausschließen von Dateien basierend auf einem Muster|**--exclude-path**|
 > |Angeben, wie detailliert die synchronisierungsbezogenen Protokolleinträge sein sollen|**--log-level**=\[WARNING\|ERROR\|INFO\|NONE\]|
-> 
+>
 > Eine vollständige Liste finden Sie unter [Optionen](storage-ref-azcopy-sync.md#options).
 
 ### <a name="update-a-file-share-with-changes-to-a-local-file-system"></a>Aktualisieren einer Dateifreigabe mit Änderungen an einem lokalen Dateisystem
 
-In diesem Fall ist die Dateifreigabe das Ziel und das lokale Dateisystem die Quelle. 
+In diesem Fall ist die Dateifreigabe das Ziel und das lokale Dateisystem die Quelle.
 
 > [!TIP]
 > In diesem Beispiel werden Pfadargumente in einfache Anführungszeichen ('') eingeschlossen. Verwenden Sie in allen Befehlsshells außer der Windows-Befehlszeile (cmd.exe) einfache Anführungszeichen. Wenn Sie eine Windows-Befehlszeile (cmd.exe) verwenden, müssen Sie Pfadargumente in doppelte Anführungszeichen ("") anstelle von einfachen Anführungszeichen ('') einschließen.
@@ -521,7 +521,7 @@ Die erste Dateifreigabe in diesem Befehl ist die Quelle. Fügen Sie am Ende des 
 
 ```azcopy
 azcopy sync 'https://mysourceaccount.file.core.windows.net/myfileShare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D&sharesnapshot=2020-03-03T20%3A24%3A13.0000000Z' 'https://mydestinationaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive --preserve-smb-permissions=true --preserve-smb-info=true
-``` 
+```
 
 Weitere Informationen zu Freigabemomentaufnahmen finden Sie unter [Übersicht über Freigabemomentaufnahmen für Azure Files](../files/storage-snapshots-files.md).
 
@@ -536,5 +536,4 @@ Lesen Sie diese Artikel, um Einstellungen zu konfigurieren, die Leistung zu opti
 
 - [AzCopy v10-Konfigurationseinstellungen (Azure Storage)](storage-ref-azcopy-configuration-settings.md)
 - [Optimieren der Leistung von AzCopy mit Azure Storage](storage-use-azcopy-optimize.md)
-- [Ermitteln von Fehlern und Fortsetzen von Aufträgen mithilfe von Protokoll- und Plandateien in AzCopy](storage-use-azcopy-configure.md)
-
+- [Konfigurieren, Optimieren und Problembehandlung in AzCopy](storage-use-azcopy-configure.md)

@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: kgremban
-ms.openlocfilehash: c617b4c3558be2409c8bf2272e805a8b8cb9d349
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 75061400eb68e3c17a24839e9e155e3a284607c6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339020"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589794"
 ---
 # <a name="register-an-iot-edge-device-in-iot-hub"></a>Registrieren eines IoT Edge-Geräts in IoT Hub
 
@@ -37,9 +37,9 @@ In diesem Artikel werden beide Authentifizierungsmethoden behandelt.
 
 Wenn Sie über sehr viele Geräte verfügen, die Sie nicht einzeln manuell bereitstellen möchten, informieren Sie sich in einem der folgenden Artikel über die Integration von IoT Edge in IoT Hub Device Provisioning Service:
 
-* [Erstellen und Bereitstellen eines IoT Edge-Geräts mithilfe von X.509-Zertifikaten](how-to-auto-provision-x509-certs.md)
+* [Erstellen und Bereitstellen eines IoT Edge-Geräts mithilfe von X.509-Zertifikaten](how-to-provision-devices-at-scale-linux-x509.md)
 * [Erstellen und Bereitstellen eines IoT Edge-Geräts mit einem TPM unter Linux](how-to-auto-provision-simulated-device-linux.md)
-* [Erstellen und Bereitstellen eines IoT Edge-Geräts mithilfe des Nachweises symmetrischer Schlüssel](how-to-auto-provision-symmetric-keys.md)
+* [Erstellen und Bereitstellen eines IoT Edge-Geräts mithilfe des Nachweises symmetrischer Schlüssel](how-to-provision-devices-at-scale-linux-symmetric.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

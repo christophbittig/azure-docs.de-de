@@ -4,12 +4,12 @@ description: Rufen Sie die Anzahl der Seitenaufrufe und Sitzungen, Webclientdate
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 2d2cf6f53b295d5ac138f86deb765892fd34d907
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 4ce6481a35b8a214a2203a165161183d384b4ea0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112234571"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662170"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights für Webseiten
 
@@ -171,7 +171,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Konfiguration
 Die meisten Konfigurationsfelder werden so benannt, dass sie standardmäßig auf „false“ festgelegt werden können. Alle Felder mit Ausnahme von `instrumentationKey` sind optional.
 
-| Name | BESCHREIBUNG | Standard |
+| Name | Beschreibung | Standard |
 |------|-------------|---------|
 | instrumentationKey | **Erforderlich**<br>Instrumentierungsschlüssel, den Sie aus dem Azure-Portal abgerufen haben. | Zeichenfolge<br/>NULL |
 | accountId | Eine optionale Konto-ID, wenn Ihre App Benutzer in Konten gruppiert. Keine Leerzeichen, Kommas, Semikolons, Gleichheitszeichen oder senkrechten Striche | Zeichenfolge<br/>NULL |
@@ -279,7 +279,7 @@ cfg: { // Application Insights Configuration
 
 ``` 
 
-Wenn einer Ihrer Server von Drittanbietern, mit denen der Client kommuniziert, die Header `Request-Id` und `Request-Context` nicht akzeptieren kann und Sie die Konfiguration nicht aktualisieren können, müssen Sie sie über die Konfigurationseigenschaft `correlationHeaderExcludeDomains` in eine Ausschlussliste einfügen. Diese Eigenschaft unterstützt Platzhalter.
+Wenn einer Ihrer Server von Drittanbietern, mit denen der Client kommuniziert, die Header `Request-Id` und `Request-Context` nicht akzeptieren kann und Sie die Konfiguration nicht aktualisieren können, müssen Sie sie über die Konfigurationseigenschaft `correlationHeaderExcludedDomains` in eine Ausschlussliste einfügen. Diese Eigenschaft unterstützt Platzhalter.
 
 Auf Serverseite müssen Verbindungen mit diesen Headern akzeptiert werden können. Je nach serverseitiger Konfiguration von `Access-Control-Allow-Headers` ist es häufig erforderlich, die serverseitige Liste zu erweitern, indem `Request-Id` und `Request-Context` manuell hinzugefügt werden.
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d7424b6ad88bc7e77a4b7d191feb54658f67ff21
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: d2fe9cecae13cdd6ff82256466ff1fa045b73189
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114220675"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128569312"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Key Vault-VM-Erweiterung für Windows
 
@@ -293,9 +293,9 @@ Die Key Vault-VM-Erweiterungsprotokolle sind nur lokal auf dem virtuellen Comput
 |Standort|BESCHREIBUNG|
 |--|--|
 | C:\WindowsAzure\Logs\WaAppAgent.log | Zeigt an, wann ein Update der Erweiterung erfolgt ist. |
-| C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows<most recent version>\ | Zeigt den Status des Zertifikatdownloads an. Der Speicherort für den Download ist immer der persönliche Windows-Speicher (certlm.msc) des Computers. |
-| C:\Packages\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows<most recent version>\RuntimeSettings\ |   Die Key Vault-VM-Erweiterungsdienstprotokolle zeigen den Status des Diensts „akvvm_service“ an. |
-| C:\Packages\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows<most recent version>\Status\  | Die Konfiguration und die Binärdateien für den Key Vault-VM-Erweiterungsdienst. |
+| C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows\<most recent version\>\ | Zeigt den Status des Zertifikatdownloads an. Der Speicherort für den Download ist immer der persönliche Windows-Speicher (certlm.msc) des Computers. |
+| C:\Packages\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows\<most recent version\>\RuntimeSettings\ | Die Key Vault-VM-Erweiterungsdienstprotokolle zeigen den Status des Diensts „akvvm_service“ an. |
+| C:\Packages\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows\<most recent version\>\Status\    | Die Konfiguration und die Binärdateien für den Key Vault-VM-Erweiterungsdienst. |
 |||  
 
 

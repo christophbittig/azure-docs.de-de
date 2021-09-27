@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: 44a4e1293bc4c5a54e1e345d5cf95ba307a7b120
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3098d8ae1879c13e8380e9370475347bea064135
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88272570"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128617961"
 ---
 # <a name="mount-the-avere-vfxt-cluster"></a>Einbinden des Avere vFXT-Clusters
 
@@ -100,7 +100,7 @@ Fügen Sie zusätzlich zu den Pfaden die unten beschriebenen [Argumente des moun
 
 Um eine problemlose Clienteinbindung sicherzustellen, übergeben Sie diese Einstellungen und Argumente in Ihrem mount-Befehl:
 
-``mount -o hard,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
+`mount -o hard,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}`
 
 | Erforderliche Einstellungen | BESCHREIBUNG |
 --- | ---

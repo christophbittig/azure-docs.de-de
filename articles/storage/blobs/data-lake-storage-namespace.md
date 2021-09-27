@@ -8,12 +8,12 @@ ms.date: 04/01/2021
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: de7f62dd4d4205e819278e6dc90d905e825580f2
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 4eaee714d079836e0919621b2d2e5661d07dfe80
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220503"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664844"
 ---
 # <a name="azure-data-lake-storage-gen2-hierarchical-namespace"></a>Hierarchischer Namespace für Azure Data Lake Storage Gen2
 
@@ -35,9 +35,9 @@ Einer der Gründe, warum Objektspeicher bisher keine hierarchischen Namespaces u
 
 Nachdem Sie einen hierarchischen Namespace in Ihrem Konto aktiviert haben, können Sie ihn nicht mehr auf einen flachen Namespace zurücksetzen. Daher sollten Sie überlegen, ob es bei den Workloadtypen in Ihrem Objektspeicher sinnvoll ist, einen hierarchischen Namespace zu aktivieren.
 
-Für einige Workloads bietet das Aktivieren des hierarchischen Namespace möglicherweise keine Vorteile. Beispiele dafür sind Backups, Imagespeicher und andere Anwendungen, bei denen die Objektorganisation getrennt von den eigentlichen Objekten gespeichert wird (z.B. in einer separaten Datenbank). 
+Für einige Workloads bietet das Aktivieren des hierarchischen Namespace möglicherweise keine Vorteile. Beispiele dafür sind Backups, Imagespeicher und andere Anwendungen, bei denen die Objektorganisation getrennt von den eigentlichen Objekten gespeichert wird (z.B. in einer separaten Datenbank).
 
-Auch wenn die Unterstützung für Blob Storage-Features und das Azure-Dienstökosystem weiterhin zunimmt, gibt es einige Features und Azure-Dienste, die in Konten mit einem hierarchischen Namespace noch nicht unterstützt werden. Siehe [Bekannte Probleme](data-lake-storage-known-issues.md). 
+Auch wenn die Unterstützung für Blob Storage-Features und das Azure-Dienstökosystem weiterhin zunimmt, gibt es einige Features und Azure-Dienste, die in Konten mit einem hierarchischen Namespace noch nicht unterstützt werden. Siehe [Bekannte Probleme](data-lake-storage-known-issues.md).
 
 Es empfiehlt sich im Allgemeinen, einen hierarchischen Namespace für Speicherworkloads zu aktivieren, die für Dateisysteme entwickelt wurden, in denen Verzeichnisse bearbeitet werden. Dazu gehören alle Workloads, die primär der Analyseverarbeitung dienen. Datasets, die ein hohes Maß an Organisation erfordern, profitieren ebenfalls vom Aktivieren eines hierarchischen Namespace.
 

@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c44336e41c173cffad28a52bed3c29ec13df497f
-ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
+ms.openlocfilehash: 65d877bce0bdcab35248d4b9a41b92f46c132903
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112323158"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128630715"
 ---
 # <a name="require-secure-transfer-to-ensure-secure-connections"></a>Erzwingen einer sicheren Übertragung für sichere Verbindungen
 
@@ -30,8 +30,8 @@ Das Herstellen einer Verbindung mit einer Azure-Dateifreigabe über SMB ohne Ver
 
 > [!NOTE]
 > Da Azure Storage keine Unterstützung von HTTPS für benutzerdefinierte Domänennamen bietet, wird diese Option nicht angewendet, wenn ein benutzerdefinierter Domänenname verwendet wird.
-> 
-> Diese Einstellung für eine sichere Übertragung gilt nicht für TCP. Ungeschützte Verbindungen über NFS 3.0-Protokollunterstützung in Azure Blob Storage mit TCP werden erfolgreich erstellt.  
+>
+> Diese Einstellung für eine sichere Übertragung gilt nicht für TCP. Ungeschützte Verbindungen über NFS 3.0-Protokollunterstützung in Azure Blob Storage mit TCP werden erfolgreich erstellt.
 
 ## <a name="require-secure-transfer-in-the-azure-portal"></a>Erzwingen einer sicheren Übertragung im Azure-Portal
 
@@ -54,15 +54,15 @@ Sie können die Einstellung **Sichere Übertragung erforderlich** beim Erstellen
 
 ## <a name="require-secure-transfer-from-code"></a>Erzwingen einer sicheren Übertragung in Code
 
-Wenn Sie programmgesteuert eine sichere Übertragung erzwingen möchten, legen Sie die _enableHttpsTrafficOnly_-Eigenschaft für das Speicherkonto auf _True_ fest. Sie können diese Eigenschaft mithilfe der Speicherressourcenanbieter-REST-API, Clientbibliotheken oder Tools festlegen:
+Wenn Sie programmgesteuert eine sichere Übertragung erzwingen möchten, legen Sie die *enableHttpsTrafficOnly*-Eigenschaft für das Speicherkonto auf *True* fest. Sie können diese Eigenschaft mithilfe der Speicherressourcenanbieter-REST-API, Clientbibliotheken oder Tools festlegen:
 
-* [REST-API](/rest/api/storagerp/storageaccounts)
-* [PowerShell](/powershell/module/az.storage/set-azstorageaccount)
-* [BEFEHLSZEILENSCHNITTSTELLE (CLI)](/cli/azure/storage/account)
-* [NodeJS](https://www.npmjs.com/package/@azure/arm-storage/)
-* [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage)
-* [Python SDK](https://pypi.org/project/azure-mgmt-storage)
-* [Ruby SDK](https://rubygems.org/gems/azure_mgmt_storage)
+- [REST-API](/rest/api/storagerp/storageaccounts)
+- [PowerShell](/powershell/module/az.storage/set-azstorageaccount)
+- [BEFEHLSZEILENSCHNITTSTELLE (CLI)](/cli/azure/storage/account)
+- [NodeJS](https://www.npmjs.com/package/@azure/arm-storage/)
+- [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage)
+- [Python SDK](https://pypi.org/project/azure-mgmt-storage)
+- [Ruby SDK](https://rubygems.org/gems/azure_mgmt_storage)
 
 ## <a name="require-secure-transfer-with-powershell"></a>Erzwingen einer sicheren Übertragung mit PowerShell
 
