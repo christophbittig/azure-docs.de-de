@@ -11,12 +11,12 @@ author: jhirono
 ms.date: 08/03/2021
 ms.topic: how-to
 ms.custom: contperf-fy21q3, devx-track-azurepowershell
-ms.openlocfilehash: 3ed8a3623163ef5f596508cd7073a68eec3fe297
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 74c8fd2c096d8a4b236d9f26bdd27737fac897ca
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355377"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632992"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>Verwenden Ihres Arbeitsbereichs mit einem benutzerdefinierten DNS-Server
 
@@ -285,14 +285,17 @@ Die folgenden Schritte beschreiben, wie diese Topologie funktioniert:
     **öffentliche Azure-Regionen**:
     - ```api.azureml.ms```
     - ```notebooks.azure.net```
+    - ```instances.ml.azure.us```
     
     **Azure China-Regionen**:
     - ```api.ml.azure.cn```
     - ```notebooks.chinacloudapi.cn```
+    - ```instances.ml.azure.cn```
     
     **Azure US Government-Regionen**:
     - ```api.ml.azure.us```
     - ```notebooks.usgovcloudapi.net```
+    - ```instances.ml.azure.us```
 
     > [!IMPORTANT]
     > Konfigurationsschritte für den DNS-Server sind hier nicht enthalten, da viele DNS-Lösungen verfügbar sind, die als benutzerdefinierter DNS-Server verwendet werden können. Informationen zum ordnungsgemäßen Konfigurieren der bedingten Weiterleitung finden Sie in der Dokumentation zu Ihrer DNS-Lösung.
@@ -351,7 +354,7 @@ Wenn Sie von einem virtuellen Computer aus nicht auf den Arbeitsbereich zugreife
 
     Öffnen Sie eine Eingabeaufforderung, Shell oder PowerShell. Führen Sie dann für jeden der Arbeitsbereichs-FQDNs den folgenden Befehl aus:
 
-    ```nslookup <workspace FQDN>```
+    `nslookup <workspace FQDN>`
         
     Das Ergebnis jedes nslookup-Endpunkts sollte eine der beiden privaten IP-Adressen auf dem privaten Endpunkt an den Azure Machine Learning-Arbeitsbereich zurückgeben. Wenn dies nicht der Fehler ist, wurde in der benutzerdefinierten DNS-Lösung etwas falsch konfiguriert.
 
@@ -415,14 +418,17 @@ Die folgenden Schritte beschreiben, wie diese Topologie funktioniert:
     **öffentliche Azure-Regionen**:
     - ```api.azureml.ms```
     - ```notebooks.azure.net```
+    - ```instances.ml.azure.us```     
     
     **Azure China-Regionen**:
     - ```api.ml.azure.cn```
     - ```notebooks.chinacloudapi.cn```
-    
+    - ```instances.ml.azure.cn```
+
     **Azure US Government-Regionen**:
     - ```api.ml.azure.us```
     - ```notebooks.usgovcloudapi.net```
+    - ```instances.ml.azure.us```
 
     > [!IMPORTANT]
     > Konfigurationsschritte für den DNS-Server sind hier nicht enthalten, da viele DNS-Lösungen verfügbar sind, die als benutzerdefinierter DNS-Server verwendet werden können. Informationen zum ordnungsgemäßen Konfigurieren der bedingten Weiterleitung finden Sie in der Dokumentation zu Ihrer DNS-Lösung.
@@ -436,14 +442,17 @@ Die folgenden Schritte beschreiben, wie diese Topologie funktioniert:
     **öffentliche Azure-Regionen**:
     - ```api.azureml.ms```
     - ```notebooks.azure.net```
+    - ```instances.ml.azure.us```
     
     **Azure China-Regionen**:
     - ```api.ml.azure.cn```
     - ```notebooks.chinacloudapi.cn```
+    - ```instances.ml.azure.cn```
     
     **Azure US Government-Regionen**:
     - ```api.ml.azure.us```
     - ```notebooks.usgovcloudapi.net```
+    - ```instances.ml.azure.us```
 
     > [!IMPORTANT]
     > Konfigurationsschritte für den DNS-Server sind hier nicht enthalten, da viele DNS-Lösungen verfügbar sind, die als benutzerdefinierter DNS-Server verwendet werden können. Informationen zum ordnungsgemäßen Konfigurieren der bedingten Weiterleitung finden Sie in der Dokumentation zu Ihrer DNS-Lösung.
@@ -544,7 +553,7 @@ Wenn Sie nach dem Ausführen der oben genannten Schritte nicht von einem virtuel
 
     Öffnen Sie eine Eingabeaufforderung, Shell oder PowerShell. Führen Sie dann für jeden der Arbeitsbereichs-FQDNs den folgenden Befehl aus:
 
-    ```nslookup <workspace FQDN>```
+    `nslookup <workspace FQDN>`
         
     Das Ergebnis jedes nslookup-Endpunkts sollte eine der beiden privaten IP-Adressen auf dem privaten Endpunkt am Azure Machine Learning-Arbeitsbereich anhalten. Wenn dies nicht der Fehler ist, wurde in der benutzerdefinierten DNS-Lösung etwas falsch konfiguriert.
 

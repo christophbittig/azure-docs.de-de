@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.author: jianleishen
 author: jianleishen
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: 483ad9dbceb134188ee8a5e2fdce3469226c579b
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: 6f95e117865ccf9d242d595ec98b66d7cd344a85
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123312936"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597659"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-microsoft-dataverse-or-dynamics-crm"></a>Kopieren von Daten aus und in Dynamics 365 (Microsoft Dataverse) oder Dynamics CRM
 
@@ -80,7 +80,7 @@ Führen Sie die folgenden Schritte aus, um über die Benutzeroberfläche des Azu
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Screenshot: Erstellen eines neuen verknüpften Diensts mit der Azure Data Factory-Benutzeroberfläche":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Screenshot: Erstellen eines neuen verknüpften Diensts über die Azure Data Factory-Benutzeroberfläche":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -88,11 +88,11 @@ Führen Sie die folgenden Schritte aus, um über die Benutzeroberfläche des Azu
 
 2. Suchen Sie nach Dynamics, und wählen Sie den Dynamics 365-Connector aus.
 
-    :::image type="content" source="media/connector-azure-blob-storage/azure-blob-storage-connector.png" alt-text="Screenshot: Dynamics 365-Connector":::    
+    :::image type="content" source="media/connector-dynamics-crm-office-365/dynamics-crm-office-365-connector.png" alt-text="Screenshot: Dynamics 365-Connector":::    
 
 1. Konfigurieren Sie die Dienstdetails, testen Sie die Verbindung, und erstellen Sie den neuen verknüpften Dienst.
 
-    :::image type="content" source="media/connector-azure-blob-storage/configure-azure-blob-storage-linked-service.png" alt-text="Screenshot: Konfiguration des verknüpften Diensts für Dynamics 365":::
+    :::image type="content" source="media/connector-dynamics-crm-office-365/configure-dynamics-crm-office-365-linked-service.png" alt-text="Screenshot: Konfiguration des verknüpften Diensts für Dynamics 365":::
 
 ## <a name="connector-configuration-details"></a>Details zur Connectorkonfiguration
 
@@ -104,7 +104,7 @@ Die folgenden Eigenschaften werden für den mit Dynamics verknüpften Dienst unt
 
 ### <a name="dynamics-365-and-dynamics-crm-online"></a>Dynamics 365 und Dynamics CRM Online
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf "Dynamics", "DynamicsCrm" oder "CommonDataServiceForApps" festgelegt werden. | Ja |
 | deploymentType | Der Bereitstellungstyp der Dynamics-Instanz. Für die Onlineversion von Dynamics muss der Wert "Online" lauten. | Ja |
@@ -201,7 +201,7 @@ Die folgenden Eigenschaften werden für den mit Dynamics verknüpften Dienst unt
 
 Die zusätzlichen Eigenschaften im Vergleich zur Onlineversion von Dynamics lauten **hostName** und **port**.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf "Dynamics", "DynamicsCrm" oder "CommonDataServiceForApps" festgelegt werden. | Ja. |
 | deploymentType | Der Bereitstellungstyp der Dynamics-Instanz. Der Wert muss für die lokale Dynamics-Bereitstellung mit IFD "OnPremisesWithIfd" lauten.| Ja. |
@@ -477,11 +477,11 @@ Ordnen Sie die beiden Spalten in der Spaltenzuordnung für die Kopieraktivität 
 - **CustomerField** zu **CustomerField**. Bei dieser Zuordnung handelt es sich um die normale Feldzuordnung.
 - **Target** zu **CustomerField\@EntityReference**. Die Senkenspalte ist virtuell und stellt den Entitätsverweis dar. Sie müssen solche Feldnamen in einer Zuordnung eingeben, da diese nach einem Schemaimport nicht angezeigt werden.
 
-![Spaltenzuordnung für Dynamics-Nachschlagefelder](./media/connector-dynamics-crm-office-365/connector-dynamics-lookup-field-column-mapping.png)
+:::image type="content" source="./media/connector-dynamics-crm-office-365/connector-dynamics-lookup-field-column-mapping.png" alt-text="Spaltenzuordnung für Dynamics-Nachschlagefelder":::
 
 Wenn alle Ihre Quelldatensätze derselben Zielentität zugeordnet werden und Ihre Quelldaten nicht den Namen der Zielentität enthalten, fügen Sie einfach in der Quelle der Kopieraktivität eine zusätzliche Spalte hinzu. Geben Sie der neuen Spalte einen Namen nach dem Muster `{lookup_field_name}@EntityReference`, legen Sie den Namen der Zielentität als Wert fest, und fahren Sie wie gewohnt mit der Spaltenzuordnung fort. Wenn die Spaltennamen Ihrer Quelle and Senke identisch sind, können Sie die explizite Spaltenzuordnung auch überspringen, da die Kopieraktivität Spalten automatisch nach dem Namen zuordnet.
 
-![Dynamics-Nachschlagefeld, das eine Spalte für den Entitätsverweis hinzufügt](./media/connector-dynamics-crm-office-365/connector-dynamics-add-entity-reference-column.png)
+:::image type="content" source="./media/connector-dynamics-crm-office-365/connector-dynamics-add-entity-reference-column.png" alt-text="Dynamics-Nachschlagefeld, das eine Spalte für den Entitätsverweis hinzufügt":::
 
 ## <a name="lookup-activity-properties"></a>Eigenschaften der Lookup-Aktivität
 

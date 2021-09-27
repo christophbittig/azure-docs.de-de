@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 156af8eb034f31b9dda11ee39b9030b6d016daff
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: c3f0d0dd82201a3a339f05929ffefa988e1c8692
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109632581"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128564940"
 ---
 # <a name="use-net-to-manage-acls-in-azure-data-lake-storage-gen2"></a>Verwenden von .NET zum Verwalten von Zugriffssteuerungslisten in Azure Data Lake Storage Gen2
 
@@ -34,10 +34,10 @@ Die Vererbung von Zugriffssteuerungslisten (ACLs) ist für neue untergeordnete E
 
 - Eine der folgenden Sicherheitsberechtigungen:
 
-  - Ein bereitgestellter [Sicherheitsprinzipal](../../role-based-access-control/overview.md#security-principal) für Azure Active Directory (AD), dem die Rolle [Speicherblob-Datenbesitzer](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) im Bereich des Zielcontainers, der übergeordneten Ressourcengruppe oder des Abonnements zugewiesen wurde  
+  - Ein bereitgestellter [Sicherheitsprinzipal](../../role-based-access-control/overview.md#security-principal) für Azure Active Directory (AD), dem die Rolle [Speicherblob-Datenbesitzer](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) im Bereich des Zielcontainers, der übergeordneten Ressourcengruppe oder des Abonnements zugewiesen wurde
 
   - Der Benutzer muss Besitzer des Zielcontainers oder -verzeichnisses sein, in dem Sie die ACL-Einstellungen anwenden möchten. Beim rekursiven Festlegen von ACLs schließt dies alle untergeordneten Elemente im Zielcontainer oder -verzeichnis ein.
-  
+
   - Speicherkontoschlüssel
 
 ## <a name="set-up-your-project"></a>Einrichten des Projekts
@@ -66,7 +66,7 @@ Installieren Sie zunächst das NuGet-Paket [Azure.Storage.Files.DataLake](https:
 
 ## <a name="connect-to-the-account"></a>Herstellen einer Verbindung mit dem Konto
 
-Wenn Sie die Codeausschnitte in diesem Artikel verwenden möchten, müssen Sie eine [DataLakeServiceClient](/dotnet/api/azure.storage.files.datalake.datalakeserviceclient)-Instanz erstellen, die das Speicherkonto darstellt. 
+Wenn Sie die Codeausschnitte in diesem Artikel verwenden möchten, müssen Sie eine [DataLakeServiceClient](/dotnet/api/azure.storage.files.datalake.datalakeserviceclient)-Instanz erstellen, die das Speicherkonto darstellt.
 
 ### <a name="connect-by-using-azure-active-directory-ad"></a>Herstellen einer Verbindung mit Azure Active Directory (AD)
 
@@ -81,14 +81,14 @@ Nachdem Sie das Paket installiert haben, fügen Sie am Anfang der Codedatei dies
 using Azure.Identity;
 ```
 
-Rufen Sie die Client-ID, ein Clientgeheimnis und die Mandanten-ID ab. Informationen zur Vorgehensweise finden Sie unter [Abrufen eines Tokens von Azure AD zum Autorisieren von Anforderungen von einer Clientanwendung](../common/storage-auth-aad-app.md). Im Rahmen dieses Prozesses müssen Sie dem Sicherheitsprinzipal eine der folgenden [Azure RBAC-Rollen](../../role-based-access-control/overview.md) (Azure Role-Based Access Control) zuweisen. 
+Rufen Sie die Client-ID, ein Clientgeheimnis und die Mandanten-ID ab. Informationen zur Vorgehensweise finden Sie unter [Abrufen eines Tokens von Azure AD zum Autorisieren von Anforderungen von einer Clientanwendung](../common/storage-auth-aad-app.md). Im Rahmen dieses Prozesses müssen Sie dem Sicherheitsprinzipal eine der folgenden [Azure RBAC-Rollen](../../role-based-access-control/overview.md) (Azure Role-Based Access Control) zuweisen.
 
 |Role|ACL-Einstellungsfunktion|
 |--|--|
 |[Besitzer von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)|Alle Verzeichnisse und Dateien im Konto|
 |[Mitwirkender an Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)|Nur Verzeichnisse und Dateien im Besitz des Sicherheitsprinzipals|
 
-In diesem Beispiel wird eine [DataLakeServiceClient](/dotnet/api/azure.storage.files.datalake.datalakeserviceclient)-Instanz mithilfe einer Client-ID, eines Clientgeheimnisses und einer Mandanten-ID erstellt.  
+In diesem Beispiel wird eine [DataLakeServiceClient](/dotnet/api/azure.storage.files.datalake.datalakeserviceclient)-Instanz mithilfe einer Client-ID, eines Clientgeheimnisses und einer Mandanten-ID erstellt.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Authorize_DataLake.cs" id="Snippet_AuthorizeWithAAD":::
 
@@ -105,7 +105,7 @@ In diesem Beispiel wird eine [DataLakeServiceClient](/dotnet/api/azure.storage.f
 
 ## <a name="set-acls"></a>Festlegen von ACLs
 
-Wenn Sie eine Zugriffssteuerungsliste *festlegen*, **ersetzen** Sie die gesamte Zugriffssteuerungsliste einschließlich aller Einträge. Wenn Sie die Berechtigungsebene eines Sicherheitsprinzipals ändern oder der Zugriffssteuerungsliste einen neuen Sicherheitsprinzipal hinzufügen möchten, ohne dass sich dies auf bereits vorhandene Einträge auswirkt, sollten Sie die Zugriffssteuerungsliste stattdessen *aktualisieren*. Informationen dazu, wie eine Zugriffssteuerungsliste aktualisiert statt ersetzt wird, finden Sie im Abschnitt [Aktualisieren von ACLs](#update-acls) in diesem Artikel.  
+Wenn Sie eine Zugriffssteuerungsliste *festlegen*, **ersetzen** Sie die gesamte Zugriffssteuerungsliste einschließlich aller Einträge. Wenn Sie die Berechtigungsebene eines Sicherheitsprinzipals ändern oder der Zugriffssteuerungsliste einen neuen Sicherheitsprinzipal hinzufügen möchten, ohne dass sich dies auf bereits vorhandene Einträge auswirkt, sollten Sie die Zugriffssteuerungsliste stattdessen *aktualisieren*. Informationen dazu, wie eine Zugriffssteuerungsliste aktualisiert statt ersetzt wird, finden Sie im Abschnitt [Aktualisieren von ACLs](#update-acls) in diesem Artikel.
 
 Wenn Sie die Zugriffssteuerungsliste *festlegen*, müssen Sie einen Eintrag für den besitzenden Benutzer, einen Eintrag für die besitzende Gruppe und einen Eintrag für alle anderen Benutzer hinzufügen. Weitere Informationen zum besitzenden Benutzer, zur besitzenden Gruppe und zu allen anderen Benutzern finden Sie unter [Benutzer und Identitäten](data-lake-storage-access-control.md#users-and-identities).
 
@@ -137,7 +137,7 @@ Im folgenden Beispiel wird die ACL der Datei `my-file.txt` abgerufen und dann fe
 
 Sie legen Zugriffssteuerungslisten rekursiv fest, indem Sie die **DataLakeDirectoryClient.SetAccessControlRecursiveAsync**-Methode aufrufen. Übergeben Sie dieser Methode eine [Liste](/dotnet/api/system.collections.generic.list-1) der [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem). Jedes [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem)-Element definiert einen ACL-Eintrag.
 
-Wenn Sie einen **standardmäßigen** ACL-Eintrag festlegen möchten, dann können Sie die Eigenschaft [PathAccessControlItem.DefaultScope](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) der Eigenschaft [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) auf **true** festlegen. 
+Wenn Sie einen **standardmäßigen** ACL-Eintrag festlegen möchten, dann können Sie die Eigenschaft [PathAccessControlItem.DefaultScope](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) der Eigenschaft [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) auf **true** festlegen.
 
 In diesem Beispiel wird die ACL des Verzeichnisses `my-parent-directory` festgelegt. Diese Methode akzeptiert einen booleschen Parameter namens `isDefaultScope`, der angibt, ob die Standard-ACL festgelegt werden soll. Dieser Parameter wird im Konstruktor von [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) verwendet. Mit den Einträgen der ACL werden dem zuständigen Benutzer Lese-, Schreib- und Ausführungsberechtigungen und der zuständigen Gruppe nur Lese- und Ausführungsberechtigungen gewährt, während allen anderen kein Zugriff gewährt wird. Der letzte ACL-Eintrag in diesem Beispiel gewährt einem bestimmten Benutzer mit der Objekt-ID „xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx“ Lese- und Ausführungsberechtigungen.
 
@@ -158,7 +158,7 @@ In diesem Abschnitt erfahren Sie Folgendes:
 
 Rufen Sie zuerst die Zugriffssteuerungsliste eines Verzeichnisses ab, indem Sie die [DataLakeDirectoryClient.GetAccessControlAsync](/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.getaccesscontrolasync)-Methode aufrufen. Kopieren Sie die Liste der ACL-Einträge in eine neue [Liste](/dotnet/api/system.collections.generic.list-1) von [PathAccessControl](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrol)-Objekten. Suchen Sie dann den Eintrag, den Sie aktualisieren möchten, und ersetzen Sie ihn in der Liste. Legen Sie die Zugriffssteuerungsliste fest, indem Sie die [DataLakeDirectoryClient.SetAccessControlList](/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.setaccesscontrollist)-Methode aufrufen.
 
-In diesem Beispiel wird die Stamm-ACL eines Containers aktualisiert, indem der ACL-Eintrag für alle anderen Benutzer ersetzt wird. 
+In diesem Beispiel wird die Stamm-ACL eines Containers aktualisiert, indem der ACL-Eintrag für alle anderen Benutzer ersetzt wird.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/ACL_DataLake.cs" id="Snippet_UpdateACL":::
 
@@ -187,17 +187,17 @@ Sie können einen oder mehrere ACL-Einträge entfernen. In diesem Abschnitt erfa
 
 Rufen Sie zuerst die Zugriffssteuerungsliste eines Verzeichnisses ab, indem Sie die [DataLakeDirectoryClient.GetAccessControlAsync](/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.getaccesscontrolasync)-Methode aufrufen. Kopieren Sie die Liste der ACL-Einträge in eine neue [Liste](/dotnet/api/system.collections.generic.list-1) von [PathAccessControl](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrol)-Objekten. Suchen Sie anschließend den Eintrag, den Sie entfernen möchten, und rufen Sie die [Remove](/dotnet/api/system.collections.ilist.remove)-Methode der Auflistung auf. Legen Sie die aktualisierte Zugriffssteuerungsliste fest, indem Sie die [DataLakeDirectoryClient.SetAccessControlList](/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.setaccesscontrollist)-Methode aufrufen.
 
-In diesem Beispiel wird die Stamm-ACL eines Containers aktualisiert, indem der ACL-Eintrag für alle anderen Benutzer ersetzt wird. 
+In diesem Beispiel wird die Stamm-ACL eines Containers aktualisiert, indem der ACL-Eintrag für alle anderen Benutzer ersetzt wird.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/ACL_DataLake.cs" id="Snippet_RemoveACLEntry":::
 
 ### <a name="remove-acl-entries-recursively"></a>Rekursives Entfernen von ACL-Einträgen
 
-Um ACL-Einträge rekursiv zu entfernen, erstellen Sie ein neues ACL-Objekt für den zu entfernenden ACL-Eintrag, und verwenden Sie dieses Objekt dann im Entfernungsvorgang der ACL. Rufen Sie nicht die vorhandene ACL ab, stellen Sie lediglich die zu entfernenden ACL-Einträge bereit. 
+Um ACL-Einträge rekursiv zu entfernen, erstellen Sie ein neues ACL-Objekt für den zu entfernenden ACL-Eintrag, und verwenden Sie dieses Objekt dann im Entfernungsvorgang der ACL. Rufen Sie nicht die vorhandene ACL ab, stellen Sie lediglich die zu entfernenden ACL-Einträge bereit.
 
-Sie entfernen ACL-Einträge, indem Sie die **DataLakeDirectoryClient.RemoveAccessControlRecursiveAsync**-Methode aufrufen. Übergeben Sie dieser Methode eine [Liste](/dotnet/api/system.collections.generic.list-1) der [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem). Jedes [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem)-Element definiert einen ACL-Eintrag. 
+Sie entfernen ACL-Einträge, indem Sie die **DataLakeDirectoryClient.RemoveAccessControlRecursiveAsync**-Methode aufrufen. Übergeben Sie dieser Methode eine [Liste](/dotnet/api/system.collections.generic.list-1) der [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem). Jedes [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem)-Element definiert einen ACL-Eintrag.
 
-Wenn Sie einen **standardmäßigen** ACL-Eintrag entfernen möchten, dann können Sie die Eigenschaft [PathAccessControlItem.DefaultScope](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) der Eigenschaft [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) auf **true** festlegen. 
+Wenn Sie einen **standardmäßigen** ACL-Eintrag entfernen möchten, dann können Sie die Eigenschaft [PathAccessControlItem.DefaultScope](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) der Eigenschaft [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) auf **true** festlegen.
 
 In diesem Beispiel wird ein ACL-Eintrag aus der Zugriffssteuerungsliste des Verzeichnisses `my-parent-directory` entfernt. Diese Methode akzeptiert einen booleschen Parameter namens `isDefaultScope`, der angibt, ob der Eintrag aus der Standard-ACL entfernt werden soll. Dieser Parameter wird im Konstruktor von [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) verwendet.
 
@@ -209,7 +209,7 @@ Ein Beispiel, das Zugriffssteuerungslisten durch Angabe einer Batchgröße rekur
 
 Beim rekursiven Ändern von Zugriffssteuerungslisten können Laufzeit- oder Berechtigungsfehler auftreten. Starten Sie den Prozess bei Laufzeitfehlern vom Anfang neu. Berechtigungsfehler können auftreten, wenn der Sicherheitsprinzipal nicht über ausreichende Berechtigungen verfügt, um die Zugriffssteuerungsliste eines Verzeichnisses oder einer Datei zu ändern, die sich in der geänderten Verzeichnishierarchie befindet. Beheben Sie das Berechtigungsproblem, und setzen Sie dann den Prozess ab dem Zeitpunkt des Fehlers mithilfe eines Fortsetzungstokens fort, oder starten Sie den Prozess vom Anfang neu. Sie müssen das Fortsetzungstoken nicht verwenden, wenn Sie vom Anfang neu starten. Sie können ACL-Einträge ohne negative Auswirkung erneut anwenden.
 
-In diesem Beispiel wird im Fall eines Fehlers ein Fortsetzungstoken zurückgegeben. Die Anwendung kann diese Beispielmethode erneut aufrufen, nachdem der Fehler behoben wurde, und das Fortsetzungstoken übergeben. Wenn diese Beispielmethode zum ersten Mal aufgerufen wird, kann die Anwendung den Wert `null` für den Fortsetzungstokenparameter übergeben. 
+In diesem Beispiel wird im Fall eines Fehlers ein Fortsetzungstoken zurückgegeben. Die Anwendung kann diese Beispielmethode erneut aufrufen, nachdem der Fehler behoben wurde, und das Fortsetzungstoken übergeben. Wenn diese Beispielmethode zum ersten Mal aufgerufen wird, kann die Anwendung den Wert `null` für den Fortsetzungstokenparameter übergeben.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/ACL_DataLake.cs" id="Snippet_ResumeContinuationToken":::
 

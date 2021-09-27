@@ -3,12 +3,12 @@ title: Konfigurieren eines Signaltors für die ereignisbasierte Videoaufzeichnun
 description: In diesem Artikel wird erläutert, wie Sie ein Signaltor in einer Pipeline konfigurieren.
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: c0b38005010d2718235700f0ed13575e15119103
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 2da85aa31facbec922eac9ee895cd68d66326a42
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114604078"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427964"
 ---
 # <a name="configuring-a-signal-gate-for-event-based-video-recording"></a>Konfigurieren eines Signaltors für ereignisbasierte Videoaufzeichnungen
 
@@ -159,7 +159,7 @@ Beispieldiagramm:
 
 Pipelines ermöglichen die Aufzeichnung von Videos in der Cloud oder als MP4-Dateien auf dem Edge-Gerät. Diese können durch [fortlaufende Videoaufzeichnung](use-continuous-video-recording.md) oder [ereignisbasierte Videoaufzeichnung](record-event-based-live-video.md) generiert werden.
 
-Die empfohlene Namensstruktur für die Aufzeichnung in der Cloud besteht im Benennen der Videoressource als „<anytext>-${System.TopologyName}-${System.PipelineName}“. Eine festgelegte Live-Pipeline kann nur eine Verbindung mit einer RTSP-fähigen IP-Kamera herstellen, und Sie sollten die Eingabe dieser Kamera in einer Videoressource aufzeichnen. Sie können z. B. `VideoName` in den Videosenken wie nachfolgend beschrieben, einstellen:
+Die empfohlene Namensstruktur für die Aufzeichnung in der Cloud besteht im Benennen der Videoressource als `<anytext>-${System.TopologyName}-${System.PipelineName}`. Eine festgelegte Live-Pipeline kann nur eine Verbindung mit einer RTSP-fähigen IP-Kamera herstellen, und Sie sollten die Eingabe dieser Kamera in einer Videoressource aufzeichnen. Sie können z. B. `VideoName` in den Videosenken wie nachfolgend beschrieben, einstellen:
 
 ```
 "VideoName": "sampleVideo-${System.TopologyName}-${System.PipelineName}"

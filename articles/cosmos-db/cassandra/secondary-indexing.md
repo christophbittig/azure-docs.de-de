@@ -5,15 +5,15 @@ author: TheovanKraay
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
-ms.date: 04/04/2020
+ms.date: 09/03/2021
 ms.author: thvankra
 ms.reviewer: sngun
-ms.openlocfilehash: b31c351159ccba0718293dad5b81247d973ea275
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a3ac64590c2978ccd052a9dd294cf3ce49bb847e
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339122"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123479405"
 ---
 # <a name="secondary-indexing-in-azure-cosmos-db-cassandra-api"></a>Sekundäre Indizierung in der Cassandra-API von Azure Cosmos DB
 [!INCLUDE[appliesto-cassandra-api](../includes/appliesto-cassandra-api.md)]
@@ -30,6 +30,9 @@ Es wird nicht empfohlen, einen Index für eine häufig aktualisierte Spalte zu e
 > - Datentypen wie fixierte Sammlungstypen, Dezimal- und Variant-Typen.
 > - Statische Spalten
 > - Clusteringschlüssel
+
+> [!WARNING]
+> Wenn Sie einen [zusammengesetzten Primärschlüssel](cassandra-partitioning.md#compound-primary-key) in Ihrer Tabelle verwenden und *nur* nach dem Wertelement des Partitionsschlüssels des zusammengesetzten Primärschlüssels filtern möchten, stellen Sie sicher, dass Sie *explizit einen sekundären Index für den Partitionsschlüssel* hinzufügen. Die Azure Cosmos DB Cassandra-API wendet standardmäßig keine Indizes auf Partitionsschlüssel an, und der Index in diesem Szenario kann die Abfrageleistung erheblich verbessern. Weitere Informationen finden Sie im Artikel zur [Partitionierung](cassandra-partitioning.md).
 
 ## <a name="indexing-example"></a>Indizierungsbeispiel
 
@@ -72,6 +75,8 @@ Sie müssen wissen, wie der Indexname lautet, um den Index zu löschen. Führen 
 ```shell
 drop index sampleks.t1_lastname_idx;
 ```
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie, wie [automatische Indizierung](../index-overview.md) in Azure Cosmos DB funktioniert.

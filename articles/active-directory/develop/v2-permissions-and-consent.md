@@ -12,12 +12,12 @@ ms.date: 07/06/2021
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40, has-adal-ref
-ms.openlocfilehash: fca6234742958f363d45c02780c2d01246ac58a9
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: 292bca70ae9ebb8b864e95d9f5eda125a90a597d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122428843"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632973"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt
 
@@ -183,6 +183,9 @@ Einige erhöhte Berechtigungen im Microsoft-Ökosystem können als *auf den Admi
 * Schreiben von Daten in das Verzeichnis einer Organisation mit `Directory.ReadWrite.All`
 * Lesen aller Gruppen im Verzeichnis einer Organisation mit `Groups.Read.All`
 
+> [!NOTE]
+>Wenn bei Anforderungen an die Autorisierungs-, Token- oder Zustimmungsendpunkte für die Microsoft Identity Platform der Ressourcenbezeichner im Bereichsparameter weggelassen wird, wird angenommen, dass Microsoft Graph die Ressource ist. `scope=User.Read` entspricht beispielsweise `https://graph.microsoft.com/User.Read`.
+
 Ein Endbenutzer kann einer Anwendung zwar ggf. Zugriff auf diese Daten gewähren, Organisationsbenutzer können allerdings keinen Zugriff auf die gleichen sensible Unternehmensdaten erteilen. Wenn Ihre Anwendung von einem Organisationsbenutzer Zugriff auf eine dieser Berechtigungen anfordert, wird dem Benutzer in einer Fehlermeldung mitgeteilt, dass er nicht befugt ist, den Berechtigungen Ihrer App zuzustimmen.
 
 Wenn Ihre App Bereiche für auf Administratoren beschränkte Berechtigungen erfordert, muss der Administrator einer Organisation seine Einwilligung für diese Bereiche im Namen der Organisationsbenutzer erteilen. Ihre App kann den Endpunkt für die Administratoreinwilligung verwenden, um zu vermeiden, dass von Benutzern eine Einwilligung für Berechtigungen angefordert wird, die sie nicht erteilen können. Informationen zum Endpunkt für die Administratoreinwilligung finden Sie im nächsten Abschnitt.
@@ -248,7 +251,7 @@ https://graph.microsoft.com/mail.send
 ```
 
 
-| Parameter        | Bedingung        | BESCHREIBUNG                                                                                |
+| Parameter        | Bedingung        | Beschreibung                                                                                |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
 | `tenant` | Erforderlich | Der Verzeichnismandant, von dem Sie die Berechtigung anfordern möchten. Er kann als GUID oder als Anzeigename bereitgestellt werden. Alternativ kann er generisch mit Organisationen referenziert werden, wie im Beispiel zu sehen. Verwenden Sie nicht „Allgemein“, da persönliche Konten die Administratoreinwilligung nur im Kontext eines Mandanten bereitstellen können. Verwenden Sie nach Möglichkeit die Mandanten-ID, um die bestmögliche Kompatibilität mit persönlichen Konten zu gewährleisten, die Mandanten verwalten. |
 | `client_id` | Erforderlich | Die Anwendungs-ID (Client-ID), die Ihrer App [im Azure-Portal unter „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |

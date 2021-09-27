@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.author: aahi
-ms.openlocfilehash: 18099d4de55423bdef2a5c05f3aecfa34a653bd0
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 0ec2538d114bb659942bd8ef3dbd89821dda02f4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426362"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128650190"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Verwenden eines Containers für maschinelles Sehen mit Kubernetes und Helm
 
@@ -168,7 +168,7 @@ spec:
 Kopieren Sie die folgenden Hilfsfunktionen in `helpers.tpl`, und fügen Sie sie in denselben Ordner *templates* ein. `helpers.tpl` definiert nützliche Funktionen zum Generieren der Helm-Vorlage.
 
 > [!NOTE]
-> Dieser Artikel enthält Verweise auf den Begriff Slave, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
+> Dieser Artikel enthält Verweise auf den Begriff *Slave*, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
 
 ```yaml
 {{- define "rabbitmq.hostname" -}}

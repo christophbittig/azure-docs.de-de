@@ -3,16 +3,17 @@ title: Verschieben von Daten aus Teradate mithilfe von Azure Data Factory
 description: Informationen zum Teradata-Connector für den Data Factory-Dienst, mit dem Sie Daten aus einer Teradata-Datenbank verschieben können
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ef992ed907bc070643f290e7fd536de05ebf9242
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bbe6b315642b4651680a8493e288ca16ecd6544e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100387205"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128661106"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Verschieben von Daten aus Teradate mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -56,7 +57,7 @@ Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Defini
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit Teradata verknüpften Dienst spezifisch sind.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **OnPremisesTeradata**. |Ja |
 | server |Name des Teradata-Servers. |Ja |

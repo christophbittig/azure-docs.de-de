@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f3570256d74fa2da96b4b8335659b5274e492515
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 4d4f602d430a7e71db56f8d5babf78741fc4b88d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123115340"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128666645"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Erstellen mehrerer Azure Functions-Trigger für Cosmos DB
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -24,7 +24,7 @@ Dieser Artikel beschreibt, wie Sie mehrere Azure Functions-Trigger für Cosmos 
 
 ## <a name="event-based-architecture-requirements"></a>Anforderungen an die ereignisbasierte Architektur
 
-Beim Erstellen serverloser Architekturen mit [Azure Functions](../../azure-functions/functions-overview.md) gilt die [Empfehlung](../../azure-functions/functions-best-practices.md#avoid-long-running-functions), kleine zusammenarbeitende Funktionsgruppen anstelle umfangreicher, zeitintensiver Funktionen zu erstellen.
+Beim Erstellen serverloser Architekturen mit [Azure Functions](../../azure-functions/functions-overview.md) gilt die [Empfehlung](../../azure-functions/performance-reliability.md#avoid-long-running-functions), kleine zusammenarbeitende Funktionsgruppen anstelle umfangreicher, zeitintensiver Funktionen zu erstellen.
 
 Wenn Sie ereignisbasierte serverlose Flows mithilfe des [Azure Functions-Triggers für Cosmos DB](./change-feed-functions.md) erstellen, entsteht ein Szenario, in dem Sie immer dann mehrere Aktionen ausführen möchten, wenn in einem bestimmten [Azure Cosmos-Container](../account-databases-containers-items.md#azure-cosmos-containers) ein neues Ereignis auftritt. Wenn auszulösende Aktionen voneinander unabhängig sind, wäre die ideale Lösung, **pro auszuführende Aktion einen Azure Functions-Trigger für Cosmos DB zu erstellen**, wobei alle Trigger in demselben Azure Cosmos-Container auf Änderungen lauschen.
 

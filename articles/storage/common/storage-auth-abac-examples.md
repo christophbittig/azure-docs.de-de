@@ -10,12 +10,12 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.subservice: common
 ms.date: 05/06/2021
-ms.openlocfilehash: 062be43bda26169d27740777bdb60d335c9923e6
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: a04c205370ee07900b649ed0a3f6f4bf3a892685
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109489889"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128577822"
 ---
 # <a name="example-azure-role-assignment-conditions-preview"></a>Beispiele für Azure-Rollenzuweisungsbedingungen (Vorschau)
 
@@ -60,8 +60,8 @@ Diese Einstellungen müssen verwendet werden, um diese Bedingung über das Azure
 | Bedingung 1 | Einstellung |
 | --- | --- |
 | Aktionen | Inhalt aus einem Blob mit Tagbedingungen lesen |
-| Attributquelle | Ressource |
-| Attribut | Blobindextags [Werte in Schlüssel] |
+| Attributquelle | Resource |
+| attribute | Blobindextags [Werte in Schlüssel] |
 | Schlüssel | {keyName} |
 | Operator | StringEquals |
 | Wert | {keyValue} |
@@ -96,7 +96,7 @@ Diese Bedingung erfordert, dass alle neuen Blobs den Blobindex-Tagschlüssel „
 
 Es gibt zwei Berechtigungen, mit denen Sie neue Blobs erstellen können. Sie müssen dies also für beide durchführen. Fügen Sie diese Bedingung zu jeder Rollenzuweisung hinzu, die eine der folgenden Berechtigungen besitzt:
 
-- /blobs/write (erstellen oder aktualisieren) 
+- /blobs/write (erstellen oder aktualisieren)
 - /blobs/add/action (erstellen)
 
 ![Diagramm für Beispiel 2: Bedingung für das Vorhandensein von Tags in neuen Blobs](./media/storage-auth-abac-examples/example-2.png)
@@ -345,8 +345,8 @@ Diese Einstellungen müssen verwendet werden, um diese Bedingung über das Azure
 | Bedingung 1 | Einstellung |
 | --- | --- |
 | Aktionen | Löschen eines Blobs<br/>Blob lesen<br/>In Blob schreiben<br/>Blob oder Momentaufnahme erstellen oder Daten anfügen |
-| Attributquelle | Ressource |
-| Attribut | Containername |
+| Attributquelle | Resource |
+| attribute | Containername |
 | Operator | StringEquals |
 | Wert | {containerName} |
 
@@ -413,13 +413,13 @@ Diese Einstellungen müssen verwendet werden, um diese Bedingung über das Azure
 | Bedingung 1 | Einstellung |
 | --- | --- |
 | Aktionen | Blob lesen |
-| Attributquelle | Ressource |
-| Attribut | Containername |
+| Attributquelle | Resource |
+| attribute | Containername |
 | Operator | StringEquals |
 | Wert | {containerName} |
 | **Ausdruck 2** |  |
 | Operator | Und |
-| Attributquelle | Ressource |
+| Attributquelle | Resource |
 | Attribut | Blobpfad |
 | Operator | StringLike |
 | Wert | {pathString} |
@@ -484,13 +484,13 @@ Diese Einstellungen müssen verwendet werden, um diese Bedingung über das Azure
 | Bedingung 1 | Einstellung |
 | --- | --- |
 | Aktionen | In Blob schreiben<br/>Blob oder Momentaufnahme erstellen oder Daten anfügen |
-| Attributquelle | Ressource |
-| Attribut | Containername |
+| Attributquelle | Resource |
+| attribute | Containername |
 | Operator | StringEquals |
 | Wert | {containerName} |
 | **Ausdruck 2** |  |
 | Operator | Und |
-| Attributquelle | Ressource |
+| Attributquelle | Resource |
 | Attribut | Blobpfad |
 | Operator | StringLike |
 | Wert | {pathString} |
@@ -565,7 +565,7 @@ Diese Einstellungen müssen verwendet werden, um diese Bedingung über das Azure
 | Bedingung 1 | Einstellung |
 | --- | --- |
 | Aktionen | Inhalt aus einem Blob mit Tagbedingungen lesen |
-| Attributquelle | Ressource |
+| Attributquelle | Resource |
 | Attribut | Blobindextags [Werte im Schlüssel] |
 | Schlüssel | {keyName} |
 | Operator | StringEquals |
@@ -576,7 +576,7 @@ Diese Einstellungen müssen verwendet werden, um diese Bedingung über das Azure
 | Bedingung 2 | Einstellung |
 | --- | --- |
 | Aktionen | Blob lesen |
-| Attributquelle | Ressource |
+| Attributquelle | Resource |
 | Attribut | Blobpfad |
 | Operator | StringLike |
 | Wert | {pathString} |

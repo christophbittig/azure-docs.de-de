@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/06/2019
-ms.openlocfilehash: 80cec6ad233a6f6dc4771e82a98601f5db774b0f
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 2983304c7cb1515c783037a48bb78aecfc364e53
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122342894"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123535579"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension-in-azure-monitor"></a>Problembehandlung für die Log Analytics-VM-Erweiterung in Azure Monitor
 Dieser Artikel enthält Hilfe zur Problembehandlung von Fehlern, die im Zusammenhang mit der Log Analytics-VM-Erweiterung für virtuelle Windows- und Linux-Computer mit Microsoft Azure auftreten können, sowie Vorschläge für mögliche Problemlösungen.
@@ -41,7 +41,7 @@ Wenn die VM-Erweiterung *MicrosoftMonitoringAgent* nicht installiert ist oder ke
 3. Stellen Sie sicher, dass der virtuelle Computer PowerShell-Skripts ausführen kann.
 4. Vergewissern Sie sich, dass die Berechtigungen für „C:\Windows\temp“ nicht geändert wurden.
 5. Zeigen Sie den Status des Microsoft Monitoring Agents an, indem Sie Folgendes in einem PowerShell-Fenster mit erhöhten Rechten auf dem virtuellen Computer eingeben: `(New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg').GetCloudWorkspaces() | Format-List`.
-6. Überprüfen Sie die Setupprotokolldateien des Microsoft Monitoring Agents in `C:\Windows\System32\config\systemprofile\AppData\Local\SCOM\Logs`.
+6. Überprüfen Sie die Setupprotokolldateien des Microsoft Monitoring Agent in `C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent\1.0.18053.0\`. Beachten Sie, dass sich dieser Pfad basierend auf der Versionsnummer des Agents ändert.
 
 Weitere Informationen finden Sie unter [Behandeln von Problemen bei Windows-Erweiterungen](../../virtual-machines/extensions/oms-windows.md).
 

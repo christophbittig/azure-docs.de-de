@@ -10,17 +10,17 @@ ms.date: 12/28/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: a1b9c8f81de706fb53839a241115947d6cf8d0bc
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 1ea3f9181e1ebbbe4ae71c3e2505490361f066a8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113726912"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128560269"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)
 
 Eine Shared Access Signature (SAS) ermöglicht den sicheren delegierten Zugriff auf Ressourcen in Ihrem Speicherkonto. Mit SAS können Sie genau steuern, wie ein Client auf Ihre Daten zugreifen kann. Zum Beispiel:
- 
+
 - Auf welche Ressourcen der Client zugreifen kann
 
 - Welche Berechtigungen er für diese Ressourcen hat
@@ -51,13 +51,13 @@ Weitere Informationen zur Dienst-SAS finden Sie unter [Erstellen einer Dienst-SA
 
 ### <a name="account-sas"></a>Konto-SAS
 
-Eine Konto-SAS wird mit dem Speicherkontoschlüssel geschützt. Eine Konto-SAS delegiert den Zugriff auf Ressourcen in einem oder mehreren der Speicherdienste. Alle Vorgänge, die über eine Dienst-SAS oder eine SAS für die Benutzerdelegierung verfügbar sind, sind auch über eine Konto-SAS verfügbar. 
+Eine Konto-SAS wird mit dem Speicherkontoschlüssel geschützt. Eine Konto-SAS delegiert den Zugriff auf Ressourcen in einem oder mehreren der Speicherdienste. Alle Vorgänge, die über eine Dienst-SAS oder eine SAS für die Benutzerdelegierung verfügbar sind, sind auch über eine Konto-SAS verfügbar.
 
 Sie können auch den Zugriff auf Folgendes delegieren:
 
-- Vorgänge auf Dienstebene (z. B. **Abrufen/Festlegen von Diensteigenschaften** und Vorgänge zum **Abrufen von Statistiken zum Dienst**). 
+- Vorgänge auf Dienstebene (z. B. **Abrufen/Festlegen von Diensteigenschaften** und Vorgänge zum **Abrufen von Statistiken zum Dienst**).
 
-- Lese-, Schreib-und Löschvorgänge, die mit einer Dienst-SAS nicht zulässig sind. 
+- Lese-, Schreib-und Löschvorgänge, die mit einer Dienst-SAS nicht zulässig sind.
 
 Weitere Informationen zur Konto-SAS finden Sie unter [Erstellen einer Konto-SAS (Rest-API)](/rest/api/storageservices/create-account-sas).
 
@@ -82,7 +82,7 @@ Eine Shared Access Signature ist ein signierter URI, der auf eine oder mehrere S
 
 ### <a name="sas-signature-and-authorization"></a>SAS-Signatur und Autorisierung
 
-Sie können ein SAS-Token mit einem Benutzerdelegierungsschlüssel oder Speicherkontoschlüssel (gemeinsam verwendeten Schlüssel) signieren. 
+Sie können ein SAS-Token mit einem Benutzerdelegierungsschlüssel oder Speicherkontoschlüssel (gemeinsam verwendeten Schlüssel) signieren.
 
 #### <a name="signing-a-sas-token-with-a-user-delegation-key"></a>Signieren eines SAS-Tokens mit einem Benutzerdelegierungsschlüssel
 
@@ -134,15 +134,15 @@ Für viele tatsächlich arbeitende Dienste wird möglicherweise eine Mischung di
 
 Darüber hinaus ist eine SAS erforderlich, um in bestimmten Szenarien bei einem Kopiervorgang den Zugriff auf das Quellobjekt zu autorisieren:
 
-- Beim Kopieren eines Blobs in ein anderes, das sich in einem anderen Speicherkonto befindet. 
-  
+- Beim Kopieren eines Blobs in ein anderes, das sich in einem anderen Speicherkonto befindet.
+
   Sie können optional eine SAS verwenden, um auch den Zugriff auf das Zielblob zu autorisieren.
 
-- Beim Kopieren einer Datei in eine andere, die sich in einem anderen Speicherkonto befindet. 
+- Beim Kopieren einer Datei in eine andere, die sich in einem anderen Speicherkonto befindet.
 
   Sie können optional eine SAS verwenden, um auch den Zugriff auf die Zieldatei zu autorisieren.
 
-- Beim Kopieren eines Blobs in eine Datei oder umgekehrt. 
+- Beim Kopieren eines Blobs in eine Datei oder umgekehrt.
 
   Sie müssen ein SAS auch dann verwenden, wenn sich Quell- und Zielobjekt innerhalb desselben Speicherkontos befinden.
 
@@ -166,11 +166,11 @@ Mit den folgenden Empfehlungen für die Verwendung von Shared Access Signatures 
 
 - **Verwenden Sie Ablaufdaten in naher Zukunft für eine Ad-hoc-Dienst- oder -Konto-SAS.** Auf diese Weise ist eine SAS, selbst wenn sie gefährdet ist, nur für kurze Zeit gültig. Dies ist besonders dann wichtig, wenn Sie nicht auf eine gespeicherte Zugriffsrichtlinie verweisen können. Kurzfristige Ablaufzeiten beschränken auch die Datenmenge, die in einen Blob geschrieben werden kann, indem sie die Zeit verkürzen, die ein Blob für Uploads verfügbar ist.
 
-- **Sorgen Sie dafür, dass die Clients die SAS bei Bedarf automatisch erneuern müssen.** Die Clients sollten ihre SAS rechtzeitig vor der Ablaufzeit erneuern, um Zeit für Wiederholungsversuche zu bieten, falls der entsprechende Dienst nicht verfügbar sein sollte. Dies kann in einigen Fällen unnötig sein. Sie könnten z. B. beabsichtigen, dass die SAS für eine kleine Anzahl sofortiger, kurzlebiger Vorgänge eingesetzt wird. Es wird erwartet, dass diese Vorgänge innerhalb der Ablauffrist abgeschlossen werden. Daher wird nicht erwartet, dass die SAS verlängert wird. Wenn Ihr Client jedoch immer wieder Anfragen über die SAS stellen, müssen Sie sich mit dem Ablaufmechanismus auseinander setzen. 
+- **Sorgen Sie dafür, dass die Clients die SAS bei Bedarf automatisch erneuern müssen.** Die Clients sollten ihre SAS rechtzeitig vor der Ablaufzeit erneuern, um Zeit für Wiederholungsversuche zu bieten, falls der entsprechende Dienst nicht verfügbar sein sollte. Dies kann in einigen Fällen unnötig sein. Sie könnten z. B. beabsichtigen, dass die SAS für eine kleine Anzahl sofortiger, kurzlebiger Vorgänge eingesetzt wird. Es wird erwartet, dass diese Vorgänge innerhalb der Ablauffrist abgeschlossen werden. Daher wird nicht erwartet, dass die SAS verlängert wird. Wenn Ihr Client jedoch immer wieder Anfragen über die SAS stellen, müssen Sie sich mit dem Ablaufmechanismus auseinander setzen.
 
 - **Seien Sie vorsichtig mit der SAS-Startzeit.** Wenn Sie die Startzeit für eine SAS auf die aktuelle Uhrzeit festlegen, kann es in den ersten Minuten zu zeitweiligen Ausfällen kommen. Dies ist darauf zurückzuführen, dass verschiedene Computer leicht unterschiedliche aktuelle Uhrzeiten haben (was als Taktversatz bezeichnet wird). Üblicherweise sollten Sie als Startzeit eine Uhrzeit angeben, die mindestens 15 Minuten in der Vergangenheit liegt. Alternativ legen Sie gar keine Startzeit fest, wodurch sie in allen Fällen sofort wirksam wird. Dasselbe gilt für die Ablaufzeit. Rechnen Sie immer mit Zeitunterschieden von bis zu 15 Minuten in beide Richtungen bei jeder Anforderung. Für Clients mit einer REST-Version vor 2012-02-12 ist die maximale Dauer einer SAS, in der nicht auf eine gespeicherte Zugriffsrichtlinie verwiesen wird, eine Stunde. Alle Richtlinien mit längeren Zeiträumen schlagen fehl.
 
-- **Seien Sie vorsichtig mit dem SAS-Datetime-Format.** Einige Hilfsprogramme (wie z. B. AzCopy) benötigen dieses datetime-Format: +%Y-%m-%dT%H:%M:%SZ. Dieses Format schließt insbesondere die Sekunden ein. 
+- **Seien Sie vorsichtig mit dem SAS-Datetime-Format.** Einige Hilfsprogramme (wie z. B. AzCopy) benötigen dieses datetime-Format: +%Y-%m-%dT%H:%M:%SZ. Dieses Format schließt insbesondere die Sekunden ein.
 
 - **Geben Sie die freigegebene Ressource exakt an.** Aus Sicherheitsgründen sollten Benutzer nur die minimal erforderlichen Berechtigungen erhalten. Wenn ein Benutzer nur Lesezugriff auf eine einzige Entität benötigt, dann geben Sie auch nur Lesezugriff auf diese Entität, und nicht Lese-/Schreib-/Löschzugriff auf alle Entitäten. So lässt sich auch der Schaden verringern, wenn eine SAS kompromittiert wurde, denn die SAS bietet dem Angreifer weniger Angriffsfläche.
 

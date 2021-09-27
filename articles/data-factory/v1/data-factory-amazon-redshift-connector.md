@@ -3,16 +3,17 @@ title: Verschieben von Daten von Amazon Redshift mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Sie mithilfe der Kopieraktivität von Azure Data Factory Daten aus Amazon Redshift verschieben.
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 025250f47bf0630be5ae988140a5feeecfd0eaf0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 22370c0df5b11935ae107c065ec66fe98b355cd6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100377549"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128653341"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Verschieben von Daten mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -54,7 +55,7 @@ Die folgenden Abschnitte beschreiben die JSON-Eigenschaften, die zum Definieren 
 
 Die folgende Tabelle enthält Beschreibungen der JSON-Elemente, die für einen mit Amazon Redshift verknüpften Dienst spezifisch sind.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | **type** |Diese Eigenschaft muss auf **AmazonRedshift** festgelegt sein. |Ja |
 | **server** |Die IP-Adresse oder der Hostname des Amazon Redshift-Servers. |Ja |
@@ -88,7 +89,7 @@ Wenn bei einer Kopieraktivität die Quelle den Typ **AmazonRedshiftSource** aufw
 
 Alternativ können Sie auch den Typ **RelationalSource**, der Amazon Redshift enthält, mit der folgenden Eigenschaft im Abschnitt **typeProperties** verwenden. Beachten Sie, dass dieser Quelltyp den Redshift-Befehl **UNLOAD** nicht unterstützt.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | **query** |Verwendet die benutzerdefinierte Abfrage zum Lesen der Daten. | Nein (wenn die **tableName**-Eigenschaft eines DataSets angegeben wurde) |
 
@@ -102,7 +103,7 @@ Dieses Beispiel kopiert Daten aus Amazon Redshift in Azure Synapse Analytics. Da
 
 Für diesen Anwendungsfall entlädt die Kopieraktivität zuerst die Daten aus Amazon Redshift nach Amazon S3, entsprechend der Konfiguration der **redshiftUnloadSettings**-Option. Als Nächstes werden die Daten von Amazon S3 nach Azure Blob Storage kopiert, gemäß der **stagingSettings**-Option. Abschließend lädt PolyBase die Daten in Azure Synapse Analytics. Sämtliche vorläufigen Formate werden von der Kopieraktivität verarbeitet.
 
-![Workflow des Kopierens von Amazon Redshift zu Azure Synapse Analytics](media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png)
+:::image type="content" source="media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png" alt-text="Workflow des Kopierens von Amazon Redshift zu Azure Synapse Analytics":::
 
 ```json
 {

@@ -4,7 +4,7 @@ titleSuffix: Azure API Management
 description: In diesem Artikel erfahren Sie, wie Sie den Zugriff auf APIs mithilfe von Clientzertifikaten sichern. Eingehende Zertifikate können mit Richtlinienausdrücken überprüft werden.
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: erikre
 editor: ''
 ms.service: api-management
@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/01/2021
-ms.author: apimpm
-ms.openlocfilehash: 6faa78dc75b67afd4c310a94ce4a81129e09cb26
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.author: danlep
+ms.openlocfilehash: 2eac7a8de0ca49cdab85f3ab948e54e402073128
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346908"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128582914"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>Sichern von APIs über eine Clientzertifikatauthentifizierung in API Management
 

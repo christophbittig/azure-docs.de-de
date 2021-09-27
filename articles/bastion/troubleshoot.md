@@ -1,5 +1,5 @@
 ---
-title: Azure Bastion – Problembehandlung | Microsoft-Dokumentation
+title: Problembehandlung für Azure Bastion
 description: Hier erfahren Sie, wie Sie Probleme mit Azure Bastion beheben.
 services: bastion
 author: charwen
@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: 6b8ce0014524a407d6d35b85fed3bf5f41b556cf
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 86be88a7e8900ef871af1a2ad2c1c301f7487042
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122356197"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673899"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Problembehandlung für Azure Bastion
 
@@ -20,7 +20,7 @@ In diesem Artikel erfahren Sie, wie Sie die Problembehandlung für Azure Bastio
 
 ## <a name="unable-to-create-an-nsg-on-azurebastionsubnet"></a><a name="nsg"></a>Fehler beim Erstellen einer NSG im AzureBastionSubnet
 
-**F:** Beim Versuch, eine NSG im Azure Bastion-Subnetz zu erstellen, wird ein mit dem folgenden vergleichbarer Fehler angezeigt: *„Die Netzwerksicherheitsgruppe <NSG name> verfügt nicht über die erforderlichen Regeln für das Azure Bastion-Subnetz ‚AzureBastionSubnet‘“* .
+**F:** Beim Versuch, eine NSG im Azure Bastion-Subnetz zu erstellen, wird ein mit dem folgenden vergleichbarer Fehler angezeigt: *„Die Netzwerksicherheitsgruppe \<NSG name\> verfügt nicht über die erforderlichen Regeln für das Azure Bastion-Subnetz ‚AzureBastionSubnet‘“* .
 
 **A:** Wenn Sie eine NSG erstellen und auf *AzureBastionSubnet* anwenden, stellen Sie sicher, dass Sie der NSG die erforderlichen Regeln hinzugefügt haben. Eine Liste der erforderlichen Regeln finden Sie unter [Verwenden von NSG-Zugriff und Azure Bastion](./bastion-nsg.md). Wenn Sie diese Regeln nicht hinzufügen, schlägt die Erstellung/Aktualisierung der NSG fehl.
 
@@ -73,7 +73,7 @@ The key's randomart image is:
 
 **F:** Ich kann keine Verbindung mit meiner VM herstellen (aber die oben genannten Probleme treten nicht auf).
 
-**A:** Sie können Ihre Konnektivitätsprobleme beheben, indem Sie zur Registerkarte **Problembehandlung für Verbindungen** (im Abschnitt **Überwachung**) Ihrer Azure Bastion-Ressource im Azure-Portal navigieren. Die Problembehandlung von Verbindungen von Network Watcher bietet die Möglichkeit, eine direkte TCP-Verbindung von einer VM mit einer anderen VM, einem vollqualifizierten Domänennamen (FQDN), einem URI oder einer IPv4-Adresse zu überprüfen. Wählen Sie zu Beginn eine Quelle aus, von der aus die Verbindung gestartet werden soll, wählen Sie anschließend das Ziel aus, mit dem Sie eine Verbindung herstellen möchten, und wählen Sie dann „Überprüfen“ aus. [Weitere Informationen](https://docs.microsoft.com/azure/network-watcher/network-watcher-connectivity-overview)
+**A:** Sie können Ihre Konnektivitätsprobleme beheben, indem Sie zur Registerkarte **Problembehandlung für Verbindungen** (im Abschnitt **Überwachung**) Ihrer Azure Bastion-Ressource im Azure-Portal navigieren. Die Problembehandlung von Verbindungen von Network Watcher bietet die Möglichkeit, eine direkte TCP-Verbindung von einer VM mit einer anderen VM, einem vollqualifizierten Domänennamen (FQDN), einem URI oder einer IPv4-Adresse zu überprüfen. Wählen Sie zu Beginn eine Quelle aus, von der aus die Verbindung gestartet werden soll, wählen Sie anschließend das Ziel aus, mit dem Sie eine Verbindung herstellen möchten, und wählen Sie dann „Überprüfen“ aus. [Weitere Informationen](../network-watcher/network-watcher-connectivity-overview.md)
 
 
 ## <a name="file-transfer-issues"></a><a name="filetransfer"></a>Probleme bei der Dateiübertragung

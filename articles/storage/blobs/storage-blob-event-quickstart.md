@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0d05f6086bcf4bc59e9bc7f680139ccaf7660578
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 61235eccc5584ed7676433e24f8018c8af6a5b97
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122340585"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128668507"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>Schnellstart: Weiterleiten von Speicherereignissen an einen Webendpunkt per Azure CLI
 
@@ -36,7 +36,7 @@ Nach Abschluss der Schritte in diesem Artikel sehen Sie, dass die Ereignisdaten 
 
 Event Grid-Themen sind Azure-Ressourcen und müssen in einer Azure-Ressourcengruppe platziert werden. Die Azure-Ressourcengruppe ist eine logische Sammlung, in der Azure-Ressourcen bereitgestellt und verwaltet werden.
 
-Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group) eine Ressourcengruppe. 
+Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group) eine Ressourcengruppe.
 
 Im folgenden Beispiel wird am Standort *westcentralus* eine Ressourcengruppe namens `<resource_group_name>` erstellt.  Ersetzen Sie `<resource_group_name>` durch einen eindeutigen Namen für Ihre Ressourcengruppe.
 
@@ -117,7 +117,6 @@ az storage blob upload --file testfile.txt --container-name testcontainer --name
 
 Sie haben das Ereignis ausgelöst, und Event Grid hat die Nachricht an den Endpunkt gesendet, den Sie beim Abonnieren konfiguriert haben. Zeigen Sie Ihre Web-App an, um das soeben gesendete Ereignis anzuzeigen.
 
-
 ```json
 [{
   "topic": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.Storage/storageAccounts/myblobstorageaccount",
@@ -146,6 +145,7 @@ Sie haben das Ereignis ausgelöst, und Event Grid hat die Nachricht an den Endpu
 ```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
 Wenn Sie das Speicherkonto und das Ereignisabonnement weiterverwenden möchten, überspringen Sie die Bereinigung der in diesem Artikel erstellten Ressourcen. Führen Sie andernfalls den folgenden Befehl aus, um die in diesem Artikel erstellten Ressourcen zu löschen.
 
 Ersetzen Sie `<resource_group_name>` durch die weiter oben erstellte Ressourcengruppe.

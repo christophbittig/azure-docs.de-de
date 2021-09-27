@@ -8,46 +8,46 @@ ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 980c4da25e681b8bb2fb7a608481160a2c0857f2
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 1effb888e1210b431817be2ccf05ddc7d521362d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854556"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128636719"
 ---
 # <a name="copy-blobs-between-azure-storage-accounts-by-using-azcopy"></a>Kopieren von Blobs zwischen Azure-Speicherkonten mithilfe von AzCopy
 
-Sie können Blobs, Verzeichnisse und Container mithilfe des Befehlszeilenprogramms AzCopy v10 zwischen Speicherkonten kopieren. 
+Sie können Blobs, Verzeichnisse und Container mithilfe des Befehlszeilenprogramms AzCopy v10 zwischen Speicherkonten kopieren.
 
 Beispiele für andere Arten von Aufgaben, z. B. das Hochladen von Dateien, das Herunterladen von Blobs und das Synchronisieren mit Blob Storage finden Sie unter den Links im Abschnitt [Nächste Schritte](#next-steps) dieses Artikels.
 
 AzCopy verwendet die [Server-zu-Server](/rest/api/storageservices/put-block-from-url)-[APIs](/rest/api/storageservices/put-page-from-url), sodass Daten direkt zwischen Speicherservern kopiert werden. Für diese Kopiervorgänge wird nicht die Netzwerkbandbreite Ihres Computers genutzt.
 
-Lesen Sie den Artikel [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md), um AzCopy herunterzuladen und zu erfahren, wie Sie Autorisierungsanmeldeinformationen für den Speicherdienst bereitstellen können. 
+Lesen Sie den Artikel [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md), um AzCopy herunterzuladen und zu erfahren, wie Sie Autorisierungsanmeldeinformationen für den Speicherdienst bereitstellen können.
 
 ## <a name="guidelines"></a>Richtlinien
 
-Wenden Sie die folgenden Richtlinien auf Ihre AzCopy-Befehle an. 
+Wenden Sie die folgenden Richtlinien auf Ihre AzCopy-Befehle an.
 
 - Ihr Client muss über Netzwerkzugriff auf die Quell- und Zielspeicherkonten verfügen. Weitere Informationen zum Konfigurieren der Netzwerkeinstellungen für die einzelnen Speicherkonten finden Sie unter [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](storage-network-security.md?toc=/azure/storage/blobs/toc.json).
 
-- Fügen Sie ein SAS-Token an jede Quell-URL an. 
+- Fügen Sie ein SAS-Token an jede Quell-URL an.
 
-  Wenn Sie Autorisierungsanmeldeinformationen mithilfe von Azure Active Directory (Azure AD) angeben, können Sie das SAS-Token nur in der Ziel-URL weglassen. Stellen Sie sicher, dass Sie die richtigen Rollen in Ihrem Zielkonto eingerichtet haben. Weitere Informationen finden Sie unter [Option 1: Verwenden von Azure Active Directory](storage-use-azcopy-v10.md?toc=/azure/storage/blobs/toc.json#option-1-use-azure-active-directory). 
+  Wenn Sie Autorisierungsanmeldeinformationen mithilfe von Azure Active Directory (Azure AD) angeben, können Sie das SAS-Token nur in der Ziel-URL weglassen. Stellen Sie sicher, dass Sie die richtigen Rollen in Ihrem Zielkonto eingerichtet haben. Weitere Informationen finden Sie unter [Option 1: Verwenden von Azure Active Directory](storage-use-azcopy-v10.md?toc=/azure/storage/blobs/toc.json#option-1-use-azure-active-directory).
 
   In den Beispielen in diesem Artikel wird davon ausgegangen, dass Sie Ihre Identität mithilfe von Azure AD authentifiziert haben. Deshalb werden darin die SAS-Token in der Ziel-URL weggelassen.
 
--  Wenn Sie in ein Premium-Blockblob-Speicherkonto kopieren, lassen Sie die Zugriffsebene für ein Blob beim Kopiervorgang weg, indem Sie den Wert für `s2s-preserve-access-tier` auf `false` festlegen (Beispiel: `--s2s-preserve-access-tier=false`). Premium-Blockblob-Speicherkonten unterstützen keine Zugriffsebenen. 
+-  Wenn Sie in ein Premium-Blockblob-Speicherkonto kopieren, lassen Sie die Zugriffsebene für ein Blob beim Kopiervorgang weg, indem Sie den Wert für `s2s-preserve-access-tier` auf `false` festlegen (Beispiel: `--s2s-preserve-access-tier=false`). Premium-Blockblob-Speicherkonten unterstützen keine Zugriffsebenen.
 
-- Wenn Sie in ein Konto oder aus einem Konto mit einem hierarchischen Namespace kopieren, verwenden Sie in der URL-Syntax `blob.core.windows.net` statt `dfs.core.windows.net`. Der [Multiprotokollzugriff für Data Lake Storage](../blobs/data-lake-storage-multi-protocol-access.md) ermöglicht Ihnen die Verwendung von `blob.core.windows.net`. Er ist die einzige unterstützte Syntax für Kopierszenarien zwischen Konten (Konto-zu-Konto). 
+- Wenn Sie in ein Konto oder aus einem Konto mit einem hierarchischen Namespace kopieren, verwenden Sie in der URL-Syntax `blob.core.windows.net` statt `dfs.core.windows.net`. Der [Multiprotokollzugriff für Data Lake Storage](../blobs/data-lake-storage-multi-protocol-access.md) ermöglicht Ihnen die Verwendung von `blob.core.windows.net`. Er ist die einzige unterstützte Syntax für Kopierszenarien zwischen Konten (Konto-zu-Konto).
 
-- Sie können den Durchsatz von Kopiervorgängen erhöhen, indem Sie den Wert der Umgebungsvariablen `AZCOPY_CONCURRENCY_VALUE` festlegen. Weitere Informationen finden Sie unter [Erhöhen der Parallelität](storage-use-azcopy-optimize.md#increase-concurrency). 
+- Sie können den Durchsatz von Kopiervorgängen erhöhen, indem Sie den Wert der Umgebungsvariablen `AZCOPY_CONCURRENCY_VALUE` festlegen. Weitere Informationen finden Sie unter [Erhöhen der Parallelität](storage-use-azcopy-optimize.md#increase-concurrency).
 
 - Wenn die Quellblobs Indextags haben und Sie diese Tags beibehalten möchten, müssen Sie sie auf die Zielblobs erneut anwenden. Informationen zum Festlegen von Indextags finden Sie im Abschnitt [Kopieren von Blobs und Hinzufügen von Indextags](#copy-between-accounts-and-add-index-tags) dieses Artikels.
 
 ## <a name="copy-a-blob"></a>Kopieren eines Blobs
 
-Kopieren Sie ein Blob mit dem Befehl [azcopy copy](storage-ref-azcopy-copy.md) in ein anderes Speicherkonto. 
+Kopieren Sie ein Blob mit dem Befehl [azcopy copy](storage-ref-azcopy-copy.md) in ein anderes Speicherkonto.
 
 > [!TIP]
 > In diesem Beispiel werden Pfadargumente in einfache Anführungszeichen ('') eingeschlossen. Verwenden Sie in allen Befehlsshells außer der Windows-Befehlszeile (cmd.exe) einfache Anführungszeichen. Wenn Sie eine Windows-Befehlszeile (cmd.exe) verwenden, müssen Sie Pfadargumente in doppelte Anführungszeichen ("") anstelle von einfachen Anführungszeichen ('') einschließen.
@@ -62,11 +62,11 @@ Kopieren Sie ein Blob mit dem Befehl [azcopy copy](storage-ref-azcopy-copy.md) i
 azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt'
 ```
 
-Der Kopiervorgang verläuft synchron – wenn also der Befehl zurückgegeben wird, bedeutet dies, dass alle Dateien kopiert wurden. 
+Der Kopiervorgang verläuft synchron – wenn also der Befehl zurückgegeben wird, bedeutet dies, dass alle Dateien kopiert wurden.
 
 ## <a name="copy-a-directory"></a>Kopieren eines Verzeichnisses
 
-Kopieren Sie ein Verzeichnis mit dem Befehl [azcopy copy](storage-ref-azcopy-copy.md) in ein anderes Speicherkonto. 
+Kopieren Sie ein Verzeichnis mit dem Befehl [azcopy copy](storage-ref-azcopy-copy.md) in ein anderes Speicherkonto.
 
 > [!TIP]
 > In diesem Beispiel werden Pfadargumente in einfache Anführungszeichen ('') eingeschlossen. Verwenden Sie in allen Befehlsshells außer der Windows-Befehlszeile (cmd.exe) einfache Anführungszeichen. Wenn Sie eine Windows-Befehlszeile (cmd.exe) verwenden, müssen Sie Pfadargumente in doppelte Anführungszeichen ("") anstelle von einfachen Anführungszeichen ('') einschließen.
@@ -129,9 +129,9 @@ Kopieren Sie Blobs in ein anderes Speicherkonto, und fügen Sie dem Zielblob [Bl
 
 Wenn Sie Azure AD-Autorisierung verwenden, muss Ihrem Sicherheitsprinzipal die Rolle [Besitzer von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) zugewiesen werden, oder ihm muss über eine benutzerdefinierte Azure-Rolle die Berechtigung für `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [Vorgänge für Azure-Ressourcenanbieter](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) erteilt werden. Wenn Sie ein SAS-Token (Shared Access Signature) verwenden, muss es über die SAS-Berechtigung `t` den Zugriff auf die Blobtags ermöglichen.
 
-Verwenden Sie zum Hinzufügen von Tags die Option `--blob-tags` zusammen mit einem URL-codierten Schlüssel-Wert-Paar. 
+Verwenden Sie zum Hinzufügen von Tags die Option `--blob-tags` zusammen mit einem URL-codierten Schlüssel-Wert-Paar.
 
-Wenn Sie beispielsweise den Schlüssel `my tag` und den Wert `my tag value` hinzufügen möchten, würden Sie dem Zielparameter `--blob-tags='my%20tag=my%20tag%20value'` hinzufügen. 
+Wenn Sie beispielsweise den Schlüssel `my tag` und den Wert `my tag value` hinzufügen möchten, würden Sie dem Zielparameter `--blob-tags='my%20tag=my%20tag%20value'` hinzufügen.
 
 Trennen Sie mehrere Indextags durch ein kaufmännisches Und-Zeichen (`&`).  Wenn Sie beispielsweise den Schlüssel `my second tag` und den Wert `my second tag value` hinzufügen möchten, würde die gesamte Optionszeichenfolge wie folgt lauten: `--blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'`.
 
@@ -180,7 +180,7 @@ Sie können den Kopiervorgang mit optionalen Flags optimieren. Hier sind einige 
 |Kopieren auf eine bestimmte Zugriffsebene (z. B. die Archivebene)|**--block-blob-tier**=\[None\|Hot\|Cool\|Archive\]|
 |Dateien sollen automatisch dekomprimiert werden.|**--decompress**=\[gzip\|deflate\]|
 
-Eine vollständige Liste finden Sie unter [Optionen](storage-ref-azcopy-copy.md#options). 
+Eine vollständige Liste finden Sie unter [Optionen](storage-ref-azcopy-copy.md#options).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -198,4 +198,4 @@ Lesen Sie diese Artikel, um Einstellungen zu konfigurieren, die Leistung zu opti
 
 - [AzCopy v10-Konfigurationseinstellungen (Azure Storage)](storage-ref-azcopy-configuration-settings.md)
 - [Optimieren der Leistung von AzCopy mit Azure Storage](storage-use-azcopy-optimize.md)
-- [Ermitteln von Fehlern und Fortsetzen von Aufträgen mithilfe von Protokoll- und Plandateien in AzCopy](storage-use-azcopy-configure.md)
+- [Konfigurieren, Optimieren und Problembehandlung in AzCopy](storage-use-azcopy-configure.md)
