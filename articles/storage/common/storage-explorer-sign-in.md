@@ -7,16 +7,16 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/01/2021
 ms.author: marayerm
-ms.openlocfilehash: 92447c4d0c8d0a1fac6e59a11a81dc7beae52516
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: bf7fe9dc4d8c60b7e8779100bd959ee7e85415e0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123451467"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128583854"
 ---
 # <a name="sign-in-to-storage-explorer"></a>Anmelden bei Storage-Explorer
 
-Die Anmeldung ist die empfohlene Methode für den Zugriff auf Ihre Azure-Speicherressourcen mit Storage-Explorer. Durch die Anmeldung profitieren Sie von Berechtigungen auf Basis von Azure AD, etwa RBAC und Gen2 POSIX-ACLs. 
+Die Anmeldung ist die empfohlene Methode für den Zugriff auf Ihre Azure-Speicherressourcen mit Storage-Explorer. Durch die Anmeldung profitieren Sie von Berechtigungen auf Basis von Azure AD, etwa RBAC und Gen2 POSIX-ACLs.
 
 ## <a name="how-to-sign-in"></a>Anmeldung
 
@@ -59,5 +59,5 @@ Wenn Sie Probleme bei der Anmeldung haben oder nach der Anmeldung Probleme mit e
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Verwalten von Azure Blob Storage-Ressourcen mit Storage-Explorer](../../vs-azure-tools-storage-explorer-blobs.md)
-* [Problembehandlung bei Anmeldeproblemen](./storage-explorer-troubleshooting.md#sign-in-issues)
+- [Verwalten von Azure Blob Storage-Ressourcen mit Storage-Explorer](../../vs-azure-tools-storage-explorer-blobs.md)
+- [Problembehandlung bei Anmeldeproblemen](./storage-explorer-troubleshooting.md#sign-in-issues)

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/10/2021
 ms.author: alkohli
-ms.openlocfilehash: 1ef18e29abfc479307aa840d5c0f34ed52227aaf
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a2a6b7b514cb95eb327235c59bb569ac66f4a5d0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339736"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128670498"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Verwalten eines Azure Stack Edge Pro-GPU-Geräts mithilfe von Windows PowerShell
 
@@ -109,7 +109,7 @@ Sie sollten diese Konfiguration vor dem Konfigurieren von Compute im Azure-Porta
 
     `Set-HcsKubeClusterNetworkInfo -PodSubnet <subnet details> -ServiceSubnet <subnet details>`
 
-    Ersetzen Sie <subnet details> durch den Subnetzbereich, den Sie verwenden möchten. 
+    Ersetzen Sie \<subnet details\> durch den Subnetzbereich, den Sie verwenden möchten. 
 
 1. Nachdem Sie diesen Befehl ausgeführt haben, können Sie mit dem Befehl `Get-HcsKubeClusterNetworkInfo` überprüfen, ob sich die Pod- und Dienstsubnetze geändert haben.
 
@@ -485,9 +485,11 @@ Führen Sie die folgenden Schritte aus, um die Arbeitsspeicher- oder Prozessorgr
     
 1. Um die Werte für Speicher und Prozessoren für den Workerknoten zu ändern, führen Sie den folgenden Befehl aus:
 
-    Set-AzureDataBoxEdgeRoleCompute -Name <Name value from the output of Get-AzureDataBoxEdgeRole> -Memory <Value in Bytes> -ProcessorCount <Anzahl der Kerne>
+   ```powershell
+   Set-AzureDataBoxEdgeRoleCompute -Name <Name value from the output of Get-AzureDataBoxEdgeRole> -Memory <Value in Bytes> -ProcessorCount <No. of cores>
+   ```
 
-    Nachfolgend ist eine Beispielausgabe gezeigt. 
+   Nachfolgend ist eine Beispielausgabe gezeigt. 
     
     ```powershell
     [10.100.10.10]: PS>Set-AzureDataBoxEdgeRoleCompute -Name IotRole -MemoryInBytes 32GB -ProcessorCount 16

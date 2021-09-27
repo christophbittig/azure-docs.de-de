@@ -2,13 +2,13 @@
 title: Übersicht über Azure Service Bus-Drosselung | Microsoft-Dokumentation
 description: 'Übersicht über Service Bus-Drosselung: Tarif „Standard“ und „Premium“'
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 95b03859b26d97c1089b6112b41511618abdcffe
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.date: 09/20/2021
+ms.openlocfilehash: 0607cd96b68de960829d80f00765586213a55d2d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110191103"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609173"
 ---
 # <a name="throttling-operations-on-azure-service-bus"></a>Drosselungsvorgänge für Azure Service Bus
 

@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 69184abac12e9146d29ec5e7f14a536756ae0139
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 22ababc0bca34423a6205d52f29f18ad691f919e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110613576"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662620"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell"></a>Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit PowerShell
 
@@ -95,7 +95,7 @@ Weitere Informationen zu den integrierten Rollen, die die Aktion **Microsoft.Sto
 
 ## <a name="use-azure-ad-credentials-to-secure-a-sas"></a>Verwenden von Azure AD-Anmeldeinformationen zum Sichern einer SAS
 
-Wenn Sie eine SAS für die Benutzerdelegierung mit Azure PowerShell erstellen, wird der Benutzerdelegierungsschlüssel, der zum Signieren der SAS verwendet wird, implizit für Sie erstellt. Die Startzeit und die Ablaufzeit, die Sie für die SAS angeben, werden auch als Startzeit und Ablaufzeit für den Benutzerdelegierungsschlüssel verwendet. 
+Wenn Sie eine SAS für die Benutzerdelegierung mit Azure PowerShell erstellen, wird der Benutzerdelegierungsschlüssel, der zum Signieren der SAS verwendet wird, implizit für Sie erstellt. Die Startzeit und die Ablaufzeit, die Sie für die SAS angeben, werden auch als Startzeit und Ablaufzeit für den Benutzerdelegierungsschlüssel verwendet.
 
 Da das maximale Intervall, in dem der Benutzerdelegierungsschlüssel gültig ist, 7 Tage ab dem Startdatum beträgt, sollten Sie eine Ablaufzeit für die SAS angeben, die innerhalb von 7 Tagen der Startzeit liegt. Die SAS ist ungültig, nachdem der Benutzerdelegierungsschlüssel abgelaufen ist, sodass eine SAS mit einer Ablaufzeit von mehr als 7 Tagen trotzdem nur 7 Tage gültig ist.
 

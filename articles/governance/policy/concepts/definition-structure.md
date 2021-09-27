@@ -1,14 +1,14 @@
 ---
 title: Details der Struktur von Richtliniendefinitionen
 description: Beschreibt, wie Richtliniendefinitionen verwendet werden, um Konventionen für Azure-Ressourcen in Ihrer Organisation einzurichten.
-ms.date: 08/17/2021
+ms.date: 09/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: b09d11e6f1c5ea8f4882021530dc4d06d2d2f350
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: e285ca8c47d73f8b9a23c005be8c8b88d38db879
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343699"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123436102"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
@@ -105,7 +105,7 @@ Es wird empfohlen, **mode** in den meisten Fällen auf `all` zu setzen. Alle üb
 
 Der folgende Ressourcenanbietermodus wird vollständig unterstützt:
 
-- `Microsoft.Kubernetes.Data` zum Verwalten Ihrer Kubernetes-Cluster in oder außerhalb von Azure. Definitionen, die diesen Ressourcenanbietermodus nutzen, verwenden die Auswirkungen _audit_, _deny_ und _disabled_. Die Verwendung der Auswirkung [EnforceOPAConstraint](./effects.md#enforceopaconstraint) ist _veraltet_.
+- `Microsoft.Kubernetes.Data` zum Verwalten Ihrer Kubernetes-Cluster in oder außerhalb von Azure. Definitionen, die diesen Ressourcenanbietermodus nutzen, verwenden die Auswirkungen _audit_, _deny_ und _disabled_. Dieser Modus unterstützt benutzerdefinierte Definitionen als _öffentliche Vorschau_. Unter [Erstellen einer Richtliniendefinition aus einer Einschränkungsvorlage](../how-to/extension-for-vscode.md) erfahren Sie, wie Sie eine benutzerdefinierte Definition aus einer vorhandenen [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) GateKeeper v3-[Einschränkungsvorlage](https://open-policy-agent.github.io/gatekeeper/website/docs/howto/#constraint-templates) erstellen. Die Verwendung der Auswirkung [EnforceOPAConstraint](./effects.md#enforceopaconstraint) ist _veraltet_.
 
 Die folgenden Ressourcenanbietermodi werden derzeit als **Vorschau** unterstützt:
 
@@ -113,7 +113,7 @@ Die folgenden Ressourcenanbietermodi werden derzeit als **Vorschau** unterstütz
 - `Microsoft.KeyVault.Data` zur Verwaltung von Tresoren und Zertifikaten in [Azure Key Vault](../../../key-vault/general/overview.md). Weitere Informationen zu diesen Richtliniendefinitionen finden Sie unter [Integrieren von Azure Key Vault in Azure Policy](../../../key-vault/general/azure-policy.md).
 
 > [!NOTE]
-> Ressourcenanbietermodi unterstützen nur integrierte Richtliniendefinitionen und keine [Ausnahmen](./exemption-structure.md).
+> Ressourcenanbietermodi unterstützen nur integrierte Richtliniendefinitionen und keine [Ausnahmen](./exemption-structure.md), wenn nicht ausdrücklich etwas anderes angegeben wird.
 
 ## <a name="metadata"></a>Metadaten
 

@@ -1,15 +1,15 @@
 ---
 title: 'Versionshinweise: Azure Event Grid IoT Edge | Microsoft-Dokumentation'
 description: Versionshinweise zu Azure Event Grid in IoT Edge
-ms.date: 07/08/2020
+ms.date: 09/15/2021
 ms.subservice: iot-edge
 ms.topic: article
-ms.openlocfilehash: 06084169767330ac8fb573dafc3d004446034f44
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 38136a122a4cd74eac7c8fa7c104a02d86074442
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110379815"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128634708"
 ---
 # <a name="release-notes-azure-event-grid-on-iot-edge"></a>Versionshinweise: Azure Event Grid in IoT Edge
 

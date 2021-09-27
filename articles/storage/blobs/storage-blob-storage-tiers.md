@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: klaasl
-ms.openlocfilehash: b11fff95543abb4fc74b2087deffe56786998e28
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 272575ab5fac1888e6f9c3d84317e0450447f3c4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122342783"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662645"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Zugriffsebenen für Azure Blob Storage: „Heiß“, „Kalt“ und „Archiv“
 
@@ -45,8 +45,6 @@ Die folgenden Tools und Clientbibliotheken unterstützen alle Blobebenentiering 
 - Java-Clientbibliothek
 - Python-Clientbibliothek
 - Node.js-Clientbibliothek
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="storage-accounts-that-support-tiering"></a>Speicherkonten mit Tiering-Unterstützung
 
@@ -90,9 +88,9 @@ Beispielszenarien für die Verwendung der Archivzugriffsebene:
 
 ## <a name="account-level-tiering"></a>Tiering auf Kontoebene
 
-Ein Konto kann Blobs aus allen drei Zugriffsebenen enthalten. Für Blobs, denen keine explizite Ebene zugewiesen ist, wird die Ebene von der Zugriffsebeneneinstellung des Kontos abgeleitet. Wenn die Zugriffsebene vom Konto stammt, sehen Sie, dass die Eigenschaft **access tier inferred** (Abgeleitete Zugriffsebene) des Blobs auf TRUE festgelegt ist und die Eigenschaft **Access Tier** (Zugriffsebene) mit der Kontoebene übereinstimmt. Im Azure-Portal wird die Eigenschaft _access tier inferred_ (Abgeleitete Zugriffsebene) zusammen mit der Blobzugriffsebene als **Heiß (abgeleitet)** oder **Kalt (abgeleitet)** angezeigt.
+Ein Konto kann Blobs aus allen drei Zugriffsebenen enthalten. Für Blobs, denen keine explizite Ebene zugewiesen ist, wird die Ebene von der Zugriffsebeneneinstellung des Kontos abgeleitet. Wenn die Zugriffsebene vom Konto stammt, sehen Sie, dass die Eigenschaft **access tier inferred** (Abgeleitete Zugriffsebene) des Blobs auf TRUE festgelegt ist und die Eigenschaft **Access Tier** (Zugriffsebene) mit der Kontoebene übereinstimmt. Im Azure-Portal wird die Eigenschaft *access tier inferred* (Abgeleitete Zugriffsebene) zusammen mit der Blobzugriffsebene als **Heiß (abgeleitet)** oder **Kalt (abgeleitet)** angezeigt.
 
-Die Änderung der Kontozugriffsebene gilt für alle im Konto gespeicherten Objekte vom Typ _access tier inferred_ (Abgeleitete Zugriffsebene), für die keine explizite Ebene festgelegt ist. Wenn Sie die Kontoebene von „Heiß“ in „Kalt“ ändern, werden Ihnen Schreibvorgänge (pro 10.000) für alle Blobs ohne festgelegte Ebene nur für GPv2-Konten berechnet. Für diese Änderung fallen bei Blob Storage-Konten keine Gebühren an. Ihnen werden sowohl Gebühren für Lesevorgänge (pro 10.000) als auch für den Datenabruf (pro GB) berechnet, wenn Sie Ihr Blob Storage- oder GPv2-Konto von „Kalt“ in „Heiß“ ändern.
+Die Änderung der Kontozugriffsebene gilt für alle im Konto gespeicherten Objekte vom Typ *access tier inferred* (Abgeleitete Zugriffsebene), für die keine explizite Ebene festgelegt ist. Wenn Sie die Kontoebene von „Heiß“ in „Kalt“ ändern, werden Ihnen Schreibvorgänge (pro 10.000) für alle Blobs ohne festgelegte Ebene nur für GPv2-Konten berechnet. Für diese Änderung fallen bei Blob Storage-Konten keine Gebühren an. Ihnen werden sowohl Gebühren für Lesevorgänge (pro 10.000) als auch für den Datenabruf (pro GB) berechnet, wenn Sie Ihr Blob Storage- oder GPv2-Konto von „Kalt“ in „Heiß“ ändern.
 
 Nur die Zugriffsebenen „Heiß“ und „Kalt“ können als Standard-Kontozugriffsebene festgelegt werden. „Archiv“ kann nur auf Objektebene festgelegt werden. Beim Blobupload können Sie die Zugriffsebene Ihrer Wahl angeben („Heiß“, „Kalt“ oder „Archiv“), die unabhängig von der Standardkontoebene ist. Mit dieser Funktion können Sie Daten direkt in die Archivspeicherebene schreiben, um ab dem Zeitpunkt der Erstellung der Daten in Blob Storage Kosteneinsparungen zu erzielen.
 
@@ -109,7 +107,7 @@ Beim Überschreiben eines Blobs auf der heißen oder kalten Ebene erbt das neu e
 
 ### <a name="blob-lifecycle-management"></a>Lebenszyklusverwaltung für Blobs
 
-Die Blob Storage-Lebenszyklusverwaltung bietet eine umfassende regelbasierte Richtlinie, mit deren Hilfe Sie den Übergang Ihrer Daten auf die optimale Zugriffsebene und den Ablauf der Daten am Ende ihres Lebenszyklus umsetzen können. Weitere Informationen finden Sie unter [Optimieren der Kosten durch Automatisieren der Azure Blob Storage-Zugriffsebenen](storage-lifecycle-management-concepts.md).
+Die Blob Storage-Lebenszyklusverwaltung bietet eine umfassende regelbasierte Richtlinie, mit deren Hilfe Sie den Übergang Ihrer Daten auf die optimale Zugriffsebene und den Ablauf der Daten am Ende ihres Lebenszyklus umsetzen können. Weitere Informationen finden Sie unter [Optimieren der Kosten durch Automatisieren der Azure Blob Storage-Zugriffsebenen](./lifecycle-management-overview.md).
 
 > [!NOTE]
 > Für in einem Blockblob-Speicherkonto mit Premium-Leistung gespeicherte Daten ist derzeit weder mithilfe von [Blobtarif festlegen](/rest/api/storageservices/set-blob-tier) noch unter Verwendung der Azure Blob Storage-Lebenszyklusverwaltung ein Tiering zu „Heiß“, „Kalt“ oder „Archiv“ möglich.
@@ -180,10 +178,21 @@ Für alle Speicherkonten wird ein Blockblobspeicher-Preismodell verwendet, das a
 
 In ausgewählten Regionen stehen verschiedene Zugriffsebenen zusammen mit Blobebenentiering zur Verfügung. Eine vollständige Liste finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=storage).
 
+## <a name="feature-support"></a>Featureunterstützung
+
+In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf die Unterstützung hat.
+
+| Speicherkontotyp                | Blob Storage (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) |![Ja](../media/icons/yes-icon.png)              | ![Ja](../media/icons/yes-icon.png) |
+| Premium-Blockblobs          | ![Nein](../media/icons/no-icon.png)|![Nein](../media/icons/no-icon.png) | ![Nein](../media/icons/no-icon.png) |
+
+<sup>1</sup>    Für Data Lake Storage Gen2 und das NFS 3.0-Protokoll (Network File System) ist ein Speicherkonto mit aktiviertem hierarchischem Namespace erforderlich.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informieren Sie sich, wie Blobs und Konten über Zugriffsebenen hinweg verwaltet werden.
 
 - [Verwalten der Ebene eines Blobs in einem Azure Storage-Konto](manage-access-tier.md)
 - [Verwalten der Standard-Kontozugriffsebene für ein Azure Storage-Konto](../common/manage-account-default-access-tier.md)
-- [Optimieren der Kosten durch Automatisieren der Azure Blob Storage-Zugriffsebenen](storage-lifecycle-management-concepts.md)
+- [Optimieren der Kosten durch Automatisieren der Azure Blob Storage-Zugriffsebenen](./lifecycle-management-overview.md)

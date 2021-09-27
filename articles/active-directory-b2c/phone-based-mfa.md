@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
-ms.date: 02/01/2021
+ms.date: 09/20/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cc9e0be90c138ba33e1b4dfe11ea6f9c8b7da297
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 112fe68a1d8682b03a9f08839d827b71ebadf1d1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033553"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128571767"
 ---
 # <a name="securing-phone-based-multi-factor-authentication-mfa"></a>Schützen der telefonbasierten mehrstufigen Authentifizierung (MFA)
 
@@ -95,23 +95,20 @@ Führen Sie die folgenden Aktionen aus, um betrügerische Registrierungen auf ei
 - Entfernen Sie die für Ihre Organisation nicht relevanten Landeskennzahlen aus dem Dropdownmenü, in dem Benutzer ihre Telefonnummern verifizieren (diese Änderung gilt für zukünftige Registrierungen):
     
    1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als globaler Administrator Ihres Azure AD B2C-Mandanten an.
-
-   2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
-
-   3. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **Azure AD B2C**, und klicken Sie darauf.
-
-   4. Wählen Sie den Benutzerflow und dann **Sprachen** aus. Wählen Sie die Sprache für den geografischen Standort Ihrer Organisation aus, um den Bereich mit den Sprachdetails zu öffnen. (In diesem Beispiel wählen wir **English en** für die USA aus.) Wählen Sie die **Seite für die mehrstufige Authentifizierung** aus, und wählen Sie dann **Standardeinstellungen für den Download (en)** aus.
+   1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+   1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
+   1. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **Azure AD B2C**, und klicken Sie darauf.
+   1. Wählen Sie den Benutzerflow und dann **Sprachen** aus. Wählen Sie die Sprache für den geografischen Standort Ihrer Organisation aus, um den Bereich mit den Sprachdetails zu öffnen. (In diesem Beispiel wählen wir **English en** für die USA aus.) Wählen Sie die **Seite für die mehrstufige Authentifizierung** aus, und wählen Sie dann **Standardeinstellungen für den Download (en)** aus.
  
       ![Hochladen neuer Außerkraftsetzungen für die Download-Standardeinstellungen](media/phone-based-mfa/download-defaults.png)
 
-   5. Öffnen Sie die JSON-Datei, die Sie im vorherigen Schritt heruntergeladen haben. Suchen Sie in der Datei nach `DEFAULT`, und ersetzen Sie die Zeile durch `"Value": "{\"DEFAULT\":\"Country/Region\",\"US\":\"United States\"}"`. Denken Sie daran, `Overrides` auf `true` festzulegen.
+   1. Öffnen Sie die JSON-Datei, die Sie im vorherigen Schritt heruntergeladen haben. Suchen Sie in der Datei nach `DEFAULT`, und ersetzen Sie die Zeile durch `"Value": "{\"DEFAULT\":\"Country/Region\",\"US\":\"United States\"}"`. Denken Sie daran, `Overrides` auf `true` festzulegen.
 
    > [!NOTE]
    > Sie können die Liste der zulässigen Landeskennzahlen im Element `countryList` anpassen (siehe [PhoneFactor-Authentifizierungsseite, Beispiel](localization-string-ids.md#phone-factor-authentication-page-example)).
 
-   7. Speichern Sie die JSON-Datei. Wählen Sie im Bereich für die Sprachdetails unter **Neue Außerkraftsetzungen hochladen** die geänderte JSON-Datei aus, um sie hochzuladen.
-
-   8. Schließen Sie den Bereich, und wählen Sie **Benutzerflow ausführen** aus. Vergewissern Sie sich in diesem Beispiel, dass **United States** als einzige Landeskennzahl im Dropdownmenü verfügbar ist:
+   1. Speichern Sie die JSON-Datei. Wählen Sie im Bereich für die Sprachdetails unter **Neue Außerkraftsetzungen hochladen** die geänderte JSON-Datei aus, um sie hochzuladen.
+   1. Schließen Sie den Bereich, und wählen Sie **Benutzerflow ausführen** aus. Vergewissern Sie sich in diesem Beispiel, dass **United States** als einzige Landeskennzahl im Dropdownmenü verfügbar ist:
  
       ![Dropdownmenü „Landeskennzahl“](media/phone-based-mfa/country-code-drop-down.png)
 

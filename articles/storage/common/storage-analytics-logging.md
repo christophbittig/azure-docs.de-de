@@ -9,16 +9,16 @@ ms.date: 01/29/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: c536e8749ce41f51f161d9659beca3ab0ccd30ae
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: d15a3c20be365f994f219e5ea74c7aee5b0c5b28
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123032252"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128560409"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics-Protokollierung
 
-Storage Analytics protokolliert ausführliche Informationen zu erfolgreichen und nicht erfolgreichen Anforderungen an einen Speicherdienst. Anhand dieser Informationen können einzelne Anforderungen überwacht und Probleme mit einem Speicherdienst untersucht werden. Anforderungen werden auf Grundlage der besten Leistung protokolliert. Das bedeutet, dass die meisten Anforderungen einen Protokolleintrag zur Folge haben. Die Vollständigkeit und Aktualität von Storage Analytics-Protokollen werden jedoch nicht garantiert. 
+Storage Analytics protokolliert ausführliche Informationen zu erfolgreichen und nicht erfolgreichen Anforderungen an einen Speicherdienst. Anhand dieser Informationen können einzelne Anforderungen überwacht und Probleme mit einem Speicherdienst untersucht werden. Anforderungen werden auf Grundlage der besten Leistung protokolliert. Das bedeutet, dass die meisten Anforderungen einen Protokolleintrag zur Folge haben. Die Vollständigkeit und Aktualität von Storage Analytics-Protokollen werden jedoch nicht garantiert.
 
 > [!NOTE]
 > Wir empfehlen, Azure Storage-Protokolle in Azure Monitor (statt Storage Analytics-Protokollen) zu verwenden. Azure Storage-Protokolle in Azure Monitor befinden sich in der öffentlichen Vorschauphase und stehen in allen Regionen für die öffentliche Cloud für Vorschautests zur Verfügung. Diese Vorschau unterstützt Protokolle für Blobdateien (einschließlich Azure Data Lake Storage Gen2), Dateien, Warteschlangen und Tabellen. Weitere Informationen finden Sie in einem der folgenden Artikel:
@@ -28,7 +28,7 @@ Storage Analytics protokolliert ausführliche Informationen zu erfolgreichen und
 > - [Überwachen von Azure Queue Storage](../queues/monitor-queue-storage.md)
 > - [Überwachen von Azure-Tabellenspeicher](../tables/monitor-table-storage.md)
 
- Die Storage Analytics-Protokollierung ist für Ihr Speicherkonto nicht standardmäßig aktiviert. Sie können sie im [Azure-Portal](https://portal.azure.com/) oder mithilfe von PowerShell oder der Azure CLI aktivieren. Eine Schrittanleitung finden Sie unter [Aktivieren und Verwalten von Azure Storage Analytics-Protokollen (klassisch)](manage-storage-analytics-logs.md). 
+ Die Storage Analytics-Protokollierung ist für Ihr Speicherkonto nicht standardmäßig aktiviert. Sie können sie im [Azure-Portal](https://portal.azure.com/) oder mithilfe von PowerShell oder der Azure CLI aktivieren. Eine Schrittanleitung finden Sie unter [Aktivieren und Verwalten von Azure Storage Analytics-Protokollen (klassisch)](manage-storage-analytics-logs.md).
 
 Sie können Azure Storage Analytics auch programmgesteuert über die REST-API oder Clientbibliothek aktivieren. Über die Vorgänge [Get Blob Service Properties](/rest/api/storageservices/Blob-Service-REST-API), [Get Queue Service Properties](/rest/api/storageservices/Get-Queue-Service-Properties) und [Get Table Service Properties](/rest/api/storageservices/Get-Table-Service-Properties) können Sie Storage Analytics für jeden Dienst aktivieren. Ein Beispiel für die Aktivierung von Storage Analytics-Protokollen mithilfe von .NET finden Sie unter [Aktivieren von Protokollen](manage-storage-analytics-logs.md).
 
@@ -38,6 +38,8 @@ Sie können Azure Storage Analytics auch programmgesteuert über die REST-API od
 >  Die Storage Analytics-Protokollierung ist derzeit nur für Blob-, Warteschlangen- und Tabellenspeicherdienste verfügbar. Storage Analytics-Protokollierung ist außerdem für Premium-Leistung von [BlockBlobStorage-Konten](./storage-account-create.md) verfügbar. Allerdings ist sie für allgemeine v2-Konten (GPv2) mit Premium-Leistung nicht verfügbar.
 
 ## <a name="requests-logged-in-logging"></a>Erfasste Anforderungen bei der Protokollierung
+
+
 ### <a name="logging-authenticated-requests"></a>Protokollierung authentifizierter Anforderungen
 
  Die folgenden Typen authentifizierter Anforderungen werden protokolliert:
@@ -59,7 +61,7 @@ Sie können Azure Storage Analytics auch programmgesteuert über die REST-API od
 - Mit Fehlercode 304 (Nicht geändert) misslungene GET-Anforderungen
 
   Alle anderen misslungenen anonymen Anforderungen werden nicht protokolliert. Eine vollständige Liste der protokollierten Daten ist in den Themen [Protokollierte Speicheranalysevorgänge und Statusmeldungen](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) und [Protokollformat der Speicheranalyse](/rest/api/storageservices/storage-analytics-log-format) dokumentiert.
-  
+
 > [!NOTE]
 > Storage Analytics protokolliert alle internen Aufrufe der Datenebene. Aufrufe vom Azure Storage-Ressourcenanbieter werden ebenfalls protokolliert. Um diese Anforderungen zu identifizieren, suchen Sie in der Anforderungs-URL nach der Abfragezeichenfolge `<sk=system-1>`.
 
@@ -74,7 +76,7 @@ Sobald Anforderungen protokolliert werden, lädt die Speicheranalyse Zwischenerg
 
 Bei einer großen Menge an Protokolldaten mit mehreren Dateien pro Stunde können Sie anhand der Blobmetadaten ermitteln, welche Daten das Protokoll enthält, indem Sie die Blobmetadatenfelder untersuchen. Dies ist auch deshalb nützlich, weil es in manchen Fällen zu Verzögerungen beim Schreiben von Daten in die Protokolldateien kommen kann: Die Blobmetadaten bieten eine genauere Angabe des Blobinhalts als der Blobname.
 
-Mit den meisten Tools zum Durchsuchen des Speichers können Sie die Metadaten von Blobs anzeigen. Zudem können Sie diese Informationen über PowerShell oder programmgesteuert anzeigen. Der folgende PowerShell-Codeausschnitt ist ein Beispiel für die Filterung der Liste mit Protokollblobs nach dem Namen, um einen Zeitpunkt anzugeben, und nach Metadaten, um nur die Protokolle zu identifizieren, die **write**-Vorgänge enthalten.  
+Mit den meisten Tools zum Durchsuchen des Speichers können Sie die Metadaten von Blobs anzeigen. Zudem können Sie diese Informationen über PowerShell oder programmgesteuert anzeigen. Der folgende PowerShell-Codeausschnitt ist ein Beispiel für die Filterung der Liste mit Protokollblobs nach dem Namen, um einen Zeitpunkt anzugeben, und nach Metadaten, um nur die Protokolle zu identifizieren, die **write**-Vorgänge enthalten.
 
  ```powershell
  Get-AzStorageBlob -Container '$logs' |  
@@ -88,9 +90,9 @@ Mit den meisten Tools zum Durchsuchen des Speichers können Sie die Metadaten vo
      $_.ICloudBlob.Metadata.EndTime,   
      $_.ICloudBlob.Metadata.LogType  
  }  
- ```  
+ ```
 
-Informationen zum programmgesteuerten Auflisten von Blobs finden Sie unter [Auflisten von Blobressourcen](/rest/api/storageservices/Enumerating-Blob-Resources) und [Festlegen und Abrufen von Eigenschaften und Metadaten für Blobressourcen](/rest/api/storageservices/Setting-and-Retrieving-Properties-and-Metadata-for-Blob-Resources).  
+Informationen zum programmgesteuerten Auflisten von Blobs finden Sie unter [Auflisten von Blobressourcen](/rest/api/storageservices/Enumerating-Blob-Resources) und [Festlegen und Abrufen von Eigenschaften und Metadaten für Blobressourcen](/rest/api/storageservices/Setting-and-Retrieving-Properties-and-Metadata-for-Blob-Resources).
 
 ### <a name="log-naming-conventions"></a>Benennungskonventionen für Protokolle
 
@@ -138,10 +140,9 @@ Informationen zum programmgesteuerten Auflisten von Blobs finden Sie unter [Aufl
 -   `EndTime=2011-07-31T18:22:09Z`
 -   `LogVersion=1.0`
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Aktivieren und Verwalten von Azure Storage Analytics-Protokollen (klassisch)](manage-storage-analytics-logs.md)
-* [Protokollformat der Speicheranalyse](/rest/api/storageservices/storage-analytics-log-format)
-* [Protokollierte Speicheranalysevorgänge und Statusmeldungen](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)
-* [Metriken von Storage Analytics (klassisch)](storage-analytics-metrics.md)
+- [Aktivieren und Verwalten von Azure Storage Analytics-Protokollen (klassisch)](manage-storage-analytics-logs.md)
+- [Protokollformat der Speicheranalyse](/rest/api/storageservices/storage-analytics-log-format)
+- [Protokollierte Speicheranalysevorgänge und Statusmeldungen](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)
+- [Metriken von Storage Analytics (klassisch)](storage-analytics-metrics.md)

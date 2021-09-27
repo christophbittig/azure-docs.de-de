@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Erfahren Sie, wie eine Azure AD-App-Registrierung als Authentifizierungsoption für Client-Apps mit der CLI erstellt wird.
 author: baanders
 ms.author: baanders
-ms.date: 8/27/2021
+ms.date: 9/8/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7c9f69d33c89fba209ecf7ad76bc1aa8e2b6b666
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 6b769bbc1b3edb9a680fc6e2823a4e5eaeeaa201
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123224895"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128617752"
 ---
 # <a name="create-an-app-registration-to-use-with-azure-digital-twins-cli"></a>Erstellen einer App-Registrierung für die Verwendung mit Azure Digital Twins (CLI)
 

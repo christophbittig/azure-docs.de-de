@@ -7,12 +7,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 01/13/2021
-ms.openlocfilehash: 44752024c8bd2ddbceed1495067260bce3ce0037
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: fc206254180e2b5b35f10538bfb4940970b1609e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113088384"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128560805"
 ---
 # <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>Behandeln von Problemen mit der Replikationswartezeit in Azure Database for MySQL
 
@@ -32,7 +32,7 @@ Die Replikationsverzögerung der sekundären Lesereplikate hängt von mehreren F
 In diesem Artikel erfahren Sie, wie Sie Probleme mit der Replikationswartezeit in Azure Database for MySQL behandeln. Außerdem werden einige häufige Gründe für eine größere Replikationswartezeit auf Replikatservern erläutert.
 
 > [!NOTE]
-> Dieser Artikel enthält Verweise auf den Begriff _Slave_, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
+> Dieser Artikel enthält Verweise auf den Begriff *Slave*, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
 >
 
 ## <a name="replication-concepts"></a>Replikationskonzepte

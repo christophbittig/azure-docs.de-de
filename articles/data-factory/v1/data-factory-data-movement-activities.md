@@ -3,16 +3,17 @@ title: Verschieben von Daten mit der Kopieraktivität
 description: 'Informieren Sie sich über das Verschieben von Daten in Data Factory-Pipelines: Datenmigration zwischen Cloudspeichern sowie zwischen lokalen Speichern und Cloudspeichern. Verwenden der Kopieraktivität'
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 99190ccab6dc299fac970fce6fb0222096592357
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: d138cab93d9cd9b1c4c44e92e6fcfb583103fb70
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108766895"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629406"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Verschieben von Daten mit der Kopieraktivität
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -25,7 +26,7 @@ ms.locfileid: "108766895"
 ## <a name="overview"></a>Übersicht
 In Azure Data Factory können Sie die Kopieraktivität verwenden, um Daten zwischen verschiedenen lokalen und Clouddatenspeichern zu kopieren. Nach dem Kopieren können die Daten weiter transformiert und analysiert werden. Sie können die Kopieraktivität auch zum Veröffentlichen von Transformations- und Analyseergebnissen für die Verwendung für Business Intelligence (BI) und in Anwendungen verwenden.
 
-![Rolle der Kopieraktivität](media/data-factory-data-movement-activities/copy-activity.png)
+:::image type="content" source="media/data-factory-data-movement-activities/copy-activity.png" alt-text="Rolle der Kopieraktivität":::
 
 Der Kopieraktivität liegt ein sicherer, zuverlässiger, skalierbarer und [global verfügbarer Dienst](#global)zugrunde. Dieser Artikel enthält Details zum Verschieben von Daten in Data Factory und zur Kopieraktivität.
 
@@ -45,14 +46,14 @@ Wenn sich sowohl Quell- als auch der Senkendatenspeicher in der Cloud befinden, 
 
 Der Dienst wählt automatisch die optimale Region zum Durchführen der Datenverschiebung aus. Diese Region ist üblicherweise diejenige, die sich am nächsten am Senkendatenspeicher befindet.
 
-![Cloud-zu-Cloud-Kopie](./media/data-factory-data-movement-activities/cloud-to-cloud.png)
+:::image type="content" source="./media/data-factory-data-movement-activities/cloud-to-cloud.png" alt-text="Cloud-zu-Cloud-Kopie":::
 
 ### <a name="copy-data-between-an-on-premises-data-store-and-a-cloud-data-store"></a>Kopieren von Daten zwischen einem lokalen Datenspeicher und einem Clouddatenspeicher
 Um Daten sicher zwischen einem lokalen Datenspeicher und einem Clouddatenspeicher zu verschieben, installieren Sie auf dem lokalen Computer ein Datenverwaltungsgateway. Ein Datenverwaltungsgateway ist ein Agent, der eine hybride Datenverschiebung und -verarbeitung ermöglicht. Sie können das Gateway auf dem gleichen Computer installieren, auf dem sich der Datenspeicher selbst befindet, oder auf einem separaten Computer, der Zugriff auf den Datenspeicher hat.
 
 In diesem Szenario führt das Datenverwaltungsgateway die Serialisierung/Deserialisierung, Komprimierung/Dekomprimierung, Spaltenzuordnung und Typumwandlung aus. Die Daten fließen nicht über den Azure Data Factory-Dienst. Das Datenverwaltungsgateway schreibt die Daten stattdessen direkt in den Zielspeicher.
 
-![Kopie zwischen lokalem und Cloudspeicher](./media/data-factory-data-movement-activities/onprem-to-cloud.png)
+:::image type="content" source="./media/data-factory-data-movement-activities/onprem-to-cloud.png" alt-text="Kopie zwischen lokalem und Cloudspeicher":::
 
 Unter [Verschieben von Daten zwischen lokalen Datenspeichern und Clouddatenspeichern](data-factory-move-data-between-onprem-and-cloud.md) finden Sie eine Einführung und eine exemplarische Vorgehensweise zu diesem Thema. Ausführliche Informationen zu diesem Agent finden Sie unter [Datenverwaltungsgateway](data-factory-data-management-gateway.md) .
 

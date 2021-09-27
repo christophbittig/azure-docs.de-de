@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 920f7912a1289fe92618d893b94943784e4a9a3a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4c5a361fafeaed6452481adc9e6eae856828bfda
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102520726"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128635582"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Bereitstellen einer zustandslosen PHP `Guestbook`-Anwendung mit Redis in einem für Arc aktivierten Kubernetes-Cluster auf einem Azure Stack Edge Pro-GPU-Gerät
 
@@ -30,14 +30,11 @@ Die Bereitstellung erfolgt unter Verwendung von GitOps in dem für Arc aktiviert
 Dieses Verfahren ist für Personen gedacht, die den Artikel [Kubernetes-Workloads auf einem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-kubernetes-workload-management.md) gelesen haben und mit den in [Was ist Kubernetes mit Azure Arc-Unterstützung (Vorschauversion)?](../azure-arc/kubernetes/overview.md) beschriebenen Konzepten vertraut sind.
 
 > [!NOTE]
-> Dieser Artikel enthält Verweise auf den Begriff Slave, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wird, wird er auch aus diesem Artikel entfernt.
+> Dieser Artikel enthält Verweise auf den Begriff *Slave*, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wird, wird er auch aus diesem Artikel entfernt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Stellen Sie vor der Bereitstellung der zustandslosen Anwendung sicher, dass die folgenden Voraussetzungen auf Ihrem Gerät und auf dem Client erfüllt sind, den Sie für den Zugriff auf das Gerät verwenden:
-
-> [!NOTE]
-> Dieser Artikel enthält Verweise auf den Begriff Slave, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wird, wird er auch aus diesem Artikel entfernt.
 
 ### <a name="for-device"></a>Für das Gerät
 

@@ -8,12 +8,12 @@ ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e289ad866ba53de761077f22b27ef4ff763451ff
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: ccf2f423137e4732b2785f23256577c92eee07ac
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114468551"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595653"
 ---
 # <a name="get-started-with-azcopy"></a>Erste Schritte mit AzCopy
 
@@ -46,7 +46,7 @@ Erwägen Sie aus Gründen der Bedienfreundlichkeit, den Speicherort des Verzeich
 
 Falls Sie das AzCopy-Verzeichnis nicht zum Pfad hinzufügen, müssen Sie in das Verzeichnis der ausführbaren AzCopy-Datei wechseln und in Windows PowerShell-Eingabeaufforderungen `azcopy` oder `.\azcopy` eingeben.
 
-Als Besitzer Ihres Azure Storage-Kontos erhalten Sie nicht automatisch Berechtigungen für den Zugriff auf Daten. Bevor Sie etwas Sinnvolles mit AzCopy machen können, müssen Sie entscheiden, wie Sie dem Speicherdienst die Autorisierungsanmeldeinformationen bereitstellen werden. 
+Als Besitzer Ihres Azure Storage-Kontos erhalten Sie nicht automatisch Berechtigungen für den Zugriff auf Daten. Bevor Sie etwas Sinnvolles mit AzCopy machen können, müssen Sie entscheiden, wie Sie dem Speicherdienst die Autorisierungsanmeldeinformationen bereitstellen werden.
 
 <a id="choose-how-youll-provide-authorization-credentials"></a>
 
@@ -64,7 +64,7 @@ Verwenden Sie diese Tabelle als Richtlinie:
 
 #### <a name="option-1-use-azure-active-directory"></a>Option 1: Verwenden von Azure Active Directory
 
-Diese Option ist nur für Blobspeicher verfügbar. Mithilfe von Azure Active Directory können Sie ein einziges Mal Anmeldeinformationen bereitstellen, statt jedem Befehl ein SAS-Token anfügen zu müssen.  
+Diese Option ist nur für Blobspeicher verfügbar. Mithilfe von Azure Active Directory können Sie ein einziges Mal Anmeldeinformationen bereitstellen, statt jedem Befehl ein SAS-Token anfügen zu müssen.
 
 > [!NOTE]
 > Wenn Sie im aktuellen Release Blobs zwischen Speicherkonten kopieren möchten, müssen Sie an jede Quell-URL ein SAS-Token anfügen. Nur in der Ziel-URL kann das SAS-Token weggelassen werden. Beispiele finden Sie unter [Kopieren von Blobs zwischen Speicherkonten](#transfer-data).
@@ -84,7 +84,7 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 Weitere Informationen zu SAS-Tokens und wie Sie eins erhalten, finden Sie unter [Verwenden von SAS (Shared Access Signatures)](./storage-sas-overview.md).
 
 > [!NOTE]
-> Über die Einstellung [Sichere Übertragung erforderlich](storage-require-secure-transfer.md) eines Speicherkontos wird festgelegt, ob die Verbindung mit einem Speicherkonto durch TLS (Transport Layer Security) geschützt wird. Die Einstellung ist standardmäßig aktiviert.   
+> Über die Einstellung [Sichere Übertragung erforderlich](storage-require-secure-transfer.md) eines Speicherkontos wird festgelegt, ob die Verbindung mit einem Speicherkonto durch TLS (Transport Layer Security) geschützt wird. Die Einstellung ist standardmäßig aktiviert.
 
 <a id="transfer-data"></a>
 
@@ -116,7 +116,7 @@ Wenn Sie weitere Informationen zu einem bestimmten Befehl erhalten möchten, fü
 
 ### <a name="list-of-commands"></a>Befehlsliste
 
-In der folgenden Tabelle sind alle AzCopy v10-Befehle aufgeführt. Jeder Befehl ist mit einem Referenzartikel verknüpft. 
+In der folgenden Tabelle sind alle AzCopy v10-Befehle aufgeführt. Jeder Befehl ist mit einem Referenzartikel verknüpft.
 
 |Get-Help|Beschreibung|
 |---|---|
@@ -140,7 +140,7 @@ In der folgenden Tabelle sind alle AzCopy v10-Befehle aufgeführt. Jeder Befehl
 |[azcopy sync](storage-ref-azcopy-sync.md?toc=/azure/storage/blobs/toc.json)|Repliziert den Quellspeicherort an den Zielspeicherort.|
 
 > [!NOTE]
-> AzCopy bietet keinen Befehl zum Umbenennen von Dateien. 
+> AzCopy bietet keinen Befehl zum Umbenennen von Dateien.
 
 ## <a name="use-in-a-script"></a>Verwenden in einem Skript
 

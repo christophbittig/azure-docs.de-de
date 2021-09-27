@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/13/2020
 ms.author: justinha
-ms.openlocfilehash: 1e98f32bd6fe7d5373d5ab6621ffdce5e79abc08
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4de85e8cf62ed2b8e5726d2c569396bcba1cb968
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96619588"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128590098"
 ---
 # <a name="join-a-coreos-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Einbinden eines virtuellen CoreOS-Computers in eine verwaltete Azure Active Directory Domain Services-Domäne
 
@@ -35,6 +35,7 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
 * Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
     * Falls Sie keine solche Domäne haben, gehen Sie wie im ersten Tutorial beschrieben vor, um eine [verwaltete Azure Active Directory Domain Services-Domäne zu erstellen und zu konfigurieren][create-azure-ad-ds-instance].
 * Ein Benutzerkonto, das Teil der verwalteten Domäne ist.
+* Eindeutige Linux-VM-Namen, die maximal 15 Zeichen umfassen. So vermeiden Sie Konflikte in Active Directory, die durch abgeschnittene Namen entstehen.
 
 ## <a name="create-and-connect-to-a-coreos-linux-vm"></a>Erstellen einer CoreOS Linux-VM und Herstellen einer Verbindung
 

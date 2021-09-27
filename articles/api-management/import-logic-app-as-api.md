@@ -3,7 +3,7 @@ title: Importieren einer Logik-App als eine API mit dem Azure-Portal | Microsoft
 description: Dieser Artikel veranschaulicht, wie Sie API Management (APIM) verwenden, um Logik-Apps als API zu importieren.
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -11,13 +11,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/16/2021
-ms.author: apimpm
-ms.openlocfilehash: 6825e5d7849f97aac4627d4856d26b3e08ab6761
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.author: danlep
+ms.openlocfilehash: 509a143a368c4626b7d0a39e1c3f2d15c8a3d0b2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "108230569"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128667766"
 ---
 # <a name="import-a-logic-app-as-an-api"></a>Importieren einer Logik-App als API
 

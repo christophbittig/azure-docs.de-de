@@ -3,16 +3,17 @@ title: Sicherheitsüberlegungen für Datenverschiebung in Azure Data Factory
 description: Sie erhalten Informationen über das Schützen von Datenverschiebung in Azure Data Factory.
 author: nabhishek
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 33b1ad381b3f7865768f9e39295a2985f8aa5234
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0823c085470e83c82164fa578f1465e95eda81f0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100375101"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128596199"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory – Sicherheitsüberlegungen für Datenverschiebung
 
@@ -80,7 +81,7 @@ Salesforce unterstützt Shield Platform Encryption, die eine Verschlüsselung al
 ## <a name="hybrid-scenarios-using-data-management-gateway"></a>Hybridszenarios (mit Datenverwaltungsgateway)
 Hybridszenarios erfordern, dass Datenverwaltungsgateway in einem lokalen Netzwerk oder einem virtuellen Netzwerk (Azure) oder einer virtuellen privaten Cloud (Amazon) installiert wird. Das Gateway muss auf die lokalen Datenspeicher zugreifen können. Weitere Informationen zum Gateway finden Sie unter [Datenverwaltungsgateway](data-factory-data-management-gateway.md). 
 
-![Kanäle des Datenverwaltungsgateways](media/data-factory-data-movement-security-considerations/data-management-gateway-channels.png)
+:::image type="content" source="media/data-factory-data-movement-security-considerations/data-management-gateway-channels.png" alt-text="Kanäle des Datenverwaltungsgateways":::
 
 Der **Befehlskanal** ermöglicht Kommunikation zwischen Datenverschiebungsdiensten in Data Factory und Datenverwaltungsgateway. Die Kommunikation enthält die Informationen, die sich auf die Aktivität beziehen. Der Datenkanal wird dazu verwendet, Daten zwischen lokalen Datenspeichern und Clouddatenspeichern zu übertragen.    
 
@@ -100,7 +101,7 @@ Sie können Datenspeicher-Anmeldeinformationen über die [JavaScript-Kryptografi
 #### <a name="click-once-credentials-manager-app"></a>ClickOnce-Anwendung „Anmeldeinformationsverwaltung“
 Sie können die ClickOnce-basierte Anwendung „Anmeldeinformationsverwaltung“ aus dem Azure-Portal/Kopier-Assistenten starten, wenn Sie Pipelines erstellen. Diese Anwendung stellt sicher, dass Anmeldeinformationen nicht im Nur-Text-Format übertragen werden. Standardmäßig verwendet die Anwendung den Port **8050** auf dem Computer mit dem Gateway für sichere Kommunikation. Dieser Port kann bei Bedarf geändert werden.  
   
-![HTTPS-Port für das Gateway](media/data-factory-data-movement-security-considerations/https-port-for-gateway.png)
+:::image type="content" source="media/data-factory-data-movement-security-considerations/https-port-for-gateway.png" alt-text="HTTPS-Port für das Gateway":::
 
 Derzeit verwendet das Datenverwaltungsgateway ein einzelnes **Zertifikat**. Dieses Zertifikat wird während der Gatewayinstallation erstellt (gilt für Datenverwaltungsgateway, das nach November 2016 erstellt wurde, und Version 2.4.xxxx.x oder höher). Sie können dieses Zertifikat durch Ihr eigenes SSL/TLS-Zertifikat ersetzen. Dieses Zertifikat wird von der Anwendung „Anmeldeinformationsverwaltung“ verwendet, um sicher eine Verbindung mit dem Gatewaycomputer zum Festlegen von Datenspeicher-Anmeldeinformationen herzustellen. Die Anwendung speichert die Datenspeicher-Anmeldeinformationen sicher lokal, indem sie die Windows-[DPAPI](/previous-versions/ms995355(v=msdn.10)) auf dem Computer mit dem Gateway verwendet. 
 
@@ -132,11 +133,11 @@ Die folgenden Abbildungen veranschaulichen die Verwendung von Datenverwaltungsga
 
 **ExpressRoute:**
  
-![ExpressRoute mit Gateway verwenden](media/data-factory-data-movement-security-considerations/express-route-for-gateway.png) 
+:::image type="content" source="media/data-factory-data-movement-security-considerations/express-route-for-gateway.png" alt-text="ExpressRoute mit Gateway verwenden"::: 
 
 **IPSec-VPN:**
 
-![IPSec-VPN mit Gateway](media/data-factory-data-movement-security-considerations/ipsec-vpn-for-gateway.png)
+:::image type="content" source="media/data-factory-data-movement-security-considerations/ipsec-vpn-for-gateway.png" alt-text="IPSec-VPN mit Gateway":::
 
 ### <a name="firewall-configurations-and-filtering-ip-address-of-gateway"></a>Firewallkonfigurationen und Filtern der IP-Adresse des Gateways
 
@@ -162,7 +163,7 @@ Die folgende Tabelle enthält die Anforderungen für **eingehende Ports** für d
 | ------------- | ----------- | 
 | 8050 (TCP) | Ist für die Anwendung „Anmeldeinformationsverwaltung“ erforderlich, um Anmeldeinformationen für lokale Datenspeicher sicher auf dem Gateway festzulegen. | 
 
-![Gatewayportanforderungen](media/data-factory-data-movement-security-considerations/gateway-port-requirements.png)
+:::image type="content" source="media/data-factory-data-movement-security-considerations/gateway-port-requirements.png" alt-text="Gatewayportanforderungen":::
 
 #### <a name="ip-configurationsfiltering-in-data-store"></a>Konfiguration und Filtern der IP-Adresse im Datenspeicher
 Einige Datenspeicher in der Cloud erfordern auch die Genehmigung der IP-Adresse des Computers, über den auf sie zugegriffen wird. Stellen Sie sicher, dass die IP-Adresse des Gatewaycomputers ordnungsgemäß in der Firewall genehmigt bzw. konfiguriert ist.

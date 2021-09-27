@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: mbullwin
 keywords: Anomalieerkennung, maschinelles Lernen, Algorithmen
-ms.openlocfilehash: 85c169afb8c6158a3e5c32ac4d62cbeeabb4c2bb
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 7f8e9c26de1cceb6c4dec514e21d36b9843bb44e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123035598"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588160"
 ---
 # <a name="multivariate-time-series-anomaly-detection-preview"></a>Erkennung von multivariaten Zeitreihenanomalien (Vorschau)
 
@@ -34,7 +34,7 @@ Wenn es Ihr Ziel ist, Anomalien auf der Systemebene anhand einer Gruppe von Zeit
 
 ## <a name="notebook"></a>Notebook
 
-Machen Sie sich anhand [dieses Notebooks](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb) mit dem Aufrufen der (multivariaten) Anomalieerkennungs-API vertraut. In dieser Jupyter Notebook-Instanz wird gezeigt, wie Sie eine API-Anforderung senden und das Ergebnis visualisieren.
+Machen Sie sich anhand [dieses Notebooks](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/API%20Sample/Multivariate%20API%20Demo%20Notebook.ipynb) mit dem Aufrufen der (multivariaten) Anomalieerkennungs-API vertraut. In dieser Jupyter Notebook-Instanz wird gezeigt, wie Sie eine API-Anforderung senden und das Ergebnis visualisieren.
 
 Um das Notebook ausführen zu können, rufen Sie einen gültigen **Abonnementschlüssel** für die Anomalieerkennungs-API sowie einen **API-Endpunkt** ab. Fügen Sie im Notebook den gültigen Abonnementschlüssel für die Anomalieerkennungs-API zur `subscription_key`-Variablen hinzu, und ändern Sie die `endpoint`-Variable in Ihren Endpunkt.
 

@@ -4,16 +4,16 @@ description: Azure Cosmos DB unterstützt derzeit nur eine irreversible Migratio
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.date: 08/17/2021
+ms.date: 08/26/2021
 ms.author: sngun
 ms.topic: how-to
 ms.reviewer: sngun
-ms.openlocfilehash: 286caa42fd095a5a273c164d860154e88bc38748
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 270c0fd585c2232b86011673e460737173106b09
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397390"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123479074"
 ---
 # <a name="migrate-an-azure-cosmos-db-account-from-periodic-to-continuous-backup-mode"></a>Migrieren eines Azure Cosmos DB-Kontos vom zyklischen Sicherungsmodus zum fortlaufenden Sicherungsmodus
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -175,7 +175,7 @@ Zum Wiederherstellen auf einen Zeitpunkt nach t5 können Sie – da sich Ihr Kon
 Wenn Sie eine Wiederherstellung auf einen Zeitpunkt vor t1 durchführen müssen, öffnen Sie ein Supportticket, genauso wie Sie es normalerweise bei einem fortlaufenden Konto tun. Nach der Migration haben Sie bis zu 30 Tage Zeit, um zyklische Wiederherstellungen auszuführen.  Während dieser 30 Tage können Sie Wiederherstellungen basierend auf den Beibehaltungs- und Intervalleinstellungen ausführen, die vor der Migration in Ihrem Konto für Sicherungen galten.  Ein Beispiel: Wenn Ihre Sicherungen so konfiguriert waren, dass 24 Exemplare mit Intervallen von jeweils einer Stunde beibehalten wurden, können Sie eine Wiederherstellung auf jeden beliebigen Zeitpunkt zwischen [t1 minus 24 Stunden] und [t1] ausführen.
 
 #### <a name="which-account-level-control-plane-operations-are-blocked-during-migration"></a>Welche Vorgänge auf Konto- bzw. Steuerungsebene sind während der Migration blockiert?
-Vorgänge wie Hinzufügen/Entfernen von Regionen, Failover, Replikation, Ändern der Sicherungsrichtlinie oder zu Datenverschiebung führende Durchsatzänderungen sind während der Migration blockiert.
+Vorgänge wie Hinzufügen/Entfernen von Regionen, Failover, Ändern der Sicherungsrichtlinie oder zu Datenverschiebung führende Durchsatzänderungen sind während der Migration blockiert.
 
 #### <a name="if-the-migration-fails-for-some-underlying-issue-would-it-still-block-the-control-plane-operation-until-it-is-retried-and-completed-successfully"></a>Wenn die Migration aufgrund eines zugrunde liegenden Problems nicht abgeschlossen werden kann, sind Vorgänge auf Steuerungsebene weiterhin blockiert, bis die Migration erneut versucht und erfolgreich abgeschlossen wurde?
 Vorgänge auf Steuerungsebene werden durch eine nicht abgeschlossene Migration nicht blockiert. Wenn die Migration nicht abgeschlossen wurde, empfiehlt es sich, sie zu wiederholen, bis sie erfolgreich abgeschlossen ist, bevor Sie andere Vorgänge auf Steuerungsebene ausführen.
@@ -200,3 +200,7 @@ Weitere Informationen zum Modus fortlaufender Sicherungen finden Sie in den folg
 * [Fortlaufende Sicherung: Ressourcenmodell](continuous-backup-restore-resource-model.md)
 
 * Wiederherstellen eines Kontos über das [Azure-Portal](restore-account-continuous-backup.md#restore-account-portal), [PowerShell](restore-account-continuous-backup.md#restore-account-powershell), die [CLI](restore-account-continuous-backup.md#restore-account-cli) oder [Azure Resource Manager](restore-account-continuous-backup.md#restore-arm-template)
+
+Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen?
+   * Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](convert-vcore-to-request-unit.md) 
+   * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbank-Workload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)

@@ -4,15 +4,16 @@ description: Dieses Tutorial enthält Schritte zum dynamischen Festlegen von Spa
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2021
 ms.date: 06/17/2021
-ms.openlocfilehash: 96143f39811658c2794b46f3504a1a604264ab13
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.openlocfilehash: 576b11e78c8cf928863d7db700942cbeab884e2c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112542803"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128617828"
 ---
 # <a name="dynamically-set-column-names-in-data-flows"></a>Dynamisches Festlegen von Spaltennamen in Datenflüssen
 
@@ -51,17 +52,17 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Datenflussaktivität.
 1. Geben Sie auf der Registerkarte **Allgemein** der Pipeline als **Namen** der Pipeline **DeltaLake** ein.
 1. Setzen Sie auf der oberen Leiste der Factory den Schieberegler **Datenfluss debuggen** auf „Ein“. Der Debugmodus ermöglicht das interaktive Testen von Transformationslogik mit einem aktiven Spark-Cluster. Die Aufwärmphase von Datenflussclustern dauert 5 bis 7 Minuten. Den Benutzern wird empfohlen, zuerst den Debugmodus zu aktivieren, wenn sie die Entwicklung eines Datenflusses planen. Weitere Informationen finden Sie unter [Debugmodus](concepts-data-flow-debug-mode.md).
 
-    ![Datenflussaktivität](media/tutorial-data-flow/dataflow1.png)
+    :::image type="content" source="media/tutorial-data-flow/dataflow1.png" alt-text="Datenflussaktivität":::
 1. Erweitern Sie im Bereich **Aktivitäten** das Accordion-Element **Verschieben und transformieren**. Ziehen Sie die **Datenfluss**-Aktivität per Drag & Drop aus dem Bereich auf die Pipelinecanvas.
 
-    ![Screenshot der Pipelinecanvas, auf der die Datenflussaktivität abgelegt werden kann](media/tutorial-data-flow/activity1.png)
+    :::image type="content" source="media/tutorial-data-flow/activity1.png" alt-text="Screenshot der Pipelinecanvas, auf der die Datenflussaktivität abgelegt werden kann":::
 1. Wählen Sie im Popupfenster **Datenfluss hinzufügen** die Option **Neuen Datenfluss erstellen** aus, und geben Sie dem Datenfluss den Namen **DynaCols**. Klicken Sie anschließend auf „Fertig stellen“.    
 
 ## <a name="build-dynamic-column-mapping-in-data-flows"></a>Erstellen einer dynamischen Spaltenzuordnung in Datenflüssen
 
 In diesem Tutorial verwenden wir eine Beispieldatei zur Filmbewertung und benennen einige Felder in der Quelle in einen neuen Satz von Zielspalten um, die sich im Laufe der Zeit ändern können. Die Datasets, die Sie unten erstellen, sollten auf diese Filme-CSV-Datei in Ihrem Blob Storage- oder ADLS Gen2-Speicherkonto verweisen. [Laden Sie die Filmdatei hier herunter](https://github.com/kromerm/adfdataflowdocs/blob/master/sampledata/moviesDB.csv), und speichern Sie die Datei in Ihrem Azure-Speicherkonto.
 
-![Abschließender Flow](media/data-flow/dynacols-1.png "Abschließender Flow")
+:::image type="content" source="media/data-flow/dynacols-1.png" alt-text="Abschließender Flow":::
 
 ### <a name="tutorial-objectives"></a>Ziele des Tutorials
 
@@ -95,7 +96,7 @@ Zunächst richten Sie die Datenflussumgebung für jeden der unten beschriebenen 
 
 In diesem ersten Szenario legen Sie Ausgabespaltennamen in Ihrem Datenfluss fest, indem Sie die Spaltenzuordnung auf Basis des Abgleichs von Eingangsfeldern mit einem Parameter festlegen, der ein Zeichenfolgenarray von Spalten ist, und jeden Arrayindex mit der Ordnungsposition der Eingangsspalte abgleichen. Wenn Sie diesen Datenfluss von einer Pipeline aus ausführen, können Sie bei jeder Pipelineausführung unterschiedliche Spaltennamen festlegen, indem Sie diesen Zeichenfolgenarrayparameter an die Datenflussaktivität senden.
 
-![Parameter](media/data-flow/dynacols-3.png "Parameter")
+:::image type="content" source="media/data-flow/dynacols-3.png" alt-text="Parameter":::
 
 1. Wechseln Sie zurück zum Datenflussdesigner, und bearbeiten Sie den oben erstellten Datenfluss.
 1. Klicken Sie auf die Registerkarte „Parameter“.
@@ -108,7 +109,7 @@ In diesem ersten Szenario legen Sie Ausgabespaltennamen in Ihrem Datenfluss fest
 1. Für die erste Spalte ist die Abgleichsregel ```position==1``` und der Name ```$parameter1[1]```.
 1. Befolgen Sie das gleiche Muster für Spalte 2 und 3.
  
-    ![Auswahltransformation](media/data-flow/dynacols-4.png "Auswahltransformation")
+    :::image type="content" source="media/data-flow/dynacols-4.png" alt-text="Auswahltransformation":::
 
 1. Klicken Sie auf die Registerkarten „Überprüfen“ und „Datenvorschau“ der Select-Transformation, um die neuen Spaltennamenwerte anzuzeigen. ```(a,b,c)``` ersetzen die ursprünglichen Spaltennamen „movie“, „title“ und „genres“.
    
@@ -131,7 +132,7 @@ Nachdem Sie nun den Inhalt der Konfigurationsdatei im Arbeitsspeicher gespeicher
 1. Wir haben alle Spaltennamen gefunden, die mit der ```prevcolumn```-Eigenschaft aus der externen JSON-Konfigurationsdatei übereinstimmen, und jede Übereinstimmung in den neuen ```newcolumn```-Namen umbenannt.
 1. Klicken Sie in der Select-Transformation auf die Registerkarten „Datenvorschau“ und „Überprüfen“. Nun sollten die neuen Spaltennamen aus der externen Zuordnungsdatei angezeigt werden.
 
-![Quelle 2](media/data-flow/dynacols-2.png "Quelle 2")
+:::image type="content" source="media/data-flow/dynacols-2.png" alt-text="Quelle 2":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

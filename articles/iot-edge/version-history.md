@@ -7,12 +7,12 @@ ms.date: 04/07/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6afc61c53d2e7e48686a5d2f69862b4dc08bc1c6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 334173ceb422db765c86ea05912817a02346f997
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345971"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128578352"
 ---
 # <a name="azure-iot-edge-versions-and-release-notes"></a>Azure IoT Edge-Versionen und Versionshinweise
 
@@ -38,7 +38,7 @@ Diese Tabelle enthält den aktuellen Versionsverlauf für IoT Edge-Paketreleases
 | [1.2](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0) | Stable | April 2021 | [IoT Edge-Geräte hinter Gateways](how-to-connect-downstream-iot-edge-device.md?view=iotedge-2020-11&preserve-view=true)<br>[IoT Edge-MQTT-Broker (Vorschau)](how-to-publish-subscribe.md?view=iotedge-2020-11&preserve-view=true)<br>Neue IoT Edge-Pakete mit neuen Installations-und Konfigurationsschritten wurden eingeführt. Weitere Informationen finden Sie unter [Update von 1.0 oder 1.1 auf 1.2](how-to-update-iot-edge.md#special-case-update-from-10-or-11-to-12).
 | [1.1](https://github.com/Azure/azure-iotedge/releases/tag/1.1.0) | Langfristiger Support (Long-Term Support, LTS) | Februar 2021 | [Langfristiger Supportplan und unterstützte Systemupdates](support.md) |
 | [1.0.10](https://github.com/Azure/azure-iotedge/releases/tag/1.0.10) | Stable | Oktober 2020 | [UploadSupportBundle (direkte Methode)](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics)<br>[Hochladen von Laufzeitmetriken](how-to-access-built-in-metrics.md)<br>[Routenpriorität und Gültigkeitsdauer](module-composition.md#priority-and-time-to-live)<br>[Startreihenfolge für Module](module-composition.md#configure-modules)<br>[Manuelle X.509-Bereitstellung](how-to-register-device.md) |
-| [1.0.9](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9) | Stable | März 2020 | [Automatische X.509-Bereitstellung mit DPS](how-to-auto-provision-x509-certs.md)<br>[RestartModule (direkte Methode)](how-to-edgeagent-direct-method.md#restart-module)<br>[Befehl „support-bundle“](troubleshoot.md#gather-debug-information-with-support-bundle-command) |
+| [1.0.9](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9) | Stable | März 2020 | Automatische X.509-Bereitstellung mit DPS<br>[RestartModule (direkte Methode)](how-to-edgeagent-direct-method.md#restart-module)<br>[Befehl „support-bundle“](troubleshoot.md#gather-debug-information-with-support-bundle-command) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

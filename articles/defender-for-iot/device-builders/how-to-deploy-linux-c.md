@@ -3,12 +3,12 @@ title: Installieren und Bereitstellen des C-basierten Linux-Agents
 description: Erfahren Sie, wie Sie den C-basierten Sicherheits-Agent von Defender für IoT unter Linux installieren und bereitstellen.
 ms.topic: conceptual
 ms.date: 05/26/2021
-ms.openlocfilehash: 8317d91fe51c06b67529b1f7bfe8894cef153232
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 46677a971165c65440310e21933f586cc685b771
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113016058"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128584866"
 ---
 # <a name="deploy-defender-for-iot-c-based-security-agent-for-linux"></a>Bereitstellen des C-basierten Sicherheits-Agents von Defender für IoT unter Linux
 
@@ -61,19 +61,19 @@ Dieses Skript führt die folgende Funktion aus:
 
 Sollten Sie weitere Hilfe benötigen, führen Sie das Skript mit dem Parameter „–help“ aus:
 
-```./InstallSecurityAgent.sh --help```
+`./InstallSecurityAgent.sh --help`
 
 ### <a name="uninstall-the-agent"></a>Deinstallieren des Agents
 
 Wenn Sie den Agent deinstallieren möchten, führen Sie das Skript mit dem Parameter „–uninstall“ aus:
 
-```./InstallSecurityAgent.sh -–uninstall```
+`./InstallSecurityAgent.sh -–uninstall`
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
 Führen Sie Folgendes aus, um den Bereitstellungsstatus zu überprüfen:
 
-```systemctl status ASCIoTAgent.service```
+`systemctl status ASCIoTAgent.service`
 
 ## <a name="next-steps"></a>Nächste Schritte
 

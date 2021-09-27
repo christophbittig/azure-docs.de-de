@@ -6,15 +6,15 @@ metadata:
   description: Hier erfahren Sie, wie Sie ein hyperskalierbares, Hadoop-kompatibles Data Lake-Repository für die Analyse von Daten mit beliebiger Größe, Art und Erfassungsgeschwindigkeit einrichten, verwalten und darauf zugreifen.
   ms.service: data-lake-store
   ms.topic: landing-page
-  author: twooley
-  ms.author: twooley
+  author: normesta
+  ms.author: normesta
   ms.date: 03/11/2020
-  ms.openlocfilehash: 09685af7a10c8624cb8b1442189cd68057031e9d
-  ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+  ms.openlocfilehash: f94c92bd1fbeeba31f9b45e766ff8f37b4bee556
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/16/2020
-  ms.locfileid: "92106534"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128678609"
 landingContent:
 - title: Informationen zu Azure Data Lake Storage Gen1
   linkLists:

@@ -39,9 +39,6 @@
     - name: Index
       displayName: 'list, examples'
       href: ./samples/index.md
-    - name: Vergleichstest für die Azure-Sicherheit
-      displayName: 'standards, azure, benchmark'
-      href: ./samples/azure-security-benchmark.md
     - name: Azure Security Benchmark Foundation
       items:
         - name: Übersicht
@@ -72,50 +69,6 @@
     - name: CMMC Level 3
       displayName: 'standards, cmmc'
       href: ./samples/cmmc-l3.md
-    - name: "DoD-Auswirkungsstufe\_4"
-      items:
-        - name: Übersicht
-          displayName: 'standards, DoD, IL4'
-          href: ./samples/dod-impact-level-4/index.md
-        - name: Steuerungszuordnung
-          displayName: 'standards, DoD, IL4'
-          href: ./samples/dod-impact-level-4/control-mapping.md
-        - name: Schritte zum Bereitstellen
-          displayName: 'standards, DoD, IL4'
-          href: ./samples/dod-impact-level-4/deploy.md
-    - name: "DoD-Auswirkungsstufe\_5"
-      items:
-        - name: Übersicht
-          displayName: 'standards, DoD, IL5'
-          href: ./samples/dod-impact-level-5/index.md
-        - name: Steuerungszuordnung
-          displayName: 'standards, DoD, IL5'
-          href: ./samples/dod-impact-level-5/control-mapping.md
-        - name: Schritte zum Bereitstellen
-          displayName: 'standards, DoD, IL5'
-          href: ./samples/dod-impact-level-5/deploy.md
-    - name: FedRAMP Moderate
-      items:
-        - name: Übersicht
-          displayName: 'standards, fedramp, moderate'
-          href: ./samples/fedramp-m/index.md
-        - name: Steuerungszuordnung
-          displayName: 'standards, fedramp, moderate'
-          href: ./samples/fedramp-m/control-mapping.md
-        - name: Schritte zum Bereitstellen
-          displayName: 'standards, fedramp, moderate'
-          href: ./samples/fedramp-m/deploy.md
-    - name: FedRAMP High
-      items:
-        - name: Übersicht
-          displayName: 'standards, fedramp, high'
-          href: ./samples/fedramp-h/index.md
-        - name: Steuerungszuordnung
-          displayName: 'standards, fedramp, high'
-          href: ./samples/fedramp-h/control-mapping.md
-        - name: Schritte zum Bereitstellen
-          displayName: 'standards, fedramp, high'
-          href: ./samples/fedramp-h/deploy.md
     - name: HIPAA HITRUST 9.2
       displayName: 'standards, HIPAA HITRUST'
       href: ./samples/hipaa-hitrust-9-2.md
@@ -160,9 +113,6 @@
     - name: Durch New Zealand ISM eingeschränkt
       displayName: 'standards, NZISM'
       href: ./samples/new-zealand-ism.md
-    - name: NIST SP 800-53 R4
-      displayName: 'standards, nist, 800-53, rev 4'
-      href: ./samples/nist-sp-800-53-r4.md
     - name: NIST SP 800-171 R2
       displayName: 'standards, nist, 800-171, rev 2'
       href: ./samples/nist-sp-800-171-r2.md

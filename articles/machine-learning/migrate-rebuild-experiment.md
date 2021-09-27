@@ -8,12 +8,12 @@ ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 03/08/2021
-ms.openlocfilehash: 7059990f56cfa0f3eae9a10f3a7d3760095a1e83
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 0a00ad012f38a142332a62846e78c2ae87460464
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122699124"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "128659493"
 ---
 # <a name="rebuild-a-studio-classic-experiment-in-azure-machine-learning"></a>Neuerstellen eines Studio (Classic)-Experiments in Azure Machine Learning
 
@@ -51,7 +51,7 @@ In Azure Machine Learning wird das visuelle Diagramm als **Pipelineentwurf** bez
 
 1. Passen Sie die Parameter an.
     
-    Wählen Sie jedes Modul aus, und passen Sie die Parameter im Bereich „Moduleinstellungen“ rechts an. Anhand der Parameter können Sie die Funktionen des Studio (Classic)-Experiments neu erstellen. Weitere Informationen zu den einzelnen Modulen finden Sie in der [Modulreferenz](/algorithm-module-reference/module-reference.md).
+    Wählen Sie jedes Modul aus, und passen Sie die Parameter im Bereich „Moduleinstellungen“ rechts an. Anhand der Parameter können Sie die Funktionen des Studio (Classic)-Experiments neu erstellen. Weitere Informationen zu den einzelnen Modulen finden Sie in der [Modulreferenz](./algorithm-module-reference/module-reference.md).
 
 ## <a name="submit-a-run-and-check-results"></a>Übermitteln einer Ausführung und Überprüfen der Ergebnisse
 

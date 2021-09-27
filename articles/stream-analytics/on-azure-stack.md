@@ -6,13 +6,12 @@ author: an-emma
 ms.author: raan
 ms.topic: how-to
 ms.date: 03/15/2021
-ms.custom: seodec18
-ms.openlocfilehash: 9cfb98e4d221ee0e8aae7f96ce241269bd56616d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 544abb1e39710330d8d2529a83349c8669deae40
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122354889"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128638252"
 ---
 # <a name="run-azure-stream-analytics-on-azure-stack"></a>Ausführen von Azure Stream Analytics auf Azure Stack
 
@@ -89,8 +88,9 @@ Nachdem Sie Ihren Stream Analytics-Auftrag im Azure-Portal erstellt haben, konfi
 
 1. Wechseln Sie im Azure-Portal zu Ihrem Stream Analytics-Auftrag.
 1. Wählen Sie unter **Konfigurieren** die Option **Speicherkontoeinstellungen** aus, und wählen Sie dann das Speicherkonto aus, das Sie im vorherigen Schritt erstellt haben.
-   > [!div class="mx-imgBorder"]
-   > [ ![Screenshot, der die Speicherkontoeinstellung „Auftrag“ zeigt.](media/on-azure-stack/storage-account-settings.png) ](media/on-azure-stack/storage-account-settings.png#lightbox)
+
+   :::image type="content" source="media/on-azure-stack/storage-account-settings.png" alt-text="Screenshot, der die Speicherkontoeinstellung „Auftrag“ zeigt." lightbox="media/on-azure-stack/storage-account-settings.png":::
+
 1. Wählen Sie unter **Auftragstopologie** die Option **Eingaben** > **Datenstromeingabe hinzufügen** aus.
 1. Wählen Sie **IoT Hub**, **Event Hub** oder **Edge Hub** aus der Dropdownliste aus. 
 1. Wenn es sich bei der Eingabe um einen Event Hub oder IoT Hub in einem Azure Stack Hub-Abonnement handelt, geben Sie die Informationen wie hier dargestellt manuell ein.
@@ -100,29 +100,27 @@ Nachdem Sie Ihren Stream Analytics-Auftrag im Azure-Portal erstellt haben, konfi
    | Feld | Wert |
    | --- | --- |
    | Eingabealias | Ein Anzeigename, der in der Auftragsabfrage verwendet wird, um auf diese Eingabe zu verweisen. |
-   | Service Bus-Namespace | Der Namespace ist ein Container für einen Satz mit Nachrichtenentitäten. Sie haben bei der Erstellung einer neuen Event Hub-Instanz auch den Namespace erstellt. Ein Beispiel ist *sb://<Event Hub Name>.eventhub.shanghai.azurestack.corp.microsoft.com*. |
+   | Service Bus-Namespace | Der Namespace ist ein Container für einen Satz mit Nachrichtenentitäten. Sie haben bei der Erstellung einer neuen Event Hub-Instanz auch den Namespace erstellt. z. B. `sb://<Event Hub Name>.eventhub.shanghai.azurestack.corp.microsoft.com`. |
    | Event Hub-Name | Der Name des Event Hubs, der als Eingabe verwendet wird. |
    | Event Hub-Richtlinienname | Die SAS-Richtlinie, die Zugriff auf den Event Hub ermöglicht. Jede SAS-Richtlinie umfasst einen Namen, die von Ihnen festgelegten Berechtigungen und Zugriffsschlüssel. Diese Option wird automatisch ausgefüllt, sofern Sie nicht die Option zum manuellen Festlegen der Event-Hub-Einstellungen wählen. |
    | Event Hub-Richtlinienschlüssel | Der Schlüssel für den gemeinsamen Zugriff, der für die Autorisierung des Zugriffs auf Event Hub verwendet wird. Diese Option wird automatisch ausgefüllt, sofern Sie nicht die Option zum manuellen Festlegen der Event-Hub-Einstellungen wählen. Sie finden sie in den Event Hub-Einstellungen. |
    | Event Hub-Consumergruppe (optional) | Verwenden Sie für jeden Stream Analytics-Auftrag eine eigene Consumergruppe. Diese Zeichenfolge identifiziert die Consumergruppe, die zum Erfassen von Daten aus dem Event Hub verwendet werden soll. Wenn keine Consumergruppe angegeben wird, verwendet der Stream Analytics-Auftrag die $Default-Consumergruppe. |
    | Partitionsanzahl | Die Partitionsanzahl ist die Anzahl der Partitionen in einem Event Hub. |
 
-   > [!div class="mx-imgBorder"]
-   > [ ![Screenshot, der Event Hub-Eingaben zeigt.](media/on-azure-stack/event-hub-input.png) ](media/on-azure-stack/event-hub-input.png#lightbox)
-
+   :::image type="content" source="media/on-azure-stack/event-hub-input.png" alt-text="Screenshot, der Event Hub-Eingaben zeigt." lightbox="media/on-azure-stack/event-hub-input.png":::
+   
    #### <a name="iot-hub"></a>IoT Hub
 
    | Feld | Wert |
    | --- | --- |
    | Eingabealias | Ein Anzeigename, der in der Auftragsabfrage verwendet wird, um auf diese Eingabe zu verweisen. |
-   | IoT Hub | Der Name von IoT Hub, der als Eingabe verwendet wird. Ein Beispiel ist *<IoT Hub Name>.shanghai.azurestack.corp.microsoft.com*. |
+   | IoT Hub | Der Name von IoT Hub, der als Eingabe verwendet wird. z. B. `<IoT Hub Name>.shanghai.azurestack.corp.microsoft.com`. |
    | Name der SAS-Richtlinie | Die SAS-Richtlinie, die Zugriff auf IoT Hub ermöglicht. Jede SAS-Richtlinie umfasst einen Namen, die von Ihnen festgelegten Berechtigungen und Zugriffsschlüssel. |
    | Schlüssel für SAS-Richtlinie | Der Schlüssel für den gemeinsamen Zugriff, der für die Autorisierung des Zugriffs auf IoT Hub verwendet wird. Diese Option wird automatisch ausgefüllt, es sei denn, Sie wählen die Option zum manuellen Festlegen der IoT Hub-Einstellungen. |
    | Consumergruppe (optional) | Verwenden Sie für jeden Stream Analytics-Auftrag eine andere Consumergruppe. Die Consumergruppe, die zum Erfassen von Daten aus IoT Hub verwendet werden soll. Stream Analytics verwendet die $Default-Consumergruppe, sofern nicht anders angegeben. |
    | Partitionsanzahl | Die Partitionsanzahl ist die Anzahl der Partitionen in einem Event Hub. |
 
-   > [!div class="mx-imgBorder"]
-   > [ ![Screenshot, der IoT Hub-Eingaben zeigt.](media/on-azure-stack/iot-hub-input.png) ](media/on-azure-stack/iot-hub-input.png#lightbox)
+   :::image type="content" source="media/on-azure-stack/iot-hub-input.png" alt-text="Screenshot, der IoT Hub-Eingaben zeigt." lightbox="media/on-azure-stack/iot-hub-input.png" :::
 
 1. Behalten Sie für die übrigen Felder die Standardwerte bei, und klicken Sie auf **Speichern**.
 1. Öffnen Sie unter **Auftragstopologie** die Option **Ausgaben**, und wählen Sie dann **Hinzufügen** aus.
@@ -134,20 +132,18 @@ Nachdem Sie Ihren Stream Analytics-Auftrag im Azure-Portal erstellt haben, konfi
    | Feld | value |
    | --- | --- |
    | Ausgabealias | Ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an diesen Event Hub weiterzuleiten. |
-   | Service Bus-Namespace | Ein Container für einen Satz von Nachrichtenentitäten. Sie haben bei der Erstellung eines neuen Event Hubs auch einen Service Bus-Namespace erstellt. Ein Beispiel ist *sb://<Event Hub Name>.eventhub.shanghai.azurestack.corp.microsoft.com*. |
+   | Service Bus-Namespace | Ein Container für einen Satz von Nachrichtenentitäten. Sie haben bei der Erstellung eines neuen Event Hubs auch einen Service Bus-Namespace erstellt. z. B. `sb://<Event Hub Name>.eventhub.shanghai.azurestack.corp.microsoft.com`. |
    | Event Hub-Name | Der Name Ihrer Event Hub-Ausgabe. |
    | Event Hub-Richtlinienname | Die Richtlinie für den gemeinsamen Zugriff, die Sie auf der Registerkarte **Konfigurieren** des Event Hubs erstellen können. Jede SAS-Richtlinie umfasst einen Namen, die von Ihnen festgelegten Berechtigungen und Zugriffsschlüssel. |
    | Event Hub-Richtlinienschlüssel | Der Schlüssel für den gemeinsamen Zugriff, der für die Authentifizierung des Zugriffs auf den Event Hub-Namespace verwendet wird. |
 
-   > [!div class="mx-imgBorder"]
-   > [ ![Screenshot, der Event Hub-Ausgaben zeigt.](media/on-azure-stack/event-hub-output.png) ](media/on-azure-stack/event-hub-output.png#lightbox)
-
+   :::image type="content" source="media/on-azure-stack/event-hub-output.png" lightbox="media/on-azure-stack/event-hub-output.png" alt-text="Screenshot, der Event Hub-Ausgaben zeigt.":::
    #### <a name="blob-storage"></a>Blobspeicher 
 
    | Feld | value |
    | --- | --- |
    | Ausgabealias | Ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an diesen Blobspeicher weiterzuleiten. |
-   | Speicherkonto | Der Name des Speicherkontos, an das Sie die Ausgabe senden. Ein Beispiel ist *<Storage Account Name>.blob.shanghai.azurestack.corp.microsoft.com*. |
+   | Speicherkonto | Der Name des Speicherkontos, an das Sie die Ausgabe senden. z. B. `<Storage Account Name>.blob.shanghai.azurestack.corp.microsoft.com`. |
    | Speicherkontoschlüssel | Der geheime Schlüssel, der dem Speicherkonto zugeordnet ist. Diese Option wird automatisch ausgefüllt, es sei denn, Sie wählen die Option zum manuellen Festlegen der Blob Storage-Einstellungen. |
 
 > [!NOTE]
@@ -160,17 +156,16 @@ Nachdem Sie Ihren Stream Analytics-Auftrag im Azure-Portal erstellt haben, konfi
 1. Wählen Sie **Module festlegen** >  **+ Hinzufügen** und anschließend **Azure Stream Analytics-Modul** aus. 
 1. Wählen Sie das Abonnement und den erstellten Steam Analytics Edge-Auftrag aus. Wählen Sie **Speichern** und anschließend **Weiter: Routen** aus.
 
-   > [!div class="mx-imgBorder"]
-   > [ ![Screenshot des Hinzufügens eines Moduls.](media/on-azure-stack/edge-modules.png) ](media/on-azure-stack/edge-modules.png#lightbox)
+   :::image type="content" source="media/on-azure-stack/edge-modules.png" lightbox="media/on-azure-stack/edge-modules.png" alt-text="Screenshot des Hinzufügens eines Moduls.":::
 
 1. Wählen Sie **Überprüfen + erstellen >** aus.
-1. Wählen Sie im Schritt **Überprüfen + erstellen** die Option **Erstellen** aus. 
-   > [!div class="mx-imgBorder"]
-   > [ ![Screenshot, der das Manifest zeigt.](media/on-azure-stack/module-content.png) ](media/on-azure-stack/module-content.png#lightbox)
-1. Vergewissern Sie sich, dass das Modul zur Liste hinzugefügt wurde.
-   > [!div class="mx-imgBorder"]
-   > [ ![Screenshot, der die Bereitstellungsseite zeigt.](media/on-azure-stack/edge-deployment.png) ](media/on-azure-stack/edge-deployment.png#lightbox)
+1. Wählen Sie im Schritt **Überprüfen + erstellen** die Option **Erstellen** aus.
 
+   :::image type="content" source="media/on-azure-stack/module-content.png" lightbox="media/on-azure-stack/module-content.png" alt-text="Screenshot, der das Manifest zeigt.":::
+
+1. Vergewissern Sie sich, dass das Modul zur Liste hinzugefügt wurde.
+
+   :::image type="content" source="media/on-azure-stack/edge-deployment.png" lightbox="media/on-azure-stack/edge-deployment.png" alt-text="Screenshot, der die Bereitstellungsseite zeigt.":::
 ## <a name="next-steps"></a>Nächste Schritte
 - [Azure Stream Analytics auf IoT Edge](./stream-analytics-edge.md)
 - [Entwickeln von Stream Analytics Edge-Aufträgen](/stream-analytics-query/stream-analytics-query-language-reference)

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 08/11/2021
+ms.date: 09/09/2021
 ms.author: aahi
-ms.openlocfilehash: c1b4d8801013eeb25c18b837ef4ff5a0245739e5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ce85895307af9e437fb9ceaaff3f1a385e77e17d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339424"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672566"
 ---
 > [!NOTE]
 > Um geschützte Gesundheitsinformationen (PHI) zu ermitteln, verwenden Sie den `domain=phi`-Parameter und die Modellversion `2020-04-01` oder höher.
@@ -155,78 +155,6 @@ Diese Kategorie enthält die folgende Entität:
 
 :::row-end:::
 
-#### <a name="subcategories"></a>Unterkategorien
-
-Die Entität in dieser Kategorie kann die folgenden Unterkategorien aufweisen.
-
-:::row:::
-    :::column span="":::
-        **Entitätsunterkategorie**
-
-        Medizin    
-
-    :::column-end:::
-    :::column span="2":::
-        **Details**
-
-        Medizinische Unternehmen und Gruppen
-
-        Fügen Sie zum Abrufen dieser Entitätskategorie dem `piiCategories`-Parameter `OrganizationMedical` hinzu. In der API-Antwort wird `OrganizationMedical` zurückgegeben, falls es erkannt wird.
-      
-    :::column-end:::
-
-    :::column span="":::
-      **Unterstützte Dokumentsprachen**
-
-      `en`   
-      
-   :::column-end:::
-
-:::row-end:::
-:::row:::
-    :::column span="":::
-
-        Börse
-
-    :::column-end:::
-    :::column span="2":::
-
-        Börsengruppen 
-
-        Fügen Sie zum Abrufen dieser Entitätskategorie dem `piiCategories`-Parameter `OrganizationStockExchange` hinzu. In der API-Antwort wird `OrganizationStockExchange` zurückgegeben, falls es erkannt wird.
-      
-    :::column-end:::
-
-    :::column span="":::
-
-      `en`   
-      
-   :::column-end:::
-
-:::row-end:::
-:::row:::
-    :::column span="":::
-
-        Sport
-
-    :::column-end:::
-    :::column span="2":::
-
-        Sportbezogene Organisationen
-
-        Fügen Sie zum Abrufen dieser Entitätskategorie dem `piiCategories`-Parameter `OrganizationSports` hinzu. In der API-Antwort wird `OrganizationSports` zurückgegeben, falls es erkannt wird.
-      
-    :::column-end:::
-
-    :::column span="":::
-
-      `en`   
-      
-   :::column-end:::
-
-:::row-end:::
-
-
 ### <a name="category-address"></a>Kategorie: Adresse
 
 Diese Kategorie enthält die folgende Entität:
@@ -366,33 +294,6 @@ Diese Kategorie enthält die folgenden Entitäten:
       `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
       
    :::column-end:::
-:::row-end:::
-
-#### <a name="subcategories"></a>Unterkategorien
-
-Die Entität in dieser Kategorie kann die folgenden Unterkategorien aufweisen.
-
-:::row:::
-    :::column span="":::
-        **Entitätsunterkategorie**
-
-        Date
-
-    :::column-end:::
-    :::column span="2":::
-        **Details**
-
-        Kalenderdatumsangaben Wird auch mit `domain=phi`zurückgegeben
-
-        Fügen Sie zum Abrufen dieser Entitätskategorie dem `piiCategories`-Parameter `Date` hinzu. In der API-Antwort wird `Date` zurückgegeben, falls es erkannt wird.
-      
-    :::column-end:::
-    :::column span="2":::
-      **Unterstützte Dokumentsprachen**
-      
-      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`   
-      
-    :::column-end:::
 :::row-end:::
 
 ### <a name="category-quantity"></a>Kategorie: Menge

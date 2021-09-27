@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: 1ec3d86ea66e436732cd8d1044c0658238ba781f
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 22f17c59b93a3defd6c372eb6a871496850ba122
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113086260"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128670764"
 ---
 # <a name="best-practices-for-building-an-application-with-azure-database-for-mysql"></a>Bewährte Methoden für die Entwicklung von Anwendungen mit Azure Database for MySQL
 
@@ -45,7 +45,7 @@ Bei Workloads mit sehr vielen Lesevorgängen kann das Optimieren der Serverparam
 
 Verwenden Sie die folgende Formel, um die maximale Größe von `tmp_table_size` und `max_heap_table_size` zu berechnen:
 
-```(total memory - (base memory + (sum of per-connection memory * # of connections)) / # of connections```
+`(total memory - (base memory + (sum of per-connection memory * # of connections)) / # of connections`
 
 > [!NOTE]
 > Der Gesamtarbeitsspeicher gibt die Gesamtmenge an Arbeitsspeicher an, die dem Server für alle bereitgestellten virtuellen Kerne zur Verfügung steht.  Bei einem universellen Azure Database for MySQL-Server mit zwei virtuellen Kernen beispielsweise beträgt der Gesamtarbeitsspeicher 5 GB × 2. Weitere Informationen zum Arbeitsspeicher für jede Dienstebene finden Sie in der Dokumentation zu den [Tarifen](./concepts-pricing-tiers.md).
@@ -125,7 +125,7 @@ Die Metrik `created_tmp_disk_tables` gibt an, wie viele Tabellen auf dem Datentr
 
 Um zu berechnen, für welchen Prozentsatz Ihrer Workload die Abfragen auf Datenträgern geschrieben werden, verwenden Sie die folgende Formel mit Ihren Metrikwerten:
 
-```(created_tmp_disk_tables / (created_tmp_disk_tables + created_tmp_tables)) * 100```
+`(created_tmp_disk_tables / (created_tmp_disk_tables + created_tmp_tables)) * 100`
 
 Im Idealfall sollte das Ergebnis unter 25 % liegen. Wenn der Wert 25 % oder höher ist, empfiehlt es sich, Änderungen an zwei Serverparametern vorzunehmen: „tmp_table_size“ und „max_heap_table_size“.
 

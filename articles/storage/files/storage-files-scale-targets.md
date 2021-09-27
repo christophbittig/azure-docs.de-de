@@ -4,15 +4,15 @@ description: Informationen zu den Skalierbarkeits- und Leistungszielen für Azur
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/28/2021
+ms.date: 09/16/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 871cb72c163472dbe3409738199e710300c5057d
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 83e33933e8afb8b376750368a64c60cb56406a75
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867327"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651539"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Skalierbarkeits- und Leistungsziele für Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über die SMB- und NFS-Dateisystemprotokolle zugegriffen werden kann. Dieser Artikel behandelt die Skalierbarkeits- und Leistungsziele für Azure Files und Azure-Dateisynchronisierung.
@@ -100,7 +100,7 @@ Die folgende Tabelle gibt an, welche Grenzen für Tests von Microsoft gelten und
 | Maximale Anzahl von Dateisystemobjekten (Verzeichnisse und Dateien) in einem Verzeichnis **(nicht rekursiv)** | 5 Millionen Objekte | Ja |
 | Maximale Sicherheitsbeschreibung des Objekts (Verzeichnisse und Dateien) | 64 KiB | Ja |
 | Dateigröße | 100 GB | Nein |
-| Minimale Dateigröße für die Unterteilung einer Datei | V9 und höher: Basiert auf der Größe des Dateisystemclusters (doppelte Größe des Dateisystemclusters). Wenn die Größe des Dateisystemclusters z. B. 4 KiB beträgt, ist die minimale Dateigröße 8 KiB.<br> V8 und älter: 64 KiB  | Ja |
+| Minimale Dateigröße für die Unterteilung einer Datei | Basiert auf der Größe des Dateisystemclusters (doppelte Größe des Dateisystemclusters). Wenn die Größe des Dateisystemclusters z. B. 4 KiB beträgt, ist die minimale Dateigröße 8 KiB. | Ja |
 
 > [!Note]  
 > Ein Endpunkt für Azure-Dateisynchronisierung kann auf die Größe einer Azure-Dateifreigabe hochskaliert werden. Wenn die maximale Größe der Azure-Dateifreigabe erreicht ist, kann keine Synchronisierung durchgeführt werden.

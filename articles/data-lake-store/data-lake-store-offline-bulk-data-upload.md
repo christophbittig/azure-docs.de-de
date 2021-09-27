@@ -1,18 +1,18 @@
 ---
 title: Hochladen großer Datasets in Azure Data Lake Storage Gen1 – Offlinemethoden
 description: Verwenden des Import/Export-Diensts zum Kopieren von Daten aus Azure Blob Storage in Azure Data Lake Storage Gen1
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
-ms.author: twooley
+ms.author: normesta
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1ce3c649a2bf37252b9d12eb9fe08ddf287fc8a0
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 854426ff67816992c2dfb42ef08627bc6ceb0199
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110706895"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128612204"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-storage-gen1"></a>Verwenden des Azure Import/Export-Diensts zum Kopieren von Daten in Data Lake Storage Gen1 im Offlinemodus
 

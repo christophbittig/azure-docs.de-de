@@ -11,16 +11,16 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: b6af5e7efa14c7a8b2243e908b52ed6cf50c8272
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 35ea4317b78a9f732d095d9f024d7465ebd1828e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113727217"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615698"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-in-the-azure-portal"></a>Auswählen der Autorisierung des Zugriffs auf Blobdaten im Azure-Portal
 
-Wenn Sie über das [Azure-Portal](https://portal.azure.com) auf Blobdaten zugreifen, richtet das Portal tatsächlich Anforderungen an Azure Storage. Eine Anforderung an Azure Storage kann entweder mit Ihrem Azure AD-Konto oder Zugriffsschlüssel für das Speicherkonto autorisiert werden. Das Portal zeigt an, welche Methode Sie verwenden, und ermöglicht Ihnen, zwischen den beiden zu wechseln, sofern Sie die entsprechenden Berechtigungen haben.  
+Wenn Sie über das [Azure-Portal](https://portal.azure.com) auf Blobdaten zugreifen, richtet das Portal tatsächlich Anforderungen an Azure Storage. Eine Anforderung an Azure Storage kann entweder mit Ihrem Azure AD-Konto oder Zugriffsschlüssel für das Speicherkonto autorisiert werden. Das Portal zeigt an, welche Methode Sie verwenden, und ermöglicht Ihnen, zwischen den beiden zu wechseln, sofern Sie die entsprechenden Berechtigungen haben.
 
 Sie können auch angeben, wie ein einzelner Blob-Uploadvorgang im Azure-Portal autorisiert werden soll. Das Portal verwendet standardmäßig die Methode, die Sie zum Autorisieren von Blob-Uploadvorgängen verwenden. Sie haben jedoch die Möglichkeit, diese Einstellung beim Hochladen eines Blobs zu ändern.
 

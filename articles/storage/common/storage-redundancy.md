@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 08/18/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ff085c32c7aeb63fea04f04558c1bccd5814b29b
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 064a3749577e3e50d6a0d63eda2a944a30788614
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418546"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128569454"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-Redundanz
 
 Azure Storage speichert immer mehrere Kopien Ihrer Daten, damit sie vor geplanten und ungeplanten Ereignissen geschützt sind – von vorübergehend auftretenden Hardwarefehlern und Netzwerk- oder Stromausfällen bis zu schweren Naturkatastrophen usw. Redundanz stellt sicher, dass Ihr Speicherkonto seine Ziele für Verfügbarkeit und Dauerhaftigkeit selbst bei Ausfällen erfüllt.
 
-Berücksichtigen Sie bei der Entscheidung, welche Redundanzoption für Ihr Szenario am besten geeignet ist, die Kompromisse zwischen geringeren Kosten und höherer Verfügbarkeit. Anhand der folgenden Faktoren können Sie bestimmen, welche Redundanzoption Sie auswählen sollten:  
+Berücksichtigen Sie bei der Entscheidung, welche Redundanzoption für Ihr Szenario am besten geeignet ist, die Kompromisse zwischen geringeren Kosten und höherer Verfügbarkeit. Anhand der folgenden Faktoren können Sie bestimmen, welche Redundanzoption Sie auswählen sollten:
 
 - Wie werden Ihre Daten in der primären Region repliziert?
 - Werden Ihre Daten in eine zweite Region repliziert, die geografisch von der primären Region entfernt ist, um Schutz vor regionalen Ausfällen zu erreichen?
@@ -160,7 +160,7 @@ Georedundanter Speicher (mit GRS oder GZRS) repliziert Ihre Daten an einen ander
 
 ### <a name="design-your-applications-for-read-access-to-the-secondary"></a>Entwerfen von Anwendungen für den Lesezugriff am sekundären Standort
 
-Wenn Ihr Speicherkonto für den Lesezugriff in der sekundären Region konfiguriert ist, können Sie Ihre Anwendungen so entwerfen, dass sie nahtlos zum Lesen von Daten in der sekundären Region wechseln, wenn die primäre Region aus irgendeinem Grund nicht verfügbar ist. 
+Wenn Ihr Speicherkonto für den Lesezugriff in der sekundären Region konfiguriert ist, können Sie Ihre Anwendungen so entwerfen, dass sie nahtlos zum Lesen von Daten in der sekundären Region wechseln, wenn die primäre Region aus irgendeinem Grund nicht verfügbar ist.
 
 Die sekundäre Region steht für Lesezugriff zur Verfügung, nachdem Sie RA-GRS oder RA-GZRS aktiviert haben, sodass Sie Ihre Anwendung vorab testen können, um sicherzustellen, dass sie bei einem Ausfall ordnungsgemäß aus der sekundären Region liest. Weitere Informationen zum Entwerfen Ihrer Anwendungen für die Nutzung von Georedundanz finden Sie unter [Verwenden von Georedundanz zum Entwerfen von hoch verfügbaren Anwendungen](geo-redundant-design.md).
 
