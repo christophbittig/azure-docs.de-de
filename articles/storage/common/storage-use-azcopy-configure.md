@@ -8,12 +8,12 @@ ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 1f07907d3a4f421fa9f7a03c48d5f74496a1d45a
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 8fc9934c5d524550929c3400af9f257c4cbcccc8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123303074"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128665908"
 ---
 # <a name="find-errors-and-resume-jobs-by-using-log-and-plan-files-in-azcopy"></a>Ermitteln von Fehlern und Fortsetzen von Aufträgen mithilfe von Protokoll- und Plandateien in AzCopy
 
@@ -24,13 +24,13 @@ AzCopy ist ein Befehlszeilenhilfsprogramm, das Sie verwenden können, um Blobs o
 
 ## <a name="log-and-plan-files"></a>Protokoll- und Plandateien
 
-AzCopy erstellt für jeden Auftrag *Protokoll*- und *Plandateien*. Sie können diese Protokolle verwenden, um potenzielle Probleme zu untersuchen und zu behandeln. 
+AzCopy erstellt für jeden Auftrag *Protokoll*- und *Plandateien*. Sie können diese Protokolle verwenden, um potenzielle Probleme zu untersuchen und zu behandeln.
 
 Die Protokolle enthalten den Status des Fehlers (`UPLOADFAILED`, `COPYFAILED` und `DOWNLOADFAILED`), den vollständigen Pfad und die Ursache des Fehlers.
 
-Standardmäßig befinden sich die Protokoll- und Plandateien im Verzeichnis `%USERPROFILE%\.azcopy` (Windows) oder `$HOME$\.azcopy` (Mac und Linux). Dieser Speicherort kann allerdings geändert werden. 
+Standardmäßig befinden sich die Protokoll- und Plandateien im Verzeichnis `%USERPROFILE%\.azcopy` (Windows) oder `$HOME$\.azcopy` (Mac und Linux). Dieser Speicherort kann allerdings geändert werden.
 
-Der relevante Fehler ist nicht zwingend der erste Fehler in der Datei. Bei Netzwerkfehlern, Timeouts, Serverauslastungsfehlern und Ähnlichem wird der Vorgang von AzCopy bis zu 20-mal wiederholt, was in der Regel zum Erfolg führt.  Der erste angezeigte Fehler ist unter Umständen ein harmloser Vorgang, der erfolgreich wiederholt wurde.  Sehen Sie sich daher nicht den ersten Fehler in der Datei an, sondern die Fehler in der Nähe von `UPLOADFAILED`, `COPYFAILED` oder `DOWNLOADFAILED`. 
+Der relevante Fehler ist nicht zwingend der erste Fehler in der Datei. Bei Netzwerkfehlern, Timeouts, Serverauslastungsfehlern und Ähnlichem wird der Vorgang von AzCopy bis zu 20-mal wiederholt, was in der Regel zum Erfolg führt.  Der erste angezeigte Fehler ist unter Umständen ein harmloser Vorgang, der erfolgreich wiederholt wurde.  Sehen Sie sich daher nicht den ersten Fehler in der Datei an, sondern die Fehler in der Nähe von `UPLOADFAILED`, `COPYFAILED` oder `DOWNLOADFAILED`.
 
 > [!IMPORTANT]
 > Geben Sie beim Senden einer Anforderung an den Microsoft-Support (oder bei der Problembehandlung unter Einbeziehung eines Drittanbieters) die bearbeitete Version des Befehls an, den Sie ausführen möchten. So wird sichergestellt, dass die SAS nicht versehentlich offengelegt wird. Die editierte Version steht am Anfang der Protokolldatei.
@@ -108,7 +108,7 @@ Verwenden Sie `azcopy env`, um den aktuellen Wert dieser Variablen zu überprüf
 
 ## <a name="change-the-default-log-level"></a>Ändern der Standardprotokollebene
 
-Standardmäßig ist die AzCopy-Protokollebene auf `INFO` festgelegt. Wenn Sie die Ausführlichkeit des Protokolls verringern möchten, um Speicherplatz auf dem Datenträger zu sparen, überschreiben Sie die Einstellung mithilfe der Option ``--log-level``. 
+Standardmäßig ist die AzCopy-Protokollebene auf `INFO` festgelegt. Wenn Sie die Ausführlichkeit des Protokolls verringern möchten, um Speicherplatz auf dem Datenträger zu sparen, überschreiben Sie die Einstellung mithilfe der Option ``--log-level``.
 
 Verfügbare Protokolliergrade sind: `NONE`, `DEBUG`, `INFO`, `WARNING`, `ERROR`, `PANIC` und `FATAL`.
 

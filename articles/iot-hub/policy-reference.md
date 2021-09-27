@@ -1,18 +1,18 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure IoT Hub
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure IoT Hub. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 09/03/2021
+ms.date: 09/17/2021
 ms.topic: reference
 author: robinsh
 ms.author: robinsh
 ms.service: iot-hub
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 548ae961fe1e3415534d10f30d712a1b42970125
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 7fec1eb29ba844081c647476e1dada4a7436c68a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123472961"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128604790"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-iot-hub"></a>Integrierte Azure Policy-Definitionen für Azure IoT Hub
 

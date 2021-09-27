@@ -3,12 +3,12 @@ title: 'Gewusst wie: Verwalten von Zuweisungen mit PowerShell'
 description: Es wird beschrieben, wie Sie Blaupausenzuweisungen mit dem offiziellen PowerShell-Modul „Az.Blueprint“ von Azure Blueprints verwalten.
 ms.date: 08/17/2021
 ms.topic: how-to
-ms.openlocfilehash: 943f2bcceef76a2b867b7459f88f6d5041f38ef5
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 0ce2132fe9d43ef0d5df1a4e0eec3a80a3a5c5ca
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351299"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128612812"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>Gewusst wie: Verwalten von Zuweisungen mit PowerShell
 
@@ -16,7 +16,7 @@ Eine Blaupausenzuweisung kann mit dem Azure PowerShell-Modul **Az.Blueprint** ve
 
 ## <a name="add-the-azblueprint-module"></a>Hinzufügen des Moduls „Az.Blueprint“
 
-Das Modul muss hinzugefügt werden, um für Azure PowerShell das Verwalten von Blaupausenzuweisungen zu ermöglichen. Dieses Modul kann mit einer lokal installierten PowerShell-Instanz, mit [Azure Cloud Shell](https://shell.azure.com) oder mit dem [Azure PowerShell-Docker-Image](https://hub.docker.com/r/azuresdk/azure-powershell/) verwendet werden.
+Das Modul muss hinzugefügt werden, um für Azure PowerShell das Verwalten von Blaupausenzuweisungen zu ermöglichen. Dieses Modul kann mit einer lokal installierten PowerShell-Instanz, mit [Azure Cloud Shell](https://shell.azure.com) oder mit dem [Azure PowerShell-Docker-Image](/powershell/azure/azureps-in-docker) verwendet werden.
 
 ### <a name="base-requirements"></a>Basisanforderungen
 

@@ -8,14 +8,15 @@ ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6af10befe614ecd353bd5bd2185fcd9c7097f058
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 803b2fb55bff61814eb36a795b752de37b99bd63
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445073"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128680127"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Proxy- und Firewalleinstellungen der Azure-Dateisynchronisierung
+
 Die Azure-Dateisynchronisierung verbindet Ihre lokalen Server mit Azure Files, wodurch Synchronisierung für mehrere Standorte und Cloudtiering-Funktionalität ermöglicht werden. Daher muss ein lokaler Server eine Verbindung mit dem Internet haben. Ein IT-Administrator muss den besten Weg festlegen, auf dem der Server zu den Azure-Clouddiensten gelangt.
 
 Dieser Artikel gibt einen Einblick in die speziellen Anforderungen und Optionen, die verfügbar sind, um Ihren Server erfolgreich und sicher mit der Azure-Dateisynchronisierung zu verbinden.
@@ -23,6 +24,7 @@ Dieser Artikel gibt einen Einblick in die speziellen Anforderungen und Optionen,
 Wir empfehlen Ihnen, vor dem Lesen dieses Leitfadens den Artikel [Azure-Dateisynchronisierung – Überlegungen zum Netzwerkbetrieb](file-sync-networking-overview.md) zu lesen.
 
 ## <a name="overview"></a>Übersicht
+
 Die Azure-Dateisynchronisierung fungiert als Orchestrierungsdienst zwischen Ihrem Windows-Server, Ihrer Azure-Dateifreigabe und mehreren anderen Azure-Diensten, um Daten so zu synchronisieren, wie dies in Ihrer Synchronisierungsgruppe beschrieben ist. Damit die Azure-Dateisynchronisierung korrekt funktioniert, müssen Sie Ihre Server so konfigurieren, dass sie mit den folgenden Azure-Diensten kommunizieren:
 
 - Azure Storage
@@ -30,39 +32,44 @@ Die Azure-Dateisynchronisierung fungiert als Orchestrierungsdienst zwischen Ihre
 - Azure Resource Manager
 - Authentifizierungsdienste
 
-> [!Note]  
+> [!NOTE]
 > Der Azure-Dateisynchronisierungs-Agent unter Windows Server initiiert alle Anforderungen an die Clouddienste, was dazu führt, dass aus Sicht einer Firewall nur ausgehender Datenverkehr berücksichtigt werden muss. <br /> Keiner der Azure-Dienste initiiert eine Verbindung mit dem Azure-Dateisynchronisierungs-Agent.
 
 ## <a name="ports"></a>Ports
+
 Die Azure-Dateisynchronisierung bewegt Dateidaten und Metadaten ausschließlich über HTTPS und erfordert, dass Port 443 für ausgehenden Datenverkehr geöffnet ist.
 Daher wird der gesamte Datenverkehr verschlüsselt.
 
 ## <a name="networks-and-special-connections-to-azure"></a>Netzwerke und spezielle Verbindungen mit Azure
+
 Der Azure-Dateisynchronisierungs-Agent hat keine Anforderungen hinsichtlich spezieller Kanäle wie [ExpressRoute](../../expressroute/expressroute-introduction.md) usw. zu Azure.
 
 Die Azure-Dateisynchronisierung nutzt alle verfügbaren Mittel, die Zugriff in Azure ermöglichen, passt sich automatisch an verschiedene Netzwerkeigenschaften wie Bandbreite, Wartezeit an und bietet Administratorsteuerung zur Feinabstimmung. Derzeit sind nicht alle Funktionen verfügbar. Wenn Sie ein bestimmtes Verhalten konfigurieren möchten, können Sie uns dies über [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage?category_id=180670) mitteilen.
 
 ## <a name="proxy"></a>Proxy
+
 Die Azure-Dateisynchronisierung unterstützt App-spezifische und computerweite Proxyeinstellungen.
 
 **App-spezifische Proxyeinstellungen** ermöglichen es, einen Proxy speziell für den Datenverkehr der Azure-Dateisynchronisierung zu konfigurieren. App-spezifische Proxyeinstellungen werden ab Version 4.0.1.0 des Agents unterstützt und können während der Installation des Agents oder mit dem PowerShell-Cmdlet Set-StorageSyncProxyConfiguration konfiguriert werden.
 
 PowerShell-Befehle zum Konfigurieren von App-spezifischen Proxyeinstellungen:
+
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCredential <credentials>
 ```
+
 Wenn Ihr Proxyserver z. B. eine Authentifizierung mit einem Benutzernamen und einem Kennwort erfordert, führen Sie die folgenden PowerShell-Befehle aus:
 
 ```powershell
 # IP address or name of the proxy server.
-$Address="127.0.0.1"  
+$Address="127.0.0.1"
 
 # The port to use for the connection to the proxy.
 $Port=8080
 
 # The user name for a proxy.
-$UserName="user_name" 
+$UserName="user_name"
 
 # Please type or paste a string with a password for the proxy.
 $SecurePassword = Read-Host -AsSecureString
@@ -76,17 +83,19 @@ Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.Se
 
 Set-StorageSyncProxyConfiguration -Address $Address -Port $Port -ProxyCredential $Creds
 ```
+
 Die **computerweiten Proxyeinstellungen** sind für den Azure-Dateisynchronisierungs-Agent transparent, da der gesamte Datenverkehr des Servers über den Proxy geleitet wird.
 
-Um computerweite Proxyeinstellungen zu konfigurieren, führen Sie in die folgenden Schritte aus: 
+Um computerweite Proxyeinstellungen zu konfigurieren, führen Sie in die folgenden Schritte aus:
 
-1. Konfigurieren von Proxyeinstellungen für .NET-Anwendungen 
+1. Konfigurieren von Proxyeinstellungen für .NET-Anwendungen
 
    - Bearbeiten Sie diese beiden Dateien:  
      C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config  
      C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
 
    - Fügen Sie den Abschnitt <system.net> in den machine.config-Dateien (unter dem Abschnitt <system.serviceModel>) hinzu.  Ändern Sie 127.0.01:8888 in die IP-Adresse und den Port des Proxyservers. 
+
      ```
       <system.net>
         <defaultProxy enabled="true" useDefaultCredentials="true">
@@ -95,27 +104,27 @@ Um computerweite Proxyeinstellungen zu konfigurieren, führen Sie in die folgend
       </system.net>
      ```
 
-2. Festlegen der WinHTTP-Proxyeinstellungen 
+2. Festlegen der WinHTTP-Proxyeinstellungen
 
-   > [!Note]  
+   > [!NOTE]
    > Es gibt mehrere Methoden (WPAD, PAC-Datei, Netsh usw.), um einen Windows Server für die Verwendung eines Proxyservers zu konfigurieren. In den folgenden Schritten wird beschrieben, wie Sie die Proxyeinstellungen mit netsh konfigurieren, aber jede Methode, die in der Dokumentation [Konfigurieren von Proxyservereinstellungen in Windows](/troubleshoot/windows-server/networking/configure-proxy-server-settings) aufgeführt ist, wird unterstützt.
 
-
-   - Führen Sie den folgenden Befehl in einer Eingabeaufforderung mit erhöhten Rechten oder in PowerShell aus, um die vorhandene Proxyeinstellung anzuzeigen:   
+   - Führen Sie den folgenden Befehl in einer Eingabeaufforderung mit erhöhten Rechten oder in PowerShell aus, um die vorhandene Proxyeinstellung anzuzeigen:
 
      netsh winhttp show proxy
 
-   - Führen den folgenden Befehl in einer Eingabeaufforderung mit erhöhten Rechten oder in PowerShell aus, um die Proxyeinstellung festzulegen (ändern Sie 127.0.01:8888 in die IP-Adresse und den Port für den Proxyserver):  
+   - Führen den folgenden Befehl in einer Eingabeaufforderung mit erhöhten Rechten oder in PowerShell aus, um die Proxyeinstellung festzulegen (ändern Sie 127.0.01:8888 in die IP-Adresse und den Port für den Proxyserver):
 
      netsh winhttp set proxy 127.0.0.1:8888
 
-3. Starten Sie den Storage-Synchronisierungs-Agent-Dienst neu, indem Sie den folgenden Befehl in einer Eingabeaufforderung mit erhöhten Rechten oder in PowerShell ausführen: 
+3. Starten Sie den Storage-Synchronisierungs-Agent-Dienst neu, indem Sie den folgenden Befehl in einer Eingabeaufforderung mit erhöhten Rechten oder in PowerShell ausführen:
 
       net stop filesyncsvc
 
       Hinweis: Der Storage-Synchronisierungs-Agent-Dienst (filesyncsvc) wird automatisch gestartet, nachdem er beendet wurde.
 
 ## <a name="firewall"></a>Firewall
+
 Wie in einem vorhergehenden Abschnitt erwähnt, muss Port 443 für ausgehenden Datenverkehr geöffnet sein. Entsprechend den Richtlinien in Ihrem Rechenzentrum, Ihrer Niederlassung oder Ihrer Region kann eine weitere Beschränkung des Datenverkehrs über diesen Port auf bestimmte Domänen erwünscht oder erforderlich sein.
 
 In der folgenden Tabelle sind die für eine Kommunikation erforderlichen Domänen beschrieben:
@@ -131,7 +140,7 @@ In der folgenden Tabelle sind die für eine Kommunikation erforderlichen Domäne
 | **Microsoft PKI** |  https://www.microsoft.com/pki/mscorp/cps<br>http://crl.microsoft.com/pki/mscorp/crl/<br>http://mscrl.microsoft.com/pki/mscorp/crl/<br>http://ocsp.msocsp.com<br>http://ocsp.digicert.com/<br>http://crl3.digicert.com/ | https://www.microsoft.com/pki/mscorp/cps<br>http://crl.microsoft.com/pki/mscorp/crl/<br>http://mscrl.microsoft.com/pki/mscorp/crl/<br>http://ocsp.msocsp.com<br>http://ocsp.digicert.com/<br>http://crl3.digicert.com/ | Sobald der Agent für die Azure-Dateisynchronisierung installiert ist, werden über die PKI-URL Zwischenzertifikate heruntergeladen, die für die Kommunikation mit dem Azure-Dateisynchronisierungsdienst und der Azure-Dateifreigabe erforderlich sind. Mithilfe der OCSP-URL wird der Status eines Zertifikats überprüft. |
 | **Microsoft Update** | &ast;.update.microsoft.com<br>&ast;.download.windowsupdate.com<br>&ast;.ctldl.windowsupdate.com<br>&ast;.dl.delivery.mp.microsoft.com<br>&ast;.emdl.ws.microsoft.com | &ast;.update.microsoft.com<br>&ast;.download.windowsupdate.com<br>&ast;.ctldl.windowsupdate.com<br>&ast;.dl.delivery.mp.microsoft.com<br>&ast;.emdl.ws.microsoft.com | Nachdem der Azure-Dateisynchronisierungs-Agent installiert wurde, werden Updates für diesen über die Microsoft Update-URLs heruntergeladen. |
 
-> [!Important]
+> [!IMPORTANT]
 > Wenn Datenverkehr über „&ast;.afs.azure.net“ zugelassen wird, ist er nur für den Synchronisierungsdienst möglich. Es gibt keine anderen Microsoft-Dienste, die diese Domäne verwenden.
 > Wenn Datenverkehr über „&ast;.one.microsoft.com“ zugelassen wird, kann Datenverkehr vom Server nicht nur an den Synchronisierungsdienst, sondern auch an weitere Stellen gesendet werden. Es gibt viele weitere Microsoft-Dienste unter Unterdomänen.
 
@@ -184,6 +193,7 @@ Für Business Continuity und Disaster Recovery (BCDR) haben Sie Ihre Azure-Datei
 > - https:\//tm-westus01.afs.azure.net (Ermittlungs-URL der primären Region)
 
 ### <a name="allow-list-for-azure-file-sync-ip-addresses"></a>Zulassungsliste für Azure-Dateisynchronisierungs-IP-Adressen
+
 Die Azure-Dateisynchronisierung unterstützt die Verwendung von [Diensttags](../../virtual-network/service-tags-overview.md), die eine Gruppe von IP-Adresspräfixen für einen bestimmten Azure-Dienst darstellen. Sie können Diensttags verwenden, um Firewallregeln zu erstellen, die die Kommunikation mit dem Azure-Dateisynchronisierungsdienst ermöglichen. Das Diensttag für die Azure-Dateisynchronisierung ist `StorageSyncService`.
 
 Wenn Sie die Azure-Dateisynchronisierung in Azure verwenden, können Sie den Namen des Diensttags direkt in der Netzwerksicherheitsgruppe verwenden, um Datenverkehr zuzulassen. Weitere Informationen zur Vorgehensweise finden Sie unter [Netzwerksicherheitsgruppen](../../virtual-network/network-security-groups-overview.md).
@@ -191,18 +201,18 @@ Wenn Sie die Azure-Dateisynchronisierung in Azure verwenden, können Sie den Nam
 Wenn Sie die Azure-Dateisynchronisierung lokal verwenden, können Sie die Diensttag-API verwenden, um bestimmte IP-Adressbereiche für die Zulassungsliste Ihrer Firewall abzurufen. Es gibt zwei Methoden zum Abrufen dieser Informationen:
 
 - Die aktuelle Liste der IP-Adressbereiche für alle Azure-Dienste, die Diensttags unterstützen, wird wöchentlich im Microsoft Download Center in Form eines JSON-Dokuments veröffentlicht. Es gibt für jede Azure-Cloud ein eigenes JSON-Dokument mit den IP-Adressbereichen, die für diese Cloud relevant sind:
-    - [Azure öffentlich](https://www.microsoft.com/download/details.aspx?id=56519)
-    - [Azure US Government](https://www.microsoft.com/download/details.aspx?id=57063)
-    - [Azure China](https://www.microsoft.com/download/details.aspx?id=57062)
-    - [Azure Deutschland](https://www.microsoft.com/download/details.aspx?id=57064)
+  - [Azure öffentlich](https://www.microsoft.com/download/details.aspx?id=56519)
+  - [Azure US Government](https://www.microsoft.com/download/details.aspx?id=57063)
+  - [Azure China](https://www.microsoft.com/download/details.aspx?id=57062)
+  - [Azure Deutschland](https://www.microsoft.com/download/details.aspx?id=57064)
 - Die Diensttagermittlungs-API (Vorschauversion) ermöglicht das programmgesteuerte Abrufen der aktuellen Liste von Diensttags. In der Vorschauversion gibt die Diensttagermittlungs-API eventuell weniger aktuelle Informationen zurück, als in den im Microsoft Download Center veröffentlichten JSON-Dokumenten enthalten sind. Sie können je nach Ihren Automatisierungsvorlieben auch die API-Benutzeroberfläche verwenden:
-    - [REST-API](/rest/api/virtualnetwork/servicetags/list)
-    - [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag)
-    - [Azure-Befehlszeilenschnittstelle](/cli/azure/network#az_network_list_service_tags)
+  - [REST-API](/rest/api/virtualnetwork/servicetags/list)
+  - [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag)
+  - [Azure-Befehlszeilenschnittstelle](/cli/azure/network#az_network_list_service_tags)
 
 Da die Diensttagermittlungs-API nicht so häufig aktualisiert wird wie die im Microsoft Download Center veröffentlichten JSON-Dokumente, sollten Sie für die Aktualisierung der Zulassungsliste Ihrer Firewall das JSON-Dokument verwenden. Gehen Sie dazu folgendermaßen vor:
 
-```PowerShell
+```powershell
 # The specific region to get the IP address ranges for. Replace westus2 with the desired region code 
 # from Get-AzLocation.
 $region = "westus2"
@@ -300,20 +310,24 @@ if ($found) {
 Anschließend können Sie die IP-Adressbereiche in `$ipAddressRanges` verwenden, um Ihre Firewall zu aktualisieren. Auf der Website Ihrer Firewall-/Netzwerkappliance finden Sie Informationen zum Aktualisieren der Firewall.
 
 ## <a name="test-network-connectivity-to-service-endpoints"></a>Testen der Netzwerkkonnektivität mit Dienstendpunkten
+
 Nach der Registrierung eines Servers beim Azure-Dateisynchronisierungsdienst können das Cmdlet „Test-StorageSyncNetworkConnectivity“ und die Datei „ServerRegistration.exe“ dazu verwendet werden, die Kommunikation mit allen für diesen Server spezifischen Endpunkten (URLs) zu testen. Dieses Cmdlet kann Sie bei der Problembehandlung unterstützen, wenn unvollständige Kommunikation den Server daran hindert, vollständig mit der Azure-Dateisynchronisierung zu arbeiten. Es kann außerdem zum Optimieren der Proxy- und Firewallkonfigurationen verwendet werden.
 
 Installieren Sie zum Testen der Netzwerkkonnektivität mindestens Version  9.1 des Azure-Dateisynchronisierungs-Agents, und führen Sie die folgenden PowerShell-Befehle aus:
+
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Test-StorageSyncNetworkConnectivity
 ```
 
 ## <a name="summary-and-risk-limitation"></a>Zusammenfassung und Risikobegrenzung
+
 Die Listen weiter oben in diesem Dokument enthalten die URLs, mit denen die Azure-Dateisynchronisierung derzeit kommuniziert. Firewalls müssen in der Lage sein, ausgehenden Datenverkehr zu diesen Domänen zuzulassen. Microsoft ist bestrebt, diese Liste auf dem neuesten Stand zu halten.
 
 Ein Einrichten von domäneneinschränkenden Firewallregeln kann eine Maßnahme sein, die Sicherheit zu verbessern. Wenn Sie diese Firewallkonfigurationen verwenden, müssen Sie bedenken, dass URLs hinzugefügt und im Verlauf der Zeit vielleicht geändert werden. Lesen Sie diesen Artikel in regelmäßigen Abständen.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](file-sync-planning.md)
 - [Bereitstellen der Azure-Dateisynchronisierung](file-sync-deployment-guide.md)
 - [Überwachen der Azure-Dateisynchronisierung](file-sync-monitoring.md)

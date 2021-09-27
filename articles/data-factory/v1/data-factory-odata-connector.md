@@ -3,16 +3,17 @@ title: Verschieben von Daten aus OData-Quellen
 description: Erfahren Sie, wie Sie Daten aus OData-Quellen mithilfe von Azure Data Factory verschieben.
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fae78459a752d78fe47f189bca67667e917ba561
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a3d44d8aaf7c83eee7cbd7feab83c2ffdc5d8f2a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100380065"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128580299"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>Verschieben von Daten aus einer OData-Quelle mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -55,7 +56,7 @@ Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Defini
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit OData verknüpften Dienst spezifisch sind.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | Typ |Die type-Eigenschaft muss auf **OData** |Ja |
 | url |Die URL des OData-Diensts. |Ja |
@@ -140,7 +141,7 @@ Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren vo
 
 Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt „typeProperties“ für ein Dataset vom Typ **ODataResource** (mit OData-Datasets) hat die folgenden Eigenschaften:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | path |Pfad zu der OData-Ressource |Nein |
 
@@ -151,7 +152,7 @@ Eigenschaften im Abschnitt „typeProperties“ der Aktivität können dagegen j
 
 Wenn eine Quelle des Typs **RelationalSource** (wozu OData gehört) verwendet wird, sind im Abschnitt „typeProperties“ folgende Eigenschaften verfügbar:
 
-| Eigenschaft | BESCHREIBUNG | Beispiel | Erforderlich |
+| Eigenschaft | Beschreibung | Beispiel | Erforderlich |
 | --- | --- | --- | --- |
 | Abfrage |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |"?$select=Name, Beschreibung&$top=5" |Nein |
 

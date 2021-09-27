@@ -2,13 +2,13 @@
 title: Bereitstellen eines IoT Edge-Sicherheitsmoduls
 description: Erfahren Sie, wie Sie einen Defender für IoT-Sicherheits-Agent auf einem IoT Edge-Gerät bereitstellen.
 ms.topic: conceptual
-ms.date: 05/26/2021
-ms.openlocfilehash: 45f7351b47554ce3eb6906d5b6011de945182484
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 09/23/2021
+ms.openlocfilehash: f5d6dbf45745629fb656812bf75a3b69381260eb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113016061"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128678571"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Bereitstellen eines Sicherheitsmoduls auf Ihrem IoT Edge-Gerät
 
@@ -57,8 +57,11 @@ Führen Sie jeden Schritt zum Erstellen einer IoT Edge-Bereitstellung für Defe
 #### <a name="step-1-modules"></a>Schritt 1: Module
 
 1. Wählen Sie das Modul **AzureSecurityCenterforIoT** aus.
+
 1. Ändern Sie auf der Registerkarte **Moduleinstellungen** den **Namen** in **azureiotsecurity**.
+
 1. Fügen Sie bei Bedarf auf der Registerkarte **Umgebungsvariablen** eine Variable hinzu (Sie können beispielsweise eine *Debugebene* hinzufügen und auf einen der folgenden Werte festlegen: „Fatal“, „Error“, „Warning“ oder „Information“).
+
 1. Fügen Sie auf der Registerkarte **Optionen für Containererstellung** die folgende Konfiguration hinzu:
 
     ``` json
@@ -82,19 +85,19 @@ Führen Sie jeden Schritt zum Erstellen einer IoT Edge-Bereitstellung für Defe
 1. Fügen Sie auf der Registerkarte **Einstellungen für Modulzwilling** die folgende Konfiguration hinzu:
 
    Eigenschaft für Modulzwilling:
-   
+
    ``` json
      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration"
    ```
 
-   Inhalt der Modulzwillingseigenschaft: 
+   Inhalt der Modulzwillingseigenschaft:
 
    ```json
      {
 
      }
    ```
-    
+
    Weitere Informationen zum Konfigurieren des Agents finden Sie unter [Tutorial: Konfigurieren von Sicherheits-Agents](./how-to-agent-configuration.md).
 
 1. Wählen Sie **Update** aus.

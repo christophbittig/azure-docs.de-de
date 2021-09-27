@@ -1,18 +1,18 @@
 ---
 title: Übersicht über das Blaupausenbeispiel „Azure Security Benchmark Foundation“
 description: Übersicht und Architektur für das Blaupausenbeispiel „Azure Security Benchmark Foundation“.
-ms.date: 03/12/2021
+ms.date: 09/08/2021
 ms.topic: sample
-ms.openlocfilehash: a60f70b1f3e9d810ccded8bbeee726ea950524e9
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 82521251ca395a0d5a1409dae62954950b7da8a3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108739257"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128614729"
 ---
 # <a name="overview-of-the-azure-security-benchmark-foundation-blueprint-sample"></a>Übersicht über das Blaupausenbeispiel „Azure Security Benchmark Foundation“
 
-Das Blaupausenbeispiel „Azure Security Benchmark Foundation“ enthält eine Reihe grundlegender Infrastrukturmuster, die Sie bei der Erstellung einer sicheren und konformen Azure-Umgebung unterstützen. Mithilfe der Blaupause können Sie eine cloudbasierte Architektur mit Lösungen für Szenarien bereitstellen, in denen Akkreditierungs- oder Konformitätsanforderungen erfüllt werden müssen. Dieses grundlegende Blaupausenbeispiel ist eine Erweiterung des [Blaupausenbeispiel „Azure Security Benchmark“](../azure-security-benchmark.md). Es dient zum Bereitstellen und Konfigurieren von Netzwerkgrenzen, Überwachungsmöglichkeiten und anderen Ressourcen im Einklang mit den Richtlinien und anderen Schutzmaßnahmen, die im [Azure-Sicherheitsvergleichstest](../../../../security/benchmarks/index.yml) definiert sind.
+Das Blaupausenbeispiel „Azure Security Benchmark Foundation“ enthält eine Reihe grundlegender Infrastrukturmuster, die Sie bei der Erstellung einer sicheren und konformen Azure-Umgebung unterstützen. Mithilfe der Blaupause können Sie eine cloudbasierte Architektur mit Lösungen für Szenarien bereitstellen, in denen Akkreditierungs- oder Konformitätsanforderungen erfüllt werden müssen. Es dient zum Bereitstellen und Konfigurieren von Netzwerkgrenzen, Überwachungsmöglichkeiten und anderen Ressourcen im Einklang mit den Richtlinien und anderen Schutzmaßnahmen, die im [Azure-Sicherheitsvergleichstest](../../../../security/benchmarks/index.yml) definiert sind.
 
 ## <a name="architecture"></a>Aufbau
 

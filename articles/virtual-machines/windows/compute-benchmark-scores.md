@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2021
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: f83a2a8aab4f1daf9fe4317491b2ed3591ec227d
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 9d717912e62340c939649271d2ccf3339a72b0e1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122689709"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633467"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Compute-Benchmarkergebnisse für virtuelle Windows-Computer
 
@@ -375,7 +375,7 @@ CoreMark ist ein Open Source-Tool, das in [GitHub](https://github.com/eembc/core
 
 Geben Sie Folgendes ein, um den Benchmark zu erstellen und auszuführen:
 
-```> make```
+`> make`
 
 Vollständige Ergebnisse finden Sie in den Dateien ```run1.log``` und ```run2.log```. 
 ```run1.log``` enthält CoreMark-Ergebnisse. Dies sind die Benchmarkergebnisse mit Leistungsparametern.
@@ -385,7 +385,7 @@ Vollständige Ergebnisse finden Sie in den Dateien ```run1.log``` und ```run2.lo
 
 Standardmäßig wird der Benchmark zwischen 10 und 100 Sekunden ausgeführt. Verwenden Sie zur Außerkraftsetzung ```ITERATIONS=N```.
 
-```% make ITERATIONS=10```
+`% make ITERATIONS=10`
 
 Mit dem obigen Flag wird der Benchmark für 10 Durchläufe ausgeführt. 
 **Die Ergebnisse sind nur dann für die Berichterstellung gültig, wenn der Benchmark mindestens 10 Sekunden lang ausgeführt wurde!**
@@ -394,7 +394,7 @@ Mit dem obigen Flag wird der Benchmark für 10 Durchläufe ausgeführt.
 
 Verwenden Sie ```XCFLAGS=-DMULTITHREAD=N```, wobei N für die Anzahl von Threads steht, die parallel ausgeführt werden sollen. Es sind verschiedene Implementierungen für die Ausführung in unterschiedlichen Kontexten verfügbar.
 
-```% make XCFLAGS="-DMULTITHREAD=4 -DUSE_PTHREAD"```
+`% make XCFLAGS="-DMULTITHREAD=4 -DUSE_PTHREAD"`
 
 Durch den Befehl oben wird der Benchmark für die Ausführung auf 4 Kernen kompiliert.
 

@@ -8,12 +8,12 @@ ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: edd90071125c65b7d4af3d0065e92b30f35e5f65
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 7c3ad407b0c412e3cf4dbb5cc1635376c718a747
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114436951"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605808"
 ---
 # <a name="azcopy-v10-configuration-settings-azure-storage"></a>AzCopy v10-Konfigurationseinstellungen (Azure Storage)
 
@@ -59,7 +59,6 @@ Die folgende Tabelle beschreibt die einzelnen Umgebungsvariablen und enthält Li
 | GOOGLE_APPLICATION_CREDENTIALS | Der absolute Pfad zur Dienstkontoschlüssel-Datei. Stellt einen Schlüssel für die Autorisierung bei Google Cloud Storage bereit. [Kopieren von Daten aus Google Cloud Storage in Azure Storage mithilfe von AzCopy (Vorschau)](storage-ref-azcopy-configuration-settings.md) |
 | HTTPS_PROXY | Konfiguriert Proxyeinstellungen für AzCopy. Legen Sie diese Variable auf die Proxy-IP-Adresse und die Proxyportnummer fest. Beispiel: `xx.xxx.xx.xxx:xx`. Unter Windows ist diese Einstellung nicht erforderlich, da AzCopy Proxyeinstellungen automatisch erkennt. Falls Sie diese Einstellung unter Windows verwenden, wird dadurch die automatische Erkennung außer Kraft gesetzt. Informationen hierzu finden Sie unter [Konfigurieren von Proxyeinstellungen](#configure-proxy-settings). |
 
-
 ## <a name="configure-proxy-settings"></a>Konfigurieren von Proxyeinstellungen
 
 Um die Proxyeinstellungen für AzCopy zu konfigurieren, legen Sie die Umgebungsvariable `HTTPS_PROXY` fest. Unter Windows ist diese Einstellung nicht erforderlich, da AzCopy Proxyeinstellungen automatisch erkennt. Falls Sie diese Einstellung unter Windows verwenden, wird dadurch die automatische Erkennung außer Kraft gesetzt.
@@ -74,7 +73,7 @@ AzCopy unterstützt zurzeit keine Proxys, für die eine Authentifizierung mit NT
 
 ### <a name="bypassing-a-proxy"></a>Umgehen eines Proxys
 
-Wenn AzCopy unter Windows ausgeführt wird und Sie angeben möchten, dass gar _kein_ Proxy verwendet werden soll (anstatt die Einstellungen automatisch zu erkennen), verwenden Sie diese Befehle. Mit diesen Einstellungen sucht AzCopy keinen Proxy und versucht auch nicht, einen zu verwenden.
+Wenn AzCopy unter Windows ausgeführt wird und Sie angeben möchten, dass gar *kein* Proxy verwendet werden soll (anstatt die Einstellungen automatisch zu erkennen), verwenden Sie diese Befehle. Mit diesen Einstellungen sucht AzCopy keinen Proxy und versucht auch nicht, einen zu verwenden.
 
 | Betriebssystem | Environment | Befehle  |
 |--------|-----------|----------|

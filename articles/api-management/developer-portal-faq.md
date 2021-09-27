@@ -4,18 +4,18 @@ titleSuffix: Azure API Management
 description: Häufig gestellte Fragen zum Entwicklerportal in API Management. Das Entwicklerportal ist eine anpassbare Website, auf der API-Consumer Ihre APIs untersuchen können.
 services: api-management
 documentationcenter: API Management
-author: mikebudzynski
+author: dlepow
 ms.service: api-management
 ms.topic: troubleshooting
 ms.date: 07/30/2021
-ms.author: apimpm
+ms.author: danlep
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b7b7efda7ca28382ca1dfbdead64db9976d67bd4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0c8757211bf11e97cde091d49eb6512bb0e4f7cc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355843"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656339"
 ---
 # <a name="api-management-developer-portal---frequently-asked-questions"></a>API Management-Entwicklerportal - Häufig gestellte Fragen
 
@@ -79,7 +79,7 @@ Sie können CORS auch manuell aktivieren.
 1. Wählen Sie den Link **Manuelle Anwendung auf globaler Ebene** aus, um den generierten Richtliniencode anzuzeigen.
 2. Navigieren Sie im Azure-Portal im Abschnitt **APIs** Ihres API Management-Diensts zu **Alle APIs**.
 3. Wählen Sie im Abschnitt **Eingehende Verarbeitung** das Symbol **</>** aus.
-4. Fügen Sie die Richtlinie in den Abschnitt **<inbound>** der XML-Datei ein. Stellen Sie sicher, dass der **<origin>** -Wert mit der Domäne Ihres Entwicklerportals übereinstimmt.
+4. Fügen Sie die Richtlinie in den Abschnitt **\<inbound\>** der XML-Datei ein. Stellen Sie sicher, dass der **\<origin\>** -Wert mit der Domäne Ihres Entwicklerportals übereinstimmt.
 
 > [!NOTE]
 > 

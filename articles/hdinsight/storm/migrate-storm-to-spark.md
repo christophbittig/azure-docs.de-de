@@ -4,12 +4,12 @@ description: Die Unterschiede und der Ablauf beim Migrieren von Apache Storm-Wor
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/16/2019
-ms.openlocfilehash: b8b054d06c9c0987508abfdf03bbcf9470572bd1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c4f4156f80fac0c9e5eaae360aa937544d88aa9e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104868765"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656795"
 ---
 # <a name="migrate-azure-hdinsight-36-apache-storm-to-hdinsight-40-apache-spark"></a>Migrieren von Azure HDInsight 3.6 Apache Storm zu HDInsight 4.0 Apache Spark
 
@@ -40,7 +40,7 @@ Mit Apache Storm lassen sich verschiedene Stufen der garantierten Nachrichtenver
 
 ### <a name="spark-streaming-vs-spark-structured-streaming"></a>Spark Streaming und Spark Structured Streaming im Vergleich
 
-Spark Structured Streaming löst Spark Streaming (DStreams) ab. Structured Streaming wird weiterhin erweitert und gewartet, während für DStreams nur der Wartungsmodus aktiviert ist. **Hinweis: Links erforderlich, um diesen Aspekt zu unterstreichen**. Structured Streaming bietet nicht so viele Features für die direkte Unterstützung von Quellen und Senken wie DStreams. Daher sollten Sie Ihre Anforderungen genau einschätzen, um die geeignete Option für die Spark-Streamverarbeitung auszuwählen.
+Spark Structured Streaming löst Spark Streaming (DStreams) ab. Structured Streaming wird weiterhin erweitert und gewartet, während für DStreams nur der Wartungsmodus aktiviert ist. Structured Streaming bietet nicht so viele Features für die direkte Unterstützung von Quellen und Senken wie DStreams. Daher sollten Sie Ihre Anforderungen genau einschätzen, um die geeignete Option für die Spark-Streamverarbeitung auszuwählen.
 
 ## <a name="streaming-single-event-processing-vs-micro-batch-processing"></a>Streamingverarbeitung (einzelnes Ereignis) und Microbatchverarbeitung im Vergleich
 

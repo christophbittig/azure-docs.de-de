@@ -4,12 +4,12 @@ description: Hier wird das Skalierungsverhalten von Funktions-Apps im Verbrauchs
 ms.date: 10/29/2020
 ms.topic: conceptual
 ms.service: azure-functions
-ms.openlocfilehash: ff7194b5dfda09253526aa79b52be475c131a411
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c67177570906e0122df6116f1a0a159d64f3486b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122356073"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128571309"
 ---
 # <a name="event-driven-scaling-in-azure-functions"></a>Ereignisgesteuerte Skalierung in Azure Functions
 
@@ -55,7 +55,7 @@ $resource | Set-AzResource -Force
 
 ## <a name="best-practices-and-patterns-for-scalable-apps"></a>Bewährte Methoden und Muster für skalierbare Apps
 
-Es gibt viele Aspekte einer Funktions-App, die sich auf die Skalierung auswirken. Dazu zählen beispielsweise die Hostkonfiguration, der Runtimespeicherbedarf und die Ressourceneffizienz.  Weitere Informationen finden Sie im [Abschnitt zur Skalierbarkeit im Artikel zum Thema Leistung](functions-best-practices.md#scalability-best-practices). Sie sollten auch das Verhalten von Verbindungen beim Skalieren Ihrer Funktions-App beachten. Weitere Informationen finden Sie unter [How to manage connections in Azure Functions](manage-connections.md) (Verwalten von Verbindungen in Azure Functions).
+Es gibt viele Aspekte einer Funktions-App, die sich auf die Skalierung auswirken. Dazu zählen beispielsweise die Hostkonfiguration, der Runtimespeicherbedarf und die Ressourceneffizienz.  Weitere Informationen finden Sie im [Abschnitt zur Skalierbarkeit im Artikel zum Thema Leistung](performance-reliability.md#scalability-best-practices). Sie sollten auch das Verhalten von Verbindungen beim Skalieren Ihrer Funktions-App beachten. Weitere Informationen finden Sie unter [How to manage connections in Azure Functions](manage-connections.md) (Verwalten von Verbindungen in Azure Functions).
 
 Weitere Informationen zum Skalieren in Python und Node.js finden Sie unter [Python-Entwicklerhandbuch für Azure Functions: Skalierung und Parallelität](functions-reference-python.md#scaling-and-performance) und [Node.js-Entwicklerhandbuch für Azure Functions: Skalierung und Parallelität](functions-reference-node.md#scaling-and-concurrency).
 

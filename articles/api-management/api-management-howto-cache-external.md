@@ -3,20 +3,20 @@ title: Verwenden eines externen Caches in Azure API Management | Microsoft-Dokum
 description: Hier erfahren Sie, wie Sie einen externen Cache in Azure API Management konfigurieren und verwenden. Durch die Verwendung eines externen Caches lassen sich einige Einschränkungen des integrierten Caches umgehen.
 services: api-management
 documentationcenter: ''
-author: mikebudzynski
+author: dlepow
 manager: erikre
 editor: ''
 ms.assetid: 740f6a27-8323-474d-ade2-828ae0c75e7a
 ms.service: api-management
 ms.topic: conceptual
 ms.date: 04/26/2020
-ms.author: apimpm
-ms.openlocfilehash: 6288a10e111e42629abf5e09b84a6a7791dcfe95
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: ef7e91c482e628bfcc0a7396976ca9e26b4ac474
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96018221"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128678875"
 ---
 # <a name="use-an-external-redis-compatible-cache-in-azure-api-management"></a>Verwenden eines externen Redis-kompatiblen Caches in Azure API Management
 
@@ -50,7 +50,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 In diesem Abschnitt erfahren Sie, wie Sie eine Azure Cache for Redis-Instanz in Azure erstellen. Falls Sie bereits über eine Azure Cache for Redis-Instanz verfügen (innerhalb oder außerhalb von Azure), können Sie <a href="#add-external-cache">direkt mit dem nächsten Abschnitt fortfahren</a>.
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
+[!INCLUDE [redis-cache-create](../azure-cache-for-redis/includes/redis-cache-create.md)]
 
 ## <a name="deploy-redis-cache-to-kubernetes"></a><a name="create-cache"> </a> Bereitstellen von Redis Cache in Kubernetes
 

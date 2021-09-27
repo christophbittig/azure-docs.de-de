@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6744970ec7aadfc4a9cb967c479307b441f4fb1b
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 71f7bde0dcae54916c9657b724290778bb01652b
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114453049"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430070"
 ---
 # <a name="query-csv-files"></a>Abfragen von CSV-Dateien
 
@@ -336,6 +336,24 @@ WITH (
     --[population] bigint
 ) AS [r]
 ```
+
+## <a name="querying-appendable-files"></a>Abfragen von erweiterbaren Dateien
+
+Die CSV-Dateien, die in der Abfrage verwendet werden, sollten während der Ausführung der Abfrage nicht geändert werden. In der Abfrage mit langer Ausführungszeit kann es vorkommen, dass der SQL-Pool Leseversuche wiederholt, Teile der Dateien liest oder die Datei sogar mehrmals liest. Änderungen am Dateiinhalt würden zu falschen Ergebnissen führen. Daher ist die Abfrage für den SQL-Pool nicht erfolgreich, wenn erkannt wird, dass sich die Änderungszeit einer beliebigen Datei während der Abfrageausführung geändert hat.
+
+In einigen Szenarien möchten Sie vielleicht die Dateien lesen, die kontinuierlich erweitert werden. Um Abfragefehler aufgrund von kontinuierlich erweiterten Dateien zu vermeiden, können Sie der Funktion `OPENROWSET` erlauben, potenziell inkonsistente Lesevorgänge zu ignorieren, indem Sie die `ROWSET_OPTIONS`-Einstellung verwenden.
+
+```sql
+select top 10 *
+from openrowset(
+    bulk 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.csv',
+    format = 'csv',
+    parser_version = '2.0',
+    firstrow = 2,
+    ROWSET_OPTIONS = '{"READ_OPTIONS":["ALLOW_INCONSISTENT_READS"]}') as rows
+```
+
+Durch die Leseoption `ALLOW_INCONSISTENT_READS` wird die Überprüfung der Dateiänderungszeit während des Abfragelebenszyklus deaktiviert, und es werden alle verfügbaren Inhalte der Dateien gelesen. In erweiterbaren Dateien wird der vorhandene Inhalt nicht aktualisiert, und es werden nur neue Zeilen hinzugefügt. Dadurch wird die Wahrscheinlichkeit falscher Ergebnisse im Vergleich zu den aktualisierbaren Dateien minimiert. Mit dieser Option können Sie ggf. die häufig erweiterten Dateien lesen, ohne die Fehler behandeln zu müssen. In den meisten Szenarien ignoriert der SQL-Pool nur einige Zeilen, die während der Abfrageausführung an die Dateien angefügt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

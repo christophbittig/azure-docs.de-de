@@ -3,12 +3,12 @@ title: Allgemeine Fragen zu VMware-Notfallwiederherstellung mit Azure Site Recov
 description: Hier erhalten Sie Antworten auf allgemeine Fragen zur Notfallwiederherstellung von lokalen virtuellen VMware-Computern in Azure mithilfe von Azure Site Recovery.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0e39cd3b9f06620f2004a2afbc869fe22de04468
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 8480598cc872a051b6b81f928e92740e39353598
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272864"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621219"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Allgemeine Fragen zur VMware-zu-Azure-Replikation
 
@@ -25,7 +25,7 @@ So ändern Sie dieses Prozedere:
 1. Öffnen Sie den Tresor im Azure-Portal. 
 2. Klicken Sie in dem Abschnitt **Erste Schritte** auf **Site Recovery**. 
 3. Klicken Sie auf das Banner oben auf dieser Seite. 
-
+    
     [![Ändern des VMware-Stapels – Schritt 1](./media/vmware-azure-common-questions/change-stack-step-1.png)](./media/vmware-azure-common-questions/change-stack-step-1.png#lightbox)
 
 4. Dadurch öffnet sich das Auswahlblatt für die Erfahrungen. Wählen Sie die klassische Erfahrung aus, wenn Sie den Konfigurationsserver verwenden möchten, und klicken Sie dann auf **OK**. Wenn nicht, schließen Sie den Bereich. 

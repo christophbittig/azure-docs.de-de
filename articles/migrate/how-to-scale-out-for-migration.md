@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: 56f79028b2424d8383a0a4a3cb27639f3924ff90
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: 9aee2c46f677f5265b7eafce9cc7af7214f745df
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122779619"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128652944"
 ---
 # <a name="scale-agentless-migration-of-vmware-virtual-machines-to-azure"></a>Skalieren der Migration von virtuellen VMware-Computern zu Azure ohne Agents
 
@@ -75,11 +75,14 @@ Klicken Sie unter **Download Azure Migrate appliance** (Azure Migrate-Appliance 
 ### <a name="3-run-the-azure-migrate-installer-script"></a>3. Ausführen des Azure Migrate-Installationsskripts
 
 1. Extrahieren Sie die gezippte Datei in einem Ordner auf dem Server, der die Appliance hostet.  Führen Sie das Skript nicht auf einem Server mit einer vorhandenen Azure Migrate-Appliance aus.
-2. Starten Sie PowerShell auf dem oben genannten Server mit Administratorberechtigungen (erhöhten Rechten).
-3. Ändern Sie das PowerShell-Verzeichnis in den Ordner, in den die Inhalte der gezippten Datei extrahiert wurden, die Sie heruntergeladen haben.
-4. Führen Sie das Skript mit dem Namen **AzureMigrateInstaller.ps1** aus, indem Sie den folgenden Befehl ausführen:
 
-    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
+2. Starten Sie PowerShell auf dem oben genannten Server mit Administratorberechtigungen (erhöhten Rechten).
+
+3. Ändern Sie das PowerShell-Verzeichnis in den Ordner, in den die Inhalte der gezippten Datei extrahiert wurden, die Sie heruntergeladen haben.
+
+4. Führen Sie das Skript mit dem Namen `AzureMigrateInstaller.ps1` aus, indem Sie den folgenden Befehl ausführen:
+
+  `PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 `
 
 5. Treffen Sie eine Auswahl aus den Szenario-, Cloud-, Konfigurations- und Konnektivitätsoptionen, um die gewünschte Appliance bereitzustellen. Mit der unten angegebenen Auswahl wird beispielsweise eine **Appliance für die horizontale Skalierung** eingerichtet, um gleichzeitige Replikationen auf Servern, die in Ihrer VMware-Umgebung ausgeführt werden, zu initiieren. Die Replikation erfolgt für ein Azure Migrate-Projekt mit **Standardkonnektivität _(öffentlicher Endpunkt)_** in der **öffentlichen Azure-Cloud**.
 
@@ -141,14 +144,17 @@ Bevor Sie beginnen, sollten Sie sicherstellen, dass [diese Azure-Endpunkte](migr
 Klicken Sie auf **Importieren**, um die erforderlichen Konfigurationsdateien von der primären Appliance abzurufen und den Registrierungsvorgang der Appliance für die horizontale Skalierung abzuschließen.
 
 1. Wenn Sie auf **Importieren** klicken, wird ein Popupfenster mit Anweisungen zum Importieren der erforderlichen Konfigurationsdateien von der primären Appliance geöffnet.
+
 :::image type="content" source="./media/how-to-scale-out-for-migration/import-modal-scale-out.png" alt-text="Modales Fenster „Import configuration files“ (Konfigurationsdateien importieren)":::
+
 1. Melden Sie sich bei der primären Appliance an (Remotedesktop), und führen Sie die folgenden PowerShell-Befehle aus:
 
-    ``` PS cd 'C:\Program Files\Microsoft Azure Appliance Configuration Manager\Scripts\PowerShell' ```
+   `PS cd 'C:\Program Files\Microsoft Azure Appliance Configuration Manager\Scripts\PowerShell' `
     
-    ``` PS .\ExportConfigFiles.ps1 ```
+    `PS .\ExportConfigFiles.ps1 `
 
 1. Kopieren Sie die ZIP-Datei, die Sie durch Ausführen der obigen Befehle erstellt haben, auf die Appliance für die horizontale Skalierung. Die ZIP-Datei enthält Konfigurationsdateien, die zum Registrieren der Appliance für die horizontale Skalierung erforderlich sind.
+
 1. Wählen Sie im Popupfenster, das im vorherigen Schritt geöffnet wurde, den Speicherort der kopierten ZIP-Konfigurationsdatei aus, und klicken Sie auf **Speichern**.
 
 Nachdem die Dateien erfolgreich importiert wurden, wird die Registrierung der Appliance für die horizontale Skalierung abgeschlossen, und der Zeitstempel des letzten erfolgreichen Imports wird angezeigt. Sie können die Registrierungsdetails auch anzeigen, indem Sie auf **Details anzeigen** klicken.

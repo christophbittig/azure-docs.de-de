@@ -1,20 +1,19 @@
 ---
-title: Bereitstellen eines selbstgehosteten Gateways für Kubernetes | Microsoft-Dokumentation
+title: Bereitstellen eines selbstgehosteten Gateways für Kubernetes
 description: Erfahren Sie, wie Sie eine selbstgehostete Gatewaykomponente von Azure API Management für Kubernetes bereitstellen.
-services: api-management
-author: vladvino
+author: dlepow
 manager: gwallace
 ms.service: api-management
 ms.workload: mobile
 ms.topic: article
-ms.author: apimpm
+ms.author: danlep
 ms.date: 05/25/2021
-ms.openlocfilehash: 645fce68e408b65299090e4661b36690f7ca140c
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: dda6fcbf71914fefcd1afd2056864ad66aa11d4d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114690494"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609819"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>Bereitstellen eines selbstgehosteten Gateways für Kubernetes
 
@@ -43,25 +42,27 @@ In diesem Artikel werden die Schritte für die Bereitstellung der selbstgehostet
 8. Fügen Sie die Befehle in das Terminalfenster (oder Befehlsfenster) ein. Mit dem ersten Befehl wird ein Kubernetes-Geheimnis erstellt, welches das in Schritt 4 generierte Zugriffstoken enthält. Der zweite Befehl wendet die in Schritt 6 heruntergeladene Konfigurationsdatei auf den Kubernetes-Cluster an und erwartet, dass sich die Datei im aktuellen Verzeichnis befindet.
 9. Führen Sie die Befehle aus, um die erforderlichen Kubernetes-Objekte im [Standardnamespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) zu erstellen. Starten Sie die selbstgehosteten Gatewaypods aus dem [Containerimage](https://aka.ms/apim/sputnik/dhub), das aus der Microsoft Container Registry heruntergeladen wurde.
 10. Führen Sie den folgenden Befehl aus, um zu prüfen, ob die Bereitstellung erfolgreich war. Beachten Sie, dass es einige Zeit dauern kann, bis alle Objekte erstellt sind und die Pods initialisiert wurden.
+
     ```console
     kubectl get deployments
     NAME             READY   UP-TO-DATE   AVAILABLE   AGE
     <gateway-name>   1/1     1            1           18s
     ```
 11. Führen Sie den folgenden Befehl aus, um zu überprüfen, ob der Dienst erfolgreich erstellt wurde. Beachten Sie, dass sich die IP-Adressen und Ports Ihrer Dienste unterscheiden.
+
     ```console
     kubectl get services
     NAME             TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)                      AGE
     <gateway-name>   LoadBalancer   10.99.236.168   <pending>     80:31620/TCP,443:30456/TCP   9m1s
     ```
-12. Kehren Sie zurück zum Azure-Portal, und wählen Sie **Übersicht** aus.
-13. Vergewissern Sie sich, dass in **Status** ein grünes Häkchen angezeigt wird, gefolgt von einer Knotenanzahl, die der Anzahl der in der YAML-Datei angegebenen Replikate entspricht. Dieser Status bedeutet, dass die bereitgestellten selbstgehosteten Gatewaypods erfolgreich mit dem API Management-Dienst kommunizieren und einen regelmäßigen „Takt“ aufweisen.
+1. Kehren Sie zurück zum Azure-Portal, und wählen Sie **Übersicht** aus.
+1. Vergewissern Sie sich, dass in **Status** ein grünes Häkchen angezeigt wird, gefolgt von einer Knotenanzahl, die der Anzahl der in der YAML-Datei angegebenen Replikate entspricht. Dieser Status bedeutet, dass die bereitgestellten selbstgehosteten Gatewaypods erfolgreich mit dem API Management-Dienst kommunizieren und einen regelmäßigen „Takt“ aufweisen.
 
     ![Gatewaystatus](media/how-to-deploy-self-hosted-gateway-kubernetes/status.png)
 
 > [!TIP]
-> Führen Sie den Befehl <code>kubectl logs deployment/<gateway-name></code> aus, um Protokolle von einem zufällig ausgewählten Pod anzuzeigen, falls es mehrere gibt.
-> Führen Sie <code>kubectl logs -h</code> aus, um eine vollständige Übersicht über alle Befehlsoptionen zu erhalten, wie z. B. Protokolle für einen bestimmten Pod oder Container.
+> Führen Sie den Befehl `kubectl logs deployment/<gateway-name>` aus, um Protokolle von einem zufällig ausgewählten Pod anzuzeigen, falls es mehrere gibt.
+> Führen Sie `kubectl logs -h` aus, um eine vollständige Übersicht über alle Befehlsoptionen zu erhalten, wie z. B. Protokolle für einen bestimmten Pod oder Container.
 
 ## <a name="production-deployment-considerations"></a>Überlegungen zur Bereitstellung in der Produktion
 

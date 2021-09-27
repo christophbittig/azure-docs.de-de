@@ -11,28 +11,28 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8c1b6aa0d6bdd98a66a638a216f93a6d81bd6b93
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 1be2b8200cd9e7b83fb3d113966a13c32e126d34
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113726858"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589262"
 ---
 # <a name="create-a-stored-access-policy-with-net"></a>Erstellen einer gespeicherten Zugriffsrichtlinie mit .NET
 
 Eine gespeicherte Zugriffsrichtlinie bietet eine zusätzliche Steuerungsebene für Shared Access Signatures (SAS) der Dienstebene auf Serverseite. Das Definieren einer gespeicherten Zugriffsrichtlinie dient zum Gruppieren von Shared Access Signatures und zum Bereitstellen zusätzlicher Einschränkungen für Shared Access Signatures, die von der Richtlinie gebunden werden. Mithilfe der gespeicherten Zugriffsrichtlinie können Sie die Startzeit, die Ablaufzeit oder die Berechtigungen für eine Shared Access Signature ändern oder die Signatur widerrufen, nachdem sie ausgegeben wurde.
-  
-Die folgenden Azure Storage-Ressourcen unterstützen gespeicherte Zugriffsrichtlinien:  
-  
-- Blobcontainer  
-- Dateifreigaben  
-- Warteschlangen  
-- Tabellen  
-  
+
+Die folgenden Azure Storage-Ressourcen unterstützen gespeicherte Zugriffsrichtlinien:
+
+- Blobcontainer
+- Dateifreigaben
+- Warteschlangen
+- Tabellen
+
 > [!NOTE]
 > Eine gespeicherte Zugriffsrichtlinie für einen Container kann einer Shared Access Signature zugeordnet werden, die dem Container selbst oder den darin enthaltenen Blobs Berechtigungen erteilt. Entsprechend kann eine gespeicherte Zugriffsrichtlinie für eine Dateifreigabe einer Shared Access Signature zugeordnet werden, die der Freigabe selbst oder den darin enthaltenen Dateien Berechtigungen erteilt.  
 >
-> Gespeicherte Zugriffsrichtlinien werden nur für Dienst-SAS unterstützt. Gespeicherte Zugriffsrichtlinien werden für die Konto-SAS oder die SAS für die Benutzerdelegierung nicht unterstützt.  
+> Gespeicherte Zugriffsrichtlinien werden nur für Dienst-SAS unterstützt. Gespeicherte Zugriffsrichtlinien werden für die Konto-SAS oder die SAS für die Benutzerdelegierung nicht unterstützt.
 
 Weitere Informationen zu gespeicherten Zugriffsrichtlinien finden Sie unter [Definieren einer gespeicherten Zugriffsrichtlinie](/rest/api/storageservices/define-stored-access-policy).
 

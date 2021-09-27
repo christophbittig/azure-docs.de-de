@@ -8,12 +8,12 @@ ms.reviewer: jamesbak
 ms.date: 09/09/2020
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: dc1d217dba64c36aa219abbd4d2220a494347689
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3360b2ddfb89ede248cc9bcafe4a0178de2f0e9d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95912755"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128636798"
 ---
 # <a name="azure-data-lake-storage-query-acceleration"></a>Abfragebeschleunigung für Azure Data Lake Storage
 
@@ -21,7 +21,7 @@ Die Abfragebeschleunigung ermöglicht es Anwendungen und Analyseframeworks, die 
 
 ## <a name="overview"></a>Übersicht
 
-Die Abfragebeschleunigung unterstützt die Filterung von *Prädikaten* und *Spaltenprojektionen*. So können Anwendungen Zeilen und Spalten zu dem Zeitpunkt filtern, zu dem die Daten vom Datenträger gelesen werden. Nur die Daten, die die Bedingungen eines Prädikats erfüllen, werden über das Netzwerk an die Anwendung übertragen. Dies reduziert die Netzwerklatenz und die Computekosten.  
+Die Abfragebeschleunigung unterstützt die Filterung von *Prädikaten* und *Spaltenprojektionen*. So können Anwendungen Zeilen und Spalten zu dem Zeitpunkt filtern, zu dem die Daten vom Datenträger gelesen werden. Nur die Daten, die die Bedingungen eines Prädikats erfüllen, werden über das Netzwerk an die Anwendung übertragen. Dies reduziert die Netzwerklatenz und die Computekosten.
 
 Sie können SQL verwenden, um die Zeilenfilterprädikate und Spaltenprojektionen in einer Abfragebeschleunigungsanforderung anzugeben. Von einer Anforderung wird jeweils nur eine Datei verarbeitet. Daher werden erweiterte relationale SQL-Funktionen, z. B. Joins und GROUP BY-Aggregate, nicht unterstützt. Die Abfragebeschleunigung unterstützt CSV- und JSON-formatierte Daten als Eingabe für die einzelnen Anforderungen.
 
@@ -50,7 +50,7 @@ Im folgenden Diagramm wird veranschaulicht, wie eine typische Anwendung die Abfr
 
 Die Abfragebeschleunigung optimiert die Leistung, indem die Menge der Daten reduziert wird, die übertragen und von Ihrer Anwendung verarbeitet wird.
 
-Um einen aggregierten Wert zu berechnen, rufen Anwendungen in der Regel **alle** Daten aus einer Datei ab und verarbeiten und filtern die Daten dann lokal. Eine Analyse der Eingabe-/Ausgabemuster für Analyseworkloads zeigt, dass Anwendungen in der Regel nur 20 % der gelesenen Daten benötigen, um die jeweilige Berechnung auszuführen. Diese Statistik gilt selbst dann, wenn Techniken wie [Partition Pruning](../../hdinsight/hdinsight-hadoop-optimize-hive-query.md#hive-partitioning) angewendet wurden. Das bedeutet, dass 80 % dieser Daten unnötigerweise von Anwendungen über das Netzwerk übertragen, analysiert und gefiltert werden. Dieses Muster, das im Wesentlichen dafür konzipiert wurde, nicht benötigte Daten auszuschließen, verursacht erhebliche Computekosten.  
+Um einen aggregierten Wert zu berechnen, rufen Anwendungen in der Regel **alle** Daten aus einer Datei ab und verarbeiten und filtern die Daten dann lokal. Eine Analyse der Eingabe-/Ausgabemuster für Analyseworkloads zeigt, dass Anwendungen in der Regel nur 20 % der gelesenen Daten benötigen, um die jeweilige Berechnung auszuführen. Diese Statistik gilt selbst dann, wenn Techniken wie [Partition Pruning](../../hdinsight/hdinsight-hadoop-optimize-hive-query.md#hive-partitioning) angewendet wurden. Das bedeutet, dass 80 % dieser Daten unnötigerweise von Anwendungen über das Netzwerk übertragen, analysiert und gefiltert werden. Dieses Muster, das im Wesentlichen dafür konzipiert wurde, nicht benötigte Daten auszuschließen, verursacht erhebliche Computekosten.
 
 Obwohl Azure sowohl im Hinblick auf den Durchsatz als auch auf die Latenz ein branchenführendes Netzwerk bietet, wirkt sich die unnötige Übertragung von Daten über dieses Netzwerk immer noch negativ auf die Anwendungsleistung aus. Durch die Abfragebeschleunigung werden diese negativen Auswirkungen beseitigt, da unerwünschte Daten während der Speicheranforderung herausgefiltert werden.
 
@@ -58,11 +58,11 @@ Außerdem muss Ihre Anwendung durch die CPU-Last, die zum Analysieren und Filter
 
 ## <a name="applications-that-can-benefit-from-query-acceleration"></a>Anwendungen, die von der Abfragebeschleunigung profitieren können
 
-Die Abfragebeschleunigung wurde für Frameworks für verteilte Analysen und Datenverarbeitungsanwendungen konzipiert. 
+Die Abfragebeschleunigung wurde für Frameworks für verteilte Analysen und Datenverarbeitungsanwendungen konzipiert.
 
-Frameworks für verteilte Analysen wie Apache Spark und Apache Hive bieten eine Speicherabstraktionsschicht innerhalb des Frameworks. Diese Engines verfügen auch über Abfrageoptimierer, die Informationen zu den Fähigkeiten des zugrunde liegenden E/A-Diensts berücksichtigen können, wenn ein optimaler Abfrageplan für Benutzerabfragen ermittelt wird. Die Abfragebeschleunigung wird bereits in die ersten Frameworks integriert. Infolgedessen profitieren Benutzer dieser Frameworks von einer verbesserten Abfragelatenz und geringeren Gesamtkosten, ohne dass Änderungen an den Abfragen vorgenommen werden müssen. 
+Frameworks für verteilte Analysen wie Apache Spark und Apache Hive bieten eine Speicherabstraktionsschicht innerhalb des Frameworks. Diese Engines verfügen auch über Abfrageoptimierer, die Informationen zu den Fähigkeiten des zugrunde liegenden E/A-Diensts berücksichtigen können, wenn ein optimaler Abfrageplan für Benutzerabfragen ermittelt wird. Die Abfragebeschleunigung wird bereits in die ersten Frameworks integriert. Infolgedessen profitieren Benutzer dieser Frameworks von einer verbesserten Abfragelatenz und geringeren Gesamtkosten, ohne dass Änderungen an den Abfragen vorgenommen werden müssen.
 
-Die Abfragebeschleunigung ist auch für Datenverarbeitungsanwendungen geeignet. Diese Anwendungstypen führen in der Regel umfangreiche Datentransformationen aus, die u. U. keine direkten analytischen Erkenntnisse liefern. Daher nutzen sie nicht immer etablierte Frameworks für verteilte Analysen. Die Anwendungen verfügen häufig über eine direktere Beziehung zu dem zugrunde liegenden Speicherdienst, sodass sie direkt von Features wie der Abfragebeschleunigung profitieren können. 
+Die Abfragebeschleunigung ist auch für Datenverarbeitungsanwendungen geeignet. Diese Anwendungstypen führen in der Regel umfangreiche Datentransformationen aus, die u. U. keine direkten analytischen Erkenntnisse liefern. Daher nutzen sie nicht immer etablierte Frameworks für verteilte Analysen. Die Anwendungen verfügen häufig über eine direktere Beziehung zu dem zugrunde liegenden Speicherdienst, sodass sie direkt von Features wie der Abfragebeschleunigung profitieren können.
 
 Ein Beispiel für die Integration der Abfragebeschleunigung in eine Anwendung finden Sie unter [Filtern von Daten mithilfe der Abfragebeschleunigung für Azure Data Lake Storage](data-lake-storage-query-acceleration-how-to.md).
 

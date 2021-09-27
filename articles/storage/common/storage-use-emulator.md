@@ -1,19 +1,19 @@
 ---
 title: Verwenden des Azure-Speicheremulators für Entwicklung und Tests (veraltet)
 description: Der (veraltete) Azure-Speicheremulator bietet eine kostenlose lokale Entwicklungsumgebung zum Entwickeln und Testen Ihrer Azure Storage-Anwendungen.
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 07/14/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2ff639cd19a97d2e3a5ef730c774f8c967cfa6c3
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: d23c5eed831e693509cd9216acd7c98166544b31
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114203799"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595767"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing-deprecated"></a>Verwenden des Azure-Speicheremulators für Entwicklung und Tests (veraltet)
 
@@ -30,7 +30,7 @@ Der Speicheremulator wird derzeit nur unter Windows ausgeführt. Verwenden Sie f
 
 > [!NOTE]
 > Der Zugriff auf die Daten, die in einer bestimmten Version des Speicheremulators erstellt wurden, ist bei Verwendung einer anderen Version nicht garantiert. Wenn Sie die Daten langfristig beibehalten möchten, sollten Sie diese Daten in einem Azure-Speicherkonto und nicht im Speicheremulator speichern.
-> 
+>
 > Für den Speicheremulator sind spezifische Versionen der OData-Bibliotheken erforderlich. Das Ersetzen der OData-DLLs, die vom Speicheremulator mit anderen Versionen verwendet werden, wird nicht unterstützt und führt möglicherweise zu unerwartetem Verhalten. Es kann aber jede Version von OData, die vom Speicherdienst unterstützt wird, zum Senden von Anforderungen an den Emulator verwendet werden.
 
 ## <a name="how-the-storage-emulator-works"></a>Funktionsweise des Speicheremulators
@@ -151,9 +151,9 @@ Beispielsweise kann für den Zugriff auf ein Blob im Speicheremulator die folgen
 
 Die Dienstendpunkte für den Speicheremulator sind:
 
-* Blob-Dienst: `http://127.0.0.1:10000/<account-name>/<resource-path>`
-* Warteschlangendienst: `http://127.0.0.1:10001/<account-name>/<resource-path>`
-* Tabellenspeicherdienst: `http://127.0.0.1:10002/<account-name>/<resource-path>`
+- Blob-Dienst: `http://127.0.0.1:10000/<account-name>/<resource-path>`
+- Warteschlangendienst: `http://127.0.0.1:10001/<account-name>/<resource-path>`
+- Tabellenspeicherdienst: `http://127.0.0.1:10002/<account-name>/<resource-path>`
 
 ### <a name="addressing-the-account-secondary-with-ra-grs"></a>Adressieren des sekundären Kontos mit RA-GRS
 
@@ -195,32 +195,32 @@ Geben Sie zum Anzeigen der Liste der Optionen an der Eingabeaufforderung `/help`
 
 Da der Speicheremulator eine lokale emulierte Umgebung ist, gibt es Unterschiede zwischen der Verwendung des Emulators und der Verwendung eines Azure-Speicherkontos in der Cloud:
 
-* Der Speicheremulator unterstützt nur ein einziges festgelegtes Konto und einen bekannten Authentifizierungsschlüssel.
-* Der Speicheremulator ist kein skalierbarer Speicherdienst und unterstützt keine große Anzahl gleichzeitiger Clients.
-* Wie in [Adressieren von Ressourcen im Speicheremulator](#addressing-resources-in-the-storage-emulator)beschrieben, werden Ressourcen im Speicheremulator im Vergleich zu einem Azure-Speicherkonto anders adressiert. Der Unterschied ist darauf zurückzuführen, dass die Domänennamenauflösung zwar in der Cloud, nicht aber auf dem lokalen Computer verfügbar ist.
-* Ab Version 3.1 unterstützt das Speicheremulatorkonto georedundante Replikation mit Lesezugriff (Read-Access Geo-Redundant Replication, RA-GRS). Im Emulator ist für alle Konten RA-GRS aktiviert, und es entsteht niemals eine Verzögerung zwischen den primären und sekundären Replikaten. Die Vorgänge "Get Blob Service Stats", "Get Queue Service Stats" und "Get Table Service Stats" werden für das sekundäre Konto unterstützt. Sie geben immer den Wert des `LastSyncTime`-Antwortelements als aktuelle Uhrzeit der zugrunde liegenden SQL-Datenbank zurück.
-* Die Endpunkte für Dateidienst und SMB-Protokolldienst werden im Speicheremulator zurzeit nicht unterstützt.
-* Wenn Sie eine Version der Speicherdienste verwenden, die vom Emulator nicht unterstützt wird, gibt der Emulator den Fehler „VersionNotSupportedByEmulator“ (HTTP-Statuscode 400: ungültige Anforderung) zurück.
+- Der Speicheremulator unterstützt nur ein einziges festgelegtes Konto und einen bekannten Authentifizierungsschlüssel.
+- Der Speicheremulator ist kein skalierbarer Speicherdienst und unterstützt keine große Anzahl gleichzeitiger Clients.
+- Wie in [Adressieren von Ressourcen im Speicheremulator](#addressing-resources-in-the-storage-emulator)beschrieben, werden Ressourcen im Speicheremulator im Vergleich zu einem Azure-Speicherkonto anders adressiert. Der Unterschied ist darauf zurückzuführen, dass die Domänennamenauflösung zwar in der Cloud, nicht aber auf dem lokalen Computer verfügbar ist.
+- Ab Version 3.1 unterstützt das Speicheremulatorkonto georedundante Replikation mit Lesezugriff (Read-Access Geo-Redundant Replication, RA-GRS). Im Emulator ist für alle Konten RA-GRS aktiviert, und es entsteht niemals eine Verzögerung zwischen den primären und sekundären Replikaten. Die Vorgänge "Get Blob Service Stats", "Get Queue Service Stats" und "Get Table Service Stats" werden für das sekundäre Konto unterstützt. Sie geben immer den Wert des `LastSyncTime`-Antwortelements als aktuelle Uhrzeit der zugrunde liegenden SQL-Datenbank zurück.
+- Die Endpunkte für Dateidienst und SMB-Protokolldienst werden im Speicheremulator zurzeit nicht unterstützt.
+- Wenn Sie eine Version der Speicherdienste verwenden, die vom Emulator nicht unterstützt wird, gibt der Emulator den Fehler „VersionNotSupportedByEmulator“ (HTTP-Statuscode 400: ungültige Anforderung) zurück.
 
 ### <a name="differences-for-blob-storage"></a>Unterschiede beim Blob-Speicher
 
 Die folgenden Unterschiede gelten für Blob-Speicher im Emulator:
 
-* Der Speicheremulator unterstützt nur Blob-Größen bis 2 GB.
-* Die maximale Länge eines Blobnamens im Speicheremulator ist 256 Zeichen, während sie in Azure Storage 1024 Zeichen beträgt.
-* Bei inkrementellen Kopien können Momentaufnahmen von überschriebenen Blobs kopiert werden, wodurch ein Fehler für den Dienst zurückgegeben wird.
-* „Get Page Ranges Diff“ funktioniert nicht zwischen Momentaufnahmen, die per inkrementeller Blobkopie kopiert wurden.
-* Ein Vorgang vom Typ „Put Blob“ kann ggf. bei einem Blob, das im Speicheremulator vorhanden ist und über eine aktive Lease verfügt, erfolgreich ausgeführt werden, auch wenn die Lease-ID in der Anforderung nicht angegeben wurde.
-* Vorgänge für Anfügeblobs werden vom Emulator nicht unterstützt. Beim Versuch, einen Vorgang auf einen Anfügeblob anzuwenden, wird der Fehler „FeatureNotSupportedByEmulator“ (HTTP-Statuscode 400 – Ungültige Anforderung) zurückgegeben.
+- Der Speicheremulator unterstützt nur Blob-Größen bis 2 GB.
+- Die maximale Länge eines Blobnamens im Speicheremulator ist 256 Zeichen, während sie in Azure Storage 1024 Zeichen beträgt.
+- Bei inkrementellen Kopien können Momentaufnahmen von überschriebenen Blobs kopiert werden, wodurch ein Fehler für den Dienst zurückgegeben wird.
+- „Get Page Ranges Diff“ funktioniert nicht zwischen Momentaufnahmen, die per inkrementeller Blobkopie kopiert wurden.
+- Ein Vorgang vom Typ „Put Blob“ kann ggf. bei einem Blob, das im Speicheremulator vorhanden ist und über eine aktive Lease verfügt, erfolgreich ausgeführt werden, auch wenn die Lease-ID in der Anforderung nicht angegeben wurde.
+- Vorgänge für Anfügeblobs werden vom Emulator nicht unterstützt. Beim Versuch, einen Vorgang auf einen Anfügeblob anzuwenden, wird der Fehler „FeatureNotSupportedByEmulator“ (HTTP-Statuscode 400 – Ungültige Anforderung) zurückgegeben.
 
 ### <a name="differences-for-table-storage"></a>Unterschiede beim Tabellenspeicher
 
 Die folgenden Unterschiede gelten für Tabellenspeicher im Emulator:
 
-* Datumseigenschaften im Tabellenspeicherdienst im Speicheremulator unterstützen nur den von SQL Server 2005 unterstützten Bereich. (Sie müssen nach dem 1. Januar 1753 liegen.) Alle Datumsangaben vor dem 1. Januar 1753 werden in diesen Wert geändert. Die Genauigkeit der Daten ist begrenzt auf die Genauigkeit von SQL Server 2005, d. h., Datumsangaben sind auf 1/300 Sekunde genau.
-* Der Speicheremulator unterstützt Eigenschaftenwerte für Partitions- und Zeilenschlüssel von jeweils weniger als 512 Byte. Die Gesamtgröße von Kontoname, Tabellenname und Schlüsseleigenschaftennamen darf maximal 900 Bytes betragen.
-* Die Gesamtgröße einer Zeile in einer Tabelle im Speicheremulator ist auf weniger als 1 MB beschränkt.
-* Im Speicheremulator unterstützen Eigenschaften des Datentyps `Edm.Guid` oder `Edm.Binary` in Filterzeichenfolgen für Abfragen nur die Vergleichsoperatoren `Equal (eq)` und `NotEqual (ne)`.
+- Datumseigenschaften im Tabellenspeicherdienst im Speicheremulator unterstützen nur den von SQL Server 2005 unterstützten Bereich. (Sie müssen nach dem 1. Januar 1753 liegen.) Alle Datumsangaben vor dem 1. Januar 1753 werden in diesen Wert geändert. Die Genauigkeit der Daten ist begrenzt auf die Genauigkeit von SQL Server 2005, d. h., Datumsangaben sind auf 1/300 Sekunde genau.
+- Der Speicheremulator unterstützt Eigenschaftenwerte für Partitions- und Zeilenschlüssel von jeweils weniger als 512 Byte. Die Gesamtgröße von Kontoname, Tabellenname und Schlüsseleigenschaftennamen darf maximal 900 Bytes betragen.
+- Die Gesamtgröße einer Zeile in einer Tabelle im Speicheremulator ist auf weniger als 1 MB beschränkt.
+- Im Speicheremulator unterstützen Eigenschaften des Datentyps `Edm.Guid` oder `Edm.Binary` in Filterzeichenfolgen für Abfragen nur die Vergleichsoperatoren `Equal (eq)` und `NotEqual (ne)`.
 
 ### <a name="differences-for-queue-storage"></a>Unterschiede beim Warteschlangenspeicher
 
@@ -230,109 +230,109 @@ Es bestehen keine Unterschiede beim Warteschlangenspeicher im Emulator.
 
 ### <a name="version-510"></a>Version 5.10
 
-* Der Speicheremulator lehnt die Version vom 07.07.2019 der Speicherdienste für Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkte nicht ab.
+- Der Speicheremulator lehnt die Version vom 07.07.2019 der Speicherdienste für Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkte nicht ab.
 
 ### <a name="version-59"></a>Version 5.9
 
-* Der Speicheremulator lehnt die Version vom 02.02.2019 der Speicherdienste für Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkte nicht ab.
+- Der Speicheremulator lehnt die Version vom 02.02.2019 der Speicherdienste für Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkte nicht ab.
 
 ### <a name="version-58"></a>Version 5.8
 
-* Der Speicheremulator lehnt die Version vom 09.11.2018 der Speicherdienste für Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkte nicht ab.
+- Der Speicheremulator lehnt die Version vom 09.11.2018 der Speicherdienste für Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkte nicht ab.
 
 ### <a name="version-57"></a>Version 5.7
 
-* Korrektur eines Fehlers, der zu einem Absturz führen würde, wenn die Protokollierung aktiviert ist.
+- Korrektur eines Fehlers, der zu einem Absturz führen würde, wenn die Protokollierung aktiviert ist.
 
 ### <a name="version-56"></a>Version 5.6
 
-* Der Speicheremulator unterstützt nun die Version vom 28.03.2018 der Speicherdienste für Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkte.
+- Der Speicheremulator unterstützt nun die Version vom 28.03.2018 der Speicherdienste für Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkte.
 
 ### <a name="version-55"></a>Version 5.5
 
-* Der Speicheremulator unterstützt nun die Version vom 09.11.2017 der Speicherdienste für Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkte.
-* Unterstützung für die Blobeigenschaft **Created**, die die Bloberstellungszeit zurückgibt, wurde hinzugefügt.
+- Der Speicheremulator unterstützt nun die Version vom 09.11.2017 der Speicherdienste für Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkte.
+- Unterstützung für die Blobeigenschaft **Created**, die die Bloberstellungszeit zurückgibt, wurde hinzugefügt.
 
 ### <a name="version-54"></a>Version 5.4
 
-* Zur Verbesserung der Stabilität der Installation versucht der Emulator nicht mehr, Ports während der Installationszeit zu reservieren. Portreservierungen können bei Bedarf mithilfe der Option *-reserveports* des Befehls **init** angegeben werden.
+- Zur Verbesserung der Stabilität der Installation versucht der Emulator nicht mehr, Ports während der Installationszeit zu reservieren. Portreservierungen können bei Bedarf mithilfe der Option *-reserveports* des Befehls **init** angegeben werden.
 
 ### <a name="version-53"></a>Version 5.3
 
-* Der Speicheremulator unterstützt nun die Version vom 29.07.2017 der Speicherdienste für Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkte.
+- Der Speicheremulator unterstützt nun die Version vom 29.07.2017 der Speicherdienste für Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkte.
 
 ### <a name="version-52"></a>Version 5.2
 
-* Der Speicheremulator unterstützt nun die Version vom 17.04.2017 der Speicherdienste für Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkte.
-* Es wurde ein Fehler behoben, aufgrund dessen Tabelleneigenschaftswerte nicht ordnungsgemäß codiert wurden.
+- Der Speicheremulator unterstützt nun die Version vom 17.04.2017 der Speicherdienste für Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkte.
+- Es wurde ein Fehler behoben, aufgrund dessen Tabelleneigenschaftswerte nicht ordnungsgemäß codiert wurden.
 
 ### <a name="version-51"></a>Version 5.1
 
-* Es wurde ein Fehler behoben, bei dem der Speicheremulator in einigen Antworten den Header `DataServiceVersion` zurückgegeben hat, während der Dienst dies nicht getan hat.
+- Es wurde ein Fehler behoben, bei dem der Speicheremulator in einigen Antworten den Header `DataServiceVersion` zurückgegeben hat, während der Dienst dies nicht getan hat.
 
 ### <a name="version-50"></a>Version 5.0
 
-* Das Installationsprogramm des Speicheremulators führt keine Überprüfungen auf vorhandene MSSQL- und .NET Framework-Installationen mehr durch.
-* Das Installationsprogramm des Speicheremulators erstellt die Datenbank nicht mehr als Teil der Installation. Die Datenbank wird bei Bedarf immer noch als Teil des Starts erstellt.
-* Die Datenbankerstellung erfordert keine Rechteerweiterungen mehr.
-* Portreservierungen werden für den Start nicht mehr benötigt.
-* Die folgenden Optionen wurden zu `init` hinzugefügt: `-reserveports` (erfordert Rechteerweiterungen), `-unreserveports` (erfordert Rechteerweiterungen), `-skipcreate`.
-* Über die Speicheremulator-Benutzeroberflächenoption des Taskleistensymbols wird nun die Befehlszeilenschnittstelle gestartet. Die alte GUI ist nicht mehr verfügbar.
-* Einige DLLs wurden entfernt oder umbenannt.
+- Das Installationsprogramm des Speicheremulators führt keine Überprüfungen auf vorhandene MSSQL- und .NET Framework-Installationen mehr durch.
+- Das Installationsprogramm des Speicheremulators erstellt die Datenbank nicht mehr als Teil der Installation. Die Datenbank wird bei Bedarf immer noch als Teil des Starts erstellt.
+- Die Datenbankerstellung erfordert keine Rechteerweiterungen mehr.
+- Portreservierungen werden für den Start nicht mehr benötigt.
+- Die folgenden Optionen wurden zu `init` hinzugefügt: `-reserveports` (erfordert Rechteerweiterungen), `-unreserveports` (erfordert Rechteerweiterungen), `-skipcreate`.
+- Über die Speicheremulator-Benutzeroberflächenoption des Taskleistensymbols wird nun die Befehlszeilenschnittstelle gestartet. Die alte GUI ist nicht mehr verfügbar.
+- Einige DLLs wurden entfernt oder umbenannt.
 
 ### <a name="version-46"></a>Version 4.6
 
-* Der Speicheremulator unterstützt nun die Version vom 31.05.2016 der Speicherdienste für Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkte.
+- Der Speicheremulator unterstützt nun die Version vom 31.05.2016 der Speicherdienste für Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkte.
 
 ### <a name="version-45"></a>Version 4.5
 
-* Es wurde ein Fehler behoben, der dazu führte, dass der Speicheremulator nicht erfolgreich installiert und initialisiert werden konnte, wenn die Sicherungsdatenbank umbenannt wurde.
+- Es wurde ein Fehler behoben, der dazu führte, dass der Speicheremulator nicht erfolgreich installiert und initialisiert werden konnte, wenn die Sicherungsdatenbank umbenannt wurde.
 
 ### <a name="version-44"></a>Version 4.4
 
-* Der Speicheremulator unterstützt nun die Version vom 11.12.2015 der Speicherdienste für Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkte.
-* Der Speicheremulator verfügt nun über eine effizientere Garbage Collection für die Verarbeitung zahlreicher Blobs.
-* Ein Fehler wurde behoben, durch den die Validierung des Container-ACL-XML-Codes nicht exakt der Validierung durch den Speicherdienst entsprach.
-* Ein Fehler, aufgrund dessen die Mindest- und Höchstwerte für „DateTime“ manchmal in der falschen Zeitzone gemeldet wurden, wurde behoben.
+- Der Speicheremulator unterstützt nun die Version vom 11.12.2015 der Speicherdienste für Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkte.
+- Der Speicheremulator verfügt nun über eine effizientere Garbage Collection für die Verarbeitung zahlreicher Blobs.
+- Ein Fehler wurde behoben, durch den die Validierung des Container-ACL-XML-Codes nicht exakt der Validierung durch den Speicherdienst entsprach.
+- Ein Fehler, aufgrund dessen die Mindest- und Höchstwerte für „DateTime“ manchmal in der falschen Zeitzone gemeldet wurden, wurde behoben.
 
 ### <a name="version-43"></a>Version 4.3
 
-* Der Speicheremulator unterstützt nun die Version vom 08.07.2015 der Speicherdienste für Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkte.
+- Der Speicheremulator unterstützt nun die Version vom 08.07.2015 der Speicherdienste für Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkte.
 
 ### <a name="version-42"></a>Version 4.2
 
-* Der Speicheremulator unterstützt nun die Version vom 05.04.2015 der Speicherdienste für Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkte.
+- Der Speicheremulator unterstützt nun die Version vom 05.04.2015 der Speicherdienste für Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkte.
 
 ### <a name="version-41"></a>Version 4.1
 
-* Der Speicheremulator unterstützt nun die Version vom 21.02.2015 der Speicherdienste für Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkte. Die neuen Anfügeblob-Features werden nicht unterstützt.
-* Der Emulator gibt nun eine sinnvolle Fehlermeldung für nicht unterstützte Versionen von Speicherdiensten zurück. Es wird empfohlen, die neueste Version des Emulators zu verwenden. Wenn Sie den Fehler „VersionNotSupportedByEmulator“ (HTTP-Statuscode 400: ungültige Anforderung) erhalten, laden Sie die neueste Version des Emulators herunter.
-* Es wurde ein Fehler behoben, bei der eine Racebedingung während der gleichzeitigen Zusammenführungsvorgänge zu falschen Tabellenentitätsdaten geführt hat.
+- Der Speicheremulator unterstützt nun die Version vom 21.02.2015 der Speicherdienste für Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkte. Die neuen Anfügeblob-Features werden nicht unterstützt.
+- Der Emulator gibt nun eine sinnvolle Fehlermeldung für nicht unterstützte Versionen von Speicherdiensten zurück. Es wird empfohlen, die neueste Version des Emulators zu verwenden. Wenn Sie den Fehler „VersionNotSupportedByEmulator“ (HTTP-Statuscode 400: ungültige Anforderung) erhalten, laden Sie die neueste Version des Emulators herunter.
+- Es wurde ein Fehler behoben, bei der eine Racebedingung während der gleichzeitigen Zusammenführungsvorgänge zu falschen Tabellenentitätsdaten geführt hat.
 
 ### <a name="version-40"></a>Version 4.0
 
-* Die ausführbare Datei des Speicheremulators wurde in *AzureStorageEmulator.exe* umbenannt.
+- Die ausführbare Datei des Speicheremulators wurde in *AzureStorageEmulator.exe* umbenannt.
 
 ### <a name="version-32"></a>Version 3.2
 
-* Der Speicheremulator unterstützt nun die Version vom 14.02.2014 der Speicherdienste für Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkte. Endpunkte für den Dateidienst werden im Speicheremulator derzeit nicht unterstützt. Ausführliche Informationen über die Version 2014-02-14 finden Sie unter [Versionsverwaltung für den Blob-Dienst, den Warteschlangendienst und den Tabellendienst in Microsoft Azure](/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) .
+- Der Speicheremulator unterstützt nun die Version vom 14.02.2014 der Speicherdienste für Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkte. Endpunkte für den Dateidienst werden im Speicheremulator derzeit nicht unterstützt. Ausführliche Informationen über die Version 2014-02-14 finden Sie unter [Versionsverwaltung für den Blob-Dienst, den Warteschlangendienst und den Tabellendienst in Microsoft Azure](/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) .
 
 ### <a name="version-31"></a>Version 3.1
 
-* Lesezugriff auf den geografisch redundanten Speicher (RA-GRS) wird nun im Speicheremulator unterstützt. Die APIs `Get Blob Service Stats`, `Get Queue Service Stats` und `Get Table Service Stats` werden für das sekundäre Konto unterstützt und geben immer den Wert des LastSyncTime-Antwortelements als aktuelle Uhrzeit der zugrunde liegenden SQL-Datenbank zurück. Für programmgesteuerten Zugriff auf den sekundären Speicherort mit dem Speicheremulator verwenden Sie die Speicherclientbibliothek für .NET, Version 3.2 oder höher. In der Referenz zur Microsoft Azure Storage-Clientbibliothek für .NET finden Sie weitere Einzelheiten.
+- Lesezugriff auf den geografisch redundanten Speicher (RA-GRS) wird nun im Speicheremulator unterstützt. Die APIs `Get Blob Service Stats`, `Get Queue Service Stats` und `Get Table Service Stats` werden für das sekundäre Konto unterstützt und geben immer den Wert des LastSyncTime-Antwortelements als aktuelle Uhrzeit der zugrunde liegenden SQL-Datenbank zurück. Für programmgesteuerten Zugriff auf den sekundären Speicherort mit dem Speicheremulator verwenden Sie die Speicherclientbibliothek für .NET, Version 3.2 oder höher. In der Referenz zur Microsoft Azure Storage-Clientbibliothek für .NET finden Sie weitere Einzelheiten.
 
 ### <a name="version-30"></a>Version 3.0
 
-* Der Azure-Speicheremulator wird nicht mehr im gleichen Paket wie der Serveremulator ausgeliefert.
-* Die grafische Benutzeroberfläche des Speicheremulators ist veraltet. Sie wurde durch eine skriptfähige Befehlszeilenschnittstelle ersetzt. Ausführliche Informationen zur Befehlszeilenschnittstelle finden Sie in der Referenz zum Speicheremulator-Befehlszeilentool. Die grafische Benutzeroberfläche wird weiterhin in Version 3.0 enthalten sein, es kann aber nur sie zugegriffen werden, wenn der Serveremulator installiert ist, indem Sie mit der rechten Maustaste auf das Taskleistensymbol klicken und die Speicheremulator-Benutzeroberfläche auswählen.
-* Version 2013-08-15 der Azure Storage-Dienste wird jetzt vollständig unterstützt. (Zuvor wurde diese Version nur von Version 2.2.1 Preview des Speicheremulators unterstützt.)
+- Der Azure-Speicheremulator wird nicht mehr im gleichen Paket wie der Serveremulator ausgeliefert.
+- Die grafische Benutzeroberfläche des Speicheremulators ist veraltet. Sie wurde durch eine skriptfähige Befehlszeilenschnittstelle ersetzt. Ausführliche Informationen zur Befehlszeilenschnittstelle finden Sie in der Referenz zum Speicheremulator-Befehlszeilentool. Die grafische Benutzeroberfläche wird weiterhin in Version 3.0 enthalten sein, es kann aber nur sie zugegriffen werden, wenn der Serveremulator installiert ist, indem Sie mit der rechten Maustaste auf das Taskleistensymbol klicken und die Speicheremulator-Benutzeroberfläche auswählen.
+- Version 2013-08-15 der Azure Storage-Dienste wird jetzt vollständig unterstützt. (Zuvor wurde diese Version nur von Version 2.2.1 Preview des Speicheremulators unterstützt.)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Sehen Sie sich den plattformübergreifenden, von der Community gepflegten Open-Source-Speicheremulator [Azurite](https://github.com/azure/azurite) an. 
-* [Azure Storage-Beispiele mit .NET](./storage-samples-dotnet.md) enthält Links zu mehreren Codebeispielen, die Sie bei der Anwendungsentwicklung verwenden können.
-* Im [Microsoft Azure Storage-Explorer](https://storageexplorer.com) können Sie mit Ressourcen in Ihrem Cloudspeicherkonto und im Speicheremulator arbeiten.
+- Sehen Sie sich den plattformübergreifenden, von der Community gepflegten Open-Source-Speicheremulator [Azurite](https://github.com/azure/azurite) an.
+- [Azure Storage-Beispiele mit .NET](./storage-samples-dotnet.md) enthält Links zu mehreren Codebeispielen, die Sie bei der Anwendungsentwicklung verwenden können.
+- Im [Microsoft Azure Storage-Explorer](https://storageexplorer.com) können Sie mit Ressourcen in Ihrem Cloudspeicherkonto und im Speicheremulator arbeiten.
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Lokale Azure Storage-Entwicklung mit Azurite, Azure SDKs und Azure Storage-Explorer](https://blog.jongallant.com/2020/04/local-azure-storage-development-with-azurite-azuresdks-storage-explorer/)
+- [Lokale Azure Storage-Entwicklung mit Azurite, Azure SDKs und Azure Storage-Explorer](https://blog.jongallant.com/2020/04/local-azure-storage-development-with-azurite-azuresdks-storage-explorer/)

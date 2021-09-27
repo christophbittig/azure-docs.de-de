@@ -10,12 +10,12 @@ ms.date: 05/07/2021
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bd1bbf0d1c5a49bde35d303e6780737fb43ca997
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ab764fd95168fef768efd0687adb5e2841bfb140
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339072"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609287"
 ---
 # <a name="initiate-a-storage-account-failover"></a>Initiieren eines Speicherkontofailovers
 
@@ -124,7 +124,7 @@ Nachdem Sie wieder GRS für Ihr Speicherkonto aktiviert haben, beginnt Microsoft
 - Verfügbare Ressourcen für die Hintergrundreplikation, z. B. CPU, Arbeitsspeicher, Datenträger und WAN-Kapazität. Livedatenverkehr hat Vorrang vor der Georeplikation.
 - Bei Verwendung von Blob Storage: Anzahl der Momentaufnahmen pro Blob
 - Bei Verwendung von Table Storage: die [Datenpartitionierungsstrategie](/rest/api/storageservices/designing-a-scalable-partitioning-strategy-for-azure-table-storage). Der Replikationsprozess kann nicht über die Anzahl der verwendeten Partitionsschlüssel hinaus skaliert werden.
-  
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Notfallwiederherstellung und Speicherkontofailover](storage-disaster-recovery-guidance.md)
