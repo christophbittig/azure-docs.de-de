@@ -3,21 +3,19 @@ title: Abrufen von beliebten Bildern über die Bing-Bildersuche-API
 titleSuffix: Azure Cognitive Services
 description: Suchen Sie nach zurzeit beliebten Bildern im Web mit der Bing-Bildersuche-API.
 services: cognitive-services
-author: swhite-msft
 manager: nitinme
 ms.assetid: EAB92D35-5C0B-4A0A-8F49-02DF7FAD44B4
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
-ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: cf7d1baf895d44730eb913b658ee4c7fe7eb7b11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb8e27ea3d35a6a8c6f83090d97188d7473b5890
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96341613"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128619797"
 ---
 # <a name="get-trending-images-from-the-web"></a>Abrufen von beliebten Bildern aus dem Web
 

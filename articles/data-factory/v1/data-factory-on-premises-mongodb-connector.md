@@ -4,14 +4,15 @@ description: Erfahren Sie, wie Sie Daten aus der MongoDB-Datenbank mithilfe von 
 author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 04/13/2018
-ms.openlocfilehash: cedb0b99f04df00763a3ee83287eec90bd5fb45d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c863176b73f4b5a41f0320bf9e59c2286fa22446
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100387511"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128647497"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Verschieben von Daten aus MongoDB mithilfe von Azure Data Factory
 
@@ -58,7 +59,7 @@ Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Defini
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den verknüpften Dienst **OnPremisesMongoDb** spezifisch sind.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | type |Die type-Eigenschaft muss auf **OnPremisesMongoDb** |Ja |
 | server |IP-Adresse oder Hostname des MongoDB-Servers |Ja |

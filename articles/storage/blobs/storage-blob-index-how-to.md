@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 682f855232ef021b10d148b3ede71a35dbaee760
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: d4743a529649c7223449b35092b1505ee534eeaf
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867651"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615666"
 ---
 # <a name="use-blob-index-tags-to-manage-and-find-data-on-azure-blob-storage"></a>Verwenden von Blobindextags zum Verwalten und Suchen von Daten in Azure Blob Storage
 
@@ -57,7 +57,7 @@ Diese Aufgabe kann von einem [Besitzer von Speicherblobdaten](../../role-based-a
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Speicherkonto aus. 
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Speicherkonto aus.
 
 2. Navigieren Sie unter **Datenspeicher** zur Option **Container**, und wählen Sie Ihren Container aus.
 
@@ -199,7 +199,7 @@ Diese Aufgabe kann von einem [Besitzer von Speicherblobdaten](../../role-based-a
 
 Im Azure-Portal wendet der Filter für Blobindextags den `@container`-Parameter automatisch an, um den Bereich auf Ihren ausgewählten Container festzulegen. Wenn Sie mit Tags versehene Daten in Ihrem gesamten Speicherkonto filtern und suchen möchten, verwenden Sie unsere REST-API, SDKs oder Tools.
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Speicherkonto aus. 
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Speicherkonto aus.
 
 2. Navigieren Sie unter **Datenspeicher** zur Option **Container**, und wählen Sie Ihren Container aus.
 
@@ -241,7 +241,7 @@ static async Task FindBlobsByTagsExample()
           AppendBlobClient appendBlobWithTags3 = container2.GetAppendBlobClient("myAppendBlob03.logs");
           AppendBlobClient appendBlobWithTags4 = container2.GetAppendBlobClient("myAppendBlob04.logs");
           AppendBlobClient appendBlobWithTags5 = container2.GetAppendBlobClient("myAppendBlob05.logs");
-           
+
           // Blob index tags to upload
           CreateAppendBlobOptions appendOptions = new CreateAppendBlobOptions();
           appendOptions.Tags = new Dictionary<string, string>
@@ -250,7 +250,7 @@ static async Task FindBlobsByTagsExample()
               { "Priority", "01" },
               { "Date", "2020-04-20" }
           };
-          
+
           CreateAppendBlobOptions appendOptions2 = new CreateAppendBlobOptions();
           appendOptions2.Tags = new Dictionary<string, string>
           {
@@ -295,7 +295,7 @@ static async Task FindBlobsByTagsExample()
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Speicherkonto aus. 
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Speicherkonto aus.
 
 2. Navigieren Sie unter **Blob-Dienst** zur Option **Lebenszyklusverwaltung**.
 
@@ -313,11 +313,11 @@ static async Task FindBlobsByTagsExample()
 
 # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/net)
 
-Richtlinien für die [Lebenszyklusverwaltung](storage-lifecycle-management-concepts.md) werden für jedes Speicherkonto auf der Steuerungsebene angewendet. Installieren Sie für .NET die [Microsoft Azure Management Storage Library](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/) ab Version 16.0.0.
+Richtlinien für die [Lebenszyklusverwaltung](./lifecycle-management-overview.md) werden für jedes Speicherkonto auf der Steuerungsebene angewendet. Installieren Sie für .NET die [Microsoft Azure Management Storage Library](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/) ab Version 16.0.0.
 
 ---
 
 ## <a name="next-steps"></a>Nächste Schritte
 
- - Weitere Informationen zu Blobindextags finden Sie unter [Verwalten und Finden von Azure-Blobdaten mit Blobindextags (Vorschau)](storage-manage-find-blobs.md ).
- - Weitere Informationen zur Lebenszyklusverwaltung finden Sie unter [Verwalten des Azure Blob Storage-Lebenszyklus](storage-lifecycle-management-concepts.md).
+- Weitere Informationen zu Blobindextags finden Sie unter [Verwalten und Finden von Azure-Blobdaten mit Blobindextags (Vorschau)](storage-manage-find-blobs.md ).
+- Weitere Informationen zur Lebenszyklusverwaltung finden Sie unter [Verwalten des Azure Blob Storage-Lebenszyklus](./lifecycle-management-overview.md).

@@ -7,12 +7,12 @@ ms.author: viviali
 ms.date: 08/30/2021
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 8235da7781ec55a90c81fca3a6393e5d1eda5c2f
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: c751e67ff65fc9487fd59ab511ae0cae28bb223b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123481198"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615147"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-legacy"></a>Exportieren von IoT-Daten zu Cloudzielen mithilfe des Datenexports (Legacy)
 
@@ -555,7 +555,7 @@ Diese Beispielmomentaufnahme zeigt eine Nachricht, die Geräte und Eigenschaften
 
 Wenn es in Ihrer Vorschauanwendung einen Datenexport gibt, bei dem die Datenströme für *Geräte* und *Gerätevorlagen* aktiviert wurden, aktualisieren Sie Ihren Export bis zum **30. Juni 2020**. Diese Anforderung gilt für Exporte in Azure Blob Storage, Azure Event Hubs und Azure Service Bus.
 
-Ab dem 3. Februar 2020 verfügen alle neuen Exporte in Anwendungen, für die Geräte und Gerätevorlagen aktiviert sind, über das oben beschriebene Datenformat. Für alle vor diesem Datum erstellten Exporte wird bis zum 30. Juni 2020 das alte Datenformat beibehalten. Dann werden diese Exporte automatisch zum neuen Datenformat migriert. Das neue Datenformat stimmt mit den Objekten [Gerät](/rest/api/iotcentral/1.0/devices/get), [Geräteeigenschaft](/rest/api/iotcentral/1.0/devices/get-properties) und [Gerätevorlage](/rest/api/iotcentral/1.0/device-templates/get) in der öffentlichen IoT Central-API überein.
+Ab dem 3. Februar 2020 verfügen alle neuen Exporte in Anwendungen, für die Geräte und Gerätevorlagen aktiviert sind, über das oben beschriebene Datenformat. Für alle vor diesem Datum erstellten Exporte wird bis zum 30. Juni 2020 das alte Datenformat beibehalten. Dann werden diese Exporte automatisch zum neuen Datenformat migriert. Das neue Datenformat stimmt mit den Objekten [Gerät](/rest/api/iotcentral/1.0dataplane/devices/get), [Geräteeigenschaft](/rest/api/iotcentral/1.0dataplane/devices/get-properties) und [Gerätevorlage](/rest/api/iotcentral/1.0dataplane/device-templates/get) in der öffentlichen IoT Central-API überein.
 
 Wichtige Unterschiede zwischen dem alten und dem neuen Datenformat für **Devices** (Geräte) sind:
 - `@id` für Gerät entfernt, `deviceId` in `id` umbenannt 

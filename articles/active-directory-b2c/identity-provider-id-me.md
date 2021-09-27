@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 09/16/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 72fe52ad1da1941f09ad9f3264f3a2d1789c3e2f
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: e0fd582088b2c73565b7b5aab44dbe827e792e90
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028960"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128574512"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-idme-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem ID.me-Konto mithilfe von Azure Active Directory B2C
 
@@ -54,15 +54,16 @@ Wenn Sie die Anmeldung für Benutzer mit einem ID.me-Konto in Azure Active Dire
 Sie müssen den geheimen Clientschlüssel speichern, den Sie zuvor in Ihrem Azure AD B2C-Mandanten notiert haben.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Mandanten enthält.
-3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
-4. Wählen Sie auf der Seite „Übersicht“ die Option **Framework für die Identitätsfunktion** aus.
-5. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.
-6. Klicken Sie unter **Optionen** auf `Manual`.
-7. Geben Sie einen **Namen** für den Richtlinienschlüssel ein. Beispiel: `IdMeSecret`. Dem Namen Ihres Schlüssels wird automatisch das Präfix `B2C_1A_` hinzugefügt.
-8. Geben Sie im Feld **Geheimnis** den geheimen Clientschlüssel ein, den Sie zuvor notiert haben.
-9. Wählen Sie für **Schlüsselverwendung** die Option `Signature` aus.
-10. Klicken Sie auf **Erstellen**.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
+1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
+1. Wählen Sie auf der Seite „Übersicht“ die Option **Framework für die Identitätsfunktion** aus.
+1. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.
+1. Klicken Sie unter **Optionen** auf `Manual`.
+1. Geben Sie einen **Namen** für den Richtlinienschlüssel ein. Beispiel: `IdMeSecret`. Dem Namen Ihres Schlüssels wird automatisch das Präfix `B2C_1A_` hinzugefügt.
+1. Geben Sie im Feld **Geheimnis** den geheimen Clientschlüssel ein, den Sie zuvor notiert haben.
+1. Wählen Sie für **Schlüsselverwendung** die Option `Signature` aus.
+1. Klicken Sie auf **Erstellen**.
 
 ## <a name="configure-idme-as-an-identity-provider"></a>Konfigurieren von ID.me als Identitätsanbieter
 

@@ -4,12 +4,12 @@ description: Verwenden Sie Azure Resource Manager und Azure PowerShell, um Resso
 ms.topic: conceptual
 ms.date: 05/13/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ee67ca1f924c2159ab85a47ffdf73dfb7c3fc9f5
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 27f6e398beacde13fa02ebdc1653b30ed7742300
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111957821"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128573196"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell
 
@@ -141,7 +141,7 @@ New-AzResourceGroupDeployment `
   -Name linkedTemplateWithRelativePath `
   -ResourceGroupName "myResourceGroup" `
   -TemplateUri "https://stage20210126.blob.core.windows.net/template-staging/mainTemplate.json" `
-  -QueryString $sasToken
+  -QueryString "$sasToken"
 ```
 
 Weitere Informationen finden Sie unter [Verknüpfte Vorlage](./linked-templates.md#linked-template).
@@ -166,7 +166,7 @@ New-AzTemplateSpec `
 Rufen Sie anschließend die ID der Vorlagenspezifikation ab, und stellen Sie sie bereit.
 
 ```azurepowershell
-$id = (Get-AzTemplateSpec -Name storageSpec -ResourceGroupName templateSpecsRg -Version 1.0).Version.Id
+$id = (Get-AzTemplateSpec -Name storageSpec -ResourceGroupName templateSpecsRg -Version 1.0).Versions.Id
 
 New-AzResourceGroupDeployment `
   -ResourceGroupName demoRG `

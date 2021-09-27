@@ -3,17 +3,18 @@ title: Verschieben von Daten aus ODBC-Datenspeichern
 description: Erfahren Sie, wie Sie Daten aus ODBC-Datenspeichern mithilfe von Azure Data Factory verschieben.
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: jingwang
 ms.custom: devx-track-azurepowershell
 robots: noindex
-ms.openlocfilehash: 43987b333279675204179a90f01f2aa668abb2c1
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 269d0d0bb1d9fb61dada1640a4a5c63106654abd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110665656"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128619550"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Verschieben von Daten aus ODBC-Datenspeichern mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -132,7 +133,7 @@ Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren vo
 
 Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt „typeProperties“ für ein Dataset vom Typ **RelationalTable** (mit ODBC-Dataset) hat folgende Eigenschaften:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | tableName |Der Name der Tabelle im ODBC-Datenspeicher. |Ja |
 
@@ -355,10 +356,10 @@ Um Verbindungsprobleme zu behandeln, verwenden Sie die Registerkarte **Diagnose*
 
 1. Starten Sie den **Datenverwaltungsgateway-Konfigurations-Manager**. Sie können entweder „C:\Programme\Microsoft Data Management Gateway\1.0\Shared\ConfigManager.exe“ direkt ausführen oder nach **Gateway** suchen, um einen Link zur Anwendung **Microsoft-Datenverwaltungsgateway** zu finden, wie in der folgenden Abbildung dargestellt:
 
-    ![Gateway suchen](./media/data-factory-odbc-connector/search-gateway.png)
+    :::image type="content" source="./media/data-factory-odbc-connector/search-gateway.png" alt-text="Gateway suchen":::
 2. Wechseln Sie zur Registerkarte **Diagnose** .
 
-    ![Gatewaydiagnose](./media/data-factory-odbc-connector/data-factory-gateway-diagnostics.png)
+    :::image type="content" source="./media/data-factory-odbc-connector/data-factory-gateway-diagnostics.png" alt-text="Gatewaydiagnose":::
 3. Wählen Sie den **Typ** von Datenspeicher (verknüpfter Dienst) aus.
 4. Geben Sie die **Authentifizierung** an, und geben Sie **Anmeldeinformationen** oder die **Verbindungszeichenfolge** ein, um eine Verbindung mit dem Datenspeicher herzustellen.
 5. Klicken Sie auf **Verbindung testen** , um die Verbindung mit dem Datenspeicher zu testen.

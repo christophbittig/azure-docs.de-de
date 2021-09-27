@@ -1,19 +1,17 @@
 ---
 title: Verschlüsselung in Azure Data Lake Storage Gen1 | Microsoft Docs
 description: Mit der Verschlüsselung in Azure Data Lake Storage Gen1 können Sie Ihre Daten schützen, Sicherheitsrichtlinien für Unternehmen implementieren und gesetzliche Vorschriften einhalten. Dieser Artikel enthält eine Übersicht über das Design und behandelt einige technische Aspekte der Implementierung.
-services: data-lake-store
-documentationcenter: ''
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.author: twooley
-ms.openlocfilehash: dda173278f2bb788b0768fc891b951793224bf77
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.author: normesta
+ms.openlocfilehash: f0b24fd25a0fa95d6ed8561349987f9cb5fc5ee3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113006156"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128596123"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Verschlüsselung von Daten in Azure Data Lake Storage Gen1
 

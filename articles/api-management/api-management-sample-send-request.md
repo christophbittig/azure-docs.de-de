@@ -3,7 +3,7 @@ title: Verwenden des API Management-Diensts zum Generieren von HTTP-Anforderung
 description: Erfahren Sie mehr über die Verwendung von Anforderungs- und Antwortrichtlinien in API Management, um externe Dienste aus Ihrer API abzurufen.
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: erikre
 editor: ''
 ms.assetid: 4539c0fa-21ef-4b1c-a1d4-d89a38c242fa
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
-ms.author: apimpm
-ms.openlocfilehash: 83f3264ca3dd8460f44695acbef281c99286f2f8
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.author: danlep
+ms.openlocfilehash: f4ba8ee0d9ce4f874023472520052119f7fa54bf
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123252314"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128678989"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Verwenden externer Dienste über den Azure API Management-Dienst
 Mit den im Azure API Management-Dienst verfügbaren Richtlinien können Sie zahlreiche nützliche Aufgaben durchführen, ausschließlich basierend auf der eingehenden Anforderung, der ausgehenden Antwort und den grundlegenden Konfigurationsinformationen. Die Interaktionsfähigkeit mit externen Diensten mithilfe von API Management-Richtlinien eröffnet jedoch viele weitere Möglichkeiten.

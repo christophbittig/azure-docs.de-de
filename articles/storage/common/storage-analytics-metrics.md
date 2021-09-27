@@ -9,66 +9,68 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 63c1e21b95971abf74abe47e07619c257f13e499
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: ebdac354cd5d490c30ac3eb65f75a71524051517
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114665105"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128553239"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Metriken von Azure Storage Analytics (klassisch)
 
-Am **31. August 2023** werden Storage Analytics-Metriken (auch als *klassische Metriken* bezeichnet) eingestellt. Weitere Informationen finden Sie in der [offiziellen Ankündigung](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/). Wenn Sie klassische Metriken verwenden, sollten Sie unbedingt vor diesem Datum zu den Metriken in Azure Monitor wechseln. Dieser Artikel hilft Ihnen bei der Umstellung. 
+Am **31. August 2023** werden Storage Analytics-Metriken (auch als *klassische Metriken* bezeichnet) eingestellt. Weitere Informationen finden Sie in der [offiziellen Ankündigung](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/). Wenn Sie klassische Metriken verwenden, sollten Sie unbedingt vor diesem Datum zu den Metriken in Azure Monitor wechseln. Dieser Artikel hilft Ihnen bei der Umstellung.
 
 Azure Storage verwendet die Storage Analytics-Lösung, um Metriken zu speichern, zu denen aggregierte Transaktionsstatistiken und Kapazitätsdaten für die an einen Speicherdienst gesendeten Anforderungen zählen. Transaktionen werden sowohl auf API-Vorgangsebene als auch auf Speicherdienstebene gemeldet. Die Kapazität wird auf der Speicherdienstebene gemeldet. Metrikdaten können für Folgendes verwendet werden:
 - Analysieren der Speicherdienstnutzung.
 - Diagnose von Problemen mit Anforderungen, die an den Speicherdienste gerichtet wurden.
 - Verbessern der Leistung von Anwendungen, die einen Dienst verwenden.
 
- Metriken der Speicheranalyse sind standardmäßig für neue Speicherkonten aktiviert. Sie können Metriken über das [Azure-Portal](https://portal.azure.com/), mithilfe von PowerShell oder über die Azure-Befehlszeilenschnittstelle konfigurieren. Eine ausführliche Anleitung finden Sie unter [Aktivieren und Verwalten von Azure Storage-Analysemetriken (klassisch)](./manage-storage-analytics-logs.md). Sie können die Speicheranalyse auch programmgesteuert über die REST-API oder die Clientbibliothek aktivieren. Verwenden Sie den Vorgang „Diensteigenschaften festlegen“, um Storage Analytics für alle Dienste zu aktivieren.  
+ Metriken der Speicheranalyse sind standardmäßig für neue Speicherkonten aktiviert. Sie können Metriken über das [Azure-Portal](https://portal.azure.com/), mithilfe von PowerShell oder über die Azure-Befehlszeilenschnittstelle konfigurieren. Eine ausführliche Anleitung finden Sie unter [Aktivieren und Verwalten von Azure Storage-Analysemetriken (klassisch)](./manage-storage-analytics-logs.md). Sie können die Speicheranalyse auch programmgesteuert über die REST-API oder die Clientbibliothek aktivieren. Verwenden Sie den Vorgang „Diensteigenschaften festlegen“, um Storage Analytics für alle Dienste zu aktivieren.
 
 > [!NOTE]
 > Storage Analytics-Metriken sind für Azure Blob Storage, Azure Queue Storage, Azure-Tabellenspeicher und Azure Files verfügbar.
 > Storage Analytics-Metriken sind jetzt klassische Metriken. Wir empfehlen, anstelle von Storage Analytics-Metriken [Azure Storage-Metriken in Azure Monitor](../blobs/monitor-blob-storage.md) zu verwenden.
 
-## <a name="transaction-metrics"></a>Transaktionsmetriken  
- Ein robuster Datensatz wird stündlich oder minütlich für jeden Speicherdienst und jeden angeforderten API-Vorgang aufgezeichnet, einschließlich Ein- und Ausgang, Verfügbarkeit, Fehlern und nach Prozentanteil kategorisierten Anforderungen. Eine vollständige Liste der Transaktionsdetails finden Sie unter [Schema der Tabellen für Storage Analytics-Metriken](/rest/api/storageservices/storage-analytics-metrics-table-schema).  
+## <a name="transaction-metrics"></a>Transaktionsmetriken
 
- Transaktionsdaten werden auf Dienstebene und auf API-Vorgangsebene aufgezeichnet. Auf Dienstebene werden stündlich zusammenfassende Statistiken für alle angeforderten API-Vorgänge in eine Tabellenentität geschrieben, wenn keine Anforderungen für den Dienst gesendet wurden. Auf API-Vorgangsebene werden Statistiken nur dann in eine Entität geschrieben, wenn der Vorgang während der betreffenden Stunde angefordert wurde.  
+ Ein robuster Datensatz wird stündlich oder minütlich für jeden Speicherdienst und jeden angeforderten API-Vorgang aufgezeichnet, einschließlich Ein- und Ausgang, Verfügbarkeit, Fehlern und nach Prozentanteil kategorisierten Anforderungen. Eine vollständige Liste der Transaktionsdetails finden Sie unter [Schema der Tabellen für Storage Analytics-Metriken](/rest/api/storageservices/storage-analytics-metrics-table-schema).
 
- Wenn Sie beispielsweise einen **GetBlob**-Vorgang für Ihren Blob-Dienst ausführen, protokollieren Storage Analytics-Metriken die Anforderung und fügen diese in die aggregierten Daten für den Blob-Dienst und den **GetBlob**-Vorgang ein. Wenn im Verlauf der Stunde kein **GetBlob**-Vorgang angefordert wurde, wird für den betreffenden Vorgang keine Entität in *$MetricsTransactionsBlob* geschrieben.  
+ Transaktionsdaten werden auf Dienstebene und auf API-Vorgangsebene aufgezeichnet. Auf Dienstebene werden stündlich zusammenfassende Statistiken für alle angeforderten API-Vorgänge in eine Tabellenentität geschrieben, wenn keine Anforderungen für den Dienst gesendet wurden. Auf API-Vorgangsebene werden Statistiken nur dann in eine Entität geschrieben, wenn der Vorgang während der betreffenden Stunde angefordert wurde.
+
+ Wenn Sie beispielsweise einen **GetBlob**-Vorgang für Ihren Blob-Dienst ausführen, protokollieren Storage Analytics-Metriken die Anforderung und fügen diese in die aggregierten Daten für den Blob-Dienst und den **GetBlob**-Vorgang ein. Wenn im Verlauf der Stunde kein **GetBlob**-Vorgang angefordert wurde, wird für den betreffenden Vorgang keine Entität in *$MetricsTransactionsBlob* geschrieben.
 
  Transaktionsmetriken werden sowohl für Anforderungen von Benutzern als auch für Anforderungen aufgezeichnet, die von Storage Analytics selbst generiert wurden. So werden z. B. Anforderungen von Storage Analytics zum Schreiben von Protokollen und Tabellenentitäten aufgezeichnet.
 
-## <a name="capacity-metrics"></a>Kapazitätsmetriken  
+## <a name="capacity-metrics"></a>Kapazitätsmetriken
 
 > [!NOTE]
 >  Kapazitätsmetriken sind derzeit nur für den Blobdienst verfügbar.
 
- Kapazitätsdaten werden für den Blobdienst eines Speicherkontos täglich aufgezeichnet, und es werden zwei Tabellenentitäten geschrieben. Eine Entität stellt Statistiken für Benutzerdaten bereit, während die andere Statistiken zum Blob-Container `$logs` bereitstellt, der von der Speicheranalyse verwendet wird. Die Tabelle *$MetricsCapacityBlob* enthält die folgenden Statistiken:  
+ Kapazitätsdaten werden für den Blobdienst eines Speicherkontos täglich aufgezeichnet, und es werden zwei Tabellenentitäten geschrieben. Eine Entität stellt Statistiken für Benutzerdaten bereit, während die andere Statistiken zum Blob-Container `$logs` bereitstellt, der von der Speicheranalyse verwendet wird. Die Tabelle *$MetricsCapacityBlob* enthält die folgenden Statistiken:
 
-- **Capacity**: Die Größe des vom Blobdienst des Speicherkontos genutzten Speichers in Byte.  
-- **ContainerCount**: Die Anzahl von Blobcontainern im Blobdienst des Speicherkontos.  
-- **ObjectCount**: Die Anzahl der Block- oder Seitenblobs mit und ohne ausgeführtem Commit im Blobdienst des Speicherkontos.  
+- **Capacity**: Die Größe des vom Blobdienst des Speicherkontos genutzten Speichers in Byte.
+- **ContainerCount**: Die Anzahl von Blobcontainern im Blobdienst des Speicherkontos.
+- **ObjectCount**: Die Anzahl der Block- oder Seitenblobs mit und ohne ausgeführtem Commit im Blobdienst des Speicherkontos.
 
-  Weitere Informationen zu den Kapazitätsmetriken finden Sie unter [Schema der Tabellen für Storage Analytics-Metriken](/rest/api/storageservices/storage-analytics-metrics-table-schema).  
+  Weitere Informationen zu den Kapazitätsmetriken finden Sie unter [Schema der Tabellen für Storage Analytics-Metriken](/rest/api/storageservices/storage-analytics-metrics-table-schema).
 
-## <a name="how-metrics-are-stored"></a>Speichern von Metriken  
+## <a name="how-metrics-are-stored"></a>Speichern von Metriken
 
- Alle Metrikdaten für jeden der Speicherdienste werden in drei Tabellen gespeichert, die für diesen Dienst reserviert sind. Eine Tabelle ist für Transaktionsinformationen, eine Tabelle für minutenbezogene Transaktionsinformationen und eine weitere Tabelle für Kapazitätsinformationen. Informationen zur Transaktion und deren Dauer umfassen Anforderungs- und Antwortdaten. Kapazitätsinformationen umfassen Daten zur Speicherverwendung. Der Zugriff auf Stunden- und Minutenmetriken sowie Kapazitätsinformationen zum Blobdienst eines Speicherkontos erfolgt über Tabellen, die, wie in der folgenden Tabelle beschrieben, benannt sind.  
+ Alle Metrikdaten für jeden der Speicherdienste werden in drei Tabellen gespeichert, die für diesen Dienst reserviert sind. Eine Tabelle ist für Transaktionsinformationen, eine Tabelle für minutenbezogene Transaktionsinformationen und eine weitere Tabelle für Kapazitätsinformationen. Informationen zur Transaktion und deren Dauer umfassen Anforderungs- und Antwortdaten. Kapazitätsinformationen umfassen Daten zur Speicherverwendung. Der Zugriff auf Stunden- und Minutenmetriken sowie Kapazitätsinformationen zum Blobdienst eines Speicherkontos erfolgt über Tabellen, die, wie in der folgenden Tabelle beschrieben, benannt sind.
 
-|Metrikebene|Tabellennamen|Unterstützt für folgende Versionen|  
-|-------------------|-----------------|----------------------------|  
-|Stundenmetriken, primärer Standort|-   $MetricsTransactionsBlob<br />-   $MetricsTransactionsTable<br />-   $MetricsTransactionsQueue|Nur Versionen vor dem 15. August 2013. Obwohl diese Namen weiterhin unterstützt werden, empfehlen wir, dass Sie stattdessen die folgenden Tabellen verwenden.|  
-|Stundenmetriken, primärer Standort|-   $MetricsHourPrimaryTransactionsBlob<br />-   $MetricsHourPrimaryTransactionsTable<br />-   $MetricsHourPrimaryTransactionsQueue<br />-   $MetricsHourPrimaryTransactionsFile|Alle Versionen. Die Unterstützung für Dateidienstmetriken ist nur in der Version vom 5. April 2015 und später verfügbar.|  
-|Minutenmetriken, primärer Standort|-   $MetricsMinutePrimaryTransactionsBlob<br />-   $MetricsMinutePrimaryTransactionsTable<br />-   $MetricsMinutePrimaryTransactionsQueue<br />-   $MetricsMinutePrimaryTransactionsFile|Alle Versionen. Die Unterstützung für Dateidienstmetriken ist nur in der Version vom 5. April 2015 und später verfügbar.|  
-|Stundenmetriken, sekundärer Standort|-   $MetricsHourSecondaryTransactionsBlob<br />-   $MetricsHourSecondaryTransactionsTable<br />-   $MetricsHourSecondaryTransactionsQueue|Alle Versionen. Georedundante Replikation mit Lesezugriff muss aktiviert sein.|  
-|Minutenmetriken, sekundärer Standort|-   $MetricsMinuteSecondaryTransactionsBlob<br />-   $MetricsMinuteSecondaryTransactionsTable<br />-   $MetricsMinuteSecondaryTransactionsQueue|Alle Versionen. Georedundante Replikation mit Lesezugriff muss aktiviert sein.|  
-|Kapazität (nur Blobdienst)|$MetricsCapacityBlob|Alle Versionen.|  
+|Metrikebene|Tabellennamen|Unterstützt für folgende Versionen|
+|-------------------|-----------------|----------------------------|
+|Stundenmetriken, primärer Standort|-   $MetricsTransactionsBlob<br />-   $MetricsTransactionsTable<br />-   $MetricsTransactionsQueue|Nur Versionen vor dem 15. August 2013. Obwohl diese Namen weiterhin unterstützt werden, empfehlen wir, dass Sie stattdessen die folgenden Tabellen verwenden.|
+|Stundenmetriken, primärer Standort|-   $MetricsHourPrimaryTransactionsBlob<br />-   $MetricsHourPrimaryTransactionsTable<br />-   $MetricsHourPrimaryTransactionsQueue<br />-   $MetricsHourPrimaryTransactionsFile|Alle Versionen. Die Unterstützung für Dateidienstmetriken ist nur in der Version vom 5. April 2015 und später verfügbar.|
+|Minutenmetriken, primärer Standort|-   $MetricsMinutePrimaryTransactionsBlob<br />-   $MetricsMinutePrimaryTransactionsTable<br />-   $MetricsMinutePrimaryTransactionsQueue<br />-   $MetricsMinutePrimaryTransactionsFile|Alle Versionen. Die Unterstützung für Dateidienstmetriken ist nur in der Version vom 5. April 2015 und später verfügbar.|
+|Stundenmetriken, sekundärer Standort|-   $MetricsHourSecondaryTransactionsBlob<br />-   $MetricsHourSecondaryTransactionsTable<br />-   $MetricsHourSecondaryTransactionsQueue|Alle Versionen. Georedundante Replikation mit Lesezugriff muss aktiviert sein.|
+|Minutenmetriken, sekundärer Standort|-   $MetricsMinuteSecondaryTransactionsBlob<br />-   $MetricsMinuteSecondaryTransactionsTable<br />-   $MetricsMinuteSecondaryTransactionsQueue|Alle Versionen. Georedundante Replikation mit Lesezugriff muss aktiviert sein.|
+|Kapazität (nur Blobdienst)|$MetricsCapacityBlob|Alle Versionen.|
 
  Diese Tabellen werden automatisch erstellt, wenn Storage Analytics für einen Speicherdienstendpunkt aktiviert wird. Der Zugriff auf diese Tabellen erfolgt über den Namespace des Speicherkontos. Beispiel: `https://<accountname>.table.core.windows.net/Tables("$MetricsTransactionsBlob")`. Die Metriktabellen werden bei einem Auflistungsvorgang nicht angezeigt und müssen über den Tabellennamen direkt aufgerufen werden.
 
 ## <a name="metrics-alerts"></a>Metrikwarnungen
+
 Ziehen Sie die Einrichtung von Warnungen im [Azure-Portal](https://portal.azure.com) in Betracht, damit Sie automatisch über wichtige Änderungen im Verhalten der Speicherdienste informiert werden. Eine ausführliche Anleitung finden Sie unter [Erstellen von Metrikwarnungen](./manage-storage-analytics-logs.md).
 
 Wenn Sie ein Storage-Explorer-Tool zum Herunterladen dieser Metrikdaten in einem Trennzeichen-getrennten Format verwenden, können Sie die Daten mithilfe von Microsoft Excel analysieren. Eine Liste der verfügbaren Tools für Storage-Explorer finden Sie unter [Azure Storage-Clienttools](./storage-explorers.md).
@@ -78,18 +80,20 @@ Wenn Sie ein Storage-Explorer-Tool zum Herunterladen dieser Metrikdaten in einem
 >
 
 ## <a name="billing-on-storage-metrics"></a>Abrechnung von Speichermetriken
-Für Schreibanforderungen zum Erstellen von Tabellenentitäten für Metriken fallen die Standardraten an, die für alle Azure Storage-Vorgänge gelten.  
 
-Für Leseanforderungen für Metrikdaten durch einen Client gelten ebenfalls Standardraten. 
+Für Schreibanforderungen zum Erstellen von Tabellenentitäten für Metriken fallen die Standardraten an, die für alle Azure Storage-Vorgänge gelten.
 
-Die von Metriktabellen beanspruchte Kapazität ist ebenfalls kostenpflichtig. Verwenden Sie die folgenden Angaben, um die erforderliche Kapazität zum Speichern von Metrikdaten einzuschätzen:  
+Für Leseanforderungen für Metrikdaten durch einen Client gelten ebenfalls Standardraten.
 
--   Wenn ein Dienst jede Stunde alle APIs in jedem Dienst nutzt, werden ungefähr 148 KB Daten pro Stunde in den Metriktransaktionstabellen gespeichert, wenn Sie eine Zusammenfassung auf Dienstebene und auf API-Ebene aktiviert haben.  
--   Wenn ein Dienst jede Stunde alle APIs im Dienst nutzt, werden ungefähr 12 KB Daten pro Stunde in den Metriktransaktionstabellen gespeichert, sofern Sie die Zusammenfassung nur auf Dienstebene aktiviert haben.  
+Die von Metriktabellen beanspruchte Kapazität ist ebenfalls kostenpflichtig. Verwenden Sie die folgenden Angaben, um die erforderliche Kapazität zum Speichern von Metrikdaten einzuschätzen:
+
+-   Wenn ein Dienst jede Stunde alle APIs in jedem Dienst nutzt, werden ungefähr 148 KB Daten pro Stunde in den Metriktransaktionstabellen gespeichert, wenn Sie eine Zusammenfassung auf Dienstebene und auf API-Ebene aktiviert haben.
+-   Wenn ein Dienst jede Stunde alle APIs im Dienst nutzt, werden ungefähr 12 KB Daten pro Stunde in den Metriktransaktionstabellen gespeichert, sofern Sie die Zusammenfassung nur auf Dienstebene aktiviert haben.
 -   In der Kapazitätstabelle für Blobs werden pro Tag zwei Zeilen hinzugefügt, vorausgesetzt, Sie haben Protokolle abonniert. Dieses Szenario impliziert, dass die Größe dieser Tabelle pro Tag um ungefähr 300 Byte zunimmt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Überwachen eines Speicherkontos](https://www.windowsazure.com/manage/services/storage/how-to-monitor-a-storage-account/)   
-* [Schema der Tabellen für Storage Analytics-Metriken](/rest/api/storageservices/storage-analytics-metrics-table-schema)   
-* [Protokollierte Storage Analytics-Vorgänge und -Statusmeldungen](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)   
-* [Storage Analytics-Protokollierung](storage-analytics-logging.md)
+
+- [Überwachen eines Speicherkontos](https://www.windowsazure.com/manage/services/storage/how-to-monitor-a-storage-account/)
+- [Schema der Tabellen für Storage Analytics-Metriken](/rest/api/storageservices/storage-analytics-metrics-table-schema)
+- [Protokollierte Storage Analytics-Vorgänge und -Statusmeldungen](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)
+- [Storage Analytics-Protokollierung](storage-analytics-logging.md)

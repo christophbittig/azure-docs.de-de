@@ -3,16 +3,17 @@ title: Push-Übertragung von Daten in einen Search-Index mithilfe von Data Facto
 description: Erfahren Sie mehr über die Push-Übertragung von Daten in einen Azure Cognitive Search-Index mithilfe von Azure Data Factory.
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0226ab75d53733b94a9ae5734b42b7340998759c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1ab7ed3435cd49e6671e5a05623db964ce551e86
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100379266"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128676844"
 ---
 # <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>Push-Übertragung von Daten in einen Azure Cognitive Search-Index mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -50,7 +51,7 @@ Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Defini
 
 Die folgende Tabelle enthält Beschreibungen der JSON-Elemente, die für den mit Azure Cognitive Search verknüpften Dienst spezifisch sind.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | -------- | ----------- | -------- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureSearch**. | Ja |
 | url | URL für den Suchdienst | Ja |

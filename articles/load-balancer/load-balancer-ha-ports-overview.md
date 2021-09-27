@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: 6f089af71e4d32023e9cebd6613872f7db0eed7a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec8431c7f84431702a60ef85e32d47c604289b3a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94694958"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128678211"
 ---
 # <a name="high-availability-ports-overview"></a>Übersicht über Hochverfügbarkeitsports
 
@@ -46,7 +46,7 @@ Für NVA-Hochverfügbarkeitsszenarien bieten Hochverfügbarkeitsports die folgen
 
 Das folgende Diagramm zeigt eine Nabe-zu-Speiche-Bereitstellung eines virtuellen Netzwerks. Die Speichen erzwingen das Tunneling für ihren Datenverkehr zum virtuellen Nabennetzwerk und über das virtuelle Netzwerkgerät, bevor der vertrauenswürdige Bereich verlassen wird. Die virtuellen Netzwerkgeräte befinden sich hinter einem internen Standard Load Balancer mit einer Konfiguration für die Hochverfügbarkeitsports. Der gesamte Datenverkehr kann entsprechend verarbeitet und weitergeleitet werden. Wenn die Konfiguration dem folgenden Diagramm entspricht, bietet eine Lastenausgleichsregel für Hochverfügbarkeitsports Flowsymmetrie für den ein- und ausgehenden Datenverkehr.
 
-<a node="diagram"></a>
+<a name="diagram"></a>
 ![Diagramm eines virtuellen Nabe-zu-Speiche-Netzwerks mit virtuellen Netzwerkgeräten, die im Hochverfügbarkeitsmodus bereitgestellt wurden](./media/load-balancer-ha-ports-overview/nvaha.png)
 
 >[!NOTE]

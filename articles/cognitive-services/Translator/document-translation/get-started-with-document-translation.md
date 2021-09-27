@@ -1,17 +1,21 @@
 ---
 title: Erste Schritte bei der Dokumentübersetzung
 description: Es wird beschrieben, wie Sie einen Dienst für die Dokumentübersetzung mit der Programmiersprache C#, Go, Java, Node.js oder Python bzw. den entsprechenden Plattformen erstellen.
-ms.topic: how-to
-manager: nitinme
-ms.author: lajanuar
+services: cognitive-services
 author: laujan
-ms.date: 08/09/2021
-ms.openlocfilehash: 82070e6b10a1b0bffddb511545f54d369f6f99b8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+manager: nitinme
+ms.service: cognitive-services
+ms.subservice: translator-text
+ms.topic: quickstart
+ms.date: 09/16/2021
+ms.author: lajanuar
+recommendations: false
+ms.openlocfilehash: 0e1192e310c658e93c4cfe5738e9ad4d36984113
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340000"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128580870"
 ---
 # <a name="get-started-with-document-translation"></a>Erste Schritte bei der Dokumentübersetzung
 

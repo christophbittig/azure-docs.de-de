@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/23/2021
 ms.author: b-juche
-ms.openlocfilehash: 0b05b934b4dc57b4db941755cfcfb2f8d21fc2c6
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: bae0f764df3951150d438c790c326429b5adb5a2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122824968"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128614161"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Ressourcenlimits für Azure NetApp Files
 
@@ -50,7 +50,7 @@ In der folgenden Tabelle werden die Ressourcengrenzwerte für Azure NetApp Files
 |  Maximale Anzahl von Exportrichtlinienregeln pro Volume     |    5  |    Nein    | 
 |  Minimaler zugewiesener Durchsatz für ein Volume für manuelle QoS     |    1 MiB/s   |    Nein    |    
 |  Maximaler zugewiesener Durchsatz für ein Volume für manuelle QoS     |    4\.500 MiB/s    |    Nein    |    
-|  Anzahl der regionsübergreifenden Datenschutzvolumes für die regionsübergreifende Replikation (Zielvolumes)     |    5    |    Ja    |     
+|  Anzahl der regionsübergreifenden Datenschutzvolumes für die regionsübergreifende Replikation (Zielvolumes)     |    10    |    Ja    |     
 
 Weitere Informationen finden Sie unter [Häufig gestellte Fragen zur Kapazitätsverwaltung](azure-netapp-files-faqs.md#capacity-management-faqs).
 

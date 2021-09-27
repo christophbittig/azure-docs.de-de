@@ -6,19 +6,19 @@ ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: owend
-ms.openlocfilehash: e5b5f61900f3ca82509718e765f2a62ccd163ecf
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 65d1b6cbee1040846fec2d8e1dd8153eedf9eabc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108145877"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128580963"
 ---
 # <a name="best-practices-for-long-running-operations"></a>Bewährte Methoden für zeitintensive Vorgänge
 
 In Azure Analysis Services stellt ein *Knoten* einen virtuellen Hostcomputer dar, auf dem eine Serverressource ausgeführt wird. Einige Vorgänge, z. B. zeitintensive Abfragen, Aktualisierungsvorgänge und die Synchronisierung der horizontalen Skalierung von Abfragen, können fehlschlagen, wenn eine Serverressource auf einen anderen Knoten verschoben wird. Häufige Fehlermeldungen in diesem Szenario sind unter anderem:
 
 - „Fehler beim Versuch, eine zeitintensive XMLA-Anforderung zu finden. Die Anforderung wurde möglicherweise durch ein Dienstupgrade oder einen Serverneustart unterbrochen.“
-- „Der Auftrag mit der ID '<guid>für das Modell '<database>' wurde aufgrund eines Dienstfehlers (Inaktivität) mit der Meldung 'Die Aktualisierungsanforderung wird abgebrochen, weil sie ohne Aktualisierungen hängengeblieben ist. Dies ist ein internes Dienstproblem. Senden Sie den Auftrag oder die Datei erneut, oder öffnen Sie ein Ticket, um Hilfe zu erhalten, wenn dieses Problem wiederholt auftritt.“
+- „Der Auftrag mit der ID '\<guid\>für das Modell '\<database\>' wurde aufgrund eines Dienstfehlers (Inaktivität) mit der Meldung 'Die Aktualisierungsanforderung wird abgebrochen, weil sie ohne Aktualisierungen hängengeblieben ist. Dies ist ein internes Dienstproblem. Senden Sie den Auftrag oder die Datei erneut, oder öffnen Sie ein Ticket, um Hilfe zu erhalten, wenn dieses Problem wiederholt auftritt.“
 
 Es gibt zahlreiche Gründe, warum zeitintensive Vorgänge unterbrochen werden können. Beispielsweise Updates in Azure wie: 
 - Patches für Betriebssysteme 

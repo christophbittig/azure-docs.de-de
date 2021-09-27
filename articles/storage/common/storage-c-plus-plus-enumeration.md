@@ -1,19 +1,19 @@
 ---
 title: Auflisten von Azure Storage-Ressourcen mit der C++-Clientbibliothek
 description: Erfahren Sie, wie Sie die Auflistungs-APIs in Microsoft Azure Storage Client Library for C++ verwenden können, um Container, BLOBs, Warteschlangen, Tabellen und Entitäten aufzuzählen.
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 01/23/2017
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 72b08a79ead90207c48c4fa682b708a0627b5df3
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: c034f8df787d60ab8d260fb9f99c0938d4fb55af
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106279628"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128560428"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Auflisten von Azure Storage-Ressourcen in C++
 
@@ -24,11 +24,11 @@ Auflistungsvorgänge sind der Schlüssel für viele Entwicklungsszenarien mit Az
 
 Die Storage Client Library stellt eine Vielzahl von Methoden bereit, um Objekte in Azure Storage aufzulisten oder abzufragen. Dieser Artikel behandelt die folgenden Szenarien:
 
-* Auflisten von Containern in einem Konto
-* Auflisten von BLOBs in einem Container oder virtuellen BLOB-Verzeichnis
-* Auflisten von Warteschlangen in einem Konto
-* Auflisten von Tabellen in einem Konto
-* Abfragen von Entitäten in einer Tabelle
+- Auflisten von Containern in einem Konto
+- Auflisten von BLOBs in einem Container oder virtuellen BLOB-Verzeichnis
+- Auflisten von Warteschlangen in einem Konto
+- Auflisten von Tabellen in einem Konto
+- Abfragen von Entitäten in einer Tabelle
 
 Jede dieser Methoden wird mit unterschiedlichen Überladungen für unterschiedliche Szenarios dargestellt.
 
@@ -59,8 +59,8 @@ Daher ist es unpraktisch, alle Objekte in einer einzigen Antwort aufzulisten. St
 
 Die Antwort für einen Vorgang mit segmentierter Auflistung enthält Folgendes:
 
-* *_segment*, das die Ergebnisse enthält, die für einen einzelnen Aufruf der Auflistungs-API zurückgegeben wurden.
-* *continuation_token*, das an den nächsten Aufruf übergeben wird, damit die nächste Seite mit Ergebnissen abgerufen wird. Gibt es keine weiteren zurückzugebenden Ergebnisse, ist das Fortsetzungstoken (continuation_token) gleich NULL.
+- *_segment*, das die Ergebnisse enthält, die für einen einzelnen Aufruf der Auflistungs-API zurückgegeben wurden.
+- *continuation_token*, das an den nächsten Aufruf übergeben wird, damit die nächste Seite mit Ergebnissen abgerufen wird. Gibt es keine weiteren zurückzugebenden Ergebnisse, ist das Fortsetzungstoken (continuation_token) gleich NULL.
 
 Ein typischer Aufruf zum Auflisten alle BLOBs in einem Container könnte beispielsweise wie der folgende Codeausschnitt aussehen. Der Code ist in unseren [Beispielen](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp)verfügbar:
 
@@ -187,18 +187,18 @@ APIs für faules Auflisten sind in der Version 2.2.0 der Storage Client Library 
 
 In diesem Artikel werden verschiedene Überladungen für Auflistungs-APIs für unterschiedliche Objekte erläutert, die in der Storage Client Library for C++ enthalten sind. Zusammenfassung:
 
-* Asynchrone APIs sollten in allen Fällen verwendet werden, in denen mit Threading gearbeitet wird.
-* Segmentiertes Auflisten ist für die meisten Fälle zu empfehlen.
-* Faules (lazy) Auflisten wird in der Bibliothek als bequemer Wrapper für Fälle mit synchroner Verarbeitung bereitgestellt.
-* Gieriges Auflisten ist nicht zu empfehlen und wurde aus der Bibliothek entfernt.
+- Asynchrone APIs sollten in allen Fällen verwendet werden, in denen mit Threading gearbeitet wird.
+- Segmentiertes Auflisten ist für die meisten Fälle zu empfehlen.
+- Faules (lazy) Auflisten wird in der Bibliothek als bequemer Wrapper für Fälle mit synchroner Verarbeitung bereitgestellt.
+- Gieriges Auflisten ist nicht zu empfehlen und wurde aus der Bibliothek entfernt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu Azure Storage und zur Client Library for C++ finden Sie in den folgenden Ressourcen.
 
-* [Verwenden des Blob-Speichers mit C++](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
-* [Verwenden des Tabellenspeichers mit C++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
-* [Verwenden des Warteschlangenspeichers in C++](../queues/storage-c-plus-plus-how-to-use-queues.md)
-* [Azure Storage Client Library for C++ API Documentation.](https://azure.github.io/azure-storage-cpp/)
-* [Azure Storage-Teamblog](/archive/blogs/windowsazurestorage/)
-* [Azure Storage-Dokumentation](https://azure.microsoft.com/documentation/services/storage/)
+- [Verwenden des Blob-Speichers mit C++](../blobs/quickstart-blobs-c-plus-plus.md)
+- [Verwenden des Tabellenspeichers mit C++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
+- [Verwenden des Warteschlangenspeichers in C++](../queues/storage-c-plus-plus-how-to-use-queues.md)
+- [Azure Storage Client Library for C++ API Documentation.](https://azure.github.io/azure-storage-cpp/)
+- [Azure Storage-Teamblog](/archive/blogs/windowsazurestorage/)
+- [Azure Storage-Dokumentation](https://azure.microsoft.com/documentation/services/storage/)

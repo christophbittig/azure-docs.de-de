@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: 39dc20f240ba051dd5b49ddbbcc99a20b732ec77
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: fe9b445a1eccb6c897a1fd7f383e487714c23966
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123273349"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128575932"
 ---
 # <a name="associate-a-virtual-machine-scale-set-to-a-capacity-reservation-group-preview"></a>Zuordnen einer VM-Skalierungsgruppe zu einer Kapazitätsreservierungsgruppe (Vorschau)
 
@@ -31,10 +31,6 @@ Weitere Informationen zu diesen Modi finden Sie unter [Orchestrierungsmodi für 
 ## <a name="register-for-capacity-reservation"></a>Registrieren für Kapazitätsreservierung 
 
 Bevor Sie das Feature zur Kapazitätsreservierung verwenden können, müssen Sie [Ihr Abonnement für die Vorschauversion registrieren](capacity-reservation-overview.md#register-for-capacity-reservation). Die Registrierung kann mehrere Minuten dauern. Sie können die Azure CLI oder PowerShell verwenden, um die Funktionsregistrierung abzuschließen.
-
-> [!NOTE]
-> Bedarfsbasierte Kapazitätsreservierung ist nur in ausgewählten Regionen für die Skalierungsgruppen virtueller Computer im einheitlichen Orchestrierungsmodus verfügbar. Um zu überprüfen, ob Ihre Region unterstützt wird, navigieren Sie zu [Bereitstellungsnachverfolgung für eine einheitliche VM-Skalierungsgruppe](https://aka.ms/vmssuniformdeploymenttracker).
-
 
 ## <a name="limitations-of-scale-sets-in-uniform-orchestration"></a>Einschränkungen von Skalierungsgruppen in einer einheitlichen Orchestrierung 
 
@@ -109,7 +105,7 @@ Weitere Informationen finden Sie unter dem Azure PowerShell-Befehl [New-AzVmss](
 
 ### <a name="arm-template"></a>[ARM-Vorlage](#tab/arm1)
 
-Eine  [ARM-Vorlage](/azure/azure-resource-manager/templates/overview)  ist eine JSON-Datei (JavaScript Object Notation), die die Infrastruktur und Konfiguration für Ihr Projekt definiert. Die Vorlage verwendet eine deklarative Syntax. In deklarativer Syntax beschreiben Sie Ihre beabsichtigte Bereitstellung, ohne die Reihenfolge der Programmierbefehle zur Erstellung der Bereitstellung zu schreiben. 
+Eine  [ARM-Vorlage](../azure-resource-manager/templates/overview.md)  ist eine JSON-Datei (JavaScript Object Notation), die die Infrastruktur und Konfiguration für Ihr Projekt definiert. Die Vorlage verwendet eine deklarative Syntax. In deklarativer Syntax beschreiben Sie Ihre beabsichtigte Bereitstellung, ohne die Reihenfolge der Programmierbefehle zur Erstellung der Bereitstellung zu schreiben. 
 
 Mit ARM-Vorlagen können Sie Gruppen mit verwandten Ressourcen bereitstellen. Sie können in einer einzelnen Vorlage eine Kapazitätsreservierungsgruppe und Kapazitätsreservierungen erstellen. Sie können Vorlagen über das Azure-Portal, die Azure CLI oder Azure PowerShell oder über CI/CD-Pipelines (Continuous Integration/Continuous Delivery) bereitstellen. 
 

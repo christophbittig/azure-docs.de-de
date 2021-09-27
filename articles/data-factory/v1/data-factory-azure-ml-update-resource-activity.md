@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 42a1318ffb4c0063875939c8d3633ea513818ba4
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 2d1cd9053f5be915015653e1b522e82eff7b978c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397072"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128571233"
 ---
 # <a name="updating-ml-studio-classic-models-using-update-resource-activity"></a>Aktualisieren von Modellen für ML Studio (klassisch) mithilfe der Ressourcenaktualisierungsaktivität
 
@@ -47,7 +48,7 @@ In der folgenden Tabelle werden die in diesem Beispiel verwendeten Webdienste be
 
 Die folgende Abbildung zeigt die Beziehung zwischen Trainings- und Bewertungsendpunkten in ML Studio (klassisch).
 
-![Webdienste](./media/data-factory-azure-ml-batch-execution-activity/web-services.png)
+:::image type="content" source="./media/data-factory-azure-ml-batch-execution-activity/web-services.png" alt-text="Webdienste":::
 
 Sie können mithilfe der **Batch Execution-Aktivität für ML Studio (klassisch)** den **Trainingswebdienst** aufrufen. Das Aufrufen eines Trainingswebdiensts entspricht dem Aufrufen eines Webdiensts für ML Studio (klassisch) (Bewertungswebdienst) für Bewertungsdaten. In den vorstehenden Abschnitten wurde detailliert beschrieben, wie ein Webdienst für ML Studio (klassisch) über eine Azure Data Factory-Pipeline aufgerufen wird. 
 
@@ -59,7 +60,7 @@ Wenn der Bewertungswebdienst ein **klassischer Webdienst** ist, erstellen Sie de
 * Klicken Sie auf **BATCHAUSFÜHRUNG**, um den URI-Wert für die **mlEndpoint**-JSON-Eigenschaft zu erhalten.
 * Klicken Sie auf den Link **RESSOURCE AKTUALISIEREN**, um den URI-Wert für die **updateResourceEndpoint**-JSON-Eigenschaft abzurufen. Den API-Schlüssel finden Sie auf der Seite des Endpunkts (unten rechts).
 
-![Aktualisierbarer Endpunkt](./media/data-factory-azure-ml-batch-execution-activity/updatable-endpoint.png)
+:::image type="content" source="./media/data-factory-azure-ml-batch-execution-activity/updatable-endpoint.png" alt-text="Aktualisierbarer Endpunkt":::
 
 Das folgende Beispiel enthält eine JSON-Beispieldefinition für den mit AzureML verknüpften Dienst. Der verknüpfte Dienst verwendet die apiKey-Variable für die Authentifizierung.  
 
@@ -111,7 +112,7 @@ Dieser Abschnitt enthält eine Beispielpipeline, bei der die **Batch Execution-A
 
 Im Folgenden ist die Diagrammansicht der Beispielpipeline dargestellt. Wie Sie sehen können, übernimmt die Batchausführungsaktivität für Studio (klassisch) die Trainingseingabe und erzeugt eine Trainingsausgabe (iLearner-Datei). Die Ressourcenaktualisierungsaktivität für Studio (klassisch) verwendet diese Trainingsausgabe und aktualisiert das Modell im Bewertungswebdienst-Endpunkt. Die Ressourcenaktualisierungsaktivität erzeugt keine Ausgabe. „placeholderBlob“ ist nur ein Platzhalter für ein Ausgabedataset, das für den Azure Data Factory-Dienst zum Ausführen der Pipeline erforderlich ist.
 
-![Pipelinediagramm](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
+:::image type="content" source="./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png" alt-text="Pipelinediagramm":::
 
 ### <a name="azure-blob-storage-linked-service"></a>Mit Azure Blob Storage verknüpfter Dienst:
 Der Azure-Speicher enthält die folgenden Daten:
@@ -258,7 +259,7 @@ Die Ressourcenaktualisierungsaktivität für Studio (klassisch) generiert keine 
 ### <a name="pipeline"></a>Pipeline
 Die Pipeline enthält zwei Aktivitäten: **AzureMLBatchExecution** und **AzureMLUpdateResource**. Die Batchausführungsaktivität (Batch Execution-Aktivität) für ML Studio (klassisch) verwendet die Trainingsdaten als Eingabe und erzeugt eine iLearner-Datei als Ausgabe. Die Aktivität ruft den Trainingswebdienst (das als Webdienst bereitgestellte Trainingsexperiment) mit den Trainingseingabedaten auf und empfängt die iLearner-Datei vom Webdienst. „placeholderBlob“ ist nur ein Platzhalter für ein Ausgabedataset, das für den Azure Data Factory-Dienst zum Ausführen der Pipeline erforderlich ist.
 
-![Pipelinediagramm](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
+:::image type="content" source="./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png" alt-text="Pipelinediagramm":::
 
 ```JSON
 {

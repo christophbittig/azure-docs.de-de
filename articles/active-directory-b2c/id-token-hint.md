@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/30/2021
+ms.date: 09/16/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6477283b3eb96579b943baf0aa34c2737bf43a58
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 39c21beb5f2f8f673210f8fc4c8c5bf0a7d13c2a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110059595"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128575074"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen ID-Tokenhinweisprofils in einer benutzerdefinierten Azure Active Directory B2C-Richtlinie
 
@@ -101,7 +101,7 @@ Die folgenden Metadaten sind relevant, wenn ein asymmetrischer Schlüssel verwen
 
 Bei Verwendung eines symmetrischen Schlüssels enthält das Element **CryptographicKeys** die folgenden Attribute:
 
-| attribute | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | client_secret | Ja | Dies ist der Kryptografieschlüssel, der zum Überprüfen der JWT-Tokensignatur verwendet wird.|
 
@@ -130,7 +130,8 @@ Mit diesem Code wird ein Geheimnis wie `VK62QTn0m1hMcn0DQ3RPYDAr6yIiSvYgdRwjZtU5
 Der Schlüssel, der vom Tokenaussteller verwendet wird, muss in Ihren Azure AD B2C-Richtlinienschlüsseln erstellt werden.  
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
 1. Wählen Sie auf der Übersichtsseite unter **Richtlinien** die Option **Identity Experience Framework** aus.
 1. Klicken Sie auf **Richtlinienschlüssel**. 

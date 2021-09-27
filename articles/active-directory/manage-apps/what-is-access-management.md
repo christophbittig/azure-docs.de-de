@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/16/2017
+ms.date: 08/31/2021
 ms.author: davidmu
 ms.reviewer: alamaral
-ms.openlocfilehash: 2dc66adcce209b29579bb88184272fd2bda1353c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 584437c13168303630585c67ee853b135a2c09a5
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339625"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435220"
 ---
 # <a name="managing-access-to-apps"></a>Verwalten des Zugriffs auf Apps
 
@@ -40,13 +40,20 @@ Durch Einsatz dieser beiden Zuweisungsmodi können Administratoren jeden gewüns
 
 ### <a name="requiring-user-assignment-for-an-app"></a>Anfordern der Benutzerzuweisung für eine App
 
-Bei bestimmten Anwendungstypen haben Sie die Möglichkeit, [die Zuweisung von Benutzern zur App als Anforderung festzulegen](assign-user-or-group-access-portal.md#configure-an-application-to-require-user-assignment). Dadurch können sich außer den Benutzern, die Sie der Anwendung explizit zuweisen, keine Benutzer anmelden. Bei folgenden Anwendungstypen wird diese Option unterstützt:
+Bei bestimmten Anwendungstypen haben Sie die Möglichkeit, die Zuweisung von Benutzern zur App als Anforderung festzulegen. Dadurch können sich außer den Benutzern, die Sie der Anwendung explizit zuweisen, keine Benutzer anmelden. Bei folgenden Anwendungstypen wird diese Option unterstützt:
 
 * Anwendungen, die für das einmalige Anmelden (SSO) im Verbund mit SAML-basierter Authentifizierung konfiguriert sind
 * Anwendungsproxyanwendungen mit Azure Active Directory-Vorauthentifizierung
 * Anwendungen, die auf der Azure AD-Anwendungsplattform mit OAuth 2.0/OpenID Connect-Authentifizierung erstellt wurden (nachdem ein Benutzer oder Administrator seine Zustimmung für die Anwendung erteilt hat). Bestimmte Unternehmensanwendungen bieten zusätzliche Mechanismen, mit denen gesteuert werden kann, wer sich anmelden darf.
 
-Wenn die Benutzerzuweisung *nicht erforderlich* ist, wird die App nicht zugewiesenen Benutzern nicht in „Meine Apps“ angezeigt. Diese können sich jedoch weiterhin bei der Anwendung selbst anmelden (auch als SP-initiierte Anmeldung bezeichnet) oder auf der Seite **Eigenschaften** der Anwendung die **Benutzerzugriffs-URL** verwenden (auch als IDP-initiierte Anmeldung bezeichnet).
+Wenn eine Benutzerzuweisung erforderlich ist, können sich nur die Benutzer anmelden, die Sie der Anwendung zuweisen (durch direkte Benutzerzuweisung oder basierend auf der Gruppenmitgliedschaft). Sie können auf die App auf ihrer Seite „Meine Apps“ oder über einen direkten Link zugreifen.
+
+Wenn die Benutzerzuweisung nicht erforderlich ist, wird die App nicht zugewiesenen Benutzern nicht in „Meine Apps“ angezeigt. Sie können sich jedoch weiterhin bei der Anwendung selbst anmelden (auch als SP-initiierte Anmeldung bezeichnet) oder auf der Seite **Eigenschaften** der Anwendung die **Benutzerzugriffs-URL** verwenden (auch als IDP-initiierte Anmeldung bezeichnet).
+
+Diese Einstellung hat keine Auswirkung darauf, ob eine Anwendung in „Meine Apps“ angezeigt wird. Anwendungen werden im Zugriffsbereich „Meine Apps“ von Benutzern angezeigt, sobald Sie der Anwendung einen Benutzer oder eine Gruppe zugewiesen haben.
+
+> [!NOTE]
+> Wenn eine Anwendung eine Zuweisung erfordert, ist die Benutzereinwilligung für diese Anwendung nicht zulässig. Dies gilt auch dann, wenn die Benutzereinwilligung für diese App andernfalls zugelassen worden wäre. Vergewissern Sie sich, dass Sie für Apps, die eine Zuweisung erfordern, eine [mandantenweite Administratoreinwilligung erteilen](../manage-apps/grant-admin-consent.md).
 
 Bei einigen Anwendungen ist die Option zum Anfordern der Benutzerzuweisung in den Anwendungseigenschaften nicht verfügbar. In diesen Fällen können Sie mit PowerShell die Eigenschaft „appRoleAssignmentRequired“ auf dem Dienstprinzipal festlegen.
 
@@ -76,7 +83,7 @@ Mit Azure AD können Anwendungen wie Salesforce beispielsweise für einmaliges 
 
 In diesem Fall würde allen zugewiesenen Benutzern automatisch Salesforce bereitgestellt, und bei einem Wechsel in andere Gruppen würde ihre Rollenzuweisung in Salesforce aktualisiert. Die Benutzer könnten Salesforce über „Meine Apps“, Office-Webclients oder sogar durch Aufrufen der Salesforce-Anmeldeseite innerhalb der Organisation ermitteln und darauf zugreifen. Administratoren könnten in diesem Fall den Nutzungs- und Zuweisungszustand mithilfe von Azure AD-Berichten leicht anzeigen.
 
-Administratoren können den [bedingten Zugriff von Azure AD](../conditional-access/concept-conditional-access-users-groups.md) einsetzen, um Zugriffsrichtlinien für bestimmte Rollen festzulegen. In diesen Richtlinien kann enthalten sein, ob der Zugriff von außerhalb der Unternehmensumgebung erlaubt ist, und sogar, ob Multi-Factor Authentication oder bestimmte Geräteanforderungen für verschiedene Anwendungsfälle zur Anwendung kommen.
+Administratoren können den [bedingten Zugriff von Azure AD](../conditional-access/concept-conditional-access-users-groups.md) einsetzen, um Zugriffsrichtlinien für bestimmte Rollen festzulegen. In diesen Richtlinien kann enthalten sein, ob der Zugriff von außerhalb der Unternehmensumgebung erlaubt ist, und sogar, ob die mehrstufige Authentifizierung oder bestimmte Geräteanforderungen für verschiedene Anwendungsfälle zur Anwendung kommen.
 
 ## <a name="access-to-microsoft-applications"></a>Zugriff auf Microsoft-Anwendungen
 

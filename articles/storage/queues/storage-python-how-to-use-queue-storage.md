@@ -1,20 +1,20 @@
 ---
 title: Verwenden von Azure Queue Storage mit Python
 description: Erfahren Sie, wie Sie mit Azure Queue Storage in Python Warteschlangen erstellen und löschen sowie Nachrichten einfügen, abrufen und löschen können.
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 02/16/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: seo-javascript-october2019, devx-track-python
-ms.openlocfilehash: 11b50ad391c5b73b7f986ddb7ad2972ebeaf2c58
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: c7210ea6c0930f77620254a09b46ea37055aa8ef
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110477266"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128579551"
 ---
 # <a name="how-to-use-azure-queue-storage-from-python"></a>Verwenden von Azure Queue Storage mit Python
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 4e7302cda688d92e19d147f0bfa1a482823b2623
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 790e677a313762d8b4ac9c1ae55473c2b55e058c
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340244"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123471676"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Bedarfsgerechtes Bereitstellen und Überwachen von IoT Edge-Modulen mithilfe der Azure CLI
 
@@ -155,6 +155,11 @@ Hier sehen Sie ein Beispiel für ein grundlegendes Manifest einer mehrstufigen B
   }
 }
 ```
+>[!NOTE]
+> Beachten Sie, dass dieses mehrschichtige Bereitstellungsmanifest ein etwas anderes Format als ein Standardbereitstellungsmanifest aufweist. Die gewünschten Eigenschaften der Runtimemodule werden mithilfe der Punktnotation reduziert. Diese Formatierung ist erforderlich, damit das Azure-Portal die mehrschichtige Bereitstellung erkennen kann. Beispiel:
+>
+>  - `properties.desired.modules.<module_name>`
+>  - `properties.desired.routes.<route_name>`
 
 Im vorherigen Beispiel wurde eine mehrstufige Bereitstellung gezeigt, bei der `properties.desired` für ein Modul festgelegt wird. Wenn diese mehrstufige Bereitstellung auf ein Gerät abzielt, auf dem dasselbe Modul bereits angewandt wurde, werden alle vorhandenen gewünschten Eigenschaften überschrieben. Um gewünschte Eigenschaften zu aktualisieren anstatt sie zu überschreiben, können Sie einen neuen Unterabschnitt definieren. Beispiel:
 
@@ -166,6 +171,24 @@ Im vorherigen Beispiel wurde eine mehrstufige Bereitstellung gezeigt, bei der `p
   }
 }
 ```
+
+Dasselbe kann auch wie folgt ausgedrückt werden:
+
+```json
+"SimulatedTEmperatureSensor": {
+  "properties.desired.layeredProperties.SendData" : true,
+  "properties.desired.layeredProperties.SendInterval": 5
+}
+```
+
+>[!NOTE]
+>Derzeit müssen alle mehrschichtigen Bereitstellungen ein edgeAgent-Objekt enthalten, um gültig zu sein. Obwohl eine mehrschichtige Bereitstellung nur Moduleigenschaften aktualisiert, schließen Sie ein leeres Objekt ein. Beispiel: `"$edgeAgent":{}`. Eine mehrschichtige Bereitstellung mit einem leeren edgeAgent-Objekt wird im edgeAgent-Modulzwilling als **Ziel** angezeigt, nicht als **angewandt**.
+
+Zusammengefasst: So erstellen Sie eine mehrschichtige Bereitstellung
+
+- Das Flag `--layered` muss dem Befehl zum Erstellen in der Azure-Befehlszeilenschnittstelle hinzugefügt werden.
+- Sie darf keine Systemmodule enthalten.
+- Sie muss die vollständige Punktnotation unter `$edgeAgent` und `$edgeHub` verwenden.
 
 Weitere Informationen zum Konfigurieren von Modulzwillingen in mehrstufigen Bereitstellungen finden Sie unter [Mehrstufige Bereitstellung](module-deployment-monitoring.md#layered-deployment).
 

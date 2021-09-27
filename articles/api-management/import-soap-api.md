@@ -3,7 +3,7 @@ title: Importieren einer SOAP-API mithilfe des Azure-Portals | Microsoft-Dokumen
 description: Hier erfahren Sie, wie Sie eine XML-Standarddarstellung einer SOAP-API importieren und die API dann im Azure- und im Entwicklerportal testen.
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -11,13 +11,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/22/2020
-ms.author: apimpm
-ms.openlocfilehash: 81ded79ee72fb7c2d89898595602cb3e6d7ae5e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: effb8b3820359539045a25244ced9f0dddc83c86
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96011063"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629690"
 ---
 # <a name="import-soap-api"></a>Importieren einer SOAP-API
 
@@ -32,7 +32,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Absolvieren Sie den folgende Schnellstart: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md)
+Bearbeiten Sie den folgenden Schnellstart: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 

@@ -2,19 +2,15 @@
 title: Konzepte für Azure Video Analyzer for Media (früher Video Indexer) – Azure
 titleSuffix: Azure Video Analyzer for Media (formerly Video Indexer)
 description: Dieser Artikel bietet eine kurze Übersicht über Terminologie und Konzepte von Azure Video Analyzer for Media (früher Video Indexer).
-services: azure-video-analyzer
-author: Juliako
-manager: femila
-ms.topic: article
-ms.subservice: azure-video-analyzer-media
+ms.topic: conceptual
 ms.date: 01/19/2021
 ms.author: juliako
-ms.openlocfilehash: 9b7f6729e437a35001e5fa59d977c3c60321ef3a
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 6b68ee08d6569bd22709e5b9ee25cbbf745c0470
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112123363"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128630165"
 ---
 # <a name="video-analyzer-for-media-concepts"></a>Video Analyzer for Media-Konzepte
 

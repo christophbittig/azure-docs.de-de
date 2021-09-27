@@ -2,22 +2,18 @@
 title: Migrieren vom Netzwerkleistungsmonitor zum Verbindungsmonitor
 titleSuffix: Azure Network Watcher
 description: Erfahren Sie, wie Sie vom Netzwerkleistungsmonitor zum Verbindungsmonitor migrieren.
-services: network-watcher
-documentationcenter: na
 author: vinynigam
 ms.service: network-watcher
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 0ec16b16c8e71d764fb0fe21520eb407493ed8d7
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 84daa5527617584d420db02b012bec28760a146c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113105361"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128614560"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Migrieren vom Netzwerkleistungsmonitor zum Verbindungsmonitor
 
@@ -58,7 +54,7 @@ Gehen Sie folgendermaßen vor, um von Netzwerkleistungsmonitor zu Verbindungsmon
 1. Wählen Sie in den Dropdownlisten Ihr Abonnement und den Arbeitsbereich und dann das NPM-Feature aus, das Sie migrieren möchten. 
 1. Wählen Sie zum Migrieren der Tests **Importieren** aus.
 * Wenn NPM im Arbeitsbereich nicht aktiviert ist, wird ein Fehler mit dem Hinweis angezeigt, dass keine gültige NPM-Konfiguration gefunden wurde. 
-* Wenn in der Funktion, die Sie in Schritt 2 ausgewählt haben, keine Tests vorhanden sind, wird ein Fehler mit dem Hinweis angezeigt, dass <feature> im ausgewählten Arbeitsbereich nicht konfiguriert ist.
+* Wenn in der Funktion, die Sie in Schritt 2 ausgewählt haben, keine Tests vorhanden sind, wird ein Fehler mit dem Hinweis angezeigt, dass \<feature\> im ausgewählten Arbeitsbereich nicht konfiguriert ist.
 * Wenn keine gültigen Tests verfügbar sind, wird ein Fehler mit dem Hinweis angezeigt, dass der ausgewählte Arbeitsbereich keine gültigen Tests enthält.
 * Ihre Tests können Agents enthalten, die nicht mehr aktiv sind, aber möglicherweise in der Vergangenheit aktiv waren. Es wird ein Fehler mit dem Hinweis angezeigt, dass nur einige Tests Agents enthalten, die nicht mehr aktiv sind. Liste der inaktiven Agents: {0}. Diese Agents wurden möglicherweise in der Vergangenheit ausgeführt, sind aber jetzt heruntergefahren/werden nicht mehr ausgeführt. Aktivieren Sie Agents, und migrieren Sie zu Verbindungsmonitor. Klicken Sie auf „Weiter“, um die Tests zu migrieren, die keine inaktiven Agents enthalten.
 

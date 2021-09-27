@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdaef1c746ca23f2badf657e6e72e6e3988bcfa4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f3eb56d9de903fc6013600908e3b44e8e0f547ed
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122354847"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128618113"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Gewusst wie: Planen der Implementierung Ihrer Azure AD-Einbindung
 
@@ -199,7 +199,7 @@ Derzeit unterstützen Azure AD-eingebundene Geräte keine RADIUS-Authentifizier
 
 Sie können Azure AD Join mithilfe der folgenden Methoden bereitstellen:
 
-- **Self-Service auf der Windows-Willkommensseite/in den Windows-Einstellungen**: Im Self-Service-Modus durchlaufen die Benutzer den Azure AD-Einbindungsprozess entweder auf der Windows-Willkommensseite (Windows Out-of-Box-Experience, OOBE) oder in den Windows-Einstellungen. Weitere Informationen finden Sie unter [Einbinden von geschäftlichen Geräten in das Netzwerk der Organisation](../user-help/user-help-join-device-on-network.md). 
+- **Self-Service auf der Windows-Willkommensseite/in den Windows-Einstellungen**: Im Self-Service-Modus durchlaufen die Benutzer den Azure AD-Einbindungsprozess entweder auf der Windows-Willkommensseite (Windows Out-of-Box-Experience, OOBE) oder in den Windows-Einstellungen. Weitere Informationen finden Sie unter [Einbinden von geschäftlichen Geräten in das Netzwerk der Organisation](https://support.microsoft.com/account-billing/join-your-work-device-to-your-work-or-school-network-ef4d6adb-5095-4e51-829e-5457430f3973). 
 - **Windows Autopilot**: Windows Autopilot ermöglicht die Vorkonfiguration von Geräten, um auf der Windows-Willkommensseite für ein möglichst reibungsloses Benutzererlebnis bei einer Azure AD-Einbindung zu sorgen. Weitere Informationen finden Sie in der [Übersicht über Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot). 
 - **Massenregistrierung**: Die Massenregistrierung ermöglicht eine vom Administrator gesteuerte Azure AD-Einbindung mithilfe eines Massenbereitstellungstools zum Konfigurieren von Geräten. Weitere Informationen finden Sie unter [Massenregistrierung für Windows-Geräte](/intune/windows-bulk-enroll).
  
@@ -209,7 +209,7 @@ Hier finden Sie einen Vergleich dieser drei Methoden:
 | --- | --- | --- | --- |
 | Benutzerinteraktion zum Einrichten erforderlich | Ja | Ja | Nein |
 | IT-Maßnahmen erforderlich | Nein | Ja | Ja |
-| Zutreffende Abläufe | Windows-Willkommensseite & Einstellungen | Nur Windows-Willkommensseite | Nur Windows-Willkommensseite |
+| Zutreffende Abläufe | Windows-Willkommensseite & Einstellungen | Nur Windows-Willkommensseite | Nur Willkommensseite |
 | Lokale Administratorrechte für primären Benutzer | Ja, standardmäßig | Konfigurierbar | Nein |
 | OEM-Support erforderlich | Nein | Ja | Nein |
 | Unterstützte Versionen | 1511+ | 1709+ | 1703+ |
@@ -308,7 +308,7 @@ Sie können diese Implementierung nutzen, um [die Verwendung verwalteter Geräte
 
 > [!div class="nextstepaction"]
 > [Einbinden eines neuen Windows 10-Geräts in Azure AD auf der Windows-Willkommensseite](azuread-joined-devices-frx.md)
-> [Einbinden von geschäftlichen Geräten in das Netzwerk der Organisation](../user-help/user-help-join-device-on-network.md)
+> [Einbinden von geschäftlichen Geräten in das Netzwerk der Organisation](https://support.microsoft.com/account-billing/join-your-work-device-to-your-work-or-school-network-ef4d6adb-5095-4e51-829e-5457430f3973)
 
 <!--Image references-->
 [1]: ./media/azureadjoin-plan/12.png

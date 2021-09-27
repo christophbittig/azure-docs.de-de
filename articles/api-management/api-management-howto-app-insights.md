@@ -3,18 +3,18 @@ title: Integrieren von Azure API Management mit Azure Application Insights
 titleSuffix: Azure API Management
 description: Informationen zum Protokollieren und Anzeigen von Ereignissen aus Azure API Management in Azure Application Insights.
 services: api-management
-author: mikebudzynski
+author: dlepow
 ms.service: api-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/04/2021
-ms.author: apimpm
-ms.openlocfilehash: c3c3647831e871e886f44c74d91f1f2827ac26f4
-ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
+ms.author: danlep
+ms.openlocfilehash: 94c83ace24a5605a72809a30291ae6c1229870e4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122662209"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128676578"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Vorgehensweise beim Integrieren von Azure API Management in Azure Application Insights
 

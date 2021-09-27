@@ -1,27 +1,23 @@
 ---
-title: Informationen zur Azure Route Server-Unterstützung (Vorschau) für ExpressRoute und Azure-VPN
+title: Informationen zur Azure Route Server-Unterstützung für ExpressRoute und Azure-VPN
 description: Hier erfahren Sie, wie Azure Route Server mit ExpressRoute- und Azure-VPN-Gateways interagiert.
 services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 09/01/2021
 ms.author: duau
-ms.openlocfilehash: 6e588c7c0381c6825bcf75cbbe28a1dd6b865940
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa109544ce890c4a8fae4775010a722791fbe5a7
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101678811"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426074"
 ---
-# <a name="about-azure-route-server-preview-support-for-expressroute-and-azure-vpn"></a>Informationen zur Azure Route Server-Unterstützung (Vorschau) für ExpressRoute und Azure-VPN
+# <a name="about-azure-route-server-support-for-expressroute-and-azure-vpn"></a>Informationen zur Azure Route Server-Unterstützung für ExpressRoute und Azure-VPN
 
 Azure Route Server unterstützt nicht nur virtuelle Netzwerkgeräte (NVAs) von Drittanbietern, die unter Azure ausgeführt werden, sondern kann auch nahtlos in ExpressRoute- und Azure-VPN-Gateways integriert werden. Sie müssen das BGP-Peering zwischen dem Gateway und Azure Route Server weder konfigurieren noch verwalten. Sie können den Routenaustausch zwischen dem Gateway und Azure Route Server mit einer einfachen [Konfigurationsänderung](quickstart-configure-route-server-powershell.md#route-exchange) aktivieren.
 
-> [!IMPORTANT]
-> Azure Route Server (Vorschau) befindet sich derzeit in der öffentlichen Vorschauphase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="how-does-it-work"></a>Wie funktioniert dies?
 

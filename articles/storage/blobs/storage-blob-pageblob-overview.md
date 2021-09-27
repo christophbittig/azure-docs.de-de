@@ -10,18 +10,18 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 30d865b11db3d456f41067efa54bbcf07b019c65
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 36d36101cc7a7a4efff66e680f47431933ddf569
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110451733"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128630829"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Übersicht über Azure-Seitenblobs
 
 Azure Storage bietet drei Typen von Blobs: Blockblobs, Seitenblobs und Anfügeblobs. Blockblobs bestehen aus Blöcken und eignen sich ideal für das Speichern von Text- oder Binärdateien und zum effizienten Hochladen großer Dateien. Anfügeblobs bestehen auch aus Blöcken, sind aber für Anfügevorgänge optimiert und damit ideal für Protokollierungsszenarien. Seitenblobs bestehen aus 512-Byte-Seiten, können insgesamt 8 TB groß sein und sind für häufige wahlfreie Lese-/Schreibzugriffe vorgesehen. Seitenblobs sind die Grundlage von Azure-IaaS-Datenträgern. In diesem Artikel werden die Features und Vorteile von Seitenblobs erläutert.
 
-Seitenblobs sind eine Sammlung von 512-Byte-Seiten, die Lese-/Schreibzugriff auf beliebige Bytebereiche ermöglichen. Dadurch eignen sich Seitenblobs perfekt zum Speichern indexbasierter und platzsparender Datenstrukturen wie Betriebssystemdatenträger und sonstiger Datenträger für VMs und Datenbanken. Azure SQL-Datenbank verwendet Seitenblobs beispielsweise als zugrunde liegenden permanenten Speicher für seine Datenbanken. Darüber hinaus werden Seitenblobs auch häufig für Dateien mit bereichsbasierten Updates verwendet.  
+Seitenblobs sind eine Sammlung von 512-Byte-Seiten, die Lese-/Schreibzugriff auf beliebige Bytebereiche ermöglichen. Dadurch eignen sich Seitenblobs perfekt zum Speichern indexbasierter und platzsparender Datenstrukturen wie Betriebssystemdatenträger und sonstiger Datenträger für VMs und Datenbanken. Azure SQL-Datenbank verwendet Seitenblobs beispielsweise als zugrunde liegenden permanenten Speicher für seine Datenbanken. Darüber hinaus werden Seitenblobs auch häufig für Dateien mit bereichsbasierten Updates verwendet.
 
 Schlüsselfeatures von Azure-Seitenblobs sind die REST-Schnittstelle, die Dauerhaftigkeit des zugrunde liegenden Speichers und die Fähigkeit zur nahtlosen Migration zu Azure. Diese Features werden im nächsten Abschnitt ausführlicher besprochen. Darüber hinaus werden Azure-Seitenblobs derzeit von zwei Speichertypen unterstützt: Storage Premium und Storage Standard. Storage Premium wurde speziell für Workloads konzipiert, die konsistent hohe Leistung und geringe Wartezeit erfordern, sodass Premium-Seitenblobs für Hochleistungsspeicher-Szenarien ideal sind. Standardspeicherkonten sind kostengünstiger zur Ausführung von Workloads, bei denen Wartezeiten eine untergeordnete Rolle spielen.
 
@@ -31,13 +31,13 @@ Seitenblobs können nur die **heiße Zugriffsebene** verwenden. Die Verwendung d
 
 ## <a name="sample-use-cases"></a>Beispiele für Anwendungsfälle
 
-In diesem Abschnitt werden einige Anwendungsfälle für Seitenblobs erläutert. Den Anfang machen Azure-IaaS-Datenträger. Azure-Seitenblobs bilden das Rückgrat der Plattform für virtuelle Datenträger für Azure-IaaS. Sowohl Azure-Datenträger für das Betriebssystem als auch für die zu speichernden Daten werden als virtuelle Datenträger implementiert, wo Daten auf der Azure Storage-Plattform persistent gespeichert und anschließend für optimale Leistung an die virtuellen Computer übermittelt werden. Azure-Datenträger liegen im [VHD-Format](/previous-versions/windows/it-pro/windows-7/dd979539(v=ws.10)) von Hyper-V vor und werden als [Seitenblob](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) in Azure Storage gespeichert. Zusätzlich zur Verwendung virtueller Datenträger für Azure-IaaS-VMs ermöglichen Seitenblobs auch PaaS- und DBaaS-Szenarien. Ein Beispiel wäre etwa der Azure SQL-DB-Dienst, der derzeit Seitenblobs zum Speichern von SQL-Daten verwendet, um schnelle wahlfreie Lese-/Schreibzugriffe für die Datenbank zu ermöglichen. Ein weiteres Beispiel: Bei einem PaaS-Dienst für den Zugriff auf freigegebene Medien für Anwendungen für gemeinsame Videobearbeitung ermöglichen Seitenblobs schnellen Zugriff auf zufällige Positionen in den Medien. Außerdem ermöglichen sie schnelles und effizientes Bearbeiten und Zusammenführen derselben Medien durch mehrere Benutzer. 
+In diesem Abschnitt werden einige Anwendungsfälle für Seitenblobs erläutert. Den Anfang machen Azure-IaaS-Datenträger. Azure-Seitenblobs bilden das Rückgrat der Plattform für virtuelle Datenträger für Azure-IaaS. Sowohl Azure-Datenträger für das Betriebssystem als auch für die zu speichernden Daten werden als virtuelle Datenträger implementiert, wo Daten auf der Azure Storage-Plattform persistent gespeichert und anschließend für optimale Leistung an die virtuellen Computer übermittelt werden. Azure-Datenträger liegen im [VHD-Format](/previous-versions/windows/it-pro/windows-7/dd979539(v=ws.10)) von Hyper-V vor und werden als [Seitenblob](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) in Azure Storage gespeichert. Zusätzlich zur Verwendung virtueller Datenträger für Azure-IaaS-VMs ermöglichen Seitenblobs auch PaaS- und DBaaS-Szenarien. Ein Beispiel wäre etwa der Azure SQL-DB-Dienst, der derzeit Seitenblobs zum Speichern von SQL-Daten verwendet, um schnelle wahlfreie Lese-/Schreibzugriffe für die Datenbank zu ermöglichen. Ein weiteres Beispiel: Bei einem PaaS-Dienst für den Zugriff auf freigegebene Medien für Anwendungen für gemeinsame Videobearbeitung ermöglichen Seitenblobs schnellen Zugriff auf zufällige Positionen in den Medien. Außerdem ermöglichen sie schnelles und effizientes Bearbeiten und Zusammenführen derselben Medien durch mehrere Benutzer.
 
-Für Microsoft-Erstanbieterdienste wie Azure Site Recovery und Azure Backup sowie von vielen Drittanbieterentwicklern wurden branchenführende Innovationen mithilfe der REST-Schnittstelle des Seitenblobs implementiert. Zu den einzigartigen in Azure implementierten Szenarien zählen: 
+Für Microsoft-Erstanbieterdienste wie Azure Site Recovery und Azure Backup sowie von vielen Drittanbieterentwicklern wurden branchenführende Innovationen mithilfe der REST-Schnittstelle des Seitenblobs implementiert. Zu den einzigartigen in Azure implementierten Szenarien zählen:
 
-* Anwendungsorientierte inkrementelle Momentaufnahmeverwaltung: Anwendungen können Momentaufnahmen von Seitenblobs und REST-APIs nutzen, um die Anwendungsprüfpunkte ohne kostspielige Datenduplizierung zu speichern. Azure Storage unterstützt lokale Momentaufnahmen für Seitenblobs, für die nicht das Kopieren des gesamten Blobs erforderlich ist. Diese öffentlichen Momentaufnahmen-APIs ermöglichen auch das Zugreifen auf und Kopieren von Deltas zwischen Momentaufnahmen.
-* Livemigration der Anwendung und Daten aus der lokalen Umgebung zur Cloud: Kopieren Sie die lokalen Daten, und schreiben Sie mithilfe von REST-APIs direkt in ein Azure-Seitenblob, während die lokale VM weiterhin ausgeführt wird. Sobald das Ziel erreicht ist, können Sie schnell ein Failover zu der Azure-VM ausführen, die die Daten verwendet. Dies ermöglicht die Migration Ihrer virtuellen Computer und virtuellen Datenträger vom lokalen Standort zur Cloud mit minimaler Ausfallzeit, da die Datenmigration im Hintergrund durchgeführt wird, während Sie weiterhin den virtuellen Computer verwenden. Die für das Failover erforderliche Ausfallzeit ist kurz (wenige Minuten).
-* [SAS-basierter](../common/storage-sas-overview.md) freigegebener Zugriff, der Szenarien wie z.B. mehrere Lese- und einzelne Schreibvorgänge mit Unterstützung für Gleichzeitigkeitssteuerung ermöglicht.
+- Anwendungsorientierte inkrementelle Momentaufnahmeverwaltung: Anwendungen können Momentaufnahmen von Seitenblobs und REST-APIs nutzen, um die Anwendungsprüfpunkte ohne kostspielige Datenduplizierung zu speichern. Azure Storage unterstützt lokale Momentaufnahmen für Seitenblobs, für die nicht das Kopieren des gesamten Blobs erforderlich ist. Diese öffentlichen Momentaufnahmen-APIs ermöglichen auch das Zugreifen auf und Kopieren von Deltas zwischen Momentaufnahmen.
+- Livemigration der Anwendung und Daten aus der lokalen Umgebung zur Cloud: Kopieren Sie die lokalen Daten, und schreiben Sie mithilfe von REST-APIs direkt in ein Azure-Seitenblob, während die lokale VM weiterhin ausgeführt wird. Sobald das Ziel erreicht ist, können Sie schnell ein Failover zu der Azure-VM ausführen, die die Daten verwendet. Dies ermöglicht die Migration Ihrer virtuellen Computer und virtuellen Datenträger vom lokalen Standort zur Cloud mit minimaler Ausfallzeit, da die Datenmigration im Hintergrund durchgeführt wird, während Sie weiterhin den virtuellen Computer verwenden. Die für das Failover erforderliche Ausfallzeit ist kurz (wenige Minuten).
+- [SAS-basierter](../common/storage-sas-overview.md) freigegebener Zugriff, der Szenarien wie z.B. mehrere Lese- und einzelne Schreibvorgänge mit Unterstützung für Gleichzeitigkeitssteuerung ermöglicht.
 
 ## <a name="pricing"></a>Preise
 
@@ -47,7 +47,7 @@ Beide mit Seitenblobs angebotenen Arten von Speicher verfügen über ein eigenes
 
 ### <a name="rest-api"></a>REST-API
 
-Machen Sie sich anhand des folgenden Dokuments mit der [Entwicklung mithilfe von Seitenblobs](./storage-quickstart-blobs-dotnet.md) vertraut. Sehen Sie sich als Beispiel den Zugriff auf Seitenblobs mit der Storage-Clientbibliothek für .NET an. 
+Machen Sie sich anhand des folgenden Dokuments mit der [Entwicklung mithilfe von Seitenblobs](./storage-quickstart-blobs-dotnet.md) vertraut. Sehen Sie sich als Beispiel den Zugriff auf Seitenblobs mit der Storage-Clientbibliothek für .NET an.
 
 Das folgende Diagramm beschreibt die allgemeinen Beziehungen zwischen Konto, Containern und Seitenblobs.
 
@@ -112,13 +112,13 @@ pageBlob.Resize(32 * OneGigabyteAsBytes);
 
 # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
-Verwenden Sie zum Schreiben von Seiten die [PageBlobClient.UploadPages](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.uploadpages)-Methode.  
+Verwenden Sie zum Schreiben von Seiten die [PageBlobClient.UploadPages](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.uploadpages)-Methode.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_WriteToPageBlob":::
 
 # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
-Verwenden Sie zum Schreiben von Seiten die [CloudPageBlob.WritePages](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.beginwritepages)-Methode.  
+Verwenden Sie zum Schreiben von Seiten die [CloudPageBlob.WritePages](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.beginwritepages)-Methode.
 
 ```csharp
 pageBlob.WritePages(dataStream, startingOffset); 
@@ -126,28 +126,28 @@ pageBlob.WritePages(dataStream, startingOffset);
 
 ---
 
-So können Sie eine sequenzielle Reihe von Seiten bis zu 4 MB schreiben. Der Offset, in den geschrieben wird, muss an einer 512-Byte-Begrenzung beginnen (startingOffset % 512 == 0) und an einer 512-Begrenzung -1 enden. 
+So können Sie eine sequenzielle Reihe von Seiten bis zu 4 MB schreiben. Der Offset, in den geschrieben wird, muss an einer 512-Byte-Begrenzung beginnen (startingOffset % 512 == 0) und an einer 512-Begrenzung -1 enden.
 
-Sobald eine Schreibanforderung für eine sequenzielle Reihe von Seiten im Blobdienst erfolgreich ist und für Dauerhaftigkeit und Resilienz repliziert wird, wird der Schreibvorgang committet, und der Client erhält eine Erfolgsmeldung.  
+Sobald eine Schreibanforderung für eine sequenzielle Reihe von Seiten im Blobdienst erfolgreich ist und für Dauerhaftigkeit und Resilienz repliziert wird, wird der Schreibvorgang committet, und der Client erhält eine Erfolgsmeldung.
 
 Das folgende Diagramm zeigt 2 separate Schreibvorgänge:
 
 ![Ein Diagramm, das die beiden separaten Schreibvorgänge zeigt.](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure2.png)
 
-1.  Einen Schreibvorgang mit der Länge 1.024 Bytes, der am Offset 0 beginnt 
-2.  Einen Schreibvorgang mit der Länge 1.024 Bytes, der am Offset 4096 beginnt 
+1. Einen Schreibvorgang mit der Länge 1.024 Bytes, der am Offset 0 beginnt 
+2. Einen Schreibvorgang mit der Länge 1.024 Bytes, der am Offset 4096 beginnt
 
 #### <a name="reading-pages-from-a-page-blob"></a>Lesen von Seiten aus einem Seitenblob
 
 # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
-Verwenden Sie zum Lesen von Seiten die [PageBlobClient.Download](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadto)-Methode, um einen Bereich von Bytes aus dem Seitenblob zu lesen. 
+Verwenden Sie zum Lesen von Seiten die [PageBlobClient.Download](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadto)-Methode, um einen Bereich von Bytes aus dem Seitenblob zu lesen.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ReadFromPageBlob":::
 
 # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
-Verwenden Sie zum Lesen von Seiten die [CloudPageBlob.DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.icloudblob.downloadrangetobytearray)-Methode, um einen Bereich von Bytes aus dem Seitenblob zu lesen. 
+Verwenden Sie zum Lesen von Seiten die [CloudPageBlob.DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.icloudblob.downloadrangetobytearray)-Methode, um einen Bereich von Bytes aus dem Seitenblob zu lesen.
 
 ```csharp
 byte[] buffer = new byte[rangeSize];
@@ -162,17 +162,17 @@ Die folgende Abbildung zeigt einen Lesevorgang mit einem Offset von 256 und eine
 
 ![Ein Diagramm, das einen Lesevorgang mit einem Offset von 256 und einer Bereichsgröße von 4352 zeigt.](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure3.png)
 
-Bei einem platzsparend gefüllten Blob sollten Sie nur die gültigen Seitenbereiche herunterladen, um nicht für ausgehende 0 (null) Bytes zu zahlen und die Downloadwartezeit zu verringern.  
+Bei einem platzsparend gefüllten Blob sollten Sie nur die gültigen Seitenbereiche herunterladen, um nicht für ausgehende 0 (null) Bytes zu zahlen und die Downloadwartezeit zu verringern.
 
 # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
-Bestimmen Sie mit [PageBlobClient.GetPageRanges](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.getpageranges), welche Seiten Daten enthalten. Sie können dann die zurückgegebenen Bereiche aufzählen und die Daten in jedem Bereich herunterladen. 
+Bestimmen Sie mit [PageBlobClient.GetPageRanges](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.getpageranges), welche Seiten Daten enthalten. Sie können dann die zurückgegebenen Bereiche aufzählen und die Daten in jedem Bereich herunterladen.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ReadValidPageRegionsFromPageBlob":::
 
 # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
-Bestimmen Sie mit [CloudPageBlob.GetPageRanges](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.getpageranges), welche Seiten Daten enthalten. Sie können dann die zurückgegebenen Bereiche aufzählen und die Daten in jedem Bereich herunterladen. 
+Bestimmen Sie mit [CloudPageBlob.GetPageRanges](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.getpageranges), welche Seiten Daten enthalten. Sie können dann die zurückgegebenen Bereiche aufzählen und die Daten in jedem Bereich herunterladen.
 
 ```csharp
 IEnumerable<PageRange> pageRanges = pageBlob.GetPageRanges();
@@ -186,7 +186,7 @@ foreach (PageRange range in pageRanges)
 
     // Read from the correct starting offset in the page blob and
     // place the data in the bufferOffset of the buffer byte array
-    pageBlob.DownloadRangeToByteArray(buffer, bufferOffset, range.StartOffset, rangeSize); 
+    pageBlob.DownloadRangeToByteArray(buffer, bufferOffset, range.StartOffset, rangeSize);
 
     // Then use the buffer for the page range just read
 }
@@ -198,11 +198,11 @@ foreach (PageRange range in pageRanges)
 
 Das Leasen eines Blobs richtet eine Sperre für Schreib- und Löschvorgänge für ein Blob ein und verwaltet sie. Dieser Vorgang ist nützlich in Szenarien, in denen mehrere Clients auf ein Seitenblob zugreifen, um sicherzustellen, dass jeweils nur ein einziger Client in das Blob schreiben kann. Azure-Datenträger nutzen diesen Leasemechanismus z.B., um sicherzustellen, dass der Datenträger nur von einem einzelnen virtuellen Computer verwaltet wird. Die Sperrdauer kann 15 bis 60 Sekunden betragen oder unendlich sein. Weitere Informationen finden Sie [hier](/rest/api/storageservices/lease-blob).
 
-Zusätzlich zu umfangreichen REST-APIs bieten Seitenblobs auch freigegebenen Zugriff, Dauerhaftigkeit und verbesserte Sicherheit. Wir werden diese Vorteile ausführlicher in den nächsten Abschnitten behandeln. 
+Zusätzlich zu umfangreichen REST-APIs bieten Seitenblobs auch freigegebenen Zugriff, Dauerhaftigkeit und verbesserte Sicherheit. Wir werden diese Vorteile ausführlicher in den nächsten Abschnitten behandeln.
 
 ### <a name="concurrent-access"></a>Paralleler Zugriff
 
-Mit der Seitenblob-REST-API und ihrem Leasingmechanismus können Anwendungen von mehreren Clients aus auf das Seitenblob zugreifen. Stellen Sie sich beispielsweise vor, Sie müssten einen verteilten Clouddienst erstellen, der mehreren Benutzern die gemeinsame Nutzung von Speicherobjekten ermöglicht. Dies könnte eine Webanwendung sein, die verschiedenen Benutzern eine umfangreiche Sammlung von Bildern zur Verfügung stellt. Eine Möglichkeit, dies zu implementieren, ist die Verwendung eines virtuellen Computers mit angefügten Datenträgern. Dies hat folgende Nachteile: (i) Die Einschränkung, dass ein Datenträger nur einem einzelnen virtuellen Computer angehängt werden kann, was Skalierbarkeit und Flexibilität einschränkt und die Risiken steigert. Wenn ein Problem mit dem virtuellen Computer oder dem Dienst, der auf dem virtuellen Computer ausgeführt wird, auftritt, kann aufgrund der Lease nicht auf das Image zugegriffen werden, bis die Lease abläuft oder unterbrochen wird; und (ii) die zusätzlichen Kosten einer IaaS-VM. 
+Mit der Seitenblob-REST-API und ihrem Leasingmechanismus können Anwendungen von mehreren Clients aus auf das Seitenblob zugreifen. Stellen Sie sich beispielsweise vor, Sie müssten einen verteilten Clouddienst erstellen, der mehreren Benutzern die gemeinsame Nutzung von Speicherobjekten ermöglicht. Dies könnte eine Webanwendung sein, die verschiedenen Benutzern eine umfangreiche Sammlung von Bildern zur Verfügung stellt. Eine Möglichkeit, dies zu implementieren, ist die Verwendung eines virtuellen Computers mit angefügten Datenträgern. Dies hat folgende Nachteile: (i) Die Einschränkung, dass ein Datenträger nur einem einzelnen virtuellen Computer angehängt werden kann, was Skalierbarkeit und Flexibilität einschränkt und die Risiken steigert. Wenn ein Problem mit dem virtuellen Computer oder dem Dienst, der auf dem virtuellen Computer ausgeführt wird, auftritt, kann aufgrund der Lease nicht auf das Image zugegriffen werden, bis die Lease abläuft oder unterbrochen wird; und (ii) die zusätzlichen Kosten einer IaaS-VM.
 
 Eine andere Möglichkeit ist die direkte Verwendung der Seitenblobs über REST-APIs von Azure Storage. Bei dieser Option entfällt die Notwendigkeit teurer IaaS-VMs. Sie bietet die vollständige Flexibilität des direkten Zugriffs von mehreren Clients aus, sie vereinfacht die Bereitstellung mit dem klassischen Bereitstellungsmodell, da die Notwendigkeit entfällt, Datenträger anzuhängen/zu trennen, und sie eliminiert das Risiko des Auftretens von Problemen auf dem virtuellen Computer. Außerdem entspricht das Leistungsniveau bei wahlfreien Lese-/Schreibzugriffen dem bei gleichen Zugriffen auf einen Datenträger.
 
@@ -212,8 +212,8 @@ Sowohl Standardspeicher als auch Storage Premium sind permanente Speicher, in de
 
 ### <a name="seamless-migration-to-azure"></a>Nahtlose Migration zu Azure
 
-Für Kunden und Entwickler, die am Implementieren ihrer eigenen benutzerdefinierten Sicherungslösung interessiert sind, bietet Azure auch inkrementelle Momentaufnahmen, die nur die Deltas enthalten. Dieses Feature vermeidet die Kosten für die erste vollständige Kopie, was die Sicherungskosten erheblich reduziert. Zusammen mit der Fähigkeit, Differenzdaten effizient zu lesen und zu kopieren, ist dies eine weitere leistungsstarke Funktion, die Entwicklern ermöglicht, noch innovativer zu sein, und Sicherung und Notfallwiederherstellung (Disaster Recovery, DR) in Azure mit einer herausragenden Benutzererfahrung verbindet. Sie können Ihre eigene Sicherungs- oder DR-Lösung für Ihre virtuellen Computer in Azure mithilfe von [Blobmomentaufnahmen](/rest/api/storageservices/snapshot-blob) zusammen mit der API zum [Abrufen von Seitenbereichen](/rest/api/storageservices/get-page-ranges) und der API zum [inkrementellen Kopieren von Blobs](/rest/api/storageservices/incremental-copy-blob) einrichten, die Sie zum mühelosen Kopieren der inkrementellen Daten für die Notfallwiederherstellung verwenden können. 
+Für Kunden und Entwickler, die am Implementieren ihrer eigenen benutzerdefinierten Sicherungslösung interessiert sind, bietet Azure auch inkrementelle Momentaufnahmen, die nur die Deltas enthalten. Dieses Feature vermeidet die Kosten für die erste vollständige Kopie, was die Sicherungskosten erheblich reduziert. Zusammen mit der Fähigkeit, Differenzdaten effizient zu lesen und zu kopieren, ist dies eine weitere leistungsstarke Funktion, die Entwicklern ermöglicht, noch innovativer zu sein, und Sicherung und Notfallwiederherstellung (Disaster Recovery, DR) in Azure mit einer herausragenden Benutzererfahrung verbindet. Sie können Ihre eigene Sicherungs- oder DR-Lösung für Ihre virtuellen Computer in Azure mithilfe von [Blobmomentaufnahmen](/rest/api/storageservices/snapshot-blob) zusammen mit der API zum [Abrufen von Seitenbereichen](/rest/api/storageservices/get-page-ranges) und der API zum [inkrementellen Kopieren von Blobs](/rest/api/storageservices/incremental-copy-blob) einrichten, die Sie zum mühelosen Kopieren der inkrementellen Daten für die Notfallwiederherstellung verwenden können.
 
-Darüber hinaus werden kritische Workloads vieler Unternehmen bereits in lokalen Rechenzentren ausgeführt. Hauptaspekte bei der Migration der Workload zur Cloud sind die Länge der Ausfallzeit, die beim Kopieren der Daten anfällt, und das Risiko unvorhergesehener Probleme nach dem Wechsel. In vielen Fällen kann die Ausfallzeit für die Migration zur Cloud ein K.O.-Kriterium sein. Die Seitenblob-REST-API von Azure löst dieses Problem, indem sie die Migration kritischer Workloads zur Cloud mit minimaler Unterbrechung ermöglicht. 
+Darüber hinaus werden kritische Workloads vieler Unternehmen bereits in lokalen Rechenzentren ausgeführt. Hauptaspekte bei der Migration der Workload zur Cloud sind die Länge der Ausfallzeit, die beim Kopieren der Daten anfällt, und das Risiko unvorhergesehener Probleme nach dem Wechsel. In vielen Fällen kann die Ausfallzeit für die Migration zur Cloud ein K.O.-Kriterium sein. Die Seitenblob-REST-API von Azure löst dieses Problem, indem sie die Migration kritischer Workloads zur Cloud mit minimaler Unterbrechung ermöglicht.
 
 Beispiele zum Erstellen einer Momentaufnahme und Wiederherstellen eines Seitenblobs aus einer Momentaufnahme finden Sie im Artikel [Sichern nicht verwalteter Azure-VM-Datenträger mithilfe inkrementeller Momentaufnahmen](../../virtual-machines/windows/incremental-snapshots.md).

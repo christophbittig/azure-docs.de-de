@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
 ms.custom: devx-track-js, devx-track-azurepowershell
-ms.openlocfilehash: b4279d296c9948d9fbb06174c7c379cd067666dc
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 46c22fe3033a9fc9cda90bf9901f10f20355838e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677299"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128645890"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Hosten einer statischen Website in Azure Storage
 
@@ -35,15 +35,15 @@ Das Feature zum Hosten statischer Websites muss für das Speicherkonto aktiviert
 
 4. Wählen Sie **Aktiviert**, um das Hosten von statischen Websites für das Speicherkonto zu aktivieren.
 
-5. Geben Sie im Feld **Name des Indexdokuments**  die Standardindexseite an (z. B. *index.html*). 
+5. Geben Sie im Feld **Name des Indexdokuments**  die Standardindexseite an (z. B. *index.html*).
 
-   Die Standardindexseite wird angezeigt, wenn ein Benutzer zum Stammverzeichnis Ihrer statischen Website navigiert.  
+   Die Standardindexseite wird angezeigt, wenn ein Benutzer zum Stammverzeichnis Ihrer statischen Website navigiert.
 
-6. Geben Sie im Feld **Pfad zum Fehlerdokument** die Standardfehlerseite an (z. B. *404.html*). 
+6. Geben Sie im Feld **Pfad zum Fehlerdokument** die Standardfehlerseite an (z. B. *404.html*).
 
    Die Standardfehlerseite wird angezeigt, wenn ein Benutzer versucht, zu einer Seite zu navigieren, die auf Ihrer statischen Website nicht vorhanden ist.
 
-7. Klicken Sie auf **Speichern**. Im Azure-Portal wird jetzt der Endpunkt Ihrer statischen Website angezeigt. 
+7. Klicken Sie auf **Speichern**. Im Azure-Portal wird jetzt der Endpunkt Ihrer statischen Website angezeigt.
 
     ![Aktivieren des Hostens von statischen Websites für ein Speicherkonto](media/storage-blob-static-website-host/enable-static-website-hosting.png)
 
@@ -69,11 +69,11 @@ Sie können das Hosting statischer Websites über die [Azure-Befehlszeilenschnit
    az storage blob service-properties update --account-name <storage-account-name> --static-website --404-document <error-document-name> --index-document <index-document-name>
    ```
 
-   * Ersetzen Sie den Platzhalterwert `<storage-account-name>` durch den Namen Ihres Speicherkontos.
+   - Ersetzen Sie den Platzhalterwert `<storage-account-name>` durch den Namen Ihres Speicherkontos.
 
-   * Ersetzen Sie den Platzhalter `<error-document-name>` durch den Namen des Fehlerdokuments, das den Benutzern angezeigt wird, wenn ein Browser eine nicht vorhandene Seite auf Ihrer Website anfordert.
+   - Ersetzen Sie den Platzhalter `<error-document-name>` durch den Namen des Fehlerdokuments, das den Benutzern angezeigt wird, wenn ein Browser eine nicht vorhandene Seite auf Ihrer Website anfordert.
 
-   * Ersetzen Sie den Platzhalter `<index-document-name>` durch den Namen des Indexdokuments. Dieses Dokument ist üblicherweise „index.html“.
+   - Ersetzen Sie den Platzhalter `<index-document-name>` durch den Namen des Indexdokuments. Dieses Dokument ist üblicherweise „index.html“.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -113,9 +113,9 @@ Sie können das Hosting statischer Websites über das Azure PowerShell-Modul akt
    $ctx = $storageAccount.Context
    ```
 
-   * Ersetzen Sie den Platzhalterwert `<resource-group-name>` durch den Namen Ihrer Ressourcengruppe.
+   - Ersetzen Sie den Platzhalterwert `<resource-group-name>` durch den Namen Ihrer Ressourcengruppe.
 
-   * Ersetzen Sie den Platzhalterwert `<storage-account-name>` durch den Namen Ihres Speicherkontos.
+   - Ersetzen Sie den Platzhalterwert `<storage-account-name>` durch den Namen Ihres Speicherkontos.
 
 6. Aktivieren Sie das Hosting statischer Websites.
 
@@ -123,13 +123,13 @@ Sie können das Hosting statischer Websites über das Azure PowerShell-Modul akt
    Enable-AzStorageStaticWebsite -Context $ctx -IndexDocument <index-document-name> -ErrorDocument404Path <error-document-name>
    ```
 
-   * Ersetzen Sie den Platzhalter `<error-document-name>` durch den Namen des Fehlerdokuments, das den Benutzern angezeigt wird, wenn ein Browser eine nicht vorhandene Seite auf Ihrer Website anfordert.
+   - Ersetzen Sie den Platzhalter `<error-document-name>` durch den Namen des Fehlerdokuments, das den Benutzern angezeigt wird, wenn ein Browser eine nicht vorhandene Seite auf Ihrer Website anfordert.
 
-   * Ersetzen Sie den Platzhalter `<index-document-name>` durch den Namen des Indexdokuments. Dieses Dokument ist üblicherweise „index.html“.
+   - Ersetzen Sie den Platzhalter `<index-document-name>` durch den Namen des Indexdokuments. Dieses Dokument ist üblicherweise „index.html“.
 
 ---
 
-## <a name="upload-files"></a>Hochladen von Dateien 
+## <a name="upload-files"></a>Hochladen von Dateien
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -143,11 +143,11 @@ In diesen Anweisungen wird gezeigt, wie Sie Dateien mit der Version von Storage-
 
    ![Hochladen von Dateien](media/storage-blob-static-website/storage-blob-static-website-upload.png)
 
-4. Wenn Sie möchten, dass im Browser der Inhalt der Datei angezeigt wird, stellen Sie sicher, dass der Inhaltstyp dieser Datei auf `text/html` festgelegt ist. 
+4. Wenn Sie möchten, dass im Browser der Inhalt der Datei angezeigt wird, stellen Sie sicher, dass der Inhaltstyp dieser Datei auf `text/html` festgelegt ist.
 
    ![Prüfen von Inhaltstypen](media/storage-blob-static-website/storage-blob-static-website-content-type.png)
 
-   >[!NOTE]
+   > [!NOTE]
    > Storage-Explorer legt diese Eigenschaft für häufig erkannte Erweiterungen wie `.html` automatisch auf `text/html` fest. In einigen Fällen müssen Sie dies jedoch selbst festlegen. Wenn Sie diese Eigenschaft nicht auf `text/html` festlegen, werden die Benutzer vom Browser aufgefordert, die Datei herunterzuladen, anstatt den Inhalt zu rendern. Zum Festlegen dieser Eigenschaft klicken Sie mit der rechten Maustaste auf die Datei und dann auf **Eigenschaften**.
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
@@ -160,12 +160,12 @@ In diesem Beispiel wird davon ausgegangen, dass Sie Befehle aus einer Azure Clou
 az storage blob upload-batch -s <source-path> -d '$web' --account-name <storage-account-name>
 ```
 
-> [!NOTE] 
-> Wenn der Browser Benutzer auffordert, die Datei herunterzuladen, anstatt den Inhalt zu rendern, können Sie `--content-type 'text/html; charset=utf-8'` an den Befehl anhängen. 
+> [!NOTE]
+> Wenn der Browser Benutzer auffordert, die Datei herunterzuladen, anstatt den Inhalt zu rendern, können Sie `--content-type 'text/html; charset=utf-8'` an den Befehl anhängen.
 
-* Ersetzen Sie den Platzhalterwert `<storage-account-name>` durch den Namen Ihres Speicherkontos.
+- Ersetzen Sie den Platzhalterwert `<storage-account-name>` durch den Namen Ihres Speicherkontos.
 
-* Ersetzen Sie den Platzhalter `<source-path>` durch einen Pfad zum Speicherort der Dateien, die Sie hochladen möchten.
+- Ersetzen Sie den Platzhalter `<source-path>` durch einen Pfad zum Speicherort der Dateien, die Sie hochladen möchten.
 
 > [!NOTE]
 > Wenn Sie eine Speicherortinstallation der Azure-CLI verwenden, können Sie den Pfad zu einem beliebigen Speicherort auf Ihrem lokalen Computer verwenden (z.B. `C:\myFolder`).
@@ -184,12 +184,12 @@ set-AzStorageblobcontent -File "<path-to-file>" `
 -Context $ctx
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > Wenn der Browser Benutzer auffordert, die Datei herunterzuladen, anstatt den Inhalt zu rendern, können Sie `-Properties @{ ContentType = "text/html; charset=utf-8";}` an den Befehl anhängen.
 
-* Ersetzen Sie den Platzhalterwert `<path-to-file>` durch den vollqualifizierten Pfad zu der Datei, die Sie hochladen möchten (z.B. `C:\temp\index.html`).
+- Ersetzen Sie den Platzhalterwert `<path-to-file>` durch den vollqualifizierten Pfad zu der Datei, die Sie hochladen möchten (z.B. `C:\temp\index.html`).
 
-* Ersetzen Sie den Platzhalterwert `<blob-name>` durch den Namen, den Sie dem resultierenden Blob geben möchten (z.B. `index.html`).
+- Ersetzen Sie den Platzhalterwert `<blob-name>` durch den Namen, den Sie dem resultierenden Blob geben möchten (z.B. `index.html`).
 
 ---
 
@@ -213,9 +213,9 @@ Suchen Sie die öffentliche URL Ihrer statischen Website mit dem folgenden Befeh
 az storage account show -n <storage-account-name> -g <resource-group-name> --query "primaryEndpoints.web" --output tsv
 ```
 
-* Ersetzen Sie den Platzhalterwert `<storage-account-name>` durch den Namen Ihres Speicherkontos.
+- Ersetzen Sie den Platzhalterwert `<storage-account-name>` durch den Namen Ihres Speicherkontos.
 
-* Ersetzen Sie den Platzhalterwert `<resource-group-name>` durch den Namen Ihrer Ressourcengruppe.
+- Ersetzen Sie den Platzhalterwert `<resource-group-name>` durch den Namen Ihrer Ressourcengruppe.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -226,9 +226,9 @@ Suchen Sie die öffentliche URL Ihrer statischen Website mit dem folgenden Befeh
 Write-Output $storageAccount.PrimaryEndpoints.Web
 ```
 
-* Ersetzen Sie den Platzhalterwert `<resource-group-name>` durch den Namen Ihrer Ressourcengruppe.
+- Ersetzen Sie den Platzhalterwert `<resource-group-name>` durch den Namen Ihrer Ressourcengruppe.
 
-* Ersetzen Sie den Platzhalterwert `<storage-account-name>` durch den Namen Ihres Speicherkontos.
+- Ersetzen Sie den Platzhalterwert `<storage-account-name>` durch den Namen Ihres Speicherkontos.
 
 ---
 
@@ -270,9 +270,9 @@ Nachdem Sie Metriken aktiviert haben, werden Datenverkehrsstatistiken zu Dateien
 
    ![Metriken von statischen Websites in Azure Storage: GetWebContent](./media/storage-blob-static-website/storage-blob-static-website-metrics-getwebcontent.png)
 
-   >[!NOTE]
+   > [!NOTE]
    > Das Kontrollkästchen **GetWebContent** wird nur angezeigt, wenn dieses API-Element innerhalb eines bestimmten Zeitrahmens verwendet wurde. Das Portal zeigt nur die API-Elemente an, die innerhalb eines bestimmten Zeitrahmens verwendet werden. Dies ermöglicht eine Konzentration auf die Elemente, die Daten zurückgeben. Wenn ein bestimmtes API-Element in dieser Liste nicht zu finden ist, erweitern Sie den Zeitrahmen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie, wie Sie eine benutzerdefinierte Domäne mit Ihrer statischen Website konfigurieren. Weitere Informationen finden Sie unter [Zuordnen einer benutzerdefinierten Domäne zu einem Azure Blob Storage-Endpunkt](storage-custom-domain-name.md).
+- Erfahren Sie, wie Sie eine benutzerdefinierte Domäne mit Ihrer statischen Website konfigurieren. Weitere Informationen finden Sie unter [Zuordnen einer benutzerdefinierten Domäne zu einem Azure Blob Storage-Endpunkt](storage-custom-domain-name.md).

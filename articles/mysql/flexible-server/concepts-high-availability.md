@@ -1,132 +1,154 @@
 ---
-title: Übersicht über zonenredundante Hochverfügbarkeit mit Azure Database for MySQL Flexible Server
-description: In diesem Artikel lernen Sie die Konzepte der zonenredundanten Hochverfügbarkeit mit Azure Database for MySQL Flexible Server kennen.
+title: Zonenredundante Hochverfügbarkeit mit Azure Database for MySQL Flexible Server
+description: Hier finden Sie eine Übersicht über zonenredundante Hochverfügbarkeit mit Azure Database for MySQL Flexible Server.
 author: SudheeshGH
 ms.author: sunaray
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2021
-ms.openlocfilehash: 4a8f7d5bd10c21b14c8935bf0a44040501ebeb90
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: e95119f65e088fe9b9b6ace71b6fee98f679f5a4
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123109187"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426092"
 ---
-# <a name="high-availability-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Hochverfügbarkeitskonzepte in Azure Database for MySQL Flexible Server (Vorschau)
+# <a name="high-availability-in-azure-database-for-mysql---flexible-server-preview"></a>Hochverfügbarkeit in Azure Database for MySQL Flexible Server (Vorschau)
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT] 
-> Azure Database for MySQL – Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
+> Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
 
-Azure Database for MySQL Flexible Server (Vorschauversion) ermöglicht das Konfigurieren von Hochverfügbarkeit mit automatischem Failover. Die Hochverfügbarkeitslösung ist so konzipiert, dass Daten, für die ein Commit ausgeführt wurde, nie aufgrund von Fehlern verloren gehen und die Datenbank keinen Single Point of Failure (SPOF) in der Softwarearchitektur darstellt. Beim Konfigurieren von Hochverfügbarkeit stellt Flexible Server automatisch ein Standbyreplikat bereit und verwaltet dieses. Es gibt zwei Architekturmodelle für Hochverfügbarkeit:
+Azure Database for MySQL Flexible Server (Vorschau) ermöglicht das Konfigurieren von Hochverfügbarkeit (High Availability, HA) mit automatischem Failover. Die Hochverfügbarkeitslösung ist so konzipiert, dass committete Daten nie aufgrund von Fehlern verloren gehen und die Datenbank keinen Single Point of Failure (SPOF) in der Softwarearchitektur darstellt. Beim Konfigurieren von Hochverfügbarkeit stellt Flexible Server automatisch ein Standbyreplikat bereit und verwaltet dieses. Es gibt zwei Architekturmodelle für Hochverfügbarkeit:
 
-* **Zonenredundante Hochverfügbarkeit**: Diese Option wird für eine vollständige Isolierung und Redundanz der Infrastruktur über mehrere Verfügbarkeitszonen hinweg empfohlen. Sie bietet den höchsten Verfügbarkeitsgrad, erfordert aber eine zonenübergreifende Konfiguration der Anwendungsredundanz. Zonenredundante Hochverfügbarkeit wird bevorzugt, wenn bei jedem Infrastrukturausfall in der Verfügbarkeitszone die bestmögliche Verfügbarkeit erzielt werden soll und die Latenz in der Verfügbarkeitszone akzeptabel ist. Die zonenredundante Hochverfügbarkeit kann nur zum Zeitpunkt der Servererstellung aktiviert werden. Die zonenredundante Hochverfügbarkeit ist nur in [Azure-Regionen](./overview.md#azure-regions) verfügbar, die mehrere [Verfügbarkeitszonen](../../availability-zones/az-overview.md) und [zonenredundante Premium-Dateifreigaben](../..//storage/common/storage-redundancy.md#zone-redundant-storage) unterstützen.
+* **Zonenredundante Hochverfügbarkeit:** Diese Option wird für die vollständige Isolation und Redundanz der Infrastruktur für mehrere Verfügbarkeitszonen bevorzugt. Sie bietet den höchsten Verfügbarkeitsgrad, erfordert aber eine zonenübergreifende Konfiguration der Anwendungsredundanz. Zonenredundante Hochverfügbarkeit wird bevorzugt, wenn bei jedem Infrastrukturausfall in der Verfügbarkeitszone die bestmögliche Verfügbarkeit erzielt werden soll und die Latenz in der Verfügbarkeitszone akzeptabel ist. Sie kann nur während der Erstellung des Servers aktiviert werden. Die zonenredundante Hochverfügbarkeit ist nur in [Azure-Regionen](./overview.md#azure-regions) verfügbar, die mehrere [Verfügbarkeitszonen](../../availability-zones/az-overview.md) und [zonenredundante Premium-Dateifreigaben](../..//storage/common/storage-redundancy.md#zone-redundant-storage) unterstützen.
 
-* **Hochverfügbarkeit in gleicher Zone**: Diese Option wird für Infrastrukturredundanz mit geringerer Netzwerklatenz empfohlen, da sich der Primär- und der Standbyserver in derselben Verfügbarkeitszone befinden. Sie bietet Hochverfügbarkeit ohne die zonenübergreifende Konfiguration der Anwendungsredundanz. Die Option für Hochverfügbarkeit in gleicher Zone wird bevorzugt, wenn Sie die bestmögliche Verfügbarkeit innerhalb einer einzelnen Verfügbarkeitszone mit der geringstmöglichen Netzwerklatenz erreichen möchten. Hochverfügbarkeit in gleicher Zone steht in [allen Azure-Regionen](./overview.md#azure-regions) zur Verfügung, in denen Sie Azure Database for MySQL Flexible Server-Instanzen erstellen können.  
+* **Hochverfügbarkeit in gleicher Zone:** Diese Option wird für Infrastrukturredundanz mit geringerer Netzwerklatenz bevorzugt, da sich sowohl der primäre Server als auch der Standbyserver in derselben Verfügbarkeitszone befinden. Sie bietet Hochverfügbarkeit, ohne dass eine zonenübergreifende Konfiguration der Anwendungsredundanz erforderlich ist. Die Option für Hochverfügbarkeit in gleicher Zone wird bevorzugt, wenn Sie die bestmögliche Verfügbarkeit innerhalb einer einzelnen Verfügbarkeitszone mit der geringstmöglichen Netzwerklatenz erzielen möchten. Die Hochverfügbarkeit in gleicher Zone steht in allen [Azure-Regionen](./overview.md#azure-regions) zur Verfügung, in denen Sie Azure Database for MySQL Flexible Server verwenden können.  
 
-## <a name="zone-redundancy-high-availability-architecture"></a>Architektur mit zonenredundanter Hochverfügbarkeit
+## <a name="zone-redundant-ha-architecture"></a>Architektur für zonenredundante Hochverfügbarkeit
  
-Wenn Sie einen Server mit zonenredundanter Hochverfügbarkeit bereitstellen, wird in einer Verfügbarkeitszone ein primärer Server und in einer anderen Verfügbarkeitszone derselben Azure-Region ein Standbyreplikatserver erstellt, der die gleiche Konfiguration aufweist wie der primären Server (Compute-Ebene Computegröße, Speichergröße und Netzwerkkonfiguration). Für das primäre Replikat und das Standbyreplikat können Sie eine Verfügbarkeitszone Ihrer Wahl angeben. Durch das Bereitstellen der Standbydatenbankserver und Standbyanwendungen in derselben Zone werden Latenzen reduziert, und Benutzer können sich besser auf Notfallwiederherstellungen und Zonenausfälle vorbereiten.
-
-:::image type="content" source="./media/concepts-high-availability/1-flexible-server-overview-zone-redundant-ha.png" alt-text="Zonenredundante Hochverfügbarkeit":::
-
-Die Daten- und Protokolldateien werden in einem [zonenredundanten Speicher (ZRS) gehostet](../../storage/common/storage-redundancy.md#redundancy-in-the-primary-region). Dank der mit ZRS verfügbaren Replikation auf Speicherebene werden die Daten- und Protokolldateien auf den Standbyserver repliziert. Bei einem Failover wird das Standbyreplikat aktiviert, und die binären Protokolldateien des primären Servers werden weiterhin auf den Standbyserver angewendet, um ihn mit der letzten Transaktion auf dem Primärserver online zu schalten, für die ein Commit ausgeführt wurde. Durch die Speicherung von Protokollen im ZRS sind die Protokolle auch dann zugänglich, wenn der primäre Server nicht verfügbar ist. Auf diese Weise wird sichergestellt, dass es nicht zu einem Datenverlust kommt. Sobald das Standbyreplikat aktiviert und die binären Protokolle angewendet wurden, übernimmt der aktuelle Standbyreplikatserver die Funktionen des primären Servers. DNS wird aktualisiert, sodass die Clientverbindungen an den neuen primären Server geleitet werden, wenn der Client erneut eine Verbindung herstellt. Das Failover ist für die Clientanwendung vollständig transparent und benötigt keinerlei Benutzeraktionen. Die Hochverfügbarkeitslösung schaltet dann nach Möglichkeit den alten primären Server wieder online und legt ihn als Standbyserver fest.
+Wenn Sie einen Server mit zonenredundanter Hochverfügbarkeit bereitstellen, werden zwei Server erstellt: 
+- Ein primärer Server in einer Verfügbarkeitszone
+- Ein Standbyreplikatserver mit derselben Konfiguration wie der primäre Server (Computeebene, Computegröße, Speichergröße und Netzwerkkonfiguration) in einer anderen Verfügbarkeitszone derselben Azure-Region
  
-Anwendungen sind mit dem primären Server über den Datenbankservernamen verbunden. Die Informationen des Standbyreplikats werden nicht für den Direktzugriff verfügbar gemacht. Commit- und Schreibvorgänge werden bestätigt, nachdem die Protokolldateien im zonenredundanten Speicher (ZRS) des primären Servers geleert wurden. Aufgrund der im ZRS verwendeten synchronen Replikationstechnologie muss für Anwendungen mit einer um 5–10 % höheren Latenzzeit für Schreibvorgänge und Commits gerechnet werden.
- 
-Automatische Sicherungen, sowohl Momentaufnahmen als auch Protokollsicherungen, werden in zonenredundantem Speicher auf dem primären Datenbankserver durchgeführt.
+Sie können die Verfügbarkeitszone für das primäre Replikat und das Standbyreplikat auswählen. Wenn Sie die Datenbankserver für das Standbyreplikat und die Standbyanwendungen in derselben Zone platzieren, reduzieren Sie die Latenz. Darüber hinaus können Sie sich besser auf Notfallwiederherstellungssituationen und Szenarien mit „Zonenausfällen“ vorbereiten.
 
-## <a name="same-zone-high-availability-architecture"></a>Architektur mit Hochverfügbarkeit in gleicher Zone
- 
-Wenn Sie einen Server mit der Option für Hochverfügbarkeit in gleicher Zone bereitstellen, werden innerhalb derselben Zone ein primärer Server und ein Standbyreplikatserver erstellt, die beide die Konfiguration des primären Servers aufweisen (Compute-Ebene Computegröße, Speichergröße und Netzwerkkonfiguration). Der Standbyserver bietet Infrastrukturredundanz durch einen separaten virtuellen Computer (Compute), der die Failoverzeit und Netzwerklatenz zwischen der Benutzeranwendung und dem Datenbankserver aufgrund der Colocation reduziert.
+:::image type="content" source="./media/concepts-high-availability/1-flexible-server-overview-zone-redundant-ha.png" alt-text="Diagramm der Architektur für zonenredundante Hochverfügbarkeit":::
 
-:::image type="content" source="./media/concepts-high-availability/flexible-server-overview-same-zone-ha.png" alt-text="Hochverfügbarkeit in gleicher Zone":::
+Die Daten- und Protokolldateien werden in [zonenredundantem Speicher (ZRS)](../../storage/common/storage-redundancy.md#redundancy-in-the-primary-region) gehostet. Die Dateien werden mit der bei ZRS verfügbaren Replikation auf Speicherebene auf den Standbyserver repliziert. Bei einem Failover: 
+- Das Standbyreplikat wird aktiviert. 
+- Die binären Protokolldateien des primären Servers gelten weiterhin für den Standbyserver, der mit der letzten committeten Transaktion auf dem primären Server online geschaltet wird. 
 
-Die Daten- und Protokolldateien werden in einem [lokal redundanten Speicher (LRS)](../../storage/common/storage-redundancy.md#locally-redundant-storage) gehostet. Dank der mit LRS verfügbaren Replikation auf Speicherebene werden die Daten- und Protokolldateien auf den Standbyserver repliziert.
+Auf Protokolle im ZRS kann auch dann zugegriffen werden, wenn der primäre Server nicht verfügbar ist. Durch diese Verfügbarkeit wird sichergestellt, dass keine Daten verloren gehen. Nachdem das Standbyreplikat aktiviert und die binären Protokolle angewandt wurden, übernimmt der aktuelle Standbyreplikatserver die Rolle des primären Servers. Das DNS wird aktualisiert, sodass Clientverbindungen an den neuen primären Server umgeleitet werden, wenn der Client erneut eine Verbindung herstellt. Das Failover ist für die Clientanwendung vollständig transparent und benötigt keinerlei Aktionen von Ihrer Seite. Die Hochverfügbarkeitslösung schaltet dann nach Möglichkeit den alten primären Server wieder online und legt ihn als Standbyserver fest.
+ 
+Anwendungen werden über den Datenbankservernamen mit dem primären Server verbunden. Die Informationen des Standbyreplikats werden nicht für den Direktzugriff verfügbar gemacht. Commits und Schreibvorgänge werden bestätigt, nachdem die Protokolldateien im ZRS des primären Servers geleert wurden. Aufgrund der bei ZRS verwendeten synchronen Replikationstechnologie müssen Sie mit einer um 5–10 % höheren Latenz bei Schreibvorgängen und Commits durch die Anwendung rechnen.
+ 
+Automatische Sicherungen (sowohl Momentaufnahmen als auch Protokollsicherungen) werden in zonenredundantem Speicher auf dem primären Datenbankserver durchgeführt.
 
-Bei einem Failover wird das Standbyreplikat aktiviert, und die binären Protokolldateien des primären Servers werden weiterhin auf den Standbyserver angewendet, um ihn mit der letzten Transaktion auf dem Primärserver online zu schalten, für die ein Commit ausgeführt wurde. Durch die Speicherung von Protokollen im LRS sind die Protokolle auch dann zugänglich, wenn der primäre Server nicht verfügbar ist. Auf diese Weise wird sichergestellt, dass es nicht zu einem Datenverlust kommt. Sobald das Standbyreplikat aktiviert und die binären Protokolle angewendet wurden, übernimmt das aktuelle Standbyreplikat die Funktionen des primären Servers. DNS wird aktualisiert, um die Verbindungen zum neuen primären Server umzuleiten, wenn der Client erneut eine Verbindung herstellt. Das Failover ist für die Clientanwendung vollständig transparent und benötigt keinerlei Benutzeraktionen. Die Hochverfügbarkeitslösung schaltet dann nach Möglichkeit den alten primären Server wieder online und legt ihn als Standbyserver fest.
+## <a name="same-zone-ha-architecture"></a>Architektur mit Hochverfügbarkeit in gleicher Zone
  
-Anwendungen sind mit dem primären Server über den Datenbankservernamen verbunden. Die Informationen des Standbyreplikats werden nicht für den Direktzugriff verfügbar gemacht. Commit- und Schreibvorgänge werden bestätigt, nachdem die Protokolldateien im lokal redundanten Speicher (LRS) des primären Servers geleert wurden. Da sich das primäre und das Standbyreplikat in derselben Zone befinden, ist die Replikationsverzögerung geringer, und die Latenzzeiten zwischen dem Anwendungsserver und dem Datenbankserver werden verkürzt, wenn sie in derselben Azure-Verfügbarkeitszone platziert werden. Das Setup in derselben Zone bietet keine Hochverfügbarkeit für ein Szenario, in dem abhängige Infrastrukturen für die spezifische Verfügbarkeitszone nicht verfügbar sind.   Es kommt zu einer Downtime, bis alle abhängigen Dienste für diese Verfügbarkeitszone wieder online sind.
+Wenn Sie einen Server mit Hochverfügbarkeit in gleicher Zone bereitstellen, werden zwei Server in derselben Zone erstellt: 
+- Ein primärer Server
+- Ein Standbyreplikatserver mit derselben Konfiguration wie der primäre Server (Computeebene, Computegröße, Speichergröße und Netzwerkkonfiguration) 
+
+Der Standbyserver bietet Infrastrukturredundanz mit einer separaten VM (Compute). Durch diese Redundanz werden die Failoverzeit und die Netzwerklatenz zwischen der Anwendung und dem Datenbankserver aufgrund der Colocation reduziert.
+
+:::image type="content" source="./media/concepts-high-availability/flexible-server-overview-same-zone-ha.png" alt-text="Diagramm der Architektur für Hochverfügbarkeit in gleicher Zone":::
+
+Die Daten- und Protokolldateien werden in [lokal redundantem Speicher (LRS)](../../storage/common/storage-redundancy.md#locally-redundant-storage) gehostet. Die Dateien werden mit der bei LRS verfügbaren Replikation auf Speicherebene auf den Standbyserver repliziert.
+
+Bei einem Failover: 
+- Das Standbyreplikat wird aktiviert. 
+- Die binären Protokolldateien des primären Servers gelten weiterhin für den Standbyserver, der mit der letzten committeten Transaktion auf dem primären Server online geschaltet wird. 
+
+Auf Protokolle im LRS kann auch dann zugegriffen werden, wenn der primäre Server nicht verfügbar ist. Durch diese Verfügbarkeit wird sichergestellt, dass keine Daten verloren gehen. Nachdem das Standbyreplikat aktiviert und die binären Protokolle angewandt wurden, übernimmt das aktuelle Standbyreplikat die Rolle des primären Servers. Das DNS wird aktualisiert, um Verbindungen an den neuen primären Server umzuleiten, wenn der Client erneut eine Verbindung herstellt. Das Failover ist für die Clientanwendung vollständig transparent und benötigt keinerlei Aktionen von Ihrer Seite. Die Hochverfügbarkeitslösung schaltet dann nach Möglichkeit den alten primären Server wieder online und legt ihn als Standbyserver fest.
  
-Automatische Sicherungen – sowohl Momentaufnahmen als auch Protokollsicherungen – werden in einem lokal redundantem Speicher des primären Datenbankservers durchgeführt.
+Anwendungen werden über den Datenbankservernamen mit dem primären Server verbunden. Die Informationen des Standbyreplikats werden nicht für den Direktzugriff verfügbar gemacht. Commits und Schreibvorgänge werden bestätigt, nachdem die Protokolldateien im LRS des primären Servers geleert wurden. Da sich das primäre Replikat und das Standbyreplikat in derselben Zone befinden, gibt es weniger Verzögerung bei der Replikation und eine geringere Latenz zwischen dem Anwendungsserver und dem Datenbankserver. Das Setup in derselben Zone bietet keine Hochverfügbarkeit, wenn abhängige Infrastrukturen für die spezifische Verfügbarkeitszone ausfallen. Es kommt zu einer Downtime, bis alle abhängigen Dienste für diese Verfügbarkeitszone wieder online sind.
+ 
+Automatische Sicherungen (sowohl Momentaufnahmen als auch Protokollsicherungen) werden in lokal redundantem Speicher des primären Datenbankservers durchgeführt.
 
 >[!Note]
 >Sowohl für zonenredundante Hochverfügbarkeit als auch für Hochverfügbarkeit in gleicher Zone gilt Folgendes:
->* Bei einem Ausfall hängt die Zeit, die das Standbyreplikat benötigt, um die Rolle des primären Servers zu übernehmen, von der Anwendung der Binärprotokolle auf den Standbyserver ab. Es wird daher empfohlen, Primärschlüssel für alle Tabellen zu verwenden, um die für das Failover erforderliche Zeit zu verringern. Die Dauer für Failover befindet sich in der Regel zwischen 60 und 120 Sekunden. 
->* Der Standbyserver ist nicht für Lese- oder Schreibvorgänge verfügbar, fungiert jedoch als passive Reserve, um ein schnelles Failover zu ermöglichen.
->* Verwenden Sie immer den vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN), um eine Verbindung zum primären Server herzustellen, und vermeiden Sie die Verwendung der IP-Adresse für die Verbindung. Bei einem Failover kann sich auch der DNS-A-Eintrag ändern, wenn die primäre Serverrolle und die Standbyserverrolle wechseln, sodass die Anwendung keine Verbindung mit dem neuen primären Server herstellen kann, wenn die IP-Adresse in der Verbindungszeichenfolge verwendet wird.
+>* Bei einem Ausfall hängt die Zeit, die das Standbyreplikat benötigt, um die Rolle des primären Servers zu übernehmen, von der Anwendung der Binärprotokolle auf dem Standbyserver ab. Es wird daher empfohlen, Primärschlüssel für alle Tabellen zu verwenden, um die Zeit für das Failover zu verringern. Die Dauer für Failover liegt in der Regel zwischen 60 und 120 Sekunden. 
+>* Der Standbyserver ist nicht für Lese- oder Schreibvorgänge verfügbar. Er dient als passiver Standbyserver, der ein schnelles Failover ermöglichen soll.
+>* Verwenden Sie immer den vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) für Verbindungen mit dem primären Server. Vermeiden Sie die Verwendung einer IP-Adresse zum Herstellen einer Verbindung. Im Fall eines Failovers kann sich nach dem Wechsel der Rollen für den primären und den Standbyserver ein A-Datensatz im DNS ändern. Aufgrund dieser Änderung kann die Anwendung keine Verbindung mit dem neuen primären Server herstellen, wenn in der Verbindungszeichenfolge die IP-Adresse verwendet wird.
 
 ## <a name="failover-process"></a>Failoverprozess 
  
-### <a name="planned---forced-failover"></a>Geplant: erzwungenes Failover
+### <a name="planned-forced-failover"></a>Geplant: erzwungenes Failover
  
-Das erzwungene Failover von Azure Database for MySQL Flexible Server ermöglicht es Ihnen, ein Failover manuell zu erzwingen, sodass Sie die Funktionalität für Ihre Anwendungsszenarien testen können und auf potenzielle Ausfälle vorbereitet sind. Beim erzwungenen Failover wird der Standbyserver zum primären Server, indem ein Failover ausgelöst wird. Durch das Failover wird das Standbyreplikat aktiviert und als Primärserver mit demselben Datenbankservernamen festgelegt, indem der DNS-Eintrag aktualisiert wird. Der ursprüngliche primäre Server wird neu gestartet und auf das Standbyreplikat umgeschaltet. Clientverbindungen werden getrennt und müssen erneut verbunden werden, um ihre Vorgänge fortsetzen zu können. Je nach der aktuellen Workload und dem letzten Prüfpunkt wird die Failovergesamtdauer gemessen. Im Allgemeinen sollte sie zwischen 60 und 120 Sekunden betragen.
- 
-### <a name="unplanned--automatic-failover"></a>Ungeplant: automatisches Failover 
- 
-Eine ungeplante Downtime von Diensten, z. B. durch Softwarefehler oder Infrastrukturprobleme wie etwa Rechen-, Netzwerk- und Speicherfehler oder Stromausfälle haben Auswirkungen auf die Verfügbarkeit der Datenbank. Falls eine Datenbank nicht verfügbar ist, wird die Replikation auf das Standbyreplikat abgebrochen, und das Standbyreplikat wird als primäre Datenbank aktiviert. Das DNS wird aktualisiert, und Clients stellen dann eine neue Verbindung zum Datenbankserver her und setzen ihre Vorgänge fort. Die Failovergesamtdauer beträgt erwartungsgemäß zwischen 60 und 120 Sekunden. Je nach Aktivität auf dem primären Datenbankserver zum Zeitpunkt des Failovers, z. B. große Transaktionen, und abhängig von der Wiederherstellungszeit kann das Failover jedoch auch etwas länger dauern.
+Mit dem erzwungenen Failover von Azure Database for MySQL Flexible Server können Sie ein Failover manuell erzwingen. So können Sie die Funktionalität in Ihren Anwendungsszenarien testen und sie auf Ausfälle vorbereiten. 
 
-## <a name="high-availability-monitoring"></a>Überwachung der Hochverfügbarkeit
-Die Integrität der Hochverfügbarkeit wird ununterbrochen überwacht und an die Übersichtsseite gemeldet. Eine Übersicht über die verschiedenen Replikationsstatus finden Sie unten:
+Beim erzwungenen Failover wird ein Failover ausgelöst. Dabei wird das Standbyreplikat aktiviert und als Primärserver mit demselben Datenbankservernamen festgelegt, indem der DNS-Eintrag aktualisiert wird. Der ursprüngliche primäre Server wird neu gestartet und auf das Standbyreplikat umgeschaltet. Clientverbindungen werden getrennt und müssen erneut verbunden werden, um ihre Vorgänge fortsetzen zu können. 
+
+Die gesamte Dauer des Failovers hängt von der aktuellen Workload und dem letzten Prüfpunkt ab. Im Allgemeinen dauert der Vorgang zwischen 60 und 120 Sekunden.
+ 
+### <a name="unplanned-automatic-failover"></a>Ungeplant: automatisches Failover 
+ 
+Ungeplante Dienstdowntime kann durch Softwarefehler oder Infrastrukturfehler wie Compute-, Netzwerk- oder Speicherfehler oder Stromausfälle verursacht werden, die sich auf die Verfügbarkeit der Datenbank auswirken. Falls eine Datenbank nicht verfügbar ist, wird die Replikation auf das Standbyreplikat abgebrochen, und das Standbyreplikat wird als primäre Datenbank aktiviert. Das DNS wird aktualisiert, und die Clients stellen eine neue Verbindung mit dem Datenbankserver her und setzen ihre Vorgänge fort. 
+
+Die Failovergesamtdauer beträgt erfahrungsgemäß zwischen 60 und 120 Sekunden. Abhängig von der Aktivität auf dem primären Datenbankserver zum Zeitpunkt des Failovers (z. B. umfangreiche Transaktionen und Wiederherstellungszeit) kann das Failover jedoch länger dauern.
+
+## <a name="monitoring-for-high-availability"></a>Überwachen der Hochverfügbarkeit
+Die Integrität der Hochverfügbarkeit wird fortlaufend überwacht und an die Übersichtsseite gemeldet. Im Folgenden finden Sie die möglichen Werte für den Replikationsstatus:
 
 | **Status** | **Beschreibung** |
 | :----- | :------ |
-| <b>NotEnabled | Die zonenredundante Hochverfügbarkeit ist nicht aktiviert. |
-| <b>ReplicatingData | Nach Erstellung des Standbyreplikats wird es mit dem primären Server synchronisiert. |
-| <b>FailingOver | Der Datenbankserver führt ein Failover vom primären Server auf das Standbyreplikat durch. |
-| <b>Healthy | Die zonenredundante Hochverfügbarkeit weist einen stabilen Zustand auf, und die Integrität ist gesichert. |
-| <b>RemovingStandby | Auf Grundlage einer Benutzeraktion wird das Standbyreplikat gelöscht.| 
+| **NotEnabled** | Die zonenredundante Hochverfügbarkeit ist nicht aktiviert. |
+| **ReplicatingData** | Das Standbyreplikat wird nach seiner Erstellung mit dem primären Server synchronisiert. |
+| **FailingOver** | Der Datenbankserver führt ein Failover vom primären Server auf das Standbyreplikat durch. |
+| **Healthy** | Die zonenredundante Hochverfügbarkeit weist einen stabilen Zustand auf, und die Integrität ist gesichert. |
+| **RemovingStandby** | Ein Benutzer hat das Standbyreplikat gelöscht, und der Löschvorgang wird gerade durchgeführt.| 
 
 ##  <a name="limitations"></a>Einschränkungen 
  
 Folgende Überlegungen sollten die Sie bei der Nutzung von Hochverfügbarkeit beachten:
-* Zonenredundante Hochverfügbarkeit kann ausschließlich während der Erstellung einer Flexible Server-Instanz festgelegt werden.
-* Hochverfügbarkeit wird für burstfähige Computeebenen nicht unterstützt.
-* Ein Neustart des primären Datenbankservers für eine Übernahme von Änderungen an statischen Parametern führt auch zu einem Neustart des Standbyreplikats.
-* Die Konfiguration von Lesereplikaten für Server mit zonenredundanter Hochverfügbarkeit wird nicht unterstützt.
+* Zonenredundante Hochverfügbarkeit kann nur während der Erstellung des flexiblen Servers festgelegt werden.
+* Hochverfügbarkeit wird auf der burstfähigen Computeebene nicht unterstützt.
+* Ein Neustart des primären Datenbankservers zur Übernahme von Änderungen an statischen Parametern führt auch zu einem Neustart des Standbyreplikats.
+* Lesereplikate werden für Server mit zonenredundanter Hochverfügbarkeit nicht unterstützt.
 * Die Datenreplikation wird für Hochverfügbarkeitsserver nicht unterstützt. 
-* Der GTID-Modus wird auf EIN festgelegt, weil die Hochverfügbarkeitslösung GTID verwendet. Überprüfen Sie, ob für Ihre Workload [Einschränkungen für die Replikation mit GTID](https://dev.mysql.com/doc/refman/5.7/en/replication-gtids-restrictions.html) gelten.  
+* Der GTID-Modus wird aktiviert, da die Hochverfügbarkeitslösung GTID verwendet. Überprüfen Sie, ob für Ihre Workload [Einschränkungen für die Replikation mit GTID](https://dev.mysql.com/doc/refman/5.7/en/replication-gtids-restrictions.html) gelten.  
  
-## <a name="frequently-asked-questions-faqs"></a>Häufig gestellte Fragen (FAQs)
+## <a name="frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ)
  
 **Kann ich das Standbyreplikat für Lese- oder Schreibvorgänge verwenden?** </br>
-Der Standbyserver ist nicht für Lese- oder Schreibvorgänge verfügbar, fungiert jedoch als passive Reserve, um ein schnelles Failover zu ermöglichen.</br>
+Der Standbyserver ist nicht für Lese- oder Schreibvorgänge verfügbar. Er dient als passiver Standbyserver, der ein schnelles Failover ermöglichen soll.</br>
 **Kommt es bei einem Failover zu Datenverlusten?**</br>
-Durch die Speicherung von Protokollen im ZRS sind die Protokolle auch dann zugänglich, wenn der primäre Server nicht verfügbar ist. Auf diese Weise wird sichergestellt, dass es nicht zu einem Datenverlust kommt. Sobald das Standbyreplikat aktiviert und die binären Protokolle angewendet wurden, übernimmt das Standbyreplikat die Funktionen des primären Servers. </br>
-**Müssen Benutzer nach dem Failover bestimmte Aktionen ausführen?**</br>
-Das Failover ist für die Clientanwendung vollständig transparent und benötigt keinerlei Benutzeraktionen. Die Anwendung sollte lediglich die Wiederholungslogik für ihre Verbindungen implementieren. </br>
+Auf Protokolle im ZRS kann auch dann zugegriffen werden, wenn der primäre Server nicht verfügbar ist. Durch diese Verfügbarkeit wird sichergestellt, dass keine Daten verloren gehen. Nachdem das Standbyreplikat aktiviert und die binären Protokolle angewandt wurden, übernimmt das Standbyreplikat die Funktionen des primären Servers. </br>
+**Muss ich nach einem Failover Maßnahmen ergreifen?**</br>
+Failover sind für die Clientanwendung vollständig transparent. Sie müssen keine Maßnahmen ergreifen. Die Anwendungen sollten lediglich die Wiederholungslogik für ihre Verbindungen nutzen. </br>
 **Was geschieht, wenn ich keine spezifische Zone für mein Standbyreplikat auswähle? Kann ich die Zone später ändern?**</br>
-Wenn keine Zone ausgewählt ist, wird nach dem Zufallsprinzip eine andere Zone als die für den primären Server verwendete Zone ausgewählt. Um die Zone später zu ändern, können Sie den Hochverfügbarkeitsmodus deaktivieren und dann auf dem Blatt „Hochverfügbarkeit“ die Zonenredundanz mit einer Zone Ihrer Wahl erneut aktivieren.</br>
-**Erfolgt die Replikation zwischen dem primären Replikat und dem Standbyreplikat synchron?**</br>
- Die Replikationslösung zwischen dem primären und dem Standbyserver kann ähnlich wie der [semisynchrone Modus](https://dev.mysql.com/doc/refman/5.7/en/replication-semisync.html) in MySQL betrachtet werden. Wenn für eine Transaktion ein Commit ausgeführt wurde, ist kein Commit für das Standbyreplikat erforderlich.  Wenn das primäre Replikat jedoch nicht verfügbar ist, können wir sicherstellen, dass der Standbyserver alle im primären Replikat vorhandenen Datenänderungen replizieren kann, und so gewährleisten, dass es nicht zu einem Datenverlust kommt.</br> 
+Wenn Sie keine Zone auswählen, wird nach dem Zufallsprinzip eine Zone ausgewählt. Dies ist nicht die Zone, die für den primären Server verwendet wird. Um die Zone später zu ändern, können Sie den **Hochverfügbarkeitsmodus** auf **Deaktiviert** festlegen und dann im Bereich **Hochverfügbarkeit** die **Zonenredundanz** mit einer Zone Ihrer Wahl erneut aktivieren.</br>
+**Erfolgt die Replikation zwischen dem primären Replikat und den Standbyreplikaten synchron?**</br>
+ Die Replikation zwischen dem primären Replikat und dem Standbyreplikat ähnelt dem [semisynchronen Modus](https://dev.mysql.com/doc/refman/5.7/en/replication-semisync.html) von MySQL. Wenn eine Transaktion committet wird, erfolgt nicht unbedingt ein Commit auf den Standbyserver. Wenn das primäre Replikat jedoch nicht verfügbar ist, repliziert der Standbyserver alle Datenänderungen aus dem primären Replikat, um sicherzustellen, dass keine Datenverluste auftreten.</br> 
 **Wird bei allen ungeplanten Ausfällen ein Failover auf das Standbyreplikat durchgeführt?**</br>
-Wenn eine Datenbank abstürzt oder ein Knoten ausfällt, wird die Flexible Server-VM auf demselben Knoten neu gestartet. Gleichzeitig wird ein automatisches Failover ausgelöst. Wenn die Flexible Server-VM vor Abschluss des Failovers erfolgreich neu gestartet wird, wird der Failovervorgang abgebrochen. Abhängig davon, welche Option weniger Zeit in Anspruch nimmt, wird entschieden, welches Replikat als primäres und welches als Standbyreplikat fungiert.</br>
-**Wirkt sich die Verwendung einer Hochverfügbarkeitslösung auf die Leistung aus?**</br>
-Mit der zonenredundanten Hochverfügbarkeit kann die Latenz um 5–10 % verringert werden, wenn die Anwendung eine verfügbarkeitszonenübergreifende Verbindung mit dem Datenbankserver herstellt und die Netzwerklatenz in diesen Verfügbarkeitszonen</br> im Vergleich um 2 bis 4 Millisekunden höher liegt. Bei der Option für Hochverfügbarkeit in gleicher Zone befinden sich das primäre und das Standbyreplikat in derselben Zone. Deshalb ist die Replikationsverzögerung geringer, und die Latenzzeiten zwischen dem Anwendungsserver und dem Datenbankserver werden verkürzt, wenn sie in derselben Azure-Verfügbarkeitszone platziert werden.</br>
+Wenn eine Datenbank abstürzt oder ein Knoten ausfällt, wird die Flexible Server-VM auf demselben Knoten neu gestartet. Gleichzeitig wird ein automatisches Failover ausgelöst. Wenn die Flexible Server-VM vor Abschluss des Failovers erfolgreich neu gestartet wurde, wird der Failovervorgang abgebrochen. Welcher Server als primäres Replikat festgelegt wird, hängt vom Prozess ab, der zuerst abgeschlossen wird.</br>
+**Hat die Verwendung von Hochverfügbarkeit Auswirkungen auf die Leistung?**</br>
+Die zonenredundante Hochverfügbarkeit kann zu einer Zunahme der Latenz um 5 bis 10 % führen, wenn die Anwendung eine Verbindung über mehrere Verfügbarkeitszonen hinweg mit dem Datenbankserver herstellt und die Netzwerklatenz im Vergleich um 2 bis 4 ms höher ist. Da sich bei Hochverfügbarkeit in gleicher Zone das primäre Replikat und das Standbyreplikat in derselben Zone befinden, ist die Replikationsverzögerung geringer. Es tritt weniger Latenz zwischen dem Anwendungsserver und dem Datenbankserver auf, wenn sie sich in derselben Azure-Verfügbarkeitszone befinden.</br>
 **Wie wird mein Hochverfügbarkeitsserver gewartet?**</br>
-Geplante Ereignisse wie das Skalieren von Computekapazitäten und Upgrades für Nebenversionen werden für den primären Server und das Standbyreplikat zur selben Zeit durchgeführt. Sie können das [Zeitfenster für geplante Wartungen](./concepts-maintenance.md) für Hochverfügbarkeitsserver wie für Flexible Server-Instanzen festlegen. Die Downtime wäre die gleiche wie für eine Azure Database for MySQL Flexible Server-Instanz mit deaktivierter Hochverfügbarkeit. Die Verwendung des Failovermechanismus zur Verringerung der Ausfallzeit für Hochverfügbarkeitsserver ist in unserer Roadmap enthalten, und dieses Feature wird bald zur Verfügung stehen. </br>
+Geplante Ereignisse wie die Computeskalierung und Nebenversionsupgrades werden gleichzeitig auf dem primären Server und dem Standbyserver durchgeführt. Sie können das [Zeitfenster für geplante Wartungen](./concepts-maintenance.md) für Hochverfügbarkeitsserver wie für Flexible Server-Instanzen festlegen. Die Downtime entspricht der Downtime von Azure Database for MySQL Flexible Server, wenn die Hochverfügbarkeit deaktiviert ist. Die Verwendung des Failovermechanismus zur Reduzierung der Downtime von Hochverfügbarkeitsservern ist Teil unserer Roadmap und wird in Kürze verfügbar sein. </br>
 **Kann ich eine Zeitpunktwiederherstellung (Point-in-Time Restore, PITR) für meinen Hochverfügbarkeitsserver durchführen?**</br>
 Sie können eine [Zeitpunktwiederherstellung](./concepts-backup-restore.md#point-in-time-restore) für Azure Database for MySQL Flexible Server mit aktivierter Hochverfügbarkeit auf eine neue Azure Database for MySQL Flexible Server-Instanz mit deaktivierter Hochverfügbarkeit durchführen. Wenn der Quellserver mit zonenredundanter Hochverfügbarkeit erstellt wurde, können Sie später die zonenredundante Hochverfügbarkeit oder Hochverfügbarkeit in gleicher Zone für den wiederhergestellten Server aktivieren. Wenn der Quellserver mit Hochverfügbarkeit in gleicher Zone erstellt wurde, können Sie für den wiederhergestellten Server nur Hochverfügbarkeit in gleicher Zone aktivieren.</br>
-**Kann ich Hochverfügbarkeit für einen Server aktivieren, nachdem dieser erstellt wurde?**</br>
-Sie können nach der Servererstellung Hochverfügbarkeit in gleicher Zone aktivieren, aber die zonenredundante Hochverfügbarkeit kann nur zum Zeitpunkt der Erstellung des Servers ausgewählt werden.</br> 
-**Kann ich Hochverfügbarkeit für einen Server aktivieren, nachdem dieser erstellt wurde?** </br>
-Nach der Erstellung des Servers können Sie die Hochverfügbarkeit deaktivieren, und die Abrechnung wird sofort eingestellt.  </br>
+**Kann ich Hochverfügbarkeit auf einem Server aktivieren, nachdem der Server erstellt wurde?**</br>
+Nach dem Erstellen des Servers können Sie die Hochverfügbarkeit in gleicher Zone aktivieren. Die zonenredundante Hochverfügbarkeit muss während der Erstellung des Servers aktiviert werden.</br> 
+**Kann ich die Hochverfügbarkeit für einen Server deaktivieren, nachdem dieser erstellt wurde?** </br>
+Sie können die Hochverfügbarkeit für einen Server deaktivieren, nachdem dieser erstellt wurde. Die Abrechnung wird sofort beendet.  </br>
 **Wie kann ich die Downtime verkürzen?**</br>
-Wenn Sie das Feature für Hochverfügbarkeit nicht nutzen, müssen Sie dennoch in der Lage sein, die Downtime für Ihre Anwendung zu minimieren. Dienstausfälle wie z. B. für geplante Patches, Upgrades von Nebenversionen oder benutzerseitig eingeleitete Vorgänge wie etwa eine Computeskalierung können zur Durchführung innerhalb des Zeitfenster für die geplante Wartung geplant werden. Sie können sich dazu entschließen, von Azure ausgehende Wartungstasks für die Wochentage und die Uhrzeiten zu planen, die sich am wenigsten auf die Anwendung auswirken, um die Beeinträchtigungen möglichst gering zu halten.</br>
-**Kann ein Lesereplikat für einen Server mit aktivierter Hochverfügbarkeit verwendet werden?**</br>
-Derzeit unterstützen Server mit aktivierter Hochverfügbarkeit kein Lesereplikat. Ein Lesereplikat für Hochverfügbarkeitsserver ist jedoch in unserer Roadmap enthalten, und wir arbeiten daran, dieses Feature bald zur Verfügung zu stellen.</br>
+Wenn Sie die Hochverfügbarkeit nicht nutzen, müssen Sie dennoch in der Lage sein, die Downtime für Ihre Anwendung zu minimieren. Dienstdowntime, z. B. durch geplante Patches, Nebenversionsupgrades oder von der Kundschaft initiierte Vorgänge wie die Computeskalierung, können während geplanter Wartungsfenster ausgeführt werden. Sie können von Azure initiierte Wartungstasks an Wochentagen und zu Uhrzeiten planen, die sich am wenigsten auf die Anwendung auswirken, um die Beeinträchtigungen möglichst gering zu halten.</br>
+**Kann ich ein Lesereplikat für einen Server verwenden, für den Hochverfügbarkeit aktiviert ist?**</br>
+Lesereplikate werden für Hochverfügbarkeitsserver nicht unterstützt. Dieses Feature ist Teil unserer Roadmap und wird in Kürze verfügbar gemacht.</br>
 **Kann ich die Datenreplikation für Hochverfügbarkeitsserver nutzen?**</br>
-Die Datenreplikation wird für Hochverfügbarkeitsserver derzeit nicht unterstützt. Die Datenreplikation für Hochverfügbarkeitsserver ist jedoch in unserer Roadmap enthalten, und wir arbeiten daran, dieses Feature bald zur Verfügung zu stellen. Wenn Sie das Feature zur Datenreplikation für die Migration nutzen möchten, können Sie vorerst die folgenden Schritte ausführen:
-* Erstellen Sie den Server mit aktivierter zonenredundanter Hochverfügbarkeit.
-* Deaktivieren Sie die Hochverfügbarkeit.
-* Befolgen Sie die Anweisungen im Artikel zur [Einrichtung der Datenreplikation](./concepts-data-in-replication.md) (stellen Sie sicher, dass GTID_Mode auf dem Quell- und dem Zielserver die gleiche Einstellung aufweist).
-* Nach der Übernahme wird die Konfiguration der Datenreplikation entfernen.
-* Aktivieren Sie die Hochverfügbarkeit.
+Die Datenreplikation wird für Hochverfügbarkeitsserver nicht unterstützt. Die Datenreplikation für Hochverfügbarkeitsserver ist jedoch Teil unserer Roadmap und wird in Kürze verfügbar gemacht. Wenn Sie vorerst die Datenreplikation für die Migration verwenden möchten, können Sie die folgenden Schritte ausführen:
+1. Erstellen Sie den Server mit aktivierter zonenredundanter Hochverfügbarkeit.
+1. Deaktivieren Sie die Hochverfügbarkeit.
+1. Führen Sie die Schritte zum [Einrichten der Datenreplikation](./concepts-data-in-replication.md) aus.  (Stellen Sie sicher, dass `gtid_mode` auf den Quell- und Zielservern dieselben Einstellungen aufweist.)
+1. Nach der Übernahme wird die Konfiguration der Datenreplikation entfernt.
+1. Aktivieren Sie die Hochverfügbarkeit.
 
 **Kann ich während eines Serverneustarts oder beim Hoch- bzw. Herunterskalieren ein Failover auf den Standbyserver durchführen, um die Downtime zu verringern?** </br>
-Derzeit werden beim Hoch- oder Herunterskalieren der Standby- und der primäre Server gleichzeitig skaliert, sodass ein Failover keinen Nutzen hat. Die Möglichkeit, zuerst den Standbyserver zu skalieren, dann ein Failover durchzuführen und anschließend den primären Server hochzuskalieren, ist in der Roadmap enthalten, wird aber noch nicht unterstützt.</br>
+Wenn Sie derzeit einen Vorgang zum Hoch- oder Herunterskalieren durchführen, werden Standby- und primärer Server gleichzeitig skaliert. Ein Failover ist also nicht hilfreich. Die Möglichkeit, zunächst den Standbyserver hochzuskalieren und dann nach dem Failover den primären Server hochzuskalieren ist Teil unserer Roadmap, wird derzeit aber noch nicht unterstützt.</br>
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 05/10/2020
-ms.openlocfilehash: 10f46f5788cd2f17be4b46c2f655fb4e05fed1d9
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 5c0c9a44126ed5bd16544e8f5819eeb3add4a789
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122965943"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128678305"
 ---
 # <a name="use-azure-migrate-with-private-endpoints"></a>Verwenden von Azure Migrate mit privaten Endpunkten
 
@@ -131,16 +131,18 @@ Stellen Sie sicher, dass der Server die [Hardwareanforderungen](./migrate-applia
 #### <a name="run-the-azure-migrate-installer-script"></a>Ausführen des Azure Migrate-Installationsskripts
 
 1. Extrahieren Sie die gezippte Datei in einem Ordner auf dem Server, der die Appliance hostet.  Führen Sie das Skript nicht auf einem Server mit einer vorhandenen Azure Migrate-Appliance aus.
-2. Starten Sie PowerShell auf dem oben genannten Server mit Administratorberechtigungen (erhöhten Rechten).
-3. Ändern Sie das PowerShell-Verzeichnis in den Ordner, in den die Inhalte der gezippten Datei extrahiert wurden, die Sie heruntergeladen haben.
-4. Führen Sie das Skript mit dem Namen **AzureMigrateInstaller.ps1** aus, indem Sie den folgenden Befehl ausführen:
 
-    
-    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
+2. Starten Sie PowerShell auf dem oben genannten Server mit Administratorberechtigungen (erhöhten Rechten).
+
+3. Ändern Sie das PowerShell-Verzeichnis in den Ordner, in den die Inhalte der gezippten Datei extrahiert wurden, die Sie heruntergeladen haben.
+
+4. Führen Sie das Skript mit dem Namen `AzureMigrateInstaller.ps1` aus, indem Sie den folgenden Befehl ausführen:
+
+   `PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1`
 
 5. Treffen Sie eine Auswahl aus den Szenario-, Cloud- und Konnektivitätsoptionen, um eine Appliance mit der gewünschten Konfiguration bereitzustellen. Die unten gezeigte Auswahl richtet beispielsweise eine Appliance für die Ermittlung und Bewertung von **Servern in Ihrer VMware-Umgebung** für ein Azure Migrate-Projekt mit **Konnektivität über einen privaten Endpunkt** in der **öffentlichen Azure-Cloud** ein.
 
-    :::image type="content" source="./media/how-to-use-azure-migrate-with-private-endpoints/script-vmware-private-inline.png" alt-text="Screenshot: Einrichten einer Appliance mit der gewünschten Konfiguration für einen privaten Endpunkt." lightbox="./media/how-to-use-azure-migrate-with-private-endpoints/script-vmware-private-expanded.png":::
+   :::image type="content" source="./media/how-to-use-azure-migrate-with-private-endpoints/script-vmware-private-inline.png" alt-text="Screenshot: Einrichten einer Appliance mit der gewünschten Konfiguration für einen privaten Endpunkt." lightbox="./media/how-to-use-azure-migrate-with-private-endpoints/script-vmware-private-expanded.png":::
 
 Nach der erfolgreichen Ausführung des Skripts wird der Appliancekonfigurations-Manager automatisch gestartet.
 
@@ -302,7 +304,7 @@ Stellen Sie sicher, dass die lokale Replikationsappliance über Netzwerkkonnekti
 
 Befolgen Sie als Nächstes die Anweisungen zum [Überprüfen und Starten der Replikation](./tutorial-migrate-physical-virtual-machines.md#replicate-machines) und zum [Durchführen der Migration](./tutorial-migrate-physical-virtual-machines.md#run-a-test-migration).
 
-
 ## <a name="next-steps"></a>Nächste Schritte
+
 - Schließen Sie den [Migrationsprozess](./tutorial-migrate-physical-virtual-machines.md#complete-the-migration) ab.
 - Machen Sie sich mit den [bewährten Methoden nach der Migration](./tutorial-migrate-physical-virtual-machines.md#post-migration-best-practices) vertraut.

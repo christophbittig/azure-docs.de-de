@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 08/03/2021
-ms.openlocfilehash: 74c9df5ee9eb6cd6a61104b4c9cce91b284dbb29
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 45867bc93b90c76d971fc4b7d8e4d8cc094929d6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339083"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629007"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---hyperscale-citus-from-the-azure-portal"></a>Erstellen und Verwalten von Lesereplikaten in Azure Database for PostgreSQL – Hyperscale (Citus) über das Azure-Portal
 
@@ -47,13 +47,7 @@ Nach der Erstellung des Lesereplikats wird dieses im Fenster **Replikation** ang
 
 ## <a name="delete-a-primary-server-group"></a>Löschen einer primären Servergruppe
 
-Für das Löschen einer primären Servergruppe führen Sie die gleichen Schritte wie für eine eigenständige Hyperscale (Citus)-Servergruppe durch. 
-
-> [!IMPORTANT]
->
-> Wenn Sie eine primäre Servergruppe löschen, wird die Replikation auf allen Lesereplikaten beendet. Die Lesereplikate werden zu eigenständigen Servergruppen, die nun Lese- und Schreibvorgänge unterstützen.
-
-Um eine Servergruppe über das Azure-Portal zu löschen, gehen Sie folgendermaßen vor:
+Für das Löschen einer primären Servergruppe führen Sie die gleichen Schritte wie für eine eigenständige Hyperscale (Citus)-Servergruppe durch. Führen Sie im Azure-Portal die folgenden Schritte aus:
 
 1. Wählen Sie im Azure-Portal Ihre primäre Azure Database for PostgreSQL-Servergruppe aus.
 

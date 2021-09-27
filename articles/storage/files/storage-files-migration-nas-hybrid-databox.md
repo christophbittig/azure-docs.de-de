@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/5/2021
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 7f60c2e03b666c51769473120097034830f599b4
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: fb7132e0a7b9dc59ac6b047d431acf0e740aba0a
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "114462284"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430826"
 ---
 # <a name="use-data-box-to-migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-by-using-azure-file-sync"></a>Migrieren Sie mit Data Box von Network Attached Storage (NAS) zu einer Hybrid Cloud-Bereitstellung mit der Azure-Dateisynchronisierung.
 
@@ -51,7 +51,7 @@ Der Migrationsprozess besteht aus mehreren Phasen. Folgendes ist erforderlich:
 In den folgenden Abschnitten werden die Phasen des Migrationsprozesses ausführlich beschrieben.
 
 > [!TIP]
-> Wenn Sie zu diesem Artikel zurückkehren, wechseln Sie anhand der Navigation auf der rechten Seite des Bildschirms zu der Migrationsphase, in der Sie aufgehört haben.
+> Wenn Sie zu diesem Artikel zurückkehren, können Sie mithilfe des Navigationsbereichs auf der rechten Seite des Bildschirms zu der Migrationsphase wechseln, in der Sie aufgehört haben.
 
 ## <a name="phase-1-determine-how-many-azure-file-shares-you-need"></a>Phase 1: Ermitteln der Anzahl der benötigten Azure-Dateifreigaben
 
@@ -67,25 +67,25 @@ Sehen Sie sich in dieser Phase die Zuordnungstabelle aus Phase 1 an, und verwen
 
 Beginnen Sie diesen Schritt erst, nachdem Sie die vorherige Phase abgeschlossen haben. Ihre Azure Storage-Ressourcen (Speicherkonten und Dateifreigaben) sollten zu diesem Zeitpunkt erstellt werden. Wenn Sie Ihre Data Box bestellen, müssen Sie die Speicherkonten angeben, in die Data Box Daten verschiebt.
 
-In dieser Phase müssen Sie die Ergebnisse des Migrationsplans aus der vorherigen Phase den Einschränkungen der verfügbaren Data Box-Optionen zuordnen. Diese Überlegungen helfen Ihnen bei der Planung, welche Data Box-Optionen Sie auswählen sollten, und wie viele sie davon benötigen, um Ihre NAS-Freigaben in Azure-Dateifreigaben zu verschieben.
+In dieser Phase müssen Sie die Ergebnisse des Migrationsplans aus der vorherigen Phase den Einschränkungen der verfügbaren Data Box-Optionen zuordnen. Diese Überlegungen helfen Ihnen bei der Planung, welche Data Box-Optionen Sie auswählen sollten und wie viele sie davon benötigen, um Ihre NAS-Freigaben in Azure-Dateifreigaben zu verschieben.
 
-Um die Anzahl der benötigten Geräte und deren Typ zu ermitteln, sollten Sie die folgenden wichtigen Einschränkungen beachten:
+Beachten Sie die folgenden wichtigen Einschränkungen, um die Anzahl der benötigten Geräte und deren Typ zu ermitteln:
 
-* Ein Azure Data Box-Appliance kann Daten in bis zu 10 Speicherkonten verschieben. 
-* Jede Data Box-Option verfügt über eine eigene nutzbare Kapazität. Siehe [Data Box-Optionen](#data-box-options).
+* Eine Azure Data Box-Appliance kann Daten in bis zu zehn Speicherkonten verschieben. 
+* Jede Data Box-Option verfügt über eine eigene nutzbare Kapazität. Weitere Informationen finden Sie unter [Data Box-Optionen](#data-box-options).
 
-Ermitteln Sie anhand Ihres Migrationsplans die Anzahl der Speicherkonten, die erstellt werden sollen, und die Freigaben im jeweiligen Speicherkonto. Sehen Sie sich dann die Größe der einzelnen Freigaben in Ihrem NAS an. Die Kombination dieser Informationen erlaubt Ihnen, zu optimieren und zu entscheiden, welche Appliance Daten an welche Speicherkonten senden soll. Zwei Data Box-Geräte können Dateien in dasselbe Speicherkonto verschieben. Verteilen Sie den Inhalt einer einzelnen Dateifreigabe aber nicht auf zwei Data Box-Geräte.
+Ermitteln Sie anhand Ihres Migrationsplans die Anzahl von Speicherkonten, die erstellt werden sollen, und die Freigaben im jeweiligen Speicherkonto. Sehen Sie sich dann die Größe der einzelnen Freigaben in Ihrem NAS an. Die Kombination dieser Informationen erlaubt Ihnen, zu optimieren und zu entscheiden, welche Appliance Daten an welche Speicherkonten senden soll. Zwei Data Box-Geräte können Dateien in das gleiche Speicherkonto verschieben. Verteilen Sie den Inhalt einer einzelnen Dateifreigabe aber nicht auf zwei Data Box-Geräte.
 
 ### <a name="data-box-options"></a>Data Box-Optionen
 
-Wählen Sie für eine Standardmigration eine Data Box-Option oder eine Kombination dieser Data Box-Optionen aus: 
+Wählen Sie für eine Standardmigration eine einzelne oder eine Kombination der folgenden Data Box-Optionen aus: 
 
-* **Data Box Disk**.
-  Microsoft sendet Ihnen einen bis maximal fünf SSD-Datenträger mit einer Kapazität von jeweils 8 TiB (maximal 40 TiB) zu. Die nutzbare Kapazität ist aufgrund des Verschlüsselungs- und Dateisystemoverheads ca. 20 Prozent geringer. Weitere Informationen finden Sie in der [Data Box Disk-Dokumentation](../../databox/data-box-disk-overview.md).
-* **Data Box**.
-  Diese Option wird am häufigsten verwendet. Microsoft sendet Ihnen eine robuste Data Box Appliance zu, die ähnlich wie ein NAS funktioniert. Sie verfügt über eine verwendbare Kapazität von 80 TiB. Weitere Informationen finden Sie in der [Data Box-Dokumentation](../../databox/data-box-overview.md).
-* **Data Box Heavy**.
-  Diese Option umfasst eine robuste Data Box-Appliance auf Rädern, die ähnlich wie ein NAS funktioniert. Sie verfügt über eine Kapazität von 1 PiB. Die nutzbare Kapazität ist aufgrund des Verschlüsselungs- und Dateisystemoverheads ca. 20 Prozent geringer. Weitere Informationen finden Sie in der [Data Box Heavy-Dokumentation](../../databox/data-box-heavy-overview.md).
+* **Data Box Disk**:
+  Microsoft sendet Ihnen bis zu fünf SSD-Datenträger mit einer Kapazität von jeweils 8 TiB (maximal 40 TiB). Die nutzbare Kapazität ist aufgrund des Verschlüsselungs- und Dateisystemoverheads ca. 20 Prozent geringer. Weitere Informationen finden Sie in der [Dokumentation zu Data Box Disk](../../databox/data-box-disk-overview.md).
+* **Data Box**:
+  Diese Option wird am häufigsten verwendet. Microsoft sendet Ihnen eine robuste Data Box-Appliance, die ähnlich wie ein NAS funktioniert. Sie verfügt über eine verwendbare Kapazität von 80 TiB. Weitere Informationen finden Sie in der [Dokumentation zu Data Box](../../databox/data-box-overview.md).
+* **Data Box Heavy**:
+  Diese Option umfasst eine robuste Data Box-Appliance auf Rädern, die ähnlich wie ein NAS funktioniert. Sie verfügt über eine Kapazität von 1 PiB. Die nutzbare Kapazität ist aufgrund des Verschlüsselungs- und Dateisystemoverheads ca. 20 Prozent geringer. Weitere Informationen finden Sie in der [Data Box Heavy-Dokumentation](../../databox/data-box-heavy-overview.md).
 
 ## <a name="phase-4-provision-a-suitable-windows-server-instance-on-premises"></a>Phase 4: Lokales Bereitstellen einer geeigneten Windows Server-Instanz
 
@@ -103,26 +103,26 @@ Die Ressourcenkonfiguration (Compute und RAM) der bereitgestellten Windows Serve
 
 ## <a name="phase-5-copy-files-onto-your-data-box"></a>Phase 5: Kopieren von Dateien auf Ihre Data Box
 
-Nachdem Ihre Data Box eingetroffen ist, müssen Sie diese mit „Sichtverbindung“ zu Ihrer NAS-Appliance einrichten. Befolgen Sie die Installationsdokumentation für den bestellten Data Box-Typ:
+Nachdem Ihre Data Box eingetroffen ist, müssen Sie diese mit „Sichtverbindung“ zu Ihrer NAS-Appliance einrichten. Folgen Sie der Einrichtungsdokumentation für den bestellten Data Box-Typ:
 
-* [Einrichten von Data Box](../../databox/data-box-quickstart-portal.md).
-* [Einrichten von Data Box Disk](../../databox/data-box-disk-quickstart-portal.md).
-* [Einrichten von Data Box Heavy](../../databox/data-box-heavy-quickstart-portal.md).
+* [Einrichten von Data Box](../../databox/data-box-quickstart-portal.md)
+* [Einrichten von Data Box Disk](../../databox/data-box-disk-quickstart-portal.md)
+* [Einrichten von Data Box Heavy](../../databox/data-box-heavy-quickstart-portal.md)
 
-Abhängig vom Typ der Data Box sind möglicherweise Data Box-Kopiertools verfügbar. An dieser Stelle wird nicht empfohlen, diese für Migrationen zu Azure-Dateifreigaben zu verwenden, da sie Ihre Dateien nicht vollständig originaltreu in die Data Box kopieren. Verwenden Sie stattdessen Robocopy.
+Je nach Data Box-Typ sind möglicherweise Data Box-Kopiertools verfügbar. An diesem Punkt wird davon abgeraten, diese für Migrationen zu Azure-Dateifreigaben zu verwenden, da sie Ihre Dateien nicht vollständig originaltreu auf die Data Box kopieren. Verwenden Sie stattdessen Robocopy.
 
-Wenn Ihre Data Box eintrifft, weist sie für jedes Speicherkonto, das Sie bei der Bestellung angegeben haben, bereits konfigurierte SMB-Freigaben auf.
+Wenn Ihre Data Box eintrifft, verfügt sie bereits über konfigurierte SMB-Freigaben für jedes Speicherkonto, das Sie bei der Bestellung angegeben haben.
 
 * Wenn Ihre Dateien in einer Azure-Premium-Dateifreigabe gespeichert werden, steht eine SMB-Freigabe pro Premium-File Storage-Speicherkonto zur Verfügung.
 * Wenn Ihre Dateien in einem Standardspeicherkonto gespeichert werden, stehen drei SMB-Freigaben pro Standardspeicherkonto (GPv1 und GPv2) bereit. Nur die Dateifreigaben, die mit `_AzFiles` enden, sind für Ihre Migration relevant. Ignorieren Sie alle Block- und Seitenblobfreigaben.
 
-Führen Sie die Schritte in der Azure Data Box-Dokumentation aus:
+Führen Sie die Schritte in der Dokumentation zu Azure Data Box aus:
 
-1. [Herstellen einer Verbindung mit der Data Box](../../databox/data-box-deploy-copy-data.md).
-1. Kopieren von Daten auf die Data Box.
-1. [Vorbereiten der Data Box für den Upload nach Azure](../../databox/data-box-deploy-picked-up.md).
+1. [Stellen Sie eine Verbindung mit der Data Box her.](../../databox/data-box-deploy-copy-data.md)
+1. Kopieren Sie Daten auf die Data Box.
+1. [Bereiten Sie Ihre Data Box für den Upload in Azure vor.](../../databox/data-box-deploy-picked-up.md)
 
-In der über den Link aufrufbaren Data Box-Dokumentation wird ein Robocopy-Befehl angegeben. Dieser Befehl eignet sich nicht für die vollständig orignaltreue Beibehaltung von Dateien und Ordnern. Verwenden Sie stattdessen diesen Befehl:
+In der verlinkten Dokumentation zu Data Box ist ein Robocopy-Befehl angegeben. Dieser Befehl eignet sich nicht für die vollständig orignaltreue Beibehaltung von Dateien und Ordnern. Verwenden Sie stattdessen diesen Befehl:
 
 [!INCLUDE [storage-files-migration-robocopy](../../../includes/storage-files-migration-robocopy.md)]
 
@@ -219,6 +219,20 @@ Sie haben die Migration einer Freigabe oder einer Gruppe von Freigaben zu einem 
 
 Sie können einige dieser Kopiervorgänge parallel ausführen. Es wird empfohlen, jeweils eine Azure-Dateifreigabe auf einmal zu verarbeiten.
 
+## <a name="deprecated-option-offline-data-transfer"></a>Veraltete Option: „Offlinedatenübertragung“
+
+Vor der Veröffentlichung der Agent-Version 13 der Azure-Dateisynchronisierung wurde Data Box über einen Prozess namens „Offlinedatenübertragung“ integriert. Dieser Prozess gilt als veraltet. Mit Agent-Version 13 wurde er durch die in diesem Artikel beschriebenen, wesentlich einfacheren und schnelleren Schritte ersetzt. Wenn Sie unbedingt die veraltete Funktion der „Offlinedatenübertragung“ verwenden möchten, ist dies trotzdem möglich. Sie ist weiterhin über ein spezielles, älteres [AFS-PowerShell-Modul](https://www.powershellgallery.com/packages/Az.StorageSync/1.4.0) verfügbar:
+
+```powershell
+Install-Module Az.StorageSync -RequiredVersion 1.4.0
+Import-module Az.StorageSync -RequiredVersion 1.4.0
+# Verify the specific version is loaded:
+Get-module Az.StorageSync
+```
+Sie können dann mit dem gleichen PowerShell-Modul einen Serverendpunkt erstellen und im Prozess eine Stagingfreigabe angeben.
+Wenn eine laufende Migration den Prozess zur Offlinedatenübertragung nutzt, wird sie wie geplant fortgesetzt. Sie müssen diese Einstellung nach Abschluss der Migration weiterhin deaktivieren.
+Die Möglichkeit, neue Migrationsvorgänge mit diesem veralteten Prozess zu starten, wird mit einem zukünftigen Agent-Release entfernt.
+
 ## <a name="troubleshooting"></a>Problembehandlung
 
 Das häufigste Problem besteht darin, dass der Robocopy-Befehl mit der Fehlermeldung, dass das Volume auf der Windows Server-Seite voll ist, beendet wird. Das Cloudtiering erfolgt einmal stündlich, um Inhalte vom lokalen Windows Server-Datenträger abzurufen, die bereits synchronisiert wurden. Das Ziel besteht darin, 99 Prozent freien Speicherplatz auf dem Volume zu erreichen.
@@ -231,7 +245,7 @@ Informationen zur Behebung von Problemen bei der Azure-Dateisynchronisierung fin
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Machen Sie sich weiter mit Azure-Dateifreigaben und der Azure-Dateisynchronisierung vertraut. In den folgenden Artikeln werden erweiterte Optionen und bewährte Methoden behandelt. Sie bieten auch Hilfestellung bei der Problembehandlung. Diese Artikel enthalten gegebenenfalls Links zur [Dokumentation für Azure-Dateifreigaben](storage-files-introduction.md).
+Machen Sie sich weiter mit Azure-Dateifreigaben und der Azure-Dateisynchronisierung vertraut. In den folgenden Artikeln werden erweiterte Optionen und bewährte Methoden behandelt. Sie bieten auch Hilfestellung bei der Problembehandlung. Diese Artikel enthalten gegebenenfalls Links zur [Dokumentation zu Azure-Dateifreigaben](storage-files-introduction.md).
 
 * [Migration overview (Übersicht über die Migration)](storage-files-migration-overview.md)
 * [Planung für die Bereitstellung der Azure-Dateisynchronisierung](../file-sync/file-sync-planning.md)

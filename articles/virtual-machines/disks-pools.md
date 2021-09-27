@@ -8,12 +8,12 @@ ms.date: 07/23/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: b0dfb510ecf1722f1b8df9289a864ecd519be055
-ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+ms.openlocfilehash: ea06b3c4fdf9be626df99f4a06f4190ce86df4b3
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114653145"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433276"
 ---
 # <a name="azure-disk-pools-preview"></a>Azure-Datenträgerpools (Vorschau)
 
@@ -32,7 +32,7 @@ Wenn Sie dem Datenträgerpool einen verwalteten Datenträger hinzufügen, wird d
 Für Datenträgerpools gelten in der Vorschauphase folgende Einschränkungen:
 
 - Einem Datenträgerpool können nur Premium-SSD- oder Disk Ultra-Datenträger hinzugefügt werden.
-- Datenträger, die [zonenredundanten Speicher (ZRS)](disks-redundancy.md#zone-redundant-storage-for-managed-disks-preview) verwenden, werden derzeit nicht unterstützt. 
+- Datenträger, die [zonenredundanten Speicher (ZRS)](disks-redundancy.md#zone-redundant-storage-for-managed-disks) verwenden, werden derzeit nicht unterstützt. 
 
 ### <a name="regional-availability"></a>Regionale Verfügbarkeit
 
@@ -55,7 +55,7 @@ Datenträgerpools sind derzeit in den folgenden Regionen verfügbar:
 Wenn Sie einen Datenträgerpool bereitstellen, fallen in zwei Hauptbereichen abzurechnende Kosten an:
 
 - Für die dem Datenträgerpool hinzugefügten Datenträger
-- Für die Azure-Ressourcen, die in der verwalteten Ressourcengruppe bereitgestellt werden, die zum Datenträgerpool gehört, bei denen es sich um diese Ressourcen handelt: These resources are:
+- Für die Azure-Ressourcen, die in der verwalteten Ressourcengruppe bereitgestellt werden, die zum Datenträgerpool gehört, bei denen es sich um diese Ressourcen handelt: Diese Ressourcen sind:
     - Virtuelle Computer
     - Verwaltete Datenträger
     - Eine Netzwerkschnittstelle

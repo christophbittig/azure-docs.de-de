@@ -3,12 +3,12 @@ title: Application Insights-Protokollierung mit .NET
 description: Erfahren Sie, wie Sie Application Insights mit der ILogger-Schnittstelle in .NET verwenden.
 ms.topic: conceptual
 ms.date: 05/20/2021
-ms.openlocfilehash: 0457656ae06d4a86c8a4151ce8b89d3e42978d74
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 274fa5a9ab3fef94f892ed75fd69bc6cca6cccc9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122342866"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128617790"
 ---
 # <a name="application-insights-logging-with-net"></a>Application Insights-Protokollierung mit .NET
 
@@ -34,7 +34,7 @@ Abhängig vom Application Insights-Protokollierungspaket, das Sie verwenden, gib
 
 Verwenden Sie das `Microsoft.ApplicationInsights.AspNetCore` NuGet-Paket, um ASP.NET Core-Anwendungen Telemetriedaten hinzuzufügen. Dies können Sie über [Visual Studio als verbundener Dienst](/visualstudio/azure/azure-app-insights-add-connected-service) oder manuell konfigurieren.
 
-Standardmäßig ist für ASP.NET Core-Anwendungen ein Application Insights-Protokollierungsanbieter registriert, wenn sie mit [Code](./asp-net-core.md) oder mithilfe eines [codelosen](./azure-web-apps.md?tabs=netcore#enable-agent-based-monitoring) Ansatzes konfiguriert wurden. Der registrierte Anbieter ist so konfiguriert, dass Protokollereignisse mit einem Schweregrad von <xref:Microsoft.Extensions.Logging.LogLevel.Warning?displayProperty=nameWithType> oder höher automatisch erfasst werden. Sie können Schweregrad und Kategorien anpassen. Weitere Informationen finden Sie unter [Protokolliergrad](#logging-level).
+Standardmäßig ist für ASP.NET Core-Anwendungen ein Application Insights-Protokollierungsanbieter registriert, wenn sie mit [Code](./asp-net-core.md) oder mithilfe eines [codelosen](./azure-web-apps-net-core.md#enable-agent-based-monitoring) Ansatzes konfiguriert wurden. Der registrierte Anbieter ist so konfiguriert, dass Protokollereignisse mit einem Schweregrad von <xref:Microsoft.Extensions.Logging.LogLevel.Warning?displayProperty=nameWithType> oder höher automatisch erfasst werden. Sie können Schweregrad und Kategorien anpassen. Weitere Informationen finden Sie unter [Protokolliergrad](#logging-level).
 
 1. Vergewissern Sie sich, dass das NuGet-Paket installiert ist:
 
@@ -67,11 +67,8 @@ Standardmäßig ist für ASP.NET Core-Anwendungen ein Application Insights-Proto
 
             public void ConfigureServices(IServiceCollection services)
             {
-                services.AddApplicationInsightsTelemetry(
-                    Configuration["APPINSIGHTS_CONNECTIONSTRING"]);
-
-                // An alternative overload, when not using appsettings.json or user secrets.
-                // services.AddApplicationInsightsTelemetry();
+                services.AddApplicationInsightsTelemetry();
+                // Configure the Connection String/Instrumentation key in appsettings.json
             }
 
             public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -202,8 +199,8 @@ namespace WebApplication
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddApplicationInsightsTelemetry(
-                Configuration["APPINSIGHTS_CONNECTIONSTRING"]);
+            services.AddApplicationInsightsTelemetry();
+            // Configure the Connection String/Instrumentation key in appsettings.json
         }
 
         // The ILogger<Startup> is resolved by dependency injection

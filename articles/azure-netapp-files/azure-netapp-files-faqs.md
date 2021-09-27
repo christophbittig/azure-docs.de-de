@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/18/2021
+ms.date: 09/01/2021
 ms.author: b-juche
-ms.openlocfilehash: 954519f766c5c9f79fa0c8f61ed45f260743a0c2
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 119cf21f90102f7ebccd8e4e06cd5e5dee3c4bfe
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445214"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427982"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Häufig gestellte Fragen zu Azure NetApp Files
 
@@ -108,7 +108,7 @@ Sie können allerdings keine Azure-Richtlinien (benutzerdefinierte Benennungsric
 
 ### <a name="when-i-delete-an-azure-netapp-files-volume-is-the-data-deleted-safely"></a>Werden die Daten sicher gelöscht, wenn ich ein Azure NetApp Files-Volume lösche? 
 
-Das Löschen eines Azure NetApp Files-Volumes erfolgt programmgesteuert mit sofortiger Wirkung im Back-End (physische Infrastrukturebene). Der Löschvorgang umfasst das Löschen von Schlüsseln, die zum Verschlüsseln der ruhenden Daten verwendet werden. Es gibt keine Möglichkeit, ein gelöschtes Volume wiederherzustellen, nachdem der Löschvorgang erfolgreich ausgeführt wurde (über Schnittstellen wie das Azure-Portal und die API).
+Das Löschen eines Azure NetApp Files-Volumes erfolgt programmgesteuert und mit sofortiger Wirkung. Der Löschvorgang umfasst das Löschen von Schlüsseln, die zum Verschlüsseln der ruhenden Daten verwendet werden. Es gibt keine Möglichkeit, ein gelöschtes Volume wiederherzustellen, nachdem der Löschvorgang erfolgreich ausgeführt wurde (über Schnittstellen wie das Azure-Portal und die API).
 
 ## <a name="performance-faqs"></a>Häufig gestellte Fragen zur Leistung
 

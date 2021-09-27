@@ -3,7 +3,7 @@ title: Azure API Management-Transformationsrichtlinien | Microsoft-Dokumentation
 description: Erfahren Sie mehr über die Transformationsrichtlinien, die für die Verwendung in Azure API Management verfügbar sind.
 services: api-management
 documentationcenter: ''
-author: miaojiang
+author: dlepow
 manager: erikre
 editor: ''
 ms.service: api-management
@@ -11,13 +11,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
-ms.author: apimpm
-ms.openlocfilehash: 48f8445e30bd186681d1a4384d16f228a3382473
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.author: danlep
+ms.openlocfilehash: 8cbef3416230d087b7ca627e877e0030f0ace9b2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012436"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128647098"
 ---
 # <a name="api-management-transformation-policies"></a>Azure API Management-Transformationsrichtlinien
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](./api-management-policies.md).
@@ -69,7 +69,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 ### <a name="elements"></a>Elemente
 
-|Name|BESCHREIBUNG|Erforderlich|
+|Name|Beschreibung|Erforderlich|
 |----------|-----------------|--------------|
 |json-to-xml|Stammelement|Ja|
 
@@ -187,7 +187,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 ### <a name="elements"></a>Elemente
 
-|Name|BESCHREIBUNG|Erforderlich|
+|Name|Beschreibung|Erforderlich|
 |----------|-----------------|--------------|
 |redirect-content-urls|Stammelement|Ja|
 
@@ -510,14 +510,14 @@ OriginalUrl.
 
 ### <a name="elements"></a>Elemente
 
-|Name|BESCHREIBUNG|Erforderlich|
+|Name|Beschreibung|Erforderlich|
 |----------|-----------------|--------------|
 |set-header|Stammelement|Ja|
 |value|Der Wert für den zu setzenden Header. Fügen Sie bei mehreren Headern mit dem gleichen Namen weitere `value`-Elemente hinzu.|Nein|
 
 ### <a name="properties"></a>Eigenschaften
 
-|Name|BESCHREIBUNG|Erforderlich|Standard|
+|Name|Beschreibung|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
 |exists-action|Gibt die auszuführende Aktion an, wenn ein Header bereits angegeben wurde. Dieses Attribut muss einen der folgenden Werte aufweisen.<br /><br /> – override – Ersetzt den Wert des vorhandenen Headers.<br />– skip – Ersetzt den vorhandenen Headerwert nicht.<br />– append – Fügt den Wert an den vorhandenen Headerwert an.<br />– delete – Entfernt den Header aus der Anforderung.<br /><br /> Bei `override` führt die Auflistung mehrerer Einträge mit demselben Namen dazu, dass der Header gemäß aller Einträge festgelegt wird (die mehrfach aufgeführt sind); nur die aufgelisteten Werte werden im Ergebnis festgelegt.|Nein|override|
 |name|Der Name des zu setzenden Headers.|Ja|–|
@@ -565,7 +565,7 @@ OriginalUrl.
 
 ### <a name="elements"></a>Elemente
 
-|Name|BESCHREIBUNG|Erforderlich|
+|Name|Beschreibung|Erforderlich|
 |----------|-----------------|--------------|
 |set-query-parameter|Stammelement|Ja|
 |value|Gibt den Wert des festzulegenden Abfrageparameters an. Fügen Sie bei mehreren Abfrageparametern mit dem gleichen Namen weitere `value`-Elemente hinzu.|Ja|
@@ -644,13 +644,13 @@ OriginalUrl.
 
 ### <a name="elements"></a>Elemente
 
-|Name|BESCHREIBUNG|Erforderlich|
+|Name|Beschreibung|Erforderlich|
 |----------|-----------------|--------------|
 |rewrite-uri|Stammelement|Ja|
 
 ### <a name="attributes"></a>Attributes
 
-|Attribut|BESCHREIBUNG|Erforderlich|Standard|
+|attribute|Beschreibung|Erforderlich|Standard|
 |---------------|-----------------|--------------|-------------|
 |Vorlage|Die eigentliche Webdienst-URL mit allen Abfrageparametern. Wenn Sie Ausdrücke verwenden, muss der gesamte Wert ein Ausdruck sein.|Ja|–|
 |copy-unmatched-params|Gibt an, ob Abfrageparameter in der eingehenden Anforderung, die in der ursprünglichen URL-Vorlage nicht enthalten sind, der von der Umschreibevorlage festgelegten URL hinzugefügt werden.|Nein|true|

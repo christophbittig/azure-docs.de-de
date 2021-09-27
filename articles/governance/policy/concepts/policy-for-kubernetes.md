@@ -1,22 +1,22 @@
 ---
 title: Informationen zu Azure Policy für Kubernetes
 description: Hier erfahren Sie, wie Rego und Open Policy Agent von Azure Policy genutzt werden, um Cluster mit Kubernetes in Azure oder lokal zu verwalten.
-ms.date: 08/17/2021
+ms.date: 09/01/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 615145c7267d580d7a22dd34452e68c9cd905cdc
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 43b5e010ec6f024838a0407f2cafae1d28bdcf1e
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122965130"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123436066"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Grundlegendes zu Azure Policy für Kubernetes-Cluster
 
 Azure Policy erweitert [Gatekeeper](https://github.com/open-policy-agent/gatekeeper) v3, einen _Webhook für die Zugangssteuerung_ für [Open Policy Agent](https://www.openpolicyagent.org/) (OPA), um zentral und einheitlich bedarfsgesteuerte Erzwingungs- und Schutzmaßnahmen auf Ihre Cluster anzuwenden. Mithilfe von Azure Policy kann der Konformitätszustand Ihrer Kubernetes-Cluster von einem zentralen Ort aus verwaltet und gemeldet werden. Das Add-On bietet folgende Funktionen:
 
 - Überprüfen auf Richtlinienzuweisungen für den Cluster mit dem Azure Policy-Dienst
-- Bereitstellen von Richtliniendefinitionen im Cluster als [Einschränkungsvorlage](https://github.com/open-policy-agent/gatekeeper#constraint-templates) und benutzerdefinierte [Einschränkungsressource](https://github.com/open-policy-agent/gatekeeper#constraints)
+- Bereitstellen von Richtliniendefinitionen im Cluster als [Einschränkungsvorlage](https://open-policy-agent.github.io/gatekeeper/website/docs/howto/#constraint-templates) und benutzerdefinierte [Einschränkungsressource](https://github.com/open-policy-agent/gatekeeper#constraints)
 - Senden von Details zur Überwachung und Konformität zurück an den Azure Policy-Dienst
 
 Von Azure Policy für Kubernetes werden folgende Clusterumgebungen unterstützt:
@@ -26,7 +26,8 @@ Von Azure Policy für Kubernetes werden folgende Clusterumgebungen unterstützt:
 - [AKS-Engine](https://github.com/Azure/aks-engine/blob/master/docs/README.md)
 
 > [!IMPORTANT]
-> Die Add-Ons für AKS-Engine und Kubernetes mit Arc-Aktivierung sind in der **Vorschauversion** verfügbar. Azure Policy für Kubernetes unterstützt nur Linux-Knotenpools und integrierte Richtliniendefinitionen. Integrierte Richtliniendefinitionen befinden sich in der Kategorie **Kubernetes**. Die Richtliniendefinitionen der eingeschränkten Vorschauversion mit der Auswirkung **EnforceOPAConstraint** und **EnforceRegoPolicy** und der zugehörigen Kategorie **Kubernetes Service** sind _veraltet_. Verwenden Sie stattdessen die Auswirkungen _audit_ und _deny_ mit dem Ressourcenanbietermodus `Microsoft.Kubernetes.Data`.
+> Die Add-Ons für AKS-Engine und Kubernetes mit Arc-Aktivierung sind in der **Vorschauversion** verfügbar. Azure Policy für Kubernetes unterstützt nur Linux-Knotenpools und integrierte Richtliniendefinitionen (benutzerdefinierte Richtliniendefinitionen sind eine _öffentliche Previewfunktion_). Integrierte Richtliniendefinitionen befinden sich in der Kategorie **Kubernetes**. Die Richtliniendefinitionen der eingeschränkten Vorschauversion mit der Auswirkung **EnforceOPAConstraint** und **EnforceRegoPolicy** und der zugehörigen Kategorie **Kubernetes Service** sind _veraltet_.
+> Verwenden Sie stattdessen die Auswirkungen _audit_ und _deny_ mit dem Ressourcenanbietermodus `Microsoft.Kubernetes.Data`.
 
 ## <a name="overview"></a>Übersicht
 
@@ -42,7 +43,7 @@ Gehen Sie wie folgt vor, um Azure Policy zu aktivieren und mit Ihrem Kubernetes-
 
 1. [Machen Sie sich mit der Azure Policy-Sprache für Kubernetes vertraut.](#policy-language)
 
-1. [Weisen Sie Ihrem Kubernetes-Cluster eine integrierte Definition zu.](#assign-a-built-in-policy-definition)
+1. [Weisen Sie Ihrem Kubernetes-Cluster eine Definition zu.](#assign-a-policy-definition)
 
 1. [Warten auf die Validierung](#policy-evaluation)
 
@@ -51,8 +52,9 @@ Gehen Sie wie folgt vor, um Azure Policy zu aktivieren und mit Ihrem Kubernetes-
 Die folgenden allgemeinen Einschränkungen gelten für das Azure Policy-Add-On für Kubernetes-Cluster:
 
 - Das Azure Policy-Add-On für Kubernetes wird unter der Kubernetes-Version **1.14** oder höher unterstützt.
-- Das Azure Policy-Add-On für Kubernetes kann nur für Linux-Knotenpools bereitgestellt werden.
-- Es werden nur integrierte Richtliniendefinitionen unterstützt.
+- Das Azure Policy-Add-On für Kubernetes kann nur in Linux-Knotenpools bereitgestellt werden.
+- Es werden nur integrierte Richtliniendefinitionen unterstützt. Benutzerdefinierte Richtliniendefinitionen sind eine _öffentliche Previewfunktion_.
+- Maximale Anzahl von Pods, die vom Azure Policy-Add-On unterstützt werden: **10.000**
 - Maximale Anzahl nicht konformer Datensätze pro Richtlinie pro Cluster: **500**
 - Maximale Anzahl nicht konformer Datensätze pro Abonnement: **1 Mio.**
 - Installationen von Gatekeeper außerhalb des Azure Policy-Add-Ons werden nicht unterstützt. Deinstallieren Sie alle Komponenten, die durch eine frühere Installation von Gatekeeper installiert wurden, bevor Sie das Azure Policy-Add-On aktivieren.
@@ -360,13 +362,16 @@ kubectl get pods -n gatekeeper-system
 
 Die Struktur der Azure Policy-Sprache für die Verwaltung von Kubernetes orientiert sich an der Struktur bereits vorhandener Richtliniendefinitionen. Mit einem [Ressourcenanbietermodus](./definition-structure.md#resource-provider-modes) von `Microsoft.Kubernetes.Data` werden die Auswirkungen von [audit](./effects.md#audit) und [deny](./effects.md#deny) zum Verwalten Ihrer Kubernetes-Cluster verwendet. _Audit_ und _deny_ müssen **details**-Eigenschaften bereitstellen, die für das Arbeiten mit dem [OPA Constraint Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint) und Gatekeeper v3 spezifisch sind.
 
-Als Teil der Eigenschaften _details.constraintTemplate_ und _details.constraint_ in der Richtliniendefinition übergibt Azure Policy die URIs dieser [CustomResourceDefinitions](https://github.com/open-policy-agent/gatekeeper#constraint-templates) (CRD) an das Add-On. Rego ist die Sprache, die von OPA und Gatekeeper unterstützt wird, um eine Anforderung an den Kubernetes-Cluster zu validieren. Durch die Unterstützung eines bestehenden Standards für das Kubernetes-Management ermöglicht Azure Policy die Wiederverwendung bestehender Regeln und deren Kombination mit Azure Policy für eine einheitliche Berichterstellungsumgebung zur Cloud-Compliance. Weitere Informationen finden Sie unter [Was ist Rego?](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego)
+Als Teil der Eigenschaften _details.templateInfo_, _details.constraint_ und _details.constraintTemplate_ in der Richtliniendefinition übergibt Azure Policy die URIs oder Base64-Werte dieser [CustomResourceDefinitions](https://open-policy-agent.github.io/gatekeeper/website/docs/howto/#constraint-templates) (CRD) an das Add-On. Rego ist die Sprache, die von OPA und Gatekeeper unterstützt wird, um eine Anforderung an den Kubernetes-Cluster zu validieren. Durch die Unterstützung eines bestehenden Standards für das Kubernetes-Management ermöglicht Azure Policy die Wiederverwendung bestehender Regeln und deren Kombination mit Azure Policy für eine einheitliche Berichterstellungsumgebung zur Cloud-Compliance. Weitere Informationen finden Sie unter [Was ist Rego?](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego)
 
-## <a name="assign-a-built-in-policy-definition"></a>Zuweisen einer integrierten Richtliniendefinition
+## <a name="assign-a-policy-definition"></a>Zuweisen einer Richtliniendefinition
 
 Um Ihrem Kubernetes-Cluster eine Richtliniendefinition zuweisen zu können, müssen Ihnen die entsprechenden Azure RBAC-Richtlinienzuweisungsvorgänge (Azure Role-Based Access Control, rollenbasierte Zugriffssteuerung) zugewiesen sein. Die in Azure integrierten Rollen **Mitwirkender bei Ressourcenrichtlinien** und **Besitzer** verfügen über diese Vorgänge. Weitere Informationen finden Sie unter [Azure RBAC-Berechtigungen in Azure Policy](../overview.md#azure-rbac-permissions-in-azure-policy).
 
-Führen Sie die folgenden Schritte aus, um die integrierten Richtliniendefinitionen für die Verwaltung Ihres Clusters über das Azure-Portal zu finden:
+> [!NOTE]
+> Benutzerdefinierte Richtliniendefinitionen sind eine _öffentliche Previewfunktion_.
+
+Führen Sie die folgenden Schritte aus, um die integrierten Richtliniendefinitionen für die Verwaltung Ihres Clusters über das Azure-Portal zu finden. Wenn Sie eine benutzerdefinierte Richtliniendefinition verwenden, suchen Sie nach deren Namen oder der Kategorie, mit der Sie sie erstellt haben.
 
 1. Starten Sie den Azure Policy-Dienst im Azure-Portal. Wählen Sie **Alle Dienste** im linken Bereich aus, suchen Sie dann nach der Option **Richtlinie** und wählen Sie sie aus.
 
@@ -428,6 +433,21 @@ Einige weitere Überlegungen:
 
 - Wenn ein Cluster über eine Ablehnungsrichtlinie verfügt, durch die Ressourcen überprüft werden, wird dem Benutzer beim Erstellen einer Bereitstellung keine Ablehnungsmeldung angezeigt. Stellen Sie sich beispielsweise eine Kubernetes-Bereitstellung vor, die Replikatgruppen und Pods enthält. Wenn ein Benutzer `kubectl describe deployment $MY_DEPLOYMENT` ausführt, wird im Rahmen von Ereignissen keine Ablehnungsmeldung zurückgegeben. Von `kubectl describe replicasets.apps $MY_DEPLOYMENT` werden jedoch die mit der Ablehnung zusammenhängenden Ereignisse zurückgegeben.
 
+> [!NOTE]
+> Init-Container können während der Richtlinienauswertung eingeschlossen werden. Um zu überprüfen, ob Init-Container enthalten sind, überprüfen Sie die CRD auf die folgende oder eine ähnliche Deklaration:
+>
+> ```rego
+> input_containers[c] { 
+>    c := input.review.object.spec.initContainers[_] 
+> }
+> ```
+
+### <a name="constraint-template-conflicts"></a>Konflikte mit Einschränkungsvorlagen
+
+Wenn Einschränkungsvorlagen denselben Ressourcenmetadatennamen haben, die Richtliniendefinition aber an verschiedenen Stellen auf die Quelle verweist, gelten die Richtliniendefinitionen als in Konflikt miteinander. Beispiel: Zwei Richtliniendefinitionen verweisen auf dieselbe Datei `template.yaml`, die an verschiedenen Quellspeicherorten gespeichert ist, z. B. im Azure Policy-Vorlagenspeicher (`store.policy.core.windows.net`) und auf GitHub.
+
+Wenn Richtliniendefinitionen und ihre Einschränkungsvorlagen zugewiesen, aber noch nicht im Cluster installiert sind und in Konflikt miteinander stehen, werden sie als Konflikt gemeldet und erst im Cluster installiert, wenn der Konflikt behoben wurde. Ebenso funktionieren alle vorhandenen Richtliniendefinitionen und ihre Einschränkungsvorlagen, die sich bereits im Cluster befinden und mit neu zugewiesenen Richtliniendefinitionen in Konflikt stehen, weiterhin normal. Wenn eine vorhandene Zuweisung aktualisiert wird und die Einschränkungsvorlage nicht synchronisiert werden kann, wird der Cluster ebenfalls als konfliktbehaftet eingestuft. Informationen zu allen Konfliktmeldungen finden Sie unter [Konformitätsgründe für den AKS-Ressourcenanbietermodus](../how-to/determine-non-compliance.md#aks-resource-provider-mode-compliance-reasons).
+
 ## <a name="logging"></a>Protokollierung
 
 Als Kubernetes-Controller/-Container speichern die Pods _azure-policy_ und _gatekeeper_ Protokolle im Kubernetes-Cluster. Die Protokolle können auf der Seite **Insights** des Kubernetes-Clusters verfügbar gemacht werden. Weitere Informationen finden Sie unter [Überwachen der Leistung von Kubernetes-Clustern mit Azure Monitor für Container](../../../azure-monitor/containers/container-insights-analyze.md).
@@ -442,7 +462,7 @@ kubectl logs <azure-policy pod name> -n kube-system
 kubectl logs <gatekeeper pod name> -n gatekeeper-system
 ```
 
-Weitere Informationen finden Sie in der Gatekeeper-Dokumentation unter [Debuggen](https://github.com/open-policy-agent/gatekeeper#debugging).
+Weitere Informationen finden Sie in der Gatekeeper-Dokumentation unter [Debuggen](https://open-policy-agent.github.io/gatekeeper/website/docs/debug/).
 
 ## <a name="troubleshooting-the-add-on"></a>Behandeln von Problemen mit dem Add-On
 

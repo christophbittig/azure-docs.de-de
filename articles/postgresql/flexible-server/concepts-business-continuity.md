@@ -6,17 +6,16 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/24/2021
-ms.openlocfilehash: 64206d1e5a26d163c5d5ed81c3c762a10de0fe96
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 571311d5d455bedc61bae06634324cc5a380f7ab
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769588"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128555977"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---flexible-server"></a>Übersicht über die Geschäftskontinuität mit Azure Database for PostgreSQL – Flexible Server
 
-> [!IMPORTANT]
-> Azure Database for PostgreSQL – Flexible Server befindet sich in der Vorschau.
+
 
 **Geschäftskontinuität** in Azure Database for PostgreSQL – Flexible Server bezieht sich auf die Mechanismen, Richtlinien und Verfahren, die es Ihrem Unternehmen ermöglichen, angesichts von Störungen, insbesondere in der Computerinfrastruktur, weiter zu arbeiten. In den meisten Fällen behandelt der flexible Server die Störungen, die in der Cloudumgebung auftreten können, und hält Ihre Anwendungen und Geschäftsprozesse am Laufen. Es gibt jedoch einige Ereignisse, die nicht automatisch behandelt werden können, wie z. B.:
 

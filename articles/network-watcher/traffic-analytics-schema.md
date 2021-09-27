@@ -1,24 +1,19 @@
 ---
 title: Azure Traffic Analytics-Schema | Microsoft-Dokumentation
 description: Hier erfahren Sie Grundlagen zum Traffic Analytics-Schema, mit dem Flowprotokolle für Azure-Netzwerksicherheitsgruppen analysiert werden.
-services: network-watcher
-documentationcenter: na
 author: vinynigam
 manager: agummadi
-editor: ''
 ms.service: network-watcher
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: fb32ff13df7329e6e78095b8ee28639312cc62b5
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 2ec8f1df778a95b571f89f3213c2cc71163de955
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113216241"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597225"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Schema und Datenaggregation in Traffic Analytics
 
@@ -143,7 +138,7 @@ Im Folgenden werden die Felder im Schema und ihre Bedeutung aufgeführt.
 | LocalNetworkGateway1_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | Das lokale Netzwerkgateway, das der Quell-IP im Flow zugeordnet ist. |
 | LocalNetworkGateway2_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | Das lokale Netzwerkgateway, das der Ziel-IP im Flow zugeordnet ist. |
 | ConnectionType_s | Mögliche Werte: VNetPeering, VpnGateway und ExpressRoute. |    Verbindungstyp. |
-| ConnectionName_s | \<SubscriptionID>/\<ResourceGroupName>/\<ConnectionName> | Verbindungsname. Beim Datenflusstyp P2S lautet die Formatierung <gateway name>_<VPN Client IP>. |
+| ConnectionName_s | \<SubscriptionID>/\<ResourceGroupName>/\<ConnectionName> | Verbindungsname. Beim Datenflusstyp P2S lautet die Formatierung \<gateway name\>_\<VPN Client IP\>. |
 | ConnectingVNets_s | Durch Leerzeichen getrennte Liste mit Namen virtueller Netzwerke | Im Fall einer Hub-Spoke-Topologie werden hier virtuelle Hubnetzwerke aufgefüllt. |
 | Country_s | Zweibuchstabiger Ländercode (ISO 3166-1 Alpha-2) | Wird für den Flowtyp „ExternalPublic“ aufgefüllt. Alle IP-Adressen im Feld „PublicIPs_s“ weisen den gleichen Ländercode auf. |
 | AzureRegion_s | Standorte in der Azure-Region | Wird für den Flowtyp „AzurePublic“ aufgefüllt. Alle IP-Adressen im Feld „PublicIPs_s“ weisen die gleiche Azure-Region auf. |

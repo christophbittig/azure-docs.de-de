@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 09/02/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
-ms.openlocfilehash: 9c13ffc597349cdd2b304889d142ca7c2f89c713
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: e06c5adc37e4c7ea73e3b86db61160c51d060f71
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107861533"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123449187"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Verwenden des Azure Import/Export-Diensts zum Importieren von Daten in Azure Files
 
@@ -108,7 +108,7 @@ Führen Sie zum Vorbereiten der Laufwerke die folgenden Schritte aus.
 6. Für jede Ausführung der Befehlszeile wird eine Journaldatei mit dem von Ihnen angegebenen Namen mit Parameter `/j:` erstellt. Jedes Laufwerk, das Sie vorbereiten, hat eine Journaldatei, die hochgeladen werden muss, wenn Sie den Importauftrag erstellen. Laufwerke ohne Journaldateien werden nicht verarbeitet.
 
     > [!IMPORTANT]
-    > - Ändern Sie die Daten auf den Datenträgern oder die Journaldatei nicht mehr, nachdem Sie die Festplattenvorbereitung abgeschlossen haben.
+    > Ändern Sie nach Abschluss der Datenträgervorbereitung weder die Journaldateien noch die Daten auf den Datenträgerlaufwerken, und formatieren Sie keine Datenträger neu.
 
 Zusätzliche Beispiele finden Sie unter [Beispiele für Journaldateien](#samples-for-journal-files).
 
@@ -154,7 +154,7 @@ Führen Sie die folgenden Schritte aus, um einen Importauftrag im Azure-Portal z
 
    Wählen Sie **Weiter: Versand >** aus, um fortzufahren.
 
-4. In **Versand**:
+6. In **Versand**:
 
     1. Wählen Sie den Spediteur in der Dropdownliste aus. Wenn Sie einen anderen Spediteur als FedEx/DHL beauftragen möchten, wählen Sie eine der Optionen in der Dropdownliste aus. Wenden Sie sich unter `adbops@microsoft.com` an das Azure Data Box Operations-Team, und informieren Sie es über den von Ihnen vorgesehenen Spediteur.
     1. Geben Sie eine gültige Spediteurkontonummer ein, die Sie mit diesem Spediteur erstellt haben. Microsoft verwendet dieses Konto, um die Laufwerke nach Abschluss des Importauftrags an Sie zurückzuschicken.
@@ -167,7 +167,7 @@ Führen Sie die folgenden Schritte aus, um einen Importauftrag im Azure-Portal z
 
    Wählen Sie **Überprüfen und erstellen** aus, um den Vorgang fortzusetzen.
 
-5. In der Bestellübersicht:
+7. In der Bestellübersicht:
 
    1. Lesen Sie die **Geschäftsbedingungen**, und wählen sie dann „Ich bestätige die Richtigkeit aller angegebenen Informationen und stimme den oben genannten Bestimmungen zu“ aus. Anschließend wird die Überprüfung ausgeführt.
    1. Überprüfen Sie die in der Zusammenfassung bereitgestellten Informationen zum Auftrag. Notieren Sie sich den Namen des Auftrags und die Versandadresse des Azure-Rechenzentrums, damit Sie Datenträger an Azure zurücksenden können. Diese Informationen werden später auf dem Adressetikett verwendet.

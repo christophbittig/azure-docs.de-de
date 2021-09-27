@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 857e5ba3c4251e49dd84726697164f87e0a96bc6
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: 9d43b91fcebff017d6d18ee736cfddc858650fc7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110653176"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128620196"
 ---
 # <a name="process-change-feed-in-azure-blob-storage"></a>Verarbeiten des Änderungsfeeds in Azure Blob Storage
 
@@ -31,13 +31,15 @@ Weitere Informationen zum Änderungsfeed finden Sie unter [Änderungsfeed in Azu
 dotnet add package Azure.Storage.Blobs --version 12.5.1
 dotnet add package Azure.Storage.Blobs.ChangeFeed --version 12.0.0-preview.4
 ```
+
+
 ## <a name="read-records"></a>Lesen von Datensätzen
 
 > [!NOTE]
 > Der Änderungsfeed ist eine unveränderliche und schreibgeschützte Entität in Ihrem Speicherkonto. Mehrere Anwendungen können den Änderungsfeed gleichzeitig und unabhängig voneinander nach Belieben lesen und verarbeiten. Datensätze werden nicht aus dem Änderungsfeed entfernt, wenn sie von einer Anwendung gelesen werden. Der Lese- oder Iterationszustand jedes Readers ist unabhängig und wird nur von der jeweiligen Anwendung verwaltet.
 
 In diesem Beispiel werden alle Datensätze im Änderungsfeed durchlaufen und einer Liste hinzugefügt. Anschließend wird diese Liste an den Aufrufer zurückgegeben.
- 
+
 ```csharp
 public async Task<List<BlobChangeFeedEvent>> ChangeFeedAsync(string connectionString)
 {
@@ -59,7 +61,7 @@ public async Task<List<BlobChangeFeedEvent>> ChangeFeedAsync(string connectionSt
 }
 ```
 
-In diesem Beispiel werden einige Werte von jedem Datensatz in der Liste an die Konsole ausgegeben. 
+In diesem Beispiel werden einige Werte von jedem Datensatz in der Liste an die Konsole ausgegeben.
 
 ```csharp
 public void showEventData(List<BlobChangeFeedEvent> changeFeedEvents)
@@ -81,7 +83,7 @@ public void showEventData(List<BlobChangeFeedEvent> changeFeedEvents)
 
 Sie können Ihre Leseposition im Änderungsfeed speichern und dann das Durchlaufen der Datensätze zu einem späteren Zeitpunkt fortsetzen. Sie können die Leseposition speichern, indem Sie den Änderungsfeedcursor abrufen. Dieser Cursor ist eine **Zeichenfolge**, die Ihre Anwendung entsprechend dem Design der Anwendung (z. B. in einer Datei oder Datenbank) speichern kann.
 
-In diesem Beispiel werden alle Datensätze im Änderungsfeed durchlaufen, einer Liste hinzugefügt, und der Cursor wird gespeichert. Die Liste und der Cursor werden an den Aufrufer zurückgegeben. 
+In diesem Beispiel werden alle Datensätze im Änderungsfeed durchlaufen, einer Liste hinzugefügt, und der Cursor wird gespeichert. Die Liste und der Cursor werden an den Aufrufer zurückgegeben.
 
 ```csharp
 public async Task<(string, List<BlobChangeFeedEvent>)> ChangeFeedResumeWithCursorAsync
@@ -103,10 +105,10 @@ public async Task<(string, List<BlobChangeFeedEvent>)> ChangeFeedResumeWithCurso
 
     foreach (BlobChangeFeedEvent changeFeedEvent in enumerator.Current.Values)
     {
-    
+
         changeFeedEvents.Add(changeFeedEvent);             
     }
-    
+
     // Update the change feed cursor.  The cursor is not required to get each page of events,
     // it is intended to be saved and used to resume iterating at a later date.
     cursor = enumerator.Current.ContinuationToken;
@@ -118,7 +120,7 @@ public async Task<(string, List<BlobChangeFeedEvent>)> ChangeFeedResumeWithCurso
 
 Sie können Änderungsfeeddatensätze verarbeiten, wenn sie an den Änderungsfeed commitet werden. Weitere Informationen finden Sie unter [Spezifikationen](storage-blob-change-feed.md#specifications). Änderungsereignisse werden im Durchschnitt nach 60 Sekunden im Änderungsfeed veröffentlicht. Wir empfehlen, bei der Festlegung des Abrufintervalls und des Abrufs neuer Änderungen diesen Zeitraum zu berücksichtigen.
 
-In diesem Beispiel werden regelmäßig Änderungen abgerufen.  Wenn Änderungsdatensätze vorhanden sind, verarbeitet dieser Code die Datensätze und speichert den Änderungsfeedcursor. Auf diese Weise kann die Anwendung, wenn der Vorgang angehalten und anschließend neu gestartet wird, mit dem Cursor die Verarbeitung der Datensätze an der Stelle fortsetzen, an der sie unterbrochen wurde. In diesem Beispiel wird der Cursor in einer lokalen Anwendungskonfigurationsdatei gespeichert. Ihre Anwendung kann den Cursor jedoch in jeder Form speichern, die für Ihr Szenario am sinnvollsten ist. 
+In diesem Beispiel werden regelmäßig Änderungen abgerufen.  Wenn Änderungsdatensätze vorhanden sind, verarbeitet dieser Code die Datensätze und speichert den Änderungsfeedcursor. Auf diese Weise kann die Anwendung, wenn der Vorgang angehalten und anschließend neu gestartet wird, mit dem Cursor die Verarbeitung der Datensätze an der Stelle fortsetzen, an der sie unterbrochen wurde. In diesem Beispiel wird der Cursor in einer lokalen Anwendungskonfigurationsdatei gespeichert. Ihre Anwendung kann den Cursor jedoch in jeder Form speichern, die für Ihr Szenario am sinnvollsten ist.
 
 ```csharp
 public async Task ChangeFeedStreamAsync
@@ -151,7 +153,7 @@ public async Task ChangeFeedStreamAsync
                         "Event Type: " + eventType + "\n" +
                         "Api: " + api);
                 }
-            
+
                 // helper method to save cursor. 
                 SaveCursor(enumerator.Current.ContinuationToken);
             }

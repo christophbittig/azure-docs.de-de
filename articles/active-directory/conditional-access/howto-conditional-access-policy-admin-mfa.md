@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 03/04/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35178ecc9bc736bbaca3adc932022b15cc2fc956
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b7e358c44986c2de76ae753e66d3461a7160c170
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102632083"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128619892"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>Bedingter Zugriff: Vorschreiben der MFA für Administratoren
 

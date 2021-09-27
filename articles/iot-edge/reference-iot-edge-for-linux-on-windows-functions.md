@@ -8,12 +8,12 @@ ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 8429ed368e8465c45137e555444a18b8a66769dd
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 93a217a88b75ec6c472972d3f12cb33e33561f2c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123271951"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128579783"
 ---
 # <a name="powershell-functions-for-iot-edge-for-linux-on-windows"></a>PowerShell-Funktionen für IoT Edge für Linux unter Windows
 
@@ -84,9 +84,9 @@ Der Befehl **Deploy-Eflow** ist die Hauptbereitstellungsmethode. Der Bereitstell
 | vmDiskSize | Zwischen 8 GB und 256 GB | Maximale Datenträgergröße der dynamisch erweiterbaren virtuellen Festplatte.<br><br>**Standardwert**: 10 GB |
 | vswitchName | Name des virtuellen Netzwerks |  Name des virtuellen Switches, der dem virtuellen EFLOW-Computer zugewiesen wurde. |
 | vswitchType | **Intern** oder **Extern** | Typ des virtuellen Switches, der dem virtuellen EFLOW-Computer zugewiesen wurde. |
-| ip4Address | IPv4-Adresse im Bereich des DCHP-Serverbereichs | Statische Ipv4-Adresse des virtuellen EFLOW-Computers. _HINWEIS: Wird nur beim ICS-Standardswitch unterstützt_. |
-| ip4PrefixLength | IPv4-Präfixlänge des Subnetzes | Ipv4-Subnetzpräfixlänge; nur gültig, wenn eine statische Ipv4-Adresse angegeben wird.  _HINWEIS: Wird nur beim ICS-Standardswitch unterstützt_. |
-| ip4GatewayAddress | IPv4-Adresse des Subnetzgateways | Ipv4-Gatewayadresse; nur gültig, wenn eine statische Ipv4-Adresse angegeben wird.  _HINWEIS: Wird nur beim ICS-Standardswitch unterstützt_. |
+| ip4Address | IPv4-Adresse im Bereich des DCHP-Serverbereichs | Statische Ipv4-Adresse des virtuellen EFLOW-Computers. |
+| ip4PrefixLength | IPv4-Präfixlänge des Subnetzes | Ipv4-Subnetzpräfixlänge; nur gültig, wenn eine statische Ipv4-Adresse angegeben wird. |
+| ip4GatewayAddress | IPv4-Adresse des Subnetzgateways | Ipv4-Gatewayadresse; nur gültig, wenn eine statische Ipv4-Adresse angegeben wird. |
 | gpuName | GPU-Gerätename |  Name des GPU-Geräts, das für Passthrough verwendet werden soll. |
 | gpuPassthroughType | **DirectDeviceAssignment**, **ParaVirtualization** oder keine (nur CPU) |  GPU-Passthrough-Typ |
 | gpuCount | Ganzzahliger Wert zwischen 1 und der Anzahl der GPU-Kerne des Geräts | Anzahl der GPU-Geräte für den virtuellen Computer. <br><br>**Hinweis**: Wenn Sie „ParaVirtualization“ verwenden, müssen Sie „gpuCount = 1“ festlegen. |
@@ -257,4 +257,4 @@ Weitere Informationen erhalten Sie mit dem Befehl `Get-Help Verify-EflowVm -full
 
 Im folgenden Artikel erfahren Sie, wie Sie diese Befehle zum Installieren und Bereitstellen von IoT Edge für Linux unter Windows verwenden können:
 
-* [Installieren von Azure IoT Edge für Linux unter Windows](./how-to-install-iot-edge-windows-on-windows.md)
+* [Installieren von Azure IoT Edge für Linux unter Windows](./how-to-install-iot-edge-on-windows.md)

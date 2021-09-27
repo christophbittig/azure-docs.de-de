@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 07/06/2021
+ms.date: 09/16/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support, has-adal-ref
-ms.openlocfilehash: 1e21be821a495dae95b0bc45b47aef4345802f38
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 4dca649048a393adaba58614ab8f63dec5db29e2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123186189"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128575169"
 ---
 # <a name="enable-authentication-in-your-own-android-app-by-using-azure-ad-b2c"></a>Aktivieren der Authentifizierung in Ihrer eigenen Android -App mithilfe von Azure AD B2C
 
@@ -142,7 +142,8 @@ Konfigurieren Sie, wo Ihre Anwendung auf die Azure AD B2C-Tokenantwort lauscht.
 Gehen Sie folgendermaßen vor, um die Registrierung der mobilen App mit Ihrem App-Umleitungs-URI zu aktualisieren:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Suchen Sie nach **Azure AD B2C**, und wählen Sie diese Option aus.
 1. Wählen Sie unter **App-Registrierungen** und dann die Anwendung aus, die Sie in [Schritt 2.3: Registrieren der mobilen App](configure-authentication-sample-android-app.md#step-23-register-the-mobile-app) registriert haben.
 1. Wählen Sie **Authentifizierung** aus.

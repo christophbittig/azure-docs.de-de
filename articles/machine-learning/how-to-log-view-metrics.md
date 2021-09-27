@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 04/19/2021
 ms.topic: how-to
-ms.openlocfilehash: 4cb94dab1576e6fdb422fc640ae6edfdcdaad119
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 81f05686954e35d68d93c598978e9676652fe71f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114446219"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593475"
 ---
 # <a name="log--view-metrics-and-log-files"></a>Protokollieren und Anzeigen von Metriken und Protokolldateien
 
@@ -79,9 +79,9 @@ mlflow_run = mlflow.start_run()
 
 |Protokollierter Wert|Beispielcode| Notizen|
 |----|----|----|
-|Protokollierung eines numerischen Werts (int oder float) | `mlfow.log_metric('my_metric', 1)`| |
-|Protokollierung eines booleschen Werts | `mlfow.log_metric('my_metric', 0)`| 0 = True, 1 = False|
-|Protokollierung einer Zeichenfolge | `mlfow.log_text('foo', 'my_string')`| Protokollierung als Artefakt|
+|Protokollierung eines numerischen Werts (int oder float) | `mlflow.log_metric('my_metric', 1)`| |
+|Protokollierung eines booleschen Werts | `mlflow.log_metric('my_metric', 0)`| 0 = True, 1 = False|
+|Protokollierung einer Zeichenfolge | `mlflow.log_text('foo', 'my_string')`| Protokollierung als Artefakt|
 |Protokollierung von numpy-Metriken oder PIL-Imageobjekten|`mlflow.log_image(img, 'figure.png')`||
 |Protokollierung von matlotlib-Plot oder Imagedatei|` mlflow.log_figure(fig, "figure.png")`||
 

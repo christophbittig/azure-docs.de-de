@@ -1,18 +1,18 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure Spring Cloud
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure Spring Cloud. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 09/03/2021
+ms.date: 09/17/2021
 ms.topic: reference
 author: karlerickson
 ms.author: karler
 ms.service: spring-cloud
 ms.custom: subject-policy-reference, devx-track-java
-ms.openlocfilehash: b3d04bc56c2e20da92ebde17fdbee4c1c6356b68
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 767b0cacef7cef7039897154f533d5d51c204c39
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123473914"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615600"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-spring-cloud"></a>Integrierte Azure Policy-Definitionen für Azure Spring Cloud
 

@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 07/29/2021
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: d1e6349dd2c809c2a18551037c3bd3a8970f6d68
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 401a6bd003e592d1b53aa91ac24f062688da7a3b
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355033"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435742"
 ---
 # <a name="web-application-firewall-drs-rule-groups-and-rules"></a>DRS-Regelgruppen und -Regeln von Web Application Firewall
 
@@ -138,19 +138,19 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 
 ## <a name="20-rule-sets"></a><a name="drs20"></a> 2.0-Regelsätze
 
-### <a name="p-x-ms-format-detectionnonegeneralp"></a><a name="general-20"></a> <p x-ms-format-detection="none">Allgemein</p>
+### <a name="general"></a><a name="general-20"></a> Allgemein
 |RuleId|BESCHREIBUNG|
 |---|---|
 |200002|Fehler beim Analysieren des Anforderungstexts|
 |200003|Fehler bei der strengen Überprüfung des mehrteiligen Anforderungstexts|
 
 
-### <a name="p-x-ms-format-detectionnonemethod-enforcementp"></a><a name="drs911-20"></a> <p x-ms-format-detection="none">METHOD-ENFORCEMENT</p>
+### <a name="method-enforcement"></a><a name="drs911-20"></a> METHOD-ENFORCEMENT
 |RuleId|BESCHREIBUNG|
 |---|---|
 |911100|Methode ist gemäß Richtlinie nicht zulässig|
 
-### <a name="p-x-ms-format-detectionnoneprotocol-enforcementp"></a><a name="drs920-20"></a> <p x-ms-format-detection="none">PROTOCOL-ENFORCEMENT</p>
+### <a name="protocol-enforcement"></a><a name="drs920-20"></a> PROTOCOL-ENFORCEMENT
 |RuleId|BESCHREIBUNG|
 |---|---|
 |920100|Ungültige HTTP-Anforderungszeile|
@@ -161,7 +161,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |920171|GET- oder HEAD-Anforderung mit Transfer-Encoding.|
 |920180|POST-Anforderung mit fehlendem Content-Length-Header|
 |920190|Bereich: Ungültiger Wert für letztes Byte|
-|920200|Bereich: Zu viele Felder (6 oder mehr)|
+|920200|Bereich: Zu viele Felder (mehr als 6)|
 |920201|Bereich: Zu viele Felder für PDF-Anforderung (35 oder mehr)|
 |920210|Mehrere bzw. in Konflikt stehende Verbindungsheaderdaten gefunden|
 |920220|Versuchter Missbrauch der URL-Codierung|
@@ -187,7 +187,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |920470|Illegaler Content-Type-Header|
 |920480|Zeichensatz für Anforderungsinhaltstyp ist gemäß Richtlinie nicht zulässig|
 
-### <a name="p-x-ms-format-detectionnoneprotocol-attackp"></a><a name="drs921-20"></a> <p x-ms-format-detection="none">PROTOCOL-ATTACK</p>
+### <a name="protocol-attack"></a><a name="drs921-20"></a> PROTOCOL-ATTACK
 
 |RuleId|BESCHREIBUNG|
 |---|---|
@@ -199,7 +199,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |921151|HTTP Header Injection-Angriff über Nutzlast (CR/LF erkannt)|
 |921160|HTTP Header Injection-Angriff über Nutzlast (CR/LF und Headername erkannt)|
 
-### <a name="p-x-ms-format-detectionnonelfi---local-file-inclusionp"></a><a name="drs930-20"></a> <p x-ms-format-detection="none">LFI – Local File Inclusion</p>
+### <a name="lfi---local-file-inclusion"></a><a name="drs930-20"></a> LFI – Local File Inclusion
 |RuleId|BESCHREIBUNG|
 |---|---|
 |930100|Path Traversal-Angriff (/../)|
@@ -207,7 +207,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |930120|Zugriffsversuch auf Betriebssystemdatei|
 |930130|Zugriffsversuch auf Datei mit eingeschränktem Zugriff|
 
-### <a name="p-x-ms-format-detectionnonerfi---remote-file-inclusionp"></a><a name="drs931-20"></a> <p x-ms-format-detection="none">RFI – Remote File Inclusion</p>
+### <a name="rfi---remote-file-inclusion"></a><a name="drs931-20"></a> RFI – Remote File Inclusion
 |RuleId|BESCHREIBUNG|
 |---|---|
 |931100|Möglicher RFI-Angriff (Remote File Inclusion): Verwendung von IP-Adresse für URL-Parameter|
@@ -215,7 +215,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |931120|Möglicher RFI-Angriff (Remote File Inclusion): Verwendung von URL-Nutzlast mit nachgestelltem Fragezeichen (?)|
 |931130|Möglicher RFI-Angriff (Remote File Inclusion): Domänenexterner Verweis/Link|
 
-### <a name="p-x-ms-format-detectionnonerce---remote-command-executionp"></a><a name="drs932-20"></a> <p x-ms-format-detection="none">RCE – Remote Command Execution (Remotebefehlsausführung)</p>
+### <a name="rce---remote-command-execution"></a><a name="drs932-20"></a> RCE – Remote Command Execution (Remotebefehlsausführung)
 |RuleId|BESCHREIBUNG|
 |---|---|
 |932100|Remotebefehlsausführung: Einschleusung von Unix-Befehl|
@@ -231,12 +231,12 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |932171|Remotebefehlsausführung: Shellshock (CVE-2014-6271)|
 |932180|Eingeschränkter Dateiuploadversuch|
 
-### <a name="p-x-ms-format-detectionnonephp-attacksp"></a><a name="drs933-20"></a> <p x-ms-format-detection="none">PHP-Angriffe</p>
+### <a name="php-attacks"></a><a name="drs933-20"></a> PHP-Angriffe
 |RuleId|BESCHREIBUNG|
 |---|---|
 |933100|Angriff mit PHP-Einschleusung: Öffnendes/schließendes Tag gefunden|
 |933110|Angriff mit PHP-Einschleusung: PHP-Skriptdateiupload gefunden|
-|933120|Angriff mit PHP-Einschleusung: Konfigurationsdirektive gefunden|
+|933120|PHP Injection-Angriff: Konfigurationsanweisung gefunden|
 |933130|Angriff mit PHP-Einschleusung: Variable gefunden|
 |933131|Angriff mit PHP-Einschleusung: Variable gefunden|
 |933140|Angriff mit PHP-Einschleusung: E/A-Datenstrom gefunden|
@@ -247,14 +247,14 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |933170|Angriff mit PHP-Einschleusung: Einschleusung von serialisiertem Objekt|
 |933180|Angriff mit PHP-Einschleusung: Aufruf einer Variablenfunktion gefunden|
 |933200|Angriff mit PHP-Einschleusung: Wrapperschema erkannt|
-|933210|Angriff mit PHP-Einschleusung: Aufruf einer Variablenfunktion gefunden|
+|933210|PHP Injection-Angriff: Aufruf einer Variablenfunktion gefunden|
 
-### <a name="p-x-ms-format-detectionnonenode-js-attacksp"></a><a name="drs934-20"></a> <p x-ms-format-detection="none">Node.js-Angriffe</p>
+### <a name="node-js-attacks"></a><a name="drs934-20"></a> Node JS-Angriffe
 |RuleId|BESCHREIBUNG|
 |---|---|
 |934100|Angriff mit Einschleusung von Node.js-Befehlen|
 
-### <a name="p-x-ms-format-detectionnonexss---cross-site-scriptingp"></a><a name="drs941-20"></a> <p x-ms-format-detection="none">XSS – Cross-Site-Scripting</p>
+### <a name="xss---cross-site-scripting"></a><a name="drs941-20"></a> XSS – Cross-Site-Scripting
 |RuleId|BESCHREIBUNG|
 |---|---|
 |941100|XSS-Angriff per libinjection erkannt|
@@ -289,7 +289,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |941380|Einschleusung clientseitiger AngularJS-Vorlagen erkannt|
 
 
-### <a name="p-x-ms-format-detectionnonesqli---sql-injectionp"></a><a name="drs942-20"></a> <p x-ms-format-detection="none">SQLI – Einschleusung von SQL-Befehlen</p>
+### <a name="sqli---sql-injection"></a><a name="drs942-20"></a> SQLI – Einschleusung von SQL-Befehlen
 |RuleId|BESCHREIBUNG|
 |---|---|
 |942100|SQL Injection-Angriff per libinjection erkannt|
@@ -335,18 +335,18 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |942510|Versuch der Umgehung der Einschleusung von SQL-Befehlen durch Ticks und Backticks erkannt|
 
 
-### <a name="p-x-ms-format-detectionnonesession-fixationp"></a><a name="drs943-20"></a> <p x-ms-format-detection="none">SESSION-FIXATION</p>
+### <a name="session-fixation"></a><a name="drs943-20"></a> SESSION-FIXATION
 |RuleId|BESCHREIBUNG|
 |---|---|
 |943100|Möglicher Session Fixation-Angriff: Festlegung von Cookiewerten in HTML|
 |943110|Möglicher Session Fixation-Angriff: SessionID-Parametername mit domänenexternem Referrer|
 |943120|Möglicher Session Fixation-Angriff: SessionID-Parametername ohne Referrer|
 
-### <a name="p-x-ms-format-detectionnonejava-attacksp"></a><a name="drs944-20"></a> <p x-ms-format-detection="none">Java-Angriffe</p>
+### <a name="java-attacks"></a><a name="drs944-20"></a> JAVA-Angriffe
 |RuleId|BESCHREIBUNG|
 |---|---|
 |944100|Remotebefehlsausführung: Apache Struts, Oracle WebLogic|
-|944110|Erkennt potenzielle Nutzlastausführung|
+|944110|Erkennt potenzielle Payloadausführung|
 |944120|Mögliche Nutzlastausführung und Remotebefehlsausführung|
 |944130|Verdächtige Java-Klassen|
 |944200|Ausnutzung der Java-Deserialisierung (Apache Commons)|
@@ -354,26 +354,26 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |944240|Remotebefehlsausführung: Java-Serialisierung|
 |944250|Remotebefehlsausführung: Verdächtige Java-Methode erkannt|
 
-### <a name="p-x-ms-format-detectionnonems-threatintel-webshellsp"></a><a name="drs9905-20"></a> <p x-ms-format-detection="none">MS-ThreatIntel-WebShells</p>
+### <a name="ms-threatintel-webshells"></a><a name="drs9905-20"></a> MS-ThreatIntel-WebShells
 |RuleId|BESCHREIBUNG|
 |---|---|
 |99005002|Webshell-Interaktionsversuch (POST)|
 |99005003|Webshell-Uploadversuch (POST) – CHOPPER PHP|
 |99005004|Webshell-Uploadversuch (POST) – CHOPPER ASPX|
 
-### <a name="p-x-ms-format-detectionnonems-threatintel-appsecp"></a><a name="drs9903-20"></a> <p x-ms-format-detection="none">MS-ThreatIntel-AppSec</p>
+### <a name="ms-threatintel-appsec"></a><a name="drs9903-20"></a> MS-ThreatIntel-AppSec
 |RuleId|BESCHREIBUNG|
 |---|---|
 |99030001|Path Traversal-Umgehung in Headern (/.././../)|
 |99030002|Path Traversal-Umgehung in Anforderungstext (/.././../)|
 
-### <a name="p-x-ms-format-detectionnonems-threatintel-sqlip"></a><a name="drs99031-20"></a> <p x-ms-format-detection="none">MS-ThreatIntel-SQLI</p>
+### <a name="ms-threatintel-sqli"></a><a name="drs99031-20"></a> MS-ThreatIntel-SQLI
 |RuleId|BESCHREIBUNG|
 |---|---|
 |99031001|Angriff mit Einschleusung von SQL-Befehlen: Allgemeine Tests auf Einschleusung von SQL-Befehlen erkannt|
 |99031002|SQL-Kommentarsequenz erkannt|
 
-### <a name="p-x-ms-format-detectionnonems-threatintel-cvesp"></a><a name="drs99001-20"></a> <p x-ms-format-detection="none">MS-ThreatIntel-CVEs</p>
+### <a name="ms-threatintel-cves"></a><a name="drs99001-20"></a> MS-ThreatIntel-CVEs
 |RuleId|BESCHREIBUNG|
 |---|---|
 |99001001|Versuch der Ausnutzung der F5 TMUI-REST-API-Schwachstelle (CVE-2020-5902) mit bekannten Anmeldeinformationen|
@@ -382,7 +382,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 
 ## <a name="11-rule-sets"></a><a name="drs11"></a> 1.1-Regelsätze
 
-### <a name="p-x-ms-format-detectionnoneprotocol-attackp"></a><a name="drs921-11"></a> <p x-ms-format-detection="none">PROTOCOL-ATTACK</p>
+### <a name="protocol-attack"></a><a name="drs921-11"></a> PROTOCOL-ATTACK
 |RuleId|BESCHREIBUNG|
 |---|---|
 |921110|HTTP Request Smuggling-Angriff|
@@ -393,7 +393,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |921151|HTTP Header Injection-Angriff über Nutzlast (CR/LF erkannt)|
 |921160|HTTP Header Injection-Angriff über Nutzlast (CR/LF und Headername erkannt)|
 
-### <a name="p-x-ms-format-detectionnonelfi---local-file-inclusionp"></a><a name="drs930-11"></a> <p x-ms-format-detection="none">LFI – Local File Inclusion</p>
+### <a name="lfi---local-file-inclusion"></a><a name="drs930-11"></a> LFI – Local File Inclusion
 |RuleId|BESCHREIBUNG|
 |---|---|
 |930100|Path Traversal-Angriff (/../)|
@@ -401,7 +401,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |930120|Zugriffsversuch auf Betriebssystemdatei|
 |930130|Zugriffsversuch auf Datei mit eingeschränktem Zugriff|
 
-### <a name="p-x-ms-format-detectionnonerfi---remote-file-inclusionp"></a><a name="drs931-11"></a> <p x-ms-format-detection="none">RFI – Remote File Inclusion</p>
+### <a name="rfi---remote-file-inclusion"></a><a name="drs931-11"></a> RFI – Remote File Inclusion
 |RuleId|BESCHREIBUNG|
 |---|---|
 |931100|Möglicher RFI-Angriff (Remote File Inclusion): Verwendung von IP-Adresse für URL-Parameter|
@@ -409,7 +409,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |931120|Möglicher RFI-Angriff (Remote File Inclusion): Verwendung von URL-Nutzlast mit nachgestelltem Fragezeichen (?)|
 |931130|Möglicher RFI-Angriff (Remote File Inclusion): Domänenexterner Verweis/Link|
 
-### <a name="p-x-ms-format-detectionnonerce---remote-command-executionp"></a><a name="drs932-11"></a> <p x-ms-format-detection="none">RCE – Remote Command Execution (Remotebefehlsausführung)</p>
+### <a name="rce---remote-command-execution"></a><a name="drs932-11"></a> RCE – Remote Command Execution (Remotebefehlsausführung)
 |RuleId|BESCHREIBUNG|
 |---|---|
 |932100|Remotebefehlsausführung: Einschleusung von Unix-Befehl|
@@ -425,21 +425,21 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |932171|Remotebefehlsausführung: Shellshock (CVE-2014-6271)|
 |932180|Eingeschränkter Dateiuploadversuch|
 
-### <a name="p-x-ms-format-detectionnonephp-attacksp"></a><a name="drs933-11"></a> <p x-ms-format-detection="none">PHP-Angriffe</p>
+### <a name="php-attacks"></a><a name="drs933-11"></a> PHP-Angriffe
 |RuleId|BESCHREIBUNG|
 |---|---|
 |933100|Angriff mit PHP-Einschleusung: öffnendes PHP-Tag gefunden|
 |933110|Angriff mit PHP-Einschleusung: PHP-Skriptdateiupload gefunden|
-|933120|Angriff mit PHP-Einschleusung: Konfigurationsdirektive gefunden|
+|933120|PHP Injection-Angriff: Konfigurationsanweisung gefunden|
 |933130|Angriff mit PHP-Einschleusung: Variable gefunden|
 |933140|Angriff mit PHP-Einschleusung: E/A-Datenstrom gefunden|
 |933150|Angriff mit PHP-Einschleusung: PHP-Funktionsname mit hohem Risikofaktor gefunden|
 |933151|Angriff mit PHP-Einschleusung: PHP-Funktionsname mit mittlerem Risikofaktor gefunden|
 |933160|Angriff mit PHP-Einschleusung: PHP-Funktionsaufruf mit hohem Risikofaktor gefunden|
 |933170|Angriff mit PHP-Einschleusung: Einschleusung von serialisiertem Objekt|
-|933180|Angriff mit PHP-Einschleusung: Aufruf einer Variablenfunktion gefunden|
+|933180|PHP Injection-Angriff: Aufruf einer Variablenfunktion gefunden|
 
-### <a name="p-x-ms-format-detectionnonexss---cross-site-scriptingp"></a><a name="drs941-11"></a> <p x-ms-format-detection="none">XSS – Cross-Site-Scripting</p>
+### <a name="xss---cross-site-scripting"></a><a name="drs941-11"></a> XSS – Cross-Site-Scripting
 |RuleId|BESCHREIBUNG|
 |---|---|
 |941100|XSS-Angriff per libinjection erkannt|
@@ -470,7 +470,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |941340|IE-XSS-Filter – Angriff erkannt|
 |941350|UTF-7-Codierung – IE XSS – Angriff erkannt|
 
-### <a name="p-x-ms-format-detectionnonesqli---sql-injectionp"></a><a name="drs942-11"></a> <p x-ms-format-detection="none">SQLI – Einschleusung von SQL-Befehlen</p>
+### <a name="sqli---sql-injection"></a><a name="drs942-11"></a> SQLI – Einschleusung von SQL-Befehlen
 |RuleId|BESCHREIBUNG|
 |---|---|
 |942100|SQL Injection-Angriff per libinjection erkannt|
@@ -511,14 +511,14 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |942470|Angriff mit Einschleusung von SQL-Befehlen|
 |942480|Angriff mit Einschleusung von SQL-Befehlen|
 
-### <a name="p-x-ms-format-detectionnonesession-fixationp"></a><a name="drs943-11"></a> <p x-ms-format-detection="none">SESSION-FIXATION</p>
+### <a name="session-fixation"></a><a name="drs943-11"></a> SESSION-FIXATION
 |RuleId|BESCHREIBUNG|
 |---|---|
 |943100|Möglicher Session Fixation-Angriff: Festlegung von Cookiewerten in HTML|
 |943110|Möglicher Session Fixation-Angriff: SessionID-Parametername mit domänenexternem Referrer|
 |943120|Möglicher Session Fixation-Angriff: SessionID-Parametername ohne Referrer|
 
-### <a name="p-x-ms-format-detectionnonejava-attacksp"></a><a name="drs944-11"></a> <p x-ms-format-detection="none">JAVA-Angriffe</p>
+### <a name="java-attacks"></a><a name="drs944-11"></a> JAVA-Angriffe
 |RuleId|BESCHREIBUNG|
 |---|---|
 |944100|Remotebefehlsausführung: Verdächtige Java-Klasse erkannt|
@@ -530,26 +530,26 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |944240|Remotebefehlsausführung: Java-Serialisierung (CVE-2015-5842)|
 |944250|Remotebefehlsausführung: Verdächtige Java-Methode erkannt|
 
-### <a name="p-x-ms-format-detectionnonems-threatintel-webshellsp"></a><a name="drs9905-11"></a> <p x-ms-format-detection="none">MS-ThreatIntel-WebShells</p>
+### <a name="ms-threatintel-webshells"></a><a name="drs9905-11"></a> MS-ThreatIntel-WebShells
 |RuleId|BESCHREIBUNG|
 |---|---|
 |99005002|Webshell-Interaktionsversuch (POST)|
 |99005003|Webshell-Uploadversuch (POST) – CHOPPER PHP|
 |99005004|Webshell-Uploadversuch (POST) – CHOPPER ASPX|
 
-### <a name="p-x-ms-format-detectionnonems-threatintel-appsecp"></a><a name="drs9903-11"></a> <p x-ms-format-detection="none">MS-ThreatIntel-AppSec</p>
+### <a name="ms-threatintel-appsec"></a><a name="drs9903-11"></a> MS-ThreatIntel-AppSec
 |RuleId|BESCHREIBUNG|
 |---|---|
 |99030001|Path Traversal-Umgehung in Headern (/.././../)|
 |99030002|Path Traversal-Umgehung in Anforderungstext (/.././../)|
 
-### <a name="p-x-ms-format-detectionnonems-threatintel-sqlip"></a><a name="drs99031-11"></a> <p x-ms-format-detection="none">MS-ThreatIntel-SQLI</p>
+### <a name="ms-threatintel-sqli"></a><a name="drs99031-11"></a> MS-ThreatIntel-SQLI
 |RuleId|BESCHREIBUNG|
 |---|---|
 |99031001|Angriff mit Einschleusung von SQL-Befehlen: Allgemeine Tests auf Einschleusung von SQL-Befehlen erkannt|
 |99031002|SQL-Kommentarsequenz erkannt|
 
-### <a name="p-x-ms-format-detectionnonems-threatintel-cvesp"></a><a name="drs99001-11"></a> <p x-ms-format-detection="none">MS-ThreatIntel-CVEs</p>
+### <a name="ms-threatintel-cves"></a><a name="drs99001-11"></a> MS-ThreatIntel-CVEs
 |RuleId|BESCHREIBUNG|
 |---|---|
 |99001001|Versuch der Ausnutzung der F5 TMUI-REST-API-Schwachstelle (CVE-2020-5902) mit bekannten Anmeldeinformationen|
@@ -558,7 +558,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 
 ## <a name="10-rule-sets"></a><a name="drs10"></a> 1.0-Regelsätze
 
-### <a name="p-x-ms-format-detectionnoneprotocol-attackp"></a><a name="drs921-10"></a> <p x-ms-format-detection="none">PROTOCOL-ATTACK</p>
+### <a name="protocol-attack"></a><a name="drs921-10"></a> PROTOCOL-ATTACK
 |RuleId|BESCHREIBUNG|
 |---|---|
 |921110|HTTP Request Smuggling-Angriff|
@@ -569,7 +569,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |921151|HTTP Header Injection-Angriff über Nutzlast (CR/LF erkannt)|
 |921160|HTTP Header Injection-Angriff über Nutzlast (CR/LF und Headername erkannt)|
 
-### <a name="p-x-ms-format-detectionnonelfi---local-file-inclusionp"></a><a name="drs930-10"></a> <p x-ms-format-detection="none">LFI – Local File Inclusion</p>
+### <a name="lfi---local-file-inclusion"></a><a name="drs930-10"></a> LFI – Local File Inclusion
 |RuleId|BESCHREIBUNG|
 |---|---|
 |930100|Path Traversal-Angriff (/../)|
@@ -577,7 +577,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |930120|Zugriffsversuch auf Betriebssystemdatei|
 |930130|Zugriffsversuch auf Datei mit eingeschränktem Zugriff|
 
-### <a name="p-x-ms-format-detectionnonerfi---remote-file-inclusionp"></a><a name="drs931-10"></a> <p x-ms-format-detection="none">RFI – Remote File Inclusion</p>
+### <a name="rfi---remote-file-inclusion"></a><a name="drs931-10"></a> RFI – Remote File Inclusion
 |RuleId|BESCHREIBUNG|
 |---|---|
 |931100|Möglicher RFI-Angriff (Remote File Inclusion): Verwendung von IP-Adresse für URL-Parameter|
@@ -585,7 +585,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |931120|Möglicher RFI-Angriff (Remote File Inclusion): Verwendung von URL-Nutzlast mit nachgestelltem Fragezeichen (?)|
 |931130|Möglicher RFI-Angriff (Remote File Inclusion): Domänenexterner Verweis/Link|
 
-### <a name="p-x-ms-format-detectionnonerce---remote-command-executionp"></a><a name="drs932-10"></a> <p x-ms-format-detection="none">RCE – Remote Command Execution (Remotebefehlsausführung)</p>
+### <a name="rce---remote-command-execution"></a><a name="drs932-10"></a> RCE – Remote Command Execution (Remotebefehlsausführung)
 |RuleId|BESCHREIBUNG|
 |---|---|
 |932100|Remotebefehlsausführung: Einschleusung von Unix-Befehl|
@@ -601,12 +601,12 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |932171|Remotebefehlsausführung: Shellshock (CVE-2014-6271)|
 |932180|Eingeschränkter Dateiuploadversuch|
 
-### <a name="p-x-ms-format-detectionnonephp-attacksp"></a><a name="drs933-10"></a> <p x-ms-format-detection="none">PHP-Angriffe</p>
+### <a name="php-attacks"></a><a name="drs933-10"></a> PHP-Angriffe
 |RuleId|BESCHREIBUNG|
 |---|---|
 |933100|Angriff mit PHP-Einschleusung: Öffnendes/schließendes Tag gefunden|
 |933110|Angriff mit PHP-Einschleusung: PHP-Skriptdateiupload gefunden|
-|933120|Angriff mit PHP-Einschleusung: Konfigurationsdirektive gefunden|
+|933120|PHP Injection-Angriff: Konfigurationsanweisung gefunden|
 |933130|Angriff mit PHP-Einschleusung: Variable gefunden|
 |933131|Angriff mit PHP-Einschleusung: Variable gefunden|
 |933140|Angriff mit PHP-Einschleusung: E/A-Datenstrom gefunden|
@@ -615,9 +615,9 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |933160|Angriff mit PHP-Einschleusung: PHP-Funktionsaufruf mit hohem Risikofaktor gefunden|
 |933161|Angriff mit PHP-Einschleusung: PHP-Funktionsaufruf mit niedrigem Wert gefunden|
 |933170|Angriff mit PHP-Einschleusung: Einschleusung von serialisiertem Objekt|
-|933180|Angriff mit PHP-Einschleusung: Aufruf einer Variablenfunktion gefunden|
+|933180|PHP Injection-Angriff: Aufruf einer Variablenfunktion gefunden|
 
-### <a name="p-x-ms-format-detectionnonexss---cross-site-scriptingp"></a><a name="drs941-10"></a> <p x-ms-format-detection="none">XSS – Cross-Site-Scripting</p>
+### <a name="xss---cross-site-scripting"></a><a name="drs941-10"></a> XSS – Cross-Site-Scripting
 |RuleId|BESCHREIBUNG|
 |---|---|
 |941100|XSS-Angriff per libinjection erkannt|
@@ -648,7 +648,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |941340|IE-XSS-Filter – Angriff erkannt|
 |941350|UTF-7-Codierung – IE XSS – Angriff erkannt|
 
-### <a name="p-x-ms-format-detectionnonesqli---sql-injectionp"></a><a name="drs942-10"></a> <p x-ms-format-detection="none">SQLI – Einschleusung von SQL-Befehlen</p>
+### <a name="sqli---sql-injection"></a><a name="drs942-10"></a> SQLI – Einschleusung von SQL-Befehlen
 |RuleId|BESCHREIBUNG|
 |---|---|
 |942100|SQL Injection-Angriff per libinjection erkannt|
@@ -689,18 +689,18 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |942470|Angriff mit Einschleusung von SQL-Befehlen|
 |942480|Angriff mit Einschleusung von SQL-Befehlen|
 
-### <a name="p-x-ms-format-detectionnonesession-fixationp"></a><a name="drs943-10"></a> <p x-ms-format-detection="none">SESSION-FIXATION</p>
+### <a name="session-fixation"></a><a name="drs943-10"></a> SESSION-FIXATION
 |RuleId|BESCHREIBUNG|
 |---|---|
 |943100|Möglicher Session Fixation-Angriff: Festlegung von Cookiewerten in HTML|
 |943110|Möglicher Session Fixation-Angriff: SessionID-Parametername mit domänenexternem Referrer|
 |943120|Möglicher Session Fixation-Angriff: SessionID-Parametername ohne Referrer|
 
-### <a name="p-x-ms-format-detectionnonejava-attacksp"></a><a name="drs944-10"></a> <p x-ms-format-detection="none">JAVA-Angriffe</p>
+### <a name="java-attacks"></a><a name="drs944-10"></a> JAVA-Angriffe
 |RuleId|BESCHREIBUNG|
 |---|---|
 |944100|Remotebefehlsausführung: Apache Struts, Oracle WebLogic|
-|944110|Erkennt potenzielle Nutzlastausführung|
+|944110|Erkennt potenzielle Payloadausführung|
 |944120|Mögliche Nutzlastausführung und Remotebefehlsausführung|
 |944130|Verdächtige Java-Klassen|
 |944200|Ausnutzung der Java-Deserialisierung (Apache Commons)|
@@ -712,19 +712,19 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 
 ## <a name="bot-manager-rule-sets"></a><a name="bot"></a> Bot Manager-Regelsätze
 
-### <a name="p-x-ms-format-detectionnonebad-botsp"></a><a name="bot100"></a> <p x-ms-format-detection="none">Bösartige Bots</p>
+### <a name="bad-bots"></a><a name="bot100"></a> Bösartige Bots
 |RuleId|BESCHREIBUNG|
 |---|---|
 |Bot100100|Von Threat Intelligence erkannte schädliche Bots|
 |Bot100200|Schädliche Bots mit gefälschter Identität|
 
-### <a name="p-x-ms-format-detectionnonegood-botsp"></a><a name="bot200"></a> <p x-ms-format-detection="none">Gültige Bots</p>
+### <a name="good-bots"></a><a name="bot200"></a> Gute Bots
 |RuleId|BESCHREIBUNG|
 |---|---|
 |Bot200100|Suchmaschinencrawler|
 |Bot200200|Nicht überprüfte Suchmaschinencrawler|
 
-### <a name="p-x-ms-format-detectionnoneunknown-botsp"></a><a name="bot300"></a> <p x-ms-format-detection="none">Unbekannte Bots</p>
+### <a name="unknown-bots"></a><a name="bot300"></a> Unbekannte Bots
 |RuleId|BESCHREIBUNG|
 |---|---|
 |Bot300100|Nicht angegebene Identität|
