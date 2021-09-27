@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: damendo
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c468dccd9058125169181c3fc456b71b7ea7ffec
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d7e471ea01a7b0244080a0df9738aa3b8f70268d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339572"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128590948"
 ---
 # <a name="update-the-network-watcher-extension-to-the-latest-version"></a>Aktualisieren der Network Watcher-Erweiterung auf die neueste Version
 
@@ -34,7 +34,7 @@ In diesem Artikel wird davon ausgegangen, dass die Network Watcher-Erweiterung 
 
 ## <a name="latest-version"></a>Aktuelle Version
 
-Bei der aktuellen Version der Network Watcher-Erweiterung handelt es sich derzeit um `1.4.1884.1`.
+Bei der aktuellen Version der Network Watcher-Erweiterung handelt es sich derzeit um `1.4.1974.1`.
 
 ## <a name="update-your-extension-using-a-powershell-script"></a>Aktualisieren Ihrer Erweiterung mit einem PowerShell-Skript
 Kunden mit umfangreichen Bereitstellungen, die mehrere VMs gleichzeitig aktualisieren müssen. Informationen zum manuellen Aktualisieren ausgewählter VMs finden Sie im nächsten Abschnitt. 
@@ -59,7 +59,7 @@ param(
     [Parameter(Mandatory=$false)]
     [Switch] $NoUpdate = $false,
     [Parameter(Mandatory=$false)]
-    [string] $MinVersion = "1.4.1654.1"
+    [string] $MinVersion = "1.4.1974.1"
 )
 
 

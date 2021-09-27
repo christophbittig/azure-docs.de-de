@@ -4,17 +4,18 @@ titleSuffix: Azure API Management
 description: Informieren Sie sich über das Entwicklerportal in API Management, eine anpassbare Website, auf der API-Consumer Ihre APIs untersuchen können.
 services: api-management
 documentationcenter: API Management
-author: mikebudzynski
+author: dlepow
 ms.service: api-management
 ms.topic: article
 ms.date: 04/15/2021
-ms.author: apimpm
-ms.openlocfilehash: aaf02affce924232deb56bf7694771c838b0b323
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.author: danlep
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 4fa9b0e777ce64322ebad74c8279724817530790
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739600"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664578"
 ---
 # <a name="overview-of-the-developer-portal"></a>Übersicht über das Entwicklerportal
 

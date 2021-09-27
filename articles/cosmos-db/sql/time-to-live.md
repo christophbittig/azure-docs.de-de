@@ -6,14 +6,14 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 09/16/2021
 ms.reviewer: sngun
-ms.openlocfilehash: e859e244e41b6bbd065244a285653b2d9d3988e9
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 800ac96aee933791d0507e21ec5623ce47e82efb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123115241"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128623739"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Gültigkeitsdauer (TTL) in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -22,6 +22,7 @@ Mit der **Gültigkeitsdauer** (Time to Live, TTL) bietet Azure Cosmos DB die Mö
 
 Das Löschen abgelaufener Elemente ist ein im Hintergrund ausgeführter Vorgang, bei dem die verbleibenden [Anforderungseinheiten](../request-units.md) (also die nicht von Benutzeranforderungen verbrauchten Anforderungseinheiten) verbraucht werden. Wenn der Container mit Anforderungen überlastet ist und nicht genügend Anforderungseinheiten (RUs) verfügbar sind, wird die Datenlöschung auch nach Ablauf der Lebensdauer verzögert. Die Daten werden gelöscht, wenn genügend Anforderungseinheiten zum Ausführen des Löschvorgangs verfügbar sind. Obwohl die Datenlöschung verzögert wird, werden die Daten nach Ablauf der Lebensdauer über keine Abfragen (über keine API) zurückgegeben.
 
+> [!NOTE]
 > Dieser Inhalt bezieht sich auf die Gültigkeitsdauer des Azure Cosmos DB-Transaktionsspeichers. Wenn Sie nach der Gültigkeitsdauer des Analysespeichers suchen, die NoETL-HTAP-Szenarien über [Azure Synapse Link](../synapse-link.md) ermöglicht, klicken Sie [hier](../analytical-store-introduction.md#analytical-ttl).
 
 ## <a name="time-to-live-for-containers-and-items"></a>Gültigkeitsdauer für Container und Elemente

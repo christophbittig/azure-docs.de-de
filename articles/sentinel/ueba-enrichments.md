@@ -1,26 +1,19 @@
 ---
 title: Referenz zu Azure Sentinel-UEBA-Anreicherungen | Microsoft-Dokumentation
 description: In diesem Artikel werden die Entitätsanreicherungen gezeigt, die von der Entitätsverhaltensanalyse von Azure Sentinel generiert werden.
-services: sentinel
-cloud: na
-documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: reference
 ms.date: 05/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 3253a399015e533fc299bc7a338ce091769f4c65
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 6420ef1345e20c2aec511a0a0284753a78895020
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114721696"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627347"
 ---
 # <a name="azure-sentinel-ueba-enrichments-reference"></a>Referenz zu Azure Sentinel-UEBA-Anreicherungen
 
@@ -199,7 +192,7 @@ In der folgenden Tabelle werden die Anreicherungen beschrieben, die im dynamisch
 
 | Anreicherungsname | [Baseline](#baseline-explained) (Tage) | BESCHREIBUNG | Beispielwert |
 | --- | --- | --- | --- |
-| **Beim letzten Mal vom Benutzer ausgeführte Aktion**<br>*(LastTimeUserPerformedAction)* | 180 | Beim letzten Mal hat der Benutzer die gleiche Aktion ausgeführt. | <Timestamp> |
+| **Beim letzten Mal vom Benutzer ausgeführte Aktion**<br>*(LastTimeUserPerformedAction)* | 180 | Beim letzten Mal hat der Benutzer die gleiche Aktion ausgeführt. | \<Timestamp\> |
 | **Eine ähnliche Aktion wurde in der Vergangenheit nicht ausgeführt.**<br>*(SimilarActionWasn'tPerformedInThePast)* | 30 | Keine Aktion wurde vom Benutzer im gleichen Ressourcenanbieter durchgeführt. | TRUE, FALSE |
 | **Quell-IP-Standort**<br>*(SourceIPLocation)* | *N/V* | Das aus der Quell-IP der Aktion aufgelöste Land. | [Surrey, England] |
 | **Ungewöhnlich hohe Anzahl an Vorgängen**<br>*(UncommonHighVolumeOfOperations)* | 7 | Ein Benutzer hat einen Burst ähnlicher Vorgänge innerhalb desselben Anbieters durchgeführt. | TRUE, FALSE |

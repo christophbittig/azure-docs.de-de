@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
-ms.openlocfilehash: 7dd40b52cbc74e62a6dbb8ed83d19c968e48d9c4
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: 6a21299d505d0132bab432223095850b3006b05e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822814"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651273"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>Erstellen von Ausdrücken im Zuordnungsdatenfluss
 
@@ -29,25 +29,25 @@ Im Zuordnungsdatenfluss werden viele Transformationseigenschaften als Ausdrücke
 
 Der Ausdrucks-Generator kann auf verschiedene Weise geöffnet werden. Diese hängen jeweils vom Kontext der Datenflusstransformation ab. Der häufigste Anwendungsfall ist eine Transformation wie eine [abgeleitete Spalte](data-flow-derived-column.md) und ein [Aggregat](data-flow-aggregate.md), bei denen Benutzer Spalten mithilfe der Ausdruckssprache für Datenflüsse erstellen oder aktualisieren. Sie können den Ausdrucks-Generator öffnen, indem Sie über der Spaltenliste **Ausdrucks-Generator öffnen** auswählen. Sie können auch auf einen Spaltenkontext klicken und den Ausdrucks-Generator direkt für diesen Ausdruck öffnen.
 
-![Öffnen des Ausdrucks-Generators – Abgeleitet](media/data-flow/open-expression-builder-derive.png "Öffnen des Ausdrucks-Generators – Abgeleitet")
+:::image type="content" source="media/data-flow/open-expression-builder-derive.png" alt-text="Öffnen des Ausdrucks-Generators – Abgeleitet":::
 
 Bei einigen Transformationen wie [Filtern](data-flow-filter.md) wird der Ausdrucks-Generator durch Klicken auf ein blaues Ausdruckstextfeld geöffnet. 
 
-![Blaues Ausdrucksfeld](media/data-flow/expressionbox.png "Blaues Ausdrucksfeld")
+:::image type="content" source="media/data-flow/expressionbox.png" alt-text="Blaues Ausdrucksfeld":::
 
 Wenn Sie in einer Übereinstimmungs- oder Gruppieren nach-Bedingung auf Spalten verweisen, kann ein Ausdruck Werte aus Spalten extrahieren. Wählen Sie zum Erstellen eines Ausdrucks die Option **Berechnete Spalte** aus.
 
-![Option „Berechnete Spalte“](media/data-flow/computedcolumn.png "Option „Berechnete Spalte“")
+:::image type="content" source="media/data-flow/computedcolumn.png" alt-text="Option „Berechnete Spalte“":::
 
 In Fällen, in denen ein Ausdruck oder ein Literalwert gültige Eingaben sind, können Sie mit **Dynamischen Inhalt hinzufügen** einen Ausdruck erstellen, der zu einem Literalwert ausgewertet wird.
 
-![Option „Dynamischen Inhalt hinzufügen“](media/data-flow/add-dynamic-content.png "Option „Dynamischen Inhalt hinzufügen“")
+:::image type="content" source="media/data-flow/add-dynamic-content.png" alt-text="Option „Dynamischen Inhalt hinzufügen“":::
 
 ## <a name="expression-elements"></a>Elemente eines Ausdrucks
 
 Bei Zuordnungsdatenflüssen können Ausdrücke aus Spaltenwerten, Parametern, Funktionen, lokalen Variablen, Operatoren und Literalwerten bestehen. Diese Ausdrücke müssen als Spark-Datentyp wie Zeichenfolge, boolescher Wert oder ganze Zahl ausgewertet werden können.
 
-![Elemente eines Ausdrucks](media/data-flow/expression-elements.png "Elemente eines Ausdrucks")
+:::image type="content" source="media/data-flow/expression-elements.png" alt-text="Elemente eines Ausdrucks":::
 
 ### <a name="functions"></a>Funktionen
 
@@ -57,7 +57,7 @@ Zuordnungsdatenflüsse verfügen über integrierte Funktionen und Operatoren, di
 
 Verwenden Sie bei Spalten oder Funktionen, die Arraytypen zurückgeben, eckige Klammern ([]), um auf ein bestimmtes Element zuzugreifen. Wenn der Index nicht vorhanden ist, wird der Ausdruck als NULL ausgewertet.
 
-![Ausdrucks-Generator: Array](media/data-flow/expression-array.png "Ausdrucksdatenvorschau")
+:::image type="content" source="media/data-flow/expression-array.png" alt-text="Ausdrucks-Generator: Array":::
 
 > [!IMPORTANT]
 > Bei der Zuordnung von Datenflüssen haben Arrays die Basis 1, d. h., das erste Element hat den Index 1. Beispielsweise greifen Sie mit myArray[1] auf das erste Element eines Arrays mit dem Namen „myArray“ zu.
@@ -70,7 +70,7 @@ Wenn der Datenfluss in einer seiner Quellen ein definiertes Schema verwendet, k�
 
 Wenn Sie Spaltennamen mit Sonder- oder Leerzeichen haben, setzen Sie den Namen in geschweifte Klammern, um darauf in einem Ausdruck zu verweisen.
 
-```{[dbo].this_is my complex name$$$}```
+`{[dbo].this_is my complex name$$$}`
 
 ### <a name="parameters"></a>Parameter
 
@@ -84,7 +84,7 @@ Eine zwischengespeicherte Suche ermöglicht die Inlinesuche der Ausgabe einer zw
 
 `outputs()` akzeptiert keine Parameter und gibt die gesamte Cachesenke als Array komplexer Spalten zurück. Ein Aufruf ist nicht möglich, wenn Schlüsselspalten in der Senke angegeben sind. Dieser Vorgang sollte nur dann verwendet werden, wenn die Cachesenke nur einige wenige Zeilen enthält. Ein gängiger Anwendungsfall ist das Anfügen des Maximalwerts eines Schlüssels, der inkrementell erhöht wird. Wenn die zwischengespeicherte aggregierte Einzelzeile `CacheMaxKey` die Spalte `MaxKey` enthält, können Sie durch Aufruf von `CacheMaxKey#outputs()[1].MaxKey` auf den ersten Wert verweisen.
 
-![Zwischengespeicherte Suche](media/data-flow/cached-lookup-example.png "Zwischengespeicherte Suche")
+:::image type="content" source="media/data-flow/cached-lookup-example.png" alt-text="Zwischengespeicherte Suche":::
 
 ### <a name="locals"></a>Locals
 
@@ -94,7 +94,7 @@ Wenn Sie Ihre Logik für mehrere Spalten gemeinsam nutzen oder aufteilen möchte
 
 Wenn [debug mode](concepts-data-flow-debug-mode.md) aktiviert ist, können Sie mithilfe des Debugclusters interaktiv eine Vorschau des Werts anzeigen, den der Ausdruck ergibt. Wählen Sie neben der Datenvorschau **Aktualisieren** aus, um die Ergebnisse der Datenvorschau zu aktualisieren. Es wird die Ausgabe für jede Zeile entsprechend den Eingabespalten angezeigt.
 
-![Vorschau während der Bearbeitung](media/data-flow/preview-expression.png "Ausdrucksdatenvorschau")
+:::image type="content" source="media/data-flow/preview-expression.png" alt-text="Vorschau während der Bearbeitung":::
 
 ## <a name="string-interpolation"></a>Zeichenfolgeninterpolierung
 
@@ -126,7 +126,7 @@ Die folgenden Beispiele stellen gültige Kommentare dar:
 
 Wenn Sie einen Kommentar am Anfang des Ausdrucks einfügen, wird er im Transformationstextfeld angezeigt und dokumentiert Ihre Transformationsausdrücke.
 
-![Kommentar im Transformationstextfeld](media/data-flow/comment-expression.png "Kommentare")
+:::image type="content" source="media/data-flow/comment-expression.png" alt-text="Kommentar im Transformationstextfeld":::
 
 ## <a name="regular-expressions"></a>Reguläre Ausdrücke
 
@@ -159,13 +159,13 @@ Im Folgenden finden Sie eine Liste der Tastenkombination, die im Ausdrucks-Gener
 
 ### <a name="convert-to-dates-or-timestamps"></a>Konvertieren in Datumsangaben oder Zeitstempel
 
-Wenn Sie Zeichenfolgenliterale in Ihre Zeitstempelausgabe einbeziehen möchten, schließen Sie die Konvertierung in ```toString()``` ein.
+Wenn Sie Zeichenfolgenliterale in Ihre Zeitstempelausgabe einbeziehen möchten, schließen Sie die Konvertierung in `toString()` ein.
 
-```toString(toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss'), 'MM/dd /yyyy\'T\'HH:mm:ss')```
+`toString(toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss'), 'MM/dd /yyyy\'T\'HH:mm:ss')`
 
 Wenn Sie Millisekunden von einer Epoche in ein Datum oder einen Zeitstempel konvertieren möchten, verwenden Sie `toTimestamp(<number of milliseconds>)`. Wenn die Zeit in Sekunden angezeigt wird, multiplizieren Sie den Wert mit 1.000.
 
-```toTimestamp(1574127407*1000l)```
+`toTimestamp(1574127407*1000l)`
 
 Das nachgestellte „l“ am Ende des vorstehenden Ausdrucks gibt eine Konvertierung in einen long-Datentyp als inline-Syntax an.
 

@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.date: 05/10/2021
-ms.openlocfilehash: 2058fcade3375f680f616374ba8dee73a4e72dbc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6612ded8cdc5e5e1a5ef38c18cc854fde41f2733
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122639987"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128641425"
 ---
 # <a name="parse-transformation-in-mapping-data-flow"></a>Analysetransformation in einem Zuordnungsdatenfluss
 
@@ -26,7 +26,7 @@ Verwenden Sie die Analysetransformation zum Analysieren von Spalten in Ihren Dat
 
 Im Konfigurationspanel für Analysetransformation wählen Sie zuerst den Datentyp aus, der in den Spalten enthalten ist, die Sie inline analysieren möchten. Die Analysetransformation enthält auch die folgenden Konfigurationseinstellungen.
 
-![Analyseeinstellungen](media/data-flow/data-flow-parse-1.png "Analysieren")
+:::image type="content" source="media/data-flow/data-flow-parse-1.png" alt-text="Analyseeinstellungen":::
 
 ### <a name="column"></a>Column
 
@@ -51,11 +51,11 @@ Verwenden Sie den Ausdrucks-Generator zum Festlegen der Quelle für Ihre Analyse
 
 Hier konfigurieren Sie das Zielausgabeschema aus der Analyse, das in eine einzelne Spalte geschrieben wird.
 
-![Analysebeispiel](media/data-flow/data-flow-parse-2.png "Analysebeispiel")
+:::image type="content" source="media/data-flow/data-flow-parse-2.png" alt-text="Analysebeispiel":::
 
 In diesem Beispiel haben wir die Analyse des eingehenden Felds "jsonString" definiert, das Nur-Text ist, aber als JSON-Struktur formatiert wurde. Wir werden die analysierten Ergebnisse als JSON in der neuen Spalte „json“ mit folgendem Schema speichern:
 
-```(trade as boolean, customers as string[])```
+`(trade as boolean, customers as string[])`
 
 Überprüfen Sie auf der Registerkarte „Überprüfen“ und in der Datenvorschau, ob Ihre Ausgabe richtig zugeordnet wird.
 

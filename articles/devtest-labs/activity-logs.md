@@ -1,14 +1,14 @@
 ---
-title: Aktivitätsprotokolle in Azure DevTest Labs | Microsoft-Dokumentation
+title: Aktivitätsprotokolle
 description: Dieser Artikel enthält die Schritte zum Anzeigen von Aktivitätsprotokollen in Azure DevTest Labs.
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.openlocfilehash: 51bdfc6c3857a3e59d75094b4c847c80c58de045
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e5c7453a1cc4959f6517050ed4c1896890b2610b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100582765"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128654267"
 ---
 # <a name="view-activity-logs-for-labs-in-azure-devtest-labs"></a>Anzeigen von Aktivitätsprotokollen in Azure DevTest Labs 
 Nachdem Sie ein oder mehrere Labs erstellt haben, möchten Sie vermutlich überwachen, wer zu welcher Zeit und auf welche Weise auf Ihre Labs zugreift und diese ändert und verwaltet. Azure DevTest Labs verwendet Azure Monitor, und zwar insbesondere **Aktivitätsprotokolle**, um Informationen zu solchen Vorgängen in Labs bereitzustellen. 
@@ -47,4 +47,3 @@ Weitere Informationen zu Aktivitätsprotokollen finden Sie unter [Azure-Aktivit�
 
 - Informationen zum Festlegen von **Warnungen** für Aktivitätsprotokolle finden Sie unter [Erstellen von Warnungen](create-alerts.md).
 - Weitere Informationen zu Aktivitätsprotokollen finden Sie unter [Azure-Aktivitätsprotokoll](../azure-monitor/essentials/activity-log.md).
-

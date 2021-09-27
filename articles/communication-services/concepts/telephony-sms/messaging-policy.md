@@ -9,12 +9,12 @@ ms.author: prakulka
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 2281dac86281d01ec6f033062b87236a780d3bc7
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 8bd683be329572189daedc74f089ef89d9f015ea
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123259746"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609667"
 ---
 # <a name="azure-communication-services-messaging-policy"></a>Azure Communication Services: Nachrichtenrichtlinie
 
@@ -101,7 +101,6 @@ Vor dem Senden einer Nachricht ist normalerweise eine ausdrückliche Einwilligun
  
 Alle diese Nachrichten dürfen keine Informationen zur Kundenwerbung oder andere Werbung enthalten.
 
-
 ## <a name="opt-out"></a>Beendigung der Teilnahme
 
 Nachrichtenempfänger können alle geeigneten Mittel nutzen, um ihre Einwilligung zu widerrufen und den Erhalt weiterer Nachrichten zu beenden. Es ist Ihnen nicht gestattet, ein ausschließliches Mittel festzulegen, das von Nachrichtenempfängern zum Widerrufen ihrer Einwilligung verwendet werden muss. 
@@ -115,7 +114,6 @@ Eine der häufigsten Vorgehensweisen für die Beendigung der Teilnahme ist das E
 ### <a name="opt-out-best-practices"></a>Bewährte Methoden für die Beendigung der Teilnahme:
 
 Neben Schlüsselwörtern bestehen andere Möglichkeiten zur Beendigung der Teilnahme beispielsweise darin, eine entsprechende E-Mail-Adresse, eine Telefonnummer des Kundensupports oder einen Link auf Ihrer Webseite für Kunden bereitzustellen. 
-
 
 ### <a name="how-we-handle-opt-out-requests"></a>Verarbeitung von Anforderungen zur Beendigung der Teilnahme:
 

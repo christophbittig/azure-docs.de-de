@@ -9,27 +9,27 @@ ms.workload: infrastructure-services
 ms.date: 05/25/2021
 ms.author: duau
 ms.custom: references_regions
-ms.openlocfilehash: 8208f6fbbd3efd70b2bb33e2c1163665326cec63
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 38cb0070b8460dd330a035b5cd611121845cbaba
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110482363"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128652318"
 ---
 # <a name="azure-front-door-standardpremium-edge-locations-by-metro"></a>Azure Front Door Standard/Premium Edge-Standorte nach Großstädten
 > [!div class="op_single_selector"]
 > * [Edge-Standorte nach Region](edge-locations.md)
-> * [Edge-Standorte nach Abkürzung](edge-locations-by-abbreviation.md)
+> * [Edgestandorte nach Abkürzung](edge-locations-by-abbreviation.md)
 > 
 
-In diesem Artikel werden die aktuellen Großstädte mit Edge-Standorten (nach Region sortiert für Azure Front Door) aufgeführt. Jede Großstadt kann mehrere Edge-Standorte enthalten. Derzeit verfügt Azure Front Door über 116 Edge-Standorte in 100 Großstädten.
+In diesem Artikel werden die aktuellen Metros mit Edgestandorten nach Region für Azure Front Door aufgeführt. Jedes Metro kann mehrere Edgestandorte enthalten. Derzeit verfügt Azure Front Door über 116 Edgestandorte an 100 Metros.
 
-## <a name="microsoft-edge-locations"></a>Microsoft Edge-Standorte
+## <a name="microsoft-edge-locations"></a>Microsoft Edgestandorte
 
 [!INCLUDE [front-door-edge-locations](../../../includes/front-door-edge-locations.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Zeigen Sie [Azure Front Door-Edge-Standorte nach Abkürzung](edge-locations-by-abbreviation.md) an.
-* Die aktuelle Liste der Edgeknoten für Azure Front Door finden Sie unter [Edgeknotenliste – REST-API](/rest/api/cdn/cdn/edgenodes/list).
-* Erfahren Sie mehr über das [Erstellen eines Azure Front Door Standard/Premium-Profils](create-front-door-portal.md).
+* [Azure Front Door Edgestandorte nach Abkürzung](edge-locations-by-abbreviation.md) anzeigen
+* Die aktuelle Liste der Edgeknoten für Azure Front Door finden Sie unter [Edgeknotenliste – REST-API](/rest/api/cdn/edge-nodes/list).
+* Erfahren Sie mehr über das [Erstellen eines Profils für Azure Front Door Standard/Premium](create-front-door-portal.md).

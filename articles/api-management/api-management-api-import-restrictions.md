@@ -4,7 +4,7 @@ titleSuffix: Azure API Management
 description: Hier erhalten Sie Informationen zu bekannten Problemen und Einschränkungen bei der Unterstützung der Formate Open API, WSDL und WADL in Azure API Management.
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: vlvinogr
 editor: ''
 ms.assetid: 7a5a63f0-3e72-49d3-a28c-1bb23ab495e2
@@ -13,13 +13,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/02/2020
-ms.author: apimpm
-ms.openlocfilehash: c5f1509a5d037e5866ed86266693e955bdca2d6f
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.author: danlep
+ms.openlocfilehash: f23f1a4200c973a90bee84cadfa9e49eef7523dc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123186423"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128675438"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Einschränkungen und bekannte Probleme beim Import von APIs
 

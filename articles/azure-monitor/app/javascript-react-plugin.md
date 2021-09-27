@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: b703d8bc5253d8f5daeded8211e36dc119188b08
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 7dd25881791340a02ced78a341e58d106c6f1a40
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112027783"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128565495"
 ---
 # <a name="react-plugin-for-application-insights-javascript-sdk"></a>React-Plug-In für das Application Insights-JavaScript-SDK
 
@@ -26,8 +26,7 @@ Installieren Sie das npm-Paket:
 
 ```bash
 
-npm install @microsoft/applicationinsights-react-js
-npm install @microsoft/applicationinsights-web
+npm install @microsoft/applicationinsights-react-js @microsoft/applicationinsights-web --save
 
 ```
 

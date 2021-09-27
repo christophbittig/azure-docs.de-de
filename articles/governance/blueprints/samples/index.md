@@ -3,12 +3,12 @@ title: Index der Blaupausenbeispiele
 description: Index der Beispiele für Compliance und Standards für die Bereitstellung von Umgebungen, Richtlinien und Cloud Adoption Framework-Grundlagen mit Azure Blueprints.
 ms.date: 08/17/2021
 ms.topic: sample
-ms.openlocfilehash: 22c6e1382fdfbd7cafb423e99239fe2480d3b088
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 31cf137577301402cd9e26d96a1204f427331daf
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322130"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658296"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints-Beispiele
 
@@ -19,16 +19,11 @@ In der folgenden Tabelle sind Links zu Beispielen für Azure Blueprints enthalte
 | Beispiel | BESCHREIBUNG |
 |---------|---------|
 | [ISM PROTECTED der australischen Regierung](./ism-protected/index.md) | Stellt Schutzmaßnahmen für die Konformität mit ISM PROTECTED der australischen Regierung bereit. |
-| [Einführung zum Azure Security-Vergleichstest](./azure-security-benchmark.md) | Enthält Leitlinien für die Einhaltung des [Azure-Sicherheitsvergleichstests](../../../security/benchmarks/overview.md). |
 | [Azure Security Benchmark Foundation](./azure-security-benchmark-foundation/index.md) | Dient zum Bereitstellen und Konfigurieren von Azure Security Benchmark Foundation. |
 | [Canada Federal PBMM](./canada-federal-pbmm.md) | Enthält Leitlinien für die Einhaltung von PBMM (Canada Federal Protected B, Medium Integrity, Medium Availability). |
 | [CIS Microsoft Azure Foundations Benchmark v1.3.0](./cis-azure-1-3-0.md) | Hier finden Sie eine Reihe von Richtlinien, die Ihnen bei der Einhaltung der Empfehlungen von CIS Microsoft Azure Foundations Benchmark v1.3.0 helfen. |
 | [CIS Microsoft Azure Foundations Benchmark v1.1.0](./cis-azure-1-1-0.md) | Hier finden Sie eine Reihe von Richtlinien, die Ihnen bei der Einhaltung der Empfehlungen von CIS Microsoft Azure Foundations Benchmark v1.1.0 helfen. |
 | [CMMC Level 3](./cmmc-l3.md) | Enthält Leitlinien für die Einhaltung von CMMC Level 3. |
-| [DoD-Auswirkungsstufe 4](./dod-impact-level-4/index.md) | Hier finden Sie eine Reihe von Richtlinien, die Ihnen bei der Einhaltung der DoD-Auswirkungsstufe 4 helfen. |
-| [DoD-Auswirkungsstufe 5](./dod-impact-level-5/index.md) | Hier finden Sie eine Reihe von Richtlinien, die Ihnen bei der Einhaltung der DoD-Auswirkungsstufe 5 helfen. |
-| [FedRAMP Moderate](./fedramp-m/index.md) | Hier finden Sie eine Reihe von Richtlinien, die Ihnen bei der Einhaltung von „FedRAMP Moderate“ helfen. |
-| [FedRAMP High](./fedramp-h/index.md) | Hier finden Sie eine Reihe von Richtlinien, die Ihnen bei der Einhaltung von „FedRAMP High“ helfen. |
 | [HIPAA HITRUST 9.2](./hipaa-hitrust-9-2.md) | Hier finden Sie eine Reihe von Richtlinien, die Ihnen bei der Einhaltung von HIPAA HITRUST helfen. |
 | [IRS 1075, September 2016](./irs-1075-sept2016.md) | Enthält Leitlinien für die Einhaltung von IRS 1075.|
 | [ISO 27001](./iso-27001-2013.md) | Enthält Leitlinien für die Einhaltung von ISO 27001. |
@@ -36,7 +31,6 @@ In der folgenden Tabelle sind Links zu Beispielen für Azure Blueprints enthalte
 | [ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload](./iso27001-ase-sql-workload/index.md) | Stellt eine zusätzliche Infrastruktur für das Blaupausenbeispiel [ISO 27001: Gemeinsame Dienste](./iso27001-shared/index.md) bereit. |
 | [Medien](./media/index.md) | Hier finden Sie eine Reihe von Richtlinien, die Ihnen bei der Erfüllung der Anforderungen der Motion Picture Association of America (MPAA) helfen. |
 | [Durch New Zealand ISM eingeschränkt](./new-zealand-ism.md) | Hiermit werden Richtlinien für bestimmte NZISM-Kontrollen (New Zealand Information Security Manual) zugewiesen. |
-| [NIST SP 800-53 R4](./nist-sp-800-53-r4.md) | Enthält Leitlinien für die Einhaltung von NIST SP 800-53 R4. |
 | [NIST SP 800-171 R2](./nist-sp-800-171-r2.md) | Enthält Leitlinien für die Einhaltung von NIST SP 800-171 R2. |
 | [PCI-DSS v3.2.1](./pci-dss-3.2.1/index.md) | Stellt verschiedene Richtlinien bereit, die Sie bei der Einhaltung von PCI-DSS v3.2.1 unterstützen. |
 | [SWIFT CSP-CSCF v2020](./swift-2020/index.md) | Unterstützt Sie bei der Einhaltung von SWIFT CSP-CSCF v2020. |

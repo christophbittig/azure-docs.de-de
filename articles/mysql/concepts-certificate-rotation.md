@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 04/08/2021
-ms.openlocfilehash: 468244b786d418117f12b445d86b67580db913da
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: e100acf7006c3ab4ad5fad9281f372a37ac8c6b4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122639771"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128663666"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql-single-server"></a>Grundlegendes zu den Änderungen im Zusammenhang mit der Stammzertifizierungsstelle für Azure Database for MySQL Single Server
 
@@ -22,7 +22,7 @@ Die Änderung des Stammzertifikats am **15. Februar 2021 (15.02.2021)** wurde 
 > [!NOTE]
 > Dieser Artikel betrifft NUR [Azure Database for MySQL Single Server](single-server-overview.md). Bei [Azure Database for MySQL Flexible Server](flexible-server/overview.md) ist [DigiCert Global Root CA](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) das für die Kommunikation über SSL erforderliche Zertifikat.
 >
-> Dieser Artikel enthält Verweise auf den Begriff _Slave_, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
+> Dieser Artikel enthält Verweise auf den Begriff *Slave*, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
 >
 
 #### <a name="why-is-a-root-certificate-update-required"></a>Warum ist eine Aktualisierung des Stammzertifikats erforderlich?

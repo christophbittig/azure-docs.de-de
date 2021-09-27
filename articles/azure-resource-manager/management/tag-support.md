@@ -3,12 +3,12 @@ title: Tagunterstützung für Ressourcen
 description: Zeigt, welche Azure-Ressourcentypen Tags unterstützen. Enthält Details für alle Azure-Dienste.
 ms.topic: conceptual
 ms.date: 07/20/2021
-ms.openlocfilehash: 4f15fea365fc242f3c7253a39b6a877dd672deb1
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 6581a4c9a61fb3de1e04119b13bc83a4b67ce92d
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114453287"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128707729"
 ---
 # <a name="tag-support-for-azure-resources"></a>Tagunterstützung für Azure-Ressourcen
 In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](tag-resources.md) unterstützt. Die Spalte mit der Bezeichnung **Tagunterstützung** zeigt an, ob der Ressourcentyp eine Eigenschaft für das Tag hat. Die Spalte mit der Bezeichnung **Tag in Kostenbericht** gibt an, ob dieser Ressourcentyp das Tag an den Kostenbericht übergibt. Sie können die Kosten nach Tags in der [Cost Management-Kostenanalyse](../../cost-management-billing/costs/group-filter.md) und den [Azure-Abrechnungen und täglichen Nutzungsdaten](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md) anzeigen.
@@ -911,10 +911,10 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | diskEncryptionSets | Ja | Ja |
 > | disks | Ja | Ja |
 > | galleries | Ja | Ja |
-> | galleries/applications | Nein | Nein |
-> | galleries/applications/versions | Nein | Nein |
-> | galleries/images | Nein | Nein |
-> | galleries/images/versions | Nein | Nein |
+> | galleries/applications | Ja | Nein |
+> | galleries/applications/versions | Ja | Nein |
+> | galleries/images | Ja | Nein |
+> | galleries/images/versions | Ja | Nein |
 > | hostGroups | Ja | Ja |
 > | hostGroups/hosts | Ja | Ja |
 > | images | Ja | Ja |

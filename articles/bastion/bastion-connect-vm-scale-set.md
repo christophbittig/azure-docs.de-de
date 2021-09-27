@@ -2,17 +2,17 @@
 title: Herstellen einer Verbindung mit einer Windows-VM-Skalierungsgruppe mit Azure Bastion
 description: Erfahren Sie, wie Sie eine Verbindung mit einer Azure-VM-Skalierungsgruppe mit Azure Bastion herstellen.
 services: bastion
-author: charwen
+author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 10/14/2020
-ms.author: charwen
-ms.openlocfilehash: 361bb52ffd9762a49a549fe3fc5ac5cd652416ca
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.date: 09/20/2021
+ms.author: cherylmc
+ms.openlocfilehash: e57ee80fa7727a6f5e7e1ec59857746cb4b8d590
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110534153"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128620653"
 ---
 # <a name="connect-to-a-virtual-machine-scale-set-using-azure-bastion"></a>Herstellen einer Verbindung mit einer VM-Skalierungsgruppe mit Azure Bastion
 
@@ -20,7 +20,7 @@ In diesem Artikel erfahren Sie, wie Sie mit Azure Bastion in einem virtuellen Az
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Stellen Sie sicher, dass Sie einen Azure Bastion-Host für das virtuelle Netzwerk eingerichtet haben, in dem sich die VM-Skalierungsgruppe befindet. Weitere Informationen finden Sie unter [Erstellen eines Azure Bastion-Hosts](./tutorial-create-host-portal.md). Sobald der Bastion-Dienst provisioniert und in Ihrem virtuellen Netzwerk bereitgestellt wurde, können Sie ihn verwenden, um mit jeder VM-Skalierungsgruppeninstanz in diesem virtuellen Netzwerk eine Verbindung herzustellen. Bastion setzt voraus, dass Sie RDP für die Verbindung mit einer Windows-VM-Skalierungsgruppe und SSH für die Verbindung mit Ihrer Linux-VM-Skalierungsgruppe verwenden. Informationen zur Verbindung mit einer Linux-VM finden Sie unter [Herstellen einer Verbindung mit einer VM – Linux](bastion-connect-vm-ssh.md).
+Stellen Sie sicher, dass Sie einen Azure Bastion-Host für das virtuelle Netzwerk eingerichtet haben, in dem sich die VM-Skalierungsgruppe befindet. Weitere Informationen finden Sie unter [Erstellen eines Azure Bastion-Hosts](./tutorial-create-host-portal.md). Sobald der Bastion-Dienst provisioniert und in Ihrem virtuellen Netzwerk bereitgestellt wurde, können Sie ihn verwenden, um mit jeder VM-Skalierungsgruppeninstanz in diesem virtuellen Netzwerk eine Verbindung herzustellen. Bastion setzt voraus, dass Sie RDP für die Verbindung mit einer Windows-VM-Skalierungsgruppe und SSH für die Verbindung mit Ihrer Linux-VM-Skalierungsgruppe verwenden. Informationen zur Verbindung mit einer Linux-VM finden Sie unter [Herstellen einer Verbindung mit einer VM – Linux](bastion-connect-vm-ssh-linux.md).
 
 ## <a name="connect-using-rdp"></a><a name="rdp"></a>Verbindung über RDP
 

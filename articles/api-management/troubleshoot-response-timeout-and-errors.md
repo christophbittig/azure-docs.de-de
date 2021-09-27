@@ -1,17 +1,17 @@
 ---
 title: Problembehandlung bei Timeouts und Fehlern bei Clientantworten in API Management
 description: Beheben von zeitweiligen Verbindungsfehlern und zugehörigen Latenzproblemen in API Management
-author: vladvino
+author: dlepow
 ms.topic: troubleshooting
 ms.date: 12/04/2020
-ms.author: apimpm
+ms.author: danlep
 ms.service: api-management
-ms.openlocfilehash: 6cace4a02c8d45cacbbc34e9778b5c4a78ada27f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7b6f8ed20f1af7b4a6f512b9aa4611936f784fd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100576526"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128623910"
 ---
 # <a name="troubleshooting-client-response-timeouts-and-errors-with-api-management"></a>Problembehandlung bei Timeouts und Fehlern bei Clientantworten in API Management
 

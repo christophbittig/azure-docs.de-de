@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0d06e40fc33a713904fb171a3a44ba8e977a254f
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 67ecaac43885b76071a6bc71268edb811db7cbbd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123467638"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128680279"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Änderungsfeed in Azure Blob Storage
 
@@ -41,7 +41,7 @@ Die Unterstützung eines Änderungsfeeds eignet sich gut für Szenarien, in dene
 Der Änderungsfeed ist ein erforderliches Feature für [Objektreplikation und ](object-replication-overview.md) [Point-in-Time-Wiederherstellung für Blockblobs](point-in-time-restore-overview.md).
 
 > [!NOTE]
-> Der Änderungsfeed bietet ein permanentes, sortiertes Protokollmodell der Änderungen an einem Blob. Änderungen werden innerhalb weniger Minuten in Ihr Änderungsfeedprotokoll geschrieben und verfügbar gemacht. Wenn Ihre Anwendung wesentlich schneller auf Ereignisse reagieren muss, sollten Sie stattdessen [Blob Storage-Ereignisse](storage-blob-event-overview.md) in Betracht ziehen. [Blob Storage-Ereignisse](storage-blob-event-overview.md) bieten einmalige Echtzeitereignisse, mit denen Ihre Azure Functions-Lösung oder Ihre Anwendungen schnell auf Blobänderungen reagieren können. 
+> Der Änderungsfeed bietet ein permanentes, sortiertes Protokollmodell der Änderungen an einem Blob. Änderungen werden innerhalb weniger Minuten in Ihr Änderungsfeedprotokoll geschrieben und verfügbar gemacht. Wenn Ihre Anwendung wesentlich schneller auf Ereignisse reagieren muss, sollten Sie stattdessen [Blob Storage-Ereignisse](storage-blob-event-overview.md) in Betracht ziehen. [Blob Storage-Ereignisse](storage-blob-event-overview.md) bieten einmalige Echtzeitereignisse, mit denen Ihre Azure Functions-Lösung oder Ihre Anwendungen schnell auf Blobänderungen reagieren können.
 
 ## <a name="enable-and-disable-the-change-feed"></a>Aktivieren und Deaktivieren des Änderungsfeeds
 
@@ -99,6 +99,7 @@ So aktivieren Sie den Änderungsfeed mithilfe von PowerShell:
    ```
 
 ### <a name="template"></a>[Vorlage](#tab/template)
+
 So verwenden Sie eine Azure Resource Manager-Vorlage, um den Änderungsfeed für Ihr vorhandenes Speicherkonto über das Azure-Portal zu aktivieren:
 
 1. Klicken Sie im Azure-Portal auf **Ressource erstellen**.
@@ -153,7 +154,7 @@ Beim Änderungsfeed handelt es sich um ein Protokoll von Änderungen, das in **s
 
 Ein verfügbares stündliches Segment des Änderungsfeeds wird in einer Manifestdatei beschrieben, die die Pfade zu den Änderungsfeeddateien für dieses Segment angibt. Die Auflistung des virtuellen Verzeichnisses `$blobchangefeed/idx/segments/` zeigt diese Segmente nach Uhrzeit geordnet an. Der Pfad des Segments beschreibt den Start des stündlichen Zeitbereichs, den das Segment repräsentiert. Sie können diese Liste verwenden, um die Protokollsegmente herauszufiltern, die für Sie von Interesse sind.
 
-```text
+```output
 Name                                                                    Blob Type    Blob Tier      Length  Content Type    
 ----------------------------------------------------------------------  -----------  -----------  --------  ----------------
 $blobchangefeed/idx/segments/1601/01/01/0000/meta.json                  BlockBlob                      584  application/json
@@ -163,7 +164,7 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 ```
 
 > [!NOTE]
-> Die Datei `$blobchangefeed/idx/segments/1601/01/01/0000/meta.json` wird automatisch erstellt, wenn Sie den Änderungsfeed aktivieren. Sie können diese Datei unbesorgt ignorieren. Dabei handelt es sich um eine immer leere Initialisierungsdatei. 
+> Die Datei `$blobchangefeed/idx/segments/1601/01/01/0000/meta.json` wird automatisch erstellt, wenn Sie den Änderungsfeed aktivieren. Sie können diese Datei unbesorgt ignorieren. Dabei handelt es sich um eine immer leere Initialisierungsdatei.
 
 Die Segmentmanifestdatei (`meta.json`) zeigt den Pfad der Änderungsfeeddateien für dieses Segment in der Eigenschaft `chunkFilePaths` an. Beispiel für eine Segmentmanifestdatei:
 
@@ -196,7 +197,7 @@ Die Segmentmanifestdatei (`meta.json`) zeigt den Pfad der Änderungsfeeddateien 
 ```
 
 > [!NOTE]
-> Der Container `$blobchangefeed` wird erst angezeigt, wenn Sie das Änderungsfeedfeature für Ihr Konto aktiviert haben. Nach dem Aktivieren des Änderungsfeeds dauert es ein paar Minuten, bis die Blobs im Container aufgelistet werden können. 
+> Der Container `$blobchangefeed` wird erst angezeigt, wenn Sie das Änderungsfeedfeature für Ihr Konto aktiviert haben. Nach dem Aktivieren des Änderungsfeeds dauert es ein paar Minuten, bis die Blobs im Container aufgelistet werden können.
 
 <a id="log-files"></a>
 
@@ -288,7 +289,7 @@ Eine ausführliche Beschreibung der einzelnen Eigenschaften finden Sie unter [Az
 
 ## <a name="conditions-and-known-issues"></a>Bedingungen und bekannte Probleme
 
-Dieser Abschnitt enthält Informationen zu bekannten Problemen und Bedingungen im aktuellen Release des Änderungsfeeds. 
+Dieser Abschnitt enthält Informationen zu bekannten Problemen und Bedingungen im aktuellen Release des Änderungsfeeds.
 
 - Änderungsereignis-Datensätze für eine einzelne Änderung werden in Ihrem Änderungsfeed möglicherweise mehrmals angezeigt.
 - Sie können die Lebensdauer der Änderungsfeed-Protokolldateien noch nicht durch Festlegen einer zeitbasierten Aufbewahrungsrichtlinie verwalten, und Sie können die Blobs nicht löschen.
@@ -299,11 +300,11 @@ Dieser Abschnitt enthält Informationen zu bekannten Problemen und Bedingungen i
 
 ## <a name="feature-support"></a>Featureunterstützung
 
-In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf den Support hat. 
+In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf die Unterstützung hat.
 
-| Speicherkontotyp                | Blob Storage (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| Speicherkontotyp                | Blob Storage (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) |![Nein](../media/icons/no-icon.png)              | ![Nein](../media/icons/no-icon.png) | 
+| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) |![Nein](../media/icons/no-icon.png)              | ![Nein](../media/icons/no-icon.png) |
 | Premium-Blockblobs          | ![Nein](../media/icons/no-icon.png)|![Nein](../media/icons/no-icon.png) | ![Nein](../media/icons/no-icon.png) |
 
 <sup>1</sup>    Für Data Lake Storage Gen2 und das NFS 3.0-Protokoll (Network File System) ist ein Speicherkonto mit aktiviertem hierarchischem Namespace erforderlich.

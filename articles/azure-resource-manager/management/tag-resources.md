@@ -4,12 +4,12 @@ description: Zeigt, wie Sie Tags zum Organisieren von Azure-Ressourcen für die 
 ms.topic: conceptual
 ms.date: 07/29/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 9dc4b87713d5b397b900f19e83c297130a10be3c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: cf8b4ceb70eec2ac6dbb79b8193276997f8e06f1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122356022"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664521"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Verwenden von Tags zum Organisieren von Azure-Ressourcen und Verwaltungshierarchie
 
@@ -468,7 +468,7 @@ Im folgenden Beispiel wird ein Speicherkonto mit drei Tags bereitgestellt. Zwei 
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2021-02-01",
+      "apiVersion": "2021-04-01",
       "name": "[concat('storage', uniqueString(resourceGroup().id))]",
       "location": "[parameters('location')]",
       "sku": {
@@ -492,7 +492,7 @@ Im folgenden Beispiel wird ein Speicherkonto mit drei Tags bereitgestellt. Zwei 
 param location string = resourceGroup().location
 param utcShort string = utcNow('d')
 
-resource stgAccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
+resource stgAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
   name: 'storage${uniqueString(resourceGroup().id)}'
   location: location
   sku: {
@@ -535,7 +535,7 @@ Sie können einen Objektparameter definieren, der mehrere Tags speichert, und di
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2021-02-01",
+      "apiVersion": "2021-04-01",
       "name": "[concat('storage', uniqueString(resourceGroup().id))]",
       "location": "[parameters('location')]",
       "sku": {
@@ -558,7 +558,7 @@ param tagValues object = {
   Environment: 'Production'
 }
 
-resource stgAccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
+resource stgAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
   name: 'storage${uniqueString(resourceGroup().id)}'
   location: location
   sku: {
@@ -590,7 +590,7 @@ Wenn Sie mehrere Werte in einem einzelnen Tag speichern möchten, wenden Sie ein
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2021-02-01",
+      "apiVersion": "2021-04-01",
       "name": "[concat('storage', uniqueString(resourceGroup().id))]",
       "location": "[parameters('location')]",
       "sku": {
@@ -611,7 +611,7 @@ Wenn Sie mehrere Werte in einem einzelnen Tag speichern möchten, wenden Sie ein
 ```Bicep
 param location string = resourceGroup().location
 
-resource stgAccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
+resource stgAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
   name: 'storage${uniqueString(resourceGroup().id)}'
   location: location
   sku: {
@@ -645,7 +645,7 @@ Wenn Sie Tags aus einer Ressourcengruppe auf eine Ressource anwenden möchten, v
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2021-02-01",
+      "apiVersion": "2021-04-01",
       "name": "[concat('storage', uniqueString(resourceGroup().id))]",
       "location": "[parameters('location')]",
       "sku": {
@@ -667,7 +667,7 @@ Wenn Sie Tags aus einer Ressourcengruppe auf eine Ressource anwenden möchten, v
 ```Bicep
 param location string = resourceGroup().location
 
-resource stgAccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
+resource stgAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
   name: 'storage${uniqueString(resourceGroup().id)}'
   location: location
   sku: {
@@ -843,7 +843,7 @@ Für Tags gelten folgende Einschränkungen:
 * Jede Ressource, jede Ressourcengruppe und jedes Abonnement kann maximal 50 Tagname-Wert-Paare enthalten. Wenn Sie mehr Tags als die maximal zulässige Anzahl anwenden müssen, verwenden Sie für den Tagwert eine JSON-Zeichenfolge. Die JSON-Zeichenfolge kann zahlreiche Werte enthalten, die auf einen einzelnen Tagnamen angewendet werden. Eine Ressourcengruppe oder ein Abonnement kann zahlreiche Ressourcen mit jeweils 50 Tagname-Wert-Paaren enthalten.
 * Der Tagname ist auf 512 Zeichen beschränkt und der Tagwert auf 256 Zeichen. Bei Speicherkonten ist der Tagname auf 128 Zeichen beschränkt und der Tagwert auf 256 Zeichen.
 * Tags können nicht auf klassische Ressourcen wie Cloud Services angewendet werden.
-* Azure-IP-Gruppen und Azure Firewall-Richtlinien unterstützen keine PATCH-Vorgänge, was bedeutet, dass sie das Aktualisieren von Tags über das Portal nicht unterstützen. Verwenden Sie stattdessen die update-Befehle für diese Ressourcen. Beispielsweise können Sie Tags für eine IP-Gruppe mit dem Befehl [az network ip-group update](/cli/azure/network/ip-group#az_network_ip_group_update) aktualisieren. 
+* Azure-IP-Gruppen und Azure Firewall-Richtlinien unterstützen keine PATCH-Vorgänge, was bedeutet, dass sie das Aktualisieren von Tags über das Portal nicht unterstützen. Verwenden Sie stattdessen die update-Befehle für diese Ressourcen. Beispielsweise können Sie Tags für eine IP-Gruppe mit dem Befehl [az network ip-group update](/cli/azure/network/ip-group#az_network_ip_group_update) aktualisieren.
 * Tag-Namen dürfen die folgenden Zeichen nicht enthalten: `<`, `>`, `%`, `&`, `\`, `?`, `/`
 
    > [!NOTE]
@@ -852,7 +852,7 @@ Für Tags gelten folgende Einschränkungen:
    > * Die Verwendung von `#` oder `:` im Tagnamen wird in Azure Front Door nicht unterstützt.
    >
    > * Die folgenden Azure-Ressourcen unterstützen nur 15 Tags:
-   >     * Azure-Automatisierung 
+   >     * Azure-Automatisierung
    >     * Azure CDN
    >     * Azure DNS (Zonen- und A-Einträge)
    >     * Azure Privates DNS (Zonen-, A-Einträge und virtuelle Netzwerkverknüpfung)

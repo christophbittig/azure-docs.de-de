@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 08/17/2021
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick; azure-synapse
-ms.openlocfilehash: ce3f7b923cec3dec28043f43babbaa86a0c6d92e
-ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
+ms.openlocfilehash: 2b3e2af66334ebb82c8113caac2f8b78d5c8bf20
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122662068"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128674488"
 ---
 # <a name="performance-tune-with-materialized-views"></a>Leistungsoptimierung mit materialisierten Sichten
 
@@ -57,9 +57,6 @@ Im Vergleich zu anderen Data Warehouse-Anbietern bieten die im dedizierten SQL-P
 - Umfassende Unterstützung von Aggregatfunktionen. Lesen Sie dazu [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql).
 - Die Unterstützung für abfragespezifische Empfehlungen von materialisierten Sichten.  Lesen Sie dazu [EXPLAIN (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql).
 - Automatische und synchrone Datenaktualisierung bei Datenänderungen in Basistabellen. Es ist keine Benutzeraktion erforderlich.
->[!note] 
-> Eine materialisierte Sicht, die mit CASE-Ausdrücken erstellt wurde, speichert Werte, die die CASE-Kriterien nur zum Zeitpunkt der Ansichtserstellung erfüllen.  Die materialisierte Sicht spiegelt keine inkrementellen Datenänderungen wider, die sich aus den CASE-Ausdrücken ergeben, nachdem die Sicht erstellt wurde.   
-
  
 ## <a name="common-scenarios"></a>Häufige Szenarios  
 

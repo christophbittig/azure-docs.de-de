@@ -3,12 +3,12 @@ title: Verwalten der lokalen Verwaltungskonsole
 description: Erfahren Sie mehr über die Möglichkeiten der lokalen Verwaltungskonsole wie Sicherung und Wiederherstellung, Definition des Hostnamens und Einrichtung eines Proxys für Sensoren.
 ms.date: 1/12/2021
 ms.topic: article
-ms.openlocfilehash: a94dc89f6d39bfef096809299e31bd88b43824d4
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 9b956dbfa640862d10d0e47aef97e5a1727052c7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123431078"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625219"
 ---
 # <a name="manage-the-on-premises-management-console"></a>Verwalten der lokalen Verwaltungskonsole
 
@@ -232,9 +232,9 @@ So definieren Sie die Einstellungen
 1. Melden Sie sich mit administrativen Anmeldeinformationen bei der Befehlszeilenschnittstelle der lokalen Verwaltungskonsole an.
 1. Geben Sie ```nano /var/cyberx/properties/remote-interfaces.properties```ein.
 1. Drücken Sie die EINGABETASTE. Die folgende Eingabeaufforderung wird angezeigt.
-```mail.smtp_server= ```
-```mail.port=25 ```
-```mail.sender=```
+   `mail.smtp_server=`
+   `mail.port=25`
+   `mail.sender=`
 1. Geben Sie den SMTP-Servernamen und den Absender ein, und drücken Sie die EINGABETASTE.
 
 ## <a name="see-also"></a>Siehe auch
