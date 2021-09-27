@@ -1,5 +1,5 @@
 ---
-title: Bewährte Methoden für das Laden von Daten
+title: Bewährte Methoden zum Laden von Daten für dedizierte SQL-Pools
 description: Empfehlungen und Leistungsoptimierungen für das Laden von Daten in einen dedizierten SQL-Pool in Azure Synapse Analytics.
 services: synapse-analytics
 author: julieMSFT
@@ -7,18 +7,18 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 04/15/2020
+ms.date: 08/26/2021
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: a04bf8a1805fa55afac3d51a2d4f3ba353edf03c
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: ee3be53c6a52f0bc0a8ceab0424a7a6c99a0f441
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340342"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123539585"
 ---
-# <a name="best-practices-for-loading-data-into-a-dedicated-sql-pool-azure-synapse-analytics"></a>Bewährte Methoden für das Laden von Daten in einen dedizierten SQL-Pool in Azure Synapse Analytics
+# <a name="best-practices-for-loading-data-into-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Bewährte Methoden für das Laden von Daten in einen dedizierten SQL-Pool in Azure Synapse Analytics
 
 Dieser Artikel finden Sie Empfehlungen und Leistungsoptimierungen für das Laden von Daten.
 
@@ -40,27 +40,46 @@ Führen Sie immer nur einen einzelnen Ladeauftrag aus, um die bestmögliche Lade
 
 Erstellen Sie „Ladebenutzer“, die für das Ausführen von Ladevorgängen vorgesehen sind, um Ladevorgänge mit den geeigneten Computeressourcen durchzuführen. Weisen Sie jedem Ladebenutzer eine bestimmte Ressourcenklasse oder Arbeitsauslastungsgruppe zu. Melden Sie sich zum Ausführen eines Ladevorgangs als ein Ladebenutzer an, und führen Sie den Ladevorgang aus. Der Ladevorgang wird mit der Ressourcenklasse des Benutzers ausgeführt.  Diese Methode ist einfacher als der Versuch, die Ressourcenklasse eines Benutzers zu ändern, um die jeweilige Ressourcenklassenanforderung zu erfüllen.
 
+
 ### <a name="create-a-loading-user"></a>Erstellen eines Ladebenutzers
 
-In diesem Beispiel wird ein Ladebenutzer für die Ressourcenklasse „staticrc20“ erstellt. Der erste Schritt umfasst das **Herstellen einer Verbindung mit dem Master** und das Erstellen einer Anmeldung.
+In diesem Beispiel wird ein für eine bestimmte Arbeitsauslastungsgruppe klassifizierter Ladebenutzer erstellt. Der erste Schritt umfasst das **Herstellen einer Verbindung mit dem Master** und das Erstellen einer Anmeldung.
 
 ```sql
    -- Connect to master
-   CREATE LOGIN LoaderRC20 WITH PASSWORD = 'a123STRONGpassword!';
+   CREATE LOGIN loader WITH PASSWORD = 'a123STRONGpassword!';
 ```
 
-Stellen Sie eine Verbindung mit dem Data Warehouse her, und erstellen Sie einen Benutzer. Im folgenden Code wird vorausgesetzt, dass Sie über eine Verbindung mit der Datenbank „mySampleDataWarehouse“ verfügen. Es wird veranschaulicht, wie Sie den Benutzer „LoaderRC20“ erstellen und ihm die CONTROL-Berechtigung für eine Datenbank gewähren. Anschließend wird der Benutzer als Mitglied der Datenbankrolle „staticrc20“ hinzugefügt.  
+Stellen Sie eine Verbindung mit dem dedizierten SQL-Pool her, und erstellen Sie einen Benutzer. Beim folgenden Code wird vorausgesetzt, dass Sie über eine Verbindung mit der Datenbank „mySampleDataWarehouse“ verfügen. Es wird gezeigt, wie ein Benutzer namens „loader“ erstellt wird, und er erhält Berechtigungen zum Erstellen von Tabellen und Laden mithilfe der [COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true). Anschließend wird der Benutzer für die Arbeitsauslastungsgruppe DataLoads mit maximalen Ressourcen klassifiziert. 
 
 ```sql
-   -- Connect to the database
-   CREATE USER LoaderRC20 FOR LOGIN LoaderRC20;
-   GRANT CONTROL ON DATABASE::[mySampleDataWarehouse] to LoaderRC20;
-   EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
+   -- Connect to the dedicated SQL pool
+   CREATE USER loader FOR LOGIN loader;
+   GRANT ADMINISTER DATABASE BULK OPERATIONS TO loader;
+   GRANT INSERT ON <yourtablename> TO loader;
+   GRANT SELECT ON <yourtablename> TO loader;
+   GRANT CREATE TABLE TO loader;
+   GRANT ALTER ON SCHEMA::dbo TO loader;
+   
+   CREATE WORKLOAD GROUP DataLoads
+   WITH ( 
+       MIN_PERCENTAGE_RESOURCE = 0
+       ,CAP_PERCENTAGE_RESOURCE = 100
+       ,REQUEST_MIN_RESOURCE_GRANT_PERCENT = 100
+    );
+
+   CREATE WORKLOAD CLASSIFIER [wgcELTLogin]
+   WITH (
+         WORKLOAD_GROUP = 'DataLoads'
+       ,MEMBERNAME = 'loader'
+   );
 ```
 
-Melden Sie sich zum Ausführen eines Ladevorgangs mit Ressourcen für die Ressourcenklasse „staticRC20“ als „LoaderRC20“ an, und führen Sie den Ladevorgang aus.
+<br><br>
+>[!IMPORTANT] 
+>Dies ist ein extremes Beispiel für die Zuweisung von 100 % der Ressourcen des SQL-Pools zu einem einzelnen Ladevorgang. Dadurch erzielen Sie die maximale Parallelität von 1. Beachten Sie, dass dies nur für den anfänglichen Ladevorgang verwendet werden sollte, bei dem Sie zusätzliche Workloadgruppen mit eigenen Konfigurationen erstellen müssen, um Ressourcen für Ihre Workloads auszugleichen. 
 
-Führen Sie Ladevorgänge nicht unter dynamischen Ressourcenklassen, sondern unter statischen Ressourcenklassen aus. Wenn Sie die statischen Ressourcenklassen verwenden, ist unabhängig von Ihren [Data Warehouse-Einheiten](resource-consumption-models.md) garantiert, dass dieselben Ressourcen genutzt werden. Wenn Sie eine dynamische Ressourcenklasse verwenden, variieren die Ressourcen je nach Ihrer Dienstebene. Für dynamische Klassen bedeutet eine niedrigere Dienstebene, dass Sie für Ihren Ladebenutzer wahrscheinlich eine größere Ressourcenklasse nutzen müssen.
+Um einen Ladevorgang mit Ressourcen für die Arbeitsauslastungsgruppe auszuführen, melden Sie sich als „loader“ an, und führen Sie den Ladevorgang aus. 
 
 ## <a name="allow-multiple-users-to-load"></a>Ermöglichen von Ladevorgängen für mehrere Benutzer
 
@@ -90,13 +109,17 @@ Columnstore-Indizes erfordern große Mengen an Arbeitsspeicher, um Daten in Zeil
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>Vergrößern von Batches bei Verwendung der SQLBulkCopy-API oder von BCP
 
-Wie bereits erwähnt erzielt das Laden mit PolyBase den höchsten Durchsatz mit dem Synapse SQL-Pool. Wenn Sie PolyBase nicht zum Laden verwenden können und die SqlBulkCopy-API (oder BCP) verwenden müssen, sollten Sie eine Erhöhung der Batchgröße für einen besseren Durchsatz in Betracht ziehen. Eine gute Faustregel ist eine Batchgröße zwischen 100 KB und 1 Mio. Zeilen.
+
+Beim Laden mit der COPY-Anweisung wird der höchste Durchsatz für dedizierte SQL-Pools erzielt. Falls Sie zum Laden nicht die COPY-Anweisung verwenden können, sondern die [SqLBulkCopy-API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) oder [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) nutzen müssen, sollten Sie für einen höheren Durchsatz den Batch vergrößern.
+
+> [!TIP]
+> Eine Batchgröße zwischen 100.000 und einer Million Zeilen ist der empfohlene Ausgangswert zum Ermitteln der optimalen Batchkapazität. 
 
 ## <a name="manage-loading-failures"></a>Verwalten von Ladefehlern
 
 Das Laden von Daten mithilfe einer externen Tabelle kann folgenden Fehler auslösen: *Abfrage abgebrochen – der maximale Ablehnungsgrenzwert wurde beim Lesen aus einer externen Quelle erreicht*. Diese Meldung weist darauf hin, dass die externen Daten fehlerhafte Datensätze enthalten. Ein Datensatz gilt als fehlerhaft, wenn die Datentypen und die Spaltenanzahl nicht den Spaltendefinitionen der externen Tabelle entsprechen oder wenn die Daten nicht im angegebenen externen Dateiformat vorliegen.
 
-Vergewissern Sie sich zur Behebung dieses Problems, dass die Formatdefinitionen der externen Tabelle und Datei korrekt sind und Ihre externen Daten diesen Definitionen entsprechen. Sollte ein Teil der externen Datensätze fehlerhaft sein, können Sie diese Datensätze für Ihre Abfragen mithilfe der Ablehnungsoptionen in „CREATE EXTERNAL TABLE“ ablehnen.
+Vergewissern Sie sich zur Behebung dieses Problems, dass die Formatdefinitionen der externen Tabelle und Datei korrekt sind und Ihre externen Daten diesen Definitionen entsprechen. Sollte ein Teil der externen Datensätze fehlerhaft sein, können Sie diese Datensätze für Ihre Abfragen mithilfe der Ablehnungsoptionen in [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest&preserve-view=true) ablehnen.
 
 ## <a name="insert-data-into-a-production-table"></a>Einfügen von Daten in eine Produktionstabelle
 

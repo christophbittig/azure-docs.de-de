@@ -9,16 +9,19 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 84cb22956b682a9acb23f4f391faf046eccc47a7
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: 1602207c83f8ff4a632428c0308b514c6d552058
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112378140"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123428252"
 ---
 # <a name="scenario-route-traffic-through-nvas-by-using-custom-settings"></a>Szenario: Weiterleiten von Datenverkehr über virtuelle Netzwerkgeräte (Network Virtual Appliances, NVAs) mithilfe benutzerdefinierter Einstellungen
 
 Wenn Sie mit dem Routing virtueller Hubs von Azure Virtual WAN arbeiten, stehen Ihnen viele Optionen zur Verfügung. Der Schwerpunkt dieses Artikels liegt darauf, wenn Sie Datenverkehr für Kommunikation zwischen virtuellen Netzwerken und Filialen durch ein virtuelles Netzwerkgerät (Network Virtual Appliance, NVA) leiten möchten und für Internetdatenverkehr ein anderes NVA verwenden möchten. Weitere Informationen finden Sie unter [Informationen zum Routing virtueller Hubs](about-virtual-hub-routing.md).
+
+>[!Note]
+> Beachten Sie, dass sich für die unten beschriebenen Routingszenarien der Virtual WAN-Hub und das Spoke-VNet, die das NVA enthalten, in derselben Azure-Region befinden müssen.
 
 ## <a name="design"></a>Entwurf
 

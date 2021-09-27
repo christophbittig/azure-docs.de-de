@@ -1,14 +1,14 @@
 ---
-title: Verwenden von Abruffunktionen in Azure DevTest Labs | Microsoft-Dokumentation
+title: Verwenden von Anspruchsfunktionen
 description: Erfahren Sie mehr über verschiedene Szenarien für die Verwendung von Abruffunktionen bzw. Funktionen zum Aufheben eines Abrufs in Azure DevTest Labs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 73ed3c0b94a66f5d17b5c8e2561c65bb48579aa1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d50ab660433ac9b2616a897e1110d466eb143a9a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85476528"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128559283"
 ---
 # <a name="use-claim-capabilities-in-azure-devtest-labs"></a>Verwenden von Abruffunktionen in Azure DevTest Labs
 Der Azure DevTest Labs-Dienst verbessert die Effektivität und Effizienz von Entwicklern und Testern. Dieser Artikel konzentriert sich auf die Möglichkeit, virtuelle Computer in Azure DevTest Labs abzurufen oder den Abruf aufzuheben. Außerdem werden verschiedene Möglichkeiten zum Verbessern der Benutzerfreundlichkeit beschrieben. Bevor Sie sich mit den verschiedenen Szenarien beschäftigen, in denen dieses Feature verwendet werden kann, untersuchen wir, was **abrufen** bedeutet und wie es funktioniert.

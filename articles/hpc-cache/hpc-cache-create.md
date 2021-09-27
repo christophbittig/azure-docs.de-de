@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/15/2021
 ms.author: v-erkel
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: eb7d88424a04754612f981d58e8e1d6cb85ce0fb
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: b7789af76572eeaa3dfdfe4c6ff379889341033e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770590"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128557458"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Erstellen einer Azure HPC Cache-Instanz
 
@@ -163,7 +163,7 @@ Geben Sie die folgenden Werte an:
 * Azure-Region
 * Cachesubnetz im folgenden Format:
 
-  ``--subnet "/subscriptions/<subscription_id>/resourceGroups/<cache_resource_group>/providers/Microsoft.Network/virtualNetworks/<virtual_network_name>/subnets/<cache_subnet_name>"``
+  `--subnet "/subscriptions/<subscription_id>/resourceGroups/<cache_resource_group>/providers/Microsoft.Network/virtualNetworks/<virtual_network_name>/subnets/<cache_subnet_name>"`
 
   Das Cachesubnetz benötigt mindestens 64 IP-Adressen (/24) und kann keine anderen Ressourcen hosten.
 
@@ -178,11 +178,11 @@ Geben Sie die folgenden Werte an:
 
   | Cachegröße | Standard_2G | Standard_4G | Standard_8G |
   |------------|-------------|-------------|-------------|
-  | 3\.072 GB    | ja         | nein          | nein          |
-  | 6144 GB    | ja         | ja         | nein          |
-  | 12288 GB   | ja         | ja         | ja         |
+  | 3\.072 GB    | ja         | Nein          | nein          |
+  | 6144 GB    | ja         | Ja         | nein          |
+  | 12288 GB   | ja         | Ja         | ja         |
   | 24576 GB   | nein          | ja         | ja         |
-  | 49152 GB   | nein          | nein          | ja         |
+  | 49152 GB   | nein          | Nein          | ja         |
 
   Wenn Sie mehr als 10 Speicherziele mit Ihrem Cache verwenden möchten, wählen Sie den höchsten verfügbaren Wert für die Cachegröße für Ihre SKU aus. Diese Konfigurationen unterstützen bis zu 20 Speicherziele.
 
@@ -282,11 +282,11 @@ Geben Sie die folgenden Werte an:
 
   | Cachegröße | Standard_2G | Standard_4G | Standard_8G |
   |------------|-------------|-------------|-------------|
-  | 3\.072 GB    | ja         | nein          | nein          |
+  | 3\.072 GB    | ja         | Nein          | nein          |
   | 6144 GB    | ja         | ja         | nein          |
   | 12.288 GB   | ja         | ja         | ja         |
-  | 24.576 GB   | nein          | ja         | ja         |
-  | 49.152 GB   | nein          | nein          | ja         |
+  | 24.576 GB   | nein          | Ja         | ja         |
+  | 49.152 GB   | nein          | Nein          | ja         |
 
   Lesen Sie den Abschnitt **Cachekapazität festlegen** auf der Portalregisterkarte mit Anweisungen, um wichtige Informationen zu den Preisen, dem Durchsatz und der richtigen Dimensionierung des Caches für Ihren Workflow zu erhalten.
 

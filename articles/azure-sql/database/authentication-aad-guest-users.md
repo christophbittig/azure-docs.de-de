@@ -9,33 +9,32 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 05/10/2021
-ms.openlocfilehash: 8fe1623dde29160c674d32edb470b57231e4b3b1
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: 91c6893320273ae29cb504715b5f27365a0161be
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109810575"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434230"
 ---
 # <a name="create-azure-ad-guest-users-and-set-as-an-azure-ad-admin"></a>Erstellen von Azure AD-Gastbenutzern und Festlegen als Azure AD-Administrator
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-> [!NOTE]
-> Dieser Artikel ist eine **Public Preview**.
+Gastbenutzer in Azure Active Directory (Azure AD) sind Benutzer, die aus anderen Azure Active Directory-Verzeichnissen oder von außerhalb in das aktuelle Azure AD importiert wurden. Gastbenutzer können z. B. Benutzer aus anderen Azure Active Directory-Verzeichnissen oder Konten wie *\@outlook.com*, *\@hotmail.com*, *\@live.com* oder *\@gmail.com* einschließen. 
 
-Gastbenutzer in Azure Active Directory (Azure AD) sind Benutzer, die aus anderen Azure Active Directory-Verzeichnissen oder von außerhalb in das aktuelle Azure AD importiert wurden. Gastbenutzer können z. B. Benutzer aus anderen Azure Active Directory-Verzeichnissen oder Konten wie *\@outlook.com*, *\@hotmail.com*, *\@live.com* oder *\@gmail.com* einschließen. In diesem Artikel wird veranschaulicht, wie ein Azure AD-Gastbenutzer erstellt und als Azure AD-Administrator für den logischen Azure SQL-Server festgelegt wird, ohne dass dieser Gastbenutzer einer Gruppe in Azure AD angehören muss.
+Dieser Artikel zeigt, wie ein Azure AD-Gastbenutzer erstellt und als Azure AD-Administrator für Azure SQL Managed Instance oder den [logischen Server in Azure](logical-servers.md), der von Azure SQL-Datenbank und Azure Synapse Analytics verwendet wird, festgelegt wird, ohne dass der Gastbenutzer zu einer Gruppe in Azure AD hinzugefügt werden muss.
 
 ## <a name="feature-description"></a>Featurebeschreibung
 
-Dieses Feature hebt die aktuelle Einschränkung auf, durch die Gastbenutzern das Herstellen einer Verbindung mit Azure SQL-Datenbank, SQL Managed Instance oder Azure Synapse Analytics nur dann ermöglicht wird, wenn sie Mitglied einer Gruppe sind, die in Azure AD erstellt wurde. Die Gruppe muss manuell mithilfe der Anweisung [CREATE USER (Transact-SQL)](/sql/t-sql/statements/create-user-transact-sql) einem Benutzer in einer bestimmten Datenbank zugeordnet werden. Nachdem ein Datenbankbenutzer für die Azure AD-Gruppe erstellt wurde, die den Gastbenutzer enthält, kann sich der Gastbenutzer mit Azure Active Directory und MFA-Authentifizierung bei der Datenbank anmelden. Im Rahmen dieser **Public Preview** können Gastbenutzer erstellt werden, die dann direkt eine Verbindung mit SQL-Datenbank, SQL Managed Instance oder Azure Synapse herstellen können, ohne dass sie zuvor einer Azure AD-Gruppe hinzugefügt werden müssen und dann ein Datenbankbenutzer für diese Azure AD-Gruppe erstellt werden muss.
+Dieses Feature hebt die aktuelle Einschränkung auf, durch die Gastbenutzern das Herstellen einer Verbindung mit Azure SQL-Datenbank, SQL Managed Instance oder Azure Synapse Analytics nur dann ermöglicht wird, wenn sie Mitglied einer Gruppe sind, die in Azure AD erstellt wurde. Die Gruppe muss manuell mithilfe der Anweisung [CREATE USER (Transact-SQL)](/sql/t-sql/statements/create-user-transact-sql) einem Benutzer in einer bestimmten Datenbank zugeordnet werden. Nachdem ein Datenbankbenutzer für die Azure AD-Gruppe erstellt wurde, die den Gastbenutzer enthält, kann sich der Gastbenutzer mit Azure Active Directory und MFA-Authentifizierung bei der Datenbank anmelden. Gastbenutzer können erstellt werden, die dann direkt eine Verbindung mit SQL-Datenbank, SQL Managed Instance oder Azure Synapse herstellen können, ohne dass sie zuvor einer Azure AD-Gruppe hinzugefügt werden müssen und dann ein Datenbankbenutzer für diese Azure AD-Gruppe erstellt werden muss.
 
-Als Teil dieses Features haben Sie auch die Möglichkeit, den Azure AD-Gastbenutzer direkt als AD-Administrator für den logischen Azure SQL-Server festzulegen. Die vorhandene Funktionalität, bei der der Gastbenutzer Teil einer Azure AD-Gruppe sein können und diese Gruppe dann als Azure AD-Administrator für den logischen Azure SQL-Server festgelegt werden kann, wird hiervon nicht beeinflusst. Gastbenutzer in der Datenbank, die einer Azure AD-Gruppe angehören, sind von dieser Änderung ebenfalls nicht betroffen.
+Als Teil dieses Features haben Sie auch die Möglichkeit, den Azure AD-Gastbenutzer direkt als AD-Administrator für den logischen Server oder eine verwaltete Instanz festzulegen. Die vorhandene Funktionalität (die es dem Gastbenutzer ermöglicht, Teil einer Azure AD-Gruppe zu sein, die dann als Azure AD-Administrator für den logischen Server oder die verwaltete Instanz festgelegt werden kann) wird hiervon *nicht* beeinflusst. Gastbenutzer in der Datenbank, die einer Azure AD-Gruppe angehören, sind von dieser Änderung ebenfalls nicht betroffen.
 
 Weitere Informationen zur bestehenden Unterstützung für Gastbenutzer mithilfe von Azure AD-Gruppen finden Sie unter [Verwenden der mehrstufigen Azure Active Directory-Authentifizierung](authentication-mfa-ssms-overview.md).
 
 ## <a name="prerequisite"></a>Voraussetzung
 
-- Das Modul [Az.Sql 2.9.0](https://www.powershellgallery.com/packages/Az.Sql/2.9.0) oder höher ist erforderlich, wenn Sie PowerShell verwenden, um einen Gastbenutzer als Azure AD-Administrator für den logischen Azure SQL-Server einzurichten.
+- Das Modul [Az.Sql 2.9.0](https://www.powershellgallery.com/packages/Az.Sql/2.9.0) oder höher ist erforderlich, wenn Sie PowerShell verwenden, um einen Gastbenutzer als Azure AD-Administrator für den logischen Server oder die verwaltete Instanz einzurichten.
 
 ## <a name="create-database-user-for-azure-ad-guest-user"></a>Erstellen von Datenbankbenutzern für Azure AD-Gastbenutzer 
 
@@ -94,25 +93,42 @@ Führen Sie die folgenden Schritte aus, um einen Datenbankbenutzer mit einem Azu
 
 ## <a name="setting-a-guest-user-as-an-azure-ad-admin"></a>Festlegen eines Gastbenutzers als Azure AD-Administrator
 
-Führen Sie die folgenden Schritte aus, um einen Azure AD-Gastbenutzer als Azure AD-Administrator für den logischen SQL-Server festzulegen.
+Legen Sie den Azure AD-Administrator mithilfe des Azure-Portals, mit Azure PowerShell oder mit der Azure CLI fest. 
 
-### <a name="set-azure-ad-admin-for-sql-database-and-azure-synapse"></a>Festlegen eines Azure AD-Administrators für SQL-Datenbank und Azure Synapse
+### <a name="azure-portal"></a>Azure-Portal 
+
+Führen Sie die folgenden Schritte aus, um einen Azure AD-Administrator für einen logischen Server oder eine verwaltete Instanz über das Azure-Portal einzurichten: 
+
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). 
+1. Navigieren Sie zu den **Azure Active Directory**-Einstellungen Ihres SQL-Servers oder Ihrer verwalteten Instanz. 
+1. Wählen Sie **Administrator festlegen** aus. 
+1. Geben Sie in der Azure AD-Popupeingabeaufforderung den Gastbenutzer ein, z. B. `guestuser@gmail.com`. 
+1. Wählen Sie diesen neuen Benutzer aus, und speichern Sie den Vorgang dann. 
+
+Weitere Informationen finden Sie unter [Festlegen des Azure AD-Administrators](authentication-aad-configure.md#azure-ad-admin-with-a-server-in-sql-database). 
+
+
+### <a name="azure-powershell-sql-database-and-azure-synapse"></a>Azure PowerShell (SQL-Datenbank und Azure Synapse)
+
+Führen Sie zum Einrichten eines Azure AD-Gastbenutzers für einen logischen Server die folgenden Schritte aus:  
 
 1. Vergewissern Sie sich, dass der Gastbenutzer (z. B. `user1@gmail.com`) bereits in Azure AD hinzugefügt wurde.
 
-1. Führen Sie den folgenden PowerShell-Befehl aus, um den Gastbenutzer als Azure AD-Administrator für Ihren logischen Azure SQL-Server hinzuzufügen:
+1. Führen Sie den folgenden PowerShell-Befehl aus, um den Gastbenutzer als Azure AD-Administrator für Ihren logischen Server hinzuzufügen:
 
-    - Ersetzen Sie `<ResourceGroupName>` durch den Namen Ihrer Azure-Ressourcengruppe, die den logischen Azure SQL-Server enthält.
-    - Ersetzen Sie `<ServerName>` durch den Namen Ihres logischen Azure SQL-Servers. Wenn der Servername `myserver.database.windows.net` ist, ersetzen Sie `<Server Name>` durch `myserver`.
+    - Ersetzen Sie `<ResourceGroupName>` durch den Namen Ihrer Azure-Ressourcengruppe, die den logischen Server enthält.
+    - Ersetzen Sie `<ServerName>` durch den Namen Ihres logischen Servers. Wenn der Servername `myserver.database.windows.net` ist, ersetzen Sie `<Server Name>` durch `myserver`.
     - Ersetzen Sie `<DisplayNameOfGuestUser>` durch den Gastbenutzernamen.
 
     ```powershell
     Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName <ResourceGroupName> -ServerName <ServerName> -DisplayName <DisplayNameOfGuestUser>
     ```
 
-    Sie können auch den Azure CLI-Befehl [az sql server ad-admin](/cli/azure/sql/server/ad-admin) verwenden, um den Gastbenutzer als Azure AD-Administrator für Ihren logischen Azure SQL-Server festzulegen.
+Sie können auch den Azure CLI-Befehl [az sql server ad-admin](/cli/azure/sql/server/ad-admin) verwenden, um den Gastbenutzer als Azure AD-Administrator für Ihren logischen Server festzulegen.
 
-### <a name="set-azure-ad-admin-for-sql-managed-instance"></a>Festlegen eines Azure AD-Administrators für SQL Managed Instance
+### <a name="azure-powershell-sql-managed-instance"></a>Azure PowerShell (SQL Managed Instance)
+
+Führen Sie zum Einrichten eines Azure AD-Gastbenutzers für eine verwaltete Instanz die folgenden Schritte aus:  
 
 1. Vergewissern Sie sich, dass der Gastbenutzer (z. B. `user1@gmail.com`) bereits in Azure AD hinzugefügt wurde.
 
@@ -129,13 +145,8 @@ Führen Sie die folgenden Schritte aus, um einen Azure AD-Gastbenutzer als Azur
     Set-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName <ResourceGroupName> -InstanceName "<ManagedInstanceName>" -DisplayName <DisplayNameOfGuestUser> -ObjectId <AADObjectIDOfGuestUser>
     ```
 
-    Sie können auch den Azure CLI-Befehl [az sql mi ad-admin](/cli/azure/sql/mi/ad-admin) verwenden, um den Gastbenutzer als Azure AD-Administrator für SQL Managed Instance festzulegen.
+Sie können auch den Azure CLI-Befehl [az sql mi ad-admin](/cli/azure/sql/mi/ad-admin) verwenden, um den Gastbenutzer als Azure AD-Administrator für SQL Managed Instance festzulegen.
 
-## <a name="limitations"></a>Einschränkungen
-
-Es gibt eine Einschränkung im Azure-Portal, die verhindert, dass ein Azure AD-Gastbenutzer als Azure AD-Administrator für SQL Managed Instance ausgewählt wird. Für Gastkonten außerhalb Ihres Azure AD-Verzeichnisses wie *\@outlook.com*, *\@hotmail.com*, *\@live.com* oder *\@gmail.com* werden diese Konten zwar im Selektor für den AD-Administrator angezeigt, sie sind jedoch abgeblendet und können nicht ausgewählt werden. Verwenden Sie die oben aufgeführten [PowerShell- oder CLI-Befehle](#setting-a-guest-user-as-an-azure-ad-admin), um den Azure AD-Administrator festzulegen. Alternativ kann auch eine Azure AD-Gruppe, die den Gastbenutzer enthält, als Azure AD-Administrator für die SQL Managed Instance festgelegt werden.
-
-Diese Funktion wird für SQL Managed Instance aktiviert, bevor dieses Feature allgemein verfügbar wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

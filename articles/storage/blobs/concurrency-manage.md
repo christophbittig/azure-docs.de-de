@@ -11,16 +11,16 @@ ms.date: 12/01/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 53005bffde698030221751ec0638a6cc6cbd98c7
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 20f6e4b02e75686d98456a97490ef261ee929a1b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110478932"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128600302"
 ---
 # <a name="managing-concurrency-in-blob-storage"></a>Verwalten der Parallelität im Blobspeicher
 
-Moderne Anwendungen haben häufig mehrere Benutzer, die Daten gleichzeitig anzeigen und aktualisieren. Daher müssen Anwendungsentwickler sorgfältig überlegen, wie sie ihren Endbenutzern ein vorhersagbares Erlebnis gewährleisten können, insbesondere in Situationen, in denen mehrere Benutzer die gleichen Daten aktualisieren können. Von Entwicklern werden für gewöhnlich die drei folgenden Hauptstrategien für die Datenparallelität in Betracht gezogen:  
+Moderne Anwendungen haben häufig mehrere Benutzer, die Daten gleichzeitig anzeigen und aktualisieren. Daher müssen Anwendungsentwickler sorgfältig überlegen, wie sie ihren Endbenutzern ein vorhersagbares Erlebnis gewährleisten können, insbesondere in Situationen, in denen mehrere Benutzer die gleichen Daten aktualisieren können. Von Entwicklern werden für gewöhnlich die drei folgenden Hauptstrategien für die Datenparallelität in Betracht gezogen:
 
 - **Optimistische Parallelität:** Eine Anwendung, die eine Aktualisierung ausführt, prüft während dieses Vorgangs, ob die Daten seit dem letzten Lesen geändert wurden. Wenn z. B. zwei Benutzer dieselbe Wiki-Seite aufrufen und aktualisieren, muss die Wiki-Plattform sicherstellen, dass die erste Aktualisierung nicht von der zweiten überschrieben wird. Außerdem muss sichergestellt werden, dass beide Benutzer wissen, ob ihre Aktualisierung erfolgreich war. Diese Strategie wird in Webanwendung sehr häufig verwendet.
 
@@ -32,7 +32,7 @@ Azure Storage unterstützt alle drei Strategien, obwohl der Dienst besonders mit
 
 Entwickler müssen nicht nur die entsprechende Parallelitätsstrategie auswählen, sondern auch wissen, wie eine Speicherplattform Änderungen isoliert, insbesondere Änderungen, die in mehreren Transaktionen an demselben Objekt vorgenommen wurden. Azure Storage verwendet die Momentaufnahmeisolation, damit Lesevorgänge innerhalb einer einzelnen Partition gleichzeitig mit Schreibvorgängen ausgeführt werden können. Die Momentaufnahmeisolation gewährleistet, dass alle Lesevorgänge eine konsistente Momentaufnahme der Daten zurückgeben, auch während Aktualisierungen durchgeführt werden.
 
-Für die Verwaltung des Zugriffs auf Blobs und Container können Sie entweder das optimistische oder das pessimistische Parallelitätsmodell verwenden. Wenn Sie keine Strategie explizit festlegen, wird standardmäßig die Strategie „Letzter Schreiber gewinnt“ angewandt.  
+Für die Verwaltung des Zugriffs auf Blobs und Container können Sie entweder das optimistische oder das pessimistische Parallelitätsmodell verwenden. Wenn Sie keine Strategie explizit festlegen, wird standardmäßig die Strategie „Letzter Schreiber gewinnt“ angewandt.
 
 ## <a name="optimistic-concurrency"></a>Optimistische Parallelität
 
@@ -40,14 +40,14 @@ Azure Storage weist jedem gespeicherten Objekt einen Bezeichner zu. Dieser Bezei
 
 Ein Client, der eine Aktualisierung ausführt, kann das ursprüngliche ETag zusammen mit einem bedingten Header senden, um sicherzustellen, dass die Aktualisierung nur dann erfolgt, wenn eine bestimmte Bedingung erfüllt ist. Wenn beispielsweise der **If-Match**-Header angegeben ist, überprüft Azure Storage, ob der Wert des in der Aktualisierungsanforderung angegebenen ETags mit dem ETag des zu aktualisierenden Objekts übereinstimmt. Weitere Informationen zu bedingten Headern finden Sie unter [Angeben von bedingten Headern für Vorgänge des Blob-Diensts](/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations).
 
-Dieser Prozess ist folgendermaßen gegliedert:  
+Dieser Prozess ist folgendermaßen gegliedert:
 
 1. Es wird ein Blob aus Azure Storage abgerufen. Die Antwort enthält einen HTTP-ETag-Headerwert, der die aktuelle Version des Objekts bezeichnet.
 1. Wenn Sie das Blob aktualisieren, fügen Sie den in Schritt 1 erhaltenen ETag-Wert in den bedingten **If-Match**-Header der Schreibanforderung ein. Azure Storage vergleicht den ETag-Wert in der Anforderung mit dem aktuellen ETag-Wert des Blobs.
 1. Wenn sich der aktuelle ETag-Wert des Blobs von dem im bedingten **If-Match**-Header der Anforderung unterscheidet, gibt Azure Storage den HTTP-Statuscode 412 (Vorbedingung nicht erfüllt) zurück. Dieser Fehler teilt dem Client mit, dass das Blob von einem anderen Prozess geändert wurde, nachdem es vom Client das erste Mal abgerufen wurde.
-1. Wenn der aktuelle ETag-Wert des Blobs dieselbe Version wie das ETag im bedingten **If-Match**-Header der Anforderung aufweist, führt Azure Storage den angeforderten Vorgang aus und aktualisiert den aktuellen ETag-Wert des Blobs.  
+1. Wenn der aktuelle ETag-Wert des Blobs dieselbe Version wie das ETag im bedingten **If-Match**-Header der Anforderung aufweist, führt Azure Storage den angeforderten Vorgang aus und aktualisiert den aktuellen ETag-Wert des Blobs.
 
-In den folgenden Codebeispielen wird gezeigt, wie Sie eine **If-Match**-Bedingung für die Schreibanforderung erstellen, die den ETag-Wert für ein Blob überprüft. Azure Storage überprüft, ob das aktuelle ETag des Blobs mit dem ETag übereinstimmt, das in der Anforderung bereitgestellt wurde, und führt den Schreibvorgang nur aus, wenn die beiden ETag-Werte übereinstimmen. Falls das Blob in der Zwischenzeit von einem anderen Prozess aktualisiert wurde, gibt Azure Storage die Statusmeldung HTTP 412 (Vorbedingung nicht erfüllt) zurück.  
+In den folgenden Codebeispielen wird gezeigt, wie Sie eine **If-Match**-Bedingung für die Schreibanforderung erstellen, die den ETag-Wert für ein Blob überprüft. Azure Storage überprüft, ob das aktuelle ETag des Blobs mit dem ETag übereinstimmt, das in der Anforderung bereitgestellt wurde, und führt den Schreibvorgang nur aus, wenn die beiden ETag-Werte übereinstimmen. Falls das Blob in der Zwischenzeit von einem anderen Prozess aktualisiert wurde, gibt Azure Storage die Statusmeldung HTTP 412 (Vorbedingung nicht erfüllt) zurück.
 
 # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
@@ -106,15 +106,15 @@ public void DemonstrateOptimisticConcurrencyBlob(string containerName, string bl
 
 ---
 
-Azure Storage unterstützt auch andere bedingte Header, einschließlich **If-Modified-Since**, **If-Unmodified-Since** und **If-None-Match**. Weitere Informationen finden Sie unter [Specifying Conditional Headers for Blob Service Operations](/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations) (Angeben von bedingten Headern für Vorgänge des Blob-Diensts).  
+Azure Storage unterstützt auch andere bedingte Header, einschließlich **If-Modified-Since**, **If-Unmodified-Since** und **If-None-Match**. Weitere Informationen finden Sie unter [Specifying Conditional Headers for Blob Service Operations](/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations) (Angeben von bedingten Headern für Vorgänge des Blob-Diensts).
 
 ## <a name="pessimistic-concurrency-for-blobs"></a>Pessimistische Nebenläufigkeit für Blobs
 
-Um ein Blob für die exklusive Verwendung zu sperren, können Sie dafür eine Lease abrufen. Wenn Sie die Lease abrufen, geben Sie die Dauer der Lease an. Eine zeitlich begrenzte Lease kann zwischen 15 und 60 Sekunden gültig sein. Eine Lease kann auch unendlich gültig sein und wird dann zu einer Exklusivsperre. Sie können eine begrenzte Lease erneuern, um sie zu verlängern, und Sie können eine Lease freigeben, wenn sie nicht mehr benötigt wird. Azure Storage gibt begrenzte Leases automatisch frei, sobald sie ablaufen.  
+Um ein Blob für die exklusive Verwendung zu sperren, können Sie dafür eine Lease abrufen. Wenn Sie die Lease abrufen, geben Sie die Dauer der Lease an. Eine zeitlich begrenzte Lease kann zwischen 15 und 60 Sekunden gültig sein. Eine Lease kann auch unendlich gültig sein und wird dann zu einer Exklusivsperre. Sie können eine begrenzte Lease erneuern, um sie zu verlängern, und Sie können eine Lease freigeben, wenn sie nicht mehr benötigt wird. Azure Storage gibt begrenzte Leases automatisch frei, sobald sie ablaufen.
 
-Leases ermöglichen die Unterstützung verschiedener Synchronisierungsstrategien, einschließlich exklusiver Schreib-/gemeinsamer Lesevorgänge, exklusiver Schreib-/exklusiver Lesevorgänge und gemeinsamer Schreib-/exklusiver Lesevorgänge. Wenn eine Lease vorhanden ist, erzwingt Azure Storage den exklusiven Zugriff auf Schreibvorgänge für den Leaseinhaber. Um die Exklusivität für Lesevorgänge zu gewährleisten, muss der Entwickler jedoch sicherstellen, dass alle Clientanwendungen eine Lease-ID verwenden und dass jederzeit nur ein Client über eine gültige Lease-ID verfügt. Lesevorgänge, die keine Lease-ID enthalten, führen zu gemeinsamen Lesevorgängen.  
+Leases ermöglichen die Unterstützung verschiedener Synchronisierungsstrategien, einschließlich exklusiver Schreib-/gemeinsamer Lesevorgänge, exklusiver Schreib-/exklusiver Lesevorgänge und gemeinsamer Schreib-/exklusiver Lesevorgänge. Wenn eine Lease vorhanden ist, erzwingt Azure Storage den exklusiven Zugriff auf Schreibvorgänge für den Leaseinhaber. Um die Exklusivität für Lesevorgänge zu gewährleisten, muss der Entwickler jedoch sicherstellen, dass alle Clientanwendungen eine Lease-ID verwenden und dass jederzeit nur ein Client über eine gültige Lease-ID verfügt. Lesevorgänge, die keine Lease-ID enthalten, führen zu gemeinsamen Lesevorgängen.
 
-In den folgenden Codebeispielen wird veranschaulicht, wie Sie eine exklusive Lease für ein Blob abrufen, den Inhalt des Blobs aktualisieren, indem Sie die Lease-ID angeben, und dann die Lease freigeben. Wenn die Lease aktiv ist und die Lease-ID für eine Schreibanforderung nicht angegeben ist, führt der Schreibvorgang zum Fehlercode 412 (Vorbedingung nicht erfüllt).  
+In den folgenden Codebeispielen wird veranschaulicht, wie Sie eine exklusive Lease für ein Blob abrufen, den Inhalt des Blobs aktualisieren, indem Sie die Lease-ID angeben, und dann die Lease freigeben. Wenn die Lease aktiv ist und die Lease-ID für eine Schreibanforderung nicht angegeben ist, führt der Schreibvorgang zum Fehlercode 412 (Vorbedingung nicht erfüllt).
 
 # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
@@ -177,10 +177,10 @@ public void DemonstratePessimisticConcurrencyBlob(string containerName, string b
 
 ## <a name="pessimistic-concurrency-for-containers"></a>Pessimistische Nebenläufigkeit für Container
 
-Leases für Container ermöglichen dieselben Synchronisierungsstrategien wie für Blobs, einschließlich exklusiver Schreib-/gemeinsamer Lesevorgänge, exklusiver Schreib-/exklusiver Lesevorgänge und gemeinsamer Schreib-/exklusiver Lesevorgänge. Bei Containern wird die exklusive Sperre jedoch nur bei Löschvorgängen erzwungen. Um einen Container mit einer aktiven Lease zu löschen, muss ein Client die ID der aktiven Lease bei der Löschanforderung angeben. Alle anderen Containervorgänge werden für einen geleasten Container auch ohne Angabe der Lease-ID erfolgreich ausgeführt.  
+Leases für Container ermöglichen dieselben Synchronisierungsstrategien wie für Blobs, einschließlich exklusiver Schreib-/gemeinsamer Lesevorgänge, exklusiver Schreib-/exklusiver Lesevorgänge und gemeinsamer Schreib-/exklusiver Lesevorgänge. Bei Containern wird die exklusive Sperre jedoch nur bei Löschvorgängen erzwungen. Um einen Container mit einer aktiven Lease zu löschen, muss ein Client die ID der aktiven Lease bei der Löschanforderung angeben. Alle anderen Containervorgänge werden für einen geleasten Container auch ohne Angabe der Lease-ID erfolgreich ausgeführt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Angeben von bedingten Headern für Vorgänge des Blob-Diensts](/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations)
-* [Lease Container](/rest/api/storageservices/lease-container)
-* [Lease Blob](/rest/api/storageservices/lease-blob)
+- [Angeben von bedingten Headern für Vorgänge des Blob-Diensts](/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations)
+- [Lease Container](/rest/api/storageservices/lease-container)
+- [Lease Blob](/rest/api/storageservices/lease-blob)

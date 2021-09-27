@@ -3,16 +3,17 @@ title: Handbuch zur Leistung und Optimierung der Kopieraktivität
 description: Hier erfahren Sie, welche Faktoren sich entscheidend auf die Leistung auswirken, wenn Sie Daten in Azure Data Factory mithilfe der Kopieraktivität verschieben.
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 9a890719de39a71d8336d39f9932e73f7baccf87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 145d93cc073664ed1260170a9c1f7031c9831b7c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100377209"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128559319"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Handbuch zur Leistung und Optimierung der Kopieraktivität
 
@@ -45,7 +46,7 @@ Dieser Artikel beschreibt Folgendes:
 
 Als Referenz ist in der nachfolgenden Tabelle der Durchsatzwert beim Kopieren in MBit/s für die angegebenen Paare aus Quelle und Senke basierend auf internen Tests aufgeführt. Zu Vergleichszwecken wird zudem veranschaulicht, wie unterschiedliche Einstellungen der [Einheiten für Clouddatenverschiebungen](#cloud-data-movement-units) oder der [Skalierbarkeit des Datenverwaltungsgateways](data-factory-data-management-gateway-high-availability-scalability.md) (mehrere Gatewayknoten) zu einer verbesserten Kopierleistung beitragen können.
 
-![Leistungsmatrix](./media/data-factory-copy-activity-performance/CopyPerfRef.png)
+:::image type="content" source="./media/data-factory-copy-activity-performance/CopyPerfRef.png" alt-text="Leistungsmatrix":::
 
 >[!IMPORTANT]
 >In Azure Data Factory Version 1 müssen für Kopiervorgänge zwischen Clouds mindestens zwei Einheiten für Clouddatenverschiebungen vorhanden sein. Wenn keine Angabe erfolgt, finden Sie unter [Einheiten für Clouddatenverschiebungen](#cloud-data-movement-units) die verwendeten Standardeinheiten für Clouddatenverschiebungen.
@@ -187,11 +188,11 @@ Bei aktiviertem Stagingfeature werden die Daten zunächst aus dem Quelldatenspei
 
 In einem Kopierszenario in der Cloud (wenn sich sowohl der Quell- als auch der Senkendatenspeicher in der Cloud befinden) wird das Gateway nicht verwendet. Der Data Factory-Dienst führt die Kopiervorgänge aus.
 
-![Gestaffeltes Kopieren: Cloudszenario](media/data-factory-copy-activity-performance/staged-copy-cloud-scenario.png)
+:::image type="content" source="media/data-factory-copy-activity-performance/staged-copy-cloud-scenario.png" alt-text="Gestaffeltes Kopieren: Cloudszenario":::
 
 Im Hybridkopierszenario (mit einer lokalen Quelle und einer Senke in der Cloud) verschiebt das Gateway die Daten aus dem Quelldatenspeicher in einen Stagingdatenspeicher. Die Daten werden vom Data Factory-Dienst aus dem Stagingdatenspeicher in den Senkendatenspeicher verschoben. Das Kopieren von Daten aus einem Clouddatenspeicher in einen lokalen Datenspeicher mithilfe eines Stagingspeichers wird auch in umgekehrter Richtung unterstützt.
 
-![Gestaffeltes Kopieren: Hybridszenario](media/data-factory-copy-activity-performance/staged-copy-hybrid-scenario.png)
+:::image type="content" source="media/data-factory-copy-activity-performance/staged-copy-hybrid-scenario.png" alt-text="Gestaffeltes Kopieren: Hybridszenario":::
 
 Wenn Sie die Datenverschiebung unter Verwendung des Stagingspeichers aktivieren, können Sie angeben, ob die Daten vor dem Verschieben aus dem Quelldatenspeicher in einen Zwischen- oder Stagingdatenspeicher komprimiert und vor dem Verschieben der Daten aus einem Zwischen- oder Stagingdatenspeicher in den Senkendatenspeicher wieder dekomprimiert werden sollen.
 
@@ -200,7 +201,7 @@ Derzeit ist es nicht möglich, Daten unter Verwendung eines Stagingspeichers zwi
 ### <a name="configuration"></a>Konfiguration
 Konfigurieren Sie für die Kopieraktivität die Einstellung **enableStaging**, um anzugeben, ob die Daten vor dem Laden in einen Zielspeicher in Blobspeicher bereitgestellt werden sollen. Wenn Sie **enableStaging** auf „TRUE“ festlegen, müssen Sie zusätzliche Eigenschaften angeben. Diese sind in der folgenden Tabelle aufgeführt. Falls noch nicht vorhanden, müssen Sie außerdem für das Staging einen verknüpften Azure Storage- oder Storage-SAS-Dienst erstellen.
 
-| Eigenschaft | BESCHREIBUNG | Standardwert | Erforderlich |
+| Eigenschaft | Beschreibung | Standardwert | Erforderlich |
 | --- | --- | --- | --- |
 | **enableStaging** |Geben Sie an, ob Sie Daten über einen Stagingzwischenspeicher kopieren möchten. |False |Nein |
 | **linkedServiceName** |Geben Sie den Namen eines verknüpften Diensts vom Typ [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) oder [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) an, um auf die Storage-Instanz zu verweisen, die als Stagingzwischenspeicher verwendet werden soll. <br/><br/> Storage kann nicht mit einer Shared Access Signature (SAS) verwendet werden, um Daten über PolyBase in Azure Synapse Analytics zu laden. In allen anderen Szenarien ist dies hingegen problemlos möglich. |– |Ja, wenn **enableStaging** auf „TRUE“ festgelegt ist. |
@@ -247,7 +248,7 @@ Wir empfehlen, die folgenden Schritte auszuführen, um die Leistung des Data Fac
 
    Erfassen Sie mithilfe der **App „Überwachung und Verwaltung“** die Ausführungszeit und die Leistungsmerkmale. Wählen Sie auf Ihrer Data Factory-Startseite die Option **Überwachen und verwalten** aus. Wählen Sie in der Strukturansicht das **Ausgabedataset** aus. Wählen Sie in der Liste **Activity Windows** (Aktivitätsfenster) die ausgeführte Kopieraktivität aus. **Activity Windows** (Aktivitätsfenster) werden die Dauer der Kopieraktivität und die Größe der kopierten Daten aufgeführt. Der Durchsatz ist im **Activity Window Explorer**(Aktivitätsfenster-Explorer) angegeben. Unter [Überwachen und Verwalten von Azure Data Factory-Pipelines mit der neuen App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md)erfahren Sie mehr über die App.
 
-   ![Aktivitätsausführung – Details](./media/data-factory-copy-activity-performance/mmapp-activity-run-details.png)
+   :::image type="content" source="./media/data-factory-copy-activity-performance/mmapp-activity-run-details.png" alt-text="Aktivitätsausführung – Details":::
 
    Weiter unten in diesem Artikel können Sie die Leistung und Konfiguration Ihres Szenarios mit der [Leistungsreferenz](#performance-reference) aus unseren Tests für die Kopieraktivität vergleichen.
 2. **Analysieren und Optimieren der Leistung** Sollte die Leistung in der Praxis nicht Ihren Erwartungen entsprechen, müssen Sie Leistungsengpässe identifizieren. Anschließend können Sie die Leistung optimieren, um Engpässe zu beseitigen oder deren Auswirkungen zu minimieren. Eine vollständige Beschreibung der Leistungsdiagnose würde den Rahmen dieses Artikels sprengen, im Anschluss finden Sie jedoch einige allgemeine Aspekte:
@@ -374,7 +375,7 @@ Seien Sie vorsichtig bei der Anzahl von Datasets und Kopieraktivitäten, für di
 
 Wie Sie sehen, werden die Daten sequenziell mittels Streaming verarbeitet und verschoben: SQL Server > LAN > Gateway > WAN > Blob Storage. **Die Gesamtleistung wird durch den minimalen Durchsatz der gesamten Pipeline begrenzt.**
 
-![Datenfluss](./media/data-factory-copy-activity-performance/case-study-pic-1.png)
+:::image type="content" source="./media/data-factory-copy-activity-performance/case-study-pic-1.png" alt-text="Datenfluss":::
 
 Der Leistungsengpass kann auf folgende Faktoren zurückzuführen sein:
 
@@ -394,19 +395,19 @@ In diesem Fall verlangsamt unter Umständen die BZIP2-Datenkomprimierung die ges
 
 **Analyse und Leistungsoptimierung:** Wenn Sie das Gateway beispielsweise auf einem Computer mit vier Kernen installiert haben, verwendet Data Factory standardmäßig 16 parallele Kopien, um Dateien gleichzeitig aus dem Dateisystem in Blob Storage zu verschieben. Diese parallele Ausführung hat einen hohen Durchsatz zur Folge. Die Anzahl paralleler Kopien kann auch explizit angegeben werden. Beim Kopieren zahlreicher kleiner Dateien tragen parallele Kopien aufgrund der effektiveren Ressourcennutzung zu einer deutlichen Verbesserung des Durchsatzes bei.
 
-![Szenario 1](./media/data-factory-copy-activity-performance/scenario-1.png)
+:::image type="content" source="./media/data-factory-copy-activity-performance/scenario-1.png" alt-text="Szenario 1":::
 
 **Szenario II**: Kopieren von 20 Blobs mit jeweils 500 MB aus Blob Storage in Data Lake Store Analytics mit anschließender Leistungsoptimierung
 
 **Analyse und Leistungsoptimierung:** In diesem Szenario kopiert Data Factory die Daten unter Verwendung einer einzelnen Kopie (**parallelCopies** = 1) und einzelner Einheiten für Clouddatenverschiebungen aus Blob Storage in Data Lake Store. Der Durchsatz entspricht in etwa den Angaben im Abschnitt [Leistungsreferenz](#performance-reference).
 
-![Szenario 2](./media/data-factory-copy-activity-performance/scenario-2.png)
+:::image type="content" source="./media/data-factory-copy-activity-performance/scenario-2.png" alt-text="Szenario 2":::
 
 **Szenario III**: Große Einzeldateien und hoher Gesamtumfang
 
 **Analyse und Leistungsoptimierung**: Die Erhöhung des Werts für **parallelCopies** führt angesichts der Ressourcenbeschränkungen, die bei nur einer Cloud-DMU gelten, nicht zu einer Verbesserung der Leistung. Stattdessen müssen weitere Cloud-DMUs angegeben werden, um weitere Ressourcen zum Ausführen der Datenverschiebung zu erhalten. Geben Sie keinen Wert für die **parallelCopies** -Eigenschaft an. Die Parallelität wird von Data Factory gehandhabt. Wenn Sie **cloudDataMovementUnits** im vorliegenden Fall auf „4“ festlegen, lässt sich der Durchsatz ungefähr vervierfachen.
 
-![Szenario 3](./media/data-factory-copy-activity-performance/scenario-3.png)
+:::image type="content" source="./media/data-factory-copy-activity-performance/scenario-3.png" alt-text="Szenario 3":::
 
 ## <a name="reference"></a>Verweis
 Hier finden Sie Referenzen zur Leistungsüberwachung und -optimierung für einige der unterstützten Datenspeicher:

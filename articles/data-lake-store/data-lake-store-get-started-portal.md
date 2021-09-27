@@ -1,17 +1,17 @@
 ---
 title: Erste Schritte mit Azure Data Lake Storage Gen1 – Portal
 description: Verwenden Sie das Azure-Portal zum Erstellen eines Data Lake Storage Gen1-Kontos und Ausführen grundlegender Vorgänge im Konto.
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 06/27/2018
-ms.author: twooley
-ms.openlocfilehash: b6b13c507f32271e4707cf4c4506bcf8e1f6e633
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.author: normesta
+ms.openlocfilehash: d67144ce7de7665fe69b1ebd9bb72c02995b24ec
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112007547"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128612376"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Erste Schritte mit Data Lake Storage Gen1 unter Verwendung des Azure-Portals
 

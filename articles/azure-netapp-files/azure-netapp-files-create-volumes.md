@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/06/2021
 ms.author: b-juche
-ms.openlocfilehash: ed67984dac9d1beb7106c78a8ffa35d778f69d59
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e9d3f2443d73f75e96e0036d5c546d00238a58d8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345935"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128614370"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Erstellen eines NFS-Volumes für Azure NetApp Files
 
@@ -62,7 +62,7 @@ In diesem Artikel wird veranschaulicht, wie Sie ein NFS-Volume erstellen. Inform
     * **Volumename**      
         Geben Sie den Namen für das Volume an, das Sie erstellen möchten.   
 
-        Ein Volumename muss innerhalb der einzelnen Kapazitätspools eindeutig sein. Er muss mindestens drei Zeichen lang sein. Der Name muss mit einem Buchstaben beginnen. Er darf nur Buchstaben, Zahlen, Unterstriche („_“), und Bindestriche („-“) enthalten.
+        Ein Volumename muss innerhalb der einzelnen Kapazitätspools eindeutig sein. Er muss mindestens drei Zeichen lang sein. Der Name muss mit einem Buchstaben beginnen. Er darf nur Buchstaben, Ziffern, Unterstriche („_“), und Bindestriche („-“) enthalten.
 
         Sie können `default` oder `bin` nicht als Volumename verwenden.
 
@@ -96,7 +96,7 @@ In diesem Artikel wird veranschaulicht, wie Sie ein NFS-Volume erstellen. Inform
 
     * Wenn Sie eine vorhandene Momentaufnahmerichtlinie auf das Volume anwenden möchten, klicken Sie auf **Abschnitt „Erweitert“ anzeigen**, um den Bereich zu erweitern, geben Sie an, ob Sie den Momentaufnahmepfad ausblenden möchten, und wählen Sie im Pulldownmenü eine Momentaufnahmerichtlinie aus. 
 
-        Informationen zum Erstellen einer Momentaufnahmenrichtlinie finden Sie unter [Verwalten von Momentaufnahmenrichtlinien](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies).
+        Informationen zum Erstellen einer Momentaufnahmenrichtlinie finden Sie unter [Verwalten von Momentaufnahmenrichtlinien](snapshots-manage-policy.md).
 
         ![Abschnitt „Erweitert“ anzeigen](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
@@ -117,7 +117,7 @@ In diesem Artikel wird veranschaulicht, wie Sie ein NFS-Volume erstellen. Inform
 
     * Wenn Sie Active Directory LDAP-Benutzern und erweiterten Gruppen (bis zu 1024 Gruppen) den Zugriff auf das Volume ermöglichen möchten, wählen Sie die Option **LDAP**. Befolgen Sie die Anweisungen unter [Konfigurieren von ADDS LDAP mit erweiterten Gruppen für den NFS-Volumenzugriff](configure-ldap-extended-groups.md), um die erforderlichen Konfigurationen abzuschließen. 
  
-    *  Passen Sie nach Bedarf die **Unix-Berechtigungen** an, um Änderungsberechtigungen für den Bereitstellungspfad anzugeben. Die Einstellung gilt nicht für die Dateien unter dem Einbindepfad. Die Standardeinstellung ist `0770`. Diese Standardeinstellung gewährt dem Besitzer und der Gruppe Lese-, Schreib- und Ausführungsberechtigungen, anderen Benutzern werden jedoch keine Berechtigungen gewährt.     
+    *  Passen Sie nach Bedarf die **Unix-Berechtigungen** an, um Änderungsberechtigungen für den Bereitstellungspfad anzugeben. Die Einstellung gilt nicht für die Dateien unter dem Bereitstellungspfad. Die Standardeinstellung ist `0770`. Diese Standardeinstellung gewährt dem Besitzer und der Gruppe Lese-, Schreib- und Ausführungsberechtigungen, anderen Benutzern werden jedoch keine Berechtigungen gewährt.     
         Für das Festlegen von **Unix-Berechtigungen** gelten Registrierungsanforderungen und -überlegungen. Befolgen Sie die Anweisungen unter [Konfigurieren von Unix-Berechtigungen und des Modus zum Ändern des Besitzers](configure-unix-permissions-change-ownership-mode.md).   
 
     * Optional können Sie [die Exportrichtlinie für das NFS-Volume konfigurieren](azure-netapp-files-configure-export-policy.md).

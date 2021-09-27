@@ -7,18 +7,19 @@ ms.service: storage
 ms.topic: article
 ms.date: 02/24/2021
 ms.author: chuye
-ms.openlocfilehash: f5c43822bb9b856126c9b1ff80212d457044887b
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 69b5eb294bf33a56e89052752cb8473189f34eac
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123449529"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626644"
 ---
 # <a name="azure-storage-explorer-command-line-options"></a>Storage-Explorer: Befehlszeilenoptionen
 
 Microsoft Azure Storage-Explorer verfügt über eine Reihe von Befehlszeilenoptionen, die beim Starten der Anwendung hinzugefügt werden können. Die meisten Befehlszeilenoptionen dienen zum Debuggen oder zur Problembehandlung.
 
 ## <a name="command-line-options"></a>Befehlszeilenoptionen
+
 Option  | BESCHREIBUNG
 :------- | :-----------
 `--debug`/`--prod`  | Startet die Anwendung im Debug- oder Produktionsmodus. Im Debugmodus werden die Daten der lokalen Anlage im lokalen Speicher der Anwendung gespeichert und nicht verschlüsselt. Ausgeblendete Eigenschaften werden im Bereich „Eigenschaften“ für ausgewählte Ressourcenknoten angezeigt. Der Ausführlichkeitsgrad des Protokolls wird so festgelegt, dass Debugmeldungen ausgegeben werden, die die interne Setuplogik von Storage-Explorer offenlegen. Standardwert: `--prod`.
@@ -39,6 +40,6 @@ Beispiel für das Starten von Storage-Explorer mit benutzerdefinierten Befehlsze
 
 ## <a name="when-to-use-command-line-options"></a>Verwenden von Befehlszeilenoptionen
 
-Einige Befehlszeilenoptionen können zum Anpassen von Storage-Explorer verwendet werden. Für Optionen, die über entsprechende Benutzereinstellungen verfügen, z. B. `--lang`. Es wird empfohlen, anstelle der Befehlszeilenoption Benutzereinstellungen zu verwenden. 
+Einige Befehlszeilenoptionen können zum Anpassen von Storage-Explorer verwendet werden. Für Optionen, die über entsprechende Benutzereinstellungen verfügen, z. B. `--lang`. Es wird empfohlen, anstelle der Befehlszeilenoption Benutzereinstellungen zu verwenden.
 
 Die anderen Befehlszeilenoptionen können für das Debuggen und Problembehandlung hilfreich sein. Wenn in Storage-Explorer ein Problem auftritt, können Sie das Problem im Debugmodus reproduzieren, um detailliertere Informationen zur Untersuchung zu erhalten.

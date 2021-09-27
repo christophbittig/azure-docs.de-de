@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/07/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 383757cf20c7ac508aa396b947640c3a1221052d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 18f6be8421d424b8eefe04c5cb2e3f8026858ec7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355934"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626720"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Notfallwiederherstellung und Speicherkontofailover
 
@@ -30,7 +30,7 @@ Dieser Artikel beschreibt die Konzepte und Prozesse, die mit einem Kontofailover
 
 ## <a name="choose-the-right-redundancy-option"></a>Auswählen der richtigen Redundanzoption
 
-Von Azure Storage werden mehrere Kopien Ihres Speicherkontos geführt, um für Dauerhaftigkeit und Hochverfügbarkeit zu sorgen. Welche Redundanzoption Sie für Ihr Konto wählen, hängt vom Grad der Ausfallsicherheit ab, den Sie benötigen. Zum Schutz vor regionalen Ausfällen konfigurieren Sie Ihr Konto für georedundanten Speicher mit oder ohne die Möglichkeit des Lesezugriffs aus der sekundären Region:  
+Von Azure Storage werden mehrere Kopien Ihres Speicherkontos geführt, um für Dauerhaftigkeit und Hochverfügbarkeit zu sorgen. Welche Redundanzoption Sie für Ihr Konto wählen, hängt vom Grad der Ausfallsicherheit ab, den Sie benötigen. Zum Schutz vor regionalen Ausfällen konfigurieren Sie Ihr Konto für georedundanten Speicher mit oder ohne die Möglichkeit des Lesezugriffs aus der sekundären Region:
 
 Bei **georedundantem Speicher (GRS) bzw. geozonenredundantem Speicher (GZRS)** werden Ihre Daten asynchron in zwei geografische Regionen kopiert, die mindestens mehrere Hundert Kilometer voneinander entfernt sind. Wenn es in der primären Region zu einem Ausfall kommt, dann dient die sekundäre Region als redundante Quelle für Ihre Daten. Sie können ein Failover initiieren, um den sekundären Endpunkt in den primären Endpunkt zu transformieren.
 
@@ -48,7 +48,7 @@ Es ist wichtig, Ihre Anwendung von Anfang an auf Hochverfügbarkeit auszurichten
 - [Entwerfen resilienter Anwendungen für Azure](/azure/architecture/framework/resiliency/app-design): Ein Überblick über die wichtigsten Konzepte für die Architektur hochverfügbarer Anwendungen in Azure.
 - [Checkliste für Resilienz](/azure/architecture/checklist/resiliency-per-service): Eine Checkliste zur Überprüfung, ob Ihre Anwendung die Best Practices für den Entwurf für Hochverfügbarkeit implementiert.
 - [Verwenden von Georedundanz zum Entwerfen von hochverfügbaren Anwendungen](geo-redundant-design.md): Entwurfsleitfaden zum Erstellen von Anwendungen zur Nutzung der Vorteile von georedundantem Speicher.
-- [Tutorial: Erstellen einer hochverfügbaren Anwendung mit Blob Storage](../blobs/storage-create-geo-redundant-storage.md): Ein Tutorial, das zeigt, wie Sie eine hochverfügbare Anwendung erstellen, die automatisch zwischen Endpunkten wechselt, wenn Ausfälle und Wiederherstellungen simuliert werden. 
+- [Tutorial: Erstellen einer hochverfügbaren Anwendung mit Blob Storage](../blobs/storage-create-geo-redundant-storage.md): Ein Tutorial, das zeigt, wie Sie eine hochverfügbare Anwendung erstellen, die automatisch zwischen Endpunkten wechselt, wenn Ausfälle und Wiederherstellungen simuliert werden.
 
 Beachten Sie außerdem diese Best Practices zur Aufrechterhaltung der Hochverfügbarkeit Ihrer Azure Storage-Daten:
 
@@ -67,7 +67,8 @@ Microsoft empfiehlt Ihnen auch, Ihre Anwendung so zu gestalten, dass sie sich au
 
 Mit einem von Kunden verwalteten Failover können Sie ein Failover für das gesamte Speicherkonto zur sekundären Region ausführen, wenn die primäre Region aus irgendeinem Grund nicht verfügbar ist. Wenn Sie ein Failover in der sekundären Region erzwingen, können Clients nach Abschluss des Failovers mit dem Schreiben von Daten in den sekundären Endpunkt beginnen. Das Failover dauert i. d. r. etwa eine Stunde.
 
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
+> [!NOTE]
+> Dieses Feature wird in Konten mit einem hierarchischen Namespace (Azure Data Lake Storage Gen2) noch nicht unterstützt. Weitere Informationen finden Sie unter [Verfügbare Blob Storage-Features in Azure Data Lake Storage Gen2](../blobs/storage-feature-support-in-storage-accounts.md).
 
 ### <a name="how-an-account-failover-works"></a>Funktionsweise eines Kontofailovers
 
@@ -93,7 +94,7 @@ Der Schreibzugriff für georedundante Konten wird wiederhergestellt, sobald der 
 ### <a name="anticipate-data-loss"></a>Vorhersehen von Datenverlust
 
 > [!CAUTION]
-> Bei einem Kontofailover kommt es in der Regel zu Datenverlust. Es ist wichtig, die Auswirkungen der Einleitung eines Kontofailover zu verstehen.  
+> Bei einem Kontofailover kommt es in der Regel zu Datenverlust. Es ist wichtig, die Auswirkungen der Einleitung eines Kontofailover zu verstehen.
 
 Da Daten asynchron von der primären Region in die sekundäre Region geschrieben werden, kommt es immer zu einer Verzögerung, bevor ein Schreibvorgang, der in die primäre Region erfolgt, in die sekundäre Region kopiert wird. Wenn die primäre Region nicht verfügbar ist, wurden die letzten Schreibvorgänge unter Umständen noch nicht in die sekundäre Region kopiert.
 

@@ -11,17 +11,17 @@ ms.workload: identity
 ms.date: 07/16/2021
 ms.author: billmath
 ms.reviewer: arvinh
-ms.openlocfilehash: 11bd751ebc95b1a9486534b34c771fde64eced21
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 0bc74d9c9bab1337638249900de92bee39a40a68
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114437347"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128571680"
 ---
 # <a name="azure-ad-on-premises-application-provisioning-to-scim-enabled-apps"></a>Lokale Azure AD-Anwendungsbereitstellung in SCIM-fähigen Apps
 
 >[!IMPORTANT]
-> Die Vorschauversion zur lokalen Bereitstellung ist derzeit nur mit Einladung verfügbar. Verwenden Sie das [Zugriffsanforderungsformular](https://aka.ms/onpremprovisioningpublicpreviewaccess), um Zugriff auf die Funktion anzufordern. Wir öffnen die Vorschauversion im Rahmen der Vorbereitung auf die allgemeine Verfügbarkeit in den nächsten Monaten für weitere Kunden und Connectors.
+> Die Vorschauversion zur lokalen Bereitstellung ist derzeit nur mit Einladung verfügbar. Um Zugriff auf die Funktion anzufordern, verwenden Sie das [Zugriffsanforderungsformular](https://aka.ms/onpremprovisioningpublicpreviewaccess). Wir öffnen die Vorschauversion im Rahmen der Vorbereitung auf die allgemeine Verfügbarkeit in den nächsten Monaten für weitere Kunden und Connectors.
 
 Der Azure Active Directory-Bereitstellungsdienst (Azure AD) unterstützt einen [SCIM 2.0-Client](https://techcommunity.microsoft.com/t5/identity-standards-blog/provisioning-with-scim-getting-started/ba-p/880010), mit dem Benutzer automatisch in Cloudanwendungen oder lokalen Anwendungen bereitgestellt werden können. In diesem Artikel wird beschrieben, wie Sie den Azure AD-Bereitstellungsdienst verwenden können, um Benutzer in einer lokalen, SCIM-fähigen Anwendung bereitzustellen. Wenn Sie Benutzer in lokalen Anwendungen ohne SCIM-Fähigkeit bereitstellen möchten, die SQL als Datenspeicher verwenden, lesen Sie das [Tutorial: Azure AD ECMA Connectorhost – generischer SQL-Connector](tutorial-ecma-sql-connector.md). Wenn Sie Benutzer in Cloud-Apps wie DropBox und Atlassian bereitstellen möchten, lesen Sie die [Tutorials](../../active-directory/saas-apps/tutorial-list.md) zu den jeweiligen Apps.
 
@@ -66,7 +66,5 @@ So stellen Sie Benutzer für SCIM-fähige Apps bereit:
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [App-Bereitstellung](user-provisioning.md)
-- [Azure AD-ECMA-Connectorhost: Installation](on-premises-ecma-install.md)
-- [Azure AD-ECMA-Connectorhost: Konfiguration](on-premises-ecma-configure.md)
 - [Generischer SQL-Connector](on-premises-sql-connector-configure.md)
 - [Tutorial: Generischer SQL-Connector mit ECMA-Connectorhost](tutorial-ecma-sql-connector.md)

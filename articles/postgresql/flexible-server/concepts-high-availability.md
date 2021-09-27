@@ -6,17 +6,16 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/30/2021
-ms.openlocfilehash: cf2fcf836962bbdb8a3af1671ecf9e11f6b4efa1
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: c8108540f77d323c46cc88caa628764b40c59e74
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770248"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597985"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql---flexible-server"></a>Hochverfügbarkeitskonzepte für Azure Database for PostgreSQL – Flexible Server
 
-> [!IMPORTANT]
-> Azure Database for PostgreSQL – Flexible Server befindet sich in der Vorschau.
+
 
 Azure Database for PostgreSQL – Flexible Server bietet eine Konfiguration mit Hochverfügbarkeit und automatischer Failoverfunktion mithilfe einer **zonenredundanten** Serverbereitstellung. Wenn Flexible Server in einer zonenredundanten Konfiguration bereitgestellt wird, wird in einer anderen Verfügbarkeitszone automatisch ein Standbyreplikat bereitgestellt und verwaltet. Mithilfe der Streamingreplikation von PostgreSQL werden die Daten im **synchronen** Modus auf den Standbyreplikatserver repliziert. 
 

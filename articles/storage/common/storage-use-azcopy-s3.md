@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: ac73d0e57377a8922691ea06c8de3df5ef577680
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 68aaa447aef65a109105f870b805dd485f322643
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502435"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128639981"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>Kopieren von Daten aus Amazon S3 in Azure Storage mithilfe von AzCopy
 
@@ -21,9 +21,9 @@ AzCopy ist ein Befehlszeilenhilfsprogramm, das Sie verwenden können, um Blobs o
 
 ## <a name="choose-how-youll-provide-authorization-credentials"></a>Auswählen, wie Sie die Autorisierungsanmeldeinformationen bereitstellen
 
-* Nutzen Sie für die Azure Storage-Autorisierung Azure Active Directory (AD) oder ein SAS-Token (Shared Access Signature).
+- Nutzen Sie für die Azure Storage-Autorisierung Azure Active Directory (AD) oder ein SAS-Token (Shared Access Signature).
 
-* Verwenden Sie für die Autorisierung mit AWS S3 einen AWS-Zugriffsschlüssel und einen geheimen Zugriffsschlüssel.
+- Verwenden Sie für die Autorisierung mit AWS S3 einen AWS-Zugriffsschlüssel und einen geheimen Zugriffsschlüssel.
 
 ### <a name="authorize-with-azure-storage"></a>Autorisieren mit Azure Storage
 
@@ -53,7 +53,7 @@ Da für AzCopy die [Put Block From URL](/rest/api/storageservices/put-block-from
 > [!TIP]
 > In den Beispielen in diesem Abschnitt werden Pfadargumente in einfache Anführungszeichen ('') eingeschlossen. Verwenden Sie in allen Befehlsshells außer der Windows-Befehlszeile (cmd.exe) einfache Anführungszeichen. Wenn Sie eine Windows-Befehlszeile (cmd.exe) verwenden, müssen Sie Pfadargumente in doppelte Anführungszeichen ("") anstelle von einfachen Anführungszeichen ('') einschließen.
 
- Diese Beispiele können auch für Konten mit einem hierarchischen Namespace verwendet werden. [Multiprotokollzugriff für Data Lake Storage](../blobs/data-lake-storage-multi-protocol-access.md) ermöglicht es Ihnen, dieselbe URL-Syntax (`blob.core.windows.net`) für diese Konten zu verwenden. 
+ Diese Beispiele können auch für Konten mit einem hierarchischen Namespace verwendet werden. [Multiprotokollzugriff für Data Lake Storage](../blobs/data-lake-storage-multi-protocol-access.md) ermöglicht es Ihnen, dieselbe URL-Syntax (`blob.core.windows.net`) für diese Konten zu verwenden.
 
 ### <a name="copy-an-object"></a>Kopieren eines Objekts
 
@@ -153,7 +153,7 @@ azcopy copy 'https://s3-rds.eu-north-1.amazonaws.com' 'https://mystorageaccount.
 
 AWS S3 verfügt über andere Namenskonventionen für Bucketnamen als Azure-Blobcontainer. Informationen zu diesem Thema finden Sie [hier](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules). Wenn Sie die Entscheidung treffen, eine Gruppe mit Buckets in ein Azure-Speicherkonto zu kopieren, tritt für den Kopiervorgang ggf. ein Fehler aufgrund von Unterschieden bei der Benennung auf.
 
-Mit AzCopy werden zwei der häufigsten Probleme behandelt, die auftreten können: Buckets, die Zeiträume enthalten, und Buckets, die aufeinander folgende Bindestriche enthalten. Namen von AWS S3-Buckets können Zeiträume und aufeinander folgende Bindestriche enthalten, aber für einen Container in Azure ist dies nicht möglich. Mit AzCopy werden Zeiträume durch Bindestriche und aufeinander folgende Bindestriche durch eine Zahl ersetzt, die für die Anzahl von aufeinander folgenden Bindestriche steht (Beispiel: ein Bucket mit dem Namen `my----bucket` wird zu `my-4-bucket`. 
+Mit AzCopy werden zwei der häufigsten Probleme behandelt, die auftreten können: Buckets, die Zeiträume enthalten, und Buckets, die aufeinander folgende Bindestriche enthalten. Namen von AWS S3-Buckets können Zeiträume und aufeinander folgende Bindestriche enthalten, aber für einen Container in Azure ist dies nicht möglich. Mit AzCopy werden Zeiträume durch Bindestriche und aufeinander folgende Bindestriche durch eine Zahl ersetzt, die für die Anzahl von aufeinander folgenden Bindestriche steht (Beispiel: ein Bucket mit dem Namen `my----bucket` wird zu `my-4-bucket`.
 
 Wenn mit AzCopy Dateien kopiert werden, wird auch eine Überprüfung auf Namenskonflikte durchgeführt und versucht, diese zu lösen. Falls beispielsweise Buckets mit den Namen `bucket-name` und `bucket.name` vorhanden sind, löst AzCopy einen Bucket mit dem Namen `bucket.name` zuerst in `bucket-name` und dann in `bucket-name-2` auf.
 
@@ -199,6 +199,6 @@ Weitere Beispiele finden Sie in diesen Artikeln:
 
 Lesen Sie diese Artikel, um Einstellungen zu konfigurieren, die Leistung zu optimieren und Probleme zu beheben:
 
-- [AzCopy-Konfigurationseinstellungen (Azure Storage)](storage-ref-azcopy-configuration-settings.md)
+- [AzCopy v10-Konfigurationseinstellungen (Azure Storage)](storage-ref-azcopy-configuration-settings.md)
 - [Optimieren der Leistung von AzCopy mit Azure Storage](storage-use-azcopy-optimize.md)
-- [Ermitteln von Fehlern und Fortsetzen von Aufträgen mithilfe von Protokoll- und Plandateien in AzCopy](storage-use-azcopy-configure.md)
+- [Konfigurieren, Optimieren und Problembehandlung in AzCopy](storage-use-azcopy-configure.md)

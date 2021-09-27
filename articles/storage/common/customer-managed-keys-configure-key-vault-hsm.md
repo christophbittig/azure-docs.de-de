@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 09f62865c80c05fd0860fa39b18d99c583cf3e56
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d8e4610ee7fc6690f3d0784415cea09259dd99ba
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114461621"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128645719"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault-managed-hsm"></a>Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault Managed HSM (Vorschau) gespeichert sind
 
@@ -45,7 +45,7 @@ az storage account update \
 Weisen Sie als Nächstes der verwalteten Identität des Speicherkontos die Rolle **Managed HSM Crypto Service Encryption User** (Kryptografiedienstverschlüsselung für verwaltete HSMs) zu, sodass das Speicherkonto über Berechtigungen für das verwaltete HSM verfügt. Microsoft empfiehlt, die Rollenzuweisung auf die Ebene des einzelnen Schlüssels festzulegen, sodass der verwalteten Identität nur die notwendigsten Berechtigungen erteilt werden.
 
 Um die Rollenzuweisung für das Speicherkonto zu erstellen, rufen Sie [az keyvault role assignment create](/cli/azure/role/assignment#az_role_assignment_create) auf. Denken Sie daran, die Platzhalterwerte in den spitzen Klammern durch Ihre eigenen Werte zu ersetzen.
-  
+
 ```azurecli
 storage_account_principal = $(az storage account show \
     --name <storage-account> \

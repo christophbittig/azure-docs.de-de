@@ -1,11 +1,8 @@
 ---
 title: Einrichten von IBM Db2 HADR auf virtuellen Azure-Computern (VMs) unter RHEL | Microsoft-Dokumentation
 description: Richten Sie die Hochverfügbarkeit von IBM Db2 für LUW auf virtuellen Azure-Computern (VMs) unter RHEL ein.
-services: virtual-machines-linux
-documentationcenter: ''
 author: msjuergent
 manager: bburns
-editor: ''
 tags: azure-resource-manager
 keywords: SAP
 ms.service: virtual-machines-sap
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/27/2021
 ms.author: juergent
-ms.openlocfilehash: 9bdd5c8ce5974d73b76dd793445a19a9714f6038
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 99ea40f7fcfe0a5d3f34c9c9a9a7bbee58fd1186
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136839"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128562400"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Hochverfügbarkeit von IBM DB2 LUW auf virtuellen Azure-Computern unter Red Hat Enterprise Linux Server
 
@@ -655,10 +652,10 @@ sudo pcs resource clear Db2_HADR_<b>ID2</b>-master
 sudo pcs resource move Db2_HADR_<b>ID2</b>-clone --master
 sudo pcs resource clear Db2_HADR_<b>ID2</b>-clone</code></pre>
 
-- **Unter RHEL 7.x: pcs resource move \<res_name> <host>:** Erstellt Speicherorteinschränkungen und kann Probleme mit Übernahmen verursachen.
-- **Unter RHEL 8.x: pcs resource move \<res_name> --master:** Erstellt Speicherorteinschränkungen und kann Probleme mit Übernahmen verursachen.
-- **pcs resource clear \<res_name>** : Löscht Speicherorteinschränkungen.
-- **pcs resource cleanup \<res_name>** : Löscht alle Fehler der Ressource.
+- **Unter RHEL 7.x: pcs resource move \<res_name\> \<host\>:** Erstellt Speicherorteinschränkungen und kann Probleme mit Übernahmen verursachen.
+- **Unter RHEL 8.x: pcs resource move \<res_name\> --master:** Erstellt Speicherorteinschränkungen und kann Probleme mit Übernahmen verursachen.
+- **pcs resource clear \<res_name\>** : Löscht Speicherorteinschränkungen.
+- **pcs resource cleanup \<res_name\>** : Löscht alle Fehler der Ressource.
 
 ### <a name="test-a-manual-takeover"></a>Testen einer manuellen Übernahme
 
@@ -876,7 +873,7 @@ rsc_st_azure    (stonith:fence_azure_arm):      Started az-idb02
 
 [db2-hadr-11.1]:https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html
 [db2-hadr-10.5]:https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html
-[dbms-db2]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm
+[dbms-db2]:dbms_guide_ibm.md
 
 [sap-instfind]:https://help.sap.com/viewer/9e41ead9f54e44c1ae1a1094b0f80712/ALL/en-US/576f5c1808de4d1abecbd6e503c9ba42.html
 [rhel-ha-addon]:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index
@@ -885,12 +882,12 @@ rsc_st_azure    (stonith:fence_azure_arm):      Started az-idb02
 [rhel-azr-supp]:https://access.redhat.com/articles/3131341
 [rhel-azr-inst]:https://access.redhat.com/articles/3252491
 [rhel-db2-supp]:https://access.redhat.com/articles/3144221
-[ascs-ha-rhel]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel
-[glusterfs]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs
-[rhel-pcs-azr]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker
-[anf-rhel]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files
+[ascs-ha-rhel]:high-availability-guide-rhel.md
+[glusterfs]:high-availability-guide-rhel-glusterfs.md
+[rhel-pcs-azr]:high-availability-guide-rhel-pacemaker.md
+[anf-rhel]:high-availability-guide-rhel-netapp-files.md
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
-[azr-sap-plancheck]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist
+[azr-sap-plancheck]:sap-deployment-checklist.md

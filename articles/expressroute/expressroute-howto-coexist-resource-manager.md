@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 03/06/2021
+ms.date: 09/16/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: fc202359e90024ee73c3041013eef9c2da814045
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: ce5f1e0057f3ed6146ab942aa94302a96c503c19
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835829"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646737"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>Konfigurieren von parallel bestehenden ExpressRoute- und Standort-zu-Standort-Verbindungen mithilfe von PowerShell
 > [!div class="op_single_selector"]
@@ -62,10 +62,7 @@ Sie können Ihr Netzwerk so konfigurieren, dass einige Sites direkt mit Azure ü
 
 ![Koexistenz](media/expressroute-howto-coexist-resource-manager/scenario2.jpg)
 
-> [!NOTE]
-> Sie können ein virtuelles Netzwerk nicht als Transitrouter konfigurieren.
-> 
-> 
+
 
 ## <a name="selecting-the-steps-to-use"></a>Auswählen der zu verwendenden Schritte
 Sie haben die Wahl zwischen zwei Vorgehensweisen. Welches Konfigurationsverfahren Sie wählen, hängt davon ab, ob Sie über ein vorhandenes virtuelles Netzwerk verfügen, mit dem Sie eine Verbindung herstellen möchten, oder ob Sie ein neues virtuelles Netzwerk erstellen möchten.

@@ -4,12 +4,12 @@ description: Leitfaden zur Problembehandlung für die Migration von Hive-Workloa
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/12/2021
-ms.openlocfilehash: eb19f3bd726efe018b4c593f324eb1cacd2cc2c8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: eecf8cd36c1f631176ce836523be802d751ed55b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122353658"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625960"
 ---
 # <a name="troubleshooting-guide-for-migration-of-hive-workloads-from-hdinsight-36-to-hdinsight-40"></a>Leitfaden zur Problembehandlung für die Migration von Hive-Workloads von HDInsight 3.6 zu HDInsight 4.0
 
@@ -18,9 +18,11 @@ Dieser Artikel enthält Antworten auf einige der häufigsten Probleme, mit denen
 ## <a name="reduce-latency-when-running-describe-table_name"></a>Reduzieren der Latenz bei der Ausführung von `DESCRIBE TABLE_NAME`
 
 Problemumgehung:
+
 * Erhöhen Sie die maximale Anzahl von Objekten (Tabellen/Partitionen), die in einem Batch aus dem Metastore abgerufen werden können. Legen Sie den Wert auf eine große Zahl fest (Standardwert: 300), bis zufriedenstellende Latenzzeiten erreicht sind. Je höher die Anzahl ist, desto weniger Roundtrips sind zum Hive-Metastore-Server erforderlich. Dies kann jedoch auch zu einem höheren Arbeitsspeicherbedarf auf der Clientseite führen.
 
-    ```hive.metastore.batch.retrieve.max=2000```
+  `hive.metastore.batch.retrieve.max=2000`
+
 * Starten Sie Hive und alle nicht mehr aktuellen Dienste neu.
 
 ## <a name="unable-to-query-gzipped-text-file-if-skipheaderlinecount-and-skipfooterlinecount-are-set-for-table"></a>GZIP-Textdatei kann nicht abgefragt werden, wenn „skip.header.line.count“ und „skip.footer.line.count“ für die Tabelle festgelegt sind
@@ -137,14 +139,17 @@ MetaStoreAuthzAPIAuthorizerEmbedOnly bewirkt, dass Sicherheitsüberprüfungen de
 
 ## <a name="permission-errors-in-hive-job-after-upgrading-to-hdinsight-40"></a>Berechtigungsfehler im Hive-Auftrag nach dem Upgrade auf HDInsight 4.0
 
-* In HDInsight 4.0 werden alle Clusterformen mit Hive-Komponenten mit einem neuen Autorisierungsanbieter konfiguriert: ```org.apache.hadoop.hive.ql.security.authorization.StorageBasedAuthorizationProvider```
+* In HDInsight 4.0 werden alle Clusterformen mit Hive-Komponenten mit einem neuen Autorisierungsanbieter konfiguriert: 
+
+  `org.apache.hadoop.hive.ql.security.authorization.StorageBasedAuthorizationProvider`
 
 * HDFS-Dateiberechtigungen sollten dem Hive-Benutzer für die Datei zugewiesen werden, auf die zugegriffen wird. Die Fehlermeldung enthält erforderliche Details zum Beheben des Problems.
 
 * Sie können auch zum Anbieter ```MetaStoreAuthzAPIAuthorizerEmbedOnly``` wechseln, der in Hive-Clustern von HDInsight 3.6 verwendet wird.
-```org.apache.hadoop.hive.ql.security.authorization.MetaStoreAuthzAPIAuthorizerEmbedOnly```
 
-    :::image type="content" source="./media/apache-hive-40-migration-guide/hive-job-permission-errors.png" alt-text="Festlegen der Autorisierung auf MetaStoreAuthzAPIAuthorizerEmbedOnly" border="true":::
+  `org.apache.hadoop.hive.ql.security.authorization.MetaStoreAuthzAPIAuthorizerEmbedOnly`
+
+  :::image type="content" source="./media/apache-hive-40-migration-guide/hive-job-permission-errors.png" alt-text="Festlegen der Autorisierung auf MetaStoreAuthzAPIAuthorizerEmbedOnly" border="true":::
 
 ## <a name="unable-to-query-table-with-opencsvserde"></a>Tabellenabfrage mit OpenCSVSerde nicht möglich
 

@@ -8,15 +8,15 @@ manager: martinco
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/20/2021
+ms.date: 09/20/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: c6b3802add796184714f389b813765945a8d20a4
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: d090d6c97a26b78799adf8c5927e6e680c43938a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122343098"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128596503"
 ---
 # <a name="tutorial-configure-biocatch-with-azure-active-directory-b2c"></a>Tutorial: Konfigurieren von BioCatch mit Azure Active Directory B2C
 
@@ -352,24 +352,18 @@ document.getElementById("clientSessionId").style.display = 'none';
 Führen Sie die folgenden Schritte aus, um Azure AD B2C die Richtliniendateien hinzuzufügen:
 
 1. Melden Sie sich als globaler Administrator Ihres Azure AD B2C-Mandanten beim  [**Azure-Portal**](https://portal.azure.com/) an.
-
-2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Mandanten enthält.
-
-3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach Azure AD B2C, und wählen Sie dann diese Option aus.
-
-4. Navigieren Sie zu  **Azure AD B2C** > **Identity Experience Framework**.
-
-3. Laden Sie alle Richtliniendateien in Ihren Mandanten hoch.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
+1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach Azure AD B2C, und wählen Sie dann diese Option aus.
+1. Navigieren Sie zu  **Azure AD B2C** > **Identity Experience Framework**.
+1. Laden Sie alle Richtliniendateien in Ihren Mandanten hoch.
 
 ## <a name="test-the-solution"></a>Testen der Lösung
 
 1. [Registrieren Sie eine Dummyanwendung, die zu JWT.MS umleitet](./tutorial-register-applications.md?tabs=app-reg-ga).  
-
-2. Wählen Sie unter **Identity Experience Framework** die von Ihnen erstellte Richtlinie aus.
-
-3. Wählen Sie im Richtlinienfenster die JWT.MS-Dummyanwendung aus, und wählen Sie dann **Jetzt ausführen** aus.
-
-4. Führen Sie den Registrierungsflow aus, und erstellen Sie ein Konto. Das an JWT.MS zurückgegebene Token sollte 2 Ansprüche für „riskLevel“ und „score“ enthalten. Folgen Sie dem Beispiel.  
+1. Wählen Sie unter **Identity Experience Framework** die von Ihnen erstellte Richtlinie aus.
+1. Wählen Sie im Richtlinienfenster die JWT.MS-Dummyanwendung aus, und wählen Sie dann **Jetzt ausführen** aus.
+1. Führen Sie den Registrierungsflow aus, und erstellen Sie ein Konto. Das an JWT.MS zurückgegebene Token sollte 2 Ansprüche für „riskLevel“ und „score“ enthalten. Folgen Sie dem Beispiel.  
 
     ```JavaScript
     { 

@@ -1,19 +1,19 @@
 ---
 title: 'Verwenden von Queue Storage mit Ruby: Azure Storage'
 description: Erfahren Sie, wie Sie den Azure Queue Storage zum Erstellen und Löschen von Warteschlangen sowie zum Einfügen, Abrufen und Löschen von Nachrichten verwenden. Die Beispiele wurden in Ruby geschrieben.
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 06/08/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 7850e7fef034fd618c86400e17ddaa319c45005a
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: fd09a951bbc6380a583ec2fec4194b216cca2db1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112080991"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128553258"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>Verwenden von Queue Storage mit Ruby
 

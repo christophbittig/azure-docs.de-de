@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 4fc4cea51494333bed90cd6c277469a58e2c6a3f
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 5985c653d02a041e648f306847b5bcfd93783302
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397482"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615223"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory Editor – Beispiele
 > [!NOTE]
@@ -54,21 +55,21 @@ Sie können die Kachel mit den **Beispielpipelines** auf der Startseite Ihrer Da
 1. Erstellen Sie eine Data Factory, oder öffnen Sie eine vorhandene Data Factory. Schritte zum Erstellen einer Data Factory werden unter [Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) beschrieben.
 2. Klicken Sie auf dem Blatt **DATA FACTORY** für die Data Factory auf die Kachel **Beispielpipelines**.
 
-    ![Kachel "Beispielpipelines"](./media/data-factory-samples/SamplePipelinesTile.png)
+    :::image type="content" source="./media/data-factory-samples/SamplePipelinesTile.png" alt-text="Kachel &quot;Beispielpipelines&quot;":::
 3. Klicken Sie auf dem Blatt **Beispielpipelines** auf das **Beispiel**, das Sie bereitstellen möchten.
 
-    ![Blatt "Beispielpipelines"](./media/data-factory-samples/SampleTile.png)
+    :::image type="content" source="./media/data-factory-samples/SampleTile.png" alt-text="Blatt &quot;Beispielpipelines&quot;":::
 4. Geben Sie die Konfigurationseinstellungen für das Beispiel an. Hierzu zählen beispielsweise Ihr Azure Storage-Konto und Ihr Kontoschlüssel, der logische SQL-Servername, die Datenbank, die Benutzer-ID, das Kennwort usw.
 
-    ![Blatt "Beispiel"](./media/data-factory-samples/SampleBlade.png)
+    :::image type="content" source="./media/data-factory-samples/SampleBlade.png" alt-text="Blatt &quot;Beispiel&quot;":::
 5. Wenn Sie mit den Konfigurationseinstellungen fertig sind, klicken Sie auf **Erstellen**, um die Beispielpipelines und die von den Pipelines verwendeten verknüpften Dienste und Tabellen zu erstellen bzw. bereitzustellen.
 6. Auf dem Blatt **Beispielpipelines** wird auf der Kachel für das Beispiel, auf die Sie zuvor geklickt haben, der Status der Bereitstellung angezeigt.
 
-    ![Bereitstellungsstatus](./media/data-factory-samples/DeploymentStatus.png)
+    :::image type="content" source="./media/data-factory-samples/DeploymentStatus.png" alt-text="Bereitstellungsstatus":::
 7. Wenn die Meldung **Bereitstellung erfolgreich** auf der Kachel für das Beispiel angezeigt wird, schließen Sie das Blatt **Beispielpipelines**.  
 8. Auf dem Blatt **DATA FACTORY** können Sie sehen, dass Ihrer Data Factory verknüpfte Dienste, Datasets und Pipelines hinzugefügt wurden.  
 
-    ![Blatt "Data Factory"](./media/data-factory-samples/DataFactoryBladeAfter.png)
+    :::image type="content" source="./media/data-factory-samples/DataFactoryBladeAfter.png" alt-text="Blatt &quot;Data Factory&quot;":::
 
 ## <a name="samples-in-visual-studio"></a>Beispiele in Visual Studio
 ### <a name="prerequisites"></a>Voraussetzungen
@@ -88,10 +89,10 @@ Folgendes muss auf Ihrem Computer installiert sein:
    4. Wählen Sie einen **Speicherort** für das Projekt aus.
    5. Klicken Sie auf **OK**.
 
-      ![Dialogfeld "Neues Projekt"](./media/data-factory-samples/vs-new-project-adf-templates.png)
+      :::image type="content" source="./media/data-factory-samples/vs-new-project-adf-templates.png" alt-text="Dialogfeld &quot;Neues Projekt&quot;":::
 3. Wählen Sie im Dialogfeld **Data Factory-Vorlagen** die Beispielvorlage aus dem Abschnitt **Anwendungsfall-Vorlagen** aus, und klicken Sie auf **Weiter**. Die folgenden Schritte führen Sie durch die Verwendung der Vorlage **Kundenprofile** . Die Schritte sind bei den anderen Beispielen ähnlich.
 
-    ![Dialogfeld „Data Factory-Vorlagen“](./media/data-factory-samples/vs-data-factory-templates-dialog.png)
+    :::image type="content" source="./media/data-factory-samples/vs-data-factory-templates-dialog.png" alt-text="Dialogfeld „Data Factory-Vorlagen“":::
 4. Klicken Sie im Dialogfeld **Data Factory-Konfiguration** auf der Seite **Data Factory-Grundeinstellungen** auf **Weiter**.
 5. Führen Sie auf der Seite **Data Factory konfigurieren** die folgenden Schritte aus:
    1. Wählen Sie **Neue Data Factory erstellen** aus. Sie können auch **Use existing data factory**(Vorhandene Data Factory verwenden) auswählen.
@@ -108,7 +109,7 @@ Folgendes muss auf Ihrem Computer installiert sein:
 11. Wenn das Dialogfeld **Melden Sie sich bei Ihrem Microsoft-Konto an** angezeigt wird, geben Sie Ihre Anmeldeinformationen für das Konto mit dem Azure-Abonnement ein, und klicken Sie auf **Anmelden**.
 12. Das folgende Dialogfeld sollte angezeigt werden:
 
-    ![Dialogfeld „Veröffentlichen“](./media/data-factory-build-your-first-pipeline-using-vs/publish.png)
+    :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-vs/publish.png" alt-text="Dialogfeld „Veröffentlichen“":::
 13. Führen Sie auf der Seite **Data Factory konfigurieren** die folgenden Schritte aus:
 
     1. Stellen Sie sicher, dass die Option **Use existing data factory** (Vorhandene Data Factory verwenden) aktiviert ist.

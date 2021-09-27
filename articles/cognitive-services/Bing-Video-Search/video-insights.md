@@ -3,19 +3,17 @@ title: Abrufen von Videoinformationen mithilfe der Bing-Videosuche-API
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie die Bing-Videosuche-API verwenden, um weitere Informationen zu Videos abzurufen, z.B. verwandte Videos.
 services: cognitive-services
-author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.author: scottwhi
-ms.openlocfilehash: cbbde354c1bc68a2b1017c3ccba61b846fa62916
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e69d7467c1708661625a7a2296c8dc0ca7a4ccb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94380758"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128611786"
 ---
 # <a name="get-insights-about-a-video"></a>Abrufen von Auswertungen zu einem Video
 

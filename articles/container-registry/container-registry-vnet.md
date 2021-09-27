@@ -3,18 +3,20 @@ title: Beschränken des Zugriffs mithilfe eines Dienstendpunkts
 description: Hier erfahren Sie, wie Sie den Zugriff auf eine Azure-Containerregistrierung mithilfe eines Dienstendpunkts in einem virtuellen Azure-Netzwerk beschränken. Der Zugriff auf Dienstendpunkte ist ein Feature der Dienstebene „Premium“.
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 8a67a011c75a192df9ad3460458fd766b5ec1ec1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0fa721a4a4cf59c93123c98c500b693f05667054
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107773463"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128641615"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Beschränken des Zugriffs auf eine Containerregistrierung mithilfe eines Dienstendpunkts in einem virtuellen Azure-Netzwerk
 
 Das virtuelle Azure-Netzwerk ([Azure Virtual Network](../virtual-network/virtual-networks-overview.md)) stellt ein sicheres, privates Netzwerk für Ihre Azure- und lokalen Ressourcen bereit. Mit einem [Dienstendpunkt](../virtual-network/virtual-network-service-endpoints-overview.md) können Sie die öffentliche IP-Adresse Ihrer Containerregistrierung auf Ihr virtuelles Netzwerk beschränken. Dieser Endpunkt sorgt für eine optimale Datenverkehrsroute zu der Ressource über das Azure-Backbonenetzwerk. Mit jeder Anforderung wird zudem die Identität des virtuellen Netzwerks und des Subnetzes übertragen.
 
 In diesem Artikel erfahren Sie, wie Sie einen Dienstendpunkt für die Containerregistrierung (Vorschauversion) in einem virtuellen Netzwerk konfigurieren. 
+
+Jede Registrierung unterstützt bis zu 100 Regeln für virtuelle Netzwerke.
 
 > [!IMPORTANT]
 > Von Azure Container Registry wird jetzt [Azure Private Link](container-registry-private-link.md) unterstützt. Dadurch können private Endpunkte aus einem virtuellen Netzwerk in einer Registrierung platziert werden. Auf private Endpunkte kann innerhalb des virtuellen Netzwerks über private IP-Adressen zugegriffen werden. In den meisten Netzwerkszenarien empfiehlt es sich, anstelle von Dienstendpunkten private Endpunkte zu verwenden.

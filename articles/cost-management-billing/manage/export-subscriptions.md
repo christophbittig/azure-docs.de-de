@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: b3b2e9b501f2ae103900a085e9b7a4b412efb78e
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 34b6e7be93cf42ab4d3ef80110b81fee8a403ed7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686835"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128561419"
 ---
 # <a name="export-and-view-your-top-level-subscription-information"></a>Exportieren und Anzeigen von Informationen zu Ihrem Abonnement auf oberster Ebene
 Wenn Sie den Satz der Abonnement-IDs anzeigen müssen, die Ihren Benutzeranmeldeinformationen zugeordnet sind, [laden Sie eine JSON-Datei mit Informationen zu Ihrem Abonnement aus dem Azure-Kontocenter herunter](https://account.azure.com/subscriptions/download).
@@ -22,9 +22,9 @@ Wenn Sie den Satz der Abonnement-IDs anzeigen müssen, die Ihren Benutzeranmelde
 [!INCLUDE [gdpr-dsr-and-stp-note](../../../includes/gdpr-dsr-and-stp-note.md)]
 
 Die heruntergeladene JSON-Datei enthält die folgenden Informationen:
-- E-Mail: Die Ihrem Konto zugeordnete E-Mail-Adresse
-- PUID: Der eindeutige Bezeichner, der Ihrem Abrechnungskonto zugeordnet ist
-- Abonnement-IDs: Eine Liste der Abonnements, die zu Ihrem Konto gehören (aufgelistet nach Abonnement-ID)
+- E-Mail: Die Ihrem Konto zugeordnete E-Mail-Adresse.
+- PUID: Der eindeutige Bezeichner, der Ihrem Abrechnungskonto zugeordnet ist.
+- Abonnement-IDs: Eine Liste der Abonnements, die zu Ihrem Konto gehören, aufgelistet nach Abonnement-ID.
 
 ### <a name="subscriptionsjson-sample"></a>JSON-Beispieldatei für ein Abonnement (subscriptions.json)
 
