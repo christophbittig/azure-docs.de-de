@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 8/25/2021
 ms.author: juda
-ms.openlocfilehash: 533f4317c6c189e0691ab26822fe917c7567c1ce
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 98f8fe2e00a7671078da7dae2174401b6c33fd30
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123544420"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128667614"
 ---
 # <a name="enable-cloud-controller-manager-preview"></a>Aktivieren von Cloud Controller Manager (Vorschau)
 
@@ -42,7 +42,7 @@ Die folgenden Ressourcen müssen installiert sein:
 Wenn Sie das Cloud Controller Manager-Feature verwenden möchten, müssen Sie das `EnableCloudControllerManager`-Featureflag für Ihr Abonnement aktivieren. 
 
 ```azurecli
-az feature register –name EnableCloudControllerManager --namespace Microsoft.ContainerService
+az feature register --name EnableCloudControllerManager --namespace Microsoft.ContainerService
 ```
 Sie können den Registrierungsstatus mithilfe des Befehls [az feature list][az-feature-list] überprüfen:
 

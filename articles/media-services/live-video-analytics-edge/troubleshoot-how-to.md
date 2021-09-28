@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: f806a700fa9f1788e2435a43d8fdcb19fa8134ce
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: b7594a8d5e958b05c001f3943437e86b5830bd80
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110372652"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128667082"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Troubleshooting Live Video Analytics in IoT Edge
 
@@ -39,7 +39,7 @@ Wenn die Edge-Infrastruktur in Ordnung ist, können Sie nach Problemen in der Be
 az iot edge set-modules --hub-name <iot-hub-name> --device-id lva-sample-device --content <path-to-deployment_manifest.json>
 ```
 Wenn der JSON-Code nicht wohlgeformt ist, erhalten Sie möglicherweise die folgende Fehlermeldung:   
-&nbsp;&nbsp;&nbsp;**Fehler beim Analysieren des JSON-Codes aus Datei „<deployment manifest.json>“ für das Argument „content“ mit dieser Ausnahme: „Zusätzliche Daten: Zeile 101, Spalte 1 (Zeichen 5325)“**
+&nbsp;&nbsp;&nbsp;**Fehler beim Analysieren des JSON-Codes aus Datei „\<deployment manifest.json\>“ für das Argument „content“ mit dieser Ausnahme: „Zusätzliche Daten: Zeile 101, Spalte 1 (Zeichen 5325)“**
 
 Wenn dieser Fehler auftritt, empfiehlt es sich, den JSON-Code auf fehlende Klammern oder andere Probleme in der Dateistruktur zu überprüfen. Zum Überprüfen der Dateistruktur können Sie einen Client wie [Notepad++ mit dem JSON Viewer-Plug-In](https://riptutorial.com/notepadplusplus/example/18201/json-viewer) oder ein Onlinetool wie [JSON Formatter & Validator](https://jsonformatter.curiousconcept.com/) verwenden.
 

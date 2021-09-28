@@ -10,12 +10,12 @@ ms.date: 05/06/2021
 ms.author: santoshc
 ms.reviewer: jiacfan
 ms.subservice: common
-ms.openlocfilehash: 45a0fbac0fbe1bd513717ba1ab1d30b3cffbf78e
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 791e533cc1f0dafa8724faa8cc3a46d1f8c770d7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110065942"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128666001"
 ---
 # <a name="actions-and-attributes-for-azure-role-assignment-conditions-in-azure-storage-preview"></a>Aktionen und Attribute für Azure-Rollenzuweisungsbedingungen in Azure Storage (Vorschau)
 
@@ -58,11 +58,11 @@ In der folgenden Tabelle sind die unterstützten Aktionen und Untervorgänge fü
 > | --- | --- | --- |
 > | Löschen eines Blobs | „DataAction“ zum Löschen von Blobs. | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete` |
 > | Lesen eines Blobs | „DataAction“ zum Lesen von Blobs. | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` |
-> | Lesen von Inhalten aus einem Blob mit Tagbedingungen  | REST-Vorgänge: „Get Blob“ (Blob abrufen), „Get Blob Metadata“ (Blobmetadaten abrufen), „Get Blob Properties“ (Blobeigenschaften abrufen), „Get Block List“ (Blockliste abrufen), „Get Page Ranges“ (Seitenbereiche abrufen) und „Query Blob Contents“ (Blobinhalte abrufen). | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`<br/>**Untervorgang**<br/>`Blob.Read.WithTagConditions` | 
+> | Lesen von Inhalten aus einem Blob mit Tagbedingungen  | REST-Vorgänge: „Get Blob“ (Blob abrufen), „Get Blob Metadata“ (Blobmetadaten abrufen), „Get Blob Properties“ (Blobeigenschaften abrufen), „Get Block List“ (Blockliste abrufen), „Get Page Ranges“ (Seitenbereiche abrufen) und „Query Blob Contents“ (Blobinhalte abrufen). | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`<br/>**Untervorgang**<br/>`Blob.Read.WithTagConditions` |
 > | Schreiben in ein Blob | „DataAction“ zum Schreiben in Blobs. | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write` |
-> | Schreiben in ein Blob mit Blobindextags | REST-Vorgänge: „Put Blob“ (Blob festlegen), „Put Block List“ (Blockliste festlegen), „Copy Blob“ (Blob kopieren) und „Copy Blob from URL“ (Blob aus URL kopieren). |`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write`<br/>**Untervorgang**<br/>`Blob.Write.WithTagHeaders` | 
+> | Schreiben in ein Blob mit Blobindextags | REST-Vorgänge: „Put Blob“ (Blob festlegen), „Put Block List“ (Blockliste festlegen), „Copy Blob“ (Blob kopieren) und „Copy Blob from URL“ (Blob aus URL kopieren). |`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write`<br/>**Untervorgang**<br/>`Blob.Write.WithTagHeaders` |
 > | Erstellen eines Blobs oder einer Momentaufnahme oder aber Anfügen von Daten | „DataAction“ zum Erstellen von Blobs. | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/add/action` |
-> | Schreiben von Inhalt in ein Blob mit Blobindextags | REST-Vorgänge: „Put Blob“ (Blob festlegen), „Put Block List“ (Blockliste festlegen), „Copy Blob“ (Blob kopieren) und „Copy Blob from URL“ (Blob aus URL kopieren). | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/add/action`<br/>**Untervorgang**<br/>`Blob.Write.WithTagHeaders` | 
+> | Schreiben von Inhalt in ein Blob mit Blobindextags | REST-Vorgänge: „Put Blob“ (Blob festlegen), „Put Block List“ (Blockliste festlegen), „Copy Blob“ (Blob kopieren) und „Copy Blob from URL“ (Blob aus URL kopieren). | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/add/action`<br/>**Untervorgang**<br/>`Blob.Write.WithTagHeaders` |
 > | Löschen einer Version eines Blobs | „DataAction“ zum Löschen einer Version eines Blobs. | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/deleteBlobVersion/action` |
 > | Ändert den Besitz eines Blobs. | „DataAction“ zum Ändern des Besitzes eines Blobs. | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/manageOwnership/action` |
 > | Ändern von Berechtigungen eines Blobs | „DataAction“ zum Ändern von Berechtigungen eines Blobs. | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/modifyPermissions/action` |
@@ -141,4 +141,3 @@ In der folgenden Tabelle sind die Attribute aufgeführt, die Sie in Ihren Beding
 - [Beispiel für Azure-Rollenzuweisungsbedingungen (Vorschau)](storage-auth-abac-examples.md)
 - [Format und Syntax von Azure-Rollenzuweisungsbedingungen (Vorschau)](../../role-based-access-control/conditions-format.md)
 - [Was ist die attributbasierte Zugriffssteuerung in Azure (Azure Attribute-Based Access Control, Azure ABAC)? (Vorschau)](../../role-based-access-control/conditions-overview.md)
-
