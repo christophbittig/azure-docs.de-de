@@ -68,8 +68,8 @@
       href: dns-details.md
     - name: Sicherheitsbaseline
       href: /security/benchmark/azure/baselines/firewall-security-baseline?toc=/azure/firewall/toc.json
-    - name: Aktive FTP-Unterstützung
-      href: active-ftp-support.md
+    - name: FTP-Unterstützung
+      href: ftp-support.md
 - name: Anleitungen
   items:
     - name: Bereitstellen und Konfigurieren (klassisch)
@@ -121,7 +121,7 @@
       href: integrate-with-nat-gateway.md
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/network/firewall
     - name: Azure PowerShell
       href: /powershell/module/az.network/new-azfirewall

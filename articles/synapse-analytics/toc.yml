@@ -57,7 +57,7 @@ items:
               - name: Azure-Portal
                 href: quickstart-create-workspace.md
                 displayName: quickstart
-              - name: Azure CLI
+              - name: Azure-Befehlszeilenschnittstelle
                 href: quickstart-create-workspace-cli.md
                 displayName: quickstart
               - name: Azure PowerShell
@@ -228,10 +228,6 @@ items:
             href: ./sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?context=/azure/synapse-analytics/context/context
           - name: Kostenverwaltung für serverlose SQL-Pools
             href: sql/data-processed.md
-          - name: Best Practices für serverlose SQL-Pools
-            href: sql/best-practices-serverless-sql-pool.md
-          - name: Best Practices für dedizierte SQL-Pools
-            href: sql/best-practices-dedicated-sql-pool.md
       - name: Schnellstarts
         items:
           - name: Verwenden eines serverlosen SQL-Pools
@@ -293,8 +289,10 @@ items:
             items:
               - name: Übersicht
                 href: sql/develop-overview.md
-              - name: Bewährte Methoden
-                href: sql/develop-best-practices.md
+              - name: Best Practices für serverlose SQL-Pools
+                href: sql/best-practices-serverless-sql-pool.md
+              - name: Best Practices für dedizierte SQL-Pools
+                href: sql/best-practices-dedicated-sql-pool.md
               - name: Materialisierte Sicht
                 items:
                   - name: Schritte zur Optimierung der Leistung
@@ -793,6 +791,8 @@ items:
                 href: ../data-factory/connector-amazon-marketplace-web-service.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: Amazon RDS für Oracle
                 href: ../data-factory/connector-amazon-rds-for-oracle.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
+              - name: Amazon RDS für SQL Server
+                href: ../data-factory/connector-amazon-rds-for-sql-server.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: Amazon Redshift
                 href: ../data-factory/connector-amazon-redshift.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: Amazon S3

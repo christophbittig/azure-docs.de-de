@@ -106,16 +106,12 @@
           href: assign-user-or-group-access-portal.md
         - name: Erstellen von Auflistungen in „Meine Apps“
           href: access-panel-collections.md
-        - name: Verwenden des Self-Service-App-Zugriffs
+        - name: Aktivieren des Self-Service-App-Zugriffs
           href: access-panel-manage-self-service-access.md
-        - name: Entfernen des Benutzerzugriffs
-          href: methods-for-removing-user-access.md
         - name: Ausblenden einer App
           href: hide-application-from-user-portal.md
         - name: Deaktivieren der Benutzeranmeldung
           href: disable-user-sign-in-portal.md
-        - name: Konfigurieren der Self-Service-Zuweisung
-          href: manage-self-service-access.md
         - name: Erzwingen der automatischen Beschleunigung
           href: configure-authentication-for-federated-users-portal.md
         - name: Verhindern der automatischen Beschleunigung bei der Anmeldung
@@ -184,6 +180,8 @@
       href: application-types.md
     - name: Gründe für die Zuweisung von Benutzern zu einer App
       href: ways-users-get-assigned-to-applications.md
+    - name: Entfernen des Benutzerzugriffs
+      href: methods-for-removing-user-access.md
 - name: Ressourcen
   items:
     - name: Support- und Hilfeoptionen für Entwickler

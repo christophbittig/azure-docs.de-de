@@ -18,8 +18,11 @@
         - name: 'Erstellen der Containerregistrierung: PowerShell'
           href: container-registry-get-started-powershell.md
         - name: 'Erstellen der Containerregistrierung: ARM-Vorlage'
-          displayName: Resource Manager
+          displayName: 'Resource Manager,ARM'
           href: container-registry-get-started-geo-replication-template.md
+        - name: 'Erstellen der Containerregistrierung: Bicep'
+          displayName: 'Resource Manager,ARM'
+          href: container-registry-get-started-bicep.md
         - name: 'Senden von Ereignissen an Event Grid: CLI'
           href: container-registry-event-grid-quickstart.md
         - name: 'Erstellen und Pushen von Java-Images: CLI'
@@ -249,7 +252,7 @@
 - name: Verweis
   expanded: false
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/acr
     - name: REST
       href: /rest/api/containerregistry

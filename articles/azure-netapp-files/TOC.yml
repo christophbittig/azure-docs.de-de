@@ -55,10 +55,16 @@
       href: volume-quota-introduction.md
     - name: Richtlinien für die Azure NetApp Files-Netzwerkplanung
       href: azure-netapp-files-network-topologies.md
-    - name: Funktionsweise von Azure NetApp Files-Momentaufnahmen
-      href: snapshots-introduction.md
     - name: Manueller QoS-Kapazitätspool
       href: manual-qos-capacity-pool-introduction.md
+    - name: Funktionsweise von Azure NetApp Files-Momentaufnahmen
+      href: snapshots-introduction.md
+    - name: Azure NetApp Files-Sicherung
+      items:
+        - name: Grundlegendes zur Azure NetApp Files-Sicherung
+          href: backup-introduction.md
+        - name: 'Azure NetApp Files-Sicherung: Anforderungen und Überlegungen'
+          href: backup-requirements-considerations.md
     - name: Regionsübergreifende Replikation
       items:
         - name: Grundlegendes zur regionsübergreifenden Replikation
@@ -173,6 +179,24 @@
               href: snapshots-revert-volume.md
             - name: Löschen von Momentaufnahmen
               href: snapshots-delete.md
+        - name: Verwalten von Volumesicherungen
+          items:
+            - name: Konfigurieren von Sicherungen
+              items:
+                - name: Konfigurieren von richtlinienbasierten Sicherungen
+                  href: backup-configure-policy-based.md
+                - name: Konfigurieren von manuellen Sicherungen
+                  href: backup-configure-manual.md
+            - name: Verwalten von Sicherungsrichtlinien
+              href: backup-manage-policies.md
+            - name: Durchsuchen von Sicherungen
+              href: backup-search.md
+            - name: Wiederherstellen einer Sicherung
+              href: backup-restore-new-volume.md
+            - name: Deaktivieren der Sicherungsfunktionalität
+              href: backup-disable.md
+            - name: Löschen von Sicherungen
+              href: backup-delete.md
         - name: Verwalten der regionsübergreifenden Replikation
           items:
             - name: Erstellen der Volumereplikation

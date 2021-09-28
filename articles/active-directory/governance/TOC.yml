@@ -18,6 +18,8 @@
       href: entitlement-management-access-package-first.md
     - name: 'Verwalten des Zugriffs auf Ressourcen: Microsoft Graph'
       href: /graph/tutorial-access-package-api?toc=/azure/active-directory/governance/toc.json&bc=/azure/active-directory/governance/breadcrumb/toc.json
+    - name: Verwalten des Lebenszyklus Ihrer gruppenbasierten Lizenzen in Azure AD
+      href: entitlement-management-group-licenses.md
 - name: Konzepte
   expanded: true
   items:
