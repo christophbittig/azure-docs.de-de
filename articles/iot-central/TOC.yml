@@ -253,8 +253,6 @@
       href: core/howto-faq.yml
     - name: Verwalten Ihrer persönlichen Einstellungen
       href: core/howto-manage-preferences.md
-    - name: Ein-/Ausschalten des Livechats
-      href: core/howto-show-hide-chat.md
 - name: Verweis
   items:
     - name: Azure CLI

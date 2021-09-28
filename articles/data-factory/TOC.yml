@@ -564,6 +564,8 @@ items:
             href: control-flow-append-variable-activity.md
           - name: Execute Pipeline-Aktivität
             href: control-flow-execute-pipeline-activity.md
+          - name: Fail-Aktivität
+            href: control-flow-fail-activity.md
           - name: Filteraktivität
             href: control-flow-filter-activity.md
           - name: ForEach-Aktivität

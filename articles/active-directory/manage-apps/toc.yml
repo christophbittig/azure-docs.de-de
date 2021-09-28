@@ -10,19 +10,17 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Hinzufügen einer App
+    - name: Hinzufügen einer Anwendung
       href: add-application-portal.md
-    - name: Konfigurieren einer App
-      href: add-application-portal-configure.md
-    - name: Zuweisen von Benutzern zu einer App
+    - name: Zuweisen eines Benutzers
       href: add-application-portal-assign-users.md
-    - name: Einrichten des einmaligen SAML-basierten Anmeldens
+    - name: Einmaliges Anmelden aktivieren
       href: add-application-portal-setup-sso.md
-    - name: Einrichten des einmaligen OIDC-basierten Anmeldens
-      href: add-application-portal-setup-oidc-sso.md
-    - name: Anzeigen Ihrer Apps
+    - name: Konfigurieren von Eigenschaften
+      href: add-application-portal-configure.md
+    - name: Anwendungen anzeigen
       href: view-applications-portal.md
-    - name: Löschen einer App
+    - name: Löschen von Anwendungen
       href: delete-application-portal.md
 - name: Tutorials
   items:
@@ -47,6 +45,8 @@
       href: application-management-fundamentals.md
     - name: Allgemeine App-Verwaltungsszenarien
       href: common-scenarios.md
+    - name: Richtlinie zur Startbereichsermittlung
+      href: home-realm-discovery-policy.md
     - name: Planen der Integration von Cloud-Apps
       items:
         - name: Erste Schritte bei der App-Integration
@@ -55,10 +55,10 @@
           href: my-apps-deployment-plan.md
     - name: Einmaliges Anmelden
       items:
+        - name: Planen für die Bereitstellung
+          href: plan-sso-deployment.md
         - name: Worum handelt es sich beim einmaligen Anmelden?
           href: what-is-single-sign-on.md
-        - name: Planen der Bereitstellung des einmaligen Anmeldens
-          href: plan-sso-deployment.md
     - name: Anwendungssicherheit
       items:
         - name: Optionen für den App-Zugriff
@@ -152,10 +152,12 @@
           href: f5-aad-password-less-vpn.md
     - name: Einmaliges Anmelden
       items:
-        - name: Kennwortbasiertes einmaliges Anmelden
-          href: configure-password-single-sign-on-non-gallery-applications.md
-        - name: Einmaliges Anmelden (SSO) über Link
+        - name: Verknüpft
           href: configure-linked-sign-on.md
+        - name: OpenID Connect
+          href: add-application-portal-setup-oidc-sso.md
+        - name: Kennwort
+          href: configure-password-single-sign-on-non-gallery-applications.md
     - name: Problembehandlung
       items:
         - name: Behandeln von Problemen beim kennwortbasierten einmaligen Anmelden

@@ -509,36 +509,46 @@
   items:
     - name: Leitfaden zu Marketplace-APIs
       href: marketplace-apis-guide.md
-    - name: CPP-API-Referenz
+    - name: Marketplace-APIs für die Übermittlung
       items:
-        - name: CPP-API-Übersicht
-          href: cloud-partner-portal-api-overview.md
-        - name: API-Voraussetzungen
-          href: cloud-partner-portal-api-prerequisites.md
-        - name: API-Überlegungen
-          href: cloud-partner-portal-api-considerations.md
-        - name: Gleichzeitigkeitssteuerung
-          href: cloud-partner-portal-api-concurrency-control.md
-        - name: Abrufen von Angeboten
-          href: cloud-partner-portal-api-retrieve-offers.md
-        - name: Abrufen eines bestimmten Angebots
-          href: cloud-partner-portal-api-retrieve-specific-offer.md
-        - name: Hinzufügen oder Ändern eines Angebots
-          href: cloud-partner-portal-api-creating-offer.md
-        - name: Abrufen des Angebotsstatus
-          href: cloud-partner-portal-api-retrieve-offer-status.md
-        - name: Veröffentlichen eines Angebots
-          href: cloud-partner-portal-api-publish-offer.md
-        - name: Abrufen von Vorgängen
-          href: cloud-partner-portal-api-retrieve-operations.md
-        - name: Abbrechen von Vorgängen
-          href: cloud-partner-portal-api-cancel-operations.md
-        - name: Live schalten
-          href: cloud-partner-portal-api-go-live.md
-        - name: Preise für VM-Angebote
-          href: cloud-partner-portal-api-setting-price.md
-        - name: Beheben von Authentifizierungsfehlern
-          href: cloud-partner-portal-api-troubleshooting-authentication-errors.md
+        - name: Übersicht über Marketplace-APIs für die Übermittlung
+          href: submission-api-overview.md
+        - name: Partner Center-APIs für die Übermittlung
+          items:
+            - name: API-Voraussetzungen
+              href: submission-api-onboard.md
+            - name: Partner Center-APIs für die Übermittlung
+              href: 'https://apidocs.microsoft.com/services/partneringestion/'
+        - name: Legacy-APIs für die Übermittlung
+          items:
+            - name: Übersicht über Legacy-APIs
+              href: cloud-partner-portal-api-overview.md
+            - name: API-Voraussetzungen
+              href: cloud-partner-portal-api-prerequisites.md
+            - name: API-Überlegungen
+              href: cloud-partner-portal-api-considerations.md
+            - name: Gleichzeitigkeitssteuerung
+              href: cloud-partner-portal-api-concurrency-control.md
+            - name: Abrufen von Angeboten
+              href: cloud-partner-portal-api-retrieve-offers.md
+            - name: Abrufen eines bestimmten Angebots
+              href: cloud-partner-portal-api-retrieve-specific-offer.md
+            - name: Hinzufügen oder Ändern eines Angebots
+              href: cloud-partner-portal-api-creating-offer.md
+            - name: Abrufen des Angebotsstatus
+              href: cloud-partner-portal-api-retrieve-offer-status.md
+            - name: Veröffentlichen eines Angebots
+              href: cloud-partner-portal-api-publish-offer.md
+            - name: Abrufen von Vorgängen
+              href: cloud-partner-portal-api-retrieve-operations.md
+            - name: Abbrechen von Vorgängen
+              href: cloud-partner-portal-api-cancel-operations.md
+            - name: Live schalten
+              href: cloud-partner-portal-api-go-live.md
+            - name: Preise für VM-Angebote
+              href: cloud-partner-portal-api-setting-price.md
+            - name: Beheben von Authentifizierungsfehlern
+              href: cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: Marketplace-Messungsdienst
       items:
         - name: Anomalieerkennungsdienst

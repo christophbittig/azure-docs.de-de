@@ -276,7 +276,7 @@
         - name: Schreiben von sicherem Code
           href: concept-secure-code-best-practice.md
           displayName: security threat
-        - name: Überwachen und Verwalten der Compliance
+        - name: Überwachen und Verwalten
           href: how-to-integrate-azure-policy.md
           displayName: policy
     - name: Arbeitsbereiche und Computeressourcen

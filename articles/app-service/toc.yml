@@ -104,6 +104,8 @@
       href: samples-resource-manager-templates.md
     - name: Terraform
       href: samples-terraform.md
+    - name: Bicep
+      href: samples-bicep.md
 - name: Konzepte
   items:
     - name: App Service-Pläne
@@ -321,6 +323,12 @@
       items:
         - name: Konfigurieren von Hochverfügbarkeit
           href: how-to-zone-redundancy.md
+    - name: Automatisieren der Bereitstellung
+      items:
+        - name: Bicep
+          href: provision-resource-bicep.md
+        - name: Terraform
+          href: provision-resource-terraform.md
 - name: Verweis
   items:
     - name: Überwachungsdaten

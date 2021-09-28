@@ -326,6 +326,8 @@
       items:
         - name: Übersicht
           href: sap-hana-db-about.md
+        - name: Aufbau
+          href: azure-backup-architecture-for-sap-hana-backup.md
         - name: Backup
           href: backup-azure-sap-hana-database.md
         - name: Restore
@@ -582,7 +584,7 @@
       href: ./policy-reference.md
 - name: Ressourcen
   items:
-    - name: Compliance
+    - name: Kompatibilität
       href: compliance-offerings.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
