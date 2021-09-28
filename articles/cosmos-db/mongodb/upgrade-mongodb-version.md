@@ -4,15 +4,15 @@ description: Informationen, wie Sie die MongoDB Wire Protocol-Version für Ihre 
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 03/19/2021
+ms.date: 08/26/2021
 author: gahl-levy
 ms.author: gahllevy
-ms.openlocfilehash: 751b5546313247b80d6e6701aa6945938cc40a50
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2880bc5fc9c367a5ab3cb02db3e3d5901861d789
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122354765"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123439378"
 ---
 # <a name="upgrade-the-api-version-of-your-azure-cosmos-db-api-for-mongodb-account"></a>Upgrade der API-Version Ihrer Azure Cosmos DB-API für das MongoDB-Konto
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -62,6 +62,8 @@ Beim Upgrade von 3.2 wird das Endpunktsuffix des Datenbankkontos auf das folgend
 
 Beim Upgrade von Version 3.2 müssen Sie den vorhandenen Endpunkt in Ihren Anwendungen und Treibern ersetzen, die eine Verbindung mit diesem Datenbankkonto herstellen. **Nur Verbindungen, die den neuen Endpunkt verwenden, können auf die Features in der neuen API-Version zugreifen**. Der vorherige 3.2-Endpunkt sollte das Suffix `.documents.azure.com` haben.
 
+Beim Upgrade von 3.2 auf neuere Versionen sind jetzt [zusammengesetzte Indizes](mongodb-indexing.md) erforderlich, um Sortiervorgänge für mehrere Felder durchzuführen, um eine stabile, hohe Leistung für diese Abfragen sicherzustellen. Stellen Sie sicher, dass diese zusammengesetzten Indizes erstellt werden, damit die Sortierungen für mehrere Felde erfolgreich sind. 
+
 >[!Note]
 > Dieser Endpunkt weist möglicherweise geringfügige Unterschiede auf, wenn Ihr Konto in einer unabhängigen, behördlichen oder eingeschränkten Azure-Cloud erstellt wurde.
 
@@ -102,3 +104,6 @@ Wenn Sie ein Upgrade von 3.2 auf 4.0 oder 3.6 durchgeführt haben und nun ein Do
 - Informieren Sie sich über die unterstützten und nicht unterstützten [Features von MongoDB, Version 4.0](feature-support-40.md).
 - Informieren Sie sich über die unterstützten und nicht unterstützten [Features von MongoDB, Version 3.6](feature-support-36.md).
 - Weitere Informationen finden Sie unter [Features der Mongo-Version 3.6](https://devblogs.microsoft.com/cosmosdb/azure-cosmos-dbs-api-for-mongodb-now-supports-server-version-3-6/)
+- Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen? Sie können Informationen zu Ihrem vorhandenen Datenbankcluster für die Kapazitätsplanung verwenden.
+    - Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](../convert-vcore-to-request-unit.md). 
+    - Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbank-Workload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-capacity-planner.md)

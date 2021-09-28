@@ -2,15 +2,15 @@
 title: Konfigurieren eines benutzerdefinierten Containers
 description: Erfahren Sie, wie Sie einen benutzerdefinierten Container in Azure App Service konfigurieren. In diesem Artikel werden die gängigsten Konfigurationsaufgaben vorgestellt.
 ms.topic: article
-ms.date: 02/23/2021
+ms.date: 08/25/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 22a953058084b4f828160cc9ba99c14a5313c9fb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d51ab96f0a9bc09f966890b848201df7091db621
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122347216"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541421"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Konfigurieren eines benutzerdefinierten Containers für Azure App Service
 
@@ -34,8 +34,8 @@ Dieser Leitfaden enthält die wichtigsten Konzepte und Anweisungen für die Cont
 
 Für Ihr benutzerdefiniertes Windows-Image müssen Sie das passende [übergeordnete Image (Basisimage)](https://docs.docker.com/develop/develop-images/baseimages/) für das gewünschte Framework auswählen:
 
-- Verwenden Sie zum Bereitstellen von .NET Framework-Apps ein übergeordnetes Image, das auf dem [LTSC](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc)-Release (Long-Term Servicing Channel, langfristiger Wartungskanal) von Windows Server Core basiert. 
-- Verwenden Sie zum Bereitstellen von .NET Core-Apps ein übergeordnetes Image, das auf dem Release [Semi-Annual Servicing Channel (SAC)](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) von Windows Server Nano basiert. 
+- Verwenden Sie zum Bereitstellen von .NET Framework-Apps ein übergeordnetes Image, das auf dem [LTSC](/windows-server/get-started/servicing-channels-comparison#long-term-servicing-channel-ltsc)-Release (Long-Term Servicing Channel, langfristiger Wartungskanal) von Windows Server 2019 Core basiert. 
+- Verwenden Sie zum Bereitstellen von .NET Core-Apps ein übergeordnetes Image, das auf dem Release [Semi-Annual Servicing Channel (SAC)](/windows-server/get-started/servicing-channels-comparison#semi-annual-channel) von Windows Server 2019 Nano basiert. 
 
 Während des App-Starts dauert das Herunterladen eines übergeordneten Images eine Weile. Sie können die Startzeit jedoch reduzieren, indem Sie eins der folgenden übergeordneten Images verwenden, die bereits in Azure App Service zwischengespeichert sind:
 
@@ -406,7 +406,7 @@ In den folgenden Listen werden unterstützte und nicht unterstützte Docker Comp
 #### <a name="unsupported-options"></a>Nicht unterstützte Optionen
 
 - build (unzulässig)
-- depends_on (ignoriert)
+- [depends_on](faq-app-service-linux.yml#how-do-i-use-depends-on-) (ignoriert)
 - networks (ignoriert)
 - secrets (ignoriert)
 - andere Ports als 80 und 8080 (ignoriert)

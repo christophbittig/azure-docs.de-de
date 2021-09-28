@@ -1,21 +1,21 @@
 ---
 title: Datei einfügen
-description: include file
+description: Datei einfügen
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/03/2021
+ms.date: 09/03/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6d7d9389e00b3b0f23d590563a242ae0c12e2463
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 78721aa407977262747c43be90001da2343322aa
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346753"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123483860"
 ---
-Vorerst können nur Disk Ultra und SSD Premium freigegebene Datenträger ermöglichen. Unterschiedliche Datenträgergrößen haben möglicherweise verschiedene `maxShares`-Limits, die Sie beim Festlegen des `maxShares`-Werts nicht überschreiten können. Bei SSD Premium sind die Datenträgergrößen, die die Freigabe ihrer Datenträger unterstützen, P15 und größer.
+Vorerst können nur Disk Ultra, SSD Premium und SSD Standard freigegebene Datenträger ermöglichen. Unterschiedliche Datenträgergrößen haben möglicherweise verschiedene `maxShares`-Limits, die Sie beim Festlegen des `maxShares`-Werts nicht überschreiten können. Bei SSD Premium sind die Datenträgergrößen, die die Freigabe ihrer Datenträger unterstützen, P15 und größer.
 
 Sie können für jeden Datenträger einen `maxShares`-Wert definieren, der die maximale Anzahl von Knoten darstellt, die den Datenträger gleichzeitig nutzen können. Wenn Sie z. B. einen Failovercluster mit zwei Knoten einrichten möchten, legen Sie `maxShares=2` fest. Der Maximalwert ist eine Obergrenze. Knoten können dem Cluster beitreten oder ihn verlassen (Einbindung des Datenträgers oder Aufheben der Einbindung), solange die Anzahl der Knoten kleiner als der angegebene `maxShares`-Wert ist.
 

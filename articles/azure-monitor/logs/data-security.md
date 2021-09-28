@@ -5,14 +5,14 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: c6b4f6b9ce5486efcba4a7cb291a1720e25adf62
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 00f083dd5b8ed056f31d268017e56a571fb3b913
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122350243"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434266"
 ---
-# <a name="azure-monitor-logs-data-security"></a>[Datensicherheit in Azure Monitor Logs
+# <a name="azure-monitor-logs-data-security"></a>Datensicherheit in Azure Monitor Logs
 Dieses Dokument enthält ergänzend zu den Informationen im [Azure Trust Center](https://www.microsoft.com/en-us/trust-center?rtc=1) spezifische Informationen zu [Azure Monitor Logs](../logs/data-platform-logs.md).  
 
 In diesem Artikel wird erläutert, wie Protokolldaten von Azure Monitor Logs gesammelt, verarbeitet und geschützt werden. Sie können Agents verwenden, um die Verbindung mit dem Webdienst herzustellen, mit System Center Operations Manager betriebliche Daten sammeln oder Daten aus Azure-Diagnosen für die Verwendung durch Azure Monitor abrufen. 

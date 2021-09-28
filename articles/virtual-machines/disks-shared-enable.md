@@ -4,16 +4,16 @@ description: Konfigurieren eines verwalteten Azure-Datenträgers mit freigegeben
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/16/2021
+ms.date: 09/01/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 594800dcd75de3e5539873f327b5b64b81a8cb1f
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: bdf012d1ee6c1230e458b7b40e3130d8fa25e4a1
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122698186"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123424756"
 ---
 # <a name="enable-shared-disk"></a>Aktivieren freigegebener Datenträger
 
@@ -62,9 +62,9 @@ Um einen verwalteten Datenträger mit aktivierter Funktion freigegebener Datentr
 
     :::image type="content" source="media/disks-shared-enable/create-shared-disk-basics-pane.png" alt-text="Screenshot: Bereich „Verwalteten Datenträger erstellen“ mit hervorgehobener Option „Größe ändern“" lightbox="media/disks-shared-enable/create-shared-disk-basics-pane.png":::
 
-1. Wählen Sie die gewünschte SSD Premium-Größe und dann **OK** aus.
+1. Wählen Sie die gewünschte Größe für die Premium-SSD und SKU und anschließend **OK** aus.
 
-    :::image type="content" source="media/disks-shared-enable/select-premium-shared-disk.png" alt-text="Screenshot: Datenträger-SKU, SSD Premium hervorgehoben" lightbox="media/disks-shared-enable/select-premium-shared-disk.png":::
+    :::image type="content" source="media/disks-shared-enable/select-premium-shared-disk.png" alt-text="Screenshot: Datenträger-SKU, Premium-LRS- und ZRS-SSD-SKUs hervorgehoben." lightbox="media/disks-shared-enable/select-premium-shared-disk.png":::
 
 1. Fahren Sie mit der Bereitstellung fort, bis Sie zum Bereich **Erweitert** gelangen.
 1. Wählen Sie **Ja** für **Freigegebenen Datenträger aktivieren** aus, und wählen Sie die Anzahl **Maximaler Freigaben** aus, die Sie zulassen möchten.
@@ -105,7 +105,23 @@ Um einen verwalteten Datenträger mit aktivierter Funktion freigegebener Datentr
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Sie können derzeit keine freigegebene SSD Standard über das Azure-Portal bereitstellen. Verwenden Sie entweder die Azure CLI, das Azure PowerShell-Modul oder eine Azure Resource Manager-Vorlage.
+1. Melden Sie sich beim Azure-Portal an. 
+1. Suchen Sie nach **Datenträger**, und wählen Sie diese Option aus.
+1. Wählen Sie **+ Erstellen** aus, um einen neuen Datenträger zu erstellen.
+1. Geben Sie die Details ein, wählen Sie eine geeignete Region aus, und wählen Sie dann **Größe ändern** aus.
+
+    :::image type="content" source="media/disks-shared-enable/create-shared-disk-basics-pane.png" alt-text="Screenshot: Bereich „Verwalteten Datenträger erstellen“ mit hervorgehobener Option „Größe ändern“" lightbox="media/disks-shared-enable/create-shared-disk-basics-pane.png":::
+
+1. Wählen Sie die gewünschte Größe für die Standard-SSD und SKU und dann **OK** aus.
+
+    :::image type="content" source="media/disks-shared-enable/select-standard-ssd-shared-disk.png" alt-text="Screenshot: Datenträger-SKU, SSD-Standard-LRS- und ZRS-SKUs hervorgehoben." lightbox="media/disks-shared-enable/select-premium-shared-disk.png":::
+
+1. Fahren Sie mit der Bereitstellung fort, bis Sie zum Bereich **Erweitert** gelangen.
+1. Wählen Sie **Ja** für **Freigegebenen Datenträger aktivieren** aus, und wählen Sie die Anzahl **Maximaler Freigaben** aus, die Sie zulassen möchten.
+
+    :::image type="content" source="media/disks-shared-enable/enable-premium-shared-disk.png" alt-text="Screenshot: Bereich „Erweitert“ mit hervorgehobener Option „Freigegebenen Datenträger aktivieren“ auf „Ja“" lightbox="media/disks-shared-enable/enable-premium-shared-disk.png":::
+
+1. Klicken Sie auf **Überprüfen + erstellen**.
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 

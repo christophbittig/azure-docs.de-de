@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: pafarley
-ms.openlocfilehash: ad79bbd166e12c24339e13f38b4e10ca9ea2b549
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: db6ee292a088d530ea858d75e6649684e03d92b6
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111966622"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123540476"
 ---
 # <a name="build-a-react-app-to-add-users-to-a-face-service"></a>Erstellen einer React-App zum Hinzufügen von Benutzern zu einem Gesichtserkennungs-Dienst
 
@@ -65,14 +65,15 @@ Beispielsweise können Sie auf Ihrer Zustimmungsseite situationsabhängige Infor
 > [!div class="mx-imgBorder"]
 > ![App-Zustimmungsseite](./media/enrollment-app/1-consent-1.jpg)
 
-Der Dienst bietet Bildqualitätstests, um Ihnen bei der Entscheidung zu helfen, ob die Qualität des Bilds ausreichend ist, um den Kunden hinzuzufügen oder die Gesichtserkennung zu versuchen. Diese App veranschaulicht, wie Sie über die Kamera des Geräts auf Frames zugreifen, die Frames mit der höchsten Qualität auswählen und das erkannte Gesicht zum Gesichtserkennungs-API-Dienst hinzufügen. 
-
 Viele Gesichtserkennungsprobleme werden durch Referenzbilder von niedriger Qualität verursacht. Einige Faktoren, die die Leistung des Modells beeinträchtigen können, sind:
 * Gesichtsgröße (Gesichter, die weit von der Kamera entfernt sind)
 * Gesichtsausrichtung (geneigte oder von der Kamera abgewendete Gesichter)
 * Schlechte Beleuchtungsbedingungen (zu wenig Licht oder Gegenlicht), bei denen das Bild unterbelichtet wird oder zu viel Rauschen auftritt.
 * Verdeckung (teilweise verborgene oder verdeckte Gesichter), einschließlich Accessoires wie Hüten oder Brillen mit dickem Gestell.
 * Verschwommen/Weichzeichnung (z. B. durch schnelle Bewegung des Gesichts während der Aufnahme des Fotos). 
+
+Der Dienst bietet Bildqualitätstests, um Ihnen bei der Entscheidung zu helfen, ob die Qualität des Bilds auf der Grundlage der oben genannten Faktoren ausreichend ist, um den Kunden hinzuzufügen oder die Gesichtserkennung zu versuchen. Diese App veranschaulicht, wie Sie von der Kamera des Geräts aus auf Frames zugreifen, Qualität erkennen und dem Benutzer Benutzeroberflächennachrichten anzeigen, um ihm zu helfen, ein Bild mit höherer Qualität zu erfassen, die Frames mit der höchsten Qualität auszuwählen und das erkannte Gesicht dem Gesichtserkennungs-API-Dienst hinzuzufügen. 
+
 
 > [!div class="mx-imgBorder"]
 > ![Seite mit Anweisungen für die App-Bilderfassung](./media/enrollment-app/4-instruction.jpg)

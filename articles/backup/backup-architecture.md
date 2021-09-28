@@ -2,13 +2,13 @@
 title: Übersicht über die Architektur
 description: Übersicht über die Architektur, die Komponenten und die Prozesse des Azure Backup-Diensts.
 ms.topic: conceptual
-ms.date: 06/23/2021
-ms.openlocfilehash: 532ca138a9f003f38dac9245f4478b81e2d827f7
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.date: 09/01/2021
+ms.openlocfilehash: 2523d0fc9a8e4843fc0d3d41b5ed35c89bace325
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112541660"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430376"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup-Architektur und -Komponenten
 
@@ -81,17 +81,6 @@ In der folgenden Tabelle werden die verschiedenen für SQL Server-Datenbanken ve
 **Differenzielle Sicherung** | Eine differenzielle Sicherung basiert auf der letzten vollständigen Datensicherung.<br/><br/> Damit werden nur die Daten erfasst, die seit der vollständigen Sicherung geändert wurden. |  Pro Tag kann höchstens eine differenzielle Sicherung ausgelöst werden.<br/><br/> Sie können eine vollständige Sicherung und eine differenzielle Sicherung nicht am gleichen Tag konfigurieren.
 **Sicherung des Transaktionsprotokolls** | Eine Zeitpunktwiederherstellung ist bis zu einer bestimmten Sekunde möglich. | Transaktionsprotokollsicherungen können höchstens alle 15 Minuten durchgeführt werden.
 
-### <a name="comparison-of-backup-types"></a>Vergleich von Sicherungstypen
-
-Speicherverbrauch, RTO (Recovery Time Objective) und Netzwerkauslastung variieren je nach Art der Sicherung. In der folgenden Abbildung ist ein Vergleich der Sicherungstypen dargestellt:
-
-- Die Datenquelle A besteht aus 10 Speicherblöcken (A1–A10), die monatlich gesichert werden.
-- Die Blöcke A2, A3, A4 und A9 ändern sich im ersten Monat, der Block A5 ändert sich im nächsten Monat.
-- Bei differenziellen Sicherungen werden im zweiten Monat die geänderten Blöcke A2, A3, A4 und A9 gesichert. Im dritten Monat werden die gleichen Blöcke erneut gesichert – zusammen mit dem geänderten Block A5. Die geänderten Blöcke werden bis zur nächsten vollständigen Sicherung immer wieder gesichert.
-- Bei inkrementellen Sicherungen werden die Blöcke A2, A3, A4 und A9 im zweiten Monat als geändert gekennzeichnet und übertragen. Im dritten Monat wird nur der geänderte Block A5 gekennzeichnet und übertragen.
-
-![Vergleichsdarstellung von Sicherungsmethoden](./media/backup-architecture/backup-method-comparison.png)
-
 ## <a name="sap-hana-backup-types"></a>SAP HANA-Sicherungstypen
 
 In der folgenden Tabelle werden die verschiedenen für SAP HANA-Datenbanken verwendeten Sicherungstypen und die Häufigkeit von deren Verwendung erläutert:
@@ -102,6 +91,17 @@ In der folgenden Tabelle werden die verschiedenen für SAP HANA-Datenbanken verw
 | **Differenzielle Sicherung** | Eine differenzielle Sicherung basiert auf der letzten vollständigen Datensicherung. <br><br> Damit werden nur die Daten erfasst, die seit der letzten vollständigen Sicherung geändert wurden. | Pro Tag kann höchstens eine differenzielle Sicherung geplant werden.  <br><br> Sie können eine vollständige Sicherung und eine differenzielle Sicherung nicht am gleichen Tag konfigurieren. |
 | **Inkrementelle Sicherung** | Eine inkrementelle Sicherung basiert auf der letzten vollständigen/differenziellen/inkrementellen Datensicherung. <br><br> Damit werden nur die Daten erfasst, die seit der letzten Datensicherung geändert wurden. | Pro Tag kann höchstens eine inkrementelle Sicherung geplant werden. <br><br> Für eine Datenbank können nicht gleichzeitig differenzielle und inkrementelle Sicherungen geplant werden, sondern nur Deltasicherungen. <br><br> Sie können eine vollständige Sicherung und eine differenzielle Sicherung nicht am gleichen Tag konfigurieren. |k
 | **Sicherung des Transaktionsprotokolls** | Eine Zeitpunktwiederherstellung ist bis zu einer bestimmten Sekunde möglich. | Transaktionsprotokollsicherungen können höchstens alle 15 Minuten durchgeführt werden. |
+
+## <a name="comparison-of-backup-types"></a>Vergleich von Sicherungstypen
+
+Speicherverbrauch, RTO (Recovery Time Objective) und Netzwerkauslastung variieren je nach Art der Sicherung. In der folgenden Abbildung ist ein Vergleich der Sicherungstypen dargestellt:
+
+- Die Datenquelle A besteht aus 10 Speicherblöcken (A1–A10), die monatlich gesichert werden.
+- Die Blöcke A2, A3, A4 und A9 ändern sich im ersten Monat, der Block A5 ändert sich im nächsten Monat.
+- Bei differenziellen Sicherungen werden im zweiten Monat die geänderten Blöcke A2, A3, A4 und A9 gesichert. Im dritten Monat werden die gleichen Blöcke erneut gesichert – zusammen mit dem geänderten Block A5. Die geänderten Blöcke werden bis zur nächsten vollständigen Sicherung immer wieder gesichert.
+- Bei inkrementellen Sicherungen werden die Blöcke A2, A3, A4 und A9 im zweiten Monat als geändert gekennzeichnet und übertragen. Im dritten Monat wird nur der geänderte Block A5 gekennzeichnet und übertragen.
+
+![Das Diagramm zeigt, dass der Speicherverbrauch, RTO (Recovery Time Objective) und Netzwerkauslastung je nach Art des Sicherungstyps variieren.](./media/backup-architecture/backup-method-comparison.png)
 
 ## <a name="backup-features"></a>Sicherungsfeatures
 

@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 06/04/2021
 ms.author: aahi
-ms.openlocfilehash: 3c03a6a712190e972347b1e40c5583b5dc74792f
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: dfd5edc2444b3aa56dce556766013370a08ba846
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429776"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123475960"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>Schnellstart: Erstellen einer Cognitive Services-Ressource mithilfe des Azure-Portals
 
@@ -41,7 +41,7 @@ Die Ressource für mehrere Dienste wird im Portal **Cognitive Services** benannt
 
 Zu diesem Zeitpunkt ermöglicht die Ressource für mehrere Dienste den Zugriff auf die folgenden Cognitive Services:
 
-* **Vision:** Maschinelles Sehen, Custom Vision, Formularerkennung, Gesichtserkennung
+* **Vision** – maschinelles Sehen, Custom Vision, Gesichtserkennung
 * **Speech:** Speech
 * **Sprache:** Language Understanding (LUIS), Textanalyse, Textübersetzung
 * **Entscheidungsfindung:** Content Moderator
@@ -55,7 +55,7 @@ Verwenden Sie die folgenden Links, um eine Ressource für die verfügbaren Cogni
 | [Maschinelles Sehen](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [Speech-Dienste](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [Plastischer Reader](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [Anomalieerkennung](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | 
 | [Custom Vision Service](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) |  | [Language Understanding (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | 
 | [Gesichtserkennung](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)                    |                         | [QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)                     | [Personalisierung](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)     |
-| [Formularerkennung](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)        |                         | [Textanalyse](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |  [Metrics Advisor](https://go.microsoft.com/fwlink/?linkid=2142156)                    |
+|        |                         | [Textanalyse](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |  [Metrics Advisor](https://go.microsoft.com/fwlink/?linkid=2142156)                    |
 | | | [Translator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) | |
 
 ---
@@ -65,7 +65,7 @@ Verwenden Sie die folgenden Links, um eine Ressource für die verfügbaren Cogni
 
 ### <a name="multi-service-resource"></a>[Ressource für mehrere Dienste](#tab/multiservice)
 
-|Projektdetails| BESCHREIBUNG   |
+|Projektdetails| Beschreibung   |
 |--|--|
 | **Abonnement** | Wählen Sie eines Ihrer verfügbaren Azure-Abonnements aus. |
 | **Ressourcengruppe** | Die Azure-Ressourcengruppe, die Ihre Cognitive Services-Ressource enthält. Sie können eine neue Gruppe erstellen oder sie einer bereits bestehenden Gruppe hinzufügen. |
@@ -80,7 +80,7 @@ Lesen und akzeptieren Sie die Bedingungen (nach Ihren Anforderungen), und wähle
 
 ### <a name="single-service-resource"></a>[Ressource für einen einzelnen Dienst](#tab/singleservice)
 
-|Projektdetails| BESCHREIBUNG   |
+|Projektdetails| Beschreibung   |
 |--|--|
 | **Abonnement** | Wählen Sie eines Ihrer verfügbaren Azure-Abonnements aus. |
 | **Ressourcengruppe** | Die Azure-Ressourcengruppe, die Ihre Cognitive Services-Ressource enthält. Sie können eine neue Gruppe erstellen oder sie einer bereits bestehenden Gruppe hinzufügen. |

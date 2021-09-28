@@ -8,16 +8,17 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 07/07/2020
 ms.author: cynthn
-ms.reviewer: akjosh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1ba23474034623228cc7c645ffb3d0ec5ae65474
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 52f4152a8f3ec1d2f812de74ed0bd238fb323330
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110679045"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123451833"
 ---
 # <a name="supply-azure-marketplace-purchase-plan-information-when-creating-images"></a>Bereitstellen von Azure Marketplace-Erwerbsplaninformationen beim Erstellen von Images
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Wenn Sie ein Image in einem Katalog für freigegebenen Images erstellen und dabei eine Quelle verwenden, die ursprünglich aus einem Azure Marketplace-Image erstellt wurde, müssen Sie möglicherweise die Erwerbsplaninformationen nachverfolgen. In diesem Artikel wird erläutert, wie Sie Erwerbsplaninformationen für eine VM suchen und diese dann beim Erstellen einer Imagedefinition verwenden. Es wird ebenfalls beschrieben, wie Sie die Informationen aus der Imagedefinition verwenden, um die Bereitstellung der Erwerbsplaninformationen beim Erstellen einer VM für ein Image zu vereinfachen.
 
@@ -68,7 +69,7 @@ Erstellen Sie mithilfe der Parameter `-PurchasePlanPublisher`, `-PurchasePlanPro
    -PurchasePlanName  $vm.Plan.Name
 ```
 
-Erstellen Sie dann mit [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion) Ihre Imageversion. Sie können eine Imageversion aus einer [VM](image-version-vm-powershell.md#create-an-image-version), einem [verwalteten Image](image-version-managed-image-powershell.md#create-an-image-version), einer [VHD bzw. Momentaufnahme](image-version-snapshot-powershell.md#create-an-image-version) oder einer [anderen Imageversion](image-version-another-gallery-powershell.md#create-the-image-version) erstellen. 
+Erstellen Sie dann Ihre [Imageversion](image-version.md), indem Sie [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion) verwenden.  
 
 
 ## <a name="create-the-vm"></a>Erstellen des virtuellen Computers

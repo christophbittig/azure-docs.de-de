@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 9686cce60520895fe4a3ae7fb47e1eb0eca03599
-ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
+ms.openlocfilehash: 252f872dc14a1850f9b73e7769d4a439952b7da6
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112975240"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123484427"
 ---
 ## <a name="for-users-in-your-directory"></a>Für Benutzer in Ihrem Verzeichnis
 
@@ -218,7 +218,7 @@ Wenn Sie beispielsweise Alice und Bob als erste genehmigende Personen aufgeliste
 
     ![Zugriffspaket – Richtlinie – Einstellung „Anfordererinformationen aktivieren“](./media/active-directory-entitlement-management-request-policy/add-requestor-info-question.png)
 
-1. Wenn Sie die Frage und die Antwortoptionen lokalisieren möchten, klicken Sie auf **Lokalisierung hinzufügen**.
+1. Wenn Sie Ihre eigenen Lokalisierungsoptionen hinzufügen möchten, klicken Sie auf **Lokalisierung hinzufügen**.
     1. Wenn Sie sich im Bereich **Lokalisierungen für Frage hinzufügen** befinden, wählen Sie den **Sprachcode** für die Sprache aus, in die Sie die Frage lokalisieren.
     1. Geben Sie die Frage in der von Ihnen konfigurierten Sprache das Feld **Lokalisierter Text** ein.
     1. Nachdem Sie alle benötigten Lokalisierungen hinzugefügt haben, klicken Sie auf **Speichern**.
@@ -230,15 +230,18 @@ Wenn Sie beispielsweise Alice und Bob als erste genehmigende Personen aufgeliste
     ![Zugriffspaket – Richtlinie – „Anzeigen und bearbeiten“ für Antwortformat von Multiple Choice auswählen](./media/active-directory-entitlement-management-request-policy/answer-format-view-edit.png)
  
 1. Wenn Sie „Mehrfachauswahl“ auswählen, klicken Sie auf die Schaltfläche **Edit and localize** (Bearbeiten und lokalisieren), um die Antwortoptionen zu konfigurieren.
-    1. Nachdem Sie „Edit and localize“ (Bearbeiten und lokalisieren) ausgewählt haben, wird der Bereich **Edit/localize question** (Frage bearbeiten/lokalisieren) angezeigt.
+    1. Nachdem Sie „Edit and localize“ (Bearbeiten und lokalisieren) ausgewählt haben, wird der Bereich **Frage anzeigen/bearbeiten** angezeigt.
     1. Geben Sie die Antwortoptionen in die Felder **Antwortwerte** ein, die Sie dem Anforderer zur Verfügung stellen möchten, wenn dieser die Frage beantwortet.
-    1. Geben Sie so viele Antworten ein, wie Sie benötigen.
-    1. Wenn Sie Ihre eigene Lokalisierung für die Mehrfachauswahloptionen hinzufügen möchten, wählen Sie für die Sprache, in der Sie eine bestimmte Option lokalisieren möchten, den **optionalen Sprachcode** aus.
-    1. Geben Sie die Option in der von Ihnen konfigurierten Sprache im Feld „Lokalisierter Text“ ein.
-    1. Wenn Sie alle Lokalisierungen hinzugefügt haben, die für die einzelnen Mehrfachauswahloption erforderlich sind, klicken Sie auf **Speichern**.
+    1. Wählen Sie die Sprache für die Antwortoption aus. Sie können Antwortoptionen lokalisieren, wenn Sie zusätzliche Sprachen auswählen.
+    1. Geben Sie so viele Antworten ein, wie Sie benötigen, und klicken Sie dann auf **Speichern**.
     
     ![Zugriffspaket – Richtlinie – Multiple Choice-Optionen eingeben](./media/active-directory-entitlement-management-request-policy/answer-multiple-choice.png)
   
 1. Um vom Anforderer die Beantwortung der Frage zu fordern, wenn dieser den Zugriff auf ein Zugriffspaket anfordert, klicken Sie auf das Kontrollkästchen unter **Erforderlich**.
 
-1. Klicken Sie auf „Weiter“.
+1. Klicken Sie auf **Attribute (Vorschau)** , um Attribute anzuzeigen, die Ressourcen zugeordnet sind, die dem Zugriffspaket hinzugefügt wurden.
+
+    > [!NOTE]
+    > Um Attribute für die Ressourcen eines Zugriffspakets hinzuzufügen oder zu aktualisieren, wechseln Sie zu **Kataloge**, und suchen Sie den Katalog, der dem Zugriffspaket zugeordnet ist. Weitere Informationen zum Bearbeiten der Attributliste für eine bestimmte Katalogressource und die erforderlichen Rollen finden Sie unter [Hinzufügen von Ressourcenattributen (Vorschau)](../articles/active-directory/governance/entitlement-management-catalog-create.md#add-resource-attributes-preview-in-the-catalog). 
+
+1. Klicken Sie auf **Weiter**.

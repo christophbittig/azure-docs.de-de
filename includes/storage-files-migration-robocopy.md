@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 4/05/2021
 ms.author: fauhse
 ms.custom: include file
-ms.openlocfilehash: 52e1accfb5f5bb762cc2833a19e1caa3daa4a03d
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 8b425646e9b416129d951cc78db3d05c26b0e6e8
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114462189"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123484693"
 ---
 ```console
-robocopy /MT:128 /R:1 /W:1 /MIR /IT /COPY:DATSO /DCOPY:DAT /NP /NFL /NDL /UNILOG:<FilePathAndName> <SourcePath> <Dest.Path> 
+robocopy /MT:128 /R:1 /W:1 /B /MIR /IT /COPY:DATSO /DCOPY:DAT /NP /NFL /NDL /UNILOG:<FilePathAndName> <SourcePath> <Dest.Path> 
 ```
 
 | Schalter                | Bedeutung |
@@ -37,3 +37,6 @@ robocopy /MT:128 /R:1 /W:1 /MIR /IT /COPY:DATSO /DCOPY:DAT /NP /NFL /NDL /UNILOG
 | `/LFSM`               | **Nur für Ziele mit mehrstufigem Speicher vorgesehen** </br>Hiermit wird angegeben, dass Robocopy im Modus „Nicht genügend freier Speicherplatz“ ausgeführt wird. Diese Option ist nur für Ziele mit mehrstufigem Speicher nützlich, bei denen möglicherweise der lokale Speicherplatz aufgebraucht ist, bevor die Robocopy-Ausführung fertiggestellt wird. Sie wurde spezifisch für die Verwendung mit einem Ziel hinzugefügt, für das das Cloudtiering der Azure-Dateisynchronisierung aktiviert ist. Die Option kann unabhängig von der Azure-Dateisynchronisierung verwendet werden. In diesem Modus pausiert die Robocopy-Ausführung immer dann, wenn ein Dateikopiervorgang dazu führen würde, dass der freie Speicherplatz des Zielvolumes einen bestimmten Schwellenwert unterschreitet. Dieser Wert kann mit dem `/LFSM:n`-Formular des Flags festgelegt werden. Der Parameter `n` wird im Dualsystem festgelegt: `nKB`, `nMB` oder `nGB`. Wenn `/LFSM` ohne einen expliziten Schwellenwert festgelegt wird, wird der Schwellenwert auf 10 % der Größe des Zielvolumes festgelegt. Der Modus für nicht genügend freien Speicherplatz ist nicht mit `/MT`, `/EFSRAW`, `/B` oder `/ZB` kompatibel. |
 | `/Z`                  | **Umsichtige Verwendung** </br>Hiermit werden Dateien im Neustartmodus kopiert. Diese Option wird nur in einer instabilen Netzwerkumgebung empfohlen. Sie reduziert die Kopierleistung aufgrund der zusätzlichen Protokollierung erheblich. |
 | `/ZB`                 | **Umsichtige Verwendung** </br>Mit dieser Option wird der Neustartmodus verwendet. Wenn der Zugriff verweigert wird, wird der Sicherungsmodus verwendet. Diese Option reduziert die Kopierleistung aufgrund der Prüfpunkte erheblich. |
+
+> [!IMPORTANT]
+> Verwenden Sie einen Windows Server 2019 mit mindestens dem [OS-Update KB5005103](https://support.microsoft.com/topic/august-26-2021-kb5005103-os-build-18363-1766-preview-4e23362c-5e43-4d8f-95e5-9fdade60605f) vom 26. August 2021. Dieses Update enthält wichtige Korrekturen für bestimmte RoboCopy-Szenarien.

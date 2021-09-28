@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: virtual-wan
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/07/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 83f0ce27172879a37de9488499e46de30b8e112c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba77d7f580a2a5fe69d575d2727e42ed12c68019
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98147496"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123646660"
 ---
 Beachten Sie bei der Arbeit mit benutzerdefinierten IPsec-Richtlinien die folgenden Anforderungen:
 
@@ -34,4 +34,4 @@ Beachten Sie bei der Arbeit mit benutzerdefinierten IPsec-Richtlinien die folgen
 | IPsec-Verschlüsselung | GCMAES256, GCMAES128, AES256, AES128, Keine |
 | IPsec-Integrität | GCMAES256, GCMAES128, SHA256 |
 | PFS-Gruppe | ECP384, ECP256, PFS24, PFS14, Keine |
-| SA-Gültigkeitsdauer |Integer, min. 300/Standard: 27.000 Sekunden |
+| SA-Gültigkeitsdauer |Integer, min. 300/Standard: 3600 Sekunden |

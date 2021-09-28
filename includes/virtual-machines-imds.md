@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: 29f5e96c18220f0bbdec5f91107c9220fc2fba0b
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 2900eb3ddf1411b80920869932724f76a22c9802
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123355420"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123453411"
 ---
 Der Azure Instance Metadata Service (IMDS) stellt Informationen zu Instanzen virtueller Computer bereit, die derzeit ausgeführt werden. Sie können ihn zur Verwaltung und Konfiguration Ihrer virtuellen Computer verwenden.
 Hierzu gehören die SKU, der Speicher, Netzwerkkonfigurationen und bevorstehende Wartungsereignisse. Eine umfassende Liste der verfügbaren Daten finden Sie in der [Übersicht über die Endpunktkategorien](#endpoint-categories).
@@ -1007,7 +1007,7 @@ Das decodierte Dokument enthält die folgenden Felder:
 | `timestamp.expiresOn` | Der UTC-Zeitstempel für den Zeitpunkt, an dem das signierte Dokument abläuft | 2018-10-01
 | `vmId` | [Eindeutiger Bezeichner](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) für die VM | 2018-10-01
 | `subscriptionId` | Azure-Abonnement für den virtuellen Computer | 2019-04-30
-| `sku` | Spezifische SKU für das VM-Image | 2019-11-01
+| `sku` | Bestimmte SKU für das VM-Image (entspricht der `compute/sku` Eigenschaft vom Instanzmetadatenendpunkt \[`/metadata/instance`\]) | 2019-11-01
 
 > [!NOTE]
 > Bei klassischen VMs (Nicht-Azure Resource Manager-VMs) wird nur „vmId“ garantiert ausgefüllt.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/12/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: fed7f84ed86e4543c74073811ccbafcdf8736c77
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: 80818386ccd47619ccb23323474ac76fa2240db2
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122428672"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427712"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Was ist der Azure Cosmos DB-Analysespeicher?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -149,7 +149,19 @@ Die folgenden Einschränkungen gelten für die operativen Daten in Azure Cosmos 
   * Das Löschen aller Dokumente in einer Sammlung setzt das Schema des analytischen Speichers nicht zurück.
   * Eine Versionierung des Schemas gibt es nicht. Die letzte Version, die aus dem Transaktionsspeicher abgeleitet wird, ist die, die Sie im Analysespeicher sehen werden.
 
-* Derzeit unterstützen wir nicht das Lesen von Eigenschaften mit Leerzeichen im Namen durch Azure Synapse Spark. Sie müssen Spark-Funktionen wie `cast` oder `replace` verwenden, um die Daten in einen Spark-Datenrahmen zu laden.
+* Zurzeit kann Azure Synapse Spark keine Eigenschaften lesen, deren Namen einige (unten aufgeführte) Sonderzeichen enthalten. Wenn dies bei Ihnen zutrifft, wenden Sie sich an das [Azure Cosmos DB-Team](mailto:cosmosdbsynapselink@microsoft.com), um weitere Informationen zu erhalten.
+  * : (Doppelpunkt)
+  * ` (Graviszeichen, Accent grave)
+  * , (Komma)
+  * ; (Semikolon)
+  * {}
+  * ()
+  * \n
+  * \t
+  * = (Gleichheitszeichen)
+  * " (Anführungszeichen)
+ 
+* Azure Synapse Spark unterstützt jetzt Eigenschaften, deren Namen Leerzeichen enthalten.
 
 ### <a name="schema-representation"></a>Schemadarstellung
 
@@ -323,12 +335,14 @@ Der Analysespeicher folgt einem nutzungsbasierten Preismodell, bei dem Folgendes
 
 * Analyselesevorgänge: Lesevorgänge, die für den Analysespeicher in Azure Synapse Analytics-Laufzeiten für Spark- und serverlose SQL-Pools ausgeführt werden.
 
-Die Preise für den Analysespeicher sind vom Preismodell für den Transaktionsspeicher getrennt. Es gibt kein Konzept für bereitgestellte RUs im Analysespeicher. Ausführliche Informationen zum Preismodell für den Analysespeicher finden Sie auf der Seite [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/).
+Die Preise für den Analysespeicher sind vom Preismodell für den Transaktionsspeicher getrennt. Es gibt kein Konzept für bereitgestellte RUs im Analysespeicher. Ausführliche Informationen zum Preismodell für den Analysespeicher finden Sie auf der [Azure Cosmos DB – Preisseite](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
-Wenn Sie eine allgemeine Kostenschätzung für das Aktivieren des Analysespeichers in einem Azure Cosmos DB-Container erhalten möchten, können Sie den [Azure Cosmos DB Capacity Planner](https://cosmos.azure.com/capacitycalculator/) verwenden und so eine Schätzung der Kosten für den Analysespeicher und Analyseschreibvorgänge abrufen. Die Kosten für Analyselesevorgänge hängen von den Merkmalen der Analyseworkloads ab, doch als grobe Schätzung führt das Scannen von 1 TB Daten im Analysespeicher in der Regel zu 130.000 Analyselesevorgängen und somit zu Kosten von 0,065 US-Dollar.
+Auf Daten im Analysespeicher kann nur über Azure Synapse Link zugegriffen werden. Dies erfolgt in den Azure Synapse Analytics-Runtimes: Azure Synapse Apache Spark-Pools und Azure Synapse serverlose SQL-Pools. Ausführliche Informationen zum Preismodell für den Zugriff auf Daten im Analysespeicher finden Sie auf der [Azure Synapse Analytics-Preisseite](https://azure.microsoft.com/pricing/details/synapse-analytics/).
+
+Wenn Sie eine allgemeine Kostenschätzung für das Aktivieren des Analysespeichers in einem Azure Cosmos DB-Container aus der Perspektive des Analysespeichers erhalten möchten, können Sie den [Azure Cosmos DB Capacity Planner](https://cosmos.azure.com/capacitycalculator/) verwenden und so eine Schätzung der Kosten für den Analysespeicher und Analyseschreibvorgänge abrufen. Die Kosten für Analyselesevorgänge hängen von den Merkmalen der Analyseworkloads ab, doch als grobe Schätzung führt das Scannen von 1 TB Daten im Analysespeicher in der Regel zu 130.000 Analyselesevorgängen und somit zu Kosten von 0,065 US-Dollar.
 
 > [!NOTE]
-> Schätzungen zu Lesevorgängen in Analysespeichern sind im Cosmos DB Kostenrechner nicht enthalten, da sie eine Funktion Ihrer analytischen Workload sind. Während die obige Schätzung für das Scannen von 1 TB Daten im Analysespeicher gilt, reduziert das Anwenden von Filtern die Menge gescannter Daten, und dies bestimmt die genaue Anzahl analytischer Lesevorgänge gemäß des nutzungsbasierten Preismodells. Ein Proof of Concept für die analytische Workload bietet einen exakteren Schätzwert der Anzahl analytischer Lesevorgänge.
+> Schätzungen zu Lesevorgängen in Analysespeichern sind im Cosmos DB Kostenrechner nicht enthalten, da sie eine Funktion Ihrer analytischen Workload sind. Während die obige Schätzung für das Scannen von 1 TB Daten im Analysespeicher gilt, reduziert das Anwenden von Filtern die Menge gescannter Daten, und dies bestimmt die genaue Anzahl analytischer Lesevorgänge gemäß des nutzungsbasierten Preismodells. Ein Proof of Concept für die analytische Workload bietet einen exakteren Schätzwert der Anzahl analytischer Lesevorgänge. Diese Schätzung enthält nicht die Kosten für Azure Synapse Analytics.
 
 
 ## <a name="analytical-time-to-live-ttl"></a><a id="analytical-ttl"></a> Analytische Gültigkeitsdauer (TTL)

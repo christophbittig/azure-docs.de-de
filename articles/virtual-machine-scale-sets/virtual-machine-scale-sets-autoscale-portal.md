@@ -9,14 +9,17 @@ ms.subservice: autoscale
 ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 2ee2db62cf43dc191da2b92f7d4b67ff775f628f
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: a66eeec561b422cb7ce644facd7f273ab055e871
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537521"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123423662"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Automatisches Skalieren einer VM-Skalierungsgruppe im Azure-Portal
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Einheitliche Skalierungsgruppen
+
 Beim Erstellen einer Skalierungsgruppe definieren Sie die Anzahl von VM-Instanzen, die Sie ausführen möchten. Wenn sich die Nachfrage nach Ihrer Anwendung ändert, können Sie die Anzahl von VM-Instanzen automatisch erhöhen oder verringern lassen. Dank der Möglichkeit zum automatischen Skalieren können Sie über den gesamten Lebenszyklus Ihrer App die Kundennachfrage decken oder auf Änderungen der Anwendungsleistung reagieren.
 
 In diesem Artikel wird veranschaulicht, wie Sie im Azure-Portal Regeln für die automatische Skalierung erstellen, mit denen die Leistung der VM-Instanzen in Ihrer Skalierungsgruppe überwacht wird. Mit diesen Regeln für die automatische Skalierung wird die Anzahl von VM-Instanzen erhöht oder verringert, um auf die Werte dieser Leitungsmetriken zu reagieren. Sie können diese Schritte auch mit [Azure PowerShell](tutorial-autoscale-powershell.md) oder der [Azure CLI](tutorial-autoscale-cli.md) ausführen.
@@ -54,8 +57,11 @@ Wenn sich die Nachfrage für Ihre Anwendung erhöht, erhöht sich auch die Last 
     | *Abkühlen (Minuten)*  | Gibt an, wie lange gewartet wird, bevor die Regel erneut angewendet wird, damit die Aktionen für die automatische Skalierung wirksam werden können. | 5 Minuten      |
 
     Die folgenden Beispiele zeigen eine im Azure-Portal erstellte Regel, die mit diesen Einstellungen übereinstimmt:
-
+    
     ![Erstellen einer Regel für die automatische Skalierung zum Erhöhen der Anzahl von VM-Instanzen](media/virtual-machine-scale-sets-autoscale-portal/rule-increase.png)
+
+    > [!NOTE]
+    > Aufgaben, die innerhalb der Instanz ausgeführt werden, werden plötzlich beendet, und die Instanz wird herunterskaliert, sobald die Kühlzeit abgeschlossen ist.
 
 6. Klicken Sie zum Erstellen der Regel auf **Hinzufügen**.
 

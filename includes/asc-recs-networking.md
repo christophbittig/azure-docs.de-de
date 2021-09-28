@@ -2,15 +2,15 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 07/25/2021
+ms.date: 09/05/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 1dfca36c845e6491de250cd803de0f853fbd8011
-ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
+ms.openlocfilehash: 0c2db657979bd2f464200bedfbb434c826c37da2
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114675165"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536834"
 ---
 Diese Kategorie enthält **14** Empfehlungen.
 
@@ -29,5 +29,5 @@ Diese Kategorie enthält **14** Empfehlungen.
 |[Virtuelle Computer ohne Internetzugang sollten über Netzwerksicherheitsgruppen geschützt werden.](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/a9341235-9389-42f0-a0bf-9bfb57960d44) |Schützen Sie Ihren virtuellen Computer ohne Internetzugang vor potenziellen Bedrohungen, indem Sie den Zugriff darauf mit einer Netzwerksicherheitsgruppe (NSG) einschränken. NSGs enthalten eine Zugriffssteuerungsliste (Access Control List, ACL) zum Zulassen oder Verweigern von Netzwerkdatenverkehr von anderen Instanzen für Ihre VM. Dies gilt unabhängig davon, ob diese sich innerhalb oder außerhalb desselben Subnetzes befinden.<br>Beachten Sie Folgendes: Damit Ihr Computer bestmöglich geschützt ist, muss sowohl der VM-Zugriff auf das Internet eingeschränkt als auch eine NSG im Subnetz aktiviert sein.<br />(Zugehörige Richtlinie: [Virtuelle Computer mit Internetzugang sollten über Netzwerksicherheitsgruppen geschützt werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fbb91dfba-c30d-4263-9add-9c2384e659a6)) |Niedrig |
 |[Sichere Übertragung in Speicherkonten sollte aktiviert werden](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/1c5de8e1-f68d-6a17-e0d2-ec259c42768c) |Sichere Übertragung ist eine Option, die erzwingt, dass Ihr Storage-Konto nur Anforderungen von sicheren Verbindungen (HTTPS) akzeptiert. Durch die Verwendung von HTTPS wird eine Authentifizierung zwischen dem Server und dem Dienst sichergestellt, und die übertragenen Daten werden vor Angriffen auf Netzwerkebene geschützt, wie z.B. Man-in-the-Middle-Angriffe, Abhörangriffe und Session Hijacking.<br />(Zugehörige Richtlinie: [Für Speicherkonten muss die sichere Übertragung aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f404c3081-a854-4457-ae30-26a93ef643f9)) |Hoch |
 |[Subnetze sollten einer Netzwerksicherheitsgruppe zugeordnet werden](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/eade5b56-eefd-444f-95c8-23f29e5d93cb) |Schützen Sie Ihr Subnetz vor potenziellen Bedrohungen, indem Sie den Zugriff auf das Subnetz mit einer Netzwerksicherheitsgruppe (NSG) einschränken. NSGs enthalten eine Liste der ACL-Regeln (Access Control List), die den Netzwerkdatenverkehr an Ihr Subnetz zulassen oder verweigern. Wenn eine NSG einem Subnetz zugeordnet wird, gelten die ACL-Regeln für alle VM-Instanzen und integrierten Dienste des Subnetzes, aber nicht für den internen Datenverkehr des Subnetzes. Aktivieren Sie die NSG auch direkt auf den Ressourcen, um für die Ressourcen in demselben Subnetz den Schutz untereinander sicherzustellen.<br />(Zugehörige Richtlinie: [Subnetze sollten einer Netzwerksicherheitsgruppe zugeordnet werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fe71308d3-144b-4262-b144-efdc3cc90517)) |Niedrig |
-|[Virtuelle Netzwerke müssen durch Azure Firewall geschützt werden](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/f67fb4ed-d481-44d7-91e5-efadf504f74a) |Einige ihrer virtuellen Netzwerke sind nicht durch eine Firewall geschützt. Verwenden Sie Azure Firewall, um den Zugriff auf Ihre virtuellen Netzwerke einzuschränken und potenzielle Bedrohungen zu verhindern. Weitere Informationen zu Azure Firewall <br> finden Sie <a href="https://azure.microsoft.com/pricing/details/azure-firewall">hier</a>.<br />(Zugehörige Richtlinie: [Gesamten Internetdatenverkehr über Ihre bereitgestellte Azure Firewall-Instanz leiten](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ffc5e4038-4584-4632-8c85-c0448d374b2c)) |Niedrig |
+|[Virtuelle Netzwerke müssen durch Azure Firewall geschützt werden](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/f67fb4ed-d481-44d7-91e5-efadf504f74a) |Einige ihrer virtuellen Netzwerke sind nicht durch eine Firewall geschützt. Verwenden Sie Azure Firewall, um den Zugriff auf Ihre virtuellen Netzwerke einzuschränken und potenzielle Bedrohungen zu verhindern. Weitere Informationen zu Azure Firewall <br> Informationen hierzu finden Sie unter [Azure Firewall – Preise](https://azure.microsoft.com/pricing/details/azure-firewall)<br />(Zugehörige Richtlinie: [Gesamten Internetdatenverkehr über Ihre bereitgestellte Azure Firewall-Instanz leiten](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ffc5e4038-4584-4632-8c85-c0448d374b2c)) |Niedrig |
 |||

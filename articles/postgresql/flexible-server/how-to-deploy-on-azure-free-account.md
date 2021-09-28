@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 08/23/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 5645a872c0dbb5d1b80e6856b173b75d758a23ab
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: 38a1e264d3febfc114df253a24479d9580c86bb5
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122780088"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538361"
 ---
 # <a name="use-an-azure-free-account-to-try-azure-database-for-postgresql---flexible-server-for-free"></a>Verwenden eines kostenlosen Azure-Kontos, um Azure Database for PostgreSQL – Flexible Server kostenlos zu testen
 
@@ -108,7 +108,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
     :::image type="content" source="media/how-to-deploy-on-azure-free-account/review-create-postgresql.png" alt-text="Screenshot des Blatts „Überprüfen und erstellen“.":::
 
     >[!IMPORTANT]
-    >Solange Sie Ihr kostenloses Azure-Konto verwenden und die Nutzung des kostenlosen Diensts innerhalb der monatlichen Grenzwerte liegt (Informationen zur Nutzung finden Sie weiter unten im Abschnitt [**Überwachen und Nachverfolgen der Nutzung kostenloser Dienste**](#monitor-and-track-free-services-usage)), werden Ihnen keine Gebühren für den Dienst in Rechnung gestellt. Wir arbeiten aktuell an einer Verbesserung der **Kostenzusammenfassung** für kostenlose Dienste. 
+    >Wenn Sie die flexible Serverinstanz über Ihr kostenloses Azure-Konto erstellen, sehen Sie weiterhin die **geschätzten Kosten pro Monat** auf dem Blatt **Compute und Speicher: Kostenübersicht** und der Registerkarte **Überprüfen und erstellen**. Solange Sie jedoch Ihr kostenloses Azure-Konto verwenden und die Nutzung des kostenlosen Dienstes innerhalb der monatlichen Grenzen liegt (Informationen zur Nutzung finden Sie im Abschnitt [**Überwachen und Verfolgen der Nutzung kostenloser Dienste**](#monitor-and-track-free-services-usage) weiter unten), werden Ihnen keine Kosten für den Dienst berechnet. Wir arbeiten aktuell an einer Verbesserung der **Kostenzusammenfassung** für kostenlose Dienste. 
 
 1. Wählen Sie **Erstellen** aus, um den Server bereitzustellen.
 
@@ -129,7 +129,7 @@ Nachdem Sie eine Instanz von Azure Database for PostgreSQL – Flexible Server i
 - [Python](connect-python.md)
 - [Java](connect-java.md)
 - [.NET](connect-csharp.md)
-- [Herstellen einer Verbindung mit einem Server im VNet](quickstart-create-connect-server-vnet.md)
+- [Herstellen einer Verbindung mit einem Server im VNET](quickstart-create-connect-server-vnet.md)
 
 
 ## <a name="monitor-and-track-free-services-usage"></a>Überwachen und Nachverfolgen der Nutzung kostenloser Dienste

@@ -1,14 +1,14 @@
 ---
 title: Ermitteln der Ursachen für Nichtkonformität
 description: Wenn eine Ressource nicht konform ist, kann das viele mögliche Ursachen haben. Erfahren Sie, wie Sie die Ursache für die Nichtkonformität ermitteln können.
-ms.date: 08/17/2021
+ms.date: 09/01/2021
 ms.topic: how-to
-ms.openlocfilehash: e09bdaee974e77a3afecaaa35a37c56ed3cd56ec
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 3c4076673adfe3253a418cc648592e72a8979b5a
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343663"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433804"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Ermitteln der Ursachen für Nichtkonformität
 
@@ -78,9 +78,13 @@ In den Details wird angegeben, warum eine Ressource nicht konform ist. Allerding
 
 ### <a name="compliance-reasons"></a>Konformitätsgründe
 
-In der folgenden Tabelle wird jeder mögliche _Grund_ der entsprechenden [Bedingung](../concepts/definition-structure.md#conditions) in der Richtliniendefinition zugeordnet:
+[Resource Manager-](../concepts/definition-structure.md#resource-manager-modes) und [Ressourcenanbietermodi](../concepts/definition-structure.md#resource-provider-modes) haben jeweils unterschiedliche _Gründe_ für Nichtkonformität.
 
-|`Reason` | Bedingung |
+#### <a name="general-resource-manager-mode-compliance-reasons"></a>Allgemeine Konformitätsgründe für den Resource Manager-Modus
+
+In der folgenden Tabelle wird jeder mögliche [Resource Manager](../concepts/definition-structure.md#resource-manager-modes)-_Grund_ der entsprechenden [Bedingung](../concepts/definition-structure.md#conditions) in der Richtliniendefinition zugeordnet:
+
+|`Reason` |Bedingung |
 |-|-|
 |Der aktuelle Wert muss den Zielwert als Schlüssel enthalten. |containsKey oder **nicht** notContainsKey |
 |Der aktuelle Wert muss den Zielwert enthalten. |contains oder **nicht** notContains |
@@ -104,15 +108,33 @@ In der folgenden Tabelle wird jeder mögliche _Grund_ der entsprechenden [Beding
 |Der aktuelle Wert darf nicht mit dem Zielwert übereinstimmen (keine Berücksichtigung der Groß-/Kleinschreibung). |notMatchInsensitively oder **nicht** matchInsensitively |
 |Keine der zugehörigen Ressourcen entspricht den Effektdetails in der Richtliniendefinition. |Eine Ressource des in **then.details.type** definierten Typs, die mit der im **if**-Abschnitt der Richtlinienregel definierten Ressource verwandt ist, ist nicht vorhanden. |
 
+#### <a name="aks-resource-provider-mode-compliance-reasons"></a>Konformitätsgründe für den AKS-Ressourcenanbietermodus
+
+In der folgenden Tabelle wird jeder Grund für den `Microsoft.Kubernetes.Data`
+[Ressourcenanbietermodus](../concepts/definition-structure.md#resource-provider-modes)_dem_ verantwortlichen Zustand der [Einschränkungsvorlage](https://open-policy-agent.github.io/gatekeeper/website/docs/howto/#constraint-templates) in der Richtliniendefinition zugeordnet:
+
+|`Reason` |Beschreibung des Grunds der Einschränkungsvorlage |
+|-|-|
+|Constraint/TemplateCreateFailed |Die Ressource konnte für eine Richtliniendefinition mit einer Einschränkung/Vorlage, die nicht anhand des Ressourcenmetadatennamens mit einer vorhandenen Einschränkung/Vorlage im Cluster übereinstimmt, nicht erstellt werden. |
+|Constraint/TemplateUpdateFailed |Die Einschränkung/Vorlage konnte nicht für eine Richtliniendefinition mit einer Einschränkung/Vorlage aktualisiert werden, die mit einer vorhandenen Einschränkung/Vorlage im Cluster nach Ressourcenmetadatenname übereinstimmt. |
+|Constraint/TemplateInstallFailed |Die Einschränkung/Vorlage konnte nicht erstellt werden und konnte weder für den Erstellungs- noch für den Updatevorgang auf dem Cluster installiert werden. |
+|ConstraintTemplateConflicts |Die Vorlage weist einen Konflikt mit einer oder mehreren Richtliniendefinitionen auf, die den gleichen Vorlagennamen mit unterschiedlicher Quelle verwenden. |
+|ConstraintStatusStale |Es gibt einen vorhandenen Status „Überwachung“, aber Gatekeeper hat innerhalb der letzten Stunde keine Überwachung durchgeführt. |
+|ConstraintNotProcessed |Es gibt keinen Status, und Gatekeeper hat innerhalb der letzten Stunde keine Überwachung durchgeführt. |
+|InvalidConstraint/Template |Der API-Server hat die Ressource aufgrund einer fehlerhaften YAML abgelehnt. Dieser Grund kann auch durch einen Parametertypkonflikt verursacht werden (Beispiel: für eine ganze Zahl bereitgestellte Zeichenfolge)
+
+> [!NOTE]
+> Für vorhandene Richtlinienzuweisungen und Einschränkungsvorlagen, die bereits im Cluster vorhanden sind, wird der Cluster geschützt, wenn diese Einschränkung/Vorlage fehlschlägt, indem die vorhandene Einschränkung/Vorlage beibehalten wird. Der Cluster meldet „nicht konform“, bis der Fehler bei der Richtlinienzuweisung behoben wird oder sich das Add-On selbst repariert. Weitere Informationen zur Behandlung von Konflikten finden Sie unter [Einschränkungsvorlagenkonflikte](../concepts/policy-for-kubernetes.md#constraint-template-conflicts).
+
 ## <a name="component-details-for-resource-provider-modes"></a>Komponentendetails für Ressourcenanbietermodi
 
-Bei Zuweisungen mit einem [Ressourcenanbietermodus](../concepts/definition-structure.md#resource-manager-modes) wählen Sie die _nicht konforme_ Ressource aus, um eine detailliertere Ansicht zu öffnen. Unter der Registerkarte **Komponentenkonformität** befinden sich zusätzliche Informationen, die spezifisch für den Modus „Ressourcenanbieter“ der zugewiesenen Richtlinie sind und die _nicht konforme_ **Komponente** und die **Komponenten-ID** anzeigen.
+Bei Zuweisungen mit einem [Ressourcenanbietermodus](../concepts/definition-structure.md#resource-provider-modes) wählen Sie die _nicht konforme_ Ressource aus, um eine detailliertere Ansicht zu öffnen. Unter der Registerkarte **Komponentenkonformität** befinden sich zusätzliche Informationen, die spezifisch für den Modus „Ressourcenanbieter“ der zugewiesenen Richtlinie sind und die _nicht konforme_ **Komponente** und die **Komponenten-ID** anzeigen.
 
 :::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Screenshot der Registerkarte „Komponentenkonformität“ und Konformitätsdetails für eine Zuweisung im Ressourcenanbietermodus" border="false":::
 
 ## <a name="compliance-details-for-guest-configuration"></a>Details zur Konformität für die Gastkonfiguration
 
-Für Überwachungsrichtlinien (_auditIfNotExists_) in der Kategorie _Gastkonfiguration_ können auf dem virtuellen Computer mehrere Einstellungen ausgewertet werden, und Sie müssen die Details pro Einstellung anzeigen. Wenn Sie beispielsweise eine Überprüfung der Liste mit Kennwortrichtlinien durchführen und nur ein Eintrag den Status _Nicht konform_ aufweist, müssen Sie ermitteln, welche spezifischen Kennwortrichtlinien nicht konform sind und was der Grund dafür ist.
+Für Richtliniendefinitionen in der Kategorie _Gastkonfiguration_ können auf dem VM mehrere Einstellungen ausgewertet werden, und Sie müssen die Details pro Einstellung anzeigen. Wenn Sie beispielsweise eine Überprüfung der Liste mit Sicherheitseinstellungen durchführen und nur ein Eintrag den Status _Nicht konform_ aufweist, müssen Sie ermitteln, welche spezifischen Einstellungen nicht konform sind und was der Grund dafür ist.
 
 Unter Umständen haben Sie auch keinen Zugriff für die direkte Anmeldung auf dem virtuellen Computer, müssen aber melden, warum der virtuelle Computer _nicht konform_ ist.
 
@@ -127,6 +149,15 @@ Wählen Sie im Bereich „Konformitätsdetails“ den Link **Zuletzt ausgewertet
 Auf der Seite **Gastzuweisung** werden alle verfügbaren Konformitätsdetails angezeigt. Jede Zeile der Ansicht steht für eine Auswertung, die auf dem Computer durchgeführt wurde. In der Spalte **Grund** wird eine Beschreibung angezeigt, mit der der Grund für den Status _Nicht konform_ für die Gastzuweisung angegeben wird. Wenn Sie beispielsweise Kennwortrichtlinien überprüfen, wird in der Spalte **Grund** Text mit dem aktuellen Wert für jede Einstellung angezeigt.
 
 :::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="Screenshot: Konformitätsdetails zur Gastzuweisung" border="false":::
+
+### <a name="view-configuration-assignment-details-at-scale"></a>Anzeigen von skalierbaren Konfigurationszuweisungsdetails
+
+Das Gastkonfigurationsfeature kann außerhalb von Azure Policy-Zuweisungen verwendet werden.
+[Azure AutoManage](../../../automanage/automanage-virtual-machines.md) erstellt beispielsweise Gastkonfigurationszuweisungen, oder Sie können [Konfigurationen zuweisen, wenn Sie Computer bereitstellen](guest-configuration-create-assignment.md).
+
+Um alle Gastkonfigurationszuweisungen für Ihren Mandanten anzuzeigen, öffnen Sie im Azure-Portal die Seite **Gastzuweisungen**. Um detaillierte Konformitätsinformationen anzeigen zu können, wählen Sie jede Zuweisung über den Link in der Spalte „Name“ aus.
+
+:::image type="content" source="../media/determine-non-compliance/guest-config-assignment-view.png" alt-text="Screenshot: Gastzuweisungsseite." border="true":::
 
 ## <a name="change-history-preview"></a><a name="change-history"></a>Änderungsverlauf (Vorschau)
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/02/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 58120c05e4ee0c3310a5da75377cd941aa289de7
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 46820f1dd17d3393afa7c70ac5beaca1af98ffef
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114453066"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123477544"
 ---
 # <a name="blob-snapshots"></a>Blobmomentaufnahmen
 
@@ -156,7 +156,20 @@ In der folgenden Tabelle wird das Abrechnungsverhalten für ein vorläufig gelö
 | Wenn Sie ein Basisblob überschreiben, dessen Dienstebene explizit festgelegt wurde: | Wird Folgendes in Rechnung gestellt: |
 |-|-|
 | Vorläufiges Löschen und Versionsverwaltung wurden für das Blob aktiviert. | Alle vorhandenen Versionen mit ihrem vollständigen Inhalt – unabhängig von der Dienstebene |
-| Vorläufiges Löschen für das Blob wurde aktiviert, aber die Versionsverwaltung wurde deaktiviert. | Alle vorhandenen Momentaufnahmen mit vorläufigem Löschen mit ihrem vollständigen Inhalt – unabhängig von der Ebene |
+| Vorläufiges Löschen für das Blob wurde aktiviert, aber die Versionsverwaltung wurde deaktiviert. | Alle vorhandenen Momentaufnahmen mit vorläufigem Löschen mit ihrem vollständigen Inhalt – unabhängig von der Dienstebene |
+
+## <a name="feature-support"></a>Featureunterstützung
+
+In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf den Support hat. 
+
+| Speicherkontotyp                | Blob Storage (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) |![Ja](../media/icons/yes-icon.png)  <sup>2</sup>              | ![Nein](../media/icons/no-icon.png) | 
+| Premium-Blockblobs          | ![Ja](../media/icons/yes-icon.png) |![Ja](../media/icons/yes-icon.png)  <sup>2</sup>              | ![Nein](../media/icons/no-icon.png) |
+
+<sup>1</sup>    Für Data Lake Storage Gen2 und das NFS 3.0-Protokoll (Network File System) ist ein Speicherkonto mit aktiviertem hierarchischem Namespace erforderlich.
+
+<sup>2</sup>    Das Feature wird auf Vorschauebene unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

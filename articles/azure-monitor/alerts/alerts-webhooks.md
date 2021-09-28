@@ -4,18 +4,18 @@ description: Erfahren Sie, wie Sie Azure-Metrikwarnungen an andere, Azure-fremde
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 02/14/2021
-ms.openlocfilehash: 43cec44d2ff995d6bb96eb4bfb984bebe09195b0
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 09/06/2021
+ms.openlocfilehash: f85a08e67a51d3c0a66ac6d9bbf69de21d3c8275
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110797766"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123539171"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Aufrufen eines Webhooks mit einer klassischen Metrikwarnung in Azure Monitor
 
 > [!WARNING]
-> In diesem Artikel erfahren Sie, wie Sie ältere klassische Metrikwarnungen verwenden. Azure Monitor unterstützt nun [neuere Metrikwarnungen, die nahezu in Echtzeit stattfinden, und eine neue Oberfläche für Warnungen](./alerts-overview.md). Klassische Warnungen werden für Benutzer der öffentlichen Cloud [eingestellt](./monitoring-classic-retirement.md), sind jedoch bis zum **31. Mai 2021** weiterhin beschränkt im Einsatz. Klassische Warnungen für die Azure Government-Cloud und Azure China 21Vianet werden am **29. Februar 2024** eingestellt.
+> In diesem Artikel erfahren Sie, wie Sie ältere klassische Metrikwarnungen verwenden. Azure Monitor unterstützt nun [neuere Metrikwarnungen, die nahezu in Echtzeit stattfinden, und eine neue Oberfläche für Warnungen](./alerts-overview.md). Klassische Warnungen werden für Benutzer der öffentlichen Cloud [eingestellt](./monitoring-classic-retirement.md). Klassische Warnungen für die Azure Government-Cloud und Azure China 21Vianet werden am **29. Februar 2024** eingestellt.
 >
 
 Mithilfe von Webhooks können Benutzer eine Azure-Warnbenachrichtigung zur Nachbearbeitung oder Ausführung benutzerdefinierter Aktionen an andere Systeme weiterleiten. Sie können einen Webhook für eine Warnung verwenden, um sie an Dienste weiterzuleiten, die SMS-Nachrichten versenden, um Fehler zu protokollieren, um ein Team per Chat-/Messagingdienst zu benachrichtigen oder um verschiedene andere Aktionen auszuführen.

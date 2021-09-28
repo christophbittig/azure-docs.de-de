@@ -5,16 +5,16 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 06/22/2021
+ms.date: 09/01/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 6db488449ad54957ae71f9c53c1a26bda25c6db1
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 985f649d864e0fad250a5b2342b8cb96c049c0ec
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122965958"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123478354"
 ---
 # <a name="programmatically-create-azure-subscriptions-for-a-microsoft-partner-agreement-with-the-latest-apis"></a>Programmgesteuertes Erstellen von Azure-Abonnements für eine Microsoft Partner-Vereinbarung mit den neuesten APIs
 
@@ -387,11 +387,11 @@ Sie erhalten die Abonnement-ID (subscriptionId) als Teil der Befehlsantwort.
 
 ---
 
-## <a name="use-arm-template"></a>Verwenden einer ARM-Vorlage
+## <a name="use-arm-template-or-bicep"></a>Verwenden von ARM-Vorlagen oder Bicep
 
-Im vorherigen Abschnitt wurde gezeigt, wie Sie ein Abonnement mit PowerShell, der CLI oder der REST-API erstellen. Wenn Sie das Erstellen von Abonnements automatisieren müssen, verwenden Sie ggf. eine Azure Resource Manager-Vorlage (ARM-Vorlage).
+Im vorherigen Abschnitt wurde gezeigt, wie Sie ein Abonnement mit PowerShell, der CLI oder der REST-API erstellen. Wenn Sie das Erstellen von Abonnements automatisieren müssen, verwenden Sie ggf. eine Azure Resource Manager-Vorlage (ARM-Vorlage) oder eine [Bicep-Datei](../../azure-resource-manager/bicep/overview.md).
 
-Mit der folgenden Vorlage wird ein Abonnement erstellt. Geben Sie für `billingScope` die Kunden-ID an. Das Abonnement wird in der Stammverwaltungsgruppe erstellt. Nachdem Sie das Abonnement erstellt haben, können Sie es in eine andere Verwaltungsgruppe verschieben.
+Mit der folgenden ARM-Vorlage wird ein Abonnement erstellt. Geben Sie für `billingScope` die Kunden-ID an. Das Abonnement wird in der Stammverwaltungsgruppe erstellt. Nachdem Sie das Abonnement erstellt haben, können Sie es in eine andere Verwaltungsgruppe verschieben.
 
 ```json
 {
@@ -428,7 +428,29 @@ Mit der folgenden Vorlage wird ein Abonnement erstellt. Geben Sie für `billingS
 }
 ```
 
-Stellen Sie die Vorlage auf [Verwaltungsgruppenebene](../../azure-resource-manager/templates/deploy-to-management-group.md) bereit.
+Alternativ können Sie eine Bicep-Datei verwenden, um das Abonnement zu erstellen.
+
+```bicep
+targetScope = 'managementGroup'
+
+@description('Provide a name for the alias. This name will also be the display name of the subscription.')
+param subscriptionAliasName string
+
+@description('Provide the full resource ID of billing scope to use for subscription creation.')
+param billingScope string
+
+resource subscriptionAlias 'Microsoft.Subscription/aliases@2020-09-01' = {
+  scope: tenant()
+  name: subscriptionAliasName
+  properties: {
+    workload: 'Production'
+    displayName: subscriptionAliasName
+    billingScope: billingScope
+  }
+}
+```
+
+Stellen Sie die Vorlage auf [Verwaltungsgruppenebene](../../azure-resource-manager/templates/deploy-to-management-group.md) bereit. Die folgenden Beispiele zeigen die Bereitstellung der JSON-ARM-Vorlage, aber Sie können stattdessen auch eine Bicep-Datei bereitstellen.
 
 ### <a name="rest"></a>[REST](#tab/rest)
 
@@ -483,7 +505,7 @@ az deployment mg create \
 
 ---
 
-Verwenden Sie die folgende Vorlage, um ein Abonnement in eine neue Verwaltungsgruppe zu verschieben.
+Verwenden Sie die folgende ARM-Vorlage, um ein Abonnement in eine neue Verwaltungsgruppe zu verschieben.
 
 ```json
 {
@@ -514,6 +536,23 @@ Verwenden Sie die folgende Vorlage, um ein Abonnement in eine neue Verwaltungsgr
         }
     ],
     "outputs": {}
+}
+```
+
+Verwenden Sie alternativ die folgende Bicep-Datei.
+
+```bicep
+targetScope = 'managementGroup'
+
+@description('Provide the ID of the management group that you want to move the subscription to.')
+param targetMgId string
+
+@description('Provide the ID of the existing subscription to move.')
+param subscriptionId string
+
+resource subToMG 'Microsoft.Management/managementGroups/subscriptions@2020-05-01' = {
+  scope: tenant()
+  name: '${targetMgId}/${subscriptionId}'
 }
 ```
 

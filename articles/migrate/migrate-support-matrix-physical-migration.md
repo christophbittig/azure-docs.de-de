@@ -6,12 +6,12 @@ ms.author: rahugup
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: 8897e6da3b3d70f9b7d0434dade86e4f2ceb9c50
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 696db5ef934dd0aca5a7485e7d40bf85d0cd8cb4
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094422"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123473296"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>Unterstützungsmatrix für die Migration physischer Server
 
@@ -59,6 +59,7 @@ Die Tabelle enthält eine Übersicht über die Unterstützung für physische Ser
 **Multipfad-E/A** | Wird nicht unterstützt.
 **Kombinierte Netzwerkadapter** | Wird nicht unterstützt.
 **IPv6** | Wird nicht unterstützt.
+**PV-Treiber/XenServer-Tools** | Wird nicht unterstützt.
 
 
 

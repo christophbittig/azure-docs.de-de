@@ -10,16 +10,16 @@ ms.date: 10/27/2020
 ms.author: cynthn
 ms.reviewer: olayemio
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c747a62307f7f08892f3609f410a40875666bd33
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: fd6a1cf2cae56bf2d10fe4075caed019e2e72b7e
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122687714"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123452247"
 ---
 # <a name="export-an-image-version-to-a-managed-disk"></a>Exportieren einer Imageversion auf einen verwalteten Datenträger
 
-**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Sie können den Betriebssystemdatenträger oder einen einzelnen Datenträger aus einer Imageversion als verwalteten Datenträger aus einer Imageversion exportieren, die in einem Katalog mit freigegebenen Images gespeichert ist.
 
@@ -120,6 +120,6 @@ New-AzDisk -Disk $diskConfig `
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie können auch mithilfe von [Azure CLI](image-version-managed-image-cli.md) oder [PowerShell](image-version-managed-image-powershell.md) eine Imageversion aus einem verwalteten Datenträger erstellen.
+Erstellen Sie eine [Imageversion](image-version.md) aus einem verwalteten Datenträger.
 
 

@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: f23194d46ab8305fa033efe9b9dea8f7a2a69877
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 5111092a804845c829cb44f4be9e123b8c9dcca6
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110477132"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536759"
 ---
 # <a name="data-loading-strategies-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Strategien zum Laden von Daten für einen dedizierten SQL-Pool in Azure Synapse Analytics
 
@@ -171,4 +171,4 @@ Viele unserer Partner stellen Ladelösungen bereit. Weitere Informationen finden
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine Anleitung zum Laden finden Sie unter [Guidance for loading data into Azure SQL Data Warehouse](guidance-for-loading-data.md) (Anleitung zum Laden von Daten in Azure SQL Data Warehouse).
+Anleitungen zum Laden finden Sie unter [Bewährte Methoden für das Laden von Daten.](../sql/data-loading-best-practices.md)

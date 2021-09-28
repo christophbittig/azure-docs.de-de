@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/06/2021
 ms.author: mlearned
 ms.custom: include file
-ms.openlocfilehash: d9566564c168e37477d8a0a8238c93dfb8be054d
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 928c4669ec7b1a04874f760cc14234cfa874e99a
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122336154"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123437890"
 ---
 | Resource                                                                                                           | Begrenzung                                                                                                                                                                                                       |
 | ------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -27,8 +27,12 @@ ms.locfileid: "122336154"
 
 <sup>1</sup>Das OSM-Add-On für AKS befindet sich in der Vorschauphase und wird noch weiter optimiert, bevor es allgemein verfügbar wird. Während der Vorschauphase wird empfohlen, die angezeigten Grenzwerte nicht zu überschreiten.<br />
 
-> [!IMPORTANT]
-> Kunden wird empfohlen, die SLA-Ebene „Uptime“ für Produktions- und Leistungs-/Auslastungstestworkloads zu aktivieren. Die SLA-Ebene „Uptime“ ermöglicht die automatische Skalierung der Kubernetes-Steuerungsebene und ist erforderlich, um Cluster mit Produktionsworkloads innerhalb der [Uptime-SLA](../articles/aks/uptime-sla.md) zu unterstützen.
+<br />
+
+| Grenzwerte der Kubernetes-Steuerungsebene                                                                                                                                                                                                     |
+| ------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Kostenpflichtiger Tarif                                                                                  | Automatisches Aufskalieren basierend auf der Last                                                                                                                                                                                                        |
+| Free-Tarif                       | Eingeschränkte Ressourcen mit einem [Grenzwert von ](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/) 50 Mutierungs- und 100 schreibgeschützten Aufrufen von In-Flight-Anforderungen                                                                                                                                                                                                         |
 
 <!-- LINKS - Internal -->
 

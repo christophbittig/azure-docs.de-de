@@ -5,12 +5,12 @@ description: Erfahren Sie mehr über Standardkontingente, eingeschränkte SKU-Gr
 services: container-service
 ms.topic: conceptual
 ms.date: 03/25/2021
-ms.openlocfilehash: ea32c0e58894fe57a51cd22fccce8b2fb2fb0489
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 6e965bd958b23598f7b11dcf9a12dafb33f26680
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113762306"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123437891"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Kontingente, Größeneinschränkungen für virtuelle Computer und regionale Verfügbarkeit in Azure Kubernetes Service (AKS)
 
@@ -30,6 +30,10 @@ Alle anderen Netzwerk-, Compute- und Speichereinschränkungen gelten für die be
 > Wenn Sie für einen AKS-Cluster ein Upgrade vornehmen, werden vorübergehend zusätzliche Ressourcen genutzt. Diese Ressourcen umfassen verfügbare IP-Adressen in einem Subnetz eines virtuellen Netzwerks oder ein vCPU-Kontingent für virtuelle Computer. 
 >
 > Für Windows Server-Container können Sie einen Upgradevorgang ausführen, um die neuesten Knotenupdates anzuwenden. Wenn Sie nicht über den verfügbaren IP-Adressraum oder das vCPU-Kontingent verfügen, um diese temporären Ressourcen zu verarbeiten, schlägt der Clusterupgradeprozess fehl. Weitere Informationen zum Upgradevorgang eines Windows Server-Knotens finden Sie unter [Durchführen eines Upgrades für einen Knotenpool in AKS][nodepool-upgrade].
+
+## <a name="supported-vm-sizes"></a>Unterstützte VM-Größen
+
+Die Liste der unterstützten VM-Größen in AKS wird mit der Veröffentlichung neuer VM-SKUs in Azure weiterentwickelt. Befolgen Sie die [AKS-Versionshinweise](https://github.com/Azure/AKS/releases), um über neue unterstützte SKUs auf dem Laufenden zu bleiben.
 
 ## <a name="restricted-vm-sizes"></a>Eingeschränkte VM-Größen
 

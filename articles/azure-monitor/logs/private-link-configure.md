@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 08/01/2021
-ms.openlocfilehash: cdbfd69da09bb3f55f0cdf87bb545e2c6bb40a79
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 936a8393f21d71cfb2fd1dd4cd2c249f0d13689c
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339101"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123432574"
 ---
 # <a name="configure-your-private-link"></a>Konfigurieren von Private Link
 Zum Konfigurieren von Private Link sind einige Schritte erforderlich: 
@@ -20,9 +20,10 @@ Zum Konfigurieren von Private Link sind einige Schritte erforderlich:
 
 Im vorliegenden Artikel wird erläutert, wie Sie diese Schritte über das Azure-Portal ausführen, und es wird eine ARM-Beispielvorlage (Azure Resource Manager) zum Automatisieren des Verfahrens bereitgestellt. 
 
-## <a name="create-a-private-link-connection"></a>Erstellen einer Private Link-Verbindung
+## <a name="create-a-private-link-connection-through-the-azure-portal"></a>Herstellen einer Private Link-Verbindung über das Azure-Portal
+In diesem Abschnitt wird ausführlich das Einrichten eines Private Link zum Azure-Portal beschrieben. Weitere Informationen finden Sie unter [Verwenden von APIs und Befehlszeile](#use-apis-and-command-line) zum Erstellen und Verwalten eines Private Link über die Befehlszeile oder eine Azure Resource Manager Vorlage (ARM-Vorlage).
 
-Erstellen Sie als Erstes eine Ressource für einen Azure Monitor Private Link-Bereich.
+### <a name="create-an-azure-monitor-private-link-scope"></a>Erstellen eines Azure Monitor Private Link-Bereichs
 
 1. Wechseln Sie im Azure-Portal zu **Ressource erstellen**, und suchen Sie nach **Azure Monitor Private Link-Bereich**.
 
@@ -98,7 +99,7 @@ Bisher wurde auf die Konfiguration Ihres Netzwerks eingegangen, aber Sie müssen
 
 
 > [!NOTE]
-> Ab dem 16. August 2021 erfolgt eine strikte Erzwingung der Netzwerkisolation. Ressourcen, die so konfiguriert sind, dass sie Abfragen aus öffentlichen Netzen blockieren, und die nicht über einen Azure Monitor-Private Link-Bereich (AMPLS) mit einem privaten Netzwerk verbunden sind, akzeptieren keinerlei Abfragen aus beliebigen Netzwerken.
+> Ab September 2021 erfolgt eine strikte Erzwingung der Netzwerkisolation. Ressourcen, die so konfiguriert sind, dass sie Abfragen aus öffentlichen Netzen blockieren, und die nicht über einen Azure Monitor-Private Link-Bereich (AMPLS) mit einem privaten Netzwerk verbunden sind, akzeptieren keinerlei Abfragen aus beliebigen Netzwerken.
 
 ![Log Analytics-Netzwerkisolation](./media/private-link-security/ampls-network-isolation.png)
 
@@ -115,81 +116,51 @@ Wenn Sie **Zugriff auf öffentliche Netzwerke für Erfassung zulassen** auf **Ne
 Wenn Sie **Zugriff auf öffentliche Netzwerke für Abfragen zulassen** auf **Nein** festlegen, können Clients (Computer, SDKs usw.) außerhalb der verbundenen Bereiche keine Daten in der Ressource abfragen. Dies schließt den Zugriff auf Protokolle, Metriken, den Livemetrikstream sowie darauf aufsetzende Funktionalität ein, wie z. B. Arbeitsmappen, Dashboards, auf Abfrage-APIs basierende Clientfunktionen, Erkenntnisse im Azure-Portal und vieles mehr. Funktionen außerhalb des Azure-Portals und solche, die Log Analytics-Daten abfragen, müssen auch innerhalb des über Private Link verbundenen virtuellen Netzwerks ausgeführt werden.
 
 
-### <a name="exceptions"></a>Ausnahmen
-
-#### <a name="diagnostic-logs"></a>Diagnoseprotokolle
-Protokolle und Metriken, die über [Diagnoseeinstellungen](../essentials/diagnostic-settings.md) in einen Arbeitsbereich hochgeladen werden, werden über einen sicheren privaten Microsoft-Kanal geleitet und nicht durch diese Einstellungen gesteuert.
-
-#### <a name="azure-resource-manager"></a>Azure Resource Manager
-Die Einschränkung des Zugriffs in der oben beschriebenen Weise gilt für Daten in der Ressource. Konfigurationsänderungen – einschließlich Aktivierung und Deaktivierung dieser Zugriffseinstellungen – werden jedoch von Azure Resource Manager verwaltet. Zum Steuern dieser Einstellungen sollten Sie den Zugriff auf Ressourcen mithilfe geeigneter Rollen, Berechtigungen, Netzwerkkontrollen und Überwachungsfunktionen einschränken. Weitere Informationen finden Sie unter [Rollen, Berechtigungen und Sicherheit in Azure Monitor](../roles-permissions-security.md).
-
-Darüber hinaus fragen bestimmte Funktion (beispielsweise der LogicApp-Connector, die Lösung zur Updateverwaltung und das Blatt „Arbeitsbereichszusammenfassung“ im Portal, auf dem das Lösungsdashboard angezeigt wird) Daten über Azure Resource Manager ab und können daher nur dann Daten abfragen, wenn Private Link-Einstellungen auch auf Resource Manager angewendet werden.
-
-
-## <a name="review-and-validate-your-private-link-setup"></a>Überprüfen und Validieren Ihres Private Link-Setups
-
-### <a name="reviewing-your-endpoints-dns-settings"></a>Überprüfen der DNS-Einstellungen Ihres Endpunkts
-Für den von Ihnen erstellten privaten Endpunkt sollten nun fünf DNS-Zonen konfiguriert sein:
-
-* privatelink-monitor-azure-com
-* privatelink-oms-opinsights-azure-com
-* privatelink-ods-opinsights-azure-com
-* privatelink-agentsvc-azure-automation-net
-* privatelink-blob-core-windows-net
-
-> [!NOTE]
-> Jede dieser Zonen ordnet bestimmte Azure Monitor-Endpunkte privaten IP-Adressen aus dem IP-Adresspool des VNET zu. Die IP-Adressen, die in den folgenden Abbildungen gezeigt werden, sind lediglich Beispiele. Ihre Konfiguration sollte stattdessen private IP-Adressen aus Ihrem eigenen Netzwerk enthalten.
-
-#### <a name="privatelink-monitor-azure-com"></a>Privatelink-monitor-azure-com
-Diese Zone deckt die globalen Endpunkte ab, die von Azure Monitor verwendet werden. Das bedeutet, dass diese Endpunkte Anforderungen verarbeiten, bei denen alle Ressourcen und nicht nur eine bestimmte Ressource berücksichtigt werden. Dieser Zone sollten folgende Endpunkte zugeordnet sein:
-* `in.ai`: Application Insights-Erfassungsendpunkt (globaler und regionaler Eintrag)
-* `api`: Application Insights- und Log Analytics-API-Endpunkt
-* `live`: Application Insights-Livemetrikendpunkt
-* `profiler`: Application Insights-Profiler-Endpunkt
-* `snapshot`: Application Insights-Momentaufnahmenendpunkt [ ![ Screenshot der privaten DNS-Zone „monitor-azure-com“](./media/private-link-security/dns-zone-privatelink-monitor-azure-com.png)](./media/private-link-security/dns-zone-privatelink-monitor-azure-com-expanded.png#lightbox)
-
-#### <a name="privatelink-oms-opinsights-azure-com"></a>privatelink-oms-opinsights-azure-com
-Diese Zone deckt die arbeitsbereichsspezifische Zuordnung zu OMS-Endpunkten ab. Es sollte ein Eintrag für jeden Arbeitsbereich angezeigt werden, der mit dem mit diesem privaten Endpunkt verbundenen AMPLS verknüpft ist.
-[![Screenshot der privaten DNS-Zone „oms-opinsights-azure-com“](./media/private-link-security/dns-zone-privatelink-oms-opinsights-azure-com.png)](./media/private-link-security/dns-zone-privatelink-oms-opinsights-azure-com-expanded.png#lightbox)
-
-#### <a name="privatelink-ods-opinsights-azure-com"></a>privatelink-ods-opinsights-azure-com
-Diese Zone deckt die arbeitsbereichsspezifische Zuordnung zu ODS-Endpunkten ab – dem Erfassungsendpunkt von Log Analytics. Es sollte ein Eintrag für jeden Arbeitsbereich angezeigt werden, der mit dem mit diesem privaten Endpunkt verbundenen AMPLS verknüpft ist.
-[![Screenshot der privaten DNS-Zone „ods-opinsights-azure-com“](./media/private-link-security/dns-zone-privatelink-ods-opinsights-azure-com.png)](./media/private-link-security/dns-zone-privatelink-ods-opinsights-azure-com-expanded.png#lightbox)
-
-#### <a name="privatelink-agentsvc-azure-automation-net"></a>privatelink-agentsvc-azure-automation-net
-Diese Zone deckt die arbeitsbereichsspezifische Zuordnung zu den Automatisierungsendpunkten des Agent-Diensts ab. Es sollte ein Eintrag für jeden Arbeitsbereich angezeigt werden, der mit dem mit diesem privaten Endpunkt verbundenen AMPLS verknüpft ist.
-[![Screenshot der privaten DNS-Zone „agentsvc-azure-automation-net“](./media/private-link-security/dns-zone-privatelink-agentsvc-azure-automation-net.png)](./media/private-link-security/dns-zone-privatelink-agentsvc-azure-automation-net-expanded.png#lightbox)
-
-#### <a name="privatelink-blob-core-windows-net"></a>privatelink-blob-core-windows-net
-Diese Zone konfiguriert die Konnektivität mit dem Speicherkonto der Lösungspakete der globalen Agents. Dadurch können Agents neue oder aktualisierte Lösungspakete (auch Management Packs genannt) herunterladen. Für die Behandlung von Log Analytics-Agents ist unabhängig von der Anzahl der verwendeten Arbeitsbereiche nur ein einzelner Eintrag erforderlich.
-[![Screenshot: Private DNS-Zone „blob-core-windows-net“](./media/private-link-security/dns-zone-privatelink-blob-core-windows-net.png)](./media/private-link-security/dns-zone-privatelink-blob-core-windows-net-expanded.png#lightbox)
-> [!NOTE]
-> Dieser Eintrag wird nur den Private Links-Setups hinzugefügt, die am oder nach dem 19. April 2021 (oder ab Juni 2021 in Azure Sovereign Clouds) erstellt wurden.
-
-
-### <a name="validating-you-are-communicating-over-a-private-link"></a>Überprüfen der Kommunikation über Private Link
-* Um zu überprüfen, ob Ihre Anforderungen nun über den privaten Endpunkt gesendet werden, können Sie diese mit einem Tool für die Netzwerknachverfolgung oder sogar mit Ihrem Browser überprüfen. Wenn Sie beispielsweise versuchen, Ihren Arbeitsbereich oder Ihre Anwendung abzufragen, stellen Sie sicher, dass die Anforderung an die private IP-Adresse gesendet wird, die dem API-Endpunkt zugeordnet ist (in diesem Beispiel *172.17.0.9*).
-
-    Hinweis: In einigen Browsern können andere DNS-Einstellungen verwendet werden (siehe [Browser-DNS-Einstellungen](./private-link-design.md#browser-dns-settings)). Stellen Sie sicher, dass Ihre DNS-Einstellungen gültig sind.
-
-* Um sicherzustellen, dass Ihr Arbeitsbereich oder Ihre Komponente keine Anforderungen von öffentlichen Netzwerken (die nicht über AMPLS verbunden sind) empfängt, legen Sie die Ressourcenflags für öffentliche Erfassung und Abfragen auf *Nein* fest, wie unter [Konfigurieren des Zugriffs auf Ihre Ressourcen](#configure-access-to-your-resources) erläutert.
-
-* Verwenden Sie von einem Client in Ihrem geschützten Netzwerk aus `nslookup` für einen in Ihren DNS-Zonen aufgelisteten Endpunkt. Dieser sollte von Ihrem DNS-Server in die zugeordnete private IP-Adresse, anstelle der standardmäßig verwendeten öffentlichen IP-Adresse aufgelöst werden.
-
-
 ## <a name="use-apis-and-command-line"></a>Verwenden von APIs und der Befehlszeile
 
 Sie können den oben beschriebenen Prozess mithilfe von Azure Resource Manager-Vorlagen, REST- und Befehlszeilenschnittstellen automatisieren.
 
+### <a name="create-and-manage-azure-monitor-private-link-scopes-ampls"></a>Erstellen und Verwalten von Azure Monitor Private Link-Bereichen (AMPLS)
 Zum Erstellen und Verwalten von Private Link-Bereichen verwenden Sie die [REST-API](/rest/api/monitor/privatelinkscopes(preview)/private%20link%20scoped%20resources%20(preview)) oder die [Azure CLI (az monitor private-link-scope)](/cli/azure/monitor/private-link-scope).
 
-Verwenden Sie zum Verwalten des Netzwerkzugriffs für Ihren Arbeitsbereich oder Ihre Komponente die Flags `[--ingestion-access {Disabled, Enabled}]` und `[--query-access {Disabled, Enabled}]` in [Log Analytics-Arbeitsbereichen](/cli/azure/monitor/log-analytics/workspace) oder [Application Insights-Komponenten](/cli/azure/ext/application-insights/monitor/app-insights/component).
+#### <a name="create-ampls-with-open-access-modes---cli-example"></a>Erstellen von AMPLS mit Open-Zugriffsmodi: CLI-Beispiel
+Der folgende CLI-Befehl erstellt eine neue AMPLS-Ressource namens „my-scope“, bei der sowohl der Abfrage- als auch der Erfassungszugriffsmodus auf Open festgelegt ist.
+```
+az resource create -g "my-resource-group" --name "my-scope" --api-version "2021-07-01-preview" --resource-type Microsoft.Insights/privateLinkScopes --properties "{\"accessModeSettings\":{\"queryAccessMode\":\"Open\", \"ingestionAccessMode\":\"Open\"}}"
+```
 
-### <a name="example-azure-resource-manager-template-arm-template"></a>Azure Resource Manager-Beispielvorlage (ARM-Vorlage)
+#### <a name="create-ampls-with-mixed-access-modes---powershell-example"></a>Erstellen von AMPLS mit gemischten Zugriffsmodi: PowerShell-Beispiel
+Das folgende PowerShell-Skript erstellt eine neue AMPLS-Ressource mit dem Namen „my-scope“, bei der der Abfragezugriffsmodus geöffnet ist, aber die Erfassungszugriffsmodi auf PrivateOnly festgelegt sind (was bedeutet, dass die Erfassung nur für Ressourcen in der AMPLS gestattet ist).
+
+```
+# scope details
+$scopeSubscriptionId = "ab1800bd-ceac-48cd-...-..."
+$scopeResourceGroup = "my-resource-group"
+$scopeName = "my-scope"
+$scopeProperties = @{
+    accessModeSettings = @{
+        queryAccessMode     = "Open"; 
+        ingestionAccessMode = "PrivateOnly"
+    } 
+}
+
+# login
+Connect-AzAccount
+
+# select subscription
+Select-AzSubscription -SubscriptionId $scopeSubscriptionId
+
+# create private link scope resource
+$scope = New-AzResource -Location "Global" -Properties $scopeProperties -ResourceName $scopeName -ResourceType "Microsoft.Insights/privateLinkScopes" -ResourceGroupName $scopeResourceGroup -ApiVersion "2021-07-01-preview" -Force
+```
+
+#### <a name="create-ampls---azure-resource-manager-template-arm-template"></a>Erstellen von AMPLS: Azure Resource Manager-Beispielvorlage (ARM-Vorlage)
 Mit der nachstehenden Azure Resource Manager-Vorlage werden folgende Aufgaben ausgeführt:
 * Erstellen eines Private Link-Bereichs (AMPLS) mit dem Namen „my-scope“
 * Erstellen eines Log Analytics-Arbeitsbereichs mit dem Namen „my-workspace“
 * Hinzufügen einer bereichsspezifischen Ressource für den AMPLS „my-scope“ mit dem Namen „my-workspace-connection“
+> [!NOTE]
+> Die folgende ARM-Vorlage verwendet eine alte API-Version, die das Festlegen der AMPLS-Zugriffsmodi nicht unterstützt. Wenn Sie die folgende Vorlage verwenden, wird die resultierende AMPLS mit QueryAccessMode="Open" und IngestionAccessMode="PrivateOnly" festgelegt. Dies bedeutet, dass Abfragen sowohl für Ressourcen in als auch aus der AMPLS ausgeführt werden können, aber die Erfassung auf Private Link-Ressourcen beschränkt ist.
 
 ```
 {
@@ -243,7 +214,88 @@ Mit der nachstehenden Azure Resource Manager-Vorlage werden folgende Aufgaben au
 }
 ```
 
+### <a name="set-ampls-access-modes---powershell-example"></a>Festlegen von AMPLS-Zugriffsmodi – PowerShell-Beispiel
+Zum Festlegen der Zugriffsmodusflags für Ihre AMPLS können Sie das folgende PowerShell-Skript verwenden. Das folgende Skript legt die Flags auf Open fest. Verwenden Sie den Wert „PrivateOnly“, um den privaten Modus zu verwenden.
+
+Es dauert ca. 10 Minuten, bis das AMPLS-Zugriffsmodiupdate wirksam wird.
+
+```
+# scope details
+$scopeSubscriptionId = "ab1800bd-ceac-48cd-...-..."
+$scopeResourceGroup = "my-resource-group-name"
+$scopeName = "my-scope"
+
+# login
+Connect-AzAccount
+
+# select subscription
+Select-AzSubscription -SubscriptionId $scopeSubscriptionId
+
+# get private link scope resource
+$scope = Get-AzResource -ResourceType Microsoft.Insights/privateLinkScopes -ResourceGroupName $scopeResourceGroup -ResourceName $scopeName -ApiVersion "2021-07-01-preview"
+
+# set access mode settings
+$scope.Properties.AccessModeSettings.QueryAccessMode = "Open";
+$scope.Properties.AccessModeSettings.IngestionAccessMode = "Open";
+$scope | Set-AzResource -Force
+```
+
+### <a name="set-resource-access-flags"></a>Festlegen von Ressourcenzugriffsflags
+Verwenden Sie zum Verwalten der Zugriffsflags für Ihren Arbeitsbereich oder Ihre Komponente die Flags `[--ingestion-access {Disabled, Enabled}]` und `[--query-access {Disabled, Enabled}]` in [Log Analytics-Arbeitsbereichen](/cli/azure/monitor/log-analytics/workspace) oder [Application Insights-Komponenten](/cli/azure/ext/application-insights/monitor/app-insights/component).
+
+
+## <a name="review-and-validate-your-private-link-setup"></a>Überprüfen und Validieren Ihres Private Link-Setups
+
+### <a name="reviewing-your-endpoints-dns-settings"></a>Überprüfen der DNS-Einstellungen Ihres Endpunkts
+Für den von Ihnen erstellten privaten Endpunkt sollten nun fünf DNS-Zonen konfiguriert sein:
+
+* privatelink-monitor-azure-com
+* privatelink-oms-opinsights-azure-com
+* privatelink-ods-opinsights-azure-com
+* privatelink-agentsvc-azure-automation-net
+* privatelink-blob-core-windows-net
+
+> [!NOTE]
+> Jede dieser Zonen ordnet bestimmte Azure Monitor-Endpunkte privaten IP-Adressen aus dem IP-Adresspool des VNET zu. Die IP-Adressen, die in den folgenden Abbildungen gezeigt werden, sind lediglich Beispiele. Ihre Konfiguration sollte stattdessen private IP-Adressen aus Ihrem eigenen Netzwerk enthalten.
+
+#### <a name="privatelink-monitor-azure-com"></a>Privatelink-monitor-azure-com
+Diese Zone deckt die globalen Endpunkte ab, die von Azure Monitor verwendet werden. Das bedeutet, dass diese Endpunkte Anforderungen verarbeiten, bei denen alle Ressourcen und nicht nur eine bestimmte Ressource berücksichtigt werden. Dieser Zone sollten folgende Endpunkte zugeordnet sein:
+* `in.ai`: Application Insights-Erfassungsendpunkt (globaler und regionaler Eintrag)
+* `api`: Application Insights- und Log Analytics-API-Endpunkt
+* `live`: Application Insights-Livemetrikendpunkt
+* `profiler`: Application Insights-Profiler-Endpunkt
+* `snapshot`: Application Insights-Momentaufnahmenendpunkt [ ![ Screenshot der privaten DNS-Zone „monitor-azure-com“](./media/private-link-security/dns-zone-privatelink-monitor-azure-com.png)](./media/private-link-security/dns-zone-privatelink-monitor-azure-com-expanded.png#lightbox)
+
+#### <a name="privatelink-oms-opinsights-azure-com"></a>privatelink-oms-opinsights-azure-com
+Diese Zone deckt die arbeitsbereichsspezifische Zuordnung zu OMS-Endpunkten ab. Es sollte ein Eintrag für jeden Arbeitsbereich angezeigt werden, der mit dem mit diesem privaten Endpunkt verbundenen AMPLS verknüpft ist.
+[![Screenshot der privaten DNS-Zone „oms-opinsights-azure-com“](./media/private-link-security/dns-zone-privatelink-oms-opinsights-azure-com.png)](./media/private-link-security/dns-zone-privatelink-oms-opinsights-azure-com-expanded.png#lightbox)
+
+#### <a name="privatelink-ods-opinsights-azure-com"></a>privatelink-ods-opinsights-azure-com
+Diese Zone deckt die arbeitsbereichsspezifische Zuordnung zu ODS-Endpunkten ab – dem Erfassungsendpunkt von Log Analytics. Es sollte ein Eintrag für jeden Arbeitsbereich angezeigt werden, der mit dem mit diesem privaten Endpunkt verbundenen AMPLS verknüpft ist.
+[![Screenshot der privaten DNS-Zone „ods-opinsights-azure-com“](./media/private-link-security/dns-zone-privatelink-ods-opinsights-azure-com.png)](./media/private-link-security/dns-zone-privatelink-ods-opinsights-azure-com-expanded.png#lightbox)
+
+#### <a name="privatelink-agentsvc-azure-automation-net"></a>privatelink-agentsvc-azure-automation-net
+Diese Zone deckt die arbeitsbereichsspezifische Zuordnung zu den Automatisierungsendpunkten des Agent-Diensts ab. Es sollte ein Eintrag für jeden Arbeitsbereich angezeigt werden, der mit dem mit diesem privaten Endpunkt verbundenen AMPLS verknüpft ist.
+[![Screenshot der privaten DNS-Zone „agentsvc-azure-automation-net“](./media/private-link-security/dns-zone-privatelink-agentsvc-azure-automation-net.png)](./media/private-link-security/dns-zone-privatelink-agentsvc-azure-automation-net-expanded.png#lightbox)
+
+#### <a name="privatelink-blob-core-windows-net"></a>privatelink-blob-core-windows-net
+Diese Zone konfiguriert die Konnektivität mit dem Speicherkonto der Lösungspakete der globalen Agents. Dadurch können Agents neue oder aktualisierte Lösungspakete (auch Management Packs genannt) herunterladen. Für die Behandlung von Log Analytics-Agents ist unabhängig von der Anzahl der verwendeten Arbeitsbereiche nur ein einzelner Eintrag erforderlich.
+[![Screenshot: Private DNS-Zone „blob-core-windows-net“](./media/private-link-security/dns-zone-privatelink-blob-core-windows-net.png)](./media/private-link-security/dns-zone-privatelink-blob-core-windows-net-expanded.png#lightbox)
+> [!NOTE]
+> Dieser Eintrag wird nur den Private Links-Setups hinzugefügt, die am oder nach dem 19. April 2021 (oder ab Juni 2021 in Azure Sovereign Clouds) erstellt wurden.
+
+
+### <a name="validating-you-are-communicating-over-a-private-link"></a>Überprüfen der Kommunikation über Private Link
+* Um zu überprüfen, ob Ihre Anforderungen nun über den privaten Endpunkt gesendet werden, können Sie diese mit einem Tool für die Netzwerknachverfolgung oder sogar mit Ihrem Browser überprüfen. Wenn Sie beispielsweise versuchen, Ihren Arbeitsbereich oder Ihre Anwendung abzufragen, stellen Sie sicher, dass die Anforderung an die private IP-Adresse gesendet wird, die dem API-Endpunkt zugeordnet ist (in diesem Beispiel *172.17.0.9*).
+
+    Hinweis: In einigen Browsern können andere DNS-Einstellungen verwendet werden (siehe [Browser-DNS-Einstellungen](./private-link-design.md#browser-dns-settings)). Stellen Sie sicher, dass Ihre DNS-Einstellungen gültig sind.
+
+* Um sicherzustellen, dass Ihr Arbeitsbereich oder Ihre Komponente keine Anforderungen von öffentlichen Netzwerken (die nicht über AMPLS verbunden sind) empfängt, legen Sie die Ressourcenflags für öffentliche Erfassung und Abfragen auf *Nein* fest, wie unter [Konfigurieren des Zugriffs auf Ihre Ressourcen](#configure-access-to-your-resources) erläutert.
+
+* Verwenden Sie von einem Client in Ihrem geschützten Netzwerk aus `nslookup` für einen in Ihren DNS-Zonen aufgelisteten Endpunkt. Dieser sollte von Ihrem DNS-Server in die zugeordnete private IP-Adresse, anstelle der standardmäßig verwendeten öffentlichen IP-Adresse aufgelöst werden.
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über [privaten Speicher](private-storage.md).
-- Weitere Informationen zu [Private Link für Automation](../../automation/how-to/private-link-security.md)
+- Erfahren Sie mehr über [Private Link für Automation](../../automation/how-to/private-link-security.md).

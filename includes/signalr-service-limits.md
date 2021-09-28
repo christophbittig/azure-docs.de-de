@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/11/2020
 ms.author: zhshang
-ms.openlocfilehash: 328a3d088ea21ec55f5e06cfbfc307fca2b03afa
-ms.sourcegitcommit: 75ad40bab1b3f90bb2ea2a489f8875d4b2da57e4
+ms.openlocfilehash: f5b197448529e953d5d7d188b00a88d60e87e900
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2021
-ms.locfileid: "113644370"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123453910"
 ---
 | Resource | Standardlimit | Maximales Limit | 
 | --- | --- | --- |
@@ -36,3 +36,7 @@ ms.locfileid: "113644370"
 Öffnen Sie ein Supportticket, um eine Aktualisierung der Standardgrenzwerte Ihres Abonnements anzufordern.
 
 Weitere Informationen zum Zählen von Verbindungen und Nachrichten finden Sie unter [Nachrichten und Verbindungen in Azure SignalR Service](../articles/azure-signalr/signalr-concept-messages-and-connections.md).
+
+Wenn Ihre Anforderungen die Grenzwerte überschreiten, wechseln Sie vom Free-Tarif zur Standardebene und fügen Sie Einheiten hinzu. Weitere Informationen finden Sie unter [Skalieren einer Azure SignalR Service-Instanz](../articles/azure-signalr/signalr-howto-scale-signalr.md). 
+
+Wenn Ihre Anforderungen die Grenzwerte einer einzelnen Instanz überschreiten, fügen Sie Instanzen hinzu. Weitere Informationen finden Sie unter [Skalieren des SignalR Service mit mehreren Instanzen](../articles/azure-signalr/signalr-howto-scale-multi-instances.md).
