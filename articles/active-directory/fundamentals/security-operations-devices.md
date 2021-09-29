@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9298c3c6f7d6c634ed5647a6473e0780cd82bf1d
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: c5d7adc35829e60f40c74f310023b2ea5a259cec
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113799100"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754301"
 ---
 # <a name="azure-active-directory-security-operations-for-devices"></a>Azure Active Directory-Sicherheitsvorgänge für Geräte
 
@@ -56,7 +56,7 @@ Zur Untersuchung und Überwachung werden folgende Protokolldateien verwendet:
 
 * [Anmeldeprotokolle](../reports-monitoring/concept-all-sign-ins.md)
 
-* [Microsoft 365-Überwachungsprotokolle](/microsoft-365/compliance/auditing-solutions-overview?view=o365-worldwide.md) 
+* [Microsoft 365-Überwachungsprotokolle](/microsoft-365/compliance/auditing-solutions-overview) 
 
 * [Azure Key Vault-Protokolle](../..//key-vault/general/logging.md?tabs=Vault)
 

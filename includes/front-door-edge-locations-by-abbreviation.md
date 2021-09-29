@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: frontdoor
 author: duongau
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2021
 ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: ded1479b6967d7cf3b9957e83b7bb38472ebcc0c
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 8dddf347cfa46b24e990365765e1587526fd084c
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110482369"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129095914"
 ---
 | Abkürzung | Standort | Region |
 | --- | --- | --- |
@@ -54,6 +54,7 @@ ms.locfileid: "110482369"
 | GVA | Genf, Schweiz | Schweiz, Norden, Europa |
 | HEL | Helsinki, Finnland | Europa, Westen |
 | HK  | Hongkong, Hongkong SAR | Asien, Osten |
+| HKB | Hongkong, Hongkong SAR | Asien, Osten |
 | HKG | Chai Wan, Hongkong SAR | Asien, Osten |
 | HNL | Honolulu, Hawaii, USA | USA, Westen, USA |
 | HOU | Houston, Texas, USA | USA, Mitte, USA |

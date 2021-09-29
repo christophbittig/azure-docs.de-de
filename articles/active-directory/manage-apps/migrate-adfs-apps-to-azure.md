@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 03/01/2021
 ms.author: davidmu
 ms.reviewer: alamaral
-ms.openlocfilehash: 6633d7a6ed7def1a2c3ee7f0262c16b106275bfa
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 420b1a0042dff8b643dc98f3b3f92e33be8c2d75
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355643"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124791762"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Verschieben der Anwendungsauthentifizierung von Active Directory-Verbunddiensten (AD FS) in Azure Active Directory
 
@@ -46,7 +46,7 @@ Das Migrieren Ihrer gesamten Anwendungsauthentifizierung zu Azure AD ist optimal
 
 Ihre Anwendungen können moderne oder ältere Protokolle für die Authentifizierung verwenden. Wenn Sie die Migration zu Azure AD planen, empfiehlt es sich, zunächst die Apps zu migrieren, die moderne Authentifizierungsprotokolle (SAML und Open ID Connect) verwenden. Diese Apps können für die Authentifizierung mit Azure AD entweder über einen integrierten Connector aus dem App-Katalog oder durch Registrieren der Anwendung in Azure AD neu konfiguriert werden. Apps, die ältere Protokolle verwenden, können mit Anwendungsproxys integriert werden.
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter
 
 * [Veröffentlichen von lokalen Apps für Remotebenutzer mit dem Azure AD-Anwendungsproxy](../app-proxy/what-is-application-proxy.md)
 * [Worum handelt es sich bei der Anwendungsverwaltung?](what-is-application-management.md)
@@ -413,7 +413,7 @@ Vergewissern Sie sich, dass das einmalige Anmelden je nach Konfiguration Ihrer A
 | :- | :- |
 | OAuth und OpenID Connect| Wählen Sie **Unternehmensanwendungen > Berechtigungen** aus, und stellen Sie sicher, dass Sie in den Benutzereinstellungen für Ihre App der Verwendung der Anwendung zugestimmt haben.|
 | SAML-basiertes SSO | Verwenden Sie die Schaltfläche [SAML-Einstellungen testen](debug-saml-sso-issues.md) unter **Einmaliges Anmelden**. |
-| Kennwortbasiertes einmaliges Anmelden |  Laden Sie die [My Apps Secure Sign](../user-help/my-apps-portal-end-user-access.md)[-](../user-help/my-apps-portal-end-user-access.md)[in-Erweiterung](../user-help/my-apps-portal-end-user-access.md) herunter, und installieren Sie diese. Mit dieser Erweiterung können Sie alle Cloud-Apps Ihrer Organisation starten, bei denen Sie einen SSO-Prozess verwenden müssen. |
+| Kennwortbasiertes einmaliges Anmelden |  Laden Sie die [My Apps Secure Sign](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)[-](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)[in-Erweiterung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510) herunter, und installieren Sie diese. Mit dieser Erweiterung können Sie alle Cloud-Apps Ihrer Organisation starten, bei denen Sie einen SSO-Prozess verwenden müssen. |
 | Anwendungsproxy | Stellen Sie sicher, dass Ihr Connector ausgeführt wird und der Anwendung zugewiesen ist. Im Leitfaden zum [Beheben von Problemen mit Anwendungsproxys und Fehlermeldungen](../app-proxy/application-proxy-troubleshoot.md) finden Sie weitere Unterstützung. |
 
 > [!NOTE]
