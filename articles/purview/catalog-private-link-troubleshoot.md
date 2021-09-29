@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/02/2021
-ms.openlocfilehash: 21d3b01dae84d164d72d574e204d4f1576e9d94d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 89627b97a5c2e8ae068db18583fab38aeb6fe5f6
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128593418"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434554"
 ---
 # <a name="troubleshooting-private-endpoint-configuration-for-purview-accounts"></a>Problembehandlung bei der Konfiguration privater Endpunkte für Purview-Konten
 
@@ -84,7 +84,7 @@ Dieser Leitfaden fasst bekannte Einschränkungen im Zusammenhang mit der Verwend
     TcpTestSucceeded : True
     ```
     
-5. Wenn Sie Ihr Azure Purview-Konto nach dem 18. August 2021 erstellt haben, stellen Sie sicher, dass Sie die neueste Version der selbstgehosteten Integration Runtime aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717) herunterladen und installieren.
+5. Wenn Sie Ihr Azure Purview-Konto nach dem 18. August 2021 erstellt haben, stellen Sie sicher, dass Sie die neueste Version der selbstgehosteten Integration Runtime aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717) herunterladen und installieren.
    
 6. Testen Sie die Netzwerkkonnektivität und Namensauflösung der selbstgehosteten Integration Runtime für den Purview-Endpunkt.
 
@@ -136,7 +136,7 @@ Dieser Leitfaden fasst bekannte Einschränkungen im Zusammenhang mit der Verwend
 
 9.  Wenn sich Datenquellen im lokalen Netzwerk befinden, überprüfen Sie Ihre DNS-Weiterleitungskonfiguration. Testen Sie die Namensauflösung innerhalb desselben Netzwerks, in dem sich Datenquellen befinden, für die selbstgehostete Integration Runtime, Azure Purview-Endpunkte und verwaltete Ressourcen. Es wird erwartet, dass über die DNS-Abfrage für jeden Endpunkt eine gültige private IP-Adresse abgerufen wird.
     
-    Weitere Informationen finden Sie in den Szenarien [Virtual Network-Workloads ohne benutzerdefinierten DNS-Server](../private-link/private-endpoint-dns.md#virtual-network-workloads-without-custom-dns-server) und [Lokale Workloads mit DNS-Weiterleitung](../private-link/private-endpoint-dns.md#on-premises-workloads-using-a-dns-forwarder) unter [DNS-Konfiguration für private Azure-Endpunkte](../private-link/private-endpoint-dns.md).
+    Weitere Informationen finden Sie in den Szenarios [Virtual Network-Workloads ohne benutzerdefinierten DNS-Server](../private-link/private-endpoint-dns.md#virtual-network-workloads-without-custom-dns-server) und [Lokale Workloads mit DNS-Weiterleitung](../private-link/private-endpoint-dns.md#on-premises-workloads-using-a-dns-forwarder) unter [DNS-Konfiguration für private Azure-Endpunkte](../private-link/private-endpoint-dns.md).
 
 10. Wenn Verwaltungscomputer und selbstgehostete Integration Runtime-VMs im lokalen Netzwerk bereitgestellt werden und Sie die DNS-Weiterleitung in Ihrer Umgebung eingerichtet haben, überprüfen Sie die DNS-Einstellungen und Netzwerkeinstellungen in Ihrer Umgebung. 
 
@@ -147,7 +147,7 @@ Dieser Leitfaden fasst bekannte Einschränkungen im Zusammenhang mit der Verwend
 ### <a name="issue"></a>Problem 
 Beim Durchführen einer Überprüfung wird möglicherweise die folgende Fehlermeldung angezeigt:
 
-`Internal system error. Please contact support with correlationId:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx System Error, contact support.`
+  ```Internal system error. Please contact support with correlationId:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx System Error, contact support.```
 
 ### <a name="cause"></a>Ursache 
 Dies kann ein Hinweis auf Probleme im Zusammenhang mit der Konnektivität oder Namensauflösung zwischen dem virtuellen Computer, auf dem die selbstgehostete Integration Runtime ausgeführt wird, und dem Speicherkonto oder Event Hub der verwalteten Azure Purview-Ressourcen sein.
@@ -159,7 +159,7 @@ Dies kann ein Hinweis auf Probleme im Zusammenhang mit der Konnektivität oder N
 ### <a name="issue"></a>Problem 
 Beim Durchführen einer neuen Überprüfung wird möglicherweise die folgende Fehlermeldung angezeigt:
 
-  `message: Unable to setup config overrides for this scan. Exception:'Type=Microsoft.WindowsAzure.Storage.StorageException,Message=The remote server returned an error: (404) Not Found.,Source=Microsoft.WindowsAzure.Storage,StackTrace= at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.EndExecuteAsync[T](IAsyncResult result)`
+  ```message: Unable to setup config overrides for this scan. Exception:'Type=Microsoft.WindowsAzure.Storage.StorageException,Message=The remote server returned an error: (404) Not Found.,Source=Microsoft.WindowsAzure.Storage,StackTrace= at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.EndExecuteAsync[T](IAsyncResult result)```
 
 ### <a name="cause"></a>Ursache 
 Dies kann ein Hinweis auf die Ausführung einer älteren Version der selbstgehosteten Integration Runtime sein. Wenn Sie Ihr Azure Purview-Konto nach dem 18. August 2021 erstellt haben, müssen Sie die selbstgehostete Integration Runtime-Version 5.9.7885.3 verwenden.
