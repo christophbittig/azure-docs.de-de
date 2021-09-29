@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 8159d83624cdd474d91030d5376a3db447beffe1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2a21e7628857eea002892c3395c3d8e426cb3ffa
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96008428"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124829059"
 ---
 # <a name="get-help-with-your-system"></a>Abrufen von Hilfe zu Ihrem System
 
@@ -57,4 +57,4 @@ Führen Sie diese Schritte aus, um sicherzustellen, dass Ihr Supportticket mit e
 
 ## <a name="request-a-quota-increase"></a>Anfordern einer Kontingenterhöhung
 
-Lesen Sie [Kontingent für den vFXT-Cluster](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster), um zu erfahren, welche Komponenten für die Bereitstellung von Avere vFXT für Azure erforderlich sind. Sie können [eine Kontingenterhöhung](../azure-portal/supportability/resource-manager-core-quotas-request.md) über das Azure-Portal anfordern.
+Lesen Sie [Kontingent für den vFXT-Cluster](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster), um zu erfahren, welche Komponenten für die Bereitstellung von Avere vFXT für Azure erforderlich sind. Sie können [eine Kontingenterhöhung](../azure-portal/supportability/regional-quota-requests.md) über das Azure-Portal anfordern.

@@ -1,14 +1,14 @@
 ---
 title: Blaupausenbeispiel „CMMC Level 3“
 description: Übersicht über das Blaupausenbeispiel „CMMC Level 3“ Dieses Blaupausenbeispiel unterstützt Kunden bei der Bewertung spezifischer Kontrollen.
-ms.date: 03/24/2021
+ms.date: 09/08/2021
 ms.topic: sample
-ms.openlocfilehash: df3dac17ce91757640f5b437f5915d41c901afc4
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 2925acf75ada0bd950ca52e3fe63b9c97b5e34ad
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108757635"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632327"
 ---
 # <a name="cmmc-level-3-blueprint-sample"></a>Blaupausenbeispiel „CMMC Level 3“
 
@@ -280,8 +280,8 @@ Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartef
 |CMMC Level 3|Richtlinienzuweisung|Von der Richtlinienauswertung ausgeschlossene Namespaces: Pods im Kubernetes-Cluster dürfen nur genehmigte Hostnetzwerke und Portbereiche verwenden|Liste der Kubernetes-Namespaces, die von der Richtlinienauswertung ausgeschlossen werden sollen.|
 |CMMC Level 3|Richtlinienzuweisung|Neueste Java-Version für App Services|Neueste unterstützte Java-Version für App Services|
 |CMMC Level 3|Richtlinienzuweisung|Neueste Python-Version für Linux für App Services|Neueste unterstützte Python-Version für App Services|
-|CMMC Level 3|Richtlinienzuweisung|Optional: Liste der VM-Images mit unterstütztem Linux-Betriebssystem, die dem Bereich bei Überwachung der Log Analytics-Agent-Bereitstellung hinzugefügt werden sollen|Beispielwert: „/subscriptions/<subscriptionId>/resourceGroups/YourResourceGroup/providers/Microsoft.Compute/images/ContosoStdImage“|
-|CMMC Level 3|Richtlinienzuweisung|Optional: Liste der VM-Images mit unterstütztem Windows-Betriebssystem, die dem Bereich bei Überwachung der Log Analytics-Agent-Bereitstellung hinzugefügt werden sollen|Beispielwert: „/subscriptions/<subscriptionId>/resourceGroups/YourResourceGroup/providers/Microsoft.Compute/images/ContosoStdImage“|
+|CMMC Level 3|Richtlinienzuweisung|Optional: Liste der VM-Images mit unterstütztem Linux-Betriebssystem, die dem Bereich bei Überwachung der Log Analytics-Agent-Bereitstellung hinzugefügt werden sollen|Beispielwert: `/subscriptions/<subscriptionId>/resourceGroups/YourResourceGroup/providers/Microsoft.Compute/images/ContosoStdImage`|
+|CMMC Level 3|Richtlinienzuweisung|Optional: Liste der VM-Images mit unterstütztem Windows-Betriebssystem, die dem Bereich bei Überwachung der Log Analytics-Agent-Bereitstellung hinzugefügt werden sollen|Beispielwert: `/subscriptions/<subscriptionId>/resourceGroups/YourResourceGroup/providers/Microsoft.Compute/images/ContosoStdImage`|
 |CMMC Level 3|Richtlinienzuweisung|Liste der Regionen, in denen Network Watcher aktiviert werden soll|Hiermit wird überwacht, ob Network Watcher für die Regionen aktiviert ist.|
 |CMMC Level 3|Richtlinienzuweisung|Liste von Ressourcentypen, für die Diagnoseprotokolle aktiviert werden sollen||
 |CMMC Level 3|Richtlinienzuweisung|Höchstwert im zulässigen Hostportbereich, den Pods im Namespace des Hostnetzwerks verwenden können|Der höchste Wert im zulässigen Hostportbereich, den Pods im Namespace des Hostnetzwerks verwenden können.|

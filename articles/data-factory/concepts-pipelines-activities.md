@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 06/19/2021
-ms.openlocfilehash: b86ae322999441fb4411854e8e11879907ed514f
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.date: 09/09/2021
+ms.openlocfilehash: b030ab291f1b1ce0d3d89ea01c63d6c2eaeff72c
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351235"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218033"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory-and-azure-synapse-analytics"></a>Pipelines und Aktivitäten in Azure Data Factory und Azure Synapse Analytics
 
@@ -32,7 +32,7 @@ Die Aktivitäten in einer Pipeline definieren Aktionen, die Sie auf Ihre Daten a
 
 Azure Data Factory und Azure Synapse Analytics verfügen über drei Gruppen von Aktivitäten: [Datenverschiebungsaktivitäten](copy-activity-overview.md), [Datentransformationsaktivitäten](transform-data.md) und [Steuerungsaktivitäten](#control-flow-activities). Eine Aktivität kann über null oder mehr [Eingabedatasets](concepts-datasets-linked-services.md) verfügen und ein oder mehrere [Ausgabedatasets](concepts-datasets-linked-services.md) erstellen. Das folgende Diagramm zeigt die Beziehung zwischen Pipeline, Aktivität und Dataset an:
 
-![Beziehung zwischen Dataset, Aktivität und Pipeline](media/concepts-pipelines-activities/relationship-between-dataset-pipeline-activity.png)
+:::image type="content" source="media/concepts-pipelines-activities/relationship-between-dataset-pipeline-activity.png" alt-text="Beziehung zwischen Dataset, Aktivität und Pipeline":::
 
 Ein Eingabedataset entspricht der Eingabe für eine Aktivität in der Pipeline, und ein Ausgabedataset entspricht der Ausgabe für die Aktivität. Datasets bestimmen Daten in verschiedenen Datenspeichern, z.B. Tabellen, Dateien, Ordnern und Dokumenten. Nachdem Sie ein Dataset erstellt haben, können Sie es zusammen mit Aktivitäten in einer Pipeline verwenden. Bei einem Dataset kann es sich beispielsweise um ein Eingabe-/Ausgabedataset einer Kopieraktivität oder einer HDInsightHive-Aktivität handeln. Weitere Informationen über Datasets finden Sie im Artikel [Datasets in Azure Data Factory](concepts-datasets-linked-services.md).
 
@@ -106,7 +106,7 @@ Eine Pipeline wird wie folgt im JSON-Format definiert:
 }
 ```
 
-Tag | BESCHREIBUNG | type | Erforderlich
+Tag | Beschreibung | Typ | Erforderlich
 --- | ----------- | ---- | --------
 name | Name der Pipeline. Geben Sie einen Namen an, der die Aktion darstellt, die die Pipeline durchführt. <br/><ul><li>Maximale Anzahl von Zeichen: 140</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (\_) beginnen.</li><li>Folgende Zeichen sind nicht zulässig: “.”, “+”, “?”, “/”, “<”,”>”,”*”,”%”,”&”,”:”,” \" </li></ul> | String | Ja
 description | Geben Sie den Text an, der beschreibt, wofür die Pipeline verwendet wird. | String | Nein
@@ -141,7 +141,7 @@ Ausführungsaktivitäten beinhalten [Datenverschiebungsaktivitäten](#data-movem
 
 In der folgenden Tabelle werden Eigenschaften in der JSON-Definition der Aktivität beschrieben:
 
-Tag | BESCHREIBUNG | Erforderlich
+Tag | Beschreibung | Erforderlich
 --- | ----------- | ---------
 name | Der Name der Aktivität. Geben Sie einen Namen an, der die Aktion darstellt, die die Aktivität durchführt. <br/><ul><li>Maximale Anzahl von Zeichen: 55</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (\_) beginnen.</li><li>Folgende Zeichen sind nicht zulässig: “.”, “+”, “?”, “/”, “<”,”>”,”*”,”%”,”&”,”:”,” \" | Ja</li></ul>
 description | Ein Text, der beschreibt, wofür die Aktivität verwendet wird. | Ja
@@ -408,4 +408,4 @@ In den folgenden Tutorials finden Sie schrittweise Anleitungen zum Erstellen von
 - [Tutorial: Erstellen Ihrer ersten Pipeline zur Transformierung von Daten mithilfe eines Hadoop-Clusters](tutorial-transform-data-spark-powershell.md)
 
 So erreichen Sie CI/CD (Continuous Integration und Continuous Delivery) mit Azure Data Factory
-- [Continuous Integration und Continuous Delivery in Azure Data Factory](continuous-integration-deployment.md)
+- [Continuous Integration und Continuous Delivery in Azure Data Factory](continuous-integration-delivery.md)

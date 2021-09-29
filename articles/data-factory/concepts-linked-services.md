@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
-ms.openlocfilehash: 96d7792ee9c867263b7ab7f21cea652414f28478
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: d9b6695824b5fc19d2cd2ee40aec929a372750f2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822391"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124812028"
 ---
 # <a name="linked-services-in-azure-data-factory-and-azure-synapse-analytics"></a>Verknüpfte Dienste in Azure Data Factory und Azure Synapse Analytics
 
@@ -41,7 +41,7 @@ Hier ist ein Beispielszenario. Um Daten aus dem Blobspeicher in eine SQL-Datenba
 
 Das folgende Diagramm zeigt die Beziehung zwischen Pipeline, Aktivität, Dataset und verknüpftem Dienst im Dienst:
 
-![Beziehung zwischen Pipeline, Aktivität, Dataset und verknüpften Diensten](media/concepts-datasets-linked-services/relationship-between-data-factory-entities.png)
+:::image type="content" source="media/concepts-datasets-linked-services/relationship-between-data-factory-entities.png" alt-text="Beziehung zwischen Pipeline, Aktivität, Dataset und verknüpften Diensten":::
 
 ## <a name="linked-service-json"></a>JSON-Text für verknüpfte Dienste
 
@@ -65,7 +65,7 @@ Ein verknüpfter Dienst wird wie folgt im JSON-Format definiert:
 
 In der folgenden Tabelle werden die Eigenschaften im obigen JSON-Code beschrieben:
 
-Eigenschaft | BESCHREIBUNG | Erforderlich |
+Eigenschaft | Beschreibung | Erforderlich |
 -------- | ----------- | -------- |
 name | Name des verknüpften Diensts. Siehe [Benennungsregeln](naming-rules.md). |  Ja |
 type | Typ des verknüpften Diensts. Beispiel: AzureBlobStorage (Datenspeicher) oder AzureBatch (Compute). Siehe die Beschreibung von „typeProperties“. | Ja |

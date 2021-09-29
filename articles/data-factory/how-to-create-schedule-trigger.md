@@ -8,14 +8,14 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.subservice: orchestration
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.custom: devx-track-python, devx-track-azurepowershell, synapse
-ms.openlocfilehash: 833800da17302d2f28619cd1f66acfc476175a7f
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: c21d06a97acd433445ee73e90833684c5cc36dac
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122824614"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124815010"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Erstellen eines Triggers zum Ausführen einer Pipeline gemäß einem Zeitplan
 
@@ -37,20 +37,20 @@ Sie können einen **Zeitplantrigger** erstellen, um eine regelmäßige Ausführu
 1. Wechseln Sie in Data Factory zur Registerkarte **Bearbeiten** oder in Azure Synapse zur Registerkarte „Integrieren“. 
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
-    ![Wechseln zur Registerkarte „Bearbeiten“](./media/how-to-create-schedule-trigger/switch-edit-tab.png)
+    :::image type="content" source="./media/how-to-create-schedule-trigger/switch-edit-tab.png" alt-text="Wechseln zur Registerkarte „Bearbeiten“":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
-    ![Wechseln zur Registerkarte „Bearbeiten“](./media/how-to-create-schedule-trigger/switch-edit-tab-synapse.png)
+    :::image type="content" source="./media/how-to-create-schedule-trigger/switch-edit-tab-synapse.png" alt-text="Wechseln zur Registerkarte „Bearbeiten“":::
 
 ---
     
 2. Wählen Sie im Menü **Trigger** und dann **Neu/Bearbeiten** aus. 
 
-    ![Menü „Neuer Trigger“](./media/how-to-create-schedule-trigger/new-trigger-menu.png)
+    :::image type="content" source="./media/how-to-create-schedule-trigger/new-trigger-menu.png" alt-text="Menü „Neuer Trigger“":::
 
 1. Wählen Sie auf der Seite **Trigger hinzufügen** die Option **Trigger auswählen...** und dann **+Neu** aus. 
 
-    ![Hinzufügen von Triggern – neuer Trigger](./media/how-to-create-schedule-trigger/add-trigger-new-button.png)
+    :::image type="content" source="./media/how-to-create-schedule-trigger/add-trigger-new-button.png" alt-text="Hinzufügen von Triggern – neuer Trigger":::
 
 1. Führen Sie auf der Seite **Neuer Trigger** die folgenden Schritte aus: 
 
@@ -66,30 +66,30 @@ Sie können einen **Zeitplantrigger** erstellen, um eine regelmäßige Ausführu
     :::image type="content" source="./media/how-to-create-schedule-trigger/advanced.png" alt-text="Erweiterte Wiederholungsoptionen für „Tage“, „Wochen“ oder „Monate“":::
     1. Zum Angeben eines Endzeitpunkts wählen Sie **Enddatum festlegen** aus, legen einen Wert für _Endet am_ fest und klicken dann auf **OK**. Für jede Pipelineausführung fallen Gebühren an. Wenn Sie Tests durchführen, sollten Sie darauf achten, dass die Pipeline nur ein paar Mal ausgelöst wird. Stellen Sie jedoch sicher, dass zwischen Veröffentlichungszeit und Endzeit ausreichend Zeit für die Pipelineausführung bleibt. Der Trigger wird erst nach Veröffentlichung der Lösung wirksam, nicht beim Speichern des Triggers auf der Benutzeroberfläche.
 
-        ![Triggereinstellungen](./media/how-to-create-schedule-trigger/trigger-settings-01.png)
+        :::image type="content" source="./media/how-to-create-schedule-trigger/trigger-settings-01.png" alt-text="Triggereinstellungen":::
 
-        ![Triggereinstellungen für Enddatum](./media/how-to-create-schedule-trigger/trigger-settings-02.png)
+        :::image type="content" source="./media/how-to-create-schedule-trigger/trigger-settings-02.png" alt-text="Triggereinstellungen für Enddatum":::
 
 1. Wählen Sie im Fenster **Neuer Trigger** in der Option **Aktiviert** die Schaltfläche **Ja** und dann **OK** aus. Über dieses Kontrollkästchen können Sie den Trigger später deaktivieren. 
 
-    ![Triggereinstellungen – Schaltfläche „Weiter“](./media/how-to-create-schedule-trigger/trigger-settings-next.png)
+    :::image type="content" source="./media/how-to-create-schedule-trigger/trigger-settings-next.png" alt-text="Triggereinstellungen – Schaltfläche „Weiter“":::
 
 1. Überprüfen Sie im Fenster **Neuer Auslöser** die Warnmeldung, und wählen Sie **OK** aus.
 
-    ![Triggereinstellungen – Schaltfläche „Fertig stellen“](./media/how-to-create-schedule-trigger/new-trigger-finish.png)
+    :::image type="content" source="./media/how-to-create-schedule-trigger/new-trigger-finish.png" alt-text="Triggereinstellungen – Schaltfläche „Fertig stellen“":::
 
 1. Klicken Sie auf **Alle veröffentlichen**, um die Änderungen zu veröffentlichen. Der Trigger startet die Pipelineausführung erst, wenn die Änderungen veröffentlicht wurden. 
 
-    ![Schaltfläche "Veröffentlichen"](./media/how-to-create-schedule-trigger/publish-2.png)
+    :::image type="content" source="./media/how-to-create-schedule-trigger/publish-2.png" alt-text="Schaltfläche &quot;Veröffentlichen&quot;":::
 
 1. Wechseln Sie auf der linken Seite zur Registerkarte **Pipelineausführung**, und wählen Sie **Aktualisieren** aus, um die Liste zu aktualisieren. Dann werden die Pipelineausführungen angezeigt, die vom geplanten Trigger ausgelöst wurden. Beachten Sie die Werte in der Spalte **Ausgelöst durch**. Wenn Sie die Option **Jetzt auslösen** verwenden, wird die manuelle Triggerausführung in der Liste angezeigt. 
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    ![Überwachen ausgelöster Ausführungen](./media/how-to-create-schedule-trigger/monitor-triggered-runs.png)
+    :::image type="content" source="./media/how-to-create-schedule-trigger/monitor-triggered-runs.png" alt-text="Überwachen ausgelöster Ausführungen":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
-    ![Überwachen ausgelöster Ausführungen](./media/how-to-create-schedule-trigger/monitor-triggered-runs-synapse.png)
+    :::image type="content" source="./media/how-to-create-schedule-trigger/monitor-triggered-runs-synapse.png" alt-text="Überwachen ausgelöster Ausführungen":::
     
 ---
 
@@ -97,10 +97,10 @@ Sie können einen **Zeitplantrigger** erstellen, um eine regelmäßige Ausführu
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    ![Überwachen von Triggerausführungen](./media/how-to-create-schedule-trigger/monitor-trigger-runs.png)
+    :::image type="content" source="./media/how-to-create-schedule-trigger/monitor-trigger-runs.png" alt-text="Überwachen von Triggerausführungen":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
-    ![Überwachen von Triggerausführungen](./media/how-to-create-schedule-trigger/monitor-trigger-runs-synapse.png)
+    :::image type="content" source="./media/how-to-create-schedule-trigger/monitor-trigger-runs-synapse.png" alt-text="Überwachen von Triggerausführungen":::
     
 ---
 

@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/24/2021
-ms.openlocfilehash: d1f3313c1b348e037ab70dad0f4072d4727f21b3
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: dff54916007046d3d0d8d6741ca6fce7409c5d99
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122824281"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787980"
 ---
 # <a name="datasets-in-azure-data-factory-and-azure-synapse-analytics"></a>Datasets in Azure Data Factory und Azure Synapse Analytics
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -38,7 +38,7 @@ Hier ist ein Beispielszenario. Um Daten aus dem Blobspeicher in eine SQL-Datenba
 
 Das folgende Diagramm zeigt die Beziehung zwischen Pipeline, Aktivität, Dataset und verknüpftem Dienst:
 
-![Beziehung zwischen Pipeline, Aktivität, Dataset und verknüpften Diensten](media/concepts-datasets-linked-services/relationship-between-data-factory-entities.png)
+:::image type="content" source="media/concepts-datasets-linked-services/relationship-between-data-factory-entities.png" alt-text="Beziehung zwischen Pipeline, Aktivität, Dataset und verknüpften Diensten":::
 
 
 ## <a name="dataset-json"></a>JSON-DataSet
@@ -65,7 +65,7 @@ Ein Dataset wird im folgenden JSON-Format definiert:
 ```
 In der folgenden Tabelle werden die Eigenschaften im obigen JSON-Code beschrieben:
 
-Eigenschaft | BESCHREIBUNG | Erforderlich |
+Eigenschaft | Beschreibung | Erforderlich |
 -------- | ----------- | -------- |
 name | Name des Datasets. Siehe [Benennungsregeln](naming-rules.md). |  Ja |
 type | Typ des Datasets. Geben Sie einen der von Data Factory unterstützten Typen an (z.B. DelimitedText, AzureSqlTable). <br/><br/>Weitere Informationen finden Sie unter [Datasettyp](#dataset-type). | Ja |

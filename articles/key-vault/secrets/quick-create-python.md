@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: d9d15735439890d16ba56ca12b5476253f6fcf5d
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 8d5ef1f13b7413eeb21c7e026aa1cbf9d9bb4541
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110537364"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124757399"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-python"></a>Schnellstart: Azure Key Vault-Geheimnisclientbibliothek für Python
 
@@ -133,7 +133,7 @@ python kv_secrets.py
 ```
 
 - Wenn Berechtigungsfehler auftreten, stellen Sie sicher, dass Sie den [`az keyvault set-policy`-Befehl](#grant-access-to-your-key-vault) ausgeführt haben.
-- Wenn Sie den Code mit dem gleichen Geheimnisnamen erneut ausführen, wird möglicherweise der Fehler „(Konflikt) Geheimnis <name> befindet sich derzeit in einem gelöschten, aber wiederherstellbaren Zustand“ angezeigt. Verwenden Sie einen anderen Geheimnisnamen.
+- Wenn Sie den Code mit dem gleichen Geheimnisnamen erneut ausführen, wird möglicherweise der Fehler „(Konflikt) Geheimnis \<name\> befindet sich derzeit in einem gelöschten, aber wiederherstellbaren Zustand“ angezeigt. Verwenden Sie einen anderen Geheimnisnamen.
 
 ## <a name="code-details"></a>Codedetails
 

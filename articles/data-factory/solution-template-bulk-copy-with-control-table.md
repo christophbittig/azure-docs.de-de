@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/09/2020
-ms.openlocfilehash: ba4d84a6d3eda01f3d9192aef521d7d45a811083
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 94f7210c05056db2ead8b1aa54d9a0d16e3d8849
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346538"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743581"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>Massenkopieren aus einer Datenbank mit einer Steuertabelle
 
@@ -67,33 +67,33 @@ Die letzten drei Parameter, die den Pfad im Zielspeicher definieren, werden nur 
 
 2. Wechseln Sie zur Vorlage **Bulk Copy from Database** (Massenkopieren aus einer Datenbank). Stellen Sie eine **neue Verbindung** mit der externen Steuertabelle her, die Sie in Schritt 1 erstellt haben.
 
-    ![Erstellen einer neuen Verbindung mit der Steuertabelle](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable2.png)
+    :::image type="content" source="media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable2.png" alt-text="Erstellen einer neuen Verbindung mit der Steuertabelle":::
 
 3. Stellen Sie eine **neue Verbindung** mit der Quelldatenbank her, aus der Sie Daten kopieren.
 
-    ![Erstellen einer neuen Verbindung mit der Quelldatenbank](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
+    :::image type="content" source="media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png" alt-text="Erstellen einer neuen Verbindung mit der Quelldatenbank":::
     
 4. Stellen Sie eine **neue Verbindung** mit dem Zieldatenspeicher her, in den Sie Daten kopieren.
 
-    ![Erstellen einer neuen Verbindung mit dem Zielspeicher](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable4.png)
+    :::image type="content" source="media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable4.png" alt-text="Erstellen einer neuen Verbindung mit dem Zielspeicher":::
 
 5. Klicken Sie auf **Diese Vorlage verwenden**.
 
 6. Daraufhin wird die Pipeline wie im folgenden Beispiel angezeigt:
 
-    ![Überprüfen der Pipeline](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable6.png)
+    :::image type="content" source="media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable6.png" alt-text="Überprüfen der Pipeline":::
 
 7. Klicken Sie auf **Debuggen**, geben Sie die **Parameter** ein, und klicken Sie dann auf **Fertig stellen**.
 
-    ![Auf **Debuggen** klicken](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable7.png)
+    :::image type="content" source="media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable7.png" alt-text="Auf **Debuggen** klicken":::
 
 8. Ihnen werden Ergebnisse angezeigt, die dem folgenden Beispiel ähneln:
 
-    ![Überprüfen des Ergebnisses](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
+    :::image type="content" source="media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png" alt-text="Überprüfen des Ergebnisses":::
 
 9. (Optional:) Wenn Sie „Azure Synapse Analytics“ als Datenziel auswählen, müssen Sie eine Verbindung mit Azure Blob Storage für den Stagingprozess eingeben, da dies für Azure Synapse Analytics PolyBase erforderlich ist. Die Vorlage generiert automatisch einen Containerpfad für Ihren Blob Storage. Überprüfen Sie nach der Pipelineausführung, ob der Container erstellt wurde.
     
-    ![PolyBase-Einstellung](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
+    :::image type="content" source="media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png" alt-text="PolyBase-Einstellung":::
        
 ## <a name="next-steps"></a>Nächste Schritte
 

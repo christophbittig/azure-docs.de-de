@@ -8,13 +8,13 @@ ms.subservice: data-flows
 ms.custom: synapse
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 08/24/2021
-ms.openlocfilehash: b5fdb41c84d97c5a4ba544c299eb183c704fa3d8
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: 14fa6484a3cba97602d33cf2b302d62bf6ef2871
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822211"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743877"
 ---
 # <a name="data-flow-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>Datenflussaktivität in Azure Data Factory und Azure Synapse Analytics
 
@@ -67,7 +67,7 @@ staging.linkedService | Geben Sie das für PolyBase-Staging verwendete Speicherk
 staging.folderPath | Der für das PolyBase-Staging verwendete Ordnerpfad im Blobspeicherkonto, wenn Sie eine Azure Synapse Analytics-Quelle oder -Senke verwenden. | String | Nur wenn der Datenfluss Daten in Azure Synapse Analytics liest oder schreibt
 traceLevel | Festlegen des Protokolliergrads für die Ausführung Ihrer Datenflussaktivität | Fein, Grob, Keine | Nein
 
-![Ausführen eines Datenflusses](media/data-flow/activity-data-flow.png "Ausführen eines Datenflusses")
+:::image type="content" source="media/data-flow/activity-data-flow.png" alt-text="Ausführen eines Datenflusses":::
 
 ### <a name="dynamically-size-data-flow-compute-at-runtime"></a>Dynamisches Bestimmen der Größe der Computekapazität für den Datenfluss zur Laufzeit
 
@@ -76,7 +76,7 @@ Die Eigenschaften „Anzahl Kerne“ und „Computetyp“ können dynamisch fest
 > [!NOTE]
 > Bei der Auswahl von Treiber- und Workerknotenkernen in Azure Synapse-Datenflüssen werden immer mindestens 3 Knoten verwendet.
 
-![Dynamischer Datenfluss](media/data-flow/dyna1.png "Dynamischer Datenfluss")
+:::image type="content" source="media/data-flow/dyna1.png" alt-text="Dynamischer Datenfluss":::
 
 [Es folgt ein kurzes Videotutorial, das diese Technik erläutert.](https://www.youtube.com/watch?v=jWSkJdtiJNM)
 
@@ -86,7 +86,7 @@ Wählen Sie die Integration Runtime aus, die für die Ausführung Ihrer Datenflu
 
 Mindestens ein Computetyp „Universell“ (für Compute optimiert wird für große Workloads nicht empfohlen) mit einer Konfiguration von 8+8 (16 virtuellen Kernen insgesamt) und einer 10-Minuten-Konfiguration ist die Mindestempfehlung für die meisten Produktionsworkloads. Durch Festlegen einer geringen TTL kann die Azure IR einen „warmen“ Cluster verwalten, der nicht mehrere Minuten der Startzeit benötigt, wie ein kalter Cluster. Sie können die Ausführung Ihrer Datenflüsse noch beschleunigen, indem Sie in den Azure IR-Datenflusskonfigurationen die Option für die schnelle Wiederverwendung auswählen. Weitere Informationen finden Sie unter [Azure Integration Runtime](concepts-integration-runtime.md).
 
-![Azure Integration Runtime](media/data-flow/ir-new.png "Azure Integration Runtime")
+:::image type="content" source="media/data-flow/ir-new.png" alt-text="Azure Integration Runtime":::
 
 > [!IMPORTANT]
 > Die Auswahl von Integration Runtime in der Datenflussaktivität bezieht sich nur auf *getriggerte Ausführungen* Ihrer Pipeline. Das Debuggen Ihrer Pipeline mit Datenflüssen wird auf dem in der Debugsitzung angegebenen Cluster ausgeführt.
@@ -99,7 +99,7 @@ Wenn Sie Azure Synapse Analytics als Senke oder Quelle verwenden, müssen Sie ei
 
 Wenn Sie nicht voraussetzen, dass jede Pipelineausführung Ihrer Datenflussaktivitäten alle ausführlichen Telemetrieprotokolle vollständig protokolliert, können Sie den Protokolliergrad optional auf „Standard“ oder „Kein“ festlegen. Wenn Sie Ihre Datenflüsse im Modus „Ausführlich“ (Standard) ausführen, fordern Sie an, dass der Dienst die Aktivität während der Datentransformation auf den einzelnen Partitionsebenen vollständig protokolliert. Da dies ein kostspieliger Vorgang sein kann, kann nur die ausschließliche Aktivierung von „Ausführlich“ bei der Problembehandlung den gesamten Datenfluss und die Pipelineleistung verbessern. Der Modus „Standard“ protokolliert nur die Transformationszeitspannen, während „Kein“ nur eine Zusammenfassung der Zeitspannen bietet.
 
-![Protokolliergrad](media/data-flow/logging.png "Festlegen des Protokolliergrads")
+:::image type="content" source="media/data-flow/logging.png" alt-text="Protokolliergrad":::
 
 ## <a name="sink-properties"></a>Senkeneigenschaften
 
@@ -111,7 +111,7 @@ Beim Standardverhalten von Datenflusssenken wird jede Senke sequenziell nacheina
 
 Diese Option ist nur für Datenflüsse verfügbar, für die Cachesenken für "Ausgabe an Aktivität" aktiviert sind. Die Ausgabe des Datenflusses, der direkt in Ihre Pipeline eingefügt wird, ist auf 2 MB beschränkt. Wenn Sie "Nur erste Zeile" festlegen, können Sie die Datenausgabe des Datenflusses einschränken, wenn Sie die Ausgabe der Datenflussaktivität direkt in Ihre Pipeline einfügen.
 
-![Senkeneigenschaften](media/data-flow/sink-properties.png "Festlegen von Senkeneigenschaften")
+:::image type="content" source="media/data-flow/sink-properties.png" alt-text="Senkeneigenschaften":::
 
 ## <a name="parameterizing-data-flows"></a>Parametrisieren von Datenflüssen
 
@@ -119,7 +119,7 @@ Diese Option ist nur für Datenflüsse verfügbar, für die Cachesenken für "Au
 
 Wenn im Datenfluss parametrisierte Datasets verwendet werden, legen Sie die Parameterwerte auf der Registerkarte **Einstellungen** fest.
 
-![Ausführen von Datenflussparametern](media/data-flow/params.png "Parameter")
+:::image type="content" source="media/data-flow/params.png" alt-text="Ausführen von Datenflussparametern":::
 
 ### <a name="parameterized-data-flows"></a>Parametrisierte Datenflüsse
 
@@ -129,13 +129,13 @@ Wenn Ihr Datenfluss parametrisiert ist, legen Sie die dynamischen Werte der Date
 
 Sie können die Anzahl von Kernen oder den Computetyp parametrisieren, wenn Sie die Azure Integration Runtime mit automatischer Auflösung verwenden und Werte für compute.corecount und compute.computetype angeben.
 
-![Ausführen von Datenflussparametern (Beispiel)](media/data-flow/parameterize-compute.png "Parameterbeispiel")
+:::image type="content" source="media/data-flow/parameterize-compute.png" alt-text="Ausführen von Datenflussparametern (Beispiel)":::
 
 ## <a name="pipeline-debug-of-data-flow-activity"></a>Debuggen der Pipeline der Datenflussaktivität
 
 Wenn Sie ein Debugging der Pipeline mit einer Datenflussaktivität ausführen möchten, müssen Sie den Datenfluss-Debugmodus über den Schieberegler **Datenfluss debuggen** auf der oberen Leiste aktivieren. Im Debugmodus können Sie den Datenfluss für einen aktiven Spark-Cluster ausführen. Weitere Informationen finden Sie unter [Debugmodus](concepts-data-flow-debug-mode.md).
 
-![Screenshot: Position der Schaltfläche „Debuggen“](media/data-flow/debug-button-3.png)
+:::image type="content" source="media/data-flow/debug-button-3.png" alt-text="Screenshot: Position der Schaltfläche „Debuggen“":::
 
 Das Debuggen der Pipeline wird für den aktiven Debugcluster und nicht für die Integration Runtime-Umgebung ausgeführt, die in den Einstellungen für die Datenflussaktivität angegeben ist. Beim Starten des Debugmodus können Sie die Computeumgebung für das Debuggen auswählen.
 

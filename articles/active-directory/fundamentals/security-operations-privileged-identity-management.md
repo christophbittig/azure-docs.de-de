@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42a7b541b3f5b5c5d1ec462898615793d50b5493
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f17ff93dde6c4bbb7df57d177bc7d1e3d746b347
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346040"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124814619"
 ---
 # <a name="azure-active-directory-security-operations-for-privileged-identity-management-pim"></a>Azure Active Directory-Sicherheitsvorgänge für Privileged Identity Management (PIM)
 
@@ -50,21 +50,21 @@ Dieser Artikel ist ein Leitfaden zum Festlegen von Baselines und Überwachen der
 
 ## <a name="where-to-look"></a>Zu verwendende Ressourcen
 
-Zur Untersuchung und Überwachung verwenden Sie die folgenden Protokolldateien: 
+Zur Untersuchung und Überwachung werden folgende Protokolldateien verwendet: 
 
 * [Azure AD-Überwachungsprotokolle](../reports-monitoring/concept-audit-logs.md)
 
 * [Anmeldeprotokolle](../reports-monitoring/concept-all-sign-ins.md)
 
-* [Microsoft 365-Überwachungsprotokolle](/microsoft-365/compliance/auditing-solutions-overview?view=o365-worldwide) 
+* [Microsoft 365-Überwachungsprotokolle](/microsoft-365/compliance/auditing-solutions-overview) 
 
 * [Azure Key Vault-Protokolle](../../key-vault/general/logging.md?tabs=Vault)
 
 Im Azure-Portal können Sie die Azure AD-Überwachungsprotokolle anzeigen und als CSV- oder JSON-Dateien (Comma-Separated Value bzw. JavaScript Object Notation) herunterladen. Das Azure-Portal bietet mehrere Möglichkeiten zur Integration von Azure AD-Protokollen mit anderen Tools, die eine umfassendere Automatisierung von Überwachung und Warnmeldungen ermöglichen:
 
-* [**Azure Sentinel:** ](../../sentinel/overview.md) ermöglicht intelligente Sicherheitsanalysen auf Unternehmensebene, indem SIEM-Funktionen (Security Information and Event Management) zur Verfügung gestellt werden 
+* [**Azure Sentinel**](../../sentinel/overview.md) : ermöglicht intelligente Sicherheitsanalysen auf Unternehmensebene, indem SIEM-Funktionen (Security Information and Event Management) zur Verfügung gestellt werden. 
 
-* [**Azure Monitor:** ](../../azure-monitor/overview.md) ermöglicht die automatisierte Überwachung verschiedener Bedingungen und automatisierte Warnungen. Damit können Arbeitsmappen erstellt oder verwendet werden, um Daten aus verschiedenen Quellen zu kombinieren.
+* [**Azure Monitor**](../../azure-monitor/overview.md) : ermöglicht die automatisierte Überwachung verschiedener Bedingungen und entsprechende Warnungen. Damit können Arbeitsmappen erstellt oder verwendet werden, um Daten aus verschiedenen Quellen zu kombinieren.
 
 * [**Azure Event Hubs**](../../event-hubs/event-hubs-about.md) **mit Integration mit einem SIEM-System:** - [ Azure AD-Protokolle können über die Azure Event Hubs-Integration in andere SIEM-Systeme](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) wie Splunk, ArcSight, QRadar und Sumo Logic integriert werden.
 

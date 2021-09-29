@@ -12,13 +12,13 @@ ms.subservice: data-movement
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/24/2021
-ms.openlocfilehash: 2a2708c3d84dd83b752db2a0ae56843ae068aabe
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: c66e7a1d19ecf392c5f990bcaa31ba506cf0d7f2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822427"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124767411"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Handbuch zur Leistung und Skalierbarkeit der Kopieraktivität
 
@@ -84,7 +84,7 @@ Die folgende Tabelle zeigt die Berechnung der Dauer der Datenverschiebung. Die D
 
 Die Kopieraktivität kann auf verschiedenen Ebenen skaliert werden:
 
-![Skalieren der Kopieraktivität](media/copy-activity-performance/adf-copy-scalability.png)
+:::image type="content" source="media/copy-activity-performance/adf-copy-scalability.png" alt-text="Skalieren der Kopieraktivität":::
 
 * Mit der Ablaufsteuerung können mehrere Kopieraktivitäten parallel gestartet werden (z. B. per [ForEach-Schleife](control-flow-for-each-activity.md)).
 

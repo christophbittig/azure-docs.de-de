@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 05b42a3dd6d5df7bf4484e23b2780732d55ab731
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: f1b5196d422d2bc4a961c2b45ed814ee5555f2c4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109789153"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643838"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-raspberry-pi-3-b-reference-image"></a>Device Update for Azure IoT Hub unter Verwendung des Raspberry Pi 3 B+-Referenzimages
 
@@ -143,7 +143,7 @@ Verwenden Sie diese Versionsnummer im nachfolgenden Schritt „Import Update“ 
 
 ## <a name="import-update"></a>Importieren des Updates
 
-1. Laden Sie das [Beispielimportmanifest](https://github.com/Azure/iot-hub-device-update/releases/download/0.7.0-rc1/TutorialImportManifest.json) und das [Beispielimageupdate](https://github.com/Azure/iot-hub-device-update/releases/download/0.7.0-rc1/adu-update-image-raspberrypi3-0.6.5073.1.swu) herunter.
+1. Laden Sie das [Beispielimportmanifest](https://github.com/Azure/iot-hub-device-update/releases/download/0.7.0/TutorialImportManifest_Pi.json) und das [Beispielimageupdate](https://github.com/Azure/iot-hub-device-update/releases/download/0.7.0-rc1/adu-update-image-raspberrypi3-0.6.5073.1.swu) herunter.
 2. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und navigieren Sie zu Ihrer IoT Hub-Instanz mit Device Update. Wählen Sie anschließend auf der linken Navigationsleiste unter „Automatic Device Management“ (Automatische Geräteverwaltung) die Option „Device Updates“ (Geräteupdates) aus.
 3. Wählen Sie die Registerkarte „Updates“ aus.
 4. Wählen Sie „+ Import New Update“ (Neues Update importieren) aus.

@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc, references_regions
 ms.topic: overview
 ms.date: 08/10/2021
-ms.openlocfilehash: c2cdd4009261306357bc9d840afa83bc1ebf40df
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 863281f85eac1d467e7935f47a90aacf1b3134dd
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123111633"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153442"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL-Server Flexible Server (Vorschau)
 
@@ -52,7 +52,7 @@ Sie können dieses Angebot zum Entwickeln und Bereitstellen von Anwendungen nutz
 
 In Azure Database for MySQL Flexible Server (Vorschau) können Sie Hochverfügbarkeit mit automatischem Failover konfigurieren. Die Hochverfügbarkeitslösung wurde entwickelt, um sicherzustellen, dass committete Daten aufgrund von Ausfällen nie verloren gehen, und um die allgemeine Betriebszeit für Ihre Anwendung zu verbessern.Wenn Hochverfügbarkeit konfiguriert wird, stellt Flexible Server ein Standbyreplikat automatisch bereit und verwaltet es. Es gibt zwei Architekturmodelle für Hochverfügbarkeit: 
 
-- **Zonenredundante Hochverfügbarkeit:** Diese Option wird für vollständige Isolation und Redundanz der Infrastruktur zwischen mehreren Verfügbarkeitszonen bevorzugt. Sie bietet den höchsten Verfügbarkeitsgrad, erfordert aber eine zonenübergreifende Konfiguration der Anwendungsredundanz. Zonenredundante Hochverfügbarkeit wird bevorzugt, wenn bei jedem Infrastrukturausfall in der Verfügbarkeitszone die bestmögliche Verfügbarkeit erzielt werden soll und die Latenz in der Verfügbarkeitszone akzeptabel ist. Zonenredundante Hochverfügbarkeit gibt es nur in  [Azure-Regionen](overview.md#azure-regions) , die mehrere Verfügbarkeitszonen unterstützen und in denen zonenredundante Premium-Dateifreigaben zur Verfügung stehen. 
+- **Zonenredundante Hochverfügbarkeit**: Diese Option wird für eine vollständige Isolierung und Redundanz der Infrastruktur über mehrere Verfügbarkeitszonen hinweg empfohlen. Sie bietet den höchsten Verfügbarkeitsgrad, erfordert aber eine zonenübergreifende Konfiguration der Anwendungsredundanz. Zonenredundante Hochverfügbarkeit wird bevorzugt, wenn bei jedem Infrastrukturausfall in der Verfügbarkeitszone die bestmögliche Verfügbarkeit erzielt werden soll und die Latenz in der Verfügbarkeitszone akzeptabel ist. Zonenredundante Hochverfügbarkeit gibt es nur in  [Azure-Regionen](overview.md#azure-regions) , die mehrere Verfügbarkeitszonen unterstützen und in denen zonenredundante Premium-Dateifreigaben zur Verfügung stehen. 
 
 :::image type="content" source="./media/concepts-high-availability/1-flexible-server-overview-zone-redundant-ha.png" alt-text="Zonenredundante Hochverfügbarkeit":::
 
@@ -162,26 +162,34 @@ Ein Vorteil der Ausführung Ihrer Workload in Azure ist die globale Reichweite. 
 | Region | Verfügbarkeit | Hochverfügbarkeit in gleicher Zone | Zonenredundante Hochverfügbarkeit |
 | --- | --- | --- | --- |
 | Australien (Osten) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Australien, Südosten | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | Brasilien Süd | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | Kanada, Mitte | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| Kanada, Osten | :heavy_check_mark: | :x: | :x: |
+| Indien, Mitte | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | USA (Mitte) | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| Asien, Osten (Hongkong) | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | East US | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | USA (Ost) 2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Frankreich, Mitte | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:|
+| Frankreich, Mitte | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Deutschland, Westen-Mitte | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | Japan, Osten | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Korea, Mitte | :heavy_check_mark: | :x: | :x: |
+| Japan, Westen | :heavy_check_mark: | :x: | :x: |
+| Korea, Mitte | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| Korea, Süden | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | Nordeuropa | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Norwegen, Osten | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | Asien, Südosten | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Schweiz, Norden | :heavy_check_mark: | :x: | :x: |
+| USA Süd Mitte | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| Südafrika, Norden | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| Schweiz, Norden | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | UK, Süden | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| UK, Westen | :heavy_check_mark: | :x: | :x: |
+| Vereinigte Arabische Emirate, Norden | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | USA (Westen) | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | USA, Westen 2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Europa, Westen | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Australien, Südosten | :heavy_check_mark: | :heavy_check_mark: | :x: |
-| Südafrika, Norden | :heavy_check_mark: | :x: | :x: |
-| Asien, Osten (Hongkong) | :heavy_check_mark: | :x: | :x: |
-| Indien, Mitte | :heavy_check_mark: | :x: | :x: |
+| USA, Westen-Mitte | :heavy_check_mark: | :heavy_check_mark: | :x: |
 
 ## <a name="contacts"></a>Kontakte
 

@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 08/18/2021
 ms.author: allensu
-ms.openlocfilehash: 6b54784b5cd77113983dea5e936d93e36aca5591
-ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
+ms.openlocfilehash: de7d106ae02e1150d9765e60fbfdf0dc0cb9bc74
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122201844"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124810322"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>Schnellstart: Erstellen eines Private Link-Diensts über das Azure-Portal
 
@@ -50,7 +50,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und das Subnetz zum Ho
     | Ressourcengruppe   | Wählen Sie **Neu erstellen**. Geben Sie **CreatePrivLinkService-rg** ein. </br> Klicken Sie auf **OK**. |
     | **Instanzendetails** |                                                                 |
     | Name             | Geben Sie **myVNet** ein.                                    |
-    | Region           | Wählen Sie **USA, Osten** aus. |
+    | Region           | Wählen Sie **(USA) USA, Osten 2** aus. |
 
 5. Wählen Sie die Registerkarte **IP-Adressen** oder die Schaltfläche **Weiter: IP-Adressen** am unteren Seitenrand aus.
 
@@ -180,7 +180,7 @@ Während der Erstellung des Lastenausgleichs konfigurieren Sie Folgendes:
     | ------- | ----- |
     | Name | Geben Sie **myHTTPRule** ein. |
     | IP-Version | Wählen Sie abhängig von Ihren Anforderungen **IPv4** oder **IPv6** aus. |
-    | Front-End-IP-Adresse | Wählen Sie **LoadBalancerFrontend** aus. |
+    | Front-End-IP-Adresse | Wählen Sie **LoadBalancerFrontEnd** aus. |
     | Protocol | Wählen Sie **TCP** aus. |
     | Port | Geben Sie **80** ein. |
     | Back-End-Port | Geben Sie **80** ein. |
@@ -193,7 +193,7 @@ Während der Erstellung des Lastenausgleichs konfigurieren Sie Folgendes:
 
 20. Wählen Sie **Hinzufügen**.
 
-21. Wählen Sie unten auf der Seite die blaue Schaltfläche **Überprüfen + erstellen** aus.
+21. Klicken Sie unten auf der Seite auf die blaue Schaltfläche **Überprüfen + erstellen**.
 
 22. Klicken Sie auf **Erstellen**.
 

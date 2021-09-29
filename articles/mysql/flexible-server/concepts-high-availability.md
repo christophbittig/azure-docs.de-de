@@ -6,12 +6,12 @@ ms.author: sunaray
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2021
-ms.openlocfilehash: e95119f65e088fe9b9b6ace71b6fee98f679f5a4
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 95cc91298945c50174f1edec6ca766e3f7df59c8
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426092"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153727"
 ---
 # <a name="high-availability-in-azure-database-for-mysql---flexible-server-preview"></a>Hochverfügbarkeit in Azure Database for MySQL Flexible Server (Vorschau)
 
@@ -107,8 +107,8 @@ Folgende Überlegungen sollten die Sie bei der Nutzung von Hochverfügbarkeit be
 * Zonenredundante Hochverfügbarkeit kann nur während der Erstellung des flexiblen Servers festgelegt werden.
 * Hochverfügbarkeit wird auf der burstfähigen Computeebene nicht unterstützt.
 * Ein Neustart des primären Datenbankservers zur Übernahme von Änderungen an statischen Parametern führt auch zu einem Neustart des Standbyreplikats.
-* Lesereplikate werden für Server mit zonenredundanter Hochverfügbarkeit nicht unterstützt.
-* Die Datenreplikation wird für Hochverfügbarkeitsserver nicht unterstützt. 
+* Lesereplikate werden für Hochverfügbarkeitsserver nicht unterstützt.
+* Die Datenreplikation wird für Hochverfügbarkeitsserver nicht unterstützt.
 * Der GTID-Modus wird aktiviert, da die Hochverfügbarkeitslösung GTID verwendet. Überprüfen Sie, ob für Ihre Workload [Einschränkungen für die Replikation mit GTID](https://dev.mysql.com/doc/refman/5.7/en/replication-gtids-restrictions.html) gelten.  
  
 ## <a name="frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ)

@@ -3,18 +3,18 @@ title: Verwenden von Azure PowerShell zum Erstellen einer Service Bus-Warteschla
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie mit Azure PowerShell einen Service Bus-Namespace und darin eine Warteschlange erstellen.
 author: spelluru
 ms.author: spelluru
-ms.date: 08/12/2020
+ms.date: 09/28/2021
 ms.topic: quickstart
 ms.devlang: dotnet
 ms.custom:
 - devx-track-azurepowershell
 - mode-api
-ms.openlocfilehash: e850567f56cb89db135f9b6efeafb3d63dca151b
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f98bf871abf50e3164f0ea9ca281887e29abfba9
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110479003"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211751"
 ---
 # <a name="use-azure-powershell-to-create-a-service-bus-namespace-and-a-queue"></a>Verwenden von Azure PowerShell zum Erstellen eines Service Bus-Namespace und einer Warteschlange
 In dieser Schnellstartanleitung wird veranschaulicht, wie Sie mit Azure PowerShell einen Service Bus-Namespace und eine Warteschlange erstellen. Darüber hinaus wird beschrieben, wie Sie Anmeldeinformationen für die Autorisierung abrufen, die von einer Clientanwendung zum Senden bzw. Empfangen von Nachrichten für eine Warteschlange genutzt werden können. 

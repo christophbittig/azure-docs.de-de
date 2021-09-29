@@ -3,19 +3,19 @@ title: Abrufen des SDK für sprachaktivierte Geräte
 titleSuffix: Azure Cognitive Services
 description: Der Speech-Dienst kann mit verschiedensten Geräten und Audioquellen verwendet werden. Jetzt können Sie einen Schritt weiter gehen und Ihre Sprachanwendungen mit angepasster Hardware und Software nutzen. In diesem Artikel erfahren Sie, wie Sie auf das Speech Devices SDK zugreifen und mit der Entwicklung beginnen.
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/14/2019
-ms.author: lajanuar
-ms.openlocfilehash: 6d10a08d1b85cf74a7f883ad524f077db533d1f0
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.author: pafarley
+ms.openlocfilehash: fe91a9d288b6fb512693b909098d2e2d5130d9e4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122356489"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124771933"
 ---
 # <a name="get-the-cognitive-services-speech-devices-sdk"></a>Abrufen des Cognitive Services Speech-Geräte-SDK
 
@@ -25,7 +25,7 @@ Beim Speech Devices SDK handelt es sich um eine vorab optimierte Bibliothek für
 
 |Geräte|Spezifikation|BESCHREIBUNG|Szenarien|
 |--|--|--|--|
-|[Azure Percept Audio DK](/azure/azure-percept/overview-azure-percept-audio)<br>[Setup](/azure/azure-percept/quickstart-percept-dk-unboxing) / [Schnellstart](/azure/azure-percept/quickstart-percept-audio-setup)![Azure Percept Audio DK](./media/speech-devices-sdk/azure-percept-audio.png)|Lineares Array mit 4 Mikrofonen und XMOS-Codec. <br> Linux| Ein Zubehörgerät, das Ihrem Edgegerät sprachbezogene KI-Funktionen hinzufügt. Es umfasst einen vorkonfigurierten Audioprozessor sowie ein lineares 4-Mikrofon-Array und ermöglicht damit die Nutzung von Sprachbefehlen, Schlüsselworterkennung und Fernfeldspracherkennung über Azure Cognitive Services. Dieses Gerät wird mit Azure Percept DK, Azure Percept Studio und weiteren Azure Edge-Verwaltungsdiensten bereitgestellt, um eine nahtlose Integration in unser leistungsstärkstes und kompaktes SDK für All-in-One-Sprachgeräte zu ermöglichen.|Unterhaltungstranskription, Robotik, Smart Building, Fertigung, Landwirtschaft|
+|[Azure Percept Audio DK](../../azure-percept/overview-azure-percept-audio.md)<br>[Setup](../../azure-percept/quickstart-percept-dk-unboxing.md) / [Schnellstart](../../azure-percept/quickstart-percept-audio-setup.md)![Azure Percept Audio DK](./media/speech-devices-sdk/azure-percept-audio.png)|Lineares Array mit 4 Mikrofonen und XMOS-Codec. <br> Linux| Ein Zubehörgerät, das Ihrem Edgegerät sprachbezogene KI-Funktionen hinzufügt. Es umfasst einen vorkonfigurierten Audioprozessor sowie ein lineares 4-Mikrofon-Array und ermöglicht damit die Nutzung von Sprachbefehlen, Schlüsselworterkennung und Fernfeldspracherkennung über Azure Cognitive Services. Dieses Gerät wird mit Azure Percept DK, Azure Percept Studio und weiteren Azure Edge-Verwaltungsdiensten bereitgestellt, um eine nahtlose Integration in unser leistungsstärkstes und kompaktes SDK für All-in-One-Sprachgeräte zu ermöglichen.|Unterhaltungstranskription, Robotik, Smart Building, Fertigung, Landwirtschaft|
 |[Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)<br>[Setup](../../kinect-dk/set-up-azure-kinect-dk.md) / [Schnellstart](./speech-devices-sdk-quickstart.md?pivots=platform-windows%253fpivots%253dplatform-windows)![Azure Kinect DK](media/speech-devices-sdk/device-azure-kinect-dk.jpg)|Array mit 7 Mikrofonen, RGB und Tiefenkameras <br>[Windows](./speech-devices-sdk-quickstart.md?pivots=platform-windows%253fpivots%253dplatform-windows)/[Linux](./speech-devices-sdk-quickstart.md?pivots=platform-linux%253fpivots%253dplatform-linux)|Ein Spatial Computing-DK mit erweiterten KI-Sensoren (künstliche Intelligenz) zur Entwicklung ausgereifter Modelle für maschinelles Sehen sowie Sprachmodelle. Es kombiniert ein erstklassiges räumliches Mikrofonarray und eine Tiefenkamera mit einer Videokamera und einem Lagesensor – alles in einem kleinen Gerät mit mehreren Modi, Optionen und SDKs für die nahtlose Integration in Azure Cognitive Services.|Unterhaltungstranskription, Robotik, Smart Building|
 |[Urbetter Dev Kit](http://www.urbetter.com/products_56/278.html)![URbetter DDK](media/speech-devices-sdk/device-urbetter.jpg)|Array mit 7 Mikrofonen, ARM SoC, WLAN, Ethernet, HDMI, USB-Kamera <br>Linux|Ein branchenübliches Speech Devices SDK zur Anpassung des Microsoft-Mikrofonarrays und zur Unterstützung erweiterter E/A wie HDMI/Ethernet und weiterer USB-Peripheriegeräte <br> [Kontakt mit Urbetter aufnehmen](http://www.urbetter.com/products_56/278.html)|Unterhaltungstranskription, Bildung, Kliniken, Roboter, OTT-Box, Sprach-Agent, Drive-through|
 |[Roobo Smart Audio Dev Kit](http://ddk.roobo.com)<br>[Setup](speech-devices-sdk-roobo-v1.md) / [Schnellstart](./speech-devices-sdk-quickstart.md?pivots=platform-android%253fpivots%253dplatform-android)![Roobo Smart Audio Dev Kit](media/speech-devices-sdk/device-roobo-v1.jpg)|Array mit 7 Mikrofonen, ARM SoC, WLAN, Audioausgang, EA <br>[Android](./speech-devices-sdk-quickstart.md?pivots=platform-android%253fpivots%253dplatform-android)|Das erste Speech Devices SDK zur Anpassung des Microsoft-Mikrofonarrays und Front Processing SDK für die Entwicklung hochwertiger Transkriptions- und Sprachszenarien|Unterhaltungstranskription, Smart Speaker, Sprach-Agent, Wearable|

@@ -8,12 +8,12 @@ ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2021
 ms.date: 06/04/2021
-ms.openlocfilehash: 91eb5d1072f1385c025d9d93b89466aaa9320ecd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 02e67e6521e1f5fa3c29375a15953557613f7d7d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122639811"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763688"
 ---
 # <a name="best-practices-for-writing-to-files-to-data-lake-with-data-flows"></a>Bewährte Methoden für das Schreiben in Dateien in Data Lake mit Datenflüssen
 
@@ -55,24 +55,24 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Datenflussaktivität.
 
 1. Klicken Sie auf der Homepage von Azure Data Factory auf **Orchestrate** (Orchestrieren).
 
-   ![Screenshot, der die ADF-Homepage zeigt.](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="Screenshot, der die ADF-Homepage zeigt.":::
 
 1. Geben Sie auf der Registerkarte **Allgemein** der Pipeline als **Namen** der Pipeline **DeltaLake** ein.
 1. Setzen Sie auf der oberen Leiste der Factory den Schieberegler **Datenfluss debuggen** auf „Ein“. Der Debugmodus ermöglicht das interaktive Testen von Transformationslogik mit einem aktiven Spark-Cluster. Die Aufwärmphase von Datenflussclustern dauert 5 bis 7 Minuten. Den Benutzern wird empfohlen, zuerst den Debugmodus zu aktivieren, wenn sie die Entwicklung eines Datenflusses planen. Weitere Informationen finden Sie unter [Debugmodus](concepts-data-flow-debug-mode.md).
 
-    ![Datenflussaktivität](media/tutorial-data-flow/dataflow1.png)
+    :::image type="content" source="media/tutorial-data-flow/dataflow1.png" alt-text="Datenflussaktivität":::
 1. Erweitern Sie im Bereich **Aktivitäten** das Accordion-Element **Verschieben und transformieren**. Ziehen Sie die **Datenfluss**-Aktivität per Drag & Drop aus dem Bereich auf die Pipelinecanvas.
 
-    ![Screenshot der Pipelinecanvas, auf der die Datenflussaktivität abgelegt werden kann](media/tutorial-data-flow/activity1.png)
+    :::image type="content" source="media/tutorial-data-flow/activity1.png" alt-text="Screenshot der Pipelinecanvas, auf der die Datenflussaktivität abgelegt werden kann":::
 1. Wählen Sie im Popupfenster **Datenfluss hinzufügen** die Option **Neuen Datenfluss erstellen** aus, und geben Sie dem Datenfluss den Namen **DeltaLake**. Klicken Sie anschließend auf „Fertig stellen“.
 
-    ![Screenshot des Fensters, in dem beim Erstellen eines neuen Datenflusses der Name eingegeben wird](media/tutorial-data-flow/activity2.png)
+    :::image type="content" source="media/tutorial-data-flow/activity2.png" alt-text="Screenshot des Fensters, in dem beim Erstellen eines neuen Datenflusses der Name eingegeben wird":::
 
 ## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>Erstellen von Transformationslogik auf der Datenflusscanvas
 
 Sie verwenden alle Quelldaten (in diesem Tutorial wird eine Parquet-Dateiquelle verwendet) sowie eine Senkentransformation, um die Daten mithilfe der effektivsten Mechanismen für Data Lake ETL im Parquet-Format bereitzustellen.
 
-![Abschließender Flow](media/data-flow/parts-final.png "Abschließender Flow")
+:::image type="content" source="media/data-flow/parts-final.png" alt-text="Abschließender Flow":::
 
 ### <a name="tutorial-objectives"></a>Ziele des Tutorials
 
@@ -101,7 +101,7 @@ Es ist üblich, eindeutige Werte in Ihren Daten zu verwenden, um Ordnerhierarchi
 1. Wenn Sie auf die Datenpartitionen in einer Datenflussquelle zugreifen, zeigen Sie nur auf den Ordner der obersten Ebene oberhalb von ```releaseyear``` und verwenden ein Platzhaltermuster für jeden nachfolgenden Ordner. Beispiel: ```**/**/*.parquet```
 1. Wenn Sie die Datenwerte bearbeiten möchten oder synthetische Werte für Ordnernamen generiert werden müssen, verwenden Sie die Transformation für abgeleitete Spalten, um die Werte zu erstellen, die Sie in Ihren Ordnernamen verwenden möchten.
 
-![Schlüsselpartitionierung](media/data-flow/key-parts.png "Schlüsselpartitionierung")
+:::image type="content" source="media/data-flow/key-parts.png" alt-text="Schlüsselpartitionierung":::
    
 ### <a name="name-folder-as-data-values"></a>Name folder as data values (Ordnername aus Datenwerten)
 
@@ -113,7 +113,7 @@ Eine etwas leistungsstärkere Senkentechnik für Lake Data mithilfe von ADLS Gen
 1. Wählen Sie die Spalte aus, die Sie zum Generieren von Ordnernamen verwenden möchten.
 1. Wenn Sie die Datenwerte bearbeiten möchten oder synthetische Werte für Ordnernamen generiert werden müssen, verwenden Sie die Transformation für abgeleitete Spalten, um die Werte zu erstellen, die Sie in Ihren Ordnernamen verwenden möchten.
 
-![Ordneroption](media/data-flow/folders.png "Ordner")
+:::image type="content" source="media/data-flow/folders.png" alt-text="Ordneroption":::
 
 ### <a name="name-file-as-data-values"></a>Name file as data values (Dateiname aus Datenwerten)
 

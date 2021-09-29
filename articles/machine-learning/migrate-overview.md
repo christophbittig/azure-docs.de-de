@@ -8,17 +8,17 @@ ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 08/23/2021
-ms.openlocfilehash: 87902df54eccdd7038c8351f4ca1794b013a0f13
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 4f4b0cd13095c83f84c96e57e73f255caf4fcdc9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122699089"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124736334"
 ---
 # <a name="migrate-to-azure-machine-learning"></a>Migrieren zu Azure Machine Learning 
 
 > [!IMPORTANT]
-> Der Support für Machine Learning Studio (klassisch) endet am 31. August 2024. Es wird empfohlen, bis zu diesem Datum auf [Azure Machine Learning](/azure/machine-learning/overview-what-is-azure-machine-learning) umzustellen.
+> Der Support für Machine Learning Studio (klassisch) endet am 31. August 2024. Es wird empfohlen, bis zu diesem Datum auf [Azure Machine Learning](./overview-what-is-azure-machine-learning.md) umzustellen.
 >
 > Ab dem 1. Dezember 2021 können Sie keine neuen Ressourcen in Machine Learning Studio (klassisch) mehr erstellen. Bis zum 31. August 2024 können Sie die vorhandenen Ressourcen in Machine Learning Studio (klassisch) weiterhin verwenden.  
 >
@@ -82,7 +82,7 @@ Nachdem Sie eine Strategie definiert haben, migrieren Sie Ihr erstes Modell.
 
 ## <a name="step-5-cleanup-studio-classic-assets"></a>Schritt 5: Bereinigen von Ressourcen in Studio (klassisch)
 
-1. [Bereinigen Sie Ressourcen aus Studio (klassisch)](/classic/export-delete-personal-data-dsr.md), um zusätzliche Gebühren zu vermeiden. Sie sollten Ressourcen so lange für Fallbacks aufbewahren, bis Sie die Machine Learning-Workloads überprüft haben.
+1. [Bereinigen Sie Ressourcen aus Studio (klassisch)](./classic/export-delete-personal-data-dsr.md), um zusätzliche Gebühren zu vermeiden. Sie sollten Ressourcen so lange für Fallbacks aufbewahren, bis Sie die Machine Learning-Workloads überprüft haben.
 
 ## <a name="step-6-review-and-expand-scenarios"></a>Schritt 6: Überprüfen und Erweitern von Szenarien
 

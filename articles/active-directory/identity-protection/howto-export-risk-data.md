@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f42329632b384ad2217f4deac97a9b984d17da7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 07ea682d65bde9748a4cd55ed066eb8f31eb418a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346744"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784088"
 ---
 # <a name="how-to-export-risk-data"></a>Anleitung: Exportieren von Risikodaten
 
@@ -73,7 +73,7 @@ Azure Event Hubs können eingehende Daten aus Quellen wie Azure AD Identity Prot
 
 ## <a name="other-options"></a>Weitere Optionen
 
-Organisationen können auch [Azure AD-Daten zur weiteren Verarbeitung mit Azure Sentinel verbinden](../../sentinel/connect-azure-ad-identity-protection.md).
+Organisationen können auch [Azure AD-Daten zur weiteren Verarbeitung mit Azure Sentinel verbinden](../../sentinel/data-connectors-reference.md#azure-active-directory-identity-protection).
 
 Organisationen können die [Microsoft Graph-API verwenden, um programmgesteuert mit Risikoereignissen zu interagieren](howto-identity-protection-graph-api.md).
 
@@ -81,6 +81,6 @@ Organisationen können die [Microsoft Graph-API verwenden, um programmgesteuert 
 
 - [Was ist die Azure Active Directory-Überwachung?](../reports-monitoring/overview-monitoring.md)
 - [Installieren und Verwenden der Log Analytics-Ansichten für Azure Active Directory](../reports-monitoring/howto-install-use-log-analytics-views.md)
-- [Verbinden von Daten aus Azure AD Identity Protection](../../sentinel/connect-azure-ad-identity-protection.md)
+- [Verbinden von Daten aus Azure AD Identity Protection](../../sentinel/data-connectors-reference.md#azure-active-directory-identity-protection)
 - [Azure Active Directory Identity Protection und das Microsoft Graph PowerShell SDK](howto-identity-protection-graph-api.md)
 - [Tutorial: Streamen von Azure Active Directory-Protokollen an einen Azure Event Hub](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)

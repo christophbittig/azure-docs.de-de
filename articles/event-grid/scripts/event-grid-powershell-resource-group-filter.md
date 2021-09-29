@@ -3,13 +3,13 @@ title: 'Azure PowerShell: Abonnieren einer Ressourcengruppe'
 description: In diesem Artikel werden anhand eines Azure PowerShell-Beispielskripts das Abonnieren von Event Grid-Ereignissen für eine Ressourcengruppe und das Filtern nach einer Ressource veranschaulicht.
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 07/08/2020
-ms.openlocfilehash: f3aeec208ba6b80643e50307b89f590977bfb446
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/15/2021
+ms.openlocfilehash: 919048142226ed59d7c697ae62333e96b46ad02e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87460761"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673728"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-and-filter-for-a-resource-with-powershell"></a>Abonnieren von Ereignissen für eine Ressourcengruppe und Filtern nach einer Ressource mit PowerShell
 

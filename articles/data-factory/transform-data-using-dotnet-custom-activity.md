@@ -8,13 +8,13 @@ author: nabhishek
 ms.author: abnarain
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell, synapse
-ms.date: 08/24/2021
-ms.openlocfilehash: 30cae7cb417037637b16b8c5e69981d5897c4a0e
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: 5446bf3c2271fd31fc99e5fadb2f3ab92ca38e26
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122824722"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124806290"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-or-azure-synapse-analytics-pipeline"></a>Verwenden benutzerdefinierter Aktivitäten in einer Pipeline von Azure Data Factory oder Azure Synapse Analytics
 
@@ -389,5 +389,5 @@ In den folgenden Artikeln erfahren Sie, wie Daten auf andere Weisen transformier
 * [MapReduce-Aktivität](transform-data-using-hadoop-map-reduce.md)
 * [Hadoop-Streamingaktivität](transform-data-using-hadoop-streaming.md)
 * [Spark-Aktivität](transform-data-using-spark.md)
-* [Batch Execution-Aktivität für ML Studio (Classic)](transform-data-using-machine-learning.md)
+* [Batch Execution-Aktivität für ML Studio (klassisch)](transform-data-using-machine-learning.md)
 * [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md)

@@ -5,13 +5,13 @@ author: TheovanKraay
 ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
-ms.date: 03/15/2021
-ms.openlocfilehash: 6387b07aa29a836eae79b6090571f143091d2115
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/08/2021
+ms.openlocfilehash: b2d00a30a1b53ecb6c854e84c3202e10a92abcea
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749500"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124736304"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-using-azure-cli-preview"></a>Schnellstart: Erstellen eines Clusters vom Typ „Azure Managed Instance for Apache Cassandra“ mithilfe der Azure CLI (Vorschau)
 
@@ -48,19 +48,23 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Azure CLI ei
    ```azurecli-interactive
    az network vnet create -n <VNet_Name> -l eastus2 -g <Resource_Group_Name> --subnet-name <Subnet Name>
    ```
-    > [!NOTE]
-    > Für die Bereitstellung einer Instanz von Azure Managed Instance for Apache Cassandra ist Internetzugriff erforderlich. In Umgebungen, in denen der Internetzugriff eingeschränkt ist, tritt ein Fehler bei der Bereitstellung auf. Stellen Sie sicher, dass der Zugriff im VNet auf die folgenden wichtigen Azure-Dienste, die für die richtige Funktionsweise von Managed Cassandra erforderlich sind, nicht blockiert ist:
-    > - Azure Storage
-    > - Azure Key Vault
-    > - Skalierungsgruppen für virtuelle Azure-Computer
-    > - Azure-Überwachung
-    > - Azure Active Directory
-    > - Azure Security
 
-1. Wenden Sie einige spezielle Berechtigungen auf das virtuelle Netzwerk an, die für die verwaltete Instanz erforderlich sind. Verwenden Sie den Befehl `az role assignment create`, und ersetzen Sie `<subscription ID>`, `<resource group name>` und `<VNet name>` durch die entsprechenden Werte:
+   > [!NOTE]
+   > Für die Bereitstellung einer Instanz von Azure Managed Instance for Apache Cassandra ist Internetzugriff erforderlich. In Umgebungen, in denen der Internetzugriff eingeschränkt ist, tritt ein Fehler bei der Bereitstellung auf. Stellen Sie sicher, dass der Zugriff im VNet auf die folgenden wichtigen Azure-Dienste, die für die richtige Funktionsweise von Managed Cassandra erforderlich sind, nicht blockiert ist:
+   > - Azure Storage
+   > - Azure Key Vault
+   > - Skalierungsgruppen für virtuelle Azure-Computer
+   > - Azure-Überwachung
+   > - Azure Active Directory
+   > - Azure Security
+
+1. Wenden Sie einige spezielle Berechtigungen auf das virtuelle Netzwerk an, die für die verwaltete Instanz erforderlich sind. Verwenden Sie den Befehl `az role assignment create`, und ersetzen Sie `<subscriptionID>`, `<resourceGroupName>` und `<vnetName>` durch die entsprechenden Werte:
 
    ```azurecli-interactive
-   az role assignment create --assignee a232010e-820c-4083-83bb-3ace5fc29d0b --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>
+   az role assignment create \
+     --assignee a232010e-820c-4083-83bb-3ace5fc29d0b \
+     --role 4d97b98b-1d4f-4787-a291-c67834d212e7 \
+     --scope /subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/virtualNetworks/<vnetName>
    ```
 
    > [!NOTE]
@@ -79,12 +83,12 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Azure CLI ei
    initialCassandraAdminPassword='myPassword'
     
    az managed-cassandra cluster create \
-      --cluster-name $clusterName \
-      --resource-group $resourceGroupName \
-      --location $location \
-      --delegated-management-subnet-id $delegatedManagementSubnetId \
-      --initial-cassandra-admin-password $initialCassandraAdminPassword \
-      --debug
+     --cluster-name $clusterName \
+     --resource-group $resourceGroupName \
+     --location $location \
+     --delegated-management-subnet-id $delegatedManagementSubnetId \
+     --initial-cassandra-admin-password $initialCassandraAdminPassword \
+     --debug
    ```
 
 1. Erstellen Sie abschließend mithilfe des Befehls [az managed-cassandra datacenter create](/cli/azure/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_datacenter_create) ein Rechenzentrum für den Cluster mit drei Knoten.
@@ -94,12 +98,12 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Azure CLI ei
    dataCenterLocation='eastus2'
     
    az managed-cassandra datacenter create \
-      --resource-group $resourceGroupName \
-      --cluster-name $clusterName \
-      --data-center-name $dataCenterName \
-      --data-center-location $dataCenterLocation \
-      --delegated-subnet-id $delegatedManagementSubnetId \
-      --node-count 3 
+     --resource-group $resourceGroupName \
+     --cluster-name $clusterName \
+     --data-center-name $dataCenterName \
+     --data-center-location $dataCenterLocation \
+     --delegated-subnet-id $delegatedManagementSubnetId \
+     --node-count 3 
    ```
 
 1. Die Knoten des erstellten Rechenzentrums können bei Bedarf mithilfe des Befehls [az managed-cassandra datacenter update](/cli/azure/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_datacenter_update) hoch- oder herunterskaliert werden. Ändern Sie den Wert des Parameters `node-count` in den gewünschten Wert:
@@ -111,10 +115,10 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Azure CLI ei
    dataCenterLocation='eastus2'
     
    az managed-cassandra datacenter update \
-      --resource-group $resourceGroupName \
-      --cluster-name $clusterName \
-      --data-center-name $dataCenterName \
-      --node-count 9 
+     --resource-group $resourceGroupName \
+     --cluster-name $clusterName \
+     --data-center-name $dataCenterName \
+     --node-count 9 
    ```
 
 ## <a name="connect-to-your-cluster"></a>Herstellen einer Clusterverbindung

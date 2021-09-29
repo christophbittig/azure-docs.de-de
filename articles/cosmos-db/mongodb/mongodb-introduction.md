@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/26/2021
 author: gahl-levy
 ms.author: gahllevy
-ms.openlocfilehash: bce5b5874b12638d1f2d628e23812676053006a4
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 9a142dfcba67b80a8293a15d03ea2b389bd297d1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123035202"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593893"
 ---
 # <a name="azure-cosmos-db-api-for-mongodb"></a>Azure Cosmos DB-API für MongoDB
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -57,7 +57,7 @@ Da allen Versionen der API für MongoDB die gleiche Codebasis zugrunde liegt, k�
 
 * Die Azure Cosmos DB-API für MongoDB kann auf drei Arten bereitgestellt werden:
      * [Bereitgestellter Durchsatz:](../set-throughput.md) Legen Sie einen Wert für RU/s fest, und ändern Sie ihn manuell. Dieses Modell eignet sich am besten für konsistente Workloads.
-     * [Autoscale]../(provision-throughput-autoscale.md): Legen Sie eine Obergrenze für den benötigten Durchsatz fest. Der Durchsatz wird sofort gemäß Ihren Anforderungen skaliert. Dieses Modell eignet sich am besten für Workloads, die sich häufig ändern, und optimiert deren Kosten.
+     * [Autoskalierung:](../provision-throughput-autoscale.md) Legen Sie eine Obergrenze für den benötigten Durchsatz fest. Der Durchsatz wird sofort gemäß Ihren Anforderungen skaliert. Dieses Modell eignet sich am besten für Workloads, die sich häufig ändern, und optimiert deren Kosten.
      * [Serverlos](../serverless.md): Bezahlen Sie nur für den von Ihnen genutzten Durchsatz. Dieses Modell eignet sich am besten für Entwicklungs-/Testworkloads. 
 
 * Die Leistung von Shardclustern hängt vom Shardschlüssel ab, der beim Erstellen einer Sammlung gewählt wird. Wählen Sie den Shardschlüssel mit Bedacht, um eine gleichmäßige Verteilung Ihrer Daten auf Shards zu gewährleisten.
@@ -65,7 +65,7 @@ Da allen Versionen der API für MongoDB die gleiche Codebasis zugrunde liegt, k�
 ### <a name="capacity-planning"></a>Kapazitätsplanung
 
 Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen? Sie können Informationen zu Ihrem vorhandenen Datenbankcluster für die Kapazitätsplanung verwenden.
-* Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](../convert-vcore-to-request-unit.md) 
+* Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](../convert-vcore-to-request-unit.md). 
 * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbank-Workload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](../estimate-ru-with-capacity-planner.md)
 
 ## <a name="quickstart"></a>Schnellstart
@@ -79,7 +79,7 @@ Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB du
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen? Sie können Informationen zu Ihrem vorhandenen Datenbankcluster für die Kapazitätsplanung verwenden.
-    * Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](../convert-vcore-to-request-unit.md) 
+    * Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](../convert-vcore-to-request-unit.md). 
     * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbankworkload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-capacity-planner.md).
 * Im Tutorial [Verbinden einer MongoDB-Anwendung mit Azure Cosmos DB](connect-mongodb-account.md) erfahren Sie, wie Sie Ihre Kontoverbindungszeichenfolge abrufen.
 * Im Tutorial zum [Verwenden von Studio 3T mit Azure Cosmos DB](connect-using-mongochef.md) erfahren Sie, wie Sie eine Verbindung zwischen Ihrer Cosmos-Datenbank und einer MongoDB-App in Studio 3T erstellen.

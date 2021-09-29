@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6affeacd119682a76f648feff05429f1e3173b1c
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 78356745ee013b011f23a4bf42f903cf89bedd4b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110461894"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128603978"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>Tutorial: Verschlüsseln und Entschlüsseln von Blobs mit Azure Key Vault
 
@@ -32,9 +32,9 @@ Eine Übersicht über Azure Key Vault finden Sie unter [Was ist Azure Key Vault?
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* Ein Azure-Speicherkonto
-* Visual Studio 2013 oder höher
-* Azure PowerShell
+- Ein Azure-Speicherkonto
+- Visual Studio 2013 oder höher
+- Azure PowerShell
 
 ## <a name="overview-of-client-side-encryption"></a>Übersicht über die clientseitige Verschlüsselung
 
@@ -51,10 +51,10 @@ Hier eine kurze Beschreibung zur Funktionsweise der clientseitigen Verschlüssel
 
 Zum Fortsetzen dieses Tutorials müssen Sie die folgenden Schritte ausführen, die im Tutorial [Schnellstart: Azure Key Vault-Geheimnisclientbibliothek für .NET (SDK v4)](../../key-vault/secrets/quick-create-net.md) erläutert sind:
 
-* Erstellen eines Schlüsseltresors
-* Hinzufügen eines Schlüssels oder geheimen Schlüssels zum Schlüsseltresor
-* Registrieren Sie eine Anwendung bei Azure Active Directory.
-* Autorisieren der Anwendung zum Verwenden des Schlüssels oder geheimen Schlüssels
+- Erstellen eines Schlüsseltresors
+- Hinzufügen eines Schlüssels oder geheimen Schlüssels zum Schlüsseltresor
+- Registrieren Sie eine Anwendung bei Azure Active Directory.
+- Autorisieren der Anwendung zum Verwenden des Schlüssels oder geheimen Schlüssels
 
 Notieren Sie ClientID und ClientSecret. Diese Angaben werden generiert, wenn Sie eine Anwendung mit Azure Active Directory registrieren.
 
@@ -107,6 +107,7 @@ using Microsoft.Azure.KeyVault;
 using System.Threading;
 using System.IO;
 ```
+
 ---
 
 ## <a name="add-a-method-to-get-a-token-to-your-console-application"></a>Hinzufügen einer Methode zum Abrufen eines Tokens für die Konsolenanwendung
@@ -134,6 +135,7 @@ private async static Task<string> GetToken(string authority, string resource, st
     return result.AccessToken;
 }
 ```
+
 ---
 
 ## <a name="access-azure-storage-and-key-vault-in-your-program"></a>Zugreifen auf Azure Storage und Key Vault in Ihrem Programm
@@ -161,18 +163,19 @@ contain.CreateIfNotExists();
 // This is where the GetToken method from above is used.
 KeyVaultKeyResolver cloudResolver = new KeyVaultKeyResolver(GetToken);
 ```
+
 ---
 
 > [!NOTE]
 > Schlüsseltresor-Objektmodelle
-> 
+>
 > Es ist wichtig zu verstehen, dass eigentlich zwei Schlüsseltresor-Objektmodelle vorhanden sind: eins basiert auf der REST-API (KeyVault-Namespace), und das andere ist eine Erweiterung für die clientseitige Verschlüsselung.
-> 
+>
 > Der Schlüsseltresor-Client interagiert mit der REST-API und erkennt JSON-Webschlüssel und geheime Schlüssel für die beiden Arten von Elementen, die im Schlüsseltresor enthalten sind.
-> 
+>
 > Die Schlüsseltresor-Erweiterungen sind Klassen, die scheinbar speziell für die clientseitige Verschlüsselung in Azure Storage erstellt wurden. Sie enthalten eine Schnittstelle für Schlüssel (IKey) und Klassen, die auf dem Konzept eines "Key Resolver" basieren. Es gibt zwei Implementierungen von IKey, die Sie kennen müssen: RSAKey und SymmetricKey. Sie kollidieren mit den Elementen, die im Schlüsseltresor enthalten sind, aber an diesem Punkt sind es unabhängige Klassen (Schlüssel und geheimer Schlüssel, die vom Schlüsseltresor-Client abgerufen werden, implementieren IKey also nicht).
-> 
-> 
+>
+>
 
 ## <a name="encrypt-blob-and-upload"></a>Verschlüsseln des Blobs und Hochladen
 
@@ -202,15 +205,15 @@ CloudBlockBlob blob = contain.GetBlockBlobReference("MyFile.txt");
 using (var stream = System.IO.File.OpenRead(@"C:\Temp\MyFile.txt"))
     blob.UploadFromStream(stream, stream.Length, null, options, null);
 ```
+
 ---
 
 > [!NOTE]
 > Wenn Sie sich den BlobEncryptionPolicy-Konstruktor ansehen, wird Ihnen auffallen, dass dafür ein Schlüssel und/oder ein Konfliktlöser (Resolver) verwendet werden kann. Denken Sie daran, dass Sie an diesem Punkt keinen Konfliktlöser für die Verschlüsselung verwenden können, weil dafür derzeit kein Standardschlüssel unterstützt wird.
 
-
 ## <a name="decrypt-blob-and-download"></a>Entschlüsseln des Blobs und Herunterladen
 
-Eigentlich findet Entschlüsselung statt, wenn die Verwendung der Resolver-Klassen sinnvoll ist. Die ID des Schlüssels, der für die Verschlüsselung verwendet wird, wird dem BLOB in seinen Metadaten zugeordnet. Es gibt für Sie also keinen Grund, den Schlüssel abzurufen und sich die Zuordnung zwischen Schlüssel und BLOB zu merken. Sie müssen lediglich sicherstellen, dass der Schlüssel im Schlüsseltresor erhalten bleibt.   
+Eigentlich findet Entschlüsselung statt, wenn die Verwendung der Resolver-Klassen sinnvoll ist. Die ID des Schlüssels, der für die Verschlüsselung verwendet wird, wird dem BLOB in seinen Metadaten zugeordnet. Es gibt für Sie also keinen Grund, den Schlüssel abzurufen und sich die Zuordnung zwischen Schlüssel und BLOB zu merken. Sie müssen lediglich sicherstellen, dass der Schlüssel im Schlüsseltresor erhalten bleibt.
 
 Der private Schlüssel eines RSA-Schlüssels verbleibt im Schlüsseltresor. Damit die Entschlüsselung durchgeführt werden kann, wird der verschlüsselte Schlüssel aus den BLOB-Metadaten, der den CEK enthält, zur Entschlüsselung an den Schlüsseltresor gesendet.
 
@@ -231,6 +234,7 @@ BlobRequestOptions options = new BlobRequestOptions() { EncryptionPolicy = polic
 using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
     blob.DownloadToStream(np, null, options, null);
 ```
+
 ---
 
 > [!NOTE]
@@ -240,9 +244,9 @@ using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
 
 Für die Verwendung eines geheimen Schlüssels mit clientseitiger Verschlüsselung wird die SymmetricKey-Klasse genutzt, da ein geheimer Schlüssel im Wesentlichen ein symmetrischer Schlüssel ist. Wie oben erwähnt, wird ein geheimer Schlüssel im Schlüsseltresor nicht exakt einem "SymmetricKey" zugeordnet. Hierbei sind einige Dinge zu beachten:
 
-* Der Schlüssel in einem "SymmetricKey" muss eine feste Länge haben: 128, 192, 256, 384 oder 512 Bit.
-* Der Schlüssel in einem "SymmetricKey" sollte über eine Base64-Codierung verfügen.
-* Ein geheimer Schlüsseltresor-Schlüssel, der als "SymmetricKey" verwendet wird, muss im Schlüsseltresor den Inhaltstyp "application/octet-stream" aufweisen.
+- Der Schlüssel in einem "SymmetricKey" muss eine feste Länge haben: 128, 192, 256, 384 oder 512 Bit.
+- Der Schlüssel in einem "SymmetricKey" sollte über eine Base64-Codierung verfügen.
+- Ein geheimer Schlüsseltresor-Schlüssel, der als "SymmetricKey" verwendet wird, muss im Schlüsseltresor den Inhaltstyp "application/octet-stream" aufweisen.
 
 Hier ist ein Beispiel in PowerShell angegeben, bei dem im Schlüsseltresor ein geheimer Schlüssel erstellt wird, der als "SymmetricKey" verwendet werden kann.
 Bitte beachten Sie, dass der hartcodierte Wert „$key“ nur der Veranschaulichung dient. In Ihrem eigenen Code sollten Sie diesen Schlüssel generieren.
@@ -273,6 +277,7 @@ SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
     "https://contosokeyvault.vault.azure.net/secrets/TestSecret2/",
     CancellationToken.None).GetAwaiter().GetResult();
 ```
+
 ---
 
 ## <a name="next-steps"></a>Nächste Schritte

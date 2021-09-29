@@ -2,13 +2,13 @@
 title: Unterstützung des Verschiebevorgangs nach Ressourcentyp
 description: Eine Liste der Azure-Ressourcentypen, die in eine neue Ressourcengruppe, ein neues Abonnement oder eine neue Region verschoben werden können.
 ms.topic: conceptual
-ms.date: 08/30/2021
-ms.openlocfilehash: 614ef51474f789073f35e722733d255818bf3957
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.date: 09/08/2021
+ms.openlocfilehash: 14ef825ec2e11d76b90161dc7cf3d8814c8daa04
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123260889"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124764334"
 ---
 # <a name="move-operation-support-for-resources"></a>Unterstützung des Verschiebevorgangs für Ressourcen
 
@@ -831,7 +831,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
 > | ------------- | ----------- | ---------- | ---------- |
-> | backupvaults | Nein | Nein | Nein |
+> | backupvaults | [Ja](../../backup/backup-vault-overview.md#use-azure-portal-to-move-backup-vault-to-a-different-resource-group) | [Ja](../../backup/backup-vault-overview.md#use-azure-portal-to-move-backup-vault-to-a-different-subscription) | Nein |
 
 ## <a name="microsoftdatashare"></a>Microsoft.DataShare
 
@@ -1578,7 +1578,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
 > | ------------- | ----------- | ---------- | ---------- |
-> | accounts | **Ausstehend** | **Ausstehend** | Nein |
+> | accounts | Ja | Ja | Nein |
 
 ## <a name="microsoftproviderhub"></a>Microsoft.ProviderHub
 

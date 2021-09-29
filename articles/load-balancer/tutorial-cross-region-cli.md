@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 03/04/2021
-ms.openlocfilehash: ca4134ff25dc9915f256b5a7bdd9404021b60a8e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: b9c96a6434712ed3179fe25c1014dc1fdc6e062d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107791911"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124736571"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-azure-cli"></a>Tutorial: Erstellen einer regionsübergreifenden Azure Load Balancer-Instanz mit der Azure CLI
 
@@ -192,4 +192,4 @@ In diesem Tutorial haben Sie:
 
 Fahren Sie mit dem nächsten Artikel fort, und lernen Sie das...
 > [!div class="nextstepaction"]
-> [Lastenausgleich für virtuelle Computer über Verfügbarkeitszonen hinweg](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
+> [Lastenausgleich für virtuelle Computer über Verfügbarkeitszonen hinweg](./quickstart-load-balancer-standard-public-portal.md)

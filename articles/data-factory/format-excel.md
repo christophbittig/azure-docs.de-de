@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 7a1a0331276169bb81dcf86c74aab1a16855b25c
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 66f0f310faa32e65dea657d7b15ceae7e4f84ba0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123255845"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831352"
 ---
 # <a name="excel-file-format-in-azure-data-factory-and-azure-synapse-analytics"></a>Excel Dateiformat in Azure Data Factory and Azure Synapse Analytics
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -30,7 +30,7 @@ Das Excel-Format wird für die folgenden Connectors unterstützt: [Amazon S3](c
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). Dieser Abschnitt enthält eine Liste mit den Eigenschaften, die vom Excel-Dataset unterstützt werden.
 
-| Eigenschaft         | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft         | Beschreibung                                                  | Erforderlich |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | Die type-Eigenschaft des Datasets muss auf **Excel** festgelegt werden.   | Ja      |
 | location         | Speicherorteinstellungen der Datei(en) Jeder dateibasierte Connector verfügt unter `location` über seinen eigenen Speicherorttyp und unterstützte Eigenschaften. | Ja      |
@@ -77,7 +77,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Die folgenden Eigenschaften werden im Abschnitt ***\*source\**** der Kopieraktivität unterstützt.
 
-| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft      | Beschreibung                                                  | Erforderlich |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **ExcelSource** festgelegt sein. | Ja      |
 | storeSettings | Eine Gruppe von Eigenschaften für das Lesen von Daten aus einem Datenspeicher. Jeder dateibasierte Connector verfügt unter `storeSettings` über eigene unterstützte Leseeinstellungen. | Nein       |
@@ -110,7 +110,7 @@ Bei Zuordnungsdatenflüssen können Sie das Excel-Format in den folgenden Datens
 
 In der folgenden Tabelle sind die von einer Excel-Quelle unterstützten Eigenschaften aufgeführt. Sie können diese Eigenschaften auf der Registerkarte **Quelloptionen** bearbeiten. Bei Verwendung eines Inlinedatasets werden zusätzliche Dateieinstellungen angezeigt. Diese entsprechen den Eigenschaften, die im Abschnitt zu den [Dataseteigenschaften](#dataset-properties) beschrieben sind.
 
-| Name                      | BESCHREIBUNG                                                  | Erforderlich | Zulässige Werte                                            | Datenflussskript-Eigenschaft         |
+| Name                      | Beschreibung                                                  | Erforderlich | Zulässige Werte                                            | Datenflussskript-Eigenschaft         |
 | ------------------------- | ------------------------------------------------------------ | -------- | --------------------------------------------------------- | --------------------------------- |
 | Platzhalterpfade           | Alle Dateien, die dem Platzhalterpfad entsprechen, werden verarbeitet. Überschreibt den Ordner und den Dateipfad, die im Dataset festgelegt sind. | nein       | String[]                                                  | wildcardPaths                     |
 | Partitionsstammpfad       | Für partitionierte Dateidaten können Sie einen Partitionsstammpfad eingeben, um partitionierte Ordner als Spalten zu lesen. | nein       | String                                                    | partitionRootPath                 |
@@ -124,7 +124,7 @@ In der folgenden Tabelle sind die von einer Excel-Quelle unterstützten Eigensch
 
 Die Abbildung unten enthält ein Beispiel für eine Excel-Quellkonfiguration in Zuordnungsdatenflüssen per Datasetmodus.
 
-![Excel-Quelle](media/data-flow/excel-source.png)
+:::image type="content" source="media/data-flow/excel-source.png" alt-text="Excel-Quelle":::
 
 Das zugehörige Datenflussskript ist:
 
@@ -136,7 +136,7 @@ source(allowSchemaDrift: true,
 
 Bei Verwendung eines Inlinedatasets werden im Zuordnungsdatenfluss die folgenden Quelloptionen angezeigt.
 
-![Inlinedataset für Excel-Quelle](media/data-flow/excel-source-inline-dataset.png)
+:::image type="content" source="media/data-flow/excel-source-inline-dataset.png" alt-text="Inlinedataset für Excel-Quelle":::
 
 Das zugehörige Datenflussskript ist:
 

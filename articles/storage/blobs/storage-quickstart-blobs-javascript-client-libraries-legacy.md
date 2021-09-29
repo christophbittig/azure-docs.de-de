@@ -2,19 +2,19 @@
 title: 'Schnellstart: Azure Blob Storage für JavaScript v10 im Browser'
 description: Hier erfahren Sie, wie Sie Blobs unter Verwendung des JavaScript v10 SDK im Rahmen einer HTML-Seite hochladen, auflisten und löschen.
 services: storage
-author: twooley
+author: normesta
 ms.custom: mvc, devx-track-js
 ms.service: storage
-ms.author: twooley
+ms.author: normesta
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: b3cca61fe272b61f2227e7546b37e4ea37cfd693
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 925a29de633b5cc39b5bacc3c59cca48f4c9c612
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280138"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673348"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -183,7 +183,7 @@ Fügen Sie dann in *index.html* nach dem schließenden `</body>`-Tag den folgend
 </script>
 ```
 
-Dieser Code fügt einen Verweis auf die Skriptdatei hinzu und bietet Platz für Ihren eigenen JavaScript-Code. Im Rahmen dieses Schnellstarts verwenden wir die Skriptdatei *azure-storage-blob.js*, damit Sie sie in VS Code öffnen, ihren Inhalt lesen und Haltepunkte festlegen können. In einer Produktionsumgebung sollten Sie die kompaktere Datei *azure-storage.blob.min.js* verwenden, die ebenfalls in der ZIP-Datei enthalten ist.
+Dieser Code fügt einen Verweis auf die Skriptdatei hinzu und bietet Platz für Ihren eigenen JavaScript-Code. Im Rahmen dieses Schnellstarts verwenden wir die Skriptdatei `azure-storage-blob.js`, damit Sie sie in VS Code öffnen, ihren Inhalt lesen und Haltepunkte festlegen können. In einer Produktionsumgebung sollten Sie die kompaktere Datei *azure-storage.blob.min.js* verwenden, die ebenfalls in der ZIP-Datei enthalten ist.
 
 In der [Referenzdokumentation](/javascript/api/%40azure/storage-blob/index) finden Sie weitere Informationen zu den einzelnen Blobspeicherfunktionen. Beachten Sie, dass einige der Funktionen im SDK nur in Node.js oder nur im Browser verfügbar sind.
 

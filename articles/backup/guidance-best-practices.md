@@ -3,12 +3,12 @@ title: Leitfaden und bewährte Methoden
 description: Bewährte Methoden und Anleitungen zum Sichern von Cloudworkloads und lokalen Workloads in der Cloud
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: e2d65f256a69b397486675dc71efb71ce3e4263d
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: ecac56034c78cba09133fc12ca4ac8827afb0ea2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122605033"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124806735"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Sichern von Cloudworkloads und lokalen Workloads in der Cloud
 
@@ -240,7 +240,7 @@ Als Sicherungsbenutzer oder -administrator sollten Sie alle Sicherungslösungen 
 * Außerdem:
   * Sie können Daten (z. B. Aufträge, Richtlinien usw.) an den **Log Analytics**-Arbeitsbereich senden. Auf diese Weise können Sie mit den Features von Azure Monitor Logs die Korrelation der Daten mit anderen von Azure Monitor gesammelten Überwachungsdaten ermöglichen, Protokolleinträge von mehreren Azure-Abonnements und -Mandanten an einem Ort für die gemeinsame Analyse konsolidieren, Protokollabfragen verwenden, um komplexe Analysen durchzuführen, und tiefe Einblicke in die Protokolleinträge gewinnen. [Hier erhalten Sie weitere Informationen](../azure-monitor/essentials/activity-log.md#send-to-log-analytics-workspace).
   * Sie können Daten an Event Hub senden, um Einträge z. B. an ein SIEM (Security Information and Event Management) eines Drittanbieters oder eine andere Protokollanalyselösung außerhalb von Azure zu senden. [Hier erhalten Sie weitere Informationen](../azure-monitor/essentials/activity-log.md#send-to-azure-event-hubs).
-  * Sie können Daten an ein Azure Storage Konto senden, wenn Sie die Protokolldaten für Überwachung, statische Analyse oder Sicherungszwecke länger als 90 Tage aufbewahren möchten. Falls Sie Ihre Ereignisse nur maximal 90 Tage lang aufbewahren möchten, müssen Sie keine Archive in einem Speicherkonto einrichten, da Aktivitätsprotokollereignisse in der Azure-Plattform 90 Tage lang aufbewahrt werden. [Weitere Informationen](../azure-monitor/essentials/activity-log.md#send-to--azure-storage)
+  * Sie können Daten an ein Azure Storage Konto senden, wenn Sie die Protokolldaten für Überwachung, statische Analyse oder Sicherungszwecke länger als 90 Tage aufbewahren möchten. Falls Sie Ihre Ereignisse nur maximal 90 Tage lang aufbewahren möchten, müssen Sie keine Archive in einem Speicherkonto einrichten, da Aktivitätsprotokollereignisse in der Azure-Plattform 90 Tage lang aufbewahrt werden. [Weitere Informationen](../azure-monitor/essentials/activity-log.md#send-to-azure-storage)
 
 ### <a name="alerting"></a>Warnungen
 

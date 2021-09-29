@@ -8,22 +8,22 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/25/2021
+ms.date: 09/02/2021
 ms.author: davidmu
 ms.reviewer: lenalepa
-ms.openlocfilehash: 36da44521169c516888489bd0ac60015adcc432f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6d77f3d93ad3b69f6cc8842e8a320221e533c4c7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355216"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124791477"
 ---
 # <a name="plan-azure-active-directory-my-apps-configuration"></a>Planen der Konfiguration von „Meine Apps“ in Azure Active Directory
 
 > [!NOTE]
 > Dieser Artikel richtet sich an IT-Experten, die in ihrer Organisation die Konfiguration des Portals „Meine Apps“ planen müssen.
 >
-> **Die Dokumentation für Endbenutzer finden Sie unter [Anmelden beim Portal „Meine Apps“ und Starten von Apps über dieses](../user-help/my-apps-portal-end-user-access.md)** .
+> **Die Dokumentation für Endbenutzer finden Sie unter [Anmelden beim Portal „Meine Apps“ und Starten von Apps über dieses](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)** .
 
 „Meine Apps“ von Azure Active Directory (Azure AD) ist ein webbasiertes Portal zum Starten und Verwalten von Apps. Die Seite „Meine Apps“ bietet den Benutzern einen zentralen Ort, an dem sie mit ihrer Arbeit beginnen können und alle Anwendungen finden, auf die sie Zugriff haben. Benutzer greifen über [https://myapps.microsoft.com](https://myapps.microsoft.com/) auf das Portal „Meine Apps“ zu.
 
@@ -36,7 +36,6 @@ Das Portal „Meine Apps“ ist standardmäßig für Benutzer verfügbar und kan
 Eine Anwendung in der Liste der Azure Active Directory-Unternehmensanwendungen wird angezeigt, wenn die beiden folgenden Bedingungen erfüllt sind:
 
 * Die Sichtbarkeitseigenschaft für die App ist auf TRUE eingestellt.
-
 * Die App ist einem Benutzer oder einer Gruppe zugewiesen. Sie wird den zugewiesenen Benutzern angezeigt.
 
 Durch das Konfigurieren des Portals wird gewährleistet, dass die richtigen Personen problemlos die richtigen Apps finden können.
@@ -46,27 +45,18 @@ Durch das Konfigurieren des Portals wird gewährleistet, dass die richtigen Pers
 Benutzer greifen zu folgenden Zwecken auf das Portal „Meine Apps“ zu:
 
 * Ermitteln aller mit Azure AD verbundenen Anwendungen ihres Unternehmens, auf die sie Zugriff haben, und Zugreifen auf diese Anwendungen.
-
    * Es empfiehlt sich, die Apps für einmaliges Anmelden (Single Sign-On, SSO) zu konfigurieren, um eine optimale Benutzererfahrung zu ermöglichen.
-
 * Anfordern des Zugriffs auf neue Apps, die für Self-Service konfiguriert sind.
-
 * Erstellen persönlicher Sammlungen von Apps.
-
 * Verwalten des Zugriffs auf Apps für andere Personen, wenn ihnen die Rolle des Gruppenbesitzers oder die delegierte Steuerungsberechtigung für die Gruppe zugewiesen ist, die zum Gewähren des Zugriffs auf die Anwendung(en) verwendet wird.
 
 Administratoren können Folgendes konfigurieren:
 
 * [Zustimmungsprozesse ](../manage-apps/configure-user-consent.md) (einschließlich Vertragsbedingungen)
-
 * [Self-Service-Anwendungsermittlung und -Zugriffsanforderungen](../manage-apps/access-panel-manage-self-service-access.md)
-
 * [Anwendungssammlungen](../manage-apps/access-panel-collections.md)
-
 * Zuweisen von Symbolen zu Anwendungen
-
 * Benutzerfreundliche Namen für Anwendungen
-
 * Im Portal „Meine Apps“ angezeigtes Unternehmensbranding
 
 ## <a name="plan-consent-configuration"></a>Planen der Zustimmungskonfiguration
@@ -102,7 +92,6 @@ Es empfiehlt sich, für alle Apps im Portal „Meine Apps“ einmaliges Anmelden
 Azure AD unterstützt mehrere SSO-Optionen.
 
 * Weitere Informationen hierzu finden Sie unter [Optionen für einmaliges Anmelden in Azure AD](sso-options.md).
-
 * Weitere Informationen dazu, wie Sie Azure AD als Identitätsanbieter für eine App verwenden, finden Sie unter [Schnellstartserie zur Anwendungsverwaltung](../manage-apps/view-applications-portal.md).
 
 ### <a name="use-federated-sso-if-possible"></a>Verwenden von Verbund-SSO (sofern möglich)
@@ -120,12 +109,11 @@ Zum Anmelden bei Anwendungen mit kennwortbasierter einmaliger Anmeldung oder Anw
 
 ![Screenshot](./media/my-apps-deployment-plan/ap-dp-install-myapps.png)
 
-Ausführliche Informationen zur Erweiterung finden Sie unter [Installieren der Browsererweiterung „Meine Apps“](../user-help/my-apps-portal-end-user-access.md).
+Ausführliche Informationen zur Erweiterung finden Sie unter [Installieren der Browsererweiterung „Meine Apps“](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
-Wenn Sie diese Anwendungen integrieren müssen, sollten Sie einen Mechanismus definieren, um die Erweiterung skalierbar mit [unterstützten Browsern](../user-help/my-apps-portal-end-user-access.md) bereitzustellen. Beispiele für Optionen:
+Wenn Sie diese Anwendungen integrieren müssen, sollten Sie einen Mechanismus definieren, um die Erweiterung skalierbar mit [unterstützten Browsern](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510) bereitzustellen. Beispiele für Optionen:
 
 * [Benutzergesteuerter Download und Konfiguration für Chrome, Firefox, Microsoft Edge oder Internet Explorer](../user-help/my-apps-portal-end-user-access.md)
-
 * [Configuration Manager für Internet Explorer](/mem/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
 
 Die Erweiterung ermöglicht den Benutzern, jede App über die Suchleiste zu starten, kürzlich verwendete Anwendungen zu finden und darauf zuzugreifen und einen Link zur Seite „Meine Apps“ zu verwenden.
@@ -151,7 +139,6 @@ Jede Azure AD-Anwendung, auf die ein Benutzer Zugriff hat, wird in „Meine App
 Endbenutzer können ihre Oberfläche auf folgende Weise ebenfalls anpassen:
 
 * Erstellen eigener App-Sammlungen
-
 * [Ausblenden und Neuanordnen von App-Sammlungen](access-panel-collections.md).
 
 ![Screenshot: Self-Service-Konfiguration](./media/my-apps-deployment-plan/collections.png)
@@ -174,9 +161,7 @@ Weitere Informationen zum Aktivieren dieser Szenarien finden Sie unter [Einricht
 Sie können Benutzern ermöglichen, Anwendungen über den Bereich „Meine Apps“ zu ermitteln und Zugriff auf diese Anwendungen anzufordern. Dazu müssen Sie zuerst folgende Schritte ausführen:
 
 * Aktivieren der Self-Service-Gruppenverwaltung
-
 * Aktivieren der App für einmaliges Anmelden (SSO)
-
 * Erstellen einer Gruppe für den Anwendungszugriff
 
 ![Screenshot: Konfiguration der Self-Service-Funktionen in „Meine Apps“](./media/my-apps-deployment-plan/my-apps-self-service.png)

@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: a7dae1f33583a7350dd273a44efa90e9cb7dd725
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 543acb129d23a0b74434535306aca801d2f5fdd2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638863"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763631"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>Inkrementelles Laden von Daten aus einem Quelldatenspeicher in einen Zieldatenspeicher
 
@@ -24,7 +24,7 @@ In einer Datenintegrationslösung ist das inkrementelle Laden (oder Deltaladen) 
 ## <a name="delta-data-loading-from-database-by-using-a-watermark"></a>Laden von Deltadaten aus der Datenbank mit einem Grenzwert
 In diesem Fall definieren Sie einen Grenzwert (Englisch: Watermark) in Ihrer Quelldatenbank. Der Grenzwert ist hier eine Spalte, die den Zeitstempel der letzten Aktualisierung oder einen Inkrementierungsschlüssel enthält. Mit einer Lösung für das Deltaladen werden die geänderten Daten geladen, die zwischen einem alten und einem neuen Grenzwert liegen. Der Workflow für diesen Ansatz ist im folgenden Diagramm dargestellt: 
 
-![Workflow für die Verwendung von Grenzwerten](media/tutorial-incremental-copy-overview/workflow-using-watermark.png)
+:::image type="content" source="media/tutorial-incremental-copy-overview/workflow-using-watermark.png" alt-text="Workflow für die Verwendung von Grenzwerten":::
 
 Die folgenden Tutorials enthalten Schritt-für-Schritt-Anleitungen: 
 - [Inkrementelles Kopieren von Daten aus einer Tabelle in Azure SQL-Datenbank in Azure Blob Storage](tutorial-incremental-copy-powershell.md)
@@ -38,7 +38,7 @@ Die Technologie für die Änderungsnachverfolgung ist eine einfache Lösung in S
 
 Der Workflow für diesen Ansatz ist im folgenden Diagramm dargestellt:
 
-![Workflow für die Verwendung der Änderungsnachverfolgung](media/tutorial-incremental-copy-overview/workflow-using-change-tracking.png)
+:::image type="content" source="media/tutorial-incremental-copy-overview/workflow-using-change-tracking.png" alt-text="Workflow für die Verwendung der Änderungsnachverfolgung":::
 
 Das folgende Tutorial enthält eine Schritt-für-Schritt-Anleitung: <br/>
 - [Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage mit Informationen der Änderungsnachverfolgung](tutorial-incremental-copy-change-tracking-feature-powershell.md)

@@ -4,12 +4,12 @@ description: Hier wird beschrieben, wie ein- und ausgehende IP-Adressen in Azure
 ms.topic: article
 ms.date: 08/25/2020
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: ea667fcfe70e109038d74e7c1fa0281bbc2b20bb
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: f8354d52c43d786e3506cf6fcee0907f9f365ab6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397795"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836326"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Ein- und ausgehende IP-Adressen in Azure App Service
 
@@ -29,7 +29,7 @@ Unabhängig von der Anzahl horizontal skalierter Instanzen besitzt jede App eine
 
 - Sie löschen eine App und erstellen sie in einer anderen Ressourcengruppe neu (die Bereitstellungseinheit kann sich ändern).
 - Sie löschen die letzte App in einer Kombination aus Ressourcengruppe _und_ Region und erstellen sie neu (die Bereitstellungseinheit kann sich ändern).
-- Sie löschen eine vorhandene IP-basierte TLS-/SSL-Bindung, beispielsweise während der Zertifikaterneuerung (siehe [Erneuern von Zertifikaten](configure-ssl-certificate.md#renew-certificate)).
+- Sie löschen eine vorhandene IP-basierte TLS-/SSL-Bindung, beispielsweise während der Zertifikaterneuerung (siehe [Erneuern von Zertifikaten](configure-ssl-certificate.md#renew-an-expiring-certificate)).
 
 ## <a name="find-the-inbound-ip"></a>Auffinden der eingehenden IP-Adresse
 
@@ -82,7 +82,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 ```
 
 ## <a name="get-a-static-outbound-ip"></a>Abrufen einer statischen ausgehenden IP-Adresse
-Sie können die IP-Adresse des von Ihrer App ausgehenden Datenverkehrs steuern, indem Sie regionale VNet-Integration zusammen mit einem NAT-Gateway eines virtuellen Netzwerks verwenden, um Datenverkehr über eine statische öffentliche IP-Adresse zu leiten. [Regionale VNet-Integration](/azure/app-service/web-sites-integrate-with-vnet) ist in den App Service-Plänen **Standard**, **Premium**, **PremiumV2** und **PremiumV3** verfügbar. Weitere Informationen zu diesem Setup finden Sie unter [NAT Gateway-Integration](./networking/nat-gateway-integration.md).
+Sie können die IP-Adresse des von Ihrer App ausgehenden Datenverkehrs steuern, indem Sie regionale VNet-Integration zusammen mit einem NAT-Gateway eines virtuellen Netzwerks verwenden, um Datenverkehr über eine statische öffentliche IP-Adresse zu leiten. [Regionale VNet-Integration](./web-sites-integrate-with-vnet.md) ist in den App Service-Plänen **Standard**, **Premium**, **PremiumV2** und **PremiumV3** verfügbar. Weitere Informationen zu diesem Setup finden Sie unter [NAT Gateway-Integration](./networking/nat-gateway-integration.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: tutorial
 ms.date: 9/27/2019
-ms.openlocfilehash: 03c51dc95998ef0d077dc34232d8aa86ab96fbb7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b1eaa9e7a7c35c659156cfd4bc2541cb3ca39173
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739395"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124805800"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Verzweigen und Verketten von Aktivitäten in einer Data Factory-Pipeline
 
@@ -23,7 +23,7 @@ In diesem Tutorial erstellen Sie eine Data Factory-Pipeline, die einige Ablaufst
 
 Diese Grafik bietet einen Überblick über das Szenario:
 
-![Diagramm: Azure Blob Storage als Ziel für einen Kopiervorgang. Bei erfolgreichem Vorgang wird eine E-Mail mit Details gesendet, bei nicht erfolgreichem Vorgang wird eine E-Mail mit Fehlerdetails gesendet.](media/tutorial-control-flow/overview.png)
+:::image type="content" source="media/tutorial-control-flow/overview.png" alt-text="Diagramm: Azure Blob Storage als Ziel für einen Kopiervorgang. Bei erfolgreichem Vorgang wird eine E-Mail mit Details gesendet, bei nicht erfolgreichem Vorgang wird eine E-Mail mit Fehlerdetails gesendet.":::
 
 Dieses Tutorial beschreibt, wie die folgenden Aufgaben ausgeführt werden:
 
@@ -329,13 +329,13 @@ Erstellen Sie im [Azure-Portal](https://portal.azure.com) einen Logic Apps-Workf
 
 Ihr Workflow sollte in etwa wie im folgenden Beispiel aussehen:
 
-![Erfolgs-E-Mail-Workflow](media/tutorial-control-flow/success-email-workflow-trigger.png)
+:::image type="content" source="media/tutorial-control-flow/success-email-workflow-trigger.png" alt-text="Erfolgs-E-Mail-Workflow":::
 
 Dieser JSON-Inhalt entspricht der Klasse `EmailRequest`, die Sie im vorherigen Abschnitt erstellt haben.
 
 Fügen Sie eine `Office 365 Outlook – Send an email`-Aktion hinzu. Passen Sie für die Aktion **E-Mail senden** die Formatierungseinstellungen der E-Mail an Ihre Bedürfnisse an, indem Sie die Eigenschaften nutzen, die im **Text** des JSON-Anforderungsschemas übergeben wurden. Hier sehen Sie ein Beispiel:
 
-![Logik-App-Designer: Aktion zum Senden einer E-Mail](media/tutorial-control-flow/customize-send-email-action.png)
+:::image type="content" source="media/tutorial-control-flow/customize-send-email-action.png" alt-text="Logik-App-Designer: Aktion zum Senden einer E-Mail":::
 
 Nachdem Sie den Workflow gespeichert haben, kopieren Sie den Wert **HTTP-POST-URL** aus dem Trigger, und speichern Sie ihn.
 
@@ -343,7 +343,7 @@ Nachdem Sie den Workflow gespeichert haben, kopieren Sie den Wert **HTTP-POST-UR
 
 Klonen Sie **CopySuccessEmail**, und erstellen Sie einen weiteren Logic Apps-Workflow mit dem Namen *CopyFailEmail*. Im Anforderungs-Trigger ist `Request Body JSON schema` gleich. Ändern Sie das Format Ihrer E-Mail (beispielsweise `Subject`), um eine E-Mail für einen nicht erfolgreichen Vorgang zu erhalten. Beispiel:
 
-![Logik-App-Designer: Workflow für fehlerhafte E-Mail](media/tutorial-control-flow/fail-email-workflow.png)
+:::image type="content" source="media/tutorial-control-flow/fail-email-workflow.png" alt-text="Logik-App-Designer: Workflow für fehlerhafte E-Mail":::
 
 Nachdem Sie den Workflow gespeichert haben, kopieren Sie den Wert **HTTP-POST-URL** aus dem Trigger, und speichern Sie ihn.
 

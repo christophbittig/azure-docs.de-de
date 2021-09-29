@@ -9,12 +9,12 @@ ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: 270f6e83a7073bf39f4bc7efae8adea1ca56627e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d6be1c8c0abf050a95d02c764580657b88975e0f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346713"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743433"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Verschieben von Dateien mit Azure Data Factory
 
@@ -48,25 +48,25 @@ Die Vorlage definiert vier Parameter:
 
 1. Wechseln Sie zur Vorlage **Dateien verschieben**. Wählen Sie eine vorhandene Verbindung aus, oder erstellen Sie mit **Neu** eine neue Verbindung mit dem Quelldateispeicher, aus dem Dateien verschoben werden sollen. Beachten Sie, dass **DataSource_Folder** und **DataSource_File** auf dieselbe Verbindung der Quelldatei verweisen.
 
-    ![Erstellen einer neuen Verbindung mit der Quelle](media/solution-template-move-files/move-files1.png)
+    :::image type="content" source="media/solution-template-move-files/move-files1.png" alt-text="Erstellen einer neuen Verbindung mit der Quelle":::
 
 2. Wählen Sie eine vorhandene Verbindung aus, oder erstellen Sie mit **Neu** eine neue Verbindung mit dem Zieldateispeicher, in den Dateien verschoben werden sollen.
 
-    ![Erstellen einer neuen Verbindung mit dem Ziel](media/solution-template-move-files/move-files2.png)
+    :::image type="content" source="media/solution-template-move-files/move-files2.png" alt-text="Erstellen einer neuen Verbindung mit dem Ziel":::
 
 3. Wählen Sie die Registerkarte **Diese Vorlage verwenden** aus.
     
 4. Daraufhin wird die Pipeline wie im folgenden Beispiel angezeigt:
 
-    ![Pipeline anzeigen](media/solution-template-move-files/move-files4.png)
+    :::image type="content" source="media/solution-template-move-files/move-files4.png" alt-text="Pipeline anzeigen":::
 
 5. Klicken Sie auf **Debuggen**, geben Sie die **Parameter** ein, und klicken Sie dann auf **Fertig stellen**.   Bei den Parametern handelt es sich um den Ordnerpfad, aus dem Sie Dateien verschieben möchten, sowie den Ordnerpfad, in den Sie Dateien verschieben möchten. 
 
-    ![Führen Sie die Pipeline aus.](media/solution-template-move-files/move-files5.png)
+    :::image type="content" source="media/solution-template-move-files/move-files5.png" alt-text="Führen Sie die Pipeline aus.":::
 
 6. Überprüfen Sie das Ergebnis.
 
-    ![Überprüfen des Ergebnisses](media/solution-template-move-files/move-files6.png)
+    :::image type="content" source="media/solution-template-move-files/move-files6.png" alt-text="Überprüfen des Ergebnisses":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

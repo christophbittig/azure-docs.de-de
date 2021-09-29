@@ -8,12 +8,12 @@ ms.author: pafarley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 170d6078863feb76582974e4b1581ea60edca7c2
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: b5074e3d07a1df199e189dfb906190c82bde6905
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343566"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124796588"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>Beispiel: Erstellen eines benutzerdefinierten Skills der Formularerkennung
 
@@ -30,7 +30,7 @@ In diesem Beispiel für ein Azure Cognitive Search-Skillset lernen Sie, wie Sie 
 
 ## <a name="train-your-model"></a>Trainieren Ihres Modells
 
-Sie müssen ein Formularerkennungsmodell mit Ihren Eingabeformularen trainieren, bevor Sie diesen Skill verwenden können. Befolgen Sie den [cURL-Schnellstart](../cognitive-services/form-recognizer/quickstarts/client-library.md?pivots=programming-language-rest-api), um zu erfahren, wie Sie ein Modell trainieren. Sie können die in diesem Schnellstart bereitgestellten Beispielformulare oder Ihre eigenen Daten verwenden. Nachdem das Modell trainiert wurde, kopieren Sie seinen ID-Wert an einen sicheren Speicherort.
+Sie müssen ein Formularerkennungsmodell mit Ihren Eingabeformularen trainieren, bevor Sie diesen Skill verwenden können. Befolgen Sie den [cURL-Schnellstart](../applied-ai-services/form-recognizer/quickstarts/client-library.md?pivots=programming-language-rest-api), um zu erfahren, wie Sie ein Modell trainieren. Sie können die in diesem Schnellstart bereitgestellten Beispielformulare oder Ihre eigenen Daten verwenden. Nachdem das Modell trainiert wurde, kopieren Sie seinen ID-Wert an einen sicheren Speicherort.
 
 ## <a name="set-up-the-custom-skill"></a>Einrichten des benutzerdefinierten Skills
 

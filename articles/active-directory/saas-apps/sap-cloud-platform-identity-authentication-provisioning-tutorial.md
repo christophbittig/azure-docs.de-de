@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: thwimmer
-ms.openlocfilehash: a02b767a097ec2d826f44ac5975063b681242ad1
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: f751b3b705cd1cacc5ef1398fb343de60b8ede6b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113759545"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128596788"
 ---
 # <a name="tutorial-configure-sap-cloud-platform-identity-authentication-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von SAP Cloud Platform Identity Authentication für die automatische Benutzerbereitstellung
 
@@ -32,7 +32,7 @@ In diesem Tutorial werden die Schritte erläutert, die in SAP Cloud Platform Ide
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
 * Einen Azure AD-Mandanten
-* [Einen SAP Cloud Platform Identity Authentication-Mandanten](https://cloudplatform.sap.com/pricing.html)
+* [Einen SAP Cloud Platform Identity Authentication-Mandanten](https://www.sap.com/products/cloud-platform.html)
 * Ein Benutzerkonto in SAP Cloud Platform Identity Authentication mit Administratorberechtigungen.
 
 ## <a name="assigning-users-to-sap-cloud-platform-identity-authentication"></a>Zuweisen von Benutzern zu SAP Cloud Platform Identity Authentication

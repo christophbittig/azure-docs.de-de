@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
-ms.openlocfilehash: f0fa5503b52481afafe2a0a6be8e28f8a964464b
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: e5594ea57dce2d7cf03989da9288ab2869e28e06
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122821618"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743809"
 ---
 # <a name="system-variables-supported-by-azure-data-factory-and-azure-synapse-analytics"></a>Von Azure Data Factory und Azure Synapse Analytics unterstützte Systemvariablen
 
@@ -80,7 +80,7 @@ Auf diese Systemvariablen kann überall im Trigger-JSON für Trigger vom Typ [Cu
 >[!NOTE]
 >Der Dienst erwartet, dass benutzerdefinierte Ereignisse gemäß [Azure Event Grid-Ereignisschema](../event-grid/event-schema.md) formatiert werden.
 
-| Variablenname | BESCHREIBUNG
+| Variablenname | Beschreibung
 | --- | --- |
 | @triggerBody().event.eventType | Hierbei handelt es sich um den Typ der Ereignisse, die die Ausführung des Triggers für benutzerdefinierte Ereignisse ausgelöst hat. Der Ereignistyp ist ein vom Kunden definiertes Feld und akzeptiert alle Werte vom Typ „string“ (Zeichenfolge). |
 | @triggerBody().event.subject | Hierbei handelt es sich um den Antragsteller des benutzerdefinierten Ereignisses, der den Trigger ausgelöst hat. |

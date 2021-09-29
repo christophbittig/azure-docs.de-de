@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 60de092a25350add4dc5b216bb7d079b866cc1fd
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: f5b41f98f3d0ce1ca1cab4f8a5c5715d9a10fa64
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113659451"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128677320"
 ---
 > [!NOTE]
 > Den fertigen Code für diesen Schnellstart finden Sie auf [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/access-tokens-quickstart).
@@ -155,7 +155,7 @@ console.log(token);
 Das Aktualisieren von Zugriffstoken ist genau so einfach wie das Aufrufen von `getToken` mit der gleichen Identität, die zum Ausstellen der Token verwendet wurde. Außerdem müssen Sie die `scopes`-Elemente der aktualisierten Token angeben.
 
 ```javascript
-// // Value of identityResponse represents the Azure Communication Services identity stored during identity creation and then used to issue the tokens being refreshed
+// Value of identityResponse represents the Azure Communication Services identity stored during identity creation and then used to issue the tokens being refreshed
 let refreshedTokenResponse = await identityClient.getToken(identityResponse, ["voip"]);
 ```
 

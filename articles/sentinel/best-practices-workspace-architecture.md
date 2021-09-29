@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 07/28/2021
-ms.openlocfilehash: 085b9a187ce574c5138867f7a2ce929218717c37
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 591d248bed623a31d9c120ae669615efa5c5544d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123253824"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763251"
 ---
 # <a name="azure-sentinel-workspace-architecture-best-practices"></a>Bewährte Methoden für die Azure Sentinel-Arbeitsbereichsarchitektur
 
@@ -42,7 +42,7 @@ Berücksichtigen Sie bei der Ermittlung der benötigten Mandanten und Arbeitsber
 
 Wenn Sie über mehrere Mandanten verfügen, z. B. wenn Sie ein Managed Security Service Provider (MSSP) sind, empfiehlt es sich, mindestens einen Arbeitsbereich für jeden Azure AD-Mandanten zu erstellen, um integrierte [Dienst-zu-Dienst-Connectors](connect-data-sources.md#service-to-service-integration) zu unterstützen, die nur innerhalb ihres eigenen Azure AD-Mandanten funktionieren.
 
-Connectors, die auf Diagnoseeinstellungen basieren, können nicht mit einem Arbeitsbereich verbunden werden, der sich nicht in dem Mandanten befindet, in dem sich auch die Ressource befindet. Dies gilt für Connectors wie [Azure Firewall](connect-azure-firewall.md), [Azure Storage](connect-azure-storage-account.md), [Azure Activity](connect-azure-activity.md) oder [Azure Active Directory](connect-azure-active-directory.md).
+Connectors, die auf Diagnoseeinstellungen basieren, können nicht mit einem Arbeitsbereich verbunden werden, der sich nicht in dem Mandanten befindet, in dem sich auch die Ressource befindet. Dies gilt für Connectors wie [Azure Firewall](./data-connectors-reference.md#azure-firewall), [Azure Storage](./data-connectors-reference.md#azure-storage-account), [Azure Activity](./data-connectors-reference.md#azure-activity) oder [Azure Active Directory](connect-azure-active-directory.md).
 
 Nutzen Sie [Azure Lighthouse](../lighthouse/how-to/onboard-customer.md), um mehrere Azure Sentinel-Instanzen in verschiedenen Mandanten zu verwalten.
 

@@ -8,12 +8,12 @@ ms.author: meiyl
 author: meiyl
 ms.reviewer: sawinark
 ms.date: 06/21/2021
-ms.openlocfilehash: 1d501a461caab23fb45441473fda60e13c7e8334
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e1d1b8a876d55698db83b0c7d331f45797c3c1b3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346323"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743171"
 ---
 # <a name="use-the-diagnose-connectivity-feature-in-the-ssis-integration-runtime"></a>Verwenden des Features „Verbindung diagnostizieren“ in der SSIS Integration Runtime
 
@@ -23,9 +23,9 @@ Es treten möglicherweise Fehler beim Ausführen von SSIS-Paketen (SQL Server In
 
 Verwenden Sie zum Beheben von Konnektivitätsproblemen das Feature *Verbindung diagnostizieren*, um Verbindungen zu testen. Sie finden dieses Feature auf der Seite „Überwachung“ der SSIS-Integration Runtime im Azure Data Factory-Portal.
 
- ![Seite „Überwachung“: „Verbindung diagnostizieren“](media/ssis-integration-runtime-diagnose-connectivity-faq/ssis-monitor-diagnose-connectivity.png)
+ :::image type="content" source="media/ssis-integration-runtime-diagnose-connectivity-faq/ssis-monitor-diagnose-connectivity.png" alt-text="Seite „Überwachung“: „Verbindung diagnostizieren“":::
 
- ![Seite „Überwachung“: „Verbindung testen“](media/ssis-integration-runtime-diagnose-connectivity-faq/ssis-monitor-test-connection.png)
+ :::image type="content" source="media/ssis-integration-runtime-diagnose-connectivity-faq/ssis-monitor-test-connection.png" alt-text="Seite „Überwachung“: „Verbindung testen“":::
 
 In den folgenden Abschnitten erfahren Sie mehr über die beim Testen von Verbindungen am häufigsten auftretenden Fehler. In jedem Abschnitt wird Folgendes beschrieben:
 

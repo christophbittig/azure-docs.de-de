@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 07/21/2021
-ms.openlocfilehash: 35b29ae6116e2e040f2383606fa20c5ab6316315
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 7c29ae41acd800a3e8893ec50ef25cb77c89fe04
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123253447"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124810173"
 ---
 #  <a name="data-collection-best-practices"></a>Bewährte Methoden für die Datensammlung
 
@@ -99,7 +99,7 @@ Wenn Sie Microsoft Office Daten außerhalb der Standardconnectordaten sammeln m�
 
 |Herausforderung/Anforderung  |Lösungsvorschläge  |Weitere Überlegungen  |
 |---------|---------|---------|
-|**Sammeln von Rohdaten aus Teams, Nachrichtenablaufverfolgung, Phishingdaten usw.**     |    Verwenden Sie die integrierten Funktionen des [Office 365-Connectors](connect-office-365.md), und erstellen Sie dann einen benutzerdefinierten Connector für andere Rohdaten.  |  Das Zuordnen von Ereignissen zur entsprechenden recordID kann eine Herausforderung darstellen.  |
+|**Sammeln von Rohdaten aus Teams, Nachrichtenablaufverfolgung, Phishingdaten usw.**     |    Verwenden Sie die integrierten Funktionen des [Office 365-Connectors](./data-connectors-reference.md#microsoft-office-365), und erstellen Sie dann einen benutzerdefinierten Connector für andere Rohdaten.  |  Das Zuordnen von Ereignissen zur entsprechenden recordID kann eine Herausforderung darstellen.  |
 |**Erfordert RBAC zum Aufteilen von Ländern, Abteilungen usw.**     | Passen Sie Ihre Datensammlung an, indem Sie Daten Tags hinzufügen und dedizierte Arbeitsbereiche für jede benötigte Trennung erstellen.|   Die benutzerdefinierte Datensammlung verursacht zusätzliche Erfassungskosten.     |
 |**Erfordert mehrere Mandanten in einem einzelnen Arbeitsbereich**     |  Passen Sie Ihre Datensammlung mithilfe von Azure LightHouse und einer einheitlichen Incidentansicht an.|  Die benutzerdefinierte Datensammlung verursacht zusätzliche Erfassungskosten.  <br><br>Weitere Informationen finden Sie unter [Erweitern von Azure Sentinel auf Arbeitsbereiche und Mandanten](extend-sentinel-across-workspaces-tenants.md).      |
 | | | |

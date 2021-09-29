@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
-ms.openlocfilehash: 935b3ea84a1e8927a80e1cf3e0ce287fa90620ba
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a93fc15d35f8bcba7a4c314dd854cd048095f0cd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745765"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128666778"
 ---
 # <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Tutorial: Konfigurieren eines Verfügbarkeitsgruppenlisteners für SQL Server auf virtuellen RHEL-Computern in Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -265,7 +265,7 @@ Die Ressourcengruppe verfügt nun also über einen mit allen SQL Server-Compute
 1. Überprüfen Sie Ihre Clusterressourcen mithilfe des Befehls `sudo pcs resource`. Die primäre Instanz sollte nun `<VM2>` sein.
 
     > [!NOTE]
-    > Dieser Artikel enthält Verweise auf den Begriff Slave, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wird, wird er auch aus diesem Artikel entfernt.
+    > Dieser Artikel enthält Verweise auf den Begriff *Slave*, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wird, wird er auch aus diesem Artikel entfernt.
 
 
     ```output

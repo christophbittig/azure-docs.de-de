@@ -9,15 +9,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 09/27/2021
 ms.author: ryanwi
 ROBOTS: NOINDEX
-ms.openlocfilehash: 82c3dd4ce7f5e7e9f3d5a226bfe65e27eca2d3d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f8ac0cb786ab116e4ac1894a94af1409155231c1
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100103242"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129154145"
 ---
 # <a name="azure-portal-registration-fields-for-custom-developed-apps"></a>Registrierungsfelder im Azure-Portal für benutzerdefiniert entwickelte Apps
 
@@ -35,7 +35,7 @@ Dieser Artikel enthält eine kurze Beschreibung aller verfügbaren Felder im Anw
 
 ## <a name="fields-in-the-application-registration-form"></a>Felder im Registrierungsformular für Anwendungen
 
-| Feld            | BESCHREIBUNG                                                                              |
+| Feld            | Beschreibung                                                                              |
 |------------------|------------------------------------------------------------------------------------------|
 | Name             | Der Namen der Anwendung. Dieser sollte mindestens vier Zeichen umfassen.                |
 | Unterstützte Kontotypen| Wählen Sie die Konten aus, die Ihre Anwendung unterstützen soll: „Nur Konten in diesem Organisationsverzeichnis“, „Konten in einem beliebigen Organisationsverzeichnis“ oder „Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten“.  |

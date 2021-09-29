@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/21/2021
 ms.author: jeedes
-ms.openlocfilehash: c7dc85a2fad11ec47dcf43aaf90da3dbc47c4ae5
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 952ba939511911bd0cec41ee6c3f9b3311bed084
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114602611"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124795638"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mercell"></a>Tutorial: Azure Active Directory-Integration mit Mercell
 
@@ -127,7 +127,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Klicken Sie im Azure-Portal auf „Diese Anwendung testen“. Dadurch sollten Sie automatisch bei der Mercell-Instanz angemeldet werden, für die Sie das einmalige Anmelden eingerichtet haben.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie im Zugriffsbereich „Meine Apps“ auf die Kachel „Mercell“ klicken, sollten Sie automatisch bei der Mercell-Instanz angemeldet werden, für die Sie das einmalige Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie im Zugriffsbereich „Meine Apps“ auf die Kachel „Mercell“ klicken, sollten Sie automatisch bei der Mercell-Instanz angemeldet werden, für die Sie das einmalige Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

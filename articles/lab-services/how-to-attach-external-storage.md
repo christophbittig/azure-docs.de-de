@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 03/30/2021
 ms.author: enewman
-ms.openlocfilehash: dc0f2a4f51fb12c61d0e1e16cb23d030a5dc9cc6
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 86dd9290c640829049f4f6cb7b784aacba3cf7ce
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122969273"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124768741"
 ---
 # <a name="use-external-file-storage-in-lab-services"></a>Verwenden von externem Dateispeicher in Lab Services
 
@@ -188,11 +188,10 @@ Gehen Sie wie folgt vor, um eine Azure Files-Freigabe zu erstellen, die für Act
 
 Führen Sie die folgenden Schritte aus, um eine Azure NetApp Files-Freigabe in Azure Lab Services zu verwenden:
 
-1. Greifen Sie bei Bedarf auf [Azure NetApp Files](https://aka.ms/azurenetappfiles) zu.
-2. Informationen zum Erstellen eines NetApp Files-Kapazitätspools und mindestens eines NFS-Volumes finden Sie unter [Einrichten von Azure NetApp Files und NFS-Volumes](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md). Informationen zu Servicelevels finden Sie unter [Servicelevels für Azure NetApp Files](../azure-netapp-files/azure-netapp-files-service-levels.md).
-3. [Peeren Sie das virtuelle Netzwerk](how-to-connect-peer-virtual-network.md) für den NetApp Files-Kapazitätspool mit dem Lab-Konto.
-4. [Erstellen Sie das Classroom-Lab](how-to-manage-classroom-labs.md).
-5. Installieren Sie auf der Vorlagen-VM die erforderlichen Komponenten, um NFS-Dateifreigaben zu verwenden.
+1. Informationen zum Erstellen eines NetApp Files-Kapazitätspools und mindestens eines NFS-Volumes finden Sie unter [Einrichten von Azure NetApp Files und NFS-Volumes](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md). Informationen zu Servicelevels finden Sie unter [Servicelevels für Azure NetApp Files](../azure-netapp-files/azure-netapp-files-service-levels.md).
+2. [Peeren Sie das virtuelle Netzwerk](how-to-connect-peer-virtual-network.md) für den NetApp Files-Kapazitätspool mit dem Lab-Konto.
+3. [Erstellen Sie das Classroom-Lab](how-to-manage-classroom-labs.md).
+4. Installieren Sie auf der Vorlagen-VM die erforderlichen Komponenten, um NFS-Dateifreigaben zu verwenden.
     - Ubuntu:
 
         ```bash
@@ -206,7 +205,7 @@ Führen Sie die folgenden Schritte aus, um eine Azure NetApp Files-Freigabe in A
         sudo yum install nfs-utils
         ```
 
-6. Speichern Sie auf der Vorlagen-VM das folgende Skript als `mount_fileshare.sh`, um [die NetApp Files-Freigabe einzubinden](../azure-netapp-files/azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md). Weisen Sie der Variablen `capacity_pool_ipaddress` die IP-Adresse des Einbindungsziels für den Kapazitätspool zu. Sehen Sie in den Anweisungen zum Einbinden für das Volume nach, um den entsprechenden Wert zu ermitteln. Das Skript erwartet den Pfadnamen des NetApp Files-Volumes. Führen Sie `chmod u+x mount_fileshare.sh` aus, um sicherzustellen, dass Benutzer das Skript ausführen können.
+5. Speichern Sie auf der Vorlagen-VM das folgende Skript als `mount_fileshare.sh`, um [die NetApp Files-Freigabe einzubinden](../azure-netapp-files/azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md). Weisen Sie der Variablen `capacity_pool_ipaddress` die IP-Adresse des Einbindungsziels für den Kapazitätspool zu. Sehen Sie in den Anweisungen zum Einbinden für das Volume nach, um den entsprechenden Wert zu ermitteln. Das Skript erwartet den Pfadnamen des NetApp Files-Volumes. Führen Sie `chmod u+x mount_fileshare.sh` aus, um sicherzustellen, dass Benutzer das Skript ausführen können.
 
     ```bash
     #!/bin/bash
@@ -230,10 +229,10 @@ Führen Sie die folgenden Schritte aus, um eine Azure NetApp Files-Freigabe in A
     sudo bash -c "echo ""$capacity_pool_ipaddress:/$volume_name /$mount_directory/$volume_name nfs bg,rw,hard,noatime,nolock,rsize=65536,wsize=65536,vers=3,tcp,_netdev 0 0"" >> /etc/fstab"
     ```
 
-7. Wenn alle Kursteilnehmer gemeinsam Zugriff auf dasselbe NetApp Files-Volume haben, können Sie das Skript `mount_fileshare.sh` vor der Veröffentlichung auf dem Vorlagencomputer ausführen. Wenn Kursteilnehmer jeweils ein eigenes Volume erhalten, speichern Sie das Skript, damit es später vom jeweiligen Kursteilnehmer ausgeführt werden kann.
-8. [Veröffentlichen](how-to-create-manage-template.md#publish-the-template-vm) Sie die Vorlage für virtuelle Computer.
-9. [Konfigurieren Sie die Richtlinie](../azure-netapp-files/azure-netapp-files-configure-export-policy.md) für die Dateifreigabe. Die Exportrichtlinie kann zulassen, dass ein einzelner virtueller Computer oder mehrere VMs auf ein Volume zugreifen können. Sie können schreibgeschützten Zugriff oder Lese-/Schreibzugriff gewähren.
-10. Kursteilnehmer müssen Ihre VMs starten und das Skript ausführen, um die Dateifreigabe einzubinden. Sie müssen das Skript nur einmal ausführen. Der Befehl sieht wie folgt aus: `./mount_fileshare.sh myvolumename`.
+6. Wenn alle Kursteilnehmer gemeinsam Zugriff auf dasselbe NetApp Files-Volume haben, können Sie das Skript `mount_fileshare.sh` vor der Veröffentlichung auf dem Vorlagencomputer ausführen. Wenn Kursteilnehmer jeweils ein eigenes Volume erhalten, speichern Sie das Skript, damit es später vom jeweiligen Kursteilnehmer ausgeführt werden kann.
+7. [Veröffentlichen](how-to-create-manage-template.md#publish-the-template-vm) Sie die Vorlage für virtuelle Computer.
+8. [Konfigurieren Sie die Richtlinie](../azure-netapp-files/azure-netapp-files-configure-export-policy.md) für die Dateifreigabe. Die Exportrichtlinie kann zulassen, dass ein einzelner virtueller Computer oder mehrere VMs auf ein Volume zugreifen können. Sie können schreibgeschützten Zugriff oder Lese-/Schreibzugriff gewähren.
+9. Kursteilnehmer müssen Ihre VMs starten und das Skript ausführen, um die Dateifreigabe einzubinden. Sie müssen das Skript nur einmal ausführen. Der Befehl sieht wie folgt aus: `./mount_fileshare.sh myvolumename`.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,14 +1,14 @@
 ---
 title: Bereitstellen des Blaupausenbeispiels „Azure Security Benchmark Foundation“
 description: Bereitstellungsschritte für das Blaupausenbeispiel „Azure Security Benchmark Foundation“, einschließlich Details zum Blaupausenartefaktparameter
-ms.date: 03/12/2021
+ms.date: 09/08/2021
 ms.topic: sample
-ms.openlocfilehash: 6afdc94624d39ce60b96ad33639721f130a056ef
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 51765db4a07ffe9399a09aa75c0b282c3fbc94ff
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108765177"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599485"
 ---
 # <a name="deploy-the-azure-security-benchmark-foundation-blueprint-sample"></a>Bereitstellen des Blaupausenbeispiels „Azure Security Benchmark Foundation“
 

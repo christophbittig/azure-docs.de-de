@@ -7,12 +7,12 @@ ms.date: 11/23/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperf-fy21q1
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: ff86bedf47395b50dc25e552b8b3ed4176e23b65
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6f79fb6ae221b49785a18314ba6e2ced7fd8d34d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107769101"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124764600"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Schnellstart: Erstellen von ASP.NET Core-Web-Apps in Azure
 
@@ -244,7 +244,7 @@ az login
 
 ## <a name="5-deploy-the-app"></a>5. Bereitstellen der App
 
-1. **Führen Sie `az webapp up` in Ihrem lokalen Ordner aus**. **Ersetzen** Sie <app-name> durch einen global eindeutigen Namen.
+1. **Führen Sie `az webapp up` in Ihrem lokalen Ordner aus**. **Ersetzen** Sie \<app-name\> durch einen global eindeutigen Namen.
 
     ```azurecli
     az webapp up --sku F1 --name <app-name> --os-type linux
@@ -302,14 +302,14 @@ http://<app_name>.azurewebsites.net
 
 <hr/> 
 
-## <a name="7-update-and-redeploy-the-code&quot;></a>7. Aktualisieren und erneutes Bereitstellen des Codes
+## <a name="7-update-and-redeploy-the-code"></a>7. Aktualisieren und erneutes Bereitstellen des Codes
 
 1. **Öffnen Sie die Datei _Startup.cs_** im lokalen Verzeichnis. 
 
 1. **Nehmen Sie eine kleine Änderung** am Text im Methodenaufruf `context.Response.WriteAsync` vor.
 
     ```csharp
-    await context.Response.WriteAsync(&quot;Hello Azure!");
+    await context.Response.WriteAsync("Hello Azure!");
     ```
     
 1. **Speichern Sie Ihre Änderungen**.

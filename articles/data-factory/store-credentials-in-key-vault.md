@@ -7,12 +7,12 @@ ms.subservice: security
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: abnarain
-ms.openlocfilehash: 922387e352882cc81a2e8e0f4a02124bee41fa06
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2ac261adeade46b14651583cf28803cab039d754
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122639887"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743153"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Speichern von Anmeldeinformationen in Azure Key Vault
 
@@ -39,7 +39,7 @@ Führen Sie die folgenden Schritte aus, um auf in Azure Key Vault gespeicherte A
 
 Folgende Eigenschaften werden für den mit Azure Key Vault verknüpften Dienst unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureKeyVault**. | Ja |
 | baseUrl | Geben Sie die Azure Key Vault-URL an. | Ja |
@@ -48,11 +48,11 @@ Folgende Eigenschaften werden für den mit Azure Key Vault verknüpften Dienst u
 
 Wählen Sie **Verbindungen** -> **Verknüpfte Dienste** -> **Neu** aus. Suchen Sie unter „Neuer verknüpfter Dienst“ nach „Azure Key Vault“, und wählen Sie diese Option aus:
 
-![Suchen nach Azure Key Vault](media/store-credentials-in-key-vault/search-akv.png)
+:::image type="content" source="media/store-credentials-in-key-vault/search-akv.png" alt-text="Suchen nach Azure Key Vault":::
 
 Wählen Sie die bereitgestellte Azure Key Vault-Instanz aus, in der Ihre Anmeldeinformationen gespeichert sind. Sie können die **Verbindung testen**, um sicherzustellen, dass Ihre AKV Verbindung gültig ist. 
 
-![Konfigurieren von Azure Key Vault](media/store-credentials-in-key-vault/configure-akv.png)
+:::image type="content" source="media/store-credentials-in-key-vault/configure-akv.png" alt-text="Konfigurieren von Azure Key Vault":::
 
 **JSON-Beispiel**:
 
@@ -72,7 +72,7 @@ Wählen Sie die bereitgestellte Azure Key Vault-Instanz aus, in der Ihre Anmelde
 
 Die folgenden Eigenschaften werden unterstützt, wenn Sie ein Feld in einem verknüpften Dienst konfigurieren, das auf ein Geheimnis im Schlüsseltresor verweist:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Felds muss auf folgenden Wert festgelegt werden: **AzureKeyVaultSecret**. | Ja |
 | secretName | Der Name des Geheimnisses in Azure Key Vault | Ja |
@@ -86,7 +86,7 @@ Wählen Sie beim Erstellen der Verbindung mit Ihrem Datenspeicher/Computedienst 
 >[!TIP]
 >Für Connectors, die eine Verbindungszeichenfolge in verknüpften Diensten wie SQL Server, BLOB-Speicher usw. verwenden, können Sie entweder nur das Geheimnisfeld speichern, z. B. das Kennwort in AKV, oder die gesamte Verbindungszeichenfolge in AKV speichern. Sie finden beide Optionen in der Benutzeroberfläche.
 
-![Konfigurieren des Azure Key Vault-Geheimnisses](media/store-credentials-in-key-vault/configure-akv-secret.png)
+:::image type="content" source="media/store-credentials-in-key-vault/configure-akv-secret.png" alt-text="Konfigurieren des Azure Key Vault-Geheimnisses":::
 
 **JSON-Beispiel: (siehe den Abschnitt „Kennwort“)**
 

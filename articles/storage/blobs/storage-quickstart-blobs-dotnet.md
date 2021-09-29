@@ -1,19 +1,19 @@
 ---
 title: 'Schnellstart: Azure Blob Storage-Bibliothek v12: .NET'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit der Azure Blob Storage-Clientbibliothek Version 12 für .NET einen Container und ein Blob in Blob Storage (Objektspeicher) erstellen. Als Nächstes erfahren Sie, wie Sie den Blob auf Ihren lokalen Computer herunterladen, und wie Sie alle Blobs in einem Container auflisten.
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 03/03/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7d5870935cd4db4c49f84254186277ce7aa431c4
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: c71a362c7e8e3073929967abce4bcdc4566b8ce9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123476086"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128652908"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Schnellstart: Azure Blob Storage-Clientbibliothek v12 für .NET
 
@@ -21,25 +21,24 @@ Erfahren Sie etwas über die ersten Schritte mit der Azure Blob Storage-Clientbi
 
 Mit der Azure Blob Storage-Clientbibliothek v12 für .NET ist Folgendes möglich:
 
-* Erstellen eines Containers
-* Hochladen eines Blobs in Azure Storage
-* Auflisten aller Blobs in einem Container
-* Herunterladen des Blobs auf den lokalen Computer
-* Löschen eines Containers
+- Erstellen eines Containers
+- Hochladen eines Blobs in Azure Storage
+- Auflisten aller Blobs in einem Container
+- Herunterladen des Blobs auf den lokalen Computer
+- Löschen eines Containers
 
 Zusätzliche Ressourcen:
 
-* [API-Referenzdokumentation](/dotnet/api/azure.storage.blobs)
-* [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)
-* [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)
-* [Beispiele](../common/storage-samples-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
-
+- [API-Referenzdokumentation](/dotnet/api/azure.storage.blobs)
+- [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)
+- [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)
+- [Beispiele](../common/storage-samples-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
-* Azure Storage-Konto – [Erstellen eines Speicherkontos](../common/storage-account-create.md)
-* Aktuelles [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) für Ihr Betriebssystem. Laden Sie unbedingt das SDK und nicht die Runtime herunter.
+- Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
+- Azure Storage-Konto – [Erstellen eines Speicherkontos](../common/storage-account-create.md)
+- Aktuelles [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) für Ihr Betriebssystem. Laden Sie unbedingt das SDK und nicht die Runtime herunter.
 
 ## <a name="setting-up"></a>Einrichten
 
@@ -94,9 +93,9 @@ Im Projektverzeichnis:
 
 Azure Blob Storage ist für die Speicherung großer Mengen unstrukturierter Daten optimiert. Unstrukturierte Daten sind Daten, die keinem bestimmten Datenmodell und keiner bestimmten Definition entsprechen (also beispielsweise Text- oder Binärdaten). Blob Storage bietet drei Typen von Ressourcen:
 
-* Das Speicherkonto
-* Einen Container im Speicherkonto
-* Ein Blob im Container
+- Das Speicherkonto
+- Einen Container im Speicherkonto
+- Ein Blob im Container
 
 Im folgenden Diagramm ist die Beziehung zwischen diesen Ressourcen dargestellt.
 
@@ -104,20 +103,20 @@ Im folgenden Diagramm ist die Beziehung zwischen diesen Ressourcen dargestellt.
 
 Verwenden Sie die folgenden .NET-Klassen zur Interaktion mit folgenden Ressourcen:
 
-* [BlobServiceClient:](/dotnet/api/azure.storage.blobs.blobserviceclient) Die `BlobServiceClient`-Klasse ermöglicht Ihnen, Azure Storage-Ressourcen und Blobcontainer zu bearbeiten.
-* [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient): Die `BlobContainerClient`-Klasse ermöglicht Ihnen, Azure Storage-Container und deren Blobs zu bearbeiten.
-* [BlobClient](/dotnet/api/azure.storage.blobs.blobclient): Die `BlobClient`-Klasse ermöglicht Ihnen, Azure Storage-Blobs zu bearbeiten.
+- [BlobServiceClient:](/dotnet/api/azure.storage.blobs.blobserviceclient) Die `BlobServiceClient`-Klasse ermöglicht Ihnen, Azure Storage-Ressourcen und Blobcontainer zu bearbeiten.
+- [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient): Die `BlobContainerClient`-Klasse ermöglicht Ihnen, Azure Storage-Container und deren Blobs zu bearbeiten.
+- [BlobClient](/dotnet/api/azure.storage.blobs.blobclient): Die `BlobClient`-Klasse ermöglicht Ihnen, Azure Storage-Blobs zu bearbeiten.
 
 ## <a name="code-examples"></a>Codebeispiele
 
 Mit den Beispielcodeausschnitten wird veranschaulicht, wie folgende Vorgänge mit der Azure Blob Storage-Clientbibliothek für .NET durchgeführt werden:
 
-* [Abrufen der Verbindungszeichenfolge](#get-the-connection-string)
-* [Container erstellen](#create-a-container)
-* [Hochladen von Blobs in einen Container](#upload-blobs-to-a-container)
-* [Auflisten der Blobs in einem Container](#list-the-blobs-in-a-container)
-* [Herunterladen von Blobs](#download-blobs)
-* [Löschen eines Containers](#delete-a-container)
+- [Abrufen der Verbindungszeichenfolge](#get-the-connection-string)
+- [Container erstellen](#create-a-container)
+- [Hochladen von Blobs in einen Container](#upload-blobs-to-a-container)
+- [Auflisten der Blobs in einem Container](#list-the-blobs-in-a-container)
+- [Herunterladen von Blobs](#download-blobs)
+- [Löschen eines Containers](#delete-a-container)
 
 ### <a name="get-the-connection-string"></a>Abrufen der Verbindungszeichenfolge
 
@@ -225,5 +224,5 @@ Weitere Beispiel-Apps für Blob Storage finden Sie unter:
 > [!div class="nextstepaction"]
 > [Azure Blob Storage SDK v12: .NET-Beispiele](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples)
 
-* Tutorials, Beispiele, Schnellstarts und weitere Dokumentation finden Sie unter [Azure für .NET- und .NET Core-Entwickler](/dotnet/azure/).
-* Weitere Informationen zu .NET Core finden Sie unter [Get started with .NET in 10 minutes](https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/intro) (Einstieg in .NET in 10 Minuten).
+- Tutorials, Beispiele, Schnellstarts und weitere Dokumentation finden Sie unter [Azure für .NET- und .NET Core-Entwickler](/dotnet/azure/).
+- Weitere Informationen zu .NET Core finden Sie unter [Get started with .NET in 10 minutes](https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/intro) (Einstieg in .NET in 10 Minuten).

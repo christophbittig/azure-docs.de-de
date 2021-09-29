@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: e1099f271291c6d86610237454e08e06b5fe48c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 61bb44a6431885c4696af840d829bc1671f1c1e5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92522154"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124801294"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-humanity"></a>Tutorial: Azure Active Directory-Integration mit Humanity
 
@@ -122,13 +122,13 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Humanity
 
     c. Abmelde-URL
 
-### <a name="configure-humanity-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Humanity
+### <a name="configure-humanity-single-sign-on&quot;></a>Konfigurieren des einmaligen Anmeldens für Humanity
 
 1. Melden Sie sich in einem anderen Webbrowserfenster bei der Unternehmenswebsite von **Humanity** als Administrator an.
 
 2. Klicken Sie oben im Menü auf **Administrator**.
 
-    ![Administrator](./media/shiftplanning-tutorial/iC786619.png "Admin")
+    ![Administrator](./media/shiftplanning-tutorial/iC786619.png &quot;Admin")
 3. Klicken Sie unter **Integration** auf **Einmaliges Anmelden**.
 
     ![Screenshot, in dem im Menü „Integration“ die Option „Einmaliges Anmelden“ ausgewählt ist.](./media/shiftplanning-tutorial/iC786620.png "Single Sign-On")
@@ -200,7 +200,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-### <a name="create-humanity-test-user"></a>Erstellen eines Humanity-Testbenutzers
+### <a name="create-humanity-test-user&quot;></a>Erstellen eines Humanity-Testbenutzers
 
 Damit sich Azure AD-Benutzer bei Humanity anmelden können, müssen sie in Humanity bereitgestellt werden. Im Fall von Humanity ist die Bereitstellung eine manuelle Aufgabe.
 
@@ -210,7 +210,7 @@ Damit sich Azure AD-Benutzer bei Humanity anmelden können, müssen sie in Human
 
 2. Klicken Sie auf **Administrator**.
 
-    ![Administrator](./media/shiftplanning-tutorial/iC786619.png "Admin")
+    ![Administrator](./media/shiftplanning-tutorial/iC786619.png &quot;Admin")
 
 3. Klicken Sie auf **Personal**.
 
@@ -235,7 +235,7 @@ Damit sich Azure AD-Benutzer bei Humanity anmelden können, müssen sie in Human
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Humanity“ klicken, sollten Sie automatisch bei der Humanity-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+Wenn Sie im Zugriffsbereich auf die Kachel „Humanity“ klicken, sollten Sie automatisch bei der Humanity-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 

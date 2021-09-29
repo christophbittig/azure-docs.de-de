@@ -3,20 +3,18 @@ title: 'Tutorial: Hochladen von Bildern mit der API für die visuelle Bing-Suche
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie ein Bild in Bing hochladen, Erkenntnisse dazu gewinnen und die Antwort anzeigen.
 services: cognitive-services
-author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
 ms.date: 03/31/2020
-ms.author: scottwhi
 ms.custom: devx-track-js
-ms.openlocfilehash: 96a4b13d11e40e24e78d3aed8dfebcc88b41c525
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0f568f8b2aaf64d390a71dcb4b010dc399603706
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486877"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128663229"
 ---
 # <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>Tutorial: Hochladen von Bildern in die API für die visuelle Bing-Suche
 

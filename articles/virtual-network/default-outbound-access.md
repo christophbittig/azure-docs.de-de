@@ -9,12 +9,12 @@ ms.subservice: ip-services
 ms.topic: conceptual
 ms.date: 07/13/2021
 ms.author: allensu
-ms.openlocfilehash: f4c06fb4c97ea38c494f18e5bf72e9eb015299a8
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 0ca1f0ee6bcac39f0f73286fe8c426be9447c345
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515920"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754447"
 ---
 # <a name="default-outbound-access-in-azure"></a>Standardzugriff in ausgehender Richtung in Azure
 
@@ -62,7 +62,7 @@ Es gibt mehrere Möglichkeiten, den ausgehenden Standardzugriff zu deaktivieren:
 
 2.  Modus „Flexible Orchestrierung für VM-Skalierungsgruppen“ verwenden.
 
-    * Flexible Skalierungen sind standardmäßig sicher. Keiner der Instanzen, die über flexible Skalierungsgruppen erstellt werden, ist die standardmäßige IP-Adresse für den ausgehenden Zugriff zugeordnet. Weitere Informationen finden Sie unter [Flexibler Orchestrierungsmodus für Skalierungsgruppen für virtuelle Computer](https://aka.ms/vmssflex/docs)
+    * Flexible Skalierungen sind standardmäßig sicher. Keiner der Instanzen, die über flexible Skalierungsgruppen erstellt werden, ist die standardmäßige IP-Adresse für den ausgehenden Zugriff zugeordnet. Weitere Informationen finden Sie unter [Flexibler Orchestrierungsmodus für Skalierungsgruppen für virtuelle Computer](../virtual-machines/flexible-virtual-machine-scale-sets.md)
 
 ## <a name="if-i-need-outbound-access-what-is-the-recommended-way"></a>Was wird empfohlen, wenn ich ausgehenden Zugriff brauche?
 

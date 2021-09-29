@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/24/2021
-ms.openlocfilehash: cea4999752d416f36f435ba88403fd9dc735f689
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.date: 09/09/2021
+ms.openlocfilehash: a2f3ddf20b41ae1a1638a8c8a1900207f5b880df
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123255814"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124767469"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Problembehandlung für die Leistung der Kopieraktivität
 
@@ -24,7 +24,7 @@ In diesem Artikel wird beschrieben, wie Sie Probleme mit der Leistung der Kopier
 
 Nachdem Sie eine Kopieraktivität ausgeführt haben, können Sie das Ausführungsergebnis und die Leistungsstatistik in der Ansicht zur [Überwachung der Kopieraktivität](copy-activity-monitoring.md) erfassen. Im Folgenden finden Sie ein Beispiel.
 
-![Details zum Überwachen der Ausführung der Kopieraktivität](./media/copy-activity-overview/monitor-copy-activity-run-details.png)
+:::image type="content" source="./media/copy-activity-overview/monitor-copy-activity-run-details.png" alt-text="Details zum Überwachen der Ausführung der Kopieraktivität":::
 
 ## <a name="performance-tuning-tips"></a>Tipps zur Leistungsoptimierung
 

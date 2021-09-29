@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: db5cb2f6bc8b4ca3eed802552fe86830b9f1723f
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 6277e42daf370cef65724f8958a9851ecd51d57c
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123259572"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216743"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>Behandeln von Azure Files-Problemen unter Linux (SMB)
 
@@ -40,7 +40,6 @@ Häufige Ursachen für dieses Problem:
 - Auf dem Client sind keine SMB-Hilfsprogramme (cifs-utils) installiert.
 - Die SMB-Mindestversion, 2.1, steht auf dem Client nicht zur Verfügung.
 - Die SMB 3.x-Verschlüsselung wird auf dem Client nicht unterstützt. Die oben aufgeführte Tabelle enthält eine Liste der Linux-Distributionen, die die lokale und regionsübergreifende Bereitstellung unter Verwendung der Verschlüsselung unterstützen. Bei anderen Distributionen wird mindestens die Kernel-Version 4.11 vorausgesetzt.
-- Sie versuchen, über den TCP-Port 445 eine Verbindung mit einem Speicherkonto herstellen. Dies wird nicht unterstützt.
 - Sie versuchen, auf einem virtuellen Computer eine Verbindung mit der Azure-Dateifreigabe herzustellen, und der virtuelle Computer befindet sich nicht in der gleichen Region wie das Speicherkonto.
 - Wenn beim Speicherkonto die Einstellung [Sichere Übertragung erforderlich](../common/storage-require-secure-transfer.md) aktiviert wurde, lässt Azure Files nur Verbindungen über SMB 3.x mit Verschlüsselung zu.
 

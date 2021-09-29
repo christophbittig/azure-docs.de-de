@@ -7,12 +7,12 @@ ms.service: cache
 ms.devlang: rust
 ms.topic: quickstart
 ms.date: 01/08/2021
-ms.openlocfilehash: acbf5933f01a465ad1855c049796901da5d1ff90
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 23e1bdc895da7ba9941901832d7fc89cd9c6196a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110059732"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128592620"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-rust"></a>Schnellstart: Verwenden von Azure Cache for Redis mit Rust
 
@@ -35,9 +35,9 @@ Wenn Sie direkt mit dem Code fortfahren möchten, finden Sie im [Rust-Schnellsta
 - [Git](https://git-scm.com/downloads)
 
 ## <a name="create-an-azure-cache-for-redis-instance"></a>Erstellen einer Azure Cache for Redis-Instanz
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
+[!INCLUDE [redis-cache-create](includes/redis-cache-create.md)]
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
+[!INCLUDE [redis-cache-create](includes/redis-cache-access-keys.md)]
 
 ## <a name="review-the-code-optional"></a>Überprüfen des Codes (optional)
 
@@ -177,7 +177,7 @@ fn list() {
 }
 ```
 
-Hier sehen Sie einige der Vorgänge vom Typ `SET`. Die Methode [sadd](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.sadd) (High-Level-API) wird verwendet, um einem Element vom Typ `SET` mit dem Namen `users` einige Einträge hinzuzufügen. Danach wird [SISMEMBER](https://redis.io/commands/hset) (Low-Level-API) ausgeführt, um zu überprüfen, ob `user1` vorhanden ist. Abschließend wird [smembers](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.smembers) verwendet, um alle festgelegten Einträge in Form eines Vektors ([Vec<String>](https://doc.rust-lang.org/std/vec/struct.Vec.html)) abzurufen und zu durchlaufen.
+Hier sehen Sie einige der Vorgänge vom Typ `SET`. Die Methode [sadd](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.sadd) (High-Level-API) wird verwendet, um einem Element vom Typ `SET` mit dem Namen `users` einige Einträge hinzuzufügen. Danach wird [SISMEMBER](https://redis.io/commands/hset) (Low-Level-API) ausgeführt, um zu überprüfen, ob `user1` vorhanden ist. Abschließend wird [smembers](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.smembers) verwendet, um alle festgelegten Einträge in Form eines Vektors ([Vec\<String\>](https://doc.rust-lang.org/std/vec/struct.Vec.html)) abzurufen und zu durchlaufen.
 
 ```rust
 fn set() {

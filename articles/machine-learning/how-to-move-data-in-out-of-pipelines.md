@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 02/26/2021
 ms.topic: how-to
 ms.custom: contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 5b6a4186fed994057ab6c44930c5ec68ba85ad05
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 86bdbd1588c14ad03cca6544e341599a446c35e9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122607129"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124767259"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Verschieben von Daten in ML-Pipelineschritte und zwischen ML-Pipelineschritten (Python)
 
@@ -237,7 +237,7 @@ step1_output_ds = step1_output_data.register_on_complete(name='processed_data',
 Zwischendaten, die mit `OutputFileDatasetConfig` geschrieben werden, werden von Azure nicht automatisch gelöscht. Um Speichergebühren für große Mengen nicht benötigter Daten zu vermeiden, empfiehlt es sich, einen der folgenden Schritte auszuführen:
 
 * Programmgesteuertes Löschen von Zwischendaten am Ende einer Pipelineausführung, wenn sie nicht mehr benötigt werden
-* Verwenden von Blobspeicher mit einer kurzfristigen Speicherrichtlinie für Zwischendaten (siehe [Optimieren der Kosten durch Automatisieren der Azure Blob Storage-Zugriffsebenen](../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal)) 
+* Verwenden von Blobspeicher mit einer kurzfristigen Speicherrichtlinie für Zwischendaten (siehe [Optimieren der Kosten durch Automatisieren der Azure Blob Storage-Zugriffsebenen](../storage/blobs/lifecycle-management-overview.md?tabs=azure-portal)) 
 * Regelmäßiges Überprüfen und Löschen nicht mehr benötigter Daten
 
 Weitere Informationen finden Sie unter [Planen und Verwalten von Kosten für Azure Machine Learning](concept-plan-manage-cost.md).

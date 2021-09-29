@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/1/2018
-ms.openlocfilehash: c1f2a83807703593482cc725036a2da158d7195d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d1d1ffaecdf57817e5ef7be48791d0cb50ca9b74
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122347188"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743538"
 ---
 # <a name="copy-multiple-folders-with-azure-data-factory"></a>Kopieren mehrerer Ordner mit Azure Data Factory
 
@@ -45,27 +45,27 @@ Wenn Sie mehrere Container in Stammordnern zwischen Speichern kopieren möchten,
 
 1. Wechseln Sie zur Vorlage **Kopieren von Containern mit mehreren Dateien zwischen Dateispeichern**. Erstellen Sie eine **neue Verbindung** mit Ihrem Quellspeicher. In den Quellspeicher möchten Sie Dateien aus mehreren Containern kopieren.
 
-    ![Erstellen einer neuen Verbindung mit der Quelle](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image1.png)
+    :::image type="content" source="media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image1.png" alt-text="Erstellen einer neuen Verbindung mit der Quelle":::
 
 2. Erstellen Sie eine **neue Verbindung** mit Ihrem Zielspeicher.
 
-    ![Erstellen einer neuen Verbindung mit dem Ziel](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image2.png)
+    :::image type="content" source="media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image2.png" alt-text="Erstellen einer neuen Verbindung mit dem Ziel":::
 
 3. Klicken Sie auf **Diese Vorlage verwenden**.
 
-    ![„Diese Vorlage verwenden“](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image3.png)
+    :::image type="content" source="media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image3.png" alt-text="„Diese Vorlage verwenden“":::
     
 4. Daraufhin wird die Pipeline wie im folgenden Beispiel angezeigt:
 
-    ![Pipeline anzeigen](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image4.png)
+    :::image type="content" source="media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image4.png" alt-text="Pipeline anzeigen":::
 
 5. Klicken Sie auf **Debuggen**, geben Sie die **Parameter** ein, und klicken Sie dann auf **Fertig stellen**.
 
-    ![Führen Sie die Pipeline aus.](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image5.png)
+    :::image type="content" source="media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image5.png" alt-text="Führen Sie die Pipeline aus.":::
 
 6. Überprüfen Sie das Ergebnis.
 
-    ![Überprüfen des Ergebnisses](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image6.png)
+    :::image type="content" source="media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image6.png" alt-text="Überprüfen des Ergebnisses":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

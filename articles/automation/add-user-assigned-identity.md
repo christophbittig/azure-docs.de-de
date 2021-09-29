@@ -3,14 +3,14 @@ title: Verwenden einer benutzerseitig zugewiesenen verwalteten Identität für e
 description: In diesem Artikel wird beschrieben, wie Sie eine benutzerseitig verwaltete Identität für Azure Automation-Konten einrichten.
 services: automation
 ms.subservice: process-automation
-ms.date: 08/26/2021
+ms.date: 09/23/2021
 ms.topic: conceptual
-ms.openlocfilehash: ce409853cddfd0278692e2c6e233331530296d6b
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: 7b1a75aac3166b1fdd3cdd39f5f66bd380339975
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123214265"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129061787"
 ---
 # <a name="using-a-user-assigned-managed-identity-for-an-azure-automation-account-preview"></a>Verwenden einer benutzerseitig zugewiesenen verwalteten Identität für ein Azure Automation-Konto (Vorschau)
 
@@ -23,7 +23,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure Automation-Konto. Eine Anleitung hierzu finden Sie unter [Erstellen eines Azure Automation-Kontos](automation-quickstart-create-account.md).
+- Ein Azure Automation-Konto. Eine Anleitung hierzu finden Sie unter [Erstellen eines Azure Automation-Kontos](./quickstarts/create-account-portal.md).
 
 - Eine systemseitig zugewiesene verwaltete Identität. Anleitungen finden Sie unter [Verwenden einer systemseitig zugewiesenen verwalteten Identität für ein Azure Automation-Konto (Vorschau)](enable-managed-identity-for-automation.md).
 
@@ -49,7 +49,7 @@ Sie können eine benutzerseitig zugewiesene verwaltete Identität für ein Azure
 $sub = Get-AzSubscription -ErrorAction SilentlyContinue
 if(-not($sub))
 {
-    Connect-AzAccount -Subscription
+    Connect-AzAccount
 }
 
 # If you have multiple subscriptions, set the one to use
@@ -303,7 +303,7 @@ Ein Automation-Konto kann mithilfe seiner benutzerseitig zugewiesenen verwaltete
 
 Bevor Sie die benutzerseitig zugewiesene verwaltete Identität für die Authentifizierung verwenden können, richten Sie den Zugriff dieser Identität auf die Azure-Ressource ein, in der Sie die Identität verwenden möchten. Für diese Aufgabe muss der Identität in der Azure-Zielressource die entsprechende Rolle zugewiesen werden.
 
-Befolgen Sie das Prinzip der geringsten Berechtigung und weisen Sie sorgfältig nur die Berechtigungen zu, die für die Ausführung Ihres Runbooks erforderlich sind. Beispiel: Wenn das Automatisierungskonto nur zum Starten oder Stoppen einer Azure-VM erforderlich ist, dann müssen die dem Konto „Ausführen als“ oder der verwalteten Identität zugewiesenen Berechtigungen nur zum Starten oder Stoppen der VM dienen. Weisen Sie ebenso Lesezugriffsberechtigungen zu, wenn ein Runbook aus Blobspeicher liest.
+Befolgen Sie das Prinzip der geringsten Berechtigung und weisen Sie sorgfältig nur die Berechtigungen zu, die für die Ausführung Ihres Runbooks erforderlich sind. Beispiel: Wenn das Automatisierungskonto nur zum Starten oder Stoppen einer Azure-VM erforderlich ist, dann müssen die dem ausführenden Konto oder der verwalteten Identität zugewiesenen Berechtigungen nur zum Starten oder Beenden der VM dienen. Weisen Sie ebenso Lesezugriffsberechtigungen zu, wenn ein Runbook aus Blobspeicher liest.
 
 In diesem Beispiel wird Azure PowerShell verwendet, um zu zeigen, wie die Rolle Mitwirkender im Abonnement der Azure-Zielressource zugewiesen wird. Die Rolle „Mitwirkender“ wird als Beispiel verwendet und kan in Ihrem Fall erforderlich sein oder auch nicht. Alternativ können Sie der Azure-Zielressource die Rolle auch im [Azure-Portal](../role-based-access-control/role-assignments-portal.md) zuweisen.
 
@@ -319,8 +319,14 @@ New-AzRoleAssignment `
 Nachdem Sie die benutzerseitig zugewiesene verwaltete Identität für Ihr Automation-Konto aktiviert und einer Identität Zugriff auf die Zielressource gegeben haben, können Sie diese Identität in Runbooks für Ressourcen angeben, die die verwaltete Identität unterstützen. Verwenden Sie für die Identitätsunterstützung das Az-Cmdlet [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount).
 
 ```powershell
-Connect-AzAccount -Identity `
-    -AccountId <user-assigned-identity-ClientId> 
+# Ensures you do not inherit an AzContext in your runbook
+Disable-AzContextAutosave -Scope Process
+
+# Connect to Azure with user-assigned managed identity
+$AzureContext = (Connect-AzAccount -Identity -AccountId <user-assigned-identity-ClientId>).context
+
+# set and store context
+$AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription -DefaultProfile $AzureContext
 ```
 
 ## <a name="generate-an-access-token-without-using-azure-cmdlets"></a>Generieren eines Zugriffstokens ohne Verwendung von Azure-Cmdlets

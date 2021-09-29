@@ -3,12 +3,12 @@ title: Netzwerksicherheit für Azure Event Hubs
 description: In diesem Artikel wird beschrieben, wie Sie Zugriff über private Endpunkte konfigurieren.
 ms.topic: conceptual
 ms.date: 05/04/2021
-ms.openlocfilehash: 39bad6fabb0f8f639449cd20033b8b31139d98b1
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: ef789153dd807e68736c12f779cad22311c63443
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111413409"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784981"
 ---
 # <a name="network-security-for-azure-event-hubs"></a>Netzwerksicherheit für Azure Event Hubs 
 In diesem Artikel wird beschrieben, wie Sie die folgenden Sicherheitsfunktionen mit Azure Event Hubs verwenden: 
@@ -73,7 +73,7 @@ Mit dem [Azure Private Link-Dienst](../private-link/private-link-overview.md) 
 Ein privater Endpunkt ist eine Netzwerkschnittstelle, die Sie privat und sicher mit einem von Azure Private Link betriebenen Dienst verbindet. Der private Endpunkt verwendet eine private IP-Adresse aus Ihrem VNET und bindet den Dienst dadurch in Ihr VNET ein. Der gesamte für den Dienst bestimmte Datenverkehr kann über den privaten Endpunkt geleitet werden. Es sind also keine Gateways, NAT-Geräte, ExpressRoute-/VPN-Verbindungen oder öffentlichen IP-Adressen erforderlich. Der Datenverkehr zwischen Ihrem virtuellen Netzwerk und dem Dienst wird über das Microsoft-Backbone-Netzwerk übertragen und dadurch vom öffentlichen Internet isoliert. Sie können eine Verbindung mit einer Instanz einer Azure-Ressource herstellen, was ein Höchstmaß an Granularität bei der Zugriffssteuerung ermöglicht.
 
 > [!IMPORTANT]
-> Dieses Funktion wird auf den Dienstebenen **Basic** und **Premium** nicht unterstützt. 
+> Dieses Funktion wird in der **Basisstufe** nicht unterstützt. 
 
 
 Weitere Informationen finden Sie unter [Konfigurieren privater Endpunkte für einen Event Hub](private-link-service.md).

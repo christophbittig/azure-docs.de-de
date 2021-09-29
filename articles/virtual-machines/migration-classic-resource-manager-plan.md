@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 931c1f446523247c485987edb29638bb94656b77
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 4e8ce635f25eccedbd07e3ccaa89a1e2cf418eda
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122698094"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823390"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Planen der Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager
 
@@ -196,7 +196,7 @@ Entscheiden Sie ganz bewusst, welche Dienste Sie nun in Azure Resource Manager a
 - [Rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](../role-based-access-control/overview.md).
 - [Azure Resource Manager-Vorlagen zur einfacheren und präziseren Bereitstellung](../azure-resource-manager/templates/overview.md).
 - [Tags](../azure-resource-manager/management/tag-resources.md).
-- [Aktivitätssteuerung](../azure-resource-manager/management/view-activity-logs.md)
+- [Aktivitätssteuerung](../azure-monitor/essentials/activity-log.md)
 - [Azure-Richtlinien](../governance/policy/overview.md)
 
 ### <a name="pitfalls-to-avoid"></a>Vermeidbare Fehler

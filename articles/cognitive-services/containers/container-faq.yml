@@ -10,12 +10,12 @@ metadata:
   ms.topic: conceptual
   ms.date: 07/21/2021
   ms.author: aahi
-  ms.openlocfilehash: e4bef1836b9faaf8d2315fd296a165988a6a3979
-  ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+  ms.openlocfilehash: ae166866e7a7c7005bf57f34ffadccc692d8c72f
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 07/24/2021
-  ms.locfileid: "114665746"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124806620"
 title: Häufig gestellte Fragen (FAQ) zu Azure Cognitive Services-Containern
 summary: ''
 sections:
@@ -109,7 +109,7 @@ sections:
         * [Azure Cognitive Services](https://stackoverflow.com/questions/tagged/azure-cognitive-services)
         * [Microsoft Cognitive](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
   - question: Wie funktioniert die Abrechnung?
-    answer: "Die Abrechnung erfolgt verbrauchsorientiert, ähnlich wie in der Cognitive Services-Cloud. Die Container müssen konfiguriert werden, um Messdaten an Azure zu senden, damit die Transaktionen entsprechend abgerechnet werden können. Die Ressourcen, die für die gehosteten und lokalen Dienste verwendet werden, werden zu einem einzelnen Kontingent mit gestaffelten Preisen hinzugefügt, wobei beide Verwendungen gegeneinander abgewogen werden. Weitere Informationen finden Sie auf der Seite mit der Preisübersicht des entsprechenden Angebots.\n\n* [Anomalieerkennung](../anomaly-Detector/anomaly-detector-container-howto.md#billing)\n* [Maschinelles Sehen](../computer-vision/computer-vision-how-to-install-containers.md#billing)\n* [Gesichtserkennung](../face/face-how-to-install-containers.md#billing)\n* [Formularerkennung](../form-recognizer/containers/form-recognizer-container-install-run.md#billing)\n* [Language Understanding (LUIS)](../luis/luis-container-howto.md#billing)\n* [Spracherkennungsdienst-API](../speech-service/speech-container-howto.md#billing)\n* [Textanalyse](../text-analytics/how-tos/text-analytics-how-to-install-containers.md#billing)\n\n> [!IMPORTANT]\n> Für die Ausführung von Cognitive Services-Containern besteht keine Lizenz, wenn sie nicht zu Messzwecken mit Azure verbunden sind. Kunden müssen sicherstellen, dass Container jederzeit nur Abrechnungsinformationen an den Messungsdienst übermitteln können. Cognitive Services-Container senden keine Kundendaten an Microsoft.\n\nIm folgenden Beispiel werden Informationen gezeigt, die von einem Container für die Messung übermittelt werden:\n\n\n```json \n\"usageRequestBody\": {\n  \"id\": \"customer_subscriptionID\",\n  \"apiType\": \"textanalytics\",\n  \"containerType\": \"keyphrase\",\n  \"containerVersion\": \"1.1.00864.0001\",\n  \"containerId\": \"dep--keyphrase-\",\n  \"meter\": {\n    \"name\": \"CognitiveServices.TextAnalytics.Container.BatchScoring\",\n    \"quantity\": 10.0\n  }\n  ```\n"
+    answer: "Die Abrechnung erfolgt verbrauchsorientiert, ähnlich wie in der Cognitive Services-Cloud. Die Container müssen konfiguriert werden, um Messdaten an Azure zu senden, damit die Transaktionen entsprechend abgerechnet werden können. Die Ressourcen, die für die gehosteten und lokalen Dienste verwendet werden, werden zu einem einzelnen Kontingent mit gestaffelten Preisen hinzugefügt, wobei beide Verwendungen gegeneinander abgewogen werden. Weitere Informationen finden Sie auf der Seite mit der Preisübersicht des entsprechenden Angebots.\n\n* [Anomalieerkennung](../anomaly-Detector/anomaly-detector-container-howto.md#billing)\n* [Maschinelles Sehen](../computer-vision/computer-vision-how-to-install-containers.md#billing)\n* [Gesichtserkennung](../face/face-how-to-install-containers.md#billing)\n* [Formularerkennung](../../applied-ai-services/form-recognizer/containers/form-recognizer-container-install-run.md#billing)\n* [Language Understanding (LUIS)](../luis/luis-container-howto.md#billing)\n* [Spracherkennungsdienst-API](../speech-service/speech-container-howto.md#billing)\n* [Textanalyse](../text-analytics/how-tos/text-analytics-how-to-install-containers.md#billing)\n\n> [!IMPORTANT]\n> Für die Ausführung von Cognitive Services-Containern besteht keine Lizenz, wenn sie nicht zu Messzwecken mit Azure verbunden sind. Kunden müssen sicherstellen, dass Container jederzeit nur Abrechnungsinformationen an den Messungsdienst übermitteln können. Cognitive Services-Container senden keine Kundendaten an Microsoft.\n\nIm folgenden Beispiel werden Informationen gezeigt, die von einem Container für die Messung übermittelt werden:\n\n\n```json \n\"usageRequestBody\": {\n  \"id\": \"customer_subscriptionID\",\n  \"apiType\": \"textanalytics\",\n  \"containerType\": \"keyphrase\",\n  \"containerVersion\": \"1.1.00864.0001\",\n  \"containerId\": \"dep--keyphrase-\",\n  \"meter\": {\n    \"name\": \"CognitiveServices.TextAnalytics.Container.BatchScoring\",\n    \"quantity\": 10.0\n  }\n  ```\n"
   - question: Wie lautet die aktuelle Supportgarantie für Container?
     answer: >
       Es gibt keine Garantie für Vorschauversionen. Die Standardgarantie von Microsoft für Unternehmenssoftware gilt, wenn Container offiziell als allgemeine Verfügbarkeit (GA) angekündigt werden.
@@ -130,7 +130,7 @@ sections:
 
       * [Gesichtserkennung](../face/face-how-to-install-containers.md#container-requirements-and-recommendations)
 
-      * [Formularerkennung](../form-recognizer/containers/form-recognizer-container-install-run.md#container-requirements-and-recommendations)
+      * [Formularerkennung](../../applied-ai-services/form-recognizer/containers/form-recognizer-container-install-run.md#container-requirements-and-recommendations)
 
       * [Language Understanding (LUIS)](../luis/luis-container-howto.md#container-requirements-and-recommendations)
 

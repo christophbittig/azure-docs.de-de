@@ -7,12 +7,12 @@ ms.custom: references_regions
 ms.date: 08/06/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 49c453f4ffcb2fac04b42f4956768e06ab8fce8f
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 8e33c165cd249b578bd4cba9ef4f25446287d7ec
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123100813"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124766443"
 ---
 # <a name="tutorial-create-a-host-pool"></a>Tutorial: Erstellen eines Hostpools
 
@@ -237,7 +237,7 @@ Weitere Informationen zur Verwendung der Azure CLI zum Erstellen virtueller Azur
     - [Erstellen eines virtuellen Windows-Computers mit der Azure-Befehlszeilenschnittstelle]( /azure/virtual-machines/windows/quick-create-cli)
     - [Tutorial: Erstellen und Verwalten virtueller Windows-Computer mit der Azure CLI](/cli/azure/azure-cli-vm-tutorial)
 - Linux
-    - [Erstellen einer Linux-VM von Grund auf mit der Azure-Befehlszeilenschnittstelle]( /virtual-machines/linux/quick-create-cli)
+    - [Erstellen einer Linux-VM von Grund auf mit der Azure-Befehlszeilenschnittstelle](../virtual-machines/linux/quick-create-cli.md)
     - [Tutorial: Erstellen und Verwalten virtueller Linux-Computer mit der Azure-Befehlszeilenschnittstelle]( /azure/virtual-machines/linux/tutorial-manage-vm) 
 ---
 

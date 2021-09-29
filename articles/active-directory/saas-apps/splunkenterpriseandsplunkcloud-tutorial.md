@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2021
 ms.author: jeedes
-ms.openlocfilehash: bc1d0ec9b5aa74493a0ee43d94303b0a02278198
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 19db011756da7656fda243f9ffc80e555a842ac3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114466070"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124801047"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-azure-ad-sso-for-splunk-enterprise-and-splunk-cloud"></a>Tutorial: Azure Active Directory-Integration mit Azure AD SSO for Splunk Enterprise und Splunk Cloud
 
@@ -128,7 +128,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Navigieren Sie direkt zur Anmelde-URL von Azure AD SSO for Splunk Enterprise and Splunk Cloud, und initiieren Sie dort den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Azure AD SSO for Splunk Enterprise and Splunk Cloud“ klicken, werden Sie zur Anmelde-URL für Azure AD SSO for Splunk Enterprise and Splunk Cloud weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Azure AD SSO for Splunk Enterprise and Splunk Cloud“ klicken, werden Sie zur Anmelde-URL für Azure AD SSO for Splunk Enterprise and Splunk Cloud weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

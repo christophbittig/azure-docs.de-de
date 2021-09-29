@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 04/26/2021
 ms.custom: seodec18, devx-track-python, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: d1ad8e4af0d3fdb0abb95fc12ec4a445afabbb1f
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 5c3c5271e000b001ebe257a5ef421f01ac2b1e32
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112459242"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597358"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-an-example-jupyter-notebook"></a>Tutorial: Trainieren eines Bildklassifizierungsmodells mit einer Jupyter Notebook-Beispielinstanz 
 
@@ -342,11 +342,13 @@ joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')
 
 Beachten Sie, wie das Skript Daten abruft und Modelle speichert:
 
-+ Das Trainingsskript liest ein Argument, um das Verzeichnis mit den Daten zu finden. Wenn Sie den Auftrag später senden, verweisen Sie auf den Datenspeicher für dieses Argument: ```parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')```
+- Das Trainingsskript liest ein Argument, um das Verzeichnis mit den Daten zu finden. Wenn Sie den Auftrag später senden, verweisen Sie auf den Datenspeicher für dieses Argument: 
 
-+ Das Trainingsskript speichert Ihr Modell in einem Verzeichnis namens **outputs**. Alles, was in dieses Verzeichnis geschrieben wurde, wird automatisch in Ihren Arbeitsbereich hochgeladen. Von diesem Verzeichnis aus greifen Sie im weiteren Verlauf dieses Tutorials auf Ihr Modell zu. `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
+  `parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')`
 
-+ Das Trainingsskript erfordert die Datei `utils.py`, damit das Dataset ordnungsgemäß geladen wird. Der folgende Code kopiert `utils.py` in `script_folder`, damit in der Remoteressource auf die Datei und das Trainingsskript zugegriffen werden kann.
+- Das Trainingsskript speichert Ihr Modell in einem Verzeichnis namens **outputs**. Alles, was in dieses Verzeichnis geschrieben wurde, wird automatisch in Ihren Arbeitsbereich hochgeladen. Von diesem Verzeichnis aus greifen Sie im weiteren Verlauf dieses Tutorials auf Ihr Modell zu. `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
+
+- Das Trainingsskript erfordert die Datei `utils.py`, damit das Dataset ordnungsgemäß geladen wird. Der folgende Code kopiert `utils.py` in `script_folder`, damit in der Remoteressource auf die Datei und das Trainingsskript zugegriffen werden kann.
 
   ```python
   import shutil

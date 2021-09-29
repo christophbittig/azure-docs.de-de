@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 06/22/2021
-ms.openlocfilehash: afdfce29840bbc88bdfc853e12e8109881f8366a
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: d593b234e33eefeb5116bc69aeb7ad990ac24536
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113002028"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153822"
 ---
 # <a name="publish-an-integrated-solution"></a>Veröffentlichen einer integrierten Lösung
 
@@ -51,7 +51,7 @@ Einen Überblick über das Programm für integrierte Lösungen erhalten Sie im [
 
 ## <a name="submit-a-nomination"></a>Einreichen einer Nominierung
 
-Partner, die am Programm teilnehmen möchten, müssen die anderen Partner angeben, mit denen sie zusammenarbeiten möchten. Sie sollten das [Formular zur Nominierung für integrierte Lösungen](https://aka.ms/AA5qicu) ausfüllen. Das Programmteam für integrierte Lösungen überprüft die Nominierung und antwortet innerhalb von 10 Werktagen. Das Team gibt dabei die Genehmigung und die nächsten Schritte aus.
+Partner, die am Programm teilnehmen möchten, müssen die anderen Partner angeben, mit denen sie zusammenarbeiten möchten. Sie sollten das [Formular zur Nominierung für integrierte Lösungen](https://go.microsoft.com/fwlink/?linkid=2172593) ausfüllen. Das Programmteam für integrierte Lösungen überprüft die Nominierung und antwortet innerhalb von 10 Werktagen. Das Team gibt dabei die Genehmigung und die nächsten Schritte aus.
 
 ## <a name="develop-an-integrated-solution"></a>Entwickeln einer integrierten Lösung
 

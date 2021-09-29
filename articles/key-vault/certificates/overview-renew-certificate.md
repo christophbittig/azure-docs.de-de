@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: ce1d83ddd47553de1efdef80cc33bc5dd4634c81
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: b2eeca4bb6f5d8af01aa283446961b56d27918d7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123307592"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124761667"
 ---
 # <a name="renew-your-azure-key-vault-certificates"></a>Verlängern Ihrer Azure Key Vault-Zertifikate
 
@@ -65,7 +65,7 @@ Gehen Sie wie folgt vor, um ein Zertifikat mit einer nicht integrierten Zertifiz
 > [!NOTE]
 > Es ist wichtig, dass Sie die signierte CSR mit derselben von Ihnen erstellten CSR-Anforderung mergen. Andernfalls ergibt sich für den Schlüssel keine Übereinstimmung.
 
-Weitere Informationen zum Erstellen einer neuen CSR finden Sie unter [Erstellen und Zusammenführen einer Zertifikatsignieranforderung in Key Vault]( https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-signing-request#azure-portal).
+Weitere Informationen zum Erstellen einer neuen CSR finden Sie unter [Erstellen und Zusammenführen einer Zertifikatsignieranforderung in Key Vault](create-certificate-signing-request.md).
 
 ## <a name="renew-a-self-signed-certificate"></a>Verlängern eines selbstsignierten Zertifikats
 

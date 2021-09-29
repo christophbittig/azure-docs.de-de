@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurepowershell
 ms.author: sumuth
 ms.date: 10/23/2020
-ms.openlocfilehash: 85b7f9898906ffd34ce88fb2243534b5b53898de
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 310e3e4b4b4b00a4b3255cfd581b155c28ed7705
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122643395"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "128609363"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql---flexible-server-preview"></a>Schnellstart: Verwenden einer Resource Manager-Vorlage zum Erstellen einer Azure Database for MySQL Flexible Server-Instanz (Vorschau)
 
@@ -27,7 +27,9 @@ Azure Database for MySQL Flexible Server (Vorschau) ist ein verwalteter Dienst, 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Ein Azure-Konto mit einem aktiven Abonnement. [Erstellen Sie ein kostenloses Konto.](https://azure.microsoft.com/free/)
+Ein Azure-Konto mit einem aktiven Abonnement. 
+
+[!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 

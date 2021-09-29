@@ -8,12 +8,12 @@ ms.subservice: security
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/03/2021
-ms.openlocfilehash: ab31c1629140a1e0f3f5a6dcbe409b6803805e34
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2b39017bb8d1a7e8527f8302190921463247f721
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122641018"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124779690"
 ---
 # <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Sicherheitsüberlegungen für Datenverschiebung in Azure Data Factory
 
@@ -113,7 +113,7 @@ Salesforce unterstützt Shield Platform Encryption, die eine Verschlüsselung al
 
 Hybridszenarien erfordern, dass die selbstgehostete Integration Runtime in einem lokalen Netzwerk oder einem virtuellen Netzwerk (Azure) oder innerhalb einer virtuellen Private Cloud (Amazon) installiert wird. Die selbstgehostete Integrationslaufzeit muss auf die lokalen Datenspeicher zugreifen können. Weitere Informationen zur selbstgehosteten Integration Runtime finden Sie unter [Erstellen und Konfigurieren einer selbstgehosteten Integrationslaufzeit](./create-self-hosted-integration-runtime.md). 
 
-![Kanäle der selbstgehosteten Integrationslaufzeit](media/data-movement-security-considerations/data-management-gateway-channels.png)
+:::image type="content" source="media/data-movement-security-considerations/data-management-gateway-channels.png" alt-text="Kanäle der selbstgehosteten Integrationslaufzeit":::
 
 Der Befehlskanal ermöglicht Kommunikation zwischen Datenverschiebungsdiensten in Data Factory und der selbstgehosteten Integration Runtime. Die Kommunikation enthält die Informationen, die sich auf die Aktivität beziehen. Der Datenkanal wird dazu verwendet, Daten zwischen lokalen Datenspeichern und Clouddatenspeichern zu übertragen.    
 
@@ -157,11 +157,11 @@ Die folgenden Abbildungen veranschaulichen die Verwendung der selbstgehosteten I
 
 #### <a name="express-route"></a>ExpressRoute
 
-![Verwenden von ExpressRoute mit Gateway](media/data-movement-security-considerations/express-route-for-gateway.png) 
+:::image type="content" source="media/data-movement-security-considerations/express-route-for-gateway.png" alt-text="Verwenden von ExpressRoute mit Gateway"::: 
 
 #### <a name="ipsec-vpn"></a>IPSec-VPN
 
-![IPSec-VPN mit Gateway](media/data-movement-security-considerations/ipsec-vpn-for-gateway.png)
+:::image type="content" source="media/data-movement-security-considerations/ipsec-vpn-for-gateway.png" alt-text="IPSec-VPN mit Gateway":::
 
 ### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-addresses"></a> Einrichten von Firewallkonfigurationen und Zulassungsliste für IP-Adressen
 
@@ -188,7 +188,7 @@ Die folgende Tabelle enthält die Anforderungen für eingehende Ports für die W
 | ------------- | ---------------------------------------- |
 | 8060 (TCP)    | Vom PowerShell-Cmdlet für die Verschlüsselung erforderlich, wie in [Verschlüsseln von Anmeldeinformationen für lokale Datenspeicher in Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md) und für die Anwendung zur Anmeldeinformationsverwaltung beschrieben, um Anmeldeinformationen für die lokalen Datenspeicher auf der selbstgehosteten Integration Runtime sicher festzulegen. |
 
-![Gatewayportanforderungen](media/data-movement-security-considerations/gateway-port-requirements.png) 
+:::image type="content" source="media/data-movement-security-considerations/gateway-port-requirements.png" alt-text="Gatewayportanforderungen"::: 
 
 #### <a name="ip-configurations-and-allow-list-setting-up-in-data-stores"></a>Einrichten von Firewallkonfigurationen und Zulassungsliste in Datenspeichern
 

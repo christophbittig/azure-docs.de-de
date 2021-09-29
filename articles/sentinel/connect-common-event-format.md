@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2021
 ms.author: yelevin
-ms.openlocfilehash: 6f261e69daa14e652d226c9b0d6402eb353c1744
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 71f127bd45c833205067256a2b23cdc72b2c3bfb
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123251893"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784506"
 ---
 # <a name="get-cef-formatted-logs-from-your-device-or-appliance-into-azure-sentinel"></a>Abrufen von Protokollen im CEF-Format von Ihrem Gerät oder Ihrer Appliance in Azure Sentinel
 
@@ -55,7 +55,7 @@ Ein Azure Sentinel-Arbeitsbereich ist erforderlich, um CEF-Daten in Log Analytic
 
 - Sie müssen über Lese- und Schreibberechtigungen für diesen Arbeitsbereich verfügen.
 
-- Sie müssen über Leseberechtigungen für die freigegebenen Schlüssel für den Arbeitsbereich verfügen. [Weitere Informationen zu Arbeitsbereichsschlüsseln](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)
+- Sie müssen über Leseberechtigungen für die freigegebenen Schlüssel für den Arbeitsbereich verfügen. [Weitere Informationen zu Arbeitsbereichsschlüsseln](../azure-monitor/agents/agent-windows.md)
 
 ## <a name="designate-a-log-forwarder-and-install-the-log-analytics-agent"></a>Festlegen einer Protokollweiterleitung und Installieren des Log Analytics-Agents
 
@@ -117,7 +117,7 @@ Um CEF-Ereignisse für diese Produkte zu finden, geben Sie den Namen der Kusto-F
 
 Hilfreiche Beispielabfragen, Arbeitsmappen und Analyseregelvorlagen, die speziell für Ihr Produkt erstellt wurden, finden Sie auf der Registerkarte **Nächste Schritte** der Datenconnectorseite Ihres Produkts im Azure Sentinel-Portal.
 
-Wenn keine Daten angezeigt werden, finden Sie eine Anleitung auf der [CEF-Problembehandlungsseite](connect-cef-verify.md).
+Wenn keine Daten angezeigt werden, finden Sie eine Anleitung auf der [CEF-Problembehandlungsseite](./troubleshooting-cef-syslog.md).
 
 ### <a name="changing-the-source-of-the-timegenerated-field"></a>Ändern der Quelle des Felds „TimeGenerated“
 

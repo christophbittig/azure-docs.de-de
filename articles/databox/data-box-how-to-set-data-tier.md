@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 80c4d8a70454c007ac45f588e59c03ef45f10933
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82ac4e9c4a2f573295790d5d7fa3b02c2e690bbc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92125063"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124819863"
 ---
 # <a name="use-azure-data-box-or-azure-data-box-heavy-to-send-data-to-appropriate-azure-storage-blob-tier"></a>Senden von Daten an eine geeignete Azure Storage-Blobebene mit Azure Data Box oder Azure Data Box Heavy
 
@@ -47,7 +47,7 @@ Alternativ erstellen Sie zuerst ein Speicherkonto mit dem festgelegten Zugriffse
 
 Sobald die Daten vom Data Box-Gerät in die Standardebene hochgeladen wurden, können Sie sie in eine Nicht-Standardebene verschieben. Zum Verschieben dieser Daten in eine Nicht-Standardebene gibt es zwei Möglichkeiten.
 
-- **Azure Blob Storage-Lebenszyklusverwaltung**: Sie können einen richtlinienbasierten Ansatz verwenden, um Daten automatisch in die entsprechenden Zugriffsebenen zu übertragen oder am Ende ihres Lebenszyklus ablaufen zu lassen. Weitere Informationen finden Sie unter [Verwalten des Azure Blob Storage-Lebenszyklus](../storage/blobs/storage-lifecycle-management-concepts.md).
+- **Azure Blob Storage-Lebenszyklusverwaltung**: Sie können einen richtlinienbasierten Ansatz verwenden, um Daten automatisch in die entsprechenden Zugriffsebenen zu übertragen oder am Ende ihres Lebenszyklus ablaufen zu lassen. Weitere Informationen finden Sie unter [Verwalten des Azure Blob Storage-Lebenszyklus](../storage/blobs/lifecycle-management-overview.md).
 - **Skripterstellung**: Sie können einen skriptbasierten Ansatz über Azure PowerShell verwenden, um Blobebenentiering zu aktivieren. Dazu rufen Sie den `SetBlobTier`-Vorgang auf, um die Ebene für das Blob festzulegen.
 
 ## <a name="use-azure-powershell-to-set-the-blob-tier"></a>Festlegen der Blobebene mithilfe von Azure PowerShell
@@ -116,4 +116,4 @@ Nachfolgend wird beschrieben, wie Sie die Blobebene mithilfe eines Azure PowerSh
 
 ## <a name="next-steps"></a>Nächste Schritte
 
--  Erfahren Sie mehr zur Behandlung der [gängigen Datentiering-Szenarien mithilfe von Regeln zur Lebenszyklusverwaltung](../storage/blobs/storage-lifecycle-management-concepts.md#examples).
+-  Erfahren Sie mehr zur Behandlung der [gängigen Datentiering-Szenarien mithilfe von Regeln zur Lebenszyklusverwaltung](../storage/blobs/lifecycle-management-overview.md#examples-of-lifecycle-policies).

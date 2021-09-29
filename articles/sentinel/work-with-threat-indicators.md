@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/27/2021
 ms.author: yelevin
-ms.openlocfilehash: 2ecc10c43600a20ceb7209f651f27e78e7b286be
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 0ce6c7ced310fa467adbdc707d25bb5efc0f02bc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122350532"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763308"
 ---
 # <a name="work-with-threat-indicators-in-azure-sentinel"></a>Arbeiten mit Bedrohungsindikatoren in Azure Sentinel
 
@@ -179,7 +179,7 @@ Die Regel **Microsoft Threat Intelligence-Abgleichsanalyse** wird derzeit für d
 |Protokollquelle  |BESCHREIBUNG  |
 |---------|---------|
 |[CEF](connect-common-event-format.md)     |  Der Abgleich erfolgt für alle CEF-Protokolle, die in der Log Analytics-Tabelle **CommonSecurityLog** erfasst sind, mit Ausnahme derjenigen, bei denen `DeviceVendor` als `Cisco` aufgeführt ist. <br><br>Um von Microsoft generierte Threat Intelligence-Daten mit CEF-Protokollen abzugleichen, stellen Sie sicher, dass Sie die Domäne im Feld `RequestURL` des CEF-Protokolls zuordnen.      |
-|[DNS](connect-dns.md)     | Der Abgleich erfolgt für alle DNS-Protokolle, bei denen es sich um DNS-Suchabfragen von Clients von DNS-Diensten (`SubType == "LookupQuery"`) handelt. DNS-Abfragen werden nur für IPv4- (`QueryType=”A”`) und IPv6-Abfragen (`QueryType=” AAAA”`) verarbeitet.<br><br>Um von Microsoft generierte Threat Intelligence-Daten mit DNS-Protokollen zu abgleichen, ist keine manuelle Zuordnung von Spalten erforderlich, da alle Spalten standardmäßig vom Windows-DNS-Server verwendet werden und die Domänen standardmäßig in der Spalte `Name` enthalten sind.   |
+|[DNS](./data-connectors-reference.md#domain-name-server)     | Der Abgleich erfolgt für alle DNS-Protokolle, bei denen es sich um DNS-Suchabfragen von Clients von DNS-Diensten (`SubType == "LookupQuery"`) handelt. DNS-Abfragen werden nur für IPv4- (`QueryType=”A”`) und IPv6-Abfragen (`QueryType=” AAAA”`) verarbeitet.<br><br>Um von Microsoft generierte Threat Intelligence-Daten mit DNS-Protokollen zu abgleichen, ist keine manuelle Zuordnung von Spalten erforderlich, da alle Spalten standardmäßig vom Windows-DNS-Server verwendet werden und die Domänen standardmäßig in der Spalte `Name` enthalten sind.   |
 |[Syslog](connect-syslog.md)     |  Der Abgleich erfolgt derzeit nur für Syslog-Ereignisse, bei denen `Facility` gleich `cron` ist. <br><br>Um von Microsoft generierte Threat Intelligence-Daten mit Syslog zu abgleichen, ist keine manuelle Spaltenzuordnung erforderlich. Die Details werden von Syslog standardmäßig im Feld angezeigt, und die Regel analysiert die Domäne `SyslogMessage` direkt anhand von SyslogMessage.     |
 |     |         |
 

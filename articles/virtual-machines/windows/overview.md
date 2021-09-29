@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: cca6105704afbe4899c62493b50d971471a890f6
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 51a8bde53cf2e75501eadd185e0754ec6f0f673c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122694156"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124803709"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Virtuelle Windows-Computer in Azure
 
@@ -48,7 +48,7 @@ Alle in Azure erstellten Ressourcen werden auf [geografische Regionen](https://a
 
 Die folgende Tabelle enthält einige Methoden, mit denen Sie eine Liste verfügbarer Standorte abrufen können:
 
-| Methode | BESCHREIBUNG |
+| Methode | Beschreibung |
 | --- | --- |
 | Azure-Portal |Wählen Sie beim Erstellen eines virtuellen Computers einen Standort aus der Liste aus. |
 | Azure PowerShell |Verwenden Sie den Befehl [Get-AzLocation](/powershell/module/az.resources/get-azlocation). |
@@ -65,7 +65,7 @@ Die [Größe](../sizes.md) des virtuellen Computers richtet sich nach der Worklo
 Bei Azure wird auf der Grundlage von Größe und Betriebssystem des virtuellen Computers ein [Stundenpreis](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) berechnet. Für angefangene Stunden werden lediglich die in Anspruch genommenen Minuten abgerechnet. Speicherplatz wird separat bewertet und in Rechnung gestellt.
 
 ## <a name="vm-limits"></a>Grenzwerte für virtuelle Computer
-Für Ihr Abonnement gelten standardmäßig bestimmte [Kontingentgrenzen](../../azure-resource-manager/management/azure-subscription-service-limits.md), die die Bereitstellung einer hohen Anzahl virtueller Computer für Ihr Projekt beeinträchtigen können. Der derzeitige Grenzwert pro Abonnement liegt bei 20 VMs pro Region. Zur Erhöhung der Grenzwerte können Sie [ein Supportticket erstellen und eine Erhöhung beantragen](../../azure-portal/supportability/resource-manager-core-quotas-request.md).
+Für Ihr Abonnement gelten standardmäßig bestimmte [Kontingentgrenzen](../../azure-resource-manager/management/azure-subscription-service-limits.md), die die Bereitstellung einer hohen Anzahl virtueller Computer für Ihr Projekt beeinträchtigen können. Der derzeitige Grenzwert pro Abonnement liegt bei 20 VMs pro Region. Zur Erhöhung der Grenzwerte können Sie [ein Supportticket erstellen und eine Erhöhung beantragen](../../azure-portal/supportability/regional-quota-requests.md).
 
 ### <a name="operating-system-disks-and-images"></a>Betriebssystem-Datenträger und Images
 Betriebssystem (Operating System, OS) und Daten werden bei virtuellen Computern auf [virtuellen Festplatten (Virtual Hard Disks, VHDs)](../managed-disks-overview.md) gespeichert. VHDs werden auch für die Images verwendet, die Sie auswählen können, um ein Betriebssystem zu installieren. 
@@ -74,7 +74,7 @@ Azure bietet zahlreiche [Marketplace-Images](https://azuremarketplace.microsoft.
 
 Die folgende Tabelle enthält einige Methoden zur Ermittlung von Informationen zu einem Image:
 
-| Methode | BESCHREIBUNG |
+| Methode | Beschreibung |
 | --- | --- |
 | Azure-Portal |Die Werte werden automatisch angegeben, wenn Sie ein zu verwendendes Image auswählen. |
 | Azure PowerShell |[Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) -Location *Speicherort*<BR>[Get-AzVMImageOffer](/powershell/module/az.compute/get-azvmimageoffer) -Location *Speicherort* -Publisher *Herausgebername*<BR>[Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) -Location *Speicherort* -Publisher *Herausgebername* -Offer *Angebotsname* |

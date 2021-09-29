@@ -7,12 +7,12 @@ ms.subservice: tutorials
 ms.topic: conceptual
 ms.date: 11/22/2020
 ms.author: makromer
-ms.openlocfilehash: f4f4c1c334bb3720118b050947da6345116ef22f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9a7fb311fce0c557276f0ce8feb814d791df959d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122640834"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831267"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>Beheben von SQL-Kürzungsfehlern in Zeilen in Data Factory-Zuordnungsdatenflüssen
 
@@ -34,7 +34,7 @@ Es gibt zwei Hauptmethoden, um Fehler beim Schreiben von Daten in die Datenbanks
 
 2. Innerhalb des Datenflusses sollen Filmtitel aus der Senke zur Zielspalte „name“ zugeordnet werden.
 
-    ![Datenfluss für Filme 1](media/data-flow/error4.png)
+    :::image type="content" source="media/data-flow/error4.png" alt-text="Datenfluss für Filme 1":::
     
 3. Filmtitel passen jedoch nicht ganz in eine Senkenspalte, die nur 5 Zeichen umfassen kann. Beim Ausführen dieses Datenflusses erhalten Sie eine Fehlermeldung ähnlich der folgenden: ```"Job failed due to reason: DF-SYS-01 at Sink 'WriteToDatabase': java.sql.BatchUpdateException: String or binary data would be truncated. java.sql.BatchUpdateException: String or binary data would be truncated."```
 
@@ -45,21 +45,21 @@ Dieses Video führt Sie durch ein Beispiel für das Einrichten der Logik zur Feh
 
 1. In diesem Szenario ist die maximale Länge der Spalte „name“ auf fünf Zeichen beschränkt. Daher fügen wir eine Transformation für bedingtes Teilen hinzu, sodass Zeilen mit Titeln („title“) mit mehr als fünf Zeichen protokolliert werden können und gleichzeitig die restlichen Zeilen, die in diesen Bereich passen, in die Datenbank geschrieben werden können.
 
-    ![Bedingtes Teilen](media/data-flow/error1.png)
+    :::image type="content" source="media/data-flow/error1.png" alt-text="Bedingtes Teilen":::
 
 2. Mit dieser Transformation für bedingtes Teilen wird die maximale Länge von „title“ auf fünf Zeichen festgelegt. Jede Zeile, die kleiner oder gleich fünf Zeichen ist, wird in den Datenstrom ```GoodRows``` geleitet. Jede Zeile mit mehr als fünf Zeilen wird in den Datenstrom ```BadRows``` geleitet.
 
 3. Nun müssen die fehlerhaften Zeilen protokolliert werden. Fügen Sie dem Datenstrom ```BadRows``` eine Senkentransformation für die Protokollierung hinzu. Hier werden alle Felder automatisch zugeordnet, damit der gesamte Transaktionsdatensatz protokolliert wird. Dies ist die Ausgabe einer CSV-Datei mit Texttrennzeichen in einer einzelnen Datei in Blob Storage. Die Protokolldatei erhält den Namen „badrows.csv“.
 
-    ![Datei „badrows.csv“ mit fehlerhaften Zeilen](media/data-flow/error3.png)
+    :::image type="content" source="media/data-flow/error3.png" alt-text="Datei „badrows.csv“ mit fehlerhaften Zeilen":::
     
 4. Der vollständige Datenfluss ist nachfolgend dargestellt. Nun können fehlerhafte Zeilen abgespaltet werden, um SQL-Kürzungsfehler zu vermeiden, und diese Einträge können in einer Protokolldatei eingefügt werden. Fehlerfreie Zeilen können dagegen weiterhin in die Zieldatenbank geschrieben werden.
 
-    ![Vollständiger Datenfluss](media/data-flow/error2.png)
+    :::image type="content" source="media/data-flow/error2.png" alt-text="Vollständiger Datenfluss":::
 
 5. Wenn Sie die Option für die Fehlerzeilenbehandlung in der Senkentransformation auswählen und „Fehlerzeilen ausgeben“ festlegen, generiert ADF automatisch eine CSV-Dateiausgabe der Zeilendaten zusammen mit den vom Treiber ausgegebenen Fehlermeldungen. Bei dieser alternativen Option müssen Sie diese Logik nicht manuell zum Datenfluss hinzufügen. Diese Option führt zu einer geringen Leistungseinbuße, damit ADF eine zweistufige Methode implementieren kann, um Fehler abzufangen und zu protokollieren.
 
-    ![Vollständiger Datenfluss mit Fehlerzeilen](media/data-flow/error-row-3.png)
+    :::image type="content" source="media/data-flow/error-row-3.png" alt-text="Vollständiger Datenfluss mit Fehlerzeilen":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

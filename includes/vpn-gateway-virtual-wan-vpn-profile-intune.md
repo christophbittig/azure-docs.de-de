@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: vpn-gateway
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/26/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ffe433e632e2afed32f2a135d87d927686e9a004
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 6c8f4e902929d6a610dc1f9224ac17b2d3b893d0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108018281"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "126056553"
 ---
 Sie können Profile für Azure-VPN-Clients (Windows 10) mit Microsoft Intune bereitstellen. Dieser Artikel unterstützt Sie beim Erstellen eines Intune-Profils mit benutzerdefinierten Einstellungen.
 
@@ -72,7 +72,7 @@ In diesem Abschnitt erstellen Sie ein Microsoft Intune-Profil mit benutzerdefini
 
     * **Name:** Geben Sie einen Namen für die Konfiguration ein.
     * **Beschreibung:** Optionale Beschreibung.
-    * **OMA-URI:** ```./User/Vendor/MSFT/VPNv2/<name of your connection>/ProfileXML``` (diese Information finden Sie in der Datei „azurevpnconfig.xml“ im <name></name>-Tag).
+    * **OMA-URI:** ```./User/Vendor/MSFT/VPNv2/<name of your connection>/ProfileXML``` (diese Information finden Sie in der Datei „azurevpnconfig.xml“ im \<name\> \</name\>-Tag).
     * **Datentyp:** Zeichenfolge (XML-Datei).
 
    Wählen Sie das Ordnersymbol aus und die Datei, die Sie in Schritt 6 in den [XML](#xml)-Schritten gespeichert haben. Wählen Sie **Hinzufügen**.

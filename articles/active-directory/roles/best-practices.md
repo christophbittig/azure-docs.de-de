@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48d424a64df215a7506130a44d57fc45d638255d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c40d1ae4d24f24feafa138b75aefc3f9b711287e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355544"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124762871"
 ---
 # <a name="best-practices-for-azure-ad-roles"></a>Bewährte Methoden für Azure AD-Rollen
 
@@ -62,7 +62,7 @@ Zugriffsüberprüfungen ermöglichen es Unternehmen, den Zugriff von Administrat
 - Ein böswilliger Akteur kann ein Konto kompromittieren.
 - Mitarbeiter verschieben Teams in einem Unternehmen. Wenn es keine Überprüfung gibt, können sie mit der Zeit unnötige Zugriffe anhäufen.
  
-Informationen zu Zugriffsüberprüfungen für Rollen finden Sie unter [Erstellen einer Zugriffsübersicht über Azure AD Rollen in PIM](../privileged-identity-management/pim-how-to-start-security-review.md). Informationen zu Zugriffsüberprüfungen von Gruppen, denen Rollen zugewiesen sind, finden Sie unter [Erstellen einer Zugriffsüberprüfung von Gruppen und Anwendungen in Azure AD Zugriffsüberprüfungen](../governance/create-access-review.md).
+Informationen zu Zugriffsüberprüfungen für Rollen finden Sie unter [Erstellen einer Zugriffsübersicht über Azure AD Rollen in PIM](../privileged-identity-management/pim-create-azure-ad-roles-and-resource-roles-review.md). Informationen zu Zugriffsüberprüfungen von Gruppen, denen Rollen zugewiesen sind, finden Sie unter [Erstellen einer Zugriffsüberprüfung von Gruppen und Anwendungen in Azure AD Zugriffsüberprüfungen](../governance/create-access-review.md).
 
 ## <a name="5-limit-the-number-of-global-administrators-to-less-than-5"></a>5. begrenzen Sie die Anzahl der globalen Administratoren auf weniger als 5
 

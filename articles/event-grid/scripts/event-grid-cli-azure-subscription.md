@@ -3,14 +3,14 @@ title: 'Azure CLI-Skriptbeispiel: Abonnieren eines Azure-Abonnements | Microsoft
 description: In diesem Artikel wird anhand eines Beispielskripts für die Azure-Befehlszeilenschnittstelle das Abonnieren von Azure Event Grid-Ereignissen unter Verwendung der Azure-Befehlszeilenschnittstelle veranschaulicht.
 ms.devlang: azurecli
 ms.topic: sample
-ms.date: 07/22/2021
+ms.date: 09/15/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e6b0fac888b621511f06e15def4d19d22921ad39
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 6b12e7e530f83d599037713b2f372a49e9a4b927
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114463818"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128649433"
 ---
 # <a name="subscribe-to-events-for-an-azure-subscription-with-azure-cli"></a>Abonnieren von Ereignissen für ein Azure-Abonnement mit der Azure CLI
 

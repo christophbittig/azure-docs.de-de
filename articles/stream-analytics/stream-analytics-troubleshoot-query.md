@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0dc36b817d5b5cdf731edecd64e1879c153d866a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 444803285eca144ff5abd7cdaa83c90670774955
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98015129"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784487"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Problembehandlung von Azure Stream Analytics-Abfragen
 
@@ -43,7 +43,7 @@ Dieser Artikel beschreibt häufige Probleme bei der Entwicklung von Azure Stream
 5.  Stellen Sie sicher, dass die Richtlinien für die Ereignisreihenfolge wie erwartet konfiguriert sind. Wechseln Sie zu **Einstellungen**, und wählen Sie [**Ereignisreihenfolge**](./stream-analytics-time-handling.md) aus. Die Richtlinie wird *nicht* angewendet, wenn Sie die Abfrage mithilfe der Schaltfläche **Testen** testen. Dieses Ergebnis ist ein Unterschied zwischen dem Testen im Browser und der tatsächlichen Ausführung des Auftrags. 
 
 6. Debuggen mithilfe von Aktivitäts- und Ressourcenprotokollen:
-    - Verwenden Sie [Aktivitätsprotokolle](../azure-resource-manager/management/view-activity-logs.md), und filtern Sie diese, um Fehler zu ermitteln und zu debuggen.
+    - Verwenden Sie [Aktivitätsprotokolle](../azure-monitor/essentials/activity-log.md), und filtern Sie diese, um Fehler zu ermitteln und zu debuggen.
     - Verwenden Sie [Auftragsressourcenprotokolle](stream-analytics-job-diagnostic-logs.md), um Fehler zu ermitteln und zu debuggen.
 
 ## <a name="resource-utilization-is-high"></a>Die Ressourcenverwendung ist hoch

@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 1b21416e06948c9a32831dc23c66c31b62a3ddae
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: ad9adb2c9f6b8308aba79f9e9bd1eadbf755760a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123307802"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763935"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory-or-azure-synapse-analytics"></a>Kopieren von Daten aus SharePoint Online-Listen mithilfe von Azure Data Factory oder Azure Synapse Analytics
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -63,7 +63,7 @@ Der SharePoint Online-Listenconnector verwendet die Dienstprinzipalauthentifizie
         </AppPermissionRequests>
         ```
 
-        ![Gewähren der Berechtigung für SharePoint](media/connector-sharepoint-online-list/sharepoint-online-grant-permission.png)
+        :::image type="content" source="media/connector-sharepoint-online-list/sharepoint-online-grant-permission.png" alt-text="Gewähren der Berechtigung für SharePoint":::
 
     3. Klicken Sie für diese App auf „Vertrauen“.
 
@@ -79,7 +79,7 @@ Führen Sie die folgenden Schritte aus, um einen verknüpften Dienst für eine S
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Screenshot: Erstellen eines neuen verknüpften Dienstes über die Azure Data Factory-Benutzeroberfläche.":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Screenshot: Erstellen eines neuen verknüpften Diensts über die Azure Data Factory-Benutzeroberfläche":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -134,7 +134,7 @@ Folgende Eigenschaften werden für einen mit einer SharePoint Online-Liste verkn
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie unter [Datasets und verknüpfte Dienste](concepts-datasets-linked-services.md). Der folgende Abschnitt enthält eine Liste der Eigenschaften, die vom SAP-Tabellen-Dataset unterstützt werden.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft des Datasets muss auf **SharePointOnlineLResource** festgelegt sein. | Ja |
 | listName | Der Name der SharePoint Online-Liste. | Ja |
@@ -167,7 +167,7 @@ Eine vollständige Liste mit den verfügbaren Abschnitten und Eigenschaften zum 
 
 Für das Kopieren von Daten aus SharePoint Online-Listen werden folgende Eigenschaften im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft der Quelle der Kopieraktivität muss auf **SharePointOnlineListSource** festgelegt werden. | Ja |
 | Abfrage | Benutzerdefinierte OData-Abfrageoptionen zum Filtern von Daten. Beispiel: `"$top=10&$select=Title,Number"`. | Nein |
@@ -234,7 +234,7 @@ Beim Kopieren von Daten aus SharePoint Online-Listen werden die folgenden Zuordn
 
 Sie können eine Datei aus SharePoint Online kopieren, indem Sie mit einer **Webaktivität** das Zugriffstoken von SPO authentifizieren und erfassen und dann an eine nachfolgende **Kopieraktivität** übergeben, um Daten mit einem **HTTP-Connector als Quelle** zu kopieren.
 
-![SharePoint-Kopierdateiflow](media/connector-sharepoint-online-list/sharepoint-online-copy-file-flow.png)
+:::image type="content" source="media/connector-sharepoint-online-list/sharepoint-online-copy-file-flow.png" alt-text="SharePoint-Kopierdateiflow":::
 
 1. Gehen Sie zum Erstellen einer AAD-Anwendung und Erteilen von Berechtigungen für SharePoint Online gemäß dem Abschnitt [Voraussetzungen](#prerequisites) vor. 
 

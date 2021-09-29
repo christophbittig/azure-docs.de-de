@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/13/2020
 ms.author: thwimmer
-ms.openlocfilehash: 16fbc64f77407c02ec189e9f0bd0de40d9a7f2bd
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 84842b751c0e4351da13d26654147c9541af6973
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113759639"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643389"
 ---
 # <a name="tutorial-configure-sap-analytics-cloud-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren der automatischen Benutzerbereitstellung für SAP Analytics Cloud
 
@@ -54,7 +54,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 1. Melden Sie sich mit Ihrem Administratorkonto bei der [Verwaltungskonsole für die SAP-Identitätsbereitstellung](https://ips-xlnk9v890j.dispatcher.us1.hana.ondemand.com/) an, und wählen Sie dann **Proxysysteme** aus.
 
-   ![SAP-Proxysysteme](./media/sap-analytics-cloud-provisioning-tutorial/sap-proxy-systems.png.png)
+   ![SAP-Proxysysteme](./media/sap-analytics-cloud-provisioning-tutorial/sap-proxy-systems.png)
 
 2. Wählen Sie **Eigenschaften** aus.
 
@@ -121,7 +121,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit SAP Analytics Cloud synchronisiert werden. Beachten Sie, dass die als **übereinstimmend** ausgewählten Attribute für den Abgleich der Benutzerkonten in SAP Analytics Cloud für Updatevorgänge verwendet werden. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die SAP Analytics Cloud-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |Attribut|Typ|Unterstützung für das Filtern|
+   |attribute|type|Unterstützung für das Filtern|
    |---|---|---|
    |userName|String|&check;|
    |name.givenName|String|
