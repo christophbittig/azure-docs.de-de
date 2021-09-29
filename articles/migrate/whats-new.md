@@ -7,12 +7,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 08/04/2021
 ms.custom: mvc
-ms.openlocfilehash: 720b19ff16e72fade8bcdbd1b41304b2d87d1f2d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 99216bd26bfff76c4342f1533ff4ced070a69e92
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737661"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124735966"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Neuerungen in Azure Migrate
 
@@ -21,7 +21,7 @@ ms.locfileid: "121737661"
 ## <a name="update-august-2021"></a>Update (August 2021)
 
 - Die bedarfsorientierte Ermittlung und Bewertung von ASP.NET-Web-Apps, die auf IIS-Servern in Ihrer VMware-Umgebung ausgeführt werden, befindet sich jetzt in der Vorschauphase. [Weitere Informationen](concepts-azure-webapps-assessment-calculation.md). Informationen zu den ersten Schritten finden Sie in den Tutorials zur [Ermittlung](tutorial-discover-vmware.md) und [Bewertung](tutorial-assess-webapps.md).
-- Unterstützung für Azure [Ultra-Datenträger](https://docs.microsoft.com/azure/virtual-machines/disks-types#ultra-disk) in der Azure-VM-Bewertungsempfehlung.
+- Unterstützung für Azure [Ultra-Datenträger](../virtual-machines/disks-types.md#ultra-disk) in der Azure-VM-Bewertungsempfehlung.
 - Allgemeine Verfügbarkeit von bedarfsorientierter Softwareinventur und Abhängigkeitsanalyse ohne Agent für virtuelle VMware-Computer.
 - Updates der Azure Migrate-Appliance:
     - Diagnostizieren und Beheben von Problemen mit der Appliance, damit Benutzer Probleme mit der Appliance erkennen und selbst bewerten können.

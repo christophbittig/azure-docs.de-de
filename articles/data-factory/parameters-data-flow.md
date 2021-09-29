@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
-ms.openlocfilehash: 5d06d55e199e0c5f2f1fcda9f1a9d121ed1726e5
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: d01e1ca8d3eb0ca2e345d42118ad5f1463c3139f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122821599"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124750468"
 ---
 # <a name="parameterizing-mapping-data-flows"></a>Parametrisieren von Zuordnungsdatenflüssen
 
@@ -33,17 +33,17 @@ Nutzen Sie diese Funktion, um Ihre Datenflüsse universell einsetzbar, flexibel 
 
 Wenn Sie Parameter zu Ihrem Datenfluss hinzufügen möchten, klicken Sie auf den leeren Bereich der Datenflusscanvas, um die allgemeinen Eigenschaften anzuzeigen. Im Einstellungsbereich sehen Sie die Registerkarte **Parameter**. Wählen Sie **Neu** aus, um einen neuen Parameter zu generieren. Für jeden Parameter müssen Sie einen Namen angeben, einen Typ auswählen und optional einen Standardwert festlegen.
 
-![Erstellen von Datenflussparametern](media/data-flow/create-params.png "Erstellen von Datenflussparametern")
+:::image type="content" source="media/data-flow/create-params.png" alt-text="Erstellen von Datenflussparametern":::
 
 ## <a name="use-parameters-in-a-mapping-data-flow"></a>Verwenden von Parametern in einem Zuordnungsdatenfluss 
 
 Auf Parameter kann in jedem beliebigen Datenflussausdruck verwiesen werden. Parameter beginnen mit $ und sind unveränderlich. Die Liste der verfügbaren Parameter finden Sie im Ausdrucks-Generator auf der Registerkarte **Parameter**.
 
-![Screenshot: Verfügbare Parameter auf der Registerkarte „Parameter“](media/data-flow/parameter-expression.png "Datenflussparameterausdruck")
+:::image type="content" source="media/data-flow/parameter-expression.png" alt-text="Screenshot: Verfügbare Parameter auf der Registerkarte „Parameter“":::
 
 Sie können zusätzliche Parameter schnell hinzufügen, indem Sie **Neuer Parameter** auswählen und dann den Namen und Typ angeben.
 
-![Screenshot: Parameter auf der Registerkarte „Parameter“, auf der neue Parameter hinzugefügt wurden](media/data-flow/new-parameter-expression.png "Datenflussparameterausdruck")
+:::image type="content" source="media/data-flow/new-parameter-expression.png" alt-text="Screenshot: Parameter auf der Registerkarte „Parameter“, auf der neue Parameter hinzugefügt wurden":::
 
 ## <a name="assign-parameter-values-from-a-pipeline"></a>Zuweisen von Parameterwerten aus einer Pipeline
 
@@ -51,13 +51,13 @@ Nachdem Sie einen Datenfluss mit Parametern erstellt haben, können Sie ihn mit 
 
 Zum Zuweisen von Parameterwerten können Sie entsprechend dem Spark-Typ entweder die [Ausdruckssprache für die ADF-Pipeline](control-flow-expression-language-functions.md) oder die [Ausdruckssprache für Datenflüsse](data-flow-expression-functions.md) verwenden. Jede Mapping Data Flow-Funktion kann eine beliebige Kombination von Pipeline- und Datenfluss-Ausdrucksparametern aufweisen.
 
-![Screenshot: Registerkarte „Parameter“, auf der für „myparam“ der Wert für den Datenflussausdruck ausgewählt ist](media/data-flow/parameter-assign.png "Festlegen eines Datenflussparameters")
+:::image type="content" source="media/data-flow/parameter-assign.png" alt-text="Screenshot: Registerkarte „Parameter“, auf der für „myparam“ der Wert für den Datenflussausdruck ausgewählt ist":::
 
 ### <a name="pipeline-expression-parameters"></a>Pipeline-Ausdrucksparameter
 
 Mit Pipeline-Ausdrucksparametern können Sie ähnlich anderen Pipelineaktivitäten auf Systemvariablen, Funktionen, Pipelineparameter und Variablen verweisen. Wenn Sie auf **Pipeline expression** (Pipelineausdruck) klicken, wird ein Seitennavigationsbereich geöffnet, in dem Sie einen Ausdruck mithilfe des Ausdrucks-Generators eingeben können.
 
-![Screenshot: Bereich für den Ausdrucks-Generator](media/data-flow/parameter-pipeline.png "Festlegen eines Datenflussparameters")
+:::image type="content" source="media/data-flow/parameter-pipeline.png" alt-text="Screenshot: Bereich für den Ausdrucks-Generator":::
 
 Wenn auf die Pipelineparameter verwiesen wird, werden sie ausgewertet. Der Wert wird dann in der Ausdruckssprache für Datenflüsse verwendet. Der Typ des Pipelineausdrucks muss nicht mit dem Parametertyp im Datenfluss übereinstimmen. 
 
@@ -65,7 +65,7 @@ Wenn auf die Pipelineparameter verwiesen wird, werden sie ausgewertet. Der Wert 
 
 Wenn Sie einen Pipeline-Ausdrucksparameter vom Typ String zuweisen, werden standardmäßig Anführungszeichen hinzugefügt, und der Wert wird als Literalwert ausgewertet. Um den Parameterwert als Datenflussausdruck zu lesen, aktivieren Sie das Feld „Ausdruck“ neben dem Parameter.
 
-![Screenshot: Bereich „Datenflussparameter“, in dem für einen Parameter der Wert „Ausdruck“ aktiviert ist](media/data-flow/string-parameter.png "Festlegen eines Datenflussparameters")
+:::image type="content" source="media/data-flow/string-parameter.png" alt-text="Screenshot: Bereich „Datenflussparameter“, in dem für einen Parameter der Wert „Ausdruck“ aktiviert ist":::
 
 Wenn der Datenflussparameter `stringParam` auf einen Pipelineparameter mit dem Wert `upper(column1)` verweist. 
 
@@ -76,7 +76,7 @@ Wenn der Datenflussparameter `stringParam` auf einen Pipelineparameter mit dem W
 
 In der Pipeline-Ausdruckssprache können Systemvariablen wie `pipeline().TriggerTime` und Funktionen wie `utcNow()` Zeitstempel als Zeichenfolgen im Format „jjjj-MM-tt\'T\'HH:mm:ss.SSSSSSZ“ zurückgeben. Verwenden Sie zum Konvertieren dieser Ausdrücke in Datenflussparametern vom Typ Zeitstempel die Zeichenfolgeninterpolation, um den gewünschten Zeitstempel in eine `toTimestamp()`-Funktion einzuschließen. Wenn Sie z. B. die Pipeline-Auslösungszeit in einen Datenflussparameter konvertieren möchten, können Sie `toTimestamp(left('@{pipeline().TriggerTime}', 23), 'yyyy-MM-dd\'T\'HH:mm:ss.SSS')` verwenden. 
 
-![Screenshot: Registerkarte „Parameter“, auf der Sie eine Auslösungszeit eingeben können](media/data-flow/parameter-timestamp.png "Festlegen eines Datenflussparameters")
+:::image type="content" source="media/data-flow/parameter-timestamp.png" alt-text="Screenshot: Registerkarte „Parameter“, auf der Sie eine Auslösungszeit eingeben können":::
 
 > [!NOTE]
 > Datenflüsse unterstützen nur bis zu drei Millisekundenstellen. Die `left()`-Funktion wird zum Kürzen zusätzlicher Stellen verwendet.
@@ -85,15 +85,15 @@ In der Pipeline-Ausdruckssprache können Systemvariablen wie `pipeline().Trigger
 
 Angenommen, Sie verfügen über den Integerparameter `intParam`, der auf einen Pipelineparameter vom Typ String verweist: `@pipeline.parameters.pipelineParam`. 
 
-![Screenshot: Registerkarte „Parameter“ mit den Parametern „stringParam“ und „intParam“](media/data-flow/parameter-pipeline-2.png "Festlegen eines Datenflussparameters")
+:::image type="content" source="media/data-flow/parameter-pipeline-2.png" alt-text="Screenshot: Registerkarte „Parameter“ mit den Parametern „stringParam“ und „intParam“":::
 
 `@pipeline.parameters.pipelineParam` wird zur Laufzeit der Wert `abs(1)` zugewiesen.
 
-![Screenshot: Registerkarte „Parameter“, auf der der Wert „abs(1)“ ausgewählt ist](media/data-flow/parameter-pipeline-4.png "Festlegen eines Datenflussparameters")
+:::image type="content" source="media/data-flow/parameter-pipeline-4.png" alt-text="Screenshot: Registerkarte „Parameter“, auf der der Wert „abs(1)“ ausgewählt ist":::
 
 Wenn in einem Ausdruck auf `$intParam` verwiesen wird, z. B. in einer abgeleiteten Spalte, wird `abs(1)` ausgewertet und `1` zurückgegeben. 
 
-![Screenshot: Wert für „Spalten“](media/data-flow/parameter-pipeline-3.png "Festlegen eines Datenflussparameters")
+:::image type="content" source="media/data-flow/parameter-pipeline-3.png" alt-text="Screenshot: Wert für „Spalten“":::
 
 ### <a name="data-flow-expression-parameters"></a>Datenfluss-Ausdrucksparameter
 
@@ -109,7 +109,7 @@ Ein gängiges Muster ist die Übergabe eines Spaltennamen als Parameterwert. Wen
 
 Wenn Sie beispielsweise eine Zeichenfolgenspalte aufgrund eines `columnName`-Parameters zuordnen möchten, können Sie eine abgeleitete Spaltentransformation gleich `toString(byName($columnName))` hinzufügen.
 
-![Übergeben eines Spaltennamens als Parameter](media/data-flow/parameterize-column-name.png "Übergeben eines Spaltennamens als Parameter")
+:::image type="content" source="media/data-flow/parameterize-column-name.png" alt-text="Übergeben eines Spaltennamens als Parameter":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Ausführen der Datenflussaktivität](control-flow-execute-data-flow-activity.md)

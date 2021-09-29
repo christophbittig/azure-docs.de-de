@@ -8,16 +8,16 @@ ms.service: bastion
 ms.topic: quickstart
 ms.date: 08/30/2021
 ms.author: cherylmc
-ms.openlocfilehash: f6319369a03de754b1ce016fb20aa99e5ab466e1
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: d9f3d2c8f30f3b5d249aae0789a7e2fee282e867
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123223421"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128677813"
 ---
 # <a name="quickstart-configure-azure-bastion-from-vm-settings"></a>Schnellstart: Konfigurieren von Azure Bastion über VM-Einstellungen
 
-In diesem Artikel erfahren Sie, wie Sie Azure Bastion basierend auf Ihren VM-Einstellungen im Azure-Portal konfigurieren und dann über eine private IP-Adresse eine Verbindung mit einer VM herstellen können. Nachdem der Dienst bereitgestellt wurde, ist die RDP/SSH-Umgebung für alle virtuellen Computer des jeweiligen virtuellen Netzwerks verfügbar. Die VM benötigt weder öffentliche IP-Adressen, Clientsoftware, Agents noch eine spezielle Konfiguration. Wenn Sie die öffentliche IP-Adresse auf Ihrer VM für keine anderen Zwecke benötigen, können Sie sie entfernen. Stellen Sie anschließend über das Portal mithilfe der privaten IP-Adresse eine Verbindung mit Ihrer VM her. Weitere Informationen zu Azure Bastion finden Sie unter [Was ist Azure Bastion?](bastion-overview.md).
+In diesem Artikel erfahren Sie, wie Sie Azure Bastion basierend auf Ihren VM-Einstellungen im Azure-Portal konfigurieren und dann über eine private IP-Adresse eine Verbindung mit einer VM herstellen können. Nachdem der Dienst bereitgestellt wurde, ist die RDP/SSH-Umgebung für alle virtuellen Computer des jeweiligen virtuellen Netzwerks verfügbar. Die VM benötigt weder öffentliche IP-Adressen, Clientsoftware, Agents noch eine spezielle Konfiguration. Wenn Sie die öffentliche IP-Adresse auf Ihrer VM für keine anderen Zwecke benötigen, können Sie sie entfernen. Stellen Sie anschließend über das Portal mithilfe der privaten IP-Adresse eine Verbindung mit Ihrer VM her. Weitere Informationen zu Azure Bastion finden Sie unter [Was ist Azure Bastion?](bastion-overview.md). 
 
 ## <a name="prerequisites"></a><a name="prereq"></a>Voraussetzungen
 

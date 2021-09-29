@@ -12,12 +12,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: mathoma
 ms.date: 07/13/2021
-ms.openlocfilehash: 13e522b45673723a33b8739ccefafa4a8410910a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e5e980878091145770f98cff952374e76f08180d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340284"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124775643"
 ---
 # <a name="long-term-retention---azure-sql-database-and-azure-sql-managed-instance"></a>Langzeitaufbewahrung: Azure SQL-Datenbank und Azure SQL Managed Instance
 
@@ -88,8 +88,6 @@ Sie können die langfristige Sicherungsaufbewahrung im Azure-Portal und mit Powe
 Informationen zum Konfigurieren der Langzeitaufbewahrung oder zum Wiederherstellen einer Datenbank aus einer Sicherung für SQL-Datenbank im Azure-Portal oder mithilfe von PowerShell finden Sie unter [Verwalten der langfristigen Aufbewahrung von Sicherungen in Azure SQL-Datenbank](long-term-backup-retention-configure.md).
 
 Informationen zum Konfigurieren der Langzeitaufbewahrung oder zum Wiederherstellen einer Datenbank aus einer Sicherung für SQL Managed Instance über das Azure-Portal oder mit PowerShell finden Sie unter [Verwalten der langfristigen Sicherungsaufbewahrung für Azure SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md).
-
-Zum Wiederherstellen einer Datenbank aus dem LTR-Speicher können Sie eine bestimmte Sicherung basierend auf ihrem Zeitstempel auswählen. Die Datenbank kann auf einem beliebigen vorhandenen Server unter dem gleichen Abonnement wie die ursprüngliche Datenbank wiederhergestellt werden. Informationen zum Wiederherstellen Ihrer Datenbank aus einer LTR-Sicherung mit dem Azure-Portal oder PowerShell finden Sie unter [Verwalten der langfristigen Aufbewahrung von Sicherungen in Azure SQL-Datenbank](long-term-backup-retention-configure.md). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

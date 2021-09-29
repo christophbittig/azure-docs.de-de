@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/22/2020
-ms.openlocfilehash: 42b25599bfd1ef40f8bb0bc1a954677f68dbf668
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 1c134fa24914ffc1cc2d51389cf6840986a74c58
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862899"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "128661560"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-an-azure-database-for-mysql-flexible-server"></a>Schnellstart: Verwenden des Azure-Portals zum Erstellen einer Azure Database for MySQL Flexible Server-Instanz
 
@@ -24,7 +24,9 @@ Azure Database for MySQL Flexible Server ist ein verwalteter Dienst, mit dem Sie
 > [!IMPORTANT]
 > Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
 
-Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+
+[!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
+
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 Öffnen Sie das [Azure-Portal](https://portal.azure.com/). Geben Sie Ihre Anmeldeinformationen ein, um sich beim Portal anzumelden. Die Standardansicht ist Ihr Dienstdashboard.
@@ -57,7 +59,7 @@ Führen Sie die folgenden Schritte aus, um eine Flexible Server-Instanz zu erste
     Region|Die Region, die Ihren Benutzern am nächsten liegt| Der Standort, der Ihren Benutzern am nächsten ist|
     Workloadtyp| Entwicklung | Für Produktionsworkloads können Sie je nach [max_connections](concepts-server-parameters.md#max_connections)-Anforderungen eine kleine/mittlere Größe oder eine große Größe auswählen.|
     Verfügbarkeitszone| Keine Einstellung | Wenn Ihre Anwendung auf virtuellen Azure-Computern, VM-Skalierungsgruppen oder AKS-Instanzen in einer bestimmten Verfügbarkeitszone bereitgestellt wird, können Sie Ihren flexiblen Server in derselben Verfügbarkeitszone angeben, um die Anwendung und die Datenbank gemeinsam anzuordnen und so die Leistung zu verbessern, indem die Netzwerklatenz zonenübergreifend reduziert wird.|
-    Hochverfügbarkeit| Deaktiviert | Wählen Sie bei Produktionsservern zwischen [Zonenredundante Hochverfügbarkeit](https://docs.microsoft.com/azure/mysql/flexible-server/concepts-high-availability#zone-redundant-high-availability) und [Hochverfügbarkeit in gleicher Zone](https://docs.microsoft.com/azure/mysql/flexible-server/concepts-high-availability#same-zone-high-availability). Dies wird im Hinblick auf Geschäftskontinuität und Schutz vor VM-Ausfällen dringend empfohlen.|
+    Hochverfügbarkeit| Deaktiviert | Wählen Sie bei Produktionsservern zwischen [Zonenredundante Hochverfügbarkeit](concepts-high-availability.md#zone-redundant-ha-architecture) und [Hochverfügbarkeit in gleicher Zone](concepts-high-availability.md#same-zone-ha-architecture). Dies wird im Hinblick auf Geschäftskontinuität und Schutz vor VM-Ausfällen dringend empfohlen.|
     |Standby-Verfügbarkeitszone| Keine Einstellung| Wählen Sie den Standort für die Standbyserverzone aus, und legen Sie ihn bei einem Zonenausfall mit dem Standbyserver der Anwendung zusammen. |
     MySQL-Version|**5.7**| Eine MySQL-Hauptversion|
     Administratorbenutzername |**mydemouser**| Ihr Anmeldekonto für die Verbindungsherstellung mit dem Server. Der Administratorbenutzername darf nicht **azure_superuser**, **admin**, **administrator**, **root**, **guest** oder **public** lauten.|
@@ -132,7 +134,7 @@ mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl=true --ssl
 
 Sollte bei dem Versuch, mithilfe des obigen Befehls eine Verbindung mit Ihrem flexiblen Server herzustellen, die folgende Fehlermeldung angezeigt werden, haben Sie vergessen, die Firewallregel mithilfe des Kontrollkästchens „Öffentlichen Zugriff auf diesen Server über beliebigen Azure-Dienst in Azure gestatten“ festzulegen, oder die Option wurde nicht gespeichert. Konfigurieren Sie die Firewall, und wiederholen Sie anschließend den Vorgang.
 
-FEHLER 2002 (HY000): Verbindungsherstellung mit MySQL-Server nicht möglich auf <servername> (115)
+FEHLER 2002 (HY000): Verbindungsherstellung mit MySQL-Server nicht möglich auf \<servername\> (115)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 Sie haben jetzt eine Azure Database for MySQL Flexible Server-Instanz in einer Ressourcengruppe erstellt. Wenn Sie diese Ressourcen in Zukunft nicht mehr benötigen, können Sie sie löschen, indem Sie die Ressourcengruppe oder einfach den MySQL-Server löschen. Um die Ressourcengruppe zu löschen, führen Sie die folgenden Schritte aus:

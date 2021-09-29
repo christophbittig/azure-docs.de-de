@@ -5,12 +5,12 @@ author: bwren
 ms.author: bwren
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: 9923bfcbd439ef5e20e44e9c397199fe06f40b43
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 029202b1b05c43c29f0011d01d63cc5d5c5f029f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102032907"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128649698"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>Tutorial: Erstellen eines Metrikdiagramms in Azure Monitor
 Mit dem Metrik-Explorer – einem Azure Monitor-Feature im Azure-Portal – können Sie auf der Grundlage von Metrikwerten Diagramme erstellen, Trends visuell korrelieren sowie Spitzen und Einbrüche bei Metrikwerten untersuchen. Verwenden Sie den Metrik-Explorer, um die Integrität und Auslastung Ihrer Azure-Ressourcen zu untersuchen oder um Diagramme auf der Grundlage benutzerdefinierter Metriken zu zeichnen. 
@@ -77,7 +77,7 @@ In den [Beispielen für Metrikdiagramme](../essentials/metric-chart-samples.md) 
 
 ## <a name="advanced-chart-settings"></a>Erweiterte Diagrammeinstellungen
 
-Sie können die Formatierung des Diagramms, den Titel und erweiterte Diagrammeinstellungen anpassen. Wenn Sie Ihre Anpassungen vorgenommen haben, heften Sie das Diagramm an ein Dashboard an, um Ihr Werk zu speichern. Sie können auch Metrikwarnungen konfigurieren. Unter [Erweiterte Funktionen von Azure Metrik-Explorer](../essentials/metrics-charts.md#locking the-range-of-the-y-axis) finden Sie Informationen zu diesen und anderen erweiterten Features des Azure Monitor-Metrik-Explorers.
+Sie können die Formatierung des Diagramms, den Titel und erweiterte Diagrammeinstellungen anpassen. Wenn Sie Ihre Anpassungen vorgenommen haben, heften Sie das Diagramm an ein Dashboard an, um Ihr Werk zu speichern. Sie können auch Metrikwarnungen konfigurieren. Unter [Erweiterte Funktionen von Azure Metrik-Explorer](../essentials/metrics-charts.md#locking-the-range-of-the-y-axis) finden Sie Informationen zu diesen und anderen erweiterten Features des Azure Monitor-Metrik-Explorers.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

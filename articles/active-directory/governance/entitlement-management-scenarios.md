@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1b944480ce7c09676b65216da4c74f4ffdacdcf
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 3091afbab67f65a1850bb4ffbd73487d0e0327c9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112292337"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124742549"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Typische Szenarien für die Azure AD-Berechtigungsverwaltung
 
@@ -40,7 +40,7 @@ Es gibt mehrere Möglichkeiten, wie Sie die Berechtigungsverwaltung für Ihre Or
 
 ### <a name="catalog-owner-delegate-management-of-resources"></a>Katalogbesitzer: Delegieren der Verwaltung von Ressourcen
 
-1. [Hinzufügen von Mitbesitzern zum Katalog](entitlement-management-catalog-create.md#add-additional-catalog-owners)
+1. [Hinzufügen von Mitbesitzern zum Katalog](entitlement-management-catalog-create.md#add-more-catalog-owners)
 1. [Hinzufügen von Ressourcen zum Katalog](entitlement-management-catalog-create.md#add-resources-to-a-catalog)
 
 ### <a name="catalog-owner-delegate-management-of-access-packages"></a>Katalogbesitzer: Delegieren der Verwaltung von Zugriffspaketen

@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/23/2017
 ms.author: alkohli
-ms.openlocfilehash: b5f2a86fb7c776436ea707ef293a66c033014c33
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 33385fa03d480c257789fd4cc139f9033e541a99
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96021077"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754936"
 ---
 # <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>Verwalten von StorSimple-Geräten mit Azure Automation-Runbooks
 
@@ -206,7 +206,7 @@ Führen Sie die folgenden Schritte aus, um ein Automation-Modul für die Geräte
 
     ![click-new-runbook](./media/storsimple-8000-automation-azurerm-runbook/verify-runbook-created.png)
 
-8. Bearbeiten Sie das Runbook, und klicken Sie auf **Testbereich**. Stellen Sie die Parameter wie den Namen Ihres StorSimple-Geräte-Manager-Diensts, den Namen des StorSimple-Geräts und das Abonnement bereit. **Starten** Sie den Test. Der Bericht wird nach Abschluss der Ausführung generiert. Weitere Informationen finden Sie unter [Testen eines Runbooks](../automation/learn/automation-tutorial-runbook-textual-powershell.md#step-3---test-the-runbook).
+8. Bearbeiten Sie das Runbook, und klicken Sie auf **Testbereich**. Stellen Sie die Parameter wie den Namen Ihres StorSimple-Geräte-Manager-Diensts, den Namen des StorSimple-Geräts und das Abonnement bereit. **Starten** Sie den Test. Der Bericht wird nach Abschluss der Ausführung generiert. Weitere Informationen finden Sie unter [Testen eines Runbooks](../automation/learn/powershell-runbook-managed-identity.md).
 
     ![Screenshot: Bereich „Testen“ zum Eingeben von Parameterwerten und Starten eines Tests](./media/storsimple-8000-automation-azurerm-runbook/test-runbook.png)
 

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: cshoe
-ms.openlocfilehash: 168c187c4e573193b439e790fb94290aadec046a
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: d7716c6d91ac0f7c8c699d14f265e00f5535a00d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122778872"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124730409"
 ---
 # <a name="api-support-in-azure-static-web-apps-with-azure-functions"></a>API-Unterstützung in Azure Static Web Apps mit Azure Functions
 
@@ -49,7 +49,7 @@ API-Endpunkte sind für die Web-App über die _API-Route_ verfügbar.
 
 | Verwaltete Funktionen | Nutzung eigener Funktionen |
 | --- | --- |
-| Während die _API_-Route festgelegt ist, haben Sie die Kontrolle über den Ordnerspeicherort der verwalteten Functions-App. Dieser Ort kann durch [Bearbeiten der YAML-Datei des Workflows](github-actions-workflow.md#build-and-deploy) geändert werden, die sich im Ordner _.github/workflows_ Ihres Repositorys befindet. | Anforderungen an die _API_-Route werden an Ihre vorhandene Azure Functions-App gesendet. |
+| Während die _API_-Route festgelegt ist, haben Sie die Kontrolle über den Ordnerspeicherort der verwalteten Functions-App. Dieser Ort kann durch [Bearbeiten der YAML-Datei des Workflows](build-configuration.md) geändert werden, die sich im Ordner _.github/workflows_ Ihres Repositorys befindet. | Anforderungen an die _API_-Route werden an Ihre vorhandene Azure Functions-App gesendet. |
 
 ## <a name="troubleshooting-and-logs"></a>Problembehandlung und Protokolle
 

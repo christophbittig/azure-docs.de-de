@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc, devx-track-azurecli
 ms.topic: quickstart
 ms.date: 03/01/2021
-ms.openlocfilehash: f75b933769e94986b1c140fb8bcbadca44b96cf1
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: b27fb9ec4ff24cd53906b304db1f32655380fc66
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122643372"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "128595780"
 ---
 # <a name="quickstart-connect-and-query-with-azure-cli--with-azure-database-for-mysql---flexible-server"></a>Schnellstart: Verbinden und Abfragen mit der Azure CLI mit Azure Database for MySQL Flexible Server
 
@@ -25,7 +25,9 @@ In dieser Schnellstartanleitung wird gezeigt, wie Sie sich mit der Azure CLI üb
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Konto. Falls Sie noch kein Konto haben, können Sie eine [kostenlose Testversion](https://azure.microsoft.com/free/) verwenden.
+- Ein Azure-Konto mit einem aktiven Abonnement. 
+
+    [!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 - Installieren der aktuellen Version der [Azure CLI](/cli/azure/install-azure-cli) (mindestens 2.20.0)
 - Anmelden unter Verwendung der Azure CLI mit dem Befehl ```az login``` 
 - Aktivieren der Parameterpersistenz mit ```az config param-persist on```. Mithilfe der Parameterpersistenz können Sie den lokalen Kontext verwenden, ohne zahlreiche Argumente wie Ressourcengruppe, Speicherort usw. wiederholen zu müssen.

@@ -13,12 +13,12 @@ ms.date: 07/23/2021
 ms.custom: template-concept
 ms.author: cchiedo
 ms.reviewer: johngarland, mamarxen, ianbe, marsma
-ms.openlocfilehash: 4dcdb90daa9bb8cd1df79ec399eb9372fca02c61
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: a3710d4af1b65b1220db8938b35cf9d6cb516579
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123037188"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124734712"
 ---
 # <a name="authorization-basics"></a>Grundlagen der Autorisierung
 
@@ -50,7 +50,7 @@ Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) ist wahrs
 In erweiterten RBAC-Implementierungen können Rollen Berechtigungssätzen zugeordnet werden, wobei eine Berechtigung eine präzise Aktion oder Aktivität beschreibt, die ausgeführt werden kann. Rollen werden dann als Kombinationen von Berechtigungen konfiguriert. Der Gesamtberechtigungssatz der Entitäten für eine Anwendung wird als Schnittmenge der Berechtigungen, die den verschiedenen Rollen gewährt werden, denen die Entität zugewiesen ist, berechnet. Ein gutes Beispiel für diesen Ansatz ist die RBAC-Implementierung, die den Zugriff auf Ressourcen in Azure-Abonnements steuert.
 
 > [!NOTE]
-> Die [rollenbasierte Zugriffssteuerung für Anwendungen](./custom-rbac-for-developers.md) unterscheidet sich von [Azure RBAC](/azure/role-based-access-control/overview) und [Azure AD RBAC](../roles/custom-overview.md#understand-azure-ad-role-based-access-control). Benutzerdefinierte Azure-Rollen und integrierte Rollen gehören beide zu Azure RBAC, mit der Sie Azure-Ressourcen verwalten können. Azure AD RBAC ermöglicht Ihnen die Verwaltung von Azure AD-Ressourcen.
+> Die [rollenbasierte Zugriffssteuerung für Anwendungen](./custom-rbac-for-developers.md) unterscheidet sich von [Azure RBAC](../../role-based-access-control/overview.md) und [Azure AD RBAC](../roles/custom-overview.md#understand-azure-ad-role-based-access-control). Benutzerdefinierte Azure-Rollen und integrierte Rollen gehören beide zu Azure RBAC, mit der Sie Azure-Ressourcen verwalten können. Azure AD RBAC ermöglicht Ihnen die Verwaltung von Azure AD-Ressourcen.
 
 ### <a name="attribute-based-access-control"></a>Attributbasierte Zugriffssteuerung 
 
@@ -75,4 +75,4 @@ Es ist nicht unbedingt erforderlich, dass Entwickler die Autorisierungslogik vol
 
 - Weitere Informationen zur Implementierung einer benutzerdefinierten rollenbasierten Zugriffssteuerung in Anwendungen finden Sie unter [Rollenbasierte Zugriffssteuerung für Anwendungsentwickler](./custom-rbac-for-developers.md).
 - Unter [Anwendungsmodell](./application-model.md) erhalten Sie Informationen zum Registrierungsvorgang für Ihre Anwendung, damit diese in die Microsoft Identity Platform integriert werden kann.
-- Ein Beispiel für die Konfiguration einer einfachen authentifizierungsbasierten Autorisierung finden Sie unter [Konfigurieren Ihrer App Service- oder Azure Functions-App zur Verwendung der Azure AD-Anmeldung](/azure/app-service/configure-authentication-provider-aad).
+- Ein Beispiel für die Konfiguration einer einfachen authentifizierungsbasierten Autorisierung finden Sie unter [Konfigurieren Ihrer App Service- oder Azure Functions-App zur Verwendung der Azure AD-Anmeldung](../../app-service/configure-authentication-provider-aad.md).

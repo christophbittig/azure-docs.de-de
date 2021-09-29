@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/29/2021
 ms.author: jeedes
-ms.openlocfilehash: 28127068210199985a280c26a34ce3aa49520a8b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f378d70e2f39d787ad6d43980deea4bc83ee91f9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746980"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124780583"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hrworks-single-sign-on"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit HRworks Single Sign-On
 
@@ -169,7 +169,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Rufen Sie die HRworks Single Sign-on-Anmelde-URL direkt auf und initiieren Sie den Anmeldeablauf.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in dem Zugriffsbereich von „Meine Apps“ auf die Kachel „HRworks Single Sign-On“ klicken, werden Sie zur Anmelde-URL von HRworks Single Sign-On weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in dem Zugriffsbereich von „Meine Apps“ auf die Kachel „HRworks Single Sign-On“ klicken, werden Sie zur Anmelde-URL von HRworks Single Sign-On weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

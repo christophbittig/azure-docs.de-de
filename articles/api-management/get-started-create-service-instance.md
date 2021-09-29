@@ -1,18 +1,18 @@
 ---
 title: 'Schnellstart: Erstellen einer Azure API Management-Instanz'
 description: Hier erfahren Sie, wie Sie eine neue Azure API Management-Dienstinstanz über das Azure-Portal erstellen.
-author: vladvino
+author: dlepow
 ms.service: api-management
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/08/2020
-ms.author: apimpm
-ms.openlocfilehash: 66d0874536b358b720b43780d6ecce879ac866ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: c2a822147b06cfdd950d12bd1fa2d5c1c583f22f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90708205"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128660783"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-portal"></a>Schnellstart: Erstellen einer neuen Azure API Management-Dienstinstanz mithilfe des Azure-Portals
 
@@ -43,7 +43,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
    :::image type="content" source="media/get-started-create-service-instance/get-started-create-service-instance-create-new.png" alt-text="Neue Instanz":::
    
-   | Einstellung                 | BESCHREIBUNG   |                                                                     
+   | Einstellung                 | Beschreibung   |                                                                     
    |-------------------------|-----------------------------------------------|
    | **Name**                | Ein eindeutiger Name für Ihren API Management-Dienst. Den Namen können Sie später nicht mehr ändern. Der Dienstname wird verwendet, um auf den Dienst und die entsprechende Azure-Ressource zu verweisen. <br/> Der Name des Diensts wird verwendet, um einen Standarddomänennamen in der Form *\<name\>.azure-api.net* zu generieren. Wenn Sie einen benutzerdefinierten Domänennamen verwenden möchten, lesen Sie [Configure a custom domain name](configure-custom-domain.md) (Konfigurieren eines benutzerdefinierten Domänennamens). |
    | **Abonnement**          | Das Abonnement, unter dem diese neue Dienstinstanz erstellt wird.   |

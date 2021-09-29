@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: a8c5e7f21747bc4f37f766106931a8f303fa33d3
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: db9b8b71ddbdccb2cdc4893ce7ea041304bafba9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123273339"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124776612"
 ---
 # <a name="create-a-capacity-reservation-preview"></a>Erstellen einer Kapazitätsreservierung (Vorschau)
 
@@ -28,9 +28,9 @@ Die Erstellung einer Kapazitätsreservierung ist erfolgreich oder scheitert voll
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
-## <a name="register-for-capacity-reservation"></a>Registrieren Sie sich für die Kapazitätsreservierung 
+## <a name="register-for-capacity-reservation"></a>Registrieren für Kapazitätsreservierung 
 
-Bevor Sie die Funktion zur Kapazitätsreservierung verwenden können, müssen Sie [Ihr Abonnement für die Vorschauversion registrieren](capacity-reservation-overview.md#register-for-capacity-reservation). Die Registrierung kann mehrere Minuten dauern. Sie können die Azure CLI oder PowerShell verwenden, um die Funktionsregistrierung abzuschließen.
+Bevor Sie das Feature zur Kapazitätsreservierung verwenden können, müssen Sie [Ihr Abonnement für die Vorschauversion registrieren](capacity-reservation-overview.md#register-for-capacity-reservation). Die Registrierung kann mehrere Minuten dauern. Sie können die Azure CLI oder PowerShell verwenden, um die Funktionsregistrierung abzuschließen.
 
 
 ## <a name="considerations"></a>Überlegungen
@@ -157,12 +157,12 @@ Die Kapazitätsreservierung muss die folgenden Regeln erfüllen:
     -CapacityToReserve 5
     ```
 
-Weitere Informationen finden Sie unter Azure PowerShell-Befehle [New-AzResourceGroup](/powershell/module/az.compute/new-azresourcegroup), [New-AzCapacityReservationGroup](/powershell/module/az.compute/new-azcapacityreservationgroup) und [New-AzCapacityReservation](/powershell/module/az.compute/new-azcapacityreservation).
+Weitere Informationen finden Sie unter Azure PowerShell-Befehle [New-AzResourceGroup](/powershell/module/az.Resources/new-azresourcegroup), [New-AzCapacityReservationGroup](/powershell/module/az.compute/new-azcapacityreservationgroup) und [New-AzCapacityReservation](/powershell/module/az.compute/new-azcapacityreservation).
 
 
 ### <a name="arm-template"></a>[ARM-Vorlage](#tab/arm1)
 
-Eine  [ ARM-Vorlage](/azure/azure-resource-manager/templates/overview)  ist eine JavaScript Object Notation (JSON)-Datei, die die Infrastruktur und Konfiguration für Ihr Projekt definiert. Die Vorlage verwendet eine deklarative Syntax. In deklarativer Syntax beschreiben Sie Ihre beabsichtigte Bereitstellung, ohne die Reihenfolge der Programmierbefehle zur Erstellung der Bereitstellung zu schreiben. 
+Eine  [ARM-Vorlage](../azure-resource-manager/templates/overview.md)  ist eine JSON-Datei (JavaScript Object Notation), die die Infrastruktur und Konfiguration für Ihr Projekt definiert. Die Vorlage verwendet eine deklarative Syntax. In deklarativer Syntax beschreiben Sie Ihre beabsichtigte Bereitstellung, ohne die Reihenfolge der Programmierbefehle zur Erstellung der Bereitstellung zu schreiben. 
 
 Mit ARM-Vorlagen können Sie Gruppen mit verwandten Ressourcen bereitstellen. Sie können in einer einzelnen Vorlage eine Kapazitätsreservierungsgruppe und Kapazitätsreservierungen erstellen. Sie können Vorlagen über das Azure-Portal, die Azure CLI oder Azure PowerShell oder über CI/CD-Pipelines (Continuous Integration/Continuous Delivery) bereitstellen. 
 

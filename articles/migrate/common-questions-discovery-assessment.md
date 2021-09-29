@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: c9fed65260e83b0ce70b45a28942ca81668b545f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fbcea71558a59d624faf73647498fb38ecf6ccc1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346225"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755438"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Häufig gestellte Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse
 
@@ -197,9 +197,9 @@ Für Azure SQL Managed Instance werden für die ersten 32 GB Speicher pro Insta
 
 ### <a name="can-i-migrate-my-disks-to-ultra-disk-using-azure-migrate"></a>Kann ich meine Datenträger mithilfe von Azure Migrate zu Disk Ultra-Datenträgern migrieren?
 
-Nein. Derzeit unterstützen sowohl Azure Migrate als auch Azure Site Recovery die Migration zu Disk Ultra-Datenträgern nicht. Schritte zum Bereitstellen von Disk Ultra-Datenträgern finden Sie [hier](https://docs.microsoft.com/azure/virtual-machines/disks-enable-ultra-ssd?tabs=azure-portal#deploy-an-ultra-disk).
+Nein. Derzeit unterstützen sowohl Azure Migrate als auch Azure Site Recovery die Migration zu Disk Ultra-Datenträgern nicht. Schritte zum Bereitstellen von Disk Ultra-Datenträgern finden Sie [hier](../virtual-machines/disks-enable-ultra-ssd.md?tabs=azure-portal#deploy-an-ultra-disk).
 
-### <a name="why-are-the-provisioned-iops-and-throughput-in-my-ultra-disk-more-than-my-on-premises-iops-and-throughput"></a>Warum sind die bereitgestellten IOPS und der Durchsatz meines Disk Ultra-Datenträgers größer als IOPS und Durchsatz in meiner lokalen Umgebung?
+### <a name="why-are-the-provisioned-iops-and-throughput-in-my-ultra-disk-more-than-my-on-premises-iops-and-throughput"></a>Warum sind die bereitgestellten IOPS und der Durchsatz meines Disk Ultra-Datenträgers höher als die IOPS und der Durchsatz in meiner lokalen Umgebung?
 
 Gemäß der [offiziellen Preisseite](https://azure.microsoft.com/pricing/details/managed-disks/) wird Disk Ultra auf Grundlage der bereitgestellten Größe und IOPS sowie des bereitgestellten Durchsatzes abgerechnet. Beispiel:
 

@@ -5,18 +5,18 @@ author: emaher
 ms.topic: article
 ms.date: 08/25/2021
 ms.author: enewman
-ms.openlocfilehash: 80a64ce36697db2ac7bf941fdb40ab997e9f700f
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 14e30572ab620b36730c725c7ac5a2e762947366
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123110096"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755489"
 ---
 # <a name="set-up-a-lab-to-teach-r-on-linux"></a>Einrichten eines Labs zum Unterrichten von R unter Linux
 
-[R](https://www.r-project.org/about.html) ist eine Open-Source-Sprache, die für statistisches Computing und Grafiken verwendet wird.  Sie wird in der statistischen Analyse von Genetik bis hin zur Verarbeitung natürlicher Sprache und Analyse von Finanzdaten verwendet.  R bietet eine [interaktive Befehlszeilenoberfläche](https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Invoking-R-from-the-command-line).  [RStudio](https://www.rstudio.com/products/rstudio/) ist eine interaktive Entwicklungsumgebung, die für die Sprache R zur Verfügung steht.  Die kostenlose Version bietet Codebearbeitungstools, eine integrierte Debugfunktionalität und Paketentwicklungstools.
+[R](https://www.r-project.org/about.html) ist eine Open-Source-Sprache, die für statistisches Computing und Grafiken verwendet wird.  Sie wird in der statistischen Analyse von Genetik bis hin zur Verarbeitung natürlicher Sprache und Analyse von Finanzdaten verwendet.  R bietet als Benutzeroberfläche eine [interaktive Befehlszeile](https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Invoking-R-from-the-command-line).  [RStudio](https://www.rstudio.com/products/rstudio/) ist eine interaktive Entwicklungsumgebung (IDE), die für die Sprache R zur Verfügung steht.  Die kostenlose Version bietet Codebearbeitungstools, eine integrierte Debugfunktionalität und Paketentwicklungstools.
 
-Dieser Artikel befasst sich ausschließlich mit RStudio und R als Baustein für einen Kurs, in dem statistisches Computing verwendet werden soll.  Für die Kurstypen [Deep Learning](class-type-deep-learning-natural-language-processing.md) sowie [Python und Jupyter Notebooks](class-type-jupyter-notebook.md) wird RStudio unterschiedlich eingerichtet.  In jedem Artikel wird beschrieben, wie Sie das Marketplace-Image [Data Science Virtual Machine für Linux (Ubuntu)](https://azuremarketplace.microsoft.com/en-US/marketplace/apps/microsoft-dsvm.ubuntu-1804) verwenden. Darin sind viele [Data Science-bezogene Tools](/azure/machine-learning/data-science-virtual-machine/tools-included) vorinstalliert, einschließlich RStudio.  
+Dieser Artikel befasst sich ausschließlich mit RStudio und R als Baustein für einen Kurs, in dem statistisches Computing verwendet werden soll.  Für die Kurstypen [Deep Learning](class-type-deep-learning-natural-language-processing.md) sowie [Python und Jupyter Notebooks](class-type-jupyter-notebook.md) wird RStudio unterschiedlich eingerichtet.  In jedem Artikel wird beschrieben, wie Sie das Marketplace-Image [Data Science Virtual Machine für Linux (Ubuntu)](https://azuremarketplace.microsoft.com/en-US/marketplace/apps/microsoft-dsvm.ubuntu-1804) verwenden. Darin sind viele [Data Science-bezogene Tools](../machine-learning/data-science-virtual-machine/tools-included.md) vorinstalliert, einschließlich RStudio.  
 
 ## <a name="lab-account-configuration"></a>Konfiguration eines Lab-Kontos
 
@@ -29,7 +29,7 @@ Aktivieren Sie die Einstellungen Ihres Lab-Kontos wie in der folgenden Tabelle b
 | Lab-Kontoeinstellungen | Instructions |
 | -------------------- | ----- |
 | Marketplace-Images | Ubuntu Server 18.04 LTS |
-| [Virtuelles Peernetzwerk aktivieren](how-to-connect-peer-virtual-network.md) | In folgenden Fällen aktivieren:<ul><li>Der Kurs erfordert eine R Server-Freigabe.</li><li>Für den Kurs sind große Datendateien erforderlich, die Sie extern und nicht auf der Kursteilnehmer-VM speichern möchten.</li></ul> |
+| [Virtuelles Peernetzwerk aktivieren](how-to-connect-peer-virtual-network.md) | In folgenden Fällen aktivieren:<ul><li>Der Kurs erfordert eine R Server-Freigabe.</li><li>Für den Kurs sind große Datendateien erforderlich, die Sie extern und nicht auf der Kursteilnehmer-VM speichern möchten.</li></ul> |
 
 > [!IMPORTANT]
 > Wenn Sie das Peer-VNet aktivieren möchten, muss dies vor der Erstellung des Labs erfolgen.
@@ -48,7 +48,7 @@ Anweisungen zum Erstellen eines neuen Labs und zum Anwenden der erforderlichen E
 
 Für einige Kurse müssen Dateien, z. B. große Datendateien, extern gespeichert werden.  Optionen und Setupanweisungen finden Sie unter [Verwenden von externem Dateispeicher in Azure Lab Services](how-to-attach-external-storage.md).
 
-Wenn Sie sich für eine R Server-Freigabe für die Kursteilnehmer entscheiden, muss der Server eingerichtet werden, bevor das Lab erstellt wird.  Weitere Informationen zum Einrichten eines freigegebenen Servers finden Sie unter [Erstellen eines Labs mit einer freigegebenen Ressource in Azure Lab Services](how-to-create-a-lab-with-shared-resource.md).  Anweisungen zum Erstellen eines RStudio-Servers finden Sie unter [Herunterladen von RStudio Server für Debian & Ubuntu](https://www.rstudio.com/products/rstudio/download-server/debian-ubuntu/) und [Zugreifen auf RStudio Server (Open Source)](https://support.rstudio.com/hc/en-us/articles/200552306-Getting-Started).
+Wenn Sie sich für eine R Server-Freigabe für die Kursteilnehmer entscheiden, muss der Server eingerichtet werden, bevor das Lab erstellt wird.  Weitere Informationen zum Einrichten eines freigegebenen Servers finden Sie unter [Erstellen eines Labs mit einer freigegebenen Ressource in Azure Lab Services](how-to-create-a-lab-with-shared-resource.md).  Anweisungen zum Erstellen eines RStudio-Servers finden Sie unter [Herunterladen von RStudio Server für Debian und Ubuntu](https://www.rstudio.com/products/rstudio/download-server/debian-ubuntu/) und [Zugreifen auf RStudio Server (Open-Source)](https://support.rstudio.com/hc/en-us/articles/200552306-Getting-Started).
 
 ## <a name="template-configuration"></a>Vorlagenkonfiguration
 
@@ -101,7 +101,7 @@ sudo apt install r-base
 
 ### <a name="install-rstudio"></a>Installieren von RStudio
 
-Nachdem wir R lokal installiert haben, können wir die RStudio-IDE installieren.  Wir installieren die kostenlose Version von RStudio Desktop.  Alle verfügbaren Versionen finden Sie unter [RStudio-Downloads](https://www.rstudio.com/products/rstudio/download/).
+Nachdem Sie R lokal installiert haben, können Sie die RStudio-IDE installieren.  Wir installieren die kostenlose Version von RStudio Desktop.  Alle verfügbaren Versionen finden Sie unter [RStudio-Downloads](https://www.rstudio.com/products/rstudio/download/).
 
 1. [Importieren Sie den Codesignaturschlüssel](https://www.rstudio.com/code-signing/) für RStudio.
 
@@ -131,7 +131,7 @@ Jetzt ist der Zeitpunkt für die Installation der gewünschten [CRAN-Pakete](htt
 sudo add-apt-repository ppa:c2d4u.team/c2d4u4.0+
 ```
 
-Verwenden Sie den Befehl `install.packages(“package name”)` in einer interaktiven R-Sitzung, wie im Artikel [Schnellliste mit nützlichen R-Paketen](https://support.rstudio.com/hc/articles/201057987-Quick-list-of-useful-R-packages) gezeigt.  Verwenden Sie alternativ das Menüelement „Extras“ > „Pakete installieren“ in RStudio.
+Verwenden Sie den Befehl `install.packages(“package name”)` in einer interaktiven R-Sitzung, wie im Artikel [Schnellliste mit nützlichen R-Paketen](https://support.rstudio.com/hc/articles/201057987-Quick-list-of-useful-R-packages) gezeigt.  Verwenden Sie alternativ das Menüelement „Tools -> Install Packages“ (Extras > Pakete installieren) in RStudio.
 
 Wenn Sie bei der Suche nach einem Paket Hilfe benötigen, sehen Sie sich eine [Liste von Paketen nach Aufgabe](https://cran.r-project.org/web/views/) oder eine [alphabetische Liste der Pakete](https://cloud.r-project.org/web/packages/available_packages_by_name.html) an.
 

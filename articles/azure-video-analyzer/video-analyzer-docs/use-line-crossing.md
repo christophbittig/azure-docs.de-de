@@ -3,12 +3,12 @@ title: Erkennen der Überquerung einer virtuellen Linie durch Objekte in einem L
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Azure Video Analyzer verwenden, um die Überquerung einer Linie durch Objekte in einem Livevideofeed einer (simulierten) IP-Kamera zu erkennen.
 ms.topic: tutorial
 ms.date: 06/01/2021
-ms.openlocfilehash: 7257562626b17c8f61479eb1ba4d51fea52d3c91
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 27f14c8257d11956d0cacb3efddfb6a00ba239f6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123185955"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128630184"
 ---
 # <a name="tutorial-detect-when-objects-cross-a-virtual-line-in-a-live-video"></a>Tutorial: Erkennen der Überquerung einer virtuellen Linie durch Objekte in einem Livevideo
 
@@ -253,7 +253,7 @@ Beachten Sie in dieser Meldung diese Details:
 * `direction` enthält die Richtung für dieses Ereignis.
 
 > [!NOTE] 
-> Wenn Sie Azure-Ressourcen mithilfe der Bereitstellung mit nur einem Klick für dieses Tutorial bereitgestellt haben, wird ein virtueller Standard-DS1-Computer erstellt. Um jedoch genaue Ergebnisse von ressourcenintensiven KI-Modellen wie YOLO zu erhalten, müssen Sie möglicherweise die VM-Größe erhöhen. [Ändern Sie die Größe des virtuellen Computers](../../virtual-machines/windows/resize-vm.md), um die Anzahl von vCPUs und die Arbeitsspeichergröße Ihren Anforderungen gemäß zu erhöhen. Aktivieren Sie die Livepipeline dann erneut, um Rückschlüsse zu sehen.
+> Wenn Sie Azure-Ressourcen mithilfe der Bereitstellung mit nur einem Klick für dieses Tutorial bereitgestellt haben, wird ein virtueller Standard-DS1-Computer erstellt. Um jedoch genaue Ergebnisse von ressourcenintensiven KI-Modellen wie YOLO zu erhalten, müssen Sie möglicherweise die VM-Größe erhöhen. [Ändern Sie die Größe des virtuellen Computers](../../virtual-machines/resize-vm.md), um die Anzahl von vCPUs und die Arbeitsspeichergröße Ihren Anforderungen gemäß zu erhöhen. Aktivieren Sie die Livepipeline dann erneut, um Rückschlüsse zu sehen.
 
 ## <a name="customize-for-your-own-environment"></a>Anpassen für Ihre eigene Umgebung
 

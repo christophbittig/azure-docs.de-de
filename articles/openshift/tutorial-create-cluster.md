@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: azure-redhat-openshift
 ms.date: 10/26/2020
-ms.openlocfilehash: 707ee38ef71a0f3f3f09e142bd4d944bb04cff3d
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 82e21038b143e0e32a58c3aa24b227ebe850fd06
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446128"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124775011"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Tutorial: Erstellen eines Azure Red Hat OpenShift 4-Clusters
 
@@ -42,7 +42,7 @@ Das ARO-Pullgeheimnis ändert nicht die Kosten der RH OpenShift-Lizenz für ARO.
 
 Während dieses Tutorials werden Sie eine Ressourcengruppe erstellen, die das virtuelle Netzwerk für den Cluster enthält. Sie müssen entweder über die Berechtigungen „Mitwirkender“ und „Benutzerzugriffsadministrator“ oder über „Besitzer“-Berechtigungen verfügen, entweder direkt im virtuellen Netzwerk oder in der Ressourcengruppe bzw. im Abonnement, die diese enthalten.
 
-Außerdem benötigen Sie ausreichende Azure Active Directory-Berechtigungen (Sie müssen entweder ein Mitgliedsbenutzer des Mandanten oder ein Gastbenutzer sein, dem die Rolle **Anwendungsadministrator** zugewiesen ist), damit mit den Tools eine Anwendung und ein Dienstprinzipal in Ihrem Namen für den Cluster erstellt werden können. Ausführlichere Informationen finden Sie unter [Mitglieder und Gastbenutzer](/azure/active-directory/fundamentals/users-default-permissions#member-and-guest-users) und [Zuweisen von Administrator- und anderen Rollen zu Benutzern mithilfe von Azure Active Directory](/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
+Außerdem benötigen Sie ausreichende Azure Active Directory-Berechtigungen (Sie müssen entweder ein Mitgliedsbenutzer des Mandanten oder ein Gastbenutzer sein, dem die Rolle **Anwendungsadministrator** zugewiesen ist), damit mit den Tools eine Anwendung und ein Dienstprinzipal in Ihrem Namen für den Cluster erstellt werden können. Ausführlichere Informationen finden Sie unter [Mitglieder und Gastbenutzer](../active-directory/fundamentals/users-default-permissions.md#member-and-guest-users) und [Zuweisen von Administrator- und anderen Rollen zu Benutzern mithilfe von Azure Active Directory](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ### <a name="register-the-resource-providers"></a>Registrieren der Ressourcenanbieter
 

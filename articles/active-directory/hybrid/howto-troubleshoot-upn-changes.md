@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19e40d135316c1c7cd270d2804fff1f487937685
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4b48fa334aedce144e274b8155edda3cc7b08b9a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96858534"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124739934"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>Planung und Problembehandlung von Änderungen des Azure-Benutzerprinzipalnamens in Azure Active Directory
 
@@ -168,9 +168,9 @@ Der Benutzer muss sich erneut für Windows Hello for Business [registrieren](/wi
 
 ## <a name="microsoft-authenticator-known-issues-and-workarounds"></a>Bekannte Probleme und Problemumgehungen bei Microsoft Authenticator
 
-Ihre Organisation erfordert möglicherweise die Verwendung der [Microsoft Authenticator-App](../user-help/user-help-auth-app-overview.md) für die Anmeldung und den Zugriff auf Organisationsanwendungen und -daten. Ein Benutzername kann in der App zwar angezeigt werden, das Konto ist jedoch erst als Überprüfungsmethode eingerichtet, nachdem der Benutzer den Registrierungsvorgang abgeschlossen hat.
+Ihre Organisation erfordert möglicherweise die Verwendung der [Microsoft Authenticator-App](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc) für die Anmeldung und den Zugriff auf Organisationsanwendungen und -daten. Ein Benutzername kann in der App zwar angezeigt werden, das Konto ist jedoch erst als Überprüfungsmethode eingerichtet, nachdem der Benutzer den Registrierungsvorgang abgeschlossen hat.
 
-Die [Microsoft Authenticator-App](../user-help/user-help-auth-app-overview.md) hat vier Hauptfunktionen:
+Die [Microsoft Authenticator-App](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc) hat vier Hauptfunktionen:
 
 * Mehrstufige Authentifizierung über eine Pushbenachrichtigung oder einen Überprüfungscode
 
@@ -186,7 +186,7 @@ Die Microsoft Authenticator-App umfasst eine Out-of-Band-Überprüfungsoption. A
 
 **Bekannte Probleme** 
 
-Wenn Sie den UPN eines Benutzers ändern, wird der alte UPN weiterhin im Benutzerkonto angezeigt, und es wird möglicherweise keine Benachrichtigung angezeigt. Die [Überprüfungscodes](../user-help/user-help-auth-app-faq.md) funktionieren weiterhin.
+Wenn Sie den UPN eines Benutzers ändern, wird der alte UPN weiterhin im Benutzerkonto angezeigt, und es wird möglicherweise keine Benachrichtigung angezeigt. Die [Überprüfungscodes](https://support.microsoft.com/account-billing/common-problems-with-the-microsoft-authenticator-app-12d283d1-bcef-4875-9ae5-ac360e2945dd) funktionieren weiterhin.
 
 **Problemumgehung**
 

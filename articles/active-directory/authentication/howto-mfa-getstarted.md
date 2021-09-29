@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 120e97e62980427fb83c6bf7884da92dd9c5e1f7
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 01044f9d03b911bfb6939023dfb4fd5d3b0a3cd3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114602312"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124773795"
 ---
 # <a name="plan-an-azure-active-directory-multi-factor-authentication-deployment"></a>Planen einer Azure Active Directory Multi-Factor Authentication-Bereitstellung 
 
@@ -182,7 +182,7 @@ Wie bereits erwähnt, sollten Sie sicherstellen, dass die Benutzer für mehrere 
 - Aktualisieren Sie als Administrator die Methoden des Benutzers. Wählen Sie hierzu im Azure-Portal den Benutzer und die Authentifizierungsmethoden aus, und aktualisieren Sie die Methoden des Benutzers.
 Benutzerkommunikation
 
-Wichtig ist, dass Sie die Benutzer über anstehende Änderungen, Anforderungen der Azure AD MFA-Registrierung und ggf. erforderliche Benutzerhandlungen informieren. Wir stellen [Kommunikationsvorlagen](https://aka.ms/mfatemplates) und [Endbenutzerdokumentation](../user-help/security-info-setup-signin.md) zur Verfügung, mit denen Sie Ihre Informationsmitteilungen entwerfen können. Verweisen Sie Benutzer auf [https://myprofile.microsoft.com](https://myprofile.microsoft.com/), damit sie sich registrieren, indem sie den Link **Sicherheitsinformation** auf dieser Seite auswählen.
+Wichtig ist, dass Sie die Benutzer über anstehende Änderungen, Anforderungen der Azure AD MFA-Registrierung und ggf. erforderliche Benutzerhandlungen informieren. Wir stellen [Kommunikationsvorlagen](https://aka.ms/mfatemplates) und [Endbenutzerdokumentation](https://support.microsoft.com/account-billing/set-up-your-security-info-from-a-sign-in-prompt-28180870-c256-4ebf-8bd7-5335571bf9a8) zur Verfügung, mit denen Sie Ihre Informationsmitteilungen entwerfen können. Verweisen Sie Benutzer auf [https://myprofile.microsoft.com](https://myprofile.microsoft.com/), damit sie sich registrieren, indem sie den Link **Sicherheitsinformation** auf dieser Seite auswählen.
 
 ## <a name="plan-integration-with-on-premises-systems"></a>Planen der Integration mit lokalen Systemen
 

@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aaa8f116680b3876eebb2b96a4f4c5e40d6384a2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1a03b30c1e2628342246430089e3c6fbb47c98a7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339312"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754343"
 ---
 # <a name="azure-active-directory-security-operations-guide-for-applications"></a>Leitfaden für Azure Active Directory-Sicherheitsvorgänge für Anwendungen
 
@@ -66,21 +66,21 @@ Wenn Sie Ihre Anwendungen auf sicherheitsbezogene Incidents überwachen, sollten
 
 ## <a name="where-to-look"></a>Zu untersuchende Protokolle
 
-Die Protokolldateien für die Untersuchung und Überwachung sind wie folgt:
+Zur Untersuchung und Überwachung werden folgende Protokolldateien verwendet:
 
 * [Azure AD-Überwachungsprotokolle](../reports-monitoring/concept-audit-logs.md)
 
 * [Anmeldeprotokolle](../reports-monitoring/concept-all-sign-ins.md)
 
-* [Microsoft 365-Überwachungsprotokolle](/microsoft-365/compliance/auditing-solutions-overview?view=o365-worldwide)
+* [Microsoft 365-Überwachungsprotokolle](/microsoft-365/compliance/auditing-solutions-overview)
 
 * [Azure Key Vault-Protokolle](../../key-vault/general/logging.md)
 
-Im Azure-Portal können Sie die Azure AD-Überwachungsprotokolle einsehen und als CSV- oder JSON-Dateien (Comma-Separated Value, JavaScript Object Notation) herunterladen. Das Azure-Portal bietet mehrere Möglichkeiten zur Integration von Azure AD-Protokollen und anderen Tools, die eine weitergehende Automatisierung von Überwachung und Warnmeldungen ermöglichen:
+Im Azure-Portal können Sie die Azure AD-Überwachungsprotokolle anzeigen und als CSV- oder JSON-Dateien (Comma-Separated Value, JavaScript Object Notation) herunterladen. Das Azure-Portal bietet mehrere Möglichkeiten zur Integration von Azure AD-Protokollen mit anderen Tools, die eine weitergehende Automatisierung von Überwachung und Warnmeldungen ermöglichen:
 
-* **[Azure Sentinel](../../sentinel/overview.md)** ermöglicht intelligente Sicherheitsanalysen auf Unternehmensebene, indem SIEM-Funktionen (Security Information and Event Management) zur Verfügung gestellt werden. 
+* **[Azure Sentinel](../../sentinel/overview.md)** : ermöglicht intelligente Sicherheitsanalysen auf Unternehmensebene, indem SIEM-Funktionen (Security Information and Event Management) zur Verfügung gestellt werden. 
 
-* **[Azure Monitor](../../azure-monitor/overview.md)** ermöglicht die automatisierte Überwachung verschiedener Bedingungen und entsprechende Warnungen. Mit dem Tool können Arbeitsmappen erstellt werden, die sich zum Kombinieren von Daten aus verschiedenen Quellen eignen.
+* **[Azure Monitor](../../azure-monitor/overview.md)** : ermöglicht die automatisierte Überwachung verschiedener Bedingungen und entsprechende Warnungen. Mit dem Tool können Arbeitsmappen erstellt werden, die sich zum Kombinieren von Daten aus verschiedenen Quellen eignen.
 
 * **[Azure Event Hubs](../../event-hubs/event-hubs-about.md) mit Integration in ein SIEM-System**- [Azure AD-Protokolle können über die Azure Event Hub-Integration in andere SIEM-Systeme wie Splunk, ArcSight, QRadar und Sumo Logic integriert](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) werden.
 
@@ -162,7 +162,7 @@ Weitere Informationen zu Einwilligungsvorgängen finden Sie in den folgenden Res
 
 * [Verwalten der Einwilligung zu Anwendungen und Auswerten von Einwilligungsanforderungen in Azure Active Directory](../manage-apps/manage-consent-requests.md)
 
-* [Ermitteln und Beheben unrechtmäßiger Zuweisungen von Einwilligungen: Office 365](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants?view=o365-worldwide)
+* [Ermitteln und Beheben unrechtmäßiger Zuweisungen von Einwilligungen: Office 365](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants)
 
 * [Playbook zur Reaktion auf Vorfälle: Untersuchung der Zuweisung der App-Einwilligung](/security/compass/incident-response-playbook-app-consent)
 

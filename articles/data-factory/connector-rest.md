@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/09/2021
 ms.author: makromer
-ms.openlocfilehash: 16bb4ac7062c39ad57becce4d5280ed227160690
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: dc9aec86e01655087a64c3ac0a494d448889f857
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123311576"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124733080"
 ---
 # <a name="copy-and-transform-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten von und zu einem REST-Endpunkt mithilfe von Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -57,7 +57,7 @@ Verwenden Sie die folgenden Schritte, um einen verknüpften REST-Dienst auf der 
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Screenshot: Erstellen eines neuen verknüpften Diensts mithilfe der Azure Data Factory-Benutzeroberfläche":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Screenshot: Erstellen eines neuen verknüpften Diensts über die Azure Data Factory-Benutzeroberfläche":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -79,7 +79,7 @@ In den folgenden Abschnitten finden Sie Details zu Eigenschaften, mit denen Sie 
 
 Folgende Eigenschaften werden für den mit REST verknüpften Dienst unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **RestService** festgelegt werden. | Ja |
 | url | Die Basis-URL des REST-Diensts. | Ja |
@@ -92,7 +92,7 @@ Folgende Eigenschaften werden für den mit REST verknüpften Dienst unterstützt
 
 Legen Sie die **authenticationType**-Eigenschaft auf **Basic** fest. Geben Sie zusätzlich zu den im vorherigen Abschnitt beschriebenen generischen Eigenschaften die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | userName | Der Benutzername, der für den Zugriff auf den REST-Endpunkt verwendet werden soll. | Ja |
 | password | Das Kennwort für den Benutzer (der Wert **userName**). Markieren Sie dieses Feld als Typ **SecureString**, um es sicher in Data Factory zu speichern. Sie können auch [auf ein Geheimnis verweisen, das in Azure Key Vault](store-credentials-in-key-vault.md) gespeichert ist. | Ja |
@@ -125,7 +125,7 @@ Legen Sie die **authenticationType**-Eigenschaft auf **Basic** fest. Geben Sie z
 
 Legen Sie die **authenticationType**-Eigenschaft auf **AadServicePrincipal** fest. Geben Sie zusätzlich zu den im vorherigen Abschnitt beschriebenen generischen Eigenschaften die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | servicePrincipalId | Geben Sie die Client-ID der Azure Active Directory-Anwendung an. | Ja |
 | servicePrincipalKey | Geben Sie den Schlüssel der Azure Active Directory-Anwendung an. Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
@@ -163,7 +163,7 @@ Legen Sie die **authenticationType**-Eigenschaft auf **AadServicePrincipal** fes
 
 Legen Sie die **authenticationType**-Eigenschaft auf **ManagedServiceIdentity** fest. Geben Sie zusätzlich zu den im vorherigen Abschnitt beschriebenen generischen Eigenschaften die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | aadResourceId | Geben Sie die AAD-Ressource an, für die Sie eine Autorisierung anfordern, z. B. `https://management.core.windows.net`.| Ja |
 
@@ -190,7 +190,7 @@ Legen Sie die **authenticationType**-Eigenschaft auf **ManagedServiceIdentity** 
 ### <a name="use-user-assigned-managed-identity-authentication"></a>Verwenden der benutzerseitig zugewiesenen Authentifizierung mit einer verwalteten Identität
 Legen Sie die **authenticationType**-Eigenschaft auf **ManagedServiceIdentity** fest. Geben Sie zusätzlich zu den im vorherigen Abschnitt beschriebenen generischen Eigenschaften die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | aadResourceId | Geben Sie die AAD-Ressource an, für die Sie eine Autorisierung anfordern, z. B. `https://management.core.windows.net`.| Ja |
 | Anmeldeinformationen | Geben Sie die benutzerseitig zugewiesene verwaltete Identität als Anmeldeinformationsobjekt an. | Ja |
@@ -257,7 +257,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Zum Kopieren von Daten aus REST werden die folgenden Eigenschaften unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft des Datasets muss auf **RestResource** festgelegt sein. | Ja |
 | relativeUrl | Eine relative URL zu der Ressource, die die Daten enthält. Wenn die Eigenschaft nicht angegeben ist, wird nur die URL verwendet, die in der Definition des verknüpften Diensts angegeben ist. Der HTTP-Connector kopiert Daten aus der kombinierten URL: `[URL specified in linked service]/[relative URL specified in dataset]`. | Nein |
@@ -293,7 +293,7 @@ Eine vollständige Liste mit den verfügbaren Abschnitten und Eigenschaften zum 
 
 Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft der Quelle der Kopieraktivität muss auf **RestSource** festgelegt werden. | Ja |
 | requestMethod | Die HTTP-Methode. Zulässige Werte sind **GET** (Standardwert) und **POST**. | Nein |
@@ -382,7 +382,7 @@ Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unter
 
 Folgende Eigenschaften werden im Abschnitt **sink** der Kopieraktivität unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | Typ | Die **type**-Eigenschaft der Senke der Kopieraktivität muss auf **RestSink** festgelegt werden. | Ja |
 | requestMethod | Die HTTP-Methode. Zulässige Werte sind **POST** (Standardwert), **PUT** und **PATCH**. | Nein |
@@ -444,7 +444,7 @@ REST wird in Datenflüssen sowohl für Integrationsdatasets als auch für Inline
 
 ### <a name="source-transformation"></a>Quellentransformation
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | requestMethod | Die HTTP-Methode. Zulässige Werte sind **GET** und **POST**. | Ja |
 | relativeUrl | Eine relative URL zu der Ressource, die die Daten enthält. Wenn die Eigenschaft nicht angegeben ist, wird nur die URL verwendet, die in der Definition des verknüpften Diensts angegeben ist. Der HTTP-Connector kopiert Daten aus der kombinierten URL: `[URL specified in linked service]/[relative URL specified in dataset]`. | Nein |
@@ -455,7 +455,7 @@ REST wird in Datenflüssen sowohl für Integrationsdatasets als auch für Inline
 
 ### <a name="sink-transformation"></a>Senkentransformation
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | additionalHeaders | Zusätzliche HTTP-Anforderungsheader | Nein |
 | httpRequestTimeout | Das Timeout (der Wert **TimeSpan**) für die HTTP-Anforderung, um eine Antwort zu empfangen. Bei diesem Wert handelt es sich um das Timeout für den Empfang einer Antwort, nicht um das Timeout für das Schreiben der Daten. Der Standardwert ist **00:01:40**.  | Nein |
@@ -465,7 +465,7 @@ REST wird in Datenflüssen sowohl für Integrationsdatasets als auch für Inline
 
 Sie können die Methoden delete, insert, update und upsert sowie die relativen Zeilendaten festlegen, die für CRUD-Vorgänge an die REST-Senke gesendet werden sollen.
 
-![Datenfluss-REST-Senke](media/data-flow/data-flow-sink.png)
+:::image type="content" source="media/data-flow/data-flow-sink.png" alt-text="Datenfluss-REST-Senke":::
 
 ## <a name="sample-data-flow-script"></a>Beispiel-Datenflussskript
 
@@ -586,32 +586,32 @@ Die Vorlage definiert zwei Parameter:
 ### <a name="how-to-use-this-solution-template"></a>So verwenden Sie diese Lösungsvorlage
 
 1. Wechseln Sie zur Vorlage **Copy from REST or HTTP using OAuth** (Kopieren aus REST oder HTTP mithilfe von OAuth). Erstellen Sie eine neue Verbindung für „Quellverbindung“. 
-    ![Erstellen neuer Verbindungen](media/solution-template-copy-from-rest-or-http-using-oauth/source-connection.png)
+    :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/source-connection.png" alt-text="Erstellen neuer Verbindungen":::
 
     Nachstehend sind die wichtigsten Schritte für Einstellungen für neue verknüpfte Dienste (REST) aufgeführt:
     
      1. Geben Sie unter **Basis-URL** den URL-Parameter für Ihren eigenen REST-Quelldienst an. 
      2. Wählen Sie als **Authentifizierungstyp** den Typ *Anonym* aus.
-        ![Neue REST-Verbindung](media/solution-template-copy-from-rest-or-http-using-oauth/new-rest-connection.png)
+        :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/new-rest-connection.png" alt-text="Neue REST-Verbindung":::
 
 2. Erstellen Sie eine neue Verbindung für „Zielverbindung“.  
-    ![Neue Gen2-Verbindung](media/solution-template-copy-from-rest-or-http-using-oauth/destination-connection.png)
+    :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/destination-connection.png" alt-text="Neue Gen2-Verbindung":::
 
 3. Klicken Sie auf **Diese Vorlage verwenden**.
-    ![Diese Vorlage verwenden](media/solution-template-copy-from-rest-or-http-using-oauth/use-this-template.png)
+    :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/use-this-template.png" alt-text="Diese Vorlage verwenden":::
 
-4. Sie sehen, dass die Pipeline erstellt wurde, wie im nachstehenden Beispiel gezeigt wird:  ![Der Screenshot zeigt die aus der Vorlage erstellte Pipeline.](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
+4. Sie sehen, dass die Pipeline erstellt wurde, wie im nachstehenden Beispiel gezeigt wird:  :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png" alt-text="Der Screenshot zeigt die aus der Vorlage erstellte Pipeline.":::
 
 5. Wählen Sie die Aktivität **Web** aus. Geben Sie in **Einstellungen** die entsprechenden Werte für **URL**, **Methode**, **Header** und **Body** an, um das OAuth-Bearertoken aus der Anmelde-API des Diensts abzurufen, aus dem Sie Daten kopieren möchten. Der Platzhalter in der Vorlage zeigt ein Beispiel für Azure Active Directory (AAD) OAuth. Beachten Sie, dass die AAD-Authentifizierung vom REST-Connector systemintern unterstützt wird. Dies hier ist nur ein Beispiel für den OAuth-Fluss. 
 
-    | Eigenschaft | BESCHREIBUNG |
+    | Eigenschaft | Beschreibung |
     |:--- |:--- |
     | URL |Geben Sie die URL an, aus der das OAuth-Bearertoken abgerufen werden soll. Im Beispiel hier ist dies https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token. |
     | Methode | Die HTTP-Methode. Zulässige Werte sind **Post** und **Get**. | 
     | Header | Der Header wird vom Benutzer definiert und verweist auf einen einzigen Headernamen in der HTTP-Anforderung. | 
     | Body | Der Text der HTTP-Anforderung. | 
 
-    ![Pipeline](media/solution-template-copy-from-rest-or-http-using-oauth/web-settings.png)
+    :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/web-settings.png" alt-text="Pipeline":::
 
 6. Wählen Sie in der Aktivität **Daten kopieren** die Registerkarte *Quelle* aus. Dann können Sie sehen, dass das aus dem vorherigen Schritt abgerufene Bearertoken („access_token“) unter „Zusätzliche Header“ als **Autorisierung** an die Aktivität übergeben wird. Bestätigen Sie die Einstellungen für die folgenden Eigenschaften, bevor Sie eine Pipelineausführung starten.
 
@@ -620,20 +620,20 @@ Die Vorlage definiert zwei Parameter:
     | Anforderungsmethode | Die HTTP-Methode. Zulässige Werte sind **Get** (Standardwert) und **Post**. | 
     | Zusätzliche Header | Zusätzliche HTTP-Anforderungsheader| 
 
-   ![Kopieren der Quellauthentifizierung](media/solution-template-copy-from-rest-or-http-using-oauth/copy-data-settings.png)
+   :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/copy-data-settings.png" alt-text="Kopieren der Quellauthentifizierung":::
 
 7. Klicken Sie auf **Debuggen**, geben Sie die **Parameter** ein, und klicken Sie dann auf **Fertig stellen**.
-   ![Pipelineausführung](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline-run.png) 
+   :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/pipeline-run.png" alt-text="Pipelineausführung"::: 
 
-8. Wenn die Pipelineausführung erfolgreich abgeschlossen wurde, wird das Ergebnis ähnlich wie im nachstehenden Beispiel angezeigt: ![Ergebnis der Pipelineausführung](media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png) 
+8. Wenn die Pipelineausführung erfolgreich abgeschlossen wurde, wird das Ergebnis ähnlich wie im nachstehenden Beispiel angezeigt: :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png" alt-text="Ergebnis der Pipelineausführung"::: 
 
 9. Klicken Sie in der Spalte **Aktionen** auf das Symbol „Ausgabe“ von „WebActivity“. Dann sehen Sie das vom Dienst zurückgegebene „access_token“.
 
-   ![Tokenausgabe](media/solution-template-copy-from-rest-or-http-using-oauth/token-output.png) 
+   :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/token-output.png" alt-text="Tokenausgabe"::: 
 
 10. Klicken Sie in der Spalte **Aktionen** auf das Symbol „Eingabe“ von „CopyActivity“. Dann sehen Sie, dass das von „WebActivity“ abgerufene „access_token“ an „CopyActivity“ zur Authentifizierung übergeben wird. 
 
-    ![Tokeneingabe](media/solution-template-copy-from-rest-or-http-using-oauth/token-input.png)
+    :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/token-input.png" alt-text="Tokeneingabe":::
         
     >[!CAUTION] 
     >Wenn Sie vermeiden möchten, dass das Token im Nur-Text-Format protokolliert wird, aktivieren Sie in der Webaktivität „Sichere Ausgabe“ und in der Kopieraktivität „Sichere Eingabe“.

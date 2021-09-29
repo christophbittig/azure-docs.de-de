@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.topic: reference
 ms.date: 08/12/2021
 ms.author: bagol
-ms.openlocfilehash: d3f727b251c13bdc52de793919d85e984d8b78f2
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 8cbd8861e7dc01e8615225dd88960b581fd4c2f4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123261115"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755084"
 ---
 # <a name="find-your-azure-sentinel-data-connector"></a>Ermitteln des richtigen Azure Sentinel-Datenconnectors
 
@@ -72,7 +72,7 @@ In diesem Artikel wird beschrieben, wie Sie Datenconnectors in Azure Sentinel be
 > [!IMPORTANT]
 > Wenn Sie diesen Schritt ausführen, sollte dies vor der Bereitstellung Ihres Datenconnectors erfolgen.
 >
-Die Agari-Funktions-App ermöglicht den Austausch von Bedrohungsdaten mit Azure Sentinel über die Security Graph-API. Hierfür muss der [Sentinel Threat Intelligence Platforms-Connector](connect-threat-intelligence.md) aktiviert werden. Außerdem muss [eine Anwendung in Azure Active Directory registriert werden](/graph/auth-register-app-v2).
+Die Agari-Funktions-App ermöglicht den Austausch von Bedrohungsdaten mit Azure Sentinel über die Security Graph-API. Hierfür muss der [Sentinel Threat Intelligence Platforms-Connector](./connect-threat-intelligence-tip.md) aktiviert werden. Außerdem muss [eine Anwendung in Azure Active Directory registriert werden](/graph/auth-register-app-v2).
 
 Dadurch erhalten Sie drei Informationen, die Sie beim [Bereitstellen der Funktions-App](connect-azure-functions-template.md) verwenden: die **Graph-Mandanten-ID**, die **Graph-Client-ID** und das **Graph-Clientgeheimnis** (siehe *Anwendungseinstellungen* in der Tabelle unten).
 
@@ -163,7 +163,6 @@ Weitere Informationen finden Sie im Syslog-Leitfaden zu Cognito Detect, das Sie 
 | --- | --- |
 | **Datenerfassungsmethode** | [**Log Analytics-Agent: benutzerdefinierte Protokolle**](connect-custom-logs.md) <br><br>[Zusätzliche Konfiguration für Alsid](#extra-configuration-for-alsid)|
 | **Log Analytics-Tabellen** | AlsidForADLog_CL |
-| **Beispieldatei für benutzerdefinierte Protokolle:** | https://github.com/Azure/azure-quickstart-templates/blob/master/alsid-syslog-proxy/logs/AlsidForAD.log |
 | **Kusto-Funktionsalias:** | afad_parser |
 | **Kusto-Funktions-URL:** | https://aka.ms/sentinel-alsidforad-parser |
 | **Unterstützt von** | [Alsid](https://www.alsid.com/contact-us/) |
@@ -300,7 +299,7 @@ Im Folgenden finden Sie einige der wichtigsten Verbesserungen, die sich aus dem 
 - Verbesserte Zuverlässigkeit.
 - Diese Ebene bietet eine verbesserte Leistung.
 - Unterstützung für alle Kategorien von Ereignissen, die vom Aktivitätsprotokolldienst protokolliert werden (der Legacymechanismus unterstützt nur eine Teilmenge, z. B. gibt es keine Unterstützung für Service Health-Ereignisse).
-- Verwaltung im großen Stil mit Azure Policy
+- Verwaltung im großen Stil mit Azure Policy.
 
 In der [Azure Monitor-Dokumentation](../azure-monitor/logs/data-platform-logs.md) finden Sie eine ausführlichere Behandlung des [Azure-Aktivitätsprotokolls](../azure-monitor/essentials/activity-log.md) und der [Diagnoseeinstellungspipeline](../azure-monitor/essentials/diagnostic-settings.md).
 
@@ -1109,7 +1108,7 @@ Fügen Sie unter **Authorized redirect URIs** (Autorisierte Umleitungs-URIs) den
 | **Log Analytics-Tabellen** | Okta_CL |
 | **Azure Functions-App-Code** | https://aka.ms/sentineloktaazurefunctioncodev2 |
 | **API-Anmeldeinformationen** | <li>API-Token |
-| **Herstellerdokumentation/<br>Installationsanweisungen** | <li>[Dokumentation zur Okta-Systemprotokoll-API](https://developer.okta.com/docs/reference/api/system-log/)<li>[Erstellen eines API-Tokens](https://developer.okta.com/docs/guides/create-an-api-token/create-the-token/)<li>[Verbinden von Okta SSO mit Azure Sentinel](connect-okta-single-sign-on.md) |
+| **Herstellerdokumentation/<br>Installationsanweisungen** | <li>[Dokumentation zur Okta-Systemprotokoll-API](https://developer.okta.com/docs/reference/api/system-log/)<li>[Erstellen eines API-Tokens](https://developer.okta.com/docs/guides/create-an-api-token/create-the-token/)<li>[Verbinden von Okta SSO mit Azure Sentinel](#okta-single-sign-on-preview) |
 | **Anweisungen zur Connectorbereitstellung** | <li>[Bereitstellung mit nur einem Klick](connect-azure-functions-template.md?tabs=ARM) mithilfe von ARM-Vorlagen (Azure Resource Manager)<li>[Manuelle Bereitstellung](connect-azure-functions-template.md?tabs=MPS) |
 | **Anwendungseinstellungen** | <li>apiToken<li>workspaceID<li>workspaceKey<li>uri (hat das Schema: `https://<OktaDomain>/api/v1/logs?since=`. [Ermitteln Sie Ihren Domänennamespace](https://developer.okta.com/docs/reference/api-overview/#url-namespace).) <li>logAnalyticsUri (optional) |
 | **Unterstützt von** | Microsoft |
@@ -1610,7 +1609,7 @@ Befolgen Sie die Anweisungen zum Abrufen der Anmeldeinformationen.
 
 Der Zimperium Mobile Threat Defense-Datenconnector verbindet das Zimperium Threat-Protokoll mit Azure Sentinel, um Dashboards anzuzeigen, benutzerdefinierte Warnungen zu erstellen und Untersuchungen zu verbessern. Durch diesen Connector erhalten Sie einen besseren Einblick in die Bedrohungslage mobiler Geräte in Ihrer Organisation und bessere Möglichkeiten für Sicherheitsvorgänge. Weitere Anweisungen finden Sie unter
 
-Weitere Informationen zum Herstellen einer Verbindung mit Azure Sentinel finden Sie unter [Verbinden von Zimperium mit Azure Sentinel](connect-zimperium-mtd.md).
+Weitere Informationen zum Herstellen einer Verbindung mit Azure Sentinel finden Sie unter [Verbinden von Zimperium mit Azure Sentinel](#zimperium-mobile-thread-defense-preview).
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |

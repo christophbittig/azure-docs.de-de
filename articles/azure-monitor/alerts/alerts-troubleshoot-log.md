@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f7e5340b69bacb14180b4feee7ada22c7ca298d0
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: aafd6f2e0d5c10b1e3e1698176734a83083ef72d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111592696"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744511"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Behandeln von Protokollwarnungen in Azure Monitor  
 
@@ -156,7 +156,7 @@ Die Gesamtanzahl von Warnungsregeln für die Protokollsuche wird über der Regel
 
 ## <a name="activity-log-example-when-rule-is-disabled"></a>Aktivitätsprotokollbeispiel bei Deaktivierung der Regel
 
-Wenn für die Abfrage sieben Tage hintereinander ein Fehler auftritt, deaktiviert Azure Monitor die Protokollwarnung, und die Abrechnung wird für die Regel beendet. Sie können den genauen Zeitpunkt, zu dem Azure Monitor die Protokollwarnung deaktiviert hat, im [Azure-Aktivitätsprotokoll](../../azure-resource-manager/management/view-activity-logs.md) ermitteln. 
+Wenn für die Abfrage sieben Tage hintereinander ein Fehler auftritt, deaktiviert Azure Monitor die Protokollwarnung, und die Abrechnung wird für die Regel beendet. Sie können den genauen Zeitpunkt, zu dem Azure Monitor die Protokollwarnung deaktiviert hat, im [Azure-Aktivitätsprotokoll](../../azure-monitor/essentials/activity-log.md) ermitteln. 
 
 Beispiel:
 

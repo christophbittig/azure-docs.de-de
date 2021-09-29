@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: d5aa2a2eba1cf6123d81813cab00d2ac7c5309b4
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 22dd9bdfc8f26a46c7cd5989851fb748955732fe
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835367"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124773814"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Konfigurieren von Azure AD Multi-Factor Authentication-Einstellungen
 
@@ -311,7 +311,7 @@ Wenn Sie keine Richtlinien für bedingten Zugriff verwenden möchten, um vertrau
 
 ## <a name="verification-methods"></a>Überprüfungsmethoden
 
-Sie können im Diensteinstellungsportal auswählen, welche Überprüfungsmethoden für Ihre Benutzer verfügbar sind. Wenn Ihre Benutzer ihre Konten für Azure AD Multi-Factor Authentication registrieren, wählen sie ihre bevorzugte Überprüfungsmethode aus den von Ihnen aktivierten Optionen aus. Anleitungen zum Benutzerregistrierungsprozess finden Sie unter [Einrichten meines Kontos für die mehrstufige Authentifizierung](../user-help/multi-factor-authentication-end-user-first-time.md).
+Sie können im Diensteinstellungsportal auswählen, welche Überprüfungsmethoden für Ihre Benutzer verfügbar sind. Wenn Ihre Benutzer ihre Konten für Azure AD Multi-Factor Authentication registrieren, wählen sie ihre bevorzugte Überprüfungsmethode aus den von Ihnen aktivierten Optionen aus. Anleitungen zum Benutzerregistrierungsprozess finden Sie unter [Einrichten meines Kontos für die mehrstufige Authentifizierung](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc).
 
 Die folgenden Überprüfungsmethoden stehen zur Auswahl:
 
@@ -341,7 +341,7 @@ Mit dem Feature _Multi-Factor Authentication speichern_ können Benutzer nachfol
 > [!IMPORTANT]
 > Wenn ein Konto oder Gerät gefährdet ist, kann das Speichern von Multi-Factor Authentication für vertrauenswürdige Geräte die Sicherheit beeinträchtigen. Wenn ein Unternehmenskonto kompromittiert oder ein vertrauenswürdiges Gerät verloren geht oder gestohlen wird, sollten Sie [MFA-Sitzungen widerrufen](howto-mfa-userdevicesettings.md).
 >
-> Durch die Wiederherstellungsaktion wird der vertrauenswürdige Status aller Geräte widerrufen, und der Benutzer muss wieder die mehrstufige Authentifizierung ausführen. Sie können Ihre Benutzer auch anweisen, Multi-Factor Authentication auf ihren eigenen Geräten wie unter [Verwalten der Einstellungen für die mehrstufige Authentifizierung](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device) beschrieben wiederherzustellen.
+> Durch die Wiederherstellungsaktion wird der vertrauenswürdige Status aller Geräte widerrufen, und der Benutzer muss wieder die mehrstufige Authentifizierung ausführen. Sie können Ihre Benutzer auch anweisen, Multi-Factor Authentication auf ihren eigenen Geräten wie unter [Verwalten der Einstellungen für die mehrstufige Authentifizierung](https://support.microsoft.com/account-billing/change-your-two-step-verification-method-and-settings-c801d5ad-e0fc-4711-94d5-33ad5d4630f7#turn-on-two-factor-verification-prompts-on-a-trusted-device) beschrieben wiederherzustellen.
 
 ### <a name="how-the-feature-works"></a>Funktionsweise des Features
 

@@ -1,18 +1,18 @@
 ---
 title: 'Schnellstart: Clientbibliothek für Azure Blob Storage: Ruby'
 description: Hier erfahren Sie, wie Sie ein Speicherkonto und einen Container in Azure Blob Storage erstellen. Außerdem erfahren Sie, wie Sie die Speicherclientbibliothek für Ruby verwenden, um ein Blob zu erstellen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten.
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 12/04/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 96b47afb11a0105e8f6d6b58e8862994493389f4
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: c34c042598e94cb2a86d1a068caca40bd3240b29
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277975"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128587478"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-for-ruby"></a>Schnellstart: Azure Blob Storage-Clientbibliothek für Ruby
 

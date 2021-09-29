@@ -4,12 +4,12 @@ description: Erstellen von Aktivitätsprotokollwarnungen über das Azure-Portal 
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 08/12/2021
-ms.openlocfilehash: 8f26806a08ca463350e54d5ce1319fe0323715e7
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 273f8b3a747685c250958e745ce6a37754859329
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123220033"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744582"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor  
 
@@ -269,6 +269,5 @@ Ressourcen für Warnungsregeln des Aktivitätsprotokolls können mit dem Azure C
 
 - Weitere Informationen zum [Webhookschema für Aktivitätsprotokolle](./activity-log-alerts-webhook.md).
 - Lesen Sie eine [Übersicht über Aktivitätsprotokolle](./activity-log-alerts.md).
-- Weitere Informationen zu [Aktionsgruppen](../platform/action-groups.md).  
+- Weitere Informationen zu [Aktionsgruppen](./action-groups.md).  
 - Weitere Informationen zu [Dienstintegritätsbenachrichtigungen](../../service-health/service-notifications.md).
-

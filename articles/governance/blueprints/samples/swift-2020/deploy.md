@@ -1,14 +1,14 @@
 ---
 title: Bereitstellen des Blaupausenbeispiels „SWIFT CSP-CSCF v2020“
 description: Bereitstellungsschritte für das Blaupausenbeispiel „SWIFT CSP-CSCF v2020“, einschließlich Details zum Blaupausenartefaktparameter.
-ms.date: 04/02/2021
+ms.date: 09/08/2021
 ms.topic: sample
-ms.openlocfilehash: 6af8495db98386bd2ce6dff90f57b5f3f0014616
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 4c19e55c8a31158e26ab6818204b8e177342b94d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108733947"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606302"
 ---
 # <a name="deploy-the-swift-csp-cscf-v2020-blueprint-sample"></a>Bereitstellen des Blaupausenbeispiels „SWIFT CSP-CSCF v2020“
 

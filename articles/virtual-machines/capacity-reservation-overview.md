@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: ee14ea525575a49abd4e4026201c3fa39ffa84b9
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: fe50e8db24f0f280365e435d8a205e9b45ac6ccb
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123273347"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124774486"
 ---
 # <a name="on-demand-capacity-reservation-preview"></a>Reservierung von Bedarfskapazitäten (Vorschau)
 
@@ -137,7 +137,7 @@ Bei der Kapazitätsreservierung gelten keine Grenzwerte für die Anzahl von VM-B
 
 Wenn eine Reservierung erstellt wird, reserviert Azure die angeforderte Anzahl von Kapazitätsinstanzen am angegebenen Standort: 
 
-![Kapazitätsreservierung: Abbildung 1.](\media\capacity-reservation-overview\capacity-reservation-1.jpg) 
+![Kapazitätsreservierung: Abbildung 1.](./media/capacity-reservation-overview/capacity-reservation-1.jpg) 
 
 Verfolgen Sie den Status der Gesamtreservierung über die folgenden Eigenschaften nach:  
 - `capacity` = Gesamtmenge der vom Kunden reservierten Instanzen 
@@ -148,7 +148,7 @@ Das Beispiel oben beginnt mit `capacity` als 2 und einer Länge von `virutalMach
 
 Wenn eine VM dann anhand der Kapazitätsreservierung zugeordnet wird, nutzt sie logisch eine der reservierten Kapazitätsinstanzen: 
 
-![Kapazitätsreservierung: Abbildung 2.](\media\capacity-reservation-overview\capacity-reservation-2.jpg) 
+![Kapazitätsreservierung: Abbildung 2.](./media/capacity-reservation-overview/capacity-reservation-2.jpg) 
 
 Der Status der Kapazitätsreservierung zeigt nun `capacity` als 2 und eine Länge von `virutalMachinesAllocated` und `virtualMachinesAssociated` als 1 an.  
 
@@ -156,23 +156,23 @@ Zuweisungen anhand der Kapazitätsreservierung sind erfolgreich, solange die VMs
 
 Wenn in unserem Beispiel eine dritte VM für die Kapazitätsreservierung zugeordnet wird, geht die Reservierung in den Status [Überlastet](capacity-reservation-overallocate.md) über. Diese dritte VM erfordert ein nicht genutztes Kontingent und zusätzliche Kapazitätserfüllung von Azure. Nachdem die dritte VM zugeordnet wurde, sieht die Kapazitätsreservierung jetzt wie folgt aus: 
 
-![Kapazitätsreservierung: Abbildung 3.](\media\capacity-reservation-overview\capacity-reservation-3.jpg) 
+![Kapazitätsreservierung: Abbildung 3.](./media/capacity-reservation-overview/capacity-reservation-3.jpg) 
 
 `capacity` ist 2, und die Länge von `virutalMachinesAllocated` und `virtualMachinesAssociated` ist 3. 
 
 Nehmen wir nun an, dass die Anwendung auf die Mindestanzahl von zwei VMs herunterskaliert wird. Da VM 0 ein Update benötigt, wird sie für die Belegungsfreigabe ausgewählt. Die Reservierung geht automatisch in diesen Status über: 
 
-![Kapazitätsreservierung: Abbildung 4.](\media\capacity-reservation-overview\capacity-reservation-4.jpg) 
+![Kapazitätsreservierung: Abbildung 4.](./media/capacity-reservation-overview/capacity-reservation-4.jpg) 
 
 `capacity` und die Länge von `virtualMachinesAllocated` sind beide 2. Die Länge für `virtualMachinesAssociated` beträgt jedoch immer noch 3, weil VM 0 (obwohl ihre Zuordnung aufgehoben wurde) weiterhin der Kapazitätsreservierung zugeordnet ist.  
 
 Die Kapazitätsreservierung bleibt vorhanden, bis sie explizit gelöscht wird. Um eine Kapazitätsreservierung zu löschen, besteht der erste Schritt im Trennen aller VMs in der `virtualMachinesAssociated`-Eigenschaft. Nach Abschluss der Trennung sollte die Kapazitätsreservierung wie folgt aussehen: 
 
-![Kapazitätsreservierung: Abbildung 5.](\media\capacity-reservation-overview\capacity-reservation-5.jpg) 
+![Kapazitätsreservierung: Abbildung 5.](./media/capacity-reservation-overview/capacity-reservation-5.jpg) 
 
 Der Status der Kapazitätsreservierung zeigt nun `capacity` als 2 und die Länge von `virtualMachinesAssociated` und `virtualMachinesAllocated` als 0 an. In diesem Zustand kann die Kapazitätsreservierung gelöscht werden. Nach dem Löschen zahlen Sie nicht mehr für die Reservierung.  
 
-![Kapazitätsreservierung: Abbildung 6.](\media\capacity-reservation-overview\capacity-reservation-6.jpg)
+![Kapazitätsreservierung: Abbildung 6.](./media/capacity-reservation-overview/capacity-reservation-6.jpg)
 
 
 ## <a name="usage-and-billing"></a>Nutzung und Abrechnung 
@@ -183,13 +183,13 @@ Wenn eine Kapazitätsreservierung leer ist, wird die VM-Nutzung für die entspre
 
 Angenommen, eine Kapazitätsreservierung mit der reservierten Menge 2 wurde erstellt. Das Abonnement hat Zugriff auf eine entsprechende reservierte VM-Instanz der gleichen Größe. Das Ergebnis sind zwei Nutzungsdatenströme für die Kapazitätsreservierung, von denen einer von der reservierten Instanz abgedeckt wird: 
 
-![Kapazitätsreservierung: Abbildung 7.](\media\capacity-reservation-overview\capacity-reservation-7.jpg)
+![Kapazitätsreservierung: Abbildung 7.](./media/capacity-reservation-overview/capacity-reservation-7.jpg)
 
 In der Abbildung oben wird ein Rabatt für eine reservierte VM-Instanz auf eine der ungenutzten Instanzen angewendet, und die Kosten für diese Instanz werden auf Null gesetzt. Für die andere Instanz wird der PAYG-Tarif für die reservierte VM-Größe berechnet.  
 
 Wenn eine VM anhand der Kapazitätsreservierung zugeordnet wird, müssen auch die anderen VM-Komponenten wie Datenträger, Netzwerk, Erweiterungen und alle anderen angeforderten Komponenten zugeordnet werden. In diesem Zustand spiegelt die VM-Nutzung eine zugeordnete VM und eine nicht genutzte Kapazitätsinstanz wider. Die reservierte VM-Instanz setzt die Kosten für die VM oder die nicht genutzte Kapazitätsinstanz auf null. Die anderen Kosten für Datenträger, Netzwerke und andere Komponenten, die der zugeordneten VM zugeordnet sind, werden ebenfalls in der Rechnung angezeigt. 
 
-![Kapazitätsreservierung: Abbildung 8.](\media\capacity-reservation-overview\capacity-reservation-8.jpg)
+![Kapazitätsreservierung: Abbildung 8.](./media/capacity-reservation-overview/capacity-reservation-8.jpg)
 
 In der Abbildung oben wird der Rabatt für die reservierte VM-Instanz auf die VM 0 angewendet, für die nur andere Komponenten wie Datenträger und Netzwerk in Rechnung gestellt werden. Für die andere nicht verwendete Instanz wird die reservierte VM-Größe mit dem PAYG-Tarif in Rechnung gestellt.
 

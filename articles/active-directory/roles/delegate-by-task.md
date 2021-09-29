@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a65ce79252c25d187ed61de3b637182deaf225db
-ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+ms.openlocfilehash: df3c243970709ad7ae4bc52f179117affc2d8613
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113136344"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124776433"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Administratorrollen nach Administratoraufgabe in Azure Active Directory
 
@@ -166,7 +166,7 @@ In diesem Artikel finden Sie die erforderlichen Informationen, um Administratorr
 > [!div class="mx-tableFixed"]
 > | Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen |
 > | ---- | --------------------- | ---------------- |
-> | Hinzufügen von Ressourcen zu einem Katalog | Identity Governance-Administrator | Mit der Berechtigungsverwaltung können Sie diese Aufgabe an den Katalogbesitzer delegieren ([siehe Dokumentation](../governance/entitlement-management-catalog-create.md#add-additional-catalog-owners)). |
+> | Hinzufügen von Ressourcen zu einem Katalog | Identity Governance-Administrator | Mit der Berechtigungsverwaltung können Sie diese Aufgabe an den Katalogbesitzer delegieren ([siehe Dokumentation](../governance/entitlement-management-catalog-create.md#add-more-catalog-owners)). |
 > | Hinzufügen von SharePoint Online-Websites zum Katalog | SharePoint-Administrator |  |
 
 ## <a name="groups"></a>Gruppen

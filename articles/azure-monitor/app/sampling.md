@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 08/26/2021
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9db589de9bd62a00b7de89b2b558a3bac1e1785a
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 4c45c127710ff5a572a68531a1a5b3836d505e39
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123039977"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124749520"
 ---
 # <a name="sampling-in-application-insights"></a>Erstellen von Stichproben in Application Insights
 
@@ -23,7 +23,7 @@ Bei der Anzeige im Portal werden die Metrikergebnisse zur Berücksichtigung der 
 * Es gibt drei verschiedene Arten der Stichprobenerstellung: adaptive Stichprobenerstellung, Stichprobenerstellung mit festem Prozentsatz und Erfassungs-Stichprobenerstellung.
 * Die adaptive Stichprobenerstellung ist in allen aktuellen Versionen der Application Insights ASP.NET und ASP.NET Core Software Development Kits (SDKs) standardmäßig aktiviert. Sie wird auch von [Azure Functions](../../azure-functions/functions-overview.md) verwendet.
 * Die Stichprobenerstellung mit festem Prozentsatz ist in den neuesten Versionen der Application Insights-SDKs für ASP.NET, ASP.NET Core, Java (sowohl Agent als auch SDK) und Python verfügbar.
-* In Java sind Außerkraftsetzungen beim Sampling verfügbar und nützlich, wenn Sie unterschiedliche Samplingraten auf ausgewählte Abhängigkeiten, Anforderungen und Integritätsprüfungen anwenden müssen. Verwenden Sie [Samplingaußerkraftsetzungen](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-sampling-overrides), um einige störende Abhängigkeiten zu entfernen, während beispielsweise alle wichtigen Fehler zu 100 % beibehalten werden. Dies ist eine Form des festen Samplings, die Ihnen eine präzise Steuerung Ihrer Telemetriedaten ermöglicht.
+* In Java sind Außerkraftsetzungen beim Sampling verfügbar und nützlich, wenn Sie unterschiedliche Samplingraten auf ausgewählte Abhängigkeiten, Anforderungen und Integritätsprüfungen anwenden müssen. Verwenden Sie [Samplingaußerkraftsetzungen](./java-standalone-sampling-overrides.md), um einige störende Abhängigkeiten zu entfernen, während beispielsweise alle wichtigen Fehler zu 100 % beibehalten werden. Dies ist eine Form des festen Samplings, die Ihnen eine präzise Steuerung Ihrer Telemetriedaten ermöglicht.
 * Die Erfassungs-Stichprobenerstellung wird auf dem Application Insights-Dienstendpunkt vorgenommen. Sie wird nur angewendet, wenn keine andere Stichprobenerstellung aktiv ist. Wenn das SDK Stichproben Ihrer Telemetriedaten erstellt, ist die Erfassungs-Stichprobenerstellung deaktiviert.
 * Wenn Sie im Fall von Webanwendungen benutzerdefinierte Ereignisse protokollieren und dabei sicherstellen müssen, dass eine Gruppe von Ereignissen gemeinsam beibehalten oder verworfen wird, müssen die Ereignisse den gleichen Wert für `OperationId` aufweisen.
 * Wenn Sie Analytics-Abfragen schreiben, sollten Sie die [Stichprobenerstellung berücksichtigen](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#aggregations). Insbesondere sollten Sie nicht einfach nur Datensätze zählen, sondern stattdessen `summarize sum(itemCount)`verwenden.
@@ -310,12 +310,12 @@ Im Metrik-Explorer werden Kennzahlen wie beispielsweise die Anzahl von Anforderu
 
 ### <a name="configuring-sampling-overrides-and-fixed-rate-sampling-for-java-applications"></a>Konfigurieren der Außerkraftsetzung beim Sampling und des Samplings mit fester Rate für Java-Anwendungen
 
-Standardmäßig ist bei der automatischen Java-Instrumentierung und im Java SDK kein Sampling aktiviert. Derzeit werden die automatische Java-Instrumentierung, die [Außerkraftsetzung des Samplings](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-sampling-overrides) und das Sampling mit fester Rate unterstützt. Adaptive Stichprobenerstellung wird in Java nicht unterstützt.
+Standardmäßig ist bei der automatischen Java-Instrumentierung und im Java SDK kein Sampling aktiviert. Derzeit werden die automatische Java-Instrumentierung, die [Außerkraftsetzung des Samplings](./java-standalone-sampling-overrides.md) und das Sampling mit fester Rate unterstützt. Adaptive Stichprobenerstellung wird in Java nicht unterstützt.
 
 #### <a name="configuring-java-auto-instrumentation"></a>Konfigurieren der automatischen Java-Instrumentierung
 
-* Um die Außerkraftsetzung des Samplings zu konfigurieren, um die Standardsamplingrate außer Kraft zu setzen und andere Samplingraten auf ausgewählte Anforderungen und Abhängigkeiten anzuwenden, nutzen Sie den [Leitfaden zur Außerkraftsetzung des Samplings](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-sampling-overrides#getting-started).
-* Verwenden Sie den [Leitfaden zum Sampling mit fester Rate](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config#sampling), um Sampling mit fester Rate zu konfigurieren, das für alle Telemetriedaten gilt.
+* Um die Außerkraftsetzung des Samplings zu konfigurieren, um die Standardsamplingrate außer Kraft zu setzen und andere Samplingraten auf ausgewählte Anforderungen und Abhängigkeiten anzuwenden, nutzen Sie den [Leitfaden zur Außerkraftsetzung des Samplings](./java-standalone-sampling-overrides.md#getting-started).
+* Verwenden Sie den [Leitfaden zum Sampling mit fester Rate](./java-standalone-config.md#sampling), um Sampling mit fester Rate zu konfigurieren, das für alle Telemetriedaten gilt.
 
 #### <a name="configuring-java-2x-sdk"></a>Konfigurieren des Java 2.x SDK
 
@@ -576,4 +576,3 @@ Vor ASP.NET SDK v2.5.0-beta2 und ASP.NET Core SDK v2.2.0-beta3 beruhte die En
 
 * [Filtern](./api-filtering-sampling.md) erhalten Sie eine strengere Kontrolle über die Sendungen Ihres SDK.
 * Lesen Sie den Developer Network-Artikel [Optimieren von Telemetrie mit Application Insights](/archive/msdn-magazine/2017/may/devops-optimize-telemetry-with-application-insights).
-

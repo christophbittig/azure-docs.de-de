@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc3defd1bf3e3052f45f00eeeec0078ce0f6bbde
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d4b704e1226348f834be8f4af237443994cb456e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122338896"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732729"
 ---
 # <a name="enable-azure-active-directory-self-service-password-reset-at-the-windows-sign-in-screen"></a>Aktivieren der Self-Service-Kennwortzurücksetzung für Azure Active Directory auf dem Windows-Anmeldebildschirm
 
@@ -186,7 +186,7 @@ Was ändert sich für Benutzer, nachdem die SSPR für Ihre Windows-Geräte konfi
 
 Wenn Benutzer versuchen, sich anzumelden, wird der Link **Kennwort zurücksetzen** oder **Kennwort vergessen** angezeigt. Mit diesen Links wird die Self-Service-Kennwortzurücksetzung auf dem Anmeldebildschirm geöffnet. Mit dieser Funktion können Benutzer ihr Kennwort zurücksetzen, ohne ein anderes Gerät für den Zugriff auf einen Webbrowser verwenden zu müssen.
 
-Benutzer, die dieses Feature verwenden, finden weitere Informationen unter [Zurücksetzen des Kennworts für Ihr Geschäfts-, Schul- oder Unikonto mithilfe von Sicherheitsinformationen](../user-help/active-directory-passwords-update-your-own-password.md).
+Benutzer, die dieses Feature verwenden, finden weitere Informationen unter [Zurücksetzen des Kennworts für Ihr Geschäfts-, Schul- oder Unikonto mithilfe von Sicherheitsinformationen](https://support.microsoft.com/account-billing/reset-your-work-or-school-password-using-security-info-23dde81f-08bb-4776-ba72-e6b72b9dda9e).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

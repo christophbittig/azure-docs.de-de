@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 3353d87291492563acbd3a85bbae266c711377f2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 92d52bcdd990d255a41c151b2312cc2b6494bd45
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105611802"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787185"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>Modus für gemeinsam genutzte Geräte für iOS-Geräte
 
@@ -31,7 +31,7 @@ Im Modus für gemeinsam genutzte Geräte können Sie ein Gerät mit iOS 13 oder 
 
 Der Modus für gemeinsam genutzte Geräte ermöglicht auch eine auf Microsoft-Identitäten basierende Verwaltung des Geräts.
 
-Diese Funktion verwendet die [Microsoft Authenticator-App](../user-help/user-help-auth-app-overview.md), um die Benutzer auf dem Gerät zu verwalten und das [Microsoft Enterprise SSO-Plug-In für Apple-Geräte](apple-sso-plugin.md) zu verteilen.
+Diese Funktion verwendet die [Microsoft Authenticator-App](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc), um die Benutzer auf dem Gerät zu verwalten und das [Microsoft Enterprise SSO-Plug-In für Apple-Geräte](apple-sso-plugin.md) zu verteilen.
 
 ## <a name="create-a-shared-device-mode-app"></a>Erstellen einer App für den Modus für gemeinsam genutzte Geräte
 
@@ -41,7 +41,7 @@ Bei der Erstellung einer App für den Modus für gemeinsam genutzte Geräte arbe
 
 1. **Geräteadministratoren** bereiten die Geräte mithilfe eines MDM-Anbieters (Mobile Device Management) wie Microsoft Intune für die gemeinsame Nutzung vor, um sie in ihrer Organisation zu verwalten. MDM überträgt die Microsoft Authenticator-App per Pushvorgang auf die Geräte und aktiviert auf jedem Gerät durch ein Profilupdate den „Modus für gemeinsam genutzte Geräte“. Durch die Einstellung „Modus für gemeinsam genutzte Geräte“ ändert sich das Verhalten der unterstützten Apps auf dem Gerät. Diese Konfiguration vom MDM-Anbieter legt für das Gerät den Modus für gemeinsam genutzte Geräte fest und aktiviert das [Microsoft Enterprise SSO-Plug-In für Apple-Geräte](apple-sso-plugin.md), das für den Modus für gemeinsam genutzte Geräte erforderlich ist.
 
-1. [**Nur bei der öffentlichen Vorschauversion (Public Preview) erforderlich**] Ein Benutzer mit der Rolle [Cloudgeräteadministrator](../roles/permissions-reference.md#cloud-device-administrator) muss dann die [Microsoft Authenticator-App](../user-help/user-help-auth-app-overview.md) starten und das Gerät mit der Organisation verknüpfen.
+1. [**Nur bei der öffentlichen Vorschauversion (Public Preview) erforderlich**] Ein Benutzer mit der Rolle [Cloudgeräteadministrator](../roles/permissions-reference.md#cloud-device-administrator) muss dann die [Microsoft Authenticator-App](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc) starten und das Gerät mit der Organisation verknüpfen.
 
     So konfigurieren Sie die Mitgliedschaft der organisatorischen Funktionen im Azure-Portal: **Azure Active Directory** > **Rollen und Administratoren** > **Cloudgeräteadministrator**
 

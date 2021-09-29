@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b0295c994a736e26d7b581bd13b6167819833360
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 8acfbdba72eaaee65e7421f503462c6346776384
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108748707"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124786539"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Desktop-App, die Web-APIs aufruft: App-Registrierung
 
@@ -53,7 +53,7 @@ Geben Sie den Umleitungs-URI für Ihre App an, indem Sie im Azure-Portal unter *
 - Wenn Sie eine native Objective-C-oder Swift-App für macOS erstellen, sollten Sie den Umleitungs-URI basierend auf der Paket-ID Ihrer Anwendung im folgenden Format registrieren: `msauth.<your.app.bundle.id>://auth`. Ersetzen Sie `<your.app.bundle.id>` durch die Paket-ID Ihrer Anwendung.
 - Wenn Sie eine Node.js Electron-App erstellen möchten, verwenden Sie anstelle eines regulären Web-Umleitungs-URIs (https://) ein benutzerdefiniertes Dateiprotokoll (z. B. `msal://redirect`), um den Umleitungsschritt im Autorisierungsablauf zu verarbeiten. Der Name des benutzerdefinierten Dateiprotokolls sollte nicht offensichtlich und somit leicht zu erraten sein. Befolgen Sie hierfür die Vorschläge in der [OAuth 2.0-Spezifikation für native Apps](https://tools.ietf.org/html/rfc8252#section-7.1).
 - Wenn Ihre App nur die integrierte Windows-Authentifizierung oder Benutzername und Kennwort verwendet, müssen Sie für Ihre Anwendung keinen Umleitungs-URI registrieren. Diese Flows führen einen Roundtrip zum Microsoft Identity Platform v 2.0-Endpunkt aus. Ihre Anwendung wird nicht über einen bestimmten URI zurückgerufen.
-- Konfigurieren Sie Ihre Anwendung als öffentliche Clientanwendung, um [Gerätecodeflow](scenario-desktop-acquire-token.md#device-code-flow), [Integrierte Windows-Authentifizierung](scenario-desktop-acquire-token.md#integrated-windows-authentication) sowie [Benutzername und Kennwort](scenario-desktop-acquire-token.md#username-and-password) von einer vertraulichen Clientanwendung mit einem Clientanmeldeinformationsflow zu unterscheiden, der in [Daemonanwendungen](scenario-daemon-overview.md) verwendet wird, die alle keinen Umleitungs-URI benötigen. Gehen Sie für diese Konfiguration wie folgt vor:
+- Konfigurieren Sie Ihre Anwendung als öffentliche Clientanwendung, um [Gerätecodeflow](scenario-desktop-acquire-token-device-code-flow.md), [Integrierte Windows-Authentifizierung](scenario-desktop-acquire-token-integrated-windows-authentication.md) sowie [Benutzername und Kennwort](scenario-desktop-acquire-token-username-password.md) von einer vertraulichen Clientanwendung mit einem Clientanmeldeinformationsflow zu unterscheiden, der in [Daemonanwendungen](scenario-daemon-overview.md) verwendet wird, die alle keinen Umleitungs-URI benötigen. Gehen Sie für diese Konfiguration wie folgt vor:
 
     1. Wählen Sie im <a href="https://portal.azure.com/" target="_blank">Azure-Portal</a> unter **App-Registrierungen** Ihre App aus, und wählen Sie dann **Authentifizierung** aus.
     1. Wählen Sie unter **Erweiterte Einstellungen** > **Öffentliche Clientflows zulassen** > **Folgende Flows für Mobilgerät und Desktop aktivieren:** die Option **Ja** aus.

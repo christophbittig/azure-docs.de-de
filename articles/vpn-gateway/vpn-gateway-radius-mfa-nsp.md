@@ -9,12 +9,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: 6cfc6ea361dddf703741baa1a990018186b402e4
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 6fada4ca0ae24c2f3b859e02c55c7406cc44bb51
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108289478"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124734955"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Integrieren der RADIUS-Authentifizierung für das Azure-VPN-Gateway in den NPS-Server für Multi-Factor Authentication 
 
@@ -22,7 +22,7 @@ In diesem Artikel wird beschrieben, wie Sie den Netzwerkrichtlinienserver (Netwo
 
 ## <a name="prerequisite"></a>Voraussetzung
 
-Zum Aktivieren von MFA müssen die Benutzer in Azure Active Directory (Azure AD) enthalten sein. Der Azure AD-Dienst muss über die lokale Umgebung oder die Cloudumgebung synchronisiert werden. Darüber hinaus muss der Benutzer bereits die automatische Registrierung für MFA abgeschlossen haben.  Weitere Informationen finden Sie unter [Einrichten meines Kontos für die zweistufige Überprüfung](../active-directory/user-help/multi-factor-authentication-end-user-first-time.md)
+Zum Aktivieren von MFA müssen die Benutzer in Azure Active Directory (Azure AD) enthalten sein. Der Azure AD-Dienst muss über die lokale Umgebung oder die Cloudumgebung synchronisiert werden. Darüber hinaus muss der Benutzer bereits die automatische Registrierung für MFA abgeschlossen haben.  Weitere Informationen finden Sie unter [Einrichten meines Kontos für die zweistufige Überprüfung](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)
 
 ## <a name="detailed-steps"></a>Ausführliche Schritte
 

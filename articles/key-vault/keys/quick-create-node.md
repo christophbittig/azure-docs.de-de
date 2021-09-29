@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: a3d63a65edaca68bbb60bf7b8901e341da218377
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 82cca0492aba30b8bf04a8d3fe4c9c4c7d5be5a1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733536"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124775161"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-javascript-version-4"></a>Schnellstart: Azure Key Vault-Schlüsselclientbibliothek für JavaScript (Version 4)
 
@@ -152,9 +152,9 @@ const { KeyClient } = require("@azure/keyvault-keys");
 
 ### <a name="authenticate-and-create-a-client"></a>Authentifizieren und Erstellen eines Clients
 
-In dieser Schnellstartanleitung wird der angemeldete Benutzer zum Authentifizieren beim Schlüsseltresor verwendet. Dies ist die bevorzugte Methode für die lokale Entwicklung. Bei Anwendungen, die in Azure bereitgestellt werden, sollte die verwaltete Identität App Service oder einem virtuellen Computer zugewiesen werden. Weitere Informationen finden Sie in der [Übersicht zu verwalteten Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+In dieser Schnellstartanleitung wird der angemeldete Benutzer zum Authentifizieren beim Schlüsseltresor verwendet. Dies ist die bevorzugte Methode für die lokale Entwicklung. Bei Anwendungen, die in Azure bereitgestellt werden, sollte die verwaltete Identität App Service oder einem virtuellen Computer zugewiesen werden. Weitere Informationen finden Sie in der [Übersicht zu verwalteten Identitäten](../../active-directory/managed-identities-azure-resources/overview.md).
 
-Im folgenden Beispiel wird der Name Ihres Schlüsseltresors in den Schlüsseltresor-URI mit dem Format „https://\<your-key-vault-name\>.vault.azure.net“ erweitert. In diesem Beispiel wird die Klasse [DefaultAzureCredential()](https://docs.microsoft.com/javascript/api/@azure/identity/defaultazurecredential) aus der [Azure Identity-Bibliothek](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme) verwendet, wodurch der gleiche Code in verschiedenen Umgebungen mit verschiedenen Optionen für die Identitätsbereitstellung verwendet werden kann. Weitere Informationen zur Authentifizierung beim Schlüsseltresor finden Sie im [Entwicklerhandbuch](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code).
+Im folgenden Beispiel wird der Name Ihres Schlüsseltresors in den Schlüsseltresor-URI mit dem Format „https://\<your-key-vault-name\>.vault.azure.net“ erweitert. In diesem Beispiel wird die Klasse [DefaultAzureCredential()](/javascript/api/@azure/identity/defaultazurecredential) aus der [Azure Identity-Bibliothek](/javascript/api/overview/azure/identity-readme) verwendet, wodurch der gleiche Code in verschiedenen Umgebungen mit verschiedenen Optionen für die Identitätsbereitstellung verwendet werden kann. Weitere Informationen zur Authentifizierung beim Schlüsseltresor finden Sie im [Entwicklerhandbuch](../general/developers-guide.md#authenticate-to-key-vault-in-code).
 
 Fügen Sie der Funktion „main()“ den folgenden Code hinzu:
 
@@ -168,7 +168,7 @@ const client = new KeyClient(KVUri, credential);
 
 ### <a name="save-a-key"></a>Speichern eines Schlüssels
 
-Nachdem Ihre Anwendung nun authentifiziert ist, können Sie mithilfe der [Methode „createKey“](/javascript/api/@azure/keyvault-keys/keyclient?#createKey_string__KeyType__CreateKeyOptions_) einen Schlüssel in Ihrem Schlüsseltresor platzieren. Von den Parametern der Methode werden ein Schlüsselname und der [Schlüsseltyp](https://docs.microsoft.com/javascript/api/@azure/keyvault-keys/keytype) akzeptiert.
+Nachdem Ihre Anwendung nun authentifiziert ist, können Sie mithilfe der [Methode „createKey“](/javascript/api/@azure/keyvault-keys/keyclient?#createKey_string__KeyType__CreateKeyOptions_) einen Schlüssel in Ihrem Schlüsseltresor platzieren. Von den Parametern der Methode werden ein Schlüsselname und der [Schlüsseltyp](/javascript/api/@azure/keyvault-keys/keytype) akzeptiert.
 
 ```javascript
 await client.createKey(keyName, keyType);
@@ -184,7 +184,7 @@ const retrievedKey = await client.getKey(keyName);
 
 ### <a name="delete-a-key"></a>Löschen eines Schlüssels
 
-Verwenden Sie abschließend die Methode [beginDeleteKey](https://docs.microsoft.com/javascript/api/@azure/keyvault-keys/keyclient?#beginDeleteKey_string__BeginDeleteKeyOptions_), um den Schlüssel aus Ihrem Schlüsseltresor zu löschen, und die Methode [purgeDeletedKey](https://docs.microsoft.com/javascript/api/@azure/keyvault-keys/keyclient?#purgeDeletedKey_string__PurgeDeletedKeyOptions_), um ihn endgültig zu löschen.
+Verwenden Sie abschließend die Methode [beginDeleteKey](/javascript/api/@azure/keyvault-keys/keyclient?#beginDeleteKey_string__BeginDeleteKeyOptions_), um den Schlüssel aus Ihrem Schlüsseltresor zu löschen, und die Methode [purgeDeletedKey](/javascript/api/@azure/keyvault-keys/keyclient?#purgeDeletedKey_string__PurgeDeletedKeyOptions_), um ihn endgültig zu löschen.
 
 ```javascript
 const deletePoller = await client.beginDeleteKey(keyName);

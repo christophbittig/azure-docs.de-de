@@ -11,12 +11,12 @@ ms.date: 06/11/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 44f3c777279d6f6b8d2df2600141e7fd66e44214
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 8cb836752ff75a32465d5c8df0e88210c323fb26
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123186297"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124740101"
 ---
 # <a name="enable-authentication-in-your-own-web-app-by-using-azure-ad-b2c"></a>Aktivieren der Authentifizierung in Ihrer eigenen Web-App mit Azure AD B2C
 
@@ -280,12 +280,11 @@ Die erforderlichen Informationen werden im Artikel [Konfigurieren der Authentifi
 ## <a name="step-7-run-your-application"></a>Schritt 7: Ausführen der Anwendung
 
 1. Erstellen Sie das Projekt, und führen Sie es aus.
-1. Wechseln Sie zu [https://localhost:5001](https://localhost:5001). 
+1. Gehe zu `https://localhost:5001`. 
 1. Wählen Sie **Registrieren/Anmelden** aus.
 1. Schließen Sie den Registrierungs- oder Anmeldevorgang ab.
 
 Nachdem Sie sich erfolgreich authentifiziert haben, wird Ihr Anzeigename auf der Navigationsleiste angezeigt. Wenn Sie die Ansprüche anzeigen möchten, die das Azure AD B2C-Token an Ihre App zurückgibt, wählen Sie **Ansprüche** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
-
 * Erfahren Sie, wie Sie [die Azure AD B2C-Authentifizierungsumgebung für Ihre Web-App anpassen und verbessern](enable-authentication-web-application-options.md) können.

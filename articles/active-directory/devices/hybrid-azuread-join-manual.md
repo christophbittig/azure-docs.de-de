@@ -8,15 +8,15 @@ ms.topic: tutorial
 ms.date: 04/16/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1aafcd8ace846d7da65d95d4148872d5a6eddeee
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: d563f8a188496918997d54e06594d282ebaa67ce
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587849"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128637948"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Tutorial: Manuelles Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten
 
@@ -76,7 +76,7 @@ Wenn Ihre Organisation für Windows 10-Geräte mit Version 1703 oder einer älte
 Ab Version 1803 von Windows 10 versucht das Gerät, die Azure AD-Hybrideinbindung unter Verwendung des synchronisierten Computers/Geräts durchzuführen, auch wenn eine Azure AD-Hybrideinbindung durch ein Gerät in einer Verbunddomäne mit AD FS nicht erfolgreich war (sofern Azure AD Connect für die Synchronisierung des Computer-/Geräteobjekts mit Azure AD konfiguriert ist).
 
 > [!NOTE]
-> Damit „sync join“ für die Geräteregistrierung erfolgreich ist, schließen Sie im Rahmen der Geräteregistrierungskonfiguration nicht die Standardgeräteattribute aus der Konfiguration der Azure AD Connect-Synchronisierung aus. Weitere Informationen zu Standardgeräteattributen, die mit Azure AD synchronisiert werden, finden Sie unter [Azure AD Connect-Synchronisierung: Mit Azure Active Directory synchronisierte Attribute](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized#windows-10).
+> Damit „sync join“ für die Geräteregistrierung erfolgreich ist, schließen Sie im Rahmen der Geräteregistrierungskonfiguration nicht die Standardgeräteattribute aus der Konfiguration der Azure AD Connect-Synchronisierung aus. Weitere Informationen zu Standardgeräteattributen, die mit Azure AD synchronisiert werden, finden Sie unter [Azure AD Connect-Synchronisierung: Mit Azure Active Directory synchronisierte Attribute](../hybrid/reference-connect-sync-attributes-synchronized.md#windows-10).
 
 Sie können das Skript zum [Testen der Geräteregistrierungskonnektivität](/samples/azure-samples/testdeviceregconnectivity/testdeviceregconnectivity/) verwenden, um zu überprüfen, ob das Gerät unter dem Systemkonto auf die oben genannten Microsoft-Ressourcen zugreifen kann.
 

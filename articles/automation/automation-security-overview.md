@@ -7,12 +7,12 @@ ms.subservice: process-automation
 ms.date: 08/02/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 78b188b270ec08aa546311b449f908d47313a9a1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5a86a5c8c0922e0861411e93376047344ba6c5af
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339252"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124789102"
 ---
 # <a name="azure-automation-account-authentication-overview"></a>Übersicht über die Azure Automation-Kontoauthentifizierung
 
@@ -24,7 +24,7 @@ In diesem Artikel werden von Azure Automation unterstützte Authentifizierungssz
 
 Wenn Sie das erste Mal mit Azure Automation arbeiten, müssen Sie zunächst mindestens ein Automation-Konto erstellen. Mithilfe von Automation-Konten können Sie Ihre Automation-Ressourcen, Runbooks, Objekte und Konfigurationen von den Ressourcen anderer Konten isolieren. Sie können Automation-Konten dazu verwenden, Ressourcen in separate logische Umgebungen oder delegierte Verantwortlichkeiten zu trennen. Beispielsweise können Sie ein Konto für die Entwicklung, ein Konto für die Produktion und ein Konto für Ihre lokale Umgebung nutzen. Sie können auch ein Automation-Konto zum Verwalten von Betriebssystemupdates auf allen Computern mit [Updateverwaltung](update-management/overview.md) festlegen. 
 
-Ein Azure Automation-Konto unterscheidet sich von einem Microsoft-Konto, das unter Ihrem Azure-Abonnement erstellt wird. Eine Einführung in die Erstellung eines Automation-Kontos finden Sie unter [Erstellen eines Azure Automation-Kontos](automation-quickstart-create-account.md).
+Ein Azure Automation-Konto unterscheidet sich von einem Microsoft-Konto, das unter Ihrem Azure-Abonnement erstellt wird. Eine Einführung in die Erstellung eines Automation-Kontos finden Sie unter [Erstellen eines Azure Automation-Kontos](./quickstarts/create-account-portal.md).
 
 ## <a name="automation-resources"></a>Automation-Ressourcen
 

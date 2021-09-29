@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 05/26/2021
 ms.author: iafinder
-ms.openlocfilehash: 7a129c8b4c03ea4ff71255f18f0637ef57aa060a
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: 22883ab1053a69cc0593565eb19df46ae1852fb7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113586363"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124774137"
 ---
 # <a name="nd-a100-v4-series"></a>A100_v4-Serie
 
@@ -42,19 +42,19 @@ Diese Instanzen bieten hervorragende Leistung für zahlreiche KI-, ML- und Analy
 InfiniBand: Unterstützt, GPUDirect-RDMA, 8 x 200 Gigabit HDR<br>
 Nvidia NVLink Interconnect: Unterstützt<br>
 <br>
+Die ND A100 v4-Serie unterstützt die folgenden Kernelversionen: <br>
+CentOS 7.9 HPC: 3.10.0-1160.24.1.el7.x86_64 <br>
+Ubuntu 18.04: 5.4.0-1043-azure <br>
+Ubuntu 20.04: 5.4.0-1046-azure <br>
+<br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | GPU | GPU-Arbeitsspeicher: GiB | Max. Anzahl Datenträger | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBps | Max. Netzwerkbandbreite | Maximale Anzahl NICs |
 |---|---|---|---|---|---|---|---|---|---|
 | Standard_ND96asr_v4 | 96 | 900 | 6000 | 8 A100 40-GB-GPUs (NVLink 3.0) | 40 | 32 | 80.000/800 | 24.000 MBit/s | 8 |
 
-[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)] <br>
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-Die ND A100 v4-Serie unterstützt die folgenden Kernelversionen: 
-- CentOS 7.9 HPC: 3.10.0-1160.24.1.el7.x86_64 <br>
-- Ubuntu 18.04: 5.4.0-1043-azure <br>
-- Ubuntu 20.04: 5.4.0-1046-azure <br>
-
-## <a name="other-sizes"></a>Andere Größen
+## <a name="other-sizes-and-information"></a>Weitere Größen und Informationen
 
 - [Allgemeiner Zweck](sizes-general.md)
 - [Arbeitsspeicheroptimiert](sizes-memory.md)
@@ -62,6 +62,10 @@ Die ND A100 v4-Serie unterstützt die folgenden Kernelversionen:
 - [GPU-optimiert](sizes-gpu.md)
 - [High Performance Computing](sizes-hpc.md)
 - [Vorherige Generationen](sizes-previous-gen.md)
+
+Preisrechner: [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
+
+Weitere Informationen zu Datenträgertypen finden Sie unter [Welche Datenträgertypen stehen in Azure zur Verfügung?](disks-types.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

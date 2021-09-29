@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 07/28/2021
-ms.openlocfilehash: 852bbd93fe7ac1524201db1f96a6a43c7ff60bdb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0a5591ddad8410c2cea7018fa2f4d4f13a3afa86
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355367"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124735942"
 ---
 # <a name="assessment-overview-migrate-to-azure-vms"></a>Bewertungsübersicht (Migration zu Azure-VMs)
 
@@ -232,7 +232,7 @@ Für Ultra-Datenträger gibt es einen Bereich von IOPS und Durchsatz, der für e
     - Es wurde ein Datenträger (Datenträger 2) gefunden, der die Gesamtanforderungen an IOPS erfüllen kann.
         - Bereitzustellende IOPS = (Quelldatenträgerdurchsatz) *1024/256
     - Es wurde ein Datenträger (Datenträger 3) gefunden, der die Gesamtanforderungen an den Durchsatz erfüllen kann.
-1. Von den drei Datenträgern wird einer mit der maximalen Datenträgergröße gefunden und auf das nächste verfügbare [Angebot für Ultra-Datenträger](https://docs.microsoft.com/azure/virtual-machines/disks-types#disk-size) aufgerundet. Dies ist die bereitgestellte Ultra-Datenträgergröße.
+1. Von den drei Datenträgern wird einer mit der maximalen Datenträgergröße gefunden und auf das nächste verfügbare [Angebot für Ultra-Datenträger](../virtual-machines/disks-types.md#disk-size) aufgerundet. Dies ist die bereitgestellte Ultra-Datenträgergröße.
 1. Bereitgestellte IOPS werden mit der folgenden Logik berechnet:
     - Wenn der gefundene Quelldurchsatz im zulässigen Bereich für die Ultra-Datenträgergröße liegt, entspricht der bereitgestellte IOPS-Wert dem IOPS-Wert des Quelldatenträgers.
     - Der bereitgestellte IOPS-Wert wird andernfalls mithilfe der bereitzustellenden IOPS berechnet = (Quelldatenträgerdurchsatz) *1024/256

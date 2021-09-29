@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de59b3f26a9a4696c721cab94cd5b96bd0200e9e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cbf02dd12c76de529026b58f98f111aa3be39502
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98612125"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626435"
 ---
 # <a name="tutorial-basic-active-directory-environment"></a>Tutorial: Grundlegende Active Directory-Umgebung
 
@@ -33,7 +33,7 @@ Im Folgenden finden Sie die erforderlichen Komponenten für die Durchführung di
 - Ein [externer Netzwerkadapter](/virtualization/hyper-v-on-windows/quick-start/connect-to-network), um dem virtuellen Computer die Kommunikation mit dem Internet zu ermöglichen.
 - [Ein Azure-Abonnement](https://azure.microsoft.com/free)
 - Eine Kopie von Windows Server 2016.
-- [Microsoft .NET Framework 4.7.1](https://www.microsoft.com/download/details.aspx?id=56115)
+- [Microsoft .NET Framework 4.7.1](https://dotnet.microsoft.com/download/dotnet-framework/net471)
 
 > [!NOTE]
 > In diesem Tutorial werden PowerShell-Skripts verwendet, sodass Sie die Tutorialumgebung in kürzester Zeit erstellen können.  Jedes der Skripts verwendet Variablen, die am Anfang jedes Skripts deklariert werden.  Sie können und sollten die Variablen entsprechend Ihrer Umgebung ändern.

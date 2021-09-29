@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58344a385a8ad4d409748c039f8f1e7807e290b7
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: f79bca8626eca56c40f99f75daa2b8cb4da3a995
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114228377"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124773776"
 ---
 # <a name="enable-and-use-azure-ad-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Aktivieren und Verwenden von Azure AD Multi-Factor Authentication bei älteren Anwendungen mithilfe von App-Kennwörtern
 
@@ -42,7 +42,7 @@ Beim Verwenden von App-Kennwörtern sind folgende Überlegungen zu beachten:
 * Nachdem Azure AD Multi-Factor Authentication für ein Benutzerkonto aktiviert wurde, können App-Kennwörter für die meisten nicht auf Browsern basierenden Clients wie Outlook oder Microsoft Skype for Business verwendet werden. Bei Verwendung von App-Kennwörtern können jedoch keine administrativen Aufgaben durch nicht auf Browsern basierende Anwendungen (z. B. Windows PowerShell) durchgeführt werden. Die Aufgaben können selbst dann nicht durchgeführt werden, wenn der betreffende Benutzer über ein administratives Konto verfügt.
     * Erstellen Sie zum Ausführen von PowerShell-Skripts ein Dienstkonto mit einem sicheren Kennwort, und aktivieren Sie für das Konto nicht die zweistufige Überprüfung.
 * Wenn Sie vermuten, dass ein Benutzerkonto gefährdet ist, und das Kontokennwort widerrufen bzw. zurücksetzen, sollten die App-Kennwörter ebenfalls aktualisiert werden. App-Kennwörter werden nicht automatisch widerrufen, wenn das Kennwort eines Benutzerkontos widerrufen bzw. zurückgesetzt wird. Der Benutzer sollte vorhandene App-Kennwörter löschen und neue erstellen.
-   * Weitere Informationen finden Sie unter [Erstellen und Löschen von App-Kennwörtern auf der Seite „Zusätzliche Sicherheitsüberprüfung“](../user-help/multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page).
+   * Weitere Informationen finden Sie unter [Erstellen und Löschen von App-Kennwörtern auf der Seite „Zusätzliche Sicherheitsüberprüfung“](https://support.microsoft.com/account-billing/manage-app-passwords-for-two-step-verification-d6dc8c6d-4bf7-4851-ad95-6d07799387e9#create-and-delete-app-passwords-from-the-additional-security-verification-page).
 
 >[!WARNING]
 > App-Kennwörter funktionieren nicht in Hybridumgebungen, in denen Clients sowohl mit lokalen AutoErmittlung-Endpunkten als auch mit solchen in der Cloud kommunizieren. Für die lokale Authentifizierung werden Domänenkennwörter benötigt. Für die Authentifizierung in der Cloud sind App-Kennwörter erforderlich.
@@ -102,8 +102,8 @@ Standardmäßig können Benutzer keine App-Kennwörter erstellen. Die App-Kennwo
 Wenn Benutzer ihre anfängliche Registrierung für Azure AD Multi-Factor Authentication abgeschlossen haben, können sie am Ende des Registrierungsvorgangs App-Kennwörter erstellen.
 
 Benutzer können auch App-Kennwörter nach der Registrierung erstellen. Weitere Informationen und ausführliche Schritte für Ihre Benutzer finden Sie in den folgenden Ressourcen:
-* [Welchen Zweck erfüllen App-Kennwörter bei Azure AD Multi-Factor Authentication?](../user-help/multi-factor-authentication-end-user-app-passwords.md)
-* [Erstellen von App-Kennwörtern auf der Seite „Sicherheitsinformationen“](../user-help/security-info-app-passwords.md)
+* [Welchen Zweck erfüllen App-Kennwörter bei Azure AD Multi-Factor Authentication?](https://support.microsoft.com/account-billing/manage-app-passwords-for-two-step-verification-d6dc8c6d-4bf7-4851-ad95-6d07799387e9)
+* [Erstellen von App-Kennwörtern auf der Seite „Sicherheitsinformationen“](https://support.microsoft.com/account-billing/create-app-passwords-from-the-security-info-preview-page-d8bc744a-ce3f-4d4d-89c9-eb38ab9d4137)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

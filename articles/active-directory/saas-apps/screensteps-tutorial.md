@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 3816239798290318404980ded388b726d8134395
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f3310e1569cd04950c768b24a333dc6d6c7bbe09
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95999789"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124746105"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screensteps"></a>Tutorial: Azure Active Directory-Integration mit ScreenSteps
 
@@ -120,13 +120,13 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei ScreenSt
 
     c. Abmelde-URL
 
-### <a name="configure-screensteps-single-sign-on"></a>Konfigurieren von einmaligem Anmelden für ScreenSteps
+### <a name="configure-screensteps-single-sign-on&quot;></a>Konfigurieren von einmaligem Anmelden für ScreenSteps
 
 1. Melden Sie sich in einem anderen Webbrowserfenster bei der ScreenSteps-Unternehmenswebsite als Administrator an.
 
 1. Klicken Sie auf **Kontoeinstellungen**.
 
-    ![Kontoverwaltung](./media/screensteps-tutorial/ic778523.png "Kontenverwaltung")
+    ![Kontoverwaltung](./media/screensteps-tutorial/ic778523.png &quot;Kontenverwaltung")
 
 1. Klicken Sie auf **Einmaliges Anmelden**.
 
@@ -229,7 +229,7 @@ In diesem Abschnitt erstellen Sie in ScreenSteps einen Benutzer mit dem Namen Br
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „ScreenSteps“ klicken, sollten Sie automatisch bei Ihrer ScreenSteps-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+Wenn Sie im Zugriffsbereich auf die Kachel „ScreenSteps“ klicken, sollten Sie automatisch bei Ihrer ScreenSteps-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 

@@ -7,16 +7,18 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.date: 05/10/2021
-ms.openlocfilehash: 6612ded8cdc5e5e1a5ef38c18cc854fde41f2733
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7f426c04793c754619cd40bfdfcb4a7b9fc7d904
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128641425"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059908"
 ---
 # <a name="parse-transformation-in-mapping-data-flow"></a>Analysetransformation in einem Zuordnungsdatenfluss
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 Verwenden Sie die Analysetransformation zum Analysieren von Spalten in Ihren Daten, die in Dokumentform sind. Aktuell werden die folgenden Typen eingebetteter Dokumente zur Analyse unterstützt: JSON, XML und durch Trennzeichen getrennter Text.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/19/2021
 ms.author: jeedes
-ms.openlocfilehash: 840287246d62635dea78b8b823efea1aa2466cbd
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 00a328e3c25527f596c2763a222bd149dbc114ba
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114479600"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124760693"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-shiftwizard-saml"></a>Tutorial – Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit ShiftWizard SAML
 
@@ -134,7 +134,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Rufen Sie direkt die Anmelde-URL von ShiftWizard SAML auf, und initiieren Sie den Anmeldeablauf.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „ShiftWizard SAML“ klicken, werden Sie zur Anmelde-URL für ShiftWizard SAML weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „ShiftWizard SAML“ klicken, werden Sie zur Anmelde-URL für ShiftWizard SAML weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

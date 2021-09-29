@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: 5aca623f9292a1e34eacd209b204436dc7fbdcea
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: c0cb4d4c1c9d37c7b449dd3e6d3c07ec2bd2476d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123220853"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124737384"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365-Verwaltungslösung in Azure (Vorschau)
 
@@ -18,7 +18,7 @@ ms.locfileid: "123220853"
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>Lösungsaktualisierung
-> Diese Lösung wurde durch die [Office 365](../../sentinel/connect-office-365.md)-Lösung für allgemeine Verfügbarkeit in [Azure Sentinel](../../sentinel/overview.md) und die [Azure AD-Lösung für Berichterstellung und Überwachung](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md) ersetzt. Gemeinsam bieten diese eine aktualisierte Version der bisherigen Office 365-Lösung in Azure Monitor mit einer verbesserten Konfigurationsumgebung. Die vorhandene Lösung kann bis zum 31. Oktober 2020 weiterhin verwendet werden.
+> Diese Lösung wurde durch die [Office 365](../../sentinel/data-connectors-reference.md#microsoft-office-365)-Lösung für allgemeine Verfügbarkeit in [Azure Sentinel](../../sentinel/overview.md) und die [Azure AD-Lösung für Berichterstellung und Überwachung](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md) ersetzt. Gemeinsam bieten diese eine aktualisierte Version der bisherigen Office 365-Lösung in Azure Monitor mit einer verbesserten Konfigurationsumgebung. Die vorhandene Lösung kann bis zum 31. Oktober 2020 weiterhin verwendet werden.
 > 
 > Azure Sentinel ist eine cloudnative SIEM-Lösung (Security Information & Event Management), die Protokolle erfasst und zusätzliche SIEM-Funktionalität bereitstellt, einschließlich Erkennungen, Untersuchungen, Hunting und Einblicke auf Grundlage von Machine Learning. Mit Azure Sentinel können Sie nun Office 365 SharePoint-Aktivitäts- und Exchange-Verwaltungsprotokolle erfassen.
 > 
@@ -91,10 +91,10 @@ ms.locfileid: "123220853"
 > ### <a name="q-how-i-can-use-the-azure-sentinel-out-of-the-box-security-oriented-content"></a>F: Wie kann ich die standardmäßig verfügbaren, sicherheitsorientierten Inhalte in Azure Sentinel verwenden?
 > Azure Sentinel bietet standardmäßig verfügbare, sicherheitsorientierte Dashboards, benutzerdefinierte Warnungsabfragen, Hunting-Abfragen, Untersuchungen und Funktionen für automatisierte Antworten, die auf den Office 365- und Azure AD-Protokollen basieren. Weitere Informationen finden Sie auf dem Azure Sentinel-GitHub und in den entsprechenden Tutorials:
 >
-> - [Standardmäßig verfügbare Erkennung von Bedrohungen](/azure/sentinel/detect-threats-built-in)
-> - [Erstellen benutzerdefinierter Analyseregeln zum Erkennen von verdächtigen Bedrohungen](/azure/sentinel/detect-threats-custom)
-> - [Überwachen Ihrer Daten](/azure/sentinel/monitor-your-data)
-> - Lesen Sie [Untersuchen von Incidents mit Azure Sentinel](/azure/sentinel/investigate-cases).
+> - [Standardmäßig verfügbare Erkennung von Bedrohungen](../../sentinel/detect-threats-built-in.md)
+> - [Erstellen benutzerdefinierter Analyseregeln zum Erkennen von verdächtigen Bedrohungen](../../sentinel/detect-threats-custom.md)
+> - [Überwachen Ihrer Daten](../../sentinel/monitor-your-data.md)
+> - Lesen Sie [Untersuchen von Incidents mit Azure Sentinel](../../sentinel/investigate-cases.md).
 > - Machen Sie sich mit dem [Einrichten automatisierter Reaktionen auf Bedrohungen in Azure Sentinel](../../sentinel/tutorial-respond-threats-playbook.md) vertraut.
 > - [Azure Sentinel-GitHub-Community](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks)
 > 
@@ -260,7 +260,7 @@ Alle im Log Analytics-Arbeitsbereich in Azure Monitor von der Office 365-Lösung
 
 Die folgenden Eigenschaften gelten für alle Office 365-Datensätze.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |:--- |:--- |
 | type | *OfficeActivity* |
 | ClientIP | Die IP-Adresse des Geräts, das verwendet wurde, als die Aktivität protokolliert wurde. Die IP-Adresse wird im IPv4- oder IPv6-Adressformat angezeigt. |

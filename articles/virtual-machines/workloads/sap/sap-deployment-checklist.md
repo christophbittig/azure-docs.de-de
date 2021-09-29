@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 51bfd632e854132be27a7b971cf03e9fe5b00138
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3c91961eb6e89533ee5b995eb56fdd172d21b6f2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102504302"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124730178"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Prüfliste für die Planung und Bereitstellung von SAP-Workloads in Azure
 
@@ -82,7 +82,7 @@ In dieser Phase planen Sie die Migration Ihrer SAP-Workload zur Azure-Plattform.
     - [Tagstrategie](../../../azure-resource-manager/management/tag-resources.md#tags-and-billing)
     - Benennungskonvention für virtuelle Computer und andere Infrastrukturkomponenten und/oder logische Namen
 5.  Microsoft Professional oder Premier Support-Vertrag. Identifizieren Sie Ihren Microsoft Technical Account Manager (TAM), wenn Sie über einen Premier Support-Vertrag mit Microsoft verfügen. Informationen zu den Supportanforderungen von SAP finden Sie im SAP-[Supporthinweis Nr. 2015553](https://launchpad.support.sap.com/#/notes/2015553).
-6.  Die Anzahl der Azure-Abonnements und das Kernkontingent für die Abonnements. [Erstellen Sie ggf. Supportanfragen, um Kontingente von Azure-Abonnements zu erhöhen](../../../azure-portal/supportability/resource-manager-core-quotas-request.md).
+6.  Die Anzahl der Azure-Abonnements und das Kernkontingent für die Abonnements. [Erstellen Sie ggf. Supportanfragen, um Kontingente von Azure-Abonnements zu erhöhen](../../../azure-portal/supportability/regional-quota-requests.md).
 7.  Plan zur Datenverringerung und -migration für die Migration von SAP-Daten zu Azure. Für SAP NetWeaver-Systeme stellt SAP Richtlinien zum Einschränken des Volumens bei großen Datenmengen bereit. Lesen Sie [diese SAP-Anleitung](https://wiki.scn.sap.com/wiki/download/attachments/247399467/DVM_%20Guide_7.2.pdf?version=1&modificationDate=1549365516000&api=v2) zum Datenmanagement in SAP-ERP-Systemen. Ein Teil des Inhalts gilt auch allgemein für NetWeaver- und S/4HANA-Systeme.
 8.  Einen Ansatz für automatisierte Bereitstellung. Das Ziel der Automatisierung von Infrastrukturbereitstellungen in Azure ist die Umsetzung in einer deterministischen Weise, die zu vorhersagbaren Ergebnissen führt. Viele Kunden verwenden PowerShell- oder CLI-basierte Skripts. Es gibt aber verschiedene Open-Source-Technologien, die zum Bereitstellen von Azure-Infrastruktur für SAP und sogar zum Installieren von SAP-Software verwendet werden können. Beispiele dazu finden Sie auf GitHub:
     - [Automatisierte SAP-Bereitstellungen in der Azure-Cloud](https://github.com/Azure/sap-hana)

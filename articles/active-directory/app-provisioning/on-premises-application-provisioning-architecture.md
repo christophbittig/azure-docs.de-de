@@ -11,12 +11,12 @@ ms.date: 05/28/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bd76a9633311a073f2a672efd1560272deddb48
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: cdd7995c50ef63b4ec88e65c949a4c098a4b9330
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770057"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609933"
 ---
 # <a name="azure-ad-on-premises-application-provisioning-architecture"></a>Azure AD-Architektur für die lokale Anwendungsbereitstellung
 
@@ -159,6 +159,3 @@ Sie können auch überprüfen, ob alle erforderlichen Ports geöffnet sind.
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [App-Bereitstellung](user-provisioning.md)
-- [Azure AD-ECMA-Connectorhost: Voraussetzungen](on-premises-ecma-prerequisites.md)
-- [Azure AD-ECMA-Connectorhost: Installation](on-premises-ecma-install.md)
-- [Azure AD-ECMA-Connectorhost: Konfiguration](on-premises-ecma-configure.md)

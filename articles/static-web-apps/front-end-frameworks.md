@@ -7,16 +7,16 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 07/18/2020
 ms.author: cshoe
-ms.openlocfilehash: 767b20600c8edb2752a87a10c788ee446a8f15b3
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: be5415658de782c362eca0f40a17a4578932aafa
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109813972"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124777220"
 ---
 # <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps"></a>Konfigurieren von Front-End-Frameworks und Bibliotheken mit Azure Static Web Apps
 
-Azure Static Web Apps erfordert, dass Sie die entsprechenden Konfigurationswerte in der [Buildkonfigurationsdatei](github-actions-workflow.md) für Ihr Front-End-Framework oder Ihre Bibliothek besitzen.
+Azure Static Web Apps erfordert, dass Sie die entsprechenden Konfigurationswerte in der [Buildkonfigurationsdatei](build-configuration.md) für Ihr Front-End-Framework oder Ihre Bibliothek besitzen.
 
 ## <a name="configuration"></a>Konfiguration
 
@@ -24,9 +24,9 @@ Die folgende Tabelle listet die Einstellungen für eine Reihe von Frameworks und
 
 Die Absicht der Tabellenspalten wird durch die folgenden Punkte erläutert:
 
-- **Ausgabespeicherort**: Listet den Wert für `output_location` auf, dem [Ordner für erstellte Versionen von Anwendungsdateien](github-actions-workflow.md#build-and-deploy).
+- **Ausgabespeicherort**: Listet den Wert für `output_location` auf, dem [Ordner für erstellte Versionen von Anwendungsdateien](build-configuration.md).
 
-- **Benutzerdefinierter Buildbefehl**: Wenn das Framework einen anderen Befehl als `npm run build` oder `npm run azure:build` erfordert, können Sie einen [benutzerdefinierten Buildbefehl](github-actions-workflow.md#custom-build-commands) definieren.
+- **Benutzerdefinierter Buildbefehl**: Wenn das Framework einen anderen Befehl als `npm run build` oder `npm run azure:build` erfordert, können Sie einen [benutzerdefinierten Buildbefehl](build-configuration.md#custom-build-commands) definieren.
 
 | Framework | Speicherort für App-Artefakte | Benutzerdefinierter Buildbefehl |
 |--|--|--|
@@ -65,4 +65,4 @@ Die Absicht der Tabellenspalten wird durch die folgenden Punkte erläutert:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Build- und Workflowkonfiguration](github-actions-workflow.md)
+- [Build- und Workflowkonfiguration](build-configuration.md)

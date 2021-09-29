@@ -3,20 +3,20 @@ title: MLflow-Tracking für ML-Experimente
 titleSuffix: Azure Machine Learning
 description: Hier erfahren Sie, wie Sie die MLflow-Nachverfolgung mit Azure Machine Learning einrichten, um Metriken und Artefakte aus ML-Modellen zu protokollieren.
 services: machine-learning
-author: shivp950
-ms.author: shipatel
+author: cjgronlund
+ms.author: cgronlun
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
 ms.date: 05/25/2021
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: 867f4a7c2c45a73c3ebc651a0f2d7a4b38156b90
-ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
+ms.openlocfilehash: c0c3be8c6698bb66c4f5b5e05ee74dde6be5fd75
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113031101"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124761503"
 ---
 # <a name="track-ml-models-with-mlflow-and-azure-machine-learning"></a>Nachverfolgen von ML-Modellen mit MLflow und Azure Machine Learning
 

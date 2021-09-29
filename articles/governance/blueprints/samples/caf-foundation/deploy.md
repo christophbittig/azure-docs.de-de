@@ -3,12 +3,12 @@ title: Bereitstellen des CAF-Basisblaupausenbeispiels
 description: Bereitstellungsschritte für das CAF-Basisblaupausenbeispiel, einschließlich Details zum Blaupausenartefaktparameter.
 ms.date: 03/12/2021
 ms.topic: sample
-ms.openlocfilehash: 281bd0fdae5aa144799499d583b5673a569612b1
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: daa3d4a2c8f8abec3754680ddf9fb6115f88bf6b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108757869"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128678230"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Bereitstellen des Microsoft Cloud Adoption Frameworks-Basisblaupausenbeispiels für Azure
 
@@ -106,7 +106,7 @@ Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartef
 |Allowed virtual machine SKUs (Zulässige VM-SKUs)|Richtlinienzuweisung|Policy_Allowed-VM-SKUs|Allowed virtual machine SKUs (Zulässige VM-SKUs)|
 |CostCenter-Tag an Ressourcengruppen anfügen|Richtlinienzuweisung|Policy_CostCenter_Tag|CostCenter-Tag und zugehörigen Wert aus der Ressourcengruppe anfügen|
 |Ressourcentypen, die Sie in Ihrer Umgebung nicht zulassen möchten|Richtlinienzuweisung|Policy _Allowed-Resource-Types|Welche Azure-Ressourcen möchten Sie in Ihrer Umgebung zulassen?|
-|Key Vault bereitstellen|Resource Manager-Vorlage|KV-AccessPolicy|**Gesperrt**: Azure-AD-Gruppe oder Benutzer<Object ID> zum Erteilen von Berechtigungen in Key Vault|
+|Key Vault bereitstellen|Resource Manager-Vorlage|KV-AccessPolicy|**Gesperrt**: Azure-AD-Gruppe oder Benutzer\<Object ID\> zum Erteilen von Berechtigungen in Key Vault|
 |Log Analytics bereitstellen|Resource Manager-Vorlage|LogAnalytics_DataRetention|**Gesperrt**: Die Dauer der Aufbewahrung der Daten in Log Analytics (in Tagen)|
 |Log Analytics bereitstellen|Resource Manager-Vorlage|LogAnalytics_Location|**Gesperrt**: Die beim Erstellen des Arbeitsbereichs verwendete Region|
 

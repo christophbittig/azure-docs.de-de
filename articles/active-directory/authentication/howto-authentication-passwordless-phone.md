@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f2f3a3c561b2fe82dcbeaaee1138c0d465ac6a4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a38361355c48021b6145552071593056a2a3caa6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339565"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124759736"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app"></a>Aktivieren der kennwortlosen Anmeldung mit der Microsoft Authenticator-App (Vorschauversion) 
 
@@ -83,7 +83,7 @@ Benutzer registrieren sich mit den folgenden Schritten für die kennwortlose Aut
 1. Wählen Sie in **Microsoft Authenticator** im Dropdownmenü für das registrierte Konto die Option **Anmeldung per Telefon aktivieren** aus.
 1. Folgen Sie den Anweisungen in der App, um die Registrierung für die kennwortlose Anmeldung per Telefon für das Konto abzuschließen.
 
-Eine Organisation kann ihre Benutzer so weiterleiten, dass sie sich mit ihrem Smartphone anmelden, ohne ein Kennwort zu verwenden. Weitere Unterstützung zum Konfigurieren der Microsoft Authenticator-App und Aktivieren der Anmeldung per Smartphone finden Sie unter [Anmelden bei Konten mithilfe der Microsoft Authenticator-App](../user-help/user-help-auth-app-sign-in.md).
+Eine Organisation kann ihre Benutzer so weiterleiten, dass sie sich mit ihrem Smartphone anmelden, ohne ein Kennwort zu verwenden. Weitere Unterstützung zum Konfigurieren der Microsoft Authenticator-App und Aktivieren der Anmeldung per Smartphone finden Sie unter [Anmelden bei Konten mithilfe der Microsoft Authenticator-App](https://support.microsoft.com/account-billing/sign-in-to-your-accounts-using-the-microsoft-authenticator-app-582bdc07-4566-4c97-a7aa-56058122714c).
 
 > [!NOTE]
 > Benutzer, die gemäß der Richtlinie nicht für die Verwendung der Anmeldung per Telefon berechtigt sind, können sie in der Microsoft Authenticator-App nicht mehr aktivieren.

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1d275c4fe093992f1bf87f7d4b8c5965e448a41
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0f3a5efbb9c990173c7012b9ff6f938fed33f1ad
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346557"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124734556"
 ---
 # <a name="identity-protection-and-b2b-users"></a>Identity Protection und B2B-Benutzer
 
@@ -32,7 +32,7 @@ Wenn Sie versuchen, sich bei einer anderen Organisation als Gast anzumelden und 
 
 Wenn Ihre Organisation die Self-Service-Kennwortzurücksetzung aktiviert hat, können Sie diese Option verwenden, um Ihr Konto zu entsperren und den sicheren Zustand Ihrer Anmeldeinformationen wiederherzustellen.
 1. Navigieren Sie zum [Portal für die Kennwortzurücksetzung](https://passwordreset.microsoftonline.com/), und initiieren Sie die Kennwortzurücksetzung. Wenn die Self-Service-Kennwortzurücksetzung für Ihr Konto nicht aktiviert ist und Sie nicht fortfahren können, wenden Sie sich mit den [unten angegebenen](#how-to-remediate-a-users-risk-as-an-administrator) Informationen an Ihren IT-Administrator.
-2. Wenn die Self-Service-Kennwortzurücksetzung für Ihr Konto aktiviert ist, werden Sie aufgefordert, Ihre Identität mithilfe von Sicherheitsmethoden zu überprüfen, bevor Sie Ihr Kennwort ändern. Weitere Informationen finden Sie im Artikel [Zurücksetzen des Kennworts für Ihr Geschäfts-, Schul- oder Unikonto](../user-help/active-directory-passwords-update-your-own-password.md).
+2. Wenn die Self-Service-Kennwortzurücksetzung für Ihr Konto aktiviert ist, werden Sie aufgefordert, Ihre Identität mithilfe von Sicherheitsmethoden zu überprüfen, bevor Sie Ihr Kennwort ändern. Weitere Informationen finden Sie im Artikel [Zurücksetzen des Kennworts für Ihr Geschäfts-, Schul- oder Unikonto](https://support.microsoft.com/account-billing/reset-your-work-or-school-password-using-security-info-23dde81f-08bb-4776-ba72-e6b72b9dda9e).
 3. Nachdem Sie Ihr Kennwort erfolgreich und sicher zurückgesetzt haben, wird Ihr Benutzerrisiko bereinigt. Sie können jetzt erneut versuchen, sich als Gastbenutzer anzumelden.
 
 Wenn Sie nach dem Zurücksetzen Ihres Kennworts aufgrund eines Risikos weiterhin als Gast gesperrt werden, wenden Sie sich an den IT-Administrator Ihrer Organisation.

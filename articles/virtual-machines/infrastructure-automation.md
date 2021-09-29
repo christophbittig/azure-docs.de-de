@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: 2ba417782fcaa5fedc5696546af60623696387e7
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: a9605f6a6240fcaad29b30c03138f31e1472ba3f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122694301"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124734859"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Verwenden von Infrastrukturautomatisierungstools mit virtuellen Computern in Azure
 
@@ -118,7 +118,7 @@ Azure Automation bietet auch einen DSC-Dienst (Desired State Configuration), mit
 
 In diesem Artikel werden folgende Themen erläutert:
 
-- [Erstellen eines PowerShell-Runbooks](../automation/learn/automation-tutorial-runbook-textual-powershell.md)
+- [Erstellen eines PowerShell-Runbooks](../automation/learn/powershell-runbook-managed-identity.md)
 - [Verwalten von lokalen Ressourcen mithilfe eines Hybrid Runbook Workers](../automation/automation-hybrid-runbook-worker.md)
 - [Verwenden von Azure Automation DSC](../automation/automation-dsc-getting-started.md)
 

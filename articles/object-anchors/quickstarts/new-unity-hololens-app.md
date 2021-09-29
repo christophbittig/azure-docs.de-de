@@ -7,12 +7,12 @@ ms.author: rgarcia
 ms.date: 06/23/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 174701b16d8ae9c8c8e5b1edf863aa9f1a65336c
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: a83606d76beb4fd9cead19293636b9e5348d4990
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113094869"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124777562"
 ---
 # <a name="quickstart-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-object-anchors"></a>Schnellstart: Ausführliche Anleitung zum Erstellen einer HoloLens-Unity-App mit Azure Object Anchors
 
@@ -45,7 +45,7 @@ Wir werden zuerst unser Projekt und die Unity-Szene einrichten:
 
 ## <a name="install-mixed-reality-feature-tool-feature-packages"></a>Installieren der Featurepakete für das Mixed Reality-Featuretool
 
-1. In der Dokumentation zum <a a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">Mixed Reality-Featuretool</a> erfahren Sie, wie Sie das Tool einrichten und verwenden.
+1. In der Dokumentation zum <a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">Mixed Reality-Featuretool</a> erfahren Sie, wie Sie das Tool einrichten und verwenden.
 1. Installieren Sie im Abschnitt **Plattformunterstützung** das Featurepaket **Mixed Reality OpenXR Plugin** in Version 1.0.0 oder neuer im Unity-Projektordner.
 1. Installieren Sie im Abschnitt **Azure Mixed Reality Services** das Featurepaket **Microsoft Azure Object Anchors** im Unity-Projektordner.
 1. Wechseln Sie zurück zu Ihrem **Unity-Editor**. Es kann einige Minuten dauern, bis die Featurepakete für das **Mixed Reality-Featuretool** installiert sind.

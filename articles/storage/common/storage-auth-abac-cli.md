@@ -10,12 +10,12 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.subservice: common
 ms.date: 05/06/2021
-ms.openlocfilehash: b05dbeeb69cee8afd3c237b3fbc2c3e59fef238f
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 4050d9452a8253bbfe468b180a8eaa701e2a3684
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112288053"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128587459"
 ---
 # <a name="tutorial-add-a-role-assignment-condition-to-restrict-access-to-blobs-using-azure-cli-preview"></a>Tutorial: Hinzufügen einer Rollenzuweisungsbedingung zum Einschränken des Zugriffs auf Blobs mithilfe der Azure CLI (Vorschau)
 
@@ -24,14 +24,13 @@ ms.locfileid: "112288053"
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-
 In den meisten Fällen gewährt eine Rollenzuweisung die für Azure-Ressourcen benötigten Berechtigungen. Manchmal ist jedoch unter Umständen eine präzisere Zugriffssteuerung erforderlich, was durch Hinzufügen einer Rollenzuweisungsbedingung erreicht werden kann.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Hinzufügen einer Bedingung zu einer Rollenzuweisung
-> * Einschränken des Zugriffs auf Blobs basierend auf einem Blobindextag
+> - Hinzufügen einer Bedingung zu einer Rollenzuweisung
+> - Einschränken des Zugriffs auf Blobs basierend auf einem Blobindextag
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -106,7 +105,7 @@ Der Zugriff auf Blobspeicher kann über die Azure-Befehlszeilenschnittstelle aut
 1. Fügen Sie der Textdatei das folgende Blobindextag hinzu. Weitere Informationen finden Sie unter [Verwenden von Blobindextags (Vorschau) zum Verwalten und Suchen von Daten in Azure Blob Storage](../blobs/storage-blob-index-how-to.md).
 
     > [!NOTE]
-    > Von Blobs wird auch das Speichern beliebiger benutzerdefinierter Schlüssel-Wert-Metadaten unterstützt. Metadaten sind zwar mit Blobindextags vergleichbar, für Bedingungen müssen jedoch Blobindextags verwendet werden. 
+    > Von Blobs wird auch das Speichern beliebiger benutzerdefinierter Schlüssel-Wert-Metadaten unterstützt. Metadaten sind zwar mit Blobindextags vergleichbar, für Bedingungen müssen jedoch Blobindextags verwendet werden.
 
     | Schlüssel | Wert |
     | --- | --- |
@@ -225,7 +224,7 @@ Der Zugriff auf Blobspeicher kann über die Azure-Befehlszeilenschnittstelle aut
     ```
 
     Im Anschluss sehen Sie ein Beispiel für die Ausgabe. Wie Sie sehen, können Sie die Datei aufgrund der hinzugefügten Bedingung **nicht** lesen.
-    
+
     ```azurecli
     You do not have the required permissions needed to perform this operation.
     Depending on your operation, you may need to be assigned one of the following roles:
@@ -233,10 +232,10 @@ Der Zugriff auf Blobspeicher kann über die Azure-Befehlszeilenschnittstelle aut
         "Storage Blob Data Reader"
         "Storage Queue Data Contributor"
         "Storage Queue Data Reader"
-    
+
     If you want to use the old authentication method and allow querying for the right account key, please use the "--auth-mode" parameter and "key" value.
     ```
-    
+
 1. Lesen Sie die Eigenschaften der Datei für das Projekt „Cascade“.
 
     ```azurecli
@@ -244,7 +243,7 @@ Der Zugriff auf Blobspeicher kann über die Azure-Befehlszeilenschnittstelle aut
     ```
 
     Im Anschluss sehen Sie ein Beispiel für die Ausgabe. Wie Sie sehen, können Sie die Eigenschaften der Datei lesen, da sie über das Tag „Project=Cascade“ verfügt.
-    
+
     ```azurecli
     {
       "container": "<containerName>",
@@ -283,7 +282,7 @@ Der Zugriff auf Blobspeicher kann über die Azure-Befehlszeilenschnittstelle aut
     ```
 
     Die Ausgabe sieht etwa wie folgt aus:
-    
+
     ```azurecli
     [
       {
@@ -331,7 +330,7 @@ Der Zugriff auf Blobspeicher kann über die Azure-Befehlszeilenschnittstelle aut
     ```azurecli
     az role assignment update --role-assignment "./path/roleassignment.json"
     ```
-    
+
 ## <a name="step-8-clean-up-resources"></a>Schritt 8: Bereinigen der Ressourcen
 
 1. Verwenden Sie [az role assignment delete](/cli/azure/role/assignment#az_role_assignment_delete), um die hinzugefügte Rollenzuweisung und Bedingung zu entfernen.

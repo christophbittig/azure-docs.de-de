@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/04/2021
 ms.author: jeedes
-ms.openlocfilehash: 05070571a4c8a1b673ff145a9449c9e744718026
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: c25784583b74069f4b6462166da5c9cf1038c6d9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111891408"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124760864"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>Tutorial: Azure Active Directory-Integration in Sectigo Certificate Manager
 
@@ -162,7 +162,7 @@ Wählen Sie im Anwendungsintegrationsbereich für **Sectigo Certificate Manager*
 
 #### <a name="test-by-using-the-my-apps-portal-idp-initiated-single-sign-on"></a>Testen über das Portal „Meine Apps“ (IDP-initiiertes einmaliges Anmelden)
 
-Wählen Sie im Portal „Meine Apps“ die Option **Sectigo Certificate Manager** aus.  Bei ordnungsgemäßer Konfiguration werden Sie automatisch bei Sectigo Certificate Manager angemeldet. Weitere Informationen zum Portal „Meine Apps“ finden Sie unter [Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“](../user-help/my-apps-portal-end-user-access.md).
+Wählen Sie im Portal „Meine Apps“ die Option **Sectigo Certificate Manager** aus.  Bei ordnungsgemäßer Konfiguration werden Sie automatisch bei Sectigo Certificate Manager angemeldet. Weitere Informationen zum Portal „Meine Apps“ finden Sie unter [Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,12 +8,12 @@ metadata:
   ms.subservice: education-hub
   ms.topic: overview
   ms.date: 08/31/2021
-  ms.openlocfilehash: 28972b6c29e14ca453d713e25867b8079e05c3ca
-  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+  ms.openlocfilehash: add297aa2c3ff9b883cbf07b2e546bbf46f09b94
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/03/2021
-  ms.locfileid: "123431024"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124771477"
 title: Häufig gestellte Fragen zu Education Hub
 summary: In diesem Artikel finden Sie Antworten auf einige häufig gestellte Fragen zu Azure for Students, Azure for Students Starter und Azure Dev Tools für den Unterricht.
 sections:
@@ -32,7 +32,7 @@ sections:
       Ja!  Sie können Ihr Azure for Students-Abonnement nach einem Jahr verlängern.  Wir werden Sie kurz vor Ablauf des Jahres per E-Mail an die Verlängerung erinnern.  Um zu verlängern, registrieren Sie sich auf der [Website](https://aka.ms/azure4students) von Azure for Students einfach erneut für das Angebot.
   - question: >
       Warum habe ich eine Rechnung von Microsoft erhalten?
-    answer: "Möglicherweise erhalten Sie eine Rechnung von Microsoft, in der die im Vormonat angefallenen Kosten für die Nutzung von Azure for Students aufgeführt sind.  Keine Sorge, Sie müssen für diese Nutzung nicht zahlen, denn sie ist durch das Guthaben für Azure for Students abgedeckt.  Weitere Informationen über Rechnungen und ihre Funktionsweise finden Sie in diesem [Artikel](https://docs.microsoft.com/en-us/azure/cost-management-billing/understand/mca-overview) auf docs.microsoft.com \n"
+    answer: "Möglicherweise erhalten Sie eine Rechnung von Microsoft, in der die im Vormonat angefallenen Kosten für die Nutzung von Azure for Students aufgeführt sind.  Keine Sorge, Sie müssen für diese Nutzung nicht zahlen, denn sie ist durch das Guthaben für Azure for Students abgedeckt.  Weitere Informationen über Rechnungen und ihre Funktionsweise finden Sie in diesem [Artikel](../../cost-management-billing/understand/mca-overview.md) auf docs.microsoft.com \n"
   - question: >
       Was sind Abonnements, und in welcher Beziehung stehen sie zu Azure for Students?
     answer: >

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 5a104dcd6ccf500c115359a1b72c67b85359a802
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8fdfa2385851773f30305ca9ec7f5371d39e8089
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96002186"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124765352"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>Tutorial: Azure Active Directory-Integration mit Jobscience
 
@@ -226,7 +226,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     d. Klicken Sie auf **Erstellen**.
  
-### <a name="creating-a-jobscience-test-user"></a>Erstellen eines Jobscience-Testbenutzers
+### <a name="creating-a-jobscience-test-user&quot;></a>Erstellen eines Jobscience-Testbenutzers
 
 Damit sich Azure AD-Benutzer bei Jobscience anmelden können, müssen sie in Jobscience bereitgestellt werden. Im Fall von Jobscience ist die Bereitstellung eine manuelle Aufgabe.
 
@@ -240,7 +240,7 @@ Damit sich Azure AD-Benutzer bei Jobscience anmelden können, müssen sie in Job
 
 1. Wechseln Sie zu „Setup“.
    
-   ![Der Screenshot zeigt das Element „Setup“.](./media/jobscience-tutorial/ic784358.png "Einrichten")
+   ![Der Screenshot zeigt das Element „Setup“.](./media/jobscience-tutorial/ic784358.png &quot;Einrichten")
 1. Navigieren Sie zu **Benutzer verwalten \> Benutzer**.
    
    ![Benutzer](./media/jobscience-tutorial/ic784369.png "Benutzer")
@@ -304,7 +304,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Jobscience“ klicken, sollten Sie automatisch bei Ihrer Jobscience-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

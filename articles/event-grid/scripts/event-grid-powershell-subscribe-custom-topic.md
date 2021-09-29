@@ -3,13 +3,13 @@ title: Azure PowerShell-Skriptbeispiel – Abonnieren eines benutzerdefinierten 
 description: In diesem Artikel wird anhand eines Azure PowerShell-Beispielskripts das Abonnieren von Event Grid-Ereignissen für ein benutzerdefiniertes Thema veranschaulicht.
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 07/08/2020
-ms.openlocfilehash: f37a90b84e5e55298efc0b3cd53812db95e4d86d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/15/2021
+ms.openlocfilehash: 30d328583246c8460e157f706ff68536d74232d3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87460727"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595064"
 ---
 # <a name="subscribe-to-events-for-a-custom-topic-with-powershell"></a>Abonnieren von Ereignissen für ein benutzerdefiniertes Thema mit PowerShell
 

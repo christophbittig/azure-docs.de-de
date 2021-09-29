@@ -2,15 +2,15 @@
 title: Netzwerkleistungsmonitor-Lösung in Azure Log Analytics | Microsoft-Dokumentation
 description: Mit der ExpressRoute-Monitor-Funktion im Netzwerkleistungsmonitor können Sie die End-to-End-Konnektivität und -Leistung zwischen Ihren Zweigstellen und Azure über Azure ExpressRoute überwachen.
 ms.topic: conceptual
-author: abshamsft
-ms.author: absha
+author: KumudD
+ms.author: kumud
 ms.date: 11/27/2018
-ms.openlocfilehash: 0b005e46e9f9a740fee153e063bebf108c22b303
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a55a529e6e133bf15c980f3d0ea0cd9ff20a09b8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101725695"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124788798"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute-Monitor
 

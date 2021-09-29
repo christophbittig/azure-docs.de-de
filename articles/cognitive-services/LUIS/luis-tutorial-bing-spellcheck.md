@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 01/12/2021
-ms.openlocfilehash: 509d1dc0b94bdfa9be5185df0bad793f7702eb26
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 904a29278ea3efdabe6ed72892d2e14ccbf2e0e3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101731033"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124740765"
 ---
 # <a name="correct-misspelled-words-with-bing-resource"></a>Korrigieren falsch geschriebener Wörter mit einer Bing-Ressource
 
@@ -68,11 +68,6 @@ Gehen Sie wie folgt vor, um im Azure-Portal eine Bing-Suche-Ressource zu erstell
 ## Using the key in LUIS test panel
 There are two places in LUIS to use the key. The first is in the [test panel](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). The key isn't saved into LUIS but instead is a session variable. You need to set the key every time you want the test panel to apply the Bing Spell Check API v7 service to the utterance. See [instructions](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel) in the test panel for setting the key.
 -->
-## <a name="enable-spell-check-from-ui"></a>Aktivieren der Rechtschreibprüfung über die Benutzeroberfläche 
-Sie können die Rechtschreibprüfung für Ihre Beispielabfrage über das [LUIS-Portal](https://www.luis.ai) aktivieren. Klicken Sie oben im Bild auf **Verwalten** und im linken Navigationsbereich auf **Azure-Ressourcen**. Wenn Sie Ihrer Anwendung eine Vorhersageressource zugeordnet haben, können Sie unten auf der Seite auf **Change query parameters** (Abfrageparameter ändern) klicken und den Ressourcenschlüssel in das Feld **Rechtschreibprüfung aktivieren** kopieren.
-    
-   > [!div class="mx-imgBorder"]
-   > ![Rechtschreibprüfung aktivieren](./media/luis-tutorial-bing-spellcheck/spellcheck-query-params.png)
 
 
 ## <a name="adding-the-key-to-the-endpoint-url"></a>Hinzufügen des Schlüssels zur Endpunkt-URL

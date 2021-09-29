@@ -2,16 +2,14 @@
 title: Arbeitsspeicher-Profilerstellung für Python-Apps in Azure Functions
 description: Erfahren Sie, wie Sie ein Profil der Arbeitsspeichernutzung für Python-Apps erstellen und den Arbeitsspeicherengpass ermitteln.
 ms.topic: how-to
-author: hazhzeng
-ms.author: hazeng
 ms.date: 3/22/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: f47451809a2fa2b7d22805e6415056f19c4c1d88
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: f894f369fa1efdb80160761e3c58cad937708b08
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258808"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124737428"
 ---
 # <a name="profile-python-apps-memory-usage-in-azure-functions"></a>Erstellen eines Profils der Arbeitsspeichernutzung für Python-Apps in Azure Functions
 

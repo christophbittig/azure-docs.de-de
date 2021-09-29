@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: cf8869002fb3e0170331709af3da5b971a098740
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6a6d66be619808ae7a6997966aef32e89b0b2226
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612397"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124786881"
 ---
 # <a name="overview-of-shared-device-mode"></a>Übersicht über den Modus für gemeinsam genutzte Geräte
 
@@ -54,7 +54,7 @@ Wie bereits erwähnt, ist der Modus für gemeinsame Geräte ein Feature von Azur
 
 ### <a name="build-applications-that-support-frontline-workers"></a>Erstellen von Anwendungen, die Mitarbeiter in Service und Produktion unterstützen
 
-Sie können in Ihren Anwendungen Mitarbeiter in Service und Produktion unterstützen, indem Sie mithilfe der Microsoft Authentication Library (MSAL) und der [Microsoft Authenticator-App](../user-help/user-help-auth-app-overview.md) den Gerätestatus *Modus für gemeinsam genutzte Geräte* aktivieren. Wenn sich ein Gerät im Modus für gemeinsam genutzte Geräte befindet, stellt Microsoft Informationen für Ihre Anwendung bereit, die es ermöglichen, das Verhalten der Anwendung auf Grundlage des Status des Benutzers auf dem Gerät zu ändern und die Benutzerdaten zu schützen.
+Sie können in Ihren Anwendungen Mitarbeiter in Service und Produktion unterstützen, indem Sie mithilfe der Microsoft Authentication Library (MSAL) und der [Microsoft Authenticator-App](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc) den Gerätestatus *Modus für gemeinsam genutzte Geräte* aktivieren. Wenn sich ein Gerät im Modus für gemeinsam genutzte Geräte befindet, stellt Microsoft Informationen für Ihre Anwendung bereit, die es ermöglichen, das Verhalten der Anwendung auf Grundlage des Status des Benutzers auf dem Gerät zu ändern und die Benutzerdaten zu schützen.
 
 Folgende Features werden unterstützt:
 
@@ -73,7 +73,7 @@ Ausführliche Informationen zum Ändern der Anwendungen, damit sie den Modus fü
 
 Sobald Ihre Anwendungen den Modus für gemeinsam genutzte Geräte unterstützen und die erforderlichen Daten- und Sicherheitsänderungen aufweisen, können Sie den Mitarbeitern in Service und Produktion ihre Verwendbarkeit mitteilen.
 
-Die Geräteadministratoren einer Organisation können ihre Geräte und Ihre Anwendungen über eine Lösung für die Verwaltung mobiler Geräte (Mobile Device Management, MDM) wie Microsoft Intune für ihre Stores und Arbeitsplätze bereitstellen. Zum Bereitstellungsprozess gehört das Markieren des Geräts als *Freigegebenes Gerät*. Administratoren konfigurieren den Modus für gemeinsam genutzte Geräte durch Bereitstellen der [Microsoft Authenticator-App](../user-help/user-help-auth-app-overview.md) und Festlegen des Modus für gemeinsam genutzte Geräte durch Konfigurationsparameter. Nach Durchführung dieser Schritte verwenden alle Anwendungen, die den Modus für gemeinsam genutzte Geräte unterstützen, die Anwendung Microsoft Authenticator, um den Benutzerstatus zu verwalten und Sicherheitsfeatures für das Gerät und die Organisation bereitzustellen.
+Die Geräteadministratoren einer Organisation können ihre Geräte und Ihre Anwendungen über eine Lösung für die Verwaltung mobiler Geräte (Mobile Device Management, MDM) wie Microsoft Intune für ihre Stores und Arbeitsplätze bereitstellen. Zum Bereitstellungsprozess gehört das Markieren des Geräts als *Freigegebenes Gerät*. Administratoren konfigurieren den Modus für gemeinsam genutzte Geräte durch Bereitstellen der [Microsoft Authenticator-App](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc) und Festlegen des Modus für gemeinsam genutzte Geräte durch Konfigurationsparameter. Nach Durchführung dieser Schritte verwenden alle Anwendungen, die den Modus für gemeinsam genutzte Geräte unterstützen, die Anwendung Microsoft Authenticator, um den Benutzerstatus zu verwalten und Sicherheitsfeatures für das Gerät und die Organisation bereitzustellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

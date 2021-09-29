@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/04/2021
+ms.date: 09/12/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a3c8b3d97a117e88c323253134be383fb0766355
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bbe79082f63065ed73b573ab87f3299f7df79148
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345832"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124740239"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -111,8 +111,6 @@ Das **DataUri**-Element wird verwendet, um den Seitenbezeichner anzugeben. Azure
 ### <a name="select-a-page-layout"></a>Auswählen eines Seitenlayouts
 
 Sie können [clientseitigen JavaScript-Code](javascript-and-page-layout.md) aktivieren, indem Sie `contract` zwischen `elements` und dem Seitentyp einfügen. Beispiel: `urn:com:microsoft:aad:b2c:elements:contract:page-name:version`.
-
-[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 Der Bereich [version](page-layout.md) des `DataUri` gibt das Inhaltspaket an, das HTML, CSS und JavaScript für die Benutzeroberflächenelemente in Ihrer Richtlinie enthält. Wenn Sie beabsichtigen, clientseitigen JavaScript-Code zu aktivieren, müssen die Elemente, auf denen der JavaScript-Code basiert, unveränderlich sein. Wenn sie nicht unveränderlich sind, könnten Änderungen zu einem unerwarteten Verhalten auf Ihren Benutzerseiten führen. Um diese Probleme zu vermeiden, können Sie die Verwendung eines Seitenlayouts erzwingen und eine Seitenlayoutversion angeben. Damit stellen Sie sicher, dass alle Inhaltsdefinitionen, auf denen Ihr JavaScript-Code basiert, unveränderlich sind. Auch wenn Sie nicht beabsichtigen, JavaScript zu aktivieren, können Sie eine Seitenlayoutversion für Ihre Seiten angeben.
 

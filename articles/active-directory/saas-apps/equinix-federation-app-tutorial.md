@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 6b74f4616f988d27bca7c7087d33bdb5f5a2a324
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 2f7929875ac9cb489f79a7755066c85848e9ebe1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108130663"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124753367"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-equinix-federation-app"></a>Tutorial: Integration von Equinix Federation App in das einmalige Anmelden (Single Sign-On, SSO) von Azure Active Directory
 
@@ -131,7 +131,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 Rufen Sie direkt die Equinix Federation App-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
  > [!NOTE]
- > Wenn Sie versuchen, Ihre Azure-Anwendung über den Link **Diese Anwendung testen** oder durch Klicken auf die Kachel „Equinix Federation App“ zu testen, ist der Vorgang nicht erfolgreich, da es sich dabei um IdP-initiiertes einmaliges Anmelden handelt, das von Equinix nicht standardmäßig unterstützt wird.  Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+ > Wenn Sie versuchen, Ihre Azure-Anwendung über den Link **Diese Anwendung testen** oder durch Klicken auf die Kachel „Equinix Federation App“ zu testen, ist der Vorgang nicht erfolgreich, da es sich dabei um IdP-initiiertes einmaliges Anmelden handelt, das von Equinix nicht standardmäßig unterstützt wird.  Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
