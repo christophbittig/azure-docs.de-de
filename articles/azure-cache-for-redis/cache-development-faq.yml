@@ -8,12 +8,12 @@ metadata:
   ms.topic: conceptual
   ms.custom: devx-track-csharp
   ms.date: 08/06/2020
-  ms.openlocfilehash: c8aeae13f22103cc895dffda497b71ac3129330c
-  ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+  ms.openlocfilehash: 5963fe660a3fed4b084d94abb92b172566988c9f
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 07/01/2021
-  ms.locfileid: "113137378"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128577031"
 title: Häufig gestellte Fragen zur Azure Cache for Redis-Entwicklung
 summary: Dieser Artikel bietet Antworten auf häufig gestellte Fragen zur Entwicklung für Azure Cache for Redis.
 sections:
@@ -47,7 +47,7 @@ sections:
       Einer der großen Vorteile von Redis ist, dass es viele Clients gibt, die viele verschiedene Programmiersprachen unterstützen. Eine aktuelle Liste von Clients finden Sie unter [Redis-Clients](https://redis.io/clients). Informationen zu Tutorials, die mehrere unterschiedliche Sprachen und Clients abdecken, finden Sie unter [Schnellstart: Verwenden von Azure Cache for Redis mit .NET Framework](cache-dotnet-how-to-use-azure-redis-cache.md).
 
 
-      [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
+      [!INCLUDE [redis-cache-create](includes/redis-cache-access-keys.md)]
   - question: >
       Gibt es einen lokalen Emulator für Azure Cache for Redis?
     answer: >

@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c6cb9d7dad1b55e6d49fdbe40a0ecd9dd052ba8
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: 1ee82c26217ac1b760c59f56f9875b7dcbcaf663
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114228394"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124759812"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Planen einer Bereitstellung mit kennwortloser Authentifizierung in Azure Active Directory
 
@@ -109,11 +109,11 @@ Ihre Kommunikation mit Endbenutzern muss folgende Informationen enthalten:
 
 * [Leitfaden zur kombinierten Registrierung für Azure AD MFA und SSPR](howto-registration-mfa-sspr-combined.md)
 
-* [Herunterladen der Microsoft Authenticator-App](../user-help/user-help-auth-app-download-install.md)
+* [Herunterladen der Microsoft Authenticator-App](https://support.microsoft.com/account-billing/download-and-install-the-microsoft-authenticator-app-351498fc-850a-45da-b7b6-27e523b8702a)
 
 * [Registrieren der Microsoft Authenticator-App](howto-authentication-passwordless-phone.md)
 
-* [Anmelden per Telefon](../user-help/user-help-auth-app-sign-in.md)
+* [Anmelden per Telefon](https://support.microsoft.com/account-billing/sign-in-to-your-accounts-using-the-microsoft-authenticator-app-582bdc07-4566-4c97-a7aa-56058122714c)
 
 Microsoft stellt Kommunikationsvorlagen für Endbenutzer bereit. Laden Sie das Material für den [Authentifizierungsrollout](https://aka.ms/MFAtemplates) herunter, um Ihre Kommunikation zu entwerfen. Die Materialien für den Rollout enthalten anpassbare Poster und E-Mail-Vorlagen, mit denen Sie Ihre Benutzer über die geplanten Optionen für die kennwortlose Authentifizierung in Ihrer Organisation informieren können.
 
@@ -130,7 +130,7 @@ Diese Methode kann außerdem für eine einfache Wiederherstellung genutzt werden
 
 ## <a name="plan-for-and-deploy-the-microsoft-authenticator-app"></a>Planen und Bereitstellen der Microsoft Authenticator-App
 
-Durch die [Microsoft Authenticator-App](concept-authentication-passwordless.md) wird jedes iOS- oder Android-Telefon zu einer Anmeldeinformation für die sichere, kennwortlose Authentifizierung. Die App steht als kostenloser Download bei Google Play und im Apple App Store zur Verfügung. Weisen Sie die Benutzer an, die [Microsoft Authenticator-App herunterzuladen](../user-help/user-help-auth-app-download-install.md) und die Anweisungen zum Aktivieren der Anmeldung per Telefon zu befolgen.
+Durch die [Microsoft Authenticator-App](concept-authentication-passwordless.md) wird jedes iOS- oder Android-Telefon zu einer Anmeldeinformation für die sichere, kennwortlose Authentifizierung. Die App steht als kostenloser Download bei Google Play und im Apple App Store zur Verfügung. Weisen Sie die Benutzer an, die [Microsoft Authenticator-App herunterzuladen](https://support.microsoft.com/account-billing/download-and-install-the-microsoft-authenticator-app-351498fc-850a-45da-b7b6-27e523b8702a) und die Anweisungen zum Aktivieren der Anmeldung per Telefon zu befolgen.
 
 ### <a name="technical-considerations"></a>Technische Überlegungen
 

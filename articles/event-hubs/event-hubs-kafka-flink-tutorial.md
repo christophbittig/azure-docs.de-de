@@ -2,13 +2,13 @@
 title: Verwenden von Apache Flink für Apache Kafka – Azure Event Hubs | Microsoft-Dokumentation
 description: Dieser Artikel enthält Informationen dazu, wie Sie Apache Flink mit einem Azure Event Hub verbinden können.
 ms.topic: how-to
-ms.date: 06/23/2020
-ms.openlocfilehash: 84dd1f735ae041449bba474fd1147c7084bd5f0e
-ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
+ms.date: 09/28/2021
+ms.openlocfilehash: 9c0687163f849de2c5c47cde7636f389483b3885
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2021
-ms.locfileid: "113286428"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129210927"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>Verwenden von Apache Flink mit Azure Event Hubs für Apache Kafka
 Dieses Tutorial veranschaulicht, wie Sie Apache Flink mit einem Event Hub verbinden können, ohne Ihre Protokollclients ändern oder Ihre eigenen Cluster ausführen zu müssen. Weitere Informationen zur Event Hubs-Unterstützung für das Apache Kafka-Consumerprotokoll finden Sie unter [Event Hubs für Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md).

@@ -11,23 +11,23 @@ ms.date: 06/10/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.custom: mvc, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 607f7921b62540d26b1354c21f3352f5b5b943f4
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: bc2150f63e0392f94c17f90ab41f80de91336c7b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112376646"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128620158"
 ---
 # <a name="secure-access-to-application-data"></a>Sicheres Zugreifen auf Anwendungsdaten
 
-Dieses Tutorial ist der dritte Teil einer Reihe. Hier erfahren Sie, wie Sie den Zugriff auf das Speicherkonto sichern. 
+Dieses Tutorial ist der dritte Teil einer Reihe. Hier erfahren Sie, wie Sie den Zugriff auf das Speicherkonto sichern.
 
 Im dritten Teil der Serie lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Verwenden von SAS-Token, um auf Miniaturbilder zuzugreifen
-> * Aktivieren der serverseitigen Verschlüsselung
-> * Aktivieren der Übertragung nur über HTTPS
+> - Verwenden von SAS-Token, um auf Miniaturbilder zuzugreifen
+> - Aktivieren der serverseitigen Verschlüsselung
+> - Aktivieren der Übertragung nur über HTTPS
 
 [Azure Blob Storage](../common/storage-introduction.md#blob-storage) ist ein zuverlässiger Dienst zum Speichern von Dateien für Anwendungen. Dieses Tutorial baut auf das [vorhergehende Thema][previous-tutorial] auf und veranschaulicht, wie Sie den Zugriff auf Ihr Speicherkonto über eine Webanwendung sichern. Nach Abschluss sind die Bilder verschlüsselt, und die Web-App verwendet sichere SAS-Token für den Zugriff auf die Miniaturbilder.
 
@@ -55,7 +55,7 @@ Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName $blobStor
 blobStorageAccount="<blob_storage_account>"
 
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
-    --account-name $blobStorageAccount --query [0].value --output tsv) 
+    --account-name $blobStorageAccount --query [0].value --output tsv)
 
 az storage container set-permission \
     --account-name $blobStorageAccount \
@@ -190,9 +190,9 @@ HTTP/1.1 400 The account being accessed does not support http.
 In Teil 3 der Reihe haben Sie gelernt, wie Sie den Zugriff auf das Speicherkonto über folgende Vorgänge sichern:
 
 > [!div class="checklist"]
-> * Verwenden von SAS-Token, um auf Miniaturbilder zuzugreifen
-> * Aktivieren der serverseitigen Verschlüsselung
-> * Aktivieren der Übertragung nur über HTTPS
+> - Verwenden von SAS-Token, um auf Miniaturbilder zuzugreifen
+> - Aktivieren der serverseitigen Verschlüsselung
+> - Aktivieren der Übertragung nur über HTTPS
 
 Fahren Sie mit Teil 4 der Reihe fort, um zu erfahren, wie Sie Überwachung und Problembehandlung für eine Cloudspeicheranwendung durchführen.
 

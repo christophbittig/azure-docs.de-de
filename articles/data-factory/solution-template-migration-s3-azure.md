@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/07/2019
-ms.openlocfilehash: e313e3cb6711a844b4e0aa44a5453fc945a974d7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 456fc7a8df9103d1edd9d912f56bda3c58a10f9d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346537"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743474"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Migrieren von Daten aus Amazon S3 zu Azure Data Lake Storage Gen2
 
@@ -106,23 +106,23 @@ Die Vorlage enthält zwei Parameter:
 
 3. Wechseln Sie zur Vorlage **Migrate historical data from AWS S3 to Azure Data Lake Storage Gen2**. Geben Sie die Verbindungen mit der externen Steuertabelle, AWS S3 als Datenquellenspeicher und Azure Data Lake Storage Gen2 als Zielspeicher ein. Achten Sie darauf, dass die externe Steuertabelle und die gespeicherte Prozedur auf dieselbe Verbindung verweisen.
 
-    ![Screenshot: Vorlage „Migrate historical data from AWS S3 to Azure Data Lake Storage Gen2“](media/solution-template-migration-s3-azure/historical-migration-s3-azure1.png)
+    :::image type="content" source="media/solution-template-migration-s3-azure/historical-migration-s3-azure1.png" alt-text="Screenshot: Vorlage „Migrate historical data from AWS S3 to Azure Data Lake Storage Gen2“":::
 
 4. Klicken Sie auf **Diese Vorlage verwenden**.
 
-    ![Screenshot: Hervorhebung der Schaltfläche „Diese Vorlage verwenden“](media/solution-template-migration-s3-azure/historical-migration-s3-azure2.png)
+    :::image type="content" source="media/solution-template-migration-s3-azure/historical-migration-s3-azure2.png" alt-text="Screenshot: Hervorhebung der Schaltfläche „Diese Vorlage verwenden“":::
     
 5. Im folgenden Beispiel sehen Sie, dass zwei Pipelines und drei Datasets erstellt wurden:
 
-    ![Screenshot: Zwei Pipelines und drei Datasets, die mithilfe der Vorlage erstellt wurden](media/solution-template-migration-s3-azure/historical-migration-s3-azure3.png)
+    :::image type="content" source="media/solution-template-migration-s3-azure/historical-migration-s3-azure3.png" alt-text="Screenshot: Zwei Pipelines und drei Datasets, die mithilfe der Vorlage erstellt wurden":::
 
 6. Wechseln Sie zur Pipeline „BulkCopyFromS3“, wählen Sie **Debug** aus, und geben Sie die **Parameter** ein. Wählen Sie **Fertig stellen** aus.
 
-    ![Screenshot, der zeigt, wo Sie „Debuggen“ auswählen und die Parameter eingeben, bevor Sie „Fertig stellen“ auswählen](media/solution-template-migration-s3-azure/historical-migration-s3-azure4.png)
+    :::image type="content" source="media/solution-template-migration-s3-azure/historical-migration-s3-azure4.png" alt-text="Screenshot, der zeigt, wo Sie „Debuggen“ auswählen und die Parameter eingeben, bevor Sie „Fertig stellen“ auswählen":::
 
 7. Ihnen werden Ergebnisse angezeigt, die dem folgenden Beispiel ähneln:
 
-    ![Screenshot: Zurückgegebene Ergebnisse](media/solution-template-migration-s3-azure/historical-migration-s3-azure5.png)
+    :::image type="content" source="media/solution-template-migration-s3-azure/historical-migration-s3-azure5.png" alt-text="Screenshot: Zurückgegebene Ergebnisse":::
 
 
 ### <a name="for-the-template-to-copy-changed-files-only-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>So kopieren Sie mit der Vorlage nur geänderte Dateien aus Amazon S3 in Azure Data Lake Storage Gen2
@@ -169,27 +169,27 @@ Die Vorlage enthält zwei Parameter:
 
 3. Wechseln Sie zur Vorlage **Copy delta data from AWS S3 to Azure Data Lake Storage Gen2**. Geben Sie die Verbindungen mit der externen Steuertabelle, AWS S3 als Datenquellenspeicher und Azure Data Lake Storage Gen2 als Zielspeicher ein. Achten Sie darauf, dass die externe Steuertabelle und die gespeicherte Prozedur auf dieselbe Verbindung verweisen.
 
-    ![Erstellen einer neuen Verbindung](media/solution-template-migration-s3-azure/delta-migration-s3-azure1.png)
+    :::image type="content" source="media/solution-template-migration-s3-azure/delta-migration-s3-azure1.png" alt-text="Erstellen einer neuen Verbindung":::
 
 4. Klicken Sie auf **Diese Vorlage verwenden**.
 
-    ![„Diese Vorlage verwenden“](media/solution-template-migration-s3-azure/delta-migration-s3-azure2.png)
+    :::image type="content" source="media/solution-template-migration-s3-azure/delta-migration-s3-azure2.png" alt-text="„Diese Vorlage verwenden“":::
     
 5. Im folgenden Beispiel sehen Sie, dass zwei Pipelines und drei Datasets erstellt wurden:
 
-    ![Überprüfen der Pipeline](media/solution-template-migration-s3-azure/delta-migration-s3-azure3.png)
+    :::image type="content" source="media/solution-template-migration-s3-azure/delta-migration-s3-azure3.png" alt-text="Überprüfen der Pipeline":::
 
 6.  Wechseln Sie zur Pipeline „DeltaCopyFromS3“, wählen Sie **Debug** aus, und geben Sie die **Parameter** ein. Wählen Sie **Fertig stellen** aus.
 
-    ![Auf **Debuggen** klicken](media/solution-template-migration-s3-azure/delta-migration-s3-azure4.png)
+    :::image type="content" source="media/solution-template-migration-s3-azure/delta-migration-s3-azure4.png" alt-text="Auf **Debuggen** klicken":::
 
 7. Ihnen werden Ergebnisse angezeigt, die dem folgenden Beispiel ähneln:
 
-    ![Überprüfen des Ergebnisses](media/solution-template-migration-s3-azure/delta-migration-s3-azure5.png)
+    :::image type="content" source="media/solution-template-migration-s3-azure/delta-migration-s3-azure5.png" alt-text="Überprüfen des Ergebnisses":::
 
 8. Sie können die Ergebnisse aus der Steuertabelle auch mithilfe der Abfrage *"select * from s3_partition_delta_control_table"* überprüfen. Die Ausgabe ähnelt dem folgenden Beispiel:
 
-    ![Screenshot: Ergebnisse aus der Steuertabelle nach dem Ausführen der Abfrage](media/solution-template-migration-s3-azure/delta-migration-s3-azure6.png)
+    :::image type="content" source="media/solution-template-migration-s3-azure/delta-migration-s3-azure6.png" alt-text="Screenshot: Ergebnisse aus der Steuertabelle nach dem Ausführen der Abfrage":::
     
 ## <a name="next-steps"></a>Nächste Schritte
 

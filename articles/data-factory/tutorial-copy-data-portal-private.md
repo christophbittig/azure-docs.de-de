@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 07/05/2021
 ms.author: jianleishen
-ms.openlocfilehash: 227bbaf2faa845d269d8326883c3e63c4572fdab
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7aee146ea06e15696b1e52e701d8d32b476d0570
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122637745"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798330"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>Sicheres Kopieren von Daten aus Azure Blob Storage in eine SQL-Datenbank mithilfe von privaten Endpunkten
 
@@ -102,14 +102,14 @@ In diesem Schritt erstellen Sie eine Azure Integration Runtime-Instanz und aktiv
 
 1. Navigieren Sie im Data Factory-Portal zu **Verwalten**, und wählen Sie **Neu** aus, um eine neue Azure Integration Runtime-Instanz zu erstellen.
 
-   ![Screenshot, der das Erstellen einer neuen Azure Integration Runtime-Instanz zeigt.](./media/tutorial-copy-data-portal-private/create-new-azure-ir.png)
+   :::image type="content" source="./media/tutorial-copy-data-portal-private/create-new-azure-ir.png" alt-text="Screenshot, der das Erstellen einer neuen Azure Integration Runtime-Instanz zeigt.":::
 1. Wählen Sie auf der Seite **Integration Runtime-Setup** basierend auf den erforderlichen Funktionen die Integration Runtime aus, die erstellt werden soll. Wählen Sie für dieses Tutorial **Azure, selbstgehostet** aus, und klicken Sie dann auf **Fortsetzen**. 
 1. Wählen Sie **Azure** aus, und klicken Sie dann auf **Fortsetzen**, um eine Azure Integration Runtime zu erstellen.
 
-   ![Screenshot, der eine neue Azure Integration Runtime-Instanz zeigt.](./media/tutorial-copy-data-portal-private/azure-ir.png)
+   :::image type="content" source="./media/tutorial-copy-data-portal-private/azure-ir.png" alt-text="Screenshot, der eine neue Azure Integration Runtime-Instanz zeigt.":::
 1. Wählen Sie unter **Konfiguration des virtuellen Netzwerks (Vorschau)** die Option **Aktivieren** aus.
 
-   ![Screenshot, der das Aktivieren einer neuen Azure Integration Runtime-Instanz zeigt.](./media/tutorial-copy-data-portal-private/enable-managed-vnet.png)
+   :::image type="content" source="./media/tutorial-copy-data-portal-private/enable-managed-vnet.png" alt-text="Screenshot, der das Aktivieren einer neuen Azure Integration Runtime-Instanz zeigt.":::
 1. Klicken Sie auf **Erstellen**.
 
 ## <a name="create-a-pipeline"></a>Erstellen einer Pipeline
@@ -123,12 +123,12 @@ In diesem Tutorial beginnen Sie mit dem Erstellen einer Pipeline. Verknüpfte Di
 
 1. Wählen Sie auf der Startseite die Option **Orchestrieren** aus.
 
-   ![Screenshot, der die ADF-Startseite zeigt.](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="Screenshot, der die ADF-Startseite zeigt.":::
 1. Geben Sie im Eigenschaftenbereich der Pipeline als Name der Pipeline **CopyPipeline** ein.
 
 1. Erweitern Sie in der Toolbox **Aktivitäten** die Kategorie **Verschieben und transformieren**, und ziehen Sie die Aktivität **Daten kopieren** aus der Toolbox auf die Oberfläche des Pipeline-Designers. Geben Sie als Namen **CopyFromBlobToSql** ein.
 
-    ![Screenshot, der die Kopieraktivität zeigt.](./media/tutorial-copy-data-portal-private/drag-drop-copy-activity.png)
+    :::image type="content" source="./media/tutorial-copy-data-portal-private/drag-drop-copy-activity.png" alt-text="Screenshot, der die Kopieraktivität zeigt.":::
 
 ### <a name="configure-a-source"></a>Konfigurieren einer Quelle
 
@@ -151,7 +151,7 @@ In diesem Tutorial beginnen Sie mit dem Erstellen einer Pipeline. Verknüpfte Di
 
 1. Aktivieren Sie unbedingt **Interaktive Erstellung**. Die Aktivierung kann ungefähr eine Minute dauern.
 
-    ![Screenshot, der eine interaktive Erstellung zeigt.](./media/tutorial-copy-data-portal-private/interactive-authoring.png)
+    :::image type="content" source="./media/tutorial-copy-data-portal-private/interactive-authoring.png" alt-text="Screenshot, der eine interaktive Erstellung zeigt.":::
 
 1. Klicken Sie auf **Verbindung testen**. Dabei tritt ein Fehler auf, wenn das Speicherkonto ausschließlich Zugriff über **Ausgewählte Netzwerke** zulässt und Data Factory zur Erstellung eines privaten Endpunkts erforderlich ist, der vor der Verwendung genehmigt werden muss. In der Fehlermeldung sollte ein Link zum Erstellen eines privaten Endpunkts angezeigt werden, dem Sie folgen können, um einen verwalteten privaten Endpunkt zu erstellen. Alternativ dazu können Sie direkt zur Registerkarte **Verwalten** navigieren und die Anweisungen im [nächsten Abschnitt](#create-a-managed-private-endpoint) befolgen, um einen verwalteten privaten Endpunkt zu erstellen.
 
@@ -169,7 +169,7 @@ In diesem Tutorial beginnen Sie mit dem Erstellen einer Pipeline. Verknüpfte Di
 
 1. Klicken Sie auf **OK**. Die Pipelineseite wird automatisch aufgerufen. Vergewissern Sie sich, dass auf der Registerkarte **Quelle** die Option **SourceBlobDataset** ausgewählt ist. Wenn Sie auf dieser Seite eine Vorschau der Daten anzeigen möchten, klicken Sie auf **Datenvorschau**.
 
-    ![Screenshot, der das Quelldataset zeigt.](./media/tutorial-copy-data-portal-private/source-dataset-selected.png)
+    :::image type="content" source="./media/tutorial-copy-data-portal-private/source-dataset-selected.png" alt-text="Screenshot, der das Quelldataset zeigt.":::
 
 #### <a name="create-a-managed-private-endpoint"></a>Erstellen eines verwalteten privaten Endpunkts
 
@@ -184,7 +184,7 @@ Wenn Sie beim Testen der Verbindung nicht den Hyperlink ausgewählt haben, folge
 
 1. Wählen Sie unter **Verwaltete private Endpunkte** die Option **+ Neu** aus.
 
-    ![Screenshot, der die Schaltfläche „Verwaltete private Endpunkte -> Neu“ zeigt.](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png) 
+    :::image type="content" source="./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png" alt-text="Screenshot, der die Schaltfläche „Verwaltete private Endpunkte -&gt; Neu“ zeigt."::: 
 
 1. Wählen Sie in der Liste die Kachel **Azure Blob Storage** und dann **Weiter** aus.
 
@@ -194,16 +194,16 @@ Wenn Sie beim Testen der Verbindung nicht den Hyperlink ausgewählt haben, folge
 
 1. Nach einigen Sekunden sollten Sie sehen, dass für die erstellte Private Link-Instanz eine Genehmigung erforderlich ist.
 
-1. Wählen Sie den zuvor erstellten privaten Endpunkt aus. Ein Hyperlink wird angezeigt, über den Sie den privaten Endpunkt auf Speicherkontoebene genehmigen können.
+1. Wählen Sie den zuvor erstellten privaten Endpunkt aus. Ein Link wird angezeigt, über den Sie den privaten Endpunkt auf Speicherkontoebene genehmigen können.
 
-    ![Screenshot, der den Bereich „Verwalteter privater Endpunkt“ zeigt.](./media/tutorial-copy-data-portal-private/manage-private-endpoint.png) 
+    :::image type="content" source="./media/tutorial-copy-data-portal-private/manage-private-endpoint.png" alt-text="Screenshot, der den Bereich „Verwalteter privater Endpunkt“ zeigt."::: 
 
 #### <a name="approval-of-a-private-link-in-a-storage-account"></a>Genehmigung einer Private Link-Instanz in einem Speicherkonto
 1. Navigieren Sie im Speicherkonto im Abschnitt **Einstellungen** zu **Verbindungen mit privatem Endpunkt**.
 
 1. Aktivieren Sie das Kontrollkästchen für den privaten Endpunkt, den Sie oben erstellt haben, und wählen Sie **Genehmigen** aus.
 
-    ![Screenshot, der die Schaltfläche „Genehmigen“ für den privaten Endpunkt zeigt.](./media/tutorial-copy-data-portal-private/approve-private-endpoint.png)
+    :::image type="content" source="./media/tutorial-copy-data-portal-private/approve-private-endpoint.png" alt-text="Screenshot, der die Schaltfläche „Genehmigen“ für den privaten Endpunkt zeigt.":::
 
 1. Fügen Sie eine Beschreibung hinzu, und wählen Sie **Ja** aus.
 1. Gehen Sie zurück zum Abschnitt **Verwaltete private Endpunkte** der Registerkarte **Verwalten** in Data Factory.
@@ -240,7 +240,7 @@ Wenn Sie beim Testen der Verbindung nicht den Hyperlink ausgewählt haben, folge
 
 1. Wechseln Sie zur Registerkarte mit der Pipeline, und überprüfen Sie, ob für **Senkendataset** die Option **OutputSqlDataset** ausgewählt ist.
 
-    ![Screenshot, der die Pipeline-Registerkarte zeigt.](./media/tutorial-copy-data-portal-private/pipeline-tab-2.png)
+    :::image type="content" source="./media/tutorial-copy-data-portal-private/pipeline-tab-2.png" alt-text="Screenshot, der die Pipeline-Registerkarte zeigt.":::
 
 Optional können Sie das Schema der Quelle dem entsprechenden Zielschema zuordnen. Befolgen Sie dazu die Anweisungen unter [Schemazuordnung in Kopieraktivität](./copy-activity-schema-and-type-mapping.md).
 
@@ -252,7 +252,7 @@ Wenn Sie beim Testen der Verbindung nicht den Hyperlink ausgewählt haben, folge
 1. Navigieren Sie zum Abschnitt **Verwaltete private Endpunkte**.
 1. Wählen Sie unter **Verwaltete private Endpunkte** die Option **+ Neu** aus.
 
-    ![Screenshot, der die Schaltfläche „Verwaltete private Endpunkte -> Neu“ zeigt.](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png) 
+    :::image type="content" source="./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png" alt-text="Screenshot, der die Schaltfläche „Verwaltete private Endpunkte -&gt; Neu“ zeigt."::: 
 
 1. Wählen Sie in der Liste die Kachel **Azure SQL-Datenbank** und dann **Weiter** aus.
 1. Geben Sie den Namen der ausgewählten SQL Server-Instanz ein.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 4682396f68d6ff1af0b2fb6a5b1a8419d6963529
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 096315d314555478b993151bd1b562010cb24949
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98735335"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124761256"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-awarego"></a>Tutorial: Integration des einmaligen Anmeldens von Azure Active Directory in AwareGo
 
@@ -139,7 +139,7 @@ In diesem Abschnitt können Sie die Konfiguration des einmaligen Anmeldens von A
 
 * Rufen Sie direkt die AwareGo-Anmeldeseite auf, und initiieren Sie von dort den Anmeldeflow.
 
-* Navigieren Sie zu „Meine Apps“ von Microsoft. Wenn Sie unter „Meine Apps“ die Kachel **AwareGo** auswählen, werden Sie auf die Anmeldeseite von AwareGo umgeleitet. Weitere Informationen finden Sie unter [Anmelden beim Portal „Meine Apps“ und Starten von Apps über dieses](../user-help/my-apps-portal-end-user-access.md).
+* Navigieren Sie zu „Meine Apps“ von Microsoft. Wenn Sie unter „Meine Apps“ die Kachel **AwareGo** auswählen, werden Sie auf die Anmeldeseite von AwareGo umgeleitet. Weitere Informationen finden Sie unter [Anmelden beim Portal „Meine Apps“ und Starten von Apps über dieses](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

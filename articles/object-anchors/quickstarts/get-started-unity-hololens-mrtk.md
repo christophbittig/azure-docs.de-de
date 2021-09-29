@@ -5,15 +5,15 @@ author: craigktreasure
 manager: virivera
 services: azure-object-anchors
 ms.author: crtreasu
-ms.date: 08/02/2021
+ms.date: 09/08/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: b047c293a14dcfde5c8de2f56fb5c2abeab61c69
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 987c8933040b71c8053728f64da2964e02ac6fa3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122254333"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128607309"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-object-anchors-in-unity-with-mrtk"></a>Schnellstart: Erstellen einer HoloLens-App mit Azure Object Anchors in Unity mit MRTK
 
@@ -57,11 +57,11 @@ Wenn Sie durch ein Dialogfeld „TMP Importer“ zum Importieren von TextMesh Pr
 
  Nach dem Unity-Begrüßungsbildschirm sollte ein weißer Begrenzungsrahmen angezeigt werden. Sie können Ihre Hand verwenden, um den Begrenzungsrahmen zu verschieben, zu skalieren oder zu drehen. Platzieren Sie den Rahmen so, dass das Objekt bedeckt ist, das Sie erkennen möchten.
 
-Öffnen Sie das <a href="https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_HandMenu.html" target="_blank">Handmenü</a>, und wählen Sie **Lock SearchArea** (SearchArea sperren) aus, um jede weitere Bewegung des Begrenzungsrahmens zu verhindern. Wählen Sie **Start Search** (Suche starten) aus, um die Objekterkennung zu starten. Wenn das Objekt erkannt wird, wird ein Gittermodell für das Objekt gerendert. Details zu einer erkannten Instanz werden auf dem Bildschirm angezeigt, z. B. der aktualisierte Zeitstempel und das Verhältnis der Oberflächenbedeckung. Wählen Sie **Stop Search** (Suche beenden) aus, um die Nachverfolgen zu beenden. Alle erkannten Instanzen werden entfernt.
+Öffnen Sie das <a href="/windows/mixed-reality/mrtk-unity/features/ux-building-blocks/hand-menu" target="_blank">Handmenü</a>, und wählen Sie **Lock SearchArea** (SearchArea sperren) aus, um jede weitere Bewegung des Begrenzungsrahmens zu verhindern. Wählen Sie **Start Search** (Suche starten) aus, um die Objekterkennung zu starten. Wenn das Objekt erkannt wird, wird ein Gittermodell für das Objekt gerendert. Details zu einer erkannten Instanz werden auf dem Bildschirm angezeigt, z. B. der aktualisierte Zeitstempel und das Verhältnis der Oberflächenbedeckung. Wählen Sie **Stop Search** (Suche beenden) aus, um die Nachverfolgen zu beenden. Alle erkannten Instanzen werden entfernt.
 
 #### <a name="the-app-menus"></a>Die App-Menüs
 
-Sie können mit dem <a href="https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_HandMenu.html" target="_blank">Handmenü</a> auch weitere Aktionen ausführen.
+Sie können mit dem <a href="/windows/mixed-reality/mrtk-unity/features/ux-building-blocks/hand-menu" target="_blank">Handmenü</a> auch weitere Aktionen ausführen.
 
 ##### <a name="primary-menu"></a>Primäres Menü
 
@@ -70,7 +70,7 @@ Sie können mit dem <a href="https://microsoft.github.io/MixedRealityToolkit-Uni
 * **Tracker Settings (Einstellungen für die Nachverfolgung)** : Schaltet die Aktivierung des Menüs mit den Einstellungen für die Nachverfolgung um.
 * **Search Area Settings (Einstellungen für den Suchbereich)** : Schaltet die Aktivierung des Menüs mit den Einstellungen für den Suchbereich um.
 * **Start Tracing (Ablaufverfolgung starten)** : Erfassen von Diagnosedaten und Speichern dieser Daten auf dem Gerät. Weitere Informationen finden Sie im Abschnitt **Debuggen von Erkennungsproblemen und Erfassen von Diagnosen**.
-* **Upload Tracing (Ablaufverfolgung hochladen)** : Hochladen von Diagnosedaten in den Object Anchors-Dienst.    
+* **Upload Tracing (Ablaufverfolgung hochladen)** : Hochladen von Diagnosedaten in den Object Anchors-Dienst.
 
     :::image type="content" source="./media/mrtk-hand-menu-primary.png" alt-text="Primäres Unity-Handmenü":::
 
@@ -106,3 +106,6 @@ Sie können mit dem <a href="https://microsoft.github.io/MixedRealityToolkit-Uni
 
 > [!div class="nextstepaction"]
 > [Konvertierungs-SDK](/dotnet/api/overview/azure/mixedreality.objectanchors.conversion-readme-pre)
+
+> [!div class="nextstepaction"]
+> [Problembehandlung bei der Objekterkennung](../troubleshoot/object-detection.md)

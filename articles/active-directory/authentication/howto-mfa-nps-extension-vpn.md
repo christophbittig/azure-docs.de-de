@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fd16df2d8f1dfff4f5a7bd1075a63cf9b0ec78b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1fc542d019e34848cd5fb907892b487f25383075
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346261"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124773852"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-ad-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrieren Ihrer VPN-Infrastruktur in Azure AD MFA mithilfe der Netzwerkrichtlinienserver-Erweiterung für Azure
 
@@ -301,7 +301,7 @@ Um diese Probleme zu beheben, ist die Untersuchung der Sicherheitsereignisprotok
 
 ## <a name="configure-multi-factor-authentication"></a>Konfigurieren der Multi-Factor Authentication
 
-Unterstützung beim Konfigurieren von Benutzern für Multi-Factor Authentication finden Sie in den Artikeln [Planen einer cloudbasierten Bereitstellung von Azure AD Multi-Factor Authentication](howto-mfa-getstarted.md#plan-conditional-access-policies) und [Einrichten meines Kontos für die zweistufige Überprüfung](../user-help/multi-factor-authentication-end-user-first-time.md).
+Unterstützung beim Konfigurieren von Benutzern für Multi-Factor Authentication finden Sie in den Artikeln [Planen einer cloudbasierten Bereitstellung von Azure AD Multi-Factor Authentication](howto-mfa-getstarted.md#plan-conditional-access-policies) und [Einrichten meines Kontos für die zweistufige Überprüfung](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc).
 
 ## <a name="install-and-configure-the-nps-extension"></a>Installieren und Konfigurieren der NPS-Erweiterung
 

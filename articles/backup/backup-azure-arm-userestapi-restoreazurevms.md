@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Wiederherstellungsvorgänge
 ms.topic: conceptual
 ms.date: 08/26/2021
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: f82adee9690c0114fef17640672c7326cffc8481
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 0aa66b5c853faf26320510b3fe78ac71cd9d8afc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122966075"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820339"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Wiederherstellen virtueller Azure-Computer mit der REST-API
 
@@ -31,7 +31,7 @@ Der *GET*-URI enthält alle erforderlichen Parameter. Ein zusätzlicher Anforder
 
 ### <a name="responses"></a>Antworten
 
-|Name  |type  |BESCHREIBUNG  |
+|Name  |Typ  |BESCHREIBUNG  |
 |---------|---------|---------|
 |200 – OK     |   [RecoveryPointResourceList](/rest/api/backup/recovery-points/list#recoverypointresourcelist)      |       OK  |
 
@@ -144,7 +144,7 @@ Das Auslösen eines Wiederherstellungsvorgangs ist ein [asynchroner Vorgang](../
 
 Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
 
-|Name  |type  |BESCHREIBUNG  |
+|Name  |Typ  |BESCHREIBUNG  |
 |---------|---------|---------|
 |202 – Akzeptiert     |         |     Zulässig    |
 
@@ -216,7 +216,7 @@ Wenn die Erstellung eines virtuellen Computers anhand der Sicherungsdaten angepa
 
 Zum Auslösen einer Datenträgerwiederherstellung auf der Grundlage einer Azure-VM-Sicherung werden im Folgenden die Komponenten des Anforderungstexts angegeben.
 
-|Name  |type  |BESCHREIBUNG  |
+|Name  |Typ  |BESCHREIBUNG  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -278,7 +278,7 @@ Während mit „Datenträger wiederherstellen“ Datenträger aus dem Wiederhers
 
 Zum Auslösen einer Datenträgerersetzung auf der Grundlage einer Azure-VM-Sicherung werden im Folgenden die Komponenten des Anforderungstexts angegeben.
 
-|Name  |type  |BESCHREIBUNG  |
+|Name  |Typ  |BESCHREIBUNG  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -361,7 +361,7 @@ Der *GET*-URI enthält alle erforderlichen Parameter. Ein zusätzlicher Anforder
 
 #### <a name="responses"></a>Antworten
 
-|Name  |type  |BESCHREIBUNG  |
+|Name  |Typ  |BESCHREIBUNG  |
 |---------|---------|---------|
 |200 – OK     |   [RecoveryPointResourceList](/rest/api/backup/recovery-points-crr/list#recoverypointresourcelist)      |       OK  |
 
@@ -603,7 +603,7 @@ Es folgt ein Beispiel für einen Anforderungstext zum Wiederherstellen der Daten
 }
 ```
 
-Ähnlich wie beim Wiederherstellungsvorgang der primären Region ist dies ein asynchroner Vorgang, der [separat nachverfolgt](/azure/backup/backup-azure-arm-userestapi-restoreazurevms#restore-response) werden muss.
+Ähnlich wie beim Wiederherstellungsvorgang der primären Region ist dies ein asynchroner Vorgang, der [separat nachverfolgt](#restore-response) werden muss.
 
 
 

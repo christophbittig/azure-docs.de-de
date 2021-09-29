@@ -1,7 +1,7 @@
 ---
 title: Neuerungen bei externen Azure Active Directory-Identitäten
 description: Neue und aktualisierte Dokumentation für externe Azure Active Directory-Identitäten
-ms.date: 08/03/2021
+ms.date: 09/08/2021
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
@@ -9,16 +9,29 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: 81a25af5dfa73cbeefdf5fc677da80515f20a2f1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b6346a9e8ff776143b6e000f945fcd9400e03a0d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122347118"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124776479"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Externe Azure Active Directory-Identitäten: Neuerungen
 
 Hier erfahren Sie mehr über die Neuerungen in der Dokumentation für die externen Azure Active Directory-Identitäten. In diesem Artikel werden neu hinzugefügte Dokumente aufgelistet sowie Dokumente, die in den letzten drei Monaten grundlegend überarbeitet wurden. Informationen zu den Neuerungen beim Dienst für externe Identitäten finden Sie unter [Neuerungen in Azure Active Directory](../fundamentals/whats-new.md).
+
+## <a name="august-2021"></a>August 2021
+
+### <a name="updated-articles"></a>Aktualisierte Artikel
+
+- [Identitätsanbieter für externe Identitäten](identity-providers.md)
+- [Aktivieren der externen B2B-Zusammenarbeit und Verwalten, wer Gäste einladen kann](delegate-invitations.md)
+- [Eigenschaften eines Azure Active Directory B2B-Zusammenarbeitsbenutzers](user-properties.md)
+- [Hinzufügen von Google als Identitätsanbieter für B2B-Gastbenutzer](google-federation.md)
+- [Azure Active Directory (Azure AD)-Identitätsanbieter für External Identities](azure-ad-account.md)
+- [„Microsoft-Konto“-Identitätsanbieter (MSA) für External Identities](microsoft-account.md)
+- [Hinzufügen eines API-Connectors zu einem Benutzerflow](self-service-sign-up-add-api-connector.md)
+
 
 ## <a name="july-2021"></a>Juli 2021
 

@@ -12,12 +12,12 @@ ms.date: 02/05/2021
 ms.author: davidmu
 ms.reviewer: alamaral
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f8ee443f12ce4c28e5bb883be686a4610eeec38
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 2ef33a1fa80e443a51583551f2ec3ceb65da3f88
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768904"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124791648"
 ---
 # <a name="migrate-application-authentication-to-azure-active-directory"></a>Migrieren der Anwendungsauthentifizierung zu Azure Active Directory
 
@@ -503,7 +503,7 @@ Vergewissern Sie sich, dass das einmalige Anmelden je nach Konfiguration Ihrer A
 | ------------------------ | --------------------------------------------------- |
 | **OAuth und OpenID Connect** | Wählen Sie **Unternehmensanwendungen &gt; Berechtigungen** aus, und stellen Sie sicher, dass Sie in den Benutzereinstellungen für Ihre App zugestimmt haben, dass die Anwendung in Ihrer Organisation verwendet werden darf. |
 | **SAML-basiertes SSO** | Verwenden Sie die Schaltfläche [SAML-Einstellungen testen](./debug-saml-sso-issues.md) unter **Einmaliges Anmelden**. |
-| **Kennwortbasiertes SSO** | Laden Sie die [Erweiterung zur sicheren Anmeldung bei „Meine Apps“](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension) herunter, und installieren Sie sie. Mit dieser Erweiterung können Sie alle Cloud-Apps Ihrer Organisation starten, bei denen Sie einen SSO-Prozess verwenden müssen. |
+| **Kennwortbasiertes SSO** | Laden Sie die [Erweiterung zur sicheren Anmeldung bei „Meine Apps“](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510#download-and-install-the-my-apps-secure-sign-in-extension) herunter, und installieren Sie sie. Mit dieser Erweiterung können Sie alle Cloud-Apps Ihrer Organisation starten, bei denen Sie einen SSO-Prozess verwenden müssen. |
 
 |  **[Anwendungsproxy](../app-proxy/application-proxy.md)** | Stellen Sie sicher, dass Ihr Connector ausgeführt wird und der Anwendung zugewiesen ist. Im Leitfaden zum [Beheben von Problemen mit Anwendungsproxys und Fehlermeldungen](../app-proxy/application-proxy-troubleshoot.md) finden Sie weitere Unterstützung. |
 
@@ -553,7 +553,7 @@ Nachdem Sie die Apps migriert haben, können Sie die Benutzererfahrung auf viele
 
 **Erkennbarmachen von Apps**
 
-**Verweisen Sie die Benutzer** auf die Portalfunktion [Meine Apps](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension). Hier haben die Benutzer Zugriff auf alle cloudbasierten Apps, Apps, die Sie über [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) zur Verfügung stellen, und Apps, die den [Anwendungsproxy](../app-proxy/application-proxy.md) verwenden, sofern die Benutzer über Berechtigungen für den Zugriff auf diese Apps verfügen.
+**Verweisen Sie die Benutzer** auf die Portalfunktion [Meine Apps](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510#download-and-install-the-my-apps-secure-sign-in-extension). Hier haben die Benutzer Zugriff auf alle cloudbasierten Apps, Apps, die Sie über [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) zur Verfügung stellen, und Apps, die den [Anwendungsproxy](../app-proxy/application-proxy.md) verwenden, sofern die Benutzer über Berechtigungen für den Zugriff auf diese Apps verfügen.
 
 Sie können den Benutzern Hilfen zum Entdecken ihrer Apps bereitstellen:
 

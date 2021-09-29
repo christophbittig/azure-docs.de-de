@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/11/2021
 ms.author: aapowell
-ms.openlocfilehash: cc117859c911d9b2c1df6c03fc6cd9738e5de1ec
-ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
+ms.openlocfilehash: 243caef4a1f2cd1d543e7bbb9f3bc127d703296e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112988317"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124774802"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps"></a>Tutorial: Veröffentlichen einer Hugo-Website in Azure Static Web Apps
 
@@ -145,7 +145,7 @@ In den folgenden Schritten wird gezeigt, wie Sie eine neue statische Website-App
 
 #### <a name="custom-hugo-version"></a>Benutzerdefinierte Hugo-Version
 
-Beim Generieren einer statischen Web-App wird eine [Workflowdatei](./github-actions-workflow.md) generiert, die die Konfigurationseinstellungen der Anwendung für die Veröffentlichung enthält. Sie können eine bestimmte Hugo-Version in der Workflowdatei festlegen, indem Sie im Abschnitt `env` einen Wert für `HUGO_VERSION` angeben. In der folgenden Beispielkonfiguration wird veranschaulicht, wie Sie Hugo auf eine bestimmte Version festlegen.
+Beim Generieren einer statischen Web-App wird eine [Workflowdatei](./build-configuration.md) generiert, die die Konfigurationseinstellungen der Anwendung für die Veröffentlichung enthält. Sie können eine bestimmte Hugo-Version in der Workflowdatei festlegen, indem Sie im Abschnitt `env` einen Wert für `HUGO_VERSION` angeben. In der folgenden Beispielkonfiguration wird veranschaulicht, wie Sie Hugo auf eine bestimmte Version festlegen.
 
 ```yaml
 jobs:

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 100a1c8c1222416201ead23c436d064273cc2a5b
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 89766dd612a43a60456199ae1fdc9de35c9dd061
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122692829"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124774213"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Virtuelle Linux-Computer in Azure
 
@@ -48,7 +48,7 @@ Alle in Azure erstellten Ressourcen werden auf [geografische Regionen](https://a
 
 Die folgende Tabelle enthält einige Methoden, mit denen Sie eine Liste verfügbarer Standorte abrufen können:
 
-| Methode | BESCHREIBUNG |
+| Methode | Beschreibung |
 | --- | --- |
 | Azure-Portal |Wählen Sie beim Erstellen eines virtuellen Computers einen Standort aus der Liste aus. |
 | Azure PowerShell |Verwenden Sie den Befehl [Get-AzLocation](/powershell/module/az.resources/get-azlocation). |
@@ -64,7 +64,7 @@ Die [Größe](../sizes.md) des virtuellen Computers richtet sich nach der Worklo
 Bei Azure wird auf der Grundlage von Größe und Betriebssystem des virtuellen Computers ein [Stundenpreis](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) berechnet. Für angefangene Stunden werden lediglich die in Anspruch genommenen Minuten abgerechnet. Speicherplatz wird separat bewertet und in Rechnung gestellt.
 
 ## <a name="vm-limits"></a>Grenzwerte für virtuelle Computer
-Für Ihr Abonnement gelten standardmäßig bestimmte [Kontingentgrenzen](../../azure-resource-manager/management/azure-subscription-service-limits.md), die die Bereitstellung einer hohen Anzahl virtueller Computer für Ihr Projekt beeinträchtigen können. Der derzeitige Grenzwert pro Abonnement liegt bei 20 VMs pro Region. Zur Erhöhung der Grenzwerte können Sie [ein Supportticket erstellen und eine Erhöhung beantragen](../../azure-portal/supportability/resource-manager-core-quotas-request.md).
+Für Ihr Abonnement gelten standardmäßig bestimmte [Kontingentgrenzen](../../azure-resource-manager/management/azure-subscription-service-limits.md), die die Bereitstellung einer hohen Anzahl virtueller Computer für Ihr Projekt beeinträchtigen können. Der derzeitige Grenzwert pro Abonnement liegt bei 20 VMs pro Region. Zur Erhöhung der Grenzwerte können Sie [ein Supportticket erstellen und eine Erhöhung beantragen](../../azure-portal/supportability/regional-quota-requests.md).
 
 ## <a name="managed-disks"></a>Managed Disks
 

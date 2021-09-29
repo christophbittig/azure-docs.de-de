@@ -10,12 +10,12 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.subservice: common
 ms.date: 05/06/2021
-ms.openlocfilehash: d6cb1980c93e5161f02b79b05f1128ba777027c6
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 19aee45977dfde4b401dc4736e24970e311a4cc9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112281951"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621127"
 ---
 # <a name="tutorial-add-a-role-assignment-condition-to-restrict-access-to-blobs-using-azure-powershell-preview"></a>Tutorial: Hinzufügen einer Rollenzuweisungsbedingung zum Einschränken des Zugriffs auf Blobs mithilfe von Azure PowerShell (Vorschau)
 
@@ -29,8 +29,8 @@ In den meisten Fällen gewährt eine Rollenzuweisung die für Azure-Ressourcen b
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Hinzufügen einer Bedingung zu einer Rollenzuweisung
-> * Einschränken des Zugriffs auf Blobs basierend auf einem Blobindextag
+> - Hinzufügen einer Bedingung zu einer Rollenzuweisung
+> - Einschränken des Zugriffs auf Blobs basierend auf einem Blobindextag
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -132,7 +132,7 @@ Im Code sieht die Bedingung wie folgt aus:
 1. Fügen Sie der Textdatei das folgende Blobindextag hinzu. Weitere Informationen finden Sie unter [Verwenden von Blobindextags (Vorschau) zum Verwalten und Suchen von Daten in Azure Blob Storage](../blobs/storage-blob-index-how-to.md).
 
     > [!NOTE]
-    > Von Blobs wird auch das Speichern beliebiger benutzerdefinierter Schlüssel-Wert-Metadaten unterstützt. Metadaten sind zwar mit Blobindextags vergleichbar, für Bedingungen müssen jedoch Blobindextags verwendet werden. 
+    > Von Blobs wird auch das Speichern beliebiger benutzerdefinierter Schlüssel-Wert-Metadaten unterstützt. Metadaten sind zwar mit Blobindextags vergleichbar, für Bedingungen müssen jedoch Blobindextags verwendet werden.
 
     | Schlüssel | Wert |
     | --- | --- |
@@ -193,7 +193,7 @@ Im Code sieht die Bedingung wie folgt aus:
     ```
 
     Beispiel für die Ausgabe:
-    
+
     ```azurepowershell
     RoleAssignmentId   : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microso
                          ft.Authorization/roleAssignments/<roleAssignmentId>
@@ -257,7 +257,7 @@ Im Code sieht die Bedingung wie folgt aus:
     ```
 
     Im Anschluss sehen Sie ein Beispiel für die Ausgabe. Wie Sie sehen, können Sie die Datei aufgrund der hinzugefügten Bedingung **nicht** lesen.
-    
+
     ```azurepowershell
     Get-AzStorageBlob : This request is not authorized to perform this operation using this permission. HTTP Status Code:
     403 - HTTP Error Message: This request is not authorized to perform this operation using this permission.
@@ -272,7 +272,7 @@ Im Code sieht die Bedingung wie folgt aus:
         + FullyQualifiedErrorId : StorageException,Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet.GetAzureStorageBlob
        Command
     ```
-    
+
 1. Lesen Sie die Datei für das Projekt „Cascade“.
 
     ```azurepowershell
@@ -280,10 +280,10 @@ Im Code sieht die Bedingung wie folgt aus:
     ```
 
     Im Anschluss sehen Sie ein Beispiel für die Ausgabe. Wie Sie sehen, können Sie die Datei lesen, da sie über das Tag „Project=Cascade“ verfügt.
-    
+
     ```azurepowershell
        AccountName: <storageAccountName>, ContainerName: <containerName>
-    
+
     Name                 BlobType  Length          ContentType                    LastModified         AccessTier SnapshotT
                                                                                                                   ime
     ----                 --------  ------          -----------                    ------------         ---------- ---------
@@ -339,7 +339,7 @@ Im Code sieht die Bedingung wie folgt aus:
                          torage/storageAccounts/blobServices/containers/blobs/tags:Project<$key_case_sensitive$>]
                          StringEquals 'Baker'))
     ```
-    
+
 ## <a name="step-9-clean-up-resources"></a>Schritt 9: Bereinigen der Ressourcen
 
 1. Verwenden Sie [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment), um die hinzugefügte Rollenzuweisung und Bedingung zu entfernen.

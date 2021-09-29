@@ -3,12 +3,12 @@ title: Konfigurieren von Azure Sentinel mit Defender für IoT für Organisatione
 description: Erläutert die Konfiguration von Azure Sentinel zum Empfangen von Daten aus Ihrer Defender für IoT-Lösung.
 ms.topic: how-to
 ms.date: 06/14/2021
-ms.openlocfilehash: 7cc0e738158e173e8741504cabcfdbf831403544
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 1c3c03c99c733ea41a4f7b2a4eddd9ae750c92c6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123187053"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124771495"
 ---
 # <a name="connect-your-data-from-defender-for-iot-for-organizations-to-azure-sentinel-public-preview"></a>Verbinden Ihrer Daten aus Defender für IoT für Organisationen mit Azure Sentinel (öffentliche Vorschau)
 
@@ -56,4 +56,4 @@ Die Hubdaten stehen ungefähr 15 Minuten nach dem Herstellen einer Verbindung m
 
 In diesem Dokument haben Sie erfahren, wie Sie Defender für IoT mit Azure Sentinel verbinden. Weitere Informationen zu Bedrohungserkennung und Zugriff auf Sicherheitsdaten finden Sie in folgenden Artikeln:
 
-- Informieren Sie sich, wie Sie Azure Sentinel verwenden, im [Schnellstart: Erste Schritte mit Azure Sentinel](/azure/sentinel/get-visibility).
+- Informieren Sie sich, wie Sie Azure Sentinel verwenden, im [Schnellstart: Erste Schritte mit Azure Sentinel](../../sentinel/get-visibility.md).

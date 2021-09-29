@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: a5b84673a879c086fe1fc0543da1ab0037d32ac1
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 2c7c2a6d0056cb16f2ff79cb662cce2604d835b5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123255956"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124767620"
 ---
 # <a name="copy-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>Copy-Aktivität in Azure Data Factory und Azure Synapse Analytics
 
@@ -26,7 +26,7 @@ ms.locfileid: "123255956"
 
 In Azure Data Factory- und Synapse-Pipelines können Sie mithilfe der Copy-Aktivität Daten zwischen lokalen Datenspeichern und Clouddatenspeichern kopieren. Nach dem Kopieren können Sie andere Aktivitäten verwenden, um die Daten weiter zu transformieren und zu analysieren. Sie können die Kopieraktivität auch zum Veröffentlichen von Transformations- und Analyseergebnissen verwenden, um sie für Business Intelligence (BI) und Anwendungen zu nutzen.
 
-![Die Aufgabe der Kopieraktivität](media/copy-activity-overview/copy-activity.png)
+:::image type="content" source="media/copy-activity-overview/copy-activity.png" alt-text="Die Aufgabe der Kopieraktivität":::
 
 Die Kopieraktivität wird in einer [Integration Runtime](concepts-integration-runtime.md) ausgeführt. Sie können unterschiedliche Integration Runtime-Typen für unterschiedliche Datenkopierszenarien verwenden:
 
@@ -41,7 +41,7 @@ Um Daten aus einer Quelle in eine Senke zu kopieren, führt der Dienst, der die 
 2. Er führt die Serialisierung/Deserialisierung, Komprimierung/Dekomprimierung, Spaltenzuordnung usw. durch. Diese Vorgänge erfolgen basierend auf den Konfigurationen von Eingabedataset, Ausgabedataset und Kopieraktivität.
 3. Er schreibt Daten in den Senken-/Zieldatenspeicher.
 
-![Kopieraktivität in Azure Data Factory](media/copy-activity-overview/copy-activity-overview.png)
+:::image type="content" source="media/copy-activity-overview/copy-activity-overview.png" alt-text="Kopieraktivität – Übersicht":::
 
 ## <a name="supported-data-stores-and-formats"></a>Unterstützte Datenspeicher und Formate
 
@@ -161,7 +161,7 @@ Sie können die zwei folgenden Methoden zum Fortsetzen der Kopieraktivität nutz
 - **Wiederholung auf Aktivitätsebene:** Sie können eine Wiederholungsanzahl für Kopieraktivitäten festlegen. Wenn die Ausführung der Kopieraktivität während der Pipelineausführung fehlschlägt, beginnt der nächste automatische Wiederholungsversuch ab dem Fehlerpunkt des letzten Versuchs.
 - **Erneute Ausführung ab fehlgeschlagener Aktivität:** Nach Abschluss der Pipelineausführung können Sie eine erneute Ausführung ab der fehlgeschlagenen Aktivität auch über die Überwachungsansicht der ADF-Benutzeroberfläche oder programmgesteuert auslösen. Wenn es sich bei der fehlerhaften Aktivität um eine Kopieraktivität handelt, wird die Pipeline nicht nur ab dieser Aktivität noch mal ausgeführt, sie wird auch ab dem Fehlerpunkt der vorherigen Ausführung fortgesetzt.
 
-    ![Kopieren fortsetzen](media/copy-activity-overview/resume-copy.png)
+    :::image type="content" source="media/copy-activity-overview/resume-copy.png" alt-text="Kopieren fortsetzen":::
 
 Beachten Sie Folgendes:
 
@@ -190,14 +190,14 @@ Informationen dazu, wie die Quelldaten von der Kopieraktivität der Senke zugeor
 
 Auf der Registerkarte „Quelle der Kopieraktivität“ finden Sie die folgende Konfiguration. Sie können diese zusätzlichen Spalten auch wie gewohnt in der [Schemazuordnung](copy-activity-schema-and-type-mapping.md#schema-mapping) der Kopieraktivität zuordnen, indem Sie die definierten Spaltennamen verwenden. 
 
-![Hinzufügen zusätzlicher Spalten in der Kopieraktivität](./media/copy-activity-overview/copy-activity-add-additional-columns.png)
+:::image type="content" source="./media/copy-activity-overview/copy-activity-add-additional-columns.png" alt-text="Hinzufügen zusätzlicher Spalten in der Kopieraktivität":::
 
 >[!TIP]
 >Dieses Feature funktioniert nur beim neuesten Datasetmodell. Wenn diese Option auf der Benutzeroberfläche nicht angezeigt wird, versuchen Sie, ein neues Dataset zu erstellen.
 
 Wenn es programmgesteuert konfiguriert werden soll, fügen Sie in Ihrer Quelle für die Kopieraktivität die Eigenschaft `additionalColumns` hinzu:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | additionalColumns | Fügen Sie zusätzliche Datenspalten zum Kopieren in die Senke hinzu.<br><br>Jedes Objekt unter dem Array `additionalColumns` stellt eine zusätzliche Spalte dar. `name` definiert den Spaltennamen, und `value` gibt den Datenwert dieser Spalte an.<br><br>Zulässige Datenwerte sind:<br>-  **`$$FILEPATH`** – eine reservierte Variable, die angibt, dass der relative Pfad der Quelldateien in dem im Dataset angegebenen Ordnerpfad gespeichert werden soll. Auf dateibasierte Quelle anwenden.<br>-  **`$$COLUMN:<source_column_name>`** – ein reserviertes Variablenmuster gibt an, dass die angegebene Quellspalte als eine andere Spalte dupliziert wird.<br>- **Ausdruck**<br>- **Statischer Wert** | Nein |
 
@@ -255,7 +255,7 @@ Diese Funktion wird unterstützt, wenn Daten aus einer beliebigen Quelle in die 
 - [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md)
 - [SQL Server](connector-sql-server.md)
 
-![Erstellen von Senkentabellen](media/copy-activity-overview/create-sink-table.png)
+:::image type="content" source="media/copy-activity-overview/create-sink-table.png" alt-text="Erstellen von Senkentabellen":::
 
 ## <a name="fault-tolerance"></a>Fehlertoleranz
 

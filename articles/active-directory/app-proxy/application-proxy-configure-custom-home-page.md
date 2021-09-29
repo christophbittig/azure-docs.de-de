@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: harshja
-ms.openlocfilehash: d635d0c87cb6f759c15461abe9efc9dd42297ddb
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: fbeadc3a8c947f673ca134e0daf8a0a1c1d68b80
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111964910"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787507"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-active-directory-application-proxy"></a>Festlegen einer benutzerdefinierten Startseite für veröffentlichte Apps mithilfe eines Azure Active Directory-Anwendungsproxys
 
@@ -32,7 +32,7 @@ Hier ist ein Szenario, das erklärt, warum Ihr Unternehmen eine benutzerdefinier
 - Sie möchten `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` als URL der Homepage festlegen, damit externen Benutzern zuerst die Anmeldeseite angezeigt wird.
 
 > [!NOTE]
-> Wenn Sie Benutzern Zugriff auf veröffentlichte Apps erteilen, werden die Apps in [Meine Apps](../user-help/my-apps-portal-end-user-access.md) und im [Office 365-App-Startfeld](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/) angezeigt.
+> Wenn Sie Benutzern Zugriff auf veröffentlichte Apps erteilen, werden die Apps in [Meine Apps](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510) und im [Office 365-App-Startfeld](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/) angezeigt.
 
 ## <a name="before-you-start"></a>Vorbereitung
 

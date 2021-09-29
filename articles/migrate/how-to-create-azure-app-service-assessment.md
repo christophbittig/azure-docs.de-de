@@ -5,12 +5,12 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: tutorial
 ms.date: 07/28/2021
-ms.openlocfilehash: 39dfd96a92dcce152a6a8ff5afdd1c18b2f1d754
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ffaeaa383ee3d21bfe5a1798c440e1bccc039448
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121784652"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124810426"
 ---
 # <a name="create-an-azure-app-service-assessment"></a>Erstellen einer Azure App Service-Bewertung
 
@@ -88,7 +88,7 @@ Hier wird die Verteilung der bewerteten Web-Apps angezeigt. Sie können einen Dr
 
 #### <a name="azure-app-service-cost-details"></a>Details zu Azure App Service-Kosten
 
-Für einen [App Service-Plan](/azure/app-service/overview-hosting-plans) fällt eine [Gebühr](https://azure.microsoft.com/pricing/details/app-service/windows/) für die genutzten Computeressourcen an.
+Für einen [App Service-Plan](../app-service/overview-hosting-plans.md) fällt eine [Gebühr](https://azure.microsoft.com/pricing/details/app-service/windows/) für die genutzten Computeressourcen an.
 
 ### <a name="review-readiness"></a>Überprüfen der Bereitschaft
 

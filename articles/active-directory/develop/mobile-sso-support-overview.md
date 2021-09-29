@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
 ms.custom: has-adal-ref
-ms.openlocfilehash: 49757ba5faaff1043bd9b113cad3cfa342bb51ce
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 43f66b7f44e7d30816da5ac59a9692807f257a2b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418759"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787261"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>Unterstützung von einmaligem Anmelden und App-Schutzrichtlinien in von Ihnen entwickelten mobilen Apps
 
@@ -67,7 +67,7 @@ Apple bietet hierzu Anleitungen für iOS-Anwendungen: [Authenticating a User Thr
 
 Zum Aktivieren von App-Schutzrichtlinien verwenden Sie die [Microsoft Authentication Library (MSAL)](msal-overview.md). MSAL ist die Authentifizierungs- und Autorisierungsbibliothek der Microsoft Identity Platform, und das Intune SDK wurde für die Verwendung mit der Microsoft Identity Platform entwickelt.
 
-Außerdem müssen Sie eine Broker-App für die Authentifizierung verwenden. Der Broker erfordert, dass die App Anwendungs- und Geräteinformationen bereitstellt, um die Konformität der App sicherzustellen. iOS-Benutzer verwenden die [Microsoft Authenticator-App](../user-help/user-help-auth-app-sign-in.md) und Android-Benutzer verwenden entweder die Microsoft Authenticator-App oder die [Unternehmensportal-App](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal) für die [Brokerauthentifizierung](./msal-android-single-sign-on.md). Standardmäßig greift MSAL zum Erfüllen einer Authentifizierungsanforderung zuerst auf einen Broker zurück. Daher wird die Verwendung des Brokers zum Authentifizieren automatisch für Ihre App aktiviert, wenn die MSAL in der Standardkonfiguration verwendet wird.
+Außerdem müssen Sie eine Broker-App für die Authentifizierung verwenden. Der Broker erfordert, dass die App Anwendungs- und Geräteinformationen bereitstellt, um die Konformität der App sicherzustellen. iOS-Benutzer verwenden die [Microsoft Authenticator-App](https://support.microsoft.com/account-billing/sign-in-to-your-accounts-using-the-microsoft-authenticator-app-582bdc07-4566-4c97-a7aa-56058122714c) und Android-Benutzer verwenden entweder die Microsoft Authenticator-App oder die [Unternehmensportal-App](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal) für die [Brokerauthentifizierung](./msal-android-single-sign-on.md). Standardmäßig greift MSAL zum Erfüllen einer Authentifizierungsanforderung zuerst auf einen Broker zurück. Daher wird die Verwendung des Brokers zum Authentifizieren automatisch für Ihre App aktiviert, wenn die MSAL in der Standardkonfiguration verwendet wird.
 
 Schließlich [fügen Sie Ihrer App das Intune SDK hinzu](/mem/intune/developer/app-sdk-get-started), um App-Schutzrichtlinien zu aktivieren. Das SDK folgt zum größten Teil einem Abfangmodell und wendet automatisch App-Schutzrichtlinien an, um zu bestimmen, ob von der App ausgeführte Aktionen zulässig sind. Es gibt auch APIs, die Sie manuell aufrufen können, um der App Einschränkungen bei bestimmten Aktionen mitzuteilen.
 

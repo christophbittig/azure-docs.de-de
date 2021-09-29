@@ -13,12 +13,12 @@ ms.date: 08/10/2021
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: 5b490ff71253739779089da92c87532f7abbdbcc
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: e03b288934ce01a25a8ee7b4ad3569af6507b8a6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418528"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124734776"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Microsoft Enterprise SSO-Plug-In für Apple-Geräte (Vorschau)
 
@@ -29,7 +29,7 @@ Das *Microsoft Enterprise SSO-Plug-In für Apple-Geräte* ermöglicht einmaliges
 
 Das Enterprise SSO-Plug-In ist derzeit ein in die folgenden Apps integriertes Feature:
 
-* [Microsoft Authenticator](../user-help/user-help-auth-app-overview.md): iOS, iPadOS
+* [Microsoft Authenticator](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc): iOS, iPadOS
 * Microsoft Intune-[Unternehmensportal](/mem/intune/apps/apps-company-portal-macos): macOS
 
 ## <a name="features"></a>Features
@@ -46,15 +46,15 @@ Mit dem Microsoft Enterprise SSO-Plug-In für Apple-Geräte ergeben sich für Si
 Für das Microsoft Enterprise SSO-Plug-In für Apple-Geräte gelten folgende Anforderungen:
 
 - Das Gerät muss Apps *unterstützen*, für die das Microsoft Enterprise SSO-Plug-In für Apple-Geräte installiert ist, und auf dem Gerät muss eine solche App verfügbar sein:
-  - Ab iOS 13.0: [Microsoft Authenticator-App](../user-help/user-help-auth-app-overview.md)
-  - Ab iPadOS 13.0: [Microsoft Authenticator-App](../user-help/user-help-auth-app-overview.md)
+  - Ab iOS 13.0: [Microsoft Authenticator-App](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)
+  - Ab iPadOS 13.0: [Microsoft Authenticator-App](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)
   - Ab macOS 10.15: [Intune-Unternehmensportal-App](/mem/intune/user-help/enroll-your-device-in-intune-macos-cp)
 - Das Gerät muss *in MDM registriert* sein, z. B. über Microsoft Intune.
 - Die Konfiguration muss *per Push auf das Gerät übertragen* werden, um das Enterprise SSO-Plug-In zu aktivieren. Diese Sicherheitseinschränkung wird von Apple verlangt.
 
 ### <a name="ios-requirements"></a>iOS-Anforderungen:
 - iOS 13.0 oder höher muss auf dem Gerät installiert sein.
-- Eine Microsoft-Anwendung, über die das Microsoft Enterprise SSO-Plug-In für Apple-Geräte bereitgestellt wird, muss auf dem Gerät installiert sein. Während der öffentlichen Vorschauphase ist dies die [Microsoft Authenticator-App](../user-help/user-help-auth-app-overview.md).
+- Eine Microsoft-Anwendung, über die das Microsoft Enterprise SSO-Plug-In für Apple-Geräte bereitgestellt wird, muss auf dem Gerät installiert sein. Während der öffentlichen Vorschauphase ist dies die [Microsoft Authenticator-App](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc).
 
 
 ### <a name="macos-requirements"></a>macOS-Anforderungen:
@@ -171,7 +171,7 @@ Probieren Sie diese Konfiguration nur für Anwendungen aus, bei denen es zu uner
 
 #### <a name="summary-of-keys"></a>Übersicht über die Schlüssel
 
-| Schlüssel | type | Wert |
+| Schlüssel | Type | Wert |
 |--|--|--|
 | `Enable_SSO_On_All_ManagedApps` | Integer | `1`, um SSO für alle verwalteten Apps zu aktivieren, `0`, um SSO für alle verwalteten Apps zu deaktivieren. |
 | `AppAllowList` | String<br/>*(Liste mit Kommata als Trennzeichen)* | Bundle-IDs von Anwendungen, die am SSO teilnehmen dürfen. |

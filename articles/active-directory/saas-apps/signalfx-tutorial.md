@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/25/2021
 ms.author: jeedes
-ms.openlocfilehash: f3fbab143fd330e017e9e51c74a403d9bfb687ff
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 472bf22c723bbbf08d97ca95fd595e1559879714
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110455638"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124808246"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit SignalFx
 
@@ -146,7 +146,7 @@ Machen Sie sich mit der folgenden Anleitung zum Testen des einmaligen Anmeldens 
 
 * Bei der ersten Anmeldung eines neuen Testbenutzers wird von Azure eine Kennwortänderung erzwungen. Dadurch wird der SSO-Anmeldevorgang nicht abgeschlossen, und der Testbenutzer wird zum Azure-Portal weitergeleitet. In diesem Fall muss der Testbenutzer sein Kennwort ändern, zur Anmeldeseite von SignalFx oder zu „Meine Apps“ navigieren und es noch mal versuchen.
     * Wenn Sie unter „Meine Apps“ auf die Kachel „SignalFx“ klicken, sollten Sie automatisch bei der SignalFx-Instanz angemeldet werden. 
-        * Weitere Informationen zu „Meine Apps“ finden in der [Einführung zu „Meine Apps“](../user-help/my-apps-portal-end-user-access.md).
+        * Weitere Informationen zu „Meine Apps“ finden in der [Einführung zu „Meine Apps“](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 * Auf die SignalFx-Anwendung kann über „Meine Apps“ oder über eine benutzerdefinierte, der Organisation zugewiesene Anmeldeseite zugegriffen werden. Der Testbenutzer sollte die Integration von einem dieser Orte aus testen.
     * Dabei kann der Testbenutzer die Anmeldeinformationen verwenden, die zuvor in diesem Prozess für **b.simon\@contoso.com** erstellt wurden.

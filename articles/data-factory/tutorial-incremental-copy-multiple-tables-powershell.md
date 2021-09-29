@@ -9,12 +9,12 @@ ms.subservice: tutorials
 ms.topic: tutorial
 ms.custom: devx-track-azurepowershell
 ms.date: 07/05/2021
-ms.openlocfilehash: 16feecb1560c114520b10ed2adaef578534052f4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 46c6dfa381ec2dff04212c38a7580859bcba4762
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638394"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124733035"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>Inkrementelles Laden von Daten aus mehreren Tabellen in SQL Server in Azure SQL-Datenbank mithilfe von PowerShell
 
@@ -60,7 +60,7 @@ Hier sind die wesentlichen Schritte beim Erstellen dieser Lösung aufgeführt:
 
     Allgemeines Lösungsdiagramm: 
 
-    ![Lädt Daten inkrementell](media/tutorial-incremental-copy-multiple-tables-powershell/high-level-solution-diagram.png)
+    :::image type="content" source="media/tutorial-incremental-copy-multiple-tables-powershell/high-level-solution-diagram.png" alt-text="Lädt Daten inkrementell":::
 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
@@ -820,11 +820,11 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die **ForE
 
 5. Wählen Sie auf der Startseite von Azure Data Factory links **Überwachung** aus. 
 
-    ![Screenshot der Azure Data Factory-Homepage](media/doc-common-process/get-started-page-monitor-button.png)    
+    :::image type="content" source="media/doc-common-process/get-started-page-monitor-button.png" alt-text="Screenshot der Azure Data Factory-Homepage":::    
 
 6. Alle Pipelineausführungen mit dem dazugehörigen Status werden angezeigt. Beachten Sie, dass der Status der Pipelineausführung im folgenden Beispiel **Erfolgreich** lautet. Überprüfen Sie die an die Pipeline übergebenen Parameter, indem Sie in der Spalte **Parameter** auf den Link klicken. Wenn ein Fehler auftritt, wird in der Spalte **Fehler** ein Link angezeigt.
 
-    ![Screenshot: Pipelineausführungen für eine Data Factory einschließlich Ihrer Pipeline](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
+    :::image type="content" source="media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png" alt-text="Screenshot: Pipelineausführungen für eine Data Factory einschließlich Ihrer Pipeline":::    
 7. Wenn Sie in der Spalte **Aktionen** den Link auswählen, werden alle Aktivitätsausführungen der Pipeline angezeigt. 
 
 8. Wählen Sie **Alle Pipelineausführungen** aus, um zurück zur Ansicht **Pipelineausführungen** zu wechseln. 

@@ -1,18 +1,18 @@
 ---
 title: Azure PowerShell-Beispiele für Azure Blob Storage | Microsoft-Dokumentation
 description: Hier finden Sie Links zu Azure PowerShell-Skriptbeispielen für die Verwendung mit Azure Blob Storage, etwa zum Erstellen eines Speicherkontos, Migrieren von Blobs zwischen Konten usw.
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 11/07/2017
 ms.service: storage
 ms.subservice: blobs
 ms.topic: sample
-ms.openlocfilehash: 10e4149b7c66e507c34e486abd64c66993900fbc
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 38412bedf8fca61cb55a994618e8029127dc5a3a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277911"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593114"
 ---
 # <a name="azure-powershell-samples-for-azure-blob-storage"></a>Azure PowerShell-Beispiele für Azure Blob Storage
 
