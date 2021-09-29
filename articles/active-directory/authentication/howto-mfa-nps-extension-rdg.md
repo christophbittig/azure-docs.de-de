@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f50792ec45570f7e90893a97150ea26b63ebf9c
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: f1ccaf6daabc661a8d4249aaeed322e2ab01dd66
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107829834"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124773909"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrieren Sie Ihre Remotedesktopgateway-Infrastruktur mit der Netzwerkrichtlinienserver-Erweiterung (Network Policy Server, NPS) und Azure AD
 
@@ -109,7 +109,7 @@ Führen Sie die Schritte in [Erste Schritte mit Azure AD Multi-Factor Authentic
 
 Nachdem ein Konto für MFA aktiviert wurde, können Sie sich erst dann bei Ressourcen anmelden, die der MFA-Richtlinie unterliegen, wenn Sie erfolgreich ein vertrauenswürdiges Gerät für den zweiten Authentifizierungsfaktor konfiguriert und die Authentifizierung mit der zweistufigen Überprüfung durchgeführt haben.
 
-Führen Sie die Schritte in [Was ist Azure AD Multi-Factor Authentication?](../user-help/multi-factor-authentication-end-user-first-time.md) aus, um Ihre Geräte ordnungsgemäß mit Ihrem Benutzerkonto für MFA zu konfigurieren.
+Führen Sie die Schritte in [Was ist Azure AD Multi-Factor Authentication?](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc) aus, um Ihre Geräte ordnungsgemäß mit Ihrem Benutzerkonto für MFA zu konfigurieren.
 
 > [!IMPORTANT]
 > Das Anmeldeverhalten für Remotedesktopgateway umfasst keine Option zum Eingeben eines Prüfcodes über Azure AD Multi-Factor Authentication. Benutzerkonten müssen für die Telefonüberprüfung oder die Microsoft Authenticator-App über Pushbenachrichtigungen konfiguriert sein.

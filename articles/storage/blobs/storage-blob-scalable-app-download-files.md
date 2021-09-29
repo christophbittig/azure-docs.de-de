@@ -8,12 +8,12 @@ ms.date: 02/04/2021
 ms.author: rogarana
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: aafea55e2683ab9c78fafbf819c9a67d7cb75a45
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 435bc37a79ea7397bcfd8d1d044c44cd5fde382e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459681"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128630724"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Herunterladen großer Mengen von Zufallsdaten von Azure Storage
 
@@ -22,9 +22,9 @@ Dieses Tutorial ist der dritte Teil einer Reihe. In diesem Tutorial wird gezeigt
 Im dritten Teil der Serie lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Aktualisieren der Anwendung
-> * Ausführen der Anwendung
-> * Überprüfen der Anzahl von Verbindungen
+> - Aktualisieren der Anwendung
+> - Ausführen der Anwendung
+> - Überprüfen der Anzahl von Verbindungen
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -223,8 +223,8 @@ C:\>
 Im dritten Teil der Serie haben Sie erfahren, wie Sie große Mengen von Daten aus einem Speicherkonto herunterladen können, und haben u. a. Folgendes gelernt:
 
 > [!div class="checklist"]
-> * Ausführen der Anwendung
-> * Überprüfen der Anzahl von Verbindungen
+> - Ausführen der Anwendung
+> - Überprüfen der Anzahl von Verbindungen
 
 Fahren Sie mit dem vierten Teil der Serie fort, um Durchsatz- und Latenzmetriken im Portal zu überprüfen.
 

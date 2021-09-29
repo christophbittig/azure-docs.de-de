@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/31/2019
 ms.author: jeedes
-ms.openlocfilehash: 7893d0fa113408378b832779d7ca2c38032e6f58
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0676cf76fa77379f09a8b4ac0fb7d1f744a24d86
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92522545"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124741867"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-myvr"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit MyVR
 
@@ -148,7 +148,7 @@ In diesem Abschnitt wird in MyVR ein Benutzer namens B. Simon erstellt. MyVR un
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „MyVR“ klicken, sollten Sie automatisch bei der MyVR-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+Wenn Sie im Zugriffsbereich auf die Kachel „MyVR“ klicken, sollten Sie automatisch bei der MyVR-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

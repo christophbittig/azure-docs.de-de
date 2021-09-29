@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: f0744b98b0264a79072e60ddb7627a4b527bdf1e
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: c174bfa0cc88f37f055a16ed7fad473187c7ed89
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600606"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124745841"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wingspan-etmf"></a>Tutorial: Azure Active Directory-Integration mit Wingspan eTMF
 
@@ -186,7 +186,7 @@ In diesem Abschnitt erstellen Sie in Wingspan eTMF einen Benutzer namens „Brit
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Wingspan eTMF“ klicken, sollten Sie automatisch bei der Wingspan eTMF-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+Wenn Sie im Zugriffsbereich auf die Kachel „Wingspan eTMF“ klicken, sollten Sie automatisch bei der Wingspan eTMF-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 

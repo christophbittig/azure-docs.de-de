@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.workload: identity
 ms.date: 02/18/2019
 ms.reviewer: ergreenl
-ms.openlocfilehash: 272e2d8a7234ca97646cf044be997f9ddba415e1
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 99f31344b5bc5b8aad6e2455be5f76ce1d546532
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122772258"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754145"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure Active Directory.
 
@@ -24,12 +24,12 @@ Hier erfahren Sie, wie Sie Probleme beim [einmaligen Anmelden](what-is-single-si
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Sie sollten die [Erweiterung zur sicheren Anmeldung bei „Meine Apps“](../user-help/my-apps-portal-end-user-troubleshoot.md#im-having-trouble-installing-the-my-apps-secure-sign-in-extension) installieren. Diese Browsererweiterung erleichtert das Erfassen der SAML-Anforderung sowie die SAML-Antwortinformationen, die Sie für die Behebung von Problemen mit einmaligem Anmelden benötigen. Für den Fall, dass Sie die Erweiterung nicht installieren können, zeigt dieser Artikel Ihnen die Behebung von Problemen mit und ohne Erweiterung.
+Sie sollten die [Erweiterung zur sicheren Anmeldung bei „Meine Apps“](https://support.microsoft.com/account-billing/troubleshoot-problems-with-the-my-apps-portal-d228da80-fcb7-479c-b960-a1e2535cbdff#im-having-trouble-installing-the-my-apps-secure-sign-in-extension) installieren. Diese Browsererweiterung erleichtert das Erfassen der SAML-Anforderung sowie die SAML-Antwortinformationen, die Sie für die Behebung von Problemen mit einmaligem Anmelden benötigen. Für den Fall, dass Sie die Erweiterung nicht installieren können, zeigt dieser Artikel Ihnen die Behebung von Problemen mit und ohne Erweiterung.
 
 Verwenden Sie zum Herunterladen und Installieren der Erweiterung zur sicheren Anmeldung bei „Meine Apps“ einen der folgenden Links.
 
 - [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
-- [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
+- [Microsoft Edge](https://microsoftedge.microsoft.com/addons/detail/my-apps-secure-signin-ex/gaaceiggkkiffbfdpmfapegoiohkiipl)
 
 ## <a name="test-saml-based-single-sign-on"></a>Testen des einmaligen SAML-basierten Anmeldens
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/13/2021
 ms.author: jeedes
-ms.openlocfilehash: 8ccabdb23f1d06dc45ebfd06117cc8c9a168a8ad
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 62cda5a8fc328d1681a2ccb5a7d196112fd2c157
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110064730"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124816446"
 ---
 # <a name="tutorial-integrate-replicon-with-azure-active-directory"></a>Tutorial: Integrieren von Replicon in Azure Active Directory
 
@@ -99,7 +99,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Downloadlink für das Zertifikat](common/metadataxml.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user&quot;></a>Erstellen eines Azure AD-Testbenutzers
 
 In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
@@ -111,7 +111,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
    1. Klicken Sie auf **Erstellen**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Replicon gewähren.
 
@@ -123,13 +123,13 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anme
 1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-## <a name="configure-replicon-sso"></a>Konfigurieren des einmaligen Anmeldens mit Replicon
+## <a name=&quot;configure-replicon-sso&quot;></a>Konfigurieren des einmaligen Anmeldens mit Replicon
 
 1. Melden Sie sich in einem anderen Webbrowserfenster bei der Replicon-Unternehmenswebsite als Administrator an.
 
 2. Um SAML 2.0 zu konfigurieren, führen Sie die folgenden Schritte aus:
 
-    ![SAML-Authentifizierung aktivieren](./media/replicon-tutorial/authentication.png "Klicken Sie auf „SAML-Authentifizierung aktivieren“.")
+    ![SAML-Authentifizierung aktivieren](./media/replicon-tutorial/authentication.png &quot;Klicken Sie auf „SAML-Authentifizierung aktivieren“.")
 
     a. Zum Anzeigen des Dialogfelds **EnableSAML Authentication2** fügen Sie nach dem Unternehmensschlüssel Folgendes an Ihre URL an: `/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
@@ -189,7 +189,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Rufen Sie direkt die Anmelde-URL von Replicon auf, und initiieren Sie den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“auf die Kachel „Replicon“ klicken, werden Sie zur Anmelde-URL für Replicon weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“auf die Kachel „Replicon“ klicken, werden Sie zur Anmelde-URL für Replicon weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

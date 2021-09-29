@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 1df8c6fa0877c20518be072674447d28d7f1ca0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 409dc4a74c0b647d4e381d149612e3fbbabf27c3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97670117"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124817534"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloud-service-picco"></a>Tutorial: Azure Active Directory-Integration mit Cloud Service PICCO
 
@@ -178,7 +178,7 @@ In diesem Abschnitt wird ein Benutzer mit dem Namen Britta Simon in Cloud Servic
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Cloud Service PICCO“ klicken, sollten Sie automatisch bei Ihrer Cloud Service PICCO-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+Wenn Sie im Zugriffsbereich auf die Kachel „Cloud Service PICCO“ klicken, sollten Sie automatisch bei Ihrer Cloud Service PICCO-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 

@@ -2,14 +2,14 @@
 title: 'Schnellstart: Erstellen eines Event Hubs mithilfe von PowerShell – Azure Event Hubs'
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe von Azure PowerShell einen Event Hub erstellen und anschließend mithilfe des .NET Standard SDK Ereignisse senden und empfangen.
 ms.topic: quickstart
-ms.date: 06/23/2020
+ms.date: 09/28/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 81181dd7b9167c76e167e781bc6aa6f277125953
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 74ba18e00366aa0df3b28807aaa41f72554a3c99
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110695908"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218221"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>Schnellstart: Erstellen eines Event Hubs mithilfe von Azure PowerShell
 

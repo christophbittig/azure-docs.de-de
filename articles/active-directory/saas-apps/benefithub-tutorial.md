@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/31/2019
 ms.author: jeedes
-ms.openlocfilehash: acba3561af13126f00663c3371aa60c3d30a497b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7ae6a61881178be4cdf8a607d3f18f95bb351a77
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92457264"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124739844"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-benefithub"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit BenefitHub
 
@@ -145,7 +145,7 @@ In diesem Abschnitt erstellen Sie in BenefitHub einen Benutzer mit dem Namen B.�
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „BenefitHub“ klicken, sollten Sie automatisch bei der BenefitHub-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+Wenn Sie im Zugriffsbereich auf die Kachel „BenefitHub“ klicken, sollten Sie automatisch bei der BenefitHub-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

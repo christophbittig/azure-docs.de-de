@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: bagol
-ms.openlocfilehash: 82d406521ad534c77fc48c095631e07a74bfd080
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 4378065a8d1a91f9051c04dbb71a90e2a4ab862c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122356482"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124777391"
 ---
 # <a name="audit-azure-sentinel-queries-and-activities"></a>Überwachen von Azure Sentinel-Abfragen und -Aktivitäten
 
@@ -47,7 +47,7 @@ Sie können die Tabelle **AzureActivity** verwenden, wenn Sie die Aktivität in 
 
 **So fragen Sie die Tabelle AzureActivity ab**:
 
-1. Verbinden Sie die [Azure-Aktivitäts](connect-azure-activity.md)datenquelle, um das Streamen von Überwachungsereignissen in eine neue Tabelle auf dem Bildschirm **Protokolle** mit dem Namen AzureActivity zu starten.
+1. Verbinden Sie die [Azure-Aktivitäts](./data-connectors-reference.md#azure-activity)datenquelle, um das Streamen von Überwachungsereignissen in eine neue Tabelle auf dem Bildschirm **Protokolle** mit dem Namen AzureActivity zu starten.
 
 1. Fragen Sie die Daten dann wie jede andere Tabelle mit KQL ab.
 

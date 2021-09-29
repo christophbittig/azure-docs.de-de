@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/07/2019
 ms.author: jeedes
-ms.openlocfilehash: ecd96e13f66e88be2ed4e53ff300510763fbd564
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02a6788e25b5f3cb6ca38c74202af80972b7a4e7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92457094"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124734395"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bitly"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Bitly
 
@@ -139,7 +139,7 @@ In diesem Abschnitt wird eine Benutzerin mit dem Namen Britta Simon in Bitly ers
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Bitly“ klicken, werden Sie automatisch bei der Instanz von Bitly angemeldet, für die Sie das einmalige Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+Wenn Sie im Zugriffsbereich auf die Kachel „Bitly“ klicken, werden Sie automatisch bei der Instanz von Bitly angemeldet, für die Sie das einmalige Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

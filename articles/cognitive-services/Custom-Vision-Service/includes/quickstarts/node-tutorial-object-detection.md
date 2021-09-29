@@ -4,12 +4,12 @@ ms.author: areddish
 ms.service: cognitive-services
 ms.date: 10/26/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: de8ca0a9410479b4d166a47e5c56742955b7853f
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: af1c2637258a298488107fea9af23b38f4dcda49
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725165"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128909148"
 ---
 Dieser Leitfaden enthält Anweisungen und Beispielcode für die ersten Schritte mit der Custom Vision-Clientbibliothek für Node.js und unterstützt Sie beim Erstellen eines Objekterkennungsmodells. Sie erstellen ein Projekt, fügen Tags hinzu, trainieren das Projekt und verwenden die Vorhersageendpunkt-URL des Projekts, um es programmgesteuert zu testen. Verwenden Sie dieses Beispiel als Vorlage für die Erstellung Ihrer eigenen Bilderkennungsanwendung.
 
@@ -172,7 +172,7 @@ Führen Sie die Anwendung mit dem Befehl `node` für die Schnellstartdatei aus.
 node index.js
 ```
 
-Die Ausgabe der Anwendung sollte in der Konsole angezeigt werden. Daraufhin können Sie sich vergewissern, dass das Testbild (unter **<sampleDataRoot>/Test/** ) ordnungsgemäß gekennzeichnet und die Erkennungsregion korrekt ist. Sie können auch zur [Custom Vision-Website](https://customvision.ai) zurückgehen und den aktuellen Status Ihres neu erstellten Projekts ansehen.
+Die Ausgabe der Anwendung sollte in der Konsole angezeigt werden. Daraufhin können Sie sich vergewissern, dass das Testbild (unter **\<sampleDataRoot\>/Test/** ) ordnungsgemäß gekennzeichnet und die Erkennungsregion korrekt ist. Sie können auch zur [Custom Vision-Website](https://customvision.ai) zurückgehen und den aktuellen Status Ihres neu erstellten Projekts ansehen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

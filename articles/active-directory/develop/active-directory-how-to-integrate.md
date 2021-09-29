@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: b7ee283ff61753a060e49a3340cd0a795b04faf9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 57aefd8cc8a246d485854f72b47c131f75dced0c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98755932"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124734809"
 ---
 # <a name="integrating-with-the-microsoft-identity-platform"></a>Integration in Microsoft Identity Platform
 
@@ -55,7 +55,7 @@ Es gibt mehrere Möglichkeiten, Ihre Anwendung in Microsoft Identity Platform zu
 
 **Werben Sie für Ihre Anwendung bei Millionen von Organisationen, die Azure AD bereits verwenden.**  Benutzer, die diese Marketplaces durchsuchen bzw durchstöbern, nutzen bereits einen oder mehrere Clouddienste, sodass sie als potenzielle Kunden von Cloudlösungen in Frage kommen. Erfahren Sie mehr über das Werben für Ihre Anwendung in [Azure Marketplace](https://azure.microsoft.com/marketplace/partner-program/).
 
-**Wenn sich Benutzer für Ihre Anwendung registrieren, wird sie in ihrem Azure AD-Zugriffsbereich und Microsoft 365-App-Startfeld angezeigt.**  Benutzer können später schnell und einfach zu Ihrer Anwendung zurückkehren, was die Benutzerbindung verbessert. Erfahren Sie mehr über den [Azure AD-Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+**Wenn sich Benutzer für Ihre Anwendung registrieren, wird sie in ihrem Azure AD-Zugriffsbereich und Microsoft 365-App-Startfeld angezeigt.**  Benutzer können später schnell und einfach zu Ihrer Anwendung zurückkehren, was die Benutzerbindung verbessert. Erfahren Sie mehr über den [Azure AD-Zugriffsbereich](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ### <a name="secure-device-to-service-and-service-to-service-communication"></a>Sichere Kommunikation zwischen Gerät und Dienst und zwischen Diensten
 

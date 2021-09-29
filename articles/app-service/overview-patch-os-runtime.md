@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Azure App Service das Betriebssystem und Runtimes
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 8b876760ee2bafc855345878a28c38ec3b35daad
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 35d4bbb33aa737725668c0376bb1ffe6f7748f46
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105047880"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124800078"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Patchen von Betriebssystem und Runtime in Azure App Service
 
@@ -39,10 +39,6 @@ Der [Azure Security Blog](https://azure.microsoft.com/blog/topics/security/) hä
 
 Neue stabile Versionen der unterstützten Language Runtimes (Hauptversion, Nebenversion oder Patch) werden in regelmäßigen Abständen den App Service-Instanzen hinzugefügt. Einige Updates überschreiben die vorhandene Installation, während andere parallel zu vorhandenen Versionen installiert werden. Eine überschreibende Installation bedeutet, dass Ihre App automatisch auf der aktualisierten Runtime ausgeführt wird. Eine parallele Installation bedeutet, dass Sie Ihre App manuell migrieren müssen, um eine neue Version der Runtime zu nutzen. Weitere Informationen finden Sie in einem der Unterabschnitte.
 
-Runtimeupdates und Veraltungen werden hier angekündigt:
-
-- https://azure.microsoft.com/updates/?product=app-service 
-- https://github.com/Azure/app-service-announcements/issues
 
 > [!NOTE] 
 > Hier bereitgestellte Informationen gelten für Language Runtimes, die in einer App Service-App integriert sind. Eine benutzerdefinierte Runtime, die Sie in App Service hochladen, bleibt z.B. unverändert, solange Sie sie nicht manuell aktualisieren.
@@ -64,10 +60,6 @@ az webapp config appsettings set --settings WEBSITE_NODE_DEFAULT_VERSION=8.9.3 -
 az webapp config set --python-version 3.8 --resource-group <groupname> --name <appname>
 az webapp config set --java-version 1.8 --java-container Tomcat --java-container-version 9.0 --resource-group <groupname> --name <appname>
 ```
-
-### <a name="deprecated-versions"></a>Veraltete Versionen  
-
-Wenn eine ältere Version als veraltet markiert ist, wird das Entfernungsdatum angekündigt, damit Sie das Upgrade der Runtimeversion entsprechend planen können. 
 
 ## <a name="how-can-i-query-os-and-runtime-update-status-on-my-instances"></a>Wie kann ich den Updatestatus von Betriebssystem und Runtime auf meinen Instanzen abfragen?  
 

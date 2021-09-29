@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 4dfce2c0bd6b7e154e35e0e7e267549dd162ecf1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1d31d9dbbb37e3a7a0b920bd64511a780a4cec37
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92516301"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124821271"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trackvia"></a>Tutorial: Azure Active Directory-Integration mit TrackVia
 
@@ -202,7 +202,7 @@ In diesem Abschnitt wird in TrackVia ein Benutzer mit dem Namen Britta Simon ers
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „TrackVia“ klicken, sollten Sie automatisch bei der TrackVia-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+Wenn Sie im Zugriffsbereich auf die Kachel „TrackVia“ klicken, sollten Sie automatisch bei der TrackVia-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 

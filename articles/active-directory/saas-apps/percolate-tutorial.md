@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 913ffc0670e40e749bd28382d492a16891fdc5c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bcf10c8783f1d0b865b3112c46417029795839fa
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92522260"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124826193"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>Tutorial: Azure Active Directory-Integration mit Percolate
 
@@ -222,7 +222,7 @@ Zum Erstellen eines Benutzerkontos führen Sie die folgenden Schritte aus:
 
 Jetzt müssen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich testen.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Percolate“ klicken, sollten Sie automatisch bei der Percolate-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen finden Sie unter [Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“](../user-help/my-apps-portal-end-user-access.md).
+Wenn Sie im Zugriffsbereich auf die Kachel „Percolate“ klicken, sollten Sie automatisch bei der Percolate-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen finden Sie unter [Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

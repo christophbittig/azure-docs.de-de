@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 12/18/2020
+ms.date: 09/22/2021
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: eeed8efc6c3c18955223ffb073be5714f616a0b4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2e89de7bd709f68dc10fe6b835c5b5d016da4835
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122639840"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129096063"
 ---
 | Category | Datenspeicher |
 |:--- |:--- |
@@ -31,7 +31,9 @@ ms.locfileid: "122639840"
 | &nbsp; |[Verwaltete Azure SQL-Datenbank-Instanz](../../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) |
 | &nbsp; |[Azure Synapse Analytics](../connector-azure-sql-data-warehouse.md) |
 | &nbsp; |[Azure Table Storage](../connector-azure-table-storage.md) |
-| **Datenbank** |[Amazon Redshift](../connector-amazon-redshift.md) |
+| **Datenbank** |[Amazon RDS für Oracle](../connector-amazon-rds-for-oracle.md) |
+| &nbsp; |[Amazon RDS für SQL Server](../connector-amazon-rds-for-sql-server.md) |
+| &nbsp; |[Amazon Redshift](../connector-amazon-redshift.md) |
 | &nbsp; |[Apache Impala](../connector-impala.md) |
 | &nbsp; |[Verwaltete Azure SQL-Datenbank-Instanz](../connector-azure-sql-managed-instance.md) |
 | &nbsp; |[DB2](../connector-db2.md) |

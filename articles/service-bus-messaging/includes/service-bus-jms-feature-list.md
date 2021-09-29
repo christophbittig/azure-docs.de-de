@@ -5,15 +5,15 @@ services: service-bus-messaging
 author: axisc
 ms.service: service-bus-messaging
 ms.topic: include
-ms.date: 6/9/2020
+ms.date: 09/28/2021
 ms.author: aschhab
 ms.custom: include file
-ms.openlocfilehash: 574507fcc6a3c05919c441bd6d0ec9c573d4b6ae
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: 6d2207b01f6ea9eff3dd2d41e9738f756f3f9fff
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112414688"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129220803"
 ---
 In der folgenden Tabelle sind die zurzeit von Azure Service Bus unterstützten JMS-Funktionen (Java Message Service) aufgelistet. Außerdem werden Funktionen angezeigt, die nicht unterstützt werden.
 

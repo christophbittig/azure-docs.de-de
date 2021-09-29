@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/04/2021
 ms.author: jeedes
-ms.openlocfilehash: f9b507bfc8d6e90eb3342812318332e61c4df075
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a19c0787e272e5717b6e9fbcaa73289c2823e755
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733686"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124748030"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asset-bank"></a>Tutorial: Azure Active Directory-Integration mit Asset Bank
 
@@ -134,7 +134,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Navigieren Sie direkt zur Anmelde-URL für Asset Bank, und initiieren Sie den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“auf die Kachel „Asset Bank“ klicken, werden Sie zur Anmelde-URL für Asset Bank weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“auf die Kachel „Asset Bank“ klicken, werden Sie zur Anmelde-URL für Asset Bank weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

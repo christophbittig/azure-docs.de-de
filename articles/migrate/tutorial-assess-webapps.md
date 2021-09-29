@@ -5,12 +5,12 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: tutorial
 ms.date: 07/28/2021
-ms.openlocfilehash: 1bbe267aef27151b3ef70e88e0a8e85091d8a33d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7d37b3755e79c8117bbec7269e7ef97e8edb7429
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121783429"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124782307"
 ---
 # <a name="tutorial-assess-aspnet-web-apps-for-migration-to-azure-app-service"></a>Tutorial: Bewerten von ASP.NET-Web-Apps für die Migration zu Azure App Service
 
@@ -83,7 +83,7 @@ Hier wird die Verteilung der bewerteten Web-Apps angezeigt. Sie können einen Dr
 
 #### <a name="azure-app-service-cost-details"></a>Details zu Azure App Service-Kosten
 
-Für einen [App Service-Plan](/azure/app-service/overview-hosting-plans) fällt eine [Gebühr](https://azure.microsoft.com/pricing/details/app-service/windows/) für die genutzten Computeressourcen an.
+Für einen [App Service-Plan](../app-service/overview-hosting-plans.md) fällt eine [Gebühr](https://azure.microsoft.com/pricing/details/app-service/windows/) für die genutzten Computeressourcen an.
 
 ### <a name="review-readiness"></a>Überprüfen der Bereitschaft
 

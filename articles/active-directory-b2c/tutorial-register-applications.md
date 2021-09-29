@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/18/2021
+ms.date: 09/20/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2ec67669edeb52af1044c97c984eb6ba36fd1a0b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 913393b36ec91b1db576a39711deeddca0f98258
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104579636"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128581619"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>Tutorial: Registrieren einer Webanwendung in Azure Active Directory B2C
 
@@ -42,7 +42,8 @@ Zum Registrieren einer Webanwendung in Ihrem Azure AD B2C-Mandanten können Sie
 #### <a name="app-registrations"></a>[App-Registrierungen](#tab/app-reg-ga/)
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
 1. Wählen Sie **App-Registrierungen** aus, und wählen Sie dann **Registrierung einer neuen Anwendung** aus.
 1. Geben Sie unter **Name** einen Namen für die Anwendung ein. Beispiel: *webapp1*.
@@ -62,7 +63,8 @@ Zum Registrieren einer Webanwendung in Ihrem Azure AD B2C-Mandanten können Sie
 #### <a name="applications-legacy"></a>[Anwendungen (Legacy)](#tab/applications-legacy/)
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
 1. Wählen Sie **Anwendungen (Legacy)** und dann **Hinzufügen** aus.
 1. Geben Sie einen Namen für die Anwendung ein. Beispiel: *webapp1*.

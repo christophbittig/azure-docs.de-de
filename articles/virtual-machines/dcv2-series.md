@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 0d37e8308afd75b310893272f338fb5a3245a8ce
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: c5232d9ed3e7ab7caec6134e4c5d3e553e2b543c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696521"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124818404"
 ---
 # <a name="dcsv2-series"></a>DCsv2-Serie
 
@@ -63,5 +63,7 @@ Beispiele für Anwendungsfälle sind Freigabe von vertraulichen Mehrparteiendate
 - [Vorherige Generationen](sizes-previous-gen.md)
 - [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 - [Weitere Informationen zu Datenträgertypen](./disks-types.md#ultra-disk)
+
+Preisrechner: [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 
 Weitere Informationen dazu, wie Sie mit [Azure-Computeeinheiten (ACU)](acu.md) die Computeleistung von Azure-SKUs vergleichen können.

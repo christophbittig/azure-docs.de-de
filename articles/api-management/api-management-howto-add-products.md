@@ -1,17 +1,17 @@
 ---
 title: 'Tutorial: Erstellen und Veröffentlichen eines Produkts in Azure API Management'
 description: In diesem Tutorial erstellen und veröffentlichen Sie ein Produkt in Azure API Management. Nachdem es veröffentlicht wurde, können Entwickler die APIs des Produkts verwenden.
-author: mikebudzynski
+author: dlepow
 ms.service: api-management
 ms.topic: tutorial
 ms.date: 02/09/2021
-ms.author: apimpm
-ms.openlocfilehash: 7c0d24c667d2c7c46f65d8c6f3bf6e6e3b52fd00
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.author: danlep
+ms.openlocfilehash: f9d4b1565cc217aaa149e34fc278da779a3d869e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114669647"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643325"
 ---
 # <a name="tutorial-create-and-publish-a-product"></a>Tutorial: Erstellen und Veröffentlichen eines Produkts  
 

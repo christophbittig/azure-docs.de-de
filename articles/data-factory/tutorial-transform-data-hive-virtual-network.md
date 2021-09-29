@@ -8,12 +8,12 @@ ms.author: abnarain
 ms.topic: tutorial
 ms.custom: devx-track-azurepowershell
 ms.date: 01/22/2018
-ms.openlocfilehash: 3382cb1cf42b86b7dbd37b3f006c19e4822800ba
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c82a3fda3eb43fa73a46f934087bfb84e3aa2d1b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121722348"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124769691"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Transformieren von Daten in Azure Virtual Network mithilfe einer Hive-Aktivität in Azure Data Factory
 
@@ -39,10 +39,10 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 - **Azure Storage-Konto**. Erstellen Sie ein Hive-Skript, und laden Sie es in Azure Storage hoch. Die Ausgabe des Hive-Skripts wird in diesem Storage-Konto gespeichert. In diesem Beispiel verwendet der HDInsight-Cluster dieses Azure Storage-Konto als primären Speicher. 
 - **Azure Virtual Network.** Wenn Sie noch nicht über ein Azure Virtual Network verfügen, erstellen Sie ein solches anhand [dieser Anweisungen](../virtual-network/quick-create-portal.md). In diesem Beispiel befindet sich HDInsight in einem Azure Virtual Network. Hier finden Sie die Beispielkonfiguration von Azure Virtual Network. 
 
-    ![Virtuelles Netzwerk erstellen](media/tutorial-transform-data-using-hive-in-vnet/create-virtual-network.png)
+    :::image type="content" source="media/tutorial-transform-data-using-hive-in-vnet/create-virtual-network.png" alt-text="Virtuelles Netzwerk erstellen":::
 - **HDInsight-Cluster.** Erstellen Sie einen HDInsight-Cluster, und binden Sie ihn in das virtuelle Netzwerk ein, das Sie im vorherigen Schritt erstellt haben. Befolgen Sie dazu die Anweisungen in folgendem Artikel: [Erweitern von Azure HDInsight per Azure Virtual Network](../hdinsight/hdinsight-plan-virtual-network-deployment.md). Hier finden Sie die Beispielkonfiguration von HDInsight in einem virtuellen Netzwerk. 
 
-    ![HDInsight in einem virtuellen Netzwerk](media/tutorial-transform-data-using-hive-in-vnet/hdinsight-in-vnet-configuration.png)
+    :::image type="content" source="media/tutorial-transform-data-using-hive-in-vnet/hdinsight-in-vnet-configuration.png" alt-text="HDInsight in einem virtuellen Netzwerk":::
 - **Azure PowerShell**. Befolgen Sie die Anweisungen unter [Get started with Azure PowerShell cmdlets](/powershell/azure/install-Az-ps) (Erste Schritte mit Azure PowerShell-Cmdlets).
 
 ### <a name="upload-hive-script-to-your-blob-storage-account"></a>Hochladen eines Hive-Skripts in Ihr Blob Storage-Konto
@@ -152,11 +152,11 @@ In diesem Abschnitt erstellen Sie eine selbstgehostete Integration Runtime und o
 3. Erstellen Sie einen virtuellen Azure-Computer, und binden Sie ihn in das gleiche virtuelle Netzwerk ein, das Ihren HDInsight-Cluster enthält. Ausführliche Informationen finden Sie unter [Erstellen virtueller Computer](../virtual-network/quick-create-portal.md#create-virtual-machines). Binden Sie sie in ein Azure Virtual Network ein. 
 4. Laden Sie die [selbstgehostete Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) auf den virtuellen Azure-Computer herunter. Verwenden Sie den Authentifizierungsschlüssel, den Sie im vorherigen Schritt abgerufen haben, um die selbstgehostete Integration Runtime manuell zu registrieren. 
 
-   ![Registrieren der Integration Runtime](media/tutorial-transform-data-using-hive-in-vnet/register-integration-runtime.png)
+   :::image type="content" source="media/tutorial-transform-data-using-hive-in-vnet/register-integration-runtime.png" alt-text="Registrieren der Integration Runtime":::
 
-   Folgende Meldung wird angezeigt, wenn die selbstgehostete Integration Runtime erfolgreich registriert wurde: ![Erfolgreich registriert](media/tutorial-transform-data-using-hive-in-vnet/registered-successfully.png)
+   Folgende Meldung wird angezeigt, wenn die selbstgehostete Integration Runtime erfolgreich registriert wurde: :::image type="content" source="media/tutorial-transform-data-using-hive-in-vnet/registered-successfully.png" alt-text="Erfolgreich registriert":::
 
-   Folgende Seite wird angezeigt, wenn der Knoten mit dem Clouddienst verbunden ist: ![Knoten ist verbunden](media/tutorial-transform-data-using-hive-in-vnet/node-is-connected.png)
+   Folgende Seite wird angezeigt, wenn der Knoten mit dem Clouddienst verbunden ist: :::image type="content" source="media/tutorial-transform-data-using-hive-in-vnet/node-is-connected.png" alt-text="Knoten ist verbunden":::
 
 ## <a name="author-linked-services"></a>Erstellen verknüpfter Dienste
 

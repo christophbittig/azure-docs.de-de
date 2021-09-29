@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.author: susabat
 author: ssabat
 ms.custom: seo-lt-2019
-ms.date: 08/24/2021
-ms.openlocfilehash: 5d07ecedbc8fe4ff0670c9e8aa96fdf2a92359d3
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.date: 09/09/2021
+ms.openlocfilehash: c384985ae178f22c15c4a408d7a2cd42d0fbf416
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123098948"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743382"
 ---
 # <a name="templates"></a>Vorlagen
 
@@ -27,15 +27,15 @@ Sie können mit dem Erstellen einer Data Factory-Pipeline aus einer Vorlage begi
 
 1.  Wählen Sie auf der Startseite von Data Factory im Abschnitt **Weitere Informationen** die Option **Pipelinevorlagen** aus, um den Vorlagenkatalog zu öffnen.
 
-    ![Screenshot: Öffnen des Vorlagenkatalogs über die Data Factory-Startseite](media/doc-common-process/home-page-pipeline-templates-tile.png)
+    :::image type="content" source="media/doc-common-process/home-page-pipeline-templates-tile.png" alt-text="Screenshot: Öffnen des Vorlagenkatalogs über die Data Factory-Startseite":::
 
 1.  Wählen Sie im Ressourcen-Explorer auf der Registerkarte „Autor“ das Pluszeichen ( **+** ) aus, und klicken Sie dann **Pipeline aus Vorlage**, um den Vorlagenkatalog zu öffnen.
 
-    ![Screenshot: Öffnen des Vorlagenkatalogs über die Registerkarte „Autor“](media/solution-templates-introduction/templates-introduction-image-2.png)
+    :::image type="content" source="media/solution-templates-introduction/templates-introduction-image-2.png" alt-text="Screenshot: Öffnen des Vorlagenkatalogs über die Registerkarte „Autor“":::
 
 ## <a name="template-gallery"></a>Vorlagenkatalog
 
-![Screenshot: Seite „Vorlagenkatalog“](media/solution-templates-introduction/templates-introduction-image-3.png)
+:::image type="content" source="media/solution-templates-introduction/templates-introduction-image-3.png" alt-text="Screenshot: Seite „Vorlagenkatalog“":::
 
 ### <a name="out-of-the-box-data-factory-templates"></a>Integrierte Data Factory-Vorlagen
 
@@ -81,11 +81,11 @@ Data Factory verwendet Azure Resource Manager-Vorlagen für das Speichern von Da
 
 Sie können auch eine Pipeline als Vorlage speichern, indem Sie auf der Registerkarte „Pipeline“ die Option **Als Vorlage speichern** auswählen.
 
-![Screenshot: Speichern einer Pipeline als Vorlage](media/solution-templates-introduction/templates-introduction-image-4.png)
+:::image type="content" source="media/solution-templates-introduction/templates-introduction-image-4.png" alt-text="Screenshot: Speichern einer Pipeline als Vorlage":::
 
 Nachdem Sie auf der Seite **Vorlagenkatalog** die Option **Meine Vorlagen** aktiviert haben, können Sie die als Vorlagen gespeicherten Pipelines im rechten Seitenbereich dieser Seite anzeigen. 
 
-![Screenshot: Bereich „Meine Vorlagen“](media/solution-templates-introduction/templates-introduction-image-5.png)
+:::image type="content" source="media/solution-templates-introduction/templates-introduction-image-5.png" alt-text="Screenshot: Bereich „Meine Vorlagen“":::
 
 > [!NOTE]
 > Um das Feature „Meine Vorlagen“ verwenden zu können, müssen Sie die Git-Integration aktivieren. Azure DevOps-Git- und GitHub werden unterstützt.

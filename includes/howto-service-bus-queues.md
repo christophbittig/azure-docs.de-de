@@ -2,14 +2,14 @@
 author: spelluru
 ms.service: service-bus-messaging
 ms.topic: include
-ms.date: 11/25/2018
+ms.date: 09/10/2021
 ms.author: spelluru
-ms.openlocfilehash: d3d33c87dc1adf65a53b71cc4c833e7f4a191670
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68b0eb42d111abbdf572926ffb506065a79fa316
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "67178331"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664928"
 ---
 ## <a name="what-are-service-bus-queues"></a>Was sind Service Bus-Warteschlangen?
 Service Bus-Warteschlangen unterstützen ein Kommunikationsmodell namens **Brokermessaging** . Bei der Verwendung von Warteschlangen kommunizieren die Komponenten einer verteilten Anwendung nicht direkt miteinander, sondern tauschen Nachrichten über eine Warteschlange aus, die als Zwischenstufe (Broker) fungiert. Ein Nachrichtenproducer (Absender) übergibt eine Nachricht an die Warteschlange und setzt seine Funktion fort. Ein Nachrichtenconsumer (Empfänger) ruft die Nachricht asynchron aus der Warteschlange ab und verarbeitet sie. Der Producer muss nicht auf eine Antwort vom Consumer warten, um seine Funktion fortzusetzen und weitere Nachrichten zu schicken. Warteschlangen liefern die Nachrichten im **First In, First Out (FIFO)** -Verfahren an einen oder mehrere Consumer. Die Nachrichten werden also normalerweise in der gleichen Reihenfolge von den Consumern empfangen und verarbeitet, wie sie in die Warteschlange übergeben wurden, und jede Nachricht wird nur von einem Consumer verarbeitet.

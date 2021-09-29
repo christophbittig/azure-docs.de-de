@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 6f413d8981847c92f5393ffbe24775d77e493011
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: deac8e43ab9821d7fdcdc9e6835c114d9a3d2288
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92452223"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124834492"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-foko-retail"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Foko Retail
 
@@ -134,7 +134,7 @@ In diesem Abschnitt erstellen Sie in Foko Retail einen Benutzer namens B. Simo
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Foko Retail“ klicken, sollten Sie automatisch bei der Foko Retail-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+Wenn Sie im Zugriffsbereich auf die Kachel „Foko Retail“ klicken, sollten Sie automatisch bei der Foko Retail-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

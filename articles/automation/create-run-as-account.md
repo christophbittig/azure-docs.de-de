@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 05/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 7ed16e9bbd1071e4831e814e617d69dc4a638510
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 4c66a06d9ee54a590f83c026604d72e3933b21fa
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110078254"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836870"
 ---
 # <a name="how-to-create-an-azure-automation-run-as-account"></a>Erstellen eines ausführenden Azure Automation-Kontos
 
@@ -116,6 +116,6 @@ Das PowerShell-Skript unterstützt mehrere Konfigurationen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zu den ersten Schritten mit PowerShell-Runbooks finden Sie unter [Tutorial: Erstellen eines PowerShell-Runbooks](learn/automation-tutorial-runbook-textual-powershell.md).
+* Informationen zu den ersten Schritten mit PowerShell-Runbooks finden Sie unter [Tutorial: Erstellen eines PowerShell-Runbooks](./learn/powershell-runbook-managed-identity.md).
 
 * Informationen zu den ersten Schritten mit Python 3-Runbooks finden Sie im [Tutorial: Erstellen eines Python 3-Runbooks](learn/automation-tutorial-runbook-textual-python-3.md).

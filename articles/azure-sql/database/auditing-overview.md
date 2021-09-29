@@ -10,12 +10,12 @@ ms.author: arupp
 ms.reviewer: vanto
 ms.date: 08/25/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 5750192116b9d6008bf1bb903dd36875b6939ffb
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 512f43c102aa40707170021ec1b1fd6372437d64
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866481"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124793537"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Überwachen von Azure SQL-Datenbank und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -159,7 +159,7 @@ Klicken Sie zum Konfigurieren des Schreibvorgangs für Überwachungsprotokolle i
 
 ## <a name="analyze-audit-logs-and-reports"></a><a id="subheading-3"></a>Analysieren von Überwachungsprotokollen und -berichten
 
-Führen Sie die folgenden Schritte aus, wenn Sie Überwachungsprotokolle in Azure Monitor-Protokolle schreiben möchten:
+Wenn Sie Überwachungsprotokolle in Log Analytics schreiben möchten:
 
 - Verwenden Sie das [Azure-Portal](https://portal.azure.com). Öffnen Sie die entsprechende Datenbank. Wählen Sie in der Datenbank oben auf der Seite **Überwachung** die Option **Überwachungsprotokolle anzeigen** aus.
 

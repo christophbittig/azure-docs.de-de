@@ -2,7 +2,6 @@
 title: 'Sprachunterstützung: Formularerkennung'
 titleSuffix: Azure Applied AI Services
 description: Hier erfahren Sie mehr über die menschlichen Sprachen, die in der Formularerkennung verfügbar sind.
-services: cognitive-services
 author: laujan
 manager: nitinme
 ms.service: applied-ai-services
@@ -10,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 05/10/2021
 ms.author: lajanuar
-ms.openlocfilehash: 86d641701ad1df72568c70c3c1ab5788f4029f88
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: fa825186a050326aaf6c9cf21cbe380dabd6c223
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122327389"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626283"
 ---
 # <a name="language-support-for-form-recognizer"></a>Sprachunterstützung für die Formularerkennung
 

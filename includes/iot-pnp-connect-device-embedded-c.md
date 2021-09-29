@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-develop
 ms.topic: include
 ms.date: 04/28/2021
-ms.openlocfilehash: d6df060afb65814175b02137720f7a9f27a6c4eb
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: c4e0070a9647412a873953af59338b13f4c653fd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122263277"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128910180"
 ---
 Wenn Sie für *eingeschränkte Geräte* entwickeln, können Sie IoT Plug & Play zusammen mit Folgendem verwenden:
 
@@ -37,9 +37,9 @@ Das SDK for Embedded C-Repository enthält [mehrere Beispiele](https://github.co
 > [!NOTE]
 > Diese Beispiele werden zu Schulungs- und Debugzwecken bei der Ausführung unter Windows und Linux gezeigt. In einem Produktionsszenario sind die Beispiele nur für eingeschränkte Geräte vorgesehen.
 
-- [Beispiel für einen Thermostaten mit dem SDK for Embedded C](https://github.com/Azure/azure-sdk-for-c/blob/master/sdk/samples/iot/paho_iot_hub_pnp_sample.c)
+- [Beispiel für einen Thermostaten mit dem SDK for Embedded C](https://github.com/Azure/azure-sdk-for-c/blob/main/sdk/samples/iot/paho_iot_pnp_sample.c)
 
-- [Beispiel für eine Temperatursteuerung mit dem SDK for Embedded C](https://github.com/Azure/azure-sdk-for-c/blob/master/sdk/samples/iot/paho_iot_hub_pnp_component_sample.c)
+- [Beispiel für eine Temperatursteuerung mit dem SDK for Embedded C](https://github.com/Azure/azure-sdk-for-c/blob/main/sdk/samples/iot/paho_iot_pnp_component_sample.c)
 
 ## <a name="using-azure-rtos"></a>Verwenden von Azure RTOS
 

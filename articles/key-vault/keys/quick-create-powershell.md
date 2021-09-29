@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 01/27/2021
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 083cd20747c5dec9b326707489b2494ff5a89804
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 51b1a255eb538dabd735e77ae6161d53c89e90d3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110664305"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128675837"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-powershell"></a>Schnellstart: Festlegen eines Schlüssels und Abrufen des Schlüssels aus Azure Key Vault mit Azure PowerShell
 
@@ -49,7 +49,7 @@ Geben Sie die folgenden Befehle ein, um einen Schlüssel mit dem Namen **Example
 Add-AzKeyVaultKey -VaultName "<your-unique-keyvault-name>" -Name "ExampleKey" -Destination "Software"
 ```
 
-Nun können Sie mit dem dazugehörigen URI auf den Schlüssel verweisen, den Sie der Azure Key Vault-Instanz hinzugefügt haben. Verwenden Sie **„https://<Ihr-eindeutiger-Schlüsseltresor-Name>.vault.azure.net/keys/ExampleKey“** , um die aktuelle Version abzurufen. 
+Nun können Sie mit dem dazugehörigen URI auf den Schlüssel verweisen, den Sie der Azure Key Vault-Instanz hinzugefügt haben. Verwenden Sie **`https://<your-unique-keyvault-name>.vault.azure.net/keys/ExampleKey`** , um die aktuelle Version abzurufen. 
 
 So zeigen Sie den zuvor gespeicherten Schlüssel an:
 

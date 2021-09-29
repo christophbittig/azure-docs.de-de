@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: e7d9e4da611bbbf13bacee60ed73248f5b39c14c
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: 9de59b4510642ab70540c4217ef074347a34ac89
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123307056"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124764182"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory-or-azure-synapse-analytics"></a>Kopieren und Transformieren von Daten in Azure Blobspeicher mithilfe von Azure Data Factory oder Azure Synapse Analytics
 
@@ -59,7 +59,7 @@ Führen Sie die folgenden Schritte aus, um einen verknüpften Azure Blobspeicher
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Screenshot: Erstellen eines neuen verknüpften Diensts mithilfe der Azure Data Factory-Benutzeroberfläche":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Screenshot: Erstellen eines neuen verknüpften Diensts über die Azure Data Factory-Benutzeroberfläche":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -98,7 +98,7 @@ Dieser Blob Storage-Connector unterstützt die folgenden Authentifizierungsypen.
 
 Die folgenden Eigenschaften werden für die Authentifizierung von Speicherkontoschlüsseln in Azure Data Factory- oder Synapse-Pipelines unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | Typ | Die `type`-Eigenschaft muss auf `AzureBlobStorage` (empfohlen) oder `AzureStorage` (siehe Hinweise unten) festgelegt werden. | Ja |
 | connectionString | Geben Sie für die `connectionString`-Eigenschaft die Informationen ein, die zum Herstellen einer Verbindung mit Azure Storage erforderlich sind. <br/> Sie können auch den Kontoschlüssel in Azure Key Vault speichern und die `accountKey`-Konfiguration aus der Verbindungszeichenfolge pullen. Weitere Informationen finden Sie in den folgenden Beispielen und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
@@ -168,7 +168,7 @@ Weitere Informationen zu Shared Access Signatures finden Sie unter [Shared Acces
 
 Für die Verwendung der SAS-Authentifizierung werden die folgenden Eigenschaften unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | Typ | Die `type`-Eigenschaft muss auf `AzureBlobStorage` (empfohlen) oder `AzureStorage` (siehe Hinweise unten) festgelegt werden. | Ja |
 | sasUri | Geben Sie den SAS-URI für Azure Storage-Ressourcen wie Blobs oder Container an. <br/>Markieren Sie dieses Feld als `SecureString`, um es sicher zu speichern. Sie können auch das SAS-Token in Azure Key Vault speichern, um die automatische Rotation zu nutzen und den Tokenabschnitt zu entfernen. Weitere Informationen finden Sie in den folgenden Beispielen sowie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
@@ -252,7 +252,7 @@ Zum Verwenden der Dienstprinzipalauthentifizierung führen Sie die folgenden Sch
 
 Diese Eigenschaften werden für den mit Azure Blob Storage verknüpften Dienst unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **AzureBlobStorage** festgelegt sein. | Ja |
 | serviceEndpoint | Geben Sie den Azure Blob Storage-Dienstendpunkt mit dem Muster `https://<accountName>.blob.core.windows.net/` an. | Ja |
@@ -311,7 +311,7 @@ Weitere allgemeine Informationen zur Azure Storage-Authentifizierung finden Sie 
 
 Diese Eigenschaften werden für den mit Azure Blob Storage verknüpften Dienst unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **AzureBlobStorage** festgelegt sein. | Ja |
 | serviceEndpoint | Geben Sie den Azure Blob Storage-Dienstendpunkt mit dem Muster `https://<accountName>.blob.core.windows.net/` an. | Ja |
@@ -352,7 +352,7 @@ Weitere allgemeine Informationen zur Azure Storage-Authentifizierung finden Sie 
 
 Diese Eigenschaften werden für den mit Azure Blob Storage verknüpften Dienst unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **AzureBlobStorage** festgelegt sein. | Ja |
 | serviceEndpoint | Geben Sie den Azure Blob Storage-Dienstendpunkt mit dem Muster `https://<accountName>.blob.core.windows.net/` an. | Ja |
@@ -402,7 +402,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Folgende Eigenschaften werden für Azure Blob Storage unter den `location`-Einstellungen in formatbasierten Datasets unterstützt:
 
-| Eigenschaft   | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft   | Beschreibung                                                  | Erforderlich |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | Die **type**-Eigenschaft des Speicherorts im Dataset muss auf **AzureBlobStorageLocation** festgelegt werden. | Ja      |
 | Container  | Der BLOB-Container.                                          | Ja      |
@@ -446,7 +446,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Folgende Eigenschaften werden für Azure Blob Storage unter den `storeSettings`-Einstellungen in formatbasierten Kopierquellen unterstützt:
 
-| Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich                                      |
+| Eigenschaft                 | Beschreibung                                                  | Erforderlich                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | Die **type**-Eigenschaft unter `storeSettings` muss auf **AzureBlobStorageReadSettings** festgelegt werden. | Ja                                           |
 | ***Suchen Sie die zu kopierenden Dateien:*** |  |  |
@@ -517,7 +517,7 @@ Folgende Eigenschaften werden für Azure Blob Storage unter den `storeSettings`-
 
 Folgende Eigenschaften werden für Azure Blob Storage unter den `storeSettings`-Einstellungen in formatbasierten Kopiersenken unterstützt:
 
-| Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft                 | Beschreibung                                                  | Erforderlich |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | Typ                     | Die `type`-Eigenschaft unter `storeSettings` muss auf `AzureBlobStorageWriteSettings` festgelegt werden. | Ja      |
 | copyBehavior             | Definiert das Kopierverhalten, wenn es sich bei der Quelle um Dateien aus einem dateibasierten Datenspeicher handelt.<br/><br/>Zulässige Werte sind:<br/><b>- PreserveHierarchy (Standard)</b>: Behält die Dateihierarchie im Zielordner bei. Der relative Pfad der Quelldatei zum Quellordner ist mit dem relativen Pfad der Zieldatei zum Zielordner identisch.<br/><b>- FlattenHierarchy</b>: Alle Dateien aus dem Quellordner befinden sich auf der ersten Ebene des Zielordners. Die Namen für die Zieldateien werden automatisch generiert. <br/><b>- MergeFiles</b>: Alle Dateien aus dem Quellordner werden in einer Datei zusammengeführt. Wenn der Datei- oder Blobname angegeben wurde, entspricht der Name der Zusammenführungsdatei dem angegebenen Namen. Andernfalls wird der Dateiname automatisch generiert. | Nein       |
@@ -629,7 +629,7 @@ Formatspezifische Einstellungen finden Sie in der Dokumentation für das jeweili
 
 Bei der Quelltransformation können Sie in Azure Blob Storage Daten aus einem Container, Ordner oder einer einzelnen Datei lesen. Über die Registerkarte **Source options** (Quellenoptionen) können Sie verwalten, wie die Dateien gelesen werden. 
 
-![Quelloptionen](media/data-flow/sourceOptions1.png "Quelloptionen")
+:::image type="content" source="media/data-flow/sourceOptions1.png" alt-text="Quelloptionen":::
 
 **Platzhalterpfade:** Mithilfe eines Platzhaltermusters wird der Dienst angewiesen, die einzelnen übereinstimmenden Ordner und Dateien in einer einzigen Quelltransformation zu durchlaufen. Dies ist eine effektive Methode zur Verarbeitung von mehreren Dateien in einem einzigen Datenfluss. Über das Pluszeichen (+), das angezeigt wird, wenn Sie mit dem Cursor auf Ihr vorhandenes Platzhaltermuster zeigen, können Sie weitere Platzhaltermuster hinzufügen.
 
@@ -651,11 +651,11 @@ Beispiele für Platzhalter:
 
 Legen Sie zunächst einen Platzhalter fest, um darin alle Pfade, die die partitionierten Ordner sind, sowie die Blattdateien einzuschließen, die gelesen werden sollen.
 
-![Einstellungen für die Partitionsquelldatei](media/data-flow/partfile2.png "Einstellung der Partitionsdatei")
+:::image type="content" source="media/data-flow/partfile2.png" alt-text="Einstellungen für die Partitionsquelldatei":::
 
 Verwenden Sie die Einstellung **Partition root path** (Partitionsstammpfad), um zu definieren, was die oberste Ebene der Ordnerstruktur ist. Wenn Sie die Inhalte Ihrer Daten über die Datenvorschau anzeigen, sehen Sie, dass der Dienst die aufgelösten Partitionen hinzufügen wird, die auf Ihren einzelnen Ordnerebenen gefunden werden.
 
-![Partitionsstammpfad](media/data-flow/partfile1.png "Vorschau des Partitionsstammpfads")
+:::image type="content" source="media/data-flow/partfile1.png" alt-text="Partitionsstammpfad":::
 
 **Liste der Dateien**: Dies ist eine Dateigruppe. Erstellen Sie eine Textdatei mit einer Liste der relativen Pfade der zu verarbeitenden Dateien. Verweisen Sie auf diese Textdatei.
 
@@ -688,7 +688,7 @@ In diesem Fall werden alle Dateien, die aus `/data/sales` erstellt wurden, in `/
 
 In der Senkentransformation können Sie in Azure Blob Storage in einen Container oder Ordner schreiben. Über die Registerkarte **Einstellungen** können Sie verwalten, wie die Dateien geschrieben werden.
 
-![Senkenoptionen](media/data-flow/file-sink-settings.png "Senkenoptionen")
+:::image type="content" source="media/data-flow/file-sink-settings.png" alt-text="Senkenoptionen":::
 
 **Ordner löschen:** Bestimmt, ob der Zielordner vor dem Schreiben der Daten gelöscht wird.
 
@@ -720,7 +720,7 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivi
 
 ### <a name="legacy-dataset-model"></a>Legacy-Datasetmodell
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | Typ | Die `type`-Eigenschaft des Datasets muss auf `AzureBlob` festgelegt sein. | Ja |
 | folderPath | Der Pfad zum Container und Ordner in Blob Storage. <br/><br/>Für den Pfad mit Ausnahme des Containernamens werden Platzhalterfilter unterstützt. Folgende Platzhalter sind zulässig: `*` (entspricht null [0] oder mehr Zeichen) und `?` (entspricht null [0] oder einem einzelnen Zeichen). Verwenden Sie `^` als Escapezeichen, wenn Ihr Ordnername einen Platzhalter oder dieses Escapezeichen enthält. <br/><br/>Ein Beispiel ist `myblobcontainer/myblobfolder/`. Weitere Beispiele finden Sie unter [Beispiele für Ordner- und Dateifilter](#folder-and-file-filter-examples). | „Ja“ für die Kopier- oder Suchaktivität, „Nein“ für die GetMetadata-Aktivität |
@@ -765,7 +765,7 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivi
 
 ### <a name="legacy-source-model-for-the-copy-activity"></a>Legacyquellmodell für die Kopieraktivität
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | Typ | Die `type`-Eigenschaft der Quelle der Kopieraktivität muss auf `BlobSource` festgelegt werden. | Ja |
 | recursive | Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. Beachten Sie Folgendes: Wenn `recursive` auf `true` festgelegt ist und es sich bei der Senke um einen dateibasierten Speicher handelt, wird ein leerer Ordner oder Unterordner nicht in die Senke kopiert oder dort erstellt.<br/>Zulässige Werte sind `true` (Standard) und `false`. | Nein |
@@ -805,7 +805,7 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivi
 
 ### <a name="legacy-sink-model-for-the-copy-activity"></a>Legacysenkenmodell für die Kopieraktivität
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | Typ | Die `type`-Eigenschaft der Senke der Kopieraktivität muss auf `BlobSink` festgelegt werden. | Ja |
 | copyBehavior | Definiert das Kopierverhalten, wenn es sich bei der Quelle um Dateien aus einem dateibasierten Datenspeicher handelt.<br/><br/>Zulässige Werte sind:<br/><b>- PreserveHierarchy (Standard)</b>: Behält die Dateihierarchie im Zielordner bei. Der relative Pfad der Quelldatei zum Quellordner entspricht dem relativen Pfad der Zieldatei zum Zielordner.<br/><b>- FlattenHierarchy</b>: Alle Dateien aus dem Quellordner befinden sich auf der ersten Ebene des Zielordners. Die Namen für die Zieldateien werden automatisch generiert. <br/><b>- MergeFiles</b>: Alle Dateien aus dem Quellordner werden in einer Datei zusammengeführt. Wenn der Datei- oder Blobname angegeben wurde, entspricht der Name der Zusammenführungsdatei dem angegebenen Namen. Andernfalls wird der Dateiname automatisch generiert. | Nein |

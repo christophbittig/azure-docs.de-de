@@ -2,13 +2,13 @@
 title: 'Azure Event Grid: Diagnoseprotokolle für Themen oder Domänen'
 description: In diesem Artikel erhalten Sie konzeptionelle Informationen über Diagnoseprotokolle für ein Azure Event Grid-Thema oder eine -Domäne.
 ms.topic: conceptual
-ms.date: 12/03/2020
-ms.openlocfilehash: 13577e02cba07fc788bb4846cddd3c0ed894f2b1
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.date: 09/28/2021
+ms.openlocfilehash: 057d4856e6a1bc0574639def731dffc99f988994
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108314925"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216895"
 ---
 #  <a name="diagnostic-logs-for-azure-event-grid-topicsdomains"></a>Diagnoseprotokolle für Azure Event Grid-Themen und -Domänen
 Diagnoseeinstellungen ermöglichen es Event Grid-Benutzern, Protokolle zu **Veröffentlichungs- und Zustellungsfehlern** entweder in einem Speicherkonto, einer Event Hub-Instanz oder einem Log Analytics-Arbeitsbereich zu erfassen und anzuzeigen. In diesem Artikel werden das Schema für die Protokolle und ein Beispielprotokolleintrag bereitgestellt.

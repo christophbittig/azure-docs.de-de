@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: tutorial
 ms.custom: devx-track-azurepowershell
 ms.date: 02/18/2021
-ms.openlocfilehash: fb01749b71c89b4290abf71e7f8ed5d95b891cdd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 38f98ab557738031e4c3933a4bc914b31c42cd91
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122637999"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124814841"
 ---
 # <a name="tutorial-copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>Tutorial: Kopieren von Daten aus einer SQL Server-Datenbank in Azure Blob Storage
 
@@ -82,7 +82,7 @@ In diesem Tutorial verwenden Sie Name und Schlüssel Ihres Azure-Speicherkontos.
 
 1. Wählen Sie im linken Bereich die Option **Weitere Dienste**, filtern Sie nach dem Schlüsselwort **Speicher**, und wählen Sie dann **Speicherkonten** aus.
 
-    ![Suchen nach einem Speicherkonto](media/doc-common-process/search-storage-account.png)
+    :::image type="content" source="media/doc-common-process/search-storage-account.png" alt-text="Suchen nach einem Speicherkonto":::
 
 1. Filtern Sie in der Liste mit den Speicherkonten nach Ihrem Speicherkonto (falls erforderlich), und wählen Sie Ihr Speicherkonto aus.
 
@@ -95,13 +95,13 @@ In diesem Abschnitt erstellen Sie einen Blobcontainer mit dem Namen **adftutoria
 
 1. Wechseln Sie im Fenster **Speicherkonto** zu **Übersicht**, und wählen Sie die Option **Blobs**.
 
-    ![Option zum Auswählen von Blobs](media/tutorial-hybrid-copy-powershell/select-blobs.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/select-blobs.png" alt-text="Option zum Auswählen von Blobs":::
 
 1. Wählen Sie im Fenster **Blob-Dienst** die Option **Container**.
 
 1. Geben Sie im Fenster **Neuer Container** im Feld **Name** den Namen **adftutorial** ein, und wählen Sie **OK**.
 
-    ![Eingeben des Containernamens](media/tutorial-hybrid-copy-powershell/new-container-dialog.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/new-container-dialog.png" alt-text="Eingeben des Containernamens":::
 
 1. Wählen Sie in der Liste mit den Containern die Option **adftutorial**.  
 
@@ -266,21 +266,21 @@ In diesem Abschnitt erstellen Sie eine selbstgehostete Integration Runtime und o
 
 1. Fügen Sie im Fenster **Integrationslaufzeit (selbstgehostet) registrieren** den Schlüssel ein, den Sie im vorherigen Abschnitt gespeichert haben, und wählen Sie dann die Option **Registrieren**.
 
-    ![Registrieren der Integration Runtime](media/tutorial-hybrid-copy-powershell/register-integration-runtime.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/register-integration-runtime.png" alt-text="Registrieren der Integration Runtime":::
 
 1. Wählen Sie im Fenster **Neuer Integration Runtime-Knoten (selbstgehostet)** die Option **Fertig stellen**.
 
-    ![Fenster „Neuer Knoten der Integrationslaufzeit“](media/tutorial-hybrid-copy-powershell/new-integration-runtime-node-page.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/new-integration-runtime-node-page.png" alt-text="Fenster „Neuer Knoten der Integrationslaufzeit“":::
 
  1. Wenn die selbstgehostete Integration Runtime erfolgreich registriert wurde, wird die folgende Meldung angezeigt:
 
-    ![Erfolgreich registriert](media/tutorial-hybrid-copy-powershell/registered-successfully.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/registered-successfully.png" alt-text="Erfolgreich registriert":::
 
 1. Wählen Sie im Fenster **Integrationslaufzeit (selbstgehostet) registrieren** die Option **Konfigurations-Manager starten**.
 
 1. Wenn der Knoten mit dem Clouddienst verbunden ist, wird die folgende Meldung angezeigt:
 
-    ![Knoten ist verbunden](media/tutorial-hybrid-copy-powershell/node-is-connected.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/node-is-connected.png" alt-text="Knoten ist verbunden":::
 
 1. Testen Sie die Verbindung mit Ihrer SQL Server-Datenbank, indem Sie wie folgt vorgehen:
 
@@ -299,7 +299,7 @@ In diesem Abschnitt erstellen Sie eine selbstgehostete Integration Runtime und o
     g. Geben Sie das Kennwort ein, das dem Benutzernamen zugeordnet ist.
 
     h. Wählen Sie die Option **Test**, um zu überprüfen, ob die Integration Runtime eine Verbindung mit SQL Server herstellen kann.  
-    ![Konnektivität erfolgreich](media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png" alt-text="Konnektivität erfolgreich":::
 
     Wenn die Verbindungsherstellung erfolgreich war, wird ein grünes Häkchen angezeigt. Andernfalls wird eine Fehlermeldung angezeigt. Beheben Sie alle Probleme, und stellen Sie sicher, dass die Integration Runtime eine Verbindung mit Ihrer SQL Server-Instanz herstellen kann.
 
@@ -710,7 +710,7 @@ Die Pipeline erstellt den Ausgabeordner *fromonprem* automatisch im Blobcontaine
 1. Wählen Sie in der Liste mit den Ordnern die Option `fromonprem`.
 1. Vergewissern Sie sich, dass die Datei `dbo.emp.txt` angezeigt wird.
 
-    ![Ausgabedatei](media/tutorial-hybrid-copy-powershell/fromonprem-file.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/fromonprem-file.png" alt-text="Ausgabedatei":::
 
 
 ## <a name="next-steps"></a>Nächste Schritte

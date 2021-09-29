@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: rogarana
-ms.openlocfilehash: 1ab8a709f100930117a445f7eee11f2a865df50d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: a741a3bcace98aa4e153f2dc4aaf1b9c900c2003
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108791278"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129080561"
 ---
 Änderungen, die über das Azure-Portal oder den SMB an der Azure-Dateifreigabe vorgenommen wurden, werden im Gegensatz zu Änderungen am Serverendpunkt nicht sofort erkannt und repliziert. Azure Files verfügt bislang über keine Änderungsmitteilungen oder Journalfunktion, sodass es keine Möglichkeit gibt, eine Synchronisierungssitzung automatisch zu initiieren, sobald Dateien geändert werden. Unter Windows Server verwendet die Azure-Dateisynchronisierung das [Windows-USN-Journaling](/windows/win32/fileio/change-journals), um automatisch eine Synchronisierungssitzung zu starten, wenn sich Dateien ändern.
 
@@ -23,4 +23,4 @@ Um Dateien, die in der Azure-Dateifreigabe geändert wurden, sofort zu synchroni
 >[!NOTE]
 >Änderungen, die mithilfe von REST an einer Azure-Dateifreigabe vorgenommen wurden, bewirken keine Aktualisierung der letzten SMB-Änderungszeit, und die Änderungen sind für eine Synchronisierung nicht zu sehen.
 
-Möglicherweise wird für Azure-Dateifreigaben noch eine Änderungserkennung hinzugefügt, die mit USN für Volumes unter Windows Server vergleichbar ist. Helfen Sie uns, dieses Feature für die künftige Entwicklung zu priorisieren, indem Sie auf der [UserVoice-Seite zu Azure Files](https://feedback.azure.com/forums/217298-storage/category/180670-files) dafür abstimmen.
+Möglicherweise wird für Azure-Dateifreigaben noch eine Änderungserkennung hinzugefügt, die mit USN für Volumes unter Windows Server vergleichbar ist.

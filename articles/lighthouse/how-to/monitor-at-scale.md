@@ -3,12 +3,12 @@ title: Überwachen von delegierten Ressourcen in beliebigem Umfang
 description: Azure Lighthouse unterstützt Sie dabei, Azure Monitor-Protokolle für alle Kundenmandanten auf skalierbare Weise zu verwenden.
 ms.date: 08/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 3424078b00aef569f054d6d3c02382f4bd071a91
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: d261fd41c300f317e34ff7cacafa53911b7bbc12
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122356700"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124736620"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Überwachen von delegierten Ressourcen in beliebigem Umfang
 
@@ -28,7 +28,7 @@ Es wird empfohlen, diese Arbeitsbereiche direkt in den Kundenmandanten zu erstel
 > [!TIP]
 > Alle Automation-Konten, die für den Zugriff auf Daten aus einem Log Analytics-Arbeitsbereich verwendet werden, müssen im gleichen Mandanten wie der Arbeitsbereich erstellt werden.
 
-Sie können einen Log Analytics-Arbeitsbereich im [Azure-Portal](../../azure-monitor/logs/quick-create-workspace.md), über die [Azure CLI](../../azure-monitor/logs/quick-create-workspace-cli.md) oder mit [Azure PowerShell](../../azure-monitor/logs/powershell-workspace-configuration.md) erstellen.
+Sie können einen Log Analytics-Arbeitsbereich im [Azure-Portal](../../azure-monitor/logs/quick-create-workspace.md), über die [Azure CLI](../../azure-monitor/logs/resource-manager-workspace.md) oder mit [Azure PowerShell](../../azure-monitor/logs/powershell-workspace-configuration.md) erstellen.
 
 > [!IMPORTANT]
 > Wenn alle Arbeitsbereiche in den Mandanten von Kunden erstellt werden, müssen die Microsoft.Insights-Ressourcenanbieter auch für ein Abonnement im Verwaltungsmandanten [registriert](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider) werden. Wenn Ihr Verwaltungsmandant nicht über ein vorhandenes Azure-Abonnement verfügt, können Sie den Ressourcenanbieter manuell registrieren, indem Sie die folgenden PowerShell-Befehle verwenden:

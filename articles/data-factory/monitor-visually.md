@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.subservice: monitoring
 ms.topic: conceptual
 ms.date: 07/30/2021
-ms.openlocfilehash: 81649565955d1de031e4eefca548c5d58f7e28c6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6e781316d6aa58961360882d9d11fa6df05640fb
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346187"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124750534"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Visuelles Überwachen von Azure Data Factory
 
@@ -27,7 +27,7 @@ Alle Data Factory-Ausführungen werden standardmäßig in der lokalen Zeitzone d
 
 Die standardmäßige Überwachungsansicht ist eine Liste der ausgelösten Pipelineausführungen im ausgewählten Zeitraum. Sie können den Zeitbereich ändern und nach Status, Pipelinename oder Anmerkung filtern. Zeigen Sie auf die jeweilige Pipelineausführung, um ausführungsspezifische Aktionen wie das erneute Ausführen und den Verbrauchsbericht anzuzeigen.
 
-![Listenansicht zum Überwachen von Pipelineausführungen](media/monitor-visually/pipeline-runs.png)
+:::image type="content" source="media/monitor-visually/pipeline-runs.png" alt-text="Listenansicht zum Überwachen von Pipelineausführungen":::
 
 Das Raster der Pipelineausführungen enthält die folgenden Spalten:
 
@@ -46,21 +46,21 @@ Das Raster der Pipelineausführungen enthält die folgenden Spalten:
 
 Sie müssen die Schaltfläche **Aktualisieren** manuell auswählen, um die Liste der Pipeline- und Aktivitätsausführungen zu aktualisieren. Eine automatische Aktualisierung wird derzeit nicht unterstützt.
 
-![Schaltfläche „Aktualisieren“](media/monitor-visually/refresh.png)
+:::image type="content" source="media/monitor-visually/refresh.png" alt-text="Schaltfläche „Aktualisieren“":::
 
 Um die Ergebnisse einer Debugausführung anzuzeigen, wählen Sie die Registerkarte **Debuggen** aus.
 
-![Auswählen des Symbols zum Anzeigen aktiver Debugausführungen](media/iterative-development-debugging/view-debug-runs.png)
+:::image type="content" source="media/iterative-development-debugging/view-debug-runs.png" alt-text="Auswählen des Symbols zum Anzeigen aktiver Debugausführungen":::
 
 ## <a name="monitor-activity-runs"></a>Überwachung der Aktivitätsausführungen
 
 Um eine ausführliche Ansicht der einzelnen Aktivitätsausführungen einer bestimmten Pipelineausführung anzuzeigen, klicken Sie auf den Namen der Pipeline.
 
-![Anzeigen der Aktivitätsausführungen](media/monitor-visually/view-activity-runs.png)
+:::image type="content" source="media/monitor-visually/view-activity-runs.png" alt-text="Anzeigen der Aktivitätsausführungen":::
 
 In der Listenansicht werden die Aktivitätsausführungen angezeigt, die den einzelnen Pipelineausführungen entsprechen. Zeigen Sie auf die jeweilige Aktivitätsausführung, um ausführungsspezifische Informationen wie die JSON-Eingabe, die JSON-Ausgabe und detaillierte aktivitätsspezifische Überwachungsfunktionen anzuzeigen.
 
-![Es gibt Informationen zu SalesAnalyticsMLPipeline, gefolgt von einer Liste der Aktivitätsausführungen.](media/monitor-visually/activity-runs.png)
+:::image type="content" source="media/monitor-visually/activity-runs.png" alt-text="Es gibt Informationen zu SalesAnalyticsMLPipeline, gefolgt von einer Liste der Aktivitätsausführungen.":::
 
 | **Spaltenname** | **Beschreibung** |
 | --- | --- |
@@ -77,7 +77,7 @@ In der Listenansicht werden die Aktivitätsausführungen angezeigt, die den einz
 
 Wenn eine Aktivität fehlerhaft war, können Sie auf das Symbol in der Fehlerspalte klicken, um die ausführliche Fehlermeldung anzuzeigen. 
 
-![Eine Benachrichtigung mit Fehlerdetails einschließlich Fehlercode, Fehlertyp und Fehlerdetails wird angezeigt.](media/monitor-visually/activity-run-error.png)
+:::image type="content" source="media/monitor-visually/activity-run-error.png" alt-text="Eine Benachrichtigung mit Fehlerdetails einschließlich Fehlercode, Fehlertyp und Fehlerdetails wird angezeigt.":::
 
 ### <a name="promote-user-properties-to-monitor"></a>Heraufstufen von Benutzereigenschaften für die Überwachung
 
@@ -86,15 +86,15 @@ Stufen Sie jede Pipelineaktivitätseigenschaft als Benutzereigenschaft höher, s
 > [!NOTE]
 > Sie können nur bis zu fünf Pipelineaktivitätseigenschaften als Benutzereigenschaften höher stufen.
 
-![Erstellen von Benutzereigenschaften](media/monitor-visually/promote-user-properties.png)
+:::image type="content" source="media/monitor-visually/promote-user-properties.png" alt-text="Erstellen von Benutzereigenschaften":::
 
 Nachdem Sie die Benutzereigenschaften erstellt haben, können Sie sie in den Überwachungslistenansichten überwachen.
 
-![Hinzufügen von Spalten für Benutzereigenschaften zur Liste der Aktivitätsausführungen](media/monitor-visually/choose-user-properties.png)
+:::image type="content" source="media/monitor-visually/choose-user-properties.png" alt-text="Hinzufügen von Spalten für Benutzereigenschaften zur Liste der Aktivitätsausführungen":::
 
  Wenn ein Tabellenname als Quelle für die Kopieraktivität dient, können Sie den Namen der Quelltabelle als Spalte in der Listenansicht für Aktivitätsausführungen überwachen.
 
-![Aktivitätsausführungenliste mit Spalten für Benutzereigenschaften](media/monitor-visually/view-user-properties.png)
+:::image type="content" source="media/monitor-visually/view-user-properties.png" alt-text="Aktivitätsausführungenliste mit Spalten für Benutzereigenschaften":::
 
 
 ## <a name="rerun-pipelines-and-activities"></a>Erneutes Ausführen von Pipelines und Aktivitäten
@@ -112,37 +112,37 @@ Nachdem Sie die Benutzereigenschaften erstellt haben, können Sie sie in den Üb
 
 Um eine Pipeline, die bereits ausgeführt wurde, von Anfang an erneut auszuführen, zeigen Sie auf die jeweilige Pipelineausführung, und wählen Sie **Erneut ausführen** aus. Wenn Sie mehrere Pipelines auswählen, können Sie über die Schaltfläche **Erneut ausführen** alle erneut ausführen.
 
-![Erneutes Ausführen einer Pipeline](media/monitor-visually/rerun-pipeline.png)
+:::image type="content" source="media/monitor-visually/rerun-pipeline.png" alt-text="Erneutes Ausführen einer Pipeline":::
 
 Wenn Sie die erneute Ausführung an einem bestimmten Punkt starten möchten, können Sie dies über die Ansicht der Aktivitätsausführungen erledigen. Wählen Sie die Aktivität aus, ab der Sie beginnen möchten, und wählen Sie **Aktivität erneut ausführen** aus. 
 
-![Wiederholen einer Aktivitätsausführung](media/monitor-visually/rerun-activity.png)
+:::image type="content" source="media/monitor-visually/rerun-activity.png" alt-text="Wiederholen einer Aktivitätsausführung":::
 
 ### <a name="rerun-from-failed-activity"></a>Ab fehlgeschlagener Aktivität erneut ausführen
 
 Wenn eine Aktivität fehlschlägt, das Zeitlimit überschritten wird oder die Aktivität abgebrochen wird, können Sie die Pipeline ab der fehlgeschlagenen Aktivität erneut ausführen, indem Sie **Ab fehlgeschlagener Aktivität erneut ausführen** auswählen.
 
-![Fehlgeschlagene Aktivität erneut ausführen](media/monitor-visually/rerun-failed-activity.png)
+:::image type="content" source="media/monitor-visually/rerun-failed-activity.png" alt-text="Fehlgeschlagene Aktivität erneut ausführen":::
 
 ### <a name="view-rerun-history"></a>Anzeigen des Verlaufs für erneute Ausführungen
 
 Der Verlauf für erneute Ausführungen kann für alle Pipelineausführungen in der Listenansicht angezeigt werden.
 
-![Anzeigen des Verlaufs](media/monitor-visually/rerun-history-1.png)
+:::image type="content" source="media/monitor-visually/rerun-history-1.png" alt-text="Anzeigen des Verlaufs":::
 
 Sie können aber auch den Verlauf für erneute Ausführungen für eine bestimmte Pipelineausführung anzeigen.
 
-![Anzeigen des Verlaufs für eine Pipelineausführung](media/monitor-visually/view-rerun-history.png)
+:::image type="content" source="media/monitor-visually/view-rerun-history.png" alt-text="Anzeigen des Verlaufs für eine Pipelineausführung":::
 
 ## <a name="monitor-consumption"></a>Überwachen des Verbrauchs
 
 Sie können die durch eine Pipelineausführung verbrauchten Ressourcen anzeigen, indem Sie neben der Ausführung auf das Symbol für Verbrauch klicken. 
 
-![Der Screenshot zeigt, wo Sie die von einer Pipeline verbrauchten Ressourcen sehen können.](media/monitor-visually/monitor-consumption-1.png)
+:::image type="content" source="media/monitor-visually/monitor-consumption-1.png" alt-text="Der Screenshot zeigt, wo Sie die von einer Pipeline verbrauchten Ressourcen sehen können.":::
 
 Wenn Sie auf das Symbol klicken, wird ein Verbrauchsbericht zu den durch diese Pipelineausführung genutzten Ressourcen geöffnet. 
 
-![Überwachen des Verbrauchs](media/monitor-visually/monitor-consumption-2.png)
+:::image type="content" source="media/monitor-visually/monitor-consumption-2.png" alt-text="Überwachen des Verbrauchs":::
 
 Sie können diese Werte mit dem [Azure-Preisrechner](https://azure.microsoft.com/pricing/details/data-factory/) verbinden, um die Kosten für die Pipelineausführung zu schätzen. Weitere Informationen zu Azure Data Factory-Preisen finden Sie unter [Grundlegendes zu Preisen](pricing-concepts.md).
 
@@ -153,17 +153,17 @@ Sie können diese Werte mit dem [Azure-Preisrechner](https://azure.microsoft.com
 
 Ein Gantt-Diagramm ist eine Ansicht, über die Sie den Ausführungsverlauf über einen Zeitraum anzeigen können. Wenn Sie zu einer Gantt-Ansicht wechseln, werden alle Pipelineausführungen gruppiert nach dem Namen als Balken in Bezug auf die Ausführungsdauer dargestellt. Sie können auch nach Anmerkungen/Tags gruppieren, die Sie in Ihrer Pipeline erstellt haben. Die Gantt-Ansicht ist auch auf Ebene der Aktivitätsausführungen verfügbar.
 
-![Beispiel für ein Gantt-Diagramm](media/monitor-visually/select-gantt.png)
+:::image type="content" source="media/monitor-visually/select-gantt.png" alt-text="Beispiel für ein Gantt-Diagramm":::
 
 Die Länge des Balkens informiert über die Dauer der Pipeline. Sie können auch den Balken auswählen, um weitere Details anzuzeigen.
 
-![Gantt-Diagramm zur Dauer](media/monitor-visually/view-gantt-run.png)
+:::image type="content" source="media/monitor-visually/view-gantt-run.png" alt-text="Gantt-Diagramm zur Dauer":::
 
 ## <a name="alerts"></a>Alerts
 
 Sie können Warnungen auf der Grundlage unterstützter Metriken in Data Factory auslösen. Wählen Sie dazu auf der Überwachungsseite von Data Factory die Option **Überwachen** > **Warnungen und Metriken** aus.
 
-![Data Factory-Überwachungsseite](media/monitor-visually/start-page.png)
+:::image type="content" source="media/monitor-visually/start-page.png" alt-text="Data Factory-Überwachungsseite":::
 
 Das folgende Video enthält eine siebenminütige Einführung und Demonstration dieses Features:
 
@@ -173,35 +173,35 @@ Das folgende Video enthält eine siebenminütige Einführung und Demonstration d
 
 1.  Wählen Sie **Neue Warnungsregel** aus, um eine neue Warnung zu erstellen.
 
-    ![Schaltfläche „Neue Warnungsregel“](media/monitor-visually/new-alerts.png)
+    :::image type="content" source="media/monitor-visually/new-alerts.png" alt-text="Schaltfläche „Neue Warnungsregel“":::
 
 1.  Geben Sie den Namen der Warnungsregel an, und wählen Sie den Schweregrad der Warnung aus.
 
-    ![Felder für Regelname und Schweregrad](media/monitor-visually/name-and-severity.png)
+    :::image type="content" source="media/monitor-visually/name-and-severity.png" alt-text="Felder für Regelname und Schweregrad":::
 
 1.  Wählen Sie die Warnungskriterien aus.
 
-    ![Feld für Zielkriterien](media/monitor-visually/add-criteria-1.png)
+    :::image type="content" source="media/monitor-visually/add-criteria-1.png" alt-text="Feld für Zielkriterien":::
 
-    ![Der Screenshot zeigt, wo Sie eine Metrik auswählen, um die Warnungsbedingung einzurichten.](media/monitor-visually/add-criteria-2.png)
+    :::image type="content" source="media/monitor-visually/add-criteria-2.png" alt-text="Der Screenshot zeigt, wo Sie eine Metrik auswählen, um die Warnungsbedingung einzurichten.":::
 
-    ![Liste der Kriterien](media/monitor-visually/add-criteria-3.png)
+    :::image type="content" source="media/monitor-visually/add-criteria-3.png" alt-text="Liste der Kriterien":::
 
     Sie können Warnungen für verschiedene Metriken erstellen, z. B. für Anzahl und Größe der ADF-Entität, Aktivitäts-, Pipeline- und Triggerausführung, CPU-Auslastung, Speicher, Knotenanzahl und Warteschlange von Integration Runtime (IR) sowie für SSIS-Paketausführungen und Vorgänge zum Starten und Beenden von SSIS IR.
 
 1.  Konfigurieren Sie die Warnungslogik. Sie können eine Warnung für die ausgewählte Metrik für alle Pipelines und entsprechenden Aktivitäten erstellen. Sie können außerdem einen bestimmten Aktivitätstyp, Aktivitätsnamen, Pipelinenamen oder Fehlertyp auswählen.
 
-    ![Optionen zum Konfigurieren der Warnungslogik](media/monitor-visually/alert-logic.png)
+    :::image type="content" source="media/monitor-visually/alert-logic.png" alt-text="Optionen zum Konfigurieren der Warnungslogik":::
 
 1.  Konfigurieren Sie E-Mail-, SMS-, Push- und Sprachbenachrichtigungen für die Warnung. Erstellen Sie eine Aktionsgruppe für die Warnungsbenachrichtigungen, oder wählen Sie eine vorhandene Aktionsgruppe aus.
 
-    ![Optionen zum Konfigurieren von Benachrichtigungen](media/monitor-visually/configure-notification-1.png)
+    :::image type="content" source="media/monitor-visually/configure-notification-1.png" alt-text="Optionen zum Konfigurieren von Benachrichtigungen":::
 
-    ![Optionen zum Hinzufügen einer Benachrichtigung](media/monitor-visually/configure-notification-2.png)
+    :::image type="content" source="media/monitor-visually/configure-notification-2.png" alt-text="Optionen zum Hinzufügen einer Benachrichtigung":::
 
 1.  Erstellen Sie die Warnungsregel.
 
-    ![Optionen zum Erstellen einer Warnungsregel](media/monitor-visually/create-alert-rule.png)
+    :::image type="content" source="media/monitor-visually/create-alert-rule.png" alt-text="Optionen zum Erstellen einer Warnungsregel":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

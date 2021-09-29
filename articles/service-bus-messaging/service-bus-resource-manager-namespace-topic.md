@@ -4,18 +4,18 @@ description: 'Schnellstart: Erstellen eines Service Bus-Namespace mit einem The
 documentationcenter: .net
 author: spelluru
 ms.author: spelluru
-ms.date: 06/08/2021
+ms.date: 09/27/2021
 ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.custom:
 - devx-track-azurepowershell
 - mode-arm
-ms.openlocfilehash: 6574dbcbf424151536d524f30c0fd56ba0f8403b
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 84fc6657026e3e07ede5250a8304b5d270a24d24
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112281159"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129155475"
 ---
 # <a name="quickstart-create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>Schnellstart: Erstellen eines Service Bus-Namespace mit einem Thema und einem Abonnement anhand einer Azure Resource Manager-Vorlage
 

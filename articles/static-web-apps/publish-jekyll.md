@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/11/2021
 ms.author: cshoe
-ms.openlocfilehash: 179fa0e247b2c875a4d32eac312d240ae768c009
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: fa97100e670e1d96bdd33c362b2e133d78d8dae7
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110190550"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129155437"
 ---
 # <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps"></a>Tutorial: Veröffentlichen einer Jekyll-Website in Azure Static Web Apps
 
@@ -73,7 +73,7 @@ Azure Static Web Apps verwendet GitHub zum Veröffentlichen Ihrer Website. In de
 1. Fügen Sie das GitHub-Repository als Remoteressource zu Ihrem lokalen Repository hinzu. Fügen Sie unbedingt den GitHub-Benutzernamen anstelle des Platzhalters `<YOUR_USER_NAME>` im folgenden Befehl hinzu:
 
    ```bash
-   git remote add origin https://github.com/<YOUR_USER_NAME>/jekyll-static-app
+   git remote add origin https://github.com/<YOUR_USER_NAME>/jekyll-azure-static
    ```
 
 1. Übertragen Sie Ihr lokales Repository auf GitHub.
@@ -94,7 +94,7 @@ In den folgenden Schritten wird gezeigt, wie Sie eine neue statische Website-App
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
 1. Wählen Sie **Ressource erstellen** aus.
 1. Suchen Sie nach **Static Web Apps**.
-1. Wählen Sie **Statische Web-Apps** aus.
+1. Wählen Sie **Static Web Apps** aus.
 1. Klicken Sie auf **Erstellen**
 1. Geben Sie auf der Registerkarte _Grundlagen_ die folgenden Werte ein.
 
@@ -104,16 +104,16 @@ In den folgenden Schritten wird gezeigt, wie Sie eine neue statische Website-App
     | _Ressourcengruppe_ | **jekyll-static-app**  |
     | _Name_ | **jekyll-static-app** |
     | _Plantyp_ | **Free** |
-    | _Region für Azure Functions-API und Stagingumgebungen_ | Wählen Sie eine Region aus, die in Ihrer Nähe liegt. |
+    | _Region für Azure Functions-API und Stagingumgebungen_ | Wählen Sie die Region aus, die Ihnen am nächsten ist. |
     | _Quelle_ | **GitHub** |
 
-1. Wählen Sie **Mit GitHub anmelden** aus, und führen Sie die Authentifizierung mit GitHub durch.
+1. Wählen Sie **Mit GitHub anmelden** aus, und authentifizieren Sie sich bei GitHub.
 
 1. Geben Sie die folgenden GitHub-Werte ein.
 
     | Eigenschaft | Wert |
     | --- | --- |
-    | _Organisation_ | Wählen Sie die gewünschte GitHub-Organisation aus. |
+    | _Organisation_ | Wählen Sie Ihre gewünschte GitHub-Organisation aus. |
     | _Repository_ | Wählen Sie **jekyll-static-app** aus. |
     | _Branch_ | Wählen Sie **main** aus. |
 
@@ -127,9 +127,9 @@ In den folgenden Schritten wird gezeigt, wie Sie eine neue statische Website-App
 
 ### <a name="review-and-create"></a>Überprüfen und Erstellen
 
-1. Klicken Sie auf die Schaltfläche **Überprüfen + Erstellen**, um sicherzustellen, dass alle Details stimmen.
+1. Wählen Sie die Schaltfläche **Überprüfen und erstellen** aus, um sicherzustellen, dass alle Details stimmen.
 
-1. Wählen Sie **Erstellen** aus, um mit der Erstellung der statischen App Service-Web-App zu beginnen und eine GitHub-Aktion für die Bereitstellung anzugeben.
+1. Wählen Sie **Erstellen** aus, um mit der Erstellung der statischen App Service-Web-App zu beginnen und einen GitHub Action-Vorgang für die Bereitstellung anzugeben.
 
 1. Wenn die Bereitstellung abgeschlossen ist, klicken Sie auf **Zu Ressource wechseln**.
 
@@ -139,7 +139,7 @@ In den folgenden Schritten wird gezeigt, wie Sie eine neue statische Website-App
 
 #### <a name="custom-jekyll-settings"></a>Benutzerdefinierte Jekyll-Einstellungen
 
-Beim Generieren einer statischen Web-App wird eine [Workflowdatei](./github-actions-workflow.md) generiert, die die Konfigurationseinstellungen der Anwendung für die Veröffentlichung enthält.
+Beim Generieren einer statischen Web-App wird eine [Workflowdatei](./build-configuration.md) generiert, die die Konfigurationseinstellungen der Anwendung für die Veröffentlichung enthält.
 
 Fügen Sie zum Konfigurieren von Umgebungsvariablen (etwa `JEKYLL_ENV`) einen Abschnitt vom Typ `env` zur GitHub-Aktion für Azure Static Web Apps im Workflow hinzu.
 

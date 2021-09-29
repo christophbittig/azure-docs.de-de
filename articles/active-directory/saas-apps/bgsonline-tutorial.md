@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 10531f87ee4a170310a97831a374a836641ce12b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bceb125cf010a54cba24008692d4d554bd7d2666
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97673340"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124830724"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bgs-online"></a>Tutorial: Azure Active Directory-Integration mit BGS Online
 
@@ -193,7 +193,7 @@ In diesem Abschnitt erstellen Sie in BGS Online einen Benutzer mit dem Namen Bri
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „BGS Online“ klicken, sollten Sie automatisch bei der BGS Online-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+Wenn Sie im Zugriffsbereich auf die Kachel „BGS Online“ klicken, sollten Sie automatisch bei der BGS Online-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 

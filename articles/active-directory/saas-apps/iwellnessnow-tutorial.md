@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 4143d44591d92111d4d4a6cbba3e9059f201a29c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3a2ae6c5af09fb78067a1ca69f88a62bb2f974f4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92459610"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124809091"
 ---
 # <a name="tutorial-integrate-iwellnessnow-with-azure-active-directory"></a>Tutorial: Integrieren von iWellnessNow in Azure Active Directory
 
@@ -159,7 +159,7 @@ In diesem Abschnitt erstellen Sie in iWellnessNow eine Benutzerin namens Britta 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „iWellnessNow“ klicken, sollten Sie automatisch bei der iWellnessNow-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+Wenn Sie im Zugriffsbereich auf die Kachel „iWellnessNow“ klicken, sollten Sie automatisch bei der iWellnessNow-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

@@ -1,18 +1,19 @@
 ---
 title: Massenkopieren von Dateien in eine Datenbank
 description: Erfahren Sie, wie Sie eine Lösungsvorlage zum Massenkopieren von Daten aus Azure Data Lake Storage Gen2 nach Azure Synapse Analytics/Azure SQL-Datenbank verwenden.
+titleSuffix: Azure Data Factory & Azure Synapse
 author: jianleishen
 ms.author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.date: 12/09/2020
-ms.openlocfilehash: 553dbdbed3101e6e07b24082e2bbd94f8dd171d7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 59189f0c197294ca74e01d331663c51fa0e2bd7d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122347190"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124757893"
 ---
 # <a name="bulk-copy-from-files-to-database"></a>Massenkopieren von Dateien in eine Datenbank
 
@@ -39,32 +40,32 @@ Die Vorlage definiert die folgenden beiden Parameter:
 
 1. Navigieren Sie zur Vorlage **Bulk Copy from Files to Database** (Massenkopieren aus Dateien in eine Datenbank). Stellen Sie eine **neue Verbindung** mit dem Gen2-Quellspeicher her. Beachten Sie, dass „GetMetadataDataset“ und „SourceDataset“ Verweise auf dieselbe Verbindung Ihres Quelldateispeichers sind.
 
-    ![Herstellen einer neuen Verbindung mit dem Quelldatenspeicher](media/solution-template-bulk-copy-from-files-to-database/source-connection.png)
+    :::image type="content" source="media/solution-template-bulk-copy-from-files-to-database/source-connection.png" alt-text="Herstellen einer neuen Verbindung mit dem Quelldatenspeicher":::
 
 2. Stellen Sie eine **neue Verbindung** mit dem Senkendatenspeicher her, in den Sie Daten kopieren.
 
-    ![Herstellen einer neuen Verbindung mit dem Senkendatenspeicher](media/solution-template-bulk-copy-from-files-to-database/destination-connection.png)
+    :::image type="content" source="media/solution-template-bulk-copy-from-files-to-database/destination-connection.png" alt-text="Herstellen einer neuen Verbindung mit dem Senkendatenspeicher":::
     
 3. Klicken Sie auf **Diese Vorlage verwenden**.
 
-    ![„Diese Vorlage verwenden“](media/solution-template-bulk-copy-from-files-to-database/use-template.png)
+    :::image type="content" source="media/solution-template-bulk-copy-from-files-to-database/use-template.png" alt-text="„Diese Vorlage verwenden“":::
     
 4. Sie sehen, dass eine Pipeline erstellt wurde, wie im nachstehenden Beispiel gezeigt wird:
 
-    ![Überprüfen der Pipeline](media/solution-template-bulk-copy-from-files-to-database/new-pipeline.png)
+    :::image type="content" source="media/solution-template-bulk-copy-from-files-to-database/new-pipeline.png" alt-text="Überprüfen der Pipeline":::
 
     > [!NOTE]
     > Wenn Sie in **Schritt 2** oben als Datenziel **Azure Synapse Analytics**  ausgewählt haben, müssen Sie eine Verbindung mit Azure Blob Storage für den Stagingprozess eingeben, da dies für Azure Synapse Analytics PolyBase erforderlich ist. Wie im folgenden Screenshot gezeigt, generiert die Vorlage automatisch einen *Speicherpfad* für Ihren Blobspeicher. Überprüfen Sie nach der Pipelineausführung, ob der Container erstellt wurde.
         
-    ![PolyBase-Einstellung](media/solution-template-bulk-copy-from-files-to-database/staging-account.png)
+    :::image type="content" source="media/solution-template-bulk-copy-from-files-to-database/staging-account.png" alt-text="PolyBase-Einstellung":::
 
 5. Klicken Sie auf **Debuggen**, geben Sie die **Parameter** ein, und klicken Sie dann auf **Fertig stellen**.
 
-    ![Auf **Debuggen** klicken](media/solution-template-bulk-copy-from-files-to-database/debug-run.png)
+    :::image type="content" source="media/solution-template-bulk-copy-from-files-to-database/debug-run.png" alt-text="Auf **Debuggen** klicken":::
 
 6. Wenn die Pipelineausführung erfolgreich abgeschlossen wurde, werden die Ergebnisse ähnlich wie im nachstehenden Beispiel angezeigt:
 
-    ![Überprüfen des Ergebnisses](media/solution-template-bulk-copy-from-files-to-database/run-succeeded.png)
+    :::image type="content" source="media/solution-template-bulk-copy-from-files-to-database/run-succeeded.png" alt-text="Überprüfen des Ergebnisses":::
 
        
 ## <a name="next-steps"></a>Nächste Schritte

@@ -4,15 +4,15 @@ description: Erstellen einer Service Bus-Autorisierungsregel für Namespaces und
 author: spelluru
 ms.topic: article
 ms.tgt_pltfrm: dotnet
-ms.date: 06/23/2020
+ms.date: 09/27/2021
 ms.author: spelluru
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6e26192b0a6473c40b05e2009be4b5593b6dcd9a
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 6c1f1f4961a33e818d16642b6ef97fc9a709257e
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112294227"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129155304"
 ---
 # <a name="create-a-service-bus-authorization-rule-for-namespace-and-queue-using-an-azure-resource-manager-template"></a>Erstellen einer Service Bus-Autorisierungsregel für Namespaces und Warteschlangen mithilfe einer Azure Resource Manager-Vorlage
 

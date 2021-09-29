@@ -1,5 +1,6 @@
 ---
-title: Verhindern der automatischen Anmeldebeschleunigung in Azure AD mit der Richtlinie zur Startbereichsermittlung
+title: Verhindern der automatischen Anmeldebeschleunigung mit der Richtlinie für die Startbereichsermittlung (Home Realm Discovery, HRD)
+titleSuffix: Azure AD
 description: Es wird beschrieben, wie Sie die automatische Anmeldebeschleunigung über Domänenhinweise an einen Verbundidentitätsanbieter verhindern.
 services: active-directory
 author: davidmu1
@@ -11,12 +12,12 @@ ms.topic: how-to
 ms.date: 02/12/2021
 ms.author: davidmu
 ms.reviewer: hirsin
-ms.openlocfilehash: c85c4028c1931c1e5eee061b9be7b2ebffc5b951
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: 9f8608330d5f74ef2e1262b7c3dff82be746c884
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113566919"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059170"
 ---
 # <a name="disable-auto-acceleration-to-a-federated-idp-during-user-sign-in-with-home-realm-discovery-policy"></a>Deaktivieren der automatischen Anmeldebeschleunigung an einen Verbundidentitätsanbieter während der Benutzeranmeldung per Richtlinie zur Startbereichsermittlung (Home Realm Discovery, HRD)
 
@@ -41,7 +42,7 @@ Der Abschnitt „DomainHintPolicy“ der HRD-Richtlinie ist ein JSON-Objekt, mit
 
 Die „DomainHintPolicy“-Logik wird für jede eingehende Anforderung ausgeführt, die einen Domänenhinweis enthält, und die Beschleunigung erfolgt anhand von zwei Datenelementen der Anforderung: der Domäne im Domänenhinweis und der Client-ID (die App). Kurz gesagt: Die Beachtung einer Domäne oder App hat Vorrang vor einer Anweisung zum Ignorieren eines Domänenhinweises für eine bestimmte Domäne oder Anwendung.
 
-1. Falls keine Domänenhinweisrichtlinie vorhanden ist oder in keinem der vier Abschnitte auf die entsprechende App oder den Domänenhinweis verwiesen wird, wird der [restliche Teil der HRD-Richtlinie evaluiert](configure-authentication-for-federated-users-portal.md#priority-and-evaluation-of-hrd-policies).
+1. Falls keine Domänenhinweisrichtlinie vorhanden ist oder in keinem der vier Abschnitte auf die entsprechende App oder den Domänenhinweis verwiesen wird, wird der [restliche Teil der HRD-Richtlinie evaluiert](home-realm-discovery-policy.md#priority-and-evaluation-of-hrd-policies).
 1. Falls entweder der Abschnitt `RespectDomainHintForApps` oder `RespectDomainHintForDomains` (oder beide) die App oder den Domänenhinweis in der Anforderung enthält, wird für den Benutzer wie gewünscht die automatische Beschleunigung an den Verbundidentitätsanbieter durchgeführt.
 1. Falls entweder in `IgnoreDomainHintsForApps` oder `IgnoreDomainHintsForDomains` (oder an beiden Orten) in der Anforderung auf die App oder den Domänenhinweis verwiesen wird, aber in den Abschnitten für die Beachtung („Respect“) kein Verweis enthalten ist, wird für die Anforderung keine automatische Beschleunigung durchgeführt. Der Benutzer verbleibt auf der Azure AD-Anmeldeseite und muss einen Benutzernamen angeben.
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: prishet
 ms.subservice: common
-ms.openlocfilehash: afdea12c8eedb25a9a56cda2d57ec3a24a5afc18
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d9beb1ce981826eb7555b1a55e00c7c00fb84810
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122347019"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124766614"
 ---
 # <a name="data-protection-overview"></a>Übersicht zum Datenschutz
 
@@ -104,10 +104,10 @@ In der folgenden Tabelle werden die Kostenüberlegungen für die verschiedenen i
 | Unveränderlichkeitsrichtlinie für eine Blobversion (Vorschau) | Keine Gebühren für das Aktivieren der Unveränderlichkeit für einen Container auf Versionsebene. Das Erstellen, Ändern oder Löschen einer zeitbasierten Aufbewahrungsrichtlinie oder einer rechtlichen Aufbewahrungspflicht für eine Blobversion führt zu einer Gebühr für Schreibtransaktionen. |
 | Unveränderlichkeitsrichtlinie für einen Container | Keine Kosten für die Konfiguration einer Unveränderlichkeitsrichtlinie für einen Container |
 | Vorläufiges Löschen von Containern | Keine Kosten für das Aktivieren des vorläufigen Löschens von Containern für ein Speicherkonto Daten in einem vorläufig gelöschten Container werden zum gleichen Tarif wie aktive Daten abgerechnet, bis der vorläufig gelöschte Container endgültig gelöscht wird. |
-| Blobversionsverwaltung | Keine Gebühren für die Aktivierung der Blobversionsverwaltung für ein Speicherkonto Nachdem die Blobversionsverwaltung aktiviert wurde, wird bei jedem Schreib- oder Löschvorgang für ein Blob im Konto eine neue Version erstellt, was zu erhöhten Kapazitätskosten führen kann.<br /><br />Eine Blobversion wird auf der Basis von einzelnen Blöcken oder Seiten abgerechnet. Die Kosten steigen also, wenn das Basisblob von einer bestimmten Version abweicht. Das Ändern der Ebene eines Blob oder einer Blobversion kann Auswirkungen auf die Abrechnung haben. Weitere Informationen finden Sie unter [Preise und Abrechnung](versioning-overview.md#pricing-and-billing).<br /><br />Verwenden Sie die Lebenszyklusverwaltung, um ältere Versionen bei Bedarf zu löschen und so die Kosten zu kontrollieren. Weitere Informationen finden Sie unter [Optimieren der Kosten durch Automatisieren der Azure Blob Storage-Zugriffsebenen](storage-lifecycle-management-concepts.md). |
+| Blobversionsverwaltung | Keine Gebühren für die Aktivierung der Blobversionsverwaltung für ein Speicherkonto Nachdem die Blobversionsverwaltung aktiviert wurde, wird bei jedem Schreib- oder Löschvorgang für ein Blob im Konto eine neue Version erstellt, was zu erhöhten Kapazitätskosten führen kann.<br /><br />Eine Blobversion wird auf der Basis von einzelnen Blöcken oder Seiten abgerechnet. Die Kosten steigen also, wenn das Basisblob von einer bestimmten Version abweicht. Das Ändern der Ebene eines Blob oder einer Blobversion kann Auswirkungen auf die Abrechnung haben. Weitere Informationen finden Sie unter [Preise und Abrechnung](versioning-overview.md#pricing-and-billing).<br /><br />Verwenden Sie die Lebenszyklusverwaltung, um ältere Versionen bei Bedarf zu löschen und so die Kosten zu kontrollieren. Weitere Informationen finden Sie unter [Optimieren der Kosten durch Automatisieren der Azure Blob Storage-Zugriffsebenen](./lifecycle-management-overview.md). |
 | Vorläufiges Löschen von Blobs | Keine Kosten für das Aktivieren des vorläufigen Löschens von Blobs für ein Speicherkonto Daten in einem vorläufig gelöschten Blob werden zum gleichen Tarif wie aktive Daten abgerechnet, bis das vorläufig gelöschte Blob endgültig gelöscht wird. |
 | Wiederherstellung bis zu einem bestimmten Zeitpunkt | Die Aktivierung der Zeitpunktwiederherstellung für ein Speicherkonto ist kostenlos. Allerdings werden durch die Aktivierung der Zeitpunktwiederherstellung auch die Blobversionsverwaltung, das vorläufige Löschen und der Änderungsfeed aktiviert, was jeweils zu zusätzlichen Kosten führen kann.<br /><br />Die Zeitpunktwiederherstellung wird Ihnen in Rechnung gestellt, wenn Sie einen Wiederherstellungsvorgang durchführen. Die Kosten für einen Wiederherstellungsvorgang hängen von der Menge der wiederherzustellenden Daten ab. Weitere Informationen finden Sie unter [Preise und Abrechnung](point-in-time-restore-overview.md#pricing-and-billing). |
-| Blobmomentaufnahmen | Die Daten in einer Momentaufnahme werden auf der Basis eindeutiger Blöcke oder Seiten abgerechnet. Die Kosten steigen also, wenn das Basisblob von der Momentaufnahme abweicht. Das Ändern der Ebene eines Blobs oder einer Momentaufnahme kann sich auf die Abrechnung auswirken. Weitere Informationen finden Sie unter [Preise und Abrechnung](snapshots-overview.md#pricing-and-billing).<br /><br />Verwenden Sie die Lebenszyklusverwaltung, um ältere Momentaufnahmen bei Bedarf zu löschen und so die Kosten zu kontrollieren. Weitere Informationen finden Sie unter [Optimieren der Kosten durch Automatisieren der Azure Blob Storage-Zugriffsebenen](storage-lifecycle-management-concepts.md). |
+| Blobmomentaufnahmen | Die Daten in einer Momentaufnahme werden auf der Basis eindeutiger Blöcke oder Seiten abgerechnet. Die Kosten steigen also, wenn das Basisblob von der Momentaufnahme abweicht. Das Ändern der Ebene eines Blobs oder einer Momentaufnahme kann sich auf die Abrechnung auswirken. Weitere Informationen finden Sie unter [Preise und Abrechnung](snapshots-overview.md#pricing-and-billing).<br /><br />Verwenden Sie die Lebenszyklusverwaltung, um ältere Momentaufnahmen bei Bedarf zu löschen und so die Kosten zu kontrollieren. Weitere Informationen finden Sie unter [Optimieren der Kosten durch Automatisieren der Azure Blob Storage-Zugriffsebenen](./lifecycle-management-overview.md). |
 | Kopieren von Daten in ein zweites Speicherkonto | Die Verwaltung von Daten in einem zweiten Speicherkonto verursacht Kapazitäts- und Transaktionskosten. Wenn sich das zweite Speicherkonto in einer anderen Region als das Quellkonto befindet, fallen beim Kopieren von Daten auf dieses zweite Konto zusätzlich Gebühren für ausgehenden Datenverkehr an. |
 
 ## <a name="disaster-recovery"></a>Notfallwiederherstellung
@@ -116,7 +116,7 @@ Azure Storage verwaltet immer mehrere Kopien Ihrer Daten, damit sie vor geplante
 
 Wenn Ihr Speicherkonto im Falle eines Ausfalls in einem Rechenzentrum über zwei geografische Regionen hinweg redundant ist (georedundant), haben Sie die Möglichkeit, einen Failover Ihres Kontos von der primären Region auf die sekundäre Region auszuführen. Weitere Informationen finden Sie unter [Notfallwiederherstellung und Failover des Speicherkontos](../common/storage-disaster-recovery-guidance.md).
 
-Ein kundenseitig verwalteter Failover wird derzeit für Speicherkonten nicht unterstützt, bei denen ein hierarchischer Namespace aktiviert ist. Weitere Informationen finden Sie unter [Verfügbare Blob Storage-Features in Azure Data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md).
+Ein kundenseitig verwalteter Failover wird derzeit für Speicherkonten nicht unterstützt, bei denen ein hierarchischer Namespace aktiviert ist. Weitere Informationen finden Sie unter [Verfügbare Blob Storage-Features in Azure Data Lake Storage Gen2](./storage-feature-support-in-storage-accounts.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

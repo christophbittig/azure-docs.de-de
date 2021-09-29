@@ -4,14 +4,14 @@ description: In diesem Tutorial erfahren Sie, wie Sie Splunk mit Azure Defender 
 author: ElazarK
 ms.author: v-ekrieg
 ms.topic: tutorial
-ms.date: 08/03/2021
+ms.date: 09/12/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 00d4f5c5c432a4b5cccdfbfb83fe81c2844d68e8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2484de315508310729882e46b5e22669d01ec9f8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121784224"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124814702"
 ---
 # <a name="tutorial-integrate-splunk-with-azure-defender-for-iot"></a>Tutorial: Integrieren von Splunk mit Azure Defender für IoT
 
@@ -33,6 +33,8 @@ In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 > [!div class="checklist"]
 > * Herunterladen der Defender für IoT-Anwendung in Splunk
 > * Senden von Defender für IoT-Warnungen an Splunk
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -100,7 +102,7 @@ Um Warnungsinformationen von Defender für IoT an die Splunk-Server zu senden, m
 
     :::image type="content" source="media/tutorial-splunk/forwarding-rule.png" alt-text="Erstellen der Parameter für die Weiterleitungsregel" lightbox="media/tutorial-splunk/forwarding-rule-expanded.png":::
 
-    | Parameter | BESCHREIBUNG |
+    | Parameter | Beschreibung |
     |--|--|
     | **Name** | Der Name der Weiterleitungsregel |
     | **Schweregrad** | Der Mindestschweregrad für die Weiterleitung von Vorfällen. Wenn z. B. „Gering“ ausgewählt ist, werden Warnungen mit einem geringen Schweregrad und alle Warnungen mit höheren Schweregraden weitergeleitet. |
@@ -122,6 +124,10 @@ Um Warnungsinformationen von Defender für IoT an die Splunk-Server zu senden, m
     | **Kennwort** | Kennwort für den Splunk-Server |
 
 1. Klicken Sie auf **Submit** (Senden).
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Es müssen keine Ressourcen bereinigt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

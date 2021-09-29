@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 69aaf2032ca321d7c0f8039cde2728134138e95c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: c9d0faa12ffe693729ada3225f96eccde8508c58
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108147893"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124834755"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-five9-plus-adapter-cti-contact-center-agents"></a>Tutorial: Azure Active Directory-Integration mit Five9 Plus Adapter (CTI, Contact Center -)
 
@@ -146,7 +146,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Klicken Sie im Azure-Portal auf „Diese Anwendung testen“ und dadurch sollten Sie automatisch bei der Five9 Plus Adapter-Instanz (CTI, Contact Center Agents) angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Five9 Plus Adapter (CTI, Contact Center Agents)“ klicken, sollten Sie automatisch bei Ihrer Instanz von Five9 Plus Adapter (CTI, Contact Center Agents) angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Five9 Plus Adapter (CTI, Contact Center Agents)“ klicken, sollten Sie automatisch bei Ihrer Instanz von Five9 Plus Adapter (CTI, Contact Center Agents) angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

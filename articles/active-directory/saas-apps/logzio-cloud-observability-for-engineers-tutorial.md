@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/16/2021
 ms.author: jeedes
-ms.openlocfilehash: ca1ea14629b83bc5aa7f169cd3b6a0332c52f2e4
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 5bf3a2c743b2065aea975c96a8328556f773a496
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122968963"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124783347"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-set-up-for-logzio---azure-ad-integration"></a>Tutorial: Einrichten des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory für „Logz.io – Azure AD Integration“
 
@@ -244,7 +244,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Klicken Sie im Azure-Portal auf „Diese Anwendung testen“. Dadurch sollten Sie automatisch bei der Logz.io Azure AD-Integration-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Logz.io – Azure AD-Integration“ klicken, sollten Sie automatisch bei der Logz.io – Azure AD-Integration-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Logz.io – Azure AD-Integration“ klicken, sollten Sie automatisch bei der Logz.io – Azure AD-Integration-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ### <a name="next-steps"></a>Nächste Schritte
 

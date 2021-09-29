@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 6d8c2fc67f768ed3fc4d4c66e91c42fbbe97e032
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d66b09aac2d03fe81cc38ffb53ac1bb29dae6f8f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121783840"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124813626"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eccentex-appbase-for-azure"></a>Tutorial: Integrieren von Eccentex AppBase for Azure in das einmalige Anmelden (Single Sign-On, SSO) von Azure Active Directory
 
@@ -199,7 +199,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Navigieren Sie direkt zur Anmelde-URL für Eccentex AppBase for Azure, und initiieren Sie dort den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Eccentex AppBase for Azure“ klicken, werden Sie zur Anmelde-URL für Eccentex AppBase for Azure weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Eccentex AppBase for Azure“ klicken, werden Sie zur Anmelde-URL für Eccentex AppBase for Azure weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

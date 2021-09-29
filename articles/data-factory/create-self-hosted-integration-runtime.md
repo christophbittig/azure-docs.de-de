@@ -7,14 +7,14 @@ ms.subservice: integration-runtime
 ms.topic: conceptual
 author: lrtoyou1223
 ms.author: lle
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.custom: devx-track-azurepowershell, synapse
-ms.openlocfilehash: 8c6f5954e173f58333ec3970cb09ca0404adf964
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 734c469afa43a178f5c7a50550426a47940b8f35
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822823"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820028"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime
 
@@ -45,7 +45,7 @@ Wenn Sie Daten zwischen der lokalen Umgebung und der Cloud verschieben, wird fü
 
 Hier ist eine allgemeine Zusammenfassung der Datenflussschritte zum Kopieren per selbstgehosteter IR angegeben:
 
-![Allgemeine Übersicht über den Datenfluss](media/create-self-hosted-integration-runtime/high-level-overview.png)
+:::image type="content" source="media/create-self-hosted-integration-runtime/high-level-overview.png" alt-text="Allgemeine Übersicht über den Datenfluss":::
 
 1. Ein Datenentwickler erstellt zunächst mit dem Azure-Portal oder dem PowerShell-Cmdlet eine selbstgehostete IR in einer Azure Data Factory oder einen Synapse-Arbeitsbereich.  Anschließend erstellt der Datenentwickler einen verknüpften Dienst für einen lokalen Datenspeicher, indem er die Instanz der selbstgehosteten Integration Runtime angibt, die der Dienst zum Verbinden der Datenspeicher verwenden soll.
 
@@ -226,19 +226,19 @@ Hier finden Sie Details zu den Aktionen und Argumenten der Anwendung:
 
 Das standardmäßige Anmeldedienstkonto für die selbstgehostete Integration Runtime lautet **NT SERVICE\DIAHostService**. Sie können es unter **Dienste -> Integration Runtime-Dienst -> Eigenschaften -> Anmelden** anzeigen.
 
-![Dienstkonto für die selbstgehostete Integration Runtime](media/create-self-hosted-integration-runtime/shir-service-account.png)
+:::image type="content" source="media/create-self-hosted-integration-runtime/shir-service-account.png" alt-text="Dienstkonto für die selbstgehostete Integration Runtime":::
 
 Stellen Sie sicher, dass das Konto über die Berechtigung „Anmelden als Dienst“ verfügt. Andernfalls kann die selbstgehostete Integration Runtime nicht erfolgreich gestartet werden. Sie können die Berechtigung unter **Lokale Sicherheitsrichtlinie -> Sicherheitseinstellungen -> Lokale Richtlinien -> Zuweisen von Benutzerrechten -> Anmelden als Dienst** prüfen.
 
-![Screenshot von „ Lokale Sicherheitsrichtlinie“ – „Zuweisen von Benutzerrechten“](media/create-self-hosted-integration-runtime/shir-service-account-permission.png)
+:::image type="content" source="media/create-self-hosted-integration-runtime/shir-service-account-permission.png" alt-text="Screenshot von „ Lokale Sicherheitsrichtlinie“ – „Zuweisen von Benutzerrechten“":::
 
-![Screenshot von „Anmelden als Dienst“ – „Zuweisen von Benutzerrechten“](media/create-self-hosted-integration-runtime/shir-service-account-permission-2.png)
+:::image type="content" source="media/create-self-hosted-integration-runtime/shir-service-account-permission-2.png" alt-text="Screenshot von „Anmelden als Dienst“ – „Zuweisen von Benutzerrechten“":::
 
 ## <a name="notification-area-icons-and-notifications"></a>Symbole des Benachrichtigungsbereichs und Benachrichtigungen
 
 Wenn Sie Ihren Cursor auf das Symbol bzw. die Nachricht im Benachrichtigungsbereich bewegen, können Sie die Details zum Status der selbstgehosteten Integration Runtime anzeigen.
 
-![Benachrichtigungen im Benachrichtigungsbereichs](media/create-self-hosted-integration-runtime/system-tray-notifications.png)
+:::image type="content" source="media/create-self-hosted-integration-runtime/system-tray-notifications.png" alt-text="Benachrichtigungen im Benachrichtigungsbereichs":::
 
 ## <a name="high-availability-and-scalability"></a>Hohe Verfügbarkeit und Skalierbarkeit
 

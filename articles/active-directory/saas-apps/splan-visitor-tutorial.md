@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/21/2021
 ms.author: jeedes
-ms.openlocfilehash: de00b869aef2d1429740d75829da9a5c3e79de15
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: a2c33808be505209ff5eca58480b9fd5f03d9d4f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112465941"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124785532"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-splan-visitor"></a>Tutorial: Integrieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Splan Visitor
 
@@ -123,7 +123,7 @@ Erstellen Sie in Splan Visitor einen Testbenutzer namens **Britta Simon**. Wend
 Testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit einer der folgenden Optionen:
 
 * **Azure-Portal**: Wählen Sie **Diese Anwendung testen** aus, um sich automatisch bei der Splan Visitor-Instanz anzumelden, für die Sie einmaliges Anmelden eingerichtet haben.
-* **Portal „Meine Apps“ von Microsoft:** Wählen Sie die Kachel **Splan Visitor** aus, um sich automatisch bei der Splan Visitor-Instanz anzumelden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Portal „Meine Apps“ finden Sie unter [Anmelden beim Portal „Meine Apps“ und Starten von Apps über dieses](../user-help/my-apps-portal-end-user-access.md).
+* **Portal „Meine Apps“ von Microsoft:** Wählen Sie die Kachel **Splan Visitor** aus, um sich automatisch bei der Splan Visitor-Instanz anzumelden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Portal „Meine Apps“ finden Sie unter [Anmelden beim Portal „Meine Apps“ und Starten von Apps über dieses](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/09/2020
-ms.openlocfilehash: 2478c50b9753f3518a0a09533842a4d7abde762c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8cf8ecaaafa9697286dcaa0ae61d00853d53a311
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339295"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743477"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>Deltakopiervorgänge aus einer Datenbank mit einer Steuertabelle
 
@@ -90,37 +90,37 @@ Die Vorlage definiert die folgenden Parameter:
     
 4. Wechseln Sie zur Vorlage **Delta copy from Database** (Deltakopie aus einer Datenbank). Stellen Sie eine **neue Verbindung** mit der Quelldatenbank her, aus der Sie Daten kopieren möchten.
 
-    ![Erstellen einer neuen Verbindung mit der Quelltabelle](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable4.png)
+    :::image type="content" source="media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable4.png" alt-text="Erstellen einer neuen Verbindung mit der Quelltabelle":::
 
 5. Stellen Sie eine **neue Verbindung** mit dem Zieldatenspeicher her, in den Sie die Daten kopieren möchten.
 
-    ![Erstellen einer neuen Verbindung mit der Zieltabelle](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable5.png)
+    :::image type="content" source="media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable5.png" alt-text="Erstellen einer neuen Verbindung mit der Zieltabelle":::
 
 6. Stellen Sie eine **neue Verbindung** mit der externen Steuertabelle und der gespeicherten Prozedur her, die Sie in Schritt 2 und Schritt 3 erstellt haben.
 
-    ![Erstellen einer neuen Verbindung mit dem Datenspeicher der Steuertabelle](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable6.png)
+    :::image type="content" source="media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable6.png" alt-text="Erstellen einer neuen Verbindung mit dem Datenspeicher der Steuertabelle":::
 
 7. Klicken Sie auf **Diese Vorlage verwenden**.
     
 8. Daraufhin wird die verfügbare Pipeline wie im folgenden Beispiel angezeigt:
   
-    ![Überprüfen der Pipeline](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
+    :::image type="content" source="media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png" alt-text="Überprüfen der Pipeline":::
 
 9. Klicken Sie auf **Gespeicherte Prozedur**. Wählen Sie **[dbo].[update_watermark]** für **Name der gespeicherten Prozedur** aus. Klicken Sie auf **Import parameter** (Importparameter), und wählen Sie **Dynamischen Inhalt hinzufügen** aus.  
 
-    ![Festlegen der Aktivität „Gespeicherte Prozedur“](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png)  
+    :::image type="content" source="media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png" alt-text="Festlegen der Aktivität „Gespeicherte Prozedur“":::   
 
 10. Schreiben Sie den Inhalt **\@{activity('LookupCurrentWaterMark').output.firstRow.NewWatermarkValue}** , und klicken Sie dann auf **Fertig stellen**.  
 
-    ![Schreiben des Inhalts für die Parameter der gespeicherten Prozedur](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)       
+    :::image type="content" source="media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png" alt-text="Schreiben des Inhalts für die Parameter der gespeicherten Prozedur":::        
      
 11. Klicken Sie auf **Debuggen**, geben Sie die **Parameter** ein, und klicken Sie dann auf **Fertig stellen**.
 
-    ![Auf **Debuggen** klicken](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
+    :::image type="content" source="media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png" alt-text="Auf **Debuggen** klicken":::
 
 12. Die angezeigten Ergebnisse entsprechen etwa folgendem Beispiel:
 
-    ![Überprüfen des Ergebnisses](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable12.png)
+    :::image type="content" source="media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable12.png" alt-text="Überprüfen des Ergebnisses":::
 
 13. Sie können neue Zeilen in Ihrer Quelltabelle erstellen. Hier sehen Sie ein SQL-Beispiel für die Erstellung neuer Zeilen:
 
@@ -138,7 +138,7 @@ Die Vorlage definiert die folgenden Parameter:
 
 15. (Optional:) Wenn Sie Azure Synapse Analytics als Zielspeicher für die Daten ausgewählt haben, müssen Sie eine Verbindung mit Azure Blob Storage für den Stagingprozess angeben. Dabei handelt es sich um eine Anforderung von Azure Synapse Analytics PolyBase. Die Vorlage generiert einen Containerpfad für Sie. Überprüfen Sie nach Ausführung der Pipeline, ob der Container im Blobspeicher erstellt wurde.
     
-    ![Konfigurieren von PolyBase](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png)
+    :::image type="content" source="media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png" alt-text="Konfigurieren von PolyBase":::
     
 ## <a name="next-steps"></a>Nächste Schritte
 

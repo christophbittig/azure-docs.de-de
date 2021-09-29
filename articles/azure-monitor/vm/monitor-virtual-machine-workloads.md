@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2021
-ms.openlocfilehash: e411f7fd6f8d8a21b2016cbe16d0c7a947313331
-ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
+ms.openlocfilehash: 64ef920e727baf559b71cac416404fb740e47625
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114674862"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124788551"
 ---
 # <a name="monitor-virtual-machines-with-azure-monitor-workloads"></a>Überwachen von virtuellen Computern mit Azure Monitor: Workloads
 Dieser Artikel ist Teil des Szenarios [Überwachen von virtuellen Computern und den jeweiligen Workloads in Azure Monitor](monitor-virtual-machine.md). Hier wird beschrieben, wie Workloads überwacht werden, die auf den Gastbetriebssystemen Ihrer virtuellen Computer ausgeführt werden. Dieser Artikel enthält Informationen zum Analysieren verschiedener Datenquellen auf den virtuellen Computern sowie zum Generieren von Warnungen.
@@ -186,7 +186,7 @@ Wenn Sie den Status eines Windows-Diensts oder eines Linux-Daemons überwachen m
 > [!NOTE]
 > Die Lösung „Änderungsnachverfolgung und Bestand“ unterscheidet sich vom Feature [Änderungsanalyse](vminsights-change-analysis.md) in VM Insights. Dieses Feature befindet sich in der Phase der öffentlichen Vorschau und ist in diesem Szenario noch nicht enthalten.
 
-Weitere Optionen zum Aktivieren der Lösung „Änderungsnachverfolgung“ auf virtuellen Computern finden Sie unter [Aktivieren der Lösung für Änderungsnachverfolgung und Bestand](../../automation/change-tracking/overview.md#enable-change-tracking-and-inventory). Diese Lösung enthält Methoden zum Konfigurieren von virtuellen Computern im großen Stil. Zur Unterstützung der Lösung müssen Sie [ein Azure Automation-Konto erstellen](../../automation/automation-quickstart-create-account.md).
+Weitere Optionen zum Aktivieren der Lösung „Änderungsnachverfolgung“ auf virtuellen Computern finden Sie unter [Aktivieren der Lösung für Änderungsnachverfolgung und Bestand](../../automation/change-tracking/overview.md#enable-change-tracking-and-inventory). Diese Lösung enthält Methoden zum Konfigurieren von virtuellen Computern im großen Stil. Zur Unterstützung der Lösung müssen Sie [ein Azure Automation-Konto erstellen](../../automation/quickstarts/create-account-portal.md).
 
 Wenn Sie „Änderungsnachverfolgung und Bestand“ aktivieren, werden im Log Analytics-Arbeitsbereich zwei neue Tabellen erstellt. Verwenden Sie diese Tabellen für Warnungsregeln für die Protokollabfrage.
 

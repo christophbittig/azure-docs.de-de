@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 68669418a62daad2c2c5d1b9f44f66c1a5b7ebb8
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: b73fd12d905fe1aa03d02de2b657d5faae90342a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111904083"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615672"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>Tutorial: Migrieren von lokalen Daten zu Cloudspeicher mit AzCopy
 
@@ -22,10 +22,10 @@ AzCopy ist ein Befehlszeilentool zum Kopieren von Daten in oder aus Azure Blob S
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen Sie ein Speicherkonto. 
-> * Verwenden Sie AzCopy, um all Ihre Daten hochzuladen.
-> * Ändern Sie die Daten für Testzwecke.
-> * Erstellen Sie einen geplanten Task oder Cron-Auftrag, um neue Dateien für den Upload zu identifizieren.
+> - Erstellen Sie ein Speicherkonto.
+> - Verwenden Sie AzCopy, um all Ihre Daten hochzuladen.
+> - Ändern Sie die Daten für Testzwecke.
+> - Erstellen Sie einen geplanten Task oder Cron-Auftrag, um neue Dateien für den Upload zu identifizieren.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -47,7 +47,7 @@ Führen Sie folgende Schritte durch, um einen Container zu erstellen:
 2. Klicken Sie unter **Dienste** auf **Blobs** und dann auf **Container**.
 
    ![Der Screenshot zeigt die Containererstellung](media/storage-azcopy-migrate-on-premises-data/CreateContainer.png)
- 
+
 Containernamen müssen mit einem Buchstaben oder einer Zahl beginnen. Sie dürfen nur Buchstaben, Zahlen und den Bindestrich (-) enthalten. Weitere Benennungsregeln für Blobs und Container finden Sie unter [Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) (Benennen von Containern, Blobs und Metadaten und Verweisen auf diese).
 
 ## <a name="download-azcopy"></a>Herunterladen von AzCopy
@@ -80,33 +80,33 @@ Daraufhin wird ein Anmeldefenster geöffnet. Melden Sie sich in diesem Fenster m
 
 Mit AzCopy können Sie unter [Windows](./storage-use-azcopy-v10.md) oder [Linux](./storage-use-azcopy-v10.md) alle Dateien in einem Ordner in Blob Storage hochladen. Um alle Blobs in einem Ordner hochzuladen, geben Sie den folgenden AzCopy-Befehl aus:
 
-```AzCopy
+```azcopy
 azcopy copy "<local-folder-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive=true
 ```
 
-* Ersetzen Sie den Platzhalter `<local-folder-path>` durch den Pfad zu einem Ordner, der Dateien enthält (beispielsweise `C:\myFolder` oder `/mnt/myFolder`).
+- Ersetzen Sie den Platzhalter `<local-folder-path>` durch den Pfad zu einem Ordner, der Dateien enthält (beispielsweise `C:\myFolder` oder `/mnt/myFolder`).
 
-* Ersetzen Sie den Platzhalter `<storage-account-name>` durch den Namen Ihres Speicherkontos.
+- Ersetzen Sie den Platzhalter `<storage-account-name>` durch den Namen Ihres Speicherkontos.
 
-* Ersetzen Sie den Platzhalter `<container-name>` durch den Namen des erstellten Containers.
+- Ersetzen Sie den Platzhalter `<container-name>` durch den Namen des erstellten Containers.
 
 Um die Inhalte des angegebenen Verzeichnisses rekursiv in Blob Storage hochzuladen, geben Sie die Option `--recursive` an. Beim Ausführen von AzCopy mit dieser Option werden auch alle Unterordner und die darin enthaltenen Dateien hochgeladen.
 
 ## <a name="upload-modified-files-to-blob-storage"></a>Hochladen geänderter Dateien in Blob Storage
 
-Mit AzCopy können Sie Dateien basierend auf dem Zeitpunkt der letzten Änderung hochladen. 
+Mit AzCopy können Sie Dateien basierend auf dem Zeitpunkt der letzten Änderung hochladen.
 
 Um dies zu testen, ändern Sie Dateien im Quellverzeichnis oder erstellen neue Dateien für Testzwecke. Verwenden Sie anschließend den AzCopy-Befehl `sync`.
 
-```AzCopy
+```azcopy
 azcopy sync "<local-folder-path>" "https://<storage-account-name>.blob.core.windows.net/<container-name>" --recursive=true
 ```
 
-* Ersetzen Sie den Platzhalter `<local-folder-path>` durch den Pfad zu einem Ordner, der Dateien enthält (beispielsweise `C:\myFolder` oder `/mnt/myFolder`).
+- Ersetzen Sie den Platzhalter `<local-folder-path>` durch den Pfad zu einem Ordner, der Dateien enthält (beispielsweise `C:\myFolder` oder `/mnt/myFolder`).
 
-* Ersetzen Sie den Platzhalter `<storage-account-name>` durch den Namen Ihres Speicherkontos.
+- Ersetzen Sie den Platzhalter `<storage-account-name>` durch den Namen Ihres Speicherkontos.
 
-* Ersetzen Sie den Platzhalter `<container-name>` durch den Namen des erstellten Containers.
+- Ersetzen Sie den Platzhalter `<container-name>` durch den Namen des erstellten Containers.
 
 Weitere Informationen zum Befehl `sync` finden Sie unter [Transfer data with AzCopy and Blob storage](./storage-use-azcopy-v10.md#transfer-data) (Übertragen von Daten mit AzCopy und Blob Storage).
 
@@ -114,7 +114,7 @@ Weitere Informationen zum Befehl `sync` finden Sie unter [Transfer data with AzC
 
 Sie können einen geplanten Task oder Cron-Auftrag, der ein AzCopy-Befehlsskript ausführt, erstellen. Das Skript identifiziert neue lokale Daten und lädt diese in einem bestimmten Zeitintervall in den Cloudspeicher hoch.
 
-Kopieren Sie den AzCopy-Befehl in einen Text-Editor. Aktualisieren Sie die Parameterwerte des AzCopy-Befehls mit den entsprechenden Werten. Speichern Sie die Datei als `script.sh` (Linux) oder `script.bat` (Windows) für AzCopy. 
+Kopieren Sie den AzCopy-Befehl in einen Text-Editor. Aktualisieren Sie die Parameterwerte des AzCopy-Befehls mit den entsprechenden Werten. Speichern Sie die Datei als `script.sh` (Linux) oder `script.bat` (Windows) für AzCopy.
 
 In diesem Beispielen wird davon ausgegangen, dass der Ordnername `myFolder`, der Speicherkontoname `mystorageaccount` und der Containername `mycontainer` lautet.
 
@@ -176,16 +176,16 @@ Um zu überprüfen, ob der geplante Task bzw. Cron-Auftrag ordnungsgemäß ausge
 
 Weitere Informationen zu Möglichkeiten zum Verschieben von lokalen Daten in Azure Storage und umgekehrt finden Sie unter folgendem Link:
 
-* [Verschieben von Daten in und aus Azure Storage](./storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)  
+- [Verschieben von Daten in und aus Azure Storage](./storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 
 Weitere Informationen zu AzCopy finden Sie in den folgenden Artikeln:
 
-* [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md)
+- [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md)
 
-* [Übertragen von Daten mit AzCopy und Blob Storage](./storage-use-azcopy-v10.md#transfer-data)
+- [Übertragen von Daten mit AzCopy und Blob Storage](./storage-use-azcopy-v10.md#transfer-data)
 
-* [Übertragen von Daten mit AzCopy und Dateispeicher](storage-use-azcopy-files.md)
+- [Übertragen von Daten mit AzCopy und Dateispeicher](storage-use-azcopy-files.md)
 
-* [Übertragen von Daten mit AzCopy und Amazon S3-Buckets](storage-use-azcopy-s3.md)
- 
-* [Konfigurieren, Optimieren und Problembehandlung in AzCopy](storage-use-azcopy-configure.md)
+- [Übertragen von Daten mit AzCopy und Amazon S3-Buckets](storage-use-azcopy-s3.md)
+
+- [Konfigurieren, Optimieren und Problembehandlung in AzCopy](storage-use-azcopy-configure.md)

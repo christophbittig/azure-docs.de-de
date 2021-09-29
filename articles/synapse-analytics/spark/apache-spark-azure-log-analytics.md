@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.subservice: spark
 ms.date: 03/25/2021
 ms.custom: references_regions
-ms.openlocfilehash: cc4d6cd7809c58451f95b94970ee8b489f2f9dfe
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: a455eb81a804c9eff9dcd84142eccbdfc3ac376c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535363"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124804184"
 ---
 # <a name="monitor-apache-spark-applications-with-azure-log-analytics-preview"></a>Überwachen von Apache Spark-Anwendungen mit Azure Log Analytics (Vorschau)
 
@@ -29,7 +29,7 @@ Führen Sie die folgenden Schritte aus, um die erforderlichen Informationen in S
 
 Informationen zum Erstellen dieses Arbeitsbereichs finden Sie in den folgenden Ressourcen:
 - [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../../azure-monitor/logs/quick-create-workspace.md)
-- [Beispiele für Resource Manager-Vorlagen für Log Analytics-Arbeitsbereiche in Azure Monitor](../../azure-monitor/logs/quick-create-workspace-cli.md)
+- [Beispiele für Resource Manager-Vorlagen für Log Analytics-Arbeitsbereiche in Azure Monitor](../../azure-monitor/logs/resource-manager-workspace.md)
 - [Erstellen und Konfigurieren eines Log Analytics-Arbeitsbereichs in Azure Monitor mithilfe von PowerShell](../../azure-monitor/logs/powershell-workspace-configuration.md)
 
 ### <a name="step-2-prepare-a-apache-spark-configuration-file"></a>Schritt 2: Vorbereiten einer Apache Spark-Konfigurationsdatei
@@ -119,9 +119,9 @@ spark.synapse.logAnalytics.keyVault.linkedServiceName <LINKED_SERVICE_NAME>
 | spark.synapse.logAnalytics.keyVault.key.workspaceId | SparkLogAnalyticsWorkspaceId | Der Name des Key Vault-Geheimnisses für die ID des Log Analytics-Arbeitsbereichs |
 | spark.synapse.logAnalytics.keyVault.key.secret | SparkLogAnalyticsSecret | Der Name des Key Vault-Geheimnisses für den Log Analytics-Arbeitsbereich |
 | spark.synapse.logAnalytics.uriSuffix | ods.opinsights.azure.com | Das [URI-Suffix][uri_suffix] des Log Analytics-Zielarbeitsbereichs. Befindet sich Ihr Arbeitsbereich nicht in der globalen Azure-Region, muss das URI-Suffix an die entsprechende Cloud angepasst werden. |
-| spark.synapse.logAnalytics.filter.eventName.match | - | Optional. Mit den durch Trennzeichen getrennten Spark-Ereignisnamen können Sie angeben, welche Ereignisse gesammelt werden sollen. Beispiel: `SparkListenerJobStart,SparkListenerJobEnd` |
-| spark.synapse.logAnalytics.filter.loggerName.match | - | Optional. Mit den durch Trennzeichen getrennten log4j-Protokollierungsnamen können Sie angeben, welche Ereignisse gesammelt werden sollen. Beispiel: `org.apache.spark.SparkContext,org.example.Logger` |
-| spark.synapse.logAnalytics.filter.metricName.match | - | Optional. Mit den durch Trennzeichen getrennten Spark-Metriknamensuffixen können Sie angeben, welche Metriken erfasst werden sollen. Beispiel: `jvm.heap.used`|
+| spark.synapse.logAnalytics.filter.eventName.match | - | Optional. Kommagetrennte Liste mit Spark-Ereignisnamen, um anzugeben, welche Ereignisse gesammelt werden sollen. Beispiel: `SparkListenerJobStart,SparkListenerJobEnd` |
+| spark.synapse.logAnalytics.filter.loggerName.match | - | Optional. Kommagetrennte Liste mit log4j-Protokollierungsnamen, um anzugeben, welche Protokolle gesammelt werden sollen. Beispiel: `org.apache.spark.SparkContext,org.example.Logger` |
+| spark.synapse.logAnalytics.filter.metricName.match | - | Optional. Kommagetrennte Liste mit Spark-Metriknamensuffixen, um anzugeben, welche Metriken gesammelt werden sollen. Beispiel: `jvm.heap.used`|
 
 > [!NOTE]  
 > - Für Azure China muss der Parameter `spark.synapse.logAnalytics.uriSuffix` auf `ods.opinsights.azure.cn` festgelegt werden. 

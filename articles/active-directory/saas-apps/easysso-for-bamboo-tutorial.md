@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 4ef286e9e760c6a18b69eb8724c1317e6a872b2c
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 76c203339744e73d9239d44dfe984834b333cf93
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111569092"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124753552"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-bamboo"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit EasySSO for Bamboo
 
@@ -196,7 +196,7 @@ Wenn Sie die automatische Benutzerbereitstellung bei der ersten Benutzeranmeldun
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mithilfe von „Meine Apps“.
 
-Wenn Sie in „Meine Apps“ auf die Kachel „EasySSO for Bamboo“ klicken, sollten Sie automatisch bei der Bamboo-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+Wenn Sie in „Meine Apps“ auf die Kachel „EasySSO for Bamboo“ klicken, sollten Sie automatisch bei der Bamboo-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ### <a name="sp-initiated-workflow"></a>SP-initiierter Workflow
 

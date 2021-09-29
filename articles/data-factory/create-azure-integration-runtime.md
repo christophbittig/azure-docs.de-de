@@ -5,16 +5,16 @@ description: Informationen zum Erstellen von Integration Runtime in Azure Data F
 ms.service: data-factory
 ms.subservice: integration-runtime
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 author: lrtoyou1223
 ms.author: lle
 ms.custom: devx-track-azurepowershell, synapse
-ms.openlocfilehash: a9819af196af6df60644a5e25599c6066dc17eaa
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 063d4138a86fb5235562ebb0d2592640f370806e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123312330"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124760314"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Erstellen und Konfigurieren von Azure Integration Runtime
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -70,10 +70,10 @@ Führen Sie die unten angegebenen Schritte aus, um eine Azure IR über die Benut
 3. Wählen Sie auf der Seite **Integration Runtime-Setup** die Option **Azure, Selbstgehostet** und dann **Weiter** aus. 
 
 1. Wählen Sie auf der daraufhin angezeigten Seite die Option **Azure** zum Erstellen einer Azure IR und dann **Weiter** aus.
-   ![Erstellen einer Integration Runtime](media/create-azure-integration-runtime/new-azure-integration-runtime.png)
+   :::image type="content" source="media/create-azure-integration-runtime/new-azure-integration-runtime.png" alt-text="Erstellen einer Integration Runtime":::
 
 1. Geben Sie einen Namen für Ihre Azure IR ein, und wählen Sie **Erstellen** aus.
-   ![Erstellen einer Azure IR](media/create-azure-integration-runtime/create-azure-integration-runtime.png)
+   :::image type="content" source="media/create-azure-integration-runtime/create-azure-integration-runtime.png" alt-text="Erstellen einer Azure IR":::
 
 1. Wenn die Erstellung abgeschlossen ist, wird eine Popupbenachrichtigung angezeigt. Vergewissern Sie sich auf der Seite **Integration Runtimes**, dass die neu erstellte IR in der Liste angezeigt wird.
 

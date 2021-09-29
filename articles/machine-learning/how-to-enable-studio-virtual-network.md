@@ -11,12 +11,12 @@ ms.author: jhirono
 author: jhirono
 ms.date: 07/13/2021
 ms.custom: contperf-fy20q4, tracking-python, security
-ms.openlocfilehash: d5c794bfc707f6429daad2e78affe592f5e3754c
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: 7fe7070611fc9fc94f983a69a6fb9009af0f9c3e
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114709999"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091519"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Verwenden von Azure Machine Learning Studio in einem virtuellen Netzwerk
 
@@ -65,7 +65,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 + Ein vorhandener [Azure Machine Learning-Arbeitsbereich mit einem privaten Endpunkt](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint).
 
-+ Ein vorhandenes [Azure Storage-Konto](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints), das Ihrem virtuellen Netzwerk hinzugefügt wurde.
++ Ein vorhandenes [Azure Storage-Konto](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts), das Ihrem virtuellen Netzwerk hinzugefügt wurde.
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -106,7 +106,7 @@ Führen Sie die folgenden Schritte aus, um den Zugriff auf die gespeicherten Dat
     |Standardblobspeicher für den Arbeitsbereich| Speichert Modellressourcen vom Designer. Aktivieren Sie die Authentifizierung mit verwalteten Identitäten für dieses Speicherkonto, um Modelle im Designer bereitzustellen. <br> <br> Sie können eine Designer-Pipeline visualisieren und ausführen, wenn sie nicht den Standarddatenspeicher verwendet, sondern einen, der für die Verwendung der verwalteten Identität konfiguriert wurde. Wenn Sie jedoch versuchen, ein trainiertes Modell ohne aktivierte verwaltete Identität im Standarddatenspeicher bereitzustellen, tritt dabei ein Fehler auf, unabhängig davon, welche anderen Datenspeicher verwendet werden.|
     |Standarddateispeicher für den Arbeitsbereich| Speichert Experimentressourcen für automatisiertes maschinelles Lernen. Aktivieren Sie die Authentifizierung mit verwalteten Identitäten für dieses Speicherkonto, um Experimente für automatisiertes maschinelles Lernen zu übermitteln. |
 
-1. **Konfigurieren Sie Datenspeicher für die Verwendung der Authentifizierung mit verwalteten Identitäten**. Nachdem Sie Ihrem virtuellen Netzwerk mit einem [Dienstendpunkt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) oder [privaten Endpunkt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints) ein Azure Storage-Konto hinzugefügt haben, müssen Sie Ihren Datenspeicher für die Verwendung der Authentifizierung anhand der [verwalteten Identität](../active-directory/managed-identities-azure-resources/overview.md) konfigurieren. Auf diese Weise kann Studio auf Daten in Ihrem Speicherkonto zugreifen.
+1. **Konfigurieren Sie Datenspeicher für die Verwendung der Authentifizierung mit verwalteten Identitäten**. Nachdem Sie Ihrem virtuellen Netzwerk mit einem [Dienstendpunkt](how-to-secure-workspace-vnet.md?tabs=se#secure-azure-storage-accounts) oder [privaten Endpunkt](how-to-secure-workspace-vnet.md?tabs=pe#secure-azure-storage-accounts) ein Azure Storage-Konto hinzugefügt haben, müssen Sie Ihren Datenspeicher für die Verwendung der Authentifizierung anhand der [verwalteten Identität](../active-directory/managed-identities-azure-resources/overview.md) konfigurieren. Auf diese Weise kann Studio auf Daten in Ihrem Speicherkonto zugreifen.
 
     Azure Machine Learning verwendet [Datenspeicher](concept-data.md#datastores), um eine Verbindung mit Speicherkonten herzustellen. Verwenden Sie beim Erstellen eines neuen Datenspeichers die folgenden Schritte, um einen Datenspeicher für die Verwendung der Authentifizierung mit verwalteten Identitäten zu konfigurieren:
 

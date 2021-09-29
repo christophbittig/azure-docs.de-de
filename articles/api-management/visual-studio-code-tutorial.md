@@ -3,15 +3,15 @@ title: 'Tutorial: Importieren und Verwalten von APIs – Azure API Management un
 description: In diesem Tutorial erfahren Sie, wie die Azure API Management-Erweiterung für Visual Studio Code zum Importieren und Verwalten von APIs verwendet wird.
 ms.service: api-management
 author: dlepow
-ms.author: apimpm
+ms.author: danlep
 ms.topic: tutorial
 ms.date: 12/10/2020
-ms.openlocfilehash: 0090d981e93cee12f2feaaf7d2c12f341564f6ec
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: ecdb97ad62a9b75279546493bbbf185f92fd29f6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482329"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625770"
 ---
 # <a name="tutorial-use-the-api-management-extension-for-visual-studio-code-to-import-and-manage-apis"></a>Tutorial: Verwenden der API Management-Erweiterung für Visual Studio Code zum Importieren und Verwalten von APIs
 

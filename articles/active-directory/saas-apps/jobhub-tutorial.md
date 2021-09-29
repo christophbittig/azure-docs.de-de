@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 276d444239cb91f1bec2975506279721e6d0008c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5b0ed5b76aa9b097fcd4559a88822fb37e0d4788
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92459355"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124739464"
 ---
 # <a name="tutorial-integrate-jobhub-with-azure-active-directory"></a>Tutorial: Integrieren von JOBHUB in Azure Active Directory
 
@@ -136,7 +136,7 @@ In diesem Abschnitt erstellen Sie in JOBHUB einen Benutzer namens Britta Simon. 
 
 ### <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
-Wenn Sie im Zugriffsbereich die Kachel „JOBHUB“ wählen, sollten Sie automatisch bei der JOBHUB-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+Wenn Sie im Zugriffsbereich die Kachel „JOBHUB“ wählen, sollten Sie automatisch bei der JOBHUB-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 

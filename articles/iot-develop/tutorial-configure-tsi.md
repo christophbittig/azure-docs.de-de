@@ -8,12 +8,12 @@ ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-develop
 services: iot-develop
-ms.openlocfilehash: e1d4b294003fe7eb03f6742c75be6d4fadbfce4f
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 1258255ddc12dc4d718998e2320aa40951916400
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114406009"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128642736"
 ---
 # <a name="tutorial-create-and-configure-a-time-series-insights-gen2-environment"></a>Tutorial: Erstellen und Konfigurieren einer Time Series Insights Gen2-Umgebung
 
@@ -208,11 +208,11 @@ Wählen Sie die Registerkarte **Instanzen** aus. Suchen Sie nach der Instanz, di
 
 ![Screenshot: Bearbeiten einer Instanz](./media/tutorial-configure-tsi/edit-instance.png)
 
-Öffnen Sie das Dropdownmenü **Typ**, und wählen Sie **Temperature Controller** (Temperaturregler) aus. Geben Sie *defaultComponent, <your device name>* ein, um den Namen der Instanz zu aktualisieren, die für alle Tags der obersten Ebene Ihres Geräts steht.
+Öffnen Sie das Dropdownmenü **Typ**, und wählen Sie **Temperature Controller** (Temperaturregler) aus. Geben Sie *defaultComponent, \<your device name\>* ein, um den Namen der Instanz zu aktualisieren, die für alle Tags der obersten Ebene Ihres Geräts steht.
 
 ![Screenshot: Ändern eines Instanztyps](./media/tutorial-configure-tsi/change-type.png)
 
-Wählen Sie vor dem Auswählen von **Speichern** zunächst die Registerkarte **Instanzfelder** aus, und aktivieren Sie das Kontrollkästchen **Device Fleet** (Geräteflotte). Geben Sie zum Gruppieren der Telemetrie Folgendes ein: *\<your device name> - Temp Controller* (<Name Ihres Geräts> – Temperaturregler). Klicken Sie dann auf **Speichern**.
+Wählen Sie vor dem Auswählen von **Speichern** zunächst die Registerkarte **Instanzfelder** aus, und aktivieren Sie das Kontrollkästchen **Device Fleet** (Geräteflotte). Geben Sie zum Gruppieren der Telemetrie Folgendes ein: *\<your device name\> - Temp Controller* (<Name Ihres Geräts> – Temperaturregler). Klicken Sie dann auf **Speichern**.
 
 ![Screenshot: Zuweisen einer Instanz zu einer Hierarchie](./media/tutorial-configure-tsi/assign-to-hierarchy.png)
 

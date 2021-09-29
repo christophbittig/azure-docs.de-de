@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 06/02/2021
-ms.openlocfilehash: 1e66e8a3358bdcbca3d5dea247e1e6af2000393f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7075b7efd871d3f226faa593e0730d22c8913fd1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735050"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124797082"
 ---
 # <a name="quickstart-deploy-a-managed-apache-spark-cluster-preview-with-azure-databricks"></a>Schnellstart: Bereitstellen eines verwalteten Apache Spark-Clusters (Vorschau) mit Azure Databricks
 
@@ -36,15 +36,15 @@ Gehen Sie wie folgt vor, um einen Azure Databricks-Cluster in einem virtuellen 
 
 1. Öffnen Sie die Ressource **Virtual Network**, und notieren Sie sich den **Adressraum**:
 
-    :::image type="content" source="./media/deploy-cluster-databricks/virtual-network-address-space.png" alt-text="Ermitteln des Adressraums Ihres virtuellen Netzwerks" border="true":::
+   :::image type="content" source="./media/deploy-cluster-databricks/virtual-network-address-space.png" alt-text="Ermitteln des Adressraums Ihres virtuellen Netzwerks" border="true":::
 
 1. Wählen Sie in der Ressourcengruppe die Option **Hinzufügen** aus, und suchen Sie im Suchfeld nach **Azure Databricks**:
 
-    :::image type="content" source="./media/deploy-cluster-databricks/databricks.png" alt-text="Suchen nach Azure Databricks" border="true":::
+   :::image type="content" source="./media/deploy-cluster-databricks/databricks.png" alt-text="Suchen nach Azure Databricks" border="true":::
 
 1. Wählen Sie **Erstellen** aus, um ein Azure Databricks-Konto zu erstellen:
 
-    :::image type="content" source="./media/deploy-cluster-databricks/databricks-create.png" alt-text="Erstellen eines Azure Databricks-Kontos" border="true":::
+   :::image type="content" source="./media/deploy-cluster-databricks/databricks-create.png" alt-text="Erstellen eines Azure Databricks-Kontos" border="true":::
 
 1. Geben Sie die folgenden Werte an:
 
@@ -52,7 +52,7 @@ Gehen Sie wie folgt vor, um einen Azure Databricks-Cluster in einem virtuellen 
    * **Region**: Wählen Sie die Region aus, in der sich Ihr virtuelles Netzwerk befindet.
    * **Tarif**: Wählen Sie zwischen „Standard“, „Premium“ und „Testversion“. Weitere Informationen zu diesen Tarifen, finden Sie unter [Azure Databricks – Preise](https://azure.microsoft.com/pricing/details/databricks/).
 
-    :::image type="content" source="./media/deploy-cluster-databricks/select-name.png" alt-text="Angeben von Arbeitsbereichsname, Region und Tarif für das Databricks-Konto" border="true":::
+   :::image type="content" source="./media/deploy-cluster-databricks/select-name.png" alt-text="Angeben von Arbeitsbereichsname, Region und Tarif für das Databricks-Konto" border="true":::
 
 1. Wählen Sie als Nächstes die Registerkarte **Netzwerk** aus, und geben Sie Folgendes an:
 
@@ -82,17 +82,17 @@ Gehen Sie wie folgt vor, um einen Azure Databricks-Cluster in einem virtuellen 
    * **Clustername**: Geben Sie einen Namen für den Cluster ein.
    * **Databricks-Runtimeversion**: Es wird empfohlen, mindestens die Databricks-Runtimeversion 7.5 auszuwählen, um Spark 3.x-Unterstützung zu erhalten. 
 
-    :::image type="content" source="../cosmos-db/cassandra/media/migrate-data-databricks/databricks-runtime.png" alt-text="Auswählen der Databricks-Runtimeversion und des Spark-Clusters" border="true":::
+   :::image type="content" source="../cosmos-db/cassandra/media/migrate-data-databricks/databricks-runtime.png" alt-text="Auswählen der Databricks-Runtimeversion und des Spark-Clusters" border="true":::
 
 1. Erweitern Sie **Erweiterte Optionen**, und fügen Sie die folgende Konfiguration hinzu. Ersetzen Sie dabei die IP-Adressen der Knoten sowie die Anmeldeinformationen:
 
-    ```java
-    spark.cassandra.connection.host <node1 IP>,<node 2 IP>, <node IP>
-    spark.cassandra.auth.password cassandra
-    spark.cassandra.connection.port 9042
-    spark.cassandra.auth.username cassandra
-    spark.cassandra.connection.ssl.enabled true
-    ```
+   ```java
+   spark.cassandra.connection.host <node1 IP>,<node 2 IP>, <node IP>
+   spark.cassandra.auth.password cassandra
+   spark.cassandra.connection.port 9042
+   spark.cassandra.auth.username cassandra
+   spark.cassandra.connection.ssl.enabled true
+   ```
 
 1. Fügen Sie dem Cluster die Apache Spark-Cassandra-Connectorbibliothek hinzu, um eine Verbindung mit nativen Endpunkten sowie mit Azure Cosmos DB-Cassandra-Endpunkten herzustellen. Wählen Sie in Ihrem Cluster **Bibliotheken**  >  **Neue**  >  **Maven** installieren und fügen Sie dann `com.datastax.spark:spark-cassandra-connector-assembly_2.12:3.0.0` in Maven-Koordinaten hinzu.
 
@@ -105,11 +105,11 @@ Falls Sie diesen Managed Instance-Cluster nicht mehr benötigen, löschen Sie i
 1. Wählen Sie im linken Menü des Azure-Portals die Option **Ressourcengruppen** aus.
 1. Wählen Sie in der Liste die Ressourcengruppe aus, die Sie für diesen Schnellstart erstellt haben.
 1. Wählen Sie im Ressourcengruppenbereich **Übersicht** die Option **Ressourcengruppe löschen** aus.
-3. Geben Sie in dem nächsten Fenster den Namen der zu löschenden Ressourcengruppe ein, und wählen Sie dann **Löschen** aus.
+1. Geben Sie in dem nächsten Fenster den Namen der zu löschenden Ressourcengruppe ein, und wählen Sie dann **Löschen** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie gelernt, wie Sie einen vollständig verwalteten Apache Spark-Cluster innerhalb des virtuellen Netzwerks Ihres Clusters vom Typ „Azure Managed Instance for Apache Cassandra“ erstellen. Im nächsten Artikel erfahren Sie, wie Sie die Cluster- und Rechenzentrumsressourcen verwalten: 
+In dieser Schnellstartanleitung haben Sie gelernt, wie Sie einen vollständig verwalteten Apache Spark-Cluster innerhalb des virtuellen Netzwerks Ihres Clusters vom Typ „Azure Managed Instance for Apache Cassandra“ erstellen. Im nächsten Artikel erfahren Sie, wie Sie die Cluster- und Rechenzentrumsressourcen verwalten:
 
 > [!div class="nextstepaction"]
 > [Verwalten von Azure Managed Instance for Apache Cassandra-Ressourcen mit der Azure CLI](manage-resources-cli.md)

@@ -6,12 +6,12 @@ ms.author: terrylan
 ms.service: security
 ms.topic: reference
 ms.date: 09/13/2021
-ms.openlocfilehash: d535cff28e87de0f2dcf4afb90ab452303a6d0e0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3f2559ca573ed9fedf5a15fce454cf406f8f6b0b
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128609211"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129210742"
 ---
 # <a name="cloud-feature-availability-for-us-government-customers"></a>Verfügbarkeit von Cloudfeatures für US-Regierungskunden
 
@@ -138,9 +138,9 @@ In den folgenden Tabellen wird die aktuelle Azure Sentinel-Featureverfügbarkeit
 |- [Überwachungsmetriken für SOC-Incidents](../../sentinel/manage-soc-with-incident-metrics.md) | Allgemein verfügbar | Allgemein verfügbar |
 |- [Watchlists](../../sentinel/watchlists.md) | Allgemein verfügbar | Allgemein verfügbar |
 | **Threat Intelligence-Unterstützung** | | |
-| - [Threat Intelligence – TAXII-Datenconnector](../../sentinel/understand-threat-intelligence.md)  | Öffentliche Vorschau | Nicht verfügbar |
+| - [Threat Intelligence – TAXII-Datenconnector](../../sentinel/understand-threat-intelligence.md)  | Allgemein verfügbar | Nicht verfügbar |
 | - [Threat Intelligence-Plattform-Datenconnector](../../sentinel/understand-threat-intelligence.md)  | Öffentliche Vorschau | Nicht verfügbar |
-| - [Blatt „Threat Intelligence-Forschung“](https://techcommunity.microsoft.com/t5/azure-sentinel/what-s-new-threat-intelligence-menu-item-in-public-preview/ba-p/1646597)  | Öffentliche Vorschau | Nicht verfügbar |
+| - [Blatt „Threat Intelligence-Forschung“](https://techcommunity.microsoft.com/t5/azure-sentinel/what-s-new-threat-intelligence-menu-item-in-public-preview/ba-p/1646597)  | Allgemein verfügbar | Nicht verfügbar |
 | - [URL-Detonation](https://techcommunity.microsoft.com/t5/azure-sentinel/using-the-new-built-in-url-detonation-in-azure-sentinel/ba-p/996229) | Öffentliche Vorschau | Nicht verfügbar |
 | - [Arbeitsmappe „Threat Intelligence“](/azure/architecture/example-scenario/data/sentinel-threat-intelligence)  | Allgemein verfügbar | Nicht verfügbar |
 |**Erkennungsunterstützung** | | |

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/07/2021
 ms.author: jeedes
-ms.openlocfilehash: 327fc5bd6003f93746f484e5d157cfa1737ae317
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 0db8c8d14dbd3e09ebb798c41ea2d7b526acabc9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982086"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124753204"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-resource-central--saml-sso-for-meeting-room-booking-system"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Resource Central – SAML SSO for Meeting Room Booking System
 
@@ -177,7 +177,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für das einmalige Anm
 
    :::image type="content" source="./media/resource-central/test.png" alt-text="Screenshot: Resource Central-Webseite zum Testen des einmaligen Anmeldens":::
 
-* Verwenden Sie das Portal „Meine Apps“ von Microsoft. Wählen Sie Portal „Meine Apps“ die Kachel **Resource Central – SAML SSO for Meeting Room Booking System** aus, um zur Anmelde-URL von Resource Central – SAML SSO for Meeting Room Booking System zu navigieren. Weitere Informationen finden Sie unter [Anmelden beim Portal „Meine Apps“ und Starten von Apps über dieses](../user-help/my-apps-portal-end-user-access.md).
+* Verwenden Sie das Portal „Meine Apps“ von Microsoft. Wählen Sie Portal „Meine Apps“ die Kachel **Resource Central – SAML SSO for Meeting Room Booking System** aus, um zur Anmelde-URL von Resource Central – SAML SSO for Meeting Room Booking System zu navigieren. Weitere Informationen finden Sie unter [Anmelden beim Portal „Meine Apps“ und Starten von Apps über dieses](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

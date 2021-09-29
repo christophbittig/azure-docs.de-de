@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: tutorial
 ms.date: 08/17/2021
-ms.openlocfilehash: 5d78161f73dfa1927483d7c6f8bad3ce925b3631
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 962c3f9e380bda96211ce2056ca886a555d44078
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426866"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124736206"
 ---
 # <a name="migrate-to-azure-managed-instance-for-apache-cassandra-using-apache-spark"></a>Migrieren zu Azure Managed Instance for Apache Cassandra mit Apache Spark
 
@@ -31,7 +31,6 @@ In diesem Tutorial wird beschrieben, wie Sie Daten mithilfe des Cassandra Spark-
 * [Stellen Sie in Ihrem verwalteten Cassandra-VNET ein Azure Databricks-Konto bereit](deploy-cluster-databricks.md). Stellen Sie sicher, dass es auch Netzwerkzugriff auf Ihren Cassandra-Quellcluster hat.
 
 * Vergewissern Sie sich, dass Sie das Keyspace-/Tabellenschema bereits von Ihrer Cassandra-Quelldatenbank in Ihre Zieldatenbank der verwalteten Cassandra-Instanz migriert haben.
-
 
 ## <a name="provision-an-azure-databricks-cluster"></a>Bereitstellen eines Azure Databricks-Clusters
 

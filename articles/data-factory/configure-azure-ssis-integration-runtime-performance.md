@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: integration-services
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 93fdb913da430241835d448945747ba5ab736f45
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 907b946dec3112d152212d26a1d3dffca41150fa
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355956"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124828374"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Konfigurieren von Azure-SSIS Integration Runtime für hohe Leistung
 
@@ -103,7 +103,7 @@ Diese Daten stellen eine einzelne Paketausführung auf einem einzelnen Workerkno
 
 Die Y-Achse zeigt die Anzahl von Paketen, deren Ausführung innerhalb einer Stunde abgeschlossen wurde. Beachten Sie, dass dies nur ein Testergebnis eines Pakets ist, das Arbeitsspeicher verbraucht. Wenn Sie den Durchsatz Ihres Pakets ermitteln möchten, sollten Sie den Test selbst ausführen.
 
-![SSIS Integration Runtime: Paketausführungsgeschwindigkeit](media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speedV2.png)
+:::image type="content" source="media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speedV2.png" alt-text="SSIS Integration Runtime: Paketausführungsgeschwindigkeit":::
 
 ### <a name="configure-for-overall-throughput"></a>Konfigurieren für allgemeinen Durchsatz
 
@@ -111,7 +111,7 @@ Wenn Sie viele Pakete ausführen müssen und für Sie der allgemeine Durchsatz i
 
 Die Y-Achse zeigt die Anzahl von Paketen, deren Ausführung innerhalb einer Stunde abgeschlossen wurde. Beachten Sie, dass dies nur ein Testergebnis eines Pakets ist, das Arbeitsspeicher verbraucht. Wenn Sie den Durchsatz Ihres Pakets ermitteln möchten, sollten Sie den Test selbst ausführen.
 
-![SSIS Integration Runtime: Maximaler allgemeiner Durchsatz](media/configure-azure-ssis-integration-runtime-performance/ssisir-overall-throughputV2.png)
+:::image type="content" source="media/configure-azure-ssis-integration-runtime-performance/ssisir-overall-throughputV2.png" alt-text="SSIS Integration Runtime: Maximaler allgemeiner Durchsatz":::
 
 ## <a name="azuressisnodenumber"></a>AzureSSISNodeNumber
 

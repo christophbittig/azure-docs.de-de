@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
-ms.openlocfilehash: 88b7e1cb43fc10301f9dab46c6cca5f30c1e14d1
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: c5656ffb4d8e129e334efc11e9a8e00be7227493
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822481"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798843"
 ---
 # <a name="web-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>Webaktivität in Azure Data Factory und Azure Synapse Analytics
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -261,7 +261,7 @@ public HttpResponseMessage Execute(JObject payload)
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie unter den anderen unterstützten Ablaufsteuerungsaktivitäten:
+Informationen zu weiteren unterstützten Ablaufsteuerungsaktivitäten:
 
 - [Aktivität „Pipeline ausführen“](control-flow-execute-pipeline-activity.md)
 - [ForEach-Aktivität](control-flow-for-each-activity.md)
