@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/12/2021
-ms.openlocfilehash: 0c2cfe51e84931b90ab80588b16fe126aadaf4c3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bd9bfff8faf8f5c5e2c81ea9a8abea23af0da6ca
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122640578"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124771648"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Inkrementelles Kopieren neuer und geänderter Dateien auf Basis von LastModifiedDate und mithilfe des Tools zum Kopieren von Daten
 
@@ -50,7 +50,7 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen für das Tutorial vor:
 
 1. Wählen Sie im linken Bereich **Ressource erstellen**. Wählen Sie **Integration** > **Data Factory** aus:
 
-   ![Data Factory auswählen](./media/doc-common-process/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/doc-common-process/new-azure-data-factory-menu.png" alt-text="Data Factory auswählen":::
 
 2. Geben Sie auf der Seite **Neue Data Factory** unter **Name** den Namen **ADFTutorialDataFactory** ein.
 
@@ -58,7 +58,7 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen für das Tutorial vor:
 
     :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="Fehlermeldung zu neuer Data Factory für doppelten Namen":::
 
-   Wenn eine Fehlermeldung zum Namenswert angezeigt wird, geben Sie einen anderen Namen für die Data Factory ein. Verwenden Sie beispielsweise den Namen _**IhrName**_**ADFTutorialDataFactory**. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](naming-rules.md).
+   Wenn eine Fehlermeldung zum Namenswert angezeigt wird, geben Sie einen anderen Namen für die Data Factory ein. Verwenden Sie beispielsweise den Namen _**IhrName**_ **ADFTutorialDataFactory**. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](naming-rules.md).
 3. Wählen Sie unter **Abonnement** das Azure-Abonnement aus, in dem Sie die neue Data Factory erstellen werden.
 4. Führen Sie unter **Ressourcengruppe** einen der folgenden Schritte aus:
 
@@ -80,7 +80,7 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen für das Tutorial vor:
 
 1. Wählen Sie auf der Azure Data Factory-Homepage die Kachel **Erfassen**, um das Tool zum Kopieren der Daten zu öffnen.
 
-   ![Screenshot, der die ADF-Startseite zeigt.](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="Screenshot, der die ADF-Startseite zeigt.":::
 
 2. Gehen Sie auf der Seite **Properties** (Eigenschaften) wie folgt vor:
 
@@ -92,7 +92,7 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen für das Tutorial vor:
 
     1. Wählen Sie **Weiter** aus.
 
-    ![Bereich „Eigenschaften“ von „Daten kopieren“](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/copy-data-tool-properties-page.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-lastmodified-copy-data-tool/copy-data-tool-properties-page.png" alt-text="Bereich „Eigenschaften“ von „Daten kopieren“":::
 
 3. Führen Sie auf der Seite **Quelldatenspeicher** die folgenden Schritte aus:
 
@@ -100,7 +100,7 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen für das Tutorial vor:
 
     1. Wählen Sie im Katalog **Azure Blob Storage** aus, und klicken Sie dann auf **Weiter**:
 
-        ![Azure-Blobspeicher auswählen](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-select-blob.png)
+        :::image type="content" source="./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-select-blob.png" alt-text="Azure-Blobspeicher auswählen":::
 
     1. Wählen Sie auf der Seite **Neue Verbindung (Azure Blob Storage)** in der Liste **Azure-Abonnement** Ihr Azure-Abonnement und in der Liste **Speicherkontoname** Ihr Speicherkonto aus. Testen Sie die Verbindung, und klicken Sie auf **Erstellen**.
 
@@ -129,27 +129,27 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen für das Tutorial vor:
 
 6. Überprüfen Sie auf der Seite **Zusammenfassung** die Einstellungen, und klicken Sie anschließend auf **Weiter**.
 
-    ![Seite „Zusammenfassung“](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/summary-page.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-lastmodified-copy-data-tool/summary-page.png" alt-text="Seite „Zusammenfassung“":::
 
 7. Wählen Sie auf der Seite **Bereitstellung** die Option **Überwachen** aus, um die Pipeline (Aufgabe) zu überwachen.
 
-    ![Bereitstellungsseite](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/deployment-page.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-lastmodified-copy-data-tool/deployment-page.png" alt-text="Bereitstellungsseite":::
 
 8. Beachten Sie, dass die Registerkarte **Überwachen** auf der linken Seite automatisch ausgewählt ist. Die Anwendung wechselt zur Registerkarte **Überwachen**. Dort wird der Status der Pipeline angezeigt. Klicken Sie zum Aktualisieren der Liste auf **Aktualisieren**. Klicken Sie auf den Link unter **Pipelinename**, um Details zur Aktivitätsausführung anzuzeigen oder die Pipeline erneut auszuführen.
 
-    ![Aktualisieren der Liste und Anzeigen von Details zur Aktivitätsausführung](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs-1.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs-1.png" alt-text="Aktualisieren der Liste und Anzeigen von Details zur Aktivitätsausführung":::
 
 9. Da die Pipeline nur eine Aktivität (die Kopieraktivität) enthält, wird nur ein Eintrag angezeigt. Wenn Sie Details zum Kopiervorgang anzeigen möchten, wählen Sie auf der Seite **Activity runs** (Aktivitätsausführungen) den Link **Details** (das Brillensymbol) aus der Spalte **Activity name** (Aktivitätsname) aus. Einzelheiten zu den Eigenschaften finden Sie in der [Übersicht zur Kopieraktivität](copy-activity-overview.md).
 
-    ![Kopieraktivität in der Pipeline](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs2.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs2.png" alt-text="Kopieraktivität in der Pipeline":::
 
     Da sich im Quellcontainer in Ihrem Blobspeicherkonto keine Datei befindet, wird in Ihrem Blobspeicherkonto keine Datei angezeigt, die in den Zielcontainer kopiert wurde:
 
-    ![Keine Dateien in Quell- oder Zielcontainer](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3.png" alt-text="Keine Dateien in Quell- oder Zielcontainer":::
 
 10. Erstellen Sie eine leere Textdatei, und nennen Sie sie **file1.txt**. Laden Sie diese Textdatei in den Quellcontainer in Ihrem Speicherkonto hoch. Sie können für diese Aufgaben verschiedene Tools verwenden, beispielsweise [Azure Storage-Explorer](https://storageexplorer.com/).
 
-    ![Erstellen von „file1.txt“ und Hochladen in den Quellcontainer](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3-1.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3-1.png" alt-text="Erstellen von „file1.txt“ und Hochladen in den Quellcontainer":::
 
 11. Wenn Sie zur Ansicht **Pipelineausführungen** zurückkehren möchten, wählen Sie den Link **Alle Pipelineausführungen** im Breadcrumb-Menü auf der Seite **Aktivitätsausführungen** aus, und warten Sie, bis dieselbe Pipeline erneut automatisch ausgelöst wird.  
 
@@ -157,7 +157,7 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen für das Tutorial vor:
 
     Sie werden sehen, dass eine Datei („file1.txt“) aus dem Quellcontainer in den Zielcontainer Ihres Blobspeicherkontos kopiert wurde:
 
-    ![Datei „file1.txt“ wurde aus dem Quellcontainer in den Zielcontainer kopiert](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs6.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs6.png" alt-text="Datei „file1.txt“ wurde aus dem Quellcontainer in den Zielcontainer kopiert":::
 
 13. Erstellen Sie eine weitere leere Textdatei, und benennen Sie diese **file2.txt**. Laden Sie diese Textdatei in den Quellcontainer in Ihrem Blobspeicherkonto hoch.
 
@@ -165,7 +165,7 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen für das Tutorial vor:
 
     Sie können dies auch bestätigen, indem Sie die Dateien mit dem [Azure Storage-Explorer](https://storageexplorer.com/) überprüfen:
 
-    ![Überprüfen von Dateien mit dem Azure Storage-Explorer](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs8.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs8.png" alt-text="Überprüfen von Dateien mit dem Azure Storage-Explorer":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie mithilfe eines Apache Spark-Clusters in Azure Daten transformieren:

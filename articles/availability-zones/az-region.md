@@ -8,12 +8,12 @@ ms.date: 09/16/2021
 ms.author: prsandhu
 ms.reviewer: cnthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: c6620f95c9ec217771cd14c756e60fd0eb6d90c4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 26d4464d67634d5660796ce24dc9b9dc2505e0ef
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128659278"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218240"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Azure-Dienste mit Unterstützung für Verfügbarkeitszonen
 
@@ -49,16 +49,15 @@ Um eine umfassende Geschäftskontinuität in Azure zu erreichen, erstellen Sie d
 
 | Amerika           | Europa               | Afrika              | Asien-Pazifik   |
 |--------------------|----------------------|---------------------|----------------|
-|                    |                      |                     |                |
 | Brasilien Süd       | Frankreich, Mitte       | Südafrika, Norden* | Australien (Osten) |
 | Kanada, Mitte     | Deutschland, Westen-Mitte |                     | Indien, Mitte* |
 | USA (Mitte)         | Nordeuropa         |                     | Japan, Osten     |
 | East US            | Norwegen, Osten          |                     | Südkorea, Mitte* |
 | USA (Ost) 2          | UK, Süden             |                     | Asien, Südosten |
-| USA, Süden-Mitte | Europa, Westen          |                     |                |
+| USA Süd Mitte   | Europa, Westen          |                     |                |
 | US Government, Virginia    |                      |                     |                |
-| USA, Westen 2        |                      |                     |                |
-| USA, Westen 3        |                      |                     |                |
+| USA, Westen 2          |                      |                     |                |
+| USA, Westen 3          |                      |                     |                |
 
 \* Weitere Informationen zur Unterstützung von Verfügbarkeitszonen und verfügbaren Diensten in diesen Regionen erhalten Sie von Ihrem Microsoft-Vertriebs- oder Kundenbeauftragten. Informationen zu den Regionen, die zukünftig Verfügbarkeitszonen unterstützen werden, finden Sie unter [Azure-Geografien](https://azure.microsoft.com/global-infrastructure/geographies/).
 

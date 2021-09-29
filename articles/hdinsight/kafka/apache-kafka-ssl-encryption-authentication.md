@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/01/2019
-ms.openlocfilehash: d061832022b983e4d5fd55e72c1d4789b82f6633
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0cac23b153940156b3c88a3b71e8900f1b21a695
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104863223"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124742980"
 ---
 # <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Einrichten von TLS-Verschlüsselung und -Authentifizierung für Apache Kafka in Azure HDInsight
 
@@ -291,7 +291,7 @@ Die Details zu den einzelnen Schritten sind unten angegeben.
     
     keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
     
-    keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+    keytool -keystore kafka.client.keystore.jks -import -file client-signed-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
     ```
 
 1. Erstellen Sie eine `client-ssl-auth.properties`-Datei auf dem Clientcomputer (hn1). Die Datei sollte folgende Zeilen enthalten:

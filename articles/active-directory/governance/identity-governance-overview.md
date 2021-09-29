@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0558be2ea1defb2a09e6461ba838e328cb293d6
-ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+ms.openlocfilehash: 072cfcd66207d8c778c77f3ece4db49a30e8ca28
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112201714"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124826856"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Was ist Azure AD Identity Governance?
 
@@ -82,7 +82,7 @@ Zusätzlich zu den obigen Features werden die folgenden weiteren Azure AD-Featur
 |Zugriffsanforderungen|Endbenutzer können die Gruppenmitgliedschaft oder den Anwendungszugriff anfordern. Endbenutzer, einschließlich der Gäste aus anderen Organisationen, können Zugriff auf Zugriffspakete anfordern.|[Berechtigungsverwaltung](entitlement-management-overview.md)|
 |Workflow|Ressourcenbesitzer können die genehmigenden Personen und Eskalationsgenehmiger für Zugriffsanforderungen sowie die genehmigenden Personen für Rollenaktivierungsanforderungen definieren.  |[Berechtigungsverwaltung](entitlement-management-overview.md) und [PIM](../privileged-identity-management/pim-configure.md)|
 |Richtlinien- und Rollenverwaltung|Der Administrator kann Richtlinien für bedingten Zugriff definieren, die für den Zugriff auf Anwendungen zur Laufzeit gelten.  Ressourcenbesitzer können Richtlinien für den Benutzerzugriff über Zugriffspakete definieren.|Richtlinien für [bedingten Zugriff](../conditional-access/overview.md) und [Berechtigungsverwaltung](entitlement-management-overview.md)|
-|Zugriffszertifizierung|Administratoren können die erneute Zertifizierung für wiederkehrende Zugriffe für folgende Komponenten ermöglichen: SaaS-Apps oder Cloudgruppenmitgliedschaften, Zuweisungen von Azure AD- oder Azure-Ressourcenrollen. Automatisches Entfernen des Ressourcenzugriffs, Blockieren des Gastzugriffs und Löschen von Gastkonten.|[Zugriffsüberprüfungen](access-reviews-overview.md), die auch unter [PIM](../privileged-identity-management/pim-how-to-start-security-review.md) beschrieben wurden|
+|Zugriffszertifizierung|Administratoren können die erneute Zertifizierung für wiederkehrende Zugriffe für folgende Komponenten ermöglichen: SaaS-Apps oder Cloudgruppenmitgliedschaften, Zuweisungen von Azure AD- oder Azure-Ressourcenrollen. Automatisches Entfernen des Ressourcenzugriffs, Blockieren des Gastzugriffs und Löschen von Gastkonten.|[Zugriffsüberprüfungen](access-reviews-overview.md), die auch unter [PIM](../privileged-identity-management/pim-create-azure-ad-roles-and-resource-roles-review.md) beschrieben wurden|
 |Erfüllung und Bereitstellung|Automatische Bereitstellung und Aufhebung der Bereitstellung in mit Azure AD verbundenen Apps, z. B. per SCIM und auf SharePoint Online-Websites. |[Benutzerbereitstellung](../app-provisioning/user-provisioning.md)|
 |Berichterstellung und Analyse|Administratoren können Überwachungsprotokolle der aktuellen Benutzerbereitstellung und Anmeldeaktivitäten abrufen. Integration mit Azure Monitor und Zugriffserteilung über Zugriffspakete.|[Azure AD-Berichte](../reports-monitoring/overview-reports.md) und [Überwachung](../reports-monitoring/overview-monitoring.md)|
 |Privilegierter Zugriff|Just-In-Time- und geplanter Zugriff, Warnungen, Genehmigungsworkflows für Azure AD-Rollen (einschließlich benutzerdefinierte Rollen) und Azure-Ressourcenrollen.|[Azure AD PIM](../privileged-identity-management/pim-configure.md)|

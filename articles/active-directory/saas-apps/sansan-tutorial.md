@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/25/2021
 ms.author: jeedes
-ms.openlocfilehash: d23e56aeb80fbd00eac65c4c1fb7ce7cb88c4e8b
-ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
+ms.openlocfilehash: be146cba31d1eb6f22db8788f7e71ed60f9ca52a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112988803"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627651"
 ---
 # <a name="tutorial-integrate-sansan-with-azure-active-directory"></a>Tutorial: Integrieren von Sansan in Azure Active Directory
 
@@ -81,7 +81,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
        | Environment | URL |
       |:--- |:--- |
       | PC |`https://ap.sansan.com/v/saml2/<COMPANY_NAME>/acs` |
-      | Smartphone App |`https://internal.api.sansan.com/<COMPANY_NAME>/acs` |
+      | Smartphone App |`https://internal.api.sansan.com/saml2/<COMPANY_NAME>/acs` |
       | Smartphone Web |`https://ap.sansan.com/s/saml2/<COMPANY_NAME>/acs` |
 
    1. Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://ap.sansan.com/`.
@@ -146,7 +146,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Rufen Sie direkt die Sansan-Anmelde-URL auf, und initiieren Sie den Anmeldeablauf.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Sansan“ klicken, werden Sie zur Anmelde-URL für Sansan weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Sansan“ klicken, werden Sie zur Anmelde-URL für Sansan weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

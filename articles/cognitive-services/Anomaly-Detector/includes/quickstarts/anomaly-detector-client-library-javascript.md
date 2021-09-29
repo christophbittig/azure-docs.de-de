@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 09/22/2020
 ms.author: mbullwin
 ms.custom: devx-track-js
-ms.openlocfilehash: ca842a3d235cd58cb12bf9d8d80419e42ddf8441
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 9a709b9872546e8aa4909077b3dd40a03f004d5e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102444131"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128910529"
 ---
 Hier erfahren Sie etwas über die ersten Schritte mit der Anomalieerkennungs-Clientbibliothek für JavaScript. Führen Sie diese Schritte aus, um das Paket zu installieren und mit der Verwendung der vom Dienst zur Verfügung gestellten Algorithmen zu beginnen. Mit dem Anomalieerkennungsdienst können Sie Anomalien in Zeitreihendaten ermitteln, da unabhängig von der Branche, dem Szenario oder der Datenmenge automatisch die am besten geeigneten Modelle für Ihre Daten angewandt werden.
 
@@ -24,7 +24,7 @@ Mit der Anomalieerkennungs-Clientbibliothek für JavaScript ist Folgendes mögli
 * Erkennen des Anomaliestatus des letzten Datenpunkts in Ihrer Zeitreihe
 * Erkennen von Trendänderungspunkten in Ihrem Dataset
 
-[Bibliotheksreferenzdokumentation](https://go.microsoft.com/fwlink/?linkid=2090788) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [Paket (npm)](https://www.npmjs.com/package/%40azure/ai-anomaly-detector) | [Den Code finden Sie auf GitHub.](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/AnomalyDetector)
+[Bibliotheksreferenzdokumentation](https://go.microsoft.com/fwlink/?linkid=2090788) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/anomalydetector) | [Paket (npm)](https://www.npmjs.com/package/%40azure/ai-anomaly-detector) | [Den Code finden Sie auf GitHub.](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/AnomalyDetector)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

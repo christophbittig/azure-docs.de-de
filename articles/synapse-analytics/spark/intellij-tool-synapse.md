@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: 4ccc36bb9f940fd018fe6d96b5338a7178657aa2
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d237a1ff5ff2fa55a5a22fbc3b57c93849bdb87d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114469379"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124818834"
 ---
 # <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>Tutorial: Erstellen einer Apache Spark-Anwendung mit IntelliJ mithilfe eines Synapse-Arbeitsbereichs
 
@@ -57,7 +57,7 @@ In diesem Tutorial lernen Sie Folgendes:
 5. Wählen Sie **Weiter** aus.
 6. Geben Sie im Fenster **New Project** (Neues Projekt) die folgenden Informationen an:
 
-    | Eigenschaft | Beschreibung |
+    | Eigenschaft | BESCHREIBUNG |
     | ----- | ----- |
     |Projektname| Geben Sie einen Namen ein. In diesem Tutorial wird `myApp` verwendet.|
     |Project&nbsp;location (Projektspeicherort)| Geben Sie den gewünschten Speicherort für Ihr Projekt ein.|
@@ -145,7 +145,7 @@ Nachdem Sie eine Scala-Anwendung erstellt haben, können Sie sie remote ausführ
     |„Main class name“ (Name der Hauptklasse)|Der Standardwert ist die Hauptklasse der ausgewählten Datei. Sie können die Klasse ändern, indem Sie die Schaltfläche mit den Auslassungspunkten ( **…** ) und anschließend eine andere Klasse auswählen.|
     |Job configurations (Auftragskonfigurationen)|Sie können die Standardschlüssel und -werte ändern. Weitere Informationen finden Sie unter [Apache Livy-REST-API](http://livy.incubator.apache.org./docs/latest/rest-api.html).|
     |Befehlszeilenargumente|Sie können bei Bedarf durch Leerzeichen getrennte Argumente für die Hauptklasse eingeben.|
-    |Referenced Jars and Referenced Files („Referenzierte JARs“ und „Referenzierte Dateien“)|Sie können bei Bedarf die Pfade für die JAR-Dateien und für die anderen Dateien eingeben, auf die verwiesen wird. Sie können auch Dateien im virtuellen Dateisystem von Azure durchsuchen, das derzeit nur ADLS Gen2-Cluster unterstützt. Weitere Informationen: [Apache Spark-Konfiguration]https://spark.apache.org/docs/2.4.5/configuration.html#runtime-environment) und [Hochladen von Ressourcen in Cluster](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md).|
+    |Referenced Jars and Referenced Files („Referenzierte JARs“ und „Referenzierte Dateien“)|Sie können bei Bedarf die Pfade für die JAR-Dateien und für die anderen Dateien eingeben, auf die verwiesen wird. Sie können auch Dateien im virtuellen Dateisystem von Azure durchsuchen, das derzeit nur ADLS Gen2-Cluster unterstützt. Weitere Informationen finden Sie unter: [Apache Spark-Konfiguration](https://spark.apache.org/docs/2.4.5/configuration.html#runtime-environment) und [Schnellstart: Verwenden von Azure Storage-Explorer zum Erstellen eines Blobs](../../storage/blobs/quickstart-storage-explorer.md).|
     |Job Upload Storage (Speicher für Auftragsupload)|Erweitern Sie die Option, um zusätzliche Optionen anzuzeigen.|
     |Speichertyp|Wählen Sie in der Dropdownliste **Use Azure Blob to upload** (Azure-Blob für Upload verwenden) oder **Use cluster default storage account to upload** (Standardspeicherkonto des Clusters für Upload verwenden).|
     |Speicherkonto|Geben Sie Ihr Speicherkonto ein.|

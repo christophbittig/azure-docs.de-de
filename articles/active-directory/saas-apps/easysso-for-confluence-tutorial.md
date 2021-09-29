@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/13/2021
 ms.author: jeedes
-ms.openlocfilehash: ef121112bb4ff3ff6a297677a5c713f642cb3b78
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: ea114dfc0a0ecb7f06fa350a0067a96763dc2b81
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107519536"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124809511"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-confluence"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit EasySSO for Confluence
 
@@ -194,7 +194,7 @@ Wenn Sie die automatische Benutzerbereitstellung bei der ersten Benutzeranmeldun
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mithilfe von „Meine Apps“.
 
-Wenn Sie unter „Meine Apps“ auf die Kachel „EasySSO for Confluence“ klicken, sollten Sie automatisch bei der Confluence-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+Wenn Sie unter „Meine Apps“ auf die Kachel „EasySSO for Confluence“ klicken, sollten Sie automatisch bei der Confluence-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ### <a name="sp-initiated-workflow"></a>SP-initiierter Workflow
 

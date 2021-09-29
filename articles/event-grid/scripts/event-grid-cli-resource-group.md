@@ -3,14 +3,14 @@ title: 'Azure CLI-Skriptbeispiel: Abonnieren einer Ressourcengruppe | Microsoft-
 description: In diesem Artikel wird anhand eines Beispielskripts für die Azure-Befehlszeilenschnittstelle das Abonnieren von Azure Event Grid-Ereignissen für eine Ressourcengruppe veranschaulicht.
 ms.devlang: azurecli
 ms.topic: sample
-ms.date: 07/22/2021
+ms.date: 09/15/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a72e7b1748f7e7fb96e5b282ea299a60fe5deb1d
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: eb0b0e2d75aa23f973222ce82bebd3d10b65e51c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114467395"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128659757"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-with-azure-cli"></a>Abonnieren von Ereignissen für eine Ressourcengruppe mit der Azure CLI
 

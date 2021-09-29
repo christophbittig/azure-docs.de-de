@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b746b1f7d35668759108580d4d695787ac8fa3bc
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: e2411ef1ba4878e43c7f6432b6aa3bd032f2842a
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733104"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129083712"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Bereitstellungshandbuch für Azure Active Directory-Features
 
@@ -92,7 +92,7 @@ In Phase 4 erzwingen Administratoren die Prinzipien der geringsten Rechte für d
 | Aufgabe | Detail | Erforderliche Lizenz |
 | ---- | ------ | ---------------- |
 | [Erzwingen der Verwendung von Privileged Identity Management](../privileged-identity-management/pim-security-wizard.md) | Entfernen Sie Administratorrollen aus normalen, alltäglichen Benutzerkonten. Erteilen Sie Administratoren die Berechtigung zur Nutzung ihrer Rolle, nachdem folgende Voraussetzungen erfüllt sind: eine erfolgreiche Multi-Factor Authentication-Überprüfung, die Angabe einer geschäftlichen Begründung oder das Anfordern einer Genehmigung von den angegebenen genehmigenden Personen. | Azure AD Premium P2 |
-| [Abschließen einer Zugriffsüberprüfung für Azure AD-Verzeichnisrollen in PIM](../privileged-identity-management/pim-how-to-start-security-review.md) | Arbeiten Sie mit Ihren Sicherheits- und Führungsteams zusammen, um eine Richtlinie für die Zugriffsüberprüfung zu erstellen, anhand derer der Administratorzugriff basierend auf den Richtlinien Ihrer Organisation überprüft wird. | Azure AD Premium P2 |
+| [Abschließen einer Zugriffsüberprüfung für Azure AD-Verzeichnisrollen in PIM](../privileged-identity-management/pim-create-azure-ad-roles-and-resource-roles-review.md) | Arbeiten Sie mit Ihren Sicherheits- und Führungsteams zusammen, um eine Richtlinie für die Zugriffsüberprüfung zu erstellen, anhand derer der Administratorzugriff basierend auf den Richtlinien Ihrer Organisation überprüft wird. | Azure AD Premium P2 |
 | [Implementieren von Richtlinien für dynamische Gruppenmitgliedschaft](../enterprise-users/groups-dynamic-membership.md) | Weisen Sie mit dynamischen Gruppen automatisch Benutzer basierend auf deren Attributen von HR (oder Ihrer zuverlässigen Datenquelle) wie z.B. Abteilung, Titel, Region und anderen Attributen Gruppen zu. |  |
 | [Implementieren von gruppenbasierter Anwendungsbereitstellung](../manage-apps/what-is-access-management.md) | Verwenden Sie die gruppenbasierte Bereitstellung der Zugriffsverwaltung zum automatischen Bereitstellen von Benutzern für SaaS-Anwendungen. |  |
 | [Automatisieren der Bereitstellung und Bereitstellungsaufhebung](../app-provisioning/user-provisioning.md) | Entfernen Sie manuelle Schritte aus dem Kontolebenszyklus Ihrer Mitarbeiter, um nicht autorisierte Zugriffe zu verhindern. Synchronisieren Sie Identitäten über Ihre zuverlässige Datenquelle (HR-System) mit Azure AD. |  |

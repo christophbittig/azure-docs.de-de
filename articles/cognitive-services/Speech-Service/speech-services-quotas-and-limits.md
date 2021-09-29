@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/16/2021
+ms.date: 09/10/2021
 ms.author: alexeyo
-ms.openlocfilehash: a71a2736533cd2c707d4224db3790e93fe5e2782
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 06d54a7d42efd1cad9088785d24095abc039337b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355823"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124737086"
 ---
 # <a name="speech-service-quotas-and-limits"></a>Speech-Dienst – Kontingente und Limits
 
@@ -45,7 +45,6 @@ Zur Verwendung mit dem [Speech SDK](speech-sdk.md) und/oder der [Spracherkennung
 | Maximale Größe des Blob-Containers | – | 5 GB |
 | Maximale Anzahl von Blobs pro Container | – | 10000 |
 | Maximale Anzahl von Dateien pro Transkriptionsanforderung (bei Verwendung mehrerer Inhalts-URLs als Eingabe) | – | 1000  |
-| Maximale Anzahl gleichzeitig ausgeführter Aufträge | – | 2000  |
 
 #### <a name="model-customization"></a>Modellanpassung
 | Kontingent | Free (F0)<sup>1</sup> | Standard (S0) |
@@ -100,7 +99,7 @@ In den folgenden Tabellen sind Parameter ohne die Zeile „Anpassbar“ **nicht*
 | **Grenzwert für gleichzeitige Anforderungen für benutzerdefinierte neuronale Stimme** |  |  |
 | Standardwert | – | 10 |
 | Anpassbar | – | Ja<sup>5</sup> |
-| **Grenzwert für gleichzeitige Anforderungen für Custom Voice<sup>6</sup>** |  |  |
+| **Grenzwert für gleichzeitige Anforderungen für Custom Voice <sup>6</sup>** |  |  |
 | Standardwert | 10 | 10 |
 | Anpassbar | Nein<sup>5</sup> | Ja<sup>5</sup> |
 

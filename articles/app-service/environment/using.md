@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 131c8d2abc21e046a96488a602b831361f64dcf4
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 150e5d0e0d7360bcf9d4f42038e3ff49366d80a8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446223"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124767886"
 ---
 # <a name="using-an-app-service-environment"></a>Verwenden einer App Service-Umgebung
 
@@ -81,8 +81,8 @@ Wenn Ihre ASE mit einer externen VIP erstellt wird, werden Ihre Apps automatisch
 Wenn Sie einen eigenen DNS-Server verwenden möchten, müssen die folgenden Einträge hinzugefügt werden:
 
 1. Erstellen Sie eine Zone für „&lt;ASE-Name&gt;.appserviceenvironment.net“.
-1. Erstellen Sie in dieser Zone einen A-Eintrag, der auf * in der IP-Adresse für den eingehenden Datenverkehr verweist, die von Ihrer ASE verwendet wird
-1. Erstellen Sie in dieser Zone einen A-Eintrag, der auf @ in der IP-Adresse für den eingehenden Datenverkehr verweist, die von Ihrer ASE verwendet wird
+1. Erstellen Sie in dieser Zone einen A-Eintrag, der auf * in der IP-Adresse für den eingehenden Datenverkehr verweist, die von Ihrer ASE verwendet wird.
+1. Erstellen Sie in dieser Zone einen A-Eintrag, der auf @ in der IP-Adresse für den eingehenden Datenverkehr verweist, die von Ihrer ASE verwendet wird.
 1. Erstellen Sie eine Zone namens „scm“ in „&lt;ASE-Name&gt;.appserviceenvironment.net“.
 1. Erstellen Sie in dieser Zone einen A-Eintrag, der auf * in der IP-Adresse für den eingehenden Datenverkehr verweist, die von Ihrer ASE verwendet wird
 
@@ -90,8 +90,8 @@ So konfigurieren Sie DNS in privaten Azure DNS-Zonen
 
 1. Erstellen Sie eine private Azure DNS-Zone namens „&lt;ASE-Name&gt;.appserviceenvironment.net“.
 1. Erstellen Sie einen A-Eintrag in dieser Zone, der * auf die IP-Adresse für den eingehenden Datenverkehr verweist
-1. Erstellen Sie einen A-Eintrag in dieser Zone, der @ auf die IP-Adresse für den eingehenden Datenverkehr verweist
-1. Erstellen Sie einen A-Eintrag in dieser Zone, der *.scm auf die IP-Adresse für den eingehenden Datenverkehr verweist
+1. Erstellen Sie einen A-Eintrag in dieser Zone, der @ auf die IP-Adresse für den eingehenden Datenverkehr verweist.
+1. Erstellen Sie einen A-Eintrag in dieser Zone, der *.scm auf die IP-Adresse für den eingehenden Datenverkehr verweist.
 
 Die DNS-Einstellungen für Ihr ASE-Standarddomänensuffix schränken Ihre Apps nicht dahingehend ein, dass sie nur über diese Namen zugänglich sind. Sie können einen benutzerdefinierten Domänennamen ohne jegliche Validierung für Ihre Apps in einer ASE festlegen. Wenn Sie dann eine Zone namens *contoso.net* erstellen möchten, können Sie dies tun und auf die IP-Adresse für eingehenden Datenverkehr verweisen. Der benutzerdefinierte Domänenname funktioniert für App-Anforderungen, aber nicht für die SCM-Site. Die SCM-Site ist nur unter *&lt;appname&gt;.scm.&lt;asename&gt;.appserviceenvironment.net* verfügbar. 
 
@@ -189,8 +189,8 @@ So löschen Sie eine ASE
 Bei ASEv3 gibt es je nach Art der ASE-Bereitstellung ein anderes Preismodell. Es gibt drei verschiedene Preismodelle: 
 
 - **ASEv3**: Wenn die ASE leer ist, fällt eine Gebühr an, als ob Sie einen ASP mit einer Instanz von Windows I1v2 hätten. Die Gebühr für eine Instanz ist keine additive Gebühr, Sie wird jedoch nur angewendet, wenn die ASE leer ist.
-- **Verfügbarkeitszone ASEv3**: Es gibt eine Gebühr für eine Mindestanzahl von neun Windows I1v2-Instanzen. Wenn Sie über neun oder mehr App Service Planinstanzen verfügen, fällt keine zusätzliche Gebühr für die Unterstützung von Verfügbarkeitszonen an. Alle App Service Pläne in einer AZ ASEv3-Instanz haben auch eine Mindestanzahl von 3 Instanzen, um sicherzustellen, dass in jeder Verfügbarkeitszone eine Instanz vorhanden ist. Wenn die Pläne hochskaliert werden, werden sie auf die Verfügbarkeitszonen verteilt. 
-- **Dedizierter Host-ASEv3**: Bei der Bereitstellung eines dedizierten Hosts, werden Ihnen zwei dedizierte Hosts gemäß unserer Preisgestaltung bei der ASEv3-Erstellung in Rechnung gestellt. Bei der Skalierung wird dann ein kleiner Prozentsatz des isolierten V2-Tarifs pro Core berechnet.
+- **Verfügbarkeitszone ASEv3**: Es gibt eine Gebühr für eine Mindestanzahl von neun Windows I1v2-Instanzen. Wenn Sie über neun oder mehr App Service Planinstanzen verfügen, fällt keine zusätzliche Gebühr für die Unterstützung von Verfügbarkeitszonen an. Alle App Service-Pläne in einer AZ-ASEv3-Instanz haben auch eine Mindestanzahl von 3 Instanzen, um sicherzustellen, dass in jeder Verfügbarkeitszone eine Instanz vorhanden ist. Wenn die Pläne hochskaliert werden, werden sie auf die Verfügbarkeitszonen verteilt. 
+- **Dedizierter Host-ASEv3**: Bei der Bereitstellung eines dedizierten Hosts werden Ihnen zwei dedizierte Hosts gemäß unserer Preisgestaltung bei der ASEv3-Erstellung in Rechnung gestellt. Bei der Skalierung wird dann ein kleiner Prozentsatz des isolierten V2-Tarifs pro Core berechnet.
 
 Die Preise für reservierte Instanzen für isolierte V2 sind verfügbar und werden unter [Anwenden von Reservierungsrabatten auf Azure App Service][reservedinstances] beschrieben. Die Preisgestaltung, zusammen mit der Preisgestaltung für reservierte Instanzen, ist bei der [App Service Preisgestaltung][pricing] unter dem **Plan für isolierte V2** verfügbar. 
 
@@ -220,5 +220,5 @@ Die Preise für reservierte Instanzen für isolierte V2 sind verfügbar und werd
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../web-application-firewall/ag/ag-overview.md
 [logalerts]: ../../azure-monitor/alerts/alerts-log.md
-[reservedinstances]: https://docs.microsoft.com/azure/cost-management-billing/reservations/reservation-discount-app-service#how-reservation-discounts-apply-to-isolated-v2-instances
+[reservedinstances]: ../../cost-management-billing/reservations/reservation-discount-app-service.md#how-reservation-discounts-apply-to-isolated-v2-instances
 [pricing]: https://azure.microsoft.com/pricing/details/app-service/windows/

@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 08/24/2021
 tags: azure-synapse
-ms.openlocfilehash: bcda86cd166e410bfc546c802466180557a92dc8
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: b24fcbac37288dd3c49fe64fe517dd31bbab03d2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122825055"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124788399"
 ---
 # <a name="data-discovery--classification"></a>Datenermittlung und -klassifizierung
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -134,7 +134,7 @@ Dies sind die Aktivitäten, die tatsächlich mit vertraulichen Informationen gep
 - DBCC SHOW_STATISTICS
 - sys.dm_db_stats_histogram
 
-Verwenden Sie [sys.fn_get_audit_file](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql), um Informationen aus einer Überwachungsdatei zurückzugeben, die in einem Azure Storage-Konto gespeichert ist.
+Verwenden Sie [sys.fn_get_audit_file](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql), um Informationen aus einer Überwachungsdatei zurückzugeben, die in einem Azure Storage-Konto gespeichert ist.
 
 ## <a name="permissions"></a><a id="permissions"></a>Berechtigungen
 
@@ -218,10 +218,10 @@ Sie können die REST-API verwenden, um Klassifizierungen und Empfehlungen progra
 
 Sie können die folgenden SQL-Treiber verwenden, um Klassifizierungsmetadaten abzurufen:
 
-- [ODBC-Treiber](https://docs.microsoft.com/sql/connect/odbc/data-classification)
-- [OLE DB-Treiber](https://docs.microsoft.com/sql/connect/oledb/features/using-data-classification)
-- [JDBC-Treiber](https://docs.microsoft.com/sql/connect/jdbc/data-discovery-classification-sample)
-- [Microsoft-Treiber für PHP für SQL Server](https://docs.microsoft.com/sql/connect/php/release-notes-php-sql-driver)
+- [ODBC-Treiber](/sql/connect/odbc/data-classification)
+- [OLE DB-Treiber](/sql/connect/oledb/features/using-data-classification)
+- [JDBC-Treiber](/sql/connect/jdbc/data-discovery-classification-sample)
+- [Microsoft-Treiber für PHP für SQL Server](/sql/connect/php/release-notes-php-sql-driver)
 
 ## <a name="faq---advanced-classification-capabilities"></a>FAQ: Erweiterte Klassifizierungsfunktionen
 

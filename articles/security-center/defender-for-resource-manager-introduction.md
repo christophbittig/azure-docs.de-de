@@ -7,12 +7,12 @@ ms.date: 09/05/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: fff9c94af2c74612e8c07be1f7e125787265a72d
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: b9dce997adb1fbf16c777bc472d10008f68ef9f2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123541367"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763384"
 ---
 # <a name="introduction-to-azure-defender-for-resource-manager"></a>Einführung in Azure Defender für Resource Manager
 
@@ -73,7 +73,7 @@ So untersuchen Sie Sicherheitswarnungen von Azure Defender für Resource Manager
 1. Suchen Sie nach verdächtigen Aktivitäten.
 
 > [!TIP]
-> Streamen Sie Ihre Azure-Aktivitätsprotokolle wie unter [Verknüpfen von Daten aus dem Azure-Aktivitätsprotokoll](../sentinel/connect-azure-activity.md) beschrieben an Azure Sentinel, um sie noch besser und umfassender analysieren zu können.
+> Streamen Sie Ihre Azure-Aktivitätsprotokolle wie unter [Verknüpfen von Daten aus dem Azure-Aktivitätsprotokoll](../sentinel/data-connectors-reference.md#azure-activity) beschrieben an Azure Sentinel, um sie noch besser und umfassender analysieren zu können.
 
 
 

@@ -8,12 +8,12 @@ ms.service: virtual-network
 ms.topic: tutorial
 ms.date: 03/06/2021
 ms.author: kumud
-ms.openlocfilehash: cfbb499c79761e1f2014c834e65dac35fe09ef90
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 4af40f7f1caab7e4517c0dd621e400f58e3a29ad
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057285"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091367"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Tutorial: Filtern von Netzwerkdatenverkehr mithilfe einer Netzwerksicherheitsgruppe über das Azure-Portal
 
@@ -53,7 +53,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
     | ------- | ----- |
     | **Projektdetails** |   |
     | Subscription | Wählen Sie Ihr Abonnement aus. |
-    | Ressourcengruppe | Wählen Sie **Neu erstellen**.  </br> Geben Sie **myResourceGroup** ein. </br> Klicken Sie auf **OK**. |
+    | Resource group | Wählen Sie **Neu erstellen**.  </br> Geben Sie **myResourceGroup** ein. </br> Klicken Sie auf **OK**. |
     | **Instanzendetails** |   |
     | Name | Geben Sie **myVNet** ein. |
     | Region | Wählen Sie **(USA) USA, Osten** aus. |
@@ -178,7 +178,7 @@ In diesem Abschnitt ordnen Sie die Netzwerksicherheitsgruppe dem Subnetz des zuv
     | Ziel-Anwendungssicherheitsgruppe | Wählen Sie **myAsgMgmtServers** aus. |
     | Dienst | Übernehmen Sie den Standardwert **Benutzerdefiniert**. |
     | Zielportbereiche | Geben Sie **3389** ein. |
-    | Protocol | Wählen Sie **TCP** aus. |
+    | Protocol | Wählen Sie **Alle** aus. |
     | Aktion | Übernehmen Sie den Standardwert **Zulassen**. |
     | Priorität | Übernehmen Sie den Standardwert **110**. |
     | Name | Geben Sie **Allow-RDP-All** ein. |

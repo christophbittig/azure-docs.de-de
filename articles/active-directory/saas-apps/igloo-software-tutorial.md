@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 033561ac3c4a510927691dc8db4f61196f54ec2a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 243c00ef686f0259a20f564f1641b9399a6691d7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92460388"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124749904"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-igloo-software"></a>Tutorial: Azure Active Directory-Integration mit Igloo Software
 
@@ -125,13 +125,13 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Igloo S
 
     c. Abmelde-URL
 
-### <a name="configure-igloo-software-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Igloo Software
+### <a name="configure-igloo-software-single-sign-on&quot;></a>Konfigurieren des einmaligen Anmeldens für Igloo Software
 
 1. Melden Sie sich in einem anderen Webbrowserfenster bei der Igloo Software-Unternehmenswebsite als Administrator an.
 
 2. Wechseln Sie zum **Control Panel**.
 
-     ![Systemsteuerung](./media/igloo-software-tutorial/ic799949.png "Systemsteuerung")
+     ![Systemsteuerung](./media/igloo-software-tutorial/ic799949.png &quot;Systemsteuerung")
 
 3. Klicken Sie auf der Registerkarte **Membership** auf **Sign In Settings**.
 
@@ -240,7 +240,7 @@ Wenn ein zugewiesener Benutzer versucht, sich über den Zugriffsbereich bei Iglo
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Igloo Software“ klicken, sollten Sie automatisch bei der Igloo Software-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+Wenn Sie im Zugriffsbereich auf die Kachel „Igloo Software“ klicken, sollten Sie automatisch bei der Igloo Software-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 

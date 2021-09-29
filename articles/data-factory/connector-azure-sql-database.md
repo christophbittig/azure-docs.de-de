@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: c594d253c193928eae47949474aaa75c4f27b60d
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: ce4d1030999978ba5814d7978238c6f70026b34c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123314002"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124785114"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory-or-azure-synapse-analytics"></a>Kopieren und Transformieren von Daten in Azure SQL Datenbank mithilfe von Azure Data Factory oder Azure Synapse Analytics
 
@@ -61,7 +61,7 @@ Verwenden Sie die folgenden Schritte, um einen verknüpften Azure SQL-Datenbank-
 
    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-   :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Ein Screenshot, der das Erstellen eines neuen verknüpften Diensts mit der Azure Data Factory Benutzeroberfläche zeigt.":::
+   :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Screenshot: Erstellen eines neuen verknüpften Diensts über die Azure Data Factory-Benutzeroberfläche":::
 
    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -276,7 +276,7 @@ Eine vollständige Liste mit den verfügbaren Abschnitten und Eigenschaften zum 
 
 Die folgenden Eigenschaften werden beim Azure SQL-Datenbank-Dataset unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft des Datasets muss auf **AzureSqlTable** festgelegt sein. | Ja |
 | schema | Name des Schemas. |Quelle: Nein, Senke: Ja  |
@@ -332,7 +332,7 @@ Zum Kopieren von Daten aus Azure SQL-Datenbank werden die folgenden Eigenschafte
 **Beachten Sie folgende Punkte:**
 
 - Wenn **sqlReaderQuery** für **AzureSqlSource** angegeben ist, führt die Kopieraktivität diese Abfrage für die Azure SQL-Datenbankquelle aus, um die Daten abzurufen. Sie können auch eine gespeicherte Prozedur angeben, indem Sie **sqlReaderStoredProcedureName** und **storedProcedureParameters** angeben, sofern die gespeicherten Prozeduren Parameter verwenden.
-- Wenn Sie eine gespeicherte Prozedur in der Quelle zum Abrufen von Daten verwenden und die gespeicherte Prozedur so konzipiert ist, dass beim Übergeben eines anderen Parameterwerts ein anderes Schema zurückgegeben wird, tritt möglicherweise ein Fehler oder ein unerwartetes Ergebnis auf, wenn Sie ein Schema von der Benutzeroberfläche importieren oder Daten in SQL-Datenbank mit automatischer Tabellenerstellung kopieren.
+- Wenn Sie zum Abrufen von Daten eine gespeicherte Prozedur in der Quelle verwenden und die gespeicherte Prozedur beim Übergeben eines anderen Parameterwerts ein anderes Schema zurückgibt, kommt es möglicherweise beim Importieren eines Schemas über die Benutzeroberfläche oder beim Kopieren von Daten in eine SQL-Datenbank zu einem Fehler oder einem unerwarteten Ergebnis.
 
 #### <a name="sql-query-example"></a>Beispiel für eine SQL-Abfrage
 
@@ -428,7 +428,7 @@ GO
 
 Zum Kopieren von Daten in Azure SQL-Datenbank werden die folgenden Eigenschaften im Abschnitt **sink** der Kopieraktivität unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft der Senke der Kopieraktivität muss auf **AzureSqlSink** festgelegt werden. Der Typ „SqlSink“ wird aus Gründen der Abwärtskompatibilität weiterhin unterstützt. | Ja |
 | preCopyScript | Geben Sie eine auszuführende SQL-Abfrage für die Kopieraktivität an, ehe Sie Daten in Azure SQL-Datenbank schreiben. Sie wird pro Ausführung der Kopieraktivität nur einmal aufgerufen. Sie können diese Eigenschaft nutzen, um vorab geladene Daten zu bereinigen. | Nein |
@@ -519,7 +519,7 @@ Weitere Informationen finden Sie unter [Aufrufen einer gespeicherten Prozedur au
 
 Der Connector für Azure SQL-Datenbank in der Kopieraktivität verfügt über eine integrierte Datenpartitionierung zum parallelen Kopieren von Daten. Die Datenpartitionierungsoptionen befinden sich auf der Registerkarte **Quelle** der Kopieraktivität.
 
-![Screenshot der Partitionierungsoptionen](./media/connector-sql-server/connector-sql-partition-options.png)
+:::image type="content" source="./media/connector-sql-server/connector-sql-partition-options.png" alt-text="Screenshot der Partitionierungsoptionen":::
 
 Wenn Sie das partitionierte Kopieren aktivieren, führt die Kopieraktivität parallele Abfragen für Ihre Azure SQL-Datenbank-Quelle aus, um Daten in Partitionen zu laden. Der Parallelitätsgrad wird über die Einstellung [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) der Kopieraktivität gesteuert. Wenn Sie beispielsweise `parallelCopies` auf vier setzen, generiert der Dienst gleichzeitig vier Abfragen auf der Grundlage der von Ihnen angegebenen Partitionsoption und -einstellungen und führt sie aus, wobei jede Abfrage einen Teil der Daten aus Ihrer Azure SQL-Datenbank abruft.
 
@@ -528,7 +528,7 @@ Es wird empfohlen, das parallele Kopieren mit Datenpartitionierung zu aktivieren
 | Szenario                                                     | Empfohlene Einstellungen                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Vollständiges Laden aus einer großen Tabelle mit physischen Partitionen        | **Partitionsoption:** Physische Partitionen der Tabelle. <br><br/>Während der Ausführung erkennt der Dienst automatisch die physischen Partitionen und kopiert Daten nach Partitionen. <br><br/>Um zu überprüfen, ob Ihre Tabelle eine physische Partition besitzt oder nicht, können Sie auf [diese Abfrage](#sample-query-to-check-physical-partition) verweisen. |
-| Vollständiges Laden aus einer großen Tabelle ohne physische Partitionen, aber mit einer integer- oder datetime-Spalte für die Datenpartitionierung. | **Partitionsoptionen:** Dynamische Bereichspartitionierung<br>**Partitionsspalte** (optional): Geben Sie die Spalte für die Datenpartitionierung an. Ohne Angabe wird der Index oder die Primärschlüsselspalte verwendet.<br/>**Obergrenze der Partition** und **Untergrenze der Partition** (optional): Geben Sie an, ob Sie den Partitionssprung bestimmen möchten. Dies dient nicht zum Filtern der Zeilen in der Tabelle; alle Zeilen in der Tabelle werden partitioniert und kopiert. Wenn nicht angegeben, werden die Werte für die Kopieraktivität automatisch erkannt.<br><br>Wenn Ihre Partitionsspalte "ID" beispielsweise einen Wertebereich von 1 bis 100 hat und Sie die untere Grenze auf 20 und die obere Grenze auf 80 und die Parallelkopie auf 4 setzen, ruft der Dienst Daten nach 4 Partitionen ab - IDs im Bereich <=20, [21, 50], [51, 80] bzw. >=81. |
+| Vollständiges Laden aus einer großen Tabelle ohne physische Partitionen, aber mit einer integer- oder datetime-Spalte für die Datenpartitionierung. | **Partitionsoptionen:** Dynamische Bereichspartitionierung<br>**Partitionsspalte** (optional): Geben Sie die Spalte für die Datenpartitionierung an. Ohne Angabe wird der Index oder die Primärschlüsselspalte verwendet.<br/>**Obergrenze der Partition** und **Untergrenze der Partition** (optional): Geben Sie an, ob Sie den Partitionssprung bestimmen möchten. Dies dient nicht zum Filtern der Zeilen in der Tabelle; alle Zeilen in der Tabelle werden partitioniert und kopiert. Wenn nicht angegeben, werden die Werte für die Kopieraktivität automatisch erkannt.<br><br>Wenn Ihre Partitionsspalte „ID“ z. B. einen Wertebereich von 1 bis 100 aufweist und Sie die untere Grenze auf 20 und die obere Grenze auf 80 sowie die Parallelkopie auf 4 festlegen, ruft der Dienst Daten nach 4 Partitionen ab – IDs im Bereich <=20, [21, 50], [51, 80] bzw. >=81. |
 | Laden einer großen Datenmenge unter Verwendung einer benutzerdefinierten Abfrage ohne physische Partitionen, aber mit einer integer- oder date/datetime-Spalte für die Datenpartitionierung. | **Partitionsoptionen:** Dynamische Bereichspartitionierung<br>**Abfrage**: `SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br>**Partitionsspalte:** Geben Sie die Spalte für die Datenpartitionierung an.<br>**Obergrenze der Partition** und **Untergrenze der Partition** (optional): Geben Sie an, ob Sie den Partitionssprung bestimmen möchten. Dies dient nicht zum Filtern der Zeilen in der Tabelle; alle Zeilen im Abfrageergebnis werden partitioniert und kopiert. Wenn nicht angegeben, wird der Wert für die Kopieraktivität automatisch erkannt.<br><br>Data Factory ersetzt `?AdfRangePartitionColumnName` während der Ausführung durch den tatsächlichen Spaltennamen und die Wertebereiche für jede Partition und sendet die Daten an Azure SQL-Datenbank. <br>Wenn Ihre Partitionsspalte „ID“ beispielsweise einen Wertebereich von 1 bis 100 hat und Sie die untere Grenze auf 20 und die obere Grenze auf 80 und die Parallelkopie auf 4 setzen, ruft der Dienst Daten nach 4 Partitionen ab - IDs im Bereich <=20, [21, 50], [51, 80] bzw. >=81. <br><br>Hier finden Sie weitere Beispiele für verschiedene Szenarien:<br> 1. Abfrage der gesamten Tabelle: <br>`SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition`<br> 2. Abfrage aus einer Tabelle mit Spaltenauswahl und zusätzlichen Where-Klausel-Filtern: <br>`SELECT <column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 3. Abfragen mit Unterabfragen: <br>`SELECT <column_list> FROM (<your_sub_query>) AS T WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 4. Abfrage mit Partition in Unterabfrage: <br>`SELECT <column_list> FROM (SELECT <your_sub_query_column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition) AS T`
 |
 
@@ -580,7 +580,7 @@ WHERE s.name='[your schema]' AND t.name = '[your table name]'
 
 Wenn die Tabelle eine physische Partition besitzt, würde „HasPartition“ wie folgt als „Yes“ (Ja) angezeigt werden.
 
-![SQL-Abfrageergebnis](./media/connector-azure-sql-database/sql-query-result.png)
+:::image type="content" source="./media/connector-azure-sql-database/sql-query-result.png" alt-text="SQL-Abfrageergebnis":::
 
 ## <a name="best-practice-for-loading-data-into-azure-sql-database"></a>Kopieren von Daten nach und aus Azure SQL-Datenbank
 
@@ -605,7 +605,7 @@ Das Laden von Daten in eine temporäre Datenbanktabelle wird derzeit nicht nativ
 
 Als Beispiel können Sie eine Pipeline mit einer **Copy-Aktivität** erstellen, die mit einer **gespeicherte Prozedur-Aktivität** verkettet ist. Dabei kopiert die Kopieraktivität Daten aus Ihrem Quellspeicher in eine Stagingtabelle in Azure SQL-Datenbank (z. B. **UpsertStagingTable** als Tabellenname im Dataset). Die Aktivität der gespeicherten Prozedur ruft dann eine gespeicherte Prozedur auf, um die Quelldaten aus der Stagingtabelle mit der Zieltabelle zusammenzuführen und die Stagingtabelle zu bereinigen.
 
-![Upsert](./media/connector-azure-sql-database/azure-sql-database-upsert.png)
+:::image type="content" source="./media/connector-azure-sql-database/azure-sql-database-upsert.png" alt-text="Upsert":::
 
 Definieren Sie in Ihrer Datenbank eine gespeicherte Prozedur mit MERGE-Logik (wie im folgenden Beispiel), auf die über die vorherige Aktivität der gespeicherten Prozedur gezeigt wird. Angenommen, das Ziel ist die Tabelle **Marketing** mit den drei Spalten: **ProfileID**, **State** und **Category**. Führen Sie den Upsert-Vorgang basierend auf der Spalte **ProfileID** aus.
 
@@ -702,7 +702,7 @@ Spezifische Einstellungen für Azure SQL-Datenbank sind auf der Registerkarte **
 
 **Gespeicherte Prozedur**: Wählen Sie diese Option aus, wenn Sie eine Projektion und Quelldaten aus einer gespeicherten Prozedur generieren möchten, die von der Quelldatenbank ausgeführt wird. Sie können das Schema, den Prozedurnamen und die Parameter eingeben oder auf Aktualisieren klicken, um den Dienst aufzufordern, die Schemas und Prozedurnamen zu ermitteln. Anschließend können Sie auf „Importieren“ klicken, um alle Prozedurparameter mit dem Formular ``@paraName`` zu importieren.
 
-![Gespeicherte Prozedur](media/data-flow/stored-procedure-2.png "Gespeicherte Prozedur")
+:::image type="content" source="media/data-flow/stored-procedure-2.png" alt-text="Gespeicherte Prozedur":::
 
 - SQL-Beispiel: ```Select * from MyTable where customerId > 1000 and customerId < 2000```
 - Parametrisiertes SQL-Beispiel: ``"select * from {$tablename} where orderyear > {$year}"``
@@ -717,7 +717,7 @@ Spezifische Einstellungen für Azure SQL-Datenbank sind auf der Registerkarte **
 - Serialisierbar
 - Keine (Isolationsstufe ignorieren)
 
-![Isolationsstufe](media/data-flow/isolationlevel.png "Isolationsstufe")
+:::image type="content" source="media/data-flow/isolationlevel.png" alt-text="Isolationsstufe":::
 
 ### <a name="sink-transformation"></a>Senkentransformation
 
@@ -725,7 +725,7 @@ Spezifische Einstellungen für Azure SQL-Datenbank sind auf der Registerkarte **
 
 **Updatemethode:** Bestimmt, welche Vorgänge für das Datenbankziel zulässig sind. Standardmäßig sind lediglich Einfügevorgänge zulässig. Wenn Sie für Zeilen Update-, Upsert- oder Löschvorgänge verwenden möchten, fügen Sie zunächst eine Transformation zur Änderung von Zeilen hinzu, um Zeilen für diese Aktionen zu kennzeichnen. Für Update-, Upsert- und Löschvorgänge muss mindestens eine Schlüsselspalte festgelegt werden, um die Zeile zu bestimmen, die geändert werden soll.
 
-![Schlüsselspalten](media/data-flow/keycolumn.png "Schlüsselspalten")
+:::image type="content" source="media/data-flow/keycolumn.png" alt-text="Schlüsselspalten":::
 
 Der Spaltenname, den Sie hier als Schlüssel wählen, wird vom Dienst als Teil der nachfolgenden Aktualisierung, Upsert, Löschung verwendet. Daher müssen Sie eine Spalte auswählen, die in der Senkenzuordnung vorhanden ist. Wenn Sie den Wert nicht in diese Schlüsselspalte schreiben möchten, klicken Sie auf „Skip writing key columns“ (Schreiben von Schlüsselspalten überspringen).
 
@@ -741,11 +741,11 @@ Sie können die hier verwendete Schlüsselspalte zum Aktualisieren der Azure SQL
 
 **Verwenden von TempDB:** Standardmäßig verwendet der Dienst eine globale temporäre Tabelle, um Daten als Teil des Ladevorgangs zu speichern. Sie können alternativ die Option "TempDB verwenden" deaktivieren und stattdessen den Dienst bitten, die temporäre Tabelle in einer Benutzerdatenbank zu speichern, die sich in der Datenbank befindet, die für diese Senke verwendet wird.
 
-![Use TempDB (TempDB verwenden)](media/data-flow/tempdb.png "Use TempDB (TempDB verwenden)")
+:::image type="content" source="media/data-flow/tempdb.png" alt-text="Use TempDB (TempDB verwenden)":::
 
 **Pre- und Post SQL-Skripts**: Geben Sie mehrzeilige SQL-Skripts ein, die ausgeführt werden, bevor Daten in die Senkendatenbank geschrieben werden (Vorverarbeitung) und danach (Nachbearbeitung).
 
-![Vorverarbeitungs- und Nachbearbeitungs-SQL-Skripts](media/data-flow/prepost1.png "SQL-Verarbeitungsskripts")
+:::image type="content" source="media/data-flow/prepost1.png" alt-text="Vorverarbeitungs- und Nachbearbeitungs-SQL-Skripts":::
 
 ### <a name="error-row-handling"></a>Fehlerzeilenbehandlung
 
@@ -755,7 +755,7 @@ Beim Schreiben in Azure SQL-Datenbank können aufgrund von Einschränkungen durc
 *    Der Wert NULL kann nicht in die Spalte einfügt werden.
 *    Die INSERT-Anweisung steht in Konflikt mit der CHECK-Einschränkung.
 
-Standardmäßig scheitert eine Datenflussausführung beim ersten erhaltenen Fehler. Sie können die Option **Bei Fehler fortsetzen** auswählen, die einen Abschluss des Datenflusses auch dann ermöglicht, wenn einzelne Zeilen Fehler aufweisen. Azure Data Factory bietet Ihnen verschiedene Optionen, mit denen Sie diese Fehlerzeilen behandeln können.
+Standardmäßig scheitert eine Datenflussausführung beim ersten erhaltenen Fehler. Sie können die Option **Bei Fehler fortsetzen** auswählen, die einen Abschluss des Datenflusses auch dann ermöglicht, wenn einzelne Zeilen Fehler aufweisen. Der Dienst bietet Ihnen verschiedene Optionen, mit denen Sie diese Fehlerzeilen behandeln können.
 
 **Transaktionscommit:** Wählen Sie aus, ob Ihre Daten in einer einzelnen Transaktion oder in Batches geschrieben werden. Eine einzelne Transaktion führt zu einer schlechteren Leistung, doch sind keine geschriebenen Daten für andere sichtbar, bis die Transaktion abgeschlossen ist.  
 
@@ -763,7 +763,7 @@ Standardmäßig scheitert eine Datenflussausführung beim ersten erhaltenen Fehl
 
 **Bericht bei Fehler als erfolgreich markieren:** Wenn diese Option aktiviert ist, wird der Datenfluss als erfolgreich markiert, auch wenn Fehlerzeilen gefunden werden. 
 
-![Fehlerzeilenbehandlung](media/data-flow/sql-error-row-handling.png "Fehlerzeilenbehandlung")
+:::image type="content" source="media/data-flow/sql-error-row-handling.png" alt-text="Fehlerzeilenbehandlung":::
 
 
 ## <a name="data-type-mapping-for-azure-sql-database"></a>Datentypzuordnung für Azure SQL-Datenbank

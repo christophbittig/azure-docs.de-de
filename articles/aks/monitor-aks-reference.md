@@ -5,12 +5,12 @@ ms.service: container-service
 ms.custom: subject-monitoring
 ms.date: 07/29/2021
 ms.topic: reference
-ms.openlocfilehash: 4dfbe6ba3e8bb64e2fdf41a06932f84fb1b7be94
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 9e8a12f8d3075bade1619ce766c74dc8cac23481
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343383"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124816054"
 ---
 # <a name="monitoring-aks-data-reference"></a>Referenz zur Überwachung von AKS-Daten
 
@@ -57,7 +57,7 @@ Eine Referenz finden Sie in der Liste [aller Typen von Ressourcenprotokollkatego
 
 | Category                | BESCHREIBUNG |
 |:---|:---|
-| cluster-autoscale       | Hiermit können Sie nachvollziehen, warum der möglicherweise unerwartet AKS-Cluster hoch- oder herunterskaliert wird. Diese Informationen sind auch nützlich, um Zeitintervalle zu korrelieren, in denen möglicherweise etwas Relevantes im Cluster passiert ist. |
+| cluster-autoscaler       | Hiermit können Sie nachvollziehen, warum der möglicherweise unerwartet AKS-Cluster hoch- oder herunterskaliert wird. Diese Informationen sind auch nützlich, um Zeitintervalle zu korrelieren, in denen möglicherweise etwas Relevantes im Cluster passiert ist. |
 | guard                   | Diese Kategorie ist für verwaltete Azure Active Directory- und Azure RBAC-Überwachungen vorgesehen. Für verwaltete Azure AD-Instanzen schließt dies eingehende Token und ausgehende Benutzerdaten ein. Für Azure RBAC schließt dies eingehende und ausgehende Zugriffsüberprüfungen ein. |
 | kube-apiserver          | Protokolle vom API-Server |
 | kube-audit              | Überwachungsprotokolldaten für alle Überwachungsereignisse, einschließlich get, list, create, update, delete, patch und post |
@@ -99,4 +99,4 @@ Weitere Informationen zum Schema von Aktivitätsprotokolleinträgen finden Sie u
 ## <a name="see-also"></a>Weitere Informationen
 
 - Eine Beschreibung der Überwachung von AKS finden Sie unter [Überwachen von AKS](monitor-aks.md).
-- Ausführliche Informationen zur Überwachung von Azure-Ressourcen finden Sie unter [Überwachen von Azure-Ressourcen mit Azure Monitor](/azure/azure-monitor/essentials/monitor-azure-resource).
+- Ausführliche Informationen zur Überwachung von Azure-Ressourcen finden Sie unter [Überwachen von Azure-Ressourcen mit Azure Monitor](../azure-monitor/essentials/monitor-azure-resource.md).

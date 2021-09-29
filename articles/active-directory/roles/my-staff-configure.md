@@ -13,18 +13,18 @@ ms.date: 03/11/2021
 ms.author: rolyon
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: d3ec7c9786a9b5d3774c05669ae6d51ad443e71d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c7f05973f7d609ab3f4dc0f2f567ede4ce0d0f64
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339916"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124830923"
 ---
 # <a name="manage-your-users-with-my-staff"></a>Verwalten Ihrer Benutzer über das Portal „Meine Mitarbeiter“
 
 Über das Portal „Meine Mitarbeiter“ können Sie Berechtigungen an Führungspersonen wie eine Filial- oder Teamleitung delegieren. Diese können dann sicherstellen, dass die Mitarbeiter Zugriff auf ihre Azure AD-Konten haben. Anstatt einen zentralen Helpdesk einzurichten, können Organisationen häufige Aufgaben wie das Zurücksetzen von Kennwörtern oder das Ändern von Telefonnummern an eine Teamleitung vor Ort delegieren. Bei Verwendung von „Meine Mitarbeiter“ kann ein Benutzer, der nicht auf sein Konto zugreifen kann, ohne die Hilfe des Helpdesks oder der IT-Abteilung mit wenigen Klicks den Zugriff wiedererlangen.
 
-Bevor Sie das Portal „Meine Mitarbeiter“ für Ihre Organisation konfigurieren, sollten Sie diese Dokumentation sowie die [Benutzerdokumentation](../user-help/my-staff-team-manager.md) lesen, damit Sie mit der Funktionsweise des Portals und dessen Auswirkungen auf Ihre Benutzer vertraut sind. Sie können die Benutzerdokumentation verwenden, um Ihre Benutzer zu schulen und auf die neue Oberfläche vorzubereiten. So sorgen Sie für einen erfolgreichen Rollout.
+Bevor Sie das Portal „Meine Mitarbeiter“ für Ihre Organisation konfigurieren, sollten Sie diese Dokumentation sowie die [Benutzerdokumentation](https://support.microsoft.com/account-billing/manage-front-line-users-with-my-staff-c65b9673-7e1c-4ad6-812b-1a31ce4460bd) lesen, damit Sie mit der Funktionsweise des Portals und dessen Auswirkungen auf Ihre Benutzer vertraut sind. Sie können die Benutzerdokumentation verwenden, um Ihre Benutzer zu schulen und auf die neue Oberfläche vorzubereiten. So sorgen Sie für einen erfolgreichen Rollout.
 
 ## <a name="how-my-staff-works"></a>Funktionsweise von „Meine Mitarbeiter“
 
@@ -72,7 +72,7 @@ Der Dienstprinzipal wird angezeigt, wenn Sie eine Richtlinie für den bedingten 
 
 ## <a name="using-my-staff"></a>Verwenden von „Meine Mitarbeiter“
 
-Wenn ein Benutzer „Meine Mitarbeiter“ aufruft, werden die Namen der [Verwaltungseinheiten](administrative-units.md) angezeigt, für die er über Administratorrechte verfügt. In der [Benutzerdokumentation zu „Meine Mitarbeiter“](../user-help/my-staff-team-manager.md) verwenden wir den Begriff „Standort“ für Verwaltungseinheiten. Wenn die Berechtigungen eines Administrators nicht auf bestimmte Verwaltungseinheiten festgelegt sind, gelten sie für die gesamte Organisation. Nach dem Aktivieren von „Meine Mitarbeiter“ können die Benutzer, die zugeordnet wurden und denen eine Administratorrolle zugewiesen wurde, unter [https://mystaff.microsoft.com](https://mystaff.microsoft.com) darauf zugreifen. Sie können eine Verwaltungseinheit auswählen, um die darin enthaltenen Benutzer anzuzeigen, und dann einen Benutzer auswählen sowie sein Profil öffnen.
+Wenn ein Benutzer „Meine Mitarbeiter“ aufruft, werden die Namen der [Verwaltungseinheiten](administrative-units.md) angezeigt, für die er über Administratorrechte verfügt. In der [Benutzerdokumentation zu „Meine Mitarbeiter“](https://support.microsoft.com/account-billing/manage-front-line-users-with-my-staff-c65b9673-7e1c-4ad6-812b-1a31ce4460bd) verwenden wir den Begriff „Standort“ für Verwaltungseinheiten. Wenn die Berechtigungen eines Administrators nicht auf bestimmte Verwaltungseinheiten festgelegt sind, gelten sie für die gesamte Organisation. Nach dem Aktivieren von „Meine Mitarbeiter“ können die Benutzer, die zugeordnet wurden und denen eine Administratorrolle zugewiesen wurde, unter [https://mystaff.microsoft.com](https://mystaff.microsoft.com) darauf zugreifen. Sie können eine Verwaltungseinheit auswählen, um die darin enthaltenen Benutzer anzuzeigen, und dann einen Benutzer auswählen sowie sein Profil öffnen.
 
 ## <a name="reset-a-users-password"></a>Zurücksetzen des Kennworts für einen Benutzer
 
@@ -128,5 +128,5 @@ Sie können Überwachungsprotokolle für Aktionen, die in „Meine Mitarbeiter�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Benutzerdokumentation zu „Meine Mitarbeiter“](../user-help/my-staff-team-manager.md)
+[Benutzerdokumentation zu „Meine Mitarbeiter“](https://support.microsoft.com/account-billing/manage-front-line-users-with-my-staff-c65b9673-7e1c-4ad6-812b-1a31ce4460bd)
 [Dokumentation zu Verwaltungseinheiten](administrative-units.md)

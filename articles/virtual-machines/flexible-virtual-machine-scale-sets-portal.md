@@ -9,12 +9,12 @@ ms.subservice: flexible-scale-sets
 ms.date: 08/05/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
-ms.openlocfilehash: cef23894759b0b2dca7098ef1c430548d1720406
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 5d25e46ae62962e3f94d4a3f9222f91ebfa1d430
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122699111"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823450"
 ---
 # <a name="preview-create-virtual-machines-in-a-flexible-scale-set-using-azure-portal"></a>Preview: Erstellen von VMs in einer flexiblen Skalierungsgruppe mit Azure CLI
 
@@ -37,9 +37,7 @@ In diesem Artikel wird beschrieben, wie Sie das Azure-Portal verwenden sollten, 
 
 Bevor Sie VM-Skalierungsgruppen im Orchestrierungsmodus „Flexibel“ bereitstellen können, müssen Sie Ihr Abonnement zunächst für die Previewfunktion registrieren. Die Featureregistrierung kann bis zu 15 Minuten dauern.
 
-Verwenden Sie während der Preview des flexiblen Orchestrierungsmodus für Skalierungsgruppen das *Preview*-Azure-Portal, das in den folgenden Schritten verlinkt ist. 
-
-1. Melden Sie sich unter https://preview.portal.azure.com beim Azure-Portal an.
+1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 1. Navigieren Sie zu Ihren **Abonnements**.
 1. Navigieren Sie zur Detailseite für das Abonnement, für das Sie eine Skalierungsgruppe im Modus „Flexible Orchestrierung“ erstellen möchten, indem Sie den Namen des Abonnements auswählen.
 1. Wählen Sie im Menü unter **Einstellungen** die Option **Previewfunktionen** aus.
@@ -57,9 +55,7 @@ Nachdem Sie die Features für Ihr Abonnement registriert haben, schließen Sie d
 
 ### <a name="create-a-virtual-machine-scale-set-in-flexible-orchestration-mode-through-the-azure-portal"></a>Erstellen Sie im Orchestrierungsmodus „Flexibel“ eine VM-Skalierungsgruppe über das Azure-Portal.
 
-Verwenden Sie während der Preview des flexiblen Orchestrierungsmodus für Skalierungsgruppen das *Preview*-Azure-Portal, das in den folgenden Schritten verlinkt ist. 
-
-1. Melden Sie sich unter https://preview.portal.azure.com beim Azure-Portal an.
+1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 1. Suchen Sie in der Suchleiste nach **VM-Skalierungsgruppen**, und wählen Sie den Eintrag dann aus.
 1. Wählen Sie auf der Seite **VM-Skalierungsgruppen** die Option **Erstellen** aus.
 1. Zeigen Sie auf der Seite **VM-Skalierungsgruppe erstellen** den Abschnitt **Orchestration** an.

@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc, devx-track-python, devx-track-js, devx-track-csharp
 ms.subservice: blobs
-ms.openlocfilehash: 8c9666f9cfadeda29b6259876c972bda67a9ee44
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: e8009e7b86ca151b6445ff3a5c165687641318d3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110462012"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128590345"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Tutorial: Erstellen einer hochverfügbaren Anwendung mit Blobspeicher
 
@@ -31,9 +31,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Im ersten Teil der Serie lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Speicherkonto erstellen
-> * Festlegen der Verbindungszeichenfolge
-> * Ausführen der Konsolenanwendung
+> - Speicherkonto erstellen
+> - Festlegen der Verbindungszeichenfolge
+> - Ausführen der Konsolenanwendung
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -45,7 +45,7 @@ Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storag
 
 # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
-* Installieren von [Visual Studio 2019](https://www.visualstudio.com/downloads/) mit der Workload **Azure-Entwicklung**.
+- Installieren von [Visual Studio 2019](https://www.visualstudio.com/downloads/) mit der Workload **Azure-Entwicklung**.
 
   ![Azure-Entwicklung (unter Web & Cloud)](media/storage-create-geo-redundant-storage/workloads.png)
 
@@ -55,8 +55,8 @@ Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storag
 
 # <a name="python-v21"></a>[Python v2.1](#tab/python2)
 
-* [Installieren Sie Python.](https://www.python.org/downloads/)
-* Laden Sie das [Azure Storage SDK für Python](https://github.com/Azure/azure-storage-python) herunter, und installieren Sie es.
+- [Installieren Sie Python.](https://www.python.org/downloads/)
+- Laden Sie das [Azure Storage SDK für Python](https://github.com/Azure/azure-storage-python) herunter, und installieren Sie es.
 
 # <a name="nodejs-v12-sdk"></a>[Node.js v12 SDK](#tab/nodejs)
 
@@ -64,7 +64,7 @@ Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storag
 
 # <a name="nodejs-v11-sdk"></a>[Node.js v11 SDK](#tab/nodejs11)
 
-* Installieren Sie [Node.js](https://nodejs.org).
+- Installieren Sie [Node.js](https://nodejs.org).
 
 ---
 
@@ -82,7 +82,7 @@ Führen Sie die folgenden Schritte aus, um ein geozonenredundantes Speicherkonto
 2. Wählen Sie auf der Seite **Neu** die Option **Speicherkonto – Blob, Datei, Tabelle, Warteschlange** aus.
 4. Füllen Sie das Speicherkontoformular wie in der Abbildung dargestellt mit den folgenden Angaben aus, und klicken Sie auf **Erstellen**.
 
-   | Einstellung       | Beispielwert | BESCHREIBUNG |
+   | Einstellung       | Beispielwert | BESCHREIBUNG |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Abonnement** | *Mein Abonnement* | Ausführliche Informationen zu Ihren Abonnements finden Sie unter [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). |
    | **ResourceGroup** | *myResourceGroup* | Gültige Ressourcengruppennamen finden Sie unter [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Benennungsregeln und Einschränkungen). |

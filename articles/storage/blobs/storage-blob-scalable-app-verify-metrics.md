@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: 1bec42dabde64fed8126e47e39f19536b28014f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ced5b6493753baab64f5390b7dee815227334796
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101714832"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128549515"
 ---
 # <a name="verify-throughput-and-latency-metrics-for-a-storage-account"></a>Überprüfen von Durchsatz- und Latenzmetriken für ein Speicherkonto
 
@@ -21,8 +21,8 @@ Dieses Tutorial ist der vierte und letzte Teil einer Serie. In den vorherigen Tu
 Im vierten Teil der Serie lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Konfigurieren von Diagrammen im Azure-Portal
-> * Überprüfen von Durchsatz- und Latenzmetriken
+> - Konfigurieren von Diagrammen im Azure-Portal
+> - Überprüfen von Durchsatz- und Latenzmetriken
 
 [Azure-Speichermetrik](./monitor-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) verwendet Azure Monitor, um einen einheitlichen Einblick in die Leistung und Verfügbarkeit Ihres Speicherkontos zu bieten.
 
@@ -67,8 +67,8 @@ Wenn Ressourcengruppe, VM und alle zugehörigen Ressourcen nicht mehr benötigt 
 Im vierten Teil der Serie haben Sie gelernt, wie Sie Metriken für die Beispiellösung anzeigen können. Und Sie haben beispielsweise Folgendes gelernt:
 
 > [!div class="checklist"]
-> * Konfigurieren von Diagrammen im Azure-Portal
-> * Überprüfen von Durchsatz- und Latenzmetriken
+> - Konfigurieren von Diagrammen im Azure-Portal
+> - Überprüfen von Durchsatz- und Latenzmetriken
 
 Unter diesem Link finden Sie vordefinierte Speicherbeispiele.
 

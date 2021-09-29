@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0bbb1df9821879dd34956d1cb16d2b37850d1d6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 484136b1c01cf93515971a42030eacfdda51715e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355263"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784164"
 ---
 # <a name="user-experiences-with-azure-ad-identity-protection"></a>Benutzererfahrungen mit Azure AD Identity Protection
 
@@ -29,7 +29,7 @@ Alle Identitätsschutzrichtlinien haben Auswirkungen auf den Benutzeranmeldevorg
 
 ## <a name="multi-factor-authentication-registration"></a>Registrierung für die mehrstufige Authentifizierung
 
-Indem Sie die Identity Protection-Richtlinie, die eine Registrierung mit mehrstufiger Authentifizierung erfordert, für alle Benutzer aktivieren, wird sichergestellt, dass diese in Zukunft die Möglichkeit zur Eigenwartung mit Azure AD MFA haben. Wenn Sie diese Richtlinie konfigurieren, können sich Ihre Benutzer in den darauffolgenden 14 Tagen freiwillig registrieren. Nach Ablauf dieses Zeitraums wird die Registrierung erzwungen. Die Benutzeroberfläche wird unten beschrieben. Weitere Informationen finden Sie in der Dokumentation für Endbenutzer im Artikel [Übersicht über die zweistufige Überprüfung und Ihr Geschäfts-, Schul- oder Unikonto](../user-help/multi-factor-authentication-end-user-first-time.md).
+Indem Sie die Identity Protection-Richtlinie, die eine Registrierung mit mehrstufiger Authentifizierung erfordert, für alle Benutzer aktivieren, wird sichergestellt, dass diese in Zukunft die Möglichkeit zur Eigenwartung mit Azure AD MFA haben. Wenn Sie diese Richtlinie konfigurieren, können sich Ihre Benutzer in den darauffolgenden 14 Tagen freiwillig registrieren. Nach Ablauf dieses Zeitraums wird die Registrierung erzwungen. Die Benutzeroberfläche wird unten beschrieben. Weitere Informationen finden Sie in der Dokumentation für Endbenutzer im Artikel [Übersicht über die zweistufige Überprüfung und Ihr Geschäfts-, Schul- oder Unikonto](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc).
 
 ### <a name="registration-interrupt"></a>Registrierungsunterbrechung
 

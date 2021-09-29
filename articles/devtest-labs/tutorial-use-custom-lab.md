@@ -1,15 +1,15 @@
 ---
-title: Zugreifen auf ein Lab in Azure DevTest Labs | Microsoft-Dokumentation
+title: Zugriff auf ein Lab
 description: In diesem Tutorial greifen Sie auf das Lab zu, das unter Verwendung von Azure DevTest Labs erstellt wird, beanspruchen virtuelle Computer, verwenden diese, und heben den Anspruch wieder auf.
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.author: spelluru
-ms.openlocfilehash: 96d41b74b3c143feb64fc9c602de68182787c08b
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: d9338bc746158802c86b9631323f3523d01714ce
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107379467"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128561313"
 ---
 # <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>Tutorial: Zugreifen auf ein Lab in Azure DevTest Labs
 In diesem Tutorial verwenden Sie das Lab, das im Tutorial [Erstellen eines benutzerdefinierten Labs mithilfe von Azure DevTest Labs](tutorial-create-custom-lab.md) erstellt wurde.
@@ -77,4 +77,3 @@ In diesem Tutorial wurde gezeigt, wie Sie auf ein Lab zugreifen, das unter Verwe
 
 > [!div class="nextstepaction"]
 > [Hinzufügen eines virtuellen Computers zu einem Lab in Azure DevTest Labs](devtest-lab-add-vm.md)
-

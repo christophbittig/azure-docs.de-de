@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 09/17/2021
+ms.date: 09/27/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: lvandenende
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: d4c0c4122d44716b3bb55b231662743c79bdd9d7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 83a2c5bca5837919015125d6c421dccfef5bf58c
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128633410"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129079445"
 ---
 # <a name="what-are-security-defaults"></a>Was sind Sicherheitsstandards?
 
@@ -61,18 +61,18 @@ Benutzer mit privilegiertem Zugriff besitzen erweiterten Zugriff auf Ihre Umgebu
 Nach Abschluss der Azure AD Multi-Factor Authentication-Registrierung ist für die folgenden 9 Azure AD-Administratorrollen bei jeder Anmeldung eine zusätzliche Authentifizierung erforderlich:
 
 - Globaler Administrator
-- SharePoint-Administrator
-- Exchange-Administrator
-- Administrator für den bedingten Zugriff
-- Sicherheitsadministrator
-- Helpdesk-Administrator
-- Rechnungsadministrator
-- Benutzeradministrator
+- Anwendungsadministrator
 - Authentifizierungsadministrator
+- Rechnungsadministrator
+- Cloudanwendungsadministrator
+- Administrator für den bedingten Zugriff
+- Exchange-Administrator
+- Helpdesk-Administrator
 - Kennwortadministrator
 - Privilegierter Authentifizierungsadministrator
-- Anwendungsadministrator
-- Cloudanwendungsadministrator
+- Sicherheitsadministrator
+- SharePoint-Administrator
+- Benutzeradministrator
 
 > [!WARNING]
 > Stellen Sie sicher, dass Ihrem Verzeichnis mindestens zwei Konten mit Berechtigungen vom Typ „Globaler Administrator“ zugewiesen sind. Dies ist hilfreich, wenn ein globaler Administrator gesperrt wird. Ausführlichere Informationen finden Sie im Artikel [Verwalten von Konten für den Notfallzugriff in Azure AD](../roles/security-emergency-access.md).

@@ -5,15 +5,16 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: tutorial
 ms.date: 11/01/2017
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2d6a3ce399f5f02d48868627ac43c810cedb87a0
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 358980423fbc998c1705316c8e0ef873263c847b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110670822"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664255"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>Tutorial: Erstellen der ersten Azure Data Factory mit der Data Factory-REST-API
 > [!div class="op_single_selector"]
@@ -461,7 +462,7 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 
 Führen Sie „Invoke-Command“ und den darauffolgenden Befehl aus, bis für den Slice der Status **Bereit** oder **Fehler** angezeigt wird. Sobald der Slice den Status „Bereit“ hat, überprüfen Sie, ob die Ausgabedaten sich in Ihrem Blobspeicher im Ordner **partitioneddata** im Container **adfgetstarted** befinden.  Die Erstellung eines bedarfsgesteuerten HDInsight-Clusters dauert in der Regel einige Zeit.
 
-![Ausgabedaten](./media/data-factory-build-your-first-pipeline-using-rest-api/three-ouptut-files.png)
+:::image type="content" source="./media/data-factory-build-your-first-pipeline-using-rest-api/three-ouptut-files.png" alt-text="Ausgabedaten":::
 
 > [!IMPORTANT]
 > Die Eingabedatei wird bei erfolgreicher Verarbeitung des Slice gelöscht. Wenn Sie den Slice erneut ausführen oder das Tutorial nochmals durchgehen möchten, laden Sie die Eingabedatei (input.log) daher in den Ordner „inputdata“ des Containers „adfgetstarted“ hoch.

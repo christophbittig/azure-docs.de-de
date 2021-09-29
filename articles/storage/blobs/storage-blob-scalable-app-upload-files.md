@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: a23836ebadace19c23802a0897287932892657a0
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 787cfde40013122c3827cddd4903ca15dfe51836
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459663"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128624935"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Paralleles Hochladen großer Mengen von Zufallsdaten in ein Azure Storage-Konto
 
@@ -21,10 +21,10 @@ Dieses Tutorial ist der zweite Teil einer Reihe. In diesem Tutorial wird gezeigt
 Im zweiten Teil der Reihe lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Konfigurieren der Verbindungszeichenfolge
-> * Erstellen der Anwendung
-> * Ausführen der Anwendung
-> * Überprüfen der Anzahl von Verbindungen
+> - Konfigurieren der Verbindungszeichenfolge
+> - Erstellen der Anwendung
+> - Ausführen der Anwendung
+> - Überprüfen der Anzahl von Verbindungen
 
 Microsoft Azure Blob Storage stellt einen skalierbaren Dienst zum Speichern Ihrer Daten bereit. Um sicherzustellen, dass Ihre Anwendung so leistungsfähig wie möglich ist, sollten Sie die Funktionsweise von Blobspeicher verstehen. Es ist unverzichtbar, die Grenzwerte für Azure-Blobs zu kennen. Informationen zu diesen Grenzwerten finden Sie unter [Skalierbarkeits- und Leistungsziele für Blob Storage](../blobs/scalability-targets.md).
 
@@ -160,6 +160,7 @@ private static async Task UploadFilesAsync()
     }
 }
 ```
+
 Zusätzlich zum Festlegen der Thread- und der Verbindungsgrenzwerte werden die [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) für die [UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync)-Methode so konfiguriert, dass Parallelismus verwendet und MD5-Hashvalidierung deaktiviert wird. Die Dateien werden in 100-MB-Blöcken hochgeladen. Diese Konfiguration bietet eine bessere Leistung, kann aber teuer sein, wenn ein leistungsschwaches Netzwerk verwendet wird, denn wenn ein Fehler auftritt, wird der gesamte 100-MB-Block wiederholt.
 
 |Eigenschaft|Wert|BESCHREIBUNG|
@@ -205,10 +206,10 @@ C:\>
 Im zweiten Teil der Reihe haben Sie gelernt, wie Sie große Mengen von Zufallsdaten parallel in ein Speicherkonto hochladen können, wozu Folgendes gehört:
 
 > [!div class="checklist"]
-> * Konfigurieren der Verbindungszeichenfolge
-> * Erstellen der Anwendung
-> * Ausführen der Anwendung
-> * Überprüfen der Anzahl von Verbindungen
+> - Konfigurieren der Verbindungszeichenfolge
+> - Erstellen der Anwendung
+> - Ausführen der Anwendung
+> - Überprüfen der Anzahl von Verbindungen
 
 Wechseln Sie zum dritten Teil der Reihe, um große Datenmengen aus einem Speicherkonto herunterzuladen.
 

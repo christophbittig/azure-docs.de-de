@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/10/2021
 ms.author: jeedes
-ms.openlocfilehash: afad903734fded062681f18683cb74492993fe1c
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 1d240d1a4fd37c9ec6371407969473e415a27065
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109684215"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129093685"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von ServiceNow für die automatische Benutzerbereitstellung
 
@@ -146,7 +146,7 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
 
    Beispiel: Eine bestimmte Tabelle in ServiceNow enthält möglicherweise zwei Standorte (Seattle, Los Angeles) und drei Abteilungen (Vertrieb, Finanzen, Marketing). Wenn Sie versuchen, einen Benutzer bereitzustellen, der zur Abteilung „Vertrieb“ am Standort „Seattle“ gehört, wird der Benutzer erfolgreich bereitgestellt. Wenn Sie versuchen, einen Benutzer bereitzustellen, der zur Abteilung „Vertrieb“ am Standort „LA“ gehört, wird er nicht bereitgestellt. Der Standort „LA“ muss der Referenztabelle in ServiceNow hinzugefügt werden, oder das Benutzerattribut in Azure AD muss so aktualisiert werden, dass es dem Format in ServiceNow entspricht. 
 * Wird der Fehler **EntryJoiningPropertyValueIsMissing** angezeigt, überprüfen Sie die [Attributzuordnungen](../app-provisioning/customize-application-attributes.md), um das passende Attribut zu ermitteln. Dieser Wert muss bei dem bereitzustellenden Benutzer bzw. der Gruppe vorhanden sein. 
-* Überprüfen Sie die [ServiceNow SOAP-API](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html), um alle Anforderungen oder Beschränkungen (z. B. Format für die Angabe des Ländercodes für einen Benutzer) zu verstehen.
+* Überprüfen Sie die [ServiceNow SOAP-API](https://docs.servicenow.com/bundle/rome-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html), um alle Anforderungen oder Beschränkungen (z. B. Format für die Angabe des Ländercodes für einen Benutzer) zu verstehen.
 * Bereitstellungsanforderungen werden standardmäßig an https://{Ihr-Instanzname}.service-now.com/{Tabellenname} gesendet. Wenn Sie eine benutzerdefinierte Mandanten-URL benötigen, können Sie die gesamte URL als Instanznamen angeben.
 * Der Fehler **ServiceNowInstanceInvalid** weist auf ein Problem bei der Kommunikation mit der ServiceNow-Instanz hin. Fehlertext:
   

@@ -1,7 +1,6 @@
 ---
 title: 'Erstellen und Abrufen der Attribute eines Schlüssels in Azure Key Vault: Azure CLI'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Azure CLI einen Schlüssel in Azure Key Vault festlegen und den Schlüssel daraus abrufen.
-services: key-vault
 author: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
@@ -10,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/27/2021
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f5281c02f68598b1cf121a6ab8a574f0694f5ea2
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 620ddefc6a51f1910d97d9b38f94f1e246f2159c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107813432"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128619437"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-cli"></a>Schnellstart: Festlegen eines Schlüssels und Abrufen des Schlüssels aus Azure Key Vault mithilfe der Azure CLI
 
@@ -45,7 +44,7 @@ Geben Sie die folgenden Befehle ein, um einen Schlüssel mit dem Namen **Example
 az keyvault key create --vault-name "<your-unique-keyvault-name>" -n ExampleKey --protection software
 ```
 
-Nun können Sie mit dem dazugehörigen URI auf den Schlüssel verweisen, den Sie der Azure Key Vault-Instanz hinzugefügt haben. Verwenden Sie **'https://<Ihr-eindeutiger-Schlüsseltresor-Name>.vault.azure.net/keys/ExampleKey'** , um die aktuelle Version abzurufen. 
+Nun können Sie mit dem dazugehörigen URI auf den Schlüssel verweisen, den Sie der Azure Key Vault-Instanz hinzugefügt haben. Verwenden Sie **`https://<your-unique-keyvault-name>.vault.azure.net/keys/ExampleKey`** , um die aktuelle Version abzurufen. 
 
 So zeigen Sie den zuvor gespeicherten Schlüssel an:
 

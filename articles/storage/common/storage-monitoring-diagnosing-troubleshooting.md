@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 4ab5db6ebae132376e9fade6533214c1d49341f6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e170cafe87e3ff23a550766ff2fc52ded7f80963
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128569528"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153689"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung
 
@@ -356,9 +356,7 @@ Bezieht sich Ihr Problem auf die Verfügbarkeit eines Speicherdiensts?
 [Kapazitätsmetriken zeigen einen unerwarteten Anstieg der Speicherkapazitätsauslastung an]
 
 ---
-[Sie stoßen auf unerwartete Neustarts von virtuellen Computern, die über eine große Anzahl angeschlossener virtueller VHDs verfügen.]
 
----
 [Ihre Probleme entstehen aus der Verwendung des Speicheremulators für Entwicklung oder Test]
 
 ---

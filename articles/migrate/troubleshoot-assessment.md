@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 07/28/2021
-ms.openlocfilehash: d701767f6e8f22b1577b3fb745d01dea00557e8b
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: eca62eccca6f53935f29a16bca0afc382896212c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123306819"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124810368"
 ---
 # <a name="troubleshoot-assessment"></a>Behandeln von Problemen bei der Bewertung
 
@@ -153,7 +153,7 @@ Eine Azure-VM-Bewertung sammelt fortlaufend Leistungsdaten von lokalen Servern u
 
 ## <a name="can-i-migrate-my-disks-to-an-ultra-disk-by-using-azure-migrate"></a>Kann ich meine Datenträger mithilfe von Azure Migrate zu einem Disk Ultra-Datenträger migrieren?
 
-Nein. Derzeit unterstützen sowohl Azure Migrate als auch Azure Site Recovery keine Migration zu Disk Ultra-Datenträgern. Die Schritte zum Bereitstellen eines Disk Ultra-Datenträgers finden Sie [auf dieser Website](https://docs.microsoft.com/azure/virtual-machines/disks-enable-ultra-ssd?tabs=azure-portal#deploy-an-ultra-disk).
+Nein. Derzeit unterstützen sowohl Azure Migrate als auch Azure Site Recovery keine Migration zu Disk Ultra-Datenträgern. Die Schritte zum Bereitstellen eines Disk Ultra-Datenträgers finden Sie [auf dieser Website](../virtual-machines/disks-enable-ultra-ssd.md?tabs=azure-portal#deploy-an-ultra-disk).
 
 ## <a name="why-are-the-provisioned-iops-and-throughput-in-my-ultra-disk-more-than-my-on-premises-iops-and-throughput"></a>Warum sind die bereitgestellten IOPS und der Durchsatz meines Disk Ultra-Datenträgers höher als die IOPS und der Durchsatz in meiner lokalen Umgebung?
 

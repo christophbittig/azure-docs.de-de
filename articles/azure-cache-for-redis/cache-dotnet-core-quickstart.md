@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp, mvc
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 8b2909d608578cf2ceff926bba5f3aa1b569b025
-ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+ms.openlocfilehash: 63595bc1471e550eb964e50e5d5bafacb29bd623
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113136623"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128596370"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-net-core"></a>Schnellstart: Verwenden von Azure Cache for Redis mit .NET Core
 
@@ -29,9 +29,10 @@ Wenn Sie direkt mit dem Code fortfahren möchten, finden Sie im [.NET Core-Schne
 - [.NET Core SDK](https://dotnet.microsoft.com/download)
 
 ## <a name="create-a-cache"></a>Erstellen eines Caches
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
+[!INCLUDE [redis-cache-create](includes/redis-cache-create.md)]
 
-[!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
+
+[!INCLUDE [redis-cache-access-keys](includes/redis-cache-access-keys.md)]
 
 Notieren Sie sich den **HOSTNAMEN** und den **primären** Zugriffsschlüssel. Sie verwenden diese Werte später, um das *CacheConnection*-Geheimnis zu erstellen.
 

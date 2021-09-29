@@ -9,12 +9,12 @@ ms.author: sawinark
 author: swinarko
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.date: 06/04/2021
-ms.openlocfilehash: 3b8c15a764f3a196232e43ffd8d7fd7fe373355c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0b24ae5a1564f182cf44e540a9d05a2aaac005ae
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339676"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124733109"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Ausführen eines SSIS-Pakets mit der Aktivität „SSIS-Paket ausführen“ in Azure Data Factory
 
@@ -36,15 +36,15 @@ In diesem Schritt erstellen Sie über die Data Factory-Benutzeroberfläche oder 
 
 1. Wählen Sie im Azure-Portal in der Übersicht oder auf der Startseite von Data Factory die Kachel **Erstellen und überwachen** aus, um die Data Factory-Benutzeroberfläche oder -App in einem separaten Tab zu öffnen. 
 
-   ![Data Factory-Startseite](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png" alt-text="Data Factory-Startseite":::
 
    Wählen Sie auf der Startseite die Option **Orchestrieren** aus. 
 
-   ![Screenshot, der die ADF-Startseite zeigt.](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="Screenshot, der die ADF-Startseite zeigt.":::
 
 1. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Allgemein**. Ziehen Sie dann die Aktivität **SSIS-Paket ausführen** auf die Oberfläche des Pipeline-Designers. 
 
-   ![Ziehen und Ablegen der Aktivität „SSIS-Paket ausführen“ auf der Oberfläche des Designers](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-designer.png) 
+   :::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-designer.png" alt-text="Ziehen und Ablegen der Aktivität „SSIS-Paket ausführen“ auf der Oberfläche des Designers"::: 
 
    Wählen Sie das Aktivitätsobjekt „SSIS-Paket ausführen“ zum Konfigurieren der Registerkarten **Allgemein**, **Einstellungen**, **SSIS-Parameter**, **Verbindungs-Manager** und **Eigenschaftenüberschreibungen** aus.
 
@@ -52,7 +52,7 @@ In diesem Schritt erstellen Sie über die Data Factory-Benutzeroberfläche oder 
 
 Führen Sie auf der Registerkarte **Allgemein** der Aktivität „SSIS-Paket ausführen“ die folgenden Schritte aus.
 
-![Festlegen von Eigenschaften auf der Registerkarte „Allgemein“](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png" alt-text="Festlegen von Eigenschaften auf der Registerkarte „Allgemein“":::
 
    1. Geben Sie unter **Name** den Namen Ihrer Aktivität „SSIS-Paket ausführen“ ein.
 
@@ -72,7 +72,7 @@ Führen Sie auf der Registerkarte **Allgemein** der Aktivität „SSIS-Paket aus
 
 Führen Sie auf der Registerkarte **Einstellungen** der Aktivität „SSIS-Paket ausführen“ die folgenden Schritte aus.
 
-![Festlegen von Eigenschaften auf der Registerkarte „Einstellungen“ – Automatisch](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png" alt-text="Festlegen von Eigenschaften auf der Registerkarte „Einstellungen“ – Automatisch":::
 
    1. Wählen Sie unter **Azure-SSIS IR** die festgelegte Azure-SSIS Integration Runtime-Instanz zur Ausführung Ihrer Aktivität „SSIS-Paket ausführen“ aus.
 
@@ -98,13 +98,13 @@ Führen Sie auf der Registerkarte **Einstellungen** der Aktivität „SSIS-Paket
 
    1. Wenn Ihre Azure-SSIS Integration Runtime-Instanz nicht ausgeführt wird oder das Kontrollkästchen **Manuelle Einträge** aktiviert ist, geben Sie Ihre Paket- und Umgebungspfade aus SSISDB direkt in den folgenden Formaten ein: `<folder name>/<project name>/<package name>.dtsx` und `<folder name>/<environment name>`.
 
-      ![Festlegen von Eigenschaften auf der Registerkarte „Einstellungen“ – Manuell](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png)
+      :::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png" alt-text="Festlegen von Eigenschaften auf der Registerkarte „Einstellungen“ – Manuell":::
 
 ##### <a name="package-location-file-system-package"></a>Paketspeicherort: Dateisystem (Paket)
 
 **Dateisystem (Paket)** als Ihr Speicherort ist automatisch ausgewählt, wenn Ihre Azure-SSIS Integration Runtime-Instanz ohne SSISDB bereitgestellt wurde, oder Sie können diese Option selbst auswählen. Wenn sie ausgewählt ist, führen Sie die folgenden Schritte aus.
 
-![Festlegen von Eigenschaften auf der Registerkarte „Einstellungen“ – Dateisystem (Paket)](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings3.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings3.png" alt-text="Festlegen von Eigenschaften auf der Registerkarte „Einstellungen“ – Dateisystem (Paket)":::
    
    1. Geben Sie das auszuführende Paket an, indem Sie im Feld **Paketpfad** einen UNC-Pfad (Universal Naming Convention) zu Ihrer Paketdatei (mit `.dtsx`) eingeben. Sie können Ihr Paket durchsuchen und auswählen, indem Sie **Dateispeicher durchsuchen** auswählen oder den Pfad manuell eingeben. Wenn Sie Ihr Paket also beispielsweise in Azure Files speichern, lautet der Pfad `\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`. 
    
@@ -134,7 +134,7 @@ Für alle zuvor erwähnten UNC-Pfade muss der vollqualifizierte Dateiname wenige
 
 Wenn Sie **Dateisystem (Projekt)** als Ihren Paketspeicherort auswählen, führen Sie die folgenden Schritte aus.
 
-![Festlegen von Eigenschaften auf der Registerkarte „Einstellungen“ – Dateisystem (Projekt)](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings4.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings4.png" alt-text="Festlegen von Eigenschaften auf der Registerkarte „Einstellungen“ – Dateisystem (Projekt)":::
 
    1. Geben Sie das auszuführende Paket an, indem Sie im Feld **Paketpfad** einen UNC-Pfad zu Ihrer Projektdatei (mit `.ispac`) und im Feld **Paketname** eine Paketdatei (mit `.dtsx`) aus Ihrem Projekt eingeben. Sie können Ihr Projekt durchsuchen und auswählen, indem Sie **Dateispeicher durchsuchen** auswählen oder den Pfad manuell eingeben. Wenn Sie Ihr Projekt also beispielsweise in Azure Files speichern, lautet der Pfad `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac`.
 
@@ -162,7 +162,7 @@ Für alle zuvor erwähnten UNC-Pfade muss der vollqualifizierte Dateiname wenige
 
 Wenn Sie **Eingebettetes Paket** als Ihren Paketspeicherort auswählen, führen Sie die folgenden Schritte aus.
 
-![Festlegen von Eigenschaften auf der Registerkarte „Einstellungen“ – Eingebettetes Paket](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings5.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings5.png" alt-text="Festlegen von Eigenschaften auf der Registerkarte „Einstellungen“ – Eingebettetes Paket":::
 
    1. Verschieben Sie Ihre Paketdatei (`.dtsx`) per Drag & Drop in das bereitgestellte Feld, oder laden Sie sie aus einem Dateiordner hoch. Ihr Paket wird automatisch komprimiert und in die Nutzlast für die Aktivität eingebettet. Nachdem das Paket eingebettet wurde, können Sie es zum späteren Bearbeiten **herunterladen**. Sie können Ihr eingebettetes Paket auch **Parametrisieren**, indem Sie es einem Pipelineparameter zuweisen, der in mehreren Aktivitäten verwendet werden kann. Auf diese Weise wird die Größe Ihrer Pipelinenutzlast optimiert. Das Einbetten von Projektdateien (`.ispac`) wird derzeit nicht unterstützt. Daher können in Ihren eingebetteten Paketen keine SSIS-Parameter/Verbindungs-Manager auf der Projektebene verwendet werden.
    
@@ -190,7 +190,7 @@ Für alle zuvor erwähnten UNC-Pfade muss der vollqualifizierte Dateiname wenige
 
 Wenn Sie **Paketspeicher** als Ihren Paketspeicherort auswählen, führen Sie die folgenden Schritte aus.
 
-![Festlegen von Eigenschaften auf der Registerkarte „Einstellungen“ – Paketspeicher](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings6.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings6.png" alt-text="Festlegen von Eigenschaften auf der Registerkarte „Einstellungen“ – Paketspeicher":::
    
    1. Wählen Sie unter **Name des Paketspeichers** einen vorhandenen Paketspeicher aus, der an Ihre Azure-SSIS Integration Runtime-Instanz angefügt ist.
 
@@ -222,7 +222,7 @@ Für alle zuvor erwähnten UNC-Pfade muss der vollqualifizierte Dateiname wenige
 
 Führen Sie auf der Registerkarte **SSIS-Parameter** der Aktivität „SSIS-Paket ausführen“ die folgenden Schritte aus.
 
-![Festlegen von Eigenschaften auf der Registerkarte „SSIS-Parameter“](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-ssis-parameters.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-ssis-parameters.png" alt-text="Festlegen von Eigenschaften auf der Registerkarte „SSIS-Parameter“":::
 
    1. Wenn Ihre Azure-SSIS Integration Runtime-Instanz ausgeführt wird, die Option **SSISDB** als Ihr Paketspeicherort ausgewählt ist und auf der Registerkarte **Einstellungen** das Kontrollkästchen **Manuelle Einträge** deaktiviert ist, werden die vorhandenen SSIS-Parameter in Ihrem ausgewählten Projekt oder Paket aus SSISDB angezeigt, damit Sie ihnen Werte zuweisen können. Andernfalls können Sie sie einzeln eingeben, um ihnen manuell Werte zuzuweisen. Vergewissern Sie sich, dass sie vorhanden sind und korrekt eingegeben wurden, damit Ihre Paketausführung erfolgreich ist. 
    
@@ -236,19 +236,19 @@ Alternativ können Sie in Ihrem Azure-Schlüsseltresor gespeicherte Geheimnisse 
 
 Führen Sie auf der Registerkarte **Verbindungs-Manager** der Aktivität „SSIS-Paket ausführen“ die folgenden Schritte aus.
 
-![Festlegen von Eigenschaften auf der Registerkarte „Verbindungs-Manager“](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers.png" alt-text="Festlegen von Eigenschaften auf der Registerkarte „Verbindungs-Manager“":::
 
    1. Wenn Ihre Azure-SSIS Integration Runtime-Instanz ausgeführt wird, die Option **SSISDB** als Ihr Paketspeicherort ausgewählt ist und auf der Registerkarte **Einstellungen** das Kontrollkästchen **Manuelle Einträge** deaktiviert ist, werden Ihnen die vorhandenen Verbindungs-Manager in Ihrem ausgewählten Projekt und Paket aus SSISDB angezeigt, damit Sie deren Eigenschaften Werte zuweisen können. Andernfalls können Sie sie einzeln eingeben, um ihren Eigenschaften manuell Werte zuzuweisen. Vergewissern Sie sich, dass sie vorhanden sind und korrekt eingegeben wurden, damit Ihre Paketausführung erfolgreich ist. 
    
       Sie können die korrekten Werte für **SCOPE**, **NAME** und **PROPERTY** für einen beliebigen Verbindungs-Manager abrufen, indem Sie das enthaltende Paket in SSDT öffnen. Wählen Sie nach dem Öffnen des Pakets den relevanten Verbindungs-Manager aus, um die Namen und Werte für alle zugehörigen Eigenschaften im Fenster **Eigenschaften** von SSDT anzuzeigen. Mit diesen Informationen können Sie die Werte aller Verbindungs-Manager-Eigenschaften zur Laufzeit überschreiben. 
 
-      ![Abrufen von Verbindungs-Manager-Eigenschaften über SSDT](media/how-to-invoke-ssis-package-ssis-activity/ssdt-connection-manager-properties.png)
+      :::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssdt-connection-manager-properties.png" alt-text="Abrufen von Verbindungs-Manager-Eigenschaften über SSDT":::
 
       So können Sie beispielsweise die lokalen Datenflüsse Ihres Originalpakets, die in SQL Server ausgeführt werden, in Datenflüsse von der lokalen Umgebung zur Cloud konvertieren, die in SSIS IR in ADF ausgeführt werden, ohne Ihr Originalpaket in SSDT ändern zu müssen. Überschreiben Sie hierzu zur Laufzeit die Werte der Eigenschaften **ConnectByProxy**, **ConnectionString** und **ConnectUsingManagedIdentity** in vorhandenen Verbindungs-Managern.
       
       Diese Überschreibungen zur Laufzeit ermöglichen ggf. die Verwendung von selbstgehosteter IR (Self-Hosted IR, SHIR) als Proxy für SSIS IR, wenn auf lokale Daten zugegriffen wird (siehe [Konfigurieren einer selbstgehosteten IR als Proxy für eine Azure-SSIS IR in Azure Data Factory](./self-hosted-integration-runtime-proxy-ssis.md)), sowie Verbindungen mit Azure SQL-Datenbank/verwalteten Instanzen unter Verwendung des aktuellen MSOLEDBSQL-Treibers, der wiederum die AAD-Authentifizierung (Azure Active Directory) mit von ADF verwalteter Identität für OLEDB-Verbindungen ermöglicht (siehe [Verwaltete Identitäten für die Authentifizierung von Azure-Ressourcen](/sql/integration-services/connection-manager/ole-db-connection-manager#managed-identities-for-azure-resources-authentication)).
 
-      ![Festlegen von Eigenschaften aus SSDT auf der Registerkarte „Verbindungs-Manager“](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers2.png)
+      :::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers2.png" alt-text="Festlegen von Eigenschaften aus SSDT auf der Registerkarte „Verbindungs-Manager“":::
    
    1. Wenn Sie bei der Paketerstellung über SSDT die Schutzebene **EncryptSensitiveWithUserKey** verwendet haben und **Dateisystem (Paket)** , **Dateisystem (Projekt)** , **Eingebettetes Paket** oder **Paketspeicher** als Ihr Paketspeicherort ausgewählt ist, müssen Sie auch Ihre vertraulichen Verbindungs-Manager-Eigenschaften erneut eingeben, um ihnen auf dieser Registerkarte Werte zuzuweisen. 
 
@@ -260,23 +260,23 @@ Alternativ können Sie in Ihrem Azure-Schlüsseltresor gespeicherte Geheimnisse 
 
 Führen Sie auf der Registerkarte **Eigenschaftenüberschreibungen** der Aktivität „SSIS-Paket ausführen“ die folgenden Schritte aus.
 
-![Festlegen von Eigenschaften auf der Registerkarte „Eigenschaftenüberschreibungen“](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-property-overrides.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-property-overrides.png" alt-text="Festlegen von Eigenschaften auf der Registerkarte „Eigenschaftenüberschreibungen“":::
 
    1. Geben Sie nacheinander die Pfade vorhandener Eigenschaften in Ihrem ausgewählten Paket ein, um ihnen Werte manuell zuzuweisen. Vergewissern Sie sich, dass sie vorhanden sind und korrekt eingegeben wurden, damit Ihre Paketausführung erfolgreich ist. Geben Sie also beispielsweise zum Überschreiben des Werts Ihrer Benutzervariablen den zugehörigen Pfad im folgenden Format ein: `\Package.Variables[User::<variable name>].Value`. 
 
       Sie können den korrekten Wert für **PROPERTY PATH** für eine beliebige Paketeigenschaft abrufen, indem Sie das enthaltende Paket in SSDT öffnen. Wählen Sie nach dem Öffnen des Pakets die zugehörige Ablaufsteuerung und die Eigenschaft **Konfigurationen** im Fenster **Eigenschaften** von SSDT aus. Wählen Sie anschließend neben der Eigenschaft **Konfigurationen** die Schaltfläche mit den Auslassungspunkten ( **...** ) aus, um den **Paketkonfigurationsplaner** zu öffnen, der normalerweise zum [Erstellen von Paketkonfigurationen im Paketbereitstellungsmodell](/sql/integration-services/packages/legacy-package-deployment-ssis#create-package-configurations) verwendet wird. 
 
-      ![Abrufen von Paketeigenschaften aus SSDT: Eigenschaft „Konfigurationen“](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties.png)
+      :::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties.png" alt-text="Abrufen von Paketeigenschaften aus SSDT: Eigenschaft „Konfigurationen“":::
 
       Aktivieren Sie im **Paketkonfigurationsplaner** das Kontrollkästchen **Paketkonfigurationen aktivieren**, und wählen Sie die Schaltfläche **Hinzufügen...** aus, um den **Paketkonfigurations-Assistenten** zu öffnen. 
       
       Wählen Sie im **Paketkonfigurations-Assistenten** im Dropdownmenü **Konfigurationstyp** das Element **XML-Konfigurationsdatei** aus. Wählen Sie anschließend die Schaltfläche **Konfigurationseinstellungen direkt angeben** aus, geben Sie den Namen Ihrer Konfigurationsdatei ein, und wählen Sie die Schaltfläche **Weiter >** aus. 
 
-      ![Abrufen von Paketeigenschaften aus SSDT: Konfigurationsplaner](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties2.png)
+      :::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties2.png" alt-text="Abrufen von Paketeigenschaften aus SSDT: Konfigurationsplaner":::
 
       Wählen Sie abschließend die Paketeigenschaften aus, deren Pfad Sie benötigen, und wählen Sie die Schaltfläche **Weiter >** aus.  Nun können Sie die gewünschten Paketeigenschaftspfade anzeigen, kopieren, einfügen und in Ihrer Konfigurationsdatei speichern. Mit diesen Informationen können Sie die Werte aller Paketeigenschaften zur Laufzeit überschreiben. 
 
-      ![Abrufen von Paketeigenschaften aus SSDT: Konfigurations-Assistent](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties3.png)
+      :::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties3.png" alt-text="Abrufen von Paketeigenschaften aus SSDT: Konfigurations-Assistent":::
    
    1. Wenn Sie bei der Paketerstellung über SSDT die Schutzebene **EncryptSensitiveWithUserKey** verwendet haben und **Dateisystem (Paket)** , **Dateisystem (Projekt)** , **Eingebettetes Paket** oder **Paketspeicher** als Ihr Paketspeicherort ausgewählt ist, müssen Sie auch Ihre vertraulichen Paketeigenschaften erneut eingeben, um ihnen auf dieser Registerkarte Werte zuzuweisen. 
    
@@ -293,7 +293,7 @@ In diesem Schritt lösen Sie eine Pipelineausführung aus.
 
 1. Wählen Sie zum Auslösen einer Pipelineausführung auf der Symbolleiste die Option **Trigger** (Auslösen) und dann **Trigger now** (Jetzt auslösen) aus. 
 
-   ![Manuelles Auslösen](./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-trigger.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-trigger.png" alt-text="Manuelles Auslösen":::
 
 2. Wählen Sie im Fenster **Pipelineausführung** die Option **Fertig stellen** aus. 
 
@@ -301,11 +301,11 @@ In diesem Schritt lösen Sie eine Pipelineausführung aus.
 
 1. Wechseln Sie im linken Bereich zur Registerkarte **Überwachen**. Die Pipelineausführung, der zugehörige Status sowie weitere Informationen (z. B. **Startzeit der Ausführung**) werden angezeigt. Klicken Sie zum Aktualisieren der Ansicht auf **Aktualisieren**.
 
-   ![Pipelineausführungen](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png" alt-text="Pipelineausführungen":::
 
 2. Klicken Sie in der Spalte **Aktionen** auf den Link **View Activity Runs** (Aktivitätsausführungen anzeigen). Sie sehen nur eine Aktivitätsausführung, da die Pipeline nur eine Aktivität enthält. Dabei handelt es sich um die Aktivität „SSIS-Paket ausführen“.
 
-   ![Aktivitätsausführungen](./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-runs.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-runs.png" alt-text="Aktivitätsausführungen":::
 
 3. Führen Sie auf Ihrem SQL-Server die folgende Abfrage für die SSISDB-Datenbank ausführen, um zu überprüfen, ob das Paket ausgeführt wurde. 
 
@@ -313,11 +313,11 @@ In diesem Schritt lösen Sie eine Pipelineausführung aus.
    select * from catalog.executions
    ```
 
-   ![Überprüfen von Paketausführungen](./media/how-to-invoke-ssis-package-stored-procedure-activity/verify-package-executions.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/verify-package-executions.png" alt-text="Überprüfen von Paketausführungen":::
 
 4. Sie können auch die SSISDB-Ausführungs-ID aus der Ausgabe der Pipelineaktivitätsausführung abrufen und anhand der ID umfangreichere Ausführungsprotokolle und Fehlermeldungen in SQL Server Management Studio überprüfen.
 
-   ![Abrufen der Ausführungs-ID](media/how-to-invoke-ssis-package-ssis-activity/get-execution-id.png)
+   :::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/get-execution-id.png" alt-text="Abrufen der Ausführungs-ID":::
 
 ### <a name="schedule-the-pipeline-with-a-trigger"></a>Planen der Pipeline mit einem Trigger
 

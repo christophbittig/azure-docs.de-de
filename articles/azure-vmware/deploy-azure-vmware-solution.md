@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie die in der Planungsphase gesammelten Inf
 ms.topic: tutorial
 ms.custom: contperf-fy22q1, devx-track-azurecli
 ms.date: 07/28/2021
-ms.openlocfilehash: fd3d39a33fcf86556b12fefe7a07dde48dd14c2c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0df1634d047dfe6abfaa717fd10b75b99f100076
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729043"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128623929"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Bereitstellen und Konfigurieren von Azure VMware Solution
 
@@ -28,7 +28,7 @@ In dieser Anleitung führen Sie die folgenden Schritte aus:
 
 Wenn Sie fertig sind, folgen Sie den empfohlenen nächsten Schritten am Ende, um mit den Schritten dieses Leitfadens für erste Schritte fortzufahren.
 
-## <a name="register-the-microsoftavs-resource-provider"></a>Registrieren des **Microsoft.AVS**-Ressourcenanbieters
+## <a name="register-the-microsoftavs-resource-provider"></a>Registrieren des Microsoft.AVS-Ressourcenanbieters
 
 [!INCLUDE [register-resource-provider-steps](includes/register-resource-provider-steps.md)]
 

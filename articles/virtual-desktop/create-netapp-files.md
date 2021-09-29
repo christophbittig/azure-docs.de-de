@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 08/19/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 244ff34b462d519d111aad6d6b66d7261e612595
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: fa6052c91be73e05bc2413f57810405fe5a198a0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446785"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124818633"
 ---
 # <a name="upload-msix-images-to-azure-netapp-files-in-azure-virtual-desktop"></a>Hochladen von MSIX-Images in Azure NetApp Files in Azure Virtual Desktop
 
@@ -33,12 +33,11 @@ Zum Einrichten Azure NetApp Files benötigen Sie Folgendes:
 
 Um mit der Verwendung von Azure NetApp Files zu beginnen:
 
-1. Befolgen Sie die Anweisungen unter [Registrieren für Azure NetApp Files](../azure-netapp-files/azure-netapp-files-register.md), um eine Wartelistenanforderung zu übermitteln und Ihren NetApp-Anbieter zu registrieren.
-2. Richten Sie Ihr Azure NetApp Files-Konto ein, indem Sie die Anweisungen unter [Einrichten Ihres Azure NetApp Files-Konto](create-fslogix-profile-container.md#set-up-your-azure-netapp-files-account) befolgen.
-3. Befolgen Sie die Anweisungen im Artikel [Einrichten eines Kapazitätspools](../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md), um einen Kapazitätspool zu erstellen.
-4. Verknüpfen Sie eine Azure Active Directory-Verbindung (Azure AD), indem Sie die Anweisungen unter [Verknüpfen einer Active Directory-Verbindung](create-fslogix-profile-container.md#join-an-active-directory-connection) befolgen.
-5. Erstellen Sie ein neues Volume, indem Sie die Anweisungen in [Neues Volume erstellen](create-fslogix-profile-container.md#create-a-new-volume) und [Volume-Zugriffsparameter konfigurieren](create-fslogix-profile-container.md#configure-volume-access-parameters) befolgen.
-6. Stellen Sie sicher, dass Ihre Verbindung mit der Azure NetApp Files-Freigabe funktioniert, indem Sie die Anweisungen unter [Sicherstellen, dass Benutzer auf die Azure NetApp Files-Freigabe zugreifen können](create-fslogix-profile-container.md#make-sure-users-can-access-the-azure-netapp-file-share).
+1. Richten Sie Ihr Azure NetApp Files-Konto ein, indem Sie die Anweisungen unter [Einrichten Ihres Azure NetApp Files-Konto](create-fslogix-profile-container.md#set-up-your-azure-netapp-files-account) befolgen.
+2. Befolgen Sie die Anweisungen im Artikel [Einrichten eines Kapazitätspools](../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md), um einen Kapazitätspool zu erstellen.
+3. Verknüpfen Sie eine Azure Active Directory-Verbindung (Azure AD), indem Sie die Anweisungen unter [Verknüpfen einer Active Directory-Verbindung](create-fslogix-profile-container.md#join-an-active-directory-connection) befolgen.
+4. Erstellen Sie ein neues Volume, indem Sie die Anweisungen in [Neues Volume erstellen](create-fslogix-profile-container.md#create-a-new-volume) und [Volume-Zugriffsparameter konfigurieren](create-fslogix-profile-container.md#configure-volume-access-parameters) befolgen.
+5. Stellen Sie sicher, dass Ihre Verbindung mit der Azure NetApp Files-Freigabe funktioniert, indem Sie die Anweisungen unter [Sicherstellen, dass Benutzer auf die Azure NetApp Files-Freigabe zugreifen können](create-fslogix-profile-container.md#make-sure-users-can-access-the-azure-netapp-file-share).
 
 ## <a name="upload-an-msix-image-to-the-azure-netapp-file-share"></a>Hochladen eines MSIX-Images in die Azure NetApp-Dateifreigabe
 

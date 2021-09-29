@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: eef23597e6cb8f215fd7ce2374d66ff104cc00bc
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 293249c764155aefe16ef23738b1e4efea4255e5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123226017"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124751060"
 ---
 # <a name="update-azure-percept-dk-over-a-usb-c-connection"></a>Aktualisieren von Azure Percept DK über eine USB-C-Verbindung
 
@@ -44,7 +44,7 @@ In dieser Anleitung wird beschrieben, wie Sie das Betriebssystem und die Firmwar
 
 1. [NXP UUU-Tool:](https://github.com/NXPmicro/mfgtools/releases) Laden Sie das **neueste Release** der Datei „uuu.exe“ (Windows) bzw. der UUU-Datei (Linux) herunter. Diese finden Sie auf der Registerkarte **Ressourcen**. UUU ist ein Tool, das von NXP entwickelt wurde und zum Aktualisieren von NXP-Entwicklungsboards verwendet wird.
 
-1. [Laden Sie die Updatedateien herunter.](https://go.microsoft.com/fwlink/?linkid=2155734) Sie befinden sich alle in einer ZIP-Datei, die Sie im nächsten Abschnitt extrahieren.
+1. [Laden Sie die Updatedateien herunter.](./how-to-select-update-package.md) Sie befinden sich alle in einer ZIP-Datei, die Sie im nächsten Abschnitt extrahieren.
 
 1. Stellen Sie sicher, dass alle drei Buildartefakte vorhanden sind:
     - Azure-Percept-DK- *&lt;Versionsnummer&gt;* .raw

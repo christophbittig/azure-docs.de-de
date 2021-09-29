@@ -8,12 +8,12 @@ ms.author: lle
 author: lrtoyou1223
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.date: 06/10/2020
-ms.openlocfilehash: b59655f343c8b5aa279dae9197c1d7fa41e0c318
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 65473b226ac8c188660862bddadb30ba44c4136d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355177"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124811674"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Erstellen einer freigegebenen selbstgehosteten Integration Runtime in Azure Data Factory
 
@@ -40,17 +40,17 @@ Sie können die unten angegebenen Schritte ausführen, um über die Azure Data F
 
 1. Wählen Sie in der freizugebenden selbstgehosteten Integration Runtime die Option **Anderen Data Factory die Berechtigung erteilen**, und wählen Sie auf der Seite „Integration Runtime-Setup“ die Data Factory aus, in der Sie die verknüpfte Integration Runtime erstellen möchten.
       
-    ![Schaltfläche zum Erteilen von Berechtigungen auf der Registerkarte „Freigabe“](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)  
+    :::image type="content" source="media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png" alt-text="Schaltfläche zum Erteilen von Berechtigungen auf der Registerkarte „Freigabe“":::  
     
 2. Notieren und kopieren Sie die obige „Ressourcen-ID“ der freizugebenden selbstgehosteten IR.
          
 3. Erstellen Sie in der Data Factory, für die Berechtigungen erteilt wurden, eine neue selbstgehostete IR (verknüpft), und geben Sie die Ressourcen-ID ein.
       
-    ![Schaltfläche zum Erstellen einer selbstgehosteten Integration Runtime](media/create-self-hosted-integration-runtime/create-linkedir-1.png)
+    :::image type="content" source="media/create-self-hosted-integration-runtime/create-linkedir-1.png" alt-text="Schaltfläche zum Erstellen einer selbstgehosteten Integration Runtime":::
    
-    ![Schaltfläche zum Erstellen einer verknüpften selbstgehosteten Integration Runtime](media/create-self-hosted-integration-runtime/create-linkedir-2.png) 
+    :::image type="content" source="media/create-self-hosted-integration-runtime/create-linkedir-2.png" alt-text="Schaltfläche zum Erstellen einer verknüpften selbstgehosteten Integration Runtime"::: 
 
-    ![Felder für Name und Ressourcen-ID](media/create-self-hosted-integration-runtime/create-linkedir-3.png)
+    :::image type="content" source="media/create-self-hosted-integration-runtime/create-linkedir-3.png" alt-text="Felder für Name und Ressourcen-ID":::
 
 ## <a name="create-a-shared-self-hosted-ir-using-azure-powershell"></a>Erstellen einer freigegebenen selbstgehosteten IR mithilfe von Azure PowerShell
 
@@ -227,15 +227,15 @@ Remove-AzDataFactoryV2IntegrationRuntime `
 
 #### <a name="shared-ir"></a>Freigegebene IR
 
-![Auswahl für die Suche nach einer freigegebenen Integration Runtime](media/create-self-hosted-integration-runtime/Contoso-shared-IR.png)
+:::image type="content" source="media/create-self-hosted-integration-runtime/Contoso-shared-IR.png" alt-text="Auswahl für die Suche nach einer freigegebenen Integration Runtime":::
 
-![Überwachen einer freigegebenen Integration Runtime](media/create-self-hosted-integration-runtime/contoso-shared-ir-monitoring.png)
+:::image type="content" source="media/create-self-hosted-integration-runtime/contoso-shared-ir-monitoring.png" alt-text="Überwachen einer freigegebenen Integration Runtime":::
 
 #### <a name="linked-ir"></a>Verknüpfte IR
 
-![Auswahl für die Suche nach einer verknüpften Integration Runtime](media/create-self-hosted-integration-runtime/Contoso-linked-ir.png)
+:::image type="content" source="media/create-self-hosted-integration-runtime/Contoso-linked-ir.png" alt-text="Auswahl für die Suche nach einer verknüpften Integration Runtime":::
 
-![Überwachen einer verknüpften Integration Runtime](media/create-self-hosted-integration-runtime/Contoso-linked-ir-monitoring.png)
+:::image type="content" source="media/create-self-hosted-integration-runtime/Contoso-linked-ir-monitoring.png" alt-text="Überwachen einer verknüpften Integration Runtime":::
 
 
 ### <a name="known-limitations-of-self-hosted-ir-sharing"></a>Bekannte Einschränkungen der Freigabe selbstgehosteter IRs

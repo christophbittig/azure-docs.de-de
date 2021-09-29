@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 3bbd18bc7851d4ccffca4f721f6e2aef45ff3c3d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d444a62b7bb6be680c359d6b853a629a1e2dc5a9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97673717"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124830801"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>Tutorial: Azure Active Directory-Integration mit Bime
 
@@ -126,13 +126,13 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Bime die
 
     c. Abmelde-URL
 
-### <a name="configure-bime-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Bime
+### <a name="configure-bime-single-sign-on&quot;></a>Konfigurieren des einmaligen Anmeldens für Bime
 
 1. Melden Sie sich in einem anderen Webbrowserfenster bei der Bime-Unternehmenswebsite als Administrator an.
 
 2. Klicken Sie auf der Symbolleiste auf **Administration** und dann auf **Konto**.
 
-    ![Screenshot, in dem „Administration“ und „Konto“ ausgewählt sind](./media/bime-tutorial/ic775558.png "Admin")
+    ![Screenshot, in dem „Administration“ und „Konto“ ausgewählt sind](./media/bime-tutorial/ic775558.png &quot;Admin")
 
 3. Führen Sie auf der Kontenkonfigurationsseite die folgenden Schritte aus:
 
@@ -197,7 +197,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-### <a name="create-bime-test-user"></a>Erstellen eines Bime-Testbenutzers
+### <a name="create-bime-test-user&quot;></a>Erstellen eines Bime-Testbenutzers
 
 Damit sich Azure AD-Benutzer bei Bime anmelden können, müssen sie in Bime bereitgestellt werden. Im Fall von Bime ist die Bereitstellung eine manuelle Aufgabe.
 
@@ -207,7 +207,7 @@ Damit sich Azure AD-Benutzer bei Bime anmelden können, müssen sie in Bime ber
 
 2. Klicken Sie auf der Symbolleiste auf **Administration** und dann auf **Benutzer**.
 
-    ![Screenshot, in dem „Administration“ und „Benutzer“ ausgewählt sind](./media/bime-tutorial/ic775561.png "Admin")
+    ![Screenshot, in dem „Administration“ und „Benutzer“ ausgewählt sind](./media/bime-tutorial/ic775561.png &quot;Admin")
 
 3. Klicken Sie unter **Benutzerliste** auf **Neuen Benutzer hinzufügen** („+“).
 
@@ -232,7 +232,7 @@ Damit sich Azure AD-Benutzer bei Bime anmelden können, müssen sie in Bime ber
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Bime“ klicken, sollten Sie automatisch bei der Bime-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+Wenn Sie im Zugriffsbereich auf die Kachel „Bime“ klicken, sollten Sie automatisch bei der Bime-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 

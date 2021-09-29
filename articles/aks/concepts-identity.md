@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/24/2021
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 13fe269431a84a00a8af073849cbd17d188c5175
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 70b8715119eb221fc860ba6e7a26b92bffadd12f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345884"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744918"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Zugriffs- und Identitätsoptionen für Azure Kubernetes Service (AKS)
 
@@ -180,7 +180,7 @@ In der [Schrittanleitung zu der von AKS verwalteten Azure AD-Integration](manag
 
 Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure ist ein Autorisierungssystem, das auf [Azure Resource Manager](../azure-resource-manager/management/overview.md) basiert und eine präzise Verwaltung des Zugriffs auf Azure-Ressourcen ermöglicht.
 
-| RBAC-System | BESCHREIBUNG |
+| RBAC-System | Beschreibung |
 |---|---|
 | RBAC in Kubernetes | Ist für Kubernetes-Ressourcen innerhalb Ihres AKS-Clusters bestimmt. |
 | Azure RBAC | Ist für Ressourcen innerhalb Ihres Azure-Abonnements bestimmt. |
@@ -217,7 +217,7 @@ Wenn die Identität, die die Anforderung sendet, in Azure AD vorhanden ist, arb
 
 In diesem Szenario verwenden Sie Azure RBAC-Mechanismen und -APIs, um Benutzern integrierte Rollen zuzuweisen oder benutzerdefinierte Rollen zu erstellen, wie es auch bei Kubernetes-Rollen der Fall ist. 
 
-Mit diesem Feature gewähren Sie Benutzern nicht nur abonnementübergreifende Berechtigungen für die AKS-Ressource, sondern konfigurieren auch die Rolle und die Berechtigungen für Aktionen innerhalb dieser Cluster, die den Zugriff auf die Kubernetes-API steuern. Sie können beispielsweise die Rolle `Azure Kubernetes Service RBAC Viewer` für den Abonnementbereich gewähren. Der Rollenempfänger kann dann alle Kubernetes-Objekte aus allen Clustern auflisten und abrufen, ohne sie zu ändern.
+Mit diesem Feature gewähren Sie Benutzern nicht nur abonnementübergreifende Berechtigungen für die AKS-Ressource, sondern konfigurieren auch die Rolle und die Berechtigungen für Aktionen innerhalb dieser Cluster, die den Zugriff auf die Kubernetes-API steuern. Sie können beispielsweise die Rolle `Azure Kubernetes Service RBAC Reader` für den Abonnementbereich gewähren. Der Rollenempfänger kann dann alle Kubernetes-Objekte aus allen Clustern auflisten und abrufen, ohne sie zu ändern.
 
 > [!IMPORTANT]
 > Sie müssen Azure RBAC für die Kubernetes-Autorisierung aktivieren, bevor Sie dieses Feature verwenden können. Ausführlichere Informationen und schrittweise Anleitungen finden Sie unter [Verwenden von Azure RBAC für Kubernetes-Autorisierung](manage-azure-rbac.md).
@@ -226,9 +226,9 @@ Mit diesem Feature gewähren Sie Benutzern nicht nur abonnementübergreifende Be
 
 AKS stellt die folgenden vier integrierten Rollen bereit. Sie sind mit den [integrierten Rollen in Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) vergleichbar, weisen aber einige Unterschiede wie die Unterstützung von CRDs auf. Sehen Sie sich die vollständige Liste der Aktionen an, die für die einzelnen [integrierten Azure-Rollen](../role-based-access-control/built-in-roles.md) zulässig sind.
 
-| Rolle                                | BESCHREIBUNG  |
+| Rolle                                | Beschreibung  |
 |-------------------------------------|--------------|
-| RBAC-Viewer von Azure Kubernetes Service  | Ermöglicht schreibgeschützten Zugriff, um die meisten Objekte in einem Namespace anzuzeigen. <br> Ermöglicht nicht das Anzeigen von Rollen oder Rollenbindungen.<br> Ermöglicht nicht das Anzeigen von `Secrets`. Das Lesen des `Secrets`-Inhalts ermöglicht den Zugriff auf `ServiceAccount`-Anmeldeinformationen im Namespace, was den API-Zugriff als beliebiges `ServiceAccount` im Namespace ermöglichen würde (eine Form von Berechtigungsausweitung).  |
+| RBAC-Leser von Azure Kubernetes Service  | Ermöglicht schreibgeschützten Zugriff, um die meisten Objekte in einem Namespace anzuzeigen. <br> Ermöglicht nicht das Anzeigen von Rollen oder Rollenbindungen.<br> Ermöglicht nicht das Anzeigen von `Secrets`. Das Lesen des `Secrets`-Inhalts ermöglicht den Zugriff auf `ServiceAccount`-Anmeldeinformationen im Namespace, was den API-Zugriff als beliebiges `ServiceAccount` im Namespace ermöglichen würde (eine Form von Berechtigungsausweitung).  |
 | RBAC-Writer von Azure Kubernetes Service | Ermöglicht Lese-/Schreibzugriff auf die meisten Objekte in einem Namespace. <br> Ermöglicht nicht das Anzeigen oder Ändern von Rollen oder Rollenbindungen. <br> Ermöglicht den Zugriff auf `Secrets` und das Ausführen von Pods als beliebiges ServiceAccount im Namespace, sodass sie verwendet werden kann, um die API-Zugriffsebenen eines beliebigen ServiceAccount im Namespace zu erhalten. |
 | RBAC-Administrator von Azure Kubernetes Service  | Ermöglicht Administratorzugriff, der in einem Namespace erteilt werden soll. <br> Ermöglicht Lese-/Schreibzugriff auf die meisten Ressourcen in einem Namespace (oder Clusterbereich), einschließlich der Möglichkeit zum Erstellen von Rollen und Rollenbindungen innerhalb des Namespace. <br> Ermöglicht keinen Schreibzugriff auf das Ressourcenkontingent oder den Namespace selbst. |
 | RBAC-Clusteradministrator von Azure Kubernetes Service  | Ermöglicht Superuserzugriff, um beliebige Aktionen für beliebige Ressourcen auszuführen. <br> Ermöglicht die vollständige Kontrolle über alle Ressourcen im Cluster und in allen Namespaces. |

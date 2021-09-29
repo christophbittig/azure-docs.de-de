@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/03/2021
 ms.author: alkohli
-ms.openlocfilehash: a73337ad261d8d2d7aef2c6292c7387d7c4cad9a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: aa1974347caa04c314e51b33daba47d7835026db
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355561"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124757608"
 ---
 # <a name="monitor-vm-activity-on-your-azure-stack-edge-pro-gpu-device"></a>Überwachen der VM-Aktivität auf Ihrem Azure Stack Edge Pro GPU-Gerät
 
@@ -42,7 +42,7 @@ Führen Sie folgende Schritte aus, um Aktivitätsprotokolle für die virtuellen 
 
     ![Screenshot der Seite „Aktivitätsprotokoll“ für virtuelle Computer auf einem Azure Stack Edge Gerät. Ein erweiterter Vorgang ist in der Liste hervorgehoben.](./media/azure-stack-edge-gpu-monitor-virtual-machine-activity/activity-log-03.png)<!--Reshoot to remove pointer. May be able to replace drop-down only.-->
 
-In jedem Bereich **Aktivitätsprotokoll** in Azure können Sie Aktivitäten filtern und sortieren, anzuzeigende Spalten auswählen, Details zu einer bestimmten Aktivität anzeigen und **Quick Insights** für Fehler, fehlerhafte Bereitstellungen, Warnungen, Dienstintegrität und Sicherheitsänderungen in den letzten 24 Stunden abrufen. Weitere Informationen zu den Protokollen und den Filteroptionen finden Sie unter [Anzeigen von Aktivitätsprotokollen](../azure-resource-manager/management/view-activity-logs.md).
+In jedem Bereich **Aktivitätsprotokoll** in Azure können Sie Aktivitäten filtern und sortieren, anzuzeigende Spalten auswählen, Details zu einer bestimmten Aktivität anzeigen und **Quick Insights** für Fehler, fehlerhafte Bereitstellungen, Warnungen, Dienstintegrität und Sicherheitsänderungen in den letzten 24 Stunden abrufen. Weitere Informationen zu den Protokollen und den Filteroptionen finden Sie unter [Anzeigen von Aktivitätsprotokollen](../azure-monitor/essentials/activity-log.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,19 +1,19 @@
 ---
 title: Azure Storage-Beispiele mit JavaScript | Microsoft-Dokumentation
 description: Sie können Beispielcode und -anwendungen für Azure Storage anzeigen, herunterladen und ausführen. Entdecken Sie Beispiele für erste Schritte mit Blobs, Warteschlangen, Tabellen und Dateien unter Verwendung der Speicherclientbibliotheken für JavaScript/Node.js.
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.custom: devx-track-js
-ms.openlocfilehash: fa36c399807c92b4c521e5b29c0d465a42462cbe
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d2a098a68c086e658ed697f0eb40176526bf6115
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740138"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128549393"
 ---
 # <a name="azure-storage-samples-using-v12-javascript-client-libraries"></a>Azure Storage-Beispiele mit JavaScript-Clientbibliotheken (v12)
 
@@ -149,7 +149,6 @@ Die folgenden Tabellen enthalten eine Übersicht über unser Beispielrepository 
       [Auslösen eines behebbaren Fehlers mithilfe eines Containerclients](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/errorsAndResponses.js#L33)
    :::column-end:::
 :::row-end:::
-
 
 ## <a name="data-lake-storage-gen2-samples"></a>Data Lake Storage Gen2-Beispiele
 
@@ -406,10 +405,10 @@ Die folgenden Tabellen enthalten eine Übersicht über unser Beispielrepository 
 
 Die gesamten Bibliotheken mit JavaScript-Beispielen finden Sie hier:
 
-* [Azure-Blobcodebeispiele](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples/javascript)
-* [Azure Data Lake-Codebeispiele](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples/javascript)
-* [Azure Files-Codebeispiele](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-share/samples/javascript)
-* [Azure Queue-Codebeispiele](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples/javascript)
+- [Azure-Blobcodebeispiele](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples/javascript)
+- [Azure Data Lake-Codebeispiele](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples/javascript)
+- [Azure Files-Codebeispiele](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-share/samples/javascript)
+- [Azure Queue-Codebeispiele](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples/javascript)
 
 Sie können die einzelnen Bibliotheken im GitHub-Repository suchen und klonen.
 
@@ -417,16 +416,16 @@ Sie können die einzelnen Bibliotheken im GitHub-Repository suchen und klonen.
 
 Lesen Sie den folgenden Leitfäden, um Anleitungen zum Installieren und zu den ersten Schritten mit den Azure Storage-Clientbibliotheken zu erhalten.
 
-* [Erste Schritte mit dem Azure-Blobdienst in JavaScript](../blobs/storage-quickstart-blobs-nodejs.md)
-* [Erste Schritte mit dem Azure-Warteschlangendienst in JavaScript](../queues/storage-quickstart-queues-nodejs.md)
-* [Erste Schritte mit dem Azure-Tabellendienst in JavaScript](../../cosmos-db/table-storage-how-to-use-nodejs.md)
+- [Erste Schritte mit dem Azure-Blobdienst in JavaScript](../blobs/storage-quickstart-blobs-nodejs.md)
+- [Erste Schritte mit dem Azure-Warteschlangendienst in JavaScript](../queues/storage-quickstart-queues-nodejs.md)
+- [Erste Schritte mit dem Azure-Tabellendienst in JavaScript](../../cosmos-db/table-storage-how-to-use-nodejs.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu Beispielen für andere Sprachen:
 
-* .NET: [Azure Storage-Beispiele mit .NET](storage-samples-dotnet.md)
-* Java: [Azure Storage-Beispiele mit Java](storage-samples-java.md)
-* Python: [Azure Storage-Beispiele mit Python](storage-samples-python.md)
-* C++: [Azure Storage-Beispiele mit C++](storage-samples-c-plus-plus.md)
-* Alle anderen Sprachen: [Beispiele für Azure Storage](storage-samples.md)
+- .NET: [Azure Storage-Beispiele mit .NET](storage-samples-dotnet.md)
+- Java: [Azure Storage-Beispiele mit Java](storage-samples-java.md)
+- Python: [Azure Storage-Beispiele mit Python](storage-samples-python.md)
+- C++: [Azure Storage-Beispiele mit C++](storage-samples-c-plus-plus.md)
+- Alle anderen Sprachen: [Beispiele für Azure Storage](storage-samples.md)

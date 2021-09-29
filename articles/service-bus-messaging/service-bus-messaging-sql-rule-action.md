@@ -2,13 +2,13 @@
 title: SQL-Aktionssyntax für Azure Service Bus-Abonnementregel | Microsoft-Dokumentation
 description: Dieser Artikel enthält eine Referenz für die SQL-Regelaktionssyntax. Die Aktionen werden in auf der SQL-Sprache basierender Syntax geschrieben, die für eine Nachricht ausgeführt wird.
 ms.topic: article
-ms.date: 11/24/2020
-ms.openlocfilehash: 7aceb1992aafbbf92718a6bf558a72060f3275df
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.date: 09/28/2021
+ms.openlocfilehash: 19d4ae9a188e2e675e055eae2f4aedd714e17e47
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108770081"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211770"
 ---
 # <a name="subscription-rule-sql-action-syntax"></a>SQL-Aktionssyntax für Abonnementregeln
 
@@ -110,7 +110,7 @@ Der Versuch, auf eine nicht existierende Systemeigenschaft zuzugreifen, löst ei
       <expression>  
 ```  
   
-### <a name="remarks"></a>Bemerkungen
+### <a name="remarks"></a>Hinweise
   
  `<pattern>` muss ein Ausdruck sein, der als Zeichenfolge ausgewertet wird. Es wird als ein Muster für den LIKE-Operator verwendet.      Es kann die folgenden Platzhalterzeichen enthalten:  
   
@@ -125,7 +125,7 @@ Der Versuch, auf eine nicht existierende Systemeigenschaft zuzugreifen, löst ei
       <expression>  
 ```  
   
-### <a name="remarks"></a>Bemerkungen
+### <a name="remarks"></a>Hinweise
   
  `<escape_char>` muss ein Ausdruck sein, der als Zeichenfolge der Länge 1 ausgewertet wird. Es wird als Escapezeichen für den LIKE-Operator verwendet.  
   
@@ -174,7 +174,7 @@ Der Versuch, auf eine nicht existierende Systemeigenschaft zuzugreifen, löst ei
       TRUE | FALSE  
 ```  
   
-### <a name="remarks"></a>Bemerkungen
+### <a name="remarks"></a>Hinweise
   
 Boolesche Konstanten werden durch die Schlüsselwörter `TRUE` oder `FALSE` dargestellt. Die Werte werden als `System.Boolean` gespeichert.  
   
@@ -184,7 +184,7 @@ Boolesche Konstanten werden durch die Schlüsselwörter `TRUE` oder `FALSE` darg
 <string_constant>  
 ```  
   
-### <a name="remarks"></a>Bemerkungen
+### <a name="remarks"></a>Hinweise
   
 Zeichenfolgenkonstanten werden in einfache Anführungszeichen eingeschlossen und enthalten beliebige, gültige Unicodezeichen. Ein einfaches Anführungszeichen, das in eine Zeichenfolgenkonstante eingebettet ist, wird als zwei einfache Anführungszeichen dargestellt.  
   
@@ -196,7 +196,7 @@ Zeichenfolgenkonstanten werden in einfache Anführungszeichen eingeschlossen und
       property(name) | p(name)  
 ```  
   
-### <a name="remarks"></a>Bemerkungen  
+### <a name="remarks"></a>Hinweise  
 
 Die `newid()`-Funktion gibt ein `System.Guid` zurück, das von der `System.Guid.NewGuid()`-Methode generiert wird.  
   

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 7184456d91def51215970daf17f0d741d538b576
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af8bcbcabfb3c7e5c6ff3a097628fccffdb2f27f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92460305"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124790679"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-imagineer-webvision"></a>Tutorial: Azure Active Directory-Integration mit Imagineer WebVision
 
@@ -174,7 +174,7 @@ In diesem Abschnitt erstellen Sie in Imagineer WebVision einen Benutzer namens B
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Imagineer WebVision“ klicken, sollten Sie automatisch bei der Imagineer WebVision-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+Wenn Sie im Zugriffsbereich auf die Kachel „Imagineer WebVision“ klicken, sollten Sie automatisch bei der Imagineer WebVision-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 

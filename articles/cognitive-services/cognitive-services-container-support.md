@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 07/02/2021
+ms.date: 09/24/2021
 ms.author: aahi
 keywords: lokal, Docker, Container, Kubernetes
-ms.openlocfilehash: 567e09dfcc47926b8b25fa8c634a11ee339ab2ea
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 0a55820202d5bfe6d0948afdd00ac99c6d9d666e
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123475852"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129061882"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services-Container
 
@@ -54,7 +54,7 @@ Azure Cognitive Services-Container bieten den folgenden Satz von Docker-Containe
 | [Textanalyse][ta-containers-language] |  **Textsprachenerkennung** ([Image](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | Erkennt die Sprache von Eingabetexten für bis zu 120 Sprachen und meldet einen einzigen Sprachcode für jedes Dokument, das auf Anforderung gesendet wird. Der Sprachcode ist mit einem Wert kombiniert, der die Stärke der Bewertung angibt. | Allgemein verfügbar |
 | [Textanalyse][ta-containers-sentiment] | **Standpunktanalyse v3** ([Image](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) | Analysiert unformatierten Text auf Hinweise auf positive oder negative Stimmungen. Von dieser Version der Standpunktanalyse werden für jedes Dokument und jeden darin enthaltenen Satz Stimmungsbezeichnungen (beispielsweise *Positiv* oder *Negativ*) zurückgegeben. |  Allgemein verfügbar |
 | [Textanalyse][ta-containers-health] |  **Text Analytics for Health** | Extraktion und Bezeichnung medizinischer Informationen aus unstrukturiertem klinischem Text. | Vorschau |
-| [Translator][tr-containers] | **Translator** | Übersetzt Text in verschiedene Sprachen und Dialekte. | Beschränkte Vorschauversion. [Zugriff anfordern][request-access]. | 
+| [Translator][tr-containers] | **Translator** | Übersetzt Text in verschiedene Sprachen und Dialekte. | Beschränkte Vorschauversion. [Zugriff anfordern](https://aka.ms/csgate-translator). | 
 
 ### <a name="speech-containers"></a>Speech-Container
 

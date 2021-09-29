@@ -3,12 +3,12 @@ title: Entdecken Sie Bicep bei Microsoft Learn
 description: Hier finden Sie eine Übersicht über die Lerneinheiten zu Bicep, die bei Microsoft Learn verfügbar sind.
 ms.topic: conceptual
 ms.date: 08/26/2021
-ms.openlocfilehash: 81da3d239a49f716a684c7a3c8deb8a74bc0aa7d
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 71af6012dcdd9cd5b951a0edbe8f244fb3a8be26
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123099528"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124793510"
 ---
 # <a name="bicep-on-microsoft-learn"></a>Bicep bei Microsoft Learn
 
@@ -40,8 +40,9 @@ Zusätzlich zu den vorherigen Lernpfaden enthalten die folgenden Module Bicep-In
 | Learn-Modul | BESCHREIBUNG |
 | ------------ | ----------- |
 | [Erstellen Ihrer ersten Bicep-Bereitstellungspipeline mithilfe von Azure Pipelines](/learn/modules/build-first-bicep-deployment-pipeline-using-azure-pipelines/) | Erstellen Sie eine einfache Bereitstellungspipeline für Bicep-Code. Verwenden Sie eine Dienstverbindung, um Ihre Pipeline sicher in Azure zu identifizieren. Konfigurieren Sie, wann die Pipeline ausgeführt wird, mithilfe von Triggern. |
-| [Erstellen Ihres ersten Bicep-Bereitstellungsworkflows mithilfe von GitHub Actions](/learn/modules/build-first-bicep-deployment-workflow-using-github-actions/) | Erstellen eines einfachen Bereitstellungsworkflows für Bicep-Code. Verwenden Sie ein Geheimnis, um Ihren GitHub Actions-Workflow sicher in Azure zu identifizieren, und legen Sie dann fest, wann der Workflow mithilfe von Triggern und Zeitplänen ausgeführt wird. |
+| [Erstellen Ihres ersten Bicep-Bereitstellungsworkflows mithilfe von GitHub Actions](/learn/modules/build-first-bicep-deployment-pipeline-using-github-actions/) | Erstellen eines einfachen Bereitstellungsworkflows für Bicep-Code. Verwenden Sie ein Geheimnis, um Ihren GitHub Actions-Workflow sicher in Azure zu identifizieren, und legen Sie dann fest, wann der Workflow mithilfe von Triggern und Zeitplänen ausgeführt wird. |
 | [Authentifizieren Ihrer Azure-Bereitstellungspipeline mit Dienstprinzipalen](/learn/modules/authenticate-azure-deployment-pipeline-service-principals/) | Dienstprinzipale ermöglichen Ihren Bereitstellungspipelines die sichere Authentifizierung bei Azure. In diesem Modul wird beschrieben, was Dienstprinzipale sind, wie sie funktionieren und wie sie erstellt werden. Darüber hinaus erfahren Sie, wie Sie dafür die Berechtigung für Ihre Azure-Ressourcen gewähren, damit Ihre Bicep-Dateien von Ihren Pipelines bereitgestellt werden können. |
+| [Testen Ihres Bicep-Codes mithilfe von Azure Pipelines](/learn/modules/test-bicep-code-using-azure-pipelines/) | Überprüfen und testen Sie Ihren Bicep-Code in Ihrer Bereitstellungspipeline. Sie verwenden Linting, Preflightvalidierung und den Was-wäre-wenn-Vorgang, um Ihre Azure-Änderungen vor der Bereitstellung zu überprüfen, und Sie testen Ihre Ressourcen nach jeder Bereitstellung. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

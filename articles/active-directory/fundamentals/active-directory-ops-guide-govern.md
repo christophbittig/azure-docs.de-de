@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: ba3ca140abe36a31ffa03422420ea537bbe4f39a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 065b0ca66b2e8d253ae798ce672638877ddceef8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97935749"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732654"
 ---
 # <a name="azure-active-directory-governance-operations-reference-guide"></a>Referenzleitfaden zu Azure Active Directory-Governancevorgängen
 
@@ -96,7 +96,7 @@ Hacker haben häufig Administratorkonten und andere Komponenten mit privilegiert
 
 Wenn in Ihrer Organisation kein Prozess zum Verwalten privilegierter Konten vorhanden ist, oder wenn einige Administratoren derzeit ihre regulären Benutzerkonten zum Verwalten von Diensten und Ressourcen verwenden, sollten Sie sofort mit der Verwendung separater Konten beginnen, z. B. eines für reguläre Alltagsaktivitäten und ein anderes für privilegierten Zugriff, das mit MFA konfiguriert wurde. Wenn Ihre Organisation ein Azure AD Premium P2-Abonnement besitzt, sollten Sie sofort [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md#license-requirements) aktivieren. Im gleichen Zug sollten Sie auch diese privilegierten Konten überprüfen und ggf. [Rollen mit geringeren Berechtigungen](../roles/security-planning.md) zuweisen.
 
-Sie sollten im Rahmen der Verwaltung privilegierter Konten zudem [Zugriffsüberprüfungen](../governance/access-reviews-overview.md) für diese Konten festlegen (manuell oder [über PIM automatisiert](../privileged-identity-management/pim-how-to-perform-security-review.md)).
+Sie sollten im Rahmen der Verwaltung privilegierter Konten zudem [Zugriffsüberprüfungen](../governance/access-reviews-overview.md) für diese Konten festlegen (manuell oder [über PIM automatisiert](../privileged-identity-management/pim-perform-azure-ad-roles-and-resource-roles-review.md)).
 
 #### <a name="privileged-account-management-recommended-reading"></a>Empfohlene Artikel zur Verwaltung privilegierter Konten
 

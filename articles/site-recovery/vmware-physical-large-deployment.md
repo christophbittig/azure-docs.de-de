@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie mit Azure Site Recovery die Notfallwiede
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.openlocfilehash: 869702c9eaac4a38f6b0e64311c772892ddd6d90
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 6a77b91b49009964ba6e20f76e20e4739da6ea75
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580449"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823780"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>Einrichten der skalierbaren Notfallwiederherstellung für VMware-VMs/physische Server
 
@@ -82,7 +82,7 @@ Wir möchten sicherstellen, dass die verfügbaren Kontingente im Zielabonnement 
 
 **Aufgabe** | **Details** | **Aktion**
 --- | --- | ---
-**Überprüfen der Kerne** | Wenn die Kerne im verfügbaren Kontingent zum Zeitpunkt des Failovers die Gesamtzielanzahl nicht erreichen oder übersteigen, schlagen die Failover fehl. | Überprüfen Sie für VMware-VMs, ob im Zielabonnement genügend Kerne verfügbar sind, um die Empfehlung des Bereitstellungsplaners für Kerne zu erfüllen.<br/><br/> Überprüfen Sie bei physischen Servern, ob die Azure-Kerne die manuellen Schätzungen erfüllen.<br/><br/> Klicken Sie zum Überprüfen von Kontingenten im Azure-Portal unter **Abonnement** auf **Nutzung + Kontingente**.<br/><br/> [Erfahren Sie mehr](../azure-portal/supportability/resource-manager-core-quotas-request.md) über das Erhöhen von Kontingenten.
+**Überprüfen der Kerne** | Wenn die Kerne im verfügbaren Kontingent zum Zeitpunkt des Failovers die Gesamtzielanzahl nicht erreichen oder übersteigen, schlagen die Failover fehl. | Überprüfen Sie für VMware-VMs, ob im Zielabonnement genügend Kerne verfügbar sind, um die Empfehlung des Bereitstellungsplaners für Kerne zu erfüllen.<br/><br/> Überprüfen Sie bei physischen Servern, ob die Azure-Kerne die manuellen Schätzungen erfüllen.<br/><br/> Klicken Sie zum Überprüfen von Kontingenten im Azure-Portal unter **Abonnement** auf **Nutzung + Kontingente**.<br/><br/> [Erfahren Sie mehr](../azure-portal/supportability/regional-quota-requests.md) über das Erhöhen von Kontingenten.
 **Überprüfen von Failover-Grenzwerten** | Die Anzahl von Failovern darf die Failover-Grenzwerte von Site Recovery nicht überschreiten. |  Wenn die Failover die Grenzwerte überschreiten, können Sie Abonnements hinzufügen und Failover für mehrere Abonnements durchführen oder das Kontingent für ein Abonnement erhöhen. 
 
 

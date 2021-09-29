@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.date: 07/29/2021
-ms.openlocfilehash: 133496614db862d4c1af31afb015a535ddbfd188
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d49b587262bfceb8072761cec6981ab908abb21e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345860"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732943"
 ---
 # <a name="what-is-data-wrangling"></a>Was ist Data Wrangling?
 
@@ -57,7 +57,7 @@ Die Datenintegratoren ohne Programmiererfahrung verbringen mehr als 60 % ihrer 
 
 Wenn Sie eine Power Query-Aktivität erstellen, werden alle Quelldatasets zu Datasetabfragen, die im Ordner **ADFResource** platziert werden. Standardmäßig zeigt die UserQuery auf die erste Datasetabfrage. Alle Transformationen sind für die UserQuery durchzuführen, da Änderungen an Datasetabfragen weder unterstützt noch beibehalten werden. Das Umbenennen, Hinzufügen und Löschen von Abfragen werden derzeit nicht unterstützt.
 
-![Wrangling](media/wrangling-data-flow/editor.png)
+:::image type="content" source="media/wrangling-data-flow/editor.png" alt-text="Wrangling":::
 
 Derzeit werden nicht alle Power Query M-Funktionen für Data Wrangling unterstützt, obwohl sie während der Erstellung verfügbar sind. Beim Erstellen von Power Query-Aktivitäten wird die folgende Fehlermeldung angezeigt, wenn eine Funktion nicht unterstützt wird:
 

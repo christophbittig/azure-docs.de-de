@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: application-gateway
 ms.custom: subject-monitoring
 ms.date: 06/10/2021
-ms.openlocfilehash: dce23e60b3a3be5ba7647de1f45380d188c07094
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 5ece5b220a59f562774fde7b093236ed5946f019
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114295997"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836236"
 ---
 <!-- VERSION 2.2
 Template for monitoring data reference article for Azure services. This article is support for the main "Monitoring [servicename]" article for the service. -->
@@ -147,7 +147,7 @@ Ressourcenanbieter und -typ: [Microsoft.Network/applicationGateways](../azure-mo
 
 | Kategorie | Anzeigename | Informationen|
 |:---------|:-------------|------------------|
-| **Activitylog**   | Aktivitätsprotokoll | Aktivitätsprotokolleinträge werden standardmäßig erfasst. Mit dem Feature [Azure-Aktivitätsprotokolle](../azure-resource-manager/management/view-activity-logs.md) (ehemals Betriebs- und Überwachungsprotokolle) können Sie sämtliche an Ihr Azure-Abonnement übermittelten Vorgänge sowie deren Status anzeigen. |
+| **Activitylog**   | Aktivitätsprotokoll | Aktivitätsprotokolleinträge werden standardmäßig erfasst. Mit dem Feature [Azure-Aktivitätsprotokolle](../azure-monitor/essentials/activity-log.md) (ehemals Betriebs- und Überwachungsprotokolle) können Sie sämtliche an Ihr Azure-Abonnement übermittelten Vorgänge sowie deren Status anzeigen. |
 |**ApplicationGatewayAccessLog**|Zugriffsprotokoll| Mithilfe dieses Protokolls können Sie Application Gateway-Zugriffsmuster anzeigen und wichtige Informationen analysieren. Dazu gehören die IP-Adresse des Aufrufers, die angeforderte URL, die Antwortlatenz, der Rückgabecode sowie die ein- und ausgehenden Bytes. Ein Zugriffsprotokoll wird alle 60 Sekunden erstellt. Dieses Protokoll enthält einen Datensatz pro Instanz von Application Gateway. Die Application Gateway-Instanz wird anhand der InstanceId-Eigenschaft identifiziert.|
 | **ApplicationGatewayPerformanceLog**|Leistungsprotokoll|Mithilfe dieses Protokolls können Sie die Leistung von Application Gateway-Instanzen anzeigen. In diesem Protokoll werden Leistungsinformationen für jede Instanz erfasst, z.B. insgesamt bereitgestellte Anforderungen, Durchsatz in Byte, Anzahl von Anforderungen mit Fehlern und die Anzahl von fehlerfreien und fehlerhaften Back-End-Instanzen. Ein Leistungsprotokoll wird alle 60 Sekunden erstellt. Das Leistungsprotokoll ist nur für die v1-SKU verfügbar. Verwenden Sie für die v2-SKU [Metriken](#metrics) für die Leistungsdaten.|
 |**ApplicationGatewayFirewallLog**|Firewallprotokoll|Mithilfe dieses Protokolls können Sie die Anforderungen anzeigen, die entweder über den Erkennungs- oder über den Schutzmodus eines Anwendungsgateways protokolliert werden, das mit der Web Application Firewall konfiguriert wurde. Firewallprotokolle werden alle 60 Sekunden erfasst.|

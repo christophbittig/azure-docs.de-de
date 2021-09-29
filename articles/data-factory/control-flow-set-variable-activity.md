@@ -6,16 +6,16 @@ ms.service: data-factory
 ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
-ms.openlocfilehash: c9c489ab15f7b6a44e4aadeef8cd98b0d935e1ba
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 63c4a4b53889f2c762b7c1dadffe432cd7383b4c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122821644"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124758046"
 ---
 # <a name="set-variable-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>Aktivität „Variable festlegen“ in Azure Data Factory and Azure Synapse Analytics
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -24,7 +24,7 @@ Verwenden Sie die Aktivität „Variable festlegen“, um den Wert einer vorhand
 
 ## <a name="type-properties"></a>Typeigenschaften
 
-Eigenschaft | BESCHREIBUNG | Erforderlich
+Eigenschaft | Beschreibung | Erforderlich
 -------- | ----------- | --------
 name | Der Name der Aktivität in der Pipeline. | ja
 description | Text, der beschreibt, welche Aktion die Aktivität ausführt. | nein
@@ -38,7 +38,7 @@ Ein gängiges Szenario für den Einsatz von Variablen ist die Verwendung einer V
 
 Nachstehend sehen Sie ein Beispiel für dieses Muster:
 
-![Variable schrittweise erhöhen](media/control-flow-set-variable-activity/increment-variable.png "Erhöhen eines Variablenwerts")
+:::image type="content" source="media/control-flow-set-variable-activity/increment-variable.png" alt-text="Variable schrittweise erhöhen":::
 
 ``` json
 {

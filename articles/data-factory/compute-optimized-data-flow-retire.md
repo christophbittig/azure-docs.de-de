@@ -4,14 +4,15 @@ description: Die Datenflussoption „Für Compute optimiert“ wird eingestellt.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: tutorial
 ms.date: 06/29/2021
-ms.openlocfilehash: 883fd878ecc90cb9608b6d5e6cbe8be4fb1ea079
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2ef5e68f9629feab42a4417b4e08697038947495
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122643451"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128661828"
 ---
 # <a name="retirement-of-data-flow-compute-optimized-option"></a>Datenflussoption „Für Compute optimiert“ wird eingestellt
 
@@ -26,7 +27,7 @@ Bis einschließlich 31. August 2024 funktionieren Ihre für Compute optimierte
 1. Erstellen Sie eine neue Azure Integration Runtime mit dem Computetyp „Universell“ oder „Arbeitsspeicheroptimiert“.
 2. Legen Sie Ihre Datenflussaktivität auf einen dieser Computetypen fest.
 
-   ![Computetypen](media/data-flow/compute-types.png)
+   :::image type="content" source="media/data-flow/compute-types.png" alt-text="Computetypen":::
 
 ## <a name="comparison-between-different-compute-options"></a>Vergleich zwischen verschiedenen Computeoptionen 
 
@@ -37,5 +38,5 @@ Bis einschließlich 31. August 2024 funktionieren Ihre für Compute optimierte
 | Für Compute optimierte Datenflüsse (veraltet) | Für Produktionsworkloads nicht empfohlen |
 
 * [Aktuelle Informationen zu den Preisen für universelle und arbeitsspeicheroptimierte Datenflüsse finden Sie auf der Preisseite für Azure Data Factory.](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
-* [Detaillierte Informationen finden Sie in den häufig gestellten Fragen zu Datenflüssen.](https://aka.ms/dataflowsqa)  
+* [Detaillierte Informationen finden Sie in den häufig gestellten Fragen zu Datenflüssen.](/azure/data-factory/frequently-asked-questions#mapping-data-flows)  
 * [Auf der Microsoft Q&A-Seite können Sie Fragen posten und Antworten finden.](https://aka.ms/datafactoryqa)

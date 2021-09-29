@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.openlocfilehash: a77b6472ea91a6ba4b6e31d1b7739aae236a1783
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 12a2ef28e4335b933a33a244387494a0de7cd649
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92636152"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124745730"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>Tutorial: Azure Active Directory-Integration mit Work.com
 
@@ -123,13 +123,13 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Work.co
 
     c. Abmelde-URL
 
-### <a name="configure-workcom-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Work.com
+### <a name="configure-workcom-single-sign-on&quot;></a>Konfigurieren des einmaligen Anmeldens für Work.com
 
 1. Melden Sie sich bei Ihrem Work.com-Mandanten als Administrator an.
 
 2. Wechseln Sie zu **Setup**.
    
-    ![Screenshot der ausgewählten Option „Setup“ im Benutzermenü](./media/work-com-tutorial/ic794108.png "Einrichten")
+    ![Screenshot der ausgewählten Option „Setup“ im Benutzermenü](./media/work-com-tutorial/ic794108.png &quot;Einrichten")
 
 3. Klicken Sie im linken Navigationsbereich im Abschnitt **Verwalten** auf **Domänenverwaltung**, um den entsprechenden Abschnitt zu erweitern, und klicken Sie anschließend auf **Meine Domäne**, um die Seite **Meine Domäne** zu öffnen. 
    
@@ -246,17 +246,17 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-### <a name="create-workcom-test-user"></a>Erstellen eines Work.com-Testbenutzers
+### <a name="create-workcom-test-user&quot;></a>Erstellen eines Work.com-Testbenutzers
 
 Damit sich Azure Active Directory-Benutzer anmelden können, müssen sie in Work.com bereitgestellt werden. Im Fall von Work.com ist die Bereitstellung eine manuelle Aufgabe.
 
-### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>So konfigurieren Sie die Benutzerbereitstellung
+### <a name=&quot;to-configure-user-provisioning-perform-the-following-steps&quot;></a>So konfigurieren Sie die Benutzerbereitstellung
 
 1. Melden Sie sich bei der Work.com-Unternehmenswebsite als Administrator an.
 
 2. Wechseln Sie zu **Setup**.
    
-    ![Screenshot der ausgewählten Option „Setup“ im Benutzermenü](./media/work-com-tutorial/ic794108.png "Einrichten")
+    ![Screenshot der ausgewählten Option „Setup“ im Benutzermenü](./media/work-com-tutorial/ic794108.png &quot;Einrichten")
 
 3. Navigieren Sie zu **Benutzer verwalten \> Benutzer**.
    
@@ -294,7 +294,7 @@ Damit sich Azure Active Directory-Benutzer anmelden können, müssen sie in Work
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Work.com“ klicken, sollten Sie automatisch bei der Work.com-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+Wenn Sie im Zugriffsbereich auf die Kachel „Work.com“ klicken, sollten Sie automatisch bei der Work.com-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 

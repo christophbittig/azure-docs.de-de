@@ -2,14 +2,14 @@
 title: Verknüpfen von Vorlagen für die Bereitstellung
 description: Beschreibt, wie verknüpfte Vorlagen in einer Azure Resource Manager-Vorlage (ARM-Vorlage) zum Erstellen einer modularen Vorlagenlösung verwendet werden. Zeigt, wie Parameterwerte übergeben, eine Parameterdatei festgelegt und URLs dynamisch erstellt werden.
 ms.topic: conceptual
-ms.date: 03/25/2021
+ms.date: 09/10/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 3ae1bcc6cc1c99bc89e2f8fbd2c8debf95418850
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b8be710611d892913c43e9d500a051a3d3b55ca5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111951139"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820501"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen
 
@@ -38,7 +38,7 @@ Zum Schachteln einer Vorlage fügen Sie der Hauptvorlage eine [Bereitstellungsre
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "name": "nestedTemplate1",
       "properties": {
         "mode": "Incremental",
@@ -67,7 +67,7 @@ Im folgenden Beispiel wird ein Speicherkonto über eine geschachtelte Vorlage be
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "name": "nestedTemplate1",
       "properties": {
         "mode": "Incremental",
@@ -77,7 +77,7 @@ Im folgenden Beispiel wird ein Speicherkonto über eine geschachtelte Vorlage be
           "resources": [
             {
               "type": "Microsoft.Storage/storageAccounts",
-              "apiVersion": "2019-04-01",
+              "apiVersion": "2021-04-01",
               "name": "[parameters('storageAccountName')]",
               "location": "West US",
               "sku": {
@@ -104,7 +104,7 @@ Der Bereich wird durch die `expressionEvaluationOptions`-Eigenschaft festgelegt.
 ```json
 {
   "type": "Microsoft.Resources/deployments",
-  "apiVersion": "2020-10-01",
+  "apiVersion": "2021-04-01",
   "name": "nestedTemplate1",
   "properties": {
     "expressionEvaluationOptions": {
@@ -131,7 +131,7 @@ Die folgende Vorlage veranschaulicht, wie Vorlagenausdrücke entsprechend dem Be
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "name": "nestedTemplate1",
       "properties": {
         "expressionEvaluationOptions": {
@@ -215,7 +215,7 @@ Im folgenden Beispiel wird eine SQL Server-Instanz bereitgestellt, und ein Schl�
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "name": "dynamicSecret",
       "properties": {
         "mode": "Incremental",
@@ -258,7 +258,7 @@ Im folgenden Beispiel wird eine SQL Server-Instanz bereitgestellt, und ein Schl�
           "resources": [
             {
               "type": "Microsoft.Sql/servers",
-              "apiVersion": "2018-06-01-preview",
+              "apiVersion": "2021-02-01-preview",
               "name": "[variables('sqlServerName')]",
               "location": "[parameters('location')]",
               "properties": {
@@ -308,7 +308,7 @@ Der folgende Auszug zeigt, welche Werte sicher sind und welche nicht.
   "resources": [
     {
       "type": "Microsoft.Compute/virtualMachines",
-      "apiVersion": "2020-06-01",
+      "apiVersion": "2021-04-01",
       "name": "mainTemplate",
       "properties": {
         ...
@@ -322,7 +322,7 @@ Der folgende Auszug zeigt, welche Werte sicher sind und welche nicht.
     {
       "name": "outer",
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "properties": {
         "expressionEvaluationOptions": {
           "scope": "outer"
@@ -334,7 +334,7 @@ Der folgende Auszug zeigt, welche Werte sicher sind und welche nicht.
           "resources": [
             {
               "type": "Microsoft.Compute/virtualMachines",
-              "apiVersion": "2020-06-01",
+              "apiVersion": "2021-04-01",
               "name": "outer",
               "properties": {
                 ...
@@ -352,7 +352,7 @@ Der folgende Auszug zeigt, welche Werte sicher sind und welche nicht.
     {
       "name": "inner",
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "properties": {
         "expressionEvaluationOptions": {
           "scope": "inner"
@@ -386,7 +386,7 @@ Der folgende Auszug zeigt, welche Werte sicher sind und welche nicht.
           "resources": [
             {
               "type": "Microsoft.Compute/virtualMachines",
-              "apiVersion": "2020-06-01",
+              "apiVersion": "2021-04-01",
               "name": "inner",
               "properties": {
                 ...
@@ -418,7 +418,7 @@ Zum Verknüpfen einer Vorlage fügen Sie der Hauptvorlage eine [Bereitstellungsr
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "name": "linkedTemplate",
       "properties": {
         "mode": "Incremental",
@@ -456,7 +456,7 @@ Sie können die Parameter für die verknüpfte Vorlage in einer externen Datei o
 "resources": [
   {
     "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2020-10-01",
+    "apiVersion": "2021-04-01",
     "name": "linkedTemplate",
     "properties": {
       "mode": "Incremental",
@@ -479,7 +479,7 @@ Um Parameterwerte inline zu übergeben, verwenden Sie die `parameters`-Eigenscha
 "resources": [
   {
     "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2020-10-01",
+    "apiVersion": "2021-04-01",
     "name": "linkedTemplate",
     "properties": {
       "mode": "Incremental",
@@ -522,7 +522,7 @@ Die folgende Vorlage zeigt, wie *mainTemplate.json* die in der Abbildung oben ge
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "name": "childLinked",
       "properties": {
         "mode": "Incremental",
@@ -644,7 +644,7 @@ In der folgenden Beispielvorlage wird die Verwendung von `copy` mit einer gescha
 "resources": [
   {
     "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2020-10-01",
+    "apiVersion": "2021-04-01",
     "name": "[concat('nestedTemplate', copyIndex())]",
     // yes, copy works here
     "copy": {
@@ -662,7 +662,7 @@ In der folgenden Beispielvorlage wird die Verwendung von `copy` mit einer gescha
         "resources": [
           {
             "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2019-04-01",
+            "apiVersion": "2021-04-01",
             "name": "[concat(variables('storageName'), copyIndex())]",
             "location": "West US",
             "sku": {
@@ -726,7 +726,7 @@ Der Resource Manager verarbeitet jede Vorlage als separate Bereitstellung im Ber
   "resources": [
     {
       "type": "Microsoft.Network/publicIPAddresses",
-      "apiVersion": "2018-11-01",
+      "apiVersion": "2021-02-01",
       "name": "[parameters('publicIPAddresses_name')]",
       "location": "southcentralus",
       "properties": {
@@ -761,7 +761,7 @@ Die folgende Vorlage wird mit der vorherigen Vorlage verknüpft. Es werden drei 
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "name": "[concat('linkedTemplate', copyIndex())]",
       "copy": {
         "count": 3,
@@ -831,7 +831,7 @@ Im folgenden Beispiel wird veranschaulicht, wie ein SAS-Token beim Verknüpfen m
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "name": "linkedTemplate",
       "properties": {
         "mode": "Incremental",
@@ -893,7 +893,7 @@ Die folgenden Beispiele zeigen gängige Nutzungsszenarien für verknüpften Vorl
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Ein entsprechendes Tutorial finden Sie unter [Tutorial: Bereitstellen einer verknüpften Vorlage](./deployment-tutorial-linked-template.md).
-* Weitere Informationen zum Definieren der Bereitstellungsreihenfolge Ihrer Ressourcen finden Sie unter [Definieren der Reihenfolge für die Bereitstellung von Ressourcen in ARM-Vorlagen](./resource-dependency.md).
-* Weitere Informationen dazu, wie Sie eine Ressource definieren, aber viele Instanzen davon erstellen, finden Sie unter [Ressourceniteration in ARM-Vorlagen](copy-resources.md).
-* Schritte zum Einrichten einer Vorlage in einem Speicherkonto und zum Generieren eines SAS-Tokens finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](deploy-powershell.md) oder [Bereitstellen von Ressourcen mit ARM-Vorlagen und der Azure-Befehlszeilenschnittstelle](deploy-cli.md).
+- Ein entsprechendes Tutorial finden Sie unter [Tutorial: Bereitstellen einer verknüpften Vorlage](./deployment-tutorial-linked-template.md).
+- Weitere Informationen zum Definieren der Bereitstellungsreihenfolge Ihrer Ressourcen finden Sie unter [Definieren der Reihenfolge für die Bereitstellung von Ressourcen in ARM-Vorlagen](./resource-dependency.md).
+- Weitere Informationen dazu, wie Sie eine Ressource definieren, aber viele Instanzen davon erstellen, finden Sie unter [Ressourceniteration in ARM-Vorlagen](copy-resources.md).
+- Schritte zum Einrichten einer Vorlage in einem Speicherkonto und zum Generieren eines SAS-Tokens finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](deploy-powershell.md) oder [Bereitstellen von Ressourcen mit ARM-Vorlagen und der Azure-Befehlszeilenschnittstelle](deploy-cli.md).

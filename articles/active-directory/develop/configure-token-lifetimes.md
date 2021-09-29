@@ -13,12 +13,12 @@ ms.date: 04/08/2021
 ms.author: ryanwi
 ms.custom: aaddev, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 66e9817c6d3bbcd199418b9afd78eda016c5f291
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: ac1fa8db8d153365f990c4d3eff120a254ed8096
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107363885"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060629"
 ---
 # <a name="configure-token-lifetime-policies-preview"></a>Konfigurieren von Richtlinien zur Tokenlebensdauer (Vorschau)
 Sie können die Gültigkeitsdauer eines Zugriffs-, SAML- oder ID-Tokens angeben, das von Microsoft Identity Platform ausgestellt wird. Die Tokengültigkeitsdauer können Sie für alle Apps Ihrer Organisation, für eine mehrinstanzenfähige Anwendung (Multiorganisationsanwendung) oder für einen bestimmten Dienstprinzipal in Ihrer Organisation festlegen. Weitere Informationen hierzu finden Sie unter [Konfigurierbare Tokengültigkeitsdauer in Microsoft Identity Platform (Vorschau)](active-directory-configurable-token-lifetimes.md).
@@ -94,11 +94,9 @@ Einige Benutzer haben nach dem Ausführen des Cmdlets `Get-AzureADPolicy` den Fe
 # Uninstall the AzureAD Module
 UnInstall-Module AzureAD
 
-# Re-install the AzureAD Module
-Install-Module AzureAD
-
 # Install the AzureAD Preview Module adding the -AllowClobber
 Install-Module AzureADPreview -AllowClobber
+Note: You cannot install both the preview and the GA version on the same computer at the same time. 
 
 Connect-AzureAD
 Get-AzureADPolicy -All $true

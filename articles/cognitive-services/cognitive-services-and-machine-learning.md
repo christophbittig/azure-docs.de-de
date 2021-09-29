@@ -7,12 +7,12 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: 452b850f0c5c731c1e5f3bbe0a7f5a28e2b72ecc
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: e723089b0e248b3bab167b985bc410b3e00d4dc6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122342838"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124788266"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services und maschinelles Lernen
 
@@ -94,8 +94,6 @@ In den folgenden Punkten ist jeder Dienst entsprechend der Art von Daten kategor
 |[Content Moderator](./Content-Moderator/overview.md)|x||x|
 |[Custom Vision](./custom-vision-service/overview.md)||x||
 |[Gesichtserkennung](./Face/Overview.md)|x|x||
-|[Formularerkennung](./form-recognizer/overview.md)||x||
-|[Plastischer Reader](../applied-ai-services/immersive-reader/overview.md)|x|||
 |[Freihanderkennung](/previous-versions/azure/cognitive-services/Ink-Recognizer/overview)|x|x||
 |[Language Understanding (LUIS)](./LUIS/what-is-luis.md)||x||
 |[Personalisierung](./personalizer/what-is-personalizer.md)|x*|x*|x|
@@ -105,7 +103,7 @@ In den folgenden Punkten ist jeder Dienst entsprechend der Art von Daten kategor
 |[Spracherkennung (Speech-to-Text, STT)](speech-service/speech-to-text.md)|x|x||
 |[Sprachübersetzung](speech-service/speech-translation.md)|x|||
 |[Textanalyse](./text-analytics/overview.md)|x|||
-|[Translator](./translator/translator-info-overview.md)|x|||
+|[Translator](./translator/translator-overview.md)|x|||
 |[Translator – benutzerdefinierter Translator](./translator/custom-translator/overview.md)||x||
 
 *Personalisierung benötigt für ein Auswerten Ihrer Richtlinien und Daten nur Trainingsdaten, die vom Dienst erfasst wurden (weil der Dienst in Echtzeit funktioniert). Personalisierung benötigt für ein Vorab- oder Stapelverarbeitungstraining keine großen Datasets mit bereits erfassten Daten. 
