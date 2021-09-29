@@ -9,12 +9,12 @@ ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
 ms.date: 06/21/2021
-ms.openlocfilehash: bed5253a1d5948e7d016bca9e46236d6b57bac57
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 9894769ecd3d7144fa2cf4bb245575d397c60148
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114292953"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824004"
 ---
 # <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-post-migration-management"></a>Migrieren einer lokalen MySQL-Instanz zu Azure Database for MySQL: Verwaltung nach der Migration
 
@@ -30,7 +30,7 @@ Nachdem die Migration erfolgreich abgeschlossen wurde, müssen in der nächsten 
 
 Azure Database for MySQL bietet die Möglichkeit, diese beiden Arten von Aktivitäten mithilfe von Azure-basierten Tools wie [Azure Monitor](../../../azure-monitor/overview.md), [Log Analytics](../../../azure-monitor/logs/design-logs-deployment.md) und [Azure Sentinel](../../../sentinel/overview.md) zu überwachen. Zusätzlich zu den Azure-basierten Tools können SIEM-Systeme (Security Information and Event Management) ebenfalls für die Nutzung dieser Protokolle konfiguriert werden.
 
-Unabhängig davon, welches Tool Sie für die Überwachung der neuen cloudbasierten Workloads verwenden, müssen Warnungen erstellt werden, mit denen Azure- und Datenbankadministratoren vor verdächtigen Aktivitäten gewarnt werden. Wenn ein bestimmtes Warnereignis über einen klar definierten Korrekturpfad verfügt, können Warnungen automatisierte [Azure-Runbooks](../../../automation/automation-quickstart-create-runbook.md) auslösen, um das Problem zu beheben.
+Unabhängig davon, welches Tool Sie für die Überwachung der neuen cloudbasierten Workloads verwenden, müssen Warnungen erstellt werden, mit denen Azure- und Datenbankadministratoren vor verdächtigen Aktivitäten gewarnt werden. Wenn ein bestimmtes Warnereignis über einen klar definierten Korrekturpfad verfügt, können Warnungen automatisierte [Azure-Runbooks](../../../automation/learn/powershell-runbook-managed-identity.md) auslösen, um das Problem zu beheben.
 
 Der erste Schritt in der Entwicklung einer vollständig überwachten Umgebung besteht darin, den Datenfluss von MySQL-Protokolldaten nach Azure Monitor zu ermöglichen. Unter [Konfigurieren von und Zugreifen auf Überwachungsprotokolle für Azure Database for MySQL im Azure-Portal](../../howto-configure-audit-logs-portal.md) finden Sie weitere Informationen.
 

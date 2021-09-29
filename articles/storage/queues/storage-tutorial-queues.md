@@ -1,20 +1,20 @@
 ---
 title: 'Tutorial: Arbeiten mit Azure Queue Storage-Warteschlangen in .NET'
 description: Ein Tutorial zur Verwendung von Azure Queue Storage zum Erstellen von Warteschlangen sowie zum Einfügen, Abrufen und Löschen von Nachrichten mithilfe von .NET-Code.
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 06/09/2020
 ms.topic: tutorial
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c7d960735ee3ebd056858b93576d219ade514a00
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: b563c3c0f481e8a133070f4758a31dc833995127
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459699"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662493"
 ---
 # <a name="tutorial-work-with-azure-queue-storage-queues-in-net"></a>Tutorial: Arbeiten mit Azure Queue Storage-Warteschlangen in .NET
 

@@ -4,12 +4,12 @@ ms.service: azure-object-anchors
 ms.topic: include
 ms.date: 06/10/2021
 ms.author: crtreasu
-ms.openlocfilehash: 8ad55355307cfc8656b6f6bf9b074d90daf7e2e8
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: f358fc0d82fe28dd06a0102afcfde7ff29fd9ffe
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112006892"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124796984"
 ---
 Der nächste Schritt besteht darin, das Azure Object Anchors-Paket für Unity herunterzuladen.
 
@@ -38,6 +38,6 @@ Das Azure Object Anchors-Paket wird in den Ordner heruntergeladen, in dem Sie de
 
 # <a name="install-with-mixed-reality-feature-tool-beta"></a>[Installation mit dem Mixed Reality-Featuretool (Betaversion)](#tab/unity-package-mixed-reality-feature-tool)
 
-Fahren Sie mit dem nächsten Schritt fort. Das <a a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">Mixed Reality-Featuretool</a> verwenden Sie in einem späteren Schritt.
+Fahren Sie mit dem nächsten Schritt fort. Das <a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">Mixed Reality-Featuretool</a> verwenden Sie in einem späteren Schritt.
 
 ---

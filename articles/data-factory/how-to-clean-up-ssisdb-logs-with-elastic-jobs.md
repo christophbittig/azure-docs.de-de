@@ -8,12 +8,12 @@ ms.date: 08/28/2021
 author: swinarko
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3e793f7a1c2e927be9b0431df05bdc228355429f
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 7e235bd04b0693a0fabc9f4432aff01c85b5c67e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123110195"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824717"
 ---
 # <a name="how-to-clean-up-ssisdb-logs-automatically"></a>Automatisches Bereinigen von SSISDB-Protokollen
 
@@ -34,7 +34,7 @@ Zum Verwalten von SSIS-Paketausführungsprotokollen können Sie SSISDB-Protokoll
 - **Alte Versionen regelmäßig entfernen**: Aktiviert die Bereinigung gespeicherter Projektversionen; standardmäßig auf *True* festgelegt.
 - **Maximale Anzahl der Versionen pro Project**: Gibt die maximale Anzahl von gespeicherten Projektversionen an, die standardmäßig auf *10* festgelegt ist. Ältere Protokolle werden gelöscht, wenn die entsprechende gespeicherte SSISDB-Prozedur aufgerufen wird.
 
-![SSISDB-Protokollbereinigungseigenschaften](media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/clean-up-logs-ssms-ssisdb-properties.png)
+:::image type="content" source="media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/clean-up-logs-ssms-ssisdb-properties.png" alt-text="SSISDB-Protokollbereinigungseigenschaften":::
 
 Nachdem die SSISDB-Protokollbereinigungseigenschaften konfiguriert wurden, können Sie die entsprechende gespeicherte SSISDB-Prozedur, `[internal].[cleanup_server_retention_window_exclusive]`, aufrufen, um SSIS-Paketausführungsprotokolle zu bereinigen.
 
@@ -55,7 +55,7 @@ Diese gespeicherten SSISDB-Prozeduren können auch über ADF, Azure SQL Managed 
 ## <a name="clean-up-ssisdb-logs-automatically-via-adf"></a>Automatisches Bereinigen von SSISDB-Protokollen über ADF
 Unabhängig davon, ob Sie Azure SQL-Datenbank-Server/Managed Instance zum Hosten von SSISDB verwenden, können Sie ADF immer verwenden, um SSISDB-Protokolle nach Zeitplan automatisch zu bereinigen. Hierzu können Sie eine Aktivität des Typs „SSIS-Paket ausführen“ in einer ADF-Pipeline mit einem eingebetteten Paket vorbereiten, das einen einzelnen Task „SQL ausführen“ zum Aufrufen der entsprechenden gespeicherten SSISDB-Prozeduren enthält. Sehen Sie sich dazu Beispiel 4) in unserem Blog [Run Any SQL Anywhere in 3 Easy Steps with SSIS in Azure Data Factory](https://techcommunity.microsoft.com/t5/sql-server-integration-services/run-any-sql-anywhere-in-3-easy-steps-with-ssis-in-azure-data/ba-p/2457244) (Ausführen von SQL an beliebigen Orten in drei einfachen Schritten mit SSIS in Azure Data Factory) an.
 
-![SSISDB-Protokollbereinigung über ADF](media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/run-sql-ssis-activity-ssis-parameters-ssisdb-clean-up.png)
+:::image type="content" source="media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/run-sql-ssis-activity-ssis-parameters-ssisdb-clean-up.png" alt-text="SSISDB-Protokollbereinigung über ADF":::
 
 Für den Parameter **SQLStatementSource** können Sie `EXEC internal.cleanup_server_retention_window_exclusive` eingeben, um SSIS-Paketausführungsprotokolle zu bereinigen. 
 
@@ -68,7 +68,7 @@ Nachdem Ihre ADF-Pipeline vorbereitet wurde, können Sie einen Plantrigger anfü
 ## <a name="clean-up-ssisdb-logs-automatically-via-azure-sql-managed-instance-agent"></a>Automatisches Bereinigen von SSISDB-Protokollen über Azure SQL Managed Instance Agent
 Wenn Sie Azure SQL Managed Instance zum Hosten von SSISDB verwenden, können Sie auch den integrierten Auftragsorchestrator/Scheduler, Azure SQL Managed Instance Agent, verwenden, um SSISDB-Protokolle nach Zeitplan automatisch zu bereinigen. Wenn SSISDB kürzlich in Ihrer Azure SQL Managed Instance erstellt wurde, haben wir außerdem unter Azure SQL Managed Instance Agent einen Transact-SQL-Auftrag namens **SSIS-Serverwartungsauftrag** erstellt, um speziell SSIS-Paketausführungsprotokolle zu bereinigen. Er ist standardmäßig deaktiviert und mit einem Zeitplan für tägliche Ausführung konfiguriert.  Wenn Sie den Transact-SQL-Auftrag aktivieren und/oder seinen Zeitplan neu konfigurieren möchten, können Sie dazu eine Verbindung mit Ihrer Azure SQL Managed Instance mithilfe von SSMS herstellen. Nachdem die Verbindung hergestellt wurde, können Sie im Fenster **Objekt-Explorer** von SSMS den Knoten **SQL Server-Agent** erweitern, dann den Unterknoten **Aufträge** und auf den **Wartungsauftrag für SSIS-Server** doppelklicken, um ihn zu aktivieren/neu zu konfigurieren.
 
-![SSISDB-Protokollbereinigung über Azure SQL Managed Instance Agent](media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/clean-up-logs-ssms-maintenance-job.png)
+:::image type="content" source="media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/clean-up-logs-ssms-maintenance-job.png" alt-text="SSISDB-Protokollbereinigung über Azure SQL Managed Instance Agent":::
 
 Wenn für Ihren Azure SQL Managed Instance Agent noch kein **Wartungsauftrag für SSIS-Server** erstellt wurde, können Sie ihn manuell hinzufügen, indem Sie das folgende Transact-SQL-Skript auf Ihrer Azure SQL Managed Instance ausführen.
 
@@ -375,7 +375,7 @@ Die folgenden Transact-SQL-Skripts erstellen einen neuen elastischen Auftrag, de
 
 Sie können den SSISDB-Protokollbereinigungsauftrag im Azure-Portal überwachen. Bei jeder Ausführung können Sie deren Status, Start- und Endzeit anzeigen.
 
-![Überwachen des SSISDB-Protokollbereinigungsauftrags im Azure-Portal](media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/monitor-cleanup-job-portal.png)
+:::image type="content" source="media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/monitor-cleanup-job-portal.png" alt-text="Überwachen des SSISDB-Protokollbereinigungsauftrags im Azure-Portal":::
 
 ### <a name="monitor-ssisdb-log-clean-up-job-using-t-sql"></a>Überwachen des SSISDB-Protokollbereinigungsauftrags mithilfe von Transact-SQL
 

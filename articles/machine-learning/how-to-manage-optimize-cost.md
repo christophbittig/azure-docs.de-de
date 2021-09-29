@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 06/08/2021
-ms.openlocfilehash: bf29f435c2d9439659abdcc76a7f8d85cf51c2af
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 47f10b542bd2c4eb7965e6dfc25349661ca3c3d8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346674"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124805244"
 ---
 # <a name="manage-and-optimize-azure-machine-learning-costs"></a>Verwalten und Optimieren von Azure Machine Learning-Kosten
 
@@ -109,7 +109,7 @@ Eine der wichtigsten Methoden zur Optimierung von Kosten und Leistung ist die Pa
 
 ## <a name="set-data-retention--deletion-policies"></a>Festlegen von Richtlinien für Datenaufbewahrung und Löschen
 
-Bei jeder Ausführung einer Pipeline werden bei jedem Schritt Zwischen-Datasets generiert. Im Laufe der Zeit nehmen diese Zwischen-Datasets Speicherplatz in Ihrem Speicherkonto in Anspruch. Erwägen Sie das Einrichten von Richtlinien zum Verwalten Ihrer Daten während des gesamten Lebenszyklus, um Ihre Datasets zu archivieren und zu löschen. Weitere Informationen finden Sie unter [Optimieren der Kosten durch Automatisieren der Azure Blob Storage-Zugriffsebenen](../storage/blobs/storage-lifecycle-management-concepts.md).
+Bei jeder Ausführung einer Pipeline werden bei jedem Schritt Zwischen-Datasets generiert. Im Laufe der Zeit nehmen diese Zwischen-Datasets Speicherplatz in Ihrem Speicherkonto in Anspruch. Erwägen Sie das Einrichten von Richtlinien zum Verwalten Ihrer Daten während des gesamten Lebenszyklus, um Ihre Datasets zu archivieren und zu löschen. Weitere Informationen finden Sie unter [Optimieren der Kosten durch Automatisieren der Azure Blob Storage-Zugriffsebenen](../storage/blobs/lifecycle-management-overview.md).
 
 ## <a name="deploy-resources-to-the-same-region"></a>Stellen Sie Ressourcen in derselben Region bereit
 

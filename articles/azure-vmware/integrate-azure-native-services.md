@@ -3,12 +3,12 @@ title: Überwachen und Schützen von VMs mit nativen Azure-Diensten
 description: Hier erfahren Sie, wie Sie native Microsoft Azure-Tools integrieren und bereitstellen, um Ihre Azure VMware Solution-Workloads zu überwachen und zu verwalten.
 ms.topic: how-to
 ms.date: 08/15/2021
-ms.openlocfilehash: 36bdb029f61a707f83ae42e66f399f376db23025
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 19453eeb652a0303e0447a80e37b63613aa92255
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343630"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124799318"
 ---
 # <a name="monitor-and-protect-vms-with-azure-native-services"></a>Überwachen und Schützen von VMs mit nativen Azure-Diensten
 
@@ -86,7 +86,7 @@ Die [Azure-Updateverwaltung](../automation/update-management/overview.md) in Azu
    >[!TIP]
    >Sie können [mit einer ARM-Vorlage (Azure Resource Manager) ein Azure Automation-Konto erstellen](../automation/quickstart-create-automation-account-template.md). Bei Verwendung einer ARM-Vorlage werden im Vergleich zu anderen Bereitstellungsmethoden weniger Schritte benötigt.
 
-1. [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../azure-monitor/logs/quick-create-workspace.md). Wenn Sie es vorziehen, können Sie einen Arbeitsbereich auch über die [CLI](../azure-monitor/logs/quick-create-workspace-cli.md), [PowerShell](../azure-monitor/logs/powershell-workspace-configuration.md) oder eine [Azure Resource Manager-Vorlage](../azure-monitor/logs/resource-manager-workspace.md) erstellen.
+1. [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../azure-monitor/logs/quick-create-workspace.md). Wenn Sie es vorziehen, können Sie einen Arbeitsbereich auch über die [CLI](../azure-monitor/logs/resource-manager-workspace.md), [PowerShell](../azure-monitor/logs/powershell-workspace-configuration.md) oder eine [Azure Resource Manager-Vorlage](../azure-monitor/logs/resource-manager-workspace.md) erstellen.
 
 1. [Aktivieren Sie die Updateverwaltung über ein Automation-Konto.](../automation/update-management/enable-from-automation-account.md) Dabei verknüpfen Sie Ihren Log Analytics-Arbeitsbereich mit Ihrem Automation-Konto. 
  

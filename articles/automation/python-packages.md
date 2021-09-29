@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 08/13/2021
 ms.topic: conceptual
 ms.custom: devx-track-python
-ms.openlocfilehash: 2d5cf0a3d577949edd9e8174ef74e5fede96e67e
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 916cd5fa9251a1f6c14b4518db7b77398c7ab5e0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122965688"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124799983"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>Verwalten von Python 2-Paketen in Azure Automation
 
@@ -93,4 +93,4 @@ Um Ihre Python 2-Runbooks offline zu entwickeln und zu testen, können Sie die f
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Vorbereiten eines Python-Runbooks finden Sie unter [Tutorial: Erstellen eines Python-Runbooks](learn/automation-tutorial-runbook-textual-python2.md).
+Informationen zum Vorbereiten eines Python-Runbooks finden Sie unter [Tutorial: Erstellen eines Python-Runbooks](./learn/automation-tutorial-runbook-textual-python-3.md).

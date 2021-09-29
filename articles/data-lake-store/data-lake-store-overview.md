@@ -1,18 +1,17 @@
 ---
 title: Was ist Azure Data Lake Storage Gen1? | Microsoft-Dokumentation
 description: Übersicht über Data Lake Storage Gen1 (zuvor als Azure Data Lake Store bezeichnet) und die Vorteile, die es im Vergleich zu anderen Datenspeichern bietet
-services: data-lake-store
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: overview
 ms.date: 04/17/2019
-ms.author: twooley
-ms.openlocfilehash: 52c00359fb4e759d9517dee958e31c00feb2b33e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: normesta
+ms.openlocfilehash: f105815e6c20777060c1350b9f12fbb160dbc710
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92149237"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128655579"
 ---
 # <a name="what-is-azure-data-lake-storage-gen1"></a>Was ist Azure Data Lake Storage Gen1?
 

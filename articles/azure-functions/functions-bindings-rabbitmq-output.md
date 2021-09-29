@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 1664656f82492e664b7574339893cd688f0a061d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de6c5528bb62cecb130667b2e80a8884c7608a58
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100097312"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124807088"
 ---
 # <a name="rabbitmq-output-binding-for-azure-functions-overview"></a>RabbitMQ-Ausgabebindung für Azure Functions – Übersicht
 
@@ -308,7 +308,7 @@ Beim Arbeiten mit C#-Skriptfunktionen:
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Die Warteschlangenmeldung ist über context.bindings<NAME> verfügbar. Dabei entspricht <NAME> dem in „function.json“ definierten Namen. Falls es sich um eine JSON-Nutzlast handelt, wird der Wert in ein Objekt deserialisiert.
+Die Warteschlangenmeldung ist über context.bindings\<NAME\> verfügbar. Dabei entspricht \<NAME\> dem in „function.json“ definierten Namen. Falls es sich um eine JSON-Nutzlast handelt, wird der Wert in ein Objekt deserialisiert.
 
 # <a name="python"></a>[Python](#tab/python)
 

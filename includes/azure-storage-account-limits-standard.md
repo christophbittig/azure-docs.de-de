@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 09/30/2020
+ms.date: 09/07/2021
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 82bf11c530dd9d040fc0f82be570774d543b1987
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f3d3f66f01ce3245fa56712d06867bc35a4114ff
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114446175"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124778844"
 ---
 In der folgenden Tabelle werden die für Azure GPv1, GPv2, Blobspeicher und Blockblob-Speicherkonten geltenden Standardgrenzwerte beschrieben. Der Grenzwert für *eingehend* bezieht sich auf alle Daten, die an ein Speicherkonto gesendet werden. Der Grenzwert für *ausgehend* bezieht sich auf alle Daten, die von einem Speicherkonto empfangen werden.
 
@@ -33,6 +33,8 @@ In der folgenden Tabelle werden die für Azure GPv1, GPv2, Blobspeicher und Bloc
 | Maximaler Ausgang für universelle v1-Speicherkonten (US-fremde Regionen) | 10 GBit/s bei aktiviertem RA-GRS/GRS, 15 GBit/s für LRS/ZRS<sup>2</sup> |
 | Maximale Anzahl von VNET-Regeln pro Speicherkonto | 200 |
 | Maximale Anzahl von Regeln für IP-Adressen pro Speicherkonto | 200 |
+| Maximale Anzahl von Regeln für Ressourceninstanzen pro Speicherkonto | 200 |
+| Maximale Anzahl privater Endpunkte pro Speicherkonto | 200 |
 
 <sup>1</sup> Azure Storage Standard-Konten unterstützen höhere Grenzwerte für Kapazität und Eingang auf Anforderung. Wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/faq/), um eine Erhöhung der Kontogrenzwerte anzufordern.
 

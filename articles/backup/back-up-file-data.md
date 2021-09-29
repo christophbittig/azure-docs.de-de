@@ -3,12 +3,12 @@ title: Sichern von Dateidaten mit MABS
 description: Sie können Dateidaten mit MABS auf Server- und Clientcomputern sichern.
 ms.topic: conceptual
 ms.date: 08/19/2021
-ms.openlocfilehash: 71b12c98713dff2340bdda1baf486dcd5cfdb70a
-ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
+ms.openlocfilehash: 5c5535969340b5612758ee0781e030fad0ec6dc6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122681666"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124806702"
 ---
 # <a name="back-up-file-data-with-mabs"></a>Sichern von Dateidaten mit MABS
 
@@ -73,7 +73,7 @@ Nachdem Sie Ihre MABS-Infrastruktur eingerichtet haben, können Sie Schutzcomput
 
 1. In **Online-Aufbewahrungsrichtlinie angeben** können Sie angeben, wie die aus den täglichen/wöchentlichen/monatlichen/jährlichen Sicherungen erstellten Wiederherstellungspunkte in Azure beibehalten werden.
 
-1. Geben Sie in **Onlinereplikation auswählen** an, wie die erste vollständige Replikation der Daten erfolgt. Sie können eine Replikation über das Netzwerk wählen oder eine Offlinesicherung (sog. Offlineseeding) durchführen. Die Offlinesicherung erfolgt mithilfe der Importfunktion von Azure. [Weitere Informationen](/azure/backup/backup-azure-backup-import-export).
+1. Geben Sie in **Onlinereplikation auswählen** an, wie die erste vollständige Replikation der Daten erfolgt. Sie können eine Replikation über das Netzwerk wählen oder eine Offlinesicherung (sog. Offlineseeding) durchführen. Die Offlinesicherung erfolgt mithilfe der Importfunktion von Azure. [Weitere Informationen](./backup-azure-backup-import-export.md).
 
 1. Überprüfen Sie auf der Seite **Zusammenfassung** die Einstellungen. Nachdem Sie auf **Gruppe erstellen** geklickt haben, erfolgt die erste Replikation der Daten. Nach Fertigstellung wird auf der Seite **Status** der Schutzgruppenstatus **OK** angezeigt. Die Sicherung wird anschließend unter Berücksichtigung der Schutzgruppeneinstellungen durchgeführt.
 

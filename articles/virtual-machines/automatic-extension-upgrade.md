@@ -3,20 +3,22 @@ title: Automatisches Erweiterungsupgrade für VMs und Skalierungsgruppen in Azur
 description: Erfahren Sie, wie Sie das automatische Erweiterungsupgrade für Ihre virtuellen Computer und VM-Skalierungsgruppen in Azure aktivieren.
 author: mayanknayar
 ms.service: virtual-machines
-ms.subservice: automatic-extension-upgrade
+ms.subservice: extensions
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 08/10/2021
 ms.author: manayar
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6af80da8c05df4f56fe04ae45169c5e1a63fcd9c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a7368ee52808dc56e3532f2edfb41e00c7737a7e
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340305"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216451"
 ---
 # <a name="automatic-extension-upgrade-for-vms-and-scale-sets-in-azure"></a>Automatisches Erweiterungsupgrade für VMs und Skalierungsgruppen in Azure
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Das automatische Erweiterungsupgrade ist für Azure-VMs und Azure Virtual Machine Scale Sets verfügbar. Wenn das automatische Erweiterungsupgrade für eine VM oder eine Skalierungsgruppe aktiviert ist, wird die Erweiterung automatisch aktualisiert, sobald der Erweiterungsherausgeber eine neue Version für diese Erweiterung freigibt.
 

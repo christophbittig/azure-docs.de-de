@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 07/28/2021
 ms.custom: mvc
-ms.openlocfilehash: 520b75e38d7ccf33c3f900c0b30bfd68e6184720
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 3d3fc18ebceb18e7411a68c19e069a0db4889854
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123542402"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124797113"
 ---
 # <a name="tutorial-discover-servers-running-in-a-vmware-environment-with-azure-migrate"></a>Tutorial: Ermitteln von in einer VMware-Umgebung ausgeführten Servern mit Azure Migrate
 
@@ -141,7 +141,7 @@ Für das Azure Migrate-Tool zur Ermittlung und Bewertung wird eine einfache Azu
 
 > [!NOTE]
 > Wenn Sie die Appliance nicht mithilfe der OVA-Vorlage einrichten können, können Sie für die Einrichtung ein PowerShell-Skript auf einem vorhandenen Windows Server 2016 ausführen. Erfahren Sie, wie Sie eine [Azure Migrate-Appliance mit PowerShell einrichten](deploy-appliance-script.md#set-up-the-appliance-for-vmware). <br/>
-> Die Option zum Bereitstellen einer Appliance mithilfe einer OVA-Vorlage wird in der Azure Government-Cloud nicht unterstützt. [Hier](/azure/migrate/deploy-appliance-script-government) erfahren Sie mehr über das Bereitstellen einer Appliance für die Azure Government-Cloud.
+> Die Option zum Bereitstellen einer Appliance mithilfe einer OVA-Vorlage wird in der Azure Government-Cloud nicht unterstützt. [Hier](./deploy-appliance-script-government.md) erfahren Sie mehr über das Bereitstellen einer Appliance für die Azure Government-Cloud.
 
 ### <a name="deploy-by-using-an-ova-template"></a>Bereitstellen mithilfe einer OVA-Vorlage
 
@@ -318,7 +318,7 @@ Wählen Sie **Ermittlung starten** aus, um die vCenter Server-Ermittlung zu star
 * Bei der [Softwareinventur](how-to-discover-applications.md) wird die auf ermittelten Servern vorhandene Webserverrolle identifiziert. Wenn für einen Server die Webserverrolle aktiviert ist, führt Azure Migrate die Ermittlung von Web-Apps auf dem Server durch. Konfigurationsdaten von Web-Apps werden alle 24 Stunden aktualisiert.
 * Bei der Softwareinventur werden die hinzugefügten Serveranmeldeinformationen mit Servern abgeglichen und für die Abhängigkeitsanalyse ohne Agent überprüft. Wenn die Ermittlung von Servern abgeschlossen ist, können Sie im Portal die Abhängigkeitsanalyse ohne Agent auf den Servern aktivieren. Nur die Server mit erfolgreicher Überprüfung können ausgewählt werden, um die [Abhängigkeitsanalyse ohne Agent](how-to-create-group-machine-dependencies-agentless.md) zu aktivieren.
 * Die Daten von ASP.NET-Web-Apps und SQL Server-Instanzen und -Datenbanken werden innerhalb von 24 Stunden nach Beginn der Ermittlung im Portal angezeigt.
-* Standardmäßig verwendet Azure Migrate für Verbindungen mit SQL-Instanzen die sicherste Methode, d. h., Azure Migrate verschlüsselt die Kommunikation zwischen der Azure Migrate-Appliance und den SQL Server-Quellinstanzen, indem die TrustServerCertificate-Eigenschaft auf `true` festgelegt wird. Darüber hinaus verwendet die Transportschicht SSL zum Verschlüsseln des Kanals und Umgehen der Zertifikatkette zur Überprüfung der Vertrauenswürdigkeit. Daher muss der Server der Appliance so eingerichtet sein, dass er die Stammzertifizierungsstelle des Zertifikats als vertrauenswürdig einstuft. Sie können die Verbindungseinstellungen jedoch ändern, indem Sie auf der Appliance **SQL Server-Verbindungseigenschaften bearbeiten** auswählen. [Erfahren Sie mehr](https://go.microsoft.com/fwlink/?linkid=2158046) darüber, was Sie auswählen sollten.
+* Standardmäßig verwendet Azure Migrate für Verbindungen mit SQL-Instanzen die sicherste Methode, d. h., Azure Migrate verschlüsselt die Kommunikation zwischen der Azure Migrate-Appliance und den SQL Server-Quellinstanzen, indem die TrustServerCertificate-Eigenschaft auf `true` festgelegt wird. Darüber hinaus verwendet die Transportschicht SSL zum Verschlüsseln des Kanals und Umgehen der Zertifikatkette zur Überprüfung der Vertrauenswürdigkeit. Daher muss der Server der Appliance so eingerichtet sein, dass er die Stammzertifizierungsstelle des Zertifikats als vertrauenswürdig einstuft. Sie können die Verbindungseinstellungen jedoch ändern, indem Sie auf der Appliance **SQL Server-Verbindungseigenschaften bearbeiten** auswählen. [Erfahren Sie mehr](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine) darüber, was Sie auswählen sollten.
 
     :::image type="content" source="./media/tutorial-discover-vmware/sql-connection-properties.png" alt-text="Screenshot der Bearbeitung der SQL Server-Verbindungseigenschaften":::
 

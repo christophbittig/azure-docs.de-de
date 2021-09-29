@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 4fbc79723dd484148ddf2f8836848aa9bc333341
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d776c245600691db24d80ecb705d8bf14d8fd1ae
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92522585"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124795372"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindflash"></a>Tutorial: Azure Active Directory-Integration mit Mindflash
 
@@ -177,17 +177,17 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-### <a name="create-mindflash-test-user"></a>Erstellen eines Mindflash-Testbenutzers
+### <a name="create-mindflash-test-user&quot;></a>Erstellen eines Mindflash-Testbenutzers
 
 Damit sich Azure AD-Benutzer bei Mindflash anmelden können, müssen sie in Mindflash bereitgestellt werden. Im Fall von Mindflash ist die Bereitstellung eine manuelle Aufgabe.
 
-### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>So stellen Sie Benutzerkonten bereit:
+### <a name=&quot;to-provision-a-user-accounts-perform-the-following-steps&quot;></a>So stellen Sie Benutzerkonten bereit:
 
 1. Melden Sie sich auf Ihrer **Mindflash**-Unternehmenswebsite als Administrator an.
 
 1. Navigieren Sie zu **Benutzer verwalten**.
    
-    ![Verwalten von Benutzern](./media/mindflash-tutorial/ic787140.png "Benutzer verwalten")
+    ![Verwalten von Benutzern](./media/mindflash-tutorial/ic787140.png &quot;Benutzer verwalten")
 
 1. Klicken Sie auf **Add Users** und dann auf **New**.
 
@@ -211,7 +211,7 @@ Damit sich Azure AD-Benutzer bei Mindflash anmelden können, müssen sie in Mind
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Mindflash“ klicken, sollten Sie automatisch bei der Mindflash-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+Wenn Sie im Zugriffsbereich auf die Kachel „Mindflash“ klicken, sollten Sie automatisch bei der Mindflash-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 

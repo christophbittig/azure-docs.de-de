@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/17/2021
 ms.author: yelevin
-ms.openlocfilehash: cda5595eb2c8b72f6b38ade1feefe84904312412
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: aa30b85047460bffe0177c9154152d18262b44be
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123261135"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823839"
 ---
 # <a name="connect-your-data-source-to-azure-sentinels-data-collector-api-to-ingest-data"></a>Verbinden Ihrer Datenquelle mit der Datensammler-API von Azure Sentinel zur Erfassung von Daten
 
@@ -38,7 +38,7 @@ In den meisten Fällen finden Sie alle für die Konfiguration dieser Datenquelle
 
 - Sie benötigen Lese- und Schreibberechtigungen für den Azure Sentinel-Arbeitsbereich.
 
-- Sie müssen über Leseberechtigungen für freigegebene Schlüssel für den Arbeitsbereich verfügen. [Weitere Informationen zu Arbeitsbereichsschlüsseln](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)
+- Sie müssen über Leseberechtigungen für freigegebene Schlüssel für den Arbeitsbereich verfügen. [Weitere Informationen zu Arbeitsbereichsschlüsseln](../azure-monitor/agents/agent-windows.md)
 
 ## <a name="configure-and-connect-your-data-source"></a>Konfigurieren und Verbinden Ihrer Datenquelle
 

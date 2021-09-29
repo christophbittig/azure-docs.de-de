@@ -4,13 +4,13 @@ metadata:
   description: Dieser Artikel bietet Antworten auf einige häufig gestellte Fragen im Zusammenhang mit dem Azure Relay-Dienst.
   ms.topic: article
   ms.service: azure
-  ms.date: 06/23/2021
-  ms.openlocfilehash: fd18d0d36cb07596ba6f8b40e699228bb95a190d
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.date: 09/17/2021
+  ms.openlocfilehash: defbb7c8318b548de3ed5bc4aa6049944a719e6d
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122253959"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128637553"
 title: Azure Relay – häufig gestellte Fragen
 summary: >
   In diesem Artikel werden einige häufig gestellte Fragen zu [Azure Relay](https://azure.microsoft.com/services/service-bus/) beantwortet. Allgemeine Informationen zu Azure-Preisen und zum Azure-Support finden Sie unter [Häufig gestellte Fragen zum Azure-Support](https://azure.microsoft.com/support/faq/).
@@ -42,7 +42,7 @@ sections:
   - question: >
       Wie werden Hybridverbindungen und WCF-Relay abgerechnet?
     answer: >
-      Alle Informationen zu den Preisen für Relay finden Sie in der Tabelle [Hybridverbindungen und WCF-Relays][Preisübersicht] auf der Seite mit den Preisdetails zu Service Bus. Neben den auf dieser Seite aufgeführten Preisen werden Ihnen die entsprechenden, aus dem Rechenzentrum ausgehenden Datenübertragungen berechnet, mit denen Ihre Anwendung bereitgestellt wird.
+      Alle Informationen zu den Preisen für Relay finden Sie in der Tabelle [Hybrid Connections und WCF Relays](https://azure.microsoft.com/pricing/details/service-bus) auf der Seite mit den Preisdetails zu Service Bus. Neben den auf dieser Seite aufgeführten Preisen werden Ihnen die entsprechenden, aus dem Rechenzentrum ausgehenden Datenübertragungen berechnet, mit denen Ihre Anwendung bereitgestellt wird.
   - question: >
       Wie werden Hybridverbindungen abgerechnet?
     answer: "Im Folgenden finden Sie drei Beispielszenarien für die Abrechnung für Hybrid Connections:\n\n*   Szenario 1:\n    *   Sie haben einen einzelnen Listener – z.B. eine Instanz des Hybrid Connections-Managers – installiert und führen diesen den gesamten Monat lang kontinuierlich aus.\n    *   Sie senden während des Monats 3 GB Daten über die Verbindung. \n    *   Die Gesamtgebühr beträgt 5 USD.\n*   Szenario 2:\n    *   Sie haben einen einzelnen Listener – z.B. eine Instanz des Hybrid Connections-Managers – installiert und führen diesen den gesamten Monat lang kontinuierlich aus.\n    *   Sie senden während des Monats 10 GB Daten über die Verbindung.\n    *   Die Gesamtgebühr beträgt 7,50 USD. Diese Summe setzt sich zusammen aus 5 USD für die Verbindung und die ersten 5 GB plus 2,50 USD für die zusätzlichen 5 GB.\n*   Szenario 3:\n    *   Sie haben zwei Instanzen A und B des Hybrid Connections-Managers installiert und führen diese den gesamten Monat lang kontinuierlich aus.\n    *   Sie senden während des Monats 3 GB Daten über Verbindung A.\n    *   Sie senden während des Monats 6 GB Daten über Verbindung B.\n    *   Die Gesamtgebühr beträgt 10,50 USD. Diese Summe setzt sich zusammen aus 5 USD für Verbindung A plus 5 USD für Verbindung B plus 0,50 USD für das 6. Gigabyte in Verbindung B.\n"
@@ -110,11 +110,11 @@ sections:
   - question: >
       Welche Beispiele gibt es für Ausnahmen, die von Azure Relay-APIs generiert werden, und die vorgeschlagenen Aktionen?
     answer: >
-      Eine Beschreibung häufig auftretender Ausnahmen und der vorgeschlagenen Aktionen, die Sie ausführen können, finden Sie unter [Relay-Ausnahmen][Relay-Ausnahmen].
+      Eine Beschreibung häufig auftretender Ausnahmen und der vorgeschlagenen Aktionen, die Sie ausführen können, finden Sie unter [Relay-Ausnahmen](relay-exceptions.md).
   - question: >
       Was ist eine Shared Access Signature, und welche Sprachen kann ich zum Generieren einer Signatur verwenden?
     answer: >
-      Bei Shared Access Signatures handelt es sich um einen Authentifizierungsmechanismus, der auf sicheren Hashes (SHA-256) oder URIs basiert. Informationen zum Generieren eigener Signaturen in Node.js, PHP, Python, Java, C und C# finden Sie im Artikel [Service Bus-Authentifizierung mit Shared Access Signatures][Shared Access Signatures].
+      Bei Shared Access Signatures handelt es sich um einen Authentifizierungsmechanismus, der auf sicheren Hashes (SHA-256) oder URIs basiert. Informationen zum Generieren eigener Signaturen in Node.js, PHP, Python, Java, C und C# finden Sie im Artikel [Service Bus-Authentifizierung mit Shared Access Signatures](../service-bus-messaging/service-bus-sas.md).
   - question: >
       Ist es möglich, nur einige Relayendpunkte zuzulassen?
     answer: >

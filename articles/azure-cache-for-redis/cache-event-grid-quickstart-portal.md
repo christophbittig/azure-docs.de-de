@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: cache
 ms.custom:
 - mode-portal
-ms.openlocfilehash: b53eb606fc12cf77eeaafcccf7c7286c73d46c64
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 72596521850ba3b3b10ef572aa768672869ec7ec
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112283013"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128620918"
 ---
 # <a name="quickstart-route-azure-cache-for-redis-events-to-web-endpoint-with-the-azure-portal"></a>Schnellstart: Weiterleiten von Azure Cache for Redis-Ereignissen an einen Webendpunkt mit dem Azure-Portal
 
@@ -27,7 +27,7 @@ Nach Abschluss des Vorgangs können Sie sehen, dass die Ereignisdaten an die Web
 
 ## <a name="create-an-azure-cache-for-redis-cache-instance"></a>Erstellen einer Instanz des Azure Cache for Redis-Caches
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
+[!INCLUDE [redis-cache-create](includes/redis-cache-create.md)]
 
 ## <a name="create-a-message-endpoint"></a>Erstellen eines Nachrichtenendpunkts
 
@@ -44,7 +44,7 @@ Vor dem Abonnieren der Ereignisse für die Cache-Instanz erstellen wir zunächst
     4. Aktivieren Sie das Kontrollkästchen **Ich stimme den oben genannten Geschäftsbedingungen zu**.
     5. Wählen Sie die Option **Kaufen**.
 
-    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Abonnement** | Öffnen Sie die Dropdownliste, und wählen Sie Ihr Abonnement aus. | Das Abonnement, unter dem diese Web-App erstellt werden soll. |
     | **Ressourcengruppe** | Öffnen Sie die Dropdownliste, und wählen Sie eine Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für eine neue Ressourcengruppe ein. | Wenn Sie alle Ihre App-Ressourcen in einer Ressourcengruppe zusammenfassen, können Sie sie einfacher gemeinsam verwalten oder löschen. |
@@ -77,7 +77,7 @@ In diesem Schritt abonnieren Sie ein Thema, um Event Grid mitzuteilen, welche Er
 
 1. Geben Sie auf der Seite **Ereignisabonnement erstellen** Folgendes ein:
 
-    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Name** | Geben Sie einen Namen für das Ereignisabonnement an. | Der Wert muss eine Länge von 3 bis 64 Zeichen haben. Er darf nur Buchstaben, Zahlen und Bindestriche enthalten. |
     | **Ereignistypen** | Wählen Sie in der Dropdownliste aus, welche Ereignistypen per Pushvorgang auf Ihr Ziel übertragen werden sollen. Für diese Schnellstartanleitung skalieren wir unsere Cache-Instanz. | „Patchen“, „Skalierung“, „Import“ und „Export“ sind die verfügbaren Optionen. |

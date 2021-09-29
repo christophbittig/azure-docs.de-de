@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: v-erkel
-ms.openlocfilehash: 1385e81b5e5a4047a23b47f39d206ea94ec4d79c
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 77663500c6a3e4c432506a5859892506f8995de1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111414192"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128552602"
 ---
 # <a name="tutorial-mount-the-cluster"></a>Tutorial: Einbinden des Clusters
 
@@ -92,7 +92,7 @@ Fügen Sie zusätzlich zu den Pfaden die weiter unten beschriebenen [Optionen f�
 
 Um eine problemlose Clienteinbindung sicherzustellen, übergeben Sie diese Einstellungen und Argumente in Ihrem mount-Befehl:
 
-``mount -o hard,nointr,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
+`mount -o hard,nointr,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}`
 
 | Erforderliche Einstellungen | BESCHREIBUNG |
 --- | ---
@@ -101,9 +101,9 @@ Um eine problemlose Clienteinbindung sicherzustellen, übergeben Sie diese Einst
 ``mountproto=netid`` | Diese Option unterstützt die angemessene Behandlung von Netzwerkfehlern für Einbindungsvorgänge.
 ``retry=n`` | Legen Sie ``retry=30`` fest, um vorübergehende Einbindungsfehler zu vermeiden. (Bei Einbindungen im Vordergrund wird ein anderer Wert empfohlen.)
 
-| Bevorzugte Einstellungen  | BESCHREIBUNG |
---- | ---
-``nointr``            | Verwenden Sie diese Option, wenn Ihre Clients ältere Betriebssystemkernel (vor April 2008) verwenden, die diese Option unterstützen. Standardmäßig wird die Option „intr“ verwendet.
+| Bevorzugte Einstellungen | BESCHREIBUNG |
+| --- | --- |
+| `nointr` | Verwenden Sie diese Option, wenn Ihre Clients ältere Betriebssystemkernel (vor April 2008) verwenden, die diese Option unterstützen. Standardmäßig wird die Option „intr“ verwendet. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

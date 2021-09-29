@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 08/25/2021
-ms.openlocfilehash: 40b1652bec99844675e030cfd12ef8ff28a0f01f
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 09/27/2021
+ms.openlocfilehash: 6778394fa152f22002ef48681942edde4b4ed460
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123435454"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129219092"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Verbinden von Azure Data Factory und Azure Purview
 
@@ -44,9 +44,9 @@ Mehrere Azure Data Factory-Instanzen können eine Verbindung mit einer einzelnen
 >[!Note]
 >Um die Data Factory-Verbindungen hinzufügen oder entfernen zu können, muss Ihnen die folgende Rolle zugewiesen sein. Die Vererbung von Rollen aus der Verwaltungsgruppe wird nicht unterstützt.
 >- Für ein Purview-Konto, das **am oder nach dem 18. August 2021** erstellt wurde: Rolle **Sammlungsadministratoren** für die Stammsammlung.
->- Für ein Purview-Konto, das **vor dem 18. August 2021** erstellt wurde: Rolle **Besitzer** oder **Benutzerzugriffsadministrator**. 
+>- Für ein Purview-Konto, das **vor dem 18. August 2021** erstellt wurde: Rolle **Besitzer** oder **Benutzerzugriffsadministrator**.
 >
-> Außerdem müssen die Benutzer die Rolle „Besitzer“ oder „Mitwirkender“ für die Data Factory aufweisen. 
+> Außerdem müssen die Benutzer die Rolle „Besitzer“ oder „Mitwirkender“ für die Data Factory aufweisen.
 
 Führen Sie die folgenden Schritte aus, um eine vorhandene Data Factory mit Ihrem Purview-Konto zu verbinden. Sie können auch [über ADF eine Verbindung zwischen der Data Factory und dem Purview-Konto herstellen](../data-factory/connect-data-factory-to-azure-purview.md).
 
@@ -62,14 +62,14 @@ Führen Sie die folgenden Schritte aus, um eine vorhandene Data Factory mit Ihre
 
     Es wird eine Warnmeldung angezeigt, wenn eine der ausgewählten Data Factorys bereits mit einem anderen Purview-Konto verbunden ist. Durch Klicken auf „OK“ wird die Data Factory-Verbindung mit dem anderen Purview-Konto getrennt. Es sind keine weiteren Bestätigungen erforderlich.
 
-    :::image type="content" source="./media/how-to-link-azure-data-factory/warning-for-disconnect-factory.png" alt-text="Screenshot: Warnung vor dem Trennen einer Azure Data Factory-Verbindung" lightbox="./media/how-to-link-azure-data-factory/warning-for-disconnect-factory.png":::
+    :::image type="content" source="./media/how-to-link-azure-data-factory/warning-for-disconnect-factory.png" alt-text="Screenshot: Warnung vor dem Trennen einer Azure Data Factory-Verbindung":::
 
 >[!Note]
 >Zurzeit wird das gleichzeitige Hinzufügen von höchstens zehn Data Factorys unterstützt. Wenn Sie mehr als zehn Data Factorys gleichzeitig hinzufügen möchten, erstellen Sie ein Supportticket.
 
 ### <a name="how-authentication-works"></a>Funktionsweise der Authentifizierung
 
-Die verwaltete Identität für die Data Factory wird verwendet, um Pushvorgänge für Herkunftsdaten von der Data Factory zu Purview zu authentifizieren. Wenn Sie die Data Factory über die Benutzeroberfläche mit Purview verbinden, wird die Rollenzuweisung automatisch hinzugefügt. 
+Die verwaltete Identität für die Data Factory wird verwendet, um Pushvorgänge für Herkunftsdaten von der Data Factory zu Purview zu authentifizieren. Wenn Sie die Data Factory über die Benutzeroberfläche mit Purview verbinden, wird die Rollenzuweisung automatisch hinzugefügt.
 
 - Weisen Sie für Purview-Konten, die **am oder nach dem 18. August 2021** erstellt wurden, der verwalteten Identität der Data Factory die Rolle **Datenkurator** für die Purview-**Stammsammlung** zu. Weitere Informationen finden Sie unter [Zugriffssteuerung in Azure Purview](../purview/catalog-permissions.md) und unter [Hinzufügen von Rollen und Einschränken des Zugriffs über Sammlungen](../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections).
 
@@ -133,7 +133,7 @@ Im Folgenden sehen Sie ein Beispiel für dieses Muster:
 - 1 Senke/Ausgabe: *Customer1.csv* (Azure-Blob)
 - 1 Prozess: *CopyCustomerInfo1\#Customer1.csv* (Data Factory-Kopieraktivität)
 
-:::image type="content" source="./media/how-to-link-azure-data-factory/adf-copy-lineage.png" alt-text="Screenshot: Herkunft für einen Eins-zu-eins-Kopiervorgang von Data Factory" lightbox="./media/how-to-link-azure-data-factory/adf-copy-lineage.png":::
+:::image type="content" source="./media/how-to-link-azure-data-factory/adf-copy-lineage.png" alt-text="Screenshot: Herkunft für einen Eins-zu-eins-Kopiervorgang von Data Factory":::
 
 ### <a name="data-movement-with-11-lineage-and-wildcard-support"></a>Datenverschiebung mit 1:1-Herkunft und Unterstützung für Platzhalter
 

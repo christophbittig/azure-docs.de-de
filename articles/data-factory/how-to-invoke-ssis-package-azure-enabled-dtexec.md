@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/12/2020
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 8f30e48db1cafa7ea132de1e19b7ed45990a75b3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2c775706070207ce637b69c2405a3c05c55a85c7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346802"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124811488"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>Ausführen von SQL Server Integration Services-Paketen mit dem Azure-fähigen Hilfsprogramm dtexec
 
@@ -34,11 +34,11 @@ Wenn Sie AzureDTExec verwenden möchten, laden Sie die neueste SSMS-Version (18.
 ## <a name="configure-the-azuredtexec-utility"></a>Konfigurieren des Hilfsprogramms AzureDTExec
 Wenn Sie SSMS auf Ihrem lokalen Computer installieren, wird auch AzureDTExec installiert. Starten Sie SSMS mit der Option **Als Administrator ausführen**, um die entsprechenden Einstellungen zu konfigurieren. Wählen Sie dann **Tools** > **Zu Azure migrieren** > **Azure-fähigen DTExec-Wert konfigurieren** aus.
 
-![Konfigurieren des Menüs für das Azure-fähige dtexec](media/how-to-invoke-ssis-package-azure-enabled-dtexec/ssms-azure-enabled-dtexec-menu.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-azure-enabled-dtexec/ssms-azure-enabled-dtexec-menu.png" alt-text="Konfigurieren des Menüs für das Azure-fähige dtexec":::
 
 Das durch diese Aktion geöffnete Fenster **AzureDTExecConfig** muss mit Administratorrechten geöffnet werden, um in die Datei *AzureDTExec.settings* schreiben zu können. Falls Sie SSMS nicht als Administrator ausgeführt haben, wird ein Fenster der Benutzerkontensteuerung (User Account Control, UAC) geöffnet. Geben Sie Ihr Administratorkennwort ein, um Ihre Berechtigungen zu erhöhen.
 
-![Konfigurieren der Einstellungen für das Azure-fähige dtexec](media/how-to-invoke-ssis-package-azure-enabled-dtexec/ssms-azure-enabled-dtexec-settings.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-azure-enabled-dtexec/ssms-azure-enabled-dtexec-settings.png" alt-text="Konfigurieren der Einstellungen für das Azure-fähige dtexec":::
 
 Geben Sie im Fenster **AzureDTExecConfig** Ihre Konfigurationseinstellungen ein:
 

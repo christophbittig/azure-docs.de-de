@@ -3,12 +3,12 @@ title: Bereitstellen von Ressourcen mit dem Azure-Portal
 description: Verwenden Sie das Azure-Portal und Azure Resource Manager zum Bereitstellen Ihrer Ressourcen in einer Ressourcengruppe in Ihrem Abonnement.
 ms.topic: conceptual
 ms.date: 05/05/2021
-ms.openlocfilehash: 718d8be4e51bf41467bea398440b24f98ac1f6e9
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 03b1cda06bf6865dda1b8d40096f6b76588d8184
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111957897"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124762187"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-portal"></a>Bereitstellen von Ressourcen mit ARM-Vorlagen und dem Azure-Portal
 
@@ -126,6 +126,5 @@ Wenn Sie eine Bereitstellung ausführen möchten, ohne eine der Vorlagen im Mark
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zum Anzeigen von Überwachungsprotokollen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](../management/view-activity-logs.md).
 - Informationen zum Beheben von Bereitstellungsfehlern finden Sie unter [Anzeigen von Bereitstellungsvorgängen](deployment-history.md).
 - Informationen zum Exportieren einer Vorlage aus einer Bereitstellung oder Ressourcengruppe finden Sie unter [Exportieren von ARM-Vorlagen](export-template-portal.md).

@@ -2,13 +2,13 @@
 title: Verwenden von Blob Storage als Prüfpunktspeicher in Azure Stack Hub
 description: In diesem Artikel wird beschrieben, wie Sie Blob Storage als Prüfpunktspeicher in Event Hubs unter Azure Stack Hub verwenden.
 ms.topic: how-to
-ms.date: 12/09/2020
-ms.openlocfilehash: b3abfca771835b05c654025e7c29c359346d2b5c
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 09/28/2021
+ms.openlocfilehash: e3d75d4cd85bbf4e1bc8fc6fd581d510c35b0cb4
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113003156"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129213513"
 ---
 # <a name="use-blob-storage-as-checkpoint-store---event-hubs-on-azure-stack-hub"></a>Verwenden von Blob Storage als Prüfpunktspeicher: Event Hubs unter Azure Stack Hub
 Wenn Sie Azure Blob Storage als Prüfpunktspeicher in einer Umgebung verwenden, die eine andere Version des Storage Blob SDK unterstützt als diejenigen, die in der Regel in Azure verfügbar sind, müssen Sie Code verwenden, um die Version der Speicherdienst-API in die von dieser Umgebung unterstützte Version zu ändern. Wenn Sie z. B. [Event Hubs mit einer Azure Stack Hub-Version 2002](/azure-stack/user/event-hubs-overview) ausführen, ist die höchste verfügbare Version für den Speicherdienst Version 2017-11-09. In diesem Fall müssen Sie Code verwenden, um Version 2017-11-09 der Storage Service-API als Ziel zu nutzen. Ein Beispiel für die Verwendung einer bestimmten Storage-API-Version als Ziel finden Sie in den folgenden Beispielen auf GitHub: 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/27/2019
-ms.openlocfilehash: 5eb0f353579233041bb5ccba46de2549ada7e9b7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d8091bd5e1bb95ff29d0be948a464f587a49f62f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104864787"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124819740"
 ---
 # <a name="tutorial-create-azure-hdinsight-clusters-with-azure-automation"></a>Tutorial: Erstellen von Azure HDInsight-Clustern mit Azure Automation
 
@@ -27,7 +27,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein [Azure Automation-Konto](../automation/automation-quickstart-create-account.md).
+* Ein [Azure Automation-Konto](../automation/quickstarts/create-account-portal.md).
 * Ein [Azure Storage-Konto](../storage/common/storage-account-create.md) als Clusterspeicher.
 
 ## <a name="install-hdinsight-modules"></a>Installieren der HDInsight-Module
@@ -62,8 +62,8 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
     | Kennwort | `SECURE_PASSWORD` |
     | Kennwort bestätigen | `SECURE_PASSWORD` |
 
-1. Klicken Sie auf **Erstellen**.
-1. Wiederholen Sie den gleichen Vorgang, um neue Anmeldeinformationen vom Typ `ssh-password` mit dem Benutzernamen `sshuser` und einem Kennwort Ihrer Wahl zu erstellen. Klicken Sie auf **Erstellen**. Diese Anmeldeinformationen dienen zum Speichern des SSH-Kennworts für Ihren Cluster.
+1. Wählen Sie **Erstellen** aus.
+1. Wiederholen Sie den gleichen Vorgang, um neue Anmeldeinformationen vom Typ `ssh-password` mit dem Benutzernamen `sshuser` und einem Kennwort Ihrer Wahl zu erstellen. Wählen Sie **Erstellen** aus. Diese Anmeldeinformationen dienen zum Speichern des SSH-Kennworts für Ihren Cluster.
 
     :::image type="content" source="./media/manage-clusters-runbooks/create-credentials.png" alt-text="Erstellen von Anmeldeinformationen" border="true":::
 
@@ -72,7 +72,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 1. Wählen Sie **Runbooks** unter Option **Prozessautomatisierung** aus.
 1. Wählen Sie **Runbook erstellen** aus.
 1. Geben Sie im Bereich **Runbook erstellen** einen Namen für das Runbook ein (beispielsweise `hdinsight-cluster-create`). Wählen Sie in der Dropdownliste **Runbooktyp** die Option **PowerShell** aus.
-1. Klicken Sie auf **Erstellen**.
+1. Wählen Sie **Erstellen** aus.
 
     :::image type="content" source="./media/manage-clusters-runbooks/create-runbook.png" alt-text="Erstellen eines Runbooks" border="true":::
 
@@ -128,7 +128,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 1. Wählen Sie **Runbooks** unter Option **Prozessautomatisierung** aus.
 1. Wählen Sie **Runbook erstellen** aus.
 1. Geben Sie im Bereich **Runbook erstellen** einen Namen für das Runbook ein (beispielsweise `hdinsight-cluster-delete`). Wählen Sie in der Dropdownliste **Runbooktyp** die Option **PowerShell** aus.
-1. Klicken Sie auf **Erstellen**.
+1. Wählen Sie **Erstellen** aus.
 1. Geben Sie im Bildschirm **PowerShell-Runbook bearbeiten** den folgenden Code ein, und wählen Sie **Veröffentlichen** aus:
 
     ```powershell

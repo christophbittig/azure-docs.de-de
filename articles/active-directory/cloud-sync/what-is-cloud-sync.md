@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/11/2020
+ms.date: 09/10/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f58eea2ecc994a0cb97cf8460029e4d87a5b7f74
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 76ebb7ecfb93de1943f9aa20619effd2804b4354
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108748923"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124771249"
 ---
 # <a name="what-is-azure-ad-connect-cloud-sync"></a>Worum handelt es sich bei der Azure AD Connect-Cloudsynchronisierung?
 Die Azure AD Connect-Cloudsynchronisierung ist ein neues Angebot von Microsoft, das entwickelt wurde, um Ihre Ziele in Bezug auf die Hybrididentität für die Synchronisierung von Benutzern, Gruppen und Kontakten mit Azure AD zu erreichen und die entsprechenden Anforderungen zu erfüllen.  Hierfür wird nicht die Azure AD Connect-Anwendung verwendet, sondern der Agent für die Azure AD-Cloudbereitstellung.  Die Azure AD Connect-Cloudbereitstellung kann aber zusammen mit der Azure AD Connect-Synchronisierung verwendet werden. Dies hat die folgenden Vorteile:
@@ -25,7 +25,6 @@ Die Azure AD Connect-Cloudsynchronisierung ist ein neues Angebot von Microsoft, 
 - Vereinfachte Installation mit einfachen Bereitstellungs-Agents: Die Agents fungieren als Brücke zwischen AD und Azure AD, wobei die gesamte Synchronisierungskonfiguration in der Cloud verwaltet wird. 
 - Es können mehrere Bereitstellungs-Agents verwendet werden, um Bereitstellungen mit hoher Verfügbarkeit zu vereinfachen, was insbesondere für Organisationen wichtig ist, die die Kennworthashsynchronisierung zwischen AD und Azure AD verwenden müssen.
 - Unterstützung für große Gruppen mit bis zu 50.000 Mitgliedern. Wir empfehlen Ihnen, beim Synchronisieren von großen Gruppen nur den Organisationseinheiten-Bereichsfilter zu verwenden.
-
 
 ![Was ist Azure AD Connect?](media/what-is-cloud-sync/architecture-1.png)
 

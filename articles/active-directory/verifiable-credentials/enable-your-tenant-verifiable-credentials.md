@@ -11,12 +11,12 @@ ms.subservice: verifiable-credentials
 ms.date: 06/24/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: 7b50e17a8c6730aedbc8fea68a2ab4d8685b2fa5
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: 9867825794c363b9df53849ad3fd1cb644492677
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114228976"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124816283"
 ---
 # <a name="tutorial---configure-azure-active-directory-to-issue-verifiable-credentials-preview"></a>Tutorial – Konfigurieren Sie Azure Active Directory so, dass es überprüfbare Anmeldedaten ausgibt (Vorschau)
 
@@ -249,7 +249,7 @@ Nun führen Sie den letzten Schritt zum Einrichten Ihres Mandanten für überpr�
 1. Richten Sie Ihre Organisation ein, indem Sie die folgenden Informationen bereitstellen:
 
       - **Organisationsname**: Geben Sie einen Namen ein, um in den überprüfbaren Anmeldeinformationen auf Ihr Unternehmen zu verweisen. Dieser Wert ist nicht kundenbasiert.
-      - **Domäne:** Geben Sie eine Domäne ein, die einem Dienstendpunkt in Ihrem DID-Dokument hinzugefügt wird. [Microsoft Authenticator](../user-help/user-help-auth-app-download-install.md) und andere Geldbörsen verwenden diese Informationen, um zu überprüfen, ob Ihre DID mit [Ihrer Domäne verknüpft](how-to-dnsbind.md)ist. Wenn das Wallet die DID überprüfen kann, wird ein verifiziertes Symbol angezeigt. Wenn das Wallet die DID nicht überprüfen kann, wird der Benutzer darüber informiert, dass die Anmeldeinformationen von einer Organisation ausgestellt wurden, die sie nicht überprüfen konnte. Die Domäne bindet Ihre DID an etwas Konkretes, das der Benutzer möglicherweise über Ihr Unternehmen kennt.
+      - **Domäne:** Geben Sie eine Domäne ein, die einem Dienstendpunkt in Ihrem DID-Dokument hinzugefügt wird. [Microsoft Authenticator](https://support.microsoft.com/account-billing/download-and-install-the-microsoft-authenticator-app-351498fc-850a-45da-b7b6-27e523b8702a) und andere Geldbörsen verwenden diese Informationen, um zu überprüfen, ob Ihre DID mit [Ihrer Domäne verknüpft](how-to-dnsbind.md)ist. Wenn das Wallet die DID überprüfen kann, wird ein verifiziertes Symbol angezeigt. Wenn das Wallet die DID nicht überprüfen kann, wird der Benutzer darüber informiert, dass die Anmeldeinformationen von einer Organisation ausgestellt wurden, die sie nicht überprüfen konnte. Die Domäne bindet Ihre DID an etwas Konkretes, das der Benutzer möglicherweise über Ihr Unternehmen kennt.
       - **Schlüsseltresor:** Geben Sie den Namen des Schlüsseltresors ein, den Sie zuvor erstellt haben.
 
    >[!IMPORTANT]

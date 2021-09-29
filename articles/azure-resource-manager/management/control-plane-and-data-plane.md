@@ -3,12 +3,12 @@ title: Vorgänge auf Steuerungsebene und auf Datenebene
 description: Beschreibt den Unterschied zwischen Vorgängen auf Steuerungsebene und auf Datenebene. Vorgänge auf Steuerungsebene werden von Azure Resource Manager verarbeitet. Vorgänge auf Datenebene werden von einem Dienst verarbeitet.
 ms.topic: conceptual
 ms.date: 09/10/2020
-ms.openlocfilehash: 40bb3291e4eec589c88bcd6ffd0f94a718ce8d1f
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 0e1dbf525266fdcf7ca34a449cc51169dda027d5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108132087"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755974"
 ---
 # <a name="azure-control-plane-and-data-plane"></a>Azure-Steuerungsebene und -Datenebene
 
@@ -44,7 +44,7 @@ Azure Resource Manager verarbeitet alle Anforderungen der Steuerungsebene. Die A
 * [Rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](../../role-based-access-control/overview.md)
 * [Azure Policy](../../governance/policy/overview.md)
 * [Verwaltungssperren](lock-resources.md)
-* [Aktivitätsprotokolle](view-activity-logs.md)
+* [Aktivitätsprotokolle](../../azure-monitor/essentials/activity-log.md)
 
 Nachdem die Anforderung authentifiziert wurde, sendet Azure Resource Manager sie an den Ressourcenanbieter, der den Vorgang abschließt.
 

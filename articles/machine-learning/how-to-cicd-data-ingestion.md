@@ -12,12 +12,12 @@ author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 34aa94ea7bef56ecc2e01b792a0f5e8b417804fa
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: fc843d45bbdbcc8ac7de7135eb3534cc606409bd
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107890184"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129212511"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>DevOps für eine Datenerfassungspipeline
 
@@ -122,7 +122,7 @@ Der CI-Prozess für eine Azure Data Factory-Pipeline ist ein Engpass für eine D
 1. Ein Benutzer mit den gewährten Berechtigungen klickt auf die Schaltfläche ***Veröffentlichen***, um Azure Resource Manager-Vorlagen aus dem Quellcode im Zusammenarbeitsbranch zu generieren. 
 1. Der Arbeitsbereich überprüft die Pipelines (etwa Linting und Komponententests), generiert Azure Resource Manager-Vorlagen (ähnlich einem Buildvorgang) und speichert die generierten Vorlagen in einem technischen Branch ***adf_publish*** im gleichen Coderepository (gleicht der Veröffentlichung von Artefakten). Dieser Branch wird automatisch vom Azure Data Factory-Arbeitsbereich erstellt. 
 
-Weitere Informationen zu diesem Prozess finden Sie unter [Continuous Integration und Continuous Delivery in Azure Data Factory](../data-factory/continuous-integration-deployment.md).
+Weitere Informationen zu diesem Prozess finden Sie unter [Continuous Integration und Continuous Delivery in Azure Data Factory](../data-factory/continuous-integration-delivery.md).
 
 Es ist wichtig sicherzustellen, dass die generierten Azure Resource Manager-Vorlagen umgebungsagnostisch sind. Dies bedeutet, dass alle Werte, die sich zwischen Umgebungen unterscheiden können, parametrisiert werden. Azure Data Factory ist intelligent genug, um die Mehrzahl dieser Werte als Parameter bereitzustellen. In der folgenden Vorlage werden z. B. die Verbindungseigenschaften für einen Azure Machine Learning-Arbeitsbereich als Parameter zur Verfügung gestellt:
 
@@ -174,7 +174,7 @@ Die Pipelineaktivitäten können auf die Pipelinevariablen verweisen, während s
 
 ![Der Screenshot zeigt oben ein Notebook mit dem Namen PrepareData und eine ML- Ausführungspipeline mit dem Namen „M L Execute Pipeline“, wobei die Registerkarte „Einstellungen“ unten ausgewählt ist.](media/how-to-cicd-data-ingestion/adf-notebook-parameters.png)
 
-Der Azure Data Factory-Arbeitsbereich stellt Pipelinevariablen ***nicht*** standardmäßig als Azure Resource Manager-Vorlagenparameter bereit. Der Arbeitsbereich verwendet die [Standardparameterisierungsvorlage](../data-factory/continuous-integration-deployment.md#default-parameterization-template), die vorgibt, welche Pipelineeigenschaften als Azure Resource Manager-Vorlagenparameter verfügbar gemacht werden sollen. Um der Liste Pipelinevariablen hinzuzufügen, aktualisieren Sie den Abschnitt `"Microsoft.DataFactory/factories/pipelines"` der [Standardparameterisierungsvorlage](../data-factory/continuous-integration-deployment.md#default-parameterization-template) mit dem folgenden Codeausschnitt, und platzieren Sie die JSON-Ergebnisdatei im Stammverzeichnis des Quellordners:
+Der Azure Data Factory-Arbeitsbereich stellt Pipelinevariablen ***nicht*** standardmäßig als Azure Resource Manager-Vorlagenparameter bereit. Der Arbeitsbereich verwendet die [Standardparameterisierungsvorlage](../data-factory/continuous-integration-delivery-resource-manager-custom-parameters.md), die vorgibt, welche Pipelineeigenschaften als Azure Resource Manager-Vorlagenparameter verfügbar gemacht werden sollen. Um der Liste Pipelinevariablen hinzuzufügen, aktualisieren Sie den Abschnitt `"Microsoft.DataFactory/factories/pipelines"` der [Standardparameterisierungsvorlage](../data-factory/continuous-integration-delivery-resource-manager-custom-parameters.md) mit dem folgenden Codeausschnitt, und platzieren Sie die JSON-Ergebnisdatei im Stammverzeichnis des Quellordners:
 
 ```json
 "Microsoft.DataFactory/factories/pipelines": {
@@ -481,5 +481,5 @@ stages:
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Quellcodeverwaltung in Azure Data Factory](../data-factory/source-control.md)
-* [Continuous Integration und Continuous Delivery in Azure Data Factory](../data-factory/continuous-integration-deployment.md)
+* [Continuous Integration und Continuous Delivery in Azure Data Factory](../data-factory/continuous-integration-delivery.md)
 * [Connectors für Azure Databricks](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks)

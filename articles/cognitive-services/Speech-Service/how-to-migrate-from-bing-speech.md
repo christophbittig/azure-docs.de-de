@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.author: lajanuar
-ms.openlocfilehash: fc08bea2700e1b9abaed6c4b8ce29b0ce10f8956
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 9e3408ef27f4ee31f3308754cf5a0352b22c375b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340535"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124828783"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Migrieren von der Bing-Spracheingabe zum Speech-Dienst
 
@@ -29,7 +29,7 @@ Mit einem einzelnen Abonnementschlüssel für den Speech-Dienst wird Zugriff auf
 * [Benutzerdefinierte Spracherkennung](./custom-speech-overview.md)
 * [Sprachsynthese](text-to-speech.md)
 * [Benutzerdefinierte Stimmen für Sprachsynthese](./how-to-custom-voice-create-voice.md)
-* [Sprachübersetzung](speech-translation.md) (ohne [Textübersetzung](../translator/translator-info-overview.md))
+* [Sprachübersetzung](speech-translation.md) (ohne [Textübersetzung](../translator/translator-overview.md))
 
 Das [Sprach-SDK](speech-sdk.md) ist ein funktionaler Ersatz für die Clientbibliotheken der Bing-Spracheingabe. Es verwendet aber eine andere API.
 

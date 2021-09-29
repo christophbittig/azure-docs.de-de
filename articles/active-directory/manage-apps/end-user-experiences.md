@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: davidmu
 ms.reviewer: lenalepa
-ms.openlocfilehash: 5cf4fe927d7079d866e90a789bb210730a6c4867
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a63cf628baf2f0f707f018da60f16d7bfc71e37c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346634"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823055"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Endbenutzerumgebungen für Anwendungen in Azure Active Directory
 
@@ -37,7 +37,7 @@ Standardmäßig werden alle Anwendungen auf einer einzelnen Seite aufgelistet. S
 
 „Meine Apps“ ist unabhängig vom Azure-Portal und setzt nicht voraus, dass Benutzer über ein Azure- oder Microsoft 365-Abonnement verfügen.
 
-Weitere Informationen zu „Meine Apps“ in Azure AD finden Sie in der [Einführung in „Meine Apps“](../user-help/my-apps-portal-end-user-access.md).
+Weitere Informationen zu „Meine Apps“ in Azure AD finden Sie in der [Einführung in „Meine Apps“](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="microsoft-365-application-launcher"></a>Microsoft 365-Anwendungsstartprogramm
 

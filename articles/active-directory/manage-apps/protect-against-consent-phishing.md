@@ -12,12 +12,12 @@ ms.date: 08/09/2021
 ms.custom: template-concept
 ms.author: cchiedo
 ms.reviewer: tilarso
-ms.openlocfilehash: 7f9f5a49a46c4f73dce65f23e8ace278f02fe941
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 6d2a6afe4555bc9324241616ae6c22494216a146
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123114792"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124791439"
 ---
 # <a name="protecting-against-consent-phishing"></a>Schutz vor Einwilligungsphishing
 
@@ -48,7 +48,7 @@ Wenn Ihre Organisation von einer durch Microsoft deaktivierten Anwendung betroff
 1. Untersuchen Sie die Anwendungsaktivitäten der deaktivierten Anwendung, einschließlich:
     - Die von der Anwendung angeforderten delegierten Berechtigungen oder Anwendungsberechtigungen
     - Die Azure AD-Überwachungsprotokolle für Aktivitäten durch die Anwendung und die Anmeldeaktivität für Benutzer, die zur Verwendung der Anwendung autorisiert sind
-1. Lesen Sie den [Leitfaden zum Schutz vor unzulässigen Einwilligungen](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants?view=o365-worldwide&preserve-view=true), und implementieren Sie ihn in Microsoft-Cloudprodukten, einschließlich der Überwachung von Berechtigungen und Einwilligungen für die deaktivierte Anwendung oder andere verdächtige Apps, die während der Überprüfung gefunden wurden.
+1. Lesen Sie den [Leitfaden zum Schutz vor unzulässigen Einwilligungen](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants), und implementieren Sie ihn in Microsoft-Cloudprodukten, einschließlich der Überwachung von Berechtigungen und Einwilligungen für die deaktivierte Anwendung oder andere verdächtige Apps, die während der Überprüfung gefunden wurden.
 1. Implementieren Sie die unten beschriebenen bewährten Methoden für die Härtung gegen Einwilligungsphishing.
 
 
@@ -59,20 +59,20 @@ Microsoft möchte Administratoren volle Kontrolle über die richtigen Erkenntnis
 * Informieren Sie Ihre Organisation darüber, wie unser Framework aus Berechtigungen und Einwilligungen funktioniert.
     - Machen Sie sich mit den Daten und Berechtigungen vertraut, nach denen eine Anwendung fragt. Informieren Sie sich außerdem darüber, wie  [Berechtigungen und Einwilligungen](../develop/v2-permissions-and-consent.md) auf unserer Plattform funktionieren.
     - Stellen Sie sicher, dass Administratoren wissen, wie  [Einwilligungsanforderungen verwaltet und ausgewertet werden](./manage-consent-requests.md).
-    - [Überprüfen Sie Apps und zugelassene Berechtigungen](/azure/security/fundamentals/steps-secure-identity#audit-apps-and-consented-permissions) in Ihrer Organisation regelmäßig, um sicherzustellen, dass die verwendeten Anwendungen nur auf die benötigten Daten zugreifen und das Prinzip der geringsten Rechte einhalten.
+    - [Überprüfen Sie Apps und zugelassene Berechtigungen](../../security/fundamentals/steps-secure-identity.md#audit-apps-and-consented-permissions) in Ihrer Organisation regelmäßig, um sicherzustellen, dass die verwendeten Anwendungen nur auf die benötigten Daten zugreifen und das Prinzip der geringsten Rechte einhalten.
 * Erkennen und Blockieren gängiger Taktiken beim Einwilligungsphishing
     - Prüfen Sie auf schlechte Rechtschreibung und Grammatik. Wenn eine E-Mail oder der Einwilligungsbildschirm der Anwendung Fehler hinsichtlich Rechtschreibung und Grammatik aufweist, handelt es sich wahrscheinlich um eine verdächtige Anwendung. In diesem Fall können Sie dies direkt mit dem Link *Hier melden* auf der [Einwilligungsaufforderung](../develop/application-consent-experience.md#building-blocks-of-the-consent-prompt) melden. Microsoft untersucht dann, ob es sich um eine böswillige Anwendung handelt, und deaktiviert sie, wenn sich der Verdacht bestätigt.
     - Verlassen Sie sich nicht auf App-Namen und Domänen-URLs als Quelle für die Authentizität. Angreifer fälschen gerne App-Namen und Domänen, damit sie den Anschein erwecken, dass sie von legitimen Dienstanbietern oder Unternehmen stammen, und die Einwilligung für die böswillige App fördern. Überprüfen Sie stattdessen die Quelle der Domänen-URL, und verwenden Sie nach Möglichkeit Anwendungen von [verifizierten Herausgebern](../develop/publisher-verification-overview.md).
-    - Blockieren Sie [Phishing-E-Mails zur Einwilligung mit Microsoft Defender für Office 365](/microsoft-365/security/office-365-security/set-up-anti-phishing-policies?view=o365-worldwide&preserve-view=true#impersonation-settings-in-anti-phishing-policies-in-microsoft-defender-for-office-365), indem Sie sich vor Phishingkampagnen schützen, bei denen ein Angreifer die Identität eines bekannten Benutzers in Ihrer Organisation annimmt.
+    - Blockieren Sie [Phishing-E-Mails zur Einwilligung mit Microsoft Defender für Office 365](/microsoft-365/security/office-365-security/set-up-anti-phishing-policies#impersonation-settings-in-anti-phishing-policies-in-microsoft-defender-for-office-365), indem Sie sich vor Phishingkampagnen schützen, bei denen ein Angreifer die Identität eines bekannten Benutzers in Ihrer Organisation annimmt.
     - Konfigurieren Sie Sicherheitsrichtlinien für Microsoft-Cloud-Apps, wie  [Aktivitätsrichtlinien](/cloud-app-security/user-activity-policies),  [Anomalieerkennung](/cloud-app-security/anomaly-detection-policy) und [OAuth-App-Richtlinien](/cloud-app-security/app-permission-policy), um ungewöhnliche Anwendungsaktivitäten in Ihrer Organisation zu verwalten und Maßnahmen zu ergreifen.
-    - Untersuchen Sie Angriffen zum Einwilligungsphishing, und suchen Sie speziell danach. Nutzen Sie dazu den Leitfaden zum [erweiterten Hunting mit Microsoft 365 Defender](/microsoft-365/security/defender/advanced-hunting-overview?view=o365-worldwide&preserve-view=true).
+    - Untersuchen Sie Angriffen zum Einwilligungsphishing, und suchen Sie speziell danach. Nutzen Sie dazu den Leitfaden zum [erweiterten Hunting mit Microsoft 365 Defender](/microsoft-365/security/defender/advanced-hunting-overview).
 * Lassen Sie den Zugriff auf vertrauenswürdige Apps zu, und schützen Sie sich vor Apps, denen Sie nicht vertrauen.
     - Verwenden Sie Anwendungen, die vom Herausgeber überprüft wurden. Die [Herausgeberüberprüfung](../develop/publisher-verification-overview.md) unterstützt Administratoren und Endbenutzer durch einen von Microsoft unterstützten Überprüfungsvorgang dabei, die Authentizität von Anwendungsentwicklern zu verstehen.
     - [Konfigurieren Sie Richtlinien für die Benutzereinwilligung](./configure-user-consent.md?tabs=azure-portal), um Benutzern nur bei bestimmten Anwendungen, denen Sie vertrauen (z. B. Anwendungen, die von Ihrer Organisation oder von verifizierten Herausgebern entwickelt wurden), die Einwilligung zu gestatten.
-    - Erstellen Sie proaktive [App-Governancerichtlinien](/microsoft-365/compliance/app-governance-manage-app-governance?view=o365-worldwide&preserve-view=true), um das Verhalten von Drittanbieter-Apps auf der Microsoft 365-Plattform zu überwachen und allgemeine verdächtige App-Verhaltensweisen zu erkennen.
+    - Erstellen Sie proaktive [App-Governancerichtlinien](/microsoft-365/compliance/app-governance-manage-app-governance), um das Verhalten von Drittanbieter-Apps auf der Microsoft 365-Plattform zu überwachen und allgemeine verdächtige App-Verhaltensweisen zu erkennen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Untersuchung der Zuweisung der App-Einwilligung](/security/compass/incident-response-playbook-app-consent)
 * [Verwalten des Zugriffs auf Apps](./what-is-access-management.md)
-* [Einschränken von Benutzereinwilligungsvorgängen in Azure AD](/azure/security/fundamentals/steps-secure-identity#restrict-user-consent-operations)
+* [Einschränken von Benutzereinwilligungsvorgängen in Azure AD](../../security/fundamentals/steps-secure-identity.md#restrict-user-consent-operations)

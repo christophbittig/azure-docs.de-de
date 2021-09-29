@@ -3,16 +3,16 @@ title: Erstellen einer Service Bus-Warteschlange mithilfe des Azure-Portals
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie mit dem Azure-Portal einen Service Bus-Namespace und darin eine Warteschlange erstellen.
 author: spelluru
 ms.author: spelluru
-ms.date: 08/12/2020
+ms.date: 09/10/2021
 ms.topic: quickstart
 ms.custom:
 - mode-portal
-ms.openlocfilehash: a52142737146299f78f5e3581830121726cedc05
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: 6bfbe4f3a90c5cc62e56da9c1acb845365664b3b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112416093"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "128664927"
 ---
 # <a name="use-azure-portal-to-create-a-service-bus-namespace-and-a-queue"></a>Verwenden des Azure-Portals zum Erstellen eines Service Bus-Namespace und einer Warteschlange
 In dieser Schnellstartanleitung wird veranschaulicht, wie Sie mit dem [Azure-Portal][Azure portal] einen Service Bus-Namespace und eine Warteschlange erstellen. Darüber hinaus wird beschrieben, wie Sie Anmeldeinformationen für die Autorisierung abrufen, die von einer Clientanwendung zum Senden bzw. Empfangen von Nachrichten für eine Warteschlange genutzt werden können. 

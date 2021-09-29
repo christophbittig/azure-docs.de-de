@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 95e84bbe917a6b1e30ecb9dcf41f1f5e00576c82
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 075bcffd7cb2beb3e64b54536934953c49df9b76
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110469209"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124813597"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ebsco"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit EBSCO
 
@@ -161,7 +161,7 @@ Azure AD übermittelt die erforderlichen Daten an die EBSCO-Anwendung. Die Benut
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mithilfe von „Meine Apps“.
 
 1. Wenn Sie in „Meine Apps“ auf die Kachel „EBSCO“ klicken, sollten Sie automatisch bei Ihrer EBSCO-Anwendung angemeldet werden.
-Weitere Informationen zu „Meine Apps“ finden Sie unter [Einführung in „Meine Apps“](../user-help/my-apps-portal-end-user-access.md).
+Weitere Informationen zu „Meine Apps“ finden Sie unter [Einführung in „Meine Apps“](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 1. Klicken Sie nach der Anmeldung bei der Anwendung in der rechten oberen Ecke auf die Schaltfläche **Anmelden**.
 

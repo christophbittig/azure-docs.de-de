@@ -2,13 +2,13 @@
 title: Agent-basierte Empfehlungen
 description: Lernen Sie das Konzept der Sicherheitsempfehlungen kennen, und erfahren Sie, wie sie in Defender für IoT-Geräte verwendet werden.
 ms.topic: conceptual
-ms.date: 02/16/2021
-ms.openlocfilehash: a29957f459edad8b768daea7bc4567d77c80b165
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 09/26/2021
+ms.openlocfilehash: 41a983f1c5d4e647d83751ea00e444f34e608559
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113016177"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129083104"
 ---
 # <a name="security-recommendations-for-iot-devices"></a>Sicherheitsempfehlungen für IoT-Geräte
 

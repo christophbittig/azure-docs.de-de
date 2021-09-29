@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: cffd8e0347f501e82ca6e62d5c120b232869cbc0
-ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+ms.openlocfilehash: 187db7eefb019584835bd7f67fdb8d6abd91f45c
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114653319"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129083902"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Kennenlernen der Benutzeroberfläche von Azure IoT Central
 
@@ -84,7 +84,7 @@ Das obere Menü wird auf jeder Seite angezeigt:
 
 * Wenn Sie nach Geräten suchen möchten, geben Sie einen Wert für die **Suche** ein.
 * Wählen Sie zum Ändern der Sprache der Benutzeroberfläche oder des Designs das Symbol **Einstellungen** aus. Informieren Sie sich über das [Verwalten Ihrer Anwendungseinstellungen](howto-manage-preferences.md).
-* Wenn Sie Hilfe oder Unterstützung benötigen, klicken Sie auf das Dropdownmenü **Hilfe**, um eine Liste mit Ressourcen anzuzeigen. Sie können [Informationen zu Ihrer Anwendung](howto-faq.yml#how-do-i-get-information-about-my-application-) über den Link **Informationen zu Ihrer App** abrufen. Bei einer Anwendung im Tarif „Free“ beinhalten die Supportressourcen Zugriff auf den [Livechat](howto-show-hide-chat.md).
+* Wenn Sie Hilfe oder Unterstützung benötigen, klicken Sie auf das Dropdownmenü **Hilfe**, um eine Liste mit Ressourcen anzuzeigen. Sie können [Informationen zu Ihrer Anwendung](howto-faq.yml#how-do-i-get-information-about-my-application-) über den Link **Informationen zu Ihrer App** abrufen.
 * Wählen Sie das Symbol **Konto** aus, um sich von der Anwendung abzumelden.
 
 Sie können zwischen einem hellen und einem dunklen Benutzeroberflächendesign wählen:

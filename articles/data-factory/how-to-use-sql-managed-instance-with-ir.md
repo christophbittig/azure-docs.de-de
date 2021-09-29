@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: 18f73a379c32bf80893e00ff0e95cb9edf905724
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 070c9ff8cbca98272be6aa0cf48a97381f4ff6b4
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122607759"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216610"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Verwenden von verwalteten Azure SQL-Instanzen mit SQL Server Integration Services (SSIS) in Azure Data Factory
 
@@ -133,15 +133,15 @@ Sie können Ihre SQL Server Integration Services-Projekte, -Pakete und -Workload
 
 1. Wählen Sie einen privaten oder öffentlichen Endpunkt für SQL Managed Instance aus.
 
-    Beim [Bereitstellen einer Azure-SSIS IR](create-azure-ssis-integration-runtime.md#provision-an-azure-ssis-integration-runtime) im Azure-Portal oder der ADF-App müssen Sie, wenn Sie den SSIS-Katalog (SSISDB) erstellen, auf der Seite mit den SQL-Einstellungen für SQL Managed Instance einen **privaten Endpunkt** oder einen **öffentlichen Endpunkt** verwenden.
+    Beim [Bereitstellen einer Azure-SSIS IR](create-azure-ssis-integration-runtime-portal.md#provision-an-azure-ssis-integration-runtime) im Azure-Portal oder der ADF-App müssen Sie, wenn Sie den SSIS-Katalog (SSISDB) erstellen, auf der Seite mit den SQL-Einstellungen für SQL Managed Instance einen **privaten Endpunkt** oder einen **öffentlichen Endpunkt** verwenden.
 
     Der Hostname des öffentlichen Endpunkts weist das Format „<mi_name>.public.<dns_zone>.database.windows.net“ auf, und für die Verbindung wird Port 3342 verwendet.  
 
-    ![Screenshot der Integration Runtime-Einrichtung mit aktivierter Option „SSIS-Katalog erstellen“ und eingegebenem Datenbankserver-Endpunkt für den Katalog](./media/how-to-use-sql-managed-instance-with-ir/catalog-public-endpoint.png)
+    :::image type="content" source="./media/how-to-use-sql-managed-instance-with-ir/catalog-public-endpoint.png" alt-text="Screenshot der Integration Runtime-Einrichtung mit aktivierter Option „SSIS-Katalog erstellen“ und eingegebenem Datenbankserver-Endpunkt für den Katalog":::
 
 1. Wählen Sie ggf. die Azure AD-Authentifizierung aus.
 
-    ![catalog-public-endpoint](./media/how-to-use-sql-managed-instance-with-ir/catalog-aad.png)
+    :::image type="content" source="./media/how-to-use-sql-managed-instance-with-ir/catalog-aad.png" alt-text="catalog-public-endpoint":::
 
     Weitere Informationen zum Aktivieren der Azure AD-Authentifizierung finden Sie unter [Aktivieren von Azure AD in der verwalteten Azure SQL-Instanz](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance).
 
@@ -153,9 +153,9 @@ Sie können Ihre SQL Server Integration Services-Projekte, -Pakete und -Workload
 
     Weitere Informationen zum Verknüpfen einer Azure-SSIS IR mit einem virtuellen Netzwerk finden Sie unter [Aufnehmen einer Azure-SSIS Integration Runtime in ein virtuelles Netzwerk](join-azure-ssis-integration-runtime-virtual-network.md).
 
-    ![Screenshot der erweiterten Einstellungen für die Integration Runtime-Einrichtung zur Auswahl eines virtuellen Netzwerks für den Beitritt Ihrer Runtime](./media/how-to-use-sql-managed-instance-with-ir/join-virtual-network.png)
+    :::image type="content" source="./media/how-to-use-sql-managed-instance-with-ir/join-virtual-network.png" alt-text="Screenshot der erweiterten Einstellungen für die Integration Runtime-Einrichtung zur Auswahl eines virtuellen Netzwerks für den Beitritt Ihrer Runtime":::
 
-Weitere Informationen zum Erstellen einer Azure-SSIS IR finden Sie im Artikel [Erstellen der Azure-SSIS Integration Runtime in Azure Data Factory](create-azure-ssis-integration-runtime.md#provision-an-azure-ssis-integration-runtime).
+Weitere Informationen zum Erstellen einer Azure-SSIS IR finden Sie im Artikel [Erstellen der Azure-SSIS Integration Runtime in Azure Data Factory](create-azure-ssis-integration-runtime-portal.md#provision-an-azure-ssis-integration-runtime).
 
 ## <a name="clean-up-ssisdb-logs"></a>Bereinigen der SSISDB-Protokolle
 

@@ -13,16 +13,16 @@ ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
-ms.date: 01/12/2021
+ms.date: 08/27/2021
 ms.author: matthewp
 ms.reviewer: jowargo
 ms.lastreviewed: 08/01/2019
-ms.openlocfilehash: c97da77619a395a8e2839ea672fe7a78f0501c47
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: 9fcb5ef3e1759188f8ce18e645de8344d37c0e06
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107575835"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128638746"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinandroid-apps-using-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an Xamarin.Android-Apps mit Notification Hubs
 
@@ -188,7 +188,7 @@ Der Notification Hub ist für die Arbeit mit FCM konfiguriert, und Sie besitzen 
     public class AzureListener : Java.Lang.Object, INotificationListener
     ```
 
-12. Fügen Sie den folgenden Code in der `MyFirebaseMessagingService`-Klasse hinzu, um die empfangenen Nachrichten zu verarbeiten.
+12. Fügen Sie den folgenden Code in der `AzureListener`-Klasse hinzu, um die empfangenen Nachrichten zu verarbeiten.
 
     ```csharp
         public void OnPushNotificationReceived(Context context, INotificationMessage message)

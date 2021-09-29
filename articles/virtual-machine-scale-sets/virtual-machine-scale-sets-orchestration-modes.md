@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.date: 08/05/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex, devx-track-azurepowershell
-ms.openlocfilehash: 7983ae912d29f2a27d35b261d1654205fe503651
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: be8c322bafb5dfaf3fadecfadfd5f9b1ec9a95f1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123305068"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124804095"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>Vorschau: Orchestrierungsmodi für VM-Skalierungsgruppen in Azure
 
@@ -164,7 +164,6 @@ Registrieren Sie den [flexiblen Orchestrierungsmodus](..\virtual-machines\flexib
     | Funktion  | Von flexibler Orchestrierung unterstützt (Vorschau)  | Von einheitlicher Orchestrierung unterstützt (allgemeine Verfügbarkeit)  | Von Verfügbarkeitsgruppen unterstützt (allgemeine Verfügbarkeit)  |
     |-|-|-|-|
     | Maximale Anzahl von Instanzen (mit Verfügbarkeitsgarantie für die Fehlerdomänen)  | 1000  | 3000  | 200  |
-
 
 ## <a name="troubleshoot-scale-sets-with-flexible-orchestration"></a>Problembehandlung für Skalierungsgruppen mit flexibler Orchestrierung
 Ermitteln Sie die richtige Lösung für Ihr Problembehandlungsszenario.

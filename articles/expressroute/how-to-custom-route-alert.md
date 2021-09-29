@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: f9dcea1c9f25772d45e6d01e1a6b17635df9cf48
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 90ce78bfab0cacbaea871402394fe8963775844c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108287516"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824683"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Konfigurieren benutzerdefinierter Warnungen zum Überwachen angekündigter Routen
 
@@ -64,7 +64,7 @@ Zum Erstellen eines Automation-Kontos sind Rechte und Berechtigungen erforderlic
 
 ### <a name="1-create-an-automation-account"></a><a name="about"></a>1. Erstellen eines Automation-Kontos
 
-Erstellen Sie ein Automation-Konto mit Berechtigungen für ausführende Konten. Eine Anleitung hierzu finden Sie unter [Erstellen eines Azure Automation-Kontos](../automation/automation-quickstart-create-account.md).
+Erstellen Sie ein Automation-Konto mit Berechtigungen für ausführende Konten. Eine Anleitung hierzu finden Sie unter [Erstellen eines Azure Automation-Kontos](../automation/quickstarts/create-account-portal.md).
 
 :::image type="content" source="./media/custom-route-alert-portal/create-account.png" alt-text="Hinzufügen eines Automation-Kontos" lightbox="./media/custom-route-alert-portal/create-account-expand.png":::
 

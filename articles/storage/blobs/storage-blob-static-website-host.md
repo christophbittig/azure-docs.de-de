@@ -8,30 +8,30 @@ ms.topic: tutorial
 ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 15c0cf0b24fef36902806656a2e47a7fda7bb52c
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: f222475560c282e7eb63c55a3f827f8f8e48c8ce
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123471064"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128549469"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
 # <a name="tutorial-host-a-static-website-on-blob-storage"></a>Tutorial: Hosten einer statischen Website in Blob Storage
 
-In diesem Tutorial wird beschrieben, wie Sie eine statische Website erstellen und in Azure Storage bereitstellen. Nach Abschluss des Vorgangs verfügen Sie über eine statische Website, auf die Benutzer öffentlich zugreifen können. 
+In diesem Tutorial wird beschrieben, wie Sie eine statische Website erstellen und in Azure Storage bereitstellen. Nach Abschluss des Vorgangs verfügen Sie über eine statische Website, auf die Benutzer öffentlich zugreifen können.
 
 In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 
 > [!div class="checklist"]
-> * Konfigurieren des Hostens von statischen Websites
-> * Bereitstellen einer Hello World-Website
+> - Konfigurieren des Hostens von statischen Websites
+> - Bereitstellen einer Hello World-Website
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-> [!NOTE] 
+> [!NOTE]
 > Statische Websites sind jetzt für Speicherkonten vom Typ „Universell V2 Standard“ sowie Speicherkonten mit aktiviertem hierarchischen Namespace verfügbar.
 
 In diesem Tutorial wird [Visual Studio Code](https://code.visualstudio.com/download) verwendet. Hierbei handelt es sich um ein kostenloses Tool für Programmierer, mit dem die statische Website erstellt und in einem Azure Storage-Konto bereitgestellt werden kann.
@@ -49,15 +49,15 @@ Melden Sie sich zunächst beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="configure-static-website-hosting"></a>Konfigurieren des Hostens von statischen Websites
 
-Im ersten Schritt wird Ihr Speicherkonto für das Hosten einer statischen Website im Azure-Portal konfiguriert. Wenn Sie Ihr Konto für das Hosten von statischen Websites konfigurieren, erstellt Azure Storage automatisch einen Container mit dem Namen *$web*. Der Container *$web* enthält die Dateien für Ihre statische Website. 
+Im ersten Schritt wird Ihr Speicherkonto für das Hosten einer statischen Website im Azure-Portal konfiguriert. Wenn Sie Ihr Konto für das Hosten von statischen Websites konfigurieren, erstellt Azure Storage automatisch einen Container mit dem Namen *$web*. Der Container *$web* enthält die Dateien für Ihre statische Website.
 
-1. Wechseln Sie in Ihrem Webbrowser zum [Azure-Portal](https://portal.azure.com/). 
+1. Wechseln Sie in Ihrem Webbrowser zum [Azure-Portal](https://portal.azure.com/).
 1. Suchen Sie nach Ihrem Speicherkonto, und zeigen Sie die Kontoübersicht an.
 1. Wählen Sie die Option **Statische Website**, um die Konfigurationsseite für statische Websites anzuzeigen.
 1. Wählen Sie **Aktiviert**, um das Hosten von statischen Websites für das Speicherkonto zu aktivieren.
-1. Geben Sie im Feld **Name des Indexdokuments** die Standardindexseite *index.html* an. Die Standardindexseite wird angezeigt, wenn ein Benutzer zum Stammverzeichnis Ihrer statischen Website navigiert.  
+1. Geben Sie im Feld **Name des Indexdokuments** die Standardindexseite *index.html* an. Die Standardindexseite wird angezeigt, wenn ein Benutzer zum Stammverzeichnis Ihrer statischen Website navigiert.
 1. Geben Sie im Feld **Pfad zum Fehlerdokument** die Standardfehlerseite *404.html* an. Die Standardfehlerseite wird angezeigt, wenn ein Benutzer versucht, zu einer Seite zu navigieren, die auf Ihrer statischen Website nicht vorhanden ist.
-1. Klicken Sie auf **Speichern**. Im Azure-Portal wird jetzt der Endpunkt Ihrer statischen Website angezeigt. 
+1. Klicken Sie auf **Speichern**. Im Azure-Portal wird jetzt der Endpunkt Ihrer statischen Website angezeigt.
 
     ![Aktivieren des Hostens von statischen Websites für ein Speicherkonto](media/storage-blob-static-website-host/enable-static-website-hosting.png)
 
@@ -65,7 +65,7 @@ Im ersten Schritt wird Ihr Speicherkonto für das Hosten einer statischen Websit
 
 Erstellen Sie als Nächstes eine Hello World-Webseite mit Visual Studio Code, und stellen Sie sie für die statische Website bereit, die in Ihrem Azure Storage-Konto gehostet wird.
 
-1. Erstellen Sie in Ihrem lokalen Dateisystem einen leeren Ordner mit dem Namen *mywebsite*. 
+1. Erstellen Sie in Ihrem lokalen Dateisystem einen leeren Ordner mit dem Namen *mywebsite*.
 1. Starten Sie Visual Studio Code, und öffnen Sie im Bereich **Explorer** den gerade erstellten Ordner.
 
     ![Öffnen des Ordners in Visual Studio Code](media/storage-blob-static-website-host/open-folder-vs-code.png)
@@ -107,11 +107,11 @@ Sie haben das Tutorial erfolgreich abgeschlossen und eine statische Website in A
 
 ## <a name="feature-support"></a>Featureunterstützung
 
-In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf den Support hat. 
+In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf den Support hat.
 
-| Speicherkontotyp                | Blob Storage (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| Speicherkontotyp                | Blob Storage (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) |![Ja](../media/icons/yes-icon.png)              | ![Ja](../media/icons/yes-icon.png) | 
+| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) |![Ja](../media/icons/yes-icon.png)              | ![Ja](../media/icons/yes-icon.png) |
 | Premium-Blockblobs          | ![Ja](../media/icons/yes-icon.png) |![Ja](../media/icons/yes-icon.png)              | ![Ja](../media/icons/yes-icon.png) |
 
 <sup>1</sup>    Für Data Lake Storage Gen2 und das NFS 3.0-Protokoll (Network File System) ist ein Speicherkonto mit aktiviertem hierarchischem Namespace erforderlich.

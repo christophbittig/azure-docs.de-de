@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: memildin
-ms.openlocfilehash: f2014d2ecea91ae650ec1fb1d730ee9b64c66c98
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: ad4d401072bc96784b45c0f5fd43d08f3de8ade0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122343191"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823823"
 ---
 # <a name="stream-alerts-to-a-siem-soar-or-it-service-management-solution"></a>Streamen von Warnungen in eine SIEM-, SOAR- oder IT Service Management-Lösung
 
@@ -56,7 +56,7 @@ Weitere Informationen finden Sie unter [Verbinden von Azure Defender-Benachricht
 Eine weitere Alternative zum Untersuchen von Security Center-Warnungen in Azure Sentinel ist das Streamen der Überwachungsprotokolle in Azure Sentinel:
     - [Herstellen einer Verbindung mit Windows-Sicherheitsereignissen](../sentinel/connect-windows-security-events.md)
     - [Sammeln von Daten aus Linux-basierten Quellen mithilfe von Syslog](../sentinel/connect-syslog.md)
-    - [Verknüpfen von Daten aus dem Azure-Aktivitätsprotokoll](../sentinel/connect-azure-activity.md)
+    - [Verknüpfen von Daten aus dem Azure-Aktivitätsprotokoll](../sentinel/data-connectors-reference.md#azure-activity)
 
 > [!TIP]
 > Azure Sentinel wird auf Grundlage der Datenmenge abgerechnet, die zur Analyse in Azure Sentinel erfasst und im Log Analytics-Arbeitsbereich von Azure Monitor gespeichert wurde. Azure Sentinel bietet ein flexibles und vorhersagbares Preismodell. [Weitere Informationen finden Sie auf der Seite „Azure Sentinel – Preise“](https://azure.microsoft.com/pricing/details/azure-sentinel/).

@@ -14,16 +14,16 @@ ms.service: azure
 ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
-ms.openlocfilehash: 3444d6c62b5e36b7e68cfaf6da1ec534e2ea4ec6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1ed9dbef648eace79807f06f034ba02e8bc67817
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102551452"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128655864"
 ---
 # <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>Erstellen eines Pivotal Cloud Foundry-Clusters in Azure
 
-Dieses Tutorial enthält Schritte zum schnellen Erstellen und Generieren der Parameter, die zum Bereitstellen eines PCF-Clusters (Pivotal Cloud Foundry) in Azure erforderlich sind. Die Pivotal Cloud Foundry-Lösung finden Sie, indem Sie auf dem Azure [Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry) eine Suche durchführen.
+Dieses Tutorial enthält Schritte zum schnellen Erstellen und Generieren der Parameter, die zum Bereitstellen eines PCF-Clusters (Pivotal Cloud Foundry) in Azure erforderlich sind. Die Pivotal Cloud Foundry-Lösung finden Sie, indem Sie auf dem Azure Marketplace eine Suche durchführen.
 
 ![Suchen nach Pivotal Cloud Foundry in Azure](media/deploy/pcf-marketplace.png)
 
@@ -98,7 +98,7 @@ Weitere Informationen finden Sie unter [Verwenden von SSH-Schlüsseln mit Window
     az login --service-principal -u {appId} -p {your-password}  --tenant {tenantId}
     ```
 
-7. Erstellen Sie eine JSON-Datei im folgenden Format. Verwenden Sie die Werte für **subscriptionID**, **tenantID**, **clientID** und **clientSecret**, die Sie zuvor kopiert haben. Speichern Sie die Datei.
+7. Erstellen Sie eine JSON-Datei im folgenden Format. Verwenden Sie die Werte für **subscriptionID**, **tenantID**, **clientID** und **clientSecret**, die Sie zuvor kopiert haben. Speichern Sie die Datei .
 
     ```json
     {
@@ -117,7 +117,7 @@ Weitere Informationen finden Sie unter [Verwenden von SSH-Schlüsseln mit Window
 
 ## <a name="provision-your-cloud-foundry-cluster-on-azure"></a>Bereitstellen des Cloud Foundry-Clusters in Azure
 
-Sie verfügen jetzt über alle Parameter, die Sie für die Bereitstellung Ihres [Pivotal Cloud Foundry-Clusters in Azure](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry) benötigen.
+Sie verfügen jetzt über alle Parameter, die Sie für die Bereitstellung Ihres Pivotal Cloud Foundry-Clusters in Azure benötigen.
 Geben Sie die Parameter ein, und erstellen Sie Ihren PCF-Cluster.
 
 ## <a name="verify-the-deployment-and-sign-in-to-the-pivotal-ops-manager"></a>Überprüfen der Bereitstellung und Anmelden bei Pivotal Operations Manager

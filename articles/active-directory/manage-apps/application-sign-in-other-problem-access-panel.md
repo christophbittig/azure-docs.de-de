@@ -12,12 +12,12 @@ ms.date: 07/11/2017
 ms.author: davidmu
 ms.reviewer: lenalepa
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 116aaeddb9ca3378c076b70c4a0e53d18fe3244f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ea4b1cb837c481dab1a63850d6eb3753720ae4fa
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355480"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124796398"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Beheben von Anmeldeproblemen bei einer Anwendung aus „Meine Apps“ in Azure AD
 
@@ -43,7 +43,7 @@ Hier sind einige Aspekte zur Überprüfung, ob eine App angezeigt wird oder nich
 
 ## <a name="general-issues-to-check-first"></a>Allgemeine Probleme, die zuerst überprüft werden sollten
 
-- Stellen Sie sicher, dass der Webbrowser die Anforderungen erfüllt, und lesen Sie dazu [Meine Apps: Unterstützte Browser](../user-help/my-apps-portal-end-user-access.md).
+- Stellen Sie sicher, dass der Webbrowser die Anforderungen erfüllt, und lesen Sie dazu [Meine Apps: Unterstützte Browser](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 - Stellen Sie sicher, dass die URL der Anwendung den **vertrauenswürdigen Sites** im Browser des Benutzers hinzugefügt wurde.
 - Stellen Sie sicher, dass die Anwendung ordnungsgemäß **konfiguriert** ist.
 - Stellen Sie sicher, dass das Konto des Benutzers für Anmeldungen **aktiviert** ist.

@@ -6,15 +6,15 @@ author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: troubleshooting
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
 ms.custom: has-adal-ref, synapse
-ms.openlocfilehash: 27e9f92f7ea2be3ebdafbf973c4d1def179d5636
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 0808b52c777389cfdf641094fd152ee9f11b482f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864143"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124782720"
 ---
 # <a name="troubleshoot-azure-data-factory-and-azure-synapse-analytics-connectors"></a>Problembehandlung für Connectors in Azure Data Factory und Azure Synapse Analytics
 
@@ -154,7 +154,7 @@ In diesem Artikel werden gängige Methoden zum Behandeln von Problemen bei Azure
 
 - **Lösung:** Um dieses Problem zu umgehen, können Sie die Überprüfung von TLS (Transport Layer Security) für Azure Data Lake Storage Gen1 mithilfe der gestagten Kopie überspringen. Sie müssen dieses Problem reproduzieren und die Netzwerküberwachungs-Ablaufverfolgung (netmon) erfassen. Anschließend prüfen Sie zusammen mit dem Netzwerkteam die Konfiguration des lokalen Netzwerks.
 
-    ![Abbildung: Azure Data Lake Storage Gen1-Verbindungen zum Beheben von Problemen.](./media/connector-troubleshoot-guide/adls-troubleshoot.png)
+    :::image type="content" source="./media/connector-troubleshoot-guide/adls-troubleshoot.png" alt-text="Abbildung: Azure Data Lake Storage Gen1-Verbindungen zum Beheben von Problemen.":::
 
 
 ### <a name="error-message-the-remote-server-returned-an-error-403-forbidden"></a>Fehlermeldung: The remote server returned an error: (403) Unzulässig
@@ -1208,7 +1208,7 @@ In diesem Artikel werden gängige Methoden zum Behandeln von Problemen bei Azure
 
     2. Öffnen Sie die Datei *diawp.exe.config*, und fügen Sie dann am Ende des `<runtime>`-Abschnitts `<enforceFIPSPolicy enabled="false"/>` wie hier gezeigt hinzu:
 
-        ![Screenshot eines Abschnitts der Datei „diawp.exe.config“ mit deaktiviertem FIPS.](./media/connector-troubleshoot-guide/disable-fips-policy.png)
+        :::image type="content" source="./media/connector-troubleshoot-guide/disable-fips-policy.png" alt-text="Screenshot eines Abschnitts der Datei „diawp.exe.config“ mit deaktiviertem FIPS.":::
 
     3. Speichern Sie die Datei, und starten Sie den Computer mit der selbstgehosteten IR neu.
 

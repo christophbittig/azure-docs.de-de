@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 1009a63f1ffc323073deb00e7c628d3752af2408
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: c0a13010be851e42ed1c50dc95330d497ab29c20
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122690210"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124780963"
 ---
 # <a name="updated-ndv2-series"></a>Aktualisierte NDv2-Serie
 
@@ -51,7 +51,6 @@ Nvidia NVLink Interconnect: Unterstützt<br>
 |---|---|---|---|---|---|---|---|---|---|
 | Standard_ND40rs_v2 | 40 | 672 | 2948 | 8 V100 32 GB (NVLink) | 32 | 32 | 80000/800 | 24.000 MBit/s | 8 |
 
-[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 ## <a name="supported-operating-systems-and-drivers"></a>Unterstützte Betriebssysteme und Treiber
 
@@ -61,7 +60,9 @@ Mit der [NVIDIA-GPU-Treibererweiterung](./extensions/hpccompute-gpu-linux.md) we
 
 Wenn Sie NVIDIA-GPU-Treiber manuell installieren möchten, finden Sie weitere Informationen unter [Installieren von NVIDIA-GPU-Treibern für virtuelle Computer der Serie N mit Linux](./linux/n-series-driver-setup.md).
 
-## <a name="other-sizes"></a>Andere Größen
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
+
+## <a name="other-sizes-and-information"></a>Weitere Größen und Informationen
 
 - [Allgemeiner Zweck](sizes-general.md)
 - [Arbeitsspeicheroptimiert](sizes-memory.md)
@@ -69,6 +70,10 @@ Wenn Sie NVIDIA-GPU-Treiber manuell installieren möchten, finden Sie weitere In
 - [GPU-optimiert](sizes-gpu.md)
 - [High Performance Computing](sizes-hpc.md)
 - [Vorherige Generationen](sizes-previous-gen.md)
+
+Preisrechner: [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
+
+Weitere Informationen zu Datenträgertypen finden Sie unter [Welche Datenträgertypen stehen in Azure zur Verfügung?](disks-types.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

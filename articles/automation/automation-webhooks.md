@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 07/21/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 50299b64577ed93f7aa1b09f2b5b20ccca88404e
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 3ccdbb04942e946d251008187693ee948b960178
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472555"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836927"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Starten eines Runbooks über einen Webhook
 
@@ -94,7 +94,7 @@ Sehen Sie sich die folgenden Strategien an:
 
 ## <a name="create-a-webhook"></a>Erstellen eines Webhooks
 
-Ein Webhook erfordert ein veröffentlichtes Runbook. In dieser exemplarischen Vorgehensweise wird eine geänderte Version des Runbooks verwendet, das unter [Erstellen eines Azure Automation-Runbooks](automation-quickstart-create-runbook.md) erstellt wurde. Bearbeiten Sie Ihr PowerShell-Runbook mit dem folgenden Code, um die Schritte auszuführen:
+Ein Webhook erfordert ein veröffentlichtes Runbook. In dieser exemplarischen Vorgehensweise wird eine geänderte Version des Runbooks verwendet, das unter [Erstellen eines Azure Automation-Runbooks](./learn/powershell-runbook-managed-identity.md) erstellt wurde. Bearbeiten Sie Ihr PowerShell-Runbook mit dem folgenden Code, um die Schritte auszuführen:
 
 ```powershell
 param

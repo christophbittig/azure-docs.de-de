@@ -17,12 +17,12 @@ ms.date: 04/05/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6570e378aa75843c525cb21ed58c9da5fd4fb574
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 5980e535de875e50c2b2c5a890a371183623dac0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445852"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124835781"
 ---
 # <a name="license-requirements-to-use-privileged-identity-management"></a>Lizenzanforderungen für die Verwendung von Privileged Identity Management
 
@@ -73,5 +73,5 @@ Wenn eine Lizenz vom Typ Azure AD Premium P2 oder EMS E5 bzw. eine Testlizenz ab
 - [Bereitstellen von Azure AD Privileged Identity Management (PIM)](pim-deployment-plan.md)
 - [Einstieg in Privileged Identity Management](pim-getting-started.md)
 - [Rollen, die nicht in Privileged Identity Management verwaltet werden können](pim-roles.md)
-- [Erstellen einer Zugriffsüberprüfung für Azure-Ressourcenrollen in PIM](pim-resource-roles-start-access-review.md)
-- [Erstellen einer Zugriffsüberprüfung für Azure AD-Rollen in PIM](pim-how-to-start-security-review.md)
+- [Erstellen einer Zugriffsüberprüfung für Azure-Ressourcenrollen in PIM](./pim-create-azure-ad-roles-and-resource-roles-review.md)
+- [Erstellen einer Zugriffsüberprüfung für Azure AD-Rollen in PIM](./pim-create-azure-ad-roles-and-resource-roles-review.md)

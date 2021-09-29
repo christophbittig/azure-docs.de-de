@@ -1,19 +1,19 @@
 ---
 title: 'Tutorial: Verbinden von IoT Plug & Play-Beispielgerätecode mit Azure IoT Hub | Microsoft-Dokumentation'
 description: In diesem Tutorial erfahren Sie, wie Sie unter Linux oder Windows einen IoT Plug & Play-Beispielgerätecode (C, C#, Java, JavaScript oder Python) erstellen und ausführen, der eine Verbindung mit einem IoT-Hub herstellt. Verwenden Sie das Tool Azure IoT-Explorer, um die vom Gerät an den Hub gesendeten Informationen anzuzeigen.
-author: ericmitt
-ms.author: ericmitt
+author: lizross
+ms.author: lizross
 ms.date: 07/14/2020
 ms.topic: tutorial
 ms.service: iot-develop
 services: iot-develop
 zone_pivot_groups: programming-languages-set-twenty-seven
-ms.openlocfilehash: 88441340b23548e73831d73fe7f96476c12438e6
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 2a5b5dc02387a07b3d9485feddd07d9fce9825dc
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114405998"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091937"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-device-application-running-on-linux-or-windows-to-iot-hub"></a>In diesem Tutorial erfahren Sie, wie Sie eine unter Linux oder Windows ausgeführte IoT Plug & Play-Beispielgeräteanwendung mit einem IoT Hub verbinden
 

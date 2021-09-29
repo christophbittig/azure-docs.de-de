@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/07/2021
 ms.author: yelevin
-ms.openlocfilehash: f776c39a5a1dadde2e6ee01fe211e0769e5e06eb
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: b6e38d6ce5944d09a089404ae1fe2ca81a951c18
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123261056"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124781297"
 ---
 # <a name="use-azure-functions-to-connect-azure-sentinel-to-your-data-source"></a>Verwenden von Azure Functions zum Verbinden von Azure Sentinel mit Ihrer Datenquelle
 
-Sie können [Azure Functions](/azure/azure-functions/functions-overview) in Verbindung mit verschiedenen Programmiersprachen wie [PowerShell](../azure-functions/functions-reference-powershell.md) oder Python verwenden, um einen serverlosen Connector mit den REST-API-Endpunkten Ihrer kompatiblen Datenquellen zu erstellen. Mit Azure Functions-Apps können Sie dann Azure Sentinel mit der REST-API Ihrer Datenquelle verbinden, um Protokolle zu pullen.
+Sie können [Azure Functions](../azure-functions/functions-overview.md) in Verbindung mit verschiedenen Programmiersprachen wie [PowerShell](../azure-functions/functions-reference-powershell.md) oder Python verwenden, um einen serverlosen Connector mit den REST-API-Endpunkten Ihrer kompatiblen Datenquellen zu erstellen. Mit Azure Functions-Apps können Sie dann Azure Sentinel mit der REST-API Ihrer Datenquelle verbinden, um Protokolle zu pullen.
 
 In diesem Artikel wird beschrieben, wie Sie Azure Sentinel für die Verwendung von Azure Functions-Apps konfigurieren. Möglicherweise müssen Sie auch Ihr Quellsystem konfigurieren. Anbieter- und produktspezifische Informationslinks finden Sie auf der Seite jedes Datenconnectors im Portal oder im Abschnitt für Ihren Dienst auf der Seite [Referenz zu Azure Sentinel-Datenconnectors](data-connectors-reference.md).
 
@@ -213,6 +213,6 @@ Es kann bis zu 20 Minuten dauern, bis Ihre Protokolle in Log Analytics angezeig
 
 In diesem Dokument haben Sie erfahren, wie Sie Azure Sentinel mittels Azure Functions-basierter Connectors mit Ihrer Datenquelle verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 
-- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
-- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats-built-in.md).
-- [Verwenden Sie Arbeitsmappen](tutorial-monitor-your-data.md), um Ihre Daten zu überwachen.
+- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](./get-visibility.md).
+- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](./detect-threats-built-in.md).
+- [Verwenden Sie Arbeitsmappen](./monitor-your-data.md), um Ihre Daten zu überwachen.

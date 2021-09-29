@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 6c1d9b813db15900521968865c1036d53ad53f41
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 45b5a29307ca8aa37f3b369b4e79054a22fa0634
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95544784"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128579638"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>Überwachung und Problembehandlung für eine Cloudspeicheranwendung
 
@@ -22,10 +22,10 @@ Dieses Tutorial ist der vierte und letzte Teil einer Serie. Sie erfahren, wie Si
 Im vierten Teil der Serie lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Aktivieren von Protokollierung und Metriken
-> * Aktivieren von Warnungen für Autorisierungsfehler
-> * Ausführen von Testdatenverkehr mit falschen SAS-Token
-> * Herunterladen und Analysieren von Protokollen
+> - Aktivieren von Protokollierung und Metriken
+> - Aktivieren von Warnungen für Autorisierungsfehler
+> - Ausführen von Testdatenverkehr mit falschen SAS-Token
+> - Herunterladen und Analysieren von Protokollen
 
 Die [Azure Storage-Analyse](../common/storage-analytics.md) stellt die Protokollierungs- und Metrikdaten für ein Speicherkonto bereit. Diese Daten bieten Einblicke in die Integrität Ihres Speicherkontos. Sie können Protokollierung, Metriken und Warnungen konfigurieren, um Daten in Azure Storage Analytics zu sammeln. Hierzu müssen Sie die Protokollierung aktivieren, Metriken konfigurieren und Warnungen aktivieren.
 
@@ -112,10 +112,10 @@ Wenn das Protokoll geöffnet wird, können Sie die Speicherereignisse anzeigen. 
 Im vierten und letzten Teil der Serie wurden Überwachung und Problembehandlung für Speicherkonten behandelt, u.a.:
 
 > [!div class="checklist"]
-> * Aktivieren von Protokollierung und Metriken
-> * Aktivieren von Warnungen für Autorisierungsfehler
-> * Ausführen von Testdatenverkehr mit falschen SAS-Token
-> * Herunterladen und Analysieren von Protokollen
+> - Aktivieren von Protokollierung und Metriken
+> - Aktivieren von Warnungen für Autorisierungsfehler
+> - Ausführen von Testdatenverkehr mit falschen SAS-Token
+> - Herunterladen und Analysieren von Protokollen
 
 Unter diesem Link finden Sie vordefinierte Speicherbeispiele.
 

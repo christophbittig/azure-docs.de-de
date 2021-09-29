@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 10/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 28d66477c31db9ee274fb1e8aaa1690365a4fa72
-ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
+ms.openlocfilehash: 393d710ba411a6573a4cce155abd7c1aeae06aa8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112912787"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754871"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Problembehandlung von Azure Stream Analytics-Ausgaben
 
@@ -25,7 +25,7 @@ In diesem Artikel werden häufige Probleme mit Azure Stream Analytics-Ausgabever
 
    * Wenn der Wert **Eingabeereignisse** größer als null ist, kann der Auftrag die Eingabedaten lesen. Wenn der Wert **Eingabeereignisse** nicht größer als null ist, liegt ein Problem mit der Eingabe des Auftrags vor. Weitere Informationen finden Sie unter [Troubleshooting bei Eingabeverbindungen](stream-analytics-troubleshoot-input.md). Wenn Ihr Auftrag über eine Verweisdateneingabe verfügt, müssen Sie beim Betrachten der **Eingabeereignisse**-Metrik die Aufteilung nach dem logischen Namen anwenden. Wenn keine Eingabeereignisse aus Ihren Verweisdaten allein vorhanden sind, bedeutet dies wahrscheinlich, dass diese Eingabequelle nicht ordnungsgemäß konfiguriert wurde, um das richtige Verweisdataset abzurufen.
    * Wenn der Wert **Datenkonvertierungsfehler** größer als null und ansteigend ist, finden Sie unter [Datenfehler in Azure Stream Analytics](data-errors.md) ausführliche Informationen zu Datenkonvertierungsfehlern.
-   * Wenn der Wert **Laufzeitfehler** größer als null ist, empfängt der Auftrag Daten, generiert jedoch beim Verarbeiten der Abfrage Fehler. Navigieren Sie zur Fehlersuche zu [Überwachungsprotokolle](../azure-resource-manager/management/view-activity-logs.md), und filtern Sie dann nach dem Status **Fehler**.
+   * Wenn der Wert **Laufzeitfehler** größer als null ist, empfängt der Auftrag Daten, generiert jedoch beim Verarbeiten der Abfrage Fehler. Navigieren Sie zur Fehlersuche zu [Überwachungsprotokolle](../azure-monitor/essentials/activity-log.md), und filtern Sie dann nach dem Status **Fehler**.
    * Wenn der Wert **Eingabeereignisse** größer als null und der Wert **Ausgabeereignisse** gleich null ist, gilt eine der folgenden Aussagen:
       * Die Abfrageverarbeitung führte zu null Ausgabeereignissen.
       * Ereignisse oder Felder sind unter Umständen falsch formatiert, daher wurden bei der Abfrageverarbeitung keine Ausgaben generiert.

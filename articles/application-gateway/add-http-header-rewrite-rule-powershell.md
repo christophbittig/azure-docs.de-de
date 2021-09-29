@@ -2,18 +2,18 @@
 title: Erneutes Generieren von HTTP-Headern in Azure Application Gateway
 description: Dieser Artikel enthält Informationen zum erneuten Generieren von HTTP-Headern in Azure Application Gateway mithilfe von Azure PowerShell
 services: application-gateway
-author: abshamsft
+author: KumudD
 ms.service: application-gateway
 ms.topic: how-to
 ms.date: 04/12/2019
-ms.author: absha
+ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c694a2151f15af52a5380b9a442c1ac27fa1e475
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 1a3f64167978196afc5d86b983c44f021b554115
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319591"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836284"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-powershell"></a>Erneutes Generieren von HTTP-Anforderungs- und Antwortheadern mit Azure Application Gateway – Azure PowerShell
 

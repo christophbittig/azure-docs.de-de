@@ -7,24 +7,24 @@ ms.topic: tutorial
 ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 52a1931ec567d03d0beaaf9180532a91ff6bed07
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 951bf6704d68ae292b835a5528d099d634eb4226
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123259463"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589414"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Tutorial: Erweitern von Windows-Dateiservern mit der Azure-Dateisynchronisierung
 
 In diesem Artikel werden die grundlegenden Schritte zum Erweitern der Speicherkapazität einer Windows Server-Instanz mit der Azure-Dateisynchronisierung veranschaulicht. Im Tutorial wird zwar eine Windows Server-Instanz als virtueller Azure-Computer (VM) verwendet, aber normalerweise führen Sie diesen Prozess für Ihre lokalen Server durch. Eine Anleitung zum Bereitstellen der Azure-Dateisynchronisierung in Ihrer eigenen Umgebung finden Sie im Artikel [Bereitstellen der Azure-Dateisynchronisierung](file-sync-deployment-guide.md).
 
 > [!div class="checklist"]
-> * Bereitstellen des Speichersynchronisierungsdiensts
-> * Vorbereiten von Windows Server für die Verwendung mit der Azure-Dateisynchronisierung
-> * Installieren des Azure-Dateisynchronisierungs-Agents
-> * Registrieren einer Windows Server-Instanz beim Speichersynchronisierungsdienst
-> * Erstellen einer Synchronisierungsgruppe und eines Cloudendpunkts
-> * Erstellen eines Serverendpunkts
+> - Bereitstellen des Speichersynchronisierungsdiensts
+> - Vorbereiten von Windows Server für die Verwendung mit der Azure-Dateisynchronisierung
+> - Installieren des Azure-Dateisynchronisierungs-Agents
+> - Registrieren einer Windows Server-Instanz beim Speichersynchronisierungsdienst
+> - Erstellen einer Synchronisierungsgruppe und eines Cloudendpunkts
+> - Erstellen eines Serverendpunkts
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -42,7 +42,7 @@ Für dieses Tutorial müssen Sie die folgenden Schritte ausführen, bevor Sie di
 
 ### <a name="create-a-folder-and-txt-file"></a>Erstellen eines Ordners und einer TXT-Datei
 
-Erstellen Sie auf Ihrem lokalen Computer einen neuen Ordner mit dem Namen _FilesToSync_, und fügen Sie eine Textdatei mit dem Namen _mytestdoc.txt_ hinzu. Sie laden diese Datei später im Tutorial auf eine Dateifreigabe hoch.
+Erstellen Sie auf Ihrem lokalen Computer einen neuen Ordner mit dem Namen *FilesToSync*, und fügen Sie eine Textdatei mit dem Namen *mytestdoc.txt* hinzu. Sie laden diese Datei später im Tutorial auf eine Dateifreigabe hoch.
 
 ### <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
@@ -61,7 +61,7 @@ Nachdem Sie ein Azure-Speicherkonto bereitgestellt haben, erstellen Sie eine Dat
 
     ![Auswählen der Schaltfläche „Dateifreigabe hinzufügen“](./media/storage-sync-files-extend-servers/create-file-share-portal2.png)
 
-1. Geben Sie der neuen Dateifreigabe den Namen _afsfileshare_. Geben Sie unter **Kontingent** den Wert 5120 ein, und wählen Sie anschließend **Erstellen** aus. Das Kontingent kann auf maximal 100 TiB festgelegt werden, aber für dieses Tutorial benötigen Sie nur 5 TiB.
+1. Geben Sie der neuen Dateifreigabe den Namen *afsfileshare*. Geben Sie unter **Kontingent** den Wert 5120 ein, und wählen Sie anschließend **Erstellen** aus. Das Kontingent kann auf maximal 100 TiB festgelegt werden, aber für dieses Tutorial benötigen Sie nur 5 TiB.
 
     ![Angeben eines Namens und Kontingents für die neue Dateifreigabe](./media/storage-sync-files-extend-servers/create-file-share-portal3.png)
 
@@ -69,7 +69,7 @@ Nachdem Sie ein Azure-Speicherkonto bereitgestellt haben, erstellen Sie eine Dat
 
     ![Hochladen einer Datei](./media/storage-sync-files-extend-servers/create-file-share-portal5.png)
 
-1. Navigieren Sie zum Ordner _FilesToSync_, in dem Sie Ihre TXT-Datei erstellt haben, wählen Sie _mytestdoc.txt_ aus, und wählen Sie dann die Option **Hochladen**.
+1. Navigieren Sie zum Ordner *FilesToSync*, in dem Sie Ihre TXT-Datei erstellt haben, wählen Sie *mytestdoc.txt* aus, und wählen Sie dann die Option **Hochladen**.
 
     ![Durchsuchen der Dateifreigabe](./media/storage-sync-files-extend-servers/create-file-share-portal6.png)
 
@@ -83,7 +83,7 @@ Sie haben jetzt ein Speicherkonto und eine Dateifreigabe mit einer Datei erstell
 
    ![Eingeben grundlegender Informationen zu Ihrem virtuellen Computer auf dem Portalblatt](./media/storage-sync-files-extend-servers/vm-resource-group-and-subscription.png)
 
-1. Geben Sie unter **Instanzendetails** einen VM-Namen ein. Verwenden Sie beispielsweise _myVM_.
+1. Geben Sie unter **Instanzendetails** einen VM-Namen ein. Verwenden Sie beispielsweise *myVM*.
 1. Lassen Sie die Standardeinstellungen für **Region**, **Verfügbarkeitsoptionen**, **Image** und **Größe** unverändert.
 1. Geben Sie unter **Administratorkonto** einen **Benutzernamen** und ein **Kennwort** für den virtuellen Computer an.
 1. Wählen Sie unter **Regeln für eingehende Ports** die Option **Ausgewählte Ports zulassen**, und wählen Sie im Dropdownmenü dann **RDP (3389)** und **HTTP**.
@@ -140,7 +140,7 @@ Auf der VM mit Windows Server 2016 Datacenter wird der Server-Manager automatisc
 
    ![„Lokaler Server“ auf der linken Seite der Server-Manager-Benutzeroberfläche](media/storage-sync-files-extend-servers/prepare-server-disable-ieesc-1.png)
 
-1. Wählen Sie im Bereich **Eigenschaften** den Link für **Verstärkte Sicherheitskonfiguration für IE**.  
+1. Wählen Sie im Bereich **Eigenschaften** den Link für **Verstärkte Sicherheitskonfiguration für IE**.
 
     ![Bereich „Verstärkte Sicherheitskonfiguration für Internet Explorer“ auf der Server-Manager-Benutzeroberfläche](media/storage-sync-files-extend-servers/prepare-server-disable-ieesc-2.png)
 
@@ -164,9 +164,9 @@ Sie können den Datenträger jetzt dem virtuellen Computer hinzufügen.
    Sie haben den Datenträger jetzt in den Onlinezustand versetzt und ein Volume erstellt. Öffnen Sie den Datei-Explorer auf der Windows Server-VM, um sich zu vergewissern, dass der zuletzt hinzugefügte Datenträger vorhanden ist.
 
 1. Erweitern Sie im Datei-Explorer auf der VM die Option **Dieser PC**, und öffnen Sie das neue Laufwerk. In diesem Beispiel ist dies das Laufwerk „F:“.
-1. Klicken Sie mit der rechten Maustaste, und wählen Sie **Neu** > **Ordner**. Geben Sie dem Ordner den Namen _FilesToSync_.
+1. Klicken Sie mit der rechten Maustaste, und wählen Sie **Neu** > **Ordner**. Geben Sie dem Ordner den Namen *FilesToSync*.
 1. Öffnen Sie den Ordner **FilesToSync**.
-1. Klicken Sie mit der rechten Maustaste, und wählen sie **Neu** > **Textdokument**. Geben Sie der Textdatei den Namen _MyTestFile_.
+1. Klicken Sie mit der rechten Maustaste, und wählen sie **Neu** > **Textdokument**. Geben Sie der Textdatei den Namen *MyTestFile*.
 
     ![Hinzufügen einer neuen Textdatei](media/storage-sync-files-extend-servers/new-file.png)
 
@@ -215,11 +215,11 @@ Für die Bereitstellung der Azure-Dateisynchronisierung platzieren Sie zuerst ei
 
    Geben Sie in dem neuen Bereich, der geöffnet wird, Folgendes ein:
 
-   | Wert | BESCHREIBUNG |
+   | Wert | Beschreibung |
    | ----- | ----- |
-   | **Name** | Ein eindeutiger Name (pro Abonnement) für den Speichersynchronisierungsdienst.<br><br>Verwenden Sie für dieses Tutorial _afssyncservice02_. |
+   | **Name** | Ein eindeutiger Name (pro Abonnement) für den Speichersynchronisierungsdienst.<br><br>Verwenden Sie für dieses Tutorial *afssyncservice02*. |
    | **Abonnement** | Das Azure-Abonnement, das Sie für dieses Tutorial verwenden. |
-   | **Ressourcengruppe** | Die Ressourcengruppe, die den Speichersynchronisierungsdienst enthält.<br><br>Verwenden Sie für dieses Tutorial _afsresgroup101918_. |
+   | **Ressourcengruppe** | Die Ressourcengruppe, die den Speichersynchronisierungsdienst enthält.<br><br>Verwenden Sie für dieses Tutorial *afsresgroup101918*. |
    | **Location** | East US |
 
 1. Wenn Sie fertig sind, können Sie **Erstellen** wählen, um den **Speichersynchronisierungsdienst** bereitzustellen.
@@ -262,8 +262,8 @@ Die Benutzeroberfläche der Serverregistrierung sollte sich automatisch öffnen,
    | Wert | BESCHREIBUNG |
    | ----- | ----- |
    | **Azure-Abonnement** | Das Abonnement, das den Speichersynchronisierungsdienst für dieses Tutorial enthält. |
-   | **Ressourcengruppe** | Die Ressourcengruppe, die den Speichersynchronisierungsdienst enthält. Verwenden Sie für dieses Tutorial _afsresgroup101918_. |
-   | **Speichersynchronisierungsdienst** | Der Name des Speichersynchronisierungsdiensts. Verwenden Sie für dieses Tutorial _afssyncservice02_. |
+   | **Ressourcengruppe** | Die Ressourcengruppe, die den Speichersynchronisierungsdienst enthält. Verwenden Sie für dieses Tutorial *afsresgroup101918*. |
+   | **Speichersynchronisierungsdienst** | Der Name des Speichersynchronisierungsdiensts. Verwenden Sie für dieses Tutorial *afssyncservice02*. |
 
 1. Wählen Sie **Registrieren**, um die Serverregistrierung durchzuführen.
 1. Während des Registrierungsvorgangs werden Sie erneut aufgefordert, sich anzumelden. Melden Sie sich an, und wählen Sie **Weiter**.

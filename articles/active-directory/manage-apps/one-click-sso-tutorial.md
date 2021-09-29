@@ -12,12 +12,12 @@ ms.date: 06/11/2019
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: ergreenl
-ms.openlocfilehash: bec4df252a98fc105f0eec1480452021fefb0031
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dac32dd14e006b1187f62389d3bc38e3c30a890f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355215"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124791458"
 ---
 # <a name="one-click-app-configuration-of-single-sign-on"></a>1-Klick-App-Konfiguration für einmaliges Anmelden
 
@@ -36,7 +36,7 @@ Das Feature „1-Klick-SSO“ wurde entwickelt, um einmaliges Anmelden für Azur
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Aktives Abonnement der Anwendung, die Sie mit SSO konfigurieren möchten. Außerdem benötigen Sie Administratoranmeldeinformationen.
-- Die **Erweiterung zur sicheren Anmeldung bei „Meine Apps“** von Microsoft, die im Browser installiert ist. Weitere Informationen finden Sie unter [Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“](../user-help/my-apps-portal-end-user-access.md).
+- Die **Erweiterung zur sicheren Anmeldung bei „Meine Apps“** von Microsoft, die im Browser installiert ist. Weitere Informationen finden Sie unter [Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="one-click-sso-configuration-steps"></a>Schritte der 1-Klick-SSO-Konfiguration
 
@@ -81,4 +81,4 @@ Das Feature „1-Klick-SSO“ wurde entwickelt, um einmaliges Anmelden für Azur
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 - [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](../saas-apps/tutorial-list.md)
-- [Was ist die Browsererweiterung zur sicheren Anmeldung bei „Meine Apps“?](../user-help/my-apps-portal-end-user-access.md)
+- [Was ist die Browsererweiterung zur sicheren Anmeldung bei „Meine Apps“?](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)

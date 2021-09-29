@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/27/2021
 ms.author: banders
-ms.openlocfilehash: 7388ee42195d93a9b7d9a64567f25be91b0eb38d
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 73f40b059e5577ba893b26ab715a8158e3a33482
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123111953"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836908"
 ---
 # <a name="change-your-azure-subscription-to-a-different-offer"></a>Ändern Ihres Azure-Abonnements in ein anderes Angebot
 
@@ -108,7 +108,7 @@ Für die dem Abonnement zugeordneten Benutzer entstehen keine Ausfallzeiten. All
 
 #### <a name="quota-increases-are-reset"></a>Zurücksetzen von Kontingenterhöhungen
 
-Beim Wechseln von Angeboten werden alle [Grenzwerte oder Kontingenterhöhungen oberhalb des Standardlimits](../../azure-portal/supportability/resource-manager-core-quotas-request.md) zurückgesetzt. Es tritt selbst dann keine Dienstunterbrechung auf, wenn Ihre Ressourcen über dem Standardgrenzwert liegen. Wenn Sie beispielsweise 200 Kerne für Ihr Abonnement verwenden, wird Ihr Kernkontingent durch einen Angebotswechsel wieder auf den Standardwert von 20 Kernen zurückgesetzt. Die VMs, die 200 Kerne verwenden, sind nicht betroffen und würden weiterhin ausgeführt werden. Wenn Sie allerdings keine weitere Anfrage zur Kontingenterhöhung stellen, können Sie keine weiteren Kerne bereitstellen.
+Beim Wechseln von Angeboten werden alle [Grenzwerte oder Kontingenterhöhungen oberhalb des Standardlimits](../../azure-portal/supportability/regional-quota-requests.md) zurückgesetzt. Es tritt selbst dann keine Dienstunterbrechung auf, wenn Ihre Ressourcen über dem Standardgrenzwert liegen. Wenn Sie beispielsweise 200 Kerne für Ihr Abonnement verwenden, wird Ihr Kernkontingent durch einen Angebotswechsel wieder auf den Standardwert von 20 Kernen zurückgesetzt. Die VMs, die 200 Kerne verwenden, sind nicht betroffen und würden weiterhin ausgeführt werden. Wenn Sie allerdings keine weitere Anfrage zur Kontingenterhöhung stellen, können Sie keine weiteren Kerne bereitstellen.
 
 #### <a name="billing"></a>Abrechnung
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 05/13/2021
+ms.date: 09/16/2021
 ms.custom: project-no-code
 ms.author: mimart
 author: msmimart
 manager: celested
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 072278ab70484eb427bafafc3e644e39e47eb8a8
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 91b154604e8d2ec898b45aef43f453d769934464
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111960494"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128572365"
 ---
 # <a name="investigate-risk-with-identity-protection-in-azure-ad-b2c"></a>Untersuchen eines Risikos mit Identity Protection in Azure AD B2C
 
@@ -86,11 +86,9 @@ Ein Administrator kann auswählen, ob das Risiko eines Benutzers im Azure-Portal
 ### <a name="navigating-the-risky-users-report"></a>Navigieren im Bericht „Risikobenutzer“
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-
-1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
-
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Wählen Sie unter **Azure-Dienste** die Option **Azure AD B2C** aus. Oder verwenden Sie das Suchfeld, um nach **Azure AD B2C** zu suchen und diese Option auszuwählen.
-
 1. Wählen Sie unter **Sicherheit** die Option **Risikobenutzer** aus.
 
    ![Riskante Benutzer](media/identity-protection-investigate-risk/risky-users.png)

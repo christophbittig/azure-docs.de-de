@@ -4,12 +4,12 @@ ms.topic: include
 ms.date: 11/09/2018
 author: linda33wj
 ms.author: jingwang
-ms.openlocfilehash: e96e3fe6a1c93c914e9dec7263852b047a05e38d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 18ff33287be7f5763a23cdf33c6e023501645299
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108741738"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "126056872"
 ---
 ## <a name="review-deployed-resources"></a>Überprüfen der bereitgestellten Ressourcen
 
@@ -17,13 +17,13 @@ Die Pipeline erstellt den Ausgabeordner automatisch im Blobcontainer „adftutor
 
 1. Wählen Sie im Azure-Portal auf der Seite des Containers **adftutorial** die Option **Aktualisieren** aus, um den Ausgabeordner anzuzeigen. 
     
-    ![Screenshot: Containerseite, die Sie aktualisieren können](media/data-factory-quickstart-verify-output-cleanup/output-refresh.png)
+    :::image type="content" source="media/data-factory-quickstart-verify-output-cleanup/output-refresh.png" alt-text="Screenshot: Containerseite, die Sie aktualisieren können":::
 
 2. Wählen Sie in der Ordnerliste **output** aus. 
 
 3. Überprüfen Sie, ob die Datei **emp.txt** in den Ausgabeordner kopiert wurde. 
 
-    ![Screenshot: Inhalt des Ausgabeordners](media/data-factory-quickstart-verify-output-cleanup/output-file.png)
+    :::image type="content" source="media/data-factory-quickstart-verify-output-cleanup/output-file.png" alt-text="Screenshot: Inhalt des Ausgabeordners":::
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

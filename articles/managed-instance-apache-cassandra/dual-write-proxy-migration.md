@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: tutorial
 ms.date: 08/17/2021
-ms.openlocfilehash: 03862b42fb181adcf1a6c4edbed66ce61ee49e73
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: d6fa48fb35d836fc7f08c98e7b1807068c000d84
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426128"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124797025"
 ---
 # <a name="live-migration-to-azure-managed-instance-for-apache-cassandra-by-using-a-dual-write-proxy"></a>Livemigration zu Azure Managed Instance for Apache Cassandra mithilfe eines Proxys für duales Schreiben
 
@@ -29,7 +29,6 @@ In diesem Tutorial wird beschrieben, wie Sie Daten live mithilfe eines [Proxys f
 
 Die Vorgehensweise ist in der folgenden Abbildung dargestellt.
 
-
 :::image type="content" source="./media/migration/live-migration.gif" alt-text="Animation, die die Livemigration von Daten zu Azure Managed Instance for Apache Cassandra zeigt." border="false":::
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -39,7 +38,6 @@ Die Vorgehensweise ist in der folgenden Abbildung dargestellt.
 * [Stellen Sie in Ihrem virtuellen verwalteten Cassandra-Netzwerk ein Azure Databricks-Konto bereit](deploy-cluster-databricks.md). Stellen Sie sicher, dass das Konto über einen Netzwerkzugriff auf Ihren Cassandra-Quellcluster verfügt. In diesem Konto erstellen Sie einen Spark-Cluster zum Laden der Verlaufsdaten.
 
 * Vergewissern Sie sich, dass Sie das Keyspace-/Tabellenschema aus Ihrer Cassandra-Quelldatenbank in die Zieldatenbank Ihrer verwalteten Cassandra-Instanz migriert haben.
-
 
 ## <a name="provision-a-spark-cluster"></a>Bereitstellen eines Spark-Clusters
 
@@ -92,7 +90,7 @@ Wenn Sie den Proxy auf diese Weise starten, muss Folgendes zutreffen:
 - Quell- und Zielendpunkte besitzen denselben Benutzernamen und dasselbe Kennwort.
 - Quell- und Zielendpunkte implementieren Secure Sockets Layer (SSL).
 
-Wenn Ihre Quell- und Zielendpunkte diese Kriterien nicht erfüllen können, finden Sie nachfolgend weitere Konfigurationsoptionen. 
+Wenn Ihre Quell- und Zielendpunkte diese Kriterien nicht erfüllen können, finden Sie nachfolgend weitere Konfigurationsoptionen.
 
 ### <a name="configure-ssl"></a>Konfigurieren von SSL
 
@@ -109,7 +107,6 @@ java -jar target/cassandra-proxy-1.0-SNAPSHOT-fat.jar localhost <target-server> 
 
 > [!NOTE]
 > Stellen Sie sicher, dass Ihre Clientanwendung beim Erstellen von SSL-Verbindungen mit der Datenbank über den Proxy denselben Keystore und dasselbe Kennwort wie für den Proxy für duales Schreiben verwendet.
-
 
 ### <a name="configure-the-credentials-and-port"></a>Konfigurieren der Anmeldeinformationen und des Ports
 
@@ -165,7 +162,6 @@ java -jar target/cassandra-proxy-1.0-SNAPSHOT-fat.jar source-server destination-
 ```
 
 Wenn der Proxy für duales Schreiben ausgeführt wird, müssen Sie den Port auf Ihrem Anwendungsclient ändern und neu starten. (Oder ändern Sie den Cassandra-Port und starten Sie den Cluster neu, wenn Sie diesen Ansatz gewählt haben.) Der Proxy beginnt dann mit der Weiterleitung von Schreibvorgängen an den Zielendpunkt. Weitere Informationen zur [Überwachung und zu Metriken](https://github.com/Azure-Samples/cassandra-proxy#monitoring) im Proxytool finden Sie hier. 
-
 
 ## <a name="run-the-historical-data-load"></a>Laden der Verlaufsdaten
 
@@ -233,7 +229,6 @@ DFfromSourceCassandra
 ## <a name="validate-the-source-and-target"></a>Überprüfen der Quelle und des Ziels
 
 Nachdem das Laden der Verlaufsdaten abgeschlossen ist, sollten Ihre Datenbanken synchron und zur Übernahme bereit sein. Vor der endgültigen Übernahme wird jedoch eine Überprüfung der Quelle und des Ziels empfohlen, um sicherzustellen, dass die Anforderungsergebnisse übereinstimmen.
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

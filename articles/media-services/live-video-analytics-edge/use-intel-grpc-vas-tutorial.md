@@ -6,12 +6,12 @@ ms.date: 02/04/2021
 ms.service: media-services
 ms.author: faneerde
 author: fvneerden
-ms.openlocfilehash: c2a704d5e87e5b5813a59f9c5951688f5c3b893a
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: f3498175030be0c6bc7b57db25dece5f8c2d83ea
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113300914"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626834"
 ---
 # <a name="tutorial-analyze-live-video-by-using-live-video-analytics-with-intel-openvino-dl-streamer--edge-ai-extension"></a>Tutorial: Analysieren von Livevideos mithilfe von Live Video Analytics und der Edge-KI-Erweiterung „Intel OpenVINO™ DL Streamer“ 
 
@@ -70,7 +70,7 @@ Das Edge AI Extension-Modul „OpenVINO™ DL Streamer“ ist ein Microservice, 
 
 Zur Erstellung komplexer Hochleistungslösungen für die Livevideoanalyse empfiehlt es sich, Live Video Analytics im IoT Edge-Modul mit einer leistungsfähigen Rückschluss-Engine zu kombinieren, die das Skalierungspotential am Edge nutzen kann. In diesem Tutorial werden Rückschlussanforderungen an die [Edge AI Extension „Intel OpenVINO™ DL Streamer“]() gesendet. Dabei handelt es sich um ein Edge-Modul, das für die Zusammenarbeit mit Live Video Analytics in IoT Edge konzipiert wurde.
 
-Das erste Release dieses Rückschlussservers bietet Zugriff auf folgende [Modelle](https://github.com/intel/video-analytics-serving/tree/master/samples/lva_ai_extension#edge-ai-extension-module-options):
+Das erste Release dieses Rückschlussservers bietet Zugriff auf folgende [Modelle](https://github.com/intel/video-analytics-serving/tree/master/samples/ava_ai_extension#edge-ai-extension-module-options):
 
 - „object_detection“ für „person_vehicle_bike_detection“ ![Objekterkennung für Fahrzeuge](./media/use-intel-openvino-tutorial/object-detection.png)
 
@@ -100,7 +100,7 @@ Als Teil der Voraussetzungen haben Sie den Beispielcode in einen Ordner herunter
 
     * ***c2d-console-app.csproj***: Die Projektdatei für Visual Studio Code.
     * ***operations.json***: Eine Liste mit den Vorgängen, die vom Programm ausgeführt werden sollen.
-    * ***Program.cs***: Das Beispiel für den Programmcode. Mit diesem Code wird Folgendes durchgeführt:
+    * ***Program.cs***: Das Beispiel für den Programmcode. Für diesen Code gilt Folgendes:
 
         * Laden der App-Einstellungen
         * Aufrufen direkter Methoden, die vom Modul „Live Video Analytics in IoT Edge“ verfügbar gemacht werden. Sie können das Modul zum Analysieren von Livevideostreams verwenden, indem Sie die zugehörigen [direkten Methoden](direct-methods.md) aufrufen.
@@ -321,7 +321,7 @@ Beachten Sie in den Meldungen die folgenden Details:
 * Im Abschnitt `inferences` ist angegeben, dass `type` auf `entity` festgelegt ist. Dieser Abschnitt enthält zusätzliche Daten zur Entität.
 
 ## <a name="run-the-sample-program-to-detect-persons-or-vehicles-or-bikes"></a>Ausführen des Beispielprogramms für die Erkennung von Personen, Fahrzeugen oder Fahrrädern
-Sie müssen die Bereitstellungsvorlage wechseln, um ein anderes Modell zu verwenden. Zum Wechseln zwischen den unterstützten Modellen können Sie die Umgebungsvariablen im IvaExtension-Modul ändern. Informationen zu den unterstützten Werten und Modellkombinationen finden Sie in diesem [Dokument auf GitHub](https://github.com/intel/video-analytics-serving/tree/master/samples/lva_ai_extension#edge-ai-extension-module-options).
+Sie müssen die Bereitstellungsvorlage wechseln, um ein anderes Modell zu verwenden. Zum Wechseln zwischen den unterstützten Modellen können Sie die Umgebungsvariablen im IvaExtension-Modul ändern. Informationen zu den unterstützten Werten und Modellkombinationen finden Sie in diesem [Dokument auf GitHub](https://github.com/intel/video-analytics-serving/tree/master/samples/ava_ai_extension#edge-ai-extension-module-options).
 
 ```
 "Env":[

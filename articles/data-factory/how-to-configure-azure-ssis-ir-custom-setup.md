@@ -8,12 +8,12 @@ author: swinarko
 ms.author: sawinark
 ms.custom: seo-lt-2019
 ms.date: 04/30/2021
-ms.openlocfilehash: ec309debca7d3852411318ed56a914d47494fe2b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 626afa6926dea10a633a5c7d5438ec8b8c578b6a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346460"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798653"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Anpassen des Setups für eine Azure-SSIS Integration Runtime
 
@@ -74,40 +74,40 @@ Um Ihre Azure-SSIS IR mit benutzerdefinierten Standardsetups auf der ADF-Benutz
 
    a. Klicken Sie unter **Lokal und angefügt** mit der rechten Maustaste auf **Speicherkonten**, und wählen Sie dann **Verbindung mit Azure Storage herstellen** aus.
 
-      ![Verbinden mit Azure Storage](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image1.png)
+      :::image type="content" source="media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image1.png" alt-text="Verbinden mit Azure Storage":::
 
    b. Wählen Sie **Speicherkonto oder -Dienst**, anschließend **Kontoname und -schlüssel** und dann **Weiter** aus.
 
    c. Geben Sie Ihren Azure Storage-Kontonamen und -schlüssel ein, und wählen Sie **Weiter** und dann **Verbinden** aus.
 
-      ![Bereitstellen des Speicherkontonamens und -schlüssels](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image3.png)
+      :::image type="content" source="media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image3.png" alt-text="Bereitstellen des Speicherkontonamens und -schlüssels":::
 
    d. Klicken Sie unter Ihrem verbundenen Azure Storage-Konto mit der rechten Maustaste auf **Blobcontainer**, wählen Sie **Blobcontainer erstellen** aus, und benennen Sie den neuen Blobcontainer.
 
-      ![Erstellen eines Blobcontainers](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image4.png)
+      :::image type="content" source="media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image4.png" alt-text="Erstellen eines Blobcontainers":::
 
    e. Wählen Sie den neuen Blobcontainer aus, und laden Sie Ihr benutzerdefiniertes Setupskript und die zugehörigen Dateien hoch. Stellen Sie sicher, dass Sie *main.cmd* auf die oberste Ebene Ihres Blobcontainers und nicht in einen Ordner hochladen. Ihr Blobcontainer sollte nur die erforderlichen Dateien für das benutzerdefinierte Setup enthalten, damit das spätere Herunterladen in Ihre Azure-SSIS IR nicht lange dauert. Die maximale Dauer für ein benutzerdefiniertes Setup ist zurzeit auf 45 Minuten festgelegt, bevor ein Timeout eintritt. Diese Dauer umfasst die Zeit zum Herunterladen aller Dateien aus Ihrem Blobcontainer und deren Installation in der Azure-SSIS IR. Wenn das Setup mehr Zeit erfordert, erstellen Sie ein Supportticket.
 
-      ![Hochladen von Dateien in den Blobcontainer](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image5.png)
+      :::image type="content" source="media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image5.png" alt-text="Hochladen von Dateien in den Blobcontainer":::
 
    f. Klicken Sie mit der rechten Maustaste auf den Blobcontainer, und wählen Sie dann die Option **Shared Access Signature abrufen** aus.
 
-      ![Abrufen der Shared Access Signature für den Blobcontainer](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image6.png)
+      :::image type="content" source="media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image6.png" alt-text="Abrufen der Shared Access Signature für den Blobcontainer":::
 
    g. Erstellen Sie den SAS-URI für Ihren Blobcontainer mit einer ausreichend langen Ablaufzeit sowie Berechtigungen für das Lesen, Schreiben und Auflisten. Den SAS-URI benötigen Sie zum Herunterladen und Ausführen Ihres benutzerdefinierten Setupskripts und der zugehörigen Dateien. Dies ist jedes Mal dann der Fall, wenn für einen Knoten Ihrer Azure-SSIS IR ein Reimaging durchgeführt oder er neu gestartet wird. Sie benötigen außerdem Schreibberechtigungen zum Hochladen der Setupausführungsprotokolle.
 
       > [!IMPORTANT]
       > Stellen Sie sicher, dass der SAS-URI nicht abläuft und dass die benutzerdefinierten Setupressourcen während des gesamten Lebenszyklus Ihrer Azure-SSIS IR (vom Erstellen bis zum Löschen) immer verfügbar sind – insbesondere dann, wenn Sie Ihre Azure-SSIS IR während dieses Zeitraums regelmäßig beenden und starten.
 
-      ![Generieren der Shared Access Signature für den Blobcontainer](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image7.png)
+      :::image type="content" source="media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image7.png" alt-text="Generieren der Shared Access Signature für den Blobcontainer":::
 
    h. Kopieren und speichern Sie den SAS-URI des Blobcontainers.
 
-      ![Kopieren und Speichern der Shared Access Signature](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image8.png)
+      :::image type="content" source="media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image8.png" alt-text="Kopieren und Speichern der Shared Access Signature":::
 
 1. Aktivieren Sie im Bereich **Setup für Integration Runtime** auf der Seite **Erweiterte Einstellungen** das Kontrollkästchen **Azure-SSIS Integration Runtime mit zusätzlichen Systemkonfigurationen/Komponenteninstallationen anpassen**. Als Nächstes geben Sie den SAS-URI Ihres Blobcontainers in das Textfeld **SAS-URI des Containers für benutzerdefinierte Setups** ein.
 
-   ![Erweiterte Einstellungen bei benutzerdefinierten Setups](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-custom.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-custom.png" alt-text="Erweiterte Einstellungen bei benutzerdefinierten Setups":::
 
 Nachdem Ihr benutzerdefiniertes Standardsetup abgeschlossen und Ihre Azure-SSIS IR gestartet wurde, finden Sie alle benutzerdefinierten Setupprotokolle im Ordner *main.cmd.log* Ihres Blobcontainers. Diese umfassen die Standardausgabe von *main.cmd* und andere Ausführungsprotokolle.
 
@@ -269,7 +269,7 @@ Um Beispiele für benutzerdefinierte Standardsetups anzuzeigen und wiederzuverwe
 
    a. Klicken Sie unter **Lokal und angefügt** mit der rechten Maustaste auf **Speicherkonten**, und wählen Sie dann **Verbindung mit Azure Storage herstellen** aus.
 
-      ![Verbinden mit Azure Storage](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image1.png)
+      :::image type="content" source="media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image1.png" alt-text="Verbinden mit Azure Storage":::
 
    b. Wählen Sie **Blobcontainer**, anschließend **SAS-URL (Shared Access Signature)** und dann **Weiter** aus.
 
@@ -283,7 +283,7 @@ Um Beispiele für benutzerdefinierte Standardsetups anzuzeigen und wiederzuverwe
 
       * Der Ordner *UserScenarios* mit mehreren Beispielen für benutzerdefinierte Setups von echten Benutzerszenarien. Wenn Sie mehrere Beispiele in Ihrer Azure-SSIS IR installieren möchten, können Sie deren Dateien für das benutzerdefinierte Setupskript (*main.cmd*) zu einer kombinieren und mit allen zugehörigen Dateien in den Blobcontainer hochladen.
 
-        ![Inhalt des Public Preview-Blobcontainers](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image11.png)
+        :::image type="content" source="media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image11.png" alt-text="Inhalt des Public Preview-Blobcontainers":::
 
    e. Doppelklicken Sie auf den Ordner *UserScenarios*, um die folgenden Elemente zu suchen:
 
@@ -343,7 +343,7 @@ Um Beispiele für benutzerdefinierte Standardsetups anzuzeigen und wiederzuverwe
       
         [Laden Sie zuerst das neueste Zulu OpenJDK herunter](https://www.azul.com/downloads/zulu/zulu-windows/) (z. B. *zulu8.33.0.1-jdk8.0.192-win_x64.zip*), und laden Sie es dann zusammen mit *main.cmd* und *install_openjdk.ps1* in Ihren Blobcontainer hoch.
 
-        ![Ordner im Ordner „Benutzerszenarios“](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image12.png)
+        :::image type="content" source="media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image12.png" alt-text="Ordner im Ordner „Benutzerszenarios“":::
 
    f. Um diese Beispiele für benutzerdefinierte Standardsetups wiederzuverwenden, kopieren Sie den Inhalt des ausgewählten Ordners in Ihren Blobcontainer.
 

@@ -8,12 +8,12 @@ ms.date: 04/09/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 8d2198c4c2c2dd100d7bbf88eebc4e521d6ace04
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 886248c4561b4f332bf3906db62938168d638c12
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340112"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820747"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Regionen und Verfügbarkeitszonen in Azure
 
@@ -52,7 +52,7 @@ Integrieren Sie hohe Verfügbarkeit in Ihre Anwendungsarchitektur, indem Sie Ihr
 - **Zonenredundante Dienste:** Die Azure-Plattform repliziert automatisch zonenübergreifend (z. B. zonenredundanter Speicher, SQL-Datenbank).
 
 > [!NOTE]
-> Sowohl öffentliche IP-Adressen der Standard-SKU als auch Ressourcentypen des Präfixes für öffentliche IP-Adressen verfügen ebenfalls über die Option „no-zone“ (keine Zone).  Dies ermöglicht Kunden die Nutzung öffentlicher IP-Adressen der Standard-SKU (und deren Zuordnung zu Ressourcen, die nur die Standard-SKU zulassen), gibt aber keine Garantie für Redundanz.  (Alle öffentlichen IP-Adressen, die von der Basic-SKU auf die Standard-SKU [geupgradet](https://docs.microsoft.com/azure/virtual-network/public-ip-upgrade-portal) werden, haben den Typ „no-zone“.)
+> Sowohl öffentliche IP-Adressen der Standard-SKU als auch Ressourcentypen des Präfixes für öffentliche IP-Adressen verfügen ebenfalls über die Option „no-zone“ (keine Zone).  Dies ermöglicht Kunden die Nutzung öffentlicher IP-Adressen der Standard-SKU (und deren Zuordnung zu Ressourcen, die nur die Standard-SKU zulassen), gibt aber keine Garantie für Redundanz.  (Alle öffentlichen IP-Adressen, die von der Basic-SKU auf die Standard-SKU [geupgradet](../virtual-network/public-ip-upgrade-portal.md) werden, haben den Typ „no-zone“.)
 
 Um eine umfassende Geschäftskontinuität in Azure zu erreichen, erstellen Sie die Anwendungsarchitektur über die Kombination von Verfügbarkeitszonen mit Azure-Regionspaaren. Sie können Anwendungen und Daten mithilfe von Verfügbarkeitszonen für hohe Verfügbarkeit innerhalb einer Azure-Region synchron replizieren und für Notfallwiederherstellungen über Azure-Regionen asynchron replizieren.
  

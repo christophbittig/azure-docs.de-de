@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 08/10/2021
 ms.custom: template-how-to
-ms.openlocfilehash: e644732a90652b1672dc77bfc6db86d7a6b7295a
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 8db131bd39ae8ebe27720a7d725f6ab8082dfd83
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123221088"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124780013"
 ---
 # <a name="troubleshoot-the-azure-percept-dk-device"></a>Problembehandlung für das Azure Percept DK-Gerät
 
@@ -48,6 +48,9 @@ In diesem Abschnitt erhalten Sie Anweisungen dazu, welche Protokolle auf welche 
 |*edgeAgent-Protokolle*: Zeichnet die Versionsnummern aller Module auf, die auf Ihrem Gerät ausgeführt werden.|Immer dann, wenn mindestens ein Modul nicht funktioniert.|```sudo iotedge logs edgeAgent```|
 |*Modulcontainerprotokolle*: Zeichnet Details zu bestimmten IoT Edge-Modulcontainern auf.|Immer dann, wenn Probleme mit einem Modul auftreten.|```sudo iotedge logs [container name]```|
 |*Netzwerkprotokolle*: Eine Gruppe von Protokollen, die die WLAN-Dienste und den Netzwerkstapel abdecken.|Immer dann, wenn WLAN- oder Netzwerkprobleme auftreten.|```sudo journalctl -u hostapd.service -u wpa_supplicant.service -u ztpd.service -u systemd-networkd > network_log.txt```<br><br>```cat /etc/os-release && cat /etc/os-subrelease && cat /etc/adu-version && rpm -q ztpd > system_ver.txt```<br><br>Führen Sie beide Befehle aus. Mit jedem Befehl werden mehrere Protokolle gesammelt und in einer einzelnen Ausgabe abgelegt.|
+
+> [!WARNING]
+> Die Ausgabe des Befehls `support-bundle` kann Host-, Geräte- und Modulnamen, von ihren Modulen protokollierte Informationen usw. enthalten. Beachten Sie dies bitte, wenn Sie die Ausgabe in einem öffentlichen Forum freigeben.
 
 ## <a name="troubleshooting-commands"></a>Problembehandlung bei Befehlen
 Im Folgenden finden Sie eine Reihe von Befehlen, die Sie zur Behebung von Problemen mit dem Development Kit verwenden können. Um diese Befehle auszuführen, müssen Sie zunächst eine [SSH](./how-to-ssh-into-percept-dk.md)-Verbindung mit Ihrem Development Kit herstellen. 

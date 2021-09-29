@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 04/29/2021
+ms.date: 09/28/2021
 ms.author: alzam
-ms.openlocfilehash: 57328748f21dda9efe3b2208aeb4854360a76e38
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: b0988547105f953c0665ea753007c0725055fe61
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108288680"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129208704"
 ---
 # <a name="remote-work-using-azure-vpn-gateway-point-to-site"></a>Remotearbeit mit Azure VPN Gateway Point-to-Site
 
@@ -31,7 +31,7 @@ Mit einer P2S-VPN-Gatewayverbindung (Point-to-Site) können Sie von einem einzel
 
 In der folgenden Tabelle sind die Clientbetriebssysteme und Authentifizierungsoptionen aufgeführt, die zur Verfügung stehen. Es ist hilfreich, die Authentifizierungsmethode abhängig vom Clientbetriebssystem auszuwählen, das bereits verwendet wird. Wählen Sie beispielsweise OpenVPN mit zertifikatbasierter Authentifizierung aus, wenn Sie über einen Mix von Clientbetriebssystemen verfügen, die eine Verbindung herstellen müssen. Beachten Sie außerdem, dass das Point-to-Site-VPN nur für routenbasierte VPN-Gateways unterstützt wird.
 
-![Screenshot: Clientbetriebssysteme und verfügbare Authentifizierungsoptionen](./media/working-remotely-support/ostable.png "OS")
+![Screenshot: Clientbetriebssysteme und verfügbare Authentifizierungsoptionen](./media/working-remotely-support/os-table.png "OS")
 
 ## <a name="scenario-1---users-need-access-to-resources-in-azure-only"></a><a name="scenario1"></a>Szenario 1 – Benutzer benötigen nur Zugriff auf Ressourcen in Azure
 

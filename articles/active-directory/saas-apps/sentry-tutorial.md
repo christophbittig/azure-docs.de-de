@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: jeedes
-ms.openlocfilehash: 0f639c656207f94b37bbf2768b6c39fc69eb8603
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 5a8cbdc77a7570037645b350b62787aeaea7374f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114454588"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124821516"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sentry"></a>Tutorial: Integrieren von Sentry in das einmalige Anmelden (Single Sign-On, SSO) von Azure Active Directory
 
@@ -140,7 +140,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 #### <a name="either-mode"></a>Beliebiger Modus:
 
-Sie können das „Meine Apps“-Portal verwenden, um die Anwendung in einem beliebigen Modus zu testen. Wenn Sie in „Meine Apps“-Portal auf die Kachel "Sentry" klicken, werden Sie, wenn Sie im SP-Modus konfiguriert sind zur Anmeldeseite der Anwendung umgeleitet, um den Anmeldeabfluss zu initiieren. Wenn Sie im IDP-Modus konfiguriert sind, sollten Sie automatisch bei der Sentry-Anwendung angemeldet werden, für die Sie das einmalige Anmelden eingerichtet haben. Weitere Informationen zum Portal „Meine Apps“ finden Sie unter [Anmelden beim Portal „Meine Apps“ und Starten von Apps über dieses](../user-help/my-apps-portal-end-user-access.md).
+Sie können das „Meine Apps“-Portal verwenden, um die Anwendung in einem beliebigen Modus zu testen. Wenn Sie in „Meine Apps“-Portal auf die Kachel "Sentry" klicken, werden Sie, wenn Sie im SP-Modus konfiguriert sind zur Anmeldeseite der Anwendung umgeleitet, um den Anmeldeabfluss zu initiieren. Wenn Sie im IDP-Modus konfiguriert sind, sollten Sie automatisch bei der Sentry-Anwendung angemeldet werden, für die Sie das einmalige Anmelden eingerichtet haben. Weitere Informationen zum Portal „Meine Apps“ finden Sie unter [Anmelden beim Portal „Meine Apps“ und Starten von Apps über dieses](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2021
 ms.author: bagol
-ms.openlocfilehash: 18166bc22f34fe8bd4757ffd3a0d468c6a75b23c
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 545ab178c99b8d5ab6db1d6619a9859eb3133306
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122699106"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124781342"
 ---
 # <a name="troubleshoot-your-cef-or-syslog-data-connector"></a>Problembehandlung für CEF- oder Syslog-Datenconnectors
 
@@ -43,7 +43,7 @@ Weitere Informationen finden Sie unter [Verbinden der externen Lösung mithilfe 
 
 ## <a name="validate-cef-connectivity"></a>Überprüfen der CEF-Konnektivität
 
-Nachdem Sie Ihre [Protokollweiterleitung bereitgestellt](connect-common-event-format.md) und Ihre [Sicherheitslösung zum Senden von CEF-Nachrichten konfiguriert haben](connect-cef-solution-config.md), führen Sie die Schritte in diesem Abschnitt aus, um die Konnektivität zwischen Ihrer Sicherheitslösung und Azure Sentinel zu überprüfen.
+Nachdem Sie Ihre [Protokollweiterleitung bereitgestellt](connect-common-event-format.md) und Ihre [Sicherheitslösung zum Senden von CEF-Nachrichten konfiguriert haben](./connect-common-event-format.md), führen Sie die Schritte in diesem Abschnitt aus, um die Konnektivität zwischen Ihrer Sicherheitslösung und Azure Sentinel zu überprüfen.
 
 1. Stellen Sie sicher, dass Sie folgenden Voraussetzungen erfüllt sind:
 
@@ -269,15 +269,15 @@ Verwenden Sie die folgenden Abschnitte, um die Voraussetzungen für den CEF- ode
 
 Wenn Sie einen virtuellen Azure-Computer als Syslog-Collector verwenden, überprüfen Sie Folgendes:
 
-- Stellen Sie beim Einrichten des Syslog-Datenconnectors sicher, dass Sie die [Azure Security Center-Einstellungen für die automatische Bereitstellung](/azure/security-center/security-center-enable-data-collection) für den [MMA-/OMS-Agent](connect-windows-security-events.md#connector-options) deaktivieren.
+- Stellen Sie beim Einrichten des Syslog-Datenconnectors sicher, dass Sie die [Azure Security Center-Einstellungen für die automatische Bereitstellung](../security-center/security-center-enable-data-collection.md) für den [MMA-/OMS-Agent](connect-windows-security-events.md#connector-options) deaktivieren.
 
     Sie können sie wieder aktivieren, nachdem Ihr Datenconnector vollständig eingerichtet wurde.
 
-- Stellen Sie vor dem Bereitstellen des [Python-Skripts für den Common Event Format-Datenconnector](connect-cef-agent.md) sicher, dass Ihr virtueller Computer noch nicht mit einem vorhandenen Syslog-Arbeitsbereich verbunden ist. Sie finden diese Informationen in der VM-Liste für den Log Analytics-Arbeitsbereich, in der eine mit einem Syslog-Arbeitsbereich verbundene VM als **Verbunden** aufgeführt wird.
+- Stellen Sie vor dem Bereitstellen des [Python-Skripts für den Common Event Format-Datenconnector](./connect-log-forwarder.md) sicher, dass Ihr virtueller Computer noch nicht mit einem vorhandenen Syslog-Arbeitsbereich verbunden ist. Sie finden diese Informationen in der VM-Liste für den Log Analytics-Arbeitsbereich, in der eine mit einem Syslog-Arbeitsbereich verbundene VM als **Verbunden** aufgeführt wird.
 
 - Stellen Sie sicher, dass Azure Sentinel mit dem richtigen Syslog-Arbeitsbereich verbunden und die **SecurityInsights**-Lösung installiert ist.
 
-    Weitere Informationen finden Sie unter [Schritt 1: Bereitstellen der Protokollweiterleitung](connect-cef-agent.md).
+    Weitere Informationen finden Sie unter [Schritt 1: Bereitstellen der Protokollweiterleitung](./connect-log-forwarder.md).
 
 - Stellen Sie sicher, dass Ihr Computer geringstenfalls mit den erforderlichen Mindestanforderungen ordnungsgemäß dimensioniert ist. Weitere Informationen finden Sie unter [Voraussetzungen](connect-common-event-format.md#prerequisites).
 
@@ -299,7 +299,7 @@ Der Syslog-Server, entweder rsyslog oder syslog-ng, leitet alle in der relevante
 
 Stellen Sie sicher, dass Sie Details zu den Facilitys und Schweregraden der Protokolle hinzufügen, die Sie in Azure Sentinel erfassen möchten. Der Konfigurationsvorgang dauert etwa 20 Minuten.
 
-Weitere Informationen finden Sie unter [Erläuterung des Bereitstellungsskripts](connect-cef-agent.md#deployment-script-explained) und [Sammeln von Syslog-Datenquellen mit dem Log Analytics-Agent](/azure/azure-monitor/agents/data-sources-syslog.md).
+Weitere Informationen finden Sie unter [Erläuterung des Bereitstellungsskripts](./connect-log-forwarder.md#deployment-script-explained) und [Sammeln von Syslog-Datenquellen mit dem Log Analytics-Agent](../azure-monitor/agents/data-sources-syslog.md).
 
 
 Führen Sie **beispielsweise für einen rsyslog-Server** den folgenden Befehl aus, um die aktuellen Einstellungen für die Syslog-Weiterleitung anzuzeigen, und überprüfen Sie alle Änderungen an der Konfigurationsdatei:
@@ -506,9 +506,9 @@ Setzen Sie in solchen Fällen die Problembehandlung fort, indem Sie Folgendes ü
 
 - Stellen Sie sicher, dass Datenpakete über Port 25524, 25526 oder über beide Ports übertragen werden.
 
-- Stellen Sie sicher, dass Ihr virtueller Computer über eine ausgehende Verbindung mit Port 443 über TCP verfügt oder eine Verbindung mit den [Log Analytics-Endpunkten](/azure/azure-monitor/agents/log-analytics-agent#network-requirements) herstellen kann.
+- Stellen Sie sicher, dass Ihr virtueller Computer über eine ausgehende Verbindung mit Port 443 über TCP verfügt oder eine Verbindung mit den [Log Analytics-Endpunkten](../azure-monitor/agents/log-analytics-agent.md#network-requirements) herstellen kann.
 
-- Stellen Sie sicher, dass Sie über Ihre Firewallrichtlinie Zugriff auf die erforderlichen URLs aus Ihrem Syslog-Collector haben. Weitere Informationen finden Sie unter [Firewallanforderungen](/azure/azure-monitor/agents/log-analytics-agent##firewall-requirements).
+- Stellen Sie sicher, dass Sie über Ihre Firewallrichtlinie Zugriff auf die erforderlichen URLs aus Ihrem Syslog-Collector haben. Weitere Informationen finden Sie unter [Firewallanforderungen](../azure-monitor/agents/log-analytics-agent.md#firewall-requirements).
 
 - Stellen Sie sicher, dass Ihr virtueller Azure-Computer in der Liste der virtuellen Computer Ihres Arbeitsbereichs als verbunden angezeigt wird.
 

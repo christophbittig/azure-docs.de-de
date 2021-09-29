@@ -11,12 +11,12 @@ ms.date: 06/24/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5dec171c299bdd8ea6c5989794539b6c79e7d3fe
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: 34d0a6c4940032bc1957c787e05722586c792417
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114229687"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124814391"
 ---
 # <a name="azure-ad-connect-single-object-sync"></a>Azure AD Connect: Single Object Sync 
 
@@ -43,7 +43,7 @@ Das Tool Single Object Sync führt die folgenden Schritte aus:
  9. Synchronisieren des Objekts aus dem Active Directory Connectorbereich. 
  10. Exportieren des Objekts aus dem Azure Active Directory-Connectorbereich in Azure Active Directory. 
 
-Zusätzlich zur JSON-Ausgabe generiert das Tool einen HTML-Bericht, der alle Details des Synchronisierungsvorgangs enthält. Der HTML-Bericht befindet sich in **C:\ProgramData\AADConnect\ADSyncObjectDiagnostics\ADSyncSingleObjectSyncResult-<date>.htm**. Dieser HTML-Bericht kann bei Bedarf zur weiteren Problembehandlung für das Supportteam freigegeben werden. 
+Zusätzlich zur JSON-Ausgabe generiert das Tool einen HTML-Bericht, der alle Details des Synchronisierungsvorgangs enthält. Der HTML-Bericht befindet sich in **C:\ProgramData\AADConnect\ADSyncObjectDiagnostics\ADSyncSingleObjectSyncResult-\<date\>.htm**. Dieser HTML-Bericht kann bei Bedarf zur weiteren Problembehandlung für das Supportteam freigegeben werden. 
 
 Der HTML-Bericht enthält Folgendes: 
 
@@ -58,7 +58,7 @@ Der HTML-Bericht enthält Folgendes:
 
 Verwenden Sie Folgendes, um das Single Object Sync-Tool zu nutzen:  
  - Azure AD Connect-Release von März 2021 ([1.6.4.0](reference-connect-version-history.md#1640)) oder höher
- -  [PowerShell 5.0](/powershell/scripting/windows-powershell/whats-new/what-s-new-in-windows-powershell-50?view=powershell-7.1)
+ -  [PowerShell 5.0](/powershell/scripting/windows-powershell/whats-new/what-s-new-in-windows-powershell-50)
 
 ### <a name="run-the-single-object-sync-tool"></a>Ausführen des Tools Single Object Sync 
 

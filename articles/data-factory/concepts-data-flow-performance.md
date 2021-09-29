@@ -8,13 +8,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.subservice: data-flows
 ms.custom: synapse
-ms.date: 08/24/2021
-ms.openlocfilehash: 1595d2984c4130fa89c52aec615941051fa1bb82
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.date: 09/09/2021
+ms.openlocfilehash: 4c1ec8e8ca10764c630320c1d448b812da7a3cc4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123099353"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124750722"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Anleitung zur Leistung und Optimierung der Mapping Data Flow-Funktion
 
@@ -30,7 +30,7 @@ Sehen Sie sich das folgende Video an, das einige Beispiele für die erforderlich
 
 Nachdem Sie Ihre Transformationslogik im Debugmodus überprüft haben, sollten Sie Ihren Datenfluss per End-to-End-Vorgang als Aktivität in einer Pipeline ausführen. Datenflüsse werden in einer Pipeline mit der [Aktivität zum Ausführen eines Datenflusses](control-flow-execute-data-flow-activity.md) operationalisiert. Die Datenflussaktivität verfügt im Gegensatz zu anderen Aktivitäten über eine einzigartige Überwachungsoberfläche, auf der ein ausführlicher Ausführungsplan und das Leistungsprofil der Transformationslogik angezeigt werden. Klicken Sie in der Ausgabe der Aktivitätsausführung einer Pipeline auf das Brillensymbol, um für den Datenfluss ausführliche Überwachungsinformationen anzuzeigen. Weitere Informationen finden Sie unter [Überwachen von Datenflüssen](concepts-data-flow-monitoring.md).
 
-![Datenflussüberwachung](media/data-flow/monitoring-details.png "Datenflussüberwachung 2")
+:::image type="content" source="media/data-flow/monitoring-details.png" alt-text="Datenflussüberwachung":::
 
 Beim Überwachen der Leistung von Datenflüssen gibt es vier mögliche Engpässe, auf die Sie achten sollten:
 
@@ -39,7 +39,7 @@ Beim Überwachen der Leistung von Datenflüssen gibt es vier mögliche Engpässe
 * Transformationszeit
 * Schreiben in eine Senke 
 
-![Datenflussüberwachung](media/data-flow/monitoring-performance.png "Datenflussüberwachung 3")
+:::image type="content" source="media/data-flow/monitoring-performance.png" alt-text="Datenflussüberwachung":::
 
 Die Startzeit des Clusters ist die benötigte Dauer für den Start eines Apache Spark-Clusters. Dieser Wert befindet sich oben rechts auf dem Überwachungsbildschirm. Datenflüsse basieren auf einem Just-In-Time-Modell, bei dem für jeden Auftrag ein isolierter Cluster verwendet wird. Diese Startzeit hat normalerweise eine Dauer von drei bis fünf Minuten. Für sequenzielle Aufträge kann dies reduziert werden, indem ein Wert für die Gültigkeitsdauer aktiviert wird. Weitere Informationen finden Sie unter **Gültigkeitsdauer (TTL)** und [Integration Runtime-Leistung](concepts-integration-runtime-performance.md#time-to-live).
 
@@ -55,7 +55,7 @@ Beim Entwerfen und Testen von Datenflüssen über die Benutzeroberfläche könne
 
 Die Registerkarte **Optimieren** enthält Einstellungen zum Konfigurieren des Partitionsschemas für den Spark-Cluster. Diese Registerkarte ist für jede Transformation des Datenflusses vorhanden und gibt an, ob Sie die Daten neu partitionieren sollten, **nachdem** die Transformation abgeschlossen ist. Das Anpassen der Partitionierung bietet Kontrolle über die Verteilung Ihrer Daten auf Computeknoten und Datenstandortoptimierungen, die sowohl positive als auch negative Auswirkungen auf die gesamte Datenflussleistung haben können.
 
-![Screenshot der Registerkarte „Optimieren“ mit der Option „Partition“, dem Partitionstyp und der Anzahl von Partitionen](media/data-flow/optimize.png)
+:::image type="content" source="media/data-flow/optimize.png" alt-text="Screenshot der Registerkarte „Optimieren“ mit der Option „Partition“, dem Partitionstyp und der Anzahl von Partitionen":::
 
 Standardmäßig ist die Option *Aktuelle Partitionierung verwenden* ausgewählt, die den Dienst anweist, die aktuelle Ausgabepartitionierung der Transformation beizubehalten. Da die erneute Partitionierung einige Zeit in Anspruch nimmt, ist die Verwendung der Option *Aktuelle Partitionierung verwenden* in den meisten Szenarien zu empfehlen. Szenarien, in denen Sie Ihre Daten ggf. neu partitionieren sollten, sind beispielsweise Aggregations- und Joinvorgänge, bei denen es für Ihre Daten zu einer erheblichen Datenschiefe kommt, oder bei Verwendung einer Quellpartitionierung auf einer SQL-Datenbank-Instanz.
 
@@ -93,7 +93,7 @@ Wenn Sie gut mit der Kardinalität Ihrer Daten vertraut sind, kann die Schlüsse
 
 Wenn Sie nicht voraussetzen, dass jede Pipelineausführung Ihrer Datenflussaktivitäten alle ausführlichen Telemetrieprotokolle vollständig protokolliert, können Sie den Protokolliergrad optional auf „Standard“ oder „Kein“ festlegen. Wenn Sie Ihre Datenflüsse im Modus „Ausführlich“ (Standard) ausführen, fordern Sie an, dass der Dienst die Aktivität während der Datentransformation auf den einzelnen Partitionsebenen vollständig protokolliert. Da dies ein kostspieliger Vorgang sein kann, kann nur die ausschließliche Aktivierung von „Ausführlich“ bei der Problembehandlung den gesamten Datenfluss und die Pipelineleistung verbessern. Der Modus „Standard“ protokolliert nur die Transformationszeitspannen, während „Kein“ nur eine Zusammenfassung der Zeitspannen bietet.
 
-![Protokolliergrad](media/data-flow/logging.png "Festlegen des Protokolliergrads")
+:::image type="content" source="media/data-flow/logging.png" alt-text="Protokolliergrad":::
 
 ## <a name="optimizing-sources"></a>Optimieren von Quellen
 
@@ -111,7 +111,7 @@ Azure SQL-Datenbank verfügt über eine eindeutige Partitionierungsoption, die d
 > [!TIP]
 > Bei der Quellpartitionierung ist der E/A-Vorgang von SQL Server der Engpass. Das Hinzufügen von zu vielen Partitionen kann dazu führen, dass die Quelldatenbank vollständig ausgelastet ist. Im Allgemeinen sind bei Verwendung dieser Option vier oder fünf Partitionen ideal.
 
-![Quellpartitionierung](media/data-flow/sourcepart3.png "Quellpartitionierung")
+:::image type="content" source="media/data-flow/sourcepart3.png" alt-text="Quellpartitionierung":::
 
 #### <a name="isolation-level"></a>Isolationsstufe
 
@@ -123,9 +123,9 @@ Sie können Lesevorgänge aus Azure SQL-Datenbank durchführen, indem Sie eine T
 
 ### <a name="azure-synapse-analytics-sources"></a>Azure Synapse Analytics-Quellen
 
-Bei Verwendung von Azure Synapse Analytics ist in den Quelloptionen die Einstellung **Staging aktivieren** vorhanden. Dadurch kann der Dienst mithilfe von ```Staging``` aus Synapse lesen. Dies verbessert die Leseleistung erheblich, da die [Synapse-COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql.md) als leistungsstärkste Funktion zum Massenladen verwendet wird. Beim Aktivieren von ```Staging``` müssen Sie in den Einstellungen für Datenflussaktivitäten einen Azure Blob Storage- oder Azure Data Lake Storage Gen2-Stagingspeicherort angeben.
+Bei Verwendung von Azure Synapse Analytics ist in den Quelloptionen die Einstellung **Staging aktivieren** vorhanden. Dadurch kann der Dienst mithilfe von ```Staging``` aus Synapse lesen. Dies verbessert die Leseleistung erheblich, da die [Synapse-COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql) als leistungsstärkste Funktion zum Massenladen verwendet wird. Beim Aktivieren von ```Staging``` müssen Sie in den Einstellungen für Datenflussaktivitäten einen Azure Blob Storage- oder Azure Data Lake Storage Gen2-Stagingspeicherort angeben.
 
-![Staging aktivieren](media/data-flow/enable-staging.png "Staging aktivieren")
+:::image type="content" source="media/data-flow/enable-staging.png" alt-text="Staging aktivieren":::
 
 ### <a name="file-based-sources"></a>Dateibasierte Quellen
 
@@ -159,7 +159,7 @@ Nachdem der Schreibvorgang abgeschlossen ist, sollten Sie die Indizes mit dem fo
 
 Dies kann sowohl nativ mit Pre- und Post-SQL-Skripts auf einer Azure SQL-Datenbank-Instanz als auch über eine Synapse-Senke in Zuordnungsdatenflüssen durchgeführt werden.
 
-![Indizes deaktivieren](media/data-flow/disable-indexes-sql.png "Indizes deaktivieren")
+:::image type="content" source="media/data-flow/disable-indexes-sql.png" alt-text="Indizes deaktivieren":::
 
 > [!WARNING]
 > Beim Deaktivieren von Indizes übernimmt der Datenfluss quasi die Kontrolle über eine Datenbank, und die Durchführung von Abfragen ist dann wahrscheinlich nicht erfolgreich. Aus diesem Grund werden viele ETL-Aufträge nachts ausgelöst, um Konflikte dieser Art zu vermeiden. Weitere Informationen finden Sie im Artikel [Deaktivieren von SQL-Indizes und Einschränkungen](/sql/relational-databases/indexes/disable-indexes-and-constraints).
@@ -184,7 +184,7 @@ Wenn die Daten gleichmäßig verteilt sind, ist **Aktuelle Partitionierung verwe
 
 Beim Schreiben von Dateien können Sie zwischen verschiedenen Benennungsoptionen wählen, die sich jeweils auf die Leistung auswirken.
 
-![Senkenoptionen](media/data-flow/file-sink-settings.png "Senkenoptionen")
+:::image type="content" source="media/data-flow/file-sink-settings.png" alt-text="Senkenoptionen":::
 
 Wenn Sie die Option **Standard** auswählen, ist der Schreibvorgang am schnellsten. Jede Partition entspricht einer Datei mit dem Standardnamen von Spark. Dies ist hilfreich, wenn Sie nur aus dem Ordner mit den Daten lesen.
 
@@ -216,7 +216,7 @@ Wenn die Größe der übertragenen Daten für den Spark-Knoten zu hoch ist, trit
 
 Für die Arbeit mit Datenquellen, die mehr Zeit für Abfragen erfordern (z. B. große Datenbankabfragen), wird es empfohlen, die Übertragung für Joins zu deaktivieren. Quellen mit langen Abfragezeiten können zu Spark-Timeouts führen, wenn der Cluster versucht, Daten an Computeknoten zu übertragen. Das Deaktivieren der Übertragung ist außerdem eine gute Entscheidung, wenn Sie über einen Datenstrom in Ihrem Datenfluss verfügen, der Werte zur späteren Verwendung in einer Suchtransformation aggregiert. Dieses Muster kann den Spark-Optimierer verwirren und zu Timeouts führen.
 
-![Optimieren der Join-Transformation](media/data-flow/joinoptimize.png "Join-Optimierung")
+:::image type="content" source="media/data-flow/joinoptimize.png" alt-text="Optimieren der Join-Transformation":::
 
 #### <a name="cross-joins"></a>Kreuzprodukte
 
@@ -234,7 +234,7 @@ Die [Fenstertransformation im Zuordnungsdatenfluss](data-flow-window.md) partiti
 
 Bei bestimmten Transformationen, z. B. Joins und Aggregatvorgängen, werden Ihre Datenpartitionen neu angeordnet und können gelegentlich zu Datenschiefe führen. Datenschiefe bedeutet, dass Daten nicht gleichmäßig auf die Partitionen verteilt werden. Bei hoher Datenschiefe kann es zu einer Verlangsamung von nachgeschalteten Transformationen und Senkenschreibvorgängen kommen. Sie können die Datenschiefe bei Ihnen während einer Datenflussausführung jederzeit überprüfen, indem Sie in der Überwachungsanzeige auf die Transformation klicken.
 
-![Schiefe und Wölbung](media/data-flow/skewness-kurtosis.png "Schiefe und Wölbung")
+:::image type="content" source="media/data-flow/skewness-kurtosis.png" alt-text="Schiefe und Wölbung":::
 
 In der Überwachungsanzeige wird angegeben, wie die Daten auf die einzelnen Partitionen verteilt sind, und die beiden Metriken für „Schiefe“ und „Wölbung“ werden angezeigt. Die **Schiefe** ist ein Maß dafür, wie asymmetrisch die Daten sind. Der Wert kann „Positiv“, „Null“, „Negativ“ oder „Nicht definiert“ lauten. Bei einer negativen Datenschiefe ist der linke Ausläufer länger als der rechte Ausläufer. Die **Wölbung** ist das Maß dafür, ob die Daten eine Verteilung mit schweren oder leichten Rändern aufweisen. Hohe Wölbungswerte sind nicht wünschenswert. Ideale Bereiche für die Datenschiefe liegen zwischen -3 und 3, und bei der Wölbung werden Werte angestrebt, die unter 10 liegen. Eine einfache Möglichkeit zur Interpretation dieser Zahlen besteht darin, im Partitionsdiagramm zu überprüfen, ob ein Balken deutlich größer als die anderen ist.
 

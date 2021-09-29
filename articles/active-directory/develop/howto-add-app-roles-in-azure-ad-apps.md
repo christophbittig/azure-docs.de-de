@@ -13,12 +13,12 @@ ms.date: 05/06/2021
 ms.author: kkrishna
 ms.reviewer: marsma, kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5f213c6b41a0a34850b35fb24dd4288c00693511
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 3494401396ebe84731afd0de6d9b980f35220576
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123039335"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129058802"
 ---
 # <a name="add-app-roles-to-your-application-and-receive-them-in-the-token"></a>Hinzufügen von App-Rollen zu Ihrer Anwendung und Empfangen der Rollen im Token
 
@@ -30,7 +30,7 @@ Ein weiterer Ansatz ist die Verwendung von Azure AD-Gruppen und Gruppenansprüc
 
 ## <a name="declare-roles-for-an-application"></a>Deklarieren von Rollen für eine Anwendung
 
-App-Rollen definieren Sie im [Azure-Portal](https://portal.azure.com). App-Rollen werden in der Regel in einer Anwendungsregistrierung definiert, die einen Dienst, eine App oder eine API darstellt. Wenn sich ein Benutzer bei der Anwendung anmeldet, gibt Azure AD für den Benutzer einen `roles`-Anspruch für jede einzeln zugewiesene Rolle oder jeden einzeln zugewiesenen Dienstprinzipal und für die Gruppenmitgliedschaft aus. Dies kann zum Implementieren der anspruchsbasierten Autorisierung verwendet werden. App-Rollen können [einem Benutzer oder einer Gruppe von Benutzern](../manage-apps/add-application-portal-assign-users.md#assign-users-to-an-app) zugewiesen werden. App-Rollen können auch dem Dienstprinzipal für eine andere Anwendung oder [dem Dienstprinzipal für eine verwaltete Identität](../managed-identities-azure-resources/how-to-assign-app-role-managed-identity-powershell.md) zugewiesen werden.
+App-Rollen definieren Sie im [Azure-Portal](https://portal.azure.com). App-Rollen werden in der Regel in einer Anwendungsregistrierung definiert, die einen Dienst, eine App oder eine API darstellt. Wenn sich ein Benutzer bei der Anwendung anmeldet, gibt Azure AD für den Benutzer einen `roles`-Anspruch für jede einzeln zugewiesene Rolle oder jeden einzeln zugewiesenen Dienstprinzipal und für die Gruppenmitgliedschaft aus. Dies kann zum Implementieren der anspruchsbasierten Autorisierung verwendet werden. App-Rollen können [einem Benutzer oder einer Gruppe von Benutzern](../manage-apps/add-application-portal-assign-users.md) zugewiesen werden. App-Rollen können auch dem Dienstprinzipal für eine andere Anwendung oder [dem Dienstprinzipal für eine verwaltete Identität](../managed-identities-azure-resources/how-to-assign-app-role-managed-identity-powershell.md) zugewiesen werden.
 
 > [!IMPORTANT]
 > Wenn Sie einer Gruppe einen Dienstprinzipal hinzufügen und dieser Gruppe dann eine App-Rolle zuweisen, fügt Azure AD den ausgegebenen Token derzeit nicht den `roles`-Anspruch hinzu.
@@ -58,7 +58,7 @@ So erstellen Sie eine App-Rolle mithilfe der Benutzeroberfläche des Azure-Porta
 
    :::image type="content" source="media/howto-add-app-roles-in-azure-ad-apps/app-roles-create-context-pane.png" alt-text="Bereich „App-Rollen, Kontext erstellen“ einer App-Registrierung im Azure-Portal":::
 
-   | Feld                                    | BESCHREIBUNG                                                                                                                                                                                                                                                                                                       | Beispiel                       |
+   | Feld                                    | Beschreibung                                                                                                                                                                                                                                                                                                       | Beispiel                       |
    | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
    | **Anzeigename**                         | Anzeigename für die App-Rolle, die auf den Administratorbildschirmen für Zustimmung und App-Zuweisung angezeigt wird. Dieser Wert kann Leerzeichen enthalten.                                                                                                                                                                                    | `Survey Writer`               |
    | **Zulässige Mitgliedstypen**                 | Gibt an, ob diese App-Rolle Benutzern, Anwendungen oder beiden zugeordnet werden kann.<br/><br/>Wenn App-Rollen für `applications` verfügbar sind, werden sie als Anwendungsberechtigungen im Abschnitt **Verwalten** einer App-Registrierung unter **API-Berechtigungen > Berechtigung hinzufügen > Meine APIs > API auswählen > Anwendungsberechtigungen** angezeigt. | `Users/Groups`                |

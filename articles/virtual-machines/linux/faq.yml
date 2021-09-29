@@ -9,12 +9,12 @@ metadata:
   ms.topic: conceptual
   ms.date: 05/08/2019
   ms.author: cynthn
-  ms.openlocfilehash: fc03e3dd0692d8b4602795930baddc9a7b443955
-  ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+  ms.openlocfilehash: d07a19a8df673cd7f66edfc7017fba0f2936341f
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/14/2021
-  ms.locfileid: "112082827"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124754520"
 title: Häufig gestellte Fragen zu virtuellen Linux-Computern
 summary: >
   Dieser Artikel enthält einige häufig gestellte Fragen zu virtuellen Linux-Computern, die in Azure mit dem Resource Manager-Bereitstellungsmodell erstellt wurden. Die Windows-Version dieses Themas finden Sie unter [Häufig gestellte Fragen zu virtuellen Windows-Computern](../windows/faq.yml)
@@ -141,4 +141,4 @@ sections:
       - `video`
   - question: >
       Welche Anforderungen an das Kennwort gelten beim Erstellen eines virtuellen Computers?
-    answer: "Je nach verwendetem Tool gelten unterschiedliche Anforderungen an die Kennwortlänge:\n - Portal: zwischen 12 und 72 Zeichen\n - PowerShell: zwischen 8 und 123 Zeichen\n - CLI: zwischen 12 und 123 Zeichen\n - Azure Resource Manager-Vorlagen (ARM): zwischen 12 und 72 Zeichen; Steuerzeichen sind nicht zulässig.\n \n\nKennwörter müssen außerdem 3 der folgenden 4 Komplexitätsanforderungen erfüllen:\n\n* Kleinbuchstaben\n* Großbuchstaben\n* Eine Ziffer\n* Ein Sonderzeichen (Übereinstimmung mit regulärem Ausdruck [\\W_])\n\nDie folgenden Kennwörter sind nicht zulässig:\n\n<table>\n    <tr>\n        <td style=\"text-align:center\">abc@123</td>\n        <td style=\"text-align:center\">P@$$w0rd</td>\n        <td style=\"text-align:center\">P@ssw0rd</td>\n        <td style=\"text-align:center\">P@ssword123</td>\n        <td style=\"text-align:center\">Pa$$word</td>\n    </tr>\n    <tr>\n        <td style=\"text-align:center\">pass@word1</td>\n        <td style=\"text-align:center\">Password!</td>\n        <td style=\"text-align:center\">Password1</td>\n        <td style=\"text-align:center\">Password22</td>\n        <td style=\"text-align:center\">iloveyou!</td>\n    </tr>\n</table>\n"
+    answer: "Je nach verwendetem Tool gelten unterschiedliche Anforderungen an die Kennwortlänge:\n - Portal: zwischen 12 und 72 Zeichen\n - PowerShell: zwischen 8 und 123 Zeichen\n - CLI: zwischen 12 und 123 Zeichen\n - Azure Resource Manager-Vorlagen (ARM): zwischen 12 und 72 Zeichen; Steuerzeichen sind nicht zulässig.\n \n\nKennwörter müssen außerdem 3 der folgenden 4 Komplexitätsanforderungen erfüllen:\n\n* Kleinbuchstaben\n* Großbuchstaben\n* Eine Ziffer\n* Ein Sonderzeichen (Übereinstimmung mit regulärem Ausdruck [\\W_])\n\nDie folgenden Kennwörter sind nicht zulässig:\n\n* abc@123\n* P@$$w0rd\n* P@ssw0rd\n* P@ssword123\n* Pa$$word\n* pass@word1\n* Password!\n* Password1\n* Password22\n* iloveyou!\n"

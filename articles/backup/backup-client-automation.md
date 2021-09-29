@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie PowerShell zum Einrichten v
 ms.topic: conceptual
 ms.date: 08/24/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1d72dec0e9e2c1df0f93df5b557d72e8ad5c857e
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: b1ec8bf20871fe5cb6f3245f202f2db2ca2c57f2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122779493"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824878"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Bereitstellen und Verwalten der Sicherung in Azure für Windows Server-/Windows-Clientcomputer mit PowerShell
 
@@ -410,7 +410,7 @@ PolicyState     : Valid
 Das Richtlinienobjekt ist jetzt fertig und verfügt über einen zugeordneten Sicherungszeitplan, eine Aufbewahrungsrichtlinie sowie eine Ein-/Ausschlussliste für Dateien. Für diese Richtlinie kann jetzt ein Commit ausgeführt werden, um sie in Azure Backup zu speichern. Bevor Sie die neue Richtlinie anwenden, müssen Sie mithilfe des [Remove-OBPolicy](/powershell/module/msonlinebackup/remove-obpolicy)-Cmdlets sicherstellen, dass dem Server keine vorhandenen Sicherungsrichtlinien zugeordnet sind. Beim Entfernen der Richtlinie werden Sie zur Bestätigung aufgefordert. Sie können die Bestätigung überspringen, indem Sie das `-Confirm:$false`-Kennzeichen mit dem Cmdlet verwenden.
 
 >[!Note]
->Wenn beim Ausführen des Cmdlets eine Aufforderung zum Festlegen einer Sicherheits-PIN angezeigt wird, lesen Sie den [Abschnitt Methode 1](/azure/backup/backup-azure-delete-vault#method-1).
+>Wenn beim Ausführen des Cmdlets eine Aufforderung zum Festlegen einer Sicherheits-PIN angezeigt wird, lesen Sie den [Abschnitt Methode 1](./backup-azure-delete-vault.md#method-1).
 
 ```powershell
 Get-OBPolicy | Remove-OBPolicy

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: zarhoads
-ms.openlocfilehash: 1c7143b6d3479cf3083cfc730301c68dcf4eb705
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 17670189113e106b4a3d4c5cc288772a49e1f83b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92900827"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124816115"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Best Practices für Podsicherheit in Azure Kubernetes Service (AKS)
 
@@ -101,7 +101,6 @@ Wenn Anwendungen Anmeldeinformationen benötigen, kommunizieren sie mit dem digi
 
 Mit Key Vault werden Geheimnisse wie Anmeldeinformationen, Speicherkontenschlüssel oder Zertifikate gespeichert und regelmäßig rotiert. Sie können Azure Key Vault mit einem AKS-Cluster unter Verwendung des [Azure Key Vault-Anbieters für den Secrets Store CSI-Treiber](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage) integrieren. Mit dem Secrets Store CSI-Treiber kann der AKS-Cluster nativ Geheimnisinhalte aus Azure Key Vault abrufen und diese ausschließlich dem anfordernden Pod sicher zur Verfügung stellen. Arbeiten Sie mit Ihrem Clusteroperator zusammen, um den Secrets Store CSI-Treiber auf AKS-Workerknoten bereitzustellen. Sie können eine vom Pod verwaltete Identität verwenden, um Zugriff auf Key Vault anzufordern und die erforderlichen Geheimnisinhalte über den Secrets Store CSI-Treiber abzurufen.
 
-Azure Key Vault mit Secrets Store CSI-Treiber kann für Linux-Knoten und -Pods verwendet werden, die mindestens die Kubernetes-Version 1.16 benötigen. Für Windows-Knoten und -Pods ist mindestens die Kubernetes-Version 1.18 erforderlich.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

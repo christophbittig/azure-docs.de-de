@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 03/30/2021
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: d87c789b4c5f1decc468838ccabd136cec32cabc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5a3c8c3369890bdbbd30a98f6f76c88b9358dcdf
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345763"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124791800"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-unity-project"></a>Konfigurieren von Azure Spatial Anchors in einem Unity-Projekt
 
@@ -34,7 +34,7 @@ Bevor Sie das Azure Spatial Anchors SDK in Ihr Unity-Projekt einschließen, stel
 [!INCLUDE [Import Unity Packages](../../../includes/spatial-anchors-unity-import-packages.md)]
 
 ### <a name="hololens-only-configure-your-unity-project-xr-settings"></a>Nur HoloLens: Konfigurieren der XR-Einstellungen Ihres Unity-Projekts
-Bei der Entwicklung von MixedReality-Apps auf HoloLens müssen Sie die XR-Konfiguration in Unity einrichten. Weitere Informationen dazu finden Sie hier: [Einrichten Ihrer XR-Konfiguration - Mixed Reality | Microsoft-Dokumentation](https://docs.microsoft.com/windows/mixed-reality/develop/unity/xr-project-setup?tabs=openxr)     und [Auswählen einer Unity-Version und eines XR-Plugins - Mixed Reality | Microsoft-Dokumentation](https://docs.microsoft.com/windows/mixed-reality/develop/unity/choosing-unity-version).
+Bei der Entwicklung von MixedReality-Apps auf HoloLens müssen Sie die XR-Konfiguration in Unity einrichten. Weitere Informationen dazu finden Sie hier: [Einrichten Ihrer XR-Konfiguration - Mixed Reality | Microsoft-Dokumentation](/windows/mixed-reality/develop/unity/xr-project-setup?tabs=openxr)     und [Auswählen einer Unity-Version und eines XR-Plugins - Mixed Reality | Microsoft-Dokumentation](/windows/mixed-reality/develop/unity/choosing-unity-version).
 
 Das Azure Spatial Anchors SDK 2.9 (oder älter) unterstützt nur das Windows-XR-Plugin (com.unity.xr.windowsmr). Daher weist das Unity-Paket für Azure Spatial Anchor HoloLens eine explizite Abhängigkeit vom Paket com.unity.xr.windowsmr auf.
 

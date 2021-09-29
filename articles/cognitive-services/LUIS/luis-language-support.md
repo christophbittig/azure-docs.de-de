@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
-ms.openlocfilehash: 724b94a44ae289063bbb1c6ebf53b38c0a617b88
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed819b22caab25fea8ae002d482cf2df5d0bf60c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104799326"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124733068"
 ---
 # <a name="language-and-region-support-for-luis"></a>Sprach- und Regionsunterstützung für LUIS
 
@@ -22,7 +22,7 @@ LUIS bietet eine Reihe von Features innerhalb des Diensts. Nicht alle Funktionen
 
 ## <a name="multi-language-luis-apps"></a>LUIS-Apps mit mehreren Sprachen
 
-Wenn Sie eine mehrsprachige LUIS-Clientanwendung benötigen, z.B. einen Chatbot, haben Sie einige Optionen. Wenn LUIS alle Sprachen unterstützt, entwickeln Sie eine LUIS-App für jede Sprache. Jede LUIS-App weist eine eindeutige App-ID und ein eindeutiges Endpunktprotokoll auf. Wenn Sie Sprachverständnis für eine von LUIS nicht unterstützte Sprache bereitstellen möchten, können Sie mithilfe des [Translator-Diensts](../Translator/translator-info-overview.md) die Äußerung in eine unterstützte Sprache übersetzen, die Äußerung an den LUIS-Endpunkt senden und die resultierenden Bewertungen empfangen.
+Wenn Sie eine mehrsprachige LUIS-Clientanwendung benötigen, z.B. einen Chatbot, haben Sie einige Optionen. Wenn LUIS alle Sprachen unterstützt, entwickeln Sie eine LUIS-App für jede Sprache. Jede LUIS-App weist eine eindeutige App-ID und ein eindeutiges Endpunktprotokoll auf. Wenn Sie Sprachverständnis für eine von LUIS nicht unterstützte Sprache bereitstellen möchten, können Sie mithilfe des [Translator-Diensts](../translator/translator-overview.md) die Äußerung in eine unterstützte Sprache übersetzen, die Äußerung an den LUIS-Endpunkt senden und die resultierenden Bewertungen empfangen.
 
 ## <a name="languages-supported"></a>Unterstützte Sprachen
 

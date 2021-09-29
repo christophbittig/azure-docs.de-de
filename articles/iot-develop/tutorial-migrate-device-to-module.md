@@ -1,18 +1,18 @@
 ---
 title: 'Tutorial: Verbinden eines generischen Azure IoT Plug & Play-Moduls | Microsoft-Dokumentation'
 description: 'Tutorial: Verwenden von C#-Beispielcode für ein IoT Plug & Play-Gerät in einem generischen Modul'
-author: ericmitt
-ms.author: ericmitt
+author: lizross
+ms.author: lizross
 ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-develop
 services: iot-develop
-ms.openlocfilehash: c5b843a3b87787dbbdbd720f5b127d58d73a3edb
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 3ff845e1ef74e8bf1f98da519d8d2d9657755e96
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114405995"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091120"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>Tutorial: Verbinden eines IoT Plug & Play-Moduls (C#)
 
